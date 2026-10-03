@@ -2132,6 +2132,104 @@
     ]);
   })()];
 
+  DIAGRAMS["extend-sides-to-meet"] = [(() => {
+    // The card's own example: a trapezoid with bases 4 and 10 and height 3 (30 px per unit).
+    // Extending the legs meets at E, 2 above the short base, since x / (x + 3) = 4 / 10.
+    const A = [65, 250], B = [365, 250], D = [140, 160], C = [260, 160];
+    const cross = (u, v) => u[0] * v[1] - u[1] * v[0];
+    const meetAt = (P, u, Q, v) => add(P, mul(u, cross(sub(Q, P), v) / cross(u, v)));
+    const E = meetAt(A, sub(D, A), B, sub(C, B)), F = [E[0], A[1]], G = [E[0], D[1]];
+    const ok = Math.abs(dist(D, C) / dist(A, B) - 0.4) < 1e-9 && Math.abs((G[1] - E[1]) / (F[1] - E[1]) - 0.4) < 1e-9 && Math.abs(G[1] - E[1] - 60) < 1e-9;
+    return wrap(430, 300, [
+      poly([E, D, C], GLD, 1, GLDS),
+      poly([A, B, C, D], DIM, 2.2),
+      seg(D, E, ACC, 1.8, "6 4"), seg(C, E, ACC, 1.8, "6 4"),
+      seg(E, F, FNT, 1.2, "3 4"),
+      ...[A, B, C, D].map(p => dot(p, DIM, 3.5)), dot(E, ACC, 4),
+      txt(add(A, [-8, 6]), "A", DIM, 13, "end"), txt(add(B, [8, 6]), "B", DIM, 13, "start"),
+      txt(add(C, [10, 2]), "C", DIM, 13, "start"), txt(add(D, [-10, 2]), "D", DIM, 13, "end"),
+      txt(add(E, [0, -10]), "E", ACC, 13),
+      txt(add(mid(D, C), [-26, -6]), "4", GLD, 13), txt(add(mid(A, B), [-30, 18]), "10", DIM, 13),
+      txt(add(mid(E, G), [8, 4]), "2", ACC, 12, "start"), txt(add(mid(G, F), [8, 4]), "3", DIM, 12, "start"),
+      cap(430, 300, "extend the legs of the trapezoid to meet at E: triangle EDC is similar to triangle EAB with ratio 4 : 10, so the height x of E above DC satisfies x / (x + 3) = 2 / 5, and x = 2" + (ok ? "" : " MISMATCH"))
+    ]);
+  })(), (() => {
+    // A general quadrilateral with both pairs of opposite sides extended: AB and DC meet at E,
+    // AD and BC at F, the complete quadrilateral with diagonals AC, BD and EF. E and F are
+    // placed first and B, D on the rays toward them, so C is where lines ED and FB cross.
+    const cross = (u, v) => u[0] * v[1] - u[1] * v[0];
+    const meetAt = (P, u, Q, v) => add(P, mul(u, cross(sub(Q, P), v) / cross(u, v)));
+    const A = [40, 262], E = [388, 256], F = [178, 38];
+    const B = add(A, mul(sub(E, A), 0.6)), D = add(A, mul(sub(F, A), 0.5));
+    const C = meetAt(E, sub(D, E), F, sub(B, F));
+    const on = (P, Q, R) => Math.abs(cross(sub(Q, P), sub(R, P))) < 1e-6;
+    const ok = on(A, B, E) && on(D, C, E) && on(A, D, F) && on(B, C, F) && C[0] > D[0] && C[0] < B[0];
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2.2),
+      seg(B, E, ACC, 1.6, "6 4"), seg(C, E, ACC, 1.6, "6 4"), seg(D, F, ACC, 1.6, "6 4"), seg(C, F, ACC, 1.6, "6 4"),
+      seg(A, C, FNT, 1.2, "3 4"), seg(B, D, FNT, 1.2, "3 4"), seg(E, F, GLD, 1.4, "3 4"),
+      ...[A, B, C, D].map(p => dot(p, DIM, 3.5)), dot(E, ACC, 4), dot(F, ACC, 4),
+      txt(add(A, [-8, 6]), "A", DIM, 13, "end"), txt(add(B, [2, 18]), "B", DIM, 13),
+      txt(add(C, [12, 4]), "C", DIM, 13, "start"), txt(add(D, [-10, 2]), "D", DIM, 13, "end"),
+      txt(add(E, [0, 20]), "E", ACC, 13), txt(add(F, [-10, -4]), "F", ACC, 13, "end"),
+      cap(430, 300, "a general quadrilateral: AB and DC meet at E, AD and BC at F, the complete quadrilateral, whose three diagonals are AC, BD and EF; triangle EAD holds the angles at A and D, so angle E = 180° − A − D" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["monges-theorem"] = [(() => {
+    // Three circles of different radii. Each external center of similitude is computed from
+    // E = (r_j O_i - r_i O_j) / (r_j - r_i); the external tangents of each pair are drawn from it,
+    // and the three centers land on one line, as the theorem says.
+    const C = [[[339, 90], 54], [[254, 182], 12], [[142, 170], 20]];
+    const E = (a, b) => mul(sub(mul(a[0], b[1]), mul(b[0], a[1])), 1 / (b[1] - a[1]));
+    const pairs = [[0, 1], [0, 2], [1, 2]];
+    const Es = pairs.map(([i, j]) => E(C[i], C[j]));
+    const tang = [];
+    pairs.forEach(([i, j], k) => {
+      const big = C[i][1] > C[j][1] ? C[i] : C[j];
+      tangentPoints(big[0], big[1], Es[k]).forEach(T => tang.push(seg(Es[k], T, FNT, 1.1, "4 4")));
+    });
+    const dir = norm(sub(Es[2], Es[1]));
+    return wrap(450, 330, [
+      ...tang,
+      seg(add(Es[1], mul(dir, -12)), add(Es[2], mul(dir, 12)), ACC, 2.2),
+      ...C.map(c => circ(c[0], c[1], DIM, 1.8)),
+      ...C.map(c => dot(c[0], DIM, 3)),
+      ...Es.map(e => dot(e, ACC, 4.5)),
+      txt(add(Es[0], [-10, 22]), "E\u2081\u2082", ACC, 12),
+      txt(add(Es[1], [4, 24]), "E\u2081\u2083", ACC, 12),
+      txt(add(Es[2], [-34, 24]), "E\u2082\u2083", ACC, 12),
+      txt(add(C[0][0], [14, 4]), "O\u2081", DIM, 12), txt(add(C[1][0], [-8, -18]), "O\u2082", DIM, 12),
+      txt(add(C[2][0], [-8, -28]), "O\u2083", DIM, 12),
+      cap(450, 330, "the external tangents of each pair meet at a center of similitude, and the three centers are collinear")
+    ]);
+  })()];
+
+  DIAGRAMS["inversion-facts"] = [(() => {
+    // Inversion in the circle (O, 90). P inside goes to P* outside on the same ray, with
+    // OP * OP* = 90^2; the vertical line x = 280 (not through O) goes to the circle on diameter
+    // OA*, where A is the foot from O and OA* = 90^2 / OA, and Q on the line goes to Q* on it.
+    const O = [150, 175], R = 90;
+    const inv = X => { const v = sub(X, O), d2 = v[0] * v[0] + v[1] * v[1]; return add(O, mul(v, R * R / d2)); };
+    const u = [Math.cos(rad(250)), Math.sin(rad(250))];
+    const P = add(O, mul(u, 55)), Ps = inv(P);
+    const A = [280, 175], As = inv(A), Q = [280, 95], Qs = inv(Q);
+    const cen = mid(O, As), rr = dist(O, As) / 2;
+    return wrap(430, 330, [
+      circ(O, R, DIM, 1.8),
+      seg([280, 24], [280, 300], ACC, 2), circ(cen, rr, GLD, 2),
+      seg(O, Ps, FNT, 1.3, "5 4"), seg(O, Q, FNT, 1.3, "5 4"), seg(O, A, FNT, 1.3, "5 4"),
+      dot(O, DIM, 3.5), txt(add(O, [-16, 16]), "O", DIM, 12),
+      dot(P, GRN, 4), txt(add(P, [10, 4]), "P", GRN, 12),
+      dot(Ps, GRN, 4), txt(add(Ps, [10, -2]), "P*", GRN, 12),
+      dot(A, ACC, 4), txt(add(A, [8, 16]), "A", ACC, 12),
+      dot(As, GLD, 4), txt(add(As, [-6, 20]), "A*", GLD, 12),
+      dot(Q, ACC, 4), txt(add(Q, [9, -6]), "Q", ACC, 12),
+      dot(Qs, GLD, 4), txt(add(Qs, [6, -10]), "Q*", GLD, 12),
+      cap(430, 330, "OP \u00b7 OP* = r\u00b2; the line maps to the gold circle through O, with OA* = r\u00b2/OA")
+    ]);
+  })()];
+
   DIAGRAMS["miquels-theorem"] = [(() => {
     const D = lerp(B, C, 0.55), E = lerp(C, A, 0.4), F = lerp(A, B, 0.45);
     const o1 = circumcenterOf(A, F, E), o2 = circumcenterOf(B, D, F), o3 = circumcenterOf(C, E, D);

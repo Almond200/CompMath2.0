@@ -48,6 +48,15 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
+          id: "inclusion-exclusion",
+          name: "Principle of Inclusion-Exclusion",
+          latex: String.raw`|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A| + |A \cap B \cap C|`,
+          description: String.raw`The Principle of Inclusion-Exclusion counts a union of overlapping sets: add the sizes of the sets, subtract the sizes of the pairwise intersections, add back the triple intersections, and continue with alternating signs. For two sets it is $|A \cup B| = |A| + |B| - |A \cap B|$. Its complement form counts the elements in none of the sets, which is where the formulas for derangements and surjections come from.`,
+          keywords: ["inclusion exclusion", "pie formula", "union of sets", "overlapping sets", "add subtract add", "venn diagram count", "none of the sets"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "rectangles-in-grid",
           name: "Rectangles in a Grid",
           latex: String.raw`\#\text{rectangles in } m \times n \text{ grid} = \binom{m+1}{2}\binom{n+1}{2}`,
@@ -122,7 +131,7 @@ window.MATH_SECTIONS.push({
         {
           id: "hockey-stick",
           name: "Hockey Stick Identity",
-          latex: String.raw`\sum_{i=r}^{n} \binom{i}{r} = \binom{n+1}{r+1}, \qquad \binom{r}{r} + \binom{r+1}{r} + \binom{r+2}{r} + \cdots + \binom{n}{r} = \binom{n+1}{r+1}`,
+          latex: String.raw`\sum_{i=r}^{n} \binom{i}{r} = \binom{n+1}{r+1}`,
           latexPlain: String.raw`\binom{r}{r} + \binom{r+1}{r} + \binom{r+2}{r} + \cdots + \binom{n}{r} = \binom{n+1}{r+1}`,
           description: String.raw`Summing down a diagonal of Pascal's triangle. Proof: repeatedly absorb terms with Pascal's rule.`,
           keywords: ["hockey stick", "diagonal sum", "christmas stocking", "hockey stick identity", "christmas stocking identity", "diagonal sum in pascal"],
@@ -132,7 +141,7 @@ window.MATH_SECTIONS.push({
         {
           id: "vandermonde",
           name: "Vandermonde's Identity",
-          latex: String.raw`\sum_{k=0}^{r} \binom{m}{k}\binom{n}{r-k} = \binom{m+n}{r}, \qquad \binom{m}{0}\binom{n}{r} + \binom{m}{1}\binom{n}{r-1} + \cdots + \binom{m}{r}\binom{n}{0} = \binom{m+n}{r}`,
+          latex: String.raw`\sum_{k=0}^{r} \binom{m}{k}\binom{n}{r-k} = \binom{m+n}{r}`,
           latexPlain: String.raw`\binom{m}{0}\binom{n}{r} + \binom{m}{1}\binom{n}{r-1} + \binom{m}{2}\binom{n}{r-2} + \cdots + \binom{m}{r}\binom{n}{0} = \binom{m+n}{r}`,
           description: String.raw`Vandermonde's Identity says $\sum_k \binom mk\binom n{r-k} = \binom{m+n}{r}$: choosing $r$ people from a group of $m$ and a group of $n$, sorted by how many come from the first group, counts every choice of $r$ from all $m + n$ exactly once. It collapses any sum of products of two binomial coefficients whose bottom indices add to a constant. The case $m = n = r$ is the most common, $\sum_k \binom nk^2 = \binom{2n}{n}$.`,
           keywords: ["vandermonde", "convolution", "sum of squares of binomials", "central binomial"],
@@ -225,8 +234,8 @@ window.MATH_SECTIONS.push({
         {
           id: "balls-boxes-table",
           name: "Balls in Boxes (The Twelvefold Way)",
-          latex: String.raw`\begin{array}{l|cc} \textbf{balls}\to\textbf{boxes} & \textbf{any} & \textbf{no empty box} \\ \hline \text{dist}\to\text{dist} & k^n & k!\,S(n,k) \\ \text{ident}\to\text{dist} & \dbinom{n+k-1}{k-1} & \dbinom{n-1}{k-1} \\ \text{dist}\to\text{ident} & \sum_{j=1}^{k} S(n,j) & S(n,k) \\ \text{ident}\to\text{ident} & p_{\le k}(n) & p_k(n) \end{array}`,
-          latexPlain: String.raw`\begin{array}{l|cc} \textbf{balls}\to\textbf{boxes} & \textbf{any} & \textbf{no empty box} \\ \hline \text{dist}\to\text{dist} & k^n & k!\,S(n,k) \\ \text{ident}\to\text{dist} & \dbinom{n+k-1}{k-1} & \dbinom{n-1}{k-1} \\ \text{dist}\to\text{ident} & S(n,1) + \cdots + S(n,k) & S(n,k) \\ \text{ident}\to\text{ident} & p_{\le k}(n) & p_k(n) \end{array}`,
+          latex: String.raw`\begin{array}{l|cc} \textbf{balls}\to\textbf{boxes} & \textbf{any} & \textbf{none empty} \\ \hline \text{dist}\to\text{dist} & k^n & k!\,S(n,k) \\ \text{ident}\to\text{dist} & \dbinom{n+k-1}{k-1} & \dbinom{n-1}{k-1} \\ \text{dist}\to\text{ident} & \sum_{j=1}^{k} S(n,j) & S(n,k) \\ \text{ident}\to\text{ident} & p_{\le k}(n) & p_k(n) \end{array}`,
+          latexPlain: String.raw`\begin{array}{l|cc} \textbf{balls}\to\textbf{boxes} & \textbf{any} & \textbf{none empty} \\ \hline \text{dist}\to\text{dist} & k^n & k!\,S(n,k) \\ \text{ident}\to\text{dist} & \dbinom{n+k-1}{k-1} & \dbinom{n-1}{k-1} \\ \text{dist}\to\text{ident} & S(n,1) + \cdots + S(n,k) & S(n,k) \\ \text{ident}\to\text{ident} & p_{\le k}(n) & p_k(n) \end{array}`,
           description: String.raw`The complete map for distributing $n$ balls into $k$ boxes, the Twelvefold Way, split by whether the balls are distinguishable, whether the boxes are, and whether empty boxes are allowed. Each of the twelve cells is a formula you already know under a different name.`,
           keywords: ["twelvefold way", "balls in boxes", "distributions", "distinguishable", "indistinguishable", "identical objects", "stars and bars", "stirling numbers second kind", "bell number", "integer partitions", "surjections onto", "minimum per box", "upper bound cap per box", "inclusion exclusion distribution", "at most one per box", "no empty box", "distribute objects"],
           importance: "medium",

@@ -45,7 +45,7 @@
 }
 
 /* A few elements hardcode a dark translucent fill; re-tint them for light mode. */
-:root[data-theme="light"] .topbar { background: rgba(246, 248, 252, 0.9); }
+:root[data-theme="light"] .topbar { background: rgb(246, 248, 252); }
 :root[data-theme="light"] .formula-display { background: rgba(20, 30, 55, 0.045); }
 :root[data-theme="light"] .card-extra { background: rgba(20, 30, 55, 0.03); }
 :root[data-theme="light"] .problem { background: rgba(20, 30, 55, 0.03); }
@@ -74,8 +74,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(15, 20, 32, 0.92);
-  backdrop-filter: blur(12px);
+  /* Opaque, not a translucent blur: blurring two hundred cards of math as they scroll under
+     the bar cost more than anything else on a long subject page. */
+  background: rgb(15, 20, 32);
   border-bottom: 1px solid var(--border);
 }
 
@@ -704,7 +705,6 @@ html[data-density="compact"] .card { padding: 10px 13px 9px; }
 html[data-density="compact"] .cards { gap: 10px; }
 html[data-density="compact"] .formula-display { padding: 10px 12px; margin: 8px 0; }
 html[data-density="compact"] .subsection { margin-top: 24px; }
-html[data-density="compact"] .card-desc { font-size: 13px; }
 html[data-tags="off"] .card .tag-row { display: none; }
 
 /* Text size. Every override below MIRRORS THE SELECTOR OF THE RULE IT SCALES, which is the
@@ -2216,10 +2216,12 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
   color: var(--text-faint);
 }
 .lead-row .lead-label { margin-bottom: 3px; }
+/* The box's own heading, smaller than a section heading, so the box reads as one unit. */
+.lead-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: -3px; }
 .lead-text { font-size: 15px; line-height: 1.5; color: var(--text); }
 .lead-signals { margin: 0; padding-left: 18px; font-size: 14.5px; line-height: 1.55; color: var(--text); }
 .lead-try { list-style: none; margin: 0; padding: 0; display: grid; gap: 5px; font-size: 14.5px; line-height: 1.45; }
-.lead-try a { font-weight: 650; }
+.lead-try a { font-weight: 400; }
 .lead-try-note { color: var(--text-dim); font-size: 13px; margin-left: 8px; }
 .lead-placeholder, .related-planned { color: var(--text-faint); font-style: italic; }
 .related-planned { cursor: default; }
@@ -2784,7 +2786,7 @@ a.hw-row:hover .hw-go { color: var(--accent); }
 .card-head { flex-wrap: nowrap; align-items: flex-start; }
 .card-head .card-name { flex: 1; min-width: 0; }
 .card .card-actions { flex: none; margin-top: -1px; }
-/* Cards per row: Spacious makes every card wider. */
+/* Card size: Large makes every card wider (the widths are set further down). */
 html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(520px, 100%), 1fr)); }
 html[data-cols="spacious"] .content .cards.search-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 700px) { html[data-cols="spacious"] .content .cards.search-results { grid-template-columns: 1fr; } }
@@ -2820,9 +2822,10 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 /* Before the first render on the front page, the top bar and sidebar stay hidden (see the
    pre-paint script in index.html), so they do not flash. */
 html.pre-landing .topbar, html.pre-landing .sidebar { display: none; }
-/* Card widths: Regular is two across on a laptop (three on a wide screen), Spacious one or two. */
+/* Card size: Regular is two across on a laptop (three on a wide screen), Large one across on
+   a laptop (two on a wide screen), with room for every form of a formula. */
 .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(440px, 100%), 1fr)); }
-html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(560px, 100%), 1fr)); }
+html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(620px, 100%), 1fr)); }
 
 /* ---------- A card page reads as one article ----------
    Every section is on the page in reading order; the sidebar lists them under "On this page",
@@ -2972,3 +2975,226 @@ div.hw-row { cursor: default; }
    Large-text paragraph rule used to outrank them. */
 html .detail p.sec-note, html .detail .detail-body p.sec-note { font-size: 13.5px; line-height: 1.45; color: var(--text-faint); }
 html[data-text="large"] .detail p.sec-note, html[data-text="large"] .detail .detail-body p.sec-note { font-size: 14.5px; }
+
+/* ---------- Density: the spacing of the whole app ----------
+   Compact tightens margins, gaps and padding everywhere: pages, card grids, card pages,
+   panels and the sidebar. It never changes text size (Text size) or card width (Card size). */
+html[data-density="compact"] .content { padding: 16px 16px 90px; }
+html[data-density="compact"] .sidebar { padding: 14px 8px 30px 12px; }
+html[data-density="compact"] .nav-section-btn { padding-top: 5px; padding-bottom: 5px; }
+html[data-density="compact"] .nav-sub-link, html[data-density="compact"] .nav-cluster-link { padding-top: 2px; padding-bottom: 2px; }
+html[data-density="compact"] .grp { margin-top: 22px; }
+html[data-density="compact"] .section-header + .grp { margin-top: 12px; }
+html[data-density="compact"] .grp-blurb { margin: 2px 0 8px; }
+html[data-density="compact"] .cards > .card .formula-display { margin: 6px 0 7px; padding: 7px 10px; }
+html[data-density="compact"] .detail-body h4, html[data-density="compact"] .key-forms h4,
+html[data-density="compact"] .related h4, html[data-density="compact"] .connected h4,
+html[data-density="compact"] .practice h4, html[data-density="compact"] .interactive h4 { margin: 14px 0 6px; }
+html[data-density="compact"] .detail > .related, html[data-density="compact"] .detail > .connected,
+html[data-density="compact"] .detail > .practice, html[data-density="compact"] .detail > .contest-profile,
+html[data-density="compact"] .detail > .interactive, html[data-density="compact"] .detail > .key-forms,
+html[data-density="compact"] .detail > .uses-block { margin-top: 16px; }
+html[data-density="compact"] .detail-diagrams { margin: 10px 0 4px; }
+html[data-density="compact"] .detail .detail-body p, html[data-density="compact"] .detail .detail-body li,
+html[data-density="compact"] .detail .key-forms li, html[data-density="compact"] .detail .detail-summary { line-height: 1.55; }
+html[data-density="compact"] .hp-panel, html[data-density="compact"] .ix-subject { padding: 10px 12px; }
+html[data-density="compact"] .ix-grid { gap: 10px; }
+html[data-density="compact"] .ix-topic { padding: 4px 0; }
+html[data-density="compact"] .settings-page { gap: 10px; }
+html[data-density="compact"] .set-row { padding: 8px 0; }
+
+/* ---------- Settings preview ----------
+   Three small screens beside the settings, only when the window has room for them. Each
+   screen is laid out at a laptop's content width (1100px) and scaled to its frame. */
+.set-preview { display: none; }
+/* On a wide window the preview is its own fixed panel on the right, behind a dividing line: it
+   never scrolls with the settings, and its three screens are sized to fit its height. */
+@media (min-width: 1280px) {
+  .set-preview {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+    position: fixed; right: 0; bottom: 0; top: var(--pv-top, 58px); left: var(--pv-left, 70%);
+    padding: 16px 22px; box-sizing: border-box; overflow: hidden;
+    border-left: 1px solid var(--border); background: var(--bg);
+  }
+  /* The page must not bounce past its ends here: the document would move and the fixed panel
+     would not, so the panel would poke out above the top bar or below the page. */
+  html:has(.set-preview) { overscroll-behavior-y: none; }
+}
+.pv-title { align-self: stretch; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
+.pv-screen { margin: 0; transition: opacity 0.15s; }
+.set-preview[data-focus] .pv-screen { opacity: 0.35; }
+.set-preview[data-focus~="browse"] .pv-screen[data-pv="browse"],
+.set-preview[data-focus~="page"] .pv-screen[data-pv="page"],
+.set-preview[data-focus~="subject"] .pv-screen[data-pv="subject"] { opacity: 1; }
+.pv-frame { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); pointer-events: none; user-select: none; }
+.pv-inner { position: absolute; top: 0; left: 0; width: 1100px; height: 640px; overflow: hidden; transform-origin: 0 0; padding: 24px 22px; box-sizing: border-box; }
+html[data-density="compact"] .pv-inner { padding: 16px 16px; }
+.pv-inner .section-header + .cards { margin-top: 14px; }
+.pv-foot { position: absolute; left: 0; right: 0; bottom: 0; padding: 4px 22px 16px; background: var(--bg); border-top: 1px solid var(--border); }
+.pv-label { margin-top: 5px; font-size: 12px; font-weight: 650; color: var(--text-dim); }
+
+/* A card that is planned but not written yet: a red link, as for a missing Wikipedia article. */
+.red-link { color: #ba0000; cursor: help; }
+:root[data-theme="dark"] .red-link { color: #ff8a80; }
+.related-planned { font-style: normal; }
+/* A pattern's "Methods and Formulas to Try": two short labelled lists. */
+.try-block .try-sub { margin: 14px 0 6px; font-size: 13px; font-weight: 750; letter-spacing: 0.02em; color: var(--text-dim); }
+html[data-text="large"] .try-block .try-sub { font-size: 14.5px; }
+.lead-try .red-link { font-weight: 400; }
+/* The chain sits near the bottom of a problem page, below the problem and Think, as a quieter
+   summary rather than a lead panel. */
+.detail .prob-chain { margin-top: 28px; background: transparent; }
+
+/* The space's name in the sidebar, with a small "i" that opens what the space is for and what
+   was recently opened in it (Formulas, Methods and Patterns have no main page). */
+.nav-space-head { position: relative; display: grid; grid-template-columns: auto auto 1fr; align-items: center; column-gap: 7px; }
+.nav-space-head .nsh-ask { grid-column: 1 / -1; }
+.nsh-info {
+  width: 16px; height: 16px; padding: 0; border-radius: 50%; border: 1px solid var(--text-faint); background: none;
+  font: italic 700 10.5px/14px Georgia, "Times New Roman", serif; color: var(--text-faint); cursor: pointer; text-align: center;
+}
+.nsh-info:hover, .nsh-info[aria-expanded="true"] { border-color: var(--space); color: var(--space); }
+/* The space's dialog, opened from the "i": its question, what it holds, and what was recently opened. */
+.info-modal { width: min(460px, calc(100vw - 32px)); }
+.info-body { padding: 16px 18px 18px; }
+.info-ask { margin: 0 0 6px; font-size: 15px; font-weight: 750; color: var(--text); }
+.info-intro { margin: 0 0 16px; font-size: 14px; line-height: 1.55; color: var(--text-dim); }
+.info-intro a { color: var(--accent); }
+.info-label { margin-bottom: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
+.info-modal .modal-head h3 { color: var(--text); }
+
+/* Front page: after the chain, every subject of every space as plain links in four columns. */
+.hub-chain-note { margin-top: 10px; }
+.hub-jump { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+.hj-col { display: flex; flex-direction: column; gap: 2px; padding: 12px 14px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); border-top: 3px solid var(--tint); }
+.hj-head { margin-bottom: 4px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tint); }
+.hj-col a { padding: 3px 0; font-size: 14px; color: var(--text); text-decoration: none; }
+.hj-col a:hover { color: var(--tint); }
+
+/* A long subject page holds two hundred cards and some fifty thousand elements of typeset math.
+   Cards off screen are skipped for layout and paint until they come near the screen; each
+   keeps the height it last had, so the scrollbar does not jump. Scripts that measure a card
+   (fitting its formula) still get a real layout. */
+.content .cards > .card { content-visibility: auto; contain-intrinsic-size: auto 300px; }
+
+/* ---------- Density: Spacious ----------
+   More room everywhere, the mirror of Compact: page margins, card and section gaps, panel
+   padding, the sidebar and the line spacing of a card's page. Text size and card width stay. */
+html[data-density="spacious"] .content { padding: 34px 34px 140px; }
+html[data-density="spacious"] .sidebar { padding: 26px 12px 48px 20px; }
+html[data-density="spacious"] .nav-section-btn { padding-top: 12px; padding-bottom: 12px; }
+html[data-density="spacious"] .nav-sub-link, html[data-density="spacious"] .nav-cluster-link { padding-top: 6px; padding-bottom: 6px; }
+html[data-density="spacious"] .cards { gap: 22px; }
+html[data-density="spacious"] .card { padding: 22px 24px 18px; }
+html[data-density="spacious"] .cards > .card .formula-display { margin: 12px 0 14px; padding: 14px 16px; }
+html[data-density="spacious"] .grp { margin-top: 48px; }
+html[data-density="spacious"] .section-header + .grp { margin-top: 26px; }
+html[data-density="spacious"] .grp-blurb { margin: 6px 0 18px; }
+html[data-density="spacious"] .detail-body h4, html[data-density="spacious"] .key-forms h4,
+html[data-density="spacious"] .related h4, html[data-density="spacious"] .connected h4,
+html[data-density="spacious"] .practice h4, html[data-density="spacious"] .interactive h4 { margin: 32px 0 10px; }
+html[data-density="spacious"] .detail > .related, html[data-density="spacious"] .detail > .connected,
+html[data-density="spacious"] .detail > .practice, html[data-density="spacious"] .detail > .contest-profile,
+html[data-density="spacious"] .detail > .interactive, html[data-density="spacious"] .detail > .key-forms,
+html[data-density="spacious"] .detail > .uses-block { margin-top: 36px; }
+html[data-density="spacious"] .detail-diagrams { margin: 22px 0 12px; }
+html[data-density="spacious"] .detail .detail-body p, html[data-density="spacious"] .detail .detail-body li,
+html[data-density="spacious"] .detail .key-forms li, html[data-density="spacious"] .detail .detail-summary { line-height: 1.8; }
+html[data-density="spacious"] .hp-panel, html[data-density="spacious"] .ix-subject { padding: 18px 20px; }
+html[data-density="spacious"] .settings-page { gap: 20px; }
+html[data-density="spacious"] .set-row { padding: 16px 0; }
+html[data-density="spacious"] .pv-inner { padding: 34px 34px; }
+
+/* The preview's subject page carries the sidebar, drawn with the sidebar's own classes. */
+.pv-shell { display: grid; grid-template-columns: 260px 1fr; align-items: start; --space: var(--c-formulas); --space-soft: var(--cs-formulas); margin: -24px -22px; }
+html[data-density="compact"] .pv-shell { margin: -16px; }
+html[data-density="spacious"] .pv-shell { margin: -34px; }
+.pv-side { position: static; max-height: none; overflow: hidden; }
+.pv-main { padding: 24px 22px; min-width: 0; }
+html[data-density="compact"] .pv-main { padding: 16px; }
+html[data-density="spacious"] .pv-main { padding: 34px; }
+
+/* The A to Z subject page has the same row of letters as Special:AllPages. */
+.wiki-jump { margin: 14px 0 4px; }
+.wiki-letter { scroll-margin-top: calc(var(--topbar-h, 66px) + 12px); }
+
+/* Dropdowns and dialogs keep their scrolling: reaching the end of the list does not start
+   scrolling the page behind it. */
+.cmd-suggest, .modal-overlay, .modal, .lm-list, .card-preview, .adv-modal { overscroll-behavior: contain; }
+/* Special:Statistics: one table per group, a heading over each, shares in grey. */
+.st-head { margin: 22px 0 6px; font-size: 15px; font-weight: 750; color: var(--text); }
+.st-head:first-child { margin-top: 4px; }
+.special-table .st-pct { color: var(--text-faint); }
+.special-table td a { color: var(--accent); text-decoration: none; }
+
+/* A list page's sidebar is only its sections ("On this list"): the space tree is hidden, so the
+   panel loses the rule that separates it from that tree. */
+#formula-nav[hidden] { display: none; }
+#formula-nav[hidden] + .page-toc { margin-top: 0; padding-top: 0; border-top: 0; }
+/* A long section name wraps beside its count instead of running under it. */
+.toc-link.toc-counted { display: flex; align-items: baseline; gap: 10px; }
+.toc-counted .toc-t { flex: 1; min-width: 0; }
+.toc-counted .toc-n { flex: none; font-weight: 400; font-size: 11.5px; color: var(--text-faint); }
+.list-section { scroll-margin-top: calc(var(--topbar-h, 66px) + 12px); }
+
+/* "How this problem works" is a quiet summary box: no rule after its heading. */
+.prob-chain h4::after { content: none; }
+
+/* ---------- Density reaches the small pieces too ----------
+   Compact and Spacious also tighten or loosen the side panels ("On this page", "On this list"),
+   chips and tag rows, the method and pattern box, the contest profile rows, problem pages, the
+   A to Z index, the front page panels, recent rows, search previews, dialogs and the command
+   list, so the whole app changes together. Text size is never touched. */
+html[data-density="compact"] .page-toc { margin-top: 14px; padding-top: 10px; }
+html[data-density="compact"] .toc-link { padding-top: 2px; padding-bottom: 2px; }
+html[data-density="compact"] .toc-head { margin-bottom: 4px; }
+html[data-density="compact"] .nav-space-head { padding-bottom: 6px; }
+html[data-density="compact"] .nav-practice-link { padding: 6px 10px; }
+html[data-density="compact"] .related-grid, html[data-density="compact"] .tag-row { gap: 5px; }
+html[data-density="compact"] .lead-box { padding: 9px 12px; gap: 8px; margin: 4px 0 12px; }
+html[data-density="compact"] .pf-row { gap: 8px; line-height: 1.45; }
+html[data-density="compact"] .profile-rows { row-gap: 4px; }
+html[data-density="compact"] .prob-chain { padding: 9px 12px; }
+html[data-density="compact"] .detail .prob-chain { margin-top: 18px; }
+html[data-density="compact"] .think-step { margin-top: 5px; }
+html[data-density="compact"] .list-section { margin-top: 22px; }
+html[data-density="compact"] .ct-row { padding: 6px 0; }
+html[data-density="compact"] .wiki-letter { margin-top: 14px; }
+html[data-density="compact"] .hj-col { padding: 9px 11px; }
+html[data-density="compact"] .rc-row { padding: 4px 6px; }
+html[data-density="compact"] .rs-box { padding: 6px 10px; margin: 6px 0 8px; }
+html[data-density="compact"] .cs-item { padding: 5px 10px; }
+html[data-density="compact"] .modal-head { padding: 10px 14px; }
+html[data-density="compact"] .info-body, html[data-density="compact"] .settings-body { padding: 12px 14px 14px; }
+html[data-density="compact"] .set-panel { padding: 0 14px 4px; }
+html[data-density="compact"] .key-forms .detail-list li, html[data-density="compact"] .detail .detail-list li { margin-bottom: 2px; }
+
+html[data-density="spacious"] .page-toc { margin-top: 30px; padding-top: 18px; }
+html[data-density="spacious"] .toc-link { padding-top: 6px; padding-bottom: 6px; }
+html[data-density="spacious"] .toc-head { margin-bottom: 10px; }
+html[data-density="spacious"] .nav-space-head { padding-bottom: 14px; }
+html[data-density="spacious"] .nav-practice-link { padding: 12px 14px; }
+html[data-density="spacious"] .related-grid, html[data-density="spacious"] .tag-row { gap: 10px; }
+html[data-density="spacious"] .lead-box { padding: 16px 19px; gap: 14px; margin: 10px 0 22px; }
+html[data-density="spacious"] .pf-row { gap: 16px; line-height: 1.75; }
+html[data-density="spacious"] .profile-rows { row-gap: 10px; }
+html[data-density="spacious"] .prob-chain { padding: 16px 19px; }
+html[data-density="spacious"] .detail .prob-chain { margin-top: 38px; }
+html[data-density="spacious"] .think-step { margin-top: 12px; }
+html[data-density="spacious"] .list-section { margin-top: 48px; }
+html[data-density="spacious"] .ct-row { padding: 13px 0; }
+html[data-density="spacious"] .wiki-letter { margin-top: 44px; }
+html[data-density="spacious"] .hj-col { padding: 16px 18px; }
+html[data-density="spacious"] .rc-row { padding: 10px 8px; }
+html[data-density="spacious"] .rs-box { padding: 12px 14px; margin: 12px 0 14px; }
+html[data-density="spacious"] .cs-item { padding: 11px 14px; }
+html[data-density="spacious"] .modal-head { padding: 18px 22px; }
+html[data-density="spacious"] .info-body, html[data-density="spacious"] .settings-body { padding: 20px 22px 24px; }
+html[data-density="spacious"] .set-panel { padding: 6px 22px 10px; }
+html[data-density="spacious"] .key-forms .detail-list li, html[data-density="spacious"] .detail .detail-list li { margin-bottom: 8px; }
+/* Math and the punctuation touching it never part at a line break. */
+.math-glue { white-space: nowrap; }
+/* An empty list that will fill in as cards are written ("None yet"). */
+.related-empty { margin: 0; font-size: 13.5px; color: var(--text-faint); }
+/* The search box fills the top bar up to the tool buttons, whether or not Filters is shown. */
+.search-wrap { max-width: none; }

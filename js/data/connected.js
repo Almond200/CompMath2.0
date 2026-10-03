@@ -5,15 +5,6 @@
 // more"; this is curated and means "these belong to this card". Only broad cards get one.
 // Checked by tools/check-lists.py: every id must resolve, and no card may list itself or repeat.
 window.MATH_CONNECTED = {
-  "auxiliary-lines": [
-    { id: "median-doubling", note: "Double a median past the midpoint to make a parallelogram." },
-    { id: "parallel-line-similarity", note: "Draw a parallel line to create a pair of similar triangles." },
-    { id: "perp-to-angle-bisector", note: "Reflect a vertex across an angle bisector, or drop a perpendicular to it." },
-    { id: "reflection-shortest-path", note: "Reflect an endpoint across a line to straighten a broken path." },
-    { id: "rotation-trick", note: "Rotate part of the figure to bring separated lengths together." },
-    { id: "tangent-facts", note: "Draw the radius to a point of tangency for a right angle." },
-    { id: "phantom-point", note: "Construct the point you want, then show it is the given one." }
-  ],
   "p-adic-valuation": [
     { id: "legendres-formula", note: "$v_p(n!)$, counted one power of $p$ at a time." },
     { id: "lte", note: "$v_p(a^n - b^n)$ from $v_p(a - b)$ and $v_p(n)$." },

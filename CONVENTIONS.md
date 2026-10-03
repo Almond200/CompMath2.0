@@ -27,9 +27,14 @@ problem never teaches a theorem.
 
 **Converting a card.** A card moves to its kind's template in `tools/rewrite-register.json`, under `conversion` (`formula`, `method`, `pattern`, `split` or `review`); a card not listed keeps the old template. `scan-conventions.py` then enforces the kind:
 
-- a method needs `when`, `move` and `uses` (formula ids), and has no formula box; a pattern needs `recognize` (2 to 5 signals) and `suggests` (method ids, or a planned id listed under `placeholders`); a formula carries none of these;
-- each kind allows only its own `##` headings (formula: Key forms, Conditions, Why it works, Useful observations, Applications, Full proof, Contest profile; method: How, Why it works, When it's worth trying, Supporting mathematics, Common traps, Full proof, Contest profile; pattern: Distinguishing clues, Why these methods fit, Common traps, Contest profile);
+- a method needs `when`, `move` and `uses` (formula ids), plus a short `latex` that is only its browsing-card thumbnail, the gist at a glance while scrolling; the method's own page leads with When to use and Core move and does not repeat the formula; a pattern needs `recognize` (2 to 5 signals) and `suggests` (method ids, or a planned id listed under `placeholders`); a formula carries none of these;
+- each kind allows only its own `##` headings (formula: Key forms, Conditions, Why it works, Useful observations, Applications, Full proof, Contest profile; method: When to use, How, Why it works, Formulas it uses, Common traps, Full proof, Contest profile; pattern: Distinguishing clues, Methods and Formulas to Try, Common traps, Contest profile);
+- a method's write-up opens with "## When to use", above How: the situations that call for the move, in more detail than the box's one line, including rules of thumb from experience. The app lists under it, as "Suggested by patterns", the patterns whose `suggests` name the method ("None yet" until one does);
+- a method's "## Formulas it uses" is a list, one `- [[id]]: how it enters` bullet for each card in its `uses`, in the same order (the scanner checks both). Each line says what the formula does inside the move, so the reader is never left with a bare link. A fact that is not one of those formulas (how many rows a table has, why a construction reaches the bound) belongs in How or Why it works instead;
+- a pattern's "## Methods and Formulas to Try" may open with prose (and a figure), then holds two lists, `### Methods to try` and `### Formulas to try`, one `- [[id]]: explanation` bullet per card. The methods are exactly the pattern's `suggests`, in the same order, so the box and the section never disagree; each explanation says how the move applies to this shape. The formulas must be formula cards. A planned method (a placeholder id) is written the same way and shows as a red link, as a missing article does on Wikipedia;
 - it warns, without failing, on a method with more than six How steps or no `uses`, a pattern with more than four suggested methods, and a pattern tagged on fewer than two problems.
+
+**Re-sorting a card between kinds.** Moving a card to another kind (a formula-like pattern to Formulas, a pattern that is really one move to Methods) moves its object between data files and keeps its id, so links, lists, problems and stars follow it. A card that is both a fact and a move is split into a formula card and a method card that `uses` it, the method keeping the old id (Inclusion-Exclusion: the formula `inclusion-exclusion` and the method `pie`). Merging two cards keeps the stronger id, carries over the other's keywords and examples, retags its problems, and rewrites every list and link to the kept id. A card that names a category rather than one move (Auxiliary Lines, The 3D Playbook) is not a card: its content becomes the group's blurb and its moves become their own cards. After any re-sort, run `check-lists.py` (route completeness), rebuild the search index, and check the eval still holds.
 
 A problem may record `main`, the one tagged card that is its key idea, and `tools/validate-problem-db.js` checks it. The description of a method or pattern must not repeat its box: the box says when and what, the description says what the move or shape is and why it exists.
 
@@ -137,8 +142,29 @@ rest matched `\sum\b`, which misses `\sum_`, so it saw 17 of the 93.
   `tools/build-search-index.py` indexes the sigma side so search is unaffected.
 - Body prose may keep sigma notation: rewriting every derivation would introduce more errors than
   it removes. The rule covers the formula box and Key forms, which is what the setting promises.
-- `scan-conventions.py` fails on a sigma formula box with no sigma-free `latexPlain`, a Key forms
+- **The sigma form appears once.** A `latex` holds the sigma form only; its written-out twin
+  goes in `latexPlain`, never beside it in `latex` as well, or the Sigma setting shows the same
+  sum twice. Hockey Stick, Vandermonde and the Binomial Theorem carried both from before the
+  setting existed (fixed 2026-10-03). A written-out part that says something else (a definition
+  such as $A_k = a_1 + \cdots + a_k$, an index range, a worked special case) stays in `latex`.
+- `scan-conventions.py` fails on a sigma formula box with no sigma-free `latexPlain`, a formula
+  box that shows a sum both as a sigma and written out (same left or right side), a Key forms
   bullet that still shows a sigma in the expanded form, and a malformed `\alt`.
+
+### Headings, subheadings and labels
+
+One format, so every page reads alike (Stanley, 2026-10-03):
+
+- **Section headings** are the write-up's `##` headings, in sentence case ("Common traps",
+  "Why it works"), each with its one-line note underneath. A heading Stanley named keeps his
+  capitals ("Methods and Formulas to Try", "Practice Problems").
+- **Subheadings** inside a section are `###` in the write-up, rendered as a short line of
+  semibold, dimmed text in sentence case: "Methods to try", "Formulas to try".
+- **Box labels** (a method's "When to use" and "Core move", a pattern's "Look for" and "Try")
+  are small capitals in the box.
+- **None of these ends in a colon.** The one exception is a row of label and value, where the
+  colon separates the two: the Contest profile rows ("Difficulty:", "Role:"), which Stanley asked
+  to have colons, and "Pattern family:".
 
 ### Naming
 

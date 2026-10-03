@@ -924,12 +924,73 @@ review and are worth keeping:
 - **Practice is the only way into problems and lists.** The separate problem database and lists
   overview, each with its own navigator, were removed; a contest year and a single list are
   plain pages that link back to Practice.
-- **Space pages are a way in, not a dashboard.** Rankings, "essentials" and usage bars were tried
-  and judged "interesting at a glance but useless in the long run"; a space page now explains how
-  its kind fits and indexes everything in it.
+- **Formulas, Methods and Patterns have no main page.** Rankings, "essentials" and usage bars
+  were tried and judged "interesting at a glance but useless in the long run"; the index page
+  that replaced them was then judged unnecessary too. A space's address opens its last-visited
+  subject (`spaceEntry`), and its purpose and recently opened cards sit behind the "i" beside
+  its name in the sidebar (`.nsh-info`, which opens a centered dialog in the Filters modal's
+  style, `openSpaceInfo`). Practice keeps its page: it is the only way into problems and lists.
+- **The front page is mostly navigation.** It keeps the four-step chain (how the kinds connect)
+  and otherwise links: space tiles, every subject of every space, and the side panels.
+- **A problem page leads with the problem.** The statement link, Think and Tricks come first;
+  the Pattern → Method → Formulas chain is a quieter summary near the bottom.
+- **Scroll speed is ours only when the reader asks.** At Normal the wheel handler does nothing.
+  Otherwise it scales each wheel step and applies it to the innermost box that can still scroll
+  that way (sidebar, dialog), else the page; small steps (a trackpad's) apply at once, a mouse
+  notch glides. Its scrolls pass `behavior: "instant"`, because the page has CSS smooth
+  scrolling, which would otherwise make every step asynchronous.
+- **The settings preview is a fixed panel**, not part of the page: right of the settings, below
+  the top bar, behind a border, its three screens sized in `fillSettingsPreview` to fit its
+  height. The border sits midway between the settings and the screens, and the screens midway
+  between the border and the window's edge. The page does not bounce past its ends there
+  (`overscroll-behavior-y: none`): on a Mac the bounce moves the document but not a fixed panel,
+  which then poked out above the top bar or below the page.
+- **A list page's sidebar is only its sections**, under "On this list", drawn in the card page's
+  "On this page" panel (`buildListToc`), so the section being read is marked as you scroll and
+  hovered links highlight the same way; the space tree is hidden there. A list without sections
+  (an ungrouped list of your own) gets no sidebar.
+- **A query can name a problem by reference** in any order and spelling ("amc10 a2025 problem 1",
+  "2025 AMC 10A #1", "aime ii 2019 p 15"): `parseProblemQuery` splits glued letters and digits,
+  reads contest, version, year and number, and needs at least two of contest, year and number,
+  so ordinary queries are never read as references. The named problems lead the results and the
+  loose word matches on problems are dropped; card results are unchanged.
+- **Search works from a copy opened straight from disk.** Browsers refuse `fetch()` on
+  `file://`, which silently left such copies lexical-only. The index build also writes
+  `js/data/search-vectors.js` (the header and vectors in one script, base64), and
+  `js/search-semantic.js` loads it through a `<script>` tag on `file://`, or when the fetch fails.
+  It is requested on the first search only. Search words fold accents ("Erdős" matches "erdos"),
+  in `normWord` and in the builder's `norm_word` alike.
+- **Dropdowns and dialogs contain their scrolling** (`overscroll-behavior: contain`), and the
+  scroll-speed handler respects it, so reaching the end of a list never scrolls the page behind.
+- **The A to Z subject page has a sticky row of letters**, the same `letter-jump` row as
+  Special:AllPages.
+- **A clicked "On this page" link stays marked** (`tocPinned`) until the reader scrolls by hand
+  (wheel, touch, or a scrolling key): the last sections of a page can never reach the marking
+  line, so scroll position alone could not mark them.
+- **Card math is typeset as cards near the screen** on subject pages and study lists
+  (`renderMath(container, true)` marks cards `data-math="0"`; the formula-fitting observer
+  typesets each one before fitting it). Typeset math was 48,000 of Geometry's 54,000 elements;
+  the page now opens with about 4,000. The two main KaTeX fonts are preloaded in index.html so
+  late-typeset math does not flash invisible.
+- **Punctuation stays with its math.** `bindMathPunctuation` wraps short inline math and the
+  comma, period or bracket touching it in one unbreakable span, so ", so" never wraps alone.
+- **Split cards share practice problems** (`SPLIT_TWINS`: LTE, PIE, homothety, symmetric
+  polynomials, inversion, Lagrange): a problem tagged on either half lists on both, and neither
+  counts its twin as a statistical neighbour.
+- **Hand-picked and statistical lists are labelled apart.** "Related formulas / methods /
+  patterns" (hand-picked, `connected.js`) shows on every card, "None yet" when empty; the
+  contest profile's "Related Methods" and "Related Patterns" rows are co-occurrence, and its note
+  says "(Statistically generated)". "Used by methods" reads "Methods that name it as a formula".
+- **Problem hints stay in the data** (`hints` in problem-db) but are not shown or searched; they
+  and the tricks will move into "How this problem works". A problem page shows the statement
+  link, a Strategy heading with a Show button, then the chain.
+- **Long subject pages skip offscreen cards** (`content-visibility: auto` on grid cards) and the
+  top bar is opaque rather than a translucent blur; together they cut Geometry's scrolling cost
+  by about nine times. A card's contents are clipped to its box (paint containment), so menus
+  and previews attach to the page body.
 - **A card page is one article, not tabs.** Sections run in reading order: summary, figures,
-  Key forms, the write-up, the formulas a method uses ("Formulas it uses" merges the `uses`
-  chips with the authored "Supporting mathematics"), Common traps, the widget, Contest profile,
+  Key forms, the write-up, the formulas a method uses ("Formulas it uses" lists each card in
+  `uses` with the authored line saying how it enters), Common traps, the widget, Contest profile,
   Examples, and Practice Problems, then the links outward (Used by methods / Suggested by
   patterns, Related formulas from `connected.js`, Tags; the computed Related row was removed). Every section heading carries a one-line note (`SECTION_NOTES` in
   `js/app.js`), and the sidebar lists the sections under "On this page" (`buildPageToc`). The
@@ -940,6 +1001,10 @@ review and are worth keeping:
 - **Contest profile is labelled rows:** Problems, Difficulty (easy / medium / hard by where a
   problem sits in its paper, `difficultyBand`, the same rule the random-problem picker uses),
   Contests (the count on each contest, with a pie chart), a line of where the problems sit in their papers from early to late, Role (the authored sentence plus how often the card is the recorded main idea), and the common
-  partners: a formula lists Common methods, a method Common patterns and Common formulas, a
-  pattern Common methods. Pattern cards show their formula on the browsing card for the gist; the
+  partners: a formula lists Common methods; a method lists Common patterns and "Often used with"
+  (formulas that appear beside it in problems, kept distinct from "Formulas it uses"); a pattern
+  lists "Often used with" formulas only, since its methods are already in "Methods and Formulas
+  to Try". Converted methods, like patterns, show a formula on the browsing card as a thumbnail;
+  a method's own page leaves it out.
+  Pattern cards show their formula on the browsing card for the gist; the
   Look for / Try box leads their own page.

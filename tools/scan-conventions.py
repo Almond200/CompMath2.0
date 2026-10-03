@@ -71,6 +71,34 @@ for f in SUBJECT:
     for m in re.finditer(r'\n"([a-z0-9-]+)": String\.raw`', s):
         DETAILS[m.group(1)] = s[m.end():s.index("`", m.end())]
 
+# A pattern's "## Methods and Formulas to Try" holds two structured lists, "### Methods to try"
+# and "### Formulas to try", one "- [[id]]: explanation" bullet per card. The ids are read out
+# here and checked with the four kinds below; the leading links are then taken out of the text
+# the prose checks read, since a list naming each card at its start is a listing (like the Uses
+# chips), not a mention inside running prose.
+TRY = {}
+_TRY_ITEM = re.compile(r"^- \[\[([\w-]+)(?:\|[^\]]*)?\]\]:?[ \t]*", re.M)
+for _id, _txt in list(DETAILS.items()):
+    _sec = re.search(r"^## Methods and Formulas to Try[ \t]*\n(.*?)(?=\n## |\Z)", _txt, re.S | re.M)
+    if not _sec:
+        continue
+    _lists = {}
+    for _sub in re.finditer(r"^### ([^\n]+)\n(.*?)(?=\n### |\Z)", _sec.group(1), re.S | re.M):
+        _lists[_sub.group(1).strip().lower()] = _TRY_ITEM.findall(_sub.group(2))
+    TRY[_id] = _lists
+    # A blank line after each "###" label, so the bullets under it read as a list, not a paragraph.
+    _body = re.sub(r"^(### [^\n]+)\n", r"\1\n\n", _TRY_ITEM.sub("- ", _sec.group(0)), flags=re.M)
+    DETAILS[_id] = _txt[:_sec.start()] + _body + _txt[_sec.end():]
+# A converted method's "## Formulas it uses" is the same kind of list, one "- [[id]]: how it
+# enters" bullet per card in its `uses`, read out and stripped the same way.
+USES_LIST = {}
+for _id, _txt in list(DETAILS.items()):
+    _sec = re.search(r"^## Formulas it uses[ \t]*\n(.*?)(?=\n## |\Z)", _txt, re.S | re.M)
+    if not _sec:
+        continue
+    USES_LIST[_id] = _TRY_ITEM.findall(_sec.group(1))
+    DETAILS[_id] = _txt[:_sec.start()] + _TRY_ITEM.sub("- ", _sec.group(0)) + _txt[_sec.end():]
+
 EXAMPLES = set()
 ex = io.open("js/data/examples-supplement.js", encoding="utf-8").read()
 EXAMPLES |= set(re.findall(r'^"([a-z0-9-]+)":', ex, re.M))
@@ -284,7 +312,9 @@ for f in FILES:
     have = sum(1 for c in fam if c["id"] in DIAGRAMS)
     note = "  <-- geometry is effectively mandatory" if f == "geometry" else ""
     print("  %-14s %s%s" % (f, pct(have, len(fam)), note))
-missing_dia = [c["id"] for c in CARDS if c["file"] == "geometry" and c["id"] not in DIAGRAMS]
+# Geometry formulas and geometry methods and patterns alike: Extending Two Sides to Meet went
+# without a figure because only the formula file was checked.
+missing_dia = [c["id"] for c in CARDS if (c["file"] == "geometry" or c["subject"] == "geometry") and c["id"] not in DIAGRAMS]
 if missing_dia:
     print("  GEOMETRY CARDS WITHOUT A DIAGRAM: %s" % ", ".join(missing_dia))
 
@@ -412,8 +442,8 @@ for _arr in re.findall(r"(?:trickFormulas|formulas): \[([^\]]*)\]", _db):
 _HEADS = {
     None: {"Why it works", "How to use it", "On contests", "Key forms", "Full proof"},
     "formula": {"Key forms", "Conditions", "Why it works", "Useful observations", "Applications", "Full proof", "Contest profile"},
-    "method": {"How", "Why it works", "When it's worth trying", "Supporting mathematics", "Common traps", "Full proof", "Contest profile"},
-    "pattern": {"Distinguishing clues", "Why these methods fit", "Common traps", "Contest profile"},
+    "method": {"When to use", "How", "Why it works", "Formulas it uses", "Common traps", "Full proof", "Contest profile"},
+    "pattern": {"Distinguishing clues", "Methods and Formulas to Try", "Common traps", "Contest profile"},
 }
 _odd_heads = []
 for c in CARDS:
@@ -443,6 +473,15 @@ for c in CARDS:
                 _kind_err.append("%s: uses %r, which is a %s, not a formula" % (c["id"], _u, _BYID_ALL[_u]["kind"]))
         if c["uses"] is not None and not c["uses"]:
             _kind_warn.append("%s: a method that uses no formula" % c["id"])
+        # "When to use" opens the write-up, above How; the patterns that suggest the method are
+        # listed under it by the app.
+        if not re.search(r"^## When to use\n", DETAILS.get(c["id"], ""), re.M):
+            _kind_err.append("%s: a converted method needs '## When to use' before How" % c["id"])
+        elif re.search(r"^## How\n", DETAILS.get(c["id"], ""), re.M) and DETAILS[c["id"]].index("## When to use") > DETAILS[c["id"]].index("## How"):
+            _kind_err.append("%s: '## When to use' must come before '## How'" % c["id"])
+        # Every formula it uses is explained, in the same order as `uses`.
+        if c["uses"] and USES_LIST.get(c["id"]) != c["uses"]:
+            _kind_err.append("%s: '## Formulas it uses' lists %s but `uses` is %s" % (c["id"], USES_LIST.get(c["id"]), c["uses"]))
         _how = re.search(r"^## How\n(.*?)(?=\n## |\Z)", DETAILS.get(c["id"], ""), re.S | re.M)
         if _how and len(re.findall(r"^\d+\. ", _how.group(1), re.M)) > 6:
             _kind_warn.append("%s: more than six How steps (consider splitting)" % c["id"])
@@ -456,6 +495,19 @@ for c in CARDS:
                     _kind_err.append("%s: suggests %r, which is a %s, not a method" % (c["id"], _sg, _BYID_ALL[_sg]["kind"]))
             elif _sg not in _place:
                 _kind_err.append("%s: suggests %r, which is neither a card nor a registered placeholder" % (c["id"], _sg))
+        # The methods to try are the methods in the box: same cards, same order.
+        _try = TRY.get(c["id"])
+        if _try is None:
+            _kind_err.append("%s: a converted pattern needs '## Methods and Formulas to Try'" % c["id"])
+        else:
+            if _try.get("methods to try") != (c["suggests"] or []):
+                _kind_err.append("%s: 'Methods to try' lists %s but the box suggests %s" % (c["id"], _try.get("methods to try"), c["suggests"]))
+            _tf = _try.get("formulas to try") or []
+            if not _tf:
+                _kind_err.append("%s: 'Formulas to try' is missing or empty" % c["id"])
+            for _x in _tf:
+                if _x not in _BYID_ALL or _BYID_ALL[_x]["kind"] != "formula":
+                    _kind_err.append("%s: 'Formulas to try' names %r, which is not a formula card" % (c["id"], _x))
         if c["recognize"] is not None and not 2 <= len(c["recognize"]) <= 5:
             _kind_warn.append("%s: %d recognition signals (2 to 5 expected)" % (c["id"], len(c["recognize"])))
         if c["suggests"] is not None and len(c["suggests"]) > 4:
@@ -561,6 +613,22 @@ def _pick_alt(t, pick):
 _SIG = re.compile(r"\\(?:sum|prod)(?![A-Za-z])")   # not \b: "\sum_" has no word boundary
 _no_plain = [c["id"] for c in CARDS if _SIG.search(c["latex"] or "") and
              (not field(c["blk"], "latexPlain") or _SIG.search(field(c["blk"], "latexPlain")))]
+# The Sigma setting shows a sum once. A formula box that carries the sigma form and also its
+# written-out twin (same left or right side) shows it twice; the twin belongs in latexPlain.
+# Hockey Stick, Vandermonde and the Binomial Theorem carried both from before the setting existed.
+def _box_parts(l):
+    return [x.strip() for x in re.split(r"\s*(?:[,;]\s*\\q?quad|\\qquad)\s*", l or "") if x.strip()]
+def _sides(x):
+    bits = [b.replace(" ", "") for b in x.split("=")]
+    # A bare symbol such as "a_n" on the left is not a shared statement.
+    return {b for b in (bits[0], bits[-1]) if len(b) >= 6} if len(bits) > 1 else set()
+_twin = []
+for c in CARDS:
+    _ps = _box_parts(c["latex"])
+    _sg = [x for x in _ps if _SIG.search(x)]
+    _dt = [x for x in _ps if not _SIG.search(x) and re.search(r"\\[lc]?dots", x)]
+    if any(_sides(a) & _sides(b) for a in _sg for b in _dt):
+        _twin.append(c["id"])
 _kf_sigma, _bad_alt = [], []
 for _id, _body in DETAILS.items():
     _exp, _ok = _pick_alt(_body, 1)
@@ -573,6 +641,9 @@ for _id, _body in DETAILS.items():
 print("\n-- expanded notation --")
 print("  formula boxes with a sigma and no written-out latexPlain: %d  (must stay 0)" % len(_no_plain))
 for _i in _no_plain[:10]:
+    print("    " + _i)
+print("  formula boxes showing a sum both as a sigma and written out: %d  (must stay 0)" % len(_twin))
+for _i in _twin[:10]:
     print("    " + _i)
 print("  Key-forms bullets still showing a sigma in Expanded: %d  (must stay 0)" % len(_kf_sigma))
 for _i, _l in _kf_sigma[:10]:
@@ -693,6 +764,6 @@ for _x in _lowcap[:8]:
 
 bad = bool(missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
-           or _no_plain or _kf_sigma or _bad_alt)
+           or _no_plain or _twin or _kf_sigma or _bad_alt)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))
 sys.exit(1 if bad else 0)

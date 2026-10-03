@@ -213,7 +213,7 @@
   // stored value reads back plainly. Notation picks the expanded form where a card offers
   // one — see latexFor().
   const DIAGRAM_MODES = ["none", "curated", "on"];
-  const DENSITIES = ["comfortable", "compact"];
+  const DENSITIES = ["comfortable", "compact", "spacious"];
   const NOTATIONS = ["sigma", "expanded"];
   const TEXT_SIZES = ["normal", "large"];
   // Card order on a section page. "curated" is file order, which is how the cards were
@@ -242,6 +242,10 @@
     return false;
   }
 
+  // Scroll speed: how far one turn of the wheel (or swipe of a trackpad) moves a page. Normal
+  // leaves the browser's own scrolling alone; the others scale each wheel step.
+  const SCROLL_SPEEDS = ["normal", "slow", "fast"];
+  const SCROLL_FACTOR = { normal: 1, slow: 0.6, fast: 1.6 };
   // Each section carries its own rarity + level filter (persisted).
   function loadSettings() {
     let s = null;
@@ -271,6 +275,7 @@
       order: pick(P.order, ORDERS),
       captions: pick(P.captions, CAPTION_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
+      scroll: pick(P.scroll, SCROLL_SPEEDS),
       tags: P.tags === false ? false : true,
       autoGroup: P.autoGroup === false ? false : true
     };
@@ -289,7 +294,7 @@
           layout: state.layout, diagrams: state.diagrams,
           density: state.density, notation: state.notation,
           text: state.text, tags: state.tags, autoGroup: state.autoGroup,
-          order: state.order, captions: state.captions, cols: state.cols
+          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll
         }
       };
       SECTION_IDS.forEach(id => {
@@ -315,12 +320,13 @@
     activeCluster: null,         // Methods/Patterns: the one group of the subject shown, or null for its group tiles
     layout: _loaded.layout,      // "cards" or "wiki" — how a section page is drawn
     diagrams: _loaded.diagrams,  // "none" | "curated" | "on" — figures on the card face
-    density: _loaded.density,    // "comfortable" | "compact"
+    density: _loaded.density,    // "comfortable" | "spacious" | "compact"
     notation: _loaded.notation,  // "sigma" | "expanded"
     text: _loaded.text,          // "normal" | "large"
     order: _loaded.order,        // "curated" | "problems" — card order on section pages
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
+    scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
     tags: _loaded.tags,          // keyword chips on the card face
     autoGroup: _loaded.autoGroup // group a saved list into sections instead of one flat run
   };
@@ -384,7 +390,9 @@
   }
 
   function normWord(w) {
-    w = w.toLowerCase().replace(/[^a-z0-9]/g, "");
+    // Accents fold to their plain letters first: "Erdős" used to lose its "ő" outright and
+    // become "erd", which never met the keyword "erdos" (likewise Möbius, Bézout, Hölder).
+    w = w.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
     // "-es" is only a real plural ending after a sibilant ("boxes", "matches",
     // "classes"); elsewhere the "e" belongs to the stem, and stripping it turned
     // "volumes" into "volum" and "circles" into "circl" — so those never matched
@@ -1256,11 +1264,22 @@
     const g = o.cluster != null && sub.groups && sub.groups[o.cluster] ? "/" + slugOf(sub.groups[o.cluster].title) : "";
     return "#/" + bookOf(sec) + "/" + slugOf(sub.title) + g;
   }
+  // Formulas, Methods and Patterns have no main page of their own: the space's address opens
+  // the subject last visited there (Geometry the first time). What a main page used to say,
+  // the space's question and its recently opened cards, is behind the "i" beside its name in
+  // the sidebar.
+  const lastSubject = {};
+  function spaceEntry(name) {
+    if (lastSubject[name]) return lastSubject[name];
+    const sec = SECTIONS.find(x => bookOf(x) === name);
+    return sec ? sectionHash(sec.id, { sub: 0 }) : "#/practice";
+  }
   function legacyRedirect() {
     const h = location.hash;
     let to = null, m;
-    if (h === "#/reference") to = "#/formulas";
-    else if (h === "#/solving") to = "#/methods";
+    if (h === "#/reference") to = spaceEntry("formulas");
+    else if (h === "#/solving") to = spaceEntry("methods");
+    else if ((m = h.match(/^#\/(formulas|methods|patterns)$/))) to = spaceEntry(m[1]);
     else if ((m = h.match(/^#\/reference\/(.+)$/))) to = "#/formulas/" + m[1];
     else if ((m = h.match(/^#\/solving\/(methods|patterns)\/(.+)$/))) to = "#/" + m[1] + "/" + m[2];
     // The lists overview and the problem database were folded into the Practice page.
@@ -1305,8 +1324,7 @@
         return { type: "home", section: { id: sec.id, sub: i, topic: null, cluster: g >= 0 ? g : null } };
       }
     }
-    m = location.hash.match(/^#\/(formulas|methods|patterns|practice)$/);
-    if (m) return { type: "space", name: m[1] };
+    if (location.hash === "#/practice") return { type: "space", name: "practice" };
     m = location.hash.match(/^#\/special\/([^/]+)(?:\/(.*))?$/);
     if (m) return { type: "special", name: m[1].toLowerCase(), arg: decodeURIComponent(m[2] || "") };
     return { type: "home" };
@@ -2014,8 +2032,15 @@
     return "\\begin{gathered}\n" + parts.join(" \\\\[0.55em]\n") + "\n\\end{gathered}";
   }
 
-  function renderMath(container) {
+  // `lazyCards`: on a long page (a subject, a long study list) the cards' math is typeset only
+  // as each card nears the screen, by the same observer that fits card formulas. Typeset math
+  // is most of such a page's elements (48,000 of 54,000 on Geometry), and laying all of it out
+  // up front is what made those pages slow.
+  function renderMath(container, lazyCards) {
+    if (lazyCards) container.querySelectorAll(".cards > .card").forEach(c => { c.dataset.math = "0"; });
+    const skip = el => lazyCards && el.closest('.card[data-math="0"]');
     container.querySelectorAll(".formula-display[data-latex]").forEach(el => {
+      if (skip(el)) return;
       try {
         katex.render(toDisplayLatex(el.dataset.latex), el, { throwOnError: false, displayMode: true });
       } catch (err) {
@@ -2027,6 +2052,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Primes Are $6k \\pm 1$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them.
       container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example").forEach(el => {
+        if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
             { left: "$$", right: "$$", display: true },
@@ -2036,8 +2062,32 @@
         });
       });
     }
+    bindMathPunctuation(container);
     tidyDiagrams(container);
     // Card formulas are fitted once, at the end of render(), after the layout settles.
+  }
+  // Punctuation stays with the math it touches, as a word keeps its comma: ", so" after $D$
+  // could otherwise wrap alone to the start of the next line, and an opening bracket could hang
+  // at the end of one. The math and its touching punctuation go into one unbreakable span.
+  function bindMathPunctuation(container) {
+    container.querySelectorAll(".katex:not(.katex-display .katex)").forEach(k => {
+      if (k.closest(".katex-display") || k.closest(".math-glue")) return;
+      // A long formula keeps its own line breaks; only short math is held to its punctuation.
+      if ((k.querySelector(".katex-mathml annotation") || k).textContent.length > 40) return;
+      // auto-render wraps each formula in a plain <span>; the punctuation sits beside that.
+      const par = k.parentElement;
+      const box = par && par.tagName === "SPAN" && !par.className && par.childNodes.length === 1 ? par : k;
+      const next = box.nextSibling, prev = box.previousSibling;
+      const after = next && next.nodeType === 3 ? next.nodeValue.match(/^[,.;:!?)\]’”'"]+/) : null;
+      const before = prev && prev.nodeType === 3 ? prev.nodeValue.match(/[(\[“‘]+$/) : null;
+      if (!after && !before) return;
+      const glue = document.createElement("span");
+      glue.className = "math-glue";
+      box.parentNode.insertBefore(glue, box);
+      if (before) { prev.nodeValue = prev.nodeValue.slice(0, -before[0].length); glue.appendChild(document.createTextNode(before[0])); }
+      glue.appendChild(box);
+      if (after) { next.nodeValue = next.nodeValue.slice(after[0].length); glue.appendChild(document.createTextNode(after[0])); }
+    });
   }
 
   // ---------- Diagram legibility pass ----------
@@ -2049,11 +2099,24 @@
     container.querySelectorAll(".diagram svg").forEach(svg => {
       try {
         tidyDiagram(svg);
+        centerDiagram(svg);
         // Only the at-a-glance figures on the scrolling card list get cropped. Detail pages
         // have room to breathe; the card list is where an over-tall canvas costs real scroll.
         if (svg.closest(".card-glance")) cropDiagramHeight(svg);
       } catch (e) { /* getBBox can throw if the svg isn't laid out */ }
     });
+  }
+
+  // Shift the viewBox sideways so the drawing sits in the middle of its canvas. Only x moves:
+  // the width, and so the scale, is untouched. Figures composed with a wide label column on
+  // one side otherwise read as pushed off to the right inside their centered frame.
+  function centerDiagram(svg) {
+    const vb = (svg.getAttribute("viewBox") || "").trim().split(/\s+/).map(Number);
+    if (vb.length !== 4 || !vb.every(isFinite)) return;
+    const bb = svg.getBBox();
+    if (!bb || !isFinite(bb.width) || bb.width <= 0 || bb.width >= vb[2]) return;
+    const x = bb.x + bb.width / 2 - vb[2] / 2;
+    if (Math.abs(x - vb[0]) > 4) svg.setAttribute("viewBox", x.toFixed(1) + " " + vb[1] + " " + vb[2] + " " + vb[3]);
   }
 
   // Trim the empty band above and below the drawing. Only the vertical extent of the
@@ -2427,7 +2490,7 @@
           </span>
         </div>
         <div class="card-meta">${kindBadgeHtml(f)}${levelRangeHtml(f)}${crumb}</div>
-        ${isConverted(f) && !(kindOf(f) === "pattern" && f.latex) ? cardLeadHtml(f) : cardFormulaHtml(f)}
+        ${isConverted(f) && !f.latex ? cardLeadHtml(f) : cardFormulaHtml(f)}
         <p class="card-desc">${firstSentences(f.description, GRID_SENTENCES)}</p>
         ${extraHtml(f)}
         <div class="more-hint">Open &rsaquo;</div>
@@ -2435,8 +2498,10 @@
   }
 
   // A browsing card shows only the first of a card's forms (the rest are on its page), so the
-  // cards in a grid stay about the same height and a row has no holes.
+  // cards in a grid stay about the same height and a row has no holes. Large cards have the
+  // room to show every form, stacked as on the card's page.
   function cardFormulaHtml(f) {
+    if (state.cols === "spacious") return `<div class="formula-display" data-full="1" data-latex="${escapeAttr(latexFor(f) || "")}"></div>`;
     const parts = splitLatexParts(latexFor(f));
     return `<div class="formula-display" data-latex="${escapeAttr(parts[0] || "")}"></div>` +
       (parts.length > 1 ? `<div class="more-forms">+ ${parts.length - 1} more form${parts.length > 2 ? "s" : ""} on its page</div>` : "");
@@ -2484,7 +2549,9 @@
       const k = el.querySelector(".katex"), w = el.clientWidth - pad;
       if (!k || w <= 0) return null;
       const d = el.querySelector(".katex-display") || k;
-      return { el, k, over: Math.max((el.scrollWidth - pad) / w, d.offsetHeight / CARD_FORMULA_MAX_H) };
+      // A full formula on a large card may be as tall as it needs; only its width is fitted.
+      const wide = (el.scrollWidth - pad) / w;
+      return { el, k, over: el.dataset.full ? wide : Math.max(wide, d.offsetHeight / CARD_FORMULA_MAX_H) };
     }).filter(x => x && x.over > 1.002);
     const scaleAll = items => items.forEach(x => {
       x.scale = Math.max(0.55, 0.96 / x.over);
@@ -2492,7 +2559,7 @@
     });
     const first = measure(els);
     scaleAll(first);
-    const tooSmall = first.filter(x => x.scale < CARD_FORMULA_MIN).map(x => x.el);
+    const tooSmall = first.filter(x => x.scale < CARD_FORMULA_MIN && !x.el.dataset.full).map(x => x.el);
     const cutEls = tooSmall.filter(el => {
       const tex = el.dataset.latex, cuts = topLevelEquals(tex);
       let shorter = cuts.length >= 2 ? tex.slice(0, cuts[1]) : null;
@@ -2513,12 +2580,17 @@
   let fitObserver = null;
   function fitCardFormulas(container) {
     const cards = container.querySelectorAll(".cards > .card");
-    if (!("IntersectionObserver" in window)) { fitBatch([...container.querySelectorAll(".card .formula-display[data-latex]")]); return; }
+    if (!("IntersectionObserver" in window)) {
+      container.querySelectorAll('.card[data-math="0"]').forEach(c => { c.dataset.math = "1"; renderMath(c); });
+      fitBatch([...container.querySelectorAll(".card .formula-display[data-latex]")]);
+      return;
+    }
     if (!fitObserver) fitObserver = new IntersectionObserver(entries => {
       const els = [];
       entries.forEach(en => {
         if (!en.isIntersecting) return;
         fitObserver.unobserve(en.target);
+        if (en.target.dataset.math === "0") { en.target.dataset.math = "1"; renderMath(en.target); }
         en.target.querySelectorAll(".formula-display[data-latex]").forEach(el => els.push(el));
       });
       fitBatch(els);
@@ -2559,7 +2631,10 @@
     : kindOf(f) === "pattern" ? Array.isArray(f.recognize) && f.recognize.length > 0 : false;
   // A planned card a pattern already points to (`suggests` may name a method that is not
   // written yet): shown by its id as plain text until the card exists.
-  const plannedName = id => id.replace(/-/g, " ");
+  const plannedName = id => { const t = id.replace(/-/g, " "); return t.charAt(0).toUpperCase() + t.slice(1); };
+  // A card that is planned but not written yet shows as a red link, as a missing article does
+  // on Wikipedia: the name is there to be read, and the color says there is no page behind it.
+  const redLink = (id, label) => `<span class="red-link" title="No card yet: &ldquo;${escapeAttr(plannedName(id))}&rdquo; is planned">${escapeAttr(label || plannedName(id))}</span>`;
   const USED_BY = {}, SUGGESTED_BY = {};
   Object.keys(BY_ID).forEach(id => {
     const f = BY_ID[id].formula;
@@ -2568,7 +2643,7 @@
   });
   const cardChip = id => BY_ID[id]
     ? `<a class="related-item" href="#/f/${id}">${BY_ID[id].formula.name}</a>`
-    : `<span class="related-item related-planned" title="Planned, not written yet">${escapeAttr(plannedName(id))}</span>`;
+    : `<span class="related-item related-planned">${redLink(id)}</span>`;
   const chipRow = (title, ids, cls) => ids.length
     ? `<div class="related kind-row${cls ? " " + cls : ""}"><h4>${title}</h4><div class="related-grid">${ids.map(cardChip).join("")}</div></div>`
     : "";
@@ -2585,16 +2660,18 @@
     if (!isConverted(f)) return "";
     if (kindOf(f) === "method") {
       return `<div class="lead-box lead-method">
+          <div class="lead-title">Overview</div>
           <div class="lead-row"><div class="lead-label">When to use</div><div class="lead-text">${f.when || ""}</div></div>
           <div class="lead-row"><div class="lead-label">Core move</div><div class="lead-text">${f.move}</div></div>
         </div>`;
     }
     const tries = (f.suggests || []).map(id => BY_ID[id]
-      ? `<li><a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>${BY_ID[id].formula.move ? `<span class="lead-try-note">${BY_ID[id].formula.move}</span>` : ""}</li>`
-      : `<li class="lead-placeholder">${escapeAttr(plannedName(id))} (planned)</li>`).join("");
+      ? `<li><a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a></li>`
+      : `<li>${redLink(id)}</li>`).join("");
     return `<div class="lead-box lead-pattern">
-        <div class="lead-row"><div class="lead-label">Look for:</div><ul class="lead-signals">${f.recognize.map(x => `<li>${x}</li>`).join("")}</ul></div>
-        ${tries ? `<div class="lead-row"><div class="lead-label">Try:</div><ul class="lead-try">${tries}</ul></div>` : ""}
+        <div class="lead-title">Overview</div>
+        <div class="lead-row"><div class="lead-label">Look for</div><ul class="lead-signals">${f.recognize.map(x => `<li>${x}</li>`).join("")}</ul></div>
+        ${tries ? `<div class="lead-row"><div class="lead-label">Try</div><ul class="lead-try">${tries}</ul></div>` : ""}
       </div>`;
   }
   // The same lead in two lines on the browsing card, in place of the formula.
@@ -2607,8 +2684,8 @@
     }
     const names = (f.suggests || []).map(id => BY_ID[id] ? BY_ID[id].formula.name : plannedName(id)).join(", ");
     return `<div class="card-lead">
-        <p><span class="lead-label">Look for:</span> ${f.recognize.slice(0, 2).join("; ")}</p>
-        ${names ? `<p><span class="lead-label">Try:</span> ${names}</p>` : ""}
+        <p><span class="lead-label">Look for</span> ${f.recognize.slice(0, 2).join("; ")}</p>
+        ${names ? `<p><span class="lead-label">Try</span> ${names}</p>` : ""}
       </div>`;
   }
 
@@ -2628,28 +2705,66 @@
     const f = entry.formula, k = kindOf(f);
     if (!isConverted(f)) return "";
     if (k === "method") {
-      // The formulas a reader needs to know to use the move: the cards it uses, as links, then
-      // the authored "Supporting mathematics" showing how each one enters.
+      // The formulas a reader needs to know to use the move: one bullet per card in `uses`, in
+      // that order, each with the authored line from "## Formulas it uses" ("- [[id]]: how it
+      // enters"), as a pattern lists its formulas to try.
+      // Shown even when empty ("None yet"), so every converted method has the same sections.
       const uses = f.uses || [];
-      if (!uses.length && !suppText && !f.latex) return "";
-      return `<div class="related uses-block"><h4>Formulas it uses</h4>
-          ${uses.length ? `<div class="related-grid">${uses.map(cardChip).join("")}</div>` : ""}
-          ${suppText ? `<div class="detail-body uses-notes">${detailBodyHtml(suppText, f.id)}</div>` : ""}
-          ${f.latex ? `<div class="formula-display supp-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
+      const notes = {};
+      String(suppText || "").split("\n").forEach(l => { const r = l.trim().match(/^- \[\[([\w-]+)(?:\|[^\]]*)?\]\]:?\s*(.*)$/); if (r) notes[r[1]] = r[2]; });
+      const name = id => BY_ID[id] ? `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>` : redLink(id);
+      const items = uses.map(id => `<li><span class="try-name">${name(id)}</span>${notes[id] ? `: ${linkifyCards(notes[id])}` : ""}</li>`).join("");
+      return `<div class="detail-body uses-block try-block"><h4>Formulas it uses</h4>
+          ${items ? `<ul class="detail-list try-list">${items}</ul>` : `<p class="related-empty">None yet.</p>`}
         </div>`;
     }
-    const reached = [];
-    (f.suggests || []).forEach(m => ((BY_ID[m] && BY_ID[m].formula.uses) || []).forEach(x => { if (reached.indexOf(x) === -1) reached.push(x); }));
     const fam = familyOf(entry);
-    return chipRow("Formulas these methods use", reached) +
-      (fam ? `<p class="family-note">Pattern family: <strong>${escapeAttr(fam)}</strong></p>` : "");
+    return fam ? `<p class="family-note">Pattern family: <strong>${escapeAttr(fam)}</strong></p>` : "";
+  }
+  // A converted method's "When to use": the situations in more detail, then the patterns that
+  // suggest it, as a list; "None yet" until a pattern names it.
+  function whenToUseHtml(f, text) {
+    const pats = SUGGESTED_BY[f.id] || [];
+    const items = pats.filter(id => BY_ID[id]).map(id => `<li><a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>${(BY_ID[id].formula.recognize || [])[0] ? `: ${BY_ID[id].formula.recognize[0]}` : ""}</li>`).join("");
+    return `<div class="detail-body try-block"><h4>When to use</h4>
+        ${text && text.trim() ? detailBodyHtml(text, f.id) : ""}
+        <h5 class="try-sub">Suggested by patterns</h5>
+        ${items ? `<ul class="detail-list try-list">${items}</ul>` : `<p class="related-empty">None yet.</p>`}
+      </div>`;
+  }
+  // A pattern's "Methods and Formulas to Try": the methods are exactly the ones in its box
+  // (`suggests`, in that order), each with the explanation authored as "- [[id]]: ..." under
+  // "### Methods to try"; the formulas are the bullets under "### Formulas to try". Any prose
+  // before the first "###" introduces both lists.
+  function tryHtml(f, text) {
+    if (kindOf(f) !== "pattern" || !isConverted(f)) return "";
+    const parts = String(text || "").split(/\n?^### /m);
+    const intro = parts[0].trim(), subs = {};
+    parts.slice(1).forEach(p => { const nl = p.indexOf("\n"); subs[(nl < 0 ? p : p.slice(0, nl)).trim().toLowerCase()] = nl < 0 ? "" : p.slice(nl + 1); });
+    const notes = src => {
+      const m = {};
+      String(src || "").split("\n").forEach(l => { const r = l.trim().match(/^- \[\[([\w-]+)(?:\|[^\]]*)?\]\]:?\s*(.*)$/); if (r) m[r[1]] = r[2]; });
+      return m;
+    };
+    const mNotes = notes(subs["methods to try"]), fNotes = notes(subs["formulas to try"]);
+    const name = id => BY_ID[id] ? `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>` : redLink(id);
+    const li = (id, note) => `<li><span class="try-name">${name(id)}</span>${note ? `: ${linkifyCards(note)}` : ""}</li>`;
+    const methods = (f.suggests || []).map(id => li(id, mNotes[id])).join("");
+    const formulas = Object.keys(fNotes).map(id => li(id, fNotes[id])).join("");
+    if (!methods && !formulas && !intro) return "";
+    return `<div class="detail-body try-block"><h4>Methods and Formulas to Try</h4>
+        ${intro ? detailBodyHtml(intro, f.id) : ""}
+        ${methods ? `<h5 class="try-sub">Methods to try</h5><ul class="detail-list try-list">${methods}</ul>` : ""}
+        ${formulas ? `<h5 class="try-sub">Formulas to try</h5><ul class="detail-list try-list">${formulas}</ul>` : ""}
+      </div>`;
   }
   // The other end of each link: a formula shows the methods that use it, a method the
   // patterns that suggest it.
   function reverseLinksHtml(f) {
     const k = kindOf(f);
     if (k === "formula") return chipRow("Used by methods", USED_BY[f.id] || []);
-    if (k === "method") return chipRow("Suggested by patterns", SUGGESTED_BY[f.id] || []);
+    // A converted method lists these under "When to use" instead.
+    if (k === "method") return isConverted(f) ? "" : chipRow("Suggested by patterns", SUGGESTED_BY[f.id] || []);
     return "";
   }
 
@@ -2724,7 +2839,7 @@
     const co = kind => {
       const c = {};
       probs.forEach(p => p.formulas.forEach(id => {
-        if (id !== f.id && BY_ID[id] && kindOf(BY_ID[id].formula) === kind) c[id] = (c[id] || 0) + 1;
+        if (id !== f.id && id !== TWIN_OF[f.id] && BY_ID[id] && kindOf(BY_ID[id].formula) === kind) c[id] = (c[id] || 0) + 1;
       }));
       return Object.keys(c).sort((a, b) => c[b] - c[a] || a.localeCompare(b)).slice(0, 4);
     };
@@ -2746,11 +2861,16 @@
     // A formula is never said to solve a problem, only to be its central idea.
     const withMain = probs.filter(p => p.main);
     const mainTxt = withMain.length
-      ? ` ${k === "formula" ? "The main idea" : k === "method" ? "The primary move" : "The problem's main shape"} in ${withMain.filter(p => p.main === f.id).length} of the ${withMain.length} problem${withMain.length === 1 ? "" : "s"} where one is recorded.`
+      ? ` ${k === "formula" ? "The main idea" : k === "method" ? "The primary move" : "The problem's main shape"} in ${withMain.filter(p => p.main === f.id || p.main === TWIN_OF[f.id]).length} of the ${withMain.length} problem${withMain.length === 1 ? "" : "s"} where one is recorded.`
       : "";
     if (authored || mainTxt) rows.push(row("Role", `${authored ? linkifyCards(authored) : ""}${mainTxt}`));
-    const partners = k === "method" ? [["Common patterns", co("pattern")], ["Common formulas", co("formula")]]
-      : [["Common methods", co("method")]];
+    // A pattern's methods are listed under "Methods and Formulas to Try", so its profile does not
+    // repeat them.
+    // Statistical neighbours from the tagged problems (the section note says so): a method's
+    // "Related Methods" and a pattern's "Related Patterns" are the cards of the same kind that
+    // most often appear beside it. The hand-picked "Related ..." sections are separate.
+    const partners = k === "method" ? [["Common patterns", co("pattern")], ["Related Methods", co("method")]]
+      : k === "formula" ? [["Common methods", co("method")]] : [["Related Patterns", co("pattern")]];
     partners.forEach(([label, ids]) => { if (ids.length) rows.push(row(label, names(ids))); });
     if (!rows.length) return "";
     return `<div class="related contest-profile"><h4>Contest profile</h4><div class="profile-rows">${rows.join("")}</div></div>`;
@@ -2759,12 +2879,13 @@
   // Connected formulas (js/data/connected.js): on a few broad cards, the cards that are part of
   // the same idea. Curated, where Related is computed, but drawn exactly like Related: a row of
   // name chips. Each entry's note records why it belongs; it is for editors and is not shown.
+  // Shown on every card, hand-picked ones only, so it says "None yet" until some are chosen;
+  // the statistical neighbours are in the contest profile.
   function connectedHtml(f) {
     const list = ((window.MATH_CONNECTED || {})[f.id] || []).filter(c => BY_ID[c.id]);
-    if (!list.length) return "";
     const title = { formula: "Related formulas", method: "Related methods", pattern: "Related patterns" }[kindOf(f)];
-    return `<div class="connected"><h4>${title}</h4><div class="related-grid">${list.map(c =>
-      `<a class="related-item" href="#/f/${c.id}">${BY_ID[c.id].formula.name}</a>`).join("")}</div></div>`;
+    return `<div class="connected"><h4>${title}</h4>${list.length ? `<div class="related-grid">${list.map(c =>
+      `<a class="related-item" href="#/f/${c.id}">${BY_ID[c.id].formula.name}</a>`).join("")}</div>` : `<p class="related-empty">None yet.</p>`}</div>`;
   }
 
   function practiceHtml(f) {
@@ -2883,6 +3004,19 @@
       if (p.formulas.indexOf(fid) >= 0) return;
       (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p);
     });
+  });
+  // A card split into a formula and a method (the fact and the move) is one idea seen two ways,
+  // so the two halves share their practice problems: a problem tagged with either shows on both.
+  // Problems were tagged before the splits, almost always on the method's id.
+  const SPLIT_TWINS = [["lte", "lte-lemma"], ["pie", "inclusion-exclusion"], ["homothety-monge", "monges-theorem"],
+    ["symmetric-polynomial-strategies", "fundamental-theorem-symmetric"], ["inversion-properties", "inversion-facts"],
+    ["lagrange-interpolation", "lagrange-interpolation-formula"]];
+  const TWIN_OF = {};
+  SPLIT_TWINS.forEach(([a, b]) => {
+    if (!BY_ID[a] || !BY_ID[b]) return;
+    TWIN_OF[a] = b; TWIN_OF[b] = a;
+    const both = [...new Set([...(PROBLEMS_BY_CARD[a] || []), ...(PROBLEMS_BY_CARD[b] || [])])];
+    if (both.length) { PROBLEMS_BY_CARD[a] = both; PROBLEMS_BY_CARD[b] = both.slice(); }
   });
   Object.keys(PROBLEMS_BY_CARD).forEach(fid => PROBLEMS_BY_CARD[fid].sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref)));
 
@@ -3199,7 +3333,7 @@
       if (i % 2) return part;
       return part.replace(/\[\[([\w-]+)(?:\|([^\]]*))?\]\]/g, (m, id, label) => {
         const e = BY_ID[id];
-        if (!e) return `<span class="card-link-broken" title="no card with id &ldquo;${escapeAttr(id)}&rdquo;">${escapeAttr(label || id)}</span>`;
+        if (!e) return redLink(id, label);
         return `<a class="card-link" href="#/f/${escapeAttr(id)}" data-card="${escapeAttr(id)}">${label || e.formula.name}</a>`;
       });
     }).join("");
@@ -3408,15 +3542,22 @@
     // key forms, so it keeps the honest heading.
     const formsHtml = split.formsHtml("Key forms");
     const kind = kindOf(f), converted = isConverted(f);
+    // A converted method's formula is a thumbnail for browsing, the gist at a glance; its own
+    // page leads with When to use and Core move instead, so the formula is not repeated there.
+    const thumbOnly = kind === "method" && converted;
     state.landing = false;
     // The authored contest-profile sentence and a method's supporting mathematics render in
     // their own places on the page, so they are lifted out of the running write-up.
     const prof = pullSection(split.rest, "Contest profile");
-    const supp = kind === "method" ? pullSection(prof.rest, "Supporting mathematics") : { text: null, rest: prof.rest };
+    const supp = kind === "method" ? pullSection(prof.rest, "Formulas it uses") : { text: null, rest: prof.rest };
     // On a converted method or pattern, Common traps closes the explanation, after the Uses,
     // Supporting mathematics and family blocks that are drawn from the card's fields.
     const trapSec = converted ? pullSection(supp.rest, "Common traps") : { text: null, rest: supp.rest };
-    const rest = trapSec.rest;
+    const trySec = kind === "pattern" && converted ? pullSection(trapSec.rest, "Methods and Formulas to Try") : { text: null, rest: trapSec.rest };
+    // A converted method's "When to use" opens the write-up, and lists under it the patterns
+    // that suggest the move (computed from their `suggests`).
+    const whenSec = kind === "method" && converted ? pullSection(trySec.rest, "When to use") : { text: null, rest: trySec.rest };
+    const rest = whenSec.rest;
     const hasDiagram = !!((window.MATH_DIAGRAMS || {})[f.id] || []).length;
     const exHtml = practiceHtml(f);
     const profileHtml = contestProfileHtml(f, prof.text), problemsHtml = contestHtml(f);
@@ -3445,11 +3586,11 @@
           <span class="detail-actions">
             ${starBtnHtml(f.id)}
             ${addListBtnHtml(f.id)}
-            ${f.latex ? `<button class="copy-btn" data-latex="${escapeAttr(latexFor(f))}" title="Copy the LaTeX">Copy LaTeX</button>` : ""}
+            ${f.latex && !thumbOnly ? `<button class="copy-btn" data-latex="${escapeAttr(latexFor(f))}" title="Copy the LaTeX">Copy LaTeX</button>` : ""}
             ${asyBtn}
           </span>
         </div>
-        ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
+        ${f.latex && !thumbOnly ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
         ${leadBoxHtml(f)}
         <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p>
         ${(() => {
@@ -3460,7 +3601,9 @@
           return `<div class="detail-diagrams dd-${Math.min(panels.length, 3)}">${inner}</div>`;
         })()}
         ${formsHtml}
+        ${kind === "method" && converted ? whenToUseHtml(f, whenSec.text) : ""}
         ${rest && rest.trim() ? `<div class="detail-body">${detailBodyHtml(rest, f.id)}</div>` : ""}
+        ${tryHtml(f, trySec.text)}
         ${kindLinksHtml(entry, supp.text)}
         ${trapSec.text ? `<div class="detail-body">${detailBodyHtml("## Common traps\n" + trapSec.text, f.id)}</div>` : ""}
         ${(window.MATH_WIDGETS || {})[f.id] ? `<div class="interactive"><h4>Interactive</h4><div id="formula-widget"></div></div>` : ""}
@@ -3496,18 +3639,18 @@
     "When it's worth trying": "Rules of thumb from experience, not theorems.",
     "Common traps": "The mistakes that most often undo it.",
     "Distinguishing clues": "What separates this shape from look-alikes.",
-    "Why these methods fit": "Why the suggested methods work on this shape.",
+    "Methods and Formulas to Try": "The moves in the box above, why each fits this shape, and the facts they lean on.",
     "Formulas it uses": "The formulas you need to know to use this move, and how each one enters.",
-    "Formulas these methods use": "The formulas the suggested methods rely on.",
-    "Used by methods": "Moves that rely on this fact.",
+    "Used by methods": "Methods that name it as a formula.",
     "Suggested by patterns": "Problem shapes in which this move is worth trying.",
+    "When to use": "The situations that call for this move, and the patterns that point to it.",
     "Interactive": "Move the pieces and watch the result hold.",
     "Examples": "Worked examples that use this card.",
-    "Contest profile": "What the tagged contest problems say about this card.",
+    "Contest profile": "What the tagged contest problems say about this card. (Statistically generated)",
     "Practice Problems": "Real contest problems that use this card, by contest.",
-    "Related formulas": "Cards that are part of the same idea.",
-    "Related methods": "Cards that are part of the same idea.",
-    "Related patterns": "Cards that are part of the same idea.",
+    "Related formulas": "Hand-picked cards that are part of the same idea.",
+    "Related methods": "Hand-picked cards that are part of the same idea.",
+    "Related patterns": "Hand-picked cards that are part of the same idea.",
     "Tags": "The keywords that search uses for this card."
   };
   function buildPageToc() {
@@ -3526,7 +3669,21 @@
       }
       items.push(`<a class="toc-link" href="#${id}" data-toc="${id}">${escapeAttr(title)}</a>`);
     });
+    tocPinned = null;
     toc.innerHTML = items.length ? `<div class="toc-head">On this page</div>${items.join("")}` : "";
+    toc.hidden = !items.length;
+    markToc();
+  }
+  // A list page's sections in the same panel, each with its count of cards.
+  function buildListToc() {
+    const toc = document.getElementById("page-toc");
+    if (!toc) return;
+    const items = [...$content.querySelectorAll(".list-section[id]")].map(sec => {
+      const t = sec.querySelector(".list-section-title"), n = sec.querySelectorAll(".cards > .card").length;
+      return `<a class="toc-link toc-counted" href="#${sec.id}" data-toc="${sec.id}"><span class="toc-t">${t ? t.innerHTML : ""}</span><span class="toc-n">${n}</span></a>`;
+    });
+    tocPinned = null;
+    toc.innerHTML = items.length ? `<div class="toc-head">On this list</div>${items.join("")}` : "";
     toc.hidden = !items.length;
     markToc();
   }
@@ -3535,9 +3692,21 @@
     if (toc) { toc.innerHTML = ""; toc.hidden = true; }
   }
   // The section being read is the last heading that has passed under the top bar.
+  // A clicked section stays marked until the reader scrolls by hand. The last sections of a
+  // page can never scroll up to the marking line, so without this a click on "Examples" or
+  // "Tags" near the bottom left an earlier section marked.
+  let tocPinned = null;
+  const unpinToc = () => { if (tocPinned) { tocPinned = null; markToc(); } };
+  window.addEventListener("wheel", unpinToc, { passive: true });
+  window.addEventListener("touchmove", unpinToc, { passive: true });
+  window.addEventListener("keydown", e => { if (/^(Arrow(Up|Down)|Page(Up|Down)|Home|End| )$/.test(e.key)) unpinToc(); });
   function markToc() {
     const toc = document.getElementById("page-toc");
     if (!toc || toc.hidden) return;
+    if (tocPinned && toc.querySelector(`[data-toc="${tocPinned}"]`)) {
+      toc.querySelectorAll("[data-toc]").forEach(a => a.classList.toggle("active", a.dataset.toc === tocPinned));
+      return;
+    }
     const bar = document.querySelector(".topbar");
     const line = (bar ? bar.offsetHeight : 0) + 24;
     let cur = null;
@@ -3560,6 +3729,8 @@
     if (!h) return;
     const bar = document.querySelector(".topbar");
     window.scrollTo({ top: Math.max(0, h.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - 14), behavior: "instant" });
+    tocPinned = a.dataset.toc;
+    markToc();
     closeDrawer();
   });
   document.addEventListener("click", e => {
@@ -3683,7 +3854,7 @@
     });
     if (!shownIds.length) parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, subIdx)} cards match the selected level filters.</div>`);
     $content.innerHTML = parts.join("");
-    renderMath($content);
+    renderMath($content, true);
   }
   // Where a fresh visit to an address should land: a group's heading, else the top. A
   // revisited history entry passes the position it was left at instead.
@@ -3721,9 +3892,9 @@
   // One setting per row: its name and what it does on the left, a segmented control on the
   // right. Rows sit in panels by kind: how the app looks, how the math reads, how browsing
   // behaves, then commands and the experimental toys.
-  function settingRow(name, desc, key, current, options) {
+  function settingRow(name, desc, key, current, options, pv) {
     return `
-      <div class="set-row">
+      <div class="set-row"${pv ? ` data-pv="${pv}"` : ""}>
         <div class="set-text"><div class="set-name">${name}</div><div class="set-desc">${desc}</div></div>
         <div class="seg" role="radiogroup" aria-label="${escapeAttr(name)}">${options.map(([val, label]) =>
           `<button type="button" role="radio" aria-checked="${val === current ? "true" : "false"}" data-set="${key}" data-val="${val}">${label}</button>`).join("")}</div>
@@ -3734,6 +3905,8 @@
     shownIds = [];
     const theme = currentTheme();
     $content.innerHTML = `
+      <div class="settings-layout">
+      <div class="settings-main">
       <div class="section-header settings-head">
         <h2>Settings</h2>
         <p>Preferences are saved in this browser.</p>
@@ -3742,20 +3915,21 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Appearance</h3>
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
-          ${settingRow("Density", "Compact fits more cards on a screen.", "density", state.density, [["comfortable", "Comfortable"], ["compact", "Compact"]])}
-          ${settingRow("Cards per row", "Spacious makes each card wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Spacious"]])}
+          ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
+          ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across, and they show every form of a formula instead of only the first.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Text size", "Large makes prose and formulas bigger together.", "text", state.text, [["normal", "Normal"], ["large", "Large"]])}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
-          ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]])}
-          ${settingRow("Figures on cards", "Figures always appear on a card's own page. Curated shows them while browsing only where the idea is hard to read without one; On shows every figure.", "diagrams", state.diagrams, [["none", "Off"], ["curated", "Curated"], ["on", "On"]])}
+          ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]], "browse page")}
+          ${settingRow("Figures on cards", "Figures always appear on a card's own page. Curated shows them while browsing only where the idea is hard to read without one; On shows every figure.", "diagrams", state.diagrams, [["none", "Off"], ["curated", "Curated"], ["on", "On"]], "browse")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Browsing</h3>
-          ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]])}
-          ${settingRow("Card order", "Curated is the order the cards were written in. Most used puts the cards that practice problems use most first. Search results always rank by relevance.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]])}
-          ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]])}
+          ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
+          ${settingRow("Card order", "Curated is the order the cards were written in. Most used puts the cards that practice problems use most first. Search results always rank by relevance.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
+          ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
+          ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">Importance and contest-level filters are kept per subject, behind the funnel in the top bar.</div></div>
           </div>
@@ -3793,7 +3967,11 @@
             </div>
           </div>
         </details>
+      </div>
+      </div>
+      <aside class="set-preview" aria-label="Preview" inert></aside>
       </div>`;
+    fillSettingsPreview();
     const $cmdToggle = $content.querySelector(".command-toggle");
     if ($cmdToggle) $cmdToggle.addEventListener("click", () => {
       const box = $content.querySelector(".command-all"), open = box.hidden;
@@ -3836,7 +4014,130 @@
       }
       renderSettingsPage();
     });
+    // Pointing at a setting dims the preview screens it does not change.
+    const $page = $content.querySelector(".settings-page"), $pv = $content.querySelector(".set-preview");
+    $page.addEventListener("mouseover", e => {
+      const row = e.target.closest(".set-row");
+      if (row && row.dataset.pv) $pv.dataset.focus = row.dataset.pv; else delete $pv.dataset.focus;
+    });
+    $page.addEventListener("mouseleave", () => { delete $pv.dataset.focus; });
   }
+
+  // ---------- Settings preview ----------
+  // Beside the settings, when the window is wide enough, three small screens drawn with the
+  // real card and page markup, so every setting shows its effect as it is changed: cards while
+  // browsing, a card's own page, and a subject page. Each is laid out at a laptop's content
+  // width and scaled down to fit, so card size changes how many cards fit across exactly as
+  // it does in the app.
+  const PV_W = 1100, PV_H = 640, PV_MEDIA = "(min-width: 1280px)";
+  const PV_CARDS = ["stewarts-theorem", "power-of-a-point", "hockey-stick", "herons-formula"];
+  const PV_PAGE = "hockey-stick", PV_SUBJECT = "number-theory";
+  let pvResize = null;
+  // A screen may be laid out wider than the others (the subject page carries the sidebar too),
+  // keeping the same proportions, so all three frames are the same size.
+  function pvScreen(key, label, inner, w) {
+    return `<figure class="pv-screen" data-pv="${key}"><div class="pv-frame"><div class="pv-inner"${w ? ` data-w="${w}"` : ""}>${inner}</div></div><figcaption class="pv-label">${label}</figcaption></figure>`;
+  }
+  function pvBrowseHtml() {
+    const cards = PV_CARDS.map(id => BY_ID[id]).filter(Boolean);
+    return `<div class="cards">${cards.map(e => cardHtml(e, true, null)).join("")}</div>`;
+  }
+  function pvPageHtml() {
+    const entry = BY_ID[PV_PAGE];
+    if (!entry) return "";
+    const f = entry.formula, split = splitKeyForms(notate((window.MATH_DETAILS || {})[f.id]));
+    const rest = pullSection(split.rest, "Contest profile").rest;
+    return `<div class="detail">
+        <p class="detail-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</p>
+        <div class="detail-head"><h2 class="card-name">${f.name}</h2><div class="card-meta detail-meta">${kindBadgeHtml(f)}${levelRangeHtml(f)}</div></div>
+        ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
+        <p class="card-desc detail-summary">${f.description}</p>
+        ${split.formsHtml("Key forms")}
+        ${rest && rest.trim() ? `<div class="detail-body">${detailBodyHtml(rest, f.id)}</div>` : ""}
+      </div>
+      ${state.tags ? `<div class="pv-foot detail"><div class="detail-body"><h4>Tags</h4></div>${tagRowHtml(f, null, [])}</div>` : ""}`;
+  }
+  // The subject page beside its sidebar, drawn with the sidebar's own markup, so density shows
+  // in the navigation as well as in the page.
+  function pvSidebarHtml(active) {
+    const rows = SECTIONS.filter(sc => bookOf(sc) === "formulas").map(sc => `
+      <div class="nav-section${sc.id === active ? " open" : ""}">
+        <button class="nav-section-btn${sc.id === active ? " active" : ""}"><span>${sc.title}</span><span class="nav-count">${sectionCount(sc)}</span></button>
+        <div class="nav-subs"><div class="nav-subs-inner">${sc.subsections.map((sub, i) => `<a class="nav-sub-link${sc.id === active && i === 0 ? " active" : ""}">${sub.title}</a>`).join("")}</div></div>
+      </div>`).join("");
+    return `<div class="sidebar pv-side"><div class="nav-group open" data-group="formulas">
+        <div class="nav-space-head"><span class="nsh-label">${SPACES.formulas.label}</span><span class="nsh-info">i</span><span class="nsh-ask">${SPACES.formulas.ask}</span></div>
+        <div class="nav-group-body"><div class="nav-group-inner">${rows}</div></div>
+      </div></div>`;
+  }
+  function pvSubjectHtml() {
+    return `<div class="pv-shell">${pvSidebarHtml(PV_SUBJECT)}<div class="pv-main">${pvSubjectBody()}</div></div>`;
+  }
+  function pvSubjectBody() {
+    const section = SECTIONS.find(sc => sc.id === PV_SUBJECT);
+    if (!section) return "";
+    const head = `<div class="section-header"><h2>${section.title}</h2><p>${section.blurb || ""}</p></div>`;
+    if (state.layout === "wiki") {
+      const names = [];
+      section.subsections.forEach(sub => sub.formulas.forEach(f => names.push(f)));
+      names.sort((a, b) => a.name.localeCompare(b.name));
+      const buckets = new Map();
+      names.slice(0, 40).forEach(f => { const k = alphaKey(f.name); if (!buckets.has(k)) buckets.set(k, []); buckets.get(k).push(f); });
+      return head + [...buckets].map(([k, fs]) => `<section class="wiki-letter"><h3>${k}</h3><ul class="wiki-list">${fs.map(f => `<li><a>${f.name}</a></li>`).join("")}</ul></section>`).join("");
+    }
+    return head + subjectGroups(section, null).slice(0, 2).map(g => `
+      <section class="subsection grp"><h3 class="grp-title">${g.title}<span class="grp-n">${g.entries.length}</span></h3>
+        ${g.blurb ? `<p class="grp-blurb">${g.blurb}</p>` : ""}
+        <div class="cards">${g.entries.slice(0, 4).map(e => cardHtml(e, false, null)).join("")}</div></section>`).join("");
+  }
+  function fillSettingsPreview() {
+    const aside = $content.querySelector(".set-preview");
+    if (!aside || !window.matchMedia(PV_MEDIA).matches) return;
+    aside.innerHTML = `<div class="pv-title">Preview</div>` +
+      pvScreen("browse", "Cards while browsing", pvBrowseHtml()) +
+      pvScreen("page", "A card&rsquo;s page", pvPageHtml()) +
+      pvScreen("subject", "A subject page", pvSubjectHtml(), PV_W + 260);
+    renderMath(aside);
+    // Lay the panel out from what is left of the window right of the settings: the screens are
+    // as large as three of them fit in the panel's height (and the space allows), and the
+    // dividing line sits midway between the settings and the screens, which sit midway between
+    // the line and the window's edge. The panel starts below the top bar.
+    const scale = () => {
+      if (!aside.isConnected) return;
+      const bar = document.querySelector(".topbar"), page = $content.querySelector(".settings-page");
+      aside.style.setProperty("--pv-top", (bar ? bar.getBoundingClientRect().bottom : 0) + "px");
+      const frames = [...aside.querySelectorAll(".pv-frame")];
+      const cs = getComputedStyle(aside);
+      let fixed = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.rowGap || 0) * 3;
+      fixed += aside.querySelector(".pv-title").offsetHeight;
+      aside.querySelectorAll(".pv-label").forEach(l => { fixed += l.offsetHeight + 5; });
+      const right = page ? page.getBoundingClientRect().right : 0;
+      const region = document.documentElement.clientWidth - right;
+      let w = Math.min(560, (aside.clientHeight - fixed) / 3 * PV_W / PV_H, region - 48);
+      w = Math.max(120, w);
+      const gap = Math.max(16, (region - w) / 3);
+      aside.style.setProperty("--pv-left", (right + gap) + "px");
+      aside.style.paddingLeft = aside.style.paddingRight = gap + "px";
+      frames.forEach(fr => {
+        const inner = fr.firstElementChild, iw = +inner.dataset.w || PV_W;
+        fr.style.width = w + "px";
+        fr.style.height = (w * PV_H / PV_W) + "px";
+        inner.style.width = iw + "px";
+        inner.style.height = (iw * PV_H / PV_W) + "px";
+        inner.style.transform = `scale(${w / iw})`;
+      });
+    };
+    scale();
+    fitBatch([...aside.querySelectorAll(".card .formula-display[data-latex]")]);
+    if (pvResize) window.removeEventListener("resize", pvResize);
+    pvResize = scale;
+    window.addEventListener("resize", pvResize);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(scale);
+  }
+  // Widening the window past the breakpoint fills the preview in.
+  window.matchMedia(PV_MEDIA).addEventListener("change", e => {
+    if (e.matches && getRoute().type === "settings") fillSettingsPreview();
+  });
 
   // ---------- Wiki layout ----------
   // The bucket a formula name sorts into. Names are display strings, so a few carry LaTeX or
@@ -3869,9 +4170,12 @@
       renderMath($content);
       return;
     }
-    // "#" first, then A-Z. Within a letter, by name, so the index reads as an index.
+    // "#" first, then A-Z. Within a letter, by name, so the index reads as an index. A row of
+    // letters at the top jumps to each heading, as on Special:AllPages.
     const keys = [...buckets.keys()].sort((a, b) =>
       a === "#" ? -1 : b === "#" ? 1 : a.localeCompare(b));
+    const anchorOf = k => `alpha-${section.id}-${k === "#" ? "num" : k}`;
+    parts.push(`<nav class="letter-jump wiki-jump" aria-label="Jump to a letter">${keys.map(k => `<button type="button" data-jump="${anchorOf(k)}">${k}</button>`).join("")}</nav>`);
     keys.forEach(k => {
       const rows = buckets.get(k)
         .slice()
@@ -3943,9 +4247,18 @@
     const nProblems = PROBLEM_DB.length.toLocaleString();
     const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-n">${n}</span></a>`;
     const step = (sp, kind, q, text) => `<a class="hc-step" data-tint="${sp}" href="#/${sp}"><span class="hc-kind">${kind}</span><span class="hc-q">${q}</span><span class="hc-text">${text}</span></a>`;
-    const way = (title, text, href, go) => href
-      ? `<a class="hw-row" href="${href}"><span class="hw-title">${title}</span><span class="hw-text">${text}</span><span class="hw-go">${go} &rarr;</span></a>`
-      : `<div class="hw-row"><span class="hw-title">${title}</span><span class="hw-text">${text}</span><span class="hw-go"></span></div>`;
+    // The front page is mostly a way in: every subject of every space, one click away.
+    const subjectsOf = sp => {
+      const out = [];
+      SECTIONS.filter(x => bookOf(x) === sp).forEach(sec => {
+        if (bySubject(sec)) sec.subsections.forEach((sub, i) => out.push([sub.title, sectionHash(sec.id, { sub: i })]));
+        else out.push([sec.title, sectionHash(sec.id)]);
+      });
+      return out;
+    };
+    const jumpCol = (sp, links) => `<div class="hj-col" data-tint="${sp}"><div class="hj-head">${SPACES[sp].label}</div>${links.map(([t, h]) => `<a href="${h}">${t}</a>`).join("")}</div>`;
+    const jumpCols = ["formulas", "methods", "patterns"].map(sp => jumpCol(sp, subjectsOf(sp))).join("") +
+      jumpCol("practice", [["Contests by year", "#/practice"], ["A random problem", "#/special/randomproblem"], ["Study lists", "#/practice"], ["Starred", "#/list/starred"]]);
     $content.innerHTML = `
       <div class="hub">
         <header class="hub-head">
@@ -3961,8 +4274,7 @@
         </nav>
         <div class="hub-main">
           <section class="hub-about">
-            <h3 class="hub-h">What this is</h3>
-            <p class="hub-p">A reference for contest math that you can study from. It sorts what you need into four kinds of knowledge and links them, so you can go from a problem to the idea that cracks it, or from a formula to the problems that use it.</p>
+            <h3 class="hub-h">How the four fit together</h3>
             <div class="hub-chain">
               ${step("patterns", "Pattern", "What am I looking at?", "A problem shape worth recognizing, like &ldquo;no element divides another&rdquo;.")}
               <span class="hc-arrow" aria-hidden="true">&rarr;</span>
@@ -3972,25 +4284,9 @@
               <span class="hc-arrow" aria-hidden="true">&rarr;</span>
               ${step("practice", "Problem", "Can I use it?", "A real contest problem, with the ideas it uses and a strategy.")}
             </div>
-            <h3 class="hub-h">Why it helps</h3>
-            <ul class="hub-why">
-              <li>Every card explains why a fact holds, not only what it says, and works examples with it.</li>
-              <li>Every card lists the real contest problems that use it, ${nProblems} problems in all.</li>
-              <li>Every problem shows the cards it uses, and a strategy you can keep hidden until you want it.</li>
-              <li>It works offline, and your stars, lists, and history stay in this browser.</li>
-            </ul>
-            <h3 class="hub-h">How to use it</h3>
-            <div class="hub-ways">
-              ${way("Searching", "Type a result, a technique, a phrase from a problem, or a contest and year. Results mix cards, problems, and study lists, ranked by relevance.", null, "")}
-              ${way("Stuck on a problem", "Find its pattern, try the methods it suggests, then look up the formulas they use.", "#/patterns", "Patterns")}
-              ${way("Learning a topic", "Open a subject and scroll its cards. Each card's page explains why it holds, with worked examples and the contest problems that use it.", "#/formulas", "Formulas")}
-              ${way("Learning a technique", "Each method says when to reach for it, the core move, its steps, the formulas it uses, and the traps to avoid.", "#/methods", "Methods")}
-              ${way("Preparing for a contest", "Follow the study route for your level and subject, or work through a contest year by year.", "#/practice", "Practice")}
-              ${way("Practicing", "Pick a contest and a difficulty for a random problem. Its page shows the ideas it uses and the strategy when you want them.", "#/special/randomproblem", "Random problem")}
-              ${way("Keeping your own lists", "Star a card, or add it to a list with +. Your lists, and a box to start a new one, are on the Practice page.", "#/practice", "Your lists")}
-              ${way("Making it yours", "Choose the theme, text size, cards per row, figures on cards, and how sums are written.", "#/settings", "Options")}
-              ${way("Commands", "Type Special: in the search box for shortcuts such as Special:Random or Special:RandomProblem/AIME/hard.", "#/settings/commands", "Commands")}
-            </div>
+            <p class="hub-p hub-chain-note">Recognize the shape, choose a move, use the facts it needs, then practice on real problems. Every card links both ways along this chain.</p>
+            <h3 class="hub-h">Jump to</h3>
+            <div class="hub-jump">${jumpCols}</div>
           </section>
           <aside class="hub-side">
             <section class="hp-panel">
@@ -4052,28 +4348,6 @@
       </header>
       ${recent ? `<div class="sh-recent"><span class="hp-label">Recently opened</span><div class="rc-chips">${recent}</div></div>` : ""}`;
   }
-  function spaceIndexHtml(book) {
-    const subjects = [];
-    SECTIONS.filter(x => bookOf(x) === book).forEach(sec => {
-      if (bySubject(sec)) sec.subsections.forEach((sub, i) => subjects.push({
-        title: sub.title, href: sectionHash(sec.id, { sub: i }), n: sub.formulas.length,
-        groups: (sub.groups || []).map((g, j) => ({ title: g.title, href: sectionHash(sec.id, { sub: i, cluster: j }), ids: g.ids.filter(id => BY_ID[id]) }))
-      }));
-      else subjects.push({
-        title: sec.title, href: sectionHash(sec.id), n: sectionCount(sec),
-        groups: sec.subsections.map((sub, i) => ({ title: sub.title, href: sectionHash(sec.id, { topic: i }), ids: sub.formulas.map(f => f.id).filter(id => BY_ID[id]) }))
-      });
-    });
-    const names = book !== "formulas";
-    return `<div class="ix-grid">${subjects.map(sb => `
-        <section class="ix-subject">
-          <a class="ix-title" href="${sb.href}"><span>${sb.title}</span><span class="ix-n">${sb.n}</span></a>
-          ${sb.groups.map(g => names
-            ? `<div class="ix-group"><a class="ix-gtitle" href="${g.href}">${g.title}</a>
-                <ul class="ix-cards">${g.ids.map(id => `<li><a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a></li>`).join("")}</ul></div>`
-            : `<a class="ix-topic" href="${g.href}" title="${escapeAttr(g.title)}"><span class="ix-tname">${g.title}</span><span class="ix-tn">${g.ids.length}</span></a>`).join("")}
-        </section>`).join("")}</div>`;
-  }
   // The random-problem picker: choose a contest (or any), and optionally how hard, by where a
   // problem sits in its paper (the first third is easy, the last third hard).
   const DIFFS = ["", "easy", "medium", "hard"];
@@ -4097,9 +4371,7 @@
   function renderSpaceHome(name) {
     shownIds = [];
     let body = spaceHeadHtml(name);
-    if (name !== "practice") {
-      body += spaceIndexHtml(name);
-    } else {
+    {
       const fams = FAMILIES.slice();
       const routes = BUILTIN_LISTS.filter(l => l.kind === "route");
       const tiers = ["MATHCOUNTS", "AMC", "AIME", "Olympiad"];
@@ -4192,17 +4464,22 @@
   // number), its strategy and hints, the names of its cards and its topics. Every query word
   // must match, or all but one when the query is three words or longer; matches in card names
   // and in the reference count most.
+  // The searchable text of a problem, built once: its card names, its reference, and all of it.
+  function problemText(p) {
+    if (!p._names) {
+      p._names = p.formulas.map(id => BY_ID[id].formula.name).join(" ").toLowerCase();
+      p._refl = (p.ref + " " + p.fam + " " + p.year).toLowerCase();
+      p._hay = [p._refl, p.strategy, p.types.map(t => t.label).join(" "), p._names].join(" ").toLowerCase();
+    }
+    return p._hay;
+  }
   function problemMatches(q) {
     const toks = wordsOf(q.toLowerCase()).filter(t => t.length >= 2 && !/^(the|of|and|a|an|in|on|to|for)$/.test(t));
     if (!toks.length) return [];
     const need = toks.length >= 3 ? toks.length - 1 : toks.length;
     const hits = [];
     PROBLEM_DB.forEach(p => {
-      if (!p._names) {
-        p._names = p.formulas.map(id => BY_ID[id].formula.name).join(" ").toLowerCase();
-        p._refl = (p.ref + " " + p.fam + " " + p.year).toLowerCase();
-        p._hay = [p._refl, p.strategy, p.hints.join(" "), p.types.map(t => t.label).join(" "), p._names].join(" ").toLowerCase();
-      }
+      problemText(p);
       let n = 0, w = 0;
       toks.forEach(t => {
         if (p._hay.indexOf(t) === -1) return;
@@ -4213,6 +4490,64 @@
     });
     hits.sort((a, b) => b.score - a.score || b.p.year - a.p.year || a.p.ref.localeCompare(b.p.ref));
     return hits.map(h => h.p);
+  }
+
+  // A query that names a problem by its reference, in any order and spelling: "amc10 a2025
+  // problem 1", "2025 AMC 10A #1", "aime ii 2019 p 15", "2024 aime 1 problem 3". Letters and
+  // digits glued together are split first ("amc10" -> "amc 10", "a2025" -> "a 2025"), then the
+  // contest, its version (A or B, I or II, Fall), the year and the problem number are read off.
+  // Returns null unless at least two of contest, year and number are named, so an ordinary
+  // query ("area of a triangle", "2 circles") is never read as a reference.
+  function parseProblemQuery(q) {
+    const t = String(q).toLowerCase()
+      .replace(/([a-z])(\d)/g, "$1 $2").replace(/(\d)([a-z])/g, "$1 $2")
+      .split(/[\s,#.:;()\/-]+/).filter(Boolean);
+    const out = { fam: null, ver: null, year: null, num: null, fall: false, rest: [] };
+    const NUMWORD = /^(problem|problems|prob|p|no|number|num|q|question)$/;
+    for (let i = 0; i < t.length; i++) {
+      const w = t[i], nx = t[i + 1];
+      if (/^(19[5-9]\d|20\d\d)$/.test(w) && !out.year) { out.year = +w; continue; }
+      if (w === "amc" && /^(8|10|12)$/.test(nx || "")) { out.fam = "AMC " + nx; i++; continue; }
+      if (w === "aime") {
+        out.fam = "AIME";
+        // A version right after "aime": i / ii, or 1 / 2 when another number follows or it
+        // is followed by a problem word ("aime 2 problem 5", "2024 aime 1 #3").
+        if (nx === "i" || nx === "ii") { out.ver = nx.toUpperCase(); i++; }
+        else if ((nx === "1" || nx === "2") && (t.slice(i + 2).some(x => /^\d{1,2}$/.test(x)) || NUMWORD.test(t[i + 2] || ""))) { out.ver = nx === "1" ? "I" : "II"; i++; }
+        continue;
+      }
+      if (w === "hmmt") { out.fam = "HMMT"; continue; }
+      if (w === "putnam") { out.fam = "Putnam"; continue; }
+      if (w === "fall") { out.fall = true; continue; }
+      if (NUMWORD.test(w) && /^\d{1,2}$/.test(nx || "")) { out.num = +nx; i++; continue; }
+      if ((w === "a" || w === "b") && (out.fam || "").startsWith("AMC") === true && !out.ver) { out.ver = w.toUpperCase(); continue; }
+      if ((w === "a" || w === "b") && !out.ver && t.some(x => x === "amc")) { out.ver = w.toUpperCase(); continue; }
+      if (NUMWORD.test(w)) continue;
+      if (/^\d{1,2}$/.test(w) && !out.num && +w >= 1 && +w <= 30) { out.num = +w; continue; }
+      out.rest.push(w);
+    }
+    const named = [out.fam, out.year, out.num].filter(x => x != null).length;
+    return named >= 2 ? out : null;
+  }
+  // The problems a parsed reference names, newest first; any leftover words ("2025 aime
+  // geometry") then rank them by how many of those words each problem's text carries.
+  function referencedProblems(q) {
+    const r = parseProblemQuery(q);
+    if (!r) return null;
+    const hits = PROBLEM_DB.filter(p => {
+      if (r.year && p.year !== r.year) return false;
+      if (r.num && p.num !== r.num) return false;
+      if (r.fam && !(p.fam === r.fam || (r.fam === "HMMT" && p.fam.startsWith("HMMT")))) return false;
+      if (r.fall && !/^Fall\b/i.test(p.cname)) return false;
+      if (r.ver) {
+        const v = p.cname.match(/AMC\s*\d+\s*([AB])$/i) || p.cname.match(/AIME\s+(I{1,2})$/i);
+        if (v && v[1].toUpperCase() !== r.ver) return false;
+      }
+      return true;
+    });
+    const rest = r.rest.filter(w => w.length >= 3 && !/^(the|and|for|amc|contest)$/.test(w));
+    const score = p => rest.reduce((n, w) => n + (problemText(p).indexOf(w) !== -1 ? 1 : 0), 0);
+    return hits.sort((a, b) => score(b) - score(a) || b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
   }
 
   function renderSearchResults() {
@@ -4227,12 +4562,19 @@
     // as one list in order of relevance, each result labelled with its kind. The card search
     // ranks the cards; a study list that the query names outright leads; problems lead when
     // the query names a contest or a year, and otherwise follow the cards.
-    const probs = problemMatches(state.query);
+    // A query that names a problem by reference puts those problems first, ahead of anything
+    // else; the word matches then follow in their usual place without repeating them.
+    // When it names problems that exist, the loose word matches are left out: "2024 aime 1
+    // problem 3" would otherwise pull in every problem whose text says "problem".
+    let named = referencedProblems(state.query);
+    if (named && !named.length) named = null;
+    const probs = named || problemMatches(state.query);
     const listHits = listMatches(state.query);
-    const refy = /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(state.query);
+    const refy = !!named || /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(state.query);
     const items = [];
+    if (named) named.forEach(p => items.push({ problem: p }));
     listHits.filter(h => h.strong).forEach(h => items.push({ list: h.list }));
-    if (refy) probs.forEach(p => items.push({ problem: p }));
+    if (refy && !named) probs.forEach(p => items.push({ problem: p }));
     sorted.forEach(e => items.push({ entry: e }));
     if (!refy) probs.forEach(p => items.push({ problem: p }));
     listHits.filter(h => !h.strong).forEach(h => items.push({ list: h.list }));
@@ -4517,7 +4859,7 @@
   function renderListSurface(route) {
     if (route.type !== "list") { history.replaceState(null, "", "#/practice"); render(); return; }
     $content.innerHTML = `<div class="list-main">${listDetailHtml(route.listId)}</div>`;
-    renderMath($content);
+    renderMath($content, true);
   }
 
   // Adding a card to a list used to be possible only from the card's own "+" button, which
@@ -4669,7 +5011,7 @@
       <div class="detail">
         <div class="back-row"><a class="back-link" href="#/practice">&larr; Practice</a></div>
         <div class="section-header topic-header">
-          <div class="book-eyebrow">Practice <span>&middot; ${kindName}</span></div>
+          <div class="book-eyebrow">Practice</div>
           <div class="list-detail-head">
             <h2>${escapeAttr(l.name)}</h2>
             ${headTools}
@@ -4721,7 +5063,7 @@
     $content.innerHTML = `
       <div class="back-row"><a class="back-link" href="#/practice">&larr; Practice</a></div>
       <div class="section-header topic-header">
-        <div class="book-eyebrow">Practice <span>&middot; Contests</span></div>
+        <div class="book-eyebrow">Practice</div>
         <h2>${escapeAttr(fam)} <span class="db-main-year">${year}</span></h2>
       </div>
       <div class="ct-years ct-years-page">${years.map(y => `<a href="${yhref(y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a>`).join("")}</div>
@@ -4769,12 +5111,9 @@
     noteRecent("p:" + p.slug);
     shownIds = [];
     const types = p.types.map(t => `<a class="ptype-chip" href="#/topic/${t.id}">${escapeAttr(t.label)}</a>`).join("");
-    const cardItem = fid => {
-      const e = BY_ID[fid]; if (!e) return "";
-      return `<li><a class="strat-link" href="#/f/${fid}"><span class="strat-name">${e.formula.name}</span><span class="strat-crumb">${e.section.title} &rsaquo; ${e.subsection.title}</span></a></li>`;
-    };
     // How this problem works: its tags split by kind into the chain Pattern -> Method ->
-    // Formulas. A link nobody has classified yet is shown as missing, never invented.
+    // Formulas. A link nobody has classified yet is shown as missing, never invented. It sits
+    // near the bottom of the page: the problem itself, and thinking about it, come first.
     const chain = { pattern: [], method: [], formula: [] };
     p.formulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
     const chainChip = fid => `<a class="related-item${fid === p.main ? " chain-main" : ""}" href="#/f/${fid}"${fid === p.main ? ' title="The main idea"' : ""}>${BY_ID[fid].formula.name}</a>`;
@@ -4786,27 +5125,15 @@
         <div class="chain-arrow" aria-hidden="true">&darr;</div>
         ${chainStep("Formulas", chain.formula, "&mdash;")}
       </div>`;
-    // Think first: each hint, then the strategy, revealed one at a time.
-    const steps = p.hints.map((h, i) => ({ label: `Hint ${i + 1}`, text: h }));
-    if (p.strategy) steps.push({ label: "Strategy", text: p.strategy });
-    const thinkHtml = steps.length ? `<div class="prob-think"><h4>Think</h4>${steps.map((st, i) => `
+    // The strategy, hidden until asked for. Written hints stay in the data (problem-db `hints`)
+    // but are not shown: they and the tricks will be folded into "How this problem works".
+    const steps = p.strategy ? [{ label: "Strategy", text: p.strategy }] : [];
+    const solo = steps.length === 1;
+    const thinkHtml = steps.length ? `<div class="prob-think"><h4>Strategy</h4>${steps.map((st, i) => `
         <div class="think-step"${i ? " hidden" : ""}>
-          <button type="button" class="show-more-btn think-btn" aria-expanded="false" data-label="${st.label.toLowerCase()}">Show ${st.label.toLowerCase()}</button>
-          <div class="think-body" hidden><span class="think-label">${st.label}.</span> ${st.text}</div>
+          <button type="button" class="show-more-btn think-btn" aria-expanded="false" data-label="${solo ? "" : st.label.toLowerCase()}">Show${solo ? "" : " " + st.label.toLowerCase()}</button>
+          <div class="think-body" hidden>${solo ? "" : `<span class="think-label">${st.label}.</span> `}${st.text}</div>
         </div>`).join("")}</div>` : "";
-    // Most problems have no trick: the section only appears where a genuinely shorter
-    // route exists that leans on something the main solution would not think to use.
-    // It sits below the standard route, so that route is still what a reader meets first.
-    const trickCards = p.trickFormulas.map(cardItem).join("");
-    const trickHtml = (p.trick || trickCards)
-      ? `<div class="prob-detail-section trick-box">
-           <h4>Tricks</h4>
-           <div class="trick-body">
-             ${p.trick ? `<p class="trick-prose">${p.trick}</p>` : ""}
-             ${trickCards ? `<ul class="strat-list">${trickCards}</ul>` : ""}
-           </div>
-         </div>`
-      : "";
     $content.innerHTML = `
       <div class="detail">
         <div class="back-row">
@@ -4815,16 +5142,15 @@
             : ""}
           <a class="back-link" href="#/problems/${famSlug(p.fam)}/${p.year}">&larr; ${escapeAttr(p.fam)} ${p.year}</a>
         </div>
-        <div class="book-eyebrow prob-eyebrow">Practice <span>&middot; ${escapeAttr(p.fam)} ${p.year}</span></div>
+        <div class="book-eyebrow prob-eyebrow">Practice</div>
         <div class="detail-head">
           <h2 class="card-name">${refShort(p.ref)}</h2>
         </div>
         ${types ? `<div class="ptype-row">${types}</div>` : ""}
-        ${chainHtml}
-        ${thinkHtml}
-        ${trickHtml}
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "The full statement and solution live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
+        ${thinkHtml}
+        ${chainHtml}
         ${contestNavHtml(p)}
       </div>`;
     renderMath($content);
@@ -4962,23 +5288,63 @@
       page: () => { const bl = getBacklinks(); const lonely = ALL.filter(e => !(bl[e.formula.id] || []).length);
         return { title: "Lonely pages", body: `<p class="special-note">${lonely.length} of ${ALL.length} cards have no incoming links.</p>` + cardIndex(lonely) }; } },
     { name: "Statistics", example: "Special:Statistics",
-      desc: "Counts of cards, problems, figures and links.",
+      desc: "Counts of cards, problems, connections, figures and your own use.",
       page: () => {
-        const bl = getBacklinks(), links = Object.values(bl).reduce((n, a) => n + a.length, 0);
-        const withProblems = ALL.filter(e => (PROBLEMS_BY_CARD[e.formula.id] || []).length).length;
+        const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
+        const sub = (k, v) => row("&nbsp;&nbsp;&nbsp;" + k, v);
+        const pct = (n, d) => d ? ` <span class="st-pct">(${Math.round(100 * n / d)}%)</span>` : "";
+        const table = (title, rows) => `<h3 class="st-head">${title}</h3><table class="special-table">${rows}</table>`;
+        const byKind = k => ALL.filter(e => e.kind === k);
+        const fs = byKind("formula"), ms = byKind("method"), ps = byKind("pattern");
+        // The library: the four kinds, and how far the four-kind rewrite has got.
+        const subjects = SECTIONS.filter(sec => bookOf(sec) === "formulas").map(sec => sub(sec.title, ALL.filter(e => e.section === sec).length)).join("");
+        const conv = [...ms, ...ps].filter(e => isConverted(e.formula)).length;
+        const library = row("Cards", ALL.length) + row("Formulas", fs.length) + subjects +
+          row("Methods", ms.length) + row("Patterns", ps.length) +
+          row("Methods and patterns in the new template", `${conv} of ${ms.length + ps.length}` + pct(conv, ms.length + ps.length));
+        // Problems: by contest and difficulty, and how fully each is classified.
+        const bands = { easy: 0, medium: 0, hard: 0 };
+        PROBLEM_DB.forEach(p => { bands[difficultyBand(p)]++; });
+        const chainOf = p => { const k = new Set(p.formulas.map(id => BY_ID[id].kind)); return k; };
+        const full = PROBLEM_DB.filter(p => { const k = chainOf(p); return k.has("pattern") && k.has("method") && k.has("formula"); }).length;
+        const withMethod = PROBLEM_DB.filter(p => chainOf(p).has("method")).length;
+        const withMain = PROBLEM_DB.filter(p => p.main).length, withStrategy = PROBLEM_DB.filter(p => p.strategy).length;
+        const tags = PROBLEM_DB.reduce((n, p) => n + p.formulas.length, 0);
+        const N = PROBLEM_DB.length;
+        const problems = row("Practice problems", N) + FAMILIES.map(f => sub(f, famCount(f))).join("") +
+          row("By difficulty (where they sit in the paper)", "") + ["easy", "medium", "hard"].map(b => sub(b.charAt(0).toUpperCase() + b.slice(1), bands[b])).join("") +
+          row("With a strategy to reveal", withStrategy + pct(withStrategy, N)) +
+          row("With a method tagged", withMethod + pct(withMethod, N)) +
+          row("With the full chain (pattern, method and formula)", full + pct(full, N)) +
+          row("With the main idea recorded", withMain + pct(withMain, N)) +
+          row("Cards tagged per problem, on average", (tags / Math.max(1, N)).toFixed(1));
+        // Connections: the hand-written links between kinds, the write-up links, and coverage.
+        const bl = getBacklinks(), links = Object.values(bl).reduce((n, x) => n + x.length, 0);
+        const suggests = ps.reduce((n, e) => n + (e.formula.suggests || []).length, 0);
+        const planned = new Set(); ps.forEach(e => (e.formula.suggests || []).forEach(id => { if (!BY_ID[id]) planned.add(id); }));
+        const uses = ms.reduce((n, e) => n + (e.formula.uses || []).length, 0);
+        const used = ALL.filter(e => (PROBLEMS_BY_CARD[e.formula.id] || []).length).length;
+        const lonely = ALL.filter(e => !(bl[e.formula.id] || []).length).length;
+        const top = ALL.slice().sort((x, y) => (PROBLEMS_BY_CARD[y.formula.id] || []).length - (PROBLEMS_BY_CARD[x.formula.id] || []).length).slice(0, 5)
+          .map(e => sub(`<a href="#/f/${e.formula.id}">${e.formula.name}</a>`, (PROBLEMS_BY_CARD[e.formula.id] || []).length)).join("");
+        const connections = row("Patterns pointing to methods (suggests)", suggests) +
+          row("Planned methods not written yet (red links)", planned.size) +
+          row("Methods pointing to formulas (uses)", uses) +
+          row("Links inside explanations", links) +
+          row("Cards no explanation links to", `<a href="${specialHref("LonelyPages")}">${lonely}</a>`) +
+          row("Cards used by at least one problem", used + pct(used, ALL.length)) +
+          row("Most practiced cards", "") + top;
+        // Figures and worked examples.
         const panels = Object.keys(window.MATH_DIAGRAMS || {}).length;
         const body = Object.values(window.MATH_BODY_DIAGRAMS || {}).reduce((n, o) => n + Object.keys(o).length, 0);
-        const fams = {};
-        PROBLEM_DB.forEach(p => { const k = /AIME/.test(p.ref) ? "AIME" : /AMC 12/.test(p.ref) ? "AMC 12" : /AMC 10/.test(p.ref) ? "AMC 10" : "other"; fams[k] = (fams[k] || 0) + 1; });
-        const row = (k, v) => `<tr><td>${k}</td><td>${v}</td></tr>`;
-        const sections = SECTIONS.map(sec => row(sec.title, ALL.filter(e => e.section === sec).length)).join("");
-        return { title: "Statistics", body: `<table class="special-table">
-          ${row("Cards", ALL.length)}${sections}
-          ${row("Practice problems", PROBLEM_DB.length)}${Object.keys(fams).map(k => row("&nbsp;&nbsp;" + k, fams[k])).join("")}
-          ${row("Cards used by at least one problem", withProblems)}
-          ${row("Cards with a figure at the top", panels)}${row("Figures inside explanations", body)}
-          ${row("Links between cards", links)}${row("Study lists", lists.items.length)}
-        </table>` };
+        const examples = ALL.filter(e => (window.MATH_EXAMPLES || {})[e.formula.id]).length;
+        const media = row("Cards with a figure", panels + pct(panels, ALL.length)) + row("Figures inside explanations", body) +
+          row("Cards with a worked example", examples + pct(examples, ALL.length)) + row("Built-in study lists", BUILTIN_LISTS.length);
+        // The reader's own use, from this browser.
+        const starred = liveIds(getList("starred")).length, mine = lists.items.filter(l => l.id !== "starred").length;
+        const you = row("Starred cards", starred) + row("Your lists", mine) + row("Recently opened (kept)", readRecent().length);
+        return { title: "Statistics", body: table("Library", library) + table("Problems", problems) + table("Connections", connections) +
+          table("Figures and examples", media) + table("You", you) };
       } },
     { name: "Search", arg: "query", example: "Special:Search/angle bisector",
       desc: "Search for the rest of the command.",
@@ -5183,6 +5549,8 @@
         state.activeTopic = route.section.topic;
         state.activeCluster = route.section.cluster;
         if (state.navCollapsed !== route.section.id + ":" + route.section.sub) state.navCollapsed = null;
+        const sec = SECTIONS.find(x => x.id === route.section.id);
+        if (sec) lastSubject[bookOf(sec)] = sectionHash(sec.id, bySubject(sec) ? { sub: route.section.sub } : {});
       }
     }
     trackOrigin(route);
@@ -5238,7 +5606,12 @@
     // width and no sidebar.
     const searching = (route.type === "home" && (!!state.query.trim() || !!state.adv)) || route.type === "topic" || route.type === "special";
     document.body.dataset.space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
-    const noSidebar = onLanding || searching || ["problems", "problem", "lists", "list", "settings", "space"].indexOf(route.type) !== -1;
+    // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
+    // same panel as a card's "On this page", so the section being read is marked the same way.
+    const noSidebar = onLanding || searching || ["problems", "problem", "lists", "settings", "space"].indexOf(route.type) !== -1
+      || (route.type === "list" && !$content.querySelector(".list-section[id]"));
+    const $tree = document.getElementById("formula-nav");
+    if ($tree) $tree.hidden = route.type === "list";
     const $layout = document.querySelector(".layout");
     if ($layout) $layout.classList.toggle("no-sidebar", noSidebar);
     // The Lists surfaces get category navigation instead of the formula tree. Both live in
@@ -5249,12 +5622,16 @@
     syncFilterChips();
     syncSortSelect();
     updateGearActive();
-    if (route.type !== "formula") clearPageToc();
+    if (route.type === "list") buildListToc();
+    else if (route.type !== "formula") clearPageToc();
     // Showing or hiding the sidebar changes the card width, so the formulas are fitted again.
     fitCardFormulas($content);
   }
 
   // ---------- Sidebar ----------
+
+
+
 
   const LIST_KINDS = [["route", "Study Routes"], ["configuration", "Configurations"],
                       ["thinking", "Ways of Thinking"], ["curiosity", "Curiosities"]];
@@ -5298,7 +5675,9 @@
     $sidebar.innerHTML = `<div id="formula-nav">` + order.map(group => `
       <div class="nav-group" data-group="${group}">
         <div class="nav-space-head">
-          <a class="nsh-label" href="#/${group}" title="${SPACES[group].label}: everything in one place">${SPACES[group].label}</a>
+          ${group === "practice"
+            ? `<a class="nsh-label" href="#/practice" title="Contests, study lists, and your lists">${SPACES[group].label}</a>`
+            : `<span class="nsh-label">${SPACES[group].label}</span><button type="button" class="nsh-info" data-info="${group}" aria-label="About ${SPACES[group].label}" aria-expanded="false">i</button>`}
           <span class="nsh-ask">${SPACES[group].ask}</span>
         </div>
         <div class="nav-group-body"><div class="nav-group-inner">
@@ -5481,7 +5860,101 @@
     $search.blur();
   });
 
-  // Space switcher in the top bar: each space opens on its own main page.
+  // Scroll speed. Each wheel step is scaled and applied to the innermost box that can still
+  // scroll that way (a sidebar, a dialog), else the page. Small steps, a trackpad's, are applied
+  // at once, as they already arrive many times a second; a mouse wheel's large notches glide to
+  // their target so the page does not jump. Pinch-zoom (ctrl+wheel) and sideways scrolling are
+  // left to the browser.
+  let wheelAnim = null;
+  // A box that contains its scrolling (overscroll-behavior, as dropdowns and dialogs do) keeps
+  // the step even at its end, so the page behind it does not move.
+  function scrollerFor(target, dy) {
+    for (let el = target instanceof Element ? target : null; el && el !== document.body && el !== document.documentElement; el = el.parentElement) {
+      const cs = getComputedStyle(el);
+      if (el.scrollHeight <= el.clientHeight + 1 || !/(auto|scroll)/.test(cs.overflowY)) continue;
+      const atTop = el.scrollTop <= 0, atEnd = el.scrollTop + el.clientHeight >= el.scrollHeight - 1;
+      if (!(dy < 0 && atTop) && !(dy > 0 && atEnd)) return el;
+      if (cs.overscrollBehaviorY && cs.overscrollBehaviorY !== "auto") return el;
+    }
+    return null;
+  }
+  const scrollPos = el => el ? el.scrollTop : window.scrollY;
+  const scrollMax = el => el ? el.scrollHeight - el.clientHeight : document.documentElement.scrollHeight - window.innerHeight;
+  // Instant, not the page's CSS smooth scrolling: the glide below is its own animation.
+  const scrollSet = (el, y) => { if (el) el.scrollTo({ top: y, behavior: "instant" }); else window.scrollTo({ top: y, behavior: "instant" }); };
+  document.addEventListener("wheel", e => {
+    const k = SCROLL_FACTOR[state.scroll] || 1;
+    if (k === 1 || e.ctrlKey || e.defaultPrevented || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+    const dy = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? window.innerHeight : 1) * k;
+    const el = scrollerFor(e.target, dy);
+    e.preventDefault();
+    const clampTo = y => Math.max(0, Math.min(scrollMax(el), y));
+    if (e.deltaMode === 0 && Math.abs(e.deltaY) < 40) {
+      if (wheelAnim) { cancelAnimationFrame(wheelAnim.raf); wheelAnim = null; }
+      scrollSet(el, clampTo(scrollPos(el) + dy));
+      return;
+    }
+    // A glide in progress keeps its target and adds to it; otherwise start from where the page is.
+    if (!wheelAnim || wheelAnim.el !== el) wheelAnim = { el, to: scrollPos(el), raf: 0 };
+    wheelAnim.to = clampTo(wheelAnim.to + dy);
+    if (wheelAnim.raf) return;
+    const step = () => {
+      const a = wheelAnim;
+      if (!a) return;
+      const cur = scrollPos(a.el), diff = a.to - cur;
+      if (Math.abs(diff) < 2) { scrollSet(a.el, a.to); wheelAnim = null; return; }
+      scrollSet(a.el, cur + diff * 0.28);
+      // Stop if something else holds the page still (its end, or the reader dragging the bar).
+      if (Math.abs(scrollPos(a.el) - cur) < 0.5) { wheelAnim = null; return; }
+      a.raf = requestAnimationFrame(step);
+    };
+    wheelAnim.raf = requestAnimationFrame(step);
+  }, { passive: false });
+
+  // The "i" beside a space's name in the sidebar: what the space is for and what was recently
+  // opened in it, in a centered dialog like Filters. It closes on the backdrop, the close
+  // button, Escape, or opening anything in it.
+  let infoEl = null;
+  function closeSpaceInfo() {
+    if (!infoEl) return;
+    infoEl.remove();
+    infoEl = null;
+  }
+  function openSpaceInfo(name) {
+    closeSpaceInfo();
+    const recent = recentRowsHtml(6, KINDS_OF_SPACE[name]);
+    infoEl = document.createElement("div");
+    infoEl.className = "modal-overlay";
+    infoEl.innerHTML = `
+      <div class="modal info-modal" role="dialog" aria-label="About ${SPACES[name].label}" data-tint="${name}">
+        <div class="modal-head">
+          <h3>${SPACES[name].label}</h3>
+          <button class="modal-close" aria-label="Close">&times;</button>
+        </div>
+        <div class="info-body">
+          <p class="info-ask">${SPACES[name].ask}</p>
+          <p class="info-intro">${SPACE_INTROS[name]}</p>
+          <div class="info-label">Recently opened</div>
+          ${recent ? `<div class="rc-list info-recent">${recent}</div>` : `<p class="hp-empty">Nothing opened here yet.</p>`}
+        </div>
+      </div>`;
+    document.body.appendChild(infoEl);
+    infoEl.addEventListener("click", e => {
+      if (e.target === infoEl || e.target.closest(".modal-close") || e.target.closest("a")) closeSpaceInfo();
+    });
+    renderMath(infoEl);
+    const x = infoEl.querySelector(".modal-close");
+    if (x) x.focus();
+  }
+  document.addEventListener("click", e => {
+    const btn = e.target.closest && e.target.closest(".nsh-info");
+    if (btn) openSpaceInfo(btn.dataset.info);
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeSpaceInfo(); });
+  window.addEventListener("hashchange", closeSpaceInfo);
+
+  // Space switcher in the top bar: Practice opens its own page; the other spaces open the
+  // subject last visited in them.
   const $spaceSwitch = document.getElementById("space-switch");
   if ($spaceSwitch) $spaceSwitch.addEventListener("click", e => {
     const b = e.target.closest("[data-space-go]");
@@ -5489,7 +5962,7 @@
     clearSearch();
     closeDrawer();
     state.landing = false;
-    const to = "#/" + b.dataset.spaceGo;
+    const to = b.dataset.spaceGo === "practice" ? "#/practice" : spaceEntry(b.dataset.spaceGo);
     if (location.hash === to) render(); else location.hash = to;
     window.scrollTo({ top: 0 });
   });
@@ -5816,7 +6289,7 @@
       const open = body.hidden;
       body.hidden = !open;
       thinkBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      thinkBtn.textContent = (open ? "Hide " : "Show ") + thinkBtn.dataset.label;
+      thinkBtn.textContent = (open ? "Hide" : "Show") + (thinkBtn.dataset.label ? " " + thinkBtn.dataset.label : "");
       const next = step.nextElementSibling;
       if (open && next && next.classList.contains("think-step")) next.hidden = false;
       return;

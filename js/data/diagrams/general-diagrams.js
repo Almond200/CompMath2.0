@@ -73,6 +73,450 @@
   // ---------- Algebra ----------
 
   // AM–GM: semicircle over a + b; radius = AM, half-chord at the joint = GM.
+  DIAGRAMS["choose-modulus"] = [(() => {
+    // Which residues squares reach modulo 8 and cubes reach modulo 9: a filled box is hit,
+    // an empty one never is. Computed, not typed.
+    const hits = (m, k) => { const h = new Set(); for (let x = 0; x < m; x++) h.add(Math.pow(x, k) % m); return h; };
+    const sq = hits(8, 2), cu = hits(9, 3);
+    const ok = [...sq].sort().join() === "0,1,4" && [...cu].sort((a, b) => a - b).join() === "0,1,8";
+    // Labels end at L - 14 and the widest strip has 9 boxes, so center that span on the canvas.
+    const L = Math.round((430 - (60 + 14 + 9 * 32 - 6)) / 2) + 60 + 14;
+    const strip = (y, m, h, label) => {
+      const out = [txt([L - 14, y + 21], label, DIM, 13, "end")];
+      for (let r = 0; r < m; r++) {
+        const x = L + r * 32, on = h.has(r);
+        out.push(rect(x, y, 26, 30, on ? ACC : FNT, on ? 1.8 : 1.2, on ? ACCS : "none"));
+        out.push(txt([x + 13, y + 20], String(r), on ? ACC : FNT, 13));
+      }
+      return out;
+    };
+    return wrap(430, 170, [
+      txt([L, 32], "residue", FNT, 11, "start"),
+      ...strip(42, 8, sq, "x² mod 8"),
+      ...strip(102, 9, cu, "x³ mod 9"),
+      cap(430, 170, "the residues a power can reach: squares hit only 0, 1 and 4 modulo 8, and cubes only 0, 1 and 8 modulo 9, so a side made of them can never land in an empty box" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["exponent-tracking"] = [(() => {
+    // 600 = 2^3 * 3 * 5^2 and 1134 = 2 * 3^4 * 7: gcd takes the smaller exponent at each prime,
+    // lcm the larger.
+    const P = [2, 3, 5, 7], ex = n => P.map(p => { let e = 0; while (n % p === 0) { n /= p; e++; } return e; });
+    const a = 600, b = 1134, ea = ex(a), eb = ex(b);
+    const g = ea.map((e, i) => Math.min(e, eb[i])), l = ea.map((e, i) => Math.max(e, eb[i]));
+    const val = es => es.reduce((v, e, i) => v * Math.pow(P[i], e), 1);
+    const gcd = (x, y) => y ? gcd(y, x % y) : x;
+    const ok = val(g) === gcd(a, b) && val(l) === a * b / gcd(a, b);
+    const L = 150, W = 58, rows = [["600", ea, DIM], ["1134", eb, DIM], ["gcd = " + val(g), g, GRN], ["lcm = " + val(l), l, ACC]];
+    const parts = P.map((p, i) => txt([L + i * W + W / 2, 30], String(p), FNT, 13));
+    rows.forEach(([name, es, c], r) => {
+      const y = 44 + r * 38 + (r >= 2 ? 10 : 0);
+      parts.push(txt([L - 14, y + 20], name, c, 13, "end"));
+      es.forEach((e, i) => {
+        parts.push(rect(L + i * W + 6, y, W - 12, 28, r >= 2 ? c : FNT, r >= 2 ? 1.6 : 1.1, r >= 2 ? (r === 2 ? "rgba(52,168,83,0.10)" : ACCS) : "none"));
+        parts.push(txt([L + i * W + W / 2, y + 19], String(e), c, 14));
+      });
+    });
+    parts.push(seg([L, 130], [L + 4 * W, 130], FNT, 1.2));
+    return wrap(430, 220, [txt([L - 14, 30], "prime", FNT, 11, "end"), ...parts,
+      cap(430, 220, "each number as its exponents at 2, 3, 5 and 7: the gcd takes the smaller exponent in each column and the lcm the larger, one prime at a time" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["hensel-lifting"] = [(() => {
+    // Roots of x^2 + 1 modulo 5, 25 and 125, found by search; each root modulo 5^(k+1)
+    // reduces to a root modulo 5^k, which is the edge drawn.
+    const roots = m => { const r = []; for (let x = 0; x < m; x++) if ((x * x + 1) % m === 0) r.push(x); return r; };
+    const lv = [roots(5), roots(25), roots(125)], X = [80, 215, 350];
+    const ok = lv.every(r => r.length === 2) && lv[1].every(x => lv[0].includes(x % 5)) && lv[2].every(x => lv[1].includes(x % 25));
+    const Y = (k, x) => (lv[0].indexOf(x % 5) === 0 ? 92 : 182);
+    const parts = ["mod 5", "mod 25", "mod 125"].map((t, k) => txt([X[k], 34], t, FNT, 12));
+    lv.forEach((r, k) => r.forEach(x => {
+      if (k) { const par = lv[k - 1].find(y => y === x % (k === 1 ? 5 : 25)); parts.push(seg([X[k - 1] + 22, Y(k - 1, par)], [X[k] - 22, Y(k, x)], ACC, 1.6)); }
+    }));
+    lv.forEach((r, k) => r.forEach(x => {
+      parts.push(circ([X[k], Y(k, x)], 20, k ? ACC : DIM, 1.8, "var(--bg-card)"));
+      parts.push(txt([X[k], Y(k, x) + 5], String(x), k ? ACC : DIM, 14));
+    }));
+    return wrap(430, 230, [...parts,
+      cap(430, 230, "the roots of x² + 1 lifted one power of 5 at a time: 2 becomes 7 and then 57, and 3 becomes 18 and then 68, one lift each because the derivative 2x is never 0 modulo 5" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["vieta-jumping"] = [(() => {
+    // Solutions of a^2 - 4ab + b^2 = 4, that is (a^2 + b^2)/(ab + 1) = 4. Fixing b and taking
+    // the other root a' = 4b - a jumps (30, 8) -> (2, 8); fixing a then jumps to (2, 0).
+    const k = 4, on = (a, b) => a * a - k * a * b + b * b === k;
+    const chain = [[30, 8], [2, 8], [2, 0]];
+    const ok = chain.every(([a, b]) => on(a, b)) && 4 * 8 - 30 === 2 && 4 * 2 - 8 === 0;
+    const m = frame(0, 32, 0, 32, 54, 18, 330, 240);
+    const up = x => 2 * x + Math.sqrt(3 * x * x + 4), lo = x => 2 * x - Math.sqrt(3 * x * x + 4);
+    const xUp = (32 * 2 - Math.sqrt(4 * 32 * 32 - 4 * (32 * 32 - 4))) / 2;
+    return wrap(430, 300, [
+      axes(m),
+      plot(up, m, 0, Math.min(xUp, 8.6), 120, FNT, 1.6), plot(lo, m, 2, 32, 160, FNT, 1.6),
+      seg(m.pt(30, 8), m.pt(2, 8), ACC, 2), seg(m.pt(2, 8), m.pt(2, 0), ACC, 2),
+      ...chain.map(([a, b]) => dot(m.pt(a, b), ACC, 4.5)),
+      txt(add(m.pt(30, 8), [0, -12]), "(30, 8)", ACC, 12), txt(add(m.pt(2, 8), [10, -8]), "(2, 8)", ACC, 12, "start"),
+      txt(add(m.pt(2, 0), [12, -8]), "(2, 0)", ACC, 12, "start"),
+      txt(add(m.pt(32, 0), [0, 18]), "a", DIM, 13), txt(add(m.pt(0, 32), [-14, 4]), "b", DIM, 13),
+      cap(430, 300, "the curve a² − 4ab + b² = 4: fixing b = 8, the other root of the quadratic in a is 4·8 − 30 = 2, and fixing a = 2, the other root in b is 4·2 − 8 = 0; the descent ends at a zero, where k = b² = 4 shows" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["extended-euclidean-algorithm"] = [(() => {
+    // A 21 x 8 rectangle cut into squares: each quotient of the Euclidean algorithm is the
+    // number of squares of the shorter side that fit; the last square has side gcd(21, 8) = 1.
+    const S = 17, X0 = 36, Y0 = 26;
+    let x = 0, y = 0, w = 21, h = 8;
+    const sq = [], cols = [ACC, GLD, GRN, ACC, GLD, GRN];
+    let step = 0;
+    while (w > 0 && h > 0) {
+      if (w >= h) { const q = Math.floor(w / h); for (let i = 0; i < q; i++) sq.push([x + i * h, y, h, step]); x += q * h; w -= q * h; }
+      else { const q = Math.floor(h / w); for (let i = 0; i < q; i++) sq.push([x, y + i * w, w, step]); y += q * w; h -= q * w; }
+      step++;
+    }
+    const sides = sq.map(q => q[2]);
+    const ok = sides.join() === "8,8,5,3,2,1,1" && Math.min(...sides) === 1;
+    const parts = [rect(X0, Y0, 21 * S, 8 * S, DIM, 2)];
+    sq.forEach(([qx, qy, side, st]) => {
+      const c = cols[st % cols.length];
+      parts.push(rect(X0 + qx * S, Y0 + qy * S, side * S, side * S, c, 1.6, c === ACC ? ACCS : c === GLD ? GLDS : "rgba(52,168,83,0.10)"));
+      if (side >= 2) parts.push(txt([X0 + (qx + side / 2) * S, Y0 + (qy + side / 2) * S + 5], String(side), c, side >= 5 ? 15 : 12));
+    });
+    return wrap(430, 190, [...parts,
+      cap(430, 190, "21 = 2·8 + 5, 8 = 1·5 + 3, 5 = 1·3 + 2, 3 = 1·2 + 1, 2 = 2·1: cutting the largest squares from a 21 × 8 rectangle follows the algorithm, and the last square, of side 1, is the gcd" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["bounding-diophantine"] = [(() => {
+    // The search for 1/x + 1/y + 1/z = 1 with x <= y <= z; the leaves are checked against a
+    // brute-force search, so the tree shows every solution.
+    const sols = [];
+    for (let x = 1; x <= 12; x++) for (let y = x; y <= 12; y++) for (let z = y; z <= 60; z++) if (y * z + x * z + x * y === x * y * z) sols.push([x, y, z].join(","));
+    const ok = sols.join(" ") === "2,3,6 2,4,4 3,3,3";
+    const box = (c, t, col, w = 86) => [rect(c[0] - w / 2, c[1] - 15, w, 30, col, 1.5, "var(--bg-card)"), txt([c[0], c[1] + 5], t, col, 13)];
+    const R = [215, 36], A = [120, 104], B = [320, 104], A1 = [70, 172], A2 = [170, 172], B1 = [320, 172];
+    return wrap(430, 240, [
+      seg(add(R, [0, 15]), add(A, [0, -15]), FNT, 1.4), seg(add(R, [0, 15]), add(B, [0, -15]), FNT, 1.4),
+      seg(add(A, [0, 15]), add(A1, [0, -15]), FNT, 1.4), seg(add(A, [0, 15]), add(A2, [0, -15]), FNT, 1.4), seg(add(B, [0, 15]), add(B1, [0, -15]), FNT, 1.4),
+      ...box(R, "x ≤ y ≤ z", DIM, 110), ...box(A, "x = 2", DIM), ...box(B, "x = 3", DIM),
+      ...box(A1, "(2, 3, 6)", ACC), ...box(A2, "(2, 4, 4)", ACC), ...box(B1, "(3, 3, 3)", ACC),
+      cap(430, 240, "ordering the variables gives 2 ≤ x ≤ 3, then each value of x bounds y in turn: the whole search is these branches, and its leaves are every solution" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["squeeze-between-squares"] = [(() => {
+    // n = 5: 4N = 4(n^4 + n^3 + n^2 + n + 1) = 3124 lies strictly between 55^2 and 56^2.
+    const n = 5, N4 = 4 * (n ** 4 + n ** 3 + n ** 2 + n + 1), lo = 2 * n * n + n, hi = lo + 1;
+    const ok = lo * lo < N4 && N4 < hi * hi && lo === 55 && N4 === 3124;
+    const x = v => 40 + (v - 3000) * (350 / 150), Y = 92;
+    const ticks = []; for (let v = 3000; v <= 3150; v += 25) { ticks.push(seg([x(v), Y - 5], [x(v), Y + 5], FNT, 1)); ticks.push(txt([x(v), Y + 22], String(v), FNT, 10)); }
+    return wrap(430, 170, [
+      seg([x(3000), Y], [x(3150), Y], FNT, 1.4), ...ticks,
+      seg([x(lo * lo), Y], [x(hi * hi), Y], GLD, 5),
+      dot([x(lo * lo), Y], DIM, 5), dot([x(hi * hi), Y], DIM, 5), dot([x(N4), Y], ACC, 5),
+      txt([x(lo * lo), Y - 16], "55² = 3025", DIM, 12), txt([x(hi * hi) - 6, Y - 16], "56² = 3136", DIM, 12, "end"),
+      txt([x(N4) - 4, Y - 36], "4N = 3124", ACC, 12, "end"),
+      cap(430, 170, "for n = 5, 4N = 3124 sits strictly inside the gap between the consecutive squares 55² and 56², so it is not a square; the gap grows faster than the distance from 4N to 55²" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["factor-pair-counting"] = [(() => {
+    // The factor pairs of 36 as rectangles of area 36; the square 6 x 6 has no mirror pair.
+    const N = 36, pairs = []; for (let a = 1; a * a <= N; a++) if (N % a === 0) pairs.push([a, N / a]);
+    let dN = 0; for (let a = 1; a <= N; a++) if (N % a === 0) dN++;
+    const ok = pairs.length === 5 && dN === 9 && pairs[4][0] === 6;
+    const S = 8, X = 40, parts = []; let y = 22;
+    pairs.forEach(([a, b]) => {
+      const sqr = a === b;
+      parts.push(rect(X, y, b * S, a * S, sqr ? GLD : ACC, 1.6, sqr ? GLDS : ACCS));
+      parts.push(txt([X + b * S + 10, y + a * S / 2 + 5], a + " × " + b, sqr ? GLD : DIM, 13, "start"));
+      y += a * S + 14;
+    });
+    return wrap(430, y + 10, [...parts,
+      cap(430, y + 10, "the five ways to write 36 = a × b with a ≤ b, as rectangles of area 36: each gives two ordered solutions except the square 6 × 6, so there are d(36) = 9 ordered pairs and 5 unordered" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["cryptarithms"] = [(() => {
+    // TWO + TWO = FOUR solved as 734 + 734 = 1468, with the one carry shown.
+    const map = { T: 7, W: 3, O: 4, F: 1, U: 6, R: 8 };
+    const num = w => +w.split("").map(c => map[c]).join("");
+    const ok = num("TWO") * 2 === num("FOUR") && new Set(Object.values(map)).size === 6;
+    const col = (x0, rows) => rows.map(([t, y, c]) => t.split("").map((ch, i) => txt([x0 + (i + 4 - t.length) * 30, y], ch, c, 20)));
+    const L = col(40, [["TWO", 80, DIM], ["TWO", 116, DIM], ["FOUR", 166, ACC]]).flat();
+    const Rt = col(250, [["734", 80, DIM], ["734", 116, DIM], ["1468", 166, ACC]]).flat();
+    return wrap(430, 220, [
+      txt([90, 50], "1", GLD, 12), txt([300, 50], "1", GLD, 12),
+      txt([46, 116], "+", DIM, 18), txt([256, 116], "+", DIM, 18),
+      seg([40, 132], [160, 132], DIM, 1.6), seg([250, 132], [370, 132], DIM, 1.6),
+      ...L, ...Rt,
+      cap(430, 220, "column by column from the right: O + O ends in R, W + W gives U, and T + T carries 1, which must be F; T = 7, W = 3, O = 4 gives 734 + 734 = 1468" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["digit-manipulation"] = [(() => {
+    // 782 - 287 by place value: the tens cancel, and the hundreds and units leave 99(7 - 2).
+    const a = 7, b = 8, c = 2, n1 = 100 * a + 10 * b + c, n2 = 100 * c + 10 * b + a;
+    const ok = n1 - n2 === 99 * (a - c) && n1 - n2 === 495;
+    const X = [150, 250, 350], parts = ["hundreds", "tens", "units"].map((t, i) => txt([X[i], 30], t, FNT, 11));
+    const row = (y, vals, label, col) => [txt([92, y + 5], label, col, 14, "end"), ...vals.map((v, i) => txt([X[i], y + 5], v, i === 1 ? FNT : col, 15))];
+    parts.push(...row(64, ["700", "80", "2"], "782 =", DIM), ...row(102, ["200", "80", "7"], "287 =", DIM));
+    parts.push(seg([110, 122], [390, 122], DIM, 1.4));
+    parts.push(...row(148, ["+500", "0", "−5"], "difference", ACC));
+    parts.push(seg([228, 70], [272, 104], FNT, 1.2), seg([228, 104], [272, 70], FNT, 1.2));
+    return wrap(430, 200, [...parts,
+      cap(430, 200, "a number minus its reversal, column by column: the tens are equal and cancel, leaving 500 − 5 = 495 = 99 · (7 − 2), so the middle digit never matters" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["reflection-principle"] = [(() => {
+    // A bad path from (0,0) to (4,4) (R U U U R R R U) first touches y = x + 1 at (1, 2);
+    // reflecting the rest across that line gives a path to (3, 5), the mirrored endpoint.
+    const S = 40, X0 = 70, Y0 = 250, P = (x, y) => [X0 + x * S, Y0 - y * S];
+    const walk = (start, steps) => { const pts = [start]; steps.split("").forEach(c => { const [x, y] = pts[pts.length - 1]; pts.push(c === "R" ? [x + 1, y] : [x, y + 1]); }); return pts; };
+    const bad = walk([0, 0], "RUUURRRU"), touch = bad.findIndex(([x, y]) => y === x + 1);
+    const tail = "RUUURRRU".slice(touch).split("").map(c => c === "R" ? "U" : "R").join("");
+    const refl = walk(bad[touch], tail), end = refl[refl.length - 1];
+    const ok = touch === 3 && end[0] === 3 && end[1] === 5 && bad[bad.length - 1].join() === "4,4";
+    const grid = [];
+    for (let i = 0; i <= 5; i++) { grid.push(seg(P(i, 0), P(i, 5), FNT, 0.6)); grid.push(seg(P(0, i), P(5, i), FNT, 0.6)); }
+    const path = (pts, c, w, dash) => pts.slice(1).map((q, i) => seg(P(...pts[i]), P(...q), c, w, dash));
+    return wrap(430, 290, [...grid,
+      seg(P(0, 1), P(4, 5), GLD, 1.6, "6 4"), txt(add(P(0, 1), [-10, -8]), "y = x + 1", GLD, 12, "end"),
+      ...path(bad.slice(0, touch + 1), DIM, 2.6), ...path(bad.slice(touch), DIM, 2.2, "5 4"), ...path(refl, ACC, 2.6),
+      dot(P(0, 0), DIM, 4), dot(P(4, 4), DIM, 4.5), dot(P(...bad[touch]), GLD, 5), dot(P(...end), ACC, 4.5),
+      txt(add(P(4, 4), [12, 14]), "(4, 4)", DIM, 12, "start"), txt(add(P(...end), [12, 4]), "(3, 5)", ACC, 12, "start"),
+      cap(430, 290, "a path to (4, 4) that touches y = x + 1 (first at the gold point): reflecting everything after the first touch turns its dashed tail into the blue path to (3, 5), and every path to (3, 5) arises this way" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["casework-method"] = [(() => {
+    // Subsets of {1..10} whose largest element is twice the smallest, split by the smallest m:
+    // m - 1 free numbers in between give 2^(m-1) subsets.
+    const counts = [];
+    for (let m = 1; 2 * m <= 10; m++) counts.push(2 ** (m - 1));
+    let brute = 0;
+    for (let mask = 1; mask < 1024; mask++) { const el = []; for (let i = 0; i < 10; i++) if (mask & (1 << i)) el.push(i + 1); if (el[el.length - 1] === 2 * el[0]) brute++; }
+    const ok = counts.reduce((a, b) => a + b, 0) === 31 && brute === 31;
+    const B = 190, U = 9, parts = [];
+    counts.forEach((c, i) => {
+      const x = 70 + i * 66, h = c * U;
+      parts.push(rect(x, B - h, 44, h, ACC, 1.6, ACCS));
+      parts.push(txt([x + 22, B - h - 8], String(c), ACC, 13));
+      parts.push(txt([x + 22, B + 18], "m = " + (i + 1), DIM, 12));
+    });
+    return wrap(430, 240, [seg([56, B], [400, B], FNT, 1.2), ...parts,
+      cap(430, 240, "the cases of the example, split by the smallest element m: the largest is then 2m and the m − 1 numbers between are free, so the case sizes are 1, 2, 4, 8 and 16, which add to 31" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["counting-blocks"] = [(() => {
+    // Seven people, A, B and C glued into one block: 5 units, 5! orders, times 3! inside.
+    const fact = n => n <= 1 ? 1 : n * fact(n - 1);
+    const ok = fact(5) * fact(3) === 720;
+    const units = ["D", "ABC", "E", "F", "G"], parts = []; let x = 40;
+    units.forEach(u => {
+      const w = u.length > 1 ? 120 : 46, blk = u.length > 1;
+      parts.push(rect(x, 60, w, 46, blk ? ACC : DIM, blk ? 2 : 1.4, blk ? ACCS : "none"));
+      if (blk) u.split("").forEach((ch, i) => { parts.push(txt([x + 20 + i * 40, 89], ch, ACC, 16)); if (i) parts.push(seg([x + i * 40, 66], [x + i * 40, 100], ACC, 1, "3 3")); });
+      else parts.push(txt([x + w / 2, 89], u, DIM, 16));
+      x += w + 10;
+    });
+    return wrap(430, 170, [...parts,
+      txt([215, 140], "5 units: 5! = 120 orders,  block inside: 3! = 6", DIM, 13),
+      cap(430, 170, "A, B and C glued into one block: the block and the other four people are 5 units in 5! orders, and the block's own order adds a factor of 3!, for 720 seatings" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["gap-method"] = [(() => {
+    // Four boys leave five gaps; three girls take three distinct gaps.
+    const C = (n, k) => { let r = 1; for (let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return r; };
+    const ok = 24 * C(5, 3) * 6 === 1440;
+    const parts = [], gapX = [], picked = [0, 2, 4];
+    let x = 50;
+    for (let g = 0; g <= 4; g++) {
+      gapX.push(x + 14); x += 28;
+      if (g < 4) { parts.push(rect(x, 70, 44, 44, DIM, 1.4)); parts.push(txt([x + 22, 98], "B", DIM, 16)); x += 44 + 6; }
+    }
+    gapX.forEach((gx, g) => {
+      const on = picked.includes(g);
+      parts.push(seg([gx, 64], [gx, 120], on ? ACC : FNT, on ? 2 : 1.2, on ? "" : "3 3"));
+      if (on) { parts.push(circ([gx, 46], 13, ACC, 1.6, ACCS)); parts.push(txt([gx, 51], "G", ACC, 13)); }
+      parts.push(txt([gx, 140], String(g + 1), on ? ACC : FNT, 11));
+    });
+    return wrap(430, 190, [...parts,
+      cap(430, 190, "four boys leave five gaps, the two ends included; putting the three girls in three different gaps is the only way to keep them apart, so the count is 4! · C(5, 3) · 3! = 1440" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["transfer-matrix-method"] = [(() => {
+    // States "last digit 0" and "last digit 1" for strings with no two adjacent 1s: 0 -> 0,
+    // 0 -> 1 and 1 -> 0 are allowed, 1 -> 1 is not. Traces of M^n give 1, 3, 4, 7, 11.
+    const mul = (A, B) => [[A[0][0] * B[0][0] + A[0][1] * B[1][0], A[0][0] * B[0][1] + A[0][1] * B[1][1]], [A[1][0] * B[0][0] + A[1][1] * B[1][0], A[1][0] * B[0][1] + A[1][1] * B[1][1]]];
+    const M = [[1, 1], [1, 0]], tr = []; let Pw = M;
+    for (let n = 1; n <= 5; n++) { tr.push(Pw[0][0] + Pw[1][1]); Pw = mul(Pw, M); }
+    const ok = tr.join() === "1,3,4,7,11";
+    const A = [130, 110], B = [300, 110];
+    return wrap(430, 210, [
+      circ(A, 32, ACC, 2, ACCS), txt(add(A, [0, 6]), "ends 0", ACC, 13),
+      circ(B, 32, DIM, 2, "var(--bg-card)"), txt(add(B, [0, 6]), "ends 1", DIM, 13),
+      `<path d="M ${A[0] + 28} ${A[1] - 16} Q 215 52 ${B[0] - 28} ${B[1] - 16}" fill="none" stroke="${ACC}" stroke-width="1.8"/>`,
+      `<path d="M ${B[0] - 28} ${B[1] + 16} Q 215 168 ${A[0] + 28} ${A[1] + 16}" fill="none" stroke="${DIM}" stroke-width="1.8"/>`,
+      circ([A[0] - 46, A[1]], 16, ACC, 1.8),
+      txt([215, 52], "add 1", ACC, 12), txt([215, 182], "add 0", DIM, 12), txt([A[0] - 70, A[1] - 22], "add 0", ACC, 12, "end"),
+      cap(430, 210, "the allowed transitions for binary strings with no two 1s in a row: a 0 can be followed by either digit and a 1 only by a 0, so the matrix is [[1, 1], [1, 0]]; there is no loop at ends 1" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["indicator-variables"] = [(() => {
+    // One random row of 5 red and 5 blue balls (fixed here) with its same-color neighbors
+    // marked; the expected number over all rows is 9 * 4/9 = 4.
+    const row = "RBBRRRBRBB".split(""), same = [];
+    for (let i = 0; i < 9; i++) if (row[i] === row[i + 1]) same.push(i);
+    let tot = 0, cnt = 0;
+    const rec = (r, b, s) => { if (!r && !b) { let k = 0; for (let i = 0; i < 9; i++) if (s[i] === s[i + 1]) k++; tot += k; cnt++; return; } if (r) rec(r - 1, b, s + "R"); if (b) rec(r, b - 1, s + "B"); };
+    rec(5, 5, "");
+    const ok = row.filter(c => c === "R").length === 5 && Math.abs(tot / cnt - 4) < 1e-9;
+    const parts = [];
+    row.forEach((c, i) => { const x = 50 + i * 37; parts.push(circ([x, 80], 14, c === "R" ? GLD : ACC, 1.8, c === "R" ? GLDS : ACCS)); });
+    same.forEach(i => { const x = 50 + i * 37 + 18; parts.push(seg([x - 12, 112], [x + 12, 112], DIM, 2)); parts.push(txt([x, 132], "1", DIM, 12)); });
+    return wrap(430, 190, [...parts, txt([215, 160], "this row: " + same.length + " same-color neighbors", DIM, 12),
+      cap(430, 190, "one random row of five gold and five blue balls, with each same-color neighbor pair marked 1: the count changes from row to row, but each of the 9 pairs matches with probability 4/9, so it averages 4" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["probabilistic-method"] = [(() => {
+    // A 6-vertex graph with m = 9 edges and one 2-coloring; the crossing edges form a cut. A
+    // random coloring cuts m/2 edges on average, so some coloring cuts at least 5 here.
+    const V = [[80, 60], [200, 40], [320, 70], [100, 170], [220, 190], [340, 160]];
+    const E = [[0, 1], [1, 2], [0, 3], [1, 3], [1, 4], [2, 5], [3, 4], [4, 5], [2, 4]];
+    const col = [0, 1, 0, 1, 0, 1];
+    let best = 0;
+    for (let mask = 0; mask < 64; mask++) { let c = 0; E.forEach(([a, b]) => { if (((mask >> a) & 1) !== ((mask >> b) & 1)) c++; }); best = Math.max(best, c); }
+    const cut = E.filter(([a, b]) => col[a] !== col[b]).length;
+    const ok = cut >= E.length / 2 && best >= Math.ceil(E.length / 2);
+    return wrap(430, 250, [
+      ...E.map(([a, b]) => seg(V[a], V[b], col[a] !== col[b] ? ACC : FNT, col[a] !== col[b] ? 2.2 : 1.2, col[a] !== col[b] ? "" : "4 3")),
+      ...V.map((v, i) => circ(v, 11, col[i] ? ACC : GLD, 1.8, col[i] ? ACCS : GLDS)),
+      txt([215, 228], "crossing edges: " + cut + " of " + E.length, DIM, 12),
+      cap(430, 250, "a graph with 9 edges and one coloring of its vertices: the solid edges join different colors. A random coloring makes each edge cross with probability 1/2, so on average 4.5 edges cross, and some coloring has at least 5" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["losing-positions"] = [(() => {
+    // Take 1, 3 or 4 objects; taking the last one wins. Positions 0..20 labeled W or L from the
+    // end: L exactly when n mod 7 is 0 or 2.
+    const moves = [1, 3, 4], lab = [];
+    for (let n = 0; n <= 20; n++) lab.push(moves.some(m => m <= n && lab[n - m] === "L") ? "W" : "L");
+    const ok = lab.every((l, n) => (l === "L") === (n % 7 === 0 || n % 7 === 2));
+    const parts = [];
+    lab.forEach((l, n) => {
+      const x = 22 + n * 18.6, L = l === "L";
+      parts.push(rect(x, 60, 16, 30, L ? GLD : FNT, L ? 1.6 : 1, L ? GLDS : "none"));
+      parts.push(txt([x + 8, 81], l, L ? GLD : FNT, 11));
+      parts.push(txt([x + 8, 108], String(n), FNT, 9));
+    });
+    return wrap(430, 150, [...parts,
+      cap(430, 150, "moves of 1, 3 or 4, last object wins: labeling from 0 upward, a position is L when every move leads to W, and the L positions are exactly the n with n ≡ 0 or 2 (mod 7)" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  DIAGRAMS["weierstrass-substitution"] = [(() => {
+    // The line through (-1, 0) with slope t = 1/2 meets the unit circle again at
+    // ((1 - t^2)/(1 + t^2), 2t/(1 + t^2)) = (3/5, 4/5); the angle there is theta with
+    // tan(theta/2) = t.
+    const t = 0.5, px = (1 - t * t) / (1 + t * t), py = 2 * t / (1 + t * t);
+    const ok = Math.abs(px - 0.6) < 1e-12 && Math.abs(py - 0.8) < 1e-12 && Math.abs(Math.tan(Math.atan2(py, px) / 2) - t) < 1e-12;
+    const O = [215, 155], R = 105, P = (x, y) => [O[0] + x * R, O[1] - y * R];
+    const A = P(-1, 0), Q = P(px, py), far = P(1.35, t * 2.35);
+    return wrap(430, 290, [
+      seg(P(-1.3, 0), P(1.3, 0), FNT, 1), seg(P(0, -1.2), P(0, 1.2), FNT, 1),
+      circ(O, R, DIM, 1.8),
+      seg(A, far, ACC, 2), seg(O, Q, GLD, 1.6, "5 4"),
+      dot(A, DIM, 4.5), dot(Q, ACC, 5), dot(O, FNT, 3),
+      txt(add(A, [-10, -10]), "(−1, 0)", DIM, 12, "end"), txt(add(Q, [-12, -12]), "(3/5, 4/5)", ACC, 13, "end"),
+      txt(add(P(0.22, 0.12), [0, 0]), "θ", GLD, 13), txt(add(A, [42, -8]), "θ/2", ACC, 12),
+      txt(add(far, [6, 4]), "slope t = 1/2", ACC, 12, "end"),
+      cap(430, 290, "the line through (−1, 0) with slope t meets the circle again at ((1 − t²)/(1 + t²), 2t/(1 + t²)); its angle at (−1, 0) is θ/2, so t = tan(θ/2), and t = 1/2 gives the point (3/5, 4/5), the 3-4-5 triple" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["trig-substitution"] = [(() => {
+    // A right triangle with hypotenuse a and the leg opposite theta equal to x: the other leg
+    // is sqrt(a^2 - x^2) = a cos(theta), and x = a sin(theta).
+    const A = [70, 230], C = [330, 230], B = [330, 80];
+    const a = Math.hypot(B[0] - A[0], B[1] - A[1]), x = C[1] - B[1], adj = C[0] - A[0];
+    const ok = Math.abs(Math.sqrt(a * a - x * x) - adj) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, C, B], DIM, 2),
+      seg([C[0] - 16, C[1]], [C[0] - 16, C[1] - 16], FNT, 1.2), seg([C[0] - 16, C[1] - 16], [C[0], C[1] - 16], FNT, 1.2),
+      `<path d="M ${A[0] + 46} ${A[1]} A 46 46 0 0 0 ${A[0] + 46 * adj / a} ${A[1] - 46 * x / a}" fill="none" stroke="${GLD}" stroke-width="1.6"/>`,
+      txt([A[0] + 58, A[1] - 10], "θ", GLD, 14),
+      txt([190, 140], "a", ACC, 15), txt([344, 160], "x = a sin θ", ACC, 13, "start"),
+      txt([200, 256], "√(a² − x²) = a cos θ", DIM, 13),
+      cap(430, 290, "the substitution x = a sin θ as a right triangle: with hypotenuse a and the leg opposite θ equal to x, the other leg is √(a² − x²) = a cos θ, so the radical becomes a plain cosine" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["sfft"] = [(() => {
+    // (x + b)(y + a) as a rectangle: the pieces xy, ax, by and ab; the trick adds the corner ab.
+    const X = 60, Y = 40, wx = 190, wb = 80, hy = 120, ha = 60;
+    const ok = (wx + wb) * (hy + ha) === wx * hy + wx * ha + wb * hy + wb * ha;
+    return wrap(430, 300, [
+      rect(X, Y, wx, hy, ACC, 1.6, ACCS), rect(X + wx, Y, wb, hy, ACC, 1.6, ACCS),
+      rect(X, Y + hy, wx, ha, ACC, 1.6, ACCS), rect(X + wx, Y + hy, wb, ha, GLD, 2, GLDS),
+      txt([X + wx / 2, Y + hy / 2 + 5], "xy", ACC, 16), txt([X + wx + wb / 2, Y + hy / 2 + 5], "by", ACC, 15),
+      txt([X + wx / 2, Y + hy + ha / 2 + 5], "ax", ACC, 15), txt([X + wx + wb / 2, Y + hy + ha / 2 + 5], "ab", GLD, 15),
+      txt([X + wx / 2, Y - 10], "x", DIM, 14), txt([X + wx + wb / 2, Y - 10], "b", DIM, 14),
+      txt([X - 12, Y + hy / 2 + 5], "y", DIM, 14, "end"), txt([X - 12, Y + hy + ha / 2 + 5], "a", DIM, 14, "end"),
+      cap(430, 300, "the rectangle (x + b)(y + a) is xy + ax + by plus the corner ab: an equation xy + ax + by = c is this rectangle with the gold corner missing, so adding ab to both sides completes it" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["forced-difference-of-squares"] = [(() => {
+    // (x^2 + 1)^2 = x^4 + 2x^2 + 1 as a square; x^4 + x^2 + 1 is that square with one strip of
+    // area x^2 removed, so it equals (x^2 + 1)^2 - x^2.
+    const L = 160, U = 56, X = 110, Y = 30;
+    const ok = true;
+    return wrap(430, 290, [
+      rect(X, Y, L, L, ACC, 1.6, ACCS), rect(X + L, Y, U, L, GLD, 1.8, "none"), rect(X, Y + L, L, U, ACC, 1.6, ACCS), rect(X + L, Y + L, U, U, ACC, 1.6, ACCS),
+      seg([X + L + 6, Y + 6], [X + L + U - 6, Y + L - 6], GLD, 1.2, "4 4"), seg([X + L + U - 6, Y + 6], [X + L + 6, Y + L - 6], GLD, 1.2, "4 4"),
+      txt([X + L / 2, Y + L / 2 + 6], "x⁴", ACC, 18), txt([X + L / 2, Y + L + U / 2 + 5], "x²", ACC, 14),
+      txt([X + L + U / 2, Y + L + U / 2 + 5], "1", ACC, 14), txt([X + L + U + 10, Y + L / 2], "x²", GLD, 14, "start"),
+      txt([X + L / 2, Y - 10], "x²", DIM, 13), txt([X + L + U / 2, Y - 10], "1", DIM, 13),
+      cap(430, 290, "(x² + 1)² is x⁴ + 2x² + 1, so x⁴ + x² + 1 is the whole square with one gold strip of area x² taken away: (x² + 1)² − x², a difference of two squares" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["denesting-radicals"] = [(() => {
+    // (sqrt x + sqrt y)^2 as a square: pieces x, y and two of sqrt(xy).
+    const sx = 150, sy = 80, X = 120, Y = 30;
+    const ok = (sx + sy) ** 2 === sx * sx + sy * sy + 2 * sx * sy;
+    return wrap(430, 290, [
+      rect(X, Y, sx, sx, ACC, 1.6, ACCS), rect(X + sx, Y + sx, sy, sy, ACC, 1.6, ACCS),
+      rect(X + sx, Y, sy, sx, GLD, 1.6, GLDS), rect(X, Y + sx, sx, sy, GLD, 1.6, GLDS),
+      txt([X + sx / 2, Y + sx / 2 + 6], "x", ACC, 18), txt([X + sx + sy / 2, Y + sx + sy / 2 + 5], "y", ACC, 15),
+      txt([X + sx + sy / 2, Y + sx / 2 + 5], "√(xy)", GLD, 13), txt([X + sx / 2, Y + sx + sy / 2 + 5], "√(xy)", GLD, 13),
+      txt([X + sx / 2, Y - 10], "√x", DIM, 13), txt([X + sx + sy / 2, Y - 10], "√y", DIM, 13),
+      cap(430, 290, "a square of side √x + √y has area x + y + 2√(xy): so √(a + 2√c) is √x + √y exactly when x + y = a and xy = c" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  DIAGRAMS["odd-part-chains"] = [(() => {
+    // The card's example, n = 10: one row per odd part m, entries m, 2m, 4m, ... up to n.
+    // The highlighted entries, those above n / 2, take exactly one from each row.
+    const n = 10, rows = [];
+    for (let m = 1; m <= n; m += 2) { const r = []; for (let v = m; v <= n; v *= 2) r.push(v); rows.push(r); }
+    const pick = rows.map(r => r[r.length - 1]);
+    const ok = pick.every(v => v > n / 2) && pick.every(a => pick.every(b => a === b || b % a !== 0)) && rows.length === Math.ceil(n / 2);
+    const L = 120, T = 44, W = 56, H = 30, parts = [];
+    ["×1", "×2", "×4", "×8"].forEach((h, j) => parts.push(txt([L + j * W + W / 2, T - 12], h, FNT, 12)));
+    rows.forEach((r, i) => {
+      const y = T + i * (H + 6);
+      parts.push(txt([L - 14, y + H / 2 + 5], "odd part " + r[0], DIM, 12, "end"));
+      r.forEach((v, j) => {
+        const on = v === pick[i];
+        parts.push(rect(L + j * W + 8, y, W - 16, H, on ? ACC : FNT, on ? 1.8 : 1.2, on ? ACCS : "none"));
+        parts.push(txt([L + j * W + W / 2, y + H / 2 + 5], String(v), on ? ACC : DIM, 14));
+        if (j) parts.push(txt([L + j * W, y + H / 2 + 4], "→", FNT, 11));
+      });
+    });
+    return wrap(430, 230, [...parts,
+      cap(430, 230, "n = 10 in rows by odd part: along a row each number divides the next, so a set with no element dividing another takes at most one per row; the highlighted entries, everything above 5, take one from each of the five rows" + (ok ? "" : " MISMATCH"))]);
+  })()];
+
   DIAGRAMS["am-gm"] = [(() => {
     const O = [215, 235], a = 150, b = 60, R = (a + b) / 2;
     const L = [O[0] - R, 235], Rt = [O[0] + R, 235], J = [L[0] + a, 235];
@@ -2032,6 +2476,333 @@
       const ok = depth === 3 && ext[0][5] === 127;
       parts.push(cap(430, 232, `The difference table of 2, 3, 10, 29, 66. The third differences are constant (blue), so the values come from a cubic. Extending the constant row by one more 6 and adding back up each diagonal gives 24, then 61, then the next value, ${ext[0][5]}.` + (ok ? "" : " MISMATCH")));
       return wrap(430, 232, parts);
+    })()
+  };
+
+  BODY["symmetric-polynomial-strategies"] = {
+    // Roots of x^3 - 2x + 5 found numerically (Newton, then deflation); the distances from i to
+    // the roots multiply to |P(i)| = sqrt 34.
+    distances: (() => {
+      let r = -2; for (let k = 0; k < 60; k++) r -= (r * r * r - 2 * r + 5) / (3 * r * r - 2);
+      // x^3 - 2x + 5 = (x - r)(x^2 + r x + (r^2 - 2)); the quadratic gives the complex pair
+      const re = -r / 2, im = Math.sqrt((r * r - 2) - re * re);
+      const roots = [[r, 0], [re, im], [re, -im]];
+      const prod = roots.reduce((p, z) => p * Math.hypot(z[0], z[1] - 1), 1);
+      const ok = Math.abs(prod - Math.sqrt(34)) < 1e-9;
+      const m = frame(-3, 2, -1.8, 1.8, 50, 18, 330, 240), I = m.pt(0, 1), parts = [axes(m)];
+      parts.push(txt(add(m.pt(m.x1, 0), [4, 16]), "Re", FNT, 11, "end"), txt(add(m.pt(0, m.y1), [8, 10]), "Im", FNT, 11, "start"));
+      roots.forEach((z, k) => {
+        const p = m.pt(z[0], z[1]);
+        parts.push(seg(I, p, ACC, 1.8));
+        parts.push(txt(add(mid(I, p), k === 0 ? [-6, -8] : k === 1 ? [-2, -12] : [20, 0]), Math.hypot(z[0], z[1] - 1).toFixed(2), ACC, 11.5));
+        parts.push(dot(p, DIM, 4.5));
+      });
+      parts.push(txt(add(m.pt(r, 0), [0, 20]), "r ≈ " + r.toFixed(2), DIM, 12));
+      parts.push(txt(add(m.pt(re, im), [8, -8]), "s", DIM, 13, "start"), txt(add(m.pt(re, -im), [8, 14]), "t", DIM, 13, "start"));
+      parts.push(dot(I, GLD, 5), txt(add(I, [-8, -8]), "i", GLD, 14, "end"));
+      parts.push(cap(430, 280, `The roots of P(x) = x³ − 2x + 5 and the point i. The three distances from i multiply to ${prod.toFixed(3)} = |P(i)| = |5 − 3i| = √34, and since P(−i) is the conjugate of P(i), the product (r² + 1)(s² + 1)(t² + 1) = P(i)P(−i) is the square, 34. No root is needed to get it.` + (ok ? "" : " MISMATCH")));
+      return wrap(430, 280, parts);
+    })()
+  };
+
+  BODY["lagrange-interpolation"] = {
+    // Basis polynomials for the nodes 1, 3, 4: each is 1 at its own node and 0 at the others.
+    basis: (() => {
+      const X = [1, 3, 4], Y = [2, 10, 20], cols = [ACC, GLD, GRN];
+      const L = i => x => X.reduce((p, xj, j) => j === i ? p : p * (x - xj) / (X[i] - xj), 1);
+      const ok = X.every((xi, i) => X.every((xj, j) => Math.abs(L(i)(xj) - (i === j ? 1 : 0)) < 1e-12))
+        && Math.abs(X.reduce((s, _, i) => s + Y[i] * L(i)(0), 0) - 4) < 1e-12;
+      const m = frame(0, 4.6, -1, 1.8, 40, 16, 360, 220), parts = [axes(m)];
+      parts.push(seg(m.pt(0, 1), m.pt(4.6, 1), FNT, 1, "4 4"), txt(add(m.pt(0, 1), [-6, 4]), "1", FNT, 11, "end"));
+      X.forEach((x, i) => {
+        parts.push(plot(L(i), m, 0.55, 4.45, 160, cols[i], 2));
+        parts.push(seg(m.pt(x, -0.06), m.pt(x, 0.06), FNT, 1.2), txt(add(m.pt(x, 0), [0, 18]), String(x), DIM, 12));
+        X.forEach((xj, j) => parts.push(dot(m.pt(xj, i === j ? 1 : 0), cols[i], i === j ? 5 : 3.5)));
+      });
+      parts.push(txt(add(m.pt(0.62, L(0)(0.62)), [-8, 4]), "L₁", ACC, 13, "end"));
+      parts.push(txt(add(m.pt(2.5, L(1)(2.5)), [0, -10]), "L₃", GLD, 13));
+      parts.push(txt(add(m.pt(4.4, L(2)(4.4)), [-10, 4]), "L₄", GRN, 13, "end"));
+      parts.push(cap(430, 270, "The basis polynomials for the nodes 1, 3 and 4. Each equals 1 at its own node and 0 at the other two, so 2L₁ + 10L₃ + 20L₄ passes through (1, 2), (3, 10) and (4, 20), and its value at 0 is 2 · 2 − 2 · 10 + 1 · 20 = 4." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["root-transformations"] = {
+    // P(x) = x^3 - 3x + 1 and P(x - 2): every root moves 2 units right. Roots are 2cos(2πk/9 ...).
+    shift: (() => {
+      const P = x => x * x * x - 3 * x + 1, Q = x => P(x - 2);
+      const roots = [2 * Math.cos(2 * Math.PI / 9), 2 * Math.cos(4 * Math.PI / 9), 2 * Math.cos(8 * Math.PI / 9)];
+      const ok = roots.every(r => Math.abs(P(r)) < 1e-9 && Math.abs(Q(r + 2)) < 1e-9);
+      const m = frame(-2.4, 4.2, -3.5, 4, 30, 14, 380, 230), parts = [axes(m)];
+      parts.push(plot(P, m, -2.15, 2.05, 200, ACC, 2), plot(Q, m, -0.15, 4.05, 200, GLD, 2));
+      roots.forEach(r => {
+        const a = m.pt(r, 0), b = m.pt(r + 2, 0);
+        parts.push(dot(a, ACC, 4.5), dot(b, GLD, 4.5));
+        parts.push(seg(add(a, [6, 0]), add(b, [-8, 0]), DIM, 1.2, "3 3"), poly([add(b, [-7, -3.5]), add(b, [-7, 3.5]), add(b, [-2, 0])], DIM, 1, DIM));
+      });
+      parts.push(txt(add(m.pt(-1, P(-1)), [0, -10]), "P(x)", ACC, 13));
+      parts.push(txt(add(m.pt(4.0, Q(4.0)), [-12, 4]), "P(x − 2)", GLD, 13, "end"));
+      parts.push(cap(430, 280, "P(x) = x³ − 3x + 1 (blue) and P(x − 2) (gold). Each root moves 2 to the right, because P(x − 2) = 0 exactly when x − 2 is a root of P. Moving the roots by +2 means substituting x − 2: the inverse of the rule." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 280, parts);
+    })()
+  };
+
+  BODY["roots-of-unity-filter"] = {
+    // The cube roots of unity raised to the power k: spread evenly (average 0) unless 3 | k.
+    average: (() => {
+      const panel = (cx, k, title) => {
+        const R = 70, c = [cx, 120], parts = [circ(c, R, FNT, 1.2)];
+        let sx = 0, sy = 0;
+        for (let j = 0; j < 3; j++) {
+          const a = 2 * Math.PI * j * k / 3, p = [c[0] + R * Math.cos(a), c[1] - R * Math.sin(a)];
+          sx += Math.cos(a) / 3; sy += Math.sin(a) / 3;
+          parts.push(seg(c, p, ACC, 1.8), dot(p, ACC, 4.5));
+        }
+        const avg = [c[0] + R * sx, c[1] - R * sy];
+        parts.push(dot(avg, GLD, 5.5), txt([cx, 222], title, DIM, 12.5));
+        return { parts, avg: [sx, sy] };
+      };
+      const A = panel(110, 1, "k = 1: average 0"), B = panel(320, 3, "k = 3: average 1");
+      const ok = Math.hypot(A.avg[0], A.avg[1]) < 1e-12 && Math.abs(B.avg[0] - 1) < 1e-12;
+      return wrap(430, 240, [...A.parts, ...B.parts,
+        txt([110, 32], "1, ω, ω²", FNT, 12), txt([320, 32], "1, ω³, ω⁶", FNT, 12),
+        cap(430, 240, "The powers ω^(jk) for j = 0, 1, 2, with ω = e^(2πi/3). When 3 does not divide k they sit evenly around the circle and their average (gold) is the center, 0; when 3 divides k they all equal 1 and the average is 1. So averaging f over 1, ω, ω² keeps exactly the coefficients a_k with 3 | k." + (ok ? "" : " MISMATCH"))]);
+    })()
+  };
+
+  BODY["telescoping"] = {
+    // f(k) = 1/k as steps; each term 1/(k(k+1)) is a drop, and the drops add to 1 - 1/7.
+    staircase: (() => {
+      const n = 7, m = frame(0, 8.4, 0, 1.08, 40, 14, 340, 210), parts = [axes(m)];
+      let total = 0;
+      for (let k = 1; k <= n; k++) {
+        parts.push(seg(m.pt(k, 1 / k), m.pt(k + 1, 1 / k), DIM, 2));
+        parts.push(txt(add(m.pt(k + 0.5, 0), [0, 16]), String(k), FNT, 11));
+        if (k < n) {
+          total += 1 / k - 1 / (k + 1);
+          parts.push(seg(m.pt(k + 1, 1 / k), m.pt(k + 1, 1 / (k + 1)), ACC, 3));
+        }
+      }
+      const ok = Math.abs(total - 6 / 7) < 1e-12;
+      const bx = m.sx(8.25);
+      parts.push(seg([bx, m.sy(1)], [bx, m.sy(1 / 7)], GLD, 2), seg([bx - 5, m.sy(1)], [bx + 5, m.sy(1)], GLD, 2), seg([bx - 5, m.sy(1 / 7)], [bx + 5, m.sy(1 / 7)], GLD, 2));
+      parts.push(txt([bx + 9, m.sy(0.57)], "1 − 1/7", GLD, 12.5, "start"));
+      parts.push(txt(add(m.pt(1.5, 1), [0, -6]), "1", DIM, 12), txt(add(m.pt(2.5, 0.5), [0, -6]), "1/2", DIM, 12), txt(add(m.pt(3.5, 1 / 3), [0, -6]), "1/3", DIM, 12));
+      parts.push(txt(add(m.pt(2, 0.75), [6, 4]), "1/(1·2)", ACC, 11.5, "start"));
+      parts.push(cap(430, 260, "f(k) = 1/k drawn as a staircase. The term 1/(k(k + 1)) = 1/k − 1/(k + 1) is the drop from step k to step k + 1 (blue). The six drops stack into the whole fall from the first step to the last, 1 − 1/7 = 6/7 (gold), which is the sum of the first six terms." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 260, parts);
+    })()
+  };
+
+  BODY["fx-pairing"] = {
+    // f(x) = 9^x / (9^x + 3) is symmetric about (1/2, 1/2): f(x) + f(1 - x) = 1.
+    symmetry: (() => {
+      const f = x => Math.pow(9, x) / (Math.pow(9, x) + 3);
+      const xs = [-0.6, 0.15];
+      const ok = [-0.6, 0.15, 0.37, 0.9].every(x => Math.abs(f(x) + f(1 - x) - 1) < 1e-12);
+      const m = frame(-1.3, 2.3, 0, 1, 40, 14, 360, 220), parts = [axes(m)];
+      parts.push(seg(m.pt(-1.3, 1), m.pt(2.3, 1), FNT, 1, "4 4"), txt(add(m.pt(0, 1), [-6, 4]), "1", FNT, 11, "end"));
+      parts.push(seg(m.pt(1, 0), m.pt(1, 1), FNT, 1, "4 4"), txt(add(m.pt(1, 0), [0, 16]), "1", FNT, 11), txt(add(m.pt(0, 0), [0, 16]), "0", FNT, 11));
+      parts.push(plot(f, m, -1.3, 2.3, 200, ACC, 2.2));
+      const C = m.pt(0.5, 0.5);
+      xs.forEach(x => {
+        const a = m.pt(x, f(x)), b = m.pt(1 - x, f(1 - x));
+        parts.push(seg(a, b, GLD, 1.4, "5 4"), dot(a, GLD, 4.5), dot(b, GLD, 4.5));
+      });
+      parts.push(txt(add(m.pt(-0.6, f(-0.6)), [0, -12]), "x", GLD, 12.5), txt(add(m.pt(1.6, f(1.6)), [0, 22]), "1 − x", GLD, 12.5));
+      parts.push(dot(C, DIM, 5), txt(add(C, [10, 16]), "(½, ½)", DIM, 12.5, "start"));
+      parts.push(cap(430, 270, "f(x) = 9ˣ/(9ˣ + 3) is symmetric about the point (½, ½): each point at x and its mirror image at 1 − x (gold) average to the center, so f(x) + f(1 − x) = 1. A sum over arguments paired this way is half a unit per term." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["double-summation"] = {
+    // Pairs (n, d) with d | n <= 12: columns count d(n), rows count floor(12/d); both total 35.
+    grid: (() => {
+      const N = 12, s = 19, L = 92, T = 20, parts = [];
+      let byCol = 0, byRow = 0;
+      for (let n = 1; n <= N; n++) {
+        let c = 0;
+        for (let d = 1; d <= N; d++) if (n % d === 0) { c++; parts.push(dot([L + (n - 0.5) * s, T + (N - d + 0.5) * s], d === 1 || d === n ? DIM : ACC, 4)); }
+        byCol += c;
+        parts.push(txt([L + (n - 0.5) * s, T + N * s + 16], String(n), FNT, 10.5));
+        parts.push(txt([L + (n - 0.5) * s, T + N * s + 34], String(c), GLD, 11));
+      }
+      for (let d = 1; d <= N; d++) {
+        byRow += Math.floor(N / d);
+        parts.push(txt([L - 10, T + (N - d + 0.5) * s + 4], String(d), FNT, 10.5, "end"));
+        parts.push(txt([L + N * s + 12, T + (N - d + 0.5) * s + 4], String(Math.floor(N / d)), GRN, 11, "start"));
+      }
+      const ok = byCol === 35 && byRow === 35;
+      parts.push(rect(L, T, N * s, N * s, FNT, 1));
+      parts.push(txt([L - 34, T + N * s / 2], "d", DIM, 13), txt([L + N * s / 2, T + N * s + 52], "n", DIM, 13));
+      parts.push(txt([L - 10, T + N * s + 34], "d(n)", GLD, 11, "end"), txt([L + N * s + 12, T - 6], "⌊12/d⌋", GRN, 11, "start"));
+      return wrap(430, 310, [...parts,
+        cap(430, 310, `Each dot is a pair (n, d) with d dividing n ≤ 12. Counting each column gives d(n) (gold), and the columns total ${byCol}; counting each row gives the number of multiples of d, ⌊12/d⌋ (green), and the rows total ${byRow}. Same dots, two orders.` + (ok ? "" : " MISMATCH"))]);
+    })()
+  };
+
+  BODY["largest-term-ratio"] = {
+    // a_k = C(20,k) 2^k: the ratio 2(20-k)/(k+1) equals 1 at k = 13, so a_13 = a_14 tie.
+    bars: (() => {
+      const a = []; let c = 1;
+      for (let k = 0; k <= 20; k++) { a.push(c * Math.pow(2, k)); c = c * (20 - k) / (k + 1); }
+      const max = Math.max(...a), ok = a[13] === a[14] && a[13] === max && a[13] === 635043840;
+      const L = 30, B = 210, w = 17, H = 180, parts = [seg([L - 4, B], [L + 21 * w + 4, B], FNT, 1.2)];
+      a.forEach((v, k) => {
+        const h = H * v / max, top = v === max;
+        parts.push(rect(L + k * w + 2, B - h, w - 4, h, top ? GLD : ACC, 1.2, top ? GLDS : ACCS));
+        if (k % 2 === 1 || top) parts.push(txt([L + k * w + w / 2, B + 15], String(k), top ? GLD : FNT, 10.5));
+      });
+      parts.push(txt([L + 13.5 * w + w / 2, B - H - 8], "tie", GLD, 12));
+      parts.push(txt([L + 2, 40], "ratio > 1: climbing", ACC, 12, "start"), txt([L + 21 * w, 40], "ratio < 1", ACC, 12, "end"));
+      return wrap(430, 240, [...parts,
+        cap(430, 240, "The coefficients a_k = C(20, k)·2^k of (1 + 2x)^20, scaled to the largest. The ratio a_(k+1)/a_k = 2(20 − k)/(k + 1) is above 1 for k ≤ 12, exactly 1 at k = 13, and below 1 after, so the bars climb, tie at k = 13 and 14 (gold), and fall." + (ok ? "" : " MISMATCH"))]);
+    })()
+  };
+
+  BODY["smoothing-method"] = {
+    // f(x) = x^2: the chord's midpoint lies above the curve, so averaging a and b lowers f(a) + f(b).
+    chord: (() => {
+      const f = x => x * x, a = 0.4, b = 2.4, c = (a + b) / 2;
+      const ok = f(a) + f(b) > 2 * f(c) && Math.abs(f(a) + f(b) - 5.92) < 1e-9 && Math.abs(2 * f(c) - 3.92) < 1e-9;
+      const m = frame(-0.3, 2.9, -0.4, 7.2, 50, 14, 330, 220), parts = [axes(m)];
+      parts.push(plot(f, m, -0.3, 2.68, 160, DIM, 2));
+      const A = m.pt(a, f(a)), B = m.pt(b, f(b)), Mc = m.pt(c, (f(a) + f(b)) / 2), Mf = m.pt(c, f(c));
+      parts.push(seg(A, B, ACC, 1.8), seg(Mc, Mf, GLD, 2, "4 3"));
+      parts.push(dot(A, ACC, 4.5), dot(B, ACC, 4.5), dot(Mc, ACC, 4.5), dot(Mf, GLD, 5));
+      [a, c, b].forEach((x, i) => parts.push(seg(m.pt(x, 0), m.pt(x, -0.15), FNT, 1.2), txt(add(m.pt(x, 0), [0, 18]), ["a", "(a+b)/2", "b"][i], DIM, 12)));
+      parts.push(txt(add(Mc, [-10, -6]), "average of f(a), f(b)", ACC, 11.5, "end"));
+      parts.push(txt(add(Mf, [10, 12]), "f of the average", GLD, 11.5, "start"));
+      parts.push(cap(430, 270, "For the convex f(x) = x², the chord between (a, f(a)) and (b, f(b)) lies above the curve, so its midpoint (blue) is above f((a + b)/2) (gold). With a = 0.4 and b = 2.4, f(a) + f(b) = 5.92 but 2f(1.4) = 3.92: replacing both by their average keeps the sum and lowers the total." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["sqrt-approximation"] = {
+    // y = sqrt x between x = 4 and x = 9: the tangent at 4 is the upper bound a + b/(2a),
+    // the chord to 9 is the lower bound a + b/(2a + 1). Marked at x = 6 (a = 2, b = 2).
+    between: (() => {
+      const a = 2, X = 6, b = X - a * a, up = x => a + (x - a * a) / (2 * a), lo = x => a + (x - a * a) / (2 * a + 1);
+      const ok = Math.abs(up(X) - 2.5) < 1e-12 && Math.abs(lo(X) - 2.4) < 1e-12 && lo(X) < Math.sqrt(X) && Math.sqrt(X) < up(X)
+        && Math.abs(lo(9) - 3) < 1e-12;
+      const m = frame(3, 10, 1.6, 3.4, 50, 14, 340, 220), parts = [];
+      parts.push(seg(m.pt(3, 1.6), m.pt(10, 1.6), FNT, 1.2), seg(m.pt(3, 1.6), m.pt(3, 3.4), FNT, 1.2));
+      parts.push(plot(up, m, 3.2, 9.8, 2, GLD, 1.8), plot(lo, m, 3.2, 9.8, 2, GRN, 1.8), plot(Math.sqrt, m, 3.2, 9.8, 160, ACC, 2.4));
+      [4, 9].forEach(x => parts.push(dot(m.pt(x, Math.sqrt(x)), ACC, 4.5), txt(add(m.pt(x, 1.6), [0, 16]), String(x), FNT, 11)));
+      parts.push(seg(m.pt(X, 1.6), m.pt(X, up(X)), FNT, 1, "3 3"), txt(add(m.pt(X, 1.6), [0, 16]), "6", FNT, 11));
+      [[up(X), GLD], [Math.sqrt(X), ACC], [lo(X), GRN]].forEach(([y, c]) => parts.push(dot(m.pt(X, y), c, 3.5)));
+      // values at x = 6 and a legend, in the empty corners above and below the curves
+      [["at x = 6:", FNT], ["tangent 2.5", GLD], ["√6 = 2.449", ACC], ["chord 2.4", GRN]].forEach(([t, c], i) => parts.push(txt([m.sx(3.2), m.sy(3.32) + i * 16], t, c, 11.5, "start")));
+      [["y = √x", ACC], ["tangent at 4: a + b/(2a)", GLD], ["chord 4 to 9: a + b/(2a + 1)", GRN]].forEach(([t, c], i) => {
+        const y = m.sy(2.15) + i * 17;
+        parts.push(seg([m.sx(6.3), y - 4], [m.sx(6.8), y - 4], c, 2), txt([m.sx(6.95), y], t, c, 11.5, "start"));
+      });
+      parts.push(cap(430, 270, `y = √x between the squares 4 and 9. The tangent at 4 lies above the curve and gives the upper bound a + b/(2a); the chord from 4 to 9 lies below it and gives the lower bound a + b/(2a + 1). At x = 6, with a = ${a} and b = ${b}, that brackets √6 = 2.449 between 2.4 and 2.5.` + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["cofactor-expansion"] = {
+    // The 4x4 matrix with 2 on the diagonal and 1 beside it. Expanding along row 1 keeps two terms;
+    // the minor of the corner entry (shaded) is D3. The determinant is computed by elimination.
+    expand: (() => {
+      const n = 4, A = [...Array(n)].map((_, i) => [...Array(n)].map((_, j) => i === j ? 2 : Math.abs(i - j) === 1 ? 1 : 0));
+      const det = M => { const B = M.map(r => r.slice()); let d = 1; for (let k = 0; k < B.length; k++) { d *= B[k][k]; for (let i = k + 1; i < B.length; i++) { const f = B[i][k] / B[k][k]; for (let j = k; j < B.length; j++) B[i][j] -= f * B[k][j]; } } return d; };
+      const D = k => det(A.slice(0, k).map(r => r.slice(0, k)));
+      const ok = Math.abs(D(4) - 5) < 1e-9 && Math.abs(D(4) - (2 * D(3) - D(2))) < 1e-9;
+      const s = 38, L = 120, T = 48, parts = [];
+      parts.push(rect(L + s, T + s, 3 * s, 3 * s, ACC, 1, ACCS));
+      parts.push(rect(L, T, n * s, s, GLD, 2));
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+        const v = A[i][j];
+        parts.push(txt([L + j * s + s / 2, T + i * s + s / 2 + 5], String(v), v ? (i === 0 ? GLD : DIM) : FNT, 15));
+        if (i === 0) parts.push(txt([L + j * s + s / 2, T - 10], (i + j) % 2 ? "−" : "+", FNT, 13));
+      }
+      parts.push(seg([L - 6, T - 2], [L - 6, T + n * s + 2], DIM, 1.6), seg([L + n * s + 6, T - 2], [L + n * s + 6, T + n * s + 2], DIM, 1.6));
+      parts.push(txt([L + n * s + 22, T + s / 2 + 5], "expand along row 1", GLD, 12, "start"));
+      parts.push(txt([L + n * s + 22, T + 2.5 * s + 5], "minor: D₃", ACC, 12, "start"));
+      parts.push(txt([L - 18, T + 2 * s + 5], "D₄ =", DIM, 14, "end"));
+      return wrap(430, 230, [...parts,
+        cap(430, 230, `Expanding along the first row: the 2 in the corner multiplies its minor (shaded), which is D₃, and the 1 beside it, with sign −, leads to D₂ after one more expansion. The zeros contribute nothing. So D₄ = 2D₃ − D₂ = 2 · ${D(3)} − ${D(2)} = ${D(4)}.` + (ok ? "" : " MISMATCH"))]);
+    })()
+  };
+
+  BODY["infinite-nest"] = {
+    // Cobweb for x -> sqrt(6 + x) from 0: the values climb to the fixed point 3, where y = x meets the curve.
+    cobweb: (() => {
+      const g = x => Math.sqrt(6 + x), xs = [0]; for (let k = 0; k < 5; k++) xs.push(g(xs[k]));
+      const ok = Math.abs(g(3) - 3) < 1e-12 && xs.every((v, i) => i === 0 || (v > xs[i - 1] && v < 3));
+      const m = frame(-0.4, 4.2, -0.4, 4.2, 70, 12, 260, 230), parts = [axes(m)];
+      parts.push(plot(x => x, m, -0.4, 4.1, 2, FNT, 1.4), plot(g, m, -0.4, 4.1, 160, ACC, 2.2));
+      for (let k = 0; k + 1 < xs.length; k++) {
+        parts.push(seg(m.pt(xs[k], k ? xs[k] : 0), m.pt(xs[k], xs[k + 1]), GLD, 1.4), seg(m.pt(xs[k], xs[k + 1]), m.pt(xs[k + 1], xs[k + 1]), GLD, 1.4));
+      }
+      parts.push(dot(m.pt(3, 3), GLD, 5), txt(add(m.pt(3, 3), [-10, -10]), "(3, 3)", GLD, 12.5, "end"));
+      parts.push(txt(add(m.pt(4.1, g(4.1)), [0, 22]), "y = √(6 + x)", ACC, 12, "end"), txt(add(m.pt(4.1, 4.1), [-4, -6]), "y = x", FNT, 12, "end"));
+      [1, 2, 3].forEach(v => parts.push(txt(add(m.pt(v, 0), [0, 16]), String(v), FNT, 11)));
+      parts.push(cap(430, 270, `Adding one more layer is the map x → √(6 + x). Starting from 0 the values ${xs.slice(1, 4).map(v => v.toFixed(3)).join(", ")}, ... climb along the gold path to where the curve meets y = x, the point (3, 3). The other root of x = √(6 + x) squared, −2, is not on the curve at all, which is why it is rejected.` + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["palindromic-polynomials"] = {
+    // y = x + 1/x: each height y with |y| > 2 is hit at a reciprocal pair r, 1/r; |y| < 2 is never hit.
+    pairs: (() => {
+      const h = x => x + 1 / x, r = (-3 - Math.sqrt(5)) / 2;
+      const ok = Math.abs(h(r) + 3) < 1e-12 && Math.abs(h(1 / r) + 3) < 1e-12 && Math.abs(h(1) - 2) < 1e-12;
+      const m = frame(-4, 4, -5, 5, 30, 12, 380, 230), parts = [axes(m)];
+      parts.push(plot(h, m, -4, -0.22, 200, ACC, 2.2), plot(h, m, 0.22, 4, 200, ACC, 2.2));
+      parts.push(seg(m.pt(-4, 2), m.pt(4, 2), GLD, 1.4, "5 4"), seg(m.pt(-4, -3), m.pt(4, -3), GLD, 1.4, "5 4"));
+      parts.push(dot(m.pt(1, 2), GLD, 5), txt(add(m.pt(1, 2), [0, 22]), "x = 1 (double)", GLD, 11.5));
+      parts.push(dot(m.pt(r, -3), GLD, 5), dot(m.pt(1 / r, -3), GLD, 5));
+      parts.push(txt(add(m.pt(r, -3), [4, 18]), "−2.618", GLD, 11.5, "start"), txt(add(m.pt(1 / r, -3), [-4, 18]), "−0.382", GLD, 11.5, "end"));
+      parts.push(txt(add(m.pt(-4, 2), [4, -6]), "y = 2", GLD, 11.5, "start"), txt(add(m.pt(4, -3), [-4, -6]), "y = −3", GLD, 11.5, "end"));
+      parts.push(txt(add(m.pt(3.6, h(3.6)), [-4, -8]), "y = x + 1/x", ACC, 12, "end"));
+      parts.push(cap(430, 270, "y = x + 1/x. For x⁴ + x³ − 4x² + x + 1 = 0 the substitution gives y = 2 or y = −3. The line y = −3 meets the graph at a reciprocal pair, −2.618 and −0.382, whose product is 1; y = 2 touches it only at x = 1, a double root. A height between −2 and 2 is never reached, so such a y gives two complex roots on the unit circle." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["symmetric-linear-system"] = {
+    // Cyclic coefficients: every column sums to 6, so adding the equations gives 6(x + y + z) = 36.
+    columns: (() => {
+      const C = [[1, 2, 3], [2, 3, 1], [3, 1, 2]], R = [14, 11, 11], sol = [1, 2, 3];
+      const colSum = [0, 1, 2].map(j => C.reduce((s, r) => s + r[j], 0)), rsum = R.reduce((s, v) => s + v, 0);
+      const ok = colSum.every(v => v === 6) && rsum === 36 && C.every((r, i) => r.reduce((s, c, j) => s + c * sol[j], 0) === R[i]);
+      const s = 46, L = 110, T = 40, parts = [], names = ["x", "y", "z"];
+      names.forEach((v, j) => parts.push(txt([L + j * s + s / 2, T - 12], v, DIM, 14)));
+      parts.push(txt([L + 3 * s + 34, T - 12], "=", FNT, 13));
+      C.forEach((r, i) => {
+        r.forEach((c, j) => { parts.push(rect(L + j * s + 4, T + i * s + 4, s - 8, s - 8, FNT, 1)); parts.push(txt([L + j * s + s / 2, T + i * s + s / 2 + 5], String(c), DIM, 15)); });
+        parts.push(txt([L + 3 * s + 34, T + i * s + s / 2 + 5], String(R[i]), DIM, 15));
+      });
+      parts.push(seg([L, T + 3 * s + 6], [L + 3 * s + 50, T + 3 * s + 6], FNT, 1.2));
+      colSum.forEach((v, j) => parts.push(txt([L + j * s + s / 2, T + 3 * s + 28], String(v), GLD, 15)));
+      parts.push(txt([L + 3 * s + 34, T + 3 * s + 28], String(rsum), GLD, 15));
+      parts.push(txt([L - 14, T + 3 * s + 28], "add:", GLD, 13, "end"));
+      return wrap(430, 230, [...parts,
+        cap(430, 230, `The coefficients of x + 2y + 3z = 14, 2x + 3y + z = 11 and 3x + y + 2z = 11 rotate from row to row, so every column sums to ${colSum[0]}. Adding the equations therefore gives ${colSum[0]}(x + y + z) = ${rsum}, the total of the variables, before any single variable is found.` + (ok ? "" : " MISMATCH"))]);
+    })()
+  };
+
+  BODY["multi-leg-rates"] = {
+    // 12 km: walked 4 km at 4 km/h (1 h), ran 8 km at 8 km/h (1 h). Average speed 6 = 12 / 2.
+    legs: (() => {
+      const legs = [[4, 4], [8, 8]]; let t = 0, d = 0; const pts = [[0, 0]];
+      legs.forEach(([dist, v]) => { t += dist / v; d += dist; pts.push([t, d]); });
+      const ok = t === 2 && d === 12 && d / t === 6;
+      const m = frame(0, 2.3, 0, 13.5, 60, 14, 320, 220), parts = [axes(m)];
+      parts.push(seg(m.pt(0, 0), m.pt(2, 12), FNT, 1.4, "5 4"));
+      parts.push(seg(m.pt(...pts[0]), m.pt(...pts[1]), ACC, 2.6), seg(m.pt(...pts[1]), m.pt(...pts[2]), GLD, 2.6));
+      pts.forEach(p => parts.push(dot(m.pt(...p), DIM, 4)));
+      [1, 2].forEach(h => parts.push(txt(add(m.pt(h, 0), [0, 16]), h + " h", FNT, 11)));
+      [4, 12].forEach(k => parts.push(txt(add(m.pt(0, k), [-6, 4]), k + " km", FNT, 11, "end")));
+      parts.push(txt(add(m.pt(0.5, 2), [8, 12]), "walk: slope 4", ACC, 12, "start"));
+      parts.push(txt(add(m.pt(1.5, 8), [10, 10]), "run: slope 8", GLD, 12, "start"));
+      parts.push(txt(add(m.pt(1.2, 7.2), [-8, -6]), "average: slope 6", FNT, 11.5, "end"));
+      return wrap(430, 270, [...parts,
+        cap(430, 270, `Distance against time for a 12 km trip: 4 km walked at 4 km/h, then 8 km run at 8 km/h. Each leg is a straight piece whose slope is its speed; the legs join end to end, so their times add to ${t} h and their distances to ${d} km. The average speed is the slope of the dashed line, ${d / t} km/h.` + (ok ? "" : " MISMATCH"))]);
     })()
   };
 

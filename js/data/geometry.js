@@ -230,7 +230,7 @@ window.MATH_SECTIONS.push({
         {
           id: "van-aubel",
           name: "Van Aubel's Theorem",
-          latex: String.raw`\text{squares on the sides: segments joining opposite centers are equal and } \perp`,
+          latex: String.raw`\text{squares on the sides} \implies \text{opposite-center segments equal and } \perp`,
           description: String.raw`Erect a square outward on each side of any quadrilateral (even non-convex): the two segments connecting centers of opposite squares have equal length and are perpendicular. Proved neatly with complex numbers — each center is a $90^\circ$-rotation average of its side's endpoints.`,
           keywords: ["van aubel", "squares on sides", "equal perpendicular segments", "quadrilateral squares"],
           importance: "lower",
@@ -362,7 +362,7 @@ window.MATH_SECTIONS.push({
         {
           id: "conway-circle",
           name: "The Conway Circle",
-          latex: String.raw`\text{extend each side past each endpoint by the opposite side} \implies \text{six concyclic points}, \quad \rho = \sqrt{r^2 + s^2}`,
+          latex: String.raw`\text{extend each side by the opposite side at both ends} \implies 6 \text{ concyclic points}, \quad \rho = \sqrt{r^2 + s^2}`,
           description: String.raw`At each vertex, extend both sides through it by the length of the side opposite that vertex. The six endpoints produced are concyclic, the center is the incenter, and the radius is $\sqrt{r^2+s^2}$ with $s$ the semiperimeter. The construction looks arbitrary and the conclusion does not: each extension is arranged so that the tangent lengths from a vertex come out equal, which is what puts all six points the same distance from $I$.`,
           keywords: ["conway circle", "extend the sides by the opposite side", "six concyclic points", "centered at the incenter", "radius sqrt(r^2 + s^2)", "semiperimeter and inradius"],
           importance: "low",
@@ -611,7 +611,7 @@ window.MATH_SECTIONS.push({
         {
           id: "napoleons-theorem",
           name: "Napoleon's Theorem",
-          latex: String.raw`\text{equilateral triangles on the sides} \Rightarrow \text{their centers form an equilateral triangle}`,
+          latex: String.raw`\text{centers of equilateral triangles on the sides form an equilateral triangle}`,
           description: String.raw`Erect equilateral triangles outward (or all inward) on the sides of any triangle: their centers always form an equilateral triangle. The outer Napoleon triangle has area $\frac{\sqrt3}{24}(a^2+b^2+c^2) + \frac{[ABC]}{2}$; outer minus inner area equals $[ABC]$.`,
           keywords: ["napoleon", "equilateral centers", "erected triangles", "outer inner"],
           importance: "low",
@@ -716,7 +716,7 @@ window.MATH_SECTIONS.push({
         {
           id: "isogonal-conjugate",
           name: "Isogonal Conjugate",
-          latex: String.raw`\angle(AP,\text{bis }A) = \angle(\text{bis }A, AP^*) \text{ at each vertex} \;\Rightarrow\; AP^*, BP^*, CP^* \text{ concur at } P^*`,
+          latex: String.raw`\text{reflect } AP, BP, CP \text{ in the angle bisectors} \implies \text{they concur at } P^*`,
           description: String.raw`Reflect the cevians $AP, BP, CP$ across the respective angle bisectors; the three reflected lines always concur, at the isogonal conjugate $P^*$. The classic pairs: circumcenter $O \leftrightarrow$ orthocenter $H$, centroid $G \leftrightarrow$ symmedian (Lemoine) point $K$, the incenter is its own conjugate, and the Fermat points $\leftrightarrow$ the isodynamic points. $P$ and $P^*$ share a common pedal circle. This is core machinery for advanced triangle configurations — recognizing an isogonal pair collapses many concurrency/collinearity problems.`,
           keywords: ["isogonal conjugate", "reflect cevian over bisector", "O and H conjugate", "symmedian point", "incenter self conjugate", "isodynamic", "common pedal circle"],
           importance: "low",
@@ -749,7 +749,7 @@ window.MATH_SECTIONS.push({
         {
           id: "euler-line-parallel-side",
           name: "Euler Line Parallel to a Side",
-          latex: String.raw`OH \parallel BC \iff \tan B \tan C = 3 \iff AH = 2\,HD \iff \cos A = 2\cos B\cos C`,
+          latex: String.raw`OH \parallel BC \iff \tan B \tan C = 3, \qquad OH \parallel BC \iff AH = 2\,HD \iff \cos A = 2\cos B\cos C`,
           description: String.raw`The [[euler-line-ratio|Euler line]] $OH$ runs parallel to $BC$ exactly when $O$ and $H$ stand at the same height above that side. One of those heights is free: the circumcenter's distance to $BC$ is always half of $AH$, so the condition forces $HD = \frac{1}{2}AH$ and the orthocenter cuts the $A$-altitude in the ratio $2 : 1$ from the vertex. In angles that is $\tan B \tan C = 3$. More generally $AH : HD = (\tan B \tan C - 1) : 1$, so the parallel case is simply the one where that ratio equals $2$.`,
           keywords: ["euler line parallel to a side", "OH parallel to BC", "euler line parallel to the base", "tan B tan C = 3", "orthocenter two thirds down the altitude", "cos A = 2 cos B cos C", "AH = 2 HD"],
           importance: "low",
@@ -794,7 +794,7 @@ window.MATH_SECTIONS.push({
         {
           id: "steiner-line",
           name: "The Steiner Line",
-          latex: String.raw`P \in \odot(ABC): \quad \text{reflections of } P \text{ in } BC, CA, AB \text{ are collinear, on a line through } H`,
+          latex: String.raw`P \in \odot(ABC) \implies \text{reflections of } P \text{ in the sides are collinear, through } H`,
           description: String.raw`Reflect a point $P$ of the circumcircle in each of the three sidelines and the three images land on one line — the Steiner line of $P$ — and that line passes through the orthocenter. It is the [[simson-line|Simson line]] of the same point blown up by a factor of $2$ from $P$, since a reflection is twice the foot of the perpendicular, so the two results are one result at two scales. Both degenerate together: as $P$ approaches a vertex the line approaches the altitude from it.`,
           keywords: ["steiner line", "reflections of a point on the circumcircle", "collinear reflections", "passes through the orthocenter", "twice the simson line", "point on the circumcircle"],
           importance: "lower",
@@ -839,7 +839,7 @@ window.MATH_SECTIONS.push({
         {
           id: "fermat-point",
           name: "Fermat Point (Torricelli Point)",
-          latex: String.raw`\text{all angles} < 120^\circ \implies \min_X (XA + XB + XC) \text{ at } X \text{ with } \angle AXB = \angle BXC = \angle CXA = 120^\circ`,
+          latex: String.raw`\min_X\,(XA + XB + XC) \text{ at } \angle AXB = \angle BXC = \angle CXA = 120^\circ, \qquad \text{valid when every angle of } \triangle ABC < 120^\circ`,
           description: String.raw`The point minimizing the total distance to the vertices sees every side at $120^\circ$; construct it by erecting equilateral triangles outward on the sides and connecting each new vertex to the opposite original vertex (the three lines concur there). If an angle is $\ge 120^\circ$, the minimizer is that vertex. The rotation trick computes the minimal sum: it equals the length of one straight segment after a $60^\circ$ rotation.`,
           keywords: ["fermat point", "torricelli", "minimize distance sum", "120 degrees", "equilateral construction"],
           importance: "low",
@@ -911,7 +911,7 @@ window.MATH_SECTIONS.push({
         {
           id: "gergonne-nagel-points",
           name: "Gergonne & Nagel Points",
-          latex: String.raw`\text{Gergonne (incircle touches) and Nagel (excircle touches): the cevians concur}`,
+          latex: String.raw`\text{cevians to the incircle (or excircle) touch points concur}`,
           description: String.raw`Two more triangle centers from concurrent cevians. The Gergonne point is where the cevians to the incircle's touch points meet (concurrency by [[cevas-theorem|Ceva]], since the [[incircle-tangent-lengths|incircle tangent lengths]] pair up). The Nagel point uses the points where the excircles touch the sides — there $BX' = s-c$, $CX' = s-b$ — and the cevians again concur; the Nagel point, centroid, and incenter are collinear on the Nagel line with $NG : GI$ related as $2:1$. Companions to the Lemoine, Fermat, and Brocard points.`,
           keywords: ["gergonne point", "nagel point", "incircle touch cevians", "excircle touch points", "nagel line", "triangle center concurrency"],
           importance: "low",
@@ -1032,6 +1032,15 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "inversion-facts",
+          name: "Properties of Inversion",
+          latex: String.raw`OP \cdot OP^* = r^2, \qquad P^*Q^* = \frac{r^2 \cdot PQ}{OP \cdot OQ}`,
+          description: String.raw`Inversion in the circle with center $O$ and radius $r$ sends each point $P \ne O$ to the point $P^*$ on ray $OP$ with $OP \cdot OP^* = r^2$. It swaps the inside and the outside of the circle, fixes the circle itself, and maps lines and circles to lines and circles: a line not through $O$ becomes a circle through $O$, and a circle not through $O$ becomes another such circle. Angles between curves are preserved, so tangent curves stay tangent.`,
+          keywords: ["inversion", "inverse point", "circle of inversion", "inversion distance formula", "lines to circles", "OP times OP star"],
+          importance: "low",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "radical-axis",
           name: "Radical Axis & Radical Center",
           latex: String.raw`\{P : \operatorname{pow}(P, \omega_1) = \operatorname{pow}(P, \omega_2)\} = \text{a line} \perp O_1O_2`,
@@ -1070,7 +1079,7 @@ window.MATH_SECTIONS.push({
         {
           id: "reims-theorem",
           name: "Reim's Theorem",
-          latex: String.raw`A, B, C, D \text{ concyclic} \iff AB \parallel CD \text{ (chords cut by two circles through } P, Q)`,
+          latex: String.raw`A, B, C, D \text{ concyclic} \iff AB \parallel CD, \qquad \text{for chords cut by two circles through } P, Q`,
           description: String.raw`Two circles meet at $P$ and $Q$. A line through $P$ hits them again at $A$ (first circle) and $C$ (second); a line through $Q$ hits them at $B$ and $D$. Then $AB \parallel CD$ — and conversely, a parallelism forces the four outer points to be concyclic. It is the go-to lemma for converting "these lines are parallel" into "these points are concyclic" (and back) in angle-chasing, and pairs naturally with directed angles.`,
           keywords: ["reim theorem", "reims theorem", "two circles parallel chords", "concyclic from parallel", "antiparallel", "angle chasing lemma"],
           importance: "lower",
@@ -1112,11 +1121,20 @@ window.MATH_SECTIONS.push({
         {
           id: "sawayama-thebault",
           name: "The Sawayama–Thébault Lemma",
-          latex: String.raw`\omega \text{ tangent to } AD,\ BC \text{ and internally to } \odot(ABC) \implies I \in \text{chord of contact of } \omega`,
+          latex: String.raw`\omega \text{ tangent to } AD,\ BC,\ \odot(ABC) \implies I \in \text{chord of contact of } \omega`,
           description: String.raw`Take any cevian $AD$ of a triangle, and a circle inscribed in one of the two curved regions cut off by $AD$, $BC$, and the circumcircle. The line joining its two tangency points passes through the incenter — whatever the cevian was. It is the reason a configuration with a circle wedged into a cevian is usually an incenter problem in disguise, and it specializes to the mixtilinear case when the cevian is a side.`,
           keywords: ["sawayama lemma", "thebault theorem", "curvilinear incircle", "circle wedged against a cevian", "chord of contact through the incenter", "circle inscribed between a cevian and the circumcircle"],
           importance: "lowest",
           level: ["Olympiad"]
+        },
+        {
+          id: "monges-theorem",
+          name: "Monge's Theorem",
+          latex: String.raw`E_{12},\ E_{23},\ E_{13}\ \text{(external centers of similitude) are collinear}`,
+          description: String.raw`Monge's Theorem says that for three circles of different radii, the three external centers of similitude, one for each pair of circles, lie on a line. The external center of two circles is the point where their common external tangents meet, from which one circle is a scaled copy of the other. The same holds for one external center and two internal ones.`,
+          keywords: ["monge", "centers of similitude", "external tangents meet", "three circles collinear", "homothety centers"],
+          importance: "low",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "caseys-theorem",
@@ -1139,7 +1157,7 @@ window.MATH_SECTIONS.push({
         {
           id: "mixtilinear-incircle",
           name: "Mixtilinear Incircle",
-          latex: String.raw`\text{tangent to } AB, AC \text{ and the circumcircle at } T;\ \ T, I, \text{arc-midpoint collinear}`,
+          latex: String.raw`\text{tangent to } AB,\ AC,\ \odot(ABC) \text{ at } T \implies T, I, \text{arc midpoint collinear}`,
           description: String.raw`The $A$-mixtilinear incircle is tangent to sides $AB$, $AC$ and internally tangent to the circumcircle at a point $T$. Key facts: the incenter $I$ is the midpoint of the chord where the mixtilinear circle touches $AB$ and $AC$; the tangency point $T$, the incenter $I$, and the midpoint of arc $BAC$ are collinear; and $T$ maps the incircle to the circumcircle under the [[homothety-monge|homothety]] at $T$. A recurring configuration in modern olympiad geometry.`,
           keywords: ["mixtilinear incircle", "tangent to two sides and circumcircle", "tangency point collinear incenter", "arc midpoint", "olympiad configuration", "homothety incircle circumcircle"],
           importance: "lower",
@@ -1217,7 +1235,7 @@ window.MATH_SECTIONS.push({
         {
           id: "japanese-theorem",
           name: "The Japanese Theorem",
-          latex: String.raw`ABCD \text{ cyclic} \implies \text{the incenters of } \triangle ABC, BCD, CDA, DAB \text{ form a rectangle}`,
+          latex: String.raw`ABCD \text{ cyclic} \implies \text{incenters of } ABC, BCD, CDA, DAB \text{ form a rectangle}`,
           description: String.raw`Cut a cyclic quadrilateral by a diagonal, take the incenters of the two triangles, then do it again with the other diagonal: the four incenters are the vertices of a rectangle. Nothing about the quadrilateral beyond being cyclic is needed — the sides may be wildly unequal and the rectangle still appears, which is what makes it memorable. The sides of that rectangle are parallel to the angle bisectors of the two diagonals.`,
           keywords: ["japanese theorem", "incenters form a rectangle", "cyclic quadrilateral incenters", "four triangles from the diagonals", "rectangle of incenters"],
           importance: "lowest",
@@ -1289,7 +1307,7 @@ window.MATH_SECTIONS.push({
         {
           id: "newtons-line",
           name: "Newton–Gauss Line",
-          latex: String.raw`\text{the midpoints of a quadrilateral's diagonals are collinear (Newton–Gauss line)}`,
+          latex: String.raw`\text{complete quadrilateral} \implies \text{its 3 diagonal midpoints are collinear}`,
           description: String.raw`In a complete quadrilateral, the midpoints of its three diagonals are collinear — the Newton–Gauss line. The classical special case (Newton's line): in a quadrilateral with an inscribed circle, the incenter also lies on the line through the midpoints of the two diagonals. A tidy collinearity that appears in quadrilateral configuration problems.`,
           keywords: ["newton line", "newton gauss line", "diagonal midpoints collinear", "complete quadrilateral", "tangential incenter midpoints"],
           importance: "lowest",
@@ -1575,7 +1593,7 @@ window.MATH_SECTIONS.push({
         {
           id: "hellys-theorem",
           name: "Helly's Theorem",
-          latex: String.raw`\text{convex sets in } \mathbb{R}^d:\ \text{every } d{+}1 \text{ intersect} \Rightarrow \text{all intersect}\quad(\text{plane: every } 3 \Rightarrow \text{all})`,
+          latex: String.raw`\text{convex sets in } \mathbb{R}^d:\ \text{every } d{+}1 \text{ meet} \Rightarrow \text{all meet}, \qquad \text{plane: every } 3 \Rightarrow \text{all}`,
           description: String.raw`For a finite family of convex sets in the plane, if every three have a common point then all of them do (in $\mathbb{R}^d$, replace three by $d+1$). It reduces a global intersection question to checking small subfamilies — the standard tool for "a single point/line meets all of these" problems and piercing arguments. Convexity is essential.`,
           keywords: ["helly theorem", "convex sets intersection", "every three intersect", "common point", "piercing", "d plus one"],
           importance: "lowest",
@@ -1584,7 +1602,7 @@ window.MATH_SECTIONS.push({
         {
           id: "minkowski-lattice",
           name: "Minkowski's Lattice Point Theorem",
-          latex: String.raw`\text{centrally symmetric convex, area} > 4 \Rightarrow \text{contains a nonzero lattice point}`,
+          latex: String.raw`\text{symmetric convex, area} > 4 \implies \text{a nonzero lattice point inside}`,
           description: String.raw`A convex region symmetric about the origin with area exceeding $4$ must contain a lattice point other than the origin (volume $> 2^d$ in $d$ dimensions). The proof tiles the plane by the integer lattice and applies pigeonhole to overlaps. The geometry-of-numbers bridge to number theory — it proves the two-squares theorem and bounds for Diophantine approximation.`,
           keywords: ["minkowski lattice theorem", "geometry of numbers", "centrally symmetric convex", "lattice point", "area greater than 4", "two squares proof"],
           importance: "lowest",
@@ -1872,7 +1890,7 @@ window.MATH_SECTIONS.push({
         {
           id: "isoperimetric-facts",
           name: "Isoperimetric Facts",
-          latex: String.raw`\text{fixed perimeter} \Rightarrow \text{square} \ge \text{rectangles}, \;\; \text{equilateral} \ge \text{triangles}, \;\; \text{circle} \ge \text{everything}`,
+          latex: String.raw`A \le \frac{P^2}{4\pi} \text{ (circle)}, \qquad A_{\text{rect}} \le \frac{P^2}{16} \text{ (square)}, \qquad A_{\triangle} \le \frac{P^2}{12\sqrt{3}} \text{ (equilateral)}`,
           description: String.raw`For a fixed perimeter, area is maximized by the most symmetric shape: the square among rectangles ($xy \le \left(\frac{x+y}{2}\right)^2$), the equilateral among triangles (by AM-GM on [[herons-formula|Heron]]), the regular $n$-gon among $n$-gons, and the circle overall. For fixed side lengths, the cyclic polygon maximizes area ([[bretschneiders-formula|Bretschneider's]] term).`,
           keywords: ["maximize area", "fixed perimeter", "isoperimetric", "square best rectangle", "regular maximizes", "maximization"],
           importance: "medium",
@@ -1905,7 +1923,7 @@ window.MATH_SECTIONS.push({
         {
           id: "pappus-hexagon",
           name: "Pappus's Hexagon Theorem",
-          latex: String.raw`A, B, C \in \ell;\ D, E, F \in m \implies AE \cap BD,\ AF \cap CD,\ BF \cap CE \text{ are collinear}`,
+          latex: String.raw`A, B, C \in \ell,\ D, E, F \in m \implies AE \cap BD,\ AF \cap CD,\ BF \cap CE \text{ collinear}`,
           description: String.raw`Put three points on one line and three on another, join them crosswise, and the three crossing points line up. It is [[pascals-theorem|Pascal's Theorem]] with the conic degenerated into a pair of lines, which is the cleanest way to remember both: six points on a conic give a Pascal line, and a pair of lines is a conic. Purely projective, so it survives any projection and needs no measurement at all — distinct from [[pappus-centroid|Pappus's Centroid Theorems]], which are about solids of revolution.`,
           keywords: ["pappus hexagon theorem", "pappus line", "three points on each of two lines", "crosswise intersections collinear", "degenerate pascal", "projective collinearity"],
           importance: "lower",
@@ -1968,7 +1986,7 @@ window.MATH_SECTIONS.push({
         {
           id: "complete-quadrilateral-miquel",
           name: "Miquel Point of a Complete Quadrilateral",
-          latex: String.raw`\text{the 4 triangles of a complete quadrilateral share one circumcircle point } M`,
+          latex: String.raw`\text{the 4 circumcircles of a complete quadrilateral meet at one point } M`,
           description: String.raw`Four lines in general position make six intersection points and four triangles, one per choice of three lines. The circumcircles of those four triangles all pass through a single point $M$, the Miquel point.`,
           keywords: ["complete quadrilateral", "miquel point", "four circumcircles", "spiral similarity center", "four lines", "newton gauss line", "concyclic circumcenters", "miquel"],
           importance: "lowest",

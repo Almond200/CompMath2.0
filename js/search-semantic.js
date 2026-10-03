@@ -44,10 +44,30 @@ window.MathSemantic = (function () {
     // returns 304 with the cached body when nothing changed, so the 5 MB is not
     // re-downloaded -- correctness without the cost, and nothing to remember to bump.
     var opt = { cache: "no-cache" };
-    Promise.all([
-      fetch(BASE + ".json", opt).then(function (r) { if (!r.ok) throw 0; return r.json(); }),
-      fetch(BASE + ".bin", opt).then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); })
-    ]).then(function (res) {
+    // A copy opened straight from disk (file://) cannot fetch(); the build also writes the
+    // index as one script, which a <script> tag can load there. Over http the fetch is tried
+    // first and the script is the fallback.
+    var viaScript = function () {
+      return new Promise(function (resolve, reject) {
+        if (window.MATH_SEARCH_VECTORS) { resolve(); return; }
+        var el = document.createElement("script");
+        el.src = BASE + ".js";
+        el.onload = function () { window.MATH_SEARCH_VECTORS ? resolve() : reject(0); };
+        el.onerror = function () { reject(0); };
+        document.head.appendChild(el);
+      }).then(function () {
+        var V = window.MATH_SEARCH_VECTORS, raw = atob(V.bin), bytes = new Uint8Array(raw.length);
+        for (var i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+        return [V.header, bytes.buffer];
+      });
+    };
+    var viaFetch = function () {
+      return Promise.all([
+        fetch(BASE + ".json", opt).then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+        fetch(BASE + ".bin", opt).then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); })
+      ]);
+    };
+    (location.protocol === "file:" ? viaScript() : viaFetch()["catch"](viaScript)).then(function (res) {
       H = res[0];
       var buf = res[1], d = H.dims;
       var nW = H.words.length, nC = H.ids.length * H.vectorsPerCard;

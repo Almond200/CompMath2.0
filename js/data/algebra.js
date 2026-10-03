@@ -57,6 +57,15 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "fundamental-theorem-symmetric",
+          name: "Fundamental Theorem of Symmetric Polynomials",
+          latex: String.raw`f \text{ symmetric} \implies f = g(e_1, \ldots, e_n) \text{ for a unique polynomial } g`,
+          description: String.raw`The Fundamental Theorem of Symmetric Polynomials says that every polynomial in $x_1, \ldots, x_n$ that is unchanged by every permutation of the variables can be written, in exactly one way, as a polynomial in the elementary symmetric polynomials $e_1 = x_1 + \cdots + x_n$, $e_2$, the sum of all products of two, and so on up to $e_n = x_1 \cdots x_n$. Integer coefficients stay integer. Combined with [[vietas-general|Vieta's Formulas]], it means any symmetric expression in a polynomial's roots can be computed from the coefficients.`,
+          keywords: ["symmetric polynomial", "elementary symmetric", "e1 e2 e3", "symmetric functions of roots", "express in terms of sum and product"],
+          importance: "medium",
+          level: ["AMC12", "AIME", "Olympiad"]
+        },
+        {
           id: "fundamental-theorem-algebra",
           name: "Fundamental Theorem of Algebra",
           latex: String.raw`\deg P = n \ge 1 \implies P(x) = a_n\prod_{k=1}^{n}(x - r_k), \quad r_k \in \mathbb{C}`,
@@ -74,6 +83,25 @@ window.MATH_SECTIONS.push({
           keywords: ["remainder", "polynomial division", "root", "factor", "remainder theorem", "factor theorem", "integer polynomial", "divides difference", "impossible polynomial", "P(a) P(b)", "integer polynomial divisibility"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "lagrange-interpolation-formula",
+          name: "Lagrange Interpolation Formula",
+          latex: String.raw`P(x) = \sum_{i=1}^{n} y_i \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}`,
+          latexPlain: String.raw`P(x) = y_1 \frac{(x - x_2)\cdots(x - x_n)}{(x_1 - x_2)\cdots(x_1 - x_n)} + \cdots + y_n \frac{(x - x_1)\cdots(x - x_{n-1})}{(x_n - x_1)\cdots(x_n - x_{n-1})}`,
+          description: String.raw`The Lagrange Interpolation Formula writes down the unique polynomial of degree at most $n - 1$ through $n$ points with distinct $x$-coordinates: it is a sum of $n$ pieces, each equal to $y_i$ at its own point $x_i$ and to $0$ at all the others. The existence and uniqueness are the content; the explicit formula lets a value of the polynomial be computed without solving for its coefficients.`,
+          keywords: ["lagrange interpolation", "polynomial through points", "interpolating polynomial", "unique polynomial of degree n", "basis polynomials"],
+          importance: "medium",
+          level: ["AMC12", "AIME", "Olympiad"]
+        },
+        {
+          id: "polynomial-crt",
+          name: "Chinese Remainder Theorem for Polynomials",
+          latex: String.raw`P(x) \bmod (x-a)(x-b) = P(a) + \frac{P(b) - P(a)}{b - a}\,(x - a), \qquad \gcd(m_1, m_2) = 1 \implies \text{remainders mod } m_1, m_2 \text{ fix the remainder mod } m_1 m_2`,
+          description: String.raw`The Chinese Remainder Theorem for Polynomials says that the remainders of a polynomial modulo coprime polynomials determine its remainder modulo their product, just as the [[crt|Chinese Remainder Theorem]] does for integers. Its everyday form needs no long division: the remainder modulo a product $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$, because each value is itself a remainder by the [[factor-remainder-theorem|Remainder Theorem]].`,
+          keywords: ["polynomial crt", "chinese remainder theorem for polynomials", "remainder mod a quadratic", "remainder when divided by (x-a)(x-b)", "coprime polynomials", "remainder by a product", "remainder mod a product of factors"],
+          importance: "medium",
+          level: ["AMC12", "AIME", "Olympiad"]
         },
         {
           id: "rational-root-theorem",
@@ -266,8 +294,8 @@ window.MATH_SECTIONS.push({
         {
           id: "binomial-theorem",
           name: "Binomial Theorem",
-          latex: String.raw`(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k, \qquad (x+y)^n = x^n + \binom{n}{1}x^{n-1}y + \binom{n}{2}x^{n-2}y^2 + \cdots + y^n`,
-          latexPlain: String.raw`(a+b)^n = a^n + \binom{n}{1}a^{n-1}b + \binom{n}{2}a^{n-2}b^2 + \cdots + \binom{n}{n-1}ab^{n-1} + b^n`,
+          latex: String.raw`(x + y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k`,
+          latexPlain: String.raw`(x + y)^n = x^n + \binom{n}{1}x^{n-1}y + \binom{n}{2}x^{n-2}y^2 + \cdots + \binom{n}{n-1}xy^{n-1} + y^n`,
           description: String.raw`The Binomial Theorem expands a power of a sum: $(x + y)^n = \sum_{k=0}^{n}\binom nk x^{n-k}y^k$, so the coefficient of $x^{n-k}y^k$ is the binomial coefficient $\binom nk$, and the coefficients form row $n$ of Pascal's triangle. It turns a power into a sum you can read coefficients from, and in reverse it turns a sum of binomial coefficients into a power. Substituting values collapses whole rows: $x = y = 1$ gives $\sum_k\binom nk = 2^n$, and $x = 1$, $y = -1$ gives an alternating sum of $0$. It is also the quick route to remainders of powers such as $9^{100} = (10 - 1)^{100}$.`,
           keywords: ["expansion", "pascal", "binomial coefficients", "powers"],
           importance: "high",
@@ -552,7 +580,7 @@ window.MATH_SECTIONS.push({
         {
           id: "schurs-inequality",
           name: "Schur's Inequality",
-          latex: String.raw`x, y, z \ge 0,\; t > 0: \quad x^t(x-y)(x-z) + y^t(y-x)(y-z) + z^t(z-x)(z-y) \ge 0, \qquad t = 1: \;\; x^3 + y^3 + z^3 + 3xyz \ge xy(x+y) + yz(y+z) + zx(z+x)`,
+          latex: String.raw`x^t(x-y)(x-z) + y^t(y-x)(y-z) + z^t(z-x)(z-y) \ge 0 \ \ (x, y, z \ge 0,\ t > 0), \qquad t = 1: \;\; x^3 + y^3 + z^3 + 3xyz \ge xy(x+y) + yz(y+z) + zx(z+x)`,
           description: String.raw`The $t = 1$ case expands to $x^3 + y^3 + z^3 + 3xyz \ge xy(x+y) + yz(y+z) + zx(z+x)$ — the classic degree-3 symmetric inequality that AM–GM and [[muirheads-inequality|Muirhead]] cannot reach. Equality when $x = y = z$, or when two are equal and the third is $0$.`,
           keywords: ["schur", "symmetric inequality", "three variables", "t equals 1", "degree 3"],
           importance: "low",

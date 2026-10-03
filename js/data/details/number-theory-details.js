@@ -502,6 +502,9 @@ $\binom{m}{n} \bmod p$: write both in base $p$, multiply digit binomials (any di
 Pascal-parity questions (Sierpinski patterns), "how many $\binom{2027}{k}$ are divisible by small prime," and fast binomial-mod-p evaluations on AIME. For prime-power moduli, combine with more careful tools — Lucas alone is mod $p$ only.`,
 
 "lte": String.raw`
+## When to use
+Exponent questions about a huge difference or sum of powers: the largest power of $3$ dividing $4^{729} - 1$, or the least $n$ for which $p^k$ divides $a^n - 1$. It is quickest when $p$ already divides $a - b$; when it does not, first find the smallest exponent that brings $p$ in, then lift from there. For $p = 2$ use the form for an even exponent, which adds $v_2(a + b) - 1$.
+
 ## How
 1. Write the expression as $a^n - b^n$, or as $a^n + b^n$ with $n$ odd; a plain $a^n - 1$ has $b = 1$.
 2. Check the hypotheses: $p$ divides $a - b$ (or $a + b$) but neither $a$ nor $b$, and $p$ is odd; for $p = 2$ use the separate form.
@@ -511,8 +514,10 @@ Pascal-parity questions (Sierpinski patterns), "how many $\binom{2027}{k}$ are d
 ## Why it works
 Valuations turn products into sums, so the exponent of $p$ in a large number can be found without knowing the number. The lemma says that raising to the $n$th power adds exactly one factor of $p$ for each factor of $p$ in $n$, and nothing for the part of $n$ coprime to $p$, so the whole computation comes down to two small valuations.
 
-## Supporting mathematics
-One line decides most uses: $v_3(4^{729} - 1) = v_3(4 - 1) + v_3(729) = 1 + 6 = 7$. The step for a prime that does not divide $a - b$ rests on the [[multiplicative-order|multiplicative order]]: $p \mid a^n - b^n$ exactly when the order of $ab^{-1}$ modulo $p$ divides $n$.
+## Formulas it uses
+- [[lte-lemma]]: the exponent formula itself, $v_p(a^n - b^n) = v_p(a - b) + v_p(n)$ for an odd prime $p$ dividing $a - b$ but neither $a$ nor $b$; one line then decides most uses, as in $v_3(4^{729} - 1) = v_3(3) + v_3(729) = 1 + 6 = 7$.
+- [[p-adic-valuation]]: the language of the answer: $v_p(N)$ is the exponent of $p$ in $N$, and the valuations of a product add.
+- [[multiplicative-order]]: for a prime that does not divide $a - b$, it decides whether $p$ divides $a^n - b^n$ at all, which happens exactly when the order of $ab^{-1}$ modulo $p$ divides $n$.
 
 ## Common traps
 - Using the odd-prime form at $p = 2$: $v_2(3^2 - 1) = 3$, while $v_2(3 - 1) + v_2(2) = 2$.
@@ -627,14 +632,34 @@ From the fundamental solution, generate the rest by expanding $(x_1 + y_1\sqrt D
 ## On contests
 AIME problems about near-square pairs ($x^2 - 2y^2 = \pm1$-adjacent: triangular-square numbers, "$n$ and $\frac{n+1}{2}$ both squares") reduce to Pell orbits. Recognize the quadratic-in-two-variables-equals-constant shape and hunt the smallest solution by hand.`,
 
-"sum-of-two-squares": String.raw`## Why it works
-Primes $\equiv 1 \pmod 4$ split as $a^2 + b^2$ (via $x^2 \equiv -1$ existing and descent, or Gaussian integers); primes $\equiv 3 \pmod 4$ are inert and must pair up; the [[brahmagupta-fibonacci|Brahmagupta-Fibonacci identity]] multiplies representations together.
+"sum-of-two-squares": String.raw`
+## Key forms
+- $n = a^2 + b^2$ for integers $a$, $b$ exactly when every prime $\equiv 3 \pmod 4$ divides $n$ to an even power — the general criterion
+- an odd prime $p$ is a sum of two squares exactly when $p \equiv 1 \pmod 4$, and then in only one way — Fermat's Two-Square Theorem, the prime case
+- $(a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2$ — representations multiply, by the [[brahmagupta-fibonacci|Brahmagupta–Fibonacci Identity]]
+- $r_2(n) = 4(d_1(n) - d_3(n))$ — the number of representations counting order and signs, where $d_1$ and $d_3$ count the divisors $\equiv 1$ and $\equiv 3 \pmod 4$
 
-## How to use it
-Check the factorization: odd powers of any prime $\equiv 3 \pmod 4$ ⟹ not representable. The count of representations (ordered, with signs) is $4(d_1(n) - d_3(n))$ — divisors $\equiv 1$ minus $\equiv 3$ mod 4 — which counts lattice points on the circle $x^2 + y^2 = n$.
+## Conditions
+$n$ is a positive integer, and $a$, $b$ may be zero or negative. "Only one way" for a prime counts $\{a, b\}$ up to order and sign; with order and signs there are $8$ representations, matching $r_2(p) = 4 \cdot 2$.
 
-## On contests
-"Which of these is a sum of two squares," lattice points on circles (AIME), and representation-count problems. The multiplicative structure (build reps from prime reps) computes explicit decompositions fast.`,
+## Why it works
+One direction is a parity argument: every square is $0$ or $1$ modulo $4$, so a sum of two squares is never $3 \pmod 4$, which rules out every prime $p \equiv 3 \pmod 4$.
+
+For $p \equiv 1 \pmod 4$, the congruence $x^2 \equiv -1 \pmod p$ has a solution, so $p$ divides $x^2 + 1$ for some $x$. [[thues-lemma|Thue's Lemma]] then gives integers $a$, $b$ with $0 \lt a, b \lt \sqrt p$ and $a \equiv xb \pmod p$, so $p$ divides $a^2 + b^2$, and $0 \lt a^2 + b^2 \lt 2p$ forces $a^2 + b^2 = p$. Uniqueness is clearest in the [[gaussian-integers|Gaussian integers]], where $p = (a + bi)(a - bi)$ and factorization is unique.
+
+For general $n$, the identity multiplies representations, so a product of primes $\equiv 1 \pmod 4$, of $2 = 1^2 + 1^2$, and of squares is a sum of two squares. Conversely, a prime $q \equiv 3 \pmod 4$ that divides $a^2 + b^2$ must divide both $a$ and $b$, since $-1$ is not a square modulo $q$, so $q$ divides $n$ to an even power.
+
+## Useful observations
+- A right triangle with a prime hypotenuse $p$ exists only when $p \equiv 1 \pmod 4$, and then it is unique: $p = m^2 + n^2$ gives legs $m^2 - n^2$ and $2mn$. For $p = 13 = 3^2 + 2^2$ the legs are $5$ and $12$.
+- To find the representation of a specific prime, test $p - b^2$ for $b \le \sqrt{p/2}$; the first square found is the only one.
+- The number of [[lattice-points-circle|lattice points on the circle]] $x^2 + y^2 = n$ is exactly $r_2(n)$.
+
+## Applications
+Which integers are sums of two squares, lattice points on circles, right triangles with a given hypotenuse, and factorization in the Gaussian integers.
+
+## Contest profile
+A recognition fact more than a computation: it decides at once whether a representation exists, and the multiplication identity builds one when it does.
+`,
 
 "thues-lemma": String.raw`## Why it works
 Pigeonhole. Consider the $(\lfloor\sqrt n\rfloor + 1)^2 > n$ numbers $ai - j$ for $0 \le i, j \le \lfloor\sqrt n\rfloor$. Two must be congruent mod $n$; subtracting gives $a(i_1 - i_2) \equiv (j_1 - j_2) \pmod n$ with both differences at most $\sqrt n$ in absolute value and not both zero — exactly the promised $x \equiv ay$ with $|x|, |y| \le \sqrt n$.
@@ -646,28 +671,33 @@ The elementary route to representation theorems. For $p \equiv 1 \pmod 4$, $-1$ 
 An olympiad tool — the standard "no Gaussian integers required" proof of Fermat's two-squares theorem, and a clean way to force a bounded solution of a modular condition into existence when a problem needs one.`,
 
 "factor-pair-counting": String.raw`
+## When to use
+Equations such as $xy = 2x + 3y$, $\frac1x + \frac1y = \frac1{12}$, $x^2 - y^2 = 2025$ or $m^2 = n^2 + 60$: two unknown integers, degree at most two, and a rearrangement, often [[sfft|Simon's Favorite Factoring Trick]], that leaves a product equal to a number. Counting questions are its best use, because the answer comes straight from a divisor count.
+
+## How
+1. Rearrange the equation into $AB = N$, with $A$ and $B$ integer expressions in the unknowns.
+2. List the factor pairs of $N$, or count them with $d(N)$; include negative pairs if the unknowns may be negative.
+3. Filter the pairs: positivity of the original variables, equal parity when $A$ and $B$ must match, and ordering when pairs are unordered.
+4. Translate each surviving pair back into values of the unknowns.
+
+For $\frac1x + \frac1y = \frac1{12}$ in positive integers: clearing denominators gives $xy - 12x - 12y = 0$, so $(x - 12)(y - 12) = 144$. Both factors are at least $-11$, and two negative factors that small multiply to at most $121$, so both are positive, and the solutions number $d(144) = 15$.
+
 ## Why it works
-Once an equation reads $AB = N$ with $A$ and $B$ integers, choosing $A$ decides $B$, so the solutions correspond exactly to the divisors of $N$.
+Once an equation reads $AB = N$ with integers $A$ and $B$, choosing $A$ decides $B = \frac NA$, so the solutions correspond exactly to the divisors of $N$. An equation with no general method has become a list. The figure shows the five ways to write $36$ as a product, drawn as rectangles of area $36$; each is two ordered solutions except the square $6 \times 6$, which is its own mirror image.
 
-Take $xy = 36$ in positive integers. For each divisor $x$ of $36$ there is exactly one $y$, namely $\frac{36}{x}$, and every solution has $x$ a divisor. So the ordered solutions are counted by the divisors: $d(36) = 9$. Unordered pairs $\{x, y\}$ are half as many, except that the pair $6 \cdot 6$ is its own mirror image, so there are $$\frac{d(36) + 1}{2} = \frac{9 + 1}{2} = 5.$$
+Unordered pairs are therefore $\frac{d(N)}{2}$ when $N$ is not a square and $\frac{d(N) + 1}{2}$ when it is. When the factors are $x - y$ and $x + y$, they differ by an even number and so have the same parity, and the pairs of opposite parity are thrown out.
 
-The same holds after a substitution. If an equation can be rearranged into $$(x - a)(y - b) = N,$$ then $x - a$ and $y - b$ form an integer factor pair of $N$, and each pair gives back exactly one solution $(x, y)$. The count is $d(N)$ positive pairs, or $2d(N)$ if negative factors are allowed, before any filter is applied.
+## Formulas it uses
+- [[number-of-divisors]]: $d(N) = \prod (e_p + 1)$ counts the ordered positive factor pairs, since the first factor decides the second.
+- [[difference-of-squares]]: $x^2 - y^2 = (x - y)(x + y)$ is the most common way to produce the product, and it brings the same-parity filter with it.
 
-## How to use it
-The whole idea is to stop solving and start counting. An equation in two unknowns has no general method, but once it is rearranged into (something)(something) $= N$, every solution corresponds to a factorization of $N$, and the number of factorizations is just the divisor count. A problem with no obvious method becomes a problem with a formula.
+## Common traps
+- Forgetting the negative factor pairs when the unknowns may be negative, or keeping them when they give impossible values.
+- Counting unordered pairs as $\frac{d(N)}{2}$ when $N$ is a square, which drops the middle pair.
+- Skipping the parity filter for a difference of squares, which counts pairs that give non-integer values.
 
-The pipeline is fixed. Force a product with SFFT or direct factoring, count the divisor pairs of the constant, then filter. The filtering is where the marks are, and there are only three filters worth remembering.
-
-- Positivity: do the negative factor pairs give valid variables?
-- Ordering: unordered pairs number $\frac{d(N)}{2}$, except when $N$ is a perfect square, where the pair $\sqrt N \cdot \sqrt N$ has no partner and the count is $\frac{d(N) + 1}{2}$.
-- Parity: when the variables force both factors to have the same parity, as they do for [[difference-of-squares|a difference of squares]], the pairs of opposite parity are discarded.
-
-That parity filter is why this card and the difference of squares travel together: $n = (a - b)(a + b)$ is precisely this pipeline with a parity constraint attached.
-
-## On contests
-Almost never alone — 2 of 24 — and its constant companion is the difference of squares (6 problems), which is the step that manufactures the product in the first place.
-
-The evergreen is "how many ordered pairs solve $\frac1x+\frac1y=\frac1{12}$": rearranged it is $(x-12)(y-12)=144$, so the count is $d(144)=15$ positive pairs plus the negative-side analysis. Every problem of this family is the same three steps with a different constant, and the difficulty lives entirely in the filters.
+## Contest profile
+Rarely the whole solution: a factorization step, often a difference of squares, produces the product, and the divisor count with a sign or parity filter finishes.
 `,
 
 "difference-of-squares-rep": String.raw`
@@ -824,25 +854,35 @@ Four problems here, mostly AMC, three solved by it alone; the fourth works throu
 Object.assign(window.MATH_DETAILS, {
 
 "hensel-lifting": String.raw`
-## Key forms
-- $f(a+pt)\equiv f(a)+pt\,f'(a)\pmod{p^2}$ — everything past the linear term vanishes, so the lift is linear
-- $\frac{f(a)}{p}+t\,f'(a)\equiv0\pmod p$ — solve this for $t$; it has a unique solution exactly when $f'(a)\not\equiv0\pmod p$
-- $f'(a)\equiv0\pmod p$ is the singular case — the root then lifts to all $p$ values of $t$ or to none, so check the derivative first
+## When to use
+Congruences modulo $p^2$, $p^3$ or a higher power: $x^2 \equiv a \pmod{p^k}$, $x^3 \equiv a \pmod{7^3}$, or counting the solutions of a polynomial congruence modulo a composite number, which the [[crt|Chinese Remainder Theorem]] first splits into prime powers. It also predicts, before any computation, whether a root modulo $p$ extends to one root, to many, or to none.
+
+## How
+1. Split a composite modulus into prime powers and treat each one separately.
+2. Solve $f(x) \equiv 0 \pmod p$ by testing the $p$ residues.
+3. For each root $a$, check that $f'(a) \not\equiv 0 \pmod p$; such a root has exactly one lift modulo each higher power.
+4. Substitute $x = a + pt$, keep $f(a) + pt\,f'(a)$, divide by $p$, and solve $\frac{f(a)}{p} + t\,f'(a) \equiv 0 \pmod p$ for $t$.
+5. Repeat with the new root and the next power of $p$ until you reach $p^k$.
+
+For $x^2 \equiv -1 \pmod{25}$, take $f(x) = x^2 + 1$. Modulo $5$ the roots are $2$ and $3$. For $a = 2$, $\frac{f(2)}{5} = 1$ and $f'(2) = 4$, so $1 + 4t \equiv 0 \pmod 5$ gives $t = 1$ and $x = 7$; indeed $7^2 + 1 = 50$. The other root lifts to $18$, and one more step gives $57$ and $68$ modulo $125$.
 
 ## Why it works
-Expanding around the known root, every term past the linear one carries a factor of $p^2$, so modulo $p^2$ the problem is linear.
+Expanded around a known root, every term of a polynomial past the linear one carries a factor of $p^2$. For integer coefficients, Taylor's formula reads $$f(a + pt) = f(a) + pt\,f'(a) + p^2(\ldots),$$ with an integer in the parentheses, because the $k$th derivative divided by $k!$ has integer coefficients. Since $p$ divides $f(a)$, the condition $f(a + pt) \equiv 0 \pmod{p^2}$ divides by $p$ into the linear congruence $$\frac{f(a)}{p} + t\,f'(a) \equiv 0 \pmod p,$$ which has exactly one solution $t$ when $p \nmid f'(a)$.
 
-For a polynomial with integer coefficients, Taylor's formula gives $$f(a + pt) = f(a) + pt\,f'(a) + p^2(\cdots),$$ with integers hidden in the dots. Since $p$ divides $f(a)$, the condition $f(a + pt) \equiv 0 \pmod{p^2}$ divides through by $p$ to $$\frac{f(a)}{p} + t\,f'(a) \equiv 0 \pmod p,$$ a linear congruence in $t$ with exactly one solution when $p$ does not divide $f'(a)$. Repeating the step with $p^3$, $p^4, \ldots$ lifts the root as far as needed.
+When $p$ divides $f'(a)$ the $t$ drops out: the root lifts for every $t$ if $p^2 \mid f(a)$ and for none otherwise. That singular case is why square roots modulo powers of $2$ follow their own rule.
 
-## How to use it
-Solve modulo $p$ first, then lift each root one power at a time, substituting $x = a + pt$ and keeping only the terms linear in $t$; the [[binomial-theorem|Binomial Theorem]] does the expansion for powers.
+## Formulas it uses
+- [[binomial-theorem]]: expands $(a + pt)^n$, and every term past $n a^{n-1} pt$ carries $p^2$, which is why each step is linear.
+- [[modular-inverse]]: each step solves $t\,f'(a) \equiv -\frac{f(a)}{p} \pmod p$, which needs the inverse of $f'(a)$ modulo $p$.
+- [[crt]]: splits a composite modulus into prime powers before lifting and recombines afterward, so the numbers of roots multiply.
 
-For $x^k \equiv -1$ with $k$ a power of $2$, first decide which primes allow a solution modulo $p$ at all: a solution has order exactly $2k$ modulo $p$, so $2k$ must divide $p - 1$, by [[multiplicative-order|multiplicative orders]]. Then lift.
+## Common traps
+- Lifting a root with $f'(a) \equiv 0 \pmod p$ as if it were simple; it lifts to $p$ roots or to none.
+- Using the simple rule at $p = 2$ for square roots: the derivative $2x$ is always even, and an odd $a$ has a square root modulo $2^k$, $k \ge 3$, only when $a \equiv 1 \pmod 8$, in which case it has four.
+- Forgetting to multiply the root counts across the prime powers after the Chinese Remainder Theorem.
 
-When $f'(a) \equiv 0 \pmod p$ the root is singular: it lifts to all $p$ values of $t$ if $p^2$ divides $f(a)$, and to none otherwise.
-
-## On contests
-Two problems here, both AIME, neither solved by it alone. Typical questions solve a cube or fourth-power congruence modulo a prime power by splitting with the [[crt|Chinese Remainder Theorem]] and lifting one power at a time, or study a sequence that stabilizes modulo powers of $2$ through multiplicative orders.
+## Contest profile
+Rare below olympiad level; when it appears it is one step inside a larger count, solving a power congruence modulo a prime power after the Chinese Remainder Theorem has split the modulus.
 `
 
 });
@@ -888,7 +928,7 @@ Count representations without finding them: compute $d_1(n) - d_3(n)$ over the d
 $\mathbb{Z}[i]$ is a Euclidean domain — you can divide with remainder by rounding to the nearest Gaussian integer — so it has unique factorization. The norm $N(a+bi) = a^2+b^2 = (a+bi)(a-bi)$ is multiplicative because it is $|z|^2$, which turns questions about sums of two squares into questions about factorization. A rational prime $p$ behaves by whether $-1$ is a quadratic residue mod $p$: $p \equiv 1 \pmod 4$ makes $x^2 \equiv -1$ solvable, so $p \mid (x+i)(x-i)$ splits; $p \equiv 3 \pmod 4$ stays prime; and $2 = -i(1+i)^2$ ramifies.
 
 ## How to use it
-Reach for $\mathbb{Z}[i]$ whenever $a^2+b^2$ appears: factor it as $(a+bi)(a-bi)$ and lean on unique factorization. This proves [[fermat-two-squares|Fermat's two-squares theorem]], powers the $4(d_1 - d_3)$ representation count, parametrizes Pythagorean triples via $(m+ni)^2$, and multiplies sums of two squares together (Brahmagupta–Fibonacci). The [[eisenstein-criterion|Eisenstein]] integers $\mathbb{Z}[\omega]$ do the same for $a^2+ab+b^2$ and problems with cube-root-of-unity (120°) symmetry.
+Reach for $\mathbb{Z}[i]$ whenever $a^2+b^2$ appears: factor it as $(a+bi)(a-bi)$ and lean on unique factorization. This proves [[sum-of-two-squares|Fermat's Two-Square Theorem]], powers the $4(d_1 - d_3)$ representation count, parametrizes Pythagorean triples via $(m+ni)^2$, and multiplies sums of two squares together (Brahmagupta–Fibonacci). The [[eisenstein-criterion|Eisenstein]] integers $\mathbb{Z}[\omega]$ do the same for $a^2+ab+b^2$ and problems with cube-root-of-unity (120°) symmetry.
 
 ## On contests
 Chiefly an olympiad tool, but its consequences reach the AIME (sum-of-two-squares counts, Pythagorean-triple parametrizations). The practical takeaway: primes $\equiv 1 \pmod 4$ split (and are sums of two squares), while primes $\equiv 3 \pmod 4$ stay inert.`
@@ -898,19 +938,40 @@ Chiefly an olympiad tool, but its consequences reach the AIME (sum-of-two-square
 Object.assign(window.MATH_DETAILS, {
 
 
-"choose-modulus": String.raw`## Key forms
-- powers occupy very few residues, which is what makes a well-chosen modulus decisive: squares are $0,1$ mod $4$ and $0,1,4$ mod $8$; cubes are $0,\pm1$ mod $9$; fourth powers are $0,1$ mod $16$ — the sparseness is the point, since a modulus where one side simply cannot land finishes the problem outright
-- a true equation over the integers stays true modulo every $m$, so if the two sides can never agree modulo some $m$, the equation has no solutions at all — this is how "prove no solutions exist" problems are usually killed
-- match the modulus to the exponents present, and remember the other outcome: a forced residue that does not kill the equation still kills cases, as when $x$ must be even and you substitute $x=2x'$ and descend — a non-fatal residue is still progress, because it narrows the cases you have left to check
+"choose-modulus": String.raw`
+## When to use
+Reach for a modulus when a problem asks you to show an equation has no integer solutions, or when an integer search has far too many cases. The signal is a term whose remainders are scarce. Squares, cubes and fourth powers each hit only a few residues, a factorial $n!$ is $0$ modulo every prime up to $n$, the powers of a fixed base cycle, and digit conditions live naturally modulo $9$, $10$ and $11$. Pick the modulus to fit: $4$ or $8$ for squares, $9$ or $7$ for cubes, $16$ for fourth powers, $9$ for digit sums, $11$ for alternating digit sums, $10$ for last digits.
+
+## How
+1. Make a small table of the residues each term can take modulo a candidate $m$.
+2. Reduce both sides of the equation modulo $m$ and list the values each side can reach.
+3. If the two lists never overlap, the equation has no solutions.
+4. If they overlap only in some classes, keep those, substitute (as $x = 2x'$ when $x$ must be even), and continue with the smaller problem.
+5. If nothing is ruled out, try another modulus before switching to bounding or factoring.
+
+For $x^2 + y^2 = 4z + 3$: a square is $0$ or $1$ modulo $4$, so the left side is $0$, $1$ or $2$ modulo $4$ and can never be $3$. There are no solutions.
 
 ## Why it works
-A true equation over the integers stays true mod every $m$. Residue classes of powers are sparse — squares hit only $\{0,1\}$ mod 4 and $\{0,1,4\}$ mod 8, cubes only $\{0, \pm1\}$ mod 9, fourth powers only $\{0,1\}$ mod 16 — so a well-chosen modulus can make one side land in a set the other side never touches.
+Congruence respects addition and multiplication, so if $A = B$ in the integers then $A \equiv B \pmod m$ for every $m$. Read backwards, one modulus at which the two sides disagree rules out every integer solution at once.
 
-## How to use it
-Match the modulus to the exponents present: squares → mod 4 or 8, cubes → mod 9 (or 7), fourth powers → mod 16, digit information → mod 9 or 11, last digits → mod 10, factorials beyond $p!$ → mod $p$ (they vanish). Check the finitely many residues of each side; an empty intersection kills the equation, a forced residue kills cases (e.g. "$x$ must be even — write $x = 2x'$ and descend").
+A good modulus is one where the terms have few possible residues. Modulo $8$ every odd square is $1$, because $(2k + 1)^2 = 4k(k + 1) + 1$ and $k(k + 1)$ is even. Modulo $9$ a cube is $0$ or $\pm 1$, because $(3k \pm 1)^3 = 27k^3 \pm 27k^2 + 9k \pm 1$. A side built from such terms reaches only a few residues, and the art is choosing $m$ so that the other side lands outside them.
 
-## On contests
-The first thing to try on "show no solutions exist" and on narrowing AIME Diophantine searches. Also the engine behind parity arguments — mod 2 is the simplest instance. If mod 4, 8, 9, and 16 all fail to break the equation, switch tools: size/bounding arguments or factoring usually take over.`,
+When the modulus does not kill the equation it still narrows it: a forced residue becomes a substitution, and when every variable is forced to be even, dividing by $2$ gives a smaller solution, the start of an infinite descent.
+
+## Formulas it uses
+- [[modular-basics]]: congruences can be added and multiplied, so each side of an equation can be reduced term by term.
+- [[squares-mod-small]]: the residues of squares, $0, 1$ modulo $4$ and $0, 1, 4$ modulo $8$, the most common table to check.
+- [[fermats-little-theorem]]: $a^{p-1} \equiv 1 \pmod p$ when $p \nmid a$, so powers modulo a prime take few values; fourth powers modulo $5$ are only $0$ and $1$.
+- [[last-digit-patterns]]: the residues of squares and cubes modulo $9$ and the last digits they can end in.
+
+## Common traps
+- Treating a modulus that fails to rule out solutions as evidence that solutions exist; it only means that modulus is the wrong one.
+- Forgetting the residue $0$: a variable divisible by $m$ behaves differently, as when $3 \mid x$ makes $x^3 \equiv 0 \pmod 9$.
+- Reducing an exponent modulo $m$ instead of modulo the period of the base: $2^{100} \bmod 7$ uses $100 \bmod 3$, since $2^3 \equiv 1 \pmod 7$.
+
+## Contest profile
+Usually a single decisive line: the right modulus either ends a "show there are no solutions" problem outright or cuts an AIME search down to a few residue classes for another method to finish.
+`,
 
 "recognition-numbers": String.raw`
 ## Why it works
@@ -933,50 +994,95 @@ For estimates, $\log_{10} 2 \approx 0.301$ and $\log_{10} 3 \approx 0.477$ settl
 Four problems here, all solved by it alone, and really two, each shared between the AMC 10 and AMC 12. They reward recognizing products like $101 \cdot 9901 = 1000001$ and $99 \cdot 10101 = 999999$, or $10 \cdot 9 \cdot 8 = 720 = 6!$, instead of multiplying out. AIME answers often need a quick factorization such as $221$ or $299 = 13 \cdot 23$, and AMC estimates lean on $2^{10} \approx 10^3$.
 `,
 
-"digit-manipulation": String.raw`## Key forms
-- write the number as its place-value polynomial, $\overline{abc}=100a+10b+c$, which turns a digit condition into an ordinary equation in the digits — once it is an equation the digit constraints are just bounds, and the problem stops being about digits
-- a number plus its reversal always factors through $11$ and a number minus its reversal through $9$: $\overline{ab}+\overline{ba}=11(a+b)$ and $\overline{ab}-\overline{ba}=9(a-b)$, while for three digits $\overline{abc}-\overline{cba}=99(a-c)$ drops the middle digit entirely — spotting the factor immediately is usually the intended shortcut
-- the bounds do most of the work, since $1\le a\le9$ and $0\le b,c\le9$ leave only a handful of candidates once one digit is pinned, so isolate a digit before starting any [[casework-method|casework]]
+"digit-manipulation": String.raw`
+## Distinguishing clues
+The condition names individual digits: their sum, their order, a digit moved or deleted. A question about how many digits a number has belongs to [[digit-count|the number of digits]], and one about the last digits of a huge power is a question about remainders, not digits.
+
+## Methods and Formulas to Try
+Translate first, $\overline{abc} = 100a + 10b + c$, and every condition becomes an equation in bounded unknowns. Reversals then factor at once: $\overline{ab} + \overline{ba} = 11(a + b)$, $\overline{ab} - \overline{ba} = 9(a - b)$, and $\overline{abc} - \overline{cba} = 99(a - c)$, where the middle digit drops out.
+
+### Methods to try
+- [[bounding-diophantine]]: digits are bounded, $1 \le a \le 9$ for a leading digit and $0 \le b \le 9$ otherwise, so once the equation isolates one digit only a few values survive.
+- [[choose-modulus]]: modulo $9$ a number equals its digit sum and modulo $11$ its alternating digit sum, so digit-sum conditions become congruences.
+- [[casework-method]]: when two or three digits stay free, split on the leading digit or on a carry.
+
+### Formulas to try
+- [[base-conversion]]: the place-value expansion in base $10$ or any base $b$, where every digit problem starts.
+- [[divisibility-rules]]: digit sums and alternating digit sums, the congruences behind the reversal identities.
+- [[digit-sum-carries]]: the digit sum of a sum drops by $9$ for every carry, which links the digit sum of a result to the digit sums of its parts.
+
+## Common traps
+- Letting a leading digit be $0$, especially after a reversal: the reversal of a number ending in $0$ has fewer digits.
+- Forgetting that in base $b$ the digits run only from $0$ to $b - 1$.
+- Treating $\overline{ab}$ as the product $ab$.
+
+## Contest profile
+Mostly MATHCOUNTS and AMC: a place-value equation and a short bounded search; the AMC version often moves the same translation into another base.
+`,
+
+"squeeze-between-squares": String.raw`
+## When to use
+"Find every integer $n$ that makes this expression a perfect square", for a polynomial expression whose leading part is close to a square, and the related task of computing $\lfloor \sqrt N \rfloor$ for a large, awkward $N$. The same idea works for cubes and for products of consecutive integers.
+
+## How
+1. Find the polynomial $P(n)$ whose square agrees with the expression in its leading terms, scaling the expression first (often by $4$) if $P$ would need fractions.
+2. Show the expression is strictly greater than $P(n)^2$ and strictly less than $(P(n) + 1)^2$ for all $n$ beyond some point.
+3. Conclude that it is not a square for those $n$.
+4. Check the finitely many remaining values by hand; any value where an inequality becomes an equality is a solution.
+
+For which positive integers is $N = n^4 + n^3 + n^2 + n + 1$ a square? Multiply by $4$: $4N - (2n^2 + n)^2 = 3n^2 + 4n + 4 > 0$, and $(2n^2 + n + 1)^2 - 4N = n^2 - 2n - 3 = (n - 3)(n + 1)$, which is positive for $n > 3$. So $4N$ lies strictly between consecutive squares once $n > 3$, and checking $n = 1, 2, 3$ leaves only $n = 3$, where $N = 121 = 11^2$.
 
 ## Why it works
-Base-10 notation is the polynomial $\overline{abc} = 100a + 10b + c$. Reversal identities follow at once: $\overline{ab} + \overline{ba} = 11(a+b)$ and $\overline{ab} - \overline{ba} = 9(a - b)$, which is why digit-reversal problems always run through 9 and 11.
+No perfect square lies strictly between $m^2$ and $(m + 1)^2$, so a number trapped there is not a square, and its square root has floor $m$. The gap $(m + 1)^2 - m^2 = 2m + 1$ grows with $m$, while the difference between a polynomial expression and the square of its nearest polynomial root grows more slowly. Eventually the expression fits strictly inside a gap and stays there, and only the small values before that point need checking.
 
-## How to use it
-Name the digits, translate the condition into an equation, and exploit the brutal bounds $1 \le a \le 9$, $0 \le b \le 9$ — most digit equations have only a handful of solutions once you isolate a digit. For three digits, $\overline{abc} - \overline{cba} = 99(a - c)$: the middle digit vanishes. Divisibility conditions convert via mod 9 (digit sum) and mod 11 (alternating sum).
+The figure shows $n = 5$: $4N = 3124$ sits between $55^2 = 3025$ and $56^2 = 3136$.
 
-## On contests
-A MATHCOUNTS and early-AMC staple: "a number equals $k$ times its digit sum," reversal differences, digits forming arithmetic sequences. The layered AMC version runs the same translation in another base $b$ — same polynomial, different radix, and comparing representations across bases gives systems in the digits.`,
+## Formulas it uses
+- [[square-of-sum]]: expands the candidate root, such as $(2n^2 + n + 1)^2$, term by term for the comparison with the expression.
+- [[difference-of-squares]]: the gap between consecutive squares, $(m + 1)^2 - m^2 = 2m + 1$, which is why a polynomial eventually fits strictly inside it.
 
-"squeeze-between-squares": String.raw`## Key forms
-- if $n^2\lt N\lt (n+1)^2$ for some integer $n$, then $N$ cannot be a perfect square — consecutive squares are $2n+1$ apart, so a large expression trapped strictly between two of them is disqualified outright
-- guess the near-root and prove both inequalities: for a quartic try $(n^2+an+b)^2$ for small $b$, check small cases by hand since the squeeze usually only starts from some $n_0$, and read the boundary cases as the actual solutions — small cases must be checked separately, since the squeeze usually fails for the first few $n$
+## Common traps
+- Skipping the small values before the squeeze holds, which is exactly where the solutions usually are.
+- Missing the boundary case where the expression equals one of the two squares; those values are solutions, not failures.
+- Squeezing with a root that is off by a constant, so the inequalities never become strict; try nearby constants, or scale by $4$ first.
 
-## Why it works
-Perfect squares are spaced increasingly far apart — the gap between $n^2$ and $(n+1)^2$ is $2n + 1$. Any integer trapped strictly inside such a gap cannot be a square, and every integer $N$ in $[n^2, (n+1)^2)$ has $\lfloor \sqrt N \rfloor = n$ exactly.
-
-## How to use it
-Given a polynomial-like expression suspected of never being square, guess the near-root — for $n^4 + 2n^3 + \dots$ try $(n^2 + n + c)^2$ for small $c$ — and verify strict inequalities on both sides. Two subtleties: check small cases separately (the squeeze often starts only from some $n_0$), and when the expression can equal the boundary square, those become exactly the solution cases. The same template works for cubes and for trapping between $k(k+1)$-type products.
-
-## On contests
-The closer for "find all $n$ making this a perfect square" — squeeze for large $n$, hand-check the small survivors. AIME also uses the floor version directly: computing $\lfloor \sqrt{N} \rfloor$ for messy $N$ means finding which consecutive squares bracket it.`
+## Contest profile
+Usually the closing step of a "find every $n$ making this a perfect square" problem, with a hand check of the few small values it leaves; the floor version also appears on its own.
+`
 
 });
 
 Object.assign(window.MATH_DETAILS, {
 
-"vieta-jumping": String.raw`## Key forms
-- if a symmetric condition is quadratic in each variable separately, fixing the others makes the remaining one a root of a quadratic, and [[vietas-general|Vieta]] hands you the second root for free: $a'=kb-a$ from the sum, and $a'=\frac{b^2-N}{a}$ from the product, which is the entire engine of the descent
-- the two expressions do different jobs — the sum shows $a'$ is an integer, and the product controls its sign and size
-- start from the solution minimizing $a+b$ and jump: either the new solution is smaller, contradicting minimality, or you land on a degenerate case whose evaluation reveals what the constant must be — both outcomes are useful, since the contradiction proves impossibility and the degenerate case gives the answer
+"vieta-jumping": String.raw`
+## When to use
+The trigger is a symmetric condition on two positive integers, quadratic in each, claimed for every solution: $\frac{a^2 + b^2}{ab + 1}$ is an integer, or $ab \mid a^2 + b^2 + 1$. The question asks which values such an expression can take, or to prove it is always a perfect square. It belongs to olympiads; problems of the same shape at the AIME level are usually small enough to search directly.
+
+## How
+1. Suppose an integer value $k$ occurs, and choose a solution $(a, b)$ with $a + b$ as small as possible and $a \ge b$.
+2. Fix $b$ and write the condition as a quadratic in $a$; call its other root $a'$.
+3. Show $a'$ is an integer, from the sum of the roots, and that $0 \le a' < a$, from the product.
+4. Then $(a', b)$ is a solution with a smaller sum, which contradicts the choice, unless $a'$ is a boundary case such as $a' = 0$.
+5. Read off $k$ at the boundary case.
+
+For $\frac{a^2 + b^2}{ab + 1} = k$ the quadratic is $a^2 - kb\,a + (b^2 - k) = 0$, so $a' = kb - a = \frac{b^2 - k}{a}$. The descent stops at $a' = 0$, where the condition reads $\frac{b^2}{1} = k$: the value $k$ is a perfect square.
 
 ## Why it works
-If a symmetric condition is quadratic in each variable separately, then fixing all but one variable makes the remaining one a root of a quadratic — and Vieta hands you the other root for free: $a' = kb - a = \frac{b^2 - N}{a}$, automatically an integer (from the sum) and with controllable sign and size (from the product). Starting from a minimal solution, the jump must either exit the allowed region — a contradiction — or hit a boundary case that pins down the constant.
+The sum of the roots of $a^2 - kb\,a + (b^2 - k) = 0$ is $kb$, an integer, so the other root $a' = kb - a$ is an integer. The product is $b^2 - k$, so $a' = \frac{b^2 - k}{a}$, and with $a \ge b$ this gives $a' < \frac{b^2}{a} \le b \le a$. And $a'$ cannot be negative: then $a'b + 1 \le 0$, so the right side of $a'^2 + b^2 = k(a'b + 1)$ is at most $0$ while the left side is positive. So $(a', b)$ is another solution in nonnegative integers with a smaller sum.
 
-## How to use it
-The ritual: (1) suppose the quantity $k$ is an integer and take a solution $(a, b)$ with $a + b$ minimal, WLOG $a \ge b$; (2) treat the condition as a quadratic in $a$ and name the second root $a'$ via Vieta's sum and product; (3) show $a'$ is an integer, nonnegative, and smaller than $a$; (4) minimality forces the degenerate case ($a' = 0$ or $a' = b$), and evaluating there reveals what $k$ must be. The product form of $a'$ gives the size bound; the sum form gives integrality.
+The figure follows one chain of solutions for $k = 4$ along the curve $a^2 - 4ab + b^2 = 4$, jumping from $(30, 8)$ to $(2, 8)$ to $(2, 0)$. Every chain ends at a solution with a zero, and that is where the value of $k$ shows.
 
-## On contests
-Purely an olympiad weapon: its best-known result is that $\frac{a^2+b^2}{ab+1}$ is a perfect square whenever it is an integer, and it settles many divisibility problems of the shape $xy \mid x^2 + y^2 + c$. Recognize the trigger: a symmetric fraction of quadratics asserted to be a positive integer. Below olympiad level it never appears; it's here so the pattern is recognizable when self-studying.`
+## Formulas it uses
+- [[vietas-quadratic]]: the sum of the roots shows the second root is an integer, and their product bounds its size and sign.
+
+## Common traps
+- Minimizing the wrong quantity, or jumping before putting $a \ge b$, so the new root is not visibly smaller.
+- Skipping the sign check: the descent needs the new root to be nonnegative, not merely smaller.
+- Assuming the chain always ends at $0$; in some problems it ends at $a' = b$ or at a small fixed pair, which must be checked separately.
+
+## Contest profile
+An olympiad technique for symmetric divisibility conditions; below olympiad level the same equations usually have small enough solutions to find by search.
+`
 
 });
 
@@ -1013,29 +1119,37 @@ To find $F_n \bmod m$, compute the period $\pi(m)$ (list terms mod $m$ until $0,
 An olympiad and hard-AIME tool for "last digit of $F_{2024}$" or "for which $n$ is $F_n$ divisible by $m$" questions. The key recognitions: last digits cycle with period $60$, and divisibility of $F_n$ by $m$ is itself periodic in $n$.`,
 
 "exponent-tracking": String.raw`
-## Key forms
-- $\gcd \to \min$, $\operatorname{lcm} \to \max$, product $\to$ sum — the operations, applied to the exponent of each prime separately
-- $a \mid b \iff e_p(a) \le e_p(b)$ at every prime $p$ — divisibility is an inequality between exponents
-- $k$th power $\iff k \mid e_p$ at every prime, and $d(n) = \alt{\prod_p (e_p + 1)}{(e_2 + 1)(e_3 + 1)(e_5 + 1)\cdots}$ — powers and divisor counts are exponent bookkeeping too
+## When to use
+The move pays whenever every condition is multiplicative: a gcd or lcm is fixed, a product or quotient must be a perfect power, one number divides another, or a number of divisors is given. Counting problems are its strongest case, such as "how many divisors of $N$ are perfect squares", because the count factors into one small count per prime. It is the wrong tool when a sum enters, as in $a + b = 100$ together with a gcd; there [[gcd-substitution|GCD Substitution]] fits better.
+
+## How
+1. Factor every given number, and write each unknown as $\prod p^{e_p}$, with one exponent for each prime that can appear.
+2. Translate each condition: gcd to minimum, lcm to maximum, product to sum, divisibility to an inequality, and "is a $k$th power" to "every exponent is a multiple of $k$".
+3. Solve or count the exponent conditions for each prime separately.
+4. Multiply the counts over the primes, or rebuild the number from its exponents.
+
+For the ordered pairs $(a, b)$ with $\operatorname{lcm}(a, b) = 2^3 \cdot 3^2$: at the prime $2$ the two exponents lie in $\{0, 1, 2, 3\}$ with largest exactly $3$, which allows $4^2 - 3^2 = 7$ choices; at $3$ they lie in $\{0, 1, 2\}$ with largest $2$, which allows $3^2 - 2^2 = 5$. So there are $7 \cdot 5 = 35$ pairs.
 
 ## Why it works
-A positive integer is completely described by its prime exponents, and the common operations act on each prime's exponent separately.
+By unique factorization a positive integer is described exactly by its prime exponents, and the common operations act on each prime separately. Multiplying adds exponents, because $p^e \cdot p^f = p^{e + f}$. A common divisor can use at most the smaller exponent at each prime.
 
-By unique factorization, $n = \prod_p p^{e_p}$ in exactly one way, so the list of exponents is the number. Multiplying two numbers adds their exponents prime by prime, since $p^ep^f = p^{e+f}$.
+So the greatest common divisor uses exactly the smaller exponent, and the least common multiple needs the larger: for $a = \prod p^{e_p}$ and $b = \prod p^{f_p}$, $$\gcd(a, b) = \prod p^{\min(e_p, f_p)}, \qquad \operatorname{lcm}(a, b) = \prod p^{\max(e_p, f_p)}.$$ And $a \mid b$ exactly when $\frac ba$ has no negative exponent, that is, when $a$'s exponent is at most $b$'s at every prime.
 
-A common divisor can use at most the smaller of the two exponents at each prime, and the greatest one uses exactly that; the least common multiple, symmetrically, needs the larger. With $a = \prod_p p^{e_p}$ and $b = \prod_p p^{f_p}$, $$\gcd(a, b) = \prod_p p^{\min(e_p, f_p)}, \qquad \operatorname{lcm}(a, b) = \prod_p p^{\max(e_p, f_p)}.$$ And $a$ divides $b$ exactly when $\frac ba$ has no negative exponent, that is, when $a$'s exponent is at most $b$'s at every prime.
+None of these rules mixes two different primes. A condition on several numbers is therefore a list of independent conditions, one per prime, and the number of ways to satisfy all of them is the product of the numbers of ways at each prime.
 
-None of these rules mixes two different primes, and that independence is the whole point. A condition on several numbers becomes one small condition per prime, each can be solved alone, and when counting, the numbers of choices at different primes multiply.
+## Formulas it uses
+- [[number-of-divisors]]: $d(n) = \prod (e_p + 1)$, the simplest count built prime by prime, since a divisor's exponent at $p$ runs from $0$ to $e_p$.
+- [[gcd-lcm-product]]: $\gcd(a, b) \cdot \operatorname{lcm}(a, b) = ab$, because $\min(e, f) + \max(e, f) = e + f$ at every prime.
+- [[lcm-pair-counting]]: the closed counts for pairs with a given gcd or lcm, which are this method's per-prime products written out once and for all.
+- [[p-adic-valuation]]: the notation $v_p(n)$ for the exponent of $p$ in $n$, the coordinate the method works in.
 
-## How to use it
-Write each unknown as $\prod p^{e_i}$ and rewrite every hypothesis as a per-prime constraint: gcd/lcm become $\min$/$\max$ equations, "is a perfect square" becomes "all exponents even," a divisibility becomes an inequality. Solve each prime's tiny problem separately and multiply the counts.
+## Common traps
+- Leaving out a prime that divides none of the given numbers; an unknown's exponent there must be $0$, and that is a condition too.
+- Treating ordered and unordered tuples alike: the per-prime product counts ordered tuples, and unordered ones need care wherever entries can coincide.
+- Applying the method to a condition that contains a sum, which does not split prime by prime.
 
-For "count the pairs/triples with these gcd and lcm" problems, each prime contributes a small independent factor, usually $2$ (which of the two numbers holds the maximum) or a short [[casework-method|casework]], and the answer is their product.
-
-Working one prime at a time is what makes [[gcd-lcm-product|gcd–lcm product]] and the lcm pair counts fall out, since min and max are decided independently per prime.
-
-## On contests
-The standard AIME approach to gcd and lcm counting and to "how many divisors of $N$ satisfy …", with 12 problems tagged here; casework joins in 4, usually for the cases at a single prime. The reflex to build: the moment a problem mixes gcd, lcm, products or powers, switch to exponent lists and work one prime at a time.
+## Contest profile
+Usually the whole solution of a gcd or lcm counting problem, sometimes with a short casework at one prime where the exponent conditions interact.
 `
 
 });
@@ -1052,33 +1166,33 @@ To test $n$: strip factors of $4$ repeatedly, then check whether what remains is
 Mostly an olympiad-level classification tool and a fast way to rule out cases in a Diophantine problem. The mod-8 argument itself — squares are $0, 1, 4 \bmod 8$ — is far more broadly useful than the theorem, and is worth reaching for whenever an equation mixes three squares.`,
 
 "bounding-diophantine": String.raw`
-## Key forms
-- order the variables $x\le y\le z$ — among $k$ terms summing to $S$ the largest is at least $\frac Sk$, which caps the smallest variable
-- two inequalities pin it: $S\le\frac{k}{x}$ from above and $\frac1x\lt S$ from below leave only a handful of values to test — ordering the variables first is what makes the upper bound tight enough to be finite
-- fix that value, substitute, and recurse on one fewer variable — then restore all permutations at the end
+## When to use
+Equations in positive integers with finitely many solutions but no algebraic way to isolate them: sums of unit fractions such as $\frac1x + \frac1y + \frac1z = 1$, symmetric equations such as $xyz = x + y + z$, and equations in which one side grows much faster than the other, such as $2^a + 1 = 3^b$ or $n! = n^3 - n$. The tell is that large values of the variables obviously fail.
+
+## How
+1. Use the symmetry to order the variables, $x \le y \le z$, and remember to restore the other orders at the end.
+2. Bound the smallest variable from both sides by comparing it with the whole equation.
+3. For each surviving value, substitute and solve the smaller equation, bounding again.
+4. When an inequality is too weak, reduce modulo a small number to thin the cases first.
+5. List every solution with all its orderings.
+
+For $\frac1x + \frac1y + \frac1z = 1$ with $x \le y \le z$: $1 \le \frac3x$ gives $x \le 3$, and $\frac1x < 1$ gives $x \ge 2$. With $x = 2$, $\frac1y + \frac1z = \frac12$ forces $y = 3$ or $y = 4$; with $x = 3$, it forces $y = z = 3$. The figure shows this search: three solutions, $(2, 3, 6)$, $(2, 4, 4)$ and $(3, 3, 3)$.
 
 ## Why it works
-An equation in positive integers has infinitely many candidates to try but often only finitely many that can possibly work, and bounding is the argument that shrinks the first set down to the second.
+Once the variables are ordered, the smallest variable's term is the largest of the terms, and the largest of $k$ numbers is at least their average, so it is at least $\frac1k$ of the total. That caps the smallest variable from one side, and positivity of the other terms caps it from the other. Without the ordering no single variable is capped, because any of them could be the large one.
 
-Take $\frac1x + \frac1y + \frac1z = 1$. The equation does not change when the variables are swapped, so you may assume $x \le y \le z$ and restore the other orders at the end.
+Each surviving value leaves an equation with fewer unknowns, where the same comparison applies, so the search is a finite tree. Every solution has to pass through one of its branches, which is why the list at the end is complete. For a growth comparison the bound comes from size instead: once $3^b$ outruns $2^a + 1$ by more than any adjustment can make up, only small exponents remain to check.
 
-Then $\frac1x \ge \frac1y \ge \frac1z$, so $\frac1x$ is the largest of three terms that add to $1$, and the largest of three numbers is at least their average: $$\frac1x \ge \frac13, \qquad x \le 3.$$ From the other side, $\frac1x \lt 1$ because the other two terms are positive, so $x \ge 2$. Only $x = 2$ and $x = 3$ survive.
+## Formulas it uses
+- [[modular-basics]]: when the inequalities leave too many cases, a congruence cuts them down before the search.
 
-Each survivor leaves an equation in fewer variables, and the same argument applies again. With $x = 2$ the rest is $$\frac1y + \frac1z = \frac12$$ with $y \le z$, so $\frac1y \ge \frac14$ and $\frac1y \lt \frac12$, leaving $y = 3$ or $y = 4$. The whole search is a handful of cases, and every solution has been found, because every solution had to pass through one of them.
+## Common traps
+- Forgetting to restore the orderings at the end, and reporting $3$ solutions where the question wants $10$ ordered ones.
+- Ordering variables that are not symmetric in the equation, which loses solutions.
+- Stopping when the bound is weak instead of combining it with a modulus or a factorization.
 
-Ordering is what makes the bound strong enough. Without it, any one of the variables could be the large one, and none of them is individually capped.
-
-## How to use it
-State the WLOG ordering explicitly, then bound the extreme variable by comparing it against the total: for $\frac1x + \frac1y + \frac1z = 1$ with $x \le y \le z$, we get $$1 = \frac1x + \frac1y + \frac1z \le \frac3x,$$ so $x \le 3$, and $\frac1x \lt 1$ so $x \ge 2$.
-
-Enumerate each surviving value, substitute, and repeat on the smaller equation; often the two-variable step factors via [[sfft|SFFT]]. Finally, restore all permutations of each unordered solution. The same tactic bounds variables in $xyz = x + y + z$ and in equations where one side grows much faster than the other (compare growth rates to cap the exponent, then finite-check).
-
-What the method buys is worth stating plainly: it converts an unbounded search into a finite one. Before bounding, an equation in three positive integers has infinitely many candidates and no way to check them; after bounding the largest variable, there are a handful, and a handful can simply be listed. Nothing clever happens after that step, which is why the bound is the whole solution rather than the start of one.
-
-## On contests
-The standard finisher for unit-fraction (Egyptian fraction) problems and small symmetric Diophantine systems on AIME and olympiads. It is unusually self-contained — 11 of its 39 problems need nothing else, which puts it inside the library's ten most self-sufficient cards — because once the bound is found the rest is enumeration.
-
-It is the size-based complement to the modular approach, and the two divide the work cleanly: use [[modular-basics|a modulus]] to prove no solutions exist, and bounding to prove only finitely many do, then list them. When a problem resists both, it usually wants them together — a modulus to cut the residues, then a bound to cap what survives.
+## Contest profile
+Usually the closing argument of an AIME Diophantine problem: once the variables are bounded, a short check of the survivors gives the answer, often after a modulus has thinned the cases.
 `
 
 });
@@ -1180,19 +1294,38 @@ Olympiad number theory and "why the Fermat test fails" discussions. Keep it dist
 
 Object.assign(window.MATH_DETAILS, {
 
-"extended-euclidean-algorithm": String.raw`## Key forms
-- the Euclidean algorithm runs on $\gcd(a,b)=\gcd(b,\,a\bmod b)$; the extended version also tracks how each remainder is built from $a$ and $b$, producing Bézout's Identity $\gcd(a,b)=ax+by$ — the tracking costs nothing extra, so run the extended version by default
-- the Bézout coefficient is exactly the modular inverse: if $\gcd(a,b)=1$ then $ax+by=1$ gives $ax\equiv1\pmod b$, so $x\equiv a^{-1}$ — this is how an inverse is computed by hand when the modulus is too large to guess
-- the same coefficients settle solvability: $ax\equiv c\pmod b$ has a solution exactly when $\gcd(a,b)\mid c$, and then it has exactly $\gcd(a,b)$ solutions modulo $b$ — check the divisibility first, since it decides whether to look for solutions at all
+"extended-euclidean-algorithm": String.raw`
+## When to use
+Whenever a computation needs the coefficients and not just the gcd: an inverse modulo a large number, a solution of $ax \equiv c \pmod m$, all nonnegative solutions of $21x + 8y = 100$, or the recombination step of the [[crt|Chinese Remainder Theorem]]. For a modulus under about $30$, guessing the inverse is faster; beyond that the algorithm is.
+
+## How
+1. Run the Euclidean algorithm on $a$ and $b$, writing each step as $r_{i-2} = q_i\,r_{i-1} + r_i$.
+2. Stop at the last nonzero remainder, the gcd $g$.
+3. Rewrite each step as $r_i = r_{i-2} - q_i\,r_{i-1}$ and substitute upward until $g$ is written in terms of $a$ and $b$.
+4. For an inverse, reduce the coefficient of $a$ modulo $b$. For $ax + by = c$, scale by $\frac cg$, then add $t\left(\frac bg, -\frac ag\right)$ to get every solution.
+
+For $21$ and $8$: $21 = 2 \cdot 8 + 5$, $8 = 1 \cdot 5 + 3$, $5 = 1 \cdot 3 + 2$, $3 = 1 \cdot 2 + 1$. Back-substituting, $$1 = 3 - 2 = 2 \cdot 3 - 5 = 2 \cdot 8 - 3 \cdot 5 = 8 \cdot 8 - 3 \cdot 21,$$ so $8^{-1} \equiv 8 \pmod{21}$, since $64 = 3 \cdot 21 + 1$.
 
 ## Why it works
-Each remainder in the Euclidean algorithm is an integer combination of the original $a$ and $b$: $r_i = r_{i-2} - \lfloor r_{i-2}/r_{i-1}\rfloor\, r_{i-1}$. Back-substituting these equations from the last nonzero remainder (the gcd) upward expresses $\gcd(a,b)$ as $ax + by$; the forward recurrence $(x, y) = (y', x' - \lfloor a/b\rfloor y')$ carries the same bookkeeping in one pass.
+Each remainder is an integer combination of the two numbers before it, and so, step by step, of $a$ and $b$ themselves. The remainders strictly decrease, so the process ends, and each step keeps the gcd, since a number dividing $r_{i-2}$ and $r_{i-1}$ divides $r_i$ and the other way round. The last nonzero remainder is therefore $\gcd(a, b)$, and it comes out as a combination $ax + by$.
 
-## How to use it
-For a modular inverse $a^{-1} \bmod m$: run the algorithm on $(a, m)$; when the gcd is $1$, the coefficient of $a$, reduced mod $m$, is the inverse. To solve $ax + by = c$: find $g = \gcd(a,b)$ with coefficients $(x_0, y_0)$ — solvable iff $g \mid c$ — then $(x, y) = \frac{c}{g}(x_0, y_0)$, with the general solution adding $t\left(\frac{b}{g}, -\frac{a}{g}\right)$. On paper the back-substitution chain (or a coefficient table) is quickest.
+The figure shows the same steps as squares cut from a $21 \times 8$ rectangle: each quotient counts how many squares of the shorter side fit, and the last square, of side $1$, is the gcd.
 
-## On contests
-The workhorse behind modular inverses on AIME and olympiad, and the constructive companion to Bézout's Identity — reach for it whenever you need an actual $(x, y)$, not just their existence. [[crt|CRT]] reconstruction and solving $ax \equiv c \pmod m$ both rely on it.`
+For $ax + by = c$, any common divisor of $a$ and $b$ divides the left side, so $g \mid c$ is necessary, and scaling the combination shows it is enough. Two solutions differ by a solution of $ax + by = 0$, and those are exactly the multiples of $\left(\frac bg, -\frac ag\right)$.
+
+## Formulas it uses
+- [[euclidean-algorithm]]: $\gcd(a, b) = \gcd(b, a \bmod b)$, the steps whose remainders the extended version records.
+- [[bezouts-identity]]: the gcd is always an integer combination $ax + by$; the algorithm produces the coefficients.
+- [[modular-inverse]]: when $\gcd(a, m) = 1$, the coefficient of $a$ in $ax + my = 1$ is $a^{-1} \bmod m$.
+
+## Common traps
+- Losing a sign while back-substituting; checking the final line, $8 \cdot 8 - 3 \cdot 21 = 1$, catches it.
+- Stopping at one solution: counting nonnegative solutions needs the general step $\left(\frac bg, -\frac ag\right)$.
+- Solving $ax \equiv c \pmod m$ without first checking $\gcd(a, m) \mid c$; when it divides, there are $\gcd(a, m)$ solutions modulo $m$.
+
+## Contest profile
+A computational step rather than the idea of a solution: it supplies the inverse or the particular solution that a congruence or linear-equation argument needs.
+`
 
 });
 
@@ -1200,26 +1333,36 @@ The workhorse behind modular inverses on AIME and olympiad, and the constructive
 Object.assign(window.MATH_DETAILS, {
 
 "gcd-substitution": String.raw`
-## Why it works
-Dividing two numbers by their greatest common divisor leaves two numbers with nothing left in common.
+## When to use
+A problem names a gcd or an lcm and also a sum, a product, a ratio, or an equation linking them: $\gcd(a, b) = 6$ with $a + b = 84$, $\operatorname{lcm}(a, b) = 4\gcd(a, b)$, or a ratio $\frac ab$ given in lowest terms. It is usually the first line of the solution, written down before any other idea.
 
-Let $d = \gcd(a, b)$ and write $a = dx$ and $b = dy$. If a prime $p$ divided both $x$ and $y$, then $pd$ would divide both $a$ and $b$, a common divisor larger than $d$. That contradicts the choice of $d$ as the greatest, so $$\gcd(x, y) = 1.$$ The figure makes the same argument with lengths.
+## How
+1. Let $d = \gcd(a, b)$ and write $a = dx$ and $b = dy$ with $\gcd(x, y) = 1$.
+2. Rewrite every condition: $a + b = S$ becomes $x + y = \frac Sd$, the lcm is $dxy$, and $ab = d^2xy$.
+3. Use the coprimality: count coprime pairs, or move a factor from one side to the other.
+4. Rebuild $a$ and $b$, and check them against the original conditions.
+
+For $\gcd(a, b) = 6$ and $a + b = 84$: $x + y = 14$ with $\gcd(x, y) = 1$. A common divisor of $x$ and $y$ divides $14$, so the condition is $\gcd(x, 14) = 1$, which leaves $x = 1, 3, 5, 9, 11, 13$: six ordered pairs, or three unordered.
+
+## Why it works
+Dividing two numbers by their greatest common divisor leaves two numbers with nothing in common. If a prime $p$ divided both $x$ and $y$, then $pd$ would divide both $a$ and $b$, a common divisor larger than $d$, which is impossible. So $\gcd(x, y) = 1$. The figure shows the same argument with lengths.
 
 {{figure:blocks}}
 
-Coprime quotients are what make the conditions split. The lcm is $dxy$, because $x$ and $y$ bring no prime in twice, and [[gcd-lcm-product|the gcd times lcm identity]] follows. A sum of the quotients is also coprime to their product: a prime dividing $xy$ divides $x$ or $y$, say $x$, and if it divided $x + y$ as well it would divide $y$, which is impossible. So $$\gcd(x + y,\ xy) = 1.$$
+Coprime numbers share no prime, so every other condition simplifies. Their lcm is their product, which makes $\operatorname{lcm}(a, b) = dxy$. Their sum is coprime to their product, since a prime dividing $x$ and $x + y$ would divide $y$. And an equation such as $\gcd(a, b) + \operatorname{lcm}(a, b) = a + b$ divides by $d$ into $1 + xy = x + y$, that is, $(x - 1)(y - 1) = 0$: one number divides the other.
 
-## How to use it
-Substitute first, before anything else: write $a = dx$ and $b = dy$ with $\gcd(x, y) = 1$, then rewrite every condition in the problem in terms of $d$, $x$, and $y$.
+## Formulas it uses
+- [[gcd-lcm-product]]: with coprime $x$ and $y$ the lcm is $dxy$, which is the identity $\gcd \cdot \operatorname{lcm} = ab$ in substituted form.
+- [[euclids-lemma]]: if $x \mid yk$ and $\gcd(x, y) = 1$ then $x \mid k$, the step that pushes a factor from one side of an equation to the other.
+- [[eulers-totient]]: with a fixed sum $x + y = n$, coprimality is $\gcd(x, n) = 1$, so the ordered pairs number $\varphi(n)$.
 
-A given gcd and sum: $a + b = S$ becomes $x + y = \frac Sd$. Any common divisor of $x$ and $y$ divides $x + y$, and the other way round, so $\gcd(x, y) = \gcd(x, x + y)$, and the coprime pairs are counted by [[eulers-totient|Euler's totient]], as in the example.
+## Common traps
+- Writing $a = dx$ and $b = dy$ but forgetting that $\gcd(x, y) = 1$ is the whole point, and then counting pairs that share a factor.
+- Mixing ordered and unordered pairs at the end; $\varphi(n)$ counts ordered ones.
+- Dividing a condition by $d$ when one of its terms is not a multiple of $d$; such a condition instead says $d$ divides that term.
 
-A ratio: $\frac ab = \frac pq$ in lowest terms means $a = kp$ and $b = kq$ for a positive integer $k$, the same substitution with the gcd of the ratio pulled out. A given gcd and lcm fixes $xy = \frac{\operatorname{lcm}}{\gcd}$.
-
-The substitution also turns strange-looking conditions into a factorization. If $\gcd(a, b) + \operatorname{lcm}(a, b) = a + b$, dividing by $d$ gives $$1 + xy = x + y \quad\Longrightarrow\quad (x - 1)(y - 1) = 0,$$ so $x = 1$ or $y = 1$: one of the two numbers divides the other.
-
-## On contests
-One problem here, an AIME, not solved by it alone: pulling the gcd out of two side lengths leaves a coprime pair, and [[euclids-lemma|Euclid's Lemma]] then forces a divisibility. The substitution is the standard first line whenever a problem names a gcd or an lcm, from MATHCOUNTS pair counts to AIME divisor bookkeeping, and solutions often use it without naming it.
+## Contest profile
+Usually the opening line rather than the whole solution: once the gcd is pulled out, coprimality and a short count finish.
 `,
 
 "periodicity-mod-m": String.raw`
@@ -1228,10 +1371,18 @@ Three shapes share the idea, and they repeat for different reasons. Remainders o
 
 The cycle need not start at once. When the base is coprime to the modulus, its powers cycle from the first term, with period dividing $\varphi(m)$ by [[eulers-theorem|Euler's Theorem]]; when it shares a factor, there is a pre-period, and modulo $100$ the powers of $2$ first return to $4$, not to $2$.
 
-## Why these methods fit
-Finding the cycle is the direct route: compute terms until a state repeats, note where the cycle starts and its length $T$, and replace the index $N$ by its position in the cycle, $$a_N \equiv a_{\,n_0 + ((N - n_0) \bmod T)} \pmod m.$$
+## Methods and Formulas to Try
+One cycle settles every case, so the work is finding the cycle, keeping it short, and reading the answer off it.
 
-Choosing the right modulus shortens the search, since the period modulo $m$ is the least common multiple of the periods modulo the prime powers of $m$, so $1000$ splits by the [[crt|Chinese Remainder Theorem]] into $8$ and $125$. Casework then treats the positions within one cycle separately when the question is a count.
+### Methods to try
+- [[cycle-hunting]]: compute terms until a state repeats, note where the cycle starts and its length $T$, and replace the index $N$ by its position in the cycle, $a_N \equiv a_{\,n_0 + ((N - n_0) \bmod T)} \pmod m$.
+- [[choose-modulus]]: split a composite modulus into prime powers and find the period of each, since the period modulo $m$ is the least common multiple of those periods; modulo $1000$, work modulo $8$ and $125$ separately.
+- [[casework-method]]: when the question is a count, handle each position within one cycle separately, multiply by the number of full cycles, and add the partial cycle at the end.
+
+### Formulas to try
+- [[eulers-theorem]]: for a base coprime to $m$, the powers cycle from the first term with a period dividing $\varphi(m)$.
+- [[multiplicative-order]]: the exact period of the powers of $a$ modulo $m$ is the order of $a$, the least $k \ge 1$ with $a^k \equiv 1 \pmod m$.
+- [[crt]]: recombines the answers found modulo each prime power into the answer modulo $m$.
 
 ## Common traps
 - Reducing the index by the period from the start when the cycle begins later.
@@ -1319,39 +1470,56 @@ When the $f_i$ over $\mathbb F_p$ have degrees summing below the number of varia
 Olympiad number theory and combinatorics; it is the standard nonconstructive tool for "show a nontrivial solution exists mod $p$" and for divisibility of solution counts.`,
 
 "odd-divisor-count": String.raw`
-## Why it works
-Divisors come in pairs, and only a square has a divisor paired with itself.
+## Distinguishing clues
+The clue is an action indexed by divisors: person $k$ touches every multiple of $k$, so item $n$ is touched once for each divisor of $n$, and only the parity of that count matters. A question about the sum of the divisors is different, since $\sigma(n)$ is odd when $n$ is a square or twice a square, and a question about the exact number of divisors is plain divisor counting.
 
-If $d$ divides $n$, so does $\frac nd$, and matching each $d$ with $\frac nd$ splits the divisors into pairs. A pair has two different members unless $d = \frac nd$, that is, $d^2 = n$. So when $n$ is not a square every divisor has a separate partner and the count is even, and when $n = m^2$ every divisor is paired except $m$, so the count is odd.
+## Methods and Formulas to Try
+Divisors pair off, $d$ with $\frac nd$, and the only divisor that can be its own partner is $\sqrt n$. So a number has an odd number of divisors exactly when it is a perfect square, and from $1$ to $N$ there are $\lfloor \sqrt N \rfloor$ such numbers.
 
 {{figure:pairs}}
 
-The [[number-of-divisors|divisor-count formula]] gives the same answer from the exponents: $(e_1 + 1)(e_2 + 1)\cdots$ is odd only when every exponent is even.
+### Methods to try
+- [[factor-pair-counting]]: pair each divisor $d$ with $\frac nd$; the pairing shows the count is even unless some $d$ equals $\frac nd$, which happens exactly when $n = d^2$.
+- [[exponent-tracking]]: $d(n) = (e_1 + 1)(e_2 + 1)\cdots$ is odd exactly when every exponent is even, the same conclusion from the factorization, and the route for a stated count such as exactly $15$ divisors, which forces $n = p^{14}$ or $n = p^2q^4$.
 
-## How to use it
-Read it in both directions. A number with exactly $15$ divisors is a square, $n = m^2$, and since $15 = 15$ or $3 \cdot 5$, $$n = p^{14} \quad \text{or} \quad n = p^2q^4,$$ so $m = p^7$ or $m = pq^2$. Knowing $n$ is a square first often cuts the search to a handful of values of $m$.
+### Formulas to try
+- [[number-of-divisors]]: $d(n) = \prod (e_p + 1)$, which is odd exactly when every $e_p$ is even.
+- [[product-of-divisors]]: pairing the divisors multiplies them to $n^{d(n)/2}$, the same pairing argument with products.
+- [[sigma-parity]]: for the sum of the divisors the answer changes, to squares and twice squares.
 
-Anything switched once for each divisor of its label ends up switched an odd number of times exactly at the squares. That is the locker puzzle, the light-switch puzzle, and any game where player $k$ acts on every multiple of $k$.
+## Common traps
+- Answering with the odd numbers instead of the perfect squares.
+- Forgetting that $1$ is a perfect square, with a single divisor.
+- Applying the square rule to the sum of the divisors, where twice a square also gives an odd sum.
 
-Counting follows at once: from $1$ to $N$ there are $\lfloor \sqrt N \rfloor$ numbers with an odd number of divisors, and $N - \lfloor \sqrt N \rfloor$ with an even number.
-
-## On contests
-No problems here are tagged with it yet. It appears as the locker or light-switch puzzle at MATHCOUNTS and on the AMC 10, and as a one-line deduction inside AMC and AIME divisor problems, where a stated odd divisor count means a square.
+## Contest profile
+A one-step recognition: once the actions are seen to happen once per divisor, the answer is a count of perfect squares.
 `,
 
-"cryptarithms": String.raw`## Key forms
-- translate the letters into place value first, so $\overline{ABC}$ becomes $100A+10B+C$ and the puzzle turns into a small system of equations in the digits — once it is a system of equations the puzzle stops being a search and becomes algebra
-- work right to left, tracking the carry, which in an addition can only be $0$ or $1$ — that single bound is what makes the search finite rather than a guess-and-check over $10!$ assignments
-- the leading column pins the largest letters: two three-digit numbers total under $2000$, so a four-letter answer must start with $1$; combine that with distinct digits, no leading zero, and a digit-sum check mod $9$ to prune before any [[casework-method|casework]] — start at the column with the most constraint, never at the left-hand end by habit
+"cryptarithms": String.raw`
+## Distinguishing clues
+Letters stand for digits, different letters for different digits, inside a written calculation with column structure. If the letters stand for whole unknown numbers, or the same digit may appear under different letters, the problem is ordinary algebra or a [[digit-manipulation|digit-manipulation problem]] instead.
 
-## Why it works
-Column addition carries only $0$ or $1$ into the next column, so the columns form a tight chain of modular constraints; the distinctness of the ten letters and the no-leading-zero rule prune the branches fast.
+## Methods and Formulas to Try
+Work column by column from the right, where each column is an equation with a carry. In the sum of two numbers every carry is $0$ or $1$, so each column has only a couple of cases. The figure solves $\overline{TWO} + \overline{TWO} = \overline{FOUR}$ as $734 + 734 = 1468$.
 
-## How to use it
-Work right to left tracking each column's carry. The leading column pins the largest letters — a sum of two three-digit numbers can carry at most $1$, so any new leading digit is $1$. Use the digit-sum-mod-$9$ check globally and eliminate impossible letters early rather than guessing.
+### Methods to try
+- [[casework-method]]: split on the carry out of each column and on the few values of the most constrained letter, starting at the column with the fewest unknowns.
+- [[choose-modulus]]: modulo $9$ a number is congruent to its digit sum, so the whole equation becomes one congruence in the digits; modulo $2$ or $5$ settles the last column.
+- [[bounding-diophantine]]: size pins the leading letters; two three-digit numbers sum to less than $2000$, so a fourth digit in the answer must be $1$.
 
-## On contests
-A MATHCOUNTS and early-AMC staple (and a recreational classic); disciplined column-carry reasoning, not trial and error, is what makes them quick.`,
+### Formulas to try
+- [[divisibility-rules]]: digit sums modulo $9$ and alternating digit sums modulo $11$ turn a word into a single congruence.
+- [[base-conversion]]: a word is its place-value expansion, $\overline{ABC} = 100A + 10B + C$, and the same expansion with base $b$ handles puzzles in other bases.
+
+## Common traps
+- Allowing a carry of $2$ in the sum of two numbers, or forgetting that three or more addends can carry more.
+- Dropping the distinctness condition halfway through the casework.
+- Giving a leading letter the digit $0$.
+
+## Contest profile
+Mostly MATHCOUNTS and early AMC: a short column-by-column argument, with a little casework when the question counts the assignments.
+`,
 
 "base10-curiosities": String.raw`## Why it works
 The cyclic run of $142857$ is just the six-digit repeating block of $\frac17$ — $10$ is a primitive root mod $7$, so the period is full and multiplying by $1$–$6$ rotates the digits. Narcissistic numbers and Kaprekar's routine are finite digit-map facts you can check directly.
@@ -1377,28 +1545,6 @@ Take $v_p$ of both sides of a divisibility statement or equation to turn it into
 ## On contests
 The backbone of AIME and olympiad prime-power problems, and the language in which LTE, Legendre's Formula, and [[kummers-theorem|Kummer's Theorem]] are all phrased — reach for it whenever only the power of one prime matters.`,
 
-"fermat-two-squares": String.raw`## Key forms
-- $p\equiv1\pmod 4\iff p=a^2+b^2$ for an odd prime $p$ — and the pair $\{a,b\}$ is unique
-- $p\equiv3\pmod4\Rightarrow p\ne a^2+b^2$ — the ruling-out direction, since squares are $0$ or $1$ mod $4$ so a sum of two is never $3$
-- test $p-b^2$ for squareness with $b\le\sqrt{p/2}$ — uniqueness means the first hit is the whole answer, so the search never needs to continue
-- a prime hypotenuse $p=m^2+n^2$ gives exactly one right triangle, with legs $m^2-n^2$ and $2mn$ — uniqueness of the representation forces uniqueness of the triangle
-
-## Why it works
-One direction is a two-line parity argument: every square is $0$ or $1$ modulo $4$, so a sum of two squares is $0$, $1$, or $2$ mod $4$ and never $3$. That disposes of every prime $p\equiv3\pmod4$ immediately.
-
-The other direction is the real theorem. Since $p\equiv1\pmod4$, the congruence $x^2\equiv-1\pmod p$ is solvable, so $p$ divides $x^2+1$ for some $x$. [[thues-lemma|Thue's Lemma]] then produces integers $a,b$ with $0\lt a,b\lt\sqrt p$ and $a\equiv xb\pmod p$, whence $p\mid a^2+b^2$; but $0\lt a^2+b^2\lt2p$ forces $a^2+b^2=p$ exactly.
-
-Uniqueness is cleanest in the Gaussian integers. There $p=a^2+b^2$ factors as $(a+bi)(a-bi)$, and $\mathbb{Z}[i]$ has unique factorisation, so a prime $p\equiv1\pmod4$ splits into exactly one conjugate pair of Gaussian primes — leaving no freedom in $\{a,b\}$ beyond order and sign.
-
-## How to use it
-Read "$1$ mod $4$" as a licence to write the prime as a sum of two squares, and "$3$ mod $4$" as an instant impossibility proof. Combined with the multiplication identity, this extends to composites: a product of primes that are all $1$ mod $4$ is a sum of two squares, and each additional such prime factor doubles the number of essentially different representations.
-
-The application worth watching for is a right triangle whose hypotenuse is given to be a prime. If a problem says the hypotenuse is a prime $p$, then a triangle exists only when $p\equiv1\pmod4$, and then $p=m^2+n^2$ has exactly one solution, so the triangle is completely determined: the legs are $m^2-n^2$ and $2mn$. For $p=13=3^2+2^2$ that forces legs $5$ and $12$; for $p=61=6^2+5^2$ it forces $11$ and $60$. A prime hypotenuse that is $3$ mod $4$ — like $7$, $11$, or $19$ — admits no such triangle at all, which turns "find all right triangles with hypotenuse $p$" into a one-line answer.
-
-To find $a$ and $b$ for a specific prime, just test $p-b^2$ for squareness with $b$ running up to $\sqrt{p/2}$; uniqueness means the first hit is the only one.
-
-## On contests
-It is the engine behind Pythagorean-triple problems with a prime hypotenuse, and behind "how many ways can $N$ be written as a sum of two squares" once $N$ is factored. AIME uses it in disguise more often than by name — any time a prime that is $1$ mod $4$ appears alongside a sum of squares, this theorem is the reason the configuration is rigid.`,
 
 "euclids-lemma": String.raw`
 ## Why it works
@@ -1435,6 +1581,25 @@ When a number is added to itself, a column carries exactly when its digit is $5$
 ## On contests
 Three problems here, all AIME, none solved by it alone. Typical questions count pairs that add to a given number without carrying, one independent choice per column; find which values $|s(x + 2) - s(x)|$ can take, $2$ and then $9n - 2$; or require a fixed number of carries when a given number is added. The carry count also drives [[kummers-theorem|Kummer's Theorem]], where it gives the power of a prime dividing a binomial coefficient.`,
 
+"largest-odd-divisor-sum": String.raw`
+## Key forms
+- $f(2n) = f(n)$ and $f(2n+1) = 2n+1$ — halving an even number keeps its largest odd divisor
+- $S(2m) = m^2 + S(m)$ and $S(2m+1) = (m+1)^2 + S(m)$ — the odd numbers contribute a square, the even ones a copy of the sum up to half
+- $S(2^k) = \frac{4^k + 2}{3}$ — the recurrence unwound from $S(1) = 1$
+- $S(n) = \alt{\sum_{j \ge 0} \left\lceil \tfrac12 \lfloor n/2^j \rfloor \right\rceil^2}{\left\lceil \tfrac n2 \right\rceil^2 + \left\lceil \tfrac12 \lfloor \tfrac n2 \rfloor \right\rceil^2 + \left\lceil \tfrac12 \lfloor \tfrac n4 \rfloor \right\rceil^2 + \cdots}$ — each round of halving adds the square of its count of odd numbers
 
+## Why it works
+Split the numbers by parity, and the even half is a smaller copy of the same sum.
 
+The odd numbers from $1$ to $2m - 1$ are their own largest odd divisors, and the first $m$ odd numbers add to $m^2$. Each even number $2j$ with $j \le m$ has the same largest odd divisor as $j$, since halving removes only a factor of $2$, so the even numbers contribute $f(1) + \cdots + f(m) = S(m)$. That gives $S(2m) = m^2 + S(m)$; up to $2m + 1$ there are $m + 1$ odd numbers, so $S(2m+1) = (m+1)^2 + S(m)$. For $n = 10$, $$S(10) = 5^2 + S(5) = 25 + 3^2 + S(2) = 25 + 9 + 2 = 36,$$ which matches $1 + 1 + 3 + 1 + 5 + 3 + 7 + 1 + 9 + 5$.
+
+For a power of $2$ the recurrence telescopes: $$S(2^k) = 4^{k-1} + 4^{k-2} + \cdots + 4^0 + S(1) = \frac{4^k - 1}{3} + 1 = \frac{4^k + 2}{3}.$$
+
+## Useful observations
+- Every $k$ is its largest odd divisor times the highest power of $2$ dividing it, $k = 2^{v_2(k)} f(k)$, the same split the [[odd-part-chains|odd-part chains]] method uses, so a sum of those powers of $2$ yields to the same halving.
+- $S(n)$ is close to $\frac{n^2}{3}$, a quick check on any computed value: $S(64) = 1366$ against $\frac{64^2}{3} \approx 1365$.
+
+## Applications
+Sums over $1, 2, \ldots, n$ of a quantity that depends only on the odd part of each number, such as the largest odd divisor or the highest power of $2$.
+`,
 });

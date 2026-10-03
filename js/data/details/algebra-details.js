@@ -3,6 +3,58 @@ window.MATH_DETAILS = window.MATH_DETAILS || {};
 
 Object.assign(window.MATH_DETAILS, {
 
+"lagrange-interpolation-formula": String.raw`
+## Key forms
+- $P(x) = y_1 \frac{x - x_2}{x_1 - x_2} + y_2 \frac{x - x_1}{x_2 - x_1}$ — two points: the line through them
+- $P(x) = \alt{\sum_i y_i \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}}{y_1L_1(x) + y_2L_2(x) + \cdots + y_nL_n(x)}$ — $n$ points, where each $L_i$ is $1$ at $x_i$ and $0$ at the other points
+- $P(0) = \alt{\sum_i y_i \prod_{j \ne i} \frac{x_j}{x_j - x_i}}{y_1\frac{x_2 \cdots x_n}{(x_2 - x_1)\cdots(x_n - x_1)} + \cdots + y_n\frac{x_1 \cdots x_{n-1}}{(x_1 - x_n)\cdots(x_{n-1} - x_n)}}$ — a single value without the whole polynomial
+
+## Conditions
+The $x_i$ are distinct. With $n$ points the polynomial has degree at most $n - 1$, and it can be lower, as when the points are collinear.
+
+## Why it works
+Each basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, vanishes at every $x_j$ with $j \ne i$, and equals $1$ at $x_i$. So $y_1L_1 + \cdots + y_nL_n$ takes the value $y_i$ at each $x_i$.
+
+Uniqueness: if two polynomials of degree at most $n - 1$ agree at $n$ points, their difference has degree at most $n - 1$ and $n$ roots, so it is zero.
+
+## Useful observations
+- A polynomial of degree at most $n - 1$ is determined by any $n$ of its values, so a question about one more value has exactly one answer, whatever method finds it.
+- When the values follow a pattern at the given points, subtracting the pattern first is usually faster than the formula; see [[shifted-polynomial-construction|building a polynomial from equal values]].
+- [[finite-differences|Finite differences]] give the same polynomial when the $x_i$ are equally spaced.
+
+## Applications
+Reconstructing a polynomial from its values, extrapolating one more value, and the uniqueness arguments behind many polynomial problems.
+
+## Contest profile
+The fact that a polynomial is pinned down by enough of its values; contest solutions usually use it through subtraction rather than the explicit formula.
+`,
+"fundamental-theorem-symmetric": String.raw`
+## Key forms
+- $x^2 + y^2 = e_1^2 - 2e_2$ and $x^3 + y^3 = e_1^3 - 3e_1e_2$ — two variables, with $e_1 = x + y$ and $e_2 = xy$
+- $x^2 + y^2 + z^2 = e_1^2 - 2e_2$ — three variables
+- $x^3 + y^3 + z^3 = e_1^3 - 3e_1e_2 + 3e_3$ — three variables
+- $\frac1x + \frac1y + \frac1z = \frac{e_2}{e_3}$ — a symmetric rational expression is a quotient of polynomials in the $e_k$
+
+## Conditions
+The polynomial must be unchanged by every permutation of the variables, not just by cyclic shifts: $x^2y + y^2z + z^2x$ is cyclic but not symmetric, and it is not a polynomial in $e_1$, $e_2$, $e_3$.
+
+## Why it works
+Order monomials by their exponents: the larger exponent of $x_1$ first, then of $x_2$, and so on. In a symmetric polynomial the leading monomial $x_1^{a_1}x_2^{a_2}\cdots x_n^{a_n}$ has $a_1 \ge a_2 \ge \cdots \ge a_n$, since permuting the variables of any monomial gives another monomial of the polynomial.
+
+The product $e_1^{a_1 - a_2}e_2^{a_2 - a_3}\cdots e_n^{a_n}$ has exactly that leading monomial, so subtracting the right multiple of it removes the leading term and leaves a smaller symmetric polynomial. Each step lowers the leading monomial, and there are finitely many monomials of each degree, so the process ends, having written the polynomial in the $e_k$.
+
+Uniqueness holds because the $e_k$ are algebraically independent: no nonzero polynomial in them vanishes identically.
+
+## Useful observations
+- By Vieta's Formulas, the $e_k$ of a polynomial's roots are its coefficients up to sign, so every symmetric expression in the roots is determined by the coefficients without solving.
+- Power sums $x_1^k + \cdots + x_n^k$ are the most common symmetric expressions, and [[newtons-sums|Newton's Sums]] compute them from the $e_k$ one at a time.
+
+## Applications
+Symmetric expressions in the roots of a polynomial, systems that are symmetric in their unknowns, and identities among sums of powers.
+
+## Contest profile
+The reason a symmetric expression in the roots is computable at all; on contests the work is the rewriting, which the method of the same idea carries out.
+`,
 "quadratic-formula": String.raw`
 ## Why it works
 Completing the square turns any quadratic into a square equal to a number, and a square equal to a number is solved by taking a square root.
@@ -48,7 +100,7 @@ Expand: $$a(x - r)(x - s) = ax^2 - a(r + s)x + ars.$$ Matching this with $ax^2 +
 The reverse direction is the same identity read the other way. If two numbers have sum $p$ and product $q$, then $(x - r)(x - s) = x^2 - px + q$, so they are exactly the two roots of that quadratic.
 
 ## Useful observations
-- Every symmetric polynomial expression in $r$ and $s$ is a polynomial in $r + s$ and $rs$, by the [[symmetric-polynomial-strategies|Fundamental Theorem of Symmetric Polynomials]]; for example, $r^3 + s^3 = (r + s)^3 - 3rs(r + s)$.
+- Every symmetric polynomial expression in $r$ and $s$ is a polynomial in $r + s$ and $rs$, by the [[fundamental-theorem-symmetric|Fundamental Theorem of Symmetric Polynomials]]; for example, $r^3 + s^3 = (r + s)^3 - 3rs(r + s)$.
 - A monic quadratic with integer coefficients has integer roots exactly when its discriminant is a perfect square.
 - Power sums of the roots beyond the second are handled by [[newtons-sums|Newton's Sums]].
 
@@ -192,19 +244,33 @@ Two consequences come up. A real polynomial of odd degree has a real root, since
 Five problems here, all AIME, and every one of them finishes with Vieta's Formulas: the conjugate supplies the missing root, and Vieta turns the roots into the coefficients the problem asks about.
 `,
 
-"palindromic-polynomials": String.raw`## Key forms
-- a palindromic polynomial has $a_i=a_{n-i}$, so its roots come in pairs $r$ and $\frac1r$ — dividing by $x^{n/2}$ groups the terms into $x^k+\frac{1}{x^k}$ and the substitution $t=x+\frac1x$ halves the degree
-- the conversions needed after substituting are $x^2+\frac1{x^2}=t^2-2$ and $x^3+\frac1{x^3}=t^3-3t$ — worth memorizing, since rederiving them mid-problem is where the sign errors come from
-- an odd-degree palindromic polynomial always has $x=-1$ as a root, so factor that out first and apply the substitution to the even palindromic factor that remains — factor it out first or the substitution will not close, because the degree must be even
+"palindromic-polynomials": String.raw`
+## Distinguishing clues
+The coefficients form a palindrome, such as $1, 3, -8, 3, 1$, or a palindrome up to sign. A polynomial with merely symmetric roots, such as an even polynomial $x^4 - 5x^2 + 4$, is a different case: its roots come in pairs $r, -r$, and the substitution is $u = x^2$. Equations already written with $x + \frac1x$ and its powers are this pattern in disguise.
 
-## Why it works
-Reversing coefficients corresponds to $x \mapsto \frac{1}{x}$ (times $x^n$), so a palindromic polynomial satisfies $P(x) = x^n P(\frac{1}{x})$ — roots come in reciprocal pairs. Dividing by $x^{n/2}$ symmetrizes, and everything becomes a polynomial in $y = x + \frac{1}{x}$ via $x^2 + \frac{1}{x^2} = y^2 - 2$, $x^3 + \frac{1}{x^3} = y^3 - 3y$.
+## Methods and Formulas to Try
+Reversing the coefficients of a polynomial replaces each root by its reciprocal, so a palindrome has roots in reciprocal pairs. The natural unknown is the pair sum $y = x + \frac1x$, and dividing an even-degree palindrome by the middle power of $x$ makes it a polynomial in $y$ of half the degree.
 
-## How to use it
-Even degree $2m$: divide by $x^m$, substitute, halve the degree. Odd degree: $x = -1$ is always a root — factor it out first. Anti-palindromic (signs flip): $x = 1$ is a root. Applications beyond solving: products of roots in reciprocal pairs multiply to 1, simplifying [[vietas-general|Vieta]] computations.
+{{figure:pairs}}
 
-## On contests
-Quartic equations on AMC 12/AIME with symmetric coefficients are begging for this — it converts them to quadratics. The substitution powers $x + \frac{1}{x} = 2\cos\theta$ connections too (roots on the unit circle).`,
+### Methods to try
+- [[sp-substitution]]: a reciprocal pair has product $1$, so the pair is described by its sum $y = x + \frac1x$, using $x^2 + \frac{1}{x^2} = y^2 - 2$.
+- [[root-transformations]]: reversing the coefficients corresponds to $x \mapsto \frac1x$, which proves the roots come in reciprocal pairs and that an odd palindrome has the root $-1$.
+
+### Formulas to try
+- [[vietas-quadratic]]: each value of $y$ gives the quadratic $x^2 - yx + 1 = 0$, whose roots have product $1$.
+- [[reciprocal-power-sums]]: $x^2 + \frac{1}{x^2} = y^2 - 2$ and $x^3 + \frac{1}{x^3} = y^3 - 3y$, the conversions that finish the substitution.
+- [[factor-remainder-theorem]]: an odd-degree palindrome vanishes at $x = -1$, and an anti-palindrome at $x = 1$, so a factor can be removed first.
+
+## Common traps
+- Applying the substitution to an odd-degree palindrome before removing the factor $x + 1$.
+- Forgetting that a real $y$ with $|y| < 2$ gives complex roots on the unit circle, not real ones.
+- Mixing up $x^2 + \frac{1}{x^2} = y^2 - 2$ with $y^2 + 2$.
+- Dividing by $x^{n/2}$ without noting that $x = 0$ is never a root of a palindrome with nonzero constant term.
+
+## Contest profile
+An AMC 12 and AIME pattern: a quartic or sextic with palindromic coefficients, and a question about its real roots or their sum.
+`,
 
 "vertex-form": String.raw`
 ## Why it works
@@ -225,18 +291,41 @@ So a parabola known to pass through $(p, k)$ and $(q, k)$ has its axis at $x = \
 Two problems here, both AIME, one solved by it alone; the other adds [[casework-method|casework]] on where the vertex falls relative to the allowed range. On the AMC 10 it drives maximum-area and maximum-revenue questions, which are quadratics in disguise.
 `,
 
-"lagrange-interpolation": String.raw`## Key forms
-- $P(x)=\alt{\sum_i y_i\prod_{j\ne i}\frac{x-x_j}{x_i-x_j}}{y_1\frac{(x-x_2)\cdots(x-x_n)}{(x_1-x_2)\cdots(x_1-x_n)}+\cdots+y_n\frac{(x-x_1)\cdots(x-x_{n-1})}{(x_n-x_1)\cdots(x_n-x_{n-1})}}$ — each basis term is built to equal $1$ at its own node and $0$ at every other, so the sum passes through all the data by construction
-- $n$ points determine a unique polynomial of degree at most $n-1$, since two such interpolants would differ by a polynomial with $n$ roots — which is also what makes "a cubic through these five points" a contradiction
+"lagrange-interpolation": String.raw`
+## When to use
+Problems that give a polynomial's degree and several of its values, such as "$P$ has degree $3$ and $P(k) = \frac1k$ for $k = 1, 2, 3, 4$", and ask for another value. Also remainder problems, since the remainder of $P(x)$ modulo $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$, and existence questions, since a polynomial with too many prescribed values cannot exist.
+
+## How
+1. Count: a polynomial of degree at most $n - 1$ is fixed by $n$ values, so check the data determines it.
+2. Look for a simple function $g$ that already matches the data, such as $\frac1x$ or $x$ or $2^x$. Then $Q(x) = P(x) - g(x)$, cleared of denominators, vanishes at every given point, so $Q(x) = c(x - x_1)\cdots(x - x_n)$.
+3. Find $c$ from one more fact: the leading coefficient, or the value of $Q$ at a point where $P$ drops out, such as $x = 0$ for $xP(x) - 1$.
+4. If no such $g$ exists, use the Lagrange formula directly, evaluating it only at the point you need.
+
+Find $P(5)$ if $P$ has degree $3$ and $P(k) = \frac1k$ for $k = 1, 2, 3, 4$. The polynomial $Q(x) = xP(x) - 1$ has degree $4$ and vanishes at $1, 2, 3, 4$, so $Q(x) = c(x - 1)(x - 2)(x - 3)(x - 4)$. At $x = 0$, $Q(0) = -1 = 24c$, so $c = -\frac{1}{24}$. Then $Q(5) = -\frac{24}{24} = -1$, so $5P(5) - 1 = -1$ and $P(5) = 0$.
+
+When the data has no pattern, evaluate the formula at one point. For the quadratic through $(1, 2)$, $(3, 10)$ and $(4, 20)$, the three basis terms at $x = 0$ equal $2$, $-2$ and $1$, so $P(0) = 2 \cdot 2 - 2 \cdot 10 + 1 \cdot 20 = 4$.
+
+{{figure:basis}}
 
 ## Why it works
-Each basis term $\prod_{j\ne i}\frac{x - x_j}{x_i - x_j}$ is engineered to equal 1 at $x_i$ and 0 at every other node; the sum therefore hits all the data. Uniqueness: two degree-$\le n{-}1$ interpolants differ by a polynomial with $n$ roots, hence zero.
+The basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, equals $1$ at $x_i$, and equals $0$ at every other node, because one factor in its numerator vanishes there. So $\sum y_iL_i(x)$ takes the value $y_i$ at each $x_i$, as the figure shows for three points. Uniqueness comes from counting roots: two polynomials of degree at most $n - 1$ that agree at $n$ points differ by a polynomial of degree at most $n - 1$ with $n$ roots, which must be zero.
 
-## How to use it
-Rarely expand fully — evaluate at the one point you need. [[finite-differences|Finite differences]] are the discrete shortcut: for integer nodes, a degree-$n$ polynomial has constant $n$-th differences, so extend the difference table instead of building basis polynomials. Also useful conceptually: $n$ points determine a degree-$\le n{-}1$ polynomial, so "a cubic passes through these five points" is a contradiction machine.
+The auxiliary polynomial is the same uniqueness in another form. $Q$ has as many known roots as its degree, so the Factor Theorem writes it as a constant times a known product, and one more value fixes the constant. It is often far shorter than the formula because it never builds the basis.
 
-## On contests
-AIME: "$P$ has degree 3 with $P(k) = \frac{1}{k}$ for $k = 1..4$; find $P(5)$" — consider $xP(x) - 1$, which has known roots (the slicker cousin of interpolation). Both the direct formula and the auxiliary-polynomial trick belong in the toolkit.`,
+## Formulas it uses
+- [[lagrange-interpolation-formula]]: the explicit formula $P(x) = \sum_i y_i\prod_{j \ne i}\frac{x - x_j}{x_i - x_j}$ and the uniqueness of the interpolant.
+- [[factor-remainder-theorem]]: each known root $x_i$ of $Q$ gives a factor $x - x_i$, which builds the auxiliary polynomial.
+- [[polynomial-crt]]: values at several points fix the remainder modulo the product $(x - x_1)\cdots(x - x_n)$, which is interpolation read as a remainder.
+
+## Common traps
+- Miscounting the degree of the auxiliary polynomial: $xP(x) - 1$ has degree one more than $P$, so it has room for one more root.
+- Forgetting to find the constant $c$, and writing $Q(x) = (x - 1)\cdots(x - n)$ as if it were monic.
+- Using a difference table on unequally spaced inputs, where it does not apply.
+- Expanding the whole interpolating polynomial when only one value is asked for.
+
+## Contest profile
+An AIME and olympiad tool, most often in its auxiliary form: subtract the obvious function, factor the difference, and evaluate once.
+`,
 
 "difference-of-squares": String.raw`
 ## Why it works
@@ -285,40 +374,68 @@ Trigger: fourth powers with coefficient 4 (or rewritable to it, e.g. $4^{n} = 4 
 ## On contests
 "Show $n^4 + 4$ is never prime for $n > 1$" and "compute $\frac{(10^4+324)(22^4+324)\cdots}{(4^4+324)(16^4+324)\cdots}$" (with $324 = 4 \cdot 3^4$, the factors telescope) — the latter is a famous AIME problem pattern.`,
 
-"largest-term-ratio": String.raw`## Key forms
-- $\dfrac{a_{k+1}}{a_k} \ge 1 \iff$ still climbing — the peak is the last $k$ where this holds, so one inequality replaces evaluating every term
-- $\dfrac{\binom{n}{k+1}}{\binom{n}{k}} = \dfrac{n-k}{k+1}$ — the reason binomial terms are the standard target: the factorials cancel completely
-- with a weight, $\dfrac{a_{k+1}}{a_k} = \dfrac{n-k}{k+1}\cdot r$ for terms $\binom{n}{k}r^k$ — solve $\frac{(n-k)r}{k+1} = 1$ and take the floor
+"largest-term-ratio": String.raw`
+## When to use
+Questions that ask which term of a binomial expansion is largest, such as the largest coefficient of $(1 + 2x)^{20}$; which number of successes is most likely in repeated trials; or where a sequence built from factorials, powers, and binomial coefficients peaks. The terms are too large to compute, but their ratio is small and simple.
+
+## How
+1. Write the general term $a_k$, positive for every $k$ in range.
+2. Form $\frac{a_{k+1}}{a_k}$ and cancel the factorials.
+3. Solve $\frac{a_{k+1}}{a_k} > 1$ for $k$: the terms climb for those $k$.
+4. The peak is at the first $k$ where the ratio drops to $1$ or below. If the ratio equals $1$ exactly, two neighbors tie.
+5. Check that the ratio really decreases in $k$, so there is only one crossing.
+
+Which coefficient of $(1 + 2x)^{20}$ is largest? The coefficient of $x^k$ is $a_k = \binom{20}{k}2^k$, and $$\frac{a_{k+1}}{a_k} = \frac{20 - k}{k + 1} \cdot 2.$$ This exceeds $1$ when $40 - 2k > k + 1$, that is $k < 13$, and equals $1$ at $k = 13$. So the coefficients climb up to $a_{13}$, and $a_{14} = a_{13}$: two coefficients tie for the largest, $a_{13} = a_{14} = 635043840$.
+
+{{figure:bars}}
 
 ## Why it works
-A sequence of positive terms is unimodal exactly when its consecutive ratio is decreasing and crosses $1$ once. For binomial-type terms the ratio $\frac{n-k}{k+1}r$ falls steadily in $k$, so it starts above $1$ and ends below it, and the crossing point is the peak. Nothing has to be computed at full size, which matters when the terms themselves are astronomically large.
+For positive terms, $a_{k+1} > a_k$ exactly when the ratio exceeds $1$. If the ratio decreases as $k$ grows, it crosses $1$ at most once, so the sequence rises, peaks, and falls, with no second peak, as the figure shows. For binomial-type terms the ratio is $\frac{n - k}{k + 1}\cdot r$, whose numerator decreases and denominator increases, so it always decreases.
 
-## How to use it
-Write $\frac{a_{k+1}}{a_k}$, cancel, set it $\ge 1$ and solve for $k$; the answer is the largest integer satisfying it. Check whether the ratio equals $1$ exactly, since then two adjacent terms tie for the maximum. The same test decides where a term is largest in absolute value for an alternating sequence, once signs are stripped.
+The ratio is useful because almost everything cancels: $\frac{\binom{n}{k+1}}{\binom nk} = \frac{n - k}{k + 1}$ comes from writing both coefficients as factorials. The location of the maximum is then a linear inequality in $k$, however large the terms are. For the binomial distribution with $n$ trials and success probability $p$, the same computation puts the most likely count at $\lfloor (n + 1)p \rfloor$.
 
-## On contests
-The standard AIME shape is "which term of $\binom{n}{k}r^k$ is largest", where evaluating is hopeless and the ratio is a one-line computation. It also settles where a [[binomial-probability|binomial probability]] peaks, which is the mode of the distribution.`,
+## Formulas it uses
+- [[pascals-identity]]: the ratio $\frac{\binom n{k+1}}{\binom nk} = \frac{n - k}{k + 1}$, which reduces the comparison to a linear inequality.
+- [[binomial-theorem]]: the coefficients $\binom nk a^{n-k}b^k$ of $(a + b)^n$ are the usual terms being compared.
+- [[binomial-probability]]: $\binom nk p^k(1 - p)^{n-k}$, whose largest value is the most likely number of successes.
+
+## Common traps
+- Answering with the last $k$ where the ratio exceeds $1$, instead of the next index, which is the peak.
+- Missing a tie when the ratio equals $1$ exactly.
+- Applying the test to terms that change sign; compare absolute values instead.
+- Forgetting the factor $r^k$ in a weighted expansion, which shifts the peak away from the middle.
+
+## Contest profile
+An occasional AIME question asks directly for the largest coefficient or most likely outcome, and the ratio settles it in two lines.
+`,
 
 "sfft": String.raw`
-## Key forms
-- $xy + ax + by + ab = (x + b)(y + a)$ — add $ab$ to both sides, then read solutions off the factor pairs of $c + ab$
-- $(Ax + C)(Ay + B) = AD + BC$ — the form of $Axy + Bx + Cy = D$ after multiplying through by $A$
-- $\frac1x + \frac1y = \frac1n \iff (x - n)(y - n) = n^2$ — so the positive solutions number [[number-of-divisors|the divisors]] of $n^2$
+## When to use
+Equations such as $xy - 2x + 3y = 20$, $\frac1x + \frac1y = \frac1n$ after clearing denominators, $3xy + 5x + 2y = 40$ after multiplying by the coefficient of $xy$, and conditions such as a rectangle's area equaling its perimeter. The signal is two unknown integers, their product, and a multiple of each.
+
+## How
+1. Collect the terms as $xy + ax + by = c$; if $xy$ has a coefficient $k$, multiply the equation by $k$ first.
+2. Add $ab$ to both sides: $(x + b)(y + a) = c + ab$.
+3. List the factor pairs of $c + ab$, including negative pairs when the unknowns may be negative.
+4. Convert each pair back, and keep the solutions that satisfy every condition.
+
+Which rectangles with whole-number sides have area equal to perimeter? From $xy = 2x + 2y$, adding $4$ gives $(x - 2)(y - 2) = 4$. The positive factor pairs $1 \cdot 4$, $2 \cdot 2$, $4 \cdot 1$ give $3 \times 6$, $4 \times 4$ and $6 \times 3$, while the negative pairs give a side that is not positive. So the rectangles are $3 \times 6$ and $4 \times 4$.
 
 ## Why it works
-The expression $xy + ax + by$ is the product $(x + b)(y + a)$ with its constant term missing, so adding that constant completes the product.
+Expanding $(x + b)(y + a) = xy + ax + by + ab$ shows that the left side of $xy + ax + by = c$ is this product without its constant term, so adding $ab$ to both sides completes it. With integer unknowns, $x + b$ and $y + a$ are integers whose product is the known number $c + ab$, so they are a factor pair, and each factor pair gives back exactly one solution.
 
-Multiply out $(x + b)(y + a) = xy + ax + by + ab$. The first three terms are exactly the left side of the equation, so adding $ab$ to both sides of $xy + ax + by = c$ turns it into $$(x + b)(y + a) = c + ab.$$ With integer unknowns, $x + b$ and $y + a$ are integers whose product is the known number $c + ab$, so they form a factor pair, and each factor pair gives back one solution.
+When $xy$ has a coefficient $k$, multiplying by $k$ gives $(kx + b)(ky + a) = kc + ab$, the same shape. The figure shows the identity as a rectangle cut into four pieces.
 
-When the $xy$ term has a coefficient $A$, the product needs it on both factors. Multiplying $Axy + Bx + Cy = D$ through by $A$ gives $A^2xy + ABx + ACy = AD$, and the left side is $(Ax + C)(Ay + B)$ minus $BC$, so the equation becomes $$(Ax + C)(Ay + B) = AD + BC.$$ Only the factor pairs that make $x$ and $y$ whole numbers count.
+## Formulas it uses
+- [[number-of-divisors]]: counts the factor pairs of $c + ab$, which is the number of solutions before any filter.
 
-## How to use it
-List the factor pairs of the right side, negative ones included unless the problem restricts to positive integers, and read off each solution; then apply whatever bounds the problem imposes. For $xy + 2x + 5y = 30$, adding $10$ gives $(x + 5)(y + 2) = 40$, and positive $x$ and $y$ need $x + 5 \ge 6$ and $y + 2 \ge 3$, which leaves only $8 \cdot 5$ and $10 \cdot 4$, so $(x, y) = (3, 3)$ or $(5, 2)$.
+## Common traps
+- Adding $a + b$, or the wrong product, instead of $ab$.
+- Forgetting to multiply through when $xy$ has a coefficient.
+- Missing the negative factor pairs, or keeping ones that give invalid values.
 
-Two standard consequences are worth knowing on sight. The unit-fraction equation $\frac1x + \frac1y = \frac1n$ clears to $(x - n)(y - n) = n^2$, so its positive solutions are counted by the divisors of $n^2$. And counting lattice points on the hyperbola $xy = N$ is just counting factor pairs of $N$.
-
-## On contests
-An AIME staple, 12 of the 14 problems tagged here, and rarely alone (2), since the factoring only sets up the count. The unit-fraction equation, with its answer "the number of divisors of $n^2$", is the classic, and any two-variable equation that is linear in each variable separately is SFFT bait.
+## Contest profile
+Usually the first step of an AIME Diophantine problem, after which listing or counting factor pairs finishes.
 `,
 
 "cubes-minus-3abc": String.raw`## Why it works
@@ -451,38 +568,41 @@ Eight problems here, six AIME and two AMC 12, none by it alone and each with a d
 `,
 
 "telescoping": String.raw`
-## Key forms
-- $\alt{\sum_{k=m}^{n}\left(f(k) - f(k+1)\right)}{\big(f(m) - f(m+1)\big) + \big(f(m+1) - f(m+2)\big) + \cdots + \big(f(n) - f(n+1)\big)} = f(m) - f(n+1)$ — only the two ends survive
-- $\frac{1}{(x+a)(x+b)} = \frac{1}{b-a}\left(\frac{1}{x+a} - \frac{1}{x+b}\right)$ — the two-factor partial fraction split
-- cover-up — the weight on $\frac{1}{x - r}$ is what remains after deleting that factor, evaluated at $x = r$
-- $\frac{1}{k(k+d)} = \frac1d\left(\frac1k - \frac1{k+d}\right)$ — a gap of $d$ leaves $d$ surviving terms at each end
-- $\frac{k}{(k+1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$ and $\frac{1}{\sqrt k + \sqrt{k+1}} = \sqrt{k+1} - \sqrt k$ — two differences in disguise
-- $\alt{\prod_{k=m}^{n}\frac{f(k)}{f(k+1)}}{\frac{f(m)}{f(m+1)}\cdot\frac{f(m+1)}{f(m+2)}\cdots\frac{f(n)}{f(n+1)}} = \frac{f(m)}{f(n+1)}$ — products telescope with division in place of subtraction
+## When to use
+Sums of fractions whose denominators factor into terms in arithmetic progression, such as $\frac{1}{k(k+1)}$, $\frac{1}{(2k-1)(2k+1)}$ or $\frac{1}{k(k+1)(k+2)}$; sums of radical fractions $\frac{1}{\sqrt k + \sqrt{k+1}}$; terms like $\frac{k}{(k+1)!}$; products such as $\prod\left(1 - \frac{1}{k^2}\right)$; and sums of $\arctan$, $\tan$, or $\cot$ at related angles. The signal is a long sum whose terms all have the same shape and whose answer is supposed to be a simple number.
+
+## How
+1. Guess $f$ from the terms, as $\frac1k$ for $\frac{1}{k(k+1)}$.
+2. Split the term by partial fractions, by rationalizing, or by an identity, so it reads $f(k) - f(k+1)$, or $f(k) - f(k+d)$ when the factors are $d$ apart.
+3. Write out the first and last few terms to see what cancels.
+4. Keep the survivors: one term at each end for a gap of $1$, and $d$ terms at each end for a gap of $d$.
+5. For a product, write each factor as $\frac{g(k)}{g(k+1)}$ and cancel the same way.
+
+Compute $\sum_{k=2}^{100}\frac{1}{k^2 - 1}$. Since $k^2 - 1 = (k - 1)(k + 1)$, a gap of $2$, the term is $\frac12\left(\frac{1}{k-1} - \frac{1}{k+1}\right)$. Two terms survive at each end: $$\frac12\left(1 + \frac12 - \frac{1}{100} - \frac{1}{101}\right) = \frac{14949}{20200}.$$
+
+{{figure:staircase}}
 
 ## Why it works
-When each term is a difference of consecutive values of one function, adding the terms makes every intermediate value appear once with a plus sign and once with a minus sign, and those cancel.
+When each term is $f(k) - f(k+1)$, the sum from $k = m$ to $n$ lists every intermediate value $f(m+1), \ldots, f(n)$ twice, once with each sign. Those cancel, leaving $f(m) - f(n+1)$. The figure shows the cancellation as a staircase: each term is the drop from one step to the next, and the drops add up to the total fall from the first step to the last.
 
-Write the sum out: $$\sum_{k=1}^{n}\left(f(k) - f(k+1)\right) = \left(f(1) - f(2)\right) + \left(f(2) - f(3)\right) + \cdots + \left(f(n) - f(n+1)\right).$$ The $-f(2)$ in the first term cancels the $+f(2)$ in the second, the $-f(3)$ cancels the next one, and so on down the line. Only $f(1)$ at the start and $-f(n+1)$ at the end have no partner, so the sum is $f(1) - f(n+1)$.
+The splitting rules produce that shape. Putting $\frac1k - \frac{1}{k+d}$ over a common denominator gives $\frac{d}{k(k+d)}$, which is where partial fractions come from. Multiplying by a conjugate gives $\frac{1}{\sqrt k + \sqrt{k+1}} = \sqrt{k+1} - \sqrt k$. Writing $k = (k + 1) - 1$ gives $\frac{k}{(k+1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$.
 
-Partial fractions are how a term is put into that shape. The split $$\frac{1}{(x+a)(x+b)} = \frac{1}{b-a}\left(\frac{1}{x+a} - \frac{1}{x+b}\right)$$ can be checked by putting the right side over a common denominator: the numerator becomes $(x + b) - (x + a) = b - a$, which the factor $\frac{1}{b-a}$ in front cancels.
+For products, $1 - \frac{1}{k^2} = \frac{k - 1}{k} \cdot \frac{k + 1}{k}$ is a product of two telescoping ratios, so $\prod_{k=2}^{n}\left(1 - \frac{1}{k^2}\right) = \frac1n \cdot \frac{n + 1}{2} = \frac{n+1}{2n}$.
 
-With $a = 0$ and $b = 1$ this is $\frac{1}{k(k+1)} = \frac1k - \frac1{k+1}$, exactly $f(k) - f(k+1)$ for $f(k) = \frac1k$, so $\sum_{k=1}^{99}\frac{1}{k(k+1)} = 1 - \frac{1}{100}$.
+## Formulas it uses
+- [[factorial-telescoping]]: $k \cdot k! = (k+1)! - k!$ and $\frac{k}{(k+1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$, the standard factorial differences.
+- [[difference-of-squares]]: rationalizing $\frac{1}{\sqrt k + \sqrt{k+1}}$ to the difference $\sqrt{k+1} - \sqrt k$.
+- [[arctan-telescoping]]: $\arctan a - \arctan b = \arctan\frac{a - b}{1 + ab}$, which writes terms such as $\arctan\frac{1}{k^2 + k + 1}$ as differences.
+- [[cot-tan-telescoping]]: $\cot\theta - \cot 2\theta = \csc 2\theta$, which telescopes sums over doubling angles.
 
-When the gap between the two factors is $d$ instead of $1$, each piece cancels against a term $d$ places away, and $d$ terms survive at each end instead of one.
+## Common traps
+- Keeping only one term at each end when the gap is $d > 1$.
+- Forgetting the constant in front of the split, such as the $\frac12$ in $\frac{1}{k^2 - 1} = \frac12\left(\frac{1}{k-1} - \frac{1}{k+1}\right)$.
+- Misreading the end: the last survivor is $f(n+1)$, not $f(n)$.
+- In an infinite sum, assuming the tail term goes to zero without checking.
 
-## How to use it
-Split first, then look for the collapse. The cover-up method finds each partial-fraction coefficient fast: to get the weight on $\frac{1}{x+a}$, delete that factor and evaluate what remains at $x = -a$.
-
-Interleaved telescopes are common: $$\frac{1}{k(k+2)} = \frac12\left(\frac1k - \frac1{k+2}\right)$$ cancels odd terms against odd and even against even, leaving two terms at each end.
-
-Products telescope the same way, as in $$\prod_{k=2}^{n}\left(1 - \frac{1}{k^2}\right) = \prod_{k=2}^{n}\frac{(k-1)(k+1)}{k \cdot k},$$ which splits into two telescoping products and equals $\frac{n+1}{2n}$.
-
-The other payoff is [[generating-function-method|generating functions]]. Decomposing $\frac{P(x)}{\prod(1 - r_ix)}$ turns a rational generating function into a sum of [[geometric-series|geometric series]], so the coefficient of $x^n$ becomes a sum of $r_i^n$ terms. That is the generating-function proof of the closed form for a [[linear-recurrence|linear recurrence]].
-
-## On contests
-A standard AIME finisher, with 21 tagged problems here, 20 of them AIME, and 3 solved by the collapse alone. Its partners are spread thin, a [[difference-of-squares|difference of squares]], a recurrence, [[product-sum|product-to-sum]], or [[log-rules|log rules]] in 2 problems each, because each of those is a way of producing the $f(k) - f(k+1)$ shape.
-
-The recognition cue is a denominator made of factors in arithmetic progression, or any long sum that the no-calculator setting makes look impossible: impossible usually means telescoping.
+## Contest profile
+Common at every level, usually as the main move: AMC problems telescope after one partial fraction, while AIME and olympiad problems hide the difference behind radicals, factorials, or trigonometry.
 `,
 
 "arithmetico-geometric": String.raw`## Why it works
@@ -795,27 +915,39 @@ An AIME staple, with 17 problems tagged here and only 1 solved by the roots alon
 `,
 
 "roots-of-unity-filter": String.raw`
-## Key forms
-- $\frac1n\alt{\sum_{j=0}^{n-1} f(\omega^j)}{\left(f(1) + f(\omega) + \cdots + f(\omega^{n-1})\right)}$ — averaging a [[generating-function-method|generating function]] over the $n$th roots of unity keeps exactly the coefficients whose index is divisible by $n$
-- $\alt{\sum_{k\equiv r\,(n)}[x^k]f(x)=\frac1n\sum_{j=0}^{n-1}\omega^{-jr}f(\omega^j)}{[x^r]f + [x^{r+n}]f + [x^{r+2n}]f + \cdots = \frac1n\left(f(1) + \omega^{-r}f(\omega) + \cdots + \omega^{-(n-1)r}f(\omega^{n-1})\right)}$ — the phase factor $\omega^{-jr}$ selects any residue class, the form to write when the problem names a specific remainder
-- $\frac{f(1) + f(-1)}{2}$ and $\frac{f(1) + f(\omega) + f(\omega^2)}{3}$ — the cases $n = 2$ and $n = 3$, which cover almost every contest use
+## When to use
+Sums of every second, third, or fourth binomial coefficient, such as $\binom{n}{0} + \binom{n}{3} + \binom{n}{6} + \cdots$; counts of subsets, strings, or dice rolls whose total lies in one residue class; and any coefficient sum $a_r + a_{r+n} + a_{r+2n} + \cdots$ of a generating function that is easy to evaluate at complex numbers. The filter for $n = 2$ needs only $f(1)$ and $f(-1)$ and works with no complex numbers at all.
+
+## How
+1. Express the count as coefficients: subsets by size come from $(1 + x)^m$, and subsets of $\{1, \ldots, m\}$ by sum from $\prod_k(1 + x^k)$.
+2. To keep the indices divisible by $n$, average $f$ over the $n$th roots of unity: $\frac{f(1) + f(\omega) + \cdots + f(\omega^{n-1})}{n}$.
+3. To keep the indices congruent to $r$, multiply each value by $\omega^{-jr}$ before averaging.
+4. Evaluate each $f(\omega^j)$, using $1 + \omega + \cdots + \omega^{n-1} = 0$ and polar form.
+
+Find $\binom{10}{0} + \binom{10}{3} + \binom{10}{6} + \binom{10}{9}$. With $f(x) = (1 + x)^{10}$ and $\omega = e^{2\pi i/3}$, the sum is $\frac{f(1) + f(\omega) + f(\omega^2)}{3}$. Since $1 + \omega = e^{i\pi/3}$ and $1 + \omega^2 = e^{-i\pi/3}$, the last two values add to $2\cos\frac{10\pi}{3} = -1$. So the sum is $\frac{1024 - 1}{3} = 341$.
+
+{{figure:average}}
 
 ## Why it works
-The filter rests on one fact: the powers of a root of unity average to $1$ or to $0$.
+For $\omega = e^{2\pi i/n}$, the powers $1, \omega^k, \omega^{2k}, \ldots, \omega^{(n-1)k}$ form a geometric series with ratio $\omega^k$. If $n$ divides $k$, every term is $1$ and the average is $1$. Otherwise the ratio is not $1$, the sum is $\frac{1 - \omega^{nk}}{1 - \omega^k} = 0$, and the average is $0$; geometrically, the points are spread evenly around the circle and balance at the center, as the figure shows for $n = 3$.
 
-With $\omega = e^{2\pi i/n}$, the numbers $1, \omega^k, \omega^{2k}, \ldots, \omega^{(n-1)k}$ form a [[geometric-series|geometric series]] with ratio $\omega^k$. If $n$ divides $k$, every term is $1$ and the average is $1$. Otherwise the ratio is not $1$, and the sum is $$\frac{1 - \omega^{nk}}{1 - \omega^k} = 0,$$ because $\omega^{nk} = 1$.
+Averaging $f(x) = \sum_k a_kx^k$ over the roots and exchanging the two sums gives $$\frac1n\sum_{j=0}^{n-1} f(\omega^j) = \sum_k a_k \cdot \frac1n\sum_{j=0}^{n-1}\omega^{jk},$$ and the inner average is $1$ or $0$ by the fact above, so exactly the coefficients with $n \mid k$ survive. The factor $\omega^{-jr}$ shifts every exponent down by $r$, which moves the class $r$ into the class $0$.
 
-Now average $f(x) = \sum_k a_kx^k$ over the $n$ roots. Exchanging the two sums, $$\frac1n\sum_{j=0}^{n-1} f(\omega^j) = \sum_k a_k \cdot \frac1n\sum_{j=0}^{n-1}\omega^{jk},$$ and the inner average is $1$ when $n \mid k$ and $0$ otherwise, so only those coefficients survive. To keep the class $k \equiv r$ instead, multiply by $\omega^{-jr}$ first, which shifts every exponent down by $r$.
+## Formulas it uses
+- [[roots-of-unity]]: the $n$ roots $\omega^j$ and the identity $1 + \omega + \cdots + \omega^{n-1} = 0$ behind the filter.
+- [[geometric-series]]: sums the powers $\omega^{jk}$ to $0$ when $n \nmid k$.
+- [[binomial-theorem]]: $(1 + x)^m = \sum\binom mk x^k$, the generating function for binomial filters.
+- [[eulers-formula]]: writes $1 + \omega^j$ in polar form so that its $m$th power is easy.
 
-## How to use it
-Write the count as the coefficients of a generating function first. Subsets of size $k$ are the coefficient of $x^k$ in $(1 + x)^m$, and subsets with sum $k$ are the coefficient of $x^k$ in $\prod_i(1 + x^{i})$. Then average over the roots of unity and evaluate each value in [[eulers-formula|polar form]].
+## Common traps
+- Forgetting to divide by $n$ at the end.
+- Using $\omega^{jr}$ instead of $\omega^{-jr}$ to select the class $r$; for real answers the error can hide, but for a generic class it gives the class $-r$.
+- Counting the empty set, or the zero coefficient, when the problem excludes it.
+- Expanding $(1 + \omega)^m$ by the Binomial Theorem instead of writing $1 + \omega = e^{i\pi/3}$.
 
-For every third binomial coefficient, $$\sum_{3 \mid k}\binom mk = \frac{(1 + 1)^m + (1 + \omega)^m + (1 + \omega^2)^m}{3},$$ and since $1 + \omega$ and $1 + \omega^2$ are $e^{\pm i\pi/3}$, the last two terms add to $2\cos\frac{m\pi}{3}$.
-
-The case $n = 2$ needs only $f(1)$ and $f(-1)$, as in the example, and $n = 4$ uses $\pm1$ and $\pm i$. Most contest problems are one of these three.
-
-## On contests
-Four problems here, two AIME, one AMC 12, and one AMC 10, one solved by it alone. The typical question counts subsets whose sum is divisible by $3$, filtering $\prod(1 + x^k)$ at the cube roots of unity; harder ones read a multisection as a reduction modulo $x^n - 1$ and finish with [[fermats-little-theorem|Fermat's Little Theorem]]. The simplest case, $n = 2$, is a count by parity.`,
+## Contest profile
+Rare but decisive: one AIME or AMC 12 problem in a while counts subsets or binomial coefficients by residue, and the filter turns it into three evaluations.
+`,
 
 "roots-unity-distance-product": String.raw`
 ## Why it works
@@ -1065,104 +1197,161 @@ Splits $\lfloor nx \rfloor$ into pieces when summing floors of arithmetic sequen
 AIME floor-sum problems ($\sum_k \lfloor \frac{2^k \cdot a}{b}\rfloor$-type) and Putnam-lite identities. Recognizing that a messy floor sum is Hermite-in-reverse is usually the entire problem.`,
 
 "denesting-radicals": String.raw`
-## Key forms
-- $\sqrt{a\pm\sqrt b}=\sqrt{\frac{a+\sqrt{a^2-b}}{2}}\pm\sqrt{\frac{a-\sqrt{a^2-b}}{2}}$ — this denests into rationals exactly when $a^2-b$ is a perfect square, which is the test to run first
-- in practice, match $(\sqrt x\pm\sqrt y)^2=x+y\pm2\sqrt{xy}$ instead: solve $x+y=a$ with $4xy=b$, a sum-and-product pair, giving results like $\sqrt{3+2\sqrt2}=1+\sqrt2$ in one line — faster than the general formula, and it shows at once when denesting is impossible
-- $\sqrt{2+2\cos\theta}=2\cos\frac\theta2$ for $0\le\theta\le\pi$ — the trigonometric way out for radicals that do not denest, such as $\sqrt{2+\sqrt2}=2\cos22.5^\circ$
+## When to use
+Answers such as $\sqrt{7 - 4\sqrt3}$ or $\sqrt{11 + 6\sqrt2}$ that must be written as $p + q\sqrt r$, expressions like $\sqrt{2 + \sqrt3}$ that come from half-angle formulas, and equations whose solutions arrive as nested radicals.
+
+## How
+1. Write the radical as $\sqrt{a \pm 2\sqrt c}$, moving a factor $2$ inside the inner root if needed.
+2. Find $x$ and $y$ with $x + y = a$ and $xy = c$: they are the roots of $t^2 - at + c = 0$.
+3. If they are rational, which happens exactly when $a^2 - 4c$ is a perfect square, then $\sqrt{a + 2\sqrt c} = \sqrt x + \sqrt y$, and $\sqrt{a - 2\sqrt c} = \sqrt x - \sqrt y$ with $x > y$.
+4. If not, the radical does not denest into such a sum.
+
+$\sqrt{7 - 4\sqrt3} = \sqrt{7 - 2\sqrt{12}}$: the numbers with sum $7$ and product $12$ are $4$ and $3$, so it equals $\sqrt4 - \sqrt3 = 2 - \sqrt3$. Squaring checks it: $(2 - \sqrt3)^2 = 7 - 4\sqrt3$.
 
 ## Why it works
-Denesting is [[square-of-sum|the square of a sum]] run backwards.
+Squaring a sum of two roots gives $(\sqrt x + \sqrt y)^2 = x + y + 2\sqrt{xy}$, so $\sqrt{a + 2\sqrt c} = \sqrt x + \sqrt y$ exactly when $x + y = a$ and $xy = c$, matching the rational part and the root part. Numbers with a given sum and product are the roots of a quadratic, and they are rational when its discriminant $a^2 - 4c$ is a perfect square.
 
-If $\sqrt{a + \sqrt b} = \sqrt x + \sqrt y$, squaring gives $$a + \sqrt b = x + y + 2\sqrt{xy}.$$ With $\sqrt b$ irrational and $x$, $y$ rational, the rational parts and the root parts must match separately, so $x + y = a$ and $4xy = b$. The minus sign works the same way, with $x \ge y$.
+The figure shows the identity as a square of side $\sqrt x + \sqrt y$ cut into pieces of area $x$, $y$ and two of area $\sqrt{xy}$.
 
-A sum and a product make $x$ and $y$ the two roots of $$t^2 - at + \tfrac b4 = 0,$$ whose discriminant is $a^2 - b$. The roots are rational exactly when that is a perfect square, which is the test, and solving the quadratic gives the general formula in Key forms.
+Radicals that do not denest this way can sometimes be written with cosines: $\sqrt{2 + \sqrt3} = 2\cos 15^\circ$, which also equals $\frac{\sqrt6 + \sqrt2}{2}$.
 
-## How to use it
-In practice, skip the formula. Write the inner term as $2\sqrt{\,\cdot\,}$ and look for two numbers with the right sum and product. For $\sqrt{5 + 2\sqrt6}$ you want sum $5$ and product $6$, which is $2$ and $3$: $$\sqrt{5 + 2\sqrt6} = \sqrt2 + \sqrt3.$$ For $\sqrt{7 + 4\sqrt3} = \sqrt{7 + 2\sqrt{12}}$ you want sum $7$ and product $12$, giving $2 + \sqrt3$.
+## Formulas it uses
+- [[square-of-sum]]: $(\sqrt x + \sqrt y)^2 = x + y + 2\sqrt{xy}$, the identity run backward.
+- [[vietas-quadratic]]: $x$ and $y$ are the roots of $t^2 - at + c = 0$, found from their sum and product.
+- [[half-angle]]: $\cos\frac\theta2 = \sqrt{\frac{1 + \cos\theta}{2}}$, which produces nested radicals such as $\sqrt{2 + \sqrt3} = 2\cos 15^\circ$ that the method then simplifies.
 
-If no pair works, the radical does not denest; keep the nested form, or square the whole expression instead. Some that do not denest still simplify with trigonometry, since $2 + 2\cos\theta = 4\cos^2\frac\theta2$.
+## Common traps
+- Forgetting to rewrite $\sqrt b$ as $2\sqrt c$ before matching, and solving with the wrong product.
+- Writing $\sqrt y - \sqrt x$ with $y < x$, which is negative and cannot equal a square root.
+- Claiming a denesting when $a^2 - 4c$ is not a perfect square.
 
-The same matching works for bigger radicands. To take the square root of an expression with several surds, assume it is the square of something like $a\sqrt2 + b\sqrt3 + c\sqrt5$ and match the cross terms.
+## Contest profile
+Usually the last simplification of an answer that must be written in the form $p + q\sqrt r$.
+`,
 
-## On contests
-Four problems here, three AIME and one AMC 10, none solved by it alone. The denesting is usually a middle step: a base such as $11 + 4\sqrt7$ turns out to be the perfect square $(\sqrt7 + 2)^2$ before something like a [[an-minus-bn|difference of cubes]] finishes, or a radicand with several surds is matched to the square of a sum. It also turns up when simplifying distances and when matching a final answer to the choices.`,
+"infinite-nest": String.raw`
+## Distinguishing clues
+The dots sit inside the expression, at the end of a radical, a fraction, or an exponent, rather than at the end of a sum or a list. An infinite sum $1 + \frac12 + \frac14 + \cdots$ is a series, while $\sqrt{2 + \sqrt{2 + \cdots}}$ repeats the same operation on itself. A finite nest with a stated number of layers is a recursion; it belongs here only when a pattern in the number of layers is wanted.
 
-"infinite-nest": String.raw`## Key forms
-- name the whole expression $x$ and use its self-similarity, since the tail is a copy of the whole — $x=\sqrt{a+x}$ gives $x^2-x-a=0$, and a continued fraction $x=a+\frac1x$ gives $x^2-ax-1=0$
-- power towers behave differently: $x^{x^{\cdots}}=a$ gives $x^a=a$, but the tower converges only for $e^{-e}\le x\le e^{1/e}$, which is the trap behind "the $\sqrt2$ tower equals $2$, not $4$" — check convergence before solving, since the algebra happily produces a value the tower never reaches
-- always select the root consistent with an obvious bound — positivity, or being at least as large as the first term — since the equation cannot distinguish the limit from its rejected partner
+## Methods and Formulas to Try
+The defining feature is that removing one layer leaves the same expression. Naming the value turns that into an equation, usually a quadratic, and the choice of root is decided by a bound such as positivity. Finite nests of radicals often have exact values from trigonometry instead.
 
-## Why it works
-If the infinite expression converges to $x$, self-similarity gives an equation in $x$ (the tail equals the whole). Convergence itself: monotone + bounded for standard cases — contest problems presume it.
+{{figure:cobweb}}
 
-## How to use it
-Name it, equation it, solve it, then select the root consistent with obvious bounds (positivity, size). Continued fractions give quadratics (e.g. $1 + \cfrac{1}{1 + \cdots} = \varphi$); power towers $x^{x^{\cdots}} = a$ give $x^a = a$ (converges only for $e^{-e} \le x \le e^{1/e}$ — the boundary trap behind "$\sqrt2$ tower $= 2$, not 4").
+### Methods to try
+- [[name-the-whole-expression]]: call the infinite expression $x$, write $x$ in terms of itself using one layer, and solve.
+- [[trig-substitution]]: a nest such as $\sqrt{2 + \sqrt{2 + \cdots + \sqrt 2}}$ with $n$ layers equals $2\cos\frac{\pi}{2^{n+1}}$, since each layer halves an angle.
 
-## On contests
-AMC/AIME nested radicals and continued fractions are routine; the root-selection step is where errors happen. Ramanujan-style nests ($\sqrt{1 + 2\sqrt{1 + 3\sqrt{\cdots}}} = 3$) occasionally cameo — pattern-match to $(n+1)^2 = 1 + n(n+2)$.`,
+### Formulas to try
+- [[quadratic-formula]]: the equation from one layer is usually a quadratic, with one root to reject.
+- [[ramanujan-nested-radical]]: nests whose layers change from step to step, such as $\sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + \cdots}}} = 3$, which self-similarity alone cannot handle.
+- [[half-angle]]: $\sqrt{2 + 2\cos\theta} = 2\cos\frac\theta2$, the identity that evaluates finite radical nests.
+
+## Common traps
+- Keeping both roots of the quadratic, when the value is positive or larger than the first term.
+- Solving a power tower $x^{x^{\cdots}} = a$ without checking convergence: the tower converges only for $e^{-e} \le x \le e^{1/e}$, so $\sqrt2^{\sqrt2^{\cdots}}$ equals $2$, never $4$.
+- Assuming that a nest whose layers change, such as $\sqrt{1 + 2\sqrt{1 + 3\sqrt{\cdots}}}$, is self-similar.
+
+## Contest profile
+A quick AMC question in its plain form and an AIME ingredient when the nest is combined with a continued fraction or a convergence argument.
+`,
 
 "rationalizing": String.raw`
+## When to use
+Simplifying $\frac{1}{\sqrt5 - 2}$, summing $\frac{1}{\sqrt1 + \sqrt2} + \frac{1}{\sqrt2 + \sqrt3} + \cdots$, comparing $\sqrt{n + 1} - \sqrt n$ with $\frac{1}{2\sqrt n}$, and finding the integer part or the last digits of a power like $(2 + \sqrt3)^{10}$.
+
+## How
+1. Find the conjugate by changing the sign between the two terms: $\sqrt a + \sqrt b$ becomes $\sqrt a - \sqrt b$.
+2. Multiply the top and bottom by the conjugate; the denominator becomes $a - b$.
+3. For a sum, check whether the rewritten terms telescope.
+4. For a power, add the conjugate power: $(a + \sqrt b)^n + (a - \sqrt b)^n$ is an integer, and when $|a - \sqrt b| < 1$ the conjugate power is tiny.
+
+$\frac{1}{\sqrt1 + \sqrt2} + \frac{1}{\sqrt2 + \sqrt3} + \cdots + \frac{1}{\sqrt{99} + \sqrt{100}}$: each term rationalizes to $\sqrt{k + 1} - \sqrt k$, so the sum telescopes to $\sqrt{100} - \sqrt1 = 9$.
+
 ## Why it works
-Multiplying a sum of two square roots by their difference squares each root away: $$(\sqrt a + \sqrt b)(\sqrt a - \sqrt b) = a - b.$$ So multiplying the top and bottom of $\frac1{\sqrt a + \sqrt b}$ by $\sqrt a - \sqrt b$ leaves $a - b$ in the denominator. When the numbers under the roots differ by $1$, the denominator is $1$ and the fraction becomes a plain difference, which is why sums of such fractions [[telescoping|telescope]].
+A sum and difference of the same two square roots multiply to a difference of squares, $(\sqrt a + \sqrt b)(\sqrt a - \sqrt b) = a - b$, which has no roots left. Multiplying the top and bottom of a fraction by the conjugate changes its form, not its value, and leaves a rational denominator.
 
-For the integrality trick, expand $(a + \sqrt b)^n$ and $(a - \sqrt b)^n$ with the [[binomial-theorem|Binomial Theorem]]. The terms with an odd power of $\sqrt b$ have opposite signs in the two expansions and cancel when the two are added, and the terms with an even power are integers. So the sum is an integer.
+For powers, expanding $(a + \sqrt b)^n$ and $(a - \sqrt b)^n$ with the Binomial Theorem gives the same terms, except that those with an odd power of $\sqrt b$ have opposite signs, so they cancel in the sum and only integers remain.
 
-## How to use it
-$\frac1{\sqrt5 - 2} = \frac{\sqrt5 + 2}{5 - 4} = \sqrt5 + 2$, and a telescoping sum collapses to its ends: $$\sum_{k=1}^{99}\frac1{\sqrt k + \sqrt{k + 1}} = \sqrt{100} - \sqrt1 = 9.$$
+## Formulas it uses
+- [[difference-of-squares]]: $(\sqrt a + \sqrt b)(\sqrt a - \sqrt b) = a - b$, the product that clears the roots.
+- [[binomial-theorem]]: expands both powers, showing the odd powers of $\sqrt b$ cancel when the conjugates are added.
+- [[conjugate-root-theorems]]: a polynomial with rational coefficients that has $a + \sqrt b$ as a root also has $a - \sqrt b$, the same pairing applied to equations.
 
-For the fractional part of a power like $(3 + \sqrt5)^n$: the conjugate $3 - \sqrt5$ lies between $0$ and $1$, so its $n$th power is small, and the two powers add to an integer $N$. So $(3 + \sqrt5)^n$ sits just below $N$, and its fractional part is $1 - (3 - \sqrt5)^n$.
+## Common traps
+- Using the square-root conjugate on cube roots, which need $a^2 \mp ab + b^2$ from the sum or difference of cubes.
+- Multiplying only the denominator by the conjugate.
+- Losing a sign when the conjugate has the larger term second.
 
-## On contests
-Four problems here, all AIME, none by it alone; two lean on the [[difference-of-squares|difference of squares]] that the conjugate is built from. The conjugate-pair integrality trick is a favorite AIME device, as in "find the fractional part of $(\sqrt3 + \sqrt2)^6$", and telescoping radical sums appear at every level.
-
-## Key forms
-- $\frac1{\sqrt a + \sqrt b} = \frac{\sqrt a - \sqrt b}{a - b}$ — multiply the top and bottom by the conjugate
-- $\frac1{\sqrt[3]a - \sqrt[3]b} = \frac{\sqrt[3]{a^2} + \sqrt[3]{ab} + \sqrt[3]{b^2}}{a - b}$ — cube roots use the difference of cubes instead
-- $\frac1{\sqrt k + \sqrt{k + 1}} = \sqrt{k + 1} - \sqrt k$ — a sum of these telescopes
-- $(a + \sqrt b)^n + (a - \sqrt b)^n$ — an integer for integers $a$ and $b$, the conjugate-pair trick
+## Contest profile
+Usually a quick simplification inside a larger problem, or the step that makes a sum of radical fractions telescope.
 `,
 
 "fx-pairing": String.raw`
-## Key forms
-- if $f(x)+f(1-x)=c$ for every $x$, then $\alt{\sum_{k=1}^{n-1}f\!\left(\frac kn\right)}{f\!\left(\frac1n\right)+f\!\left(\frac2n\right)+\cdots+f\!\left(\frac{n-1}n\right)}=\frac{n-1}{2}\,c$ — pair the term at $k$ with the term at $n-k$, and no single value is ever computed
-- a self-paired middle term, at $x=\frac12$, contributes $\frac c2$ — the count above already includes it
+## When to use
+Sums of a function at points placed symmetrically about a center: $f\!\left(\frac{k}{n}\right)$ for $k = 1, \ldots, n - 1$, $\sin^2$ or $\cos^2$ of evenly spaced angles, logarithms of numbers paired as $x$ and $\frac1x$, and repeating decimals paired with nines complements. Also equations with that symmetry, where $x = \text{center} + t$ makes it visible. The tell is a function that looks impossible to sum term by term, given on arguments that pair up.
+
+## How
+1. Find the center of the arguments: $\frac12$ for $\frac kn$, $45^\circ$ for $1^\circ$ to $89^\circ$.
+2. Compute one general pair, $f(x) + f(1 - x)$, and simplify; for a product, compute $f(x)f(1 - x)$.
+3. If the pair is constant, count the pairs. A term at the center pairs with itself and contributes half a pair.
+4. If the pair is not constant, the symmetry may still halve the work, or another pairing may be the right one.
+
+Compute $\sin^2 1^\circ + \sin^2 2^\circ + \cdots + \sin^2 89^\circ$. Pair $k^\circ$ with $(90 - k)^\circ$: since $\sin(90^\circ - k^\circ) = \cos k^\circ$, each pair adds to $\sin^2 k^\circ + \cos^2 k^\circ = 1$. There are $44$ pairs and the unpaired middle term $\sin^2 45^\circ = \frac12$, so the sum is $44.5$.
+
+{{figure:symmetry}}
 
 ## Why it works
-A sum whose arguments are symmetric can be written twice, once forwards and once backwards, and adding the two copies pairs each term with its mirror image.
+Writing the sum twice, once forward and once backward, lines up each term with its mirror image: $$2S = \sum_{k=1}^{n-1}\left(f\!\left(\frac kn\right) + f\!\left(\frac{n-k}{n}\right)\right).$$ If every bracket equals the same constant $c$, then $2S = (n - 1)c$. This is Gauss's argument for $1 + 2 + \cdots + 100$, with $f(x) = x$ and $c = 1$.
 
-If $f(x) + f(1 - x) = c$ for every $x$, then pairing the term at $\frac kn$ with the term at $\frac{n-k}{n}$ gives $$2\sum_{k=1}^{n-1} f\!\left(\frac kn\right) = (n - 1)\,c,$$ so the sum is $\frac{(n-1)c}{2}$, with no single term ever evaluated. A middle term at $x = \frac12$ pairs with itself and is counted correctly by the same formula.
+A constant pair sum means the graph of $f$ is symmetric about the point $\left(\frac12, \frac c2\right)$, as the figure shows: a point on the graph and its mirror image always average to the center. Functions built from exponentials often have this property by design, since $9^{1-x} = \frac{9}{9^x}$ turns the mirror term into a rearrangement of the original.
 
-## How to use it
-Test the pairing before anything else: compute $f(x) + f(1 - x)$, or $f(x) + f(-x)$, or $f(x)f(a - x)$ for a product, and simplify. Exponential forms are built for it: $$\frac{c^x}{c^x + \sqrt c} + \frac{c^{1-x}}{c^{1-x} + \sqrt c} = 1.$$
+## Formulas it uses
+- [[arithmetic-series]]: Gauss's pairing of first and last terms, the prototype of the method, gives $\frac{n(a_1 + a_n)}{2}$.
+- [[exponent-laws]]: $c^{1-x} = \frac{c}{c^x}$, which makes exponential mirror terms simplify against each other.
+- [[pythagorean-identities]]: $\sin^2\theta + \cos^2\theta = 1$, the constant pair sum for squared sines.
+- [[reduction-identities]]: $\sin(90^\circ - \theta) = \cos\theta$, which turns the mirror term of a sine into a cosine.
 
-Other natural pairings are $\sin^2 k^\circ$ with $\sin^2(90 - k)^\circ = \cos^2 k^\circ$, which add to $1$; a repeating decimal with its nines complement; and $\log x$ with $\log\frac1x$.
+## Common traps
+- Miscounting the pairs when there is a middle term, or double-counting it.
+- Pairing about the wrong center, for example pairing $k$ with $n - k$ when the sum runs from $0$ to $n$.
+- Assuming the pair sum is constant without computing $f(x) + f(1 - x)$ in general.
+- Missing a pairing that is multiplicative, such as $\tan k^\circ \tan(90 - k)^\circ = 1$, rather than additive.
 
-## On contests
-Three problems here, two AIME and one AMC 12, none solved by it alone. The shapes are an average of $\sin^2$ over whole degrees, repeating decimals paired with their nines complements, and an equation whose denominators are symmetric about a center, where substituting the center simplifies everything.
+## Contest profile
+A short AMC and AIME move: the whole problem is spotting the symmetry, after which the answer is a count of pairs.
 `,
 
 "trig-substitution": String.raw`
-## Key forms
-- $x = a\sin\theta$, $a\tan\theta$, or $a\sec\theta$ — clears $\sqrt{a^2 - x^2}$, $\sqrt{a^2 + x^2}$, or $\sqrt{x^2 - a^2}$ through a Pythagorean identity
-- $x = \cos\theta$ in the map $x \mapsto 2x^2 - 1$ — the map becomes $\theta \mapsto 2\theta$, so $n$ steps multiply the angle by $2^n$
-- $a = \tan A$, $b = \tan B$, $c = \tan C$ — turns $a + b + c = abc$ into $A + B + C = \pi$, and $ab + bc + ca = 1$ into $A + B + C = \frac\pi2$
+## When to use
+Radicals such as $\sqrt{1 - x^2}$ or $\sqrt{x^2 + 4}$, optimizing an expression like $x + \sqrt{1 - x^2}$, recursions such as $x_{n+1} = 2x_n^2 - 1$, and symmetric conditions such as $a + b + c = abc$ or $ab + bc + ca = 1$, which are identities for the tangents of angles that add to $\pi$ or to $\frac\pi2$.
+
+## How
+1. Match the shape: $a\sin\theta$, $a\tan\theta$ or $a\sec\theta$ for the three radicals, $\cos\theta$ for $2x^2 - 1$, and tangents of angles for $a + b + c = abc$.
+2. Restrict the angle so the substitution covers every allowed value exactly once and the square root comes out with the right sign.
+3. Simplify with identities and solve or optimize in the angle.
+4. Convert back to the original variable.
+
+Maximize $x + \sqrt{1 - x^2}$ for $-1 \le x \le 1$. With $x = \sin\theta$ and $-\frac\pi2 \le \theta \le \frac\pi2$, the root is $\cos\theta$, so the expression is $\sin\theta + \cos\theta = \sqrt2\sin\left(\theta + \frac\pi4\right)$, whose maximum $\sqrt2$ occurs at $\theta = \frac\pi4$, that is $x = \frac{\sqrt2}{2}$.
 
 ## Why it works
-An algebraic expression is hard when a radical refuses to simplify or a recursion refuses to close; the same expression written in an angle is governed by identities that do both.
+Each substitution matches a Pythagorean identity. With $x = a\sin\theta$, $$\sqrt{a^2 - x^2} = a\sqrt{1 - \sin^2\theta} = a\cos\theta,$$ which is right because $\cos\theta \ge 0$ for $-\frac\pi2 \le \theta \le \frac\pi2$. The figure shows the same fact as a right triangle with hypotenuse $a$ and one leg $x$.
 
-The radicals clear because each substitution matches a Pythagorean identity. With $x = a\sin\theta$, $$\sqrt{a^2 - x^2} = a\sqrt{1 - \sin^2\theta} = a\cos\theta$$ for $\theta$ between $-90^\circ$ and $90^\circ$, where the cosine is not negative; the tangent and secant cases use $1 + \tan^2\theta = \sec^2\theta$ the same way.
+Recursions close because identities double or add angles: $\cos 2\theta = 2\cos^2\theta - 1$ turns $x \mapsto 2x^2 - 1$ into $\theta \mapsto 2\theta$. And for angles with $A + B + C = \pi$, $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, which is the condition $a + b + c = abc$.
 
-Iterations close because the double-angle formula $\cos 2\theta = 2\cos^2\theta - 1$ has the same shape as $x \mapsto 2x^2 - 1$: if $x = \cos\theta$, one step gives $\cos 2\theta$ and $n$ steps give $\cos(2^n\theta)$. Symmetric conditions become angle sums through identities such as $$\tan A + \tan B + \tan C = \tan A\tan B\tan C \quad \text{when } A + B + C = \pi.$$
+## Formulas it uses
+- [[pythagorean-identities]]: $\sin^2\theta + \cos^2\theta = 1$ and $1 + \tan^2\theta = \sec^2\theta$, which clear the radicals.
+- [[double-angle]]: $\cos 2\theta = 2\cos^2\theta - 1$, which turns the recursion $x \mapsto 2x^2 - 1$ into doubling an angle.
+- [[harmonic-addition]]: $a\sin\theta + b\cos\theta = \sqrt{a^2 + b^2}\sin(\theta + \varphi)$, which finishes most optimizations after the substitution.
+- [[triangle-angle-identities]]: for $A + B + C = \pi$, $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, the identity behind $a + b + c = abc$.
 
-## How to use it
-Match each radical to the substitution that clears it, keeping $\theta$ in a range where the root stays positive. With $x = \sin\theta$, for example, $$x\sqrt{1 - x^2} = \sin\theta\cos\theta = \tfrac12\sin 2\theta,$$ so it never exceeds $\frac12$.
+## Common traps
+- Choosing an angle range where the root changes sign, so $\sqrt{a^2 - x^2}$ is taken as $-a\cos\theta$ by mistake.
+- Substituting $x = a\sin\theta$ when $x$ can lie outside $[-a, a]$, where no angle works.
+- Forgetting to convert the final angle back into the original variable.
 
-For an iteration, recognize the map. $x \mapsto 2x^2 - 1$ is $\cos\theta \mapsto \cos 2\theta$, $x \mapsto x^2 - 2$ is $2\cos\theta \mapsto 2\cos 2\theta$, $x \mapsto 4x^3 - 3x$ is $\cos\theta \mapsto \cos 3\theta$, and $x \mapsto \frac{2x}{1 - x^2}$ is $\tan\theta \mapsto \tan 2\theta$; in general the [[chebyshev-polynomials|Chebyshev polynomials]] satisfy $T_n(\cos\theta) = \cos n\theta$. A thousand steps then become one multiplication of an angle, reduced modulo $360^\circ$.
-
-Nested radicals unwind the same way, since $\sqrt{2 + 2\cos\theta} = 2\cos\frac\theta2$, as in the example. Going from trigonometry back to algebra is the [[weierstrass-substitution|Weierstrass substitution]].
-
-## On contests
-Three problems here, all AIME, none solved by it alone, and all three finish with the [[angle-addition|angle addition]] formulas. The shapes are a recursion that becomes a rotation once each term is written as a sine, a system of mutual radicals in which each equation becomes the sine of a sum, and a maximization in which one angle parametrizes a whole family of figures.
+## Contest profile
+Usually the step that makes a radical or a recursion tractable, after which an angle addition identity finishes.
 `
 
 });
@@ -1171,27 +1360,32 @@ Three problems here, all AIME, none solved by it alone, and all three finish wit
 Object.assign(window.MATH_DETAILS, {
 
 "functional-substitution": String.raw`
-## Key forms
-- $(x, y) = (0, 0)$ — pins down $f(0)$, usually to one or two possible values
-- $y = 0$ — ties $f(x)$ to $f(0)$ and other constants
-- $y = x$ and $y = -x$ — give a doubling law, and show whether $f$ is even or odd
-- $f(x + y) = f(x) + f(y)$, $f(x + y) = f(x)f(y)$, $f(xy) = f(x) + f(y)$ — Cauchy's linear, exponential, and logarithmic forms, whose continuous solutions are $cx$, $a^x$, and $\log_a x$
-- $f(a + b) + f(a - b) = 2f(a)f(b)$ — the cosine equation, with continuous solutions $\cos kx$ and $\cosh kx$ besides $0$
+## When to use
+Equations such as $f(x + y) = f(x) + f(y) + xy$, $f(x) + 2f(1 - x) = x^2$ or $f(xy) = f(x)f(y)$ that hold for all real or integer inputs. Contest problems usually ask for a single value, such as $f(2024)$, which a few substitutions produce without solving the equation completely.
+
+## How
+1. Try $x = y = 0$ to find $f(0)$, which often has only one or two possible values.
+2. Set one variable to $0$, then try $y = x$ and $y = -x$, to learn about doubling and about whether $f$ is even or odd.
+3. When the equation involves $f$ at two related points, such as $x$ and $1 - x$, substitute so the two swap, and solve the pair of equations as a linear system.
+4. Guess the form the values suggest, often linear or quadratic, and prove it.
+5. Check every candidate in the original equation.
+
+If $f(x) + 2f(1 - x) = x^2$ for all $x$, replacing $x$ by $1 - x$ gives $f(1 - x) + 2f(x) = (1 - x)^2$. Doubling the second equation and subtracting the first leaves $3f(x) = 2(1 - x)^2 - x^2$, so $f(x) = \frac{x^2 - 4x + 2}{3}$, and substituting back confirms it.
 
 ## Why it works
-An equation that holds for all inputs holds in particular for the inputs you choose, and a well-chosen input makes terms coincide or vanish until only one unknown value is left.
+An equation that holds for all inputs holds in particular for the inputs you choose, and each choice is a new equation about a few values of $f$. Inputs that make terms vanish or coincide shrink those equations until they pin values down, and a substitution that swaps two related points gives two equations in the same two unknowns, which can be solved like any linear system. Substitutions only produce necessary conditions, so the final check is what proves a candidate really works.
 
-Take the cosine equation $$f(a + b) + f(a - b) = 2f(a)f(b).$$ Putting $a = b = 0$ gives $2f(0) = 2f(0)^2$, so $f(0) = 0$ or $f(0) = 1$. If $f(0) = 0$, putting $b = 0$ gives $2f(a) = 2f(a)f(0) = 0$ for every $a$, so $f$ is identically zero. Otherwise $f(0) = 1$, and putting $a = 0$ gives $f(b) + f(-b) = 2f(b)$, so $f(-b) = f(b)$ and $f$ is even. Three substitutions have fixed $f(0)$ and the symmetry of $f$ without solving anything.
+## Formulas it uses
+- [[cauchy-functional-equations]]: the standard forms, such as $f(x + y) = f(x) + f(y)$ with solutions $f(x) = cx$ under mild conditions, which many equations reduce to.
 
-Each substitution is chosen either to make two terms equal, as $a = b$ does, or to make an argument zero, where the value is already known. The order matters because later choices use what earlier ones established: here, evenness only appears once $f(0) = 1$ is known.
+## Common traps
+- Deciding the whole function from its values at a few points.
+- Skipping the final check, and keeping a candidate that fails the original equation.
+- Assuming $f(x + y) = f(x) + f(y)$ forces $f(x) = cx$ over the reals without a condition such as continuity or monotonicity.
 
-## How to use it
-Run the standard sequence, $(0, 0)$, then $(x, 0)$, then $(x, x)$ and $(x, -x)$, then $(x, 1)$ if $f(1)$ is given, and write down each fact as it appears. When the equation has a product $f(x)f(y)$, look early for an input where $f$ is $0$ or $1$, since those collapse the right side.
-
-Guess the answer's form from the template, then use the substitutions to confirm it and find its constants; the problem usually asks for a value like $f(2)$ or the number of possible functions, not a full solution. If a substitution only rearranges the equation without removing anything, it is the wrong one: the aim is always to remove a variable.
-
-## On contests
-Nine problems here, six of them AIME and three AMC 12, and four solved by it alone. The cosine equation above is a recurring AMC 12 shape, where the substitutions give $f(0) = 1$ and evenness, which settle the answer. On AIME the equation is often tied to polynomials, and [[vietas-general|Vieta's Formulas]] or the [[factor-remainder-theorem|Factor Theorem]] finish the job once the substitutions have produced enough values.`
+## Contest profile
+Usually a few substitutions in an AMC or AIME problem that asks for one value; complete solutions of functional equations are olympiad work.
+`
 
 });
 
@@ -1207,29 +1401,39 @@ Quick structural triage: count sign changes of $P(x)$ for positive roots, of $P(
 AMC 12 uses it to eliminate cases in "how many real solutions" problems; on AIME it prunes root-hunting before heavier tools. It never locates a root — pair it with rational root candidates or IVT for locations.`,
 
 "finite-differences": String.raw`
-## Key forms
-- the difference operator $\Delta a_n=a_{n+1}-a_n$ lowers the degree of a polynomial by exactly one, so a degree-$k$ polynomial has constant $k$-th differences, and that constant is $k!$ times the leading coefficient — the degree drop is what makes the table terminate, and where it terminates is the degree
-- this runs both ways: constant $k$-th differences force the sequence to be a degree-$k$ polynomial, so building the difference table and extending the constant row evaluates the polynomial anywhere without ever finding its coefficients — the converse is the useful half, since it identifies a polynomial from data alone
-- the table's leading diagonal gives Newton's forward form $P(n)=\alt{\sum_j\Delta^jP(0)\binom nj}{P(0)+\Delta P(0)\binom n1+\Delta^2P(0)\binom n2+\cdots}$, which is why the binomial basis is the natural one for polynomials constrained at consecutive integers — worth knowing because it interpolates without solving any linear system
+## When to use
+A sequence given by its first few terms that is known, or suspected, to be polynomial; a polynomial pinned down by values at consecutive integers, such as "$P$ has degree $4$ and $P(k) = 2^k$ for $k = 0, \ldots, 4$; find $P(5)$"; and counts or sums that grow with a parameter, where the table both detects the degree and extends the data. The inputs must be equally spaced.
 
-## Why it works
-Each difference lowers the degree by exactly one, so after $k$ differences only a constant is left.
+## How
+1. List the values at consecutive inputs in a row.
+2. Below it write the differences of neighbors, and repeat until a row is constant.
+3. The number of differencing steps is the degree, and the constant is $k!$ times the leading coefficient.
+4. To extend the sequence, add one more copy of the constant to the bottom row and add back up the diagonal.
+5. For a formula, read the left edge into Newton's form $a_n = \sum_j \binom nj\Delta^j a_0$.
 
-For the top term, the Binomial Theorem gives $$(x + 1)^k - x^k = kx^{k-1} + (\text{lower terms}),$$ so $\Delta$ of a degree-$k$ polynomial has degree $k - 1$, with its leading coefficient multiplied by $k$. Doing this $k$ times leaves the constant $k!\,a_k$, where $a_k$ is the leading coefficient.
+Find $P(5)$ if $P$ has degree $4$ and $P(k) = 2^k$ for $k = 0, 1, 2, 3, 4$. The values $1, 2, 4, 8, 16$ have every row of differences equal to the same powers of $2$, so the left edge is $1, 1, 1, 1, 1$. Newton's form gives $P(5) = \binom50 + \binom51 + \binom52 + \binom53 + \binom54 = 32 - 1 = 31$: one less than $2^5$, because the polynomial stops at degree $4$.
 
 {{figure:table}}
 
-Conversely, the table can be rebuilt from its left edge. Moving one step right in any row adds the entry below, so a shift is $1 + \Delta$, and $n$ shifts expand by the Binomial Theorem into Newton's forward formula, $$a_n = \sum_j \binom nj \Delta^j a_0.$$ If row $k$ is constant, every row below it is zero and the sum stops at $j = k$. Since $\binom nj$ is a polynomial in $n$ of degree $j$, the sequence is a polynomial of degree $k$.
+## Why it works
+Each difference lowers the degree of a polynomial by exactly one. By the Binomial Theorem, $(n + 1)^k - n^k = kn^{k-1} + (\text{lower terms})$, so differencing a degree-$k$ polynomial leaves degree $k - 1$, with the leading coefficient multiplied by $k$. After $k$ rounds only the constant $k!\,a_k$ remains.
 
-## How to use it
-Given consecutive values, build the table until a row is constant; the number of differencing steps it takes is the degree. To get more values, extend the constant row and add back up each diagonal, as in the figure. To get a formula, read the left edge into Newton's formula.
+The converse runs the table backward. Each entry is the one to its left plus the one below that, so the whole table is fixed by its left edge, and the binomial coefficients satisfy the same rule by Pascal's Identity. That gives Newton's form, $a_n = \sum_j\binom nj\Delta^ja_0$. When a row of differences is constant, every later row is zero, so the sum stops and $a_n$ is a polynomial in $n$ of the degree read from the table.
 
-The values must be at equally spaced inputs. If the inputs skip, as with $P(1)$, $P(2)$, $P(4)$, the table does not apply directly; use [[lagrange-interpolation|Lagrange interpolation]] instead.
+## Formulas it uses
+- [[binomial-theorem]]: expands $(n + 1)^k - n^k$, showing that each difference lowers the degree by one.
+- [[pascals-identity]]: $\binom{n+1}{j} - \binom nj = \binom{n}{j-1}$, so the binomial coefficients are the natural basis for difference tables.
+- [[power-sums]]: sums such as $\sum k^2$ are polynomials of one degree higher, which the table detects and extends.
 
-The table is also a quick test for a hidden polynomial. Sums, products of two [[arithmetic-series|arithmetic sequences]], and counts that grow with a parameter often turn out to have constant second or third differences, and that one observation replaces a page of algebra.
+## Common traps
+- Using the table on unequally spaced inputs, such as $P(1)$, $P(2)$ and $P(4)$.
+- Stopping one row too early, before the row is really constant.
+- Forgetting that a non-polynomial sequence, such as $2^n$, never reaches a constant row; a polynomial that matches it agrees only at the given points.
+- Adding up the wrong diagonal when extending, and mixing old entries with new ones.
 
-## On contests
-Four problems here, all AIME, two solved by it alone. The usual move is to spot a hidden polynomial: the term-by-term product of two arithmetic sequences is a quadratic, so three given terms extend by constant second differences, and some problems state the second differences outright. The converse also explains why a sum of a degree-$k$ polynomial over $1, \dots, n$ is a polynomial of degree $k + 1$: its differences are the degree-$k$ polynomial.`,
+## Contest profile
+Usually a quick AMC or AIME computation: the table identifies the degree and supplies the next value without solving for any coefficients.
+`,
 
 "cauchy-functional-equations": String.raw`## Why it works
 For additive $f$: build from $f(1)$ over integers, then rationals ($qf(p/q) = f(p)$); regularity (continuity/monotonicity/boundedness on an interval) forces the rational-linear behavior to extend to all reals. The other three templates reduce to the additive one via logarithms and exponentials (e.g. $g = \ln f$ turns multiplicative into additive).
@@ -1244,55 +1448,68 @@ AMC/AIME functional equations are usually a Cauchy template in light disguise (s
 
 Object.assign(window.MATH_DETAILS, {
 
-"root-transformations": String.raw`## Key forms
-- to build the polynomial whose roots are shifted, substitute backwards: roots $r_i+k$ come from $P(x-k)$, since $x$ is a root of the new polynomial exactly when $x-k$ was a root of the old — substitute the inverse map, not the map, which is the step most often done backwards
-- roots $kr_i$ come from $P\!\left(\frac xk\right)$, and roots $\frac{1}{r_i}$ come from reversing the coefficient list — the reversal works because $x^nP\!\left(\frac1x\right)$ has exactly the reciprocal roots
-- once the new polynomial is written down, Vieta reads off its symmetric functions directly, which is usually the point of transforming in the first place — the transformation is worth doing purely to make Vieta answer the question directly
+"root-transformations": String.raw`
+## When to use
+Questions about numbers made from the roots of a known polynomial by one fixed rule: shifted roots $r - 2$, scaled roots $3r$, reciprocals $\frac1r$, squares $r^2$, or Möbius images such as $\frac{1 + r}{1 - r}$. The target is usually a sum, a product, or another symmetric function of the new numbers, which would take long symmetric-polynomial algebra in the old roots but is one coefficient of the new polynomial.
+
+## How
+1. Name the new number $y = g(r)$ and solve for $r$ in terms of $y$.
+2. Substitute that expression for $x$ in $P(x) = 0$.
+3. Clear denominators, so the result is a polynomial equation in $y$ of the same degree.
+4. Read the requested symmetric function from its coefficients with Vieta's Formulas.
+
+The common cases have short forms: roots $r + k$ come from $P(x - k)$, roots $kr$ from $P\!\left(\frac xk\right)$, roots $-r$ from $P(-x)$, and reciprocal roots from reversing the list of coefficients.
+
+Let $r$, $s$, $t$ be the roots of $P(x) = x^3 - 3x + 1$, and find $\frac{1}{r - 2} + \frac{1}{s - 2} + \frac{1}{t - 2}$. The numbers $r - 2$ are the roots of $P(x + 2) = x^3 + 6x^2 + 9x + 3$. For a monic cubic $x^3 + ax^2 + bx + c$, the sum of the reciprocals of the roots is $\frac{e_2}{e_3} = -\frac{b}{c}$, so the answer is $-\frac93 = -3$.
+
+{{figure:shift}}
 
 ## Why it works
-If $y = g(r)$ for each root $r$ of $P$, then the values $r = g^{-1}(y)$ satisfy $P(g^{-1}(y)) = 0$ — substituting the inverse transformation produces a polynomial equation in $y$ whose roots are exactly the transformed values (clear denominators as needed).
+If $r$ is a root of $P$ and $y = g(r)$, then $r = g^{-1}(y)$ and so $P(g^{-1}(y)) = 0$. Conversely, any $y$ with $P(g^{-1}(y)) = 0$ comes from a root of $P$. So the equation $P(g^{-1}(y)) = 0$ has exactly the transformed numbers as its roots, and when $g$ is a fraction of linear expressions, clearing denominators makes it a polynomial of the same degree. Substituting the inverse rule, not the rule itself, is the whole point: the figure shows that $P(x - 2)$, not $P(x + 2)$, moves every root two units to the right.
 
-## How to use it
-Standard dictionary: shift → $P(x-k)$; scale → $P(x/k)$; negate → $P(-x)$ (flips odd coefficients); reciprocate → reverse the coefficient list; square → eliminate the sign via $P(\sqrt x)P(-\sqrt x)$. After transforming, read off the new Vieta sums — that's usually the goal ("find the sum of the reciprocals of the roots": reverse and read one ratio).
+Reversing coefficients is the case $g(r) = \frac1r$: $x^nP\!\left(\frac1x\right)$ has coefficients $a_0, a_1, \ldots, a_n$ in the opposite order, and its roots are the reciprocals, provided $0$ was not a root. For squares there is no single inverse, so pair the two square roots: $P(\sqrt x)P(-\sqrt x)$ is a polynomial in $x$ whose roots are the $r_i^2$.
 
-## On contests
-AIME asks for symmetric functions of transformed roots constantly; transforming the polynomial first is faster and safer than expanding symmetric algebra. Sums like $\sum \frac{1}{1 - r_i}$: substitute $x = 1 - \frac{1}{y}$ or evaluate $\frac{P'(1)}{P(1)}$ — both come from this viewpoint.`,
+## Formulas it uses
+- [[fundamental-theorem-algebra]]: $P(x) = a_n\prod(x - r_i)$, so substituting $g^{-1}(y)$ visibly produces a factor vanishing at each $g(r_i)$, and the root count is preserved.
+- [[vietas-general]]: reads the sum, product, and other symmetric functions of the new roots off the new coefficients.
+
+## Common traps
+- Substituting the rule instead of its inverse, and moving the roots the wrong way.
+- Forgetting that reversing coefficients fails when $0$ is a root, since the degree drops.
+- Using $P(x^2)$ for squared roots: its roots are $\pm\sqrt{r_i}$, the opposite of what is wanted.
+- Clearing denominators carelessly in a Möbius substitution, and losing the leading coefficient that Vieta's Formulas divide by.
+
+## Contest profile
+A supporting move in AIME root problems: transforming first turns a long symmetric computation into a single coefficient, and it pairs naturally with Vieta's Formulas.
+`,
 
 "periodic-sequences": String.raw`
-## Key forms
-- $x_{n+1}=-\dfrac{1}{x_n}$ — period 2
-- $x_{n+1}=\dfrac{1}{1-x_n}$ — period 3
-- $x_{n+1}=\dfrac{1+x_n}{1-x_n}$ — period 4, since it is $\tan(\theta+45^\circ)$
-- $a_{n+1}=\dfrac{a_n+1}{a_{n-1}}$ (Lyness) — period 5
-- $a_{n+1}=a_n-a_{n-1}$ — period 6, a $60^\circ$ rotation
-- $x_{n+1}=\dfrac{x_n}{x_{n-1}}$ — period 6, cycling $a,\;b,\;\frac ba,\;\frac1a,\;\frac1b,\;\frac ab$
-- $x_{n+1}=\dfrac{1+x_n+x_{n-1}}{x_{n-2}}$ (Todd) — period 8, third order
-- $a_{n+1}=|a_n|-a_{n-1}$ — period 9
+## Distinguishing clues
+The rule depends only on the last one, two, or three terms, has no constant growth, and the question asks for a term or a sum far down the sequence. Linear recursions with growth, such as Fibonacci, belong to closed forms and characteristic roots; this pattern is the case where the terms come back. The same recursion taken modulo $m$ is a cousin, [[periodicity-mod-m|periodicity modulo a number]], which is periodic for a different reason: it has only finitely many states.
 
-## Why it works
-A recursion's next term depends only on the last few terms, so the moment those few terms repeat, everything after them repeats too.
-
-Call the terms the rule needs the state. For $x_{n+1} = \frac{1}{1 - x_n}$ the state is the single last term, and starting from $2$ it runs $$2 \to -1 \to \tfrac12 \to 2.$$ The state is back where it began after three steps, and because each step depends only on the current state, the next three steps are the same three steps again, forever. The period is $3$.
+## Methods and Formulas to Try
+Computing a handful of terms exactly, as fractions, is almost always the first step, and the cycle often appears within ten terms. Some rules announce their period in advance: a fractional linear rule $\frac{ax + b}{cx + d}$ that acts like a rotation by a fraction of a turn, or a linear rule whose characteristic roots are roots of unity.
 
 {{figure:cycle}}
 
-Which rules cycle can often be seen in advance. A one-variable rule $x \mapsto \frac{ax + b}{cx + d}$ is a Möbius map, and it cycles when repeating it some number of times gives back the identity, which happens when it acts like a rotation by a rational fraction of a turn. For example $\frac{1 + x}{1 - x}$ turns $\tan\theta$ into $\tan(\theta + 45^\circ)$, $$\frac{1 + \tan\theta}{1 - \tan\theta} = \tan(\theta + 45^\circ),$$ so four steps add $180^\circ$ and return every value: period $4$.
+### Methods to try
+- [[cycle-hunting]]: compute terms until the state, the terms the rule needs, repeats; then reduce the index modulo the period.
+- [[trig-substitution]]: writing $x_n = \tan\theta_n$ turns rules such as $\frac{1 + x}{1 - x}$ into adding a fixed angle, which shows the period at once.
 
-Linear rules are decided by their characteristic roots. $a_{n+1} = a_n - a_{n-1}$ has $t^2 - t + 1 = 0$, whose roots $e^{\pm i\pi/3}$ are primitive sixth [[roots-of-unity|roots of unity]], hence period $6$.
+### Formulas to try
+- [[linear-recurrence]]: characteristic roots that are roots of unity, as for $a_{n+1} = a_n - a_{n-1}$ with roots $e^{\pm i\pi/3}$, give a periodic sequence.
+- [[roots-of-unity]]: the order of the characteristic roots is the period of a linear rule.
+- [[angle-addition]]: $\tan(\theta + 45^\circ) = \frac{1 + \tan\theta}{1 - \tan\theta}$, the identity behind the period-$4$ rule.
 
-The multiplicative rule $x_{n+1} = \frac{x_n}{x_{n-1}}$ is the same rule after taking logarithms, and its cycle is $$a, \ b, \ \tfrac ba, \ \tfrac1a, \ \tfrac1b, \ \tfrac ab.$$ Reversing it to $x_{n+1} = \frac{x_{n-1}}{x_n}$ changes the equation to $t^2 + t - 1 = 0$, whose roots are real and not on the unit circle, and that version is not periodic at all.
+## Common traps
+- Using decimals, which hide an exact return to the start.
+- With a two-term rule, stopping when one value repeats instead of waiting for the pair to repeat.
+- Misaligning the index: if the cycle starts at $a_1$, then $a_n = a_r$ with $r \equiv n \pmod p$ and $1 \le r \le p$.
+- Missing a pre-period, a few terms before the cycle begins.
 
-The longer named cycles, Lyness's period $5$ and Todd's period $8$, come from quantities the rule leaves unchanged; the proofs are beyond contest level, and on a contest the period is simply found by computing.
-
-## How to use it
-Compute terms exactly, as fractions and not decimals, until the starting state reappears; the number of steps is the period $p$. With a two-term rule the state is a pair, so wait for the first two terms to come back together, not just one value. Then the $n$th term depends only on $n \bmod p$. Align the offset carefully: if $a_1$ starts the cycle, $$a_n = a_r, \qquad r \equiv n \pmod p, \quad 1 \le r \le p.$$
-
-Watch for a pre-period, a few terms before the cycle starts, and count the cycle from where it actually begins. Recognizing one of the rules in the key forms hands you the period before you compute anything.
-
-A recursion taken mod $m$ is also eventually periodic, because it has only finitely many possible states. The Fibonacci case has its own name, the [[pisano-periods|Pisano periods]], and the general method is [[periodicity-mod-m|hunting the cycle]] mod $m$.
-
-## On contests
-Nine problems here, eight of them AIME, three solved by it alone. A rational recursion in the last two terms often hides a Lyness-type cycle of period $5$, and there are many AMC versions. A contest recursion asking about a term numbered in the thousands is asking you to find a cycle: compute six to ten terms before trying anything clever.`,
+## Contest profile
+Common in AMC and AIME: a recursion with a term numbered in the thousands is almost always periodic, and the work is computing six to ten terms carefully.
+`,
 
 "triangle-angle-identities": String.raw`## Why it works
 All spring from $C = 180^\circ - A - B$: expand $\tan(A+B) = \tan(180^\circ - C) = -\tan C$ and clear denominators for the tangent identity; the cosine and sine sums follow from sum-to-product plus half-angle conversions, which is where $r$ and $R$ sneak in ($\cos$ sum) and $s$ ($\sin$ sum).
@@ -1304,27 +1521,34 @@ Two directions: (1) given trig data about a triangle's angles, convert to $r$, $
 AIME trig problems hand you one of these sums and expect the $1 + \frac{r}{R}$ or $\frac{s}{R}$ translation; AMC 12 uses the tangent identity to detect or exploit supplementary structure. Memorize the two headline identities, derive the rest from sum-to-product on demand.`,
 
 "piecewise-graph-counting": String.raw`
-## Key forms
-- the number of solutions of $f(x)=c$ is the number of times the horizontal line $y=c$ crosses the graph, so counting solutions becomes reading a picture rather than solving equations — counting crossings replaces solving entirely, which is the whole reason to draw rather than compute
-- each absolute value folds the graph upward about the axis and each subtraction shifts it, producing a piecewise-linear graph whose slopes are always $\pm$ the accumulated factor — apply the folds from the innermost bar outward, marking a corner at each root
-- the count changes only when the line passes a corner, so listing the corner heights partitions the values of $c$ into bands of constant answer — build the graph inside out, tracking only corners
+## When to use
+"How many real solutions" questions for equations built from absolute values, floors, maxima, or other piecewise pieces; questions such as "for which $c$ does $f(x) = c$ have exactly four solutions"; and counts of intersections between two piecewise graphs, such as two sawtooth curves. The sign is an equation that would split into many cases if solved algebraically.
 
-## Why it works
-Each solution of $f(x) = c$ is a point where the graph of $f$ is at height $c$, so solutions and crossings are the same thing.
+## How
+1. Build the graph of $f$, folding and shifting from the inside out, and list its corners with their heights.
+2. Sort the corner heights. Between two consecutive heights, the line $y = c$ crosses the same pieces, so the count is constant.
+3. Count crossings once in each band, and separately at each corner height, where the line can touch a corner instead of crossing.
+4. For two graphs, count crossings piece by piece, comparing slopes and endpoints.
 
-For absolute values the graph is easy to build. Taking $|g(x)|$ reflects the parts of the graph of $g$ below the axis up above it, a fold, and subtracting a constant shifts everything down. Each step keeps the graph made of straight pieces, so the finished graph is a chain of segments with finitely many corners.
+For which $c$ does $\bigl|\bigl||x| - 2\bigr| - 1\bigr| = c$ have exactly $8$ solutions? The graph has corners at heights $1$ (at $x = 0$ and $x = \pm 2$) and $0$ (at $x = \pm 1$ and $x = \pm 3$), and rises without bound past $\pm 3$. A line at height $c$ with $0 < c < 1$ crosses each of the eight slanted pieces once, while $c = 0$ gives $4$ solutions, $c = 1$ gives $5$, and $c > 1$ gives $2$. So exactly $0 < c < 1$.
 
 {{figure:folds}}
 
-Between two consecutive corner heights, a horizontal line crosses the same pieces, so the number of solutions is constant there. It can change only at a corner height, which is why listing the corners answers every question about the count.
+## Why it works
+Each solution of $f(x) = c$ is a point where the graph of $f$ is at height $c$, so solutions and crossings are the same thing. Between corners the graph is a straight piece, which a horizontal line meets at most once unless the piece is itself horizontal. As $c$ moves without passing a corner height, every crossing slides along its piece and none appear or disappear, so the count is constant on each band and can change only at a corner height.
 
-## How to use it
-Build the graph from the inside out, keeping track only of the corners: where they are and how high. For $||x| - 2| = c$, the V of $|x|$ is lowered by $2$ and folded up, which makes a W with valleys at height $0$ and a peak at height $2$. So there are $4$ solutions for $0 \lt c \lt 2$, $3$ at $c = 2$, and $2$ when $c = 0$ or $c \gt 2$.
+## Formulas it uses
+- [[absolute-value-rules]]: $|u| = c$ has two solutions for $c > 0$, one for $c = 0$, and none for $c < 0$, which is the counting fact behind every fold.
 
-The same idea counts intersections of two graphs, such as two sawtooth curves: draw both and count crossings piece by piece. For what a single absolute value does to a graph, see [[abs-value-graphing|the transformation rules]].
+## Common traps
+- Counting a touch at a corner as two crossings, or missing it entirely.
+- Forgetting the unbounded end pieces, which contribute crossings for every large $c$.
+- Building the graph in the wrong order, outside in, which gives the wrong corners.
+- Ignoring horizontal pieces, where a line at that height has infinitely many solutions.
 
-## On contests
-Six problems here, all AIME, one solved by it alone; the others combine the picture with [[floor-basics|floors]], logarithms, or [[casework-method|casework]]. Typical questions count the solutions of a nested absolute-value equation or the crossings of two sawtooth curves, and AMC runs simpler versions. Graph first; the algebra is usually unnecessary.`,
+## Contest profile
+An AIME favorite in its harder forms, nested bars or two sawtooth curves, and a common AMC question in simpler ones; graphing first almost always beats casework.
+`,
 
 "work-rates": String.raw`
 ## Why it works
@@ -1534,26 +1758,33 @@ An olympiad-level refinement — rarely needed over AM–GM or Cauchy–Schwarz,
 Object.assign(window.MATH_DETAILS, {
 
 "sp-substitution": String.raw`
-## Key forms
-- $x^2 + y^2 = s^2 - 2p$, $x^3 + y^3 = s^3 - 3sp$ — the first rungs of the ladder of power sums
-- $(x - y)^2 = s^2 - 4p$ — the discriminant, which decides whether $x$ and $y$ are real
-- $t^2 - st + p = 0$ — the quadratic whose roots are $x$ and $y$, recovering them at the end
-- $\frac1x + \frac1y = \frac sp$, $x^2y + xy^2 = sp$ — other symmetric expressions that convert in one step
+## When to use
+Systems such as $x + y = 5$ and $x^3 + y^3 = 35$, expressions such as $x^5 + y^5$ when $x + y$ and $xy$ are known, and equations in $x + \frac1x$, where the substitution is $s = x + \frac1x$ with $p = 1$. Anything unchanged when the two variables are swapped is a candidate.
+
+## How
+1. Check that the expression is symmetric.
+2. Rewrite each part with $s$ and $p$: $x^2 + y^2 = s^2 - 2p$, $x^3 + y^3 = s^3 - 3sp$, $(x - y)^2 = s^2 - 4p$ and $\frac1x + \frac1y = \frac sp$.
+3. Solve for $s$ and $p$.
+4. If $x$ and $y$ themselves are needed, solve $t^2 - st + p = 0$, and use $s^2 - 4p \ge 0$ to decide whether they are real.
+
+Solve $x + y = 5$, $x^3 + y^3 = 35$. Then $35 = s^3 - 3sp = 125 - 15p$, so $p = 6$, and $x$ and $y$ are the roots of $t^2 - 5t + 6 = 0$, namely $2$ and $3$.
 
 ## Why it works
-An expression that does not change when $x$ and $y$ are swapped depends only on the pair $\{x, y\}$, and the pair is completely determined by its sum and its product.
+A symmetric expression depends only on the unordered pair $\{x, y\}$, and the pair is fixed by its sum and product, since $x$ and $y$ are exactly the roots of $(t - x)(t - y) = t^2 - st + p$. Every symmetric polynomial in $x$ and $y$ is a polynomial in $s$ and $p$, so the substitution never loses information and usually lowers the degree. Higher power sums follow from a ladder: $$x^n + y^n = s\left(x^{n-1} + y^{n-1}\right) - p\left(x^{n-2} + y^{n-2}\right).$$
 
-That second fact is Vieta's Formulas in reverse: $x$ and $y$ are exactly the roots of $(t - x)(t - y) = t^2 - st + p$, so knowing $s$ and $p$ pins down the pair, and nothing is lost by the substitution.
+## Formulas it uses
+- [[vietas-quadratic]]: $x$ and $y$ are the roots of $t^2 - st + p = 0$, so $s$ and $p$ determine the pair and recover it at the end.
+- [[square-of-sum]]: $(x + y)^2 = x^2 + 2xy + y^2$, which gives the first conversion, $x^2 + y^2 = s^2 - 2p$.
+- [[newtons-sums]]: the ladder $x^n + y^n = s(x^{n-1} + y^{n-1}) - p(x^{n-2} + y^{n-2})$ for any power sum.
+- [[reciprocal-power-sums]]: the case $y = \frac1x$, where $x^n + x^{-n}$ is a polynomial in $s = x + \frac1x$.
 
-The first fact, that every symmetric polynomial is a polynomial in $s$ and $p$, is the two-variable case of the [[symmetric-polynomial-strategies|fundamental theorem on symmetric polynomials]]. In practice it comes from a ladder: expanding the product on the right shows $$x^n + y^n = s\,(x^{n-1} + y^{n-1}) - p\,(x^{n-2} + y^{n-2}),$$ so each power sum is $s$ times the previous one minus $p$ times the one before. That gives $x^2 + y^2 = s^2 - 2p$, then $x^3 + y^3 = s(s^2 - 2p) - ps = s^3 - 3sp$, and so on.
+## Common traps
+- Forgetting that real $x$ and $y$ need $s^2 \ge 4p$, and reporting a pair that does not exist over the reals.
+- Applying the substitution to an expression that is not symmetric.
+- Counting ordered pairs from one solution $(s, p)$, which gives both $(x, y)$ and $(y, x)$ unless $x = y$.
 
-## How to use it
-Rewrite the system in $s$ and $p$, solve it, then recover $x$ and $y$ from $t^2 - st + p = 0$. For $x + y = 5$ and $x^2 + y^2 = 13$: $s = 5$ and $s^2 - 2p = 13$ give $p = 6$, and $t^2 - 5t + 6 = 0$ has roots $2$ and $3$.
-
-If $x$ and $y$ must be real, check $s^2 \ge 4p$ at the end; a solution in $s$ and $p$ that fails it gives complex $x$ and $y$. A chain like $x + \frac1x = k$ is the case $p = 1$, where the whole ladder runs on $s$ alone: $x^2 + \frac1{x^2} = k^2 - 2$. For three variables, use $e_1, e_2, e_3$ and Newton's Sums.
-
-## On contests
-Seven problems here, six of them AIME, one solved by it alone; the others use it inside a larger computation, from [[linear-recurrence|recurrences]] for power sums to trigonometric systems. The trigger is a system or expression that does not change when the variables are swapped: "given $x + y$ and $x^2 + y^2$, find $x^5 + y^5$" is a pure ladder climb.
+## Contest profile
+Usually the setup of an AIME system or power-sum problem, finished by Vieta's Formulas or a short power-sum ladder.
 `
 
 });
@@ -1561,70 +1792,68 @@ Seven problems here, six of them AIME, one solved by it alone; the others use it
 Object.assign(window.MATH_DETAILS, {
 
 "completing-the-square": String.raw`
-## Key forms
-- $x^2 + bx + c = \left(x + \frac b2\right)^2 + c - \frac{b^2}{4}$ — add and subtract the square of half the $x$ coefficient
-- $ax^2 + bx + c = a\left(x + \frac{b}{2a}\right)^2 + c - \frac{b^2}{4a}$ — vertex at $x = -\frac{b}{2a}$; set to zero, this is the quadratic formula
-- $\left(x + \frac D2\right)^2 + \left(y + \frac E2\right)^2 = \frac{D^2 + E^2}{4} - F$ — the circle $x^2 + y^2 + Dx + Ey + F = 0$, center and radius in view
-- $(2n + b)^2 - (2m)^2 = b^2 - 4c$ — the equation $n^2 + bn + c = m^2$ after multiplying by $4$, ready to factor
+## When to use
+Finding the minimum of $x^2 - 6x + 13$ or of $x^2 + y^2 - 4x + 6y$, putting $x^2 + y^2 + Dx + Ey + F = 0$ into center and radius form, deriving the quadratic formula, and integer equations such as $n^2 + 10n + 9 = m^2$, which become a difference of squares.
+
+## How
+1. Factor the leading coefficient out of the terms in $x$.
+2. Add and subtract the square of half the coefficient of $x$: $x^2 + bx = \left(x + \frac b2\right)^2 - \frac{b^2}{4}$.
+3. Repeat for each variable separately.
+4. Read off the minimum or the center; for an integer equation, multiply by $4$ to clear halves and factor the difference of squares.
+
+For which integers $n$ is $n^2 + 10n + 9$ a perfect square $m^2$, with $m \ge 0$? Completing the square, $(n + 5)^2 - m^2 = 16$, so $(n + 5 - m)(n + 5 + m) = 16$ with both factors even: $2 \cdot 8$, $4 \cdot 4$, $(-8)(-2)$ and $(-4)(-4)$. These give $n = 0, -1, -10, -9$.
 
 ## Why it works
-The expression $x^2 + bx$ is a perfect square with one piece missing, and adding that piece and subtracting it again leaves the value unchanged.
+Expanding $\left(x + \frac b2\right)^2$ gives $x^2 + bx + \frac{b^2}{4}$, so $x^2 + bx$ is that square minus $\frac{b^2}{4}$, and adding and subtracting the missing piece changes nothing. A square is never negative and is zero only where its inside is zero, so $\left(x + \frac b2\right)^2 + c - \frac{b^2}{4}$ has its minimum $c - \frac{b^2}{4}$ at $x = -\frac b2$, as the figure shows.
 
-Expanding $\left(x + \frac b2\right)^2$ gives $x^2 + bx + \frac{b^2}{4}$, so $x^2 + bx$ is that square minus $\frac{b^2}{4}$. Therefore $$x^2 + bx + c = \left(x + \frac b2\right)^2 + \left(c - \frac{b^2}{4}\right).$$ The [[quadratic-formula|quadratic formula card]] draws this as area: $x^2 + bx$ is a square with two strips of width $\frac b2$ attached, missing a corner of area $\frac{b^2}{4}$.
-
-The payoff is that $x$ now sits inside a single square. A square is never negative and is zero only when its inside is zero, so $\left(x + \frac b2\right)^2 + k$ is at least $k$, with equality only at $x = -\frac b2$. That is the minimum, found with no calculus, and $\left(-\frac b2, k\right)$ is the vertex of the parabola.
-
-With a leading coefficient, factor it out first: $$ax^2 + bx + c = a\left(x^2 + \frac ba x\right) + c = a\left(x + \frac{b}{2a}\right)^2 + c - \frac{b^2}{4a}.$$ If $a \gt 0$ the constant is a minimum and if $a \lt 0$ it is a maximum. Setting the expression to zero and taking square roots gives $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$.
-
-## How to use it
-Halve the coefficient of $x$, square it, and add and subtract that amount. For $x^2 - 6x + 11$, half of $-6$ is $-3$, so $x^2 - 6x + 11 = (x - 3)^2 - 9 + 11 = (x - 3)^2 + 2$, whose smallest value is $2$, at $x = 3$.
+For a perfect-square condition, $n^2 + bn + c = m^2$ times $4$ is $(2n + b)^2 - (2m)^2 = b^2 - 4c$, a difference of squares equal to a known number.
 
 {{figure:minimum}}
 
-In two variables, complete the square in $x$ and in $y$ separately. $x^2 + y^2 - 4x + 6y - 3 = 0$ becomes $(x - 2)^2 + (y + 3)^2 = 16$, a circle with center $(2, -3)$ and radius $4$.
+## Formulas it uses
+- [[vertex-form]]: $a(x - h)^2 + k$, the completed square, with vertex $(h, k)$.
+- [[quadratic-formula]]: completing the square on $ax^2 + bx + c = 0$ produces the formula itself.
+- [[difference-of-squares]]: $X^2 - Y^2 = (X - Y)(X + Y)$, which finishes an integer equation once the square is completed.
+- [[trivial-inequality]]: $X^2 \ge 0$, which turns the completed square into a minimum.
 
-It also opens inequalities: $a^2 - 2ab + 2b^2$ is $(a - b)^2 + b^2$, visibly nonnegative, and the [[trivial-inequality|trivial inequality]] finishes the argument. In number theory it turns "$n^2 + bn + c$ is a perfect square $m^2$" into a [[difference-of-squares|difference of squares]]: multiplying by $4$ gives $(2n + b)^2 - (2m)^2 = b^2 - 4c$, and the left side factors.
+## Common traps
+- Adding the square of half the coefficient without subtracting it again.
+- Completing the square before factoring out a leading coefficient other than $1$.
+- In an integer equation, forgetting that the two factors must have the same parity.
 
-## On contests
-Eleven problems here, ten of them AIME, and one solved by it alone. The most common use is number-theoretic rather than algebraic: completing the square turns "$n^2 + bn + c$ is a perfect square" into a difference of squares equal to a constant, and then [[factor-pair-counting|factor pairs]] or [[bounding-diophantine|bounding]] finish it. The algebraic uses, minimum values, and circle centers, are routine at AMC level.
+## Contest profile
+Usually a setup step: it locates an extreme value or a center, or turns a perfect-square condition into a factorable difference of squares.
 `,
 
 "abs-value-relations": String.raw`
-## Key forms
-- $f(|x|, |y|)$ — solve in the first quadrant, where the bars vanish, then reflect into the other three
-- $|x| + |y| \le c$ — a square standing on a corner, with diagonals $2c$ along the axes; $\max(|x|, |y|) \le c$ is the same square, untilted
-- $\bigl||x| - h\bigr|$ — an inner shift places the copies at $\pm h$: $\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| \le 1$ is four unit diamonds centered at $(\pm1, \pm1)$
-- $|x - y|$ — a mixed term adds its own fold line $y = x$, so the plane splits into six sectors instead of four
-- $|x| + |y| + |x - y| = c$ — a centrally symmetric hexagon: $2\max(|x|, |y|)$ where $x$ and $y$ share a sign, $2(|x| + |y|)$ where they do not
+## When to use
+Regions and curves in the plane defined by absolute values: $|x| + |y| \le c$, $\max(|x|, |y|) = c$, $|x - 3| + |y + 1| = 4$, nested forms such as $\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| = 1$, and mixed terms such as $|x - y|$. Typical questions ask for an area, a perimeter, the number of lattice points, or the number of intersection points with another curve.
+
+## How
+1. Note which variables appear only inside bars as $|x|$ or $|y|$: the graph is symmetric across the corresponding axes.
+2. Solve in the region where all the bars on $x$ and $y$ vanish, the first quadrant, giving an ordinary relation.
+3. Treat any remaining bar $|g(x, y)|$ as a fold along the line $g = 0$, and graph piece by piece.
+4. Reflect the first-quadrant piece across the symmetry axes, and check for overlaps along the axes before multiplying an area or a count.
+
+Find the area of $\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| \le 1$. In the first quadrant the region is $|x - 1| + |y - 1| \le 1$, a square standing on a corner, centered at $(1, 1)$, with diagonals $2$ and area $2$. Reflecting across both axes gives four such squares, which meet only at points, so the total area is $8$.
 
 ## Why it works
-Each bar is a mirror: a relation with $|x|$ in place of $x$ cannot tell $x$ from $-x$, so its graph is its own reflection across the $y$-axis, and bars on both variables make it symmetric across both axes.
+Replacing $x$ by $|x|$ makes a relation unable to distinguish $x$ from $-x$, so its graph is its own mirror image across the $y$-axis; the same holds for $y$ and the $x$-axis. Inside the first quadrant, $|x| = x$ and $|y| = y$, so the bars disappear and the relation becomes one without bars on the variables themselves.
 
-That is why the first quadrant is enough. There $|x| = x$ and $|y| = y$, so the bars disappear and what is left is an ordinary relation. For $|x| + |y| \le c$ it is the triangle under $x + y = c$, and reflecting it across both axes gives four triangles that make a square standing on its corner.
+For the remaining bars, $|x - a| + |y - b| = c$ is a square on its corner centered at $(a, b)$: in each of the four quadrants around $(a, b)$ it is a line segment with slope $\pm 1$. A bar such as $|x - y|$ adds a fold along $y = x$, where its contents change sign, so the plane splits into more pieces, each with a linear relation.
 
-Nested bars work from the outside in: the outer bars say reflect, and the inner expression says what to reflect, so $$\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| \le 1$$ is the diamond $|x - 1| + |y - 1| \le 1$ in the first quadrant, copied into the other three.
+## Formulas it uses
+- [[absolute-value-rules]]: $|u| \le c$ is the pair of linear inequalities $-c \le u \le c$, which makes every piece of the region a polygon.
+- [[abs-triangle-inequality]]: $|x| + |y| \ge |x \pm y|$, which explains why $|x| + |y| = c$ and $\max(|x + y|, |x - y|) = c$ describe the same square.
 
-A mixed term like $|x - y|$ is not a reflection across an axis, and here the general principle takes over. An absolute value is linear on each side of the line where its inside is zero, so the zero sets of all the bars are fold lines, and between them the relation is linear.
+## Common traps
+- Reflecting across an axis whose variable has no bar, such as reflecting $|x| + y \le 1$ across the $x$-axis.
+- Double counting lattice points or boundary segments on the axes when multiplying by four.
+- Forgetting the fold lines of a mixed term such as $|x - y|$, and drawing a square where the region is a hexagon.
+- Mistaking the diagonal of a tilted square for its side when computing area.
 
-For $|x| + |y| + |x - y|$ the fold lines are $x = 0$, $y = 0$, and $y = x$, which cut the plane into six sectors. Working out the expression in each gives $$2\max(|x|, |y|) \ \text{(same signs)}, \qquad 2(|x| + |y|) \ \text{(opposite signs)},$$ so the level set $= c$ is a hexagon with one side per sector.
-
-At $c = 2$ its vertices are $(1, 0), (1, 1), (0, 1), (-1, 0), (-1, -1), (0, -1)$, and its area is $3$.
-
-One symmetry always survives: replacing $(x, y)$ by $(-x, -y)$ changes none of $|x|$, $|y|$, and $|x - y|$, so the figure is centrally symmetric. This hexagon is in fact [[zonogon-minkowski|a zonogon]], the sum of the segments to $(1, 0)$, $(0, 1)$, and $(1, 1)$.
-
-## How to use it
-Draw first, in three moves.
-
-- Strip to the first quadrant, graph what remains, then reflect.
-- With nested bars, work from the inside out: the innermost expression is the base shape, the shift says where its center goes, and each outer bar doubles the number of mirrored copies.
-- When a mixed term appears, draw its zero line as an extra fold and work sector by sector.
-
-Once the picture is drawn, get any area or lattice count from it, as a number of copies of a known shape or one row at a time, rather than by [[casework-method|casework]] on signs, which for nested bars produces sixteen branches where the symmetry produces four identical pictures. Check whether the copies overlap before multiplying.
-
-For what a single bar does to the graph of a function of one variable, see [[abs-value-graphing|the transformation rules]]; for the algebra of one bar on the number line, [[absolute-value-rules|the absolute value rules]].
-
-## On contests
-Nine problems here, split across AMC 10, AMC 12, and AIME, one solved by it alone; the others pair the region with an area, often involving a [[circle-basics|circle]], or with a [[basic-probability|probability]] that a random point lands in it. The tell is bars around both variables, or bars nested inside a shift: the moment you see either, stop splitting into cases and start reflecting.
+## Contest profile
+A common AMC 10 and AMC 12 topic, usually an area or a count of lattice points, and an occasional AIME first step.
 `,
 
 "absolute-value-identities": String.raw`## Key forms
@@ -1663,48 +1892,94 @@ The usual trap is a forgotten branch: $|x| \gt a$ has two rays, and $\sqrt{x^2}$
 Five problems here, mostly AMC, two solved by it alone; two others move on to regions in the plane. Distance readings, sums of distances, and piecewise equations are the common forms on MATHCOUNTS and early AMC.
 `,
 
-"median-minimizes-abs": String.raw`## Key forms
-- $\alt{\sum_i|x-a_i|}{|x-a_1|+\cdots+|x-a_n|}$ is minimized when $x$ is a median of the $a_i$ — and when $n$ is even, every point of the whole interval between the two middle values achieves the same minimum
-- the reason is a slope count: moving $x$ rightwards changes the sum at rate $\#\{a_i\lt x\}-\#\{a_i>x\}$, which is negative below the median and positive above it, so the minimum is exactly where the counts balance — the slope argument also shows why an even count ties across the whole middle interval
-- the contrast worth remembering is that $\alt{\sum_i(x-a_i)^2}{(x-a_1)^2+\cdots+(x-a_n)^2}$ is minimized at the mean instead — which average you want depends entirely on whether the penalty is absolute or squared
+"median-minimizes-abs": String.raw`
+## Distinguishing clues
+The quantity to minimize is a sum of absolute differences from one unknown point, possibly weighted. A sum of squared differences $\sum(x - a_i)^2$ is minimized at the mean instead, and a maximum of absolute differences is minimized at the midpoint of the two extremes. Distances in the plane, $\sum\sqrt{(x - a_i)^2 + (y - b_i)^2}$, are a geometry problem, not this one; but taxicab distances $\sum(|x - a_i| + |y - b_i|)$ split into one of these problems for each coordinate.
+
+## Methods and Formulas to Try
+The function $f(x) = \sum w_i|x - a_i|$ is piecewise linear with corners at the $a_i$. Its slope is the total weight to the left of $x$ minus the total weight to the right, which increases at each corner, so $f$ decreases and then increases. The minimum is where the slope changes sign, the weighted median.
+
+### Methods to try
+- [[slope-counting]]: sweep $x$ from left to right, track the slope of the piecewise-linear function at each corner, and stop where the slope stops being negative.
+- [[abs-value-graphing]]: sketch the sum as a graph built from V shapes, which shows the flat bottom when the number of points is even.
+
+### Formulas to try
+- [[abs-triangle-inequality]]: $|x - a| + |x - b| \ge |b - a|$, with equality exactly for $x$ between $a$ and $b$, which pairs outer points to prove the median result.
+- [[absolute-value-rules]]: $|x - a|$ is the distance from $x$ to $a$, which turns the sum into total distance on the number line.
+
+## Common traps
+- Using the mean, which minimizes squared distances, not absolute ones.
+- Ignoring weights: $3|x - 4|$ counts the point $4$ three times.
+- With an even number of points, giving only one minimizer when the whole interval between the two middle points works.
+- Forgetting to compute the minimum value itself when the question asks for it.
+
+## Contest profile
+An AMC 10 and AMC 12 pattern, often as a placement question on a line, and occasionally an AIME step inside a taxicab-distance problem.
+`,
+
+"weierstrass-substitution": String.raw`
+## When to use
+Fractions that mix $\sin\theta$, $\cos\theta$ and $\tan\theta$, equations such as $a\sin\theta + b\cos\theta = c$ that should become a single polynomial, and questions about rational points on the unit circle or about Pythagorean triples. When one identity simplifies the expression directly, use that instead: the substitution always works, but its algebra can be longer.
+
+## How
+1. Set $t = \tan\frac\theta2$.
+2. Replace $\sin\theta = \frac{2t}{1 + t^2}$, $\cos\theta = \frac{1 - t^2}{1 + t^2}$ and $\tan\theta = \frac{2t}{1 - t^2}$.
+3. Clear denominators and solve the polynomial equation in $t$.
+4. Convert back with $\theta = 2\arctan t$, and check $\theta = \pi$ separately, since $t$ is undefined there.
+
+Solve $\sin\theta + \cos\theta = 1$ for $0 \le \theta < 2\pi$. Substituting gives $\frac{2t + 1 - t^2}{1 + t^2} = 1$, so $2t - 2t^2 = 0$ and $t = 0$ or $t = 1$, that is $\theta = 0$ or $\theta = \frac\pi2$. The excluded value $\theta = \pi$ gives $-1$, not a solution.
 
 ## Why it works
-Sweep $x$ from left to right: the slope of $f(x) = \sum w_i|x - a_i|$ is (total weight of the $a_i$ below $x$) minus (total weight above). It starts at $-\sum w_i$ and jumps up by $2w_i$ as $x$ passes each $a_i$, so $f$ is convex and piecewise-linear. Its minimum is where the slope turns from negative to nonnegative — exactly where the weight below first matches the weight above, i.e. the (weighted) median. In the unweighted even-count case the slope is $0$ across the whole middle interval, so every point there ties.
+The double angle formulas give $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$ and $\cos\theta = \cos^2\frac\theta2 - \sin^2\frac\theta2$. Factoring out $\cos^2\frac\theta2 = \frac{1}{1 + t^2}$ turns both into rational functions of $t = \tan\frac\theta2$: $$\sin\theta = \frac{2t}{1 + t^2}, \qquad \cos\theta = \frac{1 - t^2}{1 + t^2}.$$
 
-## How to use it
-Never differentiate an absolute-value sum — find the median. Unweighted: sort and take the middle value (or anything between the two middle ones). Weighted: accumulate weights in sorted order until you first pass half the total; a coefficient $w_i$ (or a repeated point) simply counts as weight. The minimum value is then $\sum w_i\,|{\text{median}} - a_i|$, which pairs symmetric terms cleanly. Squared distances instead give the mean — the $L^1$ versus $L^2$ distinction.
+Geometrically, the line through $(-1, 0)$ with slope $t$ meets the unit circle again at exactly this point, as the figure shows. Every rational slope gives a rational point, and with $t = \frac mn$, clearing denominators gives $(n^2 - m^2)^2 + (2mn)^2 = (n^2 + m^2)^2$, the formula for Pythagorean triples.
 
-## On contests
-"Find $x$ minimizing $|x-1| + |x-2| + \cdots + |x-n|$" and its coefficient-weighted cousins are recurring AMC/AIME problems — instant once you spot the median. It also settles "minimize the total distance traveled to stops on a line" word problems.`,
+## Formulas it uses
+- [[double-angle]]: $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$ and $\cos\theta = \cos^2\frac\theta2 - \sin^2\frac\theta2$, the identities behind the substitution.
+- [[half-angle]]: $\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta}$, the substitution read backward.
+- [[pythagorean-triples]]: the slope $t = \frac mn$ gives the triple $(n^2 - m^2, 2mn, n^2 + m^2)$, every primitive triple up to order.
 
-"weierstrass-substitution": String.raw`## Key forms
-- $t=\tan\frac\theta2$ turns every trigonometric function of $\theta$ into a rational function of $t$: $\sin\theta=\frac{2t}{1+t^2}$, $\cos\theta=\frac{1-t^2}{1+t^2}$, $\tan\theta=\frac{2t}{1-t^2}$ — so a trigonometric equation becomes a polynomial one
-- the same identities parametrise the unit circle rationally, which is why $(1-t^2,\,2t,\,1+t^2)$ generates every Pythagorean triple — which is why the substitution and Pythagorean triples are the same fact wearing different clothes
+## Common traps
+- Losing the solution $\theta = \pi$, where $t$ is undefined.
+- Using it where one identity would do, such as $\sin^2\theta + \cos^2\theta = 1$, and drowning in fractions.
+- Forgetting that each $t$ gives one $\theta$ in $(-\pi, \pi)$, so solutions on other intervals must be shifted.
+
+## Contest profile
+Rare as a whole solution; it appears in rational-point and Pythagorean-triple problems and as a last resort for mixed trigonometric equations.
+`,
+
+
+
+"tangent-line-trick": String.raw`
+## When to use
+Symmetric inequalities of the form $\sum f(x_i) \ge C$ or $\le C$ in which every term depends on one variable, a fixed sum such as $a + b + c = 3$ is given, and equality holds at $a = b = c$. It is the right tool when $f$ is not convex on the whole range, so that Jensen's Inequality does not apply directly, but each term still lies above its tangent at the equality point.
+
+## How
+1. Find the equality point $t = \frac sn$ and compute $f(t)$ and $f'(t)$.
+2. Write the tangent line $L(x) = f(t) + f'(t)(x - t)$.
+3. Prove $f(x) \ge L(x)$ for every allowed $x$: the difference $f(x) - L(x)$ has a double root at $t$, so it factors as $(x - t)^2$ times something, and that something must be nonnegative on the range.
+4. Add the $n$ bounds: the linear terms sum to $nf(t) + f'(t)(s - nt) = nf(t)$.
+
+For positive $x$, $y$, $z$ with $x + y + z = 1$, prove $\frac1x + \frac1y + \frac1z \ge 9$. The tangent to $\frac1x$ at $x = \frac13$ is $6 - 9x$, and $\frac1x - (6 - 9x) = \frac{(3x - 1)^2}{x} \ge 0$. Adding the three bounds gives $18 - 9(x + y + z) = 9$.
 
 ## Why it works
-Writing $t = \tan\frac{\theta}{2}$ and using the double-angle formulas expresses $\sin\theta = 2\sin\frac{\theta}{2}\cos\frac{\theta}{2}$ and $\cos\theta = \cos^2\frac{\theta}{2} - \sin^2\frac{\theta}{2}$ as rational functions of $t$ after dividing through by $\cos^2\frac{\theta}{2} = \frac{1}{1 + t^2}$. Every trig function of $\theta$ becomes rational in $t$.
+The constraint $\sum x_i = s$ makes any linear function of the $x_i$ sum to a constant. So if each term $f(x_i)$ is at least $L(x_i)$, the sum is at least $\sum L(x_i)$, which depends only on $s$. Taking the tangent at the equality point makes the bound sharp, since $L(t) = f(t)$ and equality is preserved, as the figure on this card shows.
 
-## How to use it
-Deploy it when a trig equation or expression mixes $\sin\theta$ and $\cos\theta$ in a way that resists identities: substitute, clear denominators, and solve the resulting polynomial in $t$, then untangle $\theta$ from $t = \tan\frac{\theta}{2}$. The same algebra underlies rational parametrizations of the unit circle and the $(1 - t^2, 2t, 1 + t^2)$ Pythagorean-triple family.
+For convex $f$ this is Jensen's Inequality, since a convex function lies above all its tangents. The trick is more flexible: the bound $f(x) \ge L(x)$ only has to hold on the allowed range, and the factored form $(x - t)^2 g(x)$ shows exactly where it holds.
 
-## On contests
-A niche but decisive olympiad tool for trig equations and for proving rational-point facts about the circle; it's the bridge between "half-angle" identities and Pythagorean triples. Rarely the fastest route on AMC/AIME, where targeted identities usually win, but unbeatable when you genuinely need to rationalize.`,
+## Formulas it uses
+- [[jensens-inequality]]: the convex case, where $f$ lies above every tangent line and the trick is Jensen's Inequality in disguise.
+- [[trivial-inequality]]: the factor $(x - t)^2 \ge 0$ that makes $f(x) - L(x)$ nonnegative.
 
+## Common traps
+- Checking $f(x) \ge L(x)$ only near $t$ instead of on the whole range; the bound often fails for large $x$, which then needs a separate case.
+- Using the tangent at the wrong point; it must be the equality point, or the bound is not sharp.
+- Forgetting that the method needs the terms to be separate functions of single variables.
+- Losing positivity conditions when dividing, as in $\frac{(3x - 1)^2}{x}$, which needs $x > 0$.
 
-
-"tangent-line-trick": String.raw`## Key forms
-- a convex function lies above each of its tangent lines, so $f(x)\ge f(a)+f'(a)(x-a)$ — summing this linear lower bound is far easier than handling $f$ directly
-- take the tangent at the equality point $a=\frac sn$: the constraint $\alt{\sum x_i}{x_1+\cdots+x_n}=s$ makes the linear terms cancel, leaving exactly $\alt{\sum f(x_i)}{f(x_1)+\cdots+f(x_n)}\ge n f\!\left(\frac sn\right)$ — it only works for convex $f$, so verify convexity on the actual range before trusting the bound
-- the one obligation is verifying $f(x)\ge L(x)$ across the whole allowed range, and the difference almost always factors as a square over something positive, as in $\frac1x-(6-9x)=\frac{(3x-1)^2}{x}$ — if it fails anywhere, fall back to [[sos-method|SOS]] or [[jensens-inequality|Jensen]]
-
-## Why it works
-A convex function lies above every one of its tangent lines: $f(x) \ge f(a) + f'(a)(x-a)$ for all $x$. Summing this over $x_1, \dots, x_n$ makes the right side $\sum f(a) + f'(a)\sum(x_i - a)$; if you take the tangent at the equality point $a = s/n$, the constraint $\sum x_i = s$ kills the linear term, leaving exactly the bound $\sum f(x_i) \ge n f(s/n)$ — with equality when all $x_i$ are equal.
-
-## How to use it
-Use it on $\sum f(x_i)$ with a fixed sum when you suspect equality at all-variables-equal. (1) Find $a = s/n$. (2) Write the tangent line $L(x) = f(a) + f'(a)(x-a)$. (3) Prove $f(x) \ge L(x)$ on the allowed range — the difference almost always factors as a perfect square times a nonnegative term, e.g. $\frac1x - (6 - 9x) = \frac{(3x-1)^2}{x}$. (4) Sum. If the tangent bound fails somewhere in the domain (common when variables can be large or the function isn't convex throughout), the trick doesn't apply and you fall back to SOS or Jensen.
-
-## On contests
-The go-to elementary weapon for symmetric-sum inequalities with a linear constraint, especially where Jensen would work but you want a self-contained proof. It reduces an olympiad inequality to a single-variable square check — clean enough to write out fully under time pressure.`
+## Contest profile
+An olympiad and hard AIME tool for one-variable-per-term inequalities; when it applies, the whole proof is the one factorization.
+`
 
 });
 
@@ -1818,20 +2093,40 @@ AMC 12 tests these ranges head-on ("what is $\arcsin(\sin 5)$?"), and AIME uses 
 // Detail bodies added for dense medium-importance cards.
 Object.assign(window.MATH_DETAILS, {
 
-"sos-method": String.raw`## Key forms
-- push the difference into the form $S_a(b-c)^2+S_b(c-a)^2+S_c(a-b)^2$, which is visibly non-negative once every coefficient is — this works because a symmetric expression vanishing at $a=b=c$ naturally reorganizes around the squared differences
-- when the coefficients are not all non-negative, the ordered test usually rescues it: assuming $a\ge b\ge c$, it suffices that $S_b\ge0$, $S_b+S_a\ge0$, and $S_b+S_c\ge0$ — ordering the variables is the standard rescue, and it is usually enough
-- the $uvw$ partner rewrites everything in $p=a+b+c$, $q=ab+bc+ca$, $r=abc$; with $p$ and $q$ fixed the expression is linear in $r$, so its extremes sit at the boundary, meaning it is enough to check the two shapes $b=c$ and $c=0$ — linearity in $r$ means the extremes sit at the boundary, which is where two variables become equal
-- keep [[schurs-inequality|Schur's Inequality]] $p^3+9r\ge4pq$ on hand — it is the standard closer for the residual case neither method kills
+"sos-method": String.raw`
+## When to use
+Olympiad inequalities in three variables, symmetric or cyclic, with equality at $a = b = c$: polynomial inequalities after clearing denominators, inequalities where AM-GM and Cauchy-Schwarz lose too much, and inequalities with a second equality case such as $a = b,\ c = 0$, which points to Schur's Inequality. It is a mechanical method, so it is also the fallback when no clever idea appears.
+
+## How
+1. Move everything to one side, so the claim is $F(a, b, c) \ge 0$ with $F(t, t, t) = 0$.
+2. Rewrite $F$ as $S_a(b - c)^2 + S_b(c - a)^2 + S_c(a - b)^2$, using the building blocks below.
+3. If $S_a, S_b, S_c \ge 0$, the proof is done.
+4. Otherwise assume $a \ge b \ge c$ and check the ordered criterion: $S_b \ge 0$, $S_a + S_b \ge 0$ and $S_c + S_b \ge 0$.
+
+The building blocks are the SOS identity, $a^2 + b^2 + c^2 - ab - bc - ca = \frac12\sum(a - b)^2$, and its consequences such as $a^3 + b^3 + c^3 - 3abc = \frac{a + b + c}{2}\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right]$. In the second one every coefficient is $\frac{a + b + c}{2}$, nonnegative for nonnegative variables, which proves $a^3 + b^3 + c^3 \ge 3abc$ in one line.
+
+The partner method, $uvw$, writes a symmetric expression in $p = a + b + c$, $q = ab + bc + ca$ and $r = abc$. When the expression is linear in $r$ for fixed $p$ and $q$, its extreme values occur when two variables are equal or one is $0$, so only those two shapes need checking.
 
 ## Why it works
-Any symmetric expression in $a,b,c$ can be written in $p=a+b+c$, $q=ab+bc+ca$, $r=abc$, and with $p,q$ fixed it is linear — hence monotone — in $r$. So its extreme values sit where $r$ is extremal, and that boundary is exactly where two variables are equal or one is $0$. SOS is the complementary view: a difference that vanishes at $a=b=c$ usually reorganizes into a weighted sum of $(b-c)^2,(c-a)^2,(a-b)^2$, which is visibly nonnegative when the weights are.
+A symmetric polynomial that vanishes whenever $a = b = c$ can be organized around the differences between the variables, and the squared differences are the natural nonnegative quantities. Writing $F$ in that form changes the question from "is this polynomial nonnegative?" to "are three coefficients nonnegative?", which is usually a much simpler question.
 
-## How to use it
-Try SOS first: expand $\text{LHS}-\text{RHS}$ and group it as $S_a(b-c)^2+S_b(c-a)^2+S_c(a-b)^2$. If every $S\ge 0$ you are done; if not, use the ordered test — assuming $a\ge b\ge c$, it suffices that $S_b\ge 0$, $S_b+S_a\ge 0$, and $S_b+S_c\ge 0$. If the grouping is ugly, switch to $uvw$: convert to $p,q,r$, fix $p,q$, and verify the inequality only at the two boundary shapes $b=c$ and $c=0$, since the extremum lives there.
+The ordered criterion handles a negative coefficient. With $a \ge b \ge c$, the largest gap satisfies $(a - c)^2 \ge (a - b)^2 + (b - c)^2$, since $a - c$ is the sum of the other two gaps, both nonnegative. So if $S_b \ge 0$, the middle term is at least $S_b(a - b)^2 + S_b(b - c)^2$, and $F \ge (S_a + S_b)(b - c)^2 + (S_c + S_b)(a - b)^2$, which is nonnegative under the criterion.
 
-## On contests
-Olympiad three-variable symmetric inequalities are the home turf: many "prove for positive reals" problems fall to one clean SOS grouping or a two-case $uvw$ boundary check. Keep Schur's Inequality $p^3 + 9r \ge 4pq$ on hand to close the stubborn residual case.`,
+## Formulas it uses
+- [[sos-identity]]: $x^2 + y^2 + z^2 - xy - yz - zx = \frac12\left[(x - y)^2 + (y - z)^2 + (z - x)^2\right]$, the first building block of every SOS form.
+- [[trivial-inequality]]: squares are nonnegative, which makes each term $S(b - c)^2$ nonnegative once its coefficient is.
+- [[schurs-inequality]]: the standard finish when SOS leaves a residual term, and the inequality behind the equality case $a = b,\ c = 0$.
+- [[fundamental-theorem-symmetric]]: every symmetric polynomial is a polynomial in $p$, $q$ and $r$, the basis of the $uvw$ method.
+
+## Common traps
+- Forgetting to check that the inequality really is an equality at $a = b = c$; if not, no SOS form exists.
+- Concluding from one negative coefficient that the inequality fails, without trying the ordered criterion.
+- Using the ordered criterion on a cyclic inequality without checking both orderings $a \ge b \ge c$ and $a \ge c \ge b$.
+- Assuming nonnegative variables when the problem allows negative ones, which can flip the sign of a coefficient such as $a + b + c$.
+
+## Contest profile
+An olympiad tool for three-variable polynomial inequalities, used when slicker approaches fail; it seldom appears in AMC or AIME problems, where the inequalities are lighter.
+`,
 
 "max-product-fixed-sum": String.raw`## Why it works
 For a fixed sum, AM–GM makes the product largest when the parts are equal, so the ideal part is near $e\approx 2.718$ — and among integers $3$ beats $2$. Two local swaps pin the integer rule: a $1$ is always wasteful (merging it, $1+x \to (x+1)$, raises the product), and three $2$'s lose to two $3$'s (same sum $6$, but $8\lt 9$), so never keep more than two $2$'s.
@@ -1869,25 +2164,36 @@ Because the right side is a sum of squares it is $\ge 0$, which is exactly the C
 ## On contests
 The two-term case $(a^2+b^2)(c^2+d^2) = (ac-bd)^2 + (ad+bc)^2$ is the Brahmagupta–Fibonacci Identity — the workhorse for sum-of-two-squares problems and complex-number norms. The full identity itself is rarer, but it is the cleanest one-line proof of Cauchy–Schwarz and the tidiest way to argue an equality/proportionality condition.`,
 
-"abs-value-graphing": String.raw`## Key forms
-- $f(|x|)$ — delete the graph for $x\lt 0$ and replace it with the mirror image of the $x\ge0$ half, so the result is always even and symmetric about the $y$-axis
-- $|f(x)|$ — leave the domain untouched and reflect every part below the $x$-axis up over it, so the graph never goes negative and develops a corner at each root of $f$
-- $|y|=f(x)$ — reflect the graph across the $x$-axis and keep both copies, which is the one case that stops being a function
-- if $f(x)=f(-x)$, solve on $x\ge0$ and double the answer count, subtracting one when $x=0$ is itself a solution — the same reduction works in $y$ when $f(y)=f(-y)$
-- $f(x-h)$ shifts right by $h$ and $f(x)+k$ shifts up by $k$ — inside the function moves the graph along $x$ and in the opposite direction to the sign, outside moves it along $y$ in the same direction as the sign
-- $a\,f(x)$ stretches vertically by $a$ while fixing the $x$-axis, and $f(bx)$ compresses horizontally by $b$ while fixing the $y$-axis — a vertical stretch leaves every root where it was, which is why corners on the axis do not move
-- apply the transformations from the innermost bracket outward, since $2\bigl||x-5|-5\bigr|$ is the shift, then the drop, then the fold, then the stretch, and doing them in any other order gives a different graph
+"abs-value-graphing": String.raw`
+## When to use
+Equations and inequalities in one variable with nested bars, such as $\bigl||x| - 3\bigr| = b$ or $\bigl||x - 5| - 5\bigr| \le 2$; questions that count solutions for a parameter; and any task asking for the graph of an absolute value expression. Splitting into sign cases doubles the work with each bar, while the graph handles every bar in one picture.
+
+## How
+1. Start from the innermost expression, usually a line or the V of $|x|$.
+2. Apply the operations from the inside out: a shift $f(x - h)$ moves right by $h$, a constant $f(x) + k$ moves up by $k$, an outer bar $|f(x)|$ folds the part below the $x$-axis upward, and an inner bar $f(|x|)$ replaces the left half by the mirror image of the right half.
+3. Track only the corners, their positions and heights, since the graph is straight between them.
+4. Read the question off the finished picture: solutions are crossings with a horizontal line, and solution sets of inequalities are the stretches above or below it.
+
+Graph $y = \bigl||x| - 3\bigr|$. The V of $|x|$, lowered by $3$, has its vertex at $(0, -3)$ and crosses the axis at $\pm 3$. Folding the part below the axis gives a W with corners at $(\pm 3, 0)$ and a peak at $(0, 3)$, as the figure on this card shows.
 
 ## Why it works
-Bars around the input and bars around the output act on different axes. Replacing $x$ by $|x|$ changes which input is fed to $f$, and since $|x|$ and $|-x|$ agree, the two halves of the domain receive identical values, which is exactly a mirror across the $y$-axis. Replacing $f$ by $|f|$ changes the output after $f$ has done its work, and negating a negative output is a reflection across the $x$-axis applied only where the graph was below it. Because each bar is a single geometric operation, a nested expression is just those operations composed from the inside out.
+An outer bar changes only the sign of negative outputs, so it reflects exactly the part of the graph below the $x$-axis and leaves the rest. An inner bar makes the expression depend only on $|x|$, so the value at $-x$ equals the value at $x$: the graph is even, and its right half determines everything. Shifts and stretches act on graphs in the usual way.
 
-## How to use it
-Peel from the innermost bar. Sketch the plain function first, then apply one transformation per bar: mirror for a bar on the input, fold for a bar on the output. Corners appear exactly where the folded part meets the axis, which is at the roots of whatever sat inside the bars, so those roots are the points to mark.
+Each operation keeps the graph piecewise linear, and the corners appear only at points the operations create: the roots of the expression inside an outer bar, and $x = 0$ for an inner bar. So a few corners describe the whole graph, and the order of operations matters, since folding then shifting differs from shifting then folding.
 
-For "how many solutions does $||x|-a|=b$ have" questions, do not solve. Draw the left side, draw the horizontal line $y=b$, and count crossings, since the shape of the folded graph makes the count obvious as $b$ varies. When both variables carry bars the picture stops being a graph and becomes a region, which is a different job: see [[abs-value-relations|the two-variable case]] for the symmetry that graphs those regions without splitting into sign cases.
+## Formulas it uses
+- [[absolute-value-rules]]: $|u| = c$ means $u = \pm c$, and $|u| \le c$ means $-c \le u \le c$, the algebra behind each fold.
+- [[absolute-value-identities]]: $|ax + b| = |a|\left|x + \frac ba\right|$, which puts a bar in shift-and-stretch form before graphing.
 
-## On contests
-A recurring AMC and AIME setup, usually phrased as a count of solutions or as the area enclosed by an absolute-value equation. The count questions are decided entirely by how many times a horizontal line meets a folded graph. The area questions need the shapes a bar cuts out of the plane instead; the two together cover the topic, and the same problem often wants one of each.`,
+## Common traps
+- Applying the operations from the outside in, which produces a different graph.
+- Confusing $f(|x|)$, a mirror across the $y$-axis, with $|f(x)|$, a fold across the $x$-axis.
+- Losing the corners at the roots of an inner expression, where a fold creates a new corner.
+- Miscounting solutions at a corner height, where a horizontal line touches instead of crossing.
+
+## Contest profile
+A frequent AMC and occasional AIME tool: one picture replaces a dozen sign cases, and the question is usually a count of solutions.
+`,
 
 "first-order-recurrence": String.raw`
 ## Why it works
@@ -1940,18 +2246,39 @@ Set $\operatorname{Res}(f,g)=0$ to eliminate a variable between two polynomial e
 ## On contests
 Mostly olympiad and advanced algebra; the discriminant is everyday, while the resultant is the systematic elimination tool for two-variable polynomial systems where substitution gets unwieldy.`,
 
-"smoothing-method": String.raw`## Key forms
-- replace two unequal variables by their average, keeping the constraint — if this always moves the objective the same way, the extremum must sit where no such move is possible, i.e. where all variables are equal
-- push a variable to the boundary instead when the objective moves the other way — convexity decides which of the two directions applies, and the extremum then sits at a boundary configuration rather than at equality
+"smoothing-method": String.raw`
+## When to use
+Extremal problems in several symmetric variables with a fixed sum or product: maximize a product, minimize a sum of squares, bound $\sum f(x_i)$, or split an integer into parts with the largest product. The tell is a problem that "obviously" has its extremum at equal values, or at an extreme configuration such as $(2, 1, 0)$, and needs that claim proved.
+
+## How
+1. Fix the constraint and pick a move that preserves it: replace $(a, b)$ by $\left(\frac{a+b}{2}, \frac{a+b}{2}\right)$, or by $(a + t, b - t)$ toward or away from each other.
+2. Show the move always improves the objective while the two variables are unequal (or are not at a boundary).
+3. Conclude that the optimum is the configuration where no move is possible: all variables equal, or as many as possible at the boundary.
+4. Compute the objective there, and check that the optimum is attained.
+
+Split $10$ into positive integers with the largest product. A part $p \ge 5$ can be replaced by $2$ and $p - 2$, since $2(p - 2) > p$; a part $1$ should be merged into a neighbor; a $4$ can be written as $2 + 2$; and three $2$s can become two $3$s, since $9 > 8$. After every improvement is used, only $3$s and at most two $2$s remain, so $10 = 3 + 3 + 2 + 2$ and the largest product is $36$.
+
+{{figure:chord}}
 
 ## Why it works
-For a symmetric objective under a fixed constraint, moving two unequal variables toward their average (or toward a boundary) changes the objective monotonically by convexity or concavity; iterating drives every variable to be equal or extremal, so the optimum must sit there.
+If $f$ is convex, then $f(a) + f(b) \ge 2f\!\left(\frac{a + b}{2}\right)$, so averaging two variables lowers a sum of convex terms, as the figure shows for $f(x) = x^2$. Moving them apart raises it. A configuration that can always be improved is not optimal, so the optimum lies among the configurations that admit no improving move.
 
-## How to use it
-To justify "equality when all variables are equal," show each smoothing step improves the objective without violating the constraint — then the extremum is the all-equal (or boundary) configuration. This is the rigorous backbone under many [[am-gm|AM-GM]] and Jensen guesses.
+There is one subtle point. Repeating the averaging move forever may only approach equality, never reach it, so a rigorous proof either uses a move that reaches the final state in finitely many steps, such as setting one variable to the mean of all of them, or argues that an optimum exists and then shows it cannot have two unequal variables. For convex objectives, Karamata's Inequality packages the whole argument: a more spread-out list of values gives a larger sum.
 
-## On contests
-An olympiad inequality technique; when a symmetric max or min "obviously" occurs at equality, smoothing (or its [[sos-method|SOS]] / mixing-variables cousin) is how you prove it rather than assert it.`,
+## Formulas it uses
+- [[jensens-inequality]]: for convex $f$, $f(a) + f(b) \ge 2f\!\left(\frac{a+b}{2}\right)$, the improvement in each smoothing step.
+- [[max-product-fixed-sum]]: the result of discrete smoothing, the largest product of positive integers with sum $n$ uses parts $3$ and at most two $2$s.
+- [[karamata-inequality]]: compares whole configurations by majorization, the global form of many smoothing steps.
+
+## Common traps
+- Smoothing in the wrong direction: a concave objective is maximized at equal values but minimized at a boundary.
+- Breaking the constraint with the move, for example averaging two variables when the constraint is a fixed product.
+- Assuming a minimum exists on an open domain where it may only be approached.
+- Forgetting that integer problems need integer moves, as with the $2 + 2$ and $3 + 3$ swaps above.
+
+## Contest profile
+Behind many AIME optimization answers as an unstated step, and an olympiad method in its own right when the equality case must be proved rather than guessed.
+`,
 
 "evenly-spaced-angle-products": String.raw`## Why it works
 Writing each sine as complex exponentials turns an equally spaced product into a factorization of $z^n-1$ (or $z^n+1$), which collapses to a single $\sin n\theta$; the constant $\frac{1}{2^{\,n-1}}$ is exactly what that factorization leaves behind.
@@ -1981,30 +2308,41 @@ For an infinitely repeating radical, set it equal to $x$ and solve the fixed-poi
 An AMC/AIME favorite for the golden-ratio radical and a classic olympiad curiosity for Ramanujan's; the "set it equal to $x$" reflex handles most cases.`,
 
 "symmetric-polynomial-strategies": String.raw`
-## Key forms
-- $\alt{\prod_i(a-r_i)}{(a-r_1)\cdots(a-r_n)}=\frac{P(a)}{a_n}$ — any product over the roots collapses to a single evaluation of $P$, which is the highest-leverage move available
-- $\alt{\prod_i(r_i^2+c^2)}{(r_1^2+c^2)\cdots(r_n^2+c^2)}=\frac{P(ci)\,P(-ci)}{a_n^{2}}$ — the same identity read at complex points, since $r^2+c^2=(r-ci)(r+ci)$; the answer comes out real, which is a useful check
-- $\alt{\sum_i\frac{1}{a-r_i}}{\frac{1}{a-r_1}+\cdots+\frac{1}{a-r_n}}=\frac{P'(a)}{P(a)}$ — the logarithmic derivative, which evaluates sums of reciprocals in one step
-- [[newtons-sums|Newton's Sums]] turn the $e_k$ into power sums $\alt{\sum r_i^k}{r_1^k+\cdots+r_n^k}$ — the bridge whenever the target is a sum of powers rather than a product
+## When to use
+Any question of the form "the roots of this polynomial are $r$, $s$, $t$; find..." where the requested quantity treats the roots alike: sums of powers, sums of reciprocals, products such as $(r + 1)(s + 1)(t + 1)$, or sums such as $\frac{r}{s} + \frac{s}{r}$. The polynomial usually has no nice roots, which is the signal that the problem never wants them found. If swapping two roots changes the expression, it is not symmetric; pair it with its mirror image first, or reconsider.
+
+## How
+1. Read off the elementary symmetric sums: for $x^3 + ax^2 + bx + c$ they are $e_1 = -a$, $e_2 = b$ and $e_3 = -c$.
+2. For a product over the roots, such as $\prod(r_i^2 + 1)$, evaluate the polynomial instead.
+3. For a power sum $r^k + s^k + t^k$, climb from $p_1 = e_1$ with Newton's Sums.
+4. For a fraction, use a common denominator; both parts are symmetric.
+5. Otherwise expand into the $e_k$, starting from $r^2 + s^2 + t^2 = e_1^2 - 2e_2$.
+
+Let $r$, $s$, $t$ be the roots of $P(x) = x^3 - 2x^2 + 3x - 4$. Since $P(x) = (x - r)(x - s)(x - t)$, putting $x = -1$ gives $P(-1) = (-1 - r)(-1 - s)(-1 - t) = -(r + 1)(s + 1)(t + 1)$. So $(r + 1)(s + 1)(t + 1) = -P(-1) = 10$. And $r^2 + s^2 + t^2 = e_1^2 - 2e_2 = 4 - 6 = -2$, negative because two of the roots are complex.
+
+{{figure:distances}}
 
 ## Why it works
-Permuting the roots does not change the polynomial, so anything built from its coefficients is symmetric in the roots. The theorem is the converse: every symmetric polynomial in $r_1, \ldots, r_n$ is a polynomial in the elementary symmetric sums $e_1, \ldots, e_n$, which Vieta's Formulas identify with the coefficients.
+The coefficients of a polynomial are, up to sign, the elementary symmetric sums of its roots. That is Vieta's Formulas, and it is the only information about the roots that the coefficients hold. The Fundamental Theorem of Symmetric Polynomials says that this is enough: every polynomial expression that is unchanged by permuting the roots equals a polynomial in $e_1, \ldots, e_n$. A symmetric target can therefore always be computed from the coefficients, and the only question is how quickly.
 
-The evaluation identities come from the factored form. $P(x) = a_n\prod(x - r_i)$ holds for every $x$, so substituting any number, real or complex, turns a product over the roots into a single value of $P$. For example $r^2 + 1 = (r - i)(r + i)$, so $$\prod_i\left(r_i^2 + 1\right) = \frac{P(i)\,P(-i)}{a_n^2}.$$
+Products are quickest because the factored form $P(x) = a_n(x - r_1)\cdots(x - r_n)$ holds for every number $x$, real or complex. Substituting one value turns a product over all the roots into a single evaluation. Complex values help: $r^2 + 1 = (r - i)(r + i)$, so $\prod(r_k^2 + 1) = \frac{P(i)P(-i)}{a_n^2}$, which the figure reads as a product of squared distances from $i$ to the roots.
 
-## How to use it
-Work down a short ladder and stop at the first rung that applies.
+Reciprocal sums come from the same factored form after a logarithmic derivative: $\frac{P'(x)}{P(x)} = \sum_k \frac{1}{x - r_k}$, so $\sum \frac{1}{a - r_k} = \frac{P'(a)}{P(a)}$.
 
-- Check that the expression is symmetric; if swapping two roots changes it, pair it with its partner to make a symmetric combination.
-- Read the elementary symmetric sums off the coefficients, and never solve for the roots.
-- For a sum of powers, climb from the $e_k$ with Newton's Sums.
-- For a product over the roots, evaluate $P$ instead of expanding.
-- Otherwise expand into the $e_k$ by hand, as in $\sum r_i^2 = e_1^2 - 2e_2$.
+## Formulas it uses
+- [[fundamental-theorem-symmetric]]: guarantees that every symmetric expression in the roots is a polynomial in the $e_k$, so the method never gets stuck.
+- [[vietas-general]]: identifies each $e_k$ with a coefficient, $e_k = (-1)^k \frac{a_{n-k}}{a_n}$.
+- [[newtons-sums]]: converts the $e_k$ into the power sums $p_k = \sum r_i^k$ one step at a time.
+- [[fundamental-theorem-algebra]]: the factored form $P(x) = a_n\prod(x - r_k)$, which turns a product over the roots into a value of $P$.
 
-For $r, s, t$ the roots of $x^3 - 2x + 5$, the product $(r^2 + 1)(s^2 + 1)(t^2 + 1)$ is $P(i)P(-i) = (5 - 3i)(5 + 3i) = 34$, and no root is ever found. Sums of reciprocals use the logarithmic derivative, $\sum \frac1{a - r_i} = \frac{P'(a)}{P(a)}$.
+## Common traps
+- Sign errors in Vieta's Formulas: for a cubic, $e_1 = -\frac{a_2}{a_3}$ and $e_3 = -\frac{a_0}{a_3}$, while $e_2$ has a plus sign.
+- Forgetting the leading coefficient when evaluating: $\prod(k - r_i) = \frac{P(k)}{a_n}$, not $P(k)$.
+- Getting the sign of a product backward: $\prod(r_i - k) = (-1)^n\prod(k - r_i)$.
+- Applying the method to an expression that is not symmetric, such as $r^2s + s^2t + t^2r$ alone.
 
-## On contests
-Five problems here, four of them AIME, one solved by it alone; two finish with Vieta's Formulas directly. The tell is a symmetric expression in roots that would be hopeless to find: ask whether it is symmetric, then whether it is a product, and reach for $P(i)P(-i)$ the moment you see $r^2 + 1$.
+## Contest profile
+Usually the whole problem: an AIME question gives a cubic with ugly roots and asks for one symmetric value, and the work is choosing between expansion, Newton's Sums, and one evaluation.
 `,
 
 "even-power-sin-cos-sums": String.raw`## Why it works
@@ -2039,8 +2377,16 @@ Standard AIME fare whenever a problem asks for a closed form of $\sum\csc^2$ or 
 ## Distinguishing clues
 Repeated outputs mean subtracting a constant, and outputs that follow a rule mean subtracting the rule, after clearing denominators when the rule is a fraction: for $f(k) = \frac1k$, work with $xf(x) - 1$. When the values follow no visible rule, the shape is plain interpolation instead, and the [[finite-differences|finite differences]] of the values are the quicker check.
 
-## Why these methods fit
-Subtracting the rule leaves a polynomial with known roots, and the [[factor-remainder-theorem|Factor Theorem]] turns them into known factors: if $f(a_i) = g(a_i)$ for $i = 1, \ldots, m$, then $$f(x) - g(x) = (x - a_1)\cdots(x - a_m)\,Q(x),$$ and when $f$ has the higher degree, $\deg Q = \deg f - m$, so comparing degrees counts what is left to find. Interpolation through the given points is the general fallback when no subtraction leaves roots.
+## Methods and Formulas to Try
+Subtracting the rule leaves a polynomial with known roots, and known roots are known factors: if $f(a_i) = g(a_i)$ for $i = 1, \ldots, m$, then $$f(x) - g(x) = (x - a_1)\cdots(x - a_m)\,Q(x),$$ and when $f$ has the higher degree, $\deg Q = \deg f - m$, so comparing degrees counts what is left to find.
+
+### Methods to try
+- [[subtract-and-factor]]: subtract the rule from the polynomial so that every listed point becomes a root, write the difference as the product of those linear factors times an unknown polynomial, and pin down the unknown part by comparing degrees or plugging in one more value.
+- [[lagrange-interpolation]]: when no subtraction leaves roots, build the polynomial directly through the given points, or evaluate it only at the one point the question asks about.
+
+### Formulas to try
+- [[factor-remainder-theorem]]: $f(a) = 0$ exactly when $x - a$ divides $f(x)$, which turns each point where the polynomial agrees with the rule into a factor of the difference.
+- [[lagrange-interpolation-formula]]: writes the unique polynomial of degree less than $n$ through $n$ given points as a sum of one term per point.
 
 ## Common traps
 - Expanding the product instead of evaluating the factored form.
@@ -2051,114 +2397,164 @@ Subtracting the rule leaves a polynomial with known roots, and the [[factor-rema
 Rarely the whole solution: the factored form is the setup, and bounding or counting the remaining factor finishes it.
 `,
 
-"forced-difference-of-squares": String.raw`## Key forms
-- $X^2-Y^2=(X-Y)(X+Y)$ — the shape to force; add and subtract whatever the square is missing
-- compare the actual middle term with the $2XY$ a perfect square would need — the gap is exactly what you add and subtract
-- $x^4+x^2+1=(x^2+1)^2-x^2$ — it factors only when that leftover is itself a square, which is why $x^4+3x^2+1$ does not
-- $a^4+4b^4=(a^2+2b^2)^2-(2ab)^2$ — the Sophie Germain Identity, the same move with $Y=2ab$
+"forced-difference-of-squares": String.raw`
+## When to use
+Factoring $x^4 + x^2 + 1$, $x^4 + 4$ or $n^4 + 4^n$; showing that numbers like $n^4 + 4$ are composite for $n > 1$; and simplifying products or sums whose terms are such quartics, which then telescope.
+
+## How
+1. Find the square the outer terms suggest: for $x^4 + 4$ the outer terms are the squares of $x^2$ and $2$, so the target is $(x^2 + 2)^2$.
+2. Compare middle terms: $(x^2 + 2)^2$ has $4x^2$, which the expression lacks.
+3. Add and subtract the missing term: $x^4 + 4 = (x^2 + 2)^2 - 4x^2$.
+4. If the subtracted term is a perfect square, factor: $(x^2 - 2x + 2)(x^2 + 2x + 2)$.
+
+Is $n^4 + 4$ ever prime for $n > 1$? It factors as $(n^2 - 2n + 2)(n^2 + 2n + 2)$, and for $n > 1$ the smaller factor is $(n - 1)^2 + 1 \ge 2$, so the number is composite; only $n = 1$ gives a prime, $5$.
 
 ## Why it works
-A quartic with no linear terms almost forms a perfect square. In $x^4 + x^2 + 1$ the outer terms $x^4$ and $1$ are the squares of $x^2$ and $1$, and a genuine square $(x^2+1)^2$ would need a middle term of $2x^2$. There is only $x^2$, so the expression is $(x^2+1)^2$ short by exactly $x^2$. Adding and subtracting that shortfall changes nothing but rewrites the expression as $(x^2+1)^2 - x^2$, and a difference of two squares always factors.
+A quartic with no odd-degree terms is close to a perfect square: its outer terms are squares, and only the middle term is off. Adding and subtracting the difference leaves the value unchanged and writes the expression as $A^2 - B$. When $B$ is a perfect square $C^2$, the difference of squares $A^2 - C^2 = (A - C)(A + C)$ factors it. The constant in $a^4 + 4b^4$ is exactly what makes the leftover $4a^2b^2 = (2ab)^2$ a square, which is why $a^4 + 4b^4$ factors while $a^4 + b^4$ does not. The figure shows the identity for $x^4 + x^2 + 1$ as a square with a strip of area $x^2$ removed.
 
-The same accounting explains Sophie Germain. For $a^4 + 4b^4$, the outer terms are the squares of $a^2$ and $2b^2$, and a perfect square would need the cross term $2\cdot a^2\cdot 2b^2 = 4a^2b^2$. It is missing entirely, so add and subtract it: $a^4 + 4b^4 = (a^2+2b^2)^2 - 4a^2b^2 = (a^2+2b^2)^2 - (2ab)^2$. There is nothing special about the constant $4$ — it is chosen precisely so the leftover $4a^2b^2$ is itself a perfect square, which is why $a^4 + 4b^4$ factors while $a^4 + b^4$ does not.
+## Formulas it uses
+- [[difference-of-squares]]: $A^2 - C^2 = (A - C)(A + C)$, the factorization the method forces.
+- [[sophie-germain]]: $a^4 + 4b^4 = (a^2 - 2ab + 2b^2)(a^2 + 2ab + 2b^2)$, the best-known instance.
+- [[square-of-sum]]: expands the target square, so the missing middle term can be read off.
 
-## How to use it
-Work in three steps, and check the last one before committing.
+## Common traps
+- Forcing the difference when the leftover is not a perfect square, as for $x^4 + 3x^2 + 1$ with target $(x^2 + 1)^2$, where the method does not factor over the integers.
+- Choosing a target square whose outer terms do not match the expression.
+- Forgetting to check the small cases, where one factor can equal $1$.
 
-- Identify the two outer terms as squares of $X$ and $Y$, so the target perfect square is $(X+Y)^2$.
-- Compute the cross term $2XY$ the square would need, and compare it with the middle term you actually have. The difference $Z$ is what you add and subtract.
-- The expression becomes $(X+Y)^2 - Z$. It factors only if $Z$ is a perfect square, so verify that before going further.
-
-That last check is the whole method in miniature: $x^4 + x^2 + 1$ works because the shortfall is $x^2$, while $x^4 + 3x^2 + 1$ leaves a shortfall of $-x^2$, so you instead group toward $(x^2-1)^2$ and pick up $5x^2$, which is not a square — that quartic is irreducible over the rationals.
-
-## On contests
-The reflex to train is "an even-degree polynomial with a gap in the middle wants to be a [[difference-of-squares|difference of squares]]." It cracks $n^4+4$ composite problems, factors quartics that look prime, and turns many AIME algebraic-manipulation steps into one line. When a factorization is demanded and no rational root exists, this is usually what is wanted.`,
+## Contest profile
+Rare but decisive: it supplies the factorization that makes a product telescope or a number composite.
+`,
 
 "log-substitution": String.raw`
-## Key forms
-- set $u=\log_b x$, so $x=b^{\,u}$ — an equation built from $\log x$ by adding, multiplying, and raising to powers is a polynomial in that single quantity, and naming it makes the polynomial visible
-- when bases and arguments are swapped, set $t=\log_a b$ instead, since $\log_b a=\frac1t$ — the equation becomes rational in one unknown instead of having two
-- convert back with $x=b^{\,u}$ and test every candidate in the original equation — $u$ ranges over all reals while the original may require a positive argument, so the check is not optional
+## When to use
+Equations such as $\log_2^2 x - 3\log_2 x + 2 = 0$ or $\log_x 4 + \log_4 x = \frac52$, systems in $\log_a b$ and $\log_b a$, and equations with the unknown in both a base and an exponent, such as $x^{\log_2 x} = 16$, which become one of these after taking logarithms of both sides. The signal is one logarithm, or one logarithm and its reciprocal, appearing again and again.
+
+## How
+1. Rewrite every logarithm in one base, using the change of base formula.
+2. Name the repeated quantity, $u = \log_b x$, or $t = \log_a b$ when $\log_b a = \frac1t$ also appears.
+3. Solve the polynomial or rational equation in the new variable.
+4. Convert each root back with $x = b^u$, and check it in the original equation, where arguments must be positive and bases positive and different from $1$.
+
+Solve $\log_x 4 + \log_4 x = \frac52$. With $t = \log_4 x$, the first term is $\frac1t$, so $\frac1t + t = \frac52$, that is $2t^2 - 5t + 2 = 0$, with roots $t = 2$ and $t = \frac12$. So $x = 16$ or $x = 2$, and both are valid bases.
 
 ## Why it works
-Logarithms obstruct algebra because the logarithm of a sum does not simplify, but they behave perfectly under products and powers. So an equation built from $\log x$ by adding, multiplying, and raising to powers is a polynomial in the single quantity $\log x$; it only looks transcendental.
+Logarithms turn multiplication into addition and powers into multiples: $\log(xy) = \log x + \log y$ and $\log x^k = k\log x$. So any quantity built from $x$ and constants by multiplying, dividing and raising to fixed powers has a logarithm that is linear in $\log x$, and an equation that combines such logarithms with arithmetic is a polynomial equation in the single unknown $\log x$. The reciprocal pair works because $\log_a b \cdot \log_b a = 1$, which is the change of base formula.
 
-Naming that quantity $u$ makes the polynomial visible. The map $u \mapsto b^{\,u}$ takes the real numbers one-to-one onto the positive reals, so each root $u$ gives exactly one candidate $x = b^{\,u}$.
+The final check is not optional. The new variable ranges over all real numbers, while the original equation needs positive arguments and bases other than $1$, so a root of the polynomial can give an $x$ the original equation cannot accept.
 
-The base-swap version works the same way. If $t = \log_a b$, then $$\log_b a = \frac{1}{\log_a b} = \frac1t,$$ so an equation mixing the two is a rational equation in $t$, and clearing denominators gives a polynomial, usually a quadratic.
+## Formulas it uses
+- [[log-rules]]: $\log(xy) = \log x + \log y$ and $\log x^k = k\log x$, which make the equation polynomial in one logarithm.
+- [[change-of-base]]: $\log_a b = \frac{\log b}{\log a}$, which puts every logarithm in one base and gives $\log_b a = \frac{1}{\log_a b}$.
+- [[exponent-laws]]: $x = b^u$ converts each solution back, and $(b^u)^v = b^{uv}$ handles unknowns in exponents.
 
-## How to use it
-Look for a repeated logarithmic block, then name it.
+## Common traps
+- Skipping the final check, and keeping a root that makes an argument negative or a base equal to $1$.
+- Confusing $\log^2 x$, the square of the logarithm, with $\log x^2 = 2\log x$.
+- Forgetting that $\log_b x$ can be negative, so a negative root $u$ is usually a valid solution.
 
-- Every $\log$ has the same base and argument: set $u = \log_b x$ and rewrite. Terms like $\log_b x^3$ become $3u$ and $\log_b\frac{1}{x}$ becomes $-u$, so the equation collapses to a polynomial in $u$.
-- The bases and arguments are swapped: set $t = \log_a b$, replace $\log_b a$ by $\frac1t$, and clear denominators.
-- The unknown appears in an exponent as well as inside a log, as in $x^{\log_b x} = c$: take $\log_b$ of both sides first, which produces $(\log_b x)^2$, then substitute.
-- Several logs of different bases: convert to one base first, which usually reveals a single repeated block.
+## Contest profile
+Usually the first step of an AIME logarithm problem: once the repeated logarithm is named, a quadratic and Vieta's Formulas finish.
+`,
 
-Finish with the two steps that are easy to skip: convert back with $x = b^{\,u}$ for every root, and test each candidate in the original equation, since the substitution can produce roots that violate the domain.
+"normalization": String.raw`
+## When to use
+Homogeneous inequalities such as $\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32$, where nothing changes if every variable is doubled; inequalities under a constraint such as $a + b + c = 3$ that must be made homogeneous before Muirhead's Inequality or Schur's Inequality applies; and geometry problems asking for a ratio, where one length may be set to $1$.
 
-## On contests
-Three problems here, two AIME and one AMC 12, none solved by it alone. The common shapes are an equation that becomes a quadratic in $u$ after a change of base, and a system that one variable per logarithm turns into a [[symmetric-linear-system|symmetric linear system]]. When the question asks for the product of the solutions, $$x_1x_2 = b^{\,u_1 + u_2},$$ so the sum of the roots in $u$, from [[vietas-quadratic|Vieta's Formulas]], is all that is needed.`,
+## How
+1. Check homogeneity: replacing every variable $a$ by $ta$ should multiply each side by the same power of $t$.
+2. To normalize, impose the scale that most simplifies the expression, such as $a + b + c = 1$, $abc = 1$ or $a = 1$.
+3. To homogenize, replace each constant by the given constraint raised to the power that matches the degrees of the other terms.
+4. Prove the simplified statement; scaling back gives the original.
 
-"normalization": String.raw`## Key forms
-- $f(ta,tb,tc)=t^d f(a,b,c)$ — the definition of homogeneous of degree $d$; when it holds, only the ratios of the variables matter
-- normalize: fix one scale-sensitive quantity for free, setting $a+b+c=1$, or $abc=1$, or one length to $1$, whichever removes the most clutter — pick whichever constraint kills the most clutter, since all of them are equally valid
-- homogenize: replace each constant by the constraint raised to the power that levels the degrees, so $\frac13$ under $a+b+c=1$ becomes $\frac13(a+b+c)^2$ in a degree-$2$ inequality — this is what makes Muirhead and Schur available, since both require every term to share a degree
-- check homogeneity before normalizing — on a non-homogeneous expression the scaling changes the two sides differently and the argument is simply invalid
-
-## Why it works
-An expression is homogeneous of degree $d$ if replacing $(a, b, c)$ by $(ta, tb, tc)$ multiplies it by $t^d$, so an inequality between two degree-$d$ expressions is unchanged by that scaling. Only the ratios of the variables carry information, and you may fix any one scale-sensitive quantity at a convenient value. Nothing is lost, because any general point can be scaled onto your normalization and scaled back afterwards.
-
-Homogenizing runs the same logic backwards. A constrained inequality is not homogeneous, since its constant terms have degree $0$ while its variable terms do not, and that mismatch is exactly what blocks the standard machinery. Substituting the constraint for $1$ raises those constants to the right degree without changing their value, and the result is an unconstrained homogeneous inequality that means the same thing.
-
-## How to use it
-Confirm homogeneity first: both sides the same degree, or degree $0$ for a pure ratio. Then pick the normalization that simplifies the most, $a+b+c=1$ for symmetric sums, $abc=1$ when the constraint is multiplicative, or a key length set to $1$ in geometry. Solve the constrained problem and the general case follows by scaling.
-
-To homogenize, find the degree you want every term to have, then multiply each lower-degree term by the constraint raised to the difference. Under $a+b+c=1$ a degree-$2$ target turns $\frac13$ into $\frac13(a+b+c)^2$, a constant $1$ into $(a+b+c)^2$, and a linear term $a$ into $a(a+b+c)$. Once every term matches in degree, Muirhead, Schur, and bunching all become available, and the constraint can be forgotten entirely.
-
-## On contests
-The standard opening move for olympiad inequalities: normalize, then apply [[am-gm|AM-GM]], Cauchy, or a bunching argument to the simpler form; or homogenize, then compare exponent sequences directly. On AIME it appears as "assume the perimeter is $1$" or "set the circumradius to $1$" to strip a nuisance parameter before computing. The only discipline required is checking homogeneity first, since applied to a non-homogeneous expression the whole argument collapses.`,
-
-"sqrt-approximation": String.raw`## Key forms
-- $\sqrt{a^2+b}\approx a+\frac{b}{2a}$ — the first-order estimate, and always an overestimate
-- $\sqrt{a^2+b}\approx a+\cfrac{b}{2a+\cfrac{b}{2a}}$ — one more turn of the same recursion, typically good to four or five digits
-- $a+\frac{b}{2a+1}\le\sqrt{a^2+b}\le a+\frac{b}{2a}$ — a rigorous bracket whenever $0\le b\le 2a+1$, with equality at the ends
-- $x_{n+1}=\frac12\left(x_n+\frac{N}{x_n}\right)$ — the Babylonian iteration, which roughly doubles the correct digits each step
+Prove that $a + b + c = 3$ implies $a^2 + b^2 + c^2 \ge 3$. Homogenize: under the constraint $3 = \frac{(a + b + c)^2}{3}$, so the claim is $3(a^2 + b^2 + c^2) \ge (a + b + c)^2$, which expands to $(a - b)^2 + (b - c)^2 + (c - a)^2 \ge 0$, true for all real numbers.
 
 ## Why it works
-Set $x=\sqrt{a^2+b}$. Then $x^2-a^2=b$ factors as $(x-a)(x+a)=b$, so $x=a+\frac{b}{a+x}$ — an exact self-referential identity, not an approximation.
+An expression is homogeneous of degree $d$ if $f(ta, tb, tc) = t^d f(a, b, c)$. If both sides of an inequality are homogeneous of degree $d$ and it holds whenever $a + b + c = 1$, then for any positive $a, b, c$ with sum $S$, apply it to $\frac aS, \frac bS, \frac cS$ and multiply by $S^d$: it holds everywhere. Homogenizing runs the other way. Under the constraint, a constant equals a power of the constraint's expression, so replacing it changes nothing on the constraint set, and the resulting homogeneous inequality can then be proved for all variables at once, where the classical inequalities apply.
 
-Everything follows from feeding that identity back into itself. Replacing the $x$ in the denominator by $a$ gives $a+\frac{b}{2a}$; replacing it instead by $a+\frac{b}{2a}$ gives $a+\cfrac{b}{2a+b/(2a)}$, and continuing forever produces the periodic continued fraction $\sqrt{a^2+b}=a+\cfrac{b}{2a+\cfrac{b}{2a+\cdots}}$.
+## Formulas it uses
+- [[am-gm]]: homogeneous on both sides, so it applies cleanly after normalizing, as in $a + b + c \ge 3$ under $abc = 1$.
+- [[muirheads-inequality]]: compares symmetric sums of the same degree, which is why an inequality must be homogenized before it can be used.
+- [[schurs-inequality]]: a homogeneous degree-$3$ inequality, often the missing step after homogenizing.
 
-The bracket is a two-line check. Squaring $a+\frac{b}{2a}$ gives $a^2+b+\frac{b^2}{4a^2}$, which exceeds $a^2+b$, so that side is always too big. Squaring $a+\frac{b}{2a+1}$ and comparing reduces to $b\le 2a+1$, so the lower estimate is valid exactly on that range — and both become exact at $b=0$ and $b=2a+1$, where the root is $a$ and $a+1$.
+## Common traps
+- Normalizing an expression that is not homogeneous, which changes the two sides differently.
+- Homogenizing with the wrong power of the constraint, so the degrees still do not match.
+- Dividing by a quantity whose sign is not known when scaling.
 
-## How to use it
-Pick $a=\lfloor\sqrt N\rfloor$, so $b=N-a^2$ is small, then read off whichever form the question needs. For $\sqrt{1000}$ take $a=31$ and $b=39$: the first-order value is $31+\frac{39}{62}\approx31.629$, and one more step gives $31+\frac{39}{62.629}\approx31.6227$ against a true $31.62278$.
+## Contest profile
+Mostly olympiad inequalities: the first line of the proof, setting a scale or leveling the degrees, before a classical inequality finishes.
+`,
 
-The bracket is the form to use when a problem asks you to prove an inequality or to name the integer nearest a root, because it certifies the answer instead of merely suggesting it. Keeping $b$ genuinely small matters — the error grows like $\frac{b^3}{a^5}$, so choosing $a$ as the nearest integer rather than a convenient round number is what keeps the estimate sharp.
+"sqrt-approximation": String.raw`
+## When to use
+Estimating a square root by hand to two or more decimals, comparing a root with a fraction or a decimal, finding the integer nearest to $\sqrt N$ or to a sum of roots, and bounding expressions such as $\sqrt{n^2 + n}$ between two simple values. It also explains why $\sqrt{n^2 + k}$ is just above $n + \frac{k}{2n}$ in many floor-function problems.
 
-To compare two surds, do not approximate at all if you can avoid it: square both sides, or compare $\sqrt m-\sqrt n$ with $\frac{m-n}{\sqrt m+\sqrt n}$, which is exact and usually decides the question immediately.
+## How
+1. Find the largest perfect square $a^2$ not exceeding the number, and write the number as $a^2 + b$.
+2. For a first estimate, use $a + \frac{b}{2a}$, which is slightly too large.
+3. For a lower bound, use $a + \frac{b}{2a + 1}$, valid whenever $b \le 2a + 1$.
+4. For more digits, refine: $\sqrt{a^2 + b} = a + \frac{b}{a + \sqrt{a^2 + b}}$, with the latest estimate substituted on the right; equivalently, average the estimate $x$ with $\frac Nx$.
 
-## On contests
-Estimation questions ("which of these is closest to $\sqrt{2024}$"), floor-of-a-root problems, and any AMC question where the answer choices are far apart and a two-second estimate eliminates four of them. It also settles the "is $\sqrt N$ closer to $a$ or $a+1$" question outright, since the midpoint corresponds to $b=a+\frac14$.`,
-"double-summation": String.raw`## Why it works
-A finite double sum is a sum over a set of index pairs, and nothing about that set cares which index you sweep first. So the order of the two summation signs is free, and every manipulation below is really a re-description of the same region of pairs. Swapping is worth doing whenever the inner limits depend on the outer index, because the transposed region often has constant limits instead.
+Estimate $\sqrt{53}$. Here $53 = 7^2 + 4$. The bounds give $7 + \frac{4}{15} \le \sqrt{53} \le 7 + \frac{4}{14}$, that is $7.267 \le \sqrt{53} \le 7.286$. One refinement, $7 + \frac{4}{7 + 7.286} = 7.2800$, is correct to four decimals, since $\sqrt{53} = 7.28011\ldots$.
 
-## How to use it
-Before manipulating anything, write down the index region as a set of conditions. Almost every error in this area is a limit error, and almost every one is caught by checking a small case such as $n=3$ by hand.
+{{figure:between}}
 
-The identities worth recognizing on sight:
+## Why it works
+With $x = \sqrt{a^2 + b}$, the difference of squares gives $(x - a)(x + a) = b$, so $x = a + \frac{b}{x + a}$ exactly. Replacing $x$ on the right by $a$ makes the denominator too small and the estimate too large: $a + \frac{b}{2a}$. Replacing it by $a + 1$, which is at least $x$ when $b \le 2a + 1$, makes the denominator too large and the estimate too small: $a + \frac{b}{2a + 1}$.
 
-- $\sum_i\sum_j a_{ij}=\sum_j\sum_i a_{ij}$ — the order never matters for a finite double sum, so sweep whichever index is easier
-- $\sum_i\sum_j f(i)g(j)=\left(\sum_i f(i)\right)\left(\sum_j g(j)\right)$ — a separable summand splits into two independent one-variable sums
-- $\sum_{i=1}^{n}\sum_{j=i}^{n}a_{ij}=\sum_{j=1}^{n}\sum_{i=1}^{j}a_{ij}$ — over a triangular region, swapping rewrites the inner limits rather than removing them
-- $\sum_{i\ne j}a_ia_j=\left(\sum_i a_i\right)^2-\sum_i a_i^2$, so $\sum_{i\lt j}a_ia_j$ is half of it — the standard route into a symmetric pair sum
-- $\sum_{n\le N}\sum_{d\mid n}f(d)=\sum_{d\le N}f(d)\left\lfloor\frac Nd\right\rfloor$ — swapping a divisor sum counts multiples instead of divisors
+The figure shows both bounds as lines. The upper bound is the tangent to $y = \sqrt x$ at $x = a^2$, which lies above the curve because the curve bends down. The lower bound is the chord from $(a^2, a)$ to $((a + 1)^2, a + 1)$, which lies below it for the same reason. The refinement step is the Babylonian method: if $x$ is too large, then $\frac Nx$ is too small, and their average is closer than either, never below $\sqrt N$ by AM-GM.
 
-Swap when the inner sum is hard but its transpose is easy, and the classic sign of that is an inner limit depending on the outer index. Swapping $\sum_{n\le N}\sum_{d\mid n}$ turns "for each $n$, list its divisors" into "for each $d$, count its multiples", which replaces a factorisation problem with a floor function. Factor when the summand is a product of a function of $i$ and a function of $j$, since recognizing separability is what collapses a double sum into the product of two known series.
+## Formulas it uses
+- [[difference-of-squares]]: $(x - a)(x + a) = b$, which gives the exact identity $x = a + \frac{b}{x + a}$.
+- [[generalized-binomial-series]]: $\sqrt{1 + t} = 1 + \frac t2 - \frac{t^2}{8} + \cdots$, the same first-order estimate written as a series, with the size of the error.
+- [[am-gm]]: $\frac12\left(x + \frac Nx\right) \ge \sqrt N$, so each Babylonian step stays above the root.
 
-## On contests
-Any AIME sum with two indices is worth reading twice: once as written, once transposed. Divisor sums, symmetric pair sums such as $\sum_{i\lt j}a_ia_j$, and lattice-point counts are the three places this pays off most often.`,
+## Common traps
+- Using the lower bound $a + \frac{b}{2a + 1}$ when $b > 2a + 1$, where $a$ was not the right integer.
+- Forgetting that $a + \frac{b}{2a}$ always overestimates, which decides close comparisons the wrong way.
+- Rounding intermediate results too early, which wastes the digits the refinement gains.
+- Choosing $a$ above the root, which makes $b$ negative and flips the direction of both bounds.
+
+## Contest profile
+A MATHCOUNTS and AMC skill for nearest-integer and comparison questions, and a supporting step in AIME floor problems involving $\sqrt{n^2 + k}$.
+`,
+"double-summation": String.raw`
+## When to use
+Sums of divisor functions such as $\sum_{n \le N} d(n)$ or $\sum_{n \le N}\sigma(n)$; sums with inner limits that depend on the outer index, such as $\sum_{i=1}^{n}\sum_{j=i}^{n}$; sums over pairs, such as $\sum_{i \lt j}a_ia_j$; and single sums whose terms are themselves counts or sums, such as $\frac{n}{2^n}$, read as $n$ copies of $\frac{1}{2^n}$. The signal is a sum that is awkward in the order written but would be easy if the roles of the two indices were exchanged.
+
+## How
+1. Write the region of index pairs as a set of conditions, such as $\{(n, d) : d \mid n,\ n \le N\}$.
+2. Choose the other index to be the outer one, and rewrite the limits for the inner sum.
+3. If the summand factors as $f(i)g(j)$ over a rectangle, split it into $\left(\sum f(i)\right)\left(\sum g(j)\right)$.
+4. Check the new limits on a small case before computing.
+
+Compute $\sum_{n=1}^{\infty}\frac{n}{2^n}$. Write $\frac{n}{2^n}$ as a sum of $n$ copies of $\frac{1}{2^n}$, one for each $k$ with $1 \le k \le n$. The pairs $(k, n)$ with $1 \le k \le n$ can be summed by $k$ first: $$\sum_{k=1}^{\infty}\sum_{n=k}^{\infty}\frac{1}{2^n} = \sum_{k=1}^{\infty}\frac{2}{2^k} = 2.$$
+
+{{figure:grid}}
+
+## Why it works
+A finite double sum adds one number for each pair in a region, and addition does not depend on order. Summing by rows and summing by columns visit the same pairs, as the figure shows, so the totals agree. For infinite sums of nonnegative terms the same holds. The work is entirely in describing the region correctly from the other side.
+
+Swapping pays when one direction has structure the other hides. For each $n$, the divisors of $n$ are irregular, but for each $d$, its multiples up to $N$ are simply $d, 2d, \ldots$, and there are $\left\lfloor\frac Nd\right\rfloor$ of them. So $\sum_{n \le N}d(n) = \sum_{d \le N}\left\lfloor\frac Nd\right\rfloor$, and $\sum_{n \le N}\sigma(n) = \sum_{d \le N}d\left\lfloor\frac Nd\right\rfloor$.
+
+Pair sums use a different region, the off-diagonal part of a square: $\sum_{i \ne j}a_ia_j = \left(\sum a_i\right)^2 - \sum a_i^2$, and the pairs with $i \lt j$ are half of it.
+
+## Formulas it uses
+- [[floor-multiples]]: $d$ has $\left\lfloor\frac Nd\right\rfloor$ multiples up to $N$, the length of each column after a divisor-sum swap.
+- [[number-of-divisors]]: $d(n)$ is the inner count that the swap replaces.
+- [[sum-of-divisors]]: $\sigma(n) = \sum_{d \mid n} d$, which swaps to $\sum_d d\left\lfloor\frac Nd\right\rfloor$.
+- [[square-of-sum]]: $\left(\sum a_i\right)^2 = \sum a_i^2 + 2\sum_{i \lt j}a_ia_j$, the square region split into its diagonal and two triangles.
+
+## Common traps
+- Getting the new limits wrong: the region $1 \le k \le n$ swaps to $n \ge k$, not $n \ge 1$.
+- Factoring a summand over a region that is not a rectangle, where the limits still depend on each other.
+- Forgetting the diagonal, or counting it twice, when splitting a square into $i \lt j$ and $i > j$.
+- Swapping an infinite sum with terms of both signs without checking that it converges absolutely.
+
+## Contest profile
+A supporting move in AIME sums and in number theory: swapping a divisor sum into a floor sum is the standard first line, and reading a weighted sum as a double sum often replaces a clever trick.
+`,
 
 "triangular-numbers": String.raw`
 ## Why it works
@@ -2182,31 +2578,30 @@ Four problems here, split between AMC and AIME, one solved by it alone; two comb
 `,
 
 "multi-leg-rates": String.raw`
-## Key forms
-- $\alt{\sum_i d_i}{d_1 + \cdots + d_k} = D, \quad \alt{\sum_i \frac{d_i}{v_i}}{\frac{d_1}{v_1} + \cdots + \frac{d_k}{v_k}} = T$ — distances add and times add; speeds never do
-- $\frac{x}{v_1} + \frac{D-x}{v_2} = T$ — one trip of length $D$ with a single unknown leg $x$
-- $T_A = T_B$ — two travelers over one route, subtracted so the shared length cancels
-- $v_1 t + v_2 t = D$ — a meeting, written as two distances closing a gap in a common time
-- $\frac{2v_1v_2}{v_1+v_2}$ — out and back, the reason the average comes out harmonic
+## Distinguishing clues
+The speed changes during the trip, or two travelers cover overlapping routes at different speeds. A single trip at one speed is plain distance equals rate times time; two objects moving at once toward or away from each other is relative motion, and a question that asks only for the speed over the whole trip is average speed. Work problems with jobs in place of distances follow the same arithmetic.
 
-## Why it works
-Rate times time equals distance holds on any stretch where the speed is constant, so a journey at changing speeds has to be cut where the speed changes.
+## Methods and Formulas to Try
+The quantities that add are distances and times; speeds never add. So the setup is a list of legs, each with its own distance, speed, and time, tied together by the total distance and the total time. Two travelers on the same route give two such equations, and subtracting them cancels the shared legs.
 
-Over leg $i$ the time spent is $\frac{d_i}{v_i}$. The legs follow one another without overlapping, so their times add to the total time, and their distances add to the total distance for the same reason.
+{{figure:legs}}
 
-Speeds do not add, and they do not even average in the obvious way: the speed over the whole trip is total distance over total time, which is [[average-speed|average speed]].
+### Methods to try
+- [[time-per-leg]]: cut the trip wherever the speed changes, write each leg's time as $\frac{d_i}{v_i}$, and add the times and the distances.
 
-## How to use it
-Name the legs first, before writing any equation, and give each one a distance and a speed even if one of them is the unknown. Two relations then come almost for free: the distances total $D$ and the times total $T$.
+### Formulas to try
+- [[average-speed]]: total distance over total time, harmonic for equal distances, never the plain average of the speeds.
+- [[relative-motion]]: two travelers approaching each other close the gap at the sum of their speeds.
+- [[work-rates]]: the same additive structure with jobs in place of distances, where rates add and times do not.
 
-When two people cover the same route, write the total-time equation for each and subtract. Everything they have in common, usually the route length, drops out, which is faster than solving either equation alone.
+## Common traps
+- Averaging speeds, as in $\frac{4 + 8}{2} = 6$, instead of dividing total distance by total time.
+- Mixing units, such as minutes in one leg and hours in another.
+- Forgetting a leg, such as the return trip or a wait.
+- Setting the times equal when the travelers started at different moments.
 
-Watch for a leg whose distance is stated as a fraction of the whole, since that turns the distance equation into an identity and leaves the time equation carrying all the information.
-
-## On contests
-Four problems here, all AIME, three solved by it alone: races with several stages, cyclists who stop for breaks, and travelers who take turns on one vehicle. The same shape covers walked then jogged, or rowed upstream and back. Sometimes one leg runs diagonally across a rectangle, and the [[pythagorean-theorem|Pythagorean Theorem]] supplies its length.
-
-Three neighbors are close enough to confuse: average speed is only total distance over total time, [[work-rates|combined work rates]] is simultaneous effort where rates genuinely do add, and [[relative-motion|relative motion]] is about closing speeds.
+## Contest profile
+A MATHCOUNTS and AMC 10 staple, usually one or two linear equations; AIME versions add a meeting point or several travelers.
 `,
 
 
@@ -2258,46 +2653,83 @@ Use eigenvalues when you need $A^n$, not when you need $A$. If $A = PDP^{-1}$ wi
 Olympiad-adjacent only, and it appears in this library as the machinery two cards already lean on. [[matrix-tree-theorem|The matrix-tree theorem]] states the spanning-tree count as a product of Laplacian eigenvalues, and the transfer matrix gets its recurrence from $\det(xI - M) = 0$. If you are reading either of those, this is the card that makes the sentence mean something.`,
 
 "symmetric-linear-system": String.raw`
-## Key forms
-- $x_i + S = c_i$ for each $i$ — add all $n$ to get $(n+1)S = \alt{\sum c_i}{c_1 + \cdots + c_n}$, then $x_i = c_i - S$
-- $2x_i - S = c_i$ for each $i$ — the same move with a different multiple: adding gives $(2 - n)S = \alt{\sum c_i}{c_1 + \cdots + c_n}$
-- $x_{i+1} = f(x_i)$ cyclically — compose $f$ around the loop and solve $f^{(n)}(x_1) = x_1$
-- the total is all that is asked — stop at $S$ and never find the individual variables
+## Distinguishing clues
+The equations are copies of one another with the variables relabeled or rotated, and their number equals the number of variables. A general linear system with unrelated coefficients needs elimination; here the structure does the elimination. Nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]] instead.
+
+## Methods and Formulas to Try
+Adding every equation treats the variables alike, so the sum collapses into a multiple of the total $S$ of the variables. Subtracting two equations then isolates a difference, and each original equation, rewritten with $S$, gives one variable. A cyclic system in which each equation links one variable to the next closes up after going once around.
+
+{{figure:columns}}
+
+### Methods to try
+- [[add-all-equations]]: add (or multiply) all the equations so the symmetric parts become a multiple of the total, then return to one equation at a time.
+
+### Formulas to try
+- [[cramers-rule]]: confirms that the system has a unique solution exactly when the determinant is nonzero, which fails when adding all equations gives $0 = 0$.
+- [[determinant-basics]]: the determinant of a cyclic coefficient matrix factors, and one factor is the column sum that the addition step produces.
+
+## Common traps
+- Dividing by the coefficient of $S$ after adding, when that coefficient is $0$ and the system has no unique solution.
+- Solving for every variable when the question asks only for the total.
+- Miscounting how many times each variable appears in the added equation.
+
+## Contest profile
+A short AMC problem, often with four or five variables to make elimination tedious, and an occasional AIME first step.
+`,
+
+"cofactor-expansion": String.raw`
+## When to use
+Determinants of size $4$ or more; determinants with a row or column of mostly zeros; families $D_n$ of $n \times n$ determinants with a banded pattern, such as $2$ on the diagonal and $1$ beside it; and determinants with a variable in some entries, such as characteristic polynomials, where expanding along the variable's row keeps the algebra organized.
+
+## How
+1. Pick the row or column with the most zeros. If none is sparse, create zeros by adding multiples of one row to another, which leaves the determinant unchanged.
+2. For each nonzero entry $a_{ij}$ in that line, delete its row and column to get the minor $M_{ij}$, and attach the sign $(-1)^{i+j}$ from the checkerboard pattern.
+3. Add the terms $a_{ij}(-1)^{i+j}M_{ij}$, and evaluate each minor the same way.
+4. For a banded family, expand $D_n$ along the first row, identify the smaller determinants as $D_{n-1}$ and $D_{n-2}$, and solve the resulting recurrence.
+
+For the $n \times n$ matrix with $2$ on the diagonal and $1$ on both neighboring diagonals, expanding along the first row gives $2D_{n-1}$ from the corner entry. The entry beside it gives $-1$ times a minor whose first column has a single $1$, which expands to $D_{n-2}$. So $D_n = 2D_{n-1} - D_{n-2}$, with $D_1 = 2$ and $D_2 = 3$, and the solution is $D_n = n + 1$.
+
+{{figure:expand}}
 
 ## Why it works
-When the equations treat the variables alike, the total $S = \sum x_i$ is easier to find than any single variable.
+A determinant is linear in each row, so the chosen row can be split into its entries, giving a sum of determinants that each have a single nonzero entry in that row. In each of them, the entry can be moved to the top left corner by $i + j - 2$ swaps of adjacent rows and columns, and each swap changes the sign, which produces the factor $(-1)^{i+j}$. A determinant whose first row is $(a, 0, \ldots, 0)$ equals $a$ times the determinant of what remains, the minor.
 
-With three equations, the three extra variables add up to one more copy of the total: $$(x_1 + S) + (x_2 + S) + (x_3 + S) = (x_1 + x_2 + x_3) + 3S = 4S.$$
+Since the determinant of a matrix equals that of its transpose, the same expansion works down any column, and every choice gives the same value. That freedom is the whole strategy: expand where the zeros are.
 
-In general, adding all $n$ equations of the form $x_i + S = c_i$ puts every variable into the left side $n + 1$ times: once in each of the $n$ copies of $S$, and once more as its own extra term. So the sum reads $$(n + 1)S = c_1 + c_2 + \cdots + c_n,$$ which gives $S$. Each original equation then says $x_i = c_i - S$. The symmetry has done the elimination for you.
+## Formulas it uses
+- [[determinant-basics]]: the $2 \times 2$ and $3 \times 3$ formulas that finish every expansion, and the row operations that leave the determinant unchanged.
+- [[linear-recurrence]]: solves the recurrence $D_n = aD_{n-1} - bD_{n-2}$ that a banded family produces.
 
-A cyclic system is solvable for a different reason: it closes. Substituting forward writes every variable in terms of $x_1$, and after going around the loop the last equation is one equation in $x_1$ alone.
+## Common traps
+- Getting the checkerboard signs wrong, especially when expanding along a column or a middle row.
+- Multiplying a row by a constant during row reduction and forgetting that this scales the determinant.
+- Misidentifying a minor as $D_{n-1}$ when its first row or column differs from the pattern.
+- Expanding a dense matrix directly, which takes $n!$ terms, instead of first creating zeros.
 
-## How to use it
-The trigger is a system you are reluctant to start, because every equation looks like the others with the indices rotated. Add them all before doing anything else and see what the left side becomes.
+## Contest profile
+Rare in AMC and AIME, which seldom use matrices; it appears in olympiad and college-style problems, most often as the recurrence for a banded family.
+`,
 
-The equations need not have the form $x_i + S$ exactly. Anything that adds up to a multiple of the total works, such as $2x_i - S$ or $S - x_i$, and if only the total is asked for you can stop there. The variables can also be in disguise, as logarithms, reciprocals, or squares that become linear after a substitution.
-
-For a cyclic system, substitute around the loop instead. Both moves fail quickly when they fail, so trying the addition costs one line.
-
-## On contests
-Four problems here, three AIME and one AMC 10, none solved by it alone. The clean model is five equations, each the total plus one variable, with right sides forming a [[geometric-series|geometric series]], where adding everything gives the total at once.
-
-The same move hides behind [[log-substitution|logarithms]], which become symmetric once each logarithm is named, and behind reciprocal squares, as when three distances in a box turn into a symmetric system in $\frac1{l^2}$, $\frac1{w^2}$, and $\frac1{h^2}$. A cyclic system, with each equation tying one unknown to the next, closes by substituting around the loop.`,
-
-"cofactor-expansion": String.raw`## Why it works
-[[determinant-basics|Linearity in a row]] lets you split that row into its individual entries, and each piece leaves a determinant with a single nonzero entry in that row. Moving that entry to the corner by $i + j - 2$ adjacent swaps produces the sign $(-1)^{i+j}$, and what remains is the minor $M_{ij}$ with row $i$ and column $j$ deleted. Every row and every column gives the same answer, which is what makes the choice of expansion line free.
-
-## How to use it
-Choose the row or column with the most zeros, since each zero deletes an entire minor unevaluated. If none has enough, manufacture them first: adding a multiple of one row to another leaves the determinant unchanged, so you can clear a row down to a single entry at no cost. For an indexed family of matrices the expansion is a derivation rather than an arithmetic step, since expanding $D_n$ along its first row leaves $D_{n-1}$ and, from the one off-diagonal term, $D_{n-2}$, converting the determinant into a linear recurrence.
-
+"polynomial-crt": String.raw`
 ## Key forms
-- one sparse row — expand there directly, ignoring every zero entry
-- a dense matrix — clear a row with row operations first, then expand
-- a banded family $D_n$ — expand along the first row to get $D_n = aD_{n-1} - bD_{n-2}$
-- a block-triangular matrix — the determinant is the product of the diagonal blocks
+- $P(x) \bmod (x-a)(x-b) = P(a) + \frac{P(b)-P(a)}{b-a}(x-a)$ — two values give the linear remainder, for $a \ne b$
+- $P(x) \bmod (x-a)^2 = P(a) + P'(a)(x-a)$ — a repeated factor takes the derivative in place of a second value
+- $P(i) = u + vi \implies P(x) \bmod (x^2+1) = vx + u$ — for $P$ with real coefficients, evaluate at a root of the quadratic
 
-## On contests
-A tridiagonal matrix is the whole use case: constant entries $a$ down the diagonal and $b$, $c$ on the two off-diagonals, and a question about its determinant $D_n$. Expanding along the first row gives the recurrence $D_n = aD_{n-1} - bc\,D_{n-2}$, and from there it is a recurrence problem, often with [[geometric-series|a geometric series]] at the end, and the determinant never appears again. That is the pattern to expect: the expansion is the doorway out of matrix notation, not the substance of the problem.`,
+## Conditions
+The moduli must be coprime. Distinct linear factors $x - a$ and $x - b$ always are; a repeated factor $(x-a)^2$ is not coprime to itself, so the value $P(a)$ alone cannot fix the remainder, and the derivative supplies the second condition.
 
+## Why it works
+Divide by the product and look at what survives when the product vanishes.
+
+Write $P(x) = (x-a)(x-b)Q(x) + R(x)$ with $\deg R \le 1$. Putting $x = a$ and then $x = b$ kills the first term, so $R(a) = P(a)$ and $R(b) = P(b)$, and a line is fixed by two of its points.
+
+For coprime moduli $m_1, m_2$ in general, two polynomials with the same remainders differ by a multiple of $m_1$ and of $m_2$, hence of $m_1 m_2$, so at most one remainder of degree below $\deg m_1 m_2$ fits; and a combination $r_1 t\, m_2 + r_2 s\, m_1$, with $s\, m_1 + t\, m_2 = 1$, has both remainders, so one does.
+
+For the repeated factor, differentiate $P(x) = (x-a)^2 Q(x) + R(x)$: every term of the derivative of $(x-a)^2 Q(x)$ still contains $x - a$, so $P'(a) = R'(a)$.
+
+## Useful observations
+- Modulo a product of $k$ distinct linear factors, the remainder is the polynomial of degree less than $k$ through the $k$ values, which the [[lagrange-interpolation-formula|Lagrange Interpolation Formula]] writes down directly.
+- Only the values at the roots of the modulus matter, so a polynomial given by an enormous formula is reduced by evaluating it, never by dividing.
+`,
 });

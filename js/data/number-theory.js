@@ -109,6 +109,15 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "largest-odd-divisor-sum",
+          name: "Sum of Largest Odd Divisors",
+          latex: String.raw`S(2m) = m^2 + S(m), \qquad S(2m+1) = (m+1)^2 + S(m), \qquad S(2^k) = \frac{4^k + 2}{3}`,
+          description: String.raw`The sum of largest odd divisors $S(n) = f(1) + f(2) + \cdots + f(n)$, where $f(k)$ is the largest odd divisor of $k$, obeys a halving recurrence. The odd numbers up to $2m$ add to $m^2$, and each even number $2j$ has the same largest odd divisor as $j$, so the even ones add to $S(m)$. Unwinding the recurrence gives $S(2^k) = \frac{4^k + 2}{3}$, and for large $n$ the sum is close to $\frac{n^2}{3}$.`,
+          keywords: ["largest odd divisor", "greatest odd divisor", "sum of largest odd divisors", "odd part", "f(2n) = f(n)", "halving recurrence", "sum of odd parts", "highest power of 2 sum"],
+          importance: "low",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "sigma-parity",
           name: "Parity of $\\sigma(n)$",
           latex: String.raw`\sigma(n) \text{ is odd} \iff n = m^2 \text{ or } n = 2m^2`,
@@ -517,15 +526,15 @@ window.MATH_SECTIONS.push({
           name: "Sum of Two Squares Theorem",
           latex: String.raw`n = a^2 + b^2 \iff v_p(n) \text{ even for all } p \equiv 3 \!\!\pmod 4`,
           description: String.raw`A positive integer is a sum of two squares iff every prime factor $\equiv 3 \pmod 4$ appears to an even power. The prime case is Fermat's Two-Square Theorem: $p \equiv 1 \pmod 4$ is a sum of two squares in exactly one way, which is what makes the general criterion constructive.`,
-          keywords: ["fermat two square theorem", "two squares", "representable", "primes 1 mod 4", "sum of two squares theorem", "expressible as two squares", "primes 1 mod 4"],
+          keywords: ["fermat two square theorem", "two squares", "representable", "primes 1 mod 4", "sum of two squares theorem", "expressible as two squares", "fermat's theorem on sums of two squares", "prime as a sum of two squares", "p = a^2 + b^2", "prime hypotenuse", "unique representation as two squares", "brahmagupta fibonacci identity"],
           importance: "medium",
-          level: ["AIME", "Olympiad"]
+          level: ["AMC12", "AIME", "Olympiad"]
         },
         {
           id: "thues-lemma",
           name: "Thue's Lemma",
           latex: String.raw`\gcd(a,n)=1 \implies \exists\, x,y:\; x \equiv ay \pmod{n}, \;\; 0 < |x|, |y| \le \sqrt{n}`,
-          description: String.raw`A [[pigeonhole|pigeonhole]] guarantee of a "small" solution to a congruence: for any modulus $n$ and $a$ coprime to it, some $x \equiv ay \pmod n$ has both $|x|, |y| \le \sqrt{n}$. Its famous payoff is [[fermat-two-squares|Fermat's two-squares theorem]] — if $a^2 \equiv -1 \pmod p$ then $x \equiv ay$ forces $x^2 + y^2 \equiv 0 \pmod p$, and the size bound pins $x^2 + y^2 = p$.`,
+          description: String.raw`A [[pigeonhole|pigeonhole]] guarantee of a "small" solution to a congruence: for any modulus $n$ and $a$ coprime to it, some $x \equiv ay \pmod n$ has both $|x|, |y| \le \sqrt{n}$. Its famous payoff is [[sum-of-two-squares|Fermat's Two-Square Theorem]] — if $a^2 \equiv -1 \pmod p$ then $x \equiv ay$ forces $x^2 + y^2 \equiv 0 \pmod p$, and the size bound pins $x^2 + y^2 = p$.`,
           keywords: ["thue lemma", "pigeonhole congruence", "small solution", "two squares proof", "sum of two squares"],
           importance: "lower",
           level: ["AIME", "Olympiad"]

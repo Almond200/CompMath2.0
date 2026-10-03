@@ -372,11 +372,6 @@
    "batch": "9"
   },
   {
-   "id": "auxiliary-lines",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
    "id": "abs-value-relations",
    "date": "2026-09-25",
    "batch": "10"
@@ -742,11 +737,6 @@
    "batch": "19"
   },
   {
-   "id": "solid-tactics",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
    "id": "denesting-radicals",
    "date": "2026-09-26",
    "batch": "19"
@@ -1070,6 +1060,56 @@
    "id": "lte-lemma",
    "date": "2026-10-02",
    "batch": "four-kinds-pilot"
+  },
+  {
+   "id": "extend-sides-to-meet",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "inclusion-exclusion",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "monges-theorem",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "fundamental-theorem-symmetric",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "inversion-facts",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "lagrange-interpolation-formula",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "sum-of-two-squares",
+   "date": "2026-10-03",
+   "batch": "re-sort"
+  },
+  {
+   "id": "polynomial-crt",
+   "date": "2026-10-03",
+   "batch": "new"
+  },
+  {
+   "id": "odd-part-chains",
+   "date": "2026-10-03",
+   "batch": "new"
+  },
+  {
+   "id": "largest-odd-divisor-sum",
+   "date": "2026-10-03",
+   "batch": "new"
   }
  ],
  "conversion": {
@@ -1083,11 +1123,105 @@
   "lte-lemma": "formula",
   "legendres-formula": "formula",
   "power-of-a-point": "formula",
-  "vietas-quadratic": "formula"
+  "vietas-quadratic": "formula",
+  "extend-sides-to-meet": "method",
+  "inclusion-exclusion": "formula",
+  "monges-theorem": "formula",
+  "fundamental-theorem-symmetric": "formula",
+  "inversion-facts": "formula",
+  "lagrange-interpolation-formula": "formula",
+  "sum-of-two-squares": "formula",
+  "polynomial-crt": "formula",
+  "odd-part-chains": "method",
+  "largest-odd-divisor-sum": "formula",
+  "choose-modulus": "method",
+  "exponent-tracking": "method",
+  "hensel-lifting": "method",
+  "vieta-jumping": "method",
+  "extended-euclidean-algorithm": "method",
+  "gcd-substitution": "method",
+  "bounding-diophantine": "method",
+  "squeeze-between-squares": "method",
+  "factor-pair-counting": "method",
+  "odd-divisor-count": "pattern",
+  "cryptarithms": "pattern",
+  "digit-manipulation": "pattern",
+  "bijection-method": "method",
+  "double-counting": "method",
+  "symmetry-probability": "method",
+  "reflection-principle": "method",
+  "geometric-probability": "method",
+  "constructive-counting": "method",
+  "casework-method": "method",
+  "counting-blocks": "method",
+  "gap-method": "method",
+  "uniform-overcount": "method",
+  "pie": "method",
+  "recursive-counting": "method",
+  "grid-path-fill": "method",
+  "states-recursion-prob": "method",
+  "transfer-matrix-method": "method",
+  "generating-function-method": "method",
+  "indicator-variables": "method",
+  "invariants-coloring": "method",
+  "extremal-principle": "method",
+  "probabilistic-method": "method",
+  "losing-positions": "pattern",
+  "log-substitution": "method",
+  "weierstrass-substitution": "method",
+  "trig-substitution": "method",
+  "functional-substitution": "method",
+  "sp-substitution": "method",
+  "normalization": "method",
+  "sfft": "method",
+  "completing-the-square": "method",
+  "forced-difference-of-squares": "method",
+  "rationalizing": "method",
+  "denesting-radicals": "method",
+  "symmetric-polynomial-strategies": "method",
+  "lagrange-interpolation": "method",
+  "root-transformations": "method",
+  "roots-of-unity-filter": "method",
+  "telescoping": "method",
+  "fx-pairing": "method",
+  "finite-differences": "method",
+  "double-summation": "method",
+  "largest-term-ratio": "method",
+  "sos-method": "method",
+  "smoothing-method": "method",
+  "tangent-line-trick": "method",
+  "abs-value-graphing": "method",
+  "abs-value-relations": "method",
+  "piecewise-graph-counting": "method",
+  "sqrt-approximation": "method",
+  "cofactor-expansion": "method",
+  "infinite-nest": "pattern",
+  "periodic-sequences": "pattern",
+  "palindromic-polynomials": "pattern",
+  "symmetric-linear-system": "pattern",
+  "multi-leg-rates": "pattern",
+  "median-minimizes-abs": "pattern",
+  "cross-section-method": "method",
+  "perp-to-angle-bisector": "method",
+  "median-doubling": "method",
+  "parallel-line-similarity": "method",
+  "inversion-properties": "method",
+  "angle-chasing": "method",
+  "rotation-trick": "method",
+  "rotation-center": "method",
+  "spiral-similarity": "method",
+  "homothety-monge": "method",
+  "ravi-substitution": "method",
+  "barycentric-coordinates": "method"
  },
  "placeholders": {
   "tangency-equation": "method: turn 'exactly one solution' into one equation (distance equals radius, or discriminant zero)",
   "cycle-hunting": "method: list states until one repeats, then reduce the index by the period",
-  "subtract-and-factor": "method: subtract the rule the values follow, then use the known roots as factors"
+  "subtract-and-factor": "method: subtract the rule the values follow, then use the known roots as factors",
+  "backward-induction": "method: label game positions winning or losing from the end, each from the positions it can move to",
+  "name-the-whole-expression": "method: call an infinite nested expression x, use that its tail is a copy of itself to write one equation, and solve",
+  "add-all-equations": "method: add (or multiply) all equations of a symmetric system so the symmetric parts collapse into the total",
+  "time-per-leg": "method: cut a trip where the speed changes, write each leg's time as distance over speed, and add times and distances",
+  "slope-counting": "method: sweep x across a piecewise-linear function and track its slope at each corner to find where it turns"
  }
 }

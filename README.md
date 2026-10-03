@@ -30,17 +30,22 @@ CONVENTIONS §0 has the full model.
 
 **Pages.**
 
-- **Front page** (no hash): search, the four spaces, what the app is and how to use it, then
-  where you left off, the problem and card of the day, and your library. The top bar is hidden
-  here; Settings is reached from the gear in the top bar on every other page.
-- **Space pages** (`#/formulas`, `#/methods`, `#/patterns`): two sentences on how the kind fits
-  the app, then an index of every subject and group (Methods and Patterns list every card by
-  name).
+- **Front page** (no hash): search, the four spaces, the Pattern → Method → Formula → Problem
+  chain that says how they fit, links to every subject of every space, then where you left off,
+  the problem and card of the day, and your library. The top bar is hidden here; Settings is
+  reached from the gear in the top bar on every other page.
+- **No main page for Formulas, Methods or Patterns.** `#/formulas`, `#/methods` and `#/patterns`
+  (and the switcher buttons) open the subject last visited in that space, Geometry the first
+  time. The small "i" beside the space's name in the sidebar opens a centered dialog, like
+  Filters, with what the space is for and what was recently opened in it.
 - **Subject pages** (`#/formulas/geometry`, `#/methods/algebra`): one scrolling page, every group
   (a formula topic, a method group, a pattern family) under its own heading and one-line
   `blurb`. A group's address (`#/formulas/geometry/circles`) opens the subject at that heading;
   so do the sidebar's group links. The sidebar shows only the current space; clicking the open
   subject's header folds it.
+- **Problem pages** (`#/problem/<slug>`): the link to the statement first, then Think (the
+  strategy, hidden until asked), Tricks, and near the bottom the chain of cards the problem uses
+  (Pattern → Method → Formulas).
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, your lists
   (and a box to make one), every year of every contest, and the study lists. A contest year
   (`#/problems/aime/2024`) and a single list (`#/list/<id>`) open as plain pages with a link back.
@@ -106,10 +111,15 @@ by a point or two; compare warm runs to warm runs.
   removed in October 2026 as more noise than help.)
 - **Interactive widgets** on selected cards: drag the vertices and watch the invariant hold.
 - **Advanced search** builds a query from tag chips across the whole library.
-- **Settings** (`#/settings`, the gear in the top bar) cover theme, density, cards per row
-  (regular, two across on a laptop, or spacious), text size, subject pages (cards or a wiki-style A-Z index), card
+- **Settings** (`#/settings`, the gear in the top bar) cover theme, density (Comfortable, Spacious or Compact: the
+  spacing of the whole app), card size (regular, two across on a laptop, or large, one across with every form of
+  a formula shown), text size, scroll speed (Slow, Normal or Fast: how far one wheel step moves a
+  page; Normal leaves the browser's own scrolling alone), subject pages (cards or a wiki-style A-Z index), card
   order, keyword chips, figures on card faces (off, curated, or on), and **notation**: in the expanded form, every formula
-  box and Key forms bullet that uses a sigma or a product sign shows its terms written out.
+  box and Key forms bullet that uses a sigma or a product sign shows its terms written out. On a
+  wide window, a fixed preview panel on the right, behind a dividing line, shows cards while
+  browsing, a card's page and a subject page as each setting changes, scaled so all three always
+  fit.
 - **Special pages**, run from the search box or from Settings → Commands, in the style of
   Wikipedia's: `Special:Random`, `Special:RandomProblem/<contest>`, `Special:RandomStarred`,
   `Special:WhatLinksHere/<card>`, `Special:AllPages` (an A-Z index with a letter bar),
