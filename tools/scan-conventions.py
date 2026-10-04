@@ -6,7 +6,7 @@ Every figure quoted in CONVENTIONS.md comes from here. If a rule cannot be produ
 by this script, it is an opinion, not a convention.
 """
 import collections
-import glob, glob, io, os, re, sys
+import glob, io, os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -177,7 +177,10 @@ print("  one per card: %s | orphaned write-ups: %d"
 # and the write-up it targeted was the LAST entry of its Object.assign block, which has no comma.
 # The lazy match ran on through "});" into the next block and took the following card's write-up
 # with it; the file still parsed, so nothing else noticed.
-missing_wu = [c["id"] for c in CARDS if c["id"] not in DETAILS]
+# A planned card (placeholder: true) carries only a name and a one-sentence summary until it is
+# written, so it is exempt from the write-up and example requirements, and reported instead.
+PLANNED = [c["id"] for c in CARDS if re.search(r"\n\s*placeholder: true", c["blk"])]
+missing_wu = [c["id"] for c in CARDS if c["id"] not in DETAILS and c["id"] not in PLANNED]
 print("  cards with no write-up: %d  (must stay 0)" % len(missing_wu))
 for _i in missing_wu:
     print("    " + _i)
@@ -302,7 +305,8 @@ for _x in kf_examples[:8]:
 
 print("\n-- examples --")
 print("  one per card: %s" % pct(sum(1 for c in CARDS if c["id"] in EXAMPLES), len(CARDS)))
-missing_ex = [c["id"] for c in CARDS if c["id"] not in EXAMPLES]
+missing_ex = [c["id"] for c in CARDS if c["id"] not in EXAMPLES and c["id"] not in PLANNED]
+print("  planned cards awaiting a write-up: %d" % len(PLANNED))
 if missing_ex:
     print("  MISSING: %s" % ", ".join(missing_ex))
 
@@ -429,6 +433,7 @@ for c in CARDS:
     c["kind"] = _kind(c)
     c["when"], c["move"] = field(c["blk"], "when"), field(c["blk"], "move")
     c["uses"], c["suggests"], c["recognize"] = _array(c["blk"], "uses"), _array(c["blk"], "suggests"), _array(c["blk"], "recognize")
+    c["tryFirst"] = _array(c["blk"], "tryFirst")
 _kind_err, _kind_warn = [], []
 for _id, _st in _conv.items():
     if _id not in _BYID_ALL:
@@ -503,8 +508,17 @@ for c in CARDS:
             if _try.get("methods to try") != (c["suggests"] or []):
                 _kind_err.append("%s: 'Methods to try' lists %s but the box suggests %s" % (c["id"], _try.get("methods to try"), c["suggests"]))
             _tf = _try.get("formulas to try") or []
-            if not _tf:
-                _kind_err.append("%s: 'Formulas to try' is missing or empty" % c["id"])
+            # TRY in the box: at most three of the page's own ideas, methods or formulas.
+            _tf_box = c.get("tryFirst") or []
+            if len(_tf_box) > 3:
+                _kind_err.append("%s: tryFirst lists %d items; keep the box to the top 3" % (c["id"], len(_tf_box)))
+            for _x in _tf_box:
+                if _x not in (_try.get("methods to try") or []) + (_try.get("formulas to try") or []):
+                    _kind_err.append("%s: tryFirst names %r, which is not in its Methods or Formulas to try" % (c["id"], _x))
+            # An honest "no formula is needed" sentence is allowed: some patterns rest on a
+            # method alone, and an invented formula list is worse than saying so.
+            if not _tf and not re.search(r"### Formulas to try\n\n?No [^\n]*formula", DETAILS.get(c["id"], "")):
+                _kind_err.append("%s: 'Formulas to try' is missing or empty (list formulas, or say plainly that none is needed)" % c["id"])
             for _x in _tf:
                 if _x not in _BYID_ALL or _BYID_ALL[_x]["kind"] != "formula":
                     _kind_err.append("%s: 'Formulas to try' names %r, which is not a formula card" % (c["id"], _x))
@@ -786,7 +800,18 @@ print("  named results written without their capitals: %d  (must stay 0)" % len(
 for _x in _lowcap[:8]:
     print("    %s: %r should read %r" % _x)
 
-bad = bool(missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
+# String.raw keeps every backslash, so an escaped quote \" in card text renders literally
+# as a backslash and a quote on the page (it happened once, in Stewart's mnemonic).
+_esc_q = []
+for _f in glob.glob("js/data/*.js") + glob.glob("js/data/details/*.js"):
+    if "search-" in _f: continue
+    for _m in re.finditer(r"String\.raw`([^`]*)`", io.open(_f, encoding="utf-8").read()):
+        if '\\"' in _m.group(1): _esc_q.append((_f, _m.group(1)[:60]))
+print("  card text with a literal escaped quote: %d  (must stay 0)" % len(_esc_q))
+for _x in _esc_q[:8]:
+    print("    %s: %s" % _x)
+
+bad = bool(_esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
            or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))

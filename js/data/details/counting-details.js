@@ -793,12 +793,15 @@ Usually the whole solution of an AIME probability or expected-value problem abou
 The outcomes are equally likely and the question is about order or position: the chance that card $A$ comes before card $B$, that the top card is an ace, that the largest of $n$ numbers lands in the first half, that a given player is eliminated last. It also gives expected values, since interchangeable quantities have equal expectations: the gaps between random points on a segment all have the same expected length.
 
 ## How
-1. Check that the outcomes are equally likely and that the setup treats the items you will swap in the same way.
-2. Find a swap or relabeling that sends the event you want to another event and undoes itself.
-3. Conclude that the two events have equal probability; if several such events split all the outcomes, each has probability one over their number.
-4. For expected values, give each interchangeable quantity an equal share of their known total.
+1. Check that the outcomes are equally likely and the setup treats the swapped items alike.
+2. Find a swap that sends the wanted event to another and undoes itself.
+3. Conclude the events are equally likely; if $k$ of them split all outcomes, each has probability $\frac1k$.
+4. If a tie is possible, the two events split only the rest: $P(A \gt B) = \frac{1 - P(A = B)}{2}$.
+5. For expected values, give interchangeable quantities equal shares of their total.
 
 Five people sit in a random order. The chance that Alice sits to the left of Bob is $\frac12$, and the chance that Alice, Bob and Carol sit in that order from left to right is $\frac{1}{3!} = \frac16$, since the $6$ orders of the three are equally likely.
+
+With ties possible the answer is not $\frac12$: when two people each roll a die, a tie has probability $\frac16$, so the first roll is higher with probability $\frac{1 - \frac16}{2} = \frac{5}{12}$.
 
 ## Why it works
 In a uniformly random arrangement every order is equally likely. Swapping the places of $A$ and $B$ sends each order with $A$ first to an order with $B$ first, and swapping again restores the original, so the two sets of orders match one for one and have the same size. Equal numbers of equally likely outcomes mean equal probabilities.
@@ -814,7 +817,7 @@ Positions work the same way. Exchanging the contents of position $1$ and positio
 ## Common traps
 - Using symmetry when the setup is not symmetric: in a game where one player moves first, the players are not interchangeable.
 - Swapping items the condition treats differently, such as a named card and a card of a given suit.
-- Forgetting a third outcome, such as a tie, that stops two events from splitting everything in half.
+- Answering $\frac12$ when a tie is possible; the symmetric events share only $1 - P(\text{tie})$, so each has probability $\frac{1 - P(\text{tie})}{2}$.
 
 ## Contest profile
 Usually a shortcut that replaces a long computation: a probability that looks like a sum over many cases turns out to be a simple fraction.
@@ -969,30 +972,6 @@ The 6-people puzzle appears verbatim in competition folklore; the argument templ
 // Entries added from the 2023-2025 AMC/AIME sweep.
 Object.assign(window.MATH_DETAILS, {
 
-"losing-positions": String.raw`
-## Distinguishing clues
-Perfect information, no chance, and a game decided by the last move. Several piles, or a choice of which pile to play on, make it a game of Nim, which [[sprague-grundy|the Sprague–Grundy Theorem]] handles; dice or random draws make it a probability question instead.
-
-## Methods and Formulas to Try
-Label the positions from the end. When taking the last object wins, the empty pile is a loss for the player to move. A position is winning if some move reaches a losing position, and losing if every move reaches a winning one. In a take-away game the labels soon repeat: with moves of $1$ to $k$ objects the losing positions are exactly the multiples of $k + 1$, and the figure shows the period-$7$ pattern for moves of $1$, $3$ or $4$.
-
-### Methods to try
-- [[backward-induction]]: label the positions from the smallest up, each from the labels of the positions it can move to, until the pattern is clear.
-- [[recursive-counting]]: the label of $n$ is a recursion in the labels of smaller positions, so the same table-building finds the period.
-- [[invariants-coloring]]: a winning strategy keeps an invariant, such as always handing the opponent a multiple of $k + 1$, which proves the pattern rather than just observing it.
-
-### Formulas to try
-- [[sprague-grundy]]: with several piles, each pile has a Grundy value, and a position is losing exactly when their nim-sum is $0$.
-- [[modular-basics]]: the losing positions form residue classes, so counting them up to $N$ is counting numbers in those classes.
-
-## Common traps
-- Mixing up the conventions: when taking the last object loses, the empty pile is a win for the player to move and every label shifts.
-- Declaring a period after too few terms; check at least two full periods.
-- Counting the positions where the first player loses when the question asks where the first player wins.
-
-## Contest profile
-Mostly AMC and MATHCOUNTS: a short table of winning and losing positions, its period, and a count of positions up to a bound.
-`
 
 });
 
@@ -1235,32 +1214,30 @@ Usually the whole solution of an expected-count problem: one probability times t
 
 "invariants-coloring": String.raw`
 ## When to use
-A process of moves (combining numbers on a board, flipping coins, sliding pieces, tiling) and a question about whether some state can be reached, or whether a tiling exists. The answer is usually no, proved by a quantity that no move can change. The related question, whether the process must stop, asks for a quantity that every move decreases.
+A process of moves, such as replacing two numbers on a board by a combination of them, flipping coins, or jumping a piece, and a question about whether some state can be reached. The answer is usually no, proved by a quantity no move can change. The related question, whether the process must stop, asks for a quantity that every move decreases.
 
 ## How
 1. Write down exactly what one move does.
-2. Look for a quantity it leaves unchanged: a sum, a parity, a value modulo a small number, or a count of colored squares covered.
+2. Look for a quantity it leaves unchanged: a sum, a product, a parity, or a value modulo a small number.
 3. Compute the quantity at the start and at the target.
 4. If the two values differ, the target is unreachable.
-5. To show the process stops, find a nonnegative integer quantity that every move strictly decreases.
+5. To show the process stops, find a nonnegative integer that every move strictly decreases.
 
-An $8 \times 8$ board with two opposite corners removed cannot be tiled by dominoes. Color it like a chessboard: every domino covers one dark and one light square, but the two removed corners are the same color, leaving $30$ squares of one color and $32$ of the other.
+The numbers $1, 2, \ldots, 10$ are on a board, and a move replaces two of them by their difference. The last number can never be $0$: replacing $a$ and $b$ by $|a - b|$ changes the sum by $2\min(a, b)$, an even number, so the sum stays odd, as $55$ is.
 
 ## Why it works
-A quantity that no move changes has the same value after any sequence of moves, so every reachable state shares its starting value, and a state with another value is out of reach. A coloring builds such a quantity for tilings: the number of squares of each color a tile covers is fixed, so the totals covered are fixed in proportion. A quantity that is a nonnegative integer and drops with every move cannot drop forever, so the process must stop.
-
-{{figure:board}}
+A quantity that no move changes has the same value after any sequence of moves, so every reachable state shares its starting value, and a state with another value is out of reach. A nonnegative integer that drops with every move cannot drop forever, so the process must stop after finitely many moves.
 
 ## Formulas it uses
 - [[modular-basics]]: invariants are often a value modulo a small number, such as a sum modulo $3$ when every move changes it by a multiple of $3$.
 
 ## Common traps
 - Concluding that a target is reachable because the invariant agrees there; an invariant can only prove impossibility.
-- A coloring that the tiles do not respect, so the covered counts are not fixed.
+- Choosing a quantity that some move changes in a rare case.
 - A decreasing quantity that is not bounded below, which proves nothing about stopping.
 
 ## Contest profile
-Mostly olympiad; on the AMC it is the idea behind "which final number is possible" questions, and the invariant is usually parity or a sum modulo a small number.
+Mostly olympiad; on the AMC and AIME it is the idea behind "which final number is possible" questions and jumping-piece questions, and the invariant is usually parity or a sum modulo a small number. Tilings use the [[coloring-arguments|coloring argument]] instead.
 `
 
 });
@@ -1769,8 +1746,6 @@ The figure shows one bad path from $(0, 0)$ to $(4, 4)$ and its reflection after
 
 ## Formulas it uses
 - [[grid-paths]]: paths with $m$ right and $n$ up steps number $\binom{m + n}{n}$, both for the total and for the reflected count.
-- [[ballot-problem]]: with $a > b$ votes, the chance that the winner leads throughout the count is $\frac{a - b}{a + b}$, the reflection principle's best-known result.
-- [[catalan-numbers]]: paths that never rise above the diagonal number $C_n = \binom{2n}{n} - \binom{2n}{n - 1}$.
 
 ## Common traps
 - Reflecting across the wrong line: "never above $y = x$" makes the bad paths those touching $y = x + 1$, not $y = x$.
@@ -1804,7 +1779,6 @@ When objects are built different numbers of times because they have extra symmet
 - [[permutations-combinations]]: $\binom nr = \frac{n!}{(n - r)!\,r!}$, ordered selections divided by the $r!$ orders of one group.
 - [[circular-permutations]]: $(n - 1)!$ circular seatings, rows divided by the $n$ rotations.
 - [[multiset-permutations]]: $\frac{n!}{n_1!\,n_2!\cdots}$, arrangements divided by the orders inside each block of identical items.
-- [[burnsides-lemma]]: the exact count when objects are built different numbers of times, as an average over the symmetries.
 
 ## Common traps
 - Dividing when the overcount is not uniform: a double scoop, or a necklace with a repeating pattern, is built fewer times.
@@ -1844,5 +1818,119 @@ The same table proves a classic result of Erdős: among any $n + 1$ numbers chos
 
 ## Contest profile
 Usually the whole argument in two halves: the rows give the upper bound, and the top half of the range shows it is reached.
+`,
+
+"backward-induction": String.raw`
+## When to use
+Two players take turns, there is no chance and no hidden information, every move makes progress toward the end, and the question asks who wins with best play, or how many starting positions up to $N$ are wins for the first or second player. Several piles, or a choice of which pile to play on, make it a game of Nim, which [[sprague-grundy|the Sprague–Grundy Theorem]] handles; dice or random draws make it a probability question instead.
+
+## How
+1. Fix the ending rule and label the end positions: when taking the last object wins, the empty pile is a loss for the player to move.
+2. Go up in size, labeling each position winning if some move reaches a losing position and losing if every move reaches a winning one.
+3. Watch for the labels to repeat, and check at least two full periods.
+4. Prove the pattern: every move from a losing position reaches a winning one, and every winning position has a move to a losing one.
+5. Count the positions with the label the question wants.
+
+With moves of $1$ or $2$ coins, the losing positions are $0, 3, 6, \ldots$, the multiples of $3$, since from a multiple of $3$ every move leaves a remainder of $1$ or $2$, and from those a move returns to a multiple of $3$.
+
+## Why it works
+Every move leads to a smaller position, so by induction on size every position gets exactly one label. A player at a losing position must hand the opponent a winning position whatever they do, and a player at a winning position can always hand the opponent a losing one, so the labels describe best play. The labels of a position depend only on a fixed window of smaller labels, so they eventually repeat.
+
+## Formulas it uses
+- [[modular-basics]]: the losing positions usually form residue classes, so counting them up to $N$ is counting numbers in those classes.
+
+## Common traps
+- Mixing up the conventions: when taking the last object loses, the end labels flip and so does everything after.
+- Declaring a period after too few terms.
+- Counting first-player wins when the question asks for second-player wins.
+
+## Contest profile
+Mostly AMC and MATHCOUNTS: a short table of labels, its period, and a count up to a bound; the AIME has asked the same with an unusual set of moves.
+`,
+
+"coloring-arguments": String.raw`
+## When to use
+A region is to be tiled by dominoes, trominoes, or $1 \times k$ bars, a piece moves on a grid, or the question asks for the fewest pieces that block or touch every placement, and the answer is about whether something is possible or how small it can be.
+
+## How
+1. Choose a coloring every piece respects: a checkerboard for dominoes, $k$ diagonal stripes, colored by $(i + j) \bmod k$, for $1 \times k$ bars, or a set of marked cells.
+2. Count how many cells of each color one piece covers.
+3. Count the cells of each color in the region.
+4. If no combination of pieces matches those counts, the tiling is impossible.
+5. For a covering question, mark cells that every placement must touch; the number of marked cells is a lower bound on the pieces needed.
+
+An $8 \times 8$ board with two opposite corners removed cannot be tiled by dominoes: every domino covers one dark and one light cell, but the removed corners share a color, leaving $30$ cells of one color and $32$ of the other.
+
+{{figure:board}}
+
+## Why it works
+Each piece covers a fixed number of cells of each color wherever it is placed, so the totals covered by any set of pieces are fixed combinations of those numbers. A region whose color counts are not such a combination cannot be covered exactly. A coloring proves impossibility only; matching counts do not by themselves show that a tiling exists.
+
+## Formulas it uses
+- [[modular-basics]]: stripe colorings by $(i + j) \bmod k$ make every $1 \times k$ bar cover one cell of each residue.
+
+## Common traps
+- A coloring the pieces do not respect, such as a checkerboard for $1 \times 3$ bars, which cover two cells of one color and one of the other in either order.
+- Concluding that a tiling exists because the counts match.
+- Forgetting that a $1 \times k$ bar may lie in a row or a column; the diagonal coloring handles both.
+
+## Contest profile
+AMC tiling and covering questions, often as a lower bound from marked cells, and olympiad impossibility proofs.
+`,
+
+"pairing-to-bound": String.raw`
+## When to use
+The question asks for the largest subset of $\{1, 2, \ldots, n\}$, or of another set, that never contains two elements with some property: summing to a fixed total, differing by a fixed amount, one double the other, or both in a forbidden pair. Divisibility conditions, where one element must not divide another, use the chains of [[odd-part-chains|odd parts]] instead.
+
+## How
+1. Find pairs of elements that are forbidden together, such as $k$ and $21 - k$ for the sum $21$.
+2. When the forbidden links form chains rather than pairs, as $1, 6, 11, \ldots$ do for the difference $5$, find how many elements of one chain can be chosen with no two linked.
+3. Cover the whole set with the pairs and chains, each element exactly once.
+4. Add up the allowed amounts; that is the upper bound.
+5. Build a subset that takes the allowed amount from every group, which shows the bound is reached.
+
+The largest subset of $\{1, \ldots, 20\}$ with no two elements summing to $21$: the pairs $\{1, 20\}, \{2, 19\}, \ldots, \{10, 11\}$ cover the set, so at most $10$ elements fit, and $\{1, \ldots, 10\}$ has $10$.
+
+## Why it works
+If the subset had more elements than the groups allow, some group would contribute more than its allowance by the [[pigeonhole|pigeonhole principle]], and for a pair that means both elements, a forbidden combination. So the allowances add up to a true upper bound. An upper bound alone does not answer a "largest" question; the explicit subset shows nothing larger is needed.
+
+## Formulas it uses
+- [[pigeonhole]]: more elements than the groups allow forces some group to give too many.
+
+## Common traps
+- Groups that miss some elements, or use an element twice.
+- Allowing one element per chain when a chain of length $\ell$ with only neighbors linked allows $\lceil \ell/2 \rceil$.
+- Stopping at the upper bound without exhibiting a subset that reaches it.
+
+## Contest profile
+An AMC question in its plain form, sum-free or difference-free subsets, and an AIME or olympiad step when the groups are less obvious.
+`,
+
+"subset-avoiding-relation": String.raw`
+## Distinguishing clues
+The condition is about pairs of chosen elements: no two sum to a target, differ by a fixed amount, are consecutive, or divide one another. The question asks either for the largest such subset or for how many there are. A condition on a single element, such as being odd, is ordinary counting; a condition on triples, such as no three in arithmetic progression, is much harder and needs other ideas.
+
+{{figure:pairs}}
+
+## Methods and Formulas to Try
+The forbidden pairs organize the set into groups; the largest subset takes the most each group allows, and a count multiplies the choices across groups or runs a recursion along a chain.
+
+### Methods to try
+- [[pairing-to-bound]]: cover the set with pairs or chains of linked elements and add up what each can contribute, then build a subset that reaches the bound.
+- [[odd-part-chains]]: for divisibility, write each number as an odd number times a power of $2$; numbers with the same odd part form a chain in which any two divide one another.
+- [[recursive-counting]]: to count subsets of a chain with no two neighbors, condition on whether the last element is chosen, which gives a Fibonacci recursion.
+
+### Formulas to try
+- [[pigeonhole]]: too many chosen elements force two into one group.
+- [[non-adjacent-selection]]: $\binom{n - k + 1}{k}$ subsets of size $k$ of $\{1, \ldots, n\}$ with no two consecutive.
+- [[dilworths-theorem]]: the fewest chains covering a partial order equals the largest set with no two comparable, so a chain cover and a set of the same size with no two comparable prove each other optimal.
+
+## Common traps
+- Giving an upper bound without a subset that reaches it.
+- Treating a chain as a pair and allowing one element where several fit.
+- Forgetting the empty set when counting subsets.
+
+## Contest profile
+AMC problems ask for the largest sum-free or difference-free subset; AIME and olympiad versions count such subsets or disguise the forbidden relation.
 `,
 });

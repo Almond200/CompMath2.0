@@ -358,7 +358,7 @@
       `<path d="M ${B[0] - 28} ${B[1] + 16} Q 215 168 ${A[0] + 28} ${A[1] + 16}" fill="none" stroke="${DIM}" stroke-width="1.8"/>`,
       circ([A[0] - 46, A[1]], 16, ACC, 1.8),
       txt([215, 52], "add 1", ACC, 12), txt([215, 182], "add 0", DIM, 12), txt([A[0] - 70, A[1] - 22], "add 0", ACC, 12, "end"),
-      cap(430, 210, "the allowed transitions for binary strings with no two 1s in a row: a 0 can be followed by either digit and a 1 only by a 0, so the matrix is [[1, 1], [1, 0]]; there is no loop at ends 1" + (ok ? "" : " MISMATCH"))
+      cap(430, 210, "the allowed transitions for binary strings with no two 1s in a row: a 0 can be followed by either digit and a 1 only by a 0, so the matrix has rows (1, 1) and (1, 0); there is no loop at ends 1" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -396,7 +396,7 @@
     ]);
   })()];
 
-  DIAGRAMS["losing-positions"] = [(() => {
+  DIAGRAMS["backward-induction"] = [(() => {
     // Take 1, 3 or 4 objects; taking the last one wins. Positions 0..20 labeled W or L from the
     // end: L exactly when n mod 7 is 0 or 2.
     const moves = [1, 3, 4], lab = [];
@@ -1577,7 +1577,7 @@
     })()
   };
 
-  BODY["odd-divisor-count"] = {
+  BODY["number-of-divisors"] = {
     // Divisors of 24 and of 36, each joined to its partner n/d; 6 is its own partner in 36.
     pairs: (() => {
       const parts = [];
@@ -1619,7 +1619,7 @@
     })()
   };
 
-  BODY["periodic-sequences"] = {
+  BODY["cycle-hunting"] = {
     // x1 = 2, x_{n+1} = 1/(1 - x_n): 2, -1, 1/2, 2, ... Values are computed, then written as text.
     cycle: (() => {
       const vals = [2];
@@ -1737,7 +1737,7 @@
   };
 
 
-  BODY["invariants-coloring"] = {
+  BODY["coloring-arguments"] = {
     // 8 x 8 board without two opposite corners, colored like a chessboard. Colors are counted.
     board: (() => {
       const s = 26, X0 = 96, Y0 = 26, parts = [];
@@ -2743,7 +2743,7 @@
     })()
   };
 
-  BODY["infinite-nest"] = {
+  BODY["name-the-whole-expression"] = {
     // Cobweb for x -> sqrt(6 + x) from 0: the values climb to the fixed point 3, where y = x meets the curve.
     cobweb: (() => {
       const g = x => Math.sqrt(6 + x), xs = [0]; for (let k = 0; k < 5; k++) xs.push(g(xs[k]));
@@ -2779,7 +2779,7 @@
     })()
   };
 
-  BODY["symmetric-linear-system"] = {
+  BODY["add-all-equations"] = {
     // Cyclic coefficients: every column sums to 6, so adding the equations gives 6(x + y + z) = 36.
     columns: (() => {
       const C = [[1, 2, 3], [2, 3, 1], [3, 1, 2]], R = [14, 11, 11], sol = [1, 2, 3];
@@ -2801,7 +2801,7 @@
     })()
   };
 
-  BODY["multi-leg-rates"] = {
+  BODY["time-per-leg"] = {
     // 12 km: walked 4 km at 4 km/h (1 h), ran 8 km at 8 km/h (1 h). Average speed 6 = 12 / 2.
     legs: (() => {
       const legs = [[4, 4], [8, 8]]; let t = 0, d = 0; const pts = [[0, 0]];
@@ -2852,6 +2852,24 @@
       [[0, "Q(0) = −1"], [5, "Q(5) = −1"]].forEach(([x, t]) => parts.push(dot(m.pt(x, Q(x)), GLD, 5), txt(add(m.pt(x, Q(x)), [x ? -8 : 8, 4]), t, GLD, 12, x ? "end" : "start")));
       parts.push(cap(430, 270, "Q(x) = xP(x) − 1 for the cubic with P(k) = 1/k at k = 1, 2, 3, 4. The four data points are roots of Q (blue), so Q = c(x − 1)(x − 2)(x − 3)(x − 4); the value Q(0) = −1, where P drops out, gives c = −1/24, and then Q(5) = −1, so 5P(5) = 0." + (ok ? "" : " MISMATCH")));
       return wrap(430, 270, parts);
+    })()
+  };
+
+  // ---- A subset avoiding a forbidden pair (pattern hub) ----
+  // {1..20} with no two summing to 21: the ten pairs k, 21 - k, one element chosen from each.
+  BODY["subset-avoiding-relation"] = {
+    pairs: (() => {
+      const x0 = 35, dx = 38, yT = 70, yB = 150, parts = [];
+      let pairsOk = true;
+      for (let k = 1; k <= 10; k++) {
+        const x = x0 + dx * (k - 1), top = k, bot = 21 - k;
+        if (top + bot !== 21) pairsOk = false;
+        parts.push(seg([x, yT + 14], [x, yB - 14], FNT, 1.6));
+        parts.push(rect(x - 14, yT - 14, 28, 28, ACC, 1.8, ACCS), txt([x, yT + 5], String(top), ACC, 13));
+        parts.push(rect(x - 14, yB - 14, 28, 28, DIM, 1.4), txt([x, yB + 5], String(bot), DIM, 13));
+      }
+      parts.push(cap(430, 200, "The numbers 1 to 20 fall into ten pairs that sum to 21 (joined), and a subset with no two summing to 21 takes at most one number from each pair. So it has at most 10 elements, and the top row (blue) shows 10 is reached." + (pairsOk ? "" : " MISMATCH")));
+      return wrap(430, 200, parts);
     })()
   };
 

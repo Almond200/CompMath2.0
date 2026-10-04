@@ -64,12 +64,12 @@
   W["vietas-general"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Polynomial roots &amp; Vieta&rsquo;s relations</div>' +
-      '<div class="tool-row">coefficients (high→low): <input class="tool-in vt-c" type="text" value="1 -6 11 -6" style="width:200px"> <button class="tool-btn2 vt-go">Solve</button></div>' +
+      '<div class="tool-row">coefficients (high→low): <input class="tool-in vt-c" type="text" value="1 -6 11 -6" style="width:200px"><span class="tool-lim">2–9 numbers, degree 1–8</span> <button class="tool-btn2 vt-go">Solve</button></div>' +
       '<div class="tool-out vt-out"></div></div>';
     var out = host.querySelector(".vt-out");
     function run() {
       var raw = host.querySelector(".vt-c").value.trim().split(/[\s,]+/).map(Number);
-      if (raw.some(function (x) { return !isFinite(x); }) || raw.length < 2) { out.innerHTML = '<div class="tool-err">Enter 2+ numeric coefficients, e.g. <code>1 -6 11 -6</code>.</div>'; return; }
+      if (raw.some(function (x) { return !isFinite(x); }) || raw.length < 2 || raw.length > 9 || !raw[0]) { out.innerHTML = '<div class="tool-err">Enter 2 to 9 numbers with a nonzero first one, e.g. <code>1 -6 11 -6</code>.</div>'; return; }
       var roots = polyRoots(raw.slice());
       var n = raw.length - 1, an = raw[0];
       var vsum = -raw[1] / an, vprod = (n % 2 ? -1 : 1) * raw[raw.length - 1] / an;
@@ -137,17 +137,19 @@
   W["multiplicative-order"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Powers of a modulo m</div>' +
-      '<div class="tool-row">a = <input class="tool-in mp-a" type="number" value="3" style="width:60px"> mod <input class="tool-in mp-m" type="number" value="7" style="width:60px"> <button class="tool-btn2 mp-go">Go</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in mp-a" type="number" value="3" style="width:60px"> mod <input class="tool-in mp-m" type="number" value="7" min="2" max="1000000" style="width:80px"><span class="tool-lim">a any integer, m 2–10⁶</span> <button class="tool-btn2 mp-go">Go</button></div>' +
       '<div class="tool-out mp-out"></div></div>';
     var out = host.querySelector(".mp-out");
     function run() {
       var a = parseInt(host.querySelector(".mp-a").value, 10), m = parseInt(host.querySelector(".mp-m").value, 10);
-      if (!(m > 1) || !isFinite(a)) { out.innerHTML = '<div class="tool-err">Need an integer a and modulus m > 1.</div>'; return; }
+      if (!(m > 1 && m <= 1e6) || !isFinite(a)) { out.innerHTML = '<div class="tool-err">Need an integer a and a modulus m from 2 to 1,000,000.</div>'; return; }
       a = ((a % m) + m) % m;
       var seq = [1 % m], seen = { "1": 0 }, cur = 1 % m, cycleStart = -1;
-      for (var k = 1; k <= 200; k++) { cur = (cur * a) % m; if (seen[cur] !== undefined) { cycleStart = seen[cur]; break; } seen[cur] = k; seq.push(cur); }
+      // Run the whole cycle (at most m steps) so the order is exact; only the first 60 powers are drawn.
+      for (var k = 1; k <= m + 1; k++) { cur = (cur * a) % m; if (seen[cur] !== undefined) { cycleStart = seen[cur]; break; } seen[cur] = k; seq.push(cur); }
       var g = egcd(a, m)[0];
-      var html = '<div class="mp-seq">' + seq.map(function (v, i) { return '<span class="mp-cell' + (cycleStart >= 0 && i >= cycleStart ? " mp-cyc" : "") + '">' + v + "</span>"; }).join('<span class="mp-arrow">→</span>') + "</div>";
+      var shown = seq.slice(0, 60);
+      var html = '<div class="mp-seq">' + shown.map(function (v, i) { return '<span class="mp-cell' + (cycleStart >= 0 && i >= cycleStart ? " mp-cyc" : "") + '">' + v + "</span>"; }).join('<span class="mp-arrow">→</span>') + (seq.length > 60 ? '<span class="mp-arrow">→ …</span>' : "") + "</div>";
       if (g === 1) { var ord = seq.length - (cycleStart <= 0 ? 0 : cycleStart); // cycle returns to a^0 = 1
         html += '<div class="tool-cap">gcd(a, m) = 1, so a is invertible. The powers cycle with <b>order ' + ord + '</b> — the smallest k with a<sup>k</sup> ≡ 1.</div>'; }
       else html += '<div class="tool-cap">gcd(a, m) = ' + g + " ≠ 1, so a isn&rsquo;t invertible; the powers fall into a cycle that never returns to 1.</div>";
@@ -162,12 +164,12 @@
   W["euclidean-algorithm"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Euclidean algorithm with Bézout coefficients</div>' +
-      '<div class="tool-row">a = <input class="tool-in eu-a" type="number" value="240" style="width:80px"> b = <input class="tool-in eu-b" type="number" value="46" style="width:80px"> <button class="tool-btn2 eu-go">Run</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in eu-a" type="number" value="240" style="width:80px"> b = <input class="tool-in eu-b" type="number" value="46" style="width:80px"><span class="tool-lim">integers up to 10¹⁵, not both 0</span> <button class="tool-btn2 eu-go">Run</button></div>' +
       '<div class="tool-out eu-out"></div></div>';
     var out = host.querySelector(".eu-out");
     function run() {
       var a0 = Math.abs(parseInt(host.querySelector(".eu-a").value, 10)), b0 = Math.abs(parseInt(host.querySelector(".eu-b").value, 10));
-      if (!isFinite(a0) || !isFinite(b0) || (!a0 && !b0)) { out.innerHTML = '<div class="tool-err">Enter two integers.</div>'; return; }
+      if (!isFinite(a0) || !isFinite(b0) || (!a0 && !b0) || a0 > 1e15 || b0 > 1e15) { out.innerHTML = '<div class="tool-err">Enter two integers up to 10¹⁵, not both 0.</div>'; return; }
       var rows = [], a = a0, b = b0;
       while (b) { var q = Math.floor(a / b), r = a - q * b; rows.push([a, q, b, r]); a = b; b = r; }
       var e = egcd(a0, b0), g = e[0], x = e[1], y = e[2];
@@ -186,12 +188,12 @@
   W["chicken-mcnugget"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Which totals are reachable?</div>' +
-      '<div class="tool-row">a = <input class="tool-in cm-a" type="number" value="5" style="width:60px"> b = <input class="tool-in cm-b" type="number" value="8" style="width:60px"> <button class="tool-btn2 cm-go">Show</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in cm-a" type="number" value="5" style="width:60px"> b = <input class="tool-in cm-b" type="number" value="8" min="1" max="1000000" style="width:60px"><span class="tool-lim">positive integers up to 10⁶</span> <button class="tool-btn2 cm-go">Show</button></div>' +
       '<div class="tool-out cm-out"></div></div>';
     var out = host.querySelector(".cm-out");
     function run() {
       var a = parseInt(host.querySelector(".cm-a").value, 10), b = parseInt(host.querySelector(".cm-b").value, 10);
-      if (!(a > 0) || !(b > 0)) { out.innerHTML = '<div class="tool-err">Enter positive integers.</div>'; return; }
+      if (!(a > 0) || !(b > 0) || a > 1e6 || b > 1e6) { out.innerHTML = '<div class="tool-err">Enter positive integers up to 1,000,000.</div>'; return; }
       if (gcd2(a, b) !== 1) { out.innerHTML = '<div class="tool-cap">gcd(' + a + ", " + b + ") = " + gcd2(a, b) + " ≠ 1 — only multiples of the gcd are reachable, so infinitely many totals are impossible. Try coprime a, b.</div>"; return; }
       var frob = a * b - a - b;
       var impossibleCount = (a - 1) * (b - 1) / 2;
@@ -259,7 +261,7 @@
   W["vertex-form"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Function grapher</div>' +
-      '<div class="tool-row">f(x) = <input class="tool-in fg-f" type="text" value="(x-2)^2 - 3" style="width:180px"> x ∈ [<input class="tool-in fg-lo" type="number" value="-6" style="width:52px">, <input class="tool-in fg-hi" type="number" value="6" style="width:52px">] <button class="tool-btn2 fg-go">Plot</button></div>' +
+      '<div class="tool-row">f(x) = <input class="tool-in fg-f" type="text" value="(x-2)^2 - 3" style="width:180px"> x ∈ [<input class="tool-in fg-lo" type="number" value="-6" style="width:52px">, <input class="tool-in fg-hi" type="number" value="6" style="width:52px">]<span class="tool-lim">x, + − * / ^, sin cos tan sqrt abs ln log exp</span> <button class="tool-btn2 fg-go">Plot</button></div>' +
       '<svg viewBox="0 0 460 300" class="tool-svg fg-svg"></svg><div class="tool-cap fg-cap"></div></div>';
     var svg = host.querySelector(".fg-svg"), cap = host.querySelector(".fg-cap");
     function run() {
@@ -300,7 +302,7 @@
   W["base-conversion"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Base converter</div>' +
-      '<div class="tool-row"><input class="tool-in bc-v" type="text" value="2024" style="width:120px"> from base <input class="tool-in bc-from" type="number" value="10" min="2" max="36" style="width:56px"> → base <input class="tool-in bc-to" type="number" value="2" min="2" max="36" style="width:56px"> <button class="tool-btn2 bc-go">Convert</button></div>' +
+      '<div class="tool-row"><input class="tool-in bc-v" type="text" value="2024" style="width:120px"> from base <input class="tool-in bc-from" type="number" value="10" min="2" max="36" style="width:56px"> → base <input class="tool-in bc-to" type="number" value="2" min="2" max="36" style="width:56px"><span class="tool-lim">bases 2–36, digits 0–9 then A–Z</span> <button class="tool-btn2 bc-go">Convert</button></div>' +
       '<div class="tool-out bc-out"></div></div>';
     var out = host.querySelector(".bc-out");
     function run() {
@@ -308,10 +310,11 @@
       var fb = parseInt(host.querySelector(".bc-from").value, 10), tb = parseInt(host.querySelector(".bc-to").value, 10);
       if (!(fb >= 2 && fb <= 36 && tb >= 2 && tb <= 36)) { out.innerHTML = '<div class="tool-err">Bases must be 2–36.</div>'; return; }
       var neg = v[0] === "-"; if (neg) v = v.slice(1);
-      var num = 0, ok = v.length > 0;
-      for (var i = 0; i < v.length; i++) { var d = parseInt(v[i], 36); if (isNaN(d) || d >= fb) { ok = false; break; } num = num * fb + d; }
-      if (!ok) { out.innerHTML = '<div class="tool-err">“' + esc(host.querySelector(".bc-v").value) + '” isn’t a valid base-' + fb + " number.</div>"; return; }
-      var res = num === 0 ? "0" : num.toString(tb);
+      // BigInt, so long inputs convert exactly instead of rounding past 2^53.
+      var num = 0n, ok = v.length > 0 && v.length <= 200, FB = BigInt(fb);
+      for (var i = 0; i < v.length && ok; i++) { var d = parseInt(v[i], 36); if (isNaN(d) || d >= fb) { ok = false; break; } num = num * FB + BigInt(d); }
+      if (!ok) { out.innerHTML = '<div class="tool-err">“' + esc(host.querySelector(".bc-v").value) + '” isn’t a valid base-' + fb + " number of up to 200 digits.</div>"; return; }
+      var res = num.toString(tb);
       out.innerHTML = '<div class="tool-sub">' + (neg ? "-" : "") + esc(v) + "<sub>" + fb + "</sub> = <b>" + (neg ? "-" : "") + res.toUpperCase() + "</b><sub>" + tb + "</sub></div>" +
         '<div class="tool-cap">(decimal value: ' + (neg ? "-" : "") + num + ")</div>";
     }
@@ -326,7 +329,11 @@
   function nCr(n, k) { if (k < 0 || k > n) return 0; k = Math.min(k, n - k); var r = 1; for (var i = 0; i < k; i++) r = r * (n - i) / (i + 1); return Math.round(r); }
   function nPr(n, k) { if (k < 0 || k > n) return 0; var r = 1; for (var i = 0; i < k; i++) r *= (n - i); return r; }
   function isPrime(n) { if (n < 2) return false; for (var d = 2; d * d <= n; d++) if (n % d === 0) return false; return true; }
-  function modpow(b, e, m) { b %= m; if (b < 0) b += m; var r = 1 % m; while (e > 0) { if (e & 1) r = r * b % m; b = b * b % m; e = Math.floor(e / 2); } return r; }
+  // BigInt inside, so a product of two residues never passes 2^53 and silently loses digits.
+  function modpow(b, e, m) { var M = BigInt(m), B = ((BigInt(b) % M) + M) % M, E = BigInt(e), R = 1n % M; while (E > 0n) { if (E & 1n) R = R * B % M; B = B * B % M; E >>= 1n; } return Number(R); }
+  // Exact counts as digit strings, for tools that show the number itself rather than compute with it.
+  function nCrBig(n, k) { if (k < 0 || k > n) return "0"; k = Math.min(k, n - k); var r = 1n; for (var i = 0; i < k; i++) r = r * BigInt(n - i) / BigInt(i + 1); return r.toString(); }
+  function nPrBig(n, k) { if (k < 0 || k > n) return "0"; var r = 1n; for (var i = 0; i < k; i++) r *= BigInt(n - i); return r.toString(); }
   function wireEnter(host, sel, run) { host.querySelectorAll(sel).forEach(function (i) { i.addEventListener("keydown", function (e) { if (e.key === "Enter") run(); }); }); }
   function plotAxes(W, H, x0, y0) { var s = ""; if (y0 != null) s += '<line x1="24" y1="' + r2(y0) + '" x2="' + (W - 8) + '" y2="' + r2(y0) + '" class="gl-ax"/>'; if (x0 != null) s += '<line x1="' + r2(x0) + '" y1="10" x2="' + r2(x0) + '" y2="' + (H - 18) + '" class="gl-ax"/>'; return s; }
 
@@ -334,7 +341,7 @@
   W["quadratic-formula"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Roots, vertex &amp; discriminant</div>' +
-      '<div class="tool-row">y = <input class="tool-in q-a" type="number" value="1" style="width:56px">x² + <input class="tool-in q-b" type="number" value="-3" style="width:56px">x + <input class="tool-in q-c" type="number" value="-4" style="width:56px"> <button class="tool-btn2 q-go">Plot</button></div>' +
+      '<div class="tool-row">y = <input class="tool-in q-a" type="number" value="1" style="width:56px">x² + <input class="tool-in q-b" type="number" value="-3" style="width:56px">x + <input class="tool-in q-c" type="number" value="-4" style="width:56px"><span class="tool-lim">a ≠ 0</span> <button class="tool-btn2 q-go">Plot</button></div>' +
       '<svg viewBox="0 0 440 300" class="tool-svg q-svg"></svg><div class="tool-out q-out"></div></div>';
     var svg = host.querySelector(".q-svg"), out = host.querySelector(".q-out");
     function run() {
@@ -366,7 +373,7 @@
   W["am-gm"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">The semicircle picture</div>' +
-      '<div class="tool-row">a = <input class="tool-in ag-a" type="number" value="2" style="width:64px"> b = <input class="tool-in ag-b" type="number" value="8" style="width:64px"> <button class="tool-btn2 ag-go">Show</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in ag-a" type="number" value="2" style="width:64px"> b = <input class="tool-in ag-b" type="number" value="8" style="width:64px"><span class="tool-lim">a, b > 0</span> <button class="tool-btn2 ag-go">Show</button></div>' +
       '<svg viewBox="0 0 420 230" class="tool-svg ag-svg"></svg><div class="tool-cap ag-cap"></div></div>';
     var svg = host.querySelector(".ag-svg"), cap = host.querySelector(".ag-cap");
     function run() {
@@ -396,7 +403,7 @@
   W["geometric-series"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Partial &amp; infinite sums</div>' +
-      '<div class="tool-row">a = <input class="tool-in gs-a" type="number" value="1" style="width:60px"> r = <input class="tool-in gs-r" type="number" value="0.5" step="0.1" style="width:60px"> n = <input class="tool-in gs-n" type="number" min="1" max="40" value="8" style="width:56px"><span class="tool-lim">1–40</span> <button class="tool-btn2 gs-go">Show</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in gs-a" type="number" value="1" style="width:60px"> r = <input class="tool-in gs-r" type="number" value="0.5" step="0.1" style="width:60px"> n = <input class="tool-in gs-n" type="number" min="1" max="40" value="8" style="width:56px"><span class="tool-lim">n 1–40; the infinite sum needs |r| &lt; 1</span> <button class="tool-btn2 gs-go">Show</button></div>' +
       '<svg viewBox="0 0 440 160" class="tool-svg gs-svg"></svg><div class="tool-cap gs-cap"></div></div>';
     var svg = host.querySelector(".gs-svg"), cap = host.querySelector(".gs-cap");
     function run() {
@@ -433,7 +440,7 @@
   W["de-moivre"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Powers of z</div>' +
-      '<div class="tool-row">z = <input class="tool-in dm-a" type="number" value="1.1" step="0.1" style="width:60px"> + <input class="tool-in dm-b" type="number" value="0.5" step="0.1" style="width:60px">i, &nbsp; up to z^<input class="tool-in dm-n" type="number" min="1" max="24" value="7" style="width:48px"><span class="tool-lim">1–24</span> <button class="tool-btn2 dm-go">Plot</button></div>' +
+      '<div class="tool-row">z = <input class="tool-in dm-a" type="number" value="1.1" step="0.1" style="width:60px"> + <input class="tool-in dm-b" type="number" value="0.5" step="0.1" style="width:60px">i, &nbsp; up to z^<input class="tool-in dm-n" type="number" min="1" max="24" value="7" style="width:48px"><span class="tool-lim">any z; powers 1–24</span> <button class="tool-btn2 dm-go">Plot</button></div>' +
       '<svg viewBox="0 0 320 300" class="tool-svg dm-svg"></svg><div class="tool-cap dm-cap"></div></div>';
     var svg = host.querySelector(".dm-svg"), cap = host.querySelector(".dm-cap");
     function run() {
@@ -457,12 +464,12 @@
   W["finite-differences"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Finite differences</div>' +
-      '<div class="tool-row">sequence: <input class="tool-in fd-s" type="text" value="2 5 12 23 38 57" style="width:220px"> <button class="tool-btn2 fd-go">Build</button></div>' +
+      '<div class="tool-row">sequence: <input class="tool-in fd-s" type="text" value="2 5 12 23 38 57" style="width:220px"><span class="tool-lim">2–20 numbers</span> <button class="tool-btn2 fd-go">Build</button></div>' +
       '<div class="tool-out fd-out"></div></div>';
     var out = host.querySelector(".fd-out");
     function run() {
       var raw = host.querySelector(".fd-s").value.trim().split(/[\s,]+/).map(Number);
-      if (raw.length < 2 || raw.some(function (x) { return !isFinite(x); })) { out.innerHTML = '<div class="tool-err">Enter at least two numbers, e.g. <code>2 5 12 23</code>.</div>'; return; }
+      if (raw.length < 2 || raw.length > 20 || raw.some(function (x) { return !isFinite(x); })) { out.innerHTML = '<div class="tool-err">Enter 2 to 20 numbers, e.g. <code>2 5 12 23</code>.</div>'; return; }
       var rows = [raw], deg = -1;
       while (rows[rows.length - 1].length > 1) { var prev = rows[rows.length - 1], nx = []; for (var i = 0; i + 1 < prev.length; i++) nx.push(prev[i + 1] - prev[i]); rows.push(nx); if (nx.every(function (v) { return v === nx[0]; }) && nx.length) { deg = rows.length - 1; break; } }
       var html = '<div style="overflow-x:auto"><table class="tool-tbl" style="margin:0 auto">';
@@ -614,7 +621,7 @@
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Type an absolute-value expression and step through how it is built</div>' +
       '<div class="tool-row">y = <input class="tool-in av-eq" type="text" value="2||x-5|-5|" style="width:230px" ' +
-      'placeholder="e.g. |x^2-4|  or  3|x+1|-2"> <button class="tool-btn2 av-go">Graph</button></div>' +
+      'placeholder="e.g. |x^2-4|  or  3|x+1|-2"><span class="tool-lim">x, numbers, + − * ^, and |…|</span> <button class="tool-btn2 av-go">Graph</button></div>' +
       '<div class="tool-row av-eg" style="flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 10px"></div>' +
       '<div class="tool-row"><button class="tool-btn2 av-prev">&larr;</button>' +
       ' <span class="av-step" style="margin:0 10px"></span>' +
@@ -784,15 +791,15 @@
   W["permutations-combinations"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Permutations &amp; combinations</div>' +
-      '<div class="tool-row">n = <input class="tool-in pc-n" type="number" value="10" style="width:60px"> choose k = <input class="tool-in pc-k" type="number" value="3" style="width:60px"> <button class="tool-btn2 pc-go">Compute</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in pc-n" type="number" value="10" style="width:60px"> choose k = <input class="tool-in pc-k" type="number" value="3" style="width:60px"><span class="tool-lim">0 ≤ k ≤ n ≤ 1000</span> <button class="tool-btn2 pc-go">Compute</button></div>' +
       '<div class="tool-out pc-out"></div></div>';
     var out = host.querySelector(".pc-out");
     function run() {
       var n = parseInt(host.querySelector(".pc-n").value, 10), k = parseInt(host.querySelector(".pc-k").value, 10);
-      if (!(n >= 0) || !(k >= 0) || k > n) { out.innerHTML = '<div class="tool-err">Need 0 ≤ k ≤ n.</div>'; return; }
+      if (!(n >= 0) || !(k >= 0) || k > n || n > 1000) { out.innerHTML = '<div class="tool-err">Need 0 ≤ k ≤ n ≤ 1000.</div>'; return; }
       out.innerHTML =
-        '<div class="tool-sub">' + K("P(" + n + "," + k + ")=\\frac{" + n + "!}{" + (n - k) + "!}=" + nPr(n, k)) + "</div>" +
-        '<div class="tool-sub">' + K("\\binom{" + n + "}{" + k + "}=\\frac{" + n + "!}{" + k + "!\\," + (n - k) + "!}=" + nCr(n, k)) + "</div>" +
+        '<div class="tool-sub">' + K("P(" + n + "," + k + ")=\\frac{" + n + "!}{" + (n - k) + "!}=" + nPrBig(n, k)) + "</div>" +
+        '<div class="tool-sub">' + K("\\binom{" + n + "}{" + k + "}=\\frac{" + n + "!}{" + k + "!\\," + (n - k) + "!}=" + nCrBig(n, k)) + "</div>" +
         '<div class="tool-cap">Permutations count ordered choices; combinations count unordered ones — differing by the k! orderings of each group.</div>';
     }
     host.querySelector(".pc-go").addEventListener("click", run); wireEnter(host, ".pc-n,.pc-k", run); run();
@@ -802,17 +809,17 @@
   W["stars-and-bars"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Stars and bars</div>' +
-      '<div class="tool-row"><input class="tool-in sb-n" type="number" value="7" style="width:56px"> identical items into <input class="tool-in sb-k" type="number" value="3" style="width:56px"> bins <button class="tool-btn2 sb-go">Show</button></div>' +
+      '<div class="tool-row"><input class="tool-in sb-n" type="number" value="7" style="width:56px"> identical items into <input class="tool-in sb-k" type="number" value="3" style="width:56px"> bins<span class="tool-lim">items 0–60, bins 1–20</span> <button class="tool-btn2 sb-go">Show</button></div>' +
       '<div class="tool-out sb-out"></div></div>';
     var out = host.querySelector(".sb-out");
     function run() {
       var n = parseInt(host.querySelector(".sb-n").value, 10), k = parseInt(host.querySelector(".sb-k").value, 10);
-      if (!(n >= 0) || !(k >= 1)) { out.innerHTML = '<div class="tool-err">Need items ≥ 0 and bins ≥ 1.</div>'; return; }
+      if (!(n >= 0 && n <= 60) || !(k >= 1 && k <= 20)) { out.innerHTML = '<div class="tool-err">Use 0 to 60 items and 1 to 20 bins.</div>'; return; }
       // sample arrangement
       var counts = [], left = n; for (var i = 0; i < k; i++) { var c = i === k - 1 ? left : Math.floor(Math.random() * (left + 1)); counts.push(c); left -= c; }
       var tok = counts.map(function (c) { return '<span class="sb-star">' + Array(c + 1).join("★") + "</span>"; }).join('<span class="sb-bar"> | </span>');
       out.innerHTML =
-        '<div class="tool-sub">' + K("\\binom{n+k-1}{k-1}=\\binom{" + (n + k - 1) + "}{" + (k - 1) + "}=" + nCr(n + k - 1, k - 1)) + "</div>" +
+        '<div class="tool-sub">' + K("\\binom{n+k-1}{k-1}=\\binom{" + (n + k - 1) + "}{" + (k - 1) + "}=" + nCrBig(n + k - 1, k - 1)) + "</div>" +
         '<div class="sb-token">' + (tok || "(empty)") + "</div>" +
         '<div class="tool-cap">Arrange ' + n + " stars and " + (k - 1) + " bars in a row; the bars split the stars among the " + k + " bins (" + counts.join(" + ") + " = " + n + " shown).</div>";
     }
@@ -879,7 +886,7 @@
   W["number-of-divisors"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Divisor functions τ(n) and σ(n)</div>' +
-      '<div class="tool-row">n = <input class="tool-in nd-n" type="number" value="360" style="width:100px"> <button class="tool-btn2 nd-go">Factor</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in nd-n" type="number" value="360" min="1" style="width:100px"><span class="tool-lim">1 to 10¹²</span> <button class="tool-btn2 nd-go">Factor</button></div>' +
       '<div class="tool-out nd-out"></div></div>';
     var out = host.querySelector(".nd-out");
     function run() {
@@ -898,7 +905,7 @@
   W["eulers-totient"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Euler&rsquo;s totient φ(n)</div>' +
-      '<div class="tool-row">n = <input class="tool-in et-n" type="number" value="36" style="width:100px"> <button class="tool-btn2 et-go">Compute</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in et-n" type="number" value="36" min="1" style="width:100px"><span class="tool-lim">1 to 10¹²</span> <button class="tool-btn2 et-go">Compute</button></div>' +
       '<div class="tool-out et-out"></div></div>';
     var out = host.querySelector(".et-out");
     function run() {
@@ -916,12 +923,12 @@
   W["pythagorean-triples"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Pythagorean triples from Euclid&rsquo;s formula</div>' +
-      '<div class="tool-row">m = <input class="tool-in py-m" type="number" value="2" style="width:56px"> n = <input class="tool-in py-n" type="number" value="1" style="width:56px"> <span class="tool-cap" style="margin:0">(m &gt; n &gt; 0)</span> <button class="tool-btn2 py-go">Generate</button></div>' +
+      '<div class="tool-row">m = <input class="tool-in py-m" type="number" value="2" style="width:56px"> n = <input class="tool-in py-n" type="number" value="1" style="width:56px"> <span class="tool-lim">m &gt; n &gt; 0, m ≤ 10⁴</span> <button class="tool-btn2 py-go">Generate</button></div>' +
       '<div class="tool-out py-out"></div></div>';
     var out = host.querySelector(".py-out");
     function run() {
       var m = parseInt(host.querySelector(".py-m").value, 10), n = parseInt(host.querySelector(".py-n").value, 10);
-      if (!(m > n && n > 0)) { out.innerHTML = '<div class="tool-err">Need m > n > 0.</div>'; return; }
+      if (!(m > n && n > 0) || m > 1e4) { out.innerHTML = '<div class="tool-err">Need m &gt; n &gt; 0 with m up to 10,000.</div>'; return; }
       var a = m * m - n * n, b = 2 * m * n, c = m * m + n * n;
       var prim = gcd2(m, n) === 1 && (m % 2 !== n % 2);
       out.innerHTML =
@@ -935,12 +942,12 @@
   W["fermats-little-theorem"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Fermat&rsquo;s little theorem</div>' +
-      '<div class="tool-row">a = <input class="tool-in fl-a" type="number" value="3" style="width:60px"> p = <input class="tool-in fl-p" type="number" value="7" style="width:60px"> <button class="tool-btn2 fl-go">Check</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in fl-a" type="number" value="3" style="width:60px"> p = <input class="tool-in fl-p" type="number" value="7" style="width:80px"><span class="tool-lim">a any integer, p prime up to 10⁹</span> <button class="tool-btn2 fl-go">Check</button></div>' +
       '<div class="tool-out fl-out"></div></div>';
     var out = host.querySelector(".fl-out");
     function run() {
       var a = parseInt(host.querySelector(".fl-a").value, 10), p = parseInt(host.querySelector(".fl-p").value, 10);
-      if (!(p >= 2) || !isFinite(a)) { out.innerHTML = '<div class="tool-err">Enter integer a and p ≥ 2.</div>'; return; }
+      if (!(p >= 2 && p <= 1e9) || !isFinite(a)) { out.innerHTML = '<div class="tool-err">Enter an integer a and p from 2 to 10⁹.</div>'; return; }
       if (!isPrime(p)) { out.innerHTML = '<div class="tool-cap"><b>' + p + "</b> is not prime, so Fermat&rsquo;s little theorem need not hold. (Powers can still be explored with the “powers mod m” tool.)</div>"; return; }
       var r = modpow(a, p - 1, p), ra = modpow(a, p, p);
       out.innerHTML =
@@ -954,12 +961,12 @@
   W["legendres-formula"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Power of p in n!</div>' +
-      '<div class="tool-row">n = <input class="tool-in lg-n" type="number" value="100" style="width:80px"> p = <input class="tool-in lg-p" type="number" value="5" style="width:56px"> <button class="tool-btn2 lg-go">Compute</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in lg-n" type="number" value="100" style="width:80px"> p = <input class="tool-in lg-p" type="number" value="5" style="width:56px"><span class="tool-lim">n 0 to 10¹⁵, p prime</span> <button class="tool-btn2 lg-go">Compute</button></div>' +
       '<div class="tool-out lg-out"></div></div>';
     var out = host.querySelector(".lg-out");
     function run() {
       var n = parseInt(host.querySelector(".lg-n").value, 10), p = parseInt(host.querySelector(".lg-p").value, 10);
-      if (!(n >= 0) || !(p >= 2)) { out.innerHTML = '<div class="tool-err">Need n ≥ 0 and p ≥ 2.</div>'; return; }
+      if (!(n >= 0 && n <= 1e15) || !(p >= 2 && p <= 1e7)) { out.innerHTML = '<div class="tool-err">Need n from 0 to 10¹⁵ and a prime p up to 10⁷.</div>'; return; }
       if (!isPrime(p)) { out.innerHTML = '<div class="tool-err">p should be prime for Legendre&rsquo;s formula.</div>'; return; }
       var terms = [], sum = 0, pk = p; while (pk <= n) { var t = Math.floor(n / pk); terms.push("\\lfloor " + n + "/" + pk + "\\rfloor"); sum += t; pk *= p; }
       out.innerHTML =
@@ -974,13 +981,13 @@
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Solve two congruences</div>' +
       '<div class="tool-row">x ≡ <input class="tool-in cr-a1" type="number" value="2" style="width:52px"> (mod <input class="tool-in cr-m1" type="number" value="3" style="width:52px">)</div>' +
-      '<div class="tool-row">x ≡ <input class="tool-in cr-a2" type="number" value="3" style="width:52px"> (mod <input class="tool-in cr-m2" type="number" value="5" style="width:52px">) <button class="tool-btn2 cr-go">Solve</button></div>' +
+      '<div class="tool-row">x ≡ <input class="tool-in cr-a2" type="number" value="3" style="width:52px"> (mod <input class="tool-in cr-m2" type="number" value="5" style="width:52px">)<span class="tool-lim">moduli 1–10⁶</span> <button class="tool-btn2 cr-go">Solve</button></div>' +
       '<div class="tool-out cr-out"></div></div>';
     var out = host.querySelector(".cr-out");
     function run() {
       var a1 = parseInt(host.querySelector(".cr-a1").value, 10), m1 = parseInt(host.querySelector(".cr-m1").value, 10);
       var a2 = parseInt(host.querySelector(".cr-a2").value, 10), m2 = parseInt(host.querySelector(".cr-m2").value, 10);
-      if (!(m1 >= 1) || !(m2 >= 1)) { out.innerHTML = '<div class="tool-err">Moduli must be ≥ 1.</div>'; return; }
+      if (!(m1 >= 1 && m1 <= 1e6) || !(m2 >= 1 && m2 <= 1e6) || !isFinite(a1) || !isFinite(a2)) { out.innerHTML = '<div class="tool-err">Enter integer remainders and moduli from 1 to 1,000,000.</div>'; return; }
       var g = egcd(m1, m2), G = g[0], diff = ((a2 - a1) % m2 + m2) % m2;
       if (diff % G !== 0) { out.innerHTML = '<div class="tool-cap">gcd(' + m1 + ", " + m2 + ") = " + G + " does not divide (a₂ − a₁) = " + (a2 - a1) + ", so <b>no solution</b> exists.</div>"; return; }
       var lcm = m1 / G * m2, mm2 = m2 / G;
@@ -1040,12 +1047,12 @@
   W["clock-angle"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Clock angle</div>' +
-      '<div class="tool-row">time <input class="tool-in ck-h" type="number" value="3" min="0" max="23" style="width:52px"> : <input class="tool-in ck-m" type="number" value="30" min="0" max="59" style="width:52px"> <button class="tool-btn2 ck-go">Show</button></div>' +
+      '<div class="tool-row">time <input class="tool-in ck-h" type="number" value="3" min="0" max="23" style="width:52px"> : <input class="tool-in ck-m" type="number" value="30" min="0" max="59" style="width:52px"><span class="tool-lim">hours 0–23, minutes 0–59</span> <button class="tool-btn2 ck-go">Show</button></div>' +
       '<svg viewBox="0 0 240 240" class="tool-svg ck-svg" style="max-width:260px"></svg><div class="tool-cap ck-cap"></div></div>';
     var svg = host.querySelector(".ck-svg"), cap = host.querySelector(".ck-cap");
     function run() {
       var h = parseInt(host.querySelector(".ck-h").value, 10) % 12, m = parseInt(host.querySelector(".ck-m").value, 10);
-      if (!(h >= 0) || !(m >= 0 && m < 60)) { cap.innerHTML = '<span class="tool-err">Enter a valid time.</span>'; return; }
+      if (!(h >= 0 && h <= 23) || !(m >= 0 && m < 60)) { cap.innerHTML = '<span class="tool-err">Enter a valid time.</span>'; return; }
       var minAng = m * 6, hrAng = (h % 12) * 30 + m * 0.5;
       var diff = Math.abs(hrAng - minAng); if (diff > 180) diff = 360 - diff;
       var cx = 120, cy = 120, R = 100;
@@ -1062,12 +1069,12 @@
   W["repeating-decimals"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Fraction to decimal</div>' +
-      '<div class="tool-row"><input class="tool-in rd-p" type="number" value="4" style="width:64px"> / <input class="tool-in rd-q" type="number" value="7" style="width:64px"> <button class="tool-btn2 rd-go">Expand</button></div>' +
+      '<div class="tool-row"><input class="tool-in rd-p" type="number" value="4" style="width:64px"> / <input class="tool-in rd-q" type="number" value="7" style="width:64px"><span class="tool-lim">denominator 1–4000</span> <button class="tool-btn2 rd-go">Expand</button></div>' +
       '<div class="tool-out rd-out"></div></div>';
     var out = host.querySelector(".rd-out");
     function run() {
       var p = parseInt(host.querySelector(".rd-p").value, 10), q = parseInt(host.querySelector(".rd-q").value, 10);
-      if (!isFinite(p) || !(q > 0)) { out.innerHTML = '<div class="tool-err">Enter an integer numerator and a positive denominator.</div>'; return; }
+      if (!isFinite(p) || Math.abs(p) > 1e12 || !(q > 0 && q <= 4000)) { out.innerHTML = '<div class="tool-err">Enter an integer numerator and a denominator from 1 to 4000.</div>'; return; }
       var neg = p < 0; p = Math.abs(p);
       var g = gcd2(p, q) || 1, pr = p / g, qr = q / g;
       var whole = Math.floor(pr / qr), rem = pr % qr;
@@ -1106,7 +1113,7 @@
   W["divisibility-rules"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Every divisibility rule at once</div>' +
-      '<div class="tool-row">n = <input class="tool-in dv-n" type="text" value="123456" style="width:150px"> <button class="tool-btn2 dv-go">Test</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in dv-n" type="text" value="123456" style="width:150px"><span class="tool-lim">whole number, up to 18 digits</span> <button class="tool-btn2 dv-go">Test</button></div>' +
       '<div class="tool-out dv-out"></div></div>';
     var out = host.querySelector(".dv-out");
     function run() {
@@ -1144,7 +1151,7 @@
   W["sum-of-divisors"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">σ(n), d(n) and the product of divisors</div>' +
-      '<div class="tool-row">n = <input class="tool-in sd-n" type="number" value="360" style="width:110px"> <button class="tool-btn2 sd-go">Compute</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in sd-n" type="number" value="360" min="1" max="20000000" style="width:110px"><span class="tool-lim">1 to 20,000,000</span> <button class="tool-btn2 sd-go">Compute</button></div>' +
       '<div class="tool-out sd-out"></div></div>';
     var out = host.querySelector(".sd-out");
     function run() {
@@ -1176,7 +1183,7 @@
   W["average-speed"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Average speed over two legs</div>' +
-      '<div class="tool-row">out at <input class="tool-in as-a" type="number" value="30" style="width:70px"> and back at <input class="tool-in as-b" type="number" value="60" style="width:70px"> (same distance each way) <button class="tool-btn2 as-go">Go</button></div>' +
+      '<div class="tool-row">out at <input class="tool-in as-a" type="number" value="30" style="width:70px"> and back at <input class="tool-in as-b" type="number" value="60" style="width:70px"> (same distance each way)<span class="tool-lim">speeds > 0</span> <button class="tool-btn2 as-go">Go</button></div>' +
       '<div class="tool-out as-out"></div></div>';
     var out = host.querySelector(".as-out");
     function run() {
@@ -1196,7 +1203,7 @@
   W["power-sums"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Sums of n, n² and n³</div>' +
-      '<div class="tool-row">n = <input class="tool-in ps-n" type="number" value="10" min="1" max="100000" style="width:90px"> <button class="tool-btn2 ps-go">Sum</button></div>' +
+      '<div class="tool-row">n = <input class="tool-in ps-n" type="number" value="10" min="1" max="100000" style="width:90px"><span class="tool-lim">1 to 100,000</span> <button class="tool-btn2 ps-go">Sum</button></div>' +
       '<div class="tool-out ps-out"></div></div>';
     var out = host.querySelector(".ps-out");
     function run() {
@@ -1217,7 +1224,7 @@
   W["bayes-theorem"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Bayes with a base rate</div>' +
-      '<div class="tool-row">P(disease) = <input class="tool-in by-pr" type="number" value="1" step="0.1" style="width:66px">% &nbsp; sensitivity P(+|D) = <input class="tool-in by-se" type="number" value="99" step="1" style="width:66px">% &nbsp; specificity P(−|¬D) = <input class="tool-in by-sp" type="number" value="95" step="1" style="width:66px">% <button class="tool-btn2 by-go">Update</button></div>' +
+      '<div class="tool-row">P(disease) = <input class="tool-in by-pr" type="number" value="1" step="0.1" style="width:66px">% &nbsp; sensitivity P(+|D) = <input class="tool-in by-se" type="number" value="99" step="1" style="width:66px">% &nbsp; specificity P(−|¬D) = <input class="tool-in by-sp" type="number" value="95" step="1" style="width:66px">%<span class="tool-lim">each 0–100%</span> <button class="tool-btn2 by-go">Update</button></div>' +
       '<div class="tool-out by-out"></div></div>';
     var out = host.querySelector(".by-out");
     function run() {
@@ -1239,12 +1246,12 @@
   W["modular-inverse"] = { mount: function (host) {
     host.innerHTML =
       '<div class="tool"><div class="tool-title">Modular inverse</div>' +
-      '<div class="tool-row">a = <input class="tool-in mi-a" type="number" value="17" style="width:80px"> mod m = <input class="tool-in mi-m" type="number" value="43" style="width:80px"> <button class="tool-btn2 mi-go">Invert</button></div>' +
+      '<div class="tool-row">a = <input class="tool-in mi-a" type="number" value="17" style="width:80px"> mod m = <input class="tool-in mi-m" type="number" value="43" style="width:80px"><span class="tool-lim">a any integer, m 2 to 10¹⁵</span> <button class="tool-btn2 mi-go">Invert</button></div>' +
       '<div class="tool-out mi-out"></div></div>';
     var out = host.querySelector(".mi-out");
     function run() {
       var a = parseInt(host.querySelector(".mi-a").value, 10), m = parseInt(host.querySelector(".mi-m").value, 10);
-      if (!isFinite(a) || !(m > 1)) { out.innerHTML = '<div class="tool-err">Enter an integer a and a modulus m &gt; 1.</div>'; return; }
+      if (!isFinite(a) || !(m > 1 && m <= 1e15)) { out.innerHTML = '<div class="tool-err">Enter an integer a and a modulus m from 2 to 10¹⁵.</div>'; return; }
       var ar = ((a % m) + m) % m, g = gcd2(ar, m);
       if (g !== 1) {
         out.innerHTML = '<div class="tool-sub">gcd(' + a + ", " + m + ") = <b>" + g + "</b> ≠ 1 — <b>no inverse exists</b>.</div>" +

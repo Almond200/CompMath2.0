@@ -121,6 +121,8 @@ DB.forEach(function (e) {
 });
 print("chain: pattern " + chain.pattern + " | method " + chain.method + " | formula " + chain.formula + " | complete " + chain.all +
   " of " + DB.length + " | hints " + withHints + " | main " + withMain + " (warning: " + wantMain + " problems with 4+ cards and no main)");
+print("unclassified (flagged for review, never invented): no pattern " + (DB.length - chain.pattern) +
+  " | no method " + (DB.length - chain.method) + " | no formula " + (DB.length - chain.formula));
 print("problems: " + DB.length + " | cards: " + Object.keys(CARDS).length + " | topics: " + Object.keys(TOPICS).length + " | tricks: " + withTrick);
 if (errors.length) { print("VIOLATIONS (" + errors.length + "):"); errors.slice(0, 50).forEach(print); }
 else print("OK — 0 violations");

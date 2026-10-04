@@ -1100,10 +1100,6 @@
     "log-swap-identity": [
       "The Exponent–Log Swap"
     ],
-    "losing-positions": [
-      "Nim",
-      "Winning Positions in Single-Pile Take-Away Games"
-    ],
     "lte": [
       "LTE",
       "Lifting the Exponent"
@@ -1233,10 +1229,6 @@
       "Muirheads",
       "Muirhead’s"
     ],
-    "multi-leg-rates": [
-      "Multi-Leg Distance, Rate",
-      "Multi-Leg Distance, Rate & Time"
-    ],
     "multinomial-theorem": [
       "Multinomial Theorem"
     ],
@@ -1360,10 +1352,6 @@
     ],
     "periodic-sequences": [
       "Periodicity in Recursive Sequences"
-    ],
-    "periodicity-mod-m": [
-      "Cycle-Hunting",
-      "Periodicity mod m"
     ],
     "permutation-cycle-structure": [
       "Permutation Cycle Structure",
@@ -1603,9 +1591,6 @@
     "reflection-principle": [
       "The Reflection Principle"
     ],
-    "reflection-shortest-path": [
-      "Reflection for Shortest Paths"
-    ],
     "regular-polygon-area": [
       "Regular Polygon Area"
     ],
@@ -1688,9 +1673,6 @@
     "shared-angle-area-ratio": [
       "Bird's Head Model",
       "Shared-Angle Area Ratio"
-    ],
-    "shifted-polynomial-construction": [
-      "Building a Polynomial from Equal Values"
     ],
     "shoelace-formula": [
       "Shoelace Formula"
@@ -1812,10 +1794,6 @@
     "sum-of-two-squares": [
       "Sum of Two Squares Theorem"
     ],
-    "surface-shortest-path": [
-      "Shortest Path on a Surface",
-      "Unfold the Net"
-    ],
     "surjections": [
       "Counting Surjections"
     ],
@@ -1824,10 +1802,6 @@
     ],
     "symmedian-lemoine": [
       "Symmedians"
-    ],
-    "symmetric-linear-system": [
-      "Cyclic Linear Systems",
-      "Symmetric & Cyclic Linear Systems"
     ],
     "symmetric-polynomial-strategies": [
       "Fundamental Theorem of Symmetric Polynomials"
@@ -2244,7 +2218,7 @@
     "carmichael-numbers -> fermats-little-theorem",
     "quadratic-formula -> vietas-general",
     "law-of-cosines -> ptolemys-theorem",
-    "sprague-grundy -> losing-positions"
+    "sprague-grundy -> backward-induction"
   ],
   "resolve": {
     "fermat": "fermats-little-theorem",

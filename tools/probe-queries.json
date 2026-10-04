@@ -242,14 +242,14 @@
   [
    "remainder when a huge power is divided by something",
    [
-    "periodicity-mod-m"
+    "periodic-sequences"
    ]
   ],
   [
    "find the remainder of a big exponent",
    [
     "eulers-theorem",
-    "periodicity-mod-m",
+    "periodic-sequences",
     "crt"
    ]
   ],
@@ -282,7 +282,7 @@
    "last digit of a big power",
    [
     "last-digit-patterns",
-    "periodicity-mod-m",
+    "periodic-sequences",
     "eulers-theorem"
    ]
   ],

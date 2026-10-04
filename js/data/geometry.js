@@ -59,6 +59,15 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "triangle-type-by-sides",
+          name: "Acute, Right, or Obtuse from the Sides",
+          latex: String.raw`c^2 > a^2 + b^2 \iff \angle C > 90^\circ`,
+          description: String.raw`The sides alone decide whether a triangle is acute, right, or obtuse: the angle opposite side $c$ is acute, right, or obtuse exactly as $c^2$ is less than, equal to, or greater than $a^2 + b^2$. Only the longest side can face an angle of $90^\circ$ or more, so a triangle is acute exactly when the square of its longest side is less than the sum of the squares of the other two.`,
+          keywords: ["acute triangle", "obtuse triangle", "right triangle test", "classify a triangle by its sides", "longest side squared", "triangle"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "integer-triangles-perimeter",
           name: "Counting Integer-Sided Triangles by Perimeter",
           latex: String.raw`\#\{a\le b\le c,\ a+b+c=n,\ a+b>c\} = \begin{cases}\operatorname{round}\!\left(\dfrac{n^2}{48}\right) & n\text{ even}\\[4pt] \operatorname{round}\!\left(\dfrac{(n+3)^2}{48}\right) & n\text{ odd}\end{cases}`,
@@ -192,7 +201,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "ngon-vertex-distance-product",
-          name: "Product of Distances to n-gon Vertices",
+          name: "Product of Distances to $n$-gon Vertices",
           latex: String.raw`\prod_{k=1}^{n} PV_k = 2R^n\left|\sin\tfrac{n\theta}{2}\right| \;\le\; 2R^n`,
           latexPlain: String.raw`PV_1 \cdot PV_2 \cdots PV_n = 2R^n\left|\sin\tfrac{n\theta}{2}\right| \;\le\; 2R^n`,
           description: String.raw`Let $P$ lie on the circumcircle (radius $R$) of a regular $n$-gon, at angular position $\theta$ measured from one vertex. Putting the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and using $\prod_k (z - \zeta^k) = z^n - 1$, the product of the distances from $P$ to all $n$ vertices is $R^n\,|z^n - 1| = 2R^n\left|\sin\tfrac{n\theta}{2}\right|$. It therefore reaches its maximum $2R^n$ exactly when $P$ is the midpoint of an arc between two adjacent vertices (there $\tfrac{n\theta}{2}$ is an odd multiple of $\tfrac{\pi}{2}$), and it is $0$ when $P$ is a vertex. This is a different statement from the product of distances between one fixed vertex and the other $n-1$ vertices, which is always $nR^{n-1}$.`,
@@ -486,7 +495,7 @@ window.MATH_SECTIONS.push({
           id: "angle-bisector-theorem",
           name: "Angle Bisector Theorem",
           latex: String.raw`\frac{AB}{AC} = \frac{BD}{DC} \quad \text{(internal)}, \qquad \frac{AB}{AC} = \frac{BD'}{D'C} \quad \text{(external)}`,
-          description: String.raw`The Angle Bisector Theorem says that the bisector of an angle of a triangle divides the opposite side in the ratio of the two sides that form the angle: if the bisector from $A$ meets $BC$ at $D$, then $\frac{BD}{DC} = \frac{AB}{AC}$. It turns the word \"bisector\" straight into a length ratio, so $BD = \frac{ac}{b + c}$ and $DC = \frac{ab}{b + c}$ in standard notation. The external bisector at $A$ divides line $BC$ externally in the same ratio.`,
+          description: String.raw`The Angle Bisector Theorem says that the bisector of an angle of a triangle divides the opposite side in the ratio of the two sides that form the angle: if the bisector from $A$ meets $BC$ at $D$, then $\frac{BD}{DC} = \frac{AB}{AC}$. It turns the word "bisector" straight into a length ratio, so $BD = \frac{ac}{b + c}$ and $DC = \frac{ab}{b + c}$ in standard notation. The external bisector at $A$ divides line $BC$ externally in the same ratio.`,
           keywords: ["angle bisector", "ratio", "opposite side", "adjacent sides", "external angle bisector", "external bisector theorem", "divides externally", "external division"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -513,7 +522,7 @@ window.MATH_SECTIONS.push({
           id: "stewarts-theorem",
           name: "Stewart's Theorem",
           latex: String.raw`b^2 m + c^2 n = a(d^2 + mn)`,
-          description: String.raw`Stewart's Theorem gives the length of a cevian, a segment from a vertex of a triangle to a point on the opposite side, in terms of the sides and where the cevian lands. If the cevian from $A$ has length $d$ and divides $BC = a$ into $BD = m$ and $DC = n$, then $b^2m + c^2n = a(d^2 + mn)$, where $b = CA$ and $c = AB$. The usual mnemonic reads it as \"a man and his dad put a bomb in the sink,\" $man + dad = bmb + cnc$, with $m$ the piece next to $c$ and $n$ the piece next to $b$.`,
+          description: String.raw`Stewart's Theorem gives the length of a cevian, a segment from a vertex of a triangle to a point on the opposite side, in terms of the sides and where the cevian lands. If the cevian from $A$ has length $d$ and divides $BC = a$ into $BD = m$ and $DC = n$, then $b^2m + c^2n = a(d^2 + mn)$, where $b = CA$ and $c = AB$. The usual mnemonic reads it as "a man and his dad put a bomb in the sink," $man + dad = bmb + cnc$, with $m$ the piece next to $c$ and $n$ the piece next to $b$.`,
           keywords: ["cevian length", "stewart", "man dad bomb sink", "stewarts theorem", "cevian length formula", "a man and his dad put a bomb in the sink"],
           importance: "high",
           level: ["AMC12", "AIME"]

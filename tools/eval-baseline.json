@@ -375,7 +375,7 @@
   },
   {
    "q": "shortest path on the surface of a box",
-   "want": "surface-shortest-path",
+   "want": "unfold-the-surface",
    "rank": 1
   },
   {
@@ -390,7 +390,7 @@
   },
   {
    "q": "reflect a point to shorten a path",
-   "want": "reflection-shortest-path",
+   "want": "reflect-across-the-line",
    "rank": 1
   },
   {
@@ -415,7 +415,7 @@
   },
   {
    "q": "polynomial takes the same value at several points",
-   "want": "shifted-polynomial-construction",
+   "want": "subtract-and-factor",
    "rank": 1
   },
   {
@@ -435,7 +435,7 @@
   },
   {
    "q": "find the last digits of a huge power",
-   "want": "periodicity-mod-m",
+   "want": "periodic-sequences",
    "rank": 1
   },
   {
@@ -550,7 +550,7 @@
   },
   {
    "q": "last two digits of a power",
-   "want": "periodicity-mod-m | last-digit-patterns",
+   "want": "periodic-sequences | last-digit-patterns",
    "rank": 1
   },
   {
@@ -565,7 +565,7 @@
   },
   {
    "q": "equation with the same value at two points",
-   "want": "shifted-polynomial-construction | factor-remainder-theorem",
+   "want": "subtract-and-factor | factor-remainder-theorem",
    "rank": 1
   },
   {

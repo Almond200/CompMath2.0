@@ -19,7 +19,7 @@ Uniqueness: if two polynomials of degree at most $n - 1$ agree at $n$ points, th
 
 ## Useful observations
 - A polynomial of degree at most $n - 1$ is determined by any $n$ of its values, so a question about one more value has exactly one answer, whatever method finds it.
-- When the values follow a pattern at the given points, subtracting the pattern first is usually faster than the formula; see [[shifted-polynomial-construction|building a polynomial from equal values]].
+- When the values follow a pattern at the given points, subtracting the pattern first is usually faster than the formula; see [[subtract-and-factor|building a polynomial from equal values]].
 - [[finite-differences|Finite differences]] give the same polynomial when the $x_i$ are equally spaced.
 
 ## Applications
@@ -247,31 +247,35 @@ Five problems here, all AIME, and every one of them finishes with Vieta's Formul
 `,
 
 "palindromic-polynomials": String.raw`
-## Distinguishing clues
-The coefficients form a palindrome, such as $1, 3, -8, 3, 1$, or a palindrome up to sign. A polynomial with merely symmetric roots, such as an even polynomial $x^4 - 5x^2 + 4$, is a different case: its roots come in pairs $r, -r$, and the substitution is $u = x^2$. Equations already written with $x + \frac1x$ and its powers are this pattern in disguise.
+## When to use
+The coefficients form a palindrome, such as $1, 3, -8, 3, 1$, or a palindrome up to sign, or an equation is already written with $x + \frac1x$ and its powers. A polynomial with merely symmetric roots, such as the even polynomial $x^4 - 5x^2 + 4$, is a different case: its roots come in pairs $r$ and $-r$, and the substitution there is $u = x^2$.
 
-## Methods and Formulas to Try
-Reversing the coefficients of a polynomial replaces each root by its reciprocal, so a palindrome has roots in reciprocal pairs. The natural unknown is the pair sum $y = x + \frac1x$, and dividing an even-degree palindrome by the middle power of $x$ makes it a polynomial in $y$ of half the degree.
+## How
+1. If the degree is odd, divide out the root $x = -1$, or $x = 1$ for a palindrome up to sign; the quotient is an even-degree palindrome.
+2. Divide by the middle power $x^m$ and group the terms as $a(x^m + x^{-m}) + b(x^{m-1} + x^{-(m-1)}) + \cdots$.
+3. Rewrite each group in $y = x + \frac1x$, using $x^2 + \frac{1}{x^2} = y^2 - 2$ and $x^3 + \frac{1}{x^3} = y^3 - 3y$.
+4. Solve the equation in $y$, of half the degree.
+5. Recover $x$ from $x^2 - yx + 1 = 0$ for each value of $y$.
+
+For $x^4 + 2x^3 - 6x^2 + 2x + 1 = 0$, dividing by $x^2$ gives $\left(x^2 + \frac1{x^2}\right) + 2\left(x + \frac1x\right) - 6 = 0$, that is $y^2 + 2y - 8 = 0$, so $y = 2$ or $y = -4$. Then $y = 2$ gives the double root $x = 1$, and $y = -4$ gives $x = -2 \pm \sqrt3$.
 
 {{figure:pairs}}
 
-### Methods to try
-- [[sp-substitution]]: a reciprocal pair has product $1$, so the pair is described by its sum $y = x + \frac1x$, using $x^2 + \frac{1}{x^2} = y^2 - 2$.
-- [[root-transformations]]: reversing the coefficients corresponds to $x \mapsto \frac1x$, which proves the roots come in reciprocal pairs and that an odd palindrome has the root $-1$.
+## Why it works
+For a polynomial of degree $n$ with nonzero constant term, $x^nP\!\left(\frac1x\right)$ has the coefficients of $P$ in reverse order and the reciprocals of its roots as roots. A palindrome equals its own reversal, so its roots are closed under $r \mapsto \frac1r$ and come in reciprocal pairs, each with product $1$. A pair is then determined by its sum $r + \frac1r$, which is why the equation reduces to one in $y$ of half the degree.
 
-### Formulas to try
-- [[vietas-quadratic]]: each value of $y$ gives the quadratic $x^2 - yx + 1 = 0$, whose roots have product $1$.
-- [[reciprocal-power-sums]]: $x^2 + \frac{1}{x^2} = y^2 - 2$ and $x^3 + \frac{1}{x^3} = y^3 - 3y$, the conversions that finish the substitution.
-- [[factor-remainder-theorem]]: an odd-degree palindrome vanishes at $x = -1$, and an anti-palindrome at $x = 1$, so a factor can be removed first.
+## Formulas it uses
+- [[reciprocal-power-sums]]: $x^k + \frac{1}{x^k}$ is a polynomial in $y = x + \frac1x$, such as $y^2 - 2$ and $y^3 - 3y$.
+- [[vietas-quadratic]]: each value of $y$ gives $x^2 - yx + 1 = 0$, whose roots have sum $y$ and product $1$.
+- [[factor-remainder-theorem]]: an odd-degree palindrome vanishes at $x = -1$, so the factor $x + 1$ can be removed first.
 
 ## Common traps
-- Applying the substitution to an odd-degree palindrome before removing the factor $x + 1$.
-- Forgetting that a real $y$ with $|y| < 2$ gives complex roots on the unit circle, not real ones.
-- Mixing up $x^2 + \frac{1}{x^2} = y^2 - 2$ with $y^2 + 2$.
-- Dividing by $x^{n/2}$ without noting that $x = 0$ is never a root of a palindrome with nonzero constant term.
+- Substituting before removing the factor $x + 1$ from an odd-degree palindrome.
+- Forgetting that a real $y$ with $|y| \lt 2$ gives complex roots on the unit circle, not real ones.
+- Writing $x^2 + \frac{1}{x^2} = y^2 + 2$ instead of $y^2 - 2$.
 
 ## Contest profile
-An AMC 12 and AIME pattern: a quartic or sextic with palindromic coefficients, and a question about its real roots or their sum.
+An AMC 12 and AIME step: a quartic or sextic with palindromic coefficients, and a question about its real roots or their sum.
 `,
 
 "vertex-form": String.raw`
@@ -325,7 +329,7 @@ An AIME and olympiad tool for values with no pattern; when a pattern is visible,
 `,
 "subtract-and-factor": String.raw`
 ## When to use
-Polynomials described by values that follow a rule: $P(k) = \frac1k$ or $\frac{k}{k + 1}$ for $k = 0, \ldots, n$; $P(1) = 10$, $P(2) = 20$, $P(3) = 30$ for a monic quartic; or a polynomial taking the same value at several points. The question usually asks for one more value or for a sum such as $P(12) + P(-8)$, where an unknown root cancels.
+Polynomials described by values that follow a rule: $P(k) = \frac1k$ or $\frac{k}{k + 1}$ for $k = 0, \ldots, n$; $P(1) = 10$, $P(2) = 20$, $P(3) = 30$ for a monic quartic; or a polynomial taking the same value at several points. The question usually asks for one more value or for a sum such as $P(12) + P(-8)$, where an unknown root cancels. Values with no visible rule call for [[lagrange-interpolation|interpolating a polynomial]] instead.
 
 ## How
 1. Find the simple function $g$ the values follow, such as $\frac1x$, $10x$ or a constant.
@@ -437,7 +441,7 @@ For positive terms, $a_{k+1} > a_k$ exactly when the ratio exceeds $1$. If the r
 The ratio is useful because almost everything cancels: $\frac{\binom{n}{k+1}}{\binom nk} = \frac{n - k}{k + 1}$ comes from writing both coefficients as factorials. The location of the maximum is then a linear inequality in $k$, however large the terms are. For the binomial distribution with $n$ trials and success probability $p$, the same computation puts the most likely count at $\lfloor (n + 1)p \rfloor$.
 
 ## Formulas it uses
-- [[pascals-identity]]: the ratio $\frac{\binom n{k+1}}{\binom nk} = \frac{n - k}{k + 1}$, which reduces the comparison to a linear inequality.
+- [[permutations-combinations]]: the factorial formula $\binom nk = \frac{n!}{k!\,(n-k)!}$ gives the ratio $\frac{\binom n{k+1}}{\binom nk} = \frac{n - k}{k + 1}$, which reduces the comparison to a linear inequality.
 - [[binomial-theorem]]: the coefficients $\binom nk a^{n-k}b^k$ of $(a + b)^n$ are the usual terms being compared.
 - [[binomial-probability]]: $\binom nk p^k(1 - p)^{n-k}$, whose largest value is the most likely number of successes.
 
@@ -1276,18 +1280,16 @@ Usually the last simplification of an answer that must be written in the form $p
 The dots sit inside the expression, at the end of a radical, a fraction, or an exponent, rather than at the end of a sum or a list. An infinite sum $1 + \frac12 + \frac14 + \cdots$ is a series, while $\sqrt{2 + \sqrt{2 + \cdots}}$ repeats the same operation on itself. A finite nest with a stated number of layers is a recursion; it belongs here only when a pattern in the number of layers is wanted.
 
 ## Methods and Formulas to Try
-The defining feature is that removing one layer leaves the same expression. Naming the value turns that into an equation, usually a quadratic, and the choice of root is decided by a bound such as positivity. Finite nests of radicals often have exact values from trigonometry instead.
-
-{{figure:cobweb}}
+Removing one layer leaves the same expression, which is an equation for its value; finite radical nests often have exact trigonometric values instead.
 
 ### Methods to try
-- [[name-the-whole-expression]]: call the infinite expression $x$, write $x$ in terms of itself using one layer, and solve.
+- [[name-the-whole-expression]]: call the expression $x$, write $x$ in terms of itself using one layer, and solve.
 - [[trig-substitution]]: a nest such as $\sqrt{2 + \sqrt{2 + \cdots + \sqrt 2}}$ with $n$ layers equals $2\cos\frac{\pi}{2^{n+1}}$, since each layer halves an angle.
 
 ### Formulas to try
-- [[quadratic-formula]]: the equation from one layer is usually a quadratic, with one root to reject.
-- [[ramanujan-nested-radical]]: nests whose layers change from step to step, such as $\sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + \cdots}}} = 3$, which self-similarity alone cannot handle.
+- [[quadratic-formula]]: the one-layer equation is usually a quadratic, with one root to reject.
 - [[half-angle]]: $\sqrt{2 + 2\cos\theta} = 2\cos\frac\theta2$, the identity that evaluates finite radical nests.
+- [[ramanujan-nested-radical]]: nests whose layers change from step to step, which self-similarity alone cannot handle.
 
 ## Common traps
 - Keeping both roots of the quadratic, when the value is positive or larger than the first term.
@@ -1318,7 +1320,6 @@ For powers, expanding $(a + \sqrt b)^n$ and $(a - \sqrt b)^n$ with the Binomial 
 ## Formulas it uses
 - [[difference-of-squares]]: $(\sqrt a + \sqrt b)(\sqrt a - \sqrt b) = a - b$, the product that clears the roots.
 - [[binomial-theorem]]: expands both powers, showing the odd powers of $\sqrt b$ cancel when the conjugates are added.
-- [[conjugate-root-theorems]]: a polynomial with rational coefficients that has $a + \sqrt b$ as a root also has $a - \sqrt b$, the same pairing applied to equations.
 
 ## Common traps
 - Using the square-root conjugate on cube roots, which need $a^2 \mp ab + b^2$ from the sum or difference of cubes.
@@ -1463,7 +1464,6 @@ Each difference lowers the degree of a polynomial by exactly one. By the Binomia
 The converse runs the table backward. Each entry is the one to its left plus the one below that, so the whole table is fixed by its left edge, and the binomial coefficients satisfy the same rule by Pascal's Identity. That gives Newton's form, $a_n = \sum_j\binom nj\Delta^ja_0$. When a row of differences is constant, every later row is zero, so the sum stops and $a_n$ is a polynomial in $n$ of the degree read from the table.
 
 ## Formulas it uses
-- [[binomial-theorem]]: expands $(n + 1)^k - n^k$, showing that each difference lowers the degree by one.
 - [[pascals-identity]]: $\binom{n+1}{j} - \binom nj = \binom{n}{j-1}$, so the binomial coefficients are the natural basis for difference tables.
 - [[power-sums]]: sums such as $\sum k^2$ are polynomials of one degree higher, which the table detects and extends.
 
@@ -1527,30 +1527,32 @@ A supporting move in AIME root problems: transforming first turns a long symmetr
 
 "periodic-sequences": String.raw`
 ## Distinguishing clues
-The rule depends only on the last one, two, or three terms, has no constant growth, and the question asks for a term or a sum far down the sequence. Linear recursions with growth, such as Fibonacci, belong to closed forms and characteristic roots; this pattern is the case where the terms come back. The same recursion taken modulo $m$ is a cousin, [[periodicity-mod-m|periodicity modulo a number]], which is periodic for a different reason: it has only finitely many states.
+The index is in the hundreds or thousands, and nothing in the rule suggests a closed form. A recursion with steady growth, such as Fibonacci asked for an actual value, is a closed-form problem instead.
+
+Three shapes share the idea and repeat for different reasons: remainders of a power or a recurrence repeat because the state, one residue or the last few, takes finitely many values; a rule built from fractions $\frac{ax + b}{cx + d}$ or quotients of earlier terms can return exactly to its start; and a condition about divisibility by several small numbers repeats with period their least common multiple.
 
 ## Methods and Formulas to Try
-Computing a handful of terms exactly, as fractions, is almost always the first step, and the cycle often appears within ten terms. Some rules announce their period in advance: a fractional linear rule $\frac{ax + b}{cx + d}$ that acts like a rotation by a fraction of a turn, or a linear rule whose characteristic roots are roots of unity.
-
-{{figure:cycle}}
+Which method fits depends on why the terms repeat: finitely many states call for listing them, a hidden rotation for a substitution, and a count for working over one period.
 
 ### Methods to try
-- [[cycle-hunting]]: compute terms until the state, the terms the rule needs, repeats; then reduce the index modulo the period.
+- [[cycle-hunting]]: compute exact terms or residues until the state the rule needs repeats, then reduce the index by the period.
 - [[trig-substitution]]: writing $x_n = \tan\theta_n$ turns rules such as $\frac{1 + x}{1 - x}$ into adding a fixed angle, which shows the period at once.
+- [[casework-method]]: when the question is a count, handle each position within one period, multiply by the number of full periods, and add the partial period at the end.
 
 ### Formulas to try
-- [[linear-recurrence]]: characteristic roots that are roots of unity, as for $a_{n+1} = a_n - a_{n-1}$ with roots $e^{\pm i\pi/3}$, give a periodic sequence.
-- [[roots-of-unity]]: the order of the characteristic roots is the period of a linear rule.
-- [[angle-addition]]: $\tan(\theta + 45^\circ) = \frac{1 + \tan\theta}{1 - \tan\theta}$, the identity behind the period-$4$ rule.
+- [[eulers-theorem]]: for a base coprime to $m$, the powers modulo $m$ cycle from the first term with a period dividing $\varphi(m)$.
+- [[multiplicative-order]]: the exact period of the powers of $a$ modulo $m$.
+- [[linear-recurrence]]: characteristic roots that are roots of unity, as for $a_{n+1} = a_n - a_{n-1}$, give a periodic sequence.
+- [[crt]]: splits a composite modulus, such as $1000 = 8 \cdot 125$, so each part's period can be found separately.
 
 ## Common traps
-- Using decimals, which hide an exact return to the start.
-- With a two-term rule, stopping when one value repeats instead of waiting for the pair to repeat.
-- Misaligning the index: if the cycle starts at $a_1$, then $a_n = a_r$ with $r \equiv n \pmod p$ and $1 \le r \le p$.
-- Missing a pre-period, a few terms before the cycle begins.
+- Computing with decimals, which hide an exact return to the start.
+- With a two-term rule, declaring a cycle when one value repeats instead of the pair.
+- Reducing the index from the start when the cycle begins after a few terms.
+- Taking $\varphi(m)$ as the period, when the true period divides it.
 
 ## Contest profile
-Common in AMC and AIME: a recursion with a term numbered in the thousands is almost always periodic, and the work is computing six to ten terms carefully.
+Common on the AMC and AIME: a term numbered in the thousands, the last digits of a large power, or a count up to $1000$ that depends only on residues; the work is computing one cycle carefully.
 `,
 
 "triangle-angle-identities": String.raw`## Why it works
@@ -1623,7 +1625,7 @@ Never average the speeds directly. Pick a convenient distance, such as a common 
 The harmonic-mean shortcut applies only to equal distances. Equal times give the ordinary arithmetic mean instead, and anything else needs the full total over total.
 
 ## On contests
-Three problems here, two AMC 12 and one AIME, two solved by it alone. On the AMC it is an answer-choice trap, with $45$ among the options whenever the answer is $40$. A common version misses a target time by the same margin at two speeds, late at one and early at the other, which makes the right speed their harmonic mean. For trips with several legs, see [[multi-leg-rates|multi-leg rates]].`,
+Three problems here, two AMC 12 and one AIME, two solved by it alone. On the AMC it is an answer-choice trap, with $45$ among the options whenever the answer is $40$. A common version misses a target time by the same margin at two speeds, late at one and early at the other, which makes the right speed their harmonic mean. For trips with several legs, see [[time-per-leg|multi-leg rates]].`,
 
 "relative-motion": String.raw`
 ## Why it works
@@ -1854,7 +1856,6 @@ For a perfect-square condition, $n^2 + bn + c = m^2$ times $4$ is $(2n + b)^2 - 
 
 ## Formulas it uses
 - [[vertex-form]]: $a(x - h)^2 + k$, the completed square, with vertex $(h, k)$.
-- [[quadratic-formula]]: completing the square on $ax^2 + bx + c = 0$ produces the formula itself.
 - [[difference-of-squares]]: $X^2 - Y^2 = (X - Y)(X + Y)$, which finishes an integer equation once the square is completed.
 - [[trivial-inequality]]: $X^2 \ge 0$, which turns the completed square into a minimum.
 
@@ -1935,28 +1936,32 @@ Five problems here, mostly AMC, two solved by it alone; two others move on to re
 `,
 
 "median-minimizes-abs": String.raw`
-## Distinguishing clues
-The quantity to minimize is a sum of absolute differences from one unknown point, possibly weighted. A sum of squared differences $\sum(x - a_i)^2$ is minimized at the mean instead, and a maximum of absolute differences is minimized at the midpoint of the two extremes. Distances in the plane, $\sum\sqrt{(x - a_i)^2 + (y - b_i)^2}$, are a geometry problem, not this one; but taxicab distances $\sum(|x - a_i| + |y - b_i|)$ split into one of these problems for each coordinate.
+## When to use
+The quantity to minimize is a sum of absolute differences from a single unknown, possibly weighted: total walking distance to several houses on a street, or $\sum |x - a_i| + \sum |y - b_i|$, which splits into one such problem per coordinate. A sum of squared differences is minimized at the mean instead.
 
-## Methods and Formulas to Try
-The function $f(x) = \sum w_i|x - a_i|$ is piecewise linear with corners at the $a_i$. Its slope is the total weight to the left of $x$ minus the total weight to the right, which increases at each corner, so $f$ decreases and then increases. The minimum is where the slope changes sign, the weighted median.
+## How
+1. Sort the points, listing each as many times as its weight.
+2. Pair the smallest with the largest, the second smallest with the second largest, and so on.
+3. Each pair $a \le b$ contributes $|x - a| + |x - b| \ge b - a$, with equality exactly when $a \le x \le b$.
+4. The pairs' intervals nest, so the median, or any point between the two middle points, makes every pair an equality.
+5. The minimum is the sum of the pair widths.
 
-### Methods to try
-- [[slope-counting]]: sweep $x$ from left to right, track the slope of the piecewise-linear function at each corner, and stop where the slope stops being negative.
-- [[abs-value-graphing]]: sketch the sum as a graph built from V shapes, which shows the flat bottom when the number of points is even.
+For $|x - 1| + |x - 4| + |x - 6| + |x - 11|$ the pairs are $(1, 11)$ and $(4, 6)$, so the minimum is $10 + 2 = 12$, reached for every $x$ from $4$ to $6$.
 
-### Formulas to try
-- [[abs-triangle-inequality]]: $|x - a| + |x - b| \ge |b - a|$, with equality exactly for $x$ between $a$ and $b$, which pairs outer points to prove the median result.
-- [[absolute-value-rules]]: $|x - a|$ is the distance from $x$ to $a$, which turns the sum into total distance on the number line.
+## Why it works
+For one pair, $|x - a| + |x - b|$ is the distance from $x$ to $a$ plus the distance to $b$, which is at least $b - a$ and equals it exactly on the segment between them. Adding over the pairs bounds the whole sum below by the total of the widths, and a point in the innermost interval lies in every interval, so it attains the bound. With an odd count the middle point pairs with nothing and contributes $0$ when $x$ sits on it.
+
+## Formulas it uses
+- [[abs-triangle-inequality]]: $|x - a| + |x - b| \ge |a - b|$, with equality exactly for $x$ between $a$ and $b$, the bound for each pair.
+- [[absolute-value-rules]]: $|x - a|$ is the distance from $x$ to $a$ on the number line.
 
 ## Common traps
-- Using the mean, which minimizes squared distances, not absolute ones.
-- Ignoring weights: $3|x - 4|$ counts the point $4$ three times.
-- With an even number of points, giving only one minimizer when the whole interval between the two middle points works.
-- Forgetting to compute the minimum value itself when the question asks for it.
+- Using the mean, which minimizes squared distances.
+- Ignoring weights: $3|x - 4|$ lists the point $4$ three times.
+- With an even count, giving one minimizer when a whole interval works.
 
 ## Contest profile
-An AMC 10 and AMC 12 pattern, often as a placement question on a line, and occasionally an AIME step inside a taxicab-distance problem.
+An AMC 10 and AMC 12 question, often a placement on a line, and an occasional AIME step inside a taxicab-distance problem.
 `,
 
 "weierstrass-substitution": String.raw`
@@ -2010,7 +2015,6 @@ The constraint $\sum x_i = s$ makes any linear function of the $x_i$ sum to a co
 For convex $f$ this is Jensen's Inequality, since a convex function lies above all its tangents. The trick is more flexible: the bound $f(x) \ge L(x)$ only has to hold on the allowed range, and the factored form $(x - t)^2 g(x)$ shows exactly where it holds.
 
 ## Formulas it uses
-- [[jensens-inequality]]: the convex case, where $f$ lies above every tangent line and the trick is Jensen's Inequality in disguise.
 - [[trivial-inequality]]: the factor $(x - t)^2 \ge 0$ that makes $f(x) - L(x)$ nonnegative.
 
 ## Common traps
@@ -2286,7 +2290,7 @@ Recognize the shape in words, since it is rarely written as a recurrence. "Each 
 Two checks prevent the usual errors: rule out $r = 1$ before dividing by $1 - r$, and confirm whether the sequence starts at $a_0$ or $a_1$, since the exponent in $r^n$ shifts with it.
 
 ## On contests
-Two problems here, one AIME and one AMC 12, neither solved by it alone: one pairs it with a [[states-recursion-prob|recursion on states]] for a probability, the other with [[periodicity-mod-m|periodicity]] modulo $m$. At MATHCOUNTS and on the AMC it appears in disguise as a mixture, interest, or population question, and the fixed point is usually the number being asked for. Any process described as repeating forever and asked to settle calls for solving $L = rL + d$ first.
+Two problems here, one AIME and one AMC 12, neither solved by it alone: one pairs it with a [[states-recursion-prob|recursion on states]] for a probability, the other with [[periodic-sequences|periodicity]] modulo $m$. At MATHCOUNTS and on the AMC it appears in disguise as a mixture, interest, or population question, and the fixed point is usually the number being asked for. Any process described as repeating forever and asked to settle calls for solving $L = rL + d$ first.
 `
 
 });
@@ -2338,7 +2342,6 @@ There is one subtle point. Repeating the averaging move forever may only approac
 
 ## Formulas it uses
 - [[jensens-inequality]]: for convex $f$, $f(a) + f(b) \ge 2f\!\left(\frac{a+b}{2}\right)$, the improvement in each smoothing step.
-- [[max-product-fixed-sum]]: the result of discrete smoothing, the largest product of positive integers with sum $n$ uses parts $3$ and at most two $2$s.
 - [[karamata-inequality]]: compares whole configurations by majorization, the global form of many smoothing steps.
 
 ## Common traps
@@ -2469,29 +2472,6 @@ The identity $\frac{1}{1-\omega^k} = \frac12+\frac{i}{2}\cot\frac{k\pi}{n}$ is t
 ## On contests
 Standard AIME fare whenever a problem asks for a closed form of $\sum\csc^2$ or $\sum\cot^2$ at equally spaced angles, and the engine behind several $\sum 1/\sin^2$ evaluations. The same roots-of-unity-to-cotangent bridge is how the Basel sum $\sum 1/k^2 = \pi^2/6$ is proved by elementary means, squeezing $\cot^2$ against $\csc^2$.`,
 
-"shifted-polynomial-construction": String.raw`
-## Distinguishing clues
-Repeated outputs mean subtracting a constant, and outputs that follow a rule mean subtracting the rule, after clearing denominators when the rule is a fraction: for $f(k) = \frac1k$, work with $xf(x) - 1$. When the values follow no visible rule, the shape is plain interpolation instead, and the [[finite-differences|finite differences]] of the values are the quicker check.
-
-## Methods and Formulas to Try
-Subtracting the rule leaves a polynomial with known roots, and known roots are known factors: if $f(a_i) = g(a_i)$ for $i = 1, \ldots, m$, then $$f(x) - g(x) = (x - a_1)\cdots(x - a_m)\,Q(x),$$ and when $f$ has the higher degree, $\deg Q = \deg f - m$, so comparing degrees counts what is left to find.
-
-### Methods to try
-- [[subtract-and-factor]]: subtract the rule from the polynomial so that every listed point becomes a root, write the difference as the product of those linear factors times an unknown polynomial, and pin down the unknown part by comparing degrees or plugging in one more value.
-- [[lagrange-interpolation]]: when no subtraction leaves roots, build the polynomial directly through the given points, or evaluate it only at the one point the question asks about.
-
-### Formulas to try
-- [[factor-remainder-theorem]]: $f(a) = 0$ exactly when $x - a$ divides $f(x)$, which turns each point where the polynomial agrees with the rule into a factor of the difference.
-- [[lagrange-interpolation-formula]]: writes the unique polynomial of degree less than $n$ through $n$ given points as a sum of one term per point.
-
-## Common traps
-- Expanding the product instead of evaluating the factored form.
-- Forgetting the unknown factor $Q(x)$ when fewer points are given than the degree.
-- Reading too much into agreement at too few points: two values pin down a line, not a quadratic.
-
-## Contest profile
-Rarely the whole solution: the factored form is the setup, and bounding or counting the remaining factor finishes it.
-`,
 
 "forced-difference-of-squares": String.raw`
 ## When to use
@@ -2700,32 +2680,6 @@ A sequence whose second differences are constantly $1$ is $T_n$ plus a linear te
 Four problems here, split between AMC and AIME, one solved by it alone; two combine it with [[modular-basics|modular arithmetic]]. Sums of the first $n$ integers turn up constantly inside larger arguments; the general sum is on [[arithmetic-series|the arithmetic series card]], and [[power-sums|the power sums]] carry squares and cubes.
 `,
 
-"multi-leg-rates": String.raw`
-## Distinguishing clues
-The speed changes during the trip, or two travelers cover overlapping routes at different speeds. A single trip at one speed is plain distance equals rate times time; two objects moving at once toward or away from each other is relative motion, and a question that asks only for the speed over the whole trip is average speed. Work problems with jobs in place of distances follow the same arithmetic.
-
-## Methods and Formulas to Try
-The quantities that add are distances and times; speeds never add. So the setup is a list of legs, each with its own distance, speed, and time, tied together by the total distance and the total time. Two travelers on the same route give two such equations, and subtracting them cancels the shared legs.
-
-{{figure:legs}}
-
-### Methods to try
-- [[time-per-leg]]: cut the trip wherever the speed changes, write each leg's time as $\frac{d_i}{v_i}$, and add the times and the distances.
-
-### Formulas to try
-- [[average-speed]]: total distance over total time, harmonic for equal distances, never the plain average of the speeds.
-- [[relative-motion]]: two travelers approaching each other close the gap at the sum of their speeds.
-- [[work-rates]]: the same additive structure with jobs in place of distances, where rates add and times do not.
-
-## Common traps
-- Averaging speeds, as in $\frac{4 + 8}{2} = 6$, instead of dividing total distance by total time.
-- Mixing units, such as minutes in one leg and hours in another.
-- Forgetting a leg, such as the return trip or a wait.
-- Setting the times equal when the travelers started at different moments.
-
-## Contest profile
-A MATHCOUNTS and AMC 10 staple, usually one or two linear equations; AIME versions add a meeting point or several travelers.
-`,
 
 
 
@@ -2761,7 +2715,7 @@ Matrices themselves are essentially never asked for on the AMC or AIME. They app
 Replace column $i$ of $A$ by $\mathbf{b} = \sum_j x_j (\text{column } j)$ and expand using linearity in that column. Every term except the $j = i$ one has a repeated column and so contributes zero, leaving $\det A_i = x_i \det A$. The rule is therefore not a separate theorem, just [[determinant-basics|column linearity]] applied once.
 
 ## How to use it
-It earns its keep when a problem asks for one unknown out of three and you would otherwise eliminate the other two. Writing the single quotient is faster and far less error-prone than two rounds of substitution. It is also the cleanest statement of solvability: $\det A \ne 0$ gives exactly one solution, and $\det A = 0$ gives none or infinitely many, with the two cases separated by whether $\mathbf{b}$ respects the same dependence the rows do. For a system that is symmetric rather than generic, do not use this at all, since [[symmetric-linear-system|adding all the equations]] is a line of work instead of a page.
+It earns its keep when a problem asks for one unknown out of three and you would otherwise eliminate the other two. Writing the single quotient is faster and far less error-prone than two rounds of substitution. It is also the cleanest statement of solvability: $\det A \ne 0$ gives exactly one solution, and $\det A = 0$ gives none or infinitely many, with the two cases separated by whether $\mathbf{b}$ respects the same dependence the rows do. For a system that is symmetric rather than generic, do not use this at all, since [[add-all-equations|adding all the equations]] is a line of work instead of a page.
 
 ## On contests
 Roughly eighteen problems in this library's database solve a system somewhere in the middle of a solution, and almost none of them need a general method, because contest systems are small and usually structured. Treat Cramer as the fallback when the structure genuinely is not there, and check for the symmetric shape first.`,
@@ -2775,30 +2729,6 @@ Use eigenvalues when you need $A^n$, not when you need $A$. If $A = PDP^{-1}$ wi
 ## On contests
 Olympiad-adjacent only, and it appears in this library as the machinery two cards already lean on. [[matrix-tree-theorem|The matrix-tree theorem]] states the spanning-tree count as a product of Laplacian eigenvalues, and the transfer matrix gets its recurrence from $\det(xI - M) = 0$. If you are reading either of those, this is the card that makes the sentence mean something.`,
 
-"symmetric-linear-system": String.raw`
-## Distinguishing clues
-The equations are copies of one another with the variables relabeled or rotated, and their number equals the number of variables. A general linear system with unrelated coefficients needs elimination; here the structure does the elimination. Nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]] instead.
-
-## Methods and Formulas to Try
-Adding every equation treats the variables alike, so the sum collapses into a multiple of the total $S$ of the variables. Subtracting two equations then isolates a difference, and each original equation, rewritten with $S$, gives one variable. A cyclic system in which each equation links one variable to the next closes up after going once around.
-
-{{figure:columns}}
-
-### Methods to try
-- [[add-all-equations]]: add (or multiply) all the equations so the symmetric parts become a multiple of the total, then return to one equation at a time.
-
-### Formulas to try
-- [[cramers-rule]]: confirms that the system has a unique solution exactly when the determinant is nonzero, which fails when adding all equations gives $0 = 0$.
-- [[determinant-basics]]: the determinant of a cyclic coefficient matrix factors, and one factor is the column sum that the addition step produces.
-
-## Common traps
-- Dividing by the coefficient of $S$ after adding, when that coefficient is $0$ and the system has no unique solution.
-- Solving for every variable when the question asks only for the total.
-- Miscounting how many times each variable appears in the added equation.
-
-## Contest profile
-A short AMC problem, often with four or five variables to make elimination tedious, and an occasional AIME first step.
-`,
 
 "cofactor-expansion": String.raw`
 ## When to use
@@ -2854,5 +2784,96 @@ For the repeated factor, differentiate $P(x) = (x-a)^2 Q(x) + R(x)$: every term 
 ## Useful observations
 - Modulo a product of $k$ distinct linear factors, the remainder is the polynomial of degree less than $k$ through the $k$ values, which the [[lagrange-interpolation-formula|Lagrange Interpolation Formula]] writes down directly.
 - Only the values at the roots of the modulus matter, so a polynomial given by an enormous formula is reduced by evaluating it, never by dividing.
+`,
+
+"add-all-equations": String.raw`
+## When to use
+The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]].
+
+## How
+1. Add all the equations.
+2. Count how many times each variable appears on the left; in a symmetric or cyclic system every variable appears the same number $k$ of times, so the left side is $kS$.
+3. Solve for $S$, the sum of the right sides divided by $k$.
+4. Subtract each original equation from the right multiple of $S$, or subtract equations in pairs, to isolate each variable.
+5. If $k = 0$, adding gives no information about $S$; use differences of equations instead.
+
+For $x + y = 10$, $y + z = 14$, $z + x = 12$, adding gives $2S = 36$, so $S = 18$, and then $z = 18 - 10 = 8$, $x = 18 - 14 = 4$, and $y = 18 - 12 = 6$.
+
+{{figure:columns}}
+
+## Why it works
+In a system unchanged by relabeling the variables, every variable occupies each position equally often across the equations, so in the sum every variable has the same coefficient and the sum is a multiple of $S$. Once $S$ is known, each equation of the form "$S$ minus one variable" or "$S$ plus one variable" names that variable directly.
+
+## Formulas it uses
+No formula is needed; the method is bookkeeping with the total of the variables.
+
+## Common traps
+- Dividing by the coefficient of $S$ when it is $0$, where the system has no unique solution.
+- Solving for every variable when the question asks only for the total.
+- Miscounting how many times each variable appears after adding.
+
+## Contest profile
+A short AMC problem, often with four or five variables to make elimination tedious, and an AIME first step after a substitution turns a logarithmic system into a linear one.
+`,
+
+"time-per-leg": String.raw`
+## When to use
+A trip has stretches at different constant speeds, out and back, uphill and downhill, walking and riding, or two travelers cover the same route at different speeds, and a total time or a total distance is given while one leg is unknown. A single trip at one speed is plain distance equals rate times time, and two objects moving toward each other at once is relative motion; work problems, with jobs in place of distances, follow the same arithmetic.
+
+## How
+1. Cut the trip wherever the speed changes, and give each leg its distance $d_i$ and speed $v_i$.
+2. Write each leg's time as $\frac{d_i}{v_i}$.
+3. Set the sum of the times equal to the total time, and the sum of the distances equal to the total distance.
+4. With two trips over the same route, subtract their time equations so that the shared legs cancel.
+5. Convert every time to one unit before adding.
+
+Walking at $3$ mph and running at $6$ mph covers $9$ miles in $2$ hours. With $w$ miles walked, $\frac w3 + \frac{9 - w}{6} = 2$, so $w = 3$.
+
+{{figure:legs}}
+
+## Why it works
+On a leg at constant speed, distance equals speed times time, so the time is distance over speed. Distances along a route add, and the times of consecutive legs add, but speeds over different times do not average, because the legs last different amounts of time. The total-time and total-distance equations therefore hold exactly, and they are the only links between legs.
+
+## Formulas it uses
+- [[average-speed]]: total distance over total time, the quantity asked for when a problem wants the speed over the whole trip.
+- [[relative-motion]]: two travelers moving toward each other close the gap at the sum of their speeds, which gives the time of a meeting leg.
+
+## Common traps
+- Averaging speeds, as in $\frac{4 + 8}{2} = 6$, instead of dividing total distance by total time.
+- Mixing minutes and hours.
+- Forgetting a leg, such as a rest stop or the return trip.
+
+## Contest profile
+A MATHCOUNTS and AMC 10 staple, usually one or two linear equations; AIME versions add rest stops, meeting points, or several travelers.
+`,
+
+"name-the-whole-expression": String.raw`
+## When to use
+The dots sit inside an expression, at the end of a radical, a fraction, or an exponent: $\sqrt{a + \sqrt{a + \cdots}}$, $a + \cfrac{1}{b + \cfrac{1}{a + \cdots}}$, or $x^{x^{\cdots}}$, or a finite nest has a repeating layer that can be collapsed.
+
+## How
+1. Make sure the expression converges, or is defined as a limit.
+2. Call its value $x$.
+3. Find the copy of $x$ inside it: after one layer, or after one full period when the layers alternate.
+4. Write the one-layer equation and solve it.
+5. Reject roots that break a bound the expression must satisfy, such as positivity.
+
+For $x = \sqrt{6 + \sqrt{6 + \cdots}}$, one layer gives $x = \sqrt{6 + x}$, so $x^2 = x + 6$ and $x = 3$, since $x = -2$ is negative.
+
+{{figure:cobweb}}
+
+## Why it works
+If the infinite expression has a value, removing its first layer leaves exactly the same infinite expression, with the same value, so the value satisfies the one-layer equation. The equation alone cannot show the expression converges; that comes from a separate argument, usually that the partial nests increase and stay below a bound, which also picks out the right root.
+
+## Formulas it uses
+- [[quadratic-formula]]: the one-layer equation is usually a quadratic, with one root to reject.
+
+## Common traps
+- Keeping both roots of the quadratic.
+- Skipping convergence: the tower $\sqrt2^{\sqrt2^{\cdots}}$ equals $2$, though $4$ also satisfies the tower equation.
+- Treating a nest whose layers change, such as $\sqrt{1 + 2\sqrt{1 + 3\sqrt{\cdots}}}$, as self-similar.
+
+## Contest profile
+A quick AMC question in its plain form; AIME versions alternate the layers or ask about a finite nest that collapses the same way.
 `,
 });

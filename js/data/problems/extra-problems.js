@@ -42,7 +42,7 @@
     { q: String.raw`Find digits $A,B,C$ with $\overline{AA}+\overline{BB}+\overline{CC}=\overline{ABC}$.`,
       s: String.raw`$11(A+B+C)=100A+10B+C \Rightarrow 89A=B+10C$. Since $B+10C\le 99$, we need $A=1$ and $B+10C=89$, so $C=8,\,B=9$. Check: $11+99+88=198=\overline{ABC}$.` }
   );
-  add("periodicity-mod-m",
+  add("periodic-sequences",
     { q: String.raw`Find the remainder of the $100$th Fibonacci number $F_{100}$ modulo $8$.`,
       s: String.raw`Fibonacci mod $8$ is periodic with Pisano period $12$: $0,1,1,2,3,5,0,5,5,2,7,1,\dots$. Since $100\equiv 4\pmod{12}$, $F_{100}\equiv F_4=\mathbf{3}\pmod 8$.` }
   );

@@ -565,7 +565,7 @@ Object.assign(window.MATH_PROBLEMS, {
   }
 ],
 
-"reflection-shortest-path": [
+"reflect-across-the-line": [
   {
     q: String.raw`$A = (0, 4)$ and $B = (10, 2)$. Point $P$ moves along the $x$-axis. Find the minimum of $AP + PB$.`,
     s: String.raw`Reflect $A$ across the $x$-axis to $A' = (0, -4)$. For any $P$ on the axis, $AP = A'P$, so $AP + PB = A'P + PB \ge A'B = \sqrt{10^2 + 6^2} = \sqrt{136} = 2\sqrt{34}$. The minimum is achieved where segment $A'B$ crosses the axis (at $x = \frac{20}{3}$), and equals $2\sqrt{34}$.`

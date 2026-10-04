@@ -67,7 +67,7 @@
   add("expected-value", "2025 AIME I, Problem 13");
   add("plane-regions", "2025 AIME I, Problem 13");
   add("handshakes-diagonals", "2023 AMC 10A, Problem 16", "2023 AMC 12A, Problem 13");
-  add("losing-positions", "2024 AIME I, Problem 3");
+  add("backward-induction", "2024 AIME I, Problem 3");
   add("symmetry-probability", "2023 AIME I, Problem 1");
   add("multinomial-theorem", "2025 AIME I, Problem 3");
 

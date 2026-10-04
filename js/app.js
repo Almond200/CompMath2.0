@@ -696,7 +696,7 @@
       "reflection-coordinates", "reflection-composition", "rotation-90",
       "rotation-reflection-matrices", "rotation-center", "rotation-trick",
       "spiral-similarity", "homothety-monge", "affine-transformations",
-      "inversion-properties", "reflection-shortest-path", "perpendicular-bisector-locus"
+      "inversion-properties", "reflect-across-the-line", "perpendicular-bisector-locus"
     ],
     "conics": [
       "conic-sections", "ellipse-properties", "hyperbola-properties", "parabola-focus-directrix",
@@ -705,7 +705,7 @@
     ],
     "matrices & determinants": [
       "determinant-basics", "determinant-geometric", "cofactor-expansion", "matrix-multiplication",
-      "cramers-rule", "eigenvalues-characteristic", "symmetric-linear-system",
+      "cramers-rule", "eigenvalues-characteristic", "add-all-equations",
       "rotation-reflection-matrices", "cayley-menger", "matrix-tree-theorem", "lgv-lemma",
       "transfer-matrix-method", "shoelace-formula", "cross-product-area", "vector-dot-product",
       "vector-projection"
@@ -741,7 +741,7 @@
     "modular arithmetic": [
       "fermats-little-theorem", "eulers-totient", "crt", "multiplicative-order",
       "modular-inverse", "squares-mod-small", "wilsons-theorem", "lte",
-      "hensel-lifting", "periodicity-mod-m", "choose-modulus", "divisibility-rules"
+      "hensel-lifting", "periodic-sequences", "choose-modulus", "divisibility-rules"
     ],
     "inequalities": [
       "am-gm", "cauchy-schwarz", "jensens-inequality", "power-mean-inequality",
@@ -753,7 +753,7 @@
     "polynomial roots": [
       "vietas-general", "newtons-sums", "rational-root-theorem", "factor-remainder-theorem",
       "symmetric-polynomial-strategies", "root-transformations", "palindromic-polynomials",
-      "lagrange-interpolation", "shifted-polynomial-construction", "coefficient-extraction",
+      "lagrange-interpolation", "subtract-and-factor", "coefficient-extraction",
       "eisenstein-criterion", "conjugate-root-theorems", "descartes-rule-signs"
     ],
     "sequences": [
@@ -771,7 +771,7 @@
       "space-diagonal", "regular-tetrahedron", "regular-octahedron", "eulers-polyhedron-formula",
       "de-guas-theorem", "cayley-menger", "isosceles-tetrahedron", "tetrahedron-centroid",
       "point-plane-distance", "plane-intercept-form", "skew-lines-distance", "solid-tactics",
-      "cross-section-method", "surface-shortest-path", "cavalieris-principle", "pappus-centroid",
+      "cross-section-method", "unfold-the-surface", "cavalieris-principle", "pappus-centroid",
       "insphere-radius", "descartes-sphere-theorem", "cross-product-area"
     ],
     "binomial coefficients": [
@@ -1589,7 +1589,7 @@
     "simson-line", "butterfly-theorem", "radical-axis", "miquels-theorem", "ptolemys-theorem",
     "cyclic-quad-diagonals", "varignons-theorem", "van-aubel", "napoleons-theorem",
     "trapezoid-special-segments", "intercept-theorem", "british-flag-theorem", "mass-points",
-    "reflection-shortest-path", "rotation-trick", "spiral-similarity", "de-guas-theorem",
+    "reflect-across-the-line", "rotation-trick", "spiral-similarity", "de-guas-theorem",
     "skew-lines-distance", "circular-segment", "feuerbach-theorem", "nine-point-circle",
     "common-tangent-lengths", "angle-chord-secant", "tangent-chord-angle",
     "centroid-division", "cevian-area-ratio",
@@ -2492,7 +2492,7 @@
           </span>
         </div>
         <div class="card-meta">${kindBadgeHtml(f)}${levelRangeHtml(f)}${crumb}</div>
-        ${isConverted(f) && !f.latex ? cardLeadHtml(f) : cardFormulaHtml(f)}
+        ${f.placeholder ? `<p class="card-planned">Planned card</p>` : isConverted(f) && !f.latex ? cardLeadHtml(f) : cardFormulaHtml(f)}
         <p class="card-desc">${firstSentences(f.description, GRID_SENTENCES)}</p>
         ${extraHtml(f)}
         <div class="more-hint">Open &rsaquo;</div>
@@ -2641,8 +2641,10 @@
           <div class="lead-row"><div class="lead-label">Core move</div><div class="lead-text">${f.move}</div></div>
         </div>`;
     }
-    const tries = (f.suggests || []).map(id => BY_ID[id]
-      ? `<li><a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a></li>`
+    // TRY holds the pattern's top ideas, at most three, of either kind: `tryFirst` when the card
+    // names them, otherwise its first three methods. Each carries a small kind label.
+    const tries = tryList(f).map(id => BY_ID[id]
+      ? `<li><a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a> <span class="try-kind">${kindOf(BY_ID[id].formula)}</span></li>`
       : `<li>${redLink(id)}</li>`).join("");
     return `<div class="lead-box lead-pattern">
         <div class="lead-title">Overview</div>
@@ -2650,6 +2652,7 @@
         ${tries ? `<div class="lead-row"><div class="lead-label">Try</div><ul class="lead-try">${tries}</ul></div>` : ""}
       </div>`;
   }
+  function tryList(f) { return (f.tryFirst && f.tryFirst.length ? f.tryFirst : (f.suggests || [])).slice(0, 3); }
   // The same lead in two lines on the browsing card, in place of the formula.
   function cardLeadHtml(f) {
     if (kindOf(f) === "method") {
@@ -2658,7 +2661,7 @@
           <p><span class="lead-label">Core move</span> ${f.move}</p>
         </div>`;
     }
-    const names = (f.suggests || []).map(id => BY_ID[id] ? BY_ID[id].formula.name : plannedName(id)).join(", ");
+    const names = tryList(f).map(id => BY_ID[id] ? BY_ID[id].formula.name : plannedName(id)).join(", ");
     return `<div class="card-lead">
         <p><span class="lead-label">Look for</span> ${f.recognize.slice(0, 2).join("; ")}</p>
         ${names ? `<p><span class="lead-label">Try</span> ${names}</p>` : ""}
@@ -3566,6 +3569,7 @@
         ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
         ${leadBoxHtml(f)}
         <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p>
+        ${f.placeholder ? `<div class="planned-note">This card is planned. Its full write-up, figure, and worked example are still to come; the summary above is the idea in one sentence.</div>` : ""}
         ${(() => {
           // Every figure on the card sits in one row of panels, right under the summary.
           const panels = (window.MATH_DIAGRAMS || {})[f.id] || [];
@@ -4280,7 +4284,7 @@
                 : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
               <div class="hp-mine-foot">
                 <a href="#/practice">${mine.length ? `Your ${mine.length} list${mine.length === 1 ? "" : "s"}` : "Make a study list"}</a>
-                <a href="#/special/random">A random card</a>
+                <a href="#/special/random">Open a random card</a>
               </div>
             </section>
           </aside>

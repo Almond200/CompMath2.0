@@ -186,7 +186,9 @@ The product $(e_1 + 1)\cdots(e_k + 1)$ is odd only if every factor is odd, that 
 - Running the formula backwards lists the shapes with a given count: exactly $12$ divisors means $p^{11}$, $p^5q$, $p^3q^2$ or $p^2qr$.
 - To make a number with a given divisor count as small as possible, give the largest exponents to the smallest primes and compare the shapes: for $12$ divisors they give $2048$, $96$, $72$, and $60 = 2^2 \cdot 3 \cdot 5$, the smallest.
 - The divisors of $n$ that are perfect squares number $\prod\left(\left\lfloor \frac{e_i}{2} \right\rfloor + 1\right)$.
-- Divisors pair as $m$ and $\frac nm$, with only $\sqrt n$ paired with itself.
+- Divisors pair as $m$ and $\frac nm$, with only $\sqrt n$ paired with itself, which is why only squares have an odd number of divisors: anything switched once per divisor, like lockers toggled by every $k$th student, ends switched exactly at the perfect squares.
+
+{{figure:pairs}}
 
 ## Applications
 Counting divisors, counting divisors with a property, numbers with a prescribed number of divisors, and the divisors of factorials once their factorizations are known.
@@ -1515,7 +1517,7 @@ When the modulus does not kill the equation it still narrows it: a forced residu
 - [[modular-basics]]: congruences can be added and multiplied, so each side of an equation can be reduced term by term.
 - [[squares-mod-small]]: the residues of squares, $0, 1$ modulo $4$ and $0, 1, 4$ modulo $8$, the most common table to check.
 - [[fermats-little-theorem]]: $a^{p-1} \equiv 1 \pmod p$ when $p \nmid a$, so powers modulo a prime take few values; fourth powers modulo $5$ are only $0$ and $1$.
-- [[last-digit-patterns]]: the residues of squares and cubes modulo $9$ and the last digits they can end in.
+- [[last-digit-patterns]]: units digits of powers repeat with period dividing $4$, so modulo $10$ a power takes only a few values.
 
 ## Common traps
 - Treating a modulus that fails to rule out solutions as evidence that solutions exist; it only means that modulus is the wrong one.
@@ -1970,33 +1972,6 @@ Coprime numbers share no prime, so every other condition simplifies. Their lcm i
 Usually the opening line rather than the whole solution: once the gcd is pulled out, coprimality and a short count finish.
 `,
 
-"periodicity-mod-m": String.raw`
-## Distinguishing clues
-Three shapes share the idea, and they repeat for different reasons. Remainders of a power or a recurrence repeat because the state, one residue or the last few, takes finitely many values, so by the [[pigeonhole|pigeonhole principle]] some state recurs. An iterated map can return to its starting point after a few steps, as fractional linear maps often do. A condition about divisibility by several small numbers repeats with period their least common multiple.
-
-The cycle need not start at once. When the base is coprime to the modulus, its powers cycle from the first term, with period dividing $\varphi(m)$ by [[eulers-theorem|Euler's Theorem]]; when it shares a factor, there is a pre-period, and modulo $100$ the powers of $2$ first return to $4$, not to $2$.
-
-## Methods and Formulas to Try
-One cycle settles every case, so the work is finding the cycle, keeping it short, and reading the answer off it.
-
-### Methods to try
-- [[cycle-hunting]]: compute terms until a state repeats, note where the cycle starts and its length $T$, and replace the index $N$ by its position in the cycle, $a_N \equiv a_{\,n_0 + ((N - n_0) \bmod T)} \pmod m$.
-- [[choose-modulus]]: split a composite modulus into prime powers and find the period of each, since the period modulo $m$ is the least common multiple of those periods; modulo $1000$, work modulo $8$ and $125$ separately.
-- [[casework-method]]: when the question is a count, handle each position within one cycle separately, multiply by the number of full cycles, and add the partial cycle at the end.
-
-### Formulas to try
-- [[eulers-theorem]]: for a base coprime to $m$, the powers cycle from the first term with a period dividing $\varphi(m)$.
-- [[multiplicative-order]]: the exact period of the powers of $a$ modulo $m$ is the order of $a$, the least $k \ge 1$ with $a^k \equiv 1 \pmod m$.
-- [[crt]]: recombines the answers found modulo each prime power into the answer modulo $m$.
-
-## Common traps
-- Reducing the index by the period from the start when the cycle begins later.
-- Taking $\varphi(m)$ as the period: the true period divides it, and only for a base coprime to $m$.
-- Tracking one term of a recurrence when the next term depends on the last two or three.
-
-## Contest profile
-Usually the reduction step inside a larger count rather than the whole solution; casework over one period often finishes it.
-`,
 
 "sigma-parity": String.raw`
 ## Key forms
@@ -2200,32 +2175,6 @@ Existence of nonzero solutions to low-degree systems mod $p$, the Erdős–Ginzb
 An olympiad existence tool.
 `,
 
-"odd-divisor-count": String.raw`
-## Distinguishing clues
-The clue is an action indexed by divisors: person $k$ touches every multiple of $k$, so item $n$ is touched once for each divisor of $n$, and only the parity of that count matters. A question about the sum of the divisors is different, since $\sigma(n)$ is odd when $n$ is a square or twice a square, and a question about the exact number of divisors is plain divisor counting.
-
-## Methods and Formulas to Try
-Divisors pair off, $d$ with $\frac nd$, and the only divisor that can be its own partner is $\sqrt n$. So a number has an odd number of divisors exactly when it is a perfect square, and from $1$ to $N$ there are $\lfloor \sqrt N \rfloor$ such numbers.
-
-{{figure:pairs}}
-
-### Methods to try
-- [[factor-pair-counting]]: pair each divisor $d$ with $\frac nd$; the pairing shows the count is even unless some $d$ equals $\frac nd$, which happens exactly when $n = d^2$.
-- [[exponent-tracking]]: $d(n) = (e_1 + 1)(e_2 + 1)\cdots$ is odd exactly when every exponent is even, the same conclusion from the factorization, and the route for a stated count such as exactly $15$ divisors, which forces $n = p^{14}$ or $n = p^2q^4$.
-
-### Formulas to try
-- [[number-of-divisors]]: $d(n) = \prod (e_p + 1)$, which is odd exactly when every $e_p$ is even.
-- [[product-of-divisors]]: pairing the divisors multiplies them to $n^{d(n)/2}$, the same pairing argument with products.
-- [[sigma-parity]]: for the sum of the divisors the answer changes, to squares and twice squares.
-
-## Common traps
-- Answering with the odd numbers instead of the perfect squares.
-- Forgetting that $1$ is a perfect square, with a single divisor.
-- Applying the square rule to the sum of the divisors, where twice a square also gives an odd sum.
-
-## Contest profile
-A one-step recognition: once the actions are seen to happen once per divisor, the answer is a count of perfect squares.
-`,
 
 "cryptarithms": String.raw`
 ## Distinguishing clues
@@ -2364,5 +2313,37 @@ For a power of $2$ the recurrence telescopes: $$S(2^k) = 4^{k-1} + 4^{k-2} + \cd
 
 ## Applications
 Sums over $1, 2, \ldots, n$ of a quantity that depends only on the odd part of each number, such as the largest odd divisor or the highest power of $2$.
+`,
+
+"cycle-hunting": String.raw`
+## When to use
+The question asks for $a_{2026}$, the last digits of $3^{2026}$, or the $1001$st iterate of a map, and the next term depends only on a state with finitely many possible values: a residue modulo $m$, the last two terms modulo $m$, or a value of a map that keeps returning.
+
+## How
+1. Identify the state, the terms the rule needs to produce the next one.
+2. Compute terms exactly, as fractions or residues, until a state repeats.
+3. Record the start $n_0$ of the cycle and its length $T$.
+4. Replace the index $N$ by $n_0 + ((N - n_0) \bmod T)$ and read off that term.
+5. For powers of a base coprime to $m$, the period is the order of the base and divides $\varphi(m)$.
+
+The units digits of $7^n$ run $7, 9, 3, 1$ and repeat, so $T = 4$; since $2026 \equiv 2 \pmod 4$, the units digit of $7^{2026}$ is $9$.
+
+{{figure:cycle}}
+
+## Why it works
+A state with finitely many possible values must repeat within that many steps, by the [[pigeonhole|pigeonhole principle]]. The rule is deterministic, so once a state recurs, everything after it repeats the steps that followed its first appearance, and the sequence is periodic from $n_0$ on. When the rule can also be run backward, as for powers of a base coprime to the modulus, the cycle starts at the very first term.
+
+## Formulas it uses
+- [[pigeonhole]]: finitely many states force a repeat.
+- [[multiplicative-order]]: the exact period of the powers of $a$ modulo $m$ is the least $k$ with $a^k \equiv 1 \pmod m$.
+- [[eulers-theorem]]: for $a$ coprime to $m$, that period divides $\varphi(m)$, which bounds the search.
+
+## Common traps
+- Tracking one term when the rule needs the last two, and declaring a cycle when only one value repeats.
+- Reducing the index from the start when the cycle begins later.
+- Computing with decimals, which hide an exact return.
+
+## Contest profile
+Common on the AMC and AIME: a term numbered in the thousands, or the last digits of a large power, almost always reduces to six to twenty careful terms.
 `,
 });

@@ -110,6 +110,7 @@
         '<label>A <input class="tool-in mb-in" data-v="0" type="text" inputmode="text" autocomplete="off" placeholder="?"></label>' +
         '<label>B <input class="tool-in mb-in" data-v="1" type="text" inputmode="text" autocomplete="off" placeholder="?"></label>' +
         '<label>C <input class="tool-in mb-in" data-v="2" type="text" inputmode="text" autocomplete="off" placeholder="?"></label>' +
+        '<span class="tool-lim">positive masses up to 999: whole numbers, fractions like 3/2, or decimals</span>' +
         '<button type="button" class="tool-btn2 mb-test">Test</button>' +
         '<button type="button" class="tool-btn mb-new">New problem</button>' +
         '<button type="button" class="tool-btn mb-view">3D view</button>' +

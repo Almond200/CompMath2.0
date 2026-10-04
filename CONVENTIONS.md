@@ -17,8 +17,16 @@ Regenerate the numbers with `tools/scan-conventions.py`.
 |---|---|---|---|---|
 | Formula | What is true? | one fact (theorem, identity, definition, standard result) | something you **remember** | Formulas |
 | Method | What can I do? | one reusable move | something you **do**; still makes sense with every equation removed | Methods |
-| Pattern | What am I looking at? | one recurring problem archetype | you can say "this is a ___ problem" **before** solving | Patterns |
+| Pattern | What am I looking at? | one recognizable configuration or situation, a hub | you can name it from the statement **before** solving, and it unlocks several facts or moves | Patterns |
 | Problem | Can I use it? | one contest instance | it is a real problem | Practice |
+
+**What earns each kind its card (agreed 2026-10-04).**
+
+- **Method:** one move you can say as an instruction ("Reflect one endpoint across the line", "Add all the equations"), with a few steps. Anything that describes a single solving step is a method, even when it reads like a situation ("when you see X, do Y" with one obvious Y): X belongs in the method's When to use, with its lookalikes.
+- **Pattern:** a recognizable configuration or situation named by what is in the statement, never by its solution ("Ellipse Tangent to a Line", "Quadrilateral Inscribed in a Circle", "Angle Bisector Extended to the Circumcircle", "A Term Far Down a Sequence"). Its card is a hub: the facts (formulas) that hold in the configuration, the moves (methods) it opens, and the clues and disguises that reveal it. A pattern earns a card only by disguise (it hides in several forms), choice (several methods could apply and the clues decide), or a toolkit (several facts hold in the configuration); otherwise it folds into its method.
+- **Honesty over completeness:** a list is never padded. A method may use no formula, and a pattern's Formulas to try may say "No particular formula is needed" (the scanner accepts that sentence). A link names only a card that is actually used, never one that is merely related or proved by the method.
+- **No red links:** when a card should exist, write it then; `placeholders` stays empty.
+- **TRY in a pattern's box:** the pattern's top ideas, at most three, of either kind, in the optional `tryFirst` array; each must also appear under its Methods or Formulas to try (the scanner checks both). Without `tryFirst` the box shows the first three methods.
 
 A pattern **suggests** methods and a method **uses** formulas (both written on the card); every
 card **appears in** problems (derived from problem tags). A formula never says "when you see X, do

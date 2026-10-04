@@ -1,2543 +1,2533 @@
 {
- "_comment": "Cards whose intro (description) and explanation (Why it works, plus Full proof where one fits) have been rewritten to the standard in CONVENTIONS.md. The rewrite runs over many sessions; scan-conventions.py reports progress from this file and fails on an id that is not a card. Add an entry only after the card has been read rendered and every derivation checked by hand.",
- "done": [
-  {
-   "id": "pythagorean-theorem",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "similar-figures-ratios",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "law-of-cosines",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "arithmetic-series",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "vietas-general",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "number-of-divisors",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "basic-probability",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "stars-and-bars",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "casework-method",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "geometric-probability",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "barycentric-coordinates",
-   "date": "2026-09-25",
-   "batch": "pilot"
-  },
-  {
-   "id": "constructive-counting",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "modular-basics",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "log-rules",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "difference-of-squares",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "geometric-series",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "bounding-diophantine",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "coordinate-bash",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "quadratic-formula",
-   "date": "2026-09-25",
-   "batch": "2"
-  },
-  {
-   "id": "floor-basics",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "complementary-counting",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "pie",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "base-conversion",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "bijection-method",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "complex-basics",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "permutations-combinations",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "factor-pair-counting",
-   "date": "2026-09-25",
-   "batch": "3"
-  },
-  {
-   "id": "special-right-triangles",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "angle-chasing",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "telescoping",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "trig-area",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "circle-basics",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "tangent-facts",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "weighted-average",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "tangent-circles",
-   "date": "2026-09-25",
-   "batch": "4"
-  },
-  {
-   "id": "equilateral-triangle-facts",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "binomial-theorem",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "proportion-properties",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "power-of-a-point",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "de-moivre",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "recursive-counting",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "roots-of-unity",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "crt",
-   "date": "2026-09-25",
-   "batch": "5"
-  },
-  {
-   "id": "law-of-sines",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "square-of-sum",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "angle-addition",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "angle-bisector-theorem",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "change-of-base",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "periodicity-mod-m",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "herons-formula",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "prism-pyramid-volumes",
-   "date": "2026-09-25",
-   "batch": "6"
-  },
-  {
-   "id": "vietas-quadratic",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "factor-remainder-theorem",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "sfft",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "inscribed-angle-theorem",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "linear-recurrence",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "triangle-inequality",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "floor-multiples",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "exponent-tracking",
-   "date": "2026-09-25",
-   "batch": "7"
-  },
-  {
-   "id": "symmetry-probability",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "shoelace-formula",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "double-angle",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "euclidean-algorithm",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "conditional-probability",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "completing-the-square",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "perpendicular-bisector-locus",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "relative-motion",
-   "date": "2026-09-25",
-   "batch": "8"
-  },
-  {
-   "id": "gcd-lcm-product",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "triangle-area-standard",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "stewarts-theorem",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "distance-midpoint",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "periodic-sequences",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "thales-theorem",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "cross-section-method",
-   "date": "2026-09-25",
-   "batch": "9"
-  },
-  {
-   "id": "abs-value-relations",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "functional-substitution",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "states-recursion-prob",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "trapezoid-parallelogram-areas",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "chord-length",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "power-sums",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "multiset-permutations",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "binomial-row-sums",
-   "date": "2026-09-25",
-   "batch": "10"
-  },
-  {
-   "id": "invariants-coloring",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "inradius-area",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "circumradius-area",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "ptolemys-theorem",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "point-line-distance",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "fermats-little-theorem",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "legendres-formula",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "reflection-coordinates",
-   "date": "2026-09-25",
-   "batch": "11"
-  },
-  {
-   "id": "rotation-90",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "sp-substitution",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "uniform-overcount",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "circular-segment",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "am-gm",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "pythagorean-identities",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "divisibility-rules",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "handshakes-diagonals",
-   "date": "2026-09-25",
-   "batch": "12"
-  },
-  {
-   "id": "law-of-cosines-special-triangles",
-   "date": "2026-09-25",
-   "batch": "new card"
-  },
-  {
-   "id": "expected-value",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "conic-sections",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "cone-formulas",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "product-sum",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "non-adjacent-selection",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "homothety-monge",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "area-method",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "extremal-principle",
-   "date": "2026-09-25",
-   "batch": "13"
-  },
-  {
-   "id": "piecewise-graph-counting",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "altitude-hypotenuse",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "centroid-division",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "polygon-angle-sums",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "conjugate-root-theorems",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "half-angle",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "absolute-value-rules",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "work-rates",
-   "date": "2026-09-25",
-   "batch": "14"
-  },
-  {
-   "id": "repeating-decimals",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "binomial-probability",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "pigeonhole",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "same-base-area-ratio",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "law-cosines-60-120",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "radical-axis",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "multiplicative-order",
-   "date": "2026-09-25",
-   "batch": "15"
-  },
-  {
-   "id": "lattice-points-gcd",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "mass-points",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "complex-bash",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "symmetric-polynomial-strategies",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "generating-function-method",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "burnsides-lemma",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "median-to-hypotenuse",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "midsegment-theorem",
-   "date": "2026-09-26",
-   "batch": "16"
-  },
-  {
-   "id": "regular-polygon-area",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "line-forms",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "exponent-laws",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "circular-permutations",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "grid-paths",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "rationalizing",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "shared-angle-area-ratio",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "apollonius-theorem",
-   "date": "2026-09-26",
-   "batch": "17"
-  },
-  {
-   "id": "point-plane-distance",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "golden-ratio-pentagon",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "triangular-numbers",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "binets-formula",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "eulers-theorem",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "difference-of-squares-rep",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "digit-count",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "multinomial-theorem",
-   "date": "2026-09-26",
-   "batch": "18"
-  },
-  {
-   "id": "permutation-cycle-structure",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "denesting-radicals",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "symmetric-linear-system",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "finite-differences",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "multi-leg-rates",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "recognition-numbers",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "double-counting",
-   "date": "2026-09-26",
-   "batch": "19"
-  },
-  {
-   "id": "roots-of-unity-filter",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "cyclic-opposite-angles",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "circle-equation",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "space-diagonal",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "rational-root-theorem",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "sum-zero-identities",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "cauchy-schwarz",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "average-speed",
-   "date": "2026-09-26",
-   "batch": "20"
-  },
-  {
-   "id": "eulers-totient",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "chicken-mcnugget",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "handshake-lemma",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "quadrilateral-diagonal-area",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "orthocenter-properties",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "common-tangent-lengths",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "isosceles-tetrahedron",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "insphere-radius",
-   "date": "2026-09-26",
-   "batch": "21"
-  },
-  {
-   "id": "median-doubling",
-   "date": "2026-09-26",
-   "batch": "new cards"
-  },
-  {
-   "id": "parallel-line-similarity",
-   "date": "2026-09-26",
-   "batch": "new cards"
-  },
-  {
-   "id": "cyclic-equal-angles",
-   "date": "2026-09-26",
-   "batch": "new cards"
-  },
-  {
-   "id": "perp-to-angle-bisector",
-   "date": "2026-09-27",
-   "batch": "new cards"
-  },
-  {
-   "id": "plane-intercept-form",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "product-of-divisors",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "perfect-square-divisors",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "digit-sum-carries",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "vandermonde",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "bayes-theorem",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "newtons-sums",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "log-substitution",
-   "date": "2026-09-26",
-   "batch": "22"
-  },
-  {
-   "id": "trig-substitution",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "hensel-lifting",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "indicator-variables",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "tangency-condition",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "fx-pairing",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "shifted-polynomial-construction",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "descartes-circle-theorem",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "partitions",
-   "date": "2026-09-26",
-   "batch": "23"
-  },
-  {
-   "id": "roots-unity-distance-product",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "cevian-area-ratio",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "regular-hexagon-area",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "tangent-chord-angle",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "coefficient-extraction",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "vertex-form",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "first-order-recurrence",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "trivial-inequality",
-   "date": "2026-09-27",
-   "batch": "24"
-  },
-  {
-   "id": "linear-change-of-variables",
-   "date": "2026-09-27",
-   "batch": "new"
-  },
-  {
-   "id": "polar-coordinates",
-   "date": "2026-09-27",
-   "batch": "new"
-  },
-  {
-   "id": "common-angle-values",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "euclids-lemma",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "sum-of-divisors",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "last-digit-patterns",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "trailing-zeros",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "pythagorean-triples",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "trapezoid-special-segments",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "cevas-theorem",
-   "date": "2026-09-27",
-   "batch": "25"
-  },
-  {
-   "id": "gcd-substitution",
-   "date": "2026-09-27",
-   "batch": "26"
-  },
-  {
-   "id": "primes-6k",
-   "date": "2026-09-27",
-   "batch": "26"
-  },
-  {
-   "id": "odd-divisor-count",
-   "date": "2026-09-27",
-   "batch": "new"
-  },
-  {
-   "id": "lte",
-   "date": "2026-10-02",
-   "batch": "four-kinds-pilot"
-  },
-  {
-   "id": "lte-lemma",
-   "date": "2026-10-02",
-   "batch": "four-kinds-pilot"
-  },
-  {
-   "id": "extend-sides-to-meet",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "inclusion-exclusion",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "monges-theorem",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "fundamental-theorem-symmetric",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "inversion-facts",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "lagrange-interpolation-formula",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "sum-of-two-squares",
-   "date": "2026-10-03",
-   "batch": "re-sort"
-  },
-  {
-   "id": "polynomial-crt",
-   "date": "2026-10-03",
-   "batch": "new"
-  },
-  {
-   "id": "odd-part-chains",
-   "date": "2026-10-03",
-   "batch": "new"
-  },
-  {
-   "id": "largest-odd-divisor-sum",
-   "date": "2026-10-03",
-   "batch": "new"
+  "_comment": "Cards whose intro (description) and explanation (Why it works, plus Full proof where one fits) have been rewritten to the standard in CONVENTIONS.md. The rewrite runs over many sessions; scan-conventions.py reports progress from this file and fails on an id that is not a card. Add an entry only after the card has been read rendered and every derivation checked by hand.",
+  "done": [
+    {
+      "id": "pythagorean-theorem",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "similar-figures-ratios",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "law-of-cosines",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "arithmetic-series",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "vietas-general",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "number-of-divisors",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "basic-probability",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "stars-and-bars",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "casework-method",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "geometric-probability",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "barycentric-coordinates",
+      "date": "2026-09-25",
+      "batch": "pilot"
+    },
+    {
+      "id": "constructive-counting",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "modular-basics",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "log-rules",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "difference-of-squares",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "geometric-series",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "bounding-diophantine",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "coordinate-bash",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "quadratic-formula",
+      "date": "2026-09-25",
+      "batch": "2"
+    },
+    {
+      "id": "floor-basics",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "complementary-counting",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "pie",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "base-conversion",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "bijection-method",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "complex-basics",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "permutations-combinations",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "factor-pair-counting",
+      "date": "2026-09-25",
+      "batch": "3"
+    },
+    {
+      "id": "special-right-triangles",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "angle-chasing",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "telescoping",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "trig-area",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "circle-basics",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "tangent-facts",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "weighted-average",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "tangent-circles",
+      "date": "2026-09-25",
+      "batch": "4"
+    },
+    {
+      "id": "equilateral-triangle-facts",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "binomial-theorem",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "proportion-properties",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "power-of-a-point",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "de-moivre",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "recursive-counting",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "roots-of-unity",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "crt",
+      "date": "2026-09-25",
+      "batch": "5"
+    },
+    {
+      "id": "law-of-sines",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "square-of-sum",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "angle-addition",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "angle-bisector-theorem",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "change-of-base",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "herons-formula",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "prism-pyramid-volumes",
+      "date": "2026-09-25",
+      "batch": "6"
+    },
+    {
+      "id": "vietas-quadratic",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "factor-remainder-theorem",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "sfft",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "inscribed-angle-theorem",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "linear-recurrence",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "triangle-inequality",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "floor-multiples",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "exponent-tracking",
+      "date": "2026-09-25",
+      "batch": "7"
+    },
+    {
+      "id": "symmetry-probability",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "shoelace-formula",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "double-angle",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "euclidean-algorithm",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "conditional-probability",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "completing-the-square",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "perpendicular-bisector-locus",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "relative-motion",
+      "date": "2026-09-25",
+      "batch": "8"
+    },
+    {
+      "id": "gcd-lcm-product",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "triangle-area-standard",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "stewarts-theorem",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "distance-midpoint",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "periodic-sequences",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "thales-theorem",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "cross-section-method",
+      "date": "2026-09-25",
+      "batch": "9"
+    },
+    {
+      "id": "abs-value-relations",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "functional-substitution",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "states-recursion-prob",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "trapezoid-parallelogram-areas",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "chord-length",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "power-sums",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "multiset-permutations",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "binomial-row-sums",
+      "date": "2026-09-25",
+      "batch": "10"
+    },
+    {
+      "id": "invariants-coloring",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "inradius-area",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "circumradius-area",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "ptolemys-theorem",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "point-line-distance",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "fermats-little-theorem",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "legendres-formula",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "reflection-coordinates",
+      "date": "2026-09-25",
+      "batch": "11"
+    },
+    {
+      "id": "rotation-90",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "sp-substitution",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "uniform-overcount",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "circular-segment",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "am-gm",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "pythagorean-identities",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "divisibility-rules",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "handshakes-diagonals",
+      "date": "2026-09-25",
+      "batch": "12"
+    },
+    {
+      "id": "law-of-cosines-special-triangles",
+      "date": "2026-09-25",
+      "batch": "new card"
+    },
+    {
+      "id": "expected-value",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "conic-sections",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "cone-formulas",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "product-sum",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "non-adjacent-selection",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "homothety-monge",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "area-method",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "extremal-principle",
+      "date": "2026-09-25",
+      "batch": "13"
+    },
+    {
+      "id": "piecewise-graph-counting",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "altitude-hypotenuse",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "centroid-division",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "polygon-angle-sums",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "conjugate-root-theorems",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "half-angle",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "absolute-value-rules",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "work-rates",
+      "date": "2026-09-25",
+      "batch": "14"
+    },
+    {
+      "id": "repeating-decimals",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "binomial-probability",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "pigeonhole",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "same-base-area-ratio",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "law-cosines-60-120",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "radical-axis",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "multiplicative-order",
+      "date": "2026-09-25",
+      "batch": "15"
+    },
+    {
+      "id": "lattice-points-gcd",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "mass-points",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "complex-bash",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "symmetric-polynomial-strategies",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "generating-function-method",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "burnsides-lemma",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "median-to-hypotenuse",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "midsegment-theorem",
+      "date": "2026-09-26",
+      "batch": "16"
+    },
+    {
+      "id": "regular-polygon-area",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "line-forms",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "exponent-laws",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "circular-permutations",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "grid-paths",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "rationalizing",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "shared-angle-area-ratio",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "apollonius-theorem",
+      "date": "2026-09-26",
+      "batch": "17"
+    },
+    {
+      "id": "point-plane-distance",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "golden-ratio-pentagon",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "triangular-numbers",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "binets-formula",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "eulers-theorem",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "difference-of-squares-rep",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "digit-count",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "multinomial-theorem",
+      "date": "2026-09-26",
+      "batch": "18"
+    },
+    {
+      "id": "permutation-cycle-structure",
+      "date": "2026-09-26",
+      "batch": "19"
+    },
+    {
+      "id": "denesting-radicals",
+      "date": "2026-09-26",
+      "batch": "19"
+    },
+    {
+      "id": "finite-differences",
+      "date": "2026-09-26",
+      "batch": "19"
+    },
+    {
+      "id": "recognition-numbers",
+      "date": "2026-09-26",
+      "batch": "19"
+    },
+    {
+      "id": "double-counting",
+      "date": "2026-09-26",
+      "batch": "19"
+    },
+    {
+      "id": "roots-of-unity-filter",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "cyclic-opposite-angles",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "circle-equation",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "space-diagonal",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "rational-root-theorem",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "sum-zero-identities",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "cauchy-schwarz",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "average-speed",
+      "date": "2026-09-26",
+      "batch": "20"
+    },
+    {
+      "id": "eulers-totient",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "chicken-mcnugget",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "handshake-lemma",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "quadrilateral-diagonal-area",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "orthocenter-properties",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "common-tangent-lengths",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "isosceles-tetrahedron",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "insphere-radius",
+      "date": "2026-09-26",
+      "batch": "21"
+    },
+    {
+      "id": "median-doubling",
+      "date": "2026-09-26",
+      "batch": "new cards"
+    },
+    {
+      "id": "parallel-line-similarity",
+      "date": "2026-09-26",
+      "batch": "new cards"
+    },
+    {
+      "id": "cyclic-equal-angles",
+      "date": "2026-09-26",
+      "batch": "new cards"
+    },
+    {
+      "id": "perp-to-angle-bisector",
+      "date": "2026-09-27",
+      "batch": "new cards"
+    },
+    {
+      "id": "plane-intercept-form",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "product-of-divisors",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "perfect-square-divisors",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "digit-sum-carries",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "vandermonde",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "bayes-theorem",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "newtons-sums",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "log-substitution",
+      "date": "2026-09-26",
+      "batch": "22"
+    },
+    {
+      "id": "trig-substitution",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "hensel-lifting",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "indicator-variables",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "tangency-condition",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "fx-pairing",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "descartes-circle-theorem",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "partitions",
+      "date": "2026-09-26",
+      "batch": "23"
+    },
+    {
+      "id": "roots-unity-distance-product",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "cevian-area-ratio",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "regular-hexagon-area",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "tangent-chord-angle",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "coefficient-extraction",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "vertex-form",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "first-order-recurrence",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "trivial-inequality",
+      "date": "2026-09-27",
+      "batch": "24"
+    },
+    {
+      "id": "linear-change-of-variables",
+      "date": "2026-09-27",
+      "batch": "new"
+    },
+    {
+      "id": "polar-coordinates",
+      "date": "2026-09-27",
+      "batch": "new"
+    },
+    {
+      "id": "common-angle-values",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "euclids-lemma",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "sum-of-divisors",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "last-digit-patterns",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "trailing-zeros",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "pythagorean-triples",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "trapezoid-special-segments",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "cevas-theorem",
+      "date": "2026-09-27",
+      "batch": "25"
+    },
+    {
+      "id": "gcd-substitution",
+      "date": "2026-09-27",
+      "batch": "26"
+    },
+    {
+      "id": "primes-6k",
+      "date": "2026-09-27",
+      "batch": "26"
+    },
+    {
+      "id": "lte",
+      "date": "2026-10-02",
+      "batch": "four-kinds-pilot"
+    },
+    {
+      "id": "lte-lemma",
+      "date": "2026-10-02",
+      "batch": "four-kinds-pilot"
+    },
+    {
+      "id": "extend-sides-to-meet",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "inclusion-exclusion",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "monges-theorem",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "fundamental-theorem-symmetric",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "inversion-facts",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "lagrange-interpolation-formula",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "sum-of-two-squares",
+      "date": "2026-10-03",
+      "batch": "re-sort"
+    },
+    {
+      "id": "polynomial-crt",
+      "date": "2026-10-03",
+      "batch": "new"
+    },
+    {
+      "id": "odd-part-chains",
+      "date": "2026-10-03",
+      "batch": "new"
+    },
+    {
+      "id": "largest-odd-divisor-sum",
+      "date": "2026-10-03",
+      "batch": "new"
+    }
+  ],
+  "conversion": {
+    "coordinate-bash": "method",
+    "mass-points": "method",
+    "complementary-counting": "method",
+    "lte": "method",
+    "tangency-condition": "pattern",
+    "lte-lemma": "formula",
+    "legendres-formula": "formula",
+    "power-of-a-point": "formula",
+    "vietas-quadratic": "formula",
+    "extend-sides-to-meet": "method",
+    "inclusion-exclusion": "formula",
+    "monges-theorem": "formula",
+    "fundamental-theorem-symmetric": "formula",
+    "inversion-facts": "formula",
+    "lagrange-interpolation-formula": "formula",
+    "sum-of-two-squares": "formula",
+    "polynomial-crt": "formula",
+    "odd-part-chains": "method",
+    "largest-odd-divisor-sum": "formula",
+    "choose-modulus": "method",
+    "exponent-tracking": "method",
+    "hensel-lifting": "method",
+    "vieta-jumping": "method",
+    "extended-euclidean-algorithm": "method",
+    "gcd-substitution": "method",
+    "bounding-diophantine": "method",
+    "squeeze-between-squares": "method",
+    "factor-pair-counting": "method",
+    "cryptarithms": "pattern",
+    "digit-manipulation": "pattern",
+    "bijection-method": "method",
+    "double-counting": "method",
+    "symmetry-probability": "method",
+    "reflection-principle": "method",
+    "geometric-probability": "method",
+    "constructive-counting": "method",
+    "casework-method": "method",
+    "counting-blocks": "method",
+    "gap-method": "method",
+    "uniform-overcount": "method",
+    "pie": "method",
+    "recursive-counting": "method",
+    "grid-path-fill": "method",
+    "states-recursion-prob": "method",
+    "transfer-matrix-method": "method",
+    "generating-function-method": "method",
+    "indicator-variables": "method",
+    "invariants-coloring": "method",
+    "extremal-principle": "method",
+    "probabilistic-method": "method",
+    "log-substitution": "method",
+    "weierstrass-substitution": "method",
+    "trig-substitution": "method",
+    "functional-substitution": "method",
+    "sp-substitution": "method",
+    "normalization": "method",
+    "sfft": "method",
+    "completing-the-square": "method",
+    "forced-difference-of-squares": "method",
+    "rationalizing": "method",
+    "denesting-radicals": "method",
+    "symmetric-polynomial-strategies": "method",
+    "lagrange-interpolation": "method",
+    "root-transformations": "method",
+    "roots-of-unity-filter": "method",
+    "telescoping": "method",
+    "fx-pairing": "method",
+    "finite-differences": "method",
+    "double-summation": "method",
+    "largest-term-ratio": "method",
+    "sos-method": "method",
+    "smoothing-method": "method",
+    "tangent-line-trick": "method",
+    "abs-value-graphing": "method",
+    "abs-value-relations": "method",
+    "piecewise-graph-counting": "method",
+    "sqrt-approximation": "method",
+    "cofactor-expansion": "method",
+    "infinite-nest": "pattern",
+    "periodic-sequences": "pattern",
+    "palindromic-polynomials": "method",
+    "median-minimizes-abs": "method",
+    "cross-section-method": "method",
+    "perp-to-angle-bisector": "method",
+    "median-doubling": "method",
+    "parallel-line-similarity": "method",
+    "inversion-properties": "method",
+    "angle-chasing": "method",
+    "rotation-trick": "method",
+    "rotation-center": "method",
+    "spiral-similarity": "method",
+    "homothety-monge": "method",
+    "ravi-substitution": "method",
+    "barycentric-coordinates": "method",
+    "trig-bash": "method",
+    "complex-bash": "method",
+    "affine-transformations": "method",
+    "linear-change-of-variables": "method",
+    "directed-angles": "method",
+    "phantom-point": "method",
+    "area-method": "method",
+    "ellipse-tangent-line": "pattern",
+    "angle-bisector-circumcircle": "pattern",
+    "zonogon-minkowski": "pattern",
+    "products-over-roots": "method",
+    "uvw-method": "method",
+    "homogenization": "method",
+    "subtract-and-factor": "method",
+    "vietas-general": "formula",
+    "ptolemys-theorem": "formula",
+    "pythagorean-theorem": "formula",
+    "sophie-germain": "formula",
+    "inscribed-angle-theorem": "formula",
+    "gcd-lcm-product": "formula",
+    "euclidean-algorithm": "formula",
+    "floor-multiples": "formula",
+    "euclids-lemma": "formula",
+    "bezouts-identity": "formula",
+    "divisibility-rules": "formula",
+    "gcd-power-minus-one": "formula",
+    "consecutive-coprime": "formula",
+    "number-of-divisors": "formula",
+    "sum-of-divisors": "formula",
+    "sigma-parity": "formula",
+    "product-of-divisors": "formula",
+    "eulers-totient": "formula",
+    "totient-divisor-sum": "formula",
+    "mobius-inversion": "formula",
+    "multiplicative-functions": "formula",
+    "coprime-residue-sum": "formula",
+    "perfect-square-divisors": "formula",
+    "lcm-pair-counting": "formula",
+    "dirichlet-convolution": "formula",
+    "modular-basics": "formula",
+    "fermats-little-theorem": "formula",
+    "eulers-theorem": "formula",
+    "carmichael-function": "formula",
+    "wilsons-theorem": "formula",
+    "crt": "formula",
+    "multiplicative-order": "formula",
+    "modular-inverse": "formula",
+    "last-digit-patterns": "formula",
+    "primitive-roots": "formula",
+    "crt-solution-counting": "formula",
+    "freshmans-dream": "formula",
+    "power-minus-self": "formula",
+    "squares-mod-small": "formula",
+    "eulers-criterion": "formula",
+    "quadratic-reciprocity": "formula",
+    "jacobi-symbol": "formula",
+    "gauss-lemma-qr": "formula",
+    "p-adic-valuation": "formula",
+    "kummers-theorem": "formula",
+    "lucas-theorem": "formula",
+    "primes-6k": "formula",
+    "prime-divides-binomial": "formula",
+    "bertrands-postulate": "formula",
+    "trailing-zeros": "formula",
+    "consecutive-product-factorial": "formula",
+    "chicken-mcnugget": "formula",
+    "pythagorean-triples": "formula",
+    "pell-equation": "formula",
+    "thues-lemma": "formula",
+    "difference-of-squares-rep": "formula",
+    "sum-of-three-squares": "formula",
+    "cauchy-davenport": "formula",
+    "erdos-ginzburg-ziv": "formula",
+    "chevalley-warning": "formula",
+    "base-conversion": "formula",
+    "repeating-decimals": "formula",
+    "digit-sum-carries": "formula",
+    "terminating-decimals": "formula",
+    "digit-count": "formula",
+    "wolstenholme": "formula",
+    "zsygmondy": "formula",
+    "law-of-sines": "formula",
+    "law-of-cosines": "formula",
+    "stewarts-theorem": "formula",
+    "angle-bisector-theorem": "formula",
+    "herons-formula": "formula",
+    "inradius-area": "formula",
+    "circumradius-area": "formula",
+    "incircle-tangent-lengths": "formula",
+    "circle-basics": "formula",
+    "circular-segment": "formula",
+    "chord-length": "formula",
+    "angle-chord-secant": "formula",
+    "tangent-facts": "formula",
+    "tangent-chord-angle": "formula",
+    "tangent-circles": "formula",
+    "cyclic-opposite-angles": "formula",
+    "cyclic-equal-angles": "formula",
+    "reflect-across-the-line": "method",
+    "unfold-the-surface": "method",
+    "tangency-equation": "method",
+    "add-all-equations": "method",
+    "time-per-leg": "method",
+    "name-the-whole-expression": "method",
+    "cycle-hunting": "method",
+    "backward-induction": "method",
+    "coloring-arguments": "method",
+    "cyclic-quadrilateral": "pattern",
+    "triangle-of-centers": "method",
+    "tangent-circle-packing": "pattern",
+    "pairing-to-bound": "method",
+    "subset-avoiding-relation": "pattern",
+    "shared-leg-pythagoras": "method",
+    "point-in-equilateral": "pattern",
+    "right-triangle-altitude": "pattern",
+    "triangle-type-by-sides": "formula",
+    "bisector-closer-region": "method",
+    "folded-paper": "pattern",
+    "circle-in-angle": "pattern",
+    "scale-one-level": "method",
+    "nested-similar": "pattern",
+    "equiangular-polygon": "pattern",
+    "box-tetrahedron": "method",
+    "dihedral-angle": "method",
+    "fit-copies": "method",
+    "equal-edge-tetrahedron": "pattern"
+  },
+  "placeholders": {},
+  "ledger": {
+    "vietas-general": [
+      [
+        "How to use it, paragraph 1 (symmetric functions from the e_k)",
+        "kept -> Useful observations (the two identities, as facts)"
+      ],
+      [
+        "How to use it, paragraph 2 (questions about roots never need the roots)",
+        "moved -> symmetric-polynomial-strategies/When to use"
+      ],
+      [
+        "How to use it, paragraph 3 (transform the polynomial for non-symmetric targets)",
+        "moved -> root-transformations/How"
+      ],
+      [
+        "On contests (frequency, conjugate-root pairing, trigger)",
+        "rewritten -> Contest profile; the trigger moved -> symmetric-polynomial-strategies/When to use"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (tightened)"
+      ],
+      [
+        "Full proof",
+        "kept -> Full proof (quartic case moved -> Key forms)"
+      ]
+    ],
+    "ptolemys-theorem": [
+      [
+        "How to use it, paragraph 1 (cyclic quadrilateral shortcut; isosceles trapezoid)",
+        "kept -> Useful observations (trapezoid diagonal as a fact); the 'three lines vs a page' advice dropped (procedure)"
+      ],
+      [
+        "How to use it, paragraph 2 (rectangle, equilateral triangle, pentagon)",
+        "kept -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "pythagorean-theorem": [
+      [
+        "How to use it: manufacture the triangle (where to drop the perpendicular)",
+        "kept as fact -> Useful observations (chord-distance-radius); the procedural advice moved -> coordinate-bash and extend-sides-to-meet already cover constructing right triangles"
+      ],
+      [
+        "How to use it: slice through the axis in 3D",
+        "moved -> cross-section-method/How (already there)"
+      ],
+      [
+        "How to use it: read it as the distance formula; converse",
+        "kept -> Key forms and Useful observations"
+      ],
+      [
+        "How to use it: write it twice and subtract (shared altitude)",
+        "moved -> planned method equate-shared-leg (registered placeholder)"
+      ],
+      [
+        "On contests: frequency and partner cards",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "On contests: extra triples",
+        "kept -> Useful observations"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (tightened)"
+      ]
+    ],
+    "sophie-germain": [
+      [
+        "How to use it (trigger: fourth powers with coefficient 4; 4^n with n odd; factor sizes)",
+        "kept as facts -> Useful observations and Conditions; the trigger moved -> forced-difference-of-squares/When to use (already covers it)"
+      ],
+      [
+        "On contests (named AIME problem)",
+        "rewritten -> Contest profile (problem name removed)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (expanded)"
+      ]
+    ],
+    "inscribed-angle-theorem": [
+      [
+        "How to use it (think in arcs; angle chasing as arc bookkeeping)",
+        "moved -> angle-chasing/How (already covers inscribed-angle transfers)"
+      ],
+      [
+        "How to use it (corollaries: same arc, cyclic quadrilaterals, Thales)",
+        "kept -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "gcd-lcm-product": [
+      [
+        "How to use it",
+        "fact (fourth from three) -> Useful observations; pair counting -> gcd-substitution/How and the example"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "euclidean-algorithm": [
+      [
+        "How to use it",
+        "worked computations -> Useful observations as facts; 'subtract multiples of expressions' procedure -> gcd-substitution and the example; backward run -> extended-euclidean-algorithm/How"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "floor-multiples": [
+      [
+        "How to use it",
+        "inclusion-exclusion combinations -> Key forms (as formulas); range counting -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "euclids-lemma": [
+      [
+        "How to use it",
+        "cancellation procedure -> gcd-substitution/How; lowest-terms rigidity -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "bezouts-identity": [
+      [
+        "How to use it",
+        "solvability test and back-substitution -> Key forms and extended-euclidean-algorithm/How; nonnegative solutions -> Conditions pointer to chicken-mcnugget"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "divisibility-rules": [
+      [
+        "How to use it",
+        "composite moduli -> Useful observations; missing-digit procedure -> digit-manipulation/Methods to try; casting out nines and digital root -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "gcd-power-minus-one": [
+      [
+        "How to use it",
+        "examples and divisibility criterion -> Key forms and Useful observations; repunits -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "consecutive-coprime": [
+      [
+        "How to use it",
+        "square-product argument -> Useful observations; casework limiting -> dropped (procedure, covered by gcd-substitution)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "number-of-divisors": [
+      [
+        "How to use it",
+        "running it backwards and smallest number with k divisors -> Useful observations and the example; recurring shapes -> Contest profile (no names)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "sum-of-divisors": [
+      [
+        "How to use it",
+        "prime-by-prime computation and restricted sums -> Conditions and Useful observations; reciprocal pairing -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "sigma-parity": [
+      [
+        "How to use it",
+        "test-the-shape procedure -> dropped (procedure; the criterion is the Key form); product parity -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "product-of-divisors": [
+      [
+        "How to use it",
+        "backwards use and logarithms -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "eulers-totient": [
+      [
+        "How to use it",
+        "computation -> Useful observations; parity and inverse-problem bounds -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "totient-divisor-sum": [
+      [
+        "How to use it",
+        "group-by-gcd procedure -> Key forms (gcd sum as a formula); Farey counts -> Applications"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "mobius-inversion": [
+      [
+        "How to use it",
+        "gcd-exactly-1 procedure -> pie/How (inclusion-exclusion) and Useful observations as counts"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "multiplicative-functions": [
+      [
+        "How to use it",
+        "prime-power computation and proof pattern -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "coprime-residue-sum": [
+      [
+        "How to use it",
+        "pairing as a general technique -> fx-pairing/How; fraction sums -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "perfect-square-divisors": [
+      [
+        "How to use it",
+        "factor first / Legendre -> Contest profile; complement and smallest multiplier -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "lcm-pair-counting": [
+      [
+        "How to use it",
+        "per-prime method for systems -> exponent-tracking/How; named AIME problem -> removed"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "dirichlet-convolution": [
+      [
+        "How to use it",
+        "recognize-and-factor procedure -> dropped (procedure); staples -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "modular-basics": [
+      [
+        "How to use it",
+        "reduce-early, choose-a-modulus-to-prove-impossibility, and casework follow-up -> choose-modulus/How and When to use; squares mod 4 and 8 -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "fermats-little-theorem": [
+      [
+        "How to use it",
+        "reduce-the-exponent, towers, and CRT split -> Useful observations as facts; tower procedure -> eulers-theorem/carmichael Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "eulers-theorem": [
+      [
+        "How to use it",
+        "base sharing a factor and mod 8/125 split -> Conditions and Contest profile; examples -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "carmichael-function": [
+      [
+        "How to use it",
+        "last-k-digits and tower procedure -> Applications; special cases -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works (proof completed where it was a sketch)"
+      ]
+    ],
+    "wilsons-theorem": [
+      [
+        "How to use it",
+        "shifted factorials and half factorial -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "crt": [
+      [
+        "How to use it",
+        "two-at-a-time recombination -> Useful observations and the example; splitting and counting -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "multiplicative-order": [
+      [
+        "How to use it",
+        "testing divisors and LTE handoff -> Useful observations; exponent reduction -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "modular-inverse": [
+      [
+        "How to use it",
+        "finding by inspection, extended Euclid, Euler -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "last-digit-patterns": [
+      [
+        "How to use it",
+        "reduce-the-exponent and rejection checks -> Useful observations; last two/three digits -> eulers-theorem"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "primitive-roots": [
+      [
+        "How to use it",
+        "index calculus and k-th power counts -> Key forms and Useful observations; worked case -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "crt-solution-counting": [
+      [
+        "How to use it",
+        "multiply-across-prime-powers reflex -> Contest profile; idempotent count -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "freshmans-dream": [
+      [
+        "How to use it",
+        "uses (Fermat, factoring over F_p) -> Useful observations and Applications"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "power-minus-self": [
+      [
+        "How to use it",
+        "prime hunt procedure -> Key forms (characterization)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "squares-mod-small": [
+      [
+        "How to use it",
+        "first-move procedure -> choose-modulus/When to use; residue menus -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "eulers-criterion": [
+      [
+        "How to use it",
+        "corollaries (-1, 2) -> Key forms and Useful observations; proof replaced by the Wilson pairing proof"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "quadratic-reciprocity": [
+      [
+        "How to use it",
+        "evaluation algorithm -> Useful observations (worked symbols); 'deep, take as a tool' -> replaced by Eisenstein's lattice proof"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "jacobi-symbol": [
+      [
+        "How to use it",
+        "flip-and-reduce algorithm -> Useful observations and the example"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "gauss-lemma-qr": [
+      [
+        "How to use it",
+        "counting procedure -> Key forms; reciprocity engine -> Applications"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "p-adic-valuation": [
+      [
+        "How to use it",
+        "translate-divisibility procedure -> Useful observations; gcd/lcm and Legendre -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "kummers-theorem": [
+      [
+        "How to use it",
+        "central binomial facts -> Useful observations; named contest questions -> removed"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "lucas-theorem": [
+      [
+        "How to use it",
+        "digit procedure and parity count -> Key forms; prime-power caveat -> Conditions"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "primes-6k": [
+      [
+        "How to use it",
+        "two-case split procedure -> dropped (casework method); divisibility consequences -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "prime-divides-binomial": [
+      [
+        "How to use it",
+        "freshman's dream and Fermat consequences -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "bertrands-postulate": [
+      [
+        "How to use it",
+        "'cite it' replaced by Erdős's proof in Full proof; uses -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "trailing-zeros": [
+      [
+        "How to use it",
+        "reverse question and skips -> Key forms and Useful observations; other bases -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "consecutive-product-factorial": [
+      [
+        "How to use it",
+        "proof-of-integrality uses -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "chicken-mcnugget": [
+      [
+        "How to use it",
+        "gcd check and residue-class procedure -> Conditions; three denominations -> Conditions"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "pythagorean-triples": [
+      [
+        "How to use it",
+        "generation and given-leg factoring -> Useful observations; inradius -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "pell-equation": [
+      [
+        "How to use it",
+        "generation and recurrence -> Key forms; near-square uses -> Applications"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof)"
+      ]
+    ],
+    "thues-lemma": [
+      [
+        "How to use it",
+        "two-squares application -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "difference-of-squares-rep": [
+      [
+        "How to use it",
+        "worked 40/42 -> dropped (example); counting and equations -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "sum-of-three-squares": [
+      [
+        "How to use it",
+        "testing procedure -> Useful observations as a fact about factors of 4; two-square criterion -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "cauchy-davenport": [
+      [
+        "How to use it",
+        "vague 'counting/degree contradiction' replaced by the polynomial-method proof; iteration -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "erdos-ginzburg-ziv": [
+      [
+        "How to use it",
+        "proof sketch replaced by the Chevalley-Warning proof and the multiplicative step"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "chevalley-warning": [
+      [
+        "How to use it",
+        "existence procedure -> Key forms and Useful observations; proof completed"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "base-conversion": [
+      [
+        "How to use it",
+        "polynomial-in-the-base reading and structural facts -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "repeating-decimals": [
+      [
+        "How to use it",
+        "conversion procedure and period computations -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "digit-sum-carries": [
+      [
+        "How to use it",
+        "forwards/backwards use -> Key forms; no-carry and doubling -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "terminating-decimals": [
+      [
+        "How to use it",
+        "reduce-first rule -> Conditions; counting -> Useful observations and the example"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "digit-count": [
+      [
+        "How to use it",
+        "worked 2^100 -> example replaced; leading-digit procedure -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "wolstenholme": [
+      [
+        "How to use it",
+        "cite-the-strengthening advice -> dropped; proof completed with the inverse-squares step"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "zsygmondy": [
+      [
+        "How to use it",
+        "'deep' replaced by a proof outline; exception check -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (full proof where it was a sketch)"
+      ]
+    ],
+    "law-of-sines": [
+      [
+        "How to use it",
+        "side-from-opposite-angle use -> Key forms; ambiguous case -> Conditions and Useful observations; 2R chord form -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "law-of-cosines": [
+      [
+        "How to use it",
+        "both directions -> Key forms; sign test -> Key forms and Useful observations; shared-diagonal move -> Useful observations (procedure detail dropped, belongs to a method)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "stewarts-theorem": [
+      [
+        "How to use it",
+        "labeling rule -> Conditions; median and bisector cases -> Key forms and Useful observations; 3-4-5 worked case -> dropped (example)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept as the second proof; weighted-average proof added first"
+      ]
+    ],
+    "angle-bisector-theorem": [
+      [
+        "How to use it",
+        "piece formulas and external case -> Key forms and Conditions; harmonic and mass-point remarks -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "herons-formula": [
+      [
+        "How to use it",
+        "keep-it-factored advice -> dropped (procedure); altitude alternative -> dropped (method content); expanded form -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "inradius-area": [
+      [
+        "How to use it",
+        "area-then-divide procedure -> dropped (procedure); right-triangle shortcut -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "circumradius-area": [
+      [
+        "How to use it",
+        "both-radii procedure -> Key forms and Useful observations; right-triangle case -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "incircle-tangent-lengths": [
+      [
+        "How to use it",
+        "write-tangent-lengths procedure -> dropped (procedure); excircle facts -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "circle-basics": [
+      [
+        "How to use it",
+        "radian vs degree advice -> Conditions; segment formula -> dropped (its own card)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "circular-segment": [
+      [
+        "How to use it",
+        "find-the-angle procedure -> dropped (procedure); lens construction -> Why it works; worked 90-degree case -> Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "chord-length": [
+      [
+        "How to use it",
+        "any-two-determine-the-rest -> Useful observations (equivalences); common-chord setup -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "angle-chord-secant": [
+      [
+        "How to use it",
+        "recipe by vertex position -> Key forms; arc linear systems and power-of-a-point link -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "rewritten -> Why it works (both cases proved, two figures added)"
+      ]
+    ],
+    "tangent-facts": [
+      [
+        "How to use it",
+        "draw-the-radius procedure -> dropped (method content); incircle bookkeeping -> Useful observations; pulley lengths -> Useful observations with figure"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "tangent-chord-angle": [
+      [
+        "How to use it",
+        "re-mark-the-angle procedure -> dropped (method content); circumcircle tangent and antiparallel -> Key forms and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "tangent-circles": [
+      [
+        "How to use it",
+        "write-the-center-distance procedure -> dropped (method content); floor pair and spheres -> Key forms and Useful observations with figure"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "cyclic-opposite-angles": [
+      [
+        "How to use it",
+        "test advice -> Key forms; follow-ups (Ptolemy, shared diagonal) -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "cyclic-equal-angles": [
+      [
+        "How to use it",
+        "mark-the-pairs procedure -> dropped (method content); concyclic test -> Key forms (converse) and Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile (no problem names)"
+      ],
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ]
+    ],
+    "triangle-type-by-sides": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ]
   }
- ],
- "conversion": {
-  "coordinate-bash": "method",
-  "mass-points": "method",
-  "complementary-counting": "method",
-  "lte": "method",
-  "tangency-condition": "pattern",
-  "periodicity-mod-m": "pattern",
-  "shifted-polynomial-construction": "pattern",
-  "lte-lemma": "formula",
-  "legendres-formula": "formula",
-  "power-of-a-point": "formula",
-  "vietas-quadratic": "formula",
-  "extend-sides-to-meet": "method",
-  "inclusion-exclusion": "formula",
-  "monges-theorem": "formula",
-  "fundamental-theorem-symmetric": "formula",
-  "inversion-facts": "formula",
-  "lagrange-interpolation-formula": "formula",
-  "sum-of-two-squares": "formula",
-  "polynomial-crt": "formula",
-  "odd-part-chains": "method",
-  "largest-odd-divisor-sum": "formula",
-  "choose-modulus": "method",
-  "exponent-tracking": "method",
-  "hensel-lifting": "method",
-  "vieta-jumping": "method",
-  "extended-euclidean-algorithm": "method",
-  "gcd-substitution": "method",
-  "bounding-diophantine": "method",
-  "squeeze-between-squares": "method",
-  "factor-pair-counting": "method",
-  "odd-divisor-count": "pattern",
-  "cryptarithms": "pattern",
-  "digit-manipulation": "pattern",
-  "bijection-method": "method",
-  "double-counting": "method",
-  "symmetry-probability": "method",
-  "reflection-principle": "method",
-  "geometric-probability": "method",
-  "constructive-counting": "method",
-  "casework-method": "method",
-  "counting-blocks": "method",
-  "gap-method": "method",
-  "uniform-overcount": "method",
-  "pie": "method",
-  "recursive-counting": "method",
-  "grid-path-fill": "method",
-  "states-recursion-prob": "method",
-  "transfer-matrix-method": "method",
-  "generating-function-method": "method",
-  "indicator-variables": "method",
-  "invariants-coloring": "method",
-  "extremal-principle": "method",
-  "probabilistic-method": "method",
-  "losing-positions": "pattern",
-  "log-substitution": "method",
-  "weierstrass-substitution": "method",
-  "trig-substitution": "method",
-  "functional-substitution": "method",
-  "sp-substitution": "method",
-  "normalization": "method",
-  "sfft": "method",
-  "completing-the-square": "method",
-  "forced-difference-of-squares": "method",
-  "rationalizing": "method",
-  "denesting-radicals": "method",
-  "symmetric-polynomial-strategies": "method",
-  "lagrange-interpolation": "method",
-  "root-transformations": "method",
-  "roots-of-unity-filter": "method",
-  "telescoping": "method",
-  "fx-pairing": "method",
-  "finite-differences": "method",
-  "double-summation": "method",
-  "largest-term-ratio": "method",
-  "sos-method": "method",
-  "smoothing-method": "method",
-  "tangent-line-trick": "method",
-  "abs-value-graphing": "method",
-  "abs-value-relations": "method",
-  "piecewise-graph-counting": "method",
-  "sqrt-approximation": "method",
-  "cofactor-expansion": "method",
-  "infinite-nest": "pattern",
-  "periodic-sequences": "pattern",
-  "palindromic-polynomials": "pattern",
-  "symmetric-linear-system": "pattern",
-  "multi-leg-rates": "pattern",
-  "median-minimizes-abs": "pattern",
-  "cross-section-method": "method",
-  "perp-to-angle-bisector": "method",
-  "median-doubling": "method",
-  "parallel-line-similarity": "method",
-  "inversion-properties": "method",
-  "angle-chasing": "method",
-  "rotation-trick": "method",
-  "rotation-center": "method",
-  "spiral-similarity": "method",
-  "homothety-monge": "method",
-  "ravi-substitution": "method",
-  "barycentric-coordinates": "method",
-  "trig-bash": "method",
-  "complex-bash": "method",
-  "affine-transformations": "method",
-  "linear-change-of-variables": "method",
-  "directed-angles": "method",
-  "phantom-point": "method",
-  "area-method": "method",
-  "reflection-shortest-path": "pattern",
-  "ellipse-tangent-line": "pattern",
-  "surface-shortest-path": "pattern",
-  "angle-bisector-circumcircle": "pattern",
-  "zonogon-minkowski": "pattern",
-  "products-over-roots": "method",
-  "uvw-method": "method",
-  "homogenization": "method",
-  "subtract-and-factor": "method",
-  "vietas-general": "formula",
-  "ptolemys-theorem": "formula",
-  "pythagorean-theorem": "formula",
-  "sophie-germain": "formula",
-  "inscribed-angle-theorem": "formula",
-  "gcd-lcm-product": "formula",
-  "euclidean-algorithm": "formula",
-  "floor-multiples": "formula",
-  "euclids-lemma": "formula",
-  "bezouts-identity": "formula",
-  "divisibility-rules": "formula",
-  "gcd-power-minus-one": "formula",
-  "consecutive-coprime": "formula",
-  "number-of-divisors": "formula",
-  "sum-of-divisors": "formula",
-  "sigma-parity": "formula",
-  "product-of-divisors": "formula",
-  "eulers-totient": "formula",
-  "totient-divisor-sum": "formula",
-  "mobius-inversion": "formula",
-  "multiplicative-functions": "formula",
-  "coprime-residue-sum": "formula",
-  "perfect-square-divisors": "formula",
-  "lcm-pair-counting": "formula",
-  "dirichlet-convolution": "formula",
-  "modular-basics": "formula",
-  "fermats-little-theorem": "formula",
-  "eulers-theorem": "formula",
-  "carmichael-function": "formula",
-  "wilsons-theorem": "formula",
-  "crt": "formula",
-  "multiplicative-order": "formula",
-  "modular-inverse": "formula",
-  "last-digit-patterns": "formula",
-  "primitive-roots": "formula",
-  "crt-solution-counting": "formula",
-  "freshmans-dream": "formula",
-  "power-minus-self": "formula",
-  "squares-mod-small": "formula",
-  "eulers-criterion": "formula",
-  "quadratic-reciprocity": "formula",
-  "jacobi-symbol": "formula",
-  "gauss-lemma-qr": "formula",
-  "p-adic-valuation": "formula",
-  "kummers-theorem": "formula",
-  "lucas-theorem": "formula",
-  "primes-6k": "formula",
-  "prime-divides-binomial": "formula",
-  "bertrands-postulate": "formula",
-  "trailing-zeros": "formula",
-  "consecutive-product-factorial": "formula",
-  "chicken-mcnugget": "formula",
-  "pythagorean-triples": "formula",
-  "pell-equation": "formula",
-  "thues-lemma": "formula",
-  "difference-of-squares-rep": "formula",
-  "sum-of-three-squares": "formula",
-  "cauchy-davenport": "formula",
-  "erdos-ginzburg-ziv": "formula",
-  "chevalley-warning": "formula",
-  "base-conversion": "formula",
-  "repeating-decimals": "formula",
-  "digit-sum-carries": "formula",
-  "terminating-decimals": "formula",
-  "digit-count": "formula",
-  "wolstenholme": "formula",
-  "zsygmondy": "formula",
-  "law-of-sines": "formula",
-  "law-of-cosines": "formula",
-  "stewarts-theorem": "formula",
-  "angle-bisector-theorem": "formula",
-  "herons-formula": "formula",
-  "inradius-area": "formula",
-  "circumradius-area": "formula",
-  "incircle-tangent-lengths": "formula",
-  "circle-basics": "formula",
-  "circular-segment": "formula",
-  "chord-length": "formula",
-  "angle-chord-secant": "formula",
-  "tangent-facts": "formula",
-  "tangent-chord-angle": "formula",
-  "tangent-circles": "formula",
-  "cyclic-opposite-angles": "formula",
-  "cyclic-equal-angles": "formula"
- },
- "placeholders": {
-  "tangency-equation": "method: turn 'exactly one solution' into one equation (distance equals radius, or discriminant zero)",
-  "cycle-hunting": "method: list states until one repeats, then reduce the index by the period",
-  "backward-induction": "method: label game positions winning or losing from the end, each from the positions it can move to",
-  "name-the-whole-expression": "method: call an infinite nested expression x, use that its tail is a copy of itself to write one equation, and solve",
-  "add-all-equations": "method: add (or multiply) all equations of a symmetric system so the symmetric parts collapse into the total",
-  "time-per-leg": "method: cut a trip where the speed changes, write each leg's time as distance over speed, and add times and distances",
-  "slope-counting": "method: sweep x across a piecewise-linear function and track its slope at each corner to find where it turns",
-  "reflect-across-the-line": "method: reflect an endpoint (or the room) across the line a path must touch, so the bent path becomes a straight segment",
-  "unfold-the-surface": "method: flatten the faces a surface path crosses into one plane and measure the straight segment, comparing every unfolding",
-  "equate-shared-leg": "method: write the Pythagorean Theorem in two right triangles that share a leg and subtract, so the squared unknowns cancel"
- },
- "ledger": {
-  "vietas-general": [
-   [
-    "How to use it, paragraph 1 (symmetric functions from the e_k)",
-    "kept -> Useful observations (the two identities, as facts)"
-   ],
-   [
-    "How to use it, paragraph 2 (questions about roots never need the roots)",
-    "moved -> symmetric-polynomial-strategies/When to use"
-   ],
-   [
-    "How to use it, paragraph 3 (transform the polynomial for non-symmetric targets)",
-    "moved -> root-transformations/How"
-   ],
-   [
-    "On contests (frequency, conjugate-root pairing, trigger)",
-    "rewritten -> Contest profile; the trigger moved -> symmetric-polynomial-strategies/When to use"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (tightened)"
-   ],
-   [
-    "Full proof",
-    "kept -> Full proof (quartic case moved -> Key forms)"
-   ]
-  ],
-  "ptolemys-theorem": [
-   [
-    "How to use it, paragraph 1 (cyclic quadrilateral shortcut; isosceles trapezoid)",
-    "kept -> Useful observations (trapezoid diagonal as a fact); the 'three lines vs a page' advice dropped (procedure)"
-   ],
-   [
-    "How to use it, paragraph 2 (rectangle, equilateral triangle, pentagon)",
-    "kept -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "pythagorean-theorem": [
-   [
-    "How to use it: manufacture the triangle (where to drop the perpendicular)",
-    "kept as fact -> Useful observations (chord-distance-radius); the procedural advice moved -> coordinate-bash and extend-sides-to-meet already cover constructing right triangles"
-   ],
-   [
-    "How to use it: slice through the axis in 3D",
-    "moved -> cross-section-method/How (already there)"
-   ],
-   [
-    "How to use it: read it as the distance formula; converse",
-    "kept -> Key forms and Useful observations"
-   ],
-   [
-    "How to use it: write it twice and subtract (shared altitude)",
-    "moved -> planned method equate-shared-leg (registered placeholder)"
-   ],
-   [
-    "On contests: frequency and partner cards",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "On contests: extra triples",
-    "kept -> Useful observations"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (tightened)"
-   ]
-  ],
-  "sophie-germain": [
-   [
-    "How to use it (trigger: fourth powers with coefficient 4; 4^n with n odd; factor sizes)",
-    "kept as facts -> Useful observations and Conditions; the trigger moved -> forced-difference-of-squares/When to use (already covers it)"
-   ],
-   [
-    "On contests (named AIME problem)",
-    "rewritten -> Contest profile (problem name removed)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (expanded)"
-   ]
-  ],
-  "inscribed-angle-theorem": [
-   [
-    "How to use it (think in arcs; angle chasing as arc bookkeeping)",
-    "moved -> angle-chasing/How (already covers inscribed-angle transfers)"
-   ],
-   [
-    "How to use it (corollaries: same arc, cyclic quadrilaterals, Thales)",
-    "kept -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "gcd-lcm-product": [
-   [
-    "How to use it",
-    "fact (fourth from three) -> Useful observations; pair counting -> gcd-substitution/How and the example"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "euclidean-algorithm": [
-   [
-    "How to use it",
-    "worked computations -> Useful observations as facts; 'subtract multiples of expressions' procedure -> gcd-substitution and the example; backward run -> extended-euclidean-algorithm/How"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "floor-multiples": [
-   [
-    "How to use it",
-    "inclusion-exclusion combinations -> Key forms (as formulas); range counting -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "euclids-lemma": [
-   [
-    "How to use it",
-    "cancellation procedure -> gcd-substitution/How; lowest-terms rigidity -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "bezouts-identity": [
-   [
-    "How to use it",
-    "solvability test and back-substitution -> Key forms and extended-euclidean-algorithm/How; nonnegative solutions -> Conditions pointer to chicken-mcnugget"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "divisibility-rules": [
-   [
-    "How to use it",
-    "composite moduli -> Useful observations; missing-digit procedure -> digit-manipulation/Methods to try; casting out nines and digital root -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "gcd-power-minus-one": [
-   [
-    "How to use it",
-    "examples and divisibility criterion -> Key forms and Useful observations; repunits -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "consecutive-coprime": [
-   [
-    "How to use it",
-    "square-product argument -> Useful observations; casework limiting -> dropped (procedure, covered by gcd-substitution)"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "number-of-divisors": [
-   [
-    "How to use it",
-    "running it backwards and smallest number with k divisors -> Useful observations and the example; recurring shapes -> Contest profile (no names)"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "sum-of-divisors": [
-   [
-    "How to use it",
-    "prime-by-prime computation and restricted sums -> Conditions and Useful observations; reciprocal pairing -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "sigma-parity": [
-   [
-    "How to use it",
-    "test-the-shape procedure -> dropped (procedure; the criterion is the Key form); product parity -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "product-of-divisors": [
-   [
-    "How to use it",
-    "backwards use and logarithms -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "eulers-totient": [
-   [
-    "How to use it",
-    "computation -> Useful observations; parity and inverse-problem bounds -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "totient-divisor-sum": [
-   [
-    "How to use it",
-    "group-by-gcd procedure -> Key forms (gcd sum as a formula); Farey counts -> Applications"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "mobius-inversion": [
-   [
-    "How to use it",
-    "gcd-exactly-1 procedure -> pie/How (inclusion-exclusion) and Useful observations as counts"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "multiplicative-functions": [
-   [
-    "How to use it",
-    "prime-power computation and proof pattern -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "coprime-residue-sum": [
-   [
-    "How to use it",
-    "pairing as a general technique -> fx-pairing/How; fraction sums -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "perfect-square-divisors": [
-   [
-    "How to use it",
-    "factor first / Legendre -> Contest profile; complement and smallest multiplier -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "lcm-pair-counting": [
-   [
-    "How to use it",
-    "per-prime method for systems -> exponent-tracking/How; named AIME problem -> removed"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "dirichlet-convolution": [
-   [
-    "How to use it",
-    "recognize-and-factor procedure -> dropped (procedure); staples -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "modular-basics": [
-   [
-    "How to use it",
-    "reduce-early, choose-a-modulus-to-prove-impossibility, and casework follow-up -> choose-modulus/How and When to use; squares mod 4 and 8 -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "fermats-little-theorem": [
-   [
-    "How to use it",
-    "reduce-the-exponent, towers, and CRT split -> Useful observations as facts; tower procedure -> eulers-theorem/carmichael Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "eulers-theorem": [
-   [
-    "How to use it",
-    "base sharing a factor and mod 8/125 split -> Conditions and Contest profile; examples -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "carmichael-function": [
-   [
-    "How to use it",
-    "last-k-digits and tower procedure -> Applications; special cases -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works (proof completed where it was a sketch)"
-   ]
-  ],
-  "wilsons-theorem": [
-   [
-    "How to use it",
-    "shifted factorials and half factorial -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "crt": [
-   [
-    "How to use it",
-    "two-at-a-time recombination -> Useful observations and the example; splitting and counting -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "multiplicative-order": [
-   [
-    "How to use it",
-    "testing divisors and LTE handoff -> Useful observations; exponent reduction -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "modular-inverse": [
-   [
-    "How to use it",
-    "finding by inspection, extended Euclid, Euler -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "last-digit-patterns": [
-   [
-    "How to use it",
-    "reduce-the-exponent and rejection checks -> Useful observations; last two/three digits -> eulers-theorem"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "primitive-roots": [
-   [
-    "How to use it",
-    "index calculus and k-th power counts -> Key forms and Useful observations; worked case -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "crt-solution-counting": [
-   [
-    "How to use it",
-    "multiply-across-prime-powers reflex -> Contest profile; idempotent count -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "freshmans-dream": [
-   [
-    "How to use it",
-    "uses (Fermat, factoring over F_p) -> Useful observations and Applications"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "power-minus-self": [
-   [
-    "How to use it",
-    "prime hunt procedure -> Key forms (characterization)"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "squares-mod-small": [
-   [
-    "How to use it",
-    "first-move procedure -> choose-modulus/When to use; residue menus -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "eulers-criterion": [
-   [
-    "How to use it",
-    "corollaries (-1, 2) -> Key forms and Useful observations; proof replaced by the Wilson pairing proof"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "quadratic-reciprocity": [
-   [
-    "How to use it",
-    "evaluation algorithm -> Useful observations (worked symbols); 'deep, take as a tool' -> replaced by Eisenstein's lattice proof"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "jacobi-symbol": [
-   [
-    "How to use it",
-    "flip-and-reduce algorithm -> Useful observations and the example"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "gauss-lemma-qr": [
-   [
-    "How to use it",
-    "counting procedure -> Key forms; reciprocity engine -> Applications"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "p-adic-valuation": [
-   [
-    "How to use it",
-    "translate-divisibility procedure -> Useful observations; gcd/lcm and Legendre -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "kummers-theorem": [
-   [
-    "How to use it",
-    "central binomial facts -> Useful observations; named contest questions -> removed"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "lucas-theorem": [
-   [
-    "How to use it",
-    "digit procedure and parity count -> Key forms; prime-power caveat -> Conditions"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "primes-6k": [
-   [
-    "How to use it",
-    "two-case split procedure -> dropped (casework method); divisibility consequences -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "prime-divides-binomial": [
-   [
-    "How to use it",
-    "freshman's dream and Fermat consequences -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "bertrands-postulate": [
-   [
-    "How to use it",
-    "'cite it' replaced by Erdős's proof in Full proof; uses -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "trailing-zeros": [
-   [
-    "How to use it",
-    "reverse question and skips -> Key forms and Useful observations; other bases -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "consecutive-product-factorial": [
-   [
-    "How to use it",
-    "proof-of-integrality uses -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "chicken-mcnugget": [
-   [
-    "How to use it",
-    "gcd check and residue-class procedure -> Conditions; three denominations -> Conditions"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "pythagorean-triples": [
-   [
-    "How to use it",
-    "generation and given-leg factoring -> Useful observations; inradius -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "pell-equation": [
-   [
-    "How to use it",
-    "generation and recurrence -> Key forms; near-square uses -> Applications"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof)"
-   ]
-  ],
-  "thues-lemma": [
-   [
-    "How to use it",
-    "two-squares application -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "difference-of-squares-rep": [
-   [
-    "How to use it",
-    "worked 40/42 -> dropped (example); counting and equations -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "sum-of-three-squares": [
-   [
-    "How to use it",
-    "testing procedure -> Useful observations as a fact about factors of 4; two-square criterion -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "cauchy-davenport": [
-   [
-    "How to use it",
-    "vague 'counting/degree contradiction' replaced by the polynomial-method proof; iteration -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "erdos-ginzburg-ziv": [
-   [
-    "How to use it",
-    "proof sketch replaced by the Chevalley-Warning proof and the multiplicative step"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "chevalley-warning": [
-   [
-    "How to use it",
-    "existence procedure -> Key forms and Useful observations; proof completed"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "base-conversion": [
-   [
-    "How to use it",
-    "polynomial-in-the-base reading and structural facts -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "repeating-decimals": [
-   [
-    "How to use it",
-    "conversion procedure and period computations -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "digit-sum-carries": [
-   [
-    "How to use it",
-    "forwards/backwards use -> Key forms; no-carry and doubling -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "terminating-decimals": [
-   [
-    "How to use it",
-    "reduce-first rule -> Conditions; counting -> Useful observations and the example"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "digit-count": [
-   [
-    "How to use it",
-    "worked 2^100 -> example replaced; leading-digit procedure -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "wolstenholme": [
-   [
-    "How to use it",
-    "cite-the-strengthening advice -> dropped; proof completed with the inverse-squares step"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "zsygmondy": [
-   [
-    "How to use it",
-    "'deep' replaced by a proof outline; exception check -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (full proof where it was a sketch)"
-   ]
-  ],
-  "law-of-sines": [
-   [
-    "How to use it",
-    "side-from-opposite-angle use -> Key forms; ambiguous case -> Conditions and Useful observations; 2R chord form -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "law-of-cosines": [
-   [
-    "How to use it",
-    "both directions -> Key forms; sign test -> Key forms and Useful observations; shared-diagonal move -> Useful observations (procedure detail dropped, belongs to a method)"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "stewarts-theorem": [
-   [
-    "How to use it",
-    "labeling rule -> Conditions; median and bisector cases -> Key forms and Useful observations; 3-4-5 worked case -> dropped (example)"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept as the second proof; weighted-average proof added first"
-   ]
-  ],
-  "angle-bisector-theorem": [
-   [
-    "How to use it",
-    "piece formulas and external case -> Key forms and Conditions; harmonic and mass-point remarks -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "herons-formula": [
-   [
-    "How to use it",
-    "keep-it-factored advice -> dropped (procedure); altitude alternative -> dropped (method content); expanded form -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "inradius-area": [
-   [
-    "How to use it",
-    "area-then-divide procedure -> dropped (procedure); right-triangle shortcut -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "circumradius-area": [
-   [
-    "How to use it",
-    "both-radii procedure -> Key forms and Useful observations; right-triangle case -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "incircle-tangent-lengths": [
-   [
-    "How to use it",
-    "write-tangent-lengths procedure -> dropped (procedure); excircle facts -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "circle-basics": [
-   [
-    "How to use it",
-    "radian vs degree advice -> Conditions; segment formula -> dropped (its own card)"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "circular-segment": [
-   [
-    "How to use it",
-    "find-the-angle procedure -> dropped (procedure); lens construction -> Why it works; worked 90-degree case -> Key forms"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "chord-length": [
-   [
-    "How to use it",
-    "any-two-determine-the-rest -> Useful observations (equivalences); common-chord setup -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "angle-chord-secant": [
-   [
-    "How to use it",
-    "recipe by vertex position -> Key forms; arc linear systems and power-of-a-point link -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "rewritten -> Why it works (both cases proved, two figures added)"
-   ]
-  ],
-  "tangent-facts": [
-   [
-    "How to use it",
-    "draw-the-radius procedure -> dropped (method content); incircle bookkeeping -> Useful observations; pulley lengths -> Useful observations with figure"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "tangent-chord-angle": [
-   [
-    "How to use it",
-    "re-mark-the-angle procedure -> dropped (method content); circumcircle tangent and antiparallel -> Key forms and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "tangent-circles": [
-   [
-    "How to use it",
-    "write-the-center-distance procedure -> dropped (method content); floor pair and spheres -> Key forms and Useful observations with figure"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "cyclic-opposite-angles": [
-   [
-    "How to use it",
-    "test advice -> Key forms; follow-ups (Ptolemy, shared diagonal) -> Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ],
-  "cyclic-equal-angles": [
-   [
-    "How to use it",
-    "mark-the-pairs procedure -> dropped (method content); concyclic test -> Key forms (converse) and Useful observations"
-   ],
-   [
-    "On contests",
-    "rewritten -> Contest profile (no problem names)"
-   ],
-   [
-    "Why it works",
-    "kept -> Why it works"
-   ]
-  ]
- }
 }

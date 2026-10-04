@@ -3085,7 +3085,7 @@ html[data-text="large"] .try-block .try-sub { font-size: 14.5px; }
 /* ---------- Density: Spacious ----------
    More room everywhere, the mirror of Compact: page margins, card and section gaps, panel
    padding, the sidebar and the line spacing of a card's page. Text size and card width stay. */
-html[data-density="spacious"] .content { padding: 34px 34px 140px; }
+html[data-density="spacious"] .content { padding: 24px 34px 140px; }
 html[data-density="spacious"] .sidebar { padding: 26px 12px 48px 20px; }
 html[data-density="spacious"] .nav-section-btn { padding-top: 12px; padding-bottom: 12px; }
 html[data-density="spacious"] .nav-sub-link, html[data-density="spacious"] .nav-cluster-link { padding-top: 6px; padding-bottom: 6px; }
@@ -3108,16 +3108,16 @@ html[data-density="spacious"] .detail .key-forms li, html[data-density="spacious
 html[data-density="spacious"] .hp-panel, html[data-density="spacious"] .ix-subject { padding: 18px 20px; }
 html[data-density="spacious"] .settings-page { gap: 20px; }
 html[data-density="spacious"] .set-row { padding: 16px 0; }
-html[data-density="spacious"] .pv-inner { padding: 34px 34px; }
+html[data-density="spacious"] .pv-inner { padding: 24px 34px; }
 
 /* The preview's subject page carries the sidebar, drawn with the sidebar's own classes. */
 .pv-shell { display: grid; grid-template-columns: 260px 1fr; align-items: start; --space: var(--c-formulas); --space-soft: var(--cs-formulas); margin: -24px -22px; }
 html[data-density="compact"] .pv-shell { margin: -16px; }
-html[data-density="spacious"] .pv-shell { margin: -34px; }
+html[data-density="spacious"] .pv-shell { margin: -24px -34px; }
 .pv-side { position: static; max-height: none; overflow: hidden; }
 .pv-main { padding: 24px 22px; min-width: 0; }
 html[data-density="compact"] .pv-main { padding: 16px; }
-html[data-density="spacious"] .pv-main { padding: 34px; }
+html[data-density="spacious"] .pv-main { padding: 24px 34px; }
 
 /* The A to Z subject page has the same row of letters as Special:AllPages. */
 .wiki-jump { margin: 14px 0 4px; }
@@ -3203,3 +3203,10 @@ html[data-density="spacious"] .key-forms .detail-list li, html[data-density="spa
 .related-empty { margin: 0; font-size: 13.5px; color: var(--text-faint); }
 /* The search box fills the top bar up to the tool buttons, whether or not Filters is shown. */
 .search-wrap { max-width: none; }
+
+/* Kind label after each TRY item on a pattern page: method or formula. */
+.lead-try .try-kind { font-size: 0.72em; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); margin-left: 4px; }
+
+/* Placeholder cards: a planned card shows a short notice instead of a formula box. */
+.card-planned { margin: 10px 0 6px; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); }
+.planned-note { margin: 14px 0; padding: 10px 14px; border: 1px dashed var(--border-light); border-radius: 10px; color: var(--text-dim); background: var(--bg-panel); }

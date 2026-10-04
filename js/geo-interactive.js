@@ -699,10 +699,11 @@
   } };
 
   // ---------- Reflection / shortest path ----------
-  W["reflection-shortest-path"] = { mount: function (host) {
+  W["reflect-across-the-line"] = { mount: function (host) {
     var my = 300;
     mountGeo(host, {
       title: "Shortest reflected path",
+      hint: "Drag A and B; both stay on the same side of the mirror line.",
       w: 440, h: 360,
       init: { A: [110, 120], B: [340, 180] },
       drag: { A: { constrain: function (xy) { return [xy[0], Math.min(xy[1], my - 20)]; } }, B: { constrain: function (xy) { return [xy[0], Math.min(xy[1], my - 20)]; } } },
@@ -908,6 +909,7 @@
     var cen = [215, 195], r = 140;
     mountGeo(host, {
       title: "Cyclic quadrilateral",
+      hint: "Drag the corners; they stay on the circle. Keep them in the order A, B, C, D around it.",
       w: 430, h: 390,
       init: { A: projectToCircle([100, 90], cen, r), B: projectToCircle([340, 110], cen, r), C: projectToCircle([350, 300], cen, r), D: projectToCircle([95, 300], cen, r) },
       drag: (function () { var d = {}; ["A", "B", "C", "D"].forEach(function (k) { d[k] = { constrain: function (xy) { return projectToCircle(xy, cen, r); } }; }); return d; })(),
@@ -927,6 +929,7 @@
     var cen = [215, 195], r = 135;
     mountGeo(host, {
       title: "Brahmagupta",
+      hint: "Drag the corners; they stay on the circle. Keep them in the order A, B, C, D around it.",
       w: 430, h: 390,
       init: { A: projectToCircle([110, 100], cen, r), B: projectToCircle([335, 110], cen, r), C: projectToCircle([350, 300], cen, r), D: projectToCircle([100, 300], cen, r) },
       drag: (function () { var d = {}; ["A", "B", "C", "D"].forEach(function (k) { d[k] = { constrain: function (xy) { return projectToCircle(xy, cen, r); } }; }); return d; })(),
@@ -1087,6 +1090,7 @@
     var O = [210, 190], R = 140;
     mountGeo(host, {
       title: "Chord length",
+      hint: "Drag A and B; they stay on the circle.",
       w: 420, h: 380,
       init: { A: projectToCircle([100, 110], O, R), B: projectToCircle([330, 140], O, R) },
       drag: { A: { constrain: function (xy) { return projectToCircle(xy, O, R); } }, B: { constrain: function (xy) { return projectToCircle(xy, O, R); } } },
@@ -1232,6 +1236,7 @@
     var O = [210, 200], R = 135;
     mountGeo(host, {
       title: "Tangent-chord angle = inscribed angle in the alternate segment",
+      hint: "Drag T, A, and B; all three stay on the circle, with B on the far arc for the equal angles.",
       w: 420, h: 390,
       init: { T: projectToCircle([210, 65], O, R), A: projectToCircle([345, 260], O, R), B: projectToCircle([80, 250], O, R) },
       drag: (function () { var d = {}; ["T", "A", "B"].forEach(function (k) { d[k] = { constrain: function (xy) { return projectToCircle(xy, O, R); } }; }); return d; })(),
@@ -1281,6 +1286,7 @@
     var O = [215, 195], R = 150;
     mountGeo(host, {
       title: "Butterfly theorem",
+      hint: "Drag the four chord ends; they stay on the circle.",
       w: 430, h: 390,
       init: { P: projectToCircle([80, 120], O, R), Q: projectToCircle([360, 250], O, R), A: projectToCircle([120, 300], O, R), C: projectToCircle([330, 90], O, R) },
       drag: (function () { var d = {}; ["P", "Q", "A", "C"].forEach(function (k) { d[k] = { constrain: function (xy) { return projectToCircle(xy, O, R); } }; }); return d; })(),

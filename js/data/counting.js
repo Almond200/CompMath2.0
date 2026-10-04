@@ -565,7 +565,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "expected-fixed-points",
-          name: "Expected Fixed Points & Exactly-k Formula",
+          name: "Expected Fixed Points & Exactly-$k$ Formula",
           latex: String.raw`E[\#\text{fixed points}] = 1, \qquad P(\text{exactly } k) = \frac{\binom{n}{k} D_{n-k}}{n!}`,
           description: String.raw`Linearity with indicators: each position is fixed with probability $\frac{1}{n}$, so the expectation is exactly 1 for every $n$. The exact distribution uses derangement numbers $D_{n-k}$.`,
           keywords: ["fixed points", "matching hats", "indicator", "derangement distribution"],

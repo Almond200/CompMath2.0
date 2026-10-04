@@ -1512,7 +1512,7 @@ Adding the base, $\pi r^2$, gives the total surface area. The volume is the pyra
 ## How to use it
 The unrolled sector is the problem half the time. Its angle is $$\frac{2\pi r}{\ell} \text{ radians},$$ the fraction $\frac r\ell$ of a full turn. For a cone with radius $6$ and height $8$, $\ell = 10$, so the sector is $\frac{6}{10}$ of a circle of radius $10$, and the lateral area is $60\pi$ of that circle's $100\pi$.
 
-A shortest path on the cone's surface becomes a straight segment in the unrolled sector, which is how the ant-walks-around-a-cone problems are done; see [[surface-shortest-path|shortest paths on surfaces]]. And a sector rolled into a cone keeps its radius as the slant height and its arc as the base's circumference, which fixes $r$ and then $h$.
+A shortest path on the cone's surface becomes a straight segment in the unrolled sector, which is how the ant-walks-around-a-cone problems are done; see [[unfold-the-surface|shortest paths on surfaces]]. And a sector rolled into a cone keeps its radius as the slant height and its arc as the base's circumference, which fixes $r$ and then $h$.
 
 ## On contests
 Six problems here, five of them AIME, none by it alone; two pair it with [[similar-figures-ratios|similar triangles]], since a plane parallel to the base cuts off a smaller cone similar to the whole. The classic setups are an ant walking around a cone, a cone rolled from a sector, and a cone rolling on a table, where the slant height is the radius of the circle its base traces.
@@ -1686,7 +1686,6 @@ Once each vertex has a mass, the whole system has one center of mass. Grouping $
 
 ## Formulas it uses
 - [[cevas-theorem]]: a third cevian passes through the crossing point exactly when its ratio matches the masses, which is the theorem's condition, so masses that balance two cevians decide the third.
-- [[menelaus-theorem]]: a line that crosses all three sides without passing through a vertex is where plain masses stop working; the theorem's product of ratios settles it directly.
 
 ## Common traps
 - Writing the ratio along a cevian the wrong way round: the larger mass is nearer the balance point, so $AP : PD = m_D : m_A$.
@@ -1697,31 +1696,6 @@ Once each vertex has a mass, the whole system has one center of mass. Grouping $
 Usually most of the computation once the side ratios are known; the work before it is finding those ratios.
 `,
 
-"reflection-shortest-path": String.raw`
-## Distinguishing clues
-The path is free except that it must touch a line, or bounce off one, on its way between two fixed points. A path that must stay on a surface is the unfolding pattern instead, [[surface-shortest-path|shortest paths on a surface]]. A sum of distances from one moving point to two fixed points with no line involved is a focal sum, minimized on the segment between them.
-
-## Methods and Formulas to Try
-Reflection keeps distances to points of the mirror, so $AP = A'P$ for every point $P$ of the line, and the bent path $A \to P \to B$ has the same length as $A' \to P \to B$, which is shortest when straight. Several walls mean several reflections, of the endpoints or of the whole room.
-
-### Methods to try
-- [[reflect-across-the-line]]: reflect one endpoint across the line the path must touch, join the image to the other endpoint with a straight segment, and read off the touching point.
-- [[coordinate-bash]]: with the line as an axis, the reflection is a sign change and the minimum is a distance formula.
-
-### Formulas to try
-- [[reflection-coordinates]]: the image of a point across a line, such as $(x, y) \mapsto (x, -y)$ across the $x$-axis.
-- [[distance-midpoint]]: the length of the straightened path $A'B$.
-- [[orthic-triangle]]: the inscribed triangle of least perimeter in an acute triangle, found by reflecting twice.
-- [[triangle-inequality]]: the reason the straight path beats every bent one.
-
-## Common traps
-- Reflecting the wrong endpoint for a second wall, or in the wrong order.
-- Ignoring that both points must be on the same side of the line; if they are on opposite sides, the straight segment already crosses it.
-- Reporting the reflected point's coordinates instead of the touching point on the line.
-
-## Contest profile
-From MATHCOUNTS through AIME: a river-and-barn or billiard path whose minimum is one straight segment after a reflection.
-`,
 
 "rotation-trick": String.raw`
 ## When to use
@@ -1744,7 +1718,6 @@ The point and its image are at the same distance from $B$ with the rotation angl
 - [[law-of-cosines]]: computes the side length or the remaining angles once the three distances form one triangle.
 - [[equilateral-triangle-facts]]: a $60^\circ$ rotation makes triangle $PBP'$ equilateral, so $PP' = PB$, and gives the area $\frac{\sqrt3}{4}s^2$ at the end.
 - [[special-right-triangles]]: a $90^\circ$ rotation makes triangle $PBP'$ isosceles right, so $PP' = PB\sqrt2$ with $45^\circ$ angles.
-- [[rotation-90]]: in coordinates, $(x, y) \mapsto (-y, x)$, which checks the image of each point.
 
 ## Common traps
 - Rotating in the direction that sends $C$ onto $A$ when the setup assumed $A$ onto $C$, which mismatches the distances.
@@ -1797,17 +1770,16 @@ Object.assign(window.MATH_DETAILS, {
 Two fixed points act as foci, and a line is involved: either the least value of $PF_1 + PF_2$ along the line, or an ellipse with those foci that touches the line. Without a line it is just the ellipse definition, and with one focus and a line it is a parabola.
 
 ## Methods and Formulas to Try
-The ellipses with foci $F_1$ and $F_2$ nest outward as the focal sum grows, so the first one to reach the line touches it at the point of least sum. Reflecting one focus across the line finds that point, and in coordinates tangency is a double root.
+The ellipses with foci $F_1$ and $F_2$ nest outward as the focal sum grows, so the first one to reach the line touches it at the point of least sum.
 
 ### Methods to try
-- [[reflect-across-the-line]]: reflect $F_1$ across the line to $F_1'$; the minimum of $PF_1 + PF_2$ is $F_1'F_2$, attained where the segment crosses the line.
+- [[reflect-across-the-line]]: reflect $F_1$ across the line to $F_1'$; the least focal sum on the line is $F_1'F_2$, which is the ellipse's $2a$.
 - [[tangency-equation]]: substitute the line into the ellipse equation and require a double root, which fixes the missing parameter.
-- [[coordinate-bash]]: with the line as an axis, compute the foci, the reflection, and the axes of the ellipse directly.
+- [[coordinate-bash]]: with the line as an axis, compute the foci and the axes of the ellipse directly.
 
 ### Formulas to try
 - [[ellipse-properties]]: $PF_1 + PF_2 = 2a$, with $b^2 = a^2 - c^2$, which recovers the axes once the focal sum is known.
 - [[conic-reflective-property]]: the tangent makes equal angles with the two focal radii, the same law as the reflection.
-- [[reflection-coordinates]]: the reflected focus in coordinates.
 
 ## Common traps
 - Using the reflection when the foci are on opposite sides of the line, where the segment $F_1F_2$ already crosses it.
@@ -1858,17 +1830,15 @@ Three problems here, all AIME, none solved by it alone. The archetype is a point
 One solution means tangency only when the curves could have met twice. A line parallel to the axis of a parabola meets it once without touching it, and two linear equations have a unique solution for an unrelated reason. Check that the generic count is two before reading "exactly one" as "touching".
 
 ## Methods and Formulas to Try
-Tangency becomes one equation, written one of two ways depending on whether a curve has a center. A line meets a circle in $0$, $1$, or $2$ points as the distance from the center is greater than, equal to, or less than the radius, and the discriminant of the substituted quadratic has the matching signs.
-
-{{figure:trichotomy}}
+Two curves that could meet twice but meet once are touching, and touching is a single equation in the parameter.
 
 ### Methods to try
-- [[tangency-equation]]: set the distance from the center to the line equal to the radius when one curve is a circle, or substitute one equation into the other and set the discriminant of the resulting quadratic to zero when neither curve has a center, then solve for the parameter.
-- [[coordinate-bash]]: when the curves arrive as a locus, a condition on complex numbers, or the envelope of a moving segment, write them as equations first, since both forms of the tangency equation need coordinates.
+- [[tangency-equation]]: distance from the center equals the radius for a circle, or a zero discriminant after substituting.
+- [[coordinate-bash]]: when the curves arrive as a locus, as complex numbers, or as an envelope, write them as equations first.
 
 ### Formulas to try
-- [[point-line-distance]]: the distance from a center $(x_0, y_0)$ to the line $Ax + By + C = 0$ is $\frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}$, and setting it equal to the radius is the circle form of tangency.
-- [[quadratic-formula]]: the discriminant $b^2 - 4ac$ of the substituted quadratic is zero exactly when its two roots, the two intersection points, merge into one.
+- [[point-line-distance]]: the distance from a center to a line, set equal to the radius.
+- [[quadratic-formula]]: the discriminant $b^2 - 4ac$ of the substituted quadratic, zero exactly when the two intersection points merge.
 
 ## Common traps
 - Keeping only one parameter value when the problem allows both, one for each side from which the line can touch.
@@ -2080,7 +2050,6 @@ Composing the homothety from circle $1$ to circle $2$ with the one from circle $
 - [[monges-theorem]]: the three external centers of similitude of three circles are collinear.
 - [[similar-figures-ratios]]: the image figure is similar to the original with ratio $|k|$, so lengths scale and angles stay.
 - [[tangent-circles]]: two tangent circles have their point of contact on the line of centers, which is a center of similitude.
-- [[common-tangent-lengths]]: the external tangent length $\sqrt{d^2 - (r_1 - r_2)^2}$, which pairs with the similitude center to locate contact points.
 
 ## Common traps
 - Placing the external center of similitude between the circles; it lies outside, beyond the smaller circle, while the internal one lies between them.
@@ -2465,7 +2434,7 @@ The special cases are the formula with simple normals. For $y = x$, written $x -
 ## How to use it
 Use the instant cases whenever the mirror is an axis, $y = \pm x$, or a horizontal or vertical line, and the general formula for a slanted mirror. Reflecting $(5, 0)$ over $x + y = 4$ gives $$(5, 0) - \frac{2(5 + 0 - 4)}{1^2 + 1^2}(1, 1) = (4, -1).$$ Check that the midpoint, here $(4.5, -0.5)$, lies on the mirror. To reflect a whole line, reflect two of its points.
 
-Reflections do three jobs on contests. They find shortest paths, since a path that touches a line on its way between two points is shortest when reflecting one endpoint makes it straight, [[reflection-shortest-path|the reflection trick]]. They model folds, since a crease is the perpendicular bisector of a point and its image. And the swap over $y = x$ is the coordinate meaning of an inverse function.
+Reflections do three jobs on contests. They find shortest paths, since a path that touches a line on its way between two points is shortest when reflecting one endpoint makes it straight, [[reflect-across-the-line|the reflection trick]]. They model folds, since a crease is the perpendicular bisector of a point and its image. And the swap over $y = x$ is the coordinate meaning of an inverse function.
 
 ## On contests
 Seven problems here, five of them AIME, one solved by it alone; most of the rest are folds, paired with the perpendicular bisector that the crease is and finished with the [[pythagorean-theorem|Pythagorean Theorem]]. Light rays and billiard paths chain several reflections, each one a step of the same computation.
@@ -2803,8 +2772,6 @@ Any three non-collinear points can be sent to any other three by exactly one aff
 ## Formulas it uses
 - [[determinant-geometric]]: the map multiplies every area by $|\det M|$, which cancels in every ratio of areas.
 - [[ellipse-properties]]: the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ is a circle of radius $a$ scaled by $\frac ba$ vertically, with area $\pi ab$.
-- [[cevian-area-ratio]]: area ratios from base ratios, the kind of statement that survives an affine map.
-- [[picks-theorem-general]]: lattice-point area counting holds on every lattice, since each lattice is an affine image of the square one.
 
 ## Common traps
 - Transferring an angle, a length, or a perpendicularity, none of which survive.
@@ -2916,7 +2883,6 @@ So every length ratio on a line is an area ratio, and areas add. That turns a ta
 - [[cevian-area-ratio]]: $\frac{[ABD]}{[ACD]} = \frac{BD}{DC}$ for $D$ on $BC$, the common-apex rule.
 - [[same-base-area-ratio]]: triangles on one base have areas in the ratio of their heights, giving $\frac{[PBC]}{[ABC]} = \frac{PD}{AD}$.
 - [[shared-angle-area-ratio]]: triangles sharing an angle have areas in the ratio of the products of the sides around it.
-- [[cevas-theorem]]: the concurrence condition that the area method proves and often replaces.
 
 ## Common traps
 - Comparing triangles whose bases are not on one line, or whose apex is not shared.
@@ -3182,30 +3148,6 @@ Watch for the triple in disguise: a similar copy scaled by $k$ has area $84k^2$,
 ## On contests
 This is the default scalene triangle for a problem that needs integer answers, and it appears far more often than chance would explain — on AMC and AIME alike, and especially in questions about the incircle or circumcircle of a triangle given by its three sides. It is the second member of the consecutive-integer family $3$-$4$-$5$, $13$-$14$-$15$, $51$-$52$-$53$, $193$-$194$-$195$, whose middle sides satisfy $x_{n+1} = 4x_n - x_{n-1}$; the areas run $6$, $84$, $1170$, $16296$. Only the first two are small enough to be worth memorizing.`,
 
-"surface-shortest-path": String.raw`
-## Distinguishing clues
-The path must stay on the surface of a solid, which is usually stated through an ant, a spider, or a string wound around. A path that may pass through the solid is the space diagonal, a different and shorter quantity. A path that merely bounces off flat walls is the reflection pattern, [[reflection-shortest-path|reflection for shortest paths]], of which unfolding is the solid version.
-
-## Methods and Formulas to Try
-Faces of a box, the side of a cylinder, and the side of a cone unroll into a plane without stretching, so lengths along the surface become ordinary lengths in the net, and the shortest surface path becomes a straight segment. A box can unfold in several ways, and every reasonable one must be compared.
-
-### Methods to try
-- [[unfold-the-surface]]: flatten the faces the path crosses into one plane, place both endpoints, and measure the straight segment; compare all the unfoldings.
-- [[reflect-across-the-line]]: unfolding across an edge is reflecting across it, which helps when a path crosses several faces in a row.
-
-### Formulas to try
-- [[pythagorean-theorem]]: the straight segment in a box net, $\sqrt{(a + b)^2 + c^2}$ for opposite corners.
-- [[space-diagonal]]: $\sqrt{a^2 + b^2 + c^2}$, the through-the-solid distance that a surface path cannot use.
-- [[cone-formulas]]: a cone unrolls into a sector with radius equal to its slant height and angle $360^\circ \cdot \frac rs$.
-
-## Common traps
-- Checking only one unfolding of a box; for opposite corners of an $a \le b \le c$ box the shortest pairs the two smallest edges, $\sqrt{(a + b)^2 + c^2}$.
-- Giving the space diagonal, which leaves the surface.
-- Unrolling a cone into a sector with the wrong angle, by using the base radius in place of the slant height.
-
-## Contest profile
-A MATHCOUNTS and AMC favorite, ant on a box or string around a cylinder, solved by one straight line in the right net.
-`
 
 });
 
@@ -3360,7 +3302,6 @@ The segment $BB'$ is perpendicular to the mirror and cut in half by it, so the f
 {{figure:external}}
 
 ## Formulas it uses
-- [[angle-bisector-theorem]]: $\frac{BD}{DC} = \frac{AB}{AC}$, which the reflection proves without trigonometry and which checks answers.
 - [[midsegment-theorem]]: $F$ and $M$ are midpoints of two sides of triangle $BB'C$, so $FM \parallel AC$ and $FM = \frac{B'C}{2}$.
 
 ## Common traps
@@ -3483,7 +3424,6 @@ A line not through $O$ has a nearest point $H$; for any point $X$ on it, the sim
 - [[inversion-facts]]: the images of lines and circles and the distance formula, the dictionary for every inversion.
 - [[power-of-a-point]]: a circle not through $O$ maps to itself when $r^2$ equals the power of $O$ with respect to it.
 - [[tangent-circles]]: in the simplified picture, tangent circles have center distance equal to the sum or difference of radii.
-- [[ptolemys-inequality]]: proved by inverting at one vertex, where it becomes the triangle inequality.
 
 ## Common traps
 - Mapping the center of a circle to the center of its image; the image of the center is not the center of the image circle.
@@ -3747,7 +3687,7 @@ This is a recognition tool more than a computation. A combination of two conic e
 Take a point $T$ on an ellipse and move slightly along the tangent. To first order the sum $PF_1 + PF_2$ must not change, since $T$ already sits on the level curve where that sum is $2a$. The rate at which each focal distance changes is the cosine of the angle between the tangent direction and that focal radius, so the two cosines must cancel, which says the tangent makes equal angles with the two radii. That is the reflection law. On a parabola the second focus is at infinity, so the second radius points along the axis and a ray from the focus leaves parallel to it.
 
 ## How to use it
-The contest form is almost never about light. Read it as a level-curve statement: the ellipses with foci $F_1, F_2$ are the level sets of $PF_1 + PF_2$, so the smallest one meeting a given line touches it, and the point of tangency is where that sum is least. Every other point of the line lies on a larger ellipse, hence gives a larger sum. That reduces the minimization to [[reflection-shortest-path|reflecting one focus across the line]] and taking a straight segment, and [[ellipse-tangent-line|the tangency pattern]] is this idea packaged as a recognizable shape.
+The contest form is almost never about light. Read it as a level-curve statement: the ellipses with foci $F_1, F_2$ are the level sets of $PF_1 + PF_2$, so the smallest one meeting a given line touches it, and the point of tangency is where that sum is least. Every other point of the line lies on a larger ellipse, hence gives a larger sum. That reduces the minimization to [[reflect-across-the-line|reflecting one focus across the line]] and taking a straight segment, and [[ellipse-tangent-line|the tangency pattern]] is this idea packaged as a recognizable shape.
 
 ## On contests
 The classic AIME use is an ellipse tangent to an axis: the point of tangency minimizes the focal sum along that line, so reflecting a focus across it solves the problem in one line. The property also appears stated outright on the AMC, usually as a whispering gallery or a satellite dish, where the answer is simply that rays from one focus arrive at the other or leave parallel. The hyperbola's version, that a ray aimed at the far focus reflects away from the near one, is the rarest of the three.`,
@@ -3845,8 +3785,7 @@ A rotation turns every segment by the same angle, so the angle can be read from 
 
 ## Formulas it uses
 - [[perpendicular-bisector-locus]]: the points equidistant from $P$ and $P'$ form the perpendicular bisector of $PP'$.
-- [[rotation-reflection-matrices]]: in coordinates, a rotation by $\theta$ about $O$ is $X \mapsto O + R_\theta(X - O)$, which checks the answer.
-- [[reflection-composition]]: two reflections in lines meeting at $O$ compose to a rotation about $O$ by twice the angle between the lines.
+- [[distance-midpoint]]: in coordinates, the perpendicular bisector passes through the midpoint of $PP'$, and the center is where two of them meet.
 
 ## Common traps
 - Matching the vertices wrongly, especially in a square or regular polygon that looks the same after several different rotations.
@@ -4115,7 +4054,6 @@ The Angle Bisector Theorem shows the idea at its cleanest. If $AD$ bisects angle
 - [[intercept-theorem]]: a line parallel to a side divides the other two sides proportionally, $\frac{AD}{AB} = \frac{AE}{AC}$.
 - [[similar-figures-ratios]]: the cut-off triangle is similar to the whole, so every length scales by the same factor.
 - [[midsegment-theorem]]: through a midpoint, the parallel to a side hits the midpoint of the third side and is half as long.
-- [[angle-bisector-theorem]]: the classical result proved by one parallel line, and a common target.
 
 ## Common traps
 - Drawing the parallel through a point where nothing is known, which produces similar triangles with no usable ratio.
@@ -4159,5 +4097,602 @@ Angle chases across a cyclic quadrilateral, similar triangles at crossing diagon
 Equal angles over a common side are the usual sign of a hidden cyclic quadrilateral, and spotting the pair is often the key step of an AIME geometry problem; [[ptolemys-theorem|Ptolemy's Theorem]] is the length relation that goes with it.
 `,
 
+"reflect-across-the-line": String.raw`
+## When to use
+A path from $A$ to $B$ must touch a line on the way, a light ray or a billiard ball bounces off a wall, or $AP + PB$ is to be minimized over the points $P$ of a line. In algebra the same picture hides in a sum of two square roots, each the distance from a point on an axis to a fixed point. A path that must stay on the surface of a solid is unfolded instead, with [[unfold-the-surface|unfolding]], and a sum of distances from a moving point to two fixed points with no line involved is smallest on the segment between them.
 
+## How
+1. Check that $A$ and $B$ lie on the same side of the line; if not, the segment $AB$ already crosses it and is the answer.
+2. Reflect $A$ across the line to $A'$.
+3. Join $A'$ to $B$; the segment crosses the line at the best point $P$.
+4. The least length is $A'B$, found with the Pythagorean Theorem or the distance formula.
+5. For a path that must touch two lines, reflect across the first line and then reflect that image across the second.
+
+For $A = (1, 3)$, $B = (7, 5)$ and a path touching the $x$-axis, the image is $A' = (1, -3)$, so the shortest path has length $\sqrt{6^2 + 8^2} = 10$, and it touches the axis where the segment from $(1, -3)$ to $(7, 5)$ does, at $x = \frac{13}{4}$.
+
+## Why it works
+The line is the perpendicular bisector of $AA'$, so every point $P$ of the line is equally far from $A$ and $A'$. Hence $AP + PB = A'P + PB$, and by the [[triangle-inequality|triangle inequality]] this is at least $A'B$, with equality exactly when $P$ lies on the segment $A'B$. At that point the two parts of the path make equal angles with the line, which is the law of reflection for light.
+
+## Formulas it uses
+- [[pythagorean-theorem]]: the length $A'B$ of the straightened path, from its horizontal and vertical gaps.
+- [[reflection-coordinates]]: the image of a point across a line, such as $(x, y) \mapsto (x, -y)$ across the $x$-axis or $(x, y) \mapsto (y, x)$ across $y = x$.
+
+## Common traps
+- Reflecting when the points are on opposite sides of the line, where no reflection is needed.
+- Reporting the image $A'$ instead of the touching point $P$.
+- With two walls, reflecting both points across the same wall, or the second reflection across the wrong line.
+
+## Contest profile
+From MATHCOUNTS through AIME: a river-and-barn or billiard path, a light ray in a wedge, or a sum of two square roots read as distances.
+`,
+
+"unfold-the-surface": String.raw`
+## When to use
+The path must stay on the surface of a solid: an ant on a box, a spider and a fly on the walls of a room, a string wound around a cylinder, or a path on the side of a cone. A path allowed through the solid is a space diagonal instead. A path that only bounces off flat walls is the plane version of the same idea, [[reflect-across-the-line|reflecting across a line]].
+
+## How
+1. Decide which faces the path crosses, and in what order.
+2. Unfold those faces into one plane, keeping each shared edge attached.
+3. Place both endpoints in the net and join them with a straight segment, checking that it stays inside the net.
+4. Unroll a cylinder's side into a rectangle of width $2\pi r$; a string that winds $k$ times becomes the diagonal of $k$ such rectangles side by side.
+5. Unroll a cone's side into a sector of radius equal to the slant height $s$ and angle $360^\circ \cdot \frac rs$.
+6. Compare every unfolding and keep the shortest.
+
+For opposite corners of a $1 \times 2 \times 4$ box the three unfoldings give $\sqrt{3^2 + 4^2} = 5$, $\sqrt{5^2 + 2^2} = \sqrt{29}$, and $\sqrt{6^2 + 1^2} = \sqrt{37}$, so the shortest surface path is $5$.
+
+## Why it works
+Unfolding moves each face rigidly into the plane, so lengths measured along the faces do not change, and a path on the surface becomes a path of the same length in the net. In the plane the shortest path is the straight segment. Every surface path crosses the faces in some order, and each order gives one unfolding, so comparing the unfoldings compares every path.
+
+## Formulas it uses
+- [[pythagorean-theorem]]: the length of the straight segment in a rectangular net, such as $\sqrt{(a + b)^2 + c^2}$ across two faces of a box.
+- [[circle-basics]]: the circumference $2\pi r$, the width of a cylinder's unrolled side.
+- [[cone-formulas]]: a cone's side unrolls into a sector whose radius is the slant height and whose arc is the base circumference.
+
+## Common traps
+- Checking only one unfolding of a box; for opposite corners of an $a \le b \le c$ box the shortest pairs the two smallest edges, $\sqrt{(a + b)^2 + c^2}$.
+- Giving the space diagonal $\sqrt{a^2 + b^2 + c^2}$, which passes through the solid.
+- Unrolling a cone with the base radius in place of the slant height.
+
+## Contest profile
+A MATHCOUNTS and AMC favorite, an ant on a box or a string around a cylinder, solved by one straight line in the right net; AMC 12 versions use cones and frustums.
+`,
+
+"tangency-equation": String.raw`
+## When to use
+A problem asks for the parameter that makes two curves meet exactly once, for a line that just touches a circle or a parabola, or for the largest value of a linear expression $ax + by$ over a circle or conic, where the level line $ax + by = c$ touches the curve at the extreme.
+
+## How
+1. Check that the curves would generically meet twice, so that "exactly one" means touching.
+2. If one curve is a circle and the other a line, set the distance from the center to the line equal to the radius.
+3. Otherwise substitute one equation into the other to get a quadratic in one variable.
+4. Set its discriminant to zero and solve for the parameter.
+5. Keep every valid value; a line can usually touch from either side.
+
+For the line $y = kx + 2$ and the circle $x^2 + y^2 = 1$, the distance from the origin is $\frac{2}{\sqrt{1 + k^2}}$, and setting it equal to $1$ gives $k^2 = 3$, so $k = \pm\sqrt3$.
+
+{{figure:trichotomy}}
+
+## Why it works
+A line meets a circle in $2$, $1$, or $0$ points as its distance from the center is less than, equal to, or greater than the radius, so tangency is exactly the equality case. After substitution, the roots of the quadratic are the coordinates of the intersection points; two real roots are two points, a double root is one point counted twice, and no real roots means no intersection, so tangency is a zero discriminant.
+
+## Formulas it uses
+- [[point-line-distance]]: the distance from $(x_0, y_0)$ to $Ax + By + C = 0$ is $\frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}$, set equal to the radius.
+- [[quadratic-formula]]: the discriminant $b^2 - 4ac$ of the substituted quadratic, zero exactly at a double root.
+
+## Common traps
+- Reading "exactly one solution" as tangency when the curves can only meet once anyway, as a line parallel to a parabola's axis does.
+- Keeping only one parameter value when the line can touch from both sides.
+- Squaring to clear a radical and accepting a tangency the original curves do not have.
+
+## Contest profile
+AIME problems disguise the curves as a locus, a condition on complex numbers, or the envelope of a moving segment; the tangency equation is the last step once the curves are named.
+`,
+
+"cyclic-quadrilateral": String.raw`
+## Distinguishing clues
+Sometimes the circle is stated, but more often it is hidden, and finding it is the step that unlocks the problem. A circle is guaranteed by two right angles standing on one segment, as at the feet of two altitudes or at a point seeing a diameter; by two equal angles that see a segment from the same side; by a pair of supplementary opposite angles; and by any isosceles trapezoid or rectangle.
+
+A quadrilateral with an inscribed circle is a different shape with different rules, where opposite sides have equal sums. A parallelogram is cyclic only when it is a rectangle, and a kite only when its two equal angles are right angles.
+
+{{figure:toolkit}}
+
+## Methods and Formulas to Try
+Proving the circle comes first; after that every fact below holds at once. Most problems use two of them: an angle fact to locate an angle, and a length fact to finish.
+
+### Methods to try
+- [[angle-chasing]]: the equal and supplementary pairs let one unknown angle travel around the circle, and the same chase is how a hidden circle is proved in the first place.
+- [[extend-sides-to-meet]]: extending sides $AB$ and $DC$ to meet at $E$ makes triangles $EAD$ and $ECB$ similar, with $EA \cdot EB = ED \cdot EC$.
+- [[trig-bash]]: every side and diagonal is a chord, $2R$ times the sine of half its arc, so naming the arcs turns the figure into trigonometry.
+
+### Formulas to try
+- [[cyclic-opposite-angles]]: opposite angles are supplementary, the most common test and the first consequence.
+- [[cyclic-equal-angles]]: each side is seen at equal angles from the other two vertices, and the diagonals cut off similar triangles.
+- [[concyclicity-tests]]: the converses that prove four points lie on a circle.
+- [[ptolemys-theorem]]: $AC \cdot BD = AB \cdot CD + AD \cdot BC$, relating the diagonals to the sides.
+- [[power-of-a-point]]: diagonals crossing at $P$ give $PA \cdot PC = PB \cdot PD$.
+- [[law-of-cosines]]: a diagonal written from both sides, using $\cos C = -\cos A$, gives the diagonal from the four sides.
+- [[brahmaguptas-formula]]: the area $\sqrt{(s - a)(s - b)(s - c)(s - d)}$ from the four sides.
+
+## Common traps
+- Using a cyclic fact before the circle has been proved.
+- Confusing the two angle rules: angles on the same side of a chord are equal, on opposite sides supplementary.
+- Writing Ptolemy's Theorem with the vertices out of order; the diagonals are the segments joining opposite vertices around the circle.
+- Applying Brahmagupta's Formula to a quadrilateral that is not cyclic.
+
+## Contest profile
+A frequent AIME configuration, more often hidden than stated: right angles or equal angles create the circle, an angle chase follows, and Ptolemy's Theorem, power of a point, or the Law of Cosines finishes.
+`,
+
+"triangle-of-centers": String.raw`
+## When to use
+Circles touch each other or a larger circle, sometimes resting on a line or sitting in a corner, and the question asks for an unknown radius, the distance between two points, or where a circle sits. Spheres touching along a common axis reduce to the same picture after a [[cross-section-method|cross-section]].
+
+## How
+1. Mark every center, and write each tangency as a center distance: $r_1 + r_2$ for circles outside each other, $R - r$ for a circle inside another.
+2. Write each tangency with a line as a center at distance $r$ from it, usually a height in coordinates.
+3. Look for a right angle among the centers, often from symmetry or a line, and use the Pythagorean Theorem; otherwise use the Law of Cosines.
+4. With an unknown center, write one distance equation per tangency and subtract them in pairs, which leaves linear equations.
+5. Solve, and check which tangencies are internal.
+
+Circles of radii $1$, $2$, and $3$ touching each other from outside have centers $3$, $4$, and $5$ apart, a right triangle, so the circle of radius $1$ sits at the right angle.
+
+## Why it works
+At the point where two circles touch they share a tangent line, and both radii to that point are perpendicular to it, so the two centers and the touch point are collinear. The center distance is therefore the sum of the radii when the centers lie on opposite sides of the touch point and their difference when they lie on the same side. A circle tangent to a line has its radius to the touch point perpendicular to the line, so its center is at distance $r$ from it.
+
+## Formulas it uses
+- [[tangent-circles]]: the center distance is $r_1 + r_2$ for external tangency and $|r_1 - r_2|$ for internal tangency.
+- [[pythagorean-theorem]]: the right triangles among the centers, the usual finish.
+- [[law-of-cosines]]: the triangle of centers when it has no right angle but a known angle, as in a symmetric packing.
+
+## Common traps
+- Using $r_1 + r_2$ for a circle inside another, where the distance is the difference.
+- Forgetting that a circle resting on a line has its center at height $r$, not on the line.
+- Assuming a right angle among the centers without a reason for it.
+
+## Contest profile
+The opening move of nearly every AIME circle-packing problem and of many AMC problems with coins, pipes, or balls; the Pythagorean Theorem on the centers usually finishes.
+`,
+
+"tangent-circle-packing": String.raw`
+## Distinguishing clues
+Several circles touch each other, a larger enclosing circle, or straight lines, and the unknowns are radii or positions fixed only by those tangencies. A ring of $n$ equal circles around a center puts their centers on a regular $n$-gon. Four mutually tangent circles bring in a single identity on their curvatures.
+
+Spheres are the same configuration one dimension up, handled by slicing through their centers. A single circle tangent to the two sides of an angle is the simpler corner configuration, with its center on the angle bisector. Two circles with common tangent lines but no tangency between them are a homothety question.
+
+{{figure:arbelos}}
+
+## Methods and Formulas to Try
+Each tangency fixes one distance between centers, so the first move is almost always to join the centers; the other methods take over when the framework is crowded or symmetric.
+
+### Methods to try
+- [[triangle-of-centers]]: write every tangency as a center distance and solve the triangles the centers form.
+- [[homothety-monge]]: two tangent circles are images of each other under a homothety at their touch point, which carries tangent lines and contact points along.
+- [[inversion-properties]]: inverting at a point where several circles touch turns them into lines, straightening a chain.
+- [[coordinate-bash]]: with a line or a diameter as an axis, each tangency is one distance equation, and subtracting them in pairs leaves linear equations.
+
+### Formulas to try
+- [[tangent-circles]]: center distance $r_1 + r_2$ outside, $|r_1 - r_2|$ inside, with the touch point on the line of centers.
+- [[descartes-circle-theorem]]: four mutually tangent circles satisfy $(k_1 + k_2 + k_3 + k_4)^2 = 2(k_1^2 + k_2^2 + k_3^2 + k_4^2)$ in their curvatures.
+- [[common-tangent-lengths]]: the length of a common tangent between two circles, from their center distance and radii.
+- [[pythagorean-theorem]]: the right triangles among the centers.
+
+## Common traps
+- Treating an internal tangency as external.
+- Assuming the touch points, rather than the centers, form the useful triangle.
+- Forgetting a sign in Descartes' Theorem: a circle enclosing the others has negative curvature.
+
+## Contest profile
+A staple from AMC 10 to AIME: coins in a corner, circles in a semicircle, or rings of circles, almost always finished by right triangles among the centers.
+`,
+
+"shared-leg-pythagoras": String.raw`
+## When to use
+A segment is perpendicular to a line and splits a figure into two right triangles that share it: the altitude of a triangle with all three sides known, the perpendicular from two circle centers to their common chord, or the height of a trapezoid with known sides. The shared length is unknown, and so is where its foot lands.
+
+## How
+1. Name the unknown piece of the base, $x$, so the other piece is the base minus $x$, or the distance minus $x$.
+2. Write the shared leg squared from each right triangle.
+3. Set the two expressions equal; the squares $x^2$ cancel, leaving a linear equation.
+4. Solve for $x$, then get the shared leg from either triangle.
+
+For the triangle with sides $13$, $14$, $15$ and the altitude to the side $14$, with foot at distance $x$ from the end of the side $13$: $13^2 - x^2 = 15^2 - (14 - x)^2$, so $169 = 29 + 28x$, $x = 5$, and the altitude is $12$.
+
+{{figure:altitude}}
+
+## Why it works
+Both right triangles contain the same leg $h$, so $h^2 = c^2 - x^2$ and $h^2 = b^2 - (a - x)^2$ hold together. Expanding $(a - x)^2 = a^2 - 2ax + x^2$ shows the $x^2$ terms are equal on both sides, so the difference is linear in $x$; that is the [[difference-of-squares|difference of squares]] $c^2 - b^2 = x^2 - (a - x)^2 = a(2x - a)$ in disguise.
+
+## Formulas it uses
+- [[pythagorean-theorem]]: the shared leg squared, written once in each right triangle.
+- [[difference-of-squares]]: $x^2 - (a - x)^2 = a(2x - a)$, the reason the subtraction leaves a linear equation.
+
+## Common traps
+- Placing the foot inside the base when the triangle is obtuse and the foot falls outside, where the pieces are $x$ and $x - a$.
+- Forgetting to finish: the question often wants the shared leg, not the split.
+- Using it when Heron's Formula and $h = \frac{2A}{a}$ would be quicker for an area alone.
+
+## Contest profile
+A routine step from AMC 10 to AIME, hidden inside altitude, trapezoid, and common-chord problems.
+`,
+
+"point-in-equilateral": String.raw`
+## Distinguishing clues
+A regular figure with one point inside it and lengths measured from that point. The kind of length is the clue. Three distances to the vertices, such as $3$, $4$, and $5$, point to a rotation by the figure's angle, which carries the three distances into one triangle. Distances to the sides of an equilateral triangle always add up to its altitude. Equal angles of $120^\circ$ at the point, or a smallest possible sum of distances to the vertices, mark the Fermat point.
+
+A point inside a general triangle with given distances is a coordinate or trigonometry problem instead, since nothing rotates the triangle onto itself.
+
+{{figure:three}}
+
+## Methods and Formulas to Try
+The figure's symmetry is the resource: a rotation about a vertex maps the figure onto itself, so it can move one distance next to another without changing anything else.
+
+### Methods to try
+- [[rotation-trick]]: rotate about a vertex by $60^\circ$, or by $90^\circ$ in a square, so the three distances meet in one triangle with a known angle.
+- [[coordinate-bash]]: with one vertex at the origin and a side along an axis, each distance is one equation; subtracting them in pairs leaves linear equations.
+- [[complex-bash]]: a $60^\circ$ rotation is multiplication by $e^{i\pi/3}$, which makes the rotation algebraic.
+
+### Formulas to try
+- [[vivianis-theorem]]: distances to the three sides of an equilateral triangle add up to its altitude.
+- [[fermat-point]]: the point seeing every side at $120^\circ$ minimizes the total distance to the vertices.
+- [[equilateral-triangle-facts]]: the altitude $\frac{\sqrt3}{2}s$ and area $\frac{\sqrt3}{4}s^2$.
+- [[law-of-cosines]]: the triangle formed after the rotation; when the three distances form a right triangle, as $5$, $12$, $13$ do, adding the $60^\circ$ of the equilateral triangle gives $\angle APB = 150^\circ$, and the Law of Cosines then gives the side.
+- [[british-flag-theorem]]: in a square or rectangle, $PA^2 + PC^2 = PB^2 + PD^2$ for opposite corners.
+
+## Common traps
+- Rotating by the wrong angle, or about a vertex that does not send one neighbor onto the other.
+- Applying Viviani's Theorem to a point outside the triangle, where one distance counts negatively.
+- Forgetting that the rotated point and the original form an equilateral triangle, which is where the $60^\circ$ comes from.
+
+## Contest profile
+A classic AIME and AMC setup, distances $3$, $4$, $5$ from an interior point or a point with distances to the sides, almost always finished by one rotation and the Law of Cosines.
+`,
+
+"right-triangle-altitude": String.raw`
+## Distinguishing clues
+A right angle with the perpendicular dropped from it to the opposite side, or the same figure in disguise: a point on a semicircle joined to the ends of the diameter, with a perpendicular from the point to the diameter, which is a right angle by Thales' Theorem. The question names segments of the hypotenuse, the altitude, or a geometric mean.
+
+A right triangle with no altitude drawn needs only the Pythagorean Theorem. An altitude in a triangle that is not right still splits it into two right triangles, but they are not similar to the whole.
+
+{{figure:copies}}
+
+## Methods and Formulas to Try
+The figure holds three similar right triangles, so most questions are one proportion; the methods below take over when the right angle has to be found or the lengths are tangled.
+
+### Methods to try
+- [[shared-leg-pythagoras]]: the two small triangles share the altitude, so writing the Pythagorean Theorem in both and subtracting locates its foot.
+- [[coordinate-bash]]: with the legs on the axes, the hypotenuse is a line and the altitude is a point-line distance.
+- [[angle-chasing]]: each small triangle has one acute angle of the original, which is why the three are similar.
+
+### Formulas to try
+- [[altitude-hypotenuse]]: $h^2 = pq$, $a^2 = pc$, $b^2 = qc$, and $h = \frac{ab}{c}$.
+- [[similar-figures-ratios]]: the three triangles are similar, so any ratio carries between them.
+- [[median-to-hypotenuse]]: the midpoint of the hypotenuse is the circumcenter, $\frac c2$ from all three vertices.
+- [[right-triangle-inradius]]: the inradius is $\frac{a + b - c}{2}$, and the two small triangles have inradii in the ratio of their hypotenuses.
+- [[thales-theorem]]: a point on a semicircle sees the diameter at a right angle, which is how the configuration hides.
+
+## Common traps
+- Matching the wrong sides in the similarity: each leg is the geometric mean of the hypotenuse and the piece next to that leg.
+- Missing the hidden right angle in a semicircle.
+- Confusing the median to the hypotenuse with the altitude; they coincide only in an isosceles right triangle.
+
+## Contest profile
+A fixture from MATHCOUNTS to AIME: segments of a hypotenuse, a semicircle with a perpendicular, or chains of similar right triangles.
+`,
+
+"triangle-type-by-sides": String.raw`
+## Key forms
+- $\angle C$ is acute, right, or obtuse $\iff c^2 \lt a^2 + b^2$, $c^2 = a^2 + b^2$, or $c^2 \gt a^2 + b^2$
+- with $c$ the longest side: the triangle is acute $\iff c^2 \lt a^2 + b^2$
+- an obtuse triangle with longest side $c$ has $\sqrt{a^2 + b^2} \lt c \lt a + b$
+
+## Conditions
+$a$, $b$, $c$ are the sides of a triangle, with $C$ the angle opposite $c$; the triangle inequality must hold first.
+
+## Why it works
+The [[law-of-cosines|Law of Cosines]] gives $c^2 = a^2 + b^2 - 2ab\cos C$, so $a^2 + b^2 - c^2 = 2ab\cos C$. The factor $2ab$ is positive, so this difference has the sign of $\cos C$: positive for an acute angle, zero for a right angle, negative for an obtuse one.
+
+A picture gives the same answer without trigonometry. Fix the side $AB = c$ and draw the circle with $AB$ as diameter. By [[thales-theorem|Thales' Theorem]] a point $C$ on the circle sees $AB$ at a right angle; a point inside the circle sees it at a larger angle and a point outside at a smaller one. Inside the circle means $C$ is closer to the center, which is exactly $a^2 + b^2 \lt c^2$ by the median length formula.
+
+{{figure:thales}}
+
+## Useful observations
+- Only the longest side needs testing, since a triangle has at most one angle of $90^\circ$ or more.
+- With two sides $a \lt b$ fixed and the third side $c$ varying, the triangle is obtuse at both ends of its range: just above $b - a$ the angle opposite $b$ is obtuse, just below $a + b$ the angle opposite $c$ is, and only the middle stretch gives acute triangles.
+- The circumcenter lies inside an acute triangle, at the midpoint of the hypotenuse of a right one, and outside an obtuse one; the orthocenter does the same, landing at the right-angle vertex in the right case.
+- Integer sides with $c^2 = a^2 + b^2$ are the Pythagorean triples, the boundary between the two counts.
+
+## Applications
+Classifying a triangle from its sides, counting integer triangles of each type, and locating the circumcenter and orthocenter.
+
+## Contest profile
+AMC problems count the obtuse or acute triangles with given sides; AIME problems use the test as a constraint on an unknown side.
+`,
+
+"bisector-closer-region": String.raw`
+## When to use
+A random point in a triangle, square, or other region, and a question about whether it is closer to one side than to another, or which side it is closest to. Comparing distances to two points instead uses the perpendicular bisector of the segment joining them, the same idea for points.
+
+## How
+1. Identify the two sides being compared and the angle they form.
+2. Draw the bisector of that angle; points on it are equally far from both sides.
+3. The region on the side of the bisector next to a side is the set of points closer to that side.
+4. For the bisector from vertex $A$ of triangle $ABC$, the Angle Bisector Theorem gives $BD : DC = AB : AC$, so the two pieces have areas in the ratio $AB : AC$.
+5. For "closest of all three sides", draw all three bisectors; they meet at the incenter $I$, and the region closest to side $a$ is triangle $IBC$, with area $\frac12 ra$.
+
+For a random point in a triangle with sides $a$, $b$, $c$, the chance that the side $a$ is the nearest side is $\frac{a}{a + b + c}$, since the three incenter triangles have areas $\frac12 ra$, $\frac12 rb$, and $\frac12 rc$.
+
+## Why it works
+A point $P$ inside the angle at $A$ is equally far from lines $AB$ and $AC$ exactly when the right triangles formed by $P$, $A$, and the feet of the perpendiculars are congruent, which happens exactly when $AP$ bisects the angle. Moving off the bisector toward $AB$ shrinks the distance to $AB$ and grows the distance to $AC$, so the bisector separates the two regions. The area ratio is the [[cevian-area-ratio|cevian area ratio]]: the pieces share the height from $A$, so their areas are in the ratio of their bases $BD$ and $DC$.
+
+{{figure:regions}}
+
+## Formulas it uses
+- [[angle-bisector-theorem]]: the bisector from $A$ meets $BC$ at $D$ with $\frac{BD}{DC} = \frac{AB}{AC}$.
+- [[cevian-area-ratio]]: triangles with the same apex and bases on one line have areas in the ratio of the bases.
+
+## Common traps
+- Using the perpendicular bisector of a side, which compares distances to points, not to lines.
+- Bisecting the wrong angle; the boundary is the bisector of the angle between the two compared sides.
+- In an obtuse triangle the perpendicular from a point near the obtuse vertex can land outside a side; contest problems mean the distance to the side's line, which is exactly what the bisector compares.
+
+## Contest profile
+An AMC and AIME geometric probability step: a random point closer to one side than another, or nearest to a given side, settled by bisectors and area ratios.
+`,
+
+"folded-paper": String.raw`
+## Distinguishing clues
+A physical fold: a rectangle with one corner folded onto a side or onto the opposite corner, a triangle folded along a line, or a strip folded over itself. The questions ask for the crease, for where a point lands, or for the overlapping area. Unfolding the surface of a solid to find a shortest path is a different idea that runs the other way.
+
+{{figure:corner}}
+
+## Methods and Formulas to Try
+Every fold is a reflection, so equal lengths come for free: each point on the crease is equally far from a point and its image, and the flap keeps all its lengths and angles.
+
+### Methods to try
+- [[reflect-across-the-line]]: treat the fold as a reflection across the crease; the image of a point is where it lands.
+- [[shared-leg-pythagoras]]: a corner folded onto another side makes a right triangle in which one leg is a piece $x$ of a side and the hypotenuse is the folded rest of that side, the side minus $x$; the Pythagorean Theorem in it, or in two such triangles, locates the crease.
+- [[coordinate-bash]]: with the sheet on axes, the crease is the perpendicular bisector of the segment from a point to its image.
+
+### Formulas to try
+- [[perpendicular-bisector-locus]]: the crease is the set of points equally far from a point and its image.
+- [[pythagorean-theorem]]: the right triangles formed by a folded corner.
+- [[similar-figures-ratios]]: a crease perpendicular to a diagonal cuts off triangles similar to half the sheet.
+- [[reflection-coordinates]]: the image of a point across a line in coordinates.
+
+## Common traps
+- Forgetting that the flap is congruent to the region it came from, which gives equal lengths for free.
+- Measuring the crease across the whole sheet when it ends at two sides.
+- Mixing up the point that moves with its image when writing the equal distances.
+
+## Contest profile
+From MATHCOUNTS to AIME: a corner folded onto a side, opposite corners folded together, or the overlap of a folded flap, each settled by a reflection and a right triangle.
+`,
+
+"circle-in-angle": String.raw`
+## Distinguishing clues
+A circle touches two lines that meet at a vertex, as in a corner of a square, the angle of a triangle, or a wedge holding a row of circles. The incircle of a triangle is this configuration three times over, once at each vertex. Circles tangent to two parallel lines are a different case, with all centers on the midline and all radii equal.
+
+{{figure:chain}}
+
+## Methods and Formulas to Try
+The angle bisector carries every center, and the vertex is a center of similarity, so lengths at one circle scale to the next.
+
+### Methods to try
+- [[homothety-monge]]: every circle in the angle is the image of every other under a homothety centered at the vertex, so a chain of tangent circles has radii in a geometric progression.
+- [[triangle-of-centers]]: neighboring circles in a chain have centers $r_1 + r_2$ apart along the bisector, which with $d = \frac{r}{\sin(\theta/2)}$ fixes the ratio.
+- [[trig-bash]]: the right triangle formed by the vertex, a center, and a touch point has angle $\frac\theta2$ at the vertex, so every length is $r$ times a trigonometric ratio of $\frac\theta2$.
+
+### Formulas to try
+- [[tangent-facts]]: the radius to each touch point is perpendicular to the side, the tangent lengths from the vertex are equal, and the center lies on the bisector.
+- [[half-angle]]: the center sits at distance $\frac{r}{\sin(\theta/2)}$ from the vertex, with tangent length $\frac{r}{\tan(\theta/2)}$.
+- [[similar-figures-ratios]]: neighboring circles in a chain have radii in the ratio $\frac{1 + \sin(\theta/2)}{1 - \sin(\theta/2)}$.
+- [[incircle-tangent-lengths]]: in a triangle the tangent length from vertex $A$ is $s - a$, which equals $r\cot\frac A2$.
+
+## Common traps
+- Using the full angle where the half-angle belongs.
+- Measuring the vertex-to-center distance along a side instead of along the bisector.
+- Forgetting that the chain ratio depends only on the angle, not on the first radius.
+
+## Contest profile
+AMC and AIME problems with coins in a corner, circles in a wedge, or an incircle seen from one vertex, all settled by the half-angle right triangle or the homothety from the vertex.
+`,
+
+"scale-one-level": String.raw`
+## When to use
+A construction repeats forever or many times: a square inscribed in a square by joining points on its sides, a circle inscribed in a triangle inscribed in a circle, or a triangle cut by midsegments again and again. The question asks for the total area, total perimeter, or the size of a far level.
+
+## How
+1. Draw one level and the next only.
+2. Compute the ratio $k$ of a matching length, side to side or radius to radius.
+3. Lengths of successive levels form a geometric sequence with ratio $k$, and areas one with ratio $k^2$.
+4. Add the levels with the geometric series formula, $\frac{\text{first}}{1 - k}$ for lengths or $\frac{\text{first}}{1 - k^2}$ for areas.
+
+Squares inscribed by joining the points one third of the way along each side have $k^2 = \left(\frac13\right)^2 + \left(\frac23\right)^2 = \frac59$, so starting from a unit square the areas of all the squares add up to $\frac{1}{1 - 5/9} = \frac94$.
+
+## Why it works
+Each level is built from the previous one by the same rule, so it is similar to the previous one with the same ratio $k$. Lengths scale by $k$ and areas by $k^2$ at every step, which makes the sequence of levels geometric, and a geometric series with ratio less than $1$ converges to its first term over one minus the ratio.
+
+## Formulas it uses
+- [[similar-figures-ratios]]: similar figures with length ratio $k$ have area ratio $k^2$.
+- [[geometric-series]]: $a + ar + ar^2 + \cdots = \frac{a}{1 - r}$ for $|r| \lt 1$.
+
+## Common traps
+- Using $k$ for areas instead of $k^2$.
+- Starting the series at the wrong level, such as excluding the first figure when the question includes it.
+- Assuming the levels are similar when the construction changes shape from one level to the next.
+
+## Contest profile
+AMC and AIME problems on infinitely nested figures, and on shaded regions that alternate between levels.
+`,
+
+"nested-similar": String.raw`
+## Distinguishing clues
+The construction is described once and then repeated: "continue forever", "this process is repeated", or a picture of ever smaller copies. The questions ask for a total over all levels or for one far level. A figure cut once by parallel lines into similar pieces is a single similarity, not this pattern.
+
+{{figure:levels}}
+
+## Methods and Formulas to Try
+Only two levels ever need to be drawn: the ratio between them fixes every level, and the rest is a geometric series.
+
+### Methods to try
+- [[scale-one-level]]: compute the ratio of one level to the next, then sum the levels as a geometric series.
+- [[coordinate-bash]]: when the ratio is not obvious, place one level on axes and compute where the next level's vertices land.
+
+### Formulas to try
+- [[similar-figures-ratios]]: lengths scale by $k$ and areas by $k^2$ from level to level.
+- [[geometric-series]]: the total of all levels, $\frac{\text{first}}{1 - \text{ratio}}$.
+- [[midsegment-theorem]]: midpoint constructions halve every length, so areas shrink by $\frac14$.
+
+## Common traps
+- Summing lengths with the area ratio, or areas with the length ratio.
+- Missing that alternate levels are shaded, which makes the ratio between shaded pieces $k^4$.
+- Counting the first figure once too often or not at all.
+
+## Contest profile
+AMC problems on nested squares or triangles and AIME problems with alternating shading or a ratio that takes some work to find.
+`,
+
+"equiangular-polygon": String.raw`
+## Distinguishing clues
+Every angle is the same, $120^\circ$ for a hexagon and $135^\circ$ for an octagon, while the side lengths differ. A regular polygon has equal sides too and needs none of this; a polygon with equal sides but unequal angles is a different, less rigid shape.
+
+{{figure:extend}}
+
+## Methods and Formulas to Try
+Equal angles make each side a fixed rotation of the previous direction, which gives two routes: complete the polygon into a regular shape, or write the sides as vectors that must add up to zero.
+
+### Methods to try
+- [[extend-sides-to-meet]]: extending alternate sides of an equiangular hexagon forms an equilateral triangle, with equilateral triangles cut off at three corners; the big side equals three consecutive pieces in three ways.
+- [[complex-bash]]: sides in directions $1, \omega, \omega^2, \ldots$ with $\omega = e^{i\pi/3}$ must add up to zero, which gives the linear relations among them.
+- [[coordinate-bash]]: an equiangular octagon has sides along the axes and the diagonals, so it sits on a grid and its area is a rectangle minus four isosceles right triangles.
+
+### Formulas to try
+- [[equilateral-triangle-facts]]: the big triangle and the three corner triangles are equilateral, with areas $\frac{\sqrt3}{4}s^2$.
+- [[equiangular-hexagon-area]]: the area of an equiangular hexagon from its sides.
+- [[polygon-angle-sums]]: equal angles in an $n$-gon are each $\frac{(n - 2) \cdot 180^\circ}{n}$.
+- [[special-right-triangles]]: the corner triangles of an equiangular octagon are $45$-$45$-$90$.
+
+## Common traps
+- Extending the wrong sides; for a hexagon, extend every other side.
+- Assuming opposite sides are equal; only certain differences are equal, such as $a_1 - a_4 = a_5 - a_2 = a_3 - a_6$.
+- Forgetting to check that the given sides are consistent before computing an area.
+
+## Contest profile
+An AIME and AMC configuration: an equiangular hexagon or octagon with given sides, asking for a missing side, an area, or the largest circle that fits inside.
+`,
+
+"box-tetrahedron": String.raw`
+## When to use
+A tetrahedron is given by its six edges, and they pair up as three equal pairs of opposite edges, such as $\sqrt{13}$, $\sqrt{20}$, $5$ each appearing twice, or the tetrahedron is regular. The question asks for its volume, its circumradius, or a distance inside it.
+
+## How
+1. Call the box's dimensions $p$, $q$, $r$, and write each pair of opposite edges as the diagonal of one face: $p^2 + q^2$, $q^2 + r^2$, $r^2 + p^2$.
+2. Add the three equations to get $p^2 + q^2 + r^2$, then subtract each equation to get $p^2$, $q^2$, $r^2$.
+3. The tetrahedron is the box with four corner tetrahedra removed, each of volume $\frac{pqr}{6}$, so its volume is $pqr - 4 \cdot \frac{pqr}{6} = \frac{pqr}{3}$.
+4. Its circumsphere is the box's circumsphere, with radius half the space diagonal, $\frac12\sqrt{p^2 + q^2 + r^2}$.
+
+A regular tetrahedron of edge $\sqrt2$ sits in a unit cube, so its volume is $1 - 4 \cdot \frac16 = \frac13$.
+
+## Why it works
+Four alternate corners of a box, no two sharing an edge, are joined by six face diagonals, and opposite diagonals of each pair of opposite faces are equal, which gives three equal pairs. Conversely, three equal pairs determine $p^2$, $q^2$, $r^2$ uniquely, and they are positive exactly when every face is an acute triangle, so such a tetrahedron always has a box. Each removed corner piece is a right-corner tetrahedron with legs $p$, $q$, $r$, of volume $\frac{pqr}{6}$.
+
+## Formulas it uses
+- [[pythagorean-theorem]]: each edge is the diagonal of a face, $\sqrt{p^2 + q^2}$.
+- [[prism-pyramid-volumes]]: each corner piece is a pyramid with volume $\frac13 \cdot \frac{pq}{2} \cdot r$.
+- [[space-diagonal]]: the circumsphere's diameter is the box's space diagonal $\sqrt{p^2 + q^2 + r^2}$.
+
+## Common traps
+- Matching the edge equations wrongly; each equation pairs two dimensions, and each dimension appears in exactly two equations.
+- Forgetting there are four corner pieces to remove.
+- Applying it to a tetrahedron whose opposite edges are not equal in pairs.
+
+## Contest profile
+An AIME and AMC 12 idea for tetrahedra given by six edges in three equal pairs, and for regular tetrahedra, which sit in cubes.
+`,
+
+"dihedral-angle": String.raw`
+## When to use
+A solid has two faces meeting along an edge and the angle between them matters: the tilt of a pyramid's face, the angle between faces of a tetrahedron, or a flat figure folded along a line until two parts make a given angle.
+
+## How
+1. Choose a convenient point on the common edge, often a midpoint or the foot of an altitude.
+2. In each face, draw the segment from that point perpendicular to the edge.
+3. The dihedral angle is the angle between these two segments.
+4. Find it in the triangle they form with a third segment, by the Law of Cosines, or with a right triangle when one segment is vertical.
+5. In coordinates, use normal vectors to the two planes; their angle is the dihedral angle or its supplement.
+
+For a square pyramid with base side $2$ and height $1$, take the midpoint of a base edge: the perpendicular in the base runs to the center with length $1$, and the one in the face is the slant height, so the face is tilted at $\arctan\frac11 = 45^\circ$ to the base.
+
+## Why it works
+Sliding the chosen point along the edge moves both perpendiculars without turning them, so the angle between them is the same at every point of the edge; that common angle is what the dihedral angle means. Normal vectors are perpendicular to the planes, so the angle between them matches the angle between the planes, or its supplement depending on their directions.
+
+## Formulas it uses
+- [[law-of-cosines]]: the angle in the triangle formed by the two perpendiculars and the segment joining their ends.
+- [[vector-dot-product]]: $\cos\theta = \frac{\vec n_1 \cdot \vec n_2}{|\vec n_1||\vec n_2|}$ for normal vectors.
+- [[pythagorean-theorem]]: the lengths of the perpendiculars and the joining segment inside the solid.
+
+## Common traps
+- Using segments that are not perpendicular to the common edge, such as an edge of the face, which gives a larger or smaller angle.
+- Drawing the two perpendiculars from different points of the edge.
+- Taking the angle between normals when the supplement is the dihedral angle.
+
+## Contest profile
+An AIME tool for pyramids, prisms, and folded figures, often finished with the Law of Cosines on a triangle built from the two perpendiculars.
+`,
+
+"fit-copies": String.raw`
+## When to use
+A solid or region has an awkward shape but a symmetric one: a pyramid with its apex over a corner, a wedge cut from a cylinder by a slanted plane, or a region with rotational symmetry. Two, three, or six copies of it, turned or reflected, would fill a cube, a cylinder, a box, or a rectangle.
+
+## How
+1. Look for a familiar shape the piece could be a fraction of, often suggested by the piece's faces lying on the familiar shape's faces.
+2. Place copies by rotating or reflecting, and check that they fill the shape with no gaps and no overlaps.
+3. Divide the familiar shape's volume or area by the number of copies.
+
+The six pyramids from the center of a cube to its faces fill the cube, so each has volume $\frac{s^3}{6}$, which matches $\frac13 \cdot s^2 \cdot \frac s2$.
+
+## Why it works
+Congruent pieces have equal volumes, and pieces that fill a shape without overlapping add up to its volume. So $n$ congruent copies filling a shape of volume $V$ each have volume $\frac Vn$. The work is only in checking that the copies really fit.
+
+## Formulas it uses
+- [[prism-pyramid-volumes]]: the volume of the familiar box or prism the copies fill, and the pyramid formula the method confirms.
+- [[triangle-area-standard]]: two copies of a triangle form a parallelogram, the plane case of the same idea.
+
+## Common traps
+- Copies that overlap or leave gaps; check the fit along every face.
+- Copies that are mirror images rather than congruent by rotation; reflections are fine for volume but must actually fill the shape.
+- Dividing by the wrong number of copies.
+
+## Contest profile
+AIME and AMC problems on oddly cut solids, such as wedges from cylinders and pyramids from cubes, where a symmetric copy turns the solid into a familiar one.
+`,
+
+"equal-edge-tetrahedron": String.raw`
+## Distinguishing clues
+The six edges come in three equal pairs, each pair on opposite edges, often given as square roots, or the four faces are said to be congruent; a regular tetrahedron is the case with all six equal. A tetrahedron with three mutually perpendicular edges at one vertex is a different shape, the corner of a box, with volume $\frac{abc}{6}$.
+
+{{figure:inbox}}
+
+## Methods and Formulas to Try
+The box is the key: once the tetrahedron is placed at alternate corners of a box, every measurement becomes a box measurement.
+
+### Methods to try
+- [[box-tetrahedron]]: solve for the box's dimensions from the three edge equations, then take the volume as one third of the box and the circumradius as half the space diagonal.
+- [[dihedral-angle]]: the angle between two faces, from perpendiculars to the shared edge.
+- [[coordinate-bash]]: the box gives coordinates $(0, 0, 0)$, $(p, q, 0)$, $(p, 0, r)$, $(0, q, r)$ for the vertices at once.
+
+### Formulas to try
+- [[isosceles-tetrahedron]]: the box relations $a^2 = p^2 + q^2$, $b^2 = q^2 + r^2$, $c^2 = r^2 + p^2$ and the volume $\frac{pqr}{3}$.
+- [[space-diagonal]]: the circumsphere's diameter, $\sqrt{p^2 + q^2 + r^2}$.
+- [[insphere-radius]]: $r = \frac{3V}{S}$, where the four congruent faces make $S$ four times one face.
+- [[prism-pyramid-volumes]]: the corner pieces removed from the box, each $\frac{pqr}{6}$.
+
+## Common traps
+- Confusing this tetrahedron with the right-corner tetrahedron cut off a box, which has three perpendicular edges at a vertex.
+- Pairing adjacent edges instead of opposite ones.
+- Computing an insphere with the wrong face area; all four faces are congruent, so one Heron's Formula computation covers them.
+
+## Contest profile
+An AIME configuration: six edges in three equal pairs, with the box giving the volume, the circumsphere, or the point equidistant from all faces.
+`,
 });

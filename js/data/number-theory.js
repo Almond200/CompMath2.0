@@ -250,7 +250,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "carmichael-function",
-          name: "Carmichael Function λ(n)",
+          name: "Carmichael Function $\\lambda(n)$",
           latex: String.raw`\lambda(p^k) = \varphi(p^k) \text{ (odd } p\text{)}, \quad \lambda(2^k) = 2^{k-2} \text{ for } k \ge 3, \quad \lambda(n) = \operatorname{lcm}\left(\lambda(p_i^{a_i})\right)`,
           description: String.raw`The Carmichael function $\lambda(n)$ is the smallest exponent $m$ with $a^m \equiv 1 \pmod n$ for every $a$ coprime to $n$. It divides $\varphi(n)$, often properly, and it is computed from prime powers by taking an lcm: $\lambda(p^k) = \varphi(p^k)$ for odd primes, $\lambda(2) = 1$, $\lambda(4) = 2$, and $\lambda(2^k) = 2^{k-2}$ for $k \ge 3$.`,
           keywords: ["carmichael", "lambda", "universal exponent", "smaller than phi", "power towers"],
@@ -322,7 +322,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "freshmans-dream",
-          name: "Freshman's Dream (mod p)",
+          name: "Freshman's Dream (mod $p$)",
           latex: String.raw`(a + b)^p \equiv a^p + b^p \pmod p, \qquad (a_1 + \cdots + a_n)^p \equiv a_1^p + \cdots + a_n^p \pmod p`,
           description: String.raw`The freshman's dream says that $(a + b)^p \equiv a^p + b^p \pmod p$ for a prime $p$, and more generally $(a_1 + \cdots + a_n)^p \equiv a_1^p + \cdots + a_n^p$. Every middle binomial coefficient $\binom pk$ with $0 \lt k \lt p$ is divisible by $p$, so all the cross terms vanish.`,
           keywords: ["freshman's dream", "freshmans dream", "(a+b)^p", "binomial mod p", "frobenius endomorphism", "characteristic p", "power distributes mod p"],
@@ -331,7 +331,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "power-minus-self",
-          name: "Divisibility of nᵏ − n",
+          name: "Divisibility of $n^k - n$",
           latex: String.raw`6 \mid n^3 - n, \quad 30 \mid n^5 - n, \quad 42 \mid n^7 - n; \qquad p \mid n^k - n \ \text{for all } n \iff (p-1) \mid (k-1)`,
           description: String.raw`For every integer $n$, $n^k - n$ is divisible by each prime $p$ with $(p - 1) \mid (k - 1)$, and the largest number dividing $n^k - n$ for all $n$ is the product of those primes. So $n^3 - n$ is always a multiple of $6$, $n^5 - n$ of $30$, $n^7 - n$ of $42$, and $n^{13} - n$ of $2730$.`,
           keywords: ["n^k - n", "n^3 - n divisible by 6", "n^5 - n divisible by 30", "fermat little consequence", "universal divisor", "2730", "consecutive integers"],
@@ -398,7 +398,7 @@ window.MATH_SECTIONS.push({
       formulas: [
         {
           id: "p-adic-valuation",
-          name: "p-adic Valuation",
+          name: "$p$-adic Valuation",
           latex: String.raw`v_p(mn) = v_p(m) + v_p(n), \quad v_p\!\left(\tfrac{m}{n}\right) = v_p(m) - v_p(n), \quad v_p(m+n) \ge \min\big(v_p(m), v_p(n)\big)`,
           description: String.raw`The $p$-adic valuation $v_p(n)$ is the exponent of the prime $p$ in $n$: $p^{v_p(n)}$ divides $n$ but $p^{v_p(n) + 1}$ does not, with $v_p(0) = \infty$. Valuations add on products, subtract on quotients, and satisfy $v_p(m + n) \ge \min(v_p(m), v_p(n))$, with equality whenever the two valuations differ.`,
           keywords: ["p-adic valuation", "v_p", "exponent of a prime", "highest power dividing", "p^k exactly divides", "ultrametric", "non-archimedean", "valuation rules", "order of p in n"],
@@ -481,7 +481,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "consecutive-product-factorial",
-          name: "k Consecutive Integers (mod k!)",
+          name: "$k$ Consecutive Integers (mod $k!$)",
           latex: String.raw`n(n+1)(n+2)\cdots(n+k-1) \equiv 0 \pmod{k!} \qquad \big(= k!\,\tbinom{n+k-1}{k}\big)`,
           description: String.raw`The product of any $k$ consecutive integers is a multiple of $k!$, because $n(n + 1)\cdots(n + k - 1) = k!\binom{n + k - 1}{k}$ and a binomial coefficient is an integer. So two consecutive integers have an even product, three a multiple of $6$, and four a multiple of $24$.`,
           keywords: ["consecutive integers product", "divisible by k factorial", "binomial coefficient integer", "product of k consecutive", "n(n+1)(n+2)", "always integer"],
