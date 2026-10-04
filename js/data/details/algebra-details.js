@@ -112,35 +112,37 @@ A routine step inside many setups rather than a solution in itself; the reverse 
 `,
 
 "vietas-general": String.raw`
+## Key forms
+- $e_k(r_1, \ldots, r_n) = (-1)^k\frac{a_{n-k}}{a_n}$, the sum of all products of $k$ roots
+- $x^3 + bx^2 + cx + d$: $r + s + t = -b$, $rs + rt + st = c$, $rst = -d$
+- $x^4 + bx^3 + cx^2 + dx + e$: the roots sum to $-b$, their pairwise products to $c$, their triple products to $-d$, and their product is $e$
+
+## Conditions
+The polynomial has degree $n \ge 1$ and $a_n \ne 0$. The roots are its $n$ complex roots counted with multiplicity, real or not; the formulas say nothing about which roots are real.
+
 ## Why it works
-A polynomial with roots $r_1, \ldots, r_n$ can be written as $a_n(x - r_1)(x - r_2)\cdots(x - r_n)$, and multiplying that product out shows exactly which combination of the roots lands in front of each power of $x$.
+A polynomial with roots $r_1, \ldots, r_n$ factors as $a_n(x - r_1)(x - r_2)\cdots(x - r_n)$, and multiplying out the product shows which combination of the roots lands in front of each power of $x$.
 
-Try degree two first. $(x - r)(x - s) = x^2 - (r + s)x + rs$, so the middle coefficient is minus the sum of the roots and the constant is their product. Degree three follows the same pattern, $$(x - r)(x - s)(x - t) = x^3 - (r + s + t)x^2 + (rs + rt + st)x - rst.$$ The signs alternate because each root enters with a minus sign attached, and a product of $k$ roots carries $k$ of them.
+In degree two, $(x - r)(x - s) = x^2 - (r + s)x + rs$, so the middle coefficient is minus the sum and the constant is the product. Degree three follows the same pattern, $$(x - r)(x - s)(x - t) = x^3 - (r + s + t)x^2 + (rs + rt + st)x - rst.$$ The signs alternate because each root enters with a minus sign, and a product of $k$ roots carries $k$ of them. A leading coefficient other than $1$ is divided out first, which is why every formula is a coefficient over $a_n$.
 
-When the leading coefficient is not $1$, divide by it first. The polynomial $$x^n + \frac{a_{n-1}}{a_n}x^{n-1} + \cdots + \frac{a_0}{a_n}$$ has the same roots, which is why every formula is a coefficient divided by $a_n$.
+## Useful observations
+- The other symmetric functions follow from the $e_k$: $\sum r_i^2 = e_1^2 - 2e_2$ and $\sum\frac{1}{r_i} = \frac{e_{n-1}}{e_n}$.
+- A missing term means a zero symmetric sum: no $x^{n-1}$ term means the roots sum to $0$.
+- For a quadratic $x^2 - sx + p$, the roots are the two numbers with sum $s$ and product $p$, so a pair of numbers is fixed by its sum and product.
+- With integer coefficients and leading coefficient $1$, an integer root divides the constant term, since it is a factor of the product of the roots.
+
+## Applications
+Sums, products, and other symmetric functions of the roots of a polynomial, polynomials built from prescribed roots, and conditions on roots, such as integer or arithmetic-progression roots, written as conditions on coefficients.
+
+## Contest profile
+The most common polynomial fact on the AIME, but rarely the whole solution: it usually converts a structure found by another argument, such as conjugate pairs or a transformed polynomial, into coefficients.
 
 ## Full proof
-Over the complex numbers every polynomial of degree $n$ has $n$ roots counted with multiplicity, by [[fundamental-theorem-algebra|the Fundamental Theorem of Algebra]], so $a_nx^n + \cdots + a_0 = a_n(x - r_1)\cdots(x - r_n)$.
+Over the complex numbers a polynomial of degree $n$ has $n$ roots counted with multiplicity, by the Fundamental Theorem of Algebra, so $a_nx^n + \cdots + a_0 = a_n(x - r_1)\cdots(x - r_n)$.
 
-Expand the right-hand side. Each term of the expansion is made by choosing, from every one of the $n$ brackets, either its $x$ or its $-r_i$, and multiplying the choices together. A choice that takes $-r_i$ from the brackets in a set $S$ of size $k$, and $x$ from the other $n - k$, contributes $(-1)^k\left(\prod_{i \in S} r_i\right)x^{n-k}$.
+Each term of the expansion of the right side is made by choosing, from every bracket, either its $x$ or its $-r_i$, and multiplying the choices. A choice that takes $-r_i$ from the brackets in a set $S$ of size $k$ contributes $(-1)^k\left(\prod_{i \in S} r_i\right)x^{n-k}$.
 
-Collecting every choice with the same $k$, the coefficient of $x^{n-k}$ is $(-1)^k e_k$, where $e_k$ is the sum of $\prod_{i \in S} r_i$ over all $\binom{n}{k}$ sets $S$ of size $k$.
-
-Comparing the coefficients of $x^{n-k}$ on the two sides gives $a_{n-k} = (-1)^k a_n e_k$, that is, $e_k = (-1)^k\frac{a_{n-k}}{a_n}$. The cases $k = 1$, $k = 2$, and $k = n$ are the sum, the sum of pairwise products, and the product.
-
-For a monic quartic $x^4 + bx^3 + cx^2 + dx + e$ this reads $\sum r_i = -b$, $\sum_{i \lt j} r_ir_j = c$, $\sum_{i \lt j \lt \ell} r_ir_jr_\ell = -d$, and $r_1r_2r_3r_4 = e$.
-
-## How to use it
-Any symmetric expression in the roots can be rebuilt from the $e_k$. The two used most are $$\sum r_i^2 = e_1^2 - 2e_2, \qquad \sum \frac{1}{r_i} = \frac{e_{n-1}}{e_n}.$$ The first comes from squaring the sum of the roots and removing the cross terms, and the second from putting the reciprocals over the common denominator $r_1r_2\cdots r_n$. For higher powers, [[newtons-sums|Newton's Sums]] do the bookkeeping.
-
-The point of the relations is that they give you the roots' symmetric functions without the roots, and for most questions that is all you need. A question about $\sum r_i$, $\sum r_i r_j$, or $\prod r_i$ is answered by reading coefficients; a question about $\sum r_i^2$ or $\sum \frac1{r_i}$ becomes one of those after one identity. Solving the polynomial is not just unnecessary, it is usually impossible, which is the real reason the tool exists.
-
-When the expression is not symmetric, transform the polynomial instead, so that the question becomes a symmetric one about new roots. If $p$ has roots $r_i$, then the polynomials $$p(x - c), \qquad p\left(\tfrac{x}{k}\right), \qquad x^np\left(\tfrac{1}{x}\right)$$ have roots $r_i + c$, $kr_i$, and $\frac{1}{r_i}$; the last is $p$ with its coefficients reversed, and needs no root to be $0$. Building the polynomial for the new roots turns a hard question about the old ones into coefficient bookkeeping.
-
-## On contests
-AIME's favorite polynomial tool, and rarely alone: 3 of 31. Its most frequent companion is [[conjugate-root-theorems|the Conjugate Root Theorems]] (5 problems), which is the standard pairing, since the conjugate rule pins down which roots must occur together and Vieta then converts that structure into coefficients.
-
-The trigger is a question about the roots that never asks for a root. Whenever that happens, stop trying to factor and start writing symmetric functions; Newton's Sums take over once the powers climb past the second.
+Collecting the choices with the same $k$, the coefficient of $x^{n-k}$ is $(-1)^k a_n e_k$, where $e_k$ is the sum of $\prod_{i \in S} r_i$ over all $\binom nk$ sets $S$ of size $k$. Comparing with $a_{n-k}$ gives $e_k = (-1)^k\frac{a_{n-k}}{a_n}$.
 `,
 
 "fundamental-theorem-algebra": String.raw`## Why it works
@@ -293,38 +295,64 @@ Two problems here, both AIME, one solved by it alone; the other adds [[casework-
 
 "lagrange-interpolation": String.raw`
 ## When to use
-Problems that give a polynomial's degree and several of its values, such as "$P$ has degree $3$ and $P(k) = \frac1k$ for $k = 1, 2, 3, 4$", and ask for another value. Also remainder problems, since the remainder of $P(x)$ modulo $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$, and existence questions, since a polynomial with too many prescribed values cannot exist.
+Problems that give a polynomial's degree and its values at a few points with no visible pattern, such as "the quadratic with $P(0) = 1$, $P(1) = 2$, $P(3) = 10$; find $P(5)$"; remainder problems, since the remainder of $P(x)$ modulo $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$; and existence questions, since a polynomial with too many prescribed values cannot exist. When the values follow a simple rule, [[subtract-and-factor|subtracting the rule and factoring]] is shorter.
 
 ## How
 1. Count: a polynomial of degree at most $n - 1$ is fixed by $n$ values, so check the data determines it.
-2. Look for a simple function $g$ that already matches the data, such as $\frac1x$ or $x$ or $2^x$. Then $Q(x) = P(x) - g(x)$, cleared of denominators, vanishes at every given point, so $Q(x) = c(x - x_1)\cdots(x - x_n)$.
-3. Find $c$ from one more fact: the leading coefficient, or the value of $Q$ at a point where $P$ drops out, such as $x = 0$ for $xP(x) - 1$.
-4. If no such $g$ exists, use the Lagrange formula directly, evaluating it only at the point you need.
+2. For each node $x_i$, write the basis polynomial $L_i(x) = \prod_{j \ne i}\frac{x - x_j}{x_i - x_j}$.
+3. Evaluate each $L_i$ only at the point you need.
+4. Combine: $P(x) = \sum y_iL_i(x)$.
 
-Find $P(5)$ if $P$ has degree $3$ and $P(k) = \frac1k$ for $k = 1, 2, 3, 4$. The polynomial $Q(x) = xP(x) - 1$ has degree $4$ and vanishes at $1, 2, 3, 4$, so $Q(x) = c(x - 1)(x - 2)(x - 3)(x - 4)$. At $x = 0$, $Q(0) = -1 = 24c$, so $c = -\frac{1}{24}$. Then $Q(5) = -\frac{24}{24} = -1$, so $5P(5) - 1 = -1$ and $P(5) = 0$.
-
-When the data has no pattern, evaluate the formula at one point. For the quadratic through $(1, 2)$, $(3, 10)$ and $(4, 20)$, the three basis terms at $x = 0$ equal $2$, $-2$ and $1$, so $P(0) = 2 \cdot 2 - 2 \cdot 10 + 1 \cdot 20 = 4$.
+For the quadratic through $(1, 2)$, $(3, 10)$ and $(4, 20)$, the three basis terms at $x = 0$ equal $\frac{(0 - 3)(0 - 4)}{(1 - 3)(1 - 4)} = 2$, $\frac{(0 - 1)(0 - 4)}{(3 - 1)(3 - 4)} = -2$ and $\frac{(0 - 1)(0 - 3)}{(4 - 1)(4 - 3)} = 1$, so $P(0) = 2 \cdot 2 - 2 \cdot 10 + 1 \cdot 20 = 4$.
 
 {{figure:basis}}
 
 ## Why it works
-The basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, equals $1$ at $x_i$, and equals $0$ at every other node, because one factor in its numerator vanishes there. So $\sum y_iL_i(x)$ takes the value $y_i$ at each $x_i$, as the figure shows for three points. Uniqueness comes from counting roots: two polynomials of degree at most $n - 1$ that agree at $n$ points differ by a polynomial of degree at most $n - 1$ with $n$ roots, which must be zero.
-
-The auxiliary polynomial is the same uniqueness in another form. $Q$ has as many known roots as its degree, so the Factor Theorem writes it as a constant times a known product, and one more value fixes the constant. It is often far shorter than the formula because it never builds the basis.
+The basis polynomial $L_i$ has degree $n - 1$, equals $1$ at $x_i$, and equals $0$ at every other node, because one factor in its numerator vanishes there. So $\sum y_iL_i(x)$ takes the value $y_i$ at each $x_i$, as the figure shows for three points. Uniqueness comes from counting roots: two polynomials of degree at most $n - 1$ that agree at $n$ points differ by a polynomial of degree at most $n - 1$ with $n$ roots, which must be zero.
 
 ## Formulas it uses
 - [[lagrange-interpolation-formula]]: the explicit formula $P(x) = \sum_i y_i\prod_{j \ne i}\frac{x - x_j}{x_i - x_j}$ and the uniqueness of the interpolant.
-- [[factor-remainder-theorem]]: each known root $x_i$ of $Q$ gives a factor $x - x_i$, which builds the auxiliary polynomial.
 - [[polynomial-crt]]: values at several points fix the remainder modulo the product $(x - x_1)\cdots(x - x_n)$, which is interpolation read as a remainder.
+- [[factor-remainder-theorem]]: a polynomial of degree at most $n - 1$ with $n$ roots is zero, the uniqueness behind the formula.
 
 ## Common traps
-- Miscounting the degree of the auxiliary polynomial: $xP(x) - 1$ has degree one more than $P$, so it has room for one more root.
-- Forgetting to find the constant $c$, and writing $Q(x) = (x - 1)\cdots(x - n)$ as if it were monic.
-- Using a difference table on unequally spaced inputs, where it does not apply.
 - Expanding the whole interpolating polynomial when only one value is asked for.
+- Dropping a factor or a sign in a basis denominator $(x_i - x_j)$.
+- Using a difference table on unequally spaced inputs, where it does not apply.
 
 ## Contest profile
-An AIME and olympiad tool, most often in its auxiliary form: subtract the obvious function, factor the difference, and evaluate once.
+An AIME and olympiad tool for values with no pattern; when a pattern is visible, subtracting it is usually faster.
+`,
+"subtract-and-factor": String.raw`
+## When to use
+Polynomials described by values that follow a rule: $P(k) = \frac1k$ or $\frac{k}{k + 1}$ for $k = 0, \ldots, n$; $P(1) = 10$, $P(2) = 20$, $P(3) = 30$ for a monic quartic; or a polynomial taking the same value at several points. The question usually asks for one more value or for a sum such as $P(12) + P(-8)$, where an unknown root cancels.
+
+## How
+1. Find the simple function $g$ the values follow, such as $\frac1x$, $10x$ or a constant.
+2. Form $Q(x) = P(x) - g(x)$, multiplied through by a denominator if $g$ is a fraction, so that $Q$ is a polynomial vanishing at every given point.
+3. Compare degrees: if $Q$ has as many known roots as its degree, $Q(x) = c\prod(x - x_i)$; if it has one more degree, include an unknown root $(x - r)$.
+4. Find $c$ from the leading coefficient or from a point where $P$ drops out, then evaluate $Q$ and recover $P$.
+
+Find $P(5)$ if $P$ has degree $3$ and $P(k) = \frac1k$ for $k = 1, 2, 3, 4$. The polynomial $Q(x) = xP(x) - 1$ has degree $4$ and vanishes at $1, 2, 3, 4$, so $Q(x) = c(x - 1)(x - 2)(x - 3)(x - 4)$. At $x = 0$, $Q(0) = -1 = 24c$, so $c = -\frac{1}{24}$. Then $Q(5) = -\frac{24}{24} = -1$, so $5P(5) - 1 = -1$ and $P(5) = 0$.
+
+{{figure:auxiliary}}
+
+## Why it works
+If $Q(x_i) = 0$, the Factor Theorem gives the factor $x - x_i$, and distinct roots give distinct factors, so $Q$ is divisible by $\prod(x - x_i)$. When the number of known roots equals the degree of $Q$, the quotient is a constant; one more fact about $Q$, such as its value at a point where the unknown $P$ is multiplied by $0$, determines that constant and therefore $Q$ and $P$ completely.
+
+The method works because the rule $g$ hides the polynomial's structure: $P$ itself has no visible roots, but $P - g$ has as many as the data.
+
+## Formulas it uses
+- [[factor-remainder-theorem]]: each root $x_i$ of $Q$ gives a factor $x - x_i$, which builds the factored form.
+- [[fundamental-theorem-algebra]]: a polynomial of degree $n$ is its leading coefficient times the product of $n$ root factors, so no factor is missing.
+
+## Common traps
+- Miscounting the degree of $Q$: $xP(x) - 1$ has degree one more than $P$, so it has room for one more root.
+- Writing $Q$ as monic when its leading coefficient is unknown or different.
+- Forgetting an unknown extra root when $Q$ has higher degree than the number of known roots.
+
+## Contest profile
+A recurring AIME and olympiad move: subtract the obvious function, factor the difference, and evaluate once.
 `,
 
 "difference-of-squares": String.raw`
@@ -365,14 +393,28 @@ Divisibility engine: $a - b \mid a^n - b^n$ always; $a + b \mid a^n + b^n$ for o
 ## On contests
 "Find the largest prime factor of $3^{12} - 1$"-type problems: factor via exponent divisors ($3^6-1$, $3^4-1$, $3^3-1$, cyclotomic pieces). Mersenne-flavored AIME number theory leans on $m \mid n \iff 2^m - 1 \mid 2^n - 1$.`,
 
-"sophie-germain": String.raw`## Why it works
-$a^4 + 4b^4 = (a^2 + 2b^2)^2 - (2ab)^2$ — add and subtract $4a^2b^2$ to complete the square, then [[difference-of-squares|difference of squares]].
+"sophie-germain": String.raw`
+## Key forms
+- the completed square: $a^4 + 4b^4$ is the square of $a^2 + 2b^2$ minus the square of $2ab$
+- each factor is a sum of two squares: $\left((a - b)^2 + b^2\right)\left((a + b)^2 + b^2\right)$
 
-## How to use it
-Trigger: fourth powers with coefficient 4 (or rewritable to it, e.g. $4^{n} = 4 \cdot 4^{n-1}$ makes $k^4 + 4^n$ eligible when $n$ is odd... check parity carefully). Each factor is $\ge 2$ for $a, b \ge 1$ except tiny cases — hence compositeness proofs.
+## Conditions
+The identity holds for all real or complex $a$ and $b$. For integer factorization arguments, $a$ and $b$ are positive integers, and the smaller factor $(a - b)^2 + b^2$ exceeds $1$ unless $a = b = 1$.
 
-## On contests
-"Show $n^4 + 4$ is never prime for $n > 1$" and "compute $\frac{(10^4+324)(22^4+324)\cdots}{(4^4+324)(16^4+324)\cdots}$" (with $324 = 4 \cdot 3^4$, the factors telescope) — the latter is a famous AIME problem pattern.`,
+## Why it works
+Adding and subtracting $4a^2b^2$ completes a square: $$a^4 + 4b^4 = a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2 = (a^2 + 2b^2)^2 - (2ab)^2.$$ The result is a difference of two squares, which factors as $(a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)$. Rewriting $a^2 - 2ab + 2b^2$ as $(a - b)^2 + b^2$ shows that each factor is a sum of two squares.
+
+## Useful observations
+- With $b = 1$ it reads $n^4 + 4 = (n^2 - 2n + 2)(n^2 + 2n + 2)$, so $n^4 + 4$ is prime only for $n = 1$, where it equals $5$.
+- $n^4 + 4^k$ fits the identity when $k$ is odd, with $b = 2^{(k-1)/2}$, since then $4^k = 4b^4$.
+- The two factors evaluated at consecutive arguments share a value: with $f(x) = x^2 + 2bx + 2b^2$ and $g(x) = x^2 - 2bx + 2b^2$, $f(x) = g(x + 2b)$, which makes products of such expressions telescope.
+
+## Applications
+Factorizations and compositeness of expressions of the form $a^4 + 4b^4$, and products of such expressions over arithmetic progressions, where the factors cancel in a telescoping chain.
+
+## Contest profile
+An occasional AIME and AMC tool: a fourth power plus four times a fourth power, often hidden behind a constant such as $324 = 4 \cdot 3^4$.
+`,
 
 "largest-term-ratio": String.raw`
 ## When to use
@@ -2095,7 +2137,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "sos-method": String.raw`
 ## When to use
-Olympiad inequalities in three variables, symmetric or cyclic, with equality at $a = b = c$: polynomial inequalities after clearing denominators, inequalities where AM-GM and Cauchy-Schwarz lose too much, and inequalities with a second equality case such as $a = b,\ c = 0$, which points to Schur's Inequality. It is a mechanical method, so it is also the fallback when no clever idea appears.
+Olympiad inequalities in three variables, symmetric or cyclic, with equality at $a = b = c$: polynomial inequalities after clearing denominators, inequalities where AM-GM and Cauchy-Schwarz lose too much, and inequalities with a second equality case such as $a = b,\ c = 0$, which points to Schur's Inequality. It is a mechanical method, so it is also the fallback when no clever idea appears. When the extremes may sit at the boundary instead, the [[uvw-method|uvw method]] is the companion check.
 
 ## How
 1. Move everything to one side, so the claim is $F(a, b, c) \ge 0$ with $F(t, t, t) = 0$.
@@ -2104,8 +2146,6 @@ Olympiad inequalities in three variables, symmetric or cyclic, with equality at 
 4. Otherwise assume $a \ge b \ge c$ and check the ordered criterion: $S_b \ge 0$, $S_a + S_b \ge 0$ and $S_c + S_b \ge 0$.
 
 The building blocks are the SOS identity, $a^2 + b^2 + c^2 - ab - bc - ca = \frac12\sum(a - b)^2$, and its consequences such as $a^3 + b^3 + c^3 - 3abc = \frac{a + b + c}{2}\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right]$. In the second one every coefficient is $\frac{a + b + c}{2}$, nonnegative for nonnegative variables, which proves $a^3 + b^3 + c^3 \ge 3abc$ in one line.
-
-The partner method, $uvw$, writes a symmetric expression in $p = a + b + c$, $q = ab + bc + ca$ and $r = abc$. When the expression is linear in $r$ for fixed $p$ and $q$, its extreme values occur when two variables are equal or one is $0$, so only those two shapes need checking.
 
 ## Why it works
 A symmetric polynomial that vanishes whenever $a = b = c$ can be organized around the differences between the variables, and the squared differences are the natural nonnegative quantities. Writing $F$ in that form changes the question from "is this polynomial nonnegative?" to "are three coefficients nonnegative?", which is usually a much simpler question.
@@ -2116,7 +2156,6 @@ The ordered criterion handles a negative coefficient. With $a \ge b \ge c$, the 
 - [[sos-identity]]: $x^2 + y^2 + z^2 - xy - yz - zx = \frac12\left[(x - y)^2 + (y - z)^2 + (z - x)^2\right]$, the first building block of every SOS form.
 - [[trivial-inequality]]: squares are nonnegative, which makes each term $S(b - c)^2$ nonnegative once its coefficient is.
 - [[schurs-inequality]]: the standard finish when SOS leaves a residual term, and the inequality behind the equality case $a = b,\ c = 0$.
-- [[fundamental-theorem-symmetric]]: every symmetric polynomial is a polynomial in $p$, $q$ and $r$, the basis of the $uvw$ method.
 
 ## Common traps
 - Forgetting to check that the inequality really is an equality at $a = b = c$; if not, no SOS form exists.
@@ -2126,6 +2165,38 @@ The ordered criterion handles a negative coefficient. With $a \ge b \ge c$, the 
 
 ## Contest profile
 An olympiad tool for three-variable polynomial inequalities, used when slicker approaches fail; it seldom appears in AMC or AIME problems, where the inequalities are lighter.
+`,
+"uvw-method": String.raw`
+## When to use
+Symmetric inequalities and optimization problems in three nonnegative variables, especially polynomial ones of degree at most $5$ under a constraint such as $a + b + c = 3$, where the extreme case might be $a = b = c$, or $(t, t, s)$, or a configuration with a zero such as $(\frac32, \frac32, 0)$. The method decides which, with no clever idea needed.
+
+## How
+1. Write the expression in $p = a + b + c$, $q = ab + bc + ca$ and $r = abc$.
+2. Fix $p$ and $q$ and check that the expression is linear in $r$, or at least monotone; for symmetric polynomials of degree at most $5$ it always is, since $r^2$ has degree $6$.
+3. Conclude that the extremes occur at the ends of the range of $r$, which are the configurations with two equal variables or with one variable equal to $0$.
+4. Check those two one-variable cases directly.
+
+For nonnegative $a + b + c = 3$, show $a^2 + b^2 + c^2 + abc \ge 4$. In $pqr$ form the expression is $9 - 2q + r$, linear in $r$, so it suffices to check the boundary. With $c = 0$ it is $a^2 + b^2 \ge \frac92$. With $a = b = t$ and $c = 3 - 2t$ it is $-2t^3 + 9t^2 - 12t + 9$, whose minimum on $[0, \frac32]$ is $4$, at $t = 1$.
+
+{{figure:boundary}}
+
+## Why it works
+A symmetric polynomial is a polynomial in $p$, $q$ and $r$. Three real numbers with given $p$, $q$, $r$ exist exactly when the cubic $x^3 - px^2 + qx - r$ has three real roots, nonnegative if required. With $p$ and $q$ fixed, the set of allowed $r$ is an interval, and its endpoints are where the cubic has a double root, two equal variables, or a root at $0$.
+
+A linear function of $r$ on an interval takes its maximum and minimum at the endpoints. So the extreme values of the original expression occur in those boundary configurations, and the three-variable problem becomes two one-variable problems.
+
+## Formulas it uses
+- [[fundamental-theorem-symmetric]]: every symmetric polynomial in $a$, $b$, $c$ is a polynomial in $p$, $q$ and $r$.
+- [[vietas-general]]: $a$, $b$, $c$ are the roots of $x^3 - px^2 + qx - r$, which is how the range of $r$ is described.
+- [[schurs-inequality]]: $p^3 - 4pq + 9r \ge 0$, a bound on $r$ that often finishes the boundary case.
+
+## Common traps
+- Applying the method to an expression that is not linear or monotone in $r$, such as one containing $r^2$.
+- Checking only $a = b = c$ and forgetting the two-equal and one-zero cases.
+- Forgetting the zero case when variables may be $0$, or including it when they must be positive.
+
+## Contest profile
+An olympiad tool for symmetric inequalities in three variables; it settles where the extreme sits, and the two boundary checks are routine.
 `,
 
 "max-product-fixed-sum": String.raw`## Why it works
@@ -2309,40 +2380,65 @@ An AMC/AIME favorite for the golden-ratio radical and a classic olympiad curiosi
 
 "symmetric-polynomial-strategies": String.raw`
 ## When to use
-Any question of the form "the roots of this polynomial are $r$, $s$, $t$; find..." where the requested quantity treats the roots alike: sums of powers, sums of reciprocals, products such as $(r + 1)(s + 1)(t + 1)$, or sums such as $\frac{r}{s} + \frac{s}{r}$. The polynomial usually has no nice roots, which is the signal that the problem never wants them found. If swapping two roots changes the expression, it is not symmetric; pair it with its mirror image first, or reconsider.
+Any question of the form "the roots of this polynomial are $r$, $s$, $t$; find..." where the requested quantity treats the roots alike: sums of powers, sums of reciprocals, or sums such as $\frac{r}{s} + \frac{s}{r}$. The polynomial usually has no nice roots, which is the signal that the problem never wants them found. If swapping two roots changes the expression, it is not symmetric; pair it with its mirror image first. A product over all the roots is faster by [[products-over-roots|evaluation]].
 
 ## How
 1. Read off the elementary symmetric sums: for $x^3 + ax^2 + bx + c$ they are $e_1 = -a$, $e_2 = b$ and $e_3 = -c$.
-2. For a product over the roots, such as $\prod(r_i^2 + 1)$, evaluate the polynomial instead.
-3. For a power sum $r^k + s^k + t^k$, climb from $p_1 = e_1$ with Newton's Sums.
-4. For a fraction, use a common denominator; both parts are symmetric.
-5. Otherwise expand into the $e_k$, starting from $r^2 + s^2 + t^2 = e_1^2 - 2e_2$.
+2. For a power sum $r^k + s^k + t^k$, climb from $p_1 = e_1$ with Newton's Sums.
+3. For a fraction, use a common denominator; both parts are symmetric.
+4. Otherwise expand into the $e_k$, starting from $r^2 + s^2 + t^2 = e_1^2 - 2e_2$.
 
-Let $r$, $s$, $t$ be the roots of $P(x) = x^3 - 2x^2 + 3x - 4$. Since $P(x) = (x - r)(x - s)(x - t)$, putting $x = -1$ gives $P(-1) = (-1 - r)(-1 - s)(-1 - t) = -(r + 1)(s + 1)(t + 1)$. So $(r + 1)(s + 1)(t + 1) = -P(-1) = 10$. And $r^2 + s^2 + t^2 = e_1^2 - 2e_2 = 4 - 6 = -2$, negative because two of the roots are complex.
-
-{{figure:distances}}
+Let $r$, $s$, $t$ be the roots of $x^3 - 2x^2 + 3x - 4$, so $e_1 = 2$, $e_2 = 3$ and $e_3 = 4$. Then $r^2 + s^2 + t^2 = e_1^2 - 2e_2 = 4 - 6 = -2$, negative because two of the roots are complex, and $\frac1r + \frac1s + \frac1t = \frac{rs + st + tr}{rst} = \frac{e_2}{e_3} = \frac34$.
 
 ## Why it works
 The coefficients of a polynomial are, up to sign, the elementary symmetric sums of its roots. That is Vieta's Formulas, and it is the only information about the roots that the coefficients hold. The Fundamental Theorem of Symmetric Polynomials says that this is enough: every polynomial expression that is unchanged by permuting the roots equals a polynomial in $e_1, \ldots, e_n$. A symmetric target can therefore always be computed from the coefficients, and the only question is how quickly.
 
-Products are quickest because the factored form $P(x) = a_n(x - r_1)\cdots(x - r_n)$ holds for every number $x$, real or complex. Substituting one value turns a product over all the roots into a single evaluation. Complex values help: $r^2 + 1 = (r - i)(r + i)$, so $\prod(r_k^2 + 1) = \frac{P(i)P(-i)}{a_n^2}$, which the figure reads as a product of squared distances from $i$ to the roots.
-
-Reciprocal sums come from the same factored form after a logarithmic derivative: $\frac{P'(x)}{P(x)} = \sum_k \frac{1}{x - r_k}$, so $\sum \frac{1}{a - r_k} = \frac{P'(a)}{P(a)}$.
+Power sums have their own ladder. Each root satisfies the polynomial, so $r^3 = -ar^2 - br - c$, and adding over the roots expresses $p_3$ through $p_2$, $p_1$ and $p_0 = n$; the same step works for every higher power, which is Newton's Sums.
 
 ## Formulas it uses
 - [[fundamental-theorem-symmetric]]: guarantees that every symmetric expression in the roots is a polynomial in the $e_k$, so the method never gets stuck.
 - [[vietas-general]]: identifies each $e_k$ with a coefficient, $e_k = (-1)^k \frac{a_{n-k}}{a_n}$.
 - [[newtons-sums]]: converts the $e_k$ into the power sums $p_k = \sum r_i^k$ one step at a time.
-- [[fundamental-theorem-algebra]]: the factored form $P(x) = a_n\prod(x - r_k)$, which turns a product over the roots into a value of $P$.
 
 ## Common traps
 - Sign errors in Vieta's Formulas: for a cubic, $e_1 = -\frac{a_2}{a_3}$ and $e_3 = -\frac{a_0}{a_3}$, while $e_2$ has a plus sign.
-- Forgetting the leading coefficient when evaluating: $\prod(k - r_i) = \frac{P(k)}{a_n}$, not $P(k)$.
-- Getting the sign of a product backward: $\prod(r_i - k) = (-1)^n\prod(k - r_i)$.
+- Forgetting $p_0 = n$, the number of roots, when Newton's Sums reach back to the constant term.
 - Applying the method to an expression that is not symmetric, such as $r^2s + s^2t + t^2r$ alone.
 
 ## Contest profile
-Usually the whole problem: an AIME question gives a cubic with ugly roots and asks for one symmetric value, and the work is choosing between expansion, Newton's Sums, and one evaluation.
+Usually the whole problem: an AIME question gives a cubic with ugly roots and asks for one symmetric value, and the work is choosing between direct expansion and Newton's Sums.
+`,
+"products-over-roots": String.raw`
+## When to use
+Products in which every root of a known polynomial appears in the same factor, such as $(r + 1)(s + 1)(t + 1)$, $(2 - r)(2 - s)(2 - t)$ or $(r^2 + 1)(s^2 + 1)(t^2 + 1)$, and sums of reciprocals $\frac{1}{k - r}$ over all the roots. Expanding these in the elementary symmetric sums works but is long; one evaluation is enough.
+
+## How
+1. Write the polynomial in factored form, $P(x) = a_n(x - r_1)\cdots(x - r_n)$.
+2. Match each factor of the product to $k - r_i$ for one number $k$, fixing signs: $r_i + 1 = -(-1 - r_i)$.
+3. For a quadratic factor such as $r^2 + c^2$, split it as $(r - ci)(r + ci)$ and evaluate at $ci$ and $-ci$.
+4. For $\sum \frac{1}{k - r_i}$, compute $\frac{P'(k)}{P(k)}$.
+
+For the roots of $P(x) = x^3 - 2x^2 + 3x - 4$, putting $x = -1$ gives $P(-1) = (-1 - r)(-1 - s)(-1 - t) = -(r + 1)(s + 1)(t + 1)$, so the product is $-P(-1) = 10$. For the roots of $x^3 - 3x + 1$, $\sum \frac{1}{2 - r} = \frac{P'(2)}{P(2)} = \frac{9}{3} = 3$.
+
+{{figure:distances}}
+
+## Why it works
+The factored form $P(x) = a_n\prod(x - r_k)$ is an identity: it holds for every number $x$, real or complex. Substituting one value turns the product over all the roots into a single value of $P$. Complex values extend the reach: $r^2 + c^2 = (r - ci)(r + ci)$, so $\prod(r_k^2 + c^2) = \frac{P(ci)P(-ci)}{a_n^2}$, and for real coefficients $P(-ci)$ is the conjugate of $P(ci)$, so the answer is $\frac{|P(ci)|^2}{a_n^2}$, as the figure shows with distances from $i$ to the roots.
+
+Reciprocal sums come from the same identity after taking a logarithm and differentiating: $\ln|P(x)| = \ln|a_n| + \sum\ln|x - r_k|$, so $\frac{P'(x)}{P(x)} = \sum\frac{1}{x - r_k}$.
+
+## Formulas it uses
+- [[fundamental-theorem-algebra]]: the factored form $P(x) = a_n\prod(x - r_k)$, valid at every complex number.
+- [[complex-basics]]: $P(-ci) = \overline{P(ci)}$ for real coefficients, and $z\bar z = |z|^2$, which finishes products such as $\prod(r^2 + 1)$.
+- [[factor-remainder-theorem]]: $P(k)$ is the remainder on division by $x - k$, which is why one evaluation captures the whole product.
+
+## Common traps
+- Forgetting the leading coefficient: $\prod(k - r_i) = \frac{P(k)}{a_n}$, not $P(k)$.
+- Getting the sign backward: $\prod(r_i - k) = (-1)^n\prod(k - r_i)$.
+- Evaluating at $i$ only and forgetting the factor $P(-i)$.
+
+## Contest profile
+An AIME favorite: a product such as $\prod(r^2 + 1)$ over ugly roots, where one evaluation at $i$ replaces a page of symmetric algebra.
 `,
 
 "even-power-sin-cos-sums": String.raw`## Why it works
@@ -2459,31 +2555,58 @@ Usually the first step of an AIME logarithm problem: once the repeated logarithm
 
 "normalization": String.raw`
 ## When to use
-Homogeneous inequalities such as $\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32$, where nothing changes if every variable is doubled; inequalities under a constraint such as $a + b + c = 3$ that must be made homogeneous before Muirhead's Inequality or Schur's Inequality applies; and geometry problems asking for a ratio, where one length may be set to $1$.
+Homogeneous inequalities such as $\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32$, where nothing changes if every variable is doubled; homogeneous optimization problems; and geometry problems asking for a ratio, where one length may be set to $1$. The opposite situation, a constraint with terms of different degrees, calls for [[homogenization|homogenization]].
 
 ## How
 1. Check homogeneity: replacing every variable $a$ by $ta$ should multiply each side by the same power of $t$.
-2. To normalize, impose the scale that most simplifies the expression, such as $a + b + c = 1$, $abc = 1$ or $a = 1$.
-3. To homogenize, replace each constant by the given constraint raised to the power that matches the degrees of the other terms.
-4. Prove the simplified statement; scaling back gives the original.
+2. Impose the scale that most simplifies the expression, such as $a + b + c = 1$, $abc = 1$ or $a = 1$.
+3. Prove the simplified statement.
+4. Note that scaling carries it back to every choice of the variables.
 
-Prove that $a + b + c = 3$ implies $a^2 + b^2 + c^2 \ge 3$. Homogenize: under the constraint $3 = \frac{(a + b + c)^2}{3}$, so the claim is $3(a^2 + b^2 + c^2) \ge (a + b + c)^2$, which expands to $(a - b)^2 + (b - c)^2 + (c - a)^2 \ge 0$, true for all real numbers.
+Prove $\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32$ for positive reals. The left side is homogeneous of degree $0$, so take $a + b + c = 1$; it becomes $\sum \frac{a}{1 - a}$. The function $\frac{x}{1 - x}$ is convex on $(0, 1)$, so by Jensen's Inequality the sum is at least $3 \cdot \frac{1/3}{2/3} = \frac32$.
 
 ## Why it works
-An expression is homogeneous of degree $d$ if $f(ta, tb, tc) = t^d f(a, b, c)$. If both sides of an inequality are homogeneous of degree $d$ and it holds whenever $a + b + c = 1$, then for any positive $a, b, c$ with sum $S$, apply it to $\frac aS, \frac bS, \frac cS$ and multiply by $S^d$: it holds everywhere. Homogenizing runs the other way. Under the constraint, a constant equals a power of the constraint's expression, so replacing it changes nothing on the constraint set, and the resulting homogeneous inequality can then be proved for all variables at once, where the classical inequalities apply.
+An expression is homogeneous of degree $d$ if $f(ta, tb, tc) = t^d f(a, b, c)$. If both sides of an inequality are homogeneous of degree $d$ and it holds whenever $a + b + c = 1$, then for any positive $a$, $b$, $c$ with sum $S$, apply it to $\frac aS$, $\frac bS$, $\frac cS$ and multiply by $S^d$: it holds everywhere. The same argument works for any normalization that a scaling can reach, such as $abc = 1$.
 
 ## Formulas it uses
 - [[am-gm]]: homogeneous on both sides, so it applies cleanly after normalizing, as in $a + b + c \ge 3$ under $abc = 1$.
-- [[muirheads-inequality]]: compares symmetric sums of the same degree, which is why an inequality must be homogenized before it can be used.
-- [[schurs-inequality]]: a homogeneous degree-$3$ inequality, often the missing step after homogenizing.
+- [[jensens-inequality]]: after normalizing the sum, a sum of one-variable terms is bounded by the value at the average.
 
 ## Common traps
 - Normalizing an expression that is not homogeneous, which changes the two sides differently.
-- Homogenizing with the wrong power of the constraint, so the degrees still do not match.
+- Imposing two normalizations at once, such as $a + b + c = 1$ and $abc = 1$, which a single scaling cannot achieve.
 - Dividing by a quantity whose sign is not known when scaling.
 
 ## Contest profile
-Mostly olympiad inequalities: the first line of the proof, setting a scale or leveling the degrees, before a classical inequality finishes.
+Mostly olympiad inequalities, as the first line of a proof, and AIME geometry ratios, where one length is set to $1$.
+`,
+"homogenization": String.raw`
+## When to use
+Constrained inequalities with terms of different degrees, such as "$a + b + c = 3$; prove $a^3 + b^3 + c^3 \ge a^2 + b^2 + c^2$" or "$abc = 1$; prove $a^2 + b^2 + c^2 \ge a + b + c$". The classical tools for symmetric inequalities, Muirhead, Schur, and SOS, need every term to have the same degree, so the degrees must be leveled first. A problem that is already homogeneous calls for [[normalization|normalization]] instead.
+
+## How
+1. List the degree of every term.
+2. Rewrite each constant as the constraint's expression raised to the right power: under $a + b + c = 3$, $1 = \frac{a + b + c}{3}$; under $abc = 1$, $1 = (abc)^{1/3}$ or a suitable power.
+3. Multiply each low-degree term by that expression until all terms share the top degree.
+4. Prove the homogeneous inequality for all positive variables, usually by expanding and using Muirhead, Schur, or SOS.
+
+Prove that $a + b + c = 3$ implies $a^2 + b^2 + c^2 \ge 3$. Under the constraint, $3 = \frac{(a + b + c)^2}{3}$, so the claim is $3(a^2 + b^2 + c^2) \ge (a + b + c)^2$, which expands to $(a - b)^2 + (b - c)^2 + (c - a)^2 \ge 0$, true for all real numbers.
+
+## Why it works
+On the constraint set the inserted factor equals $1$, so the homogenized inequality says exactly the same thing there as the original. Off the constraint set it says more, but a homogeneous inequality that holds at one scale holds at every scale, so proving the stronger homogeneous statement for all positive variables proves the original. The gain is access to inequalities such as Muirhead's, which compare symmetric sums of one degree and say nothing otherwise.
+
+## Formulas it uses
+- [[muirheads-inequality]]: compares symmetric sums of the same degree, the usual finish once the degrees match.
+- [[schurs-inequality]]: a homogeneous degree-$3$ inequality, often the missing piece after homogenizing.
+- [[am-gm]]: supplies homogeneous bounds term by term, as in $a^3 + b^3 \ge a^2b + ab^2$.
+
+## Common traps
+- Using the wrong power of the constraint, so the degrees still do not match.
+- Homogenizing with a factor that is not positive, which can reverse the inequality.
+- Forgetting that a fractional power, such as $(abc)^{1/3}$, may make the expansion awkward; a substitution such as $a = x^3$ can clear it.
+
+## Contest profile
+An olympiad first step for constrained inequalities: level the degrees, then expand and finish with Muirhead, Schur, or SOS.
 `,
 
 "sqrt-approximation": String.raw`

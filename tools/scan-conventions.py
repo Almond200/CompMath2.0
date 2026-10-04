@@ -532,6 +532,30 @@ print("  warnings (reported, not failing): %d" % len(_kind_warn))
 for _x in _kind_warn[:12]:
     print("    " + _x)
 
+# Formula migration (plan D3). A formula converted after the ledger existed must record where its
+# old sections went, and a converted formula page must not carry procedure ("when you see...").
+_rr_l = _js.load(io.open("tools/rewrite-register.json", encoding="utf-8"))
+_ledger = _rr_l.get("ledger", {})
+_LEDGER_EXEMPT = {"legendres-formula", "power-of-a-point", "vietas-quadratic", "lte-lemma", "burnsides-lemma",
+                  "polya-enumeration", "newtons-sums", "cavalieris-principle", "pole-polar", "recognition-numbers",
+                  "triangle-13-14-15", "euler-line-parallel-side",
+                  "fundamental-theorem-symmetric", "inclusion-exclusion", "inversion-facts", "lagrange-interpolation-formula", "largest-odd-divisor-sum", "monges-theorem", "polynomial-crt", "sum-of-two-squares"}
+_no_ledger = sorted(i for i, st in _conv.items() if st == "formula" and i not in _LEDGER_EXEMPT and not _ledger.get(i))
+_PROC = re.compile(r"\b(when you see|reach for|your first move|the first move|start by|the trick is|look for)\b", re.I)
+_proc_hits = []
+for i, st in _conv.items():
+    if st != "formula":
+        continue
+    _t = re.sub(r"\$[^$]*\$", "", DETAILS.get(i, "") + " " + (_BYID_ALL.get(i, {}).get("desc", "") or ""))
+    for _m in _PROC.finditer(_t):
+        _proc_hits.append("%s: \"%s\"" % (i, _t[max(0, _m.start() - 30):_m.end() + 30].replace("\n", " ")))
+print("  converted formulas with no migration ledger: %d  (must stay 0)" % len(_no_ledger))
+for _x in _no_ledger[:12]:
+    print("    " + _x)
+print("  procedure left on a converted formula page: %d  (must stay 0)" % len(_proc_hits))
+for _x in _proc_hits[:12]:
+    print("    " + _x)
+
 # Progress of the intro-and-explanation rewrite, which runs over many sessions.
 try:
     _rr = _js.load(io.open("tools/rewrite-register.json", encoding="utf-8"))
@@ -764,6 +788,6 @@ for _x in _lowcap[:8]:
 
 bad = bool(missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
-           or _no_plain or _twin or _kf_sigma or _bad_alt)
+           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))
 sys.exit(1 if bad else 0)

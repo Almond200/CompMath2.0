@@ -92,7 +92,7 @@
   ["swap the order of summation", "double-summation", "paraphrase"],
   ["right triangle with a prime hypotenuse", "sum-of-two-squares", "hard"],
   ["estimate a square root by hand", "sqrt-approximation", "paraphrase"],
-  ["turn a product over the roots into one evaluation", "symmetric-polynomial-strategies", "paraphrase"],
+  ["turn a product over the roots into one evaluation", "products-over-roots", "paraphrase"],
   ["number of trees on n labeled vertices", "cayleys-formula", "paraphrase"],
   ["longest increasing or decreasing subsequence forced", "erdos-szekeres", "paraphrase"],
   ["some box must contain at least two items", "pigeonhole", "paraphrase"],

@@ -1524,25 +1524,34 @@
 
 
   BODY["gcd-lcm-product"] = {
-    // 72 = 2^3 * 3^2 and 60 = 2^2 * 3 * 5, one pair of columns per prime (a blue, b gold).
+    // 72 = 2^3 * 3^2 and 60 = 2^2 * 3 * 5. Top row: each prime's exponent in a (blue) and b (gold).
+    // Bottom row: the same two columns, re-sorted into the shorter one (the gcd's exponent) and the
+    // taller one (the lcm's). Nothing is added or lost, which is the identity.
     exponents: (() => {
-      const primes = [[2, 3, 2], [3, 2, 1], [5, 0, 1]], s = 24, gap = 3, base = 176, parts = [];
+      const primes = [[2, 3, 2], [3, 2, 1], [5, 0, 1]], sz = 18, gap = 2, parts = [];
       let g = 1, l = 1, a = 1, b = 1;
+      const column = (x, base, n, c, f) => {
+        for (let k = 0; k < n; k++) parts.push(rect(x, base - (k + 1) * (sz + gap), sz, sz, c, 1.5, f));
+        parts.push(seg([x - 2, base + 1], [x + sz + 2, base + 1], FNT, 1.2));
+      };
+      const top = 112, bot = 244;
       primes.forEach(([p, ea, eb], i) => {
-        const cx = 110 + i * 105;
-        [[ea, cx - 30, ACC, ACCS], [eb, cx + 6, GLD, GLDS]].forEach(([e, x, c, f]) => {
-          for (let k = 0; k < e; k++) parts.push(rect(x, base - (k + 1) * (s + gap), s, s, c, 1.6, f));
-          parts.push(seg([x - 2, base + 1], [x + s + 2, base + 1], FNT, 1.2));
-        });
-        parts.push(txt([cx - 18, base + 16], "a", ACC, 12), txt([cx + 18, base + 16], "b", GLD, 12));
-        parts.push(txt([cx, base + 36], `prime ${p}`, DIM, 12.5));
-        parts.push(txt([cx, base + 54], `min ${Math.min(ea, eb)} · max ${Math.max(ea, eb)}`, FNT, 12));
+        const cx = 120 + i * 110, A = [ea, ACC, ACCS], Bc = [eb, GLD, GLDS];
+        column(cx - 26, top, ...A); column(cx + 8, top, ...Bc);
+        parts.push(txt([cx - 17, top + 15], "a", ACC, 11.5), txt([cx + 17, top + 15], "b", GLD, 11.5));
+        parts.push(txt([cx, top + 33], `prime ${p}: ${ea}, ${eb}`, DIM, 12));
+        const [lo, hi] = ea <= eb ? [A, Bc] : [Bc, A];
+        column(cx - 26, bot, ...lo); column(cx + 8, bot, ...hi);
+        parts.push(txt([cx - 17, bot + 15], "gcd", FNT, 11), txt([cx + 17, bot + 15], "lcm", FNT, 11));
+        parts.push(txt([cx, bot + 33], `min ${Math.min(ea, eb)}, max ${Math.max(ea, eb)}`, DIM, 12));
+        parts.push(seg([cx, top + 42], [cx, bot - 70], FNT, 1, "3 3"));
         g *= p ** Math.min(ea, eb); l *= p ** Math.max(ea, eb); a *= p ** ea; b *= p ** eb;
       });
-      parts.push(txt([205, 34], `a = ${a} = 2³ · 3²`, ACC, 13, "end"), txt([235, 34], `b = ${b} = 2² · 3 · 5`, GLD, 13, "start"));
-      parts.push(txt([205, 262], `gcd = 2² · 3 = ${g}`, DIM, 13, "end"), txt([235, 262], `lcm = 2³ · 3² · 5 = ${l}`, DIM, 13, "start"));
-      parts.push(cap(430, 280, `Each prime's exponents, drawn as columns. The gcd takes the shorter column and the lcm the taller, so between them they use every block exactly once: ${g} · ${l} = ${g * l} = ${a} · ${b}.` + (g * l === a * b ? "" : " MISMATCH")));
-      return wrap(430, 280, parts);
+      parts.push(txt([20, 60], "a, b", DIM, 12.5, "start"), txt([20, 192], "sorted", DIM, 12.5, "start"));
+      parts.push(txt([205, 22], `a = ${a} = 2³ · 3²`, ACC, 13, "end"), txt([235, 22], `b = ${b} = 2² · 3 · 5`, GLD, 13, "start"));
+      parts.push(txt([215, 300], `gcd = 2² · 3 = ${g},   lcm = 2³ · 3² · 5 = ${l}`, DIM, 13));
+      parts.push(cap(430, 312, `For each prime, the exponents in a and b (top) are re-sorted into the shorter column, the gcd's exponent, and the taller one, the lcm's (bottom). The same blocks are used, none added or lost, so gcd · lcm = ${g} · ${l} = ${g * l} = ${a} · ${b}.` + (g * l === a * b ? "" : " MISMATCH")));
+      return wrap(430, 312, parts);
     })()
   };
 
@@ -2270,20 +2279,26 @@
   };
 
   BODY["multiplicative-order"] = {
-    // x -> 2x mod 7 on the residues 1..6: two cycles of length 3 = ord_7(2). Cycles are computed.
+    // x -> 2x mod 7 on the residues 1..6: two cycles of length 3 = ord_7(2). Each cycle is drawn as
+    // its own ring, side by side, so the equal lengths are visible. Cycles are computed.
     cycles: (() => {
-      const n = 7, a = 2, O = [215, 132], R = 96, parts = [];
-      const P = r => [O[0] + R * Math.sin(2 * Math.PI * (r - 1) / 6), O[1] - R * Math.cos(2 * Math.PI * (r - 1) / 6)];
+      const n = 7, a = 2, R = 62, parts = [];
       const seen = new Set(), cycles = [];
       for (let r = 1; r < n; r++) { if (seen.has(r)) continue; const c = []; let x = r; while (!seen.has(x)) { seen.add(x); c.push(x); x = (a * x) % n; } cycles.push(c); }
-      cycles.forEach((c, ci) => c.forEach((x, i) => {
-        const y = c[(i + 1) % c.length], p = P(x), q = P(y), d = norm(sub(q, p)), s = add(p, mul(d, 18)), e = sub(q, mul(d, 20)), col = ci ? GLD : ACC;
-        parts.push(seg(s, e, col, 2), `<polygon points="${pf(e)} ${pf(add(sub(e, mul(d, 9)), mul(perp(d), 4.5)))} ${pf(sub(sub(e, mul(d, 9)), mul(perp(d), 4.5)))}" fill="${col}"/>`);
-      }));
-      for (let r = 1; r < n; r++) parts.push(circ(P(r), 15, DIM, 1.6, "var(--bg)"), txt(add(P(r), [0, 5]), String(r), DIM, 14));
+      cycles.forEach((c, ci) => {
+        const O = [120 + ci * 190, 112], col = ci ? GLD : ACC;
+        const P = i => [O[0] + R * Math.sin(2 * Math.PI * i / c.length), O[1] - R * Math.cos(2 * Math.PI * i / c.length)];
+        c.forEach((x, i) => {
+          const p = P(i), q = P((i + 1) % c.length), d = norm(sub(q, p)), st = add(p, mul(d, 18)), e = sub(q, mul(d, 20));
+          parts.push(seg(st, e, col, 2), `<polygon points="${pf(e)} ${pf(add(sub(e, mul(d, 9)), mul(perp(d), 4.5)))} ${pf(sub(sub(e, mul(d, 9)), mul(perp(d), 4.5)))}" fill="${col}"/>`);
+          parts.push(txt(add(mid(p, q), mul(norm(sub(mid(p, q), O)), 16)), "×2", col, 11.5));
+        });
+        c.forEach((x, i) => parts.push(circ(P(i), 15, col, 1.8, "var(--bg)"), txt(add(P(i), [0, 5]), String(x), DIM, 14)));
+        parts.push(txt([O[0], O[1] + R + 38], `cycle of length ${c.length}`, col, 12));
+      });
       const ok = cycles.length === 2 && cycles.every(c => c.length === 3);
-      parts.push(cap(430, 250, `Multiplying by 2 modulo 7 splits the six nonzero residues into cycles: ${cycles.map(c => c.join(" → ") + " → " + c[0]).join(" and ")}. Every cycle has the same length, the order of 2, which is 3, so the order divides the number of residues, 6.` + (ok ? "" : " MISMATCH")));
-      return wrap(430, 250, parts);
+      parts.push(cap(430, 240, `Multiplying by 2 modulo 7 splits the six nonzero residues into two cycles, ${cycles.map(c => c.join(" → ") + " → " + c[0]).join(" and ")}. Both have length 3, the order of 2, and since the cycles share out all six residues, the order divides 6.` + (ok ? "" : " MISMATCH")));
+      return wrap(430, 240, parts);
     })()
   };
 
@@ -2479,7 +2494,7 @@
     })()
   };
 
-  BODY["symmetric-polynomial-strategies"] = {
+  BODY["products-over-roots"] = {
     // Roots of x^3 - 2x + 5 found numerically (Newton, then deflation); the distances from i to
     // the roots multiply to |P(i)| = sqrt 34.
     distances: (() => {
@@ -2803,6 +2818,40 @@
       parts.push(txt(add(m.pt(1.2, 7.2), [-8, -6]), "average: slope 6", FNT, 11.5, "end"));
       return wrap(430, 270, [...parts,
         cap(430, 270, `Distance against time for a 12 km trip: 4 km walked at 4 km/h, then 8 km run at 8 km/h. Each leg is a straight piece whose slope is its speed; the legs join end to end, so their times add to ${t} h and their distances to ${d} km. The average speed is the slope of the dashed line, ${d / t} km/h.` + (ok ? "" : " MISMATCH"))]);
+    })()
+  };
+
+  BODY["uvw-method"] = {
+    // a + b + c = 3, a = b = t, c = 3 - 2t: a^2 + b^2 + c^2 + abc = -2t^3 + 9t^2 - 12t + 9, least 4 at t = 1.
+    boundary: (() => {
+      const f = t => -2 * t * t * t + 9 * t * t - 12 * t + 9;
+      let mn = 99, at = 0; for (let k = 0; k <= 1500; k++) { const t = k / 1000; if (f(t) < mn) { mn = f(t); at = t; } }
+      const ok = Math.abs(mn - 4) < 1e-6 && Math.abs(at - 1) < 1e-3 && Math.abs(f(1.5) - 4.5) < 1e-12;
+      const m = frame(0, 1.6, 3.4, 9.4, 60, 14, 330, 220), parts = [];
+      parts.push(seg(m.pt(0, 3.4), m.pt(1.6, 3.4), FNT, 1.2), seg(m.pt(0, 3.4), m.pt(0, 9.4), FNT, 1.2));
+      parts.push(seg(m.pt(0, 4), m.pt(1.6, 4), GLD, 1.4, "5 4"), txt(add(m.pt(0, 4), [-6, 4]), "4", GLD, 11.5, "end"));
+      parts.push(plot(f, m, 0, 1.5, 160, ACC, 2.4));
+      parts.push(dot(m.pt(1, 4), GLD, 5), txt(add(m.pt(1, 4), [0, -12]), "t = 1: a = b = c", GLD, 11.5));
+      parts.push(dot(m.pt(0, 9), DIM, 4), txt(add(m.pt(0, 9), [8, 4]), "t = 0: (0, 0, 3), value 9", DIM, 11.5, "start"));
+      parts.push(dot(m.pt(1.5, 4.5), DIM, 4), txt(add(m.pt(1.5, 4.5), [-6, -10]), "(1.5, 1.5, 0): 4.5", DIM, 11.5, "end"));
+      [0.5, 1, 1.5].forEach(t => parts.push(txt(add(m.pt(t, 3.4), [0, 16]), String(t), FNT, 11)));
+      parts.push(txt(add(m.pt(1.6, 3.4), [0, 30]), "t", DIM, 12, "end"));
+      parts.push(cap(430, 270, "The two-equal boundary for a² + b² + c² + abc under a + b + c = 3: with a = b = t and c = 3 − 2t the expression is −2t³ + 9t² − 12t + 9, smallest at t = 1, where it equals 4. The one-zero boundary, c = 0, gives at least 4.5. Linearity in abc means no interior point can do better." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
+    })()
+  };
+
+  BODY["subtract-and-factor"] = {
+    // P(k) = 1/k for k = 1..4: Q(x) = xP(x) - 1 = -(x-1)(x-2)(x-3)(x-4)/24, with Q(0) = Q(5) = -1.
+    auxiliary: (() => {
+      const Q = x => -(x - 1) * (x - 2) * (x - 3) * (x - 4) / 24;
+      const ok = Math.abs(Q(0) + 1) < 1e-12 && Math.abs(Q(5) + 1) < 1e-12 && [1, 2, 3, 4].every(k => Math.abs(Q(k)) < 1e-12);
+      const m = frame(-0.4, 5.4, -1.3, 0.5, 40, 14, 360, 220), parts = [axes(m)];
+      parts.push(plot(Q, m, -0.15, 5.15, 200, ACC, 2.2));
+      [1, 2, 3, 4].forEach(k => parts.push(dot(m.pt(k, 0), ACC, 4.5), txt(add(m.pt(k, 0), [0, -10]), String(k), DIM, 12)));
+      [[0, "Q(0) = −1"], [5, "Q(5) = −1"]].forEach(([x, t]) => parts.push(dot(m.pt(x, Q(x)), GLD, 5), txt(add(m.pt(x, Q(x)), [x ? -8 : 8, 4]), t, GLD, 12, x ? "end" : "start")));
+      parts.push(cap(430, 270, "Q(x) = xP(x) − 1 for the cubic with P(k) = 1/k at k = 1, 2, 3, 4. The four data points are roots of Q (blue), so Q = c(x − 1)(x − 2)(x − 3)(x − 4); the value Q(0) = −1, where P drops out, gives c = −1/24, and then Q(5) = −1, so 5P(5) = 0." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 270, parts);
     })()
   };
 

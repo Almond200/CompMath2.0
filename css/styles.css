@@ -299,7 +299,9 @@ body {
 /* Separates the formula reference from the pattern catalog in the sidebar. */
 /* The two books. Only one is unfolded at a time: opening Formulas folds Patterns away
    and the reverse, so the sidebar reads as two folders rather than one long list. */
-.nav-group + .nav-group { margin-top: 14px; }
+/* Only one space's group is shown at a time; spacing between groups counts visible ones only,
+   so every space's sidebar starts at the same height. */
+.nav-group:not([hidden]) ~ .nav-group:not([hidden]) { margin-top: 14px; }
 
 .nav-group-btn {
   display: flex;
@@ -2247,9 +2249,10 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .detail-steps li { margin: 4px 0; line-height: 1.55; }
 
 /* Problem page: how this problem works (Pattern -> Method -> Formulas), then Think. */
+/* A shade darker than the page (the panel blue-grey), with the three white cards on top. */
 .prob-chain {
-  margin: 16px 0; padding: 12px 15px; border: 1px solid var(--border); border-radius: 10px;
-  background: var(--bg-panel);
+  margin: 16px 0; padding: 14px 16px; border-radius: 10px;
+  border: 1px solid var(--border-light); background: var(--bg-panel);
 }
 .prob-chain h4 { margin: 0 0 10px; }
 .chain-step { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
@@ -2260,14 +2263,12 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .chain-cards { display: flex; flex-wrap: wrap; gap: 6px; }
 .chain-arrow { color: var(--text-faint); margin: 3px 0 3px 30px; font-size: 13px; }
 .chain-empty { color: var(--text-faint); font-style: italic; font-size: 13px; }
-.related-item.chain-main { border-color: var(--accent); color: var(--accent); }
-.prob-think { margin: 16px 0; }
-.think-step { margin-top: 8px; }
-.think-body {
-  margin-top: 6px; padding: 9px 13px; background: var(--bg-panel); border: 1px solid var(--border);
-  border-left: 3px solid var(--accent); border-radius: 8px; font-size: 14.5px; line-height: 1.55;
-}
-.think-label { font-weight: 700; margin-right: 4px; }
+/* "How this problem works": the strategy, then Pattern | Method | Formulas side by side. */
+.chain-strategy { margin: 0 0 12px; font-size: 15px; line-height: 1.6; color: var(--text); }
+.chain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.chain-col { padding: 9px 11px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); }
+.chain-col .chain-label { width: auto; margin-bottom: 6px; }
+@media (max-width: 700px) { .chain-grid { grid-template-columns: 1fr; } }
 
 .nav-practice-link {
   display: block; padding: 9px 12px; border-radius: 8px; font-size: 14px; font-weight: 650;
@@ -2399,6 +2400,8 @@ body[data-space="none"] { --space: var(--text-dim); --space-soft: var(--bg-panel
   transition: background 0.12s, color 0.12s;
 }
 .space-switch button:hover { color: var(--text); }
+/* A mouse click leaves no focus ring; keyboard focus still shows one. */
+.space-switch button:focus:not(:focus-visible) { outline: none; }
 body[data-space="formulas"] [data-space-go="formulas"],
 body[data-space="methods"] [data-space-go="methods"],
 body[data-space="patterns"] [data-space-go="patterns"],
@@ -2635,6 +2638,8 @@ body.is-landing .content { padding: 0 0 70px; }
 .content .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr)); gap: 14px; align-items: stretch; }
 .cards > .card { display: flex; flex-direction: column; min-width: 0; margin: 0; }
 .cards > .card .formula-display { overflow: hidden; margin: 8px 0 10px; padding: 10px 12px; }
+.cards > .card .formula-display.fd-scroll { overflow-x: auto; overflow-y: hidden; }
+.cards > .card .formula-display.fd-scroll .katex-display { text-align: left; }
 .cards > .card .card-desc { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
 .cards > .card .more-hint { margin-top: auto; padding-top: 8px; }
 .more-forms { margin: -4px 0 8px; font-size: 11.5px; color: var(--text-faint); text-align: center; }
@@ -2852,7 +2857,7 @@ html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-
    are plain bullets (and numbers for steps), not boxed rows. */
 .detail .detail-summary, .detail .detail-body p, .detail .detail-body li, .detail .key-forms li,
 .detail .lead-text, .detail .lead-signals li, .detail .lead-try li, .detail .pf-sentence, .detail .profile-stats li,
-.detail .problem-q, .detail .problem-sol, .detail .think-body, .detail .prob-note, .detail .card-desc {
+.detail .problem-q, .detail .problem-sol, .detail .chain-strategy, .detail .prob-note, .detail .card-desc {
   font-size: 15px; line-height: 1.65; color: var(--text);
 }
 :root[data-theme="dark"] .detail .detail-summary, :root[data-theme="dark"] .detail .detail-body p,
@@ -2860,13 +2865,13 @@ html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-
 :root[data-theme="dark"] .detail .lead-text, :root[data-theme="dark"] .detail .lead-signals li,
 :root[data-theme="dark"] .detail .lead-try li, :root[data-theme="dark"] .detail .pf-sentence,
 :root[data-theme="dark"] .detail .profile-stats li, :root[data-theme="dark"] .detail .problem-q,
-:root[data-theme="dark"] .detail .problem-sol, :root[data-theme="dark"] .detail .think-body,
+:root[data-theme="dark"] .detail .problem-sol, :root[data-theme="dark"] .detail .chain-strategy,
 :root[data-theme="dark"] .detail .prob-note, :root[data-theme="dark"] .detail .card-desc { color: var(--text-dim); }
 html[data-text="large"] .detail .detail-body p, html[data-text="large"] .detail .detail-body li,
 html[data-text="large"] .detail .key-forms li, html[data-text="large"] .detail .lead-text,
 html[data-text="large"] .detail .lead-signals li, html[data-text="large"] .detail .pf-sentence,
 html[data-text="large"] .detail .profile-stats li, html[data-text="large"] .detail .problem-q,
-html[data-text="large"] .detail .problem-sol, html[data-text="large"] .detail .think-body,
+html[data-text="large"] .detail .problem-sol, html[data-text="large"] .detail .chain-strategy,
 html[data-text="large"] .detail .prob-note, html[data-text="large"] .detail .detail-summary { font-size: 17px; }
 .detail .detail-body .detail-list, .detail .key-forms .detail-list {
   display: block; list-style: disc; margin: 0 0 12px; padding-left: 22px;
@@ -2895,7 +2900,7 @@ html[data-text="large"] .detail .detail-body p, html[data-text="large"] .detail 
 html[data-text="large"] .detail .key-forms li, html[data-text="large"] .detail .lead-text,
 html[data-text="large"] .detail .lead-signals li, html[data-text="large"] .detail .lead-try li,
 html[data-text="large"] .detail .pf-row, html[data-text="large"] .detail .problem-q,
-html[data-text="large"] .detail .problem-sol, html[data-text="large"] .detail .think-body,
+html[data-text="large"] .detail .problem-sol, html[data-text="large"] .detail .chain-strategy,
 html[data-text="large"] .detail .prob-note, html[data-text="large"] .detail .detail-summary { font-size: 16.5px; }
 .detail .lead-signals, .detail .lead-try { font-size: 15px; }
 .detail .lead-label, .card-lead .lead-label { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
@@ -3043,7 +3048,7 @@ html[data-text="large"] .try-block .try-sub { font-size: 14.5px; }
 .lead-try .red-link { font-weight: 400; }
 /* The chain sits near the bottom of a problem page, below the problem and Think, as a quieter
    summary rather than a lead panel. */
-.detail .prob-chain { margin-top: 28px; background: transparent; }
+.detail .prob-chain { margin-top: 28px; }
 
 /* The space's name in the sidebar, with a small "i" that opens what the space is for and what
    was recently opened in it (Formulas, Methods and Patterns have no main page). */
@@ -3156,7 +3161,7 @@ html[data-density="compact"] .pf-row { gap: 8px; line-height: 1.45; }
 html[data-density="compact"] .profile-rows { row-gap: 4px; }
 html[data-density="compact"] .prob-chain { padding: 9px 12px; }
 html[data-density="compact"] .detail .prob-chain { margin-top: 18px; }
-html[data-density="compact"] .think-step { margin-top: 5px; }
+html[data-density="compact"] .chain-grid { gap: 7px; }
 html[data-density="compact"] .list-section { margin-top: 22px; }
 html[data-density="compact"] .ct-row { padding: 6px 0; }
 html[data-density="compact"] .wiki-letter { margin-top: 14px; }
@@ -3180,7 +3185,7 @@ html[data-density="spacious"] .pf-row { gap: 16px; line-height: 1.75; }
 html[data-density="spacious"] .profile-rows { row-gap: 10px; }
 html[data-density="spacious"] .prob-chain { padding: 16px 19px; }
 html[data-density="spacious"] .detail .prob-chain { margin-top: 38px; }
-html[data-density="spacious"] .think-step { margin-top: 12px; }
+html[data-density="spacious"] .chain-grid { gap: 14px; }
 html[data-density="spacious"] .list-section { margin-top: 48px; }
 html[data-density="spacious"] .ct-row { padding: 13px 0; }
 html[data-density="spacious"] .wiki-letter { margin-top: 44px; }

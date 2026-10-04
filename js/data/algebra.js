@@ -42,7 +42,7 @@ window.MATH_SECTIONS.push({
           id: "vietas-general",
           name: "Vieta's Formulas (General Degree)",
           latex: String.raw`e_k(r_1, \dots, r_n) = (-1)^k \frac{a_{n-k}}{a_n}, \qquad x^3 + bx^2 + cx + d: \;\; r+s+t = -b, \quad rs+rt+st = c, \quad rst = -d`,
-          description: String.raw`Vieta's Formulas express the sum of a polynomial's roots, the sum of their products two at a time, and so on up to their product, in terms of its coefficients. Reach for them whenever a question is about the roots but never asks for one, which describes most AIME polynomial problems: the roots are usually impossible to find and never needed. For $a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0$ the sum of the roots is $-\frac{a_{n-1}}{a_n}$, the sum of products two at a time is $\frac{a_{n-2}}{a_n}$, and the product of all $n$ roots is $(-1)^n\frac{a_0}{a_n}$, the signs alternating as the products get longer. Roots are counted with multiplicity, and complex roots count too.`,
+          description: String.raw`Vieta's Formulas give the elementary symmetric sums of a polynomial's roots in terms of its coefficients. For $a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0$ with roots $r_1, \ldots, r_n$, the sum of the roots is $-\frac{a_{n-1}}{a_n}$, the sum of their products two at a time is $\frac{a_{n-2}}{a_n}$, and the product of all of them is $(-1)^n\frac{a_0}{a_n}$; in general $e_k = (-1)^k\frac{a_{n-k}}{a_n}$. Roots are counted with multiplicity, and complex roots count too.`,
           keywords: ["symmetric functions", "cubic", "sum of roots", "product of roots", "coefficients"],
           importance: "high",
           level: ["AMC12", "AIME"]
@@ -268,7 +268,7 @@ window.MATH_SECTIONS.push({
           id: "sophie-germain",
           name: "Sophie Germain Identity",
           latex: String.raw`a^4 + 4b^4 = (a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)`,
-          description: String.raw`Factors the deceptively prime-looking $a^4 + 4b^4$. Classic use: showing $n^4 + 4$ is composite for $n > 1$.`,
+          description: String.raw`The Sophie Germain Identity factors a sum of a fourth power and four times a fourth power into two quadratic factors. An expression that looks irreducible, such as $n^4 + 4$, therefore splits into two factors, each at least $b^2$ when $a$ and $b$ are positive integers.`,
           keywords: ["fourth power", "composite", "factoring trick", "sophie germain identity", "factor a^4+4b^4", "fourth power factoring"],
           importance: "medium",
           level: ["AMC12", "AIME"]

@@ -17,7 +17,7 @@ window.MATH_SECTIONS.push({
           id: "pythagorean-theorem",
           name: "Pythagorean Theorem",
           latex: String.raw`a^2 + b^2 = c^2`,
-          description: String.raw`In a right triangle, the square of the hypotenuse equals the sum of the squares of the two legs: $a^2 + b^2 = c^2$, where $c$ is the side opposite the right angle. It turns a right angle into a length, which makes it the closing step of most distance, circle, and three-dimensional problems once something else has produced the right triangle. It also runs in reverse, since $a^2 + b^2 - c^2$ is positive, zero, or negative exactly as the angle opposite $c$ is acute, right, or obtuse. The triples $(3,4,5)$, $(5,12,13)$, $(8,15,17)$, and $(7,24,25)$, with their multiples, are worth recognizing on sight.`,
+          description: String.raw`The Pythagorean Theorem says that in a right triangle the square of the hypotenuse equals the sum of the squares of the two legs: $a^2 + b^2 = c^2$, where $c$ is the side opposite the right angle. Its converse holds as well, and more: $a^2 + b^2 - c^2$ is positive, zero, or negative exactly as the angle opposite $c$ is acute, right, or obtuse. The integer triples $(3, 4, 5)$, $(5, 12, 13)$, $(8, 15, 17)$ and $(7, 24, 25)$, with their multiples, are the most common instances.`,
           keywords: ["right triangle", "hypotenuse", "legs", "triples", "three four five triangle", "five twelve 13 triangle", "distance"],
           importance: "high",
           level: ["MATHCOUNTS", "AMC10"]
@@ -308,8 +308,8 @@ window.MATH_SECTIONS.push({
         {
           id: "herons-formula",
           name: "Heron's Formula",
-          latex: String.raw`A = \sqrt{s(s-a)(s-b)(s-c)} = \tfrac{1}{4}\sqrt{2a^2b^2 + 2b^2c^2 + 2c^2a^2 - a^4 - b^4 - c^4}`,
-          description: String.raw`Heron's Formula gives the area of a triangle from its three side lengths alone: $A = \sqrt{s(s-a)(s-b)(s-c)}$, where $s = \frac{a+b+c}{2}$ is the semiperimeter. It is the tool when three sides are known and nothing else, with no angle and no height. Keep the factored form rather than expanding it, since the four factors are usually small whole numbers: the $13$-$14$-$15$ triangle has $s = 21$ and area $\sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$.`,
+          latex: String.raw`A = \sqrt{s(s-a)(s-b)(s-c)}`,
+          description: String.raw`Heron's Formula gives the area of a triangle from its three side lengths alone: $A = \sqrt{s(s-a)(s-b)(s-c)}$, where $s = \frac{a+b+c}{2}$ is the semiperimeter. An expanded form, $16A^2 = 2a^2b^2 + 2b^2c^2 + 2c^2a^2 - a^4 - b^4 - c^4$, needs only the squares of the sides, which suits sides that are square roots.`,
           keywords: ["three sides", "semiperimeter", "SSS", "area", "heron expanded form", "area from sides without semiperimeter", "irrational side lengths", "16 A squared"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -318,7 +318,7 @@ window.MATH_SECTIONS.push({
           id: "inradius-area",
           name: "Inradius Formula",
           latex: String.raw`A = rs`,
-          description: String.raw`The inradius $r$ of a triangle is the radius of its inscribed circle, the one circle inside the triangle tangent to all three sides, and the triangle's area is the inradius times the semiperimeter: $A = rs$, where $s = \frac{a + b + c}{2}$. It is almost always used backwards, as $r = \frac As$, to find the inradius once the area is known. The same formula holds for any polygon that has an inscribed circle, with $s$ half its perimeter.`,
+          description: String.raw`The inradius $r$ of a triangle is the radius of its inscribed circle, the one circle inside the triangle tangent to all three sides, and the triangle's area is the inradius times the semiperimeter: $A = rs$, where $s = \frac{a + b + c}{2}$. The same formula holds for any polygon that has an inscribed circle, with $s$ half its perimeter.`,
           keywords: ["inradius", "incircle", "semiperimeter", "inscribed circle", "circle tangent to all three sides", "area"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -336,7 +336,7 @@ window.MATH_SECTIONS.push({
           id: "circumradius-area",
           name: "Circumradius Formula",
           latex: String.raw`A = \frac{abc}{4R}`,
-          description: String.raw`The circumradius $R$ of a triangle is the radius of its circumscribed circle, the circle passing through all three vertices, and it is tied to the sides and the area by $A = \frac{abc}{4R}$. It is used mostly backwards, as $R = \frac{abc}{4A}$, to find the circumradius from the three sides once the area is known. Together with $A = rs$ for the inradius, one area computation gives both radii.`,
+          description: String.raw`The circumradius $R$ of a triangle is the radius of its circumscribed circle, the circle passing through all three vertices, and it is tied to the sides and the area by $A = \frac{abc}{4R}$. So the circumradius is $R = \frac{abc}{4A}$, and together with $A = rs$ for the inradius, one area computation gives both radii.`,
           keywords: ["circumradius", "circumcircle", "abc", "area"],
           importance: "high",
           level: ["AMC12", "AIME"]
@@ -354,7 +354,7 @@ window.MATH_SECTIONS.push({
           id: "incircle-tangent-lengths",
           name: "Incircle Tangent Lengths",
           latex: String.raw`AF = AE = s - a, \qquad BF = BD = s - b, \qquad CD = CE = s - c`,
-          description: String.raw`The incircle touches the sides at $D, E, F$; the two tangent segments from each vertex are equal, and their common length is the semiperimeter minus the opposite side. An excircle opposite $A$ gives tangent length $s$ from $A$.`,
+          description: String.raw`The incircle of a triangle touches the sides at $D$ on $BC$, $E$ on $CA$, and $F$ on $AB$. The two tangent segments from each vertex are equal, and their common length is the semiperimeter minus the opposite side: $AE = AF = s - a$, $BD = BF = s - b$, and $CD = CE = s - c$. For the excircle opposite $A$, the tangent length from $A$ is $s$ itself.`,
           keywords: ["tangent lengths", "incircle touch points", "s minus a", "excircle", "semiperimeter"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -450,7 +450,7 @@ window.MATH_SECTIONS.push({
           id: "law-of-sines",
           name: "Extended Law of Sines",
           latex: String.raw`\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R`,
-          description: String.raw`In any triangle, each side divided by the sine of the angle opposite it gives the same number, and that number is the diameter of the circumscribed circle: $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R$. It converts between angles and sides whenever a side and its opposite angle are known, and two angles with one side determine the whole triangle. The $2R$ form ties the triangle to its circumcircle, so every chord of a circle has length $2R$ times the sine of any [[inscribed-angle-theorem|inscribed angle]] standing on it. It also makes precise the rule that the larger side faces the larger angle.`,
+          description: String.raw`In any triangle, each side divided by the sine of the angle opposite it gives the same number, and that number is the diameter of the circumscribed circle: $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R$. It converts between angles and sides whenever a side and its opposite angle are known, and two angles with one side determine the whole triangle. The $2R$ form ties the triangle to its circumcircle, so every chord of a circle has length $2R$ times the sine of any [[inscribed-angle-theorem|inscribed angle]] standing on it.`,
           keywords: ["law of sines", "circumradius", "opposite angle", "2R"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -459,7 +459,7 @@ window.MATH_SECTIONS.push({
           id: "law-of-cosines",
           name: "Law of Cosines",
           latex: String.raw`c^2 = a^2 + b^2 - 2ab \cos C, \qquad \cos C = \frac{a^2 + b^2 - c^2}{2ab}`,
-          description: String.raw`In any triangle, the square of one side is the sum of the squares of the other two, minus a correction that depends on the angle between them: $c^2 = a^2 + b^2 - 2ab\cos C$. It converts between sides and angles in both directions, giving the third side from two sides and the included angle, or any angle from all three sides through $\cos C = \frac{a^2 + b^2 - c^2}{2ab}$. When $C = 90^\circ$ the correction is zero and it becomes the Pythagorean Theorem. The sign of $a^2 + b^2 - c^2$ alone tells you whether $C$ is acute, right, or obtuse.`,
+          description: String.raw`In any triangle, the square of one side is the sum of the squares of the other two, minus a correction that depends on the angle between them: $c^2 = a^2 + b^2 - 2ab\cos C$. It converts between sides and angles in both directions, giving the third side from two sides and the included angle, or any angle from all three sides through $\cos C = \frac{a^2 + b^2 - c^2}{2ab}$. When $C = 90^\circ$ the correction is zero and it becomes the [[pythagorean-theorem|Pythagorean Theorem]].`,
           keywords: ["law of cosines", "SAS", "SSS", "angle from sides"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -486,7 +486,7 @@ window.MATH_SECTIONS.push({
           id: "angle-bisector-theorem",
           name: "Angle Bisector Theorem",
           latex: String.raw`\frac{AB}{AC} = \frac{BD}{DC} \quad \text{(internal)}, \qquad \frac{AB}{AC} = \frac{BD'}{D'C} \quad \text{(external)}`,
-          description: String.raw`The Angle Bisector Theorem says that the bisector of an angle of a triangle divides the opposite side in the ratio of the two sides that form the angle: if the bisector from $A$ meets $BC$ at $D$, then $\frac{BD}{DC} = \frac{AB}{AC}$. It turns the word "bisector" straight into a length ratio, so $BD = \frac{ac}{b + c}$ and $DC = \frac{ab}{b + c}$ in standard notation. The external bisector at $A$ divides line $BC$ externally in the same ratio, meeting it beyond the nearer of $B$ and $C$, and misses it entirely when $AB = AC$. The incenter divides the internal bisector in the ratio $AI : ID = (b + c) : a$.`,
+          description: String.raw`The Angle Bisector Theorem says that the bisector of an angle of a triangle divides the opposite side in the ratio of the two sides that form the angle: if the bisector from $A$ meets $BC$ at $D$, then $\frac{BD}{DC} = \frac{AB}{AC}$. It turns the word \"bisector\" straight into a length ratio, so $BD = \frac{ac}{b + c}$ and $DC = \frac{ab}{b + c}$ in standard notation. The external bisector at $A$ divides line $BC$ externally in the same ratio.`,
           keywords: ["angle bisector", "ratio", "opposite side", "adjacent sides", "external angle bisector", "external bisector theorem", "divides externally", "external division"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -512,8 +512,8 @@ window.MATH_SECTIONS.push({
         {
           id: "stewarts-theorem",
           name: "Stewart's Theorem",
-          latex: String.raw`a(d^2 + mn) = b^2 m + c^2 n, \qquad \text{angle bisector: } d^2 = bc - mn = bc\left[1 - \left(\frac{a}{b+c}\right)^2\right]`,
-          description: String.raw`Stewart's Theorem gives the length of a cevian, a segment from a vertex of a triangle to a point on the opposite side, in terms of the sides and where the cevian lands. If the cevian from $A$ has length $d$ and divides $BC = a$ into $BD = m$ and $DC = n$, then $b^2m + c^2n = a(d^2 + mn)$, where $b = CA$ and $c = AB$. It is the general tool when a problem asks for the length of a median, an angle bisector, or any other cevian. The usual mnemonic reads it as "a man and his dad put a bomb in the sink," $man + dad = bmb + cnc$, with $m$ the piece next to $c$ and $n$ the piece next to $b$.`,
+          latex: String.raw`b^2 m + c^2 n = a(d^2 + mn)`,
+          description: String.raw`Stewart's Theorem gives the length of a cevian, a segment from a vertex of a triangle to a point on the opposite side, in terms of the sides and where the cevian lands. If the cevian from $A$ has length $d$ and divides $BC = a$ into $BD = m$ and $DC = n$, then $b^2m + c^2n = a(d^2 + mn)$, where $b = CA$ and $c = AB$. The usual mnemonic reads it as \"a man and his dad put a bomb in the sink,\" $man + dad = bmb + cnc$, with $m$ the piece next to $c$ and $n$ the piece next to $b$.`,
           keywords: ["cevian length", "stewart", "man dad bomb sink", "stewarts theorem", "cevian length formula", "a man and his dad put a bomb in the sink"],
           importance: "high",
           level: ["AMC12", "AIME"]
@@ -926,8 +926,8 @@ window.MATH_SECTIONS.push({
         {
           id: "circle-basics",
           name: "Circle Area, Circumference, Arcs & Sectors",
-          latex: String.raw`C = 2\pi r, \quad A = \pi r^2, \quad \text{arc} = r\theta, \quad \text{sector} = \frac{1}{2} r^2 \theta`,
-          description: String.raw`A circle of radius $r$ has circumference $2\pi r$ and area $\pi r^2$, and a central angle $\theta$ cuts off the fraction $\frac{\theta}{2\pi}$ of both, which gives arc length $r\theta$ and sector area $\frac12r^2\theta$ with $\theta$ in radians. In degrees the same fraction is $\frac{\theta}{360^\circ}$. These are the building blocks of every shaded-region problem, which is always a combination of sectors, triangles, and the segments between them. The ring between two circles of radii $R \gt r$, an annulus, has area $\pi(R^2 - r^2)$.`,
+          latex: String.raw`C = 2\pi r, \quad A = \pi r^2, \quad \text{arc} = r\theta, \quad \text{sector} = \tfrac12 r^2\theta`,
+          description: String.raw`A circle of radius $r$ has circumference $2\pi r$ and area $\pi r^2$, and a central angle $\theta$ cuts off the fraction $\frac{\theta}{2\pi}$ of both, which gives arc length $r\theta$ and sector area $\frac12r^2\theta$ with $\theta$ in radians. In degrees the same fraction is $\frac{\theta}{360^\circ}$. The ring between two circles of radii $R \gt r$, an annulus, has area $\pi(R^2 - r^2)$.`,
           keywords: ["circumference", "area of a circle", "sector", "arc length", "annulus", "radians"],
           importance: "high",
           level: ["MATHCOUNTS", "AMC10"]
@@ -936,7 +936,7 @@ window.MATH_SECTIONS.push({
           id: "circular-segment",
           name: "Circular Segment & Lens Areas",
           latex: String.raw`A_{\text{segment}} = \frac{1}{2} r^2 (\theta - \sin\theta)`,
-          description: String.raw`A circular segment is the region between a chord of a circle and the arc it cuts off, and its area is the sector minus the triangle: $\frac12r^2(\theta - \sin\theta)$, with $\theta$ the central angle in radians. The overlap of two circles, a lens, is two segments glued along their common chord, so the same formula handles it. Most shaded-region problems with curved edges come apart into sectors, triangles, and segments like these.`,
+          description: String.raw`A circular segment is the region between a chord of a circle and the arc it cuts off, and its area is the sector minus the triangle: $\frac12r^2(\theta - \sin\theta)$, with $\theta$ the central angle in radians. The overlap of two circles, a lens, is two segments glued along their common chord, so the same formula handles it.`,
           keywords: ["segment area", "chord region", "lens", "overlap of circles", "sector minus triangle", "shaded region"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -953,8 +953,8 @@ window.MATH_SECTIONS.push({
         {
           id: "chord-length",
           name: "Length of a Chord",
-          latex: String.raw`\text{chord} = 2R \sin\left(\frac{\theta}{2}\right) = 2\sqrt{R^2 - d^2}, \qquad d_k = 2R\sin\frac{k\pi}{n}`,
-          description: String.raw`A chord is a segment joining two points of a circle, and its length is fixed by the radius together with either the central angle it subtends or its distance from the center: $2R\sin\frac\theta2 = 2\sqrt{R^2 - d^2}$. Both forms come from the right triangle formed by the center, the chord's midpoint, and one endpoint. Given any two of the radius, the central angle, the distance from the center and the chord length, the other two follow. The diagonals of a regular $n$-gon inscribed in a circle of radius $R$ are chords too: the one joining vertices $k$ steps apart has length $2R\sin\frac{k\pi}{n}$.`,
+          latex: String.raw`\text{chord} = 2R\sin\frac{\theta}{2} = 2\sqrt{R^2 - d^2}`,
+          description: String.raw`A chord is a segment joining two points of a circle, and its length is fixed by the radius together with either the central angle it subtends or its distance from the center: $2R\sin\frac\theta2 = 2\sqrt{R^2 - d^2}$. Both forms come from the right triangle formed by the center, the chord's midpoint, and one endpoint. The diagonals of a regular $n$-gon inscribed in a circle of radius $R$ are chords too: the one joining vertices $k$ steps apart has length $2R\sin\frac{k\pi}{n}$.`,
           keywords: ["chord", "central angle", "distance from center", "regular polygon diagonal", "diagonal length ngon"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -972,7 +972,7 @@ window.MATH_SECTIONS.push({
           id: "inscribed-angle-theorem",
           name: "Inscribed Angle Theorem",
           latex: String.raw`\angle \text{inscribed} = \frac{1}{2} \angle \text{central} = \frac{1}{2}\,\text{arc}`,
-          description: String.raw`An inscribed angle is an angle whose vertex lies on a circle and whose sides are chords, and the Inscribed Angle Theorem says it equals half the central angle standing on the same arc, that is, half the arc it cuts off; equivalently, the angle at the center is twice the angle at the edge. Two consequences do most of the work: all inscribed angles standing on the same arc are equal, and an angle inscribed in a semicircle is a right angle, which is Thales' Theorem. Together they turn circle problems into arc bookkeeping, with arcs adding to $360^\circ$ around the circle.`,
+          description: String.raw`An inscribed angle is an angle whose vertex lies on a circle and whose sides are chords, and the Inscribed Angle Theorem says it equals half the central angle on the same arc, that is, half the arc it cuts off. So all inscribed angles standing on one arc are equal, and an angle inscribed in a semicircle is a right angle, which is Thales' Theorem.`,
           keywords: ["inscribed angle", "intercepted arc", "semicircle", "same arc equal angles"],
           importance: "high",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
@@ -989,8 +989,8 @@ window.MATH_SECTIONS.push({
         {
           id: "angle-chord-secant",
           name: "Angles from Chords, Secants, Tangents",
-          latex: String.raw`\text{inside: } \frac{\text{arc}_1 + \text{arc}_2}{2}, \qquad \text{outside: } \frac{\text{arc}_{\text{far}} - \text{arc}_{\text{near}}}{2}`,
-          description: String.raw`Two chords crossing inside a circle make an angle equal to half the sum of the intercepted arcs; two secants/tangents from outside make half the difference.`,
+          latex: String.raw`\text{inside: } \tfrac12(\text{arc}_1 + \text{arc}_2), \qquad \text{outside: } \tfrac12(\text{far arc} - \text{near arc})`,
+          description: String.raw`The angle between two lines that meet a circle is fixed by the arcs they cut off. Two chords crossing inside the circle make an angle equal to half the sum of the two intercepted arcs, and two secants, two tangents, or a secant and a tangent meeting outside make an angle equal to half the difference of the far and near arcs. A vertex on the circle gives half the single arc, the [[inscribed-angle-theorem|Inscribed Angle Theorem]].`,
           keywords: ["two chords", "two secants", "arc sum", "arc difference", "vertex outside"],
           importance: "high",
           level: ["AMC10", "AMC12"]
@@ -998,8 +998,8 @@ window.MATH_SECTIONS.push({
         {
           id: "tangent-facts",
           name: "Tangent Line Facts",
-          latex: String.raw`OT \perp \ell, \qquad PA = PB`,
-          description: String.raw`A tangent to a circle is a line that touches it at exactly one point, and at that point the tangent is perpendicular to the radius. The two tangent segments drawn to a circle from a point outside it have equal length. These two facts are the first thing to use in any problem with a tangency: drawing the radius to the touch point creates a right angle, and equal tangents turn incircle problems into bookkeeping. The angle between a tangent and a chord at the touch point is half the arc it cuts off, just like an [[inscribed-angle-theorem|inscribed angle]].`,
+          latex: String.raw`OT \perp \ell, \qquad PA = PB = \sqrt{OP^2 - r^2}`,
+          description: String.raw`A tangent to a circle is a line that touches it at exactly one point, and at that point the tangent is perpendicular to the radius. The two tangent segments drawn to a circle from a point outside it have equal length, $\sqrt{OP^2 - r^2}$. The angle between a tangent and a chord at the touch point is half the arc it cuts off, just like an [[inscribed-angle-theorem|inscribed angle]].`,
           keywords: ["tangent perpendicular radius", "equal tangents", "tangent chord angle", "tangent to a circle", "radius perpendicular to tangent", "two equal tangents"],
           importance: "high",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
@@ -1007,8 +1007,8 @@ window.MATH_SECTIONS.push({
         {
           id: "tangent-chord-angle",
           name: "Tangent–Chord Angle (Alternate Segment)",
-          latex: String.raw`\angle(\ell, TA) = \tfrac{1}{2}\,\overset{\frown}{TA} = \angle TBA`,
-          description: String.raw`The tangent–chord angle is the angle between the tangent to a circle at a point $T$ and a chord $TA$, and it equals half the arc $TA$ that it cuts off. So it equals every [[inscribed-angle-theorem|inscribed angle]] standing on that arc from the other side, such as $\angle TBA$ for $B$ on the far arc, which is why the result is also called the alternate segment theorem. Its most used case is the tangent at a vertex of a triangle's circumcircle, which makes angles with the two sides equal to the triangle's angles at the other two vertices.`,
+          latex: String.raw`\angle(\ell, TA) = \tfrac12\,\overset{\frown}{TA} = \angle TBA`,
+          description: String.raw`The tangent–chord angle is the angle between the tangent to a circle at a point $T$ and a chord $TA$, and it equals half the arc $TA$ that it cuts off. So it equals every [[inscribed-angle-theorem|inscribed angle]] standing on that arc from the other side, such as $\angle TBA$ for $B$ on the far arc, which is why the result is also called the alternate segment theorem.`,
           keywords: ["tangent chord angle", "alternate segment theorem", "tangent to circumcircle", "inscribed angle", "intercepted arc", "tangent antiparallel to opposite side", "tangent at a vertex"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -1149,7 +1149,7 @@ window.MATH_SECTIONS.push({
           id: "tangent-circles",
           name: "Tangent Circles & the Line of Centers",
           latex: String.raw`d = R + r \ \text{(external)}, \qquad d = |R - r| \ \text{(internal)}`,
-          description: String.raw`Two circles are tangent when they touch at exactly one point, and that point always lies on the line through their centers, so the distance $d$ between the centers is fixed by the radii alone: $R + r$ when they touch from outside, $|R - r|$ when one lies inside the other. This is the move that turns a tangency condition into a length equation. The same quantity classifies every other position: $d \gt R + r$ separate, $|R - r| \lt d \lt R + r$ crossing, $d \lt |R - r|$ nested. All of it carries over verbatim to spheres, where it is usually the fastest way to place a ball resting inside or outside another.`,
+          description: String.raw`Two circles are tangent when they touch at exactly one point, and that point always lies on the line through their centers, so the distance $d$ between the centers is fixed by the radii alone: $R + r$ when they touch from outside, $|R - r|$ when one lies inside the other. The same quantity classifies every other position: $d \gt R + r$ separate, $|R - r| \lt d \lt R + r$ crossing, $d \lt |R - r|$ nested. All of it carries over to spheres.`,
           keywords: ["tangent circles", "externally tangent", "internally tangent", "distance between centers", "line of centers", "circle packing", "touching circles", "tangency point collinear", "two circles tangent"],
           importance: "high",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
@@ -1182,7 +1182,7 @@ window.MATH_SECTIONS.push({
           id: "cyclic-opposite-angles",
           name: "Cyclic Quadrilateral Opposite Angles",
           latex: String.raw`A + C = 180^\circ, \qquad B + D = 180^\circ`,
-          description: String.raw`A cyclic quadrilateral is one whose four vertices lie on a circle, and a quadrilateral is cyclic exactly when its opposite angles are supplementary, $\angle A + \angle C = \angle B + \angle D = 180^\circ$. It is the standard test for four points being concyclic, and once a quadrilateral is known to be cyclic, its angles can be traded around the circle. The same fact is often used the other way round: extend a side, and the exterior angle equals the interior angle at the opposite vertex.`,
+          description: String.raw`A cyclic quadrilateral is one whose four vertices lie on a circle, and a quadrilateral is cyclic exactly when its opposite angles are supplementary, $\angle A + \angle C = \angle B + \angle D = 180^\circ$. Equivalently, an exterior angle equals the interior angle at the opposite vertex.`,
           keywords: ["cyclic", "supplementary", "inscribed quadrilateral", "test", "exterior angle equals opposite interior angle", "exterior angle of a cyclic quadrilateral", "produced side"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -1190,8 +1190,8 @@ window.MATH_SECTIONS.push({
         {
           id: "cyclic-equal-angles",
           name: "Equal Angles in a Cyclic Quadrilateral",
-          latex: String.raw`\angle BAC = \angle BDC, \quad \angle CAD = \angle CBD, \quad \angle ABD = \angle ACD, \quad \angle ADB = \angle ACB`,
-          description: String.raw`In a cyclic quadrilateral $ABCD$ the two diagonals split the four corner angles into eight, and they fall into four equal pairs, because each side is seen at the same angle from the two vertices not on it: $\angle BAC = \angle BDC$, $\angle CAD = \angle CBD$, $\angle ABD = \angle ACD$, and $\angle ADB = \angle ACB$. These equal angles are what make a cyclic quadrilateral useful: they let an [[angle-chasing|angle chase]] jump across the figure, and they make similar triangles where the diagonals cross. The pattern also runs backwards: one equal pair, with both angles on the same side of the common segment, proves the four points lie on a circle.`,
+          latex: String.raw`\angle BAC = \angle BDC, \quad \angle ABD = \angle ACD, \quad PA \cdot PC = PB \cdot PD`,
+          description: String.raw`In a cyclic quadrilateral $ABCD$ the two diagonals split the four corner angles into eight, and they fall into four equal pairs, because each side is seen at the same angle from the two vertices not on it: $\angle BAC = \angle BDC$, $\angle CAD = \angle CBD$, $\angle ABD = \angle ACD$, and $\angle ADB = \angle ACB$. The pattern also runs backwards: one equal pair, with both angles on the same side of the common segment, proves the four points lie on a circle.`,
           keywords: ["equal angles cyclic quadrilateral", "angles in the same segment", "angles on the same arc", "angles subtending the same chord", "cyclic quadrilateral diagonals angles", "bowtie angles", "cyclic quadrilateral similar triangles", "equal angles prove concyclic", "cyclic quadrilateral angle chase", "inscribed angles same chord"],
           importance: "high",
           level: ["AMC10", "AMC12", "AIME"]
@@ -1209,7 +1209,7 @@ window.MATH_SECTIONS.push({
           id: "ptolemys-theorem",
           name: "Ptolemy's Theorem",
           latex: String.raw`ac + bd = pq`,
-          description: String.raw`Ptolemy's Theorem says that in a cyclic quadrilateral, one whose four vertices lie on a circle, the product of the diagonals equals the sum of the products of opposite sides: with sides $a, b, c, d$ in order and diagonals $p$ and $q$, $pq = ac + bd$. It relates the six distances among four points on a circle, so it finds a diagonal or a side from the others without any angles. For a rectangle it is the Pythagorean Theorem, and for a point on the circumcircle of an equilateral triangle it gives $PA = PB + PC$. For four points not on a circle, $pq$ is at most $ac + bd$, which is [[ptolemys-inequality|Ptolemy's Inequality]].`,
+          description: String.raw`Ptolemy's Theorem says that in a cyclic quadrilateral, one whose four vertices lie on a circle, the product of the diagonals equals the sum of the products of the two pairs of opposite sides: with sides $a$, $b$, $c$, $d$ in order and diagonals $p$ and $q$, $pq = ac + bd$. It relates all six distances among four points on a circle without any angles, and for four points not on a circle the product $pq$ is less than $ac + bd$, which is [[ptolemys-inequality|Ptolemy's Inequality]].`,
           keywords: ["ptolemy", "cyclic quadrilateral", "diagonals", "opposite sides"],
           importance: "high",
           level: ["AMC12", "AIME"]

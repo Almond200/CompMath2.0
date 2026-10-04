@@ -360,9 +360,11 @@
     return null;
   }
   // "Geometry Methods" for one subject of a book split by subject, else the section's title.
+  // A formula subject is its own section, so its page reads "Geometry Formulas" to match.
   const pageTitle = (section, subIdx) =>
     bySubject(section) && subIdx != null && section.subsections[subIdx]
-      ? `${section.subsections[subIdx].title} ${section.title}` : section.title;
+      ? `${section.subsections[subIdx].title} ${section.title}`
+      : bookOf(section) === "formulas" ? `${section.title} Formulas` : section.title;
   // The group standing open right now. An explicit click on a group header wins;
   // otherwise it is simply the book the active section lives in.
   // The sidebar shows only the current space's group.
@@ -2507,38 +2509,20 @@
       (parts.length > 1 ? `<div class="more-forms">+ ${parts.length - 1} more form${parts.length > 2 ? "s" : ""} on its page</div>` : "");
   }
   // A long formula is scaled down to fit its card, never scrolled, and a tall one to a fixed
-  // height. When even that would make it too small to read, a chain of equalities is cut back to
-  // its first one: Heron's "A = sqrt(s(s-a)(s-b)(s-c)) = 1/4 sqrt(...)" shows "A = sqrt(...)".
+  // height. When even that would make it too small to read, it keeps a readable size and
+  // scrolls sideways.
   // Run after every render of cards, after the math fonts load, and on resize.
   const CARD_FORMULA_MAX_H = 104, CARD_FORMULA_MIN = 0.72;
-  // Where a formula's top-level "=" signs are (outside braces); none inside an environment.
-  function topLevelEquals(tex) {
-    if (/\\begin/.test(tex)) return [];
-    const at = [];
-    let depth = 0;
-    for (let i = 0; i < tex.length; i++) {
-      const c = tex[i];
-      if (c === "\\") { i++; continue; }
-      if (c === "{") depth++;
-      else if (c === "}") depth--;
-      else if (c === "=" && depth === 0) at.push(i);
-    }
-    return at;
-  }
   // Measured in batches (clear every scale, read every card, write every scale, then check):
   // fitting one card at a time forced a fresh layout per card and made a 200-card subject
   // take seconds to open. The rare card still too wide is fitted on its own afterwards.
-  function drawCardFormula(el, tex) {
-    try { katex.render(toDisplayLatex(tex), el, { throwOnError: false, displayMode: true }); return true; } catch (e) { return false; }
-  }
-  // Fit a batch of formula boxes in a fixed number of layout passes: clear, read, write,
-  // read; then the few still too wide are cut back (first equality, or stacked at arrows)
-  // all together and measured once more. Fitting card by card forced a fresh layout of the
+  // Fit a batch of formula boxes in a fixed number of layout passes: clear, read, write;
+  // the few still too wide get a scrollbar. Fitting card by card forced a fresh layout of the
   // whole page per card.
   function fitBatch(els) {
     if (!els.length) return;
     els.forEach(el => {
-      if (el.dataset.cut) { drawCardFormula(el, el.dataset.latex); delete el.dataset.cut; }
+      el.classList.remove("fd-scroll");
       const k = el.querySelector(".katex");
       if (k) k.style.fontSize = "";
     });
@@ -2559,21 +2543,13 @@
     });
     const first = measure(els);
     scaleAll(first);
-    const tooSmall = first.filter(x => x.scale < CARD_FORMULA_MIN && !x.el.dataset.full).map(x => x.el);
-    const cutEls = tooSmall.filter(el => {
-      const tex = el.dataset.latex, cuts = topLevelEquals(tex);
-      let shorter = cuts.length >= 2 ? tex.slice(0, cuts[1]) : null;
-      if (!shorter) {
-        // A statement in words ("extend each side ... \implies six concyclic points") stacks
-        // at its arrows instead, one line per step.
-        const steps = tex.split(/\s*(?=\\(?:implies|Rightarrow|Longrightarrow|iff|Leftrightarrow)\b)/);
-        if (steps.length > 1 && !/\\begin/.test(tex)) shorter = "\\begin{gathered}" + steps.join(" \\\\ ") + "\\end{gathered}";
-      }
-      if (!shorter || !drawCardFormula(el, shorter)) return false;
-      el.dataset.cut = "1";
-      return true;
+    // A formula that would have to shrink below a readable size stays at that size and gets a
+    // horizontal scrollbar instead of being cut short. Thumbnails are written to fit, so this
+    // is a fallback.
+    first.filter(x => x.scale < CARD_FORMULA_MIN && !x.el.dataset.full).forEach(x => {
+      x.k.style.fontSize = (1.18 * CARD_FORMULA_MIN).toFixed(3) + "em";
+      x.el.classList.add("fd-scroll");
     });
-    scaleAll(measure(cutEls));
   }
   // Cards are fitted as they come near the screen, so a subject of two hundred cards opens
   // without measuring the ones far below.
@@ -3542,9 +3518,6 @@
     // key forms, so it keeps the honest heading.
     const formsHtml = split.formsHtml("Key forms");
     const kind = kindOf(f), converted = isConverted(f);
-    // A converted method's formula is a thumbnail for browsing, the gist at a glance; its own
-    // page leads with When to use and Core move instead, so the formula is not repeated there.
-    const thumbOnly = kind === "method" && converted;
     state.landing = false;
     // The authored contest-profile sentence and a method's supporting mathematics render in
     // their own places on the page, so they are lifted out of the running write-up.
@@ -3586,11 +3559,11 @@
           <span class="detail-actions">
             ${starBtnHtml(f.id)}
             ${addListBtnHtml(f.id)}
-            ${f.latex && !thumbOnly ? `<button class="copy-btn" data-latex="${escapeAttr(latexFor(f))}" title="Copy the LaTeX">Copy LaTeX</button>` : ""}
+            ${f.latex ? `<button class="copy-btn" data-latex="${escapeAttr(latexFor(f))}" title="Copy the LaTeX">Copy LaTeX</button>` : ""}
             ${asyBtn}
           </span>
         </div>
-        ${f.latex && !thumbOnly ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
+        ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
         ${leadBoxHtml(f)}
         <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p>
         ${(() => {
@@ -5116,24 +5089,18 @@
     // near the bottom of the page: the problem itself, and thinking about it, come first.
     const chain = { pattern: [], method: [], formula: [] };
     p.formulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
-    const chainChip = fid => `<a class="related-item${fid === p.main ? " chain-main" : ""}" href="#/f/${fid}"${fid === p.main ? ' title="The main idea"' : ""}>${BY_ID[fid].formula.name}</a>`;
-    const chainStep = (label, ids, empty) => `<div class="chain-step"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
+    const chainChip = fid => `<a class="related-item" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
+    // One box, always open: the strategy in a few sentences, then the three cards it connects
+    // side by side. No hints and no staged reveals: the page explains how the problem works.
+    const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
     const chainHtml = `<div class="prob-chain"><h4>How this problem works</h4>
-        ${chainStep("Pattern", chain.pattern, "Pattern not classified yet")}
-        <div class="chain-arrow" aria-hidden="true">&darr;</div>
-        ${chainStep("Method", chain.method, "Not classified yet")}
-        <div class="chain-arrow" aria-hidden="true">&darr;</div>
-        ${chainStep("Formulas", chain.formula, "&mdash;")}
+        ${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
+        <div class="chain-grid">
+          ${chainCol("Pattern", chain.pattern, "Not classified yet")}
+          ${chainCol("Method", chain.method, "Not classified yet")}
+          ${chainCol("Formulas", chain.formula, "&mdash;")}
+        </div>
       </div>`;
-    // The strategy, hidden until asked for. Written hints stay in the data (problem-db `hints`)
-    // but are not shown: they and the tricks will be folded into "How this problem works".
-    const steps = p.strategy ? [{ label: "Strategy", text: p.strategy }] : [];
-    const solo = steps.length === 1;
-    const thinkHtml = steps.length ? `<div class="prob-think"><h4>Strategy</h4>${steps.map((st, i) => `
-        <div class="think-step"${i ? " hidden" : ""}>
-          <button type="button" class="show-more-btn think-btn" aria-expanded="false" data-label="${solo ? "" : st.label.toLowerCase()}">Show${solo ? "" : " " + st.label.toLowerCase()}</button>
-          <div class="think-body" hidden>${solo ? "" : `<span class="think-label">${st.label}.</span> `}${st.text}</div>
-        </div>`).join("")}</div>` : "";
     $content.innerHTML = `
       <div class="detail">
         <div class="back-row">
@@ -5149,7 +5116,6 @@
         ${types ? `<div class="ptype-row">${types}</div>` : ""}
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "The full statement and solution live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
-        ${thinkHtml}
         ${chainHtml}
         ${contestNavHtml(p)}
       </div>`;
@@ -5822,15 +5788,39 @@
   // ---------- Events ----------
 
   let searchTimer = null;
+  // Starting a search remembers the page it was started from, and emptying the box returns
+  // there with its scroll position, instead of falling through to the front page.
+  let preSearch = null;
+  function applySearchQuery(value) {
+    const was = state.query.trim(), now = value.trim();
+    if (!was && now && !state.adv) preSearch = { hash: location.hash, y: window.scrollY, landing: state.landing };
+    state.query = value;
+    if (now) {
+      state.adv = null;
+      if (!getRoute().section) stripHash();
+      render();
+      window.scrollTo({ top: 0, behavior: "instant" });
+      return;
+    }
+    const back = preSearch; preSearch = null;
+    if (back && was) {
+      state.landing = back.landing;
+      history.replaceState(null, "", location.pathname + location.search + back.hash);
+      render();
+      // The page lays out its math lazily, so restore the position once it has rendered.
+      const restore = () => window.scrollTo({ top: back.y, behavior: "instant" });
+      restore(); setTimeout(restore, 0); setTimeout(restore, 150);
+      return;
+    }
+    render();
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
   $search.addEventListener("input", () => {
     clearTimeout(searchTimer);
     if (/^\s*special:/i.test($search.value)) { showSuggest(commandSuggestions($search.value)); return; }
     hideSuggest();
     searchTimer = setTimeout(() => {
-      state.query = $search.value;
-      if (state.query.trim()) { state.adv = null; if (!getRoute().section) stripHash(); }
-      render();
-      window.scrollTo({ top: 0, behavior: "instant" });
+      applySearchQuery($search.value);
     }, 120);
   });
 
@@ -5853,10 +5843,7 @@
       showSuggest(commandSuggestions($search.value));
       return;
     }
-    state.query = $search.value;
-    if (state.query.trim()) { state.adv = null; if (!getRoute().section) stripHash(); }
-    render();
-    window.scrollTo({ top: 0, behavior: "instant" });
+    applySearchQuery($search.value);
     $search.blur();
   });
 
@@ -6279,19 +6266,6 @@
       clearSearch();
       const num = v => v === undefined ? null : +v;
       goHash(sectionHash(go.dataset.goSection, { sub: num(go.dataset.goSub), topic: num(go.dataset.goTopic), cluster: num(go.dataset.goCluster) }));
-      return;
-    }
-    // Problem page: each hint, then the strategy, is revealed one at a time.
-    const thinkBtn = e.target.closest(".think-btn");
-    if (thinkBtn) {
-      const step = thinkBtn.closest(".think-step");
-      const body = step.querySelector(".think-body");
-      const open = body.hidden;
-      body.hidden = !open;
-      thinkBtn.setAttribute("aria-expanded", open ? "true" : "false");
-      thinkBtn.textContent = (open ? "Hide" : "Show") + (thinkBtn.dataset.label ? " " + thinkBtn.dataset.label : "");
-      const next = step.nextElementSibling;
-      if (open && next && next.classList.contains("think-step")) next.hidden = false;
       return;
     }
     const asyBtn = e.target.closest(".copy-asy-btn");

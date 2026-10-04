@@ -4517,10 +4517,10 @@ DIAGRAMS["trig-ceva"] = [(() => {
       seg(eL, eR, GLD, 2, "7 5"),
       seg(Ap, H, ACC, 3.4), seg(H, D, ORG, 3.4),
       seg(O, M, GLD, 1.4, "3 4"), rightAngle(M, O, Cp, 9, GLD),
-      // The equal-halves ticks sit BELOW BC: in this triangle the midpoint of BM
-      // coincides with the altitude foot D, so a tick drawn on the line would vanish
-      // under it.
-      ...[mid(Bp, M), mid(M, Cp)].map(q => seg(add(q, [0, 7]), add(q, [0, 17]), GLD, 2.2)),
+      // The equal-halves ticks cross BC itself, as in a textbook figure. The midpoint of
+      // BM coincides with the altitude foot D here, so each tick sits a little off its
+      // half's midpoint, mirrored about M, where it cannot hide under the altitude.
+      ...[add(Bp, mul(sub(M, Bp), 0.32)), sub(Cp, mul(sub(Cp, M), 0.32))].map(q => seg(add(q, [0, -6]), add(q, [0, 6]), GLD, 2.2)),
       dot(O, GLD, 5), dot(H, ACC, 5), dot(D, ORG, 4), dot(Ap, DIM, 4), dot(Bp, DIM, 4), dot(Cp, DIM, 4),
       txt(add(Ap, [0, -12]), "A", DIM, 13),
       txt(add(Bp, [-13, 6]), "B", DIM, 13), txt(add(Cp, [13, 6]), "C", DIM, 13),
@@ -4549,7 +4549,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       rightAngle(M, A, P, 11, GLD),
       seg(A, P, ACC, 2), seg(B, P, ACC, 2),
       seg(A, Q, PNK, 1.8, "4 4"), seg(B, Q, PNK, 1.8, "4 4"),
-      ...[mid(A, M), mid(M, B)].map(q => seg(add(q, [0, 6]), add(q, [0, 16]), DIM, 2.2)),
+      ...[mid(A, M), mid(M, B)].map(q => seg(add(q, [0, -6]), add(q, [0, 6]), DIM, 2.2)),
       dot(A, DIM, 4.5), dot(B, DIM, 4.5), dot(M, DIM, 4), dot(P, ACC, 5), dot(Q, PNK, 4.5),
       txt(add(A, [-14, 6]), "A", DIM, 13), txt(add(B, [14, 6]), "B", DIM, 13),
       txt(add(M, [-15, 17]), "M", DIM, 12.5),
@@ -7172,5 +7172,126 @@ DIAGRAMS["trig-ceva"] = [(() => {
       ]);
     })()
   };
+
+  // ---- circle batch figures (four-kind conversion) ----
+  // An arc of circle (c, R) from screen angle d1 to d2, increasing (clockwise on screen).
+  const arcOn = (c, R, d1, d2, col, w = 4.5) => {
+    const p1 = onC(c, R, d1), p2 = onC(c, R, d2), large = ((d2 - d1 + 360) % 360) > 180 ? 1 : 0;
+    return `<path d="M ${pf(p1)} A ${R} ${R} 0 ${large} 1 ${pf(p2)}" fill="none" stroke="${col}" stroke-width="${w}" stroke-linecap="round" stroke-opacity="0.8"/>`;
+  };
+  const angDeg = (V, P, Q) => {
+    const a = sub(P, V), b = sub(Q, V);
+    return Math.acos((a[0] * b[0] + a[1] * b[1]) / (Math.hypot(...a) * Math.hypot(...b))) * 180 / Math.PI;
+  };
+
+  BODY["angle-chord-secant"] = {
+    // Chords AC and BD cross at P; arcs AB = 90 and CD = 100 degrees, so angle APB = 95.
+    inside: (() => {
+      const O = [215, 150], R = 112;
+      const A = onC(O, R, 200), B = onC(O, R, 290), C = onC(O, R, 20), D = onC(O, R, 120);
+      const P = lineInt(A, C, B, D), ang = angDeg(P, A, B), ok = Math.abs(ang - 95) < 1e-6;
+      return wrap(430, 300, [
+        circ(O, R, FNT, 1.4), arcOn(O, R, 200, 290, ACC), arcOn(O, R, 20, 120, GLD),
+        seg(A, C, DIM, 2), seg(B, D, DIM, 2), seg(B, C, DIM, 1.6, "5 4"),
+        angleArc(P, A, B, 20, PUR), angleArc(B, D, C, 26, GLD), angleArc(C, B, A, 26, ACC),
+        dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, DIM, 4), dot(P, PUR, 4),
+        txt(away(A, O, 14), "A", DIM, 13), txt(away(B, O, 14), "B", DIM, 13), txt(away(C, O, 14), "C", DIM, 13), txt(away(D, O, 16), "D", DIM, 13),
+        txt(add(P, [-16, -10]), "P", PUR, 13),
+        txt(onC(O, R + 24, 245), "90°", ACC, 12.5), txt(onC(O, R + 24, 70), "100°", GLD, 12.5),
+        cap(430, 300, `Chords AC and BD cross at P. The dashed chord BC makes angle APB an exterior angle of triangle PBC, so it is the sum of the inscribed angles at B and C, which are half of arc CD and half of arc AB: ½(90° + 100°) = ${ang.toFixed(0)}°.` + (ok ? "" : " MISMATCH"))
+      ]);
+    })(),
+    // Secants P-A-B and P-C-D from outside: far arc BD = 120, near arc AC = 50, so angle P = 35.
+    outside: (() => {
+      const O = [318, 150], R = 92;
+      const A = onC(O, R, 205), B = onC(O, R, 300), C = onC(O, R, 155), D = onC(O, R, 60);
+      const P = lineInt(A, B, C, D), ang = angDeg(P, B, D), ok = Math.abs(ang - 35) < 1e-6;
+      return wrap(430, 300, [
+        circ(O, R, FNT, 1.4), arcOn(O, R, 300, 420, GLD), arcOn(O, R, 155, 205, ACC),
+        seg(P, B, DIM, 2), seg(P, D, DIM, 2), seg(A, D, DIM, 1.6, "5 4"),
+        angleArc(P, B, D, 34, PUR), angleArc(A, B, D, 22, GLD), angleArc(D, A, C, 24, ACC),
+        dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, DIM, 4), dot(P, PUR, 4),
+        txt(add(A, [-4, -12]), "A", DIM, 13), txt(away(B, O, 14), "B", DIM, 13), txt(add(C, [-4, 20]), "C", DIM, 13), txt(away(D, O, 16), "D", DIM, 13),
+        txt(add(P, [-14, 5]), "P", PUR, 13),
+        txt(onC(O, R + 24, 0), "120°", GLD, 12.5), txt(onC(O, R - 22, 180), "50°", ACC, 12),
+        cap(430, 300, `Secants from P cut off a far arc BD and a near arc AC. The dashed chord AD makes the inscribed angle BAD, half the far arc, an exterior angle of triangle PAD, so angle P is that angle minus angle ADP, half the near arc: ½(120° − 50°) = ${ang.toFixed(0)}°.` + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+  BODY["cyclic-equal-angles"] = {
+    // A cyclic quadrilateral with diagonals meeting at P; triangles PAB and PDC are similar.
+    bowtie: (() => {
+      const O = [215, 150], R = 115;
+      const A = onC(O, R, 200), B = onC(O, R, 275), C = onC(O, R, 345), D = onC(O, R, 110);
+      const P = lineInt(A, C, B, D);
+      const ok = Math.abs(angDeg(A, B, C) - angDeg(D, B, C)) < 1e-6 && Math.abs(angDeg(B, A, D) - angDeg(C, A, D)) < 1e-6 &&
+                 Math.abs(dist(P, A) * dist(P, C) - dist(P, B) * dist(P, D)) < 1e-6;
+      return wrap(430, 300, [
+        circ(O, R, FNT, 1.4),
+        poly([A, B, P], ACC, 1.4, ACCS), poly([D, C, P], GLD, 1.4, GLDS),
+        seg(A, B, DIM, 2), seg(B, C, DIM, 2), seg(C, D, DIM, 2), seg(D, A, DIM, 2), seg(A, C, DIM, 1.8), seg(B, D, DIM, 1.8),
+        angleArc(A, B, C, 26, PUR), angleArc(D, B, C, 26, PUR),
+        angleArc(B, A, D, 22, ORG, true), angleArc(C, A, D, 22, ORG, true),
+        dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, DIM, 4), dot(P, DIM, 3.5),
+        txt(away(A, O, 14), "A", DIM, 13), txt(away(B, O, 14), "B", DIM, 13), txt(away(C, O, 14), "C", DIM, 13), txt(away(D, O, 16), "D", DIM, 13),
+        txt(add(P, [14, 4]), "P", DIM, 13, "start"),
+        cap(430, 300, "Angles BAC and BDC stand on arc BC, and angles ABD and ACD on arc AD, so triangles PAB (blue) and PDC (gold) have two equal angles and are similar. Their ratios give PA · PC = PB · PD, the chord form of power of a point." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+  // Two circles resting on a line and touching: contact points are 2√(Rr) apart.
+  BODY["tangent-circles"].floor = (() => {
+    const R = 90, r = 40, y0 = 250, x1 = 120, gap = 2 * Math.sqrt(R * r), x2 = x1 + gap;
+    const O1 = [x1, y0 - R], O2 = [x2, y0 - r], Q = [x1, y0 - r];
+    const ok = Math.abs(dist(O1, O2) - (R + r)) < 1e-6;
+    return wrap(430, 290, [
+      seg([20, y0], [410, y0], DIM, 1.8),
+      circ(O1, R, FNT, 1.5), circ(O2, r, FNT, 1.5),
+      seg(O1, O2, ACC, 2.2), seg(O1, [x1, y0], DIM, 1.4, "4 4"), seg(O2, [x2, y0], DIM, 1.4, "4 4"),
+      seg(Q, O2, GLD, 2.2), seg(O1, Q, PUR, 2.2), rightAngle(Q, O2, O1, 9),
+      dot(O1, DIM, 4), dot(O2, DIM, 4), dot([x1, y0], DIM, 3.5), dot([x2, y0], DIM, 3.5),
+      txt(add(mid(O1, O2), [12, -8]), "R + r", ACC, 13, "start"), txt(add(mid(O1, Q), [-8, 4]), "R − r", PUR, 13, "end"),
+      txt(add(mid(Q, O2), [0, 18]), "2√(Rr)", GLD, 13),
+      txt(add(O1, [-12, -6]), "R", DIM, 12, "end"), txt(add(O2, [10, -6]), "r", DIM, 12, "start"),
+      cap(430, 290, "Circles resting on a line and touching each other have centers R + r apart and heights differing by R − r. The horizontal leg of the right triangle is the distance between the contact points, √((R + r)² − (R − r)²) = 2√(Rr)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })();
+
+  // A chord of the outer circle tangent to the inner one: R = 110, r = 66, half chord 88.
+  BODY["circle-basics"].annulus = (() => {
+    const O = [215, 150], R = 110, r = 66, h = Math.sqrt(R * R - r * r);
+    const T = [O[0], O[1] + r], A = [O[0] - h, T[1]], B = [O[0] + h, T[1]];
+    const ok = Math.abs(dist(O, A) - R) < 1e-6 && Math.abs(h - 88) < 1e-9;
+    return wrap(430, 290, [
+      circ(O, R, GLD, 1.6, GLDS), circ(O, r, FNT, 1.5, "var(--bg)"),
+      seg(A, B, ACC, 2.4), seg(O, T, DIM, 1.8), seg(O, A, DIM, 1.6, "5 4"), rightAngle(T, B, O, 9),
+      dot(O, DIM, 4), dot(T, DIM, 3.5), dot(A, ACC, 4), dot(B, ACC, 4),
+      txt(add(O, [0, -10]), "O", DIM, 13), txt(add(mid(O, T), [8, 4]), "r", DIM, 13, "start"),
+      txt(add(mid(O, A), [-6, -8]), "R", DIM, 13, "end"), txt(add(mid(A, T), [0, 18]), "c/2", ACC, 13),
+      cap(430, 290, "A chord of the outer circle tangent to the inner one is bisected at the touch point, so (c/2)² = R² − r². The ring's area π(R² − r²) is therefore π(c/2)², the area of the circle with that chord as diameter, whatever the two radii are." + (ok ? "" : " MISMATCH"))
+    ]);
+  })();
+
+  // External common tangent of circles r1 = 70, r2 = 35 with centers 200 apart.
+  BODY["tangent-facts"].belt = (() => {
+    const O1 = [110, 170], O2 = [310, 170], r1 = 70, r2 = 35, d = 200;
+    const nx = -(r1 - r2) / d, ny = Math.sqrt(1 - nx * nx), n = [nx, ny];
+    const T1 = sub(O1, mul(n, r1)), T2 = sub(O2, mul(n, r2)), Q = sub(O1, mul(n, r1 - r2));
+    const L = Math.sqrt(d * d - (r1 - r2) ** 2), ok = Math.abs(dist(T1, T2) - L) < 1e-6 && Math.abs(dist(Q, O2) - L) < 1e-6;
+    return wrap(430, 280, [
+      circ(O1, r1, FNT, 1.5), circ(O2, r2, FNT, 1.5),
+      seg(add(T1, mul(sub(T1, T2), 0.15)), add(T2, mul(sub(T2, T1), 0.15)), DIM, 1.8),
+      seg(T1, T2, ACC, 2.6), seg(O1, T1, DIM, 1.6), seg(O2, T2, DIM, 1.6),
+      seg(O2, Q, GLD, 2, "6 4"), seg(O1, O2, DIM, 1.6, "4 4"),
+      rightAngle(T1, T2, O1, 9), rightAngle(T2, T1, O2, 9), rightAngle(Q, O2, O1, 8, GLD),
+      dot(O1, DIM, 4), dot(O2, DIM, 4), dot(T1, ACC, 4), dot(T2, ACC, 4), dot(Q, GLD, 3.5),
+      txt(add(O1, [-6, 18]), "O₁", DIM, 13), txt(add(O2, [6, 18]), "O₂", DIM, 13),
+      txt(add(mid(O1, O2), [0, 18]), "d", DIM, 13), txt(add(mid(T1, T2), [0, -12]), "L", ACC, 14),
+      txt(add(mid(O1, Q), [10, 0]), "r₁ − r₂", GLD, 12, "start"),
+      cap(430, 280, "Both radii to an external common tangent are perpendicular to it, so sliding the tangent down by r₂ (dashed gold) leaves a right triangle with hypotenuse d and legs L and r₁ − r₂. So L = √(d² − (r₁ − r₂)²); for the internal tangent the leg becomes r₁ + r₂." + (ok ? "" : " MISMATCH"))
+    ]);
+  })();
 
 })();
