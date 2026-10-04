@@ -24,12 +24,15 @@ while ((m = re.exec(appSrc))) TOPICS[m[1]] = 1;
 load('js/data/problems/problem-db.js');
 var DB = window.MATH_PROBLEM_DB || [];
 var refRe = /^\d{4}\s+.*?,\s*Problem\s+\d+$/;
-var errors = [], seen = {};
+var errors = [], seen = {}, untagged = [];
 DB.forEach(function (e, i) {
   var at = "[" + i + "] " + (e.ref || "(no ref)");
   if (!e.ref || !refRe.test(e.ref)) errors.push(at + ": ref not AoPS-parseable");
   if (seen[e.ref]) errors.push(at + ": duplicate ref"); seen[e.ref] = 1;
-  if (!e.formulas || !e.formulas.length) errors.push(at + ": no formulas");
+  // A problem no card honestly fits keeps an empty list: it is reported below, never forced
+  // onto a card. Only a missing list is a mistake.
+  if (!e.formulas) errors.push(at + ": no formulas array");
+  else if (!e.formulas.length) untagged.push(e.ref);
   (e.formulas || []).forEach(function (f) { if (!CARDS[f]) errors.push(at + ": unknown formula id '" + f + "'"); });
   // The trick route is optional, but a half-filled one is always a mistake: prose with no
   // cards leaves the idea untagged, and cards with no prose put a problem on a card page
@@ -57,7 +60,7 @@ DB.forEach(function (e, i) {
 // Every [[card-id]] cross-link in a write-up must resolve, or a renamed card leaves a
 // dead link that nothing else would catch.
 var DETAILS = {};
-["geometry", "algebra", "number-theory", "counting"].forEach(function (s) {
+["geometry", "algebra", "number-theory", "counting", "proof"].forEach(function (s) {
   try { load("js/data/details/" + s + "-details.js"); } catch (e) {}
 });
 DETAILS = window.MATH_DETAILS || {};
@@ -122,7 +125,8 @@ DB.forEach(function (e) {
 print("chain: pattern " + chain.pattern + " | method " + chain.method + " | formula " + chain.formula + " | complete " + chain.all +
   " of " + DB.length + " | hints " + withHints + " | main " + withMain + " (warning: " + wantMain + " problems with 4+ cards and no main)");
 print("unclassified (flagged for review, never invented): no pattern " + (DB.length - chain.pattern) +
-  " | no method " + (DB.length - chain.method) + " | no formula " + (DB.length - chain.formula));
+  " | no method " + (DB.length - chain.method) + " | no formula " + (DB.length - chain.formula) +
+  " | no card at all " + untagged.length + (untagged.length ? " (" + untagged.join("; ") + ")" : ""));
 print("problems: " + DB.length + " | cards: " + Object.keys(CARDS).length + " | topics: " + Object.keys(TOPICS).length + " | tricks: " + withTrick);
 if (errors.length) { print("VIOLATIONS (" + errors.length + "):"); errors.slice(0, 50).forEach(print); }
 else print("OK — 0 violations");

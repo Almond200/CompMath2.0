@@ -1557,7 +1557,7 @@ The condition names individual digits: their sum, their order, a digit moved or 
 Translate first, $\overline{abc} = 100a + 10b + c$, and every condition becomes an equation in bounded unknowns. Reversals then factor at once: $\overline{ab} + \overline{ba} = 11(a + b)$, $\overline{ab} - \overline{ba} = 9(a - b)$, and $\overline{abc} - \overline{cba} = 99(a - c)$, where the middle digit drops out.
 
 ### Methods to try
-- [[bounding-diophantine]]: digits are bounded, $1 \le a \le 9$ for a leading digit and $0 \le b \le 9$ otherwise, so once the equation isolates one digit only a few values survive.
+- [[bounding-diophantine]]: compare the sizes of the two sides before searching. A $k$-digit number is at least $10^{k-1}$ while its digit sum is at most $9k$, so a condition such as $N = 7 \cdot S(N)$ rules out four or more digits ($1000 \gt 7 \cdot 36$); the digits themselves, $1$ to $9$ when leading and $0$ to $9$ otherwise, then leave a short check.
 - [[choose-modulus]]: modulo $9$ a number equals its digit sum and modulo $11$ its alternating digit sum, so digit-sum conditions become congruences.
 - [[casework-method]]: when two or three digits stay free, split on the leading digit or on a carry.
 

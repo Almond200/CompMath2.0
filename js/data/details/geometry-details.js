@@ -4583,7 +4583,7 @@ An AIME and AMC configuration: an equiangular hexagon or octagon with given side
 
 "box-tetrahedron": String.raw`
 ## When to use
-A tetrahedron is given by its six edges, and they pair up as three equal pairs of opposite edges, such as $\sqrt{13}$, $\sqrt{20}$, $5$ each appearing twice, or the tetrahedron is regular. The question asks for its volume, its circumradius, or a distance inside it.
+A tetrahedron is given by its six edges, and they pair up as three equal pairs of opposite edges, such as $\sqrt{13}$, $\sqrt{20}$, $5$ each appearing twice, or the tetrahedron is regular. The second case is a tetrahedron with three right angles at one vertex, such as the corner sliced off a cube. The question asks for its volume, its circumradius, or a distance inside it.
 
 ## How
 1. Call the box's dimensions $p$, $q$, $r$, and write each pair of opposite edges as the diagonal of one face: $p^2 + q^2$, $q^2 + r^2$, $r^2 + p^2$.
@@ -4591,12 +4591,16 @@ A tetrahedron is given by its six edges, and they pair up as three equal pairs o
 3. The tetrahedron is the box with four corner tetrahedra removed, each of volume $\frac{pqr}{6}$, so its volume is $pqr - 4 \cdot \frac{pqr}{6} = \frac{pqr}{3}$.
 4. Its circumsphere is the box's circumsphere, with radius half the space diagonal, $\frac12\sqrt{p^2 + q^2 + r^2}$.
 
-A regular tetrahedron of edge $\sqrt2$ sits in a unit cube, so its volume is $1 - 4 \cdot \frac16 = \frac13$.
+5. For a corner tetrahedron with perpendicular edges $p$, $q$, $r$ at one vertex, the tetrahedron is one corner piece of the box: its volume is $\frac{pqr}{6}$, its circumsphere is again the box's, and the areas of its faces satisfy [[de-guas-theorem|de Gua's Theorem]].
+
+A regular tetrahedron of edge $\sqrt2$ sits in a unit cube, so its volume is $1 - 4 \cdot \frac16 = \frac13$. A corner tetrahedron with perpendicular edges $1$, $2$, $2$ has circumradius $\frac12\sqrt{1 + 4 + 4} = \frac32$.
 
 ## Why it works
 Four alternate corners of a box, no two sharing an edge, are joined by six face diagonals, and opposite diagonals of each pair of opposite faces are equal, which gives three equal pairs. Conversely, three equal pairs determine $p^2$, $q^2$, $r^2$ uniquely, and they are positive exactly when every face is an acute triangle, so such a tetrahedron always has a box. Each removed corner piece is a right-corner tetrahedron with legs $p$, $q$, $r$, of volume $\frac{pqr}{6}$.
 
 ## Formulas it uses
+- [[isosceles-tetrahedron]]: the most common case of the method, a tetrahedron with opposite edges equal in pairs, which is the alternate-corner tetrahedron of a $p \times q \times r$ box with $a^2 = p^2 + q^2$, $b^2 = q^2 + r^2$, $c^2 = r^2 + p^2$ and volume $\frac{pqr}{3}$.
+- [[de-guas-theorem]]: for a corner tetrahedron, the square of the slanted face's area is the sum of the squares of the three right-triangle faces.
 - [[pythagorean-theorem]]: each edge is the diagonal of a face, $\sqrt{p^2 + q^2}$.
 - [[prism-pyramid-volumes]]: each corner piece is a pyramid with volume $\frac13 \cdot \frac{pq}{2} \cdot r$.
 - [[space-diagonal]]: the circumsphere's diameter is the box's space diagonal $\sqrt{p^2 + q^2 + r^2}$.
@@ -4604,10 +4608,10 @@ Four alternate corners of a box, no two sharing an edge, are joined by six face 
 ## Common traps
 - Matching the edge equations wrongly; each equation pairs two dimensions, and each dimension appears in exactly two equations.
 - Forgetting there are four corner pieces to remove.
-- Applying it to a tetrahedron whose opposite edges are not equal in pairs.
+- Applying it to a tetrahedron that is neither kind; a general tetrahedron does not sit on box corners.
 
 ## Contest profile
-An AIME and AMC 12 idea for tetrahedra given by six edges in three equal pairs, and for regular tetrahedra, which sit in cubes.
+An AIME and AMC 12 idea for tetrahedra given by six edges in three equal pairs, for regular tetrahedra, which sit in cubes, and for corners sliced off a box.
 `,
 
 "dihedral-angle": String.raw`

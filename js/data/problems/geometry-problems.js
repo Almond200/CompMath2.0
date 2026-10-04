@@ -572,13 +572,6 @@ Object.assign(window.MATH_PROBLEMS, {
   }
 ],
 
-"rotation-trick": [
-  {
-    q: String.raw`$P$ is inside square $ABCD$ with $PA = 1$, $PB = 2$, $PC = 3$. Find $\angle APB$.`,
-    s: String.raw`Rotate the plane $90^\circ$ about $B$ so that $C$ maps to $A$; let $P \mapsto P'$. Then $BP' = BP = 2$ with $\angle PBP' = 90^\circ$, so $PP' = 2\sqrt{2}$; and $P'A = PC = 3$. In $\triangle APP'$: $PA^2 + PP'^2 = 1 + 8 = 9 = P'A^2$, so $\angle APP' = 90^\circ$. Since $\triangle PBP'$ is an isosceles right triangle, $\angle P'PB = 45^\circ$. Therefore $\angle APB = \angle APP' + \angle P'PB = 90^\circ + 45^\circ = 135^\circ$.`
-  }
-],
-
 "spiral-similarity": [
   {
     q: String.raw`A spiral similarity centered at the origin sends $1$ to $2i$ (as complex numbers). Where does it send $1 + i$?`,

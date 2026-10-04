@@ -359,11 +359,12 @@
     }
     return null;
   }
-  // "Geometry Methods" for one subject of a book split by subject, else the section's title.
+  // "Geometry Methods" for one subject of a book split by subject ("Proof Methods" stays as is),
+  // else the section's title.
   // A formula subject is its own section, so its page reads "Geometry Formulas" to match.
   const pageTitle = (section, subIdx) =>
     bySubject(section) && subIdx != null && section.subsections[subIdx]
-      ? `${section.subsections[subIdx].title} ${section.title}`
+      ? (section.subsections[subIdx].title.endsWith(section.title) ? section.subsections[subIdx].title : `${section.subsections[subIdx].title} ${section.title}`)
       : bookOf(section) === "formulas" ? `${section.title} Formulas` : section.title;
   // The group standing open right now. An explicit click on a group header wins;
   // otherwise it is simply the book the active section lives in.
@@ -2010,11 +2011,20 @@
   // ---------- Rendering ----------
 
   // Split a multi-formula latex string into its separate formulas.
-  // Separators: any "\qquad", or "\quad" directly after a comma/semicolon.
+  // Separators: any "\qquad", or "\quad" directly after a comma/semicolon. A separator
+  // inside a \begin{..}..\end{..} block belongs to that block (a multi-line thumbnail is
+  // one gathered environment), so environments are set aside before splitting.
   function splitLatexParts(latex) {
-    return latex
+    const envs = [];
+    let held = latex, prev;
+    do {
+      prev = held;
+      held = held.replace(/\\begin\{(\w+\*?)\}(?:(?!\\begin\{)[\s\S])*?\\end\{\1\}/g, m => "\u0002" + (envs.push(m) - 1) + "\u0003");
+    } while (held !== prev);
+    const restore = t => { let r = t, q; do { q = r; r = r.replace(/\u0002(\d+)\u0003/g, (_, i) => envs[+i]); } while (r !== q); return r; };
+    return held
       .split(/\s*(?:[,;]\s*\\q?quad|\\qquad)\s*/)
-      .map(p => p.trim())
+      .map(p => restore(p).trim())
       .filter(Boolean);
   }
 
@@ -2965,9 +2975,12 @@
       // problem's central idea. `main` must be one of its own tags; the validator enforces it.
       hints: (e.hints || []).filter(h => typeof h === "string" && h.trim()),
       main: e.main && BY_ID[e.main] && (formulas.indexOf(e.main) !== -1 || trickFormulas.indexOf(e.main) !== -1) ? e.main : "",
-      year: pr.year, cname: pr.cname, fam: pr.fam, num: pr.num
+      year: pr.year, cname: pr.cname, fam: pr.fam, num: pr.num,
+      // No card honestly fits yet: the problem still gets its page, showing its chain as
+      // "not classified yet", rather than being tagged with something it does not use.
+      untagged: !(e.formulas || []).length
     };
-  }).filter(p => p.formulas.length);
+  }).filter(p => p.formulas.length || p.untagged);
   const PROBLEM_BY_SLUG = {};
   // Problems by tagged card. Since the four-kind model a tag can be a formula, a method or a
   // pattern, so this is keyed by card, not by formula (it was PROBLEMS_BY_FORMULA).
@@ -5222,11 +5235,67 @@
     return `<nav class="letter-jump">${keys.map(k => `<button type="button" data-jump="special-${k === "#" ? "num" : k}">${k}</button>`).join("")}</nav>` +
       keys.map(k => `<section class="wiki-letter" id="special-${k === "#" ? "num" : k}"><h3>${k}</h3>${cardLinks(buckets.get(k))}</section>`).join("");
   };
+  // Filters typed after Browse or Random, in any order, separated by "/" or spaces: a kind
+  // (formula, method, pattern), a subject (geometry, algebra, number theory, counting, proof),
+  // a level (MATHCOUNTS, AMC 10, AMC 12, AIME, olympiad) or an importance (high, medium, low).
+  const FILTER_WORDS = {
+    kind: { formula: "formula", formulas: "formula", method: "method", methods: "method", pattern: "pattern", patterns: "pattern" },
+    subject: { geometry: "geometry", geo: "geometry", algebra: "algebra", alg: "algebra", numbertheory: "number-theory", nt: "number-theory",
+      counting: "counting", countingprobability: "counting", probability: "counting", combinatorics: "counting", proof: "proof", proofs: "proof", proofmethods: "proof" },
+    level: { mathcounts: "MATHCOUNTS", amc10: "AMC10", amc12: "AMC12", aime: "AIME", olympiad: "Olympiad", oly: "Olympiad" },
+    importance: { high: "high", medium: "medium", med: "medium", low: "low" }
+  };
+  const SUBJECT_NAMES = { geometry: "Geometry", algebra: "Algebra", "number-theory": "Number Theory", counting: "Counting & Probability", proof: "Proof" };
+  const subjectOf = e => e.formula.subject || e.section.id;
+  function parseFilters(arg) {
+    const f = { unknown: [] };
+    const key = w => w.toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]/g, "");
+    const take = w => {
+      const k = key(w);
+      if (!k) return true;
+      for (const dim of Object.keys(FILTER_WORDS)) if (FILTER_WORDS[dim][k]) { f[dim] = FILTER_WORDS[dim][k]; return true; }
+      return false;
+    };
+    String(arg || "").split("/").forEach(part => {
+      // "Number Theory" and "AMC 10" are one filter; "method geometry" is two.
+      if (take(part)) return;
+      const words = part.trim().split(/\s+/);
+      for (let i = 0; i < words.length; i++) {
+        if (i + 1 < words.length && take(words[i] + words[i + 1])) { i++; continue; }
+        if (!take(words[i])) f.unknown.push(words[i]);
+      }
+    });
+    return f;
+  }
+  const passesFilters = (e, f) => (!f.kind || e.kind === f.kind) && (!f.subject || subjectOf(e) === f.subject) &&
+    (!f.level || (e.formula.level || []).indexOf(f.level) !== -1) && (!f.importance || e.formula.importance === f.importance);
+  function filterTitle(f) {
+    const kind = f.kind ? f.kind.charAt(0).toUpperCase() + f.kind.slice(1) + "s" : "Cards";
+    return [f.importance ? f.importance.charAt(0).toUpperCase() + f.importance.slice(1) + "-importance" : "",
+      f.subject ? SUBJECT_NAMES[f.subject] : "", f.subject || f.importance ? kind.toLowerCase() : kind,
+      f.level ? "at " + f.level.replace(/^AMC(\d+)$/, "AMC $1") : ""].filter(Boolean).join(" ");
+  }
+  const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a level (MATHCOUNTS, AMC 10, AMC 12, AIME, Olympiad), or an importance (High, Medium, Low). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME.</p>`;
+  const problemLinks = probs => `<ul class="wiki-list">${probs.slice().sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true }))
+    .map(p => `<li><a href="#/problem/${p.slug}">${refShort(p.ref)}</a></li>`).join("")}</ul>`;
   const COMMANDS = [
-    { name: "Random", arg: "section", example: "Special:Random/Geometry",
-      desc: "Open a random card. Add a section to stay inside it.",
-      go: arg => { const pool = arg ? ALL.filter(e => sectionMatches(e, arg)) : ALL;
+    { name: "Random", arg: "filters", example: "Special:Random/Method/Geometry",
+      desc: "Open a random card. Add a kind, subject, level or importance to narrow it, in any order.",
+      go: arg => {
+        const f = parseFilters(arg);
+        // Anything the filters do not recognize falls back to the older section match.
+        const pool = !arg ? ALL : f.unknown.length ? ALL.filter(e => sectionMatches(e, arg)) : ALL.filter(e => passesFilters(e, f));
         return pool.length ? "#/f/" + pickOne(pool).formula.id : null; } },
+    { name: "Browse", arg: "filters", example: "Special:Browse/Pattern/Geometry",
+      desc: "Every card of one kind, subject, level or importance, A to Z. Combine filters in any order.",
+      page: arg => {
+        const f = parseFilters(arg);
+        if (!arg) return { title: "Browse", body: filterHelp };
+        const hits = ALL.filter(e => passesFilters(e, f));
+        const unknown = f.unknown.length ? `<p class="special-note">Not a filter, so ignored: <b>${escapeAttr(f.unknown.join(", "))}</b>.</p>` : "";
+        return { title: filterTitle(f),
+          body: unknown + `<p class="special-note">${hits.length} card${hits.length === 1 ? "" : "s"}.</p>` + (hits.length > 40 ? cardIndex(hits) : hits.length ? cardLinks(hits) : filterHelp) };
+      } },
     { name: "RandomProblem", arg: "contest", example: "Special:RandomProblem/AIME",
       desc: "Open a random practice problem, optionally from one contest.",
       go: arg => {
@@ -5249,6 +5318,32 @@
         const from = (getBacklinks()[e.formula.id] || []).map(id => BY_ID[id]);
         return { title: `What links to ${e.formula.name}`,
           body: `<p class="special-note">${from.length} card${from.length === 1 ? "" : "s"} link to <a href="#/f/${e.formula.id}">${e.formula.name}</a> in their explanations.</p>` + (from.length ? cardLinks(from) : "") };
+      } },
+    { name: "ProblemsUsing", arg: "card", example: "Special:ProblemsUsing/Power of a Point",
+      desc: "Every practice problem tagged with a given card.",
+      page: arg => {
+        const e = cardFromArg(arg);
+        if (!e) return { title: "Problems using a card", body: `<p class="special-note">No card matches <b>${escapeAttr(arg || "")}</b>. Give a card's name or id, as in Special:ProblemsUsing/Power of a Point.</p>` };
+        const probs = PROBLEMS_BY_CARD[e.formula.id] || [];
+        return { title: `Problems using ${e.formula.name}`,
+          body: `<p class="special-note">${probs.length} problem${probs.length === 1 ? " is" : "s are"} tagged with <a href="#/f/${e.formula.id}">${e.formula.name}</a>.</p>` + (probs.length ? problemLinks(probs) : "") };
+      } },
+    { name: "Unclassified", example: "Special:Unclassified",
+      desc: "Practice problems still waiting for a pattern, a method, or any card at all.",
+      page: () => {
+        const kinds = p => new Set(p.formulas.map(id => BY_ID[id].kind));
+        const none = PROBLEM_DB.filter(p => !p.formulas.length);
+        const noMethod = PROBLEM_DB.filter(p => p.formulas.length && !kinds(p).has("method")).length;
+        const noPattern = PROBLEM_DB.filter(p => p.formulas.length && !kinds(p).has("pattern")).length;
+        return { title: "Unclassified problems",
+          body: `<p class="special-note">Problems are classified only where a card honestly fits, so these gaps are flagged rather than filled. ${noMethod} tagged problems have no method yet, and ${noPattern} have no pattern.</p>` +
+            `<h3 class="st-head">No card fits yet (${none.length})</h3>` + (none.length ? problemLinks(none) : `<p class="special-note">None.</p>`) };
+      } },
+    { name: "Recent", example: "Special:Recent",
+      desc: "The cards and problems you opened most recently in this browser.",
+      page: () => {
+        const rows = recentRowsHtml(30);
+        return { title: "Recently opened", body: rows ? `<div class="recent-list special-recent">${rows}</div>` : `<p class="special-note">Nothing opened yet in this browser.</p>` };
       } },
     { name: "AllPages", example: "Special:AllPages",
       desc: "Every card in the library, A to Z.",
@@ -5420,8 +5515,21 @@
   // Suggestions for one command's argument: [{ text, note }] where text is the full command.
   function argSuggestions(cmd, arg) {
     const full = v => "Special:" + cmd.name + "/" + v;
-    if (cmd.name === "Random") {
-      return rankBy(arg, SECTIONS, sec => sec.title, 6).map(sec => ({ text: full(sec.title), note: `a random card from ${sec.title}` }));
+    if (cmd.name === "Random" || cmd.name === "Browse") {
+      // The filters already chosen stay; the last piece is the one being typed.
+      const cut = arg.lastIndexOf("/"), done = cut < 0 ? "" : arg.slice(0, cut + 1), typing = arg.slice(cut + 1);
+      const chosen = parseFilters(done);
+      const opts = [["kind", ["Formula", "Method", "Pattern"]], ["subject", ["Geometry", "Algebra", "Number Theory", "Counting", "Proof"]],
+        ["level", ["MATHCOUNTS", "AMC 10", "AMC 12", "AIME", "Olympiad"]], ["importance", ["High", "Medium", "Low"]]]
+        .filter(([dim]) => !chosen[dim]).flatMap(([dim, vals]) => vals.map(v => ({ v, dim })));
+      const ranked = typing.trim() ? rankBy(typing, opts, o => o.v, 8) : opts.slice(0, 8);
+      return ranked.map(o => {
+        const f = parseFilters(done + o.v), n = ALL.filter(e => passesFilters(e, f)).length;
+        return { text: full(done + o.v), note: `${filterTitle(f)}: ${n} card${n === 1 ? "" : "s"}` };
+      });
+    }
+    if (cmd.name === "ProblemsUsing") {
+      return rankBy(arg, ALL.filter(e => problemCount(e.formula.id)), e => plainName(e.formula.name), 8).map(e => ({ text: full(plainName(e.formula.name) === e.formula.name.toLowerCase() ? e.formula.name : e.formula.id), note: `${problemCount(e.formula.id)} problem${problemCount(e.formula.id) === 1 ? "" : "s"}` }));
     }
     if (cmd.name === "RandomProblem") {
       arg = romanAime(arg);

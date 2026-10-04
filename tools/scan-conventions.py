@@ -66,7 +66,7 @@ for c in CARDS:
     c["fields"] = re.findall(r"\n\s+([a-zA-Z]+):", c["blk"])
 
 DETAILS = {}
-for f in SUBJECT:
+for f in SUBJECT + ["proof"]:
     s = io.open("js/data/details/%s-details.js" % f, encoding="utf-8").read()
     for m in re.finditer(r'\n"([a-z0-9-]+)": String\.raw`', s):
         DETAILS[m.group(1)] = s[m.end():s.index("`", m.end())]

@@ -7415,26 +7415,42 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
   BODY["point-in-equilateral"] = {
-    // A 60-degree rotation about B sends A to C and P to P'; triangle BPP' is equilateral and P'C = PA.
+    // Before and after a 60-degree turn about B, drawn to scale for PA = 5, PB = 12, PC = 13
+    // (side sqrt(169 + 60 sqrt 3)). The turn sends A to C and P to P'; PP'C is a 12-5-13 right triangle.
     three: (() => {
-      // P near the center; the 60-degree rotation about B that sends A to C carries P to P'.
-      const s = 230, B = [95, 245], C = [95 + s, 245], A = [95 + s / 2, 245 - s * Math.sqrt(3) / 2], P = [205, 180];
-      const rot = (q) => { const v = sub(q, B), a = -Math.PI / 3; return add(B, [v[0] * Math.cos(a) + v[1] * Math.sin(a), -v[0] * Math.sin(a) + v[1] * Math.cos(a)]); };
-      const A2 = rot(A), P2 = rot(P);
-      const ok = dist(A2, C) < 1e-6 && Math.abs(dist(P2, C) - dist(P, A)) < 1e-6 && Math.abs(dist(P, P2) - dist(P, B)) < 1e-6;
-      return wrap(430, 350, [
-        poly([A, B, C], DIM, 1.8),
-        poly([P, P2, C], "none", 0, "rgba(155,93,229,0.12)"),
-        seg(B, P2, FNT, 1.4, "3 4"),
-        seg(P, A, ACC, 2.4), seg(P2, C, ACC, 2.4, "7 4"),
-        seg(P, B, GLD, 2.4), seg(P, P2, GLD, 2.4, "7 4"),
-        seg(P, C, PUR, 2.4),
-        angleArc(B, P, P2, 30, DIM),
-        dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(P, DIM, 4.5), dot(P2, PUR, 4.5),
-        txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
-        txt(add(P, [-6, -12]), "P", DIM, 13, "end"), txt(add(P2, [0, 20]), "P′", PUR, 13),
-        txt(add(B, [42, 14]), "60°", DIM, 12, "start"),
-        cap(430, 350, "Turn the figure 60° about B, which sends A to C and P to P′. The turn keeps lengths, so P′C equals PA (both blue), and BP = BP′ with a 60° angle between them, so triangle BPP′ is equilateral and PP′ equals PB (both gold). The three distances PA, PB, PC are now the sides of one triangle, PP′C (shaded)." + (ok ? "" : " MISMATCH"))
+      const s = Math.sqrt(169 + 60 * Math.sqrt(3)), L = 170, k = L / s, h = L * Math.sqrt(3) / 2;
+      const x = (s * s - 25) / (2 * s), y = Math.sqrt(144 - x * x);
+      const panel = (ox) => {
+        const B = [ox, 200], C = [ox + L, 200], A = [ox + L / 2, 200 - h], P = [ox + k * x, 200 - k * y];
+        const rot = (q) => { const v = sub(q, B), a = -Math.PI / 3; return add(B, [v[0] * Math.cos(a) + v[1] * Math.sin(a), -v[0] * Math.sin(a) + v[1] * Math.cos(a)]); };
+        return { A, B, C, P, P2: rot(P), A2: rot(A) };
+      };
+      const L1 = panel(24), R = panel(236);
+      const u = (a, b) => dist(a, b) / k;
+      const ok = Math.abs(u(L1.P, L1.A) - 5) < 1e-6 && Math.abs(u(L1.P, L1.B) - 12) < 1e-6 && Math.abs(u(L1.P, L1.C) - 13) < 1e-6 &&
+        dist(R.A2, R.C) < 1e-6 && Math.abs(u(R.P2, R.C) - 5) < 1e-6 && Math.abs(u(R.P, R.P2) - 12) < 1e-6 &&
+        Math.abs(angDeg(R.P2, R.P, R.C) - 90) < 1e-6 && Math.abs(angDeg(R.P2, R.B, R.C) - 150) < 1e-6 && Math.abs(angDeg(L1.P, L1.A, L1.B) - 150) < 1e-6;
+      const lab = (Q, d, t, c, anchor) => txt(add(Q, d), t, c, 12.5, anchor);
+      return wrap(430, 262, [
+        txt([24 + L / 2, 18], "before", FNT, 12.5), txt([236 + L / 2, 18], "after a 60° turn about B", FNT, 12.5),
+        // before
+        poly([L1.A, L1.B, L1.C], DIM, 1.8),
+        poly([L1.A, L1.B, L1.P], "none", 0, ACCS),
+        seg(L1.P, L1.A, ACC, 2.4), seg(L1.P, L1.B, GLD, 2.4), seg(L1.P, L1.C, PUR, 2.4),
+        dot(L1.A, DIM, 3.5), dot(L1.B, DIM, 3.5), dot(L1.C, DIM, 3.5), dot(L1.P, DIM, 4),
+        lab(L1.A, [0, -9], "A", DIM), lab(L1.B, [-8, 5], "B", DIM, "end"), lab(L1.C, [8, 5], "C", DIM, "start"), lab(L1.P, [9, -6], "P", DIM, "start"),
+        lab(mid(L1.P, L1.A), [-9, 2], "5", ACC, "end"), lab(mid(L1.P, L1.B), [-6, -6], "12", GLD, "end"), lab(mid(L1.P, L1.C), [8, -2], "13", PUR, "start"),
+        // after
+        poly([R.A, R.B, R.C], FNT, 1.4),
+        poly([R.C, R.B, R.P2], "none", 0, ACCS),
+        poly([R.P, R.P2, R.C], "none", 0, "rgba(155,93,229,0.14)"),
+        seg(R.P2, R.C, ACC, 2.4), seg(R.B, R.P2, GLD, 2.4, "6 4"), seg(R.B, R.P, GLD, 2.4), seg(R.P, R.P2, GLD, 2.4), seg(R.P, R.C, PUR, 2.4),
+        angleArc(R.B, R.P2, R.P, 24, DIM), rightAngle(R.P2, R.P, R.C, 10, DIM),
+        dot(R.A, FNT, 3.5), dot(R.B, DIM, 3.5), dot(R.C, DIM, 3.5), dot(R.P, DIM, 4), dot(R.P2, PUR, 4),
+        lab(R.A, [0, -9], "A", FNT), lab(R.B, [-8, 5], "B", DIM, "end"), lab(R.C, [8, 5], "C", DIM, "start"), lab(R.P, [-8, -6], "P", DIM, "end"), lab(R.P2, [0, 18], "P′", PUR),
+        lab(R.B, [30, -4], "60°", DIM, "start"),
+        lab(mid(R.P2, R.C), [6, 14], "5", ACC, "start"), lab(mid(R.P, R.P2), [-10, 6], "12", GLD, "end"), lab(mid(R.B, R.P), [-6, -6], "12", GLD, "end"), lab(mid(R.P, R.C), [10, -4], "13", PUR, "start"),
+        cap(430, 262, "Before: P is inside with PA = 5, PB = 12, PC = 13, and triangle ABP (shaded blue) holds two of the distances. After: the 60° turn about B carries A to C, so triangle ABP lands on CBP′. Lengths are kept, so P′C = PA = 5, and BP′ = BP = 12 with a 60° angle at B, which makes triangle BPP′ equilateral and PP′ = 12. Now triangle PP′C (purple) has sides 12, 5, 13, so the key observation is its right angle at P′. Then ∠BP′C = 60° + 90° = 150°, and since the turn carried angle APB onto angle CP′B, ∠APB = 150°." + (ok ? "" : " MISMATCH"))
       ]);
     })()
   };
