@@ -86,7 +86,7 @@ Four problems here, all AIME, none by it alone; two use [[complementary-counting
 
 "complementary-counting": String.raw`
 ## When to use
-Whenever the opposite of the condition is an "and". If the condition is already an "and", such as "every digit is odd", count it directly; its opposite would be the messy side.
+Whenever the opposite of the condition is an "and": "at least one", "not all the same", "some two share a birthday", or the chance of at least one success in $n$ independent tries, $1 - (1 - p)^n$. If the condition is already an "and", such as "every digit is odd", count it directly; its opposite would be the messy side.
 
 ## How
 1. Count the total, in the same terms the question uses: ordered with ordered, unordered with unordered.
@@ -1214,19 +1214,20 @@ Usually the whole solution of an expected-count problem: one probability times t
 
 "invariants-coloring": String.raw`
 ## When to use
-A process of moves, such as replacing two numbers on a board by a combination of them, flipping coins, or jumping a piece, and a question about whether some state can be reached. The answer is usually no, proved by a quantity no move can change. The related question, whether the process must stop, asks for a quantity that every move decreases.
+A process of moves, such as replacing two numbers on a board by a combination of them, flipping coins, or jumping a piece, and a question about whether some state can be reached. The answer is usually no, proved by a quantity no move can change.
+
+The same idea shows that two positions of a puzzle are not connected, and that a tiling or a rearrangement is impossible when every allowed piece or swap preserves some count. Whether a process must stop is a different question, answered with a [[monovariant|monovariant]].
 
 ## How
 1. Write down exactly what one move does.
 2. Look for a quantity it leaves unchanged: a sum, a product, a parity, or a value modulo a small number.
 3. Compute the quantity at the start and at the target.
 4. If the two values differ, the target is unreachable.
-5. To show the process stops, find a nonnegative integer that every move strictly decreases.
 
-The numbers $1, 2, \ldots, 10$ are on a board, and a move replaces two of them by their difference. The last number can never be $0$: replacing $a$ and $b$ by $|a - b|$ changes the sum by $2\min(a, b)$, an even number, so the sum stays odd, as $55$ is.
+A row of $7$ coins shows all heads, and a move flips any two of them. All tails is never reached: each move changes the number of heads by $-2$, $0$, or $2$, so that number stays odd, and $0$ is even.
 
 ## Why it works
-A quantity that no move changes has the same value after any sequence of moves, so every reachable state shares its starting value, and a state with another value is out of reach. A nonnegative integer that drops with every move cannot drop forever, so the process must stop after finitely many moves.
+A quantity that no move changes has the same value after any sequence of moves, so every reachable state shares its starting value, and a state with another value is out of reach.
 
 ## Formulas it uses
 - [[modular-basics]]: invariants are often a value modulo a small number, such as a sum modulo $3$ when every move changes it by a multiple of $3$.
@@ -1234,7 +1235,7 @@ A quantity that no move changes has the same value after any sequence of moves, 
 ## Common traps
 - Concluding that a target is reachable because the invariant agrees there; an invariant can only prove impossibility.
 - Choosing a quantity that some move changes in a rare case.
-- A decreasing quantity that is not bounded below, which proves nothing about stopping.
+- Looking only at sums when the move preserves a product, or a sum of squares.
 
 ## Contest profile
 Mostly olympiad; on the AMC and AIME it is the idea behind "which final number is possible" questions and jumping-piece questions, and the invariant is usually parity or a sum modulo a small number. Tilings use the [[coloring-arguments|coloring argument]] instead.
@@ -1308,7 +1309,9 @@ Existence and impossibility claims about a finite configuration: a graph, a set 
 In a round-robin tournament, a team $A$ with the most wins reaches every other team in at most two steps: either $A$ beat $B$, or $A$ beat some team that beat $B$. Otherwise $B$ beat $A$ and beat every team that $A$ beat, so $B$ won more games than $A$, which is impossible.
 
 ## Why it works
-A finite set of numbers, or any nonempty set of positive integers, has a largest and a smallest member, so the extreme object exists. Being extreme is a property: nothing lies beyond it. A typical proof assumes the claim fails, takes the extreme object, and builds from the failure an object more extreme still, which cannot exist. Taking a smallest counterexample and finding a smaller one is the same argument as infinite descent.
+A finite set of numbers, or any nonempty set of positive integers, has a largest and a smallest member, so the extreme object exists. Being extreme is a property: nothing lies beyond it. A typical proof assumes the claim fails, takes the extreme object, and builds from the failure an object more extreme still, which cannot exist.
+
+One use is common enough to have its own card: taking a smallest counterexample and finding a smaller one is the [[minimal-counterexample|minimal counterexample]] proof, the extremal principle applied to the set of counterexamples, and the same argument as infinite descent.
 
 {{figure:longest-path}}
 
@@ -1882,6 +1885,8 @@ AMC tiling and covering questions, often as a lower bound from marked cells, and
 ## When to use
 The question asks for the largest subset of $\{1, 2, \ldots, n\}$, or of another set, that never contains two elements with some property: summing to a fixed total, differing by a fixed amount, one double the other, or both in a forbidden pair. Divisibility conditions, where one element must not divide another, use the chains of [[odd-part-chains|odd parts]] instead.
 
+The same grouping bounds selections outside number sets. At most one king fits in each $2 \times 2$ block of a chessboard without two attacking each other, so no more than $16$ kings fit on an $8 \times 8$ board, and one king in the same corner of every block reaches the bound.
+
 ## How
 1. Find pairs of elements that are forbidden together, such as $k$ and $21 - k$ for the sum $21$.
 2. When the forbidden links form chains rather than pairs, as $1, 6, 11, \ldots$ do for the difference $5$, find how many elements of one chain can be chosen with no two linked.
@@ -1933,4 +1938,64 @@ The forbidden pairs organize the set into groups; the largest subset takes the m
 ## Contest profile
 AMC problems ask for the largest sum-free or difference-free subset; AIME and olympiad versions count such subsets or disguise the forbidden relation.
 `,
+
+"monovariant": String.raw`
+## When to use
+A process of moves and a question about whether it must end, how long it can last, or what its final state looks like: numbers on a board replaced again and again, out-of-order neighbors swapped, chips passed between piles. The same move proves existence: to show that people can be split into two groups with some local property, start anywhere and keep fixing a person who violates it; a monovariant shows the fixing ends, and the end is the split that was wanted. Whether a state can be reached at all is a different question, answered with an [[invariants-coloring|invariant]].
+
+## How
+1. Write down exactly what one move does.
+2. Look for a quantity every move changes in the same direction: a sum, a sum of squares, the number of out-of-order pairs, or a count of "bad" pairs.
+3. Check that the change is strict and that the quantity takes only finitely many values, for example a nonnegative integer.
+4. Conclude that the process stops, after at most as many moves as the quantity's starting value allows.
+5. For existence, read off the property from the stopping point: no improving move is left.
+
+Sorting $n$ items by swapping adjacent pairs that are out of order ends after at most $\binom{n}{2}$ swaps: each swap lowers the number of out-of-order pairs by exactly $1$, and that number starts at most $\binom{n}{2}$.
+
+## Why it works
+A nonnegative integer cannot decrease forever, and a quantity with finitely many possible values cannot increase forever, so only finitely many moves are possible. When the process stops, by definition no move applies, which is exactly the property an existence proof needs.
+
+## Formulas it uses
+No particular formula is needed; the argument rests on the fact that a strictly decreasing sequence of nonnegative integers is finite.
+
+## Common traps
+- A quantity that decreases but can take infinitely many values, such as one halving forever, which proves nothing about stopping.
+- A move that leaves the quantity unchanged in some case; the change must be strict for every move.
+- Concluding which final state is reached; a monovariant proves that the process ends, and an invariant usually pins down where.
+
+## Contest profile
+An olympiad combinatorics staple for termination and existence proofs, and on the AIME the idea behind questions asking for the largest possible number of moves.
+`,
+
+"tree-basics": String.raw`
+## Key forms
+- a tree on $n$ vertices has $n - 1$ edges
+- any two of connected, acyclic, and $n - 1$ edges imply the third
+- any two vertices of a tree are joined by exactly one path
+- a tree with $n \ge 2$ vertices has at least two leaves
+- adding any edge to a tree creates exactly one cycle, and removing any edge disconnects it
+- a forest, a graph with no cycles, on $n$ vertices with $c$ components has $n - c$ edges
+
+## Conditions
+Finite simple graphs. A tree with one vertex has no edges and no leaves.
+
+## Why it works
+The two ends of a longest path in a tree are leaves: any other neighbor of an end would either extend the path or close a cycle. So a tree with at least two vertices has at least two leaves.
+
+Removing a leaf and its edge leaves a smaller tree, still connected and still without cycles, with one vertex and one edge fewer. Repeating down to a single vertex with no edges shows that the number of edges is always one less than the number of vertices. Two different paths between the same two vertices would together contain a cycle, so the path is unique.
+
+{{figure:leaves}}
+
+## Useful observations
+- The degrees of a tree add up to $2(n - 1)$, by the [[handshake-lemma|Handshake Lemma]], so the average degree is just under $2$.
+- A tree has at least as many leaves as its largest degree.
+- Every connected graph contains a spanning tree, so a connected graph on $n$ vertices has at least $n - 1$ edges.
+- The labeled trees on $n$ vertices number $n^{n-2}$, which is [[cayleys-formula|Cayley's Formula]].
+
+## Applications
+Networks with no redundant links, counting edges and leaves from degree information, and spanning trees of graphs.
+
+## Contest profile
+Olympiad graph theory and occasional AIME problems that count leaves or edges from degrees, or prove that some structure is a tree.
+`
 });

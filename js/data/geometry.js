@@ -68,6 +68,24 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
+          id: "triangle-congruence",
+          name: "Triangle Congruence Criteria",
+          latex: String.raw`\text{SSS},\ \ \text{SAS},\ \ \text{ASA},\ \ \text{AAS},\ \ \text{HL} \qquad (\text{SSA can fail})`,
+          description: String.raw`Two triangles are congruent, the same size and shape, when certain three of their parts match: three sides (SSS), two sides and the angle between them (SAS), two angles and the side between them (ASA), two angles and a side not between them (AAS), or, for right triangles, the hypotenuse and a leg (HL). Two sides and an angle not between them (SSA) can fit two different triangles, so it is not a criterion.`,
+          keywords: ["congruent triangles", "sss", "sas", "asa", "aas", "hl hypotenuse leg", "ssa ambiguous case", "cpctc", "triangle congruence", "triangle"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "parallel-exterior-angles",
+          name: "Parallel Lines & the Exterior Angle Theorem",
+          latex: String.raw`\text{alternate angles equal}, \qquad \angle A + \angle B + \angle C = 180^\circ, \qquad \text{exterior} = \angle A + \angle B`,
+          description: String.raw`A line crossing two parallel lines makes equal corresponding angles and equal alternate interior angles, and the two interior angles on the same side add up to $180^\circ$. Drawing a parallel through one vertex of a triangle turns these facts into the angle sum $180^\circ$ and the Exterior Angle Theorem: an exterior angle of a triangle equals the sum of the two interior angles that are not next to it.`,
+          keywords: ["parallel lines", "transversal", "alternate interior angles", "corresponding angles", "co-interior angles", "exterior angle theorem", "triangle angle sum", "remote interior angles", "angles"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
           id: "integer-triangles-perimeter",
           name: "Counting Integer-Sided Triangles by Perimeter",
           latex: String.raw`\#\{a\le b\le c,\ a+b+c=n,\ a+b>c\} = \begin{cases}\operatorname{round}\!\left(\dfrac{n^2}{48}\right) & n\text{ even}\\[4pt] \operatorname{round}\!\left(\dfrac{(n+3)^2}{48}\right) & n\text{ odd}\end{cases}`,
@@ -1474,8 +1492,8 @@ window.MATH_SECTIONS.push({
           id: "conic-sections",
           name: "Conic Sections",
           latex: String.raw`\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \;\; (c^2 = a^2 - b^2), \qquad \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1 \;\; (c^2 = a^2 + b^2), \qquad x^2 = 4py`,
-          description: String.raw`The conic sections are the [[ellipse-properties|ellipse]], the [[parabola-focus-directrix|parabola]], and the [[hyperbola-properties|hyperbola]], the curves a plane cuts from a double cone, and each is also a distance locus: the ellipse keeps a constant sum of distances to two foci, the hyperbola a constant difference, and the parabola an equal distance to a focus and a line. In standard position they are $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with $c^2 = a^2 - b^2$, $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ with $c^2 = a^2 + b^2$, and $x^2 = 4py$. On a problem, the distance condition it states usually says which curve it is.`,
-          keywords: ["ellipse", "hyperbola", "parabola", "focus", "directrix", "asymptotes", "foci", "standard form", "conic", "distance locus", "which conic is it", "sum or difference of distances"],
+          description: String.raw`The conic sections are the [[ellipse-properties|ellipse]], the [[parabola-focus-directrix|parabola]], and the [[hyperbola-properties|hyperbola]], the curves a plane cuts from a double cone, and each is also a distance locus: the ellipse keeps a constant sum of distances to two foci, the hyperbola a constant difference, and the parabola an equal distance to a focus and a line. In standard position they are $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with $c^2 = a^2 - b^2$, $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ with $c^2 = a^2 + b^2$, and $x^2 = 4py$. Centered at $(h, k)$ instead, each is the same equation with $x - h$ in place of $x$ and $y - k$ in place of $y$, such as $\frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1$. On a problem, the distance condition it states usually says which curve it is.`,
+          keywords: ["ellipse", "hyperbola", "parabola", "focus", "directrix", "asymptotes", "foci", "standard form", "conic", "distance locus", "which conic is it", "sum or difference of distances", "translated conic", "center (h, k)"],
           importance: "medium",
           level: ["AMC12", "AIME"]
         },
@@ -1484,7 +1502,7 @@ window.MATH_SECTIONS.push({
           name: "Ellipse Properties",
           latex: String.raw`\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1, \quad a > b: \qquad PF_1 + PF_2 = 2a, \qquad c^2 = a^2 - b^2, \qquad [\text{ellipse}] = \pi ab`,
           description: String.raw`The locus of points whose distances to $(\pm c, 0)$ sum to $2a$. The semi-major axis $a$ is half that constant sum, $b$ is the semi-minor axis, and $c$ is the focal distance from the center; evaluating the locus at the end of the minor axis gives $a^2 = b^2 + c^2$ directly. The area $\pi ab$ is the circle's $\pi r^2$ with the two radii separated, which is what an affine stretch of a circle does to it.`,
-          keywords: ["ellipse", "sum of distances to two foci", "semi-major axis", "semi-minor axis", "a squared equals b squared plus c squared", "area pi a b", "foci of an ellipse", "constant focal sum"],
+          keywords: ["ellipse", "sum of distances to two foci", "semi-major axis", "semi-minor axis", "a squared equals b squared plus c squared", "area pi a b", "foci of an ellipse", "constant focal sum", "latus rectum"],
           importance: "medium",
           level: ["AMC12", "AIME"]
         },
@@ -1493,7 +1511,7 @@ window.MATH_SECTIONS.push({
           name: "Hyperbola Properties",
           latex: String.raw`\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1: \qquad \lvert PF_1 - PF_2 \rvert = 2a, \qquad c^2 = a^2 + b^2, \qquad y = \pm\frac{b}{a}x, \qquad xy = k \text{ (rectangular)}`,
           description: String.raw`Same construction with a difference of focal distances instead of a sum, which is why $c$ now exceeds $a$ and the sign in the $c$-relation flips. The asymptotes are the lines the branches approach: drop the $1$ from the equation and it factors into exactly those two lines, so their slopes $\pm b/a$ control every direction the curve can eventually take. Rotating the rectangular case $a = b$ by $45^\circ$ turns it into $xy = k$, the reciprocal graph.`,
-          keywords: ["hyperbola", "difference of distances", "asymptotes of a hyperbola", "slope b over a", "c squared equals a squared plus b squared", "rectangular hyperbola", "xy = k", "branches", "conjugate axis"],
+          keywords: ["hyperbola", "difference of distances", "asymptotes of a hyperbola", "slope b over a", "c squared equals a squared plus b squared", "rectangular hyperbola", "xy = k", "branches", "conjugate axis", "latus rectum"],
           importance: "medium",
           level: ["AMC12", "AIME"]
         },
@@ -1530,6 +1548,42 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{ellipse: } F_1 \to F_2, \qquad \text{parabola: } F \to \text{parallel to the axis}, \qquad \text{hyperbola: } \text{toward } F_2 \to \text{away from } F_1`,
           description: String.raw`The tangent at a point makes equal angles with the two focal radii, so a ray from one focus of an ellipse reflects to the other, and on a parabola, whose second focus is at infinity, a ray from the focus leaves parallel to the axis. This is a statement about tangency, and its usual contest form is an optimization: the tangent line is where a sum of focal distances is least, because every other point of that line lies on a larger member of the same family.`,
           keywords: ["reflective property", "focal property", "ray from one focus to the other", "parabolic mirror", "tangent makes equal angles", "whispering gallery", "tangent minimizes focal sum", "equal angles with focal radii"],
+          importance: "low",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "conic-tangent-lines",
+          name: "Tangent Lines to Conics",
+          latex: String.raw`\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = 1, \qquad y = mx + k \text{ tangent} \iff k^2 = a^2m^2 + b^2`,
+          description: String.raw`A tangent line to a conic can be written down directly, in two ways. The tangent at a known point $(x_0, y_0)$ of $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ is $\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = 1$, and a line of known slope, $y = mx + k$, touches the same ellipse exactly when $k^2 = a^2m^2 + b^2$. The [[hyperbola-properties|hyperbola]] and the [[parabola-focus-directrix|parabola]] have the same two forms with small changes.`,
+          keywords: ["tangent line to an ellipse", "tangent to a hyperbola", "tangent to a parabola", "tangency condition conic", "k squared equals a squared m squared plus b squared", "x x0 over a squared", "line touches the ellipse", "conic", "ellipse"],
+          importance: "medium",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "conic-parametric",
+          name: "Parametric Forms of Conics",
+          latex: String.raw`(a\cos t,\ b\sin t), \qquad (a\sec t,\ b\tan t), \qquad (2pt,\ pt^2)`,
+          description: String.raw`Each conic in standard position can be traced by one parameter: the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ by $(a\cos t, b\sin t)$, the hyperbola $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ by $(a\sec t, b\tan t)$, and the parabola $x^2 = 4py$ by $(2pt, pt^2)$. One variable then describes every point of the curve, which turns questions about points on a conic into questions about a single angle or number.`,
+          keywords: ["parametric equations of an ellipse", "a cos t b sin t", "parametrize a conic", "eccentric angle", "parametric parabola 2pt pt^2", "a sec t b tan t", "maximum on an ellipse", "conic", "ellipse"],
+          importance: "medium",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "focal-radii",
+          name: "Focal Radii of the Conics",
+          latex: String.raw`PF_1 = a + ex,\ \ PF_2 = a - ex, \qquad PF_{1,2} = \lvert ex \pm a \rvert, \qquad PF = y + p`,
+          description: String.raw`A focal radius is the distance from a point of a conic to a focus, and on each conic it is a linear expression in one coordinate. On the [[ellipse-properties|ellipse]] $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with foci $(\mp c, 0)$ and eccentricity $e = \frac ca$, the two focal radii are $a + ex$ and $a - ex$; on the hyperbola they are $\lvert ex + a\rvert$ and $\lvert ex - a\rvert$; and on the parabola $x^2 = 4py$ the distance to the focus is $y + p$.`,
+          keywords: ["focal radius", "focal distance", "distance to the focus", "a plus ex", "a minus ex", "PF = y + p", "latus rectum", "focal chord", "conic", "ellipse"],
+          importance: "low",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "parabolic-segment-area",
+          name: "Area of a Parabolic Segment",
+          latex: String.raw`[\text{segment}] = \tfrac43\,[\triangle], \qquad \text{area} = \frac{\lvert a\rvert (x_2 - x_1)^3}{6}`,
+          description: String.raw`A chord of a parabola cuts off a region, a parabolic segment, whose area is $\frac43$ of the triangle with the same base and its third vertex on the parabola where the tangent is parallel to the chord. In coordinates, the region between $y = ax^2 + bx + c$ and a line that crosses it at $x_1$ and $x_2$ has area $\frac{\lvert a\rvert (x_2 - x_1)^3}{6}$, which depends only on the leading coefficient and the width.`,
+          keywords: ["parabolic segment", "archimedes quadrature of the parabola", "area between a parabola and a line", "four thirds of the triangle", "area between two parabolas", "a (x2 - x1)^3 / 6", "parabola", "conic"],
           importance: "low",
           level: ["AMC12", "AIME"]
         }

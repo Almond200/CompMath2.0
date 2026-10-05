@@ -141,6 +141,15 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "quadratic-forms",
+          name: "Forms of a Quadratic",
+          latex: String.raw`ax^2 + bx + c = a(x - h)^2 + k = a(x - r)(x - s)`,
+          description: String.raw`Every quadratic can be written in three forms, and each shows something the others hide. The standard form $ax^2 + bx + c$ shows the $y$-intercept $c$, the vertex form $a(x - h)^2 + k$ shows the vertex $(h, k)$, and the factored form $a(x - r)(x - s)$ shows the roots $r$ and $s$. All three share the leading coefficient $a$, which fixes the width and the direction the parabola opens.`,
+          keywords: ["forms of a quadratic", "standard form", "vertex form", "factored form", "intercept form", "convert quadratic forms", "parabola", "quadratic", "roots and vertex"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "descartes-rule-signs",
           name: "Descartes' Rule of Signs",
           latex: String.raw`\#\{\text{positive roots}\} = \#\{\text{sign changes of } P(x)\} - 2k, \quad k \ge 0`,
@@ -198,7 +207,7 @@ window.MATH_SECTIONS.push({
           name: "Determinant of a Small Matrix",
           latex: String.raw`\begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc, \qquad \begin{vmatrix} a & b & c \\ d & e & f \\ g & h & i \end{vmatrix} = aei + bfg + cdh - ceg - bdi - afh`,
           description: String.raw`One number attached to a square array. The $3 \times 3$ expansion above is Sarrus's rule, three downward diagonals minus three upward ones, and it does not extend to larger sizes. The properties carry the weight: swapping two rows flips the sign, adding a multiple of one row to another changes nothing, scaling a row scales the determinant, and $\det(AB) = \det A \cdot \det B$. A determinant is zero exactly when the rows are dependent, which is the form most contest uses take.`,
-          keywords: ["determinant", "2x2 determinant", "3x3 determinant", "sarrus rule", "ad minus bc", "row operations on a determinant", "determinant zero dependent rows", "det AB"],
+          keywords: ["determinant", "2x2 determinant", "3x3 determinant", "sarrus rule", "ad minus bc", "row operations on a determinant", "determinant zero dependent rows", "det AB", "leibniz formula", "permutation expansion"],
           importance: "medium",
           level: ["AIME", "Olympiad"]
         },
@@ -231,13 +240,41 @@ window.MATH_SECTIONS.push({
           level: ["AIME"]
         },
         {
+          id: "matrix-inverse",
+          name: "Inverse of a Matrix",
+          latex: String.raw`\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}, \qquad A^{-1} = \frac{\operatorname{adj} A}{\det A}`,
+          description: String.raw`The inverse of a square matrix $A$ is the matrix $A^{-1}$ with $AA^{-1} = A^{-1}A = I$, and it exists exactly when $\det A \ne 0$. For a $2 \times 2$ matrix it is found by swapping the diagonal entries, negating the other two, and dividing by $ad - bc$; in general it is the adjugate, the transposed matrix of cofactors, divided by the determinant.`,
+          keywords: ["inverse matrix", "matrix inverse", "2x2 inverse", "adjugate", "invertible matrix", "determinant nonzero", "solve a linear system with the inverse", "matrices"],
+          importance: "low",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "eigenvalues-characteristic",
           name: "Eigenvalues & the Characteristic Polynomial",
           latex: String.raw`A\mathbf{v} = \lambda \mathbf{v} \iff \det(A - \lambda I) = 0, \qquad \sum_i \lambda_i = \operatorname{tr} A, \qquad \prod_i \lambda_i = \det A`,
           latexPlain: String.raw`A\mathbf{v} = \lambda \mathbf{v} \iff \det(A - \lambda I) = 0, \qquad \lambda_1 + \lambda_2 + \cdots + \lambda_n = \operatorname{tr} A, \qquad \lambda_1\lambda_2\cdots\lambda_n = \det A`,
           description: String.raw`An eigenvector is a direction the matrix only stretches, and $\lambda$ is the stretch factor; they exist exactly where $A - \lambda I$ is singular, which is the characteristic polynomial. Its coefficients are visible without solving it: the roots sum to the trace and multiply to the determinant. Since $A^n$ has eigenvalues $\lambda_i^n$ on the same eigenvectors, this is how a matrix power turns into a closed form and how a [[transfer-matrix-method|transfer matrix]] produces its [[linear-recurrence|linear recurrence]].`,
-          keywords: ["eigenvalue", "eigenvector", "characteristic polynomial", "det A minus lambda I", "trace equals sum of eigenvalues", "diagonalization", "matrix power closed form", "spectrum"],
+          keywords: ["eigenvalue", "eigenvector", "characteristic polynomial", "det A minus lambda I", "trace equals sum of eigenvalues", "diagonalization", "matrix power closed form", "spectrum", "trace of AB equals trace of BA", "AB - BA"],
           importance: "lower",
+          level: ["Olympiad"]
+        },
+        {
+          id: "cayley-hamilton",
+          name: "Cayley–Hamilton Theorem",
+          latex: String.raw`p(\lambda) = \det(\lambda I - A) \;\Rightarrow\; p(A) = 0, \qquad A^2 = (\operatorname{tr}A)\,A - (\det A)\,I`,
+          description: String.raw`The Cayley–Hamilton Theorem says that every square matrix satisfies its own characteristic polynomial: if $p(\lambda) = \det(\lambda I - A)$, then $p(A) = 0$. For a $2 \times 2$ matrix it reads $A^2 = (\operatorname{tr}A)\,A - (\det A)\,I$, so every power of $A$ is a combination of $A$ and $I$, and the powers satisfy a [[linear-recurrence|linear recurrence]] whether or not $A$ can be diagonalized.`,
+          keywords: ["cayley-hamilton theorem", "characteristic polynomial", "matrix satisfies its characteristic polynomial", "matrix powers", "trace and determinant", "A squared equals trace A minus det", "transfer matrix recurrence", "matrices"],
+          importance: "low",
+          level: ["Olympiad"]
+        },
+        {
+          id: "vandermonde-determinant",
+          name: "Vandermonde Determinant",
+          latex: String.raw`\det\begin{pmatrix} 1 & x_1 & \cdots & x_1^{n-1} \\ \vdots & \vdots & & \vdots \\ 1 & x_n & \cdots & x_n^{n-1} \end{pmatrix} = \prod_{i \lt j}(x_j - x_i)`,
+          latexPlain: String.raw`\det\begin{pmatrix} 1 & x_1 & \cdots & x_1^{n-1} \\ \vdots & \vdots & & \vdots \\ 1 & x_n & \cdots & x_n^{n-1} \end{pmatrix} = (x_2 - x_1)(x_3 - x_1)\cdots(x_n - x_{n-1})`,
+          description: String.raw`The Vandermonde determinant is the determinant of the matrix whose rows are the powers $1, x_i, x_i^2, \ldots, x_i^{n-1}$ of $n$ numbers, and it equals the product of all differences $x_j - x_i$ with $i \lt j$. It is nonzero exactly when the numbers are distinct, which is the linear-algebra reason that exactly one polynomial of degree less than $n$ passes through $n$ points with distinct $x$-coordinates. It is a different result from Vandermonde's Identity for binomial coefficients.`,
+          keywords: ["vandermonde determinant", "vandermonde matrix", "product of differences", "determinant of powers", "unique interpolating polynomial", "not vandermonde's identity", "determinant", "matrices"],
+          importance: "low",
           level: ["Olympiad"]
         }
       ]
@@ -1043,6 +1080,24 @@ window.MATH_SECTIONS.push({
           keywords: ["weighted mean", "mixture", "concentration", "alligation", "class average"],
           importance: "high",
           level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "mean-median-mode",
+          name: "Mean, Median, Mode & Range",
+          latex: String.raw`\bar x = \frac{x_1 + \cdots + x_n}{n}, \qquad \text{median} = \text{middle value}, \qquad \text{range} = \max - \min`,
+          description: String.raw`The mean, median, mode, and range are the four basic numbers that summarize a list. The mean is the sum divided by the count, the median is the middle value once the list is sorted, the mode is the most frequent value, and the range is the largest value minus the smallest. They respond differently to changes: moving one value changes the mean but often not the median.`,
+          keywords: ["mean", "median", "mode", "range", "average", "statistics", "middle value", "most frequent value", "outlier", "data set"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "percent-change",
+          name: "Percent Change & Compound Growth",
+          latex: String.raw`\text{new} = \text{old} \cdot \left(1 + \tfrac{p}{100}\right), \qquad \left(1 + \tfrac{p}{100}\right)\left(1 + \tfrac{q}{100}\right), \qquad A = P(1 + r)^n`,
+          description: String.raw`A change of $p$ percent multiplies a quantity by $1 + \frac{p}{100}$, so percent changes combine by multiplying, not by adding. Raising by $x\%$ and then lowering by $x\%$ leaves a net loss of $\frac{x^2}{100}$ percent, and repeated growth at a rate $r$ per period gives compound growth, $A = P(1 + r)^n$.`,
+          keywords: ["percent", "percent change", "percent increase", "percent decrease", "successive percent changes", "compound interest", "simple interest", "discount", "markup", "growth rate"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
           id: "proportion-properties",

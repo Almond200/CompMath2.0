@@ -123,7 +123,11 @@ by a point or two; compare warm runs to warm runs.
 - **Special pages**, run from the search box or from Settings → Commands, in the style of
   Wikipedia's: `Special:Random`, `Special:RandomProblem/<contest>`, `Special:RandomStarred`,
   `Special:WhatLinksHere/<card>`, `Special:AllPages` (an A-Z index with a letter bar),
-  `Special:LonelyPages`, `Special:Statistics` and `Special:Search/<query>`. Typing `Special:`
+  `Special:LonelyPages`, `Special:Statistics`, `Special:Search/<query>`,
+  `Special:Browse/<filters>` (every card of a kind, subject, level, or importance, given in any
+  order, as in `Special:Browse/Method/Geometry`), `Special:ProblemsUsing/<card>`,
+  `Special:Unclassified` (problems still waiting for a card), and `Special:Recent`.
+  `Special:Random` takes the same filters as Browse. Typing `Special:`
   opens a dropdown of the best matches, commands first and then their arguments (a contest, a
   card), which closes when you click away; every special page links back to the command list.
 - **Experimental** pages, linked only from Settings, in `lab/`, opening in their own tab and loading only the data

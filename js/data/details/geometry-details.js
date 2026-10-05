@@ -1699,7 +1699,7 @@ Usually most of the computation once the side ratios are known; the work before 
 
 "rotation-trick": String.raw`
 ## When to use
-A point inside an equilateral triangle or a square with given distances to three of the vertices, such as $3$, $4$, $5$ in an equilateral triangle or $1$, $2$, $3$ in a square, and a question about an angle at the point, the side length, or the area. More generally, any figure with a $60^\circ$ or $90^\circ$ symmetry about a vertex and scattered segments to be brought together.
+Any figure with a $60^\circ$ or $90^\circ$ symmetry about a vertex, where segments scattered around the figure should be brought together. Equilateral triangles or squares erected on the sides of a figure are one setting: the turn about the shared vertex carries one segment onto another, proving them equal and at a fixed angle. The most common setting is a point inside an equilateral triangle or a square with given distances to three of the vertices, such as $3$, $4$, $5$ in an equilateral triangle or $1$, $2$, $3$ in a square, and a question about an angle at the point, the side length, or the area.
 
 ## How
 1. Pick a vertex $B$ adjacent to two of the vertices with known distances.
@@ -1780,6 +1780,7 @@ The ellipses with foci $F_1$ and $F_2$ nest outward as the focal sum grows, so t
 ### Formulas to try
 - [[ellipse-properties]]: $PF_1 + PF_2 = 2a$, with $b^2 = a^2 - c^2$, which recovers the axes once the focal sum is known.
 - [[conic-reflective-property]]: the tangent makes equal angles with the two focal radii, the same law as the reflection.
+- [[conic-tangent-lines]]: once the ellipse is in standard position, the tangent at a point is $\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = 1$, and a line of slope $m$ touches it when $k^2 = a^2m^2 + b^2$.
 
 ## Common traps
 - Using the reflection when the foci are on opposite sides of the line, where the segment $F_1F_2$ already crosses it.
@@ -1839,6 +1840,7 @@ Two curves that could meet twice but meet once are touching, and touching is a s
 ### Formulas to try
 - [[point-line-distance]]: the distance from a center to a line, set equal to the radius.
 - [[quadratic-formula]]: the discriminant $b^2 - 4ac$ of the substituted quadratic, zero exactly when the two intersection points merge.
+- [[conic-tangent-lines]]: for a line and a conic in standard position, the tangency condition in closed form.
 
 ## Common traps
 - Keeping only one parameter value when the problem allows both, one for each side from which the line can touch.
@@ -3641,6 +3643,8 @@ AMC 12 and AIME rarely say "matrix", so this is a tool you bring rather than one
 "ellipse-properties": String.raw`## Why it works
 Put the foci at $(\pm c, 0)$ and impose $PF_1 + PF_2 = 2a$. Clearing the two radicals leaves $\frac{x^2}{a^2} + \frac{y^2}{a^2 - c^2} = 1$, so writing $b^2 = a^2 - c^2$ produces the standard form and the relation $a^2 = b^2 + c^2$ at the same time. The fastest way to see that relation without algebra is to stand at the end of the minor axis: both focal distances are equal, so each is $a$, and the right triangle with legs $b$ and $c$ has hypotenuse $a$.
 
+The latus rectum, the focal chord perpendicular to the major axis, has length $\frac{2b^2}{a}$: at $x = c$ the equation gives $\frac{y^2}{b^2} = 1 - \frac{c^2}{a^2} = \frac{b^2}{a^2}$, so $y = \pm\frac{b^2}{a}$. The [[focal-radii|focal radii]] give the same length from a different direction.
+
 ## How to use it
 Read the problem for which of $a$, $b$, $c$ it hands you and convert immediately, since contests state the condition in whichever of the three languages is least convenient. A constant sum of distances to two fixed points is $2a$ with the foci given. A stated equation gives $a$ and $b$, and $c$ follows. An area gives the product $ab$. The one to watch is orientation: $a$ is the larger denominator, so if the $y^2$ denominator is bigger, the foci sit on the $y$-axis and every formula transposes.
 
@@ -3649,6 +3653,8 @@ The recurring AIME shape is a constant focal sum arriving in disguise. Two tange
 
 "hyperbola-properties": String.raw`## Why it works
 The same derivation as the ellipse with $\lvert PF_1 - PF_2 \rvert = 2a$ instead of a sum. Now $c > a$, since the difference of two sides of a triangle is less than the third, so $a^2 - c^2$ is negative and the standard form carries a minus sign with $b^2 = c^2 - a^2$. The asymptotes come out of the equation rather than from a limit: replacing the $1$ by $0$ gives $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 0$, which factors as $\left(\frac{x}{a} - \frac{y}{b}\right)\left(\frac{x}{a} + \frac{y}{b}\right) = 0$, a pair of lines through the center. Far from the center the $1$ is negligible against terms growing like $x^2$, so the curve hugs them.
+
+The latus rectum has length $\frac{2b^2}{a}$ here too: at $x = c$ the equation gives $\frac{y^2}{b^2} = \frac{c^2}{a^2} - 1 = \frac{b^2}{a^2}$.
 
 ## How to use it
 When a problem constrains points on a hyperbola and asks for a bound, the asymptotes usually supply it, because they cap the slopes the curve can reach. Substituting a line $y = mx$ into the equation gives a real intersection only when $\lvert m \rvert \lt  b/a$, and an infimum that is never attained is the standard consequence. The rectangular case deserves separate recognition: $a = b$ makes the asymptotes perpendicular, and a $45^\circ$ rotation turns the curve into $xy = k$, so any problem about the graph of a reciprocal is a hyperbola problem in other coordinates.
@@ -4178,6 +4184,7 @@ A line meets a circle in $2$, $1$, or $0$ points as its distance from the center
 ## Formulas it uses
 - [[point-line-distance]]: the distance from $(x_0, y_0)$ to $Ax + By + C = 0$ is $\frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}$, set equal to the radius.
 - [[quadratic-formula]]: the discriminant $b^2 - 4ac$ of the substituted quadratic, zero exactly at a double root.
+- [[conic-tangent-lines]]: for an ellipse, hyperbola, or parabola in standard position the discriminant is already worked out, such as $k^2 = a^2m^2 + b^2$ for $y = mx + k$ and an ellipse.
 
 ## Common traps
 - Reading "exactly one solution" as tangency when the curves can only meet once anyway, as a line parallel to a parabola's axis does.
@@ -4699,4 +4706,185 @@ The box is the key: once the tetrahedron is placed at alternate corners of a box
 ## Contest profile
 An AIME configuration: six edges in three equal pairs, with the box giving the volume, the circumsphere, or the point equidistant from all faces.
 `,
+
+"conic-tangent-lines": String.raw`
+## Key forms
+- $\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = 1$ — the tangent to the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ at its point $(x_0, y_0)$
+- $\frac{xx_0}{a^2} - \frac{yy_0}{b^2} = 1$ — the tangent to the hyperbola $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ at $(x_0, y_0)$
+- $xx_0 = 2p(y + y_0)$ — the tangent to the parabola $x^2 = 4py$ at $(x_0, y_0)$
+- $k^2 = a^2m^2 + b^2$ — the line $y = mx + k$ is tangent to the ellipse
+- $k^2 = a^2m^2 - b^2$ — the line $y = mx + k$ is tangent to the hyperbola, possible only when $\lvert m\rvert \gt \frac ba$
+- $k = -pm^2$ — the line $y = mx + k$ is tangent to the parabola $x^2 = 4py$
+
+## Conditions
+The point forms need $(x_0, y_0)$ on the curve; for a point off the curve the same equation is a different line, its polar. The conics are in standard position, centered at the origin with axes along the coordinate axes.
+
+## Why it works
+A line meets a conic where a quadratic equation holds, and it is tangent exactly when the two intersections merge, that is, when the quadratic has a double root.
+
+Substitute $y = mx + k$ into $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ and clear denominators: $(b^2 + a^2m^2)x^2 + 2a^2mkx + a^2(k^2 - b^2) = 0$. Its discriminant simplifies to $4a^2b^2(a^2m^2 + b^2 - k^2)$, which is zero exactly when $k^2 = a^2m^2 + b^2$. For the hyperbola, $b^2$ becomes $-b^2$; for the parabola, $x^2 = 4p(mx + k)$ has discriminant $16p^2m^2 + 16pk$, zero when $k = -pm^2$.
+
+{{figure:double}}
+
+The point form comes from the normal direction. The ellipse is a level curve of $\frac{x^2}{a^2} + \frac{y^2}{b^2}$, whose gradient at $(x_0, y_0)$ is proportional to $\left(\frac{x_0}{a^2}, \frac{y_0}{b^2}\right)$. The tangent is the line through $(x_0, y_0)$ perpendicular to it, $\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = \frac{x_0^2}{a^2} + \frac{y_0^2}{b^2} = 1$.
+
+## Useful observations
+- Every point form follows one rule: replace $x^2$ by $xx_0$, $y^2$ by $yy_0$, $x$ by $\frac{x + x_0}{2}$, and $y$ by $\frac{y + y_0}{2}$. For the circle $x^2 + y^2 = r^2$ it gives $xx_0 + yy_0 = r^2$.
+- Each slope $m$ gives two parallel tangents to an ellipse, $k = \pm\sqrt{a^2m^2 + b^2}$, one on each side.
+- The largest value of $x + y$ on the ellipse is where the line $x + y = c$ is tangent: $m = -1$ gives $c = \sqrt{a^2 + b^2}$.
+- Two perpendicular tangents to the ellipse always meet on the circle $x^2 + y^2 = a^2 + b^2$, its director circle.
+
+## Applications
+Lines touching an ellipse, hyperbola, or parabola; the extremes of a linear expression over a conic; and common tangents of two conics.
+
+## Contest profile
+An AMC 12 and AIME topic: finding the tangent at a point, the parameter that makes a line touch a conic, or the extreme value of $ax + by$ on an ellipse.
+`,
+
+"conic-parametric": String.raw`
+## Key forms
+- $(a\cos t,\ b\sin t)$ — every point of the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$, once each for $0 \le t \lt 2\pi$
+- $(a\sec t,\ b\tan t)$ — both branches of the hyperbola $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$, for $t$ not an odd multiple of $\frac\pi2$
+- $(2pt,\ pt^2)$ — the parabola $x^2 = 4py$, whose tangent at parameter $t$ has slope $t$
+- $(r\cos t,\ r\sin t)$ — the circle $x^2 + y^2 = r^2$, the case $a = b = r$
+
+## Conditions
+The conics are centered at the origin with axes along the coordinate axes; for a conic centered at $(h, k)$, add $h$ and $k$ to the coordinates. On an ellipse, $t$ is the eccentric angle, the angle of the matching point on the circle of radius $a$, not the angle of the point itself from the center unless $a = b$.
+
+## Why it works
+Each form is a Pythagorean identity in disguise. For the ellipse, $\frac{(a\cos t)^2}{a^2} + \frac{(b\sin t)^2}{b^2} = \cos^2 t + \sin^2 t = 1$. For the hyperbola, $\sec^2 t - \tan^2 t = 1$. For the parabola, $(2pt)^2 = 4p^2t^2 = 4p \cdot pt^2$.
+
+{{figure:eccentric}}
+
+The ellipse picture explains the name of $t$. Take the point $Q = (a\cos t, a\sin t)$ on the circle of radius $a$ and squash the plane vertically by the factor $\frac ba$: $Q$ moves straight down to $(a\cos t, b\sin t)$ on the ellipse, so the ellipse is the circle squashed, and $t$ is the circle's angle.
+
+## Useful observations
+- The largest value of $px + qy$ on the ellipse is $\sqrt{p^2a^2 + q^2b^2}$, since $pa\cos t + qb\sin t$ is at most that by [[harmonic-addition|harmonic addition]]; for $x + y$ it is $\sqrt{a^2 + b^2}$.
+- On the parabola $(2pt, pt^2)$, the chord joining parameters $t_1$ and $t_2$ has slope $\frac{t_1 + t_2}{2}$, and it passes through the focus $(0, p)$ exactly when $t_1t_2 = -1$.
+- The squash from circle to ellipse multiplies every area by $\frac ba$, which is where the ellipse's area $\pi ab$ comes from.
+
+## Applications
+Optimizing an expression over the points of a conic, chords and tangents of a parabola, and describing a moving point on an ellipse or a hyperbola with one variable.
+
+## Contest profile
+AMC 12 and AIME: extreme values of a linear or quadratic expression on an ellipse, and parabola chord problems where the parameters of the endpoints carry the whole computation.
+`,
+
+"focal-radii": String.raw`
+## Key forms
+- $PF_1 = a + ex$, $PF_2 = a - ex$ — the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with $F_1 = (-c, 0)$, $F_2 = (c, 0)$, and $e = \frac ca$
+- $PF_1 = \lvert ex + a\rvert$, $PF_2 = \lvert ex - a\rvert$ — the hyperbola $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$, which is $ex \pm a$ on the right branch
+- $PF = y + p$ — the parabola $x^2 = 4py$ with focus $(0, p)$
+- $\frac{2b^2}{a}$ — the latus rectum of an ellipse or hyperbola, the focal chord perpendicular to the major axis
+
+## Conditions
+$P = (x, y)$ lies on the conic, which is in standard position. On the ellipse $c^2 = a^2 - b^2$; on the hyperbola $c^2 = a^2 + b^2$.
+
+## Why it works
+Each formula is the focus-directrix definition with the directrix written in. The ellipse has directrices $x = \pm\frac{a}{e}$, and the distance to a focus is $e$ times the distance to the matching directrix: $PF_2 = e\left(\frac{a}{e} - x\right) = a - ex$, and likewise $PF_1 = a + ex$. Adding them gives the constant sum $2a$.
+
+The same result comes straight from coordinates. With $y^2 = b^2\left(1 - \frac{x^2}{a^2}\right)$, $$PF_1^2 = (x + c)^2 + y^2 = \frac{c^2}{a^2}x^2 + 2cx + a^2 = (a + ex)^2.$$ On the hyperbola the same computation gives $(ex + a)^2$, and on the parabola $x^2 + (y - p)^2 = 4py + (y - p)^2 = (y + p)^2$.
+
+{{figure:radii}}
+
+## Useful observations
+- The nearest point of an ellipse to a focus is the near vertex, at distance $a - c$, and the farthest is the far vertex, at $a + c$.
+- At $x = c$ the focal radius is $a - \frac{c^2}{a} = \frac{b^2}{a}$, which is half the latus rectum, so the latus rectum is $\frac{2b^2}{a}$ on both the ellipse and the hyperbola.
+- The product of the two focal radii of an ellipse is $a^2 - e^2x^2$, largest at the ends of the minor axis, where both radii equal $a$.
+
+## Applications
+Distances from points of a conic to its foci, lengths of focal chords and the latus rectum, and distances in orbit problems where the sun sits at a focus.
+
+## Contest profile
+AMC 12 and AIME problems that give a focal distance and ask for a point, or ask for the length of a focal chord.
+`,
+
+"parabolic-segment-area": String.raw`
+## Key forms
+- $[\text{segment}] = \frac43[\triangle]$ — the triangle has the chord as base and its third vertex where the tangent is parallel to the chord, which is above the midpoint of the chord's $x$-interval
+- $\frac{\lvert a\rvert (x_2 - x_1)^3}{6}$ — the area between $y = ax^2 + bx + c$ and a line crossing it at $x_1$ and $x_2$
+- $\frac{\lvert a_1 - a_2\rvert (x_2 - x_1)^3}{6}$ — the area between two parabolas $y = a_1x^2 + \cdots$ and $y = a_2x^2 + \cdots$ that cross at $x_1$ and $x_2$
+- $\frac{b^3}{3}$ — the area under $y = x^2$ from $0$ to $b$, the chord-and-triangle picture with no calculus
+
+## Conditions
+The parabola's axis is vertical, $y = ax^2 + bx + c$, and the line or the second parabola crosses it at two points $x_1 \lt x_2$. For a tilted parabola the $\frac43$ form still holds.
+
+## Why it works
+Archimedes filled the segment with triangles. Let the chord span the width $d = x_2 - x_1$, and let $T$ be the triangle with its third vertex $M$ above the midpoint. The parabola sits $\lvert a\rvert\left(\frac d2\right)^2$ away from the chord, measured vertically, at that midpoint, so $T = \frac12 \cdot d \cdot \frac{\lvert a\rvert d^2}{4} = \frac{\lvert a\rvert d^3}{8}$.
+
+{{figure:exhaust}}
+
+The two leftover pieces are segments of width $\frac d2$, so each new triangle has area $\frac{\lvert a\rvert (d/2)^3}{8} = \frac T8$, and the pair adds $\frac T4$. Repeating forever fills the segment with $$T\left(1 + \frac14 + \frac1{16} + \cdots\right) = \frac43 T = \frac{\lvert a\rvert d^3}{6}.$$
+
+## Useful observations
+- The area does not depend on where the chord sits or how it tilts, only on the leading coefficient and the width $x_2 - x_1$.
+- The width comes from the quadratic the line and parabola produce: if $x_1$ and $x_2$ are its roots, $x_2 - x_1 = \frac{\sqrt{\Delta}}{\lvert a\rvert}$, so the area is $\frac{\Delta^{3/2}}{6a^2}$.
+- The vertex of the inscribed triangle is where the tangent is parallel to the chord, at $x = \frac{x_1 + x_2}{2}$.
+
+## Applications
+Areas of regions bounded by a parabola and a line, or by two parabolas, without integration.
+
+## Contest profile
+AMC 12 and AIME area questions about regions cut from a parabola by a line, usually solved in one line once the crossing points are known.
+`,
+
+"triangle-congruence": String.raw`
+## Key forms
+- SSS — three pairs of equal sides
+- SAS — two pairs of equal sides and the equal angles between them
+- ASA — two pairs of equal angles and the equal sides between them
+- AAS — two pairs of equal angles and a pair of equal sides opposite one of them
+- HL — right triangles with equal hypotenuses and one pair of equal legs
+- SSA — two sides and an angle opposite one of them; this can fit two triangles, the ambiguous case
+- once two triangles are congruent, every pair of corresponding parts is equal
+
+## Conditions
+The matching parts must correspond: the equal angle in SAS must be the angle between the two equal sides, and in AAS the equal sides must sit opposite the same pair of equal angles.
+
+## Why it works
+Each criterion pins the triangle down completely. Two sides with a fixed angle between them fix the third vertex, so SAS works. Three sides fix every angle through the [[law-of-cosines|Law of Cosines]], so SSS works. A side with fixed angles at both ends gives two rays that meet at one point, which is ASA, and AAS reduces to ASA because the third angle is $180^\circ$ minus the other two. HL works because the [[pythagorean-theorem|Pythagorean Theorem]] fixes the third side, which makes it SSS.
+
+SSA fails because the side opposite the given angle can swing: a circle around the far end of the known side can cross the other ray of the angle twice.
+
+{{figure:ssa}}
+
+## Useful observations
+- SSA does determine the triangle when the side opposite the given angle is at least as long as the other given side, or when the given angle is right or obtuse.
+- The criteria for similar triangles mirror these: SSS and SAS with proportional sides, and AA, since two equal angles force the third.
+- Applying SAS or SSS to a triangle and its own mirror image proves that the base angles of an isosceles triangle are equal.
+
+## Applications
+Proving segments or angles equal, recognizing isosceles and symmetric figures, and deciding whether given data fix a triangle.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 foundation, usually used silently to show two lengths or angles are equal; the ambiguous case appears when a problem asks how many triangles fit the data.
+`,
+
+"parallel-exterior-angles": String.raw`
+## Key forms
+- corresponding angles are equal, and alternate interior angles are equal — for a transversal across two parallel lines
+- co-interior angles, on the same side between the lines, add up to $180^\circ$
+- each of these facts in reverse proves two lines parallel
+- $\angle A + \angle B + \angle C = 180^\circ$ — the angle sum of a triangle
+- $\angle ACD = \angle A + \angle B$ — the exterior angle at $C$, formed by extending $BC$ to $D$, equals the sum of the two remote interior angles
+
+## Conditions
+The parallel-line facts need the two lines to be parallel; the converses need only the angle relation.
+
+## Why it works
+Through $C$ draw the line parallel to $AB$. The angle between it and $CA$ equals $\angle A$, as alternate angles, and the angle between it and the extension $CD$ equals $\angle B$, as corresponding angles. Together these two angles fill the exterior angle $ACD$, so $\angle ACD = \angle A + \angle B$. Since $\angle ACD$ and $\angle ACB$ together make a straight angle, $\angle A + \angle B + \angle ACB = 180^\circ$.
+
+{{figure:zigzag}}
+
+## Useful observations
+- An exterior angle is larger than either remote interior angle.
+- The exterior angles of any polygon, one at each vertex, add up to $360^\circ$, the [[polygon-angle-sums|polygon angle sum]] in another form.
+- A zigzag between two parallel lines has its angles add up across: the angle at a bend equals the sum of the two angles it makes with the parallels.
+
+## Applications
+Finding unknown angles in figures with parallel lines and triangles, and proving lines parallel from angle information.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 foundation, the rules every angle chase is built from.
+`
 });

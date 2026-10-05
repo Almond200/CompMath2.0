@@ -2346,4 +2346,219 @@ A state with finitely many possible values must repeat within that many steps, b
 ## Contest profile
 Common on the AMC and AIME: a term numbered in the thousands, or the last digits of a large power, almost always reduces to six to twenty careful terms.
 `,
+
+"reduce-divisibility-constant": String.raw`
+## When to use
+Conditions such as "$n + 2$ divides $n^3 + 50$", "$\frac{n^2 + 7}{n - 1}$ is an integer", or "find $\gcd(n^2 + 3, n + 1)$". The same reduction finds the possible common factors of two consecutive values of a sequence, and shows that a polynomial with integer coefficients satisfies $a - b \mid P(a) - P(b)$, which rules out values such as $P(2) = 5$ with $P(7) = 8$.
+
+## How
+1. Identify the linear divisor $n + a$.
+2. Replace $n$ by $-a$ in the polynomial; the result $C = P(-a)$ is what remains after subtracting multiples of $n + a$.
+3. Conclude $n + a \mid C$, so $n + a$ is a divisor of $C$, positive or negative.
+4. List the divisors of $C$ in the allowed range, and convert each to a value of $n$.
+5. For a gcd, the same step gives $\gcd(P(n), n + a) = \gcd(C, n + a)$, a divisor of $C$; check which divisors actually occur.
+
+For $\gcd(n^2 + 3, n + 1)$: replacing $n$ by $-1$ leaves $4$, so the gcd divides $4$, and $n = 2, 1, 3$ give $1$, $2$, and $4$.
+
+## Why it works
+$P(n) - P(-a)$ is divisible by $n - (-a) = n + a$, because $n^k - (-a)^k$ is divisible by $n + a$ for every $k$. So $P(n)$ and $P(-a)$ leave the same remainder on division by $n + a$, and one is divisible by $n + a$ exactly when the other is.
+
+## Formulas it uses
+- [[factor-remainder-theorem]]: dividing $P(x)$ by $x - c$ leaves remainder $P(c)$, and for integers $a - b \mid P(a) - P(b)$, the fact behind the reduction.
+- [[euclidean-algorithm]]: $\gcd(P(n), n + a) = \gcd(P(-a), n + a)$ is one step of the Euclidean algorithm.
+- [[number-of-divisors]]: counts the values of $n$, one for each divisor of the constant in range.
+
+## Common traps
+- Forgetting negative divisors when $n$ may be negative or zero.
+- Keeping divisors that give $n$ outside the allowed range, such as $n + 2 = 1$ for positive $n$.
+- Reducing with the wrong sign: modulo $n + a$, $n$ behaves like $-a$, not $a$.
+
+## Contest profile
+AMC and AIME problems asking for all $n$ that make a polynomial quotient an integer, the largest such $n$, or the possible values of a gcd of two expressions in $n$.
+`,
+
+"subtract-equal-remainders": String.raw`
+## When to use
+"$701$, $1107$, and $1658$ leave the same remainder on division by $d$", or "$n$ leaves remainder $3$ when divided by $4$, $4$ when divided by $5$, and $5$ when divided by $6$". The same subtraction shows that a sequence with $a_{k+1} \equiv a_k$ has constant remainder, finds which modulus makes a congruence hold, and explains why $a \equiv b$ lets equal remainders be cancelled from both sides of an equation.
+
+## How
+1. If several numbers share an unknown remainder modulo an unknown $d$, subtract them in pairs; $d$ divides every difference.
+2. Compute the gcd of the differences with the Euclidean algorithm; the possible $d$ are its divisors larger than the remainder.
+3. If one number $n$ leaves remainders that are each $c$ less than the moduli, then $n + c$ is divisible by every modulus, hence by their lcm.
+4. If the remainders are all equal to $r$, then $n - r$ is a common multiple, the same step in the other direction.
+5. Find the remainder, or $n$, from the divisor or the lcm.
+
+For $n \equiv 3 \pmod 4$, $n \equiv 4 \pmod 5$, $n \equiv 5 \pmod 6$, each remainder is $1$ short of the modulus, so $60 = \operatorname{lcm}(4, 5, 6)$ divides $n + 1$, and the smallest such $n$ is $59$.
+
+## Why it works
+If $a = q_1d + r$ and $b = q_2d + r$, then $a - b = (q_1 - q_2)d$, so the remainder cancels and $d$ divides the difference. Conversely, if $d$ divides $a - b$, the two numbers have the same remainder. A number divisible by each of several moduli is divisible by their lcm, which handles a shared remainder for one number and many moduli.
+
+## Formulas it uses
+- [[euclidean-algorithm]]: computes the gcd of the differences quickly, by repeated subtraction.
+- [[gcd-lcm-product]]: relates gcd and lcm, used to find the lcm of the moduli.
+- [[crt]]: when the remainders are not all the same distance from the moduli, the Chinese Remainder Theorem is the general tool.
+
+## Common traps
+- Forgetting that $d$ must exceed the common remainder, which rules out small divisors of the gcd.
+- Taking the gcd of the numbers themselves instead of their differences.
+- Missing a remainder pattern written as "one less than the divisor", which is a shared remainder of $-1$.
+
+## Contest profile
+A MATHCOUNTS and AMC 10 favorite with numbers chosen to make differences share a large prime, and a quick first step in AIME remainder problems.
+`,
+
+"numeral-as-polynomial": String.raw`
+## When to use
+"In which base is $253_b$ twice $126_b$?", "$\overline{ab}_7 = \overline{ba}_9$", or "show that $121_b$ is a perfect square in every base". The same view explains divisibility tests in any base: since $b \equiv 1 \pmod{b - 1}$, a numeral is congruent to its digit sum modulo $b - 1$, and since $b \equiv -1 \pmod{b + 1}$, to its alternating digit sum modulo $b + 1$.
+
+## How
+1. Write each numeral as a polynomial in its base: $253_b = 2b^2 + 5b + 3$.
+2. Turn the condition into an equation or identity in $b$.
+3. Solve for $b$, or factor the polynomial; $121_b = b^2 + 2b + 1 = (b + 1)^2$.
+4. Keep only bases larger than every digit used, and check the answer by converting.
+
+The numeral $1111_b = b^3 + b^2 + b + 1 = (b + 1)(b^2 + 1)$, so it is never prime for $b \ge 2$.
+
+## Why it works
+Positional notation means exactly this polynomial: the digit in place $k$ counts copies of $b^k$. The polynomial in $b$ therefore has the numeral's value, and any algebra done on the polynomial is algebra on the number. The digit condition $0 \le a_i \lt b$ is what makes the representation valid and unique.
+
+## Formulas it uses
+- [[base-conversion]]: the expansion $\sum a_ib^i$ and the conversion back by repeated division.
+- [[factor-remainder-theorem]]: substituting $b = 1$ or $b = -1$ gives the remainder modulo $b - 1$ or $b + 1$, the digit sum or the alternating digit sum.
+- [[divisibility-rules]]: the base-ten tests for $9$ and $11$ are the cases $b - 1$ and $b + 1$ with $b = 10$.
+
+## Common traps
+- Accepting a base that is not larger than every digit, such as $b = 5$ for a numeral containing the digit $6$.
+- Forgetting that a leading digit cannot be $0$.
+- Mixing up which base belongs to which numeral when two bases appear.
+
+## Contest profile
+From MATHCOUNTS to the AIME: finding an unknown base from an equation between numerals, numbers whose digits reverse between two bases, and facts about numerals that hold in every base.
+`,
+
+"poly-divisible-linear": String.raw`
+## Distinguishing clues
+The unknown is an integer $n$, and it appears on both sides of a divisibility, with a linear expression on the divisor side. Questions ask for all such $n$, the largest one, or the possible values of a gcd. A divisibility with a fixed divisor, such as $7 \mid n^3 + 50$, is a congruence instead, settled by [[choose-modulus|checking residues]].
+
+## Methods and Formulas to Try
+Modulo $n + a$, every power of $n$ can be replaced by a power of $-a$, so the polynomial shrinks to a constant.
+
+### Methods to try
+- [[reduce-divisibility-constant]]: replace $n$ by $-a$ to get a constant $C$, so $n + a$ must be a divisor of $C$.
+- [[factor-pair-counting]]: once $n + a$ times an integer equals $C$, list the factor pairs of $C$ to find every $n$.
+
+### Formulas to try
+- [[factor-remainder-theorem]]: $P(n)$ leaves remainder $P(-a)$ on division by $n + a$.
+- [[euclidean-algorithm]]: $\gcd(P(n), n + a) = \gcd(P(-a), n + a)$.
+- [[number-of-divisors]]: counts the solutions, one for each divisor of $C$ in range.
+
+## Common traps
+- Missing negative divisors when $n$ ranges over all integers.
+- Not checking the range, so that $n + a$ equals a divisor smaller than its minimum value.
+- Dividing the polynomial carelessly when replacing $n$ by $-a$ gives the remainder at once.
+
+## Contest profile
+AMC and AIME problems asking for the largest or every integer $n$ that makes a polynomial quotient an integer, and for the values a gcd of two expressions in $n$ can take.
+`,
+
+"unknown-base": String.raw`
+## Distinguishing clues
+A subscript is a variable, or a number is described by its digits in two different bases. A plain conversion between two known bases is a routine computation, not this configuration, and a puzzle about base-ten digits with nothing unknown about the base belongs with the other [[digit-manipulation|digit problems]].
+
+## Methods and Formulas to Try
+Expanding the numeral turns the condition into an equation in the base and the digits, all small integers with known bounds.
+
+### Methods to try
+- [[numeral-as-polynomial]]: expand each numeral as a polynomial in its base and solve for the base.
+- [[bounding-diophantine]]: with digits and base both unknown, as in $\overline{ab}_7 = \overline{ba}_9$, the digit bounds leave a short check.
+
+### Formulas to try
+- [[base-conversion]]: the expansion in powers of the base, and conversion back.
+- [[divisibility-rules]]: in base $b$ a numeral is congruent to its digit sum modulo $b - 1$, which can fix a digit or rule out a base.
+
+## Common traps
+- Accepting a base that is not larger than every digit in the numeral.
+- Forgetting that the leading digit in each base must be nonzero.
+- Solving the polynomial for $b$ and missing a second positive root.
+
+## Contest profile
+MATHCOUNTS and AMC questions asking for an unknown base, and AIME problems in which a number's digits are related across two bases.
+`,
+
+"same-remainder": String.raw`
+## Distinguishing clues
+The word "same" is attached to a remainder, or the remainders are visibly the same distance from their divisors, such as each one less. Different, unrelated remainders for one number modulo several divisors call for the general [[crt|Chinese Remainder Theorem]] instead.
+
+## Methods and Formulas to Try
+Whatever the shared remainder is, subtracting two numbers that share it cancels it.
+
+### Methods to try
+- [[subtract-equal-remainders]]: the unknown divisor divides every difference of the given numbers, and an unknown number minus its shared remainder is a multiple of every divisor.
+
+### Formulas to try
+- [[euclidean-algorithm]]: finds the gcd of the differences, whose divisors are the candidates for the unknown divisor.
+- [[gcd-lcm-product]]: the lcm of the divisors, which the unknown number minus its remainder must be a multiple of.
+- [[crt]]: guarantees a solution, unique modulo the lcm, when the divisors are pairwise coprime.
+
+## Common traps
+- Taking the gcd of the numbers instead of their differences.
+- Allowing a divisor no larger than the remainder.
+- Missing that "one less than the divisor" is a shared remainder of $-1$.
+
+## Contest profile
+MATHCOUNTS and AMC 10 problems, often with numbers chosen so the differences share a large prime, and remainder conditions that are each one short of the divisor.
+`,
+
+"fundamental-theorem-arithmetic": String.raw`
+## Key forms
+- $n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}$ — every $n \ge 2$ factors into primes, and the primes and exponents are unique
+- there are infinitely many primes — no finite list contains them all
+- $m \mid n \iff$ every exponent of $m$ is at most the matching exponent of $n$
+- $n$ is a perfect $k$th power $\iff$ every exponent in its factorization is a multiple of $k$
+
+## Conditions
+Integers $n \ge 2$; the factorization is unique up to the order of the factors, and $1$ is the empty product.
+
+## Why it works
+Existence comes from taking the smallest integer with no prime factorization: it is not prime, so it splits as $ab$ with $1 \lt a, b \lt n$, and both $a$ and $b$ factor, so it does too.
+
+Uniqueness rests on [[euclids-lemma|Euclid's Lemma]]: a prime that divides a product divides one of the factors. If $p_1 p_2 \cdots = q_1 q_2 \cdots$ are two factorizations, $p_1$ divides the right side, so it divides some $q_j$, and since $q_j$ is prime, $p_1 = q_j$. Cancel the pair and repeat; the two lists match.
+
+Infinitely many primes: given any finite list $p_1, \ldots, p_k$ of primes, the number $N = p_1p_2 \cdots p_k + 1$ leaves remainder $1$ on division by each $p_i$, so its prime factors are not on the list.
+
+## Useful observations
+- The divisors of $n$ are the products $p_1^{a_1} \cdots p_k^{a_k}$ with $0 \le a_i \le e_i$, so $n$ has $(e_1 + 1)\cdots(e_k + 1)$ divisors, the [[number-of-divisors|divisor count]].
+- The gcd takes the smaller exponent of each prime and the lcm the larger one, which is why $\gcd(a, b) \cdot \operatorname{lcm}(a, b) = ab$.
+- Uniqueness is special to the integers: among numbers $a + b\sqrt{-5}$, $6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5})$ factors in two genuinely different ways.
+
+## Applications
+Divisors, gcds and lcms, perfect powers, and any question about the prime exponents of a number.
+
+## Contest profile
+The bedrock of number theory at every level; it is rarely named in a solution, but every argument about exponents of primes assumes it.
+`,
+
+"lagrange-roots-mod-p": String.raw`
+## Key forms
+- a polynomial of degree $d$, not identically $0$ modulo the prime $p$, has at most $d$ roots modulo $p$
+- $x^{p-1} - 1 \equiv (x - 1)(x - 2)\cdots(x - (p - 1)) \pmod p$ — both sides have the $p - 1$ roots $1, \ldots, p - 1$
+- $x^2 \equiv a \pmod p$ has at most $2$ solutions, and $x^k \equiv 1 \pmod p$ has at most $k$
+
+## Conditions
+The modulus must be prime. For a composite modulus the bound fails: $x^2 \equiv 1 \pmod 8$ has the four solutions $1$, $3$, $5$, and $7$.
+
+## Why it works
+Modulo a prime, a product is $0$ only when a factor is $0$, by [[euclids-lemma|Euclid's Lemma]], so the Factor Theorem works as it does for real numbers. If $r$ is a root of $f$, then $f(x) \equiv (x - r)g(x)$ with $\deg g = d - 1$. Any other root $s \not\equiv r$ makes $(s - r)g(s) \equiv 0$ with $s - r \not\equiv 0$, so $g(s) \equiv 0$. By induction on the degree, $g$ has at most $d - 1$ roots, so $f$ has at most $d$.
+
+## Useful observations
+- Comparing constant terms in $x^{p-1} - 1 \equiv (x - 1)\cdots(x - (p - 1))$ gives $(p - 1)! \equiv -1 \pmod p$, which is [[wilsons-theorem|Wilson's Theorem]].
+- Two polynomials of degree less than $p$ that agree at more points than their degree are congruent modulo $p$ coefficient by coefficient.
+- The bound is what makes [[primitive-roots|primitive roots]] exist: it limits how many residues can have each order.
+
+## Applications
+Counting solutions of polynomial congruences modulo a prime, and proofs of Wilson's Theorem and of the existence of primitive roots.
+
+## Contest profile
+An olympiad tool, usually the step that bounds the number of solutions of a congruence or proves two polynomials are congruent.
+`
 });

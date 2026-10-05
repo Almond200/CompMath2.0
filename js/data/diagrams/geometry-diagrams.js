@@ -4225,6 +4225,162 @@ DIAGRAMS["trig-ceva"] = [(() => {
   })()];
 
 
+  // ---- Tangent lines to conics ----
+  // Ellipse a = 150, b = 100 px. Tangent at P (eccentric angle 1.0) from xx0/a^2 + yy0/b^2 = 1,
+  // and the parallel tangent at the opposite point; both satisfy k^2 = a^2 m^2 + b^2.
+  DIAGRAMS["conic-tangent-lines"] = [(() => {
+    const O = [215, 165], a = 150, b = 100, t = 1.0;
+    const S = (x, y) => [O[0] + x, O[1] - y];
+    const x0 = a * Math.cos(t), y0 = b * Math.sin(t), m = -(b * b * x0) / (a * a * y0), k = y0 - m * x0;
+    const ok = Math.abs(x0 * x0 / (a * a) + y0 * y0 / (b * b) - 1) < 1e-9 && Math.abs(k * k - (a * a * m * m + b * b)) < 1e-6;
+    const line = (kk, x1, x2) => seg(S(x1, m * x1 + kk), S(x2, m * x2 + kk), ACC, 2);
+    return wrap(430, 330, [
+      `<ellipse cx="${O[0]}" cy="${O[1]}" rx="${a}" ry="${b}" fill="none" stroke="${DIM}" stroke-width="2"/>`,
+      seg(S(-200, 0), S(200, 0), FNT, 1.1, "5 4"), seg(S(0, -150), S(0, 150), FNT, 1.1, "5 4"),
+      line(k, -20, 205), line(-k, -205, 20),
+      dot(S(x0, y0), ACC, 4.5), dot(S(-x0, -y0), ACC, 4.5), dot(O, DIM, 3),
+      txt(add(S(x0, y0), [6, -10]), "P", ACC, 13, "start"), txt(add(S(-x0, -y0), [-6, 18]), "Q", ACC, 13, "end"),
+      cap(430, 330, "The tangent at P is xx₀/a² + yy₀/b² = 1. Its slope m has a second tangent, at the opposite point Q, and both lines y = mx ± k satisfy k² = a²m² + b², the condition for the line to meet the ellipse exactly once." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["conic-tangent-lines"] = {
+    // A line of slope m slid across the ellipse: two intersections, one (tangent), none.
+    double: (() => {
+      const O = [215, 160], a = 150, b = 95, m = -0.5;
+      const S = (x, y) => [O[0] + x, O[1] - y];
+      const kt = Math.sqrt(a * a * m * m + b * b);
+      const cut = (kk) => { const A = b * b + a * a * m * m, B = 2 * a * a * m * kk, C = a * a * (kk * kk - b * b); return B * B - 4 * A * C; };
+      const ok = cut(kt * 0.5) > 0 && Math.abs(cut(kt)) < 1e-3 && cut(kt * 1.45) < 0;
+      // each line is clipped to the canvas: y = mx + k stays between -150 and 150
+      const line = (kk, col, dash) => { const xs = Math.max(-205, (kk - 150) / -m); return seg(S(xs, m * xs + kk), S(205, m * 205 + kk), col, 2, dash); };
+      const lab = (kk, s, col, off) => txt(add(S(205, m * 205 + kk), off || [-2, -9]), s, col, 12, "end");
+      return wrap(430, 320, [
+        `<ellipse cx="${O[0]}" cy="${O[1]}" rx="${a}" ry="${b}" fill="none" stroke="${DIM}" stroke-width="2"/>`,
+        line(kt * 0.5, PUR, "6 4"), line(kt, ACC), line(kt * 1.45, FNT, "3 4"),
+        lab(kt * 0.5, "two points", PUR, [-2, 17]), lab(kt, "tangent", ACC, [-2, 17]), lab(kt * 1.45, "misses", FNT, [-2, 17]),
+        cap(430, 320, "Lines of one slope m slid across the ellipse meet it twice, then once, then not at all. Substituting y = mx + k gives a quadratic whose discriminant is a positive multiple of a²m² + b² − k², so the tangent is k² = a²m² + b²." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+  // ---- Parametric forms of conics ----
+  // Ellipse a = 150, b = 90 px with its auxiliary circle; Q = (a cos t, a sin t), P = (a cos t, b sin t).
+  DIAGRAMS["conic-parametric"] = [(() => {
+    const O = [215, 172], a = 150, b = 90, t = 0.95;
+    const S = (x, y) => [O[0] + x, O[1] - y];
+    const Q = S(a * Math.cos(t), a * Math.sin(t)), P = S(a * Math.cos(t), b * Math.sin(t)), X = S(a * Math.cos(t), 0);
+    const ok = Math.abs((a * Math.cos(t)) ** 2 / (a * a) + (b * Math.sin(t)) ** 2 / (b * b) - 1) < 1e-9 && Math.abs(Q[0] - P[0]) < 1e-9;
+    return wrap(430, 340, [
+      circ(O, a, FNT, 1.4, "none", "6 5"),
+      `<ellipse cx="${O[0]}" cy="${O[1]}" rx="${a}" ry="${b}" fill="none" stroke="${DIM}" stroke-width="2"/>`,
+      seg(S(-170, 0), S(170, 0), FNT, 1.1, "5 4"),
+      seg(O, Q, GLD, 2), seg(Q, X, PUR, 1.6, "4 4"),
+      angleArc(O, S(1, 0), Q, 26, GLD),
+      dot(O, DIM, 3), dot(Q, GLD, 4.5), dot(P, ACC, 4.5),
+      txt(add(Q, [6, -8]), "Q", GLD, 13, "start"), txt(add(P, [9, 4]), "P", ACC, 13, "start"),
+      txt(add(O, [36, -10]), "t", GLD, 13, "start"),
+      cap(430, 340, "Q = (a cos t, a sin t) runs around the circle of radius a, and P = (a cos t, b sin t) sits straight below it on the ellipse: squashing the circle by b/a carries Q to P, so t is the circle's angle." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["conic-parametric"] = {
+    eccentric: (() => {
+      // The squash: several circle points and their images on the ellipse, joined by vertical segments.
+      const O = [215, 170], a = 150, b = 80;
+      const S = (x, y) => [O[0] + x, O[1] - y];
+      const ts = [0.5, 1.1, 1.9, 2.6, 3.7, 4.4, 5.3];
+      let ok = true; const parts = [circ(O, a, FNT, 1.4, "none", "6 5"),
+        `<ellipse cx="${O[0]}" cy="${O[1]}" rx="${a}" ry="${b}" fill="none" stroke="${DIM}" stroke-width="2"/>`];
+      ts.forEach(t => {
+        const Q = S(a * Math.cos(t), a * Math.sin(t)), P = S(a * Math.cos(t), b * Math.sin(t));
+        if (Math.abs((P[1] - O[1]) / (Q[1] - O[1]) - b / a) > 1e-9) ok = false;
+        parts.push(seg(Q, P, PUR, 1.4, "4 4"), dot(Q, GLD, 3.5), dot(P, ACC, 3.5));
+      });
+      parts.push(cap(430, 340, "Each point of the circle of radius a moves straight toward the axis, its height multiplied by b/a, and lands on the ellipse. The parameter t of a point on the ellipse is the angle of its partner on the circle." + (ok ? "" : " MISMATCH")));
+      return wrap(430, 340, parts);
+    })()
+  };
+
+  // ---- Focal radii ----
+  // Ellipse a = 150, b = 120, c = 90 px (e = 0.6); P at x = -60: PF1 = a + ex = 114, PF2 = a - ex = 186.
+  DIAGRAMS["focal-radii"] = [(() => {
+    const O = [215, 170], a = 150, b = 120, c = 90, e = c / a, x = -60, y = b * Math.sqrt(1 - x * x / (a * a));
+    const S = (u, v) => [O[0] + u, O[1] - v];
+    const P = S(x, y), F1 = S(-c, 0), F2 = S(c, 0), X = S(x, 0);
+    const ok = Math.abs(dist(P, F1) - (a + e * x)) < 1e-6 && Math.abs(dist(P, F2) - (a - e * x)) < 1e-6;
+    return wrap(430, 330, [
+      `<ellipse cx="${O[0]}" cy="${O[1]}" rx="${a}" ry="${b}" fill="none" stroke="${DIM}" stroke-width="2"/>`,
+      seg(S(-170, 0), S(170, 0), FNT, 1.1, "5 4"),
+      seg(P, F1, ACC, 2.4), seg(P, F2, PUR, 2.4), seg(P, X, FNT, 1.4, "4 4"),
+      dot(F1, ORG, 4.5), dot(F2, ORG, 4.5), dot(P, DIM, 4.5), dot(O, DIM, 3),
+      txt(add(P, [0, -12]), "P", DIM, 13), txt(add(F1, [-4, 19]), "F₁", ORG, 12), txt(add(F2, [4, 19]), "F₂", ORG, 12),
+      txt(add(mid(P, F1), [-12, 0]), "a + ex", ACC, 12.5, "end"), txt(add(mid(P, F2), [12, -4]), "a − ex", PUR, 12.5, "start"),
+      txt(add(X, [0, 19]), "x", FNT, 12.5),
+      cap(430, 330, "Each focal radius is linear in the x-coordinate of P: a + ex to the left focus and a − ex to the right one, so they always add to 2a." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["focal-radii"] = {
+    radii: (() => {
+      // Focus-directrix view of the right focal radius: PF2 = e * (distance from P to the directrix x = a/e).
+      const O = [190, 170], a = 120, b = 96, c = 72, e = c / a, dx = a / e, x = 40, y = b * Math.sqrt(1 - x * x / (a * a));
+      const S = (u, v) => [O[0] + u, O[1] - v];
+      const P = S(x, y), F2 = S(c, 0), D = S(dx, y);
+      const ok = Math.abs(dist(P, F2) - e * dist(P, D)) < 1e-6;
+      return wrap(430, 330, [
+        `<ellipse cx="${O[0]}" cy="${O[1]}" rx="${a}" ry="${b}" fill="none" stroke="${DIM}" stroke-width="2"/>`,
+        seg(S(dx, -150), S(dx, 150), PNK, 2), seg(S(-140, 0), S(dx + 20, 0), FNT, 1.1, "5 4"),
+        seg(P, F2, PUR, 2.4), seg(P, D, ACC, 2, "6 4"),
+        dot(P, DIM, 4.5), dot(F2, ORG, 4.5), dot(D, ACC, 3.5),
+        txt(add(P, [-4, -12]), "P", DIM, 13), txt(add(F2, [0, 19]), "F₂", ORG, 12), txt(add(S(dx, -140), [-8, 0]), "x = a/e", PNK, 12, "end"),
+        txt(add(mid(P, D), [0, -10]), "a/e − x", ACC, 12), txt(add(mid(P, F2), [-10, 8]), "PF₂", PUR, 12, "end"),
+        cap(430, 330, "The distance to the focus is e times the distance to the directrix x = a/e, so PF₂ = e(a/e − x) = a − ex: the directrix is what makes the focal radius linear in x." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+  // ---- Area of a parabolic segment ----
+  // y = x^2 / 2 (k = 30 px per unit), chord from x = -2 to x = 3; the inscribed triangle's apex is at x = 0.5.
+  DIAGRAMS["parabolic-segment-area"] = [(() => {
+    const O = [200, 292], k = 30, f = x => x * x / 2, x1 = -2, x2 = 3, xm = (x1 + x2) / 2;
+    const S = (x, y) => [O[0] + k * x, O[1] - k * y];
+    const A = S(x1, f(x1)), B = S(x2, f(x2)), M = S(xm, f(xm)), slope = (f(x2) - f(x1)) / (x2 - x1);
+    const curve = []; for (let i = 0; i <= 60; i++) { const x = -3.3 + 7.2 * i / 60; curve.push(S(x, f(x))); }
+    const seg_pts = []; for (let i = 0; i <= 40; i++) { const x = x1 + (x2 - x1) * i / 40; seg_pts.push(S(x, f(x))); }
+    const d = x2 - x1, T = 0.5 * d * (f(xm) + slope * 0 - f(xm) + (f(x1) + slope * (xm - x1) - f(xm)));
+    const ok = Math.abs(xm - slope) < 1e-9 && Math.abs((4 / 3) * T - Math.abs(0.5) * d ** 3 / 6) < 1e-9;
+    const tan = x => f(xm) + slope * (x - xm);
+    return wrap(430, 310, [
+      poly(seg_pts.concat([B, A]).slice(0, -1), "none", 0, "rgba(91,140,255,0.10)"),
+      poly([A, M, B], GLD, 1.8, GLDS),
+      pline(curve, DIM, 2.4), seg(A, B, ACC, 2.2),
+      seg(S(xm - 2.6, tan(xm - 2.6)), S(xm + 2.6, tan(xm + 2.6)), FNT, 1.4, "6 4"),
+      seg(S(-3.6, 0), S(4.2, 0), FNT, 1.1, "5 4"),
+      dot(A, ACC, 4), dot(B, ACC, 4), dot(M, GLD, 4),
+      txt(add(A, [-8, -6]), "A", ACC, 13, "end"), txt(add(B, [8, -6]), "B", ACC, 13, "start"), txt(add(M, [0, 18]), "M", GLD, 13),
+      cap(430, 310, "The chord AB cuts off a segment of the parabola. Its area is 4/3 of triangle AMB, whose vertex M is where the tangent (dashed) is parallel to AB, above the midpoint of the chord's x-interval." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["parabolic-segment-area"] = {
+    exhaust: (() => {
+      // Archimedes' first two steps: triangle T, then two triangles of area T/8 each.
+      const O = [200, 292], k = 30, f = x => x * x / 2, x1 = -2, x2 = 3;
+      const S = (x, y) => [O[0] + k * x, O[1] - k * y];
+      const P = x => S(x, f(x));
+      const area = (u, v, w) => Math.abs((u[0] * (v[1] - w[1]) + v[0] * (w[1] - u[1]) + w[0] * (u[1] - v[1])) / 2);
+      const m = (x1 + x2) / 2, mL = (x1 + m) / 2, mR = (m + x2) / 2;
+      const T = area(P(x1), P(m), P(x2)), tL = area(P(x1), P(mL), P(m)), tR = area(P(m), P(mR), P(x2));
+      const ok = Math.abs(tL - T / 8) < 1e-6 && Math.abs(tR - T / 8) < 1e-6;
+      const curve = []; for (let i = 0; i <= 60; i++) { const x = -3.3 + 7.2 * i / 60; curve.push(S(x, f(x))); }
+      return wrap(430, 310, [
+        poly([P(x1), P(m), P(x2)], GLD, 1.6, GLDS),
+        poly([P(x1), P(mL), P(m)], PUR, 1.4, "rgba(155,93,229,0.14)"), poly([P(m), P(mR), P(x2)], PUR, 1.4, "rgba(155,93,229,0.14)"),
+        pline(curve, DIM, 2.4), seg(P(x1), P(x2), ACC, 2),
+        txt(add(S(m, (f(x1) + f(x2)) / 2), [0, 16]), "T", GLD, 13),
+        txt(add(P(mL), [-14, -4]), "T/8", PUR, 12, "end"), txt(add(P(mR), [14, -4]), "T/8", PUR, 12, "start"),
+        cap(430, 310, "After the first triangle T, each leftover piece is a segment of half the width, whose triangle has area T/8. The pieces keep halving, so the segment's area is T(1 + 1/4 + 1/16 + ⋯) = 4T/3." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
   // ---------- Conics ----------
   // Every conic below is plotted from its own equation at a stated scale, so the
   // foci, vertices and asymptotes land where the algebra puts them rather than
@@ -7757,5 +7913,109 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 330, "The three faces of the cube that avoid the top corner (blue, gold, purple) are the bases of three congruent pyramids with that corner as apex. They fill the cube, so each has a third of its volume, which is the pyramid formula ⅓ · base · height in disguise." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+
+  // ---- Basic facts about trees ----
+  // 10 vertices: four of degree 3 in a path, six leaves; 9 edges.
+  DIAGRAMS["tree-basics"] = [(() => {
+    const I = [[95, 160], [180, 160], [260, 160], [345, 160]];
+    const L = [[45, 100], [45, 220], [180, 80], [260, 240], [395, 100], [395, 220]];
+    const E = [[I[0], I[1]], [I[1], I[2]], [I[2], I[3]], [I[0], L[0]], [I[0], L[1]], [I[1], L[2]], [I[2], L[3]], [I[3], L[4]], [I[3], L[5]]];
+    const deg = p => E.filter(e => e[0] === p || e[1] === p).length;
+    const ok = E.length === I.length + L.length - 1 && I.every(p => deg(p) === 3) && L.every(p => deg(p) === 1);
+    return wrap(430, 290, [
+      ...E.map(e => seg(e[0], e[1], DIM, 2)),
+      ...I.map(p => dot(p, ACC, 6)), ...L.map(p => dot(p, GLD, 5)),
+      txt([215, 272], "4 vertices of degree 3 (blue), 6 leaves (gold), 9 edges", DIM, 12),
+      cap(430, 290, "A tree with 10 vertices has 9 edges, so its degrees add up to 18; with every degree 1 or 3, that forces six leaves." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["tree-basics"] = {
+    // A longest path (blue) ends at leaves; pruning a leaf removes one vertex and one edge.
+    leaves: (() => {
+      const V = { a: [60, 170], b: [140, 170], c: [220, 170], d: [300, 170], e: [380, 170], f: [140, 90], g: [220, 250], h: [300, 90] };
+      const E = [["a", "b"], ["b", "c"], ["c", "d"], ["d", "e"], ["b", "f"], ["c", "g"], ["d", "h"]];
+      const path = ["a", "b", "c", "d", "e"];
+      const onPath = (u, v) => { const i = path.indexOf(u), j = path.indexOf(v); return i >= 0 && j >= 0 && Math.abs(i - j) === 1; };
+      const deg = x => E.filter(e => e.includes(x)).length;
+      const ok = E.length === Object.keys(V).length - 1 && deg("a") === 1 && deg("e") === 1;
+      return wrap(430, 290, [
+        ...E.map(([u, v]) => seg(V[u], V[v], onPath(u, v) ? ACC : DIM, onPath(u, v) ? 3 : 2)),
+        ...Object.keys(V).map(k => dot(V[k], deg(k) === 1 ? GLD : DIM, 5)),
+        txt(add(V.a, [0, 22]), "leaf", GLD, 12), txt(add(V.e, [0, 22]), "leaf", GLD, 12),
+        cap(430, 290, "The ends of a longest path (blue) are leaves, since another neighbor would extend the path or close a cycle. Removing a leaf takes away one vertex and one edge, which is why edges are always one fewer than vertices." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+  // ---- Triangle congruence criteria ----
+  DIAGRAMS["triangle-congruence"] = [(() => {
+    // Two congruent triangles by SAS: equal sides marked with ticks, the included angle with an arc.
+    const A = [40, 220], B = [170, 220], C = [70, 110], D = [250, 220], E = [380, 220], F = [280, 110];
+    const ok = Math.abs(dist(A, B) - dist(D, E)) < 1e-9 && Math.abs(dist(A, C) - dist(D, F)) < 1e-9 && Math.abs(angDeg(A, B, C) - angDeg(D, E, F)) < 1e-9;
+    const tick = (P, Q, n, c) => { const M = mid(P, Q), u = norm(sub(Q, P)), v = [-u[1], u[0]]; let out = ""; for (let i = 0; i < n; i++) { const o = (i - (n - 1) / 2) * 5; const c0 = add(M, mul(u, o)); out += seg(add(c0, mul(v, 6)), add(c0, mul(v, -6)), c, 1.8); } return out; };
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2, ACCS), poly([D, E, F], DIM, 2, ACCS),
+      tick(A, B, 1, ACC), tick(D, E, 1, ACC), tick(A, C, 2, ACC), tick(D, F, 2, ACC),
+      angleArc(A, B, C, 22, GLD), angleArc(D, E, F, 22, GLD),
+      txt(add(A, [-8, 16]), "A", DIM, 13), txt(add(B, [8, 16]), "B", DIM, 13), txt(add(C, [-8, -8]), "C", DIM, 13),
+      txt(add(D, [-8, 16]), "D", DIM, 13), txt(add(E, [8, 16]), "E", DIM, 13), txt(add(F, [-8, -8]), "F", DIM, 13),
+      cap(430, 270, "SAS: AB = DE (one tick), AC = DF (two ticks), and the angles between them at A and D are equal, so the triangles are congruent and BC = EF." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["triangle-congruence"] = {
+    // SSA: AB = 10, AC = 6, angle B = 30 degrees fits two triangles (k = 20 px per unit).
+    ssa: (() => {
+      const k = 20, B = [40, 245], A = add(B, [10 * k * Math.cos(Math.PI / 6), -10 * k * Math.sin(Math.PI / 6)]);
+      const h = Math.sqrt((6 * k) ** 2 - (A[1] - B[1]) ** 2), C1 = [A[0] - h, B[1]], C2 = [A[0] + h, B[1]];
+      const ok = Math.abs(dist(A, C1) - 6 * k) < 1e-9 && Math.abs(dist(A, C2) - 6 * k) < 1e-9 && Math.abs(dist(B, C2) / k - (5 * Math.sqrt(3) + Math.sqrt(11))) < 1e-9;
+      return wrap(430, 290, [
+        circ(A, 6 * k, FNT, 1.3, "none", "5 5"),
+        seg(B, [415, B[1]], DIM, 1.6), seg(B, A, DIM, 2.2), seg(A, C1, PUR, 2.2), seg(A, C2, ACC, 2.2),
+        angleArc(B, [100, B[1]], A, 34, GLD),
+        dot(A, DIM, 4), dot(B, DIM, 4), dot(C1, PUR, 4), dot(C2, ACC, 4),
+        txt(add(A, [0, -12]), "A", DIM, 13), txt(add(B, [-8, 16]), "B", DIM, 13), txt(add(C1, [0, 19]), "C₁", PUR, 13), txt(add(C2, [0, 19]), "C₂", ACC, 13),
+        txt(add(mid(B, A), [-6, -10]), "10", DIM, 12.5, "end"), txt(add(mid(A, C1), [-10, 0]), "6", PUR, 12.5, "end"), txt(add(mid(A, C2), [10, 0]), "6", ACC, 12.5, "start"),
+        txt(add(B, [44, -6]), "30°", GLD, 12, "start"),
+        cap(430, 290, "SSA is ambiguous: with AB = 10 and the 30° angle at B fixed, the side AC = 6 can swing to either C₁ or C₂, because the circle of radius 6 around A crosses the base line twice." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+  // ---- Parallel lines and the exterior angle theorem ----
+  DIAGRAMS["parallel-exterior-angles"] = [(() => {
+    // Triangle ABC, BC extended to D, and the parallel to AB through C splitting the exterior angle.
+    const B = [50, 230], C = [250, 230], A = [140, 70], D = [400, 230];
+    const u = norm(sub(A, B)), P1 = add(C, mul(u, 150)), P0 = add(C, mul(u, -40));
+    const ok = Math.abs(angDeg(C, A, D) - (angDeg(A, B, C) + angDeg(B, A, C))) < 1e-9
+      && Math.abs(angDeg(C, A, P1) - angDeg(A, B, C)) < 1e-9 && Math.abs(angDeg(C, P1, D) - angDeg(B, A, C)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2, ACCS), seg(C, D, DIM, 2), seg(P0, P1, FNT, 1.6, "6 4"),
+      angleArc(A, B, C, 24, GLD), angleArc(B, A, C, 26, ACC),
+      angleArc(C, A, P1, 30, GLD), angleArc(C, P1, D, 30, ACC),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, DIM, 3.5),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-8, 16]), "B", DIM, 13), txt(add(C, [-4, 18]), "C", DIM, 13), txt(add(D, [0, 18]), "D", DIM, 13),
+      cap(430, 270, "The dashed line through C is parallel to AB. It splits the exterior angle ACD into a copy of angle A (gold, alternate angles) and a copy of angle B (blue, corresponding angles), so the exterior angle equals A + B." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["parallel-exterior-angles"] = {
+    // The zigzag from the example: AP makes 40 degrees with l, BP makes 65 degrees with m, angle APB = 105 degrees.
+    zigzag: (() => {
+      const yl = 70, ym = 240, A = [90, yl], B = [110, ym];
+      const dA = [Math.cos(40 * Math.PI / 180), Math.sin(40 * Math.PI / 180)], dB = [Math.cos(65 * Math.PI / 180), -Math.sin(65 * Math.PI / 180)];
+      const P = lineInt(A, add(A, dA), B, add(B, dB));
+      const ok = Math.abs(angDeg(P, A, B) - 105) < 1e-6 && P[1] > yl && P[1] < ym;
+      return wrap(430, 300, [
+        seg([30, yl], [410, yl], DIM, 2), seg([30, ym], [410, ym], DIM, 2), seg([30, P[1]], [410, P[1]], FNT, 1.6, "6 4"),
+        seg(A, P, ACC, 2.2), seg(B, P, PUR, 2.2),
+        angleArc(A, [200, yl], P, 30, GLD), angleArc(B, [220, ym], P, 30, GLD),
+        angleArc(P, A, [30, P[1]], 22, GLD), angleArc(P, [30, P[1]], B, 28, ORG),
+        dot(A, DIM, 4), dot(B, DIM, 4), dot(P, DIM, 4),
+        txt(add(A, [-6, -10]), "A", DIM, 13, "end"), txt(add(B, [-6, 18]), "B", DIM, 13, "end"), txt(add(P, [10, -8]), "P", DIM, 13, "start"),
+        txt([400, yl - 10], "ℓ", DIM, 14, "end"), txt([400, ym - 10], "m", DIM, 14, "end"), txt([400, P[1] - 10], "n", FNT, 14, "end"),
+        txt(add(A, [36, 18]), "40°", GLD, 12, "start"), txt(add(B, [30, -14]), "65°", GLD, 12, "start"),
+        cap(430, 300, "A line n through P parallel to ℓ and m splits angle APB into a copy of the 40° angle at A and a copy of the 65° angle at B (alternate angles), so angle APB = 105°." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
 
 })();

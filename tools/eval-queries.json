@@ -147,7 +147,7 @@
   ["what is the fastest way to count arrangements with repeated letters", "multiset-permutations", "hard"],
   ["i need the formula for the sum of the interior angles of a polygon", "polygon-angle-sums", "hard"],
   ["formula relating inradius circumradius and the distance between centers", ["euler-distance-theorem", "center-distance-formulas"], "hard"],
-  ["technique where you set two variables to their sum and product", "sp-substitution", "hard"],
+  ["technique where you set two variables to their sum and product", "symmetric-polynomial-strategies", "hard"],
   ["trick for when a polynomial has palindromic coefficients", "palindromic-polynomials", "hard"],
   ["length of segment in triangle from one vertex to opposite side", "stewarts-theorem", "hard"],
   ["cevian length", "stewarts-theorem", "jargon"],

@@ -452,11 +452,6 @@
       "batch": "12"
     },
     {
-      "id": "sp-substitution",
-      "date": "2026-09-25",
-      "batch": "12"
-    },
-    {
       "id": "uniform-overcount",
       "date": "2026-09-25",
       "batch": "12"
@@ -1142,7 +1137,6 @@
     "weierstrass-substitution": "method",
     "trig-substitution": "method",
     "functional-substitution": "method",
-    "sp-substitution": "method",
     "normalization": "method",
     "sfft": "method",
     "completing-the-square": "method",
@@ -1324,7 +1318,41 @@
     "infinite-descent": "method",
     "proof-by-construction": "method",
     "pigeonhole-argument": "method",
-    "discrete-intermediate-value": "method"
+    "discrete-intermediate-value": "method",
+    "substitute-repeated-block": "method",
+    "averages-to-totals": "method",
+    "repeated-block-equation": "pattern",
+    "averages-before-after": "pattern",
+    "take-logs-linearize": "method",
+    "polar-form": "method",
+    "log-system": "pattern",
+    "complex-modulus-argument": "pattern",
+    "name-the-floor": "method",
+    "group-equal-floors": "method",
+    "floor-sum-range": "pattern",
+    "floor-equation": "pattern",
+    "reduce-divisibility-constant": "method",
+    "subtract-equal-remainders": "method",
+    "numeral-as-polynomial": "method",
+    "poly-divisible-linear": "pattern",
+    "unknown-base": "pattern",
+    "same-remainder": "pattern",
+    "monovariant": "method",
+    "conic-tangent-lines": "formula",
+    "conic-parametric": "formula",
+    "focal-radii": "formula",
+    "parabolic-segment-area": "formula",
+    "mean-median-mode": "formula",
+    "percent-change": "formula",
+    "fundamental-theorem-arithmetic": "formula",
+    "lagrange-roots-mod-p": "formula",
+    "quadratic-forms": "formula",
+    "tree-basics": "formula",
+    "triangle-congruence": "formula",
+    "parallel-exterior-angles": "formula",
+    "matrix-inverse": "formula",
+    "cayley-hamilton": "formula",
+    "vandermonde-determinant": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -2541,6 +2569,108 @@
       ]
     ],
     "triangle-type-by-sides": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "invariants-coloring": [
+      [
+        "monovariant half (box line, When to use, How step 5, Why, trap)",
+        "moved -> monovariant (split 2026-10-04)"
+      ]
+    ],
+    "sp-substitution": [
+      [
+        "whole card (box, When to use, How, Why, Formulas it uses, Common traps, example)",
+        "moved -> symmetric-polynomial-strategies (merged 2026-10-04)"
+      ]
+    ],
+    "conic-tangent-lines": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "conic-parametric": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "focal-radii": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "parabolic-segment-area": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "mean-median-mode": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "percent-change": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "fundamental-theorem-arithmetic": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "lagrange-roots-mod-p": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "quadratic-forms": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "tree-basics": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "triangle-congruence": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "parallel-exterior-angles": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "matrix-inverse": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "cayley-hamilton": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "vandermonde-determinant": [
       [
         "(new card)",
         "written directly in the formula template"

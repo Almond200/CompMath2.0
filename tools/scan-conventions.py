@@ -811,7 +811,20 @@ print("  card text with a literal escaped quote: %d  (must stay 0)" % len(_esc_q
 for _x in _esc_q[:8]:
     print("    %s: %s" % _x)
 
-bad = bool(_esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
+# A legacy practice question (MATH_PROBLEMS) must not repeat the card's worked example: the
+# page lists both, and a repeat reads as two copies of one problem. Pairs read and kept on
+# purpose, because the practice question exercises a different aspect, are listed here.
+_REPEAT_OK = {"angle-bisector-theorem", "cyclic-opposite-angles", "medial-triangle", "resultant-discriminant"}
+_rr = _sp.run([_jsc, "tools/check-example-repeats.js"], capture_output=True, text=True)
+_repeats = [_js.loads(l) for l in _rr.stdout.splitlines() if l.startswith("{")]
+_repeats = [r for r in _repeats if r["id"] not in _REPEAT_OK]
+if _rr.returncode != 0:
+    print("  EXAMPLE FILES FAILED TO EVALUATE: %s" % _rr.stderr.strip()[:200]); _repeats.append({"id": "(load error)", "j": 0, "q": ""})
+print("  legacy practice question repeating the card's example: %d  (must stay 0)" % len(_repeats))
+for _x in _repeats[:8]:
+    print("    %s (overlap %.2f): %s" % (_x["id"], _x["j"], _x["q"]))
+
+bad = bool(_repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
            or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))

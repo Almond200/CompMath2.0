@@ -1703,9 +1703,6 @@
       "& uvw / pqr",
       "SOS Method"
     ],
-    "sp-substitution": [
-      "Symmetric Substitution"
-    ],
     "space-diagonal": [
       "Space Diagonal of a Rectangular Prism"
     ],
@@ -1804,7 +1801,8 @@
       "Symmedians"
     ],
     "symmetric-polynomial-strategies": [
-      "Fundamental Theorem of Symmetric Polynomials"
+      "Fundamental Theorem of Symmetric Polynomials",
+      "Symmetric Substitution"
     ],
     "symmetry-probability": [
       "Symmetry Arguments"

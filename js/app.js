@@ -577,7 +577,8 @@
     { id: "complex-numbers", label: "complex numbers", sec: ["algebra"], re: /complex|imaginary|argand|de moivre|root of unity|roots of unity|conjugate|\bcis\b/ },
     { id: "trigonometry", label: "trigonometry", re: /trig|sine|cosine|tangent ratio|angle addition|double angle|half angle|product.to.sum|sum.to.product|law of (sines|cosines)|\bsin\b|\bcos\b|\btan\b|pythagorean identity|common-angle/ },
     { id: "radicals", label: "radicals", sec: ["algebra"], re: /radical|square root|denest|\bsurd\b|nested radical/ },
-    { id: "rates", label: "rates & work", sec: ["algebra"], re: /\brate\b|work rate|mixture|\bspeed\b|average speed/ },
+    { id: "rates", label: "rates & work", sec: ["algebra"], re: /\brate\b|work rate|mixture|\bspeed\b|average speed|weighted average/ },
+    { id: "statistics", label: "statistics & percents", sec: ["algebra"], re: /statistic|\bmedian\b|\bmode\b|percent/ },
     { id: "functions", label: "functions", sec: ["algebra"], re: /functional equation|\bfunction\b|composition|involution/ },
     // Number Theory
     { id: "primes", label: "primes", sec: ["number-theory"], re: /prime|factoriz|sieve|valuation|legendre|factorial|wilson/ },
@@ -1295,9 +1296,13 @@
     else location.hash = h;
   }
 
+  // A card merged into another keeps working at its old address, so bookmarks and shared
+  // links land on the card that absorbed it.
+  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies" };
   function getRoute() {
     let m = location.hash.match(/^#\/f\/([\w-]+)$/);
     if (m && BY_ID[m[1]]) return { type: "formula", entry: BY_ID[m[1]] };
+    if (m && BY_ID[MERGED_IDS[m[1]]]) return { type: "formula", entry: BY_ID[MERGED_IDS[m[1]]] };
     m = location.hash.match(/^#\/list\/([\w-]+)$/);
     if (m && anyList(m[1])) return { type: "list", listId: m[1] };
     if (/^#\/lists$/.test(location.hash)) return { type: "lists" };
@@ -3686,7 +3691,9 @@
   // page can never scroll up to the marking line, so without this a click on "Examples" or
   // "Tags" near the bottom left an earlier section marked.
   let tocPinned = null;
-  const unpinToc = () => { if (tocPinned) { tocPinned = null; markToc(); } };
+  // True right after a group link is clicked, until the reader scrolls by hand (markNavGroup).
+  let groupPinned = false;
+  const unpinToc = () => { groupPinned = false; if (tocPinned) { tocPinned = null; markToc(); } };
   window.addEventListener("wheel", unpinToc, { passive: true });
   window.addEventListener("touchmove", unpinToc, { passive: true });
   window.addEventListener("keydown", e => { if (/^(Arrow(Up|Down)|Page(Up|Down)|Home|End| )$/.test(e.key)) unpinToc(); });
@@ -3732,8 +3739,35 @@
     const panel = e.target.closest && e.target.closest(".hp-click");
     if (panel && e.target === panel && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); location.hash = panel.dataset.open; }
   });
+  // A Methods or Patterns subject page lists every group, and a group link only scrolls to its
+  // heading, so the sidebar must follow the scroll: the group whose heading has passed under the
+  // top bar is the one marked. The address follows too, through replaceState, so a refresh or a
+  // Back to this page returns to the same group without adding history entries.
+  function markNavGroup() {
+    if (getRoute().type !== "home" || state.landing || state.query.trim() || state.adv) return;
+    const sec = SECTIONS.find(x => x.id === state.activeSectionId);
+    if (!sec || !bySubject(sec) || state.activeSub == null) return;
+    const groups = [...document.querySelectorAll('section.grp[id^="grp-' + sec.id + '-' + state.activeSub + '-"]')];
+    if (!groups.length) return;
+    const bar = document.querySelector(".topbar");
+    const line = (bar ? bar.offsetHeight : 0) + 24;
+    let cur = null;
+    groups.forEach(g => { if (g.getBoundingClientRect().top <= line) cur = +g.id.split("-").pop(); });
+    // At the very bottom the last groups can never reach the line. Keep a group the reader chose
+    // while its heading is still on screen; otherwise mark the last group.
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      const chosen = groups.find(g => +g.id.split("-").pop() === state.activeCluster);
+      if (groupPinned && chosen && chosen.getBoundingClientRect().top < window.innerHeight) return;
+      cur = +groups[groups.length - 1].id.split("-").pop();
+    }
+    if (cur === state.activeCluster) return;
+    state.activeCluster = cur;
+    updateNavActive();
+    const want = sectionHash(sec.id, { sub: state.activeSub, cluster: cur });
+    if (location.hash !== want) history.replaceState(history.state, "", want);
+  }
   let tocTick = 0;
-  window.addEventListener("scroll", () => { if (!tocTick) tocTick = requestAnimationFrame(() => { tocTick = 0; markToc(); }); }, { passive: true });
+  window.addEventListener("scroll", () => { if (!tocTick) tocTick = requestAnimationFrame(() => { tocTick = 0; markToc(); markNavGroup(); }); }, { passive: true });
 
   // Replace the browser's default (light) number-input spinner with themed ▲▼ arrows
   // that sit inside the field, so they match the dark UI instead of standing out.
@@ -5806,6 +5840,7 @@
         clearSearch();
         const linkSec = SECTIONS.find(x => x.id === link.dataset.section);
         const cl = link.dataset.cluster === undefined ? null : +link.dataset.cluster;
+        groupPinned = cl != null;
         goHash(bySubject(linkSec)
           ? sectionHash(linkSec.id, { sub: +link.dataset.sub, cluster: cl })
           : sectionHash(linkSec.id, { topic: +link.dataset.sub }));

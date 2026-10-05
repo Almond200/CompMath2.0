@@ -23,7 +23,6 @@
 
   // ---------- Linear recurrences (absorbed from the merged method card) ----------
   add("linear-recurrence",
-    { q: String.raw`Solve $a_n = 5a_{n-1} - 6a_{n-2}$ with $a_0 = 3$, $a_1 = 8$.`, s: String.raw`Characteristic equation $x^2 = 5x - 6$ gives $x = 2, 3$, so $a_n = A \cdot 2^n + B \cdot 3^n$. From $A + B = 3$ and $2A + 3B = 8$: $B = 2$, $A = 1$. Thus $a_n = 2^n + 2 \cdot 3^n$ (check $a_2 = 4 + 18 = 22 = 5 \cdot 8 - 6 \cdot 3$ ✓).` },
     { q: String.raw`Solve $a_n = 4a_{n-1} - 4a_{n-2}$ with $a_0 = 1$, $a_1 = 6$.`,
       s: String.raw`The characteristic equation $x^2 - 4x + 4 = 0$ has the repeated root $x = 2$, so the general solution is $a_n = (A + Bn)2^n$. From $a_0 = A = 1$ and $a_1 = (1+B)\cdot 2 = 6$ we get $B = 2$, giving $a_n = (1 + 2n)2^n$. Check: $a_2 = 5\cdot4 = 20 = 4\cdot6 - 4\cdot1$ ✓ — the $n$ factor is what a repeated root always contributes.` },
     { q: String.raw`Solve the non-homogeneous recurrence $a_n = 3a_{n-1} + 2^n$ with $a_0 = 1$.`,
@@ -115,10 +114,6 @@
   add("harmonic-bundle",
     { q: String.raw`On a line, $A=0$, $B=12$, $C=8$. Find the point $D$ with $(A,B;C,D)=-1$.`,
       s: String.raw`$C$ divides $AB$ internally in ratio $AC:CB=8:4=2:1$, so the harmonic conjugate $D$ divides $AB$ externally in $2:1$: $D=24$. (Check the signed cross-ratio: $\frac{AC}{BC}\big/\frac{AD}{BD}=\frac{8}{-4}\big/\frac{24}{12}=-1$.)` }
-  );
-  add("inversion-properties",
-    { q: String.raw`Inversion has center $O$ and radius $r=6$. Points $P,Q$ satisfy $OP=4$, $OQ=9$, $PQ=7$. Find $P^*Q^*$.`,
-      s: String.raw`$P^*Q^*=\frac{r^2\,PQ}{OP\cdot OQ}=\frac{36\cdot 7}{4\cdot 9}=\frac{252}{36}=\mathbf{7}$ (clean because $OP\cdot OQ=36=r^2$).` }
   );
 
   // ---------- Number theory ----------

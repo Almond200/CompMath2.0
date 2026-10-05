@@ -185,7 +185,7 @@ Synthetic division tests a candidate and divides at the same time. Try the small
 The monic case also proves irrationality. The only candidates for $x^2 - 2$ are $\pm1$ and $\pm2$, and none is a root, so $\sqrt2$ is irrational.
 
 ## On contests
-Three problems here, all AIME, none solved by it alone: it usually factors a cubic that another method has produced, such as the equation a [[sp-substitution|symmetric substitution]] reduces a system to, or the equation for the ratio of a geometric series. Try the candidates with small denominators first, since contest cubics are built to have a rational root.`,
+Three problems here, all AIME, none solved by it alone: it usually factors a cubic that another method has produced, such as the equation a [[symmetric-polynomial-strategies|symmetric substitution]] reduces a system to, or the equation for the ratio of a geometric series. Try the candidates with small denominators first, since contest cubics are built to have a rational root.`,
 
 "coefficient-extraction": String.raw`
 ## Why it works
@@ -459,25 +459,28 @@ An occasional AIME question asks directly for the largest coefficient or most li
 ## When to use
 Equations such as $xy - 2x + 3y = 20$, $\frac1x + \frac1y = \frac1n$ after clearing denominators, $3xy + 5x + 2y = 40$ after multiplying by the coefficient of $xy$, and conditions such as a rectangle's area equaling its perimeter. The signal is two unknown integers, their product, and a multiple of each.
 
+The same completion factors $xy + ax + by$ wherever it appears, not only in integer equations: it shows that $xy - x - y + 1 = (x - 1)(y - 1)$ is positive when $x, y \gt 1$, and it splits a sum over pairs into a product of two sums.
+
 ## How
-1. Collect the terms as $xy + ax + by = c$; if $xy$ has a coefficient $k$, multiply the equation by $k$ first.
+1. Collect the terms as $xy + ax + by = c$.
 2. Add $ab$ to both sides: $(x + b)(y + a) = c + ab$.
-3. List the factor pairs of $c + ab$, including negative pairs when the unknowns may be negative.
-4. Convert each pair back, and keep the solutions that satisfy every condition.
+3. If $xy$ has a coefficient $k$, as in $kxy + ax + by = c$, multiply the whole equation by $k$ first; then adding $ab$ gives $(kx + b)(ky + a) = kc + ab$.
+4. List the factor pairs of the constant, including negative pairs when the unknowns may be negative.
+5. Convert each pair back, and keep the solutions that satisfy every condition.
 
 Which rectangles with whole-number sides have area equal to perimeter? From $xy = 2x + 2y$, adding $4$ gives $(x - 2)(y - 2) = 4$. The positive factor pairs $1 \cdot 4$, $2 \cdot 2$, $4 \cdot 1$ give $3 \times 6$, $4 \times 4$ and $6 \times 3$, while the negative pairs give a side that is not positive. So the rectangles are $3 \times 6$ and $4 \times 4$.
 
 ## Why it works
 Expanding $(x + b)(y + a) = xy + ax + by + ab$ shows that the left side of $xy + ax + by = c$ is this product without its constant term, so adding $ab$ to both sides completes it. With integer unknowns, $x + b$ and $y + a$ are integers whose product is the known number $c + ab$, so they are a factor pair, and each factor pair gives back exactly one solution.
 
-When $xy$ has a coefficient $k$, multiplying by $k$ gives $(kx + b)(ky + a) = kc + ab$, the same shape. The figure shows the identity as a rectangle cut into four pieces.
+When $xy$ has a coefficient $k$, the product $(x + b)(y + a)$ no longer matches, but $(kx + b)(ky + a) = k^2xy + akx + bky + ab$ is exactly $k$ times the left side plus $ab$, so multiplying by $k$ restores the same shape. The figure shows the identity as a rectangle cut into four pieces.
 
 ## Formulas it uses
 - [[number-of-divisors]]: counts the factor pairs of $c + ab$, which is the number of solutions before any filter.
 
 ## Common traps
 - Adding $a + b$, or the wrong product, instead of $ab$.
-- Forgetting to multiply through when $xy$ has a coefficient.
+- Forgetting to multiply through when $xy$ has a coefficient, or forgetting that the factors must then have the right residues modulo $k$.
 - Missing the negative factor pairs, or keeping ones that give invalid values.
 
 ## Contest profile
@@ -1801,36 +1804,6 @@ An olympiad-level refinement — rarely needed over AM–GM or Cauchy–Schwarz,
 
 Object.assign(window.MATH_DETAILS, {
 
-"sp-substitution": String.raw`
-## When to use
-Systems such as $x + y = 5$ and $x^3 + y^3 = 35$, expressions such as $x^5 + y^5$ when $x + y$ and $xy$ are known, and equations in $x + \frac1x$, where the substitution is $s = x + \frac1x$ with $p = 1$. Anything unchanged when the two variables are swapped is a candidate.
-
-## How
-1. Check that the expression is symmetric.
-2. Rewrite each part with $s$ and $p$: $x^2 + y^2 = s^2 - 2p$, $x^3 + y^3 = s^3 - 3sp$, $(x - y)^2 = s^2 - 4p$ and $\frac1x + \frac1y = \frac sp$.
-3. Solve for $s$ and $p$.
-4. If $x$ and $y$ themselves are needed, solve $t^2 - st + p = 0$, and use $s^2 - 4p \ge 0$ to decide whether they are real.
-
-Solve $x + y = 5$, $x^3 + y^3 = 35$. Then $35 = s^3 - 3sp = 125 - 15p$, so $p = 6$, and $x$ and $y$ are the roots of $t^2 - 5t + 6 = 0$, namely $2$ and $3$.
-
-## Why it works
-A symmetric expression depends only on the unordered pair $\{x, y\}$, and the pair is fixed by its sum and product, since $x$ and $y$ are exactly the roots of $(t - x)(t - y) = t^2 - st + p$. Every symmetric polynomial in $x$ and $y$ is a polynomial in $s$ and $p$, so the substitution never loses information and usually lowers the degree. Higher power sums follow from a ladder: $$x^n + y^n = s\left(x^{n-1} + y^{n-1}\right) - p\left(x^{n-2} + y^{n-2}\right).$$
-
-## Formulas it uses
-- [[vietas-quadratic]]: $x$ and $y$ are the roots of $t^2 - st + p = 0$, so $s$ and $p$ determine the pair and recover it at the end.
-- [[square-of-sum]]: $(x + y)^2 = x^2 + 2xy + y^2$, which gives the first conversion, $x^2 + y^2 = s^2 - 2p$.
-- [[newtons-sums]]: the ladder $x^n + y^n = s(x^{n-1} + y^{n-1}) - p(x^{n-2} + y^{n-2})$ for any power sum.
-- [[reciprocal-power-sums]]: the case $y = \frac1x$, where $x^n + x^{-n}$ is a polynomial in $s = x + \frac1x$.
-
-## Common traps
-- Forgetting that real $x$ and $y$ need $s^2 \ge 4p$, and reporting a pair that does not exist over the reals.
-- Applying the substitution to an expression that is not symmetric.
-- Counting ordered pairs from one solution $(s, p)$, which gives both $(x, y)$ and $(y, x)$ unless $x = y$.
-
-## Contest profile
-Usually the setup of an AIME system or power-sum problem, finished by Vieta's Formulas or a short power-sum ladder.
-`
-
 });
 
 Object.assign(window.MATH_DETAILS, {
@@ -2385,31 +2358,42 @@ An AMC/AIME favorite for the golden-ratio radical and a classic olympiad curiosi
 ## When to use
 Any question of the form "the roots of this polynomial are $r$, $s$, $t$; find..." where the requested quantity treats the roots alike: sums of powers, sums of reciprocals, or sums such as $\frac{r}{s} + \frac{s}{r}$. The polynomial usually has no nice roots, which is the signal that the problem never wants them found. If swapping two roots changes the expression, it is not symmetric; pair it with its mirror image first. A product over all the roots is faster by [[products-over-roots|evaluation]].
 
-## How
-1. Read off the elementary symmetric sums: for $x^3 + ax^2 + bx + c$ they are $e_1 = -a$, $e_2 = b$ and $e_3 = -c$.
-2. For a power sum $r^k + s^k + t^k$, climb from $p_1 = e_1$ with Newton's Sums.
-3. For a fraction, use a common denominator; both parts are symmetric.
-4. Otherwise expand into the $e_k$, starting from $r^2 + s^2 + t^2 = e_1^2 - 2e_2$.
+The same move handles systems and expressions in two or three unknowns that are unchanged when the unknowns are swapped: $x + y = 5$ with $x^3 + y^3 = 35$, the value of $x^5 + y^5$ when $x + y$ and $xy$ are known, or an equation in $x + \frac1x$, where the substitution is $s = x + \frac1x$ with $p = 1$.
 
-Let $r$, $s$, $t$ be the roots of $x^3 - 2x^2 + 3x - 4$, so $e_1 = 2$, $e_2 = 3$ and $e_3 = 4$. Then $r^2 + s^2 + t^2 = e_1^2 - 2e_2 = 4 - 6 = -2$, negative because two of the roots are complex, and $\frac1r + \frac1s + \frac1t = \frac{rs + st + tr}{rst} = \frac{e_2}{e_3} = \frac34$.
+## How
+1. Read off or name the symmetric sums: $e_1 = -a$, $e_2 = b$, $e_3 = -c$ for the roots of $x^3 + ax^2 + bx + c$, or $s = x + y$ and $p = xy$ for two unknowns.
+2. Climb to power sums: $x^2 + y^2 = s^2 - 2p$, $x^3 + y^3 = s^3 - 3sp$, or Newton's Sums for more roots.
+3. For a fraction, use a common denominator; both parts are symmetric.
+4. Solve for the symmetric sums when they are unknown.
+5. To recover two unknowns, solve $t^2 - st + p = 0$; they are real when $s^2 \ge 4p$.
+
+Let $r$, $s$, $t$ be the roots of $x^3 - 2x^2 + 3x - 4$, so $e_1 = 2$, $e_2 = 3$ and $e_3 = 4$. Then $r^2 + s^2 + t^2 = e_1^2 - 2e_2 = -2$, negative because two of the roots are complex, and $\frac1r + \frac1s + \frac1t = \frac{e_2}{e_3} = \frac34$.
+
+For the system $x + y = 5$, $x^3 + y^3 = 35$: $35 = s^3 - 3sp = 125 - 15p$, so $p = 6$, and $x$ and $y$ are $2$ and $3$.
 
 ## Why it works
-The coefficients of a polynomial are, up to sign, the elementary symmetric sums of its roots. That is Vieta's Formulas, and it is the only information about the roots that the coefficients hold. The Fundamental Theorem of Symmetric Polynomials says that this is enough: every polynomial expression that is unchanged by permuting the roots equals a polynomial in $e_1, \ldots, e_n$. A symmetric target can therefore always be computed from the coefficients, and the only question is how quickly.
+The coefficients of a polynomial are, up to sign, the elementary symmetric sums of its roots. That is Vieta's Formulas, and it is the only information about the roots that the coefficients hold. The Fundamental Theorem of Symmetric Polynomials says that this is enough: every polynomial expression unchanged by permuting the variables equals a polynomial in $e_1, \ldots, e_n$.
 
-Power sums have their own ladder. Each root satisfies the polynomial, so $r^3 = -ar^2 - br - c$, and adding over the roots expresses $p_3$ through $p_2$, $p_1$ and $p_0 = n$; the same step works for every higher power, which is Newton's Sums.
+For two unknowns the pair $\{x, y\}$ is exactly the set of roots of $t^2 - st + p$, so trading $x$ and $y$ for $s$ and $p$ loses nothing.
+
+Power sums have their own ladder. Each root satisfies the polynomial, so $r^3 = -ar^2 - br - c$, and adding over the roots expresses $p_3$ through $p_2$, $p_1$ and $p_0 = n$; for two unknowns the ladder is $$x^n + y^n = s\left(x^{n-1} + y^{n-1}\right) - p\left(x^{n-2} + y^{n-2}\right).$$
 
 ## Formulas it uses
-- [[fundamental-theorem-symmetric]]: guarantees that every symmetric expression in the roots is a polynomial in the $e_k$, so the method never gets stuck.
+- [[fundamental-theorem-symmetric]]: guarantees that every symmetric expression is a polynomial in the $e_k$, so the method never gets stuck.
 - [[vietas-general]]: identifies each $e_k$ with a coefficient, $e_k = (-1)^k \frac{a_{n-k}}{a_n}$.
 - [[newtons-sums]]: converts the $e_k$ into the power sums $p_k = \sum r_i^k$ one step at a time.
+- [[vietas-quadratic]]: two unknowns are the roots of $t^2 - st + p = 0$, which recovers them at the end.
+- [[square-of-sum]]: $(x + y)^2 = x^2 + 2xy + y^2$ gives the first conversion, $x^2 + y^2 = s^2 - 2p$.
+- [[reciprocal-power-sums]]: the case $y = \frac1x$, where $x^n + x^{-n}$ is a polynomial in $s = x + \frac1x$.
 
 ## Common traps
 - Sign errors in Vieta's Formulas: for a cubic, $e_1 = -\frac{a_2}{a_3}$ and $e_3 = -\frac{a_0}{a_3}$, while $e_2$ has a plus sign.
 - Forgetting $p_0 = n$, the number of roots, when Newton's Sums reach back to the constant term.
+- Forgetting that real $x$ and $y$ need $s^2 \ge 4p$, and counting one solution $(s, p)$ as one ordered pair when it gives both $(x, y)$ and $(y, x)$.
 - Applying the method to an expression that is not symmetric, such as $r^2s + s^2t + t^2r$ alone.
 
 ## Contest profile
-Usually the whole problem: an AIME question gives a cubic with ugly roots and asks for one symmetric value, and the work is choosing between direct expansion and Newton's Sums.
+Usually the whole problem on the AIME: a cubic with ugly roots and one symmetric value to find, or a symmetric system in two unknowns that collapses in $s$ and $p$; AMC 10 and 12 problems use the two-variable form.
 `,
 "products-over-roots": String.raw`
 ## When to use
@@ -2687,6 +2671,8 @@ Four problems here, split between AMC and AIME, one solved by it alone; two comb
 "determinant-basics": String.raw`## Why it works
 The determinant is the one function of the rows that is linear in each row, flips sign when two rows swap, and gives $1$ on the identity. Those three demands pin it down completely, and every formula for it follows: $ad - bc$ for a $2 \times 2$, Sarrus for a $3 \times 3$, [[cofactor-expansion|cofactor expansion]] in general. Sign-flipping on a swap forces the value to vanish when two rows are equal, and linearity then extends that to any dependent set, which is why $\det = 0$ means exactly that one row is a combination of the others.
 
+The general formula is the Leibniz formula, $\det A = \sum_{\sigma} \operatorname{sgn}(\sigma)\, a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)}$: one term for each way of choosing one entry from every row and every column, signed by the parity of the permutation. Sarrus's six terms are the case $n = 3$. Reduced modulo $2$ the signs disappear, so the determinant of a $0$-$1$ matrix has the same parity as the number of permutations it allows, a count of perfect matchings in disguise.
+
 ## How to use it
 Reach for the properties before the formula. Row operations of the add-a-multiple kind cost nothing, so use them to manufacture zeros and then expand along the sparsest row. Remember $\det(AB) = \det A \cdot \det B$, which turns a product you cannot compute into two you can, and $\det(A^{\top}) = \det A$, which lets any row argument be run on columns instead. Sarrus's rule is a $3 \times 3$ accident and does not generalize; trying to extend the diagonal pattern to $4 \times 4$ is a standard and silent error.
 
@@ -2723,8 +2709,10 @@ Roughly eighteen problems in this library's database solve a system somewhere in
 "eigenvalues-characteristic": String.raw`## Why it works
 $A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v} \ne \mathbf{0}$ says $(A - \lambda I)$ kills a nonzero vector, so its rows are dependent and its determinant vanishes. Expanding $\det(A - \lambda I)$ gives a degree-$n$ polynomial in $\lambda$ whose roots are exactly the eigenvalues. [[vietas-general|Vieta's Formulas]] on that polynomial then hand you the two identities worth memorizing, since the coefficient of $\lambda^{n-1}$ is the trace and the constant term is the determinant.
 
+The trace has one more identity worth keeping: $\operatorname{tr}(AB) = \operatorname{tr}(BA)$, since both equal $\sum_{i, j} a_{ij}b_{ji}$. So $AB - BA$ always has trace $0$, and it can never equal the identity matrix, whose trace is $n$.
+
 ## How to use it
-Use eigenvalues when you need $A^n$, not when you need $A$. If $A = PDP^{-1}$ with $D$ diagonal then $A^n = PD^nP^{-1}$, so each eigenvalue is simply raised to the $n$, and the entries of $A^n$ become a fixed combination of $\lambda_1^n, \ldots, \lambda_k^n$. That is the same shape as the closed form of a linear recurrence, and it is not a coincidence: the characteristic polynomial of the transfer matrix is the characteristic equation of the recurrence.
+Use eigenvalues when you need $A^n$, not when you need $A$. If $A = PDP^{-1}$ with $D$ diagonal then $A^n = PD^nP^{-1}$, using the [[matrix-inverse|inverse]] $P^{-1}$, so each eigenvalue is simply raised to the $n$, and the entries of $A^n$ become a fixed combination of $\lambda_1^n, \ldots, \lambda_k^n$. That is the same shape as the closed form of a linear recurrence, and it is not a coincidence: the characteristic polynomial of the transfer matrix is the characteristic equation of the recurrence, and the [[cayley-hamilton|Cayley–Hamilton Theorem]] proves it even when $A$ cannot be diagonalized.
 
 ## On contests
 Olympiad-adjacent only, and it appears in this library as the machinery two cards already lean on. [[matrix-tree-theorem|The matrix-tree theorem]] states the spanning-tree count as a product of Laplacian eigenvalues, and the transfer matrix gets its recurrence from $\det(xI - M) = 0$. If you are reading either of those, this is the card that makes the sentence mean something.`,
@@ -2788,28 +2776,28 @@ For the repeated factor, differentiate $P(x) = (x-a)^2 Q(x) + R(x)$: every term 
 
 "add-all-equations": String.raw`
 ## When to use
-The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]].
+The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables, or some other combination of them, rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]].
 
 ## How
-1. Add all the equations.
-2. Count how many times each variable appears on the left; in a symmetric or cyclic system every variable appears the same number $k$ of times, so the left side is $kS$.
+1. Decide what the sum should produce: the total $S$ of all the variables, or the exact expression the question asks for.
+2. Add the equations that produce it, all of them for a symmetric or cyclic system, where every variable appears the same number $k$ of times and the left side is $kS$, or just a chosen group when that group's left sides add to the target.
 3. Solve for $S$, the sum of the right sides divided by $k$.
 4. Subtract each original equation from the right multiple of $S$, or subtract equations in pairs, to isolate each variable.
 5. If $k = 0$, adding gives no information about $S$; use differences of equations instead.
 
-For $x + y = 10$, $y + z = 14$, $z + x = 12$, adding gives $2S = 36$, so $S = 18$, and then $z = 18 - 10 = 8$, $x = 18 - 14 = 4$, and $y = 18 - 12 = 6$.
+For $x + y = 10$, $y + z = 14$, $z + x = 12$, adding all three gives $2S = 36$, so $S = 18$, and then $z = 18 - 10 = 8$, $x = 18 - 14 = 4$, and $y = 18 - 12 = 6$. A group can be enough: from $x + 2y = 7$ and $2y + 3z = 11$, the question "find $x + 4y + 3z$" is answered by adding just those two, $18$, though neither $x$, $y$, nor $z$ is determined.
 
 {{figure:columns}}
 
 ## Why it works
-In a system unchanged by relabeling the variables, every variable occupies each position equally often across the equations, so in the sum every variable has the same coefficient and the sum is a multiple of $S$. Once $S$ is known, each equation of the form "$S$ minus one variable" or "$S$ plus one variable" names that variable directly.
+Any sum of true equations is a true equation, so adding a group of them is always allowed. In a system unchanged by relabeling the variables, every variable occupies each position equally often across the equations, so in the sum every variable has the same coefficient and the sum is a multiple of $S$. Once $S$ is known, each equation of the form "$S$ minus one variable" or "$S$ plus one variable" names that variable directly.
 
 ## Formulas it uses
 No formula is needed; the method is bookkeeping with the total of the variables.
 
 ## Common traps
 - Dividing by the coefficient of $S$ when it is $0$, where the system has no unique solution.
-- Solving for every variable when the question asks only for the total.
+- Solving for every variable when the question asks only for the total or another combination; look for a group of equations that adds to it.
 - Miscounting how many times each variable appears after adding.
 
 ## Contest profile
@@ -2851,6 +2839,8 @@ A MATHCOUNTS and AMC 10 staple, usually one or two linear equations; AIME versio
 ## When to use
 The dots sit inside an expression, at the end of a radical, a fraction, or an exponent: $\sqrt{a + \sqrt{a + \cdots}}$, $a + \cfrac{1}{b + \cfrac{1}{a + \cdots}}$, or $x^{x^{\cdots}}$, or a finite nest has a repeating layer that can be collapsed.
 
+The same move works on anything that contains a copy of itself. A geometric series satisfies $S = a + rS$, so $S = \frac{a}{1 - r}$, and a game that returns to its starting position with probability $q$, after a win with probability $p$, has a chance of winning $P$ with $P = p + qP$.
+
 ## How
 1. Make sure the expression converges, or is defined as a limit.
 2. Call its value $x$.
@@ -2876,4 +2866,492 @@ If the infinite expression has a value, removing its first layer leaves exactly 
 ## Contest profile
 A quick AMC question in its plain form; AIME versions alternate the layers or ask about a finite nest that collapses the same way.
 `,
+
+"substitute-repeated-block": String.raw`
+## When to use
+An equation repeats one block: $(x^2 + 3x)^2 - 2(x^2 + 3x) = 8$, or $4^x - 3 \cdot 2^x + 2 = 0$, where $4^x = (2^x)^2$. Often the block has to be produced first: $(x + 1)(x + 4) = x^2 + 5x + 4$ and $(x + 2)(x + 3) = x^2 + 5x + 6$ share the block $x^2 + 5x$, so a product of all four factors is a quadratic in that block.
+
+
+The move is not limited to equations. To minimize $(x^2 + 2x + 3)(x^2 + 2x - 5)$, put $u = x^2 + 2x$, which can be any number from $-1$ up; the product is $u^2 - 2u - 15$, smallest at $u = 1$, where it equals $-16$. Inequalities, sums, and functional equations with a repeated inner expression simplify the same way.
+## How
+1. Find the block: an expression that appears more than once, or one that appears after pairing factors whose constants have equal sums.
+2. Name it $u$ and rewrite the whole equation in $u$. If some $x$ is left over, the block was chosen wrongly.
+3. Solve the equation in $u$.
+4. Keep only the values the block can take: $2^x \gt 0$, a square root is at least $0$, and $x^2 + x \ge -\frac14$.
+5. Solve "block $=$ each kept value" for $x$, or, when only a sum or product of roots is asked, read it from those equations with Vieta's Formulas.
+
+For $4^x - 6 \cdot 2^x + 8 = 0$, put $u = 2^x$: then $u^2 - 6u + 8 = 0$, so $u = 2$ or $u = 4$, and $x = 1$ or $x = 2$.
+
+## Why it works
+A number $x$ solves the original equation exactly when the value of the block at $x$ solves the equation in $u$. So the solutions are the solutions of "block $= u_1$", together with those of "block $= u_2$", and so on, one simpler equation per root $u_i$.
+
+## Formulas it uses
+- [[quadratic-formula]]: the equation in $u$ is usually a quadratic, and so is each equation "block $= u_i$" when the block is quadratic in $x$.
+- [[vietas-quadratic]]: each quadratic "block $= u_i$" gives the sum and product of its roots straight from its coefficients.
+- [[exponent-laws]]: $4^x = (2^x)^2$ and $9^x = (3^x)^2$ show that two exponential terms are powers of one block.
+
+## Common traps
+- Keeping a value of $u$ the block cannot reach, such as $2^x = -1$, or a negative value for a square root.
+- Counting complex roots when the question asks for real ones; check the discriminant of each equation "block $= u_i$".
+- Squaring both sides when the block contains a root, which can create solutions that fail the original; check every answer.
+- Stopping at the values of $u$ when the question asks about $x$.
+
+## Contest profile
+Common on the AMC 10, AMC 12, and AIME: a quartic, exponential, or radical equation that is a quadratic in disguise, usually asking for a sum or product of the real solutions.
+`,
+
+"averages-to-totals": String.raw`
+## When to use
+Statements such as "the average rises by $2$ when the next score is added", "after one number is removed, the rest average $40$", or "two classes with different averages take the same test". Whenever a group changes and averages are given before and after.
+
+
+The same bookkeeping runs through every average that is a ratio of totals. An [[average-speed|average speed]] is total distance over total time, the concentration of a mixture is total solute over total volume, and an expected value adds over outcomes. In each case the totals add and the average does not, so the totals are what to track.
+## How
+1. Name the unknown count $n$, and any unknown values.
+2. Write each stated average as a total: $n$ items with mean $m$ add up to $nm$.
+3. Write the change as an equation between totals: adding a value $v$ gives the total $nm + v$ over $n + 1$ items.
+4. Solve, then divide by the final count for any average that is asked for.
+
+Five numbers average $12$, and after one is removed the other four average $10$: the totals are $60$ and $40$, so the removed number is $20$.
+
+## Why it works
+An average is a total divided by a count, so the total is the average times the count, and the totals of separate groups add. Averages do not add: the average of two groups combined is their averages weighted by the group sizes. Working with totals carries those weights automatically.
+
+## Formulas it uses
+- [[weighted-average]]: two groups merge to the average $\frac{n_1m_1 + n_2m_2}{n_1 + n_2}$, which is the combined total over the combined count.
+
+## Common traps
+- Averaging the averages of groups of different sizes.
+- Dividing the new total by the old count after a value is added or removed.
+- Reading "the average increases by $2$" as "the new value is $2$ more than the old average".
+
+## Contest profile
+A MATHCOUNTS and AMC 10 staple, and on the AMC 12 a step inside a problem with an unknown count.
+`,
+
+"repeated-block-equation": String.raw`
+## Distinguishing clues
+The degree looks high, often four, yet the equation has more structure than a general quartic: one expression appears twice, exponential terms share a base up to squaring, or four linear factors have constants that pair to equal sums, as $1 + 4 = 2 + 3$. A general quartic with no repetition is a root-finding problem instead. An expression that contains a copy of itself, such as an infinite nested radical, is the related [[infinite-nest|self-similar expression]], where the whole expression is named rather than a piece of it.
+
+## Methods and Formulas to Try
+The repeated piece is the real unknown. Name it, solve the smaller equation, and return to $x$ one value at a time.
+
+### Methods to try
+- [[substitute-repeated-block]]: name the repeated expression $u$, solve for $u$, and keep only the values the expression can take.
+- [[palindromic-polynomials]]: a polynomial with symmetric coefficients hides the block $x + \frac1x$, which appears after dividing by the middle power of $x$.
+- [[log-substitution]]: logarithms of one quantity in several places, possibly in different bases, form one block once every log is in the same base.
+
+### Formulas to try
+- [[vietas-quadratic]]: each equation "block $= u_i$" is usually a quadratic, so the sum and product of its roots come from its coefficients.
+- [[exponent-laws]]: $4^x = (2^x)^2$ shows that two exponential terms are powers of one block.
+- [[change-of-base]]: $\log_x 4 = \frac{2}{\log_2 x}$ rewrites a log with a variable base in terms of the block $\log_2 x$.
+
+## Common traps
+- Pairing the wrong factors; pair them so the two products share their $x^2$ and $x$ terms.
+- Forgetting the range of the block: $2^x$ is positive, and $x^2 + 5x$ is at least $-\frac{25}{4}$.
+- Reporting values of the block instead of values of $x$.
+
+## Contest profile
+A staple from the AMC 10 to the AIME: quartics built from four linear factors, exponential equations in $2^x$ and $4^x$, and radical equations whose radicand matches the rest of the equation, usually asking for a sum or product of real solutions.
+`,
+
+"averages-before-after": String.raw`
+## Distinguishing clues
+Two or more averages describe nearly the same group. An unknown count is the giveaway that the problem wants equations in totals rather than arithmetic with averages. When the averages belong to overlapping subgroups, each element is counted in several of them. A single average with nothing changing is only a total in disguise, and an [[average-speed|average speed]] over the legs of a trip is a different setup, total distance over total time.
+
+## Methods and Formulas to Try
+The averages hide the totals that actually change, and totals are what add.
+
+### Methods to try
+- [[averages-to-totals]]: rewrite each average as count times mean, and keep the books in totals.
+- [[add-all-equations]]: with overlapping subgroups every element appears equally often, so adding the equations for the totals gives the grand total at once.
+
+### Formulas to try
+- [[weighted-average]]: two groups merge to the average $\frac{n_1m_1 + n_2m_2}{n_1 + n_2}$.
+- [[arithmetic-series]]: when the values are consecutive integers, their average is the average of the first and last, which pins down the count after one is removed.
+
+## Common traps
+- Averaging the averages of groups of different sizes.
+- Losing track of the count after a value is added or removed.
+- Forgetting, with overlapping subgroups, that each element is counted several times.
+
+## Contest profile
+MATHCOUNTS and AMC 10 problems with a value added or removed, and AMC 12 versions where the count is unknown or the subgroups overlap.
+`,
+
+"take-logs-linearize": String.raw`
+## When to use
+Several equations multiply and raise the unknowns to powers: $x^2y^3 = 2^{13}$ and $x^3y = 2^9$, or $2^x = 3^y = 6^z$, or an unknown in an exponent, as in $5^x = 3$. Additive tools do not touch these, but logarithms make them linear.
+
+
+Logarithms also size and compare huge numbers. In base $10$, $2^{100}$ has logarithm $100 \cdot 0.30103 \approx 30.10$ and $3^{63}$ has $63 \cdot 0.47712 \approx 30.06$, so $2^{100}$ is larger, and the integer part of the logarithm gives the [[digit-count|number of digits]].
+## How
+1. Check that every quantity you take a logarithm of is positive.
+2. Choose a base that makes the constants simple: base $2$ when the constants are powers of $2$, or any base when only ratios of logarithms matter.
+3. Take logarithms of both sides of every equation, so $\log(x^ay^b) = a\log x + b\log y$.
+4. Solve the linear system for $X = \log x$, $Y = \log y$, and so on.
+5. Exponentiate back, or keep the logarithms if the question asks for a logarithm or a ratio.
+
+If $2^x = 3^y = 6^z = k$, then $x = \log_2 k$, $y = \log_3 k$, $z = \log_6 k$, and $\frac1x + \frac1y = \log_k 2 + \log_k 3 = \log_k 6 = \frac1z$.
+
+## Why it works
+The logarithm is one-to-one on positive numbers and turns products into sums and powers into multiples, so an equation between positive products holds exactly when the matching linear equation between logarithms holds. Solving the linear system therefore finds exactly the solutions of the original.
+
+## Formulas it uses
+- [[log-rules]]: $\log(xy) = \log x + \log y$ and $\log x^a = a\log x$, the two rules that make the equations linear.
+- [[change-of-base]]: $\log_b a = \frac{\log a}{\log b}$ moves every logarithm into the one base chosen, and turns $\log_k 2$ into $\frac{1}{\log_2 k}$.
+
+## Common traps
+- Taking the logarithm of a quantity that could be zero or negative.
+- Mixing bases partway through; pick one base and convert everything into it.
+- Writing $\log(x + y)$ as $\log x + \log y$; only products split.
+
+## Contest profile
+AMC 12 and AIME: systems of power equations, chains such as $a^x = b^y = c^z$, and equations with the unknown in an exponent, usually asking for a product, a ratio, or a logarithm of the answer.
+`,
+
+"polar-form": String.raw`
+## When to use
+Powers such as $(1 + i\sqrt3)^{10}$, products and quotients of several complex numbers, roots of $z^n = w$, and any condition on $|z|$ or on an angle. Rectangular form is better for sums; polar form is better for everything multiplicative.
+
+
+Polar form reaches beyond complex-number questions. Trigonometric identities come from powers, since $\cos 3\theta$ is the real part of $(\cos\theta + i\sin\theta)^3$, and a sum of cosines of equally spaced angles is the real part of a geometric series of points on a circle.
+## How
+1. For each number find its modulus $r = \sqrt{a^2 + b^2}$ and its argument $\theta$, the angle from the positive real axis, using the quadrant of $a + bi$.
+2. Write it as $re^{i\theta}$, or $r(\cos\theta + i\sin\theta)$.
+3. Multiply moduli and add arguments for products; divide and subtract for quotients; for an $n$th power, raise the modulus to the $n$th power and multiply the argument by $n$.
+4. Reduce the final argument modulo $360^\circ$ and convert back to $a + bi$ if needed.
+
+For $z^3 = 8i$, write $8i = 8e^{i\pi/2}$; the cube roots have modulus $2$ and arguments $\frac{\pi}{6} + \frac{2\pi k}{3}$ for $k = 0, 1, 2$.
+
+## Why it works
+By Euler's Formula $e^{i\alpha}e^{i\beta} = e^{i(\alpha + \beta)}$, which is the angle-addition formulas for sine and cosine in one line. So multiplying by $se^{i\beta}$ scales every point by $s$ and rotates it by $\beta$, and repeating that $n$ times multiplies the angle by $n$.
+
+## Formulas it uses
+- [[eulers-formula]]: $e^{i\theta} = \cos\theta + i\sin\theta$, the bridge between the two forms.
+- [[de-moivre]]: $(\cos\theta + i\sin\theta)^n = \cos n\theta + i\sin n\theta$, for powers.
+- [[complex-basics]]: the modulus $|a + bi| = \sqrt{a^2 + b^2}$ and $z\bar z = |z|^2$.
+
+## Common traps
+- Taking the argument from $\arctan\frac{b}{a}$ without checking the quadrant.
+- Forgetting the other $n - 1$ roots of $z^n = w$, spaced $\frac{360^\circ}{n}$ apart.
+- Using polar form for a sum, where it does not help.
+
+## Contest profile
+AMC 12 and AIME: powers and products of complex numbers, roots of $z^n = w$, and conditions on a modulus or an angle, often followed by a count or a sum of the solutions.
+`,
+
+"log-system": String.raw`
+## Distinguishing clues
+The equations involve the same few unknowns only through products, quotients, powers, and logarithms, with no sum of two unknowns inside a logarithm. That is what makes the system linear in the logarithms. A single equation such as $\log_2 x + \log_4 x = 6$ is one substitution, and a logarithm of a sum, such as $\log(x + y)$, does not split and needs another idea.
+
+## Methods and Formulas to Try
+Name the logarithms of the unknowns as new variables; the rules of logarithms then make every equation linear in them.
+
+### Methods to try
+- [[log-substitution]]: set $X = \log x$, $Y = \log y$, $Z = \log z$, or $u = \log_x y$ when the bases are unknown, and solve for the new variables.
+- [[take-logs-linearize]]: when the system arrives as products and powers, take logarithms of every equation first.
+- [[add-all-equations]]: symmetric systems such as $\log(xy)$, $\log(yz)$, $\log(zx)$ add to twice $\log(xyz)$, which gives each unknown by subtraction.
+
+### Formulas to try
+- [[log-rules]]: products split into sums and powers come down as coefficients.
+- [[change-of-base]]: $\log_x y = \frac{\log y}{\log x}$ and $\log_y x = \frac{1}{\log_x y}$ put every logarithm in one base.
+- [[log-swap-identity]]: $a^{\log_b c} = c^{\log_b a}$, which untangles unknowns that appear both as a base and inside an exponent.
+
+## Common traps
+- Splitting $\log(x + y)$ as if it were $\log x + \log y$.
+- Dropping the conditions that every argument is positive and every base is positive and not $1$.
+- Mixing bases in the same equation without converting.
+
+## Contest profile
+An AIME favorite and an occasional AMC 12 problem: three equations in $\log(xy)$, $\log(yz)$, $\log(zx)$, or two equations in $\log_x y$, usually asking for a product, a sum, or a logarithm of the answer.
+`,
+
+"complex-modulus-argument": String.raw`
+## Distinguishing clues
+The conditions are about size and direction: $|z| = 1$, $|z - a| = r$, an argument, or a power of $z$ that must be real or equal to $1$. Writing $z = a + bi$ would turn these into a pair of circle equations, while polar form turns them into one condition on an angle. A sum of complex numbers with nothing said about moduli or angles is ordinary algebra in $a + bi$ instead.
+
+## Methods and Formulas to Try
+Size and direction are the polar coordinates of $z$, so the conditions are simplest in polar form.
+
+### Methods to try
+- [[polar-form]]: write $z = re^{i\theta}$, so the modulus condition fixes $r$ and the rest becomes an equation in $\theta$.
+- [[complex-bash]]: when the numbers are points of a figure, a condition such as $|z| = 1$ places them on the unit circle, where rotations and reflections are multiplications.
+
+### Formulas to try
+- [[complex-basics]]: $z\bar z = |z|^2$, so $|z| = 1$ gives $\bar z = \frac1z$, which removes conjugates from an equation.
+- [[de-moivre]]: powers multiply the argument, so $z^n$ is real exactly when $n\theta$ is a multiple of $\pi$.
+- [[roots-of-unity]]: the solutions of $z^n = 1$ are $n$ equally spaced points on the unit circle.
+
+## Common traps
+- Replacing $\bar z$ by $\frac1z$ when $|z|$ is not $1$; in general $\bar z = \frac{|z|^2}{z}$.
+- Losing solutions by taking only one argument, when the argument is defined up to multiples of $2\pi$.
+- Forgetting that $z = 0$ has no argument.
+
+## Contest profile
+AMC 12 and AIME: an equation in $z$ and $\bar z$ with $|z| = 1$, a power of $z$ that must be real, or a count of complex numbers meeting conditions on modulus and angle.
+`,
+
+"name-the-floor": String.raw`
+## When to use
+A condition mixes $\lfloor x \rfloor$, $\{x\}$, and $x$ itself: $\lfloor x \rfloor + 2\{x\} = 3.5$, or $x^2 = 10\lfloor x \rfloor - 9$. The same split proves floor identities, such as $\lfloor 2x \rfloor = 2\lfloor x \rfloor$ or $2\lfloor x \rfloor + 1$ depending on whether $f$ is below or above $\frac12$, and it settles inequalities that involve a floor.
+
+## How
+1. Write $x = n + f$ with $n$ an integer and $0 \le f \lt 1$; then $\lfloor x \rfloor = n$ and $\{x\} = f$.
+2. Rewrite the condition in $n$ and $f$. A term such as $\lfloor 2x \rfloor$ splits into cases $f \lt \frac12$ and $f \ge \frac12$.
+3. Solve for $f$ in terms of $n$, or bound $n$ from $n \le x \lt n + 1$.
+4. Keep the integers $n$ for which $f$ lands in $[0, 1)$, and assemble $x = n + f$.
+
+From $\lfloor x \rfloor + 2\{x\} = 3.5$: $2f = 3.5 - n$ must lie in $[0, 2)$, so $n = 2$ or $n = 3$, giving $x = 2.75$ or $x = 3.25$.
+
+## Why it works
+Every real number has exactly one such split, so the condition on $x$ is the same as the condition on the pair $(n, f)$. The pair has a rigid shape, an integer and a number in $[0, 1)$, and that shape is what cuts the possibilities down.
+
+## Formulas it uses
+- [[floor-basics]]: $\lfloor x + m \rfloor = \lfloor x \rfloor + m$ for an integer $m$, and $x - 1 \lt \lfloor x \rfloor \le x$, the inequalities that bound $n$.
+- [[hermite-identity]]: $\lfloor x \rfloor + \lfloor x + \frac1k \rfloor + \cdots + \lfloor x + \frac{k-1}{k} \rfloor = \lfloor kx \rfloor$, proved by this split with cases on $f$.
+
+## Common traps
+- Allowing $f = 1$; the fractional part is strictly less than $1$.
+- Forgetting negative $x$: $\lfloor -2.3 \rfloor = -3$ and $\{-2.3\} = 0.7$.
+- Solving for $f$ and not checking that it lies in $[0, 1)$ for each $n$.
+
+## Contest profile
+AMC 10, AMC 12, and AIME equations mixing $x$, $\lfloor x \rfloor$, and $\{x\}$, usually asking for the number of solutions or their sum.
+`,
+
+"group-equal-floors": String.raw`
+## When to use
+Long sums such as $\lfloor \sqrt1 \rfloor + \lfloor \sqrt2 \rfloor + \cdots + \lfloor \sqrt{50} \rfloor$, and counts such as "how many distinct values does $\lfloor \frac{k^2}{1000} \rfloor$ take for $k \le 1000$". The same grouping counts digits (the numbers with $d$ digits form one block) and splits any sum whose terms depend only on which range $k$ lies in.
+
+## How
+1. For each value $m$, solve $m \le f(k) \lt m + 1$ for $k$; for an increasing $f$ this is one block of consecutive integers.
+2. Count the block: for $\lfloor \sqrt k \rfloor = m$ it is $k = m^2, \ldots, (m + 1)^2 - 1$, which is $2m + 1$ values.
+3. Add $m$ times the block size over all complete blocks.
+4. Handle the last, partial block separately.
+
+The numbers from $1$ to $999$ use $9 \cdot 1 + 90 \cdot 2 + 900 \cdot 3 = 2889$ digits, one block for each number of digits.
+
+## Why it works
+Adding the same terms in a different order does not change the sum. Sorting the terms by their value $m$ puts equal terms together, and a run of $c_m$ terms equal to $m$ adds to $m\,c_m$.
+
+## Formulas it uses
+- [[floor-basics]]: $\lfloor f(k) \rfloor = m$ exactly when $m \le f(k) \lt m + 1$, which is how each block is found.
+- [[power-sums]]: block sizes such as $2m + 1$ make the total a sum of $m$ and $m^2$, evaluated in closed form.
+
+## Common traps
+- Forgetting the last block is usually cut short by the end of the range.
+- Off-by-one block sizes: $m^2$ to $(m + 1)^2 - 1$ has $2m + 1$ terms, not $2m$.
+- Assuming the blocks have the same size; their lengths usually grow with $m$.
+
+## Contest profile
+AMC and AIME sums of floors of square roots, logarithms, or quadratics over a long range, and questions counting the distinct values such a floor takes.
+`,
+
+"floor-sum-range": String.raw`
+## Distinguishing clues
+The sum has many terms, each a floor of one expression in the index, and the question wants an exact total or a count of distinct values. A slowly growing inside, such as $\sqrt k$ or $\log_2 k$, signals blocks of equal terms; an inside linear in $k$ with a fraction $\frac{a}{n}$, summed from $k = 1$ to $n - 1$, signals pairing from the ends. A single equation with a floor is a different problem, solved by splitting $x$ into its integer and fractional parts.
+
+## Methods and Formulas to Try
+Two structures make the sum short: equal terms in long runs, and terms whose fractional parts cancel in pairs.
+
+### Methods to try
+- [[group-equal-floors]]: count how many $k$ give each value of the floor and add value times count.
+- [[fx-pairing]]: pair the term at $k$ with the term at $n - k$; when the two insides add to an integer $N$ and are not integers themselves, their floors add to $N - 1$.
+
+### Formulas to try
+- [[floor-basics]]: $\lfloor y \rfloor = m$ exactly when $m \le y \lt m + 1$, which locates each block.
+- [[hermite-identity]]: $\lfloor x \rfloor + \lfloor x + \frac1k \rfloor + \cdots + \lfloor x + \frac{k-1}{k} \rfloor = \lfloor kx \rfloor$, which collapses evenly shifted floors.
+- [[legendres-formula]]: the sum $\lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \cdots$ is the exponent of $p$ in $n!$.
+- [[floor-multiples]]: $\lfloor \frac{n}{d} \rfloor$ counts the multiples of $d$ up to $n$, the meaning behind many floor sums.
+
+## Common traps
+- Miscounting the last, partial block.
+- Pairing terms whose insides are integers, where the pair sum is $N$, not $N - 1$.
+- Assuming every value in a range is taken when the floor jumps by more than $1$ at a time.
+
+## Contest profile
+AMC 12 and AIME sums of floors of square roots or logarithms, counts of distinct values of a floor of a quadratic, and sums of $\lfloor \frac{ak}{n} \rfloor$ that pair up.
+`,
+
+"floor-equation": String.raw`
+## Distinguishing clues
+One real unknown appears both as itself and inside a floor or a fractional part. If only $\lfloor x \rfloor$ appears, the unknown is really an integer, and the equation is a number theory problem in $n$. A long sum of floors with no unknown real number is a counting problem instead, handled by grouping equal terms.
+
+## Methods and Formulas to Try
+The floor is an integer and the fractional part lies in $[0, 1)$; those two facts, plus $n \le x \lt n + 1$, leave only a few cases.
+
+### Methods to try
+- [[name-the-floor]]: write $x = n + f$, solve for $f$ or $x$ in terms of $n$, and keep the integers $n$ that put $f$ in $[0, 1)$.
+- [[casework-method]]: floors of multiples such as $\lfloor 2x \rfloor$ split into cases by which part of $[0, 1)$ the fractional part lies in.
+
+### Formulas to try
+- [[floor-basics]]: $n \le x \lt n + 1$ and $\lfloor x + m \rfloor = \lfloor x \rfloor + m$ for an integer $m$.
+- [[hermite-identity]]: rewrites a sum of evenly shifted floors as one floor.
+
+## Common traps
+- Checking only $n \le x$ and forgetting $x \lt n + 1$, or the reverse.
+- Missing negative solutions, where the floor rounds away from zero.
+- Squaring or dividing without checking the sign of what was squared or divided by.
+
+## Contest profile
+AMC and AIME problems asking for the number of real solutions of such an equation, or their sum or product, typically solved by bounding the integer part and checking a few cases.
+`,
+
+"mean-median-mode": String.raw`
+## Key forms
+- $\bar x = \frac{x_1 + x_2 + \cdots + x_n}{n}$ — the mean, so the sum of the list is $n\bar x$
+- the median — the middle value of the sorted list, or the average of the two middle values when $n$ is even
+- the mode — the value that appears most often; a list can have several modes, or none if every value appears once
+- $\max - \min$ — the range
+- changing one value by $d$ changes the mean by $\frac dn$
+- adding $c$ to every value adds $c$ to the mean, median, and mode and leaves the range alone; multiplying every value by $k$ multiplies the mean, median, and mode by $k$ and the range by $\lvert k\rvert$
+
+## Conditions
+A finite list of numbers, with repeated values counted as often as they appear. The median needs the list sorted first.
+
+## Why it works
+The mean is the balance point of the list: the deviations $x_i - \bar x$ always add up to $0$, because their sum is $(x_1 + \cdots + x_n) - n\bar x$. The median is the point with half the values on each side, so it depends only on the order of the values near the middle; pushing the largest value even larger does not move it at all, while the mean moves by the change divided by $n$.
+
+## Useful observations
+- An outlier pulls the mean toward itself but leaves the median unchanged unless it crosses the middle.
+- The mean minimizes the sum of squared deviations $\sum (x_i - t)^2$, while the median minimizes the sum of absolute deviations $\sum \lvert x_i - t\rvert$, the fact behind [[median-minimizes-abs|the median trick]].
+- For consecutive integers, or any arithmetic progression, the mean and the median are equal, both the average of the first and last terms.
+- When several statistics of an unknown list are fixed, a value is as large as possible exactly when the other values are as small as the conditions allow.
+
+## Applications
+Summarizing data sets, and lists of unknown numbers described by some of their statistics.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 staple: lists with a given mean, median, and mode, and the largest or smallest value or range such a list can have.
+`,
+
+"percent-change": String.raw`
+## Key forms
+- $\text{new} = \text{old} \cdot \left(1 + \frac{p}{100}\right)$ — a change of $p$ percent, with $p$ negative for a decrease
+- $\frac{\text{new} - \text{old}}{\text{old}} \cdot 100\%$ — the percent change from old to new
+- $\left(1 + \frac{p}{100}\right)\left(1 + \frac{q}{100}\right)$ — the factor for two successive changes, in either order
+- $\left(1 + \frac{x}{100}\right)\left(1 - \frac{x}{100}\right) = 1 - \frac{x^2}{10000}$ — up $x\%$ then down $x\%$ is a net loss of $\frac{x^2}{100}$ percent
+- $A = P(1 + r)^n$ — compound growth at rate $r$ per period for $n$ periods; simple interest is $A = P(1 + rn)$, and compounding $k$ times a year gives $P\left(1 + \frac rk\right)^{kn}$
+
+## Conditions
+Each percent is taken of the value at that moment, not of the original, unless the problem says otherwise.
+
+## Why it works
+Percent means per hundred, so $p\%$ of a quantity is $\frac{p}{100}$ of it, and adding that to the quantity multiplies it by $1 + \frac{p}{100}$. Each later change multiplies the current value again, so successive changes multiply, and since multiplication does not care about order, neither do the changes. The same reasoning applied $n$ times at one rate gives $(1 + r)^n$.
+
+## Useful observations
+- Undoing a change of $p\%$ takes a change of $\frac{-p}{100 + p} \cdot 100\%$: undoing a $25\%$ increase is a $20\%$ decrease, since $\frac{1}{1.25} = 0.8$.
+- $x\%$ of $y$ equals $y\%$ of $x$, since both are $\frac{xy}{100}$.
+- Equal percent increases and decreases never cancel; the result is always below the start.
+- A quantity growing at $r\%$ per period roughly doubles in $\frac{72}{r}$ periods.
+
+## Applications
+Prices with markups and discounts, populations and investments that grow by a fixed percent, and mixtures whose concentration changes.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 staple: successive discounts, a change and its reversal, and interest or growth over several periods.
+`,
+
+"quadratic-forms": String.raw`
+## Key forms
+- $ax^2 + bx + c$ — standard form: the $y$-intercept is $c$
+- $a(x - h)^2 + k$ — vertex form: the vertex is $(h, k)$, with $h = -\frac{b}{2a}$ and $k = c - \frac{b^2}{4a}$
+- $a(x - r)(x - s)$ — factored form: the roots are $r$ and $s$, with $r + s = -\frac ba$ and $rs = \frac ca$
+- $h = \frac{r + s}{2}$ — the vertex lies halfway between the roots
+
+## Conditions
+$a \ne 0$. The factored form exists over the reals only when $b^2 - 4ac \ge 0$; with complex roots it still holds, with $r$ and $s$ conjugates.
+
+## Why it works
+Each form expands to the standard one. Expanding $a(x - h)^2 + k$ gives $ax^2 - 2ahx + ah^2 + k$, so matching coefficients gives $b = -2ah$ and $c = ah^2 + k$, which is $h = -\frac{b}{2a}$ and $k = c - \frac{b^2}{4a}$; going from standard to vertex form is [[completing-the-square|completing the square]]. Expanding $a(x - r)(x - s) = ax^2 - a(r + s)x + ars$ gives $r + s = -\frac ba$ and $rs = \frac ca$, which is [[vietas-quadratic|Vieta's Formulas]].
+
+## Useful observations
+- The axis of symmetry is $x = h$, halfway between the roots and between any two points of the parabola at the same height.
+- The vertex form shows the range at once: for $a \gt 0$ the smallest value is $k$, and for $a \lt 0$ the largest value is $k$.
+- A quadratic is determined by any three points, or by its vertex and one more point, or by its two roots and one more point.
+
+## Applications
+Reading the vertex, roots, intercepts, or extreme value of a quadratic, and finding a quadratic from information of each kind.
+
+## Contest profile
+A MATHCOUNTS and AMC 10 staple: building a quadratic from a vertex and a point, or from its roots, and switching forms to read off what a question asks.
+`,
+
+"matrix-inverse": String.raw`
+## Key forms
+- $\begin{pmatrix} a & b \\ c & d \end{pmatrix}^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix}$ — the $2 \times 2$ inverse
+- $A^{-1} = \frac{\operatorname{adj} A}{\det A}$ — the general formula, where $\operatorname{adj} A$ is the transpose of the matrix of cofactors
+- $A$ is invertible $\iff \det A \ne 0$
+- $(AB)^{-1} = B^{-1}A^{-1}$, $\ (A^{\top})^{-1} = (A^{-1})^{\top}$, $\ \det(A^{-1}) = \frac{1}{\det A}$
+- $A\mathbf{x} = \mathbf{b} \iff \mathbf{x} = A^{-1}\mathbf{b}$ — the unique solution of an invertible system
+
+## Conditions
+$A$ is square. When $\det A = 0$ there is no inverse, and the system $A\mathbf{x} = \mathbf{b}$ has no solution or infinitely many.
+
+## Why it works
+Expanding a determinant along row $i$ with the cofactors of row $i$ gives $\det A$; using the cofactors of a different row instead computes the determinant of a matrix with two equal rows, which is $0$. In matrix language that is $A \cdot \operatorname{adj} A = (\det A)\,I$, so dividing by $\det A$ gives the inverse. For a $2 \times 2$ matrix, multiplying out $\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = (ad - bc)I$ checks it directly. Conversely, $\det A \cdot \det A^{-1} = \det I = 1$ shows that a matrix with determinant $0$ cannot have an inverse.
+
+## Useful observations
+- [[cramers-rule|Cramer's Rule]] is $\mathbf{x} = A^{-1}\mathbf{b}$ read one coordinate at a time.
+- A matrix with integer entries has an inverse with integer entries exactly when its determinant is $1$ or $-1$.
+- The order reverses in $(AB)^{-1} = B^{-1}A^{-1}$ because the last transformation applied must be undone first.
+
+## Applications
+Solving square linear systems, undoing a linear transformation, and changing coordinates, as in writing $A^n = PD^nP^{-1}$.
+
+## Contest profile
+Rare on answer-only contests; it appears in olympiad and AIME problems phrased with matrices, and as background for diagonalization and Cramer's Rule.
+`,
+
+"cayley-hamilton": String.raw`
+## Key forms
+- $p(A) = 0$ where $p(\lambda) = \det(\lambda I - A)$ — every square matrix satisfies its characteristic polynomial
+- $A^2 - (\operatorname{tr}A)\,A + (\det A)\,I = 0$ — the $2 \times 2$ case
+- $A^{n+2} = (\operatorname{tr}A)\,A^{n+1} - (\det A)\,A^n$ — so every entry of $A^n$ satisfies the linear recurrence with characteristic polynomial $p$
+- $A^{-1} = \frac{(\operatorname{tr}A)\,I - A}{\det A}$ — the $2 \times 2$ inverse, read off the theorem
+
+## Conditions
+$A$ is any square matrix, diagonalizable or not, with entries in any field.
+
+## Why it works
+For a $2 \times 2$ matrix the theorem is a direct computation. With $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $A^2 = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & d^2 + bc \end{pmatrix}$, and subtracting $(a + d)A$ leaves $(bc - ad)I = -(\det A)\,I$.
+
+In general, let $B(\lambda) = \operatorname{adj}(\lambda I - A)$, a matrix whose entries are polynomials in $\lambda$ of degree at most $n - 1$. The adjugate identity gives $B(\lambda)(\lambda I - A) = p(\lambda)\,I$. Writing $B(\lambda) = B_0 + B_1\lambda + \cdots + B_{n-1}\lambda^{n-1}$ and $p(\lambda) = c_0 + c_1\lambda + \cdots + \lambda^n$ and comparing the coefficients of each power of $\lambda$ gives $n + 1$ matrix equations. Multiplying the equation for $\lambda^k$ by $A^k$ on the right and adding them all, the left sides telescope to $0$ and the right sides add up to $p(A)$.
+
+## Useful observations
+- It replaces diagonalization: $A^n = PD^nP^{-1}$ needs $A$ to be diagonalizable, while the recurrence for $A^n$ always holds.
+- For a [[transfer-matrix-method|transfer matrix]] $M$, the counts $\mathbf{u}^{\top}M^n\mathbf{v}$ satisfy the recurrence whose characteristic polynomial is $\det(\lambda I - M)$, which is why a transfer matrix always yields a linear recurrence.
+- For $A = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$, $p(\lambda) = \lambda^2 - \lambda - 1$, so $A^{n+2} = A^{n+1} + A^n$: the Fibonacci recurrence in matrix form.
+
+## Applications
+Computing powers and inverses of small matrices, and deriving linear recurrences from matrices.
+
+## Contest profile
+An olympiad tool, and the step that justifies a recurrence obtained from a transfer matrix.
+`,
+
+"vandermonde-determinant": String.raw`
+## Key forms
+- $\det\left[x_i^{\,j-1}\right] = \alt{\prod_{i \lt j}(x_j - x_i)}{(x_2 - x_1)(x_3 - x_1)\cdots(x_n - x_{n-1})}$ — the $n \times n$ Vandermonde determinant
+- $\begin{vmatrix} 1 & a & a^2 \\ 1 & b & b^2 \\ 1 & c & c^2 \end{vmatrix} = (b - a)(c - a)(c - b)$ — the $3 \times 3$ case
+- the determinant is nonzero $\iff$ the $x_i$ are distinct
+
+## Conditions
+The rows are consecutive powers $x_i^0, x_i^1, \ldots, x_i^{n-1}$ of the same number; the transpose, with powers down the columns, has the same determinant.
+
+## Why it works
+Treat $x_n$ as a variable and the other $x_i$ as fixed. The determinant is then a polynomial in $x_n$ of degree $n - 1$, and it vanishes at $x_n = x_1, \ldots, x_{n-1}$, since each makes two rows equal. So it equals $c\,(x_n - x_1)\cdots(x_n - x_{n-1})$, where $c$ is the coefficient of $x_n^{n-1}$, which is the cofactor of that entry: the Vandermonde determinant of $x_1, \ldots, x_{n-1}$. Induction on $n$ finishes the product.
+
+## Useful observations
+- Fitting a polynomial $a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ through $n$ points is a linear system whose matrix is the Vandermonde matrix, so distinct $x$-values give exactly one solution, the [[lagrange-interpolation-formula|interpolating polynomial]].
+- For the roots of a polynomial, the square of the Vandermonde determinant is the [[resultant-discriminant|discriminant]], up to a power of the leading coefficient.
+- Swapping two of the $x_i$ swaps two rows and flips the sign, matching the antisymmetry of the product of differences.
+
+## Applications
+Interpolation and uniqueness of polynomials, discriminants, and olympiad problems about determinants built from powers.
+
+## Contest profile
+An olympiad algebra tool, usually appearing as the reason a linear system in polynomial coefficients has a unique solution.
+`
 });

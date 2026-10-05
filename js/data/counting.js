@@ -639,6 +639,15 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "tree-basics",
+          name: "Basic Facts about Trees",
+          latex: String.raw`\text{tree on } n \text{ vertices} \iff \text{connected with } n - 1 \text{ edges} \iff \text{acyclic with } n - 1 \text{ edges}`,
+          description: String.raw`A tree is a connected graph with no cycles. Every tree on $n$ vertices has exactly $n - 1$ edges, any two of its vertices are joined by exactly one path, and every tree with at least two vertices has at least two leaves, vertices of degree $1$. Any two of the conditions connected, acyclic, and $n - 1$ edges force the third.`,
+          keywords: ["tree", "graph theory", "n minus 1 edges", "leaves of a tree", "unique path", "connected acyclic graph", "spanning tree", "forest", "vertices and edges"],
+          importance: "medium",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "handshake-lemma",
           name: "Handshake Lemma",
           latex: String.raw`\sum_{v} \deg(v) = 2E`,

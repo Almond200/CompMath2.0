@@ -48,6 +48,15 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "fundamental-theorem-arithmetic",
+          name: "Fundamental Theorem of Arithmetic",
+          latex: String.raw`n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k} \text{ in exactly one way}`,
+          description: String.raw`The Fundamental Theorem of Arithmetic says that every integer greater than $1$ is a product of primes in exactly one way, apart from the order of the factors. It is the reason a number can be described by the exponents in its prime factorization, which is how divisor counts, gcds, lcms, and perfect powers are computed. Euclid's proof that there are infinitely many primes rests on the same idea.`,
+          keywords: ["fundamental theorem of arithmetic", "unique factorization", "prime factorization", "product of primes", "infinitely many primes", "euclid's proof", "primes", "exponents"],
+          importance: "high",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "bezouts-identity",
           name: "Bézout's Identity",
           latex: String.raw`\exists\, x, y \in \mathbb{Z}: \; ax + by = \gcd(a, b)`,
@@ -265,6 +274,15 @@ window.MATH_SECTIONS.push({
           keywords: ["wilson", "factorial mod prime", "primality", "half factorial"],
           importance: "medium",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "lagrange-roots-mod-p",
+          name: "Lagrange's Theorem on Polynomial Roots mod p",
+          latex: String.raw`\deg f = d,\ \ f \not\equiv 0 \pmod p \;\Longrightarrow\; f(x) \equiv 0 \pmod p \text{ has at most } d \text{ solutions}`,
+          description: String.raw`Lagrange's Theorem says that a polynomial of degree $d$ with integer coefficients, not all divisible by the prime $p$, has at most $d$ roots modulo $p$. It is the modular version of the fact that a polynomial cannot have more roots than its degree, and it holds because divisibility by a prime behaves like ordinary algebra; for a composite modulus it fails.`,
+          keywords: ["lagrange's theorem polynomial", "roots modulo a prime", "at most d roots mod p", "polynomial congruence", "number of solutions mod p", "wilson's theorem proof", "primitive roots"],
+          importance: "low",
+          level: ["Olympiad"]
         },
         {
           id: "crt",

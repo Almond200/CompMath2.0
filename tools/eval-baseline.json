@@ -750,7 +750,7 @@
   },
   {
    "q": "technique where you set two variables to their sum and product",
-   "want": "sp-substitution",
+   "want": "symmetric-polynomial-strategies",
    "rank": 1
   },
   {
