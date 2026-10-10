@@ -43,6 +43,7 @@ window.LabData = (function () {
             description: String(f.description || "").replace(/\[\[([\w-]+)(?:\|([^\]]*))?\]\]/g, function (m, id, label) { return label || id; }),
             type: f.type || null,
             importance: f.importance || "medium",
+            tier: f.tier || "AMC",
             level: f.level || [],
             sectionId: sec.id,
             sectionTitle: sec.title,

@@ -72,6 +72,7 @@ Exactly two field orders exist, and nothing else. Copy one of these.
           description: String.raw`...`,
           keywords: ["...", "...", "...", "..."],
           importance: "high",
+          tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
         },
 ```
@@ -101,11 +102,32 @@ Exactly two field orders exist, and nothing else. Copy one of these.
   `tools/scan-conventions.py` names any card that is not in one of the two orders.
 - Every card has a `latex` and a `description`. **0** cards omit either.
 
+### Tiers
+
+A card's `tier` says where it is **first needed**; later stages still use the earlier tricks.
+
+| Tier | Meaning | Evidence |
+|---|---|---|
+| `AMC` | needed on AMC 10 or 12, problems 1 to 25 | tagged on an AMC problem, or an AMC 10/12 or MATHCOUNTS level tag |
+| `AIME Early` | first needed at AIME problems 1 to 10 | tagged on AIME 1 to 10 and no AMC problem |
+| `AIME Late` | first needed at AIME problems 11 to 15 | tagged only on AIME 11 to 15, or an AIME-level tool with no early use |
+| `Olympiad` | beyond the AMC and AIME | no AMC or AIME problem needs it; olympiad level tags only |
+
+- Judge a new card by the problems it would be tagged on and by the rubric, not by how hard it feels: a short fact can be AMC and a long method AIME Late.
+- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Four values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), and `lower` for a card that is pretty much never used (at most one tagged problem). The old `lowest` is gone. The reviewed assignment is `tools/importance-proposal.md`.
+- Tier and importance are shown together as **one split oval**: the contest tier on the left, the importance (HIGH, MED, LOW, LOWER) on the right in a lighter tint of the same color. There is no setting to switch labels (removed 2026-10-10: two label systems were confusing).
+- A card shows exactly one tag beside its kind, the split oval. The `level` array is not shown as text (no MATHCOUNTS / Olympiad wording beside the badge) and is no longer a filter; it remains in the data for Special:Browse and the lab. Nothing on a card may say the same thing twice.
+- **The filter is one global filter** (contest tier and importance), stored under `mq-settings.filter`, applied identically to subject, group, and topic pages, the sidebar (counts and greyed links follow it), and a card listed in two subjects (`ALSO_LISTED_IN`). It is never per section.
+- Every card list uses the chosen order (tier by default), including Special:Browse results; lists a reader curated, search results, and tag matches keep their own order.
+- The reviewed assignment of every card, with its problem evidence, is `tools/tier-proposal.md`. A new card's tier goes in the card and, when the table is regenerated, in that file.
+- `scan-conventions.py` fails on a card with a missing or unknown tier.
+
 ### Field values
 
 | field | measured |
 |---|---|
-| `importance` | five values, not three: `high` 136, `medium` 225, `low` 99, `lower` 44, `lowest` 52 |
+| `importance` | four values: `high`, `medium`, `low`, `lower`, judged within the card's subsection (see "Tiers"); shown in the split oval beside the tier |
+| `tier` | the default label, one of `AMC`, `AIME Early`, `AIME Late`, `Olympiad` (see "Tiers" below); every card carries one, after `importance` and before `level` |
 | `level` | drawn from `MATHCOUNTS` (105), `AMC10` (206), `AMC12` (301), `AIME` (401), `Olympiad` (209). No other string appears |
 | `keywords` | min 4, median 6, 90th percentile 10, max 20. Four is the floor — never ship fewer |
 | `name` | median 24 chars, max 55. 63 names use ` & `, 42 carry a parenthetical like `(PIE)` |
@@ -233,6 +255,17 @@ Two optional headings, and no others (the scan fails on any other): `## Key form
   take no comma).
 - **American spellings** in anything you write: `center`, `-ize`. 31 existing write-ups carry British
   forms; leave those alone rather than sweeping a file.
+- **`### ` subheadings** may split a long section into named parts (First-Step Analysis splits How by the kind of question); they render like a pattern's "Methods to try" label. Only the `##` headings are fixed by the kind's template.
+- **Tables** are a block of `| a | b |` lines, header row first and an optional `|---|---|` row under it; cells take math and [[links]]. Use one when a computation runs in rounds or cases (the step-by-step probability table on First-Step Analysis), and introduce it in prose so the page reads as an explanation, not a list of numbers.
+- **Do not point at the page you are on.** A sentence never refers to its own section or card ("at the end of this section", "as below", "as the figure on this card shows", "(the last kind is handled below)"): the reader is already reading it, and the sections are in order. `scan-conventions.py` flags these phrases ("a sentence pointing at its own section or card").
+- **Similarity and congruence tests are named without marks.** AA, SAS, and SSS are the names of both families; the card says in words which one it is about, rather than adding a `~` to some and not others.
+- **A formula's Key forms hold facts about that formula only.** A fact that belongs to another card moves there (the equal base angles and cyclic test of the isosceles trapezoid left Consecutive Angles of a Trapezoid for the figure's own card).
+- **Names say what the card is at a glance, including its setting.** A parenthesis in a name is for the technique's common label, as in "First-Step Analysis (States)" and "Counting Restricted Sequences (State Machines)".
+- **A paragraph begins with explanation, never with an example.** Say what the idea is and why it holds, then bring in a case as part of the explanation (2026-10-10, Stanley).
+- **Examples are not reused between cards.** Each worked example has its own numbers and setting; the same triangle (the 13-14-15 triangle, 3-4-5) is not used by a second card. `scan-conventions.py` fails when two converted cards' triangle examples share the same three numbers.
+- **Several forms in the thumbnail when the card has several case forms.** "Acute, Right, or Obtuse from the Sides" shows $c^2 < a^2 + b^2$, $c^2 = a^2 + b^2$, and $c^2 > a^2 + b^2$, each with its angle condition; an inequality shows its equality case; a result with a converse shows both directions. Forms are separated by `\qquad` and stack in one block. Check this on every card you convert.
+- **Calculus is typeset properly:** the differential is upright and thin-spaced, `\int A(h)\,\mathrm{d}h`; `\lim`, `\sin`, `\log` always carry their backslash. `scan-conventions.py` flags an integral with a slanted or unspaced differential.
+- **Math in a card name typesets everywhere the name appears**, back links included (`.back-link` is on the `renderMath` list).
 - **No nested lists in a write-up.** The renderer does not support them, and an indented sub-list breaks the whole numbered list into one paragraph. Use a flat list, or a paragraph followed by a separate bullet list.
 - **Never a raw `<` inside maths.** The write-up, the description and a problem `strategy` are all
   inserted as HTML before KaTeX runs, so `<` plus a letter opens a tag and the browser silently eats
@@ -654,7 +687,7 @@ are untouched.
 
 ## 11. Tagging a problem
 
-`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`.
+`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`. The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; the page prints it with the credit "Problem ..., © Mathematical Association of America, used under CC BY-NC-SA 4.0. Text and figures from LIVE by Po-Shen Loh." Never add a statement by hand and never import a solution. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
 
 - `formulas` = the basic tools for the **appropriate** route, not the theoretical minimum. Everything
   reduces to similar triangles and Pythagoras; tagging that way tells a reader nothing.

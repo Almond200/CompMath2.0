@@ -90,6 +90,7 @@
   <select id="lens" title="What the colours mean">
     <option value="subject">colour: subject</option>
     <option value="level">colour: first contest</option>
+    <option value="tier">colour: contest tier</option>
     <option value="importance">colour: importance</option>
     <option value="degree">colour: how linked</option>
   </select>
@@ -123,7 +124,7 @@
 <script src="../js/data/details/counting-details.js"></script>
 <script src="../js/data/diagrams/geometry-diagrams.js"></script>
 <script src="../js/data/diagrams/general-diagrams.js"></script>
-<script src="lab-common.js?v=2"></script>
+<script src="lab-common.js?v=3"></script>
 <script>
 (function () {
   "use strict";
@@ -165,7 +166,8 @@
   var LEVEL_COLOR = { MATHCOUNTS: "#4cc38a", AMC10: "#5b8cff", AMC12: "#9d7bff",
                       AIME: "#f0a35e", Olympiad: "#ef5f8b" };
   var IMP_COLOR = { high: "#f5c451", medium: "#5b8cff", low: "#4cc38a",
-                    lower: "#7b86a3", lowest: "#5a6480" };
+                    lower: "#7b86a3" };
+  var TIER_COLOR = { "AMC": "#5b8cff", "AIME Early": "#f0a35e", "AIME Late": "#f5c451", "Olympiad": "#ef5f8b" };
   function firstLevel(c) {
     for (var i = 0; i < LEVEL_ORDER.length; i++)
       if ((c.level || []).indexOf(LEVEL_ORDER[i]) !== -1) return LEVEL_ORDER[i];
@@ -181,6 +183,7 @@
   var lens = "subject";
   function colorOf(c) {
     if (lens === "level") return LEVEL_COLOR[firstLevel(c)] || "#5a6480";
+    if (lens === "tier") return TIER_COLOR[c.tier] || "#5a6480";
     if (lens === "importance") return IMP_COLOR[c.importance] || "#5a6480";
     if (lens === "degree") return degColor(c.degree);
     return c.color;
@@ -699,8 +702,12 @@
       rows = used.map(function (l) {
         return swatch(LEVEL_COLOR[l], l === "AMC10" ? "AMC 10" : l === "AMC12" ? "AMC 12" : l);
       }).join("") + '<div style="color:var(--faint);font-size:11px;margin-top:4px">earliest contest that asks it</div>';
+    } else if (lens === "tier") {
+      rows = ["AMC", "AIME Early", "AIME Late", "Olympiad"].map(function (k) {
+        return swatch(TIER_COLOR[k], k);
+      }).join("") + '<div style="color:var(--faint);font-size:11px;margin-top:4px">where it is first needed</div>';
     } else if (lens === "importance") {
-      rows = ["high", "medium", "low", "lower", "lowest"].map(function (k) {
+      rows = ["high", "medium", "low", "lower"].map(function (k) {
         return swatch(IMP_COLOR[k], k);
       }).join("");
     } else if (lens === "degree") {

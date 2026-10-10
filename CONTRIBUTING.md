@@ -108,7 +108,7 @@ Each item here is something that has actually gone wrong, not a hypothetical.
 ## Tagging a problem in the database
 
 An entry is `{ ref, formulas, strategy }`, optionally carrying `trick` and `trickFormulas` too —
-no problem statement, just a link out to AoPS. The `formulas` list is a claim about **how the
+no problem statement (the statements of AMC and AIME problems come from `tools/fetch-live-statements.py` into `js/data/problems/statements/`, with the MAA credit line the problem page prints under each). The `formulas` list is a claim about **how the
 problem is best solved**, so it has to be earned.
 
 ### Formulas and Strategies, or a Trick
