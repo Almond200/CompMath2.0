@@ -202,7 +202,14 @@
   ]);
 
   // Importance tiers, most-used first. Filtered per section via the settings popup.
-  const IMP_TIERS = ["high", "medium", "low", "lower", "lowest"];
+  const IMP_TIERS = ["high", "medium", "low", "lower"];
+  // Contest tiers, the default label: the first stage where a card is needed. AMC is AMC 10/12
+  // problems 1 to 25, AIME Early first matters at AIME 1 to 10, AIME Late at AIME 11 to 15, and
+  // Olympiad is beyond both. Later stages still use the earlier tricks; the tier says where a
+  // card first matters. Importance (High, Medium, Low, Lower) is how much a card matters inside its own subsection, whatever its tier; the two share one tag.
+  const TIER_KEYS = ["amc", "aime-early", "aime-late", "olympiad"];
+  const TIER_RANK = { "amc": 0, "aime-early": 1, "aime-late": 2, "olympiad": 3 };
+  const tierKey = f => String(f.tier || "").toLowerCase().replace(/\s+/g, "-");
   // How a section page is laid out. "cards" is the full card grid under subsection headings;
   // "wiki" is a bare A-Z index of names, which drops subsections because the alphabet groups
   // instead. Chosen on the Settings page.
@@ -215,11 +222,11 @@
   const DIAGRAM_MODES = ["none", "curated", "on"];
   const DENSITIES = ["comfortable", "compact", "spacious"];
   const NOTATIONS = ["sigma", "expanded"];
-  const TEXT_SIZES = ["normal", "large"];
-  // Card order on a section page. "curated" is file order, which is how the cards were
-  // written up; "problems" puts the cards the practice problems actually use first, and only
+  const TEXT_SIZES = ["normal", "large", "larger"];
+  // Card order on a section page. "tier" puts the cards in the order of the chosen label (AMC
+  // first by default); "curated" is file order, which is how the cards were written up; "problems" puts the cards the practice problems actually use first, and only
   // falls back to the (subjective) importance tier for the cards no problem uses yet.
-  const ORDERS = ["curated", "problems"];
+  const ORDERS = ["tier", "curated", "problems"];
   // Figure captions on the browsing cards. A card's own page always shows them, since there
   // the caption is part of the explanation; on the card grid some readers want just the picture.
   const CAPTION_MODES = ["show", "hide"];
@@ -246,27 +253,23 @@
   // leaves the browser's own scrolling alone; the others scale each wheel step.
   const SCROLL_SPEEDS = ["normal", "slow", "fast"];
   const SCROLL_FACTOR = { normal: 1, slow: 0.6, fast: 1.6 };
-  // Each section carries its own rarity + level filter (persisted).
+  // One filter for the whole app: contest tier and importance (persisted).
   function loadSettings() {
     let s = null;
     try { s = JSON.parse(localStorage.getItem("mq-settings") || "null"); } catch (e) {}
-    const sf = {};
-    SECTION_IDS.forEach(id => {
-      const stored = s && s.sections && s.sections[id];
-      let rr = (stored && Array.isArray(stored.rarities)) ? stored.rarities.filter(r => IMP_TIERS.indexOf(r) !== -1) : IMP_TIERS;
-      // Migration: settings saved before the "lowest" tier existed had all four old tiers — upgrade to all five.
-      if (rr.length === IMP_TIERS.length - 1 && rr.indexOf("lowest") === -1) rr = IMP_TIERS.slice();
-      if (!rr.length) rr = IMP_TIERS.slice();
-      const ll = (stored && Array.isArray(stored.levels)) ? stored.levels.filter(l => LEVELS.indexOf(l) !== -1) : [];
-      sf[id] = { rarities: new Set(rr), levels: new Set(ll) };
-    });
-    // Preferences live alongside the per-section filters in the same store. Theme is the one
+    const F = (s && s.filter) || {};
+    const keep = (arr, allowed) => {
+      const k = Array.isArray(arr) ? arr.filter(x => allowed.indexOf(x) !== -1) : [];
+      return new Set(k.length ? k : allowed);
+    };
+    const filter = { tiers: keep(F.tiers, TIER_KEYS), importances: keep(F.importances, IMP_TIERS) };
+    // Preferences live alongside the filter in the same store. Theme is the one
     // exception: it keeps its own localStorage key because the pre-paint script in index.html
     // has to read it before this file is even parsed.
     const P = (s && s.prefs) || {};
     const pick = (v, allowed) => allowed.indexOf(v) !== -1 ? v : allowed[0];
     return {
-      sectionFilters: sf,
+      filter,
       layout: pick(P.layout, LAYOUTS),
       diagrams: pick(P.diagrams === "thumb" ? "curated" : P.diagrams === "all" ? "on" : P.diagrams, DIAGRAM_MODES),
       density: pick(P.density, DENSITIES),
@@ -280,16 +283,10 @@
       autoGroup: P.autoGroup === false ? false : true
     };
   }
-  // Merge into what is already stored rather than rebuilding it. SECTION_IDS comes from the
-  // loaded data, so on a page where a data file failed it is short or empty -- rebuilding
-  // from it would write `sections: {}` and erase every saved filter on the reader's first
-  // click. Writing only the sections this page actually knows about leaves the rest intact.
   function saveSettings() {
     try {
-      let prev = null;
-      try { prev = JSON.parse(localStorage.getItem("mq-settings") || "null"); } catch (e) {}
       const out = {
-        sections: Object.assign({}, (prev && prev.sections) || {}),
+        filter: { tiers: [...state.filter.tiers], importances: [...state.filter.importances] },
         prefs: {
           layout: state.layout, diagrams: state.diagrams,
           density: state.density, notation: state.notation,
@@ -297,9 +294,6 @@
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll
         }
       };
-      SECTION_IDS.forEach(id => {
-        out.sections[id] = { rarities: [...state.sectionFilters[id].rarities], levels: [...state.sectionFilters[id].levels] };
-      });
       localStorage.setItem("mq-settings", JSON.stringify(out));
       return true;
     } catch (e) { return storageFailed(); }
@@ -308,7 +302,7 @@
 
   const state = {
     query: "",
-    sectionFilters: _loaded.sectionFilters,  // per-section { rarities:Set, levels:Set }
+    filter: _loaded.filter,      // the one filter: { tiers:Set, importances:Set }
     activeSectionId: SECTIONS.length ? SECTIONS[0].id : null,
     adv: null,                   // advanced search: { sections:Set, subs:Set, topics:Set, desc:string } or null
     openGroup: null,             // sidebar: explicitly opened group, or null to follow the active section
@@ -323,7 +317,7 @@
     density: _loaded.density,    // "comfortable" | "spacious" | "compact"
     notation: _loaded.notation,  // "sigma" | "expanded"
     text: _loaded.text,          // "normal" | "large"
-    order: _loaded.order,        // "curated" | "problems" — card order on section pages
+    order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
@@ -373,15 +367,12 @@
     return SPACES[state.space] ? state.space : "formulas";
   }
   function activeFilter() {
-    return state.sectionFilters[state.activeSectionId] || { rarities: new Set(IMP_TIERS), levels: new Set() };
+    return state.filter;
   }
 
   const $sidebar = document.getElementById("sidebar");
   const $content = document.getElementById("content");
   const $search = document.getElementById("search-input");
-  const $levelFilters = document.getElementById("level-filters");
-  const $sortSelect = document.getElementById("sort-select");
-  const $filtersRow = document.querySelector(".filters-row");
 
   // ---------- Search index ----------
 
@@ -1624,19 +1615,24 @@
     const ids = clusterIdx === undefined || !sub.groups
       ? sub.formulas.map(f => f.id)
       : (sub.groups[clusterIdx] || { ids: [] }).ids;
-    return ids.filter(id => BY_ID[id] && passesLevel(BY_ID[id].formula)).length;
+    return ids.filter(id => BY_ID[id] && passesFilter(BY_ID[id].formula)).length;
   }
   const navLinkArgs = a =>
     [a.dataset.section, +a.dataset.sub, a.dataset.cluster === undefined ? undefined : +a.dataset.cluster];
 
-  function passesLevel(f) {
-    const entry = BY_ID[f.id];
-    const sf = entry ? state.sectionFilters[entry.section.id] : null;
-    if (!sf) return true;
-    const levelOk = sf.levels.size === 0 || f.level.some(l => sf.levels.has(l));
-    const impOk = sf.rarities.has(f.importance);
-    return levelOk && impOk;
+  // Ranks for ordering: the contest tier first, then importance inside the tier.
+  const IMP_RANK = { high: 0, medium: 1, low: 2, lower: 3 };
+  const tierRank = f => TIER_RANK[tierKey(f)] !== undefined ? TIER_RANK[tierKey(f)] : 9;
+  const impRank = f => IMP_RANK[f.importance] !== undefined ? IMP_RANK[f.importance] : 9;
+  const labelRank = f => tierRank(f) * 10 + impRank(f);
+  // The one gate every card list goes through. The filter is global, not per section, so a card
+  // listed in two subjects (ALSO_LISTED_IN) is judged the same way in both.
+  function passesFilter(f) {
+    const af = state.filter;
+    return af.tiers.has(tierKey(f)) && af.importances.has(f.importance);
   }
+  const filterActive = () => state.filter.tiers.size < TIER_KEYS.length
+    || state.filter.importances.size < IMP_TIERS.length;
 
   // ---------- Search ----------
 
@@ -1837,7 +1833,6 @@
   let RRF_K = 60, RRF_K_SEM = 60, RRF_LEX = 1.0, RRF_SEM = 0.30,
       RRF_MARGIN = 0.25, RRF_MIN_TOKENS = 3, RRF_SIM_LO = 0.35, RRF_SIM_HI = 0.55;
 
-  const IMP_RANK = { high: 0, medium: 1, low: 2, lower: 3, lowest: 4 };
 
   // opts.only: a Set of card ids to restrict the answer to, applied to the ranked pool
   // rather than to the corpus. Scoring stays corpus-wide — IDF and field-length norms are
@@ -1891,7 +1886,7 @@
     // Prefer entries matching every keyword; fall back to partial matches.
     // Ties break toward higher-importance formulas, then names.
     const cmp = (a, b) => b.score - a.score ||
-      IMP_RANK[a.entry.formula.importance] - IMP_RANK[b.entry.formula.importance] ||
+      labelRank(a.entry.formula) - labelRank(b.entry.formula) ||
       a.entry.formula.name.localeCompare(b.entry.formula.name);
     let pool = scored;
     pool.sort(cmp);
@@ -2001,12 +1996,14 @@
   // ---------- "Most practice problems" order (Settings -> Card order) ----------
   // The count is the number the card page lists under its problems, trick uses included.
   function problemCount(id) { return (PROBLEMS_BY_CARD[id] || []).length; }
-  function impRank(f) { return IMP_RANK[f.importance] !== undefined ? IMP_RANK[f.importance] : 9; }
   // Section and topic pages only. This is deliberately NOT sortEntries(), which also runs on
   // search results: reordering those by problem count would throw away their relevance order.
   // Used cards first, most-used first; the importance tier only decides ties and the cards no
   // problem uses yet, which is the one place the subjective ranking is still all we have.
   function browseOrder(entries) {
+    if (state.order === "tier") {
+      return entries.map((e, i) => ({ e, i })).sort((a, b) => labelRank(a.e.formula) - labelRank(b.e.formula) || a.i - b.i).map(x => x.e);
+    }
     if (state.order !== "problems") return entries;
     return entries.map((e, i) => ({ e, i, n: problemCount(e.formula.id) }))
       .sort((a, b) => b.n - a.n || impRank(a.e.formula) - impRank(b.e.formula) || a.i - b.i)
@@ -2068,7 +2065,7 @@
       // Anywhere a formula NAME can appear needs to be on this list: eight card names carry
       // LaTeX ("Powers of $x + 1/x$", "Primes Are $6k \\pm 1$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them.
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -2445,12 +2442,12 @@
     });
   }
 
+  // Importance means how much a card matters inside its own subsection, whatever its contest tier.
   const IMPORTANCE_LABELS = {
-    high: ["HIGH", "High importance — core: you could solve most problems at this level with these"],
-    medium: ["MED", "Medium importance — builds on the core to greatly simplify or speed up solutions"],
-    low: ["LOW", "Low importance — rarely necessary, but does turn up sometimes"],
-    lower: ["LOWER", "Lower importance — almost never used on contests; here for reference"],
-    lowest: ["LOWEST", "Lowest importance — essentially never used; the lowest of the low, kept only for completeness"]
+    high: ["HIGH", "High importance: central to its subsection"],
+    medium: ["MED", "Medium importance: builds on the core of its subsection"],
+    low: ["LOW", "Low importance: useful now and then within its subsection"],
+    lower: ["LOWER", "Lower importance: pretty much never used; here for reference"]
   };
 
   function badgeHtml(f) {
@@ -2460,10 +2457,19 @@
     return kind + f.level.map(l => `<span class="badge badge-${l}">${LEVEL_LABELS[l]}</span>`).join("");
   }
 
-  // Importance sits beside the title, separate from the level badges on the right.
+  const TIER_LABELS = {
+    "amc": ["AMC", "AMC: needed for AMC 10 and 12 problems 1 to 25"],
+    "aime-early": ["AIME-E", "AIME Early: first needed at AIME problems 1 to 10"],
+    "aime-late": ["AIME-L", "AIME Late: first needed at AIME problems 11 to 15"],
+    "olympiad": ["OLYMPIAD", "Olympiad: beyond the AMC and AIME"]
+  };
+  // One split oval beside the title: the left half is the contest tier, the right half is the
+  // card's importance within its subsection.
   function impBadgeHtml(f) {
-    const lab = IMPORTANCE_LABELS[f.importance];
-    return lab ? `<span class="badge badge-imp-${f.importance}" title="${lab[1]}">${lab[0]}</span>` : "";
+    const t = tierKey(f), tl = TIER_LABELS[t], il = IMPORTANCE_LABELS[f.importance];
+    if (!tl) return "";
+    return `<span class="tagpill tagpill-${t}" title="${tl[1]}${il ? "; " + il[1] : ""}">` +
+      `<span class="tp-tier">${tl[0]}</span>${il ? `<span class="tp-imp tp-imp-${f.importance}">${il[0]}</span>` : ""}</span>`;
   }
 
   function tagRowHtml(f, queryTokens, topics) {
@@ -2477,19 +2483,13 @@
     return `<div class="tag-row">${tchips.join("")}${tags.join("")}</div>`;
   }
 
-  // The kind badge alone, and the contest levels as one range ("AMC 10 → AIME").
+  // The kind badge alone; the contest tier (or importance) is the card's one other tag.
   function kindBadgeHtml(f) {
     const k = kindOf(f);
     return `<span class="badge badge-${k}">${k.toUpperCase()}</span>`;
   }
-  function levelRangeHtml(f) {
-    const ls = LEVELS.filter(l => f.level.indexOf(l) !== -1);
-    if (!ls.length) return "";
-    const txt = ls.length === 1 ? LEVEL_LABELS[ls[0]] : `${LEVEL_LABELS[ls[0]]} &rarr; ${LEVEL_LABELS[ls[ls.length - 1]]}`;
-    return `<span class="level-range" title="${ls.map(l => LEVEL_LABELS[l]).join(", ")}">${txt}</span>`;
-  }
 
-  // A browsing card stays calm: name, kind and level range, the formula (or a method's When /
+  // A browsing card stays calm: name, kind and contest tier, the formula (or a method's When /
   // Core move, a pattern's Recognize / Try), the summary. Star, add and copy show on hover;
   // importance and keyword tags live on the card's own page.
   function cardHtml(entry, showCrumb, queryTokens) {
@@ -2501,12 +2501,13 @@
       <article class="card card-${kindOf(f)}" data-id="${f.id}" id="f-${f.id}">
         <div class="card-head">
           <h4 class="card-name">${f.name}</h4>
+          <span class="card-tags">${kindBadgeHtml(f)}${impBadgeHtml(f)}</span>
           <span class="card-actions">
             ${starBtnHtml(f.id)}
             ${addListBtnHtml(f.id)}
           </span>
         </div>
-        <div class="card-meta">${kindBadgeHtml(f)}${levelRangeHtml(f)}${crumb}</div>
+        ${crumb ? `<div class="card-meta">${crumb}</div>` : ""}
         ${f.placeholder ? `<p class="card-planned">Planned card</p>` : isConverted(f) && !f.latex ? cardLeadHtml(f) : cardFormulaHtml(f)}
         <p class="card-desc">${firstSentences(f.description, GRID_SENTENCES)}</p>
         ${extraHtml(f)}
@@ -3465,6 +3466,15 @@
       if (items.every(l => l.startsWith("- "))) {
         return `<ul class="detail-list">${items.map(l => `<li>${linkifyCards(l.slice(2).trim())}</li>`).join("")}</ul>`;
       }
+      // "| a | b |" on every line: a table. The first row is the header, a "|---|" row under it
+      // is skipped, and every cell is ordinary card text, so math and [[links]] work inside it.
+      if (items.length >= 2 && items.every(l => l.startsWith("|"))) {
+        const cells = l => l.replace(/^\|/, "").replace(/\|$/, "").split("|").map(c => c.trim());
+        const rows = items.filter(l => !/^\|[\s:|-]+\|$/.test(l)).map(cells);
+        const head = rows.shift();
+        return `<div class="detail-table-wrap"><table class="detail-table"><thead><tr>${head.map(c => `<th>${linkifyCards(c)}</th>`).join("")}</tr></thead>` +
+          `<tbody>${rows.map(r => `<tr>${r.map(c => `<td>${linkifyCards(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      }
       // "1. ...", "2. ..." on every line: the numbered steps of a method's "## How".
       if (items.every(l => /^\d+\.\s/.test(l))) {
         return `<ol class="detail-list detail-steps">${items.map(l => `<li>${linkifyCards(l.replace(/^\d+\.\s+/, ""))}</li>`).join("")}</ol>`;
@@ -3492,6 +3502,10 @@
           html += `<h4>${title}</h4>`;
         }
       }
+      // A "### " line is a subheading inside a section, styled like the pattern's
+      // "Methods to try" / "Formulas to try" labels (First-Step Analysis splits How by question).
+      if (lines.length && lines[0].trim().startsWith("### ")) html += `<h5 class="try-sub body-sub">${linkifyCards(lines.shift().trim().slice(4).trim())}</h5>`;
+      if (!lines.some(l => l.trim())) return html;
       const only = lines.map(l => l.trim()).filter(Boolean);
       if (only.length === 1 && FIGURE_MARK.test(only[0])) {
         return html + bodyFigureHtml(fid, only[0].match(FIGURE_MARK)[1]);
@@ -3568,6 +3582,9 @@
                 ? "tag results"
                 : `results for &ldquo;${escapeAttr(backFromSearch.query.trim())}&rdquo;`}</a>`
             : ""}
+          ${backFromCardProblem && backFromCardProblem.fid === f.id && PROBLEM_BY_SLUG[backFromCardProblem.slug]
+            ? `<a class="back-link" href="#/problem/${backFromCardProblem.slug}">&larr; Back to ${escapeAttr(refShort(PROBLEM_BY_SLUG[backFromCardProblem.slug].ref))}</a>`
+            : ""}
           ${backFromFormula && backFromFormula.fid === f.id && anyList(backFromFormula.listId)
             ? `<a class="back-link" href="#/list/${backFromFormula.listId}">&larr; Back to ${escapeAttr(anyList(backFromFormula.listId).name)}</a>`
             : ""}
@@ -3576,7 +3593,7 @@
         <p class="detail-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</p>
         <div class="detail-head">
           <h2 class="card-name">${f.name}</h2>
-          <div class="card-meta detail-meta">${kindBadgeHtml(f)}${levelRangeHtml(f)}${impBadgeHtml(f)}</div>
+          <div class="card-meta detail-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
           <span class="detail-actions">
             ${starBtnHtml(f.id)}
             ${addListBtnHtml(f.id)}
@@ -3739,31 +3756,36 @@
     const panel = e.target.closest && e.target.closest(".hp-click");
     if (panel && e.target === panel && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); location.hash = panel.dataset.open; }
   });
-  // A Methods or Patterns subject page lists every group, and a group link only scrolls to its
-  // heading, so the sidebar must follow the scroll: the group whose heading has passed under the
-  // top bar is the one marked. The address follows too, through replaceState, so a refresh or a
-  // Back to this page returns to the same group without adding history entries.
+  // A subject page (Formulas topics, Methods groups, Patterns families) is one long scrolling page,
+  // and a sidebar link only scrolls to a heading, so the sidebar must follow the scroll: the group
+  // whose heading has passed under the top bar is the one marked. The address follows too, through
+  // replaceState, so a refresh or a Back to this page returns to the same group without adding
+  // history entries.
   function markNavGroup() {
     if (getRoute().type !== "home" || state.landing || state.query.trim() || state.adv) return;
     const sec = SECTIONS.find(x => x.id === state.activeSectionId);
-    if (!sec || !bySubject(sec) || state.activeSub == null) return;
-    const groups = [...document.querySelectorAll('section.grp[id^="grp-' + sec.id + '-' + state.activeSub + '-"]')];
+    if (!sec) return;
+    const bySub = bySubject(sec);
+    if (bySub && state.activeSub == null) return;
+    const groups = [...document.querySelectorAll('section.grp[id^="grp-' + sec.id + "-" + (bySub ? state.activeSub : "x") + '-"]')];
     if (!groups.length) return;
     const bar = document.querySelector(".topbar");
     const line = (bar ? bar.offsetHeight : 0) + 24;
+    const was = bySub ? state.activeCluster : state.activeTopic;
     let cur = null;
     groups.forEach(g => { if (g.getBoundingClientRect().top <= line) cur = +g.id.split("-").pop(); });
+    if (cur === null) cur = +groups[0].id.split("-").pop();   // above the first heading: the first group
     // At the very bottom the last groups can never reach the line. Keep a group the reader chose
     // while its heading is still on screen; otherwise mark the last group.
     if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
-      const chosen = groups.find(g => +g.id.split("-").pop() === state.activeCluster);
+      const chosen = groups.find(g => +g.id.split("-").pop() === was);
       if (groupPinned && chosen && chosen.getBoundingClientRect().top < window.innerHeight) return;
       cur = +groups[groups.length - 1].id.split("-").pop();
     }
-    if (cur === state.activeCluster) return;
-    state.activeCluster = cur;
+    if (cur === was) return;
+    if (bySub) state.activeCluster = cur; else state.activeTopic = cur;
     updateNavActive();
-    const want = sectionHash(sec.id, { sub: state.activeSub, cluster: cur });
+    const want = sectionHash(sec.id, bySub ? { sub: state.activeSub, cluster: cur } : { topic: cur });
     if (location.hash !== want) history.replaceState(history.state, "", want);
   }
   let tocTick = 0;
@@ -3846,7 +3868,7 @@
   // method groups, a Patterns subject's pattern families. A tile opens a short page with just
   // that group's cards, under its own title and one-line blurb, with the neighbouring groups a
   // step away. Every link lands on a page of its own, never partway down a long one.
-  const topicEntries = sub => browseOrder(sortEntries(sub.formulas.filter(passesLevel).map(f => BY_ID[f.id])));
+  const topicEntries = sub => browseOrder(sortEntries(sub.formulas.filter(passesFilter).map(f => BY_ID[f.id])));
   function subjectGroups(section, subIdx) {
     if (!bySubject(section)) return section.subsections.map((sub, i) => ({
       title: sub.title, blurb: sub.blurb || "", total: sub.formulas.length,
@@ -3856,7 +3878,7 @@
     if (!sub || !sub.groups) return [];
     return sub.groups.map((g, j) => ({
       title: g.title, blurb: g.blurb || "", total: g.ids.length,
-      entries: browseOrder(g.ids.map(id => BY_ID[id]).filter(e => e && passesLevel(e.formula))),
+      entries: browseOrder(g.ids.map(id => BY_ID[id]).filter(e => e && passesFilter(e.formula))),
       href: sectionHash(section.id, { sub: subIdx, cluster: j })
     }));
   }
@@ -3911,8 +3933,8 @@
 
   // ---------- Settings page ----------
   // A real page rather than a modal, because preferences here change how the whole app reads
-  // and there needs to be room for more of them later. Per-section filters deliberately stay
-  // behind the toolbar funnel: they belong to the section you are looking at, not to the app.
+  // and there needs to be room for more of them later. The filters stay
+  // behind the toolbar funnel, since they change what is listed rather than how the app reads.
   // One setting per row: its name and what it does on the left, a segmented control on the
   // right. Rows sit in panels by kind: how the app looks, how the math reads, how browsing
   // behaves, then commands and the experimental toys.
@@ -3941,7 +3963,7 @@
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across, and they show every form of a formula instead of only the first.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
-          ${settingRow("Text size", "Large makes prose and formulas bigger together.", "text", state.text, [["normal", "Normal"], ["large", "Large"]])}
+          ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
@@ -3951,11 +3973,11 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Browsing</h3>
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
-          ${settingRow("Card order", "Curated is the order the cards were written in. Most used puts the cards that practice problems use most first. Search results always rank by relevance.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
+          ${settingRow("Card order", "How cards are ordered on a subject page. By contest tier puts AMC cards first, then AIME Early, AIME Late, and Olympiad, with the most important cards first inside each tier. Curated keeps the order the cards were written in. Most used puts first the cards that the most practice problems use. Search results always rank by relevance.", "order", state.order, [["tier", "By contest tier"], ["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           <div class="set-row set-row-note">
-            <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">Importance and contest-level filters are kept per subject, behind the funnel in the top bar.</div></div>
+            <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
           </div>
         </section>
         <section class="set-panel" id="set-commands">
@@ -4073,7 +4095,7 @@
     const rest = pullSection(split.rest, "Contest profile").rest;
     return `<div class="detail">
         <p class="detail-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</p>
-        <div class="detail-head"><h2 class="card-name">${f.name}</h2><div class="card-meta detail-meta">${kindBadgeHtml(f)}${levelRangeHtml(f)}</div></div>
+        <div class="detail-head"><h2 class="card-name">${f.name}</h2><div class="card-meta detail-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div></div>
         ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
         <p class="card-desc detail-summary">${f.description}</p>
         ${split.formsHtml("Key forms")}
@@ -4180,7 +4202,7 @@
     const only = bySubject(section) ? state.activeSub : null;
     section.subsections.forEach((sub, i) => {
       if (only != null && i !== only) return;
-      sortEntries(sub.formulas.filter(passesLevel).map(f => BY_ID[f.id])).forEach(e => {
+      sortEntries(sub.formulas.filter(passesFilter).map(f => BY_ID[f.id])).forEach(e => {
         shownIds.push(e.formula.id);
         const k = alphaKey(e.formula.name);
         if (!buckets.has(k)) buckets.set(k, []);
@@ -4222,7 +4244,7 @@
   const dayPick = (arr, salt) => arr.length ? arr[Math.abs(Math.imul(dayNumber() + salt, 2654435761)) % arr.length] : null;
   function dailyProblem() { return dayPick(PROBLEM_DB.filter(p => p.strategy && p.formulas.length >= 1), 7); }
   function dailyCard() {
-    const pool = ALL.filter(e => (e.formula.importance === "high" || e.formula.importance === "medium") && (window.MATH_EXAMPLES || {})[e.formula.id])
+    const pool = ALL.filter(e => (tierKey(e.formula) === "amc" || tierKey(e.formula) === "aime-early") && (window.MATH_EXAMPLES || {})[e.formula.id])
       .sort((a, b) => a.formula.id.localeCompare(b.formula.id));
     return dayPick(pool, 3);
   }
@@ -4677,7 +4699,7 @@
       if (hits) scored.push({ entry, hits });
     }
     scored.sort((a, b) => b.hits - a.hits ||
-      IMP_RANK[a.entry.formula.importance] - IMP_RANK[b.entry.formula.importance] ||
+      labelRank(a.entry.formula) - labelRank(b.entry.formula) ||
       a.entry.formula.name.localeCompare(b.entry.formula.name));
     return scored;
   }
@@ -4709,7 +4731,7 @@
   // Tag universe for the advanced-search tag picker: every keyword and topic label
   // that appears on any card, weighted by the importance of the cards carrying it,
   // so the most consequential tags surface first.
-  const TAG_W = { high: 5, medium: 4, low: 3, lower: 2, lowest: 1 };
+  const TAG_W = { "amc": 5, "aime-early": 4, "aime-late": 3, "olympiad": 2 };
   let ALL_TAGS_CACHE = null;
   function allTags() {
     if (ALL_TAGS_CACHE) return ALL_TAGS_CACHE;
@@ -4723,7 +4745,7 @@
       m.set(key, e);
     };
     for (const entry of ALL) {
-      const w = TAG_W[entry.formula.importance] || 1;
+      const w = TAG_W[tierKey(entry.formula)] || 1;
       entry.formula.keywords.forEach(k => add(k, w, "tag"));
       entry.topics.forEach(t => add(t.label, w + 2, "topic"));
       // Curated groups sort above raw keywords, since building a list is what they are for.
@@ -4861,7 +4883,7 @@
   // ---------- Topic view: every formula tagged with a topic, across sections ----------
   function renderTopic(topicId) {
     const topic = TOPICS_BY_ID[topicId];
-    const entries = browseOrder(entriesForTopic(topicId).filter(e => passesLevel(e.formula)));
+    const entries = browseOrder(entriesForTopic(topicId).filter(e => passesFilter(e.formula)));
     shownIds = entries.map(e => e.formula.id);
     const parts = [`
       <div class="back-row"><a class="back-link" href="#" data-history-back>&larr; Back</a></div>
@@ -5129,6 +5151,62 @@
       </nav>`;
   }
 
+  // ---------- Problem statements ----------
+  // The statement of an AMC or AIME problem, shown on its page, with the credit the MAA asked for
+  // (CC BY-NC-SA). The text comes from the AoPS wiki and is stored one file per year under
+  // js/data/problems/statements/, loaded when a problem page opens, so the offline page stays
+  // light and a missing file simply shows no statement. Other contests link out as before.
+  const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
+  const statementLoads = {};
+  function loadStatements(year) {
+    if (!statementLoads[year]) {
+      statementLoads[year] = new Promise(res => {
+        const sc = document.createElement("script");
+        sc.src = `js/data/problems/statements/${year}.js?v=1`;
+        sc.onload = () => res(true);
+        sc.onerror = () => res(false);
+        document.head.appendChild(sc);
+      });
+    }
+    return statementLoads[year];
+  }
+  function showStatement(p) {
+    loadStatements(p.year).then(() => {
+      const st = window.MATH_STATEMENTS && window.MATH_STATEMENTS[p.slug];
+      const wrap = $content.querySelector(`#prob-st[data-slug="${p.slug}"]`);
+      if (!st || !wrap) return;
+      const body = wrap.querySelector(".prob-statement");
+      body.textContent = "";
+      // A figure sits in the text as @@fig:<path>@@ and is an SVG file beside the statements.
+      (typeof st === "string" ? st : st.s).split(/@@fig:([^@]+)@@/).forEach((part, i) => {
+        if (i % 2) {
+          const img = new Image();
+          img.className = "prob-figure"; img.alt = "Figure for the problem";
+          // The SVGs come at the size of a printed page figure, which reads small on screen:
+          // draw them at one consistent size.
+          img.addEventListener("load", () => {
+            const nw = img.naturalWidth, nh = img.naturalHeight;
+            if (!nw || !nh) return;
+            // The same size for every figure, whatever the file: scale it (up or down) to fit a 420 by 280 box.
+            const k = Math.min(420 / nw, 280 / nh);
+            img.style.width = Math.round(nw * k) + "px";
+          });
+          img.src = "js/data/problems/figures/" + part;
+          body.appendChild(img);
+        } else if (part) body.appendChild(document.createTextNode(part));
+      });
+      wrap.querySelector(".prob-credit").innerHTML = statementCreditHtml(p, st.u);
+      wrap.hidden = false;
+      renderMath(wrap);
+    });
+  }
+  // The credit the MAA asked for (CC BY-NC-SA), and the source of the text.
+  function statementCreditHtml(p, src) {
+    return `Problem ${escapeAttr(refShort(p.ref))}, &copy; Mathematical Association of America, used under ` +
+      `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. ` +
+      `Text and figures from <a href="${escapeAttr(src || "https://live.poshenloh.com/past-contests")}" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>.`;
+  }
+
   function renderProblemDetail(slug) {
     const p = PROBLEM_BY_SLUG[slug];
     if (!p) { location.hash = "#/practice"; return; }
@@ -5165,12 +5243,17 @@
           <h2 class="card-name">${refShort(p.ref)}</h2>
         </div>
         ${types ? `<div class="ptype-row">${types}</div>` : ""}
-        <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "The full statement and solution live on the Art of Problem Solving wiki."}</p>
+        ${MAA_RE.test(p.ref) ? `<section class="prob-st" id="prob-st" data-slug="${p.slug}" hidden>
+          <div class="prob-statement"></div>
+          <p class="prob-credit"></p>
+        </section>` : ""}
+        <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
         ${chainHtml}
         ${contestNavHtml(p)}
       </div>`;
     renderMath($content);
+    if (MAA_RE.test(p.ref)) showStatement(p);
   }
 
   // ---------- One step of provenance ----------
@@ -5181,6 +5264,8 @@
   // Held in memory only — a reloaded page has no journey to remember.
   let backFromProblem = null;   // { slug, fid }
   let backFromFormula = null;   // { fid, listId }
+  // A card opened straight from a problem page: one hop back to that problem.
+  let backFromCardProblem = null; // { fid, slug }
   // A card opened from search results. Unlike the two above this one is not a single hop: it
   // lasts as long as you stay among the cards and problems you reached from those results,
   // because the query is still sitting in the search box and "take me back to it" stays a
@@ -5211,11 +5296,17 @@
       backFromSearch = null;
     }
     if (route.type === "problem") {
-      backFromProblem = (prev && prev.type === "formula")
+      // Arriving back at a problem from the card you opened from it needs no "Back to <card>"
+      // link: the card is one click away exactly where you opened it.
+      const cameBack = prev && prev.type === "formula" && backFromCardProblem
+        && backFromCardProblem.fid === prev.entry.formula.id && backFromCardProblem.slug === route.slug;
+      backFromProblem = (prev && prev.type === "formula" && !cameBack)
         ? { slug: route.slug, fid: prev.entry.formula.id } : null;
     } else if (route.type === "formula") {
       backFromFormula = (prev && prev.type === "list")
         ? { fid: route.entry.formula.id, listId: prev.listId } : null;
+      backFromCardProblem = (prev && prev.type === "problem")
+        ? { fid: route.entry.formula.id, slug: prev.slug } : null;
     }
   }
 
@@ -5271,13 +5362,15 @@
   };
   // Filters typed after Browse or Random, in any order, separated by "/" or spaces: a kind
   // (formula, method, pattern), a subject (geometry, algebra, number theory, counting, proof),
-  // a level (MATHCOUNTS, AMC 10, AMC 12, AIME, olympiad) or an importance (high, medium, low).
+  // a contest tier (AMC, AIME Early, AIME Late, Olympiad), a level tag (MATHCOUNTS, AMC 10, AMC 12,
+  // AIME) or an importance within its subsection (high, medium, low, lower).
   const FILTER_WORDS = {
     kind: { formula: "formula", formulas: "formula", method: "method", methods: "method", pattern: "pattern", patterns: "pattern" },
     subject: { geometry: "geometry", geo: "geometry", algebra: "algebra", alg: "algebra", numbertheory: "number-theory", nt: "number-theory",
       counting: "counting", countingprobability: "counting", probability: "counting", combinatorics: "counting", proof: "proof", proofs: "proof", proofmethods: "proof" },
-    level: { mathcounts: "MATHCOUNTS", amc10: "AMC10", amc12: "AMC12", aime: "AIME", olympiad: "Olympiad", oly: "Olympiad" },
-    importance: { high: "high", medium: "medium", med: "medium", low: "low" }
+    level: { mathcounts: "MATHCOUNTS", amc10: "AMC10", amc12: "AMC12", aime: "AIME" },
+    tier: { amc: "amc", aimeearly: "aime-early", early: "aime-early", aimelate: "aime-late", late: "aime-late", olympiad: "olympiad", oly: "olympiad" },
+    importance: { high: "high", medium: "medium", med: "medium", low: "low", lower: "lower" }
   };
   const SUBJECT_NAMES = { geometry: "Geometry", algebra: "Algebra", "number-theory": "Number Theory", counting: "Counting & Probability", proof: "Proof" };
   const subjectOf = e => e.formula.subject || e.section.id;
@@ -5302,33 +5395,34 @@
     return f;
   }
   const passesFilters = (e, f) => (!f.kind || e.kind === f.kind) && (!f.subject || subjectOf(e) === f.subject) &&
-    (!f.level || (e.formula.level || []).indexOf(f.level) !== -1) && (!f.importance || e.formula.importance === f.importance);
+    (!f.level || (e.formula.level || []).indexOf(f.level) !== -1) && (!f.tier || tierKey(e.formula) === f.tier) && (!f.importance || e.formula.importance === f.importance);
   function filterTitle(f) {
     const kind = f.kind ? f.kind.charAt(0).toUpperCase() + f.kind.slice(1) + "s" : "Cards";
-    return [f.importance ? f.importance.charAt(0).toUpperCase() + f.importance.slice(1) + "-importance" : "",
-      f.subject ? SUBJECT_NAMES[f.subject] : "", f.subject || f.importance ? kind.toLowerCase() : kind,
+    const TIER_NAMES = { "amc": "AMC", "aime-early": "AIME Early", "aime-late": "AIME Late", "olympiad": "Olympiad" };
+    return [f.tier ? TIER_NAMES[f.tier] : "", f.importance ? f.importance.charAt(0).toUpperCase() + f.importance.slice(1) + "-importance" : "",
+      f.subject ? SUBJECT_NAMES[f.subject] : "", f.subject || f.importance || f.tier ? kind.toLowerCase() : kind,
       f.level ? "at " + f.level.replace(/^AMC(\d+)$/, "AMC $1") : ""].filter(Boolean).join(" ");
   }
-  const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a level (MATHCOUNTS, AMC 10, AMC 12, AIME, Olympiad), or an importance (High, Medium, Low). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME.</p>`;
+  const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a contest tier (AMC, AIME Early, AIME Late, Olympiad), a level (MATHCOUNTS, AMC 10, AMC 12, AIME), or an importance within its subsection (High, Medium, Low, Lower). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME Late.</p>`;
   const problemLinks = probs => `<ul class="wiki-list">${probs.slice().sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true }))
     .map(p => `<li><a href="#/problem/${p.slug}">${refShort(p.ref)}</a></li>`).join("")}</ul>`;
   const COMMANDS = [
     { name: "Random", arg: "filters", example: "Special:Random/Method/Geometry",
-      desc: "Open a random card. Add a kind, subject, level or importance to narrow it, in any order.",
+      desc: "Open a random card. Add a kind, subject, contest tier, or level to narrow it, in any order.",
       go: arg => {
         const f = parseFilters(arg);
         // Anything the filters do not recognize falls back to the older section match.
         const pool = !arg ? ALL : f.unknown.length ? ALL.filter(e => sectionMatches(e, arg)) : ALL.filter(e => passesFilters(e, f));
         return pool.length ? "#/f/" + pickOne(pool).formula.id : null; } },
     { name: "Browse", arg: "filters", example: "Special:Browse/Pattern/Geometry",
-      desc: "Every card of one kind, subject, level or importance, A to Z. Combine filters in any order.",
+      desc: "Every card of one kind, subject, contest tier, or level, A to Z. Combine filters in any order.",
       page: arg => {
         const f = parseFilters(arg);
         if (!arg) return { title: "Browse", body: filterHelp };
         const hits = ALL.filter(e => passesFilters(e, f));
         const unknown = f.unknown.length ? `<p class="special-note">Not a filter, so ignored: <b>${escapeAttr(f.unknown.join(", "))}</b>.</p>` : "";
         return { title: filterTitle(f),
-          body: unknown + `<p class="special-note">${hits.length} card${hits.length === 1 ? "" : "s"}.</p>` + (hits.length > 40 ? cardIndex(hits) : hits.length ? cardLinks(hits) : filterHelp) };
+          body: unknown + `<p class="special-note">${hits.length} card${hits.length === 1 ? "" : "s"}.</p>` + (hits.length > 40 ? cardIndex(hits) : hits.length ? cardLinks(browseOrder(hits)) : filterHelp) };
       } },
     { name: "RandomProblem", arg: "contest", example: "Special:RandomProblem/AIME",
       desc: "Open a random practice problem, optionally from one contest.",
@@ -5554,7 +5648,7 @@
       const cut = arg.lastIndexOf("/"), done = cut < 0 ? "" : arg.slice(0, cut + 1), typing = arg.slice(cut + 1);
       const chosen = parseFilters(done);
       const opts = [["kind", ["Formula", "Method", "Pattern"]], ["subject", ["Geometry", "Algebra", "Number Theory", "Counting", "Proof"]],
-        ["level", ["MATHCOUNTS", "AMC 10", "AMC 12", "AIME", "Olympiad"]], ["importance", ["High", "Medium", "Low"]]]
+        ["tier", ["AMC", "AIME Early", "AIME Late", "Olympiad"]], ["level", ["MATHCOUNTS", "AMC 10", "AMC 12", "AIME"]]]
         .filter(([dim]) => !chosen[dim]).flatMap(([dim, vals]) => vals.map(v => ({ v, dim })));
       const ranked = typing.trim() ? rankBy(typing, opts, o => o.v, 8) : opts.slice(0, 8);
       return ranked.map(o => {
@@ -5697,11 +5791,9 @@
     } else {
       if (section) renderSection(section);
     }
-    // The level/importance filters are local to the four category pages, so hide
-    // them (and thereby "reset" their apparent effect) during search, advanced
-    // search, topic, list, and detail views — none of which they apply to.
-    const filtersApply = route.type === "home" && !state.query.trim() && !state.adv && !state.landing;
-    if ($filtersRow) $filtersRow.style.display = filtersApply ? "" : "none";
+    // The one filter applies wherever cards are listed by subject, group, or topic, so its button
+    // shows on those pages and hides during search, tag, list, and card views, which it does not touch.
+    const filtersApply = (route.type === "home" && !state.query.trim() && !state.adv && !state.landing) || route.type === "topic";
     const filtersBtn = document.getElementById("filters-btn");
     if (filtersBtn) filtersBtn.style.display = filtersApply ? "" : "none";
     // The section sidebar is meaningless on the Database and Lists surfaces —
@@ -5731,8 +5823,6 @@
     // and owns the delegated click listener, so rebuilding it per route would attach a
     // duplicate listener every time.
     updateNavActive();
-    syncFilterChips();
-    syncSortSelect();
     updateGearActive();
     if (route.type === "list") buildListToc();
     else if (route.type !== "formula") clearPageToc();
@@ -5872,12 +5962,19 @@
       a.classList.toggle("nav-empty", empty);
       if (empty) {
         a.setAttribute("aria-disabled", "true");
-        a.title = "No cards here match this section's filters";
+        a.title = "No cards here match the current filters";
       } else {
         a.removeAttribute("aria-disabled");
         a.removeAttribute("title");
       }
     });
+    // Keep the marked link on screen inside the sidebar itself (never moving the page).
+    const mark = tree.querySelector(".nav-sub-link.active, .nav-cluster-link.active");
+    if (mark && $sidebar.scrollHeight > $sidebar.clientHeight) {
+      const sr = $sidebar.getBoundingClientRect(), mr = mark.getBoundingClientRect();
+      if (mr.top < sr.top + 40) $sidebar.scrollTop -= (sr.top + 40 - mr.top);
+      else if (mr.bottom > sr.bottom - 40) $sidebar.scrollTop += (mr.bottom - sr.bottom + 40);
+    }
     tree.querySelectorAll(".nav-section").forEach(el => {
       const isActive = onHome && !state.query.trim() && !state.adv && !state.landing
                        && el.dataset.section === state.activeSectionId
@@ -5886,6 +5983,15 @@
       const btn = el.querySelector(".nav-section-btn");
       if (btn) btn.classList.toggle("active", isActive);
     });
+    // The counts beside subjects follow the filter: with none set they are the totals.
+    tree.querySelectorAll(".nav-section-btn").forEach(btn => {
+      const c = btn.querySelector(".nav-count"), sec = SECTIONS.find(x => x.id === btn.dataset.section);
+      if (!c || !sec) return;
+      const cards = btn.dataset.subject !== undefined
+        ? sec.subsections[+btn.dataset.subject].formulas
+        : [].concat(...sec.subsections.map(sub => sub.formulas));
+      c.textContent = filterActive() ? cards.filter(passesFilter).length : cards.length;
+    });
   }
 
   function clearSearch() {
@@ -5893,43 +5999,6 @@
     $search.value = "";
     state.adv = null;
     backFromSearch = null;
-  }
-
-  // ---------- Level filter chips (multi-select) ----------
-
-  function syncFilterChips() {
-    if (!$levelFilters) return;
-    const lv = activeFilter().levels;
-    $levelFilters.querySelectorAll(".level-chip").forEach(c => {
-      const l = c.dataset.level;
-      const on = l === "All" ? lv.size === 0 : lv.has(l);
-      c.classList.toggle("active", on);
-    });
-  }
-
-  function buildLevelFilters() {
-    if (!$levelFilters) return;
-    const chips = [`<button class="level-chip active" data-level="All">All Levels</button>`]
-      .concat(LEVELS.map(l => `<button class="level-chip" data-level="${l}">${LEVEL_LABELS[l]}</button>`))
-;
-    $levelFilters.innerHTML = chips.join("");
-
-    $levelFilters.addEventListener("click", e => {
-      const chip = e.target.closest(".level-chip");
-      if (!chip) return;
-      const level = chip.dataset.level;
-      const lv = activeFilter().levels;
-      if (level === "All") {
-        lv.clear();
-      } else {
-        if (lv.has(level)) lv.delete(level);
-        else lv.add(level);
-      }
-      saveSettings();
-      syncFilterChips();
-      render();
-      window.scrollTo({ top: 0 });
-    });
   }
 
   // ---------- Events ----------
@@ -6218,26 +6287,23 @@
     window.scrollTo({ top: 0 });
   });
 
-  // ---------- Settings / filters popup ----------
-  // Importance counts within the currently-active section (filters are per-section).
-  function impCounts() {
-    const c = { high: 0, medium: 0, low: 0, lower: 0, lowest: 0 };
-    ALL.forEach(e => { if (e.section.id === state.activeSectionId) c[e.formula.importance] = (c[e.formula.importance] || 0) + 1; });
+  // ---------- Filters popup ----------
+  // One filter for the whole app: contest tier, importance within the subsection, and contest
+  // level. The counts show how many cards each chip belongs to across the whole reference.
+  function filterCounts() {
+    const c = { tiers: {}, importances: {} };
+    TIER_KEYS.forEach(k => { c.tiers[k] = 0; });
+    IMP_TIERS.forEach(k => { c.importances[k] = 0; });
+    ALL.forEach(e => {
+      const t = tierKey(e.formula), i = e.formula.importance;
+      if (t in c.tiers) c.tiers[t]++;
+      if (i in c.importances) c.importances[i]++;
+    });
     return c;
   }
   function updateGearActive() {
     const g = document.getElementById("filters-btn");
-    if (!g) return;
-    const af = activeFilter();
-    g.classList.toggle("has-filters", af.rarities.size < IMP_TIERS.length || af.levels.size > 0);
-  }
-  // Keep the quick "Show" dropdown in step with the active section's rarity set:
-  // all tiers -> Curated; exactly one -> that tier; anything else -> Custom.
-  function syncSortSelect() {
-    if (!$sortSelect) return;
-    const rr = activeFilter().rarities;
-    $sortSelect.value = rr.size === IMP_TIERS.length ? "default"
-      : rr.size === 1 ? [...rr][0] : "custom";
+    if (g) g.classList.toggle("has-filters", filterActive());
   }
   let settingsEl = null;
   function onSettingsKey(e) { if (e.key === "Escape") closeSettings(); }
@@ -6249,42 +6315,40 @@
   }
   function refreshSettingsControls() {
     if (!settingsEl) return;
-    const af = activeFilter();
-    settingsEl.querySelectorAll("[data-rarity]").forEach(b => b.classList.toggle("active", af.rarities.has(b.dataset.rarity)));
-    settingsEl.querySelectorAll("#s-levels [data-level]").forEach(b => b.classList.toggle("active", af.levels.has(b.dataset.level)));
+    const af = state.filter;
+    settingsEl.querySelectorAll("[data-tier]").forEach(b => b.classList.toggle("active", af.tiers.has(b.dataset.tier)));
+    settingsEl.querySelectorAll("[data-imp]").forEach(b => b.classList.toggle("active", af.importances.has(b.dataset.imp)));
   }
   function afterFilterChange() {
-    saveSettings(); syncSortSelect(); syncFilterChips(); render(); refreshSettingsControls();
+    saveSettings(); updateGearActive(); render(); refreshSettingsControls();
   }
   function openSettings() {
     if (settingsEl) { closeSettings(); return; }
-    const counts = impCounts();
-    const af = activeFilter();
-    const sec = SECTIONS.find(s => s.id === state.activeSectionId) || SECTIONS[0];
-    const RLAB = { high: "High", medium: "Medium", low: "Low", lower: "Lower", lowest: "Lowest" };
-    const rarityChips = IMP_TIERS.map(t =>
-      `<button class="filter-chip${af.rarities.has(t) ? " active" : ""}" data-rarity="${t}">${RLAB[t]} <span class="fc-count">${counts[t]}</span></button>`).join("");
-    const levelChips = LEVELS.map(l =>
-      `<button class="filter-chip${af.levels.has(l) ? " active" : ""}" data-level="${l}">${LEVEL_LABELS[l]}</button>`).join("");
+    const counts = filterCounts();
+    const af = state.filter;
+    const TIER_NAMES = { "amc": "AMC", "aime-early": "AIME Early", "aime-late": "AIME Late", "olympiad": "Olympiad" };
+    const IMP_NAMES = { high: "High", medium: "Medium", low: "Low", lower: "Lower" };
+    const chips = (keys, names, set, attr, count) => keys.map(k =>
+      `<button class="filter-chip${set.has(k) ? " active" : ""}" data-${attr}="${k}">${names[k]} <span class="fc-count">${count[k] || 0}</span></button>`).join("");
     settingsEl = document.createElement("div");
     settingsEl.className = "modal-overlay";
     settingsEl.innerHTML = `
-      <div class="modal settings-modal" role="dialog" aria-label="Filters and settings">
+      <div class="modal settings-modal" role="dialog" aria-label="Filters">
         <div class="modal-head">
-          <h3>Filters &amp; Settings</h3>
+          <h3>Filters</h3>
           <button class="modal-close" aria-label="Close">&times;</button>
         </div>
         <div class="settings-body">
           <div class="settings-group">
-            <div class="settings-group-title">Importance &mdash; ${escapeAttr(sec.title)}</div>
-            <div class="filter-chips" id="s-rarity">${rarityChips}</div>
+            <div class="settings-group-title">Contest tier</div>
+            <div class="filter-chips" id="s-tiers">${chips(TIER_KEYS, TIER_NAMES, af.tiers, "tier", counts.tiers)}</div>
           </div>
           <div class="settings-group">
-            <div class="settings-group-title">Contest level &mdash; ${escapeAttr(sec.title)}</div>
-            <div class="filter-chips" id="s-levels">${levelChips}</div>
-            <p class="settings-hint">Filters apply to <strong>${escapeAttr(sec.title)}</strong> only &mdash; each section keeps its own. Select no level to show all.</p>
+            <div class="settings-group-title">Importance within its subsection</div>
+            <div class="filter-chips" id="s-imps">${chips(IMP_TIERS, IMP_NAMES, af.importances, "imp", counts.importances)}</div>
+            <p class="settings-hint">Filters apply everywhere cards are listed by subject, group, or topic, and the sidebar counts follow them. At least one choice in each row stays on.</p>
           </div>
-          <div class="settings-actions"><button class="settings-reset" id="s-reset">Reset ${escapeAttr(sec.title)} filters</button></div>
+          <div class="settings-actions"><button class="settings-reset" id="s-reset">Reset filters</button></div>
         </div>
       </div>`;
     document.body.appendChild(settingsEl);
@@ -6293,22 +6357,17 @@
   }
   function onSettingsClick(e) {
     if (e.target === settingsEl || e.target.closest(".modal-close")) { closeSettings(); return; }
-    const af = activeFilter();
-    const rc = e.target.closest("[data-rarity]");
-    if (rc) {
-      const t = rc.dataset.rarity;
-      if (af.rarities.has(t)) { if (af.rarities.size > 1) af.rarities.delete(t); }
-      else af.rarities.add(t);
-      afterFilterChange(); return;
-    }
-    const lc = e.target.closest("#s-levels [data-level]");
-    if (lc) {
-      const l = lc.dataset.level;
-      if (af.levels.has(l)) af.levels.delete(l); else { af.levels.add(l); }
-      afterFilterChange(); return;
-    }
+    const af = state.filter;
+    const flip = (set, k) => {
+      if (set.has(k)) { if (set.size > 1) set.delete(k); } else set.add(k);
+      afterFilterChange();
+    };
+    const tc = e.target.closest("[data-tier]");
+    if (tc) { flip(af.tiers, tc.dataset.tier); return; }
+    const ic = e.target.closest("[data-imp]");
+    if (ic) { flip(af.importances, ic.dataset.imp); return; }
     if (e.target.closest("#s-reset")) {
-      af.rarities = new Set(IMP_TIERS); af.levels.clear();
+      af.tiers = new Set(TIER_KEYS); af.importances = new Set(IMP_TIERS);
       afterFilterChange(); return;
     }
   }
@@ -6316,15 +6375,6 @@
   if ($filters) $filters.addEventListener("click", openSettings);
   const $adv = document.getElementById("adv-btn");
   if ($adv) $adv.addEventListener("click", openAdvanced);
-
-  // Quick "Show" dropdown drives the active section's rarity set; "Custom…" opens the popup.
-  if ($sortSelect) $sortSelect.addEventListener("change", () => {
-    const v = $sortSelect.value;
-    if (v === "custom") { syncSortSelect(); openSettings(); return; }
-    activeFilter().rarities = v === "default" ? new Set(IMP_TIERS) : new Set([v]);
-    afterFilterChange();
-  });
-  syncSortSelect();
   updateGearActive();
 
   // "/" jumps to search, except while typing in any other field: a widget that takes fractions
@@ -6568,7 +6618,6 @@
 
   legacyRedirect();
   buildSidebar();
-  buildLevelFilters();
   render();
   scrollForRoute(getRoute(), null);
 
