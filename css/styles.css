@@ -789,12 +789,22 @@ html[data-text="large"] .card-crumb { font-size: 13px; }
 .badge-AIME { background: var(--level-aime); }
 .badge-Olympiad { background: var(--level-oly); }
 
-/* Importance tier badges: solid fill like the level badges, shown next to the title. */
-.badge-imp-high { background: var(--gold); }
-.badge-imp-medium { background: var(--accent); }
-.badge-imp-low { background: var(--text-faint); }
-.badge-imp-lower { background: transparent; color: var(--text-faint); border: 1px solid var(--text-faint); }
-.badge-imp-lowest { background: transparent; color: var(--text-faint); border: 1px dashed var(--text-faint); opacity: 0.85; }
+/* The one split oval beside a card's name: the left half is the contest tier, the right half is
+   the card's importance within its subsection, in a tint of the same color. Colors come from the
+   theme variables, so one rule serves both themes. */
+.tagpill { --tp-c: var(--accent); display: inline-flex; align-items: stretch; border-radius: 999px; overflow: hidden;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.03em; line-height: 1.5; vertical-align: middle; }
+.tagpill-amc { --tp-c: var(--accent); }
+.tagpill-aime-early { --tp-c: var(--level-aime); }
+.tagpill-aime-late { --tp-c: #a78bfa; }  /* a soft violet: the gold read as muddy */
+.tagpill-olympiad { --tp-c: #f4727c; }  /* a lighter red, so the dark label reads in both themes */
+.tp-tier { padding: 2px 8px; color: #0f1420; background: var(--tp-c); }
+.tp-imp { padding: 2px 8px 2px 7px; color: var(--text);
+  background: rgba(128, 128, 128, 0.16); background: color-mix(in srgb, var(--tp-c) 24%, var(--bg-card));
+  border-left: 1.5px solid var(--bg-card); }
+.tp-imp-high { font-weight: 800; }
+.tp-imp-low { opacity: 0.8; }
+.tp-imp-lower { opacity: 0.6; font-weight: 600; }
 
 .formula-display {
   padding: 12px 14px;
@@ -1297,6 +1307,15 @@ a.ptype-chip:hover { border-color: var(--accent); color: var(--accent); }
 .prob-note { font-size: 12.5px; color: var(--text-faint); margin: 14px 0 12px; }
 .aops-btn { display: inline-block; font-size: 13px; font-weight: 600; color: #fff; background: var(--accent); border: 1px solid var(--accent); border-radius: 8px; padding: 8px 16px; text-decoration: none; }
 .aops-btn:hover { filter: brightness(1.08); }
+/* An AMC or AIME statement, with its credit line directly beneath, small and muted. */
+.prob-st { margin: 14px 0 6px; }
+.prob-statement { font-size: 16px; line-height: 1.65; white-space: pre-line; padding: 16px 18px; background: var(--bg-card);
+  border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+html[data-text="large"] .prob-statement { font-size: 18px; }
+html[data-text="larger"] .prob-statement { font-size: 21px; }
+.prob-figure { display: block; max-width: 100%; height: auto; margin: 12px auto; padding: 10px 14px; background: #fff; border-radius: 8px; }
+.prob-credit { font-size: 11.5px; line-height: 1.5; color: var(--text-faint); margin: 8px 2px 0; }
+.prob-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
 .problem {
   background: rgba(0, 0, 0, 0.15);
@@ -2788,9 +2807,14 @@ a.hw-row:hover .hw-go { color: var(--accent); }
 /* ---------- Round 4 ---------- */
 /* Star and add-to-list sit beside a card's name, always visible; the name wraps before them.
    Copying LaTeX and Asymptote is on the card's own page. */
-.card-head { flex-wrap: nowrap; align-items: flex-start; }
-.card-head .card-name { flex: 1; min-width: 0; }
-.card .card-actions { flex: none; margin-top: -1px; }
+/* The name never squeezes: if the tags do not fit beside it they drop to the next line, and the
+   star and add buttons stay pinned top right. */
+.card-head { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding-right: 70px; }
+.card-head .card-name { flex: 0 0 auto; max-width: 100%; min-width: 0; }
+/* The kind and tier tags sit on the name's own line; the actions stay at the far right. */
+.card-head .card-tags { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+.card-head .card-actions { position: absolute; top: 0; right: 0; margin: 0; }
+.card .card-actions { flex: none; margin-top: 0; }
 /* Card size: Large makes every card wider (the widths are set further down). */
 html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(520px, 100%), 1fr)); }
 html[data-cols="spacious"] .content .cards.search-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2886,7 +2910,7 @@ html[data-text="large"] .detail .prob-note, html[data-text="large"] .detail .det
 .detail .sec-note { color: var(--text-faint); }
 /* Name, kind, level and importance on one line; the actions sit at the right end. */
 .detail .detail-head { flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-bottom: 12px; }
-.detail .detail-head .card-name { flex: 0 1 auto; }
+.detail .detail-head .card-name { flex: 0 0 auto; max-width: 100%; }
 .detail .detail-head .detail-meta { margin: 0; }
 .detail .detail-head .detail-actions { margin: 0 0 0 auto; }
 /* The problem page's chain reads at the page's size too. */
@@ -2933,9 +2957,10 @@ html[data-text="large"] .card-lead p { font-size: 15px; }
 .hp-click .rc-row:hover { background: none; }
 .hp-click .daily-title { color: var(--text); }
 
-/* A card page's badges sit at the right, just before the star and add buttons. */
-.detail .detail-head .detail-meta { margin-left: auto; }
-.detail .detail-head .detail-actions { margin-left: 0; }
+/* On a card page the tag sits right after the name (and drops under it when there is no room);
+   the star, add, and copy buttons are pushed to the right end of the line. */
+.detail .detail-head .detail-meta { margin-left: 0; }
+.detail .detail-head .detail-actions { margin-left: auto; }
 /* Displayed (centred) maths reads a step larger than the prose around it. The card's own
    formula box keeps its larger size. */
 .detail :not(.formula-display) > .katex-display > .katex { font-size: 1.22em; }
@@ -3043,8 +3068,16 @@ html[data-density="compact"] .pv-inner { padding: 16px 16px; }
 :root[data-theme="dark"] .red-link { color: #ff8a80; }
 .related-planned { font-style: normal; }
 /* A pattern's "Methods and Formulas to Try": two short labelled lists. */
-.try-block .try-sub { margin: 14px 0 6px; font-size: 13px; font-weight: 750; letter-spacing: 0.02em; color: var(--text-dim); }
-html[data-text="large"] .try-block .try-sub { font-size: 14.5px; }
+/* Tables inside a write-up (a step-by-step probability table, for instance). The wrapper scrolls
+   sideways on a narrow screen instead of squeezing the cells. */
+.detail-table-wrap { overflow-x: auto; margin: 12px 0 14px; }
+.detail-table { border-collapse: collapse; font-size: 14px; min-width: 60%; }
+.detail-table th, .detail-table td { padding: 6px 14px; border-bottom: 1px solid var(--border); text-align: center; font-variant-numeric: tabular-nums; }
+.detail-table th { font-size: 12.5px; font-weight: 700; color: var(--text-dim); border-bottom: 2px solid var(--border); }
+.detail-table td:first-child, .detail-table th:first-child { text-align: left; color: var(--text-dim); }
+html[data-text="large"] .detail-table { font-size: 15.5px; }
+.try-block .try-sub, .detail-body .body-sub { margin: 14px 0 6px; font-size: 13px; font-weight: 750; letter-spacing: 0.02em; color: var(--text-dim); }
+html[data-text="large"] .try-block .try-sub, html[data-text="large"] .detail-body .body-sub { font-size: 14.5px; }
 .lead-try .red-link { font-weight: 400; }
 /* The chain sits near the bottom of a problem page, below the problem and Think, as a quieter
    summary rather than a lead panel. */
@@ -3210,3 +3243,48 @@ html[data-density="spacious"] .key-forms .detail-list li, html[data-density="spa
 /* Placeholder cards: a planned card shows a short notice instead of a formula box. */
 .card-planned { margin: 10px 0 6px; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-faint); }
 .planned-note { margin: 14px 0; padding: 10px 14px; border: 1px dashed var(--border-light); border-radius: 10px; color: var(--text-dim); background: var(--bg-panel); }
+
+/* ---------- Text size: Larger (about 1.18 times Large; 2026-10-10) ---------- */
+html[data-text="larger"] .section-header h2 { font-size: 34px; }
+html[data-text="larger"] .detail-head .card-name { font-size: 33px; }
+html[data-text="larger"] .subsection > h3,
+html[data-text="larger"] .wiki-letter > h3,
+html[data-text="larger"] .list-section-title,
+html[data-text="larger"] .lists-subhead { font-size: 22.5px; }
+html[data-text="larger"] .detail-body h4,
+html[data-text="larger"] .key-forms h4,
+html[data-text="larger"] .related h4,
+html[data-text="larger"] .connected h4,
+html[data-text="larger"] .practice h4,
+html[data-text="larger"] .prob-chain h4,
+html[data-text="larger"] .prob-think h4,
+html[data-text="larger"] .search-problems h4,
+html[data-text="larger"] .interactive h4 { font-size: 19px; }
+html[data-text="larger"] .card .card-name { font-size: 20.5px; }
+html[data-text="larger"] .card-desc { font-size: 19px; }
+html[data-text="larger"] .detail-summary { font-size: 20.5px; }
+html[data-text="larger"] .detail-body p,
+html[data-text="larger"] .detail-body li { font-size: 20px; }
+html[data-text="larger"] .key-forms .detail-list li { font-size: 20px; }
+html[data-text="larger"] .key-forms .kf-note { font-size: 17px; }
+html[data-text="larger"] .wiki-list a { font-size: 18.5px; }
+html[data-text="larger"] .formula-display { font-size: 1.24em; }
+html[data-text="larger"] .diagram-cap { font-size: 16.5px; }
+html[data-text="larger"] .detail-crumb { font-size: 16px; }
+html[data-text="larger"] .card-crumb { font-size: 15.5px; }
+html[data-text="larger"] .detail .detail-body p, html[data-text="larger"] .detail .detail-body li,
+html[data-text="larger"] .detail .key-forms li, html[data-text="larger"] .detail .lead-text,
+html[data-text="larger"] .detail .lead-signals li, html[data-text="larger"] .detail .pf-sentence,
+html[data-text="larger"] .detail .profile-stats li, html[data-text="larger"] .detail .problem-q,
+html[data-text="larger"] .detail .problem-sol, html[data-text="larger"] .detail .chain-strategy,
+html[data-text="larger"] .detail .prob-note, html[data-text="larger"] .detail .detail-summary { font-size: 20px; }
+html[data-text="larger"] .detail .detail-body p, html[data-text="larger"] .detail .detail-body li,
+html[data-text="larger"] .detail .key-forms li, html[data-text="larger"] .detail .lead-text,
+html[data-text="larger"] .detail .lead-signals li, html[data-text="larger"] .detail .lead-try li,
+html[data-text="larger"] .detail .pf-row, html[data-text="larger"] .detail .problem-q,
+html[data-text="larger"] .detail .problem-sol, html[data-text="larger"] .detail .chain-strategy,
+html[data-text="larger"] .detail .prob-note, html[data-text="larger"] .detail .detail-summary { font-size: 19.5px; }
+html[data-text="larger"] .card-lead p { font-size: 17.5px; }
+html[data-text="larger"] .detail p.sec-note, html[data-text="larger"] .detail .detail-body p.sec-note { font-size: 17px; }
+html[data-text="larger"] .detail-table { font-size: 18.5px; }
+html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-body .body-sub { font-size: 17px; }
