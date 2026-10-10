@@ -43,9 +43,19 @@ CONVENTIONS §0 has the full model.
   `blurb`. A group's address (`#/formulas/geometry/circles`) opens the subject at that heading;
   so do the sidebar's group links. The sidebar shows only the current space; clicking the open
   subject's header folds it.
-- **Problem pages** (`#/problem/<slug>`): the link to the statement first, then Think (the
-  strategy, hidden until asked), Tricks, and near the bottom the chain of cards the problem uses
-  (Pattern → Method → Formulas).
+- **Problem pages** (`#/problem/<slug>`): the statement first (AMC and AIME problems; other contests link out),
+  with its credit line, then the strategy, and near the bottom the chain of cards the problem uses
+  (Pattern → Method → Formulas). A problem with a figure says so and points to AoPS.
+
+## Credits
+
+AMC and AIME problems are © the Mathematical Association of America and are shown under
+the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence the MAA confirmed
+by email (Oct 2026). The statements and their figures are read from [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests),
+which publishes every AMC and AIME problem with the MAA's permission; each problem page carries a one-line credit
+under the statement. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
+answer choices only, never solutions or hints) into `js/data/problems/statements/<year>.js` and `js/data/problems/figures/`.
+(AoPS blocks scripts with a Cloudflare check, so it is not used.)
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, your lists
   (and a box to make one), every year of every contest, and the study lists. A contest year
   (`#/problems/aime/2024`) and a single list (`#/list/<id>`) open as plain pages with a link back.
@@ -90,8 +100,10 @@ by a point or two; compare warm runs to warm runs.
 
 ## Other features
 
-- **Level and importance filters** narrow any section to MATHCOUNTS through Olympiad, or
-  to the tiers from `high` down to `lowest`.
+- **Contest tiers** label every card with where it is first needed: AMC (AMC 10 and 12 problems 1 to
+  25), AIME Early (AIME 1 to 10), AIME Late (AIME 11 to 15), or Olympiad. Tier and level filters
+  narrow any section; Settings switches the label to importance (`high` down to
+  `lowest`), and cards are ordered by tier by default.
 - **Problems**, reached from Practice by contest and year, each linked to the cards its
   solution uses, with a pattern, method and formula chain and a strategy that stays hidden until asked for.
 - **Study lists**, also on Practice, hold 31 curated sets alongside your own. Twelve contest routes
@@ -124,7 +136,7 @@ by a point or two; compare warm runs to warm runs.
   Wikipedia's: `Special:Random`, `Special:RandomProblem/<contest>`, `Special:RandomStarred`,
   `Special:WhatLinksHere/<card>`, `Special:AllPages` (an A-Z index with a letter bar),
   `Special:LonelyPages`, `Special:Statistics`, `Special:Search/<query>`,
-  `Special:Browse/<filters>` (every card of a kind, subject, level, or importance, given in any
+  `Special:Browse/<filters>` (every card of a kind, subject, contest tier, or level, given in any
   order, as in `Special:Browse/Method/Geometry`), `Special:ProblemsUsing/<card>`,
   `Special:Unclassified` (problems still waiting for a card), and `Special:Recent`.
   `Special:Random` takes the same filters as Browse. Typing `Special:`
@@ -199,6 +211,7 @@ card between files only moves the card object**; nothing else needs to follow it
   description: String.raw`Prose; inline math with $...$ works.`,
   keywords: ["search", "terms", "here"],
   importance: "high",                        // high | medium | low | lower | lowest
+  tier: "AMC",                               // AMC | AIME Early | AIME Late | Olympiad
   level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME", "Olympiad"]   // any subset
 }
 ```
@@ -223,6 +236,33 @@ fails on a sigma with no written-out twin. To give a broad card a Connected form
 to `js/data/connected.js` (CONVENTIONS §12).
 
 ## Changelog
+
+**2026-10-10**
+
+- One tag per card: the contest tier and the card's importance in one split oval (tier on the
+  left, HIGH / MED / LOW / LOWER on the right). Importance is now judged inside each card's own
+  subsection and no longer depends on the tier; all 644 cards were reassigned (`tools/importance-proposal.md`).
+  The "Card labels" setting is gone. The level text (MATHCOUNTS, Olympiad) no longer appears beside the tag.
+- One global filter (tier and importance) replaces the per-section filters. It applies to subject,
+  group, and topic pages and to cards listed in two subjects, and the sidebar counts and greyed links follow it.
+- Text size gains Larger. Card headers put the name, tag, and star on one centered line.
+- Back links typeset math in card names; a card opened from a problem has a "Back to <problem>" link.
+- Integrals use an upright, thin-spaced differential; the scanner flags the old form.
+- Thumbnails show every case form on `triangle-type-by-sides`, `pythagorean-theorem`,
+  `triangle-inequality`, `quadratic-formula`, `jensens-inequality`, `am-gm`, `erdos-mordell`,
+  `ptolemys-inequality`, `menelaus-theorem`, and `eulers-criterion`.
+- Nested Subset Pairs gained the membership-pattern extension to any number of subsets.
+- A problem page reached from a card you opened from it no longer offers "Back to <card>" (the card is one click away where you opened it).
+- Card headers: the tag drops to a second line, instead of squeezing the name, when there is no room; the star and add buttons stay top right.
+- Worked examples are no longer reused between cards (the 13-14-15 triangle was in thirteen cards); a gate keeps converted cards' triangle examples distinct.
+- AMC and AIME problem statements and figures (1,355 of 1,357 problems, 119 SVG figures) now appear on the problem page, with the MAA credit line; they are fetched from LIVE by Po-Shen Loh by `tools/fetch-live-statements.py` and checked by `tools/check-statements.py`.
+- Problem figures are drawn at one consistent size: each is scaled, up or down, to fit a 420 by 280 box.
+- The AIME-L tier tag is a soft violet instead of the muddy gold.
+- The sidebar follows scrolling on every subject page, marking the topic or group in view and keeping its link visible.
+- New card: Stretching One Axis Scales Area (`axis-stretch-area`), with a figure and the largest-inscribed-triangle example.
+- Formula conversion: batches G7 and G8 (cotangent rule through Simson line); Euler line figure redrawn to show the three line families.
+- Formula conversion continued: 56 cards converted (batches through G6), with new figures for
+  `median-triangle-area` and `law-of-tangents`.
 
 **2026-09-27**
 

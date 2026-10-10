@@ -60,6 +60,7 @@ for c in CARDS:
     kw = re.search(r"keywords:\s*\[(.*?)\]", c["blk"], re.S)
     c["kw"] = re.findall(r'"([^"]*)"', kw.group(1)) if kw else []
     c["imp"] = field(c["blk"], "importance")
+    c["tier"] = field(c["blk"], "tier")
     lv = re.search(r"level:\s*\[(.*?)\]", c["blk"], re.S)
     c["lvl"] = re.findall(r'"([^"]*)"', lv.group(1)) if lv else []
     c["type"], c["subject"] = field(c["blk"], "type"), field(c["blk"], "subject")
@@ -124,22 +125,22 @@ print("\n-- field order --")
 # `latexPlain` is the expanded-notation twin of `latex`, carried by 13 cards; it sits directly
 # after `latex` in both orders. The slice is [:10], not [:9], because the pattern order plus
 # latexPlain is ten fields long and [:9] truncated it into a phantom eleventh variant.
-CANON = {("id", "name", "latex", "description", "keywords", "importance", "level"),
-         ("id", "name", "latex", "latexPlain", "description", "keywords", "importance", "level"),
-         ("id", "name", "type", "subject", "latex", "description", "keywords", "importance", "level"),
-         ("id", "name", "type", "subject", "latex", "latexPlain", "description", "keywords", "importance", "level")}
+CANON = {("id", "name", "latex", "description", "keywords", "importance", "tier", "level"),
+         ("id", "name", "latex", "latexPlain", "description", "keywords", "importance", "tier", "level"),
+         ("id", "name", "type", "subject", "latex", "description", "keywords", "importance", "tier", "level"),
+         ("id", "name", "type", "subject", "latex", "latexPlain", "description", "keywords", "importance", "tier", "level")}
 # A converted method carries when, move and uses, and a converted pattern recognize and suggests,
 # directly after `subject` and in that order; `latex` becomes optional for both. The four-kind
 # fields are checked for place here and then set aside, so the order of the rest is compared to
 # the same canonical orders as every other card.
-KIND_FIELDS = {"when", "move", "uses", "recognize", "suggests"}
+KIND_FIELDS = {"when", "move", "uses", "recognize", "suggests", "tryFirst"}
 CANON |= {tuple(x for x in o if x != "latex") for o in CANON if "type" in o}
 def _order_ok(c):
     f = c["fields"]
     new = [x for x in f if x in KIND_FIELDS]
     if new:
         want = [x for x in ("when", "move", "uses") if x in new] if "move" in new or "when" in new or "uses" in new \
-            else [x for x in ("recognize", "suggests") if x in new]
+            else [x for x in ("recognize", "suggests", "tryFirst") if x in new]
         if new != want or "subject" not in f or f[f.index("subject") + 1:f.index("subject") + 1 + len(new)] != new:
             return False
     return tuple(x for x in f if x not in KIND_FIELDS)[:10] in CANON
@@ -163,6 +164,14 @@ print("  latex present: %s | description present: %s"
 
 print("\n-- field values --")
 print("  importance: %s" % dict(collections.Counter(c["imp"] for c in CARDS)))
+print("  tier:       %s" % dict(collections.Counter(c["tier"] for c in CARDS)))
+_bad_tier = [c["id"] for c in CARDS if c["tier"] not in ("AMC", "AIME Early", "AIME Late", "Olympiad")]
+# Importance is judged inside the card's own subsection: high, medium, low, or lower (pretty much
+# never used). The old "lowest" is gone (2026-10-10).
+_bad_tier += [c["id"] + " (importance " + str(c["imp"]) + ")" for c in CARDS if c["imp"] not in ("high", "medium", "low", "lower")]
+print("  cards with a missing or unknown tier: %d  (must stay 0)" % len(_bad_tier))
+for _x in _bad_tier[:8]:
+    print("    " + _x)
 print("  level:      %s" % dict(collections.Counter(l for c in CARDS for l in c["lvl"])))
 print("  keywords    min %d median %d p90 %d max %d" % quantiles([len(c["kw"]) for c in CARDS]))
 print("  name chars  min %d median %d p90 %d max %d" % quantiles([len(c["name"]) for c in CARDS]))
@@ -824,8 +833,45 @@ print("  legacy practice question repeating the card's example: %d  (must stay 0
 for _x in _repeats[:8]:
     print("    %s (overlap %.2f): %s" % (_x["id"], _x["j"], _x["q"]))
 
-bad = bool(_repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
+# Examples are not reused between cards (Stanley, 2026-10-10): two converted cards whose worked
+# examples are about triangles must not use the same three numbers (the 13-14-15 triangle in
+# thirteen cards was the case that prompted it).
+_dx = _sp.run([_jsc, "tools/dump-examples.js"], capture_output=True, text=True)
+_exq = _js.loads(_dx.stdout.strip().splitlines()[-1]) if _dx.returncode == 0 and _dx.stdout.strip() else {}
+_trip = {}
+for _id, _q in _exq.items():
+    if _conv.get(_id) != "formula" or not re.search(r"triangle|sides", _q, re.I):
+        continue
+    _ns = sorted({int(x) for x in re.findall(r"(?<![\\\w.])\d+(?![\d.]*\\)", re.sub(r"\\[a-z]+", "", _q)) if int(x) >= 3})
+    for _t in __import__("itertools").combinations(_ns, 3):
+        _trip.setdefault(_t, []).append(_id)
+_shared = [(t, ks) for t, ks in _trip.items() if len(ks) > 1]
+print("  triangle examples sharing the same three numbers across cards: %d  (must stay 0)" % len(_shared))
+for _x in _shared[:8]:
+    print("    %s: %s" % _x)
+
+# A sentence that points at the page it is on adds nothing: the reader is already reading it.
+# These phrases (a section pointing at "the end of this section", "as below", "as the figure on
+# this card shows") are flagged so they stay out of new write-ups.
+_SELFPTR = re.compile(r"(?:at the end of (?:this|the) (?:section|card|page)|\bin this (?:section|card|page|write-up)\b|\bas (?:below|described below|shown below|discussed below)\b"
+                      r"|\b(?:described|discussed|shown|handled|covered|explained|treated) (?:below|above)\b|as the (?:figure|picture|diagram) (?:on this card|below|above) shows?"
+                      r"|\(the (?:last|first|next|previous) [^)]{0,50}(?:section|card|page|step)\))", re.I)
+_selfptr = [(k, m.group(0)) for k, v in DETAILS.items() for m in _SELFPTR.finditer(v)]
+print("  a sentence pointing at its own section or card: %d  (must stay 0)" % len(_selfptr))
+for _x in _selfptr[:8]:
+    print("    %s: %r" % _x)
+
+# Calculus typesetting (2026-10-10): the differential after an integral is upright and thin-spaced,
+# \int f(x)\,\mathrm{d}x, never a slanted "dx" or a bare "d x".
+_CALC = re.compile(r"\\int\b[^$]*?(?:\\,|\s)d[A-Za-z](?![A-Za-z])")
+_calc = [(k, m.group(0)[:50]) for k, v in DETAILS.items() for m in _CALC.finditer(v)]
+_calc += [(c["id"], m.group(0)[:50]) for c in CARDS for f in ("latex", "latexPlain", "description") for m in _CALC.finditer(c.get(f, "") or "")]
+print("  integral with a slanted or unspaced differential: %d  (must stay 0)" % len(_calc))
+for _x in _calc[:8]:
+    print("    %s: %r" % _x)
+
+bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
-           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits)
+           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))
 sys.exit(1 if bad else 0)

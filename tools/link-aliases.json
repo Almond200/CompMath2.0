@@ -441,7 +441,8 @@
       "The Cotangent Rule"
     ],
     "counting-blocks": [
-      "Grouping Method"
+      "Grouping Method",
+      "Gluing Items into Blocks"
     ],
     "counting-functions": [
       "Counting Functions",
@@ -461,7 +462,8 @@
       "Cross-Ratio"
     ],
     "cross-section-method": [
-      "3D Tangency via Cross-Sections"
+      "3D Tangency via Cross-Sections",
+      "Slicing a Solid Through Its Axis"
     ],
     "crt": [
       "Chinese Remainder Theorem"
@@ -1757,7 +1759,9 @@
     "states-recursion-prob": [
       "First-Step Analysis",
       "Probability States, Markov Chains",
-      "Probability States, Markov Chains & First-Step Analysis"
+      "Probability States, Markov Chains & First-Step Analysis",
+      "First-Step Analysis (States)",
+      "states bashing"
     ],
     "steiner-line": [
       "The Steiner Line"
@@ -1802,7 +1806,9 @@
     ],
     "symmetric-polynomial-strategies": [
       "Fundamental Theorem of Symmetric Polynomials",
-      "Symmetric Substitution"
+      "Symmetric Substitution",
+      "Rewriting in Elementary Symmetric Polynomials",
+      "Rewriting in Symmetric Sums and Products"
     ],
     "symmetry-probability": [
       "Symmetry Arguments"
@@ -2042,6 +2048,18 @@
       "Zsygmondy's Theorem",
       "Zsygmondys",
       "Zsygmondy’s"
+    ],
+    "subtract-and-factor": [
+      "Subtracting and Factoring Known Roots",
+      "Turning Known Values into Known Roots"
+    ],
+    "scale-one-level": [
+      "Finding the Ratio Between Consecutive Levels",
+      "Scaling One Level of a Repeating Figure"
+    ],
+    "factor-pair-counting": [
+      "Solving $xy = N$ Style Equations",
+      "Listing Factor Pairs"
     ]
   },
   "aliasesExtra": {

@@ -1352,7 +1352,88 @@
     "parallel-exterior-angles": "formula",
     "matrix-inverse": "formula",
     "cayley-hamilton": "formula",
-    "vandermonde-determinant": "formula"
+    "vandermonde-determinant": "formula",
+    "triangle-similarity": "formula",
+    "trapezoid-consecutive-angles": "formula",
+    "parallel-by-angle-sum": "formula",
+    "gliding-principle": "formula",
+    "several-rates": "pattern",
+    "restricted-sequences": "pattern",
+    "special-right-triangles": "formula",
+    "altitude-hypotenuse": "formula",
+    "median-to-hypotenuse": "formula",
+    "triangle-inequality": "formula",
+    "integer-triangles-perimeter": "formula",
+    "perpendicular-bisector-locus": "formula",
+    "similar-figures-ratios": "formula",
+    "midsegment-theorem": "formula",
+    "intercept-theorem": "formula",
+    "centroid-division": "formula",
+    "cevian-area-ratio": "formula",
+    "clock-angle": "formula",
+    "polygon-angle-sums": "formula",
+    "regular-polygon-area": "formula",
+    "equiangular-hexagon-area": "formula",
+    "regular-hexagon-area": "formula",
+    "hexagon-diagonals": "formula",
+    "regular-dodecagon": "formula",
+    "ngon-vertex-distance-product": "formula",
+    "trapezoid-parallelogram-areas": "formula",
+    "trapezoid-special-segments": "formula",
+    "quadrilateral-diagonal-area": "formula",
+    "van-aubel": "formula",
+    "bretschneiders-formula": "formula",
+    "euler-quadrilateral": "formula",
+    "varignons-theorem": "formula",
+    "triangle-area-standard": "formula",
+    "trig-area": "formula",
+    "trig-area-circumradius": "formula",
+    "max-rectangle-in-triangle": "formula",
+    "incenter-area-split": "formula",
+    "right-triangle-inradius": "formula",
+    "conway-circle": "formula",
+    "incircle-excircle-touch": "formula",
+    "shared-angle-area-ratio": "formula",
+    "same-base-area-ratio": "formula",
+    "incircle-excircle-homothety": "formula",
+    "exradii": "formula",
+    "triangle-half-angle-identities": "formula",
+    "triangle-sin2-sum-ratio": "formula",
+    "half-angle-tangent-identity": "formula",
+    "law-cosines-60-120": "formula",
+    "law-of-cosines-special-triangles": "formula",
+    "angle-bisector-length": "formula",
+    "altitude-bisector-angle": "formula",
+    "cevas-theorem": "formula",
+    "menelaus-theorem": "formula",
+    "apollonius-theorem": "formula",
+    "median-triangle-area": "formula",
+    "rouths-theorem": "formula",
+    "vivianis-theorem": "formula",
+    "trig-ceva": "formula",
+    "erdos-mordell": "formula",
+    "ratio-lemma": "formula",
+    "law-of-tangents": "formula",
+    "napoleons-theorem": "formula",
+    "cotangent-rule": "formula",
+    "projection-formula": "formula",
+    "mollweides-formula": "formula",
+    "morleys-theorem": "formula",
+    "pedal-triangle": "formula",
+    "anticomplementary-triangle": "formula",
+    "orthic-triangle": "formula",
+    "medial-triangle": "formula",
+    "contact-triangle": "formula",
+    "axis-stretch-area": "formula",
+    "excentral-triangle": "formula",
+    "isogonal-conjugate": "formula",
+    "isotomic-conjugate": "formula",
+    "euler-line-ratio": "formula",
+    "euler-line-parallel-side": "formula",
+    "euler-distance-theorem": "formula",
+    "nine-point-circle": "formula",
+    "carnots-theorem": "formula",
+    "simson-line": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -2674,6 +2755,1072 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "triangle-similarity": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "trapezoid-consecutive-angles": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "parallel-by-angle-sum": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "gliding-principle": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "special-right-triangles": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations and Applications"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "altitude-hypotenuse": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "median-to-hypotenuse": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations; the count moved up into Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "integer-triangles-perimeter": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "perpendicular-bisector-locus": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations (three readings as facts; the center and fold figures kept)"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "similar-figures-ratios": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations; the cut figure kept"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "midsegment-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "intercept-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations; Key forms and the three-parallels figure added"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "centroid-division": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cevian-area-ratio": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "clock-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "polygon-angle-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "regular-polygon-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "equiangular-hexagon-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations; the regular-hexagon check moved up into Key forms"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "regular-hexagon-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "hexagon-diagonals": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "regular-dodecagon": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ngon-vertex-distance-product": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trapezoid-parallelogram-areas": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trapezoid-special-segments": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "quadrilateral-diagonal-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "van-aubel": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "bretschneiders-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "euler-quadrilateral": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "varignons-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-area-standard": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trig-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trig-area-circumradius": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "max-rectangle-in-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "incenter-area-split": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "right-triangle-inradius": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "conway-circle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "incircle-excircle-touch": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "shared-angle-area-ratio": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "same-base-area-ratio": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "incircle-excircle-homothety": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "exradii": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-half-angle-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-sin2-sum-ratio": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "half-angle-tangent-identity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "law-cosines-60-120": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "law-of-cosines-special-triangles": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "angle-bisector-length": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "altitude-bisector-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cevas-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "menelaus-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "apollonius-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "median-triangle-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "rouths-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "vivianis-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trig-ceva": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "erdos-mordell": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ratio-lemma": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "law-of-tangents": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "napoleons-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cotangent-rule": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "projection-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "mollweides-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "morleys-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pedal-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "anticomplementary-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "orthic-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "medial-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "contact-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "axis-stretch-area": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "excentral-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "isogonal-conjugate": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "isotomic-conjugate": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "euler-line-ratio": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "euler-line-parallel-side": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "euler-distance-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "nine-point-circle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "carnots-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "simson-line": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
       ]
     ]
   }
