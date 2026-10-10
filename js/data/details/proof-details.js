@@ -87,7 +87,7 @@ An olympiad proof technique, frequent in number theory statements of the form "i
 
 "proof-by-cases": String.raw`
 ## When to use
-One quantity controls the argument: the parity of $n$, its residue modulo a small number, the sign of an expression, the order of the variables, or which region a point is in. Within each value of that quantity, the claim becomes routine. For counting with cases, see [[casework-method|Casework]]; this card is about proving a statement.
+One quantity controls the argument: the parity of $n$, its residue modulo a small number, the sign of an expression, the order of the variables, or which region a point is in. Within each value of that quantity, the claim becomes routine. For counting with cases, see [[casework-method|Casework]]; here the aim is to prove a statement.
 
 ## How
 1. Choose the split variable whose value changes the argument, such as $n \bmod m$ or the sign of $x - y$.

@@ -272,6 +272,20 @@
   })()];
 
   DIAGRAMS["trapezoid-parallelogram-areas"] = [(() => {
+    // Parallelogram to rectangle: the triangle cut from the left end fits on the right end.
+    const x0 = 70, w = 200, sh = 70, top = 70, bot = 230, h = bot - top;
+    const A = [x0 + sh, top], B = [x0 + sh + w, top], C = [x0 + w, bot], D = [x0, bot], F = [x0 + sh, bot];
+    const Bp = [x0 + sh + w, bot];
+    const ok = Math.abs(dist(A, F) - h) < 1e-9 && Math.abs(dist(C, Bp) - sh) < 1e-9 && Math.abs(dist(D, F) - sh) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2, ACCS),
+      poly([D, A, F], GLD, 1.8, "rgba(245,196,81,0.18)"), poly([C, B, Bp], GLD, 1.8, "rgba(245,196,81,0.18)"),
+      seg(B, Bp, GLD, 1.6, "5 4"), seg(C, Bp, GLD, 1.6, "5 4"),
+      seg(A, F, GLD, 1.8, "5 4"), rightAngle(F, D, A, 10, GLD),
+      txt(add(mid(D, C), [0, 18]), "b", ACC, 13), txt(add(mid(A, F), [-12, 0]), "h", GLD, 13, "end"),
+      cap(430, 300, "Cut the gold triangle from one end of the parallelogram and move it to the other: the shape becomes a b × h rectangle, so the area is bh." + (ok ? "" : " MISMATCH"))
+    ]);
+  })(), (() => {
     const p = [210, 60], q = [340, 165], r = [210, 270], s = [80, 165];
     return wrap(430, 310, [
       poly([p, q, r, s], DIM, 2, ACCS),
@@ -557,11 +571,21 @@
   })()];
 
   DIAGRAMS["median-triangle-area"] = [(() => {
-    const Ma = mid(B, C), Mb = mid(C, A), Mc = mid(A, B);
-    return wrap(430, 330, [
-      ABC(), seg(A, Ma, ACC, 1.8), seg(B, Mb, GLD, 1.8), seg(C, Mc, GRN, 1.8),
-      txt(add(lerp(A, Ma, 0.35), [14, 0]), "mₐ", ACC, 11.5), txt(add(lerp(B, Mb, 0.4), [0, -8]), "m_b", GLD, 11.5), txt(add(lerp(C, Mc, 0.4), [7, 19]), "m_c", GRN, 11.5),
-      cap(430, 330, "the medians mₐ, m_b, m_c close into a triangle of area ¾ [ABC]")
+    // Reflect the centroid G across the midpoint M of BC: BGCP is a parallelogram, so BGP has
+    // sides (2/3)m_b, (2/3)m_a, (2/3)m_c, a copy of the median triangle scaled by 2/3.
+    const A = [190, 28], B = [64, 196], C = [346, 196];
+    const G = [(A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3], M = mid(B, C), P = sub(mul(M, 2), G);
+    const Mb = mid(C, A), Mc = mid(A, B);
+    const ok = Math.abs(dist(B, G) - dist(B, Mb) * 2 / 3) < 1e-9 && Math.abs(dist(G, P) - dist(A, M) * 2 / 3) < 1e-9 && Math.abs(dist(B, P) - dist(C, Mc) * 2 / 3) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), poly([B, G, P], GLD, 2.4, GLDS),
+      seg(A, M, FNT, 1.4), seg(B, Mb, FNT, 1.4), seg(C, Mc, FNT, 1.4),
+      seg(B, G, GLD, 2.6), seg(G, P, ACC, 2.6), seg(B, P, GRN, 2.6), seg(C, P, FNT, 1.4, "4 3"), seg(C, G, GRN, 1.6, "4 3"),
+      dot(G, GLD, 4), dot(M, DIM, 3.5), dot(P, DIM, 3.5),
+      txt(add(A, [0, -9]), "A", DIM, 13.5), txt(add(B, [-10, 5]), "B", DIM, 13.5), txt(add(C, [10, 5]), "C", DIM, 13.5),
+      txt(add(G, [-12, -8]), "G", GLD, 12.5), txt(add(M, [10, -6]), "M", DIM, 12), txt(add(P, [12, 6]), "P", DIM, 12.5),
+      txt(add(lerp(B, G, 0.5), [-8, -16]), "⅔m_b", GLD, 11.5), txt(add(lerp(G, P, 0.78), [24, 4]), "⅔mₐ", ACC, 11.5), txt(add(lerp(B, P, 0.5), [-4, 22]), "⅔m_c", GRN, 11.5),
+      cap(430, 300, "the shaded triangle BGP has sides ⅔m_b, ⅔mₐ, ⅔m_c, and its area is ⅓[ABC]" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -591,12 +615,23 @@
   // ---------- Triangle centers ----------
 
   DIAGRAMS["euler-line-ratio"] = [(() => {
+    // A lopsided triangle, so that O, G, H are visibly apart: the altitudes meet at H, the medians
+    // at G, and the perpendicular bisectors at O, which lie on one line with HG = 2 GO.
+    const A = [262, 36], B = [46, 250], C = [388, 232];
     const O = circumcenterOf(A, B, C), G = centroidOf(A, B, C), H = orthocenterOf(A, B, C);
-    return wrap(430, 330, [
-      ABC(), seg(lerp(O, H, -0.25), lerp(O, H, 1.25), FNT, 1.6, "6 4"),
-      dot(O, GLD, 4.5), dot(G, ACC, 4.5), dot(H, GRN, 4.5),
-      txt(add(O, [0, 22]), "O", GLD), txt(add(G, [4, -12]), "G", ACC), txt(add(H, [-2, -12]), "H", GRN),
-      cap(430, 330, "H, G, O collinear with HG = 2·GO")
+    const ok = Math.abs(dist(H, G) - 2 * dist(G, O)) < 1e-6 && Math.abs(((H[0] - O[0]) * (G[1] - O[1]) - (H[1] - O[1]) * (G[0] - O[0]))) < 1e-3;
+    const M = [mid(B, C), mid(C, A), mid(A, B)], V = [A, B, C], F = [foot(A, B, C), foot(B, C, A), foot(C, A, B)];
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2),
+      ...V.map((v, i) => seg(v, F[i], ACC, 1.3, "4 3")),            // altitudes meet at H
+      ...V.map((v, i) => seg(v, M[i], GRN, 1.3, "2 3")),            // medians meet at G
+      ...M.map(m => seg(m, O, GLD, 1.3, "6 3")),                     // perpendicular bisectors meet at O
+      seg(lerp(O, H, -0.12), lerp(O, H, 1.12), DIM, 2.2),
+      dot(O, GLD, 5), dot(G, GRN, 5), dot(H, ACC, 5),
+      txt(add(O, [-13, 5]), "O", GLD, 13), txt(add(G, [14, 5]), "G", GRN, 13), txt(add(H, [12, -7]), "H", ACC, 13),
+      txt(add(A, [0, -9]), "A", DIM, 13.5), txt(add(B, [-12, 6]), "B", DIM, 13.5), txt(add(C, [12, 6]), "C", DIM, 13.5),
+      txt(add(lerp(O, G, 0.5), [-8, -10]), "1", DIM, 12), txt(add(lerp(G, H, 0.5), [10, 16]), "2", DIM, 12),
+      cap(430, 300, "altitudes meet at H (blue), medians at G (green), perpendicular bisectors at O (gold): all three centers lie on one line, with HG = 2·GO" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -1393,13 +1428,23 @@
 
   // ---------- Remaining coverage ----------
 
-  DIAGRAMS["triangle-inequality"] = [wrap(430, 320, [
-    ABC(),
-    seg(B, A, ACC, 2.5), seg(A, C, ACC, 2.5), seg(B, C, GLD, 2.5),
-    txt(add(mid(A, B), [-14, -4]), "c", ACC), txt(add(mid(A, C), [16, -2]), "b", ACC),
-    txt(add(mid(B, C), [0, 20]), "a", GLD),
-    cap(430, 320, "the detour is never shorter: a < b + c")
-  ])];
+  DIAGRAMS["triangle-inequality"] = [(() => {
+    // Left: B to C directly (gold) against the detour through A (blue). Right: A on BC, the flat triangle.
+    const B1 = [30, 230], C1 = [210, 230], A1 = [140, 70];
+    const B2 = [250, 230], C2 = [405, 230], A2 = [340, 230];
+    const direct = dist(B1, C1), detour = dist(B1, A1) + dist(A1, C1);
+    const ok = direct < detour && Math.abs(dist(B2, A2) + dist(A2, C2) - dist(B2, C2)) < 1e-9;
+    return wrap(430, 300, [
+      seg(B1, A1, ACC, 2.4), seg(A1, C1, ACC, 2.4), seg(B1, C1, GLD, 3),
+      seg(B2, C2, GLD, 3), seg([B2[0], B2[1] - 8], [A2[0], A2[1] - 8], ACC, 2.4), seg([A2[0], A2[1] - 8], [C2[0], C2[1] - 8], ACC, 2.4),
+      ...[B1, C1, A1, B2, C2, A2].map(p => dot(p, DIM, 3.8)),
+      txt(add(B1, [-6, 18]), "B", DIM, 13), txt(add(C1, [6, 18]), "C", DIM, 13), txt(add(A1, [0, -10]), "A", DIM, 13),
+      txt(add(B2, [-6, 18]), "B", DIM, 13), txt(add(C2, [6, 18]), "C", DIM, 13), txt(add(A2, [0, 20]), "A", DIM, 13),
+      txt(add(mid(B1, A1), [-14, -2]), "c", ACC, 13), txt(add(mid(A1, C1), [14, -2]), "b", ACC, 13), txt(add(mid(B1, C1), [0, 18]), "a", GLD, 13),
+      txt([115, 268], "a < b + c", DIM, 13), txt([330, 268], "a = b + c", DIM, 13),
+      cap(430, 300, "Going from B to C through A (blue) is never shorter than going straight (gold), so a < b + c. When A lies on segment BC the triangle is flat and the two routes tie." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 
   DIAGRAMS["triangle-area-standard"] = [(() => {
     const f = foot(A, B, C);
@@ -2574,13 +2619,25 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
-  DIAGRAMS["law-of-tangents"] = [(() => wrap(430, 320, [
-    ABC(),
-    angleArc(A, B, C, 26, GLD), txt(add(A, [0, 36]), "A", GLD, 12.5),
-    angleArc(B, C, A, 26, GRN), txt(add(B, [30, -10]), "B", GRN, 12.5),
-    txt(add(mid(B, C), [0, 20]), "a", ACC), txt(add(mid(C, A), [16, -2]), "b", ACC),
-    cap(430, 320, "(a − b)/(a + b) = tan((A−B)/2) / tan((A+B)/2)")
-  ]))()];
+  DIAGRAMS["law-of-tangents"] = [(() => {
+    // The circle about C through A meets line BC at D and E, so BD = a - b and BE = a + b, and
+    // the angle DAE in a semicircle is a right angle.
+    const B = [34, 236], C = [214, 236], b = 122, A = onC(C, b, -62);
+    const D = [C[0] - b, 236], E = [C[0] + b, 236];
+    const ok = Math.abs(dist(B, D) - (dist(B, C) - dist(C, A))) < 1e-9 && Math.abs(dist(B, E) - (dist(B, C) + dist(C, A))) < 1e-9;
+    return wrap(430, 300, [
+      `<path d="M ${pf(D)} A ${b} ${b} 0 0 1 ${pf(E)}" fill="none" stroke="${FNT}" stroke-width="1.4" stroke-dasharray="5 4"/>`, seg(B, E, DIM, 2), seg(B, A, DIM, 2), seg(A, C, GRN, 2),
+      seg(A, D, ACC, 2.2), seg(A, E, GLD, 2.2), seg(B, D, ACC, 4), seg(C, E, GRN, 4),
+      rightAngle(A, D, E, 11),
+      dot(C, DIM, 3.5), dot(D, ACC, 3.5), dot(E, GLD, 3.5),
+      txt(add(A, [0, -9]), "A", DIM, 13.5), txt(add(B, [-4, 18]), "B", DIM, 13.5), txt(add(C, [0, 18]), "C", DIM, 13.5),
+      txt(add(D, [0, 18]), "D", ACC, 12.5), txt(add(E, [4, 18]), "E", GLD, 12.5),
+      txt(add(lerp(B, D, 0.5), [0, 34]), "a − b", ACC, 12), txt(add(lerp(D, E, 0.5), [0, 34]), "", DIM, 12),
+      seg(add(B, [0, 44]), add(E, [0, 44]), FNT, 1.2), txt(add(lerp(B, E, 0.5), [0, 60]), "a + b", DIM, 12),
+      txt(add(lerp(A, C, 0.5), [14, -2]), "b", GRN, 12.5),
+      cap(430, 300, "the circle about C of radius b cuts BC at D and E: BD = a − b, BE = a + b, and ∠DAE = 90°" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 
   DIAGRAMS["napoleons-theorem"] = [(() => {
     const apexOut = (P, Q, opp) => {                     // outward apex of the equilateral triangle on PQ
@@ -2651,13 +2708,38 @@ DIAGRAMS["trig-ceva"] = [(() => {
   // ---------- Geometry gap-check additions ----------
 
   DIAGRAMS["intercept-theorem"] = [(() => {
+    // AD : DB = 4 : 6 and AE : EC = 6 : 9, both 2 : 3, so DE is parallel to BC.
     const D = lerp(A, B, 0.4), E = lerp(A, C, 0.4);
+    const ok = Math.abs(dist(A, D) / dist(D, B) - dist(A, E) / dist(E, C)) < 1e-9 && Math.abs((D[1] - E[1])) < 1e-9;
     return wrap(430, 320, [
-      ABC(), seg(D, E, ACC, 2.2), dot(D, ACC, 3.8), dot(E, ACC, 3.8),
-      txt(add(D, [-16, 0]), "D", ACC), txt(add(E, [16, 0]), "E", ACC),
-      cap(430, 320, "DE is parallel to BC exactly when AD/DB = AE/EC")
+      ABC(), seg(D, E, DIM, 2),
+      seg(A, D, GLD, 3), seg(D, B, ACC, 3), seg(A, E, GLD, 3), seg(E, C, ACC, 3),
+      dot(D, DIM, 3.8), dot(E, DIM, 3.8),
+      txt(add(D, [-16, 0]), "D", DIM), txt(add(E, [16, 0]), "E", DIM),
+      txt(add(mid(A, D), [-14, 0]), "4", GLD, 13, "end"), txt(add(mid(D, B), [-14, 0]), "6", ACC, 13, "end"),
+      txt(add(mid(A, E), [14, 0]), "6", GLD, 13, "start"), txt(add(mid(E, C), [14, 0]), "9", ACC, 13, "start"),
+      cap(430, 320, "AD : DB = 4 : 6 and AE : EC = 6 : 9 are the same ratio, 2 : 3, so DE is parallel to BC. Run the other way, a line parallel to BC cuts both sides in one ratio." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  BODY["intercept-theorem"] = {
+    lines: (() => {
+      // Three parallel lines cut two transversals in the same ratio: spacings 80 : 110 along each.
+      const ys = [60, 140, 250];
+      const x1 = y => 60 + 0.3 * (y - 60), x2 = y => 300 - 0.15 * (y - 60);
+      const P = ys.map(y => [x1(y), y]), Q = ys.map(y => [x2(y), y]);
+      const r1 = dist(P[0], P[1]) / dist(P[1], P[2]), r2 = dist(Q[0], Q[1]) / dist(Q[1], Q[2]);
+      const ok = Math.abs(r1 - r2) < 1e-9;
+      return wrap(430, 300, [
+        ...ys.map(y => seg([20, y], [410, y], FNT, 1.6)),
+        seg([x1(30), 30], [x1(280), 280], DIM, 2), seg([x2(30), 30], [x2(280), 280], DIM, 2),
+        seg(P[0], P[1], GLD, 3.4), seg(P[1], P[2], ACC, 3.4), seg(Q[0], Q[1], GLD, 3.4), seg(Q[1], Q[2], ACC, 3.4),
+        ...P.map(p => dot(p, DIM, 3.8)), ...Q.map(p => dot(p, DIM, 3.8)),
+        txt(add(mid(P[0], P[1]), [-12, 0]), "a", GLD, 13, "end"), txt(add(mid(P[1], P[2]), [-12, 0]), "b", ACC, 13, "end"),
+        txt(add(mid(Q[0], Q[1]), [12, 0]), "a′", GLD, 13, "start"), txt(add(mid(Q[1], Q[2]), [12, 0]), "b′", ACC, 13, "start"),
+        cap(430, 300, "Three parallel lines cut every transversal in the same proportion: a : b = a′ : b′, even though the two transversals have different slopes and the lines are not equally spaced." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
 
   DIAGRAMS["trapezoid-special-segments"] = [(() => {
     const a = 90, b = 260, yT = 80, yB = 270;
@@ -3174,11 +3256,21 @@ DIAGRAMS["trig-ceva"] = [(() => {
   })()];
 
   DIAGRAMS["mollweides-formula"] = [(() => {
-    return wrap(430, 320, [
-      ABC(),
-      txt(add(mid(B, C), [0, 20]), "a", DIM, 13), txt(add(mid(A, C), [16, -2]), "b", DIM, 13), txt(add(mid(A, B), [-16, -2]), "c", DIM, 13),
-      angleArc(A, B, C, 26, GLD), angleArc(B, C, A, 26, GLD), angleArc(C, A, B, 26, GLD),
-      cap(430, 320, "(a+b)/c = cos((A−B)/2) / sin(C/2)")
+    // Extend BC past C by CE = b. Triangle ACE is isosceles, so its base angle at E is half the
+    // exterior angle ACE = 180 - C... that is C/2 on the far side, and the Law of Sines in ABE
+    // turns BE = a + b into cos((A - B)/2) against sin(C/2).
+    const B = [30, 205], C = [190, 205], b = 110, A = onC(C, b, -120), E = [C[0] + b, 205];
+    const ang = (V, P, Q) => { const d = Math.abs(Math.atan2(P[1] - V[1], P[0] - V[0]) - Math.atan2(Q[1] - V[1], Q[0] - V[0])); return (d > Math.PI ? 2 * Math.PI - d : d) * 180 / Math.PI; };
+    const ok = Math.abs(ang(E, A, C) - ang(C, A, B) / 2) < 1e-6;
+    return wrap(430, 262, [
+      seg(B, E, DIM, 2), seg(A, B, DIM, 2), seg(A, C, GRN, 2.4), seg(C, E, GRN, 4), seg(A, E, GLD, 2.2),
+      angleArc(C, A, B, 22, ACC), angleArc(E, A, C, 24, GLD),
+      dot(C, DIM, 3.5), dot(E, GLD, 3.5),
+      txt(add(A, [-4, -9]), "A", DIM, 13.5), txt(add(B, [-6, 18]), "B", DIM, 13.5), txt(add(C, [-4, 18]), "C", DIM, 13.5), txt(add(E, [6, 18]), "E", GLD, 13),
+      txt(add(lerp(B, C, 0.5), [0, 18]), "a", DIM, 12.5), txt(add(lerp(A, C, 0.5), [14, -2]), "b", GRN, 12.5), txt(add(lerp(C, E, 0.5), [0, 18]), "b", GRN, 12.5),
+      txt(add(lerp(A, B, 0.5), [-12, -4]), "c", DIM, 12.5), txt(add(C, [-26, -26]), "C", ACC, 11.5), txt(add(E, [-44, -6]), "C/2", GLD, 11.5),
+      seg(add(B, [0, 38]), add(E, [0, 38]), FNT, 1.2), txt(add(lerp(B, E, 0.5), [0, 54]), "a + b", DIM, 12),
+      cap(430, 262, "extend BC by CE = b: triangle ACE is isosceles with ∠E = C/2, and the Law of Sines in ABE gives (a + b)/cos((A−B)/2) = c/sin(C/2)" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -4658,9 +4750,9 @@ DIAGRAMS["trig-ceva"] = [(() => {
   })()];
 
   DIAGRAMS["cotangent-rule"] = [(() => {
-    // 13-14-15 at k = 19 -- the triangle the worked example uses, so the figure and the
-    // numbers below it agree.
-    const k = 19, B = [82, 282], C = [82 + 14 * k, 282], A = [82 + 5 * k, 282 - 12 * k];
+    // a = 13, b = 14, c = 15 at k = 19 -- the triangle the worked example uses, so the figure and
+    // the numbers below it agree. A sits 99/13 along BC and 12.923 up (sides 15 and 14 from B, C).
+    const k = 19, B = [82, 282], C = [82 + 13 * k, 282], A = [82 + (99 / 13) * k, 282 - Math.sqrt(225 - (99 / 13) ** 2) * k];
     const F = foot(A, B, C);
     return wrap(430, 340, [
       poly([A, B, C], DIM, 2.2, ACCS),
@@ -4669,10 +4761,10 @@ DIAGRAMS["trig-ceva"] = [(() => {
       dot(A, DIM, 4.5), dot(B, DIM, 4.5), dot(C, DIM, 4.5),
       txt(add(A, [0, -13]), "A", DIM, 13),
       txt(add(B, [-14, 7]), "B", DIM, 13), txt(add(C, [14, 7]), "C", DIM, 13),
-      txt([82 + 2 * k, 282 - 6 * k - 6], "c = 15", DIM, 12, "end"),
-      txt([82 + 10 * k + 10, 282 - 6 * k - 6], "b = 14", DIM, 12, "start"),
-      txt([82 + 7 * k, 305], "a = 13", DIM, 12),
-      txt(add(A, [2, 41]), "\u2220A", ORG, 12, "start"),
+      txt(add(mid(A, B), [-8, -4]), "c = 15", DIM, 12, "end"),
+      txt(add(mid(A, C), [10, -2]), "b = 14", DIM, 12, "start"),
+      txt([mid(B, C)[0], 305], "a = 13", DIM, 12),
+      txt(add(A, [-9, 40]), "\u2220A", ORG, 12, "end"),
       cap(430, 340, "cot A = (b² + c² − a²) / 4K: the law of cosines over the sine area formula, with the bc cancelling")
     ]);
   })()];
@@ -8017,5 +8109,110 @@ DIAGRAMS["trig-ceva"] = [(() => {
       ]);
     })()
   };
+
+  // ---- Triangle similarity criteria ----
+  // DE parallel to BC with AD : AB = 2 : 5 cuts off a triangle similar to ABC; equal angles marked.
+  DIAGRAMS["triangle-similarity"] = [(() => {
+    const A = [150, 40], B = [40, 260], C = [380, 260], D = lerp(A, B, 0.4), E = lerp(A, C, 0.4);
+    const ok = Math.abs(dist(D, E) / dist(B, C) - 0.4) < 1e-9 && Math.abs(angDeg(D, A, E) - angDeg(B, A, C)) < 1e-9 && Math.abs(angDeg(E, A, D) - angDeg(C, A, B)) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), poly([A, D, E], ACC, 2, ACCS), seg(D, E, ACC, 2.4),
+      angleArc(D, A, E, 18, GLD), angleArc(B, A, C, 20, GLD),
+      angleArc(E, A, D, 16, PUR), angleArc(C, A, B, 18, PUR),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, ACC, 4), dot(E, ACC, 4),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-8, 16]), "B", DIM, 13), txt(add(C, [8, 16]), "C", DIM, 13),
+      txt(add(D, [-10, 4]), "D", ACC, 13, "end"), txt(add(E, [10, 4]), "E", ACC, 13, "start"),
+      cap(430, 300, "DE is parallel to BC, so the angles at D and B are equal (gold), the angles at E and C are equal (purple), and angle A is shared: triangle ADE is similar to triangle ABC by AA, here with ratio AD : AB = 2 : 5." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- Consecutive angles of a trapezoid ----
+  DIAGRAMS["trapezoid-consecutive-angles"] = [(() => {
+    const D = [40, 230], C = [390, 230], A = [120, 80], B = [300, 80];
+    const ok = Math.abs(angDeg(A, B, D) + angDeg(D, A, C) - 180) < 1e-9 && Math.abs(angDeg(B, A, C) + angDeg(C, B, D) - 180) < 1e-9;
+    return wrap(430, 280, [
+      poly([A, B, C, D], DIM, 2, ACCS),
+      angleArc(A, B, D, 22, GLD), angleArc(D, A, C, 26, GLD),
+      angleArc(B, A, C, 22, PUR), angleArc(C, B, D, 26, PUR),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, DIM, 4),
+      txt(add(A, [-6, -10]), "A", DIM, 13), txt(add(B, [6, -10]), "B", DIM, 13), txt(add(C, [8, 16]), "C", DIM, 13), txt(add(D, [-8, 16]), "D", DIM, 13),
+      txt([215, 72], "AB ∥ DC", FNT, 12),
+      cap(430, 280, "The bases AB and DC are parallel, so each leg is a transversal: the two gold angles along leg AD add to 180°, and so do the two purple angles along leg BC." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- Proving lines parallel by angle sums ----
+  // Transversal t crosses l and m; the co-interior angles are 70 and 110 degrees, so l is parallel to m.
+  DIAGRAMS["parallel-by-angle-sum"] = [(() => {
+    const yl = 80, ym = 220, P = [190, yl], Q = [240, ym];
+    const tdir = norm(sub(Q, P)), T1 = add(P, mul(tdir, -70)), T2 = add(Q, mul(tdir, 70));
+    const a1 = angDeg(P, [400, yl], Q), a2 = angDeg(Q, [400, ym], P);
+    const ok = Math.abs(a1 + a2 - 180) < 1e-9;
+    return wrap(430, 290, [
+      seg([30, yl], [410, yl], ACC, 2.2), seg([30, ym], [410, ym], ACC, 2.2), seg(T1, T2, DIM, 2),
+      angleArc(P, [400, yl], Q, 26, GLD), angleArc(Q, P, [400, ym], 26, PUR),
+      dot(P, DIM, 4), dot(Q, DIM, 4),
+      txt([400, yl - 10], "ℓ", ACC, 14, "end"), txt([400, ym - 10], "m", ACC, 14, "end"), txt(add(T2, [8, 0]), "t", DIM, 14, "start"),
+      txt(add(P, [34, 24]), Math.round(a1) + "°", GLD, 12, "start"), txt(add(Q, [26, -16]), Math.round(a2) + "°", PUR, 12, "start"),
+      cap(430, 290, "The two interior angles on the same side of t add to " + Math.round(a1) + "° + " + Math.round(a2) + "° = 180°, so ℓ and m cannot meet: if they did, the triangle they form with t would have no angle left at the meeting point." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- The gliding principle ----
+  // A'B'C' = s*ABC + t (rotation 50 degrees, scale 0.7); P, Q, R divide AA', BB', CC' at lambda = 0.5.
+  DIAGRAMS["gliding-principle"] = [(() => {
+    const A = [50, 230], B = [190, 230], C = [90, 120];
+    const th = 50 * Math.PI / 180, sc = 0.7, T = [230, 150];
+    const S = p => { const x = p[0] - A[0], y = p[1] - A[1]; return add(T, [sc * (x * Math.cos(th) - y * Math.sin(th)), sc * (x * Math.sin(th) + y * Math.cos(th))]); };
+    const A2 = S(A), B2 = S(B), C2 = S(C), lam = 0.5;
+    const P = lerp(A, A2, lam), Q = lerp(B, B2, lam), R = lerp(C, C2, lam);
+    const r1 = dist(P, Q) / dist(A, B), r2 = dist(Q, R) / dist(B, C), r3 = dist(R, P) / dist(C, A);
+    const ok = Math.abs(r1 - r2) < 1e-9 && Math.abs(r2 - r3) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2, ACCS), poly([A2, B2, C2], DIM, 2, ACCS), poly([P, Q, R], GLD, 2.2, GLDS),
+      seg(A, A2, FNT, 1.3, "4 4"), seg(B, B2, FNT, 1.3, "4 4"), seg(C, C2, FNT, 1.3, "4 4"),
+      ...[A, B, C, A2, B2, C2].map(p => dot(p, DIM, 3.5)), ...[P, Q, R].map(p => dot(p, GLD, 4)),
+      txt(add(A, [-8, 14]), "A", DIM, 12.5, "end"), txt(add(B, [8, 14]), "B", DIM, 12.5, "start"), txt(add(C, [-8, -6]), "C", DIM, 12.5, "end"),
+      txt(add(A2, [6, -8]), "A′", DIM, 12.5, "start"), txt(add(B2, [8, 6]), "B′", DIM, 12.5, "start"), txt(add(C2, [8, -2]), "C′", DIM, 12.5, "start"),
+      cap(430, 300, "ABC and A′B′C′ are directly similar (turned 50° and scaled). The midpoints of AA′, BB′, and CC′ (gold) form a third triangle with the same shape, as the Gliding Principle predicts." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  BODY["gliding-principle"] = {
+    // X and Y glide along two lines at constant speeds; their midpoint M glides along a third line.
+    moving: (() => {
+      const X0 = [40, 60], u = [70, 25], Y0 = [60, 260], v = [50, 0];
+      const ts = [0, 1, 2, 3, 4];
+      const X = t => add(X0, mul(u, t)), Y = t => add(Y0, mul(v, t)), M = t => mid(X(t), Y(t));
+      const col = Math.abs((M(4)[0] - M(0)[0]) * (M(2)[1] - M(0)[1]) - (M(4)[1] - M(0)[1]) * (M(2)[0] - M(0)[0])) < 1e-9;
+      const ok = col && Math.abs(dist(M(0), M(1)) - dist(M(3), M(4))) < 1e-9;
+      return wrap(430, 300, [
+        seg(X(0), X(4.6), ACC, 1.6), seg(Y(0), Y(4.6), PUR, 1.6), seg(M(0), M(4.6), GLD, 1.6, "6 4"),
+        ...ts.map(t => seg(X(t), Y(t), FNT, 1, "3 4")),
+        ...ts.map(t => dot(X(t), ACC, 3.5)), ...ts.map(t => dot(Y(t), PUR, 3.5)), ...ts.map(t => dot(M(t), GLD, 4)),
+        txt(add(X(4.6), [6, -4]), "X", ACC, 13, "start"), txt(add(Y(4.6), [6, 6]), "Y", PUR, 13, "start"), txt(add(M(4.6), [6, 0]), "M", GLD, 13, "start"),
+        cap(430, 300, "X and Y move along two lines, covering equal distances in equal times. Their midpoint M, shown at five equally spaced moments, also moves along a line and covers equal distances in equal times." + (ok ? "" : " MISMATCH"))
+      ]);
+    })()
+  };
+
+
+  DIAGRAMS["axis-stretch-area"] = [(() => {
+    // The unit circle with an inscribed equilateral triangle, and the same picture stretched by
+    // k = 1.5 along y: the ellipse and the image triangle, whose area is exactly k times larger.
+    const k = 1.5, r = 62, C1 = [92, 150], C2 = [322, 150];
+    const P = [-90, 30, 150].map(d => [r * Math.cos(d * Math.PI / 180), r * Math.sin(d * Math.PI / 180)]);
+    const Q = P.map(p => [p[0], p[1] * k]);
+    const area = pts => Math.abs(pts.reduce((s, p, i) => { const q = pts[(i + 1) % 3]; return s + p[0] * q[1] - q[0] * p[1]; }, 0)) / 2;
+    const ok = Math.abs(area(Q) / area(P) - k) < 1e-9;
+    return wrap(430, 300, [
+      circ(C1, r, FNT, 1.6), poly(P.map(p => add(C1, p)), ACC, 2.2, ACCS),
+      `<ellipse cx="${C2[0]}" cy="${C2[1]}" rx="${r}" ry="${r * k}" fill="none" stroke="${FNT}" stroke-width="1.6"/>`,
+      poly(Q.map(p => add(C2, p)), GLD, 2.2, GLDS),
+      seg([C1[0] + r + 14, 150], [C2[0] - r - 14, 150], DIM, 1.8, "5 4"),
+      txt([207, 140], "y × 1.5", DIM, 12.5),
+      txt([C1[0], 250], "area A", ACC, 12.5), txt([C2[0], 262], "area 1.5 A", GLD, 12.5),
+      cap(430, 300, "stretching y by 1.5 turns the circle into an ellipse and the inscribed triangle into another, and every area, the triangle's and the region's, is multiplied by exactly 1.5" + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 
 })();

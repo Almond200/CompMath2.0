@@ -242,6 +242,7 @@ Eight problems here, seven of them AIME, and none by it alone. Four pair it with
 - $\#\{(A,B):A\subseteq B\subseteq S\}=3^n$ — three destinations per element
 - $\alt{\sum_{k=0}^{n}\binom nk 2^k}{\binom n0 2^0+\binom n1 2^1+\cdots+\binom nn 2^n}=3^n$ — the same count organized by $|B|$
 - chains $A_1\subseteq\cdots\subseteq A_m\subseteq S$ give $(m+1)^n$
+- any condition on $m$ sets that allows $r$ membership patterns per element gives $r^n$
 
 ## Why it works
 Build the pair element by element rather than set by set. For each element of $S$ there are exactly three consistent possibilities: it belongs to $A$, in which case it belongs to $B$ as well; it belongs to $B$ only; or it belongs to neither. The fourth combination, in $A$ but not $B$, is precisely what $A\subseteq B$ forbids. The elements are independent, so the count is $3^n$.
@@ -252,6 +253,8 @@ Organizing the same count by the size of $B$ gives the identity. There are $\bin
 Recognize the shape: two sets with one required to sit inside the other, and a question asking how many such pairs exist. Counting by element is immediate, while counting by size leads to a binomial sum you then have to evaluate — so use the element argument to get the answer and the sum only if the problem asks for that form.
 
 The extension is worth remembering because it is free. A chain of $m$ nested sets inside $S$ gives each element $m+1$ choices: the first set in the chain it enters, or none at all. Two nested sets is the $m=2$ case, $3^n$.
+
+The same bookkeeping handles more subsets and conditions other than nesting. Record, for each element, which of the $m$ sets contain it, as a string of $m$ yes-or-no answers. A condition on the sets is then a rule about which strings an element may have, and when the rule treats every element alike the elements choose independently, so the count is (number of allowed strings)$^n$. For $A\subseteq B\subseteq C$ the allowed strings are $000$, $001$, $011$, $111$ (the first set the element enters, or none), giving $4^n$. For three sets whose union must be all of $S$, every string except $000$ is allowed, giving $7^n$. For three pairwise disjoint sets an element is in at most one of them, again $4$ strings and $4^n$.
 
 ## On contests
 The AMC and AIME phrasings hide it well — ordered pairs of subsets with a containment condition, or a question about $A\cap B=A$, which is the same statement. Anything of the form "count something for each element independently" beats summing [[binomial-row-sums|binomial row sums]] by hand; if you find yourself evaluating $\sum\binom nk 2^k$, the element argument was available.`,
@@ -759,13 +762,41 @@ Usually the whole solution once the region is drawn: a ratio of polygon areas, s
 A random process moves among finitely many situations until it stops: a random walk until it reaches an end, a game until someone wins, a bug on a cube until it reaches a corner, coin flips until a pattern appears. The question asks for the chance of ending a certain way or the expected number of steps.
 
 ## How
-1. Choose states that capture everything that matters for the future, and nothing more.
-2. Give each state an unknown: $p_S$ for the chance of winning from it, or $E_S$ for the expected number of steps.
-3. For each state, condition on the first step: $p_S$ is the next states' values averaged by the step probabilities, and $E_S$ is $1$ more.
-4. Fix the end states: $p = 1$ at a win, $p = 0$ at a loss, and $E = 0$ at the finish.
-5. Solve the system, merging states that behave alike.
+1. Decide which kind of question it is: the chance of ending a certain way, the expected number of steps, or the position after a fixed number of steps.
+2. Choose states that capture everything the future depends on, merging states alike by symmetry.
+3. Give each state an unknown and fix the end states.
+4. Write one equation for every other state by conditioning on its first step.
+5. Solve the linear system.
+
+### The chance of ending a certain way
+The unknown $P_s$ is the chance of eventually ending in the wanted way from state $s$. At the end states the answer is already known: $P = 1$ at an ending that counts as a success and $P = 0$ at every other ending. Every other state averages its neighbors, with no extra term: $P_s = \sum p_{s \to s'}\, P_{s'}$. Nothing is added, because a probability does not grow as time passes.
+
+### The expected number of steps
+The unknown $E_s$ is the expected number of steps still to come from state $s$. At every end state $E = 0$, because no steps remain, whether the ending is good or bad. Every other state adds $1$ for the step it is about to take: $E_s = 1 + \sum p_{s \to s'}\, E_{s'}$.
+
+The $1$ is one unit of whatever is being counted; to count draws, flips, or minutes, add $1$, and to count something else, such as heads, add the expected amount of it gained in one step instead.
 
 Flip a fair coin until two heads in a row appear. With states "start" and "just flipped a head", $E_0 = 1 + \frac12 E_H + \frac12 E_0$ and $E_H = 1 + \frac12 \cdot 0 + \frac12 E_0$. Substituting the second into the first gives $\frac14 E_0 = \frac32$, so $E_0 = 6$ flips on average.
+
+### Where the process is after exactly $n$ steps
+A question about a fixed number of steps is not about ending at all, so there are no end states and no first-step equations. Instead, keep track of where the process could be after each step, as a list of probabilities that always adds up to $1$.
+
+Start by grouping the positions that behave alike by symmetry, so the list stays short, and write down where one step leads from each group and with what chance. The first row of the list puts probability $1$ on the starting group and $0$ everywhere else.
+
+Each new row is built from the one above it: a group's new probability is the sum, over the groups that can step into it, of the old probability times the chance of that step. Writing the rows as a table, one row per step, keeps the bookkeeping straight, and the answer is read off the row for step $n$.
+
+For example, a bug starts at a vertex of a cube and each minute walks to one of the three neighboring vertices at random; what is the chance that it is at the opposite vertex after $5$ minutes? Group the vertices by their distance from the start, $0$, $1$, $2$, or $3$. From distance $0$ every move goes to distance $1$; from $1$, one of the three moves goes back to $0$ and two go on to $2$; from $2$, two go back to $1$ and one goes on to $3$; from $3$ every move goes to $2$.
+
+| Minute | Distance $0$ | Distance $1$ | Distance $2$ | Distance $3$ |
+|---|---|---|---|---|
+| $0$ | $1$ | $0$ | $0$ | $0$ |
+| $1$ | $0$ | $1$ | $0$ | $0$ |
+| $2$ | $\frac13$ | $0$ | $\frac23$ | $0$ |
+| $3$ | $0$ | $\frac79$ | $0$ | $\frac29$ |
+| $4$ | $\frac{7}{27}$ | $0$ | $\frac{20}{27}$ | $0$ |
+| $5$ | $0$ | $\frac{61}{81}$ | $0$ | $\frac{20}{81}$ |
+
+Each entry comes from the row above it. After minute $3$, for instance, distance $1$ collects every move from distance $0$ and two thirds of the moves from distance $2$, so its chance is $\frac13 + \frac23 \cdot \frac23 = \frac79$. The last row answers the question: the bug is at the opposite vertex with probability $\frac{20}{81}$. Every row adds up to $1$, a quick check on the arithmetic, and the zeros alternate because each move changes the distance by exactly one.
 
 ## Why it works
 The future depends only on the current state, so after the first step the process starts afresh from wherever it landed. Averaging over the first step therefore gives each state's value in terms of the next states' values, which is the law of total probability; for expected steps, the first step adds $1$. When an end state can be reached from every state, the system has exactly one solution.
@@ -781,7 +812,9 @@ The figure shows the symmetry step on a cube: vertices at the same distance from
 
 ## Common traps
 - States that forget something the future depends on, such as whether the last flip was a head.
-- Leaving out the $+1$ in an expected-steps equation.
+- Leaving out the $+1$ in an expected-steps equation, or adding one to a probability equation, where it does not belong.
+- Giving a winning end state the value $1$ in an expected-steps problem; every end state has $0$ steps left.
+- Setting up absorbing end states for a question about a fixed number of steps, which needs a step-by-step probability list instead.
 - Forgetting the values at the end states, which leaves the system with no unique solution.
 
 ## Contest profile
@@ -1115,6 +1148,8 @@ Usually the whole count when a path problem has an obstacle; for a single blocke
 "recursive-counting": String.raw`
 ## When to use
 Counts indexed by a size $n$, where a size-$n$ object is a smaller object of the same kind plus an ending: tilings of a strip, strings with no forbidden pattern, climbs up a staircase in steps of $1$ or $2$, seatings built one person at a time. It is especially good when one specific size is asked for, such as $n = 12$, since a short table gets there.
+
+When the objects are strings with a rule about neighbors, the situation has its own card, [[restricted-sequences|Counting Restricted Sequences (State Machines)]], which says how to choose the states.
 
 ## How
 1. Define $a_n$ exactly: the number of valid objects of size $n$.
@@ -1508,7 +1543,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "transfer-matrix-method": String.raw`
 ## When to use
-Counting sequences, colorings of a strip or tilings of a $k \times n$ board where each next choice depends only on the last few, especially when $n$ is large or a general formula is wanted. When a recursion would need several sequences that feed into each other, the matrix keeps them organized.
+Counting sequences, colorings of a strip or tilings of a $k \times n$ board where each next choice depends only on the last few, especially when $n$ is large or a general formula is wanted. When a recursion would need several sequences that feed into each other, the matrix keeps them organized. For strings with a rule about neighbors, see [[restricted-sequences|Counting Restricted Sequences (State Machines)]].
 
 ## How
 1. Choose states that record just enough of the recent past to decide which next choices are allowed.
@@ -1551,7 +1586,7 @@ The size-parity split is different and always holds — it is the [[binomial-the
 AMC/AIME "sum over all subsets" and "how many subsets have even sum" problems collapse to one line; the same appearance-counting idea — each element or pair is counted a fixed number of times — generalizes to summing any additive statistic over a family.`,
 
 "tail-sum-expectation": String.raw`## Why it works
-Write $X$ as a sum of indicators of its own tail: $X = \sum_{k\ge 1} \mathbf{1}[X \ge k]$, since a value of $X = m$ makes exactly the first $m$ indicators equal to $1$. Taking expectations and using linearity, $E[X] = \sum_{k\ge 1} E[\mathbf{1}[X\ge k]] = \sum_{k\ge 1} P(X\ge k)$. Equivalently, it is a swap of summation order: $\sum_k P(X\ge k) = \sum_k \sum_{m\ge k} P(X=m) = \sum_m m\, P(X=m)$. The continuous version replaces the sum by $\int_0^\infty P(X>t)\,dt$ — the "area above the CDF."
+Write $X$ as a sum of indicators of its own tail: $X = \sum_{k\ge 1} \mathbf{1}[X \ge k]$, since a value of $X = m$ makes exactly the first $m$ indicators equal to $1$. Taking expectations and using linearity, $E[X] = \sum_{k\ge 1} E[\mathbf{1}[X\ge k]] = \sum_{k\ge 1} P(X\ge k)$. Equivalently, it is a swap of summation order: $\sum_k P(X\ge k) = \sum_k \sum_{m\ge k} P(X=m) = \sum_m m\, P(X=m)$. The continuous version replaces the sum by $\int_0^\infty P(X>t)\,\mathrm{d}t$ — the "area above the CDF."
 
 ## How to use it
 Use it whenever $P(X\ge k)$ is easier to describe than $P(X=k)$, which happens far more often than not. Expected maxima are the flagship case: $P(\max\lt k)$ is a product over the independent draws, so the tail is one subtraction, while the exact distribution of the maximum requires a difference of two such products.
@@ -1997,5 +2032,32 @@ Networks with no redundant links, counting edges and leaves from degree informat
 
 ## Contest profile
 Olympiad graph theory and occasional AIME problems that count leaves or edges from degrees, or prove that some structure is a tree.
+`,
+
+"restricted-sequences": String.raw`
+## Distinguishing clues
+The objects are strings or rows of length $n$, built left to right, and the rule is about neighbors or runs: no two $1$s adjacent, no three equal letters in a row, no forbidden word of length two or three. Because only the last few symbols matter, the count can be organized by what the string ends with. A rule about the whole string, such as a fixed total number of $1$s with no restriction on position, calls for ordinary combinations instead, and a selection of $k$ positions with none adjacent is the closed-form case, [[non-adjacent-selection|Non-Adjacent Selection]].
+
+## Methods and Formulas to Try
+The choice among the methods depends on what is asked: one length, a general formula, or a circular arrangement.
+
+### Methods to try
+- [[recursive-counting]]: classify the valid strings of length $n$ by how they end, and write the count in terms of shorter strings; for one specific length a short table is enough.
+- [[transfer-matrix-method]]: when the states are many, or $n$ is large, or the arrangement is circular, put the allowed moves between states in a matrix and take its power.
+- [[counting-blocks]]: when the rule is that certain symbols must stay together, glue them into one block first and count the arrangements of blocks.
+- [[complementary-counting]]: when the rule is that a bad pattern is absent, and the bad cases are easier to count, subtract them from all $2^n$ strings.
+
+### Formulas to try
+- [[linear-recurrence]]: the counts by length satisfy a linear recurrence, solved in closed form from its characteristic polynomial.
+- [[non-adjacent-selection]]: $\binom{n - k + 1}{k}$ strings with $k$ ones and no two adjacent.
+- [[cayley-hamilton]]: shows the counts from a transfer matrix satisfy the recurrence of its characteristic polynomial.
+
+## Common traps
+- States that forget something the rule depends on, such as the length of the current run.
+- Counting strings of length $n$ from a table for length $n - 1$ without checking the starting cases.
+- Using a circular count with a linear recursion, where the two ends also have to match.
+
+## Contest profile
+An AIME counting pattern about binary or ternary strings with a forbidden pattern, usually solved by a small table of counts by ending, and occasionally by a transfer matrix.
 `
 });

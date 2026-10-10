@@ -114,6 +114,15 @@ On a very large share of geometry problems, almost always as the closing step af
 `,
 
 "special-right-triangles": String.raw`
+## Key forms
+- $1 : 1 : \sqrt2$ — the 45-45-90 triangle: two equal legs, and a hypotenuse $\sqrt2$ times a leg
+- $1 : \sqrt3 : 2$ — the 30-60-90 triangle, listed opposite the angles $30^\circ$, $60^\circ$, $90^\circ$
+- legs $s$ and hypotenuse $s\sqrt2$, with area $\frac{s^2}{2}$ — the 45-45-90 triangle scaled by $s$
+- short leg $t$, long leg $t\sqrt3$, hypotenuse $2t$, with area $\frac{\sqrt3}{2}t^2$ — the 30-60-90 triangle scaled by $t$
+
+## Conditions
+The triangle is right, with the stated acute angles; the ratios are matched to the angles in order, so the side opposite $30^\circ$ is the shortest.
+
 ## Why it works
 Each triangle is half of a figure you already know: the 45-45-90 triangle is half a square, and the 30-60-90 triangle is half an [[equilateral-triangle-facts|equilateral triangle]].
 
@@ -125,16 +134,29 @@ Cut an equilateral triangle of side $2$ along an altitude. The altitude meets th
 
 {{figure:equilateral}}
 
-## How to use it
-Whenever an angle of $30^\circ$, $45^\circ$, $60^\circ$, $90^\circ$, $120^\circ$, or $135^\circ$ appears, look to drop a perpendicular that creates one of these triangles. That converts angle information into length information without trigonometry. A $120^\circ$ angle splits into a $30$-$60$-$90$ on the outside (the standard way to handle obtuse special angles).
+## Useful observations
+- An angle of $30^\circ$, $45^\circ$, or $60^\circ$ turns into lengths without trigonometry once a perpendicular is dropped to make one of these triangles.
+- An angle of $120^\circ$ or $135^\circ$ becomes a special triangle after one side is extended, since the supplementary angle is $60^\circ$ or $45^\circ$.
+- A regular [[regular-hexagon-area|hexagon]] splits into equilateral triangles, and each of those splits into two 30-60-90 triangles; a square's diagonal gives two 45-45-90 triangles.
+- Each ratio is used in both directions: a hypotenuse $h$ gives legs $\frac{h}{\sqrt2}$, and a long leg $\ell$ gives a short leg $\frac{\ell}{\sqrt3}$.
 
-## On contests
-The default mechanism for AMC 10 geometry, with 21 problems tagged here, only 2 of them solved by the ratios alone: they are almost always the step that turns an angle into lengths inside a larger figure, most often an equilateral triangle (4 problems) or a circle (3).
+## Applications
+Lengths in squares, equilateral triangles, and hexagons, and any figure where an angle of $30^\circ$, $45^\circ$, or $60^\circ$ must become a length.
 
-[[regular-hexagon-area|Hexagons]] decompose into 30-60-90 triangles, a square's diagonal gives 45-45-90 triangles, and "fold the paper" problems almost always hide one. Know the ratios cold in both directions, the sides from the hypotenuse and the hypotenuse from a side.
+## Contest profile
+The default length step in AMC geometry, seldom the whole problem: it usually turns an angle into lengths inside an equilateral triangle, a square, or a circle.
 `,
 
 "altitude-hypotenuse": String.raw`
+## Key forms
+- $h^2 = pq$ — the altitude is the geometric mean of the two pieces of the hypotenuse
+- $a^2 = pc$ and $b^2 = qc$ — each leg is the geometric mean of the hypotenuse and the piece next to it
+- $h = \frac{ab}{c}$ — from the two ways of writing the area, $\frac12ab = \frac12ch$
+- $a^2 + b^2 = c^2$ — adding the last two relations gives the Pythagorean Theorem
+
+## Conditions
+The triangle has a right angle at the vertex where the altitude starts; $p$ and $q$ are the pieces of the hypotenuse, with $p$ next to leg $a$, $q$ next to leg $b$, and $c = p + q$.
+
 ## Why it works
 Each small triangle shares an acute angle with the original and has a right angle, so all three triangles are similar, and each relation is one proportion between two of them.
 
@@ -144,37 +166,61 @@ Laid side by side in the same orientation, with the shared angle at the left, th
 
 Matching sides gives the relations. From the two small triangles, $\frac hp = \frac qh$, so $h^2 = pq$. From the small triangle next to $a$ and the whole, $\frac pa = \frac ac$, so $a^2 = pc$, and likewise $b^2 = qc$. Adding the last two gives $a^2 + b^2 = (p + q)c = c^2$, a proof of the Pythagorean Theorem.
 
-## How to use it
-Given any two of $a$, $b$, $h$, $p$, $q$, and $c = p + q$, the relations give the rest. If the altitude cuts the hypotenuse into $3$ and $12$, then $h^2 = 36$, so $h = 6$, and the legs are $\sqrt{3 \cdot 15} = 3\sqrt5$ and $\sqrt{12 \cdot 15} = 6\sqrt5$.
+## Useful observations
+- Any two of $a$, $b$, $h$, $p$, $q$ determine the other three, with $c = p + q$.
+- A point $C$ on a circle with diameter $AB$ sees the diameter at a right angle by [[thales-theorem|Thales' Theorem]], so the perpendicular $CD$ to the diameter has $CD^2 = AD \cdot DB$, the form of [[power-of-a-point|Power of a Point]] for a chord perpendicular to a diameter.
+- In coordinates, the distance from the right-angle vertex to the hypotenuse is $\frac{ab}{c}$ with no computation.
+- The phrase "geometric mean" in a right-triangle problem is the signal for these relations.
 
-The phrase "geometric mean" in a right-triangle problem points straight here, and so does a semicircle on the hypotenuse, since by [[thales-theorem|Thales' Theorem]] every point on it makes a right angle. In coordinates, the distance from the right-angle vertex to the hypotenuse is $\frac{ab}{c}$ with no computation.
+## Applications
+Right triangles with an altitude drawn, semicircles on a hypotenuse, and chains of similar triangles inside a right triangle.
 
-## On contests
-Five problems here, four of them AIME, none by it alone; two continue into [[similar-figures-ratios|similar triangles]] more generally. It is a fixture of AMC and MATHCOUNTS geometry as well, in circles tangent to a hypotenuse, folded rectangles, and chains of similar triangles.
+## Contest profile
+A fixture of MATHCOUNTS and AMC geometry, appearing in circles tangent to a hypotenuse, folded rectangles, and chains of similar right triangles; on the AIME it is a step inside a longer computation.
 `,
 
 "triangle-inequality": String.raw`
+## Key forms
+- $a < b + c$ — each side is shorter than the sum of the other two, for every choice of the side
+- $|a - b| < c < a + b$ — the range of the third side when two sides are known
+- if $c$ is the longest side, only $c < a + b$ needs checking
+- $a = b + c$ — the flat triangle, where the three points lie on one line
+- $2\min(a, b) - 1$ — the number of whole numbers $c$ that complete a triangle with integer sides $a$ and $b$
+
+## Conditions
+The lengths are positive. The inequalities are strict for a genuine triangle; equality gives the flat case.
+
 ## Why it works
 The straight segment is the shortest path between two points, so going from $B$ to $C$ by way of $A$ can never be shorter than going straight.
 
-The side $a = BC$ is the direct route, and $c + b = BA + AC$ is the route through $A$, as in the figure at the top. A detour through a point off the line is strictly longer, which gives $a \lt b + c$, and the same holds for each side. The detour ties the direct route only when $A$ lies on the segment $BC$, which is the flat triangle where $a = b + c$.
+The side $a = BC$ is the direct route, and $c + b = BA + AC$ is the route through $A$. A detour through a point off the line is strictly longer, which gives $a \lt b + c$, and the same holds for each side. The detour ties the direct route only when $A$ lies on the segment $BC$, which is the flat triangle where $a = b + c$.
 
 The two-sided form $$|a - b| \lt c \lt a + b$$ packages all three inequalities. The right half is one of them; the left half combines the other two, since $a \lt b + c$ gives $a - b \lt c$ and $b \lt a + c$ gives $b - a \lt c$. When $c$ is the longest side, the other two conditions hold automatically, so only $c \lt a + b$ needs checking.
 
 {{figure:range}}
 
-## How to use it
-It has two standard uses. The first is counting, as in [[integer-triangles-perimeter|integer-triangle problems]]: the whole numbers $c$ that make a triangle with given $a$ and $b$ are those strictly between $|a - b|$ and $a + b$, and there are $$(a + b) - |a - b| - 1 = 2\min(a, b) - 1$$ of them.
+## Useful observations
+- The whole numbers $c$ strictly between $|a - b|$ and $a + b$ number $(a + b) - |a - b| - 1 = 2\min(a, b) - 1$, the count behind [[integer-triangles-perimeter|integer-triangle problems]].
+- The flat triangle is the boundary of what is possible, so a length in a changing figure is often extreme exactly when a triangle collapses.
+- [[ravi-substitution|Ravi substitution]] builds the inequalities into the variables so they cannot be violated, and [[abs-triangle-inequality|the absolute-value form]] is the same statement on the number line.
 
-The second is extremal. The flat triangle is the boundary of what is possible, so a maximum or minimum of a length in a changing figure often occurs just as the triangle collapses.
+## Applications
+Deciding which side lengths are possible, counting triangles with given sides, and bounding a length in a figure.
 
-## On contests
-AMC loves "sticks of lengths $1..n$, how many triangles" and "which of these could be the sides." AIME uses it as a hidden constraint: after algebraic manipulation produces candidate side lengths, the triangle inequality eliminates spurious solutions, so always check it before submitting.
-
-When the inequality is a hypothesis rather than a test, [[ravi-substitution|Ravi substitution]] builds it into the variables so it cannot be violated, and [[abs-triangle-inequality|the absolute-value form]] is the same statement on the number line.
+## Contest profile
+AMC counts triangles from given sticks or integer sides; on the AIME the inequality is a hidden constraint that rejects spurious solutions after algebra.
 `,
 
 "polygon-angle-sums": String.raw`
+## Key forms
+- $180^\circ(n - 2)$ — the sum of the interior angles of an $n$-gon
+- $360^\circ$ — the sum of the exterior angles, one at each vertex, for any convex polygon
+- $\frac{180^\circ(n - 2)}{n}$ and $\frac{360^\circ}{n}$ — each interior and each exterior angle of a regular $n$-gon
+- $\frac{n(n - 3)}{2}$ — the number of diagonals of an $n$-gon
+
+## Conditions
+The polygon is convex for the exterior-angle statement as written; the interior sum holds for every simple polygon, with reflex angles counted at their full size.
+
 ## Why it works
 Cutting the polygon into triangles gives the interior sum, and walking around its boundary gives the exterior sum.
 
@@ -184,16 +230,28 @@ Now walk once around the boundary. At each vertex you turn through the exterior 
 
 {{figure:walk}}
 
-## How to use it
-For regular polygons, start from the exterior angle $\frac{360^\circ}{n}$: the interior angle is $180^\circ$ minus it, and a given interior angle tells you $n$ at once. A regular octagon has exterior angles of $45^\circ$ and interior angles of $135^\circ$.
+## Useful observations
+- For a regular polygon the exterior angle $\frac{360^\circ}{n}$ is the quick route: a regular octagon has exterior angles of $45^\circ$ and interior angles of $135^\circ$, and a given interior angle tells $n$ at once.
+- Regular polygons fit around a point exactly when their interior angles add to $360^\circ$, which is why squares, equilateral triangles, and hexagons tile the plane and regular pentagons do not.
+- The fan of diagonals from one vertex that proves the interior sum also counts the [[handshakes-diagonals|diagonals]]: $n - 3$ from each vertex, so $\frac{n(n - 3)}{2}$ in all.
 
-Regular polygons fit around a point exactly when their interior angles add to $360^\circ$, which is why squares, equilateral triangles, and hexagons tile the plane and regular pentagons do not. The fan of diagonals from one vertex that proves the interior sum also counts [[handshakes-diagonals|diagonals]]: $n - 3$ from each vertex, so $\frac{n(n - 3)}{2}$ in all.
+## Applications
+Angles of regular and irregular polygons, tilings by regular polygons, and counting diagonals.
 
-## On contests
-Five problems here, four of them AIME, one solved by it alone. The others combine the angle sum with an equation, often in integers, as when the angles of a polygon are in [[arithmetic-series|arithmetic progression]] or must be whole numbers, which leads to [[sfft|factoring tricks]]. MATHCOUNTS and early AMC use it directly, and later problems embed it in star-polygon [[angle-chasing|angle chases]].
+## Contest profile
+MATHCOUNTS and early AMC use it directly; later problems combine it with an equation, often in integers, as when angles are in [[arithmetic-series|arithmetic progression]], or embed it in star-polygon [[angle-chasing|angle chases]].
 `,
 
 "similar-figures-ratios": String.raw`
+## Key forms
+- $\frac{\ell_1}{\ell_2} = k$ — every pair of corresponding lengths has the same ratio: sides, heights, medians, perimeters, radii, and diagonals
+- $\frac{A_1}{A_2} = k^2$ — areas scale by the square of the ratio
+- $\frac{V_1}{V_2} = k^3$ — volumes scale by the cube of the ratio
+- a parallel cut at ratio $k$ leaves the small piece $k^2$ of the area and the remainder $1 - k^2$; for a pyramid or cone the frustum holds $1 - k^3$ of the volume
+
+## Conditions
+The figures are similar, one a scaled copy of the other, possibly turned or reflected, and the ratio $k$ is taken between corresponding lengths. The powers hold for shapes of every kind, curved ones included.
+
 ## Why it works
 Area is a length times a length and volume is three lengths multiplied, so scaling every length by $k$ scales area by $k$ twice over and volume three times over.
 
@@ -203,26 +261,33 @@ Every other region reduces to these. Cover it with a fine grid of tiny squares; 
 
 {{figure:grid}}
 
-The factor is the same for every pair of corresponding lengths, not only the sides: heights, medians, perimeters, radii, and diagonals all scale by $k$. That is why a single matched pair is enough to know them all.
+The factor is the same for every pair of corresponding lengths, not only the sides, which is why a single matched pair is enough to know them all.
 
-## How to use it
-What similarity buys is a change of units: one matched pair of lengths fixes $k$, and from then on every length, area, and volume in the figure is known in terms of one unknown instead of many. That is the payoff to look for: not "these triangles are similar" but "the figure now has one degree of freedom".
-
-Finding the similarity is the real step, and in triangle work it nearly always comes from a parallel line: a line parallel to one side cuts off a similar triangle, so every midpoint, every trapezoid, and every cevian through a parallel is a similarity waiting to be named.
+## Useful observations
+- One matched pair of lengths fixes $k$, and from then on every length, area, and volume in the figure is known in terms of one unknown instead of many.
+- Triangles become similar through a line parallel to a side, through the altitude to the hypotenuse of a right triangle, and through a shared angle plus an equal angle on the same arc.
 
 {{figure:cut}}
 
-A right angle does it too, since the altitude to the hypotenuse splits a right triangle into two copies of itself, and so does a shared angle plus an equal angle from [[inscribed-angle-theorem|the same arc]].
+- Nested similar figures have areas in a [[geometric-series|geometric series]] with ratio $k^2$, which is what makes infinite dissections tractable.
 
-Then push the ratio through the right power, $$\text{lengths} \times k, \qquad \text{areas} \times k^2, \qquad \text{volumes} \times k^3,$$ and remember that the leftovers matter as much as the parts: a parallel cut at ratio $k$ leaves areas $k^2 : (1-k^2)$, and a pyramid cut parallel to its base leaves a frustum holding $1-k^3$ of the volume. Nested similar figures give a [[geometric-series|geometric series]] rather than a finite sum, which is what makes infinite-dissection problems tractable at all.
+## Applications
+Scaling lengths, areas, and volumes, cut cones and pyramids, and chains of nested similar figures.
 
-## On contests
-The highest-frequency idea in AMC geometry, and unusually often the whole solution: it stands alone in 12 of the 73 problems tagged here, far more than most tools manage. When it is not alone its partner is almost always [[pythagorean-theorem|Pythagoras]] (13 problems), where the similarity pins the ratio and Pythagoras turns it into a number.
-
-The recurring shapes are a parallel cut across a triangle, a cone or pyramid sliced parallel to its base, and a chain of nested figures whose areas form a geometric series. All three are recognizable before any computation, which is the point of knowing them by name.
+## Contest profile
+The most-used idea in AMC geometry and often the whole solution; its usual partner is the Pythagorean Theorem, where the similarity pins down a ratio and Pythagoras turns it into a number.
 `,
 
 "midsegment-theorem": String.raw`
+## Key forms
+- $MN \parallel BC$ and $MN = \frac12 BC$ — the segment joining the midpoints of two sides of a triangle
+- the three midsegments cut the triangle into four congruent triangles, each with a quarter of the area
+- the medial triangle has half the perimeter and a quarter of the area of the original
+- $\frac{a + b}{2}$ — the segment joining the midpoints of the legs of a trapezoid with bases $a$ and $b$ is parallel to the bases and has this length
+
+## Conditions
+$M$ and $N$ are midpoints of two sides of the triangle; the parallel and half-length conclusions are about the third side.
+
 ## Why it works
 Joining the midpoint $M$ of $AB$ to the midpoint $N$ of $AC$ makes a triangle $AMN$ that is the original triangle shrunk by half toward $A$.
 
@@ -232,16 +297,29 @@ All three midsegments together cut the triangle into four triangles whose sides 
 
 {{figure:four}}
 
-## How to use it
-Whenever midpoints appear, join them: the parallel lines and half-lengths are often exactly the similar triangles a problem needs. For a $6$-$8$-$10$ triangle the medial triangle is $3$-$4$-$5$, with half the perimeter and a quarter of the area.
+## Useful observations
+- For a $6$-$8$-$10$ triangle the medial triangle is $3$-$4$-$5$.
+- The midpoints of the sides of any quadrilateral form a parallelogram, [[varignons-theorem|Varignon's Theorem]], because each of its sides is parallel to a diagonal and half as long.
+- Repeating a midpoint construction produces lengths in a geometric sequence with ratio $\frac12$ and areas with ratio $\frac14$.
+- The [[nine-point-circle|nine-point circle]] passes through the three midpoints of the sides.
 
-The quadrilateral version is [[varignons-theorem|Varignon's Theorem]]: the midpoints of the sides of any quadrilateral form a parallelogram, because each of its sides is parallel to a diagonal and half as long. Repeating a midpoint construction produces lengths in a geometric sequence with ratio $\frac12$.
+## Applications
+Triangles and quadrilaterals with midpoints marked, medial triangles, and repeated midpoint constructions.
 
-## On contests
-Four problems here, three of them AIME, none by it alone, each with a different partner, including the [[nine-point-circle|nine-point circle]], which passes through the midpoints of the sides. It appears wherever midpoints do: medial triangles, Varignon parallelograms, and repeated midpoint constructions.
+## Contest profile
+Appears wherever midpoints do, usually as the parallel line and the half length that supply the missing similar triangle.
 `,
 
 "centroid-division": String.raw`
+## Key forms
+- $AG : GM = 2 : 1$ — the centroid divides each median into two parts, the longer next to the vertex
+- $G = \frac{A + B + C}{3}$ — in coordinates, the average of the three vertices
+- $\vec{GA} + \vec{GB} + \vec{GC} = \vec 0$ — the vector form
+- the three medians cut the triangle into six pieces of equal area, so each of $[GBC]$, $[GCA]$, and $[GAB]$ is a third of the triangle
+
+## Conditions
+$G$ is the intersection of the medians, and $M$ is the midpoint of the side opposite $A$. The six equal areas are the regions between the medians, not the regions cut by other cevians.
+
 ## Why it works
 The average of the three vertices lies two thirds of the way along every median, so all three medians pass through that one point.
 
@@ -251,16 +329,28 @@ For the six pieces, the two touching the midpoint of a side have equal bases and
 
 {{figure:six}}
 
-## How to use it
-In coordinates, average the vertices. The $2 : 1$ ratio turns a median's length into distances: a median of length $15$ puts the centroid $10$ from the vertex and $5$ from the midpoint. For areas, any region bounded by medians is a whole number of sixths of the triangle, and each of $GBC$, $GCA$, and $GAB$ is a third.
+## Useful observations
+- A median of length $m$ puts the centroid $\frac{2m}{3}$ from the vertex and $\frac m3$ from the midpoint.
+- Any region bounded by medians is a whole number of sixths of the triangle.
+- The lengths of the medians themselves come from [[apollonius-theorem|Apollonius's Theorem]], the median case of [[stewarts-theorem|Stewart's Theorem]].
+- The vector form gives slicker solutions on the AIME than coordinates when several distances from the centroid are involved.
 
-On AIME the vector form $\vec{GA} + \vec{GB} + \vec{GC} = \vec 0$ gives slicker solutions. The lengths of the medians themselves come from [[apollonius-theorem|Apollonius's Theorem]], the median case of [[stewarts-theorem|Stewart's Theorem]].
+## Applications
+Distances along medians, areas of regions bounded by medians, and coordinates of the centroid.
 
-## On contests
-Five problems here, all AIME, none by it alone, and each with a different partner: [[coordinate-bash|coordinates]], [[power-of-a-point|power of a point]], Stewart's Theorem, or the [[area-method|area method]]. AMC problems place a point at the centroid and ask for areas, which come out in thirds and sixths.
+## Contest profile
+On the AMC, a point placed at the centroid with areas that come out in thirds and sixths; on the AIME, usually one step beside coordinates, power of a point, or the area method.
 `,
 
 "cevian-area-ratio": String.raw`
+## Key forms
+- $\frac{[ABD]}{[ACD]} = \frac{BD}{DC}$ — for $D$ on line $BC$, the two triangles with apex $A$ have areas in the ratio of their bases
+- triangles with the same apex and bases on one line have areas in the ratio of the bases, whether or not the bases touch
+- triangles on the same base with apexes on a line parallel to it have equal area
+
+## Conditions
+The triangles share an apex, and their bases lie on one line; $D$ may lie on the extension of $BC$ with the ratio taken as a ratio of lengths.
+
 ## Why it works
 A triangle's area is half its base times its height, so two triangles with the same height have areas in the ratio of their bases.
 
@@ -270,16 +360,29 @@ Nothing in that used the fact that the two bases meet at $D$ or lie inside side 
 
 {{figure:fan}}
 
-## How to use it
-Mark every ratio the problem gives along a side, and turn each into an area ratio using the vertex opposite that side as the apex. Working from the outside in, write each small triangle as a fraction of the whole, one cevian at a time: in the example, a $1 : 4$ split of $BC$ gives $[ABD] = \frac15[ABC]$.
+## Useful observations
+- Each ratio given along a side becomes an area ratio, using the vertex opposite that side as the apex: a $1 : 4$ split of $BC$ makes $[ABD] = \frac15[ABC]$.
+- The statement runs in reverse: known areas give a ratio along a line.
+- Two cevians meeting inside a triangle use it once along each, which is [[area-method|the area method]] in full; [[mass-points|mass points]] reach the resulting length ratios faster when only lengths are wanted.
+- [[rouths-theorem|Routh's Theorem]] packages the case of three cevians.
 
-The same step runs in reverse, turning known areas into a ratio along a line. Two cevians meeting inside the triangle need it once along each, which is [[area-method|the area method]] in full; [[mass-points|mass points]] reach the resulting length ratios faster when only lengths are asked.
+## Applications
+Areas of the pieces of a triangle cut by cevians, and ratios along a line from known areas.
 
-## On contests
-Two problems here, both AIME, neither solved by it alone: each finds areas in a triangle cut by several cevians and finishes with the area method or mass points. On the AMC 10 and 12 it drives shaded-region problems where ratios along the sides are given, and [[rouths-theorem|Routh's Theorem]] packages the three-cevian case.
+## Contest profile
+Drives shaded-region problems on the AMC 10 and 12 where ratios along the sides are given, and is the first step of AIME area-chasing in triangles cut by several cevians.
 `,
 
 "trapezoid-parallelogram-areas": String.raw`
+## Key forms
+- $A = bh$ — a parallelogram with base $b$ and height $h$
+- $A = \frac{(b_1 + b_2)h}{2}$ — a trapezoid with parallel sides $b_1$, $b_2$ and height $h$
+- $A = \frac{d_1d_2}{2}$ — a quadrilateral with perpendicular diagonals $d_1$, $d_2$, in particular a rhombus or kite
+- in a trapezoid with diagonals meeting at $O$, the triangles on the two bases are similar in the ratio of the bases, and the two triangles on the legs have equal area
+
+## Conditions
+For the diagonal formula the diagonals are perpendicular, and every quadrilateral with perpendicular diagonals qualifies, not only rhombi and kites. The height is the perpendicular distance between the parallel sides.
+
 ## Why it works
 Each formula comes from rearranging the quadrilateral into shapes whose area is already known.
 
@@ -289,20 +392,32 @@ A parallelogram becomes a rectangle with the same base and height when a right t
 
 When the diagonals are perpendicular, they cut the quadrilateral into four right triangles whose legs are pieces of the diagonals. If one diagonal is split into $p$ and $q$ and the other into $r$ and $s$, the four areas add to $$\frac12(pr + ps + qr + qs) = \frac12(p + q)(r + s) = \frac12d_1d_2.$$
 
-## How to use it
-In a trapezoid $ABCD$ with $AB \parallel CD$, the diagonals cross at a point $O$ that divides each of them in the ratio of the parallel sides: triangles $OAB$ and $OCD$ are similar, because the parallel sides make their angles equal, with ratio $\frac{AB}{CD}$.
-
-The two triangles along the legs, $OBC$ and $ODA$, always have equal areas, because triangles $ABC$ and $ABD$ share the base $AB$ and the same height, and removing $OAB$ from each leaves them.
+## Useful observations
+- In a trapezoid $ABCD$ with $AB \parallel CD$, the diagonals cross at a point $O$ that divides each of them in the ratio of the parallel sides: triangles $OAB$ and $OCD$ are similar, because the parallel sides make their angles equal, with ratio $\frac{AB}{CD}$.
+- The two triangles along the legs, $OBC$ and $ODA$, always have equal areas, because triangles $ABC$ and $ABD$ share the base $AB$ and the same height, and removing $OAB$ from each leaves them.
 
 {{figure:diagonals}}
 
-If the two similar triangles have areas $X$ and $Y$, each leg triangle has area $\sqrt{XY}$, so the whole trapezoid is $X + Y + 2\sqrt{XY} = (\sqrt X + \sqrt Y)^2$. For a height that is not given, drop perpendiculars from the ends of the shorter base: in an isosceles trapezoid each overhang is half the difference of the bases, and the [[pythagorean-theorem|Pythagorean Theorem]] gives the height.
+- If the two similar triangles have areas $X$ and $Y$, each leg triangle has area $\sqrt{XY}$, so the whole trapezoid is $X + Y + 2\sqrt{XY} = (\sqrt X + \sqrt Y)^2$.
+- For a trapezoid whose height is not given, perpendiculars from the ends of the shorter base make right triangles at the ends; in an isosceles trapezoid each overhang is half the difference of the bases, and the [[pythagorean-theorem|Pythagorean Theorem]] gives the height.
+- The lengths of the midline and of the segment through the diagonals' crossing are on [[trapezoid-special-segments|their own card]].
 
-## On contests
-Eight problems here, six of them AIME, one solved by it alone. Most trapezoid problems turn on the diagonal similarity, or on dropping two heights to make right triangles at the ends and finishing with the Pythagorean Theorem. The lengths of the midline and of the segment through the diagonals' crossing are on [[trapezoid-special-segments|their own card]].
+## Applications
+Areas of parallelograms, trapezoids, rhombi, and kites, and the pieces cut by the diagonals of a trapezoid.
+
+## Contest profile
+Most trapezoid problems turn on the diagonal similarity, or on dropping two heights to make right triangles at the ends and finishing with the Pythagorean Theorem; AIME problems combine them with an equation.
 `,
 
 "quadrilateral-diagonal-area": String.raw`
+## Key forms
+- $A = \frac12 d_1d_2\sin\theta$ — the area of any quadrilateral from its diagonals $d_1$, $d_2$ and the angle $\theta$ between them
+- $A \le \frac12 d_1d_2$ — with equality exactly when the diagonals are perpendicular, as in a rhombus or a kite
+- $A = \frac12\left|\overrightarrow{AC} \times \overrightarrow{BD}\right|$ — the vector form, valid for a non-convex quadrilateral too
+
+## Conditions
+$\theta$ is the angle between the lines of the diagonals; its supplement gives the same sine, so either angle may be used.
+
 ## Why it works
 Cut along both diagonals, and every piece is a triangle whose area the [[trig-area|sine area formula]] gives.
 
@@ -310,17 +425,31 @@ Let the diagonals cross at $P$, cutting them into pieces $a$ and $c$ along one a
 
 {{figure:four}}
 
-The formula also holds for a quadrilateral that is not convex, where one diagonal lies outside it: in vectors the area is half the cross product of the diagonals, $\frac12\left|\overrightarrow{AC} \times \overrightarrow{BD}\right|$.
+The formula also holds for a quadrilateral that is not convex, where one diagonal lies outside it: in vectors the area is half the cross product of the diagonals.
 
-## How to use it
-Use it whenever a problem gives both diagonals and the angle between them, or lets you find them. For diagonals $6$ and $9$ meeting at $30^\circ$, $$A = \tfrac12 \cdot 6 \cdot 9 \cdot \sin 30^\circ = \tfrac{27}{2}.$$
+## Useful observations
+- Among quadrilaterals with given diagonals, the area is largest, $\frac12d_1d_2$, when the diagonals are perpendicular, which is how many maximization problems end.
+- For a cyclic quadrilateral both diagonals are [[chord-length|chords]], and the [[law-of-cosines|Law of Cosines]] on the small triangles often supplies the angle between them.
+- A kite drawn from [[abs-value-relations|absolute values]] has perpendicular diagonals, so its area is $\frac12d_1d_2$ at once.
 
-It also gives a bound for free: among quadrilaterals with given diagonals, the area is largest, $\frac12d_1d_2$, when they are perpendicular, which is how many maximization problems end.
+## Applications
+Areas of quadrilaterals given both diagonals and the angle between them, and maximum areas with fixed diagonals.
 
-## On contests
-Three problems here, all AIME, none solved by it alone. For a cyclic quadrilateral both diagonals are [[chord-length|chords]], so the problem reduces to the angle between them, which the [[law-of-cosines|Law of Cosines]] on the small triangles often supplies. A kite drawn by [[abs-value-relations|absolute values]] has perpendicular diagonals, so its area is $\frac12d_1d_2$ at once.`,
+## Contest profile
+Usually one step inside an AIME problem about a cyclic or perpendicular-diagonal quadrilateral, after something else has produced the diagonals.
+`,
 
 "regular-polygon-area": String.raw`
+## Key forms
+- $A = \frac12 ap$ — half the apothem $a$ times the perimeter $p = ns$
+- $A = \frac12 nR^2 \sin\frac{360^\circ}{n}$ — in terms of the circumradius $R$
+- $A_{\text{oct}} = 2(1 + \sqrt2)s^2$ — a regular octagon of side $s$
+- $A_{\text{dodec}} = 3R^2$ — a regular dodecagon inscribed in a circle of radius $R$
+- $R^2 = a^2 + \left(\frac s2\right)^2$ — the right triangle tying the three lengths together
+
+## Conditions
+The polygon is regular with $n$ sides of length $s$; the apothem is the distance from the center to a side, the radius of the inscribed circle.
+
 ## Why it works
 Lines from the center to the vertices cut the polygon into $n$ congruent isosceles triangles, and every formula is the total area of those triangles.
 
@@ -330,25 +459,54 @@ The three lengths are tied by one right triangle, from the center to the middle 
 
 {{figure:radii}}
 
-## How to use it
-Choose the form that matches the data: an apothem or an inscribed circle calls for $\frac12ap$, and a circumradius calls for the sine form. For a dodecagon in a circle of radius $R$ the sine form gives $$\tfrac12 \cdot 12 \cdot R^2\sin 30^\circ = 3R^2.$$
+## Useful observations
+- An apothem or an inscribed circle calls for $\frac12ap$, and a circumradius calls for the sine form.
+- For a dodecagon in a circle of radius $R$ the sine form gives $\frac12 \cdot 12 \cdot R^2 \sin 30^\circ = 3R^2$.
+- An octagon of side $s$ is a square of side $s + s\sqrt2$ with four corner triangles removed, giving $(s + s\sqrt2)^2 - 4 \cdot \frac{s^2}{4} = 2(1 + \sqrt2)s^2$.
+- [[regular-hexagon-area|Hexagons]] and [[equilateral-triangle-facts|equilateral triangles]] have their own formulas, which are the cases $n = 6$ and $n = 3$.
 
-For an octagon of side $s$, cut the four corner triangles off the surrounding square, whose side is $s + s\sqrt2$: the area is $(s + s\sqrt2)^2 - 4 \cdot \frac{s^2}{4} = 2(1 + \sqrt2)s^2$. For [[regular-hexagon-area|hexagons]] and [[equilateral-triangle-facts|equilateral triangles]], go straight to their own formulas.
+## Applications
+Areas of regular polygons from a side, an apothem, or a circumradius, and the area between a circle and an inscribed or circumscribed polygon.
 
-## On contests
-Four problems here, split between AMC and AIME, none by it alone, each with a different partner such as the [[shoelace-formula|shoelace formula]] or a [[circular-segment|circular segment]]. Octagons and dodecagons are the common cases on MATHCOUNTS and AMC 10, and the dodecagon's area of exactly $3R^2$ is worth having seen once.
+## Contest profile
+Octagons and dodecagons are the common cases on MATHCOUNTS and AMC 10; harder problems pair it with the shoelace formula or a circular segment.
 `,
 
-"clock-angle": String.raw`## Why it works
-The minute hand moves $360^\circ$ per hour ($6^\circ$ per minute); the hour hand $30^\circ$ per hour ($0.5^\circ$ per minute). At $H{:}M$ the hour hand sits at $30H + 0.5M$ degrees and the minute hand at $6M$, and subtracting gives $|30H - 5.5M|$.
+"clock-angle": String.raw`
+## Key forms
+- $\theta = |30H - 5.5M|^\circ$ — the angle between the hands at $H$ hours and $M$ minutes; replace $\theta$ by $360^\circ - \theta$ if it exceeds $180^\circ$
+- $6^\circ$ per minute — the speed of the minute hand
+- $0.5^\circ$ per minute — the speed of the hour hand
+- $5.5^\circ$ per minute — the speed of the minute hand relative to the hour hand
 
-## How to use it
-Take the result mod $360^\circ$ and replace $\theta$ by $360^\circ - \theta$ if it exceeds $180^\circ$. For "when are the hands aligned/opposite/perpendicular" questions, set $|30H - 5.5M|$ equal to $0$, $180$, or $90$ and solve for $M$ — the hands align every $\frac{720}{11}$ minutes.
+## Conditions
+Time is read as $H$ hours $M$ minutes on a $12$-hour clock, with $H$ from $0$ to $11$; angles are measured as the smaller gap between the hands.
 
-## On contests
-A MATHCOUNTS staple. The relative speed viewpoint ($5.5^\circ$ per minute) answers every variant: alignments per day (22), overlaps between given times, and mirror-image times.`,
+## Why it works
+The minute hand moves $360^\circ$ per hour, which is $6^\circ$ per minute, and the hour hand moves $30^\circ$ per hour, which is $0.5^\circ$ per minute. At $H{:}M$ the hour hand sits at $30H + 0.5M$ degrees from $12$ and the minute hand at $6M$ degrees, and subtracting gives $|30H - 5.5M|$.
+
+## Useful observations
+- The hands are together when $30H - 5.5M = 0$, that is, at $M = \frac{60H}{11}$ minutes past hour $H$; overlaps are $\frac{720}{11}$ minutes apart, $22$ times in a day.
+- The hands are opposite when $30H - 5.5M = \pm 180$, and perpendicular when it is $\pm 90$ or $\pm 270$; each is a linear equation in $M$.
+- The relative-speed view, $5.5^\circ$ per minute, answers every variant: how often the hands align, and the times at which they are mirror images across the vertical.
+
+## Applications
+Angles between the hands, and the times at which the hands are together, opposite, or perpendicular.
+
+## Contest profile
+A MATHCOUNTS staple, usually with one more step of arithmetic than a direct substitution.
+`,
 
 "triangle-area-standard": String.raw`
+## Key forms
+- $A = \frac12 bh$ — half the base times the height, where the height is the perpendicular distance from the opposite vertex to the line of the base
+- $h = \frac{2A}{b}$ — each side has its own height, and the three heights are inversely proportional to the sides they meet
+- triangles with equal bases and equal heights have equal areas, however different they look
+- two triangles with the same apex and bases on one line have areas in the ratio of the bases
+
+## Conditions
+The height is measured to the line of the base. In an obtuse triangle the height to a side next to the obtuse angle falls outside the triangle, on the extension of the base.
+
 ## Why it works
 A triangle is half of a parallelogram with the same base and height, and a parallelogram has the same area as a rectangle.
 
@@ -358,22 +516,32 @@ Take a second copy of the triangle, turn it half a turn, and fit it against the 
 
 Only the base and the perpendicular height enter the formula. Sliding the top vertex along a line parallel to the base changes the triangle's shape but not its height, so it does not change the area. This is the shearing argument.
 
-## How to use it
-The main decision is which side to call the base. Pick the one whose height you know or can compute, and remember that each side has its own height: a triangle of area $84$ with a side of $14$ has height $12$ to that side, whatever its other sides are. Reading the formula as $h = \frac{2A}{b}$ also shows that the three heights of a triangle are inversely proportional to the sides they meet.
-
-Equal bases and equal heights give equal areas even for triangles that look nothing alike. If two triangles share a base and their third vertices lie on a line parallel to it, they have the same area.
+## Useful observations
+- Any side can serve as the base; a triangle of area $84$ with a side of $14$ has height $12$ to that side, whatever its other sides are.
+- If two triangles share a base and their third vertices lie on a line parallel to it, they have the same area.
 
 {{figure:shear}}
 
-With a shared height instead, the areas are in the ratio of the bases: two triangles with the same apex and bases on one line compare like their bases, which is the method of [[area-method|area ratios from base ratios]].
+- With a shared height instead, the areas are in the ratio of the bases, which is the method of [[area-method|area ratios from base ratios]].
+- Computing one area two ways, with two different bases, finds an unknown height.
+- With coordinates the [[shoelace-formula|shoelace formula]] is faster, and with two sides and the angle between them, [[trig-area|the sine formula]] is.
 
-## On contests
-Nine problems here, eight of them AIME, and never alone: the height usually comes from the [[pythagorean-theorem|Pythagorean Theorem]] first, or the area becomes the base of a pyramid in a [[prism-pyramid-volumes|volume]] computation.
+## Applications
+Areas of triangles from a base and a height, area comparisons by shearing, and unknown heights from known areas.
 
-The quick wins are shearing, sliding a vertex along a parallel to reach an easier triangle, and computing one area two ways, with two different bases, to find an unknown height. With coordinates the [[shoelace-formula|shoelace formula]] is faster, and with two sides and the angle between them, [[trig-area|the sine formula]] is.
+## Contest profile
+Almost never alone on the AIME: the height usually comes from the [[pythagorean-theorem|Pythagorean Theorem]] first, or the area becomes the base of a pyramid in a [[prism-pyramid-volumes|volume]] computation.
 `,
 
 "trig-area": String.raw`
+## Key forms
+- $A = \frac12 ab\sin C$ — half the product of two sides times the sine of the angle between them
+- $\sin C = \sin(180^\circ - C)$ — an angle and its supplement give the same area
+- $A = \frac{abc}{4R}$ — the form after substituting $\sin C = \frac{c}{2R}$
+
+## Conditions
+$C$ is the angle between sides $a$ and $b$. The formula holds for acute, right, and obtuse $C$.
+
 ## Why it works
 The formula is base times height, with the height written in terms of the angle.
 
@@ -385,31 +553,40 @@ If $C$ is obtuse, the altitude from $A$ lands on the extension of $BC$ beyond $C
 
 {{figure:obtuse}}
 
-## How to use it
-Use it whenever two sides and the angle between them are known, which is the case the side-side-side formulas cannot touch. Special angles keep it clean: $30^\circ$, $90^\circ$, and $150^\circ$ give sines of $\tfrac12$, $1$, $\tfrac12$, while $60^\circ$ and $120^\circ$ both give $\tfrac{\sqrt3}2$.
+## Useful observations
+- Special angles keep it clean: $30^\circ$, $90^\circ$, and $150^\circ$ give sines of $\frac12$, $1$, $\frac12$, while $60^\circ$ and $120^\circ$ both give $\frac{\sqrt3}{2}$.
+- Two triangles with equal or supplementary angles at a shared vertex $A$, such as $AXY$ and $ABC$, have areas in the ratio of the products of their enclosing sides, which has [[shared-angle-area-ratio|its own card]].
+- Substituting for $a$ and $b$ with the Law of Sines gives [[trig-area-circumradius|the all-angles form]].
+- The area is largest when $C = 90^\circ$.
 
-That last coincidence is the important one. Since $\sin C = \sin(180^\circ - C)$, an angle and its supplement give the same area, so two triangles with equal or supplementary angles at a shared vertex $A$, such as $AXY$ and $ABC$, have areas in the ratio of the products of their enclosing sides. That consequence is common enough to have [[shared-angle-area-ratio|its own card]].
+## Applications
+Areas of triangles from two sides and the included angle, and area ratios for triangles that share an angle.
 
-Substituting $\sin C = \tfrac c{2R}$ turns the formula into $A = \tfrac{abc}{4R}$, and substituting for $a$ and $b$ instead gives [[trig-area-circumradius|the all-angles form]].
-
-## On contests
-One of the most-used area tools on AMC and AIME, with 20 problems tagged here, none of which it solves alone: it is the step that turns angles into area once something else has produced them, most often [[law-of-cosines|the Law of Cosines]] (6 problems) or [[angle-chasing|angle chasing]] (4).
-
-Two shapes dominate: a figure hands you two sides and the angle between them directly, or a configuration gives equal or supplementary angles and the question is really an area ratio.
-
-It is also the standard route into [[trapezoid-parallelogram-areas|quadrilateral areas]], where the two triangles cut off by a diagonal of a cyclic quadrilateral have supplementary angles.
+## Contest profile
+One of the most-used area tools on the AMC and AIME, almost never alone: it turns angles into area once [[law-of-cosines|the Law of Cosines]] or [[angle-chasing|angle chasing]] has produced them, or compares areas of triangles that share an angle.
 `,
 
-"trig-area-circumradius": String.raw`## Why it works
-The [[law-of-sines|Law of Sines]] says $a = 2R\sin A$ and $b = 2R\sin B$. Putting both into [[trig-area|the sine area formula]] $\tfrac12ab\sin C$ gives $\tfrac12(2R\sin A)(2R\sin B)\sin C = 2R^2\sin A\sin B\sin C$. Every side length has been traded for an angle, which is why the result needs none.
+"trig-area-circumradius": String.raw`
+## Key forms
+- $A = 2R^2\sin A\sin B\sin C$ — the area from the circumradius and the three angles, with no side length
+- $\frac{2A}{R} = 4R\sin A\sin B\sin C$ — the same identity divided by $R$
 
-## How to use it
-It is the right formula in exactly one situation: the circumradius is known and the sides are not. That is uncommon, which is why this is filed as a reference form rather than a working tool. When you do have side lengths, $\tfrac12ab\sin C$ or [[herons-formula|Heron]] will be shorter.
+## Conditions
+$R$ is the circumradius, and $A$, $B$, $C$ are the angles of the triangle.
 
-Its steadier use is as an identity rather than a computation. Dividing by $R$ gives $\tfrac{2A}{R} = 4R\sin A\sin B\sin C$, which is the perimeter of the [[orthic-triangle|orthic triangle]], and that is how the orthic perimeter is usually derived.
+## Why it works
+The [[law-of-sines|Law of Sines]] says $a = 2R\sin A$ and $b = 2R\sin B$. Putting both into [[trig-area|the sine area formula]] $\frac12ab\sin C$ gives $\frac12(2R\sin A)(2R\sin B)\sin C = 2R^2\sin A\sin B\sin C$. Every side length has been traded for an angle, which is why the result needs none.
 
-## On contests
-Rare. Across the problems in this library it is the route in none of them, and the $\tfrac12ab\sin C$ form is the one that appears. Keep it for the orthic-triangle identity and for the occasional problem stated entirely in angles and a circumradius.`,
+## Useful observations
+- It is the right formula only when the circumradius is known and the sides are not, which is uncommon; with side lengths, $\frac12ab\sin C$ or [[herons-formula|Heron's Formula]] is shorter.
+- Divided by $R$, it gives $\frac{2A}{R} = 4R\sin A\sin B\sin C$, which is the perimeter of the [[orthic-triangle|orthic triangle]]; that is how the orthic perimeter is usually derived.
+
+## Applications
+Areas from angles and a circumradius, and identities between the area, the perimeter of the orthic triangle, and the angles.
+
+## Contest profile
+Rare as a working tool; it is kept for the orthic-triangle identity and for the occasional problem stated entirely in angles and a circumradius.
+`,
 
 "herons-formula": String.raw`
 ## Key forms
@@ -502,14 +679,31 @@ Circumradii from three sides, distances from the circumcenter to the sides, and 
 Usually follows Heron's Formula, the classic way to hide $R$ behind three given sides; the circumradius also serves as the scale factor of a homothety.
 `,
 
-"right-triangle-inradius": String.raw`## Why it works
-Tangent lengths from the right-angle vertex form an $r \times r$ square in the corner, so $c = (a - r) + (b - r)$, giving $r = \frac{a + b - c}{2}$. Thales gives $R = \frac{c}{2}$ since the hypotenuse subtends a right angle, hence is a diameter.
+"right-triangle-inradius": String.raw`
+## Key forms
+- $r = \frac{a + b - c}{2}$ — the inradius of a right triangle with legs $a$, $b$ and hypotenuse $c$
+- $R = \frac c2$ — the circumradius, since the hypotenuse is a diameter
+- $a + b = 2r + 2R$ — the legs add to twice the inradius plus twice the circumradius
+- $r\sqrt2$ — the distance from the incenter to the right-angle vertex
 
-## How to use it
-Fastest inradius in existence — no area needed. Note $r$ is always an integer for integer-sided right triangles with even $a + b - c$ (e.g. $r = 1, 2, 3$ for $(3,4,5), (5,12,13)\cdot$scaled, $(8,15,17)$).
+## Conditions
+The triangle has a right angle; $a$ and $b$ are the legs and $c$ the hypotenuse.
 
-## On contests
-"Circle inscribed in a right triangle" is an AMC evergreen. The corner-square picture also answers "distance from the incenter to the right-angle vertex" ($r\sqrt{2}$) instantly.`,
+## Why it works
+The tangent lengths from the right-angle vertex to the incircle are both $r$, since the incircle together with the two legs and the radii to the touch points makes an $r \times r$ square in the corner. The tangent lengths from the other two vertices add up with those to the hypotenuse, so $c = (a - r) + (b - r)$, giving $r = \frac{a + b - c}{2}$. Thales' Theorem gives $R = \frac c2$, since the hypotenuse subtends a right angle and is therefore a diameter.
+
+## Useful observations
+- The inradius needs no area: it comes from the three sides at once.
+- The integer right triangles $(3, 4, 5)$, $(5, 12, 13)$, and $(8, 15, 17)$ have $r = 1$, $2$, and $3$.
+- The corner square also gives the distance from the incenter to the right-angle vertex, $r\sqrt2$, as its diagonal.
+- The relation $a + b = 2r + 2R$ turns a question about $r$ and $R$ into one about the legs and back.
+
+## Applications
+Circles inscribed in right triangles, and relations between the inradius, the circumradius, and the legs.
+
+## Contest profile
+A circle inscribed in a right triangle is an AMC evergreen, usually one step inside a longer computation.
+`,
 
 "incircle-tangent-lengths": String.raw`
 ## Key forms
@@ -608,8 +802,16 @@ Never the whole problem. It converts a configuration into numbers once something
 `,
 
 "law-cosines-60-120": String.raw`
+## Key forms
+- $c^2 = a^2 + b^2 - ab$ — the Law of Cosines at $C = 60^\circ$
+- $c^2 = a^2 + b^2 + ab$ — at $C = 120^\circ$
+- $c = a\sqrt3$ — the side opposite $120^\circ$ when the two enclosing sides are equal, $a = b$
+
+## Conditions
+$C$ is the angle between the sides $a$ and $b$, and $c$ is the side opposite it.
+
 ## Why it works
-Substituting the cosine into $c^2 = a^2 + b^2 - 2ab\cos C$ turns the cross term into $\mp ab$.
+Substituting $\cos 60^\circ = \frac12$ and $\cos 120^\circ = -\frac12$ into $c^2 = a^2 + b^2 - 2ab\cos C$ turns the cross term into $\mp ab$.
 
 The $120^\circ$ form also has a picture. Extend the side $a$ past the $120^\circ$ vertex and drop the altitude from the opposite vertex onto that extension.
 
@@ -617,15 +819,26 @@ The $120^\circ$ form also has a picture. Extend the side $a$ past the $120^\circ
 
 The small triangle outside has a $60^\circ$ angle, so it is a [[special-right-triangles|30-60-90 triangle]] with legs $\frac b2$ and $\frac{\sqrt3}{2}b$. The big right triangle then has legs $a + \frac b2$ and $\frac{\sqrt3}{2}b$, so $$c^2 = \left(a + \tfrac b2\right)^2 + \tfrac34b^2 = a^2 + ab + b^2.$$
 
-## How to use it
-Use the $+ab$ form wherever a $120^\circ$ angle appears: at the center of an equilateral triangle, between the sides of a regular hexagon, and at the [[fermat-point|Fermat point]], where three segments to the vertices meet at $120^\circ$ and give three applications at once. Use the $-ab$ form for a point on a side of an equilateral triangle, where the angle at a vertex is $60^\circ$. Sides $8$ and $15$ around $60^\circ$ give $$c^2 = 64 + 225 - 120 = 169,$$ so $c = 13$.
+## Useful observations
+- The $+ab$ form belongs wherever a $120^\circ$ angle appears: at the center of an equilateral triangle, between two sides of a regular hexagon, and at the [[fermat-point|Fermat point]], where the three segments to the vertices meet at $120^\circ$ and give three applications at once.
+- The $-ab$ form belongs at a vertex of an equilateral triangle, where a segment to a point on the opposite side makes a $60^\circ$ angle with the side.
+- The two forms differ only in the sign of $ab$ because $\cos(180^\circ - \theta) = -\cos\theta$, so a triangle and the triangle with the supplementary angle share their enclosing sides.
+- A chord subtending $120^\circ$ in a circle of radius $R$ has $c^2 = R^2 + R^2 + R^2$, so its length is $R\sqrt3$.
 
-The triangles these forms produce with simple sides, such as $3$-$5$-$7$ and $1$-$2$-$\sqrt7$, are listed on [[law-of-cosines-special-triangles|the special triangles card]].
+## Applications
+Equilateral triangles with a point on a side, regular hexagons, and any figure with $60^\circ$ or $120^\circ$ angles.
 
-## On contests
-Five problems here, three of them AIME, none by it alone; the partners include the Fermat point, [[chord-length|chord lengths]], and [[circular-segment|circular segments]], since a chord subtending $120^\circ$ is the $+ab$ form inside a circle. $3$-$5$-$7$ is to $120^\circ$ what $3$-$4$-$5$ is to $90^\circ$.
+## Contest profile
+Seldom the whole problem: the partners include the Fermat point, [[chord-length|chord lengths]], and [[circular-segment|circular segments]]. The $3$-$5$-$7$ triangle is to $120^\circ$ what $3$-$4$-$5$ is to $90^\circ$.
 `,
 "law-of-cosines-special-triangles": String.raw`
+## Key forms
+- $c^2 = a^2 + b^2 - ab$, $\ a^2 + b^2 + ab$, $\ a^2 + b^2 + \sqrt2\,ab$, $\ a^2 + b^2 + \sqrt3\,ab$ — the Law of Cosines at $60^\circ$, $120^\circ$, $135^\circ$, and $150^\circ$
+- with simple sides around such an angle the third side is simple too, which gives the short list of triangles in the table
+
+## Conditions
+Each entry lists the two sides around the special angle, and the side it names is the one opposite that angle. In every triangle on the list the special angle is opposite the $\sqrt7$, $7$, $\sqrt5$, or $13$.
+
 ## Why it works
 Each triangle is the Law of Cosines at an angle whose cosine is a simple number, so the cross term is a simple multiple of $ab$, and simple sides give a simple third side.
 
@@ -633,21 +846,34 @@ With $\cos C$ equal to $\frac12$, $-\frac12$, $-\frac{\sqrt2}{2}$, or $-\frac{\s
 
 The $60^\circ$ and $120^\circ$ triangles come in pairs. Cut an equilateral triangle of side $b$ off a triangle with sides $a$ and $b$ around a $60^\circ$ angle, as in the figure at the top. What is left has sides $a - b$ and $b$ around an angle of $120^\circ$, and the same third side, because $$(a - b)^2 + b^2 + (a - b)b = a^2 + b^2 - ab.$$ So $5$-$7$-$8$ at $60^\circ$ contains $3$-$5$-$7$ at $120^\circ$, and $1$-$3$-$\sqrt7$ contains $1$-$2$-$\sqrt7$.
 
-## How to use it
-Recognize the triangle, and the rest of its measurements come quickly. In the $3$-$5$-$7$ triangle the $120^\circ$ angle is opposite the $7$, the area is $$\frac12 \cdot 3 \cdot 5 \sin 120^\circ = \frac{15\sqrt3}{4},$$ and the circumradius is $\frac{7}{2\sin 120^\circ} = \frac{7}{\sqrt3}$.
+## Useful observations
+Each row gives the two sides around the special angle and the side opposite it.
 
-They usually come from a point on a side of an equilateral triangle. If the side is $s$ and the point is $m$ from one vertex, its distance $d$ to the opposite vertex satisfies $$d^2 = s^2 + m^2 - sm:$$ side $3$ with $m = 1$ gives $\sqrt7$, and side $8$ with $m = 3$ or $m = 5$ gives $7$.
+| Angle | Sides around it | Third side |
+| --- | --- | --- |
+| $120^\circ$ | $1$, $2$ | $\sqrt7$ |
+| $120^\circ$ | $3$, $5$ | $7$ |
+| $120^\circ$ | $7$, $8$ | $13$ |
+| $60^\circ$ | $2$, $3$ | $\sqrt7$ |
+| $60^\circ$ | $3$, $8$ | $7$ |
+| $60^\circ$ | $5$, $8$ | $7$ |
+| $135^\circ$ | $1$, $\sqrt2$ | $\sqrt5$ |
+| $150^\circ$ | $1$, $\sqrt3$ | $\sqrt7$ |
+
+- The rest of a triangle's measurements follow quickly. In the $3$-$5$-$7$ triangle the area is $\frac12 \cdot 3 \cdot 5\sin 120^\circ = \frac{15\sqrt3}{4}$ and the circumradius is $\frac{7}{2\sin 120^\circ} = \frac{7}{\sqrt3}$.
+- They usually come from a point on a side of an equilateral triangle. If the side is $s$ and the point is $m$ from one vertex, its distance $d$ to the opposite vertex satisfies $d^2 = s^2 + m^2 - sm$: side $3$ with $m = 1$ gives $\sqrt7$, and side $8$ with $m = 3$ or $m = 5$ gives $7$.
 
 {{figure:cevian}}
 
-Regular hexagons, whose angles are $120^\circ$, and three segments from a point at mutual $120^\circ$ angles produce the $120^\circ$ versions.
+- Regular hexagons, whose angles are $120^\circ$, and three segments from a point at mutual $120^\circ$ angles produce the $120^\circ$ versions.
+- Integer triangles with a $60^\circ$ or $120^\circ$ angle are called Eisenstein triples, and the pairing above generates them: $(3, 5, 7)$, $(7, 8, 13)$, and $(5, 16, 19)$ at $120^\circ$, and $(3, 8, 7)$, $(5, 8, 7)$, $(7, 15, 13)$, and $(8, 15, 13)$ at $60^\circ$, with the special angle between the first two sides.
+- One more triangle is worth knowing for a different reason: in the $4$-$5$-$6$ triangle the largest angle is exactly twice the smallest. The angle opposite $4$ has cosine $\frac34$, the angle opposite $6$ has cosine $\frac18$, and $2\left(\frac34\right)^2 - 1 = \frac18$.
 
-Integer triangles with a $60^\circ$ or $120^\circ$ angle are called Eisenstein triples, and the pairing above generates them: $(3, 5, 7)$, $(7, 8, 13)$, and $(5, 16, 19)$ at $120^\circ$, and $(3, 8, 7)$, $(5, 8, 7)$, $(7, 15, 13)$, and $(8, 15, 13)$ at $60^\circ$, with the special angle between the first two sides.
+## Applications
+Recognizing a hidden equilateral triangle, regular hexagon, or $120^\circ$ configuration from the side lengths alone.
 
-One more triangle is worth knowing for a different reason. In the $4$-$5$-$6$ triangle the largest angle is exactly twice the smallest: the angle opposite $4$ has cosine $\frac34$, the angle opposite $6$ has cosine $\frac18$, and the double-angle formula checks it: $$2\left(\tfrac34\right)^2 - 1 = \tfrac18.$$
-
-## On contests
-The $\pm ab$ forms themselves are on [[law-cosines-60-120|their own card]]; this card is the short list of triangles they produce, worth recognizing the way $3$-$4$-$5$ is. The $3$-$5$-$7$ and $1$-$2$-$\sqrt7$ triangles are the ones that recur, usually hidden in an equilateral triangle, a regular hexagon, or a $120^\circ$ configuration around a point. For the right-angled cases, see [[special-right-triangles|special right triangles]].
+## Contest profile
+This card is the short list of triangles that [[law-cosines-60-120|the Law of Cosines at 60° and 120°]] produce, worth recognizing the way $3$-$4$-$5$ is. The $3$-$5$-$7$ and $1$-$2$-$\sqrt7$ triangles are the ones that recur. For the right-angled cases, see [[special-right-triangles|special right triangles]].
 `,
 
 "angle-bisector-theorem": String.raw`
@@ -687,14 +913,34 @@ Ratios on a side cut by a bisector, the position of the incenter, and harmonic r
 Constant from AMC 10 through AIME, rarely alone: it supplies a ratio that power of a point, similar triangles, mass points, or Stewart's Theorem turns into an answer. The incenter ratio $(b + c) : a$ is often the real question.
 `,
 
-"angle-bisector-length": String.raw`## Why it works
-Apply [[stewarts-theorem|Stewart's Theorem]] with the segments from the bisector theorem ($m = \frac{ac}{b+c}$, $n = \frac{ab}{b+c}$), and the algebra collapses to $d^2 = ab - mn$ (sides $a, b$ adjacent to the bisected angle). Alternatively, use the trig form $d = \frac{2ab\cos(\frac{C}{2})}{a+b}$.
+"angle-bisector-length": String.raw`
+## Key forms
+- $d^2 = ab - mn$ — the bisector of angle $C$, where $a$ and $b$ are the sides at $C$ and $m$, $n$ are the segments it cuts the opposite side into
+- $d = \dfrac{2ab\cos(C/2)}{a + b}$ — the same length in terms of the angle
+- $d'^2 = m'n' - ab$ — the external bisector, where $m'$, $n'$ are the distances from its foot $D'$ to the other two vertices
+- $d' = \dfrac{2ab\sin(C/2)}{|a - b|}$ — the external bisector in terms of the angle
 
-## How to use it
-The $d^2 = (\text{product of adjacent sides}) - (\text{product of segments})$ phrasing is the memorable one, and the external bisector simply swaps which way the subtraction runs: $d'^2 = m'n' - ab$. The reversal tracks where the foot sits relative to the circumcircle: the internal foot is inside it, so $mn$ is subtracted from $ab$, while the external foot is outside, and there $ab$ is the quantity subtracted. The two are not one formula in disguise, so keep them apart. Use the trig form when the angle is special (e.g. bisecting $120^\circ$ gives $\cos 60^\circ = \frac{1}{2}$, so $d = \frac{ab}{a+b}$ — harmonic mean flavor).
+## Conditions
+The external bisector has a length only when $a \ne b$: if $a = b$ it runs parallel to the opposite side and never meets it.
 
-## On contests
-AIME problems give two sides and the bisector length and ask for the third side; the formula turns this into one quadratic. The $120^\circ$ special case appears in olympiad warm-ups.`,
+## Why it works
+Apply [[stewarts-theorem|Stewart's Theorem]] with the segments from the [[angle-bisector-theorem|Angle Bisector Theorem]], $m = \frac{ac}{a + b}$ and $n = \frac{bc}{a + b}$ for the opposite side $c$, and the algebra collapses to $d^2 = ab - mn$.
+
+A second proof uses the circumcircle. Extend the bisector $CD$ to meet the circle again at $E$. Triangles $CAD$ and $CEB$ are similar, so $CA \cdot CB = CD \cdot CE$, that is $ab = d \cdot CE$. The power of $D$ gives $mn = CD \cdot DE = d(CE - d) = ab - d^2$, so $d^2 = ab - mn$.
+
+The same picture explains the external bisector. Its foot lies outside the circle, so the power of the point reverses the subtraction and $d'^2 = m'n' - ab$.
+
+## Useful observations
+- The internal bisector is always shorter than $\sqrt{ab}$, since $mn$ is positive.
+- At $C = 120^\circ$ the trigonometric form gives $d = \frac{2ab \cdot \frac12}{a + b} = \frac{ab}{a + b}$, half the harmonic mean of the two sides.
+- The internal and external forms are not one formula in disguise, so keep them apart: which side of the circle the foot lies on decides the sign.
+
+## Applications
+Bisector lengths from the sides, and a side from a given bisector length.
+
+## Contest profile
+Problems give two sides and the bisector length and ask for the third side, which the formula turns into one quadratic. The $120^\circ$ case appears in olympiad warm-ups.
+`,
 
 "stewarts-theorem": String.raw`
 ## Key forms
@@ -727,6 +973,14 @@ An AIME tool, rarely alone. Its most frequent partner is power of a point, when 
 `,
 
 "cevas-theorem": String.raw`
+## Key forms
+- $\dfrac{AF}{FB} \cdot \dfrac{BD}{DC} \cdot \dfrac{CE}{EA} = 1$ — for cevians $AD$, $BE$, $CF$ through a common point, ratios taken in order around the triangle
+- conversely, if the product is $1$ for points $D$, $E$, $F$ on the three sides, the cevians are concurrent
+- with directed segments the product is $+1$, which also covers cevians that are parallel
+
+## Conditions
+$D$, $E$, $F$ lie on the sides $BC$, $CA$, $AB$, different from the vertices. All three ratios are taken in the same direction around the triangle, $A \to F \to B \to D \to C \to E \to A$.
+
 ## Why it works
 Each ratio along a side is a ratio of two triangles with a common apex, and for a point $P$ on the cevian the triangles can be taken from $P$ instead.
 
@@ -738,27 +992,55 @@ In the same way $\frac{CE}{EA} = \frac{[BCP]}{[BAP]}$ and $\frac{AF}{FB} = \frac
 
 For the converse, suppose the product is $1$ and let $BE$ and $CF$ meet at $P$. The line $AP$ meets $BC$ at a point $D'$ whose product is also $1$, so $\frac{BD'}{D'C} = \frac{BD}{DC}$ and $D' = D$.
 
-## How to use it
-To prove three cevians concurrent, compute the product; to find a third ratio from two, solve for it. Take all three ratios in the same direction around the triangle, $A \to F \to B \to D \to C \to E \to A$, or the product comes out inverted.
+## Useful observations
+- Medians, angle bisectors, and altitudes pass the test at once, which proves each set concurrent: for the bisectors the [[angle-bisector-theorem|Angle Bisector Theorem]] makes the product $\frac ba \cdot \frac cb \cdot \frac ac = 1$.
+- Taking the ratios in different directions around the triangle inverts the product, so the direction is the thing to check first.
+- When the cevians are given by angles rather than points, use the trigonometric form; for lengths along the cevians themselves, [[mass-points|mass points]] read off every ratio at once.
 
-Medians, angle bisectors, and altitudes pass the test at once, which proves each set concurrent: for the bisectors the [[angle-bisector-theorem|Angle Bisector Theorem]] makes the product $\frac ba \cdot \frac cb \cdot \frac ac = 1$.
+## Applications
+Proving three cevians concurrent, and finding the third ratio from the other two.
 
-When the cevians are given by angles rather than points, use the trigonometric form; for lengths along the cevians themselves, [[mass-points|mass points]] read off every ratio at once.
-
-## On contests
-Two problems here, both AIME, neither solved by it alone; one pairs it with [[area-method|area ratios]] around the common point, and the other with [[stewarts-theorem|Stewart's Theorem]] for the lengths. AIME problems typically give two of the ratios and ask for the third, or give a sum of ratios through the common point and ask for their product.
+## Contest profile
+AIME problems typically give two of the ratios and ask for the third, or give a sum of ratios through the common point and ask for their product. Partners include [[area-method|area ratios]] around the common point and [[stewarts-theorem|Stewart's Theorem]] for the lengths.
 `,
 
-"menelaus-theorem": String.raw`## Why it works
-Drop perpendiculars from $A$, $B$, $C$ to the transversal line; each ratio on the line equals a ratio of these perpendicular distances, and the product telescopes. The $-1$ (with directed lengths) records that a line crosses an odd number of side extensions.
+"menelaus-theorem": String.raw`
+## Key forms
+- $\dfrac{AF}{FB} \cdot \dfrac{BD}{DC} \cdot \dfrac{CE}{EA} = 1$ — for a line meeting $BC$, $CA$, $AB$ at $D$, $E$, $F$, with unsigned lengths
+- the same product is $-1$ with directed segments
+- conversely, three such points with product $1$ (and an even number on the sides themselves) are collinear
 
-## How to use it
-Use unsigned ratios and the product $= 1$ in practice. The skill is choosing the triangle and the transversal: given a chain of intersection points, pick the triangle whose three sides (extended) the known line crosses. It computes ratios that Ceva cannot reach — points outside segments.
+## Conditions
+The line does not pass through a vertex. If it is parallel to a side, the point on that side is at infinity and its ratio is taken as $1$. Of the three points, either one or all three lie outside the sides, never exactly two.
 
-## On contests
-The professional's tool for AIME problems where a line cuts across a cevian configuration ("find $\frac{AP}{PD}$" where $P$ is on a cevian). Often two applications of Menelaus replace a page of coordinate algebra. If you know [[mass-points|mass points]] with negative masses, that is Menelaus in disguise.`,
+## Why it works
+Drop perpendiculars from $A$, $B$, $C$ to the line, of lengths $d_A$, $d_B$, $d_C$. The right triangles at $F$ are similar, so $\frac{AF}{FB} = \frac{d_A}{d_B}$, and likewise $\frac{BD}{DC} = \frac{d_B}{d_C}$ and $\frac{CE}{EA} = \frac{d_C}{d_A}$. The product telescopes to $1$.
+
+The $-1$ for directed lengths records the sign: a line cuts either one or all three side lines outside the segments, which makes an odd number of the three ratios negative.
+
+## Useful observations
+- Menelaus' Theorem is the collinearity counterpart of Ceva's: three points on a line instead of three cevians through a point.
+- It reaches ratios that Ceva cannot, because the points may lie outside the segments.
+- The skill is choosing the triangle: pick the one whose three side lines the known line crosses, and a chain of intersection points often needs two applications.
+- [[mass-points|Mass points]] with a negative mass are Menelaus in disguise.
+
+## Applications
+Ratios along a cevian cut by a line, and collinearity of three points on the side lines of a triangle.
+
+## Contest profile
+The professional's tool for AIME problems where a line cuts across a cevian configuration: two applications often replace a page of coordinates.
+`,
 
 "apollonius-theorem": String.raw`
+## Key forms
+- $b^2 + c^2 = 2m_a^2 + \dfrac{a^2}{2}$ — the median $m_a$ to side $a$
+- $m_a = \dfrac12\sqrt{2b^2 + 2c^2 - a^2}$ — the median from the sides
+- $m_a^2 + m_b^2 + m_c^2 = \dfrac34\left(a^2 + b^2 + c^2\right)$ — the three medians together
+- $a^2 = \dfrac49\left(2m_b^2 + 2m_c^2 - m_a^2\right)$ — a side from the three medians
+
+## Conditions
+$a$, $b$, $c$ are the sides of a triangle and $m_a$ is the median from the vertex opposite $a$, ending at the midpoint of $a$.
+
 ## Why it works
 The median splits the triangle into two triangles with the common side $m_a$ and supplementary angles at $M$, so the [[law-of-cosines|Law of Cosines]] in each gives two equations whose cosine terms cancel.
 
@@ -766,90 +1048,224 @@ Let $\theta = \angle AMB$, so $\angle AMC = 180^\circ - \theta$, and write $m = 
 
 The same statement is the parallelogram law for the parallelogram that [[median-doubling|doubling the median]] makes, $(2m_a)^2 + a^2 = 2b^2 + 2c^2$. In vectors from $A$, $2\vec{AM} = \vec{AB} + \vec{AC}$ and $\vec{CB} = \vec{AB} - \vec{AC}$, and adding $|\vec{AB} + \vec{AC}|^2$ to $|\vec{AB} - \vec{AC}|^2$ cancels the cross terms. It is also Stewart's Theorem with $m = n = \frac a2$.
 
-## How to use it
-Three sides give any median in one line: for sides $6$, $8$, and $10$, the median to the side of length $10$ has $2m^2 = 36 + 64 - 50$, so $m = 5$, half the hypotenuse, as it must be in a right triangle.
+Adding the three versions gives $2(a^2 + b^2 + c^2) = 2(m_a^2 + m_b^2 + m_c^2) + \frac12(a^2 + b^2 + c^2)$, which rearranges to the $\frac34$ relation. Solving the three versions together for $a^2$ gives the side-from-medians form.
 
-The three medians determine the sides too. Solving the three versions of the theorem together gives $$a^2 = \tfrac49\left(2m_b^2 + 2m_c^2 - m_a^2\right),$$ and similarly for $b$ and $c$. Adding the three versions gives $m_a^2 + m_b^2 + m_c^2 = \frac34(a^2 + b^2 + c^2)$.
+## Useful observations
+- A right triangle checks the formula: for sides $6$, $8$, $10$ the median to the hypotenuse has $2m^2 = 36 + 64 - 50$, so $m = 5$, half the hypotenuse.
+- The medians determine the sides, and the side-from-medians form is the same relation with the roles of sides and medians exchanged, up to the factor $\frac49$.
+- Doubling the median to complete a parallelogram is the picture behind every use of the theorem.
 
-## On contests
-Four problems here, all AIME, one solved by it alone and each of the others with a different partner. "Two sides and the median to the third" is a recurring setup that this formula finishes in one line, and the doubled-median parallelogram is worth drawing whenever a median appears.
+## Applications
+Medians from the sides and sides from the medians, and any problem that gives two sides and the median to the third.
+
+## Contest profile
+Appears at AIME level, mostly as the one-line step that finishes a setup of two sides and the median to the third.
 `,
 
-"median-triangle-area": String.raw`## Why it works
-Translate median $\vec{m_b}$ to start where $\vec{m_a}$ ends: since $\vec{m_a} + \vec{m_b} + \vec{m_c} = \vec{0}$, the three medians close into a triangle. A short vector computation (or the 2:1 centroid dissection) shows its area is $\frac{3}{4}$ of the original — equivalently the original is $\frac{4}{3}$ of it.
+"median-triangle-area": String.raw`
+## Key forms
+- $[ABC] = \dfrac43\,[\text{triangle with sides } m_a, m_b, m_c]$ — the area from the three medians
+- the three medians of any triangle satisfy the triangle inequality, so they always form a triangle
 
-## How to use it
-Given three median lengths: form the triangle with those sides, compute its area (Heron), multiply by $\frac{4}{3}$. Medians $9, 12, 15$ or $3, 4, 5$-proportioned sets are gifts — the median triangle is right.
+## Conditions
+$m_a$, $m_b$, $m_c$ are the lengths of the three medians of a triangle $ABC$.
 
-## On contests
-Appears verbatim on AMC 10/12 every few years ("a triangle has medians 9, 12, 15; find its area" → 72). Faster and safer than solving for the sides.`,
+## Why it works
+Let $G$ be the centroid and $M$ the midpoint of $BC$, and reflect $G$ across $M$ to a point $P$, so $BGCP$ is a parallelogram.
 
-"rouths-theorem": String.raw`## Why it works
-Three applications of Menelaus (or [[mass-points|mass points]]) compute where the cevians pairwise intersect; the shoelace-style ratio algebra assembles into the closed form. The formula's symmetry under cycling $x \to y \to z$ reflects the rotational symmetry of the construction.
+The triangle $BGP$ in the figure has sides $BG = \frac23m_b$, $GP = 2GM = \frac23m_a$, and $BP = GC = \frac23m_c$. It is therefore the median triangle scaled by $\frac23$, with area $\frac49$ of the median triangle's. On the other hand $[BGP] = 2[BGM] = 2 \cdot \frac16[ABC] = \frac13[ABC]$, since $[BGM]$ is one sixth of the whole triangle. Equating, $\frac49T = \frac13[ABC]$, so $[ABC] = \frac43T$.
 
-## How to use it
-$x, y, z$ are the ratios $\frac{BD}{DC}$ etc., taken cyclically. Check $x = y = z = 1$: numerator $(1-1)^2 = 0$ — medians are concurrent, inner triangle degenerates to the centroid. The famous case $x = y = z = 2$ gives $\frac{1}{7}$.
+## Useful observations
+- The area comes without solving for the sides, which would need the side-from-medians form on [[apollonius-theorem|the median-length card]] and then a square root.
+- The factor $\frac23$ is the centroid's $2 : 1$ ratio, so the same picture shows $GM = \frac13m_a$ for each median.
 
-## On contests
-The one-seventh triangle is folklore (AMC has asked it directly). For asymmetric ratios, Routh is a fast check on an answer obtained by mass points — or the entire solution if you trust the memorization. Derive-on-demand solvers should master the Menelaus route instead.`,
+## Applications
+The area of a triangle given its three medians.
 
-"vivianis-theorem": String.raw`## Why it works
+## Contest profile
+A recurring AMC and AIME setup, "a triangle has medians of lengths ... find its area", answered in two lines.
+`,
+
+"rouths-theorem": String.raw`
+## Key forms
+- $\dfrac{[PQR]}{[ABC]} = \dfrac{(xyz - 1)^2}{(xy + y + 1)(yz + z + 1)(zx + x + 1)}$ — the inner triangle $PQR$ cut out by the three cevians
+- $x = \dfrac{DC}{BD}$, $y = \dfrac{EA}{CE}$, $z = \dfrac{FB}{AF}$ — the ratios in which the cevians $AD$, $BE$, $CF$ cut the sides $BC$, $CA$, $AB$
+- $xyz = 1$ makes the numerator $0$, which is Ceva's condition: the cevians are concurrent and the inner triangle collapses to a point
+
+## Conditions
+$D$, $E$, $F$ lie on the sides $BC$, $CA$, $AB$. The three ratios are taken in the same cyclic direction around the triangle, so the formula is unchanged when $(x, y, z)$ is cycled.
+
+## Why it works
+In [[barycentric-coordinates|barycentric coordinates]] with respect to $ABC$, the points are $D = (0 : x : 1)$, $E = (1 : 0 : y)$, and $F = (z : 1 : 0)$. A point of $AD$ has the form $(u : x : 1)$ and a point of $BE$ the form $(1 : v : y)$; these agree at $P = (1 : xy : y)$, and cycling the letters gives $Q = (z : 1 : yz)$ on $BE$ and $CF$, and $R = (zx : x : 1)$ on $CF$ and $AD$.
+
+The area ratio of a triangle with these vertices is the determinant of their coordinate rows divided by the product of the row sums: $$\det\begin{pmatrix} 1 & xy & y \\ z & 1 & yz \\ zx & x & 1 \end{pmatrix} = (1 - xyz)^2, \qquad \text{row sums } xy + y + 1,\ yz + z + 1,\ zx + x + 1.$$ Dividing gives the formula.
+
+## Useful observations
+- For $x = y = z = 2$ the numerator is $(8 - 1)^2 = 49$ and each factor of the denominator is $4 + 2 + 1 = 7$, so the inner triangle is $\frac{49}{343} = \frac17$ of $ABC$. This is the one-seventh triangle.
+- For $x = y = z = r$ the formula reduces to $\frac{(r - 1)^2}{r^2 + r + 1}$.
+- A single case computed by [[mass-points|mass points]] checks an answer, and a problem with different ratios on each side is where the formula is worth having.
+
+## Applications
+Areas of the triangle formed by three cevians, and the ratios on a side from a given area.
+
+## Contest profile
+The one-seventh triangle recurs on contests as a standalone question. With unequal ratios it serves as a fast check on an answer found by mass points or Menelaus.
+`,
+
+"vivianis-theorem": String.raw`
+## Key forms
+- $d_1 + d_2 + d_3 = h$ — in an equilateral triangle with altitude $h$, the distances from a point to the three sides sum to $h$
+- the same sum holds for every point of the plane, counting a distance as negative when the point is beyond that side
+- $a\,d_a + b\,d_b + c\,d_c = 2[ABC]$ — the version for any triangle, of which Viviani is the case $a = b = c$
+
+## Conditions
+For the interior reading, the point lies inside the equilateral triangle. For the signed reading, a distance is positive when the point is on the same side of that line as the opposite vertex and negative when it is beyond.
+
+## Why it works
 Connect $P$ to the three vertices, splitting the equilateral triangle (side $s$) into three triangles with bases $s$ and heights $d_1, d_2, d_3$. Total area: $\frac{s}{2}(d_1 + d_2 + d_3) = \frac{s}{2}h$, so the distances sum to the altitude $h$.
 
-Read the same decomposition with signed areas and it stops needing $P$ inside. Take the distance to a side as positive when $P$ is on the same side of that line as the opposite vertex and negative when it is beyond, and $[PAB] + [PBC] + [PCA] = [ABC]$ holds for every point of the plane, so $d_1 + d_2 + d_3 = h$ does too. Outside the triangle there are two regions to picture: across one side, where that single distance turns negative, and past a vertex, where two of them do. Dragging $P$ in the figure below walks through both.
+Read the same decomposition with signed areas and it stops needing $P$ inside: $[PAB] + [PBC] + [PCA] = [ABC]$ holds for every point of the plane, so $d_1 + d_2 + d_3 = h$ does too. Outside the triangle there are two regions to picture: across one side, where that single distance turns negative, and past a vertex, where two of them do. The figure lets $P$ be dragged through both.
 
 Nothing in the argument needs the sides to be equal either. On a general triangle the three pieces have bases $a$, $b$, $c$, so $a\,d_a + b\,d_b + c\,d_c = 2[ABC]$, a constant. Viviani is what that collapses to when the three bases are the same and the common factor cancels.
 
-## How to use it
-Any "sum of distances from an interior point to the sides" question in an equilateral triangle is answered without locating the point, and the weighted form answers the same question on a scalene triangle just as cheaply, since $2[ABC]$ is computable from the side lengths alone. Use the signed reading whenever a problem places its point outside or leaves the position unspecified, because then no case analysis is needed at all. Extends to regular polygons (sum of distances to all sides is constant = $n \times$ apothem) and to equiangular polygons.
+## Useful observations
+- The sum of the distances from an interior point to all the sides of a regular $n$-gon is $n$ times the apothem, and the same constancy holds for equiangular polygons.
+- On a scalene triangle the weighted form answers the same question, since $2[ABC]$ is computable from the side lengths alone.
+- The three normalized distances are the point's [[barycentric-coordinates|barycentric coordinates]] in an equilateral triangle.
 
-## On contests
-Shows up as a quick AMC insight ("the sum is constant — compute it at the center or a vertex"). In coordinate form it underlies [[barycentric-coordinates|barycentric]] thinking: the three normalized distances are the barycentric coordinates.`,
+## Applications
+Sums of distances from a point to the sides of an equilateral triangle or regular polygon, including points outside, and any point whose position is left unspecified.
 
-"euler-line-ratio": String.raw`## Why it works
-The [[homothety-monge|homothety]] centered at the centroid $G$ with factor $-\frac{1}{2}$ sends each vertex to the opposite midpoint — hence sends the orthocenter $H$ (intersection of altitudes) to the circumcenter $O$ (intersection of perpendicular bisectors, which are the altitudes of the [[medial-triangle|medial triangle]]). A homothety with factor $-\frac{1}{2}$ through $G$ means exactly $HG = 2GO$, all collinear.
+## Contest profile
+A quick AMC insight: the sum is constant, so compute it at the center or at a vertex.
+`,
 
-## How to use it
-Vector form is the practical one: with the circumcenter as origin, $\vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}$ and $\vec{OG} = \frac{1}{3}(\vec{OA} + \vec{OB} + \vec{OC})$. Given any two of $O, G, H$ in coordinates, the third is immediate.
+"euler-line-ratio": String.raw`
+## Key forms
+- $HG = 2\,GO$ — the orthocenter $H$, centroid $G$, and circumcenter $O$ are collinear, with $G$ one third of the way from $O$ to $H$
+- $\vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}$ and $\vec{OG} = \tfrac13\left(\vec{OA} + \vec{OB} + \vec{OC}\right)$ with $O$ as the origin
+- $OH^2 = 9R^2 - (a^2 + b^2 + c^2) = R^2\left(1 - 8\cos A\cos B\cos C\right)$
+- the nine-point center $N$ is the midpoint of $OH$, so $NG = \tfrac16 OH$
 
-## On contests
-AIME coordinate problems hand you two centers and ask for a distance — the ratio converts it. Also $OH^2 = R^2(1 - 8\cos A\cos B\cos C)$ and $OH^2 = 9R^2 - (a^2+b^2+c^2)$ for the ambitious.`,
+## Conditions
+Any triangle that is not equilateral; for an equilateral triangle the three centers coincide and there is no line.
 
-"euler-distance-theorem": String.raw`## Why it works
-The power of the [[incenter-excenter-lemma|incenter]] with respect to the circumcircle is $d^2 - R^2$ (negative, since $I$ is inside). A chord through $I$ and a vertex, intersected with the arc midpoint, has segment lengths computable via the incenter-excenter lemma ($\frac{r}{\sin(A/2)}$ and $2R\sin(A/2)$), whose product is $2Rr$. So $R^2 - d^2 = 2Rr$.
+## Why it works
+The [[homothety-monge|homothety]] centered at the centroid $G$ with factor $-\frac12$ sends each vertex to the midpoint of the opposite side. It therefore sends the orthocenter $H$, where the altitudes meet, to the circumcenter $O$, where the perpendicular bisectors meet, because the perpendicular bisectors of $ABC$ are the altitudes of the [[medial-triangle|medial triangle]]. A homothety of factor $-\frac12$ through $G$ means exactly $HG = 2GO$ with $H$, $G$, $O$ collinear.
 
-## How to use it
-Direct plug-in when a problem gives two of $R, r, d$. Also the source of Euler's inequality $R \ge 2r$ (since $d^2 \ge 0$), with equality iff equilateral — the starting point of many inequality problems.
+The vector form comes from putting $O$ at the origin. For $H = A + B + C$, the vector $H - A = B + C$ is perpendicular to $B - C$, because $(B + C)\cdot(B - C) = |B|^2 - |C|^2 = 0$, and likewise at the other vertices, so $H$ lies on all three altitudes. Then $G = \frac13(A + B + C) = \frac13H$.
 
-## On contests
-AIME has asked for $OI$ distances outright. The incenter-excenter lemma used in its proof (arc midpoint is equidistant from $B$, $C$, $I$, and the excenter) is itself one of the highest-value AIME lemmas — learn both together.`,
+## Useful observations
+- With the circumcenter as origin the centroid and orthocenter are the sum of the vertices over $3$ and the sum itself, so given any two of $O$, $G$, $H$ in coordinates the third is immediate.
+- The two expressions for $OH^2$ turn a distance between centers into the sides or the angles.
+- The midpoint of $OH$ is the center of the [[nine-point-circle|nine-point circle]], so $N$ is on the line too.
 
-"nine-point-circle": String.raw`## Why it works
-The [[homothety-monge|homothety]] centered at $H$ with factor $\frac{1}{2}$ sends the circumcircle to a circle through the midpoints of $HA$, $HB$, $HC$; a separate reflection argument shows the same circle passes through the side midpoints and the altitude feet. Its radius is half of $R$ by the homothety, and its center is the midpoint of $OH$.
+## Applications
+Coordinates of one center from the other two, and distances between centers.
 
-## How to use it
-Nine special points on one circle means enormous cyclic-quadrilateral leverage: any four of them are concyclic, unlocking inscribed-angle chases. The center $N$ being the midpoint of $OH$ places it on the Euler line, with $NG = \frac{1}{6}OH$.
+## Contest profile
+AIME coordinate problems hand over two centers and ask for a distance or the third center; the ratio converts it at once.
+`,
 
-## On contests
-Occasionally an AIME problem is a nine-point circle fact wearing a costume — e.g. "the circle through the feet of the altitudes" or "through the midpoints" turning out to have radius $\frac{R}{2}$. Recognizing the disguise saves the day; the [[medial-triangle|medial triangle's]] circumcircle IS the nine-point circle.`,
+"euler-distance-theorem": String.raw`
+## Key forms
+- $OI^2 = R(R - 2r)$ — the squared distance from the circumcenter to the incenter
+- $R \ge 2r$ — Euler's Inequality, with equality exactly for the equilateral triangle
+- $OI_A^2 = R(R + 2r_a)$ — the same statement for the excenter opposite $A$
 
-"carnots-theorem": String.raw`## Why it works
-Each signed distance is $d_i = R\cos A_i$ (the central angle over side $a$ is $2A$, so the apothem-like distance is $R\cos A$). The identity $\cos A + \cos B + \cos C = 1 + \frac{r}{R}$ then gives $d_1 + d_2 + d_3 = R + r$.
+## Conditions
+$O$ and $I$ are the circumcenter and incenter of a triangle with circumradius $R$ and inradius $r$.
 
-## How to use it
-Mostly as the geometric packaging of $\cos A + \cos B + \cos C = 1 + \frac{r}{R}$ — an identity worth knowing by itself (it bounds the cosine sum in $(1, \frac{3}{2}]$). Distances count negative when the circumcenter falls outside (obtuse triangles).
+## Why it works
+The power of the incenter with respect to the circumcircle is $OI^2 - R^2$, which is negative because $I$ is inside. Extend $AI$ to meet the circumcircle again at $M$, the midpoint of arc $BC$. Then $IA \cdot IM = R^2 - OI^2$. Here $IA = \frac{r}{\sin(A/2)}$, and by the [[incenter-excenter-lemma|incenter-excenter lemma]] $IM = MB = 2R\sin\frac A2$, so the product is $2Rr$, and $R^2 - OI^2 = 2Rr$.
 
-## On contests
-Rare directly, but the underlying cosine identity appears in AIME trig problems ("given $\cos A + \cos B + \cos C$ and $R$, find $r$").`,
+Since $OI^2 \ge 0$, the formula gives $R(R - 2r) \ge 0$, that is $R \ge 2r$, with equality exactly when $O = I$, which happens only for the equilateral triangle.
 
-"simson-line": String.raw`## Why it works
-Two of the feet form a cyclic quadrilateral with $P$ and a vertex (right angles subtend diameters), and [[angle-chasing|angle chasing]] in the two circles shows the three feet make a straight angle exactly when $P$ lies on the circumcircle — and only then.
+## Useful observations
+- When two of $R$, $r$, $OI$ are given the third follows at once, which is how the formula usually appears.
+- It is the starting point of many inequality problems in $R$ and $r$.
+- The lemma used in the proof, that the arc midpoint is equidistant from $B$, $C$, $I$, and the excenter $I_A$, is itself one of the most useful lemmas in contest geometry.
 
-## How to use it
-Recognize the configuration: perpendiculars dropped from one point to all three sides with collinear feet ⟺ the point is on the circumcircle. Bonus facts: the Simson line bisects segment $PH$ ($H$ = orthocenter), and rotating $P$ around the circle rotates the line at half speed. The same degenerate-pedal idea reappears for four lines as the complete quadrilateral and its [[miquels-theorem|Miquel]] point.
+## Applications
+Distances between the circumcenter and incenter, the relation between the two radii, and inequalities in $R$ and $r$.
 
-## On contests
-A niche but decisive AIME/olympiad tool — when a problem drops three perpendiculars from a circumcircle point, the collinearity is the intended miracle. Also useful in reverse to prove a point lies on the circumcircle.`,
+## Contest profile
+AIME problems have asked for $OI$ outright; learn the formula together with the lemma behind it.
+`,
+
+"nine-point-circle": String.raw`
+## Key forms
+- the circle passes through the midpoints of the three sides, the feet of the three altitudes, and the midpoints of $HA$, $HB$, $HC$, where $H$ is the orthocenter
+- $R_9 = \dfrac R2$ — its radius is half the circumradius
+- $N$ = the midpoint of $OH$ — its center, so $N$ is on the Euler line, with $NG = \tfrac16OH$
+
+## Conditions
+$ABC$ is any triangle, with circumcenter $O$, orthocenter $H$, centroid $G$, and circumradius $R$. For a right triangle two of the nine points coincide and the circle still has radius $\frac R2$.
+
+## Why it works
+Two homotheties give the same circle. The [[homothety-monge|homothety]] centered at $H$ with ratio $\frac12$ sends the circumcircle to a circle of radius $\frac R2$ through the midpoints of $HA$, $HB$, $HC$, with center the midpoint of $HO$. The homothety centered at the centroid $G$ with ratio $-\frac12$ sends the circumcircle to the circumcircle of the [[medial-triangle|medial triangle]], a circle through the three side midpoints, also of radius $\frac R2$, and it sends $O$ to $\frac12H$ (with $O$ as the origin), the midpoint of $OH$ again. The two circles have the same center and radius, so they are one circle, through six of the nine points.
+
+The altitude feet complete it. The midpoint $P_a$ of $HA$ and the midpoint $M_a$ of $BC$ are opposite ends of a diameter, since the circle's center is the midpoint of both $P_aM_a$ and the midpoint of $OH$. The foot $D$ of the altitude from $A$ lies on line $AH$, perpendicular to $BC$, so the angle $P_aDM_a$ is a right angle and $D$ is on the circle with that diameter.
+
+## Useful observations
+- Nine points on one circle give enormous cyclic-quadrilateral leverage: any four of them are concyclic, and the inscribed-angle chases follow.
+- The circle is tangent to the incircle and the three excircles, which is [[feuerbach-theorem|Feuerbach's Theorem]].
+- The medial triangle's circumcircle is the nine-point circle, so a "circle through the midpoints" has radius $\frac R2$, and so does a "circle through the altitude feet".
+
+## Applications
+Circles through midpoints and altitude feet, concyclicity arguments, and the radius or center of a circle in terms of the circumcircle.
+
+## Contest profile
+An AIME problem is sometimes a nine-point circle fact in disguise: "the circle through the feet of the altitudes", or "through the midpoints", turning out to have radius $\frac R2$.
+`,
+
+"carnots-theorem": String.raw`
+## Key forms
+- $d_1 + d_2 + d_3 = R + r$ — the signed distances from the circumcenter to the three sides
+- $d_a = R\cos A$, $d_b = R\cos B$, $d_c = R\cos C$ — each signed distance from its angle
+- $\cos A + \cos B + \cos C = 1 + \dfrac rR$ — the trigonometric form of the same identity
+
+## Conditions
+A distance counts as positive when the circumcenter is on the same side of the line as the opposite vertex, and as negative when it is beyond, which happens for the side opposite an obtuse angle. In a right triangle that distance is $0$.
+
+## Why it works
+The side $a$ subtends the central angle $2A$ at $O$, so the distance from $O$ to $a$ is the apothem $R\cos A$, which is negative exactly when $A$ is obtuse. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$ then gives $d_1 + d_2 + d_3 = R + r$.
+
+## Useful observations
+- It is the geometric packaging of the cosine identity, and the identity bounds the cosine sum in $(1, \frac32]$, with $\frac32$ only for the equilateral triangle.
+- Given a cosine sum and $R$, the inradius follows at once.
+
+## Applications
+Sums of distances from the circumcenter to the sides, and problems that give the cosines of the angles together with $R$ or $r$.
+
+## Contest profile
+Rare directly, but the cosine identity underneath appears in AIME trigonometry, as in "given $\cos A + \cos B + \cos C$ and $R$, find $r$".
+`,
+
+"simson-line": String.raw`
+## Key forms
+- $P$ on the circumcircle of $ABC$ $\iff$ the feet of the perpendiculars from $P$ to the three side lines are collinear
+- the Simson line of $P$ bisects the segment $PH$, where $H$ is the orthocenter
+- the angle between the Simson lines of $P$ and $Q$ is half the arc $PQ$
+
+## Conditions
+The feet are taken on the lines $BC$, $CA$, $AB$, extended where needed. The statement is an equivalence, so it also proves that a point lies on the circumcircle.
+
+## Why it works
+Two of the feet form a cyclic quadrilateral with $P$ and a vertex, since the right angles at the feet subtend diameters, and [[angle-chasing|angle chasing]] in the two circles shows that the three feet make a straight angle exactly when $P$ lies on the circumcircle, and only then.
+
+## Useful observations
+- The configuration is recognizable by its data: perpendiculars dropped from one point to all three sides with collinear feet. Conversely, to prove a point lies on the circumcircle, show its feet are collinear.
+- The Simson line bisects $PH$, and as $P$ turns around the circle the line turns at half the speed.
+- The same degenerate-pedal idea for four lines is the complete quadrilateral and its [[miquels-theorem|Miquel]] point.
+- It is the degenerate pedal triangle: its area is $0$, as the pedal-triangle formula says when $OP = R$.
+
+## Applications
+Collinearity of the three feet from a circumcircle point, and proving that a point lies on the circumcircle.
+
+## Contest profile
+A niche but decisive AIME and olympiad tool: when a problem drops three perpendiculars from a circumcircle point, the collinearity is the intended miracle.
+`,
 
 "brocard-angle": String.raw`## Why it works
 Requiring the cevians $AP, BP, CP$ to make equal angles $\omega$ with sides $AB, BC, CA$ respectively forces (via the Law of Sines in the three sub-triangles) the relation $\cot\omega = \cot A + \cot B + \cot C$; symmetry gives a second such point (the twin Brocard point) with the same angle.
@@ -1298,32 +1714,76 @@ Any point on the circumcircle arc of an equilateral triangle: the longest of the
 ## On contests
 A recurring AIME/AMC gem — "point on the circumcircle with $PB = 5$, $PC = 3$, find $PA$" is a one-liner ($PA = 8$). The related interior-point fact (Pompeiu: for $P$ not on the circle, the distances form a triangle) is the companion.`,
 
-"bretschneiders-formula": String.raw`## Why it works
-Same split-and-eliminate as Brahmagupta, but without the cyclic condition the angle term $abcd\cos^2\left(\frac{A+C}{2}\right)$ survives. Cyclic ($A + C = 180^\circ$) kills it; that is the sanity check.
+"bretschneiders-formula": String.raw`
+## Key forms
+- $A = \sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\cos^2\frac{A + C}{2}}$ — the area of any convex quadrilateral with sides $a, b, c, d$, semiperimeter $s$, and opposite angles $A$ and $C$
+- $A + C = 180^\circ$ — the cyclic case, where the last term vanishes and the formula becomes Brahmagupta's Formula
+- among all quadrilaterals with the same four sides, the cyclic one has the largest area
 
-## How to use it
-Rarely needed in full generality — its value is conceptual: for fixed sides, area is maximized exactly when the quadrilateral is cyclic. That extremal fact, not the formula, is what problems test.
+## Conditions
+The quadrilateral is convex, the sides are taken in order, and $A$ and $C$ are opposite angles.
 
-## On contests
-"Of all quadrilaterals with sides $a,b,c,d$, the cyclic one has the largest area" occasionally decides an AMC answer. Compute the max via Brahmagupta; cite Bretschneider only mentally.`,
+## Why it works
+The proof is the same split-and-eliminate as for Brahmagupta's Formula: write the area as the sum of the two triangles cut by a diagonal, equate the two expressions for that diagonal by the Law of Cosines, and eliminate the diagonal. Without the cyclic condition the angle term $abcd\cos^2\frac{A + C}{2}$ survives. Cyclic quadrilaterals have $A + C = 180^\circ$, which kills it; that is the sanity check.
 
-"varignons-theorem": String.raw`## Why it works
-Each midsegment of the two triangles formed by a diagonal is parallel to that diagonal and half its length — so both pairs of opposite midpoint-sides are parallel to a diagonal, making a parallelogram with sides $\frac{p}{2}, \frac{q}{2}$. The area halves because each corner cut removes a quarter-scale triangle summing to half.
+## Useful observations
+- The cosine term is never negative, so the area never exceeds $\sqrt{(s - a)(s - b)(s - c)(s - d)}$, which is why the cyclic quadrilateral maximizes the area for given sides.
+- The full formula is seldom needed; the maximization fact is what problems test.
 
-## How to use it
-Midpoints of a quadrilateral's sides → automatic parallelogram with sides parallel to the diagonals; it is a rectangle iff the diagonals are perpendicular, a rhombus iff they are equal. The segment joining the midpoints of the diagonals also passes through the parallelogram's center. Its sides are half the diagonals, which is the bridge to [[euler-quadrilateral|Euler's Quadrilateral Theorem]] and to the diagonal-based quadrilateral area formulas. Because its sides are half the diagonals, it also gives the diagonal-based [[trapezoid-parallelogram-areas|quadrilateral areas]] directly.
+## Applications
+Areas of quadrilaterals that are not cyclic, and the largest area for four given sides.
 
-## On contests
-AMC uses it straight ("midpoints form what figure? what area?"); AIME uses the parallel-to-diagonals property to transfer angle/length conditions from sides to diagonals.`,
+## Contest profile
+The fact that the cyclic quadrilateral has the largest area occasionally decides an AMC answer; the maximum is computed with Brahmagupta's Formula, and the full formula is cited mentally.
+`,
 
-"euler-quadrilateral": String.raw`## Why it works
-Vector algebra: place the midpoint identity $\vec{m} = \frac{(\vec{a}+\vec{c}) - (\vec{b}+\vec{d})}{2}$ and expand all squared lengths; every cross term cancels, leaving the identity. The parallelogram law is the $m = 0$ case (diagonal midpoints coincide).
+"varignons-theorem": String.raw`
+## Key forms
+- the midpoints of the sides of any quadrilateral form a parallelogram, with sides parallel to the diagonals and half as long
+- $[\text{Varignon parallelogram}] = \frac12[ABCD]$ — its area is half the area of the quadrilateral
+- it is a rectangle exactly when the diagonals are perpendicular, and a rhombus exactly when they are equal
 
-## How to use it
-Relates the four sides, two diagonals, and the "midline" $m$ — given any five, find the sixth. Its main corollary: in any quadrilateral, $a^2+b^2+c^2+d^2 \ge p^2 + q^2$ with equality iff parallelogram.
+## Conditions
+Any quadrilateral, including a non-convex one; the midpoints are of the four sides in order.
 
-## On contests
-Occasional AIME appearances when a problem gives all four sides and one diagonal and asks about the other — check whether the midpoint segment is determinable; in parallelogram-adjacent configurations it vanishes and the computation collapses.`,
+## Why it works
+In each of the two triangles that a diagonal creates, the segment joining the midpoints of two sides is parallel to the diagonal and half as long, by the [[midsegment-theorem|Midsegment Theorem]]. So both pairs of opposite sides of the midpoint quadrilateral are parallel to a diagonal, which makes it a parallelogram with sides $\frac p2$ and $\frac q2$, where $p$ and $q$ are the diagonals. The area halves because each of the four corner triangles cut off has a quarter of the area of the triangle it sits in, and the four corner triangles together make up half of the quadrilateral.
+
+## Useful observations
+- The segment joining the midpoints of the diagonals passes through the center of the Varignon parallelogram.
+- Its sides are half the diagonals, the bridge to [[euler-quadrilateral|Euler's Quadrilateral Theorem]] and to the diagonal-based [[trapezoid-parallelogram-areas|quadrilateral areas]].
+- Parallel-to-the-diagonal sides transfer angle and length conditions from the sides of the quadrilateral to its diagonals.
+
+## Applications
+Midpoint figures of quadrilaterals, areas of midpoint parallelograms, and conditions on diagonals from conditions on a midpoint figure.
+
+## Contest profile
+The AMC uses it directly, asking what figure the midpoints form and its area; the AIME uses the parallel-to-diagonals property to move conditions from sides to diagonals.
+`,
+
+"euler-quadrilateral": String.raw`
+## Key forms
+- $a^2 + b^2 + c^2 + d^2 = p^2 + q^2 + 4m^2$ — for a quadrilateral with sides $a, b, c, d$, diagonals $p$ and $q$, and $m$ the distance between the midpoints of the diagonals
+- $m = 0$ — the diagonal midpoints coincide exactly for a parallelogram, and the identity becomes the parallelogram law
+- $a^2 + b^2 + c^2 + d^2 \ge p^2 + q^2$ — with equality exactly for a parallelogram
+
+## Conditions
+The identity holds for any quadrilateral, convex or not, with its sides and diagonals as segment lengths.
+
+## Why it works
+In vectors, the vector between the midpoints of the diagonals is $\vec m = \frac{(\vec a + \vec c) - (\vec b + \vec d)}{2}$, with $\vec a$, $\vec b$, $\vec c$, $\vec d$ the position vectors of the vertices. Expand all six squared lengths in terms of the vertices; every cross term cancels, leaving the identity. The parallelogram law is the case $m = 0$, where the diagonal midpoints coincide.
+
+## Useful observations
+- The identity relates the four sides, the two diagonals, and the segment $m$: given any five of the seven lengths in a configuration it allows, the remaining one follows.
+- The corollary $a^2 + b^2 + c^2 + d^2 \ge p^2 + q^2$ is the quadrilateral form of the inequality behind the parallelogram law.
+- In parallelogram-adjacent figures $m$ vanishes and the computation collapses.
+
+## Applications
+Sides and diagonals of quadrilaterals, and the distance between the midpoints of the diagonals.
+
+## Contest profile
+Occasional on the AIME when a problem gives all four sides and one diagonal and asks about the other, or about a midpoint segment.
+`,
 
 "distance-midpoint": String.raw`
 ## Why it works
@@ -1596,36 +2056,63 @@ Every equilateral configuration reduces to these four numbers, so know them with
 None of the 19 problems tagged here is about an equilateral triangle alone; it is almost always the shape that makes another tool easy, the Law of Cosines with its $60^\circ$ angle (4 problems), 30-60-90 triangles (4), or a circle around or inside it (3). The coincidence of all four centers means symmetric arguments, such as [[rotation-trick|rotating]] by $60^\circ$ about a vertex or by $120^\circ$ about the center, are always available.
 `,
 
-"hexagon-diagonals": String.raw`## Why it works
+"hexagon-diagonals": String.raw`
+## Key forms
+- long diagonal $2s$ — joins opposite vertices, passes through the center, and is a diameter of the circumcircle
+- short diagonal $s\sqrt3$ — skips one vertex
+- $2 : \sqrt3 : 1$ — long diagonal, short diagonal, and side, the ratio of the sides of a [[special-right-triangles|30-60-90 triangle]]
+
+## Conditions
+The hexagon is regular with side $s$; the hexagon has exactly two diagonal lengths.
+
+## Why it works
 Six equilateral triangles of side $s$ meet at the center, so the distance from the center to every vertex is $s$. Opposite vertices are therefore $s + s = 2s$ apart, and that segment passes through the center, which is what makes the long diagonal a diameter of the circumcircle.
 
-For the short diagonal take $A$, $B$, $C$ consecutive. The interior angle of a regular hexagon is $120^\circ$, so triangle $ABC$ is isosceles with legs $AB = BC = s$ and apex $120^\circ$. Dropping the perpendicular from $B$ splits it into two [[special-right-triangles|half-equilateral]] triangles with hypotenuse $s$, each contributing $\frac{s\sqrt3}{2}$, so $AC = s\sqrt3$. The same half-diagonal is the hexagon's apothem, which is why [[regular-hexagon-area|the area]], the apothem, and the short diagonal are all the same computation.
+For the short diagonal take $A$, $B$, $C$ consecutive. The interior angle of a regular hexagon is $120^\circ$, so triangle $ABC$ is isosceles with legs $AB = BC = s$ and apex $120^\circ$. Dropping the perpendicular from $B$ splits it into two half-equilateral triangles with hypotenuse $s$, each contributing $\frac{s\sqrt3}{2}$, so $AC = s\sqrt3$. The same half-diagonal is the hexagon's apothem, which is why [[regular-hexagon-area|the area]], the apothem, and the short diagonal are all the same computation.
 
 Both lengths are the $n = 6$ cases of the general chord $d_k = 2R\sin\frac{k\pi}{n}$ with $R = s$: $k = 2$ gives $2s\sin 60^\circ = s\sqrt3$ and $k = 3$ gives $2s\sin 90^\circ = 2s$.
 
-## How to use it
-Read the ratio off rather than re-deriving it: side, short diagonal, and long diagonal stand in the ratio $1 : \sqrt3 : 2$, the same triple as a $30$-$60$-$90$ triangle. That makes a hexagon problem a scaling exercise, and it is why hexagons pair so often with equilateral triangles and with $\sqrt3$ answers. Two facts fall out immediately: the three long diagonals concur at the center and cut the hexagon into six equilateral triangles, while the six short diagonals outline a smaller regular hexagon whose side is $\frac{s\sqrt3}{3}$, so its area is one third of the original.
+## Useful observations
+- The ratio $1 : \sqrt3 : 2$ turns a hexagon problem into a scaling exercise, which is why hexagons pair so often with equilateral triangles and with $\sqrt3$ in answers.
+- The three long diagonals meet at the center and cut the hexagon into six equilateral triangles.
+- The six short diagonals outline a smaller regular hexagon whose side is $\frac{s\sqrt3}{3}$, so its area is one third of the original.
+- In a hexagonal lattice the short diagonal is the spacing between next-nearest centers.
 
-## On contests
-A staple of MATHCOUNTS and early AMC geometry, usually as "the distance between two vertices" where the only question is which diagonal is meant. It also supplies the lengths in hexagonal-lattice and tiling problems, where the short diagonal is the spacing between next-nearest centers. When a problem gives a hexagon and a length, decide first whether that length is a side, a short diagonal, or a long one, since the three differ only by the factor $\sqrt3$ or $2$.`,
+## Applications
+Distances between the vertices of a regular hexagon, and lengths in hexagonal lattices and tilings.
+
+## Contest profile
+A staple of MATHCOUNTS and early AMC geometry, usually as the distance between two vertices, where the only question is which of the three lengths is meant.
+`,
 
 "regular-hexagon-area": String.raw`
+## Key forms
+- $A = \frac{3\sqrt3}{2}s^2$ — the area of a regular hexagon of side $s$
+- long diagonal $2s$, apothem $\frac{s\sqrt3}{2}$, short diagonal $s\sqrt3$ — all read off the six equilateral triangles
+- the triangle on alternate vertices has half the area of the hexagon, and each corner it cuts off has a sixth
+
+## Conditions
+The hexagon is regular. The center-to-vertex segments equal the side only for a regular hexagon.
+
 ## Why it works
 Each center-to-vertex segment has length $s$, and each of the six angles at the center is $60^\circ$, so each triangle around the center is isosceles with a $60^\circ$ apex angle, which makes it equilateral. Six equilateral triangles of side $s$ give $$A = 6 \cdot \frac{\sqrt3}{4}s^2 = \frac{3\sqrt3}{2}s^2.$$
 
 The same triangles give the lengths. The long diagonal crosses two of them, so it is $2s$, and the apothem is the height of one, $\frac{s\sqrt3}{2}$; the short diagonal, $s\sqrt3$, is on [[hexagon-diagonals|hexagon diagonals]].
 
-## How to use it
-Measure regions in units of the small equilateral triangle, cutting further into halves or into smaller equilateral triangles when a region needs it. Neighbouring triangles pair into rhombi, and a diagonal of a rhombus cuts it in half, which settles most shaded regions.
+## Useful observations
+- Regions inside a hexagon are best measured in units of the small equilateral triangle, cut into halves or into smaller equilateral triangles when a region needs it.
+- Neighboring triangles pair into rhombi, and a diagonal of a rhombus cuts it in half, which settles most shaded regions.
 
 {{figure:alternate}}
 
-So the triangle $ACE$ on alternate vertices is half the hexagon, and each corner triangle it cuts off is a sixth. Midpoint hexagons and other inscribed figures work the same way once the small triangles are drawn in.
+- The triangle $ACE$ on alternate vertices is half the hexagon, and each corner triangle it cuts off is a sixth; midpoint hexagons and other inscribed figures work the same way once the small triangles are drawn in.
+- An equiangular hexagon with unequal sides is a large equilateral triangle with three equilateral corners cut off, the subject of [[equiangular-hexagon-area|Area of an Equiangular Hexagon]].
 
-An equiangular hexagon with unequal sides is a large equilateral triangle with three equilateral corners cut off; extending three alternate sides until they meet shows it.
+## Applications
+Areas and lengths inside a regular hexagon, hexagonal tilings, and shaded regions made of small equilateral triangles.
 
-## On contests
-Two problems here, one AIME and one AMC 10, one solved by it alone. The AMC version finds an area inside a hexagon by counting small triangles, and the AIME version counts the small equilateral triangles cut out by lines in three directions. Shaded regions, hexagonal tilings, and equiangular hexagons with given sides are the usual shapes.
+## Contest profile
+AMC and MATHCOUNTS shaded-region problems found by counting small triangles, and AIME problems that count the small equilateral triangles cut out by lines in three directions.
 `,
 
 "15-75-90-triangle": String.raw`## Why it works
@@ -1712,7 +2199,7 @@ Point $P$ inside equilateral triangle $ABC$ has $PA = 3$, $PB = 4$, $PC = 5$. Ro
 ## Why it works
 A rotation preserves lengths and angles. Rotating about $B$ by the angle of the polygon carries the side $BA$ onto the side $BC$, so it carries triangle $BPA$ onto a congruent triangle $BP'C$; in particular $P'C = PA$ and $\angle BP'C = \angle BPA$.
 
-The point and its image are at the same distance from $B$ with the rotation angle between them, so triangle $PBP'$ is isosceles with apex angle $60^\circ$ or $90^\circ$, which makes it equilateral or isosceles right, and its base $PP'$ is known. That is how a third known length appears next to the other two, as the figure on this card shows.
+The point and its image are at the same distance from $B$ with the rotation angle between them, so triangle $PBP'$ is isosceles with apex angle $60^\circ$ or $90^\circ$, which makes it equilateral or isosceles right, and its base $PP'$ is known. That is how a third known length appears next to the other two.
 
 ## Formulas it uses
 - [[law-of-cosines]]: computes the side length or the remaining angles once the three distances form one triangle.
@@ -1888,23 +2375,54 @@ An AIME staple: a sphere in a cone, stacked spheres, or a torus against a sphere
 
 Object.assign(window.MATH_DETAILS, {
 
-"trig-ceva": String.raw`## Why it works
-Apply the Law of Sines inside each of the six small triangles a cevian creates at its vertex: each side-ratio in ordinary Ceva converts to a ratio of sines of the vertex angles, and the product telescopes the same way.
+"trig-ceva": String.raw`
+## Key forms
+- $\dfrac{\sin\angle BAD}{\sin\angle DAC} \cdot \dfrac{\sin\angle CBE}{\sin\angle EBA} \cdot \dfrac{\sin\angle ACF}{\sin\angle FCB} = 1$ — for cevians $AD$, $BE$, $CF$ through a common point
+- conversely, if the product is $1$, the three cevians are concurrent
 
-## How to use it
-Reach for it when the givens are angles ("the cevian makes a 20° angle with the side") rather than segment ratios. Isogonal cevians (reflections over the bisector) swap the sine ratios — which is why trig Ceva proves the [[symmedian-lemoine|symmedians]] and the [[isogonal-conjugate|isogonal conjugate]] exist. Combined with the sine addition formulas it handles most "find the angle" concurrency problems.
+## Conditions
+$D$, $E$, $F$ lie on the sides $BC$, $CA$, $AB$, and each angle is the one the cevian makes with a side at its own vertex. The three ratios are taken in the same direction around the triangle.
 
-## On contests
-The standard weapon for AIME/olympiad angle-chase concurrency, and the cleanest proof that altitudes, bisectors, and symmedians concur. [[directed-angles|Directed angles]] matter for obtuse configurations — keep everything inside the triangle when possible.`,
+## Why it works
+Each side ratio in Ceva's Theorem converts into a ratio of sines by [[ratio-lemma|the Ratio Lemma]]: $\frac{BD}{DC} = \frac{AB \sin\angle BAD}{AC \sin\angle DAC}$, and likewise at $B$ and $C$. Multiplying the three, the side lengths $AB$, $BC$, $CA$ each appear once above and once below and cancel, leaving the product of the three sine ratios. The product of the three side ratios is $1$ exactly when the cevians are concurrent, so the same holds for the sine product.
 
-"erdos-mordell": String.raw`## Why it works
-The classical proof reflects the distances: $a \cdot PA \ge b \cdot d_c + c \cdot d_b$ for each vertex (a projection inequality), then summing the three cyclic versions and applying AM-GM to the coefficient pairs gives the factor 2. Equality survives only when the triangle is equilateral and $P$ is the center.
+## Useful observations
+- Isogonal cevians, the reflections over the angle bisectors, swap the numerators and denominators of the sine ratios, which is why trig Ceva proves that the [[symmedian-lemoine|symmedians]] meet and that the [[isogonal-conjugate|isogonal conjugate]] of a point exists.
+- Altitudes, bisectors, and symmedians concur by this one calculation.
+- With the sine addition formulas, it handles most "find the angle" concurrency problems.
+- For obtuse configurations [[directed-angles|directed angles]] keep the signs straight; with every cevian inside the triangle no signs are needed.
 
-## How to use it
-An off-the-shelf bound whenever both distance triples (to vertices, to sides) appear. The intermediate inequalities $a \cdot PA \ge b \cdot d_c + c \cdot d_b$ are themselves useful and sharper.
+## Applications
+Concurrency of cevians given by angles, and unknown angles in a figure with a point inside a triangle.
 
-## On contests
-Olympiad inequality problems and the occasional AIME-adjacent bound; also a good sanity check for extremal configurations — if a problem's optimum has $P$ at an equilateral center, Erdős–Mordell equality is often the hidden reason.`,
+## Contest profile
+The standard tool for AIME and olympiad angle-chase concurrency, and the cleanest proof that altitudes, bisectors, and symmedians concur.
+`,
+
+"erdos-mordell": String.raw`
+## Key forms
+- $PA + PB + PC \ge 2\left(d_a + d_b + d_c\right)$ — the distances from an interior point $P$ to the vertices against its distances to the sides
+- $a \cdot PA \ge b\,d_c + c\,d_b$ — the stronger inequality at one vertex, and its two cyclic versions
+- equality holds only for an equilateral triangle with $P$ at its center
+
+## Conditions
+$P$ is a point inside the triangle, and $d_a$, $d_b$, $d_c$ are its distances to the sides $a$, $b$, $c$.
+
+## Why it works
+Start with the inequality at $A$. Reflect $P$ across the bisector of angle $A$ to a point $P'$, so $AP' = AP$ and the distances from $P'$ to $AB$ and $AC$ are $d_b$ and $d_c$. The ray $AP'$ lies inside the angle, so $B$ and $C$ are on opposite sides of the line $AP'$, and the two triangles $ABP'$ and $ACP'$ have total area $$\tfrac12\bigl(c\,d_b + b\,d_c\bigr) = \tfrac12\,AP' \cdot \bigl(\text{distance from } B + \text{distance from } C\bigr) \le \tfrac12\,AP \cdot a,$$ because the two distances to a line from points on opposite sides add to at most the segment $BC$ between them. Hence $a \cdot PA \ge b\,d_c + c\,d_b$.
+
+Divide by $a$ and add the three cyclic versions: $$PA + PB + PC \ge d_a\left(\tfrac bc + \tfrac cb\right) + d_b\left(\tfrac ca + \tfrac ac\right) + d_c\left(\tfrac ab + \tfrac ba\right) \ge 2\left(d_a + d_b + d_c\right),$$ since each bracket is at least $2$ by AM-GM. Equality needs $a = b = c$ and each $AP'$ perpendicular to its side, which puts $P$ at the center.
+
+## Useful observations
+- The intermediate inequalities $a \cdot PA \ge b\,d_c + c\,d_b$ are sharper and often used on their own.
+- A problem whose optimum puts $P$ at the center of an equilateral triangle often has Erdős–Mordell equality as its hidden reason.
+
+## Applications
+Bounds linking the distances from a point to the vertices and to the sides, and extremal problems whose equality case is the equilateral center.
+
+## Contest profile
+An olympiad inequality, and the occasional AIME-adjacent bound; a sanity check for extremal configurations.
+`,
 
 "symmedian-lemoine": String.raw`## Why it works
 Reflecting the median over the angle bisector swaps the roles of the two adjacent sides, which turns the median's even split into the $c^2 : b^2$ ratio. Trig [[cevas-theorem|Ceva]] makes this precise: the median's two angles satisfy $\frac{\sin\angle BAM}{\sin\angle MAC} = \frac{c}{b}$ by the [[ratio-lemma|Ratio Lemma]], and reflecting inverts that quotient, so the symmedian's split carries the square.
@@ -1943,20 +2461,33 @@ For area, perpendicular diagonals make [[quadrilateral-diagonal-area|the diagona
 ## On contests
 The tell is a cyclic quadrilateral whose diagonals are stated to be perpendicular, or a figure where two chords visibly cross at a right angle. Once spotted, $a^2 + c^2 = b^2 + d^2 = 4R^2$ usually finishes a length question in one line, and the midpoint consequence handles the configuration questions.`,
 
-"incircle-excircle-homothety": String.raw`## Why it works
-The incircle and the $A$-excircle are both tangent to the two lines through $A$, so both are inscribed in the same angle and their centers both lie on the bisector from $A$. A dilation centered at $A$ therefore carries one to the other, and its ratio is the ratio of the radii, $\tfrac{r_a}{r}$. Since $r = \tfrac{\text{Area}}{s}$ and $r_a = \tfrac{\text{Area}}{s-a}$, that ratio is $\tfrac{s}{s-a}$, giving $\tfrac r{r_a} = \tfrac{s-a}s$.
+"incircle-excircle-homothety": String.raw`
+## Key forms
+- $\frac{r}{r_a} = \frac{s - a}{s}$ — the ratio of the homothety at $A$ that carries the incircle to the $A$-excircle is $\frac{s}{s - a}$
+- $A$, $D'$, $E$ are collinear — $D'$ is the point of the incircle diametrically opposite its touch point $D$ on $BC$, and $E$ is the touch point of the $A$-excircle
+- $BD = s - b$ and $BE = s - c$ — the two touch points are reflections in the midpoint of $BC$
+
+## Conditions
+$D$ is the incircle's touch point on $BC$ and $E$ the $A$-excircle's; the excircle is the one opposite $A$.
+
+## Why it works
+The incircle and the $A$-excircle are both tangent to the two lines through $A$, so both are inscribed in the same angle and their centers both lie on the bisector from $A$. A dilation centered at $A$ therefore carries one to the other, and its ratio is the ratio of the radii, $\frac{r_a}{r}$. Since $r = \frac{\text{Area}}{s}$ and $r_a = \frac{\text{Area}}{s - a}$, that ratio is $\frac{s}{s - a}$, giving $\frac r{r_a} = \frac{s - a}{s}$.
 
 Now ask where the incircle's touch point $D$ on $BC$ goes. A dilation maps a tangent line to a parallel tangent line, and the excircle's tangent parallel to $BC$ is not $BC$ itself but the far one. So $D$ does not map to $E$. What maps to $E$ is the point where the incircle meets the tangent parallel to $BC$ on the far side, which is $D'$, the antipode of $D$. Hence $A$, $D'$, and $E$ are collinear: they are a center of dilation and two corresponding points.
 
-A companion fact worth carrying alongside: $BD = s-b$ while $BE = s-c$, so $D$ and $E$ are reflections of one another in the midpoint of $BC$. That is [[incircle-excircle-touch|the touch-point symmetry]].
+The companion fact is $BD = s - b$ while $BE = s - c$, so $D$ and $E$ are reflections of one another in the midpoint of $BC$, as on [[incircle-excircle-touch|the touch-point page]].
 
-## How to use it
-Any time a problem draws a line from a vertex to the opposite excircle's touch point, this is the intended path: that line passes through the top of the incircle. Conversely, a line through $A$ and the incircle's far point is headed for $E$. Because $E$ is the Nagel cevian foot, the same picture is the standard way in to [[gergonne-nagel-points|the Nagel point]].
+## Useful observations
+- A line from a vertex to the opposite excircle's touch point passes through the top of the incircle; conversely a line through $A$ and the incircle's far point is headed for $E$.
+- Because $E$ is the foot of the Nagel cevian, the same picture is the standard way in to [[gergonne-nagel-points|the Nagel point]].
+- The ratio converts between $r$ and $r_a$ without computing the area, and it splits a length along $AE$ in the ratio $s - a$ to $s$.
 
-The ratio is the other half of the value. It converts between $r$ and $r_a$ without computing the area, and it is what lets a length along $AE$ be split in the ratio $s-a$ to $s$.
+## Applications
+Collinearities between a vertex, the incircle, and an excircle touch point, and conversions between $r$ and $r_a$.
 
-## On contests
-Uncommon on AMC and a recurring sight on hard AIME and olympiad geometry, where it usually appears as an unexplained collinearity to be proved, or as the bridge that turns a question about an excircle into one about the incircle. If a configuration has both circles and a cevian to a touch point, try this before coordinates.`,
+## Contest profile
+Uncommon on the AMC; on hard AIME and olympiad geometry it appears as an unexplained collinearity to be proved, or as the bridge from a question about an excircle to one about the incircle.
+`,
 
 "arbelos": String.raw`## Why it works
 Write $AB = 2a$ and $BC = 2b$, so the outer semicircle has radius $a+b$. The leftover area is $\tfrac\pi2(a+b)^2 - \tfrac\pi2a^2 - \tfrac\pi2b^2$, and expanding the square leaves $\pi ab$.
@@ -2126,10 +2657,18 @@ No problems here are tagged with it yet. On the AMC 12 it appears as a curve giv
 `,
 
 "shared-angle-area-ratio": String.raw`
+## Key forms
+- $\frac{[AXY]}{[ABC]} = \frac{AX \cdot AY}{AB \cdot AC}$ — for two triangles with equal angles at $A$
+- the same product holds when the angles are supplementary, $\angle XAY = 180^\circ - \angle BAC$
+- $\frac{[PAC]}{[PBD]} = \frac{PA \cdot PC}{PB \cdot PD}$ — two triangles meeting at a crossing point $P$, where the vertical angles are equal
+
+## Conditions
+The two triangles have angles that are equal or that add to $180^\circ$, and the ratio uses the sides enclosing those angles. This is the bird's-head model, named for the extended-side figure.
+
 ## Why it works
 Both areas are half a product of two sides times the sine of the angle between them, $$[AXY] = \tfrac12\,AX \cdot AY\sin\angle A, \qquad [ABC] = \tfrac12\,AB \cdot AC\sin\angle A,$$ so in the ratio the sines cancel and only the side ratios remain.
 
-The cancellation needs the sines to be equal, not the angles, and $\sin\theta = \sin(180^\circ - \theta)$. So supplementary angles work exactly as well as equal ones, and that single observation turns one picture into a family: a point extended past the vertex, or two triangles on opposite sides of a crossing, give the same product. In Chinese competition training it is called the bird's-head model, after the extended-side figure.
+The cancellation needs the sines to be equal, not the angles, and $\sin\theta = \sin(180^\circ - \theta)$. So supplementary angles work exactly as well as equal ones, and that single observation turns one picture into a family: a point extended past the vertex, or two triangles on opposite sides of a crossing, give the same product.
 
 A second proof needs no sines, only [[cevian-area-ratio|same-height base ratios]]: draw $BY$. Triangles $AXY$ and $ABY$ share the apex $Y$ and have their bases $AX$ and $AB$ on one line, and triangles $ABY$ and $ABC$ share the apex $B$ with bases $AY$ and $AC$ on one line. So $$\frac{[AXY]}{[ABC]} = \frac{[AXY]}{[ABY]} \cdot \frac{[ABY]}{[ABC]} = \frac{AX}{AB} \cdot \frac{AY}{AC}.$$
 
@@ -2137,37 +2676,69 @@ A second proof needs no sines, only [[cevian-area-ratio|same-height base ratios]
 
 The first step uses only the line through $A$ and $B$, so it works just as well when $X$ lies on $BA$ extended past $A$.
 
-## How to use it
-The four figures, each with equal or supplementary angles at the two vertices:
+## Useful observations
+- The four figures: $X$ on $AB$ and $Y$ on $AC$, the small triangle cut off at a corner; $X$ on $BA$ extended past $A$, where the angle is supplementary and the product is unchanged; two triangles meeting at a crossing point; and any two triangles whose angles are equal or supplementary.
+- Chained around a figure, one product per corner triangle, subtracted from the whole, it reaches the middle region.
+- Its relatives are the [[same-base-area-ratio|same-base ratio]], cevian area ratios, and the [[area-method|area method]].
 
-- $X$ on $AB$ and $Y$ on $AC$, the small triangle cut off at a corner.
-- $X$ on $BA$ extended past $A$, where $\angle XAY = 180^\circ - \angle BAC$ and the product is unchanged; this is the case most often missed.
-- Two triangles meeting at a crossing point $P$, where vertical angles are equal: $\frac{[PAC]}{[PBD]} = \frac{PA \cdot PC}{PB \cdot PD}$.
-- Two triangles anywhere whose angles happen to be equal or supplementary.
+## Applications
+Fractions of a triangle's area cut off by points on its sides, including points on extensions, and areas of triangles that share an angle.
 
-With $AX = \frac13AB$ and $AY = \frac34AC$, $[AXY] = \frac13 \cdot \frac34[ABC] = \frac14[ABC]$. Chain it around a figure, one product per corner triangle, and subtract from the whole to reach the middle region. Its relatives are the [[same-base-area-ratio|same-base ratio]], cevian area ratios, and the [[area-method|area method]].
-
-## On contests
-Four problems here, three of them AIME, none by it alone; two start from an [[angle-bisector-theorem|angle bisector]], whose side ratio feeds the product. It is everywhere on AMC 10 and 12 as "points on two sides, what fraction of the area", and it is the standard first move in AIME area dissections.
+## Contest profile
+Everywhere on the AMC 10 and 12 as points on two sides asking for a fraction of the area, and the standard first step in AIME area dissections, often fed by an [[angle-bisector-theorem|angle bisector]]'s side ratio.
 `,
 
-"exradii": String.raw`## Why it works
-The excenter opposite $A$ sits at the intersection of the external bisectors from $B$ and $C$; joining it to the vertices splits the triangle with signed areas, giving $A = r_a(s - a)$ in place of $A = rs$. The tangent-length bookkeeping mirrors the incircle's, but the tangent length from $A$ is now $s$ itself.
+"exradii": String.raw`
+## Key forms
+- $r_a = \frac{A}{s - a} = s\tan\frac A2$ — the radius of the excircle opposite $A$, mirroring $r = \frac As$
+- $\frac1r = \frac1{r_a} + \frac1{r_b} + \frac1{r_c}$ — the reciprocals of the exradii add up to the reciprocal of the inradius
+- $r\,r_ar_br_c = A^2$ — the product of the four radii is the square of the area
+- $r_a + r_b + r_c = 4R + r$ — the exradii sum
+- $r_a = 4R\sin\frac A2\cos\frac B2\cos\frac C2$ — the trigonometric form
+- $\frac{r}{r_a} = \frac{s - a}{s}$ — the ratio of the homothety at $A$ carrying the incircle to the $A$-excircle
 
-## How to use it
-Any incircle technique has an excircle twin: $r_a = \frac{A}{s-a} = s\tan\frac{A}{2}$, touch point of the $A$-excircle on $BC$ mirrors the incircle's touch point across the midpoint of $BC$. Multiplying the four radius formulas gives $r \, r_a r_b r_c = A^2$ — a slick identity for "product of radii" problems.
+## Conditions
+The $A$-excircle is tangent to side $a$ and to the extensions of the other two sides; $s$ is the semiperimeter and $A$ the area, with angles $A$, $B$, $C$ written by their vertices.
 
-## On contests
-AIME problems about circles tangent to one side and two extensions are excircle problems in disguise. The mirror-image touch point fact and $r r_a r_b r_c = A^2$ both appear as key steps; the [[incenter-excenter-lemma|incenter-excenter lemma]] connects $I_A$ to arc midpoints for the hardest versions.`,
+## Why it works
+The excenter opposite $A$ sits at the intersection of the external bisectors from $B$ and $C$; joining it to the vertices splits the triangle with signed areas, giving $A = r_a(s - a)$ in place of $A = rs$. The tangent-length bookkeeping mirrors the incircle's, but the tangent length from $A$ is now $s$ itself, and that gives $r_a = s\tan\frac A2$ while $r = (s - a)\tan\frac A2$.
 
-"ratio-lemma": String.raw`## Why it works
-Apply the Law of Sines in triangles $ABD$ and $ACD$: the sides $BD$ and $DC$ are proportional to $AB\sin\angle BAD$ and $AC \sin\angle DAC$ (the angles at $D$ are supplementary, so their sines agree and cancel).
+## Useful observations
+- Any incircle technique has an excircle twin; the touch point of the $A$-excircle on $BC$ mirrors the incircle's touch point across the midpoint of $BC$.
+- Multiplying the four radius formulas, $r = \frac As$, $r_a = \frac A{s - a}$, $r_b = \frac A{s - b}$, $r_c = \frac A{s - c}$, gives $r\,r_ar_br_c = \frac{A^4}{s(s - a)(s - b)(s - c)} = A^2$ by Heron's Formula.
+- The [[incenter-excenter-lemma|incenter-excenter lemma]] connects the excenter $I_A$ to the arc midpoints of the circumcircle.
 
-## How to use it
-The all-purpose cevian converter between side data and angle data. Special cases to recognize instantly: bisector (sines equal → Angle Bisector Theorem), median ($BD = DC$ → $\frac{\sin\angle BAD}{\sin\angle DAC} = \frac{AC}{AB}$), altitude and symmedian similarly. Multiply three of these around the triangle and Ceva's trig form appears.
+## Applications
+Excircle radii and tangent lengths, and identities between the inradius, the exradii, and the area.
 
-## On contests
-The clean way through AIME problems that give one cevian angle and ask for a length split (or vice versa). Worth drilling until the statement writes itself — it replaces a page of law-of-sines bookkeeping.`,
+## Contest profile
+AIME problems about a circle tangent to one side and the extensions of the other two are excircle problems in disguise; the mirror-image touch point and $r\,r_ar_br_c = A^2$ appear as key steps.
+`,
+
+"ratio-lemma": String.raw`
+## Key forms
+- $\dfrac{BD}{DC} = \dfrac{AB}{AC} \cdot \dfrac{\sin\angle BAD}{\sin\angle DAC}$ — for any cevian $AD$
+- bisector: the sine ratio is $1$, giving $\frac{BD}{DC} = \frac{AB}{AC}$
+- median: $BD = DC$, giving $\frac{\sin\angle BAD}{\sin\angle DAC} = \frac{AC}{AB}$
+
+## Conditions
+$D$ is a point of the side $BC$ (or its extension, with the usual care about signs), and the angles are the two parts into which $AD$ divides angle $A$.
+
+## Why it works
+Triangles $ABD$ and $ACD$ share the altitude from $A$ onto line $BC$, and also the side $AD$, so $$\frac{BD}{DC} = \frac{[ABD]}{[ACD]} = \frac{\tfrac12\,AB \cdot AD \sin\angle BAD}{\tfrac12\,AC \cdot AD \sin\angle DAC} = \frac{AB \sin\angle BAD}{AC \sin\angle DAC}.$$
+
+## Useful observations
+- It is the all-purpose converter between side data and angle data for a cevian.
+- For the altitude the sine ratio is $\frac{\cos B}{\cos C}$, and for the symmedian it makes $\frac{BD}{DC} = \left(\frac{AB}{AC}\right)^2$.
+- Multiplying the three instances around a triangle gives [[trig-ceva|trigonometric Ceva]].
+- It replaces a page of Law of Sines bookkeeping in problems that give one cevian angle and ask for a length split.
+
+## Applications
+Splits of a side from the angles a cevian makes, and angles from a given split.
+
+## Contest profile
+The clean way through AIME problems that give one cevian angle and ask for a length ratio, or the reverse.
+`,
 
 "incenter-excenter-lemma": String.raw`## Why it works
 Angle chase: $\angle IBM = \angle IBC + \angle CBM = \frac{B}{2} + \frac{A}{2}$ (the inscribed angle $\angle CBM$ equals $\angle CAM = \frac{A}{2}$), while $\angle BIM = \frac{A}{2} + \frac{B}{2}$ as the exterior angle of $\triangle ABI$. So $\triangle MBI$ is isosceles: $MB = MI$. Symmetric arguments give $MC$ and the excenter.
@@ -2243,7 +2814,7 @@ Inequalities in the sides of a triangle, such as $abc \ge (a + b - c)(b + c - a)
 Prove that $abc \ge (a + b - c)(b + c - a)(c + a - b)$ for any triangle. Since $a + b - c = 2z$, $b + c - a = 2x$ and $c + a - b = 2y$, the claim is $(y + z)(z + x)(x + y) \ge 8xyz$. By AM-GM, $y + z \ge 2\sqrt{yz}$, and multiplying the three such bounds gives exactly that, with equality for the equilateral triangle.
 
 ## Why it works
-The incircle touches the three sides, and the two tangent segments from a vertex are equal. Calling them $x$, $y$, $z$ for the vertices $A$, $B$, $C$, each side is the sum of the two tangent lengths at its ends, as the figure on this card shows. Adding all three sides gives $2(x + y + z) = 2s$, so $x = s - a$ and so on.
+The incircle touches the three sides, and the two tangent segments from a vertex are equal. Calling them $x$, $y$, $z$ for the vertices $A$, $B$, $C$, each side is the sum of the two tangent lengths at its ends. Adding all three sides gives $2(x + y + z) = 2s$, so $x = s - a$ and so on.
 
 Conversely, any positive $x$, $y$, $z$ give numbers $y + z$, $z + x$, $x + y$ that satisfy all three triangle inequalities, since, for example, $(y + z) + (z + x) - (x + y) = 2z > 0$. So triangles and positive triples correspond exactly, and Heron's Formula becomes $\sqrt{s(s - a)(s - b)(s - c)} = \sqrt{(x + y + z)xyz}$.
 
@@ -2302,23 +2873,55 @@ Once a triangle is coordinatized, write $I$ down directly — no bisector inters
 ## On contests
 The quiet workhorse of coordinate solutions to incircle problems: AIME problems asking for incenter-related lengths in coordinatized triangles reduce to plugging into this formula plus the distance formula. Also the entry point to barycentric coordinates for students heading toward olympiad.`,
 
-"law-of-tangents": String.raw`## Why it works
-From the Law of Sines, $\frac{a-b}{a+b} = \frac{\sin A - \sin B}{\sin A + \sin B}$; sum-to-product turns numerator and denominator into $2\cos\frac{A+B}{2}\sin\frac{A-B}{2}$ and $2\sin\frac{A+B}{2}\cos\frac{A-B}{2}$, whose ratio is the tangent quotient.
+"law-of-tangents": String.raw`
+## Key forms
+- $\dfrac{a - b}{a + b} = \dfrac{\tan\frac{A - B}{2}}{\tan\frac{A + B}{2}}$ — the sum and difference of two sides against the half-difference and half-sum of their opposite angles
+- $\dfrac{A + B}{2} = 90^\circ - \dfrac C2$ — so the denominator is $\cot\frac C2$
 
-## How to use it
-Best when a problem gives $a + b$ and $a - b$ (or their ratio) together with $C$ — since $\frac{A+B}{2} = 90^\circ - \frac{C}{2}$ is then known, the formula yields $\frac{A-B}{2}$ and hence both angles. An alternative to the Law of Cosines that avoids quadratics in exactly this data pattern.
+## Conditions
+$a$ and $b$ are two sides of a triangle and $A$, $B$ the opposite angles.
 
-## On contests
-Occasional AIME trig; also handy for "the sides differ by 2 and the included angle is..." setups. Knowing it exists prevents a mechanical but messy cosine-rule grind.`,
+## Why it works
+By the Law of Sines $\frac{a - b}{a + b} = \frac{\sin A - \sin B}{\sin A + \sin B}$. Sum-to-product turns the numerator into $2\cos\frac{A + B}{2}\sin\frac{A - B}{2}$ and the denominator into $2\sin\frac{A + B}{2}\cos\frac{A - B}{2}$, whose ratio is the tangent quotient.
 
-"napoleons-theorem": String.raw`## Why it works
-Cleanest with complex numbers: the center of an outward equilateral on segment $pq$ is a fixed linear combination of $p$ and $q$ involving a primitive sixth root of unity; the equilateral condition for the three centers reduces to the identity $1 + \omega + \omega^2 = 0$. Rotation composition gives a synthetic proof.
+There is also a picture. Assume $a > b$, draw the circle about $C$ through $A$, and let it meet line $BC$ at $D$ and $E$, with $D$ between $B$ and $C$. Then $BD = a - b$ and $BE = a + b$, and $\angle DAE = 90^\circ$ because it stands on a diameter. The Law of Sines in triangles $ABD$ and $ABE$ turns $\frac{BD}{BE}$ into $\tan\frac C2 \tan\frac{A - B}{2}$, and $\tan\frac C2 = \cot\frac{A + B}{2}$.
 
-## How to use it
-The theorem itself is mostly recognition ("centers of erected equilaterals" ⟹ equilateral, no computation needed). The area formulas — outer $= \frac{\sqrt3}{24}\sum a^2 + \frac{[ABC]}{2}$, and outer minus inner $= [ABC]$ — turn qualitative setups into numbers. The erected-triangle apexes themselves (not centers) connect to the [[fermat-point|Fermat point]]: segments from each apex to the opposite vertex concur there with equal lengths.
+## Useful observations
+- It is an alternative to the Law of Cosines for data of the form $a \pm b$ together with $C$, and it avoids a quadratic.
+- Since $\frac{A + B}{2}$ is known from $C$, the formula yields $\frac{A - B}{2}$ and hence both angles, after which the Law of Sines gives the remaining side.
 
-## On contests
-Occasional AMC/AIME cameo, and the Fermat-point connection makes the configuration worth knowing cold: erected equilateral triangles almost always signal either Napoleon structure or [[rotation-trick|the rotation trick]].`,
+## Applications
+Triangles given the sum or difference of two sides and the included angle.
+
+## Contest profile
+An occasional AIME trigonometry shortcut, handy for setups like "the sides differ by $2$ and the included angle is ...".
+`,
+
+"napoleons-theorem": String.raw`
+## Key forms
+- the centers of the equilateral triangles erected on the three sides of any triangle, all outward or all inward, form an equilateral triangle
+- $[\text{outer}] = \dfrac{\sqrt3}{24}\left(a^2 + b^2 + c^2\right) + \dfrac{[ABC]}{2}$ — the outer Napoleon triangle's area
+- $[\text{inner}] = \dfrac{\sqrt3}{24}\left(a^2 + b^2 + c^2\right) - \dfrac{[ABC]}{2}$ — the inner one's, so outer minus inner is $[ABC]$
+
+## Conditions
+All three equilateral triangles are erected on the same side of their base lines, all outward from $ABC$ or all inward.
+
+## Why it works
+Complex numbers make it short. Let $\omega = e^{2\pi i/3}$, and let $O_c$ be the center of the equilateral triangle on $AB$: rotating $A$ about $O_c$ by $120^\circ$ gives $B$, so $B - O_c = \omega(A - O_c)$ and $O_c = \frac{B - \omega A}{1 - \omega}$. The same rotation direction gives $O_a = \frac{C - \omega B}{1 - \omega}$ and $O_b = \frac{A - \omega C}{1 - \omega}$. Then $$(1 - \omega)\left(O_c + \omega^2O_a + \omega O_b\right) = (B - \omega A) + \omega^2(C - \omega B) + \omega(A - \omega C) = 0,$$ using $\omega^3 = 1$. The relation $O_c + \omega^2O_a + \omega O_b = 0$ is exactly the condition for $O_c, O_a, O_b$ to be an equilateral triangle.
+
+For the area, the distance from $C$ to each adjacent center is $\frac{a}{\sqrt3}$ or $\frac{b}{\sqrt3}$, and the angle between them at $C$ is $C + 60^\circ$ (outward). The Law of Cosines gives $$O_aO_b^2 = \frac{a^2 + b^2}{3} - \frac{2ab}{3}\cos(C + 60^\circ) = \frac{a^2 + b^2 + c^2}{6} + \frac{2}{\sqrt3}[ABC],$$ using $ab\cos C = \frac{a^2 + b^2 - c^2}{2}$ and $ab\sin C = 2[ABC]$. An equilateral triangle of that side has the outer area above, and the inner case replaces $+$ by $-$.
+
+## Useful observations
+- The apexes of the erected triangles, not the centers, connect to the [[fermat-point|Fermat point]]: the segments from each apex to the opposite vertex have equal lengths and concur there.
+- Erected equilateral triangles almost always signal either Napoleon's structure or [[rotation-trick|the rotation trick]].
+- No computation is needed to see that the centers form an equilateral triangle; the area formulas turn the qualitative statement into numbers.
+
+## Applications
+Equilateral triangles built on the sides of a triangle, and the area or side length of the resulting triangle of centers.
+
+## Contest profile
+An occasional AMC and AIME cameo, and the Fermat-point connection makes the configuration worth knowing.
+`,
 
 "cyclic-quad-radius": String.raw`## Why it works
 Split the quadrilateral by a diagonal and apply $R = \frac{(\text{side products})}{4 \cdot \text{area}}$ to each triangle — both triangles share the circumcircle. Combining the two expressions with Ptolemy's relation between the diagonals produces the symmetric three-product form.
@@ -2329,29 +2932,75 @@ For a cyclic quadrilateral with known sides: Brahmagupta gives $K$, then this gi
 ## On contests
 The finishing move for "cyclic quadrilateral with sides 4, 5, 6, 7 — find the circumradius" questions, which otherwise require solving for a diagonal first. The diagonal formulas hiding in the same products are equally worth caching.`,
 
-"van-aubel": String.raw`## Why it works
-Complex numbers: the center of the square erected outward on segment from $p$ to $q$ is $\frac{p+q}{2} + \frac{i}{2}(q-p)$. Writing the two center-difference vectors and simplifying, one is exactly $i$ times the other — perpendicular and equal in one stroke.
+"van-aubel": String.raw`
+## Key forms
+- if squares are erected outward on the four sides of any quadrilateral, the two segments joining the centers of opposite squares are equal in length and perpendicular
+- $c = \frac{p + q}{2} + \frac i2(q - p)$ — the center of the square erected outward on the side from $p$ to $q$, in complex numbers, for vertices listed clockwise
 
-## How to use it
-Recognition first: squares erected on the sides of a quadrilateral ⟹ the opposite-center segments are congruent and perpendicular, no computation. The complex-number center formula is independently useful for any "erect a square, find a point" coordinate problem.
+## Conditions
+The squares are built outward; the quadrilateral may be non-convex and may even be degenerate.
 
-## On contests
-The quadrilateral cousin of [[napoleons-theorem|Napoleon]] — appears in AMC/AIME-adjacent problems about squares built on sides. Degenerate cases are cute and testable: collapse one side to a point and it still holds.`
+## Why it works
+In complex numbers the center of the square erected outward on the segment from $p$ to $q$ is $\frac{p + q}{2} + \frac i2(q - p)$. Writing the two center-difference vectors and simplifying, one comes out exactly $i$ times the other, which is perpendicular and equal in length in one stroke.
+
+## Useful observations
+- The theorem is the quadrilateral cousin of [[napoleons-theorem|Napoleon's Theorem]], which builds equilateral triangles on the sides of a triangle.
+- The center formula alone is useful for any coordinate problem that erects a square on a segment and asks for a point.
+- Collapsing one side to a point leaves the statement true, which makes a good test of a proof or a computation.
+
+## Applications
+Squares built on the sides of a figure, and perpendicular and equal segments between centers.
+
+## Contest profile
+Appears in AMC and AIME-adjacent problems about squares built on sides, where the center formula in complex numbers or coordinates does the work.
+`
 
 });
 
 Object.assign(window.MATH_DETAILS, {
 
-"intercept-theorem": String.raw`## Why it works
-$DE \parallel BC$ makes $\triangle ADE \sim \triangle ABC$ (equal corresponding angles), so $\frac{AD}{AB} = \frac{AE}{AC}$; subtracting from 1 converts whole-side ratios to the segment form $\frac{AD}{DB} = \frac{AE}{EC}$. The three-parallel-lines version follows by two applications.
+"intercept-theorem": String.raw`
+## Key forms
+- $DE \parallel BC \iff \frac{AD}{DB} = \frac{AE}{EC}$ — a line parallel to one side of a triangle cuts the other two sides in the same ratio, and the converse
+- $\frac{AD}{AB} = \frac{AE}{AC} = \frac{DE}{BC}$ — the whole-side form of the same statement
+- three parallel lines cut any two transversals in the same ratio, $\frac{AB}{BC} = \frac{A'B'}{B'C'}$
+- $AD = DB$ — the midsegment is the case of equal pieces
 
-## How to use it
-The fastest ratio-transfer tool: one parallel line moves a known ratio from one side of a triangle to another without similarity bookkeeping. The converse certifies parallelism from ratios — the standard way to prove two segments are parallel in ratio-heavy configurations. Watch the two ratio forms (segment-to-segment vs. segment-to-whole) — mixing them is the classic error.
+## Conditions
+$D$ is on line $AB$ and $E$ on line $AC$, both on the same side of $A$ in the converse. The two ratio forms are different statements: segment to segment, $\frac{AD}{DB}$, and segment to whole side, $\frac{AD}{AB}$.
 
-## On contests
-MATHCOUNTS/AMC 10 workhorse for "parallel line cuts the sides" problems, and the silent first step in many mass-point and area-ratio solutions.`,
+## Why it works
+$DE \parallel BC$ makes $\triangle ADE \sim \triangle ABC$, since the corresponding angles are equal, so $\frac{AD}{AB} = \frac{AE}{AC}$. Subtracting each ratio from $1$ converts the whole-side form into the segment form: $$\frac{DB}{AB} = 1 - \frac{AD}{AB} = 1 - \frac{AE}{AC} = \frac{EC}{AC}, \qquad\text{so}\qquad \frac{AD}{DB} = \frac{AE}{EC}.$$
+
+For the converse, draw the line through $D$ parallel to $BC$; by what was just shown it meets $AC$ at the point dividing $AC$ in the ratio $\frac{AD}{DB}$, which is $E$, so that line is $DE$.
+
+Three parallel lines meeting two transversals follow by two applications: draw through one intersection point a line parallel to the second transversal, which makes a triangle with a parallel to its side.
+
+{{figure:lines}}
+
+## Useful observations
+- One parallel line moves a known ratio from one side of a triangle to another without any similarity bookkeeping.
+- The converse certifies parallelism from ratios, the standard proof that two segments are parallel in a ratio-heavy figure.
+- Mixing the two ratio forms, segment to segment against segment to whole, is the classic error.
+
+## Applications
+Ratios along the sides of triangles cut by a parallel line, and proofs that segments are parallel.
+
+## Contest profile
+A MATHCOUNTS and AMC 10 workhorse for parallel lines cutting the sides of a triangle, and the silent first step in many mass-point and area-ratio solutions.
+`,
 
 "trapezoid-special-segments": String.raw`
+## Key forms
+- $\frac{a + b}{2}$ — the midsegment, joining the midpoints of the legs: the arithmetic mean of the bases $a$ and $b$
+- $\frac{2ab}{a + b}$ — the segment through the intersection of the diagonals: the harmonic mean
+- $\sqrt{ab}$ — the segment cutting the trapezoid into two similar trapezoids: the geometric mean
+- $\sqrt{\frac{a^2 + b^2}{2}}$ — the segment halving the area: the quadratic mean
+- harmonic $\le$ geometric $\le$ arithmetic $\le$ quadratic — the order in which the segments lie, from the short base toward the long one
+
+## Conditions
+The segments are parallel to the bases and have their ends on the legs; $a$ and $b$ are the lengths of the parallel sides.
+
 ## Why it works
 Each segment is cut off by the legs, so each length comes from one similarity or one area equation.
 
@@ -2363,13 +3012,15 @@ If a segment $x$ cuts the trapezoid into two similar trapezoids, corresponding s
 
 For the area, extend the legs to meet. The triangles with bases $a$, $x$, and $b$ have areas proportional to $a^2$, $x^2$, and $b^2$, so halving the trapezoid means $x^2 - a^2 = b^2 - x^2$, and $x^2 = \frac{a^2 + b^2}{2}$. The midsegment averages the bases, as for any [[trapezoid-parallelogram-areas|trapezoid]].
 
-## How to use it
-Identify which segment the problem describes, through the diagonals, cutting into similar pieces, halving the area, or joining the midpoints of the legs, and quote the matching mean. The order HM $\le$ GM $\le$ AM $\le$ QM places them from the short base toward the long one, a quick check on any answer.
+## Useful observations
+- The order harmonic $\le$ geometric $\le$ arithmetic $\le$ quadratic is a quick check on any answer.
+- Along the height, the diagonals' crossing divides it in the ratio $a : b$ from the short base, and the midsegment halves it.
 
-Distances along the height follow the same similarities: the diagonals' crossing divides the height in the ratio $a : b$ from the short base, and the midsegment halves it.
+## Applications
+Lengths of segments parallel to the bases of a trapezoid that are described by a similarity, an area condition, or the diagonals.
 
-## On contests
-Two problems here, both AIME, neither solved by it alone: one combines the midsegment with the trapezoid's area and then asks for the area-halving segment, and the other finds a segment lying on the midsegment through [[perp-to-angle-bisector|perpendiculars to angle bisectors]]. The AMC asks for each of the four directly.
+## Contest profile
+The AMC asks for each of the four directly; on the AIME they appear as steps combined with the trapezoid's area or with perpendiculars to angle bisectors.
 `,
 
 "circular-segment": String.raw`
@@ -2568,7 +3219,7 @@ Three standard reads: the angle between two vectors ($\cos\theta = \frac{\vec{u}
 The clean way to handle angle and perpendicularity conditions once a figure is on coordinates — often faster than slopes because it dodges the vertical-line special case and extends straight to 3D. On AIME, the dot/cross product pair turns spatial angle and area questions into arithmetic.`,
 
 "cavalieris-principle": String.raw`## Key forms
-- $V=\int A(h)\,dh$ — volume depends only on the cross-section area function, so matching $A(h)$ at every height matches the volume
+- $V = \displaystyle\int A(h)\,\mathrm{d}h$ — volume depends only on the cross-section area function, so matching $A(h)$ at every height matches the volume
 - $V=Bh$ survives shearing — an oblique prism or cylinder has the same volume as the upright one, because no slice changes as you shear it
 - sphere against cylinder-minus-two-cones — matching slice areas at every height is the classical route to $\tfrac43\pi r^3$ with no integration
 
@@ -2815,6 +3466,8 @@ An ordinary angle chase splits into cases because the inscribed angle rule says 
 
 The price is information. A directed angle cannot tell an angle from its supplement or describe which side of a line a point lies on, and it says nothing about lengths. It proves incidences, which is exactly what most synthetic olympiad problems ask for.
 
+In undirected form the parallel rule is the familiar test that two interior angles on the same side of a transversal add to $180^\circ$, the fact on [[parallel-by-angle-sum|Proving Lines Parallel by Angle Sums]]; the directed form says the same thing with no picture of which side the angles are on.
+
 ## Formulas it uses
 - [[concyclicity-tests]]: equal angles over a segment, here in directed form, prove that four points are concyclic.
 - [[inscribed-angle-theorem]]: the inscribed angle rule that directed angles state without cases.
@@ -2922,7 +3575,7 @@ Whenever a constraint reads $PA = k \cdot PB$, the point lives on a known circle
 AIME locus and "ratio of distances" problems, and olympiad configurations with isogonal conjugates, symmedians, and isodynamic points. Keep it distinct from Apollonius's Theorem (the median-length relation) — same name, unrelated result.`,
 
 "pappus-centroid": String.raw`## Why it works
-Slice the revolving region into thin strips parallel to the axis. A strip of area $dA$ at distance $\rho$ sweeps a ring of volume $2\pi\rho\,dA$, so $V = 2\pi\int \rho\,dA = 2\pi\bar\rho A$, where $\bar\rho = \frac{\int \rho\,dA}{A}$ is precisely the centroid's distance $d$ from the axis. The identical argument on a curve of length $L$ gives the surface $S = 2\pi d\,L$. Once you know the centroid, no integration remains.
+Slice the revolving region into thin strips parallel to the axis. A strip of area $\mathrm{d}A$ at distance $\rho$ sweeps a ring of volume $2\pi\rho\,\mathrm{d}A$, so $V = 2\pi\int \rho\,\mathrm{d}A = 2\pi\bar\rho A$, where $\bar\rho = \frac{\int \rho\,\mathrm{d}A}{A}$ is precisely the centroid's distance $d$ from the axis. The identical argument on a curve of length $L$ gives the surface $S = 2\pi d\,L$. Once you know the centroid, no integration remains.
 
 ## How to use it
 Turn any solid or surface of revolution into a centroid lookup. For symmetric regions the centroid is free — a disk's is its center — giving the torus formulas $V = 2\pi^2 R r^2$ and $S = 4\pi^2 R r$ in one line. For composite regions, find the centroid as the area-weighted average of the parts. It also runs backward: a measured volume of revolution pins an unknown centroid distance.
@@ -2934,49 +3587,109 @@ Torus and solid-of-revolution problems on the AIME and beyond. It replaces a rev
 
 Object.assign(window.MATH_DETAILS, {
 
-"projection-formula": String.raw`## Why it works
-Drop the altitude from $A$ to $BC$ at foot $H$. In the two right triangles, $BH = c\cos B$ and $HC = b\cos C$, and $a = BH + HC$. The other two identities are the same construction from $B$ and $C$.
+"projection-formula": String.raw`
+## Key forms
+- $a = b\cos C + c\cos B$ — a side is the sum of the projections of the other two onto it
+- $b = c\cos A + a\cos C$ and $c = a\cos B + b\cos A$ — the same statement at the other two sides
 
-## How to use it
-It's the fastest linear relation between a side and its two adjacent base angles — no squaring. Adding the three, or eliminating cosines between them, reproduces the Law of Cosines, so reach for projection when you want the cosines to appear linearly rather than quadratically.
-
-The same accounting works on a path rather than a triangle: project every segment of a polyline onto one direction and the projections add to the net displacement in that direction. When every segment happens to make the same angle $\\theta$ with that direction, the sum collapses to (total path length)$\\cdot\\cos\\theta$, so a zigzag with a known total length and a known net displacement gives up its angle immediately.
-
-## On contests
-A cheap AMC 12 / AIME identity, handy inside trig-bash and whenever an altitude foot splits a side. Underused because it looks too elementary to matter.`,
-
-"triangle-half-angle-identities": String.raw`## Key forms
-- $r = (s-a)\tan\frac{A}{2}$ — the tangent length from $A$ times the half-angle tangent; the fastest bridge between an angle and the inradius
-- $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$ — inradius straight from the angles and the circumradius, with no side lengths
-- $\sin\frac A2 = \sqrt{\dfrac{(s-b)(s-c)}{bc}}$, $\cos\frac A2 = \sqrt{\dfrac{s(s-a)}{bc}}$ — half-angles from the sides alone, which is the Law of Cosines put through the half-angle formula
-- $\cos A + \cos B + \cos C = 1 + \dfrac{r}{R}$ — turns a cosine sum into the $r/R$ ratio, and is the usual route into Euler's inequality $R \ge 2r$
+## Conditions
+$a$, $b$, $c$ are the sides opposite $A$, $B$, $C$. The formulas hold for every triangle: when an angle is obtuse its cosine is negative, which accounts for an altitude foot that falls outside the side.
 
 ## Why it works
-All follow from $a = 2R\sin A$ and the incircle tangent-length picture. Area $= \frac{abc}{4R} = 2R^2\sin A\sin B\sin C$; combining $r = (s-a)\tan\frac A2$ with the half-angle formulas gives $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$; and $\sin\frac A2 = \sqrt{(s-b)(s-c)/bc}$ is the half-angle formula applied to $\cos A = \frac{b^2+c^2-a^2}{2bc}$.
+Drop the altitude from $A$ to line $BC$ at the foot $H$. In the two right triangles, $BH = c\cos B$ and $HC = b\cos C$, and $a = BH + HC$. The other two identities are the same construction from $B$ and from $C$. When $B$ is obtuse the foot lies beyond $B$, and the negative cosine makes $c\cos B$ the signed length that keeps the sum equal to $a$.
 
-## How to use it
-These convert freely between a triangle's sides and its $(R, r, \text{angles})$ data — given $R$ and $r$, or the angles, they hand you area, exradii, and side ratios. The two to memorize are $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$ and $\cos A + \cos B + \cos C = 1 + \frac rR$.
+## Useful observations
+- It is the quickest linear relation between a side and the two adjacent base angles, with no squaring.
+- Multiplying the three identities by $a$, $b$, $c$ and combining them reproduces the Law of Cosines, so the cosines enter linearly here and quadratically there.
+- The same accounting works on a path rather than a triangle: project every segment of a polyline onto one direction and the projections add to the net displacement in that direction. When every segment makes the same angle $\theta$ with that direction, the sum is the total path length times $\cos\theta$, so a zigzag with a known length and net displacement gives up its angle.
 
-## On contests
-AIME triangle problems that give you $R$ and $r$, and olympiad identities. Pair them with the incircle/excircle tangent lengths and the Law of Sines.`,
+## Applications
+Altitude feet splitting a side, trigonometric bashing, and paths measured along one direction.
 
-"mollweides-formula": String.raw`## Why it works
-From $a = 2R\sin A$ etc., $\frac{a+b}{c} = \frac{\sin A + \sin B}{\sin C}$; sum-to-product on top and $\sin C = 2\sin\frac C2\cos\frac C2$ with $A + B = \pi - C$ collapse it to $\frac{\cos\frac{A-B}{2}}{\sin\frac C2}$. The $a-b$ version is the companion.
+## Contest profile
+A cheap AMC and AIME identity, handy inside trigonometric computations and whenever an altitude foot splits a side. It is underused because it looks too elementary to matter.
+`,
 
-## How to use it
-Because each formula uses all three sides and all three angles, they are the standard check on a solved triangle — plug in and both sides must agree, catching any arithmetic slip. Dividing the two Mollweide relations gives the Law of Tangents.
+"triangle-half-angle-identities": String.raw`
+## Key forms
+- $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$ — the inradius from the angles and the circumradius alone
+- $\cos\frac A2\cos\frac B2\cos\frac C2 = \frac{s}{4R}$ — the semiperimeter from the same data
+- $r = (s - a)\tan\frac A2$ — the tangent length from $A$ times the half-angle tangent, the bridge between an angle and the inradius
+- $\sin\frac A2 = \sqrt{\dfrac{(s - b)(s - c)}{bc}}$, $\cos\frac A2 = \sqrt{\dfrac{s(s - a)}{bc}}$ — half-angles from the sides alone
+- $\cos A + \cos B + \cos C = 1 + \dfrac rR$ and $\sin A + \sin B + \sin C = \dfrac sR$ — the full-angle sums
 
-## On contests
-Olympiad-tier, mainly a consistency check or a bridge to the Law of Tangents. Good to recognize; seldom the quickest route.`,
+## Conditions
+$A$, $B$, $C$ are the angles of a triangle with opposite sides $a$, $b$, $c$, semiperimeter $s$, inradius $r$, and circumradius $R$. Every half-angle is acute, so the square roots are positive.
 
-"morleys-theorem": String.raw`## Why it works
-Intersecting adjacent angle trisectors yields three points; a trigonometric computation — cleanest run backward, starting from an equilateral triangle and reconstructing the original angles — shows they are mutually equidistant. The Morley triangle has side $8R\sin\frac A3\sin\frac B3\sin\frac C3$.
+## Why it works
+The tangent length from $A$ to the incircle is $s - a$, and the incenter, the touch point, and $A$ form a right triangle with angle $\frac A2$ at $A$ and opposite leg $r$, so $r = (s - a)\tan\frac A2$. The half-angle formulas applied to $\cos A = \frac{b^2 + c^2 - a^2}{2bc}$ give the square-root forms.
 
-## How to use it
-Treat it as a result to recognize, not a computational tool — angle trisection makes it nearly useless for solving. If a configuration literally builds adjacent-trisector intersections, the equilateral conclusion (and the side formula) is the payoff.
+Multiply the three sine forms: $$\prod \sin\tfrac A2 = \frac{(s - a)(s - b)(s - c)}{abc}.$$ By Heron's Formula $[ABC]^2 = s(s - a)(s - b)(s - c)$ and $[ABC] = rs$, so $(s - a)(s - b)(s - c) = r^2s$, and with $[ABC] = \frac{abc}{4R}$ the product is $\frac{r \cdot rs}{abc} = \frac{r}{4R}$. The same multiplication of the cosine forms gives $\frac{s[ABC]}{abc} = \frac{s}{4R}$.
 
-## On contests
-Famous and beautiful, but essentially never the intended method — a curiosity kept for completeness. Reach for ordinary angle-chasing or trig instead.`,
+The sine sum is immediate: $\sin A = \frac{a}{2R}$, so $\sin A + \sin B + \sin C = \frac{a + b + c}{2R} = \frac sR$. The cosine sum comes from $\cos A + \cos B + \cos C = 1 + 4\sin\frac A2\sin\frac B2\sin\frac C2$ with the product replaced by $\frac{r}{4R}$.
+
+## Useful observations
+- Since $\cos A + \cos B + \cos C \le \frac32$, the cosine-sum form gives $\frac rR \le \frac12$, which is Euler's Inequality $R \ge 2r$, with equality only for the equilateral triangle.
+- The companions $[ABC] = 2R^2\sin A\sin B\sin C$ and $r_a + r_b + r_c = 4R + r$ come from the same substitutions, and the exradius sum is on [[exradii|the exradii card]].
+- Each identity moves freely between sides and the data $(R, r, \text{angles})$, so a problem that gives some of these can be turned entirely into algebra.
+
+## Applications
+Triangles given by $R$, $r$, and a symmetric expression in the angles, and bounds on $\frac rR$.
+
+## Contest profile
+AIME triangle problems that supply $R$ and $r$ and ask about angle sums or products, and olympiad inequalities in $\frac rR$. The Law of Sines and the incircle tangent lengths are the usual partners.
+`,
+
+"mollweides-formula": String.raw`
+## Key forms
+- $\dfrac{a + b}{c} = \dfrac{\cos\frac{A - B}{2}}{\sin\frac C2}$ — the sum of two sides
+- $\dfrac{a - b}{c} = \dfrac{\sin\frac{A - B}{2}}{\cos\frac C2}$ — the difference of two sides
+
+## Conditions
+$a$, $b$, $c$ are the sides opposite $A$, $B$, $C$ in any triangle.
+
+## Why it works
+From $a = 2R\sin A$ and its partners, $\frac{a + b}{c} = \frac{\sin A + \sin B}{\sin C}$. Sum-to-product turns the numerator into $2\sin\frac{A + B}{2}\cos\frac{A - B}{2}$, and $\sin C = 2\sin\frac C2\cos\frac C2$ with $\frac{A + B}{2} = 90^\circ - \frac C2$ turns the quotient into $\frac{\cos\frac{A - B}{2}}{\sin\frac C2}$. The difference version has $\sin A - \sin B = 2\cos\frac{A + B}{2}\sin\frac{A - B}{2}$ in the numerator.
+
+There is also a picture. Extend $BC$ past $C$ to a point $E$ with $CE = b$. Triangle $ACE$ is isosceles, so its base angle at $E$ is half the exterior angle at $C$ taken from the other side, namely $\angle E = \frac C2$, and $\angle BAE = A + \frac C2 = 90^\circ + \frac{A - B}{2}$. The Law of Sines in triangle $ABE$, where $BE = a + b$, gives $\frac{a + b}{\cos\frac{A - B}{2}} = \frac{c}{\sin\frac C2}$.
+
+## Useful observations
+- Each formula uses all three sides and all three angles, so plugging a solved triangle into them catches an arithmetic slip in any part.
+- Dividing the two formulas gives the Law of Tangents.
+- They are seldom the quickest route to an answer.
+
+## Applications
+Checking a solved triangle, and passing between sums and differences of sides and half-angles.
+
+## Contest profile
+An olympiad-level consistency check, and the bridge to the Law of Tangents.
+`,
+
+"morleys-theorem": String.raw`
+## Key forms
+- the intersections of adjacent angle trisectors of any triangle form an equilateral triangle, the Morley triangle
+- $8R\sin\dfrac A3\sin\dfrac B3\sin\dfrac C3$ — the side of the Morley triangle
+
+## Conditions
+Each angle is trisected, and the vertex of the Morley triangle nearest a side is where the two trisectors adjacent to that side meet. $R$ is the circumradius of the original triangle.
+
+## Why it works
+Write $\alpha = \frac A3$, $\beta = \frac B3$, $\gamma = \frac C3$, so $\alpha + \beta + \gamma = 60^\circ$. Let $X$ be where the trisectors of $B$ and $C$ nearest $BC$ meet, $Z$ where those of $A$ and $B$ nearest $AB$ meet, and $Y$ likewise near $CA$. In triangle $BXC$ the angle at $X$ is $180^\circ - \beta - \gamma = 120^\circ + \alpha$, so by the Law of Sines $BX = \frac{a\sin\gamma}{\sin(120^\circ + \alpha)}$ with $a = 2R\sin 3\alpha$.
+
+The triple-angle identity $\sin 3\alpha = 4\sin\alpha\sin(60^\circ - \alpha)\sin(60^\circ + \alpha)$ and $\sin(120^\circ + \alpha) = \sin(60^\circ - \alpha)$ give $BX = 8R\sin\alpha\sin\gamma\sin(60^\circ + \alpha)$. In the same way $BZ = 8R\sin\alpha\sin\gamma\sin(60^\circ + \gamma)$.
+
+The two trisectors $BX$ and $BZ$ each make the angle $\beta$ with a side of the triangle, so $\angle XBZ = \beta$. In triangle $XBZ$ the sides at $B$ are $K\sin(60^\circ + \alpha)$ and $K\sin(60^\circ + \gamma)$ with $K = 8R\sin\alpha\sin\gamma$, and the three angles $60^\circ + \alpha$, $60^\circ + \gamma$, $\beta$ add to $180^\circ$. The Law of Cosines for a triangle with those angles and circumdiameter $1$ says $\sin^2\beta = \sin^2(60^\circ + \alpha) + \sin^2(60^\circ + \gamma) - 2\sin(60^\circ + \alpha)\sin(60^\circ + \gamma)\cos\beta$, so $XZ = K\sin\beta = 8R\sin\alpha\sin\beta\sin\gamma$. The same computation applies at each vertex, so all three sides are equal.
+
+## Useful observations
+- For an equilateral triangle the Morley triangle has side $8R\sin^3 20^\circ$, about $0.32R$.
+- Angle trisection rarely behaves, which makes the result famous and surprising, and it is a curiosity far more than a tool.
+
+## Applications
+Configurations that build the intersections of adjacent angle trisectors, and the side length of the resulting equilateral triangle.
+
+## Contest profile
+Famous and beautiful but almost never the intended method; ordinary angle chasing or trigonometry solves the problems that mention trisectors.
+`,
 
 "gergonne-nagel-points": String.raw`## Why it works
 Both are Ceva concurrences. Gergonne: incircle tangent lengths give equal pairs, so the Ceva product for the cevians to the touch points is $1$. Nagel: the $A$-excircle touches $BC$ with $BX' = s-c$, $CX' = s-b$; Ceva again gives concurrence, and the Nagel point $N$, centroid $G$, and [[incenter-excenter-lemma|incenter]] $I$ are collinear with $NG = 2\,GI$ (the Nagel line).
@@ -3038,33 +3751,55 @@ Olympiad "geometry of numbers." Niche, but the standard move when you must produ
 Object.assign(window.MATH_DETAILS, {
 
 "median-to-hypotenuse": String.raw`
+## Key forms
+- $m_c = \frac c2$ — the median from the right angle to the hypotenuse is half the hypotenuse
+- $R = \frac c2$ — the midpoint of the hypotenuse is the circumcenter, and the hypotenuse is a diameter of the circumcircle
+- converse: if the median to a side equals half that side, the angle opposite that side is a right angle
+
+## Conditions
+The median starts at the right angle. The converse needs the median to land on the midpoint of the side it is compared with.
+
 ## Why it works
 The right angle sees the hypotenuse as a diameter of the circle through the three vertices, by [[thales-theorem|Thales' Theorem]], so the midpoint of the hypotenuse is that circle's center and is one radius from every vertex: $$MA = MB = MC = \frac c2.$$
 
 The converse holds too: a median equal to half its side forces a right angle, which is the forward direction of Thales' Theorem read from the midpoint.
 
-## How to use it
-The moment a right angle appears, its vertex sits on a circle whose diameter is the opposite side, so the median to the hypotenuse, the distance from the right-angle vertex to the hypotenuse's midpoint, and the circumradius are all $\frac c2$. Legs $6$ and $8$ give a hypotenuse of $10$ and a median of $5$.
+## Useful observations
+- Because $MA = MC$ and $MB = MC$, the triangles $MAC$ and $MBC$ are isosceles, so $\angle MCA = \angle A$ and $\angle MCB = \angle B$.
+- The midpoint of the hypotenuse also lies on the [[perpendicular-bisector-locus|perpendicular bisector]] of each leg, since it is the circumcenter.
+- The segment from $M$ to the midpoint of a leg is parallel to the other leg and half as long, by the [[midsegment-theorem|Midsegment Theorem]].
+- Read backwards, a point whose distance to the midpoint of a segment is half the segment sees that segment at $90^\circ$.
 
-Read backwards, it detects right angles: a point whose distance to the midpoint of a segment equals half the segment sees that segment at $90^\circ$. It also combines with the [[perpendicular-bisector-locus|perpendicular bisector]], since the circumcenter lies on the perpendicular bisector of each leg.
+## Applications
+Distances from a right-angle vertex to the midpoint of the hypotenuse, circumradii of right triangles, and detecting right angles from lengths.
 
-## On contests
-Four problems here, three of them AIME, one solved by it alone and each of the others with a different partner. It is often the hidden step that turns a messy right-triangle configuration into a clean circle: look for it when a problem gives a right angle and asks for a distance to a midpoint.
+## Contest profile
+Usually a hidden step: a messy right-triangle configuration becomes a clean circle once the midpoint of the hypotenuse is marked.
 `,
 
 "same-base-area-ratio": String.raw`
+## Key forms
+- $\frac{[ABD]}{[CBD]} = \frac{AP}{PC}$ — in a quadrilateral $ABCD$ whose diagonals cross at $P$, the triangles on the base $BD$ have areas in the ratio of the segments of the other diagonal
+- triangles on the same base have areas in the ratio of their heights over that base
+
+## Conditions
+The two triangles share the base $BD$, with their third vertices $A$ and $C$ on either side, or on the same side; $P$ is where line $AC$ meets line $BD$.
+
 ## Why it works
 Area is half the base times the height, so two triangles on the same base compare exactly as their heights do.
 
-The heights of $A$ and $C$ above the line $BD$ are legs of two right triangles that share the angle at $P$, formed by the diagonal $AC$ and the feet of the perpendiculars. Those right triangles are similar, so the heights are in the ratio of their hypotenuses, $AP : PC$. The figure at the top shows the two heights.
+The heights of $A$ and $C$ above the line $BD$ are legs of two right triangles that share the angle at $P$, formed by the diagonal $AC$ and the feet of the perpendiculars. Those right triangles are similar, so the heights are in the ratio of their hypotenuses, $AP : PC$.
 
-## How to use it
-Whenever one segment cuts another, a cevian, a diagonal, or two crossing chords, read the division ratio as a ratio of areas of triangles sharing a base, and back. If the diagonals of $ABCD$ meet at $P$ with $AP = 3$ and $PC = 5$, and $[ABD] = 12$, then $[CBD] = 12 \cdot \frac53 = 20$, and the quadrilateral's area is $32$.
+## Useful observations
+- Whenever one segment cuts another, a cevian, a diagonal, or two crossing chords, the division ratio is a ratio of areas of triangles sharing a base, and back.
+- If the diagonals of $ABCD$ meet at $P$ with $AP = 3$ and $PC = 5$, and $[ABD] = 12$, then $[CBD] = 12 \cdot \frac53 = 20$, and the quadrilateral's area is $32$.
+- Chaining several such ratios around a figure is the area method, and assigning masses so the ratios balance is [[mass-points|mass points]]; both replace similar-triangle bookkeeping with one-line comparisons.
 
-Chaining several such ratios around a figure is the area method, and assigning masses so the ratios balance is [[mass-points|mass points]]. Both replace similar-triangle bookkeeping with one-line comparisons.
+## Applications
+Area ratios from segment ratios on a diagonal or a cevian, and segment ratios from areas.
 
-## On contests
-Five problems here, three of them AIME, none by it alone, and each with a different partner, which is typical of a step that sits inside other arguments. It is the quiet engine inside [[rouths-theorem|Routh's Theorem]], [[cevas-theorem|Ceva's Theorem]], and mass-point solutions, and when a figure is full of triangles sharing bases it usually beats coordinates.
+## Contest profile
+A quiet step inside other arguments: [[rouths-theorem|Routh's Theorem]], [[cevas-theorem|Ceva's Theorem]], and mass-point solutions all lean on it, and a figure full of triangles on shared bases is usually quicker this way than with coordinates.
 `,
 
 "angle-bisector-circumcircle": String.raw`
@@ -3093,41 +3828,113 @@ The bisector of angle $A$ cuts arc $BC$ in half, so it meets the circumcircle at
 A recurring AIME configuration: the answer usually falls out of $AB \cdot AC = AL \cdot AD$ together with the bisector length or power of a point.
 `,
 
-"isogonal-conjugate": String.raw`## Why it works
-Reflecting each [[cevas-theorem|cevian]] over its angle bisector is an involution on the directions through a vertex, and the trigonometric form of Ceva is symmetric under swapping each angle's two parts. So if $AP, BP, CP$ concur, the three reflected cevians satisfy the very same concurrency condition and meet at one point $P^*$. The shared pedal circle follows because the reflections send the six perpendicular feet onto a common circle centered at the midpoint of $PP^*$.
+"isogonal-conjugate": String.raw`
+## Key forms
+- reflecting the cevians $AP$, $BP$, $CP$ in the angle bisectors at $A$, $B$, $C$ gives three lines that concur at $P^*$, the isogonal conjugate of $P$
+- $(x : y : z) \mapsto \left(\dfrac{a^2}{x} : \dfrac{b^2}{y} : \dfrac{c^2}{z}\right)$ — the map in barycentric coordinates
+- $\angle BAP = \angle P^*AC$ at each vertex, and $P$ and $P^*$ have the same pedal circle, centered at the midpoint of $PP^*$
+- the pairs: $O \leftrightarrow H$, $G \leftrightarrow K$, the incenter and the excenters are their own conjugates, and the Fermat points are conjugate to the isodynamic points
 
-## How to use it
-Recognize a pair rather than compute it: if a point is built by reflecting cevians over bisectors, its conjugate is often a familiar center. Swap a hard point for an easy one using $O \leftrightarrow H$, $G \leftrightarrow K$ ([[lemoine-point|symmedian point]]), incenter self-conjugate, and Fermat $\leftrightarrow$ isodynamic. The common pedal circle turns "these six feet are concyclic" into a one-word reason.
+## Conditions
+$P$ is a point not on a side line of $ABC$. A point on the circumcircle has no conjugate in the plane: its reflected lines are parallel, so the conjugate is at infinity.
 
-## On contests
-Olympiad geometry, where naming an isogonal pair collapses a concurrency or collinearity to a known center. The symmedian — the isogonal of the median — is the most frequent special case at AIME level.`,
+## Why it works
+Reflecting a [[cevas-theorem|cevian]] in the angle bisector swaps the two parts of the vertex angle. The trigonometric form of Ceva's Theorem is a product of the three sine ratios of those parts, and swapping every ratio inverts the product, which stays equal to $1$. So if $AP$, $BP$, $CP$ concur, the reflected lines satisfy the same condition and meet at one point $P^*$.
 
-"pedal-triangle": String.raw`## Why it works
-Writing each vertex of the pedal triangle as the projection of $P$ onto a side and expanding gives the area factor $\dfrac{|R^2 - OP^2|}{4R^2}$ directly. When $OP = R$ the factor is $0$: the three feet fall on a line — exactly the Simson line — so Simson is just the pedal triangle degenerating.
+The coordinates follow from the [[ratio-lemma|Ratio Lemma]]. If $D = (0 : y : z)$ is the foot of $AP$ on $BC$, then $BD : DC = z : y$, and swapping the sine ratio at $A$ turns it into $c^2y : b^2z$. So the reflected foot is $(0 : b^2z : c^2y) \propto \left(0 : \frac{b^2}{y} : \frac{c^2}{z}\right)$, and the three feet give $P^* = \left(\frac{a^2}{x} : \frac{b^2}{y} : \frac{c^2}{z}\right)$.
 
-## How to use it
-Read the position of $P$ off the one area formula. $P$ on the circumcircle ($OP = R$) gives the degenerate Simson line; $P = O$ gives the medial triangle (quarter area); $P = I$ gives the contact triangle; $P = H$ gives the [[orthic-triangle|orthic triangle]]. When a problem drops perpendiculars to all three sides, find $OP$ and let the formula deliver the area.
+## Useful observations
+- A hard point can often be swapped for an easy one: $O \leftrightarrow H$, and the centroid $G = (1 : 1 : 1)$ goes to $(a^2 : b^2 : c^2)$, the symmedian point $K$.
+- The symmedian is the isogonal of the median, the most frequent special case at AIME level.
+- The pedal circle common to $P$ and $P^*$ turns "these six feet are concyclic" into a one-word reason.
 
-## On contests
-Simson-line problems and "area of the triangle formed by the three feet" questions on AIME/olympiad reduce to this single formula. Spotting that a configuration is a pedal triangle in disguise often replaces a page of coordinates with one substitution.`,
+## Applications
+Concurrency and collinearity problems in which a point is built by reflecting cevians in bisectors, and trades between a point and its conjugate.
 
-"orthic-triangle": String.raw`## Why it works
-Each altitude foot sees the opposite side at a right angle, so pairs of feet are concyclic with the vertices; a short angle chase then yields the orthic angles $\pi - 2A$ and shows each orthic side is antiparallel to the matching side of $ABC$. The perimeter identity is $a\cos A = R\sin 2A$ summed with $\sin 2A + \sin 2B + \sin 2C = 4\sin A\sin B\sin C$, and the area factor $2\cos A\cos B\cos C$ comes from removing the three corner triangles.
+## Contest profile
+Olympiad geometry, where naming an isogonal pair collapses a concurrency or collinearity to a known center.
+`,
 
-## How to use it
-Treat $H$ as the [[incenter-excenter-lemma|incenter]] of the orthic triangle: the altitudes of $ABC$ are its angle bisectors, which explains the reflect-$H$ facts and the Fagnano minimal-perimeter property. Use the perimeter $= \dfrac{2[ABC]}{R} = 4R\sin A\sin B\sin C$ and area $= 2\cos A\cos B\cos C\,[ABC]$ directly (the perimeter form is just $[ABC] = 2R^2\sin A\sin B\sin C$ rearranged; see [[trig-area|the trig-area formula]]), and recall the orthic triangle is inscribed in the [[nine-point-circle|nine-point circle]] (radius $\tfrac R2$). Turned inside out, the same configuration is the [[excentral-triangle|excentral triangle]]: $ABC$ is the orthic triangle of its own excentres. It is inscribed in the nine-point circle of radius $\frac R2$, each of its sides is antiparallel to the matching side of $ABC$, and it is the least-perimeter inscribed triangle, which is Fagnano's problem.
+"pedal-triangle": String.raw`
+## Key forms
+- $[\text{pedal of } P] = \dfrac{\left|R^2 - OP^2\right|}{4R^2}\,[ABC]$ — the area of the triangle of the feet of the perpendiculars from $P$
+- $OP = R$ makes the area $0$: for $P$ on the circumcircle the three feet are collinear, on the Simson line of $P$
+- $EF = PA\sin A$, $FD = PB\sin B$, $DE = PC\sin C$ — the sides of the pedal triangle $DEF$
 
-## On contests
-The least-perimeter inscribed triangle (Fagnano) and the reflect-$H$-onto-the-circumcircle facts are the recurring AIME/olympiad uses. For an obtuse triangle, note that $H$ becomes an excenter of the orthic triangle instead — a frequent trap.`,
+## Conditions
+$P$ is any point of the plane, $O$ and $R$ are the circumcenter and circumradius of $ABC$, and $D$, $E$, $F$ are the feet of the perpendiculars from $P$ to $BC$, $CA$, $AB$.
 
-"medial-triangle": String.raw`## Why it works
-The midpoints halve every side, so each of the four small triangles is similar to $ABC$ with ratio $\tfrac12$ (SAS on the midsegments) — hence quarter area and half perimeter apiece. The medial triangle is the image of $ABC$ under the homothety centered at the centroid $G$ with ratio $-\tfrac12$, which is why $G$ is shared and the orientation flips.
+## Why it works
+Each side of the pedal triangle is a chord of a circle with diameter $PA$, since $A$, $F$, $P$, $E$ lie on it; hence $EF = PA\sin A$. For $P$ inside the triangle the angle at $P$ between $PE$ and $PF$ is $180^\circ - A$, and cutting the pedal triangle into its three pieces at $P$ gives $[DEF] = \frac12\left(d_bd_c\sin A + d_cd_a\sin B + d_ad_b\sin C\right)$, where $d_a$, $d_b$, $d_c$ are the distances from $P$ to the sides.
 
-## How to use it
-Pass to the medial triangle to shrink a problem by a fixed factor, or read off incoming structure: its circumcircle is the nine-point circle, its [[incenter-excenter-lemma|incenter]] is the [[spieker-point|Spieker point]], and the homothety $(G, -\tfrac12)$ sends centers of $ABC$ to centers of the medial triangle. The four-congruent-triangles picture also proves midsegment and area-quartering claims at a glance.
+In normalized barycentric coordinates $(u, v, w)$ of $P$ these distances are $d_a = \frac{2[ABC]u}{a}$ and so on, and $\sin A = \frac{a}{2R}$. Substituting and using $abc = 4R[ABC]$ gives $$\frac{[DEF]}{[ABC]} = \frac{a^2vw + b^2wu + c^2uv}{4R^2}.$$ The numerator is $R^2 - OP^2$, the negative of the power of $P$ with respect to the circumcircle, by the standard barycentric formula for that power. For $P$ outside the triangle the same formula holds with signed areas, which is why the absolute value appears.
 
-## On contests
-"Connect the midpoints" configurations on AMC/AIME resolve through the quarter-area and homothety facts, and the nine-point-circle link is the bridge into Euler-line problems.`,
+## Useful observations
+- $P = O$ gives $\frac14[ABC]$, the medial triangle.
+- $P = I$ gives the contact triangle, with $R^2 - OI^2 = 2Rr$ so the area is $\frac{r}{2R}[ABC]$.
+- $P = H$ gives the [[orthic-triangle|orthic triangle]], with $R^2 - OH^2 = 8R^2\cos A\cos B\cos C$, so the area is $2\cos A\cos B\cos C\,[ABC]$.
+- The formula is the unifying statement behind the Simson line, which is the degenerate pedal triangle.
+
+## Applications
+The area of the triangle formed by three feet of perpendiculars, the Simson line, and the areas of the medial, contact, and orthic triangles as special cases.
+
+## Contest profile
+Simson-line problems and "area of the triangle formed by the three feet" questions at AIME and olympiad level reduce to this single formula. Seeing that a configuration is a pedal triangle in disguise replaces a page of coordinates by one substitution.
+`,
+
+"orthic-triangle": String.raw`
+## Key forms
+- sides $a\cos A$, $b\cos B$, $c\cos C$ — the sides of the orthic triangle of an acute triangle
+- angles $180^\circ - 2A$, $180^\circ - 2B$, $180^\circ - 2C$, with $H$ as its incenter
+- $\text{perimeter} = \dfrac{2[ABC]}{R} = 4R\sin A\sin B\sin C$
+- $[\text{orthic}] = 2\cos A\cos B\cos C\,[ABC]$ — the area
+
+## Conditions
+The orthic triangle is the triangle of the three altitude feet, equivalently the pedal triangle of the orthocenter $H$. The formulas above are for an acute triangle; for an obtuse triangle $H$ becomes an excenter of the orthic triangle instead of its incenter.
+
+## Why it works
+Each altitude foot sees the opposite side at a right angle, so pairs of feet are concyclic with the vertices, and a short angle chase gives the orthic angles $180^\circ - 2A$ and shows that each orthic side is antiparallel to the matching side of $ABC$.
+
+The corner triangle cut off at $A$ is similar to $ABC$ with ratio $\cos A$, so it has area $\cos^2A\,[ABC]$, and likewise at $B$ and $C$. Hence $$[\text{orthic}] = \left(1 - \cos^2A - \cos^2B - \cos^2C\right)[ABC] = 2\cos A\cos B\cos C\,[ABC],$$ by the identity $\cos^2A + \cos^2B + \cos^2C + 2\cos A\cos B\cos C = 1$. The side opposite the foot on $BC$ is $a\cos A = R\sin 2A$, so the perimeter is $R(\sin 2A + \sin 2B + \sin 2C) = 4R\sin A\sin B\sin C = \frac{2[ABC]}{R}$, using $[ABC] = 2R^2\sin A\sin B\sin C$ from [[trig-area|the trig-area formula]].
+
+## Useful observations
+- Because $H$ is the [[incenter-excenter-lemma|incenter]] of the orthic triangle, the altitudes of $ABC$ are its angle bisectors, which explains the reflect-$H$ facts.
+- The orthic triangle is inscribed in the [[nine-point-circle|nine-point circle]], of radius $\frac R2$.
+- It is the inscribed triangle of least perimeter, which is Fagnano's problem.
+- Turned inside out, the same configuration is the [[excentral-triangle|excentral triangle]]: $ABC$ is the orthic triangle of its own excentral triangle.
+
+## Applications
+Altitude feet, the least-perimeter inscribed triangle, and the reflections of $H$ in the sides and midpoints.
+
+## Contest profile
+The least-perimeter inscribed triangle and the reflect-$H$ facts are the recurring AIME and olympiad uses; the obtuse case, where $H$ is an excenter, is a frequent trap.
+`,
+
+"medial-triangle": String.raw`
+## Key forms
+- the medial triangle is similar to $ABC$ with ratio $\frac12$, with sides parallel to those of $ABC$
+- $[\text{medial}] = \dfrac14[ABC]$ and $\text{perimeter} = s = \dfrac{a + b + c}{2}$
+- its circumcircle is the nine-point circle, of radius $\dfrac R2$ and center $N$
+- its orthocenter is $O$, and its incircle is the Spieker circle, centered at the [[spieker-point|Spieker point]]
+
+## Conditions
+The medial triangle is the triangle whose vertices are the midpoints of the sides of $ABC$.
+
+## Why it works
+The midpoints halve every side, so each of the four small triangles is similar to $ABC$ with ratio $\frac12$ by SAS on the midsegments, which gives a quarter of the area and half the perimeter apiece. The medial triangle is the image of $ABC$ under the homothety centered at the centroid $G$ with ratio $-\frac12$, which is why $G$ is shared and the orientation flips.
+
+The same homothety carries the orthocenter $H$ of $ABC$ to the orthocenter of the medial triangle, which is $O$, because $H = 3G - 2O$. Its circumcircle passes through the three midpoints, and so it is the nine-point circle, with radius $\frac R2$.
+
+## Useful observations
+- The four-congruent-triangles picture proves midsegment and area-quartering claims at a glance.
+- The homothety $(G, -\tfrac12)$ sends each center of $ABC$ to the matching center of the medial triangle, so a problem about the medial triangle's centers is a problem about $ABC$'s centers shrunk about $G$.
+
+## Applications
+Connect-the-midpoints configurations, area quartering, and the bridge into Euler-line and nine-point-circle problems.
+
+## Contest profile
+"Connect the midpoints" configurations on the AMC and AIME resolve through the quarter-area and homothety facts.
+`,
 
 "triangle-13-14-15": String.raw`## Key forms
 - $s = 21$ and $[ABC] = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$, the smallest scalene triangle after $3$-$4$-$5$ with whole-number sides and a whole-number area
@@ -3156,23 +3963,55 @@ This is the default scalene triangle for a problem that needs integer answers, a
 // Detail bodies added for dense medium-importance cards.
 Object.assign(window.MATH_DETAILS, {
 
-"altitude-bisector-angle": String.raw`## Why it works
-Measure directions from $A$. The altitude to $BC$ makes angle $90^\circ - B$ with side $AB$; the circumradius $AO$ makes angle $90^\circ - B$ with the OTHER side $AC$ (from the inscribed-angle relation $\angle AOC$ gives $\angle OAC = 90^\circ - B$), so the altitude and $AO$ are mirror images in the $A$-bisector — that is exactly "isogonal." Since the bisector sits at $\tfrac A2 = 90^\circ - \tfrac{B+C}{2}$ from $AB$, its gap to the altitude is $(90^\circ - B) - \left(90^\circ - \tfrac{B+C}{2}\right) = \tfrac{C-B}{2}$.
+"altitude-bisector-angle": String.raw`
+## Key forms
+- $\angle(\text{altitude}, \text{bisector}) = \dfrac{|B - C|}{2}$ — the angle between the altitude and the bisector from $A$
+- the $A$-altitude and $AO$ are isogonal: they are reflections of each other across the $A$-bisector
+- $\angle HAO = |B - C|$ — the angle between the altitude and the line to the circumcenter
 
-## How to use it
-Use the bisector as an axis of symmetry: the altitude and $AO$ each lie $\tfrac{|B-C|}{2}$ off it, so any one of the three directions gives the other two. This is also the clean reason the orthocenter and circumcenter are isogonal conjugates — reflecting all three altitudes over the corresponding bisectors carries $H$ to $O$.
+## Conditions
+$O$ is the circumcenter and $H$ the orthocenter. If $B = C$ the altitude, bisector, and $AO$ all coincide and every angle is $0$.
 
-## On contests
-Handy on AIME/olympiad configurations that involve both an altitude and the circumcenter, or that ask directly for the angle between an altitude and a bisector: the value $\tfrac{|B-C|}{2}$ drops out immediately, and the isogonal framing unlocks $O \leftrightarrow H$ arguments.`,
+## Why it works
+Measure directions from $A$. The altitude to $BC$ makes the angle $90^\circ - B$ with side $AB$. The central angle $\angle AOC$ is $2B$ and $OA = OC$, so $\angle OAC = 90^\circ - B$: the line $AO$ makes that same angle with the other side $AC$. The altitude and $AO$ are therefore mirror images in the $A$-bisector, which is what isogonal means.
 
-"incenter-area-split": String.raw`## Why it works
-The incircle is tangent to all three sides, so the incenter is a distance $r$ from each — and that $r$ is the height of each sub-triangle onto the side it rests on. Hence $[BIC] = \tfrac12 a r$, $[CIA] = \tfrac12 b r$, $[AIB] = \tfrac12 c r$, proportional to $a,b,c$. Adding gives $[ABC] = \tfrac12(a+b+c)r = rs$, the standard area formula, and dividing gives $[BIC] = \frac{a}{a+b+c}[ABC]$.
+The bisector sits at $\frac A2 = 90^\circ - \frac{B + C}{2}$ from $AB$, so its gap to the altitude is $$(90^\circ - B) - \left(90^\circ - \tfrac{B + C}{2}\right) = \tfrac{C - B}{2}.$$ Doubling it, the altitude and $AO$ are $|B - C|$ apart.
 
-## How to use it
-Read a side-length ratio straight off as an area ratio, or the reverse. Because the three areas are the natural weights, they are exactly the incenter's barycentric coordinates $(a:b:c)$, so $I = \frac{aA+bB+cC}{a+b+c}$ — the quickest way to drop the incenter into a coordinate or vector bash. The same "join the point to the vertices" split works for any interior point, with the three sub-areas as its barycentric weights.
+## Useful observations
+- The bisector is an axis of symmetry: the altitude and $AO$ each lie $\frac{|B - C|}{2}$ off it, so any one of the three directions gives the other two.
+- Reflecting all three altitudes over the matching bisectors carries $H$ to $O$, which is why the orthocenter and the circumcenter are isogonal conjugates.
 
-## On contests
-AMC/AIME problems asking what fraction of the area a sub-triangle occupies, or needing incenter coordinates, use this directly; it is also the one-line derivation of $[ABC] = rs$ whenever you need $r$.`,
+## Applications
+Angles between an altitude and a bisector, and configurations that involve both an altitude and the circumcenter.
+
+## Contest profile
+Handy in AIME and olympiad geometry that has both an altitude and the circumcenter in one figure: the value $\frac{|B - C|}{2}$ drops out at once, and the isogonal view opens arguments that exchange $O$ and $H$.
+`,
+
+"incenter-area-split": String.raw`
+## Key forms
+- $[BIC] : [CIA] : [AIB] = a : b : c$ — joining the incenter to the vertices splits the triangle into three triangles with areas in the ratio of the sides they rest on
+- $[BIC] = \frac{a}{a + b + c}[ABC]$ — each piece is its side's fraction of the perimeter
+- $[ABC] = rs$ — the three areas $\frac12ar$, $\frac12br$, $\frac12cr$ add up to the area
+- $I = \frac{aA + bB + cC}{a + b + c}$ — the incenter's barycentric coordinates are $(a : b : c)$
+
+## Conditions
+$I$ is the incenter, $r$ the inradius, and $s$ the semiperimeter; the same split holds for any interior point, with the sub-areas as its barycentric weights.
+
+## Why it works
+The incircle is tangent to all three sides, so the incenter is a distance $r$ from each, and that $r$ is the height of each sub-triangle onto the side it rests on. Hence $[BIC] = \frac12 ar$, $[CIA] = \frac12 br$, and $[AIB] = \frac12 cr$, proportional to $a$, $b$, $c$. Adding gives $[ABC] = \frac12(a + b + c)r = rs$, the standard area formula, and dividing gives $[BIC] = \frac{a}{a + b + c}[ABC]$.
+
+## Useful observations
+- A side-length ratio reads straight off as an area ratio, and the reverse.
+- Because the three areas are the natural weights, they are the incenter's barycentric coordinates, the quickest way to place the incenter in a coordinate or vector computation.
+- The one-line derivation of $[ABC] = rs$ gives $r$ whenever the area and the perimeter are known.
+
+## Applications
+Areas of the three triangles at the incenter, the incenter's coordinates, and the inradius from the area.
+
+## Contest profile
+AMC and AIME problems asking what fraction of the area a sub-triangle occupies, or needing the incenter's coordinates, use it directly.
+`,
 
 "orthocentric-system": String.raw`## Why it works
 The defining relations are symmetric: $AH \perp BC$ also says $A$ lies on the altitude of $\triangle HBC$ from $A$, and running that around all sides shows each of the four points is the orthocenter of the triangle on the other three. Reflecting $H$ over side $BC$ lands on $\odot(ABC)$, so $\odot(HBC)$ is the mirror image of $\odot(ABC)$ across $BC$ — same radius $R$. And all four triangles share one nine-point circle: the midpoints of the six segments joining pairs of $\{A,B,C,H\}$, together with the three altitude feet, are the same nine points for every one of the four triangles.
@@ -3227,23 +4066,56 @@ Chains and packings of tangent circles, circles on a common line, and tangent sp
 A staple of AMC circle problems and the opening line of most AIME circle-packing setups; the next step is usually the Pythagorean Theorem on a triangle of centers.
 `,
 
-"incircle-excircle-touch": String.raw`## Why it works
-Equal tangents from a vertex fix the incircle contact distances: the two tangents from $B$ are equal, forcing the touch point on $BC$ to be $s-b$ from $B$. The $A$-excircle (opposite $A$) touches $BC$ with the roles of $b$ and $c$ swapped, at $s-c$ from $B$. Since $(s-b) + (s-c) = a$, those two points average to $\tfrac a2$ — the midpoint $M$ of $BC$ — so they are reflections of each other in $M$, a distance $(s-b) - (s-c) = |b-c|$ apart.
+"incircle-excircle-touch": String.raw`
+## Key forms
+- $s - b$ from $B$ — where the incircle touches $BC$, so it is $s - c$ from $C$
+- $s - c$ from $B$ — where the $A$-excircle touches $BC$
+- $XX' = |b - c|$ — the distance between the two touch points on $BC$
+- the two touch points are reflections of each other in the midpoint $M$ of $BC$
 
-## How to use it
-Place both contact points instantly from the side lengths, and use $M$ as their shared midpoint to relate incircle and excircle configurations. The gap $|b-c|$ measures how far from isosceles the triangle is; it is $0$ exactly when $b = c$, where both circles touch $BC$ at its midpoint.
+## Conditions
+$a = BC$, $b = CA$, $c = AB$, and $s$ is the semiperimeter; the excircle is the one opposite $A$, tangent to $BC$ and the extensions of $AB$ and $AC$.
 
-## On contests
-Useful whenever a problem mixes the incircle and an excircle on one side, or asks for the distance between contact points; it also pairs with the reflection facts used in mixtilinear-incircle and $A$-excircle lemmas.`,
+## Why it works
+Equal tangents from a vertex fix the incircle contact distances: the two tangents from $B$ are equal, forcing the touch point on $BC$ to be $s - b$ from $B$. The $A$-excircle touches $BC$ with the roles of $b$ and $c$ swapped, at $s - c$ from $B$. Since $(s - b) + (s - c) = a$, those two points average to $\frac a2$, the midpoint $M$ of $BC$, so they are reflections of each other in $M$, a distance $(s - b) - (s - c) = |b - c|$ apart.
 
-"integer-triangles-perimeter": String.raw`## Why it works
-Count triples ordered by size, $a\le b\le c$, with $a+b+c=n$ and the single binding constraint $a+b\gt c$ — equivalently $c\lt n/2$, since the other two inequalities are automatic once the sides are sorted. Fix the longest side $c$; then $a+b=n-c$ with $a\le b\le c$, a short run of $(a,b)$ to count. Summing the counts over the allowed $c$ gives a quadratic in $n$, and it collapses to the nearest integer to $n^2/48$ for even $n$ (and $(n+3)^2/48$ for odd $n$) — Alcuin's sequence.
+## Useful observations
+- Both contact points are placed from the side lengths alone, with $M$ as their common midpoint.
+- The gap $|b - c|$ measures how far the triangle is from isosceles; it is $0$ exactly when $b = c$, where both circles touch $BC$ at its midpoint.
+- The same reflection fact is used in the lemmas about the mixtilinear incircle and the $A$-excircle.
 
-## How to use it
-For a specific small $n$, skip the closed form and just sweep: let $c$ run from $\lceil n/3\rceil$ up to $\lfloor (n-1)/2\rfloor$ and count valid $(a,b)$ for each. The rounded formula is the quick check on a full count. Variants adjust the same sweep — require distinct sides ($a\lt b\lt c$), a fixed shape (isosceles, right), or a cap on a side — by changing only the inner count.
+## Applications
+Distances between the contact points of the incircle and an excircle, and configurations that mix the incircle and an excircle on one side.
 
-## On contests
-"How many triangles with integer sides and perimeter $n$" is a recurring MATHCOUNTS/AMC question. The fix-the-longest-side sweep is reliable under time pressure, and the round-to-nearest formula lets you confirm the answer in one line.`,
+## Contest profile
+Useful whenever a problem mixes the incircle and an excircle on one side, or asks for the distance between contact points.
+`,
+
+"integer-triangles-perimeter": String.raw`
+## Key forms
+- $\operatorname{round}\!\left(\frac{n^2}{48}\right)$ — the number of noncongruent integer-sided triangles with perimeter $n$, for $n$ even
+- $\operatorname{round}\!\left(\frac{(n + 3)^2}{48}\right)$ — the same count for $n$ odd
+- $c \lt \frac n2$ — the triangle inequality for sorted sides $a \le b \le c$ with $a + b + c = n$
+
+## Conditions
+Triangles are counted up to congruence, so each side triple $a \le b \le c$ counts once; sides are positive integers.
+
+## Why it works
+Count triples ordered by size, $a \le b \le c$, with $a + b + c = n$ and the single binding constraint $a + b \gt c$, which is the same as $c \lt \frac n2$ since the other two inequalities are automatic once the sides are sorted.
+
+Fix the longest side $c$. Then $a + b = n - c$ with $a \le b \le c$, a short run of pairs $(a, b)$ to count. Summing the counts over the allowed $c$, from $\lceil \frac n3 \rceil$ up to $\lfloor \frac{n - 1}{2} \rfloor$, gives a quadratic in $n$, and it collapses to the nearest integer to $\frac{n^2}{48}$ for even $n$ and to $\frac{(n + 3)^2}{48}$ for odd $n$. This is Alcuin's sequence.
+
+## Useful observations
+- For one specific small $n$, the sum over $c$ can be written out directly, and the rounded formula is the quick check on a full count.
+- Variants change only the inner count: requiring distinct sides ($a \lt b \lt c$), an isosceles or right shape, or a cap on one side.
+- For perimeter $12$ the three triangles are $(2, 5, 5)$, $(3, 4, 5)$, and $(4, 4, 4)$.
+
+## Applications
+Counting integer-sided triangles of a given perimeter, and counting those with an extra condition on the sides.
+
+## Contest profile
+A MATHCOUNTS and AMC counting question whose answer is a short list; the rounded formula confirms a full count in one line.
+`,
 
 "equal-chords-arcs": String.raw`## Why it works
 All three conditions come from the same congruent triangles at the center. A [[chord-length|chord]] of length $\ell$ at distance $d$ from the center $O$ (radius $R$) satisfies $\ell=2\sqrt{R^2-d^2}$, so $\ell$ and $d$ determine each other; equal chords force equal $d$ and conversely. The isosceles triangles formed by $O$ and a chord's endpoints subtend equal central angles when the chords are equal, and equal central angles cut equal arcs — so "equal chords," "equal arcs," and "equal distance from center" are one fact viewed three ways.
@@ -3258,14 +4130,32 @@ These appear in "two equal chords" configurations, in midpoint/bisection constru
 
 Object.assign(window.MATH_DETAILS, {
 
-"regular-dodecagon": String.raw`## Why it works
-Build it outward from a regular hexagon of side $s$ (itself six equilateral triangles from its center). Erect a square on each of the hexagon's six edges; at each hexagon vertex the $120^\circ$ interior angle plus the two adjacent squares' $90^\circ$ corners leave a $60^\circ$ gap that one more equilateral triangle fills exactly. The outer boundary is now 12 equal edges meeting at equal $150^\circ$ angles — a regular dodecagon — assembled from 6 squares and $6+6=12$ equilateral triangles, so $A = 6s^2 + 12\cdot\frac{\sqrt{3}}{4}s^2 = 3(2+\sqrt{3})s^2$.
+"regular-dodecagon": String.raw`
+## Key forms
+- $A = 3(2 + \sqrt3)s^2 = 6s^2 + 3\sqrt3\,s^2$ — the area of a regular dodecagon of side $s$
+- $A = 3R^2$ — the area when the circumradius is $R$
+- $150^\circ$ — each interior angle
+- $R = \frac s2\left(\sqrt6 + \sqrt2\right)$ — the circumradius in terms of the side
 
-## How to use it
-Two clean handles. Given the side, use $A = 3(2+\sqrt{3})s^2$. Given the circumradius, use $A = 3R^2$ — it comes from $\frac12 nR^2\sin\frac{360^\circ}{n}$ with $n=12$ and rearranges into three $R\times R$ squares, so a dodecagon inscribed in a unit circle has area exactly $3$. The $150^\circ$ interior angle is also the reason the square-and-triangle dissection closes up.
+## Conditions
+The dodecagon is regular, with side $s$ and circumradius $R$.
 
-## On contests
-Dodecagons appear as "regular 12-gon inscribed in a circle" (area $3R^2$ on sight), in area-dissection problems, and wherever $15^\circ$, $75^\circ$, or $150^\circ$ angles turn up. The 6-square-12-triangle picture is the fast visual proof of the side-length area and a favorite MATHCOUNTS / early-AMC fact.`,
+## Why it works
+Build it outward from a regular hexagon of side $s$, itself six equilateral triangles from its center. Erect a square on each of the hexagon's six edges; at each hexagon vertex the $120^\circ$ interior angle plus the two adjacent squares' $90^\circ$ corners leave a $60^\circ$ gap that one more equilateral triangle fills exactly. The outer boundary is now $12$ equal edges meeting at equal $150^\circ$ angles, a regular dodecagon, assembled from $6$ squares and $6 + 6 = 12$ equilateral triangles, so $A = 6s^2 + 12 \cdot \frac{\sqrt3}{4}s^2 = 3(2 + \sqrt3)s^2$.
+
+The circumradius form is the sine formula of [[regular-polygon-area|Regular Polygon Area]] with $n = 12$: $\frac12 \cdot 12 \cdot R^2 \sin 30^\circ = 3R^2$. It rearranges into three $R \times R$ squares, so a dodecagon inscribed in a unit circle has area exactly $3$.
+
+## Useful observations
+- The side and the circumradius are tied by $s = 2R\sin 15^\circ$, with $\sin 15^\circ = \frac{\sqrt6 - \sqrt2}{4}$, which gives $R = \frac s2(\sqrt6 + \sqrt2)$.
+- The $150^\circ$ interior angle is the reason the square-and-triangle dissection closes up.
+- Angles of $15^\circ$, $75^\circ$, and $150^\circ$ in a problem often signal a hidden dodecagon.
+
+## Applications
+Areas of regular $12$-gons from the side or the circumradius, and dissections into squares and equilateral triangles.
+
+## Contest profile
+A MATHCOUNTS and early AMC favorite: a dodecagon inscribed in a circle, where the area $3R^2$ is available at sight, and dissection problems.
+`,
 
 "regular-octahedron": String.raw`## Why it works
 The horizontal plane through the four equatorial vertices is a square of side $s$ (its diagonals are a pair of opposite octahedron edges). Above and below it sit two congruent square pyramids; each apex lies over the square's center at height $\frac{s}{\sqrt{2}}$ — half a face diagonal — so $V = 2\cdot\frac13 s^2\cdot\frac{s}{\sqrt{2}} = \frac{s^3\sqrt{2}}{3}$. All eight faces are equilateral, giving $SA = 8\cdot\frac{\sqrt{3}}{4}s^2 = 2\sqrt{3}\,s^2$.
@@ -3315,32 +4205,86 @@ The segment $BB'$ is perpendicular to the mirror and cut in half by it, so the f
 An AIME and olympiad move: in trapezoids and triangles with a bisector plus a length condition, reflecting across the bisector is usually the intended first line.
 `,
 
-"isotomic-conjugate": String.raw`## Why it works
-Reflecting each [[cevas-theorem|cevian]] foot over its side's midpoint is an involution on that side, so by the isotomic form of Ceva's Theorem the reflected cevians concur exactly when the originals do — defining the conjugate $P^*$. In normalized barycentrics it is just $(x:y:z) \mapsto (1/x : 1/y : 1/z)$.
+"isotomic-conjugate": String.raw`
+## Key forms
+- reflecting each cevian foot of $P$ over the midpoint of its side gives three new cevians that concur at $P^*$, the isotomic conjugate
+- $(x : y : z) \mapsto \left(\dfrac1x : \dfrac1y : \dfrac1z\right)$ — the map in barycentric coordinates
+- the centroid is its own isotomic conjugate, and the Gergonne point and the Nagel point are an isotomic pair
 
-## How to use it
-Use the pairing to transfer results for free: the centroid is self-conjugate, and the Gergonne and Nagel points are an isotomic pair, so a fact about one hands you the other. Compute with [[barycentric-coordinates|barycentric]] reciprocals, and pair it with isogonal conjugation when a problem mixes "reflect over the midpoint" and "reflect over the bisector."
+## Conditions
+$P$ is a point not on a side line of $ABC$ and not on a line through a vertex parallel to the opposite side.
 
-## On contests
-An advanced/olympiad triangle-center tool; recognizing an isotomic pair often collapses a two-point problem into one, and the reciprocal barycentric form makes it a clean bash.`,
+## Why it works
+Reflecting a cevian foot over its side's midpoint is an involution on that side: it swaps $BD : DC$ with $DC : BD$. Ceva's Theorem says the cevians concur exactly when the product of the three ratios is $1$, and inverting every ratio inverts the product, which is still $1$. So the three new cevians concur, at a point $P^*$ that is again isotomic to $P$.
 
-"contact-triangle": String.raw`## Why it works
-Equal tangents from each vertex cut the sides into the classic lengths $s-a,\ s-b,\ s-c$, and the three tangency points lie on the incircle — so the incircle is the contact triangle's circumcircle (radius $r$). Each contact-triangle angle is $\frac{\pi}{2}-\frac{A}{2}$, the inscribed angle on the arc between two tangency points, and the Law of Sines in that circle then gives its sides as $2r\cos\frac A2$, $2r\cos\frac B2$, $2r\cos\frac C2$.
+In barycentric coordinates, a foot $D = (0 : y : z)$ has $BD : DC = z : y$, and its reflection has $BD^* : D^*C = y : z$, which is the foot $(0 : z : y) \propto \left(0 : \frac1y : \frac1z\right)$. Doing this on all three sides gives $P^* = \left(\frac1x : \frac1y : \frac1z\right)$.
 
-## How to use it
-Reach for $s-a,\ s-b,\ s-c$ whenever the incircle touches the sides — they linearize almost every incircle-length computation. The cevians to the contact points concur at the Gergonne point, and the area ratio $\frac{r}{2R}$ converts between the contact triangle and $ABC$.
+## Useful observations
+- A fact about one point of an isotomic pair becomes a fact about the other, as with the Gergonne and Nagel points.
+- It pairs with isogonal conjugation: composing the two maps sends $(x : y : z)$ to $\left(\frac{x}{a^2} : \frac{y}{b^2} : \frac{z}{c^2}\right)$, so problems that mix "reflect over the midpoint" and "reflect over the bisector" reduce to coordinate bookkeeping.
+- Reciprocal coordinates make it a clean computation: invert each coordinate and clear denominators.
 
-## On contests
-Standard at AIME and olympiad level for incircle-tangency lengths and Gergonne-point configurations; the $s-a$ substitution is one of the most reused moves in all of triangle geometry.`,
+## Applications
+Pairs of cevians that reflect over side midpoints, and the relation between the Gergonne and Nagel points.
 
-"excentral-triangle": String.raw`## Why it works
-Internal and external bisectors are perpendicular, so the [[incenter-excenter-lemma|incenter]] $I$ is the orthocenter of $I_AI_BI_C$ and $ABC$ is exactly its orthic (altitude-feet) triangle. That perpendicularity also yields the angles $\frac{\pi}{2}-\frac{A}{2}$, the sides $4R\cos\frac{A}{2}$ (so $I_AI_B=4R\cos\frac C2$), and circumradius $2R$. Its area follows as $2Rs=\frac{abc}{2r}=8R^2\cos\frac A2\cos\frac B2\cos\frac C2$.
+## Contest profile
+An advanced triangle-center tool: recognizing an isotomic pair collapses a two-point problem into one.
+`,
 
-## How to use it
-Flip the usual orthic relationship: treat $ABC$ as the orthic triangle of the excenters to import the full orthocentric toolkit (reflections, the nine-point circle). In particular the circumcircle of $ABC$ is the nine-point circle of the excentral triangle, tying the two figures together. Equivalently $ABC$ is the orthic triangle of this one, so every orthic-triangle fact transfers by renaming.
+"contact-triangle": String.raw`
+## Key forms
+- $s - a$, $s - b$, $s - c$ — the tangent lengths from $A$, $B$, $C$ to the incircle, which are the distances from each vertex to its two touch points
+- angles $90^\circ - \dfrac A2$, $90^\circ - \dfrac B2$, $90^\circ - \dfrac C2$, and sides $2r\cos\dfrac A2$, $2r\cos\dfrac B2$, $2r\cos\dfrac C2$
+- circumradius $r$, since the touch points lie on the incircle
+- $[\text{contact}] = \dfrac{r}{2R}[ABC]$
 
-## On contests
-An olympiad configuration for excenter and bisector problems; spotting "$ABC$ is the orthic triangle of its excenters" unlocks every orthocenter fact you already know.`,
+## Conditions
+The contact (intouch) triangle has the three points where the incircle touches the sides as its vertices; $s$ is the semiperimeter of $ABC$.
+
+## Why it works
+Equal tangents from each vertex cut the sides into the classic lengths $s - a$, $s - b$, $s - c$, and the three touch points lie on the incircle, so the incircle is the contact triangle's circumcircle, of radius $r$. Each contact-triangle angle is an inscribed angle on an arc between two touch points: the angle at the touch point on $BC$ stands on the arc $EF$ whose central angle is $180^\circ - A$, so it equals $90^\circ - \frac A2$. The Law of Sines in the incircle then gives the side $EF = 2r\sin\left(90^\circ - \frac A2\right) = 2r\cos\frac A2$.
+
+For the area, the three radii to the touch points split the contact triangle into three pieces with central angles $180^\circ - A$, $180^\circ - B$, $180^\circ - C$, so $[\text{contact}] = \frac12r^2(\sin A + \sin B + \sin C) = \frac12r^2 \cdot \frac sR$, and with $[ABC] = rs$ this is $\frac{r}{2R}[ABC]$.
+
+## Useful observations
+- The cevians from each vertex to the opposite touch point concur at the Gergonne point; the extouch triangle, where the excircles touch the sides, has its cevians concurrent at the Nagel point.
+- The tangent lengths $s - a$, $s - b$, $s - c$ linearize almost every incircle-length computation, and they are the most reused substitution in triangle geometry.
+- The area ratio $\frac{r}{2R}$ converts between the contact triangle and $ABC$, and it is at most $\frac14$, with equality for the equilateral triangle.
+
+## Applications
+Incircle tangency lengths, Gergonne-point configurations, and the triangle of the touch points.
+
+## Contest profile
+Standard at AIME and olympiad level for incircle-tangency lengths and Gergonne-point configurations.
+`,
+
+"excentral-triangle": String.raw`
+## Key forms
+- vertices $I_A$, $I_B$, $I_C$ — the three excenters
+- $I$ is the orthocenter of $I_AI_BI_C$, and $ABC$ is its orthic triangle
+- angles $90^\circ - \dfrac A2$, $90^\circ - \dfrac B2$, $90^\circ - \dfrac C2$ at $I_A$, $I_B$, $I_C$
+- sides $4R\cos\dfrac A2$, $4R\cos\dfrac B2$, $4R\cos\dfrac C2$, circumradius $R_{\text{ex}} = 2R$
+- $[I_AI_BI_C] = \dfrac{2R}{r}[ABC] = 2Rs$
+
+## Conditions
+$I_A$, $I_B$, $I_C$ are the centers of the excircles opposite $A$, $B$, $C$ of triangle $ABC$, with circumradius $R$, inradius $r$, and semiperimeter $s$.
+
+## Why it works
+At each vertex the internal and external bisectors are perpendicular. The line $I_BI_C$ is the external bisector at $A$, and $AI$ is the internal bisector, so $AI \perp I_BI_C$: $A$ is the foot of the altitude from $I_A$. The same holds at $B$ and $C$, so $I$ is the orthocenter of $I_AI_BI_C$ and $ABC$ is its orthic triangle. By the [[incenter-excenter-lemma|incenter-excenter lemma]], the arc midpoints of $ABC$ are the midpoints of the sides of $I_AI_BI_C$.
+
+The circle through the three altitude feet $A$, $B$, $C$ of a triangle is its nine-point circle, so the circumcircle of $ABC$, of radius $R$, is the nine-point circle of the excentral triangle, whose radius is half its circumradius. Hence $R_{\text{ex}} = 2R$. The external bisectors at $B$ and $C$ meet at $I_A$ with angle $180^\circ - \left(90^\circ - \frac B2\right) - \left(90^\circ - \frac C2\right) = 90^\circ - \frac A2$, so the Law of Sines gives $I_BI_C = 2(2R)\sin\left(90^\circ - \frac A2\right) = 4R\cos\frac A2$.
+
+## Useful observations
+- Treating $ABC$ as the orthic triangle of the excenters imports the whole orthocentric toolkit: reflections of the orthocenter, the nine-point circle, and every orthic-triangle fact, by renaming.
+- The area is $2Rs$ because the excentral triangle has circumradius $2R$ and the product of its sides $64R^3\cos\frac A2\cos\frac B2\cos\frac C2 = 16R^2s$, and $r\,[I_AI_BI_C] = 2R\,[ABC]$ is the same fact written with $[ABC] = rs$.
+- It is the same configuration as the orthic triangle seen from the other side: starting from any acute triangle, the triangle of its excenters has it as the orthic triangle.
+
+## Applications
+Problems about incenters, excenters, and arc midpoints that become orthocentric configurations, and the radius, sides, and area of the triangle of excenters.
+
+## Contest profile
+An olympiad configuration for excenter and bisector problems. Spotting that $ABC$ is the orthic triangle of its excenters unlocks every orthocenter fact already known.
+`,
 
 "reims-theorem": String.raw`## Why it works
 Two circles meet at $P,Q$; a line through $P$ hits them at $A,C$ and a line through $Q$ hits them at $B,D$. Inscribed angles on the shared chords give $\angle BAP = \angle BQP$ and $\angle DCP = \angle DQP$; since $A,P,C$ and $B,Q,D$ are each collinear, those are corresponding angles for $AB$ and $CD$ cut by transversal $AC$, forcing $AB \parallel CD$. Reversing the chase gives the converse.
@@ -3445,45 +4389,111 @@ When four lines (two pairs of opposite sides plus the diagonals) appear, find $M
 ## On contests
 A staple olympiad configuration; recognizing a complete quadrilateral and naming its [[miquels-theorem|Miquel]] point is frequently the decisive first step.`,
 
-"ngon-vertex-distance-product": String.raw`## Why it works
-Place the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and the point at $P = Re^{i\theta}$. Since $\prod_k (z - \zeta^k) = z^n - 1$, the product of the $n$ distances is $R^n\,|z^n - 1| = 2R^n\left|\sin\frac{n\theta}{2}\right|$.
+"ngon-vertex-distance-product": String.raw`
+## Key forms
+- $\alt{\prod_{k=1}^{n} PV_k}{PV_1 PV_2 \cdots PV_n} = 2R^n\left|\sin\frac{n\theta}{2}\right|$ — the product of the distances from a point $P$ on the circumcircle of a regular $n$-gon to its vertices, with $\theta$ the angle of $P$ measured from one vertex
+- $\le 2R^n$ — the maximum, reached when $P$ is the midpoint of an arc between two adjacent vertices
+- $0$ — the value when $P$ is a vertex
+- $nR^{n-1}$ — a different statement: the product of the distances from one fixed vertex to the other $n - 1$ vertices
 
-## How to use it
-Read the extremes straight off the sine: the product is $0$ when $P$ is a vertex and reaches its maximum $2R^n$ when $P$ is an arc midpoint (there $\frac{n\theta}{2}$ is an odd multiple of $\frac{\pi}{2}$). Keep it separate from the fixed-vertex product, which is always $nR^{n-1}$.
+## Conditions
+$P$ lies on the circumcircle of radius $R$ of a regular $n$-gon.
 
-## On contests
-An AIME/olympiad roots-of-unity technique for "product of distances from a point on the circle to all the vertices" problems; turning the geometry into $z^n - 1$ is the whole move.`
+## Why it works
+Place the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and the point at $P = Re^{i\theta}$. Since $\prod_k (z - \zeta^k) = z^n - 1$, the product of the $n$ distances is $R^n\,|z^n - 1|$. Writing $z = e^{i\theta}$ and using $|e^{i\phi} - 1| = 2\left|\sin\frac\phi2\right|$ gives $R^n \cdot 2\left|\sin\frac{n\theta}{2}\right|$.
+
+## Useful observations
+- The extremes are read straight off the sine: it is $0$ at a vertex and equal to $1$ when $\frac{n\theta}{2}$ is an odd multiple of $\frac\pi2$.
+- The fixed-vertex product $nR^{n-1}$ is the value of the derivative of $z^n - 1$ at a root, a separate computation that should not be confused with this one.
+
+## Applications
+Products of distances from a point on a circle to the vertices of a regular polygon, and the extremes of such products.
+
+## Contest profile
+A roots-of-unity technique for AIME and olympiad problems about products of distances to the vertices; turning the geometry into $z^n - 1$ is the whole step.
+`
 
 });
 
 Object.assign(window.MATH_DETAILS, {
 
-"max-rectangle-in-triangle": String.raw`## Why it works
-Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1-t)b$, so the rectangle's area is $(t h)\,(1-t)b = bh\,t(1-t)$. That is largest at $t=\tfrac12$, giving $\tfrac{bh}{4}=\tfrac12[\triangle]$.
+"max-rectangle-in-triangle": String.raw`
+## Key forms
+- $A^{\max}_{\text{rectangle}} = \frac12[\triangle]$ — the largest rectangle inscribed in a triangle with one side on a chosen base has half the triangle's area
+- width $\frac b2$ and height $\frac h2$ — its top edge lies on the midline, and it spans the midsegment
+- $A(t) = bh\,t(1 - t)$ — the area of the rectangle whose top edge is a fraction $t$ of the way up to the apex
 
-## How to use it
-Spot the "largest rectangle inside a triangle" setup and answer half the area at once; for the actual dimensions, put the top edge on the midline (it spans the midsegment), making the width half the base and the height half the altitude. The same $t(1-t)$ maximization handles a rectangle inscribed under any straight slanted boundary.
+## Conditions
+One side of the rectangle lies on a side of the triangle chosen as the base, and the other two corners lie on the other two sides. The ratio one half is the same for every choice of base.
 
-## On contests
-A recurring optimization one-liner on AMC and early AIME problems — knowing the maximum is exactly half the triangle's area (and where the rectangle sits) skips the calculus entirely.`,
+## Why it works
+Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, so the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$.
 
-"triangle-sin2-sum-ratio": String.raw`## Why it works
-Both halves factor, and almost everything cancels. Using $A+B+C=180^\circ$, the numerator collapses to $4\sin A\sin B\sin C$ and the denominator to $4\cos\frac A2\cos\frac B2\cos\frac C2$. Writing $\sin A = 2\sin\frac A2\cos\frac A2$ in the numerator lets every cosine cancel, leaving $8\sin\frac A2\sin\frac B2\sin\frac C2$. That product is the standard $\frac{r}{4R}$, so the ratio is $8\cdot\frac{r}{4R} = \frac{2r}{R}$.
+## Useful observations
+- The same $t(1 - t)$ maximization handles a rectangle inscribed under any straight slanted boundary.
+- When a corner of the triangle is a right angle and the rectangle shares it, the same count applies: the rectangle's two free corners lie on the hypotenuse, and its area is again at most half the triangle's.
+- For the dimensions, the top edge sits on the midline, the segment joining the midpoints of the two slanted sides.
 
-## How to use it
-Reach for it when an expression mixes $\sin 2A$ terms with $\sin A$ terms in the same triangle — the quotient is a constant of the triangle, not something you need to expand. It also runs backwards: knowing the ratio pins down $\frac{r}{R}$, and $\frac{r}{R} \le \frac12$ (equality only for the equilateral triangle) turns it into a bound. The two factorizations are worth knowing separately, since each shows up on its own.
+## Applications
+Largest rectangles inscribed in triangles, and the largest area under a straight slanted line.
 
-## On contests
-Rare as a stated problem, common as the last step of one. If a computation leaves you holding $\frac{\sin 2A+\sin 2B+\sin 2C}{\sin A+\sin B+\sin C}$, stop expanding and substitute $\frac{2r}{R}$. Most appearances are AIME-and-up, usually where the answer is meant to come out in terms of $r$ and $R$.`,
+## Contest profile
+A recurring AMC and early AIME optimization one-liner; knowing the maximum is exactly half the area, and where the rectangle sits, skips the calculus.
+`,
 
-"half-angle-tangent-identity": String.raw`## Why it works
-The half-angles sum to $90^\circ$, so $\frac{A+B}{2}$ and $\frac C2$ are complementary: $\tan\frac{A+B}{2} = \cot\frac C2$. Expanding the left side with the tangent addition formula and clearing denominators gives exactly the symmetric relation. Nothing about triangles is used beyond the angle sum, so the identity holds for any three angles summing to $180^\circ$.
+"triangle-sin2-sum-ratio": String.raw`
+## Key forms
+- $\dfrac{\sin 2A + \sin 2B + \sin 2C}{\sin A + \sin B + \sin C} = \dfrac{2r}{R}$ — the ratio depends only on the radii
+- $\sin 2A + \sin 2B + \sin 2C = 4\sin A\sin B\sin C = \dfrac{2[ABC]}{R^2}$ — the numerator
+- $\sin A + \sin B + \sin C = \dfrac sR = 4\cos\frac A2\cos\frac B2\cos\frac C2$ — the denominator
 
-## How to use it
-Its real value is as a constraint. Substituting $\tan\frac A2 = \frac{r}{s-a}$ turns it into $r^2\left[\frac{1}{(s-a)(s-b)} + \frac{1}{(s-b)(s-c)} + \frac{1}{(s-c)(s-a)}\right] = 1$, i.e. $r^2 s = (s-a)(s-b)(s-c)$ — [[herons-formula|Heron's Formula]] in disguise. So it is a way to eliminate the angles from a problem stated in $r$ and $s$, or to supply the third equation when two half-angle tangents are known.
+## Conditions
+$A$, $B$, $C$ are the angles of a triangle, with inradius $r$, circumradius $R$, and semiperimeter $s$.
 
-## On contests
-Treat it as the half-angle analogue of $\tan A + \tan B + \tan C = \tan A\tan B\tan C$: a symmetric relation to invoke once you see half-angle tangents appearing together. It turns up in AIME-level triangle problems that mix the incircle with trigonometry, and in olympiad substitutions where $x=\tan\frac A2$ parametrizes the triangle.`,
+## Why it works
+For the numerator, sum-to-product gives $\sin 2A + \sin 2B = 2\sin(A + B)\cos(A - B) = 2\sin C\cos(A - B)$, and $\sin 2C = 2\sin C\cos C = -2\sin C\cos(A + B)$. Adding, $$2\sin C\bigl[\cos(A - B) - \cos(A + B)\bigr] = 4\sin A\sin B\sin C.$$ With $\sin A = \frac{a}{2R}$ this is $\frac{abc}{2R^3}$, and $abc = 4R[ABC]$ turns it into $\frac{2[ABC]}{R^2}$.
+
+For the denominator, $\sin A + \sin B + \sin C = \frac{a + b + c}{2R} = \frac sR$.
+
+The quotient is therefore $\frac{2[ABC]/R^2}{s/R} = \frac{2[ABC]}{Rs}$, and $[ABC] = rs$ makes it $\frac{2r}{R}$.
+
+## Useful observations
+- Because $\frac rR \le \frac12$, the ratio is at most $1$, with equality only for the equilateral triangle.
+- Read backwards, a known ratio pins down $\frac rR$.
+- The two factorizations are useful by themselves: each shows up in problems that never mention the quotient.
+
+## Applications
+Expressions that mix $\sin 2A$ terms with $\sin A$ terms in the same triangle, and values of $\frac rR$.
+
+## Contest profile
+Seldom the statement of a problem and often its last step: a computation that ends in this quotient is finished by replacing it with $\frac{2r}{R}$. It appears mostly at AIME level and above.
+`,
+
+"half-angle-tangent-identity": String.raw`
+## Key forms
+- $\tan\frac A2\tan\frac B2 + \tan\frac B2\tan\frac C2 + \tan\frac C2\tan\frac A2 = 1$ — for the angles of a triangle
+- $\tan\frac A2 = \dfrac{r}{s - a}$ — each half-angle tangent in terms of the inradius and a tangent length
+- $r^2s = (s - a)(s - b)(s - c)$ — the identity rewritten in $r$ and $s$
+
+## Conditions
+$A + B + C = 180^\circ$ with each angle positive, so every half-angle is acute and every tangent is positive. In the form with $r$ and $s$, the angles are those of a triangle with inradius $r$ and semiperimeter $s$.
+
+## Why it works
+The half-angles sum to $90^\circ$, so $\frac{A + B}{2}$ and $\frac C2$ are complementary and $\tan\frac{A + B}{2} = \cot\frac C2$. Expanding the left side with the tangent addition formula and clearing denominators gives exactly the symmetric relation. Nothing about triangles is used beyond the angle sum.
+
+Substituting $\tan\frac A2 = \frac{r}{s - a}$ turns it into $$r^2\left[\frac{1}{(s - a)(s - b)} + \frac{1}{(s - b)(s - c)} + \frac{1}{(s - c)(s - a)}\right] = 1.$$ The three fractions have the common denominator $(s - a)(s - b)(s - c)$ and numerators summing to $s$, so $r^2s = (s - a)(s - b)(s - c)$, which is [[herons-formula|Heron's Formula]] in disguise.
+
+## Useful observations
+- It is the half-angle analogue of $\tan A + \tan B + \tan C = \tan A\tan B\tan C$.
+- Three positive numbers $x, y, z$ with $xy + yz + zx = 1$ are exactly the half-angle tangents of some triangle, so $x = \tan\frac A2$ parametrizes triangles in olympiad substitutions.
+- As a constraint, it supplies the third half-angle tangent from the other two.
+
+## Applications
+Eliminating the angles from a problem stated in $r$ and $s$, and triangle inequalities written with half-angle tangents.
+
+## Contest profile
+Appears at AIME level in problems that mix the incircle with trigonometry, and in olympiad substitutions.
+`,
 
 "line-forms": String.raw`
 ## Why it works
@@ -3706,31 +4716,47 @@ Set up coordinates so the two planes meet along the $x$-axis at angle $\theta$. 
 Use it in the backwards direction almost always. A tilted plane cuts a solid and you are asked for the area of the section; projecting the section straight down onto a face of the solid usually gives a region you can compute with elementary geometry, and dividing by $\cos\theta$ recovers the real area. Getting $\theta$ is the only subtlety: it is the dihedral angle between the cutting plane and the plane you projected onto, most reliably found as the angle between their normal vectors using [[vector-dot-product|the dot product]], not by eye. A circle projects to an ellipse with the same major axis and the minor axis shortened by $\cos\theta$, so the area $\pi ab$ agrees with this rule.
 
 ## On contests
-This is the card that makes a class of AIME solids tractable without any integration. The slanted section of a cylinder is its own shadow on the base stretched by a constant factor, so its area follows from a [[circular-segment|circular segment]] and one cosine, and a slanted section of a box is found the same way, by projecting onto the bottom face and dividing by the cosine of the angle between the two normals. Two things it is not: a shadow cast by a nearby lamp, which is a central projection and scales by similar triangles instead, and the projection of a single length, which is [[vector-projection|the vector projection]] and carries no area at all.`,
+It makes a class of AIME solids tractable without any integration. The slanted section of a cylinder is its own shadow on the base stretched by a constant factor, so its area follows from a [[circular-segment|circular segment]] and one cosine, and a slanted section of a box is found the same way, by projecting onto the bottom face and dividing by the cosine of the angle between the two normals. Two things it is not: a shadow cast by a nearby lamp, which is a central projection and scales by similar triangles instead, and the projection of a single length, which is [[vector-projection|the vector projection]] and carries no area at all.`,
 
 
-"euler-line-parallel-side": String.raw`## Why it works
-Both centers sit above $BC$, so the line joining them is parallel to $BC$ exactly when their heights above it are equal. One of those heights costs nothing, because [[orthocenter-properties|the circumcenter's distance to a side]] is half the distance from the opposite vertex to the orthocenter, so the height of $O$ is $\frac{1}{2}AH$ whatever the triangle. Imposing that $H$ sits at the same height gives $HD = \frac{1}{2}AH$ directly, so the altitude from $A$ is cut in the ratio $2 : 1$ at the orthocenter.
-
-Converting to angles needs only the two standard distances, $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$. Equating $\cos A$ with $2\cos B\cos C$, then writing $\cos A = -\cos(B+C) = \sin B\sin C - \cos B\cos C$ and dividing through by $\cos B\cos C$, leaves $\tan B\tan C = 3$. The same two distances give the general ratio $AH : HD = (\tan B\tan C - 1) : 1$, which is worth carrying on its own: the parallel configuration is just its $2 : 1$ case.
-
-## How to use it
-Recognition runs in both directions, and which one you need is usually obvious from the problem. Told that the Euler line is parallel to a side, immediately write $\tan B\tan C = 3$ and treat it as one more equation in the angles; told two angles whose tangents multiply to $3$, you know the configuration without computing either center. The altitude reading is the one to reach for when the problem gives you a length rather than an angle, since it turns the whole configuration into a $2 : 1$ division of a segment you can already measure.
-
-Two cautions. The condition is symmetric in $B$ and $C$ but says nothing about $A$, so it pins down a one-parameter family, not a specific triangle. And $B = C$ collapses it: $\tan^2 B = 3$ forces $B = 60^\circ$ and an equilateral triangle, where $O$ and $H$ coincide and there is no line to be parallel to anything. An isosceles configuration is therefore never the intended reading.
-
+"euler-line-parallel-side": String.raw`
 ## Key forms
-- $\tan B\tan C = 3$ — the angle test, and the quickest way in
-- $AH : HD = (\tan B\tan C - 1) : 1$ — the general ratio along the $A$-altitude
+- $\tan B\tan C = 3$ — the angle test for the Euler line being parallel to $BC$, and the quickest way in
+- $AH : HD = (\tan B\tan C - 1) : 1$ — the general ratio along the $A$-altitude, with $D$ the foot
 - $AH = 2\,HD$ — the parallel case, the orthocenter two thirds of the way down from $A$
 - $\cos A = 2\cos B\cos C$ — the same statement before dividing through
-- $B = C$ — degenerate: forces equilateral, where the Euler line does not exist
 
-## On contests
-This is a configuration to recognize rather than a theorem to quote, and it earns its place because the parallel hypothesis looks like it says nothing computable until you convert it. Once $\tan B\tan C = 3$ is on the page it combines with the [[law-of-sines|Law of Sines]] or with $A + B + C = 180^\circ$ like any other angle relation. The altitude form pairs with the Euler line itself when a problem also involves the centroid, since $G$ is fixed at one third of the way from $O$ to $H$ along the line you have just placed.`,
+## Conditions
+$O$ and $H$ are the circumcenter and orthocenter of a non-equilateral triangle, so the Euler line $OH$ exists. The condition is symmetric in $B$ and $C$ and says nothing about $A$, so it describes a one-parameter family of triangles. If $B = C$ then $\tan^2B = 3$ forces $B = 60^\circ$ and an equilateral triangle, where $O$ and $H$ coincide and there is no line, so an isosceles configuration is never the intended reading.
+
+## Why it works
+Both centers sit above $BC$, so the line joining them is parallel to $BC$ exactly when their heights above it are equal. One of those heights costs nothing, because [[orthocenter-properties|the circumcenter's distance to a side]] is half the distance from the opposite vertex to the orthocenter, so the height of $O$ is $\frac12 AH$ whatever the triangle. Requiring $H$ to sit at the same height gives $HD = \frac12 AH$ directly, so the orthocenter cuts the $A$-altitude in the ratio $2 : 1$.
+
+Converting to angles needs only the two standard distances, $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$. Equating $\cos A$ with $2\cos B\cos C$, then writing $\cos A = -\cos(B + C) = \sin B\sin C - \cos B\cos C$ and dividing through by $\cos B\cos C$, leaves $\tan B\tan C = 3$. The same two distances give the general ratio $AH : HD = (\tan B\tan C - 1) : 1$, and the parallel configuration is its $2 : 1$ case.
+
+## Useful observations
+- Recognition runs in both directions. Told that the Euler line is parallel to a side, write $\tan B\tan C = 3$ as one more equation in the angles; told two angles whose tangents multiply to $3$, the configuration is known without computing either center.
+- The altitude reading is the one to use when the problem gives a length rather than an angle, since it turns the configuration into a $2 : 1$ division of a segment that can be measured.
+- The hypothesis combines with the [[law-of-sines|Law of Sines]] or with $A + B + C = 180^\circ$ like any other angle relation, and with the Euler line itself when a problem also involves the centroid, which sits one third of the way from $O$ to $H$.
+
+## Applications
+Triangles whose Euler line is parallel to a side, and relations between the angles $B$, $C$ and the position of the orthocenter on an altitude.
+
+## Contest profile
+A configuration to recognize rather than a theorem to quote: the parallel hypothesis looks incomputable until converted to $\tan B\tan C = 3$.
+`,
 
 
 "perpendicular-bisector-locus": String.raw`
+## Key forms
+- $PA = PB \iff P$ lies on the perpendicular bisector of $AB$ — the locus of points equidistant from two points is a line
+- the center of any circle through $A$ and $B$ lies on that line, so the three side bisectors of a triangle meet at its circumcenter
+- a fold that carries $A$ onto $B$ creases along the perpendicular bisector of $AB$
+- $PA : PB = k$ with $k \ne 1$ — the locus is an [[apollonius-circle|Apollonius circle]] instead of a line
+
+## Conditions
+The points $A$ and $B$ are distinct and in one plane; in space the locus is a plane.
+
 ## Why it works
 The perpendicular bisector is the mirror line of the segment, so its points are equally far from both ends, and the converse, which is the direction that gets used, holds too.
 
@@ -3738,39 +4764,55 @@ Let $M$ be the midpoint of $AB$. If $P$ lies on the perpendicular bisector, the 
 
 Conversely, if $PA = PB$, the triangles $PMA$ and $PMB$ have all three sides equal, so the angles at $M$ are equal; since they add to $180^\circ$, each is a right angle, and $P$ is on the perpendicular bisector. The locus is therefore the whole line and nothing else, which is why the converse may be used as freely as the theorem.
 
-In coordinates the same statement is a cancellation. With $A = (a_1, a_2)$ and $B = (b_1, b_2)$, squaring $PA = PB$ gives $$(x - a_1)^2 + (y - a_2)^2 = (x - b_1)^2 + (y - b_2)^2,$$ where the $x^2$ and $y^2$ terms cancel and leave one linear equation. That is [[distance-midpoint|the coordinate recipe]], and it is why an equidistance condition costs a point one degree of freedom rather than trapping it on a curve.
+In coordinates the same statement is a cancellation. With $A = (a_1, a_2)$ and $B = (b_1, b_2)$, squaring $PA = PB$ gives $$(x - a_1)^2 + (y - a_2)^2 = (x - b_1)^2 + (y - b_2)^2,$$ where the $x^2$ and $y^2$ terms cancel and leave one linear equation. That is [[distance-midpoint|the coordinate recipe]].
 
-## How to use it
-There are three readings, and recognizing which one a problem wants is most of the work.
-
-As a center-finder: any circle through $A$ and $B$ has its center on the perpendicular bisector of $AB$, so the bisectors of two chords meet at the center, and the three side bisectors of a triangle meeting at one point is why every triangle has a circumcenter. [[equal-chords-arcs|The chord version]] is the same fact inside a circle.
+## Useful observations
+- Equidistance from two points is one linear condition, so a point equidistant from $A$ and $B$ and subject to a second condition is pinned down to finitely many places.
+- Two chords of a circle have bisectors that meet at the center, the version on [[equal-chords-arcs|equal chords and arcs]].
 
 {{figure:center}}
 
-As a constraint: "equidistant from $A$ and $B$" is a line, so it meets any other condition in finitely many points. This is the form that hides. A problem says two circles have equal radii, or a point is the same distance from two centers, and the intended move is to draw the bisector.
-
-As a mirror: reflecting across it exchanges $A$ and $B$. A fold that brings $A$ onto another point $T$ has the perpendicular bisector of $AT$ as its crease, since the points of the crease do not move while $A$ lands on $T$. That is how paper-folding problems become geometry.
+- Reflecting across the bisector exchanges $A$ and $B$, which is why a paper fold that lands $A$ on a point $T$ has the perpendicular bisector of $AT$ as its crease.
 
 {{figure:fold}}
 
-When the ratio $PA : PB$ is a constant other than $1$, the locus bends into [[apollonius-circle|a circle]] instead, and the perpendicular bisector is the limiting case of those circles as the ratio approaches $1$.
+- With two lines in place of two points, the equidistant set is the angle bisector, the subject of [[bisector-closer-region|comparing distances to two sides]].
+- As the ratio $PA : PB$ approaches $1$, the Apollonius circles grow without bound and flatten toward the perpendicular bisector.
 
-## On contests
-It is used constantly and almost never named, which is why it is worth having a card at all. Ten problems here turn on it, nine of them AIME and none by it alone, and most reach it sideways: two circle centers placed on the bisector of a segment joining two others, or a fold whose crease is the bisector of the segment from a vertex to its landing point.
+## Applications
+Locating circumcenters and the centers of circles through two points, and describing the crease or the locus of points equidistant from two others.
 
-Once the bisector is drawn, the finish is usually the [[pythagorean-theorem|Pythagorean Theorem]] on the right triangle it creates. The tell is a phrase like "the same distance from" or "folded onto" rather than the words perpendicular bisector.
+## Contest profile
+Used constantly and rarely named: two circle centers placed on the bisector of a segment, or a fold whose crease is the bisector of the segment from a vertex to its landing point; the finish is usually the Pythagorean Theorem on the right triangle it creates.
 `,
 
-"cotangent-rule": String.raw`## Why it works
-Divide the two standard expressions for the same angle. The Law of Cosines gives $\cos A = \frac{b^2+c^2-a^2}{2bc}$, and the sine area formula $K = \frac12 bc \sin A$ rearranges to $\sin A = \frac{2K}{bc}$. Their quotient is $\frac{b^2+c^2-a^2}{2bc} \cdot \frac{bc}{2K}$, and the $bc$ cancels, leaving $\frac{b^2+c^2-a^2}{4K}$. Nothing deeper is involved, which is precisely the argument for writing it down once instead of rederiving it.
+"cotangent-rule": String.raw`
+## Key forms
+- $\cot A = \dfrac{b^2 + c^2 - a^2}{4K}$ — the cotangent of any angle from the sides and the area $K$
+- $\cot A + \cot B = \dfrac{c^2}{2K}$ — a sum of two cotangents leaves only the side opposite neither angle
+- $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$ — the relation among all three cotangents
 
-The corollary falls straight out: adding $\cot A$ and $\cot B$ puts $b^2+c^2-a^2$ over $4K$ next to $a^2+c^2-b^2$ over $4K$, and everything cancels except $2c^2$, giving $\frac{c^2}{2K}$. Note which side survives — it is the one opposite neither angle.
+## Conditions
+$a$, $b$, $c$ are the sides opposite $A$, $B$, $C$ and $K$ is the area of the triangle.
 
-## How to use it
-Reach for it the moment a cotangent of a triangle angle appears, because it converts the whole expression into side lengths and area, where ordinary algebra works. Sums are the common shape, and the corollary collapses each pair in one step. Its close relative $\cot A \cot B + \cot B \cot C + \cot C \cot A = 1$, which holds in every triangle, sits on [[brocard-angle|the Brocard angle card]] and is worth knowing alongside this one; the two answer different questions, since that one is a relation among the cotangents while this one evaluates each of them.
+## Why it works
+The Law of Cosines gives $\cos A = \frac{b^2 + c^2 - a^2}{2bc}$, and the sine area formula $K = \frac12 bc\sin A$ rearranges to $\sin A = \frac{2K}{bc}$. Their quotient is $\frac{b^2 + c^2 - a^2}{2bc} \cdot \frac{bc}{2K}$, and the $bc$ cancels, leaving $\frac{b^2 + c^2 - a^2}{4K}$.
 
-## On contests
-The model use asks for a ratio like $\frac{\cot C}{\cot A + \cot B}$ given a relation among $a^2$, $b^2$, and $c^2$: converting both cotangents turns it into $\frac{a^2+b^2-c^2}{2c^2}$, and the given relation finishes it. Such problems are usually tagged with the Law of Cosines and the sine area formula, because those are what they use, but a reader who knows this card does the conversion in one step instead of three.`,
+Adding $\cot A$ and $\cot B$ puts $b^2 + c^2 - a^2$ over $4K$ next to $a^2 + c^2 - b^2$ over $4K$. Everything cancels except $2c^2$, giving $\frac{c^2}{2K}$. The side that survives is the one opposite neither angle.
+
+The relation among all three follows from $A + B + C = 180^\circ$: $\cot C = -\cot(A + B) = \frac{1 - \cot A\cot B}{\cot A + \cot B}$, which rearranges to the stated sum of products.
+
+## Useful observations
+- Converting a cotangent turns the whole expression into side lengths and area, where ordinary algebra works, and sums collapse pair by pair.
+- A ratio such as $\dfrac{\cot C}{\cot A + \cot B} = \dfrac{a^2 + b^2 - c^2}{2c^2}$ depends only on the sides. If a problem gives $a^2 + b^2 = 5c^2$, the ratio is $2$ at once.
+- The relation among the three cotangents is the one used for [[brocard-angle|the Brocard angle]]; the two answer different questions, since that one is a relation while this one evaluates each cotangent.
+
+## Applications
+Cotangent expressions in a triangle, medians and cevians written with cotangents, and the Brocard angle.
+
+## Contest profile
+Problems that ask for a ratio of cotangents given a relation among $a^2$, $b^2$, and $c^2$ reduce to this card; they are usually tagged with the Law of Cosines and the sine area formula, and knowing this card does the conversion in one step instead of three.
+`,
 
 "rotation-center": String.raw`
 ## When to use
@@ -3841,18 +4883,33 @@ Watch the degenerate case. As $P$ slides to a vertex the three reflections conve
 ## On contests
 Olympiad material, and rarely the headline result — it appears as the step that turns a reflection condition into a collinearity, or the reverse. The practical value is knowing that the Simson line and the reflection line are the same object, so a problem stated with either can be attacked with facts about the other.`,
 
-"anticomplementary-triangle": String.raw`## Why it works
-Every statement follows from one homothety. The map centered at the centroid $G$ with ratio $-2$ sends $A$, $B$, $C$ to the vertices of $A'B'C'$, and the inverse map with ratio $-\frac12$ is exactly the one that produces the medial triangle. A homothety of ratio $-2$ doubles every length and negates direction, so sides are parallel and twice as long, the circumradius doubles, and the area quadruples.
+"anticomplementary-triangle": String.raw`
+## Key forms
+- $A' = B + C - A$, $B' = C + A - B$, $C' = A + B - C$ — the vertices of the anticomplementary triangle $A'B'C'$, whose medial triangle is $ABC$
+- sides parallel to those of $ABC$ and twice as long, so $R' = 2R$ and $[A'B'C'] = 4[ABC]$
+- $O' = H$ — the circumcenter of $A'B'C'$ is the orthocenter of $ABC$
+- $N' = O$ — the nine-point center of $A'B'C'$ is the circumcenter of $ABC$
+- $H' = 2O - H$ — the orthocenter of $A'B'C'$ is the reflection of $H$ over $O$, the de Longchamps point $L$
 
-The centers move by the same map, which is what makes them worth memorizing rather than deriving each time. The circumcenter of $A'B'C'$ is the orthocenter of $ABC$; the nine-point center of $A'B'C'$ is the circumcenter of $ABC$; and the orthocenter of $A'B'C'$ is the reflection of $H$ over $O$, the point usually called the de Longchamps point. Each of these is the image under the $-2$ homothety of the corresponding center one level down.
+## Conditions
+$ABC$ is any triangle, $G$ its centroid, $O$ its circumcenter, and $H$ its orthocenter.
 
-## How to use it
-Reach for it when a problem gives you a triangle whose midpoints are the interesting points, since naming the bigger triangle converts a statement about midpoints into a statement about vertices. For example, the circle tangent to the circumcircles of $AHB$, $BHC$, and $CHA$ turns out to be the circumcircle of the anticomplementary triangle, centered at $H$ with radius $2R$.
+## Why it works
+Every statement follows from one homothety. The map centered at the centroid $G$ with ratio $-2$ sends $A$, $B$, $C$ to the vertices of $A'B'C'$, and the inverse map with ratio $-\frac12$ is exactly the one that produces the medial triangle. A homothety of ratio $-2$ doubles every length and reverses direction, so the sides are parallel and twice as long, the circumradius doubles, and the area quadruples.
 
-The other direction is the useful one for centers. A fact about the orthocenter of a triangle is a fact about the circumcenter of its anticomplementary triangle, so an awkward $H$ can sometimes be traded for a comfortable $O$.
+The centers move by the same map. The circumcenter of $A'B'C'$ is the image of the circumcenter of $ABC$ taken one level down, and that is the orthocenter of $ABC$: the perpendicular bisectors of the sides of $A'B'C'$ are the altitudes of $ABC$, because $A$, $B$, $C$ are the midpoints. The circumcircle of the medial triangle $ABC$ is the nine-point circle of $A'B'C'$, so its nine-point center is $O$. The [[euler-line-ratio|Euler line]] of $A'B'C'$ passes through $G$, $O' = H$, and $N' = O$, and $H' = 3G - 2O' = 3G - 2H = 2O - H$.
 
-## On contests
-Olympiad, and the occasional hard AIME geometry problem where a configuration is built on midpoints. It is a relabeling rather than a theorem, which is its strength: it costs nothing to apply and it makes [[euler-line-ratio|the Euler line]] relationships between the two triangles immediate.`,
+## Useful observations
+- A fact about the orthocenter of a triangle is a fact about the circumcenter of its anticomplementary triangle, so an awkward $H$ can be traded for a comfortable $O$.
+- The circle centered at $H$ with radius $2R$, the circumcircle of $A'B'C'$, is tangent to the circumcircles of $AHB$, $BHC$, and $CHA$. Each of those has radius $R$, and the center of the one on $BC$ is $B + C$ (with $O$ as origin), whose distance to $H = A + B + C$ is $R$.
+- It is a relabeling rather than a theorem, which is its strength: it costs nothing to apply, and it makes the Euler line relationships between the two triangles immediate.
+
+## Applications
+Configurations built on midpoints, where naming the bigger triangle turns statements about midpoints into statements about vertices, and trades between $H$ and $O$.
+
+## Contest profile
+Olympiad and the occasional hard AIME geometry problem built on midpoints.
+`,
 
 "ptolemy-second-theorem": String.raw`## Why it works
 The quickest route is the same one that proves the first theorem: invert at $A$. Inversion sends $B$, $C$, $D$ to collinear points, and distances transform by $B'C' = \frac{BC \cdot k}{AB \cdot AC}$. Writing the collinearity $B'C' + C'D' = B'D'$ gives Ptolemy's product formula, and comparing the two ratios in which $C'$ divides $B'D'$ gives this one. Both are the same picture, read for a sum or for a ratio.
@@ -3890,16 +4947,30 @@ Read backwards it is a construction: to place the incenter, draw any such circle
 ## On contests
 Olympiad only, and among the more specialized results in this library. It is here because the configuration is recognizable on sight and almost impossible to make progress on without the lemma, which is the worst combination to meet unprepared.`,
 
-"conway-circle": String.raw`## Why it works
-Work out one tangent length and the rest follows. At vertex $A$, both extensions run out to distance $a$ beyond $A$, and the tangent length from $A$ to the incircle is $s - a$; adding $a$ gives $s$ for the distance from $A$ along either side to the new points. So all six points sit at tangent-length $s$ from the incircle along the sidelines, and a point at tangent length $s$ from a circle of radius $r$ is at distance $\sqrt{r^2 + s^2}$ from its center. Every one of the six is that far from $I$, so they are concyclic about $I$ with radius $\sqrt{r^2 + s^2}$.
+"conway-circle": String.raw`
+## Key forms
+- extend each side through both of its endpoints by the length of the side opposite the vertex there: the six endpoints are concyclic
+- the circle's center is the incenter $I$
+- $\rho = \sqrt{r^2 + s^2}$ — its radius, in terms of the inradius $r$ and the semiperimeter $s$
 
-That is also why the construction is not arbitrary. Extending each side by the length of the side opposite is precisely what makes $(s-a) + a$ come out the same at all three vertices, and any other extension rule breaks the equality.
+## Conditions
+The extensions run along the sidelines, beyond each vertex, by the length of the opposite side; at each vertex both sides are extended.
 
-## How to use it
-It is a fact to recognize rather than a tool to apply: if a problem extends the sides of a triangle by the opposite sides, stop and use the circle instead of chasing six points. The radius formula turns the configuration into $r$ and $s$, both of which come straight from [[inradius-area|the inradius formula]] and the perimeter, so the answer is usually two lines away.
+## Why it works
+Work out one tangent length and the rest follows. At vertex $A$, both extensions run out to distance $a$ beyond $A$, and the tangent length from $A$ to the incircle is $s - a$; adding $a$ gives $s$ for the distance from $A$ along either side to the new points. So all six points sit at tangent length $s$ from the incircle along the sidelines, and a point at tangent length $s$ from a circle of radius $r$ is at distance $\sqrt{r^2 + s^2}$ from its center. Every one of the six is that far from $I$, so they are concyclic about $I$ with radius $\sqrt{r^2 + s^2}$.
 
-## On contests
-Reachable from the AMC upward, because everything it needs — semiperimeter, inradius, tangent lengths — is standard. The construction is distinctive enough that recognizing it is most of the work; the arithmetic afterwards is elementary.`,
+That is also why the construction is not arbitrary. Extending each side by the length of the side opposite is precisely what makes $(s - a) + a$ come out the same at all three vertices, and any other extension rule breaks the equality.
+
+## Useful observations
+- If a problem extends the sides of a triangle by the opposite sides, the circle replaces chasing six points.
+- The radius formula turns the configuration into $r$ and $s$, both of which come straight from [[inradius-area|the inradius formula]] and the perimeter.
+
+## Applications
+Constructions that extend the sides of a triangle by the lengths of the opposite sides, and the radius of the resulting circle.
+
+## Contest profile
+Reachable from the AMC upward, since the tools are standard (semiperimeter, inradius, tangent lengths); the construction is distinctive enough that recognizing it is most of the work.
+`,
 
 "japanese-theorem": String.raw`## Why it works
 Each incenter is located by [[incenter-excenter-lemma|the arc-midpoint lemma]]: the incenter of $\triangle ABC$ lies on the bisector from $B$ at a position governed by the arc midpoint of $AC$. Placing all four incenters that way and comparing the angles they make shows each pair of adjacent ones subtends a right angle, which is the rectangle.
@@ -3989,18 +5060,29 @@ Shows up whenever a lattice figure has something punched out of it — a frame, 
 `,
 
 "equiangular-hexagon-area": String.raw`
+## Key forms
+- $A = \frac{\sqrt3}{4}\left[(a + b + c)^2 - a^2 - c^2 - e^2\right]$ — the area of an equiangular hexagon with consecutive sides $a, b, c, d, e, f$
+- $a - d = e - b = c - f$ — the only condition the six sides must satisfy
+- for the regular hexagon of side $1$ the formula gives $\frac{\sqrt3}{4}(9 - 1 - 1 - 1) = \frac{3\sqrt3}{2}$
+
+## Conditions
+All six interior angles are $120^\circ$, and the sides are labeled in order around the hexagon. The squares subtracted are the alternating triple $a$, $c$, $e$ that begins with the first side of the sum $a + b + c$.
+
 ## Why it works
 All six angles are $120^\circ$, so consecutive sides turn by $60^\circ$ and the six side vectors point along only three directions. Summing them to zero gives one condition, which in the labeling $a, b, c, d, e, f$ reads $a - d = e - b = c - f$. That is the only constraint: an equiangular hexagon has three free side lengths, not one, and is usually nowhere near regular.
 
-Now extend sides $b$, $d$, and $f$ until they meet. Because the directions repeat every three sides, the three lines make an equilateral triangle, and what has been added at each corner is itself equilateral, of sides $a$, $c$, and $e$. The triangle's side is $a + b + c$ — the side carrying $b$ is flanked by the corners cut at $a$ and at $c$ — so subtracting gives the formula. The closure condition is exactly what makes $a + b + c$, $c + d + e$, and $e + f + a$ agree, which is why the construction is consistent.
+Now extend sides $b$, $d$, and $f$ until they meet. Because the directions repeat every three sides, the three lines make an equilateral triangle, and what has been added at each corner is itself equilateral, of sides $a$, $c$, and $e$. The triangle's side is $a + b + c$, since the side carrying $b$ is flanked by the corners cut at $a$ and at $c$, so subtracting the three corners gives the formula. The closure condition is exactly what makes $a + b + c$, $c + d + e$, and $e + f + a$ agree, which is why the construction is consistent.
 
-## How to use it
-Get the labeling right and the rest is arithmetic: the squares subtracted are the alternating triple $a$, $c$, $e$ that starts with the first side of the sum $a + b + c$. On a regular hexagon of side $1$ it reads $\frac{\sqrt3}{4}(9 - 1 - 1 - 1) = \frac{3\sqrt3}{2}$, which is the check to run whenever you are unsure which three sides to square.
+## Useful observations
+- Given five sides, the sixth follows from $a - d = e - b = c - f$ directly, with no system to solve.
+- The regular hexagon is the check on the labeling: if the formula does not return $\frac{3\sqrt3}{2}$ for side $1$, the wrong three sides were squared.
+- On a triangular grid the same triangle-minus-corners picture counts unit triangles, the count that [[picks-triangular-lattice|Pick's Theorem on the triangular grid]] reproduces by counting dots.
 
-If a problem gives five sides, do not solve a system — use $a - d = e - b = c - f$ to read off the sixth directly.
+## Applications
+Areas of equiangular hexagons given their sides, and missing sides from the closure condition.
 
-## On contests
-The standard way in is being handed six sides with all angles $120^\circ$ and asked for the area; decomposing by hand into trapezoids works but is slow and error-prone. The same triangle-minus-corners picture is what makes an equiangular hexagon on a triangular grid tractable, where [[picks-triangular-lattice|the triangular-grid Pick]] gives the same number by counting dots.
+## Contest profile
+Usually posed as six sides with all angles $120^\circ$ and a request for the area; cutting the hexagon into trapezoids by hand works but is slow and error-prone.
 `,
 
 "median-doubling": String.raw`
@@ -4417,7 +5499,7 @@ AMC problems count the obtuse or acute triangles with given sides; AIME problems
 
 "bisector-closer-region": String.raw`
 ## When to use
-A random point in a triangle, square, or other region, and a question about whether it is closer to one side than to another, or which side it is closest to. Comparing distances to two points instead uses the perpendicular bisector of the segment joining them, the same idea for points.
+A random point in a triangle, square, or other region, and a question about whether it is closer to one side than to another, or which side it is closest to. Comparing distances to two points instead uses the [[perpendicular-bisector-locus|perpendicular bisector]] of the segment joining them, the same idea for points.
 
 ## How
 1. Identify the two sides being compared and the angle they form.
@@ -4864,12 +5946,11 @@ A MATHCOUNTS and AMC 8 and 10 foundation, usually used silently to show two leng
 ## Key forms
 - corresponding angles are equal, and alternate interior angles are equal — for a transversal across two parallel lines
 - co-interior angles, on the same side between the lines, add up to $180^\circ$
-- each of these facts in reverse proves two lines parallel
 - $\angle A + \angle B + \angle C = 180^\circ$ — the angle sum of a triangle
 - $\angle ACD = \angle A + \angle B$ — the exterior angle at $C$, formed by extending $BC$ to $D$, equals the sum of the two remote interior angles
 
 ## Conditions
-The parallel-line facts need the two lines to be parallel; the converses need only the angle relation.
+The angle facts need the two lines to be parallel; the converses, which prove lines parallel, are on [[parallel-by-angle-sum|Proving Lines Parallel by Angle Sums]].
 
 ## Why it works
 Through $C$ draw the line parallel to $AB$. The angle between it and $CA$ equals $\angle A$, as alternate angles, and the angle between it and the extension $CD$ equals $\angle B$, as corresponding angles. Together these two angles fill the exterior angle $ACD$, so $\angle ACD = \angle A + \angle B$. Since $\angle ACD$ and $\angle ACB$ together make a straight angle, $\angle A + \angle B + \angle ACB = 180^\circ$.
@@ -4886,5 +5967,140 @@ Finding unknown angles in figures with parallel lines and triangles, and proving
 
 ## Contest profile
 A MATHCOUNTS and AMC 8 and 10 foundation, the rules every angle chase is built from.
+`,
+
+"triangle-similarity": String.raw`
+## Key forms
+- AA — two pairs of equal angles; the third pair is then equal too
+- SAS — two pairs of sides in the same ratio, with equal angles between them
+- SSS — all three pairs of sides in the same ratio
+- $DE \parallel BC \Rightarrow \triangle ADE \sim \triangle ABC$ — a line parallel to one side, with $D$ on $AB$ and $E$ on $AC$, cuts off a similar triangle
+- similar with ratio $k$ — every length scales by $k$ and every area by $k^2$
+
+## Conditions
+The vertices must correspond in order: $\triangle ADE \sim \triangle ABC$ pairs $A$ with $A$, $D$ with $B$, and $E$ with $C$. Two sides in proportion with an equal angle not between them can fit two different shapes, just as SSA fails for congruence.
+
+## Why it works
+Each test reduces to a congruence test after scaling. Scale the first triangle by the ratio $k$ of one pair of corresponding sides. For SAS and SSS the scaled copy then has the same sides and included angle, or the same three sides, as the second triangle, so the two are congruent by SAS or SSS, and the original triangles have the same shape. For AA, scale so that the side between the two equal angles matches; ASA makes the copy congruent to the second triangle.
+
+A line parallel to $BC$ makes corresponding angles with $AB$ and $AC$, so $\angle ADE = \angle ABC$ and $\angle AED = \angle ACB$, and AA applies.
+
+## Useful observations
+- AA is the test contests use most, because equal angles come for free from parallel lines, inscribed angles, and shared angles.
+- The [[altitude-hypotenuse|altitude to the hypotenuse]] of a right triangle splits it into two triangles similar to the whole.
+- Corresponding altitudes, medians, angle bisectors, inradii, and circumradii all scale by the same ratio $k$, and areas by $k^2$.
+- Two chords crossing inside a circle cut off similar triangles, which is where [[power-of-a-point|Power of a Point]] comes from.
+
+## Applications
+Finding unknown lengths from a known ratio, proving proportions, and comparing areas of figures of the same shape.
+
+## Contest profile
+The most-used tool in AMC 8, 10, and 12 geometry, almost always through AA from parallel lines or inscribed angles.
+`,
+
+"trapezoid-consecutive-angles": String.raw`
+## Key forms
+- $\angle A + \angle D = 180^\circ$ and $\angle B + \angle C = 180^\circ$ — in trapezoid $ABCD$ with bases $AB \parallel DC$ and legs $AD$ and $BC$
+- conversely, if $\angle A + \angle D = 180^\circ$ in quadrilateral $ABCD$, then $AB \parallel DC$
+
+## Conditions
+The angles must be the two at the ends of the same leg, which are consecutive angles of the quadrilateral; the angles at the ends of a base need not add to $180^\circ$.
+
+## Why it works
+The leg $AD$ crosses the parallel lines $AB$ and $DC$, and $\angle A$ and $\angle D$ are the two interior angles on the same side of it, so they add to $180^\circ$; the same holds along $BC$.
+
+## Useful observations
+- A parallelogram is a trapezoid twice over, so every pair of its consecutive angles adds to $180^\circ$.
+- The four angles of a trapezoid add to $360^\circ$, two pairs of $180^\circ$.
+- The test for parallel sides is the same fact read backward, as on [[parallel-by-angle-sum|Proving Lines Parallel by Angle Sums]].
+
+## Applications
+Finding the angles of trapezoids and parallelograms, and recognizing parallel sides in a quadrilateral from its angles.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 fact, usually one step in an angle or area computation on a trapezoid.
+`,
+
+"parallel-by-angle-sum": String.raw`
+## Key forms
+- co-interior angles adding to $180^\circ$ $\Rightarrow$ the lines are parallel
+- equal alternate interior angles, or equal corresponding angles $\Rightarrow$ the lines are parallel
+- $\measuredangle(\ell, t) = \measuredangle(m, t) \pmod{180^\circ} \iff \ell \parallel m$ — the directed-angle form, with no cases
+
+## Conditions
+The two angles must be at the two crossing points of one transversal, on the same side of it and between the two lines. In the directed form, angles are measured from the transversal to each line in the same rotational direction.
+
+## Why it works
+Suppose the co-interior angles add to $180^\circ$ but the lines meet at a point $P$. Then the transversal and the two lines form a triangle whose angles at the crossing points already add to $180^\circ$, which leaves nothing for the angle at $P$, so no such point exists and the lines are parallel. Equal alternate angles say the same thing, since an angle and its neighbor on a line add to $180^\circ$.
+
+Directed angles remove the "same side" bookkeeping: the rotation from $t$ to $\ell$ and the rotation from $t$ to $m$ agree modulo $180^\circ$ exactly when $\ell$ is $m$ moved without turning.
+
+## Useful observations
+- In quadrilateral $ABCD$, $\angle A + \angle B = 180^\circ$ means $AD \parallel BC$, the converse half of [[trapezoid-consecutive-angles|Consecutive Angles of a Trapezoid]].
+- The forward direction, from parallel lines to angle facts, is on [[parallel-exterior-angles|Parallel Lines & the Exterior Angle Theorem]].
+- In an olympiad proof, writing the test as $\measuredangle(\ell, t) = \measuredangle(m, t)$ makes it hold in every configuration of the figure at once.
+
+## Applications
+Showing that two lines in a figure are parallel, recognizing trapezoids and parallelograms from their angles, and parallelism steps in angle chases.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 tool in its undirected form, and in its directed form a standard line in olympiad angle chases.
+`,
+
+"gliding-principle": String.raw`
+## Key forms
+- if $F$ and $F'$ are directly similar and $P = (1 - \lambda)X + \lambda X'$ for every pair of corresponding points $X$, $X'$, then the points $P$ form a figure directly similar to $F$, or all coincide
+- $\frac{AP}{AA'} = \frac{BQ}{BB'} = \frac{CR}{CC'} \Rightarrow \triangle PQR \overset{+}{\sim} \triangle ABC$ — the triangle case
+- the midpoints of $AA'$, $BB'$, $CC'$ for directly similar triangles $ABC$ and $A'B'C'$ form a directly similar triangle, or a single point
+- if $X(t)$ and $Y(t)$ move along lines at constant velocities, then $(1 - \lambda)X(t) + \lambda Y(t)$ moves along a line at constant velocity, or stays still
+
+## Conditions
+The two figures must be directly similar, related by a rotation and a scaling with no reflection. For oppositely similar figures the division points need not form a similar figure.
+
+## Why it works
+In complex numbers a direct similarity is a map $X' = sX + t$ for fixed complex numbers $s \ne 0$ and $t$. Then $$P = (1 - \lambda)X + \lambda X' = (1 - \lambda + \lambda s)X + \lambda t,$$ which is again a map of the same form, a direct similarity applied to $X$, so the points $P$ form a copy of $F$ rotated and scaled. If the multiplier $1 - \lambda + \lambda s$ is $0$, every $P$ equals $\lambda t$ and the figure collapses to one point.
+
+The moving-point form is the same algebra in time: with $X(t) = X_0 + tu$ and $Y(t) = Y_0 + tv$, the point $(1 - \lambda)X(t) + \lambda Y(t) = \left((1 - \lambda)X_0 + \lambda Y_0\right) + t\left((1 - \lambda)u + \lambda v\right)$ moves with a constant velocity.
+
+{{figure:moving}}
+
+## Useful observations
+- Two equilateral triangles with the same orientation have the midpoints of their corresponding vertices forming another equilateral triangle, or a single point.
+- When $F'$ is $F$ rotated about a point $O$, the division points form $F$ rotated and scaled about $O$, which locates the center of a [[spiral-similarity|spiral similarity]].
+- In locus problems, two points moving uniformly on fixed lines make every point in a fixed ratio between them trace a line, so the locus is found from two positions.
+
+## Applications
+Olympiad configurations built from directly similar figures, and loci of points defined by fixed ratios between moving points.
+
+## Contest profile
+An olympiad tool that turns a claim about many division points into one similarity, usually proved in one line with complex numbers.
+`,
+
+"axis-stretch-area": String.raw`## Key forms
+- $(x, y) \mapsto (x, ky)$ — stretching the $y$-direction by $k$ multiplies the area of every region by $|k|$
+- $(x, y) \mapsto (px, qy)$ — stretching both axes multiplies every area by $|pq|$
+- $\dfrac{[S']}{[T']} = \dfrac{[S]}{[T]}$ — the ratio of the areas of any two regions does not change
+- $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$ is the unit circle stretched by $a$ and $b$, so its area is $\pi ab$
+- in space, stretching one axis by $k$ multiplies every volume by $|k|$, so the ellipsoid with semi-axes $a$, $b$, $c$ has volume $\frac43\pi abc$
+
+## Conditions
+The stretch is by a constant factor along one fixed direction (a coordinate axis, or any line direction), and the other coordinate is untouched. A negative factor also flips the figure and still multiplies area by $|k|$. The region can be any shape that has an area.
+
+## Why it works
+Cut the region into thin strips parallel to the stretched direction. Each strip is, to as fine an approximation as you like, a rectangle whose side along the stretch grows by $k$ and whose other side stays the same, so its area is multiplied by $k$. Adding the strips up multiplies the whole area by $k$. In integral form, a region with height $h(x)$ above each $x$ has area $\int h(x)\,\mathrm{d}x$, and the stretched region has height $kh(x)$, so its area is $\int kh(x)\,\mathrm{d}x = k\int h(x)\,\mathrm{d}x$.
+
+The same slicing is the idea behind [[cavalieris-principle|Cavalieri's Principle]]: areas, and volumes, are determined by what happens along one direction, so a stretch in that direction scales them by that factor. Stretching both axes is two stretches in a row, which multiplies the area by $p$ and then by $q$. For a general linear map the factor is the absolute value of the determinant, and a stretch is the case of a diagonal matrix.
+
+## Useful observations
+- A circle of radius $a$ stretched vertically by $\frac ba$ becomes the ellipse with semi-axes $a$ and $b$, and its area $\pi a^2 \cdot \frac ba = \pi ab$ is the proof of the ellipse's area formula.
+- Because every area is scaled by the same factor, any question about a ratio of areas inside an ellipse has the same answer for the circle it came from. In particular the largest triangle inscribed in an ellipse is the image of an equilateral triangle in a circle, with area $\frac{3\sqrt3}{4}ab$, and the largest inscribed rectangle is the image of a square, with area $2ab$.
+- A stretch keeps lines straight, parallel lines parallel, and ratios along each line, so midpoints, centroids, and tangency carry over. It does not keep lengths in other directions, angles, or circles, so a perpendicularity or a distance in the problem is not preserved. This is the reasoning behind [[affine-transformations|the affine-transformation method]].
+- A shear $(x, y) \mapsto (x + ty, y)$ moves points sideways but keeps every area, which is why a triangle can slide its apex along a line parallel to its base.
+
+## Applications
+Areas and volumes of ellipses and ellipsoids, area ratios and extremal figures inside an ellipse, and area computations that become easy after turning an ellipse into a circle.
+
+## Contest profile
+Used on AIME problems about an ellipse and an inscribed or circumscribed figure, where it turns a hard area ratio into a circle computation.
 `
 });

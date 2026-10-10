@@ -299,7 +299,7 @@ Two problems here, both AIME, one solved by it alone; the other adds [[casework-
 
 "lagrange-interpolation": String.raw`
 ## When to use
-Problems that give a polynomial's degree and its values at a few points with no visible pattern, such as "the quadratic with $P(0) = 1$, $P(1) = 2$, $P(3) = 10$; find $P(5)$"; remainder problems, since the remainder of $P(x)$ modulo $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$; and existence questions, since a polynomial with too many prescribed values cannot exist. When the values follow a simple rule, [[subtract-and-factor|subtracting the rule and factoring]] is shorter.
+Problems that give a polynomial's degree and its values at a few points with no visible pattern, such as "the quadratic with $P(0) = 1$, $P(1) = 2$, $P(3) = 10$; find $P(5)$"; remainder problems, since the remainder of $P(x)$ modulo $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$; and existence questions, since a polynomial with too many prescribed values cannot exist. When the values follow a simple rule, [[subtract-and-factor|turning the known values into known roots]] is shorter.
 
 ## How
 1. Count: a polynomial of degree at most $n - 1$ is fixed by $n$ values, so check the data determines it.
@@ -1983,7 +1983,7 @@ Symmetric inequalities of the form $\sum f(x_i) \ge C$ or $\le C$ in which every
 For positive $x$, $y$, $z$ with $x + y + z = 1$, prove $\frac1x + \frac1y + \frac1z \ge 9$. The tangent to $\frac1x$ at $x = \frac13$ is $6 - 9x$, and $\frac1x - (6 - 9x) = \frac{(3x - 1)^2}{x} \ge 0$. Adding the three bounds gives $18 - 9(x + y + z) = 9$.
 
 ## Why it works
-The constraint $\sum x_i = s$ makes any linear function of the $x_i$ sum to a constant. So if each term $f(x_i)$ is at least $L(x_i)$, the sum is at least $\sum L(x_i)$, which depends only on $s$. Taking the tangent at the equality point makes the bound sharp, since $L(t) = f(t)$ and equality is preserved, as the figure on this card shows.
+The constraint $\sum x_i = s$ makes any linear function of the $x_i$ sum to a constant. So if each term $f(x_i)$ is at least $L(x_i)$, the sum is at least $\sum L(x_i)$, which depends only on $s$. Taking the tangent at the equality point makes the bound sharp, since $L(t) = f(t)$ and equality is preserved.
 
 For convex $f$ this is Jensen's Inequality, since a convex function lies above all its tangents. The trick is more flexible: the bound $f(x) \ge L(x)$ only has to hold on the allowed range, and the factored form $(x - t)^2 g(x)$ shows exactly where it holds.
 
@@ -2090,7 +2090,7 @@ Check the three conditions in order: $p\mid a_0,\dots,a_{n-1}$, then $p\nmid a_n
 Rare below olympiad level, and when it appears the polynomial is usually cyclotomic or one shift away from it. Worth knowing mainly so that "show this is irreducible over $\mathbb{Q}$" has a first move.`,
 
 "abel-summation": String.raw`## Why it works
-Summation by parts: substitute $a_k = A_k - A_{k-1}$ and reindex, exactly mirroring $\int u\,dv = uv - \int v\,du$. The boundary term $A_n b_n$ minus the sum of $A_k$ against the forward differences $b_{k+1} - b_k$ reconstructs the original sum.
+Summation by parts: substitute $a_k = A_k - A_{k-1}$ and reindex, exactly mirroring $\int u\,\mathrm{d}v = uv - \int v\,\mathrm{d}u$. The boundary term $A_n b_n$ minus the sum of $A_k$ against the forward differences $b_{k+1} - b_k$ reconstructs the original sum.
 
 ## How to use it
 Use it when one factor has a clean partial sum $A_k$ (arithmetic, geometric, binomial) or the other is monotone. Sums such as $\sum k r^k$, $\sum k\binom{n}{k}$, and Dirichlet-type $\sum a_k/k$ all yield. When $b_k$ is monotone the transformed sum has one-signed terms — the mechanism behind the proofs of Chebyshev's and Karamata's inequalities and Abel's convergence test.
@@ -2222,7 +2222,7 @@ Equations and inequalities in one variable with nested bars, such as $\bigl||x| 
 3. Track only the corners, their positions and heights, since the graph is straight between them.
 4. Read the question off the finished picture: solutions are crossings with a horizontal line, and solution sets of inequalities are the stretches above or below it.
 
-Graph $y = \bigl||x| - 3\bigr|$. The V of $|x|$, lowered by $3$, has its vertex at $(0, -3)$ and crosses the axis at $\pm 3$. Folding the part below the axis gives a W with corners at $(\pm 3, 0)$ and a peak at $(0, 3)$, as the figure on this card shows.
+Graph $y = \bigl||x| - 3\bigr|$. The V of $|x|$, lowered by $3$, has its vertex at $(0, -3)$ and crosses the axis at $\pm 3$. Folding the part below the axis gives a W with corners at $(\pm 3, 0)$ and a peak at $(0, 3)$.
 
 ## Why it works
 An outer bar changes only the sign of negative outputs, so it reflects exactly the part of the graph below the $x$-axis and leaves the rest. An inner bar makes the expression depend only on $|x|$, so the value at $-x$ equals the value at $x$: the graph is even, and its right half determines everything. Shifts and stretches act on graphs in the usual way.
@@ -2686,7 +2686,7 @@ Area is linear in each edge of a parallelogram and reverses sign when the two ed
 Use the sign, not just the size. A positive value means $A$, $B$, $C$ run counterclockwise, which is how a convex-hull or orientation argument is actually carried out, and taking absolute values too early throws that away. For the collinearity of three points, expanding $\det = 0$ gives a linear relation in the coordinates and is usually cleaner than equating two slopes, since it never needs a vertical-line case. The area-scaling reading is the missing sentence on [[affine-transformations|affine transformations]], which says a linear map multiplies every area by one constant: that constant is $\lvert \det \rvert$.
 
 ## On contests
-This is the card behind two things AIME asks constantly. [[shoelace-formula|Shoelace]] is this determinant summed around a polygon, and some problems turn on the parity or divisibility of $x_1y_2 - x_2y_1$ rather than on any area at all. The collinearity test is the quieter use, and it is worth reaching for whenever a problem says three points are collinear and you would otherwise write two slope equations.`,
+It is behind two things AIME asks constantly. [[shoelace-formula|Shoelace]] is this determinant summed around a polygon, and some problems turn on the parity or divisibility of $x_1y_2 - x_2y_1$ rather than on any area at all. The collinearity test is the quieter use, and it is worth reaching for whenever a problem says three points are collinear and you would otherwise write two slope equations.`,
 
 "matrix-multiplication": String.raw`## Why it works
 A matrix is a linear map written in coordinates, and the product is what you get by doing one map after the other: entry $(i,j)$ of $AB$ asks where basis vector $j$ goes under $B$ and then reads off coordinate $i$ after $A$. Composition of maps is associative, so matrix multiplication is, and it is not commutative for the same reason rotating then reflecting differs from reflecting then rotating. The sum over the intermediate index $k$ is the whole content of the definition.
@@ -2715,7 +2715,7 @@ The trace has one more identity worth keeping: $\operatorname{tr}(AB) = \operato
 Use eigenvalues when you need $A^n$, not when you need $A$. If $A = PDP^{-1}$ with $D$ diagonal then $A^n = PD^nP^{-1}$, using the [[matrix-inverse|inverse]] $P^{-1}$, so each eigenvalue is simply raised to the $n$, and the entries of $A^n$ become a fixed combination of $\lambda_1^n, \ldots, \lambda_k^n$. That is the same shape as the closed form of a linear recurrence, and it is not a coincidence: the characteristic polynomial of the transfer matrix is the characteristic equation of the recurrence, and the [[cayley-hamilton|Cayley–Hamilton Theorem]] proves it even when $A$ cannot be diagonalized.
 
 ## On contests
-Olympiad-adjacent only, and it appears in this library as the machinery two cards already lean on. [[matrix-tree-theorem|The matrix-tree theorem]] states the spanning-tree count as a product of Laplacian eigenvalues, and the transfer matrix gets its recurrence from $\det(xI - M) = 0$. If you are reading either of those, this is the card that makes the sentence mean something.`,
+Olympiad-adjacent only, and it appears in this library as the machinery two cards already lean on. [[matrix-tree-theorem|The matrix-tree theorem]] states the spanning-tree count as a product of Laplacian eigenvalues, and the transfer matrix gets its recurrence from $\det(xI - M) = 0$. Reading either of those, this is what makes the sentence mean something.`,
 
 
 "cofactor-expansion": String.raw`
@@ -3258,6 +3258,7 @@ A MATHCOUNTS and AMC 8 and 10 staple: successive discounts, a change and its rev
 - $ax^2 + bx + c$ — standard form: the $y$-intercept is $c$
 - $a(x - h)^2 + k$ — vertex form: the vertex is $(h, k)$, with $h = -\frac{b}{2a}$ and $k = c - \frac{b^2}{4a}$
 - $a(x - r)(x - s)$ — factored form: the roots are $r$ and $s$, with $r + s = -\frac ba$ and $rs = \frac ca$
+- $a(x - p)(x - q) + c$ — the quadratic that takes the same value $c$ at $x = p$ and at $x = q$, with its axis at $x = \frac{p + q}{2}$; a small case of [[subtract-and-factor|Turning Known Values into Known Roots]]
 - $h = \frac{r + s}{2}$ — the vertex lies halfway between the roots
 
 ## Conditions
@@ -3270,6 +3271,7 @@ Each form expands to the standard one. Expanding $a(x - h)^2 + k$ gives $ax^2 - 
 - The axis of symmetry is $x = h$, halfway between the roots and between any two points of the parabola at the same height.
 - The vertex form shows the range at once: for $a \gt 0$ the smallest value is $k$, and for $a \lt 0$ the largest value is $k$.
 - A quadratic is determined by any three points, or by its vertex and one more point, or by its two roots and one more point.
+- Subtracting $c$ from the equal-values form leaves a quadratic whose roots are $p$ and $q$, the whole idea of the general method in its smallest case.
 
 ## Applications
 Reading the vertex, roots, intercepts, or extreme value of a quadratic, and finding a quadratic from information of each kind.
@@ -3353,5 +3355,30 @@ Interpolation and uniqueness of polynomials, discriminants, and olympiad problem
 
 ## Contest profile
 An olympiad algebra tool, usually appearing as the reason a linear system in polynomial coefficients has a unique solution.
+`,
+
+"several-rates": String.raw`
+## Distinguishing clues
+Two or more rates appear in one story: speeds, jobs per hour, liters per minute. When the agents act at the same time on one task, their rates add, as for two pipes filling a tank or two runners closing a gap. When one agent acts in stages, the times add and the rates do not, which is why the average speed of a round trip is not the average of the two speeds. A story with one rate is plain distance equals rate times time, and a story that gives averages of a group of numbers is a different setup, about [[averages-before-after|averages before and after a change]].
+
+## Methods and Formulas to Try
+Name what acts at the same time and what acts in sequence; rates add across the first, times across the second.
+
+### Methods to try
+- [[time-per-leg]]: cut the trip wherever the speed changes, write each leg's time as distance over speed, and add the times.
+- [[averages-to-totals]]: an average speed is total distance over total time, so work with the totals, never with an average of the speeds.
+
+### Formulas to try
+- [[work-rates]]: rates of agents working together add, so a job takes $\frac{1}{r_1 + r_2 + \cdots}$ of the time units.
+- [[average-speed]]: total distance over total time; for two equal distances it is the harmonic mean $\frac{2v_1v_2}{v_1 + v_2}$.
+- [[relative-motion]]: approaching objects close a gap at the sum of their speeds and one chasing another at the difference, and a current adds to speed downstream and subtracts upstream.
+
+## Common traps
+- Averaging two speeds instead of dividing total distance by total time.
+- Adding times for agents that work at the same time, or adding rates for stages that happen one after another.
+- Mixing units, such as minutes with hours.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 staple that returns on the AIME with several legs or travelers and a single unknown speed or time.
 `
 });
