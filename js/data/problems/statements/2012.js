@@ -27,8 +27,8 @@ Find the number of possible values of $n$ with $1 \lt n \lt 1000.$`, u: "https:/
 "2012-aime-i-8": { s: String.raw`Cube $ABCDEFGH,$ labeled as shown below, has edge length $1$ and is cut by a plane passing through vertex $D$ and the midpoints $M$ and $N$ of $\overline{AB}$ and $\overline{CG},$ respectively. The plane divides the cube into two solids. The volume of the larger of the two solids can be written in the form $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$
 
 @@fig:aime/2012I/8.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2012I" },
-"2012-aime-i-9": { s: String.raw`Let $x,$ $y,$ and $z$ be positive real numbers that satisfy $$\begin{aligned} 2\log_{x}(2y) &= 2\log_{2x}(4z) \\ &= \log_{2x^4}(8yz) \ne 0. \end{aligned}$$ The value of $xy^5z$ can be expressed in the form $\frac{1}{2^{\frac{p}{q}}},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2012I" },
-"2012-aime-ii-1": { s: String.raw`Find the number of ordered pairs of positive integer solutions $(m, n)$ to the equation $$20m + 12n = 2012.$$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
+"2012-aime-i-9": { s: String.raw`Let $x,$ $y,$ and $z$ be positive real numbers that satisfy$$2\log_{x}(2y) = 2\log_{2x}(4z) = \log_{2x^4}(8yz) \ne 0.$$The value of $xy^5z$ can be expressed in the form $\frac{1}{2^{\frac{p}{q}}},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2012I" },
+"2012-aime-ii-1": { s: String.raw`Find the number of ordered pairs of positive integer solutions $(m, n)$ to the equation$$20m + 12n = 2012.$$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
 "2012-aime-ii-10": { s: String.raw`Find the number of positive integers $n$ less than $1000$ for which there exists a positive real number $x$ such that $n = x\lfloor x \rfloor.$
 
 Note: $\lfloor x \rfloor$ is the greatest integer less than or equal to $x.$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
@@ -45,8 +45,6 @@ Note: $\lfloor x \rfloor$ is the greatest integer less than or equal to $x.$`, u
 @@fig:aime/2012II/5.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
 "2012-aime-ii-6": { s: String.raw`Let $z = a + b\mathrm{i}$ be the complex number with $|z| = 5$ and $b \gt 0$ such that the distance between $(1 + 2\mathrm{i})z^3$ and $z^5$ is maximized, and let $z^4 = c + d\mathrm{i}.$ Find $c + d.$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
 "2012-aime-ii-7": { s: String.raw`Let $S$ be the increasing sequence of positive integers whose binary representation has exactly $8$ ones. Let $N$ be the $1000$th number in $S.$ Find the remainder when $N$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
-"2012-aime-ii-8": { s: String.raw`The complex numbers $z$ and $w$ satisfy the system $$z + \frac{20\mathrm{i}}{w} = 5 + \mathrm{i},$$ $$w + \frac{12\mathrm{i}}{z} = -4 + 10\mathrm{i}.$$
-
-Find the smallest possible value of $|zw|^2.$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
+"2012-aime-ii-8": { s: String.raw`The complex numbers $z$ and $w$ satisfy the system$$z + \frac{20\mathrm{i}}{w} = 5 + \mathrm{i},$$$$w + \frac{12\mathrm{i}}{z} = -4 + 10\mathrm{i}.$$Find the smallest possible value of $|zw|^2.$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
 "2012-aime-ii-9": { s: String.raw`Let $x$ and $y$ be real numbers such that $\frac{\sin x}{\sin y} = 3$ and $\frac{\cos x}{\cos y} = \frac{1}{2}.$ The value of $\frac{\sin 2x}{\sin 2y} + \frac{\cos 2x}{\cos 2y}$ can be expressed in the form $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2012II" },
 });

@@ -4,11 +4,11 @@
 window.MATH_STATEMENTS = window.MATH_STATEMENTS || {};
 Object.assign(window.MATH_STATEMENTS, {
 "2023-aime-i-1": { s: String.raw`Five men and nine women stand equally spaced around a circle in random order. The probability that every man stands diametrically opposite a woman is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
-"2023-aime-i-10": { s: String.raw`There exists a unique positive integer $a$ for which the sum $$U = \sum_{n=1}^{2023} \left\lfloor \frac{n^2 - na}{5} \right\rfloor$$ is an integer strictly between $-1000$ and $1000.$ For that unique $a,$ find $a + U.$
+"2023-aime-i-10": { s: String.raw`There exists a unique positive integer $a$ for which the sum$$U = \sum_{n=1}^{2023} \left\lfloor \frac{n^2 - na}{5} \right\rfloor$$is an integer strictly between $-1000$ and $1000.$ For that unique $a,$ find $a + U.$
 
 (Note that $\lfloor x \rfloor$ denotes the greatest integer that is less than or equal to $x.$)`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
 "2023-aime-i-11": { s: String.raw`Find the number of subsets of $\{1, 2, 3, \ldots, 10\}$ that contain exactly one pair of consecutive integers. Examples of such subsets are $\{\mathbf{1}, \mathbf{2}, 5\}$ and $\{1, 3, \mathbf{6}, \mathbf{7}, 10\}.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
-"2023-aime-i-12": { s: String.raw`Let $\triangle ABC$ be an equilateral triangle with side length $55.$ Points $D,$ $E,$ and $F$ lie on $\overline{BC},$ $\overline{CA},$ and $\overline{AB},$ respectively, with $BD = 7,$ $CE = 30,$ and $AF = 40.$ Point $P$ inside $\triangle ABC$ has the property that $$\angle AEP = \angle BFP = \angle CDP.$$ Find $\tan^2(\angle AEP).$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
+"2023-aime-i-12": { s: String.raw`Let $\triangle ABC$ be an equilateral triangle with side length $55.$ Points $D,$ $E,$ and $F$ lie on $\overline{BC},$ $\overline{CA},$ and $\overline{AB},$ respectively, with $BD = 7,$ $CE = 30,$ and $AF = 40.$ Point $P$ inside $\triangle ABC$ has the property that$$\angle AEP = \angle BFP = \angle CDP.$$Find $\tan^2(\angle AEP).$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
 "2023-aime-i-13": { s: String.raw`Each face of two noncongruent parallelepipeds is a rhombus whose diagonals have lengths $\sqrt{21}$ and $\sqrt{31}.$ The ratio of the volume of the larger of the two polyhedra to the volume of the smaller is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$ A parallelepiped is a solid with six parallelogram faces such as the one shown below.
 
 @@fig:aime/2023I/13.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
@@ -26,7 +26,7 @@ Let $N$ be the number of sequences of $144$ hand movements such that during the 
 • $|z| = \sqrt{p},$ and
 
 • there exists a triangle whose three side lengths are $p,$ the real part of $z^3,$ and the imaginary part of $z^3.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
-"2023-aime-i-2": { s: String.raw`Positive real numbers $b \ne 1$ and $n$ satisfy the equations $$\sqrt{\log_b n} = \log_b \sqrt{n}$$ and $$b \cdot \log_b n = \log_b (bn).$$ The value of $n$ is $\frac{j}{k},$ where $j$ and $k$ are relatively prime positive integers. Find $j + k.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
+"2023-aime-i-2": { s: String.raw`Positive real numbers $b \ne 1$ and $n$ satisfy the equations$$\sqrt{\log_b n} = \log_b \sqrt{n}$$and$$b \cdot \log_b n = \log_b (bn).$$The value of $n$ is $\frac{j}{k},$ where $j$ and $k$ are relatively prime positive integers. Find $j + k.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
 "2023-aime-i-3": { s: String.raw`A plane contains $40$ lines, no $2$ of which are parallel. Suppose that there are $3$ points where exactly $3$ lines intersect, $4$ points where exactly $4$ lines intersect, $5$ points where exactly $5$ lines intersect, $6$ points where exactly $6$ lines intersect, and no points where more than $6$ lines intersect. Find the number of points where exactly $2$ lines intersect.`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
 "2023-aime-i-4": { s: String.raw`The sum of all positive integers $m$ such that $\frac{13!}{m}$ is a perfect square can be written as $2^a 3^b 5^c 7^d 11^e 13^f,$ where $a,$ $b,$ $c,$ $d,$ $e,$ and $f$ are positive integers. Find $a + b + c + d + e + f.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
 "2023-aime-i-5": { s: String.raw`Let $P$ be a point on the circle circumscribing square $ABCD$ that satisfies $PA \cdot PC = 56$ and $PB \cdot PD = 90.$ Find the area of $ABCD.$`, u: "https://live.poshenloh.com/past-contests/aime/2023I" },
@@ -47,15 +47,13 @@ Let $N$ be the number of sequences of $144$ hand movements such that during the 
 "2023-aime-ii-15": { s: String.raw`For each positive integer $n$ let $a_n$ be the least positive integer multiple of $23$ such that $a_n \equiv 1 \pmod{2^n}.$ Find the number of positive integers $n$ less than or equal to $1000$ that satisfy $a_n = a_{n+1}.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-aime-ii-2": { s: String.raw`Recall that a palindrome is a number that reads the same forward and backward. Find the greatest integer less than $1000$ that is a palindrome both when written in base ten and when written in base eight, such as $292 = 444_8.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-aime-ii-3": { s: String.raw`Let $\triangle ABC$ be an isosceles triangle with $\angle A = 90^\circ.$ There exists a point $P$ inside $\triangle ABC$ such that $\angle PAB = \angle PBC = \angle PCA$ and $AP = 10.$ Find the area of $\triangle ABC.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
-"2023-aime-ii-4": { s: String.raw`Let $x,$ $y,$ and $z$ be real numbers satisfying the system of equations $$\begin{aligned} xy + 4z &= 60, \\ yz + 4x &= 60, \\ zx + 4y &= 60. \end{aligned}$$
-
-Let $S$ be the set of possible values of $x.$ Find the sum of the squares of the elements of $S.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
+"2023-aime-ii-4": { s: String.raw`Let $x,$ $y,$ and $z$ be real numbers satisfying the system of equations$$\begin{aligned}xy + 4z &= 60, \\ yz + 4x &= 60, \\ zx + 4y &= 60.\end{aligned}$$Let $S$ be the set of possible values of $x.$ Find the sum of the squares of the elements of $S.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-aime-ii-5": { s: String.raw`Let $S$ be the set of all positive rational numbers $r$ such that when the two numbers $r$ and $55r$ are written as fractions in lowest terms, the sum of the numerator and denominator of one fraction is the same as the sum of the numerator and denominator of the other fraction. The sum of all the elements of $S$ can be expressed in the form $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-aime-ii-6": { s: String.raw`Consider the L-shaped region formed by three unit squares joined at their sides, as shown below. Two points $A$ and $B$ are chosen independently and uniformly at random from inside the region. The probability that the midpoint of $\overline{AB}$ also lies inside this L-shaped region can be expressed as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$
 
 @@fig:aime/2023II/6.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-aime-ii-7": { s: String.raw`Each vertex of a regular dodecagon ($12$-gon) is to be colored either red or blue, and thus there are $2^{12}$ possible colorings. Find the number of these colorings with the property that no four vertices colored the same color are the four vertices of a rectangle.`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
-"2023-aime-ii-8": { s: String.raw`Let $\omega = \cos\frac{2\pi}{7} + i \cdot \sin\frac{2\pi}{7},$ where $i = \sqrt{-1}.$ Find the value of the product $$\prod_{k=0}^{6} \left(\omega^{3k} + \omega^k + 1\right).$$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
+"2023-aime-ii-8": { s: String.raw`Let $\omega = \cos\frac{2\pi}{7} + i \cdot \sin\frac{2\pi}{7},$ where $i = \sqrt{-1}.$ Find the value of the product$$\prod_{k=0}^{6} \left(\omega^{3k} + \omega^k + 1\right).$$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-aime-ii-9": { s: String.raw`Circles $\omega_1$ and $\omega_2$ intersect at two points $P$ and $Q,$ and their common tangent line closer to $P$ intersects $\omega_1$ and $\omega_2$ at points $A$ and $B,$ respectively. The line parallel to $\overline{AB}$ that passes through $P$ intersects $\omega_1$ and $\omega_2$ for the second time at points $X$ and $Y,$ respectively. Suppose $PX = 10,$ $PY = 14,$ and $PQ = 5.$ Then the area of trapezoid $XABY$ is $m\sqrt{n},$ where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2023II" },
 "2023-amc-10a-1": { s: String.raw`Cities $A$ and $B$ are $45$ miles apart. Alicia lives in $A$ and Beth lives in $B.$ Alicia bikes towards $B$ at $18$ miles per hour. Leaving at the same time, Beth bikes toward $A$ at $12$ miles per hour. How many miles from City $A$ will they be when they meet?
 
@@ -159,15 +157,11 @@ All the roots of $P(x)$ except one are integers. If the one non-integer root can
 "2023-amc-10b-11": { s: String.raw`Suzanne went to the bank and withdrew $\$800.$ The teller gave her this amount using $\$20$ bills, $\$50$ bills, and $\$100$ bills, with at least one of each denomination. How many different collections of bills could Suzanne have received?
 
 (A) $45$  (B) $21$  (C) $36$  (D) $28$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
-"2023-amc-10b-12": { s: String.raw`When the roots of the polynomial $$P(x) = (x-1)^1(x-2)^2(x-3)^3 \cdots (x-10)^{10}$$ are removed from the real number line, what remains is the union of $11$ disjoint open intervals. On how many of those intervals is $P(x)$ positive?
+"2023-amc-10b-12": { s: String.raw`When the roots of the polynomial$$P(x) = (x-1)^1(x-2)^2(x-3)^3 \cdots (x-10)^{10}$$are removed from the real number line, what remains is the union of $11$ disjoint open intervals. On how many of those intervals is $P(x)$ positive?
 
 (A) $3$  (B) $7$  (C) $6$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
-"2023-amc-10b-13": { s: String.raw`What is the area of the region in the coordinate plane defined by the inequality $$\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| \le 1?$$
-
-(A) $2$  (B) $8$  (C) $4$  (D) $15$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
-"2023-amc-10b-14": { s: String.raw`How many ordered pairs of integers $(m, n)$ satisfy the equation $$m^2 + mn + n^2 = m^2 n^2?$$
-
-(A) $7$  (B) $1$  (C) $3$  (D) $6$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
+"2023-amc-10b-13": { s: String.raw`What is the area of the region in the coordinate plane defined by the inequality$$\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| \le 1?$$(A) $2$  (B) $8$  (C) $4$  (D) $15$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
+"2023-amc-10b-14": { s: String.raw`How many ordered pairs of integers $(m, n)$ satisfy the equation$$m^2 + mn + n^2 = m^2 n^2?$$(A) $7$  (B) $1$  (C) $3$  (D) $6$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
 "2023-amc-10b-15": { s: String.raw`What is the least positive integer $m$ such that $m \cdot 2! \cdot 3! \cdot 4! \cdot 5! \cdots 16!$ is a perfect square?
 
 (A) $30$  (B) $30030$  (C) $70$  (D) $1430$  (E) $1001$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
@@ -177,7 +171,7 @@ All the roots of $P(x)$ except one are integers. If the one non-integer root can
 "2023-amc-10b-17": { s: String.raw`A rectangular box $\mathcal{P}$ has distinct edge lengths $a,$ $b,$ and $c.$ The sum of the lengths of all $12$ edges of $\mathcal{P}$ is $13,$ the sum of the areas of all $6$ faces of $\mathcal{P}$ is $\frac{11}{2},$ and the volume of $\mathcal{P}$ is $\frac{1}{2}.$ What is the length of the longest interior diagonal connecting two vertices of $\mathcal{P}?$
 
 (A) $2$  (B) $\dfrac{3}{8}$  (C) $\dfrac{9}{8}$  (D) $\dfrac{9}{4}$  (E) $\dfrac{3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
-"2023-amc-10b-18": { s: String.raw`Suppose $a,$ $b,$ and $c$ are positive integers such that $$\frac{a}{14} + \frac{b}{15} = \frac{c}{210}.$$ Which of the following statements are necessarily true?
+"2023-amc-10b-18": { s: String.raw`Suppose $a,$ $b,$ and $c$ are positive integers such that$$\frac{a}{14} + \frac{b}{15} = \frac{c}{210}.$$Which of the following statements are necessarily true?
 
 I. If $\gcd(a, 14) = 1$ or $\gcd(b, 15) = 1$ or both, then $\gcd(c, 210) = 1.$
 
@@ -185,7 +179,11 @@ II. If $\gcd(c, 210) = 1,$ then $\gcd(a, 14) = 1$ or $\gcd(b, 15) = 1$ or both.
 
 III. $\gcd(c, 210) = 1$ if and only if $\gcd(a, 14) = \gcd(b, 15) = 1.$
 
-(A) $\mathrm{I},$ $\mathrm{II},$ and $\mathrm{III}$  (B) $\mathrm{I}$ only  (C) $\mathrm{I}$ and $\mathrm{II}$ only  (D) $\mathrm{III}$ only  (E) $\mathrm{II}$ and $\mathrm{III}$ only`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
+(A) $\mathrm{I},$ $\mathrm{II},$ and $\mathrm{III}$
+(B) $\mathrm{I}$ only
+(C) $\mathrm{I}$ and $\mathrm{II}$ only
+(D) $\mathrm{III}$ only
+(E) $\mathrm{II}$ and $\mathrm{III}$ only`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
 "2023-amc-10b-19": { s: String.raw`Sonya the frog chooses a point uniformly at random lying within the square $[0, 6] \times [0, 6]$ in the coordinate plane and hops to that point. She then chooses a distance uniformly at random from $[0, 1]$ and a direction uniformly at random from $\{\text{north}, \text{south}, \text{east}, \text{west}\}.$ All her choices are independent. She now hops the distance in the chosen direction. What is the probability that she lands outside the square?
 
 (A) $\dfrac{1}{6}$  (B) $\dfrac{1}{12}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{10}$  (E) $\dfrac{1}{9}$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
@@ -200,7 +198,7 @@ III. $\gcd(c, 210) = 1$ if and only if $\gcd(a, 14) = \gcd(b, 15) = 1.$
 "2023-amc-10b-21": { s: String.raw`Each of $2023$ balls is randomly placed into one of $3$ bins. Which of the following is closest to the probability that each of the bins will contain an odd number of balls?
 
 (A) $\dfrac{2}{3}$  (B) $\dfrac{3}{10}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
-"2023-amc-10b-22": { s: String.raw`How many distinct values of $x$ satisfy $$\lfloor x \rfloor^2 - 3x + 2 = 0,$$ where $\lfloor x \rfloor$ denotes the largest integer less than or equal to $x?$
+"2023-amc-10b-22": { s: String.raw`How many distinct values of $x$ satisfy$$\lfloor x \rfloor^2 - 3x + 2 = 0,$$where $\lfloor x \rfloor$ denotes the largest integer less than or equal to $x?$
 
 (A) an infinite number  (B) $4$  (C) $2$  (D) $3$  (E) $0$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
 "2023-amc-10b-23": { s: String.raw`An arithmetic sequence of positive integers has $n \ge 3$ terms, initial term $a,$ and common difference $d \gt 1.$ Carl wrote down all the terms in this sequence correctly except for one term, which was off by $1.$ The sum of the terms he wrote down was $222.$ What is $a + d + n?$
@@ -229,9 +227,7 @@ III. $\gcd(c, 210) = 1$ if and only if $\gcd(a, 14) = \gcd(b, 15) = 1.$
 @@fig:amc10/2023B/7.svg@@
 
 (A) $24^\circ$  (B) $35^\circ$  (C) $30^\circ$  (D) $32^\circ$  (E) $20^\circ$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
-"2023-amc-10b-8": { s: String.raw`What is the units digit of $$2022^{2023} + 2023^{2022}?$$
-
-(A) $7$  (B) $1$  (C) $9$  (D) $5$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
+"2023-amc-10b-8": { s: String.raw`What is the units digit of$$2022^{2023} + 2023^{2022}?$$(A) $7$  (B) $1$  (C) $9$  (D) $5$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
 "2023-amc-10b-9": { s: String.raw`The numbers $16$ and $25$ are a pair of consecutive positive perfect squares whose difference is $9.$ How many pairs of consecutive positive perfect squares have a difference of less than or equal to $2023?$
 
 (A) $674$  (B) $1011$  (C) $1010$  (D) $2019$  (E) $2017$`, u: "https://live.poshenloh.com/past-contests/amc10/2023B" },
@@ -244,9 +240,7 @@ III. $\gcd(c, 210) = 1$ if and only if $\gcd(a, 14) = \gcd(b, 15) = 1.$
 "2023-amc-12a-11": { s: String.raw`What is the degree measure of the acute angle formed by lines with slopes $2$ and $\tfrac13?$
 
 (A) $30$  (B) $37.5$  (C) $45$  (D) $52.5$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
-"2023-amc-12a-12": { s: String.raw`What is the value of $$\begin{gathered} 2^3-1^3+4^3-3^3+6^3-5^3\\ {}+\cdots+18^3-17^3? \end{gathered}$$
-
-(A) $2023$  (B) $2679$  (C) $2941$  (D) $3159$  (E) $3235$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
+"2023-amc-12a-12": { s: String.raw`What is the value of$$2^3-1^3+4^3-3^3+6^3-5^3 +\cdots+18^3-17^3?$$(A) $2023$  (B) $2679$  (C) $2941$  (D) $3159$  (E) $3235$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
 "2023-amc-12a-13": { s: String.raw`In a table tennis tournament every participant played every other participant exactly once. Although there were twice as many right-handed players as left-handed players, the number of games won by left-handed players was $40\%$ more than the number of games won by right-handed players. (There were no ties and no ambidextrous players.) What is the total number of games played?
 
 (A) $15$  (B) $36$  (C) $45$  (D) $48$  (E) $66$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
@@ -269,32 +263,28 @@ III. $\gcd(c, 210) = 1$ if and only if $\gcd(a, 14) = \gcd(b, 15) = 1.$
 @@fig:amc12/2023A/18.svg@@
 
 (A) $\dfrac{1}{14}$  (B) $\dfrac{1}{12}$  (C) $\dfrac{1}{10}$  (D) $\dfrac{3}{28}$  (E) $\dfrac{1}{9}$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
-"2023-amc-12a-19": { s: String.raw`What is the product of all the solutions to the equation $$\begin{gathered} \log_{7x}2023\cdot\log_{289x}2023\\ {}=\log_{2023x}2023? \end{gathered}$$
-
-(A) $(\log_{2023}7\cdot\log_{2023}289)^2$  (B) $\log_{2023}7\cdot\log_{2023}289$  (C) $1$  (D) $\log_7 2023\cdot\log_{289}2023$  (E) $(\log_7 2023\cdot\log_{289}2023)^2$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
+"2023-amc-12a-19": { s: String.raw`What is the product of all the solutions to the equation$$\log_{7x}2023\cdot\log_{289x}2023 =\log_{2023x}2023?$$(A) $(\log_{2023}7\cdot\log_{2023}289)^2$
+(B) $\log_{2023}7\cdot\log_{2023}289$
+(C) $1$
+(D) $\log_7 2023\cdot\log_{289}2023$
+(E) $(\log_7 2023\cdot\log_{289}2023)^2$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
 "2023-amc-12a-2": { s: String.raw`The weight of $\tfrac13$ of a large pizza together with $3\tfrac12$ cups of orange slices is the same as the weight of $\tfrac34$ of a large pizza together with $\tfrac12$ cup of orange slices. A cup of orange slices weighs $\tfrac14$ of a pound. What is the weight, in pounds, of a large pizza?
 
 (A) $1\tfrac45$  (B) $2$  (C) $2\tfrac25$  (D) $3$  (E) $3\tfrac35$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
-"2023-amc-12a-20": { s: String.raw`Rows $1,$ $2,$ $3,$ $4,$ and $5$ of a triangular array of integers are shown below.
-
-$$\begin{array}{ccccccccc} &&&&1&&&&\\ &&&1&&1&&&\\ &&1&&3&&1&&\\ &1&&5&&5&&1&\\ 1&&7&&11&&7&&1 \end{array}$$
-
-Each row after the first row is formed by placing a $1$ at each end of the row, and each interior entry is $1$ greater than the sum of the two numbers diagonally above it in the previous row. What is the units digit of the sum of the $2023$ numbers in the $2023$rd row?
+"2023-amc-12a-20": { s: String.raw`Rows $1,$ $2,$ $3,$ $4,$ and $5$ of a triangular array of integers are shown below.$$\begin{array}{ccccccccc} &&&&1&&&&\\ &&&1&&1&&&\\ &&1&&3&&1&&\\ &1&&5&&5&&1&\\ 1&&7&&11&&7&&1 \end{array}$$Each row after the first row is formed by placing a $1$ at each end of the row, and each interior entry is $1$ greater than the sum of the two numbers diagonally above it in the previous row. What is the units digit of the sum of the $2023$ numbers in the $2023$rd row?
 
 (A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
 "2023-amc-12a-21": { s: String.raw`If $A$ and $B$ are vertices of a polyhedron, define the distance $d(A,B)$ to be the minimum number of edges of the polyhedron one must traverse in order to connect $A$ and $B.$ For example, if $\overline{AB}$ is an edge of the polyhedron, then $d(A,B)=1,$ but if $\overline{AC}$ and $\overline{CB}$ are edges and $\overline{AB}$ is not an edge, then $d(A,B)=2.$ Let $Q,$ $R,$ and $S$ be randomly chosen distinct vertices of a regular icosahedron (regular polyhedron made up of $20$ equilateral triangles). What is the probability that $d(Q,R)\gt d(R,S)?$
 
 (A) $\dfrac{7}{22}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{3}{8}$  (D) $\dfrac{5}{12}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
-"2023-amc-12a-22": { s: String.raw`Let $f$ be the unique function defined on the positive integers such that $$\sum_{d\mid n} d\cdot f\left(\frac{n}{d}\right)=1$$ for all positive integers $n,$ where the sum is taken over all positive divisors of $n.$ What is $f(2023)?$
+"2023-amc-12a-22": { s: String.raw`Let $f$ be the unique function defined on the positive integers such that$$ \sum_{d\mid n} d\cdot f\left(\frac{n}{d}\right)=1 $$for all positive integers $n,$ where the sum is taken over all positive divisors of $n.$ What is $f(2023)?$
 
 (A) $-1536$  (B) $96$  (C) $108$  (D) $116$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
-"2023-amc-12a-23": { s: String.raw`How many ordered pairs of positive real numbers $(a,b)$ satisfy the equation $$\begin{gathered} (1+2a)(2+2b)(2a+b)\\ {}=32ab? \end{gathered}$$
-
-(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) an infinite number`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
+"2023-amc-12a-23": { s: String.raw`How many ordered pairs of positive real numbers $(a,b)$ satisfy the equation$$(1+2a)(2+2b)(2a+b) =32ab?$$(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) an infinite number`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
 "2023-amc-12a-24": { s: String.raw`Let $K$ be the number of sequences $A_1,$ $A_2,$ $\ldots,$ $A_n$ such that $n$ is a positive integer less than or equal to $10,$ each $A_i$ is a subset of $\{1,2,3,\ldots,10\},$ and $A_{i-1}$ is a subset of $A_i$ for each $i$ between $2$ and $n,$ inclusive. For example, $\{\},$ $\{5,7\},$ $\{2,5,7\},$ $\{2,5,7\},$ $\{2,5,6,7,9\}$ is one such sequence, with $n=5.$ What is the remainder when $K$ is divided by $10?$
 
 (A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
-"2023-amc-12a-25": { s: String.raw`There is a unique sequence of integers $a_1,$ $a_2,$ $\cdots a_{2023}$ such that $$\begin{gathered} \tan 2023x\\ {}=\tiny\dfrac{a_1\tan x+a_3\tan^3 x+a_5\tan^5 x+\cdots+a_{2023}\tan^{2023}x}{1+a_2\tan^2 x+a_4\tan^4 x\cdots+a_{2022}\tan^{2022}x} \end{gathered}$$ whenever $\tan 2023x$ is defined. What is $a_{2023}?$
+"2023-amc-12a-25": { s: String.raw`There is a unique sequence of integers $a_1,$ $a_2,$ $\cdots a_{2023}$ such that$$\tan 2023x =\dfrac{a_1\tan x+a_3\tan^3 x+a_5\tan^5 x+\cdots+a_{2023}\tan^{2023}x}{1+a_2\tan^2 x+a_4\tan^4 x\cdots+a_{2022}\tan^{2022}x}$$whenever $\tan 2023x$ is defined. What is $a_{2023}?$
 
 (A) $-2023$  (B) $-2022$  (C) $-1$  (D) $1$  (E) $2023$`, u: "https://live.poshenloh.com/past-contests/amc12/2023A" },
 "2023-amc-12a-3": { s: String.raw`How many positive perfect squares less than $2023$ are divisible by $5?$
@@ -329,11 +319,7 @@ Each row after the first row is formed by placing a $1$ at each end of the row, 
 "2023-amc-12b-11": { s: String.raw`What is the maximum area of an isosceles trapezoid that has legs of length $1$ and one base twice as long as the other?
 
 (A) $\dfrac{5}{4}$  (B) $\dfrac{8}{7}$  (C) $\dfrac{5\sqrt{2}}{4}$  (D) $\dfrac{3}{2}$  (E) $\dfrac{3\sqrt{3}}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-12": { s: String.raw`For complex numbers $u=a+bi$ and $v=c+di,$ define the binary operation $\otimes$ by
-
-$$u\otimes v=ac+bdi.$$
-
-Suppose $z$ is a complex number such that $z\otimes z=z^2+40.$ What is $|z|?$
+"2023-amc-12b-12": { s: String.raw`For complex numbers $u=a+bi$ and $v=c+di,$ define the binary operation $\otimes$ by$$ u\otimes v=ac+bdi. $$Suppose $z$ is a complex number such that $z\otimes z=z^2+40.$ What is $|z|?$
 
 (A) $2$  (B) $5$  (C) $\sqrt{5}$  (D) $\sqrt{10}$  (E) $5\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-13": { s: String.raw`A rectangular box $P$ has distinct edge lengths $a,$ $b,$ and $c.$ The sum of the lengths of all $12$ edges of $P$ is $13,$ the sum of the areas of all $6$ faces of $P$ is $\tfrac{11}{2},$ and the volume of $P$ is $\tfrac{1}{2}.$ What is the length of the longest interior diagonal connecting two vertices of $P?$
@@ -342,11 +328,7 @@ Suppose $z$ is a complex number such that $z\otimes z=z^2+40.$ What is $|z|?$
 "2023-amc-12b-14": { s: String.raw`For how many ordered pairs $(a,b)$ of integers does the polynomial $x^3+ax^2+bx+6$ have $3$ distinct integer roots?
 
 (A) $5$  (B) $6$  (C) $8$  (D) $7$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-15": { s: String.raw`Suppose $a,$ $b,$ and $c$ are positive integers such that
-
-$$\frac{a}{14}+\frac{b}{15}=\frac{c}{210}.$$
-
-Which of the following statements are necessarily true?
+"2023-amc-12b-15": { s: String.raw`Suppose $a,$ $b,$ and $c$ are positive integers such that$$ \frac{a}{14}+\frac{b}{15}=\frac{c}{210}. $$Which of the following statements are necessarily true?
 
 I. If $\gcd(a,14)=1$ or $\gcd(b,15)=1$ or both, then $\gcd(c,210)=1.$
 
@@ -354,7 +336,11 @@ II. If $\gcd(c,210)=1,$ then $\gcd(a,14)=1$ or $\gcd(b,15)=1$ or both.
 
 III. $\gcd(c,210)=1$ if and only if $\gcd(a,14)=\gcd(b,15)=1.$
 
-(A) $\mathrm{I},$ $\mathrm{II},$ and $\mathrm{III}$  (B) $\mathrm{I}$ only  (C) $\mathrm{I}$ and $\mathrm{II}$ only  (D) $\mathrm{III}$ only  (E) $\mathrm{II}$ and $\mathrm{III}$ only`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
+(A) $\mathrm{I},$ $\mathrm{II},$ and $\mathrm{III}$
+(B) $\mathrm{I}$ only
+(C) $\mathrm{I}$ and $\mathrm{II}$ only
+(D) $\mathrm{III}$ only
+(E) $\mathrm{II}$ and $\mathrm{III}$ only`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-16": { s: String.raw`In Coinland, there are three types of coins, each worth $6,$ $10,$ and $15.$ What is the sum of the digits of the maximum amount of money that is impossible to have?
 
 (A) $8$  (B) $10$  (C) $7$  (D) $11$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
@@ -363,13 +349,11 @@ III. $\gcd(c,210)=1$ if and only if $\gcd(a,14)=\gcd(b,15)=1.$
 (A) $12\sqrt{3}$  (B) $8\sqrt{6}$  (C) $14\sqrt{2}$  (D) $20\sqrt{2}$  (E) $15\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-18": { s: String.raw`Last academic year Yolanda and Zelda took different courses that did not necessarily administer the same number of quizzes during each of the two semesters. Yolanda’s average on all the quizzes she took during the first semester was $3$ points higher than Zelda’s average on all the quizzes she took during the first semester. Yolanda’s average on all the quizzes she took during the second semester was $18$ points higher than her average for the first semester and was again $3$ points higher than Zelda’s average on all the quizzes Zelda took during her second semester. Which one of the following statements cannot possibly be true?
 
-(A) Yolanda’s quiz average for the academic year
-was $22$ points higher than Zelda’s.  (B) Zelda’s quiz average for the academic year was higher than
-Yolanda’s.  (C) Yolanda’s quiz average for the academic year was $3$ points
-higher than Zelda’s.  (D) Zelda’s quiz average for the academic year equaled
-Yolanda’s.  (E) If Zelda had scored $3$ points higher on each quiz she took,
-then she would have had the same average for the academic year as
-Yolanda.`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
+(A) Yolanda’s quiz average for the academic year was $22$ points higher than Zelda’s.
+(B) Zelda’s quiz average for the academic year was higher than Yolanda’s.
+(C) Yolanda’s quiz average for the academic year was $3$ points higher than Zelda’s.
+(D) Zelda’s quiz average for the academic year equaled Yolanda’s.
+(E) If Zelda had scored $3$ points higher on each quiz she took, then she would have had the same average for the academic year as Yolanda.`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-19": { s: String.raw`Each of $2023$ balls is placed in one of $3$ bins. Which of the following is closest to the probability that each of the bins will contain an odd number of balls?
 
 (A) $\dfrac{2}{3}$  (B) $\dfrac{3}{10}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
@@ -382,21 +366,13 @@ Yolanda.`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-21": { s: String.raw`A lampshade is made in the form of the lateral surface of the frustum of a right circular cone. The height of the frustum is $3\sqrt{3}$ inches, its top diameter is $6$ inches, and its bottom diameter is $12$ inches. A bug is at the bottom of the lampshade and there is a glob of honey on the top edge of the lampshade at the spot farthest from the bug. The bug wants to crawl to the honey, but it must stay on the surface of the lampshade. What is the length in inches of its shortest path to the honey?
 
 (A) $6+3\pi$  (B) $6+6\pi$  (C) $6\sqrt{3}$  (D) $6\sqrt{5}$  (E) $6\sqrt{3}+\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-22": { s: String.raw`A real-valued function $f$ has the property that for all real numbers $a$ and $b,$
-
-$$\begin{gathered} f(a+b)+f(a-b) \\ =2f(a)f(b). \end{gathered}$$
-
-Which one of the following cannot be the value of $f(1)?$
+"2023-amc-12b-22": { s: String.raw`A real-valued function $f$ has the property that for all real numbers $a$ and $b,$$$f(a+b)+f(a-b) =2f(a)f(b).$$Which one of the following cannot be the value of $f(1)?$
 
 (A) $0$  (B) $1$  (C) $-1$  (D) $2$  (E) $-2$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-23": { s: String.raw`When $n$ standard six-sided dice are rolled, the product of the numbers rolled can be any of $936$ possible values. What is $n?$
 
 (A) $11$  (B) $6$  (C) $8$  (D) $10$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-24": { s: String.raw`Suppose that $a,$ $b,$ $c,$ and $d$ are positive integers satisfying all of the following relations.
-
-$$\begin{aligned} abcd &= 2^6\cdot 3^9\cdot 5^7\\ \operatorname{lcm}(a,b) &= 2^3\cdot 3^2\cdot 5^3\\ \operatorname{lcm}(a,c) &= 2^3\cdot 3^3\cdot 5^3\\ \operatorname{lcm}(a,d) &= 2^3\cdot 3^3\cdot 5^3\\ \operatorname{lcm}(b,c) &= 2^1\cdot 3^3\cdot 5^2\\ \operatorname{lcm}(b,d) &= 2^2\cdot 3^3\cdot 5^2\\ \operatorname{lcm}(c,d) &= 2^2\cdot 3^3\cdot 5^2 \end{aligned}$$
-
-What is $\gcd(a,b,c,d)?$
+"2023-amc-12b-24": { s: String.raw`Suppose that $a,$ $b,$ $c,$ and $d$ are positive integers satisfying all of the following relations.$$\begin{aligned}abcd &= 2^6\cdot 3^9\cdot 5^7 \\ \operatorname{lcm}(a,b) &= 2^3\cdot 3^2\cdot 5^3 \\ \operatorname{lcm}(a,c) &= 2^3\cdot 3^3\cdot 5^3 \\ \operatorname{lcm}(a,d) &= 2^3\cdot 3^3\cdot 5^3 \\ \operatorname{lcm}(b,c) &= 2^1\cdot 3^3\cdot 5^2 \\ \operatorname{lcm}(b,d) &= 2^2\cdot 3^3\cdot 5^2 \\ \operatorname{lcm}(c,d) &= 2^2\cdot 3^3\cdot 5^2\end{aligned}$$What is $\gcd(a,b,c,d)?$
 
 (A) $30$  (B) $45$  (C) $3$  (D) $15$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-25": { s: String.raw`A regular pentagon with area $\sqrt{5}+1$ is printed on paper and cut out. The five vertices of the pentagon are folded into the center of the pentagon, creating a smaller pentagon. What is the area of the new pentagon?
@@ -411,26 +387,14 @@ What is $\gcd(a,b,c,d)?$
 "2023-amc-12b-5": { s: String.raw`You are playing a game. A $2\times 1$ rectangle covers two adjacent squares (oriented either horizontally or vertically) of a $3\times 3$ grid of squares, but you are not told which two squares are covered. Your goal is to find at least one square that is covered by the rectangle. A “turn” consists of you guessing a square, after which you are told whether that square is covered by the hidden rectangle. What is the minimum number of turns you need to ensure that at least one of your guessed squares is covered by the rectangle?
 
 (A) $3$  (B) $5$  (C) $4$  (D) $8$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-6": { s: String.raw`When the roots of the polynomial
-
-$$\begin{gathered} P(x)=(x-1)^1(x-2)^2 \\ {}\cdot (x-3)^3\cdots \\ {}\cdot (x-10)^{10} \end{gathered}$$
-
-are removed from the number line, what remains is the union of $11$ disjoint open intervals. On how many of these intervals is $P(x)$ positive?
+"2023-amc-12b-6": { s: String.raw`When the roots of the polynomial$$P(x)=(x-1)^1(x-2)^2 \cdot (x-3)^3\cdots (x-10)^{10}$$are removed from the number line, what remains is the union of $11$ disjoint open intervals. On how many of these intervals is $P(x)$ positive?
 
 (A) $3$  (B) $7$  (C) $6$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-7": { s: String.raw`For how many integers $n$ does the expression
-
-$$\sqrt{\frac{\log(n^2)-(\log n)^2}{\log n-3}}$$
-
-represent a real number, where $\log$ denotes the base $10$ logarithm?
+"2023-amc-12b-7": { s: String.raw`For how many integers $n$ does the expression$$ \sqrt{\frac{\log(n^2)-(\log n)^2}{\log n-3}} $$represent a real number, where $\log$ denotes the base $10$ logarithm?
 
 (A) $900$  (B) $3$  (C) $902$  (D) $2$  (E) $901$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-8": { s: String.raw`How many nonempty subsets $B$ of $\{0,1,2,3,\ldots,12\}$ have the property that the number of elements in $B$ is equal to the least element of $B?$ For example, $B=\{4,6,8,11\}$ satisfies the condition.
 
 (A) $256$  (B) $136$  (C) $108$  (D) $144$  (E) $156$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
-"2023-amc-12b-9": { s: String.raw`What is the area of the region in the coordinate plane defined by
-
-$$||x|-1|+||y|-1|\le 1?$$
-
-(A) $2$  (B) $8$  (C) $4$  (D) $15$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
+"2023-amc-12b-9": { s: String.raw`What is the area of the region in the coordinate plane defined by$$ ||x|-1|+||y|-1|\le 1? $$(A) $2$  (B) $8$  (C) $4$  (D) $15$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 });

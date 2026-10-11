@@ -114,8 +114,8 @@ A card's `tier` says where it is **first needed**; later stages still use the ea
 | `Olympiad` | beyond the AMC and AIME | no AMC or AIME problem needs it; olympiad level tags only |
 
 - Judge a new card by the problems it would be tagged on and by the rubric, not by how hard it feels: a short fact can be AMC and a long method AIME Late.
-- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Four values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), and `lower` for a card that is pretty much never used (at most one tagged problem). The old `lowest` is gone. The reviewed assignment is `tools/importance-proposal.md`.
-- Tier and importance are shown together as **one split oval**: the contest tier on the left, the importance (HIGH, MED, LOW, LOWER) on the right in a lighter tint of the same color. There is no setting to switch labels (removed 2026-10-10: two label systems were confusing).
+- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Five values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), `lower`, and `lowest`. **Lower** is marginal use: something that might be needed once in ten years (Chebyshev's Sum Inequality). **Lowest** is for a card that is confidently never used on a contest and is in the app only for completeness or beauty (Cardano's Cubic Formula, Morley's Trisector Theorem). A card with even one tagged problem is Lower at the most, never Lowest, unless the owner decides otherwise by name. The first reviewed assignment is `tools/importance-proposal.md`; the Lowest level was added on 2026-10-10 and 21 cards moved down to it from Lower (the list is in the README changelog). This replaces the old pre-2026 `lowest` tier, which was retired and meant something else.
+- Tier and importance are shown together as **one split oval**: the contest tier on the left, the importance (HIGH, MED, LOW, LOWER, LOWEST) on the right in a lighter tint of the same color. There is no setting to switch labels (removed 2026-10-10: two label systems were confusing).
 - A card shows exactly one tag beside its kind, the split oval. The `level` array is not shown as text (no MATHCOUNTS / Olympiad wording beside the badge) and is no longer a filter; it remains in the data for Special:Browse and the lab. Nothing on a card may say the same thing twice.
 - **The filter is one global filter** (contest tier and importance), stored under `mq-settings.filter`, applied identically to subject, group, and topic pages, the sidebar (counts and greyed links follow it), and a card listed in two subjects (`ALSO_LISTED_IN`). It is never per section.
 - Every card list uses the chosen order (tier by default), including Special:Browse results; lists a reader curated, search results, and tag matches keep their own order.
@@ -126,7 +126,7 @@ A card's `tier` says where it is **first needed**; later stages still use the ea
 
 | field | measured |
 |---|---|
-| `importance` | four values: `high`, `medium`, `low`, `lower`, judged within the card's subsection (see "Tiers"); shown in the split oval beside the tier |
+| `importance` | five values: `high`, `medium`, `low`, `lower`, `lowest`, judged within the card's subsection (see "Tiers"); shown in the split oval beside the tier |
 | `tier` | the default label, one of `AMC`, `AIME Early`, `AIME Late`, `Olympiad` (see "Tiers" below); every card carries one, after `importance` and before `level` |
 | `level` | drawn from `MATHCOUNTS` (105), `AMC10` (206), `AMC12` (301), `AIME` (401), `Olympiad` (209). No other string appears |
 | `keywords` | min 4, median 6, 90th percentile 10, max 20. Four is the floor — never ship fewer |
@@ -687,7 +687,7 @@ are untouched.
 
 ## 11. Tagging a problem
 
-`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`. The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; the page prints it with the credit "Problem ..., © Mathematical Association of America, used under CC BY-NC-SA 4.0. Text and figures from LIVE by Po-Shen Loh." Never add a statement by hand and never import a solution. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
+`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`. The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; the page prints it with the credit "Problem ..., © Mathematical Association of America, used under CC BY-NC-SA 4.0. Text and figures from LIVE by Po-Shen Loh." Never add a statement by hand and never import a solution. Imported displays are unwrapped: LIVE cuts long equations by hand for a phone, and the importer joins a cut that only continues the line above (`unwrap_display` in `tools/fetch-live-statements.py`), keeping real systems, cases, and matrices. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
 
 - `formulas` = the basic tools for the **appropriate** route, not the theoretical minimum. Everything
   reduces to similar triangles and Pythagoras; tagging that way tells a reader nothing.
@@ -726,3 +726,30 @@ hand-written and means "these belong to this card". 15 hubs carry 84 links.
   belong.
 - `tools/check-lists.py` fails on a hub or id that does not resolve, a hub listing itself, a
   repeated id, an empty note, and an em dash in a note.
+
+
+## The Contest profile is a role, not an example (2026-10-10)
+
+(This is the standing rule for the `Contest profile` heading allowed on every formula, method, and pattern card; see the template list near the top.)
+
+The "Contest profile" line says in words how and where the card shows up in contests and what it
+is usually paired with. It never carries a worked example: no quoted sample problem, no computed
+value, no numbers-and-equals. A reader who wants an example has the Examples section. The gate in
+`tools/scan-conventions.py` ("worked examples or formulas in a Contest profile") flags a quoted
+phrase that contains a digit, a dollar sign, or starts with a task verb, and any formula that
+contains an equals sign with a digit; 62 profiles were rewritten into plain description when it
+was added.
+
+
+## Every claim is proved, or points to the card that proves it (2026-10-10)
+
+Stanley's note on Lucas' Theorem and Odd Entries in a Row of Pascal's Triangle: the cards were
+"cool" but did not prove every idea they mentioned. The standard from now on: each Key form and
+each named corollary has an argument in Why it works (a lemma, the steps, the conclusion), or it
+is a cited theorem whose own card proves it. A long argument goes in a Full proof section. Short
+paragraphs stay under 500 characters, so a proof is written as a sequence of short steps. A
+proof-depth pass over the thinnest converted cards is planned (see the plan, step R).
+
+## Break up big paragraphs of explanation (2026-10-10)
+
+A long explanation is never one block of prose with inline math. Put the key equation of each step on its own centered line (`$$...$$` as its own paragraph), add a figure where a picture helps (`{{figure:name}}`), and open a step with a plain lead-in ("Step 1, the lemma."; no markdown bold or italics, the scanner rejects them). Keep each paragraph under 500 characters. Applied first to Lucas' Theorem and Odd Entries in a Row of Pascal's Triangle; every new or rewritten card follows it, and the proof-depth pass (plan step R) applies it as it goes.

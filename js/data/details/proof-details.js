@@ -136,7 +136,7 @@ Any other case turns into the chosen one by a relabeling, and the relabeling lea
 - Scaling a statement that is not homogeneous.
 
 ## Contest profile
-A standard step in olympiad inequalities, geometry, and combinatorics. In answer-only contests it appears as "assume $x \le y \le z$" before casework.
+A standard step in olympiad inequalities, geometry, and combinatorics. In answer-only contests it appears as an assumption on the order of the variables before casework.
 `,
 
 "proving-both-directions": String.raw`

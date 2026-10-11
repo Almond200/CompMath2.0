@@ -83,7 +83,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "bisector-closer-region",
-          name: "Drawing the Bisector to Compare Distances to Two Sides",
+          name: "Drawing the Angle Bisector to Compare Distances to Two Sides",
           type: "method",
           subject: "geometry",
           when: String.raw`A question asks which points of a triangle or angle are closer to one side than to another, often as a probability for a random point or an area of a region.`,

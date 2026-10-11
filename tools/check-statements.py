@@ -5,6 +5,8 @@ Every key must be a problem in problem-db.js, every figure a statement mentions 
 SVG file, no statement may hold a raw `<` plus a letter outside maths or an odd number of `$`, and
 the files must carry the MAA credit header. Run from the repo root."""
 import glob, json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import choice_layout
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 titles = json.load(open(os.path.join(ROOT, "tools", "aops-titles.json")))
 slugs = set()
@@ -22,6 +24,17 @@ for f in sorted(glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")
         if s.replace("$$", "").count("$") % 2: bad.append("%s: unbalanced $" % slug)
         if re.search(r"<[A-Za-z/]", re.sub(r"\$[^$]*\$", "", s)): bad.append("%s: raw tag outside maths" % slug)
         if not u.startswith("https://live.poshenloh.com/"): bad.append("%s: source link missing" % slug)
+        # A size command (\\tiny, \\small ...) shrinks a formula to near-unreadable size on screen.
+        if re.search(r"\\(?:tiny|scriptsize|footnotesize|small)\b", s): bad.append("%s: a size command shrinks the maths" % slug)
+        # Long answer choices go one per line; a run of long ones left inline wraps into a paragraph.
+        if choice_layout.layout(s) != s: bad.append("%s: long answer choices are not one per line" % slug)
+        # LIVE cuts long equations by hand for a phone screen; the importer joins those cuts. A cut that
+        # only continues the line above (it starts with {}, \\quad, or an operator) must not survive.
+        for disp in re.findall(r"\$\$(.*?)\$\$", s, re.S):
+            if re.match(r"\s*\\begin\{(aligned|gathered)\}", disp):
+                for line in re.split(r"\\\\", disp)[1:]:
+                    if re.match(r"^[&\s]*(?:\\q?quad\b|\{\}|[+\-=<>]|\\(?:cdot|cdots|times)\b)", line):
+                        bad.append("%s: an equation still has a hand-cut continuation line" % slug); break
         for fig in re.findall(r"@@fig:([^@]+)@@", s):
             figs += 1
             p = os.path.join(ROOT, "js/data/problems/figures", fig)

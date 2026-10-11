@@ -449,7 +449,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["ngon-vertex-distance-product", "van-aubel", "bretschneiders-formula", "euler-quadrilateral", "cyclic-quad-diagonals", "ptolemys-inequality", "cyclic-quad-radius", "newtons-line", "ptolemy-second-theorem", "japanese-theorem", "poncelet-closure"] },
       { title: "Projective & Inversive",
         note: "Cross-ratio, poles and polars, and the theorems that only make sense once you stop measuring lengths.",
-        ids: ["brianchon-theorem", "pascals-theorem", "desargues-theorem", "mobius-transformations", "cross-ratio", "harmonic-bundle", "harmonic-quadrilateral", "complete-quadrilateral-miquel", "pappus-hexagon"] },
+        ids: ["brianchon-theorem", "pascals-theorem", "desargues-theorem", "mobius-transformations", "cross-ratio", "harmonic-bundle", "harmonic-quadrilateral", "complete-quadrilateral-miquel", "brocards-theorem", "pappus-hexagon"] },
       { title: "Transformations",
         note: "Move the figure rather than measure it. Usually the shortest olympiad solution when it applies.",
         ids: ["inversion-properties", "inversion-facts", "spiral-similarity", "homothety-monge", "monges-theorem", "affine-transformations", "gliding-principle"] },

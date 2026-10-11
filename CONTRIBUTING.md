@@ -10,6 +10,24 @@
 House style for writing cards. Moved out of the README, which is for readers of the
 reference rather than people editing it.
 
+## Uploading to GitHub (without losing files)
+
+The folder `~/Downloads/competition-math-reference` **is** the repository: it is a git clone of `Almond200/CompMath2.0`, with `origin` already set. So the files never need to be copied anywhere. Dragging files from this folder into another folder in Finder *moves* them (that is why they used to vanish), and the web uploader stops working past 100 files. Use one of these instead:
+
+1. **GitHub Desktop** (no Terminal). Install it and sign in once. Choose File, then Add Local Repository, and pick `competition-math-reference`. It lists every changed file. Type a short summary, click **Commit to main**, then **Push origin**. The site at https://almond200.github.io/CompMath2.0/ updates a minute or two later.
+2. **Terminal.** Create a GitHub personal access token once (GitHub, Settings, Developer settings, Personal access tokens, with the `repo` scope). Then:
+
+   ```
+   cd ~/Downloads/competition-math-reference
+   git add -A
+   git commit -m "Describe the change"
+   git push
+   ```
+
+   When git asks for a password, paste the token; macOS keeps it after the first time.
+
+`~/Documents/CompMath-backup/` is refreshed after every batch and is the safety copy. If a file ever has to be copied by hand, hold **Option** while dragging (that copies instead of moving).
+
 ## Write-up style
 
 **Five headings, and no sixth.** A write-up uses `## Why it works`, `## How to use it`,
@@ -154,6 +172,10 @@ problem's own page is where the trick route is labelled.
 
 ### Failure modes seen in practice
 
+- **Every claim is proved.** Each Key form and each named corollary has an argument in Why it works, or points to the card that proves it (CONVENTIONS, last section).
+- **Contest profile is a role, not an example.** Say in words how and where the card shows up in contests and what it pairs with. No worked example, no quoted sample problem, no computed value (the scanner rejects them; CONVENTIONS, last section).
+- **Importance has five values** (high, medium, low, lower, lowest): Lower is marginal use (perhaps once in ten years), Lowest is never used on a contest and is here only for completeness or beauty (CONVENTIONS, "Tiers"). Judge it on evidence (tagged problems) and propose it before assigning.
+- **Break up big paragraphs.** Put each step's key equation on its own centered `$$...$$` line, add a figure where it helps, and open steps with a plain lead-in; no bold or italics (CONVENTIONS, last section).
 - **Tagging the object, not the method.** `rotation-trick` is the specific "rotate about a
   vertex of an equilateral triangle to fuse three distances" technique. It was attached three
   separate times to problems that merely *contain* a rotation.

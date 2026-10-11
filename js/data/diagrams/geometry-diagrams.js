@@ -3720,6 +3720,36 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  DIAGRAMS["brocards-theorem"] = [(() => {
+    // A, B, C, D at 0, 120, 170, 220 degrees on the circle. E = AB x CD, F = AD x BC, G = AC x BD are
+    // computed; O is checked to lie on the altitude from each of E, F, G (the theorem itself).
+    const O = [292, 150], R = 62;
+    const pt = a => [O[0] + R * Math.cos(rad(a)), O[1] - R * Math.sin(rad(a))];
+    const A = pt(0), B = pt(120), C = pt(170), D = pt(220);
+    const E = lineInt(A, B, C, D), F = lineInt(A, D, B, C), G = lineInt(A, C, B, D);
+    const hE = foot(E, F, G), hF = foot(F, E, G), hG = foot(G, E, F);
+    const offLine = (P, Q, X) => Math.abs((Q[0] - P[0]) * (X[1] - P[1]) - (Q[1] - P[1]) * (X[0] - P[0])) / dist(P, Q);
+    const ok = offLine(E, hE, O) < 1e-6 && offLine(F, hF, O) < 1e-6 && offLine(G, hG, O) < 1e-6;
+    if (!ok) return "";
+    return wrap(440, 300, [
+      circ(O, R, FNT, 1.5),
+      seg(E, B, FNT, 1.2, "5 4"), seg(A, E, FNT, 1.2, "5 4"), seg(E, D, FNT, 1.2, "5 4"), seg(E, C, FNT, 1.2, "5 4"),
+      seg(F, B, FNT, 1.2, "5 4"), seg(F, A, FNT, 1.2, "5 4"),
+      poly([A, B, C, D], DIM, 1.8),
+      seg(A, C, DIM, 1.4, "2 3"), seg(B, D, DIM, 1.4, "2 3"),
+      poly([E, F, G], GLD, 2, GLDS),
+      seg(E, hE, ACC, 1.5, "6 3"), seg(F, hF, ACC, 1.5, "6 3"), seg(G, hG, ACC, 1.5, "6 3"),
+      rightAngle(hE, E, F, 8, ACC), rightAngle(hF, F, E, 8, ACC), rightAngle(hG, G, E, 8, ACC),
+      [A, B, C, D].map(p => dot(p, DIM, 3.5)).join(""),
+      dot(E, GLD, 4), dot(F, GLD, 4), dot(G, GLD, 4), dot(O, ORG, 5),
+      txt(away(A, O, 13), "A", DIM, 13), txt(away(B, O, 13), "B", DIM, 13),
+      txt(away(C, O, 13), "C", DIM, 13), txt(add(away(D, O, 13), [0, 6]), "D", DIM, 13),
+      txt(add(E, [-13, 4]), "E", GLD, 13), txt(add(F, [12, 4]), "F", GLD, 13),
+      txt(add(G, [14, 4]), "G", GLD, 13), txt(add(O, [11, 15]), "O", ORG, 13),
+      cap(440, 300, "the circumcenter O lies on all three altitudes of the diagonal triangle EFG: OE ⟂ FG, OF ⟂ EG, OG ⟂ EF")
+    ]);
+  })()];
+
   DIAGRAMS["descartes-sphere-theorem"] = [(() => {
     // A genuine 3D arrangement rather than a cross-section: four equal spheres
     // whose centers form a regular tetrahedron of edge 2R are mutually tangent,

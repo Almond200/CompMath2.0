@@ -11,13 +11,7 @@ Object.assign(window.MATH_STATEMENTS, {
 "1993-aime-14": { s: String.raw`A rectangle that is inscribed in a larger rectangle (with one vertex on each side) is called unstuck if it is possible to rotate (however slightly) the smaller rectangle about its center within the confines of the larger. Of all the rectangles that can be inscribed unstuck in a $6$ by $8$ rectangle, the smallest perimeter has the form $\sqrt N,$ for a positive integer $N.$ Find $N.$`, u: "https://live.poshenloh.com/past-contests/aime/1993" },
 "1993-aime-15": { s: String.raw`Let $\overline{CH}$ be an altitude of $\triangle ABC.$ Let $R$ and $S$ be the points where the circles inscribed in the triangles $ACH$ and $BCH$ are tangent to $\overline{CH}.$ If $AB=1995,$ $AC=1994,$ and $BC=1993,$ then $RS$ can be expressed as $\frac{m}{n},$ where $m$ and $n$ are relatively prime integers. Find $m+n.$`, u: "https://live.poshenloh.com/past-contests/aime/1993" },
 "1993-aime-2": { s: String.raw`During a recent campaign for office, a candidate made a tour of a country which we assume lies in a plane. On the first day of the tour he went east, on the second day he went north, on the third day west, on the fourth day south, on the fifth day east, etc. If the candidate went $\frac{n^2}{2}$ miles on the $n$th day of this tour, how many miles was he from his starting point at the end of the $40$th day?`, u: "https://live.poshenloh.com/past-contests/aime/1993" },
-"1993-aime-3": { s: String.raw`The table below displays some of the results of last summer’s Frostbite Falls Fishing Festival, showing how many contestants caught $n$ fish for various values of $n.$
-
-$$\begin{array}{|cccccc|}\hline n & 0 & 1 & 2 & 3 & \ldots \\ \hline \text{number of contestants who caught }n \text{ fish} & 9 & 5 & 7 & 23 & \ldots \\ \hline \end{array}$$
-
-$$\begin{array}{|cccc|}\hline n & 13 & 14 & 15 \\ \hline \text{number of contestants who caught }n \text{ fish} & 5 & 2 & 1 \\ \hline \end{array}$$
-
-In the newspaper story covering the event, it was reported that
+"1993-aime-3": { s: String.raw`The table below displays some of the results of last summer’s Frostbite Falls Fishing Festival, showing how many contestants caught $n$ fish for various values of $n.$$$\begin{array}{|cccccc|}\hline n & 0 & 1 & 2 & 3 & \ldots \\ \hline \text{number of contestants who caught }n \text{ fish} & 9 & 5 & 7 & 23 & \ldots \\ \hline \end{array}$$$$\begin{array}{|cccc|}\hline n & 13 & 14 & 15 \\ \hline \text{number of contestants who caught }n \text{ fish} & 5 & 2 & 1 \\ \hline \end{array}$$In the newspaper story covering the event, it was reported that
 
 (a) the winner caught $15$ fish;
  (b) those who caught $3$ or more fish averaged $6$ fish each;

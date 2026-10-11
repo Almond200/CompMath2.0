@@ -324,6 +324,7 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | desargues-theorem | geometry / Projective Geometry & Cross-Ratio | Olympiad | lower | 0 | **lower** |
 | mobius-transformations | geometry / Projective Geometry & Cross-Ratio | Olympiad | lowest | 0 | **lower** |
 | complete-quadrilateral-miquel | geometry / Projective Geometry & Cross-Ratio | Olympiad | lowest | 0 | **lower** |
+| brocards-theorem | geometry / Projective Geometry & Cross-Ratio | Olympiad | new (2026-10-10, Stanley asked for it) | 0 | **lower** |
 | equilateral-triangle-facts | geometry / Ratios & Constants to Memorize | AMC | high | 19 | **high** |
 | golden-ratio-pentagon | geometry / Ratios & Constants to Memorize | AMC | medium | 4 | **high** |
 | 15-75-90-triangle | geometry / Ratios & Constants to Memorize | AMC | low | 2 | **medium** |

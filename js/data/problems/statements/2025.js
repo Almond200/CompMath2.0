@@ -9,12 +9,12 @@ Object.assign(window.MATH_STATEMENTS, {
 @@fig:aime/2025I/10.svg@@
 
 The number of different ways to fill such a grid can be written as $p^a \cdot q^b \cdot r^c \cdot s^d,$ where $p,$ $q,$ $r,$ and $s$ are distinct prime numbers and $a,$ $b,$ $c,$ $d$ are positive integers. Find $p \cdot a + q \cdot b + r \cdot c + s \cdot d.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
-"2025-aime-i-11": { s: String.raw`A piecewise linear function is defined by $$f(x) = \begin{cases} x & \text{if } -1 \le x \lt 1 \\ 2 - x & \text{if } 1 \le x \lt 3 \end{cases}$$ and $f(x + 4) = f(x)$ for all real numbers $x.$ The graph of $f(x)$ has the sawtooth pattern depicted below.
+"2025-aime-i-11": { s: String.raw`A piecewise linear function is defined by$$f(x) = \begin{cases} x & \text{if } -1 \le x \lt 1 \\ 2 - x & \text{if } 1 \le x \lt 3 \end{cases}$$and $f(x + 4) = f(x)$ for all real numbers $x.$ The graph of $f(x)$ has the sawtooth pattern depicted below.
 
 @@fig:aime/2025I/11.svg@@
 
 The parabola $x = 34y^2$ intersects the graph of $f(x)$ at finitely many points. The sum of the $y$-coordinates of all these intersection points can be expressed in the form $\frac{a + b\sqrt{c}}{d},$ where $a,$ $b,$ $c,$ and $d$ are positive integers such that $a,$ $b,$ $d$ have greatest common divisor equal to $1,$ and $c$ is not divisible by the square of any prime. Find $a + b + c + d.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
-"2025-aime-i-12": { s: String.raw`The set of points in $3$-dimensional coordinate space that lie in the plane $x + y + z = 75$ whose coordinates satisfy the inequalities $$x - yz \lt y - zx \lt z - xy$$ forms three disjoint convex regions. Exactly one of those regions has finite area. The area of this finite region can be expressed in the form $a\sqrt{b},$ where $a$ and $b$ are positive integers and $b$ is not divisible by the square of any prime. Find $a + b.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
+"2025-aime-i-12": { s: String.raw`The set of points in $3$-dimensional coordinate space that lie in the plane $x + y + z = 75$ whose coordinates satisfy the inequalities$$x - yz \lt y - zx \lt z - xy$$forms three disjoint convex regions. Exactly one of those regions has finite area. The area of this finite region can be expressed in the form $a\sqrt{b},$ where $a$ and $b$ are positive integers and $b$ is not divisible by the square of any prime. Find $a + b.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-i-13": { s: String.raw`Alex divides a disk into four quadrants with two perpendicular diameters intersecting at the center of the disk. He draws $25$ more line segments through the disk, drawing each segment by selecting two points at random on the perimeter of the disk in different quadrants and connecting these two points. Find the expected number of regions into which these $27$ line segments divide the disk.`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-i-14": { s: String.raw`Let $ABCDE$ be a convex pentagon with $AB = 14,$ $BC = 7,$ $CD = 24,$ $DE = 13,$ $EA = 26,$ and $\angle B = \angle E = 60^\circ.$ For each point $X$ in the plane, define $f(X) = AX + BX + CX$ $+ DX + EX.$ The least possible value of $f(X)$ can be expressed as $m + n\sqrt{p},$ where $m$ and $n$ are positive integers and $p$ is not divisible by the square of any prime. Find $m + n + p.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-i-15": { s: String.raw`Let $N$ denote the number of ordered triples of positive integers $(a, b, c)$ such that $a,$ $b,$ $c \le 3^6$ and $a^3 + b^3 + c^3$ is a multiple of $3^7.$ Find the remainder when $N$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
@@ -26,7 +26,7 @@ The parabola $x = 34y^2$ intersects the graph of $f(x)$ at finitely many points.
 "2025-aime-i-5": { s: String.raw`There are $8! = 40320$ eight-digit positive integers that use each of the digits $1,$ $2,$ $3,$ $4,$ $5,$ $6,$ $7,$ $8$ exactly once. Let $N$ be the number of these integers that are divisible by $22.$ Find the difference between $N$ and $2025.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-i-6": { s: String.raw`An isosceles trapezoid has an inscribed circle tangent to each of its four sides. The radius of the circle is $3,$ and the area of the trapezoid is $72.$ Let the parallel sides of the trapezoid have lengths $r$ and $s,$ with $r \ne s.$ Find $r^2 + s^2.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-i-7": { s: String.raw`The twelve letters $A,$ $B,$ $C,$ $D,$ $E,$ $F,$ $G,$ $H,$ $I,$ $J,$ $K,$ and $L$ are randomly grouped into six pairs of letters. The two letters in each pair are placed next to each other in alphabetical order to form six two-letter words, and then those six words are listed alphabetically. For example, a possible result is $AB,$ $CJ,$ $DG,$ $EK,$ $FL,$ $HI.$ The probability that the last word listed contains $G$ is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
-"2025-aime-i-8": { s: String.raw`Let $k$ be a real number such that the system $$|25 + 20i - z| = 5$$ $$|z - 4 - k| = |z - 3i - k|$$ has exactly one complex solution $z.$ The sum of all possible values of $k$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$ Here $i = \sqrt{-1}.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
+"2025-aime-i-8": { s: String.raw`Let $k$ be a real number such that the system$$|25 + 20i - z| = 5$$$$|z - 4 - k| = |z - 3i - k|$$has exactly one complex solution $z.$ The sum of all possible values of $k$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$ Here $i = \sqrt{-1}.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-i-9": { s: String.raw`The parabola with equation $y = x^2 - 4$ is rotated $60^\circ$ counterclockwise around the origin. The unique point in the fourth quadrant where the original parabola and its image intersect has $y$-coordinate $\frac{a - \sqrt{b}}{c},$ where $a,$ $b,$ and $c$ are positive integers, and $a$ and $c$ are relatively prime. Find $a + b + c.$`, u: "https://live.poshenloh.com/past-contests/aime/2025I" },
 "2025-aime-ii-1": { s: String.raw`Six points $A,$ $B,$ $C,$ $D,$ $E,$ and $F$ lie in a straight line in that order. Suppose that $G$ is a point not on the line and that $AC = 26,$ $BD = 22,$ $CE = 31,$ $DF = 33,$ $AF = 73,$ $CG = 40,$ and $DG = 30.$ Find the area of $\triangle BGE.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
 "2025-aime-ii-10": { s: String.raw`Sixteen chairs are arranged in a row. Eight people each select a chair in which to sit so that no person sits next to two other people. Let $N$ be the number of subsets of $16$ chairs that could be selected. Find the remainder when $N$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
@@ -40,14 +40,14 @@ The parabola $x = 34y^2$ intersects the graph of $f(x)$ at finitely many points.
 • The perimeter of the $11$-gon $A_1A_2 \ldots A_{11}$ is equal to $20.$
 
 Then $A_1A_2 + A_1A_{11}$ can be expressed as $\frac{m\sqrt{n} - p}{q}$ where $m,$ $n,$ $p,$ and $q$ are positive integers, $n$ is not divisible by the square of any prime, and no prime divides all of $m,$ $p,$ and $q.$ Find $m + n + p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
-"2025-aime-ii-13": { s: String.raw`Let the sequence of rationals $x_1,$ $x_2,$ $\ldots$ be defined such that $x_1 = \frac{25}{11}$ and $$x_{k+1} = \frac{1}{3}\left(x_k + \frac{1}{x_k} - 1\right)$$ for all $k \ge 1.$ Then $x_{2025}$ can be expressed as $\frac{m}{n}$ for relatively prime positive integers $m$ and $n.$ Find the remainder when $m + n$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
-"2025-aime-ii-14": { s: String.raw`Let $\triangle ABC$ be a right triangle with $\angle A = 90^\circ$ and $BC = 38.$ There exist points $K$ and $L$ inside the triangle such that $$\begin{gathered} AK = AL = BK \\ = CL = KL = 14. \end{gathered}$$ The area of the quadrilateral $BKLC$ can be expressed as $n\sqrt{3}$ for some positive integer $n.$ Find $n.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
-"2025-aime-ii-15": { s: String.raw`There are exactly three positive real numbers $k$ such that the function $$\begin{aligned} f(x) &= \frac{(x - 18)(x - 72)}{x} \\ &\quad {}\cdot (x - 98)(x - k) \end{aligned}$$ defined over the positive real numbers achieves its minimum value at exactly two positive real numbers $x.$ Find the sum of these three values of $k.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
+"2025-aime-ii-13": { s: String.raw`Let the sequence of rationals $x_1,$ $x_2,$ $\ldots$ be defined such that $x_1 = \frac{25}{11}$ and$$x_{k+1} = \frac{1}{3}\left(x_k + \frac{1}{x_k} - 1\right)$$for all $k \ge 1.$ Then $x_{2025}$ can be expressed as $\frac{m}{n}$ for relatively prime positive integers $m$ and $n.$ Find the remainder when $m + n$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
+"2025-aime-ii-14": { s: String.raw`Let $\triangle ABC$ be a right triangle with $\angle A = 90^\circ$ and $BC = 38.$ There exist points $K$ and $L$ inside the triangle such that$$AK = AL = BK = CL = KL = 14.$$The area of the quadrilateral $BKLC$ can be expressed as $n\sqrt{3}$ for some positive integer $n.$ Find $n.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
+"2025-aime-ii-15": { s: String.raw`There are exactly three positive real numbers $k$ such that the function$$f(x) = \frac{(x - 18)(x - 72)}{x} \cdot (x - 98)(x - k)$$defined over the positive real numbers achieves its minimum value at exactly two positive real numbers $x.$ Find the sum of these three values of $k.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
 "2025-aime-ii-2": { s: String.raw`Find the sum of all positive integers $n$ such that $n + 2$ divides the product $3(n + 3)(n^2 + 9).$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
 "2025-aime-ii-3": { s: String.raw`Four unit squares form a $2 \times 2$ grid. Each of the $12$ unit line segments forming the sides of the squares is colored either red or blue in such a way that each unit square has $2$ red sides and $2$ blue sides. One example is shown below (red is solid, blue is dashed). Find the number of such colorings.
 
 @@fig:aime/2025II/3.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
-"2025-aime-ii-4": { s: String.raw`The product $$\begin{gathered} \prod_{k=4}^{63} \frac{\log_k (5^{k^2 - 1})}{\log_{k+1} (5^{k^2 - 4})} \\ = \frac{\log_4 (5^{15})}{\log_5 (5^{12})} \\ \quad {}\cdot \frac{\log_5 (5^{24})}{\log_6 (5^{21})} \\ \quad {}\cdot \frac{\log_6 (5^{35})}{\log_7 (5^{32})} \\ \quad \cdots \frac{\log_{63} (5^{3968})}{\log_{64} (5^{3965})} \end{gathered}$$ is equal to $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
+"2025-aime-ii-4": { s: String.raw`The product$$\prod_{k=4}^{63} \frac{\log_k (5^{k^2 - 1})}{\log_{k+1} (5^{k^2 - 4})} = \frac{\log_4 (5^{15})}{\log_5 (5^{12})} \cdot \frac{\log_5 (5^{24})}{\log_6 (5^{21})} \cdot \frac{\log_6 (5^{35})}{\log_7 (5^{32})} \cdots \frac{\log_{63} (5^{3968})}{\log_{64} (5^{3965})}$$is equal to $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
 "2025-aime-ii-5": { s: String.raw`Suppose $\triangle ABC$ has angles $\angle BAC = 84^\circ,$ $\angle ABC = 60^\circ,$ and $\angle ACB = 36^\circ.$ Let $D,$ $E,$ and $F$ be the midpoints of sides $\overline{BC},$ $\overline{AC},$ and $\overline{AB},$ respectively. The circumcircle of $\triangle DEF$ intersects $\overline{BD},$ $\overline{AE},$ and $\overline{AF}$ at points $G,$ $H,$ and $J,$ respectively. The points $G,$ $D,$ $E,$ $H,$ $J,$ and $F$ divide the circumcircle of $\triangle DEF$ into six minor arcs, as shown. Find $\overset{\frown}{DE} + 2 \cdot \overset{\frown}{HJ} + 3 \cdot \overset{\frown}{FG},$ where the arcs are measured in degrees.
 
 @@fig:aime/2025II/5.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2025II" },
@@ -96,20 +96,8 @@ The area of the shaded portion of the figure is $64\%$ of the area of the origin
 "2025-amc-10a-17": { s: String.raw`Let $N$ be the unique positive integer such that dividing $273436$ by $N$ leaves a remainder of $16,$ and dividing $272760$ by $N$ leaves a remainder of $15.$ What is the tens digit of $N?$
 
 (A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
-"2025-amc-10a-18": { s: String.raw`The harmonic mean of a collection of numbers is the reciprocal of the arithmetic mean of the reciprocals of the numbers in the collection. For example, the harmonic mean of $4,$ $4,$ and $5$ is
-
-$$\frac{1}{\frac{1}{3}\left(\frac{1}{4} + \frac{1}{4} + \frac{1}{5}\right)} = \frac{30}{7}.$$
-
-What is the harmonic mean of all the real roots of the $4050$th degree polynomial
-
-$$\begin{gathered} \prod_{k=1}^{2025}(kx^2 - 4x - 3) \\ {}= (x^2 - 4x - 3) \\ \quad {}\cdot (2x^2 - 4x - 3) \\ \quad {}\cdot (3x^2 - 4x - 3)\cdots \\ \quad {}\cdot (2025x^2 - 4x - 3)? \end{gathered}$$
-
-(A) $-\dfrac{5}{3}$  (B) $-\dfrac{3}{2}$  (C) $-\dfrac{6}{5}$  (D) $-\dfrac{5}{6}$  (E) $-\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
-"2025-amc-10a-19": { s: String.raw`An array of numbers is constructed beginning with the numbers $-1,$ $3,$ $1$ in the top row. Each adjacent pair of numbers is summed to produce a number in the next row. Each row will begin and end with the numbers $-1$ and $1,$ respectively. The first three rows are shown below.
-
-$$\renewcommand{\arraystretch}{1.5}\begin{array}{ccccccccc} & & -1 & & \phantom{-}3 & & \phantom{-}1 & & \\ & -1 & & \phantom{-}2 & & \phantom{-}4 & & \phantom{-}1 & \\ -1 & & \phantom{-}1 & & \phantom{-}6 & & \phantom{-}5 & & \phantom{-}1 \end{array}$$
-
-If the process continues, one of the rows will sum to $12{,}288.$ In that row, what is the third number from the left?
+"2025-amc-10a-18": { s: String.raw`The harmonic mean of a collection of numbers is the reciprocal of the arithmetic mean of the reciprocals of the numbers in the collection. For example, the harmonic mean of $4,$ $4,$ and $5$ is$$\frac{1}{\frac{1}{3}\left(\frac{1}{4} + \frac{1}{4} + \frac{1}{5}\right)} = \frac{30}{7}.$$What is the harmonic mean of all the real roots of the $4050$th degree polynomial$$\prod_{k=1}^{2025}(kx^2 - 4x - 3) = (x^2 - 4x - 3) \cdot (2x^2 - 4x - 3) \cdot (3x^2 - 4x - 3)\cdots (2025x^2 - 4x - 3)?$$(A) $-\dfrac{5}{3}$  (B) $-\dfrac{3}{2}$  (C) $-\dfrac{6}{5}$  (D) $-\dfrac{5}{6}$  (E) $-\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
+"2025-amc-10a-19": { s: String.raw`An array of numbers is constructed beginning with the numbers $-1,$ $3,$ $1$ in the top row. Each adjacent pair of numbers is summed to produce a number in the next row. Each row will begin and end with the numbers $-1$ and $1,$ respectively. The first three rows are shown below.$$\begin{array}{ccccccccc} & & -1 & & \phantom{-}3 & & \phantom{-}1 & & \\[0.6em] & -1 & & \phantom{-}2 & & \phantom{-}4 & & \phantom{-}1 & \\[0.6em] -1 & & \phantom{-}1 & & \phantom{-}6 & & \phantom{-}5 & & \phantom{-}1 \end{array}$$If the process continues, one of the rows will sum to $12{,}288.$ In that row, what is the third number from the left?
 
 (A) $-29$  (B) $-21$  (C) $-14$  (D) $-8$  (E) $-3$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
 "2025-amc-10a-2": { s: String.raw`A box contains $10$ pounds of a nut mix that is $50$ percent peanuts, $20$ percent cashews, and $30$ percent almonds. A second nut mix containing $20$ percent peanuts, $40$ percent cashews, and $40$ percent almonds is added to the box resulting in a new nut mix that is $40$ percent peanuts. How many pounds of cashews are now in the box?
@@ -143,11 +131,7 @@ What is $r?$
 "2025-amc-10a-4": { s: String.raw`A team of students is going to compete against a team of teachers in a trivia contest. The total number of students and teachers is $15.$ Ash, a cousin of one of the students, wants to join the contest. If Ash plays with the students, the average age on that team will increase from $12$ to $14.$ If Ash plays with the teachers, the average age on that team will decrease from $55$ to $52.$ How old is Ash?
 
 (A) $28$  (B) $29$  (C) $30$  (D) $32$  (E) $33$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
-"2025-amc-10a-5": { s: String.raw`Consider the sequence of positive integers
-
-$$\begin{gathered} 1, 2, 1, 2, 3, 2, 1, 2, 3, 4, \\ 3, 2, 1, 2, 3, 4, 5, 4, 3, 2, \\ 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, \\ 1, 2, \ldots \end{gathered}$$
-
-What is the $2025$th term in this sequence?
+"2025-amc-10a-5": { s: String.raw`Consider the sequence of positive integers$$1, 2, 1, 2, 3, 2, 1, 2, 3, 4, 3, 2, 1, 2, 3, 4, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 2, \ldots$$What is the $2025$th term in this sequence?
 
 (A) $5$  (B) $15$  (C) $16$  (D) $44$  (E) $45$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
 "2025-amc-10a-6": { s: String.raw`In an equilateral triangle each interior angle is trisected by a pair of rays. The intersection of the interiors of the middle $20^\circ$-angle at each vertex is the interior of a convex hexagon. What is the degree measure of the smallest angle of this hexagon?
@@ -185,9 +169,7 @@ What is the distance from $O$ to $A?$
 "2025-amc-12a-11": { s: String.raw`The orthocenter of a triangle is the concurrent intersection of the three (possibly extended) altitudes. What is the sum of the coordinates of the orthocenter of the triangle whose vertices are $A(2, 31),$ $B(8, 27),$ and $C(18, 27)?$
 
 (A) $5$  (B) $17$  (C) $10 + 4\sqrt{17} + 2\sqrt{13}$  (D) $\dfrac{113}{3}$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
-"2025-amc-12a-12": { s: String.raw`The harmonic mean of a collection of numbers is the reciprocal of the arithmetic mean of the reciprocals of the numbers in the collection. For example, the harmonic mean of $4,$ $4,$ and $5$ is $$\frac{1}{\frac{1}{3}\left(\frac{1}{4} + \frac{1}{4} + \frac{1}{5}\right)} = \frac{30}{7}.$$ What is the harmonic mean of all the real roots of the $4050$th degree polynomial $$\begin{aligned} &\small \prod_{k=1}^{2025}(kx^2 - 4x - 3) \\ &= (x^2 - 4x - 3) \\ &\quad {}\cdot (2x^2 - 4x - 3) \\ &\quad {}\cdot (3x^2 - 4x - 3)\cdots \\ &\quad (2025x^2 - 4x - 3)? \end{aligned}$$
-
-(A) $-\dfrac{5}{3}$  (B) $-\dfrac{3}{2}$  (C) $-\dfrac{6}{5}$  (D) $-\dfrac{5}{6}$  (E) $-\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
+"2025-amc-12a-12": { s: String.raw`The harmonic mean of a collection of numbers is the reciprocal of the arithmetic mean of the reciprocals of the numbers in the collection. For example, the harmonic mean of $4,$ $4,$ and $5$ is$$\frac{1}{\frac{1}{3}\left(\frac{1}{4} + \frac{1}{4} + \frac{1}{5}\right)} = \frac{30}{7}.$$What is the harmonic mean of all the real roots of the $4050$th degree polynomial$$\prod_{k=1}^{2025}(kx^2 - 4x - 3) = (x^2 - 4x - 3) \cdot (2x^2 - 4x - 3) \cdot (3x^2 - 4x - 3)\cdots (2025x^2 - 4x - 3)?$$(A) $-\dfrac{5}{3}$  (B) $-\dfrac{3}{2}$  (C) $-\dfrac{6}{5}$  (D) $-\dfrac{5}{6}$  (E) $-\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
 "2025-amc-12a-13": { s: String.raw`Let $C = \{1, 2, 3, \ldots, 13\}.$ Let $N$ be the greatest integer such that there exists a subset of $C$ with $N$ elements that does not contain five consecutive integers. Suppose $N$ integers are chosen at random from $C$ without replacement. What is the probability that the chosen elements do not include five consecutive integers?
 
 (A) $\dfrac{3}{130}$  (B) $\dfrac{3}{143}$  (C) $\dfrac{5}{143}$  (D) $\dfrac{1}{26}$  (E) $\dfrac{5}{78}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
@@ -210,11 +192,7 @@ The two ellipses have the same eccentricity $e,$ and the ratio of their areas is
 "2025-amc-12a-18": { s: String.raw`How many ordered triples $(x, y, z)$ of distinct nonnegative integers less than or equal to $8$ satisfy $xy \gt z,$ $zx \gt y,$ and $yz \gt x?$
 
 (A) $36$  (B) $84$  (C) $186$  (D) $336$  (E) $486$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
-"2025-amc-12a-19": { s: String.raw`Let $a,$ $b,$ and $c$ be the roots of the polynomial $x^3 + kx + 1.$ What is the sum
-
-$$\begin{aligned} &a^3b^2 + a^2b^3 + b^3c^2 \\ &\quad {}+ b^2c^3 + c^3a^2 + c^2a^3? \end{aligned}$$
-
-(A) $-k$  (B) $-k + 1$  (C) $1$  (D) $k - 1$  (E) $k$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
+"2025-amc-12a-19": { s: String.raw`Let $a,$ $b,$ and $c$ be the roots of the polynomial $x^3 + kx + 1.$ What is the sum$$a^3b^2 + a^2b^3 + b^3c^2 + b^2c^3 + c^3a^2 + c^2a^3?$$(A) $-k$  (B) $-k + 1$  (C) $1$  (D) $k - 1$  (E) $k$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
 "2025-amc-12a-2": { s: String.raw`A box contains $10$ pounds of a nut mix that is $50$ percent peanuts, $20$ percent cashews, and $30$ percent almonds. A second nut mix containing $20$ percent peanuts, $40$ percent cashews, and $40$ percent almonds is added to the box resulting in a new nut mix that is $40$ percent peanuts. How many pounds of cashews are now in the box?
 
 (A) $3.5$  (B) $4$  (C) $4.5$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
@@ -225,11 +203,7 @@ $$\begin{aligned} &a^3b^2 + a^2b^3 + b^3c^2 \\ &\quad {}+ b^2c^3 + c^3a^2 + c^2a
 What is the volume of the pentahedron?
 
 (A) $416$  (B) $520$  (C) $528$  (D) $676$  (E) $832$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
-"2025-amc-12a-21": { s: String.raw`There is a unique ordered triple $(a, k, m)$ of nonnegative integers such that
-
-$$\begin{aligned} &\small \frac{4^a + 4^{a+k} + 4^{a+2k} + \cdots + 4^{a+mk}}{2^a + 2^{a+k} + 2^{a+2k} + \cdots + 2^{a+mk}} \\ &= 964. \end{aligned}$$
-
-What is $a + k + m?$
+"2025-amc-12a-21": { s: String.raw`There is a unique ordered triple $(a, k, m)$ of nonnegative integers such that$$\frac{4^a + 4^{a+k} + 4^{a+2k} + \cdots + 4^{a+mk}}{2^a + 2^{a+k} + 2^{a+2k} + \cdots + 2^{a+mk}} = 964.$$What is $a + k + m?$
 
 (A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
 "2025-amc-12a-22": { s: String.raw`Three real numbers are chosen independently and uniformly at random between $0$ and $1.$ What is the probability that the greatest of these three numbers is greater than $2$ times each of the other two numbers? (In other words, if the chosen numbers are $a \ge b \ge c,$ then $a \gt 2b.$)

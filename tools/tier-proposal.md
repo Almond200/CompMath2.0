@@ -120,7 +120,7 @@ Totals: AMC 338 (53%), AIME Early 65 (10%), AIME Late 126 (20%), Olympiad 114 (1
 | Isoperimetric Facts | formula | — |
 | Fitting Copies Together | method | — |
 | Scaling One Level of a Repeating Figure | method | — |
-| Drawing the Bisector to Compare Distances to Two Sides | method | — |
+| Drawing the Angle Bisector to Compare Distances to Two Sides | method | — |
 | Two Right Triangles Sharing a Leg | method | — |
 | Joining the Centers of Tangent Circles | method | 3/7/3 |
 | Writing the Tangency Equation | method | 0/1/2 |

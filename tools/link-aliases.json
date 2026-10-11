@@ -203,6 +203,9 @@
     "brocard-angle": [
       "The Brocard Angle"
     ],
+    "brocards-theorem": [
+      "Brocard's Theorem"
+    ],
     "burnsides-lemma": [
       "Burnside",
       "Burnside's",
@@ -719,6 +722,10 @@
     ],
     "extremal-principle": [
       "The Extremal Principle"
+    ],
+    "factor-pair-counting": [
+      "Solving $xy = N$ Style Equations",
+      "Listing Factor Pairs"
     ],
     "factor-remainder-theorem": [
       "Factor Theorems",
@@ -1654,6 +1661,10 @@
     "sawayama-thebault": [
       "The Sawayama–Thébault Lemma"
     ],
+    "scale-one-level": [
+      "Finding the Ratio Between Consecutive Levels",
+      "Scaling One Level of a Repeating Figure"
+    ],
     "schurs-inequality": [
       "Schur",
       "Schur's",
@@ -1783,6 +1794,10 @@
     ],
     "subset-sum-facts": [
       "Subset-Sum Facts"
+    ],
+    "subtract-and-factor": [
+      "Subtracting and Factoring Known Roots",
+      "Turning Known Values into Known Roots"
     ],
     "sum-of-divisors": [
       "Sum of Divisors"
@@ -2048,18 +2063,6 @@
       "Zsygmondy's Theorem",
       "Zsygmondys",
       "Zsygmondy’s"
-    ],
-    "subtract-and-factor": [
-      "Subtracting and Factoring Known Roots",
-      "Turning Known Values into Known Roots"
-    ],
-    "scale-one-level": [
-      "Finding the Ratio Between Consecutive Levels",
-      "Scaling One Level of a Repeating Figure"
-    ],
-    "factor-pair-counting": [
-      "Solving $xy = N$ Style Equations",
-      "Listing Factor Pairs"
     ]
   },
   "aliasesExtra": {

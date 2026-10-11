@@ -59,7 +59,7 @@ A rectangle shows the same steps: cutting as many $b \times b$ squares as possib
 Greatest common divisors of numbers and of expressions in a variable, fractions in lowest terms, modular inverses, and the coefficients in Bézout's Identity.
 
 ## Contest profile
-A frequent AIME step, usually in the form "for how many $n$ is this fraction not in lowest terms", where the algorithm on expressions ends at a constant.
+A frequent AIME step, usually in a problem asking for how many integers make a fraction reducible, where the algorithm on expressions ends at a constant.
 `,
 
 "bezouts-identity": String.raw`
@@ -480,7 +480,7 @@ Multiplying by $a$ shuffles the residues coprime to $n$. Let $r_1, \ldots, r_k$ 
 Last digits and remainders of large powers for composite moduli, towers of exponents, and modular inverses as $a^{-1} \equiv a^{\varphi(n) - 1}$.
 
 ## Contest profile
-AMC and AIME last-digit questions, usually paired with the Chinese Remainder Theorem for moduli such as $1000 = 8 \cdot 125$.
+AMC and AIME last-digit questions, usually paired with the Chinese Remainder Theorem for moduli that are products of coprime prime powers.
 `,
 
 "wilsons-theorem": String.raw`
@@ -853,12 +853,28 @@ An AIME and olympiad shortcut that replaces three Legendre computations with cou
 $p$ is prime. The theorem works modulo $p$ only, not modulo $p^2$.
 
 ## Why it works
-By the freshman's dream, $(1 + x)^{p^i} \equiv 1 + x^{p^i} \pmod p$. So $$(1 + x)^m = \prod_i \left((1 + x)^{p^i}\right)^{m_i} \equiv \prod_i (1 + x^{p^i})^{m_i} \pmod p.$$ Expanding the right side, each factor contributes $\binom{m_i}{j_i}x^{j_ip^i}$ with $0 \le j_i \le m_i \lt p$, and the exponent $\sum j_ip^i$ is a base-$p$ representation, so each power $x^n$ arises from exactly one choice, $j_i = n_i$. Comparing coefficients of $x^n$ gives the product.
+Compare the coefficients of $(1 + x)^m$ computed two ways modulo $p$. The proof has three steps: a lemma, a power rule, and a digit-by-digit expansion.
+
+Step 1, the lemma. For a prime $p$ and $0 \lt j \lt p$, $p \mid \binom pj$. The identity $$j!\,(p - j)!\binom pj = p!$$ has $p$ on the right. Every factor of $j!$ and $(p - j)!$ is less than $p$, so $p$ divides neither, and it must divide $\binom pj$.
+
+Step 2, the power rule. All the middle terms of $(1 + x)^p$ vanish modulo $p$, the freshman's dream: $$(1 + x)^p \equiv 1 + x^p \pmod p.$$ Raising to the $p$th power again gives $(1 + x)^{p^2} \equiv (1 + x^p)^p \equiv 1 + x^{p^2}$, and induction gives, for every $i$, $$(1 + x)^{p^i} \equiv 1 + x^{p^i} \pmod p.$$
+
+Step 3, expand by digits. Write $m = \sum_i m_ip^i$ with digits $0 \le m_i \lt p$. Then $$(1 + x)^m = \prod_i\left((1 + x)^{p^i}\right)^{m_i} \equiv \prod_i\left(1 + x^{p^i}\right)^{m_i} \pmod p.$$
+
+Each factor expands by the [[binomial-theorem|Binomial Theorem]]: $$\left(1 + x^{p^i}\right)^{m_i} = \sum_{j_i = 0}^{m_i}\binom{m_i}{j_i}x^{j_ip^i}.$$
+
+Multiplying the factors out, a term has exponent $\sum_i j_ip^i$ with $0 \le j_i \le m_i \lt p$. Each $j_i$ is a legitimate base-$p$ digit, so the exponent determines the $j_i$ uniquely. The power $x^n$ therefore arises from exactly one choice, $j_i = n_i$, the digits of $n$, and from none if some $n_i \gt m_i$.
+
+Conclusion. Comparing the coefficient of $x^n$ on both sides gives $$\binom mn \equiv \prod_i\binom{m_i}{n_i} \pmod p, \qquad \binom{m_i}{n_i} = 0 \text{ when } n_i \gt m_i.$$ The theorem stops at modulo $p$ because the lemma only gives divisibility by $p$ itself.
+
+The corollaries. A product is divisible by the prime $p$ exactly when a factor is, and $\binom{m_i}{n_i}$ with $0 \le n_i \le m_i \lt p$ is not. So $p \mid \binom mn$ exactly when some $n_i \gt m_i$, and the number of $n$ with $p \nmid \binom mn$ is the number of digit choices $0 \le n_i \le m_i$: $$\#\left\{n : p \nmid \binom mn\right\} = \prod_i(m_i + 1).$$
+
+For $p = 2$ the digits are $0$ and $1$, so $\binom mn$ is odd exactly when the binary $1$s of $n$ lie among those of $m$, and row $m$ has $2^{s_2(m)}$ odd entries. The card for [[pascal-parity|odd entries of a row]] works this case out in full.
 
 ## Useful observations
 - A single digit of $k$ larger than the matching digit of $n$ makes the coefficient divisible by $p$: $10 = 101_3$ and $4 = 011_3$, the middle digits give $\binom 01 = 0$, so $3 \mid \binom{10}{4} = 210$.
 - The odd entries of Pascal's triangle form the Sierpiński pattern.
-- Row $p^k - 1$ of Pascal's triangle has no entry divisible by $p$.
+- Row $p^k - 1$ of Pascal's triangle has no entry divisible by $p$, since every digit of $m$ is $p - 1$ and no digit of $n$ can exceed it.
 
 ## Applications
 Binomial coefficients modulo a prime, parity of Pascal's triangle, and counts of entries not divisible by $p$.
@@ -919,7 +935,7 @@ For the square, $p^2 - 1 = (p - 1)(p + 1)$ is a product of consecutive even numb
 Divisibility of expressions in an arbitrary prime, twin primes, and quick restrictions on which numbers can be prime.
 
 ## Contest profile
-A short AMC fact, usually as "the largest number always dividing $p^2 - 1$".
+A short AMC fact, usually as the largest number that always divides one less than the square of a prime above three.
 `,
 
 "floor-multiples": String.raw`
@@ -1190,14 +1206,29 @@ Which integers are differences of squares, counting representations, and integer
 AMC and AIME questions: how many numbers in a range are differences of squares, or two perfect-square conditions subtracted into a factorization.
 `,
 
-"farey-sequences": String.raw`## Why it works
-The determinant condition $bc - ad = 1$ says consecutive Farey fractions form a unimodular pair — no lattice point strictly between their vectors ([[picks-theorem|Pick's Theorem]] on the empty triangle). The mediant is the lattice vector sum, the unique "next" fraction between them.
+"farey-sequences": String.raw`
+## Key forms
+- $\dfrac ab < \dfrac cd$ are neighbors in a Farey sequence exactly when $bc - ad = 1$
+- the mediant $\dfrac{a + c}{b + d}$ of two neighbors is the first fraction to appear between them, in $F_{b+d}$
+- $\alt{\lvert F_n\rvert = 1 + \sum_{k \le n}\varphi(k)}{\lvert F_n\rvert = 1 + \varphi(1) + \varphi(2) + \cdots + \varphi(n)}$, which is about $\dfrac{3n^2}{\pi^2}$
 
-## How to use it
-Best-approximation problems: the fraction with smallest denominator between two given fractions is found by mediant descent (Stern-Brocot search). Neighbor condition answers "which fractions are adjacent to $\frac{a}{b}$": solve $bc - ad = 1$. Counting: $|F_n| = 1 + \sum_{k\le n}\varphi(k)$.
+## Conditions
+$F_n$ lists the reduced fractions in $[0, 1]$ with denominator at most $n$, in increasing order.
 
-## On contests
-AIME problems on fractions with bounded denominators ("smallest denominator between..."), and the hidden structure in ford-circle/mediant configurations. The unimodular determinant is the fact to reach for.`,
+## Why it works
+The condition $bc - ad = 1$ says that consecutive Farey fractions form a unimodular pair, with no lattice point strictly between their vectors ([[picks-theorem|Pick's Theorem]] on the empty triangle). The mediant is the sum of the two lattice vectors, the unique next fraction between them.
+
+## Useful observations
+- The fraction with the smallest denominator between two given fractions comes from descending through mediants, as in a Stern–Brocot search.
+- The neighbors of $\frac ab$ in a Farey sequence come from solving $bc - ad = 1$.
+- The counting formula comes from the number of reduced fractions with each denominator.
+
+## Applications
+Fractions with bounded denominators, best rational approximations, and neighbor and mediant questions.
+
+## Contest profile
+AIME problems on fractions with bounded denominators, and the hidden mediant structure behind Ford-circle configurations.
+`,
 
 "repeating-decimals": String.raw`
 ## Key forms
@@ -1224,7 +1255,7 @@ In the long division of $1$ by $n$, each step multiplies the remainder by $10$ a
 Converting between decimals and fractions, periods of decimal expansions, and counting fractions with a given period.
 
 ## Contest profile
-MATHCOUNTS and AMC conversions; AIME counts of reduced fractions $\frac{k}{999}$ or $\frac{k}{9999}$ and questions about periods.
+MATHCOUNTS and AMC conversions; AIME counts of reduced fractions whose denominator is a string of nines, and questions about periods.
 `,
 
 "terminating-decimals": String.raw`
@@ -1280,22 +1311,34 @@ Existence is the division process: each step divides the quotient by $b$, so the
 `,
 
 "lattice-points-gcd": String.raw`
+## Key forms
+- $\gcd(a, b) - 1$ — the number of lattice points strictly between $(0, 0)$ and $(a, b)$ on the segment joining them; $\gcd(a, b) + 1$ counting the ends
+- $m + n - \gcd(m, n)$ — the number of unit squares the diagonal of an $m \times n$ grid passes through
+- $a + b + c - \gcd(a, b) - \gcd(b, c) - \gcd(c, a) + \gcd(a, b, c)$ — the unit cubes crossed by the diagonal of an $a \times b \times c$ box
+- $(a, b)$ is visible from the origin, with no lattice point in between, exactly when $\gcd(a, b) = 1$
+
+## Conditions
+$a$ and $b$ are integers (for a segment between two lattice points the differences $|x_2 - x_1|$ and $|y_2 - y_1|$ play this role); $m$ and $n$ are positive integers.
+
 ## Why it works
 The segment is made of $\gcd(a, b)$ equal steps, each the smallest lattice vector in its direction.
 
-Let $g = \gcd(a, b)$. The vector $\left(\frac ag, \frac bg\right)$ has coordinates with no common factor, and the segment is $g$ copies of it laid end to end, so it passes through the $g - 1$ lattice points between the copies. There are no others: a lattice point $t(a, b)$ with $0 \lt t \lt 1$ needs $ta$ and $tb$ both to be integers, which forces $t$ to be a multiple of $\frac1g$.
+Let $g = \gcd(a, b)$. The vector $\left(\frac ag, \frac bg\right)$ has coordinates with no common factor, and the segment is $g$ copies of it laid end to end, so it passes through the $g - 1$ lattice points between the copies. There are no others: a lattice point $t(a, b)$ with $0 < t < 1$ needs $ta$ and $tb$ both to be integers, which forces $t$ to be a multiple of $\frac1g$.
 
-For the squares, the diagonal of an $m \times n$ grid crosses $m - 1$ inner vertical lines and $n - 1$ inner horizontal lines, and each crossing takes it into a new square. At each of the $g - 1$ interior lattice points it crosses one of each at once and enters only one new square, so it visits $$1 + (m - 1) + (n - 1) - (g - 1) = m + n - g$$ squares.
+For the squares, the diagonal of an $m \times n$ grid crosses $m - 1$ inner vertical lines and $n - 1$ inner horizontal lines, and each crossing takes it into a new square. At each of the $g - 1$ interior lattice points it crosses one of each at once and enters only one new square, so it visits $1 + (m - 1) + (n - 1) - (g - 1) = m + n - g$ squares.
 
 {{figure:squares}}
 
-## How to use it
-For Pick's Theorem, count boundary points edge by edge: an edge from $(x_1, y_1)$ to $(x_2, y_2)$ contributes $\gcd(|x_2 - x_1|, |y_2 - y_1|)$ points, counting one endpoint, so adding over the edges counts each vertex once. The segment from $(0, 0)$ to $(9, 6)$ is three steps of $(3, 2)$, so it has $2$ interior lattice points.
+## Useful observations
+- For Pick's Theorem, the boundary points are counted edge by edge: an edge from $(x_1, y_1)$ to $(x_2, y_2)$ contributes $\gcd(|x_2 - x_1|, |y_2 - y_1|)$ points, counting one endpoint, so adding over the edges counts each vertex once.
+- The segment from $(0, 0)$ to $(9, 6)$ is three steps of $(3, 2)$, so it has $2$ interior lattice points.
+- The three-dimensional count follows by inclusion-exclusion on the crossings of the planes.
 
-A lattice point $(a, b)$ is visible from the origin, with no lattice point in between, exactly when $\gcd(a, b) = 1$. In three dimensions, inclusion-exclusion gives the number of unit cubes the diagonal of an $a \times b \times c$ box passes through: $$a + b + c - \gcd(a, b) - \gcd(b, c) - \gcd(c, a) + \gcd(a, b, c).$$
+## Applications
+Lattice points on a segment or a polygon's boundary (the boundary count in Pick's Theorem), squares crossed by a diagonal, and visibility from the origin.
 
-## On contests
-Five problems here, four of them AIME, none by it alone; three split the count into [[casework-method|cases]] by the value of the gcd. The recurring shapes are a diagonal crossing grid squares, lattice points on a segment or on a polygon's boundary, and the points of a grid visible from the origin.
+## Contest profile
+Often split by the value of the gcd into [[casework-method|cases]]. The recurring shapes are a diagonal crossing grid squares, lattice points on a segment or on a polygon's boundary, and the points of a grid visible from the origin.
 `,
 
 "wolstenholme": String.raw`
@@ -1346,23 +1389,58 @@ Exponential Diophantine equations such as $a^n - b^n = $ a prime power, and prob
 An olympiad sledgehammer; most contest uses can also be done with orders or the Lifting the Exponent Lemma.
 `,
 
-"fermat-numbers": String.raw`## Why it works
-$F_n = 2^{2^n} + 1$: the product identity $F_0F_1\cdots F_{n-1} = F_n - 2$ follows by telescoping $(2^{2^k} - 1)(2^{2^k} + 1) = 2^{2^{k+1}} - 1$. Any common divisor of two Fermat numbers divides 2 — but all are odd, so they are pairwise coprime.
+"fermat-numbers": String.raw`
+## Key forms
+- $F_n = 2^{2^n} + 1$
+- $F_0F_1\cdots F_{n-1} = F_n - 2$
+- distinct Fermat numbers are pairwise coprime, so there are infinitely many primes
+- $2^m + 1$ can be prime only when $m$ is a power of $2$
 
-## How to use it
-Pairwise coprimality gives infinitude of primes (each $F_n$ owns new primes). Structure facts: $2^m + 1$ can be prime only when $m$ is a power of 2 (else factor via odd-exponent sum); known Fermat primes are 3, 5, 17, 257, 65537 — and constructible polygons come from products of these.
+## Conditions
+$n \ge 0$. The only Fermat numbers known to be prime are $F_0$ through $F_4$.
 
-## On contests
-Factoring $2^{32} - 1 = 3 \cdot 5 \cdot 17 \cdot 257 \cdot 65537$ via the telescoping product is a beloved AMC/AIME move; coprimality arguments and "when is $2^m + 1$ prime" reasoning recur.`,
+## Why it works
+The product identity follows by telescoping $(2^{2^k} - 1)(2^{2^k} + 1) = 2^{2^{k+1}} - 1$. Any common divisor of two Fermat numbers then divides $2$, but all Fermat numbers are odd, so they are pairwise coprime.
 
-"continued-fraction-convergents": String.raw`## Why it works
-Convergents $\frac{p_k}{q_k}$ satisfy the recurrence $p_k = a_kp_{k-1} + p_{k-2}$ (same for $q$), and the determinant identity $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$ follows by induction — each step is a unimodular [[matrix-multiplication|matrix multiplication]].
+If $m$ has an odd factor $q > 1$, then $2^m + 1$ is divisible by $2^{m/q} + 1$, which is why only powers of $2$ can occur.
 
-## How to use it
-Best rational approximations with bounded denominator are convergents — the tool for "closest fraction to $\pi$ with denominator under 100" questions. The determinant identity gives instant solutions to $ax - by = \pm1$ ([[bezouts-identity|Bézout]] via continued fractions), and consecutive convergents are Farey neighbors.
+## Useful observations
+- Pairwise coprimality gives infinitely many primes, since each $F_n$ contributes a prime factor no other one has.
+- Constructible regular polygons are governed by products of distinct Fermat primes.
+- The telescoping product factors $2^{32} - 1$ into Fermat numbers at once.
 
-## On contests
-Approximation problems and Pell-equation fundamentals ($\sqrt D$'s continued fraction finds the fundamental solution). Also underlies Stern-Brocot/mediant search arguments on AIME-level fraction problems.`,
+## Applications
+Factoring numbers of the form $2^{2^k} - 1$, coprimality arguments, and the question of when $2^m + 1$ is prime.
+
+## Contest profile
+The telescoping factorization and the coprimality argument recur in contest number theory.
+`,
+
+"continued-fraction-convergents": String.raw`
+## Key forms
+- $p_k = a_kp_{k-1} + p_{k-2}$ and $q_k = a_kq_{k-1} + q_{k-2}$ — the recurrences for the convergents $\frac{p_k}{q_k}$ of $[a_0; a_1, a_2, \ldots]$
+- $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$ — consecutive convergents are Farey neighbors
+- the convergents are the best rational approximations with a bounded denominator
+
+## Conditions
+The partial quotients $a_k$ are positive integers for $k \ge 1$. The starting values are $p_{-1} = 1$, $q_{-1} = 0$, $p_0 = a_0$, $q_0 = 1$.
+
+## Why it works
+Convergents satisfy the recurrence above, and the determinant identity follows by induction. At the first step $p_0q_{-1} - p_{-1}q_0 = -1$, and substituting the recurrence, $p_kq_{k-1} - p_{k-1}q_k = (a_kp_{k-1} + p_{k-2})q_{k-1} - p_{k-1}(a_kq_{k-1} + q_{k-2}) = -(p_{k-1}q_{k-2} - p_{k-2}q_{k-1})$, which flips the sign each step.
+
+In matrix form each step multiplies by a matrix of determinant $-1$, a unimodular [[matrix-multiplication|matrix multiplication]], which is why the determinant stays $\pm1$.
+
+## Useful observations
+- Best rational approximations with bounded denominator are convergents, the tool for "closest fraction to a number with denominator under a bound" questions.
+- The determinant identity gives instant solutions to $ax - by = \pm 1$, which is [[bezouts-identity|Bézout's Identity]] via continued fractions.
+- Consecutive convergents are Farey neighbors.
+
+## Applications
+Rational approximation, Pell equations, and Stern–Brocot and mediant arguments.
+
+## Contest profile
+Approximation problems and Pell-equation fundamentals, since the continued fraction of $\sqrt D$ finds the fundamental solution. It also underlies Stern–Brocot and mediant search arguments on AIME-level fraction problems.
+`,
 
 "digit-count": String.raw`
 ## Key forms
@@ -1457,36 +1535,82 @@ An AIME refinement of Euler's Theorem: for last-digit questions it cuts the expo
 
 Object.assign(window.MATH_DETAILS, {
 
-"floor-sum-reciprocity": String.raw`## Why it works
-$\lfloor \frac{kp}{q} \rfloor$ counts lattice points $(k, j)$ with $1 \le j \le \frac{kp}{q}$ — the points strictly below the diagonal of the $q \times p$ rectangle in column $k$. Coprimality keeps the diagonal off the lattice, and the $180^\circ$ symmetry of the rectangle pairs each interior point below the diagonal with one above, splitting $(p-1)(q-1)$ evenly.
+"floor-sum-reciprocity": String.raw`
+## Key forms
+- $\alt{\sum_{k=1}^{q-1}\left\lfloor\dfrac{kp}{q}\right\rfloor = \dfrac{(p - 1)(q - 1)}{2}}{\left\lfloor\tfrac pq\right\rfloor + \left\lfloor\tfrac{2p}{q}\right\rfloor + \cdots + \left\lfloor\tfrac{(q-1)p}{q}\right\rfloor = \dfrac{(p-1)(q-1)}{2}}$ for $\gcd(p, q) = 1$
+- $\left\lfloor\dfrac{kp}{q}\right\rfloor + \left\lfloor\dfrac{(q - k)p}{q}\right\rfloor = p - 1$ for $0 < k < q$
 
-## How to use it
-Evaluate floor sums over a full period instantly; for partial ranges, pair $k$ with $q - k$ using $\lfloor \frac{kp}{q} \rfloor + \lfloor \frac{(q-k)p}{q} \rfloor = p - 1$. The lattice-counting viewpoint generalizes: sums of floors = points under a line, so Pick-style arguments and symmetry both apply.
+## Conditions
+$p$ and $q$ are positive and coprime, so that no interior lattice point lies on the diagonal of the rectangle.
 
-## On contests
-AIME floor-sum problems (often dressed as "sum of remainders": $\sum (kp \bmod q)$ converts via $kp = q\lfloor \cdot \rfloor + \text{rem}$). Also the key lemma inside [[eisenstein-criterion|Eisenstein's]] proof of [[quadratic-reciprocity|quadratic reciprocity]] — the same pairing, one level deeper.`
+## Why it works
+The term $\lfloor\frac{kp}{q}\rfloor$ counts the lattice points $(k, j)$ with $1 \le j \le \frac{kp}{q}$, the points strictly below the diagonal in column $k$ of the $q \times p$ rectangle. Coprimality keeps the diagonal off the lattice, and the half-turn symmetry of the rectangle pairs each interior point below the diagonal with one above, which splits the $(p-1)(q-1)$ interior points evenly.
+
+## Useful observations
+- Floor sums over a full period are evaluated at once, and partial ranges pair $k$ with $q - k$.
+- Sums of floors are counts of lattice points under a line, so Pick-style arguments and symmetry both apply.
+- A "sum of remainders" converts to a floor sum through $kp = q\lfloor\frac{kp}{q}\rfloor + (kp \bmod q)$.
+- The same pairing, one level deeper, is the key lemma in [[eisenstein-criterion|Eisenstein's]] proof of [[quadratic-reciprocity|quadratic reciprocity]].
+
+## Applications
+Floor sums over a full period, sums of remainders, and lattice points under a line.
+
+## Contest profile
+AIME floor-sum problems, often disguised as sums of remainders.
+`
 
 });
 
 Object.assign(window.MATH_DETAILS, {
 
-"lattice-points-circle": String.raw`## Why it works
-In the Gaussian integers $\mathbb{Z}[i]$, $a^2 + b^2 = (a+bi)(a-bi)$, and unique factorization sorts primes into split ($p \equiv 1 \bmod 4$, contributing choices), inert ($p \equiv 3$, demanding even exponents), and ramified ($2$). Counting the factorization choices yields $4(d_1 - d_3)$, the 4 being unit rotations $\pm1, \pm i$.
+"lattice-points-circle": String.raw`
+## Key forms
+- $\#\{(a, b) \in \mathbb{Z}^2 : a^2 + b^2 = n\} = 4\big(d_1(n) - d_3(n)\big)$ — where $d_1$ and $d_3$ count the divisors of $n$ congruent to $1$ and $3$ mod $4$
+- the count is $0$ exactly when some prime $\equiv 3 \pmod 4$ divides $n$ to an odd power
 
-## How to use it
-Count representations without finding them: compute $d_1(n) - d_3(n)$ over the divisors. Practical shortcuts: powers of split primes give $e+1$ essentially-different representations; any prime $\equiv 3 \pmod 4$ to an odd power kills everything; factors of 2 and squares of inert primes just scale existing points.
+## Conditions
+The count is of ordered, signed representations, so $(a, b)$, $(-a, b)$, $(b, a)$ and so on are all counted.
 
-## On contests
-"How many lattice points on $x^2 + y^2 = 2025$" — direct plug-in. Also the cleaner route to "in how many ways is $n$ a sum of two squares" (divide out symmetries carefully: the $4(d_1-d_3)$ count is ordered and signed).`,
+## Why it works
+In the Gaussian integers $\mathbb{Z}[i]$, $a^2 + b^2 = (a + bi)(a - bi)$, and unique factorization sorts primes into split ($p \equiv 1 \pmod 4$, contributing choices), inert ($p \equiv 3 \pmod 4$, demanding even exponents), and ramified ($2$). Counting the factorization choices yields $4(d_1 - d_3)$, the $4$ being the unit rotations $\pm1, \pm i$.
 
-"gaussian-integers": String.raw`## Why it works
-$\mathbb{Z}[i]$ is a Euclidean domain — you can divide with remainder by rounding to the nearest Gaussian integer — so it has unique factorization. The norm $N(a+bi) = a^2+b^2 = (a+bi)(a-bi)$ is multiplicative because it is $|z|^2$, which turns questions about sums of two squares into questions about factorization. A rational prime $p$ behaves by whether $-1$ is a quadratic residue mod $p$: $p \equiv 1 \pmod 4$ makes $x^2 \equiv -1$ solvable, so $p \mid (x+i)(x-i)$ splits; $p \equiv 3 \pmod 4$ stays prime; and $2 = -i(1+i)^2$ ramifies.
+## Useful observations
+- Representations are counted without being found: $d_1(n) - d_3(n)$ is computed over the divisors.
+- A power of a split prime contributes one more than its exponent; any prime $\equiv 3 \pmod 4$ to an odd power kills everything; factors of $2$ and squares of inert primes just scale existing points.
+- For the number of ways $n$ is a sum of two squares, the symmetries have to be divided out carefully, since the $4(d_1 - d_3)$ count is ordered and signed.
 
-## How to use it
-Reach for $\mathbb{Z}[i]$ whenever $a^2+b^2$ appears: factor it as $(a+bi)(a-bi)$ and lean on unique factorization. This proves [[sum-of-two-squares|Fermat's Two-Square Theorem]], powers the $4(d_1 - d_3)$ representation count, parametrizes Pythagorean triples via $(m+ni)^2$, and multiplies sums of two squares together (Brahmagupta–Fibonacci). The [[eisenstein-criterion|Eisenstein]] integers $\mathbb{Z}[\omega]$ do the same for $a^2+ab+b^2$ and problems with cube-root-of-unity (120°) symmetry.
+## Applications
+Lattice points on a circle, the number of ways to write an integer as a sum of two squares, and Pythagorean-triple counts.
 
-## On contests
-Chiefly an olympiad tool, but its consequences reach the AIME (sum-of-two-squares counts, Pythagorean-triple parametrizations). The practical takeaway: primes $\equiv 1 \pmod 4$ split (and are sums of two squares), while primes $\equiv 3 \pmod 4$ stay inert.`
+## Contest profile
+Direct plug-in for "how many lattice points on this circle" questions, and the cleaner route to counting representations as a sum of two squares.
+`,
+
+"gaussian-integers": String.raw`
+## Key forms
+- $N(a + bi) = a^2 + b^2 = (a + bi)(a - bi)$ and $N(zw) = N(z)N(w)$ — the multiplicative norm of $\mathbb{Z}[i]$, whose units are $\pm1, \pm i$
+- a prime $p \equiv 1 \pmod 4$ splits into two conjugate Gaussian primes and is a sum of two squares; $p \equiv 3 \pmod 4$ stays inert; and $2 = -i(1 + i)^2$ ramifies
+- the Eisenstein integers $\mathbb{Z}[\omega]$, $\omega = e^{2\pi i/3}$, have norm $N(a + b\omega) = a^2 - ab + b^2$, with primes classified mod $3$
+
+## Conditions
+Unique factorization holds in $\mathbb{Z}[i]$ and $\mathbb{Z}[\omega]$ up to units and the order of the factors.
+
+## Why it works
+$\mathbb{Z}[i]$ is a Euclidean domain, since division with remainder works by rounding to the nearest Gaussian integer, so it has unique factorization. The norm is multiplicative because it is $\lvert z\rvert^2$, which turns questions about sums of two squares into questions about factorization.
+
+A rational prime $p$ behaves by whether $-1$ is a quadratic residue mod $p$: $p \equiv 1 \pmod 4$ makes $x^2 \equiv -1$ solvable, so $p \mid (x + i)(x - i)$ splits; $p \equiv 3 \pmod 4$ stays prime; and $2$ ramifies.
+
+## Useful observations
+- $\mathbb{Z}[i]$ is used whenever $a^2 + b^2$ appears: it is factored as $(a + bi)(a - bi)$ and unique factorization is leaned on.
+- It proves [[sum-of-two-squares|Fermat's Two-Square Theorem]], powers the $4(d_1 - d_3)$ representation count, parametrizes Pythagorean triples through $(m + ni)^2$, and multiplies sums of two squares together.
+- The Eisenstein integers do the same for $a^2 + ab + b^2$ and for problems with cube-root-of-unity symmetry ($120^\circ$).
+
+## Applications
+Sums of two squares and the number of their representations, Pythagorean triples, and norm forms $a^2 + ab + b^2$.
+
+## Contest profile
+Chiefly an olympiad tool, but its consequences reach the AIME (sum-of-two-squares counts, Pythagorean-triple parametrizations). Primes $\equiv 1 \pmod 4$ split and are sums of two squares, while primes $\equiv 3 \pmod 4$ stay inert.
+`
 
 });
 
@@ -1529,24 +1653,36 @@ Usually a single decisive line: the right modulus either ends a "show there are 
 `,
 
 "recognition-numbers": String.raw`
+## Key forms
+- the "fake primes" with a factor of $7$ — $91 = 7 \cdot 13$, $119 = 7 \cdot 17$, and $133 = 7 \cdot 19$, products of two primes from $7$ to $19$ that pass the quick tests for $2$, $3$, and $5$
+- the fake primes with a factor of $11$ are $143 = 11 \cdot 13$, $187 = 11 \cdot 17$, and $209 = 11 \cdot 19$, each of which passes the quick tests for $2$, $3$, and $5$ and is easily mistaken for a prime
+- the fake primes made of larger primes — $221 = 13 \cdot 17$, $247 = 13 \cdot 19$, and $323 = 17 \cdot 19$
+- the repeated-digit family is built on $1001 = 7 \cdot 11 \cdot 13$, together with $111 = 3 \cdot 37$, $999 = 3^3 \cdot 37$, and $101 \cdot 9901 = 1000001$, and the taxicab number $1729 = 7 \cdot 13 \cdot 19$ belongs with them
+- among the powers and factorials worth knowing, $2^{10} = 1024$ is close to $10^3$, which converts between powers of two and powers of ten, while $7! = 5040$ and $10! = 3{,}628{,}800$ keep appearing in counting answers
+- constants for estimates — $\sqrt2 \approx 1.414$, $\sqrt3 \approx 1.732$, $\sqrt5 \approx 2.236$, $\pi \approx 3.1416$, $\log_{10}2 \approx 0.301$, $\log_{10}3 \approx 0.477$ — constants for estimates
+- $7^4 = 2401 \equiv 1 \pmod{100}$ — the last two digits of powers of $7$
+
+## Conditions
+There is no theorem here: these are facts about particular numbers, and the decimal values are approximations. The factorizations are exact.
+
 ## Why it works
 There is no theorem here, only the reason these particular numbers keep appearing.
 
-Divisibility by $2$, $3$, and $5$ can be seen at a glance, so a number that passes those tests looks prime. A composite number that passes them has all its prime factors at least $7$, and the products of two primes from $7$ to $19$ are the ones that turn up most. Knowing those few products means $221$ or $323$ never slows you down.
+Divisibility by $2$, $3$, and $5$ can be seen at a glance, so a number that passes those tests looks prime. A composite number that passes them has all its prime factors at least $7$, and the products of two primes from $7$ to $19$ are the ones that turn up most. Knowing those few products means $221$ or $323$ never slows anything down.
 
 $1001 = 7 \cdot 11 \cdot 13$ is behind a whole family of tricks. Repeating a three-digit block multiplies it by $1001$, $$\overline{abcabc} = \overline{abc} \cdot 1001 = \overline{abc} \cdot 7 \cdot 11 \cdot 13,$$ so every such six-digit number is divisible by $7$, $11$, and $13$. And $2^{10} = 1024$ is so close to $10^3$ that it converts between powers of $2$ and powers of $10$ with an error under $3\%$.
 
-## How to use it
-To factor a three-digit number, test $7$, $11$, $13$, $17$, and $19$ after the obvious small primes. A number below $529 = 23^2$ that passes all of them is prime, since a composite one would need two prime factors of at least $23$.
+## Useful observations
+- To factor a three-digit number, the primes $7$, $11$, $13$, $17$, and $19$ are tested after the obvious small ones. A number below $529 = 23^2$ that passes all of them is prime, since a composite one would need two prime factors of at least $23$.
+- The repeated-digit family cracks numbers like $111111 = 111 \cdot 1001$: $111 = 3 \cdot 37$, $999 = 3^3 \cdot 37$, $10101 = 3 \cdot 7 \cdot 13 \cdot 37$, and $101 \cdot 9901 = 1000001$.
+- $7^4 = 2401 \equiv 1 \pmod{100}$, so the last two digits of $7, 7^2, 7^3, 7^4, \ldots$ run $07, 49, 43, 01$ and repeat every four. [[eulers-theorem|Euler's Theorem]] only promises a repeat every $40$ steps; $7$ has [[multiplicative-order|order]] $4$ modulo $100$. So $7^{2025}$ ends in $07$, because $2025$ is one more than a multiple of $4$.
+- For estimates, $\log_{10} 2 \approx 0.301$ and $\log_{10} 3 \approx 0.477$ settle digit counts and size comparisons, and the square-root values settle which answer choice a messy expression is closest to.
 
-The family built on repeated digit patterns cracks numbers like $111111 = 111 \cdot 1001$: $111 = 3 \cdot 37$, $999 = 3^3 \cdot 37$, $10101 = 3 \cdot 7 \cdot 13 \cdot 37$, and $101 \cdot 9901 = 1000001$.
+## Applications
+Quick factorizations, divisibility of repeated-digit numbers, last digits of powers, digit counts, and estimates of roots and logarithms.
 
-One power is worth knowing for last digits: $$7^4 = 2401 \equiv 1 \pmod{100},$$ so the last two digits of $7, 7^2, 7^3, 7^4, \ldots$ run $07, 49, 43, 01$ and repeat every four. [[eulers-theorem|Euler's Theorem]] only promises a repeat every $40$ steps; $7$ has [[multiplicative-order|order]] $4$ modulo $100$. So $7^{2025}$ ends in $07$, because $2025$ is one more than a multiple of $4$.
-
-For estimates, $\log_{10} 2 \approx 0.301$ and $\log_{10} 3 \approx 0.477$ settle digit counts and size comparisons, and the square-root values settle which answer choice a messy expression is closest to.
-
-## On contests
-Four problems here, all solved by it alone, and really two, each shared between the AMC 10 and AMC 12. They reward recognizing products like $101 \cdot 9901 = 1000001$ and $99 \cdot 10101 = 999999$, or $10 \cdot 9 \cdot 8 = 720 = 6!$, instead of multiplying out. AIME answers often need a quick factorization such as $221$ or $299 = 13 \cdot 23$, and AMC estimates lean on $2^{10} \approx 10^3$.
+## Contest profile
+Four problems here, all solved by it alone, and really two, each shared between the AMC 10 and AMC 12. They reward recognizing familiar products, such as the repeated-digit factorizations, instead of multiplying out. AIME answers often need a quick factorization of a fake prime, and AMC estimates lean on powers of two as powers of ten.
 `,
 
 "digit-manipulation": String.raw`
@@ -1602,7 +1738,7 @@ The figure shows $n = 5$: $4N = 3124$ sits between $55^2 = 3025$ and $56^2 = 313
 - Squeezing with a root that is off by a constant, so the inequalities never become strict; try nearby constants, or scale by $4$ first.
 
 ## Contest profile
-Usually the closing step of a "find every $n$ making this a perfect square" problem, with a hand check of the few small values it leaves; the floor version also appears on its own.
+Usually the closing step of a problem that asks for every integer making an expression a perfect square, with a hand check of the few small values it leaves; the floor version also appears on its own.
 `
 
 });
@@ -1671,14 +1807,32 @@ Trailing zeros of factorials in any base, and which zero counts are possible.
 A MATHCOUNTS and AMC staple; AIME versions count the values that are never attained.
 `,
 
-"pisano-periods": String.raw`## Why it works
-A Fibonacci term mod $m$ is determined by the pair $(F_{n-1}, F_n) \bmod m$, and there are only $m^2$ possible pairs, so the sequence of pairs must eventually repeat. Because the recurrence $F_{n-1} = F_{n+1} - F_n$ runs backward as cleanly as forward, the repetition can't start late — it cycles from the very beginning, giving a pure period $\pi(m)$.
+"pisano-periods": String.raw`
+## Key forms
+- $F_n \bmod m$ is periodic with period $\pi(m)$, the Pisano period, which starts from the beginning of the sequence
+- $\pi(2) = 3$, $\pi(3) = 8$, $\pi(5) = 20$, $\pi(10) = 60$ — the values worth knowing, with $\pi(10)$ governing last digits
+- for composite $m$, $\pi(m)$ is the lcm of the periods of its prime-power factors
+- $F_n \equiv F_{n \bmod \pi(m)} \pmod m$
 
-## How to use it
-To find $F_n \bmod m$, compute the period $\pi(m)$ (list terms mod $m$ until $0, 1$ reappears), then reduce the index: $F_n \equiv F_{n \bmod \pi(m)}$. Handy values: $\pi(10) = 60$ governs last digits, $\pi(2) = 3$ (parity: even every third term), $\pi(5) = 20$. For composite $m$, $\pi$ is the lcm of the periods of its prime-power factors. It is the Fibonacci case of periodicity in a recursive sequence, and of periodicity mod $m$ generally.
+## Conditions
+The recurrence is $F_{n+1} = F_n + F_{n-1}$ with $F_0 = 0$ and $F_1 = 1$, reduced modulo $m \ge 2$.
 
-## On contests
-An olympiad and hard-AIME tool for "last digit of $F_{2024}$" or "for which $n$ is $F_n$ divisible by $m$" questions. The key recognitions: last digits cycle with period $60$, and divisibility of $F_n$ by $m$ is itself periodic in $n$.`,
+## Why it works
+A Fibonacci term mod $m$ is determined by the pair $(F_{n-1}, F_n) \bmod m$, and there are only $m^2$ possible pairs, so the sequence of pairs must eventually repeat.
+
+Because the recurrence $F_{n-1} = F_{n+1} - F_n$ runs backward as cleanly as forward, the repetition cannot start late: it cycles from the very beginning, giving a pure period $\pi(m)$.
+
+## Useful observations
+- To find $F_n \bmod m$, the period $\pi(m)$ is computed by listing terms mod $m$ until $0, 1$ reappears, and then the index is reduced.
+- Handy: $\pi(10) = 60$ governs last digits, $\pi(2) = 3$ means a term is even every third time, and $\pi(5) = 20$.
+- It is the Fibonacci case of periodicity in a recursive sequence, and of periodicity mod $m$ generally.
+
+## Applications
+Last digits of large Fibonacci numbers, and the periodicity of divisibility of $F_n$ by $m$.
+
+## Contest profile
+An olympiad and hard-AIME tool for last-digit questions and for questions about when a Fibonacci number is divisible by a given number. Last digits cycle with period $60$, and divisibility of $F_n$ by $m$ is itself periodic in $n$.
+`,
 
 "exponent-tracking": String.raw`
 ## When to use
@@ -1814,27 +1968,52 @@ Inverses. If $\gcd(b, m) = 1$, Bézout's Identity gives $bu + mv = 1$, so $bu \e
 
 Object.assign(window.MATH_DETAILS, {
 
-"zeckendorf-theorem": String.raw`## Why it works
-Greedily subtracting the largest Fibonacci number $\le n$ can never leave a remainder that needs two adjacent Fibonaccis, because $F_k+F_{k-1}=F_{k+1}$ would merge them into a larger term — which gives both existence and uniqueness of the non-consecutive representation.
+"zeckendorf-theorem": String.raw`
+## Key forms
+- $n = F_{k_1} + F_{k_2} + \cdots + F_{k_r}$ with $k_i \ge k_{i+1} + 2$ — every positive integer is uniquely a sum of non-consecutive Fibonacci numbers
+- the representation is a binary string with no two adjacent $1$s, in bijection with the integers
+- exactly $F_{n+2}$ of the integers from $0$ to $F_{n+2} - 1$ are written using only the first $n$ Fibonacci numbers $F_2, \ldots, F_{n+1}$
 
-## How to use it
-The greedy algorithm is both the construction and the proof: taking the largest Fibonacci number at each step automatically leaves a remainder smaller than the previous term's predecessor, which is exactly the non-consecutive condition.
+## Conditions
+The Fibonacci numbers used are $F_2 = 1, F_3 = 2, F_4 = 3, \ldots$, each at most once, since $F_1 = F_2$ would duplicate the value $1$.
 
-The representation is a bijection between integers and binary strings with no two adjacent $1$s, which ties the count to the Fibonacci tiling count — and explains why exactly $F_{n+2}$ integers have representations using only the first $n$ Fibonacci numbers.
+## Why it works
+Greedily subtracting the largest Fibonacci number $\le n$ can never leave a remainder that needs two adjacent Fibonacci numbers, because $F_k + F_{k-1} = F_{k+1}$ would merge them into a larger term. That gives both existence and uniqueness of the non-consecutive representation.
 
-Contest uses are usually about that uniqueness: showing a Fibonacci-sum representation is forced, or converting between an integer and its Fibonacci digits.
+## Useful observations
+- The greedy algorithm is both the construction and the proof: taking the largest Fibonacci number at each step automatically leaves a remainder smaller than the previous term's predecessor, which is exactly the non-consecutive condition.
+- The bijection with binary strings with no two adjacent $1$s ties the count to the Fibonacci tiling count, and explains why $F_{n+2}$ integers have representations using only the first $n$ Fibonacci numbers.
+- The contest uses are usually about uniqueness: showing a Fibonacci-sum representation is forced, or converting between an integer and its Fibonacci digits.
 
-## On contests
-Occasional AIME and olympiad appearances (Fibonacci representations, Wythoff and [[beatty-theorem|Beatty]] problems); the greedy algorithm together with uniqueness is essentially the whole toolkit.`,
+## Applications
+Fibonacci-base representations, Fibonacci nim and Wythoff's game, and counting problems that become digit arguments on the Zeckendorf string.
 
-"beatty-theorem": String.raw`## Why it works
-The count of Beatty terms $\lfloor n\alpha\rfloor \le N$ is about $N/\alpha$, and similarly $N/\beta$ for the other sequence. Since $\frac1\alpha + \frac1\beta = 1$, the two counts add to $N$ for every $N$ — and irrationality prevents any collision — so together they hit each integer exactly once.
+## Contest profile
+Occasional AIME and olympiad appearances (Fibonacci representations, Wythoff and [[beatty-theorem|Beatty]] problems); the greedy algorithm together with uniqueness is essentially the whole toolkit.
+`,
 
-## How to use it
-Given one irrational $\alpha > 1$, its partner is $\beta = \frac{\alpha}{\alpha - 1}$, and $\lfloor n\alpha\rfloor, \lfloor n\beta\rfloor$ tile $\mathbb{Z}^+$. Use it to prove two floor-sequences are complementary, or to answer "which set does $k$ fall in." It connects to floor-sum identities and to Wythoff's game (whose losing positions are the Beatty sequences for $\varphi$ and $\varphi^2$).
+"beatty-theorem": String.raw`
+## Key forms
+- if $\alpha, \beta > 1$ are irrational with $\dfrac1\alpha + \dfrac1\beta = 1$, the sequences $\lfloor n\alpha\rfloor$ and $\lfloor n\beta\rfloor$ for $n \ge 1$ hit every positive integer exactly once between them
+- the partner of $\alpha$ is $\beta = \dfrac{\alpha}{\alpha - 1}$
 
-## On contests
-Olympiad number theory / combinatorics — the "these two sequences partition the integers" gem. The density check $\frac1\alpha + \frac1\beta = 1$ is the whole idea.`,
+## Conditions
+$\alpha$ and $\beta$ are irrational and greater than $1$. If one of them were rational the two sequences would collide or leave gaps.
+
+## Why it works
+The number of terms $\lfloor n\alpha\rfloor \le N$ is about $\frac N\alpha$, and similarly $\frac N\beta$ for the other sequence. Since $\frac1\alpha + \frac1\beta = 1$ the two counts add to $N$ for every $N$, and irrationality prevents any collision, so together they hit each integer exactly once.
+
+## Useful observations
+- A single irrational $\alpha > 1$ generates a complementary pair of sequences that tile the positive integers.
+- The density check $\frac1\alpha + \frac1\beta = 1$ is the whole idea.
+- The losing positions of Wythoff's game are the Beatty sequences for $\varphi$ and $\varphi^2$.
+
+## Applications
+Proving two floor sequences are complementary, deciding which sequence an integer belongs to, and floor-sum identities.
+
+## Contest profile
+Olympiad number theory and combinatorics: the statement that two sequences partition the integers.
+`,
 
 "cauchy-davenport": String.raw`
 ## Key forms
@@ -1888,14 +2067,28 @@ Existence of zero-sum subsets of prescribed size, and divisibility arguments ove
 The standard zero-sum theorem of olympiad combinatorics.
 `,
 
-"carmichael-numbers": String.raw`## Why it works
-A [[fermat-numbers|Fermat pseudoprime]] slips past $b^{n-1} \equiv 1 \pmod n$ despite being composite. Korselt's criterion pins down the ones that fool every coprime base: $n$ must be squarefree with $(p-1) \mid (n-1)$ for each prime $p \mid n$ — then by [[crt|CRT]] the congruence holds for all bases. The smallest such $n$ is $561 = 3 \cdot 11 \cdot 17$ (and $2,10,16$ all divide $560$).
+"carmichael-numbers": String.raw`
+## Key forms
+- a Carmichael number is a composite $n$ with $b^{n-1} \equiv 1 \pmod n$ for every $b$ coprime to $n$
+- Korselt's Criterion: $n$ is Carmichael exactly when $n$ is squarefree and $(p - 1) \mid (n - 1)$ for every prime $p \mid n$
+- a Fermat pseudoprime to base $b$ is a composite $n$ with $b^{n-1} \equiv 1 \pmod n$
 
-## How to use it
-To test a candidate, check squarefreeness and the divisibility $(p-1)\mid(n-1)$ over its prime factors. The takeaway for primality: the Fermat test is not conclusive — Carmichael numbers are exactly its blind spot, which is why stronger tests (Miller–Rabin) are used.
+## Conditions
+$n$ is composite and odd. The Carmichael function $\lambda(n)$ has the same name and is an unrelated object.
 
-## On contests
-Olympiad number theory and "why the Fermat test fails" discussions. Keep it distinct from the Carmichael function $\lambda(n)$ — same name, unrelated object.`
+## Why it works
+A [[fermat-numbers|Fermat pseudoprime]] slips past the test $b^{n-1} \equiv 1 \pmod n$ despite being composite. Korselt's Criterion pins down those that fool every coprime base: $n$ must be squarefree with $(p - 1) \mid (n - 1)$ for each prime $p \mid n$, and then by the [[crt|Chinese Remainder Theorem]] the congruence holds for every base.
+
+## Useful observations
+- To test a candidate, check squarefreeness and the divisibility $(p - 1) \mid (n - 1)$ over its prime factors.
+- Carmichael numbers are exactly the blind spot of the Fermat primality test, which is why stronger tests such as Miller–Rabin are used.
+
+## Applications
+Showing that a number is a Carmichael number, and the limits of the Fermat primality test.
+
+## Contest profile
+Olympiad number theory and discussions of why the Fermat test fails.
+`
 
 });
 
@@ -2201,16 +2394,33 @@ Work column by column from the right, where each column is an equation with a ca
 Mostly MATHCOUNTS and early AMC: a short column-by-column argument, with a little casework when the question counts the assignments.
 `,
 
-"base10-curiosities": String.raw`## Why it works
-The cyclic run of $142857$ is just the six-digit repeating block of $\frac17$ — $10$ is a primitive root mod $7$, so the period is full and multiplying by $1$–$6$ rotates the digits. Narcissistic numbers and Kaprekar's routine are finite digit-map facts you can check directly.
+"base10-curiosities": String.raw`
+## Key forms
+- $\dfrac17 = 0.\overline{142857}$ — the cyclic number $142857$, whose multiples by $1$ through $6$ are rotations of its digits and which times $7$ is $999999$
+- $153 = 1^3 + 5^3 + 3^3$, also $370$, $371$, $407$ — the narcissistic numbers, equal to the sum of their digits each raised to the digit count
+- $6174$ — Kaprekar's constant: any four-digit number whose digits are not all equal reaches it within $7$ steps of subtracting the ascending arrangement from the descending one
+- $1089$ — reversing a three-digit number with distinct end digits, subtracting, and adding the result to its own reverse always gives $1089$
 
-The repunit family explains most of the rest. A string of $n$ ones is $\frac{10^n-1}{9}$, which is why $\frac19=0.\overline{1}$, $\frac1{99}=0.\overline{01}$, and $\frac1{999}=0.\overline{001}$, and why squaring a repunit of length $n\le9$ gives the palindrome $123\ldots n\ldots321$. The $1089$ trick is the same base-ten bookkeeping: reversing a three-digit number and subtracting always leaves a multiple of $99$, and adding that result to its own reverse always gives $1089$ — whose ninefold, $9801$, is itself reversed.
+## Conditions
+These are facts about base-ten digits, not theorems about all bases. Kaprekar's routine needs a four-digit number with at least two different digits.
 
-## How to use it
-Recognize $142857$ (with $\frac27,\dots,\frac67$ as its rotations, and $\times 7=999999$) on sight, and remember that Kaprekar's routine on a four-digit number with non-identical digits reaches $6174$ within a few steps. These are recall aids, not deep theorems.
+## Why it works
+The cyclic run of $142857$ is the six-digit repeating block of $\frac17$: $10$ is a primitive root mod $7$, so the period is full and multiplying by $1$ through $6$ rotates the digits. Narcissistic numbers and Kaprekar's routine are finite digit-map facts that can be checked directly.
 
-## On contests
-Light MATHCOUNTS / trivia territory, but occasionally an AMC problem rewards spotting the $142857$ cycle or a repeating-decimal period — worth carrying as instant recall.`
+The repunit family explains most of the rest. A string of $n$ ones is $\frac{10^n - 1}{9}$, which is why $\frac19 = 0.\overline{1}$, $\frac1{99} = 0.\overline{01}$, and why squaring a repunit of length $n \le 9$ gives the palindrome $123\ldots n\ldots321$.
+
+The $1089$ trick is the same base-ten bookkeeping: reversing a three-digit number and subtracting always leaves a multiple of $99$, and adding that result to its own reverse always gives $1089$.
+
+## Useful observations
+- $142857$ is recognized on sight, with $\frac27, \ldots, \frac67$ as its rotations.
+- These are recall aids, not deep theorems.
+
+## Applications
+Repeating-decimal periods, digit puzzles, and instant recall of the cyclic number.
+
+## Contest profile
+Light MATHCOUNTS and trivia territory, but occasionally an AMC problem rewards spotting the cyclic number or a repeating-decimal period.
+`
 
 });
 

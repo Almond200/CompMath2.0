@@ -166,9 +166,10 @@ print("\n-- field values --")
 print("  importance: %s" % dict(collections.Counter(c["imp"] for c in CARDS)))
 print("  tier:       %s" % dict(collections.Counter(c["tier"] for c in CARDS)))
 _bad_tier = [c["id"] for c in CARDS if c["tier"] not in ("AMC", "AIME Early", "AIME Late", "Olympiad")]
-# Importance is judged inside the card's own subsection: high, medium, low, or lower (pretty much
-# never used). The old "lowest" is gone (2026-10-10).
-_bad_tier += [c["id"] + " (importance " + str(c["imp"]) + ")" for c in CARDS if c["imp"] not in ("high", "medium", "low", "lower")]
+# Importance is judged inside the card's own subsection: high, medium, low, lower (marginal use,
+# perhaps once in ten years), or lowest (never expected on a contest; here for completeness or
+# beauty). The old pre-2026 "lowest" tier was retired and this one is new (2026-10-10).
+_bad_tier += [c["id"] + " (importance " + str(c["imp"]) + ")" for c in CARDS if c["imp"] not in ("high", "medium", "low", "lower", "lowest")]
 print("  cards with a missing or unknown tier: %d  (must stay 0)" % len(_bad_tier))
 for _x in _bad_tier[:8]:
     print("    " + _x)
@@ -310,6 +311,27 @@ for _k, _v in DETAILS.items():
             kf_examples.append((_k, _t[:90]))
 print("  worked examples inside Key forms: %d  (must stay 0)" % len(kf_examples))
 for _x in kf_examples[:8]:
+    print("    %s: %s" % _x)
+
+# Contest profile: "what the tagged contest problems say about this card" -- a role, in words.
+# It never carries a worked example: no quoted sample problem, no computed value, no formula.
+# (The one that prompted this read "How many entries of row 100 are odd" (100 = 1100100_2 ...).)
+cp_examples = []
+_QUOTED_EX = re.compile(r'"(?:(?:How|Find|Compute|Evaluate|Show|Prove|What|Given|Expected|Count|Solve|Simplify)\b[^"]*|[^"]*[0-9$][^"]*)"')
+_FORMULAISH = re.compile(r"=.*\d|\d.*=|\\approx")
+for _k, _v in DETAILS.items():
+    _m = re.search(r"## Contest profile\n(.*?)(?=\n## |\Z)", _v, re.S)
+    if not _m:
+        continue
+    _body = _m.group(1)
+    if _QUOTED_EX.search(_body):
+        cp_examples.append((_k, "a quoted sample problem: " + _QUOTED_EX.search(_body).group(0)[:70]))
+        continue
+    for _mm in re.findall(r"\$([^$]+)\$", _body):
+        if _FORMULAISH.search(_mm):
+            cp_examples.append((_k, "a computed value: $%s$" % _mm[:60])); break
+print("  worked examples or formulas in a Contest profile: %d  (must stay 0)" % len(cp_examples))
+for _x in cp_examples[:12]:
     print("    %s: %s" % _x)
 
 print("\n-- examples --")
@@ -870,7 +892,7 @@ print("  integral with a slanted or unspaced differential: %d  (must stay 0)" % 
 for _x in _calc[:8]:
     print("    %s: %r" % _x)
 
-bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples
+bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples or cp_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
            or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))

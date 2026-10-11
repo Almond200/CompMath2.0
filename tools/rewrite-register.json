@@ -1433,7 +1433,296 @@
     "euler-distance-theorem": "formula",
     "nine-point-circle": "formula",
     "carnots-theorem": "formula",
-    "simson-line": "formula"
+    "simson-line": "formula",
+    "arithmetic-series": "formula",
+    "basic-probability": "formula",
+    "log-rules": "formula",
+    "difference-of-squares": "formula",
+    "geometric-series": "formula",
+    "quadratic-formula": "formula",
+    "floor-basics": "formula",
+    "complex-basics": "formula",
+    "permutations-combinations": "formula",
+    "weighted-average": "formula",
+    "binomial-theorem": "formula",
+    "angle-addition": "formula",
+    "square-of-sum": "formula",
+    "factor-remainder-theorem": "formula",
+    "conditional-probability": "formula",
+    "shoelace-formula": "formula",
+    "double-angle": "formula",
+    "prism-pyramid-volumes": "formula",
+    "relative-motion": "formula",
+    "distance-midpoint": "formula",
+    "multiset-permutations": "formula",
+    "binomial-row-sums": "formula",
+    "reflection-coordinates": "formula",
+    "point-line-distance": "formula",
+    "am-gm": "formula",
+    "pythagorean-identities": "formula",
+    "expected-value": "formula",
+    "conic-sections": "formula",
+    "ellipse-properties": "formula",
+    "hyperbola-properties": "formula",
+    "line-forms": "formula",
+    "half-angle": "formula",
+    "cauchy-schwarz": "formula",
+    "trivial-inequality": "formula",
+    "abs-triangle-inequality": "formula",
+    "pascals-identity": "formula",
+    "non-adjacent-selection": "formula",
+    "pigeonhole": "formula",
+    "lattice-points-gcd": "formula",
+    "space-diagonal": "formula",
+    "handshake-lemma": "formula",
+    "sphere-formulas": "formula",
+    "cone-formulas": "formula",
+    "eulerian-paths": "formula",
+    "point-plane-distance": "formula",
+    "burnsides-lemma": "formula",
+    "permutation-cycle-structure": "formula",
+    "orthocenter-properties": "formula",
+    "determinant-geometric": "formula",
+    "surjections": "formula",
+    "incenter-excenter-lemma": "formula",
+    "determinant-basics": "formula",
+    "cross-ratio": "formula",
+    "proportion-properties": "formula",
+    "stars-and-bars": "formula",
+    "de-moivre": "formula",
+    "roots-of-unity": "formula",
+    "change-of-base": "formula",
+    "linear-recurrence": "formula",
+    "thales-theorem": "formula",
+    "power-sums": "formula",
+    "rotation-90": "formula",
+    "product-sum": "formula",
+    "handshakes-diagonals": "formula",
+    "radical-axis": "formula",
+    "conjugate-root-theorems": "formula",
+    "absolute-value-rules": "formula",
+    "work-rates": "formula",
+    "binomial-probability": "formula",
+    "triangular-numbers": "formula",
+    "binets-formula": "formula",
+    "exponent-laws": "formula",
+    "recognition-numbers": "formula",
+    "circular-permutations": "formula",
+    "grid-paths": "formula",
+    "multinomial-theorem": "formula",
+    "descartes-circle-theorem": "formula",
+    "common-tangent-lengths": "formula",
+    "circle-equation": "formula",
+    "rational-root-theorem": "formula",
+    "sum-zero-identities": "formula",
+    "average-speed": "formula",
+    "vandermonde": "formula",
+    "partitions": "formula",
+    "bayes-theorem": "formula",
+    "equal-chords-arcs": "formula",
+    "eulers-polyhedron-formula": "formula",
+    "15-75-90-triangle": "formula",
+    "triangle-13-14-15": "formula",
+    "fundamental-theorem-algebra": "formula",
+    "coefficient-extraction": "formula",
+    "vertex-form": "formula",
+    "cubes-minus-3abc": "formula",
+    "arithmetico-geometric": "formula",
+    "first-order-recurrence": "formula",
+    "common-angle-values": "formula",
+    "harmonic-addition": "formula",
+    "hockey-stick": "formula",
+    "plane-regions": "formula",
+    "hypergeometric": "formula",
+    "pitots-theorem": "formula",
+    "angle-between-lines": "formula",
+    "picks-theorem": "formula",
+    "british-flag-theorem": "formula",
+    "section-formula": "formula",
+    "parabola-focus-directrix": "formula",
+    "eccentricity": "formula",
+    "distance-3d": "formula",
+    "an-minus-bn": "formula",
+    "eulers-formula": "formula",
+    "rectangles-in-grid": "formula",
+    "committee-chair": "formula",
+    "derangements": "formula",
+    "triangle-center-angles": "formula",
+    "brahmaguptas-formula": "formula",
+    "cavalieris-principle": "formula",
+    "frustum-volume": "formula",
+    "sos-identity": "formula",
+    "max-product-fixed-sum": "formula",
+    "mean-chain": "formula",
+    "special-trig-values": "formula",
+    "stars-bars-upper-bound": "formula",
+    "newtons-sums": "formula",
+    "reflection-composition": "formula",
+    "vector-dot-product": "formula",
+    "symmedian-lemoine": "formula",
+    "triple-angle": "formula",
+    "arctan-telescoping": "formula",
+    "inverse-trig-identities": "formula",
+    "catalan-numbers": "formula",
+    "concyclicity-tests": "formula",
+    "incenter-coordinates": "formula",
+    "rotation-reflection-matrices": "formula",
+    "cross-product-area": "formula",
+    "rearrangement": "formula",
+    "nested-subset-pairs": "formula",
+    "squared-binomial-sum": "formula",
+    "total-expectation": "formula",
+    "expected-fixed-points": "formula",
+    "insphere-radius": "formula",
+    "plane-intercept-form": "formula",
+    "fermat-point": "formula",
+    "projected-area-cosine": "formula",
+    "sin-cos-ap-sum": "formula",
+    "apollonius-circle": "formula",
+    "ptolemys-inequality": "formula",
+    "conic-classification": "formula",
+    "tail-sum-expectation": "formula",
+    "cyclic-perpendicular-diagonals": "formula",
+    "matrix-multiplication": "formula",
+    "cramers-rule": "formula",
+    "useful-factorizations": "formula",
+    "bernoulli-inequality": "formula",
+    "jensens-inequality": "formula",
+    "power-mean-inequality": "formula",
+    "zeckendorf-theorem": "formula",
+    "stirling-bell": "formula",
+    "ramsey-33": "formula",
+    "planar-graph-bound": "formula",
+    "pascals-theorem": "formula",
+    "pole-polar": "formula",
+    "harmonic-bundle": "formula",
+    "halls-marriage": "formula",
+    "konigs-theorem": "formula",
+    "inscribed-square": "formula",
+    "counting-functions": "formula",
+    "geometric-distribution": "formula",
+    "turn-based-games": "formula",
+    "two-tangents-angle": "formula",
+    "common-chord-length": "formula",
+    "polar-coordinates": "formula",
+    "isoperimetric-facts": "formula",
+    "pairwise-sum-product": "formula",
+    "factorial-telescoping": "formula",
+    "reduction-identities": "formula",
+    "absolute-value-identities": "formula",
+    "subset-sum-facts": "formula",
+    "balls-boxes-table": "formula",
+    "moser-circle": "formula",
+    "pappus-centroid": "formula",
+    "descartes-rule-signs": "formula",
+    "weighted-am-gm": "formula",
+    "roots-unity-distance-product": "formula",
+    "miquels-theorem": "formula",
+    "conic-reflective-property": "formula",
+    "skew-lines-distance": "formula",
+    "center-distance-formulas": "formula",
+    "lemoine-point": "formula",
+    "gergonne-nagel-points": "formula",
+    "ptolemy-second-theorem": "formula",
+    "cyclic-quad-diagonals": "formula",
+    "picks-theorem-general": "formula",
+    "picks-triangular-lattice": "formula",
+    "picks-with-holes": "formula",
+    "vector-projection": "formula",
+    "harmonic-quadrilateral": "formula",
+    "cauchy-functional-equations": "formula",
+    "chebyshev-polynomials": "formula",
+    "antisymmetric-factorization": "formula",
+    "reciprocal-power-sums": "formula",
+    "generalized-binomial-series": "formula",
+    "log-swap-identity": "formula",
+    "even-power-sin-cos-sums": "formula",
+    "triangle-angle-identities": "formula",
+    "triangle-square-identities": "formula",
+    "gaussian-integers": "formula",
+    "alternating-squared-binomials": "formula",
+    "pascal-parity": "formula",
+    "ballot-problem": "formula",
+    "order-statistics": "formula",
+    "graph-coloring": "formula",
+    "eisenstein-criterion": "formula",
+    "schurs-inequality": "formula",
+    "muirheads-inequality": "formula",
+    "holders-inequality": "formula",
+    "dilworths-theorem": "formula",
+    "sperners-theorem": "formula",
+    "erdos-szekeres": "formula",
+    "turans-theorem": "formula",
+    "base10-curiosities": "formula",
+    "lattice-points-circle": "formula",
+    "arbelos": "formula",
+    "corner-circle-chain": "formula",
+    "ptolemy-equilateral": "formula",
+    "cyclic-quad-radius": "formula",
+    "de-guas-theorem": "formula",
+    "brahmagupta-fibonacci": "formula",
+    "cosecant-cotangent-square-sums": "formula",
+    "trig-telescoping-product": "formula",
+    "evenly-spaced-angle-products": "formula",
+    "cot-tan-telescoping": "formula",
+    "hermite-identity": "formula",
+    "ramanujan-nested-radical": "formula",
+    "pisano-periods": "formula",
+    "weighted-binomial-sums": "formula",
+    "necklace-formula": "formula",
+    "variance-independence": "formula",
+    "cayleys-formula": "formula",
+    "cardano-cubic": "formula",
+    "minkowski-inequality": "formula",
+    "continued-fraction-convergents": "formula",
+    "steiner-line": "formula",
+    "brocard-angle": "formula",
+    "brocards-theorem": "formula",
+    "feuerbach-theorem": "formula",
+    "leibniz-formula": "formula",
+    "orthocentric-system": "formula",
+    "spieker-point": "formula",
+    "butterfly-theorem": "formula",
+    "reims-theorem": "formula",
+    "caseys-theorem": "formula",
+    "sawayama-thebault": "formula",
+    "mixtilinear-incircle": "formula",
+    "japanese-theorem": "formula",
+    "poncelet-closure": "formula",
+    "newtons-line": "formula",
+    "picks-hexagonal-grid": "formula",
+    "convex-position": "formula",
+    "sylvester-gallai": "formula",
+    "hellys-theorem": "formula",
+    "minkowski-lattice": "formula",
+    "descartes-sphere-theorem": "formula",
+    "cayley-menger": "formula",
+    "brianchon-theorem": "formula",
+    "pappus-hexagon": "formula",
+    "desargues-theorem": "formula",
+    "mobius-transformations": "formula",
+    "complete-quadrilateral-miquel": "formula",
+    "resultant-discriminant": "formula",
+    "eigenvalues-characteristic": "formula",
+    "lagranges-identity": "formula",
+    "abel-summation": "formula",
+    "maclaurin-inequality": "formula",
+    "chebyshev-sum-inequality": "formula",
+    "karamata-inequality": "formula",
+    "fermat-numbers": "formula",
+    "carmichael-numbers": "formula",
+    "farey-sequences": "formula",
+    "beatty-theorem": "formula",
+    "floor-sum-reciprocity": "formula",
+    "exponential-generating-functions": "formula",
+    "polya-enumeration": "formula",
+    "stirling-first-kind": "formula",
+    "sprague-grundy": "formula",
+    "markovs-inequality": "formula",
+    "coprime-probability": "formula",
+    "probability-generating-functions": "formula",
+    "matrix-tree-theorem": "formula",
+    "lgv-lemma": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -3810,6 +4099,4044 @@
       ]
     ],
     "simson-line": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "arithmetic-series": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "basic-probability": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "log-rules": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "difference-of-squares": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "geometric-series": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "quadratic-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "floor-basics": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "complex-basics": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "permutations-combinations": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "weighted-average": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "binomial-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "angle-addition": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "square-of-sum": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "factor-remainder-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "conditional-probability": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "shoelace-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "double-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "prism-pyramid-volumes": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "relative-motion": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "distance-midpoint": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "multiset-permutations": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "binomial-row-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "reflection-coordinates": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "point-line-distance": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "am-gm": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pythagorean-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "expected-value": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "conic-sections": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ellipse-properties": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "hyperbola-properties": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "line-forms": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "half-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cauchy-schwarz": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trivial-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "abs-triangle-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pascals-identity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "non-adjacent-selection": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pigeonhole": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "lattice-points-gcd": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "space-diagonal": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "handshake-lemma": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sphere-formulas": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cone-formulas": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "eulerian-paths": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "point-plane-distance": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "burnsides-lemma": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "permutation-cycle-structure": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "orthocenter-properties": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "determinant-geometric": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "surjections": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "incenter-excenter-lemma": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "determinant-basics": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cross-ratio": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "proportion-properties": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "stars-and-bars": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "de-moivre": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "roots-of-unity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "change-of-base": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "linear-recurrence": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "thales-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "power-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "rotation-90": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "product-sum": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "handshakes-diagonals": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "radical-axis": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "conjugate-root-theorems": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "absolute-value-rules": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "work-rates": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "binomial-probability": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangular-numbers": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "binets-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "exponent-laws": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "recognition-numbers": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "circular-permutations": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "grid-paths": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "multinomial-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "descartes-circle-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "common-tangent-lengths": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "circle-equation": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "rational-root-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sum-zero-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "average-speed": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "vandermonde": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "partitions": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "bayes-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "equal-chords-arcs": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "eulers-polyhedron-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "15-75-90-triangle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-13-14-15": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "fundamental-theorem-algebra": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "coefficient-extraction": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "vertex-form": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cubes-minus-3abc": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "arithmetico-geometric": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "first-order-recurrence": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "common-angle-values": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "harmonic-addition": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "hockey-stick": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "plane-regions": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "hypergeometric": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pitots-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "angle-between-lines": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "picks-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "british-flag-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "section-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "parabola-focus-directrix": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "eccentricity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "distance-3d": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "an-minus-bn": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "eulers-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "rectangles-in-grid": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "committee-chair": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "derangements": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-center-angles": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "brahmaguptas-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cavalieris-principle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "frustum-volume": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sos-identity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "max-product-fixed-sum": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "mean-chain": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "special-trig-values": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "stars-bars-upper-bound": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "newtons-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "reflection-composition": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "vector-dot-product": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "symmedian-lemoine": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triple-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "arctan-telescoping": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "inverse-trig-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "catalan-numbers": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "concyclicity-tests": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "incenter-coordinates": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "rotation-reflection-matrices": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cross-product-area": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "rearrangement": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "nested-subset-pairs": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "squared-binomial-sum": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "total-expectation": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "expected-fixed-points": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "insphere-radius": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "plane-intercept-form": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "fermat-point": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "projected-area-cosine": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sin-cos-ap-sum": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "apollonius-circle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ptolemys-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "conic-classification": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "tail-sum-expectation": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cyclic-perpendicular-diagonals": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "matrix-multiplication": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cramers-rule": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "useful-factorizations": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "bernoulli-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "jensens-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "power-mean-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "zeckendorf-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "stirling-bell": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ramsey-33": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "planar-graph-bound": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pascals-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pole-polar": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "harmonic-bundle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "halls-marriage": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "konigs-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "inscribed-square": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "counting-functions": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "geometric-distribution": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "turn-based-games": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "two-tangents-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "common-chord-length": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "polar-coordinates": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "isoperimetric-facts": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pairwise-sum-product": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "factorial-telescoping": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "reduction-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "absolute-value-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "subset-sum-facts": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "balls-boxes-table": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "moser-circle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pappus-centroid": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "descartes-rule-signs": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "weighted-am-gm": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "roots-unity-distance-product": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "miquels-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "conic-reflective-property": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "skew-lines-distance": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "center-distance-formulas": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "lemoine-point": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "gergonne-nagel-points": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ptolemy-second-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cyclic-quad-diagonals": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "picks-theorem-general": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "picks-triangular-lattice": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "picks-with-holes": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "vector-projection": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "harmonic-quadrilateral": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cauchy-functional-equations": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "chebyshev-polynomials": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "antisymmetric-factorization": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "reciprocal-power-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "generalized-binomial-series": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "log-swap-identity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "even-power-sin-cos-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-angle-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "triangle-square-identities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "gaussian-integers": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "alternating-squared-binomials": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pascal-parity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ballot-problem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "order-statistics": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "graph-coloring": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "eisenstein-criterion": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "schurs-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "muirheads-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "holders-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "dilworths-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sperners-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "erdos-szekeres": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "turans-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "base10-curiosities": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "lattice-points-circle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "arbelos": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "corner-circle-chain": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ptolemy-equilateral": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cyclic-quad-radius": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "de-guas-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "brahmagupta-fibonacci": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cosecant-cotangent-square-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "trig-telescoping-product": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "evenly-spaced-angle-products": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cot-tan-telescoping": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "hermite-identity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "ramanujan-nested-radical": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pisano-periods": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "weighted-binomial-sums": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "necklace-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "variance-independence": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cayleys-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cardano-cubic": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "minkowski-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "continued-fraction-convergents": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "steiner-line": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "brocard-angle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "brocards-theorem": [
+      [
+        "Why it works",
+        "new"
+      ]
+    ],
+    "feuerbach-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "leibniz-formula": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "orthocentric-system": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "spieker-point": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "butterfly-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "reims-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "caseys-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sawayama-thebault": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "mixtilinear-incircle": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "japanese-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "poncelet-closure": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "newtons-line": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "picks-hexagonal-grid": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "convex-position": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sylvester-gallai": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "hellys-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "minkowski-lattice": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "descartes-sphere-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cayley-menger": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "brianchon-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "pappus-hexagon": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "desargues-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "mobius-transformations": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "complete-quadrilateral-miquel": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "resultant-discriminant": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "eigenvalues-characteristic": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "lagranges-identity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "abel-summation": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "maclaurin-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "chebyshev-sum-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "karamata-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "fermat-numbers": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "carmichael-numbers": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "farey-sequences": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "beatty-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "floor-sum-reciprocity": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "exponential-generating-functions": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "polya-enumeration": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "stirling-first-kind": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "sprague-grundy": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "markovs-inequality": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "coprime-probability": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "probability-generating-functions": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "matrix-tree-theorem": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "lgv-lemma": [
       [
         "Why it works",
         "kept -> Why it works"

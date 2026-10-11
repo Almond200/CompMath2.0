@@ -6,7 +6,7 @@ Object.assign(window.MATH_STATEMENTS, {
 "2024-aime-i-1": { s: String.raw`Every morning Aya goes for a $9$-kilometer-long walk and stops at a coffee shop afterwards. When she walks at a constant speed of $s$ kilometers per hour, the walk takes her $4$ hours, including $t$ minutes spent in the coffee shop. When she walks $s + 2$ kilometers per hour, the walk takes her $2$ hours and $24$ minutes, including $t$ minutes spent in the coffee shop. Suppose Aya walks at $s + \frac{1}{2}$ kilometers per hour. Find the number of minutes the walk takes her, including the $t$ minutes spent in the coffee shop.`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-10": { s: String.raw`Let $\triangle ABC$ have side lengths $AB = 5,$ $BC = 9,$ and $CA = 10.$ The tangents to the circumcircle of $\triangle ABC$ at $B$ and $C$ intersect at point $D,$ and $\overline{AD}$ intersects the circumcircle at $P \ne A.$ The length of $AP$ is equal to $\frac{m}{n},$ where $m$ and $n$ are relatively prime integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-11": { s: String.raw`Each vertex of a regular octagon is independently colored either red or blue with equal probability. The probability that the octagon can then be rotated so that all of the blue vertices end up at positions where there had been red vertices is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
-"2024-aime-i-12": { s: String.raw`Define $f(x) = \left||x| - \tfrac{1}{2}\right|$ and $g(x) = \left||x| - \tfrac{1}{4}\right|.$ Find the number of intersections of the graphs of $$y = 4g(f(\sin(2\pi x)))$$ and $$x = 4g(f(\cos(3\pi y))).$$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
+"2024-aime-i-12": { s: String.raw`Define $f(x) = \left||x| - \tfrac{1}{2}\right|$ and $g(x) = \left||x| - \tfrac{1}{4}\right|.$ Find the number of intersections of the graphs of$$ y = 4g(f(\sin(2\pi x))) $$and$$ x = 4g(f(\cos(3\pi y))). $$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-13": { s: String.raw`Let $p$ be the least prime number for which there exists an integer $n$ such that $n^4 + 1$ is divisible by $p^2.$ Find the least positive integer $m$ such that $m^4 + 1$ is divisible by $p^2.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-14": { s: String.raw`Let $ABCD$ be a tetrahedron such that $AB = CD = \sqrt{41},$ $AC = BD = \sqrt{80},$ and $BC = AD = \sqrt{89}.$ There exists a point $I$ inside the tetrahedron such that the distances from $I$ to each of the faces of the tetrahedron are all equal. This distance can be written in the form $\frac{m\sqrt{n}}{p},$ where $m,$ $n,$ and $p$ are positive integers, $m$ and $p$ are relatively prime, and $n$ is not divisible by the square of any prime. Find $m + n + p.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-15": { s: String.raw`Let $\mathcal{B}$ be the set of rectangular boxes with surface area $54$ and volume $23.$ Let $r$ be the radius of the smallest sphere that can contain each of the rectangular boxes that are elements of $\mathcal{B}.$ The value of $r^2$ can be written as $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
@@ -19,16 +19,16 @@ Object.assign(window.MATH_STATEMENTS, {
 "2024-aime-i-6": { s: String.raw`Consider the paths of length $16$ that follow the lines from the lower left corner to the upper right corner on an $8 \times 8$ grid. Find the number of such paths that change direction exactly four times, as in the examples shown below.
 
 @@fig:aime/2024I/6.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
-"2024-aime-i-7": { s: String.raw`Find the largest possible real part of $$(75 + 117\mathrm{i})z + \frac{96 + 144\mathrm{i}}{z}$$ where $z$ is a complex number with $|z| = 4.$ Here $\mathrm{i} = \sqrt{-1}.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
+"2024-aime-i-7": { s: String.raw`Find the largest possible real part of$$(75 + 117\mathrm{i})z + \frac{96 + 144\mathrm{i}}{z}$$where $z$ is a complex number with $|z| = 4.$ Here $\mathrm{i} = \sqrt{-1}.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-8": { s: String.raw`Eight circles of radius $34$ can be placed tangent to $\overline{BC}$ of $\triangle ABC$ so that the circles are sequentially tangent to each other, with the first circle being tangent to $\overline{AB}$ and the last circle being tangent to $\overline{AC},$ as shown. Similarly, $2024$ circles of radius $1$ can be placed tangent to $\overline{BC}$ in the same manner. The inradius of $\triangle ABC$ can be expressed as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$
 
 @@fig:aime/2024I/8.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-i-9": { s: String.raw`Let $A,$ $B,$ $C,$ and $D$ be points on the hyperbola $\frac{x^2}{20} - \frac{y^2}{24} = 1$ such that $ABCD$ is a rhombus whose diagonals intersect at the origin. Find the largest number less than $BD^2$ for all rhombuses $ABCD.$`, u: "https://live.poshenloh.com/past-contests/aime/2024I" },
 "2024-aime-ii-1": { s: String.raw`Among the $900$ residents of Aimeville, there are $195$ who own a diamond ring, $367$ who own a set of golf clubs, and $562$ who own a garden spade. In addition, each of the $900$ residents owns a bag of candy hearts. There are $437$ residents who own exactly two of these things, and $234$ residents who own exactly three of these things. Find the number of residents of Aimeville who own all four of these things.`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-10": { s: String.raw`Let $\triangle ABC$ have incenter $I,$ circumcenter $O,$ inradius $6,$ and circumradius $13.$ Suppose that $\overline{IA} \perp \overline{OI}.$ Find $AB \cdot AC.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
-"2024-aime-ii-11": { s: String.raw`Find the number of triples of nonnegative integers $(a, b, c)$ satisfying $a + b + c = 300$ and $$\begin{aligned} &a^2 b + a^2 c \\ &\quad {}+ b^2 a + b^2 c \\ &\quad {}+ c^2 a + c^2 b = 6{,}000{,}000. \end{aligned}$$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
+"2024-aime-ii-11": { s: String.raw`Find the number of triples of nonnegative integers $(a, b, c)$ satisfying $a + b + c = 300$ and$$a^2 b + a^2 c + b^2 a + b^2 c + c^2 a + c^2 b = 6{,}000{,}000.$$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-12": { s: String.raw`Let $O = (0, 0),$ $A = \left(\tfrac{1}{2}, 0\right),$ and $B = \left(0, \tfrac{\sqrt{3}}{2}\right)$ be points in the coordinate plane. Let $\mathcal{F}$ be the family of segments $\overline{PQ}$ of unit length lying in the first quadrant with $P$ on the $x$-axis and $Q$ on the $y$-axis. There is a unique point $C$ on $\overline{AB},$ distinct from $A$ and $B,$ that does not belong to any segment from $\mathcal{F}$ other than $\overline{AB}.$ Then $OC^2 = \tfrac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
-"2024-aime-ii-13": { s: String.raw`Let $\omega \neq 1$ be a $13$th root of unity. Find the remainder when $$\prod_{k=0}^{12} \left(2 - 2\omega^k + \omega^{2k}\right)$$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
+"2024-aime-ii-13": { s: String.raw`Let $\omega \neq 1$ be a $13$th root of unity. Find the remainder when$$\prod_{k=0}^{12} \left(2 - 2\omega^k + \omega^{2k}\right)$$is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-14": { s: String.raw`Let $b \ge 2$ be an integer. Call a positive integer $n$ $b$-eautiful if it has exactly two digits when expressed in base $b$ and these two digits sum to $\sqrt{n}.$ For example, $81$ is $13$-eautiful because $81 = \underline{6}\,\underline{3}_{13}$ and $6 + 3 = \sqrt{81}.$ Find the least integer $b \ge 2$ for which there are more than ten $b$-eautiful integers.`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-15": { s: String.raw`Find the number of rectangles that can be formed inside a fixed regular dodecagon ($12$-gon) where each side of the rectangle lies on either a side or a diagonal of the dodecagon. The diagram below shows three of those rectangles.
 
@@ -45,9 +45,7 @@ Find the sum of the squares of all the items in the list.`, u: "https://live.pos
 "2024-aime-ii-3": { s: String.raw`Find the number of ways to place a digit in each cell of a $2 \times 3$ grid so that the sum of the two numbers formed by reading left to right is $999,$ and the sum of the three numbers formed by reading top to bottom is $99.$ The grid below is an example of such an arrangement because $8 + 991 = 999$ and $9 + 9 + 81 = 99.$
 
 @@fig:aime/2024II/3.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
-"2024-aime-ii-4": { s: String.raw`Let $x,$ $y,$ and $z$ be positive real numbers that satisfy the following system of equations: $$\log_2\left(\frac{x}{yz}\right) = \frac{1}{2}$$ $$\log_2\left(\frac{y}{xz}\right) = \frac{1}{3}$$ $$\log_2\left(\frac{z}{xy}\right) = \frac{1}{4}$$
-
-Then the value of $\left|\log_2(x^4 y^3 z^2)\right|$ is $\frac{m}{n}$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
+"2024-aime-ii-4": { s: String.raw`Let $x,$ $y,$ and $z$ be positive real numbers that satisfy the following system of equations:$$\log_2\left(\frac{x}{yz}\right) = \frac{1}{2}$$$$\log_2\left(\frac{y}{xz}\right) = \frac{1}{3}$$$$\log_2\left(\frac{z}{xy}\right) = \frac{1}{4}$$Then the value of $\left|\log_2(x^4 y^3 z^2)\right|$ is $\frac{m}{n}$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-5": { s: String.raw`Let $ABCDEF$ be a convex equilateral hexagon in which all pairs of opposite sides are parallel. The triangle whose sides are extensions of segments $\overline{AB},$ $\overline{CD},$ and $\overline{EF}$ has side lengths $200,$ $240,$ and $300.$ Find the side length of the hexagon.`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-6": { s: String.raw`Alice chooses a set $A$ of positive integers. Then Bob lists all finite nonempty sets $B$ of positive integers with the property that the maximum element of $B$ belongs to $A.$ Bob’s list has $2024$ sets. Find the sum of the elements of $A.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
 "2024-aime-ii-7": { s: String.raw`Let $N$ be the greatest four-digit integer with the property that whenever one of its digits is changed to $1,$ the resulting number is divisible by $7.$ Let $Q$ and $R$ be the quotient and remainder, respectively, when $N$ is divided by $1000.$ Find $Q + R.$`, u: "https://live.poshenloh.com/past-contests/aime/2024II" },
@@ -71,11 +69,7 @@ Let $S$ be a sphere with a radius $11.$ When $T$ rests on the inside of $S,$ it 
 Suppose you start with $n = 100.$ What value results if you perform this operation exactly $100$ times?
 
 (A) $10$  (B) $20$  (C) $30$  (D) $40$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
-"2024-amc-10a-11": { s: String.raw`How many ordered pairs of integers $(m, n)$ satisfy
-
-$$\sqrt{n^2 - 49} = m?$$
-
-(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) Infinitely many`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
+"2024-amc-10a-11": { s: String.raw`How many ordered pairs of integers $(m, n)$ satisfy$$\sqrt{n^2 - 49} = m?$$(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) Infinitely many`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
 "2024-amc-10a-12": { s: String.raw`Zelda played the Adventures of Math game on August $1$ and scored $1700$ points. She continued to play daily over the next $5$ days. The bar chart below shows the daily change in her score compared to the day before. (For example, Zelda’s score on August $2$ was $1700 + 80 = 1780$ points.) What was Zelda’s average score in points over the $6$ days?
 
 @@fig:amc10/2024A/12.svg@@
@@ -126,21 +120,13 @@ Of the $6$ pairs of distinct transformations from this list, how many commute?
 What is the maximum possible number of elements in $S?$
 
 (A) $436$  (B) $506$  (C) $608$  (D) $654$  (E) $675$`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
-"2024-amc-10a-21": { s: String.raw`The numbers, in order, of each row and the numbers, in order, of each column of a $5 \times 5$ array of integers form an arithmetic progression of length $5.$ The numbers in positions $(5, 5),$ $(2, 4),$ $(4, 3),$ and $(3, 1)$ are $0,$ $48,$ $16,$ and $12,$ respectively. What number is in position $(1, 2)?$
-
-$$\begin{bmatrix} \cdot & ? & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & 48 & \cdot \\ 12 & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & 16 & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & 0 \end{bmatrix}$$
-
-(A) $19$  (B) $24$  (C) $29$  (D) $34$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
+"2024-amc-10a-21": { s: String.raw`The numbers, in order, of each row and the numbers, in order, of each column of a $5 \times 5$ array of integers form an arithmetic progression of length $5.$ The numbers in positions $(5, 5),$ $(2, 4),$ $(4, 3),$ and $(3, 1)$ are $0,$ $48,$ $16,$ and $12,$ respectively. What number is in position $(1, 2)?$$$\begin{bmatrix} \cdot & ? & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & 48 & \cdot \\ 12 & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & 16 & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & 0 \end{bmatrix}$$(A) $19$  (B) $24$  (C) $29$  (D) $34$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
 "2024-amc-10a-22": { s: String.raw`Let $\mathcal{K}$ be the kite formed by joining two right triangles with legs $1$ and $\sqrt3$ along a common hypotenuse. Eight copies of $\mathcal{K}$ are used to form the polygon shown below. What is the area of $\triangle ABC?$
 
 @@fig:amc10/2024A/22.svg@@
 
 (A) $2 + 3\sqrt3$  (B) $\dfrac{9}{2}\sqrt3$  (C) $\dfrac{10 + 8\sqrt3}{3}$  (D) $8$  (E) $5\sqrt3$`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
-"2024-amc-10a-23": { s: String.raw`Integers $a,$ $b,$ and $c$ satisfy
-
-$$\begin{aligned} ab + c &= 100, \\ bc + a &= 87, \\ ca + b &= 60. \end{aligned}$$
-
-What is $ab + bc + ca?$
+"2024-amc-10a-23": { s: String.raw`Integers $a,$ $b,$ and $c$ satisfy$$\begin{aligned}ab + c &= 100, \\ bc + a &= 87, \\ ca + b &= 60.\end{aligned}$$What is $ab + bc + ca?$
 
 (A) $212$  (B) $247$  (C) $258$  (D) $276$  (E) $284$`, u: "https://live.poshenloh.com/past-contests/amc10/2024A" },
 "2024-amc-10a-24": { s: String.raw`A bee is moving in three-dimensional space. A fair six-sided die with faces labeled $A^+,$ $A^-,$ $B^+,$ $B^-,$ $C^+,$ and $C^-$ is rolled. Suppose the bee occupies the point $(a, b, c).$ If the die shows $A^+,$ then the bee moves to the point $(a + 1, b, c),$ and if the die shows $A^-,$ then the bee moves to the point $(a - 1, b, c).$ Analogous moves are made with the other four outcomes.
@@ -210,7 +196,7 @@ Suppose the bee starts at the point $(0, 0, 0)$ and the die is rolled four times
 (A) $1$  (B) $2$  (C) $5$  (D) $25$  (E) $125$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-19": { s: String.raw`In the following table, each question mark is to be replaced by “Possible” or “Not Possible” to indicate whether a nonvertical line with the given slope can contain the given number of lattice points (points both of whose coordinates are integers). How many of the $12$ entries will be “Possible”?
 
-@@fig:amc10/2024B/19.svg@@
+$$\begin{array}{|l|c|c|c|c|} \hline & \text{zero} & \text{exactly one} & \text{exactly two} & \text{more than two} \\ \hline \text{zero slope} & ? & ? & ? & ? \\ \hline \text{nonzero rational slope} & ? & ? & ? & ? \\ \hline \text{irrational slope} & ? & ? & ? & ? \\ \hline \end{array}$$
 
 (A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-2": { s: String.raw`What is $10! - 7! \cdot 6!?$
@@ -227,16 +213,8 @@ Suppose the bee starts at the point $(0, 0, 0)$ and the die is rolled four times
 "2024-amc-10b-22": { s: String.raw`A group of $16$ people will be partitioned into $4$ indistinguishable $4$-person committees. Each committee will have one chairperson and one secretary. The number of different ways to make these assignments can be written as $3^r M,$ where $r$ and $M$ are positive integers and $M$ is not divisible by $3.$ What is $r?$
 
 (A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
-"2024-amc-10b-23": { s: String.raw`The Fibonacci numbers are defined by $F_1 = 1,$ $F_2 = 1,$ and $F_n = F_{n-1} + F_{n-2}$ for $n \ge 3.$ What is
-
-$$\frac{F_2}{F_1} + \frac{F_4}{F_2} + \frac{F_6}{F_3} + \cdots + \frac{F_{20}}{F_{10}}?$$
-
-(A) $318$  (B) $319$  (C) $320$  (D) $321$  (E) $322$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
-"2024-amc-10b-24": { s: String.raw`Let
-
-$$\begin{aligned} P(m) &= \frac{m}{2} + \frac{m^2}{4} \\ &\quad {}+ \frac{m^4}{8} + \frac{m^8}{8}. \end{aligned}$$
-
-How many of the values of $P(2022),$ $P(2023),$ $P(2024),$ and $P(2025)$ are integers?
+"2024-amc-10b-23": { s: String.raw`The Fibonacci numbers are defined by $F_1 = 1,$ $F_2 = 1,$ and $F_n = F_{n-1} + F_{n-2}$ for $n \ge 3.$ What is$$\frac{F_2}{F_1} + \frac{F_4}{F_2} + \frac{F_6}{F_3} + \cdots + \frac{F_{20}}{F_{10}}?$$(A) $318$  (B) $319$  (C) $320$  (D) $321$  (E) $322$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
+"2024-amc-10b-24": { s: String.raw`Let$$P(m) = \frac{m}{2} + \frac{m^2}{4} + \frac{m^4}{8} + \frac{m^8}{8}.$$How many of the values of $P(2022),$ $P(2023),$ $P(2024),$ and $P(2025)$ are integers?
 
 (A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-25": { s: String.raw`Each of $27$ bricks (right rectangular prisms) has dimensions $a \times b \times c,$ where $a,$ $b,$ and $c$ are pairwise relatively prime positive integers. These bricks are arranged to form a $3 \times 3 \times 3$ block, as shown on the left below. A $28$th brick with the same dimensions is introduced, and these bricks are reconfigured into a $2 \times 2 \times 7$ block, shown on the right. The new block is $1$ unit taller, $1$ unit wider, and $1$ unit deeper than the old one. What is $a + b + c?$
@@ -250,11 +228,7 @@ How many of the values of $P(2022),$ $P(2023),$ $P(2024),$ and $P(2025)$ are int
 "2024-amc-10b-4": { s: String.raw`Balls numbered $1,$ $2,$ $3,$ $\ldots$ are deposited in $5$ bins, labeled $A,$ $B,$ $C,$ $D,$ and $E,$ using the following procedure. Ball $1$ is deposited in bin $A,$ and balls $2$ and $3$ are deposited in bin $B.$ The next $3$ balls are deposited in bin $C,$ the next $4$ in bin $D,$ and so on, cycling back to bin $A$ after balls are deposited in bin $E.$ (For example, balls numbered $22,$ $23,$ $\ldots,$ $28$ are deposited in bin $B$ at step $7$ of this process.) In which bin is ball $2024$ deposited?
 
 (A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) $E$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
-"2024-amc-10b-5": { s: String.raw`In the following expression, Melanie changed some of the plus signs to minus signs:
-
-$$1 + 3 + 5 + 7 + \cdots + 97 + 99$$
-
-When the new expression was evaluated, it was negative. What is the least number of plus signs that Melanie could have changed to minus signs?
+"2024-amc-10b-5": { s: String.raw`In the following expression, Melanie changed some of the plus signs to minus signs:$$1 + 3 + 5 + 7 + \cdots + 97 + 99$$When the new expression was evaluated, it was negative. What is the least number of plus signs that Melanie could have changed to minus signs?
 
 (A) $14$  (B) $15$  (C) $16$  (D) $17$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-6": { s: String.raw`A rectangle has integer side lengths and an area of $2024.$ What is the least possible perimeter of the rectangle?
@@ -284,14 +258,8 @@ When the new expression was evaluated, it was negative. What is the least number
 "2024-amc-12a-13": { s: String.raw`The graph of $y=e^{x+1}+e^{-x}-2$ has an axis of symmetry. What is the reflection of the point $\left(-1,\tfrac12\right)$ over this axis?
 
 (A) $\left(-1,-\tfrac32\right)$  (B) $(-1,0)$  (C) $\left(-1,\tfrac12\right)$  (D) $\left(0,\tfrac12\right)$  (E) $\left(3,\tfrac12\right)$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
-"2024-amc-12a-14": { s: String.raw`The numbers, in order, of each row and the numbers, in order, of each column of a $5\times5$ array of integers form an arithmetic progression of length $5.$ The numbers in positions $(5,5),$ $(2,4),$ $(4,3),$ and $(3,1)$ are $0,$ $48,$ $16,$ and $12,$ respectively. What number is in position $(1,2)?$
-
-$$\begin{bmatrix} \cdot & ? & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & 48 & \cdot \\ 12 & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & 16 & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & 0 \end{bmatrix}$$
-
-(A) $19$  (B) $24$  (C) $29$  (D) $34$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
-"2024-amc-12a-15": { s: String.raw`The roots of $x^3+2x^2-x+3$ are $p$, $q$, and $r$. What is the value of $$(p^2+4)(q^2+4)(r^2+4)?$$
-
-(A) $64$  (B) $75$  (C) $100$  (D) $125$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
+"2024-amc-12a-14": { s: String.raw`The numbers, in order, of each row and the numbers, in order, of each column of a $5\times5$ array of integers form an arithmetic progression of length $5.$ The numbers in positions $(5,5),$ $(2,4),$ $(4,3),$ and $(3,1)$ are $0,$ $48,$ $16,$ and $12,$ respectively. What number is in position $(1,2)?$$$ \begin{bmatrix} \cdot & ? & \cdot & \cdot & \cdot \\ \cdot & \cdot & \cdot & 48 & \cdot \\ 12 & \cdot & \cdot & \cdot & \cdot \\ \cdot & \cdot & 16 & \cdot & \cdot \\ \cdot & \cdot & \cdot & \cdot & 0 \end{bmatrix} $$(A) $19$  (B) $24$  (C) $29$  (D) $34$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
+"2024-amc-12a-15": { s: String.raw`The roots of $x^3+2x^2-x+3$ are $p$, $q$, and $r$. What is the value of$$ (p^2+4)(q^2+4)(r^2+4)? $$(A) $64$  (B) $75$  (C) $100$  (D) $125$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
 "2024-amc-12a-16": { s: String.raw`A set of $12$ tokens — $3$ red, $2$ white, $1$ blue, and $6$ black — is to be distributed at random to $3$ game players, $4$ tokens per player. The probability that some player gets all the red tokens, another gets all the white tokens, and the remaining player gets the blue token can be written as $\dfrac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m+n?$
 
 (A) $387$  (B) $388$  (C) $389$  (D) $390$  (E) $391$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
@@ -316,21 +284,17 @@ How many minutes does the model estimate it will take to hike to the top if the 
 "2024-amc-12a-20": { s: String.raw`Points $P$ and $Q$ are chosen uniformly and independently at random on sides $\overline{AB}$ and $\overline{AC},$ respectively, of equilateral triangle $\triangle ABC.$ Which of the following intervals contains the probability that the area of $\triangle APQ$ is less than half the area of $\triangle ABC?$
 
 (A) $\left[\tfrac38,\tfrac12\right]$  (B) $\left(\tfrac12,\tfrac23\right]$  (C) $\left(\tfrac23,\tfrac34\right]$  (D) $\left(\tfrac34,\tfrac78\right]$  (E) $\left(\tfrac78,1\right]$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
-"2024-amc-12a-21": { s: String.raw`Suppose that $a_1=2$ and the sequence $(a_n)$ satisfies the recurrence relation $$\frac{a_n-1}{n-1}=\frac{a_{n-1}+1}{(n-1)+1}$$ for all $n\ge2.$ What is the greatest integer less than or equal to $$\sum_{n=1}^{100}a_n^2?$$
-
-(A) $338{,}550$  (B) $338{,}551$  (C) $338{,}552$  (D) $338{,}553$  (E) $338{,}554$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
+"2024-amc-12a-21": { s: String.raw`Suppose that $a_1=2$ and the sequence $(a_n)$ satisfies the recurrence relation$$ \frac{a_n-1}{n-1}=\frac{a_{n-1}+1}{(n-1)+1} $$for all $n\ge2.$ What is the greatest integer less than or equal to$$ \sum_{n=1}^{100}a_n^2? $$(A) $338{,}550$  (B) $338{,}551$  (C) $338{,}552$  (D) $338{,}553$  (E) $338{,}554$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
 "2024-amc-12a-22": { s: String.raw`The figure below shows a dotted grid $8$ cells wide and $3$ cells tall consisting of $1''\times1''$ squares. Carl places $1$-inch toothpicks along some of the sides of the squares to create a closed loop that does not intersect itself. The numbers in the cells indicate the number of sides of that square that are to be covered by toothpicks, and any number of toothpicks are allowed if no number is written. In how many ways can Carl place the toothpicks?
 
 @@fig:amc12/2024A/22.svg@@
 
 (A) $130$  (B) $144$  (C) $146$  (D) $162$  (E) $196$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
-"2024-amc-12a-23": { s: String.raw`What is the value of $$\begin{aligned} &\tan^2\frac{\pi}{16}\cdot\tan^2\frac{3\pi}{16} \\ &\quad {}+\tan^2\frac{\pi}{16}\cdot\tan^2\frac{5\pi}{16} \\ &\quad {}+\tan^2\frac{3\pi}{16}\cdot\tan^2\frac{7\pi}{16} \\ &\quad {}+\tan^2\frac{5\pi}{16}\cdot\tan^2\frac{7\pi}{16}? \end{aligned}$$
-
-(A) $28$  (B) $68$  (C) $70$  (D) $72$  (E) $84$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
+"2024-amc-12a-23": { s: String.raw`What is the value of$$\tan^2\frac{\pi}{16}\cdot\tan^2\frac{3\pi}{16} +\tan^2\frac{\pi}{16}\cdot\tan^2\frac{5\pi}{16} +\tan^2\frac{3\pi}{16}\cdot\tan^2\frac{7\pi}{16} +\tan^2\frac{5\pi}{16}\cdot\tan^2\frac{7\pi}{16}?$$(A) $28$  (B) $68$  (C) $70$  (D) $72$  (E) $84$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
 "2024-amc-12a-24": { s: String.raw`A disphenoid is a tetrahedron whose triangular faces are congruent to one another. What is the least total surface area of a disphenoid whose faces are scalene triangles with integer side lengths?
 
 (A) $\sqrt3$  (B) $3\sqrt{15}$  (C) $15$  (D) $15\sqrt7$  (E) $24\sqrt6$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
-"2024-amc-12a-25": { s: String.raw`A graph is symmetric about a line if the graph remains unchanged after reflection in that line. For how many quadruples of integers $(a,b,c,d),$ where $|a|,$ $|b|,$ $|c|,$ $|d|\le5$ and $c$ and $d$ are not both $0,$ is the graph of $$y=\frac{ax+b}{cx+d}$$ symmetric about the line $y=x?$
+"2024-amc-12a-25": { s: String.raw`A graph is symmetric about a line if the graph remains unchanged after reflection in that line. For how many quadruples of integers $(a,b,c,d),$ where $|a|,$ $|b|,$ $|c|,$ $|d|\le5$ and $c$ and $d$ are not both $0,$ is the graph of$$ y=\frac{ax+b}{cx+d} $$symmetric about the line $y=x?$
 
 (A) $1282$  (B) $1292$  (C) $1310$  (D) $1320$  (E) $1330$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
 "2024-amc-12a-3": { s: String.raw`The number $2024$ is written as the sum of not necessarily distinct two-digit numbers. What is the least number of two-digit numbers needed to write this sum?
@@ -347,9 +311,7 @@ How many minutes does the model estimate it will take to hike to the top if the 
 (A) $2$  (B) $3$  (C) $5$  (D) $6$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
 "2024-amc-12a-7": { s: String.raw`In $\triangle ABC,$ $\angle ABC=90^\circ$ and $BA=BC=\sqrt2.$ Points $P_1,$ $P_2,$ $\ldots,$ $P_{2024}$ lie on hypotenuse $AC$ so that $AP_1=P_1P_2$ $=P_2P_3$ $=\cdots$ $=P_{2023}P_{2024}$ $=P_{2024}C.$
 
-What is the length of the vector sum $$\begin{aligned} &\vec{BP_1}+\vec{BP_2}+\vec{BP_3} \\ &\quad {}+\cdots+\vec{BP_{2024}}? \end{aligned}$$
-
-(A) $1011$  (B) $1012$  (C) $2023$  (D) $2024$  (E) $2025$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
+What is the length of the vector sum$$\vec{BP_1}+\vec{BP_2}+\vec{BP_3} +\cdots+\vec{BP_{2024}}?$$(A) $1011$  (B) $1012$  (C) $2023$  (D) $2024$  (E) $2025$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
 "2024-amc-12a-8": { s: String.raw`How many angles $\theta$ with $0\le\theta\le2\pi$ satisfy $\log(\sin(3\theta))+\log(\cos(2\theta))=0?$
 
 (A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2024A" },
@@ -368,13 +330,7 @@ What is the length of the vector sum $$\begin{aligned} &\vec{BP_1}+\vec{BP_2}+\v
 "2024-amc-12b-12": { s: String.raw`Suppose $z$ is a complex number with positive imaginary part, with real part greater than $1,$ and with $|z| = 2.$ In the complex plane, the four points $0,$ $z,$ $z^2,$ and $z^3$ are the vertices of a quadrilateral with area $15.$ What is the imaginary part of $z?$
 
 (A) $\dfrac{3}{4}$  (B) $1$  (C) $\dfrac{4}{3}$  (D) $\dfrac{3}{2}$  (E) $\dfrac{5}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
-"2024-amc-12b-13": { s: String.raw`There are real numbers $x,$ $y,$ $h,$ and $k$ that satisfy the system of equations
-
-$$x^2 + y^2 - 6x - 8y = h$$
-
-$$x^2 + y^2 - 10x + 4y = k.$$
-
-What is the minimum possible value of $h + k?$
+"2024-amc-12b-13": { s: String.raw`There are real numbers $x,$ $y,$ $h,$ and $k$ that satisfy the system of equations$$x^2 + y^2 - 6x - 8y = h$$$$x^2 + y^2 - 10x + 4y = k.$$What is the minimum possible value of $h + k?$
 
 (A) $-54$  (B) $-46$  (C) $-34$  (D) $-16$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
 "2024-amc-12b-14": { s: String.raw`How many different remainders can result when the $100$th power of an integer is divided by $125?$
@@ -389,11 +345,7 @@ What is the minimum possible value of $h + k?$
 "2024-amc-12b-17": { s: String.raw`Integers $a$ and $b$ are randomly chosen without replacement from the set of integers with absolute value not exceeding $10.$ What is the probability that the polynomial $x^3 + ax^2 + bx + 6$ has $3$ distinct integer roots?
 
 (A) $\dfrac{1}{240}$  (B) $\dfrac{1}{221}$  (C) $\dfrac{1}{105}$  (D) $\dfrac{1}{84}$  (E) $\dfrac{1}{63}$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
-"2024-amc-12b-18": { s: String.raw`The Fibonacci numbers are defined by $F_1 = 1,$ $F_2 = 1,$ and $F_n = F_{n-1} + F_{n-2}$ for $n \ge 3.$ What is
-
-$$\frac{F_2}{F_1} + \frac{F_4}{F_2} + \frac{F_6}{F_3} + \cdots + \frac{F_{20}}{F_{10}}?$$
-
-(A) $318$  (B) $319$  (C) $320$  (D) $321$  (E) $322$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
+"2024-amc-12b-18": { s: String.raw`The Fibonacci numbers are defined by $F_1 = 1,$ $F_2 = 1,$ and $F_n = F_{n-1} + F_{n-2}$ for $n \ge 3.$ What is$$\frac{F_2}{F_1} + \frac{F_4}{F_2} + \frac{F_6}{F_3} + \cdots + \frac{F_{20}}{F_{10}}?$$(A) $318$  (B) $319$  (C) $320$  (D) $321$  (E) $322$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
 "2024-amc-12b-19": { s: String.raw`Equilateral $\triangle ABC$ with side length $14$ is rotated about its center by angle $\theta,$ where $0 \lt \theta \lt 60^\circ,$ to form $\triangle DEF.$ See the figure. The area of hexagon $ADBECF$ is $91\sqrt3.$ What is $\tan\theta?$
 
 @@fig:amc12/2024B/19.svg@@
@@ -426,11 +378,7 @@ $$\frac{F_2}{F_1} + \frac{F_4}{F_2} + \frac{F_6}{F_3} + \cdots + \frac{F_{20}}{F
 "2024-amc-12b-4": { s: String.raw`Balls numbered $1,$ $2,$ $3,$ $\ldots$ are deposited in $5$ bins, labeled $A,$ $B,$ $C,$ $D,$ and $E,$ using the following procedure. Ball $1$ is deposited in bin $A,$ and balls $2$ and $3$ are deposited in $B.$ The next three balls are deposited in bin $C,$ the next $4$ in bin $D,$ and so on, cycling back to bin $A$ after balls are deposited in bin $E.$ (For example, $22,$ $23,$ $\ldots,$ $28$ are deposited in bin $B$ at step $7$ of this process.) In which bin is ball $2024$ deposited?
 
 (A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) $E$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
-"2024-amc-12b-5": { s: String.raw`In the following expression, Melanie changed some of the plus signs to minus signs:
-
-$$1 + 3 + 5 + 7 + \cdots + 97 + 99$$
-
-When the new expression was evaluated, it was negative. What is the least number of plus signs that Melanie could have changed to minus signs?
+"2024-amc-12b-5": { s: String.raw`In the following expression, Melanie changed some of the plus signs to minus signs:$$1 + 3 + 5 + 7 + \cdots + 97 + 99$$When the new expression was evaluated, it was negative. What is the least number of plus signs that Melanie could have changed to minus signs?
 
 (A) $14$  (B) $15$  (C) $16$  (D) $17$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
 "2024-amc-12b-6": { s: String.raw`The national debt of the United States is on track to reach $5 \cdot 10^{13}$ dollars by $2033.$ How many digits does this number of dollars have when written as a numeral in base $5?$ (The approximation of $\log_{10} 5$ as $0.7$ is sufficient for this problem.)
@@ -441,11 +389,7 @@ When the new expression was evaluated, it was negative. What is the least number
 @@fig:amc12/2024B/7.svg@@
 
 (A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
-"2024-amc-12b-8": { s: String.raw`What value of $x$ satisfies
-
-$$\frac{\log_2 x \cdot \log_3 x}{\log_2 x + \log_3 x} = 2?$$
-
-(A) $25$  (B) $32$  (C) $36$  (D) $42$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
+"2024-amc-12b-8": { s: String.raw`What value of $x$ satisfies$$\frac{\log_2 x \cdot \log_3 x}{\log_2 x + \log_3 x} = 2?$$(A) $25$  (B) $32$  (C) $36$  (D) $42$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
 "2024-amc-12b-9": { s: String.raw`A dartboard is the region $B$ in the coordinate plane consisting of points $(x, y)$ such that $|x| + |y| \le 8.$ A target $T$ is the region where $(x^2 + y^2 - 25)^2 \le 49.$ A dart is thrown and lands at a random point in $B.$ The probability that the dart lands in $T$ can be expressed as $\dfrac{m}{n} \cdot \pi,$ where $m$ and $n$ are relatively prime positive integers. What is $m + n?$
 
 (A) $39$  (B) $71$  (C) $73$  (D) $75$  (E) $135$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },

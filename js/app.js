@@ -202,11 +202,11 @@
   ]);
 
   // Importance tiers, most-used first. Filtered per section via the settings popup.
-  const IMP_TIERS = ["high", "medium", "low", "lower"];
+  const IMP_TIERS = ["high", "medium", "low", "lower", "lowest"];
   // Contest tiers, the default label: the first stage where a card is needed. AMC is AMC 10/12
   // problems 1 to 25, AIME Early first matters at AIME 1 to 10, AIME Late at AIME 11 to 15, and
   // Olympiad is beyond both. Later stages still use the earlier tricks; the tier says where a
-  // card first matters. Importance (High, Medium, Low, Lower) is how much a card matters inside its own subsection, whatever its tier; the two share one tag.
+  // card first matters. Importance (High, Medium, Low, Lower, Lowest) is how much a card matters inside its own subsection, whatever its tier; the two share one tag.
   const TIER_KEYS = ["amc", "aime-early", "aime-late", "olympiad"];
   const TIER_RANK = { "amc": 0, "aime-early": 1, "aime-late": 2, "olympiad": 3 };
   const tierKey = f => String(f.tier || "").toLowerCase().replace(/\s+/g, "-");
@@ -252,6 +252,8 @@
   // Scroll speed: how far one turn of the wheel (or swipe of a trackpad) moves a page. Normal
   // leaves the browser's own scrolling alone; the others scale each wheel step.
   const SCROLL_SPEEDS = ["normal", "slow", "fast"];
+  // Where the app opens: the front page, the Formulas space, or the page the reader last had open.
+  const START_MODES = ["landing", "formulas", "last"];
   const SCROLL_FACTOR = { normal: 1, slow: 0.6, fast: 1.6 };
   // One filter for the whole app: contest tier and importance (persisted).
   function loadSettings() {
@@ -263,6 +265,9 @@
       return new Set(k.length ? k : allowed);
     };
     const filter = { tiers: keep(F.tiers, TIER_KEYS), importances: keep(F.importances, IMP_TIERS) };
+    // "Lowest" arrived after "Lower": a saved filter that shows Lower shows Lowest too, so the
+    // cards moved down a step do not vanish for people who had everything switched on.
+    if (Array.isArray(F.importances) && F.importances.indexOf("lower") !== -1 && F.importances.indexOf("lowest") === -1) filter.importances.add("lowest");
     // Preferences live alongside the filter in the same store. Theme is the one
     // exception: it keeps its own localStorage key because the pre-paint script in index.html
     // has to read it before this file is even parsed.
@@ -279,6 +284,7 @@
       captions: pick(P.captions, CAPTION_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
+      start: pick(P.start, START_MODES),
       tags: P.tags === false ? false : true,
       autoGroup: P.autoGroup === false ? false : true
     };
@@ -291,7 +297,7 @@
           layout: state.layout, diagrams: state.diagrams,
           density: state.density, notation: state.notation,
           text: state.text, tags: state.tags, autoGroup: state.autoGroup,
-          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll
+          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -321,6 +327,7 @@
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
+    start: _loaded.start,        // "landing" | "formulas" | "last" — where the app opens when no page is asked for
     tags: _loaded.tags,          // keyword chips on the card face
     autoGroup: _loaded.autoGroup // group a saved list into sections instead of one flat run
   };
@@ -1593,7 +1600,7 @@
     "midsegment-theorem", "euler-line-ratio", "euler-distance-theorem", "tangent-facts",
     "law-of-sines", "circumradius-area", "angle-chasing",
     "pedal-triangle", "orthic-triangle", "medial-triangle", "contact-triangle", 
-    "pole-polar", "directed-angles", "complete-quadrilateral-miquel", "morleys-theorem", 
+    "pole-polar", "directed-angles", "complete-quadrilateral-miquel", "brocards-theorem", "morleys-theorem", 
     "equal-chords-arcs"
   ]);
 
@@ -1621,7 +1628,7 @@
     [a.dataset.section, +a.dataset.sub, a.dataset.cluster === undefined ? undefined : +a.dataset.cluster];
 
   // Ranks for ordering: the contest tier first, then importance inside the tier.
-  const IMP_RANK = { high: 0, medium: 1, low: 2, lower: 3 };
+  const IMP_RANK = { high: 0, medium: 1, low: 2, lower: 3, lowest: 4 };
   const tierRank = f => TIER_RANK[tierKey(f)] !== undefined ? TIER_RANK[tierKey(f)] : 9;
   const impRank = f => IMP_RANK[f.importance] !== undefined ? IMP_RANK[f.importance] : 9;
   const labelRank = f => tierRank(f) * 10 + impRank(f);
@@ -2447,7 +2454,8 @@
     high: ["HIGH", "High importance: central to its subsection"],
     medium: ["MED", "Medium importance: builds on the core of its subsection"],
     low: ["LOW", "Low importance: useful now and then within its subsection"],
-    lower: ["LOWER", "Lower importance: pretty much never used; here for reference"]
+    lower: ["LOWER", "Lower importance: marginal use, needed perhaps once in ten years"],
+    lowest: ["LOWEST", "Lowest importance: never expected on a contest; here for completeness or beauty"]
   };
 
   function badgeHtml(f) {
@@ -3975,6 +3983,7 @@
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
           ${settingRow("Card order", "How cards are ordered on a subject page. By contest tier puts AMC cards first, then AIME Early, AIME Late, and Olympiad, with the most important cards first inside each tier. Curated keeps the order the cards were written in. Most used puts first the cards that the most practice problems use. Search results always rank by relevance.", "order", state.order, [["tier", "By contest tier"], ["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
+          ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in, and Where I left off returns to the last page you had open. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"], ["last", "Where I left off"]])}
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
@@ -3988,7 +3997,7 @@
               <button type="submit" class="command-run">Run</button>
             </form>
             <p class="settings-hint command-msg" hidden></p>
-            <p class="settings-hint">Commands also run from the search box: type one and press Enter. Arguments follow a slash, as in Special:Random/Algebra.</p>
+            <p class="settings-hint">Commands also run from the search box: type one and press Enter. Arguments follow a slash and combine in any order, as in Special:Random/Formula/Geometry/Medium.</p>
             <button type="button" class="show-more-btn command-toggle" aria-expanded="false">Show all commands</button>
             <div class="command-all" hidden>${commandListHtml()}</div>
           </div>
@@ -4371,7 +4380,14 @@
       $search.focus();
       try { $search.setSelectionRange(v.length, v.length); } catch (e) {}
     };
-    $content.querySelector(".home-search").addEventListener("submit", e => { e.preventDefault(); if (box.value.trim()) handOff(box.value); });
+    // A command typed here just runs (there is no header search or suggestion list on this page).
+    $content.querySelector(".home-search").addEventListener("submit", e => {
+      e.preventDefault();
+      const v = box.value.trim();
+      if (!v) return;
+      if (/^special:/i.test(v) && runCommand(v)) return;
+      handOff(box.value);
+    });
   }
 
   // ---------- Space main pages: #/formulas, #/methods, #/patterns, #/practice ----------
@@ -5157,12 +5173,15 @@
   // js/data/problems/statements/, loaded when a problem page opens, so the offline page stays
   // light and a missing file simply shows no statement. Other contests link out as before.
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
+  // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
+  // cached an older file loads the new one.
+  const STATEMENTS_V = 4;
   const statementLoads = {};
   function loadStatements(year) {
     if (!statementLoads[year]) {
       statementLoads[year] = new Promise(res => {
         const sc = document.createElement("script");
-        sc.src = `js/data/problems/statements/${year}.js?v=1`;
+        sc.src = `js/data/problems/statements/${year}.js?v=${STATEMENTS_V}`;
         sc.onload = () => res(true);
         sc.onerror = () => res(false);
         document.head.appendChild(sc);
@@ -5191,7 +5210,7 @@
             const k = Math.min(420 / nw, 280 / nh);
             img.style.width = Math.round(nw * k) + "px";
           });
-          img.src = "js/data/problems/figures/" + part;
+          img.src = "js/data/problems/figures/" + part + "?v=" + STATEMENTS_V;
           body.appendChild(img);
         } else if (part) body.appendChild(document.createTextNode(part));
       });
@@ -5363,14 +5382,13 @@
   // Filters typed after Browse or Random, in any order, separated by "/" or spaces: a kind
   // (formula, method, pattern), a subject (geometry, algebra, number theory, counting, proof),
   // a contest tier (AMC, AIME Early, AIME Late, Olympiad), a level tag (MATHCOUNTS, AMC 10, AMC 12,
-  // AIME) or an importance within its subsection (high, medium, low, lower).
+  // AIME) or an importance within its subsection (high, medium, low, lower, lowest).
   const FILTER_WORDS = {
     kind: { formula: "formula", formulas: "formula", method: "method", methods: "method", pattern: "pattern", patterns: "pattern" },
     subject: { geometry: "geometry", geo: "geometry", algebra: "algebra", alg: "algebra", numbertheory: "number-theory", nt: "number-theory",
       counting: "counting", countingprobability: "counting", probability: "counting", combinatorics: "counting", proof: "proof", proofs: "proof", proofmethods: "proof" },
-    level: { mathcounts: "MATHCOUNTS", amc10: "AMC10", amc12: "AMC12", aime: "AIME" },
     tier: { amc: "amc", aimeearly: "aime-early", early: "aime-early", aimelate: "aime-late", late: "aime-late", olympiad: "olympiad", oly: "olympiad" },
-    importance: { high: "high", medium: "medium", med: "medium", low: "low", lower: "lower" }
+    importance: { high: "high", medium: "medium", med: "medium", low: "low", lower: "lower", lowest: "lowest" }
   };
   const SUBJECT_NAMES = { geometry: "Geometry", algebra: "Algebra", "number-theory": "Number Theory", counting: "Counting & Probability", proof: "Proof" };
   const subjectOf = e => e.formula.subject || e.section.id;
@@ -5395,27 +5413,42 @@
     return f;
   }
   const passesFilters = (e, f) => (!f.kind || e.kind === f.kind) && (!f.subject || subjectOf(e) === f.subject) &&
-    (!f.level || (e.formula.level || []).indexOf(f.level) !== -1) && (!f.tier || tierKey(e.formula) === f.tier) && (!f.importance || e.formula.importance === f.importance);
+    (!f.tier || tierKey(e.formula) === f.tier) && (!f.importance || e.formula.importance === f.importance);
   function filterTitle(f) {
     const kind = f.kind ? f.kind.charAt(0).toUpperCase() + f.kind.slice(1) + "s" : "Cards";
     const TIER_NAMES = { "amc": "AMC", "aime-early": "AIME Early", "aime-late": "AIME Late", "olympiad": "Olympiad" };
     return [f.tier ? TIER_NAMES[f.tier] : "", f.importance ? f.importance.charAt(0).toUpperCase() + f.importance.slice(1) + "-importance" : "",
-      f.subject ? SUBJECT_NAMES[f.subject] : "", f.subject || f.importance || f.tier ? kind.toLowerCase() : kind,
-      f.level ? "at " + f.level.replace(/^AMC(\d+)$/, "AMC $1") : ""].filter(Boolean).join(" ");
+      f.subject ? SUBJECT_NAMES[f.subject] : "", f.subject || f.importance || f.tier ? kind.toLowerCase() : kind].filter(Boolean).join(" ");
   }
-  const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a contest tier (AMC, AIME Early, AIME Late, Olympiad), a level (MATHCOUNTS, AMC 10, AMC 12, AIME), or an importance within its subsection (High, Medium, Low, Lower). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME Late.</p>`;
+  const filterHelp = `<p class="special-note">Combine any of these, in any order, separated by slashes: a kind (Formula, Method, Pattern), a subject (Geometry, Algebra, Number Theory, Counting, Proof), a contest tier (AMC, AIME Early, AIME Late, Olympiad), or an importance within its subsection (High, Medium, Low, Lower, Lowest). For example, Special:Browse/Method/Geometry or Special:Browse/Pattern/AIME Late.</p>`;
   const problemLinks = probs => `<ul class="wiki-list">${probs.slice().sort((a, b) => b.year - a.year || a.ref.localeCompare(b.ref, undefined, { numeric: true }))
     .map(p => `<li><a href="#/problem/${p.slug}">${refShort(p.ref)}</a></li>`).join("")}</ul>`;
+  // A random practice problem, optionally from one contest and difficulty (AIME, AIME/hard, hard).
+  function randomProblemTo(arg) {
+    const m = String(arg || "").match(/^(?:(.*?)\/)?(easy|medium|hard)$/i);
+    const a = resolveContest(m ? (m[1] || "") : arg), band = m ? m[2].toLowerCase() : "";
+    const pool = PROBLEM_DB.filter(p => (!a || normKey(p.ref).includes(a)) && (!band || difficultyBand(p) === band));
+    return pool.length ? "#/problem/" + pickOne(pool).slug : null;
+  }
+  function randomStarredTo() {
+    const l = lists.items.find(x => x.id === "starred");
+    const ids = (l ? l.ids : []).filter(id => BY_ID[id]);
+    return ids.length ? "#/f/" + pickOne(ids) : null;
+  }
   const COMMANDS = [
     { name: "Random", arg: "filters", example: "Special:Random/Method/Geometry",
-      desc: "Open a random card. Add a kind, subject, contest tier, or level to narrow it, in any order.",
+      desc: "Open a random card. Add a kind, subject, contest tier, or importance to narrow it, in any order; or add Problem (and a contest) for a random practice problem, or Starred for a random starred card.",
       go: arg => {
+        // Special:Random/Problem[/contest[/difficulty]] and Special:Random/Starred reach the problem
+        // database and the Starred list through the same command.
+        const sp = String(arg || "").match(/^(problem|starred)(?:\/(.*))?$/i);
+        if (sp) return sp[1].toLowerCase() === "problem" ? randomProblemTo(sp[2] || "") : randomStarredTo();
         const f = parseFilters(arg);
         // Anything the filters do not recognize falls back to the older section match.
         const pool = !arg ? ALL : f.unknown.length ? ALL.filter(e => sectionMatches(e, arg)) : ALL.filter(e => passesFilters(e, f));
         return pool.length ? "#/f/" + pickOne(pool).formula.id : null; } },
     { name: "Browse", arg: "filters", example: "Special:Browse/Pattern/Geometry",
-      desc: "Every card of one kind, subject, contest tier, or level, A to Z. Combine filters in any order.",
+      desc: "Every card of one kind, subject, contest tier, or importance, A to Z. Combine filters in any order.",
       page: arg => {
         const f = parseFilters(arg);
         if (!arg) return { title: "Browse", body: filterHelp };
@@ -5424,20 +5457,12 @@
         return { title: filterTitle(f),
           body: unknown + `<p class="special-note">${hits.length} card${hits.length === 1 ? "" : "s"}.</p>` + (hits.length > 40 ? cardIndex(hits) : hits.length ? cardLinks(browseOrder(hits)) : filterHelp) };
       } },
-    { name: "RandomProblem", arg: "contest", example: "Special:RandomProblem/AIME",
+    { name: "RandomProblem", hidden: true, arg: "contest", example: "Special:Random/Problem/AIME",
       desc: "Open a random practice problem, optionally from one contest.",
-      go: arg => {
-        // An optional difficulty follows the contest (Special:RandomProblem/AIME/hard), or stands
-        // alone for any contest (Special:RandomProblem/hard).
-        const m = String(arg || "").match(/^(?:(.*?)\/)?(easy|medium|hard)$/i);
-        const a = resolveContest(m ? (m[1] || "") : arg), band = m ? m[2].toLowerCase() : "";
-        const pool = PROBLEM_DB.filter(p => (!a || normKey(p.ref).includes(a)) && (!band || difficultyBand(p) === band));
-        return pool.length ? "#/problem/" + pickOne(pool).slug : null; } },
-    { name: "RandomStarred", example: "Special:RandomStarred",
+      go: arg => randomProblemTo(arg) },
+    { name: "RandomStarred", hidden: true, example: "Special:Random/Starred",
       desc: "Open a random card from your Starred list.",
-      go: () => { const l = lists.items.find(x => x.id === "starred");
-        const ids = (l ? l.ids : []).filter(id => BY_ID[id]);
-        return ids.length ? "#/f/" + pickOne(ids) : null; } },
+      go: () => randomStarredTo() },
     { name: "WhatLinksHere", arg: "card", example: "Special:WhatLinksHere/Ceva's Theorem",
       desc: "Every card whose explanation links to a given card.",
       page: arg => {
@@ -5573,7 +5598,7 @@
       // replace, not push: Back should return to where the command was typed, not re-roll it
       if (to) { location.replace(to); return; }
       $content.innerHTML = specialShell("Nothing to open", `<p class="special-note">${
-        cmd.name === "RandomStarred" ? "Your Starred list is empty. Star a card with &#9734; first." : "Nothing matches that."}</p>`);
+        (cmd.name === "RandomStarred" || /^starred$/i.test(route.arg || "")) ? "Your Starred list is empty. Star a card with &#9734; first." : "Nothing matches that."}</p>`);
       return;
     }
     if (cmd && cmd.page) {
@@ -5589,7 +5614,7 @@
       <div class="special-page">${body}</div>`;
   }
   function commandListHtml() {
-    return `<ul class="command-list">${COMMANDS.map(c => `
+    return `<ul class="command-list">${COMMANDS.filter(c => !c.hidden).map(c => `
       <li><button type="button" class="command-chip" data-command="${escapeAttr(c.example)}">${c.example}</button>
         <span class="command-desc">${c.desc}</span></li>`).join("")}</ul>`;
   }
@@ -5643,18 +5668,33 @@
   // Suggestions for one command's argument: [{ text, note }] where text is the full command.
   function argSuggestions(cmd, arg) {
     const full = v => "Special:" + cmd.name + "/" + v;
+    if (cmd.name === "Random") {
+      const pm = arg.match(/^problem\/(.*)$/i);
+      if (pm) return argSuggestions({ name: "RandomProblem" }, pm[1]).map(it => ({ ...it, text: it.text.replace("Special:RandomProblem/", "Special:Random/Problem/") }));
+    }
     if (cmd.name === "Random" || cmd.name === "Browse") {
       // The filters already chosen stay; the last piece is the one being typed.
       const cut = arg.lastIndexOf("/"), done = cut < 0 ? "" : arg.slice(0, cut + 1), typing = arg.slice(cut + 1);
       const chosen = parseFilters(done);
       const opts = [["kind", ["Formula", "Method", "Pattern"]], ["subject", ["Geometry", "Algebra", "Number Theory", "Counting", "Proof"]],
-        ["tier", ["AMC", "AIME Early", "AIME Late", "Olympiad"]], ["level", ["MATHCOUNTS", "AMC 10", "AMC 12", "AIME"]]]
+        ["tier", ["AMC", "AIME Early", "AIME Late", "Olympiad"]],
+        ["importance", ["High", "Medium", "Low", "Lower", "Lowest"]]]
         .filter(([dim]) => !chosen[dim]).flatMap(([dim, vals]) => vals.map(v => ({ v, dim })));
-      const ranked = typing.trim() ? rankBy(typing, opts, o => o.v, 8) : opts.slice(0, 8);
-      return ranked.map(o => {
+      const ranked = typing.trim() ? rankBy(typing, opts, o => o.v, 10) : opts.slice(0, 20);
+      const out = ranked.map(o => {
         const f = parseFilters(done + o.v), n = ALL.filter(e => passesFilters(e, f)).length;
         return { text: full(done + o.v), note: `${filterTitle(f)}: ${n} card${n === 1 ? "" : "s"}` };
       });
+      // Random also reaches the practice problems and the Starred list.
+      if (cmd.name === "Random" && !done) {
+        const starred = (lists.items.find(x => x.id === "starred") || { ids: [] }).ids.filter(id => BY_ID[id]).length;
+        [["Problem", `a random practice problem (${PROBLEM_DB.length} in all); add a contest after the slash, as in Special:Random/Problem/AIME`],
+         ["Starred", `a random card from your Starred list (${starred})`]].forEach(([v, note]) => {
+          if (!typing.trim() || suggestScore(typing, v) > 0) out.push({ text: full(v), note });
+        });
+        if (!typing.trim()) out.unshift(...out.splice(out.length - 2, 2));
+      }
+      return out;
     }
     if (cmd.name === "ProblemsUsing") {
       return rankBy(arg, ALL.filter(e => problemCount(e.formula.id)), e => plainName(e.formula.name), 8).map(e => ({ text: full(plainName(e.formula.name) === e.formula.name.toLowerCase() ? e.formula.name : e.formula.id), note: `${problemCount(e.formula.id)} problem${problemCount(e.formula.id) === 1 ? "" : "s"}` }));
@@ -5686,9 +5726,15 @@
       const items = argSuggestions(cmd, arg);
       return items.length ? items : [{ text: "Special:" + cmd.name + (arg ? "/" + arg : ""), note: cmd.desc }];
     }
-    const items = rankBy(typedName, COMMANDS, c => c.name, COMMANDS.length)
-      .map(c => ({ text: "Special:" + c.name, note: c.desc + (c.arg ? ` Add /${c.arg} to choose.` : "") }));
-    return items.length ? items : COMMANDS.map(c => ({ text: "Special:" + c.name, note: c.desc }));
+    // A command typed in full lists itself and then what can follow the slash.
+    if (exact && exact.arg && slash < 0) {
+      const more = argSuggestions(exact, "");
+      if (more.length) return [{ text: "Special:" + exact.name, note: exact.desc }].concat(more.slice(0, 14));
+    }
+    const shown = COMMANDS.filter(c => !c.hidden);
+    const items = rankBy(typedName, shown, c => c.name, shown.length)
+      .map(c => ({ text: "Special:" + c.name, note: c.desc + (c.example ? ` For example ${c.example}.` : "") }));
+    return items.length ? items : shown.map(c => ({ text: "Special:" + c.name, note: c.desc }));
   }
   // A dropdown under the search box, like Wikipedia's: it lists the suggestions while a command
   // is being typed and closes when the reader clicks anywhere else. The page underneath is left
@@ -6327,7 +6373,7 @@
     const counts = filterCounts();
     const af = state.filter;
     const TIER_NAMES = { "amc": "AMC", "aime-early": "AIME Early", "aime-late": "AIME Late", "olympiad": "Olympiad" };
-    const IMP_NAMES = { high: "High", medium: "Medium", low: "Low", lower: "Lower" };
+    const IMP_NAMES = { high: "High", medium: "Medium", low: "Low", lower: "Lower", lowest: "Lowest" };
     const chips = (keys, names, set, attr, count) => keys.map(k =>
       `<button class="filter-chip${set.has(k) ? " active" : ""}" data-${attr}="${k}">${names[k]} <span class="fc-count">${count[k] || 0}</span></button>`).join("");
     settingsEl = document.createElement("div");
@@ -6603,6 +6649,7 @@
   window.addEventListener("hashchange", () => {
     clearTimeout(scrollSaveTimer);
     legacyRedirect();
+    try { if (/^#\/(?!settings)/.test(location.hash)) localStorage.setItem("mq-last", location.hash); } catch (e) {}
     const route = getRoute();
     render();
     // A revisited entry (Back or Forward) returns to where the reader was on it; a fresh click
@@ -6616,7 +6663,15 @@
   // from also restoring scroll on back/forward and fighting us.
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
+  // Opening the bare address can skip the front page (Settings: "When the app opens").
+  if ((!location.hash || location.hash === "#") && state.start !== "landing") {
+    let to = null;
+    if (state.start === "last") { try { to = localStorage.getItem("mq-last"); } catch (e) {} }
+    if (!to || !/^#\/(?!settings)/.test(to)) to = spaceEntry("formulas");
+    history.replaceState(null, "", to);
+  }
   legacyRedirect();
+  try { if (/^#\/(?!settings)/.test(location.hash)) localStorage.setItem("mq-last", location.hash); } catch (e) {}
   buildSidebar();
   render();
   scrollForRoute(getRoute(), null);

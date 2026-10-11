@@ -2945,4 +2945,28 @@
     })()
   };
 
+  BODY["pascal-parity"] = {
+    // Rows 0 to 15 of Pascal's triangle modulo 2; row 6 is outlined. Odd cells are counted from the binomial values.
+    sierpinski: (() => {
+      const N = 16, cw = 22, ch = 19, cx = 215, Y0 = 14, parts = [];
+      let row = [1], row6odd = 0, ok = true;
+      for (let n = 0; n < N; n++) {
+        const y = Y0 + n * ch;
+        row.forEach((v, k) => {
+          const x = cx + (k - n / 2) * cw - cw / 2, odd = v % 2 === 1;
+          if (odd && n === 6) row6odd++;
+          parts.push(`<rect x="${r1(x + 1)}" y="${r1(y + 1)}" width="${cw - 2}" height="${ch - 2}" rx="2" fill="${odd ? ACC : "none"}" fill-opacity="${odd ? 0.55 : 0}" stroke="${FNT}" stroke-width="0.6"/>`);
+        });
+        if (n % 4 === 0 || n === 6) parts.push(txt([cx - n * cw / 2 - cw / 2 - 8, y + ch - 5], `n = ${n}`, n === 6 ? GLD : DIM, 11.5, "end"));
+        const next = [1]; for (let k = 1; k <= n + 1; k++) next.push((row[k - 1] + (row[k] || 0)) % 2);
+        row = next;
+      }
+      ok = row6odd === 4;
+      const y6 = Y0 + 6 * ch;
+      parts.push(rect(cx - 3.5 * cw - 2, y6, 7 * cw + 4, ch, GLD, 1.8));
+      parts.push(cap(430, 330, `Rows 0 to 15 of Pascal's triangle with the odd entries shaded. Row 6 has ${row6odd} of them, and ${row6odd} = 2² because 6 = 110 in binary has two 1-bits. Rows 8 to 15 hold two copies of the triangle of rows 0 to 7, the self-similar Sierpiński pattern.`));
+      return ok ? wrap(430, 330, parts) : "";
+    })()
+  };
+
 })();

@@ -242,7 +242,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`(f * g)(n) = f(d_1)\, g\!\left(\tfrac{n}{d_1}\right) + \cdots + f(d_r)\, g\!\left(\tfrac{n}{d_r}\right) \;\; (d_1, \ldots, d_r \text{ the divisors of } n), \qquad \mu * \mathbf{1} = \varepsilon, \qquad \varphi * \mathbf{1} = \mathrm{id}`,
           description: String.raw`The Dirichlet convolution of two functions on the positive integers is $(f * g)(n) = \sum_{d \mid n} f(d)\,g\!\left(\frac nd\right)$. It is commutative and associative with identity $\varepsilon(n) = [n = 1]$, it preserves multiplicativity, and the standard divisor-sum identities become one-line equations: $\varphi * \mathbf 1 = \mathrm{id}$, $\mathrm{id} * \mathbf 1 = \sigma$, $\mathbf 1 * \mathbf 1 = d$, and $\mu * \mathbf 1 = \varepsilon$.`,
           keywords: ["dirichlet convolution", "arithmetic functions", "mobius inversion", "multiplicative function", "divisor sum", "identity function", "convolution ring"],
-          importance: "lower",
+          importance: "lowest",
           tier: "Olympiad",
           level: ["Olympiad"]
         }
@@ -733,7 +733,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\binom{2p}{p} \equiv 2 \pmod{p^3} \quad (p \ge 5)`,
           description: String.raw`Wolstenholme's Theorem says that for a prime $p \ge 5$, the numerator of $1 + \frac12 + \cdots + \frac{1}{p - 1}$ is divisible by $p^2$, and equivalently $\binom{2p - 1}{p - 1} \equiv 1 \pmod{p^3}$, so $\binom{2p}{p} \equiv 2 \pmod{p^3}$.`,
           keywords: ["harmonic sum mod p", "central binomial", "p cubed", "wolstenholme theorem", "harmonic sum mod p squared", "binomial 2p choose p mod p"],
-          importance: "lower",
+          importance: "lowest",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -801,9 +801,9 @@ window.MATH_SECTIONS.push({
           id: "pisano-periods",
           name: "Pisano Periods",
           latex: String.raw`F_n \bmod m \text{ is periodic}; \qquad \pi(2) = 3, \;\; \pi(5) = 20, \;\; \pi(10) = 60`,
-          description: String.raw`The Fibonacci sequence taken modulo $m$ eventually repeats, and since the recurrence runs backward too, it repeats from the very start. The period $\pi(m)$ controls every question about $F_n \bmod m$ — the last digit of $F_n$ cycles with period $\pi(10) = 60$. To find $F_n \bmod m$, reduce the index $n$ modulo $\pi(m)$.`,
+          description: String.raw`The Fibonacci sequence taken modulo $m$ eventually repeats, and since the recurrence runs backward too, it repeats from the very start. The period $\pi(m)$ controls every question about $F_n \bmod m$, and the last digit of $F_n$ cycles with period $\pi(10) = 60$. To find $F_n \bmod m$, the index $n$ is reduced modulo $\pi(m)$.`,
           keywords: ["pisano period", "fibonacci mod m", "last digit of fibonacci", "periodic recurrence", "cycle"],
-          importance: "lower",
+          importance: "lowest",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
@@ -813,7 +813,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{composite } n \text{ with } b^{n-1} \equiv 1 \pmod n \ \forall \gcd(b,n)=1; \quad \text{Korselt: } n \text{ squarefree},\ (p-1)\mid(n-1)\ \forall p\mid n`,
           description: String.raw`A Fermat pseudoprime to base $b$ is a composite $n$ that nonetheless passes Fermat's test $b^{n-1}\equiv 1$; a Carmichael number passes it for every base coprime to $n$ — an "absolute" pseudoprime that fools the Fermat primality test entirely. Korselt's criterion characterizes them: squarefree with $(p-1)\mid(n-1)$ for each prime factor. The smallest is $561 = 3\cdot 11\cdot 17$. (Not to be confused with the Carmichael function $\lambda(n)$.)`,
           keywords: ["carmichael number", "fermat pseudoprime", "korselt criterion", "561", "absolute pseudoprime", "primality test fooled"],
-          importance: "lower",
+          importance: "lowest",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -867,7 +867,7 @@ window.MATH_SECTIONS.push({
           id: "zeckendorf-theorem",
           name: "Zeckendorf's Theorem",
           latex: String.raw`n = F_{k_1} + F_{k_2} + \cdots + F_{k_r}, \qquad k_1 \gg k_2 \gg \cdots \;(k_i \ge k_{i+1} + 2)`,
-          description: String.raw`Every positive integer has a unique representation as a sum of non-consecutive Fibonacci numbers (no two adjacent $F_i$). You build it greedily: repeatedly subtract the largest Fibonacci number $\le n$. This gives a canonical "Fibonacci base," underlies Fibonacci nim and Wythoff's game, and turns "represent $n$ with Fibonacci numbers" counting problems into digit arguments on the Zeckendorf string.`,
+          description: String.raw`Every positive integer has a unique representation as a sum of non-consecutive Fibonacci numbers, with no two adjacent $F_i$. It is built greedily by repeatedly subtracting the largest Fibonacci number $\le n$. This gives a canonical "Fibonacci base," underlies Fibonacci nim and Wythoff's game, and turns "represent $n$ with Fibonacci numbers" counting problems into digit arguments on the Zeckendorf string.`,
           keywords: ["zeckendorf", "fibonacci representation", "non consecutive fibonacci", "fibonacci base", "greedy fibonacci", "wythoff", "unique representation"],
           importance: "medium",
           tier: "AIME Late",
@@ -880,7 +880,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`\left\lfloor \frac{p}{q} \right\rfloor + \left\lfloor \frac{2p}{q} \right\rfloor + \cdots + \left\lfloor \frac{(q-1)p}{q} \right\rfloor = \frac{(p-1)(q-1)}{2} \qquad (\gcd(p, q) = 1)`,
           description: String.raw`The floors count lattice points under the diagonal of a $p \times q$ rectangle — and by symmetry the diagonal (which hits no interior lattice point when $\gcd = 1$) splits the $(p-1)(q-1)$ interior points evenly. Equivalently $\lfloor \frac{kp}{q} \rfloor + \lfloor \frac{(q-k)p}{q} \rfloor = p - 1$ pairs terms.`,
           keywords: ["floor sum", "lattice points under line", "reciprocity", "diagonal"],
-          importance: "lower",
+          importance: "lowest",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
         }
