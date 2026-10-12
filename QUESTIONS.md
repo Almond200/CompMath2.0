@@ -79,3 +79,68 @@ Already fixed (a display bug, not a style choice): four boxes ended a row with a
 So the proposal changes 9 cards (Order Statistics, Binet, Sums of Powers, Vieta, Hyperbola, Excentral, Eccentricity, Polar Coordinates, Newton's Sums) and keeps 10.
 
 At 375 px, 397 boxes scroll sideways inside the box, which is by design. In 23 of them the row is more than 2.5 times the phone width. The proposal is one row break at the natural point (before $\iff$, or after the condition), with nothing removed: Desargues Involution Theorem and Its Dual, Carnot's Perpendicularity Theorem, Reim's Theorem, Basic Facts about Trees, Law of Total Expectation, British Flag Theorem, Isotomic Conjugate, Schur's Inequality, Lagrange's Theorem on Polynomial Roots mod p, Chinese Remainder Theorem for Polynomials, Principle of Inclusion-Exclusion, Hexagonal Grids and Pick's Theorem, Order Statistics on [0, 1], Counting Solutions via CRT, A Newly Defined Operation, The Conway Circle, The Japanese Theorem, Pappus's Hexagon Theorem, Balls in Boxes (The Twelvefold Way), The Nine-Point Circle, Counting Integer-Sided Triangles by Perimeter, The Steiner Line, and Pigeonhole Principle.
+
+## Candidate new cards from the gap scan (Step 5, 2026-10-12; awaiting your approval)
+
+How I looked:
+- about 250 topic names, olympiad and AMC, checked against every card's name, keywords, description, and write-up;
+- the strategies of the 1,365 tagged problems, and the 4,616 statements, for situations that recur with no card;
+- the "Gap candidates" in `tools/RETAG-NOTES.md`.
+
+Almost everything standard is already covered. These are what's missing. Tick the ones you want, or strike any; nothing is written until you approve.
+
+**Olympiad lemmas and theorems**
+
+| # | Name | Kind | Where | Tier / importance | What it adds | Evidence |
+|---|---|---|---|---|---|---|
+| 1 | Combinatorial Nullstellensatz | formula | Counting › Advanced Counting | Olympiad / low | A nonzero monomial of top degree forces a point of the grid where the polynomial is nonzero. It proves Cauchy–Davenport (already a card) and many covering results. | Standard olympiad tool; no card names it |
+| 2 | Orthogonal Circles | formula | Geometry › Circles | Olympiad / low | Two circles cross at right angles exactly when $d^2 = r_1^2 + r_2^2$; a circle through a point and its inverse is orthogonal to the circle of inversion. It ties together inversion, power of a point, and the radical axis. | Used inside inversion solutions; no card |
+| 3 | Integer-Valued Polynomials | formula | Algebra › Polynomials & Equations | Olympiad / lower | $P(n) \in \mathbb Z$ for all integers $n$ exactly when $P$ is an integer combination of $\binom{x}{k}$. | Standard olympiad lemma |
+| 4 | Schur's Theorem (colorings) | formula | Counting › Pigeonhole & Ramsey Theory | Olympiad / lower | Any finite coloring of $1, \ldots, N$ (large $N$) has a one-color solution of $x + y = z$. Distinct from Schur's Inequality, which is a card. | Ramsey-theory staple |
+| 5 | Weitzenböck / Hadwiger–Finsler Inequality | formula | Geometry › Advanced Triangle Theorems | Olympiad / lower | $a^2 + b^2 + c^2 \ge 4\sqrt3\,K$, and the sharper Hadwiger–Finsler form. | Classic triangle inequality |
+| 6 | Steiner–Lehmus Theorem | formula | Geometry › Advanced Triangle Theorems | Olympiad / lowest | Two equal internal angle bisectors force an isosceles triangle. | Classic; no contest use counted |
+| 7 | Euler's Pentagonal Number Theorem | formula | Counting › Symmetry, Partitions & Posets | Olympiad / lower | The product $\prod (1 - x^n)$ expanded, giving the partition recurrence. | Partition-function problems |
+| 8 | Cevian Nest Theorem | formula | Geometry › Derived Triangles & Conjugates | Olympiad / lowest | If $\triangle DEF$ is a cevian triangle of $\triangle ABC$, and $\triangle XYZ$ one of $\triangle DEF$, then $\triangle XYZ$'s cevians in $\triangle ABC$ concur. | Olympiad configuration lemma |
+| 9 | Hook Length Formula | formula | Counting › Symmetry, Partitions & Posets | Olympiad / lowest | Counts standard Young tableaux of a shape: $n!$ over the product of hook lengths. | 5 statements mention hooks (not all relevant) |
+
+**Number theory formulas**
+
+| # | Name | Kind | Where | Tier / importance | What it adds | Evidence |
+|---|---|---|---|---|---|---|
+| 10 | Perfect Numbers (Euclid–Euler) | formula | Number Theory › Special Numbers & Sequences | AIME Early / low | Even perfect numbers are exactly $2^{p-1}(2^p - 1)$ with $2^p - 1$ prime. Today "perfect number" is only a keyword on Sum of Divisors. | AMC/AIME divisor-sum problems |
+| 11 | Dirichlet's Theorem on Primes in Progressions | formula | Number Theory › Primes, Factorials & Valuations | Olympiad / lowest | Infinitely many primes $\equiv a \pmod m$ when $\gcd(a, m) = 1$, quoted (not proved) in olympiad solutions. | Olympiad citations |
+
+**Platonic solids**
+
+| # | Name | Kind | Where | Tier / importance | What it adds | Evidence |
+|---|---|---|---|---|---|---|
+| 12 | Regular Dodecahedron & Icosahedron | formula | Geometry › Solid Geometry (3D) | AMC / low | Their vertex, edge, and face counts, edges at a vertex, and the facts the problems use (the icosahedron's pentagonal vertex figures, the five-cube inscription). The tetrahedron, cube, and octahedron already have cards; these two don't. | 2016 AIME I #3, 2020 AMC 10A #19, 2023 AMC 10A #18 and #25, 2023 AMC 12A #21 |
+
+**Methods**
+
+| # | Name | Kind | Where | Tier / importance | What it adds | Evidence |
+|---|---|---|---|---|---|---|
+| 13 | Partial Fractions | method | Algebra | AMC / medium | Split $\frac{1}{n(n+k)}$ or a rational function into simple pieces (cover-up rule, matching coefficients). Today it is mentioned only inside Telescoping. | Every $\frac{1}{k(k+1)}$-type sum; generating-function coefficients |
+| 14 | Working Backwards | method | Algebra | AMC / medium | Undo the steps from the final state when a process is described forward and the start is asked for. | 1992 AJHSME #25, 2001 AMC 8 #13, 2025 AMC 8 #20, and others |
+| 15 | Projective Transformations | method | Geometry | Olympiad / lowest | Send a line to infinity, or a conic to a circle, to make a collinearity or concurrence trivial. It is the method behind the Projective Geometry section's facts. | Olympiad technique; the section has facts but no method |
+
+**Patterns (AMC level)**
+
+| # | Name | Kind | Where | Tier / importance | What it adds | Evidence |
+|---|---|---|---|---|---|---|
+| 16 | Age Problems | pattern | Algebra › Word-Problem Setups | AMC / medium | The difference between two ages never changes; let the present ages be the unknowns and shift by the years. | 37 statements, e.g. 2019 AMC 10A #3, 2022 AMC 12B #19, 2025 AMC 10A #4, 2025 AMC 12A #3 |
+| 17 | Calendar & Day-of-Week Problems | pattern | Number Theory › Divisibility & Remainders | AMC / medium | Days cycle mod 7, a year shifts the weekday by 1 (2 after a leap day), and the leap-year rules. | 36 statements, e.g. 2018 AMC 10A #3, 2024 AMC 10A #8, 2025 AMC 10B #11 |
+| 18 | Painted Cubes | pattern | Geometry › Solid Configurations | AMC / low | An $n \times n \times n$ cube painted outside, cut into unit cubes: $8$ with three painted faces, $12(n-2)$ with two, $6(n-2)^2$ with one, $(n-2)^3$ with none. | 9 statements, e.g. 2005 AMC 10A #11, 2009 AMC 12B #17, 2020 AMC 12B #20 |
+| 19 | Round-Robin Tournaments | pattern | Counting › Logic & Probability Setups | AMC / low | Total games $\binom n2$ equal total wins; average wins $\frac{n-1}{2}$; ties and points systems. The game count is already on the combinations card; the pattern would hold the wins and points reasoning. | 19 statements, e.g. 2017 AMC 12B #25, 2022 AIME II #2, 2023 AMC 12A #13 |
+| 20 | Magic Squares | pattern | Counting › Logic & Probability Setups | AMC / lower | The magic sum is the total over $n$, and in a $3 \times 3$ square the center is the average entry. | 1996 AIME #1, 2001 AMC 10 #22, 2004 AMC 12B #22 |
+
+**Already covered, so not proposed:**
+- $a - b \mid P(a) - P(b)$: on Remainder & Factor Theorems;
+- the round-robin game count: on the combinations card;
+- Fagnano, the triple product, Euler's $R \ge 2r$, LYM, four squares, and compound interest.
+
+**Considered and not proposed:**
+- Lagrange multipliers: not accepted as a full olympiad solution, and AIME problems never need them;
+- Langley's adventitious angles: a single famous puzzle, better as an example than a card;
+- Aurifeuillean factorizations: too rare;
+- Egyptian fractions: already the unit-fraction case of Simon's Favorite Factoring Trick.
