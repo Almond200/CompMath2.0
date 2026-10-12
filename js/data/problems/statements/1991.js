@@ -22,4 +22,95 @@ Let $S_a$ be the three-letter string received when $aaa$ is transmitted and let 
 "1991-aime-7": { s: String.raw`Find $A^2,$ where $A$ is the sum of the absolute values of all roots of the following equation:$$x=\sqrt{19}+\cfrac{91}{\sqrt{19}+\cfrac{91}{\sqrt{19}+\cfrac{91}{\sqrt{19}+\cfrac{91}{\sqrt{19}+\cfrac{91}{x}}}}}.$$`, u: "https://live.poshenloh.com/past-contests/aime/1991" },
 "1991-aime-8": { s: String.raw`For how many real numbers $a$ does the quadratic equation $x^2+ax+6a=0$ have only integer roots for $x?$`, u: "https://live.poshenloh.com/past-contests/aime/1991" },
 "1991-aime-9": { s: String.raw`Suppose that $\sec x+\tan x=\frac{22}{7}$ and that $\csc x+\cot x=\frac{m}{n},$ where $\frac{m}{n}$ is in lowest terms. Find $m+n.$`, u: "https://live.poshenloh.com/past-contests/aime/1991" },
+"1991-ajhsme-1": { s: String.raw`What is the value of$$1{,}000{,}000{,}000{,}000 - 777{,}777{,}777{,}777?$$(A) $222{,}222{,}222{,}222$  (B) $222{,}222{,}222{,}223$  (C) $233{,}333{,}333{,}333$  (D) $322{,}222{,}222{,}223$  (E) $333{,}333{,}333{,}333$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-10": { s: String.raw`The area in square units of the region enclosed by parallelogram $ABCD$ is
+
+@@fig:amc8/1991/10.svg@@
+
+(A) $6$  (B) $8$  (C) $12$  (D) $15$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-11": { s: String.raw`There are several sets of three different numbers whose sum is $15$ which can be chosen from $\{1, 2, 3, 4, 5, 6, 7, 8, 9\}.$ How many of these sets contain a $5?$
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-12": { s: String.raw`If$$\frac{2+3+4}{3} = \frac{1990+1991+1992}{N},$$then $N =$
+
+(A) $3$  (B) $6$  (C) $1990$  (D) $1991$  (E) $1992$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-13": { s: String.raw`How many zeros are at the end of the product$$25 \times 25 \times 25 \times 25 \times 25 \times 25 \times 25 \times 8 \times 8 \times 8?$$(A) $3$  (B) $6$  (C) $9$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-14": { s: String.raw`Several students are competing in a series of three races. A student earns $5$ points for winning a race, $3$ points for finishing second, and $1$ point for finishing third. There are no ties. What is the smallest number of points that a student must earn in the three races to be guaranteed of earning more points than any other student?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-15": { s: String.raw`All six sides of a rectangular solid were rectangles. A one-foot cube was cut out of the rectangular solid as shown. The total number of square feet in the surface of the new solid is how many more or less than that of the original solid?
+
+@@fig:amc8/1991/15.svg@@
+
+(A) $2$ less  (B) $1$ less  (C) the same  (D) $1$ more  (E) $2$ more`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-16": { s: String.raw`The $16$ squares on a piece of paper are numbered as shown in the diagram. While lying on a table, the paper is folded in half four times in the following sequence:
+
+$(1)$ fold the top half over the bottom half;
+
+$(2)$ fold the bottom half over the top half;
+
+$(3)$ fold the right half over the left half;
+
+$(4)$ fold the left half over the right half.
+
+Which numbered square is on top after step $4?$$$\begin{array}{|c|c|c|c|} \hline 1 & 2 & 3 & 4 \\ \hline 5 & 6 & 7 & 8 \\ \hline 9 & 10 & 11 & 12 \\ \hline 13 & 14 & 15 & 16 \\ \hline \end{array}$$(A) $1$  (B) $9$  (C) $10$  (D) $14$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-17": { s: String.raw`An auditorium with $20$ rows of seats has $10$ seats in the first row. Each successive row has one more seat than the previous row. If students taking an exam are permitted to sit in any row, but not next to another student in that row, then the maximum number of students that can be seated for an exam is
+
+(A) $150$  (B) $180$  (C) $200$  (D) $400$  (E) $460$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-18": { s: String.raw`The vertical axis indicates the number of employees, but the scale was accidentally omitted from this graph. What percent of the employees at the Gauss Company have worked there for $5$ years or more?
+
+@@fig:amc8/1991/18.svg@@
+
+(A) $9\%$  (B) $23\dfrac13\%$  (C) $30\%$  (D) $42\dfrac67\%$  (E) $50\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-19": { s: String.raw`The average (arithmetic mean) of $10$ different positive whole numbers is $10.$ The largest possible value of any of these numbers is
+
+(A) $10$  (B) $50$  (C) $55$  (D) $90$  (E) $91$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-2": { s: String.raw`What is the value of$$\frac{16+8}{4-2}?$$(A) $4$  (B) $8$  (C) $12$  (D) $16$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-20": { s: String.raw`In the addition problem shown, each digit has been replaced by a letter. If different letters represent different digits, then $C =$$$\begin{array}{cccc} & A & B & C \\ & & A & B \\ + & & & A \\ \hline & 3 & 0 & 0 \end{array}$$(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-21": { s: String.raw`For every $3^\circ$ rise in temperature, the volume of a certain gas expands by $4$ cubic centimeters. If the volume of the gas is $24$ cubic centimeters when the temperature is $32^\circ,$ what was the volume of the gas in cubic centimeters when the temperature was $20^\circ?$
+
+(A) $8$  (B) $12$  (C) $15$  (D) $16$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-22": { s: String.raw`Each spinner is divided into $3$ equal parts. The results obtained from spinning the two spinners are multiplied. What is the probability that this product is an even number?
+
+@@fig:amc8/1991/22.svg@@
+
+(A) $\dfrac13$  (B) $\dfrac12$  (C) $\dfrac23$  (D) $\dfrac79$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-23": { s: String.raw`The Pythagoras High School band has $100$ female and $80$ male members. The Pythagoras High School orchestra has $80$ female and $100$ male members. There are $60$ females who are members in both band and orchestra. Altogether, there are $230$ students who are in either band or orchestra or both. The number of males in the band who are NOT in the orchestra is
+
+(A) $10$  (B) $20$  (C) $30$  (D) $50$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-24": { s: String.raw`A cube of edge $3$ cm is cut into $N$ smaller cubes, not all the same size. If the edge of each of the smaller cubes is a whole number of centimeters, then $N =$
+
+(A) $4$  (B) $8$  (C) $12$  (D) $16$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-25": { s: String.raw`An equilateral triangle is originally painted black. Each time the triangle is changed, the middle fourth of each black triangle turns white. After five changes, what fractional part of the original area of the black triangle remains black?
+
+@@fig:amc8/1991/25.svg@@
+
+(A) $\dfrac{1}{1024}$  (B) $\dfrac{15}{64}$  (C) $\dfrac{243}{1024}$  (D) $\dfrac14$  (E) $\dfrac{81}{256}$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-3": { s: String.raw`Two hundred thousand times two hundred thousand equals
+
+(A) four hundred thousand  (B) four million  (C) forty thousand  (D) four hundred million  (E) forty billion`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-4": { s: String.raw`If $991 + 993 + 995$ $+ 997 + 999$ $= 5000 - N,$ then $N =$
+
+(A) $5$  (B) $10$  (C) $15$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-5": { s: String.raw`A “domino” is made up of two small squares:
+
+@@fig:amc8/1991/5.svg@@
+
+. Which of the “checkerboards” illustrated below CANNOT be covered exactly and completely by a whole number of non-overlapping dominoes?
+
+(A) $3 \times 4$ @@ci:amc8/1991/5a.svg|3rem@@
+(B) $3 \times 5$ @@ci:amc8/1991/5b.svg|3rem@@
+(C) $4 \times 4$ @@ci:amc8/1991/5c.svg|3rem@@
+(D) $4 \times 5$ @@ci:amc8/1991/5d.svg|3rem@@
+(E) $6 \times 3$ @@ci:amc8/1991/5e.svg|3rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-6": { s: String.raw`Which number in the array below is both the largest in its column and the smallest in its row? (Columns go up and down, rows go right and left.)$$\begin{array}{ccccc} 10 & 6 & 4 & 3 & 2 \\ 11 & 7 & 14 & 10 & 8 \\ 8 & 3 & 4 & 5 & 9 \\ 13 & 4 & 15 & 12 & 1 \\ 8 & 2 & 5 & 9 & 3 \end{array}$$(A) $1$  (B) $6$  (C) $7$  (D) $12$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-7": { s: String.raw`The value of$$\frac{(487{,}000)(12{,}027{,}300) + (9{,}621{,}001)(487{,}000)}{(19{,}367)(0.05)}$$is closest to
+
+(A) $10{,}000{,}000$  (B) $100{,}000{,}000$  (C) $1{,}000{,}000{,}000$  (D) $10{,}000{,}000{,}000$  (E) $100{,}000{,}000{,}000$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-8": { s: String.raw`What is the largest quotient that can be formed using two numbers chosen from the set $\{-24, -3, -2, 1, 2, 8\}?$
+
+(A) $-24$  (B) $-3$  (C) $8$  (D) $12$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
+"1991-ajhsme-9": { s: String.raw`How many whole numbers from $1$ through $46$ are divisible by either $3$ or $5$ or both?
+
+(A) $18$  (B) $21$  (C) $24$  (D) $25$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc8/1991" },
 });

@@ -47,7 +47,451 @@ Let $T$ be the number of different towers that can be constructed. What is the r
 
 @@fig:aime/2006II/8.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2006II" },
 "2006-aime-ii-9": { s: String.raw`Circles $\mathcal{C}_1,$ $\mathcal{C}_2,$ and $\mathcal{C}_3$ have their centers at $(0, 0),$ $(12, 0),$ and $(24, 0),$ and have radii $1,$ $2,$ and $4,$ respectively. Line $t_1$ is a common internal tangent to $\mathcal{C}_1$ and $\mathcal{C}_2$ and has a positive slope, and line $t_2$ is a common internal tangent to $\mathcal{C}_2$ and $\mathcal{C}_3$ and has a negative slope. Given that lines $t_1$ and $t_2$ intersect at $(x, y),$ and that $x = p - q\sqrt{r},$ where $p,$ $q,$ and $r$ are positive integers and $r$ is not divisible by the square of any prime, find $p + q + r.$`, u: "https://live.poshenloh.com/past-contests/aime/2006II" },
+"2006-amc-10a-1": { s: String.raw`Sandwiches at Joe’s Fast Food cost $\$3$ each and sodas cost $\$2$ each. How many dollars will it cost to purchase $5$ sandwiches and $8$ sodas?
+
+(A) $31$  (B) $32$  (C) $33$  (D) $34$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-10": { s: String.raw`For how many real values of $x$ is $\sqrt{120 - \sqrt{x}}$ an integer?
+
+(A) $3$  (B) $6$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-11": { s: String.raw`Which of the following describes the graph of the equation $(x + y)^2 = x^2 + y^2?$
+
+(A) the empty set  (B) one point  (C) two lines  (D) a circle  (E) the entire plane`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-12": { s: String.raw`Rolly wishes to secure his dog with an $8$-foot rope to a square shed that is $16$ feet on each side. His preliminary drawings are shown.
+
+@@fig:amc10/2006A/12.svg@@
+
+Which of these arrangements gives the dog the greater area to roam, and by how many square feet?
+
+(A) $\mathrm{I},$ by $8\pi$  (B) $\mathrm{I},$ by $6\pi$  (C) $\mathrm{II},$ by $4\pi$  (D) $\mathrm{II},$ by $8\pi$  (E) $\mathrm{II},$ by $10\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-13": { s: String.raw`A player pays $\$5$ to play a game. A die is rolled. If the number on the die is odd, the game is lost. If the number on the die is even, the die is rolled again. In this case the player wins if the second number matches the first and loses otherwise. How much should the player win if the game is fair? (In a fair game the probability of winning times the amount won is what the player should pay.)
+
+(A) $\$12$  (B) $\$30$  (C) $\$50$  (D) $\$60$  (E) $\$100$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-14": { s: String.raw`A number of linked rings, each $1$ cm thick, are hanging on a peg. The top ring has an outside diameter of $20$ cm. The outside diameter of each of the other rings is $1$ cm less than that of the ring above it. The bottom ring has an outside diameter of $3$ cm. What is the distance, in cm, from the top of the top ring to the bottom of the bottom ring?
+
+@@fig:amc10/2006A/14.svg@@
+
+(A) $171$  (B) $173$  (C) $182$  (D) $188$  (E) $210$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-15": { s: String.raw`Odell and Kershaw run for $30$ minutes on a circular track. Odell runs clockwise at $250$ m/min and uses the inner lane with a radius of $50$ meters. Kershaw runs counterclockwise at $300$ m/min and uses the outer lane with a radius of $60$ meters, starting on the same radial line as Odell. How many times after the start do they pass each other?
+
+(A) $29$  (B) $42$  (C) $45$  (D) $47$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-16": { s: String.raw`A circle of radius $1$ is tangent to a circle of radius $2.$ The sides of $\triangle ABC$ are tangent to the circles as shown, and the sides $AB$ and $AC$ are congruent. What is the area of $\triangle ABC?$
+
+@@fig:amc10/2006A/16.svg@@
+
+(A) $\dfrac{35}{2}$  (B) $15\sqrt{2}$  (C) $\dfrac{64}{3}$  (D) $16\sqrt{2}$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-17": { s: String.raw`In rectangle $ADEH,$ points $B$ and $C$ trisect $\overline{AD},$ and points $G$ and $F$ trisect $\overline{HE}.$ In addition, $AH = AC = 2.$ What is the area of quadrilateral $WXYZ$ shown in the figure?
+
+@@fig:amc10/2006A/17.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{\sqrt{2}}{2}$  (C) $\dfrac{\sqrt{3}}{2}$  (D) $\dfrac{2\sqrt{2}}{3}$  (E) $\dfrac{2\sqrt{3}}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-18": { s: String.raw`A license plate in a certain state consists of $4$ digits, not necessarily distinct, and $2$ letters, also not necessarily distinct. These six characters may appear in any order, except that the two letters must appear next to each other. How many distinct license plates are possible?
+
+(A) $10^4 \cdot 26^2$  (B) $10^3 \cdot 26^3$  (C) $5 \cdot 10^4 \cdot 26^2$  (D) $10^2 \cdot 26^4$  (E) $5 \cdot 10^3 \cdot 26^3$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-19": { s: String.raw`How many non-similar triangles have angles whose degree measures are distinct positive integers in arithmetic progression?
+
+(A) $0$  (B) $1$  (C) $59$  (D) $89$  (E) $178$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-2": { s: String.raw`Define $x \otimes y = x^3 - y.$ What is $h \otimes (h \otimes h)?$
+
+(A) $-h$  (B) $0$  (C) $h$  (D) $2h$  (E) $h^3$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-20": { s: String.raw`Six distinct positive integers are randomly chosen between $1$ and $2006,$ inclusive. What is the probability that some pair of these integers has a difference that is a multiple of $5?$
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{3}{5}$  (C) $\dfrac{2}{3}$  (D) $\dfrac{4}{5}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-21": { s: String.raw`How many four-digit positive integers have at least one digit that is a $2$ or a $3?$
+
+(A) $2439$  (B) $4096$  (C) $4903$  (D) $4904$  (E) $5416$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-22": { s: String.raw`Two farmers agree that pigs are worth $\$300$ and that goats are worth $\$210.$ When one farmer owes the other money, he pays the debt in pigs or goats, with “change” received in the form of goats or pigs as necessary. (For example, a $\$390$ debt could be paid with two pigs, with one goat received in change.) What is the amount of the smallest positive debt that can be resolved in this way?
+
+(A) $\$5$  (B) $\$10$  (C) $\$30$  (D) $\$90$  (E) $\$210$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-23": { s: String.raw`Circles with centers $A$ and $B$ have radii $3$ and $8,$ respectively. A common internal tangent touches the circles at $C$ and $D,$ as shown. Lines $AB$ and $CD$ intersect at $E,$ and $AE = 5.$ What is $CD?$
+
+@@fig:amc10/2006A/23.svg@@
+
+(A) $13$  (B) $\dfrac{44}{3}$  (C) $\sqrt{221}$  (D) $\sqrt{255}$  (E) $\dfrac{55}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-24": { s: String.raw`Centers of adjacent faces of a unit cube are joined to form a regular octahedron. What is the volume of this octahedron?
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-25": { s: String.raw`A bug starts at one vertex of a cube and moves along the edges of the cube according to the following rule. At each vertex the bug will choose to travel along one of the three edges emanating from that vertex. Each edge has equal probability of being chosen, and all choices are independent. What is the probability that after seven moves the bug will have visited every vertex exactly once?
+
+(A) $\dfrac{1}{2187}$  (B) $\dfrac{1}{729}$  (C) $\dfrac{2}{243}$  (D) $\dfrac{1}{81}$  (E) $\dfrac{5}{243}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-3": { s: String.raw`The ratio of Mary’s age to Alice’s age is $3 : 5.$ Alice is $30$ years old. How many years old is Mary?
+
+(A) $15$  (B) $18$  (C) $20$  (D) $24$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-4": { s: String.raw`A digital watch displays hours and minutes with am and pm. What is the largest possible sum of the digits in the display?
+
+(A) $17$  (B) $19$  (C) $21$  (D) $22$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-5": { s: String.raw`Doug and Dave shared a pizza with $8$ equally-sized slices. Doug wanted a plain pizza, but Dave wanted anchovies on half of the pizza. The cost of a plain pizza was $\$8,$ and there was an additional cost of $\$2$ for putting anchovies on one half. Dave ate all the slices of anchovy pizza and one plain slice. Doug ate the remainder. Each then paid for what he had eaten. How many more dollars did Dave pay than Doug?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-6": { s: String.raw`What non-zero real value for $x$ satisfies $(7x)^{14} = (14x)^7?$
+
+(A) $\dfrac{1}{7}$  (B) $\dfrac{2}{7}$  (C) $1$  (D) $7$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-7": { s: String.raw`The $8 \times 18$ rectangle $ABCD$ is cut into two congruent hexagons, as shown, in such a way that the two hexagons can be repositioned without overlap to form a square. What is $y?$
+
+@@fig:amc10/2006A/7.svg@@
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-8": { s: String.raw`A parabola with equation $y = x^2 + bx + c$ passes through the points $(2, 3)$ and $(4, 3).$ What is $c?$
+
+(A) $2$  (B) $5$  (C) $7$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10a-9": { s: String.raw`How many sets of two or more consecutive positive integers have a sum of $15?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2006A" },
+"2006-amc-10b-1": { s: String.raw`What is $(-1)^1 + (-1)^2 + \cdots + (-1)^{2006}?$
+
+(A) $-2006$  (B) $-1$  (C) $0$  (D) $1$  (E) $2006$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-10": { s: String.raw`In a triangle with integer side lengths, one side is three times as long as a second side, and the length of the third side is $15.$ What is the greatest possible perimeter of the triangle?
+
+(A) $43$  (B) $44$  (C) $45$  (D) $46$  (E) $47$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-11": { s: String.raw`What is the tens digit in the sum $7! + 8! + 9! + \cdots + 2006!\,?$
+
+(A) $1$  (B) $3$  (C) $4$  (D) $6$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-12": { s: String.raw`The lines $x=\tfrac14 y+a$ and $y=\tfrac14 x+b$ intersect at the point $(1,2).$ What is $a+b?$
+
+(A) $0$  (B) $\dfrac{3}{4}$  (C) $1$  (D) $2$  (E) $\dfrac{9}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-13": { s: String.raw`Joe and JoAnn each bought $12$ ounces of coffee in a $16$-ounce cup. Joe drank $2$ ounces of his coffee and then added $2$ ounces of cream. JoAnn added $2$ ounces of cream, stirred the coffee well, and then drank $2$ ounces. What is the resulting ratio of the amount of cream in Joe’s coffee to that in JoAnn’s coffee?
+
+(A) $\dfrac{6}{7}$  (B) $\dfrac{13}{14}$  (C) $1$  (D) $\dfrac{14}{13}$  (E) $\dfrac{7}{6}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-14": { s: String.raw`Let $a$ and $b$ be the roots of the equation $x^2-mx+2=0.$ Suppose that $a+\tfrac1b$ and $b+\tfrac1a$ are the roots of the equation $x^2-px+q=0.$ What is $q?$
+
+(A) $\dfrac{5}{2}$  (B) $\dfrac{7}{2}$  (C) $4$  (D) $\dfrac{9}{2}$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-15": { s: String.raw`Rhombus $ABCD$ is similar to rhombus $BFDE.$ The area of rhombus $ABCD$ is $24,$ and $\angle BAD=60^\circ.$ What is the area of rhombus $BFDE?$
+
+@@fig:amc10/2006B/15.svg@@
+
+(A) $6$  (B) $4\sqrt{3}$  (C) $8$  (D) $9$  (E) $6\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-16": { s: String.raw`Leap Day, February $29,$ $2004,$ occurred on a Sunday. On what day of the week will Leap Day, February $29,$ $2020,$ occur?
+
+(A) Tuesday  (B) Wednesday  (C) Thursday  (D) Friday  (E) Saturday`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-17": { s: String.raw`Bob and Alice each have a bag that contains one ball of each of the colors blue, green, orange, red, and violet. Alice randomly selects one ball from her bag and puts it into Bob’s bag. Bob then randomly selects one ball from his bag and puts it into Alice’s bag. What is the probability that after this process the contents of the two bags are the same?
+
+(A) $\dfrac{1}{10}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{5}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-18": { s: String.raw`Let $a_1,$ $a_2,$ $\ldots$ be a sequence for which $a_1=2,$ $a_2=3,$ and $a_n=\dfrac{a_{n-1}}{a_{n-2}}$ for each positive integer $n\ge 3.$ What is $a_{2006}?$
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{2}$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-19": { s: String.raw`A circle of radius $2$ is centered at $O.$ Square $OABC$ has side length $1.$ Sides $\overline{AB}$ and $\overline{CB}$ are extended past $B$ to meet the circle at $D$ and $E,$ respectively. What is the area of the shaded region in the figure, which is bounded by $\overline{BD},$ $\overline{BE},$ and the minor arc connecting $D$ and $E?$
+
+@@fig:amc10/2006B/19.svg@@
+
+(A) $\dfrac{\pi}{3}+1-\sqrt{3}$
+(B) $\dfrac{\pi}{2}(2-\sqrt{3})$
+(C) $\pi(2-\sqrt{3})$
+(D) $\dfrac{\pi}{6}+\dfrac{\sqrt{3}-1}{2}$
+(E) $\dfrac{\pi}{3}-1+\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-2": { s: String.raw`For real numbers $x$ and $y,$ define $x \spadesuit y = (x+y)(x-y).$ What is $3 \spadesuit (4 \spadesuit 5)?$
+
+(A) $-72$  (B) $-27$  (C) $-24$  (D) $24$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-20": { s: String.raw`In rectangle $ABCD,$ we have $A=(6,-22),$ $B=(2006,178),$ and $D=(8,y)$ for some integer $y.$ What is the area of rectangle $ABCD?$
+
+(A) $4000$  (B) $4040$  (C) $4400$  (D) $40{,}000$  (E) $40{,}400$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-21": { s: String.raw`For a particular peculiar pair of dice, the probabilities of rolling $1,$ $2,$ $3,$ $4,$ $5,$ and $6$ on each die are in the ratio $1:2:3:4:5:6.$ What is the probability of rolling a total of $7$ on the two dice?
+
+(A) $\dfrac{4}{63}$  (B) $\dfrac{1}{8}$  (C) $\dfrac{8}{63}$  (D) $\dfrac{1}{6}$  (E) $\dfrac{2}{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-22": { s: String.raw`Elmo makes $N$ sandwiches for a fundraiser. For each sandwich he uses $B$ globs of peanut butter at $4$¢ per glob and $J$ blobs of jam at $5$¢ per blob. The cost of the peanut butter and jam to make all the sandwiches is $\$2.53.$ Assume that $B,$ $J,$ and $N$ are positive integers with $N \gt 1.$ What is the cost of the jam Elmo uses to make the sandwiches?
+
+(A) $\$1.05$  (B) $\$1.25$  (C) $\$1.45$  (D) $\$1.65$  (E) $\$1.85$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-23": { s: String.raw`A triangle is partitioned into three triangles and a quadrilateral by drawing two lines from vertices to their opposite sides. The areas of the three triangles are $3,$ $7,$ and $7,$ as shown. What is the area of the shaded quadrilateral?
+
+@@fig:amc10/2006B/23.svg@@
+
+(A) $15$  (B) $17$  (C) $\dfrac{35}{2}$  (D) $18$  (E) $\dfrac{55}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-24": { s: String.raw`Circles with centers at $O$ and $P$ have radii $2$ and $4,$ respectively, and are externally tangent. Points $A$ and $B$ on the circle with center $O$ and points $C$ and $D$ on the circle with center $P$ are such that $\overline{AD}$ and $\overline{BC}$ are common external tangents to the circles. What is the area of the concave hexagon $AOBCPD?$
+
+@@fig:amc10/2006B/24.svg@@
+
+(A) $18\sqrt{3}$  (B) $24\sqrt{2}$  (C) $36$  (D) $24\sqrt{3}$  (E) $32\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-25": { s: String.raw`Mr. Jones has eight children of different ages. On a family trip his oldest child, who is $9,$ spots a license plate with a $4$-digit number in which each of two digits appears two times. “Look, daddy!” she exclaims. “That number is evenly divisible by the age of each of us kids!” “That’s right,” replies Mr. Jones, “and the last two digits just happen to be my age.” Which of the following is not the age of one of Mr. Jones’s children?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-3": { s: String.raw`A football game was played between two teams, the Cougars and the Panthers. The two teams scored a total of $34$ points, and the Cougars won by a margin of $14$ points. How many points did the Panthers score?
+
+(A) $10$  (B) $14$  (C) $17$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-4": { s: String.raw`Circles of diameter $1$ inch and $3$ inches have the same center. The smaller circle is painted red, and the portion outside the smaller circle and inside the larger circle is painted blue. What is the ratio of the blue-painted area to the red-painted area?
+
+@@fig:amc10/2006B/4.svg@@
+
+(A) $2$  (B) $3$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-5": { s: String.raw`A $2 \times 3$ rectangle and a $3 \times 4$ rectangle are contained within a square without overlapping at any interior point, and the sides of the square are parallel to the sides of the two given rectangles. What is the smallest possible area of the square?
+
+(A) $16$  (B) $25$  (C) $36$  (D) $49$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-6": { s: String.raw`A region is bounded by semicircular arcs constructed on the sides of a square whose sides measure $\tfrac{2}{\pi},$ as shown. What is the perimeter of this region?
+
+@@fig:amc10/2006B/6.svg@@
+
+(A) $\dfrac{4}{\pi}$  (B) $2$  (C) $\dfrac{8}{\pi}$  (D) $4$  (E) $\dfrac{16}{\pi}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-7": { s: String.raw`Which of the following is equivalent to$$\sqrt{\dfrac{x}{1-\dfrac{x-1}{x}}}$$when $x \lt 0?$
+
+(A) $-x$  (B) $x$  (C) $1$  (D) $\sqrt{\dfrac{x}{2}}$  (E) $x\sqrt{-1}$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-8": { s: String.raw`A square of area $40$ is inscribed in a semicircle as shown. What is the area of the semicircle?
+
+@@fig:amc10/2006B/8.svg@@
+
+(A) $20\pi$  (B) $25\pi$  (C) $30\pi$  (D) $40\pi$  (E) $50\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-10b-9": { s: String.raw`Francesca uses $100$ grams of lemon juice, $100$ grams of sugar, and $400$ grams of water to make lemonade. There are $25$ calories in $100$ grams of lemon juice and $386$ calories in $100$ grams of sugar. Water contains no calories. How many calories are in $200$ grams of her lemonade?
+
+(A) $129$  (B) $137$  (C) $174$  (D) $223$  (E) $411$`, u: "https://live.poshenloh.com/past-contests/amc10/2006B" },
+"2006-amc-12a-1": { s: String.raw`Sandwiches at Joe’s Fast Food cost $\$3$ each and sodas cost $\$2$ each. How many dollars will it cost to purchase $5$ sandwiches and $8$ sodas?
+
+(A) $31$  (B) $32$  (C) $33$  (D) $34$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-10": { s: String.raw`For how many real values of $x$ is $\sqrt{120 - \sqrt{x}}$ an integer?
+
+(A) $3$  (B) $6$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-11": { s: String.raw`Which of the following describes the graph of the equation $(x + y)^2 = x^2 + y^2?$
+
+(A) the empty set  (B) one point  (C) two lines  (D) a circle  (E) the entire plane`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-12": { s: String.raw`A number of linked rings, each $1$ cm thick, are hanging on a peg. The top ring has an outside diameter of $20$ cm. The outside diameter of each of the other rings is $1$ cm less than that of the ring above it. The bottom ring has an outside diameter of $3$ cm. What is the distance, in cm, from the top of the top ring to the bottom of the bottom ring?
+
+@@fig:amc12/2006A/12.svg@@
+
+(A) $171$  (B) $173$  (C) $182$  (D) $188$  (E) $210$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-13": { s: String.raw`The vertices of a $3$–$4$–$5$ right triangle are the centers of three mutually externally tangent circles, as shown. What is the sum of the areas of these circles?
+
+@@fig:amc12/2006A/13.svg@@
+
+(A) $12\pi$  (B) $\dfrac{25\pi}{2}$  (C) $13\pi$  (D) $\dfrac{27\pi}{2}$  (E) $14\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-14": { s: String.raw`Two farmers agree that pigs are worth $\$300$ and that goats are worth $\$210.$ When one farmer owes the other money, he pays the debt in pigs or goats, with “change” received in the form of goats or pigs as necessary. (For example, a $\$390$ debt could be paid with two pigs, with one goat received in change.) What is the amount of the smallest positive debt that can be resolved in this way?
+
+(A) $\$5$  (B) $\$10$  (C) $\$30$  (D) $\$90$  (E) $\$210$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-15": { s: String.raw`Suppose $\cos x = 0$ and $\cos(x + z) = \tfrac{1}{2}.$ What is the smallest possible positive value of $z?$
+
+(A) $\dfrac{\pi}{6}$  (B) $\dfrac{\pi}{3}$  (C) $\dfrac{\pi}{2}$  (D) $\dfrac{5\pi}{6}$  (E) $\dfrac{7\pi}{6}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-16": { s: String.raw`Circles with centers $A$ and $B$ have radii $3$ and $8,$ respectively. A common internal tangent intersects the circles at $C$ and $D,$ respectively. Lines $AB$ and $CD$ intersect at $E,$ and $AE = 5.$ What is $CD?$
+
+@@fig:amc12/2006A/16.svg@@
+
+(A) $13$  (B) $\dfrac{44}{3}$  (C) $\sqrt{221}$  (D) $\sqrt{255}$  (E) $\dfrac{55}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-17": { s: String.raw`Square $ABCD$ has side length $s,$ a circle centered at $E$ has radius $r,$ and $r$ and $s$ are both rational. The circle passes through $D,$ and $D$ lies on $\overline{BE}.$ Point $F$ lies on the circle, on the same side of $\overline{BE}$ as $A.$ Segment $AF$ is tangent to the circle, and $AF = \sqrt{9 + 5\sqrt{2}}.$ What is $\frac{r}{s}?$
+
+@@fig:amc12/2006A/17.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{5}{9}$  (C) $\dfrac{3}{5}$  (D) $\dfrac{5}{3}$  (E) $\dfrac{9}{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-18": { s: String.raw`The function $f$ has the property that for each real number $x$ in its domain, $\frac{1}{x}$ is also in its domain and$$ f(x) + f\!\left(\frac{1}{x}\right) = x. $$What is the largest set of real numbers that can be in the domain of $f?$
+
+(A) $\{x \mid x \neq 0\}$
+(B) $\{x \mid x \lt 0\}$
+(C) $\{x \mid x \gt 0\}$
+(D) $\{x \mid x \neq -1,\ x \neq 0,\ x \neq 1\}$
+(E) $\{-1, 1\}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-19": { s: String.raw`Circles with centers $(2, 4)$ and $(14, 9)$ have radii $4$ and $9,$ respectively. The equation of a common external tangent to the circles can be written in the form $y = mx + b$ with $m \gt 0.$ What is $b?$
+
+@@fig:amc12/2006A/19.svg@@
+
+(A) $\dfrac{908}{119}$  (B) $\dfrac{909}{119}$  (C) $\dfrac{130}{17}$  (D) $\dfrac{911}{119}$  (E) $\dfrac{912}{119}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-2": { s: String.raw`Define $x \otimes y = x^3 - y.$ What is $h \otimes (h \otimes h)?$
+
+(A) $-h$  (B) $0$  (C) $h$  (D) $2h$  (E) $h^3$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-20": { s: String.raw`A bug starts at one vertex of a cube and moves along the edges of the cube according to the following rule. At each vertex the bug will choose to travel along one of the three edges emanating from that vertex. Each edge has equal probability of being chosen, and all choices are independent. What is the probability that after seven moves the bug will have visited every vertex exactly once?
+
+(A) $\dfrac{1}{2187}$  (B) $\dfrac{1}{729}$  (C) $\dfrac{2}{243}$  (D) $\dfrac{1}{81}$  (E) $\dfrac{5}{243}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-21": { s: String.raw`Let$$ S_1 = \{(x, y) \mid \log_{10}(1 + x^2 + y^2) \le 1 + \log_{10}(x + y)\} $$and$$ S_2 = \{(x, y) \mid \log_{10}(2 + x^2 + y^2) \le 2 + \log_{10}(x + y)\}. $$What is the ratio of the area of $S_2$ to the area of $S_1?$
+
+(A) $98$  (B) $99$  (C) $100$  (D) $101$  (E) $102$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-22": { s: String.raw`A circle of radius $r$ is concentric with and outside a regular hexagon of side length $2.$ The probability that three entire sides of the hexagon are visible from a randomly chosen point on the circle is $\frac{1}{2}.$ What is $r?$
+
+(A) $2\sqrt{2} + 2\sqrt{3}$  (B) $3\sqrt{3} + \sqrt{2}$  (C) $2\sqrt{6} + \sqrt{3}$  (D) $3\sqrt{2} + \sqrt{6}$  (E) $6\sqrt{2} - \sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-23": { s: String.raw`Given a finite sequence $S = (a_1, a_2, \ldots, a_n)$ of $n$ real numbers, let $A(S)$ be the sequence$$ \left(\frac{a_1 + a_2}{2}, \frac{a_2 + a_3}{2}, \ldots, \frac{a_{n-1} + a_n}{2}\right) $$of $n - 1$ real numbers. Define $A^1(S) = A(S)$ and, for each integer $m,$ $2 \le m \le n - 1,$ define $A^m(S) = A(A^{m-1}(S)).$ Suppose $x \gt 0,$ and let $S = (1, x, x^2, \ldots, x^{100}).$ If $A^{100}(S) = (\frac{1}{2^{50}}),$ then what is $x?$
+
+(A) $1 - \dfrac{\sqrt{2}}{2}$  (B) $\sqrt{2} - 1$  (C) $\dfrac{1}{2}$  (D) $2 - \sqrt{2}$  (E) $\dfrac{\sqrt{2}}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
 "2006-amc-12a-24": { s: String.raw`The expression$$ (x + y + z)^{2006} + (x - y - z)^{2006} $$is simplified by expanding it and combining like terms. How many terms are in the simplified expression?
 
 (A) $6018$  (B) $671{,}676$  (C) $1{,}007{,}514$  (D) $1{,}008{,}016$  (E) $2{,}015{,}028$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-25": { s: String.raw`How many non-empty subsets $S$ of $\{1, 2, 3, \ldots, 15\}$ have the following two properties?
+
+$(1)$ No two consecutive integers belong to $S.$
+
+$(2)$ If $S$ contains $k$ elements, then $S$ contains no number less than $k.$
+
+(A) $277$  (B) $311$  (C) $376$  (D) $377$  (E) $405$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-3": { s: String.raw`The ratio of Mary’s age to Alice’s age is $3 : 5.$ Alice is $30$ years old. How old is Mary?
+
+(A) $15$  (B) $18$  (C) $20$  (D) $24$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-4": { s: String.raw`A digital watch displays hours and minutes with AM and PM. What is the largest possible sum of the digits in the display?
+
+(A) $17$  (B) $19$  (C) $21$  (D) $22$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-5": { s: String.raw`Doug and Dave shared a pizza with $8$ equally-sized slices. Doug wanted a plain pizza, but Dave wanted anchovies on half of the pizza. The cost of a plain pizza was $\$8,$ and there was an additional cost of $\$2$ for putting anchovies on one half. Dave ate all the slices of anchovy pizza and one plain slice. Doug ate the remainder. Each then paid for what he had eaten. How many more dollars did Dave pay than Doug?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-6": { s: String.raw`The $8 \times 18$ rectangle $ABCD$ is cut into two congruent hexagons, as shown, in such a way that the two hexagons can be repositioned without overlap to form a square. What is $y?$
+
+@@fig:amc12/2006A/6.svg@@
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-7": { s: String.raw`Mary is $20\%$ older than Sally, and Sally is $40\%$ younger than Danielle. The sum of their ages is $23.2$ years. How old will Mary be on her next birthday?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-8": { s: String.raw`How many sets of two or more consecutive positive integers have a sum of $15?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12a-9": { s: String.raw`Oscar buys $13$ pencils and $3$ erasers for $\$1.00.$ A pencil costs more than an eraser, and both items cost a whole number of cents. What is the total cost, in cents, of one pencil and one eraser?
+
+(A) $10$  (B) $12$  (C) $15$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2006A" },
+"2006-amc-12b-1": { s: String.raw`What is$$(-1)^1 + (-1)^2 + \cdots + (-1)^{2006}?$$(A) $-2006$  (B) $-1$  (C) $0$  (D) $1$  (E) $2006$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-10": { s: String.raw`In a triangle with integer side lengths, one side is three times as long as a second side, and the length of the third side is $15.$ What is the greatest possible perimeter of the triangle?
+
+(A) $43$  (B) $44$  (C) $45$  (D) $46$  (E) $47$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-11": { s: String.raw`Joe and JoAnn each bought $12$ ounces of coffee in a $16$-ounce cup. Joe drank $2$ ounces of his coffee and then added $2$ ounces of cream. JoAnn added $2$ ounces of cream, stirred the coffee well, and then drank $2$ ounces. What is the resulting ratio of the amount of cream in Joe’s coffee to that in JoAnn’s coffee?
+
+(A) $\dfrac{6}{7}$  (B) $\dfrac{13}{14}$  (C) $1$  (D) $\dfrac{14}{13}$  (E) $\dfrac{7}{6}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-12": { s: String.raw`The parabola $y = ax^2 + bx + c$ has vertex $(p, p)$ and $y$-intercept $(0, -p),$ where $p \neq 0.$ What is $b?$
+
+(A) $-p$  (B) $0$  (C) $2$  (D) $4$  (E) $p$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-13": { s: String.raw`Rhombus $ABCD$ is similar to rhombus $BFDE.$ The area of rhombus $ABCD$ is $24,$ and $\angle BAD = 60^\circ.$ What is the area of rhombus $BFDE?$
+
+@@fig:amc12/2006B/13.svg@@
+
+(A) $6$  (B) $4\sqrt{3}$  (C) $8$  (D) $9$  (E) $6\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-14": { s: String.raw`Elmo makes $N$ sandwiches for a fundraiser. For each sandwich he uses $B$ globs of peanut butter at $4$¢ per glob and $J$ blobs of jam at $5$¢ per blob. The cost of the peanut butter and jam to make all the sandwiches is $\$2.53.$ Assume that $B,$ $J,$ and $N$ are positive integers with $N \gt 1.$ What is the cost of the jam Elmo uses to make the sandwiches?
+
+(A) $\$1.05$  (B) $\$1.25$  (C) $\$1.45$  (D) $\$1.65$  (E) $\$1.85$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-15": { s: String.raw`Circles with centers $O$ and $P$ have radii $2$ and $4,$ respectively, and are externally tangent. Points $A$ and $B$ are on the circle centered at $O,$ and points $C$ and $D$ are on the circle centered at $P,$ such that $AD$ and $BC$ are common external tangents to the circles. What is the area of hexagon $AOBCPD?$
+
+@@fig:amc12/2006B/15.svg@@
+
+(A) $18\sqrt{3}$  (B) $24\sqrt{2}$  (C) $36$  (D) $24\sqrt{3}$  (E) $32\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-16": { s: String.raw`Regular hexagon $ABCDEF$ has vertices $A$ and $C$ at $(0, 0)$ and $(7, 1),$ respectively. What is its area?
+
+(A) $20\sqrt{3}$  (B) $22\sqrt{3}$  (C) $25\sqrt{3}$  (D) $27\sqrt{3}$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-17": { s: String.raw`For a particular peculiar pair of dice, the probabilities of rolling $1,$ $2,$ $3,$ $4,$ $5,$ and $6$ on each die are in the ratio $1 : 2 : 3 : 4 : 5 : 6.$ What is the probability of rolling a total of $7$ on the two dice?
+
+(A) $\dfrac{4}{63}$  (B) $\dfrac{1}{8}$  (C) $\dfrac{8}{63}$  (D) $\dfrac{1}{6}$  (E) $\dfrac{2}{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-18": { s: String.raw`An object in the plane moves from one lattice point to another. At each step, the object may move one unit to the right, one unit to the left, one unit up, or one unit down. If the object starts at the origin and takes a ten-step path, how many different points could be the final point?
+
+(A) $120$  (B) $121$  (C) $221$  (D) $230$  (E) $231$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-19": { s: String.raw`Mr. Jones has eight children of different ages. On a family trip his oldest child, who is $9,$ spots a license plate with a $4$-digit number in which each of two digits appears two times. “Look, daddy!” she exclaims. “That number is evenly divisible by the age of each of us kids!” “That’s right,” replies Mr. Jones, “and the last two digits just happen to be my age.” Which of the following is not the age of one of Mr. Jones’s children?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-2": { s: String.raw`For real numbers $x$ and $y,$ define$$x \spadesuit y = (x + y)(x - y).$$What is $3 \spadesuit (4 \spadesuit 5)?$
+
+(A) $-72$  (B) $-27$  (C) $-24$  (D) $24$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-20": { s: String.raw`Let $x$ be chosen at random from the interval $(0, 1).$ What is the probability that$$\lfloor \log_{10} 4x \rfloor - \lfloor \log_{10} x \rfloor = 0?$$Here $\lfloor x \rfloor$ denotes the greatest integer that is less than or equal to $x.$
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{3}{20}$  (C) $\dfrac{1}{6}$  (D) $\dfrac{1}{5}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-21": { s: String.raw`Rectangle $ABCD$ has area $2006.$ An ellipse with area $2006\pi$ passes through $A$ and $C$ and has foci at $B$ and $D.$ What is the perimeter of the rectangle? (The area of an ellipse is $\pi ab,$ where $2a$ and $2b$ are the lengths of its axes.)
+
+(A) $\dfrac{16\sqrt{2006}}{\pi}$  (B) $\dfrac{1003}{4}$  (C) $8\sqrt{1003}$  (D) $6\sqrt{2006}$  (E) $\dfrac{32\sqrt{1003}}{\pi}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-22": { s: String.raw`Suppose $a,$ $b,$ and $c$ are positive integers with $a + b + c = 2006,$ and $a!\,b!\,c! = m \cdot 10^n,$ where $m$ and $n$ are integers and $m$ is not divisible by $10.$ What is the smallest possible value of $n?$
+
+(A) $489$  (B) $492$  (C) $495$  (D) $498$  (E) $501$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-23": { s: String.raw`Isosceles $\triangle ABC$ has a right angle at $C.$ Point $P$ is inside $\triangle ABC,$ such that $PA = 11,$ $PB = 7,$ and $PC = 6.$ Legs $\overline{AC}$ and $\overline{BC}$ have length $s = \sqrt{a + b\sqrt{2}},$ where $a$ and $b$ are positive integers. What is $a + b?$
+
+@@fig:amc12/2006B/23.svg@@
+
+(A) $85$  (B) $91$  (C) $108$  (D) $121$  (E) $127$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-24": { s: String.raw`Let $S$ be the set of all points $(x, y)$ in the coordinate plane such that $0 \le x \le \dfrac{\pi}{2}$ and $0 \le y \le \dfrac{\pi}{2}.$ What is the area of the subset of $S$ for which$$\sin^2 x - \sin x \sin y + \sin^2 y \le \frac{3}{4}?$$(A) $\dfrac{\pi^2}{9}$  (B) $\dfrac{\pi^2}{8}$  (C) $\dfrac{\pi^2}{6}$  (D) $\dfrac{3\pi^2}{16}$  (E) $\dfrac{2\pi^2}{9}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-25": { s: String.raw`A sequence $a_1,$ $a_2,$ $\ldots$ of non-negative integers is defined by the rule $a_{n+2} = |a_{n+1} - a_n|$ for $n \ge 1.$ If $a_1 = 999,$ $a_2 \lt 999,$ and $a_{2006} = 1,$ how many different values of $a_2$ are possible?
+
+(A) $165$  (B) $324$  (C) $495$  (D) $499$  (E) $660$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-3": { s: String.raw`A football game was played between two teams, the Cougars and the Panthers. The two teams scored a total of $34$ points, and the Cougars won by a margin of $14$ points. How many points did the Panthers score?
+
+(A) $10$  (B) $14$  (C) $17$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-4": { s: String.raw`Mary is about to pay for five items at the grocery store. The prices of the items are $\$7.99,$ $\$4.99,$ $\$2.99,$ $\$1.99,$ and $\$0.99.$ Mary will pay with a twenty-dollar bill. Which of the following is closest to the percentage of the $\$20.00$ that she will receive in change?
+
+(A) $5$  (B) $10$  (C) $15$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-5": { s: String.raw`John is walking east at a speed of $3$ miles per hour, while Bob is also walking east, but at a speed of $5$ miles per hour. If Bob is now $1$ mile west of John, how many minutes will it take for Bob to catch up to John?
+
+(A) $30$  (B) $50$  (C) $60$  (D) $90$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-6": { s: String.raw`Francesca uses $100$ grams of lemon juice, $100$ grams of sugar, and $400$ grams of water to make lemonade. There are $25$ calories in $100$ grams of lemon juice and $386$ calories in $100$ grams of sugar. Water contains no calories. How many calories are in $200$ grams of her lemonade?
+
+(A) $129$  (B) $137$  (C) $174$  (D) $223$  (E) $411$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-7": { s: String.raw`Mr. and Mrs. Lopez have two children. When they get into their family car, two people sit in the front, and the other two sit in the back. Either Mr. Lopez or Mrs. Lopez must sit in the driver’s seat. How many seating arrangements are possible?
+
+(A) $4$  (B) $12$  (C) $16$  (D) $24$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-8": { s: String.raw`The lines$$x = \tfrac14 y + a, \qquad y = \tfrac14 x + b$$intersect at the point $(1, 2).$ What is $a + b?$
+
+(A) $0$  (B) $\dfrac{3}{4}$  (C) $1$  (D) $2$  (E) $\dfrac{9}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-12b-9": { s: String.raw`How many even three-digit integers have the property that their digits, read left to right, are in strictly increasing order?
+
+(A) $21$  (B) $34$  (C) $51$  (D) $72$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc12/2006B" },
+"2006-amc-8-1": { s: String.raw`Mindy made three purchases for $\$1.98$, $\$5.04$, and $\$9.89$. What was her total, to the nearest dollar?
+
+(A) $\$10$  (B) $\$15$  (C) $\$16$  (D) $\$17$  (E) $\$18$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-10": { s: String.raw`Jorge’s teacher asks him to plot all the ordered pairs $(w, l)$ of positive integers for which $w$ is the width and $l$ is the length of a rectangle with area $12.$ What should his graph look like?
+
+(A) @@ci:amc8/2006/10a.svg|12rem@@  (B) @@ci:amc8/2006/10b.svg|12rem@@  (C) @@ci:amc8/2006/10c.svg|12rem@@  (D) @@ci:amc8/2006/10d.svg|12rem@@  (E) @@ci:amc8/2006/10e.svg|12rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-11": { s: String.raw`How many two-digit numbers have digits whose sum is a perfect square?
+
+(A) $13$  (B) $16$  (C) $17$  (D) $18$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-12": { s: String.raw`Antonette gets $70 \%$ on a $10$-problem test, $80 \%$ on a $20$-problem test and $90 \%$ on a $30$-problem test. If the three tests are combined into one $60$-problem test, which percent is closest to her overall score?
+
+(A) $40$  (B) $77$  (C) $80$  (D) $83$  (E) $87$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-13": { s: String.raw`Cassie leaves Escanaba at $8:30$ AM heading for Marquette on her bike. She bikes at a uniform rate of $12$ miles per hour. Brian leaves Marquette at $9:00$ AM heading for Escanaba on his bike. He bikes at a uniform rate of $16$ miles per hour. They both bike on the same $62$-mile route between Escanaba and Marquette. At what time in the morning do they meet?
+
+(A) $10:00$  (B) $10:15$  (C) $10:30$  (D) $11:00$  (E) $11:30$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-14": { s: String.raw`Problems $14,$ $15,$ and $16$ involve Mrs. Reed’s English assignment.
+
+A Novel Assignment
+
+The students in Mrs. Reed’s English class are reading the same $760$-page novel. Three friends, Alice, Bob and Chandra, are in the class. Alice reads a page in $20$ seconds, Bob reads a page in $45$ seconds and Chandra reads a page in $30$ seconds.
+
+If Bob and Chandra both read the whole book, Bob will spend how many more seconds reading than Chandra?
+
+(A) $7{,}600$  (B) $11{,}400$  (C) $12{,}500$  (D) $15{,}200$  (E) $22{,}800$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-15": { s: String.raw`Chandra and Bob, who each have a copy of the book, decide that they can save time by “team reading” the novel. In this scheme, Chandra will read from page $1$ to a certain page and Bob will read from the next page through page $760,$ finishing the book. When they are through they will tell each other about the part they read. What is the last page that Chandra should read so that she and Bob spend the same amount of time reading the novel?
+
+(A) $425$  (B) $444$  (C) $456$  (D) $484$  (E) $506$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-16": { s: String.raw`Before Chandra and Bob start reading, Alice says she would like to team read with them. If they divide the book into three sections so that each reads for the same length of time, how many seconds will each have to read?
+
+(A) $6400$  (B) $6600$  (C) $6800$  (D) $7000$  (E) $7200$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-17": { s: String.raw`Jeff rotates spinners $P,$ $Q$ and $R$ and adds the resulting numbers. What is the probability that his sum is an odd number?
+
+@@fig:amc8/2006/17.svg@@
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-18": { s: String.raw`A cube with $3$-inch edges is made using $27$ cubes with $1$-inch edges. Nineteen of the smaller cubes are white and eight are black. If the eight black cubes are placed at the corners of the larger cube, what fraction of the surface area of the larger cube is white?
+
+(A) $\dfrac{1}{9}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{4}{9}$  (D) $\dfrac{5}{9}$  (E) $\dfrac{19}{27}$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-19": { s: String.raw`Triangle $ABC$ is an isosceles triangle with $\overline{AB}=\overline{BC}.$ Point $D$ is the midpoint of both $\overline{BC}$ and $\overline{AE},$ and $\overline{CE}$ is $11$ units long. Triangle $ABD$ is congruent to triangle $ECD.$ What is the length of $\overline{BD}?$
+
+@@fig:amc8/2006/19.svg@@
+
+(A) $4$  (B) $4.5$  (C) $5$  (D) $5.5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-2": { s: String.raw`On the AMC $8$ contest Billy answers $13$ questions correctly, answers $7$ questions incorrectly and doesn’t answer the last $5.$ What is his score?
+
+(A) $1$  (B) $6$  (C) $13$  (D) $19$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-20": { s: String.raw`A singles tournament had six players. Each player played every other player only once, with no ties. If Helen won $4$ games, Ines won $3$ games, Janet won $2$ games, Kendra won $2$ games and Lara won $2$ games, how many games did Monica win?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-21": { s: String.raw`An aquarium has a rectangular base that measures $100$ cm by $40$ cm and has a height of $50$ cm. The aquarium is filled with water to a depth of $37$ cm. A rock with volume $1000\text{ cm}^3$ is then placed in the aquarium and completely submerged. By how many centimeters does the water level rise?
+
+(A) $0.25$  (B) $0.5$  (C) $1$  (D) $1.25$  (E) $2.5$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-22": { s: String.raw`Three different one-digit positive integers are placed in the bottom row of cells. Numbers in adjacent cells are added and the sum is placed in the cell above them. In the second row, continue the same process to obtain a number in the top cell. What is the difference between the largest and smallest numbers possible in the top cell?
+
+@@fig:amc8/2006/22.svg@@
+
+(A) $16$  (B) $24$  (C) $25$  (D) $26$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-23": { s: String.raw`A box contains gold coins. If the coins are equally divided among six people, four coins are left over. If the coins are equally divided among five people, three coins are left over. If the box holds the smallest number of coins that meets these two conditions, how many coins are left when equally divided among seven people?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-24": { s: String.raw`In the multiplication problem below $A,$ $B,$ $C,$ $D$ are different digits. What is $A+B?$$$ \begin{array}{cccc}& A & B & A\\ \times & & C & D\\ \hline C & D & C & D\\ \end{array} $$(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-25": { s: String.raw`Barry wrote $6$ different numbers, one on each side of $3$ cards, and laid the cards on a table, as shown. The sums of the two numbers on each of the three cards are equal. The three numbers on the hidden sides are prime numbers. What is the average of the hidden prime numbers?
+
+@@fig:amc8/2006/25.svg@@
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-3": { s: String.raw`Elisa swims laps in the pool. When she first started, she completed $10$ laps in $25$ minutes. Now, she can finish $12$ laps in $24$ minutes. By how many minutes has she improved her lap time?
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{3}{4}$  (C) $1$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-4": { s: String.raw`Initially, a spinner points west. Chenille moves it clockwise $2 \frac{1}{4}$ revolutions and then counterclockwise $3 \frac{3}{4}$ revolutions. In what direction does the spinner point after the two moves?
+
+@@fig:amc8/2006/4.svg@@
+
+(A) North  (B) East  (C) South  (D) West  (E) Northwest`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-5": { s: String.raw`Points $A,$ $B,$ $C$ and $D$ are midpoints of the sides of the larger square. If the larger square has area $60,$ what is the area of the smaller square?
+
+@@fig:amc8/2006/5.svg@@
+
+(A) $15$  (B) $20$  (C) $24$  (D) $30$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-6": { s: String.raw`The letter T is formed by placing two $2 \times 4$ inch rectangles next to each other, as shown. What is the perimeter of the T, in inches?
+
+@@fig:amc8/2006/6.svg@@
+
+(A) $12$  (B) $16$  (C) $20$  (D) $22$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-7": { s: String.raw`Circle $X$ has a radius of $\pi.$ Circle $Y$ has a circumference of $8 \pi.$ Circle $Z$ has an area of $9 \pi.$ List the circles in order from smallest to largest radius.
+
+(A) $X,$ $Y,$ $Z$  (B) $Z,$ $X,$ $Y$  (C) $Y,$ $X,$ $Z$  (D) $Z,$ $Y,$ $X$  (E) $X,$ $Z,$ $Y$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-8": { s: String.raw`The table shows some of the results of a survey by radio station KAMC. What percentage of the males surveyed listen to the station?
+
+@@fig:amc8/2006/8.svg@@
+
+(A) $39$  (B) $48$  (C) $52$  (D) $55$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
+"2006-amc-8-9": { s: String.raw`What is the product of$$\dfrac{3}{2}\times\dfrac{4}{3}\times\dfrac{5}{4}\times\cdots\times\dfrac{2006}{2005}?$$(A) $1$  (B) $1002$  (C) $1003$  (D) $2005$  (E) $2006$`, u: "https://live.poshenloh.com/past-contests/amc8/2006" },
 });

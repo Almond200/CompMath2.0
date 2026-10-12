@@ -194,11 +194,7 @@ Suppose the bee starts at the point $(0, 0, 0)$ and the die is rolled four times
 "2024-amc-10b-18": { s: String.raw`How many different remainders can result when the $100$th power of an integer is divided by $125?$
 
 (A) $1$  (B) $2$  (C) $5$  (D) $25$  (E) $125$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
-"2024-amc-10b-19": { s: String.raw`In the following table, each question mark is to be replaced by “Possible” or “Not Possible” to indicate whether a nonvertical line with the given slope can contain the given number of lattice points (points both of whose coordinates are integers). How many of the $12$ entries will be “Possible”?
-
-$$\begin{array}{|l|c|c|c|c|} \hline & \text{zero} & \text{exactly one} & \text{exactly two} & \text{more than two} \\ \hline \text{zero slope} & ? & ? & ? & ? \\ \hline \text{nonzero rational slope} & ? & ? & ? & ? \\ \hline \text{irrational slope} & ? & ? & ? & ? \\ \hline \end{array}$$
-
-(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
+"2024-amc-10b-19": { s: String.raw`In the following table, each question mark is to be replaced by “Possible” or “Not Possible” to indicate whether a nonvertical line with the given slope can contain the given number of lattice points (points both of whose coordinates are integers). How many of the $12$ entries will be “Possible”?$$\begin{array}{|l|c|c|c|c|} \hline & \text{zero} & \text{exactly one} & \text{exactly two} & \text{more than two} \\ \hline \text{zero slope} & ? & ? & ? & ? \\ \hline \text{nonzero rational slope} & ? & ? & ? & ? \\ \hline \text{irrational slope} & ? & ? & ? & ? \\ \hline \end{array}$$(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-2": { s: String.raw`What is $10! - 7! \cdot 6!?$
 
 (A) $-120$  (B) $0$  (C) $120$  (D) $600$  (E) $720$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
@@ -219,7 +215,7 @@ $$\begin{array}{|l|c|c|c|c|} \hline & \text{zero} & \text{exactly one} & \text{e
 (A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-25": { s: String.raw`Each of $27$ bricks (right rectangular prisms) has dimensions $a \times b \times c,$ where $a,$ $b,$ and $c$ are pairwise relatively prime positive integers. These bricks are arranged to form a $3 \times 3 \times 3$ block, as shown on the left below. A $28$th brick with the same dimensions is introduced, and these bricks are reconfigured into a $2 \times 2 \times 7$ block, shown on the right. The new block is $1$ unit taller, $1$ unit wider, and $1$ unit deeper than the old one. What is $a + b + c?$
 
-@@fig:amc10/2024B/25.svg@@
+@@fig:amc10/2024B/25.png@@
 
 (A) $88$  (B) $89$  (C) $90$  (D) $91$  (E) $92$`, u: "https://live.poshenloh.com/past-contests/amc10/2024B" },
 "2024-amc-10b-3": { s: String.raw`For how many integer values of $x$ is $|2x| \le 7\pi?$
@@ -393,4 +389,107 @@ What is the length of the vector sum$$\vec{BP_1}+\vec{BP_2}+\vec{BP_3} +\cdots+\
 "2024-amc-12b-9": { s: String.raw`A dartboard is the region $B$ in the coordinate plane consisting of points $(x, y)$ such that $|x| + |y| \le 8.$ A target $T$ is the region where $(x^2 + y^2 - 25)^2 \le 49.$ A dart is thrown and lands at a random point in $B.$ The probability that the dart lands in $T$ can be expressed as $\dfrac{m}{n} \cdot \pi,$ where $m$ and $n$ are relatively prime positive integers. What is $m + n?$
 
 (A) $39$  (B) $71$  (C) $73$  (D) $75$  (E) $135$`, u: "https://live.poshenloh.com/past-contests/amc12/2024B" },
+"2024-amc-8-1": { s: String.raw`What is the ones digit of$$\begin{align*} & 222,222 - 22,222 - 2,222 \\ &- 222 - 22 - 2? \end{align*}$$(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-10": { s: String.raw`In January $1980$ the Mauna Loa Observatory recorded carbon dioxide CO$_{2}$ levels of $338$ ppm (parts per million). Over the years the average CO$_{2}$ reading has increased by about $1.515$ ppm each year. What is the expected CO$_{2}$ level in ppm in January $2030?$ Round your answer to the nearest integer.
+
+(A) $399$  (B) $414$  (C) $420$  (D) $444$  (E) $459$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-11": { s: String.raw`The coordinates of $\bigtriangleup ABC$ are $A(5, 7),$ $B(11, 7),$ and $C(3, y),$ with $y > 7.$ The area of $\bigtriangleup ABC$ is $12.$ What is the value of $y?$
+
+@@fig:amc8/2024/11.svg@@
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-12": { s: String.raw`Rohan keeps a total of $90$ guppies in $4$ fish tanks.
+
+• There is $1$ more guppy in the $2$nd tank than in the $1$st tank.
+
+• There are $2$ more guppies in the $3$rd tank than in the $2$nd tank.
+
+• There are $3$ more guppies in the $4$th tank than in the $3$rd tank.
+
+How many guppies are in the $4$th tank?
+
+(A) $20$  (B) $21$  (C) $23$  (D) $24$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-13": { s: String.raw`Buzz Bunny is hopping up and down a set of stairs, one step at a time. In how many ways can Buzz start on the ground, make a sequence of $6$ hops, and end up back on the ground? (For example, one sequence of hops is up-up-down-down-up-down.)
+
+(A) $4$  (B) $5$  (C) $6$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-14": { s: String.raw`The one-way routes connecting towns $A,$ $M,$ $C,$ $X,$ $Y,$ and $Z$ are shown in the figure below (not drawn to scale). The distances in kilometers along each route are marked. Traveling along these routes, what is the shortest distance from $A$ to $Z$ in kilometers?
+
+@@fig:amc8/2024/14.svg@@
+
+(A) $28$  (B) $29$  (C) $30$  (D) $31$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-15": { s: String.raw`Let the letters $F,$ $L,$ $Y,$ $B,$ $U,$ $G$ represent distinct digits. Suppose $\text{FLYFLY}$ is the greatest number that satisfies the equation$$ 8 \cdot \text{FLYFLY} = \text{BUGBUG}. $$What is the value of $\text{FLY} + \text{BUG}?$
+
+(A) $1089$  (B) $1098$  (C) $1107$  (D) $1116$  (E) $1125$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-16": { s: String.raw`Minh enters the numbers $1$ through $81$ into the cells of a $9 \times 9$ grid in some order. She calculates the product of the numbers in each row and column. What is the least number of rows and columns that could have a product divisible by $3?$
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-17": { s: String.raw`A chess king is said to attack all the squares one step away from it, horizontally, vertically, or diagonally. For instance, a king on the center square of a $3 \times 3$ grid attacks all $8$ other squares, as shown below. Suppose a white king and a black king are placed on different squares of a $3 \times 3$ grid so that they do not attack each other. In how many ways can this be done?
+
+@@fig:amc8/2024/17.svg@@
+
+(A) $20$  (B) $24$  (C) $27$  (D) $28$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-18": { s: String.raw`Three concentric circles centered at $O$ have radii of $1,$ $2,$ and $3.$ Points $B$ and $C$ lie on the largest circle. The region between the two smaller circles is shaded, as is the portion of the region between the two larger circles bounded by central angle $BOC,$ as shown in the figure below. Suppose the shaded and unshaded regions are equal in area. What is the measure of $\angle BOC$ in degrees?
+
+@@fig:amc8/2024/18.svg@@
+
+(A) $108$  (B) $120$  (C) $135$  (D) $144$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-19": { s: String.raw`Jordan owns $15$ pairs of sneakers. Three fifths of the pairs are red and the rest are white. Two thirds of the pairs are high-top and the rest are low-top. The red high-top sneakers make up a fraction of the collection. What is the least possible value of this fraction?
+
+(A) $0$  (B) $\dfrac{1}{5}$  (C) $\dfrac{4}{15}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{2}{5}$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-2": { s: String.raw`What is the value of this expression in decimal form?$$ \frac{44}{11} + \frac{110}{44} + \frac{44}{1100} $$(A) $6.4$  (B) $6.504$  (C) $6.54$  (D) $6.9$  (E) $6.94$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-20": { s: String.raw`Any three vertices of the cube $PQRSTUVW,$ shown in the figure below, can be connected to form a triangle. (For example, vertices $P,$ $Q,$ and $R$ can be connected to form isosceles $\bigtriangleup PQR.$) How many of these triangles are equilateral and contain $P$ as a vertex?
+
+@@fig:amc8/2024/20.svg@@
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-21": { s: String.raw`A group of frogs (called an army) is living in a tree. A frog turns green when in the shade and turns yellow when in the sun. Initially, the ratio of green to yellow frogs was $3 : 1.$ Then $3$ green frogs moved to the sunny side and $5$ yellow frogs moved to the shady side. Now the ratio is $4 : 1.$ What is the difference between the number of green frogs and yellow frogs now?
+
+(A) $10$  (B) $12$  (C) $16$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-22": { s: String.raw`A roll of tape is $4$ inches in diameter and is wrapped around a ring that is $2$ inches in diameter. A cross section of the tape is shown in the figure below. The tape is $0.015$ inches thick. If the tape is completely unrolled, approximately how long would it be? Round your answer to the nearest $100$ inches.
+
+@@fig:amc8/2024/22.svg@@
+
+(A) $300$  (B) $600$  (C) $1200$  (D) $1500$  (E) $1800$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-23": { s: String.raw`Rodrigo has a very large piece of graph paper. First he draws a line segment connecting point $(0, 4)$ to point $(2, 0)$ and colors the $4$ cells whose interiors intersect the segment, as shown below. Next, Rodrigo draws a line segment connecting point $(2000, 3000)$ to point $(5000, 8000).$ Again he colors the cells whose interiors intersect the segment. How many cells will he color this time?
+
+@@fig:amc8/2024/23.svg@@
+
+(A) $6000$  (B) $6500$  (C) $7000$  (D) $7500$  (E) $8000$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-24": { s: String.raw`Jean made a piece of stained glass art in the shape of two mountains, as shown in the figure below. One mountain peak is $8$ feet high and the other peak is $12$ feet high. Each peak forms a $90^\circ$ angle, and the straight sides of the mountains form $45^\circ$ angles with the ground. The artwork has an area of $183$ square feet. The sides of the mountains meet at an intersection point near the center of the artwork, $h$ feet above the ground. What is the value of $h?$
+
+@@fig:amc8/2024/24.svg@@
+
+(A) $4$  (B) $5$  (C) $4\sqrt{2}$  (D) $6$  (E) $5\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-25": { s: String.raw`A small airplane has $4$ rows of seats with $3$ seats in each row. Eight passengers have boarded the plane and are distributed randomly among the seats. A married couple is next to board. What is the probability there will be $2$ adjacent seats in the same row for the couple?
+
+@@fig:amc8/2024/25.svg@@
+
+(A) $\dfrac{8}{15}$  (B) $\dfrac{32}{55}$  (C) $\dfrac{20}{33}$  (D) $\dfrac{34}{55}$  (E) $\dfrac{8}{11}$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-3": { s: String.raw`Four squares of side length $4,$ $7,$ $9,$ and $10$ units are arranged in increasing size order so that their left edges and bottom edges align. The squares alternate shaded and unshaded, as shown in the figure. What is the area of the visible shaded region in square units?
+
+@@fig:amc8/2024/3.svg@@
+
+(A) $42$  (B) $45$  (C) $49$  (D) $50$  (E) $52$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-4": { s: String.raw`When Yunji added all the integers from $1$ to $9,$ she mistakenly left out a number. Her incorrect sum turned out to be a square number. Which number did Yunji leave out?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-5": { s: String.raw`Aaliyah rolls two standard $6$-sided dice. She notices that the product of the two numbers rolled is a multiple of $6.$ Which of the following integers cannot be the sum of the two numbers?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-6": { s: String.raw`Sergei skated around an ice rink, gliding along different paths. The marked lines in the figures below show four of the paths labeled P, Q, R, and S. What is the sorted order of the four paths from shortest to longest?
+
+@@fig:amc8/2024/6.svg@@
+
+(A) P, Q, R, S  (B) P, R, S, Q  (C) Q, S, P, R  (D) R, P, S, Q  (E) R, S, P, Q`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-7": { s: String.raw`A $3 \times 7$ rectangle is covered without overlap by $3$ shapes of tiles: $2 \times 2,$ $1 \times 4,$ and $1 \times 1,$ shown below. What is the minimum possible number of $1 \times 1$ tiles used?
+
+@@fig:amc8/2024/7.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-8": { s: String.raw`On Monday Taye has $\$2.$ Every day, he either gains $\$3$ or doubles the amount of money he had on the previous day. How many different dollar amounts could Taye have on Thursday, $3$ days later?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
+"2024-amc-8-9": { s: String.raw`All of the marbles in Maria’s collection are red, green, or blue. Maria has half as many red marbles as green marbles and twice as many blue marbles as green marbles. Which of the following could be the total number of marbles in Maria’s collection?
+
+(A) $24$  (B) $25$  (C) $26$  (D) $27$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc8/2024" },
 });

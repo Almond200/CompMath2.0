@@ -35,4 +35,277 @@ It is found that $x_1 = y_2,$ $x_2 = y_1,$ $x_3 = y_4,$ $x_4 = y_5,$ and $x_5 = 
 "2001-aime-ii-7": { s: String.raw`Let $\triangle PQR$ be a right triangle with $PQ = 90,$ $PR = 120,$ and $QR = 150.$ Let $C_1$ be the inscribed circle. Construct $\overline{ST},$ with $S$ on $\overline{PR}$ and $T$ on $\overline{QR},$ such that $\overline{ST}$ is perpendicular to $\overline{PR}$ and tangent to $C_1.$ Construct $\overline{UV}$ with $U$ on $\overline{PQ}$ and $V$ on $\overline{QR}$ such that $\overline{UV}$ is perpendicular to $\overline{PQ}$ and tangent to $C_1.$ Let $C_2$ be the inscribed circle of $\triangle RST$ and $C_3$ the inscribed circle of $\triangle QUV.$ The distance between the centers of $C_2$ and $C_3$ can be written as $\sqrt{10n}.$ What is $n?$`, u: "https://live.poshenloh.com/past-contests/aime/2001II" },
 "2001-aime-ii-8": { s: String.raw`A certain function $f$ has the properties that $f(3x) = 3f(x)$ for all positive real values of $x,$ and that $f(x) = 1 - |x - 2|$ for $1 \le x \le 3.$ Find the smallest $x$ for which $f(x) = f(2001).$`, u: "https://live.poshenloh.com/past-contests/aime/2001II" },
 "2001-aime-ii-9": { s: String.raw`Each unit square of a $3$-by-$3$ unit-square grid is to be colored either blue or red. For each square, either color is equally likely to be used. The probability of obtaining a grid that does not have a $2$-by-$2$ red square is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2001II" },
+"2001-amc-10-1": { s: String.raw`The median of the list$$n,\ n+3,\ n+4,\ n+5,\ n+6, \ n+8,\ n+10,\ n+12,\ n+15$$is $10.$ What is the mean?
+
+(A) $4$  (B) $6$  (C) $7$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-10": { s: String.raw`If $x,$ $y,$ and $z$ are positive with $xy=24,$ $xz=48,$ and $yz=72,$ then $x+y+z$ is
+
+(A) $18$  (B) $19$  (C) $20$  (D) $22$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-11": { s: String.raw`Consider the dark square in an array of unit squares, part of which is shown. The first ring of squares around this center square contains $8$ unit squares. The second ring contains $16$ unit squares. If we continue this process, the number of unit squares in the $100$th ring is
+
+@@fig:amc10/2001/11.svg@@
+
+(A) $396$  (B) $404$  (C) $800$  (D) $10{,}000$  (E) $10{,}404$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-12": { s: String.raw`Suppose that $n$ is the product of three consecutive integers and that $n$ is divisible by $7.$ Which of the following is not necessarily a divisor of $n?$
+
+(A) $6$  (B) $14$  (C) $21$  (D) $28$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-13": { s: String.raw`A telephone number has the form $ABC-DEF-GHIJ,$ where each letter represents a different digit. The digits in each part of the number are in decreasing order; that is, $A\gt B\gt C,$ $D\gt E\gt F,$ and $G\gt H\gt I\gt J.$ Furthermore, $D,$ $E,$ and $F$ are consecutive even digits; $G,$ $H,$ $I,$ and $J$ are consecutive odd digits; and $A+B+C=9.$ Find $A.$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-14": { s: String.raw`A charity sells $140$ benefit tickets for a total of $\$2001.$ Some tickets sell for full price (a whole dollar amount), and the rest sell for half price. How much money is raised by the full-price tickets?
+
+(A) $\$782$  (B) $\$986$  (C) $\$1158$  (D) $\$1219$  (E) $\$1449$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-15": { s: String.raw`A street has parallel curbs $40$ feet apart. A crosswalk bounded by two parallel stripes crosses the street at an angle. The length of the curb between the stripes is $15$ feet and each stripe is $50$ feet long. Find the distance, in feet, between the stripes.
+
+(A) $9$  (B) $10$  (C) $12$  (D) $15$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-16": { s: String.raw`The mean of three numbers is $10$ more than the least of the numbers and $15$ less than the greatest. The median of the three numbers is $5.$ What is their sum?
+
+(A) $5$  (B) $20$  (C) $25$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-17": { s: String.raw`Which of the cones below can be formed from a $252^\circ$ sector of a circle of radius $10$ by aligning the two straight sides?
+
+@@fig:amc10/2001/17.svg@@
+
+(A) @@ci:amc10/2001/17a.svg|8rem@@  (B) @@ci:amc10/2001/17b.svg|8rem@@  (C) @@ci:amc10/2001/17c.svg|8rem@@  (D) @@ci:amc10/2001/17d.svg|8rem@@  (E) @@ci:amc10/2001/17e.svg|8rem@@`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-18": { s: String.raw`The plane is tiled by congruent squares and congruent pentagons as indicated. The percent of the plane that is enclosed by the pentagons is closest to
+
+@@fig:amc10/2001/18.svg@@
+
+(A) $50$  (B) $52$  (C) $54$  (D) $56$  (E) $58$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-19": { s: String.raw`Pat wants to buy four donuts from an ample supply of three types of donuts: glazed, chocolate, and powdered. How many different selections are possible?
+
+(A) $6$  (B) $9$  (C) $12$  (D) $15$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-2": { s: String.raw`A number $x$ is $2$ more than the product of its reciprocal and its additive inverse. In which interval does the number lie?
+
+(A) $-4 \le x \le -2$  (B) $-2 \lt x \le 0$  (C) $0 \lt x \le 2$  (D) $2 \lt x \le 4$  (E) $4 \lt x \le 6$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-20": { s: String.raw`A regular octagon is formed by cutting an isosceles right triangle from each of the corners of a square with sides of length $2000.$ What is the length of each side of the octagon?
+
+(A) $\dfrac13(2000)$  (B) $2000(\sqrt2-1)$  (C) $2000(2-\sqrt2)$  (D) $1000$  (E) $1000\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-21": { s: String.raw`A right circular cylinder with its diameter equal to its height is inscribed in a right circular cone. The cone has diameter $10$ and altitude $12,$ and the axes of the cylinder and cone coincide. Find the radius of the cylinder.
+
+(A) $\dfrac83$  (B) $\dfrac{30}{11}$  (C) $3$  (D) $\dfrac{25}{8}$  (E) $\dfrac72$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-22": { s: String.raw`In the magic square shown, the sums of the numbers in each row, column, and diagonal are the same. Five of these numbers are represented by $v,$ $w,$ $x,$ $y,$ and $z.$ Find $y+z.$
+
+@@fig:amc10/2001/22.svg@@
+
+(A) $43$  (B) $44$  (C) $45$  (D) $46$  (E) $47$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-23": { s: String.raw`A box contains exactly five chips, three red and two white. Chips are randomly removed one at a time without replacement until all the red chips are drawn or all the white chips are drawn. What is the probability that the last chip drawn is white?
+
+(A) $\dfrac{3}{10}$  (B) $\dfrac25$  (C) $\dfrac12$  (D) $\dfrac35$  (E) $\dfrac{7}{10}$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-24": { s: String.raw`In trapezoid $ABCD,$ $\overline{AB}$ and $\overline{CD}$ are perpendicular to $\overline{AD},$ with $AB+CD=BC,$ $AB\lt CD,$ and $AD=7.$ What is $AB\cdot CD?$
+
+(A) $12$  (B) $12.25$  (C) $12.5$  (D) $12.75$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-25": { s: String.raw`How many positive integers not exceeding $2001$ are multiples of $3$ or $4$ but not $5?$
+
+(A) $768$  (B) $801$  (C) $934$  (D) $1067$  (E) $1167$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-3": { s: String.raw`The sum of two numbers is $S.$ Suppose $3$ is added to each number and then each of the resulting numbers is doubled. What is the sum of the final two numbers?
+
+(A) $2S+3$  (B) $3S+2$  (C) $3S+6$  (D) $2S+6$  (E) $2S+12$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-4": { s: String.raw`What is the maximum number of possible points of intersection of a circle and a triangle?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-5": { s: String.raw`How many of the twelve pentominoes pictured below have at least one line of symmetry?
+
+@@fig:amc10/2001/5.svg@@
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-6": { s: String.raw`Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits of the integer $n.$ For example, $P(23)=6$ and $S(23)=5.$ Suppose $N$ is a two-digit number such that $N=P(N)+S(N).$ What is the units digit of $N?$
+
+(A) $2$  (B) $3$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-7": { s: String.raw`When the decimal point of a certain positive decimal number is moved four places to the right, the new number is four times the reciprocal of the original number. What is the original number?
+
+(A) $0.0002$  (B) $0.002$  (C) $0.02$  (D) $0.2$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-8": { s: String.raw`Wanda, Darren, Beatrice, and Chi are tutors in the school math lab. Their schedule is as follows: Darren works every third school day, Wanda works every fourth school day, Beatrice works every sixth school day, and Chi works every seventh school day. Today they are all working in the math lab. In how many school days from today will they next be together tutoring in the lab?
+
+(A) $42$  (B) $84$  (C) $126$  (D) $178$  (E) $252$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-10-9": { s: String.raw`The state income tax where Kristin lives is levied at the rate of $p\%$ of the first $\$28000$ of annual income plus $(p+2)\%$ of any amount above $\$28000.$ Kristin noticed that the state income tax she paid amounted to $(p+0.25)\%$ of her annual income. What was her annual income?
+
+(A) $\$28000$  (B) $\$32000$  (C) $\$35000$  (D) $\$42000$  (E) $\$56000$`, u: "https://live.poshenloh.com/past-contests/amc10/2001" },
+"2001-amc-12-1": { s: String.raw`The sum of two numbers is $S.$ Suppose $3$ is added to each number and then each of the resulting numbers is doubled. What is the sum of the final two numbers?
+
+(A) $2S + 3$  (B) $3S + 2$  (C) $3S + 6$  (D) $2S + 6$  (E) $2S + 12$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-10": { s: String.raw`The plane is tiled by congruent squares and congruent pentagons as indicated. The percent of the plane that is enclosed by the pentagons is closest to
+
+@@fig:amc12/2001/10.svg@@
+
+(A) $50$  (B) $52$  (C) $54$  (D) $56$  (E) $58$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-11": { s: String.raw`A box contains exactly five chips, three red and two white. Chips are randomly removed one at a time without replacement until all the red chips are drawn or all the white chips are drawn. What is the probability that the last chip drawn is white?
+
+(A) $\dfrac{3}{10}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{3}{5}$  (E) $\dfrac{7}{10}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-12": { s: String.raw`How many positive integers not exceeding $2001$ are multiples of $3$ or $4$ but not $5?$
+
+(A) $768$  (B) $801$  (C) $934$  (D) $1067$  (E) $1167$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-13": { s: String.raw`The parabola with equation $y = ax^2 + bx + c$ and vertex $(h, k)$ is reflected about the line $y = k.$ This results in the parabola with equation $y = dx^2 + ex + f.$ Which of the following equals $a + b + c + d + e + f?$
+
+(A) $2b$  (B) $2c$  (C) $2a + 2b$  (D) $2h$  (E) $2k$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-14": { s: String.raw`Given the nine-sided regular polygon $A_1 A_2 A_3 A_4 A_5 A_6 A_7 A_8 A_9,$ how many distinct equilateral triangles in the plane of the polygon have at least two vertices in the set $\{A_1, A_2, \ldots, A_9\}?$
+
+(A) $30$  (B) $36$  (C) $63$  (D) $66$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-15": { s: String.raw`An insect lives on the surface of a regular tetrahedron with edges of length $1.$ It wishes to travel on the surface of the tetrahedron from the midpoint of one edge to the midpoint of the opposite edge. What is the length of the shortest such trip? (Note: Two edges of a tetrahedron are opposite if they have no common endpoint.)
+
+@@fig:amc12/2001/15.svg@@
+
+(A) $\dfrac{1}{2}\sqrt{3}$  (B) $1$  (C) $\sqrt{2}$  (D) $\dfrac{3}{2}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-16": { s: String.raw`A spider has one sock and one shoe for each of its eight legs. In how many different orders can the spider put on its socks and shoes, assuming that, on each leg, the sock must be put on before the shoe?
+
+(A) $8!$  (B) $2^8\, 8!$  (C) $(8!)^2$  (D) $\dfrac{16!}{2^8}$  (E) $16!$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-17": { s: String.raw`A point $P$ is selected at random from the interior of the pentagon with vertices $A = (0, 2),$ $B = (4, 0),$ $C = (2\pi + 1, 0),$ $D = (2\pi + 1, 4),$ and $E = (0, 4).$ What is the probability that $\angle APB$ is obtuse?
+
+@@fig:amc12/2001/17.svg@@
+
+(A) $\dfrac{1}{5}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{5}{16}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-18": { s: String.raw`A circle centered at $A$ with a radius of $1$ and a circle centered at $B$ with a radius of $4$ are externally tangent. A third circle is tangent to the first two and to one of their common external tangents as shown. The radius of the third circle is
+
+@@fig:amc12/2001/18.svg@@
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{5}{12}$  (D) $\dfrac{4}{9}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-19": { s: String.raw`The polynomial $P(x) = x^3 + ax^2 + bx + c$ has the property that the mean of its zeros, the product of its zeros, and the sum of its coefficients are all equal. If the $y$-intercept of the graph of $y = P(x)$ is $2,$ what is $b?$
+
+(A) $-11$  (B) $-10$  (C) $-9$  (D) $1$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-2": { s: String.raw`Let $P(n)$ and $S(n)$ denote the product and the sum, respectively, of the digits of the integer $n.$ For example, $P(23) = 6$ and $S(23) = 5.$ Suppose $N$ is a two-digit number such that $N = P(N) + S(N).$ What is the units digit of $N?$
+
+(A) $2$  (B) $3$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-20": { s: String.raw`Points $A = (3, 9),$ $B = (1, 1),$ $C = (5, 3),$ and $D = (a, b)$ lie in the first quadrant and are the vertices of quadrilateral $ABCD.$ The quadrilateral formed by joining the midpoints of $\overline{AB},$ $\overline{BC},$ $\overline{CD},$ and $\overline{DA}$ is a square. What is the sum of the coordinates of point $D?$
+
+(A) $7$  (B) $9$  (C) $10$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-21": { s: String.raw`Four positive integers $a,$ $b,$ $c,$ and $d$ have a product of $8!$ and satisfy$$ab + a + b = 524,$$$$bc + b + c = 146,$$$$cd + c + d = 104.$$What is $a - d?$
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-22": { s: String.raw`In rectangle $ABCD,$ points $F$ and $G$ lie on $\overline{AB}$ so that $AF = FG = GB$ and $E$ is the midpoint of $\overline{DC}.$ Also, $\overline{AC}$ intersects $\overline{EF}$ at $H$ and $\overline{EG}$ at $J.$ The area of rectangle $ABCD$ is $70.$ Find the area of triangle $EHJ.$
+
+@@fig:amc12/2001/22.svg@@
+
+(A) $\dfrac{5}{2}$  (B) $\dfrac{35}{12}$  (C) $3$  (D) $\dfrac{7}{2}$  (E) $\dfrac{35}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-23": { s: String.raw`A polynomial of degree four with leading coefficient $1$ and integer coefficients has two real zeros, both of which are integers. Which of the following can also be a zero of the polynomial?
+
+(A) $\dfrac{1 + i\sqrt{11}}{2}$  (B) $\dfrac{1 + i}{2}$  (C) $\dfrac{1}{2} + i$  (D) $1 + \dfrac{i}{2}$  (E) $\dfrac{1 + i\sqrt{13}}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-24": { s: String.raw`In triangle $ABC,$ $\angle ABC = 45^\circ.$ Point $D$ is on $\overline{BC}$ so that $2 \cdot BD = CD$ and $\angle DAB = 15^\circ.$ Find $\angle ACB.$
+
+@@fig:amc12/2001/24.svg@@
+
+(A) $54^\circ$  (B) $60^\circ$  (C) $72^\circ$  (D) $75^\circ$  (E) $90^\circ$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-25": { s: String.raw`Consider sequences of positive real numbers of the form $x,$ $2000,$ $y,$ $\ldots,$ in which every term after the first is $1$ less than the product of its two immediate neighbors. For how many different values of $x$ does the term $2001$ appear somewhere in the sequence?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) more than $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-3": { s: String.raw`The state income tax where Kristin lives is levied at the rate of $p\%$ of the first $\$28000$ of annual income plus $(p + 2)\%$ of any amount above $\$28000.$ Kristin noticed that the state income tax she paid amounted to $(p + 0.25)\%$ of her annual income. What was her annual income?
+
+(A) $\$28000$  (B) $\$32000$  (C) $\$35000$  (D) $\$42000$  (E) $\$56000$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-4": { s: String.raw`The mean of three numbers is $10$ more than the least of the numbers and $15$ less than the greatest. The median of the three numbers is $5.$ What is their sum?
+
+(A) $5$  (B) $20$  (C) $25$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-5": { s: String.raw`What is the product of all positive odd integers less than $10{,}000?$
+
+(A) $\dfrac{10000!}{(5000!)^2}$
+(B) $\dfrac{10000!}{2^{5000}}$
+(C) $\dfrac{9999!}{2^{5000}}$
+(D) $\dfrac{10000!}{2^{5000} \cdot 5000!}$
+(E) $\dfrac{5000!}{2^{5000}}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-6": { s: String.raw`A telephone number has the form $ABC - DEF - GHIJ,$ where each letter represents a different digit. The digits in each part of the number are in decreasing order; that is, $A \gt B \gt C,$ $D \gt E \gt F,$ and $G \gt H \gt I \gt J.$ Furthermore, $D,$ $E,$ and $F$ are consecutive even digits; $G,$ $H,$ $I,$ and $J$ are consecutive odd digits; and $A + B + C = 9.$ Find $A.$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-7": { s: String.raw`A charity sells $140$ benefit tickets for a total of $\$2001.$ Some tickets sell for full price (a whole dollar amount), and the rest sell for half price. How much money is raised by the full-price tickets?
+
+(A) $\$782$  (B) $\$986$  (C) $\$1158$  (D) $\$1219$  (E) $\$1449$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-8": { s: String.raw`Which of the cones below can be formed from a $252^\circ$ sector of a circle of radius $10$ by aligning the two straight sides?
+
+@@fig:amc12/2001/8.svg@@
+
+(A) @@ci:amc12/2001/8A.svg|7rem@@  (B) @@ci:amc12/2001/8B.svg|7rem@@  (C) @@ci:amc12/2001/8C.svg|7rem@@  (D) @@ci:amc12/2001/8D.svg|7rem@@  (E) @@ci:amc12/2001/8E.svg|7rem@@`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-12-9": { s: String.raw`Let $f$ be a function satisfying $f(xy) = \dfrac{f(x)}{y}$ for all positive real numbers $x$ and $y.$ If $f(500) = 3,$ what is the value of $f(600)?$
+
+(A) $1$  (B) $2$  (C) $\dfrac{5}{2}$  (D) $3$  (E) $\dfrac{18}{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2001" },
+"2001-amc-8-1": { s: String.raw`Casey’s shop class is making a golf trophy. He has to paint $300$ dimples on a golf ball. If it takes him $2$ seconds to paint one dimple, how many minutes will he need to do his job?
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-10": { s: String.raw`A collector offers to buy state quarters for $2000\%$ of their face value. At that rate how much will Bryden get for his four state quarters?
+
+(A) $\$20$  (B) $\$50$  (C) $\$200$  (D) $\$500$  (E) $\$2000$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-11": { s: String.raw`Points $A,$ $B,$ $C$ and $D$ have these coordinates: $A(3,2),$ $B(3,-2),$ $C(-3,-2)$ and $D(-3,0).$ What is the area of quadrilateral $ABCD?$
+
+(A) $12$  (B) $15$  (C) $18$  (D) $21$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-12": { s: String.raw`If$$a \otimes b = \dfrac{a + b}{a - b},$$then$$(6 \otimes 4) \otimes 3 =$$(A) $4$  (B) $13$  (C) $15$  (D) $30$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-13": { s: String.raw`Of the $36$ students in Richelle’s class, $12$ prefer chocolate pie, $8$ prefer apple, and $6$ prefer blueberry. Half of the remaining students prefer cherry pie and half prefer lemon. For Richelle’s pie graph showing this data, how many degrees should she use for cherry pie?
+
+(A) $10$  (B) $20$  (C) $30$  (D) $50$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-14": { s: String.raw`Tyler has entered a buffet line in which he chooses one kind of meat, two different vegetables and one dessert. If the order of food items is not important, how many different meals might he choose?
+
+Meat: beef, chicken, pork
+
+Vegetables: baked beans, corn, potatoes, tomatoes
+
+Dessert: brownies, chocolate cake, chocolate pudding, ice cream
+
+(A) $4$  (B) $24$  (C) $72$  (D) $80$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-15": { s: String.raw`Homer began peeling a pile of $44$ potatoes at the rate of $3$ potatoes per minute. Four minutes later Christen joined him and peeled at the rate of $5$ potatoes per minute. When they finished, how many potatoes had Christen peeled?
+
+(A) $20$  (B) $24$  (C) $32$  (D) $33$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-16": { s: String.raw`A square piece of paper, $4$ inches on a side, is folded in half vertically. Both layers are then cut in half parallel to the fold. Three new rectangles are formed, a large one and two small ones. What is the ratio of the perimeter of one of the small rectangles to the perimeter of the large rectangle?
+
+@@fig:amc8/2001/16.svg@@
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{4}{5}$  (E) $\dfrac{5}{6}$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-17": { s: String.raw`For the game show Who Wants To Be a Millionaire? the dollar values of each question are shown in the following table (where $\text{K}=1000$).$$ \begin{array}{ccccc} \boldsymbol{\#} & 1 & 2 & 3 \\ \boldsymbol{\$} & 100 & 200 & 300 \end{array} $$$$ \begin{array}{cccccc} 4 & 5 & 6 & 7 & 8 \\ 500 & 1\text{K} & 2\text{K} & 4\text{K} & 8\text{K} \end{array} $$$$ \begin{array}{ccccc} 9 & 10 & 11 & 12 \\ 16\text{K} & 32\text{K} & 64\text{K} & 125\text{K} \end{array} $$$$ \begin{array}{ccc} 13 & 14 & 15 \\ 250\text{K} & 500\text{K} & 1000\text{K} \end{array} $$Between which two questions is the percent increase of the value the smallest?
+
+(A) From $1$ to $2$  (B) From $2$ to $3$  (C) From $3$ to $4$  (D) From $11$ to $12$  (E) From $14$ to $15$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-18": { s: String.raw`Two dice are thrown. What is the probability that the product of the two numbers is a multiple of $5?$
+
+(A) $\dfrac{1}{36}$  (B) $\dfrac{1}{18}$  (C) $\dfrac{1}{6}$  (D) $\dfrac{11}{36}$  (E) $\dfrac{1}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-19": { s: String.raw`Car $M$ traveled at a constant speed for a given time. This is shown by the dashed line. Car $N$ traveled at twice the speed for the same distance. If Car $N$’s speed and time are shown as a solid line, which graph illustrates this?
+
+(A) @@ci:amc8/2001/19_A.svg|12rem@@
+(B) @@ci:amc8/2001/19_B.svg|12rem@@
+(C) @@ci:amc8/2001/19_C.svg|12rem@@
+(D) @@ci:amc8/2001/19_D.svg|12rem@@
+(E) @@ci:amc8/2001/19_E.svg|12rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-2": { s: String.raw`I’m thinking of two whole numbers. Their product is $24$ and their sum is $11.$ What is the larger number?
+
+(A) $3$  (B) $4$  (C) $6$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-20": { s: String.raw`Kaleana shows her test score to Quay, Marty and Shana, but the others keep theirs hidden. Quay thinks, “At least two of us have the same score.” Marty thinks, “I didn’t get the lowest score.” Shana thinks, “I didn’t get the highest score.” List the scores from lowest to highest for Marty ($\text{M}$), Quay ($\text{Q}$) and Shana ($\text{S}$).
+
+(A) $\text{S,Q,M}$  (B) $\text{Q,M,S}$  (C) $\text{Q,S,M}$  (D) $\text{M,S,Q}$  (E) $\text{S,M,Q}$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-21": { s: String.raw`The mean of a set of five different positive integers is $15.$ The median is $18.$ The maximum possible value of the largest of these five integers is
+
+(A) $19$  (B) $24$  (C) $32$  (D) $35$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-22": { s: String.raw`On a twenty-question test, each correct answer is worth $5$ points, each unanswered question is worth $1$ point and each incorrect answer is worth $0$ points. Which of the following scores is NOT possible?
+
+(A) $90$  (B) $91$  (C) $92$  (D) $95$  (E) $97$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-23": { s: String.raw`Points $R,$ $S$ and $T$ are vertices of an equilateral triangle, and points $X,$ $Y$ and $Z$ are midpoints of its sides. How many noncongruent triangles can be drawn using any three of these six points as vertices?
+
+@@fig:amc8/2001/23.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-24": { s: String.raw`Each half of this figure is composed of $3$ red triangles, $5$ blue triangles and $8$ white triangles. When the upper half is folded down over the centerline, $2$ pairs of red triangles coincide, as do $3$ pairs of blue triangles. There are $2$ red-white pairs. How many white pairs coincide?
+
+@@fig:amc8/2001/24.svg@@
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-25": { s: String.raw`There are $24$ four-digit whole numbers that use each of the four digits $2,$ $4,$ $5,$ and $7$ exactly once. Only one of these four-digit numbers is a multiple of another one. Which of the following is it?
+
+(A) $5724$  (B) $7245$  (C) $7254$  (D) $7425$  (E) $7542$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-3": { s: String.raw`Granny Smith has $\$63.$ Elberta has $\$2$ more than Anjou and Anjou has one-third as much as Granny Smith. How many dollars does Elberta have?
+
+(A) $17$  (B) $18$  (C) $19$  (D) $21$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-4": { s: String.raw`The digits $1,$ $2,$ $3,$ $4,$ and $9$ are each used once to form the smallest possible even five-digit number. The digit in the tens place is
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-5": { s: String.raw`On a dark and stormy night Snoopy suddenly saw a flash of lightning. Ten seconds later he heard the sound of thunder. The speed of sound is $1088$ feet per second and one mile is $5280$ feet. Estimate, to the nearest half-mile, how far Snoopy was from the flash of lightning.
+
+(A) $1$  (B) $1\frac{1}{2}$  (C) $2$  (D) $2\frac{1}{2}$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-6": { s: String.raw`Six trees are equally spaced along one side of a straight road. The distance from the first tree to the fourth is $60$ feet. What is the distance in feet between the first and last trees?
+
+(A) $90$  (B) $100$  (C) $105$  (D) $120$  (E) $140$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-7": { s: String.raw`Problems $7,$ $8,$ and $9$ are about these kites.
+
+To promote her school’s annual Kite Olympics, Genevieve makes a small kite and a large kite for a bulletin board display. The kites look like the one in the diagram. For her small kite Genevieve draws the kite on a one-inch grid. For the large kite she triples both the height and width of the entire grid.
+
+@@fig:amc8/2001/bg.svg@@
+
+What is the number of square inches in the area of the small kite?
+
+(A) $21$  (B) $22$  (C) $23$  (D) $24$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-8": { s: String.raw`Genevieve puts bracing on her large kite in the form of a cross connecting opposite corners of the kite. How many inches of bracing material does she need?
+
+(A) $30$  (B) $32$  (C) $35$  (D) $38$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
+"2001-amc-8-9": { s: String.raw`The large kite is covered with gold foil. The foil is cut from a rectangular piece that just covers the entire grid. How many square inches of waste material are cut off from the four corners?
+
+(A) $63$  (B) $72$  (C) $180$  (D) $189$  (E) $264$`, u: "https://live.poshenloh.com/past-contests/amc8/2001" },
 });

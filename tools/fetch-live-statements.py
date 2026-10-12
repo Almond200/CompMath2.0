@@ -37,12 +37,15 @@ def get(url, binary=False):
 
 def contest_key(ref):
     """'2019 AMC 12A, Problem 17' -> ('amc12', '2019A', 17, slug)"""
-    m = re.match(r"(\d{4})\s+(AIME II|AIME I|AIME|AMC 10A|AMC 10B|AMC 12A|AMC 12B),\s*Problem\s+(\d+)$", ref)
+    m = re.match(r"(\d{4})\s+(?:Spring\s+)?(AIME II|AIME I|AIME|AMC 10A|AMC 10B|AMC 12A|AMC 12B|AMC 10|AMC 12|AMC 8|AJHSME),\s*Problem\s+(\d+)$", ref)
     if not m: return None
     year, fam, n = m.group(1), m.group(2), int(m.group(3))
     if fam.startswith("AIME"): c, y = "aime", year + fam[4:].strip()
+    elif fam in ("AMC 8", "AJHSME"): c, y = "amc8", year       # the AJHSME (1985 to 1998) became the AMC 8
+    elif fam in ("AMC 10", "AMC 12"): c, y = fam[:3].lower() + fam[4:6], year   # 2000 and 2001 were single sittings, no A or B
     else: c, y = fam[:3].lower() + fam[4:6], year + fam[-1]
-    slug = "%s-%s-%d" % (year, re.sub(r"[^a-z0-9]+", "-", fam.lower()).strip("-"), n)
+    spring = "spring-" if re.match(r"\d{4}\s+Spring\s", ref) else ""
+    slug = "%s-%s%s-%d" % (year, spring, re.sub(r"[^a-z0-9]+", "-", fam.lower()).strip("-"), n)
     return c, y, n, slug
 
 def page_questions(c, y):
@@ -104,6 +107,9 @@ def tex(t):
     # \( \) and \[ \] are the delimiters; a doubled backslash before ( or [ is a line break, not one.
     # LIVE sometimes shrinks a formula with \tiny or \small, which renders it unreadably small here.
     t = re.sub(r"\\(?:tiny|scriptsize|footnotesize|small)\b\s*", "", t)
+    # A dollar sign for money is written bare before the maths ("$\(1500\)"): make it part of the maths, and
+    # escape any other bare dollar sign, so it is never mistaken for a delimiter.
+    t = re.sub(r"(?<!\\)\$\s*\\\((.*?)(?<!\\)\\\)", lambda m: "$\\$" + m.group(1).strip() + "$", t, flags=re.S)
     t = re.sub(r"(?<!\\)\\\((.*?)(?<!\\)\\\)", lambda m: "$" + m.group(1).strip() + "$", t, flags=re.S)
     t = re.sub(r"(?<!\\)\\\[(.*?)(?<!\\)\\\]", lambda m: "$$" + unwrap_display(m.group(1)) + "$$", t, flags=re.S)
     return t
@@ -131,21 +137,53 @@ FIGURE_AS_TEX = {
     "amc10/2025A/19.svg": r"$$\begin{array}{ccccccccc} & & -1 & & \phantom{-}3 & & \phantom{-}1 & & \\[0.6em] & -1 & & \phantom{-}2 & & \phantom{-}4 & & \phantom{-}1 & \\[0.6em] -1 & & \phantom{-}1 & & \phantom{-}6 & & \phantom{-}5 & & \phantom{-}1 \end{array}$$",
 }
 
+# Statements LIVE does not carry, taken from the AoPS Wiki (2021 Fall AMC): written into the year file on every run.
+MANUAL_STATEMENTS = {
+    "2021-fall-amc-10b-11": {"s": r"""A regular hexagon of side length $1$ is inscribed in a circle. Each minor arc of the circle determined by a side of the hexagon is reflected over that side. What is the area of the region bounded by these $6$ reflected arcs?
+
+(A) $\frac{5\sqrt{3}}{2} - \pi$  (B) $3\sqrt{3}-\pi$  (C) $4\sqrt{3}-\frac{3\pi}{2}$  (D) $\pi - \frac{\sqrt{3}}{2}$  (E) $\frac{\pi + \sqrt{3}}{2}$""", "u": "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems/Problem_11"},
+    "2021-fall-amc-12b-23": {"s": r"""What is the average number of pairs of consecutive integers in a randomly selected subset of $5$ distinct integers chosen from the set $\{ 1, 2, 3, \ldots, 30\}$? (For example the set $\{1, 17, 18, 19, 30\}$ has $2$ pairs of consecutive integers.)
+
+(A) $\frac{2}{3}$  (B) $\frac{29}{36}$  (C) $\frac{5}{6}$  (D) $\frac{29}{30}$  (E) $1$""", "u": "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_12B_Problems/Problem_23"},
+}
+
+# The Fall 2021 AMC 10A and 10B problems typed in from the PDFs Stanley supplied (tools/manual_statements.py).
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+from manual_statements import FALL_2021_PDF
+MANUAL_STATEMENTS.update({k: {"s": v[1], "u": v[0]} for k, v in FALL_2021_PDF.items()})
+
+# A figure Stanley replaced by hand: the statement points at the file kept in figures/ instead of LIVE's.
+FIGURE_FILE_OVERRIDE = {"amc10/2024B/25.svg": "amc10/2024B/25.png"}
+
 def statement(q, c, y, n, figs):
     t = q["question"] or ""
     def img(m):
         src = m.group(1)
         rel = re.sub(r"^/(?:images/past-contests/)?", "", src)
         if rel in FIGURE_AS_TEX: return FIGURE_AS_TEX[rel]
+        if rel in FIGURE_FILE_OVERRIDE: return "@@fig:%s@@" % FIGURE_FILE_OVERRIDE[rel]
         figs.append(src)
         return "@@fig:%s@@" % rel
     t = re.sub(r'<img[^>]*src="([^"]+)"[^>]*/?>', img, t)
     t = re.sub(r"<table.*?</table>", table, t, flags=re.S | re.I)
     t = re.sub(r"<br\s*/?>", "\n", t, flags=re.I)
+    # Subscripts and superscripts around maths ("CO<sub>\(2\)</sub>") become part of the maths; list items become bullet lines.
+    t = re.sub(r"<(sub|sup)>\s*(?:\\\()?(.*?)(?:\\\))?\s*</\1>", lambda m: "\\(%s{%s}\\)" % ("_" if m.group(1) == "sub" else "^", m.group(2).strip()), t, flags=re.S | re.I)
+    t = re.sub(r"\s*<li[^>]*>\s*", "\n\u2022 ", t, flags=re.I)
+    t = re.sub(r"</li>|</?[ou]l[^>]*>", "", t, flags=re.I)
     t = re.sub(r"</?(?:b|i|u|p|span|div|em|strong|center)[^>]*>", "", t, flags=re.I)
     t = html.unescape(t)
     t = tex(t).strip()
     ch = [(L, q.get(L.lower())) for L in "ABCDE"]
+    def chimg(v):
+        # An answer choice that is a picture: kept small, beside its letter, at the height LIVE gave it.
+        def one(m):
+            rel = re.sub(r"^/(?:images/past-contests/)?", "", m.group(1))
+            figs.append(m.group(1))
+            h = re.search(r"max-height:\s*([0-9.]+rem)", m.group(0))
+            return "@@ci:%s|%s@@" % (rel, h.group(1) if h else "4rem")
+        return re.sub(r'<img[^>]*src="([^"]+)"[^>]*/?>', one, v)
+    ch = [(L, chimg(v) if v else v) for L, v in ch]
     if all(v for _, v in ch):
         t += "\n\n" + "  ".join("(%s) %s" % (L, tex(v).strip()) for L, v in ch)
     t = choice_layout.layout(t)
@@ -154,7 +192,44 @@ def statement(q, c, y, n, figs):
     t = re.sub(r"[ \t]*\n*[ \t]*(\$\$.*?\$\$)[ \t]*\n*[ \t]*", lambda m: m.group(1), t, flags=re.S)
     return t.replace("${", "$ {")   # "${" would open a template substitution in the generated JS
 
+def discover():
+    """--all: find every AMC 8 (and AJHSME), AMC 10, and AMC 12 sitting LIVE publishes, and add the problems the
+    database lacks as text-only entries ({ ref, formulas: [] }): the statement is the point, the tags come later.
+    Sittings LIVE does not have are listed, never skipped silently."""
+    tp = os.path.join(ROOT, "tools", "aops-titles.json")
+    refs = json.load(open(tp)); have = {r["ref"] for r in refs}
+    sittings = [("amc8", str(y), "%d AMC 8" % y if y >= 1999 else "%d AJHSME" % y) for y in range(1985, 2026)]
+    for y in range(2000, 2026):
+        if y < 2002:      # the first two years each had one AMC 10 and one AMC 12 sitting, no A and B
+            sittings += [("amc10", str(y), "%d AMC 10" % y), ("amc12", str(y), "%d AMC 12" % y)]
+            continue
+        for ab in "AB":
+            sp = "Spring " if y == 2021 else ""     # 2021 had a Spring and a Fall AMC 10 and 12, each with an A and a B test; LIVE has the Spring ones
+            sittings += [("amc10", "%d%s" % (y, ab), "%d %sAMC 10%s" % (y, sp, ab)), ("amc12", "%d%s" % (y, ab), "%d %sAMC 12%s" % (y, sp, ab))]
+    added, lacking = [], []
+    for c, y, name in sittings:
+        try: qs = page_questions(c, y)
+        except Exception as e:
+            lacking.append("%s/%s (%s)" % (c, y, name)); continue
+        for n in range(1, len(qs) + 1):
+            ref = "%s, Problem %d" % (name, n)
+            if ref in have: continue
+            have.add(ref); added.append(ref)
+            refs.append({"ref": ref, "title": "%s_Problems/Problem_%d" % (name.replace(" Spring", "").replace(" ", "_"), n)})
+    json.dump(refs, open(tp, "w"), indent=1, ensure_ascii=False)
+    dbp = os.path.join(ROOT, "js", "data", "problems", "problem-db.js")
+    db = open(dbp, encoding="utf-8").read()
+    new = [r for r in added if '"%s"' % r not in db]
+    if new:
+        k = db.rstrip().rfind("];")
+        block = "\n  // ---- Text-only entries: every other AMC 8, AMC 10, and AMC 12 problem LIVE publishes. Statement now, tags later.\n" + "".join('  { ref: "%s", formulas: [] },\n' % r for r in new)
+        open(dbp, "w", encoding="utf-8").write(db[:k] + block.lstrip("\n") + db[k:])
+    print("problems added to the database: %d  | sittings LIVE lacks: %d" % (len(new), len(lacking)))
+    for l in lacking: print("  lacks:", l)
+    return lacking
+
 def main():
+    if "--all" in sys.argv: discover()
     refs = json.load(open(os.path.join(ROOT, "tools", "aops-titles.json")))
     todo = collections.defaultdict(list)
     for it in refs:
@@ -193,6 +268,7 @@ def main():
                  "// with the permission of the Mathematical Association of America. Problems (c) MAA, CC BY-NC-SA 4.0.",
                  "// Generated by tools/fetch-live-statements.py.",
                  "window.MATH_STATEMENTS = window.MATH_STATEMENTS || {};", "Object.assign(window.MATH_STATEMENTS, {"]
+        items.update({k: {"s": choice_layout.layout(v["s"]), "u": v["u"]} for k, v in MANUAL_STATEMENTS.items() if k[:4] == year})
         for slug, v in sorted(items.items()):
             lines.append('"%s": { s: String.raw`%s`, u: "%s" },' % (slug, v["s"], v["u"]))
         lines.append("});")

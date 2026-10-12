@@ -41,7 +41,421 @@ Object.assign(window.MATH_STATEMENTS, {
 
 Given that the total length of all lines drawn is exactly $2007$ units, let $N$ be the maximum possible number of basic rectangles determined. Find the remainder when $N$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2007II" },
 "2007-aime-ii-9": { s: String.raw`Rectangle $ABCD$ is given with $AB = 63$ and $BC = 448.$ Points $E$ and $F$ lie on $\overline{AD}$ and $\overline{BC}$ respectively, such that $AE = CF = 84.$ The inscribed circle of triangle $BEF$ is tangent to $\overline{EF}$ at point $P,$ and the inscribed circle of triangle $DEF$ is tangent to $\overline{EF}$ at point $Q.$ Find $PQ.$`, u: "https://live.poshenloh.com/past-contests/aime/2007II" },
+"2007-amc-10a-1": { s: String.raw`One ticket to a show costs $\$20$ at full price. Susan buys $4$ tickets using a coupon that gives her a $25\%$ discount. Pam buys $5$ tickets using a coupon that gives her a $30\%$ discount. How many more dollars does Pam pay than Susan?
+
+(A) $2$  (B) $5$  (C) $10$  (D) $15$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-10": { s: String.raw`The Dunbar family consists of a mother, a father, and some children. The average age of the members of the family is $20,$ the father is $48$ years old, and the average age of the mother and children is $16.$ How many children are in the family?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-11": { s: String.raw`The numbers from $1$ to $8$ are placed at the vertices of a cube in such a manner that the sum of the four numbers on each face is the same. What is this common sum?
+
+(A) $14$  (B) $16$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-12": { s: String.raw`Two tour guides are leading six tourists. The guides decide to split up. Each tourist must choose one of the guides, but with the stipulation that each guide must take at least one tourist. How many different groupings of guides and tourists are possible?
+
+(A) $56$  (B) $58$  (C) $60$  (D) $62$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-13": { s: String.raw`Yan is somewhere between his home and the stadium. To get to the stadium he can walk directly to the stadium, or else he can walk home and then ride his bicycle to the stadium. He rides $7$ times as fast as he walks, and both choices require the same amount of time. What is the ratio of Yan’s distance from his home to his distance from the stadium?
+
+(A) $\dfrac{2}{3}$  (B) $\dfrac{3}{4}$  (C) $\dfrac{4}{5}$  (D) $\dfrac{5}{6}$  (E) $\dfrac{6}{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-14": { s: String.raw`A triangle with side lengths in the ratio $3 : 4 : 5$ is inscribed in a circle of radius $3.$ What is the area of the triangle?
+
+(A) $8.64$  (B) $12$  (C) $5\pi$  (D) $17.28$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-15": { s: String.raw`Four circles of radius $1$ are each tangent to two sides of a square and externally tangent to a circle of radius $2,$ as shown. What is the area of the square?
+
+@@fig:amc10/2007A/15.svg@@
+
+(A) $32$  (B) $22 + 12\sqrt{2}$  (C) $16 + 16\sqrt{3}$  (D) $48$  (E) $36 + 16\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-16": { s: String.raw`Integers $a,$ $b,$ $c,$ and $d,$ not necessarily distinct, are chosen independently and at random from $0$ to $2007,$ inclusive. What is the probability that $ad - bc$ is even?
+
+(A) $\dfrac{3}{8}$  (B) $\dfrac{7}{16}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{5}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-17": { s: String.raw`Suppose that $m$ and $n$ are positive integers such that $75m = n^3.$ What is the minimum possible value of $m + n?$
+
+(A) $15$  (B) $30$  (C) $50$  (D) $60$  (E) $5700$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-18": { s: String.raw`Consider the $12$-sided polygon $ABCDEFGHIJKL,$ as shown. Each of its sides has length $4,$ and each two consecutive sides form a right angle. Suppose that $\overline{AG}$ and $\overline{CH}$ meet at $M.$ What is the area of quadrilateral $ABCM?$
+
+@@fig:amc10/2007A/18.svg@@
+
+(A) $\dfrac{44}{3}$  (B) $16$  (C) $\dfrac{88}{5}$  (D) $20$  (E) $\dfrac{62}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-19": { s: String.raw`A paint brush is swept along both diagonals of a square to produce the symmetric painted area, as shown. Half the area of the square is painted. What is the ratio of the side length of the square to the brush width?
+
+@@fig:amc10/2007A/19.svg@@
+
+(A) $2\sqrt{2} + 1$  (B) $3\sqrt{2}$  (C) $2\sqrt{2} + 2$  (D) $3\sqrt{2} + 1$  (E) $3\sqrt{2} + 2$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-2": { s: String.raw`Define $a@b = ab - b^2$ and $a\#b = a + b - ab^2.$ What is$$\dfrac{6@2}{6\#2}?$$(A) $-\dfrac{1}{2}$  (B) $-\dfrac{1}{4}$  (C) $\dfrac{1}{8}$  (D) $\dfrac{1}{4}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-20": { s: String.raw`Suppose that the number $a$ satisfies the equation $4 = a + a^{-1}.$ What is the value of $a^4 + a^{-4}?$
+
+(A) $164$  (B) $172$  (C) $192$  (D) $194$  (E) $212$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-21": { s: String.raw`A sphere is inscribed in a cube that has a surface area of $24$ square meters. A second cube is then inscribed within the sphere. What is the surface area in square meters of the inner cube?
+
+(A) $3$  (B) $6$  (C) $8$  (D) $9$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-22": { s: String.raw`A finite sequence of three-digit integers has the property that the tens and units digits of each term are, respectively, the hundreds and tens digits of the next term, and the tens and units digits of the last term are, respectively, the hundreds and tens digits of the first term. For example, such a sequence might begin with terms $247,$ $475,$ and $756$ and end with the term $824.$ Let $S$ be the sum of all the terms in the sequence. What is the largest prime number that always divides $S?$
+
+(A) $3$  (B) $7$  (C) $13$  (D) $37$  (E) $43$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-23": { s: String.raw`How many ordered pairs $(m, n)$ of positive integers, with $m \gt n,$ have the property that their squares differ by $96?$
+
+(A) $3$  (B) $4$  (C) $6$  (D) $9$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-24": { s: String.raw`Circles centered at $A$ and $B$ each have radius $2,$ as shown. Point $O$ is the midpoint of $\overline{AB},$ and $OA = 2\sqrt{2}.$ Segments $OC$ and $OD$ are tangent to the circles centered at $A$ and $B,$ respectively, and $\overline{EF}$ is a common tangent. What is the area of the shaded region $ECODF?$
+
+@@fig:amc10/2007A/24.svg@@
+
+(A) $\dfrac{8\sqrt{2}}{3}$  (B) $8\sqrt{2} - 4 - \pi$  (C) $4\sqrt{2}$  (D) $4\sqrt{2} + \dfrac{\pi}{8}$  (E) $8\sqrt{2} - 2 - \dfrac{\pi}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-25": { s: String.raw`For each positive integer $n,$ let $S(n)$ denote the sum of the digits of $n.$ For how many values of $n$ is $n + S(n) + S(S(n)) = 2007?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-3": { s: String.raw`An aquarium has a rectangular base that measures $100$ cm by $40$ cm and has a height of $50$ cm. It is filled with water to a height of $40$ cm. A brick with a rectangular base that measures $40$ cm by $20$ cm and a height of $10$ cm is placed in the aquarium. By how many centimeters does the water rise?
+
+(A) $0.5$  (B) $1$  (C) $1.5$  (D) $2$  (E) $2.5$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-4": { s: String.raw`The larger of two consecutive odd integers is three times the smaller. What is their sum?
+
+(A) $4$  (B) $8$  (C) $12$  (D) $16$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-5": { s: String.raw`A school store sells $7$ pencils and $8$ notebooks for $\$4.15.$ It also sells $5$ pencils and $3$ notebooks for $\$1.77.$ How much do $16$ pencils and $10$ notebooks cost?
+
+(A) $\$4.76$  (B) $\$5.84$  (C) $\$6.00$  (D) $\$6.16$  (E) $\$6.32$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-6": { s: String.raw`At Euclid High School, the number of students taking the AMC $10$ was $60$ in $2002,$ $66$ in $2003,$ $70$ in $2004,$ $76$ in $2005,$ $78$ in $2006,$ and is $85$ in $2007.$ Between what two consecutive years was there the largest percentage increase?
+
+(A) $2002$ and $2003$  (B) $2003$ and $2004$  (C) $2004$ and $2005$  (D) $2005$ and $2006$  (E) $2006$ and $2007$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-7": { s: String.raw`Last year Mr. John Q. Public received an inheritance. He paid $20\%$ in federal taxes on the inheritance, and paid $10\%$ of what he had left in state taxes. He paid a total of $\$10{,}500$ for both taxes. How many dollars was the inheritance?
+
+(A) $30{,}000$  (B) $32{,}500$  (C) $35{,}000$  (D) $37{,}500$  (E) $40{,}000$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-8": { s: String.raw`Triangles $ABC$ and $ADC$ are isosceles with $AB = BC$ and $AD = DC.$ Point $D$ is inside $\triangle ABC,$ $\angle ABC = 40^\circ,$ and $\angle ADC = 140^\circ.$ What is the degree measure of $\angle BAD?$
+
+(A) $20$  (B) $30$  (C) $40$  (D) $50$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10a-9": { s: String.raw`Real numbers $a$ and $b$ satisfy the equations $3^a = 81^{b+2}$ and $125^b = 5^{a-3}.$ What is $ab?$
+
+(A) $-60$  (B) $-17$  (C) $9$  (D) $12$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc10/2007A" },
+"2007-amc-10b-1": { s: String.raw`Isabella’s house has $3$ bedrooms. Each bedroom is $12$ feet long, $10$ feet wide, and $8$ feet high. Isabella must paint the walls of all the bedrooms. Doorways and windows, which will not be painted, occupy $60$ square feet in each bedroom. How many square feet of walls must be painted?
+
+(A) $678$  (B) $768$  (C) $786$  (D) $867$  (E) $876$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-10": { s: String.raw`Two points $B$ and $C$ are in a plane. Let $S$ be the set of all points $A$ in the plane for which $\triangle ABC$ has area $1.$ Which of the following describes $S?$
+
+(A) two parallel lines  (B) a parabola  (C) a circle  (D) a line segment  (E) two points`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-11": { s: String.raw`A circle passes through the three vertices of an isosceles triangle that has two sides of length $3$ and a base of length $2.$ What is the area of this circle?
+
+(A) $2\pi$  (B) $\dfrac{5}{2}\pi$  (C) $\dfrac{81}{32}\pi$  (D) $3\pi$  (E) $\dfrac{7}{2}\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-12": { s: String.raw`Tom’s age is $T$ years, which is also the sum of the ages of his three children. His age $N$ years ago was twice the sum of their ages then. What is $\frac{T}{N}?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-13": { s: String.raw`Two circles of radius $2$ are centered at $(2,0)$ and at $(0,2).$ What is the area of the intersection of the interiors of the two circles?
+
+(A) $\pi-2$  (B) $\dfrac{\pi}{2}$  (C) $\dfrac{\pi\sqrt3}{3}$  (D) $2(\pi-2)$  (E) $\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-14": { s: String.raw`Some boys and girls are having a car wash to raise money for a class trip to China. Initially $40\%$ of the group are girls. Shortly thereafter two girls leave and two boys arrive, and then $30\%$ of the group are girls. How many girls were initially in the group?
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-15": { s: String.raw`The angles of quadrilateral $ABCD$ satisfy $\angle A = 2\angle B = 3\angle C = 4\angle D.$ What is the degree measure of $\angle A,$ rounded to the nearest whole number?
+
+(A) $125$  (B) $144$  (C) $153$  (D) $173$  (E) $180$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-16": { s: String.raw`A teacher gave a test to a class in which $10\%$ of the students are juniors and $90\%$ are seniors. The average score on the test was $84.$ The juniors all received the same score, and the average score of the seniors was $83.$ What score did each of the juniors receive on the test?
+
+(A) $85$  (B) $88$  (C) $93$  (D) $94$  (E) $98$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-17": { s: String.raw`Point $P$ is inside equilateral $\triangle ABC.$ Points $Q,$ $R,$ and $S$ are the feet of the perpendiculars from $P$ to $\overline{AB},$ $\overline{BC},$ and $\overline{CA},$ respectively. Given that $PQ = 1,$ $PR = 2,$ and $PS = 3,$ what is $AB?$
+
+(A) $4$  (B) $3\sqrt3$  (C) $6$  (D) $4\sqrt3$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-18": { s: String.raw`A circle of radius $1$ is surrounded by $4$ circles of radius $r$ as shown. What is $r?$
+
+@@fig:amc10/2007B/18.svg@@
+
+(A) $\sqrt2$  (B) $1+\sqrt2$  (C) $\sqrt6$  (D) $3$  (E) $2+\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-19": { s: String.raw`The wheel shown is spun twice, and the randomly determined numbers opposite the pointer are recorded. The first number is divided by $4,$ and the second number is divided by $5.$ The first remainder designates a column, and the second remainder designates a row on the checkerboard shown. What is the probability that the pair of numbers designates a shaded square?
+
+@@fig:amc10/2007B/19.svg@@
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{4}{9}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{5}{9}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-2": { s: String.raw`Define the operation $\star$ by $a\star b = (a+b)b.$ What is $(3\star 5)-(5\star 3)?$
+
+(A) $-16$  (B) $-8$  (C) $0$  (D) $8$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-20": { s: String.raw`A set of $25$ square blocks is arranged into a $5\times 5$ square. How many different combinations of $3$ blocks can be selected from that set so that no two are in the same row or column?
+
+(A) $100$  (B) $125$  (C) $600$  (D) $2300$  (E) $3600$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-21": { s: String.raw`Right $\triangle ABC$ has $AB=3,$ $BC=4,$ and $AC=5.$ Square $XYZW$ is inscribed in $\triangle ABC$ with $X$ and $Y$ on $\overline{AC},$ $W$ on $\overline{AB},$ and $Z$ on $\overline{BC}.$ What is the side length of the square?
+
+@@fig:amc10/2007B/21.svg@@
+
+(A) $\dfrac{3}{2}$  (B) $\dfrac{60}{37}$  (C) $\dfrac{12}{7}$  (D) $\dfrac{23}{13}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-22": { s: String.raw`A player chooses one of the numbers $1$ through $4.$ After the choice has been made, two regular four-sided (tetrahedral) dice are rolled, with the sides of the dice numbered $1$ through $4.$ If the number chosen appears on the bottom of exactly one die after it is rolled, then the player wins $\$1.$ If the number chosen appears on the bottom of both of the dice, then the player wins $\$2.$ If the number chosen does not appear on the bottom of either of the dice, the player loses $\$1.$ What is the expected return to the player, in dollars, for one roll of the dice?
+
+(A) $-\dfrac{1}{8}$  (B) $-\dfrac{1}{16}$  (C) $0$  (D) $\dfrac{1}{16}$  (E) $\dfrac{1}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-23": { s: String.raw`A pyramid with a square base is cut by a plane that is parallel to its base and is $2$ units from the base. The surface area of the smaller pyramid that is cut from the top is half the surface area of the original pyramid. What is the altitude of the original pyramid?
+
+(A) $2$  (B) $2+\sqrt2$  (C) $1+2\sqrt2$  (D) $4$  (E) $4+2\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-24": { s: String.raw`Let $n$ denote the smallest positive integer that is divisible by both $4$ and $9,$ and whose base-$10$ representation consists of only $4$’s and $9$’s, with at least one of each. What are the last four digits of $n?$
+
+(A) $4444$  (B) $4494$  (C) $4944$  (D) $9444$  (E) $9944$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-25": { s: String.raw`How many pairs of positive integers $(a,b)$ are there such that $a$ and $b$ have no common factors greater than $1$ and$$\frac{a}{b}+\frac{14b}{9a}$$is an integer?
+
+(A) $4$  (B) $6$  (C) $9$  (D) $12$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-3": { s: String.raw`A college student drove his compact car $120$ miles home for the weekend and averaged $30$ miles per gallon. On the return trip the student drove his parents’ SUV and averaged only $20$ miles per gallon. What was the average gas mileage, in miles per gallon, for the round trip?
+
+(A) $22$  (B) $24$  (C) $25$  (D) $26$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-4": { s: String.raw`The point $O$ is the center of the circle circumscribed about $\triangle ABC,$ with $\angle BOC = 120^\circ$ and $\angle AOB = 140^\circ,$ as shown. What is the degree measure of $\angle ABC?$
+
+@@fig:amc10/2007B/4.svg@@
+
+(A) $35$  (B) $40$  (C) $45$  (D) $50$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-5": { s: String.raw`In a certain land, all Arogs are Brafs, all Crups are Brafs, all Dramps are Arogs, and all Crups are Dramps. Which of the following statements is implied by these facts?
+
+(A) All Dramps are Brafs and are Crups.
+(B) All Brafs are Crups and are Dramps.
+(C) All Arogs are Crups and are Dramps.
+(D) All Crups are Arogs and are Brafs.
+(E) All Arogs are Dramps and some Arogs may not be Crups.`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-6": { s: String.raw`The $2007$ AMC $10$ will be scored by awarding $6$ points for each correct response, $0$ points for each incorrect response, and $1.5$ points for each problem left unanswered. After looking over the $25$ problems, Sarah has decided to attempt the first $22$ and leave only the last $3$ unanswered. How many of the first $22$ problems must she solve correctly in order to score at least $100$ points?
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-7": { s: String.raw`All sides of the convex pentagon $ABCDE$ are of equal length, and $\angle A = \angle B = 90^\circ.$ What is the degree measure of $\angle E?$
+
+(A) $90$  (B) $108$  (C) $120$  (D) $144$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-8": { s: String.raw`On the trip home from the meeting where this AMC $10$ was constructed, the Contest Chair noted that his airport parking receipt had digits of the form $bbcac,$ where $0\le a\lt b\lt c\le 9,$ and $b$ was the average of $a$ and $c.$ How many different five-digit numbers satisfy all these properties?
+
+(A) $12$  (B) $16$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-10b-9": { s: String.raw`A cryptographic code is designed as follows. The first time a letter appears in a given message it is replaced by the letter that is $1$ place to its right in the alphabet (assuming that the letter A is one place to the right of the letter Z). The second time this same letter appears in the given message, it is replaced by the letter that is $1+2$ places to the right, the third time it is replaced by the letter that is $1+2+3$ places to the right, and so on. For example, with this code the word “banana” becomes “cbodqg”. What letter will replace the last letter s in the message
+
+“Lee’s sis is a Mississippi miss, Chriss!”?
+
+(A) $g$  (B) $h$  (C) $o$  (D) $s$  (E) $t$`, u: "https://live.poshenloh.com/past-contests/amc10/2007B" },
+"2007-amc-12a-1": { s: String.raw`One ticket to a show costs $\$20$ at full price. Susan buys $4$ tickets using a coupon that gives her a $25\%$ discount. Pam buys $5$ tickets using a coupon that gives her a $30\%$ discount. How many more dollars does Pam pay than Susan?
+
+(A) $2$  (B) $5$  (C) $10$  (D) $15$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-10": { s: String.raw`A triangle with side lengths in the ratio $3:4:5$ is inscribed in a circle of radius $3.$ What is the area of the triangle?
+
+(A) $8.64$  (B) $12$  (C) $5\pi$  (D) $17.28$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-11": { s: String.raw`A finite sequence of three-digit integers has the property that the tens and units digits of each term are, respectively, the hundreds and tens digits of the next term, and the tens and units digits of the last term are, respectively, the hundreds and tens digits of the first term. For example, such a sequence might begin with terms $247,$ $475,$ and $756$ and end with the term $824.$ Let $S$ be the sum of all the terms in the sequence. What is the largest prime number that always divides $S?$
+
+(A) $3$  (B) $7$  (C) $13$  (D) $37$  (E) $43$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-12": { s: String.raw`Integers $a,$ $b,$ $c,$ and $d,$ not necessarily distinct, are chosen independently and at random from $0$ to $2007,$ inclusive. What is the probability that $ad-bc$ is even?
+
+(A) $\dfrac{3}{8}$  (B) $\dfrac{7}{16}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{5}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-13": { s: String.raw`A piece of cheese is located at $(12,10)$ in a coordinate plane. A mouse is at $(4,-2)$ and is running up the line $y=-5x+18.$ At the point $(a,b)$ the mouse starts getting farther from the cheese rather than closer to it. What is $a+b?$
+
+(A) $6$  (B) $10$  (C) $14$  (D) $18$  (E) $22$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-14": { s: String.raw`Let $a,$ $b,$ $c,$ $d,$ and $e$ be distinct integers such that$$(6-a)(6-b)(6-c) \cdot(6-d)(6-e) =45.$$What is $a+b+c+d+e?$
+
+(A) $5$  (B) $17$  (C) $25$  (D) $27$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-15": { s: String.raw`The set $\{3,6,9,10\}$ is augmented by a fifth element $n,$ not equal to any of the other four. The median of the resulting set is equal to its mean. What is the sum of all possible values of $n?$
+
+(A) $7$  (B) $9$  (C) $19$  (D) $24$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-16": { s: String.raw`How many three-digit numbers are composed of three distinct digits such that one digit is the average of the other two?
+
+(A) $96$  (B) $104$  (C) $112$  (D) $120$  (E) $256$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-17": { s: String.raw`Suppose that $\sin a+\sin b=\sqrt{\tfrac53}$ and $\cos a+\cos b=1.$ What is $\cos(a-b)?$
+
+(A) $\sqrt{\dfrac53}-1$  (B) $\dfrac13$  (C) $\dfrac12$  (D) $\dfrac23$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-18": { s: String.raw`The polynomial $f(x)=x^4+ax^3+bx^2+cx+d$ has real coefficients, and $f(2i)=f(2+i)=0.$ What is $a+b+c+d?$
+
+(A) $0$  (B) $1$  (C) $4$  (D) $9$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-19": { s: String.raw`Triangles $ABC$ and $ADE$ have areas $2007$ and $7002,$ respectively, with $B=(0,0),$ $C=(223,0),$ $D=(680,380),$ and $E=(689,389).$ What is the sum of all possible $x$-coordinates of $A?$
+
+(A) $282$  (B) $300$  (C) $600$  (D) $900$  (E) $1200$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-2": { s: String.raw`An aquarium has a rectangular base that measures $100$ cm by $40$ cm and has a height of $50$ cm. It is filled with water to a height of $40$ cm. A brick with a rectangular base that measures $40$ cm by $20$ cm and a height of $10$ cm is placed in the aquarium. By how many centimeters does the water rise?
+
+(A) $0.5$  (B) $1$  (C) $1.5$  (D) $2$  (E) $2.5$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-20": { s: String.raw`Corners are sliced off a unit cube so that the six faces each become regular octagons. What is the total volume of the removed tetrahedra?
+
+(A) $\dfrac{5\sqrt2-7}{3}$  (B) $\dfrac{10-7\sqrt2}{3}$  (C) $\dfrac{3-2\sqrt2}{3}$  (D) $\dfrac{8\sqrt2-11}{3}$  (E) $\dfrac{6-4\sqrt2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-21": { s: String.raw`The sum of the zeros, the product of the zeros, and the sum of the coefficients of the function $f(x)=ax^2+bx+c$ are equal. Their common value must also be which of the following?
+
+(A) the coefficient of $x^2$
+(B) the coefficient of $x$
+(C) the $y$-intercept of the graph of $y=f(x)$
+(D) one of the $x$-intercepts of the graph of $y=f(x)$
+(E) the mean of the $x$-intercepts of the graph of $y=f(x)$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-22": { s: String.raw`For each positive integer $n,$ let $S(n)$ denote the sum of the digits of $n.$ For how many values of $n$ is $n+S(n)+S(S(n))=2007?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-23": { s: String.raw`Square $ABCD$ has area $36,$ and $AB$ is parallel to the $x$-axis. Vertices $A,$ $B,$ and $C$ are on the graphs of $y=\log_a x,$ $y=2\log_a x,$ and $y=3\log_a x,$ respectively. What is $a?$
+
+(A) $\sqrt[6]{3}$  (B) $\sqrt3$  (C) $\sqrt[3]{6}$  (D) $\sqrt6$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-24": { s: String.raw`For each integer $n\gt 1,$ let $F(n)$ be the number of solutions of the equation $\sin x=\sin nx$ on the interval $[0,\pi].$ What is $\displaystyle\sum_{n=2}^{2007}F(n)?$
+
+(A) $2{,}014{,}524$  (B) $2{,}015{,}028$  (C) $2{,}015{,}033$  (D) $2{,}016{,}532$  (E) $2{,}017{,}033$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-25": { s: String.raw`Call a set of integers spacy if it contains no more than one out of any three consecutive integers. How many subsets of $\{1,2,3,\ldots,12\},$ including the empty set, are spacy?
+
+(A) $121$  (B) $123$  (C) $125$  (D) $127$  (E) $129$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-3": { s: String.raw`The larger of two consecutive odd integers is three times the smaller. What is their sum?
+
+(A) $4$  (B) $8$  (C) $12$  (D) $16$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-4": { s: String.raw`Kate rode her bicycle for $30$ minutes at a speed of $16$ mph, then walked for $90$ minutes at a speed of $4$ mph. What was her overall average speed in miles per hour?
+
+(A) $7$  (B) $9$  (C) $10$  (D) $12$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-5": { s: String.raw`Last year Mr. John Q. Public received an inheritance. He paid $20\%$ in federal taxes on the inheritance, and paid $10\%$ of what he had left in state taxes. He paid a total of $\$10{,}500$ for both taxes. How many dollars was the inheritance?
+
+(A) $30{,}000$  (B) $32{,}500$  (C) $35{,}000$  (D) $37{,}500$  (E) $40{,}000$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-6": { s: String.raw`Triangles $ABC$ and $ADC$ are isosceles with $AB=BC$ and $AD=DC.$ Point $D$ is inside $\triangle ABC,$ $\angle ABC=40^\circ,$ and $\angle ADC=140^\circ.$ What is the degree measure of $\angle BAD?$
+
+(A) $20$  (B) $30$  (C) $40$  (D) $50$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-7": { s: String.raw`Let $a,$ $b,$ $c,$ $d,$ and $e$ be five consecutive terms in an arithmetic sequence, and suppose that $a+b+c+d+e=30.$ Which of the following can be found?
+
+(A) $a$  (B) $b$  (C) $c$  (D) $d$  (E) $e$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-8": { s: String.raw`A star-polygon is drawn on a clock face by drawing a chord from each number to the fifth number counted clockwise from that number. That is, chords are drawn from $12$ to $5,$ from $5$ to $10,$ from $10$ to $3,$ and so on, ending back at $12.$ What is the degree measure of the angle at each vertex in the star-polygon?
+
+(A) $20$  (B) $24$  (C) $30$  (D) $36$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12a-9": { s: String.raw`Yan is somewhere between his home and the stadium. To get to the stadium he can walk directly to the stadium, or else he can walk home and then ride his bicycle to the stadium. He rides $7$ times as fast as he walks, and both choices require the same amount of time. What is the ratio of Yan’s distance from his home to his distance from the stadium?
+
+(A) $\dfrac{2}{3}$  (B) $\dfrac{3}{4}$  (C) $\dfrac{4}{5}$  (D) $\dfrac{5}{6}$  (E) $\dfrac{6}{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007A" },
+"2007-amc-12b-1": { s: String.raw`Isabella’s house has $3$ bedrooms. Each bedroom is $12$ feet long, $10$ feet wide, and $8$ feet high. Isabella must paint the walls of all the bedrooms. Doorways and windows, which will not be painted, occupy $60$ square feet in each bedroom. How many square feet of walls must be painted?
+
+(A) $678$  (B) $768$  (C) $786$  (D) $867$  (E) $876$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-10": { s: String.raw`Some boys and girls are having a car wash to raise money for a class trip to China. Initially $40\%$ of the group are girls. Shortly thereafter two girls leave and two boys arrive, and then $30\%$ of the group are girls. How many girls were initially in the group?
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-11": { s: String.raw`The angles of quadrilateral $ABCD$ satisfy $\angle A=2\angle B=3\angle C=4\angle D.$ What is the degree measure of $\angle A,$ rounded to the nearest whole number?
+
+(A) $125$  (B) $144$  (C) $153$  (D) $173$  (E) $180$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-12": { s: String.raw`A teacher gave a test to a class in which $10\%$ of the students are juniors and $90\%$ are seniors. The average score on the test was $84.$ The juniors all received the same score, and the average score of the seniors was $83.$ What score did each of the juniors receive on the test?
+
+(A) $85$  (B) $88$  (C) $93$  (D) $94$  (E) $98$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-13": { s: String.raw`A traffic light runs repeatedly through the following cycle: green for $30$ seconds, then yellow for $3$ seconds, and then red for $30$ seconds. Leah picks a random three-second time interval to watch the light. What is the probability that the color changes while she is watching?
+
+(A) $\dfrac{1}{63}$  (B) $\dfrac{1}{21}$  (C) $\dfrac{1}{10}$  (D) $\dfrac{1}{7}$  (E) $\dfrac{1}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
 "2007-amc-12b-14": { s: String.raw`Point $P$ is inside equilateral $\triangle ABC.$ Points $Q,$ $R,$ and $S$ are the feet of the perpendiculars from $P$ to $\overline{AB},$ $\overline{BC},$ and $\overline{CA},$ respectively. Given that $PQ=1,$ $PR=2,$ and $PS=3,$ what is $AB?$
 
 (A) $4$  (B) $3\sqrt{3}$  (C) $6$  (D) $4\sqrt{3}$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-15": { s: String.raw`The geometric series $a+ar+ar^2+\cdots$ has a sum of $7,$ and the terms involving odd powers of $r$ have a sum of $3.$ What is $a+r?$
+
+(A) $\dfrac{4}{3}$  (B) $\dfrac{12}{7}$  (C) $\dfrac{3}{2}$  (D) $\dfrac{7}{3}$  (E) $\dfrac{5}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-16": { s: String.raw`Each face of a regular tetrahedron is painted either red, white, or blue. Two colorings are considered indistinguishable if two congruent tetrahedra with those colorings can be rotated so that their appearances are identical. How many distinguishable colorings are possible?
+
+(A) $15$  (B) $18$  (C) $27$  (D) $54$  (E) $81$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-17": { s: String.raw`If $a$ is a nonzero integer and $b$ is a positive number such that $ab^2=\log_{10}b,$ what is the median of the set $\{0,1,a,b,\frac{1}{b}\}?$
+
+(A) $0$  (B) $1$  (C) $a$  (D) $b$  (E) $\dfrac{1}{b}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-18": { s: String.raw`Let $a,$ $b,$ and $c$ be digits with $a\ne0.$ The three-digit integer $\overline{abc}$ lies one third of the way from the square of a positive integer to the square of the next larger integer. The integer $\overline{acb}$ lies two thirds of the way between the same two squares. What is $a+b+c?$
+
+(A) $10$  (B) $13$  (C) $16$  (D) $18$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-19": { s: String.raw`Rhombus $ABCD,$ with side length $6,$ is rolled to form a cylinder of volume $6$ by taping $\overline{AB}$ to $\overline{DC}.$ What is $\sin(\angle ABC)?$
+
+(A) $\dfrac{\pi}{9}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{\pi}{6}$  (D) $\dfrac{\pi}{4}$  (E) $\dfrac{\sqrt{3}}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-2": { s: String.raw`A college student drove his compact car $120$ miles home for the weekend and averaged $30$ miles per gallon. On the return trip the student drove his parents’ SUV and averaged only $20$ miles per gallon. What was the average gas mileage, in miles per gallon, for the round trip?
+
+(A) $22$  (B) $24$  (C) $25$  (D) $26$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-20": { s: String.raw`The parallelogram bounded by the lines $y=ax+c,$ $y=ax+d,$ $y=bx+c,$ and $y=bx+d$ has area $18.$ The parallelogram bounded by the lines $y=ax+c,$ $y=ax-d,$ $y=bx+c,$ and $y=bx-d$ has area $72.$ Given that $a,$ $b,$ $c,$ and $d$ are positive integers, what is the smallest possible value of $a+b+c+d?$
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-21": { s: String.raw`The first $2007$ positive integers are each written in base $3.$ How many of these base-$3$ representations are palindromes? (A palindrome is a number that reads the same forward and backward.)
+
+(A) $100$  (B) $101$  (C) $102$  (D) $103$  (E) $104$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-22": { s: String.raw`Two particles move along the edges of equilateral $\triangle ABC$ in the direction$$A\to B\to C\to A,$$starting simultaneously and moving at the same speed. One starts at $A,$ and the other starts at the midpoint of $\overline{BC}.$ The midpoint of the line segment joining the two particles traces out a path that encloses a region $R.$ What is the ratio of the area of $R$ to the area of $\triangle ABC?$
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac{1}{12}$  (C) $\dfrac{1}{9}$  (D) $\dfrac{1}{6}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-23": { s: String.raw`How many non-congruent right triangles with positive integer leg lengths have areas that are numerically equal to $3$ times their perimeters?
+
+(A) $6$  (B) $7$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-24": { s: String.raw`How many pairs of positive integers $(a,b)$ are there such that $\gcd(a,b)=1$ and$$\dfrac{a}{b}+\dfrac{14b}{9a}$$is an integer?
+
+(A) $4$  (B) $6$  (C) $9$  (D) $12$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-25": { s: String.raw`Points $A,$ $B,$ $C,$ $D,$ and $E$ are located in $3$-dimensional space with $AB=BC=CD$ $=DE=EA=2$ and $\angle ABC=\angle CDE$ $=\angle DEA=90^\circ.$ The plane of $\triangle ABC$ is parallel to $\overline{DE}.$ What is the area of $\triangle BDE?$
+
+(A) $\sqrt{2}$  (B) $\sqrt{3}$  (C) $2$  (D) $\sqrt{5}$  (E) $\sqrt{6}$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-3": { s: String.raw`The point $O$ is the center of the circle circumscribed about $\triangle ABC,$ with $\angle BOC=120^\circ$ and $\angle AOB=140^\circ,$ as shown. What is the degree measure of $\angle ABC?$
+
+@@fig:amc12/2007B/3.svg@@
+
+(A) $35$  (B) $40$  (C) $45$  (D) $50$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-4": { s: String.raw`At Frank’s Fruit Market, $3$ bananas cost as much as $2$ apples, and $6$ apples cost as much as $4$ oranges. How many oranges cost as much as $18$ bananas?
+
+(A) $6$  (B) $8$  (C) $9$  (D) $12$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-5": { s: String.raw`The $2007$ AMC $12$ contests will be scored by awarding $6$ points for each correct response, $0$ points for each incorrect response, and $1.5$ points for each problem left unanswered. After looking over the $25$ problems, Sarah has decided to attempt the first $22$ and leave the last $3$ unanswered. How many of the first $22$ problems must she solve correctly in order to score at least $100$ points?
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-6": { s: String.raw`Triangle $ABC$ has side lengths $AB=5,$ $BC=6,$ and $AC=7.$ Two bugs start simultaneously from $A$ and crawl along the sides of the triangle in opposite directions at the same speed. They meet at point $D.$ What is $BD?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-7": { s: String.raw`All sides of the convex pentagon $ABCDE$ are of equal length, and $\angle A=\angle B=90^\circ.$ What is the degree measure of $\angle E?$
+
+(A) $90$  (B) $108$  (C) $120$  (D) $144$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-8": { s: String.raw`Tom’s age is $T$ years, which is also the sum of the ages of his three children. His age $N$ years ago was twice the sum of their ages then. What is $\frac{T}{N}?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-12b-9": { s: String.raw`A function $f$ has the property that $f(3x-1)=x^2+x+1$ for all real numbers $x.$ What is $f(5)?$
+
+(A) $7$  (B) $13$  (C) $31$  (D) $111$  (E) $211$`, u: "https://live.poshenloh.com/past-contests/amc12/2007B" },
+"2007-amc-8-1": { s: String.raw`Theresa’s parents have agreed to buy her tickets to see her favorite band if she spends an average of $10$ hours per week helping around the house for $6$ weeks. For the first $5$ weeks she helps around the house for $8,$ $11,$ $7,$ $12$ and $10$ hours. How many hours must she work for the final week to earn the tickets?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-10": { s: String.raw`For any positive integer $n,$ define $\boxed{n}$ to be the sum of the positive factors of $n.$ For example,$$ \boxed{6} = 1 + 2 + 3 + 6 = 12. $$Find $\boxed{\boxed{11}}.$
+
+(A) $13$  (B) $20$  (C) $24$  (D) $28$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-11": { s: String.raw`Tiles $I,$ $II,$ $III$ and $IV$ are translated so one tile coincides with each of the rectangles $A,$ $B,$ $C$ and $D.$ In the final arrangement, the two numbers on any side common to two adjacent tiles must be the same. Which of the tiles is translated to Rectangle $C?$
+
+@@fig:amc8/2007/11.svg@@
+
+(A) $I$  (B) $II$  (C) $III$  (D) $IV$  (E) cannot be determined`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-12": { s: String.raw`A unit hexagram is composed of a regular hexagon of side length $1$ and its $6$ equilateral triangular extensions, as shown in the diagram. What is the ratio of the area of the extensions to the area of the original hexagon?
+
+@@fig:amc8/2007/12.svg@@
+
+(A) $1:1$  (B) $6:5$  (C) $3:2$  (D) $2:1$  (E) $3:1$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-13": { s: String.raw`Sets $A$ and $B,$ shown in the Venn diagram, have the same number of elements. Their union has $2007$ elements and their intersection has $1001$ elements. Find the number of elements in $A.$
+
+@@fig:amc8/2007/13.svg@@
+
+(A) $503$  (B) $1006$  (C) $1504$  (D) $1507$  (E) $1510$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-14": { s: String.raw`The base of isosceles $\triangle ABC$ is $24$ and its area is $60.$ What is the length of one of the congruent sides?
+
+(A) $5$  (B) $8$  (C) $13$  (D) $14$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-15": { s: String.raw`Let $a,$ $b$ and $c$ be numbers with $0 \lt a \lt b \lt c.$ Which of the following is impossible?
+
+(A) $a + c \lt b$  (B) $a \cdot b \lt c$  (C) $a + b \lt c$  (D) $a \cdot c \lt b$  (E) $\dfrac{b}{c} = a$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-16": { s: String.raw`Amanda Reckonwith draws five circles with radii $1,$ $2,$ $3,$ $4$ and $5.$ Then for each circle she plots the point $(C, A),$ where $C$ is its circumference and $A$ is its area. Which of the following could be her graph?
+
+(A) @@ci:amc8/2007/16a.svg|12rem@@  (B) @@ci:amc8/2007/16b.svg|12rem@@  (C) @@ci:amc8/2007/16c.svg|12rem@@  (D) @@ci:amc8/2007/16d.svg|12rem@@  (E) @@ci:amc8/2007/16e.svg|12rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-17": { s: String.raw`A mixture of $30$ liters of paint is $25\%$ red tint, $30\%$ yellow tint and $45\%$ water. Five liters of yellow tint are added to the original mixture. What is the percent of yellow tint in the new mixture?
+
+(A) $25$  (B) $35$  (C) $40$  (D) $45$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-18": { s: String.raw`The product of the two $99$-digit numbers$$303,030,303,\ldots,030,303$$and$$505,050,505,\ldots,050,505$$has thousands digit $A$ and units digit $B.$ What is $A+B?$
+
+(A) $3$  (B) $5$  (C) $6$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-19": { s: String.raw`Pick two consecutive positive integers whose sum is less than $100.$ Square both of those integers and then find the difference of the squares. Which of the following could be the difference?
+
+(A) $2$  (B) $64$  (C) $79$  (D) $96$  (E) $131$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-2": { s: String.raw`$650$ students were surveyed about their pasta preferences. The choices were lasagna, manicotti, ravioli and spaghetti. The results of the survey are displayed in the bar graph. What is the ratio of the number of students who preferred spaghetti to the number of students who preferred manicotti?
+
+@@fig:amc8/2007/2.svg@@
+
+(A) $\dfrac{2}{5}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{5}{4}$  (D) $\dfrac{5}{3}$  (E) $\dfrac{5}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-20": { s: String.raw`Before district play, the Unicorns had won $45 \%$ of their basketball games. During district play, they won six more games and lost two, to finish the season having won half their games. How many games did the Unicorns play in all?
+
+(A) $48$  (B) $50$  (C) $52$  (D) $54$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-21": { s: String.raw`Two cards are dealt from a deck of four red cards labeled $A,$ $B,$ $C,$ $D$ and four green cards labeled $A,$ $B,$ $C,$ $D.$ A winning pair is two of the same color or two of the same letter. What is the probability of drawing a winning pair?
+
+(A) $\dfrac{2}{7}$  (B) $\dfrac{3}{8}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{4}{7}$  (E) $\dfrac{5}{8}$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-22": { s: String.raw`A lemming sits at a corner of a square with side length $10$ meters. The lemming runs $6.2$ meters along a diagonal toward the opposite corner. It stops, makes a $90^{\circ}$ right turn and runs $2$ more meters. A scientist measures the shortest distance between the lemming and each side of the square. What is the average of these four distances in meters?
+
+(A) $2$  (B) $4.5$  (C) $5$  (D) $6.2$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-23": { s: String.raw`What is the area of the shaded pinwheel shown in the $5 \times 5$ grid?
+
+@@fig:amc8/2007/23.svg@@
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-24": { s: String.raw`A bag contains four pieces of paper, each labeled with one of the digits $1,$ $2,$ $3$ or $4,$ with no repeats. Three of these pieces are drawn, one at a time without replacement, to construct a three-digit number. What is the probability that the three-digit number is a multiple of $3?$
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-25": { s: String.raw`On the dart board shown in the figure below, the outer circle has radius $6$ and the inner circle has radius $3.$ Three radii divide each circle into three congruent regions, with point values shown. The probability that a dart will hit a given region is proportional to the area of the region. When two darts hit this board, the score is the sum of the point values of the regions hit. What is the probability that the score is odd?
+
+@@fig:amc8/2007/25.svg@@
+
+(A) $\dfrac{17}{36}$  (B) $\dfrac{35}{72}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{37}{72}$  (E) $\dfrac{19}{36}$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-3": { s: String.raw`What is the sum of the two smallest prime factors of $250?$
+
+(A) $2$  (B) $5$  (C) $7$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-4": { s: String.raw`A haunted house has six windows. In how many ways can Georgie the Ghost enter the house by one window and leave by a different window?
+
+(A) $12$  (B) $15$  (C) $18$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-5": { s: String.raw`Chandler wants to buy a $\$500$ mountain bike. For his birthday, his grandparents send him $\$50$, his aunt sends him $\$35$ and his cousin gives him $\$15$. He earns $\$16$ per week for his paper route. He will use all of his birthday money and all of the money he earns from his paper route. In how many weeks will he be able to buy the mountain bike?
+
+(A) $24$  (B) $25$  (C) $26$  (D) $27$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-6": { s: String.raw`The average cost of a long-distance call in the USA in $1985$ was $41$ cents per minute, and the average cost of a long-distance call in the USA in $2005$ was $7$ cents per minute. Find the approximate percent decrease in the cost per minute of a long-distance call.
+
+(A) $7$  (B) $17$  (C) $34$  (D) $41$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-7": { s: String.raw`The average age of $5$ people in a room is $30$ years. An $18$-year-old person leaves the room. What is the average age of the four remaining people?
+
+(A) $25$  (B) $26$  (C) $29$  (D) $33$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-8": { s: String.raw`In trapezoid $ABCD,$ $\overline{AD}$ is perpendicular to $\overline{DC},$ $AD = AB = 3,$ and $DC = 6.$ In addition, $E$ is on $\overline{DC},$ and $\overline{BE}$ is parallel to $\overline{AD}.$ Find the area of $\triangle BEC.$
+
+@@fig:amc8/2007/8.svg@@
+
+(A) $3$  (B) $4.5$  (C) $6$  (D) $9$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
+"2007-amc-8-9": { s: String.raw`To complete the grid below, each of the digits $1$ through $4$ must occur once in each row and once in each column. What number will occupy the lower right-hand square?
+
+@@fig:amc8/2007/9.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) cannot be determined`, u: "https://live.poshenloh.com/past-contests/amc8/2007" },
 });

@@ -103,6 +103,33 @@ window.MATH_CONNECTED = {
     { id: "probability-generating-functions", note: "Distributions, encoded as $E[s^X]$." },
     { id: "partitions", note: "$\\prod \\frac{1}{1 - x^k}$ counts partitions." }
   ],
+  "odd-even-functions": [
+    { id: "function-symmetry-equation", note: "Symmetry about an axis or a center other than $0$, and periods from two symmetries." },
+    { id: "inverse-function-properties", note: "The symmetry between a function and its inverse across $y = x$." },
+    { id: "cauchy-functional-equations", note: "The additive equation forces an odd function." },
+    { id: "functional-substitution", note: "Setting $y = -x$ is the usual first substitution." }
+  ],
+  "point-line-distance": [
+    { id: "parallel-lines-distance", note: "The distance between two parallel lines, as one point-line distance." },
+    { id: "tangent-lines-from-point", note: "Tangency written as distance from the center equal to the radius." },
+    { id: "point-plane-distance", note: "The same formula with one more term, in three dimensions." },
+    { id: "circle-equation", note: "A line is tangent when the distance from the center equals the radius." }
+  ],
+  "parallelogram-area": [
+    { id: "parallelogram-vertices", note: "The fourth vertex from three, $D = A + C - B$." },
+    { id: "euler-quadrilateral", note: "The parallelogram law for the diagonals, as the case $m = 0$." },
+    { id: "trapezoid-parallelogram-areas", note: "The trapezoid and the perpendicular-diagonal areas." },
+    { id: "quadrilateral-diagonal-area", note: "The area from the diagonals and the angle between them." },
+    { id: "varignons-theorem", note: "The midpoints of any quadrilateral form a parallelogram." }
+  ],
+  "regular-polygon-area": [
+    { id: "regular-hexagon-area", note: "The hexagon, six equilateral triangles, with its diagonals." },
+    { id: "regular-octagon", note: "The octagon, a square with its corners cut off." },
+    { id: "regular-dodecagon", note: "The dodecagon, with area $3R^2$ and its chord table." },
+    { id: "equilateral-triangle-facts", note: "The equilateral triangle, the case $n = 3$." },
+    { id: "golden-ratio-pentagon", note: "The pentagon, with diagonal-to-side ratio $\\varphi$." },
+    { id: "polygon-angle-sums", note: "The interior angle $\\frac{(n - 2)180^\\circ}{n}$ of each." }
+  ],
   "expected-value": [
     { id: "indicator-variables", note: "An expected count as a sum of probabilities." },
     { id: "total-expectation", note: "Averaging over cases." },

@@ -518,6 +518,9 @@ for c in CARDS:
         # Every formula it uses is explained, in the same order as `uses`.
         if c["uses"] and USES_LIST.get(c["id"]) != c["uses"]:
             _kind_err.append("%s: '## Formulas it uses' lists %s but `uses` is %s" % (c["id"], USES_LIST.get(c["id"]), c["uses"]))
+        _trap = re.search(r"^## Common traps\n(.*?)(?=\n## |\Z)", DETAILS.get(c["id"], ""), re.S | re.M)
+        if _trap and len(re.findall(r"^- ", _trap.group(1), re.M)) > 4:
+            _kind_warn.append("%s: %d Common traps (at most 4 expected)" % (c["id"], len(re.findall(r"^- ", _trap.group(1), re.M))))
         _how = re.search(r"^## How\n(.*?)(?=\n## |\Z)", DETAILS.get(c["id"], ""), re.S | re.M)
         if _how and len(re.findall(r"^\d+\. ", _how.group(1), re.M)) > 6:
             _kind_warn.append("%s: more than six How steps (consider splitting)" % c["id"])
@@ -553,6 +556,16 @@ for c in CARDS:
             for _x in _tf:
                 if _x not in _BYID_ALL or _BYID_ALL[_x]["kind"] != "formula":
                     _kind_err.append("%s: 'Formulas to try' names %r, which is not a formula card" % (c["id"], _x))
+        _cl = re.search(r"^## Distinguishing clues\n(.*?)(?=\n## |\Z)", DETAILS.get(c["id"], ""), re.S | re.M)
+        if _cl:
+            _nb = len(re.findall(r"^- ", _cl.group(1), re.M))
+            if _nb == 0:
+                _kind_warn.append("%s: Distinguishing clues is not a list (one clue per bullet, at most five)" % c["id"])
+            elif _nb > 5:
+                _kind_warn.append("%s: %d clues (at most 5 expected)" % (c["id"], _nb))
+        _trap = re.search(r"^## Common traps\n(.*?)(?=\n## |\Z)", DETAILS.get(c["id"], ""), re.S | re.M)
+        if _trap and len(re.findall(r"^- ", _trap.group(1), re.M)) > 4:
+            _kind_warn.append("%s: %d Common traps (at most 4 expected)" % (c["id"], len(re.findall(r"^- ", _trap.group(1), re.M))))
         if c["recognize"] is not None and not 2 <= len(c["recognize"]) <= 5:
             _kind_warn.append("%s: %d recognition signals (2 to 5 expected)" % (c["id"], len(c["recognize"])))
         if c["suggests"] is not None and len(c["suggests"]) > 4:
@@ -892,8 +905,35 @@ print("  integral with a slanted or unspaced differential: %d  (must stay 0)" % 
 for _x in _calc[:8]:
     print("    %s: %r" % _x)
 
+# A literal tab (or any other control character) inside a data file is almost always an escape
+# that got eaten: in a String.raw block `\tfrac` pasted through a tool that expands "\t" shows up
+# as "frac" on the page (the 13-14-15 card, 2026-10-11). Data files must hold none.
+_CTRL = re.compile(r"[\x00-\x08\x09\x0b-\x1f\x7f]")
+_ctrl = []
+for _dp, _dn, _fn in os.walk(os.path.join(ROOT, "js", "data")):
+    for _f in _fn:
+        if not _f.endswith(".js"): continue
+        _fp = os.path.join(_dp, _f)
+        for _ln, _line in enumerate(open(_fp, encoding="utf-8", errors="replace"), 1):
+            _m = _CTRL.search(_line)
+            if _m: _ctrl.append((os.path.relpath(_fp, ROOT), _ln, repr(_line[max(0, _m.start() - 20):_m.end() + 20])))
+print("  control characters (tabs) inside data files: %d  (must stay 0)" % len(_ctrl))
+for _x in _ctrl[:8]:
+    print("    %s:%d %s" % _x)
+
+# A keyword listed twice in one card's keywords array is dead weight in the search index and a sign
+# of a careless merge (eight cards had one on 2026-10-11).
+_dupkw = []
+for _c in CARDS:
+    _kws = [str(k).lower() for k in (_array(_c["blk"], "keywords") or [])]
+    for _k in sorted({k for k in _kws if _kws.count(k) > 1}):
+        _dupkw.append((_c["id"], _k))
+print("  repeated keywords inside one card: %d  (must stay 0)" % len(_dupkw))
+for _x in _dupkw[:8]:
+    print("    %s: %r" % _x)
+
 bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples or cp_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
-           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared)
+           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared or _ctrl or _dupkw)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))
 sys.exit(1 if bad else 0)

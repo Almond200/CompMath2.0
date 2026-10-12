@@ -33,10 +33,449 @@ Object.assign(window.MATH_STATEMENTS, {
 "2019-aime-ii-7": { s: String.raw`Triangle $ABC$ has side lengths $AB = 120,$ $BC = 220,$ and $AC = 180.$ Lines $\ell_A,$ $\ell_B,$ and $\ell_C$ are drawn parallel to $\overline{BC},$ $\overline{AC},$ and $\overline{AB},$ respectively, such that the intersections of $\ell_A,$ $\ell_B,$ and $\ell_C$ with the interior of $\triangle ABC$ are segments of lengths $55,$ $45,$ and $15,$ respectively. Find the perimeter of the triangle whose sides lie on lines $\ell_A,$ $\ell_B,$ and $\ell_C.$`, u: "https://live.poshenloh.com/past-contests/aime/2019II" },
 "2019-aime-ii-8": { s: String.raw`The polynomial $f(z) = az^{2018} + bz^{2017} + cz^{2016}$ has real coefficients not exceeding $2019,$ and $f\left(\frac{1 + \sqrt{3}i}{2}\right) = 2015 + 2019\sqrt{3}i.$ Find the remainder when $f(1)$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2019II" },
 "2019-aime-ii-9": { s: String.raw`Call a positive integer $n$ $k$-pretty if $n$ has exactly $k$ positive divisors and $n$ is divisible by $k.$ For example, $18$ is $6$-pretty. Let $S$ be the sum of the positive integers less than $2019$ that are $20$-pretty. Find $\frac{S}{20}.$`, u: "https://live.poshenloh.com/past-contests/aime/2019II" },
+"2019-amc-10a-1": { s: String.raw`What is the value of$$2^{\left(0^{\left(1^9\right)}\right)}+\left(\left(2^0\right)^1\right)^9?$$(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-10": { s: String.raw`A rectangular floor that is $10$ feet wide and $17$ feet long is tiled with $170$ one-foot square tiles. A bug walks from one corner to the opposite corner in a straight line. Including the first and the last tile, how many tiles does the bug visit?
+
+(A) $17$  (B) $25$  (C) $26$  (D) $27$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-11": { s: String.raw`How many positive integer divisors of $201^9$ are perfect squares or perfect cubes (or both)?
+
+(A) $32$  (B) $36$  (C) $37$  (D) $39$  (E) $41$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-12": { s: String.raw`Melanie computes the mean $\mu,$ the median $M,$ and the modes of the $365$ values that are the dates in the months of $2019.$ Thus her data consist of $12$ copies of $1,$ $12$ copies of $2,$ and so on through $12$ copies of $28,$ then $11$ copies of $29,$ $11$ copies of $30,$ and $7$ copies of $31.$ Let $d$ be the median of the modes. Which of the following statements is true?
+
+(A) $\mu \lt d \lt M$  (B) $M \lt d \lt \mu$  (C) $d = M =\mu$  (D) $d \lt M \lt \mu$  (E) $d \lt \mu \lt M$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-13": { s: String.raw`Let $\triangle ABC$ be an isosceles triangle with $BC = AC$ and $\angle ACB = 40^{\circ}.$ Construct the circle with diameter $\overline{BC},$ and let $D$ and $E$ be the other intersection points of the circle with the sides $\overline{AC}$ and $\overline{AB},$ respectively. Let $F$ be the intersection of the diagonals of the quadrilateral $BCDE.$ What is the degree measure of $\angle BFC ?$
+
+(A) $90$  (B) $100$  (C) $105$  (D) $110$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-14": { s: String.raw`For a set of four distinct lines in a plane, there are exactly $N$ distinct points that lie on two or more of the lines. What is the sum of all possible values of $N?$
+
+(A) $14$  (B) $16$  (C) $18$  (D) $19$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-15": { s: String.raw`A sequence of numbers is defined recursively by $a_1 = 1,$ $a_2 = \frac{3}{7},$ and$$a_n=\dfrac{a_{n-2} \cdot a_{n-1}}{2a_{n-2} - a_{n-1}}$$for all $n \geq 3.$ Then $a_{2019}$ can be written as $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. What is $p+q ?$
+
+(A) $2020$  (B) $4039$  (C) $6057$  (D) $6061$  (E) $8078$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-16": { s: String.raw`The figure below shows $13$ circles of radius $1$ within a larger circle. All the intersections occur at points of tangency. What is the area of the region, shaded in the figure, inside the larger circle but outside all the circles of radius $1?$
+
+@@fig:amc10/2019A/16.svg@@
+
+(A) $4 \pi \sqrt{3}$  (B) $7 \pi$  (C) $\pi\left(3\sqrt{3} +2\right)$  (D) $10 \pi \left(\sqrt{3} - 1\right)$  (E) $\pi\left(\sqrt{3} + 6\right)$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-17": { s: String.raw`A child builds towers using identically shaped cubes of different colors. How many different towers with a height $8$ cubes can the child build with $2$ red cubes, $3$ blue cubes, and $4$ green cubes? (One cube will be left out.)
+
+(A) $24$  (B) $288$  (C) $312$  (D) $1{,}260$  (E) $40{,}320$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-18": { s: String.raw`For some positive integer $k,$ the repeating base-$k$ representation of the (base-ten) fraction $\dfrac{7}{51}$ is$$0.\overline{23}_k = 0.232323..._k.$$What is $k?$
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-19": { s: String.raw`What is the least possible value of$$(x+1)(x+2)(x+3)(x+4) +2019,$$where $x$ is a real number?
+
+(A) $2017$  (B) $2018$  (C) $2019$  (D) $2020$  (E) $2021$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-2": { s: String.raw`What is the hundreds digit of $(20!-15!)?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-20": { s: String.raw`The numbers $1,$ $2,$ $\dots,$ $9$ are randomly placed into the $9$ squares of a $3 \times 3$ grid. Each square gets one number, and each of the numbers is used once. What is the probability that the sum of the numbers in each row and each column is odd?
+
+(A) $\dfrac{1}{21}$  (B) $\dfrac{1}{14}$  (C) $\dfrac{5}{63}$  (D) $\dfrac{2}{21}$  (E) $\dfrac{1}{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-21": { s: String.raw`A sphere with center $O$ has radius $6.$ A triangle with sides of length $15,$ $15,$ and $24$ is situated in space so that each of its sides is tangent to the sphere. What is the distance between $O$ and the plane determined by the triangle?
+
+(A) $2\sqrt{3}$  (B) $4$  (C) $3\sqrt{2}$  (D) $2\sqrt{5}$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
 "2019-amc-10a-22": { s: String.raw`Real numbers between $0$ and $1,$ inclusive, are chosen in the following manner. A fair coin is flipped. If it lands heads, then it is flipped again and the chosen number is $0$ if the second flip is heads, and $1$ if the second flip is tails. On the other hand, if the first coin flip is tails, then the number is chosen uniformly at random from the closed interval $[0,1].$ Two random numbers $x$ and $y$ are chosen independently in this manner. What is the probability that $|x-y| > \tfrac{1}{2}?$
 
 (A) $\dfrac{1}{3}$  (B) $\dfrac{7}{16}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-23": { s: String.raw`Travis has to babysit the terrible Thompson triplets. Knowing that they love big numbers, Travis devises a counting game for them. First Tadd will say the number $1,$ then Todd must say the next two numbers ($2$ and $3$), then Tucker must say the next three numbers ($4,$ $5,$ $6$), then Tadd must say the next four numbers ($7,$ $8,$ $9,$ $10$), and the process continues to rotate through the three children in order, each saying one more number than the previous child did, until the number $10{,}000$ is reached. What is the $2019$th number said by Tadd?
+
+(A) $5743$  (B) $5885$  (C) $5979$  (D) $6001$  (E) $6011$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-24": { s: String.raw`Let $p,$ $q,$ and $r$ be the distinct roots of the polynomial$$x^3 - 22x^2 + 80x - 67.$$There exist real numbers $A,$ $B,$ and $C$ such that$$\frac{1}{s^3-22s^2+80s-67} =\frac{A}{s-p}+\frac{B}{s-q} +\frac{C}{s-r}$$for all real numbers $s$ with $s\notin\{p,q,r\}.$ What is$$\dfrac1A+\dfrac1B+\dfrac1C?$$(A) $243$  (B) $244$  (C) $245$  (D) $246$  (E) $247$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
 "2019-amc-10a-25": { s: String.raw`For how many integers $n$ between $1$ and $50,$ inclusive, is$$\dfrac{(n^2-1)!}{(n!)^n}$$an integer? (Recall that $0! = 1.$)
 
 (A) $31$  (B) $32$  (C) $33$  (D) $34$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-3": { s: String.raw`Ana and Bonita were born on the same date in different years, $n$ years apart. Last year Ana was $5$ times as old as Bonita. This year Ana’s age is the square of Bonita’s age. What is $n?$
+
+(A) $3$  (B) $5$  (C) $9$  (D) $12$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-4": { s: String.raw`A box contains $28$ red balls, $20$ green balls, $19$ yellow balls, $13$ blue balls, $11$ white balls, and $9$ black balls. What is the minimum number of balls that must be drawn from the box without replacement to guarantee that at least $15$ balls of a single color will be drawn?
+
+(A) $75$  (B) $76$  (C) $79$  (D) $84$  (E) $91$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-5": { s: String.raw`What is the greatest number of consecutive integers whose sum is $45?$
+
+(A) $9$  (B) $25$  (C) $45$  (D) $90$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-6": { s: String.raw`For how many of the following types of quadrilaterals does there exist a point in the plane of the quadrilateral that is equidistant from all four vertices of the quadrilateral?
+
+• a square
+
+• a rectangle that is not a square
+
+• a rhombus that is not a square
+
+• a parallelogram that is not a rectangle or a rhombus
+
+• an isosceles trapezoid that is not a parallelogram
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-7": { s: String.raw`Two lines with slopes $\frac{1}{2}$ and $2$ intersect at $(2, 2).$ What is the area of the triangle enclosed by these two lines and the line $x + y = 10?$
+
+(A) $4$  (B) $4\sqrt{2}$  (C) $6$  (D) $8$  (E) $6\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-8": { s: String.raw`The figure below shows line $\ell$ with a regular, infinite, recurring pattern of squares and line segments.
+
+@@fig:amc10/2019A/8.svg@@
+
+How many of the following four kinds of rigid motion transformations of the plane in which this figure is drawn, other than the identity transformation, will transform this figure into itself?
+
+• some rotation around a point of line $\ell$
+
+• some translation in the direction parallel to line $\ell$
+
+• the reflection across line $\ell$
+
+• some reflection across a line perpendicular to line $\ell$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10a-9": { s: String.raw`What is the greatest three-digit positive integer $n$ for which the sum of the first $n$ positive integers is not a divisor of the product of the first $n$ positive integers?
+
+(A) $995$  (B) $996$  (C) $997$  (D) $998$  (E) $999$`, u: "https://live.poshenloh.com/past-contests/amc10/2019A" },
+"2019-amc-10b-1": { s: String.raw`Alicia had two containers. The first was $\frac{5}{6}$ full of water and the second was empty. She poured all the water from the first container into the second container, at which point the second container was $\frac{3}{4}$ full of water. What is the ratio of the volume of the smaller container to the volume of the larger container?
+
+(A) $\dfrac{5}{8}$  (B) $\dfrac{4}{5}$  (C) $\dfrac{7}{8}$  (D) $\dfrac{9}{10}$  (E) $\dfrac{11}{12}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-10": { s: String.raw`In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $8$  (E) $\text{infinitely many}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-11": { s: String.raw`Two jars each contain the same number of marbles, and every marble is either blue or green. In Jar $1$ the ratio of blue to green marbles is $9:1,$ and the ratio of blue to green marbles in Jar $2$ is $8:1.$ There are $95$ green marbles in all. How many more blue marbles are in Jar $1$ than in Jar $2?$
+
+(A) $5$  (B) $10$  (C) $25$  (D) $45$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-12": { s: String.raw`What is the greatest possible sum of the digits in the base-seven representation of a positive integer less than $2019?$
+
+(A) $11$  (B) $14$  (C) $22$  (D) $23$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-13": { s: String.raw`What is the sum of all real numbers $x$ for which the median of the numbers $4,$ $6,$ $8,$ $17,$ and $x$ is equal to the mean of those five numbers?
+
+(A) $-5$  (B) $0$  (C) $5$  (D) $\dfrac{15}{4}$  (E) $\dfrac{35}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-14": { s: String.raw`The base-ten representation for $19!$ is $121,$ $6T5,$ $100,$ $40M,$ $832,$ $H00,$ where $T,$ $M,$ and $H$ denote digits that are not given. What is $T+M+H?$
+
+(A) $3$  (B) $8$  (C) $12$  (D) $14$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-15": { s: String.raw`Right triangles $T_1$ and $T_2$ have areas $1$ and $2$, respectively. A side of $T_1$ is congruent to a side of $T_2,$ and a different side of $T_1$ is congruent to a different side of $T_2.$ What is the square of the product of the lengths of the other (third) sides of $T_1$ and $T_2?$
+
+(A) $\dfrac{28}{3}$  (B) $10$  (C) $\dfrac{21}{2}$  (D) $\dfrac{32}{3}$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-16": { s: String.raw`In $\triangle ABC$ with a right angle at $C,$ point $D$ lies in the interior of $\overline{AB}$ and point $E$ lies in the interior of $\overline{BC}$ so that $AC=CD,$ $DE=EB,$ and the ratio $AC:DE=4:3.$ What is the ratio $AD:DB?$
+
+(A) $2:3$  (B) $2:\sqrt{5}$  (C) $1:1$  (D) $3:\sqrt{5}$  (E) $3:2$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-17": { s: String.raw`A red ball and a green ball are randomly and independently tossed into bins numbered with the positive integers so that for each ball, the probability that it is tossed into bin $k$ is $2^{-k}$ for $k = 1,$ $2,$ $3,$ $\ldots.$ What is the probability that the red ball is tossed into a higher-numbered bin than the green ball?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{2}{7}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{3}{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-18": { s: String.raw`Henry decides one morning to do a workout, and he walks $\tfrac{3}{4}$ of the way from his home to his gym. The gym is $2$ kilometers away from Henry’s home. At that point, he changes his mind and walks $\tfrac{3}{4}$ of the way from where he is back toward home. When he reaches that point, he changes his mind again and walks $\tfrac{3}{4}$ of the distance from there back toward the gym. If Henry keeps changing his mind when he has walked $\tfrac{3}{4}$ of the distance toward either the gym or home from the point where he last changed his mind, he will get very close to walking back and forth between a point $A$ kilometers from home and a point $B$ kilometers from home. What is $|A-B|?$
+
+(A) $\frac{2}{3}$  (B) $1$  (C) $1 \frac{1}{5}$  (D) $1 \frac{1}{4}$  (E) $1 \frac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-19": { s: String.raw`Let $S$ be the set of all positive integer divisors of $100{,}000.$ How many numbers are the product of two distinct elements of $S?$
+
+(A) $98$  (B) $100$  (C) $117$  (D) $119$  (E) $121$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-2": { s: String.raw`Consider the statement, “If $n$ is not prime, then $n-2$ is prime.” Which of the following values of $n$ is a counterexample to this statement?
+
+(A) $11$  (B) $15$  (C) $19$  (D) $21$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-20": { s: String.raw`As shown in the figure, line segment $\overline{AD}$ is trisected by points $B$ and $C$ so that $AB=BC=CD=2.$ Three semicircles of radius $1,$ $\widehat{AEB},$ $\widehat{BFC},$ and $\widehat{CGD},$ have their diameters on $\overline{AD}$, lie in the same halfplane determined by line $AD$, and are tangent to line $EG$ at $E,$ $F,$ and $G,$ respectively. A circle of radius $2$ has its center at $F.$ The area of the region inside the circle but outside the three semicircles, shaded in the figure, can be expressed in the form$$\frac{a}{b}\cdot\pi-\sqrt{c}+d,$$where $a,$ $b,$ $c,$ and $d$ are positive integers and $a$ and $b$ are relatively prime. What is $a+b+c+d?$
+
+@@fig:amc10/2019B/20.svg@@
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-21": { s: String.raw`Debra flips a fair coin repeatedly, keeping track of how many heads and how many tails she has seen in total, until she gets either two heads in a row or two tails in a row, at which point she stops flipping. What is the probability that she gets two heads in a row but she sees a second tail before she sees a second head?
+
+(A) $\dfrac{1}{36}$  (B) $\dfrac{1}{24}$  (C) $\dfrac{1}{18}$  (D) $\dfrac{1}{12}$  (E) $\dfrac{1}{6}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-22": { s: String.raw`Raashan, Sylvia, and Ted play the following game. Each starts with $\$1.$ A bell rings every $15$ seconds, at which time each of the players who currently has money simultaneously chooses one of the other two players independently and at random and gives $\$1$ to that player. What is the probability that after the bell has rung $2019$ times, each player will have $\$1?$
+
+(For example, Raashan and Ted may each decide to give $\$1$ to Sylvia, and Sylvia may decide to give her dollar to Ted, at which point Raashan will have $\$0,$ Sylvia will have $\$2,$ and Ted will have $\$1,$ and that is the end of the first round of play. In the second round Raashan has no money to give, but Sylvia and Ted might choose each other to give their $\$1$ to, and the holdings will be the same at the end of the second round.)
+
+(A) $\dfrac{1}{7}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-23": { s: String.raw`Points $A=(6,13)$ and $B=(12,11)$ lie on a circle $\omega$ in the plane. Suppose that the tangent lines to $\omega$ at $A$ and $B$ intersect at a point on the $x$-axis. What is the area of $\omega?$
+
+(A) $\dfrac{83\pi}{8}$  (B) $\dfrac{21\pi}{2}$  (C) $\dfrac{85\pi}{8}$  (D) $\dfrac{43\pi}{4}$  (E) $\dfrac{87\pi}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-24": { s: String.raw`Define a sequence recursively by $x_0=5$ and$$x_{n+1}=\frac{x_n^2+5x_n+4}{x_n+6}$$for all nonnegative integers $n.$ Let $m$ be the least positive integer such that$$x_m\leq 4+\frac{1}{2^{20}}.$$In which of the following intervals does $m$ lie?
+
+(A) $[9,26]$  (B) $[27,80]$  (C) $[81,242]$  (D) $[243,728]$  (E) $[729,\infty)$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-25": { s: String.raw`How many sequences of $0$s and $1$s of length $19$ are there that begin with a $0,$ end with a $0,$ contain no two consecutive $0$s, and contain no three consecutive $1$s?
+
+(A) $55$  (B) $60$  (C) $65$  (D) $70$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-3": { s: String.raw`In a high school with $500$ students, $40\%$ of the seniors play a musical instrument, while $30\%$ of the non-seniors do not play a musical instrument. In all, $46.8\%$ of the students do not play a musical instrument. How many non-seniors play a musical instrument?
+
+(A) $66$  (B) $154$  (C) $186$  (D) $220$  (E) $266$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-4": { s: String.raw`All lines with equation $ax+by=c$ such that $a,$ $b,$ $c$ form an arithmetic progression pass through a common point. What are the coordinates of that point?
+
+(A) $(-1,2)$  (B) $(0,1)$  (C) $(1,-2)$  (D) $(1,0)$  (E) $(1,2)$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-5": { s: String.raw`Triangle $ABC$ lies in the first quadrant. Points $A,$ $B,$ and $C$ are reflected across the line $y=x$ to points $A',$ $B',$ and $C',$ respectively. Assume that none of the vertices of the triangle lie on the line $y=x.$ Which of the following statements is not always true?
+
+(A) Triangle $A'B'C'$ lies in the first quadrant.
+(B) Triangles $ABC$ and $A'B'C'$ have the same area.
+(C) The slope of line $AA'$ is $-1.$
+(D) The slopes of lines $AA'$ and $CC'$ are the same.
+(E) Lines $AB$ and $A'B'$ are perpendicular to each other.`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-6": { s: String.raw`A positive integer $n$ satisfies the equation$$(n+1)! + (n+2)! = n! \cdot 440.$$What is the sum of the digits of $n?$
+
+(A) $2$  (B) $5$  (C) $10$  (D) $12$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-7": { s: String.raw`Each piece of candy in a shop costs a whole number of cents. Casper has exactly enough money to buy either $12$ pieces of red candy, $14$ pieces of green candy, $15$ pieces of blue candy, or $n$ pieces of purple candy. A piece of purple candy costs $20$ cents. What is the least possible value of $n?$
+
+(A) $18$  (B) $21$  (C) $24$  (D) $25$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-8": { s: String.raw`The figure below shows a square and four equilateral triangles, with each triangle having a side lying on a side of the square, such that each triangle has side length $2$ and the third vertices of the triangles meet at the center of the square. The region inside the square but outside the triangles is shaded. What is the area of the shaded region?
+
+@@fig:amc10/2019B/8.svg@@
+
+(A) $4$  (B) $12 - 4\sqrt{3}$  (C) $3\sqrt{3}$  (D) $4\sqrt{3}$  (E) $16 - 4\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-10b-9": { s: String.raw`The function $f$ is defined by$$f(x) = \lfloor|x|\rfloor - |\lfloor x \rfloor|$$for all real numbers $x,$ where $\lfloor r \rfloor$ denotes the greatest integer less than or equal to the real number $r.$ What is the range of $f?$
+
+(A) $\{-1, 0\}$  (B) The set of nonpositive integers  (C) $\{-1, 0, 1\}$  (D) $\{0\}$  (E) The set of nonnegative integers`, u: "https://live.poshenloh.com/past-contests/amc10/2019B" },
+"2019-amc-12a-1": { s: String.raw`The area of a pizza with radius $4$ inches is $N$ percent larger than the area of a pizza with radius $3$ inches. What is the integer closest to $N?$
+
+(A) $25$  (B) $33$  (C) $44$  (D) $66$  (E) $78$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-10": { s: String.raw`The figure below shows $13$ circles of radius $1$ within a larger circle. All the intersections occur at points of tangency. What is the area of the region, shaded in the figure, inside the larger circle but outside all the circles of radius $1?$
+
+@@fig:amc12/2019A/10.svg@@
+
+(A) $4\pi\sqrt{3}$  (B) $7\pi$  (C) $\pi(3\sqrt{3} + 2)$  (D) $10\pi(\sqrt{3} - 1)$  (E) $\pi(\sqrt{3} + 6)$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-11": { s: String.raw`For some positive integer $k,$ the repeating base-$k$ representation of the (base-ten) fraction $\dfrac{7}{51}$ is $0.\overline{23}_k = 0.232323\ldots_k.$ What is $k?$
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-12": { s: String.raw`Positive real numbers $x \ne 1$ and $y \ne 1$ satisfy $\log_2 x = \log_y 16$ and $xy = 64.$ What is $\left(\log_2 \dfrac{x}{y}\right)^2?$
+
+(A) $\dfrac{25}{2}$  (B) $20$  (C) $\dfrac{45}{2}$  (D) $25$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-13": { s: String.raw`How many ways are there to paint each of the integers $2,$ $3,$ $\ldots,$ $9$ either red, green, or blue so that each number has a different color from each of its proper divisors?
+
+(A) $144$  (B) $216$  (C) $256$  (D) $384$  (E) $432$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-14": { s: String.raw`For a certain complex number $c,$ the polynomial$$P(x) = (x^2 - 2x + 2) \cdot (x^2 - cx + 4) \cdot (x^2 - 4x + 8)$$has exactly $4$ distinct roots. What is $|c|?$
+
+(A) $2$  (B) $\sqrt{6}$  (C) $2\sqrt{2}$  (D) $3$  (E) $\sqrt{10}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-15": { s: String.raw`Positive real numbers $a$ and $b$ have the property that$$\sqrt{\log a} + \sqrt{\log b} + \log \sqrt{a} + \log \sqrt{b} = 100$$and all four terms on the left are positive integers, where $\log$ denotes the base $10$ logarithm. What is $ab?$
+
+(A) $10^{52}$  (B) $10^{100}$  (C) $10^{144}$  (D) $10^{164}$  (E) $10^{200}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-16": { s: String.raw`The numbers $1,$ $2,$ $\ldots,$ $9$ are randomly placed into the $9$ squares of a $3 \times 3$ grid. Each square gets one number, and each of the numbers is used once. What is the probability that the sum of the numbers in each row and each column is odd?
+
+(A) $\dfrac{1}{21}$  (B) $\dfrac{1}{14}$  (C) $\dfrac{5}{63}$  (D) $\dfrac{2}{21}$  (E) $\dfrac{1}{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-17": { s: String.raw`Let $s_k$ denote the sum of the $k$th powers of the roots of the polynomial $x^3 - 5x^2 + 8x - 13.$ In particular, $s_0 = 3,$ $s_1 = 5,$ and $s_2 = 9.$ Let $a,$ $b,$ and $c$ be real numbers such that $s_{k+1} = a\,s_k + b\,s_{k-1} + c\,s_{k-2}$ for $k = 2,$ $3,$ $\ldots.$ What is $a + b + c?$
+
+(A) $-6$  (B) $0$  (C) $6$  (D) $10$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-18": { s: String.raw`A sphere with center $O$ has radius $6.$ A triangle with sides of length $15,$ $15,$ and $24$ is situated in space so that each of its sides is tangent to the sphere. What is the distance between $O$ and the plane determined by the triangle?
+
+(A) $2\sqrt{3}$  (B) $4$  (C) $3\sqrt{2}$  (D) $2\sqrt{5}$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-19": { s: String.raw`In $\triangle ABC$ with integer side lengths,$$\begin{aligned}\cos A &= \dfrac{11}{16}, \\ \cos B &= \dfrac{7}{8}, \\ \cos C &= -\dfrac{1}{4}.\end{aligned}$$What is the least possible perimeter for $\triangle ABC?$
+
+(A) $9$  (B) $12$  (C) $23$  (D) $27$  (E) $44$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-2": { s: String.raw`Suppose $a$ is $150\%$ of $b.$ What percent of $a$ is $3b?$
+
+(A) $50$  (B) $66\dfrac{2}{3}$  (C) $150$  (D) $200$  (E) $450$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-20": { s: String.raw`Real numbers between $0$ and $1,$ inclusive, are chosen in the following manner. A fair coin is flipped. If it lands heads, then it is flipped again and the chosen number is $0$ if the second flip is heads and $1$ if the second flip is tails. On the other hand, if the first coin flip is tails, then the number is chosen uniformly at random from the closed interval $[0, 1].$ Two random numbers $x$ and $y$ are chosen independently in this manner. What is the probability that $|x - y| \gt \dfrac{1}{2}?$
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{7}{16}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-21": { s: String.raw`Let$$ z = \dfrac{1 + i}{\sqrt{2}}. $$What is$$\left(z^{1^2} + z^{2^2} + z^{3^2} + \cdots + z^{12^2}\right) \cdot \left(\dfrac{1}{z^{1^2}} + \dfrac{1}{z^{2^2}} + \dfrac{1}{z^{3^2}} + \cdots + \dfrac{1}{z^{12^2}}\right)?$$(A) $18$  (B) $72 - 36\sqrt{2}$  (C) $36$  (D) $72$  (E) $72 + 36\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-22": { s: String.raw`Circles $\omega$ and $\gamma,$ both centered at $O,$ have radii $20$ and $17,$ respectively. Equilateral triangle $ABC,$ whose interior lies in the interior of $\omega$ but in the exterior of $\gamma,$ has vertex $A$ on $\omega,$ and the line containing side $BC$ is tangent to $\gamma.$ Segments $AO$ and $BC$ intersect at $P,$ and $\dfrac{BP}{CP} = 3.$ Then $AB$ can be written in the form $\dfrac{m}{\sqrt{n}} - \dfrac{p}{\sqrt{q}}$ for positive integers $m,$ $n,$ $p,$ $q$ with $\gcd(m, n) = \gcd(p, q) = 1.$ What is $m + n + p + q?$
+
+(A) $42$  (B) $86$  (C) $92$  (D) $114$  (E) $130$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-23": { s: String.raw`Define binary operations $\diamondsuit$ and $\heartsuit$ by$$ a \diamondsuit b = a^{\log_7(b)} $$and$$ a \heartsuit b = a^{\frac{1}{\log_7(b)}} $$for all real numbers $a$ and $b$ for which these expressions are defined. The sequence $(a_n)$ is defined recursively by $a_3 = 3 \heartsuit 2$ and$$ a_n = (n \heartsuit (n - 1)) \diamondsuit a_{n-1} $$for all integers $n \ge 4.$ To the nearest integer, what is $\log_7(a_{2019})?$
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-24": { s: String.raw`For how many integers $n$ between $1$ and $50,$ inclusive, is$$ \dfrac{(n^2 - 1)!}{(n!)^n} $$an integer? (Recall that $0! = 1.$)
+
+(A) $31$  (B) $32$  (C) $33$  (D) $34$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-25": { s: String.raw`Let $\triangle A_0 B_0 C_0$ be a triangle whose angle measures are exactly $59.999^\circ,$ $60^\circ,$ and $60.001^\circ.$ For each positive integer $n$ define $A_n$ to be the foot of the altitude from $A_{n-1}$ to line $B_{n-1}C_{n-1}.$ Likewise, define $B_n$ to be the foot of the altitude from $B_{n-1}$ to line $A_{n-1}C_{n-1},$ and $C_n$ to be the foot of the altitude from $C_{n-1}$ to line $A_{n-1}B_{n-1}.$ What is the least positive integer $n$ for which $\triangle A_n B_n C_n$ is obtuse?
+
+(A) $10$  (B) $11$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-3": { s: String.raw`A box contains $28$ red balls, $20$ green balls, $19$ yellow balls, $13$ blue balls, $11$ white balls, and $9$ black balls. What is the minimum number of balls that must be drawn from the box without replacement to guarantee that at least $15$ balls of a single color will be drawn?
+
+(A) $75$  (B) $76$  (C) $79$  (D) $84$  (E) $91$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-4": { s: String.raw`What is the greatest number of consecutive integers whose sum is $45?$
+
+(A) $9$  (B) $25$  (C) $45$  (D) $90$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-5": { s: String.raw`Two lines with slopes $\dfrac{1}{2}$ and $2$ intersect at $(2, 2).$ What is the area of the triangle enclosed by these two lines and the line $x + y = 10?$
+
+(A) $4$  (B) $4\sqrt{2}$  (C) $6$  (D) $8$  (E) $6\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-6": { s: String.raw`The figure below shows line $\ell$ with a regular, infinite, recurring pattern of squares and line segments.
+
+@@fig:amc12/2019A/6.svg@@
+
+How many of the following four kinds of rigid motion transformations of the plane in which this figure is drawn, other than the identity transformation, will transform this figure into itself?
+
+• some rotation around a point of line $\ell$
+
+• some translation in the direction parallel to line $\ell$
+
+• the reflection across line $\ell$
+
+• some reflection across a line perpendicular to line $\ell$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-7": { s: String.raw`Melanie computes the mean $\mu,$ the median $M,$ and the modes of the $365$ values that are the dates in the months of $2019.$ Thus her data consist of $12$ $1$s, $12$ $2$s, $\ldots,$ $12$ $28$s, $11$ $29$s, $11$ $30$s, and $7$ $31$s. Let $d$ be the median of the modes. Which of the following statements is true?
+
+(A) $\mu \lt d \lt M$  (B) $M \lt d \lt \mu$  (C) $d = M = \mu$  (D) $d \lt M \lt \mu$  (E) $d \lt \mu \lt M$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-8": { s: String.raw`For a set of four distinct lines in a plane, there are exactly $N$ distinct points that lie on two or more of the lines. What is the sum of all possible values of $N?$
+
+(A) $14$  (B) $16$  (C) $18$  (D) $19$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12a-9": { s: String.raw`A sequence of numbers is defined recursively by $a_1 = 1,$ $a_2 = \dfrac{3}{7},$ and$$ a_n = \dfrac{a_{n-2} \cdot a_{n-1}}{2a_{n-2} - a_{n-1}} $$for all $n \ge 3.$ Then $a_{2019}$ can be written as $\dfrac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. What is $p + q?$
+
+(A) $2020$  (B) $4039$  (C) $6057$  (D) $6061$  (E) $8078$`, u: "https://live.poshenloh.com/past-contests/amc12/2019A" },
+"2019-amc-12b-1": { s: String.raw`Alicia had two containers. The first was $\dfrac{5}{6}$ full of water and the second was empty. She poured all the water from the first container into the second container, at which point the second container was $\dfrac{3}{4}$ full of water. What is the ratio of the volume of the first container to the volume of the second container?
+
+(A) $\dfrac{5}{8}$  (B) $\dfrac{4}{5}$  (C) $\dfrac{7}{8}$  (D) $\dfrac{9}{10}$  (E) $\dfrac{11}{12}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-10": { s: String.raw`The figure below is a map showing $12$ cities and $17$ roads connecting certain pairs of cities. Paula wishes to travel along exactly $13$ of those roads, starting at city $A$ and ending at city $L,$ without traveling along any portion of a road more than once. (Paula is allowed to visit a city more than once.) How many different routes can Paula take?
+
+@@fig:amc12/2019B/10.svg@@
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-11": { s: String.raw`How many unordered pairs of edges of a given cube determine a plane?
+
+(A) $12$  (B) $28$  (C) $36$  (D) $42$  (E) $66$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-12": { s: String.raw`Right triangle $ACD$ with right angle at $C$ is constructed outwards on the hypotenuse $\overline{AC}$ of isosceles right triangle $ABC$ with leg length $1,$ as shown, so that the two triangles have equal perimeters. What is $\sin(2\angle BAD)?$
+
+@@fig:amc12/2019B/12.svg@@
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{\sqrt2}{2}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{7}{9}$  (E) $\dfrac{\sqrt3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-13": { s: String.raw`A red ball and a green ball are randomly and independently tossed into bins numbered with the positive integers so that for each ball, the probability that it is tossed into bin $k$ is $2^{-k}$ for $k=1,$ $2,$ $3,$ $\ldots$ What is the probability that the red ball is tossed into a higher-numbered bin than the green ball?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{2}{7}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{3}{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-14": { s: String.raw`Let $S$ be the set of all positive integer divisors of $100{,}000.$ How many numbers are the product of two distinct elements of $S?$
+
+(A) $98$  (B) $100$  (C) $117$  (D) $119$  (E) $121$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-15": { s: String.raw`As shown in the figure, line segment $\overline{AD}$ is trisected by points $B$ and $C$ so that $AB=BC=CD=2.$ Three semicircles of radius $1,$ $AEB,$ $BFC,$ and $CGD,$ have their diameters on $\overline{AD},$ and are tangent to line $EG$ at $E,$ $F,$ and $G,$ respectively. A circle of radius $2$ has its center on $F.$ The area of the region inside the circle but outside the three semicircles, shaded in the figure, can be expressed in the form$$ \dfrac{a}{b}\cdot\pi-\sqrt{c}+d, $$where $a,$ $b,$ $c,$ and $d$ are positive integers and $a$ and $b$ are relatively prime. What is $a+b+c+d?$
+
+@@fig:amc12/2019B/15.svg@@
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-16": { s: String.raw`There are lily pads in a row numbered $0$ to $11,$ in that order. There are predators on lily pads $3$ and $6,$ and a morsel of food on lily pad $10.$ Fiona the frog starts on pad $0,$ and from any given lily pad, has a $\dfrac12$ chance to hop to the next pad, and an equal chance to jump $2$ pads. What is the probability that Fiona reaches pad $10$ without landing on either pad $3$ or pad $6?$
+
+(A) $\dfrac{15}{256}$  (B) $\dfrac{1}{16}$  (C) $\dfrac{15}{128}$  (D) $\dfrac{1}{8}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-17": { s: String.raw`How many nonzero complex numbers $z$ have the property that $0,$ $z,$ and $z^3,$ when represented by points in the complex plane, are the three distinct vertices of an equilateral triangle?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-18": { s: String.raw`Square pyramid $ABCDE$ has base $ABCD,$ which measures $3$ cm on a side, and altitude $\overline{AE}$ perpendicular to the base, which measures $6$ cm. Point $P$ lies on $\overline{BE},$ one third of the way from $B$ to $E;$ point $Q$ lies on $\overline{DE},$ one third of the way from $D$ to $E;$ and point $R$ lies on $\overline{CE},$ two thirds of the way from $C$ to $E.$ What is the area, in square centimeters, of $\triangle PQR?$
+
+(A) $\dfrac{3\sqrt2}{2}$  (B) $\dfrac{3\sqrt3}{2}$  (C) $2\sqrt2$  (D) $2\sqrt3$  (E) $3\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-19": { s: String.raw`Raashan, Sylvia, and Ted play the following game. Each starts with $\$1.$ A bell rings every $15$ seconds, at which time each of the players who currently have money simultaneously chooses one of the other two players independently and at random and gives $\$1$ to that player. What is the probability that after the bell has rung $2019$ times, each player will have $\$1?$ (For example, Raashan and Ted may each decide to give $\$1$ to Sylvia, and Sylvia may decide to give her dollar to Ted, at which point Raashan will have $\$0,$ Sylvia will have $\$2,$ and Ted will have $\$1,$ and that is the end of the first round of play. In the second round Raashan has no money to give, but Sylvia and Ted might choose each other to give their $\$1$ to, and the holdings will be the same at the end of the second round.)
+
+(A) $\dfrac{1}{7}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-2": { s: String.raw`Consider the statement, “If $n$ is not prime, then $n-2$ is prime.” Which of the following values of $n$ is a counterexample to this statement?
+
+(A) $11$  (B) $15$  (C) $19$  (D) $21$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-20": { s: String.raw`Points $A(6,13)$ and $B(12,11)$ lie on circle $\omega$ in the plane. Suppose that the tangent lines to $\omega$ at $A$ and $B$ intersect at a point on the $x$-axis. What is the area of $\omega?$
+
+(A) $\dfrac{83\pi}{8}$  (B) $\dfrac{21\pi}{2}$  (C) $\dfrac{85\pi}{8}$  (D) $\dfrac{43\pi}{4}$  (E) $\dfrac{87\pi}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-21": { s: String.raw`How many quadratic polynomials with real coefficients are there such that the set of roots equals the set of coefficients? (For clarification: If the polynomial is $ax^2+bx+c,$ $a\neq0,$ and the roots are $r$ and $s,$ then the requirement is that $\{a,b,c\}=\{r,s\}.$)
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-22": { s: String.raw`Define a sequence recursively by $x_0=5$ and$$ x_{n+1}=\dfrac{x_n^2+5x_n+4}{x_n+6} $$for all nonnegative integers $n.$ Let $m$ be the least positive integer such that$$ x_m\le4+\dfrac{1}{2^{20}}. $$In which of the following intervals does $m$ lie?
+
+(A) $[9,26]$  (B) $[27,80]$  (C) $[81,242]$  (D) $[243,728]$  (E) $[729,\infty)$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-23": { s: String.raw`How many sequences of $0$s and $1$s of length $19$ are there that begin with a $0,$ end with a $0,$ contain no two consecutive $0$s, and contain no three consecutive $1$s?
+
+(A) $55$  (B) $60$  (C) $65$  (D) $70$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-24": { s: String.raw`Let $\omega=-\dfrac12+\dfrac12 i\sqrt3.$ Let $S$ denote all points in the complex plane of the form $a+b\omega+c\omega^2,$ where $0\le a\le1,$ $0\le b\le1,$ and $0\le c\le1.$ What is the area of $S?$
+
+(A) $\dfrac12\sqrt3$  (B) $\dfrac34\sqrt3$  (C) $\dfrac32\sqrt3$  (D) $\dfrac12\pi\sqrt3$  (E) $\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-25": { s: String.raw`Let $ABCD$ be a convex quadrilateral with $BC=2$ and $CD=6.$ Suppose that the centroids of $\triangle ABC,$ $\triangle BCD,$ and $\triangle ACD$ form the vertices of an equilateral triangle. What is the maximum possible value of the area of $ABCD?$
+
+(A) $27$  (B) $16\sqrt3$  (C) $12+10\sqrt3$  (D) $9+12\sqrt3$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-3": { s: String.raw`Which one of the following rigid transformations (isometries) maps the line segment $\overline{AB}$ onto the line segment $\overline{A'B'}$ so that the image of $A(-2,1)$ is $A'(2,-1)$ and the image of $B(-1,4)$ is $B'(1,-4)?$
+
+(A) reflection in the $y$-axis
+(B) counterclockwise rotation around the origin by $90^\circ$
+(C) translation by $3$ units to the right and $5$ units down
+(D) reflection in the $x$-axis
+(E) clockwise rotation about the origin by $180^\circ$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-4": { s: String.raw`A positive integer $n$ satisfies the equation $(n+1)!+(n+2)!=440\cdot n!.$ What is the sum of the digits of $n?$
+
+(A) $2$  (B) $5$  (C) $10$  (D) $12$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-5": { s: String.raw`Each piece of candy in a store costs a whole number of cents. Casper has exactly enough money to buy either $12$ pieces of red candy, $14$ pieces of green candy, $15$ pieces of blue candy, or $n$ pieces of purple candy. A piece of purple candy costs $20$ cents. What is the smallest possible value of $n?$
+
+(A) $18$  (B) $21$  (C) $24$  (D) $25$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-6": { s: String.raw`In a given plane, points $A$ and $B$ are $10$ units apart. How many points $C$ are there in the plane such that the perimeter of $\triangle ABC$ is $50$ units and the area of $\triangle ABC$ is $100$ square units?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $8$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-7": { s: String.raw`What is the sum of all real numbers $x$ for which the median of the numbers $4,$ $6,$ $8,$ $17,$ and $x$ is equal to the mean of those five numbers?
+
+(A) $-5$  (B) $0$  (C) $5$  (D) $\dfrac{15}{4}$  (E) $\dfrac{35}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-8": { s: String.raw`Let $f(x)=x^2(1-x)^2.$ What is the value of the sum$$f\!\left(\tfrac{1}{2019}\right)-f\!\left(\tfrac{2}{2019}\right) +f\!\left(\tfrac{3}{2019}\right)-f\!\left(\tfrac{4}{2019}\right) +\cdots+f\!\left(\tfrac{2017}{2019}\right) -f\!\left(\tfrac{2018}{2019}\right)?$$(A) $0$  (B) $\dfrac{1}{2019^4}$  (C) $\dfrac{2018^2}{2019^4}$  (D) $\dfrac{2020^2}{2019^4}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-12b-9": { s: String.raw`For how many integral values of $x$ can a triangle of positive area be formed having side lengths $\log_2 x,$ $\log_4 x,$ and $3?$
+
+(A) $57$  (B) $59$  (C) $61$  (D) $62$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc12/2019B" },
+"2019-amc-8-1": { s: String.raw`Ike and Mike go into a sandwich shop with a total of $\$30.00$ to spend. Sandwiches cost $\$4.50$ each and soft drinks cost $\$1.00$ each. Ike and Mike plan to buy as many sandwiches as they can, and use any remaining money to buy soft drinks. Counting both soft drinks and sandwiches, how many items will they buy?
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-10": { s: String.raw`The diagram shows the number of students at soccer practice each weekday during last week. After computing the mean and median values, Coach discovers that there were actually $21$ participants on Wednesday. Which of the following statements describes the change in the mean and median after the correction is made?
+
+@@fig:amc8/2019/10.svg@@
+
+(A) The mean increases by $1$ and the median does not change.
+(B) The mean increases by $1$ and the median increases by $1.$
+(C) The mean increases by $1$ and the median increases by $5.$
+(D) The mean increases by $5$ and the median increases by $1.$
+(E) The mean increases by $5$ and the median increases by $5.$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-11": { s: String.raw`The eighth grade class at Lincoln Middle School has $93$ students. Each student takes a math class or a foreign language class or both. There are $70$ eighth graders taking a math class, and there are $54$ eighth graders taking a foreign language class. How many eighth graders take only a math class and not a foreign language class?
+
+(A) $16$  (B) $23$  (C) $31$  (D) $39$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-12": { s: String.raw`The faces of a cube are painted in six different colors: red ($R$), white ($W$), green ($G$), brown ($B$), aqua ($A$), and purple ($P$). Three views of the cube are shown below. What is the color of the face opposite the aqua face?
+
+@@fig:amc8/2019/12.svg@@
+
+(A) red  (B) white  (C) green  (D) brown  (E) purple`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-13": { s: String.raw`A palindrome is a number that has the same value when read from left to right or from right to left. (For example, $12321$ is a palindrome.) Let $N$ be the least three-digit integer which is not a palindrome but which is the sum of three distinct two-digit palindromes. What is the sum of the digits of $N?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-14": { s: String.raw`Isabella has $6$ coupons that can be redeemed for free ice cream cones at Pete’s Sweet Treats. In order to make the coupons last, she decides that she will redeem one every $10$ days until she has used them all. She knows that Pete’s is closed on Sundays, but as she circles the $6$ dates on her calendar, she realizes that no circled date falls on a Sunday. On what day of the week does Isabella redeem her first coupon?
+
+(A) Monday  (B) Tuesday  (C) Wednesday  (D) Thursday  (E) Friday`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-15": { s: String.raw`On a beach $50$ people are wearing sunglasses and $35$ people are wearing caps. Some people are wearing both sunglasses and caps. If one of the people wearing a cap is selected at random, the probability that this person is also wearing sunglasses is $\dfrac{2}{5}.$ If instead, someone wearing sunglasses is selected at random, what is the probability that this person is also wearing a cap?
+
+(A) $\displaystyle \dfrac{14}{85}$  (B) $\displaystyle \dfrac{7}{25}$  (C) $\displaystyle \dfrac{2}{5}$  (D) $\displaystyle \dfrac{4}{7}$  (E) $\displaystyle \dfrac{7}{10}$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-16": { s: String.raw`Qiang drives $15$ miles at an average speed of $30$ miles per hour. How many additional miles will he have to drive at $55$ miles per hour to average $50$ miles per hour for the entire trip?
+
+(A) $45$  (B) $62$  (C) $90$  (D) $110$  (E) $135$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-17": { s: String.raw`What is the value of the product below?$$\begin{align*}\displaystyle & \left(\dfrac{1\cdot 3}{2\cdot 2}\right)\left(\dfrac{2\cdot 4}{3\cdot 3}\right)\left(\dfrac{3\cdot 5}{4\cdot 4}\right) \\ & \dots\left(\dfrac{97\cdot 99}{98\cdot 98}\right)\left(\dfrac{98\cdot 100}{99\cdot 99}\right) \end{align*}$$(A) $\displaystyle \dfrac{1}{2}$
+(B) $\displaystyle \dfrac{50}{99}$
+(C) $\displaystyle \dfrac{9800}{9801}$
+(D) $\displaystyle \dfrac{100}{99}$
+(E) $50$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-18": { s: String.raw`The faces of each of two fair dice are numbered $1,$ $2,$ $3,$ $5,$ $7,$ and $8.$ When the two dice are tossed, what is the probability that their sum will be an even number?
+
+(A) $\displaystyle \dfrac{4}{9}$  (B) $\displaystyle \dfrac{1}{2}$  (C) $\displaystyle \dfrac{5}{9}$  (D) $\displaystyle \dfrac{3}{5}$  (E) $\displaystyle \dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-19": { s: String.raw`In a tournament there are six teams that play each other twice. A team earns $3$ points for a win, $1$ point for a draw, and $0$ points for a loss. After all the games have been played it turns out that the top three teams earned the same number of total points. What is the greatest possible number of total points for each of the top three teams?
+
+(A) $22$  (B) $23$  (C) $24$  (D) $26$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-2": { s: String.raw`Three identical rectangles are put together to form rectangle $ABCD,$ as shown in the figure below. Given that the length of the shorter side of each of the smaller rectangles is $5$ feet, what is the area in square feet of rectangle $ABCD?$
+
+@@fig:amc8/2019/2.svg@@
+
+(A) $45$  (B) $75$  (C) $100$  (D) $125$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-20": { s: String.raw`How many different real numbers $x$ satisfy the equation$$ (x^2 - 5)^2 = 16? $$(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-21": { s: String.raw`What is the area of the triangle formed by the lines $y = 5,$ $y = 1 + x,$ and $y = 1 - x?$
+
+(A) $4$  (B) $8$  (C) $10$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-22": { s: String.raw`A store increased the original price of a shirt by a certain percent and then decreased the new price by the same percent. Given that the resulting price was $84\%$ of the original price, by what percent was the price increased and decreased?
+
+(A) $16$  (B) $20$  (C) $28$  (D) $36$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-23": { s: String.raw`After Euclid High School’s last basketball game, it was determined that $\dfrac{1}{4}$ of the team’s points were scored by Alexa and $\dfrac{2}{7}$ were scored by Brittany. Chelsea scored $15$ points. None of the other $7$ team members scored more than $2$ points. What was the total number of points scored by the other $7$ team members?
+
+(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-24": { s: String.raw`In triangle $ABC,$ point $D$ divides side $\overline{AC}$ so that $AD : DC = 1 : 2.$ Let $E$ be the midpoint of $\overline{BD}$ and let $F$ be the point of intersection of line $BC$ and line $AE.$ Given that the area of $\triangle ABC$ is $360,$ what is the area of $\triangle EBF?$
+
+@@fig:amc8/2019/24.svg@@
+
+(A) $24$  (B) $30$  (C) $32$  (D) $36$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-25": { s: String.raw`Alice has $24$ apples. In how many ways can she share them with Becky and Chris so that each of the three people has at least two apples?
+
+(A) $105$  (B) $114$  (C) $190$  (D) $210$  (E) $380$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-3": { s: String.raw`Which of the following is the correct order of the fractions $\dfrac{15}{11},$ $\dfrac{19}{15},$ and $\dfrac{17}{13},$ from least to greatest?
+
+(A) $\dfrac{15}{11} \lt \dfrac{17}{13} \lt \dfrac{19}{15}$
+(B) $\dfrac{15}{11} \lt \dfrac{19}{15} \lt \dfrac{17}{13}$
+(C) $\dfrac{17}{13} \lt \dfrac{19}{15} \lt \dfrac{15}{11}$
+(D) $\dfrac{19}{15} \lt \dfrac{15}{11} \lt \dfrac{17}{13}$
+(E) $\dfrac{19}{15} \lt \dfrac{17}{13} \lt \dfrac{15}{11}$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-4": { s: String.raw`Quadrilateral $ABCD$ is a rhombus with perimeter $52$ meters. The length of diagonal $\overline{AC}$ is $24$ meters. What is the area in square meters of rhombus $ABCD?$
+
+@@fig:amc8/2019/4.svg@@
+
+(A) $60$  (B) $90$  (C) $105$  (D) $120$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-5": { s: String.raw`A tortoise challenges a hare to a race. The hare eagerly agrees and quickly runs ahead, leaving the slow-moving tortoise behind. Confident that he will win, the hare stops to take a nap. Meanwhile, the tortoise walks at a slow steady pace for the entire race. The hare awakes and runs to the finish line, only to find the tortoise already there. Which of the following graphs matches the description of the race, showing the distance $d$ traveled by the two animals over time $t$ from start to finish?
+
+(A) @@ci:amc8/2019/5a.svg|12rem@@  (B) @@ci:amc8/2019/5b.svg|12rem@@  (C) @@ci:amc8/2019/5c.svg|12rem@@  (D) @@ci:amc8/2019/5d.svg|12rem@@  (E) @@ci:amc8/2019/5e.svg|12rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-6": { s: String.raw`There are $81$ grid points (uniformly spaced) in the square shown in the diagram below, including the points on the edges. Point $P$ is in the center of the square. Given that point $Q$ is randomly chosen among the other $80$ points, what is the probability that the line $PQ$ is a line of symmetry for the square?
+
+@@fig:amc8/2019/6.svg@@
+
+(A) $\displaystyle \dfrac{1}{5}$  (B) $\displaystyle \dfrac{1}{4}$  (C) $\displaystyle \dfrac{2}{5}$  (D) $\displaystyle \dfrac{9}{20}$  (E) $\displaystyle \dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-7": { s: String.raw`Shauna takes five tests, each worth a maximum of $100$ points. Her scores on the first three tests are $76,$ $94,$ and $87.$ In order to average $81$ for all five tests, what is the lowest score she could earn on one of the other two tests?
+
+(A) $48$  (B) $52$  (C) $66$  (D) $70$  (E) $74$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-8": { s: String.raw`Gilda has a bag of marbles. She gives $20\%$ of them to her friend Pedro. Then Gilda gives $10\%$ of what is left to another friend, Ebony. Finally, Gilda gives $25\%$ of what is now left in the bag to her brother Jimmy. What percentage of her original bag of marbles does Gilda have left for herself?
+
+(A) $20$  (B) $33\dfrac{1}{3}$  (C) $38$  (D) $45$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
+"2019-amc-8-9": { s: String.raw`Alex and Felicia each have cats as pets. Alex buys cat food in cylindrical cans that are $6$ cm in diameter and $12$ cm high. Felicia buys cat food in cylindrical cans that are $12$ cm in diameter and $6$ cm high. What is the ratio of the volume of one of Alex’s cans to the volume of one of Felicia’s cans?
+
+(A) $1:4$  (B) $1:2$  (C) $1:1$  (D) $2:1$  (E) $4:1$`, u: "https://live.poshenloh.com/past-contests/amc8/2019" },
 });

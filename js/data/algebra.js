@@ -219,6 +219,32 @@ window.MATH_SECTIONS.push({
       ]
     },
     {
+      title: "Functions & Symmetry",
+      blurb: "Parity, inverses, and the symmetries a function can have: the facts that let one value of a function stand in for another.",
+      formulas: [
+        {
+          id: "odd-even-functions",
+          name: "Odd and Even Functions",
+          latex: String.raw`f(-x) = f(x) \ \ (\text{even}) \qquad f(-x) = -f(x) \ \ (\text{odd})`,
+          description: String.raw`A function is even when its graph is unchanged by reflection in the $y$-axis, which says $f(-x) = f(x)$, and odd when its graph is unchanged by a half turn about the origin, which says $f(-x) = -f(x)$. The names come from the powers of $x$: $x^n$ is even for even $n$ and odd for odd $n$. Most functions are neither, but every function splits into an even part plus an odd part, and the parity of a sum, product, or composition follows from the parities of its pieces, so a problem that gives $f(-a)$ and asks for $f(a)$ is usually hiding an odd part. Symmetry about a line other than the $y$-axis is the subject of [[function-symmetry-equation|Writing a Function's Symmetry as an Equation]].`,
+          keywords: ["function", "even function", "odd function", "parity of a function", "f(-x)", "symmetric about the y-axis", "symmetric about the origin", "even and odd parts", "symmetric interval"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
+          id: "inverse-function-properties",
+          name: "Properties of Inverse Functions",
+          latex: String.raw`f(f^{-1}(x)) = x, \quad f^{-1}(f(x)) = x \qquad f(a) = b \iff f^{-1}(b) = a`,
+          description: String.raw`The inverse of a function $f$ undoes it: $f^{-1}(b) = a$ exactly when $f(a) = b$. It exists when $f$ never takes the same value twice, which for a continuous function on an interval means $f$ is strictly increasing or strictly decreasing; a function that fails this has an inverse only after its domain is restricted, as $\sqrt{x}$ inverts $x^2$ only on $x \ge 0$. The graph of $f^{-1}$ is the graph of $f$ reflected in the line $y = x$, so the domain and range trade places, and evaluating $f^{-1}(b)$ comes down to solving $f(x) = b$. The notation $f^{-1}(x)$ never means the reciprocal $\frac{1}{f(x)}$.`,
+          keywords: ["function", "inverse function", "f inverse", "one-to-one", "horizontal line test", "reflection in y=x", "undo a function", "compose inverse"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        }
+      ]
+    },
+    {
       title: "Matrices, Determinants & Linear Systems",
       blurb: "Determinants, matrix powers, eigenvalues, and Cramer's rule for linear systems.",
       formulas: [
@@ -235,7 +261,7 @@ window.MATH_SECTIONS.push({
         {
           id: "determinant-geometric",
           name: "The Determinant as Signed Area",
-          latex: String.raw`\begin{vmatrix} u_1 & u_2 \\ v_1 & v_2 \end{vmatrix} = \pm[\text{parallelogram on } \vec u, \vec v], \qquad [ABC] = \frac{1}{2}\begin{vmatrix} x_B - x_A & y_B - y_A \\ x_C - x_A & y_C - y_A \end{vmatrix}`,
+          latex: String.raw`\begin{vmatrix} u_1 & u_2 \\ v_1 & v_2 \end{vmatrix} = \pm[\text{parallelogram on } \vec u, \vec v], \qquad [ABC] = \frac{1}{2}\left\lvert\begin{vmatrix} x_B - x_A & y_B - y_A \\ x_C - x_A & y_C - y_A \end{vmatrix}\right\rvert`,
           description: String.raw`A $2 \times 2$ determinant is the signed area of the parallelogram spanned by its rows, and a $3 \times 3$ one is the signed volume of the parallelepiped; the sign records orientation. Three points are therefore collinear exactly when that determinant vanishes, and four points are coplanar under the same test one dimension up. The same number says what a linear map does to area: every region's area is multiplied by $\lvert \det \rvert$.`,
           keywords: ["determinant area", "signed area", "collinearity test", "coplanarity test", "parallelepiped volume", "orientation sign", "area scale factor of a linear map", "cross product determinant"],
           importance: "high",
@@ -324,7 +350,7 @@ window.MATH_SECTIONS.push({
         {
           id: "an-minus-bn",
           name: "General $a^n - b^n$ and $a^n + b^n$",
-          latex: String.raw`a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + \cdots + b^{n-1}), \qquad a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)`,
+          latex: String.raw`a^n - b^n = (a-b)(a^{n-1} + a^{n-2}b + \cdots + b^{n-1}), \qquad a^n + b^n = (a+b)(a^{n-1} - a^{n-2}b + \cdots + b^{n-1}) \;\; (n \text{ odd})`,
           description: String.raw`Always divisible by $a - b$. For odd $n$, $a^n + b^n$ is divisible by $a + b$. Key for number theory divisibility arguments too.`,
           keywords: ["divisibility", "factor", "geometric sum", "odd exponent"],
           importance: "medium",
@@ -385,8 +411,8 @@ window.MATH_SECTIONS.push({
         {
           id: "lagranges-identity",
           name: "Lagrange's Identity",
-          latex: String.raw`\left(\sum a_i^2\right)\!\left(\sum b_i^2\right) - \left(\sum a_i b_i\right)^2 = \sum_{i \lt j} (a_i b_j - a_j b_i)^2, \qquad (a^2+b^2)(c^2+d^2) = (ac-bd)^2 + (ad+bc)^2`,
-          latexPlain: String.raw`(a_1^2 + \cdots + a_n^2)(b_1^2 + \cdots + b_n^2) - (a_1b_1 + \cdots + a_nb_n)^2 = (a_1b_2 - a_2b_1)^2 + (a_1b_3 - a_3b_1)^2 + \cdots + (a_{n-1}b_n - a_nb_{n-1})^2, \qquad (a^2+b^2)(c^2+d^2) = (ac-bd)^2 + (ad+bc)^2`,
+          latex: String.raw`\left(\sum a_i^2\right)\!\left(\sum b_i^2\right) - \left(\sum a_i b_i\right)^2 = \sum_{i \lt j} (a_i b_j - a_j b_i)^2`,
+          latexPlain: String.raw`(a_1^2 + \cdots + a_n^2)(b_1^2 + \cdots + b_n^2) - (a_1b_1 + \cdots + a_nb_n)^2 = (a_1b_2 - a_2b_1)^2 + (a_1b_3 - a_3b_1)^2 + \cdots + (a_{n-1}b_n - a_nb_{n-1})^2`,
           description: String.raw`The exact amount by which [[cauchy-schwarz|Cauchy–Schwarz]] falls short: the product of the sums of squares minus the squared [[vector-dot-product|dot product]] equals a sum of squared $2\times 2$ minors. Since the right side is a sum of squares it is $\ge 0$, which is Cauchy–Schwarz; equality forces every $a_i b_j - a_j b_i = 0$, i.e. proportional sequences. The two-term case is the [[brahmagupta-fibonacci|Brahmagupta–Fibonacci Identity]].`,
           keywords: ["lagrange identity", "cauchy schwarz gap", "sum of squares", "cross terms", "minors", "cross product", "brahmagupta generalization"],
           importance: "lower",
@@ -539,7 +565,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\sum_{k=1}^{n} k \cdot k! = (n+1)! - 1, \qquad \sum_{k=1}^{n} \frac{k}{(k+1)!} = 1 - \frac{1}{(n+1)!}`,
           latexPlain: String.raw`1 \cdot 1! + 2 \cdot 2! + \cdots + n \cdot n! = (n+1)! - 1, \qquad \frac{1}{2!} + \frac{2}{3!} + \cdots + \frac{n}{(n+1)!} = 1 - \frac{1}{(n+1)!}`,
           description: String.raw`Both collapse by rewriting the term as a difference: $k \cdot k! = (k+1)! - k!$ and $\frac{k}{(k+1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$. The factorial cousins of partial-fraction telescoping.`,
-          keywords: ["k times k factorial", "telescoping factorial", "factorial sums", "telescoping factorial sum", "k times k factorial", "factorial series"],
+          keywords: ["k times k factorial", "telescoping factorial", "factorial sums", "telescoping factorial sum", "factorial series"],
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
@@ -595,9 +621,9 @@ window.MATH_SECTIONS.push({
         {
           id: "max-product-fixed-sum",
           name: "Maximizing a Product with a Fixed Sum",
-          latex: String.raw`n = 3q + r:\quad \max\prod = \begin{cases} 3^q & r = 0 \\ 4\cdot 3^{q-1} & r = 1 \\ 2\cdot 3^q & r = 2 \end{cases}`,
-          latexPlain: String.raw`n = 3q + r:\quad \max_{a_1 + \cdots + a_k = n} a_1a_2\cdots a_k = \begin{cases} 3^q & r = 0 \\ 4\cdot 3^{q-1} & r = 1 \\ 2\cdot 3^q & r = 2 \end{cases}`,
-          description: String.raw`To break a positive integer $n$ into positive integers with the largest possible product, use as many $3$'s as possible — never a $1$, and at most two $2$'s. The continuous version is pure AM–GM: for a fixed sum the product is largest when the parts are equal, and among integers $3$ (nearest to $e\approx 2.718$) beats $2$.`,
+          latex: String.raw`n = 3q + r,\; n \ge 2:\quad \max\prod = \begin{cases} 3^q & r = 0 \\ 4\cdot 3^{q-1} & r = 1 \\ 2\cdot 3^q & r = 2 \end{cases}`,
+          latexPlain: String.raw`n = 3q + r,\; n \ge 2:\quad \max_{a_1 + \cdots + a_k = n} a_1a_2\cdots a_k = \begin{cases} 3^q & r = 0 \\ 4\cdot 3^{q-1} & r = 1 \\ 2\cdot 3^q & r = 2 \end{cases}`,
+          description: String.raw`To break a positive integer $n$ into positive integers with the largest possible product, use as many $3$'s as possible — never a $1$, and at most two $2$'s. The continuous version is pure AM–GM: for a fixed sum the product is largest when the parts are equal, and among integers $3$ (nearest to $e\approx 2.718$) beats $2$. The formula needs $n \ge 2$: for $n = 1$ the only choice is $1$ itself, whose product is $1$, where the $r = 1$ line would give $\frac43$ (that line is $4 \cdot 3^{q-1}$ and needs $q \ge 1$, that is $n \ge 4$).`,
           keywords: ["maximize product", "fixed sum", "break into threes", "use 3s", "partition maximize product", "largest product", "split integer", "optimization", "am-gm application"],
           importance: "medium",
           tier: "AMC",
@@ -869,10 +895,10 @@ window.MATH_SECTIONS.push({
         {
           id: "roots-unity-distance-product",
           name: "Distance Products over Roots of Unity",
-          latex: String.raw`\prod_{k=1}^{n-1} \left|1 - \omega^k\right| = n, \qquad \prod_{k=1}^{n-1} \sin\frac{k\pi}{n} = \frac{n}{2^{n-1}}`,
-          latexPlain: String.raw`|1 - \omega|\,|1 - \omega^2| \cdots |1 - \omega^{n-1}| = n, \qquad \sin\frac{\pi}{n}\,\sin\frac{2\pi}{n}\cdots\sin\frac{(n-1)\pi}{n} = \frac{n}{2^{n-1}}`,
-          description: String.raw`Distance products over roots of unity multiply the distances from one $n$th root of unity to all the others, and the answer is always $n$: $|1 - \omega|\,|1 - \omega^2| \cdots |1 - \omega^{n-1}| = n$, where $\omega = e^{2\pi i/n}$. It turns the product of all the chords from one vertex of a regular $n$-gon into a single number, $nR^{n-1}$ on a circle of radius $R$. Since each chord is $2\sin\frac{k\pi}{n}$, it also evaluates the sine product $\sin\frac{\pi}{n}\sin\frac{2\pi}{n}\cdots\sin\frac{(n-1)\pi}{n} = \frac{n}{2^{n-1}}$.`,
-          keywords: ["product of distances", "regular polygon vertices", "sine product", "roots of unity", "chord products"],
+          latex: String.raw`\prod_{k=1}^{n-1} \left|1 - \omega^k\right| = n, \qquad \left|1 - \omega^k\right| = 2\sin\frac{k\pi}{n}`,
+          latexPlain: String.raw`|1 - \omega|\,|1 - \omega^2| \cdots |1 - \omega^{n-1}| = n, \qquad |1 - \omega^k| = 2\sin\frac{k\pi}{n}`,
+          description: String.raw`Distance products over roots of unity multiply the distances from one $n$th root of unity to all the others, and the answer is always $n$: $|1 - \omega|\,|1 - \omega^2| \cdots |1 - \omega^{n-1}| = n$, where $\omega = e^{2\pi i/n}$. It turns the product of all the chords from one vertex of a regular $n$-gon into a single number, $nR^{n-1}$ on a circle of radius $R$. Each chord is $2\sin\frac{k\pi}{n}$, so the same product also evaluates the product of those sines, a result with a card of its own.`,
+          keywords: ["product of distances", "regular polygon vertices", "roots of unity", "chord products"],
           importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
@@ -1018,8 +1044,8 @@ window.MATH_SECTIONS.push({
         {
           id: "arctan-telescoping",
           name: "Arctangent Addition & Telescoping",
-          latex: String.raw`\arctan a - \arctan b = \arctan\frac{a - b}{1 + ab}`,
-          description: String.raw`Read right-to-left: a term $\arctan\frac{a-b}{1+ab}$ splits into a difference, so sums of arctangents telescope. Trigger: denominators like $1 + n(n+1)$, i.e. $n^2 + n + 1$.`,
+          latex: String.raw`\arctan a - \arctan b = \arctan\frac{a - b}{1 + ab} \qquad (ab > -1)`,
+          description: String.raw`Read right-to-left: a term $\arctan\frac{a-b}{1+ab}$ splits into a difference, so sums of arctangents telescope. Trigger: denominators like $1 + n(n+1)$, i.e. $n^2 + n + 1$. The formula needs $ab > -1$; when $ab < -1$ the true difference is off by $\pi$.`,
           keywords: ["arctan sum", "telescoping arctangent", "inverse tangent", "tan difference"],
           importance: "medium",
           tier: "AIME Early",
@@ -1039,8 +1065,8 @@ window.MATH_SECTIONS.push({
         {
           id: "triangle-angle-identities",
           name: "Identities for Angles Summing to 180°",
-          latex: String.raw`\tan A + \tan B + \tan C = \tan A \tan B \tan C, \qquad \cos A + \cos B + \cos C = 1 + \frac{r}{R}, \qquad \sin A + \sin B + \sin C = \frac{s}{R}, \qquad \sin 2A + \sin 2B + \sin 2C = 4\sin A \sin B \sin C`,
-          description: String.raw`Valid whenever $A + B + C = 180^\circ$. Companions: $\sin A + \sin B + \sin C = \frac{s}{R}$, $\;\sin 2A + \sin 2B + \sin 2C = 4\sin A \sin B \sin C$, and $\cot A \cot B + \cot B \cot C + \cot C \cot A = 1$. The tangent identity comes from expanding $\tan(A + B) = \tan(180^\circ - C)$.`,
+          latex: String.raw`\tan A + \tan B + \tan C = \tan A \tan B \tan C, \qquad \cos A + \cos B + \cos C = 1 + \frac{r}{R}, \qquad \sin A + \sin B + \sin C = \frac{s}{R}, \qquad \sin 2A + \sin 2B + \sin 2C = 4\sin A \sin B \sin C, \qquad \cot A \cot B + \cot B \cot C + \cot C \cot A = 1`,
+          description: String.raw`Valid whenever $A + B + C = 180^\circ$, with $r$ and $R$ the inradius and circumradius and $s$ the semiperimeter. The tangent identity comes from expanding $\tan(A + B) = \tan(180^\circ - C)$.`,
           keywords: ["tan sum product", "angles sum 180", "cos sum r over R", "triangle identities"],
           importance: "low",
           tier: "AIME Late",

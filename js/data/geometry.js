@@ -201,7 +201,7 @@ window.MATH_SECTIONS.push({
           keywords: ["clock hands", "angle between hands", "time", "angle between clock hands", "hour and minute hand angle", "clock hands problem"],
           importance: "low",
           tier: "AMC",
-          level: ["MATHCOUNTS"]
+          level: ["AMC10", "AMC12"]
         }
       ]
     },
@@ -222,10 +222,20 @@ window.MATH_SECTIONS.push({
         {
           id: "regular-polygon-area",
           name: "Regular Polygon Area",
-          latex: String.raw`A = \tfrac{1}{2}ap = \tfrac{1}{2}nR^2\sin\tfrac{360^\circ}{n}, \qquad A_{\text{oct}} = 2(1+\sqrt2)\,s^2, \qquad A_{\text{dodec}} = 3R^2`,
-          description: String.raw`A regular polygon with $n$ sides of length $s$ has area $A = \frac12ap$, half its apothem $a$ times its perimeter $p = ns$, or in terms of its circumradius $R$, $A = \frac12nR^2\sin\frac{360^\circ}{n}$. The apothem is the distance from the center to a side, the radius of the inscribed circle. Two special cases are worth knowing: a regular octagon of side $s$ has area $2(1 + \sqrt2)s^2$, and a regular dodecagon inscribed in a circle of radius $R$ has area exactly $3R^2$.`,
-          keywords: ["apothem", "perimeter", "regular", "n-gon area", "octagon area", "dodecagon area"],
+          latex: String.raw`A = \tfrac{1}{2}ap = \tfrac{1}{2}nR^2\sin\tfrac{360^\circ}{n}`,
+          description: String.raw`A regular polygon with $n$ sides of length $s$ has area $A = \frac12ap$, half its apothem $a$ times its perimeter $p = ns$, or in terms of its circumradius $R$, $A = \frac12nR^2\sin\frac{360^\circ}{n}$. The apothem is the distance from the center to a side, the radius of the inscribed circle. The octagon and the dodecagon, the two cases contests use most, have their own cards, linked below.`,
+          keywords: ["apothem", "perimeter", "regular", "n-gon area"],
           importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "equilateral-triangle-facts",
+          name: "Equilateral Triangle of Side $s$",
+          latex: String.raw`h = \frac{s\sqrt{3}}{2}, \quad A = \frac{s^2\sqrt{3}}{4}, \quad R = \frac{s\sqrt{3}}{3}, \quad r = \frac{s\sqrt{3}}{6}`,
+          description: String.raw`An equilateral triangle has three equal sides and three $60^\circ$ angles, and its side $s$ fixes everything: the height is $\frac{s\sqrt3}{2}$, the area is $\frac{s^2\sqrt3}{4}$, the circumradius is $\frac{s\sqrt3}{3}$, and the inradius is $\frac{s\sqrt3}{6}$. Its centroid, circumcenter, incenter, and orthocenter are one point, so the circumradius is twice the inradius and the height is their sum. Inscribed in a circle of radius $R$ the side is $R\sqrt3$, and drawn around a circle of radius $r$ it is $2r\sqrt3$.`,
+          keywords: ["equilateral", "height", "area", "circumradius", "inradius", "inscribed in circle"],
+          importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
@@ -242,24 +252,14 @@ window.MATH_SECTIONS.push({
         {
           id: "regular-hexagon-area",
           name: "Regular Hexagon of Side $s$",
-          latex: String.raw`A = \frac{3s^2\sqrt{3}}{2}`,
-          description: String.raw`A regular hexagon of side $s$ has area $\frac{3\sqrt3}{2}s^2$, because the segments from its center to the six vertices cut it into six [[equilateral-triangle-facts|equilateral triangles]] of side $s$. Recasting a hexagon problem in those triangles is the fastest way through it: the long diagonal is $2s$, the apothem is $\frac{s\sqrt3}{2}$, and most regions inside it are whole numbers of small triangles. The triangle on alternate vertices, for example, is exactly half the hexagon.`,
-          keywords: ["hexagon", "six equilateral triangles", "regular hexagon area", "area of a hexagon", "hexagon apothem"],
+          latex: String.raw`A = \frac{3\sqrt3}{2}s^2 \qquad R = s \qquad \text{diagonals } s\sqrt3,\ 2s`,
+          description: String.raw`A regular hexagon of side $s$ is six equilateral triangles of side $s$ meeting at its center, which gives everything about it at once. Its area is $\frac{3\sqrt3}{2}s^2$, its circumradius is $s$, its apothem is $\frac{s\sqrt3}{2}$, and it has only two diagonal lengths: the long ones, $2s$, pass through the center, and the short ones, $s\sqrt3$, skip one vertex. The triangle on alternate vertices is exactly half the hexagon, so regions inside it are best counted in small equilateral triangles.`,
+          keywords: ["hexagon", "regular hexagon", "six equilateral triangles", "regular hexagon area", "area of a hexagon", "hexagon apothem", "hexagon diagonal", "regular hexagon diagonals", "long diagonal", "short diagonal", "diagonal of a hexagon", "opposite vertices hexagon", "s root 3", "two diagonal lengths"],
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
-        {
-          id: "hexagon-diagonals",
-          name: "Diagonals of a Regular Hexagon",
-          latex: String.raw`\text{short} = s\sqrt3, \qquad \text{long} = 2s, \qquad \text{long} : \text{short} : \text{side} = 2 : \sqrt3 : 1`,
-          description: String.raw`A regular hexagon of side $s$ has only two diagonal lengths. The long one joins opposite vertices, passes through the center, and is a diameter of the circumcircle, so it is $2s$. The short one skips a single vertex and cuts off an isosceles triangle with legs $s$ and apex $120^\circ$, giving $s\sqrt3$. Both follow from the hexagon being six equilateral triangles, and the three lengths $2 : \sqrt3 : 1$ are the sides of the $30$-$60$-$90$ triangle that half a short diagonal creates.`,
-          keywords: ["hexagon diagonal", "regular hexagon diagonals", "long diagonal", "short diagonal", "diagonal of a hexagon", "opposite vertices hexagon", "s root 3", "two diagonal lengths"],
-          importance: "medium",
-          tier: "AMC",
-          level: ["MATHCOUNTS", "AMC10", "AMC12"]
-        },
-        {
+{
           id: "regular-dodecagon",
           name: "Regular Dodecagon of Side $s$",
           latex: String.raw`A = 3(2+\sqrt{3})\,s^2 = 6s^2 + 3\sqrt{3}\,s^2, \qquad A = 3R^2 \;\;(\text{circumradius } R)`,
@@ -268,6 +268,16 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "regular-octagon",
+          name: "Regular Octagon of Side $s$",
+          latex: String.raw`A = 2(1 + \sqrt2)s^2 \qquad \text{width} = (1 + \sqrt2)s \qquad R = \tfrac{s}{2}\sqrt{4 + 2\sqrt2}`,
+          description: String.raw`A regular octagon of side $s$ is a square with its four corners cut off by right isosceles triangles, which is why a $\sqrt2$ runs through all of its lengths. Its width across two parallel sides is $(1 + \sqrt2)s$, its area is $2(1 + \sqrt2)s^2$, and its angles are $135^\circ$. Its vertices are also those of two squares turned by $45^\circ$ about one center, on a circle of radius $\frac s2\sqrt{4 + 2\sqrt2}$.`,
+          keywords: ["regular octagon", "octagon", "stop sign", "square with corners cut off", "eight sides", "width of an octagon", "octagon area", "octagon diagonals", "135 degrees"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
         },
         {
           id: "ngon-vertex-distance-product",
@@ -283,12 +293,32 @@ window.MATH_SECTIONS.push({
         {
           id: "trapezoid-parallelogram-areas",
           name: "Quadrilateral Areas",
-          latex: String.raw`A_{\text{trapezoid}} = \frac{(b_1+b_2)h}{2}, \quad A_{\text{parallelogram}} = bh, \quad A_{\text{rhomb/kite}} = \frac{d_1 d_2}{2}`,
-          description: String.raw`These are the area formulas for the common quadrilaterals: a parallelogram has area base times height, $bh$; a trapezoid has the average of its two parallel sides times the distance between them, $\frac{(b_1 + b_2)h}{2}$; and a rhombus or kite has half the product of its diagonals, $\frac{d_1d_2}{2}$. The diagonal formula works for any quadrilateral whose diagonals are perpendicular, not only rhombi and kites. In a trapezoid the diagonals also cut out two similar triangles, in the ratio of the parallel sides, and that similarity is often the real key to a trapezoid problem.`,
-          keywords: ["trapezoid", "parallelogram", "rhombus", "kite", "diagonals", "perpendicular"],
+          latex: String.raw`A_{\text{trapezoid}} = \frac{(b_1+b_2)h}{2}, \quad A_{\text{rhomb/kite}} = \frac{d_1 d_2}{2}`,
+          description: String.raw`These are the area formulas for trapezoids and for quadrilaterals with perpendicular diagonals: a trapezoid has the average of its two parallel sides times the distance between them, $\frac{(b_1 + b_2)h}{2}$, and a rhombus or kite has half the product of its diagonals, $\frac{d_1d_2}{2}$. The diagonal formula works for any quadrilateral whose diagonals are perpendicular, not only rhombi and kites. The parallelogram, with area base times height, has [[parallelogram-area|its own card]]. In a trapezoid the diagonals also cut out two similar triangles, in the ratio of the parallel sides, and that similarity is often the real key to a trapezoid problem.`,
+          keywords: ["trapezoid", "rhombus", "kite", "diagonals", "perpendicular"],
           importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "parallelogram-area",
+          name: "Parallelogram Area",
+          latex: String.raw`A = bh \qquad A = ab\sin\theta`,
+          description: String.raw`The area of a parallelogram is its base times its height, $bh$, where the height is the perpendicular distance between the two parallel sides used as bases, never the length of the slanted side. When two adjacent sides $a$ and $b$ meet at an angle $\theta$, the height over side $a$ is $b\sin\theta$, so the area is $ab\sin\theta$. Either of the two angles of the parallelogram can be used, since they are supplementary and have the same sine.`,
+          keywords: ["parallelogram", "area of a parallelogram", "base times height", "ab sin theta", "sine area formula", "height of a parallelogram", "slanted side"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
+          id: "parallelogram-vertices",
+          name: "Parallelogram Vertices Using Vectors",
+          latex: String.raw`A + C = B + D \iff D = A + C - B`,
+          description: String.raw`In a parallelogram $ABCD$ the diagonals $AC$ and $BD$ bisect each other, so they have the same midpoint, and in vectors that is $A + C = B + D$. It turns finding a missing vertex into one subtraction, $D = A + C - B$, with coordinates $(x_A + x_C - x_B,\ y_A + y_C - y_B)$ in the plane and the same in space. Read the other way, four points with $A + C = B + D$ are the vertices of a parallelogram, which is flat only when they are collinear.`,
+          keywords: ["parallelogram", "fourth vertex of a parallelogram", "missing vertex", "diagonals bisect each other", "vectors", "A + C = B + D", "coordinates of a parallelogram"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
         },
         {
           id: "trapezoid-special-segments",
@@ -325,7 +355,7 @@ window.MATH_SECTIONS.push({
           name: "Bretschneider's Formula",
           latex: String.raw`A = \sqrt{(s-a)(s-b)(s-c)(s-d) - abcd \cos^2\left(\frac{A+C}{2}\right)}`,
           description: String.raw`Area of any convex quadrilateral, using opposite angles $A, C$. When cyclic, $A + C = 180^\circ$ kills the last term, recovering [[brahmaguptas-formula|Brahmagupta]].`,
-          keywords: ["general quadrilateral area", "bretschneider", "brahmagupta generalization", "bretschneider formula", "general quadrilateral area", "brahmagupta generalization"],
+          keywords: ["general quadrilateral area", "bretschneider", "brahmagupta generalization", "bretschneider formula"],
           importance: "lower",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
@@ -333,8 +363,8 @@ window.MATH_SECTIONS.push({
         {
           id: "euler-quadrilateral",
           name: "Euler's Quadrilateral Theorem",
-          latex: String.raw`a^2 + b^2 + c^2 + d^2 = p^2 + q^2 + 4m^2`,
-          description: String.raw`For any convex quadrilateral with diagonals $p, q$ and $m$ the distance between the midpoints of the diagonals. $m = 0$ gives the parallelogram law.`,
+          latex: String.raw`a^2 + b^2 + c^2 + d^2 = p^2 + q^2 + 4m^2 \qquad p^2 + q^2 = 2(a^2 + b^2) \ \text{(parallelogram)}`,
+          description: String.raw`For any convex quadrilateral with diagonals $p, q$ and $m$ the distance between the midpoints of the diagonals. A parallelogram has $m = 0$, and then the identity is the parallelogram law, $p^2 + q^2 = 2(a^2 + b^2)$: the squares of the two diagonals add up to the squares of the four sides.`,
           keywords: ["parallelogram law", "diagonal midpoints", "generalization", "euler quadrilateral theorem", "diagonals and midpoint segment", "parallelogram law for quadrilaterals"],
           importance: "lower",
           tier: "AIME Late",
@@ -410,7 +440,7 @@ window.MATH_SECTIONS.push({
           id: "inradius-area",
           name: "Inradius Formula",
           latex: String.raw`A = rs`,
-          description: String.raw`The inradius $r$ of a triangle is the radius of its inscribed circle, the one circle inside the triangle tangent to all three sides, and the triangle's area is the inradius times the semiperimeter: $A = rs$, where $s = \frac{a + b + c}{2}$. The same formula holds for any polygon that has an inscribed circle, with $s$ half its perimeter.`,
+          description: String.raw`The inradius $r$ of a triangle is the radius of its inscribed circle, the one circle inside the triangle tangent to all three sides, and the triangle's area is the inradius times the semiperimeter: $A = rs$, where $s = \frac{a + b + c}{2}$. The same formula holds for any polygon that has an inscribed circle, with $s$ half its perimeter: the segments from the center to the vertices cut the polygon into triangles of height $r$, one on each side.`,
           keywords: ["inradius", "incircle", "semiperimeter", "inscribed circle", "circle tangent to all three sides", "area"],
           importance: "high",
           tier: "AMC",
@@ -438,9 +468,9 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "right-triangle-inradius",
-          name: "Right Triangle Inradius",
+          name: "Right Triangle Inradius and Circumradius",
           latex: String.raw`r = \frac{a + b - c}{2}, \qquad R = \frac{c}{2}, \qquad a + b = 2r + 2R`,
-          description: String.raw`For legs $a, b$ and hypotenuse $c$. By Thales the hypotenuse is a diameter, so $R = \frac{c}{2}$. Adding the two gives the memorable rearrangement $a + b = 2r + 2R$: in a right triangle the legs sum to twice the inradius plus twice the circumradius, which turns a question about $r$ and $R$ into one about the legs and back.`,
+          description: String.raw`For a right triangle with legs $a, b$ and hypotenuse $c$, the inradius is $r = \frac{a + b - c}{2}$ and the circumradius is $R = \frac{c}{2}$, because by Thales the hypotenuse is a diameter of the circumcircle. Adding the two gives the memorable rearrangement $a + b = 2r + 2R$: in a right triangle the legs sum to twice the inradius plus twice the circumradius, which turns a question about $r$ and $R$ into one about the legs and back.`,
           keywords: ["right triangle", "inradius", "hypotenuse", "Thales", "circumradius", "a + b = 2r + 2R", "legs sum to 2r plus 2R"],
           importance: "medium",
           tier: "AMC",
@@ -587,7 +617,7 @@ window.MATH_SECTIONS.push({
           name: "Special Triangles from the Law of Cosines",
           latex: String.raw`120^\circ:\ (1, 2) \to \sqrt7,\ \ (3, 5) \to 7,\ \ (7, 8) \to 13 \qquad 60^\circ:\ (2, 3) \to \sqrt7,\ \ (3, 8) \to 7,\ \ (5, 8) \to 7 \qquad 135^\circ:\ (1, \sqrt2) \to \sqrt5 \qquad 150^\circ:\ (1, \sqrt3) \to \sqrt7`,
           description: String.raw`These are the triangles that the [[law-of-cosines|Law of Cosines]] turns into nice numbers: a $60^\circ$, $120^\circ$, $135^\circ$, or $150^\circ$ angle between two simple sides gives a simple third side, listed here as the two sides around the angle and the side opposite it. The ones worth recognizing on sight are $1$-$2$-$\sqrt7$ and $3$-$5$-$7$ with a $120^\circ$ angle, $2$-$3$-$\sqrt7$, $3$-$7$-$8$ and $5$-$7$-$8$ with a $60^\circ$ angle, and $7$-$8$-$13$ with $120^\circ$; in each, the special angle is opposite the $\sqrt7$, $7$, or $13$. Recognizing one saves the computation, and it usually means an equilateral triangle, a regular hexagon, or a $120^\circ$ configuration is hiding in the figure.`,
-          keywords: ["special triangles", "law of cosines triangles", "120 degree triangle", "60 degree triangle", "eisenstein triples", "135 degree triangle", "150 degree triangle", "one two root seven triangle", "two root seven", "three five seven triangle", "seven eight 13 triangle", "five seven eight triangle", "three seven eight triangle", "four five six triangle"],
+          keywords: ["special triangles", "law of cosines triangles", "120 degree triangle", "60 degree triangle", "eisenstein triples", "135 degree triangle", "150 degree triangle", "one two root seven triangle", "two root seven", "three five seven triangle", "seven eight 13 triangle", "five seven eight triangle", "three seven eight triangle"],
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
@@ -727,7 +757,7 @@ window.MATH_SECTIONS.push({
           name: "Law of Tangents",
           latex: String.raw`\frac{a - b}{a + b} = \frac{\tan\frac{A-B}{2}}{\tan\frac{A+B}{2}}`,
           description: String.raw`Relates the sum and difference of two sides to the half-sum and half-difference of their opposite angles (note $\frac{A+B}{2} = 90^\circ - \frac{C}{2}$). Derived from the Law of Sines plus sum-to-product. Occasionally the fastest route when a problem gives $a \pm b$ and angle information.`,
-          keywords: ["law of tangents", "sum and difference of sides", "half angles", "law of tangents", "tangent rule for triangles", "tangent half angle side rule"],
+          keywords: ["law of tangents", "sum and difference of sides", "half angles", "tangent rule for triangles", "tangent half angle side rule"],
           importance: "lower",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
@@ -745,7 +775,7 @@ window.MATH_SECTIONS.push({
         {
           id: "cotangent-rule",
           name: "The Cotangent Rule",
-          latex: String.raw`\cot A = \frac{b^2 + c^2 - a^2}{4K}, \qquad \cot A + \cot B = \frac{c^2}{2K}, \qquad \cot A\cot B + \cot B\cot C + \cot C\cot A = 1`,
+          latex: String.raw`\cot A = \frac{b^2 + c^2 - a^2}{4K}, \qquad \cot A + \cot B = \frac{c^2}{2K}`,
           description: String.raw`One line from the [[law-of-cosines|Law of Cosines]] and the [[trig-area|sine area formula]] together: $\cos A = \frac{b^2+c^2-a^2}{2bc}$ divided by $\sin A = \frac{2K}{bc}$ leaves the $bc$ cancelled and $4K$ underneath. It is the standard way any cotangent of a triangle angle collapses to side lengths, and the corollary is the one that usually finishes the problem, since adding two of them cancels everything but the third side.`,
           keywords: ["cotangent rule", "cot A in terms of sides", "cot A = (b^2+c^2-a^2)/4K", "sum of two cotangents", "cotangent to side lengths", "trig to algebra in a triangle"],
           importance: "low",
@@ -779,6 +809,36 @@ window.MATH_SECTIONS.push({
           description: String.raw`Trisect all three angles of any triangle; the intersection points of adjacent trisectors always form an equilateral triangle — the Morley triangle. A famously surprising result (angle trisection rarely behaves), proved cleanly by working backward from an equilateral triangle with trigonometric angle-chasing. Beautiful, but essentially never a problem-solving tool.`,
           keywords: ["morley theorem", "angle trisectors", "morley triangle", "equilateral from trisectors", "surprising"],
           importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "perpendicularity-lemma",
+          name: "Perpendicularity Lemma",
+          latex: String.raw`AB \perp CD \iff AC^2 - AD^2 = BC^2 - BD^2, \qquad AC \perp BD \iff AB^2 + CD^2 = BC^2 + DA^2`,
+          description: String.raw`Perpendicularity can be tested with lengths alone. For four points $A, B, C, D$ with $A \ne B$ and $C \ne D$, the lines $AB$ and $CD$ are perpendicular exactly when $AC^2 - AD^2 = BC^2 - BD^2$: the difference of the squared distances from $A$ to the two points $C$ and $D$ equals the same difference from $B$. Applied to a quadrilateral $ABCD$ it says the diagonals are perpendicular exactly when the squares of one pair of opposite sides add up to the squares of the other pair. It holds in the plane and in space, and it is the step that turns "these two lines are perpendicular" into an equation that can be added, subtracted, and chained.`,
+          keywords: ["perpendicularity lemma", "perpendicular by lengths", "AC^2 - AD^2 = BC^2 - BD^2", "perpendicular diagonals", "sum of squares of opposite sides", "difference of squared distances", "orthodiagonal quadrilateral", "perpendicular lines test"],
+          importance: "medium",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "carnots-perpendicularity-theorem",
+          name: "Carnot's Perpendicularity Theorem",
+          latex: String.raw`\text{perpendiculars at } D, E, F \text{ concur} \iff BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0`,
+          description: String.raw`Take one point on each side line of a triangle $ABC$: $D$ on $BC$, $E$ on $CA$, $F$ on $AB$, anywhere on the lines, inside the sides or beyond them. Draw the perpendicular to each side line at its point. The three perpendiculars pass through a single point if and only if $BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0$. The sum goes once around the triangle, and each term is the difference of the squares of the two pieces that a point cuts its side into. It turns "three lines meet" into one equation in lengths, which is why the perpendicular bisectors, the altitudes, and the perpendiculars at the incircle's touch points are all seen to concur at once. It is a different theorem from the one about distances from the circumcenter that shares the name.`,
+          keywords: ["carnot perpendicularity", "concurrent perpendiculars", "perpendiculars to the sides concur", "alternating sum of squares", "BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2", "perpendiculars from points on the sides", "carnot concurrency criterion", "perpendicular concurrency criterion"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "iran-lemma",
+          name: "Iran Lemma",
+          latex: String.raw`K = BI \cap EF \implies CK \perp BI, \qquad K \text{ lies on the midline parallel to } AB`,
+          description: String.raw`Let the incircle of triangle $ABC$, with incenter $I$, touch $CA$ at $E$ and $AB$ at $F$, and let the angle bisector $BI$ meet the contact chord $EF$ at $K$. Then $K$ is also the foot of the perpendicular from $C$ to $BI$, and it lies on the midline of the triangle parallel to $AB$, the segment joining the midpoints of $CA$ and $CB$. So three lines meet at $K$ at once: the bisector, the contact chord, and the midline. In particular $\angle BKC = 90^\circ$, which gives $BK = BC\cos\frac B2$ and $CK = BC\sin\frac B2$. The lemma ties the incircle to the midpoints of the sides, which is why it turns up whenever a problem mixes the two.`,
+          keywords: ["iran lemma", "angle bisector contact chord", "foot of perpendicular from C to BI", "incircle touch chord and bisector", "BI EF midline", "right angle at K", "incircle midline lemma", "incircle chord meets bisector"],
+          importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
         }
@@ -916,7 +976,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "carnots-theorem",
-          name: "Carnot's Theorem",
+          name: "Carnot's Theorem (Distances to the Sides)",
           latex: String.raw`d_1 + d_2 + d_3 = R + r, \qquad d_a = R\cos A, \qquad \cos A + \cos B + \cos C = 1 + \frac rR`,
           description: String.raw`The signed perpendicular distances from the circumcenter to the three sides sum to $R + r$ (negative if the circumcenter is on the far side of a side, i.e. obtuse triangles).`,
           keywords: ["circumcenter distances", "R plus r", "signed distances", "carnot theorem", "signed distances from circumcenter", "sum of distances to sides"],
@@ -949,7 +1009,7 @@ window.MATH_SECTIONS.push({
           name: "The Brocard Angle",
           latex: String.raw`\cot \omega = \cot A + \cot B + \cot C`,
           description: String.raw`The angle $\omega$ at which cevians from each vertex to the Brocard point meet the sides. Also $\csc^2\omega = \csc^2 A + \csc^2 B + \csc^2 C$, and always $\omega \le 30^\circ$.`,
-          keywords: ["brocard point", "cotangent sum", "special angle", "brocard angle", "brocard point", "cotangent of the brocard angle"],
+          keywords: ["brocard point", "cotangent sum", "special angle", "brocard angle", "cotangent of the brocard angle"],
           importance: "lower",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
@@ -1253,7 +1313,7 @@ window.MATH_SECTIONS.push({
         {
           id: "reims-theorem",
           name: "Reim's Theorem",
-          latex: String.raw`ABPQ \text{ cyclic} \implies \bigl(CDPQ \text{ cyclic} \iff AB \parallel CD\bigr)`,
+          latex: String.raw`A, P, C \text{ and } B, Q, D \text{ collinear}: \quad ABPQ \text{ cyclic} \implies \bigl(CDPQ \text{ cyclic} \iff AB \parallel CD\bigr)`,
           description: String.raw`Two circles meet at $P$ and $Q$. A line through $P$ meets them again at $A$ (first circle) and $C$ (second), and a line through $Q$ meets them again at $B$ and $D$. Then $AB \parallel CD$. Conversely, if $A, B, P, Q$ are concyclic and $CD \parallel AB$, then $C, D, P, Q$ are concyclic. It turns "these lines are parallel" into "these points are concyclic" and back in an angle chase, and works best with [[directed-angles|directed angles]].`,
           keywords: ["reim theorem", "reims theorem", "two circles parallel chords", "concyclic from parallel", "antiparallel", "angle chasing lemma"],
           importance: "lower",
@@ -1321,7 +1381,7 @@ window.MATH_SECTIONS.push({
           name: "Casey's Theorem",
           latex: String.raw`t_{12}t_{34} + t_{14}t_{23} = t_{13}t_{24}`,
           description: String.raw`Generalized [[ptolemys-theorem|Ptolemy]]: for four circles tangent to a fifth circle (all internally or all externally), where $t_{ij}$ is the external tangent length between circles $i, j$. Points count as radius-0 circles.`,
-          keywords: ["generalized ptolemy", "tangent circles", "tangent lengths", "casey theorem", "generalized ptolemy", "tangent lengths between circles"],
+          keywords: ["generalized ptolemy", "tangent circles", "tangent lengths", "casey theorem", "tangent lengths between circles"],
           importance: "lower",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
@@ -1375,7 +1435,7 @@ window.MATH_SECTIONS.push({
         {
           id: "cyclic-equal-angles",
           name: "Equal Angles in a Cyclic Quadrilateral",
-          latex: String.raw`\angle BAC = \angle BDC, \quad \angle ABD = \angle ACD, \quad PA \cdot PC = PB \cdot PD`,
+          latex: String.raw`\angle BAC = \angle BDC, \quad \angle ABD = \angle ACD, \quad PA \cdot PC = PB \cdot PD \;\; (P = AC \cap BD)`,
           description: String.raw`In a cyclic quadrilateral $ABCD$ the two diagonals split the four corner angles into eight, and they fall into four equal pairs, because each side is seen at the same angle from the two vertices not on it: $\angle BAC = \angle BDC$, $\angle CAD = \angle CBD$, $\angle ABD = \angle ACD$, and $\angle ADB = \angle ACB$. The pattern also runs backwards: one equal pair, with both angles on the same side of the common segment, proves the four points lie on a circle.`,
           keywords: ["equal angles cyclic quadrilateral", "angles in the same segment", "angles on the same arc", "angles subtending the same chord", "cyclic quadrilateral diagonals angles", "bowtie angles", "cyclic quadrilateral similar triangles", "equal angles prove concyclic", "cyclic quadrilateral angle chase", "inscribed angles same chord"],
           importance: "medium",
@@ -1405,19 +1465,9 @@ window.MATH_SECTIONS.push({
         {
           id: "ptolemy-second-theorem",
           name: "Ptolemy's Second Theorem",
-          latex: String.raw`ABCD \text{ cyclic}: \qquad \frac{AC}{BD} = \frac{AB\cdot AD + CB\cdot CD}{BA\cdot BC + DA\cdot DC}`,
-          description: String.raw`The companion to the product formula: where [[ptolemys-theorem|Ptolemy's Theorem]] gives $AC \cdot BD$, this gives the ratio $AC / BD$, so the two together determine each diagonal separately from the four sides alone. Each side of the fraction collects the two products of sides meeting at the endpoints of the diagonal you are not asking about, which is the pattern to remember rather than the letters.`,
-          keywords: ["ptolemy second theorem", "ratio of the diagonals", "diagonal ratio cyclic quadrilateral", "both diagonals from the sides", "cyclic quadrilateral diagonals"],
-          importance: "low",
-          tier: "AIME Late",
-          level: ["AIME", "Olympiad"]
-        },
-        {
-          id: "cyclic-quad-diagonals",
-          name: "Cyclic Quadrilateral Diagonals",
-          latex: String.raw`\frac{p}{q} = \frac{ad + bc}{ab + cd}, \qquad p^2 = \frac{(ac+bd)(ad+bc)}{ab+cd}`,
-          description: String.raw`With sides $a, b, c, d$ in order and diagonals $p = AC$ and $q = BD$, the diagonal ratio is a ratio of paired side-products, and combining with Ptolemy ($pq = ac + bd$) gives each diagonal explicitly from the four sides, with no angles needed.`,
-          keywords: ["second ptolemy", "diagonal ratio", "diagonal from sides", "cyclic quadrilateral diagonals"],
+          latex: String.raw`\frac{p}{q} = \frac{ad + bc}{ab + cd}, \qquad p^2 = \frac{(ac + bd)(ad + bc)}{ab + cd}, \qquad q^2 = \frac{(ac + bd)(ab + cd)}{ad + bc}`,
+          description: String.raw`For a cyclic quadrilateral $ABCD$ with sides $a = AB$, $b = BC$, $c = CD$, $d = DA$ in order and diagonals $p = AC$, $q = BD$: where [[ptolemys-theorem|Ptolemy's Theorem]] gives the product $pq = ac + bd$, this gives the ratio $p / q$, so the two together determine each diagonal separately from the four sides alone, with no angles. In the ratio, the numerator belongs to $AC$ and collects the products of the two sides meeting at $A$ and of the two sides meeting at $C$, the endpoints of $AC$; the denominator does the same at $B$ and $D$, the endpoints of $BD$. That is the pattern to remember rather than the letters.`,
+          keywords: ["ptolemy second theorem", "ratio of the diagonals", "diagonal ratio cyclic quadrilateral", "both diagonals from the sides", "cyclic quadrilateral diagonals", "diagonal from sides", "second ptolemy", "explicit diagonals cyclic quadrilateral"],
           importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
@@ -1435,9 +1485,9 @@ window.MATH_SECTIONS.push({
         {
           id: "brahmaguptas-formula",
           name: "Brahmagupta's Formula",
-          latex: String.raw`A = \sqrt{(s-a)(s-b)(s-c)(s-d)}, \qquad R = \frac{1}{4A}\sqrt{(ab+cd)(ac+bd)(ad+bc)}`,
-          description: String.raw`Area of a cyclic quadrilateral with semiperimeter $s$. [[herons-formula|Heron's Formula]] is the degenerate case $d = 0$.`,
-          keywords: ["cyclic quadrilateral area", "semiperimeter", "brahmagupta", "brahmagupta formula", "cyclic quadrilateral area", "area from four sides"],
+          latex: String.raw`A = \sqrt{(s-a)(s-b)(s-c)(s-d)}`,
+          description: String.raw`Area of a cyclic quadrilateral with semiperimeter $s$. [[herons-formula|Heron's Formula]] is the degenerate case $d = 0$. The circumradius that goes with it, from the same four sides and this area, is on [[cyclic-quad-radius|the circumradius card]].`,
+          keywords: ["cyclic quadrilateral area", "semiperimeter", "brahmagupta", "brahmagupta formula", "area from four sides"],
           importance: "medium",
           tier: "AMC",
           level: ["AMC12", "AIME"]
@@ -1573,18 +1623,8 @@ window.MATH_SECTIONS.push({
           id: "picks-theorem-general",
           name: "Pick's Theorem on Any Lattice",
           latex: String.raw`A = d\left(I + \frac{B}{2} - 1\right)`,
-          description: String.raw`Pick's count works on every lattice, not just the square one. If the lattice is generated by $\vec u$ and $\vec v$, its fundamental parallelogram has area $d = |\vec u \times \vec v|$, and any polygon with vertices in the lattice has $A = d\left(I + \frac{B}{2} - 1\right)$. The affine map that scales the square grid's basis vectors into $\vec u$ and $\vec v$ multiplies every area by $d$ and matches lattice points one-for-one, so the ordinary statement transfers unchanged.`,
-          keywords: ["any lattice", "fundamental domain", "skewed grid", "affine image of the integer lattice", "basis determinant"],
-          importance: "low",
-          tier: "AIME Late",
-          level: ["AIME", "Olympiad"]
-        },
-        {
-          id: "picks-triangular-lattice",
-          name: "Pick's Theorem on a Triangular Grid",
-          latex: String.raw`A = 2I + B - 2 \quad \text{(in unit triangles)}`,
-          description: String.raw`On the triangular grid, measure area in small triangles rather than in squares and Pick becomes $A = 2I + B - 2$. The fundamental rhombus holds two unit triangles, so $d = 2$. A side running $k$ steps along a grid direction contributes exactly $k$ boundary points, so $B$ is just the perimeter in steps.`,
-          keywords: ["isometric grid", "isometric paper", "unit triangles", "Pick on a non-square grid", "2I + B - 2"],
+          description: String.raw`Pick's count works on every lattice, not just the square one. If the lattice is generated by $\vec u$ and $\vec v$, its fundamental parallelogram has area $d = |\vec u \times \vec v|$, and any polygon with vertices in the lattice has $A = d\left(I + \frac{B}{2} - 1\right)$. The affine map that scales the square grid's basis vectors into $\vec u$ and $\vec v$ multiplies every area by $d$ and matches lattice points one-for-one, so the ordinary statement transfers unchanged. On the triangular grid, with area counted in unit triangles, it reads $A = 2I + B - 2$, worked out in the explanation below.`,
+          keywords: ["any lattice", "fundamental domain", "skewed grid", "affine image of the integer lattice", "basis determinant", "triangular grid", "isometric grid", "isometric paper", "unit triangles", "Pick on a non-square grid", "2I + B - 2"],
           importance: "low",
           tier: "AIME Late",
           level: ["AMC12", "AIME", "Olympiad"]
@@ -1592,8 +1632,8 @@ window.MATH_SECTIONS.push({
         {
           id: "picks-hexagonal-grid",
           name: "Hexagonal Grids and Pick's Theorem",
-          latex: String.raw`\text{cell centers: } A = 2I + B - 2 \quad\text{honeycomb vertices: no such law}`,
-          description: String.raw`Two different point sets get called hexagonal, and only one of them obeys a Pick law. The centers of the cells of a hexagonal tiling form a triangular lattice, so the [[picks-triangular-lattice|triangular-grid form]] applies to them, with each cell of side $s$ contributing area $\frac{3\sqrt3}{2}s^2$. The corners of the tiling — the honeycomb — are not a lattice at all, and no formula in $I$ and $B$ alone can give the area there.`,
+          latex: String.raw`\text{centers: } A = 2I + B - 2 \;(\text{unit: center-lattice triangle}) \quad\text{honeycomb: no law}`,
+          description: String.raw`Two different point sets get called hexagonal, and only one of them obeys a Pick law. The centers of the cells of a hexagonal tiling form a triangular lattice, so the [[picks-theorem-general|triangular-grid form]] applies to them, with the area counted in unit triangles of that lattice. A cell of side $s$ has area $\frac{3\sqrt3}{2}s^2$, which is two unit triangles of $\frac{3\sqrt3}{4}s^2$ each, so a region of whole cells has $A = 2I + B - 2$ equal to twice its cell count. The corners of the tiling — the honeycomb — are not a lattice at all, and no formula in $I$ and $B$ alone can give the area there.`,
           keywords: ["hexagonal grid", "honeycomb", "hex cells", "hexagonal tiling area", "why Pick fails"],
           importance: "lowest",
           tier: "Olympiad",
@@ -1620,6 +1660,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "parallel-lines-distance",
+          name: "Distance Between Parallel Lines",
+          latex: String.raw`d = \frac{\lvert c_1 - c_2\rvert}{\sqrt{a^2 + b^2}} \quad \text{for } ax + by + c_1 = 0 \text{ and } ax + by + c_2 = 0`,
+          description: String.raw`Two parallel lines stay the same distance apart everywhere, so the distance between them is the length of any segment that joins them at right angles, and it can be read straight from their equations. Written with the same coefficients of $x$ and $y$, $ax + by + c_1 = 0$ and $ax + by + c_2 = 0$ are parallel and the distance is $\frac{\lvert c_1 - c_2\rvert}{\sqrt{a^2 + b^2}}$. The step that matters is matching the coefficients first, since an equation multiplied through by a constant describes the same line with a different constant term. Planes work the same way with one more term under the root, and lines that are not parallel meet, so their distance is $0$.`,
+          keywords: ["distance between parallel lines", "parallel lines", "distance between two lines", "parallel planes", "strip width", "common perpendicular", "distance between lines"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
           id: "circle-equation",
           name: "Equation of a Circle",
           latex: String.raw`(x - h)^2 + (y - k)^2 = r^2`,
@@ -1643,7 +1693,7 @@ window.MATH_SECTIONS.push({
           id: "british-flag-theorem",
           name: "British Flag Theorem",
           latex: String.raw`PA^2 + PC^2 = PB^2 + PD^2, \qquad \text{box } ABCDEFGH:\;\; PA^2 + PG^2 = PB^2 + PH^2 = PC^2 + PE^2 = PD^2 + PF^2`,
-          description: String.raw`For any point $P$ and rectangle $ABCD$: the sums of squared distances to opposite corners are equal, and it holds even if $P$ is outside the rectangle or off its plane. A rectangular box carries the stronger statement, since the sums to all four pairs of diagonally opposite vertices agree; applying it twice gives $2PA^2 + PG^2 = PB^2 + PC^2 + PD^2$, which is the form contest problems actually use.`,
+          description: String.raw`For any point $P$ and rectangle $ABCD$: the sums of squared distances to opposite corners are equal, and it holds even if $P$ is outside the rectangle or off its plane. A rectangular box carries the stronger statement, since the sums to all four pairs of diagonally opposite vertices agree; the same coordinate argument gives $2PA^2 + PG^2 = PB^2 + PD^2 + PE^2$, the form contest problems actually use. Here the box is $ABCD$ below and $EFGH$ above, with $E, F, G, H$ over $A, B, C, D$, so $B$, $D$, $E$ are the three neighbors of $A$ and $G$ is the vertex opposite it.`,
           keywords: ["rectangle", "distances to corners", "squares", "any point", "british flag in 3d", "rectangular box", "diagonally opposite vertices", "sum of squared distances"],
           importance: "medium",
           tier: "AMC",
@@ -1924,6 +1974,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "cube",
+          name: "Cube of Side $s$",
+          latex: String.raw`d_{\text{face}} = s\sqrt2 \qquad d_{\text{space}} = s\sqrt3 \qquad R = \tfrac{s\sqrt3}{2},\ r = \tfrac{s}{2}`,
+          description: String.raw`A cube of edge $s$ has face diagonals $s\sqrt2$, space diagonals $s\sqrt3$, volume $s^3$, and surface area $6s^2$. Its three spheres have radii $\frac s2$, touching the faces, $\frac{s\sqrt2}{2}$, touching the edges, and $\frac{s\sqrt3}{2}$, through the vertices. The angles between its diagonals are fixed, a plane through the three vertices next to one vertex cuts off a corner of volume $\frac{s^3}{6}$, and a plane through the center perpendicular to a space diagonal cuts it in a regular hexagon.`,
+          keywords: ["cube", "unit cube", "space diagonal", "face diagonal", "section of a cube", "hexagon in a cube", "cube spheres", "corner of a cube", "angle between diagonals of a cube"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "sphere-formulas",
           name: "Sphere",
           latex: String.raw`SA = 4\pi r^2, \qquad V = \frac43\pi r^3, \qquad V_{\text{cap}} = \frac{\pi h^2(3r - h)}{3}, \qquad A_{\text{zone}} = 2\pi rh`,
@@ -1997,8 +2057,8 @@ window.MATH_SECTIONS.push({
           id: "regular-tetrahedron",
           name: "Regular Tetrahedron of Side $s$",
           latex: String.raw`h = \frac{s\sqrt{6}}{3}, \qquad V = \frac{s^3\sqrt{2}}{12}, \qquad SA = s^2\sqrt{3}`,
-          description: String.raw`Also worth caching: circumradius $R = \frac{s\sqrt{6}}{4}$, inradius $r = \frac{s\sqrt{6}}{12}$ (so $R = 3r$), and dihedral angle $\arccos\frac{1}{3} \approx 70.5^\circ$. A [[regular-octahedron|regular octahedron]] of side $s$ has volume $\frac{s^3\sqrt{2}}{3}$ — exactly four such tetrahedra.`,
-          keywords: ["tetrahedron", "octahedron", "platonic", "volume", "height", "circumradius", "dihedral angle", "inradius", "R = 3r", "octahedron volume", "dihedral arccos 1/3"],
+          description: String.raw`A regular tetrahedron has four equilateral faces and six equal edges $s$. Its height is $\frac{s\sqrt6}{3}$, its volume is $\frac{s^3\sqrt2}{12}$, and its surface area is $s^2\sqrt3$. The center is a quarter of the way up from each face, so the circumradius $\frac{s\sqrt6}{4}$ is three times the inradius $\frac{s\sqrt6}{12}$, and the dihedral angle is $\arccos\frac13 \approx 70.5^\circ$. Most of this comes from one picture: the alternate vertices of a cube of edge $e$ are a regular tetrahedron of edge $e\sqrt2$.`,
+          keywords: ["tetrahedron", "regular tetrahedron", "platonic", "volume", "height", "circumradius", "dihedral angle", "inradius", "R = 3r", "dihedral arccos 1/3", "tetrahedron in a cube", "opposite edges perpendicular", "four equal spheres"],
           importance: "low",
           tier: "AMC",
           level: ["AMC12", "AIME"]
@@ -2007,7 +2067,7 @@ window.MATH_SECTIONS.push({
           id: "regular-octahedron",
           name: "Regular Octahedron of Side $s$",
           latex: String.raw`V = \frac{s^3\sqrt{2}}{3}, \qquad SA = 2s^2\sqrt{3}, \qquad R = \frac{s\sqrt{2}}{2}, \quad r = \frac{s\sqrt{6}}{6}`,
-          description: String.raw`Eight equilateral faces. The standard split: a horizontal cut through the four equatorial vertices gives two identical square pyramids with base side $s$ and height $\frac{s}{\sqrt{2}}$, so $V = 2\cdot\frac13 s^2\cdot\frac{s}{\sqrt{2}} = \frac{s^3\sqrt{2}}{3}$. It is the dual of the cube — its 6 vertices sit at the centers of a cube's faces — and its volume is exactly four regular tetrahedra of the same edge.`,
+          description: String.raw`A regular octahedron has eight equilateral faces, six vertices, and twelve edges. A plane through four vertices cuts it into two congruent square pyramids with base side $s$ and height $\frac{s}{\sqrt2}$, which gives its volume $\frac{s^3\sqrt2}{3}$, exactly four regular tetrahedra of the same edge. It is the dual of the cube: its vertices are the centers of a cube's faces, so a cube of edge $e$ holds an octahedron of edge $\frac{e\sqrt2}{2}$ and volume $\frac{e^3}{6}$.`,
           keywords: ["octahedron", "regular octahedron", "eight faces", "two square pyramids", "split octahedron", "dual of cube", "platonic solid", "octahedron volume", "octahedron surface area"],
           importance: "low",
           tier: "AMC",
@@ -2017,7 +2077,7 @@ window.MATH_SECTIONS.push({
           id: "cayley-menger",
           name: "Cayley–Menger Determinant",
           latex: String.raw`288\,V^2 = \det\begin{pmatrix} 0 & 1 & 1 & 1 & 1 \\ 1 & 0 & a^2 & b^2 & c^2 \\ 1 & a^2 & 0 & d^2 & e^2 \\ 1 & b^2 & d^2 & 0 & f^2 \\ 1 & c^2 & e^2 & f^2 & 0 \end{pmatrix}`,
-          description: String.raw`The 3D [[herons-formula|Heron's Formula]]: the volume of any tetrahedron from its six edge lengths alone, no coordinates needed. Here $a,b,c$ are the edges from one vertex and $d,e,f$ the opposite edges. (The $2\times2$ Heron analogue $16[\triangle]^2$ is the same determinant one size down.)`,
+          description: String.raw`The 3D [[herons-formula|Heron's Formula]]: the volume of any tetrahedron from its six edge lengths alone, no coordinates needed. Here $a, b, c$ are the edges from one vertex ($P_1P_2$, $P_1P_3$, $P_1P_4$) and $d, e, f$ the remaining three edges ($P_2P_3$, $P_2P_4$, $P_3P_4$). One size down, the $4 \times 4$ bordered determinant of a triangle's three squared sides equals $-16[\triangle]^2$, Heron's Formula again with a sign flip.`,
           keywords: ["cayley menger", "volume from edge lengths", "tetrahedron volume", "3d heron", "determinant", "det", "six edges"],
           importance: "lowest",
           tier: "Olympiad",
@@ -2028,7 +2088,7 @@ window.MATH_SECTIONS.push({
           name: "Isosceles Tetrahedron",
           latex: String.raw`a^2 = p^2 + q^2,\ \ b^2 = q^2 + r^2,\ \ c^2 = p^2 + r^2, \qquad V = \frac{pqr}{3}`,
           description: String.raw`An isosceles tetrahedron is one whose three pairs of opposite edges are equal, and it always fits inside a rectangular box $p \times q \times r$ with its six edges as face diagonals. That turns an awkward solid into a box: its volume is $\frac{pqr}{3}$, the box minus four corner pyramids. All four faces are congruent acute triangles, and its circumcenter, incenter, and centroid coincide at the center of the box.`,
-          keywords: ["isosceles tetrahedron", "orthocentric tetrahedron", "opposite edges equal", "box embedding", "congruent faces", "disphenoid"],
+          keywords: ["isosceles tetrahedron", "opposite edges equal", "box embedding", "congruent faces", "disphenoid"],
           importance: "medium",
           tier: "AMC",
           level: ["AIME"]
@@ -2133,7 +2193,7 @@ window.MATH_SECTIONS.push({
           id: "skew-lines-distance",
           name: "Distance Between Skew Lines",
           latex: String.raw`d = \frac{\left| (P_2 - P_1) \cdot (\vec{d_1} \times \vec{d_2}) \right|}{\left| \vec{d_1} \times \vec{d_2} \right|}`,
-          description: String.raw`For lines through $P_1, P_2$ with direction vectors $\vec{d_1}, \vec{d_2}$: project the connecting vector onto the common perpendicular direction $\vec{d_1} \times \vec{d_2}$. Equivalent slick route: the distance equals $\frac{3V}{[\,\cdot\,]}$ using a tetrahedron with one edge on each line.`,
+          description: String.raw`For lines through $P_1, P_2$ with direction vectors $\vec{d_1}, \vec{d_2}$: project the connecting vector onto the common perpendicular direction $\vec{d_1} \times \vec{d_2}$. Equivalent volume route: a tetrahedron with edge $AB$ on one line and edge $CD$ on the other, the lines meeting at angle $\theta$, has $V = \frac16 \cdot AB \cdot CD \cdot d \sin\theta$, so $d = \frac{6V}{AB \cdot CD \cdot \sin\theta}$.`,
           keywords: ["skew lines", "common perpendicular", "cross product distance", "3d lines"],
           importance: "low",
           tier: "AIME Late",
@@ -2155,17 +2215,7 @@ window.MATH_SECTIONS.push({
       title: "Ratios & Constants to Memorize",
       blurb: "Exact lengths and ratios that come up often enough to know by heart.",
       formulas: [
-        {
-          id: "equilateral-triangle-facts",
-          name: "Equilateral Triangle of Side $s$",
-          latex: String.raw`h = \frac{s\sqrt{3}}{2}, \quad A = \frac{s^2\sqrt{3}}{4}, \quad R = \frac{s\sqrt{3}}{3}, \quad r = \frac{s\sqrt{3}}{6}`,
-          description: String.raw`An equilateral triangle has three equal sides and three $60^\circ$ angles, and everything about it is determined by its side $s$: height $h = \frac{s\sqrt3}{2}$, area $\frac{s^2\sqrt3}{4}$, circumradius $R = \frac{s\sqrt3}{3}$ and inradius $r = \frac{s\sqrt3}{6}$. Knowing these by heart turns any equilateral configuration into arithmetic. Its centroid, circumcenter, incenter, and orthocenter are all the same point, which is why $R = 2r$ and $h = R + r$. Two consequences are worth caching: inscribed in a circle of radius $R$ the side is $R\sqrt3$, and drawn around a circle of radius $r$ it is $2r\sqrt3$.`,
-          keywords: ["equilateral", "height", "area", "circumradius", "inradius", "inscribed in circle"],
-          importance: "high",
-          tier: "AMC",
-          level: ["MATHCOUNTS", "AMC10", "AMC12"]
-        },
-        {
+{
           id: "15-75-90-triangle",
           name: "15-75-90 Triangle Ratio",
           latex: String.raw`(\sqrt{6}-\sqrt{2}) : (\sqrt{6}+\sqrt{2}) : 4`,
@@ -2179,7 +2229,7 @@ window.MATH_SECTIONS.push({
           id: "triangle-13-14-15",
           name: "The 13-14-15 Triangle",
           latex: String.raw`13\text{-}14\text{-}15:\quad s = 21,\ [ABC] = 84,\ r = 4,\ R = \tfrac{65}{8}`,
-          description: String.raw`The altitude to the side of length $14$ is exactly $12$ and lands $5$ along it, cutting the triangle into a $5$-$12$-$13$ and a $9$-$12$-$15$ right triangle. That split is why every quantity in it comes out rational: area $84$, inradius $4$, circumradius $	frac{65}{8}$, exradii $	frac{21}{2}, 12, 14$, and even $\cos$ of the angles opposite $13$ and $15$ are $	frac{3}{5}$ and $	frac{5}{13}$. Problem setters use it whenever they want a scalene triangle with clean numbers, so spotting the side triple is often the entire first step.`,
+          description: String.raw`The altitude to the side of length $14$ is exactly $12$ and lands $5$ along it, cutting the triangle into a $5$-$12$-$13$ and a $9$-$12$-$15$ right triangle. That split is why every quantity in it comes out rational: area $84$, inradius $4$, circumradius $\tfrac{65}{8}$, exradii $\tfrac{21}{2}, 12, 14$, and even $\cos$ of the angles opposite $13$ and $15$ are $\tfrac{3}{5}$ and $\tfrac{5}{13}$. Problem setters use it whenever they want a scalene triangle with clean numbers, so spotting the side triple is often the entire first step.`,
           keywords: ["13-14-15", "13 14 15 triangle", "heronian triangle", "integer sides integer area", "area 84", "5-12-13 and 9-12-15", "consecutive integer sides", "altitude 12", "inradius 4", "circumradius 65/8", "nice triangle"],
           importance: "medium",
           tier: "AMC",
@@ -2304,7 +2354,7 @@ window.MATH_SECTIONS.push({
         {
           id: "harmonic-quadrilateral",
           name: "Harmonic Quadrilaterals & the Symmedian in a Circle",
-          latex: String.raw`\frac{BD}{CD} = \frac{AB}{AC} \iff AD \text{ is the } A\text{-symmedian}, \qquad \frac{BE}{CE} = \left(\frac{AB}{AC}\right)^{2}`,
+          latex: String.raw`\frac{BD}{CD} = \frac{AB}{AC} \iff AD \text{ is the } A\text{-symmedian}, \qquad \frac{BE}{CE} = \left(\frac{AB}{AC}\right)^{2} \;\; (E = AD \cap BC)`,
           description: String.raw`The tangents to the circumcircle at $B$ and $C$ meet at the pole $X$ of $BC$, and $AX$ is the $A$-symmedian. Extending it to meet the circle again at $D$ makes $ABDC$ a harmonic quadrilateral, meaning $AB \cdot CD = AC \cdot BD$. The engine is a pair of similar triangles: $XB = XC$ as tangent lengths and $XB^2 = XA \cdot XD$ by [[power-of-a-point|power of a point]], so $\triangle XBA \sim \triangle XDB$ and $\triangle XCA \sim \triangle XDC$. Both proportions run in both directions, so either one is a test for the symmedian rather than just a consequence of it.`,
           keywords: ["harmonic quadrilateral", "symmedian in a circle", "tangents meet on the symmedian", "pole of BC", "BD/CD = AB/AC", "similar triangles from tangents", "power of a point symmedian", "AB*CD = AC*BD", "second intersection of the symmedian"],
           importance: "low",

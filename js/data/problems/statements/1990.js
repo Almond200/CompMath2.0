@@ -26,4 +26,91 @@ $(2)$ The marksman must then break the lowest remaining target in the chosen col
 
 If the rules are followed, in how many different orders can the eight targets be broken?`, u: "https://live.poshenloh.com/past-contests/aime/1990" },
 "1990-aime-9": { s: String.raw`A fair coin is to be tossed $10$ times. Let $\frac{i}{j},$ in lowest terms, be the probability that heads never occur on consecutive tosses. Find $i+j.$`, u: "https://live.poshenloh.com/past-contests/aime/1990" },
+"1990-ajhsme-1": { s: String.raw`What is the smallest sum of two $3$-digit numbers that can be obtained by placing each of the six digits $4,$ $5,$ $6,$ $7,$ $8,$ $9$ into one of the six boxes of a sum of two $3$-digit numbers?
+
+(A) $947$  (B) $1037$  (C) $1047$  (D) $1056$  (E) $1245$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-10": { s: String.raw`On this monthly calendar, the date behind one of the letters is added to the date behind $C$. If this sum equals the sum of the dates behind $A$ and $B$, then the letter is
+
+@@fig:amc8/1990/10.svg@@
+
+(A) $P$  (B) $Q$  (C) $R$  (D) $S$  (E) $T$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-11": { s: String.raw`The numbers on the faces of this cube are consecutive whole numbers. The sums of the two numbers on each of the three pairs of opposite faces are equal. The sum of the six numbers on this cube is
+
+@@fig:amc8/1990/11.svg@@
+
+(A) $75$  (B) $76$  (C) $78$  (D) $80$  (E) $81$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-12": { s: String.raw`There are twenty-four $4$-digit whole numbers that use each of the four digits $2,$ $4,$ $5,$ and $7$ exactly once. Listed in numerical order from smallest to largest, the number in the $17$th position in the list is
+
+(A) $4527$  (B) $5724$  (C) $5742$  (D) $7245$  (E) $7524$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-13": { s: String.raw`One proposal for new postage rates for a letter was $30$¢ for the first ounce and $22$¢ for each additional ounce (or fraction of an ounce). The postage for a letter weighing $4.5$ ounces was
+
+(A) $96$¢  (B) $\$1.07$  (C) $\$1.18$  (D) $\$1.20$  (E) $\$1.40$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-14": { s: String.raw`A bag contains only blue balls and green balls. There are $6$ blue balls. If the probability of drawing a blue ball at random from this bag is $\dfrac14,$ then the number of green balls in the bag is
+
+(A) $12$  (B) $18$  (C) $24$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-15": { s: String.raw`The area of this figure is $100 \text{ cm}^2.$ Its perimeter is
+
+(The figure consists of four identical squares.)
+
+@@fig:amc8/1990/15.svg@@
+
+(A) $20 \text{ cm}$  (B) $25 \text{ cm}$  (C) $30 \text{ cm}$  (D) $40 \text{ cm}$  (E) $50 \text{ cm}$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-16": { s: String.raw`What is the value of the following expression?$$1990 - 1980 + 1970 - 1960 + \cdots - 20 + 10$$(A) $-990$  (B) $-10$  (C) $990$  (D) $1000$  (E) $1990$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-17": { s: String.raw`A straight concrete sidewalk is to be $3$ feet wide, $60$ feet long, and $3$ inches thick. How many cubic yards of concrete must a contractor order for the sidewalk if concrete must be ordered in a whole number of cubic yards?
+
+(A) $2$  (B) $5$  (C) $12$  (D) $20$  (E) more than $20$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-18": { s: String.raw`Every corner of a rectangular prism is cut off by a straight slice through the three edges meeting at that corner, removing a small triangular piece at each of the eight corners. How many edges does the new figure have?
+
+@@fig:amc8/1990/18.svg@@
+
+(A) $24$  (B) $30$  (C) $36$  (D) $42$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-19": { s: String.raw`There are $120$ seats in a row. What is the fewest number of seats that must be occupied so the next person to be seated must sit next to someone?
+
+(A) $30$  (B) $40$  (C) $41$  (D) $60$  (E) $119$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-2": { s: String.raw`Which digit of $0.12345,$ when changed to $9,$ gives the largest number?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-20": { s: String.raw`The annual incomes of $1{,}000$ families range from $\$8200$ to $\$98{,}000.$ In error, the largest income was entered on the computer as $\$980{,}000.$ The difference between the mean of the incorrect data and the mean of the actual data is
+
+(A) $\$882$  (B) $\$980$  (C) $\$1078$  (D) $\$482{,}000$  (E) $\$882{,}000$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-21": { s: String.raw`A list of $8$ numbers is formed by beginning with two given numbers. Each new number in the list is the product of the two previous numbers. Find the first number if the last three are $16,$ $64,$ $1024$:$$?, \underline{\phantom{x}}, \underline{\phantom{x}}, \underline{\phantom{x}}, \underline{\phantom{x}}, 16, 64, 1024$$(A) $\dfrac{1}{64}$  (B) $\dfrac{1}{4}$  (C) $1$  (D) $2$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-22": { s: String.raw`Several students are seated at a large circular table. They pass around a bag containing $100$ pieces of candy. Each person receives the bag, takes one piece of candy, and then passes the bag to the next person. If Chris takes the first and the last piece of candy, then the number of students at the table could be
+
+(A) $10$  (B) $11$  (C) $19$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-23": { s: String.raw`The graph relates the distance traveled (in miles) to the time elapsed (in hours) on a trip taken by an experimental airplane. During which hour was the average speed of this airplane the largest?
+
+@@fig:amc8/1990/23.svg@@
+
+(A) first $(0\text{-}1)$  (B) second $(1\text{-}2)$  (C) third $(2\text{-}3)$  (D) ninth $(8\text{-}9)$  (E) last $(11\text{-}12)$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-24": { s: String.raw`Three triangles and a diamond balance nine dots. Also, one triangle balances a diamond and a dot. How many dots will balance two diamonds?
+
+@@fig:amc8/1990/24.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-25": { s: String.raw`How many different patterns can be made by shading exactly two of the nine unit squares in a $3 \times 3$ grid? Patterns that can be matched by flips and/or turns are not considered different.
+
+(A) $3$  (B) $6$  (C) $8$  (D) $12$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-3": { s: String.raw`What fraction of the square is shaded?
+
+@@fig:amc8/1990/3.svg@@
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{5}{12}$  (D) $\dfrac{3}{7}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-4": { s: String.raw`Which of the following could not be the units digit [one’s digit] of the square of a whole number?
+
+(A) $1$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-5": { s: String.raw`Which of the following is closest to the product $(0.48017)(0.48017)(0.48017)?$
+
+(A) $0.011$  (B) $0.110$  (C) $1.10$  (D) $11.0$  (E) $110$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-6": { s: String.raw`Which of these five numbers is the largest?
+
+(A) $13579 + \dfrac{1}{2468}$  (B) $13579 - \dfrac{1}{2468}$  (C) $13579 \times \dfrac{1}{2468}$  (D) $13579 \div \dfrac{1}{2468}$  (E) $13579.2468$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-7": { s: String.raw`When three different numbers from the set $\{ -3, -2, -1, 4, 5 \}$ are multiplied, the largest possible product is
+
+(A) $10$  (B) $20$  (C) $30$  (D) $40$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-8": { s: String.raw`A dress originally priced at $\$80$ was put on sale at $25\%$ off. If $10\%$ tax was added to the sale price, then the total selling price of the dress was
+
+(A) $\$45$  (B) $\$52$  (C) $\$54$  (D) $\$66$  (E) $\$68$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
+"1990-ajhsme-9": { s: String.raw`The grading scale shown is used at Jones Junior High. The fifteen scores in Mr. Freeman’s class were: $89,$ $72,$ $54,$ $97,$ $77,$ $92,$ $85,$ $74,$ $75,$ $63,$ $84,$ $78,$ $71,$ $80,$ $90.$$$\begin{array}{|cc|}\hline \text{A} & 93\text{--}100 \\ \hline \text{B} & 85\text{--}92 \\ \hline \text{C} & 75\text{--}84 \\ \hline \text{D} & 70\text{--}74 \\ \hline \text{F} & 0\text{--}69 \\ \hline \end{array}$$In Mr. Freeman’s class, what percent of the students received a grade of C?
+
+(A) $20\%$  (B) $25\%$  (C) $30\%$  (D) $33\dfrac{1}{3}\%$  (E) $40\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1990" },
 });

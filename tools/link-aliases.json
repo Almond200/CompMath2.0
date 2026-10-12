@@ -478,6 +478,15 @@
       "Alphametics",
       "Cryptarithms"
     ],
+    "cube": [
+      "Cube of Side s",
+      "Cube",
+      "A Cube",
+      "Unit Cube",
+      "Cubes",
+      "Space Diagonal of a Cube",
+      "Hexagon in a Cube"
+    ],
     "cyclic-equal-angles": [
       "Equal Angles in a Cyclic Quadrilateral"
     ],
@@ -486,9 +495,6 @@
     ],
     "cyclic-perpendicular-diagonals": [
       "Cyclic Quadrilateral with Perpendicular Diagonals"
-    ],
-    "cyclic-quad-diagonals": [
-      "Cyclic Quadrilateral Diagonals"
     ],
     "cyclic-quad-radius": [
       "Circumradius of a Cyclic Quadrilateral"
@@ -786,6 +792,13 @@
     "frustum-volume": [
       "Volume of a Frustum"
     ],
+    "function-symmetry-equation": [
+      "Writing a Function's Symmetry as an Equation",
+      "Function Symmetry",
+      "Symmetry of a Function",
+      "Periodic Functions",
+      "Axis of Symmetry of a Function"
+    ],
     "functional-substitution": [
       "Functional Equation Substitution"
     ],
@@ -905,9 +918,6 @@
       "Herons",
       "Heron’s"
     ],
-    "hexagon-diagonals": [
-      "Diagonals of a Regular Hexagon"
-    ],
     "hockey-stick": [
       "Hockey Stick Identity"
     ],
@@ -978,6 +988,12 @@
       "Coloring Arguments",
       "Invariants & Coloring Arguments"
     ],
+    "inverse-function-properties": [
+      "Properties of Inverse Functions",
+      "Inverse Functions",
+      "Inverse Function",
+      "Function Inverse"
+    ],
     "inverse-trig-identities": [
       "Inverse Trig Identities",
       "Inverse Trig Identities & Ranges"
@@ -993,6 +1009,13 @@
     ],
     "isosceles-tetrahedron": [
       "Isosceles Tetrahedron"
+    ],
+    "isosceles-trapezoid": [
+      "An Isosceles Trapezoid",
+      "Cyclic Trapezoid",
+      "Equal Legs Trapezoid",
+      "Isosceles Trapezoid",
+      "Isosceles Trapezoid Moves"
     ],
     "isotomic-conjugate": [
       "Isotomic Conjugate"
@@ -1288,6 +1311,13 @@
     "number-of-divisors": [
       "Number of Divisors"
     ],
+    "odd-even-functions": [
+      "Odd and Even Functions",
+      "Even and Odd Functions",
+      "Odd Functions",
+      "Even Functions",
+      "Parity of a Function"
+    ],
     "orthic-triangle": [
       "Orthic Triangle"
     ],
@@ -1327,6 +1357,23 @@
     ],
     "parallel-line-similarity": [
       "Drawing a Parallel Line"
+    ],
+    "parallel-lines-distance": [
+      "Distance Between Parallel Lines",
+      "Distance Between Two Parallel Lines",
+      "Parallel Line Distance",
+      "Distance Between Parallel Planes",
+      "Width of a Strip"
+    ],
+    "parallelogram-area": [
+      "Parallelogram Area",
+      "Area of a Parallelogram",
+      "Base Times Height"
+    ],
+    "parallelogram-vertices": [
+      "Parallelogram Vertices Using Vectors",
+      "Fourth Vertex of a Parallelogram",
+      "Missing Vertex of a Parallelogram"
     ],
     "partitions": [
       "Partitions and Compositions"
@@ -1395,12 +1442,6 @@
       "Pick",
       "Pick's",
       "Pick's Theorem on Any Lattice",
-      "Picks",
-      "Pick’s"
-    ],
-    "picks-triangular-lattice": [
-      "Pick",
-      "Pick's",
       "Pick's Theorem on a Triangular Grid",
       "Picks",
       "Pick’s"
@@ -1511,6 +1552,7 @@
       "Ptolemy on an Equilateral Triangle"
     ],
     "ptolemy-second-theorem": [
+      "Cyclic Quadrilateral Diagonals",
       "Ptolemy",
       "Ptolemy's",
       "Ptolemy's Second Theorem",
@@ -1600,6 +1642,17 @@
     "reflection-principle": [
       "The Reflection Principle"
     ],
+    "regular-hexagon-area": [
+      "Diagonals of a Regular Hexagon"
+    ],
+    "regular-octagon": [
+      "Regular Octagon of Side s",
+      "A Regular Octagon",
+      "Regular Octagon",
+      "Octagon",
+      "Stop Sign",
+      "Square with Corners Cut Off"
+    ],
     "regular-polygon-area": [
       "Regular Polygon Area"
     ],
@@ -1620,7 +1673,10 @@
       "Resultant & Discriminant"
     ],
     "right-triangle-inradius": [
-      "Right Triangle Inradius"
+      "Right Triangle Inradius and Circumradius",
+      "Right Triangle Inradius",
+      "Right Triangle Circumradius",
+      "Inradius of a Right Triangle"
     ],
     "root-transformations": [
       "Transforming the Roots of a Polynomial"
@@ -1701,6 +1757,12 @@
     ],
     "skew-lines-distance": [
       "Distance Between Skew Lines"
+    ],
+    "slope-to-a-point": [
+      "Minimizing a Slope",
+      "Slope to a Point",
+      "Maximizing y over x",
+      "Ratio as a Slope"
     ],
     "smoothing-method": [
       "Mixing Variables",
@@ -1848,6 +1910,12 @@
     "tangent-line-trick": [
       "Tangent Line Trick"
     ],
+    "tangent-lines-from-point": [
+      "Tangent Lines from a Point",
+      "Tangent from an External Point",
+      "Tangent Lines to a Circle from a Point",
+      "Tangents from a Point"
+    ],
     "telescoping": [
       "Telescoping Sums"
     ],
@@ -1981,6 +2049,12 @@
       "Varignons",
       "Varignon’s"
     ],
+    "vector-bash": [
+      "Vector Bashing",
+      "Vector Bash",
+      "Vectors",
+      "Position Vectors"
+    ],
     "vector-dot-product": [
       "Dot Product"
     ],
@@ -2058,6 +2132,11 @@
       "Zonogons"
     ],
     "zsygmondy": [
+      "Zsigmondy",
+      "Zsigmondy's",
+      "Zsigmondy's Theorem",
+      "Zsigmondys",
+      "Zsigmondy’s",
       "Zsygmondy",
       "Zsygmondy's",
       "Zsygmondy's Theorem",

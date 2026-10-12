@@ -580,13 +580,13 @@ Bounded dice sums, digit-sum counts with digits capped at nine (the canonical us
 
 "balls-boxes-table": String.raw`
 ## Key forms
-- distinct balls into distinct boxes: $k^n$ with no restriction, and $k!\,S(n, k)$ with no box empty
-- identical balls into distinct boxes: $\dbinom{n + k - 1}{k - 1}$ with no restriction, and $\dbinom{n - 1}{k - 1}$ with no box empty
-- distinct balls into identical boxes: $\alt{\sum_{j=1}^{k}S(n, j)}{S(n, 1) + S(n, 2) + \cdots + S(n, k)}$ with no restriction, and $S(n, k)$ with no box empty
-- identical balls into identical boxes: $p_{\le k}(n)$ with no restriction, and $p_k(n)$ with no box empty, the partitions of $n$ into at most $k$ parts and into exactly $k$ parts
+- distinct balls into distinct boxes: $k^n$ with no restriction, $\dfrac{k!}{(k - n)!}$ with at most one per box, and $k!\,S(n, k)$ with no box empty
+- identical balls into distinct boxes: $\dbinom{n + k - 1}{k - 1}$ with no restriction, $\dbinom kn$ with at most one per box, and $\dbinom{n - 1}{k - 1}$ with no box empty
+- distinct balls into identical boxes: $\alt{\sum_{j=1}^{k}S(n, j)}{S(n, 1) + S(n, 2) + \cdots + S(n, k)}$ with no restriction, $1$ if $n \le k$ (and $0$ otherwise) with at most one per box, and $S(n, k)$ with no box empty
+- identical balls into identical boxes: $p_{\le k}(n)$ with no restriction, $1$ if $n \le k$ (and $0$ otherwise) with at most one per box, and $p_k(n)$ with no box empty, the partitions of $n$ into at most $k$ parts and into exactly $k$ parts
 
 ## Conditions
-Three yes-or-no questions pick the cell: whether the balls are distinguishable, whether the boxes are, and whether empty boxes are allowed. The same $n$ balls and $k$ boxes give twelve different counts.
+Two yes-or-no questions and one three-way choice pick the cell: whether the balls are distinguishable, whether the boxes are, and what is required of the boxes (no restriction, at most one ball per box, or no box empty). The same $n$ balls and $k$ boxes give twelve different counts.
 
 ## Why it works
 Each row of the table is a different bijection, and the four cases differ only in what "the same distribution" means.
@@ -600,7 +600,7 @@ Unlabeled boxes mean partitioning the balls into groups with no order among the 
 With nothing labeled, a distribution is a way to write $n$ as a sum of positive parts, an integer partition, which has no closed form.
 
 ## Useful observations
-- Two yes-or-no questions are answered before a single number is written: are the balls distinguishable, and are the boxes? A third picks the column: must every box be nonempty? Confusing identical with distinct is the most common counting mistake there is.
+- Two yes-or-no questions are answered before a single number is written: are the balls distinguishable, and are the boxes? A third picks the column: no restriction, at most one ball per box, or every box nonempty? Confusing identical with distinct is the most common counting mistake there is.
 - A per-box minimum $m_i$ is handled by handing out the minimums first and distributing the rest freely, the substitution $x_i \mapsto x_i - m_i$. For $20$ identical balls into $4$ distinct boxes with each box at least $3$: place $3$ in each box and distribute the remaining $8$ freely, $\binom{11}{3} = 165$.
 - An upper cap $c$ needs inclusion-exclusion: all distributions, minus those where some box overflows (that box is given $c + 1$ balls first), alternating signs. For $9$ balls into $3$ boxes each holding at most $4$: $\binom{11}{2} - 3\binom62 = 55 - 45 = 10$, the two-overflow term being impossible.
 - When both bounds apply, the minimum substitution comes first, which also shifts the cap. For $12$ balls into $3$ boxes each between $2$ and $5$, $y_i = x_i - 2$ gives $y_1 + y_2 + y_3 = 6$ with each $y_i \le 3$, so $\binom82 - 3\binom42 = 28 - 18 = 10$.
@@ -616,6 +616,8 @@ The two-question checklist comes first. The AMC and AIME sample every cell of th
 "pie": String.raw`
 ## When to use
 "How many integers up to $1000$ are divisible by none of $2$, $3$ and $5$", "how many seatings leave nobody in their own seat", "how many functions are onto": counts of objects that avoid several properties, where each property and each overlap of properties is easy to count. It often follows complementary counting, which turns "at least one" into "none".
+
+If the properties can never hold together, plain addition is enough, and if the overlaps are hard to count, casework on how many properties hold may be shorter.
 
 ## How
 1. Name the bad properties $A_1, \ldots, A_n$.
@@ -1146,7 +1148,7 @@ Alternating dice and coin duels are AMC and AIME classics, in which the first pl
 
 "geometric-probability": String.raw`
 ## When to use
-Two people arrive at random times and meet if they come within a fixed time of each other; a stick is broken at two random points and the pieces form a triangle; a point chosen in a square lands within some distance of a corner. Whenever the random quantities are real numbers chosen uniformly, the question is really about the size of a region.
+Two people arrive at random times and meet if they come within a fixed time of each other; a stick is broken at two random points and the pieces form a triangle; a point chosen in a square lands within some distance of a corner. Whenever the random quantities are real numbers chosen uniformly, the question is really about the size of a region. When the outcomes are discrete, such as dice or coins, count them instead, and a quantity that is not uniform needs its density, not just an area.
 
 ## How
 1. Give each random quantity its own axis, so two make a square and three make a cube.
@@ -1178,7 +1180,7 @@ Usually the whole solution once the region is drawn: a ratio of polygon areas, s
 
 "states-recursion-prob": String.raw`
 ## When to use
-A random process moves among finitely many situations until it stops: a random walk until it reaches an end, a game until someone wins, a bug on a cube until it reaches a corner, coin flips until a pattern appears. The question asks for the chance of ending a certain way or the expected number of steps.
+A random process moves among finitely many situations until it stops: a random walk until it reaches an end, a game until someone wins, a bug on a cube until it reaches a corner, coin flips until a pattern appears. The question asks for the chance of ending a certain way or the expected number of steps. A process whose next step depends on its whole history has no finite list of states, and this method does not apply.
 
 ## How
 1. Decide which kind of question it is: the chance of ending a certain way, the expected number of steps, or the position after a fixed number of steps.
@@ -1232,9 +1234,8 @@ The figure shows the symmetry step on a cube: vertices at the same distance from
 ## Common traps
 - States that forget something the future depends on, such as whether the last flip was a head.
 - Leaving out the $+1$ in an expected-steps equation, or adding one to a probability equation, where it does not belong.
-- Giving a winning end state the value $1$ in an expected-steps problem; every end state has $0$ steps left.
+- Giving a winning end state the value $1$ in an expected-steps problem, where every end state has $0$ steps left, or forgetting the end-state values altogether, which leaves the system with no unique solution.
 - Setting up absorbing end states for a question about a fixed number of steps, which needs a step-by-step probability list instead.
-- Forgetting the values at the end states, which leaves the system with no unique solution.
 
 ## Contest profile
 Usually the whole solution of an AIME probability or expected-value problem about a repeated process: a few states and a small linear system.
@@ -1243,6 +1244,8 @@ Usually the whole solution of an AIME probability or expected-value problem abou
 "symmetry-probability": String.raw`
 ## When to use
 The outcomes are equally likely and the question is about order or position: the chance that card $A$ comes before card $B$, that the top card is an ace, that the largest of $n$ numbers lands in the first half, that a given player is eliminated last. It also gives expected values, since interchangeable quantities have equal expectations: the gaps between random points on a segment all have the same expected length.
+
+If the outcomes are not equally likely, the swap argument fails and the weights must be tracked.
 
 ## How
 1. Check that the outcomes are equally likely and the setup treats the swapped items alike.
@@ -1518,7 +1521,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "weighted-binomial-sums": String.raw`
 ## Key forms
-- $\alt{\sum_{k=0}^{n}k\dbinom nk = n \cdot 2^{n-1}}{0\cdot\dbinom n0 + 1\cdot\dbinom n1 + \cdots + n\dbinom nn = n \cdot 2^{n-1}}$
+- the weight $k$ alone is the sum on [[committee-chair|the Committee–Chair card]]
 - $\alt{\sum_{k=0}^{n}k(k - 1)\dbinom nk = n(n - 1)2^{n-2}}{0 + 0 + 2\dbinom n2 + \cdots + n(n-1)\dbinom nn = n(n-1)2^{n-2}}$
 - $\alt{\sum_{k=0}^{n}k^2\dbinom nk = n(n + 1)2^{n-2}}{\dbinom n1 + 4\dbinom n2 + \cdots + n^2\dbinom nn = n(n+1)2^{n-2}}$
 - $\alt{\sum_k k^m\dbinom nk = \sum_{j}S(m, j)\,n(n - 1)\cdots(n - j + 1)\,2^{n - j}}{S(m,1)\,n\,2^{n-1} + S(m,2)\,n(n-1)\,2^{n-2} + \cdots}$ — the general weight, with $S(m, j)$ the [[stirling-bell|Stirling numbers of the second kind]]
@@ -1527,7 +1530,7 @@ Object.assign(window.MATH_DETAILS, {
 $n \ge 0$ and the sums run over $0 \le k \le n$. For alternating versions, the derivative is taken first and $x = -1$ substituted afterwards.
 
 ## Why it works
-Differentiate $(1 + x)^n = \sum_k\binom nkx^k$ once: $n(1 + x)^{n-1} = \sum_kk\binom nkx^{k-1}$. Multiplying by $x$ realigns the powers, $nx(1 + x)^{n-1} = \sum_kk\binom nkx^k$, and setting $x = 1$ sums: $\sum_kk\binom nk = n \cdot 2^{n-1}$.
+Differentiate $(1 + x)^n = \sum_k\binom nkx^k$ once: $n(1 + x)^{n-1} = \sum_kk\binom nkx^{k-1}$. Multiplying by $x$ realigns the powers, $nx(1 + x)^{n-1} = \sum_kk\binom nkx^k$, and setting $x = 1$ sums, which is the first-weight sum of the committee-chair identity.
 
 Differentiating $j$ times gives $\frac{d^j}{dx^j}(1 + x)^n = n(n - 1)\cdots(n - j + 1)(1 + x)^{n-j}$, and at $x = 1$ the left side is $\sum_kk(k - 1)\cdots(k - j + 1)\binom nk$. So the falling-factorial weights give $\sum_kk^{\underline j}\binom nk = n^{\underline j}2^{n-j}$.
 
@@ -1634,13 +1637,14 @@ Direct AMC questions ask for the most pieces from a few straight cuts, such as $
 - $E[\text{gap}] = \dfrac{1}{n+1}$ — each of the $n + 1$ gaps
 - $P(\max \le x) = x^n$ and $P(\min \ge x) = (1 - x)^n$ — the distribution functions
 - $E[\max - \min] = \dfrac{n - 1}{n + 1}$ — the expected range
-- discrete: $k$ draws from $\{1, \ldots, n\}$ give $E[\max] = \dfrac{k(n + 1)}{k + 1}$ — the analog for sampling without replacement
+- discrete, without replacement: $k$ distinct draws from $\{1, \ldots, n\}$ give $E[\max] = \dfrac{k(n + 1)}{k + 1}$
+- discrete, with replacement: $k$ independent draws from $\{1, \ldots, n\}$ give $E[\max] = \alt{n - \displaystyle\sum_{j=1}^{n-1}\left(\dfrac jn\right)^k}{n - \left[\left(\dfrac1n\right)^k + \left(\dfrac2n\right)^k + \cdots + \left(\dfrac{n-1}{n}\right)^k\right]}$ — the other formula does not apply here
 
 ## Conditions
-The points are independent and uniform on $[0, 1]$. The discrete form is for $k$ distinct values drawn from $\{1, \ldots, n\}$ without replacement.
+The points are independent and uniform on $[0, 1]$. The first discrete form is for $k$ distinct values drawn from $\{1, \ldots, n\}$ without replacement; with replacement the draws are independent and the second form applies. Using the wrong one is the usual slip: for $n = 6$ and $k = 3$ they give $\frac{21}{4}$ and $\frac{119}{24}$.
 
 ## Why it works
-By symmetry, $n$ uniform points plus the two interval endpoints split $[0, 1]$ into $n + 1$ exchangeable gaps, so each gap expects $\frac{1}{n+1}$; the $k$th smallest point sits after $k$ gaps, at $E[X_{(k)}] = \frac{k}{n+1}$. Directly, $P(\max \le x) = x^n$ integrates to $E[\max] = \frac{n}{n+1}$.
+By symmetry, $n$ uniform points plus the two interval endpoints split $[0, 1]$ into $n + 1$ exchangeable gaps, so each gap expects $\frac{1}{n+1}$; the $k$th smallest point sits after $k$ gaps, at $E[X_{(k)}] = \frac{k}{n+1}$. Directly, $P(\max \le x) = x^n$ integrates to $E[\max] = \frac{n}{n+1}$. With replacement on $\{1, \ldots, n\}$ the same idea gives $P(\max \le m) = \left(\frac mn\right)^k$, so $E[\max] = \sum_{m=1}^{n}P(\max \ge m) = n - \sum_{j=1}^{n-1}\left(\frac jn\right)^k$.
 
 ## Useful observations
 - The distribution-function route ($P(\max \le x) = x^n$, $P(\min \ge x) = (1 - x)^n$) answers probability questions; the gap-symmetry route answers expectation questions instantly.
@@ -1657,18 +1661,18 @@ Expected largest, smallest, or $k$th of several random points, expected gaps, an
 "total-expectation": String.raw`
 ## Key forms
 - $\alt{E[X] = \sum_i P(A_i)\,E[X \mid A_i]}{E[X] = P(A_1)E[X \mid A_1] + P(A_2)E[X \mid A_2] + \cdots}$ — the expectation as the probability-weighted average of the case expectations
-- $E[\text{total}] = E[N] \cdot E[X]$ — Wald's identity, for a random number $N$ of identical contributions
+- $E[\text{total}] = E[N] \cdot E[X]$ — Wald's identity, for a random number $N$ of identically distributed contributions, with $N$ independent of them or a stopping time and $E[N]$ finite
 - conditioning on the first step turns a process into an equation relating $E[X]$ to itself
 
 ## Conditions
-The cases $A_i$ are disjoint and exhaustive. Wald's identity needs $N$ not to depend on the values of the contributions, and the contributions to have the same expectation.
+The cases $A_i$ are disjoint and exhaustive. Wald's identity needs the contributions to have the same expectation, $E[N]$ to be finite, and $N$ to be either independent of the contributions or a stopping time, meaning that whether to take term $k + 1$ is decided from the first $k$ terms only. An $N$ that looks ahead at later contributions breaks it.
 
 ## Why it works
 Group the outcomes by which case $A_i$ occurred and average within cases first: the inner averages are the conditional expectations, and recombining with weights $P(A_i)$ reproduces the overall average. It is associativity of [[weighted-average|weighted averages]], elevated to a principle.
 
 ## Useful observations
 - The partition is chosen so that each conditional expectation is easy, and conditioning on the first step is almost always that choice.
-- Wald's identity is the case worth recognizing separately: when a random number of independent pieces are summed, the expected total is the product of the two expectations, provided $N$ does not depend on the values of the pieces. Dropping that proviso is the standard error.
+- Wald's identity is the case worth recognizing separately: when a random number of independent pieces are summed, the expected total is the product of the two expectations, provided $N$ is independent of the pieces or a stopping time. Dropping that proviso is the standard error: let the $X_i$ be fair $0$-$1$ coins and let $N = 2$ if $X_2 = 1$ and $N = 1$ otherwise, so that $N$ looks at the term it decides to take. Then $E[\text{total}] = E[X_1] + E[X_2 \cdot \mathbf 1_{X_2 = 1}] = \frac12 + \frac12 = 1$, while $E[N]\,E[X] = \frac32 \cdot \frac12 = \frac34$.
 - The technique pairs naturally with state recursions: it writes one equation per state, and solving the small system gives every expectation at once.
 - Whichever partition is picked, it must be disjoint and exhaustive, the same requirement as ordinary [[casework-method|casework]] and the usual source of a wrong weighted average.
 
@@ -1717,7 +1721,7 @@ Usually the decisive reformulation: once the objects are recoded, a standard for
 
 "grid-path-fill": String.raw`
 ## When to use
-Counting lattice paths on a grid with blocked squares, extra steps such as diagonals, or a missing region, so that one binomial coefficient no longer gives the answer. It also handles any board-walking count small enough to write out.
+Counting lattice paths on a grid with blocked squares, extra steps such as diagonals, or a missing region, so that one binomial coefficient no longer gives the answer. An open grid with only right and up steps is one binomial coefficient, $\binom{m + n}{n}$, and needs no filling. It also handles any board-walking count small enough to write out.
 
 ## How
 1. Write $1$ at the starting cell.
@@ -1784,7 +1788,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "constructive-counting": String.raw`
 ## When to use
-Codes, license plates, seatings, numbers with digit conditions, committees with roles: anything you could build by making a fixed sequence of choices. It is the default first attempt at any count, and the base that casework, complementary counting and dividing out an overcount all build on.
+Codes, license plates, seatings, numbers with digit conditions, committees with roles: anything you could build by making a fixed sequence of choices. It is the default first attempt at any count, and the base that casework, complementary counting and dividing out an overcount all build on. When the condition is easier to state as "not ...", the opposite is the better thing to count.
 
 ## How
 1. Describe the object as a sequence of decisions.
@@ -1818,6 +1822,8 @@ The most common counting idea of all: usually combined with casework, which spli
 "indicator-variables": String.raw`
 ## When to use
 An expected count of something that can happen in many places: fixed points of a random permutation, adjacent pairs of the same color, people who get their own hat back, empty boxes, runs of heads. The occurrences may depend on each other in complicated ways; the method does not care.
+
+It gives expected values only: a probability or a variance needs more, because the indicators are not independent.
 
 ## How
 1. Identify the individual places where the counted thing can happen.
@@ -1909,6 +1915,8 @@ Three problems here, all AIME, none solved by it alone, and each pairs it with c
 ## When to use
 Reaching a total from independent parts, each with its own allowed amounts: making change, distributing identical objects with caps, sums of several dice, partitions into restricted parts. Whenever choices are independent and combine by adding, the product of one polynomial per choice handles every interaction at once.
 
+When the total is small enough to list, or the choices are not independent, listing or casework is shorter, and unlimited identical objects with no caps are plain stars and bars.
+
 ## How
 1. For each independent part, write a polynomial or series whose coefficient of $x^k$ counts the ways that part contributes $k$.
 2. Multiply them together.
@@ -1942,7 +1950,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "extremal-principle": String.raw`
 ## When to use
-Existence and impossibility claims about a finite configuration: a graph, a set of points, a tournament, a set of numbers. Look at the object that is largest or smallest in some sense, the longest path, the closest pair, the smallest counterexample, because being extreme gives it a property the other objects lack.
+Existence and impossibility claims about a finite configuration: a graph, a set of points, a tournament, a set of numbers. Look at the object that is largest or smallest in some sense, the longest path, the closest pair, the smallest counterexample, because being extreme gives it a property the other objects lack. A configuration with no extreme element, such as the positive reals, offers nothing to take.
 
 ## How
 1. Choose a quantity to make extreme: a length, a distance, a size, a number of wins.
@@ -2255,7 +2263,7 @@ Scheduling, map, and conflict problems on the AMC and AIME, plus olympiad colori
 
 "probabilistic-method": String.raw`
 ## When to use
-An olympiad claim that some object exists, such as a coloring with no monochromatic structure, a subset with a property, or a cut with many edges, when building one explicitly is hard but a random object usually works.
+An olympiad claim that some object exists, such as a coloring with no monochromatic structure, a subset with a property, or a cut with many edges, when building one explicitly is hard but a random object usually works. It proves existence only and gives no way to find the object, and a failure probability above $1$ proves nothing.
 
 ## How
 1. Choose a random way to build the object, often coloring or selecting each element independently.
@@ -2421,7 +2429,7 @@ A famous AMC and MATHCOUNTS trap; the instinct that the doubling pattern must co
 
 "gap-method": String.raw`
 ## When to use
-"No two of these are adjacent": people who must not sit next to each other, books of one subject that must be separated, binary strings with no two consecutive $1$s, or choosing $k$ numbers from $1$ to $n$ with no two consecutive.
+"No two of these are adjacent": people who must not sit next to each other, books of one subject that must be separated, binary strings with no two consecutive $1$s, or choosing $k$ numbers from $1$ to $n$ with no two consecutive. Items that must stay together instead of apart are [[counting-blocks|glued into blocks]].
 
 ## How
 1. Arrange the unrestricted items first, counting their orders if they are distinct.
@@ -2577,7 +2585,7 @@ Rare as a named result, but the reasoning that some term is at least the average
 
 "casework-method": String.raw`
 ## When to use
-When one feature controls everything else: the largest element of a set, the first digit, how many times a value appears, where a special person sits, or the outcome of the first move. Probability problems use the same split, weighting each case by its probability.
+When one feature controls everything else: the largest element of a set, the first digit, how many times a value appears, where a special person sits, or the outcome of the first move. Probability problems use the same split, weighting each case by its probability. When the cases would be too many to list but the opposite of the condition has few, [[complementary-counting|complementary counting]] is the shorter route.
 
 ## How
 1. Choose the feature to split on: the one that makes the rest of the count easy once it is fixed.
@@ -2607,7 +2615,7 @@ The most common counting technique of all, usually with constructive counting in
 
 "reflection-principle": String.raw`
 ## When to use
-Grid paths that must stay on one side of a diagonal, vote counts in which one candidate is never behind, ticket queues in which change never runs out, and random walks that must not reach zero. The signal is a restriction on a path phrased with "never": never above, never trailing, never negative.
+Grid paths that must stay on one side of a diagonal, vote counts in which one candidate is never behind, ticket queues in which change never runs out, and random walks that must not reach zero. The signal is a restriction on a path phrased with "never": never above, never trailing, never negative. It needs steps of one size in two directions, and a barrier that is not a line of the grid is not reflected into itself.
 
 ## How
 1. Count all paths from the start to the end, ignoring the barrier.
@@ -2636,7 +2644,7 @@ Usually the whole solution once the path picture is drawn: the total number of p
 
 "uniform-overcount": String.raw`
 ## When to use
-Unordered groups from ordered lists, seatings around a round table, words with repeated letters, handshakes counted from both people's sides, necklaces: wherever the easy count lists each object several times.
+Unordered groups from ordered lists, seatings around a round table, words with repeated letters, handshakes counted from both people's sides, necklaces: wherever the easy count lists each object several times. If some objects are built more often than others, as a double scoop is, split into cases instead.
 
 ## How
 1. Count a related set of constructions that is easy to count, usually ordered.
@@ -2669,7 +2677,7 @@ Usually one division inside a larger count, and the trap in many problems is an 
 
 "odd-part-chains": String.raw`
 ## When to use
-Whenever a condition says one number may not divide another, or forbids ratios that are powers of $2$. The same table with powers of $3$ in place of powers of $2$ handles ratios that are powers of $3$.
+Whenever a condition says one number may not divide another, or forbids ratios that are powers of $2$. The same table with powers of $3$ in place of powers of $2$ handles ratios that are powers of $3$. A condition forbidding sums or differences is [[pairing-to-bound|pairing]], not chains.
 
 ## How
 1. Write every number from $1$ to $n$ as $2^k m$ with $m$ odd.
@@ -2788,7 +2796,9 @@ An AMC question in its plain form, sum-free or difference-free subsets, and an A
 
 "subset-avoiding-relation": String.raw`
 ## Distinguishing clues
-The condition is about pairs of chosen elements: no two sum to a target, differ by a fixed amount, are consecutive, or divide one another. The question asks either for the largest such subset or for how many there are. A condition on a single element, such as being odd, is ordinary counting; a condition on triples, such as no three in arithmetic progression, is much harder and needs other ideas.
+- The condition is about pairs of chosen elements: no two sum to a target, differ by a fixed amount, are consecutive, or divide one another.
+- The question asks either for the largest such subset or for how many there are.
+- Not this pattern: a condition on a single element, such as being odd, which is ordinary counting, or a condition on triples, such as no three in arithmetic progression, which is much harder and needs other ideas.
 
 {{figure:pairs}}
 
@@ -2876,7 +2886,9 @@ Olympiad graph theory and occasional AIME problems that count leaves or edges fr
 
 "restricted-sequences": String.raw`
 ## Distinguishing clues
-The objects are strings or rows of length $n$, built left to right, and the rule is about neighbors or runs: no two $1$s adjacent, no three equal letters in a row, no forbidden word of length two or three. Because only the last few symbols matter, the count can be organized by what the string ends with. A rule about the whole string, such as a fixed total number of $1$s with no restriction on position, calls for ordinary combinations instead, and a selection of $k$ positions with none adjacent is the closed-form case, [[non-adjacent-selection|Non-Adjacent Selection]].
+- The objects are strings or rows of length $n$, built left to right, and the rule is about neighbors or runs: no two $1$s adjacent, no three equal letters in a row, no forbidden word of length two or three.
+- Because only the last few symbols matter, the count can be organized by what the string ends with.
+- Not this pattern: a rule about the whole string, such as a fixed total number of $1$s with no restriction on position, which calls for ordinary combinations, or a selection of $k$ positions with none adjacent, the closed-form case, [[non-adjacent-selection|Non-Adjacent Selection]].
 
 ## Methods and Formulas to Try
 The choice among the methods depends on what is asked: one length, a general formula, or a circular arrangement.

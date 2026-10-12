@@ -1314,6 +1314,9 @@ a.ptype-chip:hover { border-color: var(--accent); color: var(--accent); }
   border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
 html[data-text="large"] .prob-statement { font-size: 18px; }
 html[data-text="larger"] .prob-statement { font-size: 21px; }
+.prob-choice { padding: 7px 0; line-height: 1.7; min-height: 2.2em; }
+.prob-choice .katex { line-height: 1.4; }
+.prob-choice-img { vertical-align: middle; margin-left: 6px; background: #fff; border-radius: 6px; padding: 3px 6px; max-width: 100%; }
 .prob-figure { display: block; max-width: 100%; height: auto; margin: 12px auto; padding: 10px 14px; background: #fff; border-radius: 8px; }
 .prob-credit { font-size: 11.5px; line-height: 1.5; color: var(--text-faint); margin: 8px 2px 0; }
 .prob-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
@@ -1918,6 +1921,7 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
    with no explanation. min/max attributes alone do not show this — they only bound the
    spinner. The range has to be on screen. */
 .tool-lim { font-size: 10.5px; color: var(--text-faint); margin-left: -2px; white-space: nowrap; }
+@media (max-width: 600px) { .tool-lim { white-space: normal; } }
 select.tool-in { cursor: pointer; }
 .tool-btn2 {
   font: inherit; font-size: 13px; font-weight: 600; color: #fff;
@@ -2706,6 +2710,16 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 .ct-name:hover { color: var(--space); }
 .ct-n { font-size: 12px; font-weight: 600; color: var(--text-faint); }
 .ct-years { display: flex; flex-wrap: wrap; gap: 5px; }
+/* A contest still to come: greyed, not a link, and with no problem count. */
+.ct-planned { opacity: 0.55; cursor: default; }
+.ct-planned .ct-name { color: var(--text-dim); }
+.ct-planned .ct-name:hover { color: var(--text-dim); }
+.route-note { margin: 8px 2px 4px; font-size: 12.5px; line-height: 1.5; color: var(--text-faint); }
+.ct-toggle { margin: 10px 0 2px; padding: 6px 12px; font: inherit; font-size: 12.5px; font-weight: 600; color: var(--text-dim);
+  background: var(--bg-card); border: 1px dashed var(--border); border-radius: 8px; cursor: pointer; }
+.ct-toggle:hover { color: var(--text); border-color: var(--text-faint); }
+.ct-planned-box[hidden] { display: none; }
+.ct-note { font-size: 12.5px; line-height: 1.5; color: var(--text-faint); }
 .ct-years a {
   font-size: 12.5px; font-weight: 650; padding: 3px 8px; border-radius: 7px; text-decoration: none;
   background: var(--space-soft); color: var(--space);
@@ -2849,8 +2863,12 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .detail-meta .level-range { font-size: 12.5px; }
 /* The contest box on a problem page sits on the left with the rest of the page, in the
    app's panel style. */
-.contest-nav { margin: 24px 0 0; max-width: 640px; border-radius: 12px; background: var(--bg-card); }
-.contest-nav .cn-head { justify-content: flex-start; padding: 10px 14px; background: none; }
+.contest-nav { margin: 24px 0 0; border-radius: 12px; background: var(--bg-card);
+  /* Wide enough that the 25 problem numbers of a paper sit on one line, and wider still if a paper has
+     more; on a screen too narrow for that the numbers wrap and the box fits the page. */
+  width: max-content; max-width: 100%; min-width: min(100%, 1060px); box-sizing: border-box; }
+.contest-nav .cn-head { justify-content: center; padding: 10px 14px; background: none; }
+.contest-nav .cn-nums { gap: 6px; }
 
 /* Before the first render on the front page, the top bar and sidebar stay hidden (see the
    pre-paint script in index.html), so they do not flash. */
@@ -3074,7 +3092,7 @@ html[data-density="compact"] .pv-inner { padding: 16px 16px; }
 /* A pattern's "Methods and Formulas to Try": two short labelled lists. */
 /* Tables inside a write-up (a step-by-step probability table, for instance). The wrapper scrolls
    sideways on a narrow screen instead of squeezing the cells. */
-.detail-table-wrap { overflow-x: auto; margin: 12px 0 14px; }
+.detail-table-wrap { overflow-x: auto; margin: 12px 0 14px; position: relative; }  /* relative: KaTeX's hidden MathML must not escape the scroller and widen the page */
 .detail-table { border-collapse: collapse; font-size: 14px; min-width: 60%; }
 .detail-table th, .detail-table td { padding: 6px 14px; border-bottom: 1px solid var(--border); text-align: center; font-variant-numeric: tabular-nums; }
 .detail-table th { font-size: 12.5px; font-weight: 700; color: var(--text-dim); border-bottom: 2px solid var(--border); }
@@ -3295,3 +3313,44 @@ html[data-text="larger"] .card-lead p { font-size: 17.5px; }
 html[data-text="larger"] .detail p.sec-note, html[data-text="larger"] .detail .detail-body p.sec-note { font-size: 17px; }
 html[data-text="larger"] .detail-table { font-size: 18.5px; }
 html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-body .body-sub { font-size: 17px; }
+
+/* ---------- Dark mode: one step below the body white (2026-10-11) ----------
+   Headings, labels, table cells, and list and problem names all drew in --text, which in the
+   dark theme reads as near-white and made the page glare. They now use a softer shade. Dark
+   only: every rule is scoped to data-theme="dark", so light mode is untouched. */
+:root[data-theme="dark"] {
+  --text-head: #c3cce2;   /* headings, labels, names */
+  --text-table: #aeb8d1;  /* table cells */
+}
+:root[data-theme="dark"] :is(
+  .tp-imp,                                     /* the HIGH / MED / LOW half of the tag */
+  .lead-title,                                 /* Overview */
+  .nav-section-btn, .nav-practice-link,        /* sidebar */
+  .card-name, .grp-title, .hub-name, .hs-ask, .hc-q, .sh-ask, .sh-intro a, .info-ask, .st-head,
+  .detail h4, .detail-body h4, .prob-detail-section h4, .prob-chain h4, .prob-think h4,
+  .interactive h4, .search-problems h4, .detail h3, .ix-title, h2, h3, .ts-name,   /* headers */
+  .pf-row .pf-k, .profile-stats strong,        /* contest profile labels */
+  .problem-q strong,                           /* Example 1. */
+  .prob-row .prob-open, .rc-name,              /* practice problems */
+  .prob-ref,                                   /* Problem 1 */
+  .pl-item, .pl-item span, .ct-name, .daily-title   /* lists and contests */
+) { color: var(--text-head); }
+:root[data-theme="dark"] :is(.detail-table td, .special-table td, table:not(.detail-table) th) { color: var(--text-table); }
+:root[data-theme="dark"] .detail-table td:first-child, :root[data-theme="dark"] .special-table td + td { color: var(--text-dim); }
+
+/* Dark mode, second pass (Stanley's answer to the contrast question): Related chips, the random-problem
+   buttons, and the math in formula boxes drop one step from white. Dark only. */
+:root[data-theme="dark"] .related-item { color: var(--text-head); }
+:root[data-theme="dark"] :is(.hp-btn, .rand-go, .rand-btns button[aria-checked="true"]) { color: #d3dae9; }
+:root[data-theme="dark"] .formula-display, :root[data-theme="dark"] .formula-display .katex { color: #cdd5e8; }
+
+/* Front page "How the four fit together" and "Jump to": the same softer shade. Dark only. */
+:root[data-theme="dark"] :is(.hub-h, .hub-p, .hub-chain-note, .hub-why, .hub-why li, .hc-q, .hs-ask, .hj-col a, .hj-col h4, .hub-card a) { color: #b3bcd5; }
+:root[data-theme="dark"] .hub :is(button, .hp-btn) { color: #d3dae9; }
+
+/* Dark mode, popups, tabs and problem text (Stanley, screenshots of the Filters and Browse by Tag
+   windows, the year tabs, and a problem statement). Dark only. */
+:root[data-theme="dark"] :is(.filter-chip.active, .b-lvl-chip.active, .ct-years a[aria-current="page"], .adv-apply) { color: #d3dae9; }
+:root[data-theme="dark"] :is(.adv-tag-chip.adv-tag-topic, .modal-head h3, .info-modal .modal-head h3) { color: var(--text-head); }
+:root[data-theme="dark"] .adv-tag-chip.adv-tag-topic:hover { color: var(--accent); }
+:root[data-theme="dark"] :is(.prob-statement, .prob-statement .katex) { color: #cdd5e8; }

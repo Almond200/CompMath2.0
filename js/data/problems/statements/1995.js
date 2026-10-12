@@ -22,4 +22,91 @@ Object.assign(window.MATH_STATEMENTS, {
 "1995-aime-9": { s: String.raw`Triangle $ABC$ is isosceles, with $AB=AC$ and altitude $AM=11.$ Suppose that there is a point $D$ on $\overline{AM}$ with $AD=10$ and $\angle BDC=3\angle BAC.$ Then the perimeter of $\triangle ABC$ may be written in the form $a+\sqrt b,$ where $a$ and $b$ are integers. Find $a+b.$
 
 @@fig:aime/1995/9.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/1995" },
+"1995-ajhsme-1": { s: String.raw`Walter has exactly one penny, one nickel, one dime and one quarter in his pocket. What percent of one dollar is in his pocket?
+
+(A) $4\%$  (B) $25\%$  (C) $40\%$  (D) $41\%$  (E) $59\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-10": { s: String.raw`A jacket and a shirt originally sold for $\$80$ and $\$40,$ respectively. During a sale Chris bought the $\$80$ jacket at a $40\%$ discount and the $\$40$ shirt at a $55\%$ discount. The total amount saved was what percent of the total of the original prices?
+
+(A) $45\%$  (B) $47\tfrac12\%$  (C) $50\%$  (D) $79\tfrac16\%$  (E) $95\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-11": { s: String.raw`Jane can walk any distance in half the time it takes Hector to walk the same distance. They set off in opposite directions around the outside of the $18$-block area as shown. When they meet for the first time, they will be closest to
+
+@@fig:amc8/1995/11.svg@@
+
+(A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) $E$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-12": { s: String.raw`A lucky year is one in which at least one date, when written in the form month/day/year, has the following property: the product of the month times the day equals the last two digits of the year. For example, $1956$ is a lucky year because it has the date $7/8/56$ and $7 \times 8 = 56.$ Which of the following is NOT a lucky year?
+
+(A) $1990$  (B) $1991$  (C) $1992$  (D) $1993$  (E) $1994$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-13": { s: String.raw`In the figure, $\angle A,$ $\angle B$ and $\angle C$ are right angles. If $\angle AEB = 40^\circ$ and $\angle BED = \angle BDE,$ then $\angle CDE =$
+
+@@fig:amc8/1995/13.svg@@
+
+(A) $75^\circ$  (B) $80^\circ$  (C) $85^\circ$  (D) $90^\circ$  (E) $95^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-14": { s: String.raw`A team won $40$ of its first $50$ games. How many of the remaining $40$ games must this team win so it will have won exactly $70\%$ of its games for the season?
+
+(A) $20$  (B) $23$  (C) $28$  (D) $30$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-15": { s: String.raw`What is the $100$th digit to the right of the decimal point in the decimal form of $\dfrac{4}{37}?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-16": { s: String.raw`Students from three middle schools worked on a summer project. Seven students from Allen School worked for $3$ days. Four students from Balboa School worked for $5$ days. Five students from Carver School worked for $9$ days. The total amount paid for the students’ work was $\$774.$ Assuming each student received the same amount for a day’s work, how much did the students from Balboa School earn altogether?
+
+(A) $\$9.00$  (B) $\$48.38$  (C) $\$180.00$  (D) $\$193.50$  (E) $\$258.00$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-17": { s: String.raw`The table below gives the percent of students in each grade at Annville and Cleona elementary schools:$$\begin{array}{|cccccccc|}\hline  & K & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline \text{Annville} & 16\% & 15\% & 15\% & 14\% & 13\% & 16\% & 11\% \\ \hline \text{Cleona} & 12\% & 15\% & 14\% & 13\% & 15\% & 14\% & 17\% \\ \hline \end{array}$$Annville has $100$ students and Cleona has $200$ students. In the two schools combined, what percent of the students are in grade $6?$
+
+(A) $12\%$  (B) $13\%$  (C) $14\%$  (D) $15\%$  (E) $28\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-18": { s: String.raw`The area of each of the four congruent L-shaped regions of this $100$-inch by $100$-inch square is $\dfrac{3}{16}$ of the total area. How many inches long is the side of the center square?
+
+@@fig:amc8/1995/18.svg@@
+
+(A) $25$  (B) $44$  (C) $50$  (D) $62$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-19": { s: String.raw`The graph shows the distribution of the number of children in the families of the students in Ms. Jordan’s English class. The median number of children in the family for this distribution is
+
+@@fig:amc8/1995/19.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-2": { s: String.raw`Jose is $4$ years younger than Zack. Zack is $3$ years older than Inez. Inez is $15$ years old. How old is Jose?
+
+(A) $8$  (B) $11$  (C) $14$  (D) $16$  (E) $22$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-20": { s: String.raw`Diana and Apollo each roll a standard die obtaining a number at random from $1$ to $6.$ What is the probability that Diana’s number is larger than Apollo’s number?
+
+(A) $\dfrac13$  (B) $\dfrac{5}{12}$  (C) $\dfrac49$  (D) $\dfrac{17}{36}$  (E) $\dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-21": { s: String.raw`A plastic snap-together cube has a protruding snap on one side and receptacle holes on the other five sides. What is the smallest number of these cubes that can be snapped together so that only receptacle holes are showing?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-22": { s: String.raw`The number $6545$ can be written as a product of a pair of positive two-digit numbers. What is the sum of this pair of numbers?
+
+(A) $162$  (B) $172$  (C) $173$  (D) $174$  (E) $222$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-23": { s: String.raw`How many four-digit whole numbers are there such that the leftmost digit is odd, the second digit is even, and all four digits are different?
+
+(A) $1120$  (B) $1400$  (C) $1800$  (D) $2025$  (E) $2500$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-24": { s: String.raw`In parallelogram $ABCD,$ $\overline{DE}$ is the altitude to the base $\overline{AB}$ and $\overline{DF}$ is the altitude to the base $\overline{BC}.$ (Both pictures represent the same parallelogram.) If $DC = 12,$ $EB = 4,$ and $DE = 6,$ then $DF =$
+
+@@fig:amc8/1995/24.svg@@
+
+(A) $6.4$  (B) $7$  (C) $7.2$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-25": { s: String.raw`Buses from Dallas to Houston leave every hour on the hour. Buses from Houston to Dallas leave every hour on the half hour. The trip from one city to the other takes $5$ hours. Assuming the buses travel on the same highway, how many Dallas-bound buses does a Houston-bound bus pass on the highway (not in the station)?
+
+(A) $5$  (B) $6$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-3": { s: String.raw`Which of the following operations has the same effect on a number as multiplying by $\dfrac34$ and then dividing by $\dfrac35?$
+
+(A) dividing by $\dfrac43$  (B) dividing by $\dfrac{9}{20}$  (C) multiplying by $\dfrac{9}{20}$  (D) dividing by $\dfrac54$  (E) multiplying by $\dfrac54$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-4": { s: String.raw`A teacher tells the class, “Think of a number, add $1$ to it, and double the result. Give the answer to your partner. Partner, subtract $1$ from the number you are given and double the result to get your answer.” Ben thinks of $6,$ and gives his answer to Sue. What should Sue’s answer be?
+
+(A) $18$  (B) $24$  (C) $26$  (D) $27$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-5": { s: String.raw`Find the smallest whole number that is larger than the sum$$2\tfrac12 + 3\tfrac13 + 4\tfrac14 + 5\tfrac15.$$(A) $14$  (B) $15$  (C) $16$  (D) $17$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-6": { s: String.raw`Figures $I,$ $II$ and $III$ are squares. The perimeter of $I$ is $12$ and the perimeter of $II$ is $24.$ The perimeter of $III$ is
+
+@@fig:amc8/1995/6.svg@@
+
+(A) $9$  (B) $18$  (C) $36$  (D) $72$  (E) $81$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-7": { s: String.raw`At Clover View Junior High, one half of the students go home on the school bus. One fourth go home by automobile. One tenth go home on their bicycles. The rest walk home. What fractional part of the students walk home?
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac{3}{20}$  (C) $\dfrac13$  (D) $\dfrac{17}{20}$  (E) $\dfrac{9}{10}$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-8": { s: String.raw`An American traveling in Italy wishes to exchange American money (dollars) for Italian money (lire). If $3000$ lire $= \$1.60,$ how many lire will the traveler receive in exchange for $\$1.00?$
+
+(A) $180$  (B) $480$  (C) $1800$  (D) $1875$  (E) $4875$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
+"1995-ajhsme-9": { s: String.raw`Three congruent circles with centers $P,$ $Q$ and $R$ are tangent to the sides of rectangle $ABCD$ as shown. The circle centered at $Q$ has diameter $4$ and passes through points $P$ and $R.$ The area of the rectangle is
+
+@@fig:amc8/1995/9.svg@@
+
+(A) $16$  (B) $24$  (C) $32$  (D) $64$  (E) $128$`, u: "https://live.poshenloh.com/past-contests/amc8/1995" },
 });

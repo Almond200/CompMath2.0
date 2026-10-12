@@ -26,4 +26,81 @@ What was the total number of fish caught during the festival?`, u: "https://live
 "1993-aime-9": { s: String.raw`Two thousand points are given on a circle. Label one of the points $1.$ From this point, count $2$ points in the clockwise direction and label this point $2.$ From the point labeled $2,$ count $3$ points in the clockwise direction and label this point $3.$ (See figure.) Continue this process until the labels $1,$ $2,$ $3,$ $\ldots,$ $1993$ are all used. Some of the points on the circle will have more than one label and some points will not have a label. What is the smallest integer that labels the same point as $1993?$
 
 @@fig:aime/1993/9.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/1993" },
+"1993-ajhsme-1": { s: String.raw`Which pair of numbers does not have a product equal to $36?$
+
+(A) $\{-4, -9\}$  (B) $\{-3, -12\}$  (C) $\left\{\dfrac12, -72\right\}$  (D) $\{1, 36\}$  (E) $\left\{\dfrac32, 24\right\}$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-10": { s: String.raw`This line graph represents the price of a trading card during the first $6$ months of $1993.$ The greatest monthly drop in price occurred during which month?
+
+@@fig:amc8/1993/10.svg@@
+
+(A) January  (B) March  (C) April  (D) May  (E) June`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-11": { s: String.raw`Consider this histogram of the scores for $81$ students taking a test. The median is in the interval labeled which value?
+
+@@fig:amc8/1993/11.svg@@
+
+(A) $60$  (B) $65$  (C) $70$  (D) $75$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-12": { s: String.raw`If each of the three operation signs, $+,$ $-,$ $\times,$ is used exactly once in one of the blanks in the expression$$5 \, \underline{\phantom{x}} \, 4 \, \underline{\phantom{x}} \, 6 \, \underline{\phantom{x}} \, 3$$then the value of the result could equal
+
+(A) $9$  (B) $10$  (C) $15$  (D) $16$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-13": { s: String.raw`The word “HELP” in block letters is painted as a shaded region with strokes $1$ unit wide on a $5$ by $15$ rectangular sign. Each letter is $3$ units wide with a $1$-unit gap between letters, as shown. The area of the unshaded portion of the sign, in square units, is
+
+@@fig:amc8/1993/13.svg@@
+
+(A) $30$  (B) $32$  (C) $34$  (D) $36$  (E) $38$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-14": { s: String.raw`The nine squares in the table shown are to be filled so that every row and every column contains each of the numbers $1,$ $2,$ $3.$ Then $A + B =$$$\begin{array}{|c|c|c|} \hline 1 & \phantom{X} & \phantom{X} \\ \hline \phantom{X} & 2 & A \\ \hline \phantom{X} & \phantom{X} & B \\ \hline \end{array}$$(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-15": { s: String.raw`The arithmetic mean (average) of four numbers is $85.$ If the largest of these numbers is $97,$ then the mean of the remaining three numbers is
+
+(A) $81.0$  (B) $82.7$  (C) $83.0$  (D) $84.0$  (E) $84.3$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-16": { s: String.raw`What is the value of the following expression?$$\cfrac{1}{1 + \cfrac{1}{2 + \cfrac{1}{3}}}$$(A) $\dfrac16$  (B) $\dfrac{3}{10}$  (C) $\dfrac{7}{10}$  (D) $\dfrac56$  (E) $\dfrac{10}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-17": { s: String.raw`Square corners, $5$ units on a side, are removed from a $20$ unit by $30$ unit rectangular sheet of cardboard. The sides are then folded to form an open box. The surface area, in square units, of the interior of the box is
+
+(A) $300$  (B) $500$  (C) $550$  (D) $600$  (E) $1000$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-18": { s: String.raw`The rectangle shown has length $AC = 32,$ width $AE = 20,$ and $B$ and $F$ are midpoints of $\overline{AC}$ and $\overline{AE},$ respectively. The area of the quadrilateral $ABDF$ is
+
+@@fig:amc8/1993/18.svg@@
+
+(A) $320$  (B) $325$  (C) $330$  (D) $335$  (E) $340$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-19": { s: String.raw`What is the value of the following expression?$$(1901 + 1902 + 1903 + \cdots + 1993) - (101 + 102 + 103 + \cdots + 193)$$(A) $167{,}400$  (B) $172{,}050$  (C) $181{,}071$  (D) $199{,}300$  (E) $362{,}142$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-2": { s: String.raw`When the fraction $\dfrac{49}{84}$ is expressed in simplest form, then the sum of the numerator and the denominator will be
+
+(A) $11$  (B) $17$  (C) $19$  (D) $33$  (E) $133$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-20": { s: String.raw`When $10^{93} - 93$ is expressed as a single whole number, the sum of the digits is
+
+(A) $10$  (B) $93$  (C) $819$  (D) $826$  (E) $833$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-21": { s: String.raw`If the length of a rectangle is increased by $20\%$ and its width is increased by $50\%,$ then the area is increased by
+
+(A) $10\%$  (B) $30\%$  (C) $70\%$  (D) $80\%$  (E) $100\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-22": { s: String.raw`Pat Peano has plenty of $0$’s, $1$’s, $3$’s, $4$’s, $5$’s, $6$’s, $7$’s, $8$’s and $9$’s, but he has only twenty-two $2$’s. How far can he number the pages of his scrapbook with these digits?
+
+(A) $22$  (B) $99$  (C) $112$  (D) $119$  (E) $199$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-23": { s: String.raw`Five runners, $P,$ $Q,$ $R,$ $S,$ $T,$ have a race, and $P$ beats $Q,$ $P$ beats $R,$ $Q$ beats $S,$ and $T$ finishes after $P$ and before $Q.$ Who could not have finished third in the race?
+
+(A) $P$ and $Q$  (B) $P$ and $R$  (C) $P$ and $S$  (D) $P$ and $T$  (E) $P,$ $S$ and $T$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-24": { s: String.raw`What number is directly above $142$ in this array of numbers?$$\begin{array}{ccccccccc} & & & & 1 & & & & \\ & & & 2 & 3 & 4 & & & \\ & & 5 & 6 & 7 & 8 & 9 & & \\ & 10 & 11 & 12 & \cdots & & & & \end{array}$$(A) $99$  (B) $119$  (C) $120$  (D) $121$  (E) $122$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-25": { s: String.raw`A checkerboard consists of one-inch squares. A square card, $1.5$ inches on a side, is placed on the board so that it covers part or all of the area of each of $n$ squares. The maximum possible value of $n$ is
+
+(A) $4$ or $5$  (B) $6$ or $7$  (C) $8$ or $9$  (D) $10$ or $11$  (E) $12$ or more`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-3": { s: String.raw`Which of the following numbers has the largest prime factor?
+
+(A) $39$  (B) $51$  (C) $77$  (D) $91$  (E) $121$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-4": { s: String.raw`$1000 \times 1993 \times 0.1993 \times 10 =$
+
+(A) $1.993 \times 10^3$  (B) $1993.1993$  (C) $(199.3)^2$  (D) $1{,}993{,}001.993$  (E) $(1993)^2$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-5": { s: String.raw`Which one of the following bar graphs could represent the data from the circle graph shown?
+
+@@fig:amc8/1993/5.svg@@
+
+(A) @@ci:amc8/1993/5a.svg|3rem@@  (B) @@ci:amc8/1993/5b.svg|3rem@@  (C) @@ci:amc8/1993/5c.svg|3rem@@  (D) @@ci:amc8/1993/5d.svg|3rem@@  (E) @@ci:amc8/1993/5e.svg|3rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-6": { s: String.raw`A can of soup can feed $3$ adults or $5$ children. If there are $5$ cans of soup and $15$ children are fed, then how many adults would the remaining soup feed?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-7": { s: String.raw`$3^3 + 3^3 + 3^3 =$
+
+(A) $3^4$  (B) $9^3$  (C) $3^9$  (D) $27^3$  (E) $3^{27}$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-8": { s: String.raw`To control her blood pressure, Jill’s grandmother takes one half of a pill every other day. If one supply of medicine contains $60$ pills, then the supply of medicine will last approximately
+
+(A) $1$ month  (B) $4$ months  (C) $6$ months  (D) $8$ months  (E) $1$ year`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
+"1993-ajhsme-9": { s: String.raw`Consider the operation $*$ defined by the following table:$$\begin{array}{c|cccc} * & 1 & 2 & 3 & 4 \\ \hline 1 & 1 & 2 & 3 & 4 \\ 2 & 2 & 4 & 1 & 3 \\ 3 & 3 & 1 & 4 & 2 \\ 4 & 4 & 3 & 2 & 1 \end{array}$$For example, $3 * 2 = 1.$ Then $(2 * 4) * (1 * 3) =$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1993" },
 });

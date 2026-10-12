@@ -24,4 +24,83 @@ Object.assign(window.MATH_STATEMENTS, {
 "1985-aime-7": { s: String.raw`Assume that $a,$ $b,$ $c,$ and $d$ are positive integers such that $a^5=b^4,$ $c^3=d^2,$ and $c-a=19.$ Determine $d-b.$`, u: "https://live.poshenloh.com/past-contests/aime/1985" },
 "1985-aime-8": { s: String.raw`The sum of the following seven numbers is exactly $19:$$$\begin{aligned}a_1&=2.56, \\ a_2&=2.61, \\ a_3&=2.65, \\ a_4&=2.71, \\ a_5&=2.79, \\ a_6&=2.82, \\ a_7&=2.86.\end{aligned}$$It is desired to replace each $a_i$ by an integer approximation $A_i,$ $1\leq i\leq7,$ so that the sum of the $A_i$’s is also $19$ and so that $M,$ the maximum of the “errors” $|A_i-a_i|,$ is as small as possible. For this minimum $M,$ what is $100M?$`, u: "https://live.poshenloh.com/past-contests/aime/1985" },
 "1985-aime-9": { s: String.raw`In a circle, parallel chords of lengths $2,$ $3,$ and $4$ determine central angles of $\alpha,$ $\beta,$ and $\alpha+\beta$ radians, respectively, where $\alpha+\beta\lt\pi.$ If $\cos\alpha,$ which is a positive rational number, is expressed as a fraction in lowest terms, what is the sum of its numerator and denominator?`, u: "https://live.poshenloh.com/past-contests/aime/1985" },
+"1985-ajhsme-1": { s: String.raw`What is the value of the following product?$$\dfrac{3 \times 5}{9 \times 11} \times \dfrac{7 \times 9 \times 11}{3 \times 5 \times 7}$$(A) $1$  (B) $0$  (C) $49$  (D) $\dfrac{1}{49}$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-10": { s: String.raw`What fraction lies halfway between $\dfrac15$ and $\dfrac13$ on the number line?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{2}{15}$  (C) $\dfrac{4}{15}$  (D) $\dfrac{53}{200}$  (E) $\dfrac{8}{15}$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-11": { s: String.raw`A piece of paper containing six joined squares labeled as shown is folded along the edges of the squares to form a cube. The label of the face opposite the face labeled $X$ is
+
+@@fig:amc8/1985/11.svg@@
+
+(A) $Z$  (B) $U$  (C) $V$  (D) $W$  (E) $Y$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-12": { s: String.raw`A square and a triangle have equal perimeters. The lengths of the three sides of the triangle are $6.2$ cm, $8.3$ cm, and $9.5$ cm. The area of the square, in square centimeters, is
+
+(A) $24 \text{ cm}^2$  (B) $36 \text{ cm}^2$  (C) $48 \text{ cm}^2$  (D) $64 \text{ cm}^2$  (E) $144 \text{ cm}^2$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-13": { s: String.raw`If you walk for $45$ minutes at a rate of $4$ mph and then run for $30$ minutes at a rate of $10$ mph, how many miles have you gone at the end of one hour and $15$ minutes?
+
+(A) $3.5$ miles  (B) $8$ miles  (C) $9$ miles  (D) $25\dfrac13$ miles  (E) $480$ miles`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-14": { s: String.raw`The difference between a $6.5\%$ sales tax and a $6\%$ sales tax on an item priced at $\$20$ before tax is
+
+(A) $\$0.01$  (B) $\$0.10$  (C) $\$0.50$  (D) $\$1$  (E) $\$10$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-15": { s: String.raw`How many whole numbers between $100$ and $400$ contain the digit $2?$
+
+(A) $100$  (B) $120$  (C) $138$  (D) $140$  (E) $148$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-16": { s: String.raw`The ratio of boys to girls in Mr. Brown’s math class is $2 : 3.$ If there are $30$ students in the class, how many more girls than boys are in the class?
+
+(A) $1$  (B) $3$  (C) $5$  (D) $6$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-17": { s: String.raw`If your average score on your first six mathematics tests was $84$ and your average score on your first seven mathematics tests was $85,$ then your score on the seventh test was
+
+(A) $86$  (B) $88$  (C) $90$  (D) $91$  (E) $92$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-18": { s: String.raw`Nine copies of a certain pamphlet cost less than $\$10.00$ while ten copies of the same pamphlet (at the same price) cost more than $\$11.00.$ How much does one copy of this pamphlet cost?
+
+(A) $\$1.07$  (B) $\$1.08$  (C) $\$1.09$  (D) $\$1.10$  (E) $\$1.11$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-19": { s: String.raw`If the length and width of a rectangle are each increased by $10\%,$ then the perimeter of the rectangle is increased by
+
+(A) $1\%$  (B) $10\%$  (C) $20\%$  (D) $21\%$  (E) $40\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-2": { s: String.raw`What is the value of $90 + 91 + 92 + \cdots + 98 + 99?$
+
+(A) $845$  (B) $945$  (C) $1005$  (D) $1025$  (E) $1045$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-20": { s: String.raw`In a certain year, January had exactly four Tuesdays and four Saturdays. On what day did January $1$ fall that year?
+
+(A) Monday  (B) Tuesday  (C) Wednesday  (D) Friday  (E) Saturday`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-21": { s: String.raw`Mr. Green receives a $10\%$ raise every year. His salary after four such raises has gone up by what percent?
+
+(A) less than $40\%$  (B) $40\%$  (C) $44\%$  (D) $45\%$  (E) more than $45\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-22": { s: String.raw`Assume every $7$-digit whole number is a possible telephone number except those that begin with $0$ or $1.$ What fraction of telephone numbers begin with $9$ and end with $0?$
+
+(A) $\dfrac{1}{63}$  (B) $\dfrac{1}{80}$  (C) $\dfrac{1}{81}$  (D) $\dfrac{1}{90}$  (E) $\dfrac{1}{100}$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-23": { s: String.raw`King Middle School has $1200$ students. Each student takes $5$ classes a day. Each teacher teaches $4$ classes. Each class has $30$ students and $1$ teacher. How many teachers are there at King Middle School?
+
+(A) $30$  (B) $32$  (C) $40$  (D) $45$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-24": { s: String.raw`In a magic triangle, each of the six whole numbers $10$ through $15$ is placed in one of the circles so that the sum $S$ of the three numbers on each side of the triangle is the same. The largest possible value for $S$ is
+
+@@fig:amc8/1985/24.svg@@
+
+(A) $36$  (B) $37$  (C) $38$  (D) $39$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-25": { s: String.raw`Five cards are lying on a table. Each card has a letter on one side and a whole number on the other side. The visible faces show $P,$ $Q,$ $3,$ $4,$ and $6.$ Jane said, “If a vowel is on one side of any card, then an even number is on the other side.” Mary showed Jane was wrong by turning over one card. Which card did Mary turn over?
+
+(A) $3$  (B) $4$  (C) $6$  (D) $P$  (E) $Q$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-3": { s: String.raw`What is the value of the following expression?$$\dfrac{10^7}{5 \times 10^4}$$(A) $0.002$  (B) $0.2$  (C) $20$  (D) $200$  (E) $2000$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-4": { s: String.raw`The area of polygon $ABCDEF,$ in square units, is
+
+@@fig:amc8/1985/4.svg@@
+
+(A) $24$  (B) $30$  (C) $46$  (D) $66$  (E) $74$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-5": { s: String.raw`The grades in a mathematics class for the last grading period were: $5$ students earned an A, $4$ earned a B, $3$ earned a C, $3$ earned a D, and $5$ earned an F. If A, B, C, and D are satisfactory grades, what fraction of the grades are satisfactory?
+
+@@fig:amc8/1985/5.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{4}{5}$  (E) $\dfrac{9}{10}$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-6": { s: String.raw`A ream of paper containing $500$ sheets is $5$ cm thick. Approximately how many sheets of this type of paper would there be in a stack $7.5$ cm high?
+
+(A) $250$  (B) $550$  (C) $667$  (D) $750$  (E) $1250$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-7": { s: String.raw`A “stair-step” figure is made up of alternating shaded and unshaded squares in each row. Rows $1$ through $4$ are shown. All rows begin and end with an unshaded square. The number of shaded squares in the $37$th row is
+
+@@fig:amc8/1985/7.svg@@
+
+(A) $34$  (B) $35$  (C) $36$  (D) $37$  (E) $38$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-8": { s: String.raw`If $a = -2,$ the largest number in the set$$\left\{ -3a,\ 4a,\ \dfrac{24}{a},\ a^2,\ 1 \right\}$$is
+
+(A) $-3a$  (B) $4a$  (C) $\dfrac{24}{a}$  (D) $a^2$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
+"1985-ajhsme-9": { s: String.raw`What is the value of the product of the $9$ factors below?$$\left(1 - \tfrac12\right)\left(1 - \tfrac13\right)\left(1 - \tfrac14\right) \cdots \left(1 - \tfrac{1}{10}\right)$$(A) $\dfrac{1}{10}$  (B) $\dfrac{1}{9}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{10}{11}$  (E) $\dfrac{11}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/1985" },
 });

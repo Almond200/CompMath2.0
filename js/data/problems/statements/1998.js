@@ -18,4 +18,107 @@ Object.assign(window.MATH_STATEMENTS, {
 "1998-aime-7": { s: String.raw`Let $n$ be the number of ordered quadruples $(x_1, x_2, x_3, x_4)$ of positive odd integers that satisfy $x_1 + x_2 + x_3 + x_4 = 98.$ Find $\frac{n}{100}.$`, u: "https://live.poshenloh.com/past-contests/aime/1998" },
 "1998-aime-8": { s: String.raw`Except for the first two terms, each term of the sequence $1000,$ $x,$ $1000 - x,$ $\ldots$ is obtained by subtracting the preceding term from the one before that. The last term of the sequence is the first negative term encountered. What positive integer $x$ produces a sequence of maximum length?`, u: "https://live.poshenloh.com/past-contests/aime/1998" },
 "1998-aime-9": { s: String.raw`Two mathematicians take a morning coffee break each day. They arrive at the cafeteria independently, at random times between $9$ a.m. and $10$ a.m., and stay for exactly $m$ minutes. The probability that either one arrives while the other is in the cafeteria is $40\%,$ and $m = a - b\sqrt{c},$ where $a,$ $b,$ and $c$ are positive integers, and $c$ is not divisible by the square of any prime. Find $a + b + c.$`, u: "https://live.poshenloh.com/past-contests/aime/1998" },
+"1998-ajhsme-1": { s: String.raw`For $x = 7,$ which of the following is the smallest?
+
+(A) $\dfrac{6}{x}$  (B) $\dfrac{6}{x+1}$  (C) $\dfrac{6}{x-1}$  (D) $\dfrac{x}{6}$  (E) $\dfrac{x+1}{6}$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-10": { s: String.raw`Each of the letters $W,$ $X,$ $Y,$ and $Z$ represents a different integer in the set $\{1,2,3,4\},$ but not necessarily in that order. They satisfy$$\dfrac{W}{X}-\dfrac{Y}{Z}=1$$What is the sum of $W$ and $Y?$
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-11": { s: String.raw`Harry has $3$ sisters and $5$ brothers. His sister Harriet has $S$ sisters and $B$ brothers. What is the product of $S$ and $B?$
+
+(A) $8$  (B) $10$  (C) $12$  (D) $15$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-12": { s: String.raw`What is the value of the following expression?$$2\left(1-\dfrac{1}{2}\right)+3\left(1-\dfrac{1}{3}\right) +4\left(1-\dfrac{1}{4}\right)+\cdots +10\left(1-\dfrac{1}{10}\right)$$(A) $45$  (B) $49$  (C) $50$  (D) $54$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-13": { s: String.raw`What is the ratio of the area of the shaded square to the area of the large square? (The figure is drawn to scale.)
+
+@@fig:amc8/1998/13.svg@@
+
+(A) $\dfrac{1}{6}$  (B) $\dfrac{1}{7}$  (C) $\dfrac{1}{8}$  (D) $\dfrac{1}{12}$  (E) $\dfrac{1}{16}$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-14": { s: String.raw`At Annville Junior High School, $30\%$ of the students in the Math Club are in the Science Club, and $80\%$ of the students in the Science Club are in the Math Club. There are $15$ students in the Science Club. How many students are in the Math Club?
+
+(A) $12$  (B) $15$  (C) $30$  (D) $36$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-15": { s: String.raw`Problems $15,$ $16,$ and $17$ all refer to the following:
+
+Don’t Crowd The Isles
+
+In the very center of the Irenic Sea lie the beautiful Nisos Isles. In $1998$ the number of people on these islands is only $200,$ but the population triples every $25$ years. Queen Irene has decreed that there must be at least $1.5$ square miles for every person living in the Isles. The total area of the Nisos Isles is $24{,}900$ square miles.
+
+Estimate the population of Nisos in the year $2050.$
+
+(A) $600$  (B) $800$  (C) $1000$  (D) $2000$  (E) $3000$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-16": { s: String.raw`Estimate the year in which the population of Nisos will be approximately $6000.$
+
+(A) $2050$  (B) $2075$  (C) $2100$  (D) $2125$  (E) $2150$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-17": { s: String.raw`In how many years, approximately, from $1998$ will the population of Nisos be as much as Queen Irene has proclaimed that the islands can support?
+
+(A) $50$ years  (B) $75$ years  (C) $100$ years  (D) $125$ years  (E) $150$ years`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-18": { s: String.raw`As indicated by the diagram below, a rectangular piece of paper is folded bottom to top, then left to right, and finally, a hole is punched at $X.$ What does the paper look like when unfolded?
+
+@@fig:amc8/1998/18.svg@@
+
+(A) @@ci:amc8/1998/18A.svg|11rem@@  (B) @@ci:amc8/1998/18B.svg|11rem@@  (C) @@ci:amc8/1998/18C.svg|11rem@@  (D) @@ci:amc8/1998/18D.svg|11rem@@  (E) @@ci:amc8/1998/18E.svg|11rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-19": { s: String.raw`Tamika selects two different numbers at random from the set $\{8,9,10\}$ and adds them. Carlos takes two different numbers at random from the set $\{3,5,6\}$ and multiplies them. What is the probability that Tamika’s result is greater than Carlos’ result?
+
+(A) $\dfrac{4}{9}$  (B) $\dfrac{5}{9}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-2": { s: String.raw`If $~\begin{array}{r|l}a&b \\ \hline c&d\end{array} = a\cdot d-b\cdot c,$ what is the value of $~\begin{array}{r|l}3&4 \\ \hline 1&2\end{array}~?$
+
+(A) $-2$  (B) $-1$  (C) $0$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-20": { s: String.raw`Let $PQRS$ be a square piece of paper. $P$ is folded onto $R$ and then $Q$ is folded onto $S.$ The area of the resulting figure is $9$ square inches. Find the perimeter of square $PQRS.$
+
+@@fig:amc8/1998/20.svg@@
+
+(A) $9$  (B) $16$  (C) $18$  (D) $24$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-21": { s: String.raw`A $4\times 4\times 4$ cubical box contains $64$ identical small cubes that exactly fill the box. How many of these small cubes touch a side or the bottom of the box?
+
+(A) $48$  (B) $52$  (C) $60$  (D) $64$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-22": { s: String.raw`Terri produces a sequence of positive integers by following three rules. She starts with a positive integer, then applies the appropriate rule to the result, and continues in this fashion.
+
+Rule $1:$ If the integer is less than $10,$ multiply it by $9.$
+
+Rule $2:$ If the integer is even and greater than $9,$ divide it by $2.$
+
+Rule $3:$ If the integer is odd and greater than $9,$ subtract $5$ from it.
+
+For example, consider the sample sequence $23,$ $18,$ $9,$ $81,$ $76,$ $\ldots.$
+
+Find the $98$th term of the sequence that begins $98,$ $49,$ $\ldots.$
+
+(A) $6$  (B) $11$  (C) $22$  (D) $27$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-23": { s: String.raw`If the pattern in the diagram continues, what fraction of the interior would be shaded in the eighth triangle?
+
+@@fig:amc8/1998/23.svg@@
+
+(A) $\dfrac{3}{8}$  (B) $\dfrac{5}{27}$  (C) $\dfrac{7}{16}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{11}{45}$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-24": { s: String.raw`A rectangular board of $8$ columns has squares numbered beginning in the upper left corner and moving left to right so row one is numbered $1$ through $8,$ row two is $9$ through $16,$ and so on. A student shades square $1,$ then skips one square and shades square $3,$ skips two squares and shades square $6,$ skips $3$ squares and shades square $10,$ and continues in this way until there is at least one shaded square in each column.
+
+What is the number of the shaded square that first achieves this result?
+
+@@fig:amc8/1998/24.svg@@
+
+(A) $36$  (B) $64$  (C) $78$  (D) $91$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-25": { s: String.raw`Three generous friends, each with some cash, redistribute their money as follows: Ami gives enough money to Jan and Toy to double the amount that each has. Jan then gives enough to Ami and Toy to double their amounts. Finally, Toy gives Ami and Jan enough to double their amounts. If Toy has $\$36$ when they begin and $\$36$ when they end, what is the total amount that all three friends have?
+
+(A) $\$108$  (B) $\$180$  (C) $\$216$  (D) $\$252$  (E) $\$288$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-3": { s: String.raw`What is the value of the following expression?$$\dfrac{\frac{3}{8}+\frac{7}{8}}{\frac{4}{5}}$$(A) $1$  (B) $\dfrac{25}{16}$  (C) $2$  (D) $\dfrac{43}{20}$  (E) $\dfrac{47}{16}$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-4": { s: String.raw`How many triangles are in this figure? (Some triangles may overlap other triangles.)
+
+@@fig:amc8/1998/4.svg@@
+
+(A) $9$  (B) $8$  (C) $7$  (D) $6$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-5": { s: String.raw`Which of the following numbers is largest?
+
+(A) $9.12344$  (B) $9.123\overline{4}$  (C) $9.12\overline{34}$  (D) $9.1\overline{234}$  (E) $9.\overline{1234}$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-6": { s: String.raw`Dots are spaced one unit apart, horizontally and vertically. The number of square units enclosed by the polygon is
+
+@@fig:amc8/1998/6.svg@@
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-7": { s: String.raw`$100\times 19.98\times 1.998\times 1000=$
+
+(A) $(1.998)^2$  (B) $(19.98)^2$  (C) $(199.8)^2$  (D) $(1998)^2$  (E) $(19980)^2$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-8": { s: String.raw`A child’s wading pool contains $200$ gallons of water. If water evaporates at the rate of $0.5$ gallons per day and no other water is added or removed, how many gallons of water will be in the pool after $30$ days?
+
+(A) $140$  (B) $170$  (C) $185$  (D) $198.5$  (E) $199.85$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
+"1998-ajhsme-9": { s: String.raw`For a sale, a store owner reduces the price of a $\$10$ scarf by $20\%.$ Later the price is lowered again, this time by one-half the reduced price. The price is now
+
+(A) $\$2.00$  (B) $\$3.75$  (C) $\$4.00$  (D) $\$4.90$  (E) $\$6.40$`, u: "https://live.poshenloh.com/past-contests/amc8/1998" },
 });

@@ -24,4 +24,83 @@ Object.assign(window.MATH_STATEMENTS, {
 "1989-aime-7": { s: String.raw`If the integer $k$ is added to each of the numbers $36,$ $300,$ and $596,$ one obtains the squares of three consecutive terms of an arithmetic series. Find $k.$`, u: "https://live.poshenloh.com/past-contests/aime/1989" },
 "1989-aime-8": { s: String.raw`Assume that $x_1,$ $x_2,$ $\ldots,$ $x_7$ are real numbers such that$$\begin{aligned}x_1+4x_2+9x_3 +16x_4+25x_5 +36x_6+49x_7&=1, \\ 4x_1+9x_2+16x_3 +25x_4+36x_5 +49x_6+64x_7&=12, \\ 9x_1+16x_2+25x_3 +36x_4+49x_5 +64x_6+81x_7&=123.\end{aligned}$$Find the value of$$16x_1+25x_2+36x_3 +49x_4+64x_5 +81x_6+100x_7.$$`, u: "https://live.poshenloh.com/past-contests/aime/1989" },
 "1989-aime-9": { s: String.raw`One of Euler’s conjectures was disproved in the $1960$s by three American mathematicians when they showed there was a positive integer $n$ such that$$133^5+110^5+84^5+27^5=n^5.$$Find the value of $n.$`, u: "https://live.poshenloh.com/past-contests/aime/1989" },
+"1989-ajhsme-1": { s: String.raw`What is the value of$$(1 + 11 + 21 + 31 + 41) + (9 + 19 + 29 + 39 + 49)?$$(A) $150$  (B) $199$  (C) $200$  (D) $249$  (E) $250$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-10": { s: String.raw`How many degrees are in the smaller angle between the hour hand and the minute hand of a clock that reads seven o’clock?
+
+(A) $50^\circ$  (B) $120^\circ$  (C) $135^\circ$  (D) $150^\circ$  (E) $165^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-11": { s: String.raw`Which of the five “T-like shapes” would be symmetric to the one shown with respect to the dashed line?
+
+@@fig:amc8/1989/11.svg@@
+
+(A) @@ci:amc8/1989/11a.svg|6rem@@  (B) @@ci:amc8/1989/11b.svg|6rem@@  (C) @@ci:amc8/1989/11c.svg|6rem@@  (D) @@ci:amc8/1989/11d.svg|6rem@@  (E) @@ci:amc8/1989/11e.svg|6rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-12": { s: String.raw`What is the value of$$\frac{1 - \frac{1}{3}}{1 - \frac{1}{2}}?$$(A) $\dfrac{1}{3}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{3}{2}$  (E) $\dfrac{4}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-13": { s: String.raw`Which of the following is equal to$$\frac{9}{7 \times 53}?$$(A) $\dfrac{0.9}{0.7 \times 53}$  (B) $\dfrac{0.9}{0.7 \times 0.53}$  (C) $\dfrac{0.9}{0.7 \times 5.3}$  (D) $\dfrac{0.9}{7 \times 0.53}$  (E) $\dfrac{0.09}{0.07 \times 0.53}$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-14": { s: String.raw`When placing each of the digits $2,$ $4,$ $5,$ $6,$ $9$ in exactly one of the boxes of this subtraction problem, what is the smallest difference that is possible?
+
+@@fig:amc8/1989/14.svg@@
+
+(A) $58$  (B) $123$  (C) $149$  (D) $171$  (E) $176$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-15": { s: String.raw`In parallelogram $ABCD$ shown, what is the area of the shaded region $BEDC?$
+
+@@fig:amc8/1989/15.svg@@
+
+(A) $24$  (B) $48$  (C) $60$  (D) $64$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-16": { s: String.raw`In how many ways can $47$ be written as the sum of two primes?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) more than $3$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-17": { s: String.raw`The number $N$ is between $9$ and $17.$ Which of the following could be the average of $6,$ $10,$ and $N?$
+
+(A) $8$  (B) $10$  (C) $12$  (D) $14$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-18": { s: String.raw`A calculator has a reciprocal key that replaces the number currently displayed with its reciprocal. For example, if the display shows $4$ and the key is pressed, the display becomes $0.25.$ If $32$ is currently displayed, what is the fewest number of times the reciprocal key must be pressed so that the display again reads $32?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-19": { s: String.raw`The graph below shows the total accumulated dollars (in millions) spent by the Surf City government during $1988.$ For example, about $0.5$ million had been spent by the beginning of February and approximately $2$ million by the end of April. Approximately how many millions of dollars were spent during the summer months of June, July, and August?
+
+@@fig:amc8/1989/19.svg@@
+
+(A) $1.5$  (B) $2.5$  (C) $3.5$  (D) $4.5$  (E) $5.5$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-2": { s: String.raw`What is the value of$$\frac{2}{10} + \frac{4}{100} + \frac{6}{1000}?$$(A) $0.012$  (B) $0.0246$  (C) $0.12$  (D) $0.246$  (E) $246$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-20": { s: String.raw`The figure shown may be folded along the lines to form a number cube. Three faces come together at each corner of the cube. What is the largest sum of three numbers whose faces come together at a corner?
+
+@@fig:amc8/1989/20.svg@@
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-21": { s: String.raw`Jack had a bag of $128$ apples. He sold $25\%$ of them to Jill. Next he sold $25\%$ of those remaining to June. Of those apples still in his bag, he gave the shiniest one to his teacher. How many apples did Jack have then?
+
+(A) $7$  (B) $63$  (C) $65$  (D) $71$  (E) $111$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-22": { s: String.raw`The letters $A,$ $J,$ $H,$ $S,$ $M,$ $E$ and the digits $1,$ $9,$ $8,$ $9$ are each cycled separately (shifted one place at a time) to build a numbered list. Starting from AJHSME $1989,$ the list begins: line $1$ is JHSMEA $9891,$ line $2$ is HSMEAJ $8919,$ line $3$ is SMEAJH $9198,$ and so on. On what numbered line will AJHSME $1989$ appear for the first time?
+
+(A) $6$  (B) $10$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-23": { s: String.raw`An artist has $14$ cubes, each with an edge of $1$ meter. She stands them on the ground to form a sculpture as shown. She then paints the exposed surface of the sculpture. How many square meters does she paint?
+
+@@fig:amc8/1989/23.svg@@
+
+(A) $21$  (B) $24$  (C) $33$  (D) $37$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-24": { s: String.raw`Suppose a square piece of paper is folded in half vertically. The folded paper is then cut in half along the dashed line. Three rectangles are formed—a large one and two small ones. What is the ratio of the perimeter of one of the small rectangles to the perimeter of the large rectangle?
+
+@@fig:amc8/1989/24.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{4}{5}$  (E) $\dfrac{5}{6}$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-25": { s: String.raw`Every time the two wheels shown are spun, two numbers are selected by the pointers. What is the probability that the sum of the two selected numbers is even?
+
+@@fig:amc8/1989/25.svg@@
+
+(A) $\dfrac{1}{6}$  (B) $\dfrac{3}{7}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{5}{7}$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-3": { s: String.raw`Which of the following numbers is the largest?
+
+(A) $0.99$  (B) $0.9099$  (C) $0.9$  (D) $0.909$  (E) $0.9009$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-4": { s: String.raw`Estimate to determine which of the following is closest to$$\frac{401}{0.205}.$$(A) $0.2$  (B) $2$  (C) $20$  (D) $200$  (E) $2000$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-5": { s: String.raw`What is the value of$$-15 + 9 \times (6 \div 3)?$$(A) $-48$  (B) $-12$  (C) $-3$  (D) $3$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-6": { s: String.raw`If the markings on the number line shown are equally spaced, what is the number $y?$
+
+@@fig:amc8/1989/6.svg@@
+
+(A) $3$  (B) $10$  (C) $12$  (D) $15$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-7": { s: String.raw`The value of $20$ quarters and $10$ dimes equals the value of $10$ quarters and $n$ dimes. What is $n?$
+
+(A) $10$  (B) $20$  (C) $30$  (D) $35$  (E) $45$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-8": { s: String.raw`What is the value of$$(2 \times 3 \times 4)\left(\frac{1}{2} + \frac{1}{3} + \frac{1}{4}\right)?$$(A) $1$  (B) $3$  (C) $9$  (D) $24$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
+"1989-ajhsme-9": { s: String.raw`There are $2$ boys for every $3$ girls in Ms. Johnson’s math class. If there are $30$ students in her class, what percent of them are boys?
+
+(A) $12\%$  (B) $20\%$  (C) $40\%$  (D) $60\%$  (E) $66\dfrac{2}{3}\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1989" },
 });

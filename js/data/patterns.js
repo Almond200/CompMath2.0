@@ -17,7 +17,7 @@ window.MATH_SECTIONS.push({
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
         { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
-        { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "barycentric-coordinates", "tangency-equation"] },
+        { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation"] },
         { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "fit-copies"] }
       ],
       formulas: [
@@ -427,6 +427,36 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "vector-bash",
+          name: "Vector Bashing",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A figure is built from midpoints, centroids, parallelograms, or points that divide segments in given ratios, with no right angle to hang axes on, or a question about perpendicularity, angles, or volume is set in three dimensions.`,
+          move: String.raw`Choose an origin, write every point as a combination of two (or three) basis vectors, express division points as weighted averages, intersect lines by matching coefficients, and turn angles and areas into dot and cross products.`,
+          uses: ["vector-dot-product", "cross-product-area", "section-formula"],
+          latex: String.raw`P = (1 - t)A + tB \qquad \vec u \cdot \vec v = 0 \iff \vec u \perp \vec v`,
+          description: String.raw`Vector bashing is coordinates without axes. Instead of placing a figure on a grid, it names a point as the origin and writes every other point as a combination of a few basis vectors, so that a line is a point plus a multiple of a direction and a division of a segment is a weighted average. It fits figures defined by ratios, midpoints, and parallelograms, where an axis would have to be forced, and it extends to three dimensions with no new idea. Because every vector is written from one origin, the algebra stays short.`,
+          keywords: ["vector bash", "vectors", "position vectors", "basis vectors", "origin at a vertex", "weighted average of points", "method"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
+        {
+          id: "tangent-lines-from-point",
+          name: "Tangent Lines to a Circle from a Point (Distance Method)",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A line through a given point must touch a circle given by its equation, and the question asks for the line or lines, their slopes, or the points where they touch.`,
+          move: String.raw`Write the line through the point with an unknown slope, set the distance from the circle's center to that line equal to the radius, solve for the slope, and test the vertical line through the point separately.`,
+          uses: ["point-line-distance", "circle-equation"],
+          latex: String.raw`y - q = m(x - p), \qquad \frac{\lvert mh - k + q - mp\rvert}{\sqrt{m^2 + 1}} = r`,
+          description: String.raw`A line is tangent to a circle exactly when the distance from the center to the line equals the radius. Writing the line through the given point with an unknown slope turns that condition into one equation in the slope, so the tangents are found by solving it rather than by intersecting the line with the circle and requiring a double root. An outside point has two tangents, a point on the circle has one, and a point inside has none, and the equation shows which by how many slopes it gives.`,
+          keywords: ["tangent from a point", "tangent line to a circle", "tangent through an external point", "slope of tangent", "distance from center equals radius", "method"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
           id: "affine-transformations",
           name: "Affine Transformations",
           type: "method",
@@ -512,9 +542,10 @@ window.MATH_SECTIONS.push({
         { title: "Factoring & Rewriting", blurb: "Rearranging an expression into a product or a square that exposes its structure.", ids: ["sfft", "completing-the-square", "forced-difference-of-squares", "rationalizing", "denesting-radicals"] },
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "lagrange-interpolation", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
-        { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sos-method", "smoothing-method", "tangent-line-trick", "median-minimizes-abs"] },
+        { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sos-method", "smoothing-method", "tangent-line-trick", "median-minimizes-abs", "slope-to-a-point"] },
         { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "time-per-leg", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "sqrt-approximation"] },
+        { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it.", ids: ["function-symmetry-equation"] },
         { title: "Determinants", blurb: "Evaluating a determinant without expanding every term.", ids: ["cofactor-expansion"] }
       ],
       formulas: [
@@ -639,6 +670,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "slope-to-a-point",
+          name: "Minimizing $\\frac{y - a}{x - b}$ as a Slope",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A ratio such as $\frac{y - a}{x - b}$ or $\frac{y}{x}$ has to be maximized or minimized while $(x, y)$ stays on a curve or inside a region, such as a circle, a disk, or a polygon.`,
+          move: String.raw`Read the ratio as the slope of the line from the fixed point $(b, a)$ to the point $(x, y)$, then find the extreme slopes: the tangent lines from $(b, a)$ to the region, or the lines through its corners.`,
+          uses: ["distance-midpoint"],
+          latex: String.raw`\frac{y - a}{x - b} = \text{slope from } (b, a) \text{ to } (x, y)`,
+          description: String.raw`A ratio of two differences is a slope. The quotient $\frac{y - a}{x - b}$ is the rise over the run from the fixed point $(b, a)$ to the point $(x, y)$, so asking for its largest and smallest values over a curve or region asks which lines through $(b, a)$ still touch the region. Turning the algebra into a picture replaces calculus or an inequality with a tangent line or a corner, and it shows at once whether the ratio is bounded.`,
+          keywords: ["slope", "maximize a ratio", "y over x", "y minus a over x minus b", "extreme slope", "tangent from a point", "method", "optimization"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
           id: "name-the-whole-expression",
           name: "Naming a Self-Similar Expression",
           type: "method",
@@ -757,6 +803,21 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "function-symmetry-equation",
+          name: "Writing a Function's Symmetry as an Equation",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A function is described by a relation between its values at different points, such as $f(6 - x) = f(x)$ or $f(x + 2) = -f(x)$, or by a statement that its graph has a mirror line or a center, and the question asks for a value far from the data, a sum of roots, or a period.`,
+          move: String.raw`Add the two arguments in each relation to find the axis or center, subtract them to find a shift, combine two symmetries into a period, and carry the argument into the range where the function is known.`,
+          uses: ["odd-even-functions"],
+          latex: String.raw`f(x) = f(c - x) \Rightarrow \text{axis } x = \tfrac{c}{2} \qquad f(x) + f(c - x) = 2b \Rightarrow \text{center } \bigl(\tfrac{c}{2},\, b\bigr)`,
+          description: String.raw`A function's symmetry is a statement about its values at paired points, and it can be read off an equation by looking at the sum of the two arguments. When the arguments always add to the same constant $c$ and the values are equal, the paired points sit at the same height on opposite sides of the vertical line $x = \frac{c}{2}$. When the values add to a constant $2b$ instead, the graph is carried to itself by a half turn about the center $(\frac{c}{2}, b)$. Shifts by a fixed amount give periods, and two symmetries together produce a period, which is what makes a value far from the origin computable. The even and odd functions are the case of axis $x = 0$ and center $(0, 0)$, treated in [[odd-even-functions|Odd and Even Functions]], and the symmetry between a function and its inverse across the line $y = x$ is in [[inverse-function-properties|Properties of Inverse Functions]].`,
+          keywords: ["function", "symmetry of a function", "axis of symmetry", "center of symmetry", "periodic function", "period", "f(a+x)=f(a-x)", "reflection of a graph", "half turn", "anti-periodic"],
+          importance: "medium",
+          tier: "AIME Early",
+          level: ["AIME"]
         },
         {
           id: "lagrange-interpolation",
@@ -2053,7 +2114,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Circle Configurations", blurb: "Figures built on a circle, where a stated or hidden circle switches on a whole set of angle and length facts.", ids: ["angle-bisector-circumcircle", "cyclic-quadrilateral", "tangent-circle-packing", "circle-in-angle"] },
         { title: "Triangle Configurations", blurb: "Special triangles, and points inside them, that carry a set of known facts once they are recognized.", ids: ["point-in-equilateral", "right-triangle-altitude"] },
-        { title: "Polygon Configurations", blurb: "Polygons with a special property, such as equal angles, that lets them be completed into a simpler shape.", ids: ["equiangular-polygon"] },
+        { title: "Polygon Configurations", blurb: "Polygons with a special property, such as equal angles, that lets them be completed into a simpler shape.", ids: ["equiangular-polygon", "isosceles-trapezoid"] },
         { title: "Moved, Folded & Repeated Figures", blurb: "Figures produced by sliding, folding, or repeating a shape, where the motion itself carries the key fact.", ids: ["zonogon-minkowski", "folded-paper", "nested-similar"] },
         { title: "Solid Configurations", blurb: "Solids with a hidden regularity, such as a tetrahedron that sits inside a box, that turns a three-dimensional problem into a familiar one.", ids: ["equal-edge-tetrahedron"] },
         { title: "Tangency & Extremes", blurb: "An extreme value or a unique solution that signals a curve just touching a line.", ids: ["ellipse-tangent-line", "tangency-condition"] }
@@ -2142,12 +2203,27 @@ window.MATH_SECTIONS.push({
           recognize: [String.raw`a right triangle with the altitude drawn from the right angle to the hypotenuse`, String.raw`a point on a semicircle joined to the ends of the diameter, with a perpendicular dropped to the diameter`, String.raw`the phrase geometric mean, or segments of the hypotenuse given or asked for`],
           suggests: ["shared-leg-pythagoras", "coordinate-bash", "angle-chasing"],
           tryFirst: ["altitude-hypotenuse", "similar-figures-ratios", "median-to-hypotenuse"],
-          latex: String.raw`h^2 = pq`,
+          latex: String.raw`h^2 = pq \qquad a^2 = pc \qquad b^2 = qc \qquad h = \frac{ab}{c}`,
           description: String.raw`This is the right triangle with its altitude to the hypotenuse drawn, the figure that splits into two smaller copies of itself. Three similar triangles appear at once, so every length is a geometric mean of two others, and the hypotenuse's midpoint, the circumcenter, sits half a hypotenuse from every vertex.`,
           keywords: ["altitude to the hypotenuse", "geometric mean", "right triangle", "semicircle", "similar right triangles", "pattern"],
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "isosceles-trapezoid",
+          name: "An Isosceles Trapezoid",
+          type: "pattern",
+          subject: "geometry",
+          recognize: [String.raw`a trapezoid with equal legs, or one described as isosceles`, String.raw`equal base angles, or equal diagonals, in a quadrilateral with one pair of parallel sides`, String.raw`four points on a circle with two of the chords parallel`, String.raw`a trapezoid inscribed in a circle`],
+          suggests: ["extend-sides-to-meet", "parallel-line-similarity", "coordinate-bash"],
+          tryFirst: ["extend-sides-to-meet", "ptolemys-theorem", "trapezoid-parallelogram-areas"],
+          latex: String.raw`\begin{gathered} h = \sqrt{\ell^2 - \left(\tfrac{B - b}{2}\right)^2} \\ d^2 = \ell^2 + Bb \end{gathered}`,
+          description: String.raw`This is the configuration of a trapezoid with two equal legs. The legs make the figure symmetric about the perpendicular bisector of the bases, so the base angles come in equal pairs, the diagonals are equal, and the four vertices lie on a circle. Dropping perpendiculars from the shorter base cuts off two congruent right triangles and leaves a rectangle, which turns every length in the figure into one Pythagorean equation, and extending the legs completes the trapezoid to an isosceles triangle.`,
+          keywords: ["isosceles trapezoid", "equal legs", "equal diagonals", "cyclic trapezoid", "base angles of a trapezoid", "trapezoid", "common figure", "pattern"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "point-in-equilateral",
@@ -2407,24 +2483,9 @@ window.MATH_SECTIONS.push({
       title: "Number Theory",
       groups: [
         { title: "Digit Puzzles", blurb: "Problems about the digits of a number rather than its size.", ids: ["cryptarithms", "digit-manipulation", "unknown-base"] },
-        { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear", "same-remainder"] }
+        { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear"] }
       ],
       formulas: [
-        {
-          id: "same-remainder",
-          name: "Several Numbers with the Same Remainder",
-          type: "pattern",
-          subject: "number-theory",
-          recognize: [String.raw`several given numbers that leave the same remainder on division by an unknown number`, String.raw`one unknown number that leaves the same remainder on division by several known numbers`, String.raw`remainders each one less than the divisor, such as $3$ mod $4$, $4$ mod $5$, and $5$ mod $6$`],
-          suggests: ["subtract-equal-remainders"],
-          tryFirst: ["subtract-equal-remainders", "euclidean-algorithm", "gcd-lcm-product"],
-          latex: String.raw`\begin{gathered} a \equiv b \pmod d \Rightarrow d \mid b - a \\ n \equiv r \pmod{m_i} \Rightarrow \operatorname{lcm}(m_i) \mid n - r \end{gathered}`,
-          description: String.raw`This is the configuration of a remainder that is shared: several numbers leave the same remainder on division by one unknown divisor, or one number leaves the same remainder on division by several divisors. The shared remainder is the one thing the problem hides, and differences remove it.`,
-          keywords: ["same remainder", "equal remainders", "unknown divisor remainder", "remainder one less than divisor", "common remainder lcm", "pattern"],
-          importance: "medium",
-          tier: "AMC",
-          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
-        },
         {
           id: "unknown-base",
           name: "A Number Written in an Unknown Base",

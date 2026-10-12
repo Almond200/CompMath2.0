@@ -35,4 +35,285 @@ Object.assign(window.MATH_STATEMENTS, {
 "2000-aime-ii-7": { s: String.raw`Given that$$\frac{1}{2!17!} + \frac{1}{3!16!} + \frac{1}{4!15!} + \frac{1}{5!14!} + \frac{1}{6!13!} + \frac{1}{7!12!} + \frac{1}{8!11!} + \frac{1}{9!10!} = \frac{N}{1!18!},$$find the greatest integer that is less than $\frac{N}{100}.$`, u: "https://live.poshenloh.com/past-contests/aime/2000II" },
 "2000-aime-ii-8": { s: String.raw`In trapezoid $ABCD,$ leg $\overline{BC}$ is perpendicular to bases $\overline{AB}$ and $\overline{CD},$ and diagonals $\overline{AC}$ and $\overline{BD}$ are perpendicular. Given that $AB = \sqrt{11}$ and $AD = \sqrt{1001},$ find $BC^2.$`, u: "https://live.poshenloh.com/past-contests/aime/2000II" },
 "2000-aime-ii-9": { s: String.raw`Given that $z$ is a complex number such that $z + \frac{1}{z} = 2\cos 3^\circ,$ find the least integer that is greater than $z^{2000} + \frac{1}{z^{2000}}.$`, u: "https://live.poshenloh.com/past-contests/aime/2000II" },
+"2000-amc-10-1": { s: String.raw`In the year $2001,$ the United States will host the International Mathematical Olympiad. Let $I,$ $M,$ and $O$ be distinct positive integers such that the product $I \cdot M \cdot O = 2001.$ What is the largest possible value of the sum $I + M + O?$
+
+(A) $23$  (B) $55$  (C) $99$  (D) $111$  (E) $671$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-10": { s: String.raw`The sides of a triangle with positive area have lengths $4,$ $6,$ and $x.$ The sides of a second triangle with positive area have lengths $4,$ $6,$ and $y.$ What is the smallest positive number that is not a possible value of $|x - y|?$
+
+(A) $2$  (B) $4$  (C) $6$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-11": { s: String.raw`Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?
+
+(A) $21$  (B) $60$  (C) $119$  (D) $180$  (E) $231$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-12": { s: String.raw`Figures $0,$ $1,$ $2,$ and $3$ consist of $1,$ $5,$ $13,$ and $25$ nonoverlapping unit squares, respectively. If the pattern were continued, how many nonoverlapping unit squares would there be in figure $100?$
+
+@@fig:amc10/2000/12.svg@@
+
+(A) $10401$  (B) $19801$  (C) $20201$  (D) $39801$  (E) $40801$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-13": { s: String.raw`There are $5$ yellow pegs, $4$ red pegs, $3$ green pegs, $2$ blue pegs, and $1$ orange peg to be placed on a triangular peg board. In how many ways can the pegs be placed so that no (horizontal) row or (vertical) column contains two pegs of the same color?
+
+@@fig:amc10/2000/13.svg@@
+
+(A) $0$
+(B) $1$
+(C) $5! \cdot 4! \cdot 3! \cdot 2! \cdot 1!$
+(D) $\frac{15!}{5! \cdot 4! \cdot 3! \cdot 2! \cdot 1!}$
+(E) $15!$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-14": { s: String.raw`Mrs. Walter gave an exam in a mathematics class of five students. She entered the scores in random order into a spreadsheet, which recalculated the class average after each score was entered. Mrs. Walter noticed that after each score was entered, the average was always an integer. The scores (listed in ascending order) were $71,$ $76,$ $80,$ $82,$ and $91.$ What was the last score Mrs. Walter entered?
+
+(A) $71$  (B) $76$  (C) $80$  (D) $82$  (E) $91$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-15": { s: String.raw`Two non-zero real numbers, $a$ and $b,$ satisfy $ab = a - b.$ Find a possible value of$$\dfrac{a}{b} + \dfrac{b}{a} - ab.$$(A) $-2$  (B) $-\dfrac12$  (C) $\dfrac13$  (D) $\dfrac12$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-16": { s: String.raw`The diagram shows $28$ lattice points, each one unit from its nearest neighbors. Segment $AB$ meets segment $CD$ at $E.$ Find the length of segment $AE.$
+
+@@fig:amc10/2000/16.svg@@
+
+(A) $\dfrac{4\sqrt5}{3}$  (B) $\dfrac{5\sqrt5}{3}$  (C) $\dfrac{12\sqrt5}{7}$  (D) $2\sqrt5$  (E) $\dfrac{5\sqrt{65}}{9}$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-17": { s: String.raw`Boris has an incredible coin changing machine. When he puts in a quarter, it returns five nickels; when he puts in a nickel, it returns five pennies; and when he puts in a penny, it returns five quarters. Boris starts with just one penny. Which of the following amounts could Boris have after using the machine repeatedly?
+
+(A) $\$3.63$  (B) $\$5.13$  (C) $\$6.30$  (D) $\$7.45$  (E) $\$9.07$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-18": { s: String.raw`Charlyn walks completely around the boundary of a square whose sides are each $5$ km long. From any point on her path she can see exactly $1$ km horizontally in all directions. What is the area of the region consisting of all points Charlyn can see during her walk, expressed in square kilometers and rounded to the nearest whole number?
+
+(A) $24$  (B) $27$  (C) $39$  (D) $40$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-19": { s: String.raw`Through a point on the hypotenuse of a right triangle, lines are drawn parallel to the legs of the triangle so that the triangle is divided into a square and two smaller right triangles. The area of one of the two small right triangles is $m$ times the area of the square. The ratio of the area of the other small right triangle to the area of the square is
+
+(A) $\dfrac{1}{2m + 1}$  (B) $m$  (C) $1 - m$  (D) $\dfrac{1}{4m}$  (E) $\dfrac{1}{8m^2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-2": { s: String.raw`Which of the following is equal to $2000 \cdot 2000^{2000}?$
+
+(A) $2000^{2001}$  (B) $4000^{2000}$  (C) $2000^{4000}$  (D) $4{,}000{,}000^{2000}$  (E) $2000^{4{,}000{,}000}$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-20": { s: String.raw`Let $A,$ $M,$ and $C$ be nonnegative integers such that $A + M + C = 10.$ What is the maximum value of$$A \cdot M \cdot C + A \cdot M + M \cdot C + C \cdot A?$$(A) $49$  (B) $59$  (C) $69$  (D) $79$  (E) $89$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-21": { s: String.raw`If all alligators are ferocious creatures and some creepy crawlers are alligators, which statement(s) must be true?
+
+I. All alligators are creepy crawlers.
+
+II. Some ferocious creatures are creepy crawlers.
+
+III. Some alligators are not creepy crawlers.
+
+(A) $\mathrm{I}$ only  (B) $\mathrm{II}$ only  (C) $\mathrm{III}$ only  (D) $\mathrm{II}$ and $\mathrm{III}$ only  (E) None must be true`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-22": { s: String.raw`One morning each member of Angela’s family drank an $8$-ounce mixture of coffee with milk. The amounts of coffee and milk varied from cup to cup, but were never zero. Angela drank a quarter of the total amount of milk and a sixth of the total amount of coffee. How many people are in the family?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-23": { s: String.raw`When the mean, median, and mode of the list$$10, 2, 5, 2, 4, 2, x$$are arranged in increasing order, they form a non-constant arithmetic progression. What is the sum of all possible real values of $x?$
+
+(A) $3$  (B) $6$  (C) $9$  (D) $17$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-24": { s: String.raw`Let $f$ be a function for which $f\left(\dfrac{x}{3}\right) = x^2 + x + 1.$ Find the sum of all values of $z$ for which $f(3z) = 7.$
+
+(A) $-\dfrac13$  (B) $-\dfrac19$  (C) $0$  (D) $\dfrac59$  (E) $\dfrac53$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-25": { s: String.raw`In year $N,$ the $300$th day of the year is a Tuesday. In year $N + 1,$ the $200$th day is also a Tuesday. On what day of the week did the $100$th day of year $N - 1$ occur?
+
+(A) Thursday  (B) Friday  (C) Saturday  (D) Sunday  (E) Monday`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-3": { s: String.raw`Each day, Jenny ate $20\%$ of the jellybeans that were in her jar at the beginning of that day. At the end of the second day, $32$ remained. How many jellybeans were in the jar originally?
+
+(A) $40$  (B) $50$  (C) $55$  (D) $60$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-4": { s: String.raw`Chandra pays an on-line service provider a fixed monthly fee plus an hourly charge for connect time. Her December bill was $\$12.48,$ but in January her bill was $\$17.54$ because she used twice as much connect time as in December. What is the fixed monthly fee?
+
+(A) $\$2.53$  (B) $\$5.06$  (C) $\$6.24$  (D) $\$7.42$  (E) $\$8.77$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-5": { s: String.raw`Points $M$ and $N$ are the midpoints of sides $PA$ and $PB$ of $\triangle PAB.$ As $P$ moves along a line that is parallel to side $AB,$ how many of the four quantities listed below change?
+
+(a) the length of the segment $MN;$ (b) the perimeter of $\triangle PAB;$ (c) the area of $\triangle PAB;$ (d) the area of trapezoid $ABNM.$
+
+@@fig:amc10/2000/5.svg@@
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-6": { s: String.raw`The Fibonacci sequence $1,$ $1,$ $2,$ $3,$ $5,$ $8,$ $13,$ $21,$ $\ldots$ starts with two $1$s, and each term afterwards is the sum of its two predecessors. Which one of the ten digits is the last to appear in the units position of a number in the Fibonacci sequence?
+
+(A) $0$  (B) $4$  (C) $6$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-7": { s: String.raw`In rectangle $ABCD,$ $AD = 1,$ $P$ is on $\overline{AB},$ and $\overline{DB}$ and $\overline{DP}$ trisect $\angle ADC.$ What is the perimeter of $\triangle BDP?$
+
+@@fig:amc10/2000/7.svg@@
+
+(A) $3 + \dfrac{\sqrt3}{3}$  (B) $2 + \dfrac{4\sqrt3}{3}$  (C) $2 + 2\sqrt2$  (D) $\dfrac{3 + 3\sqrt5}{2}$  (E) $2 + \dfrac{5\sqrt3}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-8": { s: String.raw`At Olympic High School, $\tfrac25$ of the freshmen and $\tfrac45$ of the sophomores took the AMC $10.$ Given that the number of freshmen and sophomore contestants was the same, which of the following must be true?
+
+(A) There are five times as many sophomores as freshmen.
+(B) There are twice as many sophomores as freshmen.
+(C) There are as many freshmen as sophomores.
+(D) There are twice as many freshmen as sophomores.
+(E) There are five times as many freshmen as sophomores.`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-10-9": { s: String.raw`If $|x - 2| = p,$ where $x \lt 2,$ then $x - p =$
+
+(A) $-2$  (B) $2$  (C) $2 - 2p$  (D) $2p - 2$  (E) $|2p - 2|$`, u: "https://live.poshenloh.com/past-contests/amc10/2000" },
+"2000-amc-12-1": { s: String.raw`In the year $2001,$ the United States will host the International Mathematical Olympiad. Let $I,$ $M,$ and $O$ be distinct positive integers such that the product $I \cdot M \cdot O = 2001.$ What is the largest possible value of the sum $I + M + O?$
+
+(A) $23$  (B) $55$  (C) $99$  (D) $111$  (E) $671$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-10": { s: String.raw`The point $P = (1, 2, 3)$ is reflected in the $xy$-plane, then its image $Q$ is rotated by $180^\circ$ about the $x$-axis to produce $R,$ and finally, $R$ is translated by $5$ units in the positive $y$ direction to produce $S.$ What are the coordinates of $S?$
+
+(A) $(1, 7, -3)$  (B) $(-1, 7, -3)$  (C) $(-1, -2, 8)$  (D) $(-1, 3, 3)$  (E) $(1, 3, 3)$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-11": { s: String.raw`Two non-zero real numbers, $a$ and $b,$ satisfy $ab = a - b.$ Find a possible value of$$\frac{a}{b} + \frac{b}{a} - ab.$$(A) $-2$  (B) $-\dfrac{1}{2}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{1}{2}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-12": { s: String.raw`Let $A,$ $M,$ and $C$ be nonnegative integers such that $A + M + C = 12.$ What is the maximum value of$$A \cdot M \cdot C + A \cdot M + M \cdot C + C \cdot A?$$(A) $62$  (B) $72$  (C) $92$  (D) $102$  (E) $112$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-13": { s: String.raw`One morning each member of Angela’s family drank an $8$-ounce mixture of coffee with milk. The amounts of coffee and milk varied from cup to cup, but were never zero. Angela drank a quarter of the total amount of milk and a sixth of the total amount of coffee. How many people are in the family?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-14": { s: String.raw`When the mean, median, and mode of the list$$10, 2, 5, 2, 4, 2, x$$are arranged in increasing order, they form a non-constant arithmetic progression. What is the sum of all possible real values of $x?$
+
+(A) $3$  (B) $6$  (C) $9$  (D) $17$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-15": { s: String.raw`Let $f$ be a function for which $f\!\left(\dfrac{x}{3}\right) = x^2 + x + 1.$ Find the sum of all values of $z$ for which $f(3z) = 7.$
+
+(A) $-\dfrac{1}{3}$  (B) $-\dfrac{1}{9}$  (C) $0$  (D) $\dfrac{5}{9}$  (E) $\dfrac{5}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-16": { s: String.raw`A checkerboard of $13$ rows and $17$ columns has a number written in each square, beginning in the upper left corner, so that the first row is numbered $1,$ $2,$ $\ldots,$ $17,$ the second row $18,$ $19,$ $\ldots,$ $34,$ and so on down the board. If the board is renumbered so that the left column, top to bottom, is $1,$ $2,$ $\ldots,$ $13,$ the second column $14,$ $15,$ $\ldots,$ $26$ and so on across the board, some squares have the same numbers in both numbering systems. Find the sum of the numbers in these squares (under either system).
+
+(A) $222$  (B) $333$  (C) $444$  (D) $555$  (E) $666$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-17": { s: String.raw`A circle centered at $O$ has radius $1$ and contains the point $A.$ Segment $AB$ is tangent to the circle at $A$ and $\angle AOB = \theta.$ If point $C$ lies on $\overline{OA}$ and $BC$ bisects $\angle ABO,$ then what is $OC?$
+
+@@fig:amc12/2000/17.svg@@
+
+(A) $\sec^2\theta - \tan\theta$
+(B) $\dfrac{1}{2}$
+(C) $\dfrac{\cos^2\theta}{1 + \sin\theta}$
+(D) $\dfrac{1}{1 + \sin\theta}$
+(E) $\dfrac{\sin\theta}{\cos^2\theta}$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-18": { s: String.raw`In year $N,$ the $300$th day of the year is a Tuesday. In year $N + 1,$ the $200$th day is also a Tuesday. On what day of the week did the $100$th day of year $N - 1$ occur?
+
+(A) Thursday  (B) Friday  (C) Saturday  (D) Sunday  (E) Monday`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-19": { s: String.raw`In triangle $ABC,$ $AB = 13,$ $BC = 14,$ and $AC = 15.$ Let $D$ denote the midpoint of $\overline{BC}$ and let $E$ denote the intersection of $\overline{BC}$ with the bisector of angle $BAC.$ Which of the following is closest to the area of triangle $ADE?$
+
+(A) $2$  (B) $2.5$  (C) $3$  (D) $3.5$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-2": { s: String.raw`What is $2000(2000^{2000})?$
+
+(A) $2000^{2001}$  (B) $4000^{2000}$  (C) $2000^{4000}$  (D) $4{,}000{,}000^{2000}$  (E) $2000^{4{,}000{,}000}$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-20": { s: String.raw`If $x,$ $y,$ and $z$ are positive numbers satisfying$$x + \frac{1}{y} = 4,$$$$y + \frac{1}{z} = 1,$$and$$z + \frac{1}{x} = \frac{7}{3},$$then what is $xyz?$
+
+(A) $\dfrac{2}{3}$  (B) $1$  (C) $\dfrac{4}{3}$  (D) $2$  (E) $\dfrac{7}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-21": { s: String.raw`Through a point on the hypotenuse of a right triangle, lines are drawn parallel to the legs of the triangle so that the triangle is divided into a square and two smaller right triangles. The area of one of the two small right triangles is $m$ times the area of the square. What is the ratio of the area of the other small right triangle to the area of the square?
+
+(A) $\dfrac{1}{2m + 1}$  (B) $m$  (C) $1 - m$  (D) $\dfrac{1}{4m}$  (E) $\dfrac{1}{8m^2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-22": { s: String.raw`The graph below shows a portion of the curve defined by the quartic polynomial$$P(x) = x^4 + ax^3 + bx^2 + cx + d.$$Which of the following is the smallest?
+
+@@fig:amc12/2000/22.svg@@
+
+(A) $P(-1)$
+(B) The product of the zeros of $P$
+(C) The product of the non-real zeros of $P$
+(D) The sum of the coefficients of $P$
+(E) The sum of the real zeros of $P$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-23": { s: String.raw`Professor Gamble buys a lottery ticket, which requires that he pick six different integers from $1$ through $46,$ inclusive. He chooses his numbers so that the sum of the base-ten logarithms of his six numbers is an integer. It so happens that the integers on the winning ticket have the same property -- the sum of the base-ten logarithms is an integer. What is the probability that Professor Gamble holds the winning ticket?
+
+(A) $\dfrac{1}{5}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{1}{2}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-24": { s: String.raw`If circular arcs $AC$ and $BC$ have centers at $B$ and $A,$ respectively, then there exists a circle tangent to both arc $AC$ and arc $BC,$ and to $\overline{AB}.$ If the length of arc $BC$ is $12,$ then what is the circumference of the circle?
+
+@@fig:amc12/2000/24.svg@@
+
+(A) $24$  (B) $25$  (C) $26$  (D) $27$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-25": { s: String.raw`Eight congruent equilateral triangles, each of a different color, are used to construct a regular octahedron. How many distinguishable ways are there to construct the octahedron? (Two colored octahedrons are distinguishable if neither can be rotated to look just like the other.)
+
+@@fig:amc12/2000/25.svg@@
+
+(A) $210$  (B) $560$  (C) $840$  (D) $1260$  (E) $1680$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-3": { s: String.raw`Each day, Jenny ate $20\%$ of the jellybeans that were in her jar at the beginning of that day. At the end of the second day, $32$ remained. How many jellybeans were in the jar originally?
+
+(A) $40$  (B) $50$  (C) $55$  (D) $60$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-4": { s: String.raw`The Fibonacci sequence $1,$ $1,$ $2,$ $3,$ $5,$ $8,$ $13,$ $21,$ $\ldots$ starts with two $1$s, and each term afterwards is the sum of its two predecessors. Which one of the ten digits is the last to appear in the units position of a number in the Fibonacci sequence?
+
+(A) $0$  (B) $4$  (C) $6$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-5": { s: String.raw`If $|x - 2| = p,$ where $x \lt 2,$ then what is $x - p?$
+
+(A) $-2$  (B) $2$  (C) $2 - 2p$  (D) $2p - 2$  (E) $|2p - 2|$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-6": { s: String.raw`Two different prime numbers between $4$ and $18$ are chosen. When their sum is subtracted from their product, which of the following numbers could be obtained?
+
+(A) $21$  (B) $60$  (C) $119$  (D) $180$  (E) $231$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-7": { s: String.raw`How many positive integers $b$ have the property that $\log_b 729$ is a positive integer?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-8": { s: String.raw`Figures $0,$ $1,$ $2,$ and $3$ consist of $1,$ $5,$ $13,$ and $25$ nonoverlapping unit squares, respectively. If the pattern were continued, how many nonoverlapping unit squares would there be in figure $100?$
+
+@@fig:amc12/2000/8.svg@@
+
+(A) $10401$  (B) $19801$  (C) $20201$  (D) $39801$  (E) $40801$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-12-9": { s: String.raw`Mrs. Walter gave an exam in a mathematics class of five students. She entered the scores in random order into a spreadsheet, which recalculated the class average after each score was entered. Mrs. Walter noticed that after each score was entered, the average was always an integer. The scores (listed in ascending order) were $71,$ $76,$ $80,$ $82,$ and $91.$ What was the last score Mrs. Walter entered?
+
+(A) $71$  (B) $76$  (C) $80$  (D) $82$  (E) $91$`, u: "https://live.poshenloh.com/past-contests/amc12/2000" },
+"2000-amc-8-1": { s: String.raw`Aunt Anna is $42$ years old. Caitlin is $5$ years younger than Brianna, and Brianna is half as old as Aunt Anna. How old is Caitlin?
+
+(A) $15$  (B) $16$  (C) $17$  (D) $21$  (E) $37$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-10": { s: String.raw`Ara and Shea were once the same height. Since then Shea has grown $20\%$ while Ara has grown half as many inches as Shea. Shea is now $60$ inches tall. How tall, in inches, is Ara now?
+
+(A) $48$  (B) $51$  (C) $52$  (D) $54$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-11": { s: String.raw`The number $64$ has the property that it is divisible by its unit digit. How many whole numbers between $10$ and $50$ have this property?
+
+(A) $15$  (B) $16$  (C) $17$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-12": { s: String.raw`A block wall $100$ feet long and $7$ feet high will be constructed using blocks that are $1$ foot high and either $2$ feet long or $1$ foot long (no blocks may be cut). The vertical joins in the blocks must be staggered as shown, and the wall must be even on the ends. What is the smallest number of blocks needed to build this wall?
+
+@@fig:amc8/2000/12.svg@@
+
+(A) $344$  (B) $347$  (C) $350$  (D) $353$  (E) $356$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-13": { s: String.raw`In triangle $CAT,$ we have $\angle ACT =\angle ATC$ and $\angle CAT = 36^\circ.$ If $\overline{TR}$ bisects $\angle ATC,$ then $\angle CRT =$
+
+@@fig:amc8/2000/13.svg@@
+
+(A) $16^\circ$  (B) $51^\circ$  (C) $72^\circ$  (D) $90^\circ$  (E) $108^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-14": { s: String.raw`What is the units digit of $19^{19} + 99^{99}?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-15": { s: String.raw`Triangles $ABC,$ $ADE,$ and $EFG$ are all equilateral. Points $D$ and $G$ are midpoints of $\overline{AC}$ and $\overline{AE},$ respectively. If $AB = 4,$ what is the perimeter of figure $ABCDEFG?$
+
+@@fig:amc8/2000/15.svg@@
+
+(A) $12$  (B) $13$  (C) $15$  (D) $18$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-16": { s: String.raw`In order for Mateen to walk a kilometer ($1000$ meters) in his rectangular backyard, he must walk the length $25$ times or walk its perimeter $10$ times. What is the area of Mateen’s backyard in square meters?
+
+(A) $40$  (B) $200$  (C) $400$  (D) $500$  (E) $1000$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-17": { s: String.raw`The operation $\otimes$ is defined for all nonzero numbers by$$a\otimes b =\dfrac{a^{2}}{b}.$$Determine$$[(1\otimes 2)\otimes 3]-[1\otimes (2\otimes 3)].$$(A) $-\dfrac{2}{3}$  (B) $-\dfrac{1}{4}$  (C) $0$  (D) $\dfrac{1}{4}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-18": { s: String.raw`Consider these two geoboard quadrilaterals. Which of the following statements is true?
+
+@@fig:amc8/2000/18.svg@@
+
+(A) The area of quadrilateral $I$ is more than the area of quadrilateral $II.$
+(B) The area of quadrilateral $I$ is less than the area of quadrilateral $II.$
+(C) The quadrilaterals have the same area and the same perimeter.
+(D) The quadrilaterals have the same area, but the perimeter of $I$ is more than the perimeter of $II.$
+(E) The quadrilaterals have the same area, but the perimeter of $I$ is less than the perimeter of $II.$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-19": { s: String.raw`Three circular arcs of radius $5$ units bound the region shown. Arcs $AB$ and $AD$ are quarter-circles, and arc $BCD$ is a semicircle. What is the area, in square units, of the region?
+
+@@fig:amc8/2000/19.svg@@
+
+(A) $25$  (B) $10+5\pi$  (C) $50$  (D) $50+5\pi$  (E) $25\pi$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-2": { s: String.raw`Which of these numbers is less than its reciprocal?
+
+(A) $-2$  (B) $-1$  (C) $0$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-20": { s: String.raw`You have nine coins: a collection of pennies, nickels, dimes, and quarters having a total value of $\$1.02,$ with at least one coin of each type. How many dimes must you have?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-21": { s: String.raw`Keiko tosses one penny and Ephraim tosses two pennies. The probability that Ephraim gets the same number of heads that Keiko gets is
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{3}{8}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-22": { s: String.raw`A cube has edge length $2.$ Suppose that we glue a cube of edge length $1$ on top of the big cube so that one of its faces rests entirely on the top face of the larger cube. The percent increase in the surface area (sides, top, and bottom) from the original cube to the new solid formed is closest to
+
+@@fig:amc8/2000/22.svg@@
+
+(A) $10$  (B) $15$  (C) $17$  (D) $21$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-23": { s: String.raw`There is a list of seven numbers. The average of the first four numbers is $5,$ and the average of the last four numbers is $8.$ If the average of all seven numbers is $6\frac{4}{7},$ then the number common to both sets of four numbers is
+
+(A) $5\frac{3}{7}$  (B) $6$  (C) $6\frac{4}{7}$  (D) $7$  (E) $7\frac{3}{7}$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-24": { s: String.raw`If $\angle A = 20^\circ$ and $\angle AFG =\angle AGF,$ then $\angle B+\angle D =$
+
+@@fig:amc8/2000/24.svg@@
+
+(A) $48^\circ$  (B) $60^\circ$  (C) $72^\circ$  (D) $80^\circ$  (E) $90^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-25": { s: String.raw`The area of rectangle $ABCD$ is $72$ square units. If point $A$ and the midpoints of $\overline{BC}$ and $\overline{CD}$ are joined to form a triangle, the area of that triangle is
+
+@@fig:amc8/2000/25.svg@@
+
+(A) $21$  (B) $27$  (C) $30$  (D) $36$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-3": { s: String.raw`How many whole numbers lie in the interval between $\frac{5}{3}$ and $2\pi?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-4": { s: String.raw`In $1960$ only $5\%$ of the working adults in Carlin City worked at home. By $1970$ the “at-home” work force had increased to $8\%.$ In $1980$ there were approximately $15\%$ working at home, and in $1990$ there were $30\%.$ The graph that best illustrates this is
+
+(A) @@ci:amc8/2000/4_A.svg|11rem@@  (B) @@ci:amc8/2000/4_B.svg|11rem@@  (C) @@ci:amc8/2000/4_C.svg|11rem@@  (D) @@ci:amc8/2000/4_D.svg|11rem@@  (E) @@ci:amc8/2000/4_E.svg|11rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-5": { s: String.raw`Each principal of Lincoln High School serves exactly one $3$-year term. What is the maximum number of principals this school could have during an $8$-year period?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-6": { s: String.raw`Figure $ABCD$ is a square. Inside this square three smaller squares are drawn with side lengths as labeled. The area of the shaded L-shaped region is
+
+@@fig:amc8/2000/6.svg@@
+
+(A) $7$  (B) $10$  (C) $12.5$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-7": { s: String.raw`What is the minimum possible product of three different numbers of the set$$\{-8,-6,-4,0,3,5,7\}?$$(A) $-336$  (B) $-280$  (C) $-210$  (D) $-192$  (E) $0$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-8": { s: String.raw`Three dice with faces numbered $1$ through $6$ are stacked as shown. Seven of the eighteen faces are visible, leaving eleven faces hidden (back, bottom, between). The total number of dots NOT visible in this view is
+
+@@fig:amc8/2000/8.svg@@
+
+(A) $21$  (B) $22$  (C) $31$  (D) $41$  (E) $53$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
+"2000-amc-8-9": { s: String.raw`Three-digit powers of $2$ and $5$ are used in this “cross-number” puzzle. What is the only possible digit for the outlined square?$$\begin{array}{lcl} \textbf{\text{ACROSS}} & & \textbf{\text{DOWN}} \\ \textbf{2. } 2^m & & \textbf{1. } 5^n \end{array}$$@@fig:amc8/2000/9.svg@@
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2000" },
 });

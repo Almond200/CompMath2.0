@@ -20,4 +20,95 @@ Object.assign(window.MATH_STATEMENTS, {
 "1996-aime-7": { s: String.raw`Two of the squares of a $7\times7$ checkerboard are painted yellow, and the rest are painted green. Two color schemes are equivalent if one can be obtained from the other by applying a rotation in the plane of the board. How many inequivalent color schemes are possible?`, u: "https://live.poshenloh.com/past-contests/aime/1996" },
 "1996-aime-8": { s: String.raw`The harmonic mean of two positive numbers is the reciprocal of the arithmetic mean of their reciprocals. For how many ordered pairs of positive integers $(x,y),$ with $x<y,$ is the harmonic mean of $x$ and $y$ equal to $6^{20}?$`, u: "https://live.poshenloh.com/past-contests/aime/1996" },
 "1996-aime-9": { s: String.raw`A bored student walks down a hall that contains a row of closed lockers, numbered $1$ to $1024.$ He opens locker $1,$ and then alternates between skipping and opening each closed locker thereafter. When he reaches the end of the hall, the student turns around and starts back. He opens the first closed locker he encounters, and then alternates between skipping and opening each closed locker thereafter. The student continues wandering back and forth in this manner until every locker is open. What is the number of the last locker he opens?`, u: "https://live.poshenloh.com/past-contests/aime/1996" },
+"1996-ajhsme-1": { s: String.raw`How many positive factors of $36$ are also multiples of $4?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-10": { s: String.raw`When Walter drove up to the gasoline pump, he noticed that his gasoline tank was $\dfrac18$ full. He purchased $7.5$ gallons of gasoline for $\$10.$ With this additional gasoline, his gasoline tank was then $\dfrac58$ full. The number of gallons of gasoline his tank holds when it is full is
+
+(A) $8.75$  (B) $10$  (C) $11.5$  (D) $15$  (E) $22.5$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-11": { s: String.raw`Let $x$ be the number$$0.\underbrace{0000\ldots00001}_{1996 \text{ zeros}},$$where there are $1996$ zeros after the decimal point. Which of the following expressions represents the largest number?
+
+(A) $3 + x$  (B) $3 - x$  (C) $3 \cdot x$  (D) $\frac{3}{x}$  (E) $\frac{x}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-12": { s: String.raw`What number should be removed from the list$$1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11$$so that the average of the remaining numbers is $6.1?$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-13": { s: String.raw`In the fall of $1996,$ a total of $800$ students participated in an annual school clean-up day. The organizers of the event expect that in each of the years $1997,$ $1998,$ and $1999,$ participation will increase by $50\%$ over the previous year. The number of participants the organizers expect in the fall of $1999$ is
+
+(A) $1200$  (B) $1500$  (C) $2000$  (D) $2400$  (E) $2700$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-14": { s: String.raw`Six different digits from the set $\{1, 2, 3, 4, 5, 6, 7, 8, 9\}$ are placed in the squares in the figure shown so that the sum of the entries in the vertical column is $23$ and the sum of the entries in the horizontal row is $12.$ The sum of the six digits used is
+
+@@fig:amc8/1996/14.svg@@
+
+(A) $27$  (B) $29$  (C) $31$  (D) $33$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-15": { s: String.raw`The remainder when the product $1492 \cdot 1776 \cdot 1812 \cdot 1996$ is divided by $5$ is
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-16": { s: String.raw`What is the value of the following expression?$$1 - 2 - 3 + 4 + 5 - 6 - 7 + 8 + 9 - 10 - 11 + 12 + 13 - \cdots + 1992 + 1993 - 1994 - 1995 + 1996$$(A) $-998$  (B) $-1$  (C) $0$  (D) $1$  (E) $998$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-17": { s: String.raw`Figure $OPQR$ is a square. Point $O$ is the origin, and point $Q$ has coordinates $(2, 2).$ What are the coordinates for $T$ so that the area of triangle $PQT$ equals the area of square $OPQR?$
+
+@@fig:amc8/1996/17.svg@@
+
+(A) $(-6, 0)$  (B) $(-4, 0)$  (C) $(-2, 0)$  (D) $(2, 0)$  (E) $(4, 0)$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-18": { s: String.raw`Ana’s monthly salary was $\$2000$ in May. In June she received a $20\%$ raise. In July she received a $20\%$ pay cut. After the two changes in June and July, Ana’s monthly salary was
+
+(A) $\$1920$  (B) $\$1980$  (C) $\$2000$  (D) $\$2020$  (E) $\$2040$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-19": { s: String.raw`The pie charts below indicate the percent of students who prefer golf, bowling, or tennis at East Junior High School and West Middle School. The total number of students at East is $2000$ and at West, $2500.$ In the two schools combined, the percent of students who prefer tennis is
+
+@@fig:amc8/1996/19.svg@@
+
+(A) $30\%$  (B) $31\%$  (C) $32\%$  (D) $33\%$  (E) $34\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-2": { s: String.raw`José, Thuy, and Kareem each start with the number $10.$ José subtracts $1$ from the number $10,$ doubles his answer, and then adds $2.$ Thuy doubles the number $10,$ subtracts $1$ from her answer, and then adds $2.$ Kareem subtracts $1$ from the number $10,$ adds $2$ to his answer, and then doubles the result. Who gets the largest final answer?
+
+(A) José  (B) Thuy  (C) Kareem  (D) José and Thuy  (E) Thuy and Kareem`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-20": { s: String.raw`Suppose there is a special key on a calculator that replaces the number $x$ currently displayed with the number given by the formula $\frac{1}{1 - x}.$ For example, if the calculator is displaying $2$ and the special key is pressed, then the calculator will display $-1$ since $\frac{1}{1 - 2} = -1.$ Now suppose that the calculator is displaying $5.$ After the special key is pressed $100$ times in a row, the calculator will display
+
+(A) $-0.25$  (B) $0$  (C) $0.8$  (D) $1.25$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-21": { s: String.raw`How many subsets containing three different numbers can be selected from the set $\{89, 95, 99, 132, 166, 173\}$ so that the sum of the three numbers is even?
+
+(A) $6$  (B) $8$  (C) $10$  (D) $12$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-22": { s: String.raw`The horizontal and vertical distances between adjacent points equal $1$ unit. The area of triangle $ABC$ is
+
+@@fig:amc8/1996/22.svg@@
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{3}{4}$  (D) $1$  (E) $\dfrac{5}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-23": { s: String.raw`The manager of a company planned to distribute a $\$50$ bonus to each employee from the company fund, but the fund contained $\$5$ less than what was needed. Instead the manager gave each employee a $\$45$ bonus and kept the remaining $\$95$ in the company fund. The amount of money in the company fund before any bonuses were paid was
+
+(A) $\$945$  (B) $\$950$  (C) $\$955$  (D) $\$990$  (E) $\$995$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-24": { s: String.raw`The measure of angle $ABC$ is $50^\circ.$ $\overline{AD}$ bisects angle $BAC,$ and $\overline{DC}$ bisects angle $BCA.$ The measure of angle $ADC$ is
+
+@@fig:amc8/1996/24.svg@@
+
+(A) $90^\circ$  (B) $100^\circ$  (C) $115^\circ$  (D) $122.5^\circ$  (E) $125^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-25": { s: String.raw`A point is chosen at random from within a circular region. What is the probability that the point is closer to the center of the region than it is to the boundary of the region?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-3": { s: String.raw`The $64$ whole numbers from $1$ through $64$ are written, one per square, on a checkerboard (an $8$ by $8$ array of $64$ squares). The first $8$ numbers are written in order across the first row, the next $8$ across the second row, and so on. After all $64$ numbers are written, the sum of the numbers in the four corners will be
+
+(A) $130$  (B) $131$  (C) $132$  (D) $133$  (E) $134$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-4": { s: String.raw`What is the value of the following expression?$$\frac{2 + 4 + 6 + \cdots + 34}{3 + 6 + 9 + \cdots + 51}$$(A) $\dfrac{1}{3}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{2}$  (D) $\dfrac{17}{3}$  (E) $\dfrac{34}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-5": { s: String.raw`The letters $P,$ $Q,$ $R,$ $S,$ and $T$ represent numbers located on the number line as shown.
+
+@@fig:amc8/1996/5.svg@@
+
+Which of the following expressions represents a negative number?
+
+(A) $P - Q$  (B) $P \cdot Q$  (C) $\dfrac{S}{Q} \cdot P$  (D) $\dfrac{R}{P \cdot Q}$  (E) $\dfrac{S + T}{R}$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-6": { s: String.raw`What is the smallest result that can be obtained by the following process?
+
+• Choose three different numbers from the set $\{3, 5, 7, 11, 13, 17\}.$
+
+• Add two of these numbers.
+
+• Multiply their sum by the third number.
+
+(A) $15$  (B) $30$  (C) $36$  (D) $50$  (E) $56$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-7": { s: String.raw`Brent has goldfish that quadruple (become four times as many) every month, and Gretel has goldfish that double every month. If Brent has $4$ goldfish at the same time that Gretel has $128$ goldfish, then in how many months from that time will they have the same number of goldfish?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-8": { s: String.raw`Points $A$ and $B$ are $10$ units apart. Points $B$ and $C$ are $4$ units apart. Points $C$ and $D$ are $3$ units apart. If $A$ and $D$ are as close as possible, then the number of units between them is
+
+(A) $0$  (B) $3$  (C) $9$  (D) $11$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
+"1996-ajhsme-9": { s: String.raw`If $5$ times a number is $2,$ then $100$ times the reciprocal of the number is
+
+(A) $2.5$  (B) $40$  (C) $50$  (D) $250$  (E) $500$`, u: "https://live.poshenloh.com/past-contests/amc8/1996" },
 });

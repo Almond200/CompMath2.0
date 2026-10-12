@@ -1154,7 +1154,7 @@ An olympiad tool, mostly as the elementary proof that primes $1 \bmod 4$ are sum
 
 "factor-pair-counting": String.raw`
 ## When to use
-Equations such as $xy = 2x + 3y$, $\frac1x + \frac1y = \frac1{12}$, $x^2 - y^2 = 2025$ or $m^2 = n^2 + 60$: two unknown integers, degree at most two, and a rearrangement, often [[sfft|Simon's Favorite Factoring Trick]], that leaves a product equal to a number. Counting questions are its best use, because the answer comes straight from a divisor count.
+Equations such as $xy = 2x + 3y$, $\frac1x + \frac1y = \frac1{12}$, $x^2 - y^2 = 2025$ or $m^2 = n^2 + 60$: two unknown integers, degree at most two, and a rearrangement, often [[sfft|Simon's Favorite Factoring Trick]], that leaves a product equal to a number. Counting questions are its best use, because the answer comes straight from a divisor count. An equation that stays a sum after rearranging, or has three unknowns, does not reduce to a product, and [[bounding-diophantine|bounding]] or a congruence is the tool there.
 
 ## How
 1. Rearrange the equation into $AB = N$, with $A$ and $B$ integer expressions in the unknowns.
@@ -1473,7 +1473,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "hensel-lifting": String.raw`
 ## When to use
-Congruences modulo $p^2$, $p^3$ or a higher power: $x^2 \equiv a \pmod{p^k}$, $x^3 \equiv a \pmod{7^3}$, or counting the solutions of a polynomial congruence modulo a composite number, which the [[crt|Chinese Remainder Theorem]] first splits into prime powers. It also predicts, before any computation, whether a root modulo $p$ extends to one root, to many, or to none.
+Congruences modulo $p^2$, $p^3$ or a higher power: $x^2 \equiv a \pmod{p^k}$, $x^3 \equiv a \pmod{7^3}$, or counting the solutions of a polynomial congruence modulo a composite number, which the [[crt|Chinese Remainder Theorem]] first splits into prime powers. It also predicts, before any computation, whether a root modulo $p$ extends to one root, to many, or to none. A congruence modulo a prime itself needs only a check of residues.
 
 ## How
 1. Split a composite modulus into prime powers and treat each one separately.
@@ -1603,10 +1603,10 @@ A rational prime $p$ behaves by whether $-1$ is a quadratic residue mod $p$: $p 
 ## Useful observations
 - $\mathbb{Z}[i]$ is used whenever $a^2 + b^2$ appears: it is factored as $(a + bi)(a - bi)$ and unique factorization is leaned on.
 - It proves [[sum-of-two-squares|Fermat's Two-Square Theorem]], powers the $4(d_1 - d_3)$ representation count, parametrizes Pythagorean triples through $(m + ni)^2$, and multiplies sums of two squares together.
-- The Eisenstein integers do the same for $a^2 + ab + b^2$ and for problems with cube-root-of-unity symmetry ($120^\circ$).
+- The Eisenstein integers do the same for $a^2 - ab + b^2$ (the same values as $a^2 + ab + b^2$) and for problems with cube-root-of-unity symmetry ($120^\circ$).
 
 ## Applications
-Sums of two squares and the number of their representations, Pythagorean triples, and norm forms $a^2 + ab + b^2$.
+Sums of two squares and the number of their representations, Pythagorean triples, and norm forms $a^2 - ab + b^2$.
 
 ## Contest profile
 Chiefly an olympiad tool, but its consequences reach the AIME (sum-of-two-squares counts, Pythagorean-triple parametrizations). Primes $\equiv 1 \pmod 4$ split and are sums of two squares, while primes $\equiv 3 \pmod 4$ stay inert.
@@ -1620,6 +1620,8 @@ Object.assign(window.MATH_DETAILS, {
 "choose-modulus": String.raw`
 ## When to use
 Reach for a modulus when a problem asks you to show an equation has no integer solutions, or when an integer search has far too many cases. The signal is a term whose remainders are scarce. Squares, cubes and fourth powers each hit only a few residues, a factorial $n!$ is $0$ modulo every prime up to $n$, the powers of a fixed base cycle, and digit conditions live naturally modulo $9$, $10$ and $11$. Pick the modulus to fit: $4$ or $8$ for squares, $9$ or $7$ for cubes, $16$ for fourth powers, $9$ for digit sums, $11$ for alternating digit sums, $10$ for last digits.
+
+An equation whose solutions are to be found, not ruled out, needs bounding or factoring first; a modulus only shows that none exist.
 
 ## How
 1. Make a small table of the residues each term can take modulo a candidate $m$.
@@ -1687,7 +1689,8 @@ Four problems here, all solved by it alone, and really two, each shared between 
 
 "digit-manipulation": String.raw`
 ## Distinguishing clues
-The condition names individual digits: their sum, their order, a digit moved or deleted. A question about how many digits a number has belongs to [[digit-count|the number of digits]], and one about the last digits of a huge power is a question about remainders, not digits.
+- The condition names individual digits: their sum, their order, a digit moved or deleted.
+- Not this pattern: a question about how many digits a number has, which belongs to [[digit-count|the number of digits]], or one about the last digits of a huge power, which is a question about remainders, not digits.
 
 ## Methods and Formulas to Try
 Translate first, $\overline{abc} = 100a + 10b + c$, and every condition becomes an equation in bounded unknowns. Reversals then factor at once: $\overline{ab} + \overline{ba} = 11(a + b)$, $\overline{ab} - \overline{ba} = 9(a - b)$, and $\overline{abc} - \overline{cba} = 99(a - c)$, where the middle digit drops out.
@@ -1713,7 +1716,7 @@ Mostly MATHCOUNTS and AMC: a place-value equation and a short bounded search; th
 
 "squeeze-between-squares": String.raw`
 ## When to use
-"Find every integer $n$ that makes this expression a perfect square", for a polynomial expression whose leading part is close to a square, and the related task of computing $\lfloor \sqrt N \rfloor$ for a large, awkward $N$. The same idea works for cubes and for products of consecutive integers.
+"Find every integer $n$ that makes this expression a perfect square", for a polynomial expression whose leading part is close to a square, and the related task of computing $\lfloor \sqrt N \rfloor$ for a large, awkward $N$. The same idea works for cubes and for products of consecutive integers. An expression that is already a square, such as $n^2 + 2n + 1$, has no gap to fit in.
 
 ## How
 1. Find the polynomial $P(n)$ whose square agrees with the expression in its leading terms, scaling the expression first (often by $4$) if $P$ would need fractions.
@@ -1900,7 +1903,7 @@ Mostly an olympiad classification fact; the mod-$8$ argument behind it is the pa
 
 "bounding-diophantine": String.raw`
 ## When to use
-Equations in positive integers with finitely many solutions but no algebraic way to isolate them: sums of unit fractions such as $\frac1x + \frac1y + \frac1z = 1$, symmetric equations such as $xyz = x + y + z$, and equations in which one side grows much faster than the other, such as $2^a + 1 = 3^b$ or $n! = n^3 - n$. The tell is that large values of the variables obviously fail.
+Equations in positive integers with finitely many solutions but no algebraic way to isolate them: sums of unit fractions such as $\frac1x + \frac1y + \frac1z = 1$, symmetric equations such as $xyz = x + y + z$, and equations in which one side grows much faster than the other, such as $2^a + 1 = 3^b$ or $n! = n^3 - n$. The tell is that large values of the variables obviously fail. If a rearrangement leaves a product equal to a number, [[factor-pair-counting|listing factor pairs]] is quicker.
 
 ## How
 1. Use the symmetry to order the variables, $x \le y \le z$, and remember to restore the other orders at the end.
@@ -2371,7 +2374,8 @@ An olympiad existence tool.
 
 "cryptarithms": String.raw`
 ## Distinguishing clues
-Letters stand for digits, different letters for different digits, inside a written calculation with column structure. If the letters stand for whole unknown numbers, or the same digit may appear under different letters, the problem is ordinary algebra or a [[digit-manipulation|digit-manipulation problem]] instead.
+- Letters stand for digits, different letters for different digits, inside a written calculation with column structure.
+- Not this pattern: letters that stand for whole unknown numbers, or the same digit under different letters, which is ordinary algebra or a [[digit-manipulation|digit-manipulation problem]].
 
 ## Methods and Formulas to Try
 Work column by column from the right, where each column is an equation with a carry. In the sum of two numbers every carry is $0$ or $1$, so each column has only a couple of cases. The figure solves $\overline{TWO} + \overline{TWO} = \overline{FOUR}$ as $734 + 734 = 1468$.
@@ -2527,7 +2531,7 @@ Sums over $1, 2, \ldots, n$ of a quantity that depends only on the odd part of e
 
 "cycle-hunting": String.raw`
 ## When to use
-The question asks for $a_{2026}$, the last digits of $3^{2026}$, or the $1001$st iterate of a map, and the next term depends only on a state with finitely many possible values: a residue modulo $m$, the last two terms modulo $m$, or a value of a map that keeps returning.
+The question asks for $a_{2026}$, the last digits of $3^{2026}$, or the $1001$st iterate of a map, and the next term depends only on a state with finitely many possible values: a residue modulo $m$, the last two terms modulo $m$, or a value of a map that keeps returning. A rule that grows without bound and is asked for an exact value has no cycle to find, and its closed form is the better route.
 
 ## How
 1. Identify the state, the terms the rule needs to produce the next one.
@@ -2559,7 +2563,7 @@ Common on the AMC and AIME: a term numbered in the thousands, or the last digits
 
 "reduce-divisibility-constant": String.raw`
 ## When to use
-Conditions such as "$n + 2$ divides $n^3 + 50$", "$\frac{n^2 + 7}{n - 1}$ is an integer", or "find $\gcd(n^2 + 3, n + 1)$". The same reduction finds the possible common factors of two consecutive values of a sequence, and shows that a polynomial with integer coefficients satisfies $a - b \mid P(a) - P(b)$, which rules out values such as $P(2) = 5$ with $P(7) = 8$.
+Conditions such as "$n + 2$ divides $n^3 + 50$", "$\frac{n^2 + 7}{n - 1}$ is an integer", or "find $\gcd(n^2 + 3, n + 1)$". The same reduction finds the possible common factors of two consecutive values of a sequence, and shows that a polynomial with integer coefficients satisfies $a - b \mid P(a) - P(b)$, which rules out values such as $P(2) = 5$ with $P(7) = 8$. A divisibility with a fixed divisor, such as $7 \mid n^3 + 50$, is a congruence, settled by checking residues.
 
 ## How
 1. Identify the linear divisor $n + a$.
@@ -2589,7 +2593,7 @@ AMC and AIME problems asking for all $n$ that make a polynomial quotient an inte
 
 "subtract-equal-remainders": String.raw`
 ## When to use
-"$701$, $1107$, and $1658$ leave the same remainder on division by $d$", or "$n$ leaves remainder $3$ when divided by $4$, $4$ when divided by $5$, and $5$ when divided by $6$". The same subtraction shows that a sequence with $a_{k+1} \equiv a_k$ has constant remainder, finds which modulus makes a congruence hold, and explains why $a \equiv b$ lets equal remainders be cancelled from both sides of an equation.
+"$701$, $1107$, and $1658$ leave the same remainder on division by $d$", or "$n$ leaves remainder $3$ when divided by $4$, $4$ when divided by $5$, and $5$ when divided by $6$". The same subtraction shows that a sequence with $a_{k+1} \equiv a_k$ has constant remainder, finds which modulus makes a congruence hold, and explains why $a \equiv b$ lets equal remainders be cancelled from both sides of an equation. Unrelated remainders, not the same one, call for the Chinese Remainder Theorem.
 
 ## How
 1. If several numbers share an unknown remainder modulo an unknown $d$, subtract them in pairs; $d$ divides every difference.
@@ -2619,7 +2623,7 @@ A MATHCOUNTS and AMC 10 favorite with numbers chosen to make differences share a
 
 "numeral-as-polynomial": String.raw`
 ## When to use
-"In which base is $253_b$ twice $126_b$?", "$\overline{ab}_7 = \overline{ba}_9$", or "show that $121_b$ is a perfect square in every base". The same view explains divisibility tests in any base: since $b \equiv 1 \pmod{b - 1}$, a numeral is congruent to its digit sum modulo $b - 1$, and since $b \equiv -1 \pmod{b + 1}$, to its alternating digit sum modulo $b + 1$.
+"In which base is $253_b$ twice $126_b$?", "$\overline{ab}_7 = \overline{ba}_9$", or "show that $121_b$ is a perfect square in every base". The same view explains divisibility tests in any base: since $b \equiv 1 \pmod{b - 1}$, a numeral is congruent to its digit sum modulo $b - 1$, and since $b \equiv -1 \pmod{b + 1}$, to its alternating digit sum modulo $b + 1$. A puzzle about base-ten digits, with nothing unknown about the base, is a digit problem, not this.
 
 ## How
 1. Write each numeral as a polynomial in its base: $253_b = 2b^2 + 5b + 3$.
@@ -2648,7 +2652,9 @@ From MATHCOUNTS to the AIME: finding an unknown base from an equation between nu
 
 "poly-divisible-linear": String.raw`
 ## Distinguishing clues
-The unknown is an integer $n$, and it appears on both sides of a divisibility, with a linear expression on the divisor side. Questions ask for all such $n$, the largest one, or the possible values of a gcd. A divisibility with a fixed divisor, such as $7 \mid n^3 + 50$, is a congruence instead, settled by [[choose-modulus|checking residues]].
+- The unknown is an integer $n$, and it appears on both sides of a divisibility, with a linear expression on the divisor side.
+- The questions ask for all such $n$, the largest one, or the possible values of a gcd.
+- Not this pattern: a divisibility with a fixed divisor, such as $7 \mid n^3 + 50$, which is a congruence settled by [[choose-modulus|checking residues]].
 
 ## Methods and Formulas to Try
 Modulo $n + a$, every power of $n$ can be replaced by a power of $-a$, so the polynomial shrinks to a constant.
@@ -2673,7 +2679,8 @@ AMC and AIME problems asking for the largest or every integer $n$ that makes a p
 
 "unknown-base": String.raw`
 ## Distinguishing clues
-A subscript is a variable, or a number is described by its digits in two different bases. A plain conversion between two known bases is a routine computation, not this configuration, and a puzzle about base-ten digits with nothing unknown about the base belongs with the other [[digit-manipulation|digit problems]].
+- A subscript is a variable, or a number is described by its digits in two different bases.
+- Not this pattern: a plain conversion between two known bases, which is a routine computation, or a puzzle about base-ten digits with nothing unknown about the base, which belongs with the other [[digit-manipulation|digit problems]].
 
 ## Methods and Formulas to Try
 Expanding the numeral turns the condition into an equation in the base and the digits, all small integers with known bounds.
@@ -2693,30 +2700,6 @@ Expanding the numeral turns the condition into an equation in the base and the d
 
 ## Contest profile
 MATHCOUNTS and AMC questions asking for an unknown base, and AIME problems in which a number's digits are related across two bases.
-`,
-
-"same-remainder": String.raw`
-## Distinguishing clues
-The word "same" is attached to a remainder, or the remainders are visibly the same distance from their divisors, such as each one less. Different, unrelated remainders for one number modulo several divisors call for the general [[crt|Chinese Remainder Theorem]] instead.
-
-## Methods and Formulas to Try
-Whatever the shared remainder is, subtracting two numbers that share it cancels it.
-
-### Methods to try
-- [[subtract-equal-remainders]]: the unknown divisor divides every difference of the given numbers, and an unknown number minus its shared remainder is a multiple of every divisor.
-
-### Formulas to try
-- [[euclidean-algorithm]]: finds the gcd of the differences, whose divisors are the candidates for the unknown divisor.
-- [[gcd-lcm-product]]: the lcm of the divisors, which the unknown number minus its remainder must be a multiple of.
-- [[crt]]: guarantees a solution, unique modulo the lcm, when the divisors are pairwise coprime.
-
-## Common traps
-- Taking the gcd of the numbers instead of their differences.
-- Allowing a divisor no larger than the remainder.
-- Missing that "one less than the divisor" is a shared remainder of $-1$.
-
-## Contest profile
-MATHCOUNTS and AMC 10 problems, often with numbers chosen so the differences share a large prime, and remainder conditions that are each one short of the divisor.
 `,
 
 "fundamental-theorem-arithmetic": String.raw`

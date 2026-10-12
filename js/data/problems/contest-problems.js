@@ -104,7 +104,7 @@
   add("floor-basics", "2020 AIME II, Problem 14");
   add("power-sums", "2020 AIME II, Problem 10");
   add("factor-remainder-theorem", "2020 AIME II, Problem 10");
-  add("roots-of-unity", "2022 AIME I, Problem 4", "2021 AMC 12A, Problem 22");
+  add("roots-of-unity", "2022 AIME I, Problem 4", "2021 Spring AMC 12A, Problem 22");
   add("sophie-germain", "2020 AMC 10B, Problem 22");
   add("generating-function-method", "2022 AIME II, Problem 13");
 
@@ -119,7 +119,7 @@
   add("lcm-pair-counting", "2020 AIME I, Problem 9");
   add("repeating-decimals", "2022 AIME I, Problem 13");
   add("floor-multiples", "2022 AIME II, Problem 8");
-  add("number-of-divisors", "2021 AMC 12A, Problem 25");
+  add("number-of-divisors", "2021 Spring AMC 12A, Problem 25");
 
   // Counting & Probability
   add("vandermonde", "2020 AIME I, Problem 7");
@@ -147,9 +147,9 @@
   add("legendres-formula", "2006 AIME II, Problem 3");
   add("pie", "2014 AIME II, Problem 9", "2015 AIME I, Problem 2");
   add("catalan-numbers", "1993 AIME, Problem 7");
-  add("derangements", "2021 AMC 10B, Problem 22", "2020 AIME I, Problem 5");
+  add("derangements", "2021 Spring AMC 10B, Problem 22", "2020 AIME I, Problem 5");
   add("burnsides-lemma", "2017 AMC 10B, Problem 18", "2006 AIME II, Problem 8", "2010 AIME II, Problem 10");
-  add("vietas-quadratic", "2021 AIME II, Problem 4", "2021 AMC 12A, Problem 12");
+  add("vietas-quadratic", "2021 AIME II, Problem 4", "2021 Spring AMC 12A, Problem 12");
   add("newtons-sums", "2019 AIME I, Problem 8", "2003 AIME II, Problem 9", "2008 AIME II, Problem 7");
   add("roots-of-unity-filter", "2018 AIME I, Problem 12", "2017 AMC 12A, Problem 25");
   add("pigeonhole", "1986 AIME, Problem 12", "2022 AMC 10B, Problem 14");
@@ -173,7 +173,7 @@
 
   // ---------- Verified batch 3: core formulas & expectation (AoPS-documented) ----------
   add("eulers-totient", "2014 AIME I, Problem 3");
-  add("sum-of-divisors", "2021 AMC 12B, Problem 7", "2019 AIME I, Problem 9");
+  add("sum-of-divisors", "2021 Spring AMC 12B, Problem 7", "2019 AIME I, Problem 9");
   add("arithmetico-geometric", "1994 AIME, Problem 4");
   add("indicator-variables", "2023 AIME I, Problem 6", "2022 AIME I, Problem 12", "2021 Fall AMC 12B, Problem 23");
   add("golden-ratio-pentagon", "2023 AMC 12B, Problem 25", "2015 AMC 10B, Problem 22");

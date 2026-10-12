@@ -18,4 +18,97 @@ Object.assign(window.MATH_STATEMENTS, {
 "1986-aime-7": { s: String.raw`The increasing sequence $1,$ $3,$ $4,$ $9,$ $10,$ $12,$ $13,$ $\ldots$ consists of all those positive integers which are powers of $3$ or sums of distinct powers of $3.$ Find the $100$th term of this sequence.`, u: "https://live.poshenloh.com/past-contests/aime/1986" },
 "1986-aime-8": { s: String.raw`Let $S$ be the sum of the base $10$ logarithms of all the proper divisors of $1000000.$ What is the integer nearest to $S?$`, u: "https://live.poshenloh.com/past-contests/aime/1986" },
 "1986-aime-9": { s: String.raw`In $\triangle ABC,$ $AB=425,$ $BC=450,$ and $AC=510.$ An interior point $P$ is drawn, and segments are drawn through $P$ parallel to the sides of the triangle. If these three segments have equal length $d,$ find $d.$`, u: "https://live.poshenloh.com/past-contests/aime/1986" },
+"1986-ajhsme-1": { s: String.raw`In July $1861,$ $366$ inches of rain fell in Cherrapunji, India. What was the average rainfall in inches per hour during that month?
+
+(A) $\dfrac{366}{31 \times 24}$  (B) $\dfrac{366 \times 31}{24}$  (C) $\dfrac{366 \times 24}{31}$  (D) $\dfrac{31 \times 24}{366}$  (E) $366 \times 31 \times 24$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-10": { s: String.raw`A picture $3$ feet across is hung in the center of a wall that is $19$ feet wide. How many feet from the end of the wall is the nearest edge of the picture?
+
+(A) $1\dfrac12$  (B) $8$  (C) $9\dfrac12$  (D) $16$  (E) $22$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-11": { s: String.raw`If $A * B$ means $\dfrac{A + B}{2},$ then $(3 * 5) * 8$ is
+
+(A) $6$  (B) $8$  (C) $12$  (D) $16$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-12": { s: String.raw`The table shown displays the grade distribution of the $30$ students in a mathematics class on the last two tests. For example, exactly one student received a ‘D’ on Test $1$ and a ‘C’ on Test $2$ (the circled entry). What percent of the students received the same grade on both tests?
+
+@@fig:amc8/1986/12.svg@@
+
+(A) $12\%$  (B) $25\%$  (C) $33\dfrac13\%$  (D) $40\%$  (E) $50\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-13": { s: String.raw`The perimeter of the polygon shown is
+
+@@fig:amc8/1986/13.svg@@
+
+(A) $14$
+(B) $20$
+(C) $28$
+(D) $48$
+(E) cannot be determined from the information given`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-14": { s: String.raw`If $200 \le a \le 400$ and $600 \le b \le 1200,$ then the largest value of the quotient $\dfrac{b}{a}$ is
+
+(A) $\dfrac32$  (B) $3$  (C) $6$  (D) $300$  (E) $600$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-15": { s: String.raw`Sale prices at the Ajax Outlet Store are $50\%$ below original prices. On Saturdays an additional discount of $20\%$ off the sale price is given. What is the Saturday price of a coat whose original price is $\$180?$
+
+(A) $\$54$  (B) $\$72$  (C) $\$90$  (D) $\$108$  (E) $\$110$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-16": { s: String.raw`A bar graph shows the number of hamburgers sold by a fast food chain each season. However, the bar indicating the number sold during the winter is covered by a smudge. If exactly $25\%$ of the chain’s hamburgers are sold in the fall, how many million hamburgers are sold in the winter?
+
+@@fig:amc8/1986/16.svg@@
+
+(A) $2.5$  (B) $3$  (C) $3.5$  (D) $4$  (E) $4.5$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-17": { s: String.raw`Let $o$ be an odd whole number and let $n$ be any whole number. Which of the following statements about the whole number $o^2 + no$ is always true?
+
+(A) it is always odd  (B) it is always even  (C) it is even only if $n$ is even  (D) it is odd only if $n$ is odd  (E) it is odd only if $n$ is even`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-18": { s: String.raw`A rectangular grazing area is to be fenced off on three sides using part of a $100$ meter rock wall as the fourth side. Fence posts are to be placed every $12$ meters along the fence, including the two posts where the fence meets the rock wall. What is the fewest number of posts required to fence an area $36$ m by $60$ m?
+
+@@fig:amc8/1986/18.svg@@
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-19": { s: String.raw`At the beginning of a trip, the mileage odometer read $56{,}200$ miles. The driver filled the gas tank with $6$ gallons of gasoline. During the trip, the driver filled the tank again with $12$ gallons of gasoline when the odometer read $56{,}560.$ At the end of the trip, the driver filled the tank again with $20$ gallons of gasoline; the odometer read $57{,}060.$ To the nearest tenth, what was the car’s average miles-per-gallon for the entire trip?
+
+(A) $22.5$  (B) $22.6$  (C) $24.0$  (D) $26.9$  (E) $27.5$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-2": { s: String.raw`Which of the following numbers has the largest reciprocal?
+
+(A) $\dfrac13$  (B) $\dfrac25$  (C) $1$  (D) $5$  (E) $1986$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-20": { s: String.raw`The value of the expression$$\frac{(304)^5}{(29.7)(399)^4}$$is closest to
+
+(A) $0.003$  (B) $0.03$  (C) $0.3$  (D) $3$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-21": { s: String.raw`Suppose one of the eight lettered identical squares is included with the four shaded squares in the T-shaped figure shown. How many of the resulting figures can be folded into a topless cubical box?
+
+@@fig:amc8/1986/21.svg@@
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-22": { s: String.raw`Alan, Beth, Carlos, and Diana were discussing their possible grades in mathematics class this grading period. Alan said, “If I get an A, then Beth will get an A.” Beth said, “If I get an A, then Carlos will get an A.” Carlos said, “If I get an A, then Diana will get an A.” All of these statements were true, but only two of the students received an A. Which two received A’s?
+
+(A) Alan, Beth  (B) Beth, Carlos  (C) Carlos, Diana  (D) Alan, Diana  (E) Beth, Diana`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-23": { s: String.raw`The large circle has diameter $AC.$ The two small circles have their centers on $AC$ and just touch at $O,$ the center of the large circle. If each small circle has radius $1,$ what is the value of the ratio of the area of the shaded region to the area of one of the small circles?
+
+@@fig:amc8/1986/23.svg@@
+
+(A) between $\dfrac12$ and $1$
+(B) $1$
+(C) between $1$ and $\dfrac32$
+(D) between $\dfrac32$ and $2$
+(E) cannot be determined from the information given`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-24": { s: String.raw`The $600$ students at King Middle School are divided into three groups of equal size for lunch. Each group has lunch at a different time. A computer randomly assigns each student to one of the three lunch groups. The probability that three friends, Al, Bob, and Carol, will be assigned to the same lunch group is approximately
+
+(A) $\dfrac{1}{27}$  (B) $\dfrac19$  (C) $\dfrac18$  (D) $\dfrac16$  (E) $\dfrac13$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-25": { s: String.raw`Which of the following sets of whole numbers has the largest average?
+
+(A) multiples of $2$ between $1$ and $101$  (B) multiples of $3$ between $1$ and $101$  (C) multiples of $4$ between $1$ and $101$  (D) multiples of $5$ between $1$ and $101$  (E) multiples of $6$ between $1$ and $101$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-3": { s: String.raw`The smallest sum one could get by adding three different numbers from the set $\{7, 25, -1, 12, -3\}$ is
+
+(A) $-3$  (B) $-1$  (C) $3$  (D) $5$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-4": { s: String.raw`The product $(1.8)(40.3 + 0.07)$ is closest to
+
+(A) $7$  (B) $42$  (C) $74$  (D) $84$  (E) $737$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-5": { s: String.raw`A contest began at noon one day and ended $1000$ minutes later. At what time did the contest end?
+
+(A) $10\!:\!00$ p.m.  (B) midnight  (C) $2\!:\!30$ a.m.  (D) $4\!:\!40$ a.m.  (E) $6\!:\!40$ a.m.`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-6": { s: String.raw`What is the value of the following expression?$$\frac{2}{1 - \frac{2}{3}}$$(A) $-3$  (B) $-\dfrac43$  (C) $\dfrac23$  (D) $2$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-7": { s: String.raw`How many whole numbers are between $\sqrt{8}$ and $\sqrt{80}?$
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-8": { s: String.raw`In the multiplication shown, $B$ represents a digit. What is the value of $B?$$$\begin{array}{r} B2 \\ \times\, 7B \\ \hline 6396 \end{array}$$(A) $3$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
+"1986-ajhsme-9": { s: String.raw`Using only the paths and the directions shown, how many different routes are there from $M$ to $N?$
+
+@@fig:amc8/1986/9.svg@@
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/1986" },
 });

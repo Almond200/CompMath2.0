@@ -6,7 +6,7 @@ This exists because both failure paths in js/app.js are silent:
   - app.js ~1090 rewrites the user's localStorage, permanently discarding ids that fail to resolve
 So a typo costs a list, or a reader's saved collection, with nothing printed anywhere.
 """
-import io, re, glob, sys
+import io, re, glob, sys, json
 
 cards = set()
 for f in glob.glob("js/data/*.js"):
@@ -91,11 +91,24 @@ for blk in blocks[1:]:
     have = set()
     for blob in re.findall(r'ids: \[([^\]]*)\]', blk):
         have |= set(re.findall(r'"([a-z0-9-]+)"', blob))
-    should = {c for c, (sj, lv) in meta.items() if sj == want_subj and (lv & want_lv)}
+    # Routes are additive (Stanley, 2026-10-11): a card belongs to the route of the LOWEST contest
+    # tier it carries, so the AIME route holds only what is new beyond AMC 10/12, and the Olympiad route
+    # only what is new beyond AIME. A card may repeat in a higher route only if tools/route-repeats.json
+    # names it (a card whose use at that level is broader, such as the pigeonhole principle).
+    AMC_LV = {"AMC10", "AMC12"}
+    def entry(lv):
+        if lv & AMC_LV: return "AMC"
+        if "AIME" in lv: return "AIME"
+        if "Olympiad" in lv: return "Olympiad"
+        return None
+    tier = tm.group(1)
+    repeats = set(json.load(open("tools/route-repeats.json")).get(tier, []))
+    should = {c for c, (sj, lv) in meta.items() if sj == want_subj and entry(lv) == tier}
+    allowed = should | {c for c in repeats if c in meta and meta[c][0] == want_subj}
     for c in sorted(should - have):
         route_bad.append("%s: MISSING %s" % (lid, c))
-    for c in sorted(have - should):
-        route_bad.append("%s: %s does not qualify" % (lid, c))
+    for c in sorted(have - allowed):
+        route_bad.append("%s: %s does not belong (its first tier is %s; name it in tools/route-repeats.json to repeat it)" % (lid, c, entry(meta[c][1]) if c in meta else "unknown"))
 
 # A card listed twice in one list renders twice, under two different headings, and the route
 # check above cannot see it because it collects ids into a set. That is exactly how

@@ -41,10 +41,425 @@ Find the least possible value of $m + n.$`, u: "https://live.poshenloh.com/past-
 "2020-aime-ii-7": { s: String.raw`Two congruent right circular cones each with base radius $3$ and height $8$ have axes of symmetry that intersect at right angles at a point in the interior of the cones a distance $3$ from the base of each cone. A sphere with radius $r$ lies within both cones. The maximum possible value of $r^2$ is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2020II" },
 "2020-aime-ii-8": { s: String.raw`Define a sequence recursively by $f_1(x) = |x - 1|$ and $f_n(x) = f_{n-1}(|x - n|)$ for integers $n \gt 1.$ Find the least value of $n$ such that the sum of the zeros of $f_n$ exceeds $500{,}000.$`, u: "https://live.poshenloh.com/past-contests/aime/2020II" },
 "2020-aime-ii-9": { s: String.raw`While watching a show, Ayako, Billy, Carlos, Dahlia, Ehuang, and Frank sat in that order in a row of six chairs. During the break, they went to the kitchen for a snack. When they came back, they sat on those six chairs in such a way that if two of them sat next to each other before the break, then they did not sit next to each other after the break. Find the number of possible seating orders they could have chosen after the break.`, u: "https://live.poshenloh.com/past-contests/aime/2020II" },
+"2020-amc-10a-1": { s: String.raw`What value of $x$ satisfies$$x- \frac{3}{4} = \frac{5}{12} - \frac{1}{3}?$$(A) $\displaystyle -\frac{2}{3}$  (B) $\displaystyle \frac{7}{36}$  (C) $\displaystyle \frac{7}{12}$  (D) $\displaystyle \frac{2}{3}$  (E) $\displaystyle \frac{5}{6}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-10": { s: String.raw`Seven cubes, whose volumes are $1,$ $8,$ $27,$ $64,$ $125,$ $216,$ and $343$ cubic units, are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face of each cube lies completely on top of the cube below it. What is the total surface area of the tower (including the bottom) in square units?
+
+(A) $644$  (B) $658$  (C) $664$  (D) $720$  (E) $749$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-11": { s: String.raw`What is the median of the following list of $4040$ numbers?$$\begin{aligned}&1,2,3,\ldots,2020, \\ &1^2,2^2,3^2,\ldots,2020^2\end{aligned}$$(A) $1974.5$  (B) $1975.5$  (C) $1976.5$  (D) $1977.5$  (E) $1978.5$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-12": { s: String.raw`Triangle $AMC$ is isosceles with $AM = AC.$ Medians $\overline{MV}$ and $\overline{CU}$ are perpendicular to each other, and $MV=CU=12.$ What is the area of $\triangle AMC?$
+
+@@fig:amc10/2020A/12.svg@@
+
+(A) $48$  (B) $72$  (C) $96$  (D) $144$  (E) $192$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-13": { s: String.raw`A frog sitting at the point $(1, 2)$ begins a sequence of jumps, where each jump is parallel to one of the coordinate axes and has length $1,$ and the direction of each jump (up, down, right, or left) is chosen independently at random. The sequence ends when the frog reaches a side of the square with vertices $(0, 0),$ $(0, 4),$ $(4, 4),$ and $(4, 0).$ What is the probability that the sequence of jumps ends on a vertical side of the square?
+
+(A) $\displaystyle \frac{1}{2}$  (B) $\displaystyle \frac{5}{8}$  (C) $\displaystyle \frac{2}{3}$  (D) $\displaystyle \frac{3}{4}$  (E) $\displaystyle \frac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-14": { s: String.raw`Real numbers $x$ and $y$ satisfy $x + y = 4$ and $x \cdot y = -2.$ What is the value of$$x + \frac{x^3}{y^2} + \frac{y^3}{x^2} + y?$$(A) $360$  (B) $400$  (C) $420$  (D) $440$  (E) $480$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-15": { s: String.raw`A positive integer divisor of $12!$ is chosen at random. The probability that the divisor chosen is a perfect square can be expressed as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m+n?$
+
+(A) $3$  (B) $5$  (C) $12$  (D) $18$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-16": { s: String.raw`A point is chosen at random within the square in the coordinate plane whose vertices are $(0, 0),$ $(2020, 0),$ $(2020, 2020),$ and $(0, 2020).$ The probability that the point is within $d$ units of a lattice point is $\tfrac{1}{2}.$ (A point $(x, y)$ is a lattice point if $x$ and $y$ are both integers.) What is $d$ to the nearest tenth?
+
+(A) $0.3$  (B) $0.4$  (C) $0.5$  (D) $0.6$  (E) $0.7$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-17": { s: String.raw`Define$$P(x)={} (x-1^2)(x-2^2) \cdots(x-100^2).$$How many integers $n$ are there such that $P(n)\leq 0?$
+
+(A) $4900$  (B) $4950$  (C) $5000$  (D) $5050$  (E) $5100$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-18": { s: String.raw`Let $(a,b,c,d)$ be an ordered quadruple of not necessarily distinct integers, each one of them in the set $\{0,1,2,3\}.$ For how many such quadruples is it true that $a\cdot d-b\cdot c$ is odd? (For example, $(0,3,1,1)$ is one such quadruple, because $0\cdot 1-3\cdot 1 = -3$ is odd.)
+
+(A) $48$  (B) $64$  (C) $96$  (D) $128$  (E) $192$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-19": { s: String.raw`As shown in the figure below, a regular dodecahedron (the polyhedron consisting of $12$ congruent regular pentagonal faces) floats in space with two horizontal faces. Note that there is a ring of five slanted faces adjacent to the top face, and a ring of five slanted faces adjacent to the bottom face. How many ways are there to move from the top face to the bottom face via a sequence of adjacent faces so that each face is visited at most once and moves are not permitted from the bottom ring to the top ring?
+
+@@fig:amc10/2020A/19.svg@@
+
+(A) $125$  (B) $250$  (C) $405$  (D) $640$  (E) $810$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-2": { s: String.raw`The numbers $3,$ $5,$ $7,$ $a,$ and $b$ have an average (arithmetic mean) of $15.$ What is the average of $a$ and $b?$
+
+(A) $0$  (B) $15$  (C) $30$  (D) $45$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-20": { s: String.raw`Quadrilateral $ABCD$ satisfies $\angle ABC = \angle ACD = 90^{\circ},$ $AC=20,$ and $CD=30.$ Diagonals $\overline{AC}$ and $\overline{BD}$ intersect at point $E,$ and $AE=5.$ What is the area of quadrilateral $ABCD?$
+
+(A) $330$  (B) $340$  (C) $350$  (D) $360$  (E) $370$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-21": { s: String.raw`There exists a unique strictly increasing sequence of nonnegative integers $a_1<a_2<\cdots<a_k$ such that$$\frac{2^{289}+1}{2^{17}+1}=2^{a_1}+2^{a_2}+\cdots+2^{a_k}.$$What is $k?$
+
+(A) $117$  (B) $136$  (C) $137$  (D) $273$  (E) $306$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-22": { s: String.raw`For how many positive integers $n \le 1000$ is$$\left\lfloor \dfrac{998}{n} \right\rfloor+\left\lfloor \dfrac{999}{n} \right\rfloor+\left\lfloor \dfrac{1000}{n}\right \rfloor$$not divisible by $3?$ (Recall that $\lfloor x \rfloor$ is the greatest integer less than or equal to $x.$)
+
+(A) $22$  (B) $23$  (C) $24$  (D) $25$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-23": { s: String.raw`Let $T$ be the triangle in the coordinate plane with vertices $(0,0),$ $(4,0),$ and $(0,3).$ Consider the following five isometries (rigid transformations) of the plane: rotations of $90^{\circ},$ $180^{\circ},$ and $270^{\circ}$ counterclockwise around the origin, reflection across the $x$-axis, and reflection across the $y$-axis. How many of the $125$ sequences of three of these transformations (not necessarily distinct) will return $T$ to its original position? (For example, a $180^{\circ}$ rotation, followed by a reflection across the $x$-axis, followed by a reflection across the $y$-axis will return $T$ to its original position, but a $90^{\circ}$ rotation, followed by a reflection across the $x$-axis, followed by another reflection across the $x$-axis will not return $T$ to its original position.)
+
+(A) $12$  (B) $15$  (C) $17$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
 "2020-amc-10a-24": { s: String.raw`Let $n$ be the least positive integer greater than $1000$ for which$$\begin{gathered}\gcd(63,n+120)=21 \\ \text{and} \\ \gcd(n+63,120)=60.\end{gathered}$$What is the sum of the digits of $n?$
 
 (A) $12$  (B) $15$  (C) $18$  (D) $21$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-25": { s: String.raw`Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if the sum of the numbers face up on the three dice is exactly $7.$ Jason always plays to optimize his chances of winning. What is the probability that he chooses to reroll exactly two of the dice?
+
+(A) $\displaystyle \frac{7}{36}$  (B) $\displaystyle \frac{5}{24}$  (C) $\displaystyle \frac{2}{9}$  (D) $\displaystyle \frac{17}{72}$  (E) $\displaystyle \frac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-3": { s: String.raw`Assuming $a\neq3,$ $b\neq4,$ and $c\neq5,$ what is the value in simplest form of the following expression?$$\frac{a-3}{5-c} \cdot \frac{b-4}{3-a} \cdot \frac{c-5}{4-b}$$(A) $-1$
+(B) $1$
+(C) $\displaystyle \frac{abc}{60}$
+(D) $\displaystyle \frac{1}{abc} - \frac{1}{60}$
+(E) $\displaystyle \frac{1}{60} - \frac{1}{abc}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-4": { s: String.raw`A driver travels for $2$ hours at $60$ miles per hour, during which her car gets $30$ miles per gallon of gasoline. She is paid $\$0.50$ per mile, and her only expense is gasoline at $\$2.00$ per gallon. What is her net rate of pay, in dollars per hour, after this expense?
+
+(A) $20$  (B) $22$  (C) $24$  (D) $25$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-5": { s: String.raw`What is the sum of all real numbers $x$ for which$$|x^2-12x+34|=2?$$(A) $12$  (B) $15$  (C) $18$  (D) $21$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-6": { s: String.raw`How many $4$-digit positive integers (that is, integers between $1000$ and $9999,$ inclusive) having only even digits are divisible by $5?$
+
+(A) $80$  (B) $100$  (C) $125$  (D) $200$  (E) $500$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-7": { s: String.raw`The $25$ integers from $-10$ to $14,$ inclusive, can be arranged to form a $5$-by-$5$ square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the numbers along each of the main diagonals are all the same. What is the value of this common sum?
+
+(A) $2$  (B) $5$  (C) $10$  (D) $25$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-8": { s: String.raw`What is the value of$$1+2+3-4+5+6+7-8 +\cdots +197+198+199-200?$$(A) $9{,}800$  (B) $9{,}900$  (C) $10{,}000$  (D) $10{,}100$  (E) $10{,}200$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10a-9": { s: String.raw`A single bench section at a school event can hold either $7$ adults or $11$ children. When $N$ bench sections are connected end to end, an equal number of adults and children seated together will occupy all the bench space. What is the least possible positive integer value of $N?$
+
+(A) $9$  (B) $18$  (C) $27$  (D) $36$  (E) $77$`, u: "https://live.poshenloh.com/past-contests/amc10/2020A" },
+"2020-amc-10b-1": { s: String.raw`What is the value of$$1 - (-2) - 3 - (-4) - 5 - (-6)?$$(A) $-20$  (B) $-3$  (C) $3$  (D) $5$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-10": { s: String.raw`A three-quarter sector of a circle of radius $4$ inches together with its interior can be rolled up to form the lateral surface of a right circular cone by taping together along the two radii shown. What is the volume of the cone in cubic inches?
+
+@@fig:amc10/2020B/10.svg@@
+
+(A) $3\pi\sqrt{5}$  (B) $4\pi\sqrt{3}$  (C) $3\pi\sqrt{7}$  (D) $6\pi\sqrt{3}$  (E) $6\pi\sqrt{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-11": { s: String.raw`Ms. Carr asks her students to read any $5$ of the $10$ books on a reading list. Harold randomly selects $5$ books from this list, and Betty does the same. What is the probability that there are exactly $2$ books that they both select?
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{5}{36}$  (C) $\dfrac{14}{45}$  (D) $\dfrac{25}{63}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-12": { s: String.raw`The decimal representation of$$\frac{1}{20^{20}}$$consists of a string of zeros after the decimal point, followed by a $9$ and then several more digits. How many zeros are in that initial string of zeros after the decimal point?
+
+(A) $23$  (B) $24$  (C) $25$  (D) $26$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-13": { s: String.raw`Andy the Ant lives on a coordinate plane and is currently at $(-20, 20)$ facing east (that is, in the positive $x$-direction). Andy moves $1$ unit and then turns $90^{\circ}$ left. From there, Andy moves $2$ units (north) and then turns $90^{\circ}$ left. He then moves $3$ units (west) and again turns $90^{\circ}$ left. Andy continues this process, increasing his distance each time by $1$ unit and always turning left. What is the location of the point at which Andy makes the $2020\text{th}$ left turn?
+
+(A) $(-1030,-994)$  (B) $(-1030,-990)$  (C) $(-1026,-994)$  (D) $(-1026,-990)$  (E) $(-1022,-994)$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-14": { s: String.raw`As shown in the figure below, six semicircles lie in the interior of a regular hexagon with side length $2$ so that the diameters of the semicircles coincide with the sides of the hexagon. What is the area of the shaded region—inside the hexagon but outside all of the semicircles?
+
+@@fig:amc10/2020B/14.svg@@
+
+(A) $6\sqrt3-3\pi$
+(B) $\dfrac{9\sqrt3}{2}-2\pi$
+(C) $\dfrac{3\sqrt3}{2}-\dfrac{\pi}{3}$
+(D) $3\sqrt3-\pi$
+(E) $\dfrac{9\sqrt3}{2}-\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-15": { s: String.raw`Steve wrote the digits $1,$ $2,$ $3,$ $4,$ and $5$ in order repeatedly from left to right, forming a list of $10{,}000$ digits, beginning $123451234512\ldots$ He then erased every third digit from his list (that is, the $3$rd, $6$th, $9$th, $\ldots$ digits from the left), then erased every fourth digit from the resulting list (that is, the $4$th, $8$th, $12$th, $\ldots$ digits from the left in what remained), and then erased every fifth digit from what remained at that point. What is the sum of the three digits that were then in positions $2019,$ $2020,$ and $2021?$
+
+(A) $7$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-16": { s: String.raw`Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4.$ They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n].$ Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?
+
+(A) Bela will always win.  (B) Jenn will always win.  (C) Bela will win if and only if $n$ is odd.  (D) Jenn will win if and only if $n$ is odd.  (E) Jenn will win if and only if $n&gt;8.$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-17": { s: String.raw`There are $10$ people standing equally spaced around a circle. Each person knows exactly $3$ of the other $9$ people: the $2$ people standing next to her or him, as well as the person directly across the circle. How many ways are there for the $10$ people to split up into $5$ pairs so that the members of each pair know each other?
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-18": { s: String.raw`An urn contains one red ball and one blue ball. A box of extra red and blue balls lies nearby. George performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?
+
+(A) $\dfrac16$  (B) $\dfrac15$  (C) $\dfrac14$  (D) $\dfrac13$  (E) $\dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-19": { s: String.raw`In a certain card game, a player is dealt a hand of $10$ cards from a deck of $52$ distinct cards. The number of distinct (unordered) hands that can be dealt to the player can be written as $158A00A4AA0.$ What is the digit $A?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-2": { s: String.raw`Carl has $5$ cubes each having side length $1,$ and Kate has $5$ cubes each having side length $2.$ What is the total volume of these $10$ cubes?
+
+(A) $24$  (B) $25$  (C) $28$  (D) $40$  (E) $45$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-20": { s: String.raw`Let $B$ be a right rectangular prism (box) with edge lengths $1,$ $3,$ and $4,$ together with its interior. For real $r\geq0,$ let $S(r)$ be the set of points in $3$-dimensional space that lie within a distance $r$ of some point in $B.$ The volume of $S(r)$ can be expressed as$$ar^{3} + br^{2} + cr +d,$$where $a,$ $b,$ $c,$ and $d$ are positive real numbers. What is $\dfrac{bc}{ad}?$
+
+(A) $6$  (B) $19$  (C) $24$  (D) $26$  (E) $38$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-21": { s: String.raw`In square $ABCD,$ points $E$ and $H$ lie on $\overline{AB}$ and $\overline{DA},$ respectively, so that $AE=AH.$ Points $F$ and $G$ lie on $\overline{BC}$ and $\overline{CD},$ respectively, and points $I$ and $J$ lie on $\overline{EH}$ so that $\overline{FI} \perp \overline{EH}$ and $\overline{GJ} \perp \overline{EH}.$ See the figure below. Triangle $AEH,$ quadrilateral $BFIE,$ quadrilateral $DHJG,$ and pentagon $FCGJI$ each has area $1.$ What is $FI^2?$
+
+@@fig:amc10/2020B/21.svg@@
+
+(A) $\dfrac73$  (B) $8-4\sqrt2$  (C) $1+\sqrt2$  (D) $\dfrac74\sqrt2$  (E) $2\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
 "2020-amc-10b-22": { s: String.raw`What is the remainder when $2^{202} +202$ is divided by $2^{101}+2^{51}+1?$
 
 (A) $100$  (B) $101$  (C) $200$  (D) $201$  (E) $202$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-23": { s: String.raw`Square $ABCD$ in the coordinate plane has vertices at the points $A(1,1),$ $B(-1,1),$ $C(-1,-1),$ and $D(1,-1).$ Consider the following four transformations:
+
+• $L,$ a rotation of $90^{\circ}$ counterclockwise around the origin;
+
+• $R,$ a rotation of $90^{\circ}$ clockwise around the origin;
+
+• $H,$ a reflection across the $x$-axis; and
+
+• $V,$ a reflection across the $y$-axis.
+
+Each of these transformations maps the square onto itself, but the positions of the labeled vertices will change. For example, applying $R$ and then $V$ would send the vertex $A$ at $(1,1)$ to $(-1,-1)$ and would send the vertex $B$ at $(-1,1)$ to itself. How many sequences of $20$ transformations chosen from $\{L, R, H, V\}$ will send all of the labeled vertices back to their original positions? (For example, $R,$ $R,$ $V,$ $H$ is one sequence of $4$ transformations that will send the vertices back to their original positions.)
+
+(A) $2^{37}$  (B) $3\cdot 2^{36}$  (C) $2^{38}$  (D) $3\cdot2^{37}$  (E) $2^{39}$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-24": { s: String.raw`How many positive integers $n$ satisfy$$\dfrac{n+1000}{70} = \lfloor \sqrt{n} \rfloor?$$(Recall that $\lfloor x\rfloor$ is the greatest integer not exceeding $x.$)
+
+(A) $2$  (B) $4$  (C) $6$  (D) $30$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-25": { s: String.raw`Let $D(n)$ denote the number of ways of writing the positive integer $n$ as a product$$n = f_1\cdot f_2\cdots f_k,$$where $k\ge1,$ the $f_i$ are integers strictly greater than $1,$ and the order in which the factors are listed matters (that is, two representations that differ only in the order of the factors are counted as distinct). For example, the number $6$ can be written as $6,$ $2\cdot 3,$ and $3\cdot2,$ so $D(6) = 3.$ What is $D(96)?$
+
+(A) $112$  (B) $128$  (C) $144$  (D) $172$  (E) $184$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-3": { s: String.raw`The ratio of $w$ to $x$ is $4:3,$ the ratio of $y$ to $z$ is $3:2,$ and the ratio of $z$ to $x$ is $1:6.$ What is the ratio of $w$ to $y?$
+
+(A) $4:3$  (B) $3:2$  (C) $8:3$  (D) $4:1$  (E) $16:3$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-4": { s: String.raw`The acute angles of a right triangle are $a^{\circ}$ and $b^{\circ},$ where $a>b$ and both $a$ and $b$ are prime numbers. What is the least possible value of $b?$
+
+(A) $2$  (B) $3$  (C) $5$  (D) $7$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-5": { s: String.raw`How many distinguishable arrangements are there of $1$ brown tile, $1$ purple tile, $2$ green tiles, and $3$ yellow tiles in a row from left to right? (Tiles of the same color are indistinguishable.)
+
+(A) $210$  (B) $420$  (C) $630$  (D) $840$  (E) $1050$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-6": { s: String.raw`Driving along a highway, Megan noticed that her odometer showed $15951$ (miles). This number is a palindrome—it reads the same forward and backward. Then $2$ hours later, the odometer displayed the next higher palindrome. What was her average speed, in miles per hour, during this $2$-hour period?
+
+(A) $50$  (B) $55$  (C) $60$  (D) $65$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-7": { s: String.raw`How many positive even multiples of $3$ less than $2020$ are perfect squares?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-8": { s: String.raw`Points $P$ and $Q$ lie in a plane with $PQ=8.$ How many locations for point $R$ in this plane are there such that the triangle with vertices $P,$ $Q,$ and $R$ is a right triangle with area $12$ square units?
+
+(A) $2$  (B) $4$  (C) $6$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-10b-9": { s: String.raw`How many ordered pairs of integers $(x, y)$ satisfy the equation$$x^{2020}+y^2=2y?$$(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+"2020-amc-12a-1": { s: String.raw`Carlos took $70\%$ of a whole pie. Maria took one third of the remainder. What portion of the whole pie was left?
+
+(A) $10\%$  (B) $15\%$  (C) $20\%$  (D) $30\%$  (E) $35\%$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-10": { s: String.raw`There is a unique positive integer $n$ such that$$\log_2(\log_{16} n) = \log_4(\log_4 n).$$What is the sum of the digits of $n?$
+
+(A) $4$  (B) $7$  (C) $8$  (D) $11$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-11": { s: String.raw`A frog sitting at the point $(1, 2)$ begins a sequence of jumps, where each jump is parallel to one of the coordinate axes and has length $1,$ and the direction of each jump (up, down, right, or left) is chosen independently at random. The sequence ends when the frog reaches a side of the square with vertices $(0, 0),$ $(0, 4),$ $(4, 4),$ and $(4, 0).$ What is the probability that the sequence of jumps ends on a vertical side of the square?
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{5}{8}$  (C) $\dfrac{2}{3}$  (D) $\dfrac{3}{4}$  (E) $\dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-12": { s: String.raw`Line $\ell$ in the coordinate plane has the equation $3x - 5y + 40 = 0.$ This line is rotated $45^\circ$ counterclockwise about the point $(20, 20)$ to obtain line $k.$ What is the $x$-coordinate of the $x$-intercept of line $k?$
+
+(A) $10$  (B) $15$  (C) $20$  (D) $25$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-13": { s: String.raw`There are integers $a,$ $b,$ and $c,$ each greater than $1,$ such that$$\sqrt[a]{N \sqrt[b]{N \sqrt[c]{N}}} = \sqrt[36]{N^{25}}$$for all $N \gt 1.$ What is $b?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-14": { s: String.raw`Regular octagon $ABCDEFGH$ has area $n.$ Let $m$ be the area of quadrilateral $ACEG.$ What is $\dfrac{m}{n}?$
+
+(A) $\dfrac{\sqrt{2}}{4}$  (B) $\dfrac{\sqrt{2}}{2}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{3\sqrt{2}}{5}$  (E) $\dfrac{2\sqrt{2}}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-15": { s: String.raw`In the complex plane, let $A$ be the set of solutions to $z^3 - 8 = 0$ and let $B$ be the set of solutions to $z^3 - 8z^2 - 8z + 64 = 0.$ What is the greatest distance between a point of $A$ and a point of $B?$
+
+(A) $2\sqrt{3}$  (B) $6$  (C) $9$  (D) $2\sqrt{21}$  (E) $9 + \sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-16": { s: String.raw`A point is chosen at random within the square in the coordinate plane whose vertices are $(0, 0),$ $(2020, 0),$ $(2020, 2020),$ and $(0, 2020).$ The probability that the point is within $d$ units of a lattice point is $\tfrac12.$ (A point $(x, y)$ is a lattice point if $x$ and $y$ are both integers.) What is $d$ to the nearest tenth?
+
+(A) $0.3$  (B) $0.4$  (C) $0.5$  (D) $0.6$  (E) $0.7$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-17": { s: String.raw`The vertices of a quadrilateral lie on the graph of $y = \ln x,$ and the $x$-coordinates of these vertices are consecutive positive integers. The area of the quadrilateral is $\ln\dfrac{91}{90}.$ What is the $x$-coordinate of the leftmost vertex?
+
+(A) $6$  (B) $7$  (C) $10$  (D) $12$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-18": { s: String.raw`Quadrilateral $ABCD$ satisfies $\angle ABC = \angle ACD = 90^\circ,$ $AC = 20,$ and $CD = 30.$ Diagonals $AC$ and $BD$ intersect at point $E,$ and $AE = 5.$ What is the area of quadrilateral $ABCD?$
+
+(A) $330$  (B) $340$  (C) $350$  (D) $360$  (E) $370$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-19": { s: String.raw`There exists a unique strictly increasing sequence of nonnegative integers $a_1 \lt a_2 \lt \cdots \lt a_k$ such that$$\frac{2^{289} + 1}{2^{17} + 1} = 2^{a_1} + 2^{a_2} + \cdots + 2^{a_k}.$$What is $k?$
+
+(A) $117$  (B) $136$  (C) $137$  (D) $273$  (E) $306$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-2": { s: String.raw`The acronym AMC is shown in the rectangular grid below with grid lines spaced $1$ unit apart. In units, what is the sum of the lengths of the line segments that form the acronym AMC?
+
+@@fig:amc12/2020A/2.svg@@
+
+(A) $17$  (B) $15 + 2\sqrt{2}$  (C) $13 + 4\sqrt{2}$  (D) $11 + 6\sqrt{2}$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-20": { s: String.raw`Let $T$ be the triangle in the coordinate plane with vertices $(0, 0),$ $(4, 0),$ and $(0, 3).$ Consider the following five isometries (rigid transformations) of the plane: rotations of $90^\circ,$ $180^\circ,$ and $270^\circ$ counterclockwise around the origin, reflection across the $x$-axis, and reflection across the $y$-axis. How many of the $125$ sequences of three of these transformations (not necessarily distinct) will return $T$ to its original position? (For example, a $180^\circ$ rotation, followed by a reflection across the $x$-axis, followed by a reflection across the $y$-axis will return $T$ to its original position, but a $90^\circ$ rotation, followed by a reflection across the $x$-axis, followed by another reflection across the $x$-axis will not return $T$ to its original position.)
+
+(A) $12$  (B) $15$  (C) $17$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-21": { s: String.raw`How many positive integers $n$ are there such that $n$ is a multiple of $5,$ and the least common multiple of $5!$ and $n$ equals $5$ times the greatest common divisor of $10!$ and $n?$
+
+(A) $12$  (B) $24$  (C) $36$  (D) $48$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-22": { s: String.raw`Let $(a_n)$ and $(b_n)$ be the sequences of real numbers such that$$(2 + i)^n = a_n + b_n i$$for all integers $n \ge 0,$ where $i = \sqrt{-1}.$ What is$$\sum_{n=0}^{\infty} \frac{a_n b_n}{7^n}?$$(A) $\dfrac{3}{8}$  (B) $\dfrac{7}{16}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{4}{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-23": { s: String.raw`Jason rolls three fair standard six-sided dice. Then he looks at the rolls and chooses a subset of the dice (possibly empty, possibly all three dice) to reroll. After rerolling, he wins if and only if the sum of the numbers face up on the three dice is exactly $7.$ Jason always plays to optimize his chances of winning. What is the probability that he chooses to reroll exactly two of the dice?
+
+(A) $\dfrac{7}{36}$  (B) $\dfrac{5}{24}$  (C) $\dfrac{2}{9}$  (D) $\dfrac{17}{72}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-24": { s: String.raw`Suppose that $\triangle ABC$ is an equilateral triangle of side length $s,$ with the property that there is a unique point $P$ inside the triangle such that $AP = 1,$ $BP = \sqrt{3},$ and $CP = 2.$ What is $s?$
+
+(A) $1 + \sqrt{2}$  (B) $\sqrt{7}$  (C) $\dfrac{8}{3}$  (D) $\sqrt{5 + \sqrt{5}}$  (E) $2\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-25": { s: String.raw`The number $a = \dfrac{p}{q},$ where $p$ and $q$ are relatively prime positive integers, has the property that the sum of all real numbers $x$ satisfying$$\lfloor x \rfloor \cdot \{x\} = a \cdot x^2$$is $420,$ where $\lfloor x \rfloor$ denotes the greatest integer less than or equal to $x$ and $\{x\} = x - \lfloor x \rfloor$ denotes the fractional part of $x.$ What is $p + q?$
+
+(A) $245$  (B) $593$  (C) $929$  (D) $1331$  (E) $1332$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-3": { s: String.raw`A driver travels for $2$ hours at $60$ miles per hour, during which her car gets $30$ miles per gallon of gasoline. She is paid $\$0.50$ per mile, and her only expense is gasoline at $\$2.00$ per gallon. What is her net rate of pay, in dollars per hour, after this expense?
+
+(A) $20$  (B) $22$  (C) $24$  (D) $25$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-4": { s: String.raw`How many $4$-digit positive integers (that is, integers between $1000$ and $9999,$ inclusive) having only even digits are divisible by $5?$
+
+(A) $80$  (B) $100$  (C) $125$  (D) $200$  (E) $500$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-5": { s: String.raw`The $25$ integers from $-10$ to $14,$ inclusive, can be arranged to form a $5$-by-$5$ square in which the sum of the numbers in each row, the sum of the numbers in each column, and the sum of the numbers along each of the main diagonals are all the same. What is the value of this common sum?
+
+(A) $2$  (B) $5$  (C) $10$  (D) $25$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-6": { s: String.raw`In the plane figure shown below, $3$ of the unit squares have been shaded. What is the least number of additional unit squares that must be shaded so that the resulting figure has two lines of symmetry?
+
+@@fig:amc12/2020A/6.svg@@
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-7": { s: String.raw`Seven cubes, whose volumes are $1,$ $8,$ $27,$ $64,$ $125,$ $216,$ and $343$ cubic units, are stacked vertically to form a tower in which the volumes of the cubes decrease from bottom to top. Except for the bottom cube, the bottom face of each cube lies completely on top of the cube below it. What is the total surface area of the tower (including the bottom) in square units?
+
+(A) $644$  (B) $658$  (C) $664$  (D) $720$  (E) $749$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-8": { s: String.raw`What is the median of the following list of $4040$ numbers?
+
+$1,$ $2,$ $3,$ $\ldots,$ $2020,$ $1^2,$ $2^2,$ $3^2,$ $\ldots,$ $2020^2$
+
+(A) $1974.5$  (B) $1975.5$  (C) $1976.5$  (D) $1977.5$  (E) $1978.5$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12a-9": { s: String.raw`How many solutions does the equation $\tan(2x) = \cos\left(\dfrac{x}{2}\right)$ have on the interval $[0, 2\pi]?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2020A" },
+"2020-amc-12b-1": { s: String.raw`What is the value in simplest form of the following expression?$$\sqrt{1} + \sqrt{1+3} + \sqrt{1+3+5} + \sqrt{1+3+5+7}$$(A) $5$  (B) $4 + \sqrt{7} + \sqrt{10}$  (C) $10$  (D) $15$  (E) $4 + 3\sqrt{3} + 2\sqrt{5} + \sqrt{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-10": { s: String.raw`In unit square $ABCD,$ the inscribed circle $\omega$ intersects $\overline{CD}$ at $M,$ and $\overline{AM}$ intersects $\omega$ at a point $P$ different from $M.$ What is $AP?$
+
+(A) $\dfrac{\sqrt{5}}{12}$  (B) $\dfrac{\sqrt{5}}{10}$  (C) $\dfrac{\sqrt{5}}{9}$  (D) $\dfrac{\sqrt{5}}{8}$  (E) $\dfrac{2\sqrt{5}}{15}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-11": { s: String.raw`As shown in the figure below, six semicircles lie in the interior of a regular hexagon with side length $2$ so that the diameters of the semicircles coincide with the sides of the hexagon. What is the area of the shaded region—inside the hexagon but outside all of the semicircles?
+
+@@fig:amc12/2020B/11.svg@@
+
+(A) $6\sqrt{3} - 3\pi$
+(B) $\dfrac{9\sqrt{3}}{2} - 2\pi$
+(C) $\dfrac{3\sqrt{3}}{2} - \dfrac{\pi}{3}$
+(D) $3\sqrt{3} - \pi$
+(E) $\dfrac{9\sqrt{3}}{2} - \pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-12": { s: String.raw`Let $\overline{AB}$ be a diameter in a circle of radius $5\sqrt2.$ Let $\overline{CD}$ be a chord in the circle that intersects $\overline{AB}$ at a point $E$ such that $BE = 2\sqrt5$ and $\angle AEC = 45^\circ.$ What is $CE^2 + DE^2?$
+
+(A) $96$  (B) $98$  (C) $44\sqrt{5}$  (D) $70\sqrt{2}$  (E) $100$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-13": { s: String.raw`Which of the following is the value of $\sqrt{\log_2 6 + \log_3 6}?$
+
+(A) $1$  (B) $\sqrt{\log_5 6}$  (C) $2$  (D) $\sqrt{\log_2 3} + \sqrt{\log_3 2}$  (E) $\sqrt{\log_2 6} + \sqrt{\log_3 6}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-14": { s: String.raw`Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4.$ They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n].$ Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?
+
+(A) Bela will always win.  (B) Jenn will always win.  (C) Bela will win if and only if $n$ is odd.  (D) Jenn will win if and only if $n$ is odd.  (E) Jenn will win if and only if $n \gt 8.$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-15": { s: String.raw`There are $10$ people standing equally spaced around a circle. Each person knows exactly $3$ of the other $9$ people: the $2$ people standing next to her or him, as well as the person directly across the circle. How many ways are there for the $10$ people to split up into $5$ pairs so that the members of each pair know each other?
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-16": { s: String.raw`An urn contains one red ball and one blue ball. A box of extra red and blue balls lies nearby. George performs the following operation four times: he draws a ball from the urn at random and then takes a ball of the same color from the box and returns those two matching balls to the urn. After the four iterations the urn contains six balls. What is the probability that the urn contains three balls of each color?
+
+(A) $\dfrac16$  (B) $\dfrac15$  (C) $\dfrac14$  (D) $\dfrac13$  (E) $\dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-17": { s: String.raw`How many polynomials of the form $x^5 + ax^4 + bx^3 + cx^2 + dx$ $+ 2020,$ where $a,$ $b,$ $c,$ and $d$ are real numbers, have the property that whenever $r$ is a root, so is $\dfrac{-1 + i\sqrt3}{2}\cdot r?$ (Note that $i = \sqrt{-1}.$)
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-18": { s: String.raw`In square $ABCD,$ points $E$ and $H$ lie on $\overline{AB}$ and $\overline{DA},$ respectively, so that $AE = AH.$ Points $F$ and $G$ lie on $\overline{BC}$ and $\overline{CD},$ respectively, and points $I$ and $J$ lie on $\overline{EH}$ so that $\overline{FI} \perp \overline{EH}$ and $\overline{GJ} \perp \overline{EH}.$ See the figure below. Triangle $AEH,$ quadrilateral $BFIE,$ quadrilateral $DHJG,$ and pentagon $FCGJI$ each has area $1.$ What is $FI^2?$
+
+@@fig:amc12/2020B/18.svg@@
+
+(A) $\dfrac73$  (B) $8 - 4\sqrt{2}$  (C) $1 + \sqrt{2}$  (D) $\dfrac74 \sqrt{2}$  (E) $2\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-19": { s: String.raw`Square $ABCD$ in the coordinate plane has vertices at the points $A(1, 1),$ $B(-1, 1),$ $C(-1, -1),$ and $D(1, -1).$ Consider the following four transformations:
+
+$L,$ a rotation of $90^\circ$ counterclockwise around the origin;
+
+$R,$ a rotation of $90^\circ$ clockwise around the origin;
+
+$H,$ a reflection across the $x$-axis; and
+
+$V,$ a reflection across the $y$-axis.
+
+Each of these transformations maps the square onto itself, but the positions of the labeled vertices will change. For example, applying $R$ and then $V$ would send the vertex $A$ at $(1, 1)$ to $(-1, -1)$ and would send the vertex $B$ at $(-1, 1)$ to itself. How many sequences of $20$ transformations chosen from $\{L, R, H, V\}$ will send all of the labeled vertices back to their original positions? (For example, $R,$ $R,$ $V,$ $H$ is one sequence of $4$ transformations that will send the vertices back to their original positions.)
+
+(A) $2^{37}$  (B) $3 \cdot 2^{36}$  (C) $2^{38}$  (D) $3 \cdot 2^{37}$  (E) $2^{39}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-2": { s: String.raw`What is the value of the following expression?$$\frac{100^2 - 7^2}{70^2 - 11^2} \cdot \frac{(70 - 11)(70 + 11)}{(100 - 7)(100 + 7)}$$(A) $1$  (B) $\dfrac{9951}{9950}$  (C) $\dfrac{4780}{4779}$  (D) $\dfrac{108}{107}$  (E) $\dfrac{81}{80}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-20": { s: String.raw`Two different cubes of the same size are to be painted, with the color of each face being chosen independently and at random to be either black or white. What is the probability that after they are painted, the cubes can be rotated to be identical in appearance?
+
+(A) $\dfrac{9}{64}$  (B) $\dfrac{289}{2048}$  (C) $\dfrac{73}{512}$  (D) $\dfrac{147}{1024}$  (E) $\dfrac{589}{4096}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-21": { s: String.raw`How many positive integers $n$ satisfy$$\frac{n + 1000}{70} = \lfloor \sqrt{n} \rfloor?$$(Recall that $\lfloor x \rfloor$ is the greatest integer not exceeding $x.$)
+
+(A) $2$  (B) $4$  (C) $6$  (D) $30$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-22": { s: String.raw`What is the maximum value of$$\frac{(2^t - 3t)\,t}{4^t}$$for real values of $t?$
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac{1}{15}$  (C) $\dfrac{1}{12}$  (D) $\dfrac{1}{10}$  (E) $\dfrac19$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-23": { s: String.raw`How many integers $n \ge 2$ are there such that whenever $z_1,$ $z_2,$ $\ldots,$ $z_n$ are complex numbers such that$$ |z_1| = |z_2| = \cdots = |z_n| = 1 $$and$$ z_1 + z_2 + \cdots + z_n = 0, $$then the numbers $z_1,$ $z_2,$ $\ldots,$ $z_n$ are equally spaced on the unit circle in the complex plane?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-24": { s: String.raw`Let $D(n)$ denote the number of ways of writing the positive integer $n$ as a product$$n = f_1 \cdot f_2 \cdots f_k,$$where $k \ge 1,$ the $f_i$ are integers strictly greater than $1,$ and the order in which the factors are listed matters (that is, two representations that differ only in the order of the factors are counted as distinct). For example, the number $6$ can be written as $6,$ $2 \cdot 3,$ and $3 \cdot 2,$ so $D(6) = 3.$ What is $D(96)?$
+
+(A) $112$  (B) $128$  (C) $144$  (D) $172$  (E) $184$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-25": { s: String.raw`For each real number $a$ with $0 \le a \le 1,$ let numbers $x$ and $y$ be chosen independently at random from the intervals $[0, a]$ and $[0, 1],$ respectively, and let $P(a)$ be the probability that$$\sin^2(\pi x) + \sin^2(\pi y) \gt 1.$$What is the maximum value of $P(a)?$
+
+(A) $\dfrac{7}{12}$  (B) $2 - \sqrt{2}$  (C) $\dfrac{1 + \sqrt{2}}{4}$  (D) $\dfrac{\sqrt{5} - 1}{2}$  (E) $\dfrac58$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-3": { s: String.raw`The ratio of $w$ to $x$ is $4 : 3,$ the ratio of $y$ to $z$ is $3 : 2,$ and the ratio of $z$ to $x$ is $1 : 6.$ What is the ratio of $w$ to $y?$
+
+(A) $4 : 3$  (B) $3 : 2$  (C) $8 : 3$  (D) $4 : 1$  (E) $16 : 3$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-4": { s: String.raw`The acute angles of a right triangle are $a^\circ$ and $b^\circ,$ where $a \gt b$ and both $a$ and $b$ are prime numbers. What is the least possible value of $b?$
+
+(A) $2$  (B) $3$  (C) $5$  (D) $7$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-5": { s: String.raw`Teams $A$ and $B$ are playing in a basketball league where each game results in a win for one team and a loss for the other team. Team $A$ has won $\tfrac23$ of its games and team $B$ has won $\tfrac58$ of its games. Also, team $B$ has won $7$ more games and lost $7$ more games than team $A.$ How many games has team $A$ played?
+
+(A) $21$  (B) $27$  (C) $42$  (D) $48$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-6": { s: String.raw`For all integers $n \ge 9,$ the value of$$\frac{(n + 2)! - (n + 1)!}{n!}$$is always which of the following?
+
+(A) a multiple of $4$  (B) a multiple of $10$  (C) a prime number  (D) a perfect square  (E) a perfect cube`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-7": { s: String.raw`Two nonhorizontal, non-vertical lines in the $xy$-coordinate plane intersect to form a $45^\circ$ angle. One line has slope equal to $6$ times the slope of the other line. What is the greatest possible value of the product of the slopes of the two lines?
+
+(A) $\dfrac16$  (B) $\dfrac23$  (C) $\dfrac32$  (D) $3$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-8": { s: String.raw`How many ordered pairs of integers $(x, y)$ satisfy the equation$$x^{2020} + y^2 = 2y?$$(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-12b-9": { s: String.raw`A three-quarter sector of a circle of radius $4$ inches together with its interior can be rolled up to form the lateral surface of a right circular cone by taping together along the two radii shown. What is the volume of the cone in cubic inches?
+
+@@fig:amc12/2020B/9.svg@@
+
+(A) $3\pi \sqrt{5}$  (B) $4\pi \sqrt{3}$  (C) $3\pi \sqrt{7}$  (D) $6\pi \sqrt{3}$  (E) $6\pi \sqrt{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2020B" },
+"2020-amc-8-1": { s: String.raw`Luka is making lemonade to sell at a school fundraiser. His recipe requires $4$ times as much water as sugar and twice as much sugar as lemon juice. He uses $3$ cups of lemon juice. How many cups of water does he need?
+
+(A) $6$  (B) $8$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-10": { s: String.raw`Zara has a collection of $4$ marbles: an Aggie, a Bumblebee, a Steelie, and a Tiger. She wants to display them in a row on a shelf, but does not want to put the Steelie and the Tiger next to one another. In how many ways can she do this?
+
+(A) $6$  (B) $8$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-11": { s: String.raw`After school, Maya and Naomi headed to the beach, $6$ miles away. Maya decided to bike while Naomi took a bus. The graph below shows their journeys, indicating the time and distance traveled. What was the difference, in miles per hour, between Naomi’s and Maya’s average speeds?
+
+@@fig:amc8/2020/11.svg@@
+
+(A) $6$  (B) $12$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-12": { s: String.raw`For a positive integer $n,$ the factorial notation $n!$ represents the product of the integers from $n$ to $1.$ For example:$$ 6! = 6 \times 5 \times 4 \times 3 \times 2 \times 1 $$What value of $N$ satisfies the following equation?$$ 5! \times 9! = 12 \times N! $$(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-13": { s: String.raw`Jamal has a drawer containing $6$ green socks, $18$ purple socks, and $12$ orange socks. After adding more purple socks, Jamal noticed that there is now a $60\%$ chance that a sock randomly selected from the drawer is purple. How many purple socks did Jamal add?
+
+(A) $6$  (B) $9$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-14": { s: String.raw`There are $20$ cities in the County of Newton. Their populations are shown in the bar chart below. The average population of all the cities is indicated by the horizontal dashed line. Which of the following is closest to the total population of all $20$ cities?
+
+@@fig:amc8/2020/14.svg@@
+
+(A) $65{,}000$  (B) $75{,}000$  (C) $85{,}000$  (D) $95{,}000$  (E) $105{,}000$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-15": { s: String.raw`Suppose $15\%$ of $x$ equals $20\%$ of $y.$ What percentage of $x$ is $y?$
+
+(A) $5$  (B) $35$  (C) $75$  (D) $133 \frac{1}{3}$  (E) $300$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-16": { s: String.raw`Each of the points $A,$ $B,$ $C,$ $D,$ $E,$ and $F$ in the figure below represents a different digit from $1$ to $6.$ Each of the five lines shown passes through some of these points. The digits along each line are added to produce five sums, one for each line. The total of the five sums is $47.$ What is the digit represented by $B?$
+
+@@fig:amc8/2020/16.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-17": { s: String.raw`How many factors of $2020$ have more than $3$ factors? (As an example, $12$ has $6$ factors, namely $1,$ $2,$ $3,$ $4,$ $6,$ and $12.$)
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-18": { s: String.raw`Rectangle $ABCD$ is inscribed in a semicircle with diameter $\overline{FE},$ as shown in the figure. Let $DA=16,$ and let $FD=AE=9.$ What is the area of $ABCD?$
+
+@@fig:amc8/2020/18.svg@@
+
+(A) $240$  (B) $248$  (C) $256$  (D) $264$  (E) $272$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-19": { s: String.raw`A number is called flippy if its digits alternate between two distinct digits. For example, $2020$ and $37373$ are flippy, but $3883$ and $123123$ are not. How many five-digit flippy numbers are divisible by $15?$
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-2": { s: String.raw`Four friends do yardwork for their neighbors over the weekend, earning $\$15,$ $\$20,$ $\$25,$ and $\$40$ respectively. They decide to split their earnings equally among themselves. In total how much will the friend who earned $\$40$ give to the others?
+
+(A) $\$5$  (B) $\$10$  (C) $\$15$  (D) $\$20$  (E) $\$25$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-20": { s: String.raw`A scientist walking through a forest recorded as integers the heights of $5$ trees standing in a row. She observed that each tree was either twice as tall or half as tall as the one to its right. Unfortunately some of her data was lost when rain fell on her notebook. Her notes are shown below, with blanks indicating the missing numbers. Based on her observations, the scientist was able to reconstruct the lost data. What was the average height of the trees, in meters?$$\begin{array}{|c|c|}\hline T_1&\underline{\phantom{00}}\,\mathrm m\\T_2&11\,\mathrm m\\T_3&\underline{\phantom{00}}\,\mathrm m\\T_4&\underline{\phantom{00}}\,\mathrm m\\T_5&\underline{\phantom{00}}\,\mathrm m\\\hline\overline T&\underline{\phantom{00}}.2\,\mathrm m\\\hline\end{array}$$(A) $22.2$  (B) $24.2$  (C) $33.2$  (D) $35.2$  (E) $37.2$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-21": { s: String.raw`A game board consists of $64$ squares that alternate between shaded and unshaded. The figure below shows square $P$ in the bottom row and square $Q$ in the top row. A marker is placed at $P.$ A step consists of moving the marker onto one of the adjoining unshaded squares in the row above. How many $7$-step paths are there from $P$ to $Q?$ (The figure shows a sample path.)
+
+@@fig:amc8/2020/21.svg@@
+
+(A) $28$  (B) $30$  (C) $32$  (D) $33$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-22": { s: String.raw`When a positive integer $N$ is fed into a machine, the output is a number calculated according to the rule shown below.
+
+@@fig:amc8/2020/22.svg@@
+
+For example, starting with an input of $N=7,$ the machine will output $3 \cdot 7 + 1 = 22.$ Then if the output is repeatedly inserted into the machine five more times, the final output is $26.$$$ \begin{align*} &7 \to 22 \to 11 \to 34 \\ &\to 17 \to 52 \to 26 \end{align*} $$When the same $6$-step process is applied to a different starting value of $N,$ the final output is $1.$ What is the sum of all such integers $N?$$$ \begin{align*} &N \to \underline{\phantom{00}} \to \underline{\phantom{00}} \to \underline{\phantom{00}}\\ &\to \underline{\phantom{00}} \to \underline{\phantom{00}} \to 1 \end{align*} $$(A) $73$  (B) $74$  (C) $75$  (D) $82$  (E) $83$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-23": { s: String.raw`Five different awards are to be given to three students. Each student will receive at least one award. In how many different ways can the awards be distributed?
+
+(A) $120$  (B) $150$  (C) $180$  (D) $210$  (E) $240$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-24": { s: String.raw`A large square region is paved with $n^2$ shaded square tiles, each measuring $s$ inches on a side. A border $d$ inches wide surrounds each tile. The figure below shows the case for $n=3.$ When $n=24,$ the $576$ shaded tiles cover $64\%$ of the area of the large square region. What is the ratio $\frac{d}{s}$ for this larger value of $n?$
+
+@@fig:amc8/2020/24.svg@@
+
+(A) $\dfrac{6}{25}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{9}{25}$  (D) $\dfrac{7}{16}$  (E) $\dfrac{9}{16}$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-25": { s: String.raw`Rectangles $R_1$ and $R_2,$ and squares $S_1,$ $S_2,$ and $S_3,$ shown below, combine to form a rectangle that is $3322$ units wide and $2020$ units high. What is the side length of $S_2$ in units?
+
+@@fig:amc8/2020/25.svg@@
+
+(A) $651$  (B) $655$  (C) $656$  (D) $662$  (E) $666$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-3": { s: String.raw`Carrie has a rectangular garden that measures $6$ feet by $8$ feet. She plants the entire garden with strawberry plants. Carrie is able to plant $4$ strawberry plants per square foot, and she harvests an average of $10$ strawberries per plant. How many strawberries can she expect to harvest?
+
+(A) $560$  (B) $960$  (C) $1120$  (D) $1920$  (E) $3840$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-4": { s: String.raw`Three hexagons of increasing size are shown below. Suppose the dot pattern continues so that each successive hexagon contains one more band of dots. How many dots are in the next hexagon?
+
+@@fig:amc8/2020/4.svg@@
+
+(A) $35$  (B) $37$  (C) $39$  (D) $43$  (E) $49$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-5": { s: String.raw`Three fourths of a pitcher is filled with pineapple juice. The pitcher is emptied by pouring an equal amount of juice into each of $5$ cups. What percent of the total capacity of the pitcher did each cup receive?
+
+(A) $5$  (B) $10$  (C) $15$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-6": { s: String.raw`Aaron, Darren, Karen, Maren, and Sharon rode on a small train that has five cars that seat one person each. Maren sat in the last car. Aaron sat directly behind Sharon. Darren sat in one of the cars in front of Aaron. At least one person sat between Karen and Darren. Who sat in the middle car?
+
+(A) Aaron  (B) Darren  (C) Karen  (D) Maren  (E) Sharon`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-7": { s: String.raw`How many integers between $2020$ and $2400$ have four distinct digits arranged in increasing order? (For example, $2357$ is one such integer.)
+
+(A) $9$  (B) $10$  (C) $15$  (D) $21$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-8": { s: String.raw`Ricardo has $2020$ coins, some of which are pennies ($1$-cent coins) and the rest of which are nickels ($5$-cent coins). He has at least one penny and at least one nickel. What is the difference in cents between the greatest possible and least possible amounts of money that Ricardo can have?
+
+(A) $8062$  (B) $8068$  (C) $8072$  (D) $8076$  (E) $8082$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
+"2020-amc-8-9": { s: String.raw`Akash’s birthday cake is in the form of a $4 \times 4 \times 4$ inch cube. The cake has icing on the top and the four side faces, and no icing on the bottom. Suppose the cake is cut into $64$ smaller cubes, each measuring $1 \times 1 \times 1$ inch, as shown below. How many small pieces will have icing on exactly two sides?
+
+@@fig:amc8/2020/9.svg@@
+
+(A) $12$  (B) $16$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2020" },
 });

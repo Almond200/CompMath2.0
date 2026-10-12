@@ -26,4 +26,83 @@ The example below shows how the sequence $1,$ $9,$ $8,$ $7$ is transformed into 
 "1987-aime-9": { s: String.raw`Triangle $ABC$ has a right angle at $B$ and contains a point $P$ for which $PA=10,$ $PB=6,$ and $\angle APB=\angle BPC=\angle CPA.$ Find $PC.$
 
 @@fig:aime/1987/9.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/1987" },
+"1987-ajhsme-1": { s: String.raw`What is $0.4 + 0.02 + 0.006?$
+
+(A) $0.012$  (B) $0.066$  (C) $0.12$  (D) $0.24$  (E) $0.426$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-10": { s: String.raw`What is the value of$$4(299) + 3(299) + 2(299) + 298?$$(A) $2889$  (B) $2989$  (C) $2991$  (D) $2999$  (E) $3009$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-11": { s: String.raw`The sum $2\dfrac17 + 3\dfrac12 + 5\dfrac{1}{19}$ is between which two values?
+
+(A) $10$ and $10\dfrac12$  (B) $10\dfrac12$ and $11$  (C) $11$ and $11\dfrac12$  (D) $11\dfrac12$ and $12$  (E) $12$ and $12\dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-12": { s: String.raw`What fraction of the large $12$ by $18$ rectangular region is shaded?
+
+@@fig:amc8/1987/12.svg@@
+
+(A) $\dfrac{1}{108}$  (B) $\dfrac{1}{18}$  (C) $\dfrac{1}{12}$  (D) $\dfrac{2}{9}$  (E) $\dfrac{1}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-13": { s: String.raw`Which of the following fractions has the largest value?
+
+(A) $\dfrac{3}{7}$  (B) $\dfrac{4}{9}$  (C) $\dfrac{17}{35}$  (D) $\dfrac{100}{201}$  (E) $\dfrac{151}{301}$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-14": { s: String.raw`A computer can do $10{,}000$ additions per second. How many additions can it do in one hour?
+
+(A) $6$ million  (B) $36$ million  (C) $60$ million  (D) $216$ million  (E) $360$ million`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-15": { s: String.raw`A sale ad read: “Buy three tires at the regular price and get the fourth tire for $\$3.$” Sam paid $\$240$ for a set of four tires at the sale. What was the regular price of one tire?
+
+(A) $\$59.25$  (B) $\$60$  (C) $\$70$  (D) $\$79$  (E) $\$80$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-16": { s: String.raw`Joyce made $12$ of her first $30$ shots in the first three games of the basketball season, so her seasonal shooting average was $40\%.$ In her next game, she took $10$ shots and raised her seasonal shooting average to $50\%.$ How many of these $10$ shots did she make?
+
+(A) $2$  (B) $3$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-17": { s: String.raw`Abby, Bret, Carl, and Dana are seated in a row of four seats numbered $1$ to $4.$ Joe looks at them and says: “Bret is next to Carl.” “Abby is between Bret and Carl.” However, each one of Joe’s statements is false. Bret is actually sitting in seat $3.$ Who is sitting in seat $2?$
+
+(A) Abby
+(B) Bret
+(C) Carl
+(D) Dana
+(E) There is not enough information to be sure`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-18": { s: String.raw`Half the people in a room left. One third of those remaining started to dance. There were then $12$ people who were not dancing. What was the original number of people in the room?
+
+(A) $24$  (B) $30$  (C) $36$  (D) $42$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-19": { s: String.raw`A calculator has a squaring key $\boxed{x^2}$ that replaces the number currently displayed with its square. For example, if the display reads $\boxed{\phantom{00}3}$ and $\boxed{x^2}$ is pressed, the display becomes $\boxed{\phantom{00}9}.$ If the display reads $\boxed{\phantom{00}2},$ how many times must $\boxed{x^2}$ be pressed to produce a displayed number greater than $500?$
+
+(A) $4$  (B) $5$  (C) $8$  (D) $9$  (E) $250$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-2": { s: String.raw`What is $\dfrac{2}{25}$ written as a decimal?
+
+(A) $0.008$  (B) $0.08$  (C) $0.8$  (D) $1.25$  (E) $12.5$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-20": { s: String.raw`Consider the statement: “If a whole number $n$ is not prime, then the whole number $n - 2$ is not prime.” Which of the following values of $n$ shows this statement to be false?
+
+(A) $9$  (B) $12$  (C) $13$  (D) $16$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-21": { s: String.raw`Suppose $n^\ast$ means $\dfrac1n,$ the reciprocal of $n.$ For example, $5^\ast = \dfrac15.$ How many of the following four statements are true?$$\mathrm{(i)}\quad 3^\ast + 6^\ast = 9^\ast$$$$\mathrm{(ii)}\quad 6^\ast - 4^\ast = 2^\ast$$$$\mathrm{(iii)}\quad 2^\ast \cdot 6^\ast = 12^\ast$$$$\mathrm{(iv)}\quad 10^\ast \div 2^\ast = 5^\ast$$(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-22": { s: String.raw`$ABCD$ is a rectangle, $D$ is the center of the circle, and $B$ is on the circle. If $AD = 4$ and $CD = 3,$ then the area of the shaded region is between which two values?
+
+@@fig:amc8/1987/22.svg@@
+
+(A) $4$ and $5$  (B) $5$ and $6$  (C) $6$ and $7$  (D) $7$ and $8$  (E) $8$ and $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-23": { s: String.raw`Assume the adjoining chart shows the $1980$ U.S. population, in millions, for each region by ethnic group. To the nearest percent, what percent of the U.S. Black population lived in the South?$$\begin{array}{|ccccc|}\hline  & \text{NE} & \text{MW} & \text{South} & \text{West} \\ \hline \text{White} & 42 & 52 & 57 & 35 \\ \hline \text{Black} & 5 & 5 & 15 & 2 \\ \hline \text{Asian} & 1 & 1 & 1 & 3 \\ \hline \text{Other} & 1 & 1 & 2 & 4 \\ \hline \end{array}$$(A) $20\%$  (B) $25\%$  (C) $40\%$  (D) $56\%$  (E) $80\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-24": { s: String.raw`A multiple choice examination consists of $20$ questions. The scoring is $+5$ for each correct answer, $-2$ for each incorrect answer, and $0$ for each unanswered question. John’s score on the examination is $48.$ What is the maximum number of questions he could have answered correctly?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-25": { s: String.raw`Ten balls numbered $1$ to $10$ are in a jar. Jack reaches into the jar and randomly removes one of the balls. Then Jill reaches into the jar and randomly removes a different ball. What is the probability that the sum of the two numbers on the balls removed is even?
+
+(A) $\dfrac{4}{9}$  (B) $\dfrac{9}{19}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{10}{19}$  (E) $\dfrac{5}{9}$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-3": { s: String.raw`What is the value of$$2(81 + 83 + 85 + 87 + 89 + 91 + 93 + 95 + 97 + 99)?$$(A) $1600$  (B) $1650$  (C) $1700$  (D) $1750$  (E) $1800$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-4": { s: String.raw`Martians measure angles in clerts. There are $500$ clerts in a full circle. How many clerts are there in a right angle?
+
+(A) $90$  (B) $100$  (C) $125$  (D) $180$  (E) $250$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-5": { s: String.raw`What is the area, in square meters, of the rectangular region shown?
+
+@@fig:amc8/1987/5.svg@@
+
+(A) $0.088 \text{ m}^2$  (B) $0.62 \text{ m}^2$  (C) $0.88 \text{ m}^2$  (D) $1.24 \text{ m}^2$  (E) $4.22 \text{ m}^2$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-6": { s: String.raw`The smallest product one could obtain by multiplying two numbers in the set $\{ -7, -5, -1, 1, 3 \}$ is
+
+(A) $-35$  (B) $-21$  (C) $-15$  (D) $-1$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-7": { s: String.raw`The large cube shown is made up of $27$ identical sized smaller cubes. For each face of the large cube, the opposite face is shaded the same way. The total number of smaller cubes that must have at least one face shaded is
+
+@@fig:amc8/1987/7.svg@@
+
+(A) $10$  (B) $16$  (C) $20$  (D) $22$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-8": { s: String.raw`In the addition problem below, $A$ and $B$ are nonzero digits:$$\begin{array}{r} 9876 \\ A32 \\ +B1 \\ \hline \end{array}$$How many digits (not necessarily different) are in the sum of the three whole numbers?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $9$  (E) depends on the values of $A$ and $B$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
+"1987-ajhsme-9": { s: String.raw`When finding the sum$$\dfrac12 + \dfrac13 + \dfrac14 + \dfrac15 + \dfrac16 + \dfrac17,$$what is the least common denominator used?
+
+(A) $120$  (B) $210$  (C) $420$  (D) $840$  (E) $5040$`, u: "https://live.poshenloh.com/past-contests/amc8/1987" },
 });

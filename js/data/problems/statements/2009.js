@@ -35,7 +35,435 @@ Object.assign(window.MATH_STATEMENTS, {
 "2009-aime-ii-7": { s: String.raw`Define $n!!$ to be $n(n-2)(n-4)\cdots 3 \cdot 1$ for $n$ odd and $n(n-2)(n-4)\cdots 4 \cdot 2$ for $n$ even. When $\sum_{i=1}^{2009} \frac{(2i-1)!!}{(2i)!!}$ is expressed as a fraction in lowest terms, its denominator is $2^a b$ with $b$ odd. Find $\frac{ab}{10}.$`, u: "https://live.poshenloh.com/past-contests/aime/2009II" },
 "2009-aime-ii-8": { s: String.raw`Dave rolls a fair six-sided die until a six appears for the first time. Independently, Linda rolls a fair six-sided die until a six appears for the first time. Let $m$ and $n$ be relatively prime positive integers such that $\frac{m}{n}$ is the probability that the number of times Dave rolls his die is equal to or within one of the number of times Linda rolls her die. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2009II" },
 "2009-aime-ii-9": { s: String.raw`Let $m$ be the number of solutions in positive integers to the equation $4x + 3y + 2z = 2009,$ and let $n$ be the number of solutions in positive integers to the equation $4x + 3y + 2z = 2000.$ Find the remainder when $m - n$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2009II" },
+"2009-amc-10a-1": { s: String.raw`One can holds $12$ ounces of soda. What is the minimum number of cans needed to provide a gallon ($128$ ounces) of soda?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-10": { s: String.raw`Triangle $ABC$ has a right angle at $B.$ Point $D$ is the foot of the altitude from $B,$ $AD = 3,$ and $DC = 4.$ What is the area of $\triangle ABC?$
+
+@@fig:amc10/2009A/10.svg@@
+
+(A) $4\sqrt{3}$  (B) $7\sqrt{3}$  (C) $21$  (D) $14\sqrt{3}$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-11": { s: String.raw`One dimension of a cube is increased by $1,$ another is decreased by $1,$ and the third is left unchanged. The volume of the new rectangular solid is $5$ less than that of the cube. What was the volume of the cube?
+
+(A) $8$  (B) $27$  (C) $64$  (D) $125$  (E) $216$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-12": { s: String.raw`In quadrilateral $ABCD,$ $AB = 5,$ $BC = 17,$ $CD = 5,$ $DA = 9,$ and $BD$ is an integer. What is $BD?$
+
+@@fig:amc10/2009A/12.svg@@
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-13": { s: String.raw`Suppose that $P = 2^m$ and $Q = 3^n.$ Which of the following is equal to $12^{mn}$ for every pair of integers $(m, n)?$
+
+(A) $P^2 Q$  (B) $P^n Q^m$  (C) $P^n Q^{2m}$  (D) $P^{2m} Q^n$  (E) $P^{2n} Q^m$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-14": { s: String.raw`Four congruent rectangles are placed as shown. The area of the outer square is $4$ times that of the inner square. What is the ratio of the length of the longer side of each rectangle to the length of its shorter side?
+
+@@fig:amc10/2009A/14.svg@@
+
+(A) $3$  (B) $\sqrt{10}$  (C) $2 + \sqrt{2}$  (D) $2\sqrt{3}$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-15": { s: String.raw`The figures $F_1,$ $F_2,$ $F_3,$ and $F_4$ shown are the first in a sequence of figures. For $n \ge 3,$ $F_n$ is constructed from $F_{n-1}$ by surrounding it with a square and placing one more diamond on each side of the new square than $F_{n-1}$ had on each side of its outside square. For example, figure $F_3$ has $13$ diamonds. How many diamonds are there in figure $F_{20}?$
+
+@@fig:amc10/2009A/15.svg@@
+
+(A) $401$  (B) $485$  (C) $585$  (D) $626$  (E) $761$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-16": { s: String.raw`Let $a,$ $b,$ $c,$ and $d$ be real numbers with $|a - b| = 2,$ $|b - c| = 3,$ and $|c - d| = 4.$ What is the sum of all possible values of $|a - d|?$
+
+(A) $9$  (B) $12$  (C) $15$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-17": { s: String.raw`Rectangle $ABCD$ has $AB = 4$ and $BC = 3.$ Segment $EF$ is constructed through $B$ so that $EF \perp DB,$ and $A$ and $C$ lie on $DE$ and $DF,$ respectively. What is $EF?$
+
+(A) $9$  (B) $10$  (C) $\dfrac{125}{12}$  (D) $\dfrac{103}{9}$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-18": { s: String.raw`At Jefferson Summer Camp, $60\%$ of the children play soccer, $30\%$ of the children swim, and $40\%$ of the soccer players swim. To the nearest whole percent, what percent of the non-swimmers play soccer?
+
+(A) $30\%$  (B) $40\%$  (C) $49\%$  (D) $51\%$  (E) $70\%$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-19": { s: String.raw`Circle $A$ has radius $100.$ Circle $B$ has an integer radius $r \lt 100$ and remains internally tangent to circle $A$ as it rolls once around the circumference of circle $A.$ The two circles have the same points of tangency at the beginning and end of circle $B$’s trip. How many possible values can $r$ have?
+
+(A) $4$  (B) $8$  (C) $9$  (D) $50$  (E) $90$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-2": { s: String.raw`Four coins are picked out of a piggy bank that contains a collection of pennies, nickels, dimes, and quarters. Which of the following could not be the total value of the four coins, in cents?
+
+(A) $15$  (B) $25$  (C) $35$  (D) $45$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-20": { s: String.raw`Andrea and Lauren are $20$ kilometers apart. They bike toward one another with Andrea traveling three times as fast as Lauren, and the distance between them decreasing at a rate of $1$ kilometer per minute. After $5$ minutes, Andrea stops biking because of a flat tire and waits for Lauren. After how many minutes from the time they started to bike does Lauren reach Andrea?
+
+(A) $20$  (B) $30$  (C) $55$  (D) $65$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-21": { s: String.raw`Many Gothic cathedrals have windows with portions containing a ring of congruent circles that are circumscribed by a larger circle. In the figure shown, the number of smaller circles is four. What is the ratio of the sum of the areas of the four smaller circles to the area of the larger circle?
+
+@@fig:amc10/2009A/21.svg@@
+
+(A) $3 - 2\sqrt{2}$  (B) $2 - \sqrt{2}$  (C) $4(3 - 2\sqrt{2})$  (D) $\dfrac{1}{2}(3 - \sqrt{2})$  (E) $2\sqrt{2} - 2$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-22": { s: String.raw`Two cubical dice each have removable numbers $1$ through $6.$ The twelve numbers on the two dice are removed, put into a bag, then drawn one at a time and randomly reattached to the faces of the cubes, one number to each face. The dice are then rolled and the numbers on the two top faces are added. What is the probability that the sum is $7?$
+
+(A) $\dfrac{1}{9}$  (B) $\dfrac{1}{8}$  (C) $\dfrac{1}{6}$  (D) $\dfrac{2}{11}$  (E) $\dfrac{1}{5}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-23": { s: String.raw`Convex quadrilateral $ABCD$ has $AB = 9$ and $CD = 12.$ Diagonals $AC$ and $BD$ intersect at $E,$ $AC = 14,$ and $\triangle AED$ and $\triangle BEC$ have equal areas. What is $AE?$
+
+(A) $\dfrac{9}{2}$  (B) $\dfrac{50}{11}$  (C) $\dfrac{21}{4}$  (D) $\dfrac{17}{3}$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-24": { s: String.raw`Three distinct vertices of a cube are chosen at random. What is the probability that the plane determined by these three vertices contains points inside the cube?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{3}{8}$  (C) $\dfrac{4}{7}$  (D) $\dfrac{5}{7}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-25": { s: String.raw`For $k \gt 0,$ let $I_k = 10\ldots064,$ where there are $k$ zeros between the $1$ and the $6.$ Let $N(k)$ be the number of factors of $2$ in the prime factorization of $I_k.$ What is the maximum value of $N(k)?$
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-3": { s: String.raw`Which of the following is equal to$$1 + \cfrac{1}{1 + \cfrac{1}{1 + 1}}?$$(A) $\dfrac{5}{4}$  (B) $\dfrac{3}{2}$  (C) $\dfrac{5}{3}$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-4": { s: String.raw`Eric plans to compete in a triathlon. He can average $2$ miles per hour in the $\tfrac14$-mile swim and $6$ miles per hour in the $3$-mile run. His goal is to finish the triathlon in $2$ hours. To accomplish his goal what must his average speed, in miles per hour, be for the $15$-mile bicycle ride?
+
+(A) $\dfrac{120}{11}$  (B) $11$  (C) $\dfrac{56}{5}$  (D) $\dfrac{45}{4}$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-5": { s: String.raw`What is the sum of the digits of the square of $111{,}111{,}111?$
+
+(A) $18$  (B) $27$  (C) $45$  (D) $63$  (E) $81$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-6": { s: String.raw`A circle of radius $2$ is inscribed in a semicircle, as shown. The area inside the semicircle but outside the circle is shaded. What fraction of the semicircle’s area is shaded?
+
+@@fig:amc10/2009A/6.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{\pi}{6}$  (C) $\dfrac{2}{\pi}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{\pi}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-7": { s: String.raw`A carton contains milk that is $2\%$ fat, an amount that is $40\%$ less fat than the amount contained in a carton of whole milk. What is the percentage of fat in whole milk?
+
+(A) $\dfrac{12}{5}$  (B) $3$  (C) $\dfrac{10}{3}$  (D) $38$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-8": { s: String.raw`Three generations of the Wen family are going to the movies, two from each generation. The two members of the youngest generation receive a $50\%$ discount as children. The two members of the oldest generation receive a $25\%$ discount as senior citizens. The two members of the middle generation receive no discount. Grandfather Wen, whose senior ticket costs $\$6.00,$ is paying for everyone. How many dollars must he pay?
+
+(A) $34$  (B) $36$  (C) $42$  (D) $46$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10a-9": { s: String.raw`Positive integers $a,$ $b,$ and $2009,$ with $a \lt b \lt 2009,$ form a geometric sequence with an integer ratio. What is $a?$
+
+(A) $7$  (B) $41$  (C) $49$  (D) $287$  (E) $2009$`, u: "https://live.poshenloh.com/past-contests/amc10/2009A" },
+"2009-amc-10b-1": { s: String.raw`Each morning of her five-day workweek, Jane bought either a $50$-cent muffin or a $75$-cent bagel. Her total cost for the week was a whole number of dollars. How many bagels did she buy?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-10": { s: String.raw`A flagpole is originally $5$ meters tall. A hurricane snaps the flagpole at a point $x$ meters above the ground so that the upper part, still attached to the stump, touches the ground $1$ meter away from the base. What is $x?$
+
+(A) $2.0$  (B) $2.1$  (C) $2.2$  (D) $2.3$  (E) $2.4$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-11": { s: String.raw`How many $7$-digit palindromes (numbers that read the same backward as forward) can be formed using the digits $2,$ $2,$ $3,$ $3,$ $5,$ $5,$ $5?$
+
+(A) $6$  (B) $12$  (C) $24$  (D) $36$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-12": { s: String.raw`Distinct points $A,$ $B,$ $C,$ and $D$ lie on a line, with $AB=BC=CD=1.$ Points $E$ and $F$ lie on a second line, parallel to the first, with $EF=1.$ A triangle with positive area has three of the six points as its vertices. How many possible values are there for the area of the triangle?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-13": { s: String.raw`As shown below, convex pentagon $ABCDE$ has sides $AB=3,$ $BC=4,$ $CD=6,$ $DE=3,$ and $EA=7.$ The pentagon is originally positioned in the plane with vertex $A$ at the origin and vertex $B$ on the positive $x$-axis. The pentagon is then rolled clockwise to the right along the $x$-axis. Which side will touch the point $x=2009$ on the $x$-axis?
+
+@@fig:amc10/2009B/13.svg@@
+
+(A) $\overline{AB}$  (B) $\overline{BC}$  (C) $\overline{CD}$  (D) $\overline{DE}$  (E) $\overline{EA}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-14": { s: String.raw`On Monday, Millie puts a quart of seeds, $25\%$ of which are millet, into a bird feeder. On each successive day she adds another quart of the same mix of seeds without removing any seeds that are left. Each day the birds eat only $25\%$ of the millet in the feeder, but they eat all of the other seeds. On which day, just after Millie has placed the seeds, will the birds find that more than half the seeds in the feeder are millet?
+
+(A) Tuesday  (B) Wednesday  (C) Thursday  (D) Friday  (E) Saturday`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-15": { s: String.raw`When a bucket is two-thirds full of water, the bucket and water weigh $a$ kilograms. When the bucket is one-half full of water the total weight is $b$ kilograms. In terms of $a$ and $b,$ what is the total weight in kilograms when the bucket is full of water?
+
+(A) $\dfrac23 a+\dfrac13 b$  (B) $\dfrac32 a-\dfrac12 b$  (C) $\dfrac32 a+b$  (D) $\dfrac32 a+2b$  (E) $3a-2b$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-16": { s: String.raw`Points $A$ and $C$ lie on a circle centered at $O,$ each of $\overline{BA}$ and $\overline{BC}$ are tangent to the circle, and $\triangle ABC$ is equilateral. The circle intersects $\overline{BO}$ at $D.$ What is $\dfrac{BD}{BO}?$
+
+(A) $\dfrac{\sqrt2}{3}$  (B) $\dfrac12$  (C) $\dfrac{\sqrt3}{3}$  (D) $\dfrac{\sqrt2}{2}$  (E) $\dfrac{\sqrt3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-17": { s: String.raw`Five unit squares are arranged in the coordinate plane as shown, with the lower left corner at the origin. The slanted line, extending from $(a,0)$ to $(3,3),$ divides the entire region into two regions of equal area. What is $a?$
+
+@@fig:amc10/2009B/17.svg@@
+
+(A) $\dfrac12$  (B) $\dfrac35$  (C) $\dfrac23$  (D) $\dfrac34$  (E) $\dfrac45$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-18": { s: String.raw`Rectangle $ABCD$ has $AB=8$ and $BC=6.$ Point $M$ is the midpoint of diagonal $\overline{AC},$ and $E$ is on $\overline{AB}$ with $\overline{ME}\perp\overline{AC}.$ What is the area of $\triangle AME?$
+
+(A) $\dfrac{65}{8}$  (B) $\dfrac{25}{3}$  (C) $9$  (D) $\dfrac{75}{8}$  (E) $\dfrac{85}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-19": { s: String.raw`A particular $12$-hour digital clock displays the hour and minute of a day. Unfortunately, whenever it is supposed to display a $1,$ it mistakenly displays a $9.$ For example, when it is $1{:}16$ PM the clock incorrectly shows $9{:}96$ PM. What fraction of the day will the clock show the correct time?
+
+(A) $\dfrac12$  (B) $\dfrac58$  (C) $\dfrac34$  (D) $\dfrac56$  (E) $\dfrac{9}{10}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-2": { s: String.raw`Which of the following is equal to$$\dfrac{\frac13-\frac14\ }{\ \frac12-\frac13\ }?$$(A) $\dfrac14$  (B) $\dfrac13$  (C) $\dfrac12$  (D) $\dfrac23$  (E) $\dfrac34$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-20": { s: String.raw`Triangle $ABC$ has a right angle at $B,$ $AB=1,$ and $BC=2.$ The bisector of $\angle BAC$ meets $\overline{BC}$ at $D.$ What is $BD?$
+
+@@fig:amc10/2009B/20.svg@@
+
+(A) $\dfrac{\sqrt3-1}{2}$  (B) $\dfrac{\sqrt5-1}{2}$  (C) $\dfrac{\sqrt5+1}{2}$  (D) $\dfrac{\sqrt6+\sqrt2}{2}$  (E) $2\sqrt3-1$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-21": { s: String.raw`What is the remainder when$$3^0+3^1+3^2+\cdots+3^{2009}$$is divided by $8?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-22": { s: String.raw`A cubical cake with edge length $2$ inches is iced on the sides and the top. It is cut vertically into three pieces as shown in this top view, where $M$ is the midpoint of a top edge. The piece whose top is triangle $B$ contains $c$ cubic inches of cake and $s$ square inches of icing. What is $c+s?$
+
+@@fig:amc10/2009B/22.svg@@
+
+(A) $\dfrac{24}{5}$  (B) $\dfrac{32}{5}$  (C) $8+\sqrt5$  (D) $5+\dfrac{16\sqrt5}{5}$  (E) $10+5\sqrt5$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-23": { s: String.raw`Rachel and Robert run on a circular track. Rachel runs counterclockwise and completes a lap every $90$ seconds, and Robert runs clockwise and completes a lap every $80$ seconds. Both start from the start line at the same time. At some random time between $10$ minutes and $11$ minutes after they begin to run, a photographer standing inside the track takes a picture that shows one-fourth of the track, centered on the starting line. What is the probability that both Rachel and Robert are in the picture?
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac18$  (C) $\dfrac{3}{16}$  (D) $\dfrac14$  (E) $\dfrac{5}{16}$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-24": { s: String.raw`The keystone arch is an ancient architectural feature. It is composed of congruent isosceles trapezoids fitted together along the non-parallel sides, as shown. The bottom sides of the two end trapezoids are horizontal. In an arch made with $9$ trapezoids, let $x$ be the angle measure in degrees of the larger interior angle of the trapezoid. What is $x?$
+
+@@fig:amc10/2009B/24.svg@@
+
+(A) $100$  (B) $102$  (C) $104$  (D) $106$  (E) $108$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-25": { s: String.raw`Each face of a cube is given a single narrow stripe painted from the center of one edge to the center of its opposite edge. The choice of the edge pairing is made at random and independently for each face. What is the probability that there is a continuous stripe encircling the cube?
+
+(A) $\dfrac18$  (B) $\dfrac{3}{16}$  (C) $\dfrac14$  (D) $\dfrac38$  (E) $\dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-3": { s: String.raw`Paula the painter had just enough paint for $30$ identically sized rooms. Unfortunately, on the way to work, three cans of paint fell off her truck, so she had only enough paint for $25$ rooms. How many cans of paint did she use for the $25$ rooms?
+
+(A) $10$  (B) $12$  (C) $15$  (D) $18$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-4": { s: String.raw`A rectangular yard contains two flower beds in the shape of congruent isosceles right triangles. The remainder of the yard has a trapezoidal shape, as shown. The parallel sides of the trapezoid have lengths $15$ and $25$ meters. What fraction of the yard is occupied by the flower beds?
+
+@@fig:amc10/2009B/4.svg@@
+
+(A) $\dfrac18$  (B) $\dfrac16$  (C) $\dfrac15$  (D) $\dfrac14$  (E) $\dfrac13$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-5": { s: String.raw`Twenty percent less than $60$ is one-third more than what number?
+
+(A) $16$  (B) $30$  (C) $32$  (D) $36$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-6": { s: String.raw`Kiana has two older twin brothers. The product of their three ages is $128.$ What is the sum of their three ages?
+
+(A) $10$  (B) $12$  (C) $16$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-7": { s: String.raw`By inserting parentheses, it is possible to give the expression$$2\times3+4\times5$$several values. How many different values can be obtained?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-8": { s: String.raw`In a certain year the price of gasoline rose by $20\%$ during January, fell by $20\%$ during February, rose by $25\%$ during March, and fell by $x\%$ during April. The price of gasoline at the end of April was the same as it had been at the beginning of January. To the nearest integer, what is $x?$
+
+(A) $12$  (B) $17$  (C) $20$  (D) $25$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-10b-9": { s: String.raw`Segment $BD$ and $AE$ intersect at $C,$ as shown, $AB=BC=CD=CE,$ and $\angle A=\dfrac52\angle B.$ What is the degree measure of $\angle D?$
+
+@@fig:amc10/2009B/9.svg@@
+
+(A) $52.5$  (B) $55$  (C) $57.5$  (D) $60$  (E) $62.5$`, u: "https://live.poshenloh.com/past-contests/amc10/2009B" },
+"2009-amc-12a-1": { s: String.raw`Kim’s flight took off from Newark at $10{:}34$ am and landed in Miami at $1{:}18$ pm. Both cities are in the same time zone. If her flight took $h$ hours and $m$ minutes, with $0 \le m \lt 60,$ what is $h + m?$
+
+(A) $46$  (B) $47$  (C) $50$  (D) $53$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-10": { s: String.raw`In quadrilateral $ABCD,$ $AB = 5,$ $BC = 17,$ $CD = 5,$ $DA = 9,$ and $BD$ is an integer. What is $BD?$
+
+@@fig:amc12/2009A/10.svg@@
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-11": { s: String.raw`The figures $F_1,$ $F_2,$ $F_3,$ and $F_4$ shown are the first in a sequence of figures. For $n \ge 3,$ $F_n$ is constructed from $F_{n-1}$ by surrounding it with a square and placing one more diamond on each side of the new square than $F_{n-1}$ had on each side of its outside square. For example, figure $F_3$ has $13$ diamonds. How many diamonds are there in figure $F_{20}?$
+
+@@fig:amc12/2009A/11.svg@@
+
+(A) $401$  (B) $485$  (C) $585$  (D) $626$  (E) $761$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-12": { s: String.raw`How many positive integers less than $1000$ are $6$ times the sum of their digits?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-13": { s: String.raw`A ship sails $10$ miles in a straight line from $A$ to $B,$ turns through an angle between $45^\circ$ and $60^\circ,$ and then sails another $20$ miles to $C.$ Let $AC$ be measured in miles. Which of the following intervals contains $AC^2?$
+
+@@fig:amc12/2009A/13.svg@@
+
+(A) $[400, 500]$  (B) $[500, 600]$  (C) $[600, 700]$  (D) $[700, 800]$  (E) $[800, 900]$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-14": { s: String.raw`A triangle has vertices $(0, 0),$ $(1, 1),$ and $(6m, 0),$ and the line $y = mx$ divides the triangle into two triangles of equal area. What is the sum of all possible values of $m?$
+
+(A) $-\dfrac{1}{3}$  (B) $-\dfrac{1}{6}$  (C) $\dfrac{1}{6}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-15": { s: String.raw`For what value of $n$ is$$i + 2i^2 + 3i^3 + \cdots + ni^n = 48 + 49i?$$Note: here $i = \sqrt{-1}.$
+
+(A) $24$  (B) $48$  (C) $49$  (D) $97$  (E) $98$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-16": { s: String.raw`A circle with center $C$ is tangent to the positive $x$- and $y$-axes and externally tangent to the circle centered at $(3, 0)$ with radius $1.$ What is the sum of all possible radii of the circle with center $C?$
+
+(A) $3$  (B) $4$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-17": { s: String.raw`Let $a + ar_1 + ar_1^2 + ar_1^3 + \cdots$ and $a + ar_2 + ar_2^2 + ar_2^3 + \cdots$ be two different infinite geometric series of positive numbers with the same first term. The sum of the first series is $r_1,$ and the sum of the second series is $r_2.$ What is $r_1 + r_2?$
+
+(A) $0$  (B) $\dfrac{1}{2}$  (C) $1$  (D) $\dfrac{1 + \sqrt{5}}{2}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-18": { s: String.raw`For $k \gt 0,$ let $I_k = 10\ldots064,$ where there are $k$ zeros between the $1$ and the $6.$ Let $N(k)$ be the number of factors of $2$ in the prime factorization of $I_k.$ What is the maximum value of $N(k)?$
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
 "2009-amc-12a-19": { s: String.raw`Andrea inscribed a circle inside a regular pentagon, circumscribed a circle around the pentagon, and calculated the area of the region between the two circles. Bethany did the same with a regular heptagon ($7$ sides). The areas of the two regions were $A$ and $B,$ respectively. Each polygon had a side length of $2.$ Which of the following is true?
 
 (A) $A = \dfrac{25}{49}B$  (B) $A = \dfrac{5}{7}B$  (C) $A = B$  (D) $A = \dfrac{7}{5}B$  (E) $A = \dfrac{49}{25}B$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-2": { s: String.raw`Which of the following is equal to$$1 + \dfrac{1}{1 + \dfrac{1}{1 + 1}}?$$(A) $\dfrac{5}{4}$  (B) $\dfrac{3}{2}$  (C) $\dfrac{5}{3}$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-20": { s: String.raw`Convex quadrilateral $ABCD$ has $AB = 9$ and $CD = 12.$ Diagonals $AC$ and $BD$ intersect at $E,$ $AC = 14,$ and $\triangle AED$ and $\triangle BEC$ have equal areas. What is $AE?$
+
+(A) $\dfrac{9}{2}$  (B) $\dfrac{50}{11}$  (C) $\dfrac{21}{4}$  (D) $\dfrac{17}{3}$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-21": { s: String.raw`Let $p(x) = x^3 + ax^2 + bx + c,$ where $a,$ $b,$ and $c$ are complex numbers. Suppose that$$p(2009 + 9002\pi i) = p(2009) = p(9002) = 0.$$What is the number of nonreal zeros of $x^{12} + ax^8 + bx^4 + c?$
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-22": { s: String.raw`A regular octahedron has side length $1.$ A plane parallel to two of its opposite faces cuts the octahedron into two congruent solids. The polygon formed by the intersection of the plane and the octahedron has area $\dfrac{a\sqrt{b}}{c},$ where $a,$ $b,$ and $c$ are positive integers, $a$ and $c$ are relatively prime, and $b$ is not divisible by the square of any prime. What is $a + b + c?$
+
+(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-23": { s: String.raw`Functions $f$ and $g$ are quadratic, $g(x) = -f(100 - x),$ and the graph of $g$ contains the vertex of the graph of $f.$ The four $x$-intercepts on the two graphs have $x$-coordinates $x_1,$ $x_2,$ $x_3,$ and $x_4,$ in increasing order, and $x_3 - x_2 = 150.$ The value of $x_4 - x_1$ is $m + n\sqrt{p},$ where $m,$ $n,$ and $p$ are positive integers, and $p$ is not divisible by the square of any prime. What is $m + n + p?$
+
+(A) $602$  (B) $652$  (C) $702$  (D) $752$  (E) $802$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-24": { s: String.raw`The tower function of twos is defined recursively as follows: $T(1) = 2$ and $T(n + 1) = 2^{T(n)}$ for $n \ge 1.$ Let $A = (T(2009))^{T(2009)}$ and $B = (T(2009))^A.$ What is the largest integer $k$ such that$$\underbrace{\log_2 \log_2 \log_2 \ldots \log_2}_{k} B$$is defined?
+
+(A) $2009$  (B) $2010$  (C) $2011$  (D) $2012$  (E) $2013$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-25": { s: String.raw`The first two terms of a sequence are $a_1 = 1$ and $a_2 = \dfrac{1}{\sqrt{3}}.$ For $n \ge 1,$$$a_{n+2} = \dfrac{a_n + a_{n+1}}{1 - a_n a_{n+1}}.$$What is $|a_{2009}|?$
+
+(A) $0$  (B) $2 - \sqrt{3}$  (C) $\dfrac{1}{\sqrt{3}}$  (D) $1$  (E) $2 + \sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-3": { s: String.raw`What number is one third of the way from $\dfrac{1}{4}$ to $\dfrac{3}{4}?$
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{5}{12}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{7}{12}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-4": { s: String.raw`Four coins are picked out of a piggy bank that contains a collection of pennies, nickels, dimes, and quarters. Which of the following could not be the total value of the four coins, in cents?
+
+(A) $15$  (B) $25$  (C) $35$  (D) $45$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-5": { s: String.raw`One dimension of a cube is increased by $1,$ another is decreased by $1,$ and the third is left unchanged. The volume of the new rectangular solid is $5$ less than that of the cube. What was the volume of the cube?
+
+(A) $8$  (B) $27$  (C) $64$  (D) $125$  (E) $216$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-6": { s: String.raw`Suppose that $P = 2^m$ and $Q = 3^n.$ Which of the following is equal to $12^{mn}$ for every pair of integers $(m, n)?$
+
+(A) $P^2 Q$  (B) $P^n Q^m$  (C) $P^n Q^{2m}$  (D) $P^{2m} Q^n$  (E) $P^{2n} Q^m$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-7": { s: String.raw`The first three terms of an arithmetic sequence are $2x - 3,$ $5x - 11,$ and $3x + 1$ respectively. The $n$th term of the sequence is $2009.$ What is $n?$
+
+(A) $255$  (B) $502$  (C) $1004$  (D) $1506$  (E) $8037$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-8": { s: String.raw`Four congruent rectangles are placed as shown. The area of the outer square is $4$ times that of the inner square. What is the ratio of the length of the longer side of each rectangle to the length of its shorter side?
+
+@@fig:amc12/2009A/8.svg@@
+
+(A) $3$  (B) $\sqrt{10}$  (C) $2 + \sqrt{2}$  (D) $2\sqrt{3}$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12a-9": { s: String.raw`Suppose that $f(x + 3) = 3x^2 + 7x + 4$ and $f(x) = ax^2 + bx + c.$ What is $a + b + c?$
+
+(A) $-1$  (B) $0$  (C) $1$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2009A" },
+"2009-amc-12b-1": { s: String.raw`Each morning of her five-day workweek, Jane bought either a $50$-cent muffin or a $75$-cent bagel. Her total cost for the week was a whole number of dollars. How many bagels did she buy?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-10": { s: String.raw`A particular $12$-hour digital clock displays the hour and minute of a day. Unfortunately, whenever it is supposed to display a $1,$ it mistakenly displays a $9.$ For example, when it is $1{:}16$ pm the clock incorrectly shows $9{:}96$ pm. What fraction of the day will the clock show the correct time?
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{5}{8}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{5}{6}$  (E) $\dfrac{9}{10}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-11": { s: String.raw`On Monday, Millie puts a quart of seeds, $25\%$ of which are millet, into a bird feeder. On each successive day she adds another quart of the same mix of seeds without removing any seeds that are left. Each day the birds eat only $25\%$ of the millet in the feeder, but they eat all of the other seeds. On which day, just after Millie has placed the seeds, will the birds find that more than half the seeds in the feeder are millet?
+
+(A) Tuesday  (B) Wednesday  (C) Thursday  (D) Friday  (E) Saturday`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-12": { s: String.raw`The fifth and eighth terms of a geometric sequence of real numbers are $7!$ and $8!$ respectively. What is the first term?
+
+(A) $60$  (B) $75$  (C) $120$  (D) $225$  (E) $315$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-13": { s: String.raw`Triangle $ABC$ has $AB = 13$ and $AC = 15,$ and the altitude to $BC$ has length $12.$ What is the sum of the two possible values of $BC?$
+
+(A) $15$  (B) $16$  (C) $17$  (D) $18$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-14": { s: String.raw`Five unit squares are arranged in the coordinate plane as shown, with the lower left corner at the origin. The slanted line, extending from $(a, 0)$ to $(3, 3),$ divides the entire region into two regions of equal area. What is $a?$
+
+@@fig:amc12/2009B/14.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{3}{5}$  (C) $\dfrac{2}{3}$  (D) $\dfrac{3}{4}$  (E) $\dfrac{4}{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-15": { s: String.raw`Assume $0 \lt r \lt 3.$ Below are five equations for $x.$ Which equation has the largest solution $x?$
+
+(A) $3(1 + r)^x = 7$  (B) $3(1 + \frac{r}{10})^x = 7$  (C) $3(1 + 2r)^x = 7$  (D) $3(1 + \sqrt{r})^x = 7$  (E) $3(1 + \frac{1}{r})^x = 7$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-16": { s: String.raw`Trapezoid $ABCD$ has $AD \parallel BC,$ $BD = 1,$ $\angle DBA = 23^\circ,$ and $\angle BDC = 46^\circ.$ The ratio $BC : AD$ is $9 : 5.$ What is $CD?$
+
+(A) $\dfrac{7}{9}$  (B) $\dfrac{4}{5}$  (C) $\dfrac{13}{15}$  (D) $\dfrac{8}{9}$  (E) $\dfrac{14}{15}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-17": { s: String.raw`Each face of a cube is given a single narrow stripe painted from the center of one edge to the center of its opposite edge. The choice of the edge pairing is made at random and independently for each face. What is the probability that there is a continuous stripe encircling the cube?
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{3}{16}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-18": { s: String.raw`Rachel and Robert run on a circular track. Rachel runs counterclockwise and completes a lap every $90$ seconds, and Robert runs clockwise and completes a lap every $80$ seconds. Both start from the start line at the same time. At some random time between $10$ minutes and $11$ minutes after they begin to run, a photographer standing inside the track takes a picture that shows one-fourth of the track, centered on the starting line. What is the probability that both Rachel and Robert are in the picture?
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac{1}{8}$  (C) $\dfrac{3}{16}$  (D) $\dfrac{1}{4}$  (E) $\dfrac{5}{16}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-19": { s: String.raw`For each positive integer $n,$ let $f(n) = n^4 - 360n^2 + 400.$ What is the sum of all values of $f(n)$ that are prime numbers?
+
+(A) $794$  (B) $796$  (C) $798$  (D) $800$  (E) $802$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-2": { s: String.raw`Paula the painter had just enough paint for $30$ identically sized rooms. Unfortunately, on the way to work, three cans of paint fell off her truck, so she had only enough paint for $25$ rooms. How many cans of paint did she use for the $25$ rooms?
+
+(A) $10$  (B) $12$  (C) $15$  (D) $18$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-20": { s: String.raw`A convex polyhedron $Q$ has vertices $V_1,$ $V_2,$ $\ldots,$ $V_n,$ and $100$ edges. The polyhedron is cut by planes $P_1,$ $P_2,$ $\ldots,$ $P_n$ in such a way that plane $P_k$ cuts only those edges that meet at vertex $V_k.$ In addition, no two planes intersect inside or on $Q.$ The cuts produce $n$ pyramids and a new polyhedron $R.$ How many edges does $R$ have?
+
+(A) $200$  (B) $2n$  (C) $300$  (D) $400$  (E) $4n$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-21": { s: String.raw`Ten women sit in $10$ seats in a line. All of the $10$ get up and then reseat themselves using all $10$ seats, each sitting in the seat she was in before or a seat next to the one she occupied before. In how many ways can the women be reseated?
+
+(A) $89$  (B) $90$  (C) $120$  (D) $210$  (E) $2^{38}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-22": { s: String.raw`Parallelogram $ABCD$ has area $1{,}000{,}000.$ Vertex $A$ is at $(0, 0)$ and all other vertices are in the first quadrant. Vertices $B$ and $D$ are lattice points on the lines $y = x$ and $y = kx$ for some integer $k \gt 1,$ respectively. How many such parallelograms are there?
+
+(A) $49$  (B) $720$  (C) $784$  (D) $2009$  (E) $2048$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-23": { s: String.raw`A region $S$ in the complex plane is defined by$$ S = \{x + iy : -1 \le x \le 1,\ -1 \le y \le 1\}. $$A complex number $z = x + iy$ is chosen uniformly at random from $S.$ What is the probability that $\left(\dfrac{3}{4} + \dfrac{3}{4}i\right)z$ is also in $S?$
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{7}{9}$  (E) $\dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-24": { s: String.raw`For how many values of $x$ in $[0, \pi]$ is $\sin^{-1}(\sin 6x) = \cos^{-1}(\cos x)?$
+
+Note: The functions $\sin^{-1} = \arcsin$ and $\cos^{-1} = \arccos$ denote inverse trigonometric functions.
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-25": { s: String.raw`The set $G$ is defined by the points $(x, y)$ with integer coordinates, $3 \le |x| \le 7,$ and $3 \le |y| \le 7.$ How many squares of side at least $6$ have their four vertices in $G?$
+
+@@fig:amc12/2009B/25.svg@@
+
+(A) $125$  (B) $150$  (C) $175$  (D) $200$  (E) $225$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-3": { s: String.raw`Twenty percent less than $60$ is one-third more than what number?
+
+(A) $16$  (B) $30$  (C) $32$  (D) $36$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-4": { s: String.raw`A rectangular yard contains two flower beds in the shape of congruent isosceles right triangles. The remainder of the yard has a trapezoidal shape, as shown. The parallel sides of the trapezoid have lengths $15$ and $25$ meters. What fraction of the yard is occupied by the flower beds?
+
+@@fig:amc12/2009B/4.svg@@
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{5}$  (D) $\dfrac{1}{4}$  (E) $\dfrac{1}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-5": { s: String.raw`Kiana has two older twin brothers. The product of their three ages is $128.$ What is the sum of their three ages?
+
+(A) $10$  (B) $12$  (C) $16$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-6": { s: String.raw`By inserting parentheses, it is possible to give the expression$$2 \times 3 + 4 \times 5$$several values. How many different values can be obtained?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-7": { s: String.raw`In a certain year the price of gasoline rose by $20\%$ during January, fell by $20\%$ during February, rose by $25\%$ during March, and fell by $x\%$ during April. The price of gasoline at the end of April was the same as it had been at the beginning of January. To the nearest integer, what is $x?$
+
+(A) $12$  (B) $17$  (C) $20$  (D) $25$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-8": { s: String.raw`When a bucket is two-thirds full of water, the bucket and water weigh $a$ kilograms. When the bucket is one-half full of water the total weight is $b$ kilograms. In terms of $a$ and $b,$ what is the total weight in kilograms when the bucket is full of water?
+
+(A) $\dfrac{2}{3}a + \dfrac{1}{3}b$  (B) $\dfrac{3}{2}a - \dfrac{1}{2}b$  (C) $\dfrac{3}{2}a + b$  (D) $\dfrac{3}{2}a + 2b$  (E) $3a - 2b$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-12b-9": { s: String.raw`Triangle $ABC$ has vertices $A = (3, 0),$ $B = (0, 3),$ and $C,$ where $C$ is on the line $x + y = 7.$ What is the area of $\triangle ABC?$
+
+(A) $6$  (B) $8$  (C) $10$  (D) $12$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc12/2009B" },
+"2009-amc-8-1": { s: String.raw`Bridget bought a bag of apples at the grocery store. She gave half of the apples to Ann. Then she gave Cassie $3$ apples, keeping $4$ apples for herself. How many apples did Bridget buy?
+
+(A) $3$  (B) $4$  (C) $7$  (D) $11$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-10": { s: String.raw`On a checkerboard composed of $64$ unit squares, what is the probability that a randomly chosen unit square does not touch the outer edge of the board?
+
+@@fig:amc8/2009/10.svg@@
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac{7}{16}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{9}{16}$  (E) $\dfrac{49}{64}$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-11": { s: String.raw`The Amaco Middle School bookstore sells pencils costing a whole number of cents. Some seventh graders each bought a pencil, paying a total of $1.43$ dollars. Some of the $30$ sixth graders each bought a pencil, and they paid a total of $1.95$ dollars. How many more sixth graders than seventh graders bought a pencil?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-12": { s: String.raw`The two spinners shown are spun once and each lands on one of the numbered sectors. What is the probability that the sum of the numbers in the two sectors is prime?
+
+@@fig:amc8/2009/12.svg@@
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{7}{9}$  (E) $\dfrac{5}{6}$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-13": { s: String.raw`A three-digit integer contains one of each of the digits $1,$ $3,$ and $5.$ What is the probability that the integer is divisible by $5?$
+
+(A) $\dfrac{1}{6}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{5}{6}$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-14": { s: String.raw`Austin and Temple are $50$ miles apart along Interstate $35.$ Bonnie drove from Austin to her daughter’s house in Temple, averaging $60$ miles per hour. Leaving the car with her daughter, Bonnie rode a bus back to Austin along the same route and averaged $40$ miles per hour on the return trip. What was the average speed for the round trip, in miles per hour?
+
+(A) $46$  (B) $48$  (C) $50$  (D) $52$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-15": { s: String.raw`A recipe that makes $5$ servings of hot chocolate requires $2$ squares of chocolate, $\dfrac{1}{4}$ cup sugar, $1$ cup water and $4$ cups milk. Jordan has $5$ squares of chocolate, $2$ cups of sugar, lots of water, and $7$ cups of milk. If she maintains the same ratio of ingredients, what is the greatest number of servings of hot chocolate she can make?
+
+(A) $5 \dfrac{1}{8}$  (B) $6 \dfrac{1}{4}$  (C) $7 \dfrac{1}{2}$  (D) $8 \dfrac{3}{4}$  (E) $9 \dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-16": { s: String.raw`How many $3$-digit positive integers have digits whose product equals $24?$
+
+(A) $12$  (B) $15$  (C) $18$  (D) $21$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-17": { s: String.raw`The positive integers $x$ and $y$ are the two smallest positive integers for which the product of $360$ and $x$ is a square and the product of $360$ and $y$ is a cube. What is the sum of $x$ and $y?$
+
+(A) $80$  (B) $85$  (C) $115$  (D) $165$  (E) $610$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-18": { s: String.raw`The diagram represents a $7$-foot-by-$7$-foot floor that is tiled with $1$-square-foot shaded tiles and unshaded tiles. Notice that the corners have unshaded tiles. If a $15$-foot-by-$15$-foot floor is to be tiled in the same manner, how many unshaded tiles will be needed?
+
+@@fig:amc8/2009/18.svg@@
+
+(A) $49$  (B) $57$  (C) $64$  (D) $96$  (E) $126$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-19": { s: String.raw`Two angles of an isosceles triangle measure $70^\circ$ and $x^\circ.$ What is the sum of the three possible values of $x?$
+
+(A) $95$  (B) $125$  (C) $140$  (D) $165$  (E) $180$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-2": { s: String.raw`On average, for every $4$ sports cars sold at the local car dealership, $7$ sedans are sold. The dealership predicts that it will sell $28$ sports cars next month. How many sedans does it expect to sell?
+
+(A) $7$  (B) $32$  (C) $35$  (D) $49$  (E) $112$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-20": { s: String.raw`How many non-congruent triangles have vertices at three of the eight points in the array shown below?
+
+@@fig:amc8/2009/20.svg@@
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-21": { s: String.raw`Andy and Bethany have a rectangular array of numbers with $40$ rows and $75$ columns. Andy adds the numbers in each row. The average of his $40$ sums is $A.$ Bethany adds the numbers in each column. The average of her $75$ sums is $B.$ What is the value of $\dfrac{A}{B}?$
+
+(A) $\dfrac{64}{225}$  (B) $\dfrac{8}{15}$  (C) $1$  (D) $\dfrac{15}{8}$  (E) $\dfrac{225}{64}$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-22": { s: String.raw`How many whole numbers between $1$ and $1000$ do not contain the digit $1?$
+
+(A) $512$  (B) $648$  (C) $720$  (D) $728$  (E) $800$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-23": { s: String.raw`On the last day of school, Mrs. Wonderful gave jelly beans to her class. She gave each boy as many jelly beans as there were boys in the class. She gave each girl as many jelly beans as there were girls in the class. She brought $400$ jelly beans, and when she finished, she had six jelly beans left. There were two more boys than girls in her class. How many students were in her class?
+
+(A) $26$  (B) $28$  (C) $30$  (D) $32$  (E) $34$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-24": { s: String.raw`The letters $A,$ $B,$ $C$ and $D$ all represent different digits. If $\begin{array}{ccc} &A &B \\ + &C &A \\ \hline &D &A \end{array}$ and $\begin{array}{ccc} &A &B \\ - &C &A \\ \hline &&A \end{array},$ what digit does $D$ represent?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-25": { s: String.raw`A one-cubic-foot cube is cut into four pieces by three cuts parallel to the top face of the cube. The first cut is $\dfrac{1}{2}$ foot from the top face. The second cut is $\dfrac{1}{3}$ foot below the first cut, and the third cut is $\dfrac{1}{17}$ foot below the second cut. From the top to the bottom the pieces are labeled $A,$ $B,$ $C,$ and $D.$ The pieces are then glued together end to end in the order $C,$ $B,$ $A,$ $D$ to make a long solid as shown. What is the total surface area of this solid in square feet?
+
+@@fig:amc8/2009/25.svg@@
+
+@@fig:amc8/2009/25b.svg@@
+
+(A) $6$  (B) $7$  (C) $\dfrac{419}{51}$  (D) $\dfrac{158}{17}$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-3": { s: String.raw`The graph shows the constant rate at which Suzanna rides her bike. If she rides a total of half an hour at the same speed, how many miles will she have ridden?
+
+@@fig:amc8/2009/3.svg@@
+
+(A) $5$  (B) $5.5$  (C) $6$  (D) $6.5$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-4": { s: String.raw`The five pieces shown below can be arranged to form four of the five figures below. Which figure cannot be formed?
+
+@@fig:amc8/2009/4.svg@@
+
+(A) @@ci:amc8/2009/4a.svg|10rem@@  (B) @@ci:amc8/2009/4b.svg|10rem@@  (C) @@ci:amc8/2009/4c.svg|10rem@@  (D) @@ci:amc8/2009/4d.svg|10rem@@  (E) @@ci:amc8/2009/4e.svg|10rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-5": { s: String.raw`A sequence of numbers starts with $1,$ $2,$ and $3.$ The fourth number of the sequence is the sum of the previous three numbers in the sequence: $1 + 2 + 3 = 6.$ In the same way, every number after the fourth is the sum of the previous three numbers. What is the eighth number in the sequence?
+
+(A) $11$  (B) $20$  (C) $37$  (D) $68$  (E) $99$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-6": { s: String.raw`Steve’s empty swimming pool will hold $24{,}000$ gallons of water when full. It will be filled by $4$ hoses, each of which supplies $2.5$ gallons of water per minute. How many hours will it take to fill Steve’s pool?
+
+(A) $40$  (B) $42$  (C) $44$  (D) $46$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-7": { s: String.raw`The triangular plot of land $ACD$ lies between Aspen Road, Brown Road and a railroad. Main Street runs east and west, and the railroad runs north and south. The numbers in the diagram indicate distances in miles. The width of the railroad track can be ignored. How many square miles are in the plot of land $ACD?$
+
+@@fig:amc8/2009/7.svg@@
+
+(A) $2$  (B) $3$  (C) $4.5$  (D) $6$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-8": { s: String.raw`The length of a rectangle is increased by $10\%$ and the width is decreased by $10\%.$ What percent of the old area is the new area?
+
+(A) $90$  (B) $99$  (C) $100$  (D) $101$  (E) $110$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
+"2009-amc-8-9": { s: String.raw`Construct a square on one side of an equilateral triangle. On one non-adjacent side of the square, construct a regular pentagon, as shown. On a non-adjacent side of the pentagon, construct a regular hexagon. Continue to construct regular polygons in the same way, until you construct an octagon. How many sides does the resulting polygon have?
+
+@@fig:amc8/2009/9.svg@@
+
+(A) $21$  (B) $23$  (C) $25$  (D) $27$  (E) $29$`, u: "https://live.poshenloh.com/past-contests/amc8/2009" },
 });

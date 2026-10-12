@@ -485,7 +485,7 @@ Rarely the whole problem, because it is a move rather than a result. Its standin
 ## Key forms
 - $a^n - b^n = (a - b)(a^{n-1} + a^{n-2}b + \cdots + b^{n-1})$ — for every positive integer $n$
 - $a^n + b^n = (a + b)(a^{n-1} - a^{n-2}b + \cdots + b^{n-1})$ — for odd $n$
-- $a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)$ — the cubic cases that come up most
+- the cubic cases, $n = 3$, that come up most are on [[difference-of-squares|Difference of Squares & Cubes]]
 - $a^m - 1 \mid a^n - 1$ exactly when $m \mid n$, and $\gcd(a^m - 1, a^n - 1) = a^{\gcd(m, n)} - 1$
 
 ## Conditions
@@ -531,7 +531,7 @@ An occasional AIME and AMC tool: a fourth power plus four times a fourth power, 
 
 "largest-term-ratio": String.raw`
 ## When to use
-Questions that ask which term of a binomial expansion is largest, such as the largest coefficient of $(1 + 2x)^{20}$; which number of successes is most likely in repeated trials; or where a sequence built from factorials, powers, and binomial coefficients peaks. The terms are too large to compute, but their ratio is small and simple.
+Questions that ask which term of a binomial expansion is largest, such as the largest coefficient of $(1 + 2x)^{20}$; which number of successes is most likely in repeated trials; or where a sequence built from factorials, powers, and binomial coefficients peaks. The terms are too large to compute, but their ratio is small and simple. A ratio that is not monotone can peak twice, and a sequence built from sums rather than products has no simple ratio.
 
 ## How
 1. Write the general term $a_k$, positive for every $k$ in range.
@@ -566,7 +566,7 @@ An occasional AIME question asks directly for the largest coefficient or most li
 
 "sfft": String.raw`
 ## When to use
-Equations such as $xy - 2x + 3y = 20$, $\frac1x + \frac1y = \frac1n$ after clearing denominators, $3xy + 5x + 2y = 40$ after multiplying by the coefficient of $xy$, and conditions such as a rectangle's area equaling its perimeter. The signal is two unknown integers, their product, and a multiple of each.
+Equations such as $xy - 2x + 3y = 20$, $\frac1x + \frac1y = \frac1n$ after clearing denominators, $3xy + 5x + 2y = 40$ after multiplying by the coefficient of $xy$, and conditions such as a rectangle's area equaling its perimeter. The signal is two unknown integers, their product, and a multiple of each. An equation with an $x^2$ or $y^2$ term is not of this shape, and a quadratic in one unknown is better handled by its discriminant or a bound.
 
 The same completion factors $xy + ax + by$ wherever it appears, not only in integer equations: it shows that $xy - x - y + 1 = (x - 1)(y - 1)$ is positive when $x, y \gt 1$, and it splits a sum over pairs into a product of two sums.
 
@@ -817,6 +817,8 @@ Eight problems here, six AIME and two AMC 12, none by it alone and each with a d
 "telescoping": String.raw`
 ## When to use
 Sums of fractions whose denominators factor into terms in arithmetic progression, such as $\frac{1}{k(k+1)}$, $\frac{1}{(2k-1)(2k+1)}$ or $\frac{1}{k(k+1)(k+2)}$; sums of radical fractions $\frac{1}{\sqrt k + \sqrt{k+1}}$; terms like $\frac{k}{(k+1)!}$; products such as $\prod\left(1 - \frac{1}{k^2}\right)$; and sums of $\arctan$, $\tan$, or $\cot$ at related angles. The signal is a long sum whose terms all have the same shape and whose answer is supposed to be a simple number.
+
+A sum that no rewriting turns into $f(k) - f(k + 1)$ is not telescoping, and writing out its first three terms shows it at once.
 
 ## How
 1. Guess $f$ from the terms, as $\frac1k$ for $\frac{1}{k(k+1)}$.
@@ -1407,6 +1409,8 @@ An AIME staple, with 17 problems tagged here and only 1 solved by the roots alon
 ## When to use
 Sums of every second, third, or fourth binomial coefficient, such as $\binom{n}{0} + \binom{n}{3} + \binom{n}{6} + \cdots$; counts of subsets, strings, or dice rolls whose total lies in one residue class; and any coefficient sum $a_r + a_{r+n} + a_{r+2n} + \cdots$ of a generating function that is easy to evaluate at complex numbers. The filter for $n = 2$ needs only $f(1)$ and $f(-1)$ and works with no complex numbers at all.
 
+For a condition on one small value, such as a total of exactly $7$, the coefficient itself is shorter than a filter.
+
 ## How
 1. Express the count as coefficients: subsets by size come from $(1 + x)^m$, and subsets of $\{1, \ldots, m\}$ by sum from $\prod_k(1 + x^k)$.
 2. To keep the indices divisible by $n$, average $f$ over the $n$th roots of unity: $\frac{f(1) + f(\omega) + \cdots + f(\omega^{n-1})}{n}$.
@@ -1442,7 +1446,6 @@ Rare but decisive: one AIME or AMC 12 problem in a while counts subsets or binom
 ## Key forms
 - $\alt{\prod_{k=1}^{n-1}\left\lvert 1 - \omega^k\right\rvert = n}{\lvert 1 - \omega\rvert\,\lvert 1 - \omega^2\rvert\cdots\lvert 1 - \omega^{n-1}\rvert = n}$ with $\omega = e^{2\pi i/n}$ — the product of the distances from one $n$th root of unity to all the others
 - $\lvert 1 - \omega^k\rvert = 2\sin\dfrac{k\pi}{n}$ — each distance is a chord of the unit circle
-- $\alt{\prod_{k=1}^{n-1}\sin\dfrac{k\pi}{n} = \dfrac{n}{2^{n-1}}}{\sin\dfrac\pi n\sin\dfrac{2\pi}{n}\cdots\sin\dfrac{(n-1)\pi}{n} = \dfrac{n}{2^{n-1}}}$ — the sine product
 - $nR^{n-1}$ — the product of the distances from one vertex of a regular $n$-gon inscribed in a circle of radius $R$ to the other vertices
 
 ## Conditions
@@ -1457,12 +1460,12 @@ Each factor is a chord of the unit circle. The points $1$ and $\omega^k$ are sep
 
 {{figure:chord}}
 
-Multiplying the $n - 1$ chords gives $2^{n-1}\sin\frac\pi n\sin\frac{2\pi}{n}\cdots\sin\frac{(n-1)\pi}{n} = n$, which is the sine product.
+Multiplying the $n - 1$ chords gives $2^{n-1}$ times the product of the sines, and that product is evaluated on [[evenly-spaced-angle-products|the evenly spaced angle products card]].
 
 ## Useful observations
 - The unit circle comes first. On a circle of radius $R$ every chord is $R$ times as long, so the product of the distances from one vertex of a regular $n$-gon to the other $n - 1$ vertices is $nR^{n-1}$.
 - For products of sines at equally spaced angles, $\sin\frac{k\pi}{n}$ is paired with $\sin\frac{(n-k)\pi}{n}$, which is equal to it, and a square root is taken. With $n = 9$ every factor appears twice, so $\sin 20^\circ\sin 40^\circ\sin 60^\circ\sin 80^\circ = \sqrt{\frac{9}{2^8}} = \frac{3}{16}$.
-- When the point is on the circle but not at a vertex, the product depends on where it is, which is [[ngon-vertex-distance-product|the product from a general point]]; other spacings of sines and cosines are on [[evenly-spaced-angle-products|evenly spaced angle products]].
+- When the point is on the circle but not at a vertex, the product depends on where it is, which is [[ngon-vertex-distance-product|the product from a general point]]; other spacings of sines and cosines are on [[evenly-spaced-angle-products|the evenly spaced angle products card]].
 
 ## Applications
 Products of chord lengths in a regular polygon, products of sines at equally spaced angles, and values of $\prod(x - \omega^k)$.
@@ -1795,13 +1798,13 @@ A named AIME and AMC 12 pattern, which also handles products of cosines at angle
 
 "arctan-telescoping": String.raw`
 ## Key forms
-- $\arctan a - \arctan b = \arctan\dfrac{a - b}{1 + ab}$ — the subtraction formula, valid when the angles stay in $\left(-\frac\pi2, \frac\pi2\right)$
+- $\arctan a - \arctan b = \arctan\dfrac{a - b}{1 + ab}$ — the subtraction formula, valid exactly when $ab > -1$; for $ab < -1$ the true difference differs from the right side by $\pi$ (for example $a = 2$, $b = -0.9$ gives $1.840$ on the left and $-1.302$ on the right)
 - $\arctan\dfrac{1}{n^2 + n + 1} = \arctan(n + 1) - \arctan n$ — the denominators $1 + n(n + 1)$
 - $\arctan\dfrac{1}{2n^2} = \arctan\dfrac{1}{2n - 1} - \arctan\dfrac{1}{2n + 1}$ — another standard family
 - $\arctan 1 + \arctan 2 + \arctan 3 = \pi$ — a classic, proved by two applications of the addition formula
 
 ## Conditions
-The addition and subtraction formulas hold with $\arctan$ taking values in $\left(-\frac\pi2, \frac\pi2\right)$, so the true sum of two arctangents must stay in that range; otherwise a multiple of $\pi$ is added, as on [[inverse-trig-identities|the inverse trig card]].
+The addition and subtraction formulas hold with $\arctan$ taking values in $\left(-\frac\pi2, \frac\pi2\right)$, so the true difference of two arctangents must stay in that range, which is the condition $ab > -1$; otherwise a multiple of $\pi$ is added, as on [[inverse-trig-identities|the inverse trig card]].
 
 ## Why it works
 The tangent subtraction formula $\tan(A - B) = \frac{\tan A - \tan B}{1 + \tan A\tan B}$, read as a statement about arctangents. With $A = \arctan a$ and $B = \arctan b$, the formula says $A - B$ has tangent $\frac{a - b}{1 + ab}$, so $A - B = \arctan\frac{a - b}{1 + ab}$ when that angle is in the principal range.
@@ -1942,7 +1945,9 @@ Usually the last simplification of an answer that must be written in the form $p
 
 "infinite-nest": String.raw`
 ## Distinguishing clues
-The dots sit inside the expression, at the end of a radical, a fraction, or an exponent, rather than at the end of a sum or a list. An infinite sum $1 + \frac12 + \frac14 + \cdots$ is a series, while $\sqrt{2 + \sqrt{2 + \cdots}}$ repeats the same operation on itself. A finite nest with a stated number of layers is a recursion; it belongs here only when a pattern in the number of layers is wanted.
+- The dots sit inside the expression, at the end of a radical, a fraction, or an exponent, rather than at the end of a sum or a list.
+- Not this pattern: an infinite sum $1 + \frac12 + \frac14 + \cdots$, which is a series, while $\sqrt{2 + \sqrt{2 + \cdots}}$ repeats the same operation on itself.
+- A finite nest with a stated number of layers is a recursion, and belongs here only when a pattern in the number of layers is wanted.
 
 ## Methods and Formulas to Try
 Removing one layer leaves the same expression, which is an equation for its value; finite radical nests often have exact trigonometric values instead.
@@ -1967,7 +1972,7 @@ A quick AMC question in its plain form and an AIME ingredient when the nest is c
 
 "rationalizing": String.raw`
 ## When to use
-Simplifying $\frac{1}{\sqrt5 - 2}$, summing $\frac{1}{\sqrt1 + \sqrt2} + \frac{1}{\sqrt2 + \sqrt3} + \cdots$, comparing $\sqrt{n + 1} - \sqrt n$ with $\frac{1}{2\sqrt n}$, and finding the integer part or the last digits of a power like $(2 + \sqrt3)^{10}$.
+Simplifying $\frac{1}{\sqrt5 - 2}$, summing $\frac{1}{\sqrt1 + \sqrt2} + \frac{1}{\sqrt2 + \sqrt3} + \cdots$, comparing $\sqrt{n + 1} - \sqrt n$ with $\frac{1}{2\sqrt n}$, and finding the integer part or the last digits of a power like $(2 + \sqrt3)^{10}$. A nested radical such as $\sqrt{a + \sqrt b}$ is a different job, the one of [[denesting-radicals|denesting]], and a product or a square of radicals needs no conjugate.
 
 ## How
 1. Find the conjugate by changing the sign between the two terms: $\sqrt a + \sqrt b$ becomes $\sqrt a - \sqrt b$.
@@ -1998,6 +2003,8 @@ Usually a quick simplification inside a larger problem, or the step that makes a
 "fx-pairing": String.raw`
 ## When to use
 Sums of a function at points placed symmetrically about a center: $f\!\left(\frac{k}{n}\right)$ for $k = 1, \ldots, n - 1$, $\sin^2$ or $\cos^2$ of evenly spaced angles, logarithms of numbers paired as $x$ and $\frac1x$, and repeating decimals paired with nines complements. Also equations with that symmetry, where $x = \text{center} + t$ makes it visible. The tell is a function that looks impossible to sum term by term, given on arguments that pair up.
+
+A sum whose pairs do not add to a constant is not this, and [[telescoping|telescoping]] or a closed form is the next thing to try.
 
 ## How
 1. Find the center of the arguments: $\frac12$ for $\frac kn$, $45^\circ$ for $1^\circ$ to $89^\circ$.
@@ -2032,7 +2039,7 @@ A short AMC and AIME move: the whole problem is spotting the symmetry, after whi
 
 "trig-substitution": String.raw`
 ## When to use
-Radicals such as $\sqrt{1 - x^2}$ or $\sqrt{x^2 + 4}$, optimizing an expression like $x + \sqrt{1 - x^2}$, recursions such as $x_{n+1} = 2x_n^2 - 1$, and symmetric conditions such as $a + b + c = abc$ or $ab + bc + ca = 1$, which are identities for the tangents of angles that add to $\pi$ or to $\frac\pi2$.
+Radicals such as $\sqrt{1 - x^2}$ or $\sqrt{x^2 + 4}$, optimizing an expression like $x + \sqrt{1 - x^2}$, recursions such as $x_{n+1} = 2x_n^2 - 1$, and symmetric conditions such as $a + b + c = abc$ or $ab + bc + ca = 1$, which are identities for the tangents of angles that add to $\pi$ or to $\frac\pi2$. The range of $x$ has to match: for $|x| > 1$, $\sqrt{1 - x^2}$ is not real, and a secant or hyperbolic substitution is needed.
 
 ## How
 1. Match the shape: $a\sin\theta$, $a\tan\theta$ or $a\sec\theta$ for the three radicals, $\cos\theta$ for $2x^2 - 1$, and tangents of angles for $a + b + c = abc$.
@@ -2188,7 +2195,7 @@ Object.assign(window.MATH_DETAILS, {
 
 "root-transformations": String.raw`
 ## When to use
-Questions about numbers made from the roots of a known polynomial by one fixed rule: shifted roots $r - 2$, scaled roots $3r$, reciprocals $\frac1r$, squares $r^2$, or Möbius images such as $\frac{1 + r}{1 - r}$. The target is usually a sum, a product, or another symmetric function of the new numbers, which would take long symmetric-polynomial algebra in the old roots but is one coefficient of the new polynomial.
+Questions about numbers made from the roots of a known polynomial by one fixed rule: shifted roots $r - 2$, scaled roots $3r$, reciprocals $\frac1r$, squares $r^2$, or Möbius images such as $\frac{1 + r}{1 - r}$. The target is usually a sum, a product, or another symmetric function of the new numbers, which would take long symmetric-polynomial algebra in the old roots but is one coefficient of the new polynomial. Quantities that are not symmetric in the roots, such as $r_1 - r_2$, cannot be read from the new polynomial.
 
 ## How
 1. Name the new number $y = g(r)$ and solve for $r$ in terms of $y$.
@@ -2223,9 +2230,11 @@ A supporting move in AIME root problems: transforming first turns a long symmetr
 
 "periodic-sequences": String.raw`
 ## Distinguishing clues
-The index is in the hundreds or thousands, and nothing in the rule suggests a closed form. A recursion with steady growth, such as Fibonacci asked for an actual value, is a closed-form problem instead.
-
-Three shapes share the idea and repeat for different reasons: remainders of a power or a recurrence repeat because the state, one residue or the last few, takes finitely many values; a rule built from fractions $\frac{ax + b}{cx + d}$ or quotients of earlier terms can return exactly to its start; and a condition about divisibility by several small numbers repeats with period their least common multiple.
+- The index is in the hundreds or thousands, and nothing in the rule suggests a closed form.
+- Remainders of a power or a recurrence, which repeat because the state, one residue or the last few, takes finitely many values.
+- A rule built from fractions $\frac{ax + b}{cx + d}$ or quotients of earlier terms, which can return exactly to its start.
+- A condition about divisibility by several small numbers, which repeats with period their least common multiple.
+- Not this pattern: a recursion with steady growth, such as Fibonacci asked for an actual value, which is a closed-form problem.
 
 ## Methods and Formulas to Try
 Which method fits depends on why the terms repeat: finitely many states call for listing them, a hidden rotation for a substitution, and a count for working over one period.
@@ -2280,7 +2289,7 @@ AIME trigonometry problems hand over one of these sums and expect the translatio
 
 "piecewise-graph-counting": String.raw`
 ## When to use
-"How many real solutions" questions for equations built from absolute values, floors, maxima, or other piecewise pieces; questions such as "for which $c$ does $f(x) = c$ have exactly four solutions"; and counts of intersections between two piecewise graphs, such as two sawtooth curves. The sign is an equation that would split into many cases if solved algebraically.
+"How many real solutions" questions for equations built from absolute values, floors, maxima, or other piecewise pieces; questions such as "for which $c$ does $f(x) = c$ have exactly four solutions"; and counts of intersections between two piecewise graphs, such as two sawtooth curves. The signal is an equation that would split into many cases if solved algebraically. One absolute value with a single corner is two cases and is solved algebraically in two lines.
 
 ## How
 1. Build the graph of $f$, folding and shifting from the inside out, and list its corners with their heights.
@@ -2765,7 +2774,7 @@ Usually a setup step: it locates an extreme value or a center, or turns a perfec
 
 "abs-value-relations": String.raw`
 ## When to use
-Regions and curves in the plane defined by absolute values: $|x| + |y| \le c$, $\max(|x|, |y|) = c$, $|x - 3| + |y + 1| = 4$, nested forms such as $\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| = 1$, and mixed terms such as $|x - y|$. Typical questions ask for an area, a perimeter, the number of lattice points, or the number of intersection points with another curve.
+Regions and curves in the plane defined by absolute values: $|x| + |y| \le c$, $\max(|x|, |y|) = c$, $|x - 3| + |y + 1| = 4$, nested forms such as $\bigl||x| - 1\bigr| + \bigl||y| - 1\bigr| = 1$, and mixed terms such as $|x - y|$. Typical questions ask for an area, a perimeter, the number of lattice points, or the number of intersection points with another curve. An absolute value in one variable alone, such as $|x - 2| < 3$, is an interval on the number line and needs none of this.
 
 ## How
 1. Note which variables appear only inside bars as $|x|$ or $|y|$: the graph is symmetric across the corresponding axes.
@@ -3265,7 +3274,7 @@ An olympiad tool for three-variable polynomial inequalities, used when slicker a
 `,
 "uvw-method": String.raw`
 ## When to use
-Symmetric inequalities and optimization problems in three nonnegative variables, especially polynomial ones of degree at most $5$ under a constraint such as $a + b + c = 3$, where the extreme case might be $a = b = c$, or $(t, t, s)$, or a configuration with a zero such as $(\frac32, \frac32, 0)$. The method decides which, with no clever idea needed.
+Symmetric inequalities and optimization problems in three nonnegative variables, especially polynomial ones of degree at most $5$ under a constraint such as $a + b + c = 3$, where the extreme case might be $a = b = c$, or $(t, t, s)$, or a configuration with a zero such as $(\frac32, \frac32, 0)$. The method decides which, with no clever idea needed. A degree above $5$, or four variables, falls outside it.
 
 ## How
 1. Write the expression in $p = a + b + c$, $q = ab + bc + ca$ and $r = abc$.
@@ -3303,7 +3312,7 @@ An olympiad tool for symmetric inequalities in three variables; it settles where
 - for real parts with a fixed sum $s$ and $k$ parts, the product is largest when all parts equal $\frac sk$, and the best $k$ makes the parts nearest to $e \approx 2.718$
 
 ## Conditions
-The parts are positive integers adding to $n \ge 2$. For parts restricted to be at least $2$, or to a fixed count, the rule changes and the equal-parts principle is used directly.
+The parts are positive integers adding to $n \ge 2$; for $n = 1$ the single part $1$ gives product $1$, and the $r = 1$ line, which needs $q \ge 1$, does not apply. For parts restricted to be at least $2$, or to a fixed count, the rule changes and the equal-parts principle is used directly.
 
 ## Why it works
 For a fixed sum, AM–GM makes the product largest when the parts are equal, so the ideal part is near $e \approx 2.718$, and among integers $3$ beats $2$. Two local swaps pin the integer rule: a $1$ is always wasteful, since merging it into a neighbor, $1 + x \to x + 1$, raises the product from $x$ to $x + 1$, and three $2$'s lose to two $3$'s, which have the same sum $6$ but $8 \lt 9$, so never keep more than two $2$'s.
@@ -3377,7 +3386,7 @@ Iterated maps like $x \mapsto 2x^2 - 1$ and multiple-angle [[even-power-sin-cos-
 "lagranges-identity": String.raw`
 ## Key forms
 - $\alt{\left(\sum a_i^2\right)\left(\sum b_i^2\right) - \left(\sum a_ib_i\right)^2 = \sum_{i < j}(a_ib_j - a_jb_i)^2}{(a_1^2 + \cdots + a_n^2)(b_1^2 + \cdots + b_n^2) - (a_1b_1 + \cdots + a_nb_n)^2 = (a_1b_2 - a_2b_1)^2 + \cdots}$
-- $(a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2$, the two-term case
+- the two-term case, for four numbers, has its own card, [[brahmagupta-fibonacci|the Brahmagupta-Fibonacci card]]
 - in three dimensions, $\lvert\mathbf{a}\rvert^2\lvert\mathbf{b}\rvert^2 - (\mathbf{a} \cdot \mathbf{b})^2 = \lvert\mathbf{a} \times \mathbf{b}\rvert^2$
 
 ## Conditions
@@ -3524,7 +3533,7 @@ Mostly olympiad and advanced algebra. The discriminant is an everyday tool; the 
 
 "smoothing-method": String.raw`
 ## When to use
-Extremal problems in several symmetric variables with a fixed sum or product: maximize a product, minimize a sum of squares, bound $\sum f(x_i)$, or split an integer into parts with the largest product. The tell is a problem that "obviously" has its extremum at equal values, or at an extreme configuration such as $(2, 1, 0)$, and needs that claim proved.
+Extremal problems in several symmetric variables with a fixed sum or product: maximize a product, minimize a sum of squares, bound $\sum f(x_i)$, or split an integer into parts with the largest product. The tell is a problem that "obviously" has its extremum at equal values, or at an extreme configuration such as $(2, 1, 0)$, and needs that claim proved. Whether averaging raises or lowers the quantity depends on convexity, so the direction is checked first.
 
 ## How
 1. Fix the constraint and pick a move that preserves it: replace $(a, b)$ by $\left(\frac{a+b}{2}, \frac{a+b}{2}\right)$, or by $(a + t, b - t)$ toward or away from each other.
@@ -3569,7 +3578,7 @@ Writing each sine as complex exponentials turns an equally spaced product into a
 
 ## Useful observations
 - Sines, cosines, or tangents at a common spacing $\frac{k\pi}{n}$ are replaced by one term.
-- The $n = 3$ identity is the most common, and $\prod_{k=1}^{n-1}\sin\frac{k\pi}{n} = \frac{n}{2^{n-1}}$ evaluates "the product of all those sines."
+- The $n = 3$ identity is the most common; the product of the nonzero multiples of $\frac\pi n$ is the other form that turns up.
 - The same distances appear as chords in a regular polygon, on [[roots-unity-distance-product|the distance products card]].
 
 ## Applications
@@ -3761,7 +3770,7 @@ Standard AIME fare whenever a closed form of such a sum at equally spaced angles
 
 "forced-difference-of-squares": String.raw`
 ## When to use
-Factoring $x^4 + x^2 + 1$, $x^4 + 4$ or $n^4 + 4^n$; showing that numbers like $n^4 + 4$ are composite for $n > 1$; and simplifying products or sums whose terms are such quartics, which then telescope.
+Factoring $x^4 + x^2 + 1$, $x^4 + 4$ or $n^4 + 4^n$; showing that numbers like $n^4 + 4$ are composite for $n > 1$; and simplifying products or sums whose terms are such quartics, which then telescope. A quartic with odd-degree terms is not of this shape, and the Rational Root Theorem or grouping is the tool there.
 
 ## How
 1. Find the square the outer terms suggest: for $x^4 + 4$ the outer terms are the squares of $x^2$ and $2$, so the target is $(x^2 + 2)^2$.
@@ -3877,7 +3886,7 @@ An olympiad first step for constrained inequalities: level the degrees, then exp
 
 "sqrt-approximation": String.raw`
 ## When to use
-Estimating a square root by hand to two or more decimals, comparing a root with a fraction or a decimal, finding the integer nearest to $\sqrt N$ or to a sum of roots, and bounding expressions such as $\sqrt{n^2 + n}$ between two simple values. It also explains why $\sqrt{n^2 + k}$ is just above $n + \frac{k}{2n}$ in many floor-function problems.
+Estimating a square root by hand to two or more decimals, comparing a root with a fraction or a decimal, finding the integer nearest to $\sqrt N$ or to a sum of roots, and bounding expressions such as $\sqrt{n^2 + n}$ between two simple values. It also explains why $\sqrt{n^2 + k}$ is just above $n + \frac{k}{2n}$ in many floor-function problems. An estimate is not a proof: to settle an inequality exactly, compare squares.
 
 ## How
 1. Find the largest perfect square $a^2$ not exceeding the number, and write the number as $a^2 + b$.
@@ -4119,7 +4128,7 @@ Olympiad-adjacent only. It is the machinery behind the transfer-matrix and matri
 
 "cofactor-expansion": String.raw`
 ## When to use
-Determinants of size $4$ or more; determinants with a row or column of mostly zeros; families $D_n$ of $n \times n$ determinants with a banded pattern, such as $2$ on the diagonal and $1$ beside it; and determinants with a variable in some entries, such as characteristic polynomials, where expanding along the variable's row keeps the algebra organized.
+Determinants of size $4$ or more; determinants with a row or column of mostly zeros; families $D_n$ of $n \times n$ determinants with a banded pattern, such as $2$ on the diagonal and $1$ beside it; and determinants with a variable in some entries, such as characteristic polynomials, where expanding along the variable's row keeps the algebra organized. A $2 \times 2$ or $3 \times 3$ determinant is shorter by its direct formula, and a large numeric one is shorter by row operations to triangular form.
 
 ## How
 1. Pick the row or column with the most zeros. If none is sparse, create zeros by adding multiples of one row to another, which leaves the determinant unchanged.
@@ -4330,7 +4339,9 @@ A MATHCOUNTS and AMC 10 staple, and on the AMC 12 a step inside a problem with a
 
 "repeated-block-equation": String.raw`
 ## Distinguishing clues
-The degree looks high, often four, yet the equation has more structure than a general quartic: one expression appears twice, exponential terms share a base up to squaring, or four linear factors have constants that pair to equal sums, as $1 + 4 = 2 + 3$. A general quartic with no repetition is a root-finding problem instead. An expression that contains a copy of itself, such as an infinite nested radical, is the related [[infinite-nest|self-similar expression]], where the whole expression is named rather than a piece of it.
+- The degree looks high, often four, yet the equation has more structure than a general quartic.
+- One expression appears twice, exponential terms share a base up to squaring, or four linear factors have constants that pair to equal sums, as $1 + 4 = 2 + 3$.
+- Not this pattern: a general quartic with no repetition, which is a root-finding problem, or an expression that contains a copy of itself, such as an infinite nested radical, which is the related [[infinite-nest|self-similar expression]], where the whole expression is named rather than a piece of it.
 
 ## Methods and Formulas to Try
 The repeated piece is the real unknown. Name it, solve the smaller equation, and return to $x$ one value at a time.
@@ -4356,7 +4367,10 @@ A staple from the AMC 10 to the AIME: quartics built from four linear factors, e
 
 "averages-before-after": String.raw`
 ## Distinguishing clues
-Two or more averages describe nearly the same group. An unknown count is the giveaway that the problem wants equations in totals rather than arithmetic with averages. When the averages belong to overlapping subgroups, each element is counted in several of them. A single average with nothing changing is only a total in disguise, and an [[average-speed|average speed]] over the legs of a trip is a different setup, total distance over total time.
+- Two or more averages describe nearly the same group.
+- An unknown count, the giveaway that the problem wants equations in totals rather than arithmetic with averages.
+- Averages that belong to overlapping subgroups, where each element is counted in several of them.
+- Not this pattern: a single average with nothing changing, which is only a total in disguise, or an [[average-speed|average speed]] over the legs of a trip, a different setup of total distance over total time.
 
 ## Methods and Formulas to Try
 The averages hide the totals that actually change, and totals are what add.
@@ -4380,7 +4394,7 @@ MATHCOUNTS and AMC 10 problems with a value added or removed, and AMC 12 version
 
 "take-logs-linearize": String.raw`
 ## When to use
-Several equations multiply and raise the unknowns to powers: $x^2y^3 = 2^{13}$ and $x^3y = 2^9$, or $2^x = 3^y = 6^z$, or an unknown in an exponent, as in $5^x = 3$. Additive tools do not touch these, but logarithms make them linear.
+Several equations multiply and raise the unknowns to powers: $x^2y^3 = 2^{13}$ and $x^3y = 2^9$, or $2^x = 3^y = 6^z$, or an unknown in an exponent, as in $5^x = 3$. Additive tools do not touch these, but logarithms make them linear. Logarithms do not split sums, so an unknown inside a sum is not helped.
 
 
 Logarithms also size and compare huge numbers. In base $10$, $2^{100}$ has logarithm $100 \cdot 0.30103 \approx 30.10$ and $3^{63}$ has $63 \cdot 0.47712 \approx 30.06$, so $2^{100}$ is larger, and the integer part of the logarithm gives the [[digit-count|number of digits]].
@@ -4442,7 +4456,8 @@ AMC 12 and AIME: powers and products of complex numbers, roots of $z^n = w$, and
 
 "log-system": String.raw`
 ## Distinguishing clues
-The equations involve the same few unknowns only through products, quotients, powers, and logarithms, with no sum of two unknowns inside a logarithm. That is what makes the system linear in the logarithms. A single equation such as $\log_2 x + \log_4 x = 6$ is one substitution, and a logarithm of a sum, such as $\log(x + y)$, does not split and needs another idea.
+- The equations involve the same few unknowns only through products, quotients, powers, and logarithms, with no sum of two unknowns inside a logarithm, which makes the system linear in the logarithms.
+- Not this pattern: a single equation such as $\log_2 x + \log_4 x = 6$, which is one substitution, or a logarithm of a sum, such as $\log(x + y)$, which does not split and needs another idea.
 
 ## Methods and Formulas to Try
 Name the logarithms of the unknowns as new variables; the rules of logarithms then make every equation linear in them.
@@ -4468,7 +4483,9 @@ An AIME favorite and an occasional AMC 12 problem: three equations in $\log(xy)$
 
 "complex-modulus-argument": String.raw`
 ## Distinguishing clues
-The conditions are about size and direction: $|z| = 1$, $|z - a| = r$, an argument, or a power of $z$ that must be real or equal to $1$. Writing $z = a + bi$ would turn these into a pair of circle equations, while polar form turns them into one condition on an angle. A sum of complex numbers with nothing said about moduli or angles is ordinary algebra in $a + bi$ instead.
+- The conditions are about size and direction: $|z| = 1$, $|z - a| = r$, an argument, or a power of $z$ that must be real or equal to $1$.
+- Writing $z = a + bi$ would turn these into a pair of circle equations, while polar form turns them into one condition on an angle.
+- Not this pattern: a sum of complex numbers with nothing said about moduli or angles, which is ordinary algebra in $a + bi$.
 
 ## Methods and Formulas to Try
 Size and direction are the polar coordinates of $z$, so the conditions are simplest in polar form.
@@ -4493,7 +4510,7 @@ AMC 12 and AIME: an equation in a complex number and its conjugate on the unit c
 
 "name-the-floor": String.raw`
 ## When to use
-A condition mixes $\lfloor x \rfloor$, $\{x\}$, and $x$ itself: $\lfloor x \rfloor + 2\{x\} = 3.5$, or $x^2 = 10\lfloor x \rfloor - 9$. The same split proves floor identities, such as $\lfloor 2x \rfloor = 2\lfloor x \rfloor$ or $2\lfloor x \rfloor + 1$ depending on whether $f$ is below or above $\frac12$, and it settles inequalities that involve a floor.
+A condition mixes $\lfloor x \rfloor$, $\{x\}$, and $x$ itself: $\lfloor x \rfloor + 2\{x\} = 3.5$, or $x^2 = 10\lfloor x \rfloor - 9$. The same split proves floor identities, such as $\lfloor 2x \rfloor = 2\lfloor x \rfloor$ or $2\lfloor x \rfloor + 1$ depending on whether $f$ is below or above $\frac12$, and it settles inequalities that involve a floor. If only $\lfloor x \rfloor$ appears, $x$ is really an integer and no split is needed.
 
 ## How
 1. Write $x = n + f$ with $n$ an integer and $0 \le f \lt 1$; then $\lfloor x \rfloor = n$ and $\{x\} = f$.
@@ -4523,6 +4540,8 @@ AMC 10, AMC 12, and AIME equations mixing $x$, $\lfloor x \rfloor$, and $\{x\}$,
 ## When to use
 Long sums such as $\lfloor \sqrt1 \rfloor + \lfloor \sqrt2 \rfloor + \cdots + \lfloor \sqrt{50} \rfloor$, and counts such as "how many distinct values does $\lfloor \frac{k^2}{1000} \rfloor$ take for $k \le 1000$". The same grouping counts digits (the numbers with $d$ digits form one block) and splits any sum whose terms depend only on which range $k$ lies in.
 
+A sum of floors of $\frac{ak}{n}$ over $k = 1, \ldots, n - 1$ is better paired from its two ends, as in [[fx-pairing|pairing symmetric terms]].
+
 ## How
 1. For each value $m$, solve $m \le f(k) \lt m + 1$ for $k$; for an increasing $f$ this is one block of consecutive integers.
 2. Count the block: for $\lfloor \sqrt k \rfloor = m$ it is $k = m^2, \ldots, (m + 1)^2 - 1$, which is $2m + 1$ values.
@@ -4549,7 +4568,10 @@ AMC and AIME sums of floors of square roots, logarithms, or quadratics over a lo
 
 "floor-sum-range": String.raw`
 ## Distinguishing clues
-The sum has many terms, each a floor of one expression in the index, and the question wants an exact total or a count of distinct values. A slowly growing inside, such as $\sqrt k$ or $\log_2 k$, signals blocks of equal terms; an inside linear in $k$ with a fraction $\frac{a}{n}$, summed from $k = 1$ to $n - 1$, signals pairing from the ends. A single equation with a floor is a different problem, solved by splitting $x$ into its integer and fractional parts.
+- The sum has many terms, each a floor of one expression in the index, and the question wants an exact total or a count of distinct values.
+- A slowly growing inside, such as $\sqrt k$ or $\log_2 k$, which signals blocks of equal terms.
+- An inside linear in $k$ with a fraction $\frac{a}{n}$, summed from $k = 1$ to $n - 1$, which signals pairing from the ends.
+- Not this pattern: a single equation with a floor, which is solved by splitting $x$ into its integer and fractional parts.
 
 ## Methods and Formulas to Try
 Two structures make the sum short: equal terms in long runs, and terms whose fractional parts cancel in pairs.
@@ -4575,7 +4597,8 @@ AMC 12 and AIME sums of floors of square roots or logarithms, counts of distinct
 
 "floor-equation": String.raw`
 ## Distinguishing clues
-One real unknown appears both as itself and inside a floor or a fractional part. If only $\lfloor x \rfloor$ appears, the unknown is really an integer, and the equation is a number theory problem in $n$. A long sum of floors with no unknown real number is a counting problem instead, handled by grouping equal terms.
+- One real unknown appears both as itself and inside a floor or a fractional part.
+- Not this pattern: an equation in which only $\lfloor x \rfloor$ appears, where the unknown is really an integer and the problem is a number theory problem in $n$, or a long sum of floors with no unknown real number, which is a counting problem handled by grouping equal terms.
 
 ## Methods and Formulas to Try
 The floor is an integer and the fractional part lies in $[0, 1)$; those two facts, plus $n \le x \lt n + 1$, leave only a few cases.
@@ -4758,7 +4781,10 @@ An olympiad algebra tool, usually appearing as the reason a linear system in pol
 
 "several-rates": String.raw`
 ## Distinguishing clues
-Two or more rates appear in one story: speeds, jobs per hour, liters per minute. When the agents act at the same time on one task, their rates add, as for two pipes filling a tank or two runners closing a gap. When one agent acts in stages, the times add and the rates do not, which is why the average speed of a round trip is not the average of the two speeds. A story with one rate is plain distance equals rate times time, and a story that gives averages of a group of numbers is a different setup, about [[averages-before-after|averages before and after a change]].
+- Two or more rates appear in one story: speeds, jobs per hour, liters per minute.
+- Agents acting at the same time on one task, whose rates add, as for two pipes filling a tank or two runners closing a gap.
+- One agent acting in stages, whose times add and whose rates do not, which is why the average speed of a round trip is not the average of the two speeds.
+- Not this pattern: a story with one rate, which is plain distance equals rate times time, or a story that gives averages of a group of numbers, a different setup about [[averages-before-after|averages before and after a change]].
 
 ## Methods and Formulas to Try
 Name what acts at the same time and what acts in sequence; rates add across the first, times across the second.
@@ -4779,5 +4805,140 @@ Name what acts at the same time and what acts in sequence; rates add across the 
 
 ## Contest profile
 A MATHCOUNTS and AMC 8 and 10 staple that returns on the AIME with several legs or travelers and a single unknown speed or time.
+`,
+
+"odd-even-functions": String.raw`
+## Key forms
+- $f(-x) = f(x)$ for every $x$ in the domain: $f$ is even, and its graph is symmetric in the $y$-axis
+- $f(-x) = -f(x)$ for every $x$ in the domain: $f$ is odd, its graph is symmetric about the origin, and $f(0) = 0$ whenever $0$ is in the domain
+- Combinations: a sum of two even functions is even and a sum of two odd functions is odd; a product or quotient is even when the two parities match and odd when they differ; a composition is odd when both functions are odd and even in every other case where both have a parity
+- $f(x) = \dfrac{f(x) + f(-x)}{2} + \dfrac{f(x) - f(-x)}{2}$, an even part plus an odd part, and the split is unique
+- $\displaystyle\int_{-a}^{a} f(x)\,\mathrm{d}x = 0$ for odd $f$ and $2\displaystyle\int_{0}^{a} f(x)\,\mathrm{d}x$ for even $f$
+- Standard parities: $x^n$ is even for even $n$ and odd for odd $n$; $\cos x$ and $\lvert x\rvert$ are even; $\sin x$ and $\tan x$ are odd; $a^x$ and $\log x$ are neither
+
+## Conditions
+The domain must be symmetric about $0$: whenever $x$ is allowed, so is $-x$. Without that the test $f(-x) = f(x)$ cannot even be stated, so $\sqrt{x}$, and $x^2$ restricted to $x \ge 0$, are neither even nor odd. The only function that is both is the zero function, because $f(x) = f(-x) = -f(x)$ forces $f(x) = 0$.
+
+## Why it works
+Replacing $x$ by $-x$ reflects the graph in the $y$-axis, so $f(-x) = f(x)$ says the reflected graph is the original one. Reflecting in the $y$-axis and then in the $x$-axis is a half turn about the origin, and $f(-x) = -f(x)$ says that the point $(-x, -f(x))$, the half turn of $(x, f(x))$, is on the graph too. Putting $x = 0$ in the odd condition gives $f(0) = -f(0)$, so $f(0) = 0$.
+
+Each combination rule is one line of substitution. For two odd functions, $$(fg)(-x) = f(-x)\,g(-x) = \bigl(-f(x)\bigr)\bigl(-g(x)\bigr) = (fg)(x),$$ so the product is even, and the other products, sums, and quotients are checked the same way, with signs multiplying. For a composition with $g$ odd and $f$ even, $f(g(-x)) = f(-g(x)) = f(g(x))$, which is even, and if $g$ is even the inner step $g(-x) = g(x)$ already makes the composition even.
+
+For the split, set $e(x) = \frac{f(x) + f(-x)}{2}$ and $o(x) = \frac{f(x) - f(-x)}{2}$. Replacing $x$ by $-x$ leaves $e$ unchanged and flips the sign of $o$, and $e + o = f$. The split is unique: if $e + o = e' + o'$, then $e - e' = o' - o$ is both even and odd, hence zero.
+
+For the integral, substitute $x = -u$ on the left half of the interval: $$\int_{-a}^{0} f(x)\,\mathrm{d}x = \int_{0}^{a} f(-u)\,\mathrm{d}u = \pm\int_{0}^{a} f(u)\,\mathrm{d}u,$$ with the plus sign for an even function and the minus sign for an odd one. Adding the right half gives twice the right half in the even case and zero in the odd case.
+
+## Useful observations
+- A polynomial is even exactly when only even powers of $x$ appear and odd exactly when only odd powers appear, since $p(-x) = \pm p(x)$ compares coefficients power by power. The even part of a polynomial is the sum of its even-degree terms, which is why the sum of those coefficients is $\frac{P(1) + P(-1)}{2}$, as in [[coefficient-extraction|Coefficient Sums]].
+- A given value $f(-a)$ with $f(a)$ asked for usually hides an odd part: removing the constant term, or whatever else spoils oddness, leaves an odd function whose values at $a$ and $-a$ are opposite.
+- The roots of an even or odd function come in pairs $\pm r$. An odd function defined at $0$ also has $0$ as a root, so it has an odd number of distinct real roots when the number is finite, and the roots of an even polynomial add to $0$.
+- Differentiating $f(-x) = \pm f(x)$ gives $-f'(-x) = \pm f'(x)$, so the derivative of an even function is odd and the derivative of an odd function is even.
+- Any function with $f(x + y) = f(x) + f(y)$ is odd: setting $y = 0$ gives $f(0) = 0$ and setting $y = -x$ gives $f(x) + f(-x) = 0$, the first step in [[cauchy-functional-equations|Cauchy's Functional Equations]].
+
+## Applications
+Evaluating a function at $-a$ from its value at $a$, discarding half of a symmetric integral, and halving the casework when counting or summing roots.
+
+## Contest profile
+Parity usually appears as a quiet step rather than a headline: the problem supplies a value at one point and asks for the opposite point, or an integral over a symmetric interval that cancels, or a polynomial whose even- and odd-degree terms have to be separated. The check costs one substitution, so testing $-x$ before expanding anything is the habit it earns. It is also the simplest case of reading a symmetry off an equation, and the other axes and centers extend it directly.
+`,
+
+"inverse-function-properties": String.raw`
+## Key forms
+- $f(a) = b \iff f^{-1}(b) = a$, so $f(f^{-1}(x)) = x$ for every $x$ in the range of $f$ and $f^{-1}(f(x)) = x$ for every $x$ in its domain
+- The domain of $f^{-1}$ is the range of $f$ and the range of $f^{-1}$ is the domain of $f$; the point $(a, b)$ is on the graph of $f$ exactly when $(b, a)$ is on the graph of $f^{-1}$, so the two graphs are mirror images in $y = x$
+- $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$, the last step undone first
+- If $f$ is strictly increasing then so is $f^{-1}$, and $f(x) = f^{-1}(x)$ holds exactly where $f(x) = x$
+- The inverse of $f(x) = \dfrac{ax + b}{cx + d}$ with $ad - bc \ne 0$ is $f^{-1}(x) = \dfrac{dx - b}{-cx + a}$
+
+## Conditions
+$f$ must be one-to-one on the domain used: no horizontal line meets its graph twice. When it is not, a piece of the domain on which it is one-to-one is chosen first, and the inverse belongs to that piece alone. The statement about $f(x) = f^{-1}(x)$ needs $f$ strictly increasing; a decreasing function can meet its inverse away from the line $y = x$.
+
+## Why it works
+The relation $f(a) = b \iff f^{-1}(b) = a$ is the definition, and the two composition identities are its two readings: start at $a$, apply $f$ to reach $b$, apply $f^{-1}$ to return to $a$, and the same walk backwards. Swapping the coordinates of every point of a graph reflects it in the line $y = x$, and swapping the coordinates of every point of the graph of $f$ is exactly the graph of $f^{-1}$, which is why domain and range trade places.
+
+For a composition, $f(g(x)) = y$ is undone by undoing $f$ first and then $g$: $$x = g^{-1}\bigl(f^{-1}(y)\bigr).$$ Putting on socks and then shoes is undone by taking off the shoes first.
+
+If $f$ is increasing and $f^{-1}$ were not, there would be $u < v$ with $f^{-1}(u) \ge f^{-1}(v)$; applying the increasing $f$ to both sides gives $u \ge v$, a contradiction. For the fixed-point statement, suppose $f(x) = f^{-1}(x) = y$, which means $f(x) = y$ and $f(y) = x$. If $x < y$ then $f(x) < f(y)$ gives $y < x$, and if $x > y$ the same step gives $y > x$; both are impossible, so $x = y$ and $f(x) = x$. The other direction is immediate.
+
+For the fraction, solve $y = \frac{ax + b}{cx + d}$ for $x$: $$y(cx + d) = ax + b \ \Longrightarrow \ x(cy - a) = b - dy \ \Longrightarrow \ x = \frac{dy - b}{-cy + a}.$$ The condition $ad - bc \ne 0$ is what keeps $f$ from being constant.
+
+## Useful observations
+- To find $f^{-1}(b)$ without finding $f^{-1}$, solve $f(x) = b$. A one-to-one function has at most one solution, so a solution found by inspection is the answer.
+- Exponentials and logarithms with the same base are inverses, which is the content of $b^{\log_b x} = x$ and $\log_b b^x = x$ in [[log-rules|Logarithm Rules]].
+- A function equal to its own inverse satisfies $f(f(x)) = x$, and its graph is symmetric in $y = x$. The maps $x \mapsto c - x$ and $x \mapsto \frac{k}{x}$ are examples, and such symmetries are read off an equation as in [[function-symmetry-equation|Writing a Function's Symmetry as an Equation]].
+- For a decreasing $f$, any pair with $f(p) = q$ and $f(q) = p$ makes $f(x) = f^{-1}(x)$ true at both $x = p$ and $x = q$, even when $p \ne q$.
+- Differentiating $f(f^{-1}(x)) = x$ gives $f'(f^{-1}(x))\,(f^{-1})'(x) = 1$, so the slope of $f^{-1}$ at $b$ is the reciprocal of the slope of $f$ at the point $a$ with $f(a) = b$.
+
+## Applications
+Evaluating an inverse at a point, inverting a composition, finding where a function meets its inverse, and trading a question about $f^{-1}$ for one about the reflected graph.
+
+## Contest profile
+Inverses show up in three forms: an inverse that must be evaluated at a point where the formula for it is out of reach but the equation $f(x) = b$ has a visible solution, an inverse of a composition, and a question about where a function crosses its inverse. The mirror-image picture settles many monotonicity and area questions in a line, and the restriction to a one-to-one piece is the step most often forgotten.
+`,
+
+"function-symmetry-equation": String.raw`
+## When to use
+A function is described by a relation such as $f(2 - x) = f(x)$, $f(x + 3) = f(1 - x)$, $f(x + 2) = -f(x)$, or by a sentence saying its graph is symmetric about a line or a point, and the question asks for a value far from the data, a sum of roots, a count of roots in an interval, or a period. The relation is usually the whole description of $f$, so the work is reading it as geometry before any substitution. A relation in which the arguments differ by a constant is a shift, not a mirror.
+
+## How
+1. Look at the two arguments in each relation and form their sum and their difference. A constant sum $c$ means a reflection or a half turn; a constant difference means a shift.
+2. If the values are equal, $f(x) = f(c - x)$, the graph has the axis $x = \frac{c}{2}$. If the values add to $2b$, $f(x) + f(c - x) = 2b$, the graph has the center $\bigl(\frac{c}{2}, b\bigr)$.
+3. A shift $f(x + T) = f(x)$ gives the period $T$, and $f(x + a) = -f(x)$ gives the period $2a$, since applying it twice returns $f(x)$.
+4. Combine two symmetries into a period: two axes at $x = p$ and $x = q$, or two centers at the same height with $x$-coordinates $p$ and $q$, give the period $2\lvert p - q\rvert$; an axis and a center give the period $4\lvert p - q\rvert$.
+5. Subtract whole periods until the argument is in an interval where $f$ is known, and use one more symmetry if the argument lands on the wrong side.
+
+The relation $f(x + 1) + f(3 - x) = 6$ has arguments $x + 1$ and $3 - x$ adding to $4$ and values adding to $6$, so the center is $(2, 3)$. The relation $f(x + 3) = f(1 - x)$ has arguments adding to $4$ and equal values, so the axis is $x = 2$.
+
+{{figure:symmetries}}
+
+## Why it works
+The points $(x, f(x))$ and $(c - x, f(c - x))$ have $x$-coordinates whose midpoint is $\frac{c}{2}$ for every $x$. If their heights are equal, the segment joining them is horizontal and is bisected by the line $x = \frac{c}{2}$, so the two points are mirror images. If their heights add to $2b$, the midpoint of the segment is $\bigl(\frac{c}{2}, b\bigr)$ for every $x$, so every point is carried to its partner by a half turn about that center. A relation $f(x + a) = -f(x)$ gives $f(x + 2a) = -f(x + a) = f(x)$ by applying itself twice.
+
+Two symmetries compose into a shift. If $f(2p - x) = f(x)$ and $f(2q - x) = f(x)$ for two axes, then $$f(x) = f(2p - x) = f\bigl(2q - (2p - x)\bigr) = f\bigl(x + 2(q - p)\bigr),$$ so $2\lvert q - p\rvert$ is a period. For an axis $x = p$ and a center $(q, b)$, the same substitution gives $f\bigl(x + 2(q - p)\bigr) = 2b - f(x)$, and doing it twice gives $f\bigl(x + 4(q - p)\bigr) = f(x)$. For two centers at the same height $b$ the first substitution gives $f\bigl(x + 2(q - p)\bigr) = 2b - f(2p - x) = f(x)$, and if the heights differ by $b_2 - b_1$ the function repeats up to the constant $2(b_2 - b_1)$ instead.
+
+Roots follow the same pairing: with an axis at $x = p$, the roots $r$ and $2p - r$ come in pairs adding to $2p$, and with a center at $(p, 0)$ the same is true and $p$ itself is a root when $f$ is defined there.
+
+## Formulas it uses
+- [[odd-even-functions]]: the case of the axis $x = 0$ and the center $(0, 0)$, where $f(-x) = f(x)$ and $f(-x) = -f(x)$ are the two symmetry equations with $c = 0$.
+
+## Common traps
+- Reading $f(x + a) = f(x - a)$ as a mirror. The arguments differ by $2a$, so this is a shift and the period is $2a$; a mirror needs arguments whose sum is constant.
+- Halving wrongly: $f(x) = f(c - x)$ has the axis $x = \frac{c}{2}$, while $f(a + x) = f(a - x)$ has the axis $x = a$.
+- Taking two centers at different heights to give a period. They give a period only up to a constant, so the function is the sum of a periodic function and a linear one.
+- Treating the period found as the smallest, or applying a relation outside the domain where it was given. It is a period; the least one may be shorter.
+
+## Contest profile
+This is the standard way a problem hides a period or a mirror line: the function is never written down, only a relation or two, and the question needs a value far away or a count of roots. Read as geometry first, the relations turn a functional-equation problem into a one-line reduction. When the symmetry is not given but has to be found, it pairs with [[functional-substitution|Functional Equation Substitution]].
+`,
+
+"slope-to-a-point": String.raw`
+## When to use
+A quotient of differences, $\frac{y - a}{x - b}$ or the special case $\frac{y}{x}$, is to be maximized or minimized while $(x, y)$ satisfies a condition that is easy to draw: a circle, an ellipse, a disk, or a region cut out by lines. The condition may be hidden, as in a constraint like $x^2 + y^2 = 1$ or a system of linear inequalities. It is also worth a look when a problem asks for a range of values of such a ratio.
+
+## How
+1. Rewrite the quantity as a slope: $\frac{y - a}{x - b}$ is the slope from $(b, a)$ to $(x, y)$, and $\frac{y}{x}$ is the slope from the origin.
+2. Draw the allowed set of points $(x, y)$ and mark the fixed point $(b, a)$.
+3. Swing a line about the fixed point. The slope changes continuously, and its extreme values occur at the last lines that still touch the set.
+4. For a curve or disk those lines are the tangents from the fixed point, found with [[tangent-lines-from-point|Tangent Lines to a Circle from a Point (Distance Method)]]; for a polygon they pass through vertices, so it is enough to compute the slope at each corner.
+5. If the set reaches the vertical line $x = b$, the slope is unbounded there, and the ratio has no maximum or minimum over the whole set.
+
+For $(x, y)$ on the circle $x^2 + y^2 = 4$, the value $\frac{y - 1}{x - 3}$ is the slope from $(3, 1)$. That point is outside the circle, so two tangents leave it, and the largest and smallest slopes are the slopes of those tangents. The tangent condition $\frac{\lvert 1 - 3m\rvert}{\sqrt{m^2 + 1}} = 2$ gives $5m^2 - 6m - 3 = 0$, so the range of the ratio is from $\frac{3 - 2\sqrt6}{5}$ to $\frac{3 + 2\sqrt6}{5}$.
+
+## Why it works
+The slope $\frac{y - a}{x - b}$ is the same for every point of a line through $(b, a)$, because points on such a line differ from $(b, a)$ by multiples of one direction. So the quantity depends only on which line through $(b, a)$ the point is on, and the set of values it takes is the set of slopes of lines through $(b, a)$ that meet the region. Rotating a line about $(b, a)$ changes its slope continuously, so the set of slopes is an interval as long as the vertical line is not reached, and its endpoints are the lines that only just touch the region: tangents for a smooth curve and corner lines for a polygon.
+
+For a polygon this means a linear-fractional function over a convex region is extreme at a vertex, as long as the denominator keeps one sign across it.
+
+## Formulas it uses
+- [[distance-midpoint]]: the slope $\frac{y_2 - y_1}{x_2 - x_1}$ between two points, which is the quantity the method reads.
+
+## Common traps
+- Dividing by $x - b$ when the region contains points on both sides of $x = b$: the vertical line is then reached, and the ratio is unbounded.
+- Taking only one tangent: the maximum and the minimum are the two different tangents.
+- Reading $\frac{y - a}{x - b}$ as the slope from $(a, b)$ instead of from $(b, a)$.
+- Forgetting a vertical tangent, which has no slope; it signals that the ratio is unbounded on that side.
+
+## Contest profile
+A short way through an optimization that would otherwise be a calculus exercise or an inequality with a constraint, and common enough in coordinate problems on circles and polygons to be worth recognizing on sight. It shows up as a request for the extreme value of a quotient of coordinates, and the moment the ratio is read as a slope the figure is a region and a point with its extreme lines.
 `
 });

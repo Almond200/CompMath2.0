@@ -26,4 +26,93 @@ How many different complementary three-card sets are there?`, u: "https://live.p
 "1997-aime-7": { s: String.raw`A car travels due east at $\frac{2}{3}$ mile per minute on a long, straight road. At the same time, a circular storm, whose radius is $51$ miles, moves southeast at $\frac{1}{2}\sqrt{2}$ mile per minute. At time $t = 0,$ the center of the storm is $110$ miles due north of the car. At time $t = t_1$ minutes, the car enters the storm circle, and at time $t = t_2$ minutes, the car leaves the storm circle. Find $\frac{1}{2}(t_1 + t_2).$`, u: "https://live.poshenloh.com/past-contests/aime/1997" },
 "1997-aime-8": { s: String.raw`How many different $4 \times 4$ arrays whose entries are all $1$’s and $-1$’s have the property that the sum of the entries in each row is $0$ and the sum of the entries in each column is $0?$`, u: "https://live.poshenloh.com/past-contests/aime/1997" },
 "1997-aime-9": { s: String.raw`Given a nonnegative real number $x,$ let $\langle x\rangle$ denote the fractional part of $x;$ that is, $\langle x\rangle = x - \lfloor x\rfloor,$ where $\lfloor x\rfloor$ denotes the greatest integer less than or equal to $x.$ Suppose that $a$ is positive, $\langle a^{-1}\rangle = \langle a^2\rangle,$ and $2 \lt a^2 \lt 3.$ Find the value of $a^{12} - 144a^{-1}.$`, u: "https://live.poshenloh.com/past-contests/aime/1997" },
+"1997-ajhsme-1": { s: String.raw`$$ \dfrac{1}{10} + \dfrac{9}{100} + \dfrac{9}{1000} + \dfrac{7}{10000} = $$(A) $0.0026$  (B) $0.0197$  (C) $0.1997$  (D) $0.26$  (E) $1.997$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-10": { s: String.raw`What fraction of this square region is shaded? Stripes are equal in width, and the figure is drawn to scale.
+
+@@fig:amc8/1997/10.svg@@
+
+(A) $\dfrac{5}{12}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{7}{12}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{5}{6}$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-11": { s: String.raw`Let $\boxed{N}$ mean the number of whole number divisors of $N.$ For example, $\boxed{3}=2$ because $3$ has two divisors, $1$ and $3.$ Find the value of$$\boxed{\boxed{11}\times\boxed{20}}.$$(A) $6$  (B) $8$  (C) $12$  (D) $16$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-12": { s: String.raw`$$\angle 1 + \angle 2 = 180^\circ$$$$\angle 3 = \angle 4$$Find $\angle 4$
+
+@@fig:amc8/1997/12.svg@@
+
+(A) $20^\circ$  (B) $25^\circ$  (C) $30^\circ$  (D) $35^\circ$  (E) $40^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-13": { s: String.raw`Three bags of jelly beans contain $26,$ $28,$ and $30$ beans. The ratios of yellow beans to all beans in each of these bags are $50\%,$ $25\%,$ and $20\%,$ respectively. All three bags of candy are dumped into one bowl. Which of the following is closest to the ratio of yellow jelly beans to all beans in the bowl?
+
+(A) $31\%$  (B) $32\%$  (C) $33\%$  (D) $35\%$  (E) $95\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-14": { s: String.raw`There is a set of five positive integers whose average (mean) is $5,$ whose median is $5,$ and whose only mode is $8.$ What is the difference between the largest and smallest integers in the set?
+
+(A) $3$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-15": { s: String.raw`Each side of the large square in the figure is trisected (divided into three equal parts). The corners of an inscribed square are at these trisection points, as shown. The ratio of the area of the inscribed square to the area of the large square is
+
+@@fig:amc8/1997/15.svg@@
+
+(A) $\dfrac{\sqrt{3}}{3}$  (B) $\dfrac{5}{9}$  (C) $\dfrac{2}{3}$  (D) $\dfrac{\sqrt{5}}{3}$  (E) $\dfrac{7}{9}$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-16": { s: String.raw`Penni Precisely buys $\$ 100$ worth of stock in each of three companies: Alabama Almonds, Boston Beans, and California Cauliflower. After one year, AA was up $20 \%,$ BB was down $25 \%,$ and CC was unchanged. For the second year, AA was down $20 \%$ from the previous year, BB was up $25 \%$ from the previous year, and CC was unchanged. If $A,$ $B,$ and $C$ are the final values of the stock, then
+
+(A) $A = B = C$  (B) $A = B \lt C$  (C) $C \lt B = A$  (D) $A \lt B \lt C$  (E) $B \lt A \lt C$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-17": { s: String.raw`A cube has eight vertices (corners) and twelve edges. A segment, such as $x,$ which joins two vertices not joined by an edge is called a diagonal. Segment $y$ is also a diagonal. How many diagonals does a cube have?
+
+@@fig:amc8/1997/17.svg@@
+
+(A) $6$  (B) $8$  (C) $12$  (D) $14$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-18": { s: String.raw`At the grocery store last week, small boxes of facial tissue were priced at $4$ boxes for $\$5.$ This week they are on sale at $5$ boxes for $\$4.$ The percent decrease in the price per box during the sale was closest to
+
+(A) $30\%$  (B) $35\%$  (C) $40\%$  (D) $45\%$  (E) $65\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-19": { s: String.raw`If the product$$\dfrac{3}{2}\cdot \dfrac{4}{3}\cdot \dfrac{5}{4}\cdot \dfrac{6}{5}\cdot \ldots\cdot \dfrac{a}{b} = 9,$$what is the sum of $a$ and $b?$
+
+(A) $11$  (B) $13$  (C) $17$  (D) $35$  (E) $37$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-2": { s: String.raw`Ahn chooses a two-digit integer, subtracts it from $200,$ and doubles the result. What is the largest number Ahn can get?
+
+(A) $200$  (B) $202$  (C) $220$  (D) $380$  (E) $398$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-20": { s: String.raw`A pair of $8$-sided dice has sides numbered $1$ through $8.$ Each side has the same probability (chance) of landing face up. The probability that the product of the two numbers that land face-up exceeds $36$ is
+
+(A) $\dfrac{5}{32}$  (B) $\dfrac{11}{64}$  (C) $\dfrac{3}{16}$  (D) $\dfrac{1}{4}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-21": { s: String.raw`Each corner cube is removed from this $3\text{ cm}\times 3\text{ cm}\times 3\text{ cm}$ cube. The surface area of the remaining figure is
+
+@@fig:amc8/1997/21.svg@@
+
+(A) $19\text{ sq.cm}$  (B) $24\text{ sq.cm}$  (C) $30\text{ sq.cm}$  (D) $54\text{ sq.cm}$  (E) $72\text{ sq.cm}$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-22": { s: String.raw`A two-inch cube $(2\times 2\times 2)$ of silver weighs $3$ pounds and is worth $\$ 200.$ How much is a three-inch cube of silver worth?
+
+(A) $\$300$  (B) $\$375$  (C) $\$450$  (D) $\$560$  (E) $\$675$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-23": { s: String.raw`There are positive integers that have these properties:
+
+I. the sum of the squares of their digits is $50,$ and
+
+II. each digit is larger than the one to its left.
+
+The product of the digits of the largest integer with both properties is
+
+(A) $7$  (B) $25$  (C) $36$  (D) $48$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-24": { s: String.raw`Diameter $ACE$ is divided at $C$ in the ratio $2:3.$ The two semicircles, $ABC$ and $CDE,$ divide the circular region into an upper (shaded) region and a lower region. The ratio of the area of the upper region to that of the lower region is
+
+@@fig:amc8/1997/24.svg@@
+
+(A) $2:3$  (B) $1:1$  (C) $3:2$  (D) $9:4$  (E) $5:2$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-25": { s: String.raw`All of the even numbers from $2$ to $98$ inclusive, excluding those ending in $0,$ are multiplied together. What is the rightmost digit (the units digit) of the product?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-3": { s: String.raw`Which of the following numbers is the largest?
+
+(A) $0.97$  (B) $0.979$  (C) $0.9709$  (D) $0.907$  (E) $0.9089$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-4": { s: String.raw`Julie is preparing a speech for her class. Her speech must last between one-half hour and three-quarters of an hour. The ideal rate of speech is $150$ words per minute. If Julie speaks at the ideal rate, which of the following number of words would be an appropriate length for her speech?
+
+(A) $2250$  (B) $3000$  (C) $4200$  (D) $4350$  (E) $5650$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-5": { s: String.raw`There are many two-digit multiples of $7,$ but only two of the multiples have a digit sum of $10.$ The sum of these two multiples of $7$ is
+
+(A) $119$  (B) $126$  (C) $140$  (D) $175$  (E) $189$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-6": { s: String.raw`In the number $74982.1035$ the value of the place occupied by the digit $9$ is how many times as great as the value of the place occupied by the digit $3?$
+
+(A) $1{,}000$  (B) $10{,}000$  (C) $100{,}000$  (D) $1{,}000{,}000$  (E) $10{,}000{,}000$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-7": { s: String.raw`The area of the smallest square that will contain a circle of radius $4$ is
+
+(A) $8$  (B) $16$  (C) $32$  (D) $64$  (E) $128$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-8": { s: String.raw`Walter gets up at $6:30$ a.m., catches the school bus at $7:30$ a.m., has $6$ classes that last $50$ minutes each, has $30$ minutes for lunch, and has $2$ hours additional time at school. He takes the bus home and arrives at $4:00$ p.m. How many minutes has he spent on the bus?
+
+(A) $30$  (B) $60$  (C) $75$  (D) $90$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
+"1997-ajhsme-9": { s: String.raw`Three students, with different names, line up single file. What is the probability that they are in alphabetical order from front-to-back?
+
+(A) $\dfrac{1}{12}$  (B) $\dfrac{1}{9}$  (C) $\dfrac{1}{6}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1997" },
 });

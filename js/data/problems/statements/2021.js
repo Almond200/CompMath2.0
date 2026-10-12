@@ -39,19 +39,540 @@ However, upon hearing that all four students replied no, each student was able t
 "2021-aime-ii-7": { s: String.raw`Let $a,$ $b,$ $c,$ and $d$ be real numbers that satisfy the system of equations$$\begin{aligned}a + b &= -3, \\ ab + bc + ca &= -4,\end{aligned}$$$$\begin{aligned}abc + bcd + cda + dab &= 14, \\ abcd &= 30.\end{aligned}$$There exist relatively prime positive integers $m$ and $n$ such that$$a^2 + b^2 + c^2 + d^2 = \frac{m}{n}.$$Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2021II" },
 "2021-aime-ii-8": { s: String.raw`An ant makes a sequence of moves on a cube where a move consists of walking from one vertex to an adjacent vertex along an edge of the cube. Initially the ant is at a vertex of the bottom face of the cube and chooses one of the three adjacent vertices to move to as its first move. For all moves after the first move, the ant does not return to its previous vertex, but chooses to move to one of the other two adjacent vertices. All choices are selected at random so that each of the possible moves is equally likely. The probability that after exactly $8$ moves that ant is at a vertex of the top face on the cube is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/2021II" },
 "2021-aime-ii-9": { s: String.raw`Find the number of ordered pairs $(m, n)$ such that $m$ and $n$ are positive integers in the set $\{1, 2, \ldots, 30\}$ and the greatest common divisor of $2^m + 1$ and $2^n - 1$ is not $1.$`, u: "https://live.poshenloh.com/past-contests/aime/2021II" },
-"2021-amc-10b-22": { s: String.raw`Ang, Ben, and Jasmin each have $5$ blocks, colored red, blue, yellow, white, and green; and there are $5$ empty boxes. Each of the people randomly and independently of the other two people places one of their blocks into each box. The probability that at least one box receives $3$ blocks all of the same color is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m + n ?$
+"2021-fall-amc-10a-1": { s: String.raw`What is the value of $\frac{(2112-2021)^2}{169}?$
+
+(A) $7$  (B) $21$  (C) $49$  (D) $64$  (E) $91$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-10": { s: String.raw`A school has $100$ students and $5$ teachers. In the first period, each student is taking one class, and each teacher is teaching one class. The enrollments in the classes are $50, 20, 20, 5,$ and $5.$ Let $t$ be the average value obtained if a teacher is picked at random and the number of students in their class is noted. Let $s$ be the average value obtained if a student is picked at random and the number of students in their class, including that student, is noted. What is $t-s?$
+
+(A) $-18.5$  (B) $-13.5$  (C) $0$  (D) $13.5$  (E) $18.5$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-11": { s: String.raw`Emily sees a ship traveling at a constant speed along a straight section of a river. She walks parallel to the riverbank at a uniform rate faster than the ship. She counts $210$ equal steps walking from the back of the ship to the front. Walking in the opposite direction, she counts $42$ steps of the same size from the front of the ship to the back. In terms of Emily's equal steps, what is the length of the ship?
+
+(A) $70$  (B) $84$  (C) $98$  (D) $105$  (E) $126$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-12": { s: String.raw`The base-nine representation of the number $N$ is $27{,}006{,}000{,}052_{\text{nine}}.$ What is the remainder when $N$ is divided by $5?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-13": { s: String.raw`Each of $6$ balls is randomly and independently painted either black or white with equal probability. What is the probability that every ball is different in color from more than half of the other $5$ balls?
+
+(A) $\frac{1}{64}$  (B) $\frac{1}{6}$  (C) $\frac{1}{4}$  (D) $\frac{5}{16}$  (E) $\frac{1}{2}$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-14": { s: String.raw`How many ordered pairs $(x, y)$ of real numbers satisfy the following system of equations?
+$$\begin{aligned} x^2 + 3y &= 9 \\ (|x| + |y| - 4)^2 &= 1 \end{aligned}$$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $5$  (E) $7$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-15": { s: String.raw`Isosceles triangle $ABC$ has $AB = AC = 3\sqrt{6},$ and a circle with radius $5\sqrt{2}$ is tangent to line $AB$ at $B$ and to line $AC$ at $C.$ What is the area of the circle that passes through vertices $A, B,$ and $C?$
+
+(A) $24\pi$  (B) $25\pi$  (C) $26\pi$  (D) $27\pi$  (E) $28\pi$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-16": { s: String.raw`The graph of $f(x) = |\lfloor x \rfloor| - |\lfloor 1 - x \rfloor|$ is symmetric about which of the following? (Here $\lfloor x \rfloor$ is the greatest integer not exceeding $x.$)
+
+(A) the $y$-axis
+(B) the line $x = 1$
+(C) the origin
+(D) the point $\left(\frac{1}{2}, 0\right)$
+(E) the point $(1, 0)$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-17": { s: String.raw`An architect is building a structure that will place vertical pillars at the vertices of regular hexagon $ABCDEF,$ which is lying horizontally on the ground. The six pillars will hold up a flat solar panel that will not be parallel to the ground. The heights of the pillars at $A,$ $B,$ and $C$ are $12,$ $9,$ and $10$ meters, respectively. What is the height, in meters, of the pillar at $E?$
+
+(A) $9$  (B) $6\sqrt{3}$  (C) $8\sqrt{3}$  (D) $17$  (E) $12\sqrt{3}$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-18": { s: String.raw`A farmer's rectangular field is partitioned into a $2$ by $2$ grid of $4$ rectangular sections as shown in the figure. In each section the farmer will plant one crop: corn, wheat, soybeans, or potatoes. The farmer does not want to grow corn and wheat in any two sections that share a border, and the farmer does not want to grow soybeans and potatoes in any two sections that share a border. Given these restrictions, in how many ways can the farmer choose crops to plant in each of the four sections of the field?
+
+@@fig:amc10/2021FallA/18.png@@
+
+(A) $12$  (B) $64$  (C) $84$  (D) $90$  (E) $144$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-19": { s: String.raw`A disk of radius $1$ rolls all the way around the inside of a square of side length $s > 4$ and sweeps out a region of area $A.$ A second disk of radius $1$ rolls all the way around the outside of the same square and sweeps out a region of area $2A.$ The value of $s$ can be written as $a + \frac{b\pi}{c},$ where $a,$ $b,$ and $c$ are positive integers and $b$ and $c$ are relatively prime. What is $a+b+c?$
+
+(A) $10$  (B) $11$  (C) $12$  (D) $13$  (E) $14$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-2": { s: String.raw`Menkara has a $4 \times 6$ index card. If she shortens the length of one side of this card by $1$ inch, the card would have area $18$ square inches. What would the area of the card be in square inches if instead she shortens the length of the other side by $1$ inch?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-20": { s: String.raw`For how many ordered pairs $(b, c)$ of positive integers does neither $x^2 + bx + c = 0$ nor $x^2 + cx + b = 0$ have two distinct real solutions?
+
+(A) $4$  (B) $6$  (C) $8$  (D) $12$  (E) $16$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-21": { s: String.raw`Each of $20$ balls is tossed independently and at random into one of $5$ bins. Let $p$ be the probability that some bin ends up with $3$ balls, another with $5$ balls, and the other three with $4$ balls each. Let $q$ be the probability that every bin ends up with $4$ balls. What is $\frac{p}{q}?$
+
+(A) $1$  (B) $4$  (C) $8$  (D) $12$  (E) $16$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-22": { s: String.raw`Inside a right circular cone with base radius $5$ and height $12$ are three congruent spheres each with radius $r.$ Each sphere is tangent to the other two spheres and also tangent to the base and side of the cone. What is $r?$
+
+(A) $\frac{3}{2}$  (B) $\frac{90 - 40\sqrt{3}}{11}$  (C) $2$  (D) $\frac{144 - 25\sqrt{3}}{44}$  (E) $\frac{5}{2}$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-23": { s: String.raw`For each positive integer $n,$ let $f_1(n)$ be twice the number of positive integer divisors of $n,$ and for $j \ge 2,$ let $f_j(n) = f_1(f_{j-1}(n)).$ For how many values of $n \le 50$ is $f_{50}(n) = 12?$
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-24": { s: String.raw`Each of the $12$ edges of a cube is labeled $0$ or $1.$ Two labelings are considered different even if one can be obtained from the other by a sequence of one or more rotations and/or reflections. For how many such labelings is the sum of the labels on the edges of each of the $6$ faces of the cube equal to $2?$
+
+(A) $8$  (B) $10$  (C) $12$  (D) $16$  (E) $20$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-25": { s: String.raw`A quadratic polynomial $p(x)$ with real coefficients and leading coefficient $1$ is called disrespectful if the equation $p(p(x)) = 0$ is satisfied by exactly three real numbers. Among all the disrespectful quadratic polynomials, there is a unique such polynomial $\tilde{p}(x)$ for which the sum of the roots is maximized. What is $\tilde{p}(1)?$
+
+(A) $\frac{5}{16}$  (B) $\frac{1}{2}$  (C) $\frac{5}{8}$  (D) $1$  (E) $\frac{9}{8}$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-3": { s: String.raw`What is the maximum number of balls of clay of radius $2$ that can completely fit inside a cube of side length $6$ assuming the balls can be reshaped but not compressed before they are packed in the cube?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-4": { s: String.raw`Mr. Lopez has a choice of two routes to get to work. Route A is $6$ miles long, and his average speed along this route is $30$ miles per hour. Route B is $5$ miles long, and his average speed along this route is $40$ miles per hour, except for a $\frac{1}{2}$-mile stretch in a school zone where his average speed is $20$ miles per hour. By how many minutes is Route B quicker than Route A?
+
+(A) $2 \frac{3}{4}$  (B) $3 \frac{3}{4}$  (C) $4 \frac{1}{2}$  (D) $5 \frac{1}{2}$  (E) $6 \frac{3}{4}$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-5": { s: String.raw`The six-digit number $\underline{2}\,\underline{0}\,\underline{2}\,\underline{1}\,\underline{0}\,\underline{A}$ is prime for only one digit $A.$ What is $A?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-6": { s: String.raw`Elmer the emu takes $44$ equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostrich can cover the same distance in $12$ equal leaps. The telephone poles are evenly spaced, and the $41$st pole along this road is exactly one mile ($5280$ feet) from the first pole. How much longer, in feet, is Oscar's leap than Elmer's stride?
+
+(A) $6$  (B) $8$  (C) $10$  (D) $11$  (E) $15$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-7": { s: String.raw`As shown in the figure below, point $E$ lies in the opposite half-plane determined by line $CD$ from point $A$ so that $\angle CDE = 110^\circ$. Point $F$ lies on $\overline{AD}$ so that $DE = DF$, and $ABCD$ is a square. What is the degree measure of $\angle AFE?$
+
+@@fig:amc10/2021FallA/7.png@@
+
+(A) $160$  (B) $164$  (C) $166$  (D) $170$  (E) $174$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-8": { s: String.raw`A two-digit positive integer is said to be cuddly if it is equal to the sum of its nonzero tens digit and the square of its units digit. How many two-digit positive integers are cuddly?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10a-9": { s: String.raw`When a certain unfair die is rolled, an even number is $3$ times as likely to appear as an odd number. The die is rolled twice. What is the probability that the sum of the numbers rolled is even?
+
+(A) $\frac{3}{8}$  (B) $\frac{4}{9}$  (C) $\frac{5}{9}$  (D) $\frac{9}{16}$  (E) $\frac{5}{8}$`, u: "pdf:fall-2021-amc-10a" },
+"2021-fall-amc-10b-1": { s: String.raw`What is the value of $1234 + 2341 + 3412 + 4123?$
+
+(A) $10{,}000$  (B) $10{,}010$  (C) $10{,}110$  (D) $11{,}000$  (E) $11{,}110$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-10": { s: String.raw`Forty slips of paper numbered $1$ to $40$ are placed in a hat. Alice and Bob each draw one number from the hat without replacement, keeping their numbers hidden from each other. Alice says, "I can't tell who has the larger number." Then Bob says, "I know who has the larger number." Alice says, "You do? Is your number prime?" Bob replies, "Yes." Alice says, "In that case, if I multiply your number by $100$ and add my number, the result is a perfect square." What is the sum of the two numbers drawn from the hat?
+
+(A) $27$  (B) $37$  (C) $47$  (D) $57$  (E) $67$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-11": { s: String.raw`A regular hexagon of side length $1$ is inscribed in a circle. Each minor arc of the circle determined by a side of the hexagon is reflected over that side. What is the area of the region bounded by these $6$ reflected arcs?
+
+(A) $\frac{5\sqrt{3}}{2} - \pi$  (B) $3\sqrt{3}-\pi$  (C) $4\sqrt{3}-\frac{3\pi}{2}$  (D) $\pi - \frac{\sqrt{3}}{2}$  (E) $\frac{\pi + \sqrt{3}}{2}$`, u: "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems/Problem_11" },
+"2021-fall-amc-10b-12": { s: String.raw`Which of the following conditions is sufficient to guarantee that integers $x,$ $y,$ and $z$ satisfy the equation
+$$x(x-y)+y(y-z)+z(z-x) = 1?$$
+
+(A) $x > y$ and $y = z$  (B) $x = y - 1$ and $y = z - 1$  (C) $x = z + 1$ and $y = x + 1$  (D) $x = z$ and $y - 1 = x$  (E) $x + y + z = 1$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-13": { s: String.raw`A square with side length $3$ is inscribed in an isosceles triangle with one side of the square along the base of the triangle. A square with side length $2$ has two vertices on the other square and the other two on sides of the triangle, as shown. What is the area of the triangle?
+
+@@fig:amc10/2021FallB/13.png@@
+
+(A) $19\frac{1}{4}$  (B) $20\frac{1}{4}$  (C) $21\frac{3}{4}$  (D) $22\frac{1}{2}$  (E) $23\frac{3}{4}$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-14": { s: String.raw`Una rolls $6$ standard $6$-sided dice simultaneously and calculates the product of the $6$ numbers obtained. What is the probability that the product is divisible by $4?$
+
+(A) $\frac{3}{4}$  (B) $\frac{57}{64}$  (C) $\frac{59}{64}$  (D) $\frac{187}{192}$  (E) $\frac{63}{64}$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-15": { s: String.raw`In square $ABCD,$ points $P$ and $Q$ lie on $\overline{AD}$ and $\overline{AB},$ respectively. Segments $\overline{BP}$ and $\overline{CQ}$ intersect at right angles at $R,$ with $BR = 6$ and $PR = 7.$ What is the area of the square?
+
+@@fig:amc10/2021FallB/15.png@@
+
+(A) $85$  (B) $93$  (C) $100$  (D) $117$  (E) $125$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-16": { s: String.raw`Five balls are arranged around a circle. Chris chooses two adjacent balls at random and interchanges them. Then Silva does the same, with her choice of adjacent balls to interchange being independent of Chris's. What is the expected number of balls that occupy their original positions after these two successive transpositions?
+
+(A) $1.6$  (B) $1.8$  (C) $2.0$  (D) $2.2$  (E) $2.4$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-17": { s: String.raw`Distinct lines $\ell$ and $m$ lie in the $xy$-plane. They intersect at the origin. Point $P(-1, 4)$ is reflected about line $\ell$ to point $P',$ and then $P'$ is reflected about line $m$ to point $P''.$ The equation of line $\ell$ is $5x - y = 0,$ and the coordinates of $P''$ are $(4, 1).$ What is the equation of line $m?$
+
+(A) $5x + 2y = 0$  (B) $3x + 2y = 0$  (C) $x - 3y = 0$  (D) $2x - 3y = 0$  (E) $5x - 3y = 0$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-18": { s: String.raw`Three identical square sheets of paper each with side length $6$ are stacked on top of each other. The middle sheet is rotated clockwise $30^\circ$ about its center and the top sheet is rotated clockwise $60^\circ$ about its center, resulting in the $24$-sided polygon shown in the figure below. The area of this polygon can be expressed in the form $a - b\sqrt{c},$ where $a,$ $b,$ and $c$ are positive integers, and $c$ is not divisible by the square of any prime. What is $a+b+c?$
+
+@@fig:amc10/2021FallB/18.png@@
+
+(A) $75$  (B) $93$  (C) $96$  (D) $129$  (E) $147$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-19": { s: String.raw`Let $N$ be the positive integer $7777\ldots777,$ a $313$-digit number where each digit is a $7.$ Let $f(r)$ be the leading digit of the $r$th root of $N.$ What is
+$$f(2) + f(3) + f(4) + f(5) + f(6)?$$
+
+(A) $8$  (B) $9$  (C) $11$  (D) $22$  (E) $29$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-2": { s: String.raw`What is the area of the shaded figure shown below?
+
+@@fig:amc10/2021FallB/2.png@@
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-20": { s: String.raw`In a particular game, each of $4$ players rolls a standard $6$-sided die. The winner is the player who rolls the highest number. If there is a tie for the highest roll, those involved in the tie will roll again and this process will continue until one player wins. Hugo is one of the players in this game. What is the probability that Hugo's first roll was a $5,$ given that he won the game?
+
+(A) $\frac{61}{216}$  (B) $\frac{367}{1296}$  (C) $\frac{41}{144}$  (D) $\frac{185}{648}$  (E) $\frac{11}{36}$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-21": { s: String.raw`Regular polygons with $5, 6, 7,$ and $8$ sides are inscribed in the same circle. No two of the polygons share a vertex, and no three of their sides intersect at a common point. At how many points inside the circle do two of their sides intersect?
+
+(A) $52$  (B) $56$  (C) $60$  (D) $64$  (E) $68$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-22": { s: String.raw`For each integer $n \ge 2,$ let $S_n$ be the sum of all products $jk,$ where $j$ and $k$ are integers and $1 \le j < k \le n.$ What is the sum of the $10$ least values of $n$ such that $S_n$ is divisible by $3?$
+
+(A) $196$  (B) $197$  (C) $198$  (D) $199$  (E) $200$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-23": { s: String.raw`Each of the $5$ sides and the $5$ diagonals of a regular pentagon are randomly and independently colored red or blue with equal probability. What is the probability that there will be a triangle whose vertices are among the vertices of the pentagon such that all of its sides have the same color?
+
+(A) $\frac{2}{3}$  (B) $\frac{105}{128}$  (C) $\frac{125}{128}$  (D) $\frac{253}{256}$  (E) $1$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-24": { s: String.raw`A cube is constructed from $4$ white unit cubes and $4$ blue unit cubes. How many different ways are there to construct the $2 \times 2 \times 2$ cube using these smaller cubes? (Two constructions are considered the same if one can be rotated to match the other.)
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-25": { s: String.raw`A rectangle with side lengths $1$ and $3,$ a square with side length $1,$ and a rectangle $R$ are inscribed inside a larger square as shown. The sum of all possible values for the area of $R$ can be written in the form $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m+n?$
+
+@@fig:amc10/2021FallB/25.png@@
+
+(A) $14$  (B) $23$  (C) $46$  (D) $59$  (E) $67$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-3": { s: String.raw`The expression
+$$\frac{2021}{2020} - \frac{2020}{2021}$$
+is equal to the fraction $\frac{p}{q}$ in which $p$ and $q$ are positive integers whose greatest common divisor is $1.$ What is $p?$
+
+(A) $1$  (B) $9$  (C) $2020$  (D) $2021$  (E) $4041$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-4": { s: String.raw`At noon on a certain day, Minneapolis is $N$ degrees warmer than St. Louis. At $4{:}00$ the temperature in Minneapolis has fallen by $5$ degrees while the temperature in St. Louis has risen by $3$ degrees, at which time the temperatures in the two cities differ by $2$ degrees. What is the product of all possible values of $N?$
+
+(A) $10$  (B) $30$  (C) $60$  (D) $100$  (E) $120$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-5": { s: String.raw`Let
+$$n = 8^{2022}.$$
+Which of the following is equal to $\frac{n}{4}?$
+
+(A) $4^{1010}$  (B) $2^{2022}$  (C) $8^{2018}$  (D) $4^{3031}$  (E) $4^{3032}$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-6": { s: String.raw`The least positive integer with exactly $2021$ distinct positive divisors can be written in the form $m \cdot 6^k,$ where $m$ and $k$ are integers and $6$ is not a divisor of $m.$ What is $m+k?$
+
+(A) $47$  (B) $58$  (C) $59$  (D) $88$  (E) $90$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-7": { s: String.raw`Call a fraction $\frac{a}{b},$ not necessarily in simplest form, special if $a$ and $b$ are positive integers whose sum is $15.$ How many distinct integers can be written as the sum of two, not necessarily different, special fractions?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $13$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-8": { s: String.raw`The greatest prime number that is a divisor of $16{,}384$ is $2$ because $16{,}384 = 2^{14}.$ What is the sum of the digits of the greatest prime number that is a divisor of $16{,}383?$
+
+(A) $3$  (B) $7$  (C) $10$  (D) $16$  (E) $22$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-10b-9": { s: String.raw`The knights in a certain kingdom come in two colors: $\frac{2}{7}$ of them are red, and the rest are blue. Furthermore, $\frac{1}{6}$ of the knights are magical, and the fraction of red knights who are magical is $2$ times the fraction of blue knights who are magical. What fraction of red knights are magical?
+
+(A) $\frac{2}{9}$  (B) $\frac{3}{13}$  (C) $\frac{7}{27}$  (D) $\frac{2}{7}$  (E) $\frac{1}{3}$`, u: "pdf:fall-2021-amc-10b" },
+"2021-fall-amc-12b-23": { s: String.raw`What is the average number of pairs of consecutive integers in a randomly selected subset of $5$ distinct integers chosen from the set $\{ 1, 2, 3, \ldots, 30\}$? (For example the set $\{1, 17, 18, 19, 30\}$ has $2$ pairs of consecutive integers.)
+
+(A) $\frac{2}{3}$  (B) $\frac{29}{36}$  (C) $\frac{5}{6}$  (D) $\frac{29}{30}$  (E) $1$`, u: "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_12B_Problems/Problem_23" },
+"2021-spring-amc-10a-1": { s: String.raw`What is the value of$$(2^2-2)-(3^2-3)+(4^2-4)?$$(A) $1$  (B) $2$  (C) $5$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-10": { s: String.raw`Which of the following is equivalent to$$(2+3)(2^2+3^2) \cdot(2^4+3^4)(2^8+3^8) \cdot(2^{16}+3^{16})(2^{32}+3^{32}) \cdot(2^{64}+3^{64})?$$(A) $3^{127} + 2^{127}$
+(B) $3^{127} + 2^{127} + 2 \cdot 3^{63}$$+ 3 \cdot 2^{63}$
+(C) $3^{128} - 2^{128}$
+(D) $3^{128} + 2^{128}$
+(E) $5^{127}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-11": { s: String.raw`For which of the following integers $b$ is the base-$b$ number $2021_b - 221_b$ not divisible by $3?$
+
+(A) $3$  (B) $4$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-12": { s: String.raw`Two right circular cones with vertices facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are $3$ cm and $6$ cm. Into each cone is dropped a spherical marble of radius $1$ cm, which sinks to the bottom and is completely submerged without spilling any liquid. What is the ratio of the rise of the liquid level in the narrow cone to the rise of the liquid level in the wide cone?
+
+@@fig:amc10/2021A/12.svg@@
+
+(A) $1:1$  (B) $47:43$  (C) $2:1$  (D) $40:13$  (E) $4:1$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-13": { s: String.raw`What is the volume of tetrahedron $ABCD$ with edge lengths $AB = 2,$ $AC = 3,$ $AD = 4,$ $BC = \sqrt{13},$ $BD = 2\sqrt{5},$ and $CD = 5?$
+
+(A) $3$  (B) $2\sqrt{3}$  (C) $4$  (D) $3\sqrt{3}$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-14": { s: String.raw`All the roots of the polynomial$$z^6-10z^5+Az^4+Bz^3 +Cz^2+Dz+16$$are positive integers, possibly repeated. What is the value of $B?$
+
+(A) $-88$  (B) $-80$  (C) $-64$  (D) $-41$  (E) $-40$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-15": { s: String.raw`Values for $A,$ $B,$ $C,$ and $D$ are to be selected from $\{1, 2, 3, 4, 5, 6\}$ without replacement (i.e., no two letters have the same value). How many ways are there to make such choices so that the two curves $y=Ax^2+B$ and $y=Cx^2+D$ intersect?
+
+(The order in which the curves are listed does not matter; for example, the choices $A=3,$$B=2,$$C=4,$$D=1$ is considered the same as the choices $A=4,$$B=1,$ $C=3,$ $D=2.$)
+
+(A) $30$  (B) $60$  (C) $90$  (D) $180$  (E) $360$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-16": { s: String.raw`In the following list of numbers, the integer $n$ appears $n$ times in the list for $1\leq n\leq200.$$$\begin{aligned}&1,2,2,3,3,3,4,4,4,4,\ldots, \\ &200,200,\ldots,200\end{aligned}$$What is the median of the numbers in this list?
+
+(A) $100.5$  (B) $134$  (C) $142$  (D) $150.5$  (E) $167$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-17": { s: String.raw`Trapezoid $ABCD$ has $\overline{AB}\parallel\overline{CD},$ $BC=CD=43,$ and $\overline{AD}\perp\overline{BD}.$ Let $O$ be the intersection of the diagonals $\overline{AC}$ and $\overline{BD},$ and let $P$ be the midpoint of $\overline{BD}.$
+
+Given that $OP=11,$ the length of $AD$ can be written in the form $m\sqrt{n},$ where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. What is $m+n?$
+
+(A) $65$  (B) $132$  (C) $157$  (D) $194$  (E) $215$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-18": { s: String.raw`Let $f$ be a function defined on the set of positive rational numbers with the property that $f(a\cdot b)=f(a)+f(b)$ for all positive rational numbers $a$ and $b.$ Suppose that $f$ also has the property that $f(p)=p$ for every prime number $p.$ For which of the following numbers $x$ is $f(x) < 0?$
+
+(A) $\dfrac{17}{32}$  (B) $\dfrac{11}{16}$  (C) $\dfrac{7}{9}$  (D) $\dfrac{7}{6}$  (E) $\dfrac{25}{11}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-19": { s: String.raw`The area of the region bounded by the graph of$$x^2+y^2 = 3|x-y| + 3|x+y|$$is $m+n\pi,$ where $m$ and $n$ are integers. What is $m + n?$
+
+(A) $18$  (B) $27$  (C) $36$  (D) $45$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-2": { s: String.raw`Portia’s high school has $3$ times as many students as Lara’s high school. The two high schools have a total of $2600$ students. How many students does Portia’s high school have?
+
+(A) $600$  (B) $650$  (C) $1950$  (D) $2000$  (E) $2050$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-20": { s: String.raw`In how many ways can the sequence $1,$ $2,$ $3,$ $4,$ $5$ be rearranged so that no three consecutive terms are increasing and no three consecutive terms are decreasing?
+
+(A) $10$  (B) $18$  (C) $24$  (D) $32$  (E) $44$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-21": { s: String.raw`Let $ABCDEF$ be an equiangular hexagon. The lines $AB,$ $CD,$ and $EF$ determine a triangle with area $192\sqrt{3},$ and the lines $BC,$ $DE,$ and $FA$ determine a triangle with area $324\sqrt{3}.$ The perimeter of hexagon $ABCDEF$ can be expressed as $m +n\sqrt{p},$ where $m,$ $n,$ and $p$ are positive integers and $p$ is not divisible by the square of any prime. What is $m + n + p?$
+
+(A) $47$  (B) $52$  (C) $55$  (D) $58$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-22": { s: String.raw`Hiram’s algebra notes are $50$ pages long and are printed on $25$ sheets of paper; the first sheet contains pages $1$ and $2,$ the second sheet contains pages $3$ and $4,$ and so on. One day he leaves his notes on the table before leaving for lunch, and his roommate decides to borrow some pages from the middle of the notes. When Hiram comes back, he discovers that his roommate has taken a consecutive set of sheets from the notes and that the average (mean) of the page numbers on all remaining sheets is exactly $19.$ How many sheets were borrowed?
+
+(A) $10$  (B) $13$  (C) $15$  (D) $17$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-23": { s: String.raw`Frieda the frog begins a sequence of hops on a $3 \times 3$ grid of squares, moving one square on each hop and choosing at random the direction of each hop—up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she “wraps around” and jumps to the opposite edge. For example if Frieda begins in the center square and makes two hops “up”, the first hop would place her in the top row middle square, and the second hop would cause Frieda to jump to the opposite edge, landing in the bottom row middle square.
+
+Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?
+
+(A) $\dfrac{9}{16}$  (B) $\dfrac{5}{8}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{25}{32}$  (E) $\dfrac{13}{16}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-24": { s: String.raw`The interior of a quadrilateral is bounded by the graphs of $(x+ay)^2=4a^2$ and $(ax-y)^2=a^2,$ where $a$ is a positive real number. What is the area of this region in terms of $a,$ valid for all $a > 0?$
+
+(A) $\dfrac{8a^2}{(a+1)^2}$  (B) $\dfrac{4a}{a+1}$  (C) $\dfrac{8a}{a+1}$  (D) $\dfrac{8a^2}{a^2+1}$  (E) $\dfrac{8a}{a^2+1}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-25": { s: String.raw`How many ways are there to place $3$ indistinguishable red chips, $3$ indistinguishable blue chips, and $3$ indistinguishable green chips in the squares of a $3 \times 3$ grid so that no two chips of the same color are directly adjacent to each other, either vertically or horizontally?
+
+(A) $12$  (B) $18$  (C) $24$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-3": { s: String.raw`The sum of two natural numbers is $17{,}402.$ One of the two numbers is divisible by $10.$ If the units digit of that number is erased, the other number is obtained. What is the difference of these two numbers?
+
+(A) $10{,}272$  (B) $11{,}700$  (C) $13{,}362$  (D) $14{,}238$  (E) $15{,}426$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-4": { s: String.raw`A cart rolls down a hill, traveling $5$ inches the first second and accelerating so that during each successive $1$-second time interval, it travels $7$ inches more than during the previous $1$-second interval. The cart takes $30$ seconds to reach the bottom of the hill. How far, in inches, does it travel?
+
+(A) $215$  (B) $360$  (C) $2992$  (D) $3195$  (E) $3242$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-5": { s: String.raw`The quiz scores of a class with $k > 12$ students have a mean of $8.$ The mean of a collection of $12$ of these quiz scores is $14.$ What is the mean of the remaining quiz scores in terms of $k?$
+
+(A) $\dfrac{14-8}{k-12}$  (B) $\dfrac{8k-168}{k-12}$  (C) $\dfrac{14}{12} - \dfrac{8}{k}$  (D) $\dfrac{14(k-12)}{k^2}$  (E) $\dfrac{14(k-12)}{8k}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-6": { s: String.raw`Chantal and Jean start hiking from a trailhead toward a fire tower. Jean is wearing a heavy backpack and walks slower. Chantal starts walking at $4$ miles per hour. Halfway to the tower, the trail becomes really steep, and Chantal slows down to $2$ miles per hour. After reaching the tower, she immediately turns around and descends the steep part of the trail at $3$ miles per hour. She meets Jean at the halfway point. What was Jean’s average speed, in miles per hour, until they meet?
+
+(A) $\dfrac{12}{13}$  (B) $1$  (C) $\dfrac{13}{12}$  (D) $\dfrac{24}{13}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-7": { s: String.raw`Tom has a collection of $13$ snakes, $4$ of which are purple and $5$ of which are happy. He observes that
+
+• all of his happy snakes can add,
+
+• none of his purple snakes can subtract, and
+
+• all of his snakes that can’t subtract also can’t add.
+
+Which of these conclusions can be drawn about Tom’s snakes?
+
+(A) Purple snakes can add.  (B) Purple snakes are happy.  (C) Snakes that can add are purple.  (D) Happy snakes are not purple.  (E) Happy snakes can’t subtract.`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-8": { s: String.raw`When a student multiplied the number $66$ by the repeating decimal,$$\underline{1}.\underline{a} \ \underline{b} \ \underline{a} \ \underline{b}\ldots=\underline{1}.\overline{\underline{a} \ \underline{b}},$$where $a$ and $b$ are digits, he did not notice the notation and just multiplied $66$ times $\underline{1}.\underline{a} \ \underline{b}.$ Later he found that his answer is $0.5$ less than the correct answer. What is the $2$-digit integer $\underline{a} \ \underline{b}?$
+
+(A) $15$  (B) $30$  (C) $45$  (D) $60$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10a-9": { s: String.raw`What is the least possible value of $(xy-1)^2+(x+y)^2$ for real numbers $x$ and $y?$
+
+(A) $0$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{2}$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
+"2021-spring-amc-10b-1": { s: String.raw`How many integer values of $x$ satisfy $|x| < 3\pi?$
+
+(A) $9$  (B) $10$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-10": { s: String.raw`An inverted cone with base radius $12 \mathrm{ cm}$ and height $18 \mathrm{ cm}$ is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of $24 \mathrm{ cm}.$ What is the height in centimeters of the water in the cylinder?
+
+(A) $1.5$  (B) $3$  (C) $4$  (D) $4.5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-11": { s: String.raw`Grandma has just finished baking a large rectangular pan of brownies. She is planning to make rectangular pieces of equal size and shape, with straight cuts parallel to the sides of the pan. Each cut must be made entirely across the pan. Grandma wants to make the same number of interior pieces as pieces along the perimeter of the pan. What is the greatest possible number of brownies she can produce?
+
+(A) $24$  (B) $30$  (C) $48$  (D) $60$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-12": { s: String.raw`Let $N = 34 \cdot 34 \cdot 63 \cdot 270.$ What is the ratio of the sum of the odd divisors of $N$ to the sum of the even divisors of $N?$
+
+(A) $1 : 16$  (B) $1 : 15$  (C) $1 : 14$  (D) $1 : 8$  (E) $1 : 3$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-13": { s: String.raw`Let $n$ be a positive integer and $d$ be a digit such that the value of the numeral $\underline{32d}$ in base $n$ equals $263,$ and the value of the numeral $\underline{324}$ in base $n$ equals the value of the numeral $\underline{11d1}$ in base six. What is $n + d ?$
+
+(A) $10$  (B) $11$  (C) $13$  (D) $15$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-14": { s: String.raw`Three equally spaced parallel lines intersect a circle, creating three chords of lengths $38,$ $38,$ and $34.$ What is the distance between two adjacent parallel lines?
+
+(A) $5\frac12$  (B) $6$  (C) $6\frac12$  (D) $7$  (E) $7\frac12$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-15": { s: String.raw`The real number $x$ satisfies the equation$$x+\frac{1}{x} = \sqrt{5}.$$What is the value of $x^{11}-7x^{7}+x^3?$
+
+(A) $-1$  (B) $0$  (C) $1$  (D) $2$  (E) $\sqrt{5}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-16": { s: String.raw`Call a positive integer an uphill integer if every digit is strictly greater than the previous digit. For example, $1357,$ $89,$ and $5$ are all uphill integers, but $32,$ $1240,$ and $466$ are not. How many uphill integers are divisible by $15?$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-17": { s: String.raw`Ravon, Oscar, Aditi, Tyrone, and Kim play a card game. Each person is given $2$ cards out of a set of $10$ cards numbered $1,$ $2,$ $3,$ $\dots,$ $10.$ The score of a player is the sum of the numbers of their cards. The scores of the players are as follows: Ravon--$11,$ Oscar--$4,$ Aditi--$7,$ Tyrone--$16,$ Kim--$17.$ Which of the following statements is true?
+
+(A) Ravon was given card $3.$  (B) Aditi was given card $3.$  (C) Ravon was given card $4.$  (D) Aditi was given card $4.$  (E) Tyrone was given card $7.$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-18": { s: String.raw`A fair $6$-sided die is repeatedly rolled until an odd number appears. What is the probability that every even number appears at least once before the first occurrence of an odd number?
+
+(A) $\dfrac{1}{120}$  (B) $\dfrac{1}{32}$  (C) $\dfrac{1}{20}$  (D) $\dfrac{3}{20}$  (E) $\dfrac{1}{6}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-19": { s: String.raw`Suppose that $S$ is a finite set of positive integers.
+
+If the greatest integer in $S$ is removed from $S,$ then the average value (arithmetic mean) of the integers remaining is $32.$ If the least integer in $S$ is also removed, then the average value of the integers remaining is $35.$ If the greatest integer is then returned to the set, the average value of the integers rises to $40.$ The greatest integer in the original set $S$ is $72$ greater than the least integer in $S.$
+
+What is the average value of all the integers in the set $S?$
+
+(A) $36.2$  (B) $36.4$  (C) $36.6$  (D) $36.8$  (E) $37$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-2": { s: String.raw`What is the value of$$\sqrt{\left(3-2\sqrt{3}\right)^2} +\sqrt{\left(3+2\sqrt{3}\right)^2}?$$(A) $0$  (B) $4\sqrt{3}-6$  (C) $6$  (D) $4\sqrt{3}$  (E) $4\sqrt{3}+6$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-20": { s: String.raw`The figure below is constructed from $11$ line segments, each of which has length $2.$ The area of pentagon $ABCDE$ can be written as $\sqrt{m} + \sqrt{n},$ where $m$ and $n$ are positive integers. What is $m + n ?$
+
+@@fig:amc10/2021B/20.svg@@
+
+(A) $20$  (B) $21$  (C) $22$  (D) $23$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-21": { s: String.raw`A square piece of paper has side length $1$ and vertices $A,$ $B,$ $C,$ and $D$ in that order. As shown in the figure, the paper is folded so that vertex $C$ meets edge $\overline{AD}$ at point $C',$ and edge $\overline{BC}$ intersects edge $\overline{AB}$ at point $E.$ Suppose that $C'D = \frac{1}{3}.$ What is the perimeter of $\triangle AEC'?$
+
+@@fig:amc10/2021B/21.svg@@
+
+(A) $2$  (B) $1+\dfrac{2}{3}\sqrt{3}$  (C) $\dfrac{13}{6}$  (D) $1 + \dfrac{3}{4}\sqrt{3}$  (E) $\dfrac{7}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-22": { s: String.raw`Ang, Ben, and Jasmin each have $5$ blocks, colored red, blue, yellow, white, and green; and there are $5$ empty boxes. Each of the people randomly and independently of the other two people places one of their blocks into each box. The probability that at least one box receives $3$ blocks all of the same color is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m + n ?$
 
 (A) $47$  (B) $94$  (C) $227$  (D) $471$  (E) $542$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
-"2021-amc-12a-12": { s: String.raw`All the roots of the polynomial $z^6 - 10z^5 + Az^4$ $+ Bz^3 + Cz^2 + Dz + 16$ are positive integers, possibly repeated. What is the value of $B?$
+"2021-spring-amc-10b-23": { s: String.raw`A square with side length $8$ is colored white except for $4$ black isosceles right triangular regions with legs of length $2$ in each corner of the square and a black diamond with side length $2\sqrt{2}$ in the center of the square, as shown in the diagram.
+
+A circular coin with diameter $1$ is dropped onto the square and lands in a random location where the coin is completely contained within the square. The probability that the coin will cover part of the black region of the square can be written as $\frac{1}{196}\left(a+b\sqrt{2}+\pi\right),$ where $a$ and $b$ are positive integers. What is $a+b?$
+
+@@fig:amc10/2021B/23.svg@@
+
+(A) $64$  (B) $66$  (C) $68$  (D) $70$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-24": { s: String.raw`Arjun and Beth play a game in which they take turns removing one brick or two adjacent bricks from one “wall” among a set of several walls of bricks, with gaps possibly creating new walls. The walls are one brick tall. For example, a set of walls of sizes $4$ and $2$ can be changed into any of the following by one move: $(3,2),$ $(2,1,2),$ $(4),$ $(4,1),$ $(2,2),$ or $(1,1,2).$
+
+@@fig:amc10/2021B/24.svg@@
+
+Arjun plays first, and the player who removes the last brick wins. For which starting configuration is there a strategy that guarantees a win for Beth?
+
+(A) $(6,1,1)$  (B) $(6,2,1)$  (C) $(6,2,2)$  (D) $(6,3,1)$  (E) $(6,3,2)$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-25": { s: String.raw`Let $S$ be the set of lattice points in the coordinate plane, both of whose coordinates are integers between $1$ and $30,$ inclusive. Exactly $300$ points in $S$ lie on or below a line with equation $y=mx.$ The possible values of $m$ lie in an interval of length $\frac ab,$ where $a$ and $b$ are relatively prime positive integers. What is $a+b?$
+
+(A) $31$  (B) $47$  (C) $62$  (D) $72$  (E) $85$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-3": { s: String.raw`In an after-school program for juniors and seniors, there is a debate team with an equal number of students from each class on the team. Among the $28$ students in the program, $25\%$ of the juniors and $10\%$ of the seniors are on the debate team. How many juniors are in the program?
+
+(A) $5$  (B) $6$  (C) $8$  (D) $11$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-4": { s: String.raw`At a math contest, $57$ students are wearing blue shirts, and another $75$ students are wearing yellow shirts. The $132$ students are assigned into $66$ pairs. In exactly $23$ of these pairs, both students are wearing blue shirts. In how many pairs are both students wearing yellow shirts?
+
+(A) $23$  (B) $32$  (C) $37$  (D) $41$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-5": { s: String.raw`The ages of Jonie’s four cousins are distinct single-digit positive integers. Two of the cousins’ ages multiplied together give $24,$ while the other two multiply to $30.$ What is the sum of the ages of Jonie’s four cousins?
+
+(A) $21$  (B) $22$  (C) $23$  (D) $24$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-6": { s: String.raw`Ms. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is $84,$ and the afternoon class’s mean score is $70.$ The ratio of the number of students in the morning class to the number of students in the afternoon class is $\frac{3}{4}.$ What is the mean of the scores of all the students?
+
+(A) $74$  (B) $75$  (C) $76$  (D) $77$  (E) $78$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-7": { s: String.raw`In a plane, four circles with radii $1,$ $3,$ $5,$ and $7$ are tangent to line $\ell$ at the same point $A,$ but they may be on either side of $\ell.$ Region $S$ consists of all the points that lie inside exactly one of the four circles. What is the maximum possible area of region $S?$
+
+(A) $24\pi$  (B) $32\pi$  (C) $64\pi$  (D) $65\pi$  (E) $84\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-8": { s: String.raw`Mr. Zhou places all the integers from $1$ to $225$ into a $15$ by $15$ grid. He places $1$ in the middle square (eighth row and eighth column) and places other numbers one by one clockwise, as shown in part in the diagram below. What is the sum of the greatest number and the least number that appear in the second row from the top?
+
+@@fig:amc10/2021B/8.svg@@
+
+(A) $367$  (B) $368$  (C) $369$  (D) $379$  (E) $380$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-10b-9": { s: String.raw`The point $P(a,b)$ in the $xy$-plane is first rotated counterclockwise by $90^\circ$ around the point $(1,5)$ and then reflected about the line $y = -x.$ The image of $P$ after these two transformations is at $(-6,3).$ What is $b - a ?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2021B" },
+"2021-spring-amc-12a-1": { s: String.raw`What is the value of$$ 2^{1+2+3} - \left(2^1 + 2^2 + 2^3\right)? $$(A) $0$  (B) $50$  (C) $52$  (D) $54$  (E) $57$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-10": { s: String.raw`Two right circular cones with vertices facing down as shown in the figure below contain the same amount of liquid. The radii of the tops of the liquid surfaces are $3$ cm and $6$ cm. Into each cone is dropped a spherical marble of radius $1$ cm, which sinks to the bottom and is completely submerged without spilling any liquid. What is the ratio of the rise of the liquid level in the narrow cone to the rise of the liquid level in the wide cone?
+
+@@fig:amc12/2021A/10.svg@@
+
+(A) $1 : 1$  (B) $47 : 43$  (C) $2 : 1$  (D) $40 : 13$  (E) $4 : 1$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-11": { s: String.raw`A laser is placed at the point $(3, 5).$ The laser beam travels in a straight line. Larry wants the beam to hit and bounce off the $y$-axis, then hit and bounce off the $x$-axis, then hit the point $(7, 5).$ What is the total distance the beam will travel along this path?
+
+(A) $2\sqrt{10}$  (B) $5\sqrt{2}$  (C) $10\sqrt{2}$  (D) $15\sqrt{2}$  (E) $10\sqrt{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-12": { s: String.raw`All the roots of the polynomial $z^6 - 10z^5 + Az^4$ $+ Bz^3 + Cz^2 + Dz + 16$ are positive integers, possibly repeated. What is the value of $B?$
 
 (A) $-88$  (B) $-80$  (C) $-64$  (D) $-41$  (E) $-40$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
-"2021-amc-12a-22": { s: String.raw`Suppose that the roots of the polynomial $P(x) = x^3 + ax^2 + bx + c$ are $\cos\tfrac{2\pi}{7},$ $\cos\tfrac{4\pi}{7},$ and $\cos\tfrac{6\pi}{7},$ where angles are in radians. What is $abc?$
+"2021-spring-amc-12a-13": { s: String.raw`Of the following complex numbers $z,$ which one has the property that $z^5$ has the greatest real part?
+
+(A) $-2$  (B) $-\sqrt3 + i$  (C) $-\sqrt2 + \sqrt2\, i$  (D) $-1 + \sqrt3\, i$  (E) $2i$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-14": { s: String.raw`What is the value of$$\left(\sum_{k=1}^{20} \log_{5^k} 3^{k^2}\right) \cdot \left(\sum_{k=1}^{100} \log_{9^k} 25^k\right)?$$(A) $21$  (B) $100\log_5 3$  (C) $200\log_3 5$  (D) $2{,}200$  (E) $21{,}000$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-15": { s: String.raw`A choir director must select a group of singers from among his $6$ tenors and $8$ basses. The only requirements are that the difference between the number of tenors and basses must be a multiple of $4,$ and the group must have at least one singer. Let $N$ be the number of groups that can be selected. What is the remainder when $N$ is divided by $100?$
+
+(A) $47$  (B) $48$  (C) $83$  (D) $95$  (E) $96$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-16": { s: String.raw`In the following list of numbers, the integer $n$ appears $n$ times in the list for $1 \le n \le 200.$ $1,$ $2,$ $2,$ $3,$ $3,$ $3,$ $4,$ $4,$ $4,$ $4,$ $\ldots,$ $200,$ $200,$ $\ldots,$ $200$
+
+What is the median of the numbers in this list?
+
+(A) $100.5$  (B) $134$  (C) $142$  (D) $150.5$  (E) $167$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-17": { s: String.raw`Trapezoid $ABCD$ has $AB \parallel CD,$ $BC = CD = 43,$ and $AD \perp BD.$ Let $O$ be the intersection of the diagonals $AC$ and $BD,$ and let $P$ be the midpoint of $BD.$ Given that $OP = 11,$ the length $AD$ can be written in the form $m\sqrt n,$ where $m$ and $n$ are positive integers and $n$ is not divisible by the square of any prime. What is $m + n?$
+
+(A) $65$  (B) $132$  (C) $157$  (D) $194$  (E) $215$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-18": { s: String.raw`Let $f$ be a function defined on the set of positive rational numbers with the property that $f(a\cdot b) = f(a) + f(b)$ for all positive rational numbers $a$ and $b.$ Suppose that $f$ also has the property that $f(p) = p$ for every prime number $p.$ For which of the following numbers $x$ is $f(x) \lt 0?$
+
+(A) $\dfrac{17}{32}$  (B) $\dfrac{11}{16}$  (C) $\dfrac{7}{9}$  (D) $\dfrac{7}{6}$  (E) $\dfrac{25}{11}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-19": { s: String.raw`How many solutions does the equation$$ \sin\left(\frac{\pi}{2}\cos x\right) = \cos\left(\frac{\pi}{2}\sin x\right) $$have in the closed interval $[0, \pi]?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-2": { s: String.raw`Under what conditions is $\sqrt{a^2 + b^2} = a + b$ true, where $a$ and $b$ are real numbers?
+
+(A) It is never true.
+(B) It is true if and only if $ab = 0.$
+(C) It is true if and only if $a + b \ge 0.$
+(D) It is true if and only if $ab = 0$ and $a + b \ge 0.$
+(E) It is always true.`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-20": { s: String.raw`Suppose that on a parabola with vertex $V$ and a focus $F$ there exists a point $A$ such that $AF = 20$ and $AV = 21.$ What is the sum of all possible values of the length $FV?$
+
+(A) $13$  (B) $\dfrac{40}{3}$  (C) $\dfrac{41}{3}$  (D) $14$  (E) $\dfrac{43}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-21": { s: String.raw`The five solutions to the equation$$(z - 1)(z^2 + 2z + 4) \cdot (z^2 + 4z + 6) = 0$$may be written in the form $x_k + y_k i$ for $1 \le k \le 5,$ where $x_k$ and $y_k$ are real. Let $E$ be the unique ellipse that passes through the points $(x_1, y_1),$ $(x_2, y_2),$ $(x_3, y_3),$ $(x_4, y_4),$ and $(x_5, y_5).$ The eccentricity of $E$ can be written in the form $\sqrt{\tfrac{m}{n}},$ where $m$ and $n$ are relatively prime positive integers. What is $m + n?$
+
+(Recall that the eccentricity of an ellipse $E$ is the ratio $\tfrac{c}{a},$ where $2a$ is the length of the major axis of $E$ and $2c$ is the distance between its two foci.)
+
+(A) $7$  (B) $9$  (C) $11$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-22": { s: String.raw`Suppose that the roots of the polynomial $P(x) = x^3 + ax^2 + bx + c$ are $\cos\tfrac{2\pi}{7},$ $\cos\tfrac{4\pi}{7},$ and $\cos\tfrac{6\pi}{7},$ where angles are in radians. What is $abc?$
 
 (A) $-\dfrac{3}{49}$  (B) $-\dfrac{1}{28}$  (C) $\dfrac{\sqrt[3]{7}}{64}$  (D) $\dfrac{1}{32}$  (E) $\dfrac{1}{28}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
-"2021-amc-12a-25": { s: String.raw`Let $d(n)$ denote the number of positive integers that divide $n,$ including $1$ and $n.$ For example, $d(1) = 1,$ $d(2) = 2,$ and $d(12) = 6.$ (This function is known as the divisor function.) Let$$ f(n) = \frac{d(n)}{\sqrt[3]{n}}. $$There is a unique positive integer $N$ such that $f(N) \gt f(n)$ for all positive integers $n \ne N.$ What is the sum of the digits of $N?$
+"2021-spring-amc-12a-23": { s: String.raw`Frieda the frog begins a sequence of hops on a $3\times 3$ grid of squares, moving one square on each hop and choosing at random the direction of each hop: up, down, left, or right. She does not hop diagonally. When the direction of a hop would take Frieda off the grid, she “wraps around” and jumps to the opposite edge. For example, if Frieda begins in the center square and makes two hops “up,” the first hop places her in the top row middle square, and the second hop causes her to jump to the opposite edge, landing in the bottom row middle square. Suppose Frieda starts from the center square, makes at most four hops at random, and stops hopping if she lands on a corner square. What is the probability that she reaches a corner square on one of the four hops?
+
+(A) $\dfrac{9}{16}$  (B) $\dfrac{5}{8}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{25}{32}$  (E) $\dfrac{13}{16}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-24": { s: String.raw`Semicircle $\Gamma$ has diameter $AB$ of length $14.$ Circle $\Omega$ lies tangent to $AB$ at a point $P$ and intersects $\Gamma$ at points $Q$ and $R.$ If $QR = 3\sqrt3$ and $\angle QPR = 60^\circ,$ then the area of $\triangle PQR$ is $\dfrac{a\sqrt b}{c},$ where $a$ and $c$ are relatively prime positive integers and $b$ is a positive integer not divisible by the square of any prime. What is $a + b + c?$
+
+(A) $110$  (B) $114$  (C) $118$  (D) $122$  (E) $126$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-25": { s: String.raw`Let $d(n)$ denote the number of positive integers that divide $n,$ including $1$ and $n.$ For example, $d(1) = 1,$ $d(2) = 2,$ and $d(12) = 6.$ (This function is known as the divisor function.) Let$$ f(n) = \frac{d(n)}{\sqrt[3]{n}}. $$There is a unique positive integer $N$ such that $f(N) \gt f(n)$ for all positive integers $n \ne N.$ What is the sum of the digits of $N?$
 
 (A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
-"2021-amc-12b-7": { s: String.raw`Let $N=34\cdot 34\cdot 63\cdot 270.$ What is the ratio of the sum of the odd divisors of $N$ to the sum of the even divisors of $N?$
+"2021-spring-amc-12a-3": { s: String.raw`The sum of two natural numbers is $17{,}402.$ One of the two numbers is divisible by $10.$ If the units digit of that number is erased, the other number is obtained. What is the difference of these two numbers?
+
+(A) $10{,}272$  (B) $11{,}700$  (C) $13{,}362$  (D) $14{,}238$  (E) $15{,}426$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-4": { s: String.raw`Tom has a collection of $13$ snakes, $4$ of which are purple and $5$ of which are happy. He observes that
+
+• all of his happy snakes can add,
+
+• none of his purple snakes can subtract, and
+
+• all of his snakes that can’t subtract also can’t add.
+
+Which of these conclusions can be drawn about Tom’s snakes?
+
+(A) Purple snakes can add.  (B) Purple snakes are happy.  (C) Snakes that can add are purple.  (D) Happy snakes are not purple.  (E) Happy snakes can’t subtract.`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-5": { s: String.raw`When a student multiplied the number $66$ by the repeating decimal$$ 1.\overline{ab} = 1.ababab\ldots, $$where $a$ and $b$ are digits, he did not notice the notation and just multiplied $66$ by the terminating decimal $1.ab.$ Later he found that his answer was $0.5$ less than the correct answer.
+
+What is the two-digit integer $\overline{ab}?$
+
+(A) $15$  (B) $30$  (C) $45$  (D) $60$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-6": { s: String.raw`A deck of cards has only red cards and black cards. The probability of a randomly chosen card being red is $\dfrac13.$ When $4$ black cards are added to the deck, the probability of choosing red becomes $\dfrac14.$ How many cards were in the deck originally?
+
+(A) $6$  (B) $9$  (C) $12$  (D) $15$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-7": { s: String.raw`What is the least possible value of $(xy - 1)^2 + (x + y)^2$ for real numbers $x$ and $y?$
+
+(A) $0$  (B) $\dfrac14$  (C) $\dfrac12$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-8": { s: String.raw`A sequence of numbers is defined by $D_0 = 0,$ $D_1 = 0,$ $D_2 = 1,$ and $D_n = D_{n-1} + D_{n-3}$ for $n \ge 3.$ What are the parities (evenness or oddness) of the triple of numbers $(D_{2021}, D_{2022}, D_{2023}),$ where $E$ denotes even and $O$ denotes odd?
+
+(A) $(O, E, O)$  (B) $(E, E, O)$  (C) $(E, O, E)$  (D) $(O, O, E)$  (E) $(O, O, O)$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12a-9": { s: String.raw`Which of the following is equivalent to$$(2 + 3)(2^2 + 3^2)(2^4 + 3^4) \cdot (2^8 + 3^8)(2^{16} + 3^{16}) \cdot (2^{32} + 3^{32})(2^{64} + 3^{64})?$$(A) $3^{127} + 2^{127}$
+(B) $3^{127} + 2^{127} + 2 \cdot 3^{63} + 3 \cdot 2^{63}$
+(C) $3^{128} - 2^{128}$
+(D) $3^{128} + 2^{128}$
+(E) $5^{127}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021A" },
+"2021-spring-amc-12b-1": { s: String.raw`How many integer values of $x$ satisfy $|x| \lt 3\pi?$
+
+(A) $9$  (B) $10$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-10": { s: String.raw`Two distinct numbers are selected from the set $\{1,2,3,4,\ldots,36,37\}$ so that the sum of the remaining $35$ numbers is the product of these two numbers. What is the difference of these two numbers?
+
+(A) $5$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-11": { s: String.raw`Triangle $ABC$ has $AB=13,$ $BC=14,$ and $AC=15.$ Let $P$ be the point on $\overline{AC}$ such that $PC=10.$ There are exactly two points $D$ and $E$ on line $BP$ such that quadrilaterals $ABCD$ and $ABCE$ are trapezoids. What is the distance $DE?$
+
+(A) $\dfrac{42}{5}$  (B) $6\sqrt2$  (C) $\dfrac{84}{5}$  (D) $12\sqrt2$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-12": { s: String.raw`Suppose that $S$ is a finite set of positive integers. If the greatest integer in $S$ is removed from $S,$ then the average value (arithmetic mean) of the integers remaining is $32.$ If the least integer in $S$ is also removed, then the average value of the integers remaining is $35.$ If the greatest integer is then returned to the set, the average value of the integers rises to $40.$ The greatest integer in the original set $S$ is $72$ greater than the least integer in $S.$ What is the average value of all the integers in the set $S?$
+
+(A) $36.2$  (B) $36.4$  (C) $36.6$  (D) $36.8$  (E) $37$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-13": { s: String.raw`How many values of $\theta$ in the interval $0\lt\theta\le 2\pi$ satisfy the following equation?$$1-3\sin\theta+5\cos 3\theta=0$$(A) $2$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-14": { s: String.raw`Let $ABCD$ be a rectangle and let $\overline{DM}$ be a segment perpendicular to the plane of $ABCD.$ Suppose that $\overline{DM}$ has integer length, and the lengths of $\overline{MA},$ $\overline{MC},$ and $\overline{MB}$ are consecutive odd positive integers (in this order). What is the volume of pyramid $MABCD?$
+
+(A) $24\sqrt5$  (B) $60$  (C) $28\sqrt5$  (D) $66$  (E) $8\sqrt{70}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-15": { s: String.raw`The figure is constructed from $11$ line segments, each of which has length $2.$ The area of pentagon $ABCDE$ can be written as $\sqrt m+\sqrt n,$ where $m$ and $n$ are positive integers. What is $m+n?$
+
+@@fig:amc12/2021B/15.svg@@
+
+(A) $20$  (B) $21$  (C) $22$  (D) $23$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-16": { s: String.raw`Let $g(x)$ be a polynomial with leading coefficient $1,$ whose three roots are the reciprocals of the three roots of $f(x)=x^3+ax^2+bx+c,$ where $1\lt a\lt b\lt c.$ What is $g(1)$ in terms of $a,$ $b,$ and $c?$
+
+(A) $\dfrac{1+a+b+c}{c}$  (B) $1+a+b+c$  (C) $\dfrac{1+a+b+c}{c^2}$  (D) $\dfrac{a+b+c}{c^2}$  (E) $\dfrac{1+a+b+c}{a+b+c}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-17": { s: String.raw`Let $ABCD$ be an isosceles trapezoid having parallel bases $\overline{AB}$ and $\overline{CD}$ with $AB\gt CD.$ Line segments from a point inside $ABCD$ to the vertices divide the trapezoid into four triangles whose areas are $2,$ $3,$ $4,$ and $5$ starting with the triangle with base $\overline{CD}$ and moving clockwise as shown in the diagram below. What is the ratio $\dfrac{AB}{CD}?$
+
+@@fig:amc12/2021B/17.svg@@
+
+(A) $3$  (B) $2+\sqrt2$  (C) $1+\sqrt6$  (D) $2\sqrt3$  (E) $3\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-18": { s: String.raw`Let $z$ be a complex number satisfying $12|z|^2$ $=2|z+2|^2+|z^2+1|^2+31.$ What is the value of $z+\dfrac{6}{z}?$
+
+(A) $-2$  (B) $-1$  (C) $\dfrac{1}{2}$  (D) $1$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-19": { s: String.raw`Two fair dice, each with at least $6$ faces are rolled. On each face of each die is printed a distinct integer from $1$ to the number of faces on that die, inclusive. The probability of rolling a sum of $7$ is $\dfrac34$ of the probability of rolling a sum of $10,$ and the probability of rolling a sum of $12$ is $\dfrac{1}{12}.$ What is the least possible number of faces on the two dice combined?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-2": { s: String.raw`At a math contest, $57$ students are wearing blue shirts, and another $75$ students are wearing yellow shirts. The $132$ students are assigned into $66$ pairs. In exactly $23$ of these pairs, both students are wearing blue shirts. In how many pairs are both students wearing yellow shirts?
+
+(A) $23$  (B) $32$  (C) $37$  (D) $41$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-20": { s: String.raw`Let $Q(z)$ and $R(z)$ be the unique polynomials such that$$z^{2021}+1 = (z^2+z+1)Q(z)+R(z)$$and the degree of $R$ is less than $2.$ What is $R(z)?$
+
+(A) $-z$  (B) $-1$  (C) $2021$  (D) $z+1$  (E) $2z+1$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-21": { s: String.raw`Let $S$ be the sum of all positive real numbers $x$ for which$$x^{2^{\sqrt2}}=\sqrt2^{\,2^x}.$$Which of the following statements is true?
+
+(A) $S\lt\sqrt2$  (B) $S=\sqrt2$  (C) $\sqrt2\lt S\lt 2$  (D) $2\le S\lt 6$  (E) $S\ge 6$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-22": { s: String.raw`Arjun and Beth play a game in which they take turns removing one brick or two adjacent bricks from one “wall” among a set of several walls of bricks, with gaps possibly creating new walls. The walls are one brick tall. For example, a set of walls of sizes $4$ and $2$ can be changed into any of the following by one move: $(3,2),$ $\ (2,1,2),$ $\ (4),$ $\ (4,1),$ $\ (2,2),$ or $(1,1,2).$
+
+@@fig:amc12/2021B/22.svg@@
+
+Arjun plays first, and the player who removes the last brick wins. For which starting configuration is there a strategy that guarantees a win for Beth?
+
+(A) $(6,1,1)$  (B) $(6,2,1)$  (C) $(6,2,2)$  (D) $(6,3,1)$  (E) $(6,3,2)$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-23": { s: String.raw`Three balls are randomly and independently tossed into bins numbered with the positive integers so that for each ball, the probability that it is tossed into bin $i$ is $2^{-i}$ for $i=1,$ $2,$ $3,$ $\ldots.$ More than one ball is allowed in each bin. The probability that the balls end up evenly spaced in distinct bins is $\dfrac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. (For example, the balls are evenly spaced if they are tossed into bins $3,$ $17,$ and $10.$) What is $p+q?$
+
+(A) $55$  (B) $56$  (C) $57$  (D) $58$  (E) $59$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-24": { s: String.raw`Let $ABCD$ be a parallelogram with area $15.$ Points $P$ and $Q$ are the projections of $A$ and $C,$ respectively, onto the line $BD;$ and points $R$ and $S$ are the projections of $B$ and $D,$ respectively, onto the line $AC.$ See the figure, which also shows the relative locations of these points.
+
+@@fig:amc12/2021B/24.svg@@
+
+Suppose $PQ=6$ and $RS=8,$ and let $d$ denote the length of $\overline{BD},$ the longer diagonal of $ABCD.$ Then $d^2$ can be written in the form $m+n\sqrt p,$ where $m,$ $n,$ and $p$ are positive integers and $p$ is not divisible by the square of any prime. What is $m+n+p?$
+
+(A) $81$  (B) $89$  (C) $97$  (D) $105$  (E) $113$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-25": { s: String.raw`Let $S$ be the set of lattice points in the coordinate plane, both of whose coordinates are integers between $1$ and $30,$ inclusive. Exactly $300$ points in $S$ lie on or below a line with equation $y=mx.$ The possible values of $m$ lie in an interval of length $\dfrac{a}{b},$ where $a$ and $b$ are relatively prime positive integers. What is $a+b?$
+
+(A) $31$  (B) $47$  (C) $62$  (D) $72$  (E) $85$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-3": { s: String.raw`Suppose$$2+\cfrac{1}{1+\cfrac{1}{2+\cfrac{2}{3+x}}}=\dfrac{144}{53}.$$What is the value of $x?$
+
+(A) $\dfrac{3}{4}$  (B) $\dfrac{7}{8}$  (C) $\dfrac{14}{15}$  (D) $\dfrac{37}{38}$  (E) $\dfrac{52}{53}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-4": { s: String.raw`Ms. Blackwell gives an exam to two classes. The mean of the scores of the students in the morning class is $84,$ and the afternoon class’s mean score is $70.$ The ratio of the number of students in the morning class to the number of students in the afternoon class is $\dfrac{3}{4}.$ What is the mean of the scores of all the students?
+
+(A) $74$  (B) $75$  (C) $76$  (D) $77$  (E) $78$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-5": { s: String.raw`The point $P(a,b)$ in the $xy$-plane is first rotated counterclockwise by $90^\circ$ around the point $(1,5)$ and then reflected about the line $y=-x.$ The image of $P$ after these two transformations is at $(-6,3).$ What is $b-a?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-6": { s: String.raw`An inverted cone with base radius $12$ cm and height $18$ cm is full of water. The water is poured into a tall cylinder whose horizontal base has a radius of $24$ cm. What is the height in centimeters of the water in the cylinder?
+
+(A) $1.5$  (B) $3$  (C) $4$  (D) $4.5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-7": { s: String.raw`Let $N=34\cdot 34\cdot 63\cdot 270.$ What is the ratio of the sum of the odd divisors of $N$ to the sum of the even divisors of $N?$
 
 (A) $1:16$  (B) $1:15$  (C) $1:14$  (D) $1:8$  (E) $1:3$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-8": { s: String.raw`Three equally spaced parallel lines intersect a circle, creating three chords of lengths $38,$ $38,$ and $34.$ What is the distance between two adjacent parallel lines?
+
+(A) $5\tfrac{1}{2}$  (B) $6$  (C) $6\tfrac{1}{2}$  (D) $7$  (E) $7\tfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
+"2021-spring-amc-12b-9": { s: String.raw`What is the value of the following expression?$$\dfrac{\log_2 80}{\log_{40}2}-\dfrac{\log_2 160}{\log_{20}2}$$(A) $0$  (B) $1$  (C) $\dfrac{5}{4}$  (D) $2$  (E) $\log_2 5$`, u: "https://live.poshenloh.com/past-contests/amc12/2021B" },
 });

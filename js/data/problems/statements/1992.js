@@ -22,4 +22,101 @@ The object of the game is to make one’s opponent take the last bite. The diagr
 "1992-aime-7": { s: String.raw`Faces $ABC$ and $BCD$ of tetrahedron $ABCD$ meet at an angle of $30^\circ.$ The area of face $ABC$ is $120,$ the area of face $BCD$ is $80,$ and $BC=10.$ Find the volume of the tetrahedron.`, u: "https://live.poshenloh.com/past-contests/aime/1992" },
 "1992-aime-8": { s: String.raw`For any sequence of real numbers $A=(a_1,a_2,a_3,\ldots),$ define $\Delta A$ to be the sequence $(a_2-a_1,a_3-a_2,a_4-a_3,\ldots),$ whose $n$th term is $a_{n+1}-a_n.$ Suppose that all of the terms of the sequence $\Delta(\Delta A)$ are $1,$ and that $a_{19}=a_{92}=0.$ Find $a_1.$`, u: "https://live.poshenloh.com/past-contests/aime/1992" },
 "1992-aime-9": { s: String.raw`Trapezoid $ABCD$ has sides $AB=92,$ $BC=50,$ $CD=19,$ and $AD=70,$ with $AB$ parallel to $CD.$ A circle with center $P$ on $AB$ is drawn tangent to $BC$ and $AD.$ Given that $AP=\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers, find $m+n.$`, u: "https://live.poshenloh.com/past-contests/aime/1992" },
+"1992-ajhsme-1": { s: String.raw`What is the value of the following expression?$$\dfrac{10 - 9 + 8 - 7 + 6 - 5 + 4 - 3 + 2 - 1}{1 - 2 + 3 - 4 + 5 - 6 + 7 - 8 + 9}$$(A) $-1$  (B) $1$  (C) $5$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-10": { s: String.raw`An isosceles right triangle with legs of length $8$ is partitioned into $16$ congruent triangles as shown. The shaded area is
+
+@@fig:amc8/1992/10.svg@@
+
+(A) $10$  (B) $20$  (C) $32$  (D) $40$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-11": { s: String.raw`The bar graph shows the results of a survey on color preferences. From left to right, the bars represent red, blue, brown, pink, and green. What percent preferred blue?
+
+@@fig:amc8/1992/11.svg@@
+
+(A) $20\%$  (B) $24\%$  (C) $30\%$  (D) $36\%$  (E) $42\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-12": { s: String.raw`The five tires of a car (four road tires and a full-sized spare) were rotated so that each tire was used the same number of miles during the first $30{,}000$ miles the car traveled. For how many miles was each tire used?
+
+(A) $6000$  (B) $7500$  (C) $24{,}000$  (D) $30{,}000$  (E) $37{,}500$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-13": { s: String.raw`Five test scores have a mean (average score) of $90,$ a median (middle score) of $91,$ and a mode (most frequent score) of $94.$ The sum of the two lowest test scores is
+
+(A) $170$
+(B) $171$
+(C) $176$
+(D) $177$
+(E) not determined by the information given`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-14": { s: String.raw`When four gallons are added to a tank that is one-third full, the tank is then one-half full. The capacity of the tank in gallons is
+
+(A) $8$  (B) $12$  (C) $20$  (D) $24$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-15": { s: String.raw`What is the $1992$nd letter in this sequence?
+
+ABCDEDCBAABCDEDCBAABCDEDCBAABCDEDC$\cdots$
+
+(A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) $E$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-16": { s: String.raw`Which cylinder has twice the volume of the cylinder shown at right?
+
+@@fig:amc8/1992/16.svg@@
+
+(A) @@ci:amc8/1992/16a.svg|6rem@@  (B) @@ci:amc8/1992/16b.svg|6rem@@  (C) @@ci:amc8/1992/16c.svg|6rem@@  (D) @@ci:amc8/1992/16d.svg|6rem@@  (E) None of the above`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-17": { s: String.raw`The sides of a triangle have lengths $6.5,$ $10,$ and $s,$ where $s$ is a whole number. What is the smallest possible value of $s?$
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-18": { s: String.raw`On a trip, a car traveled $80$ miles in an hour and a half, then was stopped in traffic for $30$ minutes, then traveled $100$ miles during the next $2$ hours. What was the car’s average speed in miles per hour for the $4$-hour trip?
+
+(A) $45$  (B) $50$  (C) $60$  (D) $75$  (E) $90$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-19": { s: String.raw`The distance between the $5$th and $26$th exits on an interstate highway is $118$ miles. If any two exits are at least $5$ miles apart, then what is the largest number of miles there can be between two consecutive exits that are between the $5$th and $26$th exits?
+
+(A) $8$  (B) $13$  (C) $18$  (D) $47$  (E) $98$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-2": { s: String.raw`Which of the following is not equal to $\dfrac54?$
+
+(A) $\dfrac{10}{8}$  (B) $1\dfrac14$  (C) $1\dfrac{3}{12}$  (D) $1\dfrac15$  (E) $1\dfrac{10}{40}$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-20": { s: String.raw`Which pattern of identical squares could not be folded along the lines shown to form a cube?
+
+(A) @@ci:amc8/1992/20a.svg|4rem@@  (B) @@ci:amc8/1992/20b.svg|4rem@@  (C) @@ci:amc8/1992/20c.svg|4rem@@  (D) @@ci:amc8/1992/20d.svg|4rem@@  (E) @@ci:amc8/1992/20e.svg|4rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-21": { s: String.raw`Northside’s Drum and Bugle Corps raised money for a trip. The drummers and bugle players kept separate sales records. In each pair on the graph, the open bar represents drums and the shaded bar represents bugles. According to the double bar graph of monthly sales below, in what month did one group’s sales exceed the other’s by the greatest percent?
+
+@@fig:amc8/1992/21.svg@@
+
+(A) Jan  (B) Feb  (C) Mar  (D) Apr  (E) May`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-22": { s: String.raw`Eight $1 \times 1$ square tiles are arranged as shown so their outside edges form a polygon with a perimeter of $14$ units. Two additional tiles of the same size are added to the figure so that at least one side of each added tile is shared with a side of one of the squares in the original figure. Which of the following could be the perimeter of the new figure?
+
+@@fig:amc8/1992/22.svg@@
+
+(A) $15$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-23": { s: String.raw`If two dice are tossed, the probability that the product of the numbers showing on the tops of the dice is greater than $10$ is
+
+(A) $\dfrac37$  (B) $\dfrac{17}{36}$  (C) $\dfrac12$  (D) $\dfrac58$  (E) $\dfrac{11}{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-24": { s: String.raw`Four circles of radius $3$ are arranged as shown. Their centers are the vertices of a square. The area of the shaded region is closest to
+
+@@fig:amc8/1992/24.svg@@
+
+(A) $7.7$  (B) $12.1$  (C) $17.2$  (D) $18$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-25": { s: String.raw`One half of the water is poured out of a full container. Then one third of the remainder is poured out. Continue the process: one fourth of the remainder for the third pouring, one fifth of the remainder for the fourth pouring, and so on. After how many pourings does exactly one tenth of the original water remain?
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-3": { s: String.raw`What is the largest difference that can be formed by subtracting two numbers chosen from the set $\{-16, -4, 0, 2, 4, 12\}?$
+
+(A) $10$  (B) $12$  (C) $16$  (D) $28$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-4": { s: String.raw`During the softball season, Judy had $35$ hits. Among her hits were $1$ home run, $1$ triple, and $5$ doubles. The rest of her hits were singles. What percent of her hits were singles?
+
+(A) $28\%$  (B) $35\%$  (C) $70\%$  (D) $75\%$  (E) $80\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-5": { s: String.raw`A circle of diameter $1$ is removed from a $2 \times 3$ rectangle, as shown. Which whole number is closest to the area of the shaded region?
+
+@@fig:amc8/1992/5.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-6": { s: String.raw`A triangular expression with top entry $a$, lower-left entry $b$, and lower-right entry $c$ means $a+b-c$, as shown below. What is the indicated sum?
+
+@@fig:amc8/1992/6.svg@@
+
+(A) $-2$  (B) $-1$  (C) $0$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-7": { s: String.raw`The digit-sum of $998$ is $9 + 9 + 8 = 26.$ How many $3$-digit whole numbers, whose digit-sum is $26$, are even?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-8": { s: String.raw`A store owner bought $1500$ pencils at $\$0.10$ each. If he sells them for $\$0.25$ each, how many of them must he sell to make a profit of exactly $\$100.00?$
+
+(A) $400$  (B) $667$  (C) $1000$  (D) $1500$  (E) $1900$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
+"1992-ajhsme-9": { s: String.raw`The population of a small town is $480.$ The graph indicates the numbers of females and males in the town, but the vertical scale values are omitted. The bars labeled $F$ and $M$ represent females and males, respectively. How many males live in the town?
+
+@@fig:amc8/1992/9.svg@@
+
+(A) $120$  (B) $160$  (C) $200$  (D) $240$  (E) $360$`, u: "https://live.poshenloh.com/past-contests/amc8/1992" },
 });

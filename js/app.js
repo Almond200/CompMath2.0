@@ -223,6 +223,9 @@
   const DENSITIES = ["comfortable", "compact", "spacious"];
   const NOTATIONS = ["sigma", "expanded"];
   const TEXT_SIZES = ["normal", "large", "larger"];
+  // How many rows of a card's formulas a browsing card shows: 1, 2, 3, or all of them. A card's
+  // own page always shows every form.
+  const FORMULA_LINES = ["1", "2", "3", "all"];
   // Card order on a section page. "tier" puts the cards in the order of the chosen label (AMC
   // first by default); "curated" is file order, which is how the cards were written up; "problems" puts the cards the practice problems actually use first, and only
   // falls back to the (subjective) importance tier for the cards no problem uses yet.
@@ -280,6 +283,7 @@
       density: pick(P.density, DENSITIES),
       notation: pick(P.notation, NOTATIONS),
       text: pick(P.text, TEXT_SIZES),
+      lines: pick(P.lines, FORMULA_LINES),
       order: pick(P.order, ORDERS),
       captions: pick(P.captions, CAPTION_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
@@ -296,7 +300,7 @@
         prefs: {
           layout: state.layout, diagrams: state.diagrams,
           density: state.density, notation: state.notation,
-          text: state.text, tags: state.tags, autoGroup: state.autoGroup,
+          text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start
         }
       };
@@ -323,6 +327,7 @@
     density: _loaded.density,    // "comfortable" | "spacious" | "compact"
     notation: _loaded.notation,  // "sigma" | "expanded"
     text: _loaded.text,          // "normal" | "large"
+    lines: _loaded.lines,        // "1" | "2" | "3" | "all" -- rows of a card's formulas shown while browsing
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
@@ -724,7 +729,7 @@
       "power-of-a-point", "ptolemys-theorem", "inscribed-angle-theorem", "tangent-chord-angle",
       "angle-chord-secant", "tangent-facts", "two-tangents-angle", "common-tangent-lengths",
       "radical-axis", "butterfly-theorem", "miquels-theorem", "harmonic-quadrilateral",
-      "cyclic-quad-diagonals", "circle-equation", "circular-segment", "brahmaguptas-formula",
+      "ptolemy-second-theorem", "circle-equation", "circular-segment", "brahmaguptas-formula",
       "pitots-theorem", "descartes-circle-theorem", "caseys-theorem", "mixtilinear-incircle",
       "tangent-circles"
     ],
@@ -791,7 +796,7 @@
     ],
     "cyclic quadrilaterals": [
       "brahmaguptas-formula", "bretschneiders-formula", "cyclic-opposite-angles",
-      "cyclic-quad-diagonals", "cyclic-quad-radius", "euler-quadrilateral", "newtons-line",
+      "ptolemy-second-theorem", "cyclic-quad-radius", "euler-quadrilateral", "newtons-line",
       "pascals-theorem", "pitots-theorem", "ptolemy-equilateral", "ptolemys-inequality",
       "ptolemys-theorem", "van-aubel", "varignons-theorem"
     ],
@@ -1296,7 +1301,7 @@
 
   // A card merged into another keeps working at its old address, so bookmarks and shared
   // links land on the card that absorbed it.
-  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies" };
+  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies", "picks-triangular-lattice": "picks-theorem-general", "hexagon-diagonals": "regular-hexagon-area", "cyclic-quad-diagonals": "ptolemy-second-theorem", "same-remainder": "subtract-equal-remainders" };
   function getRoute() {
     let m = location.hash.match(/^#\/f\/([\w-]+)$/);
     if (m && BY_ID[m[1]]) return { type: "formula", entry: BY_ID[m[1]] };
@@ -1591,7 +1596,7 @@
     "power-of-a-point", "inscribed-angle-theorem", "picks-theorem",
     "incenter-excenter-lemma", "orthocenter-properties", "fermat-point",
     "simson-line", "butterfly-theorem", "radical-axis", "miquels-theorem", "ptolemys-theorem",
-    "cyclic-quad-diagonals", "varignons-theorem", "van-aubel", "napoleons-theorem",
+    "ptolemy-second-theorem", "varignons-theorem", "van-aubel", "napoleons-theorem",
     "trapezoid-special-segments", "intercept-theorem", "british-flag-theorem", "mass-points",
     "reflect-across-the-line", "rotation-trick", "spiral-similarity", "de-guas-theorem",
     "skew-lines-distance", "circular-segment", "feuerbach-theorem", "nine-point-circle",
@@ -2523,14 +2528,26 @@
       </article>`;
   }
 
-  // A browsing card shows only the first of a card's forms (the rest are on its page), so the
-  // cards in a grid stay about the same height and a row has no holes. Large cards have the
-  // room to show every form, stacked as on the card's page.
+  // A browsing card shows at most as many rows of its formulas as the Formula lines setting
+  // allows (1, 2, 3, or all), so the cards in a grid stay about the same height. A row is one
+  // form, or one row of a thumbnail that is stacked in a gathered block; the rest are on the
+  // card's own page.
+  function formulaRows(latex) {
+    const rows = [];
+    splitLatexParts(latex).forEach(p => {
+      const m = p.match(/^\\begin\{gathered\}([\s\S]*)\\end\{gathered\}$/);
+      if (m && !/\\begin/.test(m[1])) rows.push(...m[1].split(/\\\\(?:\[[^\]]*\])?/).map(t => t.trim()).filter(Boolean));
+      else rows.push(p);
+    });
+    return rows;
+  }
   function cardFormulaHtml(f) {
-    if (state.cols === "spacious") return `<div class="formula-display" data-full="1" data-latex="${escapeAttr(latexFor(f) || "")}"></div>`;
-    const parts = splitLatexParts(latexFor(f));
-    return `<div class="formula-display" data-latex="${escapeAttr(parts[0] || "")}"></div>` +
-      (parts.length > 1 ? `<div class="more-forms">+ ${parts.length - 1} more form${parts.length > 2 ? "s" : ""} on its page</div>` : "");
+    const rows = formulaRows(latexFor(f) || "");
+    const n = state.lines === "all" ? rows.length : Math.min(+state.lines || 1, rows.length);
+    const shown = rows.slice(0, n), more = rows.length - n;
+    const latex = shown.length > 1 ? "\\begin{gathered}" + shown.join(" \\\\[0.55em] ") + "\\end{gathered}" : (shown[0] || "");
+    return `<div class="formula-display"${n > 1 ? ' data-full="1"' : ""} data-latex="${escapeAttr(latex)}"></div>` +
+      (more > 0 ? `<div class="more-forms">+ ${more} more line${more > 1 ? "s" : ""} on its page</div>` : "");
   }
   // A long formula is scaled down to fit its card, never scrolled, and a tall one to a fixed
   // height. When even that would make it too small to read, it keeps a readable size and
@@ -2936,7 +2953,8 @@
     // Only the MAA families have per-problem wiki pages; building one for anything else
     // produces a URL that looks right and 404s.
     if (!/\b(AMC|AIME|AJHSME)\b/i.test(m[1])) return null;
-    const slug = m[1].trim().replace(/\s+/g, "_") + "_Problems/Problem_" + m[2];
+    // The wiki names the Spring 2021 papers "2021 AMC 10A", with no season; only the Fall ones carry one.
+    const slug = m[1].trim().replace(/^(\d{4})\s+Spring\s+/i, "$1 ").replace(/\s+/g, "_") + "_Problems/Problem_" + m[2];
     return "https://artofproblemsolving.com/wiki/index.php/" + slug;
   }
 
@@ -2954,6 +2972,7 @@
     const core = cname.replace(/^(Fall|Spring)\s+/i, "");
     let fam, fm;
     if (/AIME/i.test(core)) fam = "AIME";
+    else if (/AJHSME/i.test(core)) fam = "AMC 8";           // the AMC 8's name until 1998
     else if ((fm = core.match(/AMC\s*(8|10|12)/i))) fam = "AMC " + fm[1];
     else if (/Putnam/i.test(core)) fam = "Putnam";
     // HMMT runs two tournaments a year of quite different difficulty, so they are separate
@@ -3001,6 +3020,8 @@
   const PROBLEMS_BY_CARD = {};
   PROBLEM_DB.forEach(p => {
     PROBLEM_BY_SLUG[p.slug] = p;
+    // The 2021 Spring papers were first filed without the season ("2021 AMC 10A"); an old link or star still opens them.
+    if (/^2021-spring-amc-/.test(p.slug)) PROBLEM_BY_SLUG[p.slug.replace("-spring-", "-")] = p;
     p.formulas.forEach(fid => (PROBLEMS_BY_CARD[fid] = PROBLEMS_BY_CARD[fid] || []).push(p));
     // A card the trick route uses still lists the problem, which is the point of tagging
     // tricks at all: the obscure cards are exactly the ones a main route never reaches
@@ -3040,13 +3061,17 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT November", "HMMT February", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 10", "AMC 12", "AIME", "AMC 8", "HMMT February", "HMMT November", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
   });
   const FAM_BY_SLUG = {}; FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
   const famCount = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].length, 0);
+  // "Written" means the problem has its solution in the app: a strategy or its cards. A problem that only has its text is not counted.
+  const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy || p.formulas.length).length, 0);
+  // Whether the Practice page lists the contests still to come (hidden until asked for).
+  let showUnwritten = false;
   const DEFAULT_FAM = FAMILIES.slice().sort((a, b) => famCount(b) - famCount(a))[0] || null;
 
   // Contest problems that use this formula, grouped by contest (AMC 8 up through AIME and the
@@ -3970,7 +3995,8 @@
           <h3 class="set-panel-title">Appearance</h3>
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
-          ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across, and they show every form of a formula instead of only the first.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
+          ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
+          ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
           ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
         </section>
         <section class="set-panel">
@@ -4299,7 +4325,7 @@
     const card = dailyCard();
     const starIds = liveIds(getList("starred"));
     const mine = lists.items.filter(l => l.id !== "starred");
-    const nProblems = PROBLEM_DB.length.toLocaleString();
+    const nProblems = PROBLEM_DB.filter(p => p.strategy || p.formulas.length).length.toLocaleString();   // problems with their solution written
     const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-n">${n}</span></a>`;
     const step = (sp, kind, q, text) => `<a class="hc-step" data-tint="${sp}" href="#/${sp}"><span class="hc-kind">${kind}</span><span class="hc-q">${q}</span><span class="hc-text">${text}</span></a>`;
     // The front page is mostly a way in: every subject of every space, one click away.
@@ -4318,14 +4344,14 @@
       <div class="hub">
         <header class="hub-head">
           <div class="hub-brand">${LOGO_HTML}<div><div class="hub-name">Competition Math Reference</div>
-            <div class="hub-sub">Formulas, methods, patterns, and real contest problems for MATHCOUNTS, AMC 10/12, AIME, and olympiad, all linked to each other.</div></div></div>
+            <div class="hub-sub">Formulas, methods, patterns, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</div></div></div>
           <form class="home-search" role="search">
             <input id="home-search" type="search" placeholder="Search formulas, methods, patterns, and problems" autocomplete="off" aria-label="Search the reference">
             <button type="submit">Search</button>
           </form>
         </header>
         <nav class="hub-spaces" aria-label="Spaces">
-          ${tile("formulas", `${count("formula")} formulas`)}${tile("methods", `${count("method")} methods`)}${tile("patterns", `${count("pattern")} patterns`)}${tile("practice", `${nProblems} problems`)}
+          ${tile("formulas", `${count("formula")} formulas`)}${tile("methods", `${count("method")} methods`)}${tile("patterns", `${count("pattern")} patterns`)}${tile("practice", `${nProblems} problems written`)}
         </nav>
         <div class="hub-main">
           <section class="hub-about">
@@ -4436,7 +4462,7 @@
     {
       const fams = FAMILIES.slice();
       const routes = BUILTIN_LISTS.filter(l => l.kind === "route");
-      const tiers = ["MATHCOUNTS", "AMC", "AIME", "Olympiad"];
+      const tiers = ["AMC", "AIME", "Olympiad"];
       const subjects = ["Geometry", "Algebra", "Number Theory", "Counting & Probability"];
       const route = (t, sbj) => routes.find(l => l.tier === t && l.subject === sbj);
       const starred = getList("starred");
@@ -4474,9 +4500,20 @@
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
-              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famCount(f).toLocaleString()} problems</span></a>
+              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
               <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
             </div>`).join("")}
+            ${(() => {
+              const planned = (window.MATH_PLANNED_CONTESTS || []).filter(c => !fams.includes(c.name));
+              if (!planned.length) return "";
+              // Contests still to come stay out of sight until asked for, so the list shows only what works.
+              return `<div class="ct-planned-box" id="ct-planned-box"${showUnwritten ? "" : " hidden"}>${planned.map(c => `
+            <div class="ct-row ct-planned" aria-disabled="true">
+              <div class="ct-name">${escapeAttr(c.name)}<span class="ct-n">Coming soon</span></div>
+              <div class="ct-note">${escapeAttr(c.host)}. ${escapeAttr(c.note)}</div>
+            </div>`).join("")}</div>
+            <button type="button" class="ct-toggle" id="ct-unwritten" aria-expanded="${showUnwritten}">${showUnwritten ? "Hide unwritten contests" : "Show unwritten contests (" + planned.length + ")"}</button>`;
+            })()}
           </div>
         </section>
         <section class="sh-section">
@@ -4488,6 +4525,7 @@
               return `<td>${l ? `<a href="#/list/${l.id}">${liveCount(l)} cards</a>` : `<span class="cy-none">&middot;</span>`}</td>`;
             }).join("")}</tr>`).join("")}</tbody>
           </table></div>
+          <p class="route-note">Each route builds on the one above it: the AIME route lists only what is new beyond the AMC 10/12 route, and the Olympiad route only what is new beyond the AIME, with a few cards repeated where a level uses the same card in a broader way.</p>
           <div class="pl-kinds">${LIST_KINDS.filter(([k]) => k !== "route").map(([k, label]) => {
             const ls = BUILTIN_LISTS.filter(l => l.kind === k);
             return ls.length ? `<div class="pl-kind"><div class="pl-kind-title">${label}</div><div class="pl-list">${ls.map(listLink).join("")}</div></div>` : "";
@@ -4496,6 +4534,14 @@
     }
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
+    const unrel = $content.querySelector("#ct-unwritten");
+    if (unrel) unrel.addEventListener("click", () => {
+      showUnwritten = !showUnwritten;
+      const box = $content.querySelector("#ct-planned-box");
+      box.hidden = !showUnwritten;
+      unrel.setAttribute("aria-expanded", String(showUnwritten));
+      unrel.textContent = showUnwritten ? "Hide unwritten contests" : "Show unwritten contests (" + box.children.length + ")";
+    });
     renderMath($content);
   }
 
@@ -5115,7 +5161,9 @@
     const year = route.year && DB_TREE[fam][route.year] ? route.year : years[0];
     const groups = {};
     DB_TREE[fam][year].forEach(p => { (groups[p.cname] = groups[p.cname] || []).push(p); });
-    const body = Object.keys(groups).sort().map(gn => {
+    // Spring before Fall within a year (2021 had both), then A before B.
+    const seasonRank = gn => /^Spring\b/i.test(gn) ? 0 : /^Fall\b/i.test(gn) ? 1 : 0;
+    const body = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b)).map(gn => {
       const ps = groups[gn].sort((a, b) => a.num - b.num);
       return `<div class="db-group"><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
     }).join("");
@@ -5175,7 +5223,7 @@
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 4;
+  const STATEMENTS_V = 17;
   const statementLoads = {};
   function loadStatements(year) {
     if (!statementLoads[year]) {
@@ -5207,12 +5255,34 @@
             const nw = img.naturalWidth, nh = img.naturalHeight;
             if (!nw || !nh) return;
             // The same size for every figure, whatever the file: scale it (up or down) to fit a 420 by 280 box.
-            const k = Math.min(420 / nw, 280 / nh);
+            let k = Math.min(420 / nw, 280 / nh);
+            // A thin strip (a row of numbered cards) would shrink to unreadable digits, so it may run wider.
+            if (nh * k < 60) k = Math.min(600 / nw, 60 / nh);
             img.style.width = Math.round(nw * k) + "px";
           });
           img.src = "js/data/problems/figures/" + part + "?v=" + STATEMENTS_V;
           body.appendChild(img);
-        } else if (part) body.appendChild(document.createTextNode(part));
+        } else if (part) {
+          // Each answer choice on its own line is its own block, so a tall fraction cannot run
+          // into the choice above or below it.
+          part.split(/\n(?=\([A-E]\) )/).forEach(piece => {
+            if (/^\([A-E]\) /.test(piece)) {
+              const d = document.createElement("div");
+              d.className = "prob-choice";
+              // A choice that is a picture is marked @@ci:<file>|<height>@@ and sits small beside its letter.
+              piece.replace(/\n+$/, "").split(/@@ci:([^|@]+)\|?([^@]*)@@/).forEach((bit, k, arr) => {
+                if (k % 3 === 1) {
+                  const im = new Image();
+                  im.className = "prob-choice-img"; im.alt = "Answer choice";
+                  im.style.maxHeight = arr[k + 1] || "4rem";
+                  im.src = "js/data/problems/figures/" + bit + "?v=" + STATEMENTS_V;
+                  d.appendChild(im);
+                } else if (k % 3 === 0 && bit) d.appendChild(document.createTextNode(bit));
+              });
+              body.appendChild(d);
+            } else body.appendChild(document.createTextNode(piece));
+          });
+        }
       });
       wrap.querySelector(".prob-credit").innerHTML = statementCreditHtml(p, st.u);
       wrap.hidden = false;
@@ -5223,7 +5293,11 @@
   function statementCreditHtml(p, src) {
     return `Problem ${escapeAttr(refShort(p.ref))}, &copy; Mathematical Association of America, used under ` +
       `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. ` +
-      `Text and figures from <a href="${escapeAttr(src || "https://live.poshenloh.com/past-contests")}" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>.`;
+      (/^pdf:/.test(src || "")
+        ? `Text and figures from the ${/10a$/.test(src) ? "MAA's official solutions booklet for the Fall 2021 AMC 10A" : "Fall 2021 AMC 10B paper"}, a PDF copy.`
+      : /artofproblemsolving\.com/.test(src || "")
+        ? `Text from the <a href="${escapeAttr(src)}" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>.`
+        : `Text and figures from <a href="${escapeAttr(src || "https://live.poshenloh.com/past-contests")}" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>.`);
   }
 
   function renderProblemDetail(slug) {
@@ -5881,7 +5955,7 @@
 
 
 
-  const LIST_KINDS = [["route", "Study Routes"], ["configuration", "Configurations"],
+  const LIST_KINDS = [["route", "Study Routes"], ["core", "Starting Points"], ["configuration", "Configurations"],
                       ["thinking", "Ways of Thinking"], ["curiosity", "Curiosities"]];
 
   function buildSidebar() {

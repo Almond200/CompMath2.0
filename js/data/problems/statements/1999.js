@@ -20,4 +20,111 @@ Object.assign(window.MATH_STATEMENTS, {
 "1999-aime-7": { s: String.raw`There is a set of $1000$ switches, each of which has four positions, called $A,$ $B,$ $C,$ and $D.$ When the position of any switch changes, it is only from $A$ to $B,$ from $B$ to $C,$ from $C$ to $D,$ or from $D$ to $A.$ Initially each switch is in position $A.$ The switches are labeled with the $1000$ different integers $2^x 3^y 5^z,$ where $x,$ $y,$ and $z$ take on the values $0,$ $1,$ $\ldots,$ $9.$ At step $i$ of a $1000$-step process, the $i$th switch is advanced one step, and so are all the other switches whose labels divide the label on the $i$th switch. After step $1000$ has been completed, how many switches will be in position $A?$`, u: "https://live.poshenloh.com/past-contests/aime/1999" },
 "1999-aime-8": { s: String.raw`Let $T$ be the set of ordered triples $(x, y, z)$ of nonnegative real numbers that lie in the plane $x + y + z = 1.$ Let us say that $(x, y, z)$ supports $(a, b, c)$ when exactly two of the following are true: $x \ge a,$ $y \ge b,$ $z \ge c.$ Let $S$ consist of those triples in $T$ that support $\left(\frac{1}{2}, \frac{1}{3}, \frac{1}{6}\right).$ The area of $S$ divided by the area of $T$ is $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. Find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/1999" },
 "1999-aime-9": { s: String.raw`A function $f$ is defined on the complex numbers by $f(z) = (a + bi)z,$ where $a$ and $b$ are positive numbers. This function has the property that the image of each point in the complex plane is equidistant from that point and the origin. Given that $|a + bi| = 8$ and that $b^2 = \frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers, find $m + n.$`, u: "https://live.poshenloh.com/past-contests/aime/1999" },
+"1999-amc-8-1": { s: String.raw`$(6 \ ? \ 3) + 4 - (2 - 1) = 5.$ To make this statement true, the question mark between the $6$ and the $3$ should be replaced by
+
+(A) $\div$  (B) $\times$  (C) $+$  (D) $-$  (E) None of these`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-10": { s: String.raw`A complete cycle of a traffic light takes $60$ seconds. During each cycle the light is green for $25$ seconds, yellow for $5$ seconds, and red for $30$ seconds. At a randomly chosen time, what is the probability that the light will NOT be green?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{5}{12}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{7}{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-11": { s: String.raw`Each of the five numbers $1,$ $4,$ $7,$ $10,$ and $13$ is placed in one of the five squares so that the sum of the three numbers in the horizontal row equals the sum of the three numbers in the vertical column. The largest possible value for the horizontal or vertical sum is
+
+@@fig:amc8/1999/11.svg@@
+
+(A) $20$  (B) $21$  (C) $22$  (D) $24$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-12": { s: String.raw`The ratio of the number of games won to the number of games lost (no ties) by the Middle School Middies is $\frac{11}{4}.$ To the nearest whole percent, what percent of its games did the team lose?
+
+(A) $24\%$  (B) $27\%$  (C) $36\%$  (D) $45\%$  (E) $73\%$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-13": { s: String.raw`The average age of the $40$ members of a computer science camp is $17$ years. There are $20$ girls, $15$ boys, and $5$ adults. If the average age of the girls is $15$ and the average age of the boys is $16,$ what is the average age of the adults?
+
+(A) $26$  (B) $27$  (C) $28$  (D) $29$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-14": { s: String.raw`In trapezoid $ABCD,$ the sides $AB$ and $CD$ are equal. The perimeter of $ABCD$ is
+
+@@fig:amc8/1999/14.svg@@
+
+(A) $27$  (B) $30$  (C) $32$  (D) $34$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-15": { s: String.raw`Bicycle license plates in Flatville each contain three letters. The first is chosen from the set $\{C,H,L,P,R\},$ the second from $\{A,I,O\},$ and the third from $\{D,M,N,T\}.$
+
+When Flatville needed more license plates, they added two new letters. The new letters may both be added to one set or one letter may be added to one set and one to another set. What is the largest possible number of additional license plates that can be made by adding two letters?
+
+(A) $24$  (B) $30$  (C) $36$  (D) $40$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-16": { s: String.raw`Tori’s mathematics test had $75$ problems: $10$ arithmetic, $30$ algebra, and $35$ geometry problems. Although she answered $70\%$ of the arithmetic, $40\%$ of the algebra, and $60\%$ of the geometry problems correctly, she did not pass the test because she got less than $60\%$ of the problems right.
+
+How many more problems would she have needed to answer correctly to earn a $60\%$ passing grade?
+
+(A) $1$  (B) $5$  (C) $7$  (D) $9$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-17": { s: String.raw`Problems $17,$ $18,$ and $19$ refer to the following:
+
+Cookies For a Crowd
+
+At Central Middle School the $108$ students who take the AMC $8$ meet in the evening to talk about problems and eat an average of two cookies apiece. Walter and Gretel are baking Bonnie’s Best Bar Cookies this year. Their recipe, which makes a pan of $15$ cookies, lists these items: $1\dfrac{1}{2}$ cups of flour, $2$ eggs, $3$ tablespoons butter, $\dfrac{3}{4}$ cups sugar, and $1$ package of chocolate drops. They will make only full recipes, not partial recipes.
+
+Walter can buy eggs by the half-dozen. How many half-dozens should he buy to make enough cookies? (Some eggs and some cookies may be left over.)
+
+(A) $1$  (B) $2$  (C) $5$  (D) $7$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-18": { s: String.raw`They learn that a big concert is scheduled for the same night and attendance will be down $25\%.$ How many recipes of cookies should they make for their smaller party?
+
+(A) $6$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-19": { s: String.raw`The drummer gets sick. The concert is cancelled. Walter and Gretel must make enough pans of cookies to supply $216$ cookies. There are $8$ tablespoons in a stick of butter. How many sticks of butter will be needed? (Some butter may be left over, of course.)
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-2": { s: String.raw`What is the degree measure of the smaller angle formed by the hands of a clock at $10$ o’clock?
+
+@@fig:amc8/1999/2.svg@@
+
+(A) $30$  (B) $45$  (C) $60$  (D) $75$  (E) $90$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-20": { s: String.raw`Figure $1$ is called a “stack map.” The numbers tell how many cubes are stacked in each position. Fig. $2$ shows these cubes, and Fig. $3$ shows the view of the stacked cubes as seen from the front.
+
+Which of the following is the front view for the stack map in Fig. $4?$
+
+@@fig:amc8/1999/20.svg@@
+
+(A) @@ci:amc8/1999/20A.svg|4rem@@  (B) @@ci:amc8/1999/20B.svg|4rem@@  (C) @@ci:amc8/1999/20C.svg|4rem@@  (D) @@ci:amc8/1999/20D.svg|4rem@@  (E) @@ci:amc8/1999/20E.svg|4rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-21": { s: String.raw`The degree measure of angle $A$ is
+
+@@fig:amc8/1999/21.svg@@
+
+(A) $20$  (B) $30$  (C) $35$  (D) $40$  (E) $45$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-22": { s: String.raw`In a far-off land three fish can be traded for two loaves of bread and a loaf of bread can be traded for four bags of rice. How many bags of rice is one fish worth?
+
+(A) $\dfrac{3}{8}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{3}{4}$  (D) $2\dfrac{2}{3}$  (E) $3\dfrac{1}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-23": { s: String.raw`Square $ABCD$ has sides of length $3.$ Segments $CM$ and $CN$ divide the square’s area into three equal parts. How long is segment $CM?$
+
+@@fig:amc8/1999/23.svg@@
+
+(A) $\sqrt{10}$  (B) $\sqrt{12}$  (C) $\sqrt{13}$  (D) $\sqrt{14}$  (E) $\sqrt{15}$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-24": { s: String.raw`When $1999^{2000}$ is divided by $5,$ the remainder is
+
+(A) $4$  (B) $3$  (C) $2$  (D) $1$  (E) $0$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-25": { s: String.raw`Points $B,$ $D,$ and $J$ are midpoints of the sides of right triangle $ACG.$ Points $K,$ $E,$ $I$ are midpoints of the sides of triangle $JDG,$ etc. If the dividing and shading process is done $100$ times (the first three are shown) and $AC = CG = 6,$ then the total area of the shaded triangles is nearest
+
+@@fig:amc8/1999/25.svg@@
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-3": { s: String.raw`Which triplet of numbers has a sum NOT equal to $1?$
+
+(A) $(\frac12,\frac13,\frac16)$  (B) $(2,-2,1)$  (C) $(0.1,0.3,0.6)$  (D) $(1.1,-2.1,1.0)$  (E) $(-\frac32,-\frac52,5)$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-4": { s: String.raw`The diagram shows the miles traveled by bikers Alberto and Bjorn. After four hours, about how many more miles has Alberto biked than Bjorn?
+
+@@fig:amc8/1999/4.svg@@
+
+(A) $15$  (B) $20$  (C) $25$  (D) $30$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-5": { s: String.raw`A rectangular garden $50$ feet long and $10$ feet wide is enclosed by a fence. To make the garden larger, while using the same fence, its shape is changed to a square. By how many square feet does this enlarge the garden?
+
+(A) $100$  (B) $200$  (C) $300$  (D) $400$  (E) $500$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-6": { s: String.raw`Bo, Coe, Flo, Jo, and Moe have different amounts of money. Neither Jo nor Bo has as much money as Flo. Both Bo and Coe have more than Moe. Jo has more than Moe, but less than Bo. Who has the least amount of money?
+
+(A) Bo  (B) Coe  (C) Flo  (D) Jo  (E) Moe`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-7": { s: String.raw`The third exit on a highway is located at milepost $40$ and the tenth exit is at milepost $160.$ There is a service center on the highway located three-fourths of the way from the third exit to the tenth exit. At what milepost would you expect to find this service center?
+
+(A) $90$  (B) $100$  (C) $110$  (D) $120$  (E) $130$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-8": { s: String.raw`Six squares are colored, front and back ($R$ = red, $B$ = blue, $O$ = orange, $Y$ = yellow, $G$ = green, and $W$ = white). They are hinged together as shown, then folded to form a cube. The face opposite the white face is
+
+@@fig:amc8/1999/8.svg@@
+
+(A) $B$  (B) $G$  (C) $O$  (D) $R$  (E) $Y$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
+"1999-amc-8-9": { s: String.raw`Three flower beds overlap as shown. Bed $A$ has $500$ plants, bed $B$ has $450$ plants, and bed $C$ has $350$ plants. Beds $A$ and $B$ share $50$ plants, while beds $A$ and $C$ share $100.$ The total number of plants is
+
+@@fig:amc8/1999/9.svg@@
+
+(A) $850$  (B) $1000$  (C) $1150$  (D) $1300$  (E) $1450$`, u: "https://live.poshenloh.com/past-contests/amc8/1999" },
 });

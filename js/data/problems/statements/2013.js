@@ -59,7 +59,421 @@ Find $N.$`, u: "https://live.poshenloh.com/past-contests/aime/2013I" },
 "2013-aime-ii-7": { s: String.raw`A group of clerks is assigned the task of sorting $1775$ files. Each clerk sorts at a constant rate of $30$ files per hour. At the end of the first hour, some of the clerks are reassigned to another task; at the end of the second hour, the same number of the remaining clerks are also reassigned to another task, and a similar reassignment occurs at the end of the third hour. The group finishes the sorting in $3$ hours and $10$ minutes. Find the number of files sorted during the first one and a half hours of sorting.`, u: "https://live.poshenloh.com/past-contests/aime/2013II" },
 "2013-aime-ii-8": { s: String.raw`A hexagon that is inscribed in a circle has side lengths $22,$ $22,$ $20,$ $22,$ $22,$ and $20$ in that order. The radius of the circle can be written as $p + \sqrt{q},$ where $p$ and $q$ are positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2013II" },
 "2013-aime-ii-9": { s: String.raw`A $7 \times 1$ board is completely covered by $m \times 1$ tiles without overlap; each tile may cover any number of consecutive squares, and each tile lies completely on the board. Each tile is either red, blue, or green. Let $N$ be the number of tilings of the $7 \times 1$ board in which all three colors are used at least once. For example, a $1 \times 1$ red tile followed by a $2 \times 1$ green tile, a $1 \times 1$ green tile, a $2 \times 1$ blue tile, and a $1 \times 1$ green tile is a valid tiling. Note that if the $2 \times 1$ blue tile is replaced by two $1 \times 1$ blue tiles, this results in a different tiling. Find the remainder when $N$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2013II" },
+"2013-amc-10a-1": { s: String.raw`A taxi ride costs $\$1.50$ plus $\$0.25$ per mile traveled. How much does a $5$-mile taxi ride cost?
+
+(A) $\$2.25$  (B) $\$2.50$  (C) $\$2.75$  (D) $\$3.00$  (E) $\$3.25$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-10": { s: String.raw`A flower bouquet contains pink roses, red roses, pink carnations, and red carnations. One third of the pink flowers are roses, three fourths of the red flowers are carnations, and six tenths of the flowers are pink. What percent of the flowers are carnations?
+
+(A) $15$  (B) $30$  (C) $40$  (D) $60$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-11": { s: String.raw`A student council must select a two-person welcoming committee and a three-person planning committee from among its members. There are exactly $10$ ways to select a two-person team for the welcoming committee. It is possible for students to serve on both committees. In how many different ways can a three-person planning committee be selected?
+
+(A) $10$  (B) $12$  (C) $15$  (D) $18$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-12": { s: String.raw`In $\triangle ABC,$ $AB=AC=28$ and $BC=20.$ Points $D,$ $E,$ and $F$ are on sides $\overline{AB},$ $\overline{BC},$ and $\overline{AC},$ respectively, such that $\overline{DE}$ and $\overline{EF}$ are parallel to $\overline{AC}$ and $\overline{AB},$ respectively. What is the perimeter of parallelogram $ADEF?$
+
+@@fig:amc10/2013A/12.svg@@
+
+(A) $48$  (B) $52$  (C) $56$  (D) $60$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-13": { s: String.raw`How many three-digit numbers are not divisible by $5,$ have digits that sum to less than $20,$ and have the first digit equal to the third digit?
+
+(A) $52$  (B) $60$  (C) $66$  (D) $68$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-14": { s: String.raw`A solid cube of side length $1$ is removed from each corner of a solid cube of side length $3.$ How many edges does the remaining solid have?
+
+(A) $36$  (B) $60$  (C) $72$  (D) $84$  (E) $108$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-15": { s: String.raw`Two sides of a triangle have lengths $10$ and $15.$ The length of the altitude to the third side is the average of the lengths of the altitudes to the two given sides. How long is the third side?
+
+(A) $6$  (B) $8$  (C) $9$  (D) $12$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-16": { s: String.raw`A triangle with vertices $(6, 5),$ $(8, -3),$ and $(9, 1)$ is reflected about the line $x = 8$ to create a second triangle. What is the area of the union of the two triangles?
+
+(A) $9$  (B) $\dfrac{28}{3}$  (C) $10$  (D) $\dfrac{31}{3}$  (E) $\dfrac{32}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-17": { s: String.raw`Daphne is visited periodically by her three best friends: Alice, Beatrix, and Claire. Alice visits every third day, Beatrix visits every fourth day, and Claire visits every fifth day.
+
+All three friends visited Daphne yesterday. How many days of the next $365$-day period will exactly two friends visit her?
+
+(A) $48$  (B) $54$  (C) $60$  (D) $66$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-18": { s: String.raw`Let points $A=(0,0),$ $B=(1,2),$ $C=(3,3),$ and $D=(4,0).$ Quadrilateral $ABCD$ is cut into equal area pieces by a line passing through $A.$ This line intersects $\overline{CD}$ at point $\left(\dfrac{p}{q}, \dfrac{r}{s}\right),$ where these fractions are in lowest terms. What is $p+q+r+s?$
+
+(A) $54$  (B) $58$  (C) $62$  (D) $70$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-19": { s: String.raw`In base $10,$ the number $2013$ ends in the digit $3.$ In base $9,$ on the other hand, the same number is written as $(2676)_9$ and ends in the digit $6.$ For how many positive integers $b$ does the base-$b$-representation of $2013$ end in the digit $3?$
+
+(A) $6$  (B) $9$  (C) $13$  (D) $16$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-2": { s: String.raw`Alice is making a batch of cookies and needs $2\frac{1}{2}$ cups of sugar. Unfortunately, her measuring cup holds only $\frac{1}{4}$ cup of sugar. How many times must she fill that cup to get the correct amount of sugar?
+
+(A) $8$  (B) $10$  (C) $12$  (D) $16$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-20": { s: String.raw`A unit square is rotated $45^\circ$ about its center. What is the area of the region swept out by the interior of the square?
+
+(A) $1 - \dfrac{\sqrt2}{2} + \dfrac{\pi}{4}$
+(B) $\dfrac{1}{2} + \dfrac{\pi}{4}$
+(C) $2 - \sqrt2 + \dfrac{\pi}{4}$
+(D) $\dfrac{\sqrt2}{2} + \dfrac{\pi}{4}$
+(E) $1 + \dfrac{\sqrt2}{4} + \dfrac{\pi}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-21": { s: String.raw`A group of $12$ pirates agree to divide a treasure chest of gold coins among themselves as follows. The $k^{\text{th}}$ pirate to take a share takes $\dfrac{k}{12}$ of the coins that remain in the chest. The number of coins initially in the chest is the smallest number for which this arrangement will allow each pirate to receive a positive whole number of coins. How many coins does the $12^{\text{th}}$ pirate receive?
+
+(A) $720$  (B) $1296$  (C) $1728$  (D) $1925$  (E) $3850$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-22": { s: String.raw`Six spheres of radius $1$ are positioned so that their centers are at the vertices of a regular hexagon of side length $2.$ The six spheres are internally tangent to a larger sphere whose center is the center of the hexagon. An eighth sphere is externally tangent to the six smaller spheres and internally tangent to the larger sphere. What is the radius of this eighth sphere?
+
+(A) $\sqrt2$  (B) $\dfrac{3}{2}$  (C) $\dfrac{5}{3}$  (D) $\sqrt3$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-23": { s: String.raw`In $\triangle ABC,$ $AB = 86,$ and $AC=97.$ A circle with center $A$ and radius $AB$ intersects $\overline{BC}$ at points $B$ and $X.$ Moreover $\overline{BX}$ and $\overline{CX}$ have integer lengths. What is $BC?$
+
+(A) $11$  (B) $28$  (C) $33$  (D) $61$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-24": { s: String.raw`Central High School is competing against Northern High School in a backgammon match. Each school has three players, and the contest rules require that each player play two games against each of the other school’s players. The match takes place in six rounds, with three games played simultaneously in each round. In how many different ways can the match be scheduled?
+
+(A) $540$  (B) $600$  (C) $720$  (D) $810$  (E) $900$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-25": { s: String.raw`All $20$ diagonals are drawn in a regular octagon. At how many distinct points in the interior of the octagon (not on the boundary) do two or more diagonals intersect?
+
+(A) $49$  (B) $65$  (C) $70$  (D) $96$  (E) $128$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-3": { s: String.raw`Square $ABCD$ has side length $10.$ Point $E$ is on $\overline{BC},$ and the area of $\triangle ABE$ is $40.$ What is $BE?$
+
+@@fig:amc10/2013A/3.svg@@
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-4": { s: String.raw`A softball team played ten games, scoring $1,$ $2,$ $3,$ $4,$ $5,$ $6,$ $7,$ $8,$ $9,$ and $10$ runs. They lost by one run in exactly five games. In each of their other games, they scored twice as many runs as their opponent. How many total runs did their opponents score?
+
+(A) $35$  (B) $40$  (C) $45$  (D) $50$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-5": { s: String.raw`Tom, Dorothy, and Sammy went on a vacation and agreed to split the costs evenly. During their trip Tom paid $\$105,$ Dorothy paid $\$125,$ and Sammy paid $\$175.$ In order to share costs equally, Tom gave Sammy $t$ dollars, and Dorothy gave Sammy $d$ dollars. What is $t-d?$
+
+(A) $15$  (B) $20$  (C) $25$  (D) $30$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-6": { s: String.raw`Joey and his five brothers are ages $3,$ $5,$ $7,$ $9,$ $11,$ and $13.$ One afternoon two of his brothers whose ages sum to $16$ went to the movies, two brothers younger than $10$ went to play baseball, and Joey and the $5$-year-old stayed home. How old is Joey?
+
+(A) $3$  (B) $7$  (C) $9$  (D) $11$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-7": { s: String.raw`A student must choose a program of four courses from a menu of courses consisting of English, Algebra, Geometry, History, Art, and Latin. This program must contain English and at least one mathematics course. In how many ways can this program be chosen?
+
+(A) $6$  (B) $8$  (C) $9$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-8": { s: String.raw`What is the value of$$\dfrac{2^{2014}+2^{2012}}{2^{2014}-2^{2012}} ?$$(A) $-1$  (B) $1$  (C) $\dfrac{5}{3}$  (D) $2013$  (E) $2^{4024}$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10a-9": { s: String.raw`In a recent basketball game, Shenille attempted only three-point shots and two-point shots. She was successful on $20\%$ of her three-point shots and $30\%$ of her two-point shots. Shenille attempted $30$ shots. How many points did she score?
+
+(A) $12$  (B) $18$  (C) $24$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc10/2013A" },
+"2013-amc-10b-1": { s: String.raw`What is the value of the following expression?$$\frac{2+4+6}{1+3+5} - \frac{1+3+5}{2+4+6}$$(A) $-1$  (B) $\dfrac{5}{36}$  (C) $\dfrac{7}{12}$  (D) $\dfrac{49}{20}$  (E) $\dfrac{43}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-10": { s: String.raw`A basketball team’s players were successful on $50\%$ of their two-point shots and $40\%$ of their three-point shots, which resulted in $54$ points. They attempted $50\%$ more two-point shots than three-point shots. How many three-point shots did they attempt?
+
+(A) $10$  (B) $15$  (C) $20$  (D) $25$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-11": { s: String.raw`Real numbers $x$ and $y$ satisfy the equation$$x^2+y^2=10x-6y-34.$$What is $x+y?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-12": { s: String.raw`Let $S$ be the set of sides and diagonals of a regular pentagon. A pair of elements of $S$ are selected at random without replacement. What is the probability that the two chosen segments have the same length?
+
+(A) $\dfrac{2}5$  (B) $\dfrac{4}9$  (C) $\dfrac{1}2$  (D) $\dfrac{5}9$  (E) $\dfrac{4}5$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-13": { s: String.raw`Jo and Blair take turns counting from $1$ to one more than the last number said by the other person. Jo starts by saying “$1$”, so Blair follows by saying “$1,$ $2$”. Jo then says “$1,$ $2,$ $3$”, and so on. What number is spoken in position $53$?
+
+(A) $2$  (B) $3$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-14": { s: String.raw`Define $a\clubsuit b=a^2b-ab^2 .$ Which of the following describes the set of points $(x, y)$ for which $x\clubsuit y=y\clubsuit x ?$
+
+(A) A finite set of points  (B) One line  (C) Two parallel lines  (D) Two intersecting lines  (E) Three lines`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-15": { s: String.raw`A wire is cut into two pieces, one of length $a$ and the other of length $b.$ The piece of length $a$ is bent to form an equilateral triangle, and the piece of length $b$ is bent to form a regular hexagon. The triangle and the hexagon have equal area. What is $\frac{a}{b}?$
+
+(A) $1$  (B) $\dfrac{\sqrt{6}}{2}$  (C) $\sqrt{3}$  (D) $2$  (E) $\dfrac{3\sqrt{2}}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-16": { s: String.raw`In triangle $\triangle ABC,$ medians $AD$ and $CE$ intersect at $P,$ $PE=1.5,$ $PD=2,$ and $DE=2.5.$ What is the area of $AEDC?$
+
+@@fig:amc10/2013B/16.svg@@
+
+(A) $13$  (B) $13.5$  (C) $14$  (D) $14.5$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-17": { s: String.raw`Alex has $75$ red tokens and $75$ blue tokens. There is a booth where Alex can give two red tokens and receive in return a silver token and a blue token, and another booth where Alex can give three blue tokens and receive in return a silver token and a red token. Alex continues to exchange tokens until no more exchanges are possible. How many silver tokens will Alex have at the end?
+
+(A) $62$  (B) $82$  (C) $83$  (D) $102$  (E) $103$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-18": { s: String.raw`The number $2013$ has the property that its units digit is the sum of its other digits, that is $2+0+1=3.$ How many integers less than $2013$ but greater than $1000$ have this property?
+
+(A) $33$  (B) $34$  (C) $45$  (D) $46$  (E) $58$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-19": { s: String.raw`The real numbers $c,$ $b,$ $a$ form an arithmetic sequence with $a \geq b \geq c \geq 0.$ The quadratic $ax^2+bx+c$ has exactly one root. What is this root?
+
+(A) $-7-4\sqrt{3}$  (B) $-2-\sqrt{3}$  (C) $-1$  (D) $-2+\sqrt{3}$  (E) $-7+4\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-2": { s: String.raw`Mr. Green measures his rectangular garden by walking two of the sides and finds that it is $15$ steps by $20$ steps. Each of Mr. Green’s steps is $2$ feet long. Mr. Green expects a half a pound of potatoes per square foot from his garden. How many pounds of potatoes does Mr. Green expect from his garden?
+
+(A) $600$  (B) $800$  (C) $1000$  (D) $1200$  (E) $1400$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-20": { s: String.raw`The number $2013$ is expressed in the form$$2013 = \frac {a_1!a_2!\cdots a_m!}{b_1!b_2!\cdots b_n!},$$where$$a_1 \ge a_2 \ge \cdots \ge a_m$$and$$b_1 \ge b_2 \ge \cdots \ge b_n$$are positive integers and $a_1 + b_1$ is as small as possible. What is $|a_1 - b_1|?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-21": { s: String.raw`Two non-decreasing sequences of nonnegative integers have different first terms. Each sequence has the property that each term beginning with the third is the sum of the previous two terms, and the seventh term of each sequence is $N.$ What is the smallest possible value of $N$ ?
+
+(A) $55$  (B) $89$  (C) $104$  (D) $144$  (E) $273$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-22": { s: String.raw`The regular octagon $ABCDEFGH$ has its center at $J.$ Each of the vertices and the center are to be associated with one of the digits $1$ through $9,$ with each digit used once, in such a way that the sums of the numbers on the lines $AJE,$ $BJF,$ $CJG,$ and $DJH$ are all equal. In how many ways can this be done?
+
+@@fig:amc10/2013B/22.svg@@
+
+(A) $384$  (B) $576$  (C) $1152$  (D) $1680$  (E) $3456$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-23": { s: String.raw`In triangle $\triangle ABC,$ $AB=13,$ $BC=14,$ and $CA=15.$ Distinct points $D,$ $E,$ and $F$ lie on segments $\overline{BC},$ $\overline{CA},$ and $\overline{DE},$ respectively, such that $\overline{AD}\perp\overline{BC},$ $\overline{DE}\perp\overline{AC},$ and $\overline{AF}\perp\overline{BF}.$ The length of segment $\overline{DF}$ can be written as $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m+n?$
+
+(A) $18$  (B) $21$  (C) $24$  (D) $27$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-24": { s: String.raw`A positive integer $n$ is “nice” if there is a positive integer $m$ with exactly four positive divisors (including $1$ and $m$) such that the sum of the four divisors is equal to $n.$ How many numbers in the set$$\{ 2010,2011,2012,\dotsc,2019 \}$$are nice?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-25": { s: String.raw`Bernardo chooses a three-digit positive integer $N$ and writes both its base-$5$ and base-$6$ representations on a blackboard. Later LeRoy sees the two numbers Bernardo has written. Treating the two numbers as base-$10$ integers, he adds them to obtain an integer $S.$
+
+For example, if $N = 749,$ Bernardo writes the numbers $10,$ $\!444$ and $3,$ $\!245,$ and LeRoy obtains the sum $S = 13,$ $\!689.$ For how many choices of $N$ are the two rightmost digits of $S,$ in order, the same as those of $2N?$
+
+(A) $5$  (B) $10$  (C) $15$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-3": { s: String.raw`On a particular January day, the high temperature in Lincoln, Nebraska, was $16$ degrees higher than the low temperature, and the average of the high and low temperatures was $3$ degrees. What was the low temperature in Lincoln that day (in degrees)?
+
+(A) $-13$  (B) $-8$  (C) $-5$  (D) $-3$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-4": { s: String.raw`When counting from $3$ to $201,$ the number $53$ is in position $51.$ When counting backward from $201$ to $3,$ the number $53$ is in position $n.$ What is $n?$
+
+(A) $146$  (B) $147$  (C) $148$  (D) $149$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-5": { s: String.raw`Positive integers $a$ and $b$ are each less than $6.$ What is the smallest possible value of the following expression?$$2 \cdot a - a \cdot b$$(A) $-20$  (B) $-15$  (C) $-10$  (D) $0$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-6": { s: String.raw`The average age of $33$ fifth-graders is $11.$ The average age of $55$ of their parents is $33.$ What is the average age of all of these parents and fifth-graders?
+
+(A) $22$  (B) $23.25$  (C) $24.75$  (D) $26.25$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-7": { s: String.raw`Six points are equally spaced around a circle of radius $1.$ Three of these points are the vertices of a triangle that is neither equilateral nor isosceles. What is the area of this triangle?
+
+(A) $\dfrac{\sqrt{3}}{3}$  (B) $\dfrac{\sqrt{3}}{2}$  (C) $1$  (D) $\sqrt{2}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-8": { s: String.raw`Ray’s car averages $40$ miles per gallon of gasoline, and Tom’s car averages $10$ miles per gallon of gasoline. Ray and Tom each drive the same number of miles. What is the cars’ combined rate of miles per gallon of gasoline?
+
+(A) $10$  (B) $16$  (C) $25$  (D) $30$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-10b-9": { s: String.raw`Three positive integers are each greater than $1,$ have a product of $27000 ,$ and are pairwise relatively prime. What is their sum?
+
+(A) $100$  (B) $137$  (C) $156$  (D) $160$  (E) $165$`, u: "https://live.poshenloh.com/past-contests/amc10/2013B" },
+"2013-amc-12a-1": { s: String.raw`Square $ABCD$ has side length $10.$ Point $E$ is on $\overline{BC},$ and the area of $\triangle ABE$ is $40.$ What is $BE?$
+
+@@fig:amc12/2013A/1.svg@@
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-10": { s: String.raw`Let $S$ be the set of positive integers $n$ for which $\dfrac{1}{n}$ has the repeating decimal representation $0.\overline{ab} = 0.ababab\ldots,$ with $a$ and $b$ different digits. What is the sum of the elements of $S?$
+
+(A) $11$  (B) $44$  (C) $110$  (D) $143$  (E) $155$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-11": { s: String.raw`Triangle $ABC$ is equilateral with $AB = 1.$ Points $E$ and $G$ are on $\overline{AC}$ and points $D$ and $F$ are on $\overline{AB}$ such that both $\overline{DE}$ and $\overline{FG}$ are parallel to $\overline{BC}.$ Furthermore, triangle $ADE$ and trapezoids $DFGE$ and $FBCG$ all have the same perimeter. What is $DE + FG?$
+
+@@fig:amc12/2013A/11.svg@@
+
+(A) $1$  (B) $\dfrac{3}{2}$  (C) $\dfrac{21}{13}$  (D) $\dfrac{13}{8}$  (E) $\dfrac{5}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-12": { s: String.raw`The angles in a particular triangle are in arithmetic progression, and the side lengths are $4,$ $5,$ and $x.$ The sum of the possible values of $x$ equals $a + \sqrt{b} + \sqrt{c},$ where $a,$ $b,$ and $c$ are positive integers. What is $a + b + c?$
+
+(A) $36$  (B) $38$  (C) $40$  (D) $42$  (E) $44$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-13": { s: String.raw`Let points $A = (0, 0),$ $B = (1, 2),$ $C = (3, 3),$ and $D = (4, 0).$ Quadrilateral $ABCD$ is cut into equal area pieces by a line passing through $A.$ This line intersects $\overline{CD}$ at point $\left(\dfrac{p}{q}, \dfrac{r}{s}\right),$ where these fractions are in lowest terms. What is $p + q + r + s?$
+
+(A) $54$  (B) $58$  (C) $62$  (D) $70$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-14": { s: String.raw`The sequence$$\log_{12} 162, \ \log_{12} x, \ \log_{12} y, \ \log_{12} z, \ \log_{12} 1250$$is an arithmetic progression. What is $x?$
+
+(A) $125\sqrt{3}$  (B) $270$  (C) $162\sqrt{5}$  (D) $434$  (E) $225\sqrt{6}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-15": { s: String.raw`Rabbits Peter and Pauline have three offspring—Flopsie, Mopsie, and Cottontail. These five rabbits are to be distributed to four different pet stores so that no store gets both a parent and a child. It is not required that every store gets a rabbit. In how many different ways can this be done?
+
+(A) $96$  (B) $108$  (C) $156$  (D) $204$  (E) $372$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-16": { s: String.raw`$A,$ $B,$ and $C$ are three piles of rocks. The mean weight of the rocks in $A$ is $40$ pounds, the mean weight of the rocks in $B$ is $50$ pounds, the mean weight of the rocks in the combined piles $A$ and $B$ is $43$ pounds, and the mean weight of the rocks in the combined piles $A$ and $C$ is $44$ pounds. What is the greatest possible integer value for the mean in pounds of the rocks in the combined piles $B$ and $C?$
+
+(A) $55$  (B) $56$  (C) $57$  (D) $58$  (E) $59$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-17": { s: String.raw`A group of $12$ pirates agree to divide a treasure chest of gold coins among themselves as follows. The $k$th pirate to take a share takes $\dfrac{k}{12}$ of the coins that remain in the chest. The number of coins initially in the chest is the smallest number for which this arrangement will allow each pirate to receive a positive whole number of coins. How many coins does the $12$th pirate receive?
+
+(A) $720$  (B) $1296$  (C) $1728$  (D) $1925$  (E) $3850$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-18": { s: String.raw`Six spheres of radius $1$ are positioned so that their centers are at the vertices of a regular hexagon of side length $2.$ The six spheres are internally tangent to a larger sphere whose center is the center of the hexagon. An eighth sphere is externally tangent to the six smaller spheres and internally tangent to the larger sphere. What is the radius of this eighth sphere?
+
+(A) $\sqrt{2}$  (B) $\dfrac{3}{2}$  (C) $\dfrac{5}{3}$  (D) $\sqrt{3}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-19": { s: String.raw`In $\triangle ABC,$ $AB = 86,$ and $AC = 97.$ A circle with center $A$ and radius $AB$ intersects $\overline{BC}$ at points $B$ and $X.$ Moreover $\overline{BX}$ and $\overline{CX}$ have integer lengths. What is $BC?$
+
+(A) $11$  (B) $28$  (C) $33$  (D) $61$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-2": { s: String.raw`A softball team played ten games, scoring $1,$ $2,$ $3,$ $4,$ $5,$ $6,$ $7,$ $8,$ $9,$ and $10$ runs. They lost by one run in exactly five games. In each of their other games, they scored twice as many runs as their opponent. How many total runs did their opponents score?
+
+(A) $35$  (B) $40$  (C) $45$  (D) $50$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-20": { s: String.raw`Let $S$ be the set $\{1, 2, 3, \ldots, 19\}.$ For $a,$ $b \in S,$ define $a \succ b$ to mean that either $0 \lt a - b \le 9$ or $b - a \gt 9.$ How many ordered triples $(x, y, z)$ of elements of $S$ have the property that $x \succ y,$ $y \succ z,$ and $z \succ x?$
+
+(A) $810$  (B) $855$  (C) $900$  (D) $950$  (E) $988$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-21": { s: String.raw`Consider$$A = \log(2013 + \log(2012 + \log(2011 + \log(\cdots + \log(3 + \log 2)\cdots)))).$$Which of the following intervals contains $A?$
+
+(A) $(\log 2016, \log 2017)$  (B) $(\log 2017, \log 2018)$  (C) $(\log 2018, \log 2019)$  (D) $(\log 2019, \log 2020)$  (E) $(\log 2020, \log 2021)$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-22": { s: String.raw`A palindrome is a nonnegative integer number that reads the same forwards and backwards when written in base $10$ with no leading zeros. A $6$-digit palindrome $n$ is chosen uniformly at random. What is the probability that $\dfrac{n}{11}$ is also a palindrome?
+
+(A) $\dfrac{8}{25}$  (B) $\dfrac{33}{100}$  (C) $\dfrac{7}{20}$  (D) $\dfrac{9}{25}$  (E) $\dfrac{11}{30}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-23": { s: String.raw`$ABCD$ is a square of side length $\sqrt{3} + 1.$ Point $P$ is on $\overline{AC}$ such that $AP = \sqrt{2}.$ The square region bounded by $ABCD$ is rotated $90^\circ$ counterclockwise with center $P,$ sweeping out a region whose area is $\dfrac{1}{c}(a\pi + b),$ where $a,$ $b,$ and $c$ are positive integers and $\gcd(a, b, c) = 1.$ What is $a + b + c?$
+
+(A) $15$  (B) $17$  (C) $19$  (D) $21$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-24": { s: String.raw`Three distinct segments are chosen at random among the segments whose endpoints are the vertices of a regular $12$-gon. What is the probability that the lengths of these three segments are the three side lengths of a triangle with positive area?
+
+(A) $\dfrac{553}{715}$  (B) $\dfrac{443}{572}$  (C) $\dfrac{111}{143}$  (D) $\dfrac{81}{104}$  (E) $\dfrac{223}{286}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-25": { s: String.raw`Let $f : \mathbb{C} \to \mathbb{C}$ be defined by $f(z) = z^2 + iz + 1.$ How many complex numbers $z$ are there such that $\operatorname{Im}(z) \gt 0$ and both the real and the imaginary parts of $f(z)$ are integers with absolute value at most $10?$
+
+(A) $399$  (B) $401$  (C) $413$  (D) $431$  (E) $441$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-3": { s: String.raw`A flower bouquet contains pink roses, red roses, pink carnations, and red carnations. One third of the pink flowers are roses, three fourths of the red flowers are carnations, and six tenths of the flowers are pink. What percent of the flowers are carnations?
+
+(A) $15$  (B) $30$  (C) $40$  (D) $60$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-4": { s: String.raw`What is the value of$$\dfrac{2^{2014} + 2^{2012}}{2^{2014} - 2^{2012}}?$$(A) $-1$  (B) $1$  (C) $\dfrac{5}{3}$  (D) $2013$  (E) $2^{4024}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-5": { s: String.raw`Tom, Dorothy, and Sammy went on a vacation and agreed to split the costs evenly. During their trip Tom paid $\$105,$ Dorothy paid $\$125,$ and Sammy paid $\$175.$ In order to share the costs equally, Tom gave Sammy $t$ dollars, and Dorothy gave Sammy $d$ dollars. What is $t - d?$
+
+(A) $15$  (B) $20$  (C) $25$  (D) $30$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-6": { s: String.raw`In a recent basketball game, Shenille attempted only three-point shots and two-point shots. She was successful on $20\%$ of her three-point shots and $30\%$ of her two-point shots. Shenille attempted $30$ shots. How many points did she score?
+
+(A) $12$  (B) $18$  (C) $24$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-7": { s: String.raw`The sequence $S_1,$ $S_2,$ $S_3,$ $\ldots,$ $S_{10}$ has the property that every term beginning with the third is the sum of the previous two. That is,$$S_n = S_{n-2} + S_{n-1} \text{ for } n \ge 3.$$Suppose that $S_9 = 110$ and $S_7 = 42.$ What is $S_4?$
+
+(A) $4$  (B) $6$  (C) $10$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-8": { s: String.raw`Given that $x$ and $y$ are distinct nonzero real numbers such that $x + \dfrac{2}{x} = y + \dfrac{2}{y},$ what is $xy?$
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{2}$  (C) $1$  (D) $2$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12a-9": { s: String.raw`In $\triangle ABC,$ $AB = AC = 28$ and $BC = 20.$ Points $D,$ $E,$ and $F$ are on sides $\overline{AB},$ $\overline{BC},$ and $\overline{AC},$ respectively, such that $\overline{DE}$ and $\overline{EF}$ are parallel to $\overline{AC}$ and $\overline{AB},$ respectively. What is the perimeter of parallelogram $ADEF?$
+
+@@fig:amc12/2013A/9.svg@@
+
+(A) $48$  (B) $52$  (C) $56$  (D) $60$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc12/2013A" },
+"2013-amc-12b-1": { s: String.raw`On a particular January day, the high temperature in Lincoln, Nebraska, was $16$ degrees higher than the low temperature, and the average of the high and low temperatures was $3^\circ.$ In degrees, what was the low temperature in Lincoln that day?
+
+(A) $-13$  (B) $-8$  (C) $-5$  (D) $-3$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-10": { s: String.raw`Alex has $75$ red tokens and $75$ blue tokens. There is a booth where Alex can give two red tokens and receive in return a silver token and a blue token, and another booth where Alex can give three blue tokens and receive in return a silver token and a red token. Alex continues to exchange tokens until no more exchanges are possible. How many silver tokens will Alex have at the end?
+
+(A) $62$  (B) $82$  (C) $83$  (D) $102$  (E) $103$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-11": { s: String.raw`Two bees start at the same spot and fly at the same rate in the following directions. Bee $A$ travels $1$ foot north, then $1$ foot east, then $1$ foot upwards, and then continues to repeat this pattern. Bee $B$ travels $1$ foot south, then $1$ foot west, and then continues to repeat this pattern. In what directions are the bees traveling when they are exactly $10$ feet away from each other?
+
+(A) $A$ east, $B$ west  (B) $A$ north, $B$ south  (C) $A$ north, $B$ west  (D) $A$ up, $B$ south  (E) $A$ up, $B$ west`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-12": { s: String.raw`Cities $A,$ $B,$ $C,$ $D,$ and $E$ are connected by roads $AB,$ $AD,$ $AE,$ $BC,$ $BD,$ $CD,$ and $DE.$ How many different routes are there from $A$ to $B$ that use each road exactly once? (Such a route will necessarily visit some cities more than once.)
+
+@@fig:amc12/2013B/12.svg@@
+
+(A) $7$  (B) $9$  (C) $12$  (D) $16$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-13": { s: String.raw`The internal angles of quadrilateral $ABCD$ form an arithmetic progression. Triangles $ABD$ and $DCB$ are similar with $\angle DBA = \angle DCB$ and $\angle ADB = \angle CBD.$ Moreover, the angles in each of these two triangles also form an arithmetic progression. In degrees, what is the largest possible sum of the two largest angles of $ABCD?$
+
+(A) $210$  (B) $220$  (C) $230$  (D) $240$  (E) $250$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-14": { s: String.raw`Two non-decreasing sequences of nonnegative integers have different first terms. Each sequence has the property that each term beginning with the third is the sum of the previous two terms, and the seventh term of each sequence is $N.$ What is the smallest possible value of $N?$
+
+(A) $55$  (B) $89$  (C) $104$  (D) $144$  (E) $273$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-15": { s: String.raw`The number $2013$ is expressed in the form$$ 2013 = \frac{a_1!\,a_2!\cdots a_m!}{b_1!\,b_2!\cdots b_n!}, $$where $a_1 \ge a_2 \ge \cdots \ge a_m$ and $b_1 \ge b_2 \ge \cdots \ge b_n$ are positive integers and $a_1 + b_1$ is as small as possible. What is $|a_1 - b_1|\,?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-16": { s: String.raw`Let $ABCDE$ be an equiangular convex pentagon of perimeter $1.$ The pairwise intersections of the lines that extend the sides of the pentagon determine a five-pointed star polygon. Let $s$ be the perimeter of this star. What is the difference between the maximum and the minimum possible values of $s?$
+
+(A) $0$  (B) $\dfrac{1}{2}$  (C) $\dfrac{\sqrt5 - 1}{2}$  (D) $\dfrac{\sqrt5 + 1}{2}$  (E) $\sqrt5$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
 "2013-amc-12b-17": { s: String.raw`Let $a,$ $b,$ and $c$ be real numbers such that$$ a + b + c = 2 $$and$$ a^2 + b^2 + c^2 = 12. $$What is the difference between the maximum and minimum possible values of $c?$
 
 (A) $2$  (B) $\dfrac{10}{3}$  (C) $4$  (D) $\dfrac{16}{3}$  (E) $\dfrac{20}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-18": { s: String.raw`Barbara and Jenna play the following game, in which they take turns. A number of coins lie on a table. When it is Barbara’s turn, she must remove $2$ or $4$ coins, unless only one coin remains, in which case she loses her turn. When it is Jenna’s turn, she must remove $1$ or $3$ coins. A coin flip determines who goes first. Whoever removes the last coin wins the game. Assume both players use their best strategy. Who will win when the game starts with $2013$ coins and when the game starts with $2014$ coins?
+
+(A) Barbara will win with $2013$ coins, and Jenna will win with $2014$ coins.
+(B) Jenna will win with $2013$ coins, and whoever goes first will win with $2014$ coins.
+(C) Barbara will win with $2013$ coins, and whoever goes second will win with $2014$ coins.
+(D) Jenna will win with $2013$ coins, and Barbara will win with $2014$ coins.
+(E) Whoever goes first will win with $2013$ coins, and whoever goes second will win with $2014$ coins.`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-19": { s: String.raw`In triangle $ABC,$ $AB = 13,$ $BC = 14,$ and $CA = 15.$ Distinct points $D,$ $E,$ and $F$ lie on segments $BC,$ $CA,$ and $DE,$ respectively, such that $AD \perp BC,$ $DE \perp AC,$ and $AF \perp BF.$ The length of segment $DF$ can be written as $\dfrac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m + n?$
+
+(A) $18$  (B) $21$  (C) $24$  (D) $27$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-2": { s: String.raw`Mr. Green measures his rectangular garden by walking two of the sides and finds that it is $15$ steps by $20$ steps. Each of Mr. Green’s steps is $2$ feet long. Mr. Green expects a half a pound of potatoes per square foot from his garden. How many pounds of potatoes does Mr. Green expect from his garden?
+
+(A) $600$  (B) $800$  (C) $1000$  (D) $1200$  (E) $1400$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-20": { s: String.raw`For $135^\circ \lt x \lt 180^\circ,$ points $P = (\cos x, \cos^2 x),$ $Q = (\cot x, \cot^2 x),$ $R = (\sin x, \sin^2 x),$ and $S = (\tan x, \tan^2 x)$ are the vertices of a trapezoid. What is $\sin(2x)?$
+
+(A) $2 - 2\sqrt2$  (B) $3\sqrt3 - 6$  (C) $3\sqrt2 - 5$  (D) $-\dfrac{3}{4}$  (E) $1 - \sqrt3$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-21": { s: String.raw`Consider the set of $30$ parabolas defined as follows: all parabolas have as focus the point $(0, 0)$ and the directrix lines have the form $y = ax + b$ with $a$ and $b$ integers such that $a \in \{-2, -1, 0, 1, 2\}$ and $b \in \{-3, -2, -1, 1, 2, 3\}.$ No three of these parabolas have a common point. How many points in the plane are on two of these parabolas?
+
+(A) $720$  (B) $760$  (C) $810$  (D) $840$  (E) $870$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-22": { s: String.raw`Let $m \gt 1$ and $n \gt 1$ be integers. Suppose that the product of the solutions for $x$ of the equation$$8(\log_n x)(\log_m x) - 7\log_n x - 6\log_m x - 2013 = 0$$is the smallest possible integer. What is $m + n?$
+
+(A) $12$  (B) $20$  (C) $24$  (D) $48$  (E) $272$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-23": { s: String.raw`Bernardo chooses a three-digit positive integer $N$ and writes both its base-$5$ and base-$6$ representations on a blackboard. Later LeRoy sees the two numbers Bernardo has written. Treating the two numbers as base-$10$ integers, he adds them to obtain an integer $S.$ For example, if $N = 749,$ Bernardo writes the numbers $10{,}444$ and $3{,}245,$ and LeRoy obtains the sum $S = 13{,}689.$ For how many choices of $N$ are the two rightmost digits of $S,$ in order, the same as those of $2N?$
+
+(A) $5$  (B) $10$  (C) $15$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-24": { s: String.raw`Let $ABC$ be a triangle where $M$ is the midpoint of $AC,$ and $CN$ is the angle bisector of $\angle ACB$ with $N$ on $AB.$ Let $X$ be the intersection of the median $BM$ and the bisector $CN.$ In addition $\triangle BXN$ is equilateral and $AC = 2.$ What is $BN^2?$
+
+(A) $\dfrac{10 - 6\sqrt2}{7}$  (B) $\dfrac{2}{9}$  (C) $\dfrac{5\sqrt2 - 3\sqrt3}{8}$  (D) $\dfrac{\sqrt2}{6}$  (E) $\dfrac{3\sqrt3 - 4}{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-25": { s: String.raw`Let $G$ be the set of polynomials of the form$$P(z) = z^n + c_{n-1}z^{n-1} + \cdots + c_2 z^2 + c_1 z + 50,$$where $c_1,$ $c_2,$ $\ldots,$ $c_{n-1}$ are integers and $P(z)$ has $n$ distinct roots of the form $a + ib$ with $a$ and $b$ integers. How many polynomials are in $G?$
+
+(A) $288$  (B) $528$  (C) $576$  (D) $992$  (E) $1056$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-3": { s: String.raw`When counting from $3$ to $201,$ $53$ is the $51$st number counted. When counting backwards from $201$ to $3,$ $53$ is the $n$th number counted. What is $n?$
+
+(A) $146$  (B) $147$  (C) $148$  (D) $149$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-4": { s: String.raw`Ray’s car averages $40$ miles per gallon of gasoline, and Tom’s car averages $10$ miles per gallon of gasoline. Ray and Tom each drive the same number of miles. What is the cars’ combined rate of miles per gallon of gasoline?
+
+(A) $10$  (B) $16$  (C) $25$  (D) $30$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-5": { s: String.raw`The average age of $33$ fifth-graders is $11.$ The average age of $55$ of their parents is $33.$ What is the average age of all of these parents and fifth-graders?
+
+(A) $22$  (B) $23.25$  (C) $24.75$  (D) $26.25$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-6": { s: String.raw`Real numbers $x$ and $y$ satisfy the equation $x^2 + y^2 = 10x - 6y - 34.$ What is $x+y?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-7": { s: String.raw`Jo and Blair take turns counting from $1$ to one more than the last number said by the other person. Jo starts by saying “$1$”, so Blair follows by saying “$1,$ $2$”. Jo then says “$1,$ $2,$ $3$”, and so on. What is the $53$rd number said?
+
+(A) $2$  (B) $3$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-8": { s: String.raw`Line $\ell_1$ has equation $3x - 2y = 1$ and goes through $A = (-1, -2).$ Line $\ell_2$ has equation $y = 1$ and meets line $\ell_1$ at point $B.$ Line $\ell_3$ has positive slope, goes through point $A,$ and meets $\ell_2$ at point $C.$ The area of $\triangle ABC$ is $3.$ What is the slope of $\ell_3?$
+
+(A) $\dfrac{2}{3}$  (B) $\dfrac{3}{4}$  (C) $1$  (D) $\dfrac{4}{3}$  (E) $\dfrac{3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-12b-9": { s: String.raw`What is the sum of the exponents of the prime factors of the square root of the largest perfect square that divides $12!$?
+
+(A) $5$  (B) $7$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2013B" },
+"2013-amc-8-1": { s: String.raw`Danica wants to arrange her model cars in rows with exactly $6$ cars in each row. She now has $23$ model cars. What is the smallest number of additional cars she must buy in order to be able to arrange all her cars this way?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-10": { s: String.raw`What is the ratio of the least common multiple of $180$ and $594$ to the greatest common factor of $180$ and $594?$
+
+(A) $110$  (B) $165$  (C) $330$  (D) $625$  (E) $660$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-11": { s: String.raw`Ted’s grandfather used his treadmill on $3$ days this week. He went $2$ miles each day.
+
+On Monday he jogged at a speed of $5$ miles per hour. He walked at the rate of $3$ miles per hour on Wednesday and at $4$ miles per hour on Friday.
+
+If Grandfather had always walked at $4$ miles per hour, he would have spent less time on the treadmill. How many minutes less?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-12": { s: String.raw`At the $2013$ Winnebago County Fair a vendor is offering a “fair special” on sandals. If you buy one pair of sandals at the regular price of $\$50,$ you get a second pair at a $40 \%$ discount, and a third pair at half the regular price.
+
+Javier took advantage of the “fair special” to buy three pairs of sandals. What percentage of the $\$150$ regular price did he save?
+
+(A) $25$  (B) $30$  (C) $33$  (D) $40$  (E) $45$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-13": { s: String.raw`When Clara totaled her scores, she inadvertently reversed the units digit and the tens digit of one score. By which of the following might her incorrect sum have differed from the correct one?
+
+(A) $45$  (B) $46$  (C) $47$  (D) $48$  (E) $49$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-14": { s: String.raw`Abe holds $1$ green and $1$ red jelly bean in his hand. Bea holds $1$ green, $1$ yellow, and $2$ red jelly beans in her hand. Each randomly picks a jelly bean to show the other. What is the probability that the colors match?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{3}{8}$  (D) $\frac{1}{2}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-15": { s: String.raw`If $3^p + 3^4 = 90$, $2^r + 44 = 76$, and $5^3 + 6^s = 1421$, what is the product of $p$, $r$, and $s$?
+
+(A) $27$  (B) $40$  (C) $50$  (D) $70$  (E) $90$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-16": { s: String.raw`A number of students from Fibonacci Middle School are taking part in a community service project. The ratio of $8$th-graders to $6$th-graders is $5:3,$ and the ratio of $8$th-graders to $7$th-graders is $8:5.$ What is the smallest number of students that could be participating in the project?
+
+(A) $16$  (B) $40$  (C) $55$  (D) $79$  (E) $89$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-17": { s: String.raw`The sum of six consecutive positive integers is $2013.$ What is the largest of these six integers?
+
+(A) $335$  (B) $338$  (C) $340$  (D) $345$  (E) $350$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-18": { s: String.raw`Isabella uses one-foot cubical blocks to build a rectangular fort that is $12$ feet long, $10$ feet wide, and $5$ feet high. The floor and the four walls are all one foot thick. How many blocks does the fort contain?
+
+@@fig:amc8/2013/18.svg@@
+
+(A) $204$  (B) $280$  (C) $320$  (D) $340$  (E) $600$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-19": { s: String.raw`Bridget, Cassie, and Hannah are discussing the results of their last math test. Hannah shows Bridget and Cassie her test, but Bridget and Cassie don’t show theirs to anyone. Cassie says, “I didn’t get the lowest score in our class,” and Bridget adds, “I didn’t get the highest score.” What is the ranking of the three girls from highest to lowest?
+
+(A) Hannah, Cassie, Bridget  (B) Hannah, Bridget, Cassie  (C) Cassie, Bridget, Hannah  (D) Cassie, Hannah, Bridget  (E) Bridget, Cassie, Hannah`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-2": { s: String.raw`A sign at the fish market says, “$50 \%$ off, today only: half-pound packages for just $\$3$ per package.” What is the regular price for a full pound of fish, in dollars?
+
+(A) $6$  (B) $9$  (C) $10$  (D) $12$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-20": { s: String.raw`A $1 \times 2$ rectangle is inscribed in a semicircle with the longer side on the diameter. What is the area of the semicircle?
+
+(A) $\dfrac{\pi}{2}$  (B) $\dfrac{2\pi}{3}$  (C) $\pi$  (D) $\dfrac{4\pi}{3}$  (E) $\dfrac{5\pi}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-21": { s: String.raw`Samantha lives $2$ blocks west and $1$ block south of the southwest corner of City Park.
+
+Her school is $2$ blocks east and $2$ blocks north of the northeast corner of City Park. On school days she bikes on streets to the southwest corner of City Park, then takes a diagonal path through the park to the northeast corner, and then bikes on streets to school.
+
+If her route is as short as possible, how many different routes can she take?
+
+(A) $3$  (B) $6$  (C) $9$  (D) $12$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-22": { s: String.raw`Toothpicks are used to make a grid that is $60$ toothpicks long and $32$ toothpicks high. How many toothpicks are used altogether?
+
+@@fig:amc8/2013/22.svg@@
+
+(A) $1920$  (B) $1952$  (C) $1980$  (D) $2013$  (E) $3932$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-23": { s: String.raw`In $\triangle ABC$, $\angle ABC$ is a right angle. The sides of $\triangle ABC$ are the diameters of semicircles as shown. The area of the semicircle on $\overline{AB}$ equals $8\pi,$ and the arc of the semicircle on $\overline{AC}$ has length $8.5\pi.$ What is the radius of the semicircle on $\overline{BC}?$
+
+@@fig:amc8/2013/23.svg@@
+
+(A) $7$  (B) $7.5$  (C) $8$  (D) $8.5$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-24": { s: String.raw`Squares $ABCD,$ $EFGH,$ and $GHIJ$ are equal in area. Points $C$ and $D$ are the midpoints of sides $IH$ and $HE,$ respectively. What is the ratio of the area of the shaded pentagon $AJICB$ to the sum of the areas of the three squares?
+
+@@fig:amc8/2013/24.svg@@
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{7}{24}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{5}{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-25": { s: String.raw`A ball with diameter $4$ inches starts at point $A$ to roll along the track shown. The track is comprised of $3$ semicircular arcs whose radii are $R_1 = 100$ inches, $R_2 = 60$ inches, and $R_3 = 80$ inches, respectively. The ball always remains in contact with the track and does not slip. What is the distance in inches the center of the ball travels over the course from $A$ to $B$?
+
+@@fig:amc8/2013/25.svg@@
+
+(A) $238 \pi$  (B) $240 \pi$  (C) $260 \pi$  (D) $280 \pi$  (E) $500 \pi$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-3": { s: String.raw`What is the value of$$4 \cdot (-1 + 2 - 3 + 4 - 5 + 6 - 7 + \cdots + 1000)?$$(A) $-10$  (B) $0$  (C) $1$  (D) $500$  (E) $2000$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-4": { s: String.raw`Eight friends ate at a restaurant and agreed to share the bill equally. Because Judi forgot her money, each of her seven friends paid an extra $\$2.50$ to cover her portion of the total bill. What was the total bill?
+
+(A) $\$120$  (B) $\$128$  (C) $\$140$  (D) $\$144$  (E) $\$160$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-5": { s: String.raw`Hammie is in the $6$th grade and weighs $106$ pounds. His quadruplet sisters are tiny babies and weigh $5,$ $5,$ $6,$ and $8$ pounds. Which is greater, the average (mean) weight of these five children or the median weight, and by how many pounds?
+
+(A) median, by $60$  (B) median, by $20$  (C) average, by $5$  (D) average, by $15$  (E) average, by $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-6": { s: String.raw`The number in each box below is the product of the numbers in the two boxes that touch it in the row above. For example, $30 = 6\times5.$
+
+What is the missing number in the top row?
+
+@@fig:amc8/2013/6.svg@@
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-7": { s: String.raw`Trey and his mom stopped at a railroad crossing to let a train pass. As the train began to pass, Trey counted $6$ cars in the first $10$ seconds. It took the train $2$ minutes and $45$ seconds to clear the crossing at a constant speed. Which of the following was the most likely number of cars in the train?
+
+(A) $\ 60$  (B) $\ 80$  (C) $\ 100$  (D) $\ 120$  (E) $\ 140$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-8": { s: String.raw`A fair coin is tossed $3$ times. What is the probability of at least two consecutive heads?
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{3}{8}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
+"2013-amc-8-9": { s: String.raw`The Incredible Hulk can double the distance he jumps with each succeeding jump. If his first jump is $1$ meter, the second jump is $2$ meters, the third jump is $4$ meters, and so on, then on which jump will he first be able to jump more than $1$ kilometer?
+
+(A) $9$th  (B) $10$th  (C) $11$th  (D) $12$th  (E) $13$th`, u: "https://live.poshenloh.com/past-contests/amc8/2013" },
 });

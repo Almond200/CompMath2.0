@@ -1,0 +1,35 @@
+{
+ "AIME": [
+  "am-gm",
+  "power-of-a-point",
+  "ptolemys-theorem"
+ ],
+ "Olympiad": [
+  "inversion-facts",
+  "homothety-monge",
+  "barycentric-coordinates",
+  "complex-bash",
+  "incenter-excenter-lemma",
+  "radical-axis",
+  "affine-transformations",
+  "cauchy-schwarz",
+  "jensens-inequality",
+  "rearrangement",
+  "power-mean-inequality",
+  "weighted-am-gm",
+  "tangent-line-trick",
+  "trig-substitution",
+  "roots-of-unity-filter",
+  "lte-lemma",
+  "primitive-roots",
+  "lucas-theorem",
+  "pigeonhole",
+  "double-counting",
+  "invariants-coloring",
+  "monovariant",
+  "extremal-principle",
+  "generating-function-method",
+  "burnsides-lemma",
+  "reflection-principle"
+ ]
+}

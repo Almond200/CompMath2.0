@@ -20,4 +20,97 @@ Object.assign(window.MATH_STATEMENTS, {
 "1994-aime-7": { s: String.raw`For certain ordered pairs $(a,b)$ of real numbers, the system of equations$$\begin{aligned}ax+by&=1, \\ x^2+y^2&=50\end{aligned}$$has at least one solution, and each solution is an ordered pair $(x,y)$ of integers. How many such ordered pairs $(a,b)$ are there?`, u: "https://live.poshenloh.com/past-contests/aime/1994" },
 "1994-aime-8": { s: String.raw`The points $(0,0),$ $(a,11),$ and $(b,37)$ are the vertices of an equilateral triangle. Find the value of $ab.$`, u: "https://live.poshenloh.com/past-contests/aime/1994" },
 "1994-aime-9": { s: String.raw`A solitaire game is played as follows. Six distinct pairs of matched tiles are placed in a bag. The player randomly draws tiles one at a time from the bag and retains them, except that matching tiles are put aside as soon as they appear in the player’s hand. The game ends if the player ever holds three tiles, no two of which match; otherwise the drawing continues until the bag is empty. The probability that the bag will be emptied is $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p+q.$`, u: "https://live.poshenloh.com/past-contests/aime/1994" },
+"1994-ajhsme-1": { s: String.raw`Which of the following is the largest?
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{3}{8}$  (D) $\dfrac{5}{12}$  (E) $\dfrac{7}{24}$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-10": { s: String.raw`For how many positive integer values of $N$ $(N \gt 0)$ is the expression$$\frac{36}{N+2}$$an integer?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-11": { s: String.raw`Last summer $100$ students attended basketball camp. Of those attending, $52$ were boys and $48$ were girls. Also, $40$ students were from Jones Middle School and $60$ were from Clay Middle School. Twenty of the girls were from Jones Middle School. How many of the boys were from Clay Middle School?
+
+(A) $20$  (B) $32$  (C) $40$  (D) $48$  (E) $52$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-12": { s: String.raw`Each of the three large squares shown is the same size. Segments that intersect the sides of the squares intersect at the midpoints of the sides. How do the shaded areas of these squares compare?
+
+@@fig:amc8/1994/12.svg@@
+
+(A) The shaded areas in all three are equal.
+(B) Only the shaded areas of $I$ and $II$ are equal.
+(C) Only the shaded areas of $I$ and $III$ are equal.
+(D) Only the shaded areas of $II$ and $III$ are equal.
+(E) The shaded areas of $I,$ $II,$ and $III$ are all different.`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-13": { s: String.raw`The number halfway between $\dfrac{1}{6}$ and $\dfrac{1}{4}$ is
+
+(A) $\dfrac{1}{10}$  (B) $\dfrac{1}{5}$  (C) $\dfrac{5}{24}$  (D) $\dfrac{7}{24}$  (E) $\dfrac{5}{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-14": { s: String.raw`Two children at a time can play pairball. For $90$ minutes, with only two children playing at one time, five children take turns so that each one plays the same amount of time. The number of minutes each child plays is
+
+(A) $9$  (B) $10$  (C) $18$  (D) $20$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-15": { s: String.raw`If this path is to continue in the same pattern, then which sequence of arrows goes from point $425$ to point $427?$
+
+@@fig:amc8/1994/15.svg@@
+
+(A) @@ci:amc8/1994/15a.svg|2.2rem@@
+(B) @@ci:amc8/1994/15b.svg|2.2rem@@
+(C) @@ci:amc8/1994/15c.svg|2.2rem@@
+(D) @@ci:amc8/1994/15d.svg|2.2rem@@
+(E) @@ci:amc8/1994/15e.svg|2.2rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-16": { s: String.raw`The perimeter of one square is $3$ times the perimeter of another square. The area of the larger square is how many times the area of the smaller square?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $6$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-17": { s: String.raw`Pauline Bunyan can shovel snow at the rate of $20$ cubic yards for the first hour, $19$ cubic yards for the second, $18$ for the third, etc., always shoveling one cubic yard less per hour than the previous hour. If her driveway is $4$ yards wide, $10$ yards long, and covered with snow $3$ yards deep, then the number of hours it will take her to shovel it clean is closest to
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-18": { s: String.raw`Mike leaves home and drives slowly east through city traffic. When he reaches the highway he drives east more rapidly until he reaches the shopping mall where he stops. He shops at the mall for an hour. Mike returns home by the same route as he came, driving west rapidly along the highway and then slowly through city traffic. Each graph shows the distance from home on the vertical axis versus the time elapsed since leaving home on the horizontal axis. Which graph is the best representation of Mike’s trip?
+
+(A) @@ci:amc8/1994/18a.svg|6rem@@  (B) @@ci:amc8/1994/18b.svg|6rem@@  (C) @@ci:amc8/1994/18c.svg|6rem@@  (D) @@ci:amc8/1994/18d.svg|6rem@@  (E) @@ci:amc8/1994/18e.svg|6rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-19": { s: String.raw`Around the outside of a $4$ by $4$ square, construct four semicircles with the four sides of the square as their diameters. Another square, $ABCD,$ has its sides parallel to the corresponding sides of the original square, and each side of $ABCD$ is tangent to one of the semicircles. The area of the square $ABCD$ is
+
+@@fig:amc8/1994/19.svg@@
+
+(A) $16$  (B) $32$  (C) $36$  (D) $48$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-2": { s: String.raw`What is the value of the following expression?$$\frac{1}{10} + \frac{2}{10} + \frac{3}{10} + \frac{4}{10} + \frac{5}{10} + \frac{6}{10} + \frac{7}{10} + \frac{8}{10} + \frac{9}{10} + \frac{55}{10}$$(A) $4\dfrac{1}{2}$  (B) $6.4$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-20": { s: String.raw`Let $W,$ $X,$ $Y,$ and $Z$ be four different digits selected from the set$$\{1, 2, 3, 4, 5, 6, 7, 8, 9\}.$$If the sum $\dfrac{W}{X} + \dfrac{Y}{Z}$ is to be as small as possible, then $\dfrac{W}{X} + \dfrac{Y}{Z}$ must equal
+
+(A) $\dfrac{2}{17}$  (B) $\dfrac{3}{17}$  (C) $\dfrac{17}{72}$  (D) $\dfrac{25}{72}$  (E) $\dfrac{13}{36}$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-21": { s: String.raw`A gumball machine contains $9$ red, $7$ white, and $8$ blue gumballs. The least number of gumballs a person must buy to be sure of getting four gumballs of the same color is
+
+(A) $8$  (B) $9$  (C) $10$  (D) $12$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-22": { s: String.raw`The two wheels shown at the right are spun and the two resulting numbers are added. The probability that the sum of the two numbers is even is
+
+@@fig:amc8/1994/22.svg@@
+
+(A) $\dfrac{1}{6}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{5}{12}$  (E) $\dfrac{4}{9}$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-23": { s: String.raw`If $X,$ $Y,$ and $Z$ are different digits, then the largest possible $3$-digit sum for$$\begin{array}{cr} & XXX \\ & YX \\ + & X \\ \hline \end{array}$$has the form
+
+(A) $XXY$  (B) $XYZ$  (C) $YYX$  (D) $YYZ$  (E) $ZZY$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-24": { s: String.raw`A $2$ by $2$ square is divided into four $1$ by $1$ squares. Each of the small squares is to be painted either green or red. In how many different ways can the painting be accomplished so that no green square shares its top or right side with any red square? There may be as few as zero or as many as four small green squares.
+
+(A) $4$  (B) $6$  (C) $7$  (D) $8$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-25": { s: String.raw`Find the sum of the digits in the answer to$$\underbrace{9999\cdots99}_{94} \times \underbrace{4444\cdots44}_{94}$$where a string of $94$ nines is multiplied by a string of $94$ fours.
+
+(A) $846$  (B) $855$  (C) $945$  (D) $954$  (E) $1072$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-3": { s: String.raw`Each day Maria must work $8$ hours. This does not include the $45$ minutes she takes for lunch. If she begins working at $7{:}25$ A.M. and takes her lunch break at noon, then her working day will end at
+
+(A) $3{:}40$ P.M.  (B) $3{:}55$ P.M.  (C) $4{:}10$ P.M.  (D) $4{:}25$ P.M.  (E) $4{:}40$ P.M.`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-4": { s: String.raw`Which of the following represents the result when the figure shown at the right is rotated clockwise $120°$ about its center?
+
+@@fig:amc8/1994/4.svg@@
+
+(A) @@ci:amc8/1994/4a.svg|2.5rem@@  (B) @@ci:amc8/1994/4b.svg|2.5rem@@  (C) @@ci:amc8/1994/4c.svg|2.5rem@@  (D) @@ci:amc8/1994/4d.svg|2.5rem@@  (E) @@ci:amc8/1994/4e.svg|2.5rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-5": { s: String.raw`Given that $1$ mile $= 8$ furlongs and $1$ furlong $= 40$ rods, the number of rods in one mile is
+
+(A) $5$  (B) $320$  (C) $660$  (D) $1760$  (E) $5280$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-6": { s: String.raw`The unit’s digit (one’s digit) of the product of any six consecutive positive whole numbers is
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-7": { s: String.raw`If $\angle A = 60°,$ $\angle E = 40°,$ and $\angle C = 30°,$ then $\angle BDC =$
+
+@@fig:amc8/1994/7.svg@@
+
+(A) $40°$  (B) $50°$  (C) $60°$  (D) $70°$  (E) $80°$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-8": { s: String.raw`For how many three-digit whole numbers does the sum of the digits equal $25?$
+
+(A) $2$  (B) $4$  (C) $6$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
+"1994-ajhsme-9": { s: String.raw`A shopper buys a $\$100$ coat on sale for $20\%$ off. An additional $\$5$ is taken off the sale price by using a discount coupon. A sales tax of $8\%$ is paid on the final selling price. The total amount the shopper pays for the coat is
+
+(A) $\$81.00$  (B) $\$81.40$  (C) $\$82.00$  (D) $\$82.08$  (E) $\$82.40$`, u: "https://live.poshenloh.com/past-contests/amc8/1994" },
 });

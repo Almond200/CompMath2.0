@@ -254,7 +254,6 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | incenter-coordinates | geometry / Coordinate & Grid Geometry | AIME Early | medium | 0 | **medium** |
 | section-formula | geometry / Coordinate & Grid Geometry | AMC | medium | 1 | **medium** |
 | picks-theorem-general | geometry / Coordinate & Grid Geometry | AIME Late | low | 0 | **low** |
-| picks-triangular-lattice | geometry / Coordinate & Grid Geometry | AIME Late | low | 0 | **low** |
 | picks-with-holes | geometry / Coordinate & Grid Geometry | AIME Late | low | 0 | **low** |
 | polar-coordinates | geometry / Coordinate & Grid Geometry | AMC | low | 0 | **low** |
 | picks-hexagonal-grid | geometry / Coordinate & Grid Geometry | Olympiad | lowest | 0 | **lower** |
@@ -267,7 +266,6 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | ptolemys-inequality | geometry / Cyclic & Tangential Quadrilaterals | AIME Late | low | 1 | **medium** |
 | cyclic-perpendicular-diagonals | geometry / Cyclic & Tangential Quadrilaterals | AIME Late | medium | 0 | **medium** |
 | ptolemy-second-theorem | geometry / Cyclic & Tangential Quadrilaterals | AIME Late | low | 0 | **low** |
-| cyclic-quad-diagonals | geometry / Cyclic & Tangential Quadrilaterals | AIME Late | low | 0 | **low** |
 | japanese-theorem | geometry / Cyclic & Tangential Quadrilaterals | Olympiad | lowest | 0 | **lower** |
 | poncelet-closure | geometry / Cyclic & Tangential Quadrilaterals | Olympiad | lowest | 0 | **lower** |
 | ptolemy-equilateral | geometry / Cyclic & Tangential Quadrilaterals | AIME Late | lowest | 0 | **lower** |
@@ -645,7 +643,30 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | angle-bisector-circumcircle | patterns / Geometry | AIME Early | medium | 0 | **low** |
 | zonogon-minkowski | patterns / Geometry | AMC | low | 1 | **low** |
 | digit-manipulation | patterns / Number Theory | AMC | medium | 1 | **high** |
-| same-remainder | patterns / Number Theory | AMC | medium | 0 | **medium** |
 | unknown-base | patterns / Number Theory | AMC | medium | 0 | **medium** |
 | poly-divisible-linear | patterns / Number Theory | AMC | medium | 0 | **medium** |
 | cryptarithms | patterns / Number Theory | AMC | medium | 0 | **low** |
+
+## Added 2026-10-11
+
+| Card | Subsection | Tier | Old | Problems | New |
+|---|---|---|---|---|---|
+| brocards-theorem | geometry / Projective Geometry & Cross-Ratio | Olympiad | new (Stanley asked for it) | 0 | **lower** |
+| cardano-cubic | algebra / Polynomials & Equations | Olympiad | lower | 1 | **lowest** (Stanley: confidently never used) |
+| morleys-theorem | geometry / Advanced Triangle Theorems | Olympiad | lowest | 0 | **lowest** (Stanley) |
+| chebyshev-sum-inequality | algebra / Inequalities | Olympiad | lower | 0 | **lower** (Stanley) |
+| ramsey-33 | counting / Pigeonhole & Ramsey Theory | AIME Late | medium | 0 | **lowest** (Stanley: just a fact that is never needed) |
+| odd-even-functions | algebra / Functions & Symmetry | AMC | new | 0 | **medium** |
+| inverse-function-properties | algebra / Functions & Symmetry | AMC | new | 0 | **medium** |
+| function-symmetry-equation | algebra (method) / Working with Functions | AIME Early | new | 0 | **medium** |
+| parallel-lines-distance | geometry / Coordinate & Grid Geometry | AMC | new | 0 | **lower** |
+| vector-bash | geometry (method) / Coordinate & Algebraic Bashes | AIME Early | new | 0 | **low** |
+| tangent-lines-from-point | geometry (method) / Coordinate & Algebraic Bashes | AMC | new | 0 | **low** |
+| slope-to-a-point | algebra (method) / Inequalities & Optimization | AMC | new | 0 | **low** |
+| parallelogram-area | geometry / Polygons & Quadrilaterals | AMC | new | 0 | **medium** |
+| parallelogram-vertices | geometry / Polygons & Quadrilaterals | AMC | new | 0 | **low** |
+| regular-octagon | geometry / Polygons & Quadrilaterals | AMC | new | 0 | **low** |
+| cube | geometry / Solid Geometry (3D) | AMC | new | 0 | **medium** |
+| perpendicularity-lemma | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **medium** |
+| carnots-perpendicularity-theorem | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
+| iran-lemma | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |

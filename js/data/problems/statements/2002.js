@@ -65,7 +65,423 @@ If $n = 202,$ then the area of the garden enclosed by the path, not including th
 "2002-aime-ii-7": { s: String.raw`It is known that, for all positive integers $k,$$$1^2 + 2^2 + 3^2 + \cdots + k^2 = \frac{k(k+1)(2k+1)}{6}.$$Find the smallest positive integer $k$ such that $1^2 + 2^2 + 3^2 + \cdots + k^2$ is a multiple of $200.$`, u: "https://live.poshenloh.com/past-contests/aime/2002II" },
 "2002-aime-ii-8": { s: String.raw`Find the least positive integer $k$ for which the equation $\left\lfloor \frac{2002}{n} \right\rfloor = k$ has no integer solutions for $n.$ (The notation $\lfloor x \rfloor$ means the greatest integer less than or equal to $x.$)`, u: "https://live.poshenloh.com/past-contests/aime/2002II" },
 "2002-aime-ii-9": { s: String.raw`Let $S$ be the set $\{1, 2, 3, \ldots, 10\}.$ Let $n$ be the number of sets of two non-empty disjoint subsets of $S.$ (Disjoint sets are defined as sets that have no common elements.) Find the remainder obtained when $n$ is divided by $1000.$`, u: "https://live.poshenloh.com/past-contests/aime/2002II" },
+"2002-amc-10a-1": { s: String.raw`The ratio$$\dfrac{10^{2000}+10^{2002}}{10^{2001}+10^{2001}}$$is closest to which of the following numbers?
+
+(A) $0.1$  (B) $0.2$  (C) $1$  (D) $5$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-10": { s: String.raw`Compute the sum of all the roots of $(2x+3)(x-4)$ $+(2x+3)(x-6)=0.$
+
+(A) $\dfrac{7}{2}$  (B) $4$  (C) $5$  (D) $7$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-11": { s: String.raw`Jamal wants to store $30$ computer files on floppy disks, each of which has a capacity of $1.44$ megabytes (mb). Three of his files require $0.8$ mb of memory each, $12$ more require $0.7$ mb each, and the remaining $15$ require $0.4$ mb each. No file can be split between floppy disks. What is the minimal number of floppy disks that will hold all the files?
+
+(A) $12$  (B) $13$  (C) $14$  (D) $15$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-12": { s: String.raw`Mr. Earl E. Bird leaves his house for work at exactly $8{:}00$ A.M. every morning. When he averages $40$ miles per hour, he arrives at his workplace three minutes late. When he averages $60$ miles per hour, he arrives three minutes early. At what average speed, in miles per hour, should Mr. Bird drive to arrive at his workplace precisely on time?
+
+(A) $45$  (B) $48$  (C) $50$  (D) $55$  (E) $58$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-13": { s: String.raw`The sides of a triangle have lengths of $15,$ $20,$ and $25.$ Find the length of the shortest altitude.
+
+(A) $6$  (B) $12$  (C) $12.5$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-14": { s: String.raw`Both roots of the quadratic equation $x^2-63x+k=0$ are prime numbers. The number of possible values of $k$ is
+
+(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) more than four`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-15": { s: String.raw`The digits $1,$ $2,$ $3,$ $4,$ $5,$ $6,$ $7,$ and $9$ are used to form four two-digit prime numbers, with each digit used exactly once. What is the sum of these four primes?
+
+(A) $150$  (B) $160$  (C) $170$  (D) $180$  (E) $190$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-16": { s: String.raw`If $a+1$ $=b+2$ $=c+3$ $=d+4$ $=a+b+c+d+5,$ then $a+b+c+d$ is
+
+(A) $-5$  (B) $-\dfrac{10}{3}$  (C) $-\dfrac{7}{3}$  (D) $\dfrac{5}{3}$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-17": { s: String.raw`Sarah pours four ounces of coffee into an eight-ounce cup and four ounces of cream into a second cup of the same size. She then transfers half the coffee from the first cup to the second and, after stirring thoroughly, transfers half the liquid in the second cup back to the first. What fraction of the liquid in the first cup is now cream?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{3}{8}$  (D) $\dfrac{2}{5}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-18": { s: String.raw`A $3\times 3\times 3$ cube is formed by gluing together $27$ standard cubical dice. (On a standard die, the sum of the numbers on any pair of opposite faces is $7.$) The smallest possible sum of all the numbers showing on the surface of the $3\times 3\times 3$ cube is
+
+(A) $60$  (B) $72$  (C) $84$  (D) $90$  (E) $96$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-19": { s: String.raw`Spot’s doghouse has a regular hexagonal base that measures one yard on each side. He is tethered to a vertex with a two-yard rope. What is the area, in square yards, of the region outside the doghouse that Spot can reach?
+
+(A) $\dfrac{2}{3}\pi$  (B) $2\pi$  (C) $\dfrac{5}{2}\pi$  (D) $\dfrac{8}{3}\pi$  (E) $3\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-2": { s: String.raw`For the nonzero numbers $a,$ $b,$ and $c,$ define$$(a,b,c)=\dfrac{a}{b}+\dfrac{b}{c}+\dfrac{c}{a}.$$Find $(2,12,9).$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-20": { s: String.raw`Points $A,$ $B,$ $C,$ $D,$ $E,$ and $F$ lie, in that order, on $\overline{AF},$ dividing it into five segments, each of length $1.$ Point $G$ is not on line $AF.$ Point $H$ lies on $\overline{GD},$ and point $J$ lies on $\overline{GF}.$ The line segments $\overline{HC},$ $\overline{JE},$ and $\overline{AG}$ are parallel. Find $\frac{HC}{JE}.$
+
+@@fig:amc10/2002A/20.svg@@
+
+(A) $\dfrac{5}{4}$  (B) $\dfrac{4}{3}$  (C) $\dfrac{3}{2}$  (D) $\dfrac{5}{3}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-21": { s: String.raw`The mean, median, unique mode, and range of a collection of eight integers are all equal to $8.$ The largest integer that can be an element of this collection is
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-22": { s: String.raw`A set of tiles numbered $1$ through $100$ is modified repeatedly by the following operation: remove all tiles numbered with a perfect square, and renumber the remaining tiles consecutively starting with $1.$ How many times must the operation be performed to reduce the number of tiles in the set to one?
+
+(A) $10$  (B) $11$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-23": { s: String.raw`Points $A,$ $B,$ $C,$ and $D$ lie on a line, in that order, with $AB=CD$ and $BC=12.$ Point $E$ is not on the line, and $BE=CE=10.$ The perimeter of $\triangle AED$ is twice the perimeter of $\triangle BEC.$ Find $AB.$
+
+@@fig:amc10/2002A/23.svg@@
+
+(A) $\dfrac{15}{2}$  (B) $8$  (C) $\dfrac{17}{2}$  (D) $9$  (E) $\dfrac{19}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-24": { s: String.raw`Tina randomly selects two distinct numbers from the set $\{1,2,3,4,5\},$ and Sergio randomly selects a number from the set $\{1,2,\ldots,10\}.$ The probability that Sergio’s number is larger than the sum of the two numbers chosen by Tina is
+
+(A) $\dfrac{2}{5}$  (B) $\dfrac{9}{20}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{11}{20}$  (E) $\dfrac{24}{25}$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-25": { s: String.raw`In trapezoid $ABCD$ with bases $\overline{AB}$ and $\overline{CD},$ we have $AB=52,$ $BC=12,$ $CD=39,$ and $DA=5.$ The area of $ABCD$ is
+
+@@fig:amc10/2002A/25.svg@@
+
+(A) $182$  (B) $195$  (C) $210$  (D) $234$  (E) $260$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-3": { s: String.raw`According to the standard convention for exponentiation,$$2^{2^{2^{2}}}=2^{\left(2^{\left(2^{2}\right)}\right)}=2^{16}=65{,}536.$$If the order in which the exponentiations are performed is changed, how many other values are possible?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-4": { s: String.raw`For how many positive integers $m$ does there exist at least one positive integer $n$ such that $m\cdot n\le m+n?$
+
+(A) $4$  (B) $6$  (C) $9$  (D) $12$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-5": { s: String.raw`Each of the small circles in the figure has radius one. The innermost circle is tangent to the six circles that surround it, and each of those circles is tangent to the large circle and to its small-circle neighbors. Find the area of the shaded region.
+
+@@fig:amc10/2002A/5.svg@@
+
+(A) $\pi$  (B) $1.5\pi$  (C) $2\pi$  (D) $3\pi$  (E) $3.5\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-6": { s: String.raw`Cindy was asked by her teacher to subtract $3$ from a certain number and then divide the result by $9.$ Instead, she subtracted $9$ and then divided the result by $3,$ giving an answer of $43.$ What would her answer have been had she worked the problem correctly?
+
+(A) $15$  (B) $34$  (C) $43$  (D) $51$  (E) $138$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-7": { s: String.raw`If an arc of $45^\circ$ on circle $A$ has the same length as an arc of $30^\circ$ on circle $B,$ then the ratio of the area of circle $A$ to the area of circle $B$ is
+
+(A) $\dfrac{4}{9}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{5}{6}$  (D) $\dfrac{3}{2}$  (E) $\dfrac{9}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-8": { s: String.raw`Betsy designed a flag using blue triangles, small white squares, and a red center square, as shown. Let $B$ be the total area of the blue triangles, $W$ the total area of the white squares, and $R$ the area of the red square. Which of the following is correct?
+
+@@fig:amc10/2002A/8.svg@@
+
+(A) $B=W$  (B) $W=R$  (C) $B=R$  (D) $3B=2R$  (E) $2R=W$`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10a-9": { s: String.raw`Suppose $A,$ $B,$ and $C$ are three numbers for which $1001C-2002A=4004$ and $1001B+3003A=5005.$ The average of the three numbers $A,$ $B,$ and $C$ is
+
+(A) $1$  (B) $3$  (C) $6$  (D) $9$  (E) not uniquely determined`, u: "https://live.poshenloh.com/past-contests/amc10/2002A" },
+"2002-amc-10b-1": { s: String.raw`What is the value of the ratio$$\dfrac{2^{2001} \cdot 3^{2003}}{6^{2002}}?$$(A) $\dfrac{1}{6}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-10": { s: String.raw`Suppose that $a$ and $b$ are nonzero real numbers, and that the equation $x^2 + ax + b = 0$ has solutions $a$ and $b.$ What is the pair $(a, b)?$
+
+(A) $(-2, 1)$  (B) $(-1, 2)$  (C) $(1, -2)$  (D) $(2, -1)$  (E) $(4, 4)$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-11": { s: String.raw`The product of three consecutive positive integers is $8$ times their sum. What is the sum of their squares?
+
+(A) $50$  (B) $77$  (C) $110$  (D) $149$  (E) $194$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-12": { s: String.raw`For which of the following values of $k$ does the equation$$\dfrac{x - 1}{x - 2} = \dfrac{x - k}{x - 6}$$have no solution for $x?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-13": { s: String.raw`What value of $x$ makes $8xy - 12y + 2x - 3 = 0$ true for all values of $y?$
+
+(A) $\dfrac23$  (B) $\dfrac32$ or $-\dfrac14$  (C) $-\dfrac23$ or $-\dfrac14$  (D) $\dfrac32$  (E) $-\dfrac32$ or $-\dfrac14$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-14": { s: String.raw`The number $25^{64} \cdot 64^{25}$ is the square of a positive integer $N.$ In decimal representation, what is the sum of the digits of $N?$
+
+(A) $7$  (B) $14$  (C) $21$  (D) $28$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-15": { s: String.raw`The positive integers $A,$ $B,$ $A - B,$ and $A + B$ are all prime numbers. The sum of these four primes is
+
+(A) even  (B) divisible by $3$  (C) divisible by $5$  (D) divisible by $7$  (E) prime`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-16": { s: String.raw`For how many integers $n$ is $\dfrac{n}{20 - n}$ the square of an integer?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-17": { s: String.raw`A regular octagon $ABCDEFGH$ has sides of length two. What is the area of $\triangle ADG?$
+
+(A) $4 + 2\sqrt{2}$  (B) $6 + \sqrt{2}$  (C) $4 + 3\sqrt{2}$  (D) $3 + 4\sqrt{2}$  (E) $8 + \sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-18": { s: String.raw`Four distinct circles are drawn in a plane. What is the maximum number of points where at least two of the circles intersect?
+
+(A) $8$  (B) $9$  (C) $10$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-19": { s: String.raw`Suppose that $\{a_n\}$ is an arithmetic sequence with$$a_1 + a_2 + \cdots + a_{100} = 100$$and$$a_{101} + a_{102} + \cdots + a_{200} = 200.$$What is the value of $a_2 - a_1?$
+
+(A) $0.0001$  (B) $0.001$  (C) $0.01$  (D) $0.1$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-2": { s: String.raw`For the nonzero numbers $a,$ $b,$ and $c,$ define$$(a, b, c) = \dfrac{abc}{a+b+c}.$$What is $(2, 4, 6)?$
+
+(A) $1$  (B) $2$  (C) $4$  (D) $6$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-20": { s: String.raw`Let $a,$ $b,$ and $c$ be real numbers such that $a - 7b + 8c = 4$ and $8a + 4b - c = 7.$ What is $a^2 - b^2 + c^2?$
+
+(A) $0$  (B) $1$  (C) $4$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-21": { s: String.raw`Andy’s lawn has twice as much area as Beth’s lawn and three times as much area as Carlos’ lawn. Carlos’ lawn mower cuts half as fast as Beth’s mower and one third as fast as Andy’s mower. If they all start to mow their lawns at the same time, who will finish first?
+
+(A) Andy  (B) Beth  (C) Carlos  (D) Andy and Carlos tie for first.  (E) All three tie.`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-22": { s: String.raw`Let $\triangle XOY$ be a right-angled triangle with $m\angle XOY = 90^\circ.$ Let $M$ and $N$ be the midpoints of legs $OX$ and $OY,$ respectively. Given that $XN = 19$ and $YM = 22,$ what is $XY?$
+
+(A) $24$  (B) $26$  (C) $28$  (D) $30$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-23": { s: String.raw`Let $\{a_k\}$ be a sequence of integers such that $a_1 = 1$ and $a_{m+n} = a_m + a_n + mn$ for all positive integers $m$ and $n.$ What is $a_{12}?$
+
+(A) $45$  (B) $56$  (C) $67$  (D) $78$  (E) $89$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-24": { s: String.raw`Riders on a Ferris wheel travel in a circle in a vertical plane. A particular wheel has radius $20$ feet and revolves at the constant rate of one revolution per minute. How many seconds does it take a rider to travel from the bottom of the wheel to a point $10$ vertical feet above the bottom?
+
+(A) $5$  (B) $6$  (C) $7.5$  (D) $10$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-25": { s: String.raw`When $15$ is appended to a list of integers, the mean is increased by $2.$ When $1$ is appended to the enlarged list, the mean of the enlarged list is decreased by $1.$ How many integers were in the original list?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-3": { s: String.raw`The arithmetic mean of the nine numbers in the set $\{9, 99, 999, 9999, \ldots, 999999999\}$ is a $9$-digit number $M,$ all of whose digits are distinct. Which digit does the number $M$ not contain?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-4": { s: String.raw`What is the value of$$(3x - 2)(4x + 1) - (3x - 2)4x + 1$$when $x = 4?$
+
+(A) $0$  (B) $1$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-5": { s: String.raw`Circles of radius $2$ and $3$ are externally tangent and are circumscribed by a third circle, as shown in the figure. What is the area of the shaded region?
+
+@@fig:amc10/2002B/5.svg@@
+
+(A) $3\pi$  (B) $4\pi$  (C) $6\pi$  (D) $9\pi$  (E) $12\pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-6": { s: String.raw`For how many positive integers $n$ is $n^2 - 3n + 2$ a prime number?
+
+(A) none  (B) one  (C) two  (D) more than two, but finitely many  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-7": { s: String.raw`Let $n$ be a positive integer such that $\dfrac12 + \dfrac13 + \dfrac17 + \dfrac1n$ is an integer. Which of the following statements is not true?
+
+(A) $2$ divides $n$  (B) $3$ divides $n$  (C) $6$ divides $n$  (D) $7$ divides $n$  (E) $n \gt 84$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-8": { s: String.raw`Suppose July of year $N$ has five Mondays. Which of the following must occur five times in August of year $N?$ (Note: both months have $31$ days.)
+
+(A) Monday  (B) Tuesday  (C) Wednesday  (D) Thursday  (E) Friday`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-10b-9": { s: String.raw`Using the letters $A,$ $M,$ $O,$ $S,$ and $U,$ we can form $120$ five-letter “words.” If these “words” are arranged in alphabetical order, then the “word” $USAMO$ occupies which position?
+
+(A) $112$  (B) $113$  (C) $114$  (D) $115$  (E) $116$`, u: "https://live.poshenloh.com/past-contests/amc10/2002B" },
+"2002-amc-12a-1": { s: String.raw`Compute the sum of all the roots of$$(2x+3)(x-4) +(2x+3)(x-6)=0.$$(A) $\dfrac{7}{2}$  (B) $4$  (C) $5$  (D) $7$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-10": { s: String.raw`Sarah pours four ounces of coffee into an eight-ounce cup and four ounces of cream into a second cup of the same size. She then transfers half the coffee from the first cup to the second and, after stirring thoroughly, transfers half the liquid in the second cup back to the first. What fraction of the liquid in the first cup is now cream?
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{3}{8}$  (D) $\dfrac{2}{5}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
 "2002-amc-12a-11": { s: String.raw`Mr. Earl E. Bird leaves his house for work at exactly $8{:}00$ A.M. every morning. When he averages $40$ miles per hour, he arrives at his workplace three minutes late. When he averages $60$ miles per hour, he arrives three minutes early. At what average speed, in miles per hour, should Mr. Bird drive to arrive at his workplace precisely on time?
 
 (A) $45$  (B) $48$  (C) $50$  (D) $55$  (E) $58$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-12": { s: String.raw`Both roots of the quadratic equation$$x^2 - 63x + k = 0$$are prime numbers. The number of possible values of $k$ is
+
+(A) $0$  (B) $1$  (C) $2$  (D) $4$  (E) more than four`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-13": { s: String.raw`Two different positive numbers $a$ and $b$ each differ from their reciprocals by $1.$ What is $a + b?$
+
+(A) $1$  (B) $2$  (C) $\sqrt{5}$  (D) $\sqrt{6}$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-14": { s: String.raw`For all positive integers $n,$ let $f(n) = \log_{2002} n^2.$ Let$$N = f(11) + f(13) + f(14).$$Which of the following relations is true?
+
+(A) $N \gt 1$  (B) $N = 1$  (C) $1 \lt N \lt 2$  (D) $N = 2$  (E) $N \gt 2$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-15": { s: String.raw`The mean, median, unique mode, and range of a collection of eight integers are all equal to $8.$ The largest integer that can be an element of this collection is
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-16": { s: String.raw`Tina randomly selects two distinct numbers from the set $\{1, 2, 3, 4, 5\},$ and Sergio randomly selects a number from the set $\{1, 2, \ldots, 10\}.$ The probability that Sergio’s number is larger than the sum of the two numbers chosen by Tina is
+
+(A) $\dfrac{2}{5}$  (B) $\dfrac{9}{20}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{11}{20}$  (E) $\dfrac{24}{25}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-17": { s: String.raw`Several sets of prime numbers, such as $\{7, 83, 421, 659\},$ use each of the nine nonzero digits exactly once. What is the smallest possible sum such a set of primes could have?
+
+(A) $193$  (B) $207$  (C) $225$  (D) $252$  (E) $477$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-18": { s: String.raw`Let $C_1$ and $C_2$ be circles defined by$$(x - 10)^2 + y^2 = 36$$and$$(x + 15)^2 + y^2 = 81,$$respectively. What is the length of the shortest line segment $\overline{PQ}$ that is tangent to $C_1$ at $P$ and to $C_2$ at $Q?$
+
+(A) $15$  (B) $18$  (C) $20$  (D) $21$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-19": { s: String.raw`The graph of the function $f$ is shown below. How many solutions does the equation $f(f(x)) = 6$ have?
+
+@@fig:amc12/2002A/19.svg@@
+
+(A) $2$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-2": { s: String.raw`Cindy was asked by her teacher to subtract $3$ from a certain number and then divide the result by $9.$ Instead, she subtracted $9$ and then divided the result by $3,$ giving an answer of $43.$ What would her answer have been had she worked the problem correctly?
+
+(A) $15$  (B) $34$  (C) $43$  (D) $51$  (E) $138$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-20": { s: String.raw`Suppose that $a$ and $b$ are digits, not both nine and not both zero, and the repeating decimal $0.\overline{ab}$ is expressed as a fraction in lowest terms. How many different denominators are possible?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-21": { s: String.raw`Consider the sequence of numbers $4,$ $7,$ $1,$ $8,$ $9,$ $7,$ $6,$ $\ldots$ For $n \gt 2,$ the $n$th term of the sequence is the units digit of the sum of the two previous terms. Let $S_n$ denote the sum of the first $n$ terms of this sequence. The smallest value of $n$ for which $S_n \gt 10{,}000$ is
+
+(A) $1992$  (B) $1999$  (C) $2001$  (D) $2002$  (E) $2004$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-22": { s: String.raw`Triangle $ABC$ is a right triangle with $\angle ACB$ as its right angle, $m\angle ABC = 60^\circ,$ and $AB = 10.$ Let $P$ be randomly chosen inside $\triangle ABC,$ and extend $\overline{BP}$ to meet $\overline{AC}$ at $D.$ What is the probability that $BD \gt 5\sqrt{2}?$
+
+@@fig:amc12/2002A/22.svg@@
+
+(A) $\dfrac{2 - \sqrt{2}}{2}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{3 - \sqrt{3}}{3}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{5 - \sqrt{5}}{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-23": { s: String.raw`In triangle $ABC,$ side $\overline{AC}$ and the perpendicular bisector of $\overline{BC}$ meet in point $D,$ and $\overline{BD}$ bisects $\angle ABC.$ If $AD = 9$ and $DC = 7,$ what is the area of triangle $ABD?$
+
+(A) $14$  (B) $21$  (C) $28$  (D) $14\sqrt{5}$  (E) $28\sqrt{5}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-24": { s: String.raw`Find the number of ordered pairs of real numbers $(a, b)$ such that $(a + bi)^{2002} = a - bi.$
+
+(A) $1001$  (B) $1002$  (C) $2001$  (D) $2002$  (E) $2004$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-25": { s: String.raw`The nonzero coefficients of a polynomial $P$ with real coefficients are all replaced by their mean to form a polynomial $Q.$ Which of the following could be a graph of $y = P(x)$ and $y = Q(x)$ over the interval $-4 \le x \le 4?$
+
+(A) @@ci:amc12/2002A/25A.svg|9rem@@
+(B) @@ci:amc12/2002A/25B.svg|9rem@@
+(C) @@ci:amc12/2002A/25C.svg|9rem@@
+(D) @@ci:amc12/2002A/25D.svg|9rem@@
+(E) @@ci:amc12/2002A/25E.svg|9rem@@`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-3": { s: String.raw`According to the standard convention for exponentiation,$$2^{2^{2^2}} = 2^{\left(2^{\left(2^2\right)}\right)} = 2^{16} = 65{,}536.$$If the order in which the exponentiations are performed is changed, how many other values are possible?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-4": { s: String.raw`Find the degree measure of an angle whose complement is $25\%$ of its supplement.
+
+(A) $48$  (B) $60$  (C) $75$  (D) $120$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-5": { s: String.raw`Each of the small circles in the figure has radius one. The innermost circle is tangent to the six circles that surround it, and each of those circles is tangent to the large circle and to its small-circle neighbors. Find the area of the shaded region.
+
+@@fig:amc12/2002A/5.svg@@
+
+(A) $\pi$  (B) $1.5\pi$  (C) $2\pi$  (D) $3\pi$  (E) $3.5\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-6": { s: String.raw`For how many positive integers $m$ does there exist at least one positive integer $n$ such that $m \cdot n \le m + n?$
+
+(A) $4$  (B) $6$  (C) $9$  (D) $12$  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-7": { s: String.raw`If an arc of $45^\circ$ on circle $A$ has the same length as an arc of $30^\circ$ on circle $B,$ then the ratio of the area of circle $A$ to the area of circle $B$ is
+
+(A) $\dfrac{4}{9}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{5}{6}$  (D) $\dfrac{3}{2}$  (E) $\dfrac{9}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-8": { s: String.raw`Betsy designed a flag using blue triangles, small white squares, and a red center square, as shown. Let $B$ be the total area of the blue triangles, $W$ the total area of the white squares, and $R$ the area of the red square. Which of the following is correct?
+
+@@fig:amc12/2002A/8.svg@@
+
+(A) $B = W$  (B) $W = R$  (C) $B = R$  (D) $3B = 2R$  (E) $2R = W$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12a-9": { s: String.raw`Jamal wants to store $30$ computer files on floppy disks, each of which has a capacity of $1.44$ megabytes (mb). Three of his files require $0.8$ mb of memory each, $12$ more require $0.7$ mb each, and the remaining $15$ require $0.4$ mb each. No file can be split between floppy disks. What is the minimal number of floppy disks that will hold all the files?
+
+(A) $12$  (B) $13$  (C) $14$  (D) $15$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2002A" },
+"2002-amc-12b-1": { s: String.raw`The arithmetic mean of the nine numbers in the set $\{9,$ $99,$ $999,$ $9999,$ $\ldots,$ $999999999\}$ is a $9$-digit number $M,$ all of whose digits are distinct. The number $M$ does not contain the digit
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-10": { s: String.raw`How many different integers can be expressed as the sum of three distinct members of the set $\{1,4,7,10,13,16,19\}?$
+
+(A) $13$  (B) $16$  (C) $24$  (D) $30$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-11": { s: String.raw`The positive integers $A,$ $B,$ $A-B,$ and $A+B$ are all prime numbers. The sum of these four primes is
+
+(A) even  (B) divisible by $3$  (C) divisible by $5$  (D) divisible by $7$  (E) prime`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-12": { s: String.raw`For how many integers $n$ is$$\dfrac{n}{20-n}$$the square of an integer?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-13": { s: String.raw`The sum of $18$ consecutive positive integers is a perfect square. The smallest possible value of this sum is
+
+(A) $169$  (B) $225$  (C) $289$  (D) $361$  (E) $441$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-14": { s: String.raw`Four distinct circles are drawn in a plane. What is the maximum number of points where at least two of the circles intersect?
+
+(A) $8$  (B) $9$  (C) $10$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-15": { s: String.raw`How many four-digit numbers $N$ have the property that the three-digit number obtained by removing the leftmost digit is one ninth of $N?$
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-16": { s: String.raw`Juan rolls a fair regular octahedral die marked with the numbers $1$ through $8.$ Then Amal rolls a fair six-sided die. What is the probability that the product of the two rolls is a multiple of $3?$
+
+(A) $\dfrac{1}{12}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{7}{12}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-17": { s: String.raw`Andy’s lawn has twice as much area as Beth’s lawn and three times as much area as Carlos’ lawn. Carlos’ lawn mower cuts half as fast as Beth’s mower and one third as fast as Andy’s mower. If they all start to mow their lawns at the same time, who will finish first?
+
+(A) Andy  (B) Beth  (C) Carlos  (D) Andy and Carlos tie for first.  (E) All three tie.`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-18": { s: String.raw`A point $P$ is randomly selected from the rectangular region with vertices $(0,0),$ $(2,0),$ $(2,1),$ $(0,1).$ What is the probability that $P$ is closer to the origin than it is to the point $(3,1)?$
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{4}{5}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-19": { s: String.raw`If $a,$ $b,$ and $c$ are positive real numbers such that $a(b+c)=152,$ $b(c+a)=162,$ and $c(a+b)=170,$ then $abc$ is
+
+(A) $672$  (B) $688$  (C) $704$  (D) $720$  (E) $750$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-2": { s: String.raw`What is the value of$$(3x-2)(4x+1) -(3x-2)4x+1$$when $x=4?$
+
+(A) $0$  (B) $1$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-20": { s: String.raw`Let $\triangle XOY$ be a right-angled triangle with $m\angle XOY=90^\circ.$ Let $M$ and $N$ be the midpoints of legs $OX$ and $OY,$ respectively. Given that $XN=19$ and $YM=22,$ find $XY.$
+
+(A) $24$  (B) $26$  (C) $28$  (D) $30$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-21": { s: String.raw`For all positive integers $n$ less than $2002,$ let$$a_n=\begin{cases} 11, & \text{if } n \text{ is divisible by } 13 \text{ and } 14;\\ 13, & \text{if } n \text{ is divisible by } 14 \text{ and } 11;\\ 14, & \text{if } n \text{ is divisible by } 11 \text{ and } 13;\\ 0, & \text{otherwise}. \end{cases}$$Calculate $\displaystyle\sum_{n=1}^{2001} a_n.$
+
+(A) $448$  (B) $486$  (C) $1560$  (D) $2001$  (E) $2002$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-22": { s: String.raw`For all integers $n$ greater than $1,$ define$$a_n=\dfrac{1}{\log_n 2002}.$$Let $b=a_2+a_3+a_4+a_5$ and $c=a_{10}+a_{11}+a_{12}+a_{13}+a_{14}.$ Then $b-c$ equals
+
+(A) $-2$  (B) $-1$  (C) $\dfrac{1}{2002}$  (D) $\dfrac{1}{1001}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-23": { s: String.raw`In $\triangle ABC,$ we have $AB=1$ and $AC=2.$ Side $BC$ and the median from $A$ to $BC$ have the same length. What is $BC?$
+
+(A) $\dfrac{1+\sqrt{2}}{2}$  (B) $\dfrac{1+\sqrt{3}}{2}$  (C) $\sqrt{2}$  (D) $\dfrac{3}{2}$  (E) $\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-24": { s: String.raw`A convex quadrilateral $ABCD$ with area $2002$ contains a point $P$ in its interior such that $PA=24,$ $PB=32,$ $PC=28,$ and $PD=45.$ Find the perimeter of $ABCD.$
+
+(A) $4\sqrt{2002}$  (B) $2\sqrt{8465}$  (C) $2\left(48+\sqrt{2002}\right)$  (D) $2\sqrt{8633}$  (E) $4\left(36+\sqrt{113}\right)$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-25": { s: String.raw`Let $f(x)=x^2+6x+1,$ and let $R$ denote the set of points $(x,y)$ in the coordinate plane such that$$f(x)+f(y)\le0$$and$$f(x)-f(y)\le0.$$The area of $R$ is closest to
+
+(A) $21$  (B) $22$  (C) $23$  (D) $24$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-3": { s: String.raw`For how many positive integers $n$ is $n^2-3n+2$ a prime number?
+
+(A) none  (B) one  (C) two  (D) more than two, but finitely many  (E) infinitely many`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-4": { s: String.raw`Let $n$ be a positive integer such that $\dfrac12+\dfrac13+\dfrac17+\dfrac1n$ is an integer. Which of the following statements is not true:
+
+(A) $2$ divides $n$  (B) $3$ divides $n$  (C) $6$ divides $n$  (D) $7$ divides $n$  (E) $n\gt84$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-5": { s: String.raw`Let $v,$ $w,$ $x,$ $y,$ and $z$ be the degree measures of the five angles of a pentagon. Suppose $v\lt w\lt x\lt y\lt z$ and $v,$ $w,$ $x,$ $y,$ $z$ form an arithmetic sequence. Find the value of $x.$
+
+(A) $72$  (B) $84$  (C) $90$  (D) $108$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-6": { s: String.raw`Suppose that $a$ and $b$ are nonzero real numbers, and that the equation $x^2+ax+b=0$ has solutions $a$ and $b.$ Then the pair $(a,b)$ is
+
+(A) $(-2,1)$  (B) $(-1,2)$  (C) $(1,-2)$  (D) $(2,-1)$  (E) $(4,4)$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-7": { s: String.raw`The product of three consecutive positive integers is $8$ times their sum. What is the sum of their squares?
+
+(A) $50$  (B) $77$  (C) $110$  (D) $149$  (E) $194$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-8": { s: String.raw`Suppose July of year $N$ has five Mondays. Which of the following must occur five times in August of year $N?$ (Note: Both months have $31$ days.)
+
+(A) Monday  (B) Tuesday  (C) Wednesday  (D) Thursday  (E) Friday`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-12b-9": { s: String.raw`If $a,$ $b,$ $c,$ $d$ are positive real numbers such that $a,$ $b,$ $c,$ $d$ form an increasing arithmetic sequence and $a,$ $b,$ $d$ form a geometric sequence, then $\dfrac{a}{d}$ is
+
+(A) $\dfrac{1}{12}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2002B" },
+"2002-amc-8-1": { s: String.raw`A circle and two distinct lines are drawn on a sheet of paper. What is the largest possible number of points of intersection of these figures?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-10": { s: String.raw`The average price of his ‘$70$s stamps is closest to
+
+(A) $3.5$¢  (B) $4$¢  (C) $4.5$¢  (D) $5$¢  (E) $5.5$¢`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-11": { s: String.raw`A sequence of squares is made of identical square tiles. The edge of each square is one tile length longer than the edge of the previous square. The first three squares are shown. How many more tiles does the seventh square require than the sixth?
+
+@@fig:amc8/2002/11.svg@@
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-12": { s: String.raw`A board game spinner is divided into three regions labeled $A,$ $B$ and $C.$ The probability of the arrow stopping on region $A$ is $\frac{1}{3}$ and on region $B$ is $\frac{1}{2}.$ The probability of the arrow stopping on region $C$ is
+
+(A) $\dfrac{1}{12}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{5}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{2}{5}$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-13": { s: String.raw`For his birthday, Bert gets a box that holds $125$ jellybeans when filled to capacity. A few weeks later, Carrie gets a larger box full of jellybeans. Her box is twice as high, twice as wide and twice as long as Bert’s. Approximately, how many jellybeans did Carrie get?
+
+(A) $250$  (B) $500$  (C) $625$  (D) $750$  (E) $1000$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-14": { s: String.raw`A merchant offers a large group of items at $30\%$ off. Later, the merchant takes $20\%$ off these sale prices and claims that the final price of these items is $50\%$ off the original price. The total discount is
+
+(A) $35\%$  (B) $44\%$  (C) $50\%$  (D) $56\%$  (E) $60\%$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-15": { s: String.raw`Which of the following polygons has the largest area?
+
+@@fig:amc8/2002/15.svg@@
+
+(A) $\text{A}$  (B) $\text{B}$  (C) $\text{C}$  (D) $\text{D}$  (E) $\text{E}$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-16": { s: String.raw`Right isosceles triangles are constructed on the sides of a $3-4-5$ right triangle, as shown. A capital letter represents the area of each triangle. Which one of the following is true?
+
+@@fig:amc8/2002/16.svg@@
+
+(A) $X + Z = W + Y$  (B) $W + X = Z$  (C) $3X + 4Y = 5Z$  (D) $X + W = \dfrac{1}{2}(Y + Z)$  (E) $X + Y = Z$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-17": { s: String.raw`In a mathematics contest with ten problems, a student gains $5$ points for a correct answer and loses $2$ points for an incorrect answer. If Olivia answered every problem and her score was $29,$ how many correct answers did she have?
+
+(A) $5$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-18": { s: String.raw`Gage skated $1$ hr $15$ min each day for $5$ days and $1$ hr $30$ min each day for $3$ days. How long would he have to skate the ninth day in order to average $85$ minutes of skating each day for the entire time?
+
+(A) $1$ hr  (B) $1$ hr $10$ min  (C) $1$ hr $20$ min  (D) $1$ hr $40$ min  (E) $2$ hr`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-19": { s: String.raw`How many whole numbers between $99$ and $999$ contain exactly one $0?$
+
+(A) $72$  (B) $90$  (C) $144$  (D) $162$  (E) $180$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-2": { s: String.raw`How many different combinations of $\$5$ bills and $\$2$ bills can be used to make a total of $\$17?$ Order does not matter in this problem.
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-20": { s: String.raw`The area of triangle $XYZ$ is $8$ square inches. Points $A$ and $B$ are midpoints of congruent segments $\overline{XY}$ and $\overline{XZ}.$ Altitude $\overline{XC}$ bisects $\overline{YZ}.$ The area (in square inches) of the shaded region is
+
+@@fig:amc8/2002/20.svg@@
+
+(A) $1 \frac{1}{2}$  (B) $2$  (C) $2 \frac{1}{2}$  (D) $3$  (E) $3 \frac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-21": { s: String.raw`Harold tosses a nickel four times. The probability that he gets at least as many heads as tails is
+
+(A) $\dfrac{5}{16}$  (B) $\dfrac{3}{8}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{5}{8}$  (E) $\dfrac{11}{16}$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-22": { s: String.raw`Six cubes, each an inch on an edge, are fastened together, as shown. Find the total surface area in square inches. Include the top, bottom, and sides.
+
+@@fig:amc8/2002/22.svg@@
+
+(A) $18$  (B) $24$  (C) $26$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-23": { s: String.raw`A corner of a tiled floor is shown. If the entire floor is tiled in this way and each of the four corners looks like this one, then what fraction of the tiled floor is made of darker tiles?
+
+@@fig:amc8/2002/23.svg@@
+
+(A) $\dfrac{1}3$  (B) $\dfrac{4}9$  (C) $\dfrac{1}2$  (D) $\dfrac{5}9$  (E) $\dfrac{5}8$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-24": { s: String.raw`Miki has a dozen oranges of the same size and a dozen pears of the same size. Miki uses her juicer to extract $8$ ounces of pear juice from $3$ pears and $8$ ounces of orange juice from $2$ oranges. She makes a pear-orange juice blend from an equal number of pears and oranges. What percent of the blend is pear juice?
+
+(A) $30$  (B) $40$  (C) $50$  (D) $60$  (E) $70$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-25": { s: String.raw`Loki, Moe, Nick and Ott are good friends. Ott had no money, but the others did. Moe gave Ott one-fifth of his money, Loki gave Ott one-fourth of his money and Nick gave Ott one-third of his money. Each gave Ott the same amount of money. What fractional part of the group’s money does Ott now have?
+
+(A) $\dfrac{1}{10}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{2}{5}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-3": { s: String.raw`What is the smallest possible average of four distinct positive even integers?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-4": { s: String.raw`The year $2002$ is a palindrome (a number that reads the same from left to right as it does from right to left). What is the product of the digits of the next year after $2002$ that is a palindrome?
+
+(A) $0$  (B) $4$  (C) $9$  (D) $16$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-5": { s: String.raw`Carlos Montado was born on Saturday, November $9,$ $2002.$ On what day of the week will Carlos be $706$ days old?
+
+(A) Monday  (B) Wednesday  (C) Friday  (D) Saturday  (E) Sunday`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-6": { s: String.raw`A birdbath is designed to overflow so that it will be self-cleaning. Water flows in at the rate of $20$ milliliters per minute and drains at the rate of $18$ milliliters per minute. One of these graphs shows the volume of water in the birdbath during the filling time and continuing into the overflow time. Which one is it?
+
+(A) @@ci:amc8/2002/6_A.svg|8rem@@  (B) @@ci:amc8/2002/6_B.svg|8rem@@  (C) @@ci:amc8/2002/6_C.svg|8rem@@  (D) @@ci:amc8/2002/6_D.svg|8rem@@  (E) @@ci:amc8/2002/6_E.svg|8rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-7": { s: String.raw`The students in Mrs. Sawyer’s class were asked to do a taste test of five kinds of candy. Each student chose one kind of candy. A bar graph of their preferences is shown. What percent of her class chose candy $E?$
+
+@@fig:amc8/2002/7.svg@@
+
+(A) $5$  (B) $12$  (C) $15$  (D) $16$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-8": { s: String.raw`Problems $8,$ $9,$ and $10$ use the data found in the accompanying paragraph and table.
+
+Juan’s Old Stamping Grounds
+
+Juan organizes the stamps in his collection by country and by the decade in which they were issued. The prices he paid for them at a stamp shop were: Brazil and France, $6$¢ each, Peru $4$¢ each, and Spain $5$¢ each. (Brazil and Peru are South American countries and France and Spain are in Europe.)
+
+Number of Stamps by Decade
+
+@@fig:amc8/2002/bg.svg@@
+
+How many of his European stamps were issued in the ‘$80$s?
+
+(A) $9$  (B) $15$  (C) $18$  (D) $24$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
+"2002-amc-8-9": { s: String.raw`His South American stamps issued before the ‘$70$s cost him
+
+(A) $\$0.40$  (B) $\$1.06$  (C) $\$1.80$  (D) $\$2.38$  (E) $\$2.64$`, u: "https://live.poshenloh.com/past-contests/amc8/2002" },
 });

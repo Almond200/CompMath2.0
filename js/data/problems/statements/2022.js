@@ -71,9 +71,48 @@ How many pieces of candy in all did the principal give to the children who alway
 "2022-amc-10a-16": { s: String.raw`The roots of the polynomial $10x^3 - 39x^2 + 29x - 6$ are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by $2$ units. What is the volume of the new box?
 
 (A) $\dfrac{24}{5}$  (B) $\dfrac{42}{5}$  (C) $\dfrac{81}{5}$  (D) $30$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-17": { s: String.raw`How many three-digit positive integers $\underline{a} \ \underline{b} \ \underline{c}$ are there whose nonzero digits $a,$ $b,$ and $c$ satisfy$$0.\overline{\underline{a}~\underline{b}~\underline{c}} = \dfrac{1}{3} (0.\overline{a} + 0.\overline{b} + 0.\overline{c})?$$(The bar indicates digit repetition, thus $0.\overline{\underline{a}~\underline{b}~\underline{c}}$ is the infinite repeating decimal $0.\underline{a}~\underline{b}~\underline{c}~\underline{a}~\underline{b}~\underline{c}~\cdots$)
+
+(A) $9$  (B) $10$  (C) $11$  (D) $13$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-18": { s: String.raw`Let $T_k$ be the transformation of the coordinate plane that first rotates the plane $k$ degrees counterclockwise around the origin and then reflects the plane across the $y$-axis. What is the least positive integer $n$ such that performing the sequence of transformations $T_1,$ $T_2,$ $T_3,$ $\cdots,$ $T_n$ returns the point $(1,0)$ back to itself?
+
+(A) $359$  (B) $360$  (C) $719$  (D) $720$  (E) $721$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-19": { s: String.raw`Let $L_n$ denote the least common multiple of the numbers $1,$ $2,$ $3,$ $\ldots,$ $n,$ and let $h$ be the unique positive integer such that$$\dfrac{1}{1} + \dfrac{1}{2} + \dfrac{1}{3} + \cdots + \dfrac{1}{17} = \dfrac{h}{L_{17}}$$What is the remainder when $h$ is divided by $17?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
 "2022-amc-10a-2": { s: String.raw`Mike cycled $15$ laps in $57$ minutes. Assume he cycled at a constant speed throughout. Approximately how many laps did he complete in the first $27$ minutes?
 
 (A) $5$  (B) $7$  (C) $9$  (D) $11$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-20": { s: String.raw`A four-term sequence is formed by adding each term of a four-term arithmetic sequence of positive integers to the corresponding term of a four-term geometric sequence of positive integers. The first three terms of the resulting four-term sequence are $57,$ $60,$ and $91.$ What is the fourth term of this sequence?
+
+(A) $190$  (B) $194$  (C) $198$  (D) $202$  (E) $206$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-21": { s: String.raw`A bowl is formed by attaching four regular hexagons of side $1$ to a square of side $1.$ The edges of the adjacent hexagons coincide, as shown in the figure. What is the area of the octagon obtained by joining the top eight vertices of the four hexagons, situated on the rim of the bowl?
+
+@@fig:amc10/2022A/21.svg@@
+
+(A) $6$  (B) $7$  (C) $5 + 2 \sqrt{2}$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-22": { s: String.raw`Suppose that $13$ cards numbered $1,$ $2,$ $3,$ $\cdots,$ $13$ are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards $1,$ $2,$ $3$ are picked up on the first pass, $4$ and $5$ on the second pass, $6$ on the third pass, $7,$ $8,$ $9,$ $10$ on the fourth pass, and $11,$ $12,$ $13$ on the fifth pass. For how many of the $13!$ possible orderings of the cards will the $13$ cards be picked up in exactly two passes?
+
+@@fig:amc10/2022A/22.svg@@
+
+(A) $4082$  (B) $4095$  (C) $4096$  (D) $8178$  (E) $8191$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-23": { s: String.raw`Isosceles trapezoid $ABCD$ has parallel sides $\overline{AD}$ and $\overline{BC},$ with $BC < AD$ and $AB = CD.$ There is a point $P$ in the plane such that $PA=1,$ $PB=2,$ $PC=3,$ and $PD=4.$ What is $\tfrac{BC}{AD}?$
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-24": { s: String.raw`How many strings of length $5$ formed from the digits $0,$ $1,$ $2,$ $3,$ $4,$ are there such that for each $j \in \{1,2,3,4\},$ at least $j$ of the digits are less than $j?$
+
+(For example, $02214$ satisfies this condition because it contains at least $1$ digit less than $1,$ at least $2$ digits less than $2,$ at least $3$ digits less than $3,$ and at least $4$ digits less than $4.$ The string $23404$ does not satisfy the condition because it does not contain at least $2$ digits less than $2.$)
+
+(A) $500$  (B) $625$  (C) $1089$  (D) $1199$  (E) $1296$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10a-25": { s: String.raw`Let $R,$ $S,$ and $T$ be squares that have vertices at lattice points (i.e., points whose coordinates are both integers) in the coordinate plane, together with their interiors.
+
+The bottom edge of each square is on the $x$-axis. The left edge of $R$ and the right edge of $S$ are on the $y$-axis, and $R$ contains $\dfrac{9}{4}$ as many lattice points as does $S.$ The top two vertices of $T$ are in $R \cup S,$ and $T$ contains $\dfrac{1}{4}$ of the lattice points contained in $R \cup S.$ See the figure (not drawn to scale).
+
+@@fig:amc10/2022A/25.svg@@
+
+The fraction of lattice points in $S$ that are in $S \cap T$ is $27$ times the fraction of lattice points in $R$ that are in $R \cap T.$ What is the minimum possible value of the edge length of $R$ plus the edge length of $S$ plus the edge length of $T?$
+
+(A) $336$  (B) $337$  (C) $338$  (D) $339$  (E) $340$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
 "2022-amc-10a-3": { s: String.raw`The sum of three numbers is $96.$ The first number is $6$ times the third number, and the third number is $40$ less than the second number. What is the absolute value of the difference between the first and second numbers?
 
 (A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
@@ -97,10 +136,368 @@ How many pieces of candy in all did the principal give to the children who alway
 @@fig:amc10/2022A/9.svg@@
 
 (A) $120$  (B) $270$  (C) $360$  (D) $540$  (E) $720$`, u: "https://live.poshenloh.com/past-contests/amc10/2022A" },
+"2022-amc-10b-1": { s: String.raw`Define $x~\diamondsuit~ y$ to be $|x-y|$ for all real numbers $x$ and $y.$ What is the value of$$(1~\diamondsuit~(2~\diamondsuit~3))-((1~\diamondsuit~2)~\diamondsuit~3)?$$(A) $-2$  (B) $-1$  (C) $0$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-10": { s: String.raw`Camila writes down five positive integers. The unique mode of these integers is $2$ greater than their median, and the median is $2$ greater than their arithmetic mean. What is the least possible value for the mode?
+
+(A) $\ 5$  (B) $\ 7$  (C) $\ 9$  (D) $\ 11$  (E) $\ 13$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-11": { s: String.raw`All the high schools in a large school district are involved in a fundraiser selling T-shirts. Which of the choices below is logically equivalent to the statement “No school bigger than Euclid HS sold more T-shirts than Euclid HS”?
+
+(A) All schools smaller than Euclid HS sold fewer T-shirts than Euclid HS.
+(B) No school that sold more T-shirts than Euclid HS is bigger than Euclid HS.
+(C) All schools bigger than Euclid HS sold fewer T-shirts than Euclid HS.
+(D) All schools that sold fewer T-shirts than Euclid HS are smaller than Euclid HS.
+(E) All schools smaller than Euclid HS sold more T-shirts than Euclid HS.`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-12": { s: String.raw`A pair of fair $6$-sided dice is rolled $n$ times. What is the least value of $n$ such that the probability that the sum of the numbers face up on a roll equals $7$ at least once is greater than $\dfrac{1}{2}?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-13": { s: String.raw`The positive difference between a pair of primes is equal to $2,$ and the positive difference between the cubes of the two primes is $31106.$ What is the sum of the digits of the least prime that is greater than those two primes?
+
+(A) $\ 8$  (B) $\ 10$  (C) $\ 11$  (D) $\ 13$  (E) $\ 16$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
 "2022-amc-10b-14": { s: String.raw`Suppose that $S$ is a subset of $\left\{ 1, 2, 3, \cdots , 25 \right\}$ such that the sum of any two (not necessarily distinct) elements of $S$ is never an element of $S.$ What is the maximum number of elements $S$ may contain?
 
 (A) $\ 12$  (B) $\ 13$  (C) $\ 14$  (D) $\ 15$  (E) $\ 16$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-15": { s: String.raw`Let $S_n$ be the sum of the first $n$ terms of an arithmetic sequence that has a common difference of $2.$ The quotient $\dfrac{S_{3n}}{S_n}$ does not depend on $n.$ What is $S_{20}?$
+
+(A) $340$  (B) $360$  (C) $380$  (D) $400$  (E) $420$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-16": { s: String.raw`The diagram below shows a rectangle with side lengths $4$ and $8$ and a square with side length $5.$ Three vertices of the square lie on three different sides of the rectangle, as shown. What is the area of the region inside both the square and the rectangle?
+
+@@fig:amc10/2022B/16.svg@@
+
+(A) $15\dfrac{1}{8}$  (B) $15\dfrac{3}{8}$  (C) $15\dfrac{1}{2}$  (D) $15\dfrac{5}{8}$  (E) $15\dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-17": { s: String.raw`One of the following numbers is not divisible by any prime number less than $10.$ Which is it?
+
+(A) $2^{606}-1$  (B) $2^{606}+1$  (C) $2^{607}-1$  (D) $2^{607}+1$  (E) $2^{607}+3^{607}$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-18": { s: String.raw`Consider systems of three linear equations with unknowns $x,$ $y,$ and $z,$$$ \begin{cases} a_1 x + b_1 y + c_1 z & = 0 \\ a_2 x + b_2 y + c_2 z & = 0 \\ a_3 x + b_3 y + c_3 z & = 0 \end{cases} $$where each of the coefficients is either $0$ or $1$ and the system has a solution other than $x=y=z=0.$ For example, one such system is$$ \begin{cases} 1 x + 1 y + 0 z & = 0 \\ 0 x + 1 y + 1 z & = 0 \\ 0 x + 0 y + 0 z & = 0 \end{cases} $$with a nonzero solution of $(x,y,z) = (1, -1, 1).$ How many such systems of equations are there? (The equations in a system need not be distinct, and two systems containing the same equations in a different order are considered different.)
+
+(A) $\ 302$  (B) $\ 338$  (C) $\ 340$  (D) $\ 343$  (E) $\ 344$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-19": { s: String.raw`Each square in a $5 \times 5$ grid is either filled or empty, and has up to eight adjacent neighboring squares, where neighboring squares share either a side or a corner. The grid is transformed by the following rules:
+
+• Any filled square with two or three filled neighbors remains filled.
+
+• Any empty square with exactly three filled neighbors becomes a filled square.
+
+• All other squares remain empty or become empty.
+
+A sample transformation is shown in the figure below.
+
+@@fig:amc10/2022B/19_1.svg@@
+
+Suppose the $5 \times 5$ grid has a border of empty squares surrounding a $3 \times 3$ subgrid. How many initial configurations will lead to a transformed grid consisting of a single filled square in the center after a single transformation? (Rotations and reflections of the same configuration are considered different.)
+
+@@fig:amc10/2022B/19_2.svg@@
+
+(A) $\ 14$  (B) $\ 18$  (C) $\ 22$  (D) $\ 26$  (E) $\ 30$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-2": { s: String.raw`In rhombus $ABCD,$ point $P$ lies on segment $\overline{AD}$ so that $\overline{BP} \perp \overline{AD},$ $AP = 3,$ and $PD = 2.$ What is the area of $ABCD?$
+
+@@fig:amc10/2022B/2.svg@@
+
+(A) $3\sqrt 5$  (B) $10$  (C) $6\sqrt 5$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-20": { s: String.raw`Let $ABCD$ be a rhombus with $\angle ADC = 46^\circ.$ Let $E$ be the midpoint of $\overline{CD},$ and let $F$ be the point on $\overline{BE}$ such that $\overline{AF}$ is perpendicular to $\overline{BE}.$ What is the degree measure of $\angle BFC?$
+
+(A) $\ 110$  (B) $\ 111$  (C) $\ 112$  (D) $\ 113$  (E) $\ 114$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-21": { s: String.raw`Let $P(x)$ be a polynomial with rational coefficients such that when $P(x)$ is divided by the polynomial $x^2 + x + 1,$ the remainder is $x+2,$ and when $P(x)$ is divided by the polynomial $x^2+1,$ the remainder is $2x+1.$ There is a unique polynomial of least degree with these two properties. What is the sum of the squares of the coefficients of that polynomial?
+
+(A) $\ 10$  (B) $\ 13$  (C) $\ 19$  (D) $\ 20$  (E) $\ 23$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-22": { s: String.raw`Let $S$ be the set of circles in the coordinate plane that are tangent to each of the three circles with equations$$x^{2}+y^{2}=4,\qquad x^{2}+y^{2}=64,$$and$$(x-5)^{2}+y^{2}=3.$$What is the sum of the areas of all circles in $S?$
+
+(A) $\ 48 \pi$  (B) $\ 68 \pi$  (C) $\ 96 \pi$  (D) $\ 102 \pi$  (E) $\ 136 \pi$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-23": { s: String.raw`Ant Amelia starts on the number line at $0$ and crawls in the following manner. For $n=1,$ $2,$ $3;$ Amelia chooses a time duration $t_n$ and an increment $x_n$ independently and uniformly at random from the interval $(0,1).$ During the $n$th step of the process, Amelia moves $x_n$ units in the positive direction, using up $t_n$ minutes. If the total elapsed time has exceeded $1$ minute during the $n$th step, she stops at the end of that step; otherwise, she continues with the next step, taking at most $3$ steps in all. What is the probability that Amelia’s position when she stops will be greater than $1?$
+
+(A) $\dfrac 13$  (B) $\dfrac 12$  (C) $\dfrac 23$  (D) $\dfrac 34$  (E) $\dfrac 56$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-24": { s: String.raw`Consider functions $f$ that satisfy$$|f(x)-f(y)|\leq \dfrac{1}{2}|x-y|$$for all real numbers $x$ and $y.$ Of all such functions that also satisfy the equation $f(300) = f(900),$ what is the greatest possible value of the following expression?$$f(f(800))-f(f(400))$$(A) $25$  (B) $50$  (C) $100$  (D) $150$  (E) $200$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-25": { s: String.raw`Let $x_0,$ $x_1,$ $x_2,$ $\dotsc$ be a sequence of numbers, where each $x_k$ is either $0$ or $1.$ For each positive integer $n,$ define$$S_n = \sum_{k=0}^{n-1} x_k 2^k$$Suppose $7S_n \equiv 1 \pmod{2^n}$ for all $n \geq 1.$ What is the value of the sum$$x_{2019} + 2x_{2020} + $$$$4x_{2021} + 8x_{2022}?$$(A) $6$  (B) $7$  (C) $12$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-3": { s: String.raw`How many three-digit positive integers have an odd number of even digits?
+
+(A) $150$  (B) $250$  (C) $350$  (D) $450$  (E) $550$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-4": { s: String.raw`A donkey suffers an attack of hiccups and the first hiccup happens at $4:00$ one afternoon. Suppose that the donkey hiccups regularly every $5$ seconds. At what time does the donkey’s $700$th hiccup occur?
+
+(A) $15$ seconds after $4:58$  (B) $20$ seconds after $4:58$  (C) $25$ seconds after $4:58$  (D) $30$ seconds after $4:58$  (E) $35$ seconds after $4:58$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-5": { s: String.raw`What is the value of$$\frac{\left(1+\frac{1}{3}\right)\left(1+\frac15\right)\left(1+\frac17\right)}{\sqrt{\left(1-\frac{1}{3^2}\right)\left(1-\frac{1}{5^2}\right)\left(1-\frac{1}{7^2}\right)}}?$$(A) $\sqrt3$  (B) $2$  (C) $\sqrt{15}$  (D) $4$  (E) $\sqrt{105}$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-6": { s: String.raw`How many of the first ten numbers of the sequence$$121, 11211, 1112111, \ldots$$are prime numbers?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-7": { s: String.raw`For how many values of the constant $k$ will the polynomial $x^{2}+kx+36$ have two distinct integer roots?
+
+(A) $\ 6$  (B) $\ 8$  (C) $\ 9$  (D) $\ 14$  (E) $\ 16$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-8": { s: String.raw`Consider the following $100$ sets of $10$ elements each:$$\begin{gathered}\{1,2,3,\ldots,10\}, \{11,12,13,\ldots,20\}, \{21,22,23,\ldots,30\}, \vdots \\ \{991,992,993,\ldots,1000\}.\end{gathered}$$How many of these sets contain exactly two multiples of $7?$
+
+(A) $\ 40$  (B) $\ 42$  (C) $\ 43$  (D) $\ 49$  (E) $\ 50$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-10b-9": { s: String.raw`The sum$$\dfrac{1}{2!}+\dfrac{2}{3!}+\dfrac{3}{4!}+\cdots+\dfrac{2021}{2022!}$$can be expressed as $a-\dfrac{1}{b!},$ where $a$ and $b$ are positive integers. What is $a+b?$
+
+(A) $\ 2020$  (B) $\ 2021$  (C) $\ 2022$  (D) $\ 2023$  (E) $\ 2024$`, u: "https://live.poshenloh.com/past-contests/amc10/2022B" },
+"2022-amc-12a-1": { s: String.raw`What is the value of$$3+\cfrac{1}{3+\cfrac{1}{3+\frac13}}?$$(A) $\dfrac{31}{10}$  (B) $\dfrac{49}{15}$  (C) $\dfrac{33}{10}$  (D) $\dfrac{109}{33}$  (E) $\dfrac{15}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-10": { s: String.raw`What is the number of ways the numbers from $1$ to $14$ can be split into $7$ pairs such that for each pair, the greater number is at least $2$ times the smaller number?
+
+(A) $108$  (B) $120$  (C) $126$  (D) $132$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-11": { s: String.raw`What is the product of all real numbers $x$ such that the distance on the number line between $\log_6 x$ and $\log_6 9$ is twice the distance on the number line between $\log_6 10$ and $1?$
+
+(A) $10$  (B) $18$  (C) $25$  (D) $36$  (E) $81$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-12": { s: String.raw`Let $M$ be the midpoint of $\overline{AB}$ in regular tetrahedron $ABCD.$ What is $\cos(\angle CMD)?$
+
+(A) $\dfrac14$  (B) $\dfrac13$  (C) $\dfrac25$  (D) $\dfrac12$  (E) $\dfrac{\sqrt3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-13": { s: String.raw`Let $\mathcal{R}$ be the region in the complex plane consisting of all complex numbers $z$ that can be written as the sum of complex numbers $z_1$ and $z_2,$ where $z_1$ lies on the segment with endpoints $3$ and $4i,$ and $z_2$ has magnitude at most $1.$ What integer is closest to the area of $\mathcal{R}?$
+
+(A) $13$  (B) $14$  (C) $15$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-14": { s: String.raw`What is the value of$$(\log 5)^3+(\log 20)^3 +(\log 8)(\log 0.25)$$where $\log$ denotes the base-ten logarithm?
+
+(A) $\dfrac32$  (B) $\dfrac74$  (C) $2$  (D) $\dfrac94$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-15": { s: String.raw`The roots of the polynomial $10x^3-39x^2+29x-6$ are the height, length, and width of a rectangular box (right rectangular prism). A new rectangular box is formed by lengthening each edge of the original box by $2$ units. What is the volume of the new box?
+
+(A) $\dfrac{24}{5}$  (B) $\dfrac{42}{5}$  (C) $\dfrac{81}{5}$  (D) $30$  (E) $48$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-16": { s: String.raw`A triangular number is a positive integer that can be expressed in the form $t_n=1+2+3+\cdots+n,$ for some positive integer $n.$ The three smallest triangular numbers that are also perfect squares are $t_1=1=1^2,$ $t_8=36=6^2,$ and $t_{49}=1225=35^2.$ What is the sum of the digits of the fourth smallest triangular number that is also a perfect square?
+
+(A) $6$  (B) $9$  (C) $12$  (D) $18$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-17": { s: String.raw`Suppose $a$ is a real number such that the equation$$a\cdot(\sin x+\sin(2x))=\sin(3x)$$has more than one solution in the interval $(0,\pi).$ The set of all such $a$ can be written in the form $(p,q)\cup(q,r),$ where $p,$ $q,$ and $r$ are real numbers with $p\lt q\lt r.$ What is $p+q+r?$
+
+(A) $-4$  (B) $-1$  (C) $0$  (D) $1$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-18": { s: String.raw`Let $T_k$ be the transformation of the coordinate plane that first rotates the plane $k$ degrees counterclockwise around the origin and then reflects the plane across the $y$-axis. What is the least positive integer $n$ such that performing the sequence of transformations $T_1,$ $T_2,$ $T_3,$ $\ldots,$ $T_n$ returns the point $(1,0)$ back to itself?
+
+(A) $359$  (B) $360$  (C) $719$  (D) $720$  (E) $721$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-19": { s: String.raw`Suppose that $13$ cards numbered $1,$ $2,$ $3,$ $\ldots,$ $13$ are arranged in a row. The task is to pick them up in numerically increasing order, working repeatedly from left to right. In the example below, cards $1,$ $2,$ $3$ are picked up on the first pass, $4$ and $5$ on the second pass, $6$ on the third pass, $7,$ $8,$ $9,$ $10$ on the fourth pass, and $11,$ $12,$ $13$ on the fifth pass. For how many of the $13!$ possible orderings of the cards will the $13$ cards be picked up in exactly two passes?
+
+@@fig:amc12/2022A/19.svg@@
+
+(A) $4082$  (B) $4095$  (C) $4096$  (D) $8178$  (E) $8191$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-2": { s: String.raw`The sum of three numbers is $96.$ The first number is $6$ times the third number, and the third number is $40$ less than the second number. What is the absolute value of the difference between the first and second numbers?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-20": { s: String.raw`Isosceles trapezoid $ABCD$ has parallel sides $\overline{AD}$ and $\overline{BC},$ with $BC\lt AD$ and $AB=CD.$ There is a point $P$ in the plane such that $PA=1,$ $PB=2,$ $PC=3,$ and $PD=4.$ What is $\dfrac{BC}{AD}?$
+
+(A) $\dfrac14$  (B) $\dfrac13$  (C) $\dfrac12$  (D) $\dfrac23$  (E) $\dfrac34$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-21": { s: String.raw`Let $P(x)=x^{2022}+x^{1011}+1.$ Which of the following polynomials divides $P(x)?$
+
+(A) $x^2-x+1$  (B) $x^2+x+1$  (C) $x^4+1$  (D) $x^6-x^3+1$  (E) $x^6+x^3+1$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-22": { s: String.raw`Let $c$ be a real number, and let $z_1,$ $z_2$ be the two complex numbers satisfying the quadratic $z^2-cz+10=0.$ Points $z_1,$ $z_2,$ $\dfrac{1}{z_1},$ and $\dfrac{1}{z_2}$ are the vertices of a (convex) quadrilateral $Q$ in the complex plane. When the area of $Q$ obtains its maximum value, $c$ is the closest to which of the following?
+
+(A) $4.5$  (B) $5$  (C) $5.5$  (D) $6$  (E) $6.5$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-23": { s: String.raw`Let $h_n$ and $k_n$ be the unique relatively prime positive integers such that$$\frac11+\frac12+\frac13+\cdots+\frac1n=\frac{h_n}{k_n}.$$Let $L_n$ denote the least common multiple of the numbers $1,$ $2,$ $3,$ $\ldots,$ $n.$ For how many integers $n$ with $1\le n\le22$ is $k_n\lt L_n?$
+
+(A) $0$  (B) $3$  (C) $7$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-24": { s: String.raw`How many strings of length $5$ formed from the digits $0,$ $1,$ $2,$ $3,$ $4$ are there such that for each $j\in\{1,2,3,4\},$ at least $j$ of the digits are less than $j?$ (For example, $02214$ satisfies the condition because it contains at least $1$ digit less than $1,$ at least $2$ digits less than $2,$ at least $3$ digits less than $3,$ and at least $4$ digits less than $4.$ The string $23404$ does not satisfy the condition because it does not contain at least $2$ digits less than $2.$)
+
+(A) $500$  (B) $625$  (C) $1089$  (D) $1199$  (E) $1296$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-25": { s: String.raw`A circle with integer radius $r$ is centered at $(r,r).$ Distinct line segments of length $c_i$ connect points $(0,a_i)$ to $(b_i,0)$ for $1\le i\le14$ and are tangent to the circle, where $a_i,$ $b_i,$ and $c_i$ are all positive integers and $c_1\le c_2\le\cdots\le c_{14}.$ What is the ratio $\dfrac{c_{14}}{c_1}$ for the least possible value of $r?$
+
+(A) $\dfrac{21}{5}$  (B) $\dfrac{85}{13}$  (C) $7$  (D) $\dfrac{39}{5}$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-3": { s: String.raw`Five rectangles, $A,$ $B,$ $C,$ $D,$ and $E,$ are arranged in a square as shown below. These rectangles have dimensions $1\times6,$ $2\times4,$ $5\times6,$ $2\times7,$ and $2\times3,$ respectively. (The figure is not drawn to scale.) Which of the five rectangles is the shaded one in the middle?
+
+@@fig:amc12/2022A/3.svg@@
+
+(A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) $E$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-4": { s: String.raw`The least common multiple of a positive integer $n$ and $18$ is $180,$ and the greatest common divisor of $n$ and $45$ is $15.$ What is the sum of the digits of $n?$
+
+(A) $3$  (B) $6$  (C) $8$  (D) $9$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
 "2022-amc-12a-5": { s: String.raw`Let the taxicab distance between points $(x_1,y_1)$ and $(x_2,y_2)$ in the coordinate plane be given by $|x_1-x_2|+|y_1-y_2|.$ For how many points $P$ with integer coordinates is the taxicab distance between $P$ and the origin less than or equal to $20?$
 
 (A) $441$  (B) $761$  (C) $841$  (D) $921$  (E) $924$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-6": { s: String.raw`A data set consists of $6$ (not distinct) positive integers: $1,$ $7,$ $5,$ $2,$ $5,$ and $X.$ The average (arithmetic mean) of the $6$ numbers equals a value in the data set. What is the sum of all positive values of $X?$
+
+(A) $10$  (B) $26$  (C) $32$  (D) $36$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-7": { s: String.raw`A rectangle is partitioned into $5$ regions as shown. Each region is to be painted a solid color - red, orange, yellow, blue, or green - so that regions that touch are painted different colors, and colors can be used more than once. How many different colorings are possible?
+
+@@fig:amc12/2022A/7.svg@@
+
+(A) $120$  (B) $270$  (C) $360$  (D) $540$  (E) $720$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-8": { s: String.raw`The infinite product$$\sqrt[3]{10}\cdot\sqrt[3]{\sqrt[3]{10}}\cdot\sqrt[3]{\sqrt[3]{\sqrt[3]{10}}}\cdots$$evaluates to a real number. What is that number?
+
+(A) $\sqrt{10}$  (B) $\sqrt[3]{100}$  (C) $\sqrt[4]{1000}$  (D) $10$  (E) $10\sqrt[3]{10}$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12a-9": { s: String.raw`On Halloween $31$ children walked into the principal’s office asking for candy. They can be classified into three types: some always lie; some always tell the truth; and some alternately lie and tell the truth. The alternaters arbitrarily choose their first response, either a lie or the truth, but each subsequent statement has the opposite truth value from its predecessor. The principal asked everyone the same three questions in this order.
+
+“Are you a truth-teller?” The principal gave a piece of candy to each of the $22$ children who answered yes.
+
+“Are you an alternater?” The principal gave a piece of candy to each of the $15$ children who answered yes.
+
+“Are you a liar?” The principal gave a piece of candy to each of the $9$ children who answered yes.
+
+How many pieces of candy in all did the principal give to the children who always tell the truth?
+
+(A) $7$  (B) $12$  (C) $21$  (D) $27$  (E) $31$`, u: "https://live.poshenloh.com/past-contests/amc12/2022A" },
+"2022-amc-12b-1": { s: String.raw`Define $x \diamond y$ to be $|x - y|$ for all real numbers $x$ and $y.$ What is the value of$$(1 \diamond (2 \diamond 3)) - ((1 \diamond 2) \diamond 3)?$$(A) $-2$  (B) $-1$  (C) $0$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-10": { s: String.raw`Regular hexagon $ABCDEF$ has side length $2.$ Let $G$ be the midpoint of $\overline{AB},$ and let $H$ be the midpoint of $\overline{DE}.$ What is the perimeter of $GCHF?$
+
+(A) $4\sqrt3$  (B) $8$  (C) $4\sqrt5$  (D) $4\sqrt7$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-11": { s: String.raw`Let$$f(n) = \left(\dfrac{-1 + i\sqrt3}{2}\right)^n + \left(\dfrac{-1 - i\sqrt3}{2}\right)^n,$$where $i = \sqrt{-1}.$ What is $f(2022)?$
+
+(A) $-2$  (B) $-1$  (C) $0$  (D) $\sqrt3$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-12": { s: String.raw`Kayla rolls four fair $6$-sided dice. What is the probability that at least one of the numbers Kayla rolls is greater than $4$ and at least two of the numbers she rolls are greater than $2?$
+
+(A) $\dfrac{2}{3}$  (B) $\dfrac{19}{27}$  (C) $\dfrac{59}{81}$  (D) $\dfrac{61}{81}$  (E) $\dfrac{7}{9}$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-13": { s: String.raw`The diagram below shows a rectangle with side lengths $4$ and $8$ and a square with side length $5.$ Three vertices of the square lie on three different sides of the rectangle, as shown. What is the area of the region inside both the square and the rectangle?
+
+@@fig:amc12/2022B/13.svg@@
+
+(A) $15\dfrac18$  (B) $15\dfrac38$  (C) $15\dfrac12$  (D) $15\dfrac58$  (E) $15\dfrac78$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-14": { s: String.raw`The graph of $y = x^2 + 2x - 15$ intersects the $x$-axis at points $A$ and $C$ and the $y$-axis at point $B.$ What is $\tan(\angle ABC)?$
+
+(A) $\dfrac17$  (B) $\dfrac14$  (C) $\dfrac37$  (D) $\dfrac12$  (E) $\dfrac47$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-15": { s: String.raw`One of the following numbers is not divisible by any prime number less than $10.$ Which is it?
+
+(A) $2^{606} - 1$  (B) $2^{606} + 1$  (C) $2^{607} - 1$  (D) $2^{607} + 1$  (E) $2^{607} + 3^{607}$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-16": { s: String.raw`Suppose $x$ and $y$ are positive real numbers such that$$x^y = 2^{64}$$and$$(\log_2 x)^{\log_2 y} = 2^7.$$What is the greatest possible value of $\log_2 y?$
+
+(A) $3$  (B) $4$  (C) $3 + \sqrt2$  (D) $4 + \sqrt3$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-17": { s: String.raw`How many $4 \times 4$ arrays whose entries are $0$s and $1$s are there such that the row sums (the sum of the entries in each row) are $1,$ $2,$ $3,$ and $4,$ in some order, and the column sums (the sum of the entries in each column) are also $1,$ $2,$ $3,$ and $4,$ in some order? For example, the array$$\begin{bmatrix} 1 & 1 & 1 & 0 \\ 0 & 1 & 1 & 0 \\ 1 & 1 & 1 & 1 \\ 0 & 1 & 0 & 0 \end{bmatrix}$$satisfies the condition.
+
+(A) $144$  (B) $240$  (C) $336$  (D) $576$  (E) $624$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-18": { s: String.raw`Each square in a $5 \times 5$ grid is either filled or empty, and has up to eight adjacent neighboring squares, where neighboring squares share either a side or a corner. The grid is transformed by the following rules:
+
+Any filled square with two or three filled neighbors remains filled. Any empty square with exactly three filled neighbors becomes a filled square. All other squares remain empty or become empty.
+
+A sample transformation is shown in the figure below.
+
+@@fig:amc12/2022B/18.svg@@
+
+Suppose the $5 \times 5$ grid has a border of empty squares surrounding a $3 \times 3$ subgrid. How many initial configurations will lead to a transformed grid consisting of a single filled square in the center after a single transformation? (Rotations and reflections of the same configuration are considered different.)
+
+@@fig:amc12/2022B/18b.svg@@
+
+(A) $14$  (B) $18$  (C) $22$  (D) $26$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-19": { s: String.raw`In $\triangle ABC$ medians $\overline{AD}$ and $\overline{BE}$ intersect at $G$ and $\triangle AGE$ is equilateral. Then $\cos(C)$ can be written as $\dfrac{m\sqrt p}{n},$ where $m$ and $n$ are relatively prime positive integers and $p$ is a positive integer not divisible by the square of any prime. What is $m + n + p?$
+
+(A) $44$  (B) $48$  (C) $52$  (D) $56$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-2": { s: String.raw`In rhombus $ABCD,$ point $P$ lies on segment $\overline{AD}$ so that $\overline{BP} \perp \overline{AD},$ $AP = 3,$ and $PD = 2.$ What is the area of $ABCD?$ (Note: the figure is not drawn to scale.)
+
+@@fig:amc12/2022B/2.svg@@
+
+(A) $3\sqrt5$  (B) $10$  (C) $6\sqrt5$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-20": { s: String.raw`Let $P(x)$ be a polynomial with rational coefficients such that when $P(x)$ is divided by the polynomial $x^2 + x + 1,$ the remainder is $x + 2,$ and when $P(x)$ is divided by the polynomial $x^2 + 1,$ the remainder is $2x + 1.$ There is a unique polynomial of least degree with these two properties. What is the sum of the squares of the coefficients of that polynomial?
+
+(A) $10$  (B) $13$  (C) $19$  (D) $20$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-21": { s: String.raw`Let $S$ be the set of circles in the coordinate plane that are tangent to each of the three circles with equations $x^2 + y^2 = 4,$ $x^2 + y^2 = 64,$ and $(x - 5)^2 + y^2 = 3.$ What is the sum of the areas of all circles in $S?$
+
+(A) $48\pi$  (B) $68\pi$  (C) $96\pi$  (D) $102\pi$  (E) $136\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-22": { s: String.raw`Ant Amelia starts on the number line at $0$ and crawls in the following manner. For $n = 1,$ $2,$ $3,$ Amelia chooses a time duration $t_n$ and an increment $x_n$ independently and uniformly at random from the interval $(0, 1).$ During the $n$th step of the process, Amelia moves $x_n$ units in the positive direction, using up $t_n$ minutes. If the total elapsed time has exceeded $1$ minute during the $n$th step, she stops at the end of that step; otherwise, she continues with the next step, taking at most $3$ steps in all. What is the probability that Amelia’s position when she stops will be greater than $1?$
+
+(A) $\dfrac13$  (B) $\dfrac12$  (C) $\dfrac23$  (D) $\dfrac34$  (E) $\dfrac56$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-23": { s: String.raw`Let $x_0,$ $x_1,$ $x_2,$ $\ldots$ be a sequence of numbers, where each $x_k$ is either $0$ or $1.$ For each positive integer $n,$ define$$S_n = \sum_{k=0}^{n-1} x_k 2^k.$$Suppose $7 S_n \equiv 1 \pmod{2^n}$ for all $n \ge 1.$ What is the value of the sum$$x_{2019} + 2x_{2020} + 4x_{2021} + 8x_{2022}?$$(A) $6$  (B) $7$  (C) $12$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-24": { s: String.raw`The figure below depicts a regular $7$-gon inscribed in a unit circle.
+
+@@fig:amc12/2022B/24.svg@@
+
+What is the sum of the $4$th powers of the lengths of all $21$ of its edges and diagonals?
+
+(A) $49$  (B) $98$  (C) $147$  (D) $168$  (E) $196$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-25": { s: String.raw`Four regular hexagons surround a square with a side length $1,$ each one sharing an edge with the square, as shown in the figure below. The area of the resulting $12$-sided outer nonconvex polygon can be written as $m\sqrt n + p,$ where $m,$ $n,$ and $p$ are integers and $n$ is not divisible by the square of any prime. What is $m + n + p?$
+
+@@fig:amc12/2022B/25.svg@@
+
+(A) $-12$  (B) $-4$  (C) $4$  (D) $24$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-3": { s: String.raw`How many of the first ten numbers of the sequence $121,$ $11211,$ $1112111,$ $\ldots$ are prime numbers?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-4": { s: String.raw`For how many values of the constant $k$ will the polynomial $x^2 + kx + 36$ have two distinct integer roots?
+
+(A) $6$  (B) $8$  (C) $9$  (D) $14$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-5": { s: String.raw`The point $(-1, -2)$ is rotated $270^\circ$ counterclockwise about the point $(3, 1).$ What are the coordinates of its new position?
+
+(A) $(-3, -4)$  (B) $(0, 5)$  (C) $(2, -1)$  (D) $(4, 3)$  (E) $(6, -3)$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-6": { s: String.raw`Consider the following $100$ sets of $10$ elements each:$$\{1,2,3,\ldots,10\},$$$$\{11,12,13,\ldots,20\},$$$$\{21,22,23,\ldots,30\},$$$$\vdots$$$$\{991,992,993,\ldots,1000\}.$$How many of these sets contain exactly two multiples of $7?$
+
+(A) $40$  (B) $42$  (C) $43$  (D) $49$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-7": { s: String.raw`Camila writes down five positive integers. The unique mode of these integers is $2$ greater than their median, and the median is $2$ greater than their arithmetic mean. What is the least possible value for the mode?
+
+(A) $5$  (B) $7$  (C) $9$  (D) $11$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-8": { s: String.raw`What is the graph of $y^4 + 1 = x^4 + 2y^2$ in the coordinate plane?
+
+(A) two intersecting parabolas  (B) two nonintersecting parabolas  (C) two intersecting circles  (D) a circle and a hyperbola  (E) a circle and two parabolas`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-12b-9": { s: String.raw`The sequence $a_0,$ $a_1,$ $a_2,$ $\cdots$ is a strictly increasing arithmetic sequence of positive integers such that$$2^{a_7} = 2^{27} \cdot a_7.$$What is the minimum possible value of $a_2?$
+
+(A) $8$  (B) $12$  (C) $16$  (D) $17$  (E) $22$`, u: "https://live.poshenloh.com/past-contests/amc12/2022B" },
+"2022-amc-8-1": { s: String.raw`The Math Team designed a logo shaped like a multiplication symbol, shown below on a grid of $1$-inch squares. What is the area of the logo in square inches?
+
+@@fig:amc8/2022/1.svg@@
+
+(A) $10$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-10": { s: String.raw`One sunny day, Ling decided to take a hike in the mountains. She left her house at $8$ a.m., drove at a constant speed of $45$ miles per hour, and arrived at the hiking trail at $10$ a.m. After hiking for $3$ hours, Ling drove home at a constant speed of $60$ miles per hour. Which of the following graphs best illustrates the distance between Ling’s car and her house over the course of her trip?
+
+(A) @@ci:amc8/2022/10a.svg|12rem@@  (B) @@ci:amc8/2022/10b.svg|12rem@@  (C) @@ci:amc8/2022/10c.svg|12rem@@  (D) @@ci:amc8/2022/10d.svg|12rem@@  (E) @@ci:amc8/2022/10e.svg|12rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-11": { s: String.raw`Henry the donkey has a very long piece of pasta. He takes a number of bites of pasta, each time eating $3$ inches of pasta from the middle of one piece. In the end, he has $10$ pieces of pasta whose total length is $17$ inches. How long, in inches, was the piece of pasta he started with?
+
+(A) $34$  (B) $38$  (C) $41$  (D) $44$  (E) $47$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-12": { s: String.raw`The arrows on the two spinners shown below are spun. Let the number $N$ equal $10$ times the number on Spinner A, added to the number on Spinner B. What is the probability that $N$ is a perfect square number?
+
+@@fig:amc8/2022/12.svg@@
+
+(A) $\displaystyle \dfrac{1}{16}$  (B) $\displaystyle \dfrac{1}{8}$  (C) $\displaystyle \dfrac{1}{4}$  (D) $\displaystyle \dfrac{3}{8}$  (E) $\displaystyle \dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-13": { s: String.raw`How many positive integers can fill the blank in the sentence below?
+
+“One positive integer is ___ more than twice another, and the sum of the two numbers is $28$”
+
+(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-14": { s: String.raw`In how many ways can the letters in BEEKEEPER be rearranged so that two or more E’s do not appear together?
+
+(A) $1$  (B) $4$  (C) $12$  (D) $24$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-15": { s: String.raw`Laszlo went online to shop for black pepper and found thirty different black pepper options varying in weight and price, shown in the scatter plot below. In ounces, what is the weight of the pepper that offers the lowest price per ounce?
+
+@@fig:amc8/2022/15.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-16": { s: String.raw`Four numbers are written in a row. The average of the first two is $21,$ the average of the middle two is $26,$ and the average of the last two is $30.$ What is the average of the first and last of the numbers?
+
+(A) $24$  (B) $25$  (C) $26$  (D) $27$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-17": { s: String.raw`If $n$ is an even positive integer, the double factorial notation $n!!$ represents the product of all the even integers from $2$ to $n.$ For example:$$ 8!! = 2 \times 4 \times 6 \times 8 $$What is the units digit of the following sum?$$2!! + 4!! + 6!! + \cdots + 2018!! + 2020!! + 2022!!$$(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-18": { s: String.raw`The midpoints of the four sides of a rectangle are $(-3, 0),$ $(2, 0),$ $(5, 4),$ and $(0, 4).$ What is the area of the rectangle?
+
+(A) $20$  (B) $25$  (C) $40$  (D) $50$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-19": { s: String.raw`Mr. Ramos gave a test to his class of $20$ students. The dot plot below shows the distribution of test scores.
+
+@@fig:amc8/2022/19.svg@@
+
+Later Mr. Ramos discovered that there was a scoring error on one of the questions. He regraded the tests, awarding some of the students $5$ extra points, which increased the median test score to $85.$ What is the minimum number of students who received extra points?
+
+(Note that the median test score equals the average of the $2$ scores in the middle if the $20$ test scores are arranged in increasing order.)
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-2": { s: String.raw`Consider these two operations:$$\begin{align*} a\,\blacklozenge\,b &= a^2 - b^2 \\ a \star b &= (a - b)^2 \end{align*}$$Compute the value:$$ (5\,\blacklozenge\,3) \star 6 $$(A) $-20$  (B) $4$  (C) $16$  (D) $100$  (E) $220$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-20": { s: String.raw`The grid below is to be filled with integers in such a way that the sum of the numbers in each row and the sum of the numbers in each column are the same. Four numbers are missing. The number $x$ in the lower left corner is larger than the other three missing numbers. What is the smallest possible value of $x?$
+
+@@fig:amc8/2022/20.svg@@
+
+(A) $-1$  (B) $5$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-21": { s: String.raw`Steph scored $15$ baskets out of $20$ attempts in the first half of a game, and $10$ baskets out of $10$ attempts in the second half. Candace took $12$ attempts in the first half and $18$ attempts in the second. In each half, Steph scored a higher percentage of baskets than Candace. Surprisingly they ended with the same overall percentage of baskets scored. How many more baskets did Candace score in the second half than in the first?
+
+@@fig:amc8/2022/21.svg@@
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-22": { s: String.raw`A bus takes $2$ minutes to drive from one stop to the next, and waits $1$ minute at each stop to let passengers board. Zia takes $5$ minutes to walk from one bus stop to the next. As Zia reaches a bus stop, if the bus is at the previous stop or has already left the previous stop, then she will wait for the bus. Otherwise she will start walking toward the next stop. Suppose the bus and Zia start at the same time toward the library, with the bus $3$ stops behind. After how many minutes will Zia board the bus?
+
+@@fig:amc8/2022/22.svg@@
+
+(A) $17$  (B) $19$  (C) $20$  (D) $21$  (E) $23$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-23": { s: String.raw`A $\bigtriangleup$ or $\bigcirc$ is placed in each of the nine squares in a $3 \times 3$ grid. Shown below is a sample configuration with three $\bigtriangleup$’s in a line.
+
+@@fig:amc8/2022/23.svg@@
+
+How many configurations will have three $\bigtriangleup$’s in a line and three $\bigcirc$’s in a line?
+
+(A) $39$  (B) $42$  (C) $78$  (D) $84$  (E) $96$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-24": { s: String.raw`The figure below shows a polygon $ABCDEFGH,$ consisting of rectangles and right triangles. When cut out and folded on the dotted lines, the polygon forms a triangular prism. Suppose that:$$ AH = EF = 8 $$and$$ GH = 14. $$What is the volume of the prism?
+
+@@fig:amc8/2022/24.svg@@
+
+(A) $112$  (B) $128$  (C) $192$  (D) $240$  (E) $288$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-25": { s: String.raw`A cricket randomly hops between $4$ leaves, on each turn hopping to one of the other $3$ leaves with equal probability. After $4$ hops, what is the probability that the cricket has returned to the leaf where it started?
+
+(A) $\displaystyle \dfrac{2}{9}$  (B) $\displaystyle \dfrac{19}{80}$  (C) $\displaystyle \dfrac{20}{81}$  (D) $\displaystyle \dfrac{1}{4}$  (E) $\displaystyle \dfrac{7}{27}$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-3": { s: String.raw`When three positive integers $a,$ $b,$ and $c$ are multiplied together, their product is $100.$ Suppose $a < b < c.$ In how many ways can the numbers be chosen?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-4": { s: String.raw`The letter M in the figure below is first reflected over the line $q$ and then reflected over the line $p.$ What is the resulting image?
+
+@@fig:amc8/2022/4.svg@@
+
+(A) @@ci:amc8/2022/4a.svg|12rem@@  (B) @@ci:amc8/2022/4b.svg|12rem@@  (C) @@ci:amc8/2022/4c.svg|12rem@@  (D) @@ci:amc8/2022/4d.svg|12rem@@  (E) @@ci:amc8/2022/4e.svg|12rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-5": { s: String.raw`Anna and Bella are celebrating their birthdays together. Five years ago, when Bella turned $6$ years old, she received a newborn kitten as a birthday present. Today the sum of the ages of the two children and the kitten is $30$ years. How many years older than Bella is Anna?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-6": { s: String.raw`Three positive integers are equally spaced on a number line. The middle number is $15$ and the largest number is $4$ times the smallest number. What is the smallest of these three numbers?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-7": { s: String.raw`When the World Wide Web first became popular in the 1990s, download speeds reached a maximum of about $56$ kilobits per second. Approximately how many minutes would the download of a $4.2$-megabyte song have taken at that speed? (Note that there are $8000$ kilobits in a megabyte.)
+
+(A) $0.6$  (B) $10$  (C) $1800$  (D) $7200$  (E) $36000$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-8": { s: String.raw`What is the value of:$$ \dfrac{1}{3} \cdot \dfrac{2}{4} \cdot \dfrac{3}{5} \cdots \dfrac{18}{20} \cdot \dfrac{19}{21} \cdot \dfrac{20}{22} $$(A) $\displaystyle \dfrac{1}{462}$  (B) $\displaystyle \dfrac{1}{231}$  (C) $\displaystyle \dfrac{1}{132}$  (D) $\displaystyle \dfrac{2}{213}$  (E) $\displaystyle \dfrac{1}{22}$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
+"2022-amc-8-9": { s: String.raw`A cup of boiling water ($212^\circ$ F) is placed to cool in a room whose temperature remains constant at $68^\circ$ F. Suppose the difference between the water temperature and the room temperature is halved every $5$ minutes. What is the water temperature, in degrees Fahrenheit, after $15$ minutes?
+
+(A) $77$  (B) $86$  (C) $92$  (D) $98$  (E) $104$`, u: "https://live.poshenloh.com/past-contests/amc8/2022" },
 });

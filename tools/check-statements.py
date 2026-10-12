@@ -23,7 +23,8 @@ for f in sorted(glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")
         if slug not in slugs: bad.append("%s: not a problem in the database" % slug)
         if s.replace("$$", "").count("$") % 2: bad.append("%s: unbalanced $" % slug)
         if re.search(r"<[A-Za-z/]", re.sub(r"\$[^$]*\$", "", s)): bad.append("%s: raw tag outside maths" % slug)
-        if not u.startswith("https://live.poshenloh.com/"): bad.append("%s: source link missing" % slug)
+        # The two 2021 Fall AMC problems LIVE lacks are credited to the AoPS Wiki instead.
+        if not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10")): bad.append("%s: source link missing" % slug)
         # A size command (\\tiny, \\small ...) shrinks a formula to near-unreadable size on screen.
         if re.search(r"\\(?:tiny|scriptsize|footnotesize|small)\b", s): bad.append("%s: a size command shrinks the maths" % slug)
         # Long answer choices go one per line; a run of long ones left inline wraps into a paragraph.
@@ -38,8 +39,10 @@ for f in sorted(glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")
         for fig in re.findall(r"@@fig:([^@]+)@@", s):
             figs += 1
             p = os.path.join(ROOT, "js/data/problems/figures", fig)
-            if not os.path.exists(p) or not open(p, encoding="utf-8", errors="replace").read(200).lstrip().startswith(("<?xml", "<svg")):
-                bad.append("%s: figure %s missing or not an SVG" % (slug, fig)); nofig += 1
+            head = open(p, "rb").read(200) if os.path.exists(p) else b""
+            ok = head.lstrip().startswith((b"<?xml", b"<svg")) or head.startswith(b"\x89PNG\r\n\x1a\n")
+            if not os.path.exists(p) or not ok:
+                bad.append("%s: figure %s missing or not an SVG or PNG" % (slug, fig)); nofig += 1
 print("statements: %d | of %d problems | figures: %d" % (n, len(slugs), figs))
 for b in bad[:25]: print("  " + b)
 print("OK - every statement is a known problem with its credit and figures" if not bad else "FAILURES ABOVE")

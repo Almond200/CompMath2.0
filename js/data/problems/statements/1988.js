@@ -24,4 +24,103 @@ While leaving for lunch, the secretary tells a colleague that letter $8$ has alr
 "1988-aime-7": { s: String.raw`In triangle $ABC,$ $\tan\angle CAB=\frac{22}{7},$ and the altitude from $A$ divides $BC$ into segments of length $3$ and $17.$ What is the area of triangle $ABC?$`, u: "https://live.poshenloh.com/past-contests/aime/1988" },
 "1988-aime-8": { s: String.raw`The function $f,$ defined on the set of ordered pairs of positive integers, satisfies the following properties:$$\begin{gathered}f(x,x)=x, \\ f(x,y)=f(y,x), \\ (x+y)f(x,y)=yf(x,x+y).\end{gathered}$$Calculate $f(14,52).$`, u: "https://live.poshenloh.com/past-contests/aime/1988" },
 "1988-aime-9": { s: String.raw`Find the smallest positive integer whose cube ends in $888.$`, u: "https://live.poshenloh.com/past-contests/aime/1988" },
+"1988-ajhsme-1": { s: String.raw`The diagram shows part of a scale of a measuring device. The arrow indicates an approximate reading of
+
+@@fig:amc8/1988/1.svg@@
+
+(A) $10.05$  (B) $10.15$  (C) $10.25$  (D) $10.3$  (E) $10.6$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-10": { s: String.raw`Chris’ birthday is on a Thursday this year. What day of the week will it be $60$ days after her birthday?
+
+(A) Monday  (B) Wednesday  (C) Thursday  (D) Friday  (E) Saturday`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-11": { s: String.raw`The value of $\sqrt{164}$ is
+
+(A) $42$  (B) less than $10$  (C) between $10$ and $11$  (D) between $11$ and $12$  (E) between $12$ and $13$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-12": { s: String.raw`Suppose the estimated $20$ billion dollar cost to send a person to the planet Mars is shared equally by the $250$ million people in the U.S. Then each person’s share is
+
+(A) $\$40$  (B) $\$50$  (C) $\$80$  (D) $\$100$  (E) $\$125$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-13": { s: String.raw`If rose bushes are spaced about $1$ foot apart, approximately how many bushes are needed to surround a circular patio whose radius is $12$ feet?
+
+(A) $12$  (B) $38$  (C) $48$  (D) $75$  (E) $450$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-14": { s: String.raw`If $\diamond$ and $\triangle$ are whole numbers and $\diamond \times \triangle = 36,$ the largest possible value of $\diamond + \triangle$ is
+
+(A) $12$  (B) $13$  (C) $15$  (D) $20$  (E) $37$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-15": { s: String.raw`What is the reciprocal of $\left(\dfrac{1}{2} + \dfrac{1}{3}\right)?$
+
+(A) $\dfrac{1}{6}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{6}{5}$  (D) $\dfrac{5}{2}$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-16": { s: String.raw`Placing no more than one X in each small square, what is the greatest number of X’s that can be put on a $3 \times 3$ grid without getting three X’s in a row vertically, horizontally, or diagonally?
+
+@@fig:amc8/1988/16.svg@@
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-17": { s: String.raw`The shaded area is formed by two intersecting perpendicular rectangles, with dimensions as shown. Its area, in square units, is
+
+@@fig:amc8/1988/17.svg@@
+
+(A) $23$
+(B) $38$
+(C) $44$
+(D) $46$
+(E) unable to be determined from the information given`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-18": { s: String.raw`The average weight of $6$ boys is $150$ pounds and the average weight of $4$ girls is $120$ pounds. The average weight of the $10$ children is
+
+(A) $135$ pounds  (B) $137$ pounds  (C) $138$ pounds  (D) $140$ pounds  (E) $141$ pounds`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-19": { s: String.raw`What is the $100$th number in the arithmetic sequence $1,$ $5,$ $9,$ $13,$ $17,$ $21,$ $25,$ $\ldots?$
+
+(A) $397$  (B) $399$  (C) $401$  (D) $403$  (E) $405$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-2": { s: String.raw`What is the product $8 \times 0.25 \times 2 \times 0.125?$
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{1}{2}$  (D) $1$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-20": { s: String.raw`The glass gauge on a cylindrical coffee maker shows there are $45$ cups left when the coffee maker is $36\%$ full. How many cups of coffee does it hold when it is full?
+
+@@fig:amc8/1988/20.svg@@
+
+(A) $80$  (B) $100$  (C) $125$  (D) $130$  (E) $262$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-21": { s: String.raw`A fifth number, $n,$ is added to the set of numbers $\{3, 6, 9, 10\}$ to make the mean of the set of five numbers equal to its median. The number of possible values for $n$ is
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) more than $4$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-22": { s: String.raw`Tom’s Hat Shoppe increased all original prices by $25\%.$ Now the shoppe is having a sale where all prices are $20\%$ off these increased prices. Which statement best describes the sale price of an item?
+
+(A) The sale price is $5\%$ higher than the original price.
+(B) The sale price is higher than the original price, but by less than $5\%.$
+(C) The sale price is higher than the original price, but by more than $5\%.$
+(D) The sale price is lower than the original price.
+(E) The sale price is the same as the original price.`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-23": { s: String.raw`Maria buys computer disks at a price of $4$ for $\$5$ and sells them at a price of $3$ for $\$5.$ How many computer disks must she sell in order to make a profit of $\$100?$
+
+(A) $100$  (B) $120$  (C) $200$  (D) $240$  (E) $1200$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-24": { s: String.raw`The square in the first diagram “rolls” clockwise around the fixed regular hexagon until it reaches the bottom. In which position will the solid triangle be in diagram $4?$
+
+@@fig:amc8/1988/24.svg@@
+
+(A) @@ci:amc8/1988/24a.svg|3rem@@  (B) @@ci:amc8/1988/24b.svg|3rem@@  (C) @@ci:amc8/1988/24c.svg|3rem@@  (D) @@ci:amc8/1988/24d.svg|3rem@@  (E) @@ci:amc8/1988/24e.svg|3rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-25": { s: String.raw`A palindrome is a whole number that reads the same forwards as backwards. If one neglects the colon, certain times displayed on a digital watch are palindromes. Three examples are $1{:}01,$ $4{:}44,$ and $12{:}21.$ How many times during a $12$-hour period will be palindromes?
+
+(A) $57$  (B) $60$  (C) $63$  (D) $90$  (E) $93$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-3": { s: String.raw`The value of$$\dfrac{1}{10} + \dfrac{2}{20} + \dfrac{3}{30}$$is
+
+(A) $0.1$  (B) $0.123$  (C) $0.2$  (D) $0.3$  (E) $0.6$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-4": { s: String.raw`The figure consists of alternating light and dark squares. The number of dark squares exceeds the number of light squares by
+
+@@fig:amc8/1988/4.svg@@
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-5": { s: String.raw`If $\angle CBD$ is a right angle, then this protractor indicates that the measure of $\angle ABC$ is approximately
+
+@@fig:amc8/1988/5.svg@@
+
+(A) $20^\circ$  (B) $40^\circ$  (C) $50^\circ$  (D) $70^\circ$  (E) $120^\circ$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-6": { s: String.raw`The value of$$\dfrac{(0.2)^3}{(0.02)^2}$$is
+
+(A) $0.2$  (B) $2$  (C) $10$  (D) $15$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-7": { s: String.raw`The expression $2.46 \times 8.163 \times (5.17 + 4.829)$ is closest to
+
+(A) $100$  (B) $200$  (C) $300$  (D) $400$  (E) $500$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-8": { s: String.raw`Betty used a calculator to find the product $0.075 \times 2.56.$ She forgot to enter the decimal points. The calculator showed $19200.$ If Betty had entered the decimal points correctly, the answer would have been
+
+(A) $0.0192$  (B) $0.192$  (C) $1.92$  (D) $19.2$  (E) $192$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
+"1988-ajhsme-9": { s: String.raw`An isosceles triangle is a triangle with two sides of equal length. How many of the five triangles on the square grid below are isosceles?
+
+@@fig:amc8/1988/9.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/1988" },
 });

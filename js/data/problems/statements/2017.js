@@ -37,6 +37,130 @@ Object.assign(window.MATH_STATEMENTS, {
 "2017-aime-ii-7": { s: String.raw`Find the number of integer values of $k$ in the closed interval $[-500, 500]$ for which the equation $\log(kx) = 2\log(x + 2)$ has exactly one real solution.`, u: "https://live.poshenloh.com/past-contests/aime/2017II" },
 "2017-aime-ii-8": { s: String.raw`Find the number of positive integers $n$ less than $2017$ such that$$1 + n + \frac{n^2}{2!} + \frac{n^3}{3!} + \frac{n^4}{4!} + \frac{n^5}{5!} + \frac{n^6}{6!}$$is an integer.`, u: "https://live.poshenloh.com/past-contests/aime/2017II" },
 "2017-aime-ii-9": { s: String.raw`A special deck of cards contains $49$ cards, each labeled with a number from $1$ to $7$ and colored with one of seven colors. Each number-color combination appears on exactly one card. Sharon will select a set of eight cards from the deck at random. Given that she gets at least one card of each color and at least one card with each number, the probability that Sharon can discard one of her cards and still have at least one card of each color and at least one card with each number is $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. Find $p + q.$`, u: "https://live.poshenloh.com/past-contests/aime/2017II" },
+"2017-amc-10a-1": { s: String.raw`What is the value of the following expression?$$2(2(2(2(2(2+1)+1) +1)+1)+1)+1$$(A) $70$  (B) $97$  (C) $127$  (D) $159$  (E) $729$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-10": { s: String.raw`Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-11": { s: String.raw`The region consisting of all points in three-dimensional space within $3$ units of line segment $\overline{AB}$ has volume $216\pi.$ What is the length $AB?$
+
+(A) $6$  (B) $12$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-12": { s: String.raw`Let $S$ be the set of points $(x,y)$ in the coordinate plane such that two of the three quantities $3,$ $x+2,$ and $y-4$ are equal and the third of the three quantities is no greater than this common value. Which of the following is a correct description of $S?$
+
+(A) a single point
+(B) two intersecting lines
+(C) three lines whose pairwise intersections are three distinct points
+(D) a triangle
+(E) three rays with a common endpoint`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-13": { s: String.raw`Define a sequence recursively by $F_{0}=0,$ $~F_{1}=1,$ and $F_{n}=$ the remainder when $F_{n-1}+F_{n-2}$ is divided by $3,$ for all $n\geq 2.$ Thus the sequence starts $0,$ $1,$ $1,$ $2,$ $0,$ $2,$ $\ldots.$ What is$$F_{2017}+F_{2018}+F_{2019}+F_{2020}+$$$$F_{2021}+F_{2022}+F_{2023}+F_{2024}?$$(A) $6$  (B) $7$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-14": { s: String.raw`Every week Roger pays for a movie ticket and a soda out of his allowance. Last week, Roger’s allowance was $A$ dollars. The cost of his movie ticket was $20\%$ of the difference between $A$ and the cost of his soda, while the cost of his soda was $5\%$ of the difference between $A$ and the cost of his movie ticket. To the nearest whole percent, what fraction of $A$ did Roger pay for his movie ticket and soda?
+
+(A) $9\%$  (B) $19\%$  (C) $22\%$  (D) $23\%$  (E) $25\%$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-15": { s: String.raw`Chloé chooses a real number uniformly at random from the interval $[0, 2017].$
+
+Independently, Laurent chooses a real number uniformly at random from the interval $[0, 4034].$
+
+What is the probability that Laurent’s number is greater than Chloé’s number?
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{5}{6}$  (E) $\dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-16": { s: String.raw`There are $10$ horses, named Horse $1,$ Horse $2,$ and so on through Horse $10.$ They get their names from how many minutes it takes them to run one lap around a circular race track: Horse $k$ runs one lap in exactly $k$ minutes. At time $0$ all the horses are together at the starting point on the track. The horses start running in the same direction, and they keep running around the circular track at their constant speeds.
+
+The least time $S > 0,$ in minutes, at which all $10$ horses will again simultaneously be at the starting point is $S=2520.$ Let $T > 0$ be the least time, in minutes, such that at least $5$ of the horses are again at the starting point. What is the sum of the digits of $T?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-17": { s: String.raw`Distinct points $P,$ $Q,$ $R,$ $S$ lie on the circle $x^{2}+y^{2}=25$ and have integer coordinates. The distances $PQ$ and $RS$ are irrational numbers.
+
+What is the greatest possible value of the ratio $\dfrac{PQ}{RS}?$
+
+(A) $3$  (B) $5$  (C) $3\sqrt{5}$  (D) $7$  (E) $5\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-18": { s: String.raw`Amelia has a coin that lands heads with probability $\frac{1}{3},$ and Blaine has a coin that lands on heads with probability $\frac{2}{5}.$ Amelia and Blaine alternately toss their coins until someone gets a head; the first one to get a head wins. All coin tosses are independent. Amelia goes first. The probability that Amelia wins is $\frac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. What is $q-p?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-19": { s: String.raw`Alice refuses to sit next to either Bob or Carla. Derek refuses to sit next to Eric. How many ways are there for the five of them to sit in a row of $5$ chairs under these conditions?
+
+(A) $12$  (B) $16$  (C) $28$  (D) $32$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-2": { s: String.raw`Pablo buys popsicles for his friends. The store sells single popsicles for $\$1$ each, $3$-popsicle boxes for $\$2$ each, and $5$-popsicle boxes for $\$3.$ What is the greatest number of popsicles that Pablo can buy with $\$8?$
+
+(A) $8$  (B) $11$  (C) $12$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-20": { s: String.raw`Let $S(n)$ equal the sum of the digits of positive integer $n.$ For example, $S(1507) = 13.$ For a particular positive integer $n,$ $S(n) = 1274.$
+
+Which of the following could be the value of $S(n+1)?$
+
+(A) $1$  (B) $3$  (C) $12$  (D) $1239$  (E) $1265$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-21": { s: String.raw`A square with side length $x$ is inscribed in a right triangle with sides of length $3,$ $4,$ and $5$ so that one vertex of the square coincides with the right-angle vertex of the triangle. A square with side length $y$ is inscribed in another right triangle with sides of length $3,$ $4,$ and $5$ so that one side of the square lies on the hypotenuse of the triangle. What is $\dfrac{x}{y}?$
+
+(A) $\dfrac{12}{13}$  (B) $\dfrac{35}{37}$  (C) $1$  (D) $\dfrac{37}{35}$  (E) $\dfrac{13}{12}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-22": { s: String.raw`Sides $\overline{AB}$ and $\overline{AC}$ of equilateral triangle $ABC$ are tangent to a circle at points $B$ and $C$ respectively. What fraction of the area of $\triangle ABC$ lies outside the circle?
+
+(A) $\dfrac{4\sqrt{3}\pi}{27}-\dfrac{1}{3}$
+(B) $\dfrac{\sqrt{3}}{2}-\dfrac{\pi}{8}$
+(C) $\dfrac{1}{2}$
+(D) $\sqrt{3}-\dfrac{2\sqrt{3}\pi}{9}$
+(E) $\dfrac{4}{3}-\dfrac{4\sqrt{3}\pi}{27}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-23": { s: String.raw`How many triangles with positive area have all their vertices at points $(i,j)$ in the coordinate plane, where $i$ and $j$ are integers between $1$ and $5,$ inclusive?
+
+(A) $2128$  (B) $2148$  (C) $2160$  (D) $2200$  (E) $2300$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-24": { s: String.raw`For certain real numbers $a,$ $b,$ and $c,$ the polynomial$$g(x) = x^3 + ax^2 + x + 10$$has three distinct roots, and each root of $g(x)$ is also a root of the polynomial$$f(x) = x^4 + x^3 + bx^2 + 100x + c.$$What is $f(1)?$
+
+(A) $-9009$  (B) $-8008$  (C) $-7007$  (D) $-6006$  (E) $-5005$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-25": { s: String.raw`How many integers between $100$ and $999,$ inclusive, have the property that some permutation of its digits is a multiple of $11$ between $100$ and $999?$ For example, both $121$ and $211$ have this property.
+
+(A) $226$  (B) $243$  (C) $270$  (D) $469$  (E) $486$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-3": { s: String.raw`Tamara has three rows of two $6$-feet by $2$-feet flower beds in her garden. The beds are separated and also surrounded by $1$-foot-wide walkways, as shown on the diagram. What is the total area of the walkways, in square feet?
+
+@@fig:amc10/2017A/3.svg@@
+
+(A) $72$  (B) $78$  (C) $90$  (D) $120$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-4": { s: String.raw`Mia is “helping” her mom pick up $30$ toys that are strewn on the floor. Mia’s mom manages to put $3$ toys into the toy box every $30$ seconds, but each time immediately after those $30$ seconds have elapsed, Mia takes $2$ toys out of the box. How much time, in minutes, will it take Mia and her mom to put all $30$ toys into the box for the first time?
+
+(A) $13.5$  (B) $14$  (C) $14.5$  (D) $15$  (E) $15.5$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-5": { s: String.raw`The sum of two nonzero real numbers is $4$ times their product. What is the sum of the reciprocals of the two numbers?
+
+(A) $1$  (B) $2$  (C) $4$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-6": { s: String.raw`Ms. Carroll promised that anyone who got all the multiple choice questions right on the upcoming exam would receive an A on the exam. Which one of these statements necessarily follows logically?
+
+(A) If Lewis did not receive an A, then he got all of the multiple choice questions wrong.
+(B) If Lewis did not receive an A, then he got at least one of the multiple choice questions wrong.
+(C) If Lewis got at least one of the multiple choice questions wrong, then he did not receive an A.
+(D) If Lewis received an A, then he got all of the multiple choice questions right.
+(E) If Lewis received an A, then he got at least one of the multiple choice questions right.`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-7": { s: String.raw`Jerry and Silvia wanted to go from the southwest corner of a square field to the northeast corner. Jerry walked due east and then due north to reach the goal, but Silvia headed northeast and reached the goal walking in a straight line. Which of the following is closest to how much shorter Silvia’s trip was, compared to Jerry’s trip?
+
+(A) $30\%$  (B) $40\%$  (C) $50\%$  (D) $60\%$  (E) $70\%$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-8": { s: String.raw`At a gathering of $30$ people, there are $20$ people who all know each other and $10$ people who know no one. People who know each other hug, and people who do not know each other shake hands. How many handshakes occur?
+
+(A) $240$  (B) $245$  (C) $290$  (D) $480$  (E) $490$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10a-9": { s: String.raw`Minnie rides on a flat road at $20$ kilometers per hour (kph), downhill at $30$ kph, and uphill at $5$ kph. Penny rides on a flat road at $30$ kph, downhill at $40$ kph, and uphill at $10$ kph. Minnie goes from town $A$ to town $B,$ a distance of $10$ km all uphill, then from town $B$ to town $C,$ a distance of $15$ km all downhill, and then back to town $A,$ a distance of $20$ km on the flat. Penny goes the other way around using the same route. How many more minutes does it take Minnie to complete the $45$-km ride than it takes Penny?
+
+(A) $45$  (B) $60$  (C) $65$  (D) $90$  (E) $95$`, u: "https://live.poshenloh.com/past-contests/amc10/2017A" },
+"2017-amc-10b-1": { s: String.raw`Mary thought of a positive two-digit number. She multiplied it by $3$ and added $11.$ Then she switched the digits of the result, obtaining a number between $71$ and $75,$ inclusive. What was Mary’s number?
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-10": { s: String.raw`The lines with equations $ax-2y=c$ and $2x+by=-c$ are perpendicular and intersect at $(1, -5).$ What is $c?$
+
+(A) $-13$  (B) $-8$  (C) $2$  (D) $8$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-11": { s: String.raw`At Typico High School, $60\%$ of the students like dancing, and the rest dislike it. Of those who like dancing, $80\%$ say that they like it, and the rest say that they dislike it. Of those who dislike dancing, $90\%$ say that they dislike it, and the rest say that they like it. What fraction of students who say they dislike dancing actually like it?
+
+(A) $10\%$  (B) $12\%$  (C) $20\%$  (D) $25\%$  (E) $33\frac{1}{3}\%$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-12": { s: String.raw`Elmer’s new car gets $50\%$ better fuel efficiency, measured in kilometers per liter, than his old car. However, his new car uses diesel fuel, which is $20\%$ more expensive per liter than the gasoline his old car uses. By what percent will Elmer save money if he uses his new car instead of his old car for a long trip?
+
+(A) $20\%$  (B) $26\tfrac23\%$  (C) $27\tfrac79\%$  (D) $33\tfrac13\%$  (E) $41\tfrac23\%$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-13": { s: String.raw`There are $20$ students participating in an after-school program offering classes in yoga, bridge, and painting. Each student must take at least one of these three classes, but may take two or all three.
+
+There are $10$ students taking yoga, $13$ taking bridge, and $9$ taking painting. There are $9$ students taking at least two classes. How many students are taking all three classes?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-14": { s: String.raw`An integer $N$ is selected at random in the range $1\leq N \leq 2020$ . What is the probability that the remainder when $N^{16}$ is divided by $5$ is $1?$
+
+(A) $\dfrac{1}{5}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{3}{5}$  (D) $\dfrac{4}{5}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-15": { s: String.raw`Rectangle $ABCD$ has $AB=3$ and $BC=4.$ Point $E$ is the foot of the perpendicular from $B$ to diagonal $\overline{AC}.$ What is the area of $\triangle ADE?$
+
+(A) $1$  (B) $\dfrac{42}{25}$  (C) $\dfrac{28}{15}$  (D) $2$  (E) $\dfrac{54}{25}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-16": { s: String.raw`How many of the base-ten numerals for the positive integers less than or equal to $2017$ contain the digit $0?$
+
+(A) $469$  (B) $471$  (C) $475$  (D) $478$  (E) $481$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-17": { s: String.raw`Call a positive integer monotonous if it is a one-digit number or its digits, when read from left to right, form either a strictly increasing or a strictly decreasing sequence. For example, $3,$ $23578,$ and $987620$ are monotonous, but $88,$ $7434,$ and $23557$ are not. How many monotonous positive integers are there?
+
+(A) $1024$  (B) $1524$  (C) $1533$  (D) $1536$  (E) $2048$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
 "2017-amc-10b-18": { s: String.raw`In the figure below, $3$ of the $6$ disks are to be painted blue, $2$ are to be painted red, and $1$ is to be painted green. Two paintings that can be obtained from one another by a rotation or a reflection of the entire figure are considered the same. How many different paintings are possible?
 
 @@fig:amc10/2017B/18.svg@@
@@ -47,6 +171,103 @@ Object.assign(window.MATH_STATEMENTS, {
 What is the ratio of the area of $\triangle A'B'C'$ to the area of $\triangle ABC?$
 
 (A) $9:1$  (B) $16:1$  (C) $25:1$  (D) $36:1$  (E) $37:1$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-2": { s: String.raw`Sofia ran $5$ laps around the $400$-meter track at her school. For each lap, she ran the first $100$ meters at an average speed of $4$ meters per second and the remaining $300$ meters at an average speed of $5$ meters per second. How much time did Sofia take running the $5$ laps?
+
+(A) $5$ minutes and $35$ seconds  (B) $6$ minutes and $40$ seconds  (C) $7$ minutes and $5$ seconds  (D) $7$ minutes and $25$ seconds  (E) $8$ minutes and $10$ seconds`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-20": { s: String.raw`The number $21!$ $=51{,}090{,}942{,}171{,}709{,}440{,}000$ has over $60{,}000$ positive integer divisors. One of them is chosen at random. What is the probability that it is odd?
+
+(A) $\dfrac{1}{21}$  (B) $\dfrac{1}{19}$  (C) $\dfrac{1}{18}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{11}{21}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-21": { s: String.raw`In $\triangle ABC,$ $AB=6,$ $AC=8,$ $BC=10,$ and $D$ is the midpoint of $\overline{BC}.$ What is the sum of the radii of the circles inscribed in $\triangle ADB$ and $\triangle ADC?$
+
+(A) $\sqrt{5}$  (B) $\dfrac{11}{4}$  (C) $2\sqrt{2}$  (D) $\dfrac{17}{6}$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-22": { s: String.raw`The diameter $\overline{AB}$ of a circle of radius $2$ is extended to a point $D$ outside the circle so that $BD=3.$ Point $E$ is chosen so that $ED=5$ and line $ED$ is perpendicular to line $AD.$ Segment $\overline{AE}$ intersects the circle at a point $C$ between $A$ and $E.$ What is the area of $\triangle ABC?$
+
+(A) $\dfrac{120}{37}$  (B) $\dfrac{140}{39}$  (C) $\dfrac{145}{39}$  (D) $\dfrac{140}{37}$  (E) $\dfrac{120}{31}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-23": { s: String.raw`Let$$N=123456789101112\dots4344$$be the $79$-digit number that is formed by writing the integers from $1$ to $44$ in order, one after the other. What is the remainder when $N$ is divided by $45?$
+
+(A) $1$  (B) $4$  (C) $9$  (D) $18$  (E) $44$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-24": { s: String.raw`The vertices of an equilateral triangle lie on the hyperbola $xy=1,$ and a vertex of this hyperbola is the centroid of the triangle. What is the square of the area of the triangle?
+
+(A) $48$  (B) $60$  (C) $108$  (D) $120$  (E) $169$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-25": { s: String.raw`Last year Isabella took $7$ math tests and received $7$ different scores, each an integer between $91$ and $100,$ inclusive. After each test she noticed that the average of her test scores was an integer. Her score on the seventh test was $95.$ What was her score on the sixth test?
+
+(A) $92$  (B) $94$  (C) $96$  (D) $98$  (E) $100$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-3": { s: String.raw`Real numbers $x,$ $y,$ and $z$ satisfy the inequalities $0 < x < 1,$ $-1 < y < 0,$ and $1 < z < 2.$
+
+Which of the following numbers is necessarily positive?
+
+(A) $y+x^2$  (B) $y+xz$  (C) $y+y^2$  (D) $y+2y^2$  (E) $y+z$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-4": { s: String.raw`Suppose that $x$ and $y$ are nonzero real numbers such that$$\frac{3x+y}{x-3y}=-2.$$What is the value of$$\frac{x+3y}{3x-y}?$$(A) $-3$  (B) $-1$  (C) $1$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-5": { s: String.raw`Camilla had twice as many blueberry jelly beans as cherry jelly beans. After eating $10$ pieces of each kind, she now has three times as many blueberry jelly beans as cherry jelly beans. How many blueberry jelly beans did she originally have?
+
+(A) $10$  (B) $20$  (C) $30$  (D) $40$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-6": { s: String.raw`What is the largest number of solid $2$-in $\times$ $2$-in $\times$ $1$-in blocks that can fit in a $3$-in $\times$ $2$-in $\times$ $3$-in box?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-7": { s: String.raw`Samia set off on her bicycle to visit her friend, traveling at an average speed of $17$ kilometers per hour. When she had gone half the distance to her friend’s house, a tire went flat, and she walked the rest of the way at $5$ kilometers per hour.
+
+In all, it took her $44$ minutes to reach her friend’s house. In kilometers rounded to the nearest tenth, how far did Samia walk?
+
+(A) $2.0$  (B) $2.2$  (C) $2.8$  (D) $3.4$  (E) $4.4$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-8": { s: String.raw`Points $A(11, 9)$ and $B(2, -3)$ are vertices of $\triangle ABC$ with $AB=AC.$ The altitude from $A$ meets the opposite side at $D(-1, 3).$ What are the coordinates of point $C?$
+
+(A) $(-8, 9)$  (B) $(-4, 8)$  (C) $(-4, 9)$  (D) $(-2, 3)$  (E) $(-1, 0)$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-10b-9": { s: String.raw`A radio program has a quiz consisting of $3$ multiple-choice questions, each with $3$ choices. A contestant wins if he or she gets $2$ or more of the questions right. The contestant answers randomly to each question. What is the probability of winning?
+
+(A) $\dfrac{1}{27}$  (B) $\dfrac{1}{9}$  (C) $\dfrac{2}{9}$  (D) $\dfrac{7}{27}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2017B" },
+"2017-amc-12a-1": { s: String.raw`Pablo buys popsicles for his friends. The store sells single popsicles for $\$1$ each, $3$-popsicle boxes for $\$2,$ and $5$-popsicle boxes for $\$3.$ What is the greatest number of popsicles that Pablo can buy with $\$8?$
+
+(A) $8$  (B) $11$  (C) $12$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-10": { s: String.raw`Chloé chooses a real number uniformly at random from the interval $[0,2017].$ Independently, Laurent chooses a real number uniformly at random from the interval $[0,4034].$ What is the probability that Laurent’s number is greater than Chloé’s number?
+
+(A) $\dfrac{1}{2}$  (B) $\dfrac{2}{3}$  (C) $\dfrac{3}{4}$  (D) $\dfrac{5}{6}$  (E) $\dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-11": { s: String.raw`Claire adds the degree measures of the interior angles of a convex polygon and arrives at a sum of $2017.$ She then discovers that she forgot to include one angle. What is the degree measure of the forgotten angle?
+
+(A) $37$  (B) $63$  (C) $117$  (D) $143$  (E) $163$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-12": { s: String.raw`There are $10$ horses, named Horse $1,$ Horse $2,$ $\ldots,$ Horse $10.$ They get their names from how many minutes it takes them to run one lap around a circular race track: Horse $k$ runs one lap in exactly $k$ minutes. At time $0$ all the horses are together at the starting point on the track. The horses start running in the same direction, and they keep running around the circular track at their constant speeds. The least time $S\gt0,$ in minutes, at which all $10$ horses will again simultaneously be at the starting point is $S=2520.$ Let $T\gt0$ be the least time, in minutes, such that at least $5$ of the horses are again at the starting point. What is the sum of the digits of $T?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-13": { s: String.raw`Driving at a constant speed, Sharon usually takes $180$ minutes to drive from her house to her mother’s house. One day Sharon begins the drive at her usual speed, but after driving $\dfrac{1}{3}$ of the way, she hits a bad snowstorm and reduces her speed by $20$ miles per hour. This time the trip takes her a total of $276$ minutes. How many miles is the drive from Sharon’s house to her mother’s house?
+
+(A) $132$  (B) $135$  (C) $138$  (D) $141$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-14": { s: String.raw`Alice refuses to sit next to either Bob or Carla. Derek refuses to sit next to Eric. How many ways are there for the five of them to sit in a row of $5$ chairs under these conditions?
+
+(A) $12$  (B) $16$  (C) $28$  (D) $32$  (E) $40$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-15": { s: String.raw`Let $f(x)=\sin x+2\cos x+3\tan x,$ using radian measure for the variable $x.$ In what interval does the smallest positive value of $x$ for which $f(x)=0$ lie?
+
+(A) $(0,1)$  (B) $(1,2)$  (C) $(2,3)$  (D) $(3,4)$  (E) $(4,5)$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-16": { s: String.raw`In the figure below, semicircles with centers at $A$ and $B$ and with radii $2$ and $1,$ respectively, are drawn in the interior of, and sharing bases with, a semicircle with diameter $\overline{JK}.$ The two smaller semicircles are externally tangent to each other and internally tangent to the largest semicircle. A circle centered at $P$ is drawn externally tangent to the two smaller semicircles and internally tangent to the largest semicircle. What is the radius of the circle centered at $P?$
+
+@@fig:amc12/2017A/16.svg@@
+
+(A) $\dfrac{3}{4}$  (B) $\dfrac{6}{7}$  (C) $\dfrac{1}{2}\sqrt3$  (D) $\dfrac{5}{8}\sqrt2$  (E) $\dfrac{11}{12}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-17": { s: String.raw`There are $24$ different complex numbers $z$ such that $z^{24}=1.$ For how many of these is $z^6$ a real number?
+
+(A) $0$  (B) $4$  (C) $6$  (D) $12$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-18": { s: String.raw`Let $S(n)$ equal the sum of the digits of positive integer $n.$ For example, $S(1507)=13.$ For a particular positive integer $n,$ $S(n)=1274.$ Which of the following could be the value of $S(n+1)?$
+
+(A) $1$  (B) $3$  (C) $12$  (D) $1239$  (E) $1265$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-19": { s: String.raw`A square with side length $x$ is inscribed in a right triangle with sides of length $3,$ $4,$ and $5$ so that one vertex of the square coincides with the right-angle vertex of the triangle. A square with side length $y$ is inscribed in another right triangle with sides of length $3,$ $4,$ and $5$ so that one side of the square lies on the hypotenuse of the triangle. What is $\dfrac{x}{y}?$
+
+(A) $\dfrac{12}{13}$  (B) $\dfrac{35}{37}$  (C) $1$  (D) $\dfrac{37}{35}$  (E) $\dfrac{13}{12}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-2": { s: String.raw`The sum of two nonzero real numbers is $4$ times their product. What is the sum of the reciprocals of the two numbers?
+
+(A) $1$  (B) $2$  (C) $4$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-20": { s: String.raw`How many ordered pairs $(a,b)$ such that $a$ is a positive real number and $b$ is an integer between $2$ and $200,$ inclusive, satisfy the equation $(\log_b a)^{2017}=\log_b(a^{2017})?$
+
+(A) $198$  (B) $199$  (C) $398$  (D) $399$  (E) $597$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-21": { s: String.raw`A set $S$ is constructed as follows. To begin, $S=\{0,10\}.$ Repeatedly, as long as possible, if $x$ is an integer root of some polynomial $a_nx^n+a_{n-1}x^{n-1}$ $+\cdots+a_1x+a_0$ for some $n\ge1,$ all of whose coefficients $a_i$ are elements of $S,$ then $x$ is put into $S.$ When no more elements can be added to $S,$ how many elements does $S$ have?
+
+(A) $4$  (B) $5$  (C) $7$  (D) $9$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-22": { s: String.raw`A square is drawn in the Cartesian coordinate plane with vertices at $(2,2),$ $(-2,2),$ $(-2,-2),$ and $(2,-2).$ A particle starts at $(0,0).$ Every second it moves with equal probability to one of the eight lattice points (points with integer coordinates) closest to its current position, independently of its previous moves. In other words, the probability is $\dfrac{1}{8}$ that the particle will move from $(x,y)$ to each of $(x,y+1),$ $(x+1,y+1),$ $(x+1,y),$ $(x+1,y-1),$ $(x,y-1),$ $(x-1,y-1),$ $(x-1,y),$ or $(x-1,y+1).$ The particle will eventually hit the square for the first time, either at one of the $4$ corners of the square or at one of the $12$ lattice points in the interior of one of the sides of the square. The probability that it will hit at a corner rather than at an interior point of a side is $\dfrac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m+n?$
+
+(A) $4$  (B) $5$  (C) $7$  (D) $15$  (E) $39$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-23": { s: String.raw`For certain real numbers $a,$ $b,$ and $c,$ the polynomial$$g(x)=x^3+ax^2+x+10$$has three distinct roots, and each root of $g(x)$ is also a root of the polynomial$$f(x)=x^4+x^3+bx^2 +100x+c.$$What is $f(1)?$
+
+(A) $-9009$  (B) $-8008$  (C) $-7007$  (D) $-6006$  (E) $-5005$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-24": { s: String.raw`Quadrilateral $ABCD$ is inscribed in circle $O$ and has sides $AB=3,$ $BC=2,$ $CD=6,$ and $DA=8.$ Let $X$ and $Y$ be points on $BD$ such that $\dfrac{DX}{BD}=\dfrac{1}{4}$ and $\dfrac{BY}{BD}=\dfrac{11}{36}.$ Let $E$ be the intersection of line $AX$ and the line through $Y$ parallel to $AD.$ Let $F$ be the intersection of line $CX$ and the line through $E$ parallel to $AC.$ Let $G$ be the point on circle $O$ other than $C$ that lies on line $CX.$ What is $XF\cdot XG?$
+
+(A) $17$  (B) $\dfrac{59-5\sqrt2}{3}$  (C) $\dfrac{91-12\sqrt3}{4}$  (D) $\dfrac{67-10\sqrt2}{3}$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
 "2017-amc-12a-25": { s: String.raw`The vertices $V$ of a centrally symmetric hexagon in the complex plane are given by$$ V=\left\{\begin{gathered} \sqrt2 i,\;-\sqrt2 i, \\ \tfrac{1}{\sqrt8}(1+i), \\ \tfrac{1}{\sqrt8}(-1+i), \\ \tfrac{1}{\sqrt8}(1-i), \\ \tfrac{1}{\sqrt8}(-1-i) \end{gathered}\right\}. $$For each $j,$ $1\le j\le12,$ an element $z_j$ is chosen from $V$ at random, independently of the other choices. Let $P=\prod_{j=1}^{12}z_j$ be the product of the $12$ numbers selected. What is the probability that $P=-1?$
 
 (A) $\dfrac{5\cdot11}{3^{10}}$
@@ -54,4 +275,205 @@ What is the ratio of the area of $\triangle A'B'C'$ to the area of $\triangle AB
 (C) $\dfrac{5\cdot11}{3^9}$
 (D) $\dfrac{5\cdot7\cdot11}{2\cdot3^{10}}$
 (E) $\dfrac{2^2\cdot5\cdot11}{3^{10}}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-3": { s: String.raw`Ms. Carroll promised that anyone who got all the multiple choice questions right on the upcoming exam would receive an A on the exam. Which one of these statements necessarily follows logically?
+
+(A) If Lewis did not receive an A, then he got all of the multiple choice questions wrong.
+(B) If Lewis did not receive an A, then he got at least one of the multiple choice questions wrong.
+(C) If Lewis got at least one of the multiple choice questions wrong, then he did not receive an A.
+(D) If Lewis received an A, then he got all of the multiple choice questions right.
+(E) If Lewis received an A, then he got at least one of the multiple choice questions right.`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-4": { s: String.raw`Jerry and Silvia wanted to go from the southwest corner of a square field to the northeast corner. Jerry walked due east and then due north to reach the goal, but Silvia headed northeast and reached the goal walking in a straight line. Which of the following is closest to how much shorter Silvia’s trip was, compared to Jerry’s trip?
+
+(A) $30\%$  (B) $40\%$  (C) $50\%$  (D) $60\%$  (E) $70\%$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-5": { s: String.raw`At a gathering of $30$ people, there are $20$ people who all know each other and $10$ people who know no one. People who know each other hug, and people who do not know each other shake hands. How many handshakes occur?
+
+(A) $240$  (B) $245$  (C) $290$  (D) $480$  (E) $490$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-6": { s: String.raw`Joy has $30$ thin rods, one each of every integer length from $1$ cm through $30$ cm. She places the rods with lengths $3$ cm, $7$ cm, and $15$ cm on a table. She then wants to choose a fourth rod that she can put with these three to form a quadrilateral with positive area. How many of the remaining rods can she choose as the fourth rod?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-7": { s: String.raw`Define a function on the positive integers recursively by $f(1)=2,$ $f(n)=f(n-1)+1$ if $n$ is even, and $f(n)=f(n-2)+2$ if $n$ is odd and greater than $1.$ What is $f(2017)?$
+
+(A) $2017$  (B) $2018$  (C) $4034$  (D) $4035$  (E) $4036$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-8": { s: String.raw`The region consisting of all points in three-dimensional space within $3$ units of line segment $AB$ has volume $216\pi.$ What is the length $AB?$
+
+(A) $6$  (B) $12$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12a-9": { s: String.raw`Let $S$ be the set of points $(x,y)$ in the coordinate plane such that two of the three quantities $3,$ $x+2,$ and $y-4$ are equal and the third of the three quantities is no greater than this common value. Which of the following is a correct description of $S?$
+
+(A) a single point
+(B) two intersecting lines
+(C) three lines whose pairwise intersections are three distinct points
+(D) a triangle
+(E) three rays with a common endpoint`, u: "https://live.poshenloh.com/past-contests/amc12/2017A" },
+"2017-amc-12b-1": { s: String.raw`Kymbrea’s comic book collection currently has $30$ comic books in it, and she is adding to her collection at the rate of $2$ comic books per month. LaShawn’s collection currently has $10$ comic books in it, and he is adding to his collection at the rate of $6$ comic books per month. After how many months will LaShawn’s collection have twice as many comic books as Kymbrea’s?
+
+(A) $1$  (B) $4$  (C) $5$  (D) $20$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-10": { s: String.raw`At Typico High School, $60\%$ of the students like dancing, and the rest dislike it. Of those who like dancing, $80\%$ say that they like it, and the rest say that they dislike it. Of those who dislike dancing, $90\%$ say that they dislike it, and the rest say that they like it. What fraction of students who say they dislike dancing actually like it?
+
+(A) $10\%$  (B) $12\%$  (C) $20\%$  (D) $25\%$  (E) $33\tfrac{1}{3}\%$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-11": { s: String.raw`Call a positive integer monotonous if it is a one-digit number or its digits, when read from left to right, form either a strictly increasing or a strictly decreasing sequence. For example, $3,$ $23578,$ and $987620$ are monotonous, but $88,$ $7434,$ and $23557$ are not. How many monotonous positive integers are there?
+
+(A) $1024$  (B) $1524$  (C) $1533$  (D) $1536$  (E) $2048$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-12": { s: String.raw`What is the sum of the roots of $z^{12} = 64$ that have a positive real part?
+
+(A) $2$  (B) $4$  (C) $2 + 2\sqrt{3}$  (D) $2\sqrt{2} + \sqrt{6}$  (E) $(1 + \sqrt{3}) + (1 + \sqrt{3})i$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-13": { s: String.raw`In the figure below, $3$ of the $6$ disks are to be painted blue, $2$ are to be painted red, and $1$ is to be painted green. Two paintings that can be obtained from one another by a rotation or a reflection of the entire figure are considered the same. How many different paintings are possible?
+
+@@fig:amc12/2017B/13.svg@@
+
+(A) $6$  (B) $8$  (C) $9$  (D) $12$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-14": { s: String.raw`An ice-cream novelty item consists of a cup in the shape of a $4$-inch-tall frustum of a right circular cone, with a $2$-inch-diameter base at the bottom and a $4$-inch-diameter base at the top, packed solid with ice cream, together with a solid cone of ice cream of height $4$ inches, whose base, at the bottom, is the top base of the frustum. What is the total volume of the ice cream, in cubic inches?
+
+(A) $8\pi$  (B) $\dfrac{28\pi}{3}$  (C) $12\pi$  (D) $14\pi$  (E) $\dfrac{44\pi}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-15": { s: String.raw`Let $ABC$ be an equilateral triangle. Extend side $\overline{AB}$ beyond $B$ to a point $B'$ so that $BB' = 3 \cdot AB.$ Similarly, extend side $\overline{BC}$ beyond $C$ to a point $C'$ so that $CC' = 3 \cdot BC,$ and extend side $\overline{CA}$ beyond $A$ to a point $A'$ so that $AA' = 3 \cdot CA.$ What is the ratio of the area of $\triangle A'B'C'$ to the area of $\triangle ABC?$
+
+(A) $9 : 1$  (B) $16 : 1$  (C) $25 : 1$  (D) $36 : 1$  (E) $37 : 1$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-16": { s: String.raw`The number $21!$ $= 51{,}090{,}942{,}171{,}709{,}440{,}000$ has over $60{,}000$ positive integer divisors. One of them is chosen at random. What is the probability that it is odd?
+
+(A) $\dfrac{1}{21}$  (B) $\dfrac{1}{19}$  (C) $\dfrac{1}{18}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{11}{21}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-17": { s: String.raw`A coin is biased in such a way that on each toss the probability of heads is $\dfrac{2}{3}$ and the probability of tails is $\dfrac{1}{3}.$ The outcomes of the tosses are independent. A player has the choice of playing Game A or Game B. In Game A she tosses the coin three times and wins if all three outcomes are the same. In Game B she tosses the coin four times and wins if both the outcomes of the first and second tosses are the same and the outcomes of the third and fourth tosses are the same. How do the chances of winning Game A compare to the chances of winning Game B?
+
+(A) The probability of winning Game A is $\dfrac{4}{81}$ less than the probability of winning Game B.
+(B) The probability of winning Game A is $\dfrac{2}{81}$ less than the probability of winning Game B.
+(C) The probabilities are the same.
+(D) The probability of winning Game A is $\dfrac{2}{81}$ greater than the probability of winning Game B.
+(E) The probability of winning Game A is $\dfrac{4}{81}$ greater than the probability of winning Game B.`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-18": { s: String.raw`The diameter $\overline{AB}$ of a circle of radius $2$ is extended to a point $D$ outside the circle so that $BD = 3.$ Point $E$ is chosen so that $ED = 5$ and line $ED$ is perpendicular to line $AD.$ Segment $\overline{AE}$ intersects the circle at a point $C$ between $A$ and $E.$ What is the area of $\triangle ABC?$
+
+(A) $\dfrac{120}{37}$  (B) $\dfrac{140}{39}$  (C) $\dfrac{145}{39}$  (D) $\dfrac{140}{37}$  (E) $\dfrac{120}{31}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-19": { s: String.raw`Let $N = 123456789101112\ldots4344$ be the $79$-digit number that is formed by writing the integers from $1$ to $44$ in order, one after the other. What is the remainder when $N$ is divided by $45?$
+
+(A) $1$  (B) $4$  (C) $9$  (D) $18$  (E) $44$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-2": { s: String.raw`Real numbers $x,$ $y,$ and $z$ satisfy the inequalities$$0 \lt x \lt 1, \quad -1 \lt y \lt 0,$$and$$1 \lt z \lt 2.$$Which of the following numbers is necessarily positive?
+
+(A) $y + x^2$  (B) $y + xz$  (C) $y + y^2$  (D) $y + 2y^2$  (E) $y + z$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-20": { s: String.raw`Real numbers $x$ and $y$ are chosen independently and uniformly at random from the interval $(0, 1).$ What is the probability that $\lfloor \log_2 x \rfloor = \lfloor \log_2 y \rfloor,$ where $\lfloor r \rfloor$ denotes the greatest integer less than or equal to the real number $r?$
+
+(A) $\dfrac{1}{8}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-21": { s: String.raw`Last year Isabella took $7$ math tests and received $7$ different scores, each an integer between $91$ and $100,$ inclusive. After each test she noticed that the average of her test scores was an integer. Her score on the seventh test was $95.$ What was her score on the sixth test?
+
+(A) $92$  (B) $94$  (C) $96$  (D) $98$  (E) $100$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-22": { s: String.raw`Abby, Bernardo, Carl, and Debra play a game in which each of them starts with four coins. The game consists of four rounds. In each round, four balls are placed in an urn—one green, one red, and two white. The players each draw a ball at random without replacement. Whoever gets the green ball gives one coin to whoever gets the red ball. What is the probability that, at the end of the fourth round, each of the players has four coins?
+
+(A) $\dfrac{7}{576}$  (B) $\dfrac{5}{192}$  (C) $\dfrac{1}{36}$  (D) $\dfrac{5}{144}$  (E) $\dfrac{7}{48}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-23": { s: String.raw`The graph of $y = f(x),$ where $f(x)$ is a polynomial of degree $3,$ contains points $A(2, 4),$ $B(3, 9),$ and $C(4, 16).$ Lines $AB,$ $AC,$ and $BC$ intersect the graph again at points $D,$ $E,$ and $F,$ respectively, and the sum of the $x$-coordinates of $D,$ $E,$ and $F$ is $24.$ What is $f(0)?$
+
+(A) $-2$  (B) $0$  (C) $2$  (D) $\dfrac{24}{5}$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-24": { s: String.raw`Quadrilateral $ABCD$ has right angles at $B$ and $C,$ $\triangle ABC \sim \triangle BCD,$ and $AB \gt BC.$ There is a point $E$ in the interior of $ABCD$ such that $\triangle ABC \sim \triangle CEB$ and the area of $\triangle AED$ is $17$ times the area of $\triangle CEB.$ What is $\dfrac{AB}{BC}?$
+
+(A) $1 + \sqrt{2}$  (B) $2 + \sqrt{2}$  (C) $\sqrt{17}$  (D) $2 + \sqrt{5}$  (E) $1 + 2\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-25": { s: String.raw`A set of $n$ people participate in an online video basketball tournament. Each person may be a member of any number of $5$-player teams, but no two teams may have exactly the same $5$ members. The site statistics show a curious fact: The average, over all subsets of size $9$ of the set of $n$ participants, of the number of complete teams whose members are among those $9$ people is equal to the reciprocal of the average, over all subsets of size $8$ of the set of $n$ participants, of the number of complete teams whose members are among those $8$ people. How many values $n,$ $9 \le n \le 2017,$ can be the number of participants?
+
+(A) $477$  (B) $482$  (C) $487$  (D) $557$  (E) $562$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-3": { s: String.raw`Suppose that $x$ and $y$ are nonzero real numbers such that$$\frac{3x + y}{x - 3y} = -2.$$What is the value of$$\frac{x + 3y}{3x - y}?$$(A) $-3$  (B) $-1$  (C) $1$  (D) $2$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-4": { s: String.raw`Samia set off on her bicycle to visit her friend, traveling at an average speed of $17$ kilometers per hour. When she had gone half the distance to her friend’s house, a tire went flat, and she walked the rest of the way at $5$ kilometers per hour. In all it took her $44$ minutes to reach her friend’s house. In kilometers rounded to the nearest tenth, how far did Samia walk?
+
+(A) $2.0$  (B) $2.2$  (C) $2.8$  (D) $3.4$  (E) $4.4$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-5": { s: String.raw`The data set $[6, 19, 33, 33, 39,$ $41,$ $41,$ $43,$ $51,$ $57]$ has median $Q_2 = 40,$ first quartile $Q_1 = 33,$ and third quartile $Q_3 = 43.$ An outlier in a data set is a value that is more than $1.5$ times the interquartile range below the first quartile $(Q_1)$ or more than $1.5$ times the interquartile range above the third quartile $(Q_3),$ where the interquartile range is defined as $Q_3 - Q_1.$ How many outliers does this data set have?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-6": { s: String.raw`The circle having $(0, 0)$ and $(8, 6)$ as the endpoints of a diameter intersects the $x$-axis at a second point. What is the $x$-coordinate of this point?
+
+(A) $4\sqrt{2}$  (B) $6$  (C) $5\sqrt{2}$  (D) $8$  (E) $6\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-7": { s: String.raw`The functions $\sin(x)$ and $\cos(x)$ are periodic with least period $2\pi.$ What is the least period of the function $\cos(\sin(x))?$
+
+(A) $\dfrac{\pi}{2}$  (B) $\pi$  (C) $2\pi$  (D) $4\pi$  (E) It’s not periodic.`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-8": { s: String.raw`The ratio of the short side of a certain rectangle to the long side is equal to the ratio of the long side to the diagonal. What is the square of the ratio of the short side to the long side of this rectangle?
+
+(A) $\dfrac{\sqrt{3} - 1}{2}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{\sqrt{5} - 1}{2}$  (D) $\dfrac{\sqrt{2}}{2}$  (E) $\dfrac{\sqrt{6} - 1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-12b-9": { s: String.raw`A circle has center $(-10, -4)$ and radius $13.$ Another circle has center $(3, 9)$ and radius $\sqrt{65}.$ The line passing through the two points of intersection of the two circles has equation $x + y = c.$ What is $c?$
+
+(A) $3$  (B) $3\sqrt{3}$  (C) $4\sqrt{2}$  (D) $6$  (E) $\dfrac{13}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2017B" },
+"2017-amc-8-1": { s: String.raw`Which of the following values is largest?
+
+(A) $2+0+1+7$  (B) $2 \times 0 +1+7$  (C) $2+0 \times 1 + 7$  (D) $2+0+1 \times 7$  (E) $2 \times 0 \times 1 \times 7$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-10": { s: String.raw`A box contains five cards, numbered $1,$ $2,$ $3,$ $4,$ and $5.$ Three cards are selected randomly without replacement from the box. What is the probability that $4$ is the largest value selected?
+
+(A) $\dfrac{1}{10}$  (B) $\dfrac{1}{5}$  (C) $\dfrac{3}{10}$  (D) $\dfrac{2}{5}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-11": { s: String.raw`A square-shaped floor is covered with congruent square tiles. If the total number of tiles that lie on the two diagonals is $37,$ how many tiles cover the floor?
+
+(A) $148$  (B) $324$  (C) $361$  (D) $1296$  (E) $1369$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-12": { s: String.raw`The smallest positive integer greater than $1$ that leaves a remainder of $1$ when divided by $4,$ $5,$ and $6$ lies between which of the following pairs of numbers?
+
+(A) $2$ and $19$  (B) $20$ and $39$  (C) $40$ and $59$  (D) $60$ and $79$  (E) $80$ and $124$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-13": { s: String.raw`Peter, Emma, and Kyler played chess with each other. Peter won $4$ games and lost $2$ games. Emma won $3$ games and lost $3$ games. If Kyler lost $3$ games, how many games did he win?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-14": { s: String.raw`Chloe and Zoe are both students in Ms. Demeanor’s math class. Last night they each solved half of the problems in their homework assignment alone and then solved the other half together. Chloe had correct answers to only $80\%$ of the problems she solved alone, but overall $88\%$ of her answers were correct. Zoe had correct answers to $90\%$ of the problems she solved alone. What was Zoe’s overall percentage of correct answers?
+
+(A) $89$  (B) $92$  (C) $93$  (D) $96$  (E) $98$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-15": { s: String.raw`In the arrangement of letters and numerals below, by how many different paths can one spell $\mathrm{AMC8}$? Beginning at the $A$ in the middle, a path allows only moves from one letter to an adjacent (above, below, left, or right, but not diagonal) letter. One example of such a path is traced in the picture.
+
+@@fig:amc8/2017/15.svg@@
+
+(A) $8$  (B) $9$  (C) $12$  (D) $24$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-16": { s: String.raw`In the figure shown below, choose point $D$ on side $BC$ so that $\triangle ACD$ and $\triangle ABD$ have equal perimeters. What is the area of $\triangle ABD?$
+
+@@fig:amc8/2017/16.svg@@
+
+(A) $\dfrac{3}{4}$  (B) $\dfrac{3}{2}$  (C) $2$  (D) $\dfrac{12}{5}$  (E) $\dfrac{5}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-17": { s: String.raw`Starting with some gold coins and some empty treasure chests, I tried to put $9$ gold coins in each treasure chest, but that left $2$ treasure chests empty. So instead I put $6$ gold coins in each treasure chest, but then I had $3$ gold coins left over. How many gold coins did I have?
+
+(A) $9$  (B) $27$  (C) $45$  (D) $63$  (E) $81$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-18": { s: String.raw`In the non-convex quadrilateral $ABCD$ shown below, $\angle BCD$ is a right angle, $AB=12,$ $BC=4,$ $CD=3,$ and $AD=13.$ What is the area of quadrilateral $ABCD?$
+
+@@fig:amc8/2017/18.svg@@
+
+(A) $12$  (B) $24$  (C) $26$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-19": { s: String.raw`For any positive integer $M,$ the notation $M!$ denotes the product of the integers $1$ through $M.$ What is the largest integer $n$ for which $5^n$ is a factor of the sum:$$98!+99!+100!$$(A) $23$  (B) $24$  (C) $25$  (D) $26$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-2": { s: String.raw`Alicia, Brenda, and Colby were the candidates in a recent election for student president. The pie chart below shows how the votes were distributed among the three candidates. If Brenda received $36$ votes, then how many votes were cast all together?
+
+@@fig:amc8/2017/2.svg@@
+
+(A) $70$  (B) $84$  (C) $100$  (D) $106$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-20": { s: String.raw`An integer between $1000$ and $9999,$ inclusive, is chosen at random. What is the probability that it is an odd integer whose digits are all distinct?
+
+(A) $\dfrac{14}{75}$  (B) $\dfrac{56}{225}$  (C) $\dfrac{107}{400}$  (D) $\dfrac{7}{25}$  (E) $\dfrac{9}{25}$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-21": { s: String.raw`Suppose $a,$ $b,$ and $c$ are nonzero real numbers, and $a+b+c=0.$ What are the possible value(s) for$$\dfrac{a}{|a|}+\dfrac{b}{|b|}+\dfrac{c}{|c|}+\dfrac{abc}{|abc|}?$$(A) $0$  (B) $1$ and $-1$  (C) $2$ and $-2$  (D) $0$, $2$, and $-2$  (E) $0$, $1$, and $-1$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-22": { s: String.raw`In the right triangle $ABC,$ $AC=12,$ $BC=5,$ and angle $C$ is a right angle. A semicircle is inscribed in the triangle as shown. What is the radius of the semicircle?
+
+@@fig:amc8/2017/22.svg@@
+
+(A) $\dfrac{7}{6}$  (B) $\dfrac{13}{5}$  (C) $\dfrac{59}{18}$  (D) $\dfrac{10}{3}$  (E) $\dfrac{60}{13}$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-23": { s: String.raw`Each day for four days, Linda traveled for one hour at a speed that resulted in her traveling one mile in an integer number of minutes. Each day after the first, her speed decreased so that the number of minutes to travel one mile increased by $5$ minutes over the preceding day. Each of the four days, her distance traveled was also an integer number of miles. What was the total number of miles for the four trips?
+
+(A) $10$  (B) $15$  (C) $25$  (D) $50$  (E) $82$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-24": { s: String.raw`Mrs. Sanders has three grandchildren, who call her regularly. One calls her every three days, one calls her every four days, and one calls her every five days. All three called her on December $31,$ $2016.$ On how many days during the next year did she not receive a phone call from any of her grandchildren?
+
+(A) $78$  (B) $80$  (C) $144$  (D) $146$  (E) $152$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-25": { s: String.raw`In the figure shown, $\overline{US}$ and $\overline{UT}$ are line segments each of length $2,$ and $m\angle TUS = 60^\circ.$
+
+Arcs $\overset{\large\frown}{TR}$ and $\overset{\large\frown}{SR}$ are each one-sixth of a circle with radius $2.$ What is the area of the region shown?
+
+@@fig:amc8/2017/25.svg@@
+
+(A) $3\sqrt{3}-\pi$  (B) $4\sqrt{3}-\dfrac{4\pi}{3}$  (C) $2\sqrt{3}$  (D) $4\sqrt{3}-\dfrac{2\pi}{3}$  (E) $4+\dfrac{4\pi}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-3": { s: String.raw`What is the value of the expression $\sqrt{16\sqrt{8\sqrt{4}}}?$
+
+(A) $4$  (B) $4\sqrt{2}$  (C) $8$  (D) $8\sqrt{2}$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-4": { s: String.raw`When $0.000315$ is multiplied by $7{,}928{,}564$ the product is closest to which of the following?
+
+(A) $210$  (B) $240$  (C) $2{,}100$  (D) $2{,}400$  (E) $24{,}000$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-5": { s: String.raw`What is the value of the expression$$\dfrac{1 \cdot 2 \cdot 3 \cdot 4 \cdot 5 \cdot 6 \cdot 7 \cdot 8}{1+2+3+4+5+6+7+8}?$$(A) $1020$  (B) $1120$  (C) $1220$  (D) $2240$  (E) $3360$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-6": { s: String.raw`If the degree measures of the angles of a triangle are in the ratio $3:3:4,$ what is the degree measure of the largest angle of the triangle?
+
+(A) $18$  (B) $36$  (C) $60$  (D) $72$  (E) $90$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-7": { s: String.raw`Let $Z$ be a $6$-digit positive integer, such as $247247,$ whose first three digits are the same as its last three digits taken in the same order. Which of the following numbers must be a factor of $Z?$
+
+(A) $11$  (B) $19$  (C) $101$  (D) $111$  (E) $1111$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-8": { s: String.raw`Malcolm wants to visit Isabella after school today and knows the street where she lives but doesn’t know her house number. She tells him, “My house number has two digits, and exactly three of the following four statements about it are true.”
+
+$(1)$ It is prime.
+
+$(2)$ It is even.
+
+$(3)$ It is divisible by $7.$
+
+$(4)$ One of its digits is $9.$
+
+This information allows Malcolm to determine Isabella’s house number. What is its units digit?
+
+(A) $4$  (B) $6$  (C) $7$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
+"2017-amc-8-9": { s: String.raw`All of Marcy’s marbles are blue, red, green, or yellow. One third of her marbles are blue, one fourth of them are red, and six of them are green. What is the smallest number of yellow marbles that Marcy could have?
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2017" },
 });

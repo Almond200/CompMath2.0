@@ -530,7 +530,7 @@ window.MATH_SECTIONS.push({
         {
           id: "bertrands-postulate",
           name: "Bertrand's Postulate",
-          latex: String.raw`\forall n > 1: \; \exists \text{ prime } p \text{ with } n < p < 2n`,
+          latex: String.raw`\forall n \ge 1: \; \exists \text{ prime } p \text{ with } n < p \le 2n`,
           description: String.raw`Bertrand's Postulate says that for every integer $n \ge 1$ there is a prime $p$ with $n \lt p \le 2n$. Chebyshev proved it, and Erdős gave a short proof by estimating the prime factors of the central binomial coefficient $\binom{2n}{n}$.`,
           keywords: ["prime between", "chebyshev", "existence of prime", "bertrand postulate", "a prime between n and 2n", "chebyshev prime bound"],
           importance: "low",
@@ -739,10 +739,10 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "zsygmondy",
-          name: "Zsygmondy's Theorem",
+          name: "Zsigmondy's Theorem",
           latex: String.raw`a^n - b^n \text{ has a primitive prime divisor (with rare small exceptions)}`,
           description: String.raw`Zsigmondy's Theorem says that for coprime integers $a \gt b \ge 1$ and $n \ge 2$, the number $a^n - b^n$ has a primitive prime divisor, one dividing no $a^k - b^k$ with $k \lt n$, except when $2^6 - 1^6 = 63$, or $n = 2$ with $a + b$ a power of $2$.`,
-          keywords: ["primitive prime divisor", "new prime", "exponential diophantine", "zsygmondy theorem", "zsigmondy theorem", "primitive prime divisor"],
+          keywords: ["primitive prime divisor", "new prime", "exponential diophantine", "zsygmondy theorem", "zsigmondy theorem"],
           importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
@@ -781,7 +781,7 @@ window.MATH_SECTIONS.push({
           id: "gaussian-integers",
           name: "Gaussian & Eisenstein Integers",
           latex: String.raw`N(a+bi) = a^2 + b^2, \qquad N(zw) = N(z)\,N(w)`,
-          description: String.raw`The ring $\mathbb{Z}[i] = \{a+bi\}$ has unique factorization, units $\pm 1, \pm i$, and a multiplicative norm $N(a+bi) = a^2+b^2$. A rational prime $p$ splits into two conjugate Gaussian primes iff $p \equiv 1 \pmod 4$ (then $p = a^2+b^2$), stays inert iff $p \equiv 3 \pmod 4$, and ramifies at $p = 2 = -i(1+i)^2$. The Eisenstein integers $\mathbb{Z}[\omega]$, $\omega = e^{2\pi i/3}$, play the same role for $a^2+ab+b^2$, with norm $N(a+b\omega) = a^2 - ab + b^2$ and primes classified mod $3$.`,
+          description: String.raw`The ring $\mathbb{Z}[i] = \{a+bi\}$ has unique factorization, units $\pm 1, \pm i$, and a multiplicative norm $N(a+bi) = a^2+b^2$. A rational prime $p$ splits into two conjugate Gaussian primes iff $p \equiv 1 \pmod 4$ (then $p = a^2+b^2$), stays inert iff $p \equiv 3 \pmod 4$, and ramifies at $p = 2 = -i(1+i)^2$. The Eisenstein integers $\mathbb{Z}[\omega]$, $\omega = e^{2\pi i/3}$, play the same role for the form $a^2 - ab + b^2$, which is their norm, $N(a+b\omega) = a^2 - ab + b^2$ (it takes the same values as $a^2 + ab + b^2$, by $b \to -b$), with primes classified mod $3$.`,
           keywords: ["gaussian integers", "eisenstein integers", "quadratic field", "quadratic integer ring", "norm", "unique factorization", "sum of two squares", "z[i]", "split inert ramified"],
           importance: "low",
           tier: "AIME Late",
@@ -825,7 +825,7 @@ window.MATH_SECTIONS.push({
           keywords: ["142857", "cyclic number", "1/7 decimal", "narcissistic number", "armstrong number", "153", "kaprekar constant", "6174", "digit curiosities", "recreational"],
           importance: "lower",
           tier: "AMC",
-          level: ["MATHCOUNTS"]
+          level: ["AMC10", "AMC12"]
         }
       ]
     },
@@ -866,7 +866,7 @@ window.MATH_SECTIONS.push({
         {
           id: "zeckendorf-theorem",
           name: "Zeckendorf's Theorem",
-          latex: String.raw`n = F_{k_1} + F_{k_2} + \cdots + F_{k_r}, \qquad k_1 \gg k_2 \gg \cdots \;(k_i \ge k_{i+1} + 2)`,
+          latex: String.raw`n = F_{k_1} + F_{k_2} + \cdots + F_{k_r}, \qquad k_i \ge k_{i+1} + 2`,
           description: String.raw`Every positive integer has a unique representation as a sum of non-consecutive Fibonacci numbers, with no two adjacent $F_i$. It is built greedily by repeatedly subtracting the largest Fibonacci number $\le n$. This gives a canonical "Fibonacci base," underlies Fibonacci nim and Wythoff's game, and turns "represent $n$ with Fibonacci numbers" counting problems into digit arguments on the Zeckendorf string.`,
           keywords: ["zeckendorf", "fibonacci representation", "non consecutive fibonacci", "fibonacci base", "greedy fibonacci", "wythoff", "unique representation"],
           importance: "medium",

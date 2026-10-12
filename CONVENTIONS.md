@@ -753,3 +753,49 @@ proof-depth pass over the thinnest converted cards is planned (see the plan, ste
 ## Break up big paragraphs of explanation (2026-10-10)
 
 A long explanation is never one block of prose with inline math. Put the key equation of each step on its own centered line (`$$...$$` as its own paragraph), add a figure where a picture helps (`{{figure:name}}`), and open a step with a plain lead-in ("Step 1, the lemma."; no markdown bold or italics, the scanner rejects them). Keep each paragraph under 500 characters. Applied first to Lucas' Theorem and Odd Entries in a Row of Pascal's Triangle; every new or rewritten card follows it, and the proof-depth pass (plan step R) applies it as it goes.
+
+## Problem text and the Contests box (2026-10-11)
+
+- **Every AMC and AIME problem has its text**, imported from LIVE by `tools/fetch-live-statements.py` (run with `--all` to find new sittings), even when it has no strategy or tags yet. A problem with no card is an entry `{ ref, formulas: [] }` and its page says "Not classified yet"; tagging it is a later, separate step and only ever uses existing cards.
+- **The number beside a contest reads "N problems written"** and counts only problems that have their solution in the app (a strategy or tagged cards), not those that have only their text. A contest still to come is listed in `js/data/problems/contests-planned.js`, is hidden until the reader presses Show unwritten contests, and carries no number. Proof-based competitions are not listed for now.
+- **Answer choices are blocks.** Each `(A)` to `(E)` line renders as its own block with vertical padding so a fraction can never touch its neighbor; a choice that is a picture is marked `@@ci:file|height@@` and shown small beside its letter.
+- **A statement LIVE lacks** (the two 2021 Fall AMC problems) is added by hand in `MANUAL_STATEMENTS` in the importer and credited to the source it came from (the AoPS Wiki), never to LIVE.
+
+## List kinds (2026-10-11)
+
+Built-in lists have a `kind`: `route` (a complete syllabus for one tier and subject), `core` (Starting Points: every High-importance card of a subject, so it is regenerated, not hand-picked, when importances change), `configuration`, `thinking`, and `curiosity`. A card that belongs to no list is a gap: add it where it fits (the audit found 17, all proof methods).
+
+## Study routes are additive (2026-10-11)
+
+A route is a complete syllabus for one contest tier and one subject, but each is built on the one below it. A card belongs to the route of the lowest tier among its levels (AMC 10 or 12, then AIME, then Olympiad), so the AIME route lists only what is new beyond AMC and the Olympiad route only what is new beyond AIME. A card may repeat in a higher route only when `tools/route-repeats.json` names it, for a card whose use at that level is broader (the pigeonhole principle at AIME versus at an olympiad). `tools/check-lists.py` fails on a missing card and on an unnamed repeat. There is no MATHCOUNTS route.
+
+## Figures are reference cards (2026-10-11)
+
+A shape (a regular polygon of a given side, a cube, a tetrahedron, an equilateral triangle) is filed as a **formula card**, a reference of the facts that belong to the shape, in Polygons & Quadrilaterals or Solid Geometry (3D). It is not a pattern card: a shape is too broad for "what am I looking at" to tell you what to do. The basic facts of one shape live on one card, the general formulas (Quadrilateral Area from Diagonals, Regular Polygon Area, Polygon Angle Sums) stay separate, and no fact is stated on two cards: the other card links to the one that has it. A figure that does carry a real set of clues and moves, such as An Isosceles Trapezoid, stays a pattern.
+
+## Formula lines (2026-10-11)
+
+A browsing card shows at most as many rows of its formulas as the Formula lines setting allows (1, 2, 3, or All; default 1), so write a thumbnail with the most important formula first. A row is one form (forms are separated by `\qquad`) or one row of a `gathered` block. The card's own page always shows every form.
+
+## Pattern and method anatomy (2026-10-11)
+
+What a method card and a pattern card hold, section by section. The scanner reports the counts as warnings.
+
+**A pattern card (a configuration you recognize).**
+- The description opens with one plain sentence naming the situation ("This is the configuration of ...", "This is the problem where ..."), then says what is true of it and what the clues decide.
+- *Distinguishing clues* is a list of at most five clues, one per bullet, with the disguises (a hidden circle, a hidden rotation) and one near-miss that looks like the pattern and is not ("Not this pattern: ..."). A pattern never contains the solution.
+- *Methods and Formulas to Try* may open with the facts the figure carries (a few lines, one display), then lists at most four methods, each with one sentence saying how the move applies to this shape, and the formulas, each with the fact it contributes. `tryFirst` is the top three, in order of use.
+- *Common traps*: at most four. *Contest profile*: a role, never an example (rule 13).
+- The example does the plainest thing the pattern allows. A pattern that needs two examples is two cards.
+
+**A method card (a move you make).**
+- *When to use* names the situations, then the lookalikes where the move is the wrong one.
+- *How* is at most six steps, one imperative sentence each, then one short illustration that is not the card's Example.
+- *Why it works* says why the move is valid and where it stops being valid.
+- *Formulas it uses* has one bullet per card in `uses`, in order. *Common traps*: at most four.
+- The test: the move can be said without "and". A method that is two moves is split.
+
+**Shared.** One idea per bullet, no paragraph over 500 characters, plain lead-ins, no bold or italics, links once at first mention.
+
+## A card's thumbnail and description stand on their own (2026-10-11)
+From Stanley's review of the cards. The thumbnail (the formula box) and the description must be readable without the write-up: every symbol in the thumbnail is defined there or in the description (not only in the write-up: a $P$ or an $E$ that only Key forms defines is a bug); a formula that needs a hypothesis states it beside the formula (with or without replacement, $ab > -1$, $N$ independent of the terms or a stopping time, $n \ge 2$, an absolute value on an area, which unit a count is in); two counts that could be confused (unit triangles versus cells) get their unit named; `\gg` and `\ll` mean "much greater" and are never used for "at least 2 apart" (write $k_i \ge k_{i+1} + 2$); and a title and its description spell a name the same way. **One fact, one home:** a formula appears on the card that owns it and nowhere else, as a thumbnail form, a Key form, or a description sentence; other cards point to it with one link. A keyword is listed once per card. Mechanical checks in `tools/scan-conventions.py`: a tab or other control character in any `js/data` file, and a repeated keyword inside a card, both fail. `tools/find-duplicate-forms.py` lists formulas on two or more thumbnails and thumbnail formulas repeated in the card's own description, as candidates for a person to judge.

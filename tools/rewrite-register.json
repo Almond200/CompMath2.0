@@ -1336,7 +1336,6 @@
     "numeral-as-polynomial": "method",
     "poly-divisible-linear": "pattern",
     "unknown-base": "pattern",
-    "same-remainder": "pattern",
     "monovariant": "method",
     "conic-tangent-lines": "formula",
     "conic-parametric": "formula",
@@ -1375,7 +1374,6 @@
     "regular-polygon-area": "formula",
     "equiangular-hexagon-area": "formula",
     "regular-hexagon-area": "formula",
-    "hexagon-diagonals": "formula",
     "regular-dodecagon": "formula",
     "ngon-vertex-distance-product": "formula",
     "trapezoid-parallelogram-areas": "formula",
@@ -1624,9 +1622,7 @@
     "lemoine-point": "formula",
     "gergonne-nagel-points": "formula",
     "ptolemy-second-theorem": "formula",
-    "cyclic-quad-diagonals": "formula",
     "picks-theorem-general": "formula",
-    "picks-triangular-lattice": "formula",
     "picks-with-holes": "formula",
     "vector-projection": "formula",
     "harmonic-quadrilateral": "formula",
@@ -1722,7 +1718,25 @@
     "coprime-probability": "formula",
     "probability-generating-functions": "formula",
     "matrix-tree-theorem": "formula",
-    "lgv-lemma": "formula"
+    "lgv-lemma": "formula",
+    "odd-even-functions": "formula",
+    "inverse-function-properties": "formula",
+    "function-symmetry-equation": "method",
+    "parallel-lines-distance": "formula",
+    "iran-lemma": "formula",
+    "carnots-perpendicularity-theorem": "formula",
+    "perpendicularity-lemma": "formula",
+    "vector-bash": "method",
+    "tangent-lines-from-point": "method",
+    "slope-to-a-point": "method",
+    "isosceles-trapezoid": "pattern",
+    "parallelogram-area": "formula",
+    "parallelogram-vertices": "formula",
+    "regular-octagon": "formula",
+    "equilateral-triangle-facts": "formula",
+    "cube": "formula",
+    "regular-tetrahedron": "formula",
+    "regular-octahedron": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -3286,22 +3300,8 @@
         "kept -> Why it works"
       ],
       [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
-    "hexagon-diagonals": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
+        "Diagonals of a Regular Hexagon",
+        "merged -> Key forms, Why it works, Useful observations"
       ],
       [
         "On contests",
@@ -6772,35 +6772,7 @@
         "rewritten -> Contest profile"
       ]
     ],
-    "cyclic-quad-diagonals": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
     "picks-theorem-general": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
-    "picks-triangular-lattice": [
       [
         "Why it works",
         "kept -> Why it works"
@@ -8140,6 +8112,108 @@
       [
         "Why it works",
         "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "odd-even-functions": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "inverse-function-properties": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "parallel-lines-distance": [
+      [
+        "Why it works",
+        "new"
+      ]
+    ],
+    "parallelogram-area": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "parallelogram-vertices": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "iran-lemma": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "carnots-perpendicularity-theorem": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "perpendicularity-lemma": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "regular-octagon": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "equilateral-triangle-facts": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "cube": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "regular-tetrahedron": [
+      [
+        "Why it works",
+        "rewritten -> Why it works"
+      ],
+      [
+        "How to use it",
+        "moved -> Useful observations"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "regular-octahedron": [
+      [
+        "Why it works",
+        "rewritten -> Why it works"
       ],
       [
         "How to use it",

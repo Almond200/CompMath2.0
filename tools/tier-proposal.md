@@ -589,7 +589,7 @@ Totals: AMC 338 (53%), AIME Early 65 (10%), AIME Late 126 (20%), Olympiad 114 (1
 | Erdős–Ginzburg–Ziv Theorem | formula | — |
 | Chevalley–Warning Theorem | formula | — |
 | Wolstenholme's Theorem | formula | — |
-| Zsygmondy's Theorem | formula | — |
+| Zsigmondy's Theorem | formula | — |
 | Fermat Numbers | formula | — |
 | Carmichael Numbers & Pseudoprimes | formula | — |
 | Farey Sequences & Mediants | formula | — |

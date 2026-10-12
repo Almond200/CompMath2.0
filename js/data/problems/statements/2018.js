@@ -37,7 +37,421 @@ Object.assign(window.MATH_STATEMENTS, {
 "2018-aime-ii-9": { s: String.raw`Octagon $ABCDEFGH$ with side lengths $AB = CD = EF = GH = 10$ and $BC = DE = FG = HA = 11$ is formed by removing four $6$-$8$-$10$ triangles from the corners of a $23 \times 27$ rectangle with side $\overline{AH}$ on a short side of the rectangle, as shown. Let $J$ be the midpoint of $\overline{AH},$ and partition the octagon into $7$ triangles by drawing segments $\overline{JB},$ $\overline{JC},$ $\overline{JD},$ $\overline{JE},$ $\overline{JF},$ and $\overline{JG}.$ Find the area of the convex polygon whose vertices are the centroids of these $7$ triangles.
 
 @@fig:aime/2018II/9.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2018II" },
+"2018-amc-10a-1": { s: String.raw`What is the value of$$\left(\left((2+1)^{-1}+1\right)^{-1}+1\right)^{-1}+1?$$(A) $\dfrac{5}{8}$  (B) $\dfrac{11}{7}$  (C) $\dfrac{8}{5}$  (D) $\dfrac{18}{11}$  (E) $\dfrac{15}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-10": { s: String.raw`Suppose that real number $x$ satisfies$$\sqrt{49-x^2}-\sqrt{25-x^2}=3.$$What is the value of$$\sqrt{49-x^2}+\sqrt{25-x^2}?$$(A) $8$  (B) $\sqrt{33}+3$  (C) $9$  (D) $2\sqrt{10}+4$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-11": { s: String.raw`When $7$ fair standard $6$-sided dice are thrown, the probability that the sum of the numbers on the top faces is $10$ can be written as$$\dfrac{n}{6^{7}},$$where $n$ is a positive integer. What is $n?$
+
+(A) $42$  (B) $49$  (C) $56$  (D) $63$  (E) $84$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-12": { s: String.raw`How many ordered pairs of real numbers $(x,y)$ satisfy the following system of equations?$$\begin{cases} ~x+3y&=3 \\ ~\big||x|-|y|\big|&=1 \end{cases}$$(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-13": { s: String.raw`A paper triangle with sides of lengths $3,$ $4,$ and $5$ inches, as shown, is folded so that point $A$ falls on point $B.$ What is the length in inches of the crease?
+
+@@fig:amc10/2018A/13.svg@@
+
+(A) $1+\dfrac{1}{2} \sqrt{2}$  (B) $\sqrt{3}$  (C) $\dfrac{7}{4}$  (D) $\dfrac{15}{8}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-14": { s: String.raw`What is the greatest integer less than or equal to$$\dfrac{3^{100}+2^{100}}{3^{96}+2^{96}}?$$(A) $80$  (B) $81$  (C) $96$  (D) $97$  (E) $625$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-15": { s: String.raw`Two circles of radius $5$ are externally tangent to each other and are internally tangent to a circle of radius $13$ at points $A$ and $B,$ as shown in the diagram. The distance $AB$ can be written in the form $\frac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m+n?$
+
+@@fig:amc10/2018A/15.svg@@
+
+(A) $21$  (B) $29$  (C) $58$  (D) $69$  (E) $93$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-16": { s: String.raw`Right triangle $ABC$ has leg lengths $AB=20$ and $BC=21.$ Including $\overline{AB}$ and $\overline{BC},$ how many line segments with integer length can be drawn from vertex $B$ to a point on hypotenuse $\overline{AC}?$
+
+(A) $5$  (B) $8$  (C) $12$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-17": { s: String.raw`Let $S$ be a set of $6$ integers taken from $\{1,2,\dots,12\}$ with the property that if $a$ and $b$ are elements of $S$ with $a < b,$ then $b$ is not a multiple of $a.$ What is the least possible value of an element in $S?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-18": { s: String.raw`How many nonnegative integers can be written in the form$$a_7\cdot3^7+a_6\cdot3^6+a_5\cdot3^5$$$$+a_4\cdot3^4+a_3\cdot3^3+a_2\cdot3^2$$$$+a_1\cdot3^1+a_0\cdot3^0,$$where $a_i\in \{-1,0,1\}$ for $0\le i \le 7?$
+
+(A) $512$  (B) $729$  (C) $1094$  (D) $3281$  (E) $59{,}048$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-19": { s: String.raw`A number $m$ is randomly selected from the set$$\{11,13,15,17,19\},$$and a number $n$ is randomly selected from$$\{1999,2000,2001,\ldots,2018\}.$$What is the probability that $m^n$ has a units digit of $1?$
+
+(A) $\dfrac{1}{5}$  (B) $\dfrac{1}{4}$  (C) $\dfrac{3}{10}$  (D) $\dfrac{7}{20}$  (E) $\dfrac{2}{5}$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-2": { s: String.raw`Liliane has $50\%$ more soda than Jacqueline, and Alice has $25\%$ more soda than Jacqueline. What is the relationship between the amounts of soda that Liliane and Alice have?
+
+(A) Liliane has $20\%$ more soda than Alice.
+(B) Liliane has $25\%$ more soda than Alice.
+(C) Liliane has $45\%$ more soda than Alice.
+(D) Liliane has $75\%$ more soda than Alice.
+(E) Liliane has $100\%$ more soda than Alice.`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-20": { s: String.raw`A scanning code consists of a $7 \times 7$ grid of squares, with some of its squares colored black and the rest colored white. There must be at least one square of each color in this grid of $49$ squares.
+
+A scanning code is called symmetric if its look does not change when the entire square is rotated by a multiple of $90^{\circ}$ counterclockwise around its center, nor when it is reflected across a line joining opposite corners or a line joining midpoints of opposite sides.
+
+What is the total number of possible symmetric scanning codes?
+
+(A) $510$  (B) $1022$  (C) $8190$  (D) $8192$  (E) $65{,}534$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-21": { s: String.raw`Which of the following describes the set of values of $a$ for which the curves $x^2+y^2=a^2$ and $y=x^2-a$ in the real $xy$-plane intersect at exactly $3$ points?
+
+(A) $a = \dfrac14$  (B) $\dfrac14 \lt a \lt \dfrac12$  (C) $a \gt \dfrac14$  (D) $a = \dfrac12$  (E) $a \gt \dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-22": { s: String.raw`Let $a,$ $b,$ $c,$ and $d$ be positive integers such that$$\gcd(a, b)=24,$$$$\gcd(b, c)=36,$$$$\gcd(c, d)=54,$$and$$70 < \gcd(d, a) < 100.$$Which of the following must be a divisor of $a?$
+
+(A) $5$  (B) $7$  (C) $11$  (D) $13$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-23": { s: String.raw`Farmer Pythagoras has a field in the shape of a right triangle. The right triangle’s legs have lengths $3$ and $4$ units. In the corner where those sides meet at a right angle, he leaves a small unplanted square $S$ so that from the air it looks like the right angle symbol. The rest of the field is planted. The shortest distance from $S$ to the hypotenuse is $2$ units. What fraction of the field is planted?
+
+@@fig:amc10/2018A/23.svg@@
+
+(A) $\dfrac{25}{27}$  (B) $\dfrac{26}{27}$  (C) $\dfrac{73}{75}$  (D) $\dfrac{145}{147}$  (E) $\dfrac{74}{75}$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
 "2018-amc-10a-24": { s: String.raw`Triangle $ABC$ with $AB=50$ and $AC=10$ has area $120.$ Let $D$ be the midpoint of $\overline{AB},$ and let $E$ be the midpoint of $\overline{AC}.$ The angle bisector of $\angle BAC$ intersects $\overline{DE}$ and $\overline{BC}$ at $F$ and $G,$ respectively. What is the area of quadrilateral $FDBG?$
 
 (A) $60$  (B) $65$  (C) $70$  (D) $75$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-25": { s: String.raw`For a positive integer $n$ and nonzero digits $a,$ $b,$ and $c,$ let $A_n$ be the $n$-digit integer each of whose digits is equal to $a$; let $B_n$ be the $n$-digit integer each of whose digits is equal to $b$; and let $C_n$ be the $2n$-digit (not $n$-digit) integer each of whose digits is equal to $c.$ What is the greatest possible value of $a + b + c$ for which there are at least two values of $n$ such that$$C_n - B_n = A_n^2?$$(A) $12$  (B) $14$  (C) $16$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-3": { s: String.raw`A unit of blood expires after$$10! = 10 \cdot 9 \cdot 8 \cdots 1$$seconds. Yasin donates a unit of blood at noon on January $1.$ On what day does his unit of blood expire?
+
+(A) January $2$  (B) January $12$  (C) January $22$  (D) February $11$  (E) February $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-4": { s: String.raw`How many ways can a student schedule $3$ mathematics courses — algebra, geometry, and number theory — in a $6$-period day if no two mathematics courses can be taken in consecutive periods?
+
+(What courses the student takes during the other $3$ periods is of no concern here.)
+
+(A) $3$  (B) $6$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-5": { s: String.raw`Alice, Bob, and Charlie were on a hike and were wondering how far away the nearest town was. When Alice said, “We are at least $6$ miles away,” Bob replied, “We are at most $5$ miles away.” Charlie then remarked, “Actually the nearest town is at most $4$ miles away.” It turned out that none of the three statements was true. Let $d$ be the distance in miles to the nearest town. Which of the following intervals is the set of all possible values of $d?$
+
+(A) $(0,4)$  (B) $(4,5)$  (C) $(4,6)$  (D) $(5,6)$  (E) $(5,\infty)$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-6": { s: String.raw`Sangho uploaded a video to a website where viewers can vote that they like or dislike a video. Each video begins with a score of $0,$ and the score increases by $1$ for each like vote and decreases by $1$ for each dislike vote.
+
+At one point Sangho saw that his video had a score of $90,$ and that $65\%$ of the votes cast on his video were like votes. How many votes had been cast on Sangho’s video at that point?
+
+(A) $200$  (B) $300$  (C) $400$  (D) $500$  (E) $600$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-7": { s: String.raw`For how many (not necessarily positive) integer values of $n$ is the following value an integer?$$4000 \cdot \left(\dfrac{2}{5}\right)^n$$(A) $3$  (B) $4$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-8": { s: String.raw`Joe has a collection of $23$ coins, consisting of $5$-cent coins, $10$-cent coins, and $25$-cent coins. He has $3$ more $10$-cent coins than $5$-cent coins, and the total value of his collection is $320$ cents. How many more $25$-cent coins does Joe have than $5$-cent coins?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10a-9": { s: String.raw`All of the triangles in the diagram below are similar to isosceles triangle $ABC,$ in which $AB=AC.$ Each of the $7$ smallest triangles has area $1,$ and $\triangle ABC$ has area $40.$ What is the area of trapezoid $DBCE?$
+
+@@fig:amc10/2018A/9.svg@@
+
+(A) $16$  (B) $18$  (C) $20$  (D) $22$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2018A" },
+"2018-amc-10b-1": { s: String.raw`Kate bakes a $20$-inch by $18$-inch pan of cornbread. The cornbread is cut into pieces that measure $2$ inches by $2$ inches. How many pieces of cornbread does the pan contain?
+
+(A) $90$  (B) $100$  (C) $180$  (D) $200$  (E) $360$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-10": { s: String.raw`In the rectangular parallelepiped shown, $AB = 3,$ $BC = 1,$ and $CG = 2.$ Point $M$ is the midpoint of $FG.$ What is the volume of the rectangular pyramid with base $BCHE$ and apex $M?$
+
+@@fig:amc10/2018B/10.svg@@
+
+(A) $1$  (B) $\dfrac{4}{3}$  (C) $\dfrac{3}{2}$  (D) $\dfrac{5}{3}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-11": { s: String.raw`Which of the following expressions is never a prime number when $p$ is a prime number?
+
+(A) $p^2 + 16$  (B) $p^2 + 24$  (C) $p^2 + 26$  (D) $p^2 + 46$  (E) $p^2 + 96$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-12": { s: String.raw`Line segment $AB$ is a diameter of a circle with $AB = 24.$ Point $C,$ not equal to $A$ or $B,$ lies on the circle. As point $C$ moves around the circle, the centroid (center of mass) of $\triangle ABC$ traces out a closed curve missing two points. To the nearest positive integer, what is the area of the region bounded by this curve?
+
+(A) $25$  (B) $38$  (C) $50$  (D) $63$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-13": { s: String.raw`How many of the first $2018$ numbers in the sequence $101,$ $1001,$ $10001,$ $100001,$ $\ldots$ are divisible by $101?$
+
+(A) $253$  (B) $504$  (C) $505$  (D) $506$  (E) $1009$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-14": { s: String.raw`A list of $2018$ positive integers has a unique mode, which occurs exactly $10$ times. What is the least number of distinct values that can occur in the list?
+
+(A) $202$  (B) $223$  (C) $224$  (D) $225$  (E) $234$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-15": { s: String.raw`A closed box with a square base is to be wrapped with a square sheet of wrapping paper. The box is centered on the wrapping paper with the vertices of the base lying on the midlines of the square sheet of paper, as shown in the figure on the left. The four corners of the wrapping paper are to be folded up over the sides and brought together to meet at the center of the top of the box, point $A$ in the figure on the right. The box has base length $w$ and height $h.$ What is the area of the sheet of wrapping paper?
+
+@@fig:amc10/2018B/15.svg@@
+
+(A) $2(w + h)^2$  (B) $\dfrac{(w + h)^2}{2}$  (C) $2w^2 + 4wh$  (D) $2w^2$  (E) $w^2 h$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-16": { s: String.raw`Let $a_1,$ $a_2,$ $\ldots,$ $a_{2018}$ be a strictly increasing sequence of positive integers such that$$a_1 + a_2 + \cdots + a_{2018} = 2018^{2018}.$$What is the remainder when $a_1^3 + a_2^3 + \cdots + a_{2018}^3$ is divided by $6?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-17": { s: String.raw`In rectangle $PQRS,$ $PQ = 8$ and $QR = 6.$ Points $A$ and $B$ lie on $PQ,$ points $C$ and $D$ lie on $QR,$ points $E$ and $F$ lie on $RS,$ and points $G$ and $H$ lie on $SP$ so that $AP = BQ < 4$ and the convex octagon $ABCDEFGH$ is equilateral. The length of a side of this octagon can be expressed in the form $k + m\sqrt{n},$ where $k,$ $m,$ and $n$ are integers and $n$ is not divisible by the square of any prime. What is $k + m + n?$
+
+(A) $1$  (B) $7$  (C) $21$  (D) $92$  (E) $106$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-18": { s: String.raw`Three young brother-sister pairs from different families need to take a trip in a van. These six children will occupy the second and third rows in the van, each of which has three seats. To avoid disruptions, siblings may not sit right next to each other in the same row, and no child may sit directly in front of his or her sibling. How many seating arrangements are possible for this trip?
+
+(A) $60$  (B) $72$  (C) $92$  (D) $96$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-19": { s: String.raw`Joey and Chloe and their daughter Zoe all have the same birthday. Joey is $1$ year older than Chloe, and Zoe is exactly $1$ year old today. Today is the first of the $9$ birthdays on which Chloe’s age will be an integral multiple of Zoe’s age. What will be the sum of the two digits of Joey’s age the next time his age is a multiple of Zoe’s age?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-2": { s: String.raw`Sam drove $96$ miles in $90$ minutes. His average speed during the first $30$ minutes was $60$ mph (miles per hour), and his average speed during the second $30$ minutes was $65$ mph. What was his average speed, in mph, during the last $30$ minutes?
+
+(A) $64$  (B) $65$  (C) $66$  (D) $67$  (E) $68$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-20": { s: String.raw`A function $f$ is defined recursively by $f(1) = f(2) = 1$ and$$f(n) = f(n - 1) - f(n - 2) + n$$for all integers $n \ge 3.$ What is $f(2018)?$
+
+(A) $2016$  (B) $2017$  (C) $2018$  (D) $2019$  (E) $2020$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-21": { s: String.raw`Mary chose an even $4$-digit number $n.$ She wrote down all the divisors of $n$ in increasing order from left to right: $1,$ $2,$ $\ldots,$ $\frac{n}{2},$ $n.$ At some moment Mary wrote $323$ as a divisor of $n.$ What is the smallest possible value of the next divisor written to the right of $323?$
+
+(A) $324$  (B) $330$  (C) $340$  (D) $361$  (E) $646$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-22": { s: String.raw`Real numbers $x$ and $y$ are chosen independently and uniformly at random from the interval $[0, 1].$ Which of the following numbers is closest to the probability that $x,$ $y,$ and $1$ are the side lengths of an obtuse triangle?
+
+(A) $0.21$  (B) $0.25$  (C) $0.29$  (D) $0.50$  (E) $0.79$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-23": { s: String.raw`How many ordered pairs $(a, b)$ of positive integers satisfy the equation$$a \cdot b + 63 = 20 \cdot \operatorname{lcm}(a, b) + 12 \cdot \gcd(a, b),$$where $\gcd(a, b)$ denotes the greatest common divisor of $a$ and $b,$ and $\operatorname{lcm}(a, b)$ denotes their least common multiple?
+
+(A) $0$  (B) $2$  (C) $4$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-24": { s: String.raw`Let $ABCDEF$ be a regular hexagon with side length $1.$ Denote by $X,$ $Y,$ and $Z$ the midpoints of sides $AB,$ $CD,$ and $EF,$ respectively. What is the area of the convex hexagon whose interior is the intersection of the interiors of $\triangle ACE$ and $\triangle XYZ?$
+
+(A) $\dfrac{3}{8}\sqrt{3}$  (B) $\dfrac{7}{16}\sqrt{3}$  (C) $\dfrac{15}{32}\sqrt{3}$  (D) $\dfrac{1}{2}\sqrt{3}$  (E) $\dfrac{9}{16}\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-25": { s: String.raw`Let $\lfloor x \rfloor$ denote the greatest integer less than or equal to $x.$ How many real numbers $x$ satisfy the equation $x^2 + 10{,}000\lfloor x \rfloor = 10{,}000x?$
+
+(A) $197$  (B) $198$  (C) $199$  (D) $200$  (E) $201$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-3": { s: String.raw`In the expression $(\underline{\phantom{x}} \times \underline{\phantom{x}}) + (\underline{\phantom{x}} \times \underline{\phantom{x}})$ each blank is to be filled in with one of the digits $1,$ $2,$ $3,$ or $4,$ with each digit being used once. How many different values can be obtained?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $6$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-4": { s: String.raw`A three-dimensional rectangular box with dimensions $X,$ $Y,$ and $Z$ has faces whose surface areas are $24,$ $24,$ $48,$ $48,$ $72,$ and $72$ square units. What is $X + Y + Z?$
+
+(A) $18$  (B) $22$  (C) $24$  (D) $30$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-5": { s: String.raw`How many subsets of $\{2, 3, 4, 5, 6, 7, 8, 9\}$ contain at least one prime number?
+
+(A) $128$  (B) $192$  (C) $224$  (D) $240$  (E) $256$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-6": { s: String.raw`A box contains $5$ chips, numbered $1,$ $2,$ $3,$ $4,$ and $5.$ Chips are drawn randomly one at a time without replacement until the sum of the values drawn exceeds $4.$ What is the probability that $3$ draws are required?
+
+(A) $\dfrac{1}{15}$  (B) $\dfrac{1}{10}$  (C) $\dfrac{1}{6}$  (D) $\dfrac{1}{5}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-7": { s: String.raw`In the figure below, $N$ congruent semicircles are drawn along a diameter of a large semicircle, with their diameters covering the diameter of the large semicircle with no overlap. Let $A$ be the combined area of the small semicircles and $B$ be the area of the region inside the large semicircle but outside the small semicircles. The ratio $A : B$ is $1 : 18.$ What is $N?$
+
+@@fig:amc10/2018B/7.svg@@
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-8": { s: String.raw`Sara makes a staircase out of toothpicks as shown:
+
+@@fig:amc10/2018B/8.svg@@
+
+This is a $3$-step staircase and uses $18$ toothpicks. How many steps would be in a staircase that used $180$ toothpicks?
+
+(A) $10$  (B) $11$  (C) $12$  (D) $24$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-10b-9": { s: String.raw`The faces of each of $7$ standard dice are labeled with the integers from $1$ to $6.$ Let $p$ be the probability that when all $7$ dice are rolled, the sum of the numbers on the top faces is $10.$ What other sum occurs with the same probability $p?$
+
+(A) $13$  (B) $26$  (C) $32$  (D) $39$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc10/2018B" },
+"2018-amc-12a-1": { s: String.raw`A large urn contains $100$ balls, of which $36\%$ are red and the rest are blue. How many of the blue balls must be removed so that the percentage of red balls in the urn will be $72\%?$ (No red balls are to be removed.)
+
+(A) $28$  (B) $32$  (C) $36$  (D) $50$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-10": { s: String.raw`How many ordered pairs of real numbers $(x, y)$ satisfy the following system of equations?$$ x + 3y = 3 $$$$ \big|\,|x| - |y|\,\big| = 1 $$(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-11": { s: String.raw`A paper triangle with sides of lengths $3,$ $4,$ and $5$ inches, as shown, is folded so that point $A$ falls on point $B.$ What is the length in inches of the crease?
+
+@@fig:amc12/2018A/11.svg@@
+
+(A) $1 + \tfrac12 \sqrt{2}$  (B) $\sqrt{3}$  (C) $\tfrac{7}{4}$  (D) $\tfrac{15}{8}$  (E) $2$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-12": { s: String.raw`Let $S$ be a set of $6$ integers taken from $\{1, 2, \ldots, 12\}$ with the property that if $a$ and $b$ are elements of $S$ with $a \lt b,$ then $b$ is not a multiple of $a.$ What is the least possible value of an element of $S?$
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-13": { s: String.raw`How many nonnegative integers can be written in the form$$a_7 \cdot 3^7 + a_6 \cdot 3^6 + a_5 \cdot 3^5 + a_4 \cdot 3^4 + a_3 \cdot 3^3 + a_2 \cdot 3^2 + a_1 \cdot 3^1 + a_0 \cdot 3^0,$$where $a_i \in \{-1, 0, 1\}$ for $0 \le i \le 7?$
+
+(A) $512$  (B) $729$  (C) $1094$  (D) $3281$  (E) $59{,}048$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-14": { s: String.raw`The solution to the equation $\log_{3x} 4 = \log_{2x} 8,$ where $x$ is a positive real number other than $\tfrac13$ or $\tfrac12,$ can be written as $\tfrac{p}{q},$ where $p$ and $q$ are relatively prime positive integers. What is $p + q?$
+
+(A) $5$  (B) $13$  (C) $17$  (D) $31$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-15": { s: String.raw`A scanning code consists of a $7 \times 7$ grid of squares, with some of its squares colored black and the rest colored white. There must be at least one square of each color in this grid of $49$ squares. A scanning code is called symmetric if its look does not change when the entire square is rotated by a multiple of $90^\circ$ counterclockwise around its center, nor when it is reflected across a line joining opposite corners or a line joining midpoints of opposite sides. What is the total number of possible symmetric scanning codes?
+
+(A) $510$  (B) $1022$  (C) $8190$  (D) $8192$  (E) $65{,}534$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-16": { s: String.raw`Which of the following describes the set of values of $a$ for which the curves $x^2 + y^2 = a^2$ and $y = x^2 - a$ in the real $xy$-plane intersect at exactly $3$ points?
+
+(A) $a = \tfrac14$  (B) $\tfrac14 \lt a \lt \tfrac12$  (C) $a \gt \tfrac14$  (D) $a = \tfrac12$  (E) $a \gt \tfrac12$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-17": { s: String.raw`Farmer Pythagoras has a field in the shape of a right triangle. The right triangle’s legs have lengths of $3$ and $4$ units. In the corner where those sides meet at a right angle, he leaves a small unplanted square $S$ so that from the air it looks like the right angle symbol. The rest of the field is planted. The shortest distance from $S$ to the hypotenuse is $2$ units. What fraction of the field is planted?
+
+@@fig:amc12/2018A/17.svg@@
+
+(A) $\tfrac{25}{27}$  (B) $\tfrac{26}{27}$  (C) $\tfrac{73}{75}$  (D) $\tfrac{145}{147}$  (E) $\tfrac{74}{75}$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-18": { s: String.raw`Triangle $ABC$ with $AB = 50$ and $AC = 10$ has area $120.$ Let $D$ be the midpoint of $\overline{AB},$ and let $E$ be the midpoint of $\overline{AC}.$ The angle bisector of $\angle BAC$ intersects $\overline{DE}$ and $\overline{BC}$ at $F$ and $G,$ respectively. What is the area of quadrilateral $FDBG?$
+
+(A) $60$  (B) $65$  (C) $70$  (D) $75$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-19": { s: String.raw`Let $A$ be the set of positive integers that have no prime factors other than $2,$ $3,$ or $5.$ The infinite sum$$\frac{1}{1} + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{8} + \frac{1}{9} + \frac{1}{10} + \frac{1}{12} + \frac{1}{15} + \frac{1}{16} + \frac{1}{18} + \frac{1}{20} + \cdots$$of the reciprocals of all the elements of $A$ can be expressed as $\tfrac{m}{n},$ where $m$ and $n$ are relatively prime positive integers. What is $m + n?$
+
+(A) $16$  (B) $17$  (C) $19$  (D) $23$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-2": { s: String.raw`While exploring a cave, Carl comes across a collection of $5$-pound rocks worth $\$14$ each, $4$-pound rocks worth $\$11$ each, and $1$-pound rocks worth $\$2$ each. There are at least $20$ of each size. He can carry at most $18$ pounds. What is the maximum value, in dollars, of the rocks he can carry out of the cave?
+
+(A) $48$  (B) $49$  (C) $50$  (D) $51$  (E) $52$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-20": { s: String.raw`Triangle $ABC$ is an isosceles right triangle with $AB = AC = 3.$ Let $M$ be the midpoint of hypotenuse $\overline{BC}.$ Points $I$ and $E$ lie on sides $\overline{AC}$ and $\overline{AB},$ respectively, so that $AI \gt AE$ and $AIME$ is a cyclic quadrilateral. Given that triangle $EMI$ has area $2,$ the length $CI$ can be written as $\tfrac{a - \sqrt{b}}{c},$ where $a,$ $b,$ and $c$ are positive integers and $b$ is not divisible by the square of any prime. What is the value of $a + b + c?$
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-21": { s: String.raw`Which of the following polynomials has the greatest real root?
+
+(A) $x^{19} + 2018x^{11} + 1$  (B) $x^{17} + 2018x^{11} + 1$  (C) $x^{19} + 2018x^{13} + 1$  (D) $x^{17} + 2018x^{13} + 1$  (E) $2019x + 2018$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-22": { s: String.raw`The solutions to the equations $z^2 = 4 + 4\sqrt{15}\,i$ and $z^2 = 2 + 2\sqrt{3}\,i,$ where $i = \sqrt{-1},$ form the vertices of a parallelogram in the complex plane. The area of this parallelogram can be written in the form $p\sqrt{q} - r\sqrt{s},$ where $p,$ $q,$ $r,$ and $s$ are positive integers and neither $q$ nor $s$ is divisible by the square of any prime number. What is $p + q + r + s?$
+
+(A) $20$  (B) $21$  (C) $22$  (D) $23$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-23": { s: String.raw`In $\triangle PAT,$ $\angle P = 36^\circ,$ $\angle A = 56^\circ,$ and $PA = 10.$ Points $U$ and $G$ lie on sides $\overline{TP}$ and $\overline{TA},$ respectively, so that $PU = AG = 1.$ Let $M$ and $N$ be the midpoints of segments $\overline{PA}$ and $\overline{UG},$ respectively. What is the degree measure of the acute angle formed by lines $MN$ and $PA?$
+
+(A) $76$  (B) $77$  (C) $78$  (D) $79$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-24": { s: String.raw`Alice, Bob, and Carol play a game in which each of them chooses a real number between $0$ and $1.$ The winner of the game is the one whose number is between the numbers chosen by the other two players. Alice announces that she will choose her number uniformly at random from all the numbers between $0$ and $1,$ and Bob announces that he will choose his number uniformly at random from all the numbers between $\tfrac12$ and $\tfrac23.$ Armed with this information, what number should Carol choose to maximize her chance of winning?
+
+(A) $\tfrac12$  (B) $\tfrac{13}{24}$  (C) $\tfrac{7}{12}$  (D) $\tfrac58$  (E) $\tfrac23$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-25": { s: String.raw`For a positive integer $n$ and nonzero digits $a,$ $b,$ and $c,$ let $A_n$ be the $n$-digit integer each of whose digits is equal to $a;$ let $B_n$ be the $n$-digit integer each of whose digits is equal to $b;$ and let $C_n$ be the $2n$-digit (not $n$-digit) integer each of whose digits is equal to $c.$ What is the greatest possible value of $a + b + c$ for which there are at least two values of $n$ such that $C_n - B_n = A_n^2?$
+
+(A) $12$  (B) $14$  (C) $16$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-3": { s: String.raw`How many ways can a student schedule $3$ mathematics courses—algebra, geometry, and number theory—in a $6$-period day if no two mathematics courses can be taken in consecutive periods? (What courses the student takes during the other $3$ periods is of no concern here.)
+
+(A) $3$  (B) $6$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-4": { s: String.raw`Alice, Bob, and Charlie were on a hike and were wondering how far away the nearest town was. When Alice said, “We are at least $6$ miles away,” Bob replied, “We are at most $5$ miles away.” Charlie then remarked, “Actually the nearest town is at most $4$ miles away.” It turned out that none of the three statements was true. Let $d$ be the distance in miles to the nearest town. Which of the following intervals is the set of all possible values of $d?$
+
+(A) $(0, 4)$  (B) $(4, 5)$  (C) $(4, 6)$  (D) $(5, 6)$  (E) $(5, \infty)$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-5": { s: String.raw`What is the sum of all possible values of $k$ for which the polynomials $x^2 - 3x + 2$ and $x^2 - 5x + k$ have a root in common?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-6": { s: String.raw`For positive integers $m$ and $n$ such that $m + 10 \lt n + 1,$ both the mean and the median of the set $\{m, m + 4, m + 10,$ $n + 1,$ $n + 2,$ $2n\}$ are equal to $n.$ What is $m + n?$
+
+(A) $20$  (B) $21$  (C) $22$  (D) $23$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-7": { s: String.raw`For how many (not necessarily positive) integer values of $n$ is the value of$$ 4000 \cdot \left(\tfrac{2}{5}\right)^n $$an integer?
+
+(A) $3$  (B) $4$  (C) $6$  (D) $8$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-8": { s: String.raw`All of the triangles in the diagram below are similar to isosceles triangle $ABC,$ in which $AB = AC.$ Each of the $7$ smallest triangles has area $1,$ and $\triangle ABC$ has area $40.$ What is the area of trapezoid $DBCE?$
+
+@@fig:amc12/2018A/8.svg@@
+
+(A) $16$  (B) $18$  (C) $20$  (D) $22$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12a-9": { s: String.raw`Which of the following describes the largest subset of values of $y$ within the closed interval $[0, \pi]$ for which$$ \sin(x + y) \le \sin(x) + \sin(y) $$for every $x$ between $0$ and $\pi,$ inclusive?
+
+(A) $y = 0$  (B) $0 \le y \le \tfrac{\pi}{4}$  (C) $0 \le y \le \tfrac{\pi}{2}$  (D) $0 \le y \le \tfrac{3\pi}{4}$  (E) $0 \le y \le \pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2018A" },
+"2018-amc-12b-1": { s: String.raw`Kate bakes a $20$-inch by $18$-inch pan of cornbread. The cornbread is cut into pieces that measure $2$ inches by $2$ inches. How many pieces of cornbread does the pan contain?
+
+(A) $90$  (B) $100$  (C) $180$  (D) $200$  (E) $360$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-10": { s: String.raw`A list of $2018$ positive integers has a unique mode, which occurs exactly $10$ times. What is the least number of distinct values that can occur in the list?
+
+(A) $202$  (B) $223$  (C) $224$  (D) $225$  (E) $234$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-11": { s: String.raw`A closed box with a square base is to be wrapped with a square sheet of wrapping paper. The box is centered on the wrapping paper with the vertices of the base lying on the midlines of the square sheet of paper, as shown in the figure on the left. The four corners of the wrapping paper are to be folded up over the sides and brought together to meet at the center of the top of the box, point $A$ in the figure on the right. The box has base length $w$ and height $h.$ What is the area of the sheet of wrapping paper?
+
+@@fig:amc12/2018B/11.svg@@
+
+(A) $2(w+h)^2$  (B) $\dfrac{(w+h)^2}{2}$  (C) $2w^2+4wh$  (D) $2w^2$  (E) $w^2h$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-12": { s: String.raw`Side $\overline{AB}$ of $\triangle ABC$ has length $10.$ The bisector of angle $A$ meets $\overline{BC}$ at $D,$ and $CD=3.$ The set of all possible values of $AC$ is an open interval $(m, n).$ What is $m+n?$
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-13": { s: String.raw`Square $ABCD$ has side length $30.$ Point $P$ lies inside the square so that $AP=12$ and $BP=26.$ The centroids of $\triangle ABP,$ $\triangle BCP,$ $\triangle CDP,$ and $\triangle DAP$ are the vertices of a convex quadrilateral. What is the area of that quadrilateral?
+
+@@fig:amc12/2018B/13.svg@@
+
+(A) $100\sqrt{2}$  (B) $100\sqrt{3}$  (C) $200$  (D) $200\sqrt{2}$  (E) $200\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-14": { s: String.raw`Joey and Chloe and their daughter Zoe all have the same birthday. Joey is $1$ year older than Chloe, and Zoe is exactly $1$ year old today. Today is the first of the $9$ birthdays on which Chloe’s age will be an integral multiple of Zoe’s age. What will be the sum of the two digits of Joey’s age the next time his age is a multiple of Zoe’s age?
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-15": { s: String.raw`How many $3$-digit positive odd multiples of $3$ do not include the digit $3?$
+
+(A) $96$  (B) $97$  (C) $98$  (D) $102$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-16": { s: String.raw`The solutions to the equation $(z+6)^8=81$ are connected in the complex plane to form a convex regular polygon, three of whose vertices are labeled $A,$ $B,$ and $C.$ What is the least possible area of $\triangle ABC?$
+
+(A) $\dfrac{1}{6}\sqrt{6}$
+(B) $\dfrac{3}{2}\sqrt{2}-\dfrac{3}{2}$
+(C) $2\sqrt{3}-2\sqrt{2}$
+(D) $\dfrac{1}{2}\sqrt{2}$
+(E) $\sqrt{3}-1$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-17": { s: String.raw`Let $p$ and $q$ be positive integers such that$$ \dfrac{5}{9}\lt\dfrac{p}{q}\lt\dfrac{4}{7} $$and $q$ is as small as possible. What is $q-p?$
+
+(A) $7$  (B) $11$  (C) $13$  (D) $17$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-18": { s: String.raw`A function $f$ is defined recursively by $f(1)=f(2)=1$ and$$ f(n)=f(n-1)-f(n-2)+n $$for all integers $n\ge3.$ What is $f(2018)?$
+
+(A) $2016$  (B) $2017$  (C) $2018$  (D) $2019$  (E) $2020$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-19": { s: String.raw`Mary chose an even $4$-digit number $n.$ She wrote down all the divisors of $n$ in increasing order from left to right: $1,$ $2,$ $\ldots,$ $\tfrac{n}{2},$ $n.$ At some moment Mary wrote $323$ as a divisor of $n.$ What is the smallest possible value of the next divisor written to the right of $323?$
+
+(A) $324$  (B) $330$  (C) $340$  (D) $361$  (E) $646$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-2": { s: String.raw`Sam drove $96$ miles in $90$ minutes. His average speed during the first $30$ minutes was $60$ mph (miles per hour), and his average speed during the second $30$ minutes was $65$ mph. What was his average speed, in mph, during the last $30$ minutes?
+
+(A) $64$  (B) $65$  (C) $66$  (D) $67$  (E) $68$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-20": { s: String.raw`Let $ABCDEF$ be a regular hexagon with side length $1.$ Denote by $X,$ $Y,$ and $Z$ the midpoints of sides $AB,$ $CD,$ and $EF,$ respectively. What is the area of the convex hexagon whose interior is the intersection of the interiors of $\triangle ACE$ and $\triangle XYZ?$
+
+(A) $\dfrac{3}{8}\sqrt{3}$  (B) $\dfrac{7}{16}\sqrt{3}$  (C) $\dfrac{15}{32}\sqrt{3}$  (D) $\dfrac{1}{2}\sqrt{3}$  (E) $\dfrac{9}{16}\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-21": { s: String.raw`In $\triangle ABC$ with side lengths $AB=13,$ $AC=12,$ and $BC=5,$ let $O$ and $I$ denote the circumcenter and incenter, respectively. A circle with center $M$ is tangent to the legs $AC$ and $BC$ and to the circumcircle of $\triangle ABC.$ What is the area of $\triangle MOI?$
+
+(A) $\dfrac{5}{2}$  (B) $\dfrac{11}{4}$  (C) $3$  (D) $\dfrac{13}{4}$  (E) $\dfrac{7}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-22": { s: String.raw`Consider polynomials $P(x)$ of degree at most $3,$ each of whose coefficients is an element of $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}.$ How many such polynomials satisfy $P(-1)=-9?$
+
+(A) $110$  (B) $143$  (C) $165$  (D) $220$  (E) $286$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-23": { s: String.raw`Ajay is standing at point $A$ near Pontianak, Indonesia, $0^\circ$ latitude and $110^\circ$ E longitude. Billy is standing at point $B$ near Big Baldy Mountain, Idaho, USA, $45^\circ$ N latitude and $115^\circ$ W longitude. Assume that Earth is a perfect sphere with center $C.$ What is the degree measure of $\angle ACB?$
+
+(A) $105$  (B) $112\tfrac{1}{2}$  (C) $120$  (D) $135$  (E) $150$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-24": { s: String.raw`Let $\lfloor x\rfloor$ denote the greatest integer less than or equal to $x.$ How many real numbers $x$ satisfy the equation $x^2+10{,}000\lfloor x\rfloor=10{,}000x?$
+
+(A) $197$  (B) $198$  (C) $199$  (D) $200$  (E) $201$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-25": { s: String.raw`Circles $\omega_1,$ $\omega_2,$ and $\omega_3$ each have radius $4$ and are placed in the plane so that each circle is externally tangent to the other two. Points $P_1,$ $P_2,$ and $P_3$ lie on $\omega_1,$ $\omega_2,$ and $\omega_3,$ respectively, so that $P_1P_2=P_2P_3=P_3P_1$ and line $P_iP_{i+1}$ is tangent to $\omega_i$ for each $i=1,$ $2,$ $3,$ where $P_4=P_1.$ See the figure below. The area of $\triangle P_1P_2P_3$ can be written in the form $\sqrt{a}+\sqrt{b},$ where $a$ and $b$ are positive integers. What is $a+b?$
+
+@@fig:amc12/2018B/25.svg@@
+
+(A) $546$  (B) $548$  (C) $550$  (D) $552$  (E) $554$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-3": { s: String.raw`A line with slope $2$ intersects a line with slope $6$ at the point $(40, 30).$ What is the distance between the $x$-intercepts of these two lines?
+
+(A) $5$  (B) $10$  (C) $20$  (D) $25$  (E) $50$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-4": { s: String.raw`A circle has a chord of length $10,$ and the distance from the center of the circle to the chord is $5.$ What is the area of the circle?
+
+(A) $25\pi$  (B) $50\pi$  (C) $75\pi$  (D) $100\pi$  (E) $125\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-5": { s: String.raw`How many subsets of $\{2, 3, 4, 5, 6, 7, 8, 9\}$ contain at least one prime number?
+
+(A) $128$  (B) $192$  (C) $224$  (D) $240$  (E) $256$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-6": { s: String.raw`Suppose $S$ cans of soda can be purchased from a vending machine for $Q$ quarters. Which of the following expressions describes the number of cans of soda that can be purchased for $D$ dollars, where $1$ dollar is worth $4$ quarters?
+
+(A) $\dfrac{4DQ}{S}$  (B) $\dfrac{4DS}{Q}$  (C) $\dfrac{4Q}{DS}$  (D) $\dfrac{DQ}{4S}$  (E) $\dfrac{DS}{4Q}$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-7": { s: String.raw`What is the value of$$\log_3 7\cdot\log_5 9\cdot\log_7 11 \cdot\log_9 13\cdots\log_{21} 25\cdot\log_{23} 27?$$(A) $3$  (B) $3\log_7 23$  (C) $6$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-8": { s: String.raw`Line segment $\overline{AB}$ is a diameter of a circle with $AB=24.$ Point $C,$ not equal to $A$ or $B,$ lies on the circle. As point $C$ moves around the circle, the centroid (center of mass) of $\triangle ABC$ traces out a closed curve missing two points. To the nearest positive integer, what is the area of the region bounded by this curve?
+
+(A) $25$  (B) $38$  (C) $50$  (D) $63$  (E) $75$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-12b-9": { s: String.raw`What is$$ \sum_{i=1}^{100}\sum_{j=1}^{100}(i+j)? $$(A) $100{,}100$  (B) $500{,}500$  (C) $505{,}000$  (D) $1{,}001{,}000$  (E) $1{,}010{,}000$`, u: "https://live.poshenloh.com/past-contests/amc12/2018B" },
+"2018-amc-8-1": { s: String.raw`An amusement park has a collection of scale models, with a ratio of $1: 20,$ of buildings and other sights from around the country. The height of the United States Capitol is $289$ feet. What is the height in feet of its replica at this park, rounded to the nearest whole number?
+
+(A) $14$  (B) $15$  (C) $16$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-10": { s: String.raw`The harmonic mean of a set of non-zero numbers is the reciprocal of the average of the reciprocals of the numbers. What is the harmonic mean of $1,$ $2,$ and $4?$
+
+(A) $\dfrac{3}{7}$  (B) $\dfrac{7}{12}$  (C) $\dfrac{12}{7}$  (D) $\dfrac{7}{4}$  (E) $\dfrac{7}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-11": { s: String.raw`Abby, Bridget, and four of their classmates will be seated in two rows of three for a group picture, as shown.$$\begin{array}{ccc} \text{\text{X}}&\text{X}&\text{X} \\ \text{X}&\text{X}&\text{X} \end{array}$$If the seating positions are assigned randomly, what is the probability that Abby and Bridget are adjacent to each other in the same row or the same column?
+
+(A) $\dfrac{1}{3}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{7}{15}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-12": { s: String.raw`The clock in Sri’s car, which is not accurate, gains time at a constant rate. One day as he begins shopping he notes that his car clock and his watch (which is accurate) both say $12{:}00$ noon. When he is done shopping, his watch says $12{:}30$ and his car clock says $12{:}35.$ Later that day, Sri loses his watch. He looks at his car clock and it says $7{:}00.$ What is the actual time?
+
+(A) $5:50$  (B) $6:00$  (C) $6:30$  (D) $6:55$  (E) $8:10$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-13": { s: String.raw`Laila took five math tests, each worth a maximum of $100$ points. Laila’s score on each test was an integer between $0$ and $100,$ inclusive. Laila received the same score on the first four tests, and she received a higher score on the last test. Her average score on the five tests was $82.$ How many values are possible for Laila’s score on the last test?
+
+(A) $4$  (B) $5$  (C) $9$  (D) $10$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-14": { s: String.raw`Let $N$ be the greatest five-digit number whose digits have a product of $120.$ What is the sum of the digits of $N?$
+
+(A) $15$  (B) $16$  (C) $17$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-15": { s: String.raw`In the diagram below, a diameter of each of the two smaller circles is a radius of the larger circle. If the two smaller circles have a combined area of $1$ square unit, then what is the area of the shaded region, in square units?
+
+@@fig:amc8/2018/15.svg@@
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{3}$  (C) $\dfrac{1}{2}$  (D) $1$  (E) $\dfrac{\pi}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-16": { s: String.raw`Professor Chang has nine different language books lined up on a bookshelf: two Arabic, three German, and four Spanish. How many ways are there to arrange the nine books on the shelf keeping the Arabic books together and keeping the Spanish books together?
+
+(A) $1440$  (B) $2880$  (C) $5760$  (D) $182{,}440$  (E) $362{,}880$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-17": { s: String.raw`Bella begins to walk from her house toward her friend Ella’s house. At the same time, Ella begins to ride her bicycle toward Bella’s house. They each maintain a constant speed, and Ella rides $5$ times as fast as Bella walks. The distance between their houses is $2$ miles, which is $10{,}560$ feet, and Bella covers $2 \tfrac{1}{2}$ feet with each step. How many steps will Bella take by the time she meets Ella?
+
+(A) $704$  (B) $845$  (C) $1056$  (D) $1760$  (E) $3520$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-18": { s: String.raw`How many positive factors does $23{,}232$ have?
+
+(A) $9$  (B) $12$  (C) $28$  (D) $36$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-19": { s: String.raw`In a sign pyramid a cell gets a “+” if the two cells below it have the same sign, and it gets a “-” if the two cells below it have different signs. The diagram below illustrates a sign pyramid with four levels. How many possible ways are there to fill the four cells in the bottom row to produce a “+” at the top of the pyramid?
+
+@@fig:amc8/2018/19.svg@@
+
+(A) $2$  (B) $4$  (C) $8$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-2": { s: String.raw`What is the value of the product$$\begin{align*} &\left(1+\frac{1}{1}\right)\cdot\left(1+\frac{1}{2}\right)\\ &\quad{}\cdot\left(1+\frac{1}{3}\right)\cdot\left(1+\frac{1}{4}\right)\\ &\quad{}\cdot\left(1+\frac{1}{5}\right)\cdot\left(1+\frac{1}{6}\right)? \end{align*}$$(A) $\dfrac{7}{6}$  (B) $\dfrac{4}{3}$  (C) $\dfrac{7}{2}$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-20": { s: String.raw`In $\triangle ABC,$ a point $E$ is on $\overline{AB}$ with $AE=1$ and $EB=2.$ Point $D$ is on $\overline{AC}$ so that $\overline{DE} \parallel \overline{BC}$ and point $F$ is on $\overline{BC}$ so that $\overline{EF} \parallel \overline{AC}.$ What is the ratio of the area of $CDEF$ to the area of $\triangle ABC?$
+
+@@fig:amc8/2018/20.svg@@
+
+(A) $\dfrac{4}{9}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{5}{9}$  (D) $\dfrac{3}{5}$  (E) $\dfrac{2}{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-21": { s: String.raw`How many positive three-digit integers have a remainder of $2$ when divided by $6,$ a remainder of $5$ when divided by $9,$ and a remainder of $7$ when divided by $11?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-22": { s: String.raw`Point $E$ is the midpoint of side $\overline{CD}$ in square $ABCD,$ and $\overline{BE}$ meets diagonal $\overline{AC}$ at $F.$ The area of quadrilateral $AFED$ is $45.$ What is the area of $ABCD?$
+
+@@fig:amc8/2018/22.svg@@
+
+(A) $100$  (B) $108$  (C) $120$  (D) $135$  (E) $144$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-23": { s: String.raw`From a regular octagon, a triangle is formed by connecting three randomly chosen vertices of the octagon. What is the probability that at least one of the sides of the triangle is also a side of the octagon?
+
+@@fig:amc8/2018/23.svg@@
+
+(A) $\dfrac{2}{7}$  (B) $\dfrac{5}{42}$  (C) $\dfrac{11}{14}$  (D) $\dfrac{5}{7}$  (E) $\dfrac{6}{7}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-24": { s: String.raw`In the cube $ABCDEFGH$ with opposite vertices $C$ and $E,$ $J$ and $I$ are the midpoints of edges $\overline{FB}$ and $\overline{HD},$ respectively. Let $R$ be the ratio of the area of the cross-section $EJCI$ to the area of one of the faces of the cube. What is $R^2?$
+
+@@fig:amc8/2018/24.svg@@
+
+(A) $\dfrac{5}{4}$  (B) $\dfrac{4}{3}$  (C) $\dfrac{3}{2}$  (D) $\dfrac{25}{16}$  (E) $\dfrac{9}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-25": { s: String.raw`How many perfect cubes lie between $2^8+1$ and $2^{18}+1,$ inclusive?
+
+(A) $4$  (B) $9$  (C) $10$  (D) $57$  (E) $58$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-3": { s: String.raw`Students Arn, Bob, Cyd, Dan, Eve, and Fon are arranged in that order in a circle. They start counting: Arn first, then Bob, and so forth. When the number contains a $7$ as a digit (such as $47$) or is a multiple of $7$ that person leaves the circle and the counting continues. Who is the last one present in the circle?
+
+(A) $\text{Arn}$  (B) $\text{Bob}$  (C) $\text{Cyd}$  (D) $\text{Dan}$  (E) $\text{Eve}$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-4": { s: String.raw`The twelve-sided figure shown has been drawn on $1 \text{ cm}\times 1 \text{ cm}$ graph paper. What is the area of the figure in $\text{cm}^2?$
+
+@@fig:amc8/2018/4.svg@@
+
+(A) $12$  (B) $12.5$  (C) $13$  (D) $13.5$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-5": { s: String.raw`What is the value of$$\begin{align*} &1+3+5+\cdots+2017+2019 \\ -&2-4-6-\cdots-2016-2018? \end{align*}$$(A) $-1010$  (B) $-1009$  (C) $1008$  (D) $1009$  (E) $1010$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-6": { s: String.raw`On a trip to the beach, Anh traveled $50$ miles on the highway and $10$ miles on a coastal access road. He drove three times as fast on the highway as on the coastal road. If Anh spent $30$ minutes driving on the coastal road, how many minutes did his entire trip take?
+
+(A) $50$  (B) $70$  (C) $80$  (D) $90$  (E) $100$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-7": { s: String.raw`The $5$-digit number $\underline{2}$ $\underline{0}$ $\underline{1}$ $\underline{8}$ $\underline{U}$ is divisible by $9.$ What is the remainder when this number is divided by $8?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-8": { s: String.raw`Mr. Garcia asked the members of his health class how many days last week they exercised for at least $30$ minutes. The results are summarized in the following bar graph, where the heights of the bars represent the number of students.
+
+@@fig:amc8/2018/8.svg@@
+
+What was the mean number of days of exercise last week, rounded to the nearest hundredth, reported by the students in Mr. Garcia’s class?
+
+(A) $3.50$  (B) $3.57$  (C) $4.36$  (D) $4.50$  (E) $5.00$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
+"2018-amc-8-9": { s: String.raw`Tyler is tiling the floor of his $12$ foot by $16$ foot living room. He plans to place one-foot by one-foot square tiles to form a border along the edges of the room and to fill in the rest of the floor with two-foot by two-foot square tiles. How many tiles will he use?
+
+(A) $48$  (B) $87$  (C) $91$  (D) $96$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc8/2018" },
 });

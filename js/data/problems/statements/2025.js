@@ -156,6 +156,107 @@ Each statement is either true or false. How many false statements did Agnes writ
 "2025-amc-10a-9": { s: String.raw`Let $f(x) = 100x^3 - 300x^2 + 200x.$ For how many real numbers $a$ does the graph of $y = f(x - a)$ pass through the point $(1, 25)?$
 
 (A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) more than $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2025A" },
+"2025-amc-10b-1": { s: String.raw`The instructions on a $350$-gram bag of coffee beans say that proper brewing of a large mug of pour-over coffee requires $20$ grams of coffee beans. What is the greatest number of properly brewed large mugs of coffee that can be made from the coffee beans in that bag?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-10": { s: String.raw`Let $f(n) = n^3 - 5n^2 + 2n + 8,$ and let $g(n) = n^3 - 6n^2 + 5n + 12.$ What is the sum of all integer values of $n$ for which $\dfrac{f(n)}{g(n)}$ is also an integer?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-11": { s: String.raw`On Monday, $6$ students went to the tutoring center at the same time, and each one was randomly assigned to one of the $6$ tutors on duty. On Tuesday, the same $6$ students showed up, the same $6$ tutors were on duty, and the students were again randomly assigned to the tutors. What is the probability that exactly $2$ students met with the same tutor both Monday and Tuesday?
+
+(A) $\dfrac{1}{16}$  (B) $\dfrac{3}{16}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-12": { s: String.raw`The figure below shows an equilateral triangle, a rhombus with a $60^\circ$ angle, and a regular hexagon, each of them containing some mutually tangent congruent disks. Let $T,$ $R,$ and $H,$ respectively, denote the ratio in each case of the total area of the disks to the area of the enclosing polygon.
+
+@@fig:amc10/2025B/12.svg@@
+
+Which of the following is true?
+
+(A) $T = H = R$  (B) $H \lt R = T$  (C) $H = R \lt T$  (D) $H \lt R \lt T$  (E) $H \lt T \lt R$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-13": { s: String.raw`The altitude to the hypotenuse of a $30$-$60$-$90^\circ$ right triangle is divided into two segments of lengths $x \lt y$ by the median to the shortest side of the triangle. What is the ratio $\dfrac{x}{x + y}?$
+
+(A) $\dfrac{3}{7}$  (B) $\dfrac{\sqrt3}{4}$  (C) $\dfrac{4}{9}$  (D) $\dfrac{5}{11}$  (E) $\dfrac{4\sqrt3}{15}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-14": { s: String.raw`Nine athletes, no two of whom are the same height, try out for the basketball team. One at a time, they draw a wristband at random, without replacement, from a bag containing $3$ blue bands, $3$ red bands, and $3$ green bands. They are divided into a blue group, a red group, and a green group. The tallest member of each group is named the group captain. What is the probability that the group captains are the three tallest athletes?
+
+(A) $\dfrac{2}{9}$  (B) $\dfrac{2}{7}$  (C) $\dfrac{9}{28}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{3}{8}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-15": { s: String.raw`The sum$$\sum_{k=1}^{\infty} \frac{1}{k^3 + 6k^2 + 8k}$$can be expressed as $\dfrac{a}{b},$ where $a$ and $b$ are relatively prime positive integers. What is $a + b?$
+
+(A) $89$  (B) $97$  (C) $102$  (D) $107$  (E) $129$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-16": { s: String.raw`A circle has been divided into $6$ sectors of different sizes. Then $2$ of the sectors are painted red, $2$ painted green, and $2$ painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.
+
+@@fig:amc10/2025B/16.svg@@
+
+How many different colorings are possible?
+
+(A) $12$  (B) $16$  (C) $18$  (D) $24$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-17": { s: String.raw`Consider a decreasing sequence of $n$ positive integers $x_1 \gt x_2 \gt x_3 \gt \cdots \gt x_n$ that satisfies the following conditions. The average of the first $3$ terms in the sequence is $2025.$ For all $4 \le k \le n,$ the average of the first $k$ terms in the sequence is $1$ less than the average of the first $k - 1$ terms in the sequence.
+
+What is the greatest possible value of $n?$
+
+(A) $1013$  (B) $1014$  (C) $1016$  (D) $2016$  (E) $2025$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-18": { s: String.raw`What is the ones digit of the sum $\lfloor\sqrt{1}\rfloor + \lfloor\sqrt{2}\rfloor + \lfloor\sqrt{3}\rfloor$ $+ \cdots + \lfloor\sqrt{2024}\rfloor$ $+ \lfloor\sqrt{2025}\rfloor?$ (Recall that $\lfloor x \rfloor$ denotes the greatest integer less than or equal to $x.$)
+
+(A) $1$  (B) $2$  (C) $3$  (D) $5$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-19": { s: String.raw`A container has a $1 \times 1$ square bottom, a $3 \times 3$ open square top, and four congruent trapezoidal sides, as shown. Starting when the container is empty, a hose that runs water at a constant rate takes $35$ minutes to fill the container up to the midline of the trapezoids.
+
+@@fig:amc10/2025B/19.svg@@
+
+How many more minutes will it take to fill the remainder of the container?
+
+(A) $70$  (B) $85$  (C) $90$  (D) $95$  (E) $105$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-2": { s: String.raw`Jerry wrote down the ones digit of each of the first $2025$ positive squares: $1,$ $4,$ $9,$ $6,$ $5,$ $6,$ $\ldots$ What is the sum of all the numbers Jerry wrote down?
+
+(A) $9025$  (B) $9070$  (C) $9090$  (D) $9115$  (E) $9160$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-20": { s: String.raw`Four congruent semicircles are inscribed in a square of side length $1$ so that their diameters are on the sides of the square, one endpoint of each diameter is at a vertex of the square, and adjacent semicircles are tangent to each other. A small circle centered at the center of the square is tangent to each of the four semicircles, as shown below.
+
+@@fig:amc10/2025B/20.svg@@
+
+The diameter of the small circle can be written as $(\sqrt{a} + b)(\sqrt{c} + d),$ where $a,$ $b,$ $c,$ and $d$ are integers. What is $a + b + c + d?$
+
+(A) $3$  (B) $5$  (C) $8$  (D) $9$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-21": { s: String.raw`Each of the $9$ squares in a $3 \times 3$ grid is to be colored red, blue, or yellow in such a way that each red square shares an edge with at least one blue square, each blue square shares an edge with at least one yellow square, and each yellow square shares an edge with at least one red square. Colorings that can be obtained from one another by rotations and/or reflections are to be considered the same. How many different colorings are possible?
+
+(A) $3$  (B) $9$  (C) $12$  (D) $18$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-22": { s: String.raw`A seven-digit positive integer is chosen at random. What is the probability that the number is divisible by $11,$ given that the sum of its digits is $61?$
+
+(A) $\dfrac{3}{14}$  (B) $\dfrac{3}{11}$  (C) $\dfrac{2}{7}$  (D) $\dfrac{4}{11}$  (E) $\dfrac{3}{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-23": { s: String.raw`A rectangular grid of squares has $141$ rows and $91$ columns. Each square has room for two numbers. Horace and Vera each fill in the grid by putting the numbers from $1$ through $141 \times 91 = 12{,}831$ into the squares. Horace fills the grid horizontally: he puts $1$ through $91$ in order from left to right into row $1,$ puts $92$ through $182$ into row $2$ in order from left to right, and continues similarly through row $141.$ Vera fills the grid vertically: she puts $1$ through $141$ in order from top to bottom into column $1,$ then $142$ through $282$ into column $2$ in order from top to bottom, and continues similarly through column $91.$ How many squares get two copies of the same number?
+
+(A) $7$  (B) $10$  (C) $11$  (D) $12$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-24": { s: String.raw`A frog hops along the number line according to the following rules. It starts at $0.$ If it is at $0,$ then it moves to $1$ with probability $\tfrac12$ and it disappears with probability $\tfrac12.$ For $n = 1,$ $2,$ or $3,$ if it is at $n,$ then it moves to $n + 1$ with probability $\tfrac14,$ it moves to $n - 1$ with probability $\tfrac14,$ and it disappears with probability $\tfrac12.$
+
+What is the probability that the frog reaches $4?$
+
+(A) $\dfrac{1}{101}$  (B) $\dfrac{1}{100}$  (C) $\dfrac{1}{99}$  (D) $\dfrac{1}{98}$  (E) $\dfrac{1}{97}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-25": { s: String.raw`Square $ABCD$ has sides of length $4.$ Points $P$ and $Q$ lie on $\overline{AD}$ and $\overline{CD},$ respectively, with $AP = \tfrac{8}{5}$ and $DQ = \tfrac{10}{3}.$ A path begins along the line segment from $P$ to $Q$ and continues by reflecting against the sides of $ABCD$ (with congruent incoming and outgoing angles), as shown in the figure. If the path hits a vertex of the square, then it terminates there; otherwise it continues forever.
+
+@@fig:amc10/2025B/25.svg@@
+
+At which vertex does the path terminate?
+
+(A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) The path continues forever.`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-3": { s: String.raw`A Pascal-like triangle has $10$ as the top row and $10$ followed by $1$ as the second row. In each subsequent row the first number is $10,$ the last number is $1,$ and, as in the standard Pascal’s Triangle, each other number in the row is the sum of the two numbers directly above it. The first four rows are shown below.
+
+@@fig:amc10/2025B/3.svg@@
+
+What is the sum of the digits of the sum of the numbers in the $11$th row?
+
+(A) $11$  (B) $13$  (C) $14$  (D) $16$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-4": { s: String.raw`The value of the two-digit number $\underline{a}\,\underline{b}$ in base seven equals the value of the two-digit number $\underline{b}\,\underline{a}$ in base nine. What is $a + b?$
+
+(A) $7$  (B) $9$  (C) $10$  (D) $11$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-5": { s: String.raw`In $\triangle ABC,$ $AB = 10,$ $AC = 18,$ and $\angle B = 130^\circ.$ Let $O$ be the center of the circle containing points $A,$ $B,$ and $C.$ What is the degree measure of $\angle CAO?$
+
+(A) $20$  (B) $30$  (C) $40$  (D) $50$  (E) $60$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-6": { s: String.raw`The line $y = \tfrac{1}{3}x + 1$ divides the square region defined by $0 \le x \le 2$ and $0 \le y \le 2$ into an upper region and a lower region. The line $x = a$ divides the lower region into two regions of equal area. Then $a$ can be written as $\sqrt{s} - t,$ where $s$ and $t$ are positive integers. What is $s + t?$
+
+(A) $18$  (B) $19$  (C) $20$  (D) $21$  (E) $22$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-7": { s: String.raw`Frances stands $15$ meters directly south of a locked gate in a fence that runs east-west. Immediately behind the fence is a box of chocolates, located $x$ meters east of the locked gate. An unlocked gate lies $9$ meters east of the box, and another unlocked gate lies $8$ meters west of the locked gate. Frances can reach the box by walking toward an unlocked gate, passing through it, and walking toward the box. It happens that the total distance Frances would travel would be the same via either unlocked gate. What is the value of $x?$
+
+(A) $3\tfrac{2}{7}$  (B) $3\tfrac{3}{7}$  (C) $3\tfrac{4}{7}$  (D) $3\tfrac{5}{7}$  (E) $3\tfrac{6}{7}$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-8": { s: String.raw`Emmy says to Max, “I ordered $36$ math club sweatshirts today.” Max asks, “How much did each shirt cost?” Emmy responds, “I’ll give you a hint. The total cost was $\$\underline{A}\,\underline{B}\,\underline{B}.\underline{B}\,\underline{A},$ where $A$ and $B$ are digits and $A \ne 0.$” After a pause, Max says, “That was a good price.” What is $A + B?$
+
+(A) $7$  (B) $8$  (C) $11$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
+"2025-amc-10b-9": { s: String.raw`How many ordered triples of integers $(x, y, z)$ satisfy the following system of inequalities?$$-x - y - z \le -2$$$$-x + y + z \le 2$$$$x - y + z \le 2$$$$x + y - z \le 2$$(A) $4$  (B) $8$  (C) $11$  (D) $15$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2025B" },
 "2025-amc-12a-1": { s: String.raw`Andy and Betsy both live in Mathville. Andy leaves Mathville on his bicycle at $1{:}30,$ traveling due north at a steady $8$ miles per hour. Betsy leaves on her bicycle from the same point at $2{:}30,$ traveling due east at a steady $12$ miles per hour. At what time will they be exactly the same distance from their common starting point?
 
 (A) $3{:}30$  (B) $3{:}45$  (C) $4{:}00$  (D) $4{:}15$  (E) $4{:}30$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
@@ -255,4 +356,232 @@ The area of the shaded portion of the figure is $64\%$ of the area of the origin
 "2025-amc-12a-9": { s: String.raw`Let $w$ be the complex number $2 + i,$ where $i = \sqrt{-1}.$ What real number $r$ has the property that $r,$ $w,$ and $w^2$ are three collinear points in the complex plane?
 
 (A) $\dfrac{3}{4}$  (B) $1$  (C) $\dfrac{7}{5}$  (D) $\dfrac{3}{2}$  (E) $\dfrac{5}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025A" },
+"2025-amc-12b-1": { s: String.raw`The instructions on a $350$-gram bag of coffee beans say that proper brewing of a large mug of pour-over coffee requires $20$ grams of coffee beans. What is the greatest number of properly brewed large mugs of coffee that can be made from the coffee beans in that bag?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-10": { s: String.raw`The altitude to the hypotenuse of a $30\text{-}60\text{-}90$ right triangle is divided into two segments of lengths $x \lt y$ by the median to the shortest side of the triangle. What is the ratio $\dfrac{x}{x+y}?$
+
+(A) $\dfrac{3}{7}$  (B) $\dfrac{\sqrt{3}}{4}$  (C) $\dfrac{4}{9}$  (D) $\dfrac{5}{11}$  (E) $\dfrac{4\sqrt{3}}{15}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-11": { s: String.raw`Nine athletes, no two of whom are the same height, try out for the basketball team. One at a time, they draw a wristband at random, without replacement, from a bag containing $3$ blue bands, $3$ red bands, and $3$ green bands. They are divided into a blue group, a red group, and a green group. The tallest member of each group is named the group captain. What is the probability that the group captains are the three tallest athletes?
+
+(A) $\dfrac{2}{9}$  (B) $\dfrac{2}{7}$  (C) $\dfrac{9}{28}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{3}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-12": { s: String.raw`The windshield wiper on the driver’s side of a large bus is depicted below.
+
+@@fig:amc12/2025B/12.svg@@
+
+Arm $\overline{AB}$ pivots back and forth around point $A,$ sweeping out an arc of $60^\circ,$ symmetric about the vertical line through $A.$ The wiper blade $\overline{CD}$ is attached to $B$ at its midpoint and stays vertical as the arm moves. The arm is $3$ feet long, and the wiper blade is $3.5$ feet tall. What is the area of the windshield cleaned by the wiper, in square feet, to the nearest hundredth? (Assume that the windshield is a flat vertical surface.)
+
+(A) $9.68$  (B) $10.14$  (C) $10.50$  (D) $11.32$  (E) $12.00$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-13": { s: String.raw`A circle has been divided into $6$ sectors of different sizes. Then $2$ of the sectors are painted red, $2$ painted green, and $2$ painted blue so that no two neighboring sectors are painted the same color. One such coloring is shown below.
+
+@@fig:amc12/2025B/13.svg@@
+
+How many different colorings are possible?
+
+(A) $12$  (B) $16$  (C) $18$  (D) $24$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-14": { s: String.raw`Consider a decreasing sequence of $n$ positive integers $x_1 \gt x_2 \gt \cdots \gt x_n$ that satisfies the following two conditions:
+
+• The average (arithmetic mean) of the first $3$ terms in the sequence is $2025.$
+
+• For all $4 \le k \le n,$ the average of the first $k$ terms in the sequence is $1$ less than the average of the first $k-1$ terms in the sequence.
+
+What is the greatest possible value of $n?$
+
+(A) $1013$  (B) $1014$  (C) $1016$  (D) $2016$  (E) $2025$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-15": { s: String.raw`A container has a $1 \times 1$ square bottom, a $3 \times 3$ open square top, and four congruent trapezoidal sides, as shown. Starting when the container is empty, a hose that runs water at a constant rate takes $35$ minutes to fill the container up to the midline of the trapezoids.
+
+@@fig:amc12/2025B/15.svg@@
+
+How many more minutes will it take to fill the remainder of the container?
+
+(A) $70$  (B) $85$  (C) $90$  (D) $95$  (E) $105$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-16": { s: String.raw`An analog clock starts at midnight and runs for $2025$ minutes before stopping. What is the tangent of the acute angle between the hour hand and the minute hand when the clock stops?
+
+(A) $0$  (B) $\sqrt{2} - 1$  (C) $2 - \sqrt{2}$  (D) $\dfrac{\sqrt{2}}{2}$  (E) $3 - \sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-17": { s: String.raw`Each of the $9$ squares in a $3 \times 3$ grid is to be colored red, blue, or yellow in such a way that each red square shares an edge with at least one blue square, each blue square shares an edge with at least one yellow square, and each yellow square shares an edge with at least one red square. Colorings that can be obtained from one another by rotations and/or reflections are to be considered the same. How many different colorings are possible?
+
+(A) $3$  (B) $9$  (C) $12$  (D) $18$  (E) $27$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-18": { s: String.raw`Awnik repeatedly plays a game that has a probability of winning of $\dfrac{1}{3}.$ The outcomes of the games are independent. What is the expected value of the number of games he will play until he has both won and lost at least once?
+
+(A) $\dfrac{5}{2}$  (B) $3$  (C) $\dfrac{16}{5}$  (D) $\dfrac{7}{2}$  (E) $\dfrac{15}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-19": { s: String.raw`A rectangular grid of squares has $141$ rows and $91$ columns. Each square has room for two numbers. Horace and Vera each fill in the grid by putting the numbers from $1$ through $141 \times 91 = 12{,}831$ into the squares. Horace fills the grid horizontally: he puts $1$ through $91$ in order from left to right into row $1,$ puts $92$ through $182$ into row $2$ in order from left to right, and continues similarly through row $141.$ Vera fills the grid vertically: she puts $1$ through $141$ in order from top to bottom into column $1,$ then $142$ through $282$ into column $2$ in order from top to bottom, and continues similarly through column $91.$ How many squares get two copies of the same number?
+
+(A) $7$  (B) $10$  (C) $11$  (D) $12$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-2": { s: String.raw`Jerry wrote down the ones digit of each of the first $2025$ positive squares: $1,$ $4,$ $9,$ $6,$ $5,$ $6,$ $\ldots.$ What is the sum of all the numbers Jerry wrote down?
+
+(A) $9025$  (B) $9070$  (C) $9090$  (D) $9115$  (E) $9160$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-20": { s: String.raw`A frog hops along the number line according to the following rules.
+
+• It starts at $0.$
+
+• If it is at $0,$ then it moves to $1$ with probability $\dfrac{1}{2}$ and it disappears with probability $\dfrac{1}{2}.$
+
+• For $n = 1,$ $2,$ or $3,$ if it is at $n,$ then it moves to $n+1$ with probability $\dfrac{1}{4},$ it moves to $n-1$ with probability $\dfrac{1}{4},$ and it disappears with probability $\dfrac{1}{2}.$
+
+What is the probability that the frog reaches $4?$
+
+(A) $\dfrac{1}{101}$  (B) $\dfrac{1}{100}$  (C) $\dfrac{1}{99}$  (D) $\dfrac{1}{98}$  (E) $\dfrac{1}{97}$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-21": { s: String.raw`Two non-congruent triangles have the same area. Each triangle has sides of length $8$ and $9,$ and the third side of each triangle has integer length. What is the sum of the lengths of the third sides?
+
+(A) $20$  (B) $22$  (C) $24$  (D) $26$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-22": { s: String.raw`What is the greatest possible area of the triangle in the complex plane with vertices $2z,$ $(1+i)z,$ and $(1-i)z,$ where $z$ is a complex number satisfying $|4z - 2| = 1?$
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{9}{16}$  (D) $\dfrac{3}{4}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-23": { s: String.raw`Let $S$ be the set of all integers $z \gt 1$ such that for all pairs of nonnegative integers $(x, y)$ with $x \lt y \lt z,$ the remainder when $2025x$ is divided by $z$ is less than the remainder when $2025y$ is divided by $z.$ What is the sum of the elements of $S?$
+
+(A) $3041$  (B) $3542$  (C) $3750$  (D) $4044$  (E) $4319$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-24": { s: String.raw`How many real numbers satisfy the equation $\sin(20\pi x) = \log_{20}(x)?$
+
+(A) $199$  (B) $200$  (C) $398$  (D) $399$  (E) $400$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-25": { s: String.raw`Three concentric circles have radii $1,$ $2,$ $3.$ An equilateral triangle with side length $s$ has one vertex on each circle. What is $s^2?$
+
+(A) $6$  (B) $\dfrac{25}{4}$  (C) $\dfrac{13}{2}$  (D) $\dfrac{27}{4}$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-3": { s: String.raw`What is the value of $i(i-1)(i-2)(i-3),$ where $i = \sqrt{-1}?$
+
+(A) $6 - 5i$  (B) $-10i$  (C) $10i$  (D) $-10$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-4": { s: String.raw`The value of the two-digit number $\underline{a}\,\underline{b}$ in base seven equals the value of the two-digit number $\underline{b}\,\underline{a}$ in base nine. What is $a + b?$
+
+(A) $7$  (B) $9$  (C) $10$  (D) $11$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-5": { s: String.raw`Positive integers $x$ and $y$ satisfy the equation $57x + 22y = 400.$ What is the least possible value of $x + y?$
+
+(A) $10$  (B) $11$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-6": { s: String.raw`Emmy says to Max, “I ordered $36$ math club sweatshirts today.” Max asks, “How much did each shirt cost?” Emmy responds, “I’ll give you a hint. The total cost was $\$\underline{A}\,\underline{B}\,\underline{B}.\underline{B}\,\underline{A},$ where $A$ and $B$ are digits and $A \neq 0.$” After a pause, Max says, “That was a good price.” What is $A + B?$
+
+(A) $7$  (B) $8$  (C) $11$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-7": { s: String.raw`What is the value of$$ \sum_{n=2}^{255} \frac{\log_2\left(1 + \frac{1}{n}\right)}{(\log_2 n)(\log_2(n+1))}? $$(A) $\dfrac{3}{4}$  (B) $1 - \dfrac{1}{\log_2 255}$  (C) $\dfrac{7}{8}$  (D) $\dfrac{15}{16}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-8": { s: String.raw`There are integers $a$ and $b$ such that the polynomial $x^3 - 5x^2 + ax + b$ has $4 + \sqrt{5}$ as a root. What is $a + b?$
+
+(A) $13$  (B) $17$  (C) $20$  (D) $30$  (E) $68$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-12b-9": { s: String.raw`What is the tens digit of $6^{6^6}?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2025B" },
+"2025-amc-8-1": { s: String.raw`The eight-pointed star, shown in the figure below, is a popular quilting pattern. What percent of the entire $4$-by-$4$ grid is covered by the star?
+
+@@fig:amc8/2025/1.svg@@
+
+(A) $40$  (B) $50$  (C) $60$  (D) $75$  (E) $80$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-10": { s: String.raw`In the figure below, $ABCD$ is a rectangle with sides of length $AB = 5$ inches and $AD = 3$ inches. Rectangle $ABCD$ is rotated $90^\circ$ clockwise around the midpoint of side $DC$ to give a second rectangle. What is the total area, in square inches, covered by the two overlapping rectangles?
+
+@@fig:amc8/2025/10.svg@@
+
+(A) $21$  (B) $22.25$  (C) $23$  (D) $23.75$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-11": { s: String.raw`A tetromino consists of four squares connected along their edges. There are five possible tetromino shapes, $\mathrm{I}$, $\mathrm{O}$, $\mathrm{L}$, $\mathrm{T}$, and $\mathrm{S}$, shown below, which can be rotated or flipped over. Three tetrominoes are used to completely cover a $3 \times 4$ rectangle. At least one of the tiles is an $\mathrm{S}$ tile. What are the other two tiles?
+
+@@fig:amc8/2025/11.svg@@
+
+(A) $\mathrm{I}$ and $\mathrm{L}$  (B) $\mathrm{I}$ and $\mathrm{T}$  (C) $\mathrm{L}$ and $\mathrm{L}$  (D) $\mathrm{L}$ and $\mathrm{S}$  (E) $\mathrm{O}$ and $\mathrm{T}$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-12": { s: String.raw`The region shown below consists of $24$ squares, each with side length $1$ centimeter. What is the area, in square centimeters, of the largest circle that can fit inside the region, possibly touching the boundaries?
+
+@@fig:amc8/2025/12.svg@@
+
+(A) $3\pi$  (B) $4\pi$  (C) $5\pi$  (D) $6\pi$  (E) $8\pi$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-13": { s: String.raw`Each of the even numbers $2,$ $4,$ $6,$ $\dots,$ $50$ is divided by $7.$ The remainders are recorded. Which histogram displays the number of times each remainder occurs?
+
+(A) @@ci:amc8/2025/13a.svg|10rem@@  (B) @@ci:amc8/2025/13b.svg|10rem@@  (C) @@ci:amc8/2025/13c.svg|10rem@@  (D) @@ci:amc8/2025/13d.svg|10rem@@  (E) @@ci:amc8/2025/13e.svg|10rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-14": { s: String.raw`A number $N$ is inserted into the list $2,$ $6,$ $7,$ $7,$ $28.$ The mean is now twice as great as the median. What is $N?$
+
+(A) $7$  (B) $14$  (C) $20$  (D) $28$  (E) $34$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-15": { s: String.raw`Kei draws a $6$-by-$6$ grid. He colors $13$ of the unit squares silver and the remaining squares gold. Kei then folds the grid in half vertically, forming pairs of overlapping unit squares. Let $m$ and $M$ equal the least and greatest possible number of gold-on-gold pairs, respectively. What is the value of $m+M?$
+
+@@fig:amc8/2025/15.svg@@
+
+(A) $12$  (B) $14$  (C) $16$  (D) $18$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-16": { s: String.raw`Five distinct integers from $1$ to $10$ are chosen, and five distinct integers from $11$ to $20$ are chosen. No two numbers differ by exactly $10.$ What is the sum of the ten chosen numbers?
+
+(A) $95$  (B) $100$  (C) $105$  (D) $110$  (E) $115$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-17": { s: String.raw`In the land of Markovia, there are three cities: $A,$ $B,$ and $C.$ There are $100$ people who live in $A,$ $120$ who live in $B,$ and $160$ who live in $C.$ Everyone works in one of the three cities, and a person may work in the same city where they live. In the figure below, an arrow pointing from one city to another is labeled with the fraction of people living in the first city who work in the second city. (For example, $\frac{1}{4}$ of the people who live in $A$ work in $B.$) How many people work in $A?$
+
+@@fig:amc8/2025/17.svg@@
+
+(A) $55$  (B) $60$  (C) $85$  (D) $115$  (E) $160$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-18": { s: String.raw`The circle shown below on the left has a radius of $1$ unit. The region between the circle and the inscribed square is shaded. In the circle shown on the right, one quarter of the region between the circle and the inscribed square is shaded. The shaded regions in the two circles have the same area. What is the radius $R,$ in units, of the circle on the right?
+
+@@fig:amc8/2025/18.svg@@
+
+(A) $\sqrt{2}$  (B) $2$  (C) $2\sqrt{2}$  (D) $4$  (E) $4\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-19": { s: String.raw`Two towns, $A$ and $B,$ are connected by a straight road, $15$ miles long. Traveling from town $A$ to town $B,$ the speed limit changes every $5$ miles: from $25$ to $40$ to $20$ miles per hour (mph). Two cars, one at town $A$ and one at town $B,$ start moving toward each other at the same time. They drive at exactly the speed limit in each portion of the road. How far from town $A,$ in miles, will the two cars meet?
+
+@@fig:amc8/2025/19.svg@@
+
+(A) $7.75$  (B) $8$  (C) $8.25$  (D) $8.5$  (E) $8.75$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-2": { s: String.raw`The table below shows the ancient Egyptian hieroglyphs that were used to represent different numbers.
+
+@@fig:amc8/2025/2-chart.svg@@
+
+For example, the number $32$ was represented by:
+
+@@fig:amc8/2025/2-32.svg@@
+
+What number was represented by the following combination of hieroglyphs?
+
+@@fig:amc8/2025/2-what.svg@@
+
+(A) $1{,}423$  (B) $10{,}423$  (C) $14{,}023$  (D) $14{,}203$  (E) $14{,}230$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-20": { s: String.raw`Sarika, Dev, and Rajiv are sharing a large block of cheese. They take turns cutting off half of what remains and eating it: first Sarika eats half of the cheese, then Dev eats half of the remaining half, then Rajiv eats half of what remains, then back to Sarika, and so on. They stop when the cheese is too small to see. About what fraction of the original block of cheese does Sarika eat in total?
+
+(A) $\dfrac{4}{7}$  (B) $\dfrac{3}{5}$  (C) $\dfrac{2}{3}$  (D) $\dfrac{3}{4}$  (E) $\dfrac{7}{8}$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-21": { s: String.raw`The Konigsberg School has assigned grades $1$ through $7$ to pods $A$ through $G,$ one grade per pod. Some of the pods are connected by walkways, as shown in the figure below. The school noticed that each pair of connected pods has been assigned grades differing by $2$ or more grade levels. (For example, grades $1$ and $2$ will not be in pods directly connected by a walkway.) What is the sum of the grade levels assigned to pods $C,$ $E,$ and $F?$
+
+@@fig:amc8/2025/21.svg@@
+
+(A) $12$  (B) $13$  (C) $14$  (D) $15$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-22": { s: String.raw`A classroom has a row of $35$ coat hooks. Paulina likes coats to be equally spaced, so that there is the same number of empty hooks before the first coat, after the last coat, and between every coat and the next one. Suppose there is at least $1$ coat and at least $1$ empty hook. How many different numbers of coats can satisfy Paulina’s pattern?
+
+(A) $2$  (B) $4$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-23": { s: String.raw`How many four-digit numbers have all three of the following properties?
+
+(I) The tens digit and ones digit are both $9.$
+
+(II) The number is $1$ less than a perfect square.
+
+(III) The number is the product of exactly two prime numbers.
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-24": { s: String.raw`In trapezoid $ABCD,$ angles $B$ and $C$ measure $60^\circ$ and $AB = DC.$ The side lengths are all positive integers and the perimeter of $ABCD$ is $30$ units. How many non-congruent trapezoids satisfy all of these conditions?
+
+@@fig:amc8/2025/24.svg@@
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-25": { s: String.raw`Makayla finds all the possible ways to draw a path in a $5 \times 5$ diamond-shaped grid. Each path starts at the bottom of the grid and ends at the top, always moving one unit northeast or northwest. She computes the area of the region between each path and the right side of the grid. Two examples are shown in the figures below. What is the sum of the areas determined by all possible paths?
+
+@@fig:amc8/2025/25.svg@@
+
+(A) $2520$  (B) $3150$  (C) $3840$  (D) $4730$  (E) $5050$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-3": { s: String.raw`Buffalo Shuffle-o is a card game in which all the cards are distributed evenly among all players at the start of the game. When Annika and $3$ of her friends play Buffalo Shuffle-o, each player is dealt $15$ cards. Suppose $2$ more friends join the next game. How many cards will be dealt to each player?
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-4": { s: String.raw`Lucius is counting backward by $7$s. His first three numbers are $100,$ $93,$ and $86.$ What is his $10$th number?
+
+(A) $30$  (B) $37$  (C) $42$  (D) $44$  (E) $47$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-5": { s: String.raw`Betty drives a truck to deliver packages in a neighborhood whose street map is shown below. Betty starts at the factory (labeled $F$) and drives to location $A,$ then $B,$ then $C,$ before returning to $F.$ What is the shortest distance, in blocks, she can drive to complete the route?
+
+@@fig:amc8/2025/5.svg@@
+
+(A) $20$  (B) $22$  (C) $24$  (D) $26$  (E) $28$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-6": { s: String.raw`Sekou writes the numbers $15,$ $16,$ $17,$ $18,$ $19.$ After he erases one of the numbers, the sum of the remaining four numbers is a multiple of $4.$ Which number did he erase?
+
+(A) $15$  (B) $16$  (C) $17$  (D) $18$  (E) $19$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-7": { s: String.raw`On the most recent exam in Prof. Xochi’s class,
+
+• $5$ students earned a score of at least $95\%,$
+
+• $13$ students earned a score of at least $90\%,$
+
+• $27$ students earned a score of at least $85\%,$ and
+
+• $50$ students earned a score of at least $80\%.$
+
+How many students earned a score of at least $80\%$ and less than $90\%?$
+
+(A) $8$  (B) $14$  (C) $22$  (D) $37$  (E) $45$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-8": { s: String.raw`Isaiah cuts open a cardboard cube along some of its edges to form the flat shape shown, which has an area of $18$ square centimeters. What was the volume of the cube in cubic centimeters?
+
+@@fig:amc8/2025/8.svg@@
+
+(A) $3\sqrt{3}$  (B) $6$  (C) $9$  (D) $6\sqrt{3}$  (E) $9\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
+"2025-amc-8-9": { s: String.raw`Ningli looks at the $6$ pairs of numbers directly across from each other on a clock. She takes the average of each pair of numbers. What is the average of the resulting $6$ numbers?
+
+@@fig:amc8/2025/9.svg@@
+
+(A) $5$  (B) $6.5$  (C) $8$  (D) $9.5$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2025" },
 });

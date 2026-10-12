@@ -932,8 +932,8 @@ review and are worth keeping:
   scrolling page with that group's heading placed just under the top bar (`scrollForRoute`), and
   it is placed again once fonts settle, unless the reader has scrolled. An earlier version
   scrolled to a cluster and left the page title off screen, which read as "a random spot".
-- **No holes from alignment.** Card grids are even rows: each face shows only the first form of
-  its formula (`cardFormulaHtml`, with "+ N more forms"), a long formula is scaled to fit and,
+- **No holes from alignment.** Card grids are even rows: each face shows at most as many rows of
+  its formulas as the Formula lines setting allows, 1 by default (`cardFormulaHtml` and `formulaRows`, with "+ N more lines"), a long formula is scaled to fit and,
   when that would be unreadable, cut back to its first equality or stacked at its arrows
   (`fitBatch`), and the summary is clamped to four lines. Figures on card faces are optional.
 - **Measure in batches, and only what is on screen.** Fitting formulas one card at a time forced a

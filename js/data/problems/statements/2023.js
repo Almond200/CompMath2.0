@@ -397,4 +397,113 @@ III. $\gcd(c,210)=1$ if and only if $\gcd(a,14)=\gcd(b,15)=1.$
 
 (A) $256$  (B) $136$  (C) $108$  (D) $144$  (E) $156$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
 "2023-amc-12b-9": { s: String.raw`What is the area of the region in the coordinate plane defined by$$ ||x|-1|+||y|-1|\le 1? $$(A) $2$  (B) $8$  (C) $4$  (D) $15$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2023B" },
+"2023-amc-8-1": { s: String.raw`What is the value of the following expression?$$ (8 \times 4 + 2) - (8 + 4 \times 2) $$(A) $0$  (B) $6$  (C) $10$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-10": { s: String.raw`Harold made a plum pie to take on a picnic. He was able to eat only $\frac{1}{4}$ of the pie, and he left the rest for his friends. A moose came by and ate $\frac{1}{3}$ of what Harold left behind. After that, a porcupine ate $\frac{1}{3}$ of what the moose left behind. How much of the original pie still remained after the porcupine left?
+
+(A) $\dfrac{1}{12}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{5}{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-11": { s: String.raw`NASA’s Perseverance Rover was launched on July $30,$ $2020.$ After traveling $292{,}526{,}838$ miles, it landed on Mars in Jezero Crater about $6.5$ months later. Which of the following is closest to the Rover’s average interplanetary speed in miles per hour?
+
+(A) $6{,}000$  (B) $12{,}000$  (C) $60{,}000$  (D) $120{,}000$  (E) $600{,}000$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-12": { s: String.raw`The figure below shows a large unshaded circle with a number of smaller unshaded and shaded circles in its interior. What fraction of the interior of the large unshaded circle is shaded?
+
+@@fig:amc8/2023/12.svg@@
+
+(A) $\dfrac{1}{4}$  (B) $\dfrac{11}{36}$  (C) $\dfrac{1}{3}$  (D) $\dfrac{19}{36}$  (E) $\dfrac{5}{9}$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-13": { s: String.raw`Along the route of a bicycle race, $7$ water stations are evenly spaced between the start and finish lines, as shown in the figure below. There are also $2$ repair stations evenly spaced between the start and finish lines. The $3$rd water station is located $2$ miles after the $1$st repair station. How long is the race in miles?
+
+@@fig:amc8/2023/13.svg@@
+
+(A) $8$  (B) $16$  (C) $24$  (D) $48$  (E) $96$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-14": { s: String.raw`Nicolas is planning to send a package to his friend Anton, who is a stamp collector. To pay for the postage, Nicolas would like to cover the package with a large number of stamps. Suppose he has a collection of $5$-cent, $10$-cent, and $25$-cent stamps, with exactly $20$ of each type. What is the greatest number of stamps Nicolas can use to make exactly $\$7.10$ in postage?
+
+(Note: The amount $\$7.10$ corresponds to $7$ dollars and $10$ cents. One dollar is worth $100$ cents.)
+
+(A) $45$  (B) $46$  (C) $51$  (D) $54$  (E) $55$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-15": { s: String.raw`Viswam walks half a mile to get to school each day. His route consists of $10$ city blocks of equal length and he takes one minute to walk each block. Today, after walking $5$ blocks, Viswam discovers that he has to make a detour, walking $3$ blocks of equal length instead of $1$ block to reach the next corner. From the time he starts his detour, at what speed, in miles per hour, must Viswam walk in order to arrive at school at his usual time?
+
+@@fig:amc8/2023/15.svg@@
+
+(A) $4$  (B) $4.2$  (C) $4.5$  (D) $4.8$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-16": { s: String.raw`The letters $P,$ $Q,$ and $R$ are entered into a $20 \times 20$ table according to the pattern shown below. How many $P$s, $Q$s, and $R$s will appear in the completed table?
+
+@@fig:amc8/2023/16.svg@@
+
+(A) $132$ $P$s, $134$ $Q$s, $134$ $R$s  (B) $133$ $P$s, $133$ $Q$s, $134$ $R$s  (C) $133$ $P$s, $134$ $Q$s, $133$ $R$s  (D) $134$ $P$s, $132$ $Q$s, $134$ $R$s  (E) $134$ $P$s, $133$ $Q$s, $133$ $R$s`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-17": { s: String.raw`A regular octahedron has eight equilateral triangle faces with four faces meeting at each vertex. Jun will make the regular octahedron shown in the figure by folding the piece of paper below. Which numbered face will end up to the right of the shaded region $Q?$
+
+@@fig:amc8/2023/17.svg@@
+
+(A) $1$  (B) $2$  (C) $3$  (D) $4$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-18": { s: String.raw`Greta Grasshopper sits on a long line of lily pads in a pond. From any lily pad, Greta can jump $5$ pads to the right or $3$ pads to the left. What is the fewest number of jumps Greta must make to reach the lily pad located $2023$ pads to the right of her starting position?
+
+(A) $405$  (B) $407$  (C) $409$  (D) $411$  (E) $413$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-19": { s: String.raw`An equilateral triangle is placed inside a larger equilateral triangle so that the region between them can be divided into three congruent trapezoids, as shown below. The side length of the inner triangle is $\frac{2}{3}$ the side length of the larger triangle. What is the ratio of the area of one trapezoid to the area of the inner triangle?
+
+@@fig:amc8/2023/19.svg@@
+
+(A) $1 : 3$  (B) $3 : 8$  (C) $5 : 12$  (D) $7 : 16$  (E) $4 : 9$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-2": { s: String.raw`A square piece of paper is folded twice into four equal quarters, as shown below, then cut along the dashed line. When unfolded, the paper will match which of the following figures?
+
+@@fig:amc8/2023/2.svg@@
+
+(A) @@ci:amc8/2023/2a.svg|5rem@@  (B) @@ci:amc8/2023/2b.svg|5rem@@  (C) @@ci:amc8/2023/2c.svg|5rem@@  (D) @@ci:amc8/2023/2d.svg|5rem@@  (E) @@ci:amc8/2023/2e.svg|5rem@@`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-20": { s: String.raw`Two integers are inserted into the list $3,$ $3,$ $8,$ $11,$ $28$ to double its range. The mode and median remain unchanged. What is the maximum possible sum of the two additional numbers?
+
+(A) $56$  (B) $57$  (C) $58$  (D) $60$  (E) $61$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-21": { s: String.raw`Alina writes the numbers $1,$ $2,$ $\cdots,$ $9$ on separate cards, one number per card. She wishes to divide the cards into $3$ groups of $3$ cards so that the sum of the numbers in each group will be the same. In how many ways can this be done?
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-22": { s: String.raw`In a sequence of positive integers, each term after the second is the product of the previous two terms. The sixth term in the sequence is $4000.$ What is the first term?
+
+(A) $1$  (B) $2$  (C) $4$  (D) $5$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-23": { s: String.raw`Each square in a $3 \times 3$ grid is randomly filled with one of the $4$ shaded-and-unshaded tiles shown below on the right.
+
+@@fig:amc8/2023/23a.svg@@
+
+What is the probability that the tiling will contain a large shaded diamond in one of the smaller $2 \times 2$ grids? Below is an example of such a tiling.
+
+@@fig:amc8/2023/23b.svg@@
+
+(A) $\dfrac{1}{1024}$  (B) $\dfrac{1}{256}$  (C) $\dfrac{1}{64}$  (D) $\dfrac{1}{16}$  (E) $\dfrac{1}{4}$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-24": { s: String.raw`Isosceles triangle $ABC$ has equal side lengths $AB$ and $BC.$ In the figures below, segments are drawn parallel to $\overline{AC}$ so that the shaded portions of $\triangle ABC$ have the same area. The heights of the two unshaded portions are $11$ and $5$ units, respectively. What is the height $h$ of $\triangle ABC?$
+
+@@fig:amc8/2023/24.svg@@
+
+(A) $14.6$  (B) $14.8$  (C) $15$  (D) $15.2$  (E) $15.4$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-25": { s: String.raw`Fifteen integers $a_1,$ $a_2,$ $a_3,$ $\cdots,$ $a_{15}$ are arranged in order on a number line. The integers are equally spaced and have the property that$$ 1 \leq a_1 \leq 10, $$$$ 13 \leq a_2 \leq 20, $$and$$ 241 \leq a_{15} \leq 250. $$What is the sum of the digits of $a_{14}?$
+
+(A) $8$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-3": { s: String.raw`Wind chill is a measure of how cold people feel when exposed to wind outside. A good estimate for wind chill can be found using this calculation:$$W=T-0.7\cdot S$$Here $W$ represents the wind chill, $T$ represents air temperature measured in degrees Fahrenheit $(^{\circ}F),$ and $S$ represents wind speed measured in miles per hour (mph).
+
+Suppose the air temperature is $36^{\circ}F$ and the wind speed is $18$ mph. Which of the following is closest to the approximate wind chill?
+
+(A) $18$  (B) $23$  (C) $28$  (D) $32$  (E) $35$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-4": { s: String.raw`The numbers from $1$ to $49$ are arranged in a spiral pattern on a square grid, beginning at the center. The first few numbers have been entered into the grid below. Consider the four numbers that will appear in the shaded squares, on the same diagonal as the number $7.$ How many of these four numbers are prime?
+
+@@fig:amc8/2023/4.svg@@
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-5": { s: String.raw`A lake contains $250$ trout, along with a variety of other fish. When a marine biologist catches and releases a sample of $180$ fish from the lake, $30$ are identified as trout. Assume that the ratio of trout to the total number of fish is the same in both the sample and the lake. How many fish are there in the lake?
+
+(A) $1250$  (B) $1500$  (C) $1750$  (D) $1800$  (E) $2000$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-6": { s: String.raw`The digits $2,$ $0,$ $2,$ and $3$ are placed in the expression below, one digit per box. What is the maximum possible value of the expression?
+
+@@fig:amc8/2023/6.svg@@
+
+(A) $0$  (B) $8$  (C) $9$  (D) $16$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-7": { s: String.raw`A rectangle, with sides parallel to the $x$-axis and $y$-axis, has opposite vertices located at $(15, 3)$ and $(16, 5).$ A line is drawn through points $A(0, 0)$ and $B(3, 1).$ Another line is drawn through points $C(0, 10)$ and $D(2, 9).$ How many points on the rectangle lie on at least one of the two lines?
+
+@@fig:amc8/2023/7.svg@@
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-8": { s: String.raw`Lola, Lolo, Tiya, and Tiyo participated in a ping pong tournament. Each player competed against each of the other three players exactly twice. Shown below are the win-loss records for the players. The numbers $1$ and $0$ represent a win or loss, respectively. For example, Lola won five matches and lost the fourth match. What was Tiyo’s win-loss record?
+
+@@fig:amc8/2023/8.svg@@
+
+(A) $000101$  (B) $001001$  (C) $010000$  (D) $010101$  (E) $011000$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
+"2023-amc-8-9": { s: String.raw`Malaika is skiing on a mountain. The graph below shows her elevation, in meters, above the base of the mountain as she skis along a trail. In total, how many seconds does she spend at an elevation between $4$ and $7$ meters?
+
+@@fig:amc8/2023/9.svg@@
+
+(A) $6$  (B) $8$  (C) $10$  (D) $12$  (E) $14$`, u: "https://live.poshenloh.com/past-contests/amc8/2023" },
 });

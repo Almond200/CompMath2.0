@@ -157,6 +157,7 @@ window.MathSemantic = (function () {
   return {
     load: begin,
     rank: rank,
+    encode: encode,
     ready: function () { return state === "ready"; },
     status: function () { return state; },
     info: function () {

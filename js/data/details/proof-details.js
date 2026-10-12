@@ -32,7 +32,7 @@ The default shape of an olympiad solution. In answer-only contests it is the sil
 
 "proof-by-contradiction": String.raw`
 ## When to use
-The claim says something does not exist, cannot happen, or never ends: $\sqrt{2}$ is irrational, an equation has no integer solutions, there are infinitely many primes of some kind. Assuming the opposite gives an object (a fraction, a solution, a finite list) that a direct proof would not have.
+The claim says something does not exist, cannot happen, or never ends: $\sqrt{2}$ is irrational, an equation has no integer solutions, there are infinitely many primes of some kind. Assuming the opposite gives an object (a fraction, a solution, a finite list) that a direct proof would not have. When the claim is an implication with structure to start from, a direct proof is cleaner, and contradiction earns its place when the assumption is all there is to start from.
 
 ## How
 1. Write the negation exactly. Negate the quantifiers: "every $x$ has property $A$" becomes "some $x$ lacks $A$", and "there is no $x$" becomes "there is an $x$".
@@ -60,7 +60,7 @@ Common in olympiad number theory and combinatorics, especially for irrationality
 
 "contrapositive": String.raw`
 ## When to use
-The conclusion $Q$ is a negative or a primality-type statement ("is prime", "is not a perfect square", "is irrational"), while its negation is a positive statement with structure: "is composite" means $n = ab$, "is a perfect square" means $n = m^2$. Proving the contrapositive lets you start from that structure.
+The conclusion $Q$ is a negative or a primality-type statement ("is prime", "is not a perfect square", "is irrational"), while its negation is a positive statement with structure: "is composite" means $n = ab$, "is a perfect square" means $n = m^2$. Proving the contrapositive lets you start from that structure. Its close relative, [[proof-by-contradiction|proof by contradiction]], assumes $P$ and not $Q$ and looks for any contradiction at all, where the contrapositive aims at not $P$ exactly.
 
 ## How
 1. Identify $P$ and $Q$ exactly.
@@ -114,7 +114,7 @@ Appears at every level. On AMC and AIME it shows up as checking residues or pari
 
 "wlog-symmetry": String.raw`
 ## When to use
-The statement is symmetric in some variables or objects: swapping $a$ and $b$, reflecting a figure, or scaling every length changes neither the hypotheses nor the conclusion. Then you may order the variables, place a point at the origin, or set a length to $1$.
+The statement is symmetric in some variables or objects: swapping $a$ and $b$, reflecting a figure, or scaling every length changes neither the hypotheses nor the conclusion. Then you may order the variables, place a point at the origin, or set a length to $1$. A statement that singles out one variable allows only the symmetries it has, and assuming an order it does not permit is the classic error.
 
 ## How
 1. Find the symmetry. Check that both the hypotheses and the conclusion are unchanged by it.
@@ -141,7 +141,7 @@ A standard step in olympiad inequalities, geometry, and combinatorics. In answer
 
 "proving-both-directions": String.raw`
 ## When to use
-The claim says "$P$ if and only if $Q$", "$P$ is necessary and sufficient for $Q$", or "$A = B$" for two sets. A "find all" problem is the same structure: show that every solution has the stated form, and that every number of that form is a solution.
+The claim says "$P$ if and only if $Q$", "$P$ is necessary and sufficient for $Q$", or "$A = B$" for two sets. A "find all" problem is the same structure: show that every solution has the stated form, and that every number of that form is a solution. A one-way implication needs only the stated direction, and checking the converse is wasted work.
 
 ## How
 1. Write the two directions as separate claims. "$P$ only if $Q$" is $P \Rightarrow Q$; "$P$ if $Q$" is $Q \Rightarrow P$.
@@ -168,7 +168,7 @@ An olympiad structure: characterization statements, "find all" problems, and set
 
 "proving-uniqueness": String.raw`
 ## When to use
-The claim says "there is exactly one", "the only solution", or "is determined by". Functional equations, systems of equations, and division with remainder all have this shape.
+The claim says "there is exactly one", "the only solution", or "is determined by". Functional equations, systems of equations, and division with remainder all have this shape. Existence is a separate proof: showing that any two solutions coincide does not show that one exists.
 
 ## How
 1. Existence: construct the object, or show one must exist.
@@ -222,7 +222,7 @@ Common in AMC "which of the following must be true" questions, where each wrong 
 
 "induction": String.raw`
 ## When to use
-The claim is about every positive integer $n$ (a sum formula, a divisibility, a tiling, a statement about $n$ points), and a size-$(n + 1)$ instance contains a size-$n$ instance with a small, controllable difference.
+The claim is about every positive integer $n$ (a sum formula, a divisibility, a tiling, a statement about $n$ points), and a size-$(n + 1)$ instance contains a size-$n$ instance with a small, controllable difference. A claim whose size-$(n + 1)$ case does not contain a size-$n$ case needs another route, and strong induction is the same method with more hypotheses.
 
 ## How
 1. State $P(n)$ precisely, as a statement that is true or false for each $n$.
@@ -251,7 +251,7 @@ A basic olympiad tool. Answer-only contests use it implicitly when a pattern fro
 
 "strong-induction": String.raw`
 ## When to use
-Breaking the case $n$ apart produces pieces of various smaller sizes: a factorization $n = ab$, a split into halves, a recurrence $a_n = a_{n-1} + a_{n-2}$, or a step back by a fixed amount such as $n - 4$.
+Breaking the case $n$ apart produces pieces of various smaller sizes: a factorization $n = ab$, a split into halves, a recurrence $a_n = a_{n-1} + a_{n-2}$, or a step back by a fixed amount such as $n - 4$. If the case $n$ needs only the case $n - 1$, ordinary induction is enough.
 
 ## How
 1. State $P(n)$.
@@ -339,7 +339,7 @@ An olympiad technique for inequalities, sequences, and combinatorial statements 
 
 "minimal-counterexample": String.raw`
 ## When to use
-The objects have a size measured by a positive integer (a number, a count of vertices, a sum of entries), and from a failing object you can remove, merge, or reduce something to get a smaller object that still fails. Graph theory and representation statements ("every integer can be written as ...") are typical.
+The objects have a size measured by a positive integer (a number, a count of vertices, a sum of entries), and from a failing object you can remove, merge, or reduce something to get a smaller object that still fails. Graph theory and representation statements ("every integer can be written as ...") are typical. Where no smaller failing object can be built, try induction forward instead.
 
 ## How
 1. Assume a counterexample exists, and choose one of smallest size.
@@ -366,7 +366,7 @@ An olympiad technique, closely related to [[infinite-descent|infinite descent]] 
 
 "infinite-descent": String.raw`
 ## When to use
-A Diophantine equation, often homogeneous, appears to have no solutions in positive integers, and reducing modulo a small prime forces all the variables to be divisible by it. Another source of descent is a quadratic in one variable whose second root is a smaller positive integer, the idea behind [[vieta-jumping|Vieta jumping]].
+A Diophantine equation, often homogeneous, appears to have no solutions in positive integers, and reducing modulo a small prime forces all the variables to be divisible by it. Another source of descent is a quadratic in one variable whose second root is a smaller positive integer, the idea behind [[vieta-jumping|Vieta jumping]]. An equation known to have a solution is not a descent problem: descent proves there is none, or that the smallest one has some property.
 
 ## How
 1. Assume a positive-integer solution exists; optionally take one that is minimal in a measure such as $x + y + z$ or $z$.
@@ -393,7 +393,7 @@ A classic olympiad number theory technique for proving that equations have no so
 
 "proof-by-construction": String.raw`
 ## When to use
-The problem asks to show that something exists, or that a maximum or minimum is attained. In "find the largest" problems, construction is half of the answer: a bound shows nothing larger works, and a construction shows the bound is reached.
+The problem asks to show that something exists, or that a maximum or minimum is attained. In "find the largest" problems, construction is half of the answer: a bound shows nothing larger works, and a construction shows the bound is reached. A claim about every object cannot be proved by one construction, and needs an argument that covers them all.
 
 ## How
 1. Solve small cases by hand to see what working objects look like.
@@ -449,7 +449,7 @@ A staple of olympiad combinatorics and number theory. On AMC and AIME it appears
 
 "discrete-intermediate-value": String.raw`
 ## When to use
-You need a configuration where some count equals an exact value, and there is a natural sequence of configurations in which the count changes by $0$ or $1$ at each step: a window sliding one place, a set gaining one element, a game advancing one move.
+You need a configuration where some count equals an exact value, and there is a natural sequence of configurations in which the count changes by $0$ or $1$ at each step: a window sliding one place, a set gaining one element, a game advancing one move. If the count can jump by more than one between steps, the exact value may be skipped, and the argument does not apply.
 
 ## How
 1. Choose a sequence of configurations from one where the quantity is at most the target to one where it is at least the target.

@@ -49,6 +49,137 @@ Find the sum of the two possible values of $c.$`, u: "https://live.poshenloh.com
 "2015-aime-ii-9": { s: String.raw`A cylindrical barrel with radius $4$ feet and height $10$ feet is full of water. A solid cube with side length $8$ feet is set into the barrel so that the diagonal of the cube is vertical. The volume of water thus displaced is $v$ cubic feet. Find $v^2.$
 
 @@fig:aime/2015II/9.svg@@`, u: "https://live.poshenloh.com/past-contests/aime/2015II" },
+"2015-amc-10a-1": { s: String.raw`What is the value of the following expression?$$(2^0-1+5^2+0)^{-1} \times 5$$(A) $-125$  (B) $-120$  (C) $\dfrac{1}{5}$  (D) $\dfrac{5}{24}$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-10": { s: String.raw`How many rearrangements of $abcd$ are there in which no two adjacent letters are also adjacent letters in the alphabet? For example, no such rearrangements could include either $ab$ or $ba.$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-11": { s: String.raw`The ratio of the length to the width of a rectangle is $4:3.$ If the rectangle has diagonal of length $d,$ then the area may be expressed as $kd^2$ for some constant $k.$ What is $k?$
+
+(A) $\dfrac{2}{7}$  (B) $\dfrac{3}{7}$  (C) $\dfrac{12}{25}$  (D) $\dfrac{16}{25}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-12": { s: String.raw`Points $(\sqrt{\pi}, a)$ and $(\sqrt{\pi}, b)$ are distinct points on the graph of$$y^2 + x^4 = 2x^2 y + 1.$$What is $|a-b|?$
+
+(A) $1$  (B) $\dfrac{\pi}{2}$  (C) $2$  (D) $\sqrt{1+\pi}$  (E) $1 + \sqrt{\pi}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-13": { s: String.raw`Claudia has $12$ coins, each of which is a $5$-cent coin or a $10$-cent coin. There are exactly $17$ different values that can be obtained as combinations of one or more of her coins. How many $10$-cent coins does Claudia have?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-14": { s: String.raw`The diagram below shows the circular face of a clock with radius $20$ cm and a circular disk with radius $10$ cm externally tangent to the clock face at $12$ o’clock. The disk has an arrow painted on it, initially pointing in the upward vertical direction. Let the disk roll clockwise around the clock face. At what point on the clock face will the disk be tangent when the arrow is next pointing in the upward vertical direction?
+
+@@fig:amc10/2015A/14.svg@@
+
+(A) $2$ o’clock  (B) $3$ o’clock  (C) $4$ o’clock  (D) $6$ o’clock  (E) $8$ o’clock`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-15": { s: String.raw`Consider the set of all fractions $\dfrac{x}{y},$ where $x$ and $y$ are relatively prime positive integers. How many of these fractions have the property that if both numerator and denominator are increased by $1,$ the value of the fraction is increased by $10\%?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $\text{infinitely many}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-16": { s: String.raw`If$$y+4 = (x-2)^2,$$$$ x+4 = (y-2)^2,$$and $x \neq y,$ what is the value of$$x^2+y^2$$(A) $10$  (B) $15$  (C) $20$  (D) $25$  (E) $30$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-17": { s: String.raw`A line that passes through the origin intersects both the line $x = 1$ and the line$$y=1+ \dfrac{\sqrt{3}}{3} x.$$The three lines create an equilateral triangle. What is the perimeter of the triangle?
+
+(A) $2\sqrt{6}$  (B) $2 + 2\sqrt{3}$  (C) $6$  (D) $3 + 2\sqrt{3}$  (E) $6 + \dfrac{\sqrt{3}}{3}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-18": { s: String.raw`Hexadecimal (base-$16$) numbers are written using numeric digits $0$ through $9$ as well as the letters $A$ through $F$ to represent $10$ through $15.$ Among the first $1000$ positive integers, there are $n$ whose hexadecimal representation contains only numeric digits. What is the sum of the digits of $n?$
+
+(A) $17$  (B) $18$  (C) $19$  (D) $20$  (E) $21$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-19": { s: String.raw`The isosceles right triangle $ABC$ has right angle at $C$ and area $12.5.$ The rays trisecting $\angle ACB$ intersect $AB$ at $D$ and $E.$ What is the area of $\triangle CDE?$
+
+(A) $\dfrac{5\sqrt{2}}{3}$  (B) $\dfrac{50\sqrt{3}-75}{4}$  (C) $\dfrac{15\sqrt{3}}{8}$  (D) $\dfrac{50-25\sqrt{3}}{2}$  (E) $\dfrac{25}{6}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-2": { s: String.raw`A box contains a collection of triangular and square tiles. There are $25$ tiles in the box, containing $84$ edges total. How many square tiles are there in the box?
+
+(A) $3$  (B) $5$  (C) $7$  (D) $9$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-20": { s: String.raw`A rectangle with positive integer side lengths in $\mathrm{cm}$ has area $A$ $\mathrm{cm}^2$ and perimeter $P$ $\mathrm{cm}.$ Which of the following numbers cannot equal $A+P?$
+
+(A) $100$  (B) $102$  (C) $104$  (D) $106$  (E) $108$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-21": { s: String.raw`Tetrahedron $ABCD$ has $AB=5,$ $AC=3,$ $BC=4,$ $BD=4,$ $AD=3,$ and $CD=\tfrac{12}5\sqrt2.$ What is the volume of the tetrahedron?
+
+(A) $3\sqrt2$  (B) $2\sqrt5$  (C) $\dfrac{24}5$  (D) $3\sqrt{3}$  (E) $\dfrac{24}5\sqrt2$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-22": { s: String.raw`Eight people are sitting around a circular table, each holding a fair coin. All eight people flip their coins and those who flip heads stand while those who flip tails remain seated. What is the probability that no two adjacent people will stand?
+
+(A) $\dfrac{47}{256}$  (B) $\dfrac{3}{16}$  (C) $\dfrac{49}{256}$  (D) $\dfrac{25}{128}$  (E) $\dfrac{51}{256}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-23": { s: String.raw`The zeros of the function$$f(x)=x^2-ax+2a$$are integers. What is the sum of the possible values of $a?$
+
+(A) $7$  (B) $8$  (C) $16$  (D) $17$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-24": { s: String.raw`For some positive integers $p,$ there is a quadrilateral $ABCD$ with positive integer side lengths, perimeter $p,$ right angles at $B$ and $C,$ $AB=2,$ and $CD=AD.$ How many different values of $p < 2015$ are possible?
+
+(A) $30$  (B) $31$  (C) $61$  (D) $62$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-25": { s: String.raw`Let $S$ be a square of side length $1.$ Two points are chosen independently at random on the sides of $S.$ The probability that the straight-line distance between the points is at least $\dfrac{1}{2}$ is $\dfrac{a-b\pi}{c},$ where $a,$ $b,$ and $c$ are positive integers with $\gcd(a,b,c)=1.$ What is $a+b+c?$
+
+(A) $59$  (B) $60$  (C) $61$  (D) $62$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-3": { s: String.raw`Ann made a $3$-step staircase using $18$ toothpicks as shown in the figure. How many toothpicks does she need to add to complete a $5$-step staircase?
+
+@@fig:amc10/2015A/3.svg@@
+
+(A) $9$  (B) $18$  (C) $20$  (D) $22$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-4": { s: String.raw`Pablo, Sofia, and Mia got some candy eggs at a party. Pablo had three times as many eggs as Sofia, and Sofia had twice as many eggs as Mia. Pablo decides to give some of his eggs to Sofia and Mia so that all three will have the same number of eggs. What fraction of his eggs should Pablo give to Sofia?
+
+(A) $\dfrac{1}{12}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-5": { s: String.raw`Mr. Patrick teaches math to $15$ students. He was grading tests and found that when he graded everyone’s test except Payton’s, the average grade for the class was $80.$ After he graded Payton’s test, the class average became $81.$ What was Payton’s score on the test?
+
+(A) $81$  (B) $85$  (C) $91$  (D) $94$  (E) $95$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-6": { s: String.raw`The sum of two positive numbers is $5$ times their difference. What is the ratio of the larger number to the smaller number?
+
+(A) $\dfrac{5}{4}$  (B) $\dfrac{3}{2}$  (C) $\dfrac{9}{5}$  (D) $2$  (E) $\dfrac{5}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-7": { s: String.raw`How many terms are in the arithmetic sequence $13,$ $16,$ $19,$ $\dotsc,$ $70,$ $73?$
+
+(A) $20$  (B) $21$  (C) $24$  (D) $60$  (E) $61$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-8": { s: String.raw`Two years ago Pete was three times as old as his cousin Claire. Two years before that, Pete was four times as old as Claire. In how many years will the ratio of their ages be $2:1?$
+
+(A) $2$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10a-9": { s: String.raw`Two right circular cylinders have the same volume. The radius of the second cylinder is $10\%$ more than the radius of the first. What is the relationship between the heights of the two cylinders?
+
+(A) The second height is $10\%$ less than the first.
+(B) The first height is $10\%$ more than the second.
+(C) The second height is $21\%$ less than the first.
+(D) The first height is $21\%$ more than the second.
+(E) The second height is $80\%$ of the first.`, u: "https://live.poshenloh.com/past-contests/amc10/2015A" },
+"2015-amc-10b-1": { s: String.raw`What is the value of $2-(-2)^{-2}?$
+
+(A) $-2$  (B) $\dfrac{1}{16}$  (C) $\dfrac{7}{4}$  (D) $\dfrac{9}{4}$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-10": { s: String.raw`What are the sign and units digit of the product of all the odd negative integers strictly greater than $-2015?$
+
+(A) It is a negative number ending with a $1.$
+(B) It is a positive number ending with a $1.$
+(C) It is a negative number ending with a $5.$
+(D) It is a positive number ending with a $5.$
+(E) It is a negative number ending with a $0.$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-11": { s: String.raw`Among the positive integers less than $100,$ each of whose digits is a prime number, one is selected at random. What is the probability that the selected number is prime?
+
+(A) $\dfrac{8}{99}$  (B) $\dfrac{2}{5}$  (C) $\dfrac{9}{20}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{9}{16}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-12": { s: String.raw`For how many integers $x$ is the point $(x, -x)$ inside or on the circle of radius $10$ centered at $(5, 5)?$
+
+(A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-13": { s: String.raw`The line $12x+5y=60$ forms a triangle with the coordinate axes. What is the sum of the lengths of the altitudes of this triangle?
+
+(A) $20$  (B) $\dfrac{360}{17}$  (C) $\dfrac{107}{5}$  (D) $\dfrac{43}{2}$  (E) $\dfrac{281}{13}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-14": { s: String.raw`Let $a,$ $b,$ and $c$ be three distinct one-digit numbers. What is the maximum value of the sum of the roots of the equation$$(x-a)(x-b) +(x-b)(x-c)=0?$$(A) $15$  (B) $15.5$  (C) $16$  (D) $16.5$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-15": { s: String.raw`The town of Hamlet has $3$ people for each horse, $4$ sheep for each cow, and $3$ ducks for each person. Which of the following could not possibly be the total number of people, horses, sheep, cows, and ducks in Hamlet?
+
+(A) $41$  (B) $47$  (C) $59$  (D) $61$  (E) $66$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-16": { s: String.raw`Al, Bill, and Cal will each randomly be assigned a whole number from $1$ to $10,$ inclusive, with no two of them getting the same number. What is the probability that Al’s number will be a whole number multiple of Bill’s and Bill’s number will be a whole number multiple of Cal’s?
+
+(A) $\dfrac{9}{1000}$  (B) $\dfrac{1}{90}$  (C) $\dfrac{1}{80}$  (D) $\dfrac{1}{72}$  (E) $\dfrac{2}{121}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-17": { s: String.raw`The centers of the faces of the right rectangular prism shown below are joined to create an octahedron. What is the volume of this octahedron?
+
+@@fig:amc10/2015B/17.svg@@
+
+(A) $\dfrac{75}{12}$  (B) $10$  (C) $12$  (D) $10\sqrt{2}$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-18": { s: String.raw`Johann has $64$ fair coins. He flips all the coins. Any coin that lands on tails is tossed again. Coins that land on tails on the second toss are tossed a third time. What is the expected number of coins that are now heads?
+
+(A) $32$  (B) $40$  (C) $48$  (D) $56$  (E) $64$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-19": { s: String.raw`In $\triangle{ABC},$ $\angle{C} = 90^{\circ}$ and $AB = 12.$ Squares $ABXY$ and $ACWZ$ are constructed outside of the triangle. The points $X,$ $Y,$ $Z,$ and $W$ lie on a circle. What is the perimeter of the triangle?
+
+(A) $12+9\sqrt{3}$  (B) $18+6\sqrt{3}$  (C) $12+12\sqrt{2}$  (D) $30$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-2": { s: String.raw`Marie does three equally time-consuming tasks in a row without taking breaks. She begins the first task at $1\!:\!00$ PM and finishes the second task at $2\!:\!40$ PM. When does she finish the third task?
+
+(A) $3{:}10$ PM  (B) $3{:}30$ PM  (C) $4{:}00$ PM  (D) $4{:}10$ PM  (E) $4{:}30$ PM`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-20": { s: String.raw`Erin the ant starts at a given corner of a cube and crawls along exactly $7$ edges in such a way that she visits every corner exactly once and then finds that she is unable to return along an edge to her starting point. How many paths are there meeting these conditions?
+
+(A) $6$  (B) $9$  (C) $12$  (D) $18$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-21": { s: String.raw`Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump.
+
+Cozy goes two steps up with each jump (though if necessary, he will just jump the last step).
+
+Dash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than $5$ steps left).
+
+Suppose Dash takes $19$ fewer jumps than Cozy to reach the top of the staircase. Let $s$ denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of $s?$
+
+(A) $9$  (B) $11$  (C) $12$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
 "2015-amc-10b-22": { s: String.raw`In the figure shown below, $ABCDE$ is a regular pentagon and $AG=1.$ What is $FG + JH + CD?$
 
 @@fig:amc10/2015B/22.svg@@
@@ -57,4 +188,298 @@ Find the sum of the two possible values of $c.$`, u: "https://live.poshenloh.com
 "2015-amc-10b-23": { s: String.raw`Let $n$ be a positive integer greater than $4$ such that the decimal representation of $n!$ ends in $k$ zeros and the decimal representation of $(2n)!$ ends in $3k$ zeros. Let $s$ denote the sum of the four least possible values of $n.$ What is the sum of the digits of $s?$
 
 (A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-24": { s: String.raw`Aaron the ant walks on the coordinate plane according to the following rules.
+
+He starts at the origin $p_0=(0,0)$ facing to the east and walks one unit, arriving at $p_1=(1,0).$
+
+For $n=1,$ $2,$ $3,$ $\dots,$ right after arriving at the point $p_n,$ if Aaron can turn $90^\circ$ left and walk one unit to an unvisited point $p_{n+1},$ he does that. Otherwise, he walks one unit straight ahead to reach $p_{n+1}.$ Thus the sequence of points continues$$\begin{aligned}&p_2=(1,1),\; p_3=(0,1), \\ &p_4=(-1,1),\; p_5=(-1,0),\;\ldots\end{aligned}$$in a counterclockwise spiral pattern. What is $p_{2015}?$
+
+(A) $(-22,-13)$  (B) $(-13,-22)$  (C) $(-13,22)$  (D) $(13,-22)$  (E) $(22,-13)$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-25": { s: String.raw`A rectangular box measures $a \times b \times c,$ where $a,$ $b,$ and $c$ are integers and$$1\leq a \leq b \leq c.$$The volume and the surface area of the box are numerically equal. How many ordered triples $(a,b,c)$ are possible?
+
+(A) $4$  (B) $10$  (C) $12$  (D) $21$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-3": { s: String.raw`Isaac has written down one integer two times and another integer three times. The sum of the five numbers is $100,$ and one of the numbers is $28.$ What is the other number?
+
+(A) $8$  (B) $11$  (C) $14$  (D) $15$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-4": { s: String.raw`Four siblings ordered an extra large pizza. Alex ate $\frac15,$ Beth $\frac13,$ and Cyril $\frac14$ of the pizza. Dan got the leftovers. What is the sequence of the siblings in decreasing order of the part of the pizza they consumed?
+
+(A) Alex, Beth, Cyril, Dan  (B) Beth, Cyril, Alex, Dan  (C) Beth, Cyril, Dan, Alex  (D) Beth, Dan, Cyril, Alex  (E) Dan, Beth, Cyril, Alex`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-5": { s: String.raw`David, Hikmet, Jack, Marta, Rand, and Todd were in a $12$-person race with $6$ other people. Rand finished $6$ places ahead of Hikmet. Marta finished $1$ place behind Jack. David finished $2$ places behind Hikmet. Jack finished $2$ places behind Todd. Todd finished $1$ place behind Rand. Marta finished in $6$th place. Who finished in $8$th place?
+
+(A) David  (B) Hikmet  (C) Jack  (D) Rand  (E) Todd`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-6": { s: String.raw`Marley practices exactly one sport each day of the week. She runs three days a week but never on two consecutive days. On Monday she plays basketball and two days later golf. She swims and plays tennis, but she never plays tennis the day after running or swimming. Which day of the week does Marley swim?
+
+(A) Sunday  (B) Tuesday  (C) Thursday  (D) Friday  (E) Saturday`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-7": { s: String.raw`Consider the operation “minus the reciprocal of,” defined by $a\diamond b=a-\frac{1}{b}.$ What is$$((1\diamond2)\diamond3)-(1\diamond(2\diamond3))?$$(A) $-\dfrac{7}{30}$  (B) $-\dfrac{1}{6}$  (C) $0$  (D) $\dfrac{1}{6}$  (E) $\dfrac{7}{30}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-8": { s: String.raw`The letter F shown below is rotated $90^\circ$ clockwise around the origin, then reflected in the $y$-axis, and then rotated a half turn around the origin. What is the final image?
+
+@@fig:amc10/2015B/8.svg@@
+
+(A) @@ci:amc10/2015B/8.svg|10rem@@
+(B) @@ci:amc10/2015B/8B.svg|10rem@@
+(C) @@ci:amc10/2015B/8C.svg|10rem@@
+(D) @@ci:amc10/2015B/8D.svg|10rem@@
+(E) @@ci:amc10/2015B/8E.svg|10rem@@`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-10b-9": { s: String.raw`The shaded region below is called a shark’s fin falcata, a figure studied by Leonardo da Vinci. It is bounded by the portion of the circle of radius $3$ and center $(0,0)$ that lies in the first quadrant, the portion of the circle with radius $\tfrac{3}{2}$ and center $(0,\tfrac{3}{2})$ that lies in the first quadrant, and the line segment from $(0,0)$ to $(3,0).$ What is the area of the shark’s fin falcata?
+
+@@fig:amc10/2015B/9.svg@@
+
+(A) $\dfrac{4\pi}{5}$  (B) $\dfrac{9\pi}{8}$  (C) $\dfrac{4\pi}{3}$  (D) $\dfrac{7\pi}{5}$  (E) $\dfrac{3\pi}{2}$`, u: "https://live.poshenloh.com/past-contests/amc10/2015B" },
+"2015-amc-12a-1": { s: String.raw`What is the value of$$(2^0-1+5^2+0)^{-1}\times 5?$$(A) $-125$  (B) $-120$  (C) $\dfrac{1}{5}$  (D) $\dfrac{5}{24}$  (E) $25$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-10": { s: String.raw`Integers $x$ and $y$ with $x \gt y \gt 0$ satisfy $x+y+xy = 80.$ What is $x?$
+
+(A) $8$  (B) $10$  (C) $15$  (D) $18$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-11": { s: String.raw`On a sheet of paper, Isabella draws a circle of radius $2,$ a circle of radius $3,$ and all possible lines simultaneously tangent to both circles. Isabella notices that she has drawn exactly $k \ge 0$ lines. How many different values of $k$ are possible?
+
+(A) $2$  (B) $3$  (C) $4$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-12": { s: String.raw`The parabolas $y = ax^2 - 2$ and $y = 4 - bx^2$ intersect the coordinate axes in exactly four points, and these four points are the vertices of a kite of area $12.$ What is $a + b?$
+
+(A) $1$  (B) $1.5$  (C) $2$  (D) $2.5$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-13": { s: String.raw`A league with $12$ teams holds a round-robin tournament, with each team playing every other team exactly once. Games either end with one team victorious or else end in a draw. A team scores $2$ points for every game it wins and $1$ point for every game it draws. Which of the following is not a true statement about the list of $12$ scores?
+
+(A) There must be an even number of odd scores.
+(B) There must be an even number of even scores.
+(C) There cannot be two scores of $0.$
+(D) The sum of the scores must be at least $100.$
+(E) The highest score must be at least $12.$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-14": { s: String.raw`What is the value of $a$ for which$$\dfrac{1}{\log_2 a} + \dfrac{1}{\log_3 a} + \dfrac{1}{\log_4 a} = 1?$$(A) $9$  (B) $12$  (C) $18$  (D) $24$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-15": { s: String.raw`What is the minimum number of digits to the right of the decimal point needed to express the fraction$$\dfrac{123456789}{2^{26}\cdot 5^4}$$as a decimal?
+
+(A) $4$  (B) $22$  (C) $26$  (D) $30$  (E) $104$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-16": { s: String.raw`Tetrahedron $ABCD$ has $AB = 5,$ $AC = 3,$ $BC = 4,$ $BD = 4,$ $AD = 3,$ and $CD = \dfrac{12}{5}\sqrt{2}.$ What is the volume of the tetrahedron?
+
+(A) $3\sqrt{2}$  (B) $2\sqrt{5}$  (C) $\dfrac{24}{5}$  (D) $3\sqrt{3}$  (E) $\dfrac{24}{5}\sqrt{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-17": { s: String.raw`Eight people are sitting around a circular table, each holding a fair coin. All eight people flip their coins and those who flip heads stand while those who flip tails remain seated. What is the probability that no two adjacent people will stand?
+
+(A) $\dfrac{47}{256}$  (B) $\dfrac{3}{16}$  (C) $\dfrac{49}{256}$  (D) $\dfrac{25}{128}$  (E) $\dfrac{51}{256}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-18": { s: String.raw`The zeros of the function $f(x) = x^2 - ax + 2a$ are integers. What is the sum of the possible values of $a?$
+
+(A) $7$  (B) $8$  (C) $16$  (D) $17$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-19": { s: String.raw`For some positive integers $p,$ there is a quadrilateral $ABCD$ with positive integer side lengths, perimeter $p,$ right angles at $B$ and $C,$ $AB = 2,$ and $CD = AD.$ How many different values of $p \lt 2015$ are possible?
+
+(A) $30$  (B) $31$  (C) $61$  (D) $62$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-2": { s: String.raw`Two of the three sides of a triangle are $20$ and $15.$ Which of the following numbers is not a possible perimeter of the triangle?
+
+(A) $52$  (B) $57$  (C) $62$  (D) $67$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-20": { s: String.raw`Isosceles triangles $T$ and $T'$ are not congruent but have the same area and the same perimeter. The sides of $T$ have lengths $5,$ $5,$ and $8,$ while those of $T'$ have lengths $a,$ $a,$ and $b.$ Which of the following numbers is closest to $b?$
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-21": { s: String.raw`A circle of radius $r$ passes through both foci of, and exactly four points on, the ellipse with equation $x^2 + 16y^2 = 16.$ The set of all possible values of $r$ is an interval $[a, b).$ What is $a + b?$
+
+(A) $5\sqrt{2} + 4$  (B) $\sqrt{17} + 7$  (C) $6\sqrt{2} + 3$  (D) $\sqrt{15} + 8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-22": { s: String.raw`For each positive integer $n,$ let $S(n)$ be the number of sequences of length $n$ consisting solely of the letters $A$ and $B,$ with no more than three $A$s in a row and no more than three $B$s in a row. What is the remainder when $S(2015)$ is divided by $12?$
+
+(A) $0$  (B) $4$  (C) $6$  (D) $8$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-23": { s: String.raw`Let $S$ be a square of side length $1.$ Two points are chosen independently at random on the sides of $S.$ The probability that the straight-line distance between the points is at least $\dfrac12$ is $\dfrac{a - b\pi}{c},$ where $a,$ $b,$ and $c$ are positive integers and $\gcd(a, b, c) = 1.$ What is $a + b + c?$
+
+(A) $59$  (B) $60$  (C) $61$  (D) $62$  (E) $63$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-24": { s: String.raw`Rational numbers $a$ and $b$ are chosen at random among all rational numbers in the interval $[0, 2)$ that can be written as fractions $\dfrac{n}{d}$ where $n$ and $d$ are integers with $1 \le d \le 5.$ What is the probability that$$(\cos(a\pi) + i\sin(b\pi))^4$$is a real number?
+
+(A) $\dfrac{3}{50}$  (B) $\dfrac{4}{25}$  (C) $\dfrac{41}{200}$  (D) $\dfrac{6}{25}$  (E) $\dfrac{13}{50}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-25": { s: String.raw`A collection of circles in the upper half-plane, all tangent to the $x$-axis, is constructed in layers as follows. Layer $L_0$ consists of two circles of radii $70^2$ and $73^2$ that are externally tangent. For $k \ge 1,$ the circles in $\bigcup_{j=0}^{k-1} L_j$ are ordered according to their points of tangency with the $x$-axis. For every pair of consecutive circles in this order, a new circle is constructed externally tangent to each of the two circles in the pair. Layer $L_k$ consists of the $2^{k-1}$ circles constructed in this way. Let $S = \bigcup_{j=0}^{6} L_j,$ and for every circle $C$ denote by $r(C)$ its radius. What is$$\sum_{C \in S} \dfrac{1}{\sqrt{r(C)}}?$$@@fig:amc12/2015A/25.svg@@
+
+(A) $\dfrac{286}{35}$  (B) $\dfrac{583}{70}$  (C) $\dfrac{715}{73}$  (D) $\dfrac{143}{14}$  (E) $\dfrac{1573}{146}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-3": { s: String.raw`Mr. Patrick teaches math to $15$ students. He was grading tests and found that when he graded everyone’s test except Payton’s, the average grade for the class was $80.$ After he graded Payton’s test, the class average became $81.$ What was Payton’s score on the test?
+
+(A) $81$  (B) $85$  (C) $91$  (D) $94$  (E) $95$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-4": { s: String.raw`The sum of two positive numbers is $5$ times their difference. What is the ratio of the larger number to the smaller number?
+
+(A) $\dfrac{5}{4}$  (B) $\dfrac{3}{2}$  (C) $\dfrac{9}{5}$  (D) $2$  (E) $\dfrac{5}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-5": { s: String.raw`Amelia needs to estimate the quantity $\dfrac{a}{b}-c,$ where $a,$ $b,$ and $c$ are large positive integers. She rounds each of the integers so that the calculation will be easier to do mentally. In which of these situations will her answer necessarily be greater than the exact value of $\dfrac{a}{b}-c?$
+
+(A) She rounds all three numbers up.
+(B) She rounds $a$ and $b$ up, and she rounds $c$ down.
+(C) She rounds $a$ and $c$ up, and she rounds $b$ down.
+(D) She rounds $a$ up, and she rounds $b$ and $c$ down.
+(E) She rounds $c$ up, and she rounds $a$ and $b$ down.`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-6": { s: String.raw`Two years ago Pete was three times as old as his cousin Claire. Two years before that, Pete was four times as old as Claire. In how many years will the ratio of their ages be $2 : 1?$
+
+(A) $2$  (B) $4$  (C) $5$  (D) $6$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-7": { s: String.raw`Two right circular cylinders have the same volume. The radius of the second cylinder is $10\%$ more than the radius of the first. What is the relationship between the heights of the two cylinders?
+
+(A) The second height is $10\%$ less than the first.
+(B) The first height is $10\%$ more than the second.
+(C) The second height is $21\%$ less than the first.
+(D) The first height is $21\%$ more than the second.
+(E) The second height is $80\%$ of the first.`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-8": { s: String.raw`The ratio of the length to the width of a rectangle is $4 : 3.$ If the rectangle has diagonal of length $d,$ then the area may be expressed as $kd^2$ for some constant $k.$ What is $k?$
+
+(A) $\dfrac{2}{7}$  (B) $\dfrac{3}{7}$  (C) $\dfrac{12}{25}$  (D) $\dfrac{16}{25}$  (E) $\dfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12a-9": { s: String.raw`A box contains $2$ red marbles, $2$ green marbles, and $2$ yellow marbles. Carol takes $2$ marbles from the box at random; then Claudia takes $2$ of the remaining marbles at random; and then Cheryl takes the last $2$ marbles. What is the probability that Cheryl gets $2$ marbles of the same color?
+
+(A) $\dfrac{1}{10}$  (B) $\dfrac{1}{6}$  (C) $\dfrac{1}{5}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015A" },
+"2015-amc-12b-1": { s: String.raw`What is the value of $2 - (-2)^{-2}?$
+
+(A) $-2$  (B) $\dfrac{1}{16}$  (C) $\dfrac{7}{4}$  (D) $\dfrac{9}{4}$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-10": { s: String.raw`How many noncongruent integer-sided triangles with positive area and perimeter less than $15$ are neither equilateral, isosceles, nor right triangles?
+
+(A) $3$  (B) $4$  (C) $5$  (D) $6$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-11": { s: String.raw`The line $12x + 5y = 60$ forms a triangle with the coordinate axes. What is the sum of the lengths of the altitudes of this triangle?
+
+(A) $20$  (B) $\dfrac{360}{17}$  (C) $\dfrac{107}{5}$  (D) $\dfrac{43}{2}$  (E) $\dfrac{281}{13}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-12": { s: String.raw`Let $a,$ $b,$ and $c$ be three distinct one-digit numbers. What is the maximum value of the sum of the roots of the equation $(x - a)(x - b)$ $+ (x - b)(x - c) = 0?$
+
+(A) $15$  (B) $15.5$  (C) $16$  (D) $16.5$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-13": { s: String.raw`Quadrilateral $ABCD$ is inscribed in a circle with $\angle BAC = 70^\circ,$ $\angle ADB = 40^\circ,$ $AD = 4,$ and $BC = 6.$ What is $AC?$
+
+(A) $3 + \sqrt5$  (B) $6$  (C) $\dfrac92\sqrt2$  (D) $8 - \sqrt2$  (E) $7$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-14": { s: String.raw`A circle of radius $2$ is centered at $A.$ An equilateral triangle with side $4$ has a vertex at $A.$ What is the difference between the area of the region that lies inside the circle but outside the triangle and the area of the region that lies inside the triangle but outside the circle?
+
+(A) $8 - \pi$  (B) $\pi + 2$  (C) $2\pi - \dfrac{\sqrt2}{2}$  (D) $4(\pi - \sqrt3)$  (E) $2\pi + \dfrac{\sqrt3}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-15": { s: String.raw`At Rachelle’s school an A counts $4$ points, a B $3$ points, a C $2$ points, and a D $1$ point. Her GPA on the four classes she is taking is computed as the total sum of points divided by $4.$ She is certain that she will get As in both Mathematics and Science, and at least a C in each of English and History. She thinks she has a $\dfrac16$ chance of getting an A in English, and a $\dfrac14$ chance of getting a B. In History, she has a $\dfrac14$ chance of getting an A, and a $\dfrac13$ chance of getting a B, independently of what she gets in English. What is the probability that Rachelle will get a GPA of at least $3.5?$
+
+(A) $\dfrac{11}{72}$  (B) $\dfrac16$  (C) $\dfrac{3}{16}$  (D) $\dfrac{11}{24}$  (E) $\dfrac12$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-16": { s: String.raw`A regular hexagon with sides of length $6$ has an isosceles triangle attached to each side. Each of these triangles has two sides of length $8.$ The isosceles triangles are folded to make a pyramid with the hexagon as the base of the pyramid. What is the volume of the pyramid?
+
+(A) $18$  (B) $162$  (C) $36\sqrt{21}$  (D) $18\sqrt{138}$  (E) $54\sqrt{21}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-17": { s: String.raw`An unfair coin lands on heads with a probability of $\dfrac14.$ When tossed $n$ times, the probability of exactly two heads is the same as the probability of exactly three heads. What is the value of $n?$
+
+(A) $5$  (B) $8$  (C) $10$  (D) $11$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-18": { s: String.raw`For every composite positive integer $n,$ define $r(n)$ to be the sum of the factors in the prime factorization of $n.$ For example, $r(50) = 12$ because the prime factorization of $50$ is $2 \cdot 5^2,$ and $2 + 5 + 5 = 12.$ What is the range of the function $r,$ $\{r(n) : n \text{ is a composite positive integer}\}?$
+
+(A) the set of positive integers
+(B) the set of composite positive integers
+(C) the set of even positive integers
+(D) the set of integers greater than $3$
+(E) the set of integers greater than $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-19": { s: String.raw`In $\triangle ABC,$ $\angle C = 90^\circ$ and $AB = 12.$ Squares $ABXY$ and $ACWZ$ are constructed outside of the triangle. The points $X,$ $Y,$ $Z,$ and $W$ lie on a circle. What is the perimeter of the triangle?
+
+(A) $12 + 9\sqrt3$  (B) $18 + 6\sqrt3$  (C) $12 + 12\sqrt2$  (D) $30$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-2": { s: String.raw`Marie does three equally time-consuming tasks in a row without taking breaks. She begins the first task at $1{:}00$ PM and finishes the second task at $2{:}40$ PM. When does she finish the third task?
+
+(A) $3{:}10$ PM  (B) $3{:}30$ PM  (C) $4{:}00$ PM  (D) $4{:}10$ PM  (E) $4{:}30$ PM`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-20": { s: String.raw`For every positive integer $n,$ let $\operatorname{mod}_5(n)$ be the remainder obtained when $n$ is divided by $5.$ Define a function $f : \{0, 1, 2, 3, \ldots\}$ $\times \{0, 1, 2, 3, 4\}$ $\to \{0, 1, 2, 3, 4\}$ recursively as follows:$$ f(i, j) = \begin{cases} \operatorname{mod}_5(j + 1) & \text{if } i = 0 \text{ and } 0 \le j \le 4, \\ f(i - 1, 1) & \text{if } i \ge 1 \text{ and } j = 0, \text{ and} \\ f(i - 1, f(i, j - 1)) & \text{if } i \ge 1 \text{ and } 1 \le j \le 4. \end{cases} $$What is $f(2015, 2)?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-21": { s: String.raw`Cozy the Cat and Dash the Dog are going up a staircase with a certain number of steps. However, instead of walking up the steps one at a time, both Cozy and Dash jump. Cozy goes two steps up with each jump (though if necessary, he will just jump the last step). Dash goes five steps up with each jump (though if necessary, he will just jump the last steps if there are fewer than $5$ steps left). Suppose that Dash takes $19$ fewer jumps than Cozy to reach the top of the staircase. Let $s$ denote the sum of all possible numbers of steps this staircase can have. What is the sum of the digits of $s?$
+
+(A) $9$  (B) $11$  (C) $12$  (D) $13$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-22": { s: String.raw`Six chairs are evenly spaced around a circular table. One person is seated in each chair. Each person gets up and sits down in a chair that is not the same chair and is not adjacent to the chair he or she originally occupied, so that again one person is seated in each chair. In how many ways can this be done?
+
+(A) $14$  (B) $16$  (C) $18$  (D) $20$  (E) $24$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-23": { s: String.raw`A rectangular box measures $a \times b \times c,$ where $a,$ $b,$ and $c$ are integers and $1 \le a \le b \le c.$ The volume and the surface area of the box are numerically equal. How many ordered triples $(a, b, c)$ are possible?
+
+(A) $4$  (B) $10$  (C) $12$  (D) $21$  (E) $26$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-24": { s: String.raw`Four circles, no two of which are congruent, have centers at $A,$ $B,$ $C,$ and $D,$ and points $P$ and $Q$ lie on all four circles. The radius of circle $A$ is $\dfrac58$ times the radius of circle $B,$ and the radius of circle $C$ is $\dfrac58$ times the radius of circle $D.$ Furthermore, $AB = CD = 39$ and $PQ = 48.$ Let $R$ be the midpoint of $\overline{PQ}.$ What is $AR + BR + CR + DR?$
+
+(A) $180$  (B) $184$  (C) $188$  (D) $192$  (E) $196$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-25": { s: String.raw`A bee starts flying from point $P_0.$ She flies $1$ inch due east to point $P_1.$ For $j \ge 1,$ once the bee reaches point $P_j,$ she turns $30^\circ$ counterclockwise and then flies $j + 1$ inches straight to point $P_{j+1}.$ When the bee reaches $P_{2015}$ she is exactly $a\sqrt b + c\sqrt d$ inches away from $P_0,$ where $a,$ $b,$ $c,$ and $d$ are positive integers and $b$ and $d$ are not divisible by the square of any prime. What is $a + b + c + d?$
+
+(A) $2016$  (B) $2024$  (C) $2032$  (D) $2040$  (E) $2048$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-3": { s: String.raw`Isaac has written down one integer two times and another integer three times. The sum of the five numbers is $100,$ and one of the numbers is $28.$ What is the other number?
+
+(A) $8$  (B) $11$  (C) $14$  (D) $15$  (E) $18$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-4": { s: String.raw`David, Hikmet, Jack, Marta, Rand, and Todd were in a $12$-person race with $6$ other people. Rand finished $6$ places ahead of Hikmet. Marta finished $1$ place behind Jack. David finished $2$ places behind Hikmet. Jack finished $2$ places behind Todd. Todd finished $1$ place behind Rand. Marta finished in $6$th place. Who finished in $8$th place?
+
+(A) David  (B) Hikmet  (C) Jack  (D) Rand  (E) Todd`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-5": { s: String.raw`The Tigers beat the Sharks $2$ out of the first $3$ times they played. They then played $N$ more times, and the Sharks ended up winning at least $95\%$ of all the games played. What is the minimum possible value for $N?$
+
+(A) $35$  (B) $37$  (C) $39$  (D) $41$  (E) $43$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-6": { s: String.raw`Back in $1930,$ Tillie had to memorize her multiplication facts from $0 \times 0$ through $12 \times 12.$ The multiplication table she was given had rows and columns labeled with the factors, and the products formed the body of the table. To the nearest hundredth, what fraction of the numbers in the body of the table are odd?
+
+(A) $0.21$  (B) $0.25$  (C) $0.46$  (D) $0.50$  (E) $0.75$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-7": { s: String.raw`A regular $15$-gon has $L$ lines of symmetry, and the smallest positive angle for which it has rotational symmetry is $R$ degrees. What is $L + R?$
+
+(A) $24$  (B) $27$  (C) $32$  (D) $39$  (E) $54$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-8": { s: String.raw`What is the value of $\left(625^{\log_5 2015}\right)^{\frac14}?$
+
+(A) $5$  (B) $\sqrt[4]{2015}$  (C) $625$  (D) $2015$  (E) $\sqrt[4]{5^{2015}}$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-12b-9": { s: String.raw`Larry and Julius are playing a game, taking turns throwing a ball at a bottle sitting on a ledge. Larry throws first. The winner is the first person to knock the bottle off the ledge. At each turn the probability that a player knocks the bottle off the ledge is $\dfrac12,$ independently of what has happened before. What is the probability that Larry wins the game?
+
+(A) $\dfrac12$  (B) $\dfrac35$  (C) $\dfrac23$  (D) $\dfrac34$  (E) $\dfrac45$`, u: "https://live.poshenloh.com/past-contests/amc12/2015B" },
+"2015-amc-8-1": { s: String.raw`How many square yards of carpet are required to cover a rectangular floor that is $12$ feet long and $9$ feet wide? (There are $3$ feet in a yard.)
+
+(A) $12$  (B) $36$  (C) $108$  (D) $324$  (E) $972$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-10": { s: String.raw`How many integers between $1000$ and $9999$ have four distinct digits?
+
+(A) $3024$  (B) $4536$  (C) $5040$  (D) $6480$  (E) $6561$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-11": { s: String.raw`In the small country of Mathland, all automobile license plates have four symbols. The first must be a vowel (A, E, I, O, or U), the second and third must be two different letters among the $21$ non-vowels, and the fourth must be a digit (0 through $9$). If the symbols are chosen at random subject to these conditions, what is the probability that the plate will read “AMC8”?
+
+(A) $\dfrac{1}{22{,}050}$  (B) $\dfrac{1}{21{,}000}$  (C) $\dfrac{1}{10{,}500}$  (D) $\dfrac{1}{2{,}100}$  (E) $\dfrac{1}{1{,}050}$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-12": { s: String.raw`How many pairs of parallel edges, such as $\overline{AB}$ and $\overline{GH}$ or $\overline{EH}$ and $\overline{FG},$ does a cube have?
+
+@@fig:amc8/2015/12.svg@@
+
+(A) $6$  (B) $12$  (C) $18$  (D) $24$  (E) $36$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-13": { s: String.raw`How many subsets of two elements can be removed from the set$$\{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11\}$$so that the mean (average) of the nine remaining numbers is $6?$
+
+(A) $1$  (B) $2$  (C) $3$  (D) $5$  (E) $6$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-14": { s: String.raw`Which of the following integers cannot be written as the sum of four consecutive odd integers?
+
+(A) $16$  (B) $40$  (C) $72$  (D) $100$  (E) $200$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-15": { s: String.raw`At Euler Middle School, $198$ students voted on two issues in a school referendum with the following results. $149$ voted in favor of the first issue and $119$ voted in favor of the second issue. If there were exactly $29$ students who voted against both issues, how many students voted in favor of both issues?
+
+(A) $49$  (B) $70$  (C) $79$  (D) $99$  (E) $149$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-16": { s: String.raw`In a middle-school mentoring program, a number of the sixth graders are paired with a ninth-grade student as a buddy. No ninth grader is assigned more than one sixth-grade buddy. If $\dfrac{1}{3}$ of all the ninth graders are paired with $\dfrac{2}{5}$ of all the sixth graders, what fraction of the total number of sixth and ninth graders have a buddy?
+
+(A) $\dfrac{2}{15}$  (B) $\dfrac{4}{11}$  (C) $\dfrac{11}{30}$  (D) $\dfrac{3}{8}$  (E) $\dfrac{11}{15}$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-17": { s: String.raw`Jeremy’s father drives him to school in rush hour traffic in $20$ minutes. One day there is no traffic, so his father can drive him $18$ miles per hour faster and gets him to school in $12$ minutes. How far in miles is it to school?
+
+(A) $4$  (B) $6$  (C) $8$  (D) $9$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-18": { s: String.raw`An arithmetic sequence is a sequence in which each term after the first is obtained by adding a constant to the previous term. For example, $2,$ $5,$ $8,$ $11,$ $14$ is an arithmetic sequence with five terms, in which the first term is $2$ and the constant $3$ is added. Each row and each column in this $5\times5$ array is an arithmetic sequence with five terms. What is the value of $X?$
+
+@@fig:amc8/2015/18.svg@@
+
+(A) $21$  (B) $31$  (C) $36$  (D) $40$  (E) $42$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-19": { s: String.raw`A triangle with vertices at $A=(1,3),$ $B=(5,1),$ and $C=(4,4)$ is plotted on a $6\times5$ grid. What fraction of the grid is covered by the triangle?
+
+@@fig:amc8/2015/19.svg@@
+
+(A) $\dfrac{1}{6}$  (B) $\dfrac{1}{5}$  (C) $\dfrac{1}{4}$  (D) $\dfrac{1}{3}$  (E) $\dfrac{1}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-2": { s: String.raw`Point $O$ is the center of the regular octagon $ABCDEFGH,$ and $X$ is the midpoint of the side $\overline{AB}.$ What fraction of the area of the octagon is shaded?
+
+@@fig:amc8/2015/2.svg@@
+
+(A) $\dfrac{11}{32}$  (B) $\dfrac{3}{8}$  (C) $\dfrac{13}{32}$  (D) $\dfrac{7}{16}$  (E) $\dfrac{15}{32}$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-20": { s: String.raw`Ralph went to the store and bought $12$ pairs of socks for a total of $\$24$. Some of the socks he bought cost $\$1$ a pair, some of the socks he bought cost $\$3$ a pair, and some of the socks he bought cost $\$4$ a pair. If he bought at least one pair of each type, how many pairs of $\$1$ socks did Ralph buy?
+
+(A) $4$  (B) $5$  (C) $6$  (D) $7$  (E) $8$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-21": { s: String.raw`In the given figure hexagon $ABCDEF$ is equiangular, $ABJI$ and $FEHG$ are squares with areas $18$ and $32$ respectively, $\triangle JBK$ is equilateral and $FE=BC.$ What is the area of $\triangle KBC?$
+
+@@fig:amc8/2015/21.svg@@
+
+(A) $6\sqrt{2}$  (B) $9$  (C) $12$  (D) $9\sqrt{2}$  (E) $32$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-22": { s: String.raw`On June $1,$ a group of students is standing in rows, with $15$ students in each row. On June $2,$ the same group is standing with all of the students in one long row. On June $3,$ the same group is standing with just one student in each row. On June $4,$ the same group is standing with $6$ students in each row. This process continues through June $12$ with a different number of students per row each day. However, on June $13,$ they cannot find a new way of organizing the students. What is the smallest possible number of students in the group?
+
+(A) $21$  (B) $30$  (C) $60$  (D) $90$  (E) $1080$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-23": { s: String.raw`Tom has twelve slips of paper which he wants to put into five cups labeled $A,$ $B,$ $C,$ $D,$ $E.$
+
+He wants the sum of the numbers on the slips in each cup to be an integer. Furthermore, he wants the five integers to be consecutive and increasing from $A$ to $E.$ The numbers on the papers are $2,$ $2,$ $2,$ $2.5,$ $2.5,$ $3,$ $3,$ $3,$ $3,$ $3.5,$ $4,$ $4.5.$ If a slip with $2$ goes into cup $E$ and a slip with $3$ goes into cup $B,$ then the slip with $3.5$ must go into what cup?
+
+(A) $A$  (B) $B$  (C) $C$  (D) $D$  (E) $E$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-24": { s: String.raw`A baseball league consists of two four-team divisions. Each team plays every other team in its division $N$ games. Each team plays every team in the other division $M$ games with $N > 2M$ and $M > 4.$ Each team plays a $76$ game schedule.
+
+How many games does a team play within its own division?
+
+(A) $36$  (B) $48$  (C) $54$  (D) $60$  (E) $72$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-25": { s: String.raw`One-inch squares are cut from the corners of this $5$ inch square. What is the area in square inches of the largest square that can be fitted into the remaining space?
+
+@@fig:amc8/2015/25.svg@@
+
+(A) $9$  (B) $12\dfrac{1}{2}$  (C) $15$  (D) $15\dfrac{1}{2}$  (E) $17$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-3": { s: String.raw`Jack and Jill are going swimming at a pool that is one mile from their house. They leave home simultaneously. Jill rides her bicycle to the pool at a constant speed of $10$ miles per hour. Jack walks to the pool at a constant speed of $4$ miles per hour. How many minutes before Jack does Jill arrive?
+
+(A) $5$  (B) $6$  (C) $8$  (D) $9$  (E) $10$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-4": { s: String.raw`The Centerville Middle School chess team consists of two boys and three girls. A photographer wants to take a picture of the team to appear in the local newspaper. She decides to have them sit in a row with a boy at each end and the three girls in the middle. How many such arrangements are possible?
+
+(A) $2$  (B) $4$  (C) $5$  (D) $6$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-5": { s: String.raw`Billy’s basketball team scored the following points over the course of the first $11$ games of the season:
+
+$42,$ $47,$ $53,$ $53,$ $58,$ $58,$ $58,$ $61,$ $64,$ $65,$ $73.$
+
+If his team scores $40$ in the $12$th game, which of the following statistics will show an increase?
+
+(A) range  (B) median  (C) mean  (D) mode  (E) mid-range`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-6": { s: String.raw`In $\triangle ABC,$ $AB=BC=29,$ and $AC=42.$ What is the area of $\triangle ABC?$
+
+(A) $100$  (B) $420$  (C) $500$  (D) $609$  (E) $701$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-7": { s: String.raw`Each of two boxes contains three chips numbered $1,$ $2,$ $3.$ A chip is drawn randomly from each box and the numbers on the two chips are multiplied. What is the probability that their product is even?
+
+(A) $\dfrac{1}{9}$  (B) $\dfrac{2}{9}$  (C) $\dfrac{4}{9}$  (D) $\dfrac{1}{2}$  (E) $\dfrac{5}{9}$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-8": { s: String.raw`What is the smallest whole number larger than the perimeter of any triangle with a side of length $5$ and a side of length $19?$
+
+(A) $24$  (B) $29$  (C) $43$  (D) $48$  (E) $57$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
+"2015-amc-8-9": { s: String.raw`On her first day of work, Janabel sold one widget. On day two, she sold three widgets. On day three, she sold five widgets, and on each succeeding day, she sold two more widgets than she had sold on the previous day. How many widgets in total had Janabel sold after working $20$ days?
+
+(A) $39$  (B) $40$  (C) $210$  (D) $400$  (E) $401$`, u: "https://live.poshenloh.com/past-contests/amc8/2015" },
 });

@@ -2969,4 +2969,93 @@
     })()
   };
 
+  // Odd and even functions: x^2 and x^3 with a pair of points at +a and -a.
+  DIAGRAMS["odd-even-functions"] = [(() => {
+    const a = 1.2, ev = x => x * x, od = x => x * x * x;
+    const mE = frame(-1.6, 1.6, -0.3, 2.9, 20, 34, 190, 170), mO = frame(-1.6, 1.6, -3.4, 3.4, 250, 34, 190, 170);
+    const ok = ev(-a) === ev(a) && od(-a) === -od(a);
+    const pE1 = mE.pt(-a, ev(-a)), pE2 = mE.pt(a, ev(a)), pO1 = mO.pt(-a, od(-a)), pO2 = mO.pt(a, od(a));
+    return wrap(460, 252, [
+      axes(mE), plot(ev, mE, -1.5, 1.5, 120, ACC), seg(pE1, pE2, GLD, 1.4, "5 4"), dot(pE1, GLD, 4.5), dot(pE2, GLD, 4.5),
+      txt([84, 106], "f(−a) = f(a)", GLD, 11.5),
+      txt([115, 20], "even: f(−x) = f(x)", DIM, 13),
+      axes(mO), plot(od, mO, -1.5, 1.5, 120, ACC), seg(pO1, pO2, GLD, 1.4, "5 4"), dot(pO1, GLD, 4.5), dot(pO2, GLD, 4.5), dot(mO.pt(0, 0), GRN, 4),
+      txt(add(pO2, [-6, -10]), "(a, f(a))", GLD, 11.5, "end"), txt(add(pO1, [6, 16]), "(−a, −f(a))", GLD, 11.5, "start"),
+      txt([345, 20], "odd: f(−x) = −f(x)", DIM, 13),
+      cap(460, 252, "Left, x² is even: the points at −a and a are mirror images in the y-axis. Right, x³ is odd: the points at −a and a are carried to each other by a half turn about the origin (green)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Inverse functions: x^2 on x >= 0, its inverse, and the mirror line y = x.
+  DIAGRAMS["inverse-function-properties"] = [(() => {
+    const m = frame(-0.3, 3.2, -0.3, 3.2, 40, 14, 250, 250), f = x => x * x, g = Math.sqrt;
+    const a = 1.5, A = m.pt(a, f(a)), B = m.pt(f(a), a);
+    const ok = Math.abs(g(f(a)) - a) < 1e-12;
+    return wrap(420, 284, [
+      axes(m), seg(m.pt(-0.3, -0.3), m.pt(3.2, 3.2), FNT, 1.3, "6 4"),
+      plot(f, m, 0, Math.sqrt(3.15), 120, ACC), plot(g, m, 0, 3.15, 120, GLD),
+      seg(A, B, DIM, 1.2, "4 3"), dot(A, ACC, 4.5), dot(B, GLD, 4.5),
+      txt(add(A, [-8, -6]), "(a, b)", ACC, 12, "end"), txt(add(B, [8, 16]), "(b, a)", GLD, 12, "start"),
+      txt(m.pt(1.9, 3.0), "f", ACC, 14), txt(m.pt(3.0, 1.55), "f⁻¹", GLD, 14), txt(m.pt(3.0, 2.85), "y = x", FNT, 12, "start"),
+      cap(420, 284, "The graph of f(x) = x² on x ≥ 0 and its inverse √x are mirror images in the dashed line y = x: the point (a, b) on one graph pairs with (b, a) on the other." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // The three things a relation between two values can say about a graph: a mirror line, a center, a shift.
+  DIAGRAMS["function-symmetry-equation"] = [(() => {
+    const T = 38, H = 124, W = 134;
+    const g = x => 0.5 * (x - 2) * (x - 2) + 0.4, h = x => 0.35 * Math.pow(x - 2, 3) + 1.5, p = x => 1.5 + Math.sin(Math.PI * x);
+    const m1 = frame(0, 4, 0, 3, 12, T, W, H), m2 = frame(0, 4, 0, 3, 163, T, W, H), m3 = frame(0, 4, 0, 3, 314, T, W, H);
+    const ok = Math.abs(g(0.8) - g(3.2)) < 1e-9 && Math.abs(h(0.8) + h(3.2) - 3) < 1e-9 && Math.abs(p(0.5) - p(2.5)) < 1e-9;
+    const bottom = T + H;
+    return wrap(460, 214, [
+      seg(m1.pt(0, 0), m1.pt(4, 0), FNT, 1.2), plot(g, m1, 0.15, 3.85, 100, ACC), seg(m1.pt(2, 0), m1.pt(2, 3), GLD, 1.4, "5 4"),
+      seg(m1.pt(0.8, g(0.8)), m1.pt(3.2, g(3.2)), DIM, 1.2, "4 3"), dot(m1.pt(0.8, g(0.8)), GLD, 4.5), dot(m1.pt(3.2, g(3.2)), GLD, 4.5),
+      txt([79, 20], "f(x) = f(c − x)", DIM, 12), txt([79, bottom + 20], "axis x = c/2", GLD, 12),
+      seg(m2.pt(0, 0), m2.pt(4, 0), FNT, 1.2), plot(h, m2, 0.1, 3.9, 100, ACC),
+      seg(m2.pt(0.8, h(0.8)), m2.pt(3.2, h(3.2)), DIM, 1.2, "4 3"), dot(m2.pt(0.8, h(0.8)), GLD, 4.5), dot(m2.pt(3.2, h(3.2)), GLD, 4.5), dot(m2.pt(2, 1.5), GRN, 5),
+      txt([230, 20], "f(x) + f(c − x) = 2b", DIM, 12), txt([230, bottom + 20], "center (c/2, b)", GRN, 12),
+      seg(m3.pt(0, 0), m3.pt(4, 0), FNT, 1.2), plot(p, m3, 0, 4, 160, ACC),
+      seg(m3.pt(0.5, p(0.5)), m3.pt(2.5, p(2.5)), GLD, 1.4), dot(m3.pt(0.5, p(0.5)), GLD, 4.5), dot(m3.pt(2.5, p(2.5)), GLD, 4.5),
+      txt([381, 20], "f(x + T) = f(x)", DIM, 12), txt([381, bottom + 20], "period T", GLD, 12),
+      cap(460, 214, "Equal values at arguments adding to c: a mirror line at x = c/2. Values adding to 2b at arguments adding to c: a half turn about (c/2, b). Equal values at arguments differing by T: the graph repeats every T." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  BODY["function-symmetry-equation"] = {
+    // One function with an axis at x = 3 and a center at (1, 0); both relations are checked at sample points.
+    symmetries: (() => {
+      const k = -5 * Math.SQRT2, H = x => k * Math.cos(Math.PI * (x - 3) / 4);
+      const m = frame(-3, 11, -8.5, 10.5, 30, 14, 390, 214);
+      const ok = [0.3, 1.7, -2.2, 4.9].every(x => Math.abs(H(6 - x) - H(x)) < 1e-9 && Math.abs(H(2 - x) + H(x)) < 1e-9) && Math.abs(H(0) - 5) < 1e-9;
+      const parts = [axes(m), plot(H, m, -3, 11, 240, ACC, 2.2)];
+      [-1, 3, 7].forEach(x => parts.push(seg(m.pt(x, -8.2), m.pt(x, 8.2), GLD, 1.3, "6 4")));
+      [-3, 1, 5, 9].forEach(x => parts.push(dot(m.pt(x, 0), GRN, 4.6)));
+      parts.push(txt(add(m.pt(3, -8.2), [0, 14]), "axis x = 3", GLD, 12));
+      parts.push(txt(add(m.pt(1, 0), [-9, 17]), "(1, 0)", GRN, 12, "end"));
+      parts.push(seg(m.pt(-1, 9.2), m.pt(7, 9.2), DIM, 1.4), seg(m.pt(-1, 8.5), m.pt(-1, 9.9), DIM, 1.4), seg(m.pt(7, 8.5), m.pt(7, 9.9), DIM, 1.4));
+      parts.push(txt(add(m.pt(3, 9.2), [0, -6]), "period 8", DIM, 12));
+      parts.push(cap(430, 252, "A function with f(6 − x) = f(x) and f(2 − x) = −f(x): mirror lines at x = −1, 3, 7 (gold) and centers at x = −3, 1, 5, 9 (green). Neighbouring axes are 4 apart and the graph repeats every 8, twice that gap." + (ok ? "" : " MISMATCH")));
+      return ok ? wrap(430, 252, parts) : "";
+    })()
+  };
+
+  // A ratio of differences read as a slope: the circle x^2 + y^2 = 4 seen from (3, 1); the two tangent slopes are checked.
+  DIAGRAMS["slope-to-a-point"] = [(() => {
+    const sc = 48, ox = 120, oy = 150, px = (x, y) => [ox + sc * x, oy - sc * y], R = 2, P = [3, 1];
+    const ms = [(3 + 2 * Math.sqrt(6)) / 5, (3 - 2 * Math.sqrt(6)) / 5];
+    const touch = m => { const A = m, B = -1, C = 1 - 3 * m, k = C / (A * A + B * B); return [-A * k, -B * k]; };
+    const T = ms.map(touch), ok = T.every(t => Math.abs(Math.hypot(t[0], t[1]) - R) < 1e-9);
+    const ext = t => [P[0] + 1.35 * (t[0] - P[0]), P[1] + 1.35 * (t[1] - P[1])];
+    return wrap(430, 300, [
+      seg(px(-2.7, 0), px(4.1, 0), FNT, 1.2), seg(px(0, -2.8), px(0, 2.8), FNT, 1.2),
+      circ(px(0, 0), sc * R, DIM, 2),
+      seg(px(...P), px(...ext(T[0])), ACC, 2), seg(px(...P), px(...ext(T[1])), GLD, 2),
+      dot(px(...P), DIM, 4.5), dot(px(...T[0]), ACC, 4), dot(px(...T[1]), GLD, 4),
+      txt(add(px(...P), [10, -8]), "(b, a)", DIM, 13, "start"),
+      txt(add(px(...ext(T[0])), [15, -28]), "largest slope", ACC, 12, "end"), txt(add(px(...ext(T[1])), [11, 2]), "smallest slope", GLD, 12, "start"),
+      cap(430, 300, "The ratio (y − a)/(x − b) over the circle is the slope from the fixed point (b, a) to a point of the circle. The largest and smallest slopes belong to the two tangent lines from (b, a)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
 })();
