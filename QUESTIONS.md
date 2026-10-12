@@ -56,21 +56,21 @@ Already fixed (a display bug, not a style choice): four boxes ended a row with a
 
 | Card | Rows | What is packed in | Proposal |
 |---|---|---|---|
-| Order Statistics | 7 | five continuous facts, then two long text rows for discrete draws with and without replacement | keep the five continuous rows; move the two discrete rows to Key forms (add) |
+| Order Statistics on [0, 1] | 7 | five continuous facts, then two long text rows for discrete draws with and without replacement | keep the five continuous rows; move the two discrete rows to Key forms (add) |
 | Binet's Formula | 6 | Binet, the definitions of φ and ψ, then Cassini, gcd, addition, sum of squares | keep Binet and φ, ψ; the four Fibonacci identities leave the box (all in Key forms). One idea per card |
 | Product-to-Sum & Sum-to-Product | 6 | three product-to-sum and three sum-to-product formulas | keep: the six are the card |
 | Reduction Identities | 6 | six cofunction and sign rules | keep: a reference table |
-| Sums of Powers | 5 | Σk, Σk², Σk³, the odd sum, the even sum | keep the first three; the odd and even sums leave the box (in Key forms) |
+| Sums of Powers of Integers | 5 | Σk, Σk², Σk³, the odd sum, the even sum | keep the first three; the odd and even sums leave the box (in Key forms) |
 | Vieta's Formulas (Quadratic) | 5 | r + s, rs, then r² + s², 1/r + 1/s, \|r − s\| | keep r + s and rs; the three derived forms leave the box (two in Key forms, add 1/r + 1/s) |
-| Special Trig Values | 5 | sin 15°, cos 36°, sin 18°, tan 15°, tan 75° | keep: a reference table |
+| Special Values Worth Memorizing | 5 | sin 15°, cos 36°, sin 18°, tan 15°, tan 75° | keep: a reference table |
 | Hyperbola Properties | 5 | equation, focal difference, c², asymptotes, xy = k | move xy = k (rectangular) to Key forms (add) |
 | Cone Formulas | 5 | slant, lateral area, total area, volume, sector angle | keep: a reference card |
 | Excentral Triangle | 5 | I as orthocenter, ABC as orthic triangle, sides, circumradius, area | keep the first, the sides, and R; move "ABC is the orthic triangle" and the area to Key forms (add) |
 | Eccentricity | 5 | the definition, then one row per conic | put the four conic cases on one row ("e = 0 circle, 0 < e < 1 ellipse, …"): 2 rows, nothing moved |
-| Triangle Angle Identities | 5 | five identities for A + B + C = 180° | keep: the card owns these after the rule-17 dedupe |
+| Identities for Angles Summing to 180° | 5 | five identities for A + B + C = 180° | keep: the card owns these after the rule-17 dedupe |
 | Polar Coordinates | 5 | x, y, r², tan θ, the polar cell area | move the cell area to Key forms (add) |
 | Absolute Value Identities | 5 | five rules | keep: a reference card |
-| Recognition Numbers | 5 | 1001, 999, 1024, 1729, 7⁴ | keep: a reference list |
+| Numbers Worth Recognizing | 5 | 1001, 999, 1024, 1729, 7⁴ | keep: a reference list |
 | Newton's Sums | 5 | the general recurrence, then p₁ to p₄ | keep the recurrence, p₁, p₂; move p₃, p₄ (p₃ in Key forms, add p₄) |
 | Log Rules | 5 | five rules | keep: a reference card |
 | Divisibility Rules | 5 | five rules | keep: a reference card |
@@ -78,4 +78,4 @@ Already fixed (a display bug, not a style choice): four boxes ended a row with a
 
 So the proposal changes 9 cards (Order Statistics, Binet, Sums of Powers, Vieta, Hyperbola, Excentral, Eccentricity, Polar Coordinates, Newton's Sums) and keeps 10.
 
-At 375 px, 397 boxes scroll sideways inside the box, which is by design. In 23 of them the row is more than 2.5 times the phone width. The proposal is one row break at the natural point (before $\iff$, or after the condition), with nothing removed: Desargues Involution, Carnot's Perpendicularity Theorem, Reim's Theorem, Basic Facts about Trees, Total Expectation, British Flag Theorem, Isotomic Conjugate, Schur's Inequality, Lagrange's Theorem on Roots mod p, Polynomial CRT, Inclusion–Exclusion, Pick's Theorem on a Hexagonal Grid, Order Statistics, CRT Solution Counting, Defined Operations, Conway Circle, Japanese Theorem, Pappus's Hexagon Theorem, the Twelvefold Way table, Nine-Point Circle, Integer Triangles with a Given Perimeter, the Steiner Line, and Pigeonhole.
+At 375 px, 397 boxes scroll sideways inside the box, which is by design. In 23 of them the row is more than 2.5 times the phone width. The proposal is one row break at the natural point (before $\iff$, or after the condition), with nothing removed: Desargues Involution Theorem and Its Dual, Carnot's Perpendicularity Theorem, Reim's Theorem, Basic Facts about Trees, Law of Total Expectation, British Flag Theorem, Isotomic Conjugate, Schur's Inequality, Lagrange's Theorem on Polynomial Roots mod p, Chinese Remainder Theorem for Polynomials, Principle of Inclusion-Exclusion, Hexagonal Grids and Pick's Theorem, Order Statistics on [0, 1], Counting Solutions via CRT, A Newly Defined Operation, The Conway Circle, The Japanese Theorem, Pappus's Hexagon Theorem, Balls in Boxes (The Twelvefold Way), The Nine-Point Circle, Counting Integer-Sided Triangles by Perimeter, The Steiner Line, and Pigeonhole Principle.
