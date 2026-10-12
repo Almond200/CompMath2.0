@@ -1753,7 +1753,10 @@
     "sqrt-bc-inversion": "method",
     "van-aubel-cevians": "formula",
     "archimedes-broken-chord": "formula",
-    "nesbitt-inequality": "formula"
+    "nesbitt-inequality": "formula",
+    "injectivity-surjectivity": "method",
+    "cyclotomic-polynomials": "formula",
+    "gamblers-ruin": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8338,6 +8341,24 @@
       ]
     ],
     "nesbitt-inequality": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "injectivity-surjectivity": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "cyclotomic-polynomials": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "gamblers-ruin": [
       [
         "(new card)",
         "written directly in the formula template"

@@ -265,7 +265,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["fermat-numbers", "lattice-points-circle", "gaussian-integers", "pisano-periods", "farey-sequences", "continued-fraction-convergents", "zeckendorf-theorem", "floor-sum-reciprocity"] },
     ] },
   { id: "route-aime-counting", name: "AIME Counting & Probability", kind: "route", tier: "AIME", subject: "Counting & Probability",
-    blurb: "Builds on the AMC 10/12 counting and probability route: only the cards that are new at this level, so each list stays short. 22 cards across 8 sections.",
+    blurb: "Builds on the AMC 10/12 counting and probability route: only the cards that are new at this level, so each list stays short. 23 cards across 8 sections.",
     sections: [
       { title: "Binomial Coefficients",
         note: "The identities worth knowing cold, since they turn a sum into a single coefficient.",
@@ -281,7 +281,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["necklace-formula", "partitions", "stirling-bell", "stirling-first-kind", "reflection-principle", "burnsides-lemma"] },
       { title: "Probability",
         note: "Turning a probability into a count, which is what nearly every contest probability question is.",
-        ids: ["markovs-inequality", "coprime-probability", "probability-generating-functions"] },
+        ids: ["markovs-inequality", "coprime-probability", "probability-generating-functions", "gamblers-ruin"] },
       { title: "Existence Arguments",
         note: "Proving something must exist without constructing it.",
         ids: ["ramsey-33", "monovariant", "extremal-principle"] },
@@ -331,7 +331,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["convex-position", "sylvester-gallai", "hellys-theorem", "minkowski-lattice"] },
     ] },
   { id: "route-olympiad-algebra", name: "Olympiad Algebra", kind: "route", tier: "Olympiad", subject: "Algebra",
-    blurb: "Builds on the AIME algebra route: only the cards that are new at this level, so each list stays short. 24 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME algebra route: only the cards that are new at this level, so each list stays short. 25 cards across 8 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "The Inequality Toolkit",
         note: "The workhorses. Most olympiad inequalities fall to one of these, often after a substitution.",
@@ -353,10 +353,13 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["eigenvalues-characteristic", "cayley-hamilton", "vandermonde-determinant"] },
       { title: "Roots of Unity & Floors",
         note: "Extracting part of a sum with complex roots, and the floor identities that behave similarly.",
-        ids: ["roots-of-unity-filter"] }
+        ids: ["roots-of-unity-filter"] },
+      { title: "Functional Equations",
+        note: "Proving the unknown function one-to-one or onto before solving for it, the opening move of most olympiad functional equations.",
+        ids: ["injectivity-surjectivity"] }
     ] },
   { id: "route-olympiad-number", name: "Olympiad Number Theory", kind: "route", tier: "Olympiad", subject: "Number Theory",
-    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 16 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 17 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Multiplicative Functions",
         note: "Functions determined by their values on prime powers, and the inversion that recovers one from its sums.",
@@ -375,7 +378,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cauchy-davenport", "erdos-ginzburg-ziv", "chevalley-warning", "vieta-jumping"] },
       { title: "Special Numbers & Sequences",
         note: "Named families whose arithmetic is worth knowing before you meet them in a problem.",
-        ids: ["wolstenholme", "zsygmondy", "carmichael-numbers"] },
+        ids: ["wolstenholme", "zsygmondy", "cyclotomic-polynomials", "carmichael-numbers"] },
       { title: "Continued Fractions & Representations",
         note: "Writing a number in a form that makes its arithmetic visible.",
         ids: ["beatty-theorem"] }

@@ -3141,4 +3141,47 @@
       cap(430, 200, "The draws blue, blue, red, with the fraction of each draw taken from what is left after the earlier ones: 6/10 · 5/9 · 4/8 = 1/6. The faint branches are the draws the path does not take." + (ok ? "" : " MISMATCH"))]);
   })()];
 
+
+  // Cyclotomic polynomials: the twelve 12th roots of unity, colored by their exact order d, so each
+  // color is the set of roots of one Φ_d. The degrees are φ(d), and they add up to 12.
+  DIAGRAMS["cyclotomic-polynomials"] = [(() => {
+    const O = [165, 165], R = 120, PURc = "var(--level-12)", ORGc = "var(--level-aime)";
+    const gcd = (a, b) => b ? gcd(b, a % b) : a;
+    const col = { 1: DIM, 2: DIM, 3: GRN, 4: ORGc, 6: PURc, 12: GLD };
+    const roots = Array.from({ length: 12 }, (_, k) => ({ k, d: 12 / gcd(k, 12), p: onC(O, R, -30 * k) }));
+    const counts = {}; roots.forEach(r => { counts[r.d] = (counts[r.d] || 0) + 1; });
+    const phi = n => Array.from({ length: n }, (_, j) => j + 1).filter(j => gcd(j, n) === 1).length;
+    const ok = [1, 2, 3, 4, 6, 12].every(d => counts[d] === phi(d)) && roots.length === 12;
+    const legend = [[12, "Φ₁₂ = x⁴ − x² + 1"], [6, "Φ₆ = x² − x + 1"], [4, "Φ₄ = x² + 1"], [3, "Φ₃ = x² + x + 1"], [2, "Φ₂ = x + 1"], [1, "Φ₁ = x − 1"]];
+    return wrap(460, 330, [
+      seg([30, O[1]], [300, O[1]], FNT, 1.1), seg([O[0], 30], [O[0], 300], FNT, 1.1),
+      circ(O, R, FNT, 1.4),
+      ...roots.map(r => dot(r.p, col[r.d], r.d === 12 ? 6 : 4.5)),
+      txt(add(roots[0].p, [12, -8]), "1", DIM, 12.5, "start"), txt(add(roots[6].p, [-12, -8]), "−1", DIM, 12.5, "end"),
+      ...legend.map(([d, t], j) => dot([318, 92 + 30 * j], col[d], d === 12 ? 6 : 4.5) + txt([330, 96 + 30 * j], t, col[d], 12.5, "start")),
+      cap(460, 330, "The twelve roots of x¹² − 1, each colored by its order d: the roots of order d are exactly the roots of Φ<sub>d</sub>, so x¹² − 1 = Φ₁Φ₂Φ₃Φ₄Φ₆Φ₁₂. The four gold roots, of order 12, are the roots of Φ₁₂, and the counts 1, 1, 2, 2, 2, 4 are φ(d)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Gambler's Ruin: P_k for N = 6, fair (p = 1/2) against biased (p = 2/3), the card's example.
+  DIAGRAMS["gamblers-ruin"] = [(() => {
+    const m = frame(0, 6, 0, 1, 60, 30, 330, 230), N = 6;
+    const fair = k => k / N, r = 0.5, bias = k => (1 - r ** k) / (1 - r ** N);
+    const ok = Math.abs(bias(3) - 8 / 9) < 1e-12 && Math.abs(fair(3) - 0.5) < 1e-12;
+    const path = (f, c) =>
+      Array.from({ length: N }, (_, k) => seg(m.pt(k, f(k)), m.pt(k + 1, f(k + 1)), c, 2)).join("") +
+      Array.from({ length: N + 1 }, (_, k) => dot(m.pt(k, f(k)), c, k === 3 ? 5.5 : 3.8)).join("");
+    return wrap(430, 310, [
+      seg(m.pt(0, 0), m.pt(6, 0), FNT, 1.2), seg(m.pt(0, 0), m.pt(0, 1), FNT, 1.2),
+      seg(m.pt(0, 1), m.pt(6, 1), FNT, 1, "3 4"),
+      ...[0, 1, 2, 3, 4, 5, 6].map(k => txt(add(m.pt(k, 0), [0, 17]), String(k), FNT, 11.5)),
+      txt(add(m.pt(0, 1), [-10, 4]), "1", FNT, 11.5, "end"), txt(add(m.pt(0, 0.5), [-10, 4]), "½", FNT, 11.5, "end"),
+      txt(add(m.pt(3, 0), [0, 34]), "starting chips k", FNT, 11.5),
+      path(fair, ACC), path(bias, GLD),
+      seg(m.pt(3, 0), m.pt(3, bias(3)), FNT, 1, "3 3"),
+      txt(add(m.pt(3, bias(3)), [-12, -10]), "8/9", GLD, 12.5), txt(add(m.pt(3, fair(3)), [16, 14]), "1/2", ACC, 12.5),
+      txt(m.pt(1.75, 0.9), "p = 2/3", GLD, 12.5, "end"), txt(add(m.pt(5, fair(5)), [10, 18]), "p = 1/2", ACC, 12.5, "start"),
+      cap(430, 310, "The probability of reaching 6 chips before 0, from each start k. The fair walk (blue) is the straight line k/6; with p = 2/3 (gold) the curve (1 − (1/2)<sup>k</sup>)/(1 − (1/2)⁶) bulges upward, and from k = 3 it gives 8/9 instead of 1/2." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

@@ -748,6 +748,17 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "cyclotomic-polynomials",
+          name: "Cyclotomic Polynomials",
+          latex: String.raw`x^n - 1 = \prod_{d \mid n} \Phi_d(x), \qquad p \mid \Phi_n(a),\ p \nmid n \implies p \equiv 1 \pmod n`,
+          latexPlain: String.raw`x^n - 1 = \Phi_{d_1}(x)\,\Phi_{d_2}(x)\cdots\Phi_n(x)\ \ (d_1, d_2, \ldots, n \text{ the divisors of } n), \qquad p \mid \Phi_n(a),\ p \nmid n \implies p \equiv 1 \pmod n`,
+          description: String.raw`The $n$th cyclotomic polynomial $\Phi_n(x)$ is the monic polynomial whose roots are the primitive $n$th roots of unity, the complex numbers $\zeta$ with $\zeta^n = 1$ and no smaller positive power equal to $1$. It has integer coefficients and degree $\varphi(n)$, and the $\Phi_d$ for the divisors $d$ of $n$ are exactly the pieces into which $x^n - 1$ factors. For an integer $a$, a prime $p$ dividing $\Phi_n(a)$ either divides $n$ or has $a$ of [[multiplicative-order|order]] exactly $n$ modulo $p$. That makes these polynomials the standard source of primes in the progression $1 \bmod n$ and of prime divisors of $a^n - 1$ that divide no smaller $a^d - 1$.`,
+          keywords: ["cyclotomic polynomial", "phi n of x", "primitive roots of unity", "x^n minus 1 factorization", "prime divisors congruent to 1 mod n", "primes 1 mod n infinitely many", "order exactly n", "x^4 - x^2 + 1"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "fermat-numbers",
           name: "Fermat Numbers",
           latex: String.raw`F_n = 2^{2^n} + 1, \qquad F_0 F_1 \cdots F_{n-1} = F_n - 2`,

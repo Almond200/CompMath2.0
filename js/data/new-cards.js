@@ -14,5 +14,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Card-file scan, batch 1: olympiad geometry", date: "2026-10-12",
     ids: ["shooting-lemma", "dumpty-point", "sqrt-bc-inversion"] },
   { label: "Card-file scan, batch 2: AIME geometry and Nesbitt", date: "2026-10-12",
-    ids: ["van-aubel-cevians", "archimedes-broken-chord", "nesbitt-inequality"] }
+    ids: ["van-aubel-cevians", "archimedes-broken-chord", "nesbitt-inequality"] },
+  { label: "Card-file scan, batch 3: functions, cyclotomics, random walks", date: "2026-10-12",
+    ids: ["injectivity-surjectivity", "cyclotomic-polynomials", "gamblers-ruin"] }
 ];

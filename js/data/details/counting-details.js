@@ -1121,6 +1121,41 @@ Expected waiting times for a first success, expected rolls to see every face, an
 Expected number of rolls until a given face, coupon-collector variants such as the expected number of rolls to see every face, and first-passage questions. The self-similar equation is faster and safer than series summation.
 `,
 
+"gamblers-ruin": String.raw`
+## Key forms
+- a walk on $0, 1, \ldots, N$ starts at $k$, steps $+1$ with probability $p$ and $-1$ with probability $q = 1 - p$, and stops at $0$ or $N$; $P_k$ is the probability of reaching $N$ first
+- fair walk, $p = \frac12$: $P_k = \frac kN$, and the expected number of steps is $E_k = k(N - k)$
+- biased walk, $p \ne \frac12$, with $r = \frac qp$: $P_k = \frac{1 - r^k}{1 - r^N}$ and $E_k = \frac{k}{q - p} - \frac{N}{q - p}\cdot\frac{1 - r^k}{1 - r^N}$
+- no upper target, $N \to \infty$: ruin is certain when $p \le \frac12$; when $p \gt \frac12$ the walk escapes forever with probability $1 - \left(\frac qp\right)^k$
+
+## Conditions
+The steps are independent, each exactly $+1$ or $-1$ with fixed probabilities, and the walk stops at the first visit to $0$ or $N$. Steps of other sizes, or a probability of standing still, change the recurrence, though the same first-step method still solves it.
+
+## Why it works
+Step 1, first-step equations. Conditioning on the first step from $k$,
+
+$$P_k = p\,P_{k + 1} + q\,P_{k - 1} \qquad (0 \lt k \lt N), \qquad P_0 = 0,\ P_N = 1.$$
+
+This is the method of [[states-recursion-prob|Markov chains and first-step analysis]], with one state per position.
+
+Step 2, solving the recurrence. Writing $P_k = (p + q)P_k$ turns it into $p\,(P_{k + 1} - P_k) = q\,(P_k - P_{k - 1})$, so the gaps $P_{k + 1} - P_k$ form a geometric sequence with ratio $r = \frac qp$. When $r = 1$ the gaps are equal, $P_k$ is linear, and the boundary values give $\frac kN$. When $r \ne 1$, $P_k$ is proportional to $1 + r + \cdots + r^{k - 1} = \frac{1 - r^k}{1 - r}$, and $P_N = 1$ fixes the constant, giving $\frac{1 - r^k}{1 - r^N}$.
+
+Step 3, the expected length. Now $E_k = 1 + p\,E_{k + 1} + q\,E_{k - 1}$ with $E_0 = E_N = 0$. In the fair case $-k^2$ is a particular solution, so $E_k = -k^2 + \alpha k + \beta$, and the boundary values give $E_k = k(N - k)$. In the biased case $\frac{k}{q - p}$ is a particular solution, and adding a multiple of the homogeneous solution $1 - r^k$ to meet $E_N = 0$ gives the stated formula.
+
+Step 4, the unbounded game. For $p \lt \frac12$, $r \gt 1$ and $P_k = \frac{r^k - 1}{r^N - 1} \to 0$ as $N \to \infty$; for $p = \frac12$, $\frac kN \to 0$. For $p \gt \frac12$, $r^N \to 0$ and $P_k \to 1 - r^k$.
+
+## Useful observations
+- In a fair game the expected fortune never changes, so $k = N \cdot P_k + 0 \cdot (1 - P_k)$, which gives $P_k = \frac kN$ in one line.
+- A small bias has a large effect: with $p = 0.49$, a start of $k = 50$ and target $N = 100$ give $P_{50} \approx 0.12$, not $\frac12$, because $r^{50}$ is large.
+- Doubling the stakes halves $k$ and $N$, which raises the weaker side's chance in a biased game: bold play is better when the odds are against you.
+
+## Applications
+Probabilities that one player is eliminated before another, random walks between two barriers, races of points such as a game won by getting two points ahead, and the expected length of such games.
+
+## Contest profile
+An AIME and AMC probability setup, recognized by a quantity that goes up or down by one each round until it hits one of two limits. The fair case is usually expected to be solved on sight, and the biased case through the recurrence or the formula.
+`,
+
 "turn-based-games": String.raw`
 ## Key forms
 - $P(\text{first player wins}) = \dfrac{p}{p + q - pq}$ — when the first player succeeds with probability $p$ on each turn and the second with probability $q$

@@ -560,7 +560,7 @@ window.MATH_SECTIONS.push({
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sos-method", "smoothing-method", "tangent-line-trick", "median-minimizes-abs", "slope-to-a-point"] },
         { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "time-per-leg", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "sqrt-approximation"] },
-        { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it.", ids: ["function-symmetry-equation"] },
+        { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Determinants", blurb: "Evaluating a determinant without expanding every term.", ids: ["cofactor-expansion"] }
       ],
       formulas: [
@@ -833,6 +833,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AIME Early",
           level: ["AIME"]
+        },
+        {
+          id: "injectivity-surjectivity",
+          name: "Injectivity and Surjectivity in Functional Equations",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A functional equation nests the unknown function inside itself, as in $f(f(x))$ or $f(x + f(y))$, so that plugging in values never isolates $f$; or one side contains a bare variable that can take every value.`,
+          move: String.raw`Prove that $f$ is injective, so $f(A) = f(B)$ lets you conclude $A = B$, or surjective, so some input gives $f$ any chosen value, such as $0$; then substitute that input, or cancel $f$, to unlock the equation.`,
+          uses: ["inverse-function-properties", "cauchy-functional-equations"],
+          latex: String.raw`\begin{gathered} f(a) = f(b) \implies a = b \quad \text{(injective)} \\ \text{every } y \text{ is some } f(x) \quad \text{(surjective)} \end{gathered}`,
+          description: String.raw`In an olympiad functional equation, the first structural facts to prove are usually that the function is one-to-one or onto. Injectivity lets $f$ be cancelled from both sides of an equation; surjectivity lets $f(y)$ be replaced by a free variable, or lets a point where $f$ vanishes be plugged in. Both are proved from the equation itself, typically from a side where a variable appears outside every $f$, and together they often reduce the problem to a known equation such as [[cauchy-functional-equations|Cauchy's]].`,
+          keywords: ["injective function", "surjective function", "one to one", "onto", "cancel f", "functional equation olympiad", "f(f(x))", "there is a zero of f"],
+          importance: "medium",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "lagrange-interpolation",

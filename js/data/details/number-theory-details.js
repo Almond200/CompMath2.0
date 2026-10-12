@@ -1365,6 +1365,39 @@ Congruences for harmonic sums and for central binomial coefficients modulo prime
 An olympiad fact; its mod-$p$ version by pairing is the part that appears in training problems.
 `,
 
+"cyclotomic-polynomials": String.raw`
+## Key forms
+- $\Phi_n(x) = \alt{\prod_{\gcd(k, n) = 1} \left(x - e^{2\pi i k/n}\right)}{(x - \zeta_1)(x - \zeta_2)\cdots(x - \zeta_{\varphi(n)})}$, the product over the primitive $n$th roots of unity; it is monic with integer coefficients and degree $\varphi(n)$
+- $x^n - 1 = \alt{\prod_{d \mid n} \Phi_d(x)}{\Phi_{d_1}(x)\Phi_{d_2}(x)\cdots\Phi_n(x)}$ over the divisors of $n$, and by [[mobius-inversion|Möbius inversion]] $\Phi_n(x) = \alt{\prod_{d \mid n}\left(x^d - 1\right)^{\mu(n/d)}}{\frac{\text{the factors } x^d - 1 \text{ with } \mu(n/d) = 1}{\text{the factors } x^d - 1 \text{ with } \mu(n/d) = -1}}$
+- $\Phi_p(x) = 1 + x + \cdots + x^{p - 1}$ for a prime $p$, $\Phi_{p^k}(x) = \Phi_p\!\left(x^{p^{k - 1}}\right)$, and $\Phi_{2n}(x) = \Phi_n(-x)$ for odd $n \gt 1$
+- for an integer $a$ and a prime $p \nmid n$: $p \mid \Phi_n(a)$ exactly when $a$ has order $n$ modulo $p$, and then $p \equiv 1 \pmod n$
+- there are infinitely many primes $p \equiv 1 \pmod n$, for every $n$
+
+## Conditions
+The prime-divisor statement is about integer values $\Phi_n(a)$ and primes $p$ that do not divide $n$. A prime that divides both $n$ and $\Phi_n(a)$ is possible, as $3 \mid \Phi_3(1) = 3$ shows, and it need not be $1 \bmod n$.
+
+## Why it works
+Step 1, the factorization. The roots of $x^n - 1$ are the $n$ distinct $n$th roots of unity, and each has an exact order $d$, a divisor of $n$. Grouping the roots by their order groups the linear factors into the polynomials $\Phi_d$, which gives $x^n - 1 = \prod_{d \mid n}\Phi_d(x)$. Comparing degrees recovers $\sum_{d \mid n}\varphi(d) = n$, the identity on [[totient-divisor-sum|the Totient Divisor Sum]]. Taking logarithms and applying Möbius inversion to the factorization gives the product formula with exponents $\mu(n/d)$.
+
+Step 2, integer coefficients. By induction on $n$: $\Phi_n(x)$ is $x^n - 1$ divided by the product of the $\Phi_d(x)$ for the smaller divisors $d$, which is monic with integer coefficients by the induction hypothesis. Long division by a monic integer polynomial never leaves the integers, so $\Phi_n$ has integer coefficients.
+
+Step 3, the prime divisors. Let $p \nmid n$ and $p \mid \Phi_n(a)$. Then $p \mid a^n - 1$, so $p \nmid a$ and the order $d$ of $a$ modulo $p$ divides $n$. Suppose $d \lt n$. Then $p \mid a^d - 1 = \prod_{e \mid d}\Phi_e(a)$, so $p \mid \Phi_e(a)$ for some $e \mid d$, $e \lt n$. Modulo $p$, both $\Phi_n$ and $\Phi_e$ have $a$ as a root, and both divide $x^n - 1$, so $a$ is a double root of $x^n - 1$ modulo $p$ and a root of its derivative $nx^{n - 1}$. But $na^{n - 1} \not\equiv 0$, since $p$ divides neither $n$ nor $a$. So $d = n$, and since the order divides $p - 1$ by [[fermats-little-theorem|Fermat's Little Theorem]], $p \equiv 1 \pmod n$. Conversely, if $a$ has order $n$, then $p \mid a^n - 1$ but $p$ divides no $\Phi_e(a)$ with $e \lt n$, because each such factor divides some $a^e - 1$; so $p \mid \Phi_n(a)$.
+
+Step 4, infinitely many primes $1 \bmod n$. Let $n \ge 2$ and suppose $p_1, \ldots, p_k$ are all the primes $\equiv 1 \pmod n$. Put $a = n\,p_1 \cdots p_k$. Since $\Phi_n$ has integer coefficients, $\Phi_n(a) \equiv \Phi_n(0) = 1$ modulo each prime factor of $a$. Also $\Phi_n(a) = \prod |a - \zeta| \gt 1$, because each primitive root $\zeta$ differs from $1$, so $|a - \zeta| \gt a - 1 \ge 1$. So $\Phi_n(a)$ has a prime factor $q$ that divides neither $n$ nor any $p_i$, and by Step 3, $q \equiv 1 \pmod n$, a new prime of that form.
+
+## Useful observations
+- $\Phi_n$ is irreducible over the rationals for every $n$. For a prime $n$ this follows from the shift $x \mapsto x + 1$ and the [[eisenstein-criterion|Eisenstein Criterion]]; the proof for composite $n$ is longer and is not given here.
+- The constant term $\Phi_n(0)$ is $1$ for every $n \ge 2$, which is what Step 4 uses.
+- A prime factor of $a^n - 1$ that divides no $a^d - 1$ with $d \lt n$ must divide $\Phi_n(a)$; [[zsygmondy|Zsigmondy's Theorem]] says such a prime exists apart from a short list of exceptions, and its proof works with $\Phi_n(a)$.
+- The first few are $\Phi_1 = x - 1$, $\Phi_2 = x + 1$, $\Phi_3 = x^2 + x + 1$, $\Phi_4 = x^2 + 1$, $\Phi_6 = x^2 - x + 1$, and $\Phi_{12} = x^4 - x^2 + 1$, and they are worth recognizing in disguise.
+
+## Applications
+Showing that the prime factors of an expression such as $n^4 - n^2 + 1$ lie in one residue class, constructing infinitely many primes $\equiv 1 \pmod n$, factoring $x^n - 1$ and $x^n + 1$ completely, and finding primitive prime divisors of $a^n - 1$.
+
+## Contest profile
+An olympiad tool for number theory problems about the prime factors of $a^n - 1$ or of a polynomial value. It is usually invisible in the statement: the polynomial is a cyclotomic one in disguise, and recognizing it gives the residue class of every prime factor.
+`,
+
 "zsygmondy": String.raw`
 ## Key forms
 - $a^n - b^n$ has a prime divisor not dividing any earlier $a^k - b^k$

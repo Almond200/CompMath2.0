@@ -4914,6 +4914,34 @@ Evaluating an inverse at a point, inverting a composition, finding where a funct
 Inverses show up in three forms: an inverse that must be evaluated at a point where the formula for it is out of reach but the equation $f(x) = b$ has a visible solution, an inverse of a composition, and a question about where a function crosses its inverse. The mirror-image picture settles many monotonicity and area questions in a line, and the restriction to a one-to-one piece is the step most often forgotten.
 `,
 
+"injectivity-surjectivity": String.raw`
+## When to use
+Functional equations in which $f$ is nested inside itself, such as $f(f(x)) = x + 1$ or $f(x + f(y)) = f(x) + y$, where plugging in special values only produces more unknown values of $f$. Two signs point to this method. A variable that appears outside every $f$ on one side can be made to take any value, which proves surjectivity; and an equation that would be solved by "cancelling $f$" needs injectivity first.
+
+## How
+1. Look for surjectivity: find a side that runs over all reals as one variable varies, while the other side is a value of $f$. Then every real is a value of $f$.
+2. Look for injectivity: assume $f(a) = f(b)$, substitute $a$ and then $b$ into the same position, and use a side where the variable appears outside $f$ to conclude $a = b$. For example, if $f(f(x)) = x + 1$, then $f(a) = f(b)$ gives $a + 1 = f(f(a)) = f(f(b)) = b + 1$.
+3. Use surjectivity: take a point $x_0$ with $f(x_0) = 0$, or with $f(x_0)$ equal to any convenient value, and substitute it; or replace $f(y)$ by a free variable $t$ that ranges over all reals.
+4. Use injectivity: from $f(A) = f(B)$, conclude $A = B$, which removes one layer of $f$.
+5. Solve what remains, often a Cauchy-type equation, and check every candidate in the original equation.
+
+## Why it works
+Injectivity is exactly the statement that $f$ can be cancelled: $f(A) = f(B)$ with $A \ne B$ is what it rules out. Surjectivity is exactly the statement that $f(y)$ takes every value, so an identity that holds for all $f(y)$ holds for every real number in its place. Both properties pass from a composition to the inner function: if $f \circ f$ is injective, so is $f$, since $f(a) = f(b)$ gives $f(f(a)) = f(f(b))$ and so $a = b$; and if $f \circ f$ is surjective, so is $f$, since every value of $f(f(x))$ is a value of $f$. A bijective $f$ has an inverse, and the facts about [[inverse-function-properties|inverse functions]] then apply.
+
+## Formulas it uses
+- [[inverse-function-properties]]: a bijection has an inverse, and $f(f(x)) = x$ means $f$ is its own inverse, with a graph symmetric in $y = x$.
+- [[cauchy-functional-equations]]: the equation that often remains once $f$ has been cancelled or its values freed, with its solutions and the conditions they need.
+
+## Common traps
+- Cancelling $f$ before injectivity is proved.
+- Claiming surjectivity onto all reals from an expression that only covers part of them, such as $x^2$, or forgetting that for $f : \mathbb{N} \to \mathbb{N}$ the target is only the positive integers.
+- Proving injectivity at a single pair of points instead of for all $a$ and $b$.
+- Skipping the final check that each candidate satisfies the original equation.
+
+## Contest profile
+The first move in most olympiad functional equations, and occasionally needed on a hard AIME problem with nested functions. Solutions usually open by proving one of the two properties and then exploit it in the next substitution.
+`,
+
 "function-symmetry-equation": String.raw`
 ## When to use
 A function is described by a relation such as $f(2 - x) = f(x)$, $f(x + 3) = f(1 - x)$, $f(x + 2) = -f(x)$, or by a sentence saying its graph is symmetric about a line or a point, and the question asks for a value far from the data, a sum of roots, a count of roots in an interval, or a period. The relation is usually the whole description of $f$, so the work is reading it as geometry before any substitution. A relation in which the arguments differ by a constant is a shift, not a mirror.

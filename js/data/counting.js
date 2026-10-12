@@ -537,6 +537,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "gamblers-ruin",
+          name: "Gambler's Ruin",
+          latex: String.raw`P_k = \frac{k}{N}\ \ \left(p = \tfrac12\right), \qquad P_k = \frac{1 - (q/p)^k}{1 - (q/p)^N}\ \ \left(p \ne \tfrac12\right)`,
+          description: String.raw`A walk on the integers $0, 1, \ldots, N$ starts at $k$ and at each step moves up by $1$ with probability $p$ or down by $1$ with probability $q = 1 - p$, stopping when it first reaches $0$ (ruin) or $N$ (the target). $P_k$ is the probability that it reaches $N$ before $0$. For a fair walk the chance grows in proportion to the starting point; for a biased one it depends on $k$ through powers of the ratio $\frac qp$, so a small edge per step becomes a large edge over the whole game. The same first-step equations give the expected length of the game, $k(N - k)$ steps in the fair case.`,
+          keywords: ["gambler's ruin", "probability of reaching N before 0", "random walk with absorbing barriers", "fair game k over N", "biased walk q over p", "expected duration k(N - k)", "ruin probability", "first passage"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
+        {
           id: "hypergeometric",
           name: "Hypergeometric Distribution",
           latex: String.raw`P(k \text{ special in a draw of } n) = \frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}`,
