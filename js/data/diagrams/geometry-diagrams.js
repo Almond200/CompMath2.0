@@ -5025,7 +5025,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
   DIAGRAMS["poncelet-closure"] = [(() => {
     // A genuine bicentric pair: pick R and r, take d from Euler's relation, then build two
     // triangles from different starting points -- both close, which is the theorem.
-    const R = 120, r = 34, d = Math.sqrt(R * R - 2 * R * r);
+    const R = 120, r = 50, d = Math.sqrt(R * R - 2 * R * r);
     const O = [215, 176], I = [O[0] + d, O[1]];
     // a triangle inscribed in (O,R) and tangent to (I,r): start at angle t, the other two
     // vertices follow from the tangent lines, so just solve for them numerically.
@@ -5034,7 +5034,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       for (let k = 0; k < 2; k++) {
         const P = pts[pts.length - 1];
         // the next vertex: the far intersection of the tangent from P to (I,r) with (O,R)
-        const dp = dist(P, I), phi = Math.acos(Math.max(-1, Math.min(1, r / dp)));
+        const dp = dist(P, I), phi = Math.asin(Math.min(1, r / dp));   // angle between PI and the tangent
         const base = Math.atan2(I[1] - P[1], I[0] - P[0]);
         const dir = [Math.cos(base - phi), Math.sin(base - phi)];
         const hits = circleLineInts(O, R, P, add(P, dir));
@@ -5043,13 +5043,15 @@ DIAGRAMS["trig-ceva"] = [(() => {
       return pts;
     };
     const t1 = tri(-64), t2 = tri(58);
+    // The theorem's content: the third side, never constructed as a tangent, is one anyway.
+    const ok = [t1, t2].every(t => Math.abs(dist(I, foot(I, t[2], t[0])) - r) < 0.5);
     return wrap(430, 360, [
       circ(O, R, DIM, 1.8), circ(I, r, GLD, 1.8),
       poly(t1, ACC, 2.2), poly(t2, PNK, 1.8, "none", "6 4"),
       dot(O, DIM, 4), dot(I, GLD, 4),
       txt(add(O, [-13, -8]), "O", DIM, 12.5, "end"),
       txt(add(I, [11, -7]), "I", GLD, 12.5, "start"),
-      cap(430, 360, "d² = R² − 2Rr holds here, so a bicentric triangle exists — and by Poncelet every starting point gives one, as the dashed second triangle shows")
+      cap(430, 360, "d² = R² − 2Rr holds here, so a bicentric triangle exists — and by Poncelet every starting point gives one, as the dashed second triangle shows" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
