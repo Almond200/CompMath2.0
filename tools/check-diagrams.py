@@ -190,6 +190,15 @@ def main():
                         findings.append("%s: circle r=%.0f at (%.0f, %.0f) overshoots the %gx%g "
                                         "canvas by %.0fpx (%.0f%% of r) -- it will be clipped flat"
                                         % (name, r, cx, cy, W, H, out, 100 * out / r))
+            # Labels and captions are plain text, not TeX: a raw "d_b" or "e^(iθ)" shows its
+            # underscore or caret to the reader. Subscripts go in a <tspan> (subT) inside the
+            # figure, and <sub>/<sup> in the caption.
+            shown = re.findall(r"<text[^>]*>(.*?)</text>", svg, re.S) + re.findall(r'<div class="diagram-cap">(.*?)</div>', svg, re.S)
+            for t in shown:
+                t = re.sub(r"<[^>]+>", "", t)
+                m = re.search(r"\S_\S|\S\^[\w({]", t)
+                if m:
+                    findings.append("%s: raw TeX markup %r in the text %r" % (name, m.group(0), t[:60]))
             if name.strip() not in LINE_GAP_ALLOW:
                 findings.extend("%s: %s" % (name, g) for g in line_gaps(svg))
             for (s1, a1, b1, c1, d1), (s2, a2, b2, c2, d2) in itertools.combinations(boxes(svg, CW_HIT), 2):

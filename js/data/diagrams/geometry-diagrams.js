@@ -189,6 +189,8 @@
     }
     return out;
   };
+  // A subscript inside an SVG label (Unicode has no subscript b or c).
+  const subT = (base, s2) => base + '<tspan dy="3" font-size="0.75em">' + s2 + '</tspan>';
   const massBadge = (p, n) =>
     `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="12" fill="var(--bg-card)" stroke="${GLD}" stroke-width="1.8"/>` +
     `<text x="${r1(p[0])}" y="${r1(p[1]) + 4.5}" fill="${GLD}" font-size="12.5" font-weight="600" text-anchor="middle">${n}</text>`;
@@ -279,7 +281,8 @@
   DIAGRAMS["midsegment-theorem"] = [(() => {
     const M = mid(A, B), N = mid(A, C);
     return wrap(430, 320, [
-      ABC(), seg(M, N, ACC, 2.5), dot(M, ACC), dot(N, ACC),
+      ABC(), ticksOn(A, M, 1), ticksOn(M, B, 1), ticksOn(A, N, 2), ticksOn(N, C, 2),
+      seg(M, N, ACC, 2.5), dot(M, ACC), dot(N, ACC),
       txt(add(M, [-16, 0]), "M", ACC), txt(add(N, [16, 0]), "N", ACC),
       txt(add(mid(M, N), [0, -8]), "½ BC", ACC, 12.5),
       cap(430, 320, "MN is parallel to BC")
@@ -291,6 +294,7 @@
     return wrap(430, 320, [
       ABC(), seg(A, Ma, ACC, 1.8), seg(B, Mb, ACC, 1.8), seg(C, Mc, ACC, 1.8),
       dot(G, GLD, 5), txt(add(G, [14, -6]), "G", GLD),
+      ticksOn(B, Ma, 1), ticksOn(Ma, C, 1),
       dot(Ma, ACC, 3.5), txt(add(Ma, [0, 17]), "M", ACC, 12),
       txt(add(lerp(A, G, 0.5), [12, 0]), "2", GLD, 12.5),
       txt(add(lerp(G, Ma, 0.5), [12, 0]), "1", GLD, 12.5),
@@ -621,8 +625,8 @@
       dot(G, GLD, 4), dot(M, DIM, 3.5), dot(P, DIM, 3.5),
       txt(add(A, [0, -9]), "A", DIM, 13.5), txt(add(B, [-10, 5]), "B", DIM, 13.5), txt(add(C, [10, 5]), "C", DIM, 13.5),
       txt(add(G, [-12, -8]), "G", GLD, 12.5), txt(add(M, [10, -6]), "M", DIM, 12), txt(add(P, [12, 6]), "P", DIM, 12.5),
-      txt(add(lerp(B, G, 0.5), [-8, -16]), "⅔m_b", GLD, 11.5), txt(add(lerp(G, P, 0.78), [24, 4]), "⅔mₐ", ACC, 11.5), txt(add(lerp(B, P, 0.5), [-4, 22]), "⅔m_c", GRN, 11.5),
-      cap(430, 300, "the shaded triangle BGP has sides ⅔m_b, ⅔mₐ, ⅔m_c, and its area is ⅓[ABC]" + (ok ? "" : " MISMATCH"))
+      txt(add(lerp(B, G, 0.5), [-8, -16]), subT("⅔m", "b"), GLD, 11.5), txt(add(lerp(G, P, 0.78), [24, 4]), "⅔mₐ", ACC, 11.5), txt(add(lerp(B, P, 0.5), [-4, 22]), subT("⅔m", "c"), GRN, 11.5),
+      cap(430, 300, "the shaded triangle BGP has sides ⅔m<sub>b</sub>, ⅔mₐ, ⅔m<sub>c</sub>, and its area is ⅓[ABC]" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -1383,8 +1387,8 @@
       dot(P, GRN, 4.5), txt(add(P, [12, -8]), "P", GRN),
       dot(D, DIM, 3.2), dot(E, DIM, 3.2),
       massBadge(add(away(A, CEN, 30), [16, 0]), "3"),
-      massBadge(add(away(B, CEN, 30), [0, -3]), "4"),
-      massBadge(add(away(C, CEN, 30), [0, -6]), "2"),
+      massBadge(add(B, [-34, 2]), "4"),
+      massBadge(add(C, [34, 2]), "2"),
       massBadge(add(D, [0, 24]), "6"),
       cap(430, 330, "BD:DC = 1:2, AE:EC = 2:3  ⇒  AP:PD = 6:3 = 2:1")
     ]);
@@ -1413,9 +1417,9 @@
       txt(add(Fc, [-17, -6]), "4:3", GRN, 11.5),
       txt(add(Fm, [18, 10]), "1:2", PNK, 11.5),
       massBadge(add(away(A, CEN, 30), [16, 0]), "3"),
-      massBadge(add(away(B, CEN, 30), [0, -3]), "4"),
-      massBadge(add(away(C, CEN, 30), [0, -6]), "2"),
-      cap(430, 330, "the masses force the third cevian: only AF:FB = m_B:m_A = 4:3 (green) reaches P — any other ratio (pink) misses, which is exactly Ceva's condition")
+      massBadge(add(B, [-34, 2]), "4"),
+      massBadge(add(C, [34, 2]), "2"),
+      cap(430, 330, "the masses force the third cevian: only AF:FB = m<sub>B</sub>:m<sub>A</sub> = 4:3 (green) reaches P — any other ratio (pink) misses, which is exactly Ceva's condition")
     ]);
   })()];
 
@@ -2399,8 +2403,8 @@ DIAGRAMS["trig-ceva"] = [(() => {
       seg(P, A, ACC, 1.8), seg(P, B, ACC, 1.8), seg(P, C, ACC, 1.8),
       seg(P, f1, GLD, 1.7, "4 3"), seg(P, f2, GLD, 1.7, "4 3"), seg(P, f3, GLD, 1.7, "4 3"),
       dot(P, "var(--text)", 4.5), txt(add(P, [12, -6]), "P", "var(--text)"),
-      txt(add(mid(P, f1), [10, 4]), "dₐ", GLD, 11), txt(add(mid(P, f2), [15, 5]), "d_b", GLD, 11), txt(add(mid(P, f3), [-12, 8]), "d_c", GLD, 11),
-      cap(430, 330, "PA + PB + PC ≥ 2(dₐ + d_b + d_c) — distances to vertices vs. perpendiculars to sides")
+      txt(add(mid(P, f1), [10, 4]), "dₐ", GLD, 11), txt(add(mid(P, f2), [15, 5]), subT("d", "b"), GLD, 11), txt(add(mid(P, f3), [-12, 8]), subT("d", "c"), GLD, 11),
+      cap(430, 330, "PA + PB + PC ≥ 2(dₐ + d<sub>b</sub> + d<sub>c</sub>) — distances to vertices vs. perpendiculars to sides")
     ]);
   })()];
 
@@ -2506,7 +2510,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(Ia, [18, -6]), "Iₐ", ACC, 12),
       txt(add(b2, [-13, 0]), "B", DIM, 12.5), txt(add(c2, [13, 0]), "C", DIM, 12.5),
       txt(add(a2, [0, -12]), "A"),
-      cap(430, 480, "the A-excircle (radius rₐ) touches BC and the two side extensions; A = rₐ(s − a), and r_b, r_c sit opposite B, C likewise")
+      cap(430, 480, "the A-excircle (radius rₐ) touches BC and the two side extensions; A = rₐ(s − a), and r<sub>b</sub>, r<sub>c</sub> sit opposite B, C likewise")
     ]);
   })()];
 
@@ -2537,8 +2541,8 @@ DIAGRAMS["trig-ceva"] = [(() => {
       seg(M, B2, GLD, 1.4, "3 4"), seg(M, I, GLD, 1.4, "3 4"),
       dot(I, ACC, 4.5), dot(M, GLD, 4.5), dot(sub(mul(M, 2), I), GLD, 4.5),
       txt(add(I, [-14, -4]), "I", ACC), txt(add(M, [-2, 20]), "M", GLD),
-      txt(add(sub(mul(M, 2), I), [18, 6]), "I_A", GLD, 12),
-      cap(450, 480, "M = arc midpoint of BC on line AI, and MB = MC = MI: the gold circle through B, I, C is centered at M, and it meets line AI again at the excenter I_A. The line AI is solid inside the triangle and dashed beyond it.")
+      txt(add(sub(mul(M, 2), I), [18, 6]), subT("I", "A"), GLD, 12),
+      cap(450, 480, "M = arc midpoint of BC on line AI, and MB = MC = MI: the gold circle through B, I, C is centered at M, and it meets line AI again at the excenter I<sub>A</sub>. The line AI is solid inside the triangle and dashed beyond it.")
     ]);
   })()];
 
@@ -3070,7 +3074,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(Z, [15, 6]), "z", ACC, 13.5),
       txt(add(W, [14, -6]), "w", GLD, 13.5),
       angleArc(P, Z, W, 40, GLD), txt(add(P, [48, -20]), "θ", GLD, 12.5),
-      cap(440, 330, "rotating z about p by θ is a single multiplication: w = p + e^(iθ)(z − p) — the dashed circle shows |z − p| is preserved")
+      cap(440, 330, "rotating z about p by θ is a single multiplication: w = p + e<sup>iθ</sup>(z − p) — the dashed circle shows |z − p| is preserved")
     ]);
   })()];
 
@@ -3115,9 +3119,9 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(H, [12, -8]), "H", PUR, 12.5),
       angleArc(H, B2, C2, 20, PUR), txt(add(H, [26, 39]), "180°−A", PUR, 11),
       seg(IA, B2, ORG, 1.5, "5 4"), seg(IA, C2, ORG, 1.5, "5 4"), dot(IA, ORG, 4.5),
-      txt(add(IA, [14, 6]), "I_A", ORG, 12.5),
+      txt(add(IA, [14, 6]), subT("I", "A"), ORG, 12.5),
       angleArc(IA, C2, B2, 24, ORG), txt(add(IA, [-9, -56]), "90°−A/2", ORG, 11),
-      cap(460, 400, "the orthocenter H subtends 180° − A, and the A-excenter I_A subtends 90° − A/2, the incenter's supplement")
+      cap(460, 400, "the orthocenter H subtends 180° − A, and the A-excenter I<sub>A</sub> subtends 90° − A/2, the incenter's supplement")
     ]);
   })()];
 
@@ -3258,7 +3262,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       seg([axisX, 40], [axisX, 276], DIM, 2, "6 5"), txt([axisX, 28], "axis", DIM, 11),
       circ(C, rgen, ACC, 2, ACCS), dot(C, ACC, 4),
       txt(add(C, [0, -rgen - 9]), "region  A,  boundary L", ACC, 11),
-      txt(add(C, [0, 4]), "centroid", ACC, 10),
+      txt(add(C, [0, 18]), "centroid", ACC, 10),
       seg([axisX, cy], C, GLD, 1.8), txt(add(mid([axisX, cy], C), [0, -9]), "d", GLD, 14),
       dot([axisX, cy], DIM, 3),
       cap(440, 300, "revolve about the axis → V = 2πd·A, S = 2πd·L   (torus: V = 2π²Rr², S = 4π²Rr)")
@@ -3638,21 +3642,39 @@ DIAGRAMS["trig-ceva"] = [(() => {
   })()];
 
   DIAGRAMS["desargues-theorem"] = [(() => {
-    const O = [225, 185];
-    const Ap = [195, 130], Bp = [220, 205], Cp = [170, 250];
-    const A = add(O, mul(sub(Ap, O), 1.30)), B = add(O, mul(sub(Bp, O), 1.75)), C = add(O, mul(sub(Cp, O), 2.20));
-    const X = lineInt(A, B, Ap, Bp), Y = lineInt(B, C, Bp, Cp), Z = lineInt(C, A, Cp, Ap);
-    return wrap(470, 360, [
-      seg(O, A, FNT, 1, "4 3"), seg(O, B, FNT, 1, "4 3"), seg(O, C, FNT, 1, "4 3"),
-      seg(lerp(X, Y, -0.12), lerp(X, Y, 1.12), GRN, 2),        // axis of perspectivity
+    // Built in plain coordinates with O at the origin, then fitted to the canvas, so the two
+    // triangles stay well apart and every side line can be followed to its point on the axis.
+    const raw0 = { A: [2.97, -0.12], B: [1.27, 0.37], C: [2.24, -1.27] }, k = { A: 1.97, B: 2.99, C: 1.61 };
+    const raw = { O: [0, 0], A: raw0.A, B: raw0.B, C: raw0.C,
+      Ap: mul(raw0.A, k.A), Bp: mul(raw0.B, k.B), Cp: mul(raw0.C, k.C) };
+    raw.X = lineInt(raw.A, raw.B, raw.Ap, raw.Bp); raw.Y = lineInt(raw.B, raw.C, raw.Bp, raw.Cp); raw.Z = lineInt(raw.C, raw.A, raw.Cp, raw.Ap);
+    const W = 470, H = 360, m = 34, ks = Object.keys(raw);
+    const xs = ks.map(q => raw[q][0]), ys = ks.map(q => raw[q][1]);
+    const sc = Math.min((W - 2 * m) / (Math.max(...xs) - Math.min(...xs)), (H - 2 * m) / (Math.max(...ys) - Math.min(...ys)));
+    const ox = (W - sc * (Math.max(...xs) - Math.min(...xs))) / 2, oy = (H - sc * (Math.max(...ys) - Math.min(...ys))) / 2;
+    const P = {}; ks.forEach(q => { P[q] = [ox + (raw[q][0] - Math.min(...xs)) * sc, oy + (raw[q][1] - Math.min(...ys)) * sc]; });
+    const { O, A, B, C, Ap, Bp, Cp, X, Y, Z } = P;
+    // A side is solid between its vertices and dashed from the nearer vertex out to its axis point.
+    const ext = (U, V, T, c) => seg(dist(U, T) < dist(V, T) ? U : V, T, c, 1.2, "5 4");
+    const cross = (sub(Y, X)[0] * sub(Z, X)[1] - sub(Y, X)[1] * sub(Z, X)[0]) / dist(X, Y);
+    const ok = Math.abs(cross) < 0.5;
+    const ends = [X, Y, Z].sort((u, v) => u[0] - v[0] || u[1] - v[1]);
+    const g = centroidOf(A, B, C), gp = centroidOf(Ap, Bp, Cp);
+    const nrm = norm(perp(sub(ends[2], ends[0])));
+    return wrap(W, H, [
+      seg(O, Ap, FNT, 1, "3 3"), seg(O, Bp, FNT, 1, "3 3"), seg(O, Cp, FNT, 1, "3 3"),
+      seg(lerp(ends[0], ends[2], -0.08), lerp(ends[0], ends[2], 1.08), GRN, 2),
+      ext(A, B, X, ACC), ext(B, C, Y, ACC), ext(C, A, Z, ACC),
+      ext(Ap, Bp, X, GLD), ext(Bp, Cp, Y, GLD), ext(Cp, Ap, Z, GLD),
       poly([A, B, C], ACC, 2), poly([Ap, Bp, Cp], GLD, 2),
-      dot(O, "var(--text)", 4.5), txt(add(O, [4, 16]), "O", "var(--text)", 12.5),
+      dot(O, "var(--text)", 4.5), txt(add(O, [-12, 4]), "O", "var(--text)", 12.5),
       dot(X, GRN, 4), dot(Y, GRN, 4), dot(Z, GRN, 4),
+      ...[["X", X], ["Y", Y], ["Z", Z]].map(([n, q]) => txt(add(q, mul(nrm, 14)), n, GRN, 12)),
       dot(A, ACC, 3.5), dot(B, ACC, 3.5), dot(C, ACC, 3.5),
       dot(Ap, GLD, 3.5), dot(Bp, GLD, 3.5), dot(Cp, GLD, 3.5),
-      txt(add(A, [10, 0]), "A", ACC, 12), txt(add(B, [12, 4]), "B", ACC, 12), txt(add(C, [-10, 14]), "C", ACC, 12),
-      txt(add(Ap, [-12, -4]), "A'", GLD, 11.5), txt(add(Bp, [25, 2]), "B'", GLD, 11.5), txt(add(Cp, [-12, 6]), "C'", GLD, 11.5),
-      cap(470, 360, "perspective from the point O ⇔ the three side-intersections X, Y, Z are collinear (the axis)")
+      txt(add(away(A, g, 13), [0, 4]), "A", ACC, 12), txt(add(away(B, g, 13), [0, 4]), "B", ACC, 12), txt(add(away(C, g, 13), [0, 4]), "C", ACC, 12),
+      txt(add(away(Ap, gp, 14), [0, 4]), "A′", GLD, 12), txt(add(away(Bp, gp, 14), [0, 4]), "B′", GLD, 12), txt(add(away(Cp, gp, 14), [0, 4]), "C′", GLD, 12),
+      cap(W, H, "AA′, BB′, CC′ meet at O, so the side pairs AB and A′B′, BC and B′C′, CA and C′A′ meet at three points X, Y, Z on one line, the axis (green). The sides are dashed where they are extended to the axis." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -3745,13 +3767,28 @@ DIAGRAMS["trig-ceva"] = [(() => {
       return [add(base, mul(pp, h)), sub(base, mul(pp, h))];
     };
     const cc = circInts(o0, r0, o3, r3);
-    const M = dist(cc[0], P12) > dist(cc[1], P12) ? cc[0] : cc[1];
-    return wrap(470, 370, [
-      ...lines.map(L => seg(L[0], L[1], DIM, 1.6)),
-      circ(o0, r0, ACC, 1.3), circ(o1, r1c, GLD, 1.3), circ(o2, r2c, GRN, 1.3), circ(o3, r3, "rgba(91,140,255,0.55)", 1.3),
-      ...[P01, P02, P03, P12, P13, P23].map(p => dot(p, DIM, 3)),
+    const M0 = dist(cc[0], P12) > dist(cc[1], P12) ? cc[0] : cc[1];
+    // Fit the four circles (not the lines) to the canvas, then draw each line only a little past
+    // its outermost meeting points, so no circle is cut off and no line runs on for nothing.
+    const cs = [[o0, r0], [o1, r1c], [o2, r2c], [o3, r3]];
+    const lo = [Math.min(...cs.map(c => c[0][0] - c[1])), Math.min(...cs.map(c => c[0][1] - c[1]))];
+    const hi = [Math.max(...cs.map(c => c[0][0] + c[1])), Math.max(...cs.map(c => c[0][1] + c[1]))];
+    const W = 470, H = 400, m = 10, k = Math.min((W - 2 * m) / (hi[0] - lo[0]), (H - 2 * m) / (hi[1] - lo[1]));
+    const T = q => [(W - k * (hi[0] - lo[0])) / 2 + (q[0] - lo[0]) * k, (H - k * (hi[1] - lo[1])) / 2 + (q[1] - lo[1]) * k];
+    const meets = [[P01, P02, P03], [P01, P12, P13], [P02, P12, P23], [P03, P13, P23]];
+    const lineSeg = pts => {
+      const d = norm(sub(pts[1], pts[0])), t = pts.map(q => (q[0] - pts[0][0]) * d[0] + (q[1] - pts[0][1]) * d[1]);
+      const pad = 22 / k;
+      return seg(T(add(pts[0], mul(d, Math.min(...t) - pad))), T(add(pts[0], mul(d, Math.max(...t) + pad))), DIM, 1.6);
+    };
+    const M = T(M0);
+    const ok = cs.every(([o, r]) => Math.abs(dist(o, M0) - r) < 0.5);
+    return wrap(W, H, [
+      ...meets.map(lineSeg),
+      ...cs.map(([o, r], i) => circ(T(o), r * k, [ACC, GLD, GRN, "rgba(91,140,255,0.55)"][i], 1.3)),
+      ...[P01, P02, P03, P12, P13, P23].map(q => dot(T(q), DIM, 3)),
       dot(M, "var(--text)", 5.5), txt(add(M, [12, 4]), "M", "var(--text)", 13),
-      cap(470, 370, "four lines → four triangles; the four circumcircles all pass through the Miquel point M")
+      cap(W, H, "four lines → four triangles; the four circumcircles all pass through the Miquel point M" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -4361,7 +4398,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(A, [16, 6]), "A", GLD, 13),
       txt(add(A2, [6, -12]), "A′", ACC, 13),
       txt(add(onC(O, 60, a0 - th / 2), [8, -4]), "θ", ORG, 13),
-      cap(430, 312, "R_θ turns A to A′ about the origin — det = +1, so orientation is kept")
+      cap(430, 312, "R<sub>θ</sub> turns A to A′ about the origin — det = +1, so orientation is kept")
     ]);
   })(), (() => {
     // Reflection in the line through the origin at angle alpha: the image sits
@@ -4378,7 +4415,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(B, [-3, -12]), "B", GLD, 13),
       txt(add(B2, [14, 10]), "B′", ACC, 13),
       txt(add(M1, [4, -8]), "α", ORG, 13, "start"),
-      cap(430, 312, "F_α reflects B in the mirror at angle α — det = −1, so orientation is reversed")
+      cap(430, 312, "F<sub>α</sub> reflects B in the mirror at angle α — det = −1, so orientation is reversed")
     ]);
   })()];
 
@@ -4988,7 +5025,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
   DIAGRAMS["poncelet-closure"] = [(() => {
     // A genuine bicentric pair: pick R and r, take d from Euler's relation, then build two
     // triangles from different starting points -- both close, which is the theorem.
-    const R = 120, r = 34, d = Math.sqrt(R * R - 2 * R * r);
+    const R = 120, r = 50, d = Math.sqrt(R * R - 2 * R * r);
     const O = [215, 176], I = [O[0] + d, O[1]];
     // a triangle inscribed in (O,R) and tangent to (I,r): start at angle t, the other two
     // vertices follow from the tangent lines, so just solve for them numerically.
@@ -4997,7 +5034,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       for (let k = 0; k < 2; k++) {
         const P = pts[pts.length - 1];
         // the next vertex: the far intersection of the tangent from P to (I,r) with (O,R)
-        const dp = dist(P, I), phi = Math.acos(Math.max(-1, Math.min(1, r / dp)));
+        const dp = dist(P, I), phi = Math.asin(Math.min(1, r / dp));   // angle between PI and the tangent
         const base = Math.atan2(I[1] - P[1], I[0] - P[0]);
         const dir = [Math.cos(base - phi), Math.sin(base - phi)];
         const hits = circleLineInts(O, R, P, add(P, dir));
@@ -5006,13 +5043,15 @@ DIAGRAMS["trig-ceva"] = [(() => {
       return pts;
     };
     const t1 = tri(-64), t2 = tri(58);
+    // The theorem's content: the third side, never constructed as a tangent, is one anyway.
+    const ok = [t1, t2].every(t => Math.abs(dist(I, foot(I, t[2], t[0])) - r) < 0.5);
     return wrap(430, 360, [
       circ(O, R, DIM, 1.8), circ(I, r, GLD, 1.8),
       poly(t1, ACC, 2.2), poly(t2, PNK, 1.8, "none", "6 4"),
       dot(O, DIM, 4), dot(I, GLD, 4),
       txt(add(O, [-13, -8]), "O", DIM, 12.5, "end"),
       txt(add(I, [11, -7]), "I", GLD, 12.5, "start"),
-      cap(430, 360, "d² = R² − 2Rr holds here, so a bicentric triangle exists — and by Poncelet every starting point gives one, as the dashed second triangle shows")
+      cap(430, 360, "d² = R² − 2Rr holds here, so a bicentric triangle exists — and by Poncelet every starting point gives one, as the dashed second triangle shows" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -7139,7 +7178,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
         txt(add(P1, [12, 5]), "1", ACC, 13.5, "start"), txt(add(Pk, [-4, -12]), "ω²", ACC, 13.5),
         txt(add(O, [25, -41]), "kπ/n", GLD, 12, "end"),
         txt(add(O, [60, -3]), "sin(kπ/n)", GLD, 12),
-        cap(430, 300, "On the unit circle the points 1 and ω^k are separated by the central angle 2kπ/n (here n = 7 and k = 2). The radius that bisects that angle meets the chord at a right angle, so each half of the chord is sin(kπ/n), and |1 − ω^k| = 2 sin(kπ/n)." + (ok ? "" : " MISMATCH"))
+        cap(430, 300, "On the unit circle the points 1 and ω<sup>k</sup> are separated by the central angle 2kπ/n (here n = 7 and k = 2). The radius that bisects that angle meets the chord at a right angle, so each half of the chord is sin(kπ/n), and |1 − ω<sup>k</sup>| = 2 sin(kπ/n)." + (ok ? "" : " MISMATCH"))
       ]);
     })()
   };

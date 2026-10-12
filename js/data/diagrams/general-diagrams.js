@@ -670,11 +670,11 @@
       seg(P, F, GLD, 1.5, "4 3"), seg(O, F, GLD, 2.4),
       `<path d="M ${pf(add(O, [30, 0]))} A 30 30 0 0 0 ${pf(onC(O, 30, th))}" fill="none" stroke="${ACC}" stroke-width="1.8"/>`,
       txt(onC(O, 46, th / 2), "θ", ACC, 13),
-      txt(add(P, [30, -10]), "e^{iθ}", GLD, 13),
+      txt(add(P, [30, -10]), 'e<tspan dy="-6" font-size="0.75em">iθ</tspan>', GLD, 13),
       txt([mid(O, F)[0], O[1] + 18], "cos θ", GLD, 12),
       txt([P[0] + 30, mid(P, F)[1]], "sin θ", GLD, 12),
       txt(add(mid(O, P), [-24, -8]), "1", DIM, 12),
-      cap(460, 330, "e^{iθ} is the point at angle θ on the unit circle: real part cos θ, imaginary part sin θ")
+      cap(460, 330, "e<sup>iθ</sup> is the point at angle θ on the unit circle: real part cos θ, imaginary part sin θ")
     ]);
   })()];
 
@@ -2344,7 +2344,7 @@
     product: (() => {
       const c = 34, X0 = 150, Y0 = 46, parts = [];
       let cnt = 0;
-      parts.push(txt([X0 + 3 * c, 20], "second die: x^j", FNT, 12), txt([X0 - 30, Y0 + 3 * c + 4], "first die: x^i", FNT, 12, "end"));
+      parts.push(txt([X0 + 3 * c, 20], "second die: xʲ", FNT, 12), txt([X0 - 30, Y0 + 3 * c + 4], "first die: xⁱ", FNT, 12, "end"));
       for (let i = 1; i <= 6; i++) {
         parts.push(txt([X0 + (i - 0.5) * c, Y0 - 8], String(i), DIM, 12), txt([X0 - 10, Y0 + (i - 0.5) * c + 4], String(i), DIM, 12, "end"));
         for (let j = 1; j <= 6; j++) {
@@ -2353,7 +2353,7 @@
           parts.push(txt([X0 + (j - 0.5) * c, Y0 + (i - 0.5) * c + 5], `x<tspan font-size="9" dy="-5">${i + j}</tspan>`, hit ? GLD : DIM, 12.5));
         }
       }
-      parts.push(cap(430, 270, `Each cell is one term x^i · x^j = x^(i+j) of (x + x² + ⋯ + x⁶)², one per pair of rolls. The terms with exponent 5 lie on one anti-diagonal, and there are ${cnt} of them, so the coefficient of x⁵, the number of rolls summing to 5, is ${cnt}.` + (cnt === 4 ? "" : " MISMATCH")));
+      parts.push(cap(430, 270, `Each cell is one term x<sup>i</sup> · x<sup>j</sup> = x<sup>i+j</sup> of (x + x² + ⋯ + x⁶)², one per pair of rolls. The terms with exponent 5 lie on one anti-diagonal, and there are ${cnt} of them, so the coefficient of x⁵, the number of rolls summing to 5, is ${cnt}.` + (cnt === 4 ? "" : " MISMATCH")));
       return wrap(430, 270, parts);
     })()
   };
@@ -2439,7 +2439,7 @@
       parts.push(rect(X0, Y0, n * u, n * u, DIM, 1.6));
       parts.push(txt([X0 + n * u + 14, Y0 + 40], `T₄ = ${gold}`, GLD, 13, "start"), txt([X0 + n * u + 14, Y0 + 64], `T₃ = ${blue}`, ACC, 13, "start"));
       parts.push(txt([X0 + n * u / 2, Y0 + n * u + 22], "4", DIM, 13), txt([X0 - 12, Y0 + n * u / 2 + 5], "4", DIM, 13, "end"));
-      parts.push(cap(430, 250, `Two staircases, of heights 1 to 4 (gold) and 1 to 3 (blue), interlock exactly into a 4 × 4 square: T₃ + T₄ = ${blue} + ${gold} = 16 = 4². In general T_(n−1) + T_n = n².` + (gold + blue === 16 && gold === 10 ? "" : " MISMATCH")));
+      parts.push(cap(430, 250, `Two staircases, of heights 1 to 4 (gold) and 1 to 3 (blue), interlock exactly into a 4 × 4 square: T₃ + T₄ = ${blue} + ${gold} = 16 = 4². In general T<sub>n−1</sub> + T<sub>n</sub> = n².` + (gold + blue === 16 && gold === 10 ? "" : " MISMATCH")));
       return wrap(430, 250, parts);
     })()
   };
@@ -2581,7 +2581,7 @@
       const ok = Math.hypot(A.avg[0], A.avg[1]) < 1e-12 && Math.abs(B.avg[0] - 1) < 1e-12;
       return wrap(430, 240, [...A.parts, ...B.parts,
         txt([110, 32], "1, ω, ω²", FNT, 12), txt([320, 32], "1, ω³, ω⁶", FNT, 12),
-        cap(430, 240, "The powers ω^(jk) for j = 0, 1, 2, with ω = e^(2πi/3). When 3 does not divide k they sit evenly around the circle and their average (gold) is the center, 0; when 3 divides k they all equal 1 and the average is 1. So averaging f over 1, ω, ω² keeps exactly the coefficients a_k with 3 | k." + (ok ? "" : " MISMATCH"))]);
+        cap(430, 240, "The powers ω<sup>jk</sup> for j = 0, 1, 2, with ω = e<sup>2πi/3</sup>. When 3 does not divide k they sit evenly around the circle and their average (gold) is the center, 0; when 3 divides k they all equal 1 and the average is 1. So averaging f over 1, ω, ω² keeps exactly the coefficients a<sub>k</sub> with 3 | k." + (ok ? "" : " MISMATCH"))]);
     })()
   };
 
@@ -2672,7 +2672,7 @@
       parts.push(txt([L + 13.5 * w + w / 2, B - H - 8], "tie", GLD, 12));
       parts.push(txt([L + 2, 40], "ratio > 1: climbing", ACC, 12, "start"), txt([L + 21 * w, 40], "ratio < 1", ACC, 12, "end"));
       return wrap(430, 240, [...parts,
-        cap(430, 240, "The coefficients a_k = C(20, k)·2^k of (1 + 2x)^20, scaled to the largest. The ratio a_(k+1)/a_k = 2(20 − k)/(k + 1) is above 1 for k ≤ 12, exactly 1 at k = 13, and below 1 after, so the bars climb, tie at k = 13 and 14 (gold), and fall." + (ok ? "" : " MISMATCH"))]);
+        cap(430, 240, "The coefficients a<sub>k</sub> = C(20, k)·2<sup>k</sup> of (1 + 2x)<sup>20</sup>, scaled to the largest. The ratio a<sub>k+1</sub>/a<sub>k</sub> = 2(20 − k)/(k + 1) is above 1 for k ≤ 12, exactly 1 at k = 13, and below 1 after, so the bars climb, tie at k = 13 and 14 (gold), and fall." + (ok ? "" : " MISMATCH"))]);
     })()
   };
 
