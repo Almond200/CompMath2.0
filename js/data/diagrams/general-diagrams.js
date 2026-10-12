@@ -2344,7 +2344,7 @@
     product: (() => {
       const c = 34, X0 = 150, Y0 = 46, parts = [];
       let cnt = 0;
-      parts.push(txt([X0 + 3 * c, 20], "second die: x^j", FNT, 12), txt([X0 - 30, Y0 + 3 * c + 4], "first die: x^i", FNT, 12, "end"));
+      parts.push(txt([X0 + 3 * c, 20], "second die: xʲ", FNT, 12), txt([X0 - 30, Y0 + 3 * c + 4], "first die: xⁱ", FNT, 12, "end"));
       for (let i = 1; i <= 6; i++) {
         parts.push(txt([X0 + (i - 0.5) * c, Y0 - 8], String(i), DIM, 12), txt([X0 - 10, Y0 + (i - 0.5) * c + 4], String(i), DIM, 12, "end"));
         for (let j = 1; j <= 6; j++) {
@@ -2581,7 +2581,7 @@
       const ok = Math.hypot(A.avg[0], A.avg[1]) < 1e-12 && Math.abs(B.avg[0] - 1) < 1e-12;
       return wrap(430, 240, [...A.parts, ...B.parts,
         txt([110, 32], "1, ω, ω²", FNT, 12), txt([320, 32], "1, ω³, ω⁶", FNT, 12),
-        cap(430, 240, "The powers ω^(jk) for j = 0, 1, 2, with ω = e^(2πi/3). When 3 does not divide k they sit evenly around the circle and their average (gold) is the center, 0; when 3 divides k they all equal 1 and the average is 1. So averaging f over 1, ω, ω² keeps exactly the coefficients a_k with 3 | k." + (ok ? "" : " MISMATCH"))]);
+        cap(430, 240, "The powers ω<sup>jk</sup> for j = 0, 1, 2, with ω = e<sup>2πi/3</sup>. When 3 does not divide k they sit evenly around the circle and their average (gold) is the center, 0; when 3 divides k they all equal 1 and the average is 1. So averaging f over 1, ω, ω² keeps exactly the coefficients a<sub>k</sub> with 3 | k." + (ok ? "" : " MISMATCH"))]);
     })()
   };
 
@@ -2672,7 +2672,7 @@
       parts.push(txt([L + 13.5 * w + w / 2, B - H - 8], "tie", GLD, 12));
       parts.push(txt([L + 2, 40], "ratio > 1: climbing", ACC, 12, "start"), txt([L + 21 * w, 40], "ratio < 1", ACC, 12, "end"));
       return wrap(430, 240, [...parts,
-        cap(430, 240, "The coefficients a_k = C(20, k)·2^k of (1 + 2x)^20, scaled to the largest. The ratio a_(k+1)/a_k = 2(20 − k)/(k + 1) is above 1 for k ≤ 12, exactly 1 at k = 13, and below 1 after, so the bars climb, tie at k = 13 and 14 (gold), and fall." + (ok ? "" : " MISMATCH"))]);
+        cap(430, 240, "The coefficients a<sub>k</sub> = C(20, k)·2<sup>k</sup> of (1 + 2x)<sup>20</sup>, scaled to the largest. The ratio a<sub>k+1</sub>/a<sub>k</sub> = 2(20 − k)/(k + 1) is above 1 for k ≤ 12, exactly 1 at k = 13, and below 1 after, so the bars climb, tie at k = 13 and 14 (gold), and fall." + (ok ? "" : " MISMATCH"))]);
     })()
   };
 
