@@ -223,10 +223,24 @@
   // ---------- Fundamentals ----------
 
   DIAGRAMS["pythagorean-theorem"] = [(() => {
-    const P = [90, 260], Q = [340, 260], R = [90, 95];
-    return wrap(420, 300, [
-      poly([P, Q, R], DIM, 2, ACCS), rightAngle(P, Q, R),
-      txt([215, 282], "a"), txt([72, 180], "b"), txt([232, 168], "c", ACC, 14)
+    // The statement itself: a square on each side of a 3-4-5 right triangle, so the two
+    // smaller areas visibly add up to the largest one.
+    const k = 30, P = [150, 250], Q = [150 + 4 * k, 250], R = [150, 250 - 3 * k];
+    const out = norm(perp(sub(R, Q))), hyp = dist(Q, R);   // perpendicular to QR, away from P
+    const away = sub(mid(Q, R), P), GRNS = "rgba(76, 195, 138, 0.13)";
+    const n = out[0] * away[0] + out[1] * away[1] > 0 ? mul(out, hyp) : mul(out, -hyp);
+    const sqA = [P, Q, add(Q, [0, 4 * k]), add(P, [0, 4 * k])];
+    const sqB = [P, R, add(R, [-3 * k, 0]), add(P, [-3 * k, 0])];
+    const sqC = [Q, R, add(R, n), add(Q, n)];
+    const ctr = q => mul(q.reduce(add), 1 / 4);
+    const ok = Math.abs(dist(P, Q) ** 2 + dist(P, R) ** 2 - hyp ** 2) < 1e-6;
+    return wrap(430, 390, [
+      poly(sqA, GLD, 1.8, GLDS), poly(sqB, GRN, 1.8, GRNS), poly(sqC, ACC, 1.8, ACCS),
+      poly([P, Q, R], DIM, 2), rightAngle(P, Q, R),
+      txt(add(ctr(sqA), [0, 5]), "a²", GLD, 16), txt(add(ctr(sqB), [0, 5]), "b²", GRN, 16), txt(add(ctr(sqC), [0, 5]), "c²", ACC, 16),
+      txt(add(mid(P, Q), [0, -8]), "a", DIM, 13), txt(add(mid(P, R), [10, 4]), "b", DIM, 13),
+      txt(add(mid(Q, R), mul(n, -0.09)), "c", DIM, 13),
+      cap(430, 390, "the squares on the two legs together have the area of the square on the hypotenuse: a² + b² = c² (here 9 + 16 = 25)" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
