@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 168 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 169 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -52,7 +52,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["coordinate-bash", "linear-change-of-variables", "trig-bash", "tangent-lines-from-point"] },
       { title: "Working in Three Dimensions",
         note: "Reducing a solid to a plane figure you already know how to handle.",
-        ids: ["cavalieris-principle", "box-tetrahedron", "dihedral-angle", "fit-copies"] },
+        ids: ["cavalieris-principle", "box-tetrahedron", "dihedral-angle", "fit-copies", "plane-cross-section"] },
       { title: "Configurations Worth Recognizing on Sight",
         note: "Whole problem shapes with an intended answer, not techniques.",
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "isosceles-trapezoid"] }
@@ -520,7 +520,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["chord-length", "common-chord-length", "equal-chords-arcs", "ptolemys-theorem", "law-of-cosines", "law-of-sines", "midsegment-theorem", "trapezoid-special-segments", "cotangent-rule"] }
     ] },
   { id: "config-solid-geometry", name: "The 3D Toolkit", kind: "configuration", subject: "Recognize",
-    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 27 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
+    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 28 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
     sections: [
       { title: "Volumes & Surface Areas",
         note: "The memorized layer. Everything else on this page assumes you can already get a volume once the solid is identified.",
@@ -533,7 +533,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["space-diagonal", "distance-3d", "point-plane-distance", "plane-intercept-form", "skew-lines-distance"] },
       { title: "Vectors",
         note: "The algebra underneath the distances. A cross product is an area and a normal at the same time, which is why it appears in almost every plane-and-solid intersection.",
-        ids: ["cross-product-area", "vector-dot-product", "vector-projection", "projected-area-cosine"] },
+        ids: ["cross-product-area", "vector-dot-product", "vector-projection", "projected-area-cosine", "plane-cross-section"] },
       { title: "Collapsing 3D into 2D",
         note: "The two moves that make hard solids easy: take the right plane section and work inside it, or unfold the surface flat. Reach for these before coordinates.",
         ids: ["cross-section-method", "cavalieris-principle", "unfold-the-surface"] }

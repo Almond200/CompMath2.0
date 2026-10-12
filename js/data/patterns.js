@@ -37,6 +37,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "plane-cross-section",
+          name: "Cutting a Solid with a Plane",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A plane is given by three points, often on the edges of a cube or a box, and the problem asks where it cuts the solid: the shape or area of the cross-section, where it meets another edge or line, or the volume it cuts off.`,
+          move: String.raw`Put the solid in coordinates, write the plane's equation through the three points, and substitute each edge, written as a moving point, into that equation to find where the plane crosses it.`,
+          uses: ["cross-product-area", "plane-intercept-form", "projected-area-cosine"],
+          latex: String.raw`\vec n = \overrightarrow{PQ} \times \overrightarrow{PR}, \quad \vec n \cdot (X - P) = 0, \qquad X = A + t(B - A),\ \ 0 \le t \le 1`,
+          description: String.raw`Cutting a solid with a plane is done in coordinates. The plane through three points $P$, $Q$, $R$ has a normal vector $\vec n$ perpendicular to the directions $\overrightarrow{PQ}$ and $\overrightarrow{PR}$, and a point $X$ lies on it exactly when $\vec n \cdot (X - P) = 0$, an equation $ax + by + cz = d$. An edge from $A$ to $B$ is the set of points $A + t(B - A)$ with $0 \le t \le 1$. Substituting it into the plane's equation leaves one linear equation in $t$, and a solution in that range is a corner of the cross-section.`,
+          keywords: ["equation of a plane", "plane through three points", "normal vector", "cross-section of a cube", "plane cuts a cube", "intersection of a line and a plane", "where a plane meets an edge", "area of a cross-section", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "dihedral-angle",
           name: "Finding a Dihedral Angle",
           type: "method",

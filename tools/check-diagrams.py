@@ -109,6 +109,7 @@ LINE_GAP_ALLOW = {
     "extend-sides-to-meet#0", "hyperbola-properties#0", "parallel-line-similarity#0",
     "parallel-exterior-angles#0", "body:angle-bisector-theorem/reflect",
     "body:perp-to-angle-bisector/external", "brocards-theorem#0",
+    "plane-cross-section#0",      # the hidden cube edge from the origin, extended backward, passes R on screen only
 }
 LINE_GAP = 4
 

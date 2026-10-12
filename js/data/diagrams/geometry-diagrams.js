@@ -8971,4 +8971,18 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 330, "A regular icosahedron: 12 vertices, 30 edges, 20 triangular faces, five at each vertex. From the top vertex (large gold dot), 5 vertices are one edge away (gold), 5 are two edges away (green), and the bottom vertex (large green dot) is three away." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Cutting a cube with a plane: the example's cube [0, 4]^3 and the plane x + 2y − 2z = 6.
+  DIAGRAMS["plane-cross-section"] = [(() => {
+    const u = 40, P3 = proj3([215, 192]), Pt = (x, y, z) => P3(u * x, u * y, u * z);
+    const { edges } = box3(P3, 4 * u, 4 * u, 4 * u);
+    const P = Pt(4, 1, 0), S = Pt(0, 3, 0), Q = Pt(0, 4, 1), R = Pt(4, 4, 3);
+    const on = ([x, y, z]) => x + 2 * y - 2 * z === 6;
+    const ok = [[4, 1, 0], [0, 3, 0], [0, 4, 1], [4, 4, 3]].every(on);
+    return wrap(430, 320, [
+      edges.join(""), poly([P, S, Q, R], ACC, 2, ACCS),
+      dot(P, GLD, 4.5), dot(Q, GLD, 4.5), dot(R, GLD, 4.5), dot(S, GRN, 4.5),
+      txt(add(P, [-12, 14]), "P", GLD, 14), txt(add(Q, [4, -11]), "Q", GLD, 14), txt(add(R, [13, 4]), "R", GLD, 14), txt(add(S, [-13, -6]), "S", GRN, 14),
+      cap(430, 320, "The cube from (0, 0, 0) to (4, 4, 4) cut by the plane x + 2y − 2z = 6 through P, Q, R (gold). The plane meets one more edge, at S = (0, 3, 0) (green), and the cross-section PSQR is a trapezoid with SQ parallel to PR, of area 12." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

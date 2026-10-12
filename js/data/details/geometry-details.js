@@ -8602,5 +8602,42 @@ Counting vertices, edges, faces, and diagonals; paths along edges and random wal
 
 ## Contest profile
 No problems here are tagged with it yet, though five AMC and AIME statements name one of the two solids. The usual question counts paths along the edges or the distances between random vertices, where the layers from one vertex do the counting.
+`,
+"plane-cross-section": String.raw`
+## When to use
+A cube, box, or prism with three marked points, usually on edges, and a plane through them: the question asks for the shape or area of the cross-section, the point where the plane meets another edge or a given line, or the volume of one of the pieces. Also a line and a plane given in coordinates, where the meeting point is wanted.
+
+The plane through three points on the coordinate axes needs no work beyond the intercept form. A solid of revolution is better sliced through its axis, where [[cross-section-method|the slice through the axis]] turns it into circles and lines.
+
+## How
+1. Place the solid in coordinates, with a vertex at the origin and the edges along the axes.
+2. Find a normal vector, $\vec n = \overrightarrow{PQ} \times \overrightarrow{PR}$, and divide out any common factor.
+3. Write the plane as $\vec n \cdot X = \vec n \cdot P$, an equation $ax + by + cz = d$, and check it at $Q$ and $R$.
+4. For each edge from $A$ to $B$, solve $\vec n \cdot (A + t(B - A)) = d$ for $t$, and keep the edges with $0 \le t \le 1$.
+5. Put the crossing points in order around the plane: two of them are neighbors when they lie on the same face of the solid.
+6. Find the area by splitting the polygon into triangles, or by projecting it onto a coordinate plane and dividing by the cosine of the angle between the planes.
+
+For instance, the plane $x + y + z = \frac32$ meets the unit cube in the six edges that touch neither $(0, 0, 0)$ nor $(1, 1, 1)$. Along each of them $x + y + z$ runs from $1$ to $2$, so the plane crosses at the midpoint, and the cross-section is a regular hexagon.
+
+## Why it works
+A vector perpendicular to two directions in a plane that are not parallel is perpendicular to every direction in it. The cross product of $\overrightarrow{PQ}$ and $\overrightarrow{PR}$ is perpendicular to both, so it is a normal, and a point $X$ lies in the plane exactly when $X - P$ is perpendicular to it.
+
+The plane's equation is linear, so along the edge it becomes $\vec n \cdot A + t\,\vec n \cdot (B - A) = d$, which has exactly one solution unless $\vec n \cdot (B - A) = 0$, when the edge is parallel to the plane. The cross-section of a convex solid is a convex polygon whose corners are the crossing points on the edges and whose sides lie in the faces, which is why step 5 orders them by faces.
+
+Projection onto a coordinate plane multiplies every area by the cosine of the angle between the planes, which is the angle between their normals. For the $xy$-plane that cosine is $\frac{|c|}{\sqrt{a^2 + b^2 + c^2}}$, read off the equation.
+
+## Formulas it uses
+- [[cross-product-area]]: $\overrightarrow{PQ} \times \overrightarrow{PR}$ is the normal vector, and half the length of a cross product is the area of each triangle of the cross-section.
+- [[plane-intercept-form]]: when the plane meets the coordinate axes at known points, its equation is written down at once.
+- [[projected-area-cosine]]: the area of the cross-section is the area of its shadow on a coordinate plane divided by $\cos\theta$.
+
+## Common traps
+- Keeping a solution with $t$ outside $[0, 1]$, which is a point on the extended edge, outside the solid.
+- Listing the corners out of order, which gives a self-crossing polygon and a wrong area.
+- A plane through a vertex of the solid, which is reached along three edges and must be counted once.
+- A sign slip in the cross product; checking that $\vec n \cdot \overrightarrow{PQ} = \vec n \cdot \overrightarrow{PR} = 0$ catches it.
+
+## Contest profile
+An AIME staple: a cube or box with three marked points on its edges, asking for the area of the cross-section, the point where the plane meets another edge, or a volume cut off. AMC 12 problems more often ask for the shape of the cross-section or a distance from a vertex to the plane.
 `
 });

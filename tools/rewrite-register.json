@@ -1771,7 +1771,8 @@
     "integer-valued-polynomials": "formula",
     "dirichlet-primes-progression": "formula",
     "partial-fractions": "method",
-    "working-backwards": "method"
+    "working-backwards": "method",
+    "plane-cross-section": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8488,6 +8489,12 @@
       ]
     ],
     "working-backwards": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "plane-cross-section": [
       [
         "(new card)",
         "written directly in the method template"
