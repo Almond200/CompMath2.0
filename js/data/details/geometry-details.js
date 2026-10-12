@@ -6255,7 +6255,6 @@ The Law of Cosines gives $\cos A = \frac{b^2 + c^2 - a^2}{2bc}$, and the sine ar
 
 Adding $\cot A$ and $\cot B$ puts $b^2 + c^2 - a^2$ over $4K$ next to $a^2 + c^2 - b^2$ over $4K$. Everything cancels except $2c^2$, giving $\frac{c^2}{2K}$. The side that survives is the one opposite neither angle.
 
-
 ## Useful observations
 - Converting a cotangent turns the whole expression into side lengths and area, where ordinary algebra works, and sums collapse pair by pair.
 - A ratio such as $\dfrac{\cot C}{\cot A + \cot B} = \dfrac{a^2 + b^2 - c^2}{2c^2}$ depends only on the sides. If a problem gives $a^2 + b^2 = 5c^2$, the ratio is $2$ at once.
@@ -8078,5 +8077,104 @@ Showing that the foot of an altitude from a vertex to a bisector lies on the con
 
 ## Contest profile
 An olympiad lemma that is usually quoted and proved in two lines inside a larger solution. It appears in problems with the incircle, the midpoints of the sides, and a perpendicular from a vertex to a bisector together, where recognizing the shared point $K$ is the whole idea.
+`,
+
+"steiner-ratio-theorem": String.raw`
+## Key forms
+- $\dfrac{BD}{DC} \cdot \dfrac{BE}{EC} = \dfrac{AB^2}{AC^2}$ — for isogonal cevians $AD$ and $AE$, that is $\angle BAD = \angle EAC$, with $D$ and $E$ on side $BC$
+- converse: if $D$ and $E$ lie on side $BC$ and $\dfrac{BD}{DC} \cdot \dfrac{BE}{EC} = \dfrac{AB^2}{AC^2}$, then $AD$ and $AE$ are isogonal
+- with directed lengths the same product holds when $D$ and $E$ lie on line $BC$ outside the side; the two ratios are then both negative
+- each classical isogonal pair is an instance: the median and the symmedian, the altitude and the line through the circumcenter, and the bisector paired with itself
+
+## Conditions
+$D$ and $E$ lie on line $BC$, and the lines $AD$ and $AE$ are reflections of each other in the bisector of angle $A$. For points inside the side the lengths are ordinary lengths; when the cevians meet line $BC$ beyond $B$ or $C$, use directed lengths, as in the Ratio Lemma. The converse needs both points on the side itself, where each ratio determines its point.
+
+## Why it works
+The Ratio Lemma gives each ratio as the side ratio times a sine ratio:
+
+$$\frac{BD}{DC} = \frac{AB}{AC} \cdot \frac{\sin\angle BAD}{\sin\angle DAC}, \qquad \frac{BE}{EC} = \frac{AB}{AC} \cdot \frac{\sin\angle BAE}{\sin\angle EAC}.$$
+
+The two cevians are isogonal, so $\angle BAD = \angle EAC$, and since both pairs of angles add up to $\angle A$, also $\angle DAC = \angle BAE$. Multiplying the two equations, the four sines cancel in pairs and leave $\frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}$.
+
+For the converse, fix $D$ and let $E$ move along side $BC$ from $B$ to $C$. The ratio $\frac{BE}{EC}$ increases strictly from $0$ without bound, so exactly one point $E$ of the side gives the product $\frac{AB^2}{AC^2}$. The foot of the reflection of $AD$ in the bisector is such a point, so it is the one.
+
+## Useful observations
+- When one cevian is known, the theorem places the other without any angle: the foot of the isogonal of a cevian is found from two ratios and the two sides.
+- The median is the case $\frac{BD}{DC} = 1$, which gives the split made by the symmedian, stated on [[symmedian-lemoine|Symmedians]].
+- With directed lengths it also covers the external bisector, the one line besides the internal bisector that is its own isogonal: there the ratio is $-\frac{AB}{AC}$, and its square is the side ratio squared.
+- Read with [[trig-ceva|Trigonometric Ceva]], it is the reason that reflecting three concurrent cevians in the bisectors gives three concurrent lines, the [[isogonal-conjugate|isogonal conjugate]].
+
+## Applications
+Locating the foot of the isogonal of a known cevian, such as the line through the circumcenter from the foot of an altitude, computing where a symmedian-like line meets the opposite side, and proving two cevians isogonal from lengths.
+
+## Contest profile
+An olympiad tool for isogonal configurations, used when a problem pairs a line through a vertex with its reflection in the bisector and asks about the points where the two lines meet the opposite side. It pairs with the Ratio Lemma and with isogonal conjugates.
+`,
+
+"isogonal-line-lemma": String.raw`
+## Key forms
+- $\angle BAX = \angle YAC \implies \angle BAP = \angle QAC$ — where $P = BX \cap CY$ and $Q = BY \cap CX$
+- $s(P)\,s(Q) = s(X)\,s(Y)$ for any points $X$, $Y$, where $s(Z) = \dfrac{\sin\angle BAZ}{\sin\angle ZAC}$ — the identity behind the lemma, with $P$ and $Q$ built as above
+- if $X$ and $Y$ are isogonal conjugates in triangle $ABC$, then so are $P$ and $Q$
+
+## Conditions
+$X$ and $Y$ are points other than $A$, $B$, $C$, chosen so that the lines $BX$ and $CY$ meet and the lines $BY$ and $CX$ meet. The points may lie inside or outside the triangle; outside it, read the angles as directed angles and the sines with signs, and the statement is unchanged.
+
+## Why it works
+Step 1, a measure of direction. For a point $Z$, write $s(Z) = \frac{\sin\angle BAZ}{\sin\angle ZAC}$, and similarly $t(Z) = \frac{\sin\angle CBZ}{\sin\angle ZBA}$ at $B$ and $u(Z) = \frac{\sin\angle ACZ}{\sin\angle ZCB}$ at $C$. Each depends only on the line from its vertex to $Z$. Two lines through $A$ are isogonal exactly when their values of $s$ multiply to $1$, because reflecting in the bisector swaps the two angles that $s$ compares.
+
+Step 2, Trigonometric Ceva. The three lines from the vertices to any point $Z$ concur at $Z$, so Trigonometric Ceva gives
+
+$$s(Z)\,t(Z)\,u(Z) = 1.$$
+
+Step 3, the crossing points. $P$ lies on line $BX$, so the line $BP$ is the line $BX$ and $t(P) = t(X)$. $P$ also lies on line $CY$, so $u(P) = u(Y)$. In the same way $t(Q) = t(Y)$ and $u(Q) = u(X)$. Then Step 2, applied to $P$, $Q$, $X$, and $Y$, gives
+
+$$s(P)\,s(Q) = \frac{1}{t(X)\,u(Y)} \cdot \frac{1}{t(Y)\,u(X)} = \frac{1}{t(X)\,u(X)} \cdot \frac{1}{t(Y)\,u(Y)} = s(X)\,s(Y).$$
+
+Step 4, conclusion. $AX$ and $AY$ are isogonal, so $s(X)\,s(Y) = 1$, hence $s(P)\,s(Q) = 1$, and $AP$ and $AQ$ are isogonal. If $X$ and $Y$ are isogonal conjugates, $BY$ is also the reflection of $BX$ in the bisector at $B$, and $CX$ the reflection of $CY$ at $C$. So the lines from $B$ and $C$ to $Q$ are the reflections of those to $P$, and $Q$ is the isogonal conjugate of $P$.
+
+## Useful observations
+- The identity of Step 3 holds for any two points, isogonal or not, so the product of the two direction measures at $A$ is preserved by the crossing construction.
+- The lemma lets a known isogonal pair, such as the altitude and the line through the circumcenter, produce new isogonal pairs from points chosen on them, without computing a single angle.
+- To prove that two lines through $A$ are isogonal, it is often enough to exhibit them as $AP$ and $AQ$ for points $X$ and $Y$ on a known isogonal pair.
+
+## Applications
+Proving that two lines through a vertex make equal angles with the two sides, transporting an isogonal pair from one configuration to another, and showing two constructed points are isogonal conjugates.
+
+## Contest profile
+An olympiad lemma, quoted inside solutions about isogonal lines, isogonal conjugates, and the complete quadrilateral formed by four lines through two vertices. It pairs with Trigonometric Ceva, which proves it, and with the [[steiner-ratio-theorem|Steiner ratio theorem]], which measures isogonal lines on the opposite side.
+`,
+
+"power-of-a-point-linearity": String.raw`
+## Key forms
+- $f(P) = \operatorname{pow}(P, \omega_1) - \operatorname{pow}(P, \omega_2) = 2\,\overrightarrow{O_1O_2} \cdot \overrightarrow{RP}$ for any point $R$ on the radical axis
+- $f(P) = 2\,O_1O_2 \cdot d(P, \ell)$ — $d$ the signed distance to the radical axis $\ell$, positive on the side of $O_2$
+- $f\big(tX + (1 - t)Y\big) = t\,f(X) + (1 - t)\,f(Y)$, and in general $f(t_1X_1 + \cdots + t_nX_n) = t_1f(X_1) + \cdots + t_nf(X_n)$ whenever $t_1 + \cdots + t_n = 1$
+- $f_{12} + f_{23} + f_{31} = 0$ for three circles, where $f_{ij}$ is the difference of the powers with respect to $\omega_i$ and $\omega_j$
+- the circles $\omega_t$ with $\operatorname{pow}(P, \omega_t) = t\operatorname{pow}(P, \omega_1) + (1 - t)\operatorname{pow}(P, \omega_2)$ all share the radical axis $\ell$, and pass through the common points of $\omega_1$ and $\omega_2$ when there are any
+
+## Conditions
+The circles have different centers, $O_1 \ne O_2$; for concentric circles $f$ is constant and there is no radical axis. The power of a point with respect to a circle of center $O$ and radius $r$ is $\operatorname{pow}(P) = PO^2 - r^2$. A point counts as a circle of radius $0$, and the statement holds word for word for spheres in space.
+
+## Why it works
+Write points as vectors. Each power is quadratic, $\operatorname{pow}(P, \omega_i) = \lvert P\rvert^2 - 2\,O_i \cdot P + \lvert O_i\rvert^2 - r_i^2$, and the quadratic term $\lvert P\rvert^2$ is the same for every circle. In the difference it cancels:
+
+$$f(P) = 2\,(O_2 - O_1) \cdot P + \left(\lvert O_1\rvert^2 - r_1^2 - \lvert O_2\rvert^2 + r_2^2\right).$$
+
+A dot product with a fixed vector plus a constant is a linear (affine) function, which is the whole lemma. Its zero set is a line perpendicular to $O_1O_2$, the radical axis $\ell$. For $R$ on $\ell$, $f(R) = 0$, and subtracting gives $f(P) = 2\,(O_2 - O_1) \cdot (P - R)$. The component of $P - R$ along $O_1O_2$ is the signed distance from $P$ to $\ell$, which gives the distance form.
+
+An affine function commutes with weighted averages whose weights add up to $1$, because the constant term is taken once in total. That is the weighted form. For three circles, $f_{12} + f_{23} + f_{31}$ is a sum of six powers in which each appears once with each sign, so it is $0$. For the family $\omega_t$, the right-hand side is $\lvert P\rvert^2 - 2\big(tO_1 + (1 - t)O_2\big) \cdot P + \text{const}$, the power with respect to a circle centered at $tO_1 + (1 - t)O_2$. Its difference with the power for $\omega_1$ is $(1 - t)$ times $-f$, which vanishes exactly on $\ell$. At a common point of $\omega_1$ and $\omega_2$ both powers are $0$, so $\omega_t$ passes through it.
+
+## Useful observations
+- The three-circle identity is a one-line proof that the three radical axes meet: where $f_{12} = 0$ and $f_{23} = 0$, also $f_{31} = 0$, which is the radical center.
+- If $f(X) = -f(Y)$, the midpoint of $XY$ lies on the radical axis. More generally, a point is shown to lie on the axis by writing it as a weighted average of points whose values of $f$ cancel.
+- With $\omega_2$ a point circle at $Q$, $f(P) = PO_1^2 - r_1^2 - PQ^2$, so the points with a given difference of squared distances form a line perpendicular to $O_1Q$, the locus in the [[perpendicularity-lemma|Perpendicularity Lemma]].
+- A single power is not linear: along a segment it is a quadratic in the parameter. Only the difference of two powers is linear, which is why the lemma is always applied to a pair of circles.
+
+## Applications
+Computing the distance from a point to the radical axis from two tangent lengths, proving that a point lies on a radical axis by averaging, building a circle through the common points of two circles, and proving that radical axes concur.
+
+## Contest profile
+An olympiad technique behind many radical-axis arguments. It appears when a point is defined as a midpoint or a weighted combination of points with known powers, and in proofs that a moving circle keeps a fixed radical axis. It pairs with the radical axis and with Power of a Point.
 `
 });

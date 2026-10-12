@@ -254,6 +254,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - **Iran Lemma** (low): $BI$, the contact chord $EF$, and the midline parallel to $AB$ meet at the foot of the perpendicular from $C$ to $BI$.
 
   Each card has a computed figure with a self-check, a verified example, and a full proof.
+- **Olympiad geometry, batch 2 (2.4b).** Three new formula cards, all Olympiad tier and low importance, placed in the Olympiad geometry route:
+  - **Steiner's Ratio Theorem for Isogonal Cevians** (Advanced Triangle Theorems): $\frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}$ for isogonal cevians, with the converse and the directed form, proved from the Ratio Lemma.
+  - **Isogonal Line Lemma** (Derived Triangles & Conjugates): $P = BX \cap CY$ and $Q = BY \cap CX$ give isogonal lines $AP$, $AQ$ whenever $AX$, $AY$ are isogonal, and isogonal conjugates go to isogonal conjugates. Proved by Trigonometric Ceva through the identity $s(P)s(Q) = s(X)s(Y)$.
+  - **Linearity of Power of a Point** (Circles): the difference of two powers is linear, equal to $2\,O_1O_2$ times the signed distance to the radical axis, with the weighted-average form, the three-circle identity, and the pencil of circles.
+
+  Each statement was checked numerically on random configurations (2,000 triangles for the first two, 500 circle pairs for the third). The examples are verified by coordinates: $BE = \frac{147}{31}$ for the line $AO$ in a 7-8-9 triangle, $80^\circ$ for the crossing points of $BH$, $CO$, $BO$, $CH$, and the distance $\frac73$ from two tangent lengths. Each card has a computed figure with a self-check.
 - **Same Remainder merged (approved 2026-10-11).** The pattern Same Remainder is now part of the method Subtracting Equal Remainders, which carries its keyword; the old id redirects (`MERGED_IDS`).
 - **2.4d duplicates finished.**
   - The cotangent identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$ lives only on Identities for Angles Summing to $180^\circ$; The Cotangent Rule points to it.

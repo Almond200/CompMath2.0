@@ -8567,4 +8567,74 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // Steiner's ratio theorem: isogonal cevians AD and AE cut BC in ratios whose product is (AB/AC)^2.
+  DIAGRAMS["steiner-ratio-theorem"] = [(() => {
+    const A = [150, 40], B = [36, 286], C = [400, 286], T = [A, B, C];
+    const D = lerp(B, C, 0.26);
+    const u = norm(sub(B, A)), v = norm(sub(C, A)), bis = norm(add(u, v)), w = sub(D, A);
+    const refl = sub(mul(bis, 2 * (w[0] * bis[0] + w[1] * bis[1])), w);
+    const E = lineInt(A, add(A, refl), B, C);
+    const lhs = (dist(B, D) / dist(D, C)) * (dist(B, E) / dist(E, C)), rhs = Math.pow(dist(A, B) / dist(A, C), 2);
+    const ok = Math.abs(lhs - rhs) < 1e-9 * rhs && Math.abs(angDeg(A, B, D) - angDeg(A, E, C)) < 1e-6;
+    return wrap(430, 330, [
+      poly(T, DIM, 2),
+      seg(A, D, ACC, 2), seg(A, E, GLD, 2),
+      angleArc(A, B, D, 38, ACC), angleArc(A, E, C, 38, GLD),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, ACC, 4.5), dot(E, GLD, 4.5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-12, 14]), "B", DIM, 14), txt(add(C, [12, 14]), "C", DIM, 14),
+      txt(add(D, [0, 20]), "D", ACC, 13), txt(add(E, [0, 20]), "E", GLD, 13),
+      cap(430, 330, "AD and AE are reflections of each other in the bisector of angle A, so the marked angles BAD and EAC are equal. The two ratios they cut on BC multiply to (AB/AC)²: (BD/DC)·(BE/EC) = AB²/AC²." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Isogonal line lemma: X, Y on isogonal lines through A; P = BX ∩ CY and Q = BY ∩ CX give isogonal lines AP, AQ.
+  DIAGRAMS["isogonal-line-lemma"] = [(() => {
+    const A = [196, 36], B = [34, 290], C = [404, 290], T = [A, B, C];
+    const u = norm(sub(B, A)), v = norm(sub(C, A)), bis = norm(add(u, v));
+    const reflect = w => sub(mul(bis, 2 * (w[0] * bis[0] + w[1] * bis[1])), w);
+    const dX = rotv(u, -0.2), X = add(A, mul(dX, 205));
+    const Y = add(A, mul(reflect(dX), 150));
+    const P = lineInt(B, X, C, Y), Q = lineInt(B, Y, C, X);
+    const far = (S, a, b) => dist(S, a) > dist(S, b) ? a : b;
+    const rq = reflect(sub(P, A)), wq = sub(Q, A);
+    const ok = Math.abs(rq[0] * wq[1] - rq[1] * wq[0]) < 1e-6 * Math.hypot(...rq) * Math.hypot(...wq) && insideTri(P, A, B, C) && insideTri(Q, A, B, C);
+    return wrap(430, 330, [
+      poly(T, DIM, 2),
+      seg(A, X, GLD, 1.8), seg(A, Y, GLD, 1.8),
+      seg(B, far(B, X, P), FNT, 1.4), seg(C, far(C, Y, P), FNT, 1.4), seg(B, far(B, Y, Q), FNT, 1.4), seg(C, far(C, X, Q), FNT, 1.4),
+      seg(A, P, ACC, 2), seg(A, Q, ACC, 2),
+      angleArc(A, B, X, 30, GLD), angleArc(A, Y, C, 30, GLD),
+      angleArc(A, B, Q, 52, ACC, true), angleArc(A, P, C, 52, ACC, true),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(X, GLD, 4.5), dot(Y, GLD, 4.5), dot(P, ACC, 4.5), dot(Q, ACC, 4.5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-12, 14]), "B", DIM, 14), txt(add(C, [12, 14]), "C", DIM, 14),
+      gapLabel(X, [A, B, C, P, Q], "X", GLD, 13, 15), gapLabel(Y, [A, B, C, P, Q], "Y", GLD, 13, 15),
+      gapLabel(P, [A, B, C, X, Y], "P", ACC, 13, 15), gapLabel(Q, [A, B, C, X, Y], "Q", ACC, 13, 15),
+      cap(430, 330, "AX and AY are isogonal (gold arcs equal). Crossing the lines from B and C gives P = BX ∩ CY and Q = BY ∩ CX, and AP and AQ are isogonal as well: the blue arcs BAQ and PAC are equal, so ∠BAP = ∠QAC." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Linearity of power of a point: the difference of the powers is 2·O1O2 times the signed distance to the radical axis.
+  DIAGRAMS["power-of-a-point-linearity"] = [(() => {
+    const O1 = [118, 190], r1 = 78, O2 = [318, 190], r2 = 52;
+    const pw = (P, O, r) => dist(P, O) * dist(P, O) - r * r;
+    const d12 = dist(O1, O2), xa = (d12 * d12 + r1 * r1 - r2 * r2) / (2 * d12);
+    const R = [O1[0] + xa, O1[1]];
+    const P = [262, 52], F = [R[0], P[1]];
+    const T1 = tangentPoints(O1, r1, P)[1], T2 = tangentPoints(O2, r2, P)[0];
+    const f = pw(P, O1, r1) - pw(P, O2, r2);
+    const ok = Math.abs(f - 2 * d12 * (P[0] - R[0])) < 1e-6 * Math.abs(f) && Math.abs(pw(R, O1, r1) - pw(R, O2, r2)) < 1e-6;
+    return wrap(430, 330, [
+      circ(O1, r1, DIM, 1.8), circ(O2, r2, DIM, 1.8),
+      seg([R[0], 22], [R[0], 300], GRN, 1.8),
+      seg(O1, O2, FNT, 1.4, "5 4"),
+      seg(P, T1, ACC, 1.8), seg(P, T2, GLD, 1.8),
+      seg(P, F, PUR, 2), rightAngle(F, P, [R[0], 300], 9, FNT),
+      dot(O1, DIM, 3.5), dot(O2, DIM, 3.5), dot(P, DIM, 4.5), dot(T1, ACC, 3.5), dot(T2, GLD, 3.5),
+      txt(add(O1, [0, 18]), "O₁", DIM, 13), txt(add(O2, [0, 18]), "O₂", DIM, 13), txt(add(P, [12, -6]), "P", DIM, 14, "start"),
+      txt([R[0] + 8, 296], "ℓ", GRN, 14, "start"), txt([mid(P, F)[0], P[1] - 9], "d", PUR, 13),
+      txt(add(O1, [-r1 * 0.78, r1 * 0.78 + 12]), "ω₁", DIM, 13), txt(add(O2, [r2 * 0.82, r2 * 0.82 + 12]), "ω₂", DIM, 13),
+      cap(430, 330, "The radical axis ℓ is where the two powers are equal. For any point P, the difference of the squared tangent lengths, PT₁² − PT₂², is 2·O₁O₂ times the distance d from P to ℓ, so it changes linearly as P moves." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
 })();

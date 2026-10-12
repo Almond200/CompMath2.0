@@ -841,6 +841,16 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
+        },
+        {
+          id: "steiner-ratio-theorem",
+          name: "Steiner's Ratio Theorem for Isogonal Cevians",
+          latex: String.raw`\angle BAD = \angle EAC \implies \frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}`,
+          description: String.raw`Two cevians $AD$ and $AE$ of triangle $ABC$, with $D$ and $E$ on side $BC$, are isogonal when each is the reflection of the other in the bisector of angle $A$, that is, when $\angle BAD = \angle EAC$. Steiner's theorem says that the two ratios in which they cut $BC$ multiply to the square of the ratio of the adjacent sides, $\frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}$, and the converse holds: two points of side $BC$ whose ratios multiply to $\frac{AB^2}{AC^2}$ are the feet of isogonal cevians. It is the [[ratio-lemma|Ratio Lemma]] applied to both cevians at once, where the sines cancel because the two cevians cut the angle at $A$ into the same two pieces in opposite order.`,
+          keywords: ["steiner ratio theorem", "steiner theorem isogonal", "isogonal cevians", "product of ratios on the opposite side", "BD/DC times BE/EC", "square of the side ratio", "isogonal feet", "reflection in the angle bisector"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         }
       ]
     },
@@ -914,6 +924,16 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{reflect } AP, BP, CP \text{ in the angle bisectors} \implies \text{they concur at } P^*, \qquad (x : y : z) \mapsto \left(\tfrac{a^2}{x} : \tfrac{b^2}{y} : \tfrac{c^2}{z}\right)`,
           description: String.raw`Reflect the cevians $AP$, $BP$, $CP$ across the angle bisectors at $A$, $B$, $C$: the three reflected lines always concur, at the isogonal conjugate $P^*$. The classic pairs are the circumcenter $O$ and the orthocenter $H$, the centroid $G$ and the [[lemoine-point|symmedian (Lemoine) point]] $K$, the incenter (its own conjugate), and the Fermat points and the isodynamic points. $P$ and $P^*$ share a pedal circle.`,
           keywords: ["isogonal conjugate", "reflect cevian over bisector", "O and H conjugate", "symmedian point", "incenter self conjugate", "isodynamic", "common pedal circle"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "isogonal-line-lemma",
+          name: "Isogonal Line Lemma",
+          latex: String.raw`\angle BAX = \angle YAC,\ \ P = BX \cap CY,\ \ Q = BY \cap CX \implies \angle BAP = \angle QAC`,
+          description: String.raw`Let $X$ and $Y$ be points on two lines through vertex $A$ of triangle $ABC$ that are isogonal, mirror images in the bisector of angle $A$, so that $\angle BAX = \angle YAC$. Cross the lines from the other two vertices: $P$ is where $BX$ meets $CY$, and $Q$ is where $BY$ meets $CX$. Then $AP$ and $AQ$ are isogonal too, $\angle BAP = \angle QAC$. A pair of isogonal lines through $A$ therefore produces a second pair from any two points on them, and when $X$ and $Y$ are [[isogonal-conjugate|isogonal conjugates]] the new points $P$ and $Q$ are isogonal conjugates as well. The proof is a short computation with [[trig-ceva|Trigonometric Ceva]].`,
+          keywords: ["isogonal line lemma", "isogonal lines lemma", "crossing lines from B and C", "BX meets CY", "pair of isogonal lines", "isogonal conjugate pairs", "reflection in the bisector", "equal angles at A"],
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
@@ -1279,6 +1299,16 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "power-of-a-point-linearity",
+          name: "Linearity of Power of a Point",
+          latex: String.raw`f(P) = \operatorname{pow}(P, \omega_1) - \operatorname{pow}(P, \omega_2) = 2\,O_1O_2 \cdot d(P, \ell), \qquad f\big(tX + (1 - t)Y\big) = t\,f(X) + (1 - t)\,f(Y)`,
+          description: String.raw`For two circles $\omega_1$ and $\omega_2$ with different centers $O_1$ and $O_2$, the difference of the [[power-of-a-point|powers of a point]], $f(P) = \operatorname{pow}(P, \omega_1) - \operatorname{pow}(P, \omega_2)$, is a linear function of $P$, although each power on its own is quadratic. Its zero set is the [[radical-axis|radical axis]] $\ell$, and its value is $2\,O_1O_2$ times the signed distance $d(P, \ell)$ from $P$ to that line, positive on the side of $O_2$. Being linear, $f$ takes the weighted average of its values at the weighted average of points: on the segment $XY$, at the point $tX + (1 - t)Y$, it equals $t\,f(X) + (1 - t)\,f(Y)$. That turns many statements about two circles into statements about one straight line.`,
+          keywords: ["linearity of power of a point", "difference of powers is linear", "power difference", "linear function of the point", "distance to the radical axis", "weighted average of powers", "coaxal circles", "pencil of circles"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "common-chord-length",

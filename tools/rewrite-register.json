@@ -1736,7 +1736,10 @@
     "equilateral-triangle-facts": "formula",
     "cube": "formula",
     "regular-tetrahedron": "formula",
-    "regular-octahedron": "formula"
+    "regular-octahedron": "formula",
+    "steiner-ratio-theorem": "formula",
+    "isogonal-line-lemma": "formula",
+    "power-of-a-point-linearity": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8222,6 +8225,24 @@
       [
         "On contests",
         "rewritten -> Contest profile"
+      ]
+    ],
+    "steiner-ratio-theorem": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "isogonal-line-lemma": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "power-of-a-point-linearity": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

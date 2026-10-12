@@ -4,5 +4,7 @@
 // tools/check-lists.py fails on an id that is not a card.
 window.NEW_CARD_BATCHES = [
   { label: "Olympiad geometry, batch 1", date: "2026-10-11",
-    ids: ["perpendicularity-lemma", "carnots-perpendicularity-theorem", "iran-lemma"] }
+    ids: ["perpendicularity-lemma", "carnots-perpendicularity-theorem", "iran-lemma"] },
+  { label: "Olympiad geometry, batch 2", date: "2026-10-12",
+    ids: ["steiner-ratio-theorem", "isogonal-line-lemma", "power-of-a-point-linearity"] }
 ];

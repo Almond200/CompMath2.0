@@ -670,3 +670,6 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | perpendicularity-lemma | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **medium** |
 | carnots-perpendicularity-theorem | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
 | iran-lemma | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
+| steiner-ratio-theorem | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
+| isogonal-line-lemma | geometry / Derived Triangles & Conjugates | Olympiad | new | 0 | **low** |
+| power-of-a-point-linearity | geometry / Circles | Olympiad | new | 0 | **low** |
