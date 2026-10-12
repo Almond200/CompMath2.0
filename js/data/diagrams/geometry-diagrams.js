@@ -152,6 +152,43 @@
     const u = mul(norm(sub(Q, P)), size), v = mul(norm(sub(R, P)), size);
     return `<polyline points="${pf(add(P, u))} ${pf(add(add(P, u), v))} ${pf(add(P, v))}" fill="none" stroke="${c}" stroke-width="1.5"/>`;
   }
+  // Equal-segment marks: n short strokes across the middle of PQ (one tick, two ticks, ...),
+  // the usual way to show that a point is a midpoint or that two lengths are equal.
+  const ticksOn = (P, Q, n = 1, c = DIM) => {
+    const M = mid(P, Q), u = norm(sub(Q, P)), v = perp(u);
+    let out = "";
+    for (let i = 0; i < n; i++) { const c0 = add(M, mul(u, (i - (n - 1) / 2) * 5)); out += seg(add(c0, mul(v, 6)), add(c0, mul(v, -6)), c, 1.8); }
+    return out;
+  };
+  // A line drawn by the figure rule (CONVENTIONS, "Lines run to where they meet"): solid where
+  // it lies inside the shape `shape` (a convex or simple polygon), dashed where it has been
+  // extended outside it. P and Q are the two points it runs between, so it never stops short.
+  const insidePoly = (pt, shape) => {
+    let inside = false;
+    for (let i = 0, j = shape.length - 1; i < shape.length; j = i++) {
+      const a = shape[i], b = shape[j];
+      if ((a[1] > pt[1]) !== (b[1] > pt[1]) && pt[0] < (b[0] - a[0]) * (pt[1] - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  };
+  const segIn = (P, Q, shape, c = DIM, w = 2, dash = "5 4") => {
+    const ts = [0, 1], d = sub(Q, P);
+    for (let i = 0; i < shape.length; i++) {
+      const a = shape[i], b = shape[(i + 1) % shape.length], e = sub(b, a);
+      const den = d[0] * e[1] - d[1] * e[0];
+      if (Math.abs(den) < 1e-12) continue;
+      const w0 = sub(a, P), t = (w0[0] * e[1] - w0[1] * e[0]) / den, s2 = (w0[0] * d[1] - w0[1] * d[0]) / den;
+      if (t > 1e-9 && t < 1 - 1e-9 && s2 >= -1e-9 && s2 <= 1 + 1e-9) ts.push(t);
+    }
+    ts.sort((x, y) => x - y);
+    let out = "";
+    for (let i = 0; i + 1 < ts.length; i++) {
+      if (ts[i + 1] - ts[i] < 1e-9) continue;
+      const p0 = lerp(P, Q, ts[i]), p1 = lerp(P, Q, ts[i + 1]);
+      out += seg(p0, p1, c, w, insidePoly(lerp(P, Q, (ts[i] + ts[i + 1]) / 2), shape) ? "" : dash);
+    }
+    return out;
+  };
   const massBadge = (p, n) =>
     `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="12" fill="var(--bg-card)" stroke="${GLD}" stroke-width="1.8"/>` +
     `<text x="${r1(p[0])}" y="${r1(p[1]) + 4.5}" fill="${GLD}" font-size="12.5" font-weight="600" text-anchor="middle">${n}</text>`;
@@ -8509,21 +8546,148 @@ DIAGRAMS["trig-ceva"] = [(() => {
 
   // Iran lemma: BI, the contact chord EF, and the midline parallel to AB meet at the foot of the perpendicular from C to BI.
   DIAGRAMS["iran-lemma"] = [(() => {
-    const A = [150, 44], B = [46, 282], C = [394, 282];
+    const A = [112, 44], B = [36, 286], C = [396, 286], T = [A, B, C];
     const I = incenterOf(A, B, C), E = foot(I, C, A), F = foot(I, A, B), r = dist(I, foot(I, B, C));
     const K = lineInt(B, I, E, F), Mb = mid(C, A), Ma = mid(B, C);
     const cross = (p, q) => p[0] * q[1] - p[1] * q[0];
-    const ok = Math.abs(vdotF(sub(C, K), sub(I, B))) < 1e-6 * dist(C, K) * dist(I, B) && Math.abs(cross(sub(Ma, Mb), sub(K, Mb))) < 1e-6 * dist(Ma, Mb) * dist(K, Mb);
-    function vdotF(p, q) { return p[0] * q[0] + p[1] * q[1]; }
+    const onLine = (P, Q, X) => Math.abs(cross(sub(Q, P), sub(X, P))) < 1e-6 * dist(P, Q) * Math.max(1, dist(P, X));
+    // K is the foot from C to BI, and it lies on all three lines: BI, EF, and the midline.
+    const ok = Math.abs(sub(C, K)[0] * sub(I, B)[0] + sub(C, K)[1] * sub(I, B)[1]) < 1e-6 * dist(C, K) * dist(I, B) &&
+      onLine(B, I, K) && onLine(E, F, K) && onLine(Ma, Mb, K) && !insidePoly(K, T);
+    // Each of the three lines runs all the way to K: solid inside the triangle, dashed outside it.
     return wrap(430, 330, [
-      poly([A, B, C], DIM, 2), circ(I, r, FNT, 1.5),
-      seg(B, add(I, mul(norm(sub(I, B)), 70)), ACC, 1.8), seg(E, F, GLD, 1.8), seg(Ma, Mb, GRN, 1.8, "6 4"),
+      poly(T, DIM, 2), circ(I, r, FNT, 1.5),
+      segIn(B, K, T, ACC, 1.8), segIn(F, K, T, GLD, 1.8), segIn(Ma, K, T, GRN, 1.8),
+      ticksOn(C, Mb, 1, GRN), ticksOn(Mb, A, 1, GRN), ticksOn(B, Ma, 2, GRN), ticksOn(Ma, C, 2, GRN),
       seg(C, K, DIM, 1.6, "5 4"), rightAngle(K, C, B, 10, FNT),
-      dot(I, FNT, 3.5), dot(E, GLD, 4), dot(F, GLD, 4), dot(K, GRN, 5),
+      dot(I, FNT, 3.5), dot(E, GLD, 4), dot(F, GLD, 4), dot(Ma, GRN, 3.5), dot(Mb, GRN, 3.5), dot(K, GRN, 5),
       txt(add(A, [0, -9]), "A", DIM, 14), txt(add(B, [-12, 14]), "B", DIM, 14), txt(add(C, [12, 14]), "C", DIM, 14),
-      txt(add(E, [13, -3]), "E", GLD, 13), txt(add(F, [-13, -2]), "F", GLD, 13), txt(add(I, [4, 17]), "I", FNT, 13), txt(add(K, [12, -9]), "K", GRN, 14),
-      cap(430, 330, "The bisector BI, the contact chord EF, and the midline parallel to AB all pass through K, and K is the foot of the perpendicular from C to BI, so ∠BKC = 90°." + (ok ? "" : " MISMATCH"))
+      txt(add(E, [-3, -12]), "E", GLD, 13), txt(add(F, [-13, -2]), "F", GLD, 13), txt(add(I, [4, 17]), "I", FNT, 13), txt(add(K, [12, -9]), "K", GRN, 14),
+      cap(430, 330, "The bisector BI, the contact chord EF, and the midline through the midpoints of CB and CA (the tick marks show the equal halves) all pass through K, the foot of the perpendicular from C to BI, so ∠BKC = 90°. Each line is solid inside the triangle and dashed where it is extended to K." + (ok ? "" : " MISMATCH"))
     ]);
+  })()];
+
+  // Steiner's ratio theorem: isogonal cevians AD and AE cut BC in ratios whose product is (AB/AC)^2.
+  DIAGRAMS["steiner-ratio-theorem"] = [(() => {
+    const A = [150, 40], B = [36, 286], C = [400, 286], T = [A, B, C];
+    const D = lerp(B, C, 0.26);
+    const u = norm(sub(B, A)), v = norm(sub(C, A)), bis = norm(add(u, v)), w = sub(D, A);
+    const refl = sub(mul(bis, 2 * (w[0] * bis[0] + w[1] * bis[1])), w);
+    const E = lineInt(A, add(A, refl), B, C);
+    const lhs = (dist(B, D) / dist(D, C)) * (dist(B, E) / dist(E, C)), rhs = Math.pow(dist(A, B) / dist(A, C), 2);
+    const ok = Math.abs(lhs - rhs) < 1e-9 * rhs && Math.abs(angDeg(A, B, D) - angDeg(A, E, C)) < 1e-6;
+    return wrap(430, 330, [
+      poly(T, DIM, 2),
+      seg(A, D, ACC, 2), seg(A, E, GLD, 2),
+      angleArc(A, B, D, 38, ACC), angleArc(A, E, C, 38, GLD),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(D, ACC, 4.5), dot(E, GLD, 4.5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-12, 14]), "B", DIM, 14), txt(add(C, [12, 14]), "C", DIM, 14),
+      txt(add(D, [0, 20]), "D", ACC, 13), txt(add(E, [0, 20]), "E", GLD, 13),
+      cap(430, 330, "AD and AE are reflections of each other in the bisector of angle A, so the marked angles BAD and EAC are equal. The two ratios they cut on BC multiply to (AB/AC)²: (BD/DC)·(BE/EC) = AB²/AC²." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Isogonal line lemma: X, Y on isogonal lines through A; P = BX ∩ CY and Q = BY ∩ CX give isogonal lines AP, AQ.
+  DIAGRAMS["isogonal-line-lemma"] = [(() => {
+    const A = [196, 36], B = [34, 290], C = [404, 290], T = [A, B, C];
+    const u = norm(sub(B, A)), v = norm(sub(C, A)), bis = norm(add(u, v));
+    const reflect = w => sub(mul(bis, 2 * (w[0] * bis[0] + w[1] * bis[1])), w);
+    const dX = rotv(u, -0.2), X = add(A, mul(dX, 205));
+    const Y = add(A, mul(reflect(dX), 150));
+    const P = lineInt(B, X, C, Y), Q = lineInt(B, Y, C, X);
+    const far = (S, a, b) => dist(S, a) > dist(S, b) ? a : b;
+    const rq = reflect(sub(P, A)), wq = sub(Q, A);
+    const ok = Math.abs(rq[0] * wq[1] - rq[1] * wq[0]) < 1e-6 * Math.hypot(...rq) * Math.hypot(...wq) && insideTri(P, A, B, C) && insideTri(Q, A, B, C);
+    return wrap(430, 330, [
+      poly(T, DIM, 2),
+      seg(A, X, GLD, 1.8), seg(A, Y, GLD, 1.8),
+      seg(B, far(B, X, P), FNT, 1.4), seg(C, far(C, Y, P), FNT, 1.4), seg(B, far(B, Y, Q), FNT, 1.4), seg(C, far(C, X, Q), FNT, 1.4),
+      seg(A, P, ACC, 2), seg(A, Q, ACC, 2),
+      angleArc(A, B, X, 30, GLD), angleArc(A, Y, C, 30, GLD),
+      angleArc(A, B, Q, 52, ACC, true), angleArc(A, P, C, 52, ACC, true),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(X, GLD, 4.5), dot(Y, GLD, 4.5), dot(P, ACC, 4.5), dot(Q, ACC, 4.5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-12, 14]), "B", DIM, 14), txt(add(C, [12, 14]), "C", DIM, 14),
+      gapLabel(X, [A, B, C, P, Q], "X", GLD, 13, 15), gapLabel(Y, [A, B, C, P, Q], "Y", GLD, 13, 15),
+      gapLabel(P, [A, B, C, X, Y], "P", ACC, 13, 15), gapLabel(Q, [A, B, C, X, Y], "Q", ACC, 13, 15),
+      cap(430, 330, "AX and AY are isogonal (gold arcs equal). Crossing the lines from B and C gives P = BX ∩ CY and Q = BY ∩ CX, and AP and AQ are isogonal as well: the blue arcs BAQ and PAC are equal, so ∠BAP = ∠QAC." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Linearity of power of a point: the difference of the powers is 2·O1O2 times the signed distance to the radical axis.
+  DIAGRAMS["power-of-a-point-linearity"] = [(() => {
+    const O1 = [118, 190], r1 = 78, O2 = [318, 190], r2 = 52;
+    const pw = (P, O, r) => dist(P, O) * dist(P, O) - r * r;
+    const d12 = dist(O1, O2), xa = (d12 * d12 + r1 * r1 - r2 * r2) / (2 * d12);
+    const R = [O1[0] + xa, O1[1]];
+    const P = [262, 52], F = [R[0], P[1]];
+    const T1 = tangentPoints(O1, r1, P)[1], T2 = tangentPoints(O2, r2, P)[0];
+    const f = pw(P, O1, r1) - pw(P, O2, r2);
+    const ok = Math.abs(f - 2 * d12 * (P[0] - R[0])) < 1e-6 * Math.abs(f) && Math.abs(pw(R, O1, r1) - pw(R, O2, r2)) < 1e-6;
+    return wrap(430, 330, [
+      circ(O1, r1, DIM, 1.8), circ(O2, r2, DIM, 1.8),
+      seg([R[0], 22], [R[0], 300], GRN, 1.8),
+      seg(O1, O2, FNT, 1.4, "5 4"),
+      seg(P, T1, ACC, 1.8), seg(P, T2, GLD, 1.8),
+      seg(P, F, PUR, 2), rightAngle(F, P, [R[0], 300], 9, FNT),
+      dot(O1, DIM, 3.5), dot(O2, DIM, 3.5), dot(P, DIM, 4.5), dot(T1, ACC, 3.5), dot(T2, GLD, 3.5),
+      txt(add(O1, [0, 18]), "O₁", DIM, 13), txt(add(O2, [0, 18]), "O₂", DIM, 13), txt(add(P, [12, -6]), "P", DIM, 14, "start"),
+      txt([R[0] + 8, 296], "ℓ", GRN, 14, "start"), txt([mid(P, F)[0], P[1] - 9], "d", PUR, 13),
+      txt(add(O1, [-r1 * 0.78, r1 * 0.78 + 12]), "ω₁", DIM, 13), txt(add(O2, [r2 * 0.82, r2 * 0.82 + 12]), "ω₂", DIM, 13),
+      cap(430, 330, "The radical axis ℓ is where the two powers are equal. For any point P, the difference of the squared tangent lengths, PT₁² − PT₂², is 2·O₁O₂ times the distance d from P to ℓ, so it changes linearly as P moves." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Humpty and Queue points: X is the foot from H to the median AM, on circle (BHC); Q is where line MH meets the circumcircle again.
+  DIAGRAMS["humpty-queue-points"] = [(() => {
+    const O = [215, 168], R = 128;
+    const A = onC(O, R, -112), B = onC(O, R, 158), C = onC(O, R, 24), T = [A, B, C];
+    const H = orthocenterOf(A, B, C), M = mid(B, C), X = foot(H, A, M), Ap = sub(mul(M, 2), H);
+    // second intersection of line A'H with the circumcircle
+    const u = norm(sub(H, Ap)), w = sub(Ap, O), bq = w[0] * u[0] + w[1] * u[1], Q = add(Ap, mul(u, -2 * bq));
+    const O2 = sub(mul(M, 2), O);
+    const ok = Math.abs(dist(O2, X) - R) < 1e-6 && Math.abs(dist(O2, H) - R) < 1e-6 &&
+      Math.abs(dist(M, X) * dist(M, A) - dist(M, B) * dist(M, B)) < 1e-6 * dist(M, B) * dist(M, B) &&
+      Math.abs(dist(O, Q) - R) < 1e-6 && Math.abs((A[0] - Q[0]) * (H[0] - Q[0]) + (A[1] - Q[1]) * (H[1] - Q[1])) < 1e-6 * dist(A, Q) * dist(H, Q);
+    // the arc of (BHC) inside the circumcircle, from B over H to C
+    const arcBHC = `<path d="M ${pf(B)} A ${R} ${R} 0 0 1 ${pf(C)}" fill="none" stroke="${GRN}" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+    return wrap(430, 330, [
+      circ(O, R, FNT, 1.5), arcBHC, poly(T, DIM, 2),
+      seg(A, M, ACC, 1.8), seg(H, X, ACC, 1.6), rightAngle(X, H, A, 8, FNT),
+      segIn(M, Q, T, GLD, 1.8), seg(A, Q, GLD, 1.6), rightAngle(Q, A, H, 9, FNT),
+      dot(H, DIM, 4), dot(M, DIM, 3.5), dot(X, ACC, 5), dot(Q, GLD, 5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-13, 12]), "B", DIM, 14), txt(add(C, [13, 12]), "C", DIM, 14),
+      txt(add(M, [0, 18]), "M", DIM, 13), gapLabel(H, [A, B, C, M, X, Q], "H", DIM, 13, 15), gapLabel(X, [A, M, H, B, C], "X", ACC, 13, 15),
+      txt(add(Q, mul(norm(sub(Q, O)), 15)), "Q", GLD, 14),
+      cap(430, 330, "X, the Humpty point, is the foot of the perpendicular from H to the median AM, and it lies on the dashed circle through B, H, C. Q, the Queue point, is where line MH meets the circumcircle again (solid inside the triangle, dashed outside), and ∠AQH = 90°." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Desargues Involution Theorem: the sides, diagonals, and circle through A, B, C, D cut line ℓ in four pairs of one involution.
+  DIAGRAMS["desargues-involution"] = [(() => {
+    const O = [215, 128], R = 100, y = 219;
+    const A = onC(O, R, 16.1), B = onC(O, R, 137.2), C = onC(O, R, 298.5), D = onC(O, R, 356.0);
+    const L0 = [0, y], L1 = [1, y];
+    const at = (P, Q) => lineInt(P, Q, L0, L1);
+    const pairs = [[at(A, B), at(C, D), ACC], [at(A, C), at(B, D), GLD], [at(A, D), at(B, C), GRN]];
+    const h = y - O[1], wq = Math.sqrt(R * R - h * h), U = [O[0] - wq, y], V = [O[0] + wq, y];
+    const ts = pairs.map(p => [p[0][0], p[1][0]]).concat([[U[0], V[0]]]);
+    const det3 = (a, b, c) => { const r = q => [q[0] * q[1], q[0] + q[1], 1]; const [p, q, s] = [r(a), r(b), r(c)];
+      return p[0] * (q[1] * s[2] - q[2] * s[1]) - p[1] * (q[0] * s[2] - q[2] * s[0]) + p[2] * (q[0] * s[1] - q[1] * s[0]); };
+    const sc = Math.pow(Math.max(...ts.flat().map(Math.abs)), 4);
+    const ok = Math.abs(det3(ts[0], ts[1], ts[2])) < 1e-9 * sc && Math.abs(det3(ts[0], ts[1], ts[3])) < 1e-9 * sc;
+    const disk = Array.from({ length: 96 }, (_, k) => onC(O, R, k * 3.75));
+    const far = (P, Q, S) => dist(S, P) > dist(S, Q) ? P : Q;
+    const parts = [circ(O, R, PUR, 1.8), seg([16, y], [414, y], DIM, 2)];
+    [[A, B, 0], [C, D, 0], [A, C, 1], [B, D, 1], [A, D, 2], [B, C, 2]].forEach(([P, Q, k]) => {
+      const S = at(P, Q);
+      parts.push(segIn(far(P, Q, S), S, disk, pairs[k][2], 1.6));
+    });
+    pairs.forEach(p => parts.push(dot(p[0], p[2], 4), dot(p[1], p[2], 4)));
+    parts.push(dot(U, PUR, 4), dot(V, PUR, 4));
+    [A, B, C, D].forEach((P, k) => parts.push(dot(P, DIM, 4), txt(add(P, mul(norm(sub(P, O)), 15)), "ABCD"[k], DIM, 14)));
+    parts.push(txt([410, y + 18], "ℓ", DIM, 14, "end"));
+    parts.push(cap(430, 260, "The line ℓ meets the sides and diagonals of ABCD in three pairs, AB with CD (blue), AC with BD (gold), AD with BC (green), and the circle in a fourth pair (purple). All four pairs belong to one involution of ℓ. Each line is solid inside the circle and dashed where it is extended to ℓ." + (ok ? "" : " MISMATCH")));
+    return wrap(430, 260, parts);
   })()];
 
 })();

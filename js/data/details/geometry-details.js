@@ -1284,7 +1284,7 @@ The side form follows from $\cot A = \frac{b^2 + c^2 - a^2}{4K}$ and its cyclic 
 ## Useful observations
 - $\cot\omega$ is computed from the angles, or from the sides through the second form, which is the contest-usable one.
 - The bound $\omega \le 30^\circ$, with equality only for the equilateral triangle, settles extremal questions.
-- The identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$, valid in every triangle, is a companion fact that simplifies the algebra.
+- The pairwise cotangent products of a triangle add up to $1$, one of the [[triangle-angle-identities|identities for the three angles of a triangle]], and that sum often simplifies the algebra around $\cot\omega$.
 
 ## Applications
 Brocard points and the Brocard angle from the angles or sides of a triangle.
@@ -6255,7 +6255,6 @@ The Law of Cosines gives $\cos A = \frac{b^2 + c^2 - a^2}{2bc}$, and the sine ar
 
 Adding $\cot A$ and $\cot B$ puts $b^2 + c^2 - a^2$ over $4K$ next to $a^2 + c^2 - b^2$ over $4K$. Everything cancels except $2c^2$, giving $\frac{c^2}{2K}$. The side that survives is the one opposite neither angle.
 
-
 ## Useful observations
 - Converting a cotangent turns the whole expression into side lengths and area, where ordinary algebra works, and sums collapse pair by pair.
 - A ratio such as $\dfrac{\cot C}{\cot A + \cot B} = \dfrac{a^2 + b^2 - c^2}{2c^2}$ depends only on the sides. If a problem gives $a^2 + b^2 = 5c^2$, the ratio is $2$ at once.
@@ -7535,6 +7534,7 @@ A MATHCOUNTS and AMC 8 and 10 foundation, usually used silently to show two leng
 - co-interior angles, on the same side between the lines, add up to $180^\circ$
 - $\angle A + \angle B + \angle C = 180^\circ$ — the angle sum of a triangle
 - $\angle ACD = \angle A + \angle B$ — the exterior angle at $C$, formed by extending $BC$ to $D$, equals the sum of the two remote interior angles
+- $\angle APB = \angle(\ell, AP) + \angle(m, BP)$ — a path from $A$ on line $\ell$ to $B$ on a parallel line $m$, bending once at $P$ between them: the angle at the bend is the sum of the angles its two arms make with the parallels
 
 ## Conditions
 The angle facts need the two lines to be parallel; the converses, which prove lines parallel, are on [[parallel-by-angle-sum|Proving Lines Parallel by Angle Sums]].
@@ -7542,12 +7542,17 @@ The angle facts need the two lines to be parallel; the converses, which prove li
 ## Why it works
 Through $C$ draw the line parallel to $AB$. The angle between it and $CA$ equals $\angle A$, as alternate angles, and the angle between it and the extension $CD$ equals $\angle B$, as corresponding angles. Together these two angles fill the exterior angle $ACD$, so $\angle ACD = \angle A + \angle B$. Since $\angle ACD$ and $\angle ACB$ together make a straight angle, $\angle A + \angle B + \angle ACB = 180^\circ$.
 
+The same move, a parallel drawn through the vertex of the angle, also handles a zigzag: a path that leaves a point $A$ on a line $\ell$, bends at a point $P$, and ends at a point $B$ on a line $m$ parallel to $\ell$. Draw the line $n$ through $P$ parallel to both. It cuts $\angle APB$ into two parts. The part on the side of $\ell$ equals the angle $AP$ makes with $\ell$, as alternate angles across $AP$, and the part on the side of $m$ equals the angle $BP$ makes with $m$, as alternate angles across $BP$. So
+
+$$\angle APB = \angle(\ell, AP) + \angle(m, BP).$$
+
+This is the exterior-angle argument again. There, the parallel through $C$ split $\angle ACD$ into copies of the two remote angles; here, the parallel through $P$ splits the bend into copies of the two angles at the ends of the path. The figure is the worked example below, drawn with the line $n$ in place.
+
 {{figure:zigzag}}
 
 ## Useful observations
 - An exterior angle is larger than either remote interior angle.
 - The exterior angles of any polygon, one at each vertex, add up to $360^\circ$, the [[polygon-angle-sums|polygon angle sum]] in another form.
-- A zigzag between two parallel lines has its angles add up across: the angle at a bend equals the sum of the two angles it makes with the parallels.
 
 ## Applications
 Finding unknown angles in figures with parallel lines and triangles, and proving lines parallel from angle information.
@@ -8072,5 +8077,177 @@ Showing that the foot of an altitude from a vertex to a bisector lies on the con
 
 ## Contest profile
 An olympiad lemma that is usually quoted and proved in two lines inside a larger solution. It appears in problems with the incircle, the midpoints of the sides, and a perpendicular from a vertex to a bisector together, where recognizing the shared point $K$ is the whole idea.
+`,
+
+"steiner-ratio-theorem": String.raw`
+## Key forms
+- $\dfrac{BD}{DC} \cdot \dfrac{BE}{EC} = \dfrac{AB^2}{AC^2}$ — for isogonal cevians $AD$ and $AE$, that is $\angle BAD = \angle EAC$, with $D$ and $E$ on side $BC$
+- converse: if $D$ and $E$ lie on side $BC$ and $\dfrac{BD}{DC} \cdot \dfrac{BE}{EC} = \dfrac{AB^2}{AC^2}$, then $AD$ and $AE$ are isogonal
+- with directed lengths the same product holds when $D$ and $E$ lie on line $BC$ outside the side; the two ratios are then both negative
+- each classical isogonal pair is an instance: the median and the symmedian, the altitude and the line through the circumcenter, and the bisector paired with itself
+
+## Conditions
+$D$ and $E$ lie on line $BC$, and the lines $AD$ and $AE$ are reflections of each other in the bisector of angle $A$. For points inside the side the lengths are ordinary lengths; when the cevians meet line $BC$ beyond $B$ or $C$, use directed lengths, as in the Ratio Lemma. The converse needs both points on the side itself, where each ratio determines its point.
+
+## Why it works
+The Ratio Lemma gives each ratio as the side ratio times a sine ratio:
+
+$$\frac{BD}{DC} = \frac{AB}{AC} \cdot \frac{\sin\angle BAD}{\sin\angle DAC}, \qquad \frac{BE}{EC} = \frac{AB}{AC} \cdot \frac{\sin\angle BAE}{\sin\angle EAC}.$$
+
+The two cevians are isogonal, so $\angle BAD = \angle EAC$, and since both pairs of angles add up to $\angle A$, also $\angle DAC = \angle BAE$. Multiplying the two equations, the four sines cancel in pairs and leave $\frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}$.
+
+For the converse, fix $D$ and let $E$ move along side $BC$ from $B$ to $C$. The ratio $\frac{BE}{EC}$ increases strictly from $0$ without bound, so exactly one point $E$ of the side gives the product $\frac{AB^2}{AC^2}$. The foot of the reflection of $AD$ in the bisector is such a point, so it is the one.
+
+## Useful observations
+- When one cevian is known, the theorem places the other without any angle: the foot of the isogonal of a cevian is found from two ratios and the two sides.
+- The median is the case $\frac{BD}{DC} = 1$, which gives the split made by the symmedian, stated on [[symmedian-lemoine|Symmedians]].
+- With directed lengths it also covers the external bisector, the one line besides the internal bisector that is its own isogonal: there the ratio is $-\frac{AB}{AC}$, and its square is the side ratio squared.
+- Read with [[trig-ceva|Trigonometric Ceva]], it is the reason that reflecting three concurrent cevians in the bisectors gives three concurrent lines, the [[isogonal-conjugate|isogonal conjugate]].
+
+## Applications
+Locating the foot of the isogonal of a known cevian, such as the line through the circumcenter from the foot of an altitude, computing where a symmedian-like line meets the opposite side, and proving two cevians isogonal from lengths.
+
+## Contest profile
+An olympiad tool for isogonal configurations, used when a problem pairs a line through a vertex with its reflection in the bisector and asks about the points where the two lines meet the opposite side. It pairs with the Ratio Lemma and with isogonal conjugates.
+`,
+
+"isogonal-line-lemma": String.raw`
+## Key forms
+- $\angle BAX = \angle YAC \implies \angle BAP = \angle QAC$ — where $P = BX \cap CY$ and $Q = BY \cap CX$
+- $s(P)\,s(Q) = s(X)\,s(Y)$ for any points $X$, $Y$, where $s(Z) = \dfrac{\sin\angle BAZ}{\sin\angle ZAC}$ — the identity behind the lemma, with $P$ and $Q$ built as above
+- if $X$ and $Y$ are isogonal conjugates in triangle $ABC$, then so are $P$ and $Q$
+
+## Conditions
+$X$ and $Y$ are points other than $A$, $B$, $C$, chosen so that the lines $BX$ and $CY$ meet and the lines $BY$ and $CX$ meet. The points may lie inside or outside the triangle; outside it, read the angles as directed angles and the sines with signs, and the statement is unchanged.
+
+## Why it works
+Step 1, a measure of direction. For a point $Z$, write $s(Z) = \frac{\sin\angle BAZ}{\sin\angle ZAC}$, and similarly $t(Z) = \frac{\sin\angle CBZ}{\sin\angle ZBA}$ at $B$ and $u(Z) = \frac{\sin\angle ACZ}{\sin\angle ZCB}$ at $C$. Each depends only on the line from its vertex to $Z$. Two lines through $A$ are isogonal exactly when their values of $s$ multiply to $1$, because reflecting in the bisector swaps the two angles that $s$ compares.
+
+Step 2, Trigonometric Ceva. The three lines from the vertices to any point $Z$ concur at $Z$, so Trigonometric Ceva gives
+
+$$s(Z)\,t(Z)\,u(Z) = 1.$$
+
+Step 3, the crossing points. $P$ lies on line $BX$, so the line $BP$ is the line $BX$ and $t(P) = t(X)$. $P$ also lies on line $CY$, so $u(P) = u(Y)$. In the same way $t(Q) = t(Y)$ and $u(Q) = u(X)$. Then Step 2, applied to $P$, $Q$, $X$, and $Y$, gives
+
+$$s(P)\,s(Q) = \frac{1}{t(X)\,u(Y)} \cdot \frac{1}{t(Y)\,u(X)} = \frac{1}{t(X)\,u(X)} \cdot \frac{1}{t(Y)\,u(Y)} = s(X)\,s(Y).$$
+
+Step 4, conclusion. $AX$ and $AY$ are isogonal, so $s(X)\,s(Y) = 1$, hence $s(P)\,s(Q) = 1$, and $AP$ and $AQ$ are isogonal. If $X$ and $Y$ are isogonal conjugates, $BY$ is also the reflection of $BX$ in the bisector at $B$, and $CX$ the reflection of $CY$ at $C$. So the lines from $B$ and $C$ to $Q$ are the reflections of those to $P$, and $Q$ is the isogonal conjugate of $P$.
+
+## Useful observations
+- The identity of Step 3 holds for any two points, isogonal or not, so the product of the two direction measures at $A$ is preserved by the crossing construction.
+- The lemma lets a known isogonal pair, such as the altitude and the line through the circumcenter, produce new isogonal pairs from points chosen on them, without computing a single angle.
+- To prove that two lines through $A$ are isogonal, it is often enough to exhibit them as $AP$ and $AQ$ for points $X$ and $Y$ on a known isogonal pair.
+
+## Applications
+Proving that two lines through a vertex make equal angles with the two sides, transporting an isogonal pair from one configuration to another, and showing two constructed points are isogonal conjugates.
+
+## Contest profile
+An olympiad lemma, quoted inside solutions about isogonal lines, isogonal conjugates, and the complete quadrilateral formed by four lines through two vertices. It pairs with Trigonometric Ceva, which proves it, and with the [[steiner-ratio-theorem|Steiner ratio theorem]], which measures isogonal lines on the opposite side.
+`,
+
+"power-of-a-point-linearity": String.raw`
+## Key forms
+- $f(P) = \operatorname{pow}(P, \omega_1) - \operatorname{pow}(P, \omega_2) = 2\,\overrightarrow{O_1O_2} \cdot \overrightarrow{RP}$ for any point $R$ on the radical axis
+- $f(P) = 2\,O_1O_2 \cdot d(P, \ell)$ — $d$ the signed distance to the radical axis $\ell$, positive on the side of $O_2$
+- $f\big(tX + (1 - t)Y\big) = t\,f(X) + (1 - t)\,f(Y)$, and in general $f(t_1X_1 + \cdots + t_nX_n) = t_1f(X_1) + \cdots + t_nf(X_n)$ whenever $t_1 + \cdots + t_n = 1$
+- $f_{12} + f_{23} + f_{31} = 0$ for three circles, where $f_{ij}$ is the difference of the powers with respect to $\omega_i$ and $\omega_j$
+- the circles $\omega_t$ with $\operatorname{pow}(P, \omega_t) = t\operatorname{pow}(P, \omega_1) + (1 - t)\operatorname{pow}(P, \omega_2)$ all share the radical axis $\ell$, and pass through the common points of $\omega_1$ and $\omega_2$ when there are any
+
+## Conditions
+The circles have different centers, $O_1 \ne O_2$; for concentric circles $f$ is constant and there is no radical axis. The power of a point with respect to a circle of center $O$ and radius $r$ is $\operatorname{pow}(P) = PO^2 - r^2$. A point counts as a circle of radius $0$, and the statement holds word for word for spheres in space.
+
+## Why it works
+Write points as vectors. Each power is quadratic, $\operatorname{pow}(P, \omega_i) = \lvert P\rvert^2 - 2\,O_i \cdot P + \lvert O_i\rvert^2 - r_i^2$, and the quadratic term $\lvert P\rvert^2$ is the same for every circle. In the difference it cancels:
+
+$$f(P) = 2\,(O_2 - O_1) \cdot P + \left(\lvert O_1\rvert^2 - r_1^2 - \lvert O_2\rvert^2 + r_2^2\right).$$
+
+A dot product with a fixed vector plus a constant is a linear (affine) function, which is the whole lemma. Its zero set is a line perpendicular to $O_1O_2$, the radical axis $\ell$. For $R$ on $\ell$, $f(R) = 0$, and subtracting gives $f(P) = 2\,(O_2 - O_1) \cdot (P - R)$. The component of $P - R$ along $O_1O_2$ is the signed distance from $P$ to $\ell$, which gives the distance form.
+
+An affine function commutes with weighted averages whose weights add up to $1$, because the constant term is taken once in total. That is the weighted form. For three circles, $f_{12} + f_{23} + f_{31}$ is a sum of six powers in which each appears once with each sign, so it is $0$. For the family $\omega_t$, the right-hand side is $\lvert P\rvert^2 - 2\big(tO_1 + (1 - t)O_2\big) \cdot P + \text{const}$, the power with respect to a circle centered at $tO_1 + (1 - t)O_2$. Its difference with the power for $\omega_1$ is $(1 - t)$ times $-f$, which vanishes exactly on $\ell$. At a common point of $\omega_1$ and $\omega_2$ both powers are $0$, so $\omega_t$ passes through it.
+
+## Useful observations
+- The three-circle identity is a one-line proof that the three radical axes meet: where $f_{12} = 0$ and $f_{23} = 0$, also $f_{31} = 0$, which is the radical center.
+- If $f(X) = -f(Y)$, the midpoint of $XY$ lies on the radical axis. More generally, a point is shown to lie on the axis by writing it as a weighted average of points whose values of $f$ cancel.
+- With $\omega_2$ a point circle at $Q$, $f(P) = PO_1^2 - r_1^2 - PQ^2$, so the points with a given difference of squared distances form a line perpendicular to $O_1Q$, the locus in the [[perpendicularity-lemma|Perpendicularity Lemma]].
+- A single power is not linear: along a segment it is a quadratic in the parameter. Only the difference of two powers is linear, which is why the lemma is always applied to a pair of circles.
+
+## Applications
+Computing the distance from a point to the radical axis from two tangent lengths, proving that a point lies on a radical axis by averaging, building a circle through the common points of two circles, and proving that radical axes concur.
+
+## Contest profile
+An olympiad technique behind many radical-axis arguments. It appears when a point is defined as a midpoint or a weighted combination of points with known powers, and in proofs that a moving circle keeps a fixed radical axis. It pairs with the radical axis and with Power of a Point.
+`,
+
+"humpty-queue-points": String.raw`
+## Key forms
+- $X$, the $A$-Humpty point: the foot of the perpendicular from $H$ to the median $AM$, where $M$ is the midpoint of $BC$
+- $X$ lies on the circle $(BHC)$, and its reflection in $M$ is the second point where the median $AM$ meets the circumcircle
+- $MX \cdot MA = MB^2 = MC^2$, so $MB$ and $MC$ are tangent to the circles $(ABX)$ and $(ACX)$
+- $\angle XBC = \angle MAB$, $\angle XCB = \angle MAC$, and $XB : XC = AB : AC$
+- $Q$, the $A$-Queue point: line $MH$ passes through the antipode $A'$ of $A$ and meets the circumcircle again at $Q$, with $\angle AQH = 90^\circ$
+- $Q$ lies on the circle with diameter $AH$, which passes through the feet of the altitudes from $B$ and $C$
+
+## Conditions
+$ABC$ is a triangle that is not isosceles with $AB = AC$; in that case the median is the altitude, $H$ lies on it, and $X$ and $Q$ degenerate to $H$ and $A$. When angle $A$ is acute, $X$ lies between $A$ and $M$; when it is obtuse, $X$ lies on ray $MA$ beyond $A$. Every statement above holds in both cases.
+
+## Why it works
+Step 1, the circle through $B$, $H$, $C$. Reflect $H$ in $M$ to get $A'$. By [[orthocenter-properties|Orthocenter Reflections & Distances]], $A'$ is the point of the circumcircle opposite $A$, and the circle $(BHC)$ is the circumcircle reflected in $M$, since the reflection fixes the pair $B$, $C$ and sends $A'$ to $H$.
+
+Step 2, the Humpty point. Let the median $AM$ meet the circumcircle again at $N$. Since $AA'$ is a diameter, $\angle ANA' = 90^\circ$, so $A'N \perp AM$. Reflect in $M$: the line $A'N$ goes to the parallel line through $H$ and the reflection $N'$ of $N$, and that line is perpendicular to $AM$, which the reflection maps to itself. So $N'$ is the foot of the perpendicular from $H$ to $AM$:
+
+$$X = N', \qquad \text{the reflection of } N \text{ in } M.$$
+
+As $N$ is on the circumcircle, $X$ is on its reflection $(BHC)$. The power of $M$ with respect to the circumcircle gives $MN \cdot MA = MB \cdot MC$, and $MX = MN$, so $MX \cdot MA = MB^2$.
+
+Step 3, the angles and the ratio. From $\frac{MB}{MX} = \frac{MA}{MB}$ and the shared angle at $M$, triangles $MBX$ and $MAB$ are similar, so $\angle XBC = \angle MAB$ and $\frac{XB}{AB} = \frac{MB}{MA}$. The same with $C$ gives $\angle XCB = \angle MAC$ and $\frac{XC}{AC} = \frac{MC}{MA}$. Dividing, with $MB = MC$, gives $XB : XC = AB : AC$.
+
+Step 4, the Queue point. $H$, $M$, $A'$ are collinear because $M$ is the midpoint of $HA'$. The line meets the circumcircle at $A'$ and at a second point $Q$. Since $AA'$ is a diameter, $\angle AQA' = 90^\circ$, and $H$ lies on line $QA'$, so $\angle AQH = 90^\circ$. That puts $Q$ on the circle with diameter $AH$, and the feet $E$, $F$ of the altitudes from $B$ and $C$ are on it too, because $\angle AEH = \angle AFH = 90^\circ$.
+
+## Useful observations
+- The ratio $XB : XC = AB : AC$ puts $X$ on the [[apollonius-circle|Apollonius circle]] of $B$ and $C$ through $A$.
+- The circle with diameter $AH$ is the circle $(AEF)$, so $Q$ is the second intersection of $(AEF)$ with the circumcircle: the Queue point is where those two circles meet.
+- The Humpty point lives on $(BHC)$ and the Queue point on $(AEF)$, so a problem that names both the orthocenter and the midpoint of a side usually needs one of these two circles.
+
+## Applications
+Showing that the foot of the perpendicular from the orthocenter to a median lies on the circle $(BHC)$, finding a point of the circumcircle that sees $AH$ at a right angle, and computing lengths along the median from $MX \cdot MA = MB^2$.
+
+## Contest profile
+An olympiad configuration, recognized when a problem combines the orthocenter, the midpoint of a side, and the circumcircle. The two points are usually named in a solution and then used through their circles, $(BHC)$ for the Humpty point and the circle on diameter $AH$ for the Queue point.
+`,
+
+"desargues-involution": String.raw`
+## Key forms
+- an involution of a line, in a coordinate $t$ along it: $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$ with $\beta^2 \ne \alpha\gamma$; two pairs determine it, and three pairs belong to one involution exactly when $\det\begin{pmatrix} t_1t_1' & t_1 + t_1' & 1 \\ t_2t_2' & t_2 + t_2' & 1 \\ t_3t_3' & t_3 + t_3' & 1 \end{pmatrix} = 0$
+- DIT: for four points $A$, $B$, $C$, $D$ and a line $\ell$ through none of them, the conics through the four points meet $\ell$ in pairs of one involution, and the pairs include $(\ell \cap AB, \ell \cap CD)$, $(\ell \cap AC, \ell \cap BD)$, $(\ell \cap AD, \ell \cap BC)$
+- DDIT: for four lines and a point $P$ on none of them, the pairs of tangents from $P$ to the conics tangent to the four lines are pairs of one involution of the lines through $P$, and the pairs include the lines from $P$ to the two vertices of each pair of opposite vertices
+- an involution with a fixed point $M$ that swaps two points $X$, $Y$ satisfies $\frac{1}{MQ} - \frac{1}{MP} = \frac{1}{MX} - \frac{1}{MY}$ for each pair $P$, $Q$, with $P$ and $Y$ on one side of $M$ and $Q$ and $X$ on the other; when $M$ is the midpoint of $XY$ it is the reflection in $M$
+
+## Conditions
+The four points (or the four lines) are in general position, no three collinear (no three concurrent), and $\ell$ passes through none of the points ($P$ lies on none of the lines). A conic of the family that misses $\ell$ contributes no real pair, which does not affect the others. The theorem is projective, so it holds for every conic, circles included, and for the degenerate conics made of two lines.
+
+## Why it works
+Step 1, involutions as pencils of quadratics. Take a coordinate $t$ on $\ell$. A pair $\{t, t'\}$ is the pair of roots of $a\,t^2 + b\,t + c$ when $tt' = \frac ca$ and $t + t' = -\frac ba$. So the pair satisfies $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$ exactly when
+
+$$\alpha c - \beta b + \gamma a = 0,$$
+
+a linear condition on the coefficients $(a, b, c)$. The quadratics $\lambda f + \mu g$ of a two-dimensional family satisfy one such condition, with $(\alpha, \beta, \gamma)$ fixed up to a factor, so all their root pairs belong to one involution.
+
+Step 2, the conics through four points. If $F = 0$ and $G = 0$ are two conics through $A$, $B$, $C$, $D$, every conic through the four points is $\lambda F + \mu G = 0$, because five points fix a conic and the family is one free ratio. Restricted to $\ell$, $F$ and $G$ become quadratics $f$ and $g$ in $t$, so Step 1 applies: the pairs where the conics meet $\ell$ belong to one involution. The line pairs $AB \cup CD$, $AC \cup BD$, and $AD \cup BC$ are conics through the four points, which gives the three named pairs.
+
+Step 3, the dual. Polar reciprocation in a circle turns points into lines and conics into conics, turns a conic tangent to four lines into a conic through four points, and turns the lines through $P$ into the points of the polar of $P$. Applying Step 2 to the reciprocal figure and transforming back gives DDIT, with the opposite vertices of the four lines playing the role of the three line pairs.
+
+Step 4, the fixed-point form. With $M$ at $t = 0$ fixed, $\gamma = 0$, and the pair $(x, y)$ gives $\alpha\,xy + \beta\,(x + y) = 0$. A pair $(t, t')$ satisfies $\alpha\,tt' + \beta\,(t + t') = 0$, that is $\frac1t + \frac1{t'} = -\frac\alpha\beta = \frac1x + \frac1y$, which is the stated relation once signs are given to the four distances.
+
+## Useful observations
+- The three line pairs alone are a statement about a complete quadrilateral: the lines through four points cut any line in three pairs of one involution, with no conic in sight.
+- A circle through the four points adds its two intersections with $\ell$ as a fourth pair, which is how circle problems come in.
+- When the involution is known to be a reflection, every pair is symmetric about one point, which proves the [[butterfly-theorem|Butterfly Theorem]] at once: the chords through the midpoint of the chord give a fixed point, and the circle gives a pair symmetric about it.
+- In DDIT, if the involution of lines through $P$ is the reflection in a line, two lines of a pair make equal angles with it, which is how the dual proves isogonal statements.
+
+## Applications
+Generalized butterfly problems, proving that two points on a line are symmetric about a third, showing that lines through a point are isogonal or harmonic, and computing positions on a line cut by a circle and by the sides and diagonals of a quadrilateral.
+
+## Contest profile
+An advanced olympiad theorem, usually named and applied in one line to finish a projective argument. It appears when a line cuts the sides and diagonals of a quadrilateral and a conic through its vertices, or, in the dual form, when tangents from a point to an inscribed conic are compared with the lines to the vertices. It pairs with [[desargues-theorem|Desargues's Theorem]] and the [[cross-ratio|cross-ratio]].
 `
 });

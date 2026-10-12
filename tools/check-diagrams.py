@@ -12,7 +12,7 @@ Run:  python3 tools/check-diagrams.py     (exit 1 on any finding)
 """
 import itertools, os, re, subprocess, sys, tempfile
 
-JSC = "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc"
+JSC = os.environ.get("JSC", "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILES = ["js/data/diagrams/geometry-diagrams.js", "js/data/diagrams/general-diagrams.js"]
 

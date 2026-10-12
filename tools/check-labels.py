@@ -24,7 +24,7 @@ Run:  python3 tools/check-labels.py      (about 30 seconds; exit 1 on any findin
 import functools, html, http.server, os, re, socketserver, subprocess, sys, threading
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+CHROME = os.environ.get("CHROME", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
 
 
 class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -41,7 +41,9 @@ def main():
     with socketserver.TCPServer(("127.0.0.1", 0), handler) as srv:
         port = srv.server_address[1]
         threading.Thread(target=srv.serve_forever, daemon=True).start()
-        res = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=120000",
+        # Chrome refuses to run as root without --no-sandbox (the Linux cloud sessions run as root).
+        sandbox = ["--no-sandbox"] if hasattr(os, "geteuid") and os.geteuid() == 0 else []
+        res = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--virtual-time-budget=120000"] + sandbox + [
                               "--dump-dom", "http://127.0.0.1:%d/tools/label-audit.html" % port],
                              capture_output=True, text=True, timeout=300)
         srv.shutdown()

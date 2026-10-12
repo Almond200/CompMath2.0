@@ -4,7 +4,7 @@
 # up only as a blank page in the browser.
 set -e
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
-JSC=/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc
+JSC=${JSC:-/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc}
 fail=0
 for f in "$ROOT"/lab/*.html; do
   python3 - "$f" <<'PY' > /tmp/lab-check.js
