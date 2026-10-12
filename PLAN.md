@@ -7,21 +7,18 @@ Project: the clone `/home/user/CompMath2.0` in this cloud session, on branch `cl
 
 This plan will also be saved in the repo as `PLAN.md`, so it lives with the code.
 
-Last updated 2026-10-12.
-- Already done: dark mode, the 13-14-15 fix, all 26 rows of the 2.4d content fixes, the two duplicate-form dedupes, and 2.4b batch 1 (Perpendicularity Lemma, Carnot's Perpendicularity Theorem, Iran Lemma).
-- Order now:
-  1. **2.0** this session's items
-  2. **2.4d** finish
-  3. **2.4b** the rest of the new cards, with **2.4g** the new Olympiad Triangle Lemmas subsection
-  4. **2.4c** scan of the five card files for errors and missing advanced lemmas (new; the old 2.6, moved up)
-  5. **2.4f** figure line audit (new)
-  6. **2.4e** formula-box length audit
-  7. **2.4** finish the UI scan
-  8. **2.5** subject tag, then tagging
-  9. **2.6** a light re-check of the cards changed during tagging
-  10. **Stage 4** practice expansion
-  11. **R** proof depth
-  12. **Stage 5** flashcards and experimental features into Practice (not a priority)
+Last updated 2026-10-12 (late).
+- Finished steps are in section 1, so section 2 lists only open work.
+- Order now (Stanley's latest):
+  1. **Content, consistency, and missing-cards scan** (section 2.1), then write what it finds once approved
+  2. **2.4 UI scan**: the remaining fixes
+  3. **2.4e-ii** prose formula boxes on card faces
+  4. **2.5b** tagging, written solutions, and geometry solution diagrams, paper by paper
+  5. **LIVE concept tags**, whenever `live.poshenloh.com` is reachable from the session
+  6. **2.6** a light re-check of the cards changed during tagging
+  7. **Stage 4** the rest of the practice expansion
+  8. **R** proof depth
+  9. **Stage 5** flashcards and experimental features into Practice (not a priority)
 
 The detail of finished work lives in `README.md` (changelog), `CONVENTIONS.md`, `CONTRIBUTING.md`, and `tools/live-missing.md`.
 - **When anything is unclear, look back at these markdown files first.** They record how things are done: card anatomy, figure rules, merge checklists, gates.
@@ -173,6 +170,17 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 **2.4b new cards, batch 1**
 - [x] Perpendicularity Lemma, Carnot's Perpendicularity Theorem, Iran Lemma. The old Carnot card is renamed "Carnot's Theorem (Distances to the Sides)", with its id and links unchanged and the old name kept as an alias.
 
+**2026-10-12 (this session; details in the README changelog)**
+- [x] **2.0** Gates run on Linux (`tools/jsc-node`, `JSC`/`CHROME` variables); `PLAN.md` in the repo; Iran Lemma figure redrawn (rule 18); the exterior-angle zigzag lead-in; `Special:NewCards` (rule 19); rule 7 amended (same lengths allowed when the nuance differs).
+- [x] **2.4d** All 26 review rows fixed; plain duplicates at 0; the twins stay (Stanley: LTE is both a formula and a method).
+- [x] **2.4b** All approved new cards (Perpendicularity Lemma through the six LIVE-concept cards), the Same Remainder merge.
+- [x] **2.4g** The Olympiad Triangle Lemmas subsection, placed after Advanced Triangle Theorems.
+- [x] **2.4c** Scan of the five card files: findings fixed, 47 descriptions rewritten to define symbols without restating the box, and all 12 approved candidate cards written (Shooting Lemma, Dumpty Point, √bc Inversion, Van Aubel for Cevians, Broken Chord, Nesbitt, Injectivity/Surjectivity, Cyclotomic Polynomials, Gambler's Ruin, Strategy Stealing, Erdős–Ko–Rado, Tiling a Board).
+- [x] **2.4f** Figure line audit: two new gates (line gaps, raw TeX in figure text), all 584 panels reviewed, wrong figures fixed (Poncelet, domino board, Desargues, Miquel).
+- [x] **2.4e** Formula-box audit on the detail page, approved by Stanley: nine crowded boxes trimmed into Key forms, 22 wide boxes broken at natural points, four dangling colons fixed.
+- [x] **2.5a** Subject chip on problem pages and contest lists, derived from the tagged cards (1,365 problems). The LIVE-concept source waits for LIVE access.
+- [x] The UI sweeps themselves: card pages at 768, 1920, dark, and Larger are clean; the few findings are listed in 2.4 below.
+
 ### How the figure reference cards were sorted out (2026-10-11)
 | Where | Cards |
 |---|---|
@@ -192,202 +200,31 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 
 ## 2. What is left, in order (Stanley's order)
 
-### 2.0 This session's immediate items (Stanley, 2026-10-12), done first
-1. **Tool paths for this cloud machine.** The gates hard-code macOS paths (`JSC = /System/.../jsc`, `CHROME = /Applications/...`).
-   - Add `tools/jsc-node.js`, a tiny Node shim providing `load()` and `print()`.
-   - Make `check-diagrams.py`, `check-labels.py`, `scan-conventions.py`, and the `validate-problem-db.js` runner read the `JSC` and `CHROME` environment variables. On Stanley's Mac they fall back to the current paths.
-   - Here: `JSC="node tools/jsc-node.js"`, `CHROME=/opt/pw-browsers/chromium-1194/chrome-linux/chrome`.
-2. **Write this plan to `PLAN.md`** in the repo.
-3. **Iran Lemma figure** (`js/data/diagrams/geometry-diagrams.js`, `DIAGRAMS["iran-lemma"]`). Rule 18 applies; Stanley chose the same rule for all three lines.
-   - BI is drawn from B through I to K, EF from F through E to K, and the midline from $M_a$ through $M_b$ to K.
-   - Each line is solid inside the triangle and `"5 4"`-dashed outside, from where it crosses side CA (`lineInt`) to K. None stops short (today BI stops at I + 70 px and EF stops at E).
-   - Equal-segment tick marks: one tick on $CM_b = M_bA$, two ticks on $BM_a = M_aC$, so the green line reads as the midline. Add a `ticks(P, Q, n)` helper if none exists.
-   - CK stays dashed with its right-angle mark.
-   - The `ok` check also tests that K is on all three lines, and the caption mentions the ticks.
-4. **Exterior-angle card** (`parallel-exterior-angles`). The zigzag ("crook") figure follows the triangle proof with no lead-in.
-   - Add a paragraph before `{{figure:zigzag}}` in Why it works. It explains that the same parallel-line split proves the zigzag rule: at a bend between two parallels, the angle equals the sum of the angles its arms make with them.
-   - Show the rule as a centered line, $\angle APB = \angle(\ell, AP) + \angle(m, BP)$.
-   - Add one sentence saying the triangle proof is the case where one arm runs along a parallel.
-   - Trim the Useful-observations bullet that restates it (rule 17).
-5. **`Special:NewCards`.**
-   - New file `js/data/new-cards.js` with `window.NEW_CARD_BATCHES = [{ label, date, ids }]`, newest last. Batch 1 = the three cards above.
-   - Load it in `index.html` before `app.js`, with a `?v=`.
-   - Add a command entry beside `Recent` in the command table of `js/app.js` (~5569). It shows the latest batch (label, date, card links in batch order, with kind and subject). `Special:NewCards/All` lists every batch, newest first.
-   - The command shows in the search dropdown and in Settings → Commands.
-   - `tools/check-lists.py` fails on an unknown or merged id in a batch.
-   - README Special pages list and CONVENTIONS (rule 19).
-6. **Rule 7 amended.** Update CONVENTIONS (~line 265) and relax the triangle-numbers gate in `tools/scan-conventions.py` (~872). Shared numbers fail only when the two questions are near-copies: word Jaccard of at least 0.45, the measure in `tools/check-example-repeats.js`. Otherwise the scanner prints an info line.
-7. **Summary for Stanley of everything since the redesign** (appendix A).
+### 2.1 Content, consistency, and missing-cards scan (Stanley, 2026-10-12; first)
+- **LaTeX that does not render correctly** on every surface: card names, both copies of each formula box, descriptions, write-ups, Key forms, examples, list notes and route blurbs, problem strategies, statements, and solutions. Render in the browser; collect KaTeX errors, leftover raw commands, unbalanced `$`, and text that typesets differently from what the source means.
+- **Contradicting information**: the same quantity with different values on two cards; a card's box, description, Key forms, and example disagreeing; importance or tier against route placement; wrong card or section counts in blurbs; README and CONVENTIONS claims that no longer match the code; a strategy whose answer differs from its solution. Numbers re-checked by computation.
+- **Anything that does not quite make sense** in the data files, write-ups, user-facing strings in `app.js`, and the markdown docs: stale wording, removed features still mentioned, dead ids, misleading labels.
+- **Missing cards at every level**: olympiad lemmas and formulas in all subjects, and lower-level formulas, methods, and patterns, checked against every card's name, keywords, and description so nothing is proposed twice.
+- Clear errors are fixed at once. Judgment calls, and the candidate cards with tier, importance, and evidence, go to `QUESTIONS.md` for Stanley. Approved cards follow the 2.4b checklist and are registered for `Special:NewCards`.
 
-**Status (2026-10-12):** items 1 to 7 are done. The Iran figure is redrawn, the zigzag is explained, `Special:NewCards` is live, rule 7 is amended in CONVENTIONS and the scanner, and the new CONVENTIONS sections are "Lines in figures run to where they meet" and "New cards are registered". The gates run here with `JSC=tools/jsc-node` and `CHROME=/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. On Linux, `check-labels.py` keeps a baseline of 5 far-move findings caused by font widths. The search index must be rebuilt on the Mac (HuggingFace is blocked from the cloud).
+### 2.4 Whole-app UI scan: the remaining fixes
+The sweeps ran on 2026-10-12 (card pages at 768, 1920, dark, Larger, 375 dark + Larger, and the wiki layout at 375; all 4,616 statements at 375, 768, 1280). Left to fix:
+- 3 KaTeX errors in statements, and 12 elements past the right edge on statements at 375;
+- 9 past-right findings on 7 card pages at 375 with dark + Larger text, and the Shoelace page in the wiki layout at 375;
+- the statement check flagged dollar signs used as money; it must flag only real TeX, and the statement sweeps re-run.
 
-### 2.4d Content-error fixes: finish
-- (a) Re-run `tools/find-duplicate-forms.py`; plain duplicates must be 0.
-- (b) The finder's pattern-method and method-formula twins go to Stanley as a list, since they may be deliberate. Nothing changes without his word:
-  - `lte` and `lte-lemma`;
-  - `poly-divisible-linear` and `reduce-divisibility-constant`;
-  - `cycle-hunting` and `periodic-sequences`;
-  - `area-method` and `cevian-area-ratio`.
-- (c) Also grep the rest of the cards for the same classes of slip: a symbol in a thumbnail that only the write-up defines, and a duplicated fact.
-- **For Stanley (2026-10-12):** besides the four twins, the finder lists 39 cards whose description restates a formula from the card's own thumbnail, usually while defining its symbols (for example Heron's Formula, the Law of Sines, Stewart's Theorem). Rule 17 asks that the symbols be defined, so rewriting these is his call: either leave them, or reword each description to define the symbols without repeating the formula.
-- (d) **(done 2026-10-12)** A README entry for all of 2.4d and 2.4b batch 1, a memory update, a rebuilt search index, and all gates at 0. Every edited card renders with 0 KaTeX errors in light and dark. Then commit and push.
+### 2.4e-ii Prose formula boxes on card faces (Stanley, 2026-10-12)
+Some boxes are mostly prose (A Newly Defined Operation, Tiling a Board, Strategy Stealing, ...), so on the card faces they shrink to the minimum size and still scroll. Measure every card face at 1280 and 375 (the `fd-scroll` class and the scale `fitBatch` sets in `js/app.js`), list each one with a proposed rewrite in `QUESTIONS.md`, and apply after approval. A box that cannot be made shorter without losing content stays as it is (Stanley: not ideal, but the best available).
 
-### 2.4b New cards (all approved by Stanley; batches of two or three, each reported)
-Check for overlap with existing cards before writing. Existing ones to watch: Carnot's Theorem `carnots-theorem`, Isogonal Conjugate, The Steiner Line, Power of a Point, Desargues's Theorem. Where one exists, either extend it or write the new card as a distinct fact and cross-link; never state a fact twice.
-1. ~~Perpendicularity Lemma~~ (done, batch 1)
-2. ~~Carnot's Perpendicularity Theorem~~ (done, batch 1)
-3. ~~Iran Lemma~~ (done, batch 1; figure fixed in 2.0)
-4. **Steiner's Ratio Theorem for Isogonal Cevians** (the ratio of sines form). Relate it to the Ratio Lemma and Trig Ceva; do not repeat them.
-5. **Isogonal Line Lemma** (Stanley's statement): if $AX$ and $AY$ are isogonal, then the lines from $A$ to $BX \cap CY$ and to $BY \cap CX$ are also isogonal.
-6. **Linearity of Power of a Point**: power is a linear function of the point's position along a line or in the plane, with the radical-axis and weighted-sum uses.
-7. **Humpty and Queue Points** (Stanley's statement; verify each numerically):
-   - the A-Humpty point is the foot of the perpendicular from $H$ to the $A$-median, and it lies on circle $(BHC)$;
-   - the A-Queue point is the second intersection of line $MH$ with the circumcircle, with $\angle AQH = 90^\circ$.
-8. **Desargues Involution Theorem and its dual, DDIT.**
-9. ~~Merge the pattern Same Remainder into the method Subtracting Equal Remainders~~ (**found done**, 2026-10-12: the pattern is gone, its keyword is on the method, `MERGED_IDS` redirects it, and no list, tag, or link uses the old id). The full merge checklist was:
-   - `MERGED_IDS` in `js/app.js`;
-   - `tools/link-aliases.json` and `tools/rewrite-register.json`;
-   - the lists in `built-in-lists.js`;
-   - the id lists in `js/app.js`;
-   - `importance-proposal.md`;
-   - `[[...]]` links in other write-ups;
-   - problem-db tags.
-10. **The six LIVE-concept cards** from `tools/live-missing.md`: a newly defined operation, logical deduction, organized listing, simulating a process, coins and prices, drawing without replacement. Write them to existing-card standards, each with importance (rule 12) judged from the LIVE tag counts and shown in the batch report.
 
-Planned batches: 2 = cards 4, 5, 6; 3 = cards 7, 8; 4 = the first three LIVE cards; 5 = the other three LIVE cards.
-
-**Per card:**
-- a verified example (numbers checked by computation; never a copied example, rule 7);
-- a figure following rules 5 and 18, with an `ok` check;
-- a Why-it-works proof (rule 14);
-- a route and group placement, and aliases;
-- a `connected.js` row where natural;
-- a search-eval check (stays at or above 160 of 187);
-- an importance table row in `tools/importance-proposal.md`;
-- the batch added to `NEW_CARD_BATCHES` (rule 19).
-
-**Importance:** Stanley answered the proposal with no objection to the ratings, so the table stands. Humpty/Queue and DDIT are lower; the Perpendicularity Lemma is medium; the others are low. All are Olympiad tier.
-
-### 2.4g New Geometry subsection: Olympiad Triangle Lemmas (new, Stanley 2026-10-12; done with 2.4b)
-The recent additions focus on olympiad geometry, so they get a home of their own. Add a formula topic **"Olympiad Triangle Lemmas"** to `js/data/geometry.js`.
-- **Placement:** after "Derived Triangles & Conjugates" and before "Triangle Centers & the Euler Line". Give it a one-line `blurb`: the named lemmas olympiad solutions quote about a triangle, its incircle, orthocenter, and isogonal lines.
-- **Members to move or add.** Move only cards that really are quoted lemmas; general theorems stay where they are.
-  - From batch 1: Iran Lemma, and Carnot's Perpendicularity Theorem.
-  - From 2.4b: Humpty and Queue Points, the Isogonal Line Lemma, and Steiner's Ratio Theorem for Isogonal Cevians.
-  - Existing cards: the Incenter–Excenter Lemma (now in Triangle Centers).
-  - From the 2.4c scan: any new lemma cards it proposes.
-  - The Perpendicularity Lemma is a general tool used outside triangles, so it stays in Advanced Triangle Theorems and links across.
-- **Process:** the member list is shown to Stanley in the first 2.4b batch report before anything is moved. A move keeps every id. Update the following to match:
-  - group membership in `built-in-lists.js` routes and lists;
-  - `tools/check-topics.py` and `check-lists.py`;
-  - sidebar and subject-page anchors (`#/formulas/geometry/olympiad-triangle-lemmas`);
-  - `connected.js`;
-  - the README subsection list.
-- Gates at 0, README entry.
-
-### 2.4c Scan of the five card files for errors, issues, and missing advanced lemmas (new, Stanley 2026-10-12; right after all the new cards)
-This is the scan formerly listed as 2.6, moved up to run once 2.4b and 2.4g are done, and widened. The files are `js/data/geometry.js`, `algebra.js`, `number-theory.js`, `counting.js` (counting and probability), and `patterns.js`.
-1. **Errors and issues.** Read every card's thumbnail and description in batches of about 60. Look for the 2.4d classes:
-   - a formula that is false or missing its hypothesis (replacement, a sign, a range, a degenerate case);
-   - a symbol used but not defined;
-   - a unit or scale left implicit;
-   - a fact stated on two cards or twice on one;
-   - a misspelling, or the title and description disagreeing;
-   - a keyword repeated;
-   - a wrong claim;
-   - a pattern or method breaking the anatomy.
-
-   Verify every formula by computation (random numeric tests, brute force for counting), not by eye. Also check `js/app.js` and the data indexes (id lists, aliases, lists, counts).
-2. **Missing advanced lemmas and cards.** List, subject by subject, the advanced (AIME Late and Olympiad) lemmas and standard results a strong student is expected to know that the app lacks or only mentions in passing. Examples to check:
-   - geometry: the shooting lemma, the mixtilinear incircle lemmas, the Dumpty point, the orthocenter reflection lemmas beyond what exists, the radical center, the spiral similarity center, the Simson and Steiner line companions;
-   - algebra: Schur-like and SOS lemmas, Vieta jumping, Abel and Karamata companions;
-   - number theory: lifting-the-exponent variants, the order lemmas, the Chinese remainder constructions, Hensel, quadratic reciprocity companions;
-   - combinatorics: the extremal principle, double counting lemmas, the probabilistic method, generating-function lemmas;
-   - patterns: missing archetypes.
-
-   Check each against existing cards (search the card index and aliases) so nothing is proposed twice.
-3. **Report before changing anything**, as in 2.4d:
-   - a findings list with verdicts (true, not true) and the fix for each;
-   - a separate proposal table of candidate new cards, giving name, kind, subject and subsection (geometry lemmas go to Olympiad Triangle Lemmas where they fit), proposed tier and importance on evidence (rule 12), and why it is missing.
-
-   New cards wait for Stanley's approval, the same rule as `live-missing.md`.
-4. Then fix the approved findings, add scanner gates for any class that can be checked mechanically, write the approved new cards in batches (the 2.4b checklist, registered for `Special:NewCards`), README entry, backup.
-
-**Status 2026-10-12:** the scan is done and its findings are fixed. Stanley approved all 12 candidate cards in `QUESTIONS.md` (Shooting Lemma, Dumpty Point, √bc Inversion, Van Aubel's Cevian Theorem, Archimedes' Broken Chord, Nesbitt, Injectivity/Surjectivity in FEs, Cyclotomic Polynomials, Gambler's Ruin, Strategy Stealing, Erdős–Ko–Rado, Tiling a Board). They are written in batches of three with the 2.4b checklist. **Done 2026-10-12**: all twelve are written, verified, and registered.
-
-### 2.4f Figure line audit (new, Stanley 2026-10-12: "review cards to ensure that lines aren't cut off")
-1. **Mechanical gate** in `tools/check-diagrams.py`. Flag any drawn segment whose supporting line passes within about 1.5 px of a labeled dot, while the dot lies more than about 3 px beyond the segment's end. That is a line that stops short of a point on it, as in the old Iran figure.
-2. Review every hit, since a short ray can be deliberate. Keep an allowlist of the deliberate ones with a reason.
-3. **Visual pass.** Render all card figures (about 330 `DIAGRAMS` panels and about 190 in-text `BODY` figures across `geometry-diagrams.js` and `general-diagrams.js`) to contact sheets with headless Chromium. Look for:
-   - lines cut off before the point they meet;
-   - extensions outside the shape that are not dashed;
-   - midlines and midpoints without ticks;
-   - figures with no context in the text (like the zigzag).
-4. Fix in batches. After each batch: the `ok` self-checks, `check-labels.py`, `check-diagrams.py` at 0, README entry, commit.
-
-**Done 2026-10-12.** Both gates are in (line gaps, raw TeX in figure text), all 584 panels were reviewed, and the fixes are in the README. Ticks only where color or labels do not already show the equal parts (Stanley).
-
-### 2.4e Formula-box length audit (Stanley: after the card edits and the new cards)
-Some cards read poorly because the formula box is over-packed. British Flag Theorem is the example: several forms and a 3D identity squeezed into one thumbnail. Audit every card's thumbnail:
-1. **Measure** in the browser at 1280 and 375 px (reuse `tools/ui-scan.js` and `window.MATH_SECTIONS`):
-   - the number of `\qquad` forms;
-   - the rendered height of the formula box;
-   - the widest line against the box width;
-   - whether it needs a sideways scroll.
-
-   Rank all cards by a squish score: more than 3 forms, a height above about 150 px at 1280, or a single line wider than the box.
-2. **Review the worst offenders as a list with Stanley**: the card, its current form count, and what is packed in. Then fix:
-   - keep the one or two headline forms in the thumbnail (the Formula lines setting already controls how many show on browsing cards);
-   - move secondary forms to Key forms;
-   - split into stacked `gathered` lines where all forms must stay (rule 4);
-   - shorten `\text{...}` runs.
-3. Re-measure the fixed cards. No fact is dropped (each moved form still exists in Key forms). Gates, README entry, backup.
-
-### 2.4 Whole-app UI scan: finish (after 2.4e, so the formula boxes are already fixed)
-- **Done already (first pass):**
-  - the scanner `tools/ui-scan.js` checks page-h-overflow, past-right, clipped, formula-scrolls, katex-error, and broken-img;
-  - it runs at an emulated width;
-  - all 656 card pages are clean at 1280 light;
-  - at 375, 390 pages have display formulas that scroll inside their box (by design), and the four real overflows are fixed;
-  - 201 other routes and the popups are clean at 375.
-- **To finish:**
-  - the statement scan: 4,616 statements at 375, 768, and 1280. The raw-markup check must skip `.katex-mathml`, which caused false positives.
-  - the 768 and 1920 widths;
-  - dark mode and Larger text sweeps;
-  - the sampled card pages at every setting.
-- Report findings and fixes; then go on to 2.5.
-
-### 2.5 Stage C: subject tag, then tag the problems from LIVE (after the UI scan is finished)
-**2.5a Subject tag on every problem.** *Done 2026-10-12 from tagged cards, round names, and overrides (1,365 problems); the LIVE-concept source waits for the Mac, since LIVE is blocked from the cloud session.* Stanley's request; his answer: label it "Combinatorics"; do it right before tagging.
-- Every problem page gets a subject chip, **the first chip** in the chip row under the title (today the `ptype-chip`s from `renderProblemDetail` in `js/app.js`).
-- It shows one or more of **Geometry, Combinatorics, Number Theory, Algebra**, with more than one when the problem spans categories.
-- It is derived, not hand-typed, from:
-  - the subjects of the problem's tagged cards (each card has a `subject`; counting maps to Combinatorics);
-  - LIVE's concept tags, for problems with no card tags yet;
-  - a small override list in the problem data, for the rest.
-- A problem with nothing to go on shows no chip until it is tagged (no guess).
-- Also show the chip on contest-list rows if it fits.
-- Scanner/validator check: every problem with a tag or a LIVE concept has a subject, and the chip never contradicts a tagged card.
-
-**2.5b Tagging.** Stanley's "yes" starts this stage.
-- The concept mapping is his to approve. The first report of the stage shows the mapping table and the candidate-new-card list (`tools/live-missing.md`).
-- Tagging goes ahead **only for concepts that map unambiguously to an existing card**. Ambiguous concepts wait for his answer. (The six candidate cards are written in 2.4b, so most of those concepts will then map.)
-
-Steps:
-1. Build the **concept to existing card** table: 258 LIVE concept strings, 11,229 tags (in `~/aops-cache/live/` on Stanley's Mac; re-fetch here if needed). Mark each row unambiguous, ambiguous, or no card.
-2. Tag the roughly 3,100 "Not classified yet" placeholder problems.
-   - Work in batches of about 100 to 150, ordered by contest importance: AIME and AMC 12 first, then AMC 10, then AMC 8.
-   - Tag to **existing cards only**, with a strategy in the house style (no hints), and the pattern and method where the evidence is clear; otherwise leave the problem unclassified.
-   - Existing tags never change.
-   - Reuse the `tools/fetch-live-statements.py` data, the problem-db format in `js/data/problems/problem-db.js`, and `tools/RETAG-NOTES.md`.
-3. After each batch:
-   - `validate-problem-db.js`, `scan-conventions.py`, and `check-statements.py` at 0;
-   - `audit-problem-tags.py` on the new tags (a tag must be recognisable in the strategy);
-   - the importance table re-checked for cards whose problem counts changed;
-   - the card-search eval at or above 160 of 187;
-   - the problem count per card reported;
-   - a README entry, and a backup.
-4. Per-contest lists, once enough problems are tagged.
+### 2.5b Tagging, written solutions, and geometry diagrams (paper by paper)
+LIVE is blocked from the cloud session (the proxy refuses `live.poshenloh.com`), so tagging is by hand from the statements in the repo, and LIVE's concept tags are added on top when the site is reachable. Hand tags are never removed.
+- **Per problem:** read and check the statement (text, choices, figures, rendering); solve it and confirm the answer by computation; tag only the cards the solution uses (`tools/RETAG-NOTES.md`); write the short strategy and a full solution.
+- **Solutions** (Stanley): a separate, always-open Solution section below "How this problem works", in per-year files `js/data/problems/solutions/<year>.js`, lazy-loaded like the statements. Original wording, every number verified, ending "The answer is ...".
+- **Geometry diagrams** (Stanley): every geometry solution gets a figure showing the reasoning (auxiliary lines, equal lengths, similar triangles), built from the problem's numbers with the diagram helpers and an `ok` self-check, following rule 18, and passing the figure gates.
+- **Order:** untagged papers newest first (2025 AMC 12B is solved), a word-for-word AMC 10 twin gets the same entry; then a backfill of solutions for the 1,365 already-tagged problems, newest first.
+- **After each paper:** the validators, the solution gate, `audit-problem-tags.py`, a browser check, a commit.
+- **LIVE**, when reachable: fetch the concept cache, build the concept to card table for Stanley's approval, add LIVE tags on top, and use the concepts as the subject-chip source for untagged problems.
 
 ### 2.6 Card-file re-check after tagging (light; the full scan moved up to 2.4c)
 After 2.5, re-run the 2.4c checks only on cards whose text changed during tagging, plus the mechanical gates. Report anything found, then go on to Stage 4.
@@ -426,10 +263,9 @@ Some time after the problem stages (2.5 and Stage 4):
 - **First step.** Test each experimental feature as it stands, then list what to keep, fix, or drop for Stanley before building.
 
 ### Open loose ends
-- Per-contest lists, once the new problems are tagged (2.5b step 4).
-- The 2.4d twin list awaits Stanley's word.
-
----
+- Per-contest lists, once enough problems are tagged (2.5b).
+- The search index must be rebuilt on the Mac (`tools/build-search-index.py`); the new cards are found by text search only until then.
+- LIVE access for the cloud session (the network setting; a new session may be needed).
 
 ## 3. Housekeeping after every step
 - **Gates:**
@@ -445,6 +281,9 @@ Some time after the problem stages (2.5 and Stage 4):
 - **Never** edit a source file with a slice-and-replace that was not checked afterwards. On 2026-10-11 a mis-sliced edit to `js/app.js` deleted a block. Check syntax (`node --check`, `new Function(text)`, or `jsc`) after any large edit.
 
 ## 4. Decisions already made (do not reopen)
+- Problem pages get a separate, always-open Solution section below "How this problem works", verified by computation; geometry solutions carry a figure of the reasoning (Stanley, 2026-10-12).
+- Tags are hand-made until LIVE is reachable; LIVE tags are added on top, never replacing hand tags.
+- Prose formula boxes are rewritten only after Stanley approves the list; a box that cannot be shortened stays as it is.
 - Four kinds, four spaces (Formulas, Methods, Patterns, Practice). No hints in the UI. The problem box shows Pattern, Method, Formulas side by side.
 - Contest tiers (AMC / AIME Early / AIME Late / Olympiad) go together with importance (High / Medium / Low / Lower / Lowest). Importance is judged inside the card's own subsection and shown with the tier as one split oval. No label setting; no level filter.
 - One global filter; the sidebar counts follow it.
