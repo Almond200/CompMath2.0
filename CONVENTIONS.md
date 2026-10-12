@@ -62,7 +62,7 @@ title is slugged into its address, so renaming one changes a bookmarkable URL.
 
 Exactly two field orders exist, and nothing else. Copy one of these.
 
-**Subject file** (`geometry.js`, `algebra.js`, `number-theory.js`, `counting.js`) — 448 of 448 cards:
+**Subject file** (`geometry.js`, `algebra.js`, `number-theory.js`, `counting.js`) — 506 of 506 cards:
 
 ```js
         {
@@ -77,7 +77,7 @@ Exactly two field orders exist, and nothing else. Copy one of these.
         },
 ```
 
-**`patterns.js`** — 109 of 109 cards. Same, plus `type` and `subject` immediately after `name`:
+**`patterns.js`** — 174 of 174 cards. Same, plus `type` and `subject` immediately after `name`:
 
 ```js
           type: "method",       // or "pattern"
@@ -97,8 +97,8 @@ Exactly two field orders exist, and nothing else. Copy one of these.
   intentional `<br>` in examples.
 - One card deviates: `periodic-sequences` in `patterns.js` orders its fields
   `id, type, subject, name, ...`. That card was corrected, so the corpus now has **no** exception:
-  all 557 cards use one of the four canonical orders, the extra two being the same pair with an
-  optional `latexPlain` after `latex` (93 cards carry one; see "Expanded notation" below).
+  all 680 cards use one of the four canonical orders, the extra two being the same pair with an
+  optional `latexPlain` after `latex` (79 cards carry one; see "Expanded notation" below).
   `tools/scan-conventions.py` names any card that is not in one of the two orders.
 - Every card has a `latex` and a `description`. **0** cards omit either.
 
@@ -209,7 +209,7 @@ This is exactly why the duplicate check in §5 must search names, not ids.
 
 ## 2. The write-up — mandatory, in `js/data/details/<subject>-details.js`
 
-**557 write-ups for 557 cards. One each, no orphans, no card without one.**
+**680 write-ups for 680 cards. One each, no orphans, no card without one.**
 
 Three headings, and all three are required:
 
@@ -339,7 +339,7 @@ positives and should be rejected every time they reappear:
 
 ## 3. The example — mandatory, in `js/data/examples-supplement.js`
 
-**557 example keys for 557 cards. Zero cards lack one.**
+**680 example keys for 680 cards. Zero cards lack one.**
 
 Shape is `{ q, s }`: a clean question, and the solution shown on demand.
 
@@ -375,9 +375,9 @@ geometry card without a figure is incomplete. The count first reached 200/200 on
 without one and had to be fixed, which is why `tools/scan-conventions.py` exits non-zero on any
 geometry card missing a diagram.
 
-Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 41/108,
-`algebra.js` 11/102, `counting.js` 3/67, `number-theory.js` 1/76. In-text figures are counted
-separately: 152 placed on 130 cards, in every subject.
+Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 90/174,
+`algebra.js` 13/115, `counting.js` 6/73, `number-theory.js` 2/82 (2026-10-12). In-text figures are counted
+separately: 210 placed on 182 cards, in every subject.
 
 - **Figures inside the text.** A paragraph that is nothing but `{{figure:name}}` draws
   `BODY["card-id"]["name"]` at that point in the write-up. Use one wherever a paragraph describes
