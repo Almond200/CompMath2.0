@@ -54,7 +54,7 @@ window.MATH_SECTIONS.push({
         {
           id: "inclusion-exclusion",
           name: "Principle of Inclusion-Exclusion",
-          latex: String.raw`|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |C \cap A| + |A \cap B \cap C|`,
+          latex: String.raw`\begin{gathered} |A \cup B \cup C| = |A| + |B| + |C| \\ - |A \cap B| - |B \cap C| - |C \cap A| + |A \cap B \cap C| \end{gathered}`,
           description: String.raw`The Principle of Inclusion-Exclusion counts a union of overlapping sets: add the sizes of the sets, subtract the sizes of the pairwise intersections, add back the triple intersections, and continue with alternating signs. For two sets it is $|A \cup B| = |A| + |B| - |A \cap B|$. Its complement form counts the elements in none of the sets, which is where the formulas for derangements and surjections come from.`,
           keywords: ["inclusion exclusion", "pie formula", "union of sets", "overlapping sets", "add subtract add", "venn diagram count", "none of the sets"],
           importance: "medium",
@@ -629,8 +629,8 @@ window.MATH_SECTIONS.push({
         {
           id: "total-expectation",
           name: "Law of Total Expectation",
-          latex: String.raw`E[X] = \sum_i P(A_i)\, E[X \mid A_i], \qquad E[\text{total}] = E[N] \cdot E[X] \;\; (N \text{ independent of the } X_i \text{ or a stopping time, } E[N] \lt \infty)`,
-          latexPlain: String.raw`E[X] = P(A_1)\, E[X \mid A_1] + \cdots + P(A_n)\, E[X \mid A_n], \qquad E[\text{total}] = E[N] \cdot E[X] \;\; (N \text{ independent of the } X_i \text{ or a stopping time, } E[N] \lt \infty)`,
+          latex: String.raw`E[X] = \sum_i P(A_i)\, E[X \mid A_i], \qquad \begin{gathered} E[\text{total}] = E[N] \cdot E[X] \\ (N \text{ independent of the } X_i \text{ or a stopping time, } E[N] \lt \infty) \end{gathered}`,
+          latexPlain: String.raw`E[X] = P(A_1)\, E[X \mid A_1] + \cdots + P(A_n)\, E[X \mid A_n], \qquad \begin{gathered} E[\text{total}] = E[N] \cdot E[X] \\ (N \text{ independent of the } X_i \text{ or a stopping time, } E[N] \lt \infty) \end{gathered}`,
           description: String.raw`Partition the sample space into cases $A_i$: the overall expectation is the probability-weighted average of the case expectations. For a random number $N$ of identically distributed contributions $X_i$, Wald's identity gives $E[\text{total}] = E[N] \cdot E[X]$, provided $N$ is independent of the $X_i$ or is a stopping time (the decision to stop after $k$ terms looks only at the first $k$ terms) and $E[N]$ is finite.`,
           keywords: ["conditional expectation", "tower rule", "casework expectation", "weighted average", "first step", "wald"],
           importance: "medium",
@@ -660,9 +660,9 @@ window.MATH_SECTIONS.push({
         {
           id: "order-statistics",
           name: "Order Statistics on $[0, 1]$",
-          latex: String.raw`E[\max] = \frac{n}{n+1}, \qquad E[\min] = \frac{1}{n+1}, \qquad E[\text{gap}] = \frac{1}{n+1}, \qquad P(\max \le x) = x^n, \qquad E[\max - \min] = \frac{n - 1}{n + 1}, \qquad \text{discrete, } k \text{ draws from } \{1, \dots, n\} \text{ without replacement: } E[\max] = \frac{k(n+1)}{k+1}, \qquad \text{with replacement: } E[\max] = n - \sum_{j=1}^{n-1}\left(\frac{j}{n}\right)^{k}`,
-          latexPlain: String.raw`E[\max] = \frac{n}{n+1}, \qquad E[\min] = \frac{1}{n+1}, \qquad E[\text{gap}] = \frac{1}{n+1}, \qquad P(\max \le x) = x^n, \qquad E[\max - \min] = \frac{n - 1}{n + 1}, \qquad \text{discrete, } k \text{ draws from } \{1, \dots, n\} \text{ without replacement: } E[\max] = \frac{k(n+1)}{k+1}, \qquad \text{with replacement: } E[\max] = n - \left[\left(\frac{1}{n}\right)^{k} + \left(\frac{2}{n}\right)^{k} + \cdots + \left(\frac{n-1}{n}\right)^{k}\right]`,
-          description: String.raw`Choose $n$ numbers independently and uniformly from $[0,1]$: sorted, they sit on average at $\frac{1}{n+1}, \frac{2}{n+1}, \dots, \frac{n}{n+1}$ — the $n+1$ gaps are exchangeable, so each expects $\frac{1}{n+1}$. Also $P(\max \le x) = x^n$ and $E[\max - \min] = \frac{n-1}{n+1}$.`,
+          latex: String.raw`E[\max] = \frac{n}{n+1}, \qquad E[\min] = \frac{1}{n+1}, \qquad E[\text{gap}] = \frac{1}{n+1}, \qquad P(\max \le x) = x^n, \qquad E[\max - \min] = \frac{n - 1}{n + 1}`,
+          latexPlain: String.raw`E[\max] = \frac{n}{n+1}, \qquad E[\min] = \frac{1}{n+1}, \qquad E[\text{gap}] = \frac{1}{n+1}, \qquad P(\max \le x) = x^n, \qquad E[\max - \min] = \frac{n - 1}{n + 1}`,
+          description: String.raw`Choose $n$ numbers independently and uniformly from $[0, 1]$ and sort them. The $n + 1$ gaps they cut out of the interval are exchangeable, so they share its length equally, and the $k$th smallest point sits on average at $\frac{k}{n+1}$. Whole numbers drawn from $\{1, \ldots, n\}$ behave almost the same way, with a correction that depends on whether the draws are with or without replacement.`,
           keywords: ["expected maximum", "expected minimum", "uniform random", "sorted", "gaps", "spacings", "expected range"],
           importance: "low",
           tier: "AIME Late",
@@ -677,7 +677,7 @@ window.MATH_SECTIONS.push({
         {
           id: "pigeonhole",
           name: "Pigeonhole Principle",
-          latex: String.raw`n \text{ objects in } k \text{ boxes} \implies \text{some box holds} \ge \left\lceil \tfrac{n}{k} \right\rceil \text{ and some holds} \le \left\lfloor \tfrac{n}{k} \right\rfloor, \qquad n > k(r-1) \implies \text{some box holds} \ge r`,
+          latex: String.raw`\begin{gathered} n \text{ objects in } k \text{ boxes} \implies \text{some box holds} \ge \left\lceil \tfrac{n}{k} \right\rceil \\ \text{and some holds} \le \left\lfloor \tfrac{n}{k} \right\rfloor \end{gathered}, \qquad n > k(r-1) \implies \text{some box holds} \ge r`,
           description: String.raw`The pigeonhole principle says that if $n$ objects are put into $k$ boxes with $n \gt k$, some box holds at least two; more precisely, some box holds at least $\lceil \frac nk \rceil$ and some holds at most $\lfloor \frac nk \rfloor$. It proves that something must exist without finding it. The whole difficulty is choosing the boxes: remainders modulo $m$, pairs that sum to a target, regions of a shape, or the averaging form, that some value is at least the average.`,
           keywords: ["pigeonhole", "boxes", "guarantee", "at least two", "ceiling", "at least one shared", "residues", "averaging argument", "dirichlet"],
           importance: "high",
@@ -723,7 +723,7 @@ window.MATH_SECTIONS.push({
         {
           id: "tree-basics",
           name: "Basic Facts about Trees",
-          latex: String.raw`\text{tree on } n \text{ vertices} \iff \text{connected with } n - 1 \text{ edges} \iff \text{acyclic with } n - 1 \text{ edges}`,
+          latex: String.raw`\begin{gathered} \text{tree on } n \text{ vertices} \\ \iff \text{connected with } n - 1 \text{ edges} \\ \iff \text{acyclic with } n - 1 \text{ edges} \end{gathered}`,
           description: String.raw`A tree is a connected graph with no cycles. Every tree on $n$ vertices has exactly $n - 1$ edges, any two of its vertices are joined by exactly one path, and every tree with at least two vertices has at least two leaves, vertices of degree $1$. Any two of the conditions connected, acyclic, and $n - 1$ edges force the third.`,
           keywords: ["tree", "graph theory", "n minus 1 edges", "leaves of a tree", "unique path", "connected acyclic graph", "spanning tree", "forest", "vertices and edges"],
           importance: "medium",

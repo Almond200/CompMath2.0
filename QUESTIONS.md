@@ -49,7 +49,7 @@ Each was checked against every card's name, keywords, and description, and none 
 
 Not proposed (already covered): the radical center (on Radical Axis), tangents meeting on the symmedian (on Harmonic Quadrilaterals), Vieta jumping, Schur, SOS, LTE variants, Hensel, orders, primitive roots, quadratic reciprocity, the extremal principle, double counting, the probabilistic method, and generating functions.
 
-## Formula-box audit (2.4e; waiting for your yes per row)
+## Formula-box audit (2.4e; approved and applied 2026-10-12)
 Every card's formula box was measured in the browser at 1280 px and 375 px (680 boxes). A one-row box is about 108 px tall at 1280, and each extra row adds about 50 px. No box scrolls sideways at 1280. The rows below are the 19 boxes with five or more rows. "In Key forms" means the rows to be moved already appear in the card's Key forms, so moving them loses nothing; "add" means they would be added there first.
 
 Already fixed (a display bug, not a style choice): four boxes ended a row with a dangling colon, because the app breaks rows at `\qquad`, and the ellipse even had "a > b :" as a row of its own. Ellipse, Hyperbola, Eccentricity, and Conic Classification now read cleanly.

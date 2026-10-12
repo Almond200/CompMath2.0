@@ -305,7 +305,7 @@ window.MATH_SECTIONS.push({
         {
           id: "lagrange-roots-mod-p",
           name: "Lagrange's Theorem on Polynomial Roots mod p",
-          latex: String.raw`\deg f = d,\ \ f \not\equiv 0 \pmod p \;\Longrightarrow\; f(x) \equiv 0 \pmod p \text{ has at most } d \text{ solutions}`,
+          latex: String.raw`\begin{gathered} \deg f = d,\ \ f \not\equiv 0 \pmod p \\ \Longrightarrow\; f(x) \equiv 0 \pmod p \text{ has at most } d \text{ solutions} \end{gathered}`,
           description: String.raw`Lagrange's Theorem says that a polynomial of degree $d$ with integer coefficients, not all divisible by the prime $p$, has at most $d$ roots modulo $p$. It is the modular version of the fact that a polynomial cannot have more roots than its degree, and it holds because divisibility by a prime behaves like ordinary algebra; for a composite modulus it fails.`,
           keywords: ["lagrange's theorem polynomial", "roots modulo a prime", "at most d roots mod p", "polynomial congruence", "number of solutions mod p", "wilson's theorem proof", "primitive roots"],
           importance: "low",
@@ -365,7 +365,7 @@ window.MATH_SECTIONS.push({
         {
           id: "crt-solution-counting",
           name: "Counting Solutions via CRT",
-          latex: String.raw`\#\{x \bmod mn : f(x) \equiv 0\} = \#\{x \bmod m\} \cdot \#\{x \bmod n\} \quad (\gcd(m,n)=1)`,
+          latex: String.raw`\begin{gathered} \#\{x \bmod mn : f(x) \equiv 0\} \\ = \#\{x \bmod m\} \cdot \#\{x \bmod n\} \quad (\gcd(m,n)=1) \end{gathered}`,
           description: String.raw`For coprime $m$ and $n$, the number of solutions modulo $mn$ of a polynomial congruence $f(x) \equiv 0$ is the number of solutions modulo $m$ times the number modulo $n$. The Chinese Remainder Theorem pairs each solution modulo $mn$ with a solution modulo $m$ and one modulo $n$.`,
           keywords: ["count solutions", "congruence", "multiply", "automorphic numbers"],
           importance: "medium",

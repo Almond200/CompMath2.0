@@ -2531,7 +2531,7 @@ window.MATH_SECTIONS.push({
           recognize: [String.raw`a new symbol such as $a \star b$ or $a \diamond b$ defined by a formula in the statement`, String.raw`a long chain of the operation to evaluate, such as $((2 \star 3) \star 4) \star \cdots$`, String.raw`an equation in the new operation to solve, or a question whether it is commutative or associative`],
           suggests: ["sfft", "telescoping", "functional-substitution"],
           tryFirst: ["sfft", "telescoping", "functional-substitution"],
-          latex: String.raw`a \star b = \text{(a rule given in the problem)} \;\Rightarrow\; \text{rewrite the rule before evaluating}`,
+          latex: String.raw`\begin{gathered} a \star b = \text{(a rule given in the problem)} \\ \Rightarrow\; \text{rewrite the rule before evaluating} \end{gathered}`,
           description: String.raw`This is the problem that invents an operation, written with a new symbol and defined by a formula, and asks for a value, a solution, or a property of it. The rule is usually a familiar operation in disguise, a product of shifted numbers or a sum of reciprocals, and rewriting it in that form shows whether it is associative and what a long chain of it collapses to.`,
           keywords: ["defined operation", "custom operation", "new symbol", "star operation", "binary operation rule", "evaluate the chain", "associative operation", "operation as a function", "pattern"],
           importance: "low",

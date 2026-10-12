@@ -266,7 +266,7 @@ Two problems here, one AIME and one AMC 10, one solved by it alone. The AMC vers
 "newtons-sums": String.raw`
 ## Key forms
 - $p_k = e_1p_{k-1} - e_2p_{k-2} + \cdots + (-1)^{k-1}k\,e_k$ — each power sum comes from the earlier ones and the coefficients, so the whole ladder is computable from the polynomial alone
-- $p_1 = e_1$, $p_2 = e_1p_1 - 2e_2$, $p_3 = e_1p_2 - e_2p_1 + 3e_3$ — the first rungs, which cover almost every contest use
+- $p_1 = e_1$, $p_2 = e_1p_1 - 2e_2$, $p_3 = e_1p_2 - e_2p_1 + 3e_3$, $p_4 = e_1p_3 - e_2p_2 + e_3p_1 - 4e_4$ — the first rungs, which cover almost every contest use
 - past the degree $n$, the $k\,e_k$ term disappears: the relation becomes a pure recursion in the previous $n$ power sums, and forgetting to drop the term is the common error
 - run backwards, power sums give the $e_k$ — and so the polynomial whose roots they are
 

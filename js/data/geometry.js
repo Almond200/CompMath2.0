@@ -126,7 +126,7 @@ window.MATH_SECTIONS.push({
         {
           id: "integer-triangles-perimeter",
           name: "Counting Integer-Sided Triangles by Perimeter",
-          latex: String.raw`\#\{a\le b\le c,\ a+b+c=n,\ a+b>c\} = \begin{cases}\operatorname{round}\!\left(\dfrac{n^2}{48}\right) & n\text{ even}\\[4pt] \operatorname{round}\!\left(\dfrac{(n+3)^2}{48}\right) & n\text{ odd}\end{cases}`,
+          latex: String.raw`\begin{gathered} \#\{a\le b\le c,\ a+b+c=n,\ a+b>c\} \\ = \begin{cases}\operatorname{round}\!\left(\dfrac{n^2}{48}\right) & n\text{ even}\\[4pt] \operatorname{round}\!\left(\dfrac{(n+3)^2}{48}\right) & n\text{ odd}\end{cases} \end{gathered}`,
           description: String.raw`The number of noncongruent triangles with positive integer sides and perimeter $n$ (Alcuin's sequence), rounded to the nearest integer. It comes from counting triples $a\le b\le c$ with $a+b+c=n$ subject to the triangle inequality $a+b>c$ (equivalently $c\lt n/2$): fix the longest side $c$, count the valid $(a,b)$, and sum. Requiring all sides distinct or a particular shape adjusts the count the same way.`,
           keywords: ["integer sided triangles", "count triangles", "perimeter", "triangle inequality counting", "alcuin sequence", "how many triangles", "noncongruent triangles"],
           importance: "low",
@@ -489,7 +489,7 @@ window.MATH_SECTIONS.push({
         {
           id: "conway-circle",
           name: "The Conway Circle",
-          latex: String.raw`\text{extend each side by the opposite side at both ends} \implies 6 \text{ concyclic points}, \quad \rho = \sqrt{r^2 + s^2}`,
+          latex: String.raw`\begin{gathered} \text{extend each side by the opposite side at both ends} \\ \implies 6 \text{ concyclic points} \end{gathered}, \quad \rho = \sqrt{r^2 + s^2}`,
           description: String.raw`At each vertex, extend both sides through it by the length of the side opposite that vertex. The six endpoints produced are concyclic, the center is the incenter, and the radius is $\sqrt{r^2+s^2}$ with $s$ the semiperimeter. The construction looks arbitrary and the conclusion does not: each extension is arranged so that the tangent lengths from a vertex come out equal, which is what puts all six points the same distance from $I$.`,
           keywords: ["conway circle", "extend the sides by the opposite side", "six concyclic points", "centered at the incenter", "radius sqrt(r^2 + s^2)", "semiperimeter and inradius"],
           importance: "low",
@@ -911,7 +911,7 @@ window.MATH_SECTIONS.push({
         {
           id: "carnots-perpendicularity-theorem",
           name: "Carnot's Perpendicularity Theorem",
-          latex: String.raw`\text{perpendiculars at } D, E, F \text{ concur} \iff BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0`,
+          latex: String.raw`\begin{gathered} \text{perpendiculars at } D, E, F \text{ concur} \\ \iff BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0 \end{gathered}`,
           description: String.raw`Take one point on each side line of a triangle $ABC$: $D$ on $BC$, $E$ on $CA$, $F$ on $AB$, anywhere on the lines, inside the sides or beyond them. Draw the perpendicular to each side line at its point. The three perpendiculars pass through a single point if and only if $BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0$. The sum goes once around the triangle, and each term is the difference of the squares of the two pieces that a point cuts its side into. It turns "three lines meet" into one equation in lengths, which is why the perpendicular bisectors, the altitudes, and the perpendiculars at the incircle's touch points are all seen to concur at once. It is a different theorem from the one about distances from the circumcenter that shares the name.`,
           keywords: ["carnot perpendicularity", "concurrent perpendiculars", "perpendiculars to the sides concur", "alternating sum of squares", "BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2", "perpendiculars from points on the sides", "carnot concurrency criterion", "perpendicular concurrency criterion"],
           importance: "low",
@@ -977,7 +977,7 @@ window.MATH_SECTIONS.push({
         {
           id: "excentral-triangle",
           name: "Excentral Triangle",
-          latex: String.raw`I = \text{orthocenter of } I_AI_BI_C, \qquad \triangle ABC = \text{orthic triangle of } I_AI_BI_C, \qquad \text{sides } 4R\cos\tfrac A2, \qquad R_{\text{ex}} = 2R, \qquad [\text{excentral}] = \frac{2R}{r}[ABC]`,
+          latex: String.raw`I = \text{orthocenter of } I_AI_BI_C, \qquad \text{sides } 4R\cos\tfrac A2, \qquad R_{\text{ex}} = 2R`,
           description: String.raw`The excentral triangle has the three excenters as vertices. The incenter $I$ of $ABC$ is its orthocenter, and $ABC$ is exactly its [[orthic-triangle|orthic triangle]] (the altitude feet of $I_AI_BI_C$ are $A, B, C$). Its angles are $\frac{\pi}{2}-\frac A2$, its sides are $4R\cos\frac A2, 4R\cos\frac B2, 4R\cos\frac C2$, its circumradius is $2R$, and its area is $\frac{2R}{r}[ABC]$. Best of all, the [[nine-point-circle|nine-point circle]] of the excentral triangle is the circumcircle of $ABC$ — so $A, B, C$ and the arc midpoints all lie on it. Recognizing this collapses a tangle of incenter/excenter conditions into a single orthocentric configuration.`,
           keywords: ["excentral triangle", "three excenters", "incenter is orthocenter", "ABC is orthic triangle", "circumradius 2R", "excenter configuration", "arc midpoints", "excentral sides 4R cos", "excentral area 2R/r"],
           importance: "low",
@@ -997,7 +997,7 @@ window.MATH_SECTIONS.push({
         {
           id: "isotomic-conjugate",
           name: "Isotomic Conjugate",
-          latex: String.raw`\text{reflect each cevian foot over the side's midpoint} \implies \text{new cevians concur at } P^*, \qquad (x : y : z) \mapsto \left(\tfrac1x : \tfrac1y : \tfrac1z\right)`,
+          latex: String.raw`\begin{gathered} \text{reflect each cevian foot over the side's midpoint} \\ \implies \text{new cevians concur at } P^* \end{gathered}, \qquad (x : y : z) \mapsto \left(\tfrac1x : \tfrac1y : \tfrac1z\right)`,
           description: String.raw`The isotomic conjugate reflects each cevian's foot on a side over that side's midpoint: the three new cevians concur at $P^*$. The centroid is its own isotomic conjugate, and the Gergonne and [[gergonne-nagel-points|Nagel points]] form an isotomic pair. It pairs with isogonal conjugation to generate the standard identities among triangle centers, and in [[barycentric-coordinates|barycentric coordinates]] it is $(x : y : z) \mapsto (1/x : 1/y : 1/z)$.`,
           keywords: ["isotomic conjugate", "reflect foot over midpoint", "centroid self conjugate", "gergonne nagel pair", "barycentric reciprocal", "triangle center"],
           importance: "lower",
@@ -1043,7 +1043,7 @@ window.MATH_SECTIONS.push({
         {
           id: "nine-point-circle",
           name: "The Nine-Point Circle",
-          latex: String.raw`R_9 = \frac R2, \qquad N = \text{midpoint of } OH, \qquad \text{nine points: three midpoints, three feet, three midpoints of } HA, HB, HC`,
+          latex: String.raw`R_9 = \frac R2, \qquad N = \text{midpoint of } OH, \qquad \begin{gathered} \text{nine points: three midpoints, three feet,} \\ \text{three midpoints of } HA, HB, HC \end{gathered}`,
           description: String.raw`Passes through the 3 side midpoints, 3 feet of the altitudes, and 3 midpoints from the orthocenter to each vertex. Its center is the midpoint of segment $OH$ on the [[euler-line-ratio|Euler line]].`,
           keywords: ["nine point", "midpoints", "altitude feet", "half circumradius", "euler line", "nine-point center = midpoint of OH", "radius R/2", "passes through midpoints of AH BH CH"],
           importance: "high",
@@ -1073,7 +1073,7 @@ window.MATH_SECTIONS.push({
         {
           id: "steiner-line",
           name: "The Steiner Line",
-          latex: String.raw`P \in \odot(ABC) \implies \text{reflections of } P \text{ in the sides are collinear, through } H`,
+          latex: String.raw`\begin{gathered} P \in \odot(ABC) \implies \text{reflections of } P \text{ in the sides} \\ \text{are collinear, through } H \end{gathered}`,
           description: String.raw`Reflect a point $P$ of the circumcircle in each of the three sidelines and the three images land on one line, the Steiner line of $P$, which passes through the orthocenter. It is the [[simson-line|Simson line]] of the same point blown up by a factor of $2$ from $P$, since a reflection is twice the foot of the perpendicular, so the two results are one result at two scales.`,
           keywords: ["steiner line", "reflections of a point on the circumcircle", "collinear reflections", "passes through the orthocenter", "twice the simson line", "point on the circumcircle"],
           importance: "lower",
@@ -1399,7 +1399,7 @@ window.MATH_SECTIONS.push({
         {
           id: "reims-theorem",
           name: "Reim's Theorem",
-          latex: String.raw`A, P, C \text{ and } B, Q, D \text{ collinear}: \quad ABPQ \text{ cyclic} \implies \bigl(CDPQ \text{ cyclic} \iff AB \parallel CD\bigr)`,
+          latex: String.raw`\begin{gathered} A, P, C \text{ and } B, Q, D \text{ collinear},\ \ ABPQ \text{ cyclic} \\ \implies \bigl(CDPQ \text{ cyclic} \iff AB \parallel CD\bigr) \end{gathered}`,
           description: String.raw`Two circles meet at $P$ and $Q$. A line through $P$ meets them again at $A$ (first circle) and $C$ (second), and a line through $Q$ meets them again at $B$ and $D$. Then $AB \parallel CD$. Conversely, if $A, B, P, Q$ are concyclic and $CD \parallel AB$, then $C, D, P, Q$ are concyclic. It turns "these lines are parallel" into "these points are concyclic" and back in an angle chase, and works best with [[directed-angles|directed angles]].`,
           keywords: ["reim theorem", "reims theorem", "two circles parallel chords", "concyclic from parallel", "antiparallel", "angle chasing lemma"],
           importance: "lower",
@@ -1561,7 +1561,7 @@ window.MATH_SECTIONS.push({
         {
           id: "japanese-theorem",
           name: "The Japanese Theorem",
-          latex: String.raw`ABCD \text{ cyclic} \implies \text{incenters of } ABC, BCD, CDA, DAB \text{ form a rectangle}`,
+          latex: String.raw`\begin{gathered} ABCD \text{ cyclic} \implies \text{incenters of } ABC, BCD, CDA, DAB \\ \text{form a rectangle} \end{gathered}`,
           description: String.raw`Cut a cyclic quadrilateral by a diagonal, take the incenters of the two triangles, then do it again with the other diagonal: the four incenters are the vertices of a rectangle. Nothing about the quadrilateral beyond being cyclic is needed — the sides may be wildly unequal and the rectangle still appears, which is what makes it memorable. The sides of that rectangle are parallel to the angle bisectors of the two diagonals.`,
           keywords: ["japanese theorem", "incenters form a rectangle", "cyclic quadrilateral incenters", "four triangles from the diagonals", "rectangle of incenters"],
           importance: "lowest",
@@ -1718,7 +1718,7 @@ window.MATH_SECTIONS.push({
         {
           id: "picks-hexagonal-grid",
           name: "Hexagonal Grids and Pick's Theorem",
-          latex: String.raw`\text{centers: } A = 2I + B - 2 \;(\text{unit: center-lattice triangle}) \quad\text{honeycomb: no law}`,
+          latex: String.raw`\text{centers: } A = 2I + B - 2 \;(\text{unit: center-lattice triangle}), \qquad \text{honeycomb: no law}`,
           description: String.raw`Two different point sets get called hexagonal, and only one of them obeys a Pick law. The centers of the cells of a hexagonal tiling form a triangular lattice, so the [[picks-theorem-general|triangular-grid form]] applies to them, with the area counted in unit triangles of that lattice. A cell of side $s$ has area $\frac{3\sqrt3}{2}s^2$, which is two unit triangles of $\frac{3\sqrt3}{4}s^2$ each, so an area of $k$ cells is $2k$ unit triangles, the unit in which $2I + B - 2$ counts for a polygon with its corners at cell centers. The corners of the tiling — the honeycomb — are not a lattice at all, and no formula in $I$ and $B$ alone can give the area there.`,
           keywords: ["hexagonal grid", "honeycomb", "hex cells", "hexagonal tiling area", "why Pick fails"],
           importance: "lowest",
@@ -1768,7 +1768,7 @@ window.MATH_SECTIONS.push({
         {
           id: "polar-coordinates",
           name: "Polar Coordinates",
-          latex: String.raw`x = r\cos\theta, \quad y = r\sin\theta \qquad r^2 = x^2 + y^2, \quad \tan\theta = \frac{y}{x} \qquad \text{polar cell area} \approx r\,\Delta r\,\Delta\theta`,
+          latex: String.raw`x = r\cos\theta, \quad y = r\sin\theta \qquad r^2 = x^2 + y^2, \quad \tan\theta = \frac{y}{x}`,
           description: String.raw`Polar coordinates locate a point by its distance $r$ from the origin and its angle $\theta$ from the positive $x$-axis, and they convert to rectangular coordinates by $x = r\cos\theta$ and $y = r\sin\theta$, with $r^2 = x^2 + y^2$. They make circles about or through the origin, rotations, and anything built from $\sqrt{x^2 + y^2}$ simple: $r = 2\cos\theta$ is the circle $(x - 1)^2 + y^2 = 1$. Areas are not scaled evenly, since the small cell between radii $r$ and $r + \Delta r$ and angles $\theta$ and $\theta + \Delta\theta$ has area about $r\,\Delta r\,\Delta\theta$, larger far from the origin.`,
           keywords: ["polar coordinates", "r and theta", "convert polar to rectangular", "x = r cos theta", "polar equation of a circle", "polar graph", "rose curve", "area in polar coordinates", "jacobian r dr dtheta", "distance and angle from the origin"],
           importance: "low",
@@ -1778,7 +1778,7 @@ window.MATH_SECTIONS.push({
         {
           id: "british-flag-theorem",
           name: "British Flag Theorem",
-          latex: String.raw`PA^2 + PC^2 = PB^2 + PD^2, \qquad \text{box } ABCDEFGH:\;\; PA^2 + PG^2 = PB^2 + PH^2 = PC^2 + PE^2 = PD^2 + PF^2`,
+          latex: String.raw`PA^2 + PC^2 = PB^2 + PD^2, \qquad \begin{gathered} \text{box } ABCDEFGH:\;\; PA^2 + PG^2 = PB^2 + PH^2 \\ = PC^2 + PE^2 = PD^2 + PF^2 \end{gathered}`,
           description: String.raw`For any point $P$ and rectangle $ABCD$: the sums of squared distances to opposite corners are equal, and it holds even if $P$ is outside the rectangle or off its plane. A rectangular box carries the stronger statement, since the sums to all four pairs of diagonally opposite vertices agree; the same coordinate argument gives $2PA^2 + PG^2 = PB^2 + PD^2 + PE^2$, the form contest problems actually use. Here the box is $ABCD$ below and $EFGH$ above, with $E, F, G, H$ over $A, B, C, D$, so $B$, $D$, $E$ are the three neighbors of $A$ and $G$ is the vertex opposite it.`,
           keywords: ["rectangle", "distances to corners", "squares", "any point", "british flag in 3d", "rectangular box", "diagonally opposite vertices", "sum of squared distances"],
           importance: "medium",
@@ -1834,7 +1834,7 @@ window.MATH_SECTIONS.push({
         {
           id: "hyperbola-properties",
           name: "Hyperbola Properties",
-          latex: String.raw`\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1, \qquad \lvert PF_1 - PF_2 \rvert = 2a, \qquad c^2 = a^2 + b^2, \qquad y = \pm\frac{b}{a}x, \qquad xy = k \text{ (rectangular)}`,
+          latex: String.raw`\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1, \qquad \lvert PF_1 - PF_2 \rvert = 2a, \qquad c^2 = a^2 + b^2, \qquad y = \pm\frac{b}{a}x`,
           description: String.raw`Same construction with a difference of focal distances instead of a sum, which is why $c$ now exceeds $a$ and the sign in the $c$-relation flips. The asymptotes are the lines the branches approach: drop the $1$ from the equation and it factors into exactly those two lines, so their slopes $\pm b/a$ control every direction the curve can eventually take. Rotating the rectangular case $a = b$ by $45^\circ$ turns it into $xy = k$, the reciprocal graph.`,
           keywords: ["hyperbola", "difference of distances", "asymptotes of a hyperbola", "slope b over a", "c squared equals a squared plus b squared", "rectangular hyperbola", "xy = k", "branches", "conjugate axis", "latus rectum"],
           importance: "high",
@@ -1854,7 +1854,7 @@ window.MATH_SECTIONS.push({
         {
           id: "eccentricity",
           name: "Eccentricity & the Focus-Directrix Definition",
-          latex: String.raw`e = \frac{c}{a} = \frac{PF}{\operatorname{dist}(P, \ell)}, \qquad e = 0 \text{ circle}, \quad 0 \lt  e \lt  1 \text{ ellipse}, \quad e = 1 \text{ parabola}, \quad e > 1 \text{ hyperbola}`,
+          latex: String.raw`e = \frac{c}{a} = \frac{PF}{\operatorname{dist}(P, \ell)}, \qquad e = 0 \text{ circle},\ \ 0 \lt e \lt 1 \text{ ellipse},\ \ e = 1 \text{ parabola},\ \ e \gt 1 \text{ hyperbola}`,
           description: String.raw`One number that names the shape and unifies all three curves: fix a focus $F$ and a directrix $\ell$, and the locus with $PF = e \cdot \operatorname{dist}(P, \ell)$ is an ellipse, a parabola, or a hyperbola according as $e$ is below, equal to, or above $1$. Because $e$ is a ratio of two lengths, it is unchanged by scaling, so two conics of the same type are similar exactly when their eccentricities agree, and every parabola is similar to every other.`,
           keywords: ["eccentricity", "e equals c over a", "focus directrix definition", "how round is the conic", "similar conics", "eccentricity classifies the conic", "all parabolas are similar", "directrix ratio"],
           importance: "medium",
@@ -2380,7 +2380,7 @@ window.MATH_SECTIONS.push({
         {
           id: "pappus-hexagon",
           name: "Pappus's Hexagon Theorem",
-          latex: String.raw`A, B, C \in \ell,\ D, E, F \in m \implies AE \cap BD,\ AF \cap CD,\ BF \cap CE \text{ collinear}`,
+          latex: String.raw`\begin{gathered} A, B, C \in \ell,\ D, E, F \in m \\ \implies AE \cap BD,\ AF \cap CD,\ BF \cap CE \text{ collinear} \end{gathered}`,
           description: String.raw`Put three points on one line and three on another, join them crosswise, and the three crossing points line up. It is [[pascals-theorem|Pascal's Theorem]] with the conic degenerated into a pair of lines, which is the cleanest way to remember both: six points on a conic give a Pascal line, and a pair of lines is a conic. Purely projective, so it survives any projection and needs no measurement at all — distinct from [[pappus-centroid|Pappus's Centroid Theorems]], which are about solids of revolution.`,
           keywords: ["pappus hexagon theorem", "pappus line", "three points on each of two lines", "crosswise intersections collinear", "degenerate pascal", "projective collinearity"],
           importance: "lowest",
@@ -2400,7 +2400,7 @@ window.MATH_SECTIONS.push({
         {
           id: "desargues-involution",
           name: "Desargues Involution Theorem and Its Dual",
-          latex: String.raw`\text{conics through } A, B, C, D \text{ cut } \ell \text{ in pairs of one involution: } (AB, CD),\ (AC, BD),\ (AD, BC), \qquad \alpha\,tt' + \beta\,(t + t') + \gamma = 0`,
+          latex: String.raw`\begin{gathered} \text{conics through } A, B, C, D \text{ cut } \ell \text{ in pairs of one involution:} \\ (AB, CD),\ (AC, BD),\ (AD, BC) \end{gathered}, \qquad \alpha\,tt' + \beta\,(t + t') + \gamma = 0`,
           description: String.raw`An involution on a line $\ell$ is a pairing of its points that swaps the two members of each pair; in a coordinate $t$ along $\ell$, a pair $t, t'$ satisfies one fixed bilinear relation with coefficients $\alpha$, $\beta$, $\gamma$, and two pairs determine it. The Desargues Involution Theorem says that for four points $A$, $B$, $C$, $D$ and a line $\ell$ through none of them, every conic through the four points meets $\ell$ in a pair of one fixed involution. The three line pairs through the points are conics too, so the points where $\ell$ meets $AB$ and $CD$, $AC$ and $BD$, $AD$ and $BC$ are pairs of it. The dual, DDIT, does the same for the lines through a point $P$: for a conic tangent to four lines, the two tangents from $P$ and the lines from $P$ to each pair of opposite vertices are pairs of one involution. A circle meeting $\ell$ supplies a pair, so the theorem turns circle problems into a computation on one line.`,
           keywords: ["desargues involution theorem", "dual desargues involution", "DDIT", "DIT", "involution on a line", "pencil of conics", "conics through four points", "generalized butterfly"],
           importance: "lower",
