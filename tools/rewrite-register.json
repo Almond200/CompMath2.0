@@ -1747,7 +1747,10 @@
     "defined-operation": "pattern",
     "coins-and-prices": "pattern",
     "truth-tellers-logic": "pattern",
-    "drawing-without-replacement": "pattern"
+    "drawing-without-replacement": "pattern",
+    "shooting-lemma": "formula",
+    "dumpty-point": "formula",
+    "sqrt-bc-inversion": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8299,6 +8302,24 @@
       [
         "(new card)",
         "written directly in the pattern template"
+      ]
+    ],
+    "shooting-lemma": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "dumpty-point": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "sqrt-bc-inversion": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }

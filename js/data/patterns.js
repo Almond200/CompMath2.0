@@ -16,7 +16,7 @@ window.MATH_SECTIONS.push({
         { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "phantom-point"] },
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
-        { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
+        { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
         { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation"] },
         { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "fit-copies"] }
       ],
@@ -257,6 +257,21 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\begin{gathered} OP \cdot OP^* = r^2 \\ \text{circle through } O \leftrightarrow \text{line} \end{gathered}`,
           description: String.raw`Inversion about a circle with center $O$ and radius $r$ sends each point $P$ to the point $P^*$ on ray $OP$ with $OP \cdot OP^* = r^2$. It swaps the inside and outside of the circle, sends circles through $O$ to lines, and preserves angles, so it can turn a crowded picture of circles into lines and circles that are easy to handle.`,
           keywords: ["inversion properties", "inverse point", "op op* = r^2", "line to circle", "conformal", "inversion distance formula", "circle preserving", "inversive geometry", "inversion"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "sqrt-bc-inversion",
+          name: String.raw`$\sqrt{bc}$ Inversion`,
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A triangle problem joins the circumcircle to the side $BC$, or pairs a point on the circumcircle with a point on $BC$, or involves both the incenter and the $A$-excenter, or both the median and the symmedian from $A$.`,
+          move: String.raw`Apply the map that inverts at $A$ with radius $\sqrt{bc}$ and then reflects in the bisector of angle $A$: it swaps $B$ and $C$, swaps the circumcircle with line $BC$, and keeps the triangle, so the problem can be restated about the partner objects and solved there.`,
+          uses: ["inversion-facts", "isogonal-conjugate", "incenter-excenter-lemma", "symmedian-lemoine"],
+          latex: String.raw`\begin{gathered} AP \cdot AP' = bc,\ \ \angle BAP = \angle P'AC \\ B \leftrightarrow C,\quad (ABC) \leftrightarrow BC,\quad I \leftrightarrow I_A \end{gathered}`,
+          description: String.raw`In triangle $ABC$ with $b = CA$ and $c = AB$, the $\sqrt{bc}$ inversion sends a point $P$ to the point $P'$ on the line through $A$ isogonal to $AP$, at the distance that makes the product of the distances from $A$ equal to $bc$. It is an ordinary [[inversion-properties|circle inversion]] composed with a reflection, chosen so that the triangle maps to itself. Because it trades the circumcircle for the line $BC$ and the incenter $I$ for the excenter $I_A$, a statement about the circle becomes a statement about a line, often much easier to prove.`,
+          keywords: ["sqrt bc inversion", "root bc inversion", "inversion at A with radius square root of bc", "inversion composed with reflection in the bisector", "circumcircle to line BC", "swaps B and C", "incenter to excenter", "median and symmedian swap"],
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]

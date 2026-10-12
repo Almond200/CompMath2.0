@@ -879,6 +879,26 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "dumpty-point",
+          name: "The Dumpty Point",
+          latex: String.raw`\begin{gathered} D = \text{midpoint of } AK,\ \ D \in (BOC) \\ \triangle DBA \sim \triangle DAC,\ \ DA^2 = DB \cdot DC \end{gathered}`,
+          description: String.raw`The companion of the [[humpty-queue-points|Humpty point]], living on the symmedian instead of the median. The [[symmedian-lemoine|symmedian]] from $A$ of triangle $ABC$ meets the circumcircle again at $K$, and the $A$-Dumpty point $D$ is the midpoint of the chord $AK$; $O$ is the circumcenter. The point lies on the circle through $B$, $O$, and $C$, it is the center of the spiral similarity that carries $B$ to $A$ and $A$ to $C$, and the circles through $A$ and $B$ tangent to $AC$, and through $A$ and $C$ tangent to $AB$, both pass through it. Each of these descriptions turns the symmedian into a circle, which is how olympiad solutions use it.`,
+          keywords: ["dumpty point", "midpoint of the symmedian chord", "symmedian chord", "circle BOC", "spiral similarity center B to A and A to C", "DA squared equals DB times DC", "humpty companion", "tangents at B and C"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "shooting-lemma",
+          name: "Shooting Lemma",
+          latex: String.raw`T,\ D,\ M \text{ collinear}, \qquad MD \cdot MT = MB^2 = MC^2`,
+          description: String.raw`A circle $\omega$ inside a circle $\Gamma$ touches $\Gamma$ at $T$ and touches a chord $BC$ of $\Gamma$ at $D$. Let $M$ be the midpoint of the arc $BC$ on the other side of $BC$ from $\omega$, the arc that does not contain $T$. The lemma "shoots" a line from $T$ through $D$ and says it hits $\Gamma$ exactly at $M$; the power of $M$ with respect to $\omega$ then equals $MB^2$, the same for every circle tangent to $BC$ and to $\Gamma$ on that side. It is the step behind the [[sawayama-thebault|Sawayama–Thébault Theorem]] and many problems about circles inscribed in a circular segment.`,
+          keywords: ["shooting lemma", "circle tangent to a chord and the circumcircle", "line TD through the arc midpoint", "MD times MT equals MB squared", "homothety at the tangency point", "circle in a circular segment", "arc midpoint power", "tangent circle and chord"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "carnots-perpendicularity-theorem",
           name: "Carnot's Perpendicularity Theorem",
           latex: String.raw`\text{perpendiculars at } D, E, F \text{ concur} \iff BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0`,

@@ -294,7 +294,7 @@ window.MATH_BUILTIN_LISTS = [
     ] },
 
   { id: "route-olympiad-geometry", name: "Olympiad Geometry", kind: "route", tier: "Olympiad", subject: "Geometry",
-    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 44 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 47 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Relations Between Centers",
         note: "The distances and incidences that tie the centers to one another. This is where olympiad triangle problems usually turn.",
@@ -307,7 +307,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["mollweides-formula", "morleys-theorem", "perpendicularity-lemma"] },
       { title: "Olympiad Triangle Lemmas",
         note: "The named lemmas that olympiad solutions quote about one triangle: incircle and excircles, the orthocenter with a median, isogonal lines, and perpendiculars to the sides.",
-        ids: ["incenter-excenter-lemma", "iran-lemma", "steiner-ratio-theorem", "isogonal-line-lemma", "humpty-queue-points", "carnots-perpendicularity-theorem"] },
+        ids: ["incenter-excenter-lemma", "iran-lemma", "steiner-ratio-theorem", "isogonal-line-lemma", "humpty-queue-points", "dumpty-point", "shooting-lemma", "carnots-perpendicularity-theorem"] },
       { title: "Circles & Tangency",
         note: "One circle with a point or chord, and circles touching circles. Chains and packings live here.",
         ids: ["radical-axis", "power-of-a-point-linearity", "reims-theorem", "mixtilinear-incircle", "sawayama-thebault"] },
@@ -319,7 +319,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["brianchon-theorem", "pascals-theorem", "desargues-theorem", "desargues-involution", "mobius-transformations", "cross-ratio", "harmonic-bundle", "complete-quadrilateral-miquel", "brocards-theorem", "pappus-hexagon"] },
       { title: "Transformations",
         note: "Move the figure rather than measure it. Usually the shortest olympiad solution when it applies.",
-        ids: ["inversion-properties", "inversion-facts", "homothety-monge", "affine-transformations", "gliding-principle"] },
+        ids: ["inversion-properties", "inversion-facts", "sqrt-bc-inversion", "homothety-monge", "affine-transformations", "gliding-principle"] },
       { title: "Angle & Configuration Chasing",
         note: "Keeping a chase honest across a configuration, and the constructions that unlock one.",
         ids: ["directed-angles", "phantom-point", "pole-polar"] },

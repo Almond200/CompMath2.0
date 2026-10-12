@@ -10,5 +10,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Olympiad geometry, batch 3", date: "2026-10-12",
     ids: ["humpty-queue-points", "desargues-involution"] },
   { label: "Concepts from LIVE (AMC)", date: "2026-10-12",
-    ids: ["defined-operation", "truth-tellers-logic", "organized-listing", "simulate-the-process", "coins-and-prices", "drawing-without-replacement"] }
+    ids: ["defined-operation", "truth-tellers-logic", "organized-listing", "simulate-the-process", "coins-and-prices", "drawing-without-replacement"] },
+  { label: "Card-file scan, batch 1: olympiad geometry", date: "2026-10-12",
+    ids: ["shooting-lemma", "dumpty-point", "sqrt-bc-inversion"] }
 ];
