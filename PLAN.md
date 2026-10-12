@@ -358,7 +358,7 @@ Some cards read poorly because the formula box is over-packed. British Flag Theo
 - Report findings and fixes; then go on to 2.5.
 
 ### 2.5 Stage C: subject tag, then tag the problems from LIVE (after the UI scan is finished)
-**2.5a Subject tag on every problem.** Stanley's request; his answer: label it "Combinatorics"; do it right before tagging.
+**2.5a Subject tag on every problem.** *Done 2026-10-12 from tagged cards, round names, and overrides (1,365 problems); the LIVE-concept source waits for the Mac, since LIVE is blocked from the cloud session.* Stanley's request; his answer: label it "Combinatorics"; do it right before tagging.
 - Every problem page gets a subject chip, **the first chip** in the chip row under the title (today the `ptype-chip`s from `renderProblemDetail` in `js/app.js`).
 - It shows one or more of **Geometry, Combinatorics, Number Theory, Algebra**, with more than one when the problem spans categories.
 - It is derived, not hand-typed, from:
