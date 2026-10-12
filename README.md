@@ -281,6 +281,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
     - $\cos A + \cos B + \cos C = 1 + \frac rR$ and the sine sum: Identities for Angles Summing to $180^\circ$ (removed from Carnot's thumbnail and the R, r & s Identities, which point to it).
 
     `tools/find-duplicate-forms.py` now also reads $\frac A2$ and $\frac{A}{2}$ as one fraction.
+  - **Number theory, counting, methods, and patterns (the rest of the scan).** Every formula was checked, numerically where it is arithmetic. Fixes:
+    - **Rule 17 duplicates:** Consecutive Integers Are Coprime (the $k!$ divisibility, pointer added); Vandermonde's Identity and the alternating squared sum (the squared binomial sum, pointer added); Row Sums (the $3^n$ count, pointer added).
+    - **Rule 1:** Waiting for Success opened with "E.g."; it now explains $\frac1p$ and the coupon collector first.
+    - **Symbols defined:** Tangent Lines from a Point (the center $(h, k)$, the point $(p, q)$, the slope $m$); Vieta Jumping (the equation $a^2 + b^2 = k(ab + 1)$ behind its formula); Circle Inscribed in an Angle ($r$, $d$, $\theta$); Ellipse Tangent to a Line ($F_1'$); A Folded Sheet of Paper ($x$, $y$, $s$).
+
+    No false formula turned up in these files.
 - **Back keeps its place (Stanley).** Pressing the browser's Back button used to leave the page shifted a little. The saved pixel offset was restored before the math, fonts, and a problem's statement had finished laying out, and the browser's own scroll anchoring then moved it again. Each history entry now also saves an anchor (the element at the top of the view and its distance below the bar), and on Back the app puts that element back in place on every frame for a moment, stopping at the reader's first input. Checked on subject pages and problem pages: the anchor returns to within a pixel.
 - **Figures on cards: Off or On (Stanley).** The Curated choice is gone, along with its hand-picked card list (`CARD_DIAGRAM_IDS` in `js/app.js`); a browser that had Curated saved now shows every figure (On).
 - **Six cards from the LIVE concept tags (approved 2026-10-11).** All are AMC tier and low importance, judged from the number of LIVE problems tagged with each concept (`tools/importance-proposal.md`):

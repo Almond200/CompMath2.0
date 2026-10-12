@@ -95,7 +95,7 @@ window.MATH_SECTIONS.push({
           id: "consecutive-coprime",
           name: "Consecutive Integers Are Coprime",
           latex: String.raw`\gcd(n, n+1) = 1`,
-          description: String.raw`Consecutive integers are coprime: $\gcd(n, n + 1) = 1$. More generally, $\gcd(n, n + k)$ divides $k$, since any common divisor divides the difference. Among any $k$ consecutive integers exactly one is divisible by $k$, and their product is divisible by $k!$.`,
+          description: String.raw`Consecutive integers are coprime: $\gcd(n, n + 1) = 1$. More generally, $\gcd(n, n + k)$ divides $k$, since any common divisor divides the difference. Among any $k$ consecutive integers exactly one is divisible by $k$, which is the first step toward the [[consecutive-product-factorial|factorial divisibility of their product]].`,
           keywords: ["consecutive", "coprime", "product divisible factorial", "consecutive integers are coprime", "gcd of consecutive integers", "adjacent integers coprime"],
           importance: "medium",
           tier: "AMC",
