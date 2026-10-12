@@ -1762,7 +1762,12 @@
     "tiling-a-board": "pattern",
     "golden-ratio-pentagon": "formula",
     "isosceles-tetrahedron": "formula",
-    "tetrahedron-centroid": "formula"
+    "tetrahedron-centroid": "formula",
+    "orthogonal-circles": "formula",
+    "weitzenbock-inequality": "formula",
+    "steiner-lehmus": "formula",
+    "cevian-nest": "formula",
+    "dodecahedron-icosahedron": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8428,6 +8433,36 @@
       [
         "On contests",
         "rewritten -> Contest profile"
+      ]
+    ],
+    "orthogonal-circles": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "weitzenbock-inequality": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "steiner-lehmus": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "cevian-nest": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "dodecahedron-icosahedron": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

@@ -446,7 +446,7 @@ Note: $\lfloor x \rfloor$ is the greatest integer less than or equal to $x.$
 (A) $8:17$  (B) $25:49$  (C) $36:25$  (D) $32:17$  (E) $36:17$`, u: "https://live.poshenloh.com/past-contests/amc8/2011" },
 "2011-amc-8-4": { s: String.raw`Here is a list of the numbers of fish that Tyler caught in nine outings last summer:$$2,0,1,3,0,3,3,1,2.$$Which statement about the mean, mode, and median of these numbers is true?
 
-(A) median $&lt;$ mean $&lt;$ mode  (B) mean $&lt;$ mode $&lt;$ median  (C) mean $&lt;$ median $&lt;$ mode  (D) median $&lt;$ mode $&lt;$ mean  (E) mode $&lt;$ median $&lt;$ mean`, u: "https://live.poshenloh.com/past-contests/amc8/2011" },
+(A) median $\lt$ mean $\lt$ mode  (B) mean $\lt$ mode $\lt$ median  (C) mean $\lt$ median $\lt$ mode  (D) median $\lt$ mode $\lt$ mean  (E) mode $\lt$ median $\lt$ mean`, u: "https://live.poshenloh.com/past-contests/amc8/2011" },
 "2011-amc-8-5": { s: String.raw`What time was it $2011$ minutes after the beginning of January $1,$ $2011?$
 
 (A) January $1$ at $9:31$ PM  (B) January $1$ at $11:51$ PM  (C) January $2$ at $3:11$ AM  (D) January $2$ at $9:31$ AM  (E) January $2$ at $6:01$ PM`, u: "https://live.poshenloh.com/past-contests/amc8/2011" },

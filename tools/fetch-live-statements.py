@@ -185,7 +185,7 @@ def statement(q, c, y, n, figs):
         return re.sub(r'<img[^>]*src="([^"]+)"[^>]*/?>', one, v)
     ch = [(L, chimg(v) if v else v) for L, v in ch]
     if all(v for _, v in ch):
-        t += "\n\n" + "  ".join("(%s) %s" % (L, tex(v).strip()) for L, v in ch)
+        t += "\n\n" + "  ".join("(%s) %s" % (L, tex(html.unescape(v)).strip()) for L, v in ch)   # entities decoded, as in the body
     t = choice_layout.layout(t)
     t = re.sub(r"\n{3,}", "\n\n", t)
     # A displayed equation is a block with its own margins; blank lines around it would double the gap.

@@ -3263,6 +3263,10 @@ html[data-density="spacious"] .set-panel { padding: 6px 22px 10px; }
 html[data-density="spacious"] .key-forms .detail-list li, html[data-density="spacious"] .detail .detail-list li { margin-bottom: 8px; }
 /* Math and the punctuation touching it never part at a line break. */
 .math-glue { white-space: nowrap; }
+/* fitInlineMath: glued math that overflows its line gets its breaks back, and math that still
+   overflows scrolls on its own. */
+.math-glue.loose { white-space: normal; }
+.katex.math-wide { display: inline-block; max-width: 100%; overflow-x: auto; overflow-y: hidden; vertical-align: middle; padding: 0.15em 0; }
 /* An empty list that will fill in as cards are written ("None yet"). */
 .related-empty { margin: 0; font-size: 13.5px; color: var(--text-faint); }
 /* The search box fills the top bar up to the tool buttons, whether or not Filters is shown. */

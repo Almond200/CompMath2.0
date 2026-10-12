@@ -831,6 +831,26 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "Olympiad",
           level: ["Olympiad"]
+        },
+        {
+          id: "weitzenbock-inequality",
+          name: "Weitzenböck and Hadwiger–Finsler Inequalities",
+          latex: String.raw`\begin{gathered} a^2 + b^2 + c^2 \ge 4\sqrt3\,K \\ a^2 + b^2 + c^2 \ge 4\sqrt3\,K + (a - b)^2 + (b - c)^2 + (c - a)^2 \end{gathered}`,
+          description: String.raw`Weitzenböck's Inequality bounds the area $K$ of a triangle with sides $a$, $b$, $c$ by the squares of its sides, with equality only for an equilateral triangle. The Hadwiger–Finsler Inequality on the second line sharpens it by the squared differences of the sides, so the gap measures how far the triangle is from equilateral. Read the other way, among triangles with a fixed sum of squared sides the equilateral one has the largest area.`,
+          keywords: ["weitzenbock inequality", "weitzenböck", "hadwiger finsler", "sum of squares of sides and area", "a^2+b^2+c^2 >= 4 sqrt 3 area", "largest area for a fixed sum of squares", "equilateral maximizes area"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "steiner-lehmus",
+          name: "Steiner–Lehmus Theorem",
+          latex: String.raw`t_b = t_c \implies b = c, \qquad b > c \iff t_b < t_c`,
+          description: String.raw`In a triangle with sides $a$, $b$, $c$ opposite $A$, $B$, $C$, let $t_b$ and $t_c$ be the lengths of the internal angle bisectors from $B$ and $C$, each measured to the opposite side. A triangle with two equal internal bisectors is isosceles: the converse of the easy fact that an isosceles triangle has them, and famous for resisting a direct proof. The sharper form says the bisector drawn to the longer side is the shorter one. With the [[angle-bisector-length|bisector length formula]] both come from one factorization.`,
+          keywords: ["steiner lehmus", "equal angle bisectors", "two equal bisectors isosceles", "compare angle bisector lengths", "larger angle shorter bisector"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         }
       ]
     },
@@ -1001,6 +1021,16 @@ window.MATH_SECTIONS.push({
           description: String.raw`The isotomic conjugate reflects each cevian's foot on a side over that side's midpoint: the three new cevians concur at $P^*$. The centroid is its own isotomic conjugate, and the Gergonne and [[gergonne-nagel-points|Nagel points]] form an isotomic pair. It pairs with isogonal conjugation to generate the standard identities among triangle centers, and in [[barycentric-coordinates|barycentric coordinates]] it is $(x : y : z) \mapsto (1/x : 1/y : 1/z)$.`,
           keywords: ["isotomic conjugate", "reflect foot over midpoint", "centroid self conjugate", "gergonne nagel pair", "barycentric reciprocal", "triangle center"],
           importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "cevian-nest",
+          name: "Cevian Nest Theorem",
+          latex: String.raw`AD,\ BE,\ CF \text{ concur},\ \ DX,\ EY,\ FZ \text{ concur} \implies AX,\ BY,\ CZ \text{ concur}`,
+          description: String.raw`Take a triangle $ABC$ and the cevian triangle $DEF$ of a point $P$, so $D$, $E$, $F$ lie on $BC$, $CA$, $AB$ and $AD$, $BE$, $CF$ meet at $P$. Inside it take the cevian triangle $XYZ$ of a point $Q$ with respect to $DEF$, with $X$, $Y$, $Z$ on $EF$, $FD$, $DE$. In such a nest of three triangles, the outer one and the innermost one are in perspective. The proof is [[cevas-theorem|Ceva's Theorem]] twice, joined by one area ratio.`,
+          keywords: ["cevian nest", "cevian nest theorem", "cevian triangle of a cevian triangle", "nested cevian triangles", "triangles in perspective", "ceva twice"],
+          importance: "lowest",
           tier: "Olympiad",
           level: ["Olympiad"]
         }
@@ -1403,6 +1433,16 @@ window.MATH_SECTIONS.push({
           description: String.raw`Two circles meet at $P$ and $Q$. A line through $P$ meets them again at $A$ (first circle) and $C$ (second), and a line through $Q$ meets them again at $B$ and $D$. Then $AB \parallel CD$. Conversely, if $A, B, P, Q$ are concyclic and $CD \parallel AB$, then $C, D, P, Q$ are concyclic. It turns "these lines are parallel" into "these points are concyclic" and back in an angle chase, and works best with [[directed-angles|directed angles]].`,
           keywords: ["reim theorem", "reims theorem", "two circles parallel chords", "concyclic from parallel", "antiparallel", "angle chasing lemma"],
           importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "orthogonal-circles",
+          name: "Orthogonal Circles",
+          latex: String.raw`\omega_1 \perp \omega_2 \iff O_1O_2^2 = r_1^2 + r_2^2 \iff \operatorname{pow}(O_1, \omega_2) = r_1^2`,
+          description: String.raw`Two circles $\omega_1$ and $\omega_2$, with centers $O_1$ and $O_2$ and radii $r_1$ and $r_2$, are orthogonal when they cross at right angles: at each crossing point the radius of one circle is tangent to the other. The test is a right triangle on the two radii and the line of centers, and it reads as a [[power-of-a-point|power of a point]] statement, where $\operatorname{pow}(O_1, \omega_2)$ is the power of the center $O_1$ with respect to $\omega_2$. The circles orthogonal to a circle are exactly the ones that [[inversion-facts|inversion]] in it maps to themselves, which is why they appear whenever an inversion is used.`,
+          keywords: ["orthogonal circles", "circles meeting at right angles", "perpendicular circles", "d^2 = r1^2 + r2^2", "circle fixed by inversion", "circle through a point and its inverse", "tangent length equals radius"],
+          importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
         }
@@ -2155,6 +2195,16 @@ window.MATH_SECTIONS.push({
           latex: String.raw`V = \frac{s^3\sqrt{2}}{3}, \qquad SA = 2s^2\sqrt{3}, \qquad R = \frac{s\sqrt{2}}{2}, \quad r = \frac{s\sqrt{6}}{6}`,
           description: String.raw`A regular octahedron has eight equilateral faces, six vertices, and twelve edges. A plane through four vertices cuts it into two congruent square pyramids with base side $s$ and height $\frac{s}{\sqrt2}$, which gives its volume $\frac{s^3\sqrt2}{3}$, exactly four regular tetrahedra of the same edge. It is the dual of the cube: its vertices are the centers of a cube's faces, so a cube of edge $e$ holds an octahedron of edge $\frac{e\sqrt2}{2}$ and volume $\frac{e^3}{6}$.`,
           keywords: ["octahedron", "regular octahedron", "eight faces", "two square pyramids", "split octahedron", "dual of cube", "platonic solid", "octahedron volume", "octahedron surface area"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "dodecahedron-icosahedron",
+          name: "Regular Dodecahedron & Icosahedron",
+          latex: String.raw`\begin{gathered} \text{dodecahedron: } V = 20,\ E = 30,\ F = 12 \text{ pentagons} \\ \text{icosahedron: } V = 12,\ E = 30,\ F = 20 \text{ triangles} \end{gathered}`,
+          description: String.raw`The two Platonic solids built on the regular pentagon, with $V$ vertices, $E$ edges, and $F$ faces. The dodecahedron has three pentagons at each vertex and the icosahedron five triangles. They are duals: the centers of the faces of one are the vertices of the other, which swaps the vertex and face counts and keeps the $30$ edges. Both are full of the [[golden-ratio-pentagon|golden ratio]] $\varphi$, which places their vertices in coordinates.`,
+          keywords: ["dodecahedron", "icosahedron", "regular dodecahedron", "regular icosahedron", "platonic solid", "20 vertices", "12 pentagonal faces", "20 triangular faces", "golden rectangles", "dual polyhedra", "icosahedron vertex distances"],
           importance: "low",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]

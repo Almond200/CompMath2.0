@@ -179,7 +179,8 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 - [x] **2.4f** Figure line audit: two new gates (line gaps, raw TeX in figure text), all 584 panels reviewed, wrong figures fixed (Poncelet, domino board, Desargues, Miquel).
 - [x] **2.4e** Formula-box audit on the detail page, approved by Stanley: nine crowded boxes trimmed into Key forms, 22 wide boxes broken at natural points, four dangling colons fixed.
 - [x] **2.5a** Subject chip on problem pages and contest lists, derived from the tagged cards (1,365 problems). The LIVE-concept source waits for LIVE access.
-- [x] The UI sweeps themselves: card pages at 768, 1920, dark, and Larger are clean; the few findings are listed in 2.4 below.
+- [x] **2.4** Whole-app UI scan finished: the three statement KaTeX errors fixed at the importer and gated; inline maths that overflowed on a phone fitted after rendering; every sweep at 375, 768, 1280, and 1920, light, dark, and Larger, in both layouts, and over all 4,616 statements, now reports nothing.
+- [x] **2.1** Content and consistency scan: stale README, CONVENTIONS, and app wording fixed; three old-layout write-ups converted; 19 of the 20 candidate cards approved (not Perfect Numbers), written in four batches.
 
 ### How the figure reference cards were sorted out (2026-10-11)
 | Where | Cards |
@@ -200,19 +201,11 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 
 ## 2. What is left, in order (Stanley's order)
 
-### 2.1 Content, consistency, and missing-cards scan (Stanley, 2026-10-12; first)
-- **LaTeX that does not render correctly** on every surface: card names, both copies of each formula box, descriptions, write-ups, Key forms, examples, list notes and route blurbs, problem strategies, statements, and solutions. Render in the browser; collect KaTeX errors, leftover raw commands, unbalanced `$`, and text that typesets differently from what the source means.
-- **Contradicting information**: the same quantity with different values on two cards; a card's box, description, Key forms, and example disagreeing; importance or tier against route placement; wrong card or section counts in blurbs; README and CONVENTIONS claims that no longer match the code; a strategy whose answer differs from its solution. Numbers re-checked by computation.
-- **Anything that does not quite make sense** in the data files, write-ups, user-facing strings in `app.js`, and the markdown docs: stale wording, removed features still mentioned, dead ids, misleading labels.
-- **Missing cards at every level**: olympiad lemmas and formulas in all subjects, and lower-level formulas, methods, and patterns, checked against every card's name, keywords, and description so nothing is proposed twice.
-- Clear errors are fixed at once. Judgment calls, and the candidate cards with tier, importance, and evidence, go to `QUESTIONS.md` for Stanley. Approved cards follow the 2.4b checklist and are registered for `Special:NewCards`.
-
-### 2.4 Whole-app UI scan: the remaining fixes
-The sweeps ran on 2026-10-12 (card pages at 768, 1920, dark, Larger, 375 dark + Larger, and the wiki layout at 375; all 4,616 statements at 375, 768, 1280). Left to fix:
-- 3 KaTeX errors in statements, and 12 elements past the right edge on statements at 375;
-- 9 past-right findings on 7 card pages at 375 with dark + Larger text, and the Shoelace page in the wiki layout at 375;
-- the statement check flagged dollar signs used as money; it must flag only real TeX, and the statement sweeps re-run.
-
+### 2.1 The approved gap-scan cards (19; `QUESTIONS.md`)
+- [x] Batch 1, geometry: Orthogonal Circles, Weitzenböck and Hadwiger–Finsler, Steiner–Lehmus, Cevian Nest, Regular Dodecahedron & Icosahedron.
+- [ ] Batch 2, algebra and number theory: Integer-Valued Polynomials, Dirichlet's Theorem, Partial Fractions (method), Working Backwards (method).
+- [ ] Batch 3, olympiad counting and a geometry method: Combinatorial Nullstellensatz, Schur's Theorem, Pentagonal Number Theorem, Hook Length Formula, Projective Transformations (method).
+- [ ] Batch 4, AMC patterns: Age Problems, Calendar & Day of the Week, Painted Cubes (with boxes, Stanley), Round-Robin Tournaments, Magic Squares.
 ### 2.4e-ii Prose formula boxes on card faces (Stanley, 2026-10-12)
 Some boxes are mostly prose (A Newly Defined Operation, Tiling a Board, Strategy Stealing, ...), so on the card faces they shrink to the minimum size and still scroll. Measure every card face at 1280 and 375 (the `fd-scroll` class and the scale `fitBatch` sets in `js/app.js`), list each one with a proposed rewrite in `QUESTIONS.md`, and apply after approval. A box that cannot be made shorter without losing content stays as it is (Stanley: not ideal, but the best available).
 

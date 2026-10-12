@@ -23,6 +23,8 @@ for f in sorted(glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")
         if slug not in slugs: bad.append("%s: not a problem in the database" % slug)
         if s.replace("$$", "").count("$") % 2: bad.append("%s: unbalanced $" % slug)
         if re.search(r"<[A-Za-z/]", re.sub(r"\$[^$]*\$", "", s)): bad.append("%s: raw tag outside maths" % slug)
+        # An HTML entity left in the text (&lt; inside maths) is a KaTeX error on the page.
+        if re.search(r"&(?:lt|gt|amp|nbsp|quot|#\d+);", s): bad.append("%s: an HTML entity was not decoded" % slug)
         # The two 2021 Fall AMC problems LIVE lacks are credited to the AoPS Wiki instead.
         if not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10")): bad.append("%s: source link missing" % slug)
         # A size command (\\tiny, \\small ...) shrinks a formula to near-unreadable size on screen.
