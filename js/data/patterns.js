@@ -375,7 +375,7 @@ window.MATH_SECTIONS.push({
           move: String.raw`Write each point as weights $(x : y : z)$ on the vertices, points on sides and named centers directly, intersect lines by matching coordinates, and test collinearity or compute areas with a $3 \times 3$ determinant.`,
           uses: ["section-formula", "cevas-theorem", "incenter-coordinates", "determinant-geometric"],
           latex: String.raw`P = \alpha A + \beta B + \gamma C`,
-          description: String.raw`Barycentric coordinates describe each point of the plane by three weights on the vertices of a fixed triangle, $P = \alpha A + \beta B + \gamma C$ with $\alpha + \beta + \gamma = 1$, and each weight is the fraction of the triangle's area cut off opposite its vertex. They turn a triangle problem into linear algebra that is certain to finish.`,
+          description: String.raw`Barycentric coordinates describe each point $P$ of the plane by three weights $\alpha$, $\beta$, $\gamma$ on the vertices of a fixed triangle $ABC$, adding up to $1$, and each weight is the fraction of the triangle's area cut off opposite its vertex, such as $\alpha = \frac{[PBC]}{[ABC]}$. They turn a triangle problem into linear algebra that is certain to finish.`,
           keywords: ["barycentric coordinates", "areal coordinates", "area ratios", "mass points", "incenter circumcenter coordinates", "homogeneous coordinates", "method"],
           importance: "low",
           tier: "AIME Late",

@@ -1005,7 +1005,7 @@ The frame around most probability problems rather than the step that solves them
 ## Key forms
 - $P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}$ — the probability of $A$ once $B$ is known to have happened
 - $P(A \cap B) = P(B)\,P(A \mid B)$ — multiply along a sequence of dependent steps
-- $P(A \mid B) = \dfrac{P(B \mid A)\,P(A)}{P(B)}$ — turning the condition around
+- turning the condition around is Bayes' Theorem, on its own card
 - $A$ and $B$ are independent exactly when $P(A \mid B) = P(A)$, that is $P(A \cap B) = P(A)\,P(B)$
 
 ## Conditions

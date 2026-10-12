@@ -5,7 +5,7 @@
 - Question 2: the 39 descriptions define their symbols without restating the thumbnail formula, unless they add something; the paragraph may carry more explanation instead.
 - Question 3: approved; the subsection goes right after Advanced Triangle Theorems, not at the bottom.
 
-These are being carried out.
+Done 2026-10-12: all 47 descriptions are rewritten, and the subsection is in place.
 
 Things found while working through PLAN.md that are style or judgement calls rather than verified errors. Verified errors are fixed straight away and recorded in the README; everything here waits for your word. Newest at the bottom of each section.
 
