@@ -481,7 +481,7 @@
       // Only the part OUTSIDE segment BC, so it reads as the line continued rather than
       // vanishing beneath the triangle's own base edge — which is what the previous
       // D2-to-C line did for most of its length.
-      seg(add(Bv, [-14, 0]), add(D2, [-24, 0]), DIM, 1.6, "6 4"),
+      seg(Bv, add(D2, [-24, 0]), DIM, 1.6, "6 4"),
       txt([Math.round((D2[0] + Bv[0]) / 2) - 8, D2[1] - 12], "BC extended", DIM, 11),
       seg(Av, E, DIM, 1.6, "5 4"),
       txt(add(E, [10, -12]), "CA extended", DIM, 11),
@@ -767,7 +767,7 @@
       seg(cen, T, FNT, 1.3, "4 3"), rightAngle(T, cen, P, 10, GLD),
       seg(P, Bb, ACC, 2), dot(Aa, ACC, 4), dot(Bb, ACC, 4),
       txt(add(Bb, [-2, -12]), "A", ACC), txt(add(Aa, [-14, 8]), "B", ACC),
-      seg(P, circleLineInts(cen, R, P, [150, 115])[0], GRN, 1.8),
+      seg(P, circleLineInts(cen, R, P, [150, 115])[1], GRN, 1.8),   // the secant runs through D to C
       dot(circleLineInts(cen, R, P, [150, 115])[0], GRN, 4), dot(circleLineInts(cen, R, P, [150, 115])[1], GRN, 4),
       txt(add(circleLineInts(cen, R, P, [150, 115])[1], [0, -11]), "C", GRN), txt(add(circleLineInts(cen, R, P, [150, 115])[0], [-14, -4]), "D", GRN),
       cap(430, 330, "one number belongs to P: PA · PB = PC · PD = PT² = OP² − r², whichever line you draw")
@@ -2532,13 +2532,13 @@ DIAGRAMS["trig-ceva"] = [(() => {
     return wrap(450, 480, [
       circ(O, R, FNT, 1.4), poly([A2, B2, C2], DIM, 2),
       vl(A2, "A"), vl(B2, "B"), vl(C2, "C"),
-      seg(A2, M, ACC, 1.6, "5 4"),
+      segIn(A2, sub(mul(M, 2), I), [A2, B2, C2], ACC, 1.6),
       circ(M, dist(M, B2), GLD, 1.6, "none", "6 4"),
       seg(M, B2, GLD, 1.4, "3 4"), seg(M, I, GLD, 1.4, "3 4"),
       dot(I, ACC, 4.5), dot(M, GLD, 4.5), dot(sub(mul(M, 2), I), GLD, 4.5),
       txt(add(I, [-14, -4]), "I", ACC), txt(add(M, [-2, 20]), "M", GLD),
       txt(add(sub(mul(M, 2), I), [18, 6]), "I_A", GLD, 12),
-      cap(450, 480, "M = arc midpoint of BC on line AI, and MB = MC = MI: the gold circle through B, I, C is centered at M")
+      cap(450, 480, "M = arc midpoint of BC on line AI, and MB = MC = MI: the gold circle through B, I, C is centered at M, and it meets line AI again at the excenter I_A. The line AI is solid inside the triangle and dashed beyond it.")
     ]);
   })()];
 
@@ -3166,7 +3166,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       circ(O, R), dot(O, DIM, 3),
       seg(P, Ta, DIM, 1.6), seg(P, Tb, DIM, 1.6),     // the two tangents
       seg(Ta, Tb, ACC, 2.2),                          // polar (chord of contact)
-      seg(P, X, GLD, 1.8),                            // secant PXY
+      seg(P, Y, GLD, 1.8),                            // secant PXY, through X and Q to Y
       dot(Ta, ACC, 3.5), dot(Tb, ACC, 3.5), dot(P, DIM, 4),
       dot(X, GLD, 3.5), dot(Y, GLD, 3.5), dot(Q, ACC, 4),
       txt(add(Ta, [10, -6]), "A", ACC, 12.5), txt(add(Tb, [10, 12]), "B", ACC, 12.5),
@@ -3773,7 +3773,8 @@ DIAGRAMS["trig-ceva"] = [(() => {
       poly([A, B, C, D], DIM, 1.8),
       seg(A, C, DIM, 1.4, "2 3"), seg(B, D, DIM, 1.4, "2 3"),
       poly([E, F, G], GLD, 2, GLDS),
-      seg(E, hE, ACC, 1.5, "6 3"), seg(F, hF, ACC, 1.5, "6 3"), seg(G, hG, ACC, 1.5, "6 3"),
+      // each altitude runs past its foot to O when O lies beyond it (the diagonal triangle is obtuse)
+      [[E, hE], [F, hF], [G, hG]].map(([X, h]) => seg(X, dist(X, O) > dist(X, h) ? O : h, ACC, 1.5, "6 3")).join(""),
       rightAngle(hE, E, F, 8, ACC), rightAngle(hF, F, E, 8, ACC), rightAngle(hG, G, E, 8, ACC),
       [A, B, C, D].map(p => dot(p, DIM, 3.5)).join(""),
       dot(E, GLD, 4), dot(F, GLD, 4), dot(G, GLD, 4), dot(O, ORG, 5),
