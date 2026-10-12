@@ -668,12 +668,12 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | regular-octagon | geometry / Polygons & Quadrilaterals | AMC | new | 0 | **low** |
 | cube | geometry / Solid Geometry (3D) | AMC | new | 0 | **medium** |
 | perpendicularity-lemma | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **medium** |
-| carnots-perpendicularity-theorem | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
-| iran-lemma | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
-| steiner-ratio-theorem | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
-| isogonal-line-lemma | geometry / Derived Triangles & Conjugates | Olympiad | new | 0 | **low** |
+| carnots-perpendicularity-theorem | geometry / Olympiad Triangle Lemmas | Olympiad | new | 0 | **low** |
+| iran-lemma | geometry / Olympiad Triangle Lemmas | Olympiad | new | 0 | **low** |
+| steiner-ratio-theorem | geometry / Olympiad Triangle Lemmas | Olympiad | new | 0 | **low** |
+| isogonal-line-lemma | geometry / Olympiad Triangle Lemmas | Olympiad | new | 0 | **low** |
 | power-of-a-point-linearity | geometry / Circles | Olympiad | new | 0 | **low** |
-| humpty-queue-points | geometry / Triangle Centers & the Euler Line | Olympiad | new | 0 | **lower** |
+| humpty-queue-points | geometry / Olympiad Triangle Lemmas | Olympiad | new | 0 | **lower** |
 | desargues-involution | geometry / Projective Geometry & Cross-Ratio | Olympiad | new | 0 | **lower** |
 | defined-operation | algebra (pattern) / Equations with Hidden Structure | AMC | new (LIVE: custom operation, 40 problems) | 0 | **low** |
 | truth-tellers-logic | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: logical deduction 66, truth-tellers 4) | 0 | **low** |
