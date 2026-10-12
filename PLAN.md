@@ -203,7 +203,7 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 
 ### 2.1 The approved gap-scan cards (19; `QUESTIONS.md`)
 - [x] Batch 1, geometry: Orthogonal Circles, Weitzenböck and Hadwiger–Finsler, Steiner–Lehmus, Cevian Nest, Regular Dodecahedron & Icosahedron.
-- [ ] Batch 2, algebra and number theory: Integer-Valued Polynomials, Dirichlet's Theorem, Partial Fractions (method), Working Backwards (method).
+- [x] Batch 2, algebra and number theory: Integer-Valued Polynomials, Dirichlet's Theorem, Partial Fractions (method), Working Backwards (method).
 - [ ] Batch 3, olympiad counting and a geometry method: Combinatorial Nullstellensatz, Schur's Theorem, Pentagonal Number Theorem, Hook Length Formula, Projective Transformations (method).
 - [ ] Batch 4, AMC patterns: Age Problems, Calendar & Day of the Week, Painted Cubes (with boxes, Stanley), Round-Robin Tournaments, Magic Squares.
 ### 2.4e-ii Prose formula boxes on card faces (Stanley, 2026-10-12)

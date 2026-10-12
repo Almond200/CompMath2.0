@@ -20,5 +20,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Card-file scan, batch 4: games, set families, tilings", date: "2026-10-12",
     ids: ["strategy-stealing", "erdos-ko-rado", "tiling-a-board"] },
   { label: "Gap scan, batch 1: geometry", date: "2026-10-12",
-    ids: ["orthogonal-circles", "weitzenbock-inequality", "steiner-lehmus", "cevian-nest", "dodecahedron-icosahedron"] }
+    ids: ["orthogonal-circles", "weitzenbock-inequality", "steiner-lehmus", "cevian-nest", "dodecahedron-icosahedron"] },
+  { label: "Gap scan, batch 2: algebra, number theory, and two methods", date: "2026-10-12",
+    ids: ["integer-valued-polynomials", "dirichlet-primes-progression", "partial-fractions", "working-backwards"] }
 ];

@@ -1238,6 +1238,21 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "partial-fractions",
+          name: "Partial Fractions",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A fraction whose denominator is a product has to be summed, telescoped, or expanded as a series, and the denominator factors into linear factors or powers of them.`,
+          move: String.raw`Factor the denominator and write the fraction as a sum of fractions with one factor each, finding each numerator by covering its factor and putting in that factor's root.`,
+          uses: ["lagrange-interpolation-formula", "geometric-series"],
+          latex: String.raw`\frac{1}{(x - a)(x - b)} = \frac{1}{a - b}\left(\frac{1}{x - a} - \frac{1}{x - b}\right), \qquad \frac{1}{k(k + 1)} = \frac1k - \frac{1}{k + 1}`,
+          description: String.raw`Partial fractions split a fraction whose denominator is a product into a sum of fractions with one factor each. The split is what makes a sum [[telescoping|telescope]] and a generating function expand into geometric series. The numerators come from the cover-up rule: for the numerator over $x - a$, cover that factor in the original fraction and put $x = a$ into what is left.`,
+          keywords: ["partial fractions", "partial fraction decomposition", "cover-up rule", "split a fraction", "1/(k(k+1))", "decompose a rational function", "heaviside cover up", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         }
       ]
     },
@@ -1608,6 +1623,21 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "working-backwards",
+          name: "Working Backwards",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A process is described forward, step by step, the final state is given, and the starting state is asked for, with each step one that can be undone.`,
+          move: String.raw`Start from the final state and undo the steps one at a time, from the last step to the first, so that the start is computed rather than solved for.`,
+          uses: ["inverse-function-properties"],
+          latex: String.raw`s_n \xrightarrow{\ f_n^{-1}\ } s_{n-1} \xrightarrow{\ f_{n-1}^{-1}\ } \cdots \xrightarrow{\ f_1^{-1}\ } s_0`,
+          description: String.raw`Working backwards solves a forward process from its end. Write $s_0$ for the starting state, $s_n$ for the final one, and $f_i$ for the $i$-th step. When each step can be undone, such as adding, doubling, or giving away half of what is left, the start is found by undoing the steps from the last to the first, with no equation to set up. It is the counterpart of [[simulate-the-process|simulating the process]], which runs the steps forward from a known start.`,
+          keywords: ["working backwards", "work backward", "reverse the steps", "undo each step", "start from the end", "inverse operations", "final amount given", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
         },
         {
           id: "states-recursion-prob",

@@ -538,6 +538,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "dirichlet-primes-progression",
+          name: "Dirichlet's Theorem on Primes in Progressions",
+          latex: String.raw`\gcd(a, m) = 1 \implies \text{infinitely many primes } p \equiv a \pmod{m}`,
+          description: String.raw`For a modulus $m$ and a residue $a$ coprime to it, the progression $a, a + m, a + 2m, \ldots$ contains infinitely many primes. The coprimality is needed, since a common factor of $a$ and $m$ divides every term. The general proof uses analysis far beyond a contest, so olympiad solutions quote the theorem by name; a few residues, such as $3$ and $1$ modulo $4$, have short proofs in the style of Euclid's.`,
+          keywords: ["dirichlet theorem", "primes in arithmetic progression", "infinitely many primes congruent to a mod m", "infinitely many primes 1 mod 4", "infinitely many primes 3 mod 4", "prime in a residue class"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "trailing-zeros",
           name: "Trailing Zeros of $n!$",
           latex: String.raw`(\text{zeros of } n!) = v_5(n!) = \left\lfloor \tfrac{n}{5} \right\rfloor + \left\lfloor \tfrac{n}{25} \right\rfloor + \left\lfloor \tfrac{n}{125} \right\rfloor + \cdots`,

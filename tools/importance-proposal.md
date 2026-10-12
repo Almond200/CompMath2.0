@@ -698,3 +698,7 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | steiner-lehmus | geometry / Advanced Triangle Theorems | Olympiad | new (gap scan) | 0 | **lowest** |
 | cevian-nest | geometry / Derived Triangles & Conjugates | Olympiad | new (gap scan) | 0 | **lowest** |
 | dodecahedron-icosahedron | geometry / Solid Geometry (3D) | AMC | new (gap scan) | 0 | **low** |
+| integer-valued-polynomials | algebra / Polynomials & Equations | Olympiad | new (gap scan) | 0 | **lower** |
+| dirichlet-primes-progression | number theory / Primes, Factorials & Valuations | Olympiad | new (gap scan) | 0 | **lowest** |
+| partial-fractions | algebra (method) / Factoring & Rewriting | AMC | new (gap scan) | 0 | **medium** |
+| working-backwards | counting (method) / Working It Out by Hand | AMC | new (gap scan) | 0 | **medium** |

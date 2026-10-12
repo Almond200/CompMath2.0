@@ -1767,7 +1767,11 @@
     "weitzenbock-inequality": "formula",
     "steiner-lehmus": "formula",
     "cevian-nest": "formula",
-    "dodecahedron-icosahedron": "formula"
+    "dodecahedron-icosahedron": "formula",
+    "integer-valued-polynomials": "formula",
+    "dirichlet-primes-progression": "formula",
+    "partial-fractions": "method",
+    "working-backwards": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8463,6 +8467,30 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "integer-valued-polynomials": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "dirichlet-primes-progression": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "partial-fractions": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "working-backwards": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }
