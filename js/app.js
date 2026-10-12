@@ -3942,7 +3942,7 @@
           <div class="cards">${g.entries.map(e => cardHtml(e, false, null)).join("")}</div>
         </section>`);
     });
-    if (!shownIds.length) parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, subIdx)} cards match the selected level filters.</div>`);
+    if (!shownIds.length) parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, subIdx)} cards match the current filters.</div>`);
     $content.innerHTML = parts.join("");
     renderMath($content, true);
   }
@@ -4280,7 +4280,7 @@
     });
     const parts = [sectionHeaderHtml(section, only)];
     if (!shownIds.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, only)} cards match the selected level filters.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No ${pageTitle(section, only)} cards match the current filters.</div>`);
       $content.innerHTML = parts.join("");
       renderMath($content);
       return;
@@ -4807,14 +4807,14 @@
     const parts = [];
     parts.push(`<p class="results-meta adv-meta"><strong>Tagged</strong> ${tags.length ? escapeAttr(tags.join(", ")) : "&mdash;"} <span class="adv-actions"><button class="adv-link" id="adv-edit">Edit tags</button><button class="adv-link" id="adv-clear">Clear</button></span></p>`);
     if (!tags.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#9906;</div>Pick one or more tags to see every formula that carries them.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">&#9906;</div>Pick one or more tags to see every card that carries them.</div>`);
     } else {
       const scored = tagMatches(tags);
       shownIds = scored.map(x => x.entry.formula.id);
       if (!scored.length) {
-        parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No formulas carry ${tags.length === 1 ? "that tag" : "those tags"}.</div>`);
+        parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No cards carry ${tags.length === 1 ? "that tag" : "those tags"}.</div>`);
       } else {
-        parts.push(`<p class="results-hint"><strong>${scored.length}</strong> formula${scored.length === 1 ? "" : "s"}${tags.length > 1 ? " &mdash; the ones matching the most tags come first" : ""}.</p>`);
+        parts.push(`<p class="results-hint"><strong>${scored.length}</strong> card${scored.length === 1 ? "" : "s"}${tags.length > 1 ? " &mdash; the ones matching the most tags come first" : ""}.</p>`);
         parts.push(`<div class="cards">${scored.map(x => cardHtml(x.entry, true, null)).join("")}</div>`);
       }
     }
@@ -4989,7 +4989,7 @@
         <p class="topic-blurb">Every card tagged ${escapeAttr(topic.label)}, across formulas, methods, and patterns.</p>
       </div>`];
     if (!entries.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No formulas match this topic at the current level filter.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No cards match this topic at the current filters.</div>`);
     } else {
       parts.push(`<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`);
     }
@@ -5144,7 +5144,7 @@
       </div>`;
     const tools = isBuiltin ? "" : `
       <div class="list-add" data-list-add="${l.id}">
-        <input type="search" class="list-add-input" placeholder="Search formulas to add&hellip;" autocomplete="off" aria-label="Search formulas to add to this list">
+        <input type="search" class="list-add-input" placeholder="Search cards to add&hellip;" autocomplete="off" aria-label="Search cards to add to this list">
         <div class="list-add-results" hidden></div>
       </div>`;
     const glyph = isBuiltin ? `<span class="list-ico">&#9670;</span>` : `<span class="list-emoji">${listGlyph(l)}</span>`;
@@ -5165,7 +5165,7 @@
           ? (isBuiltin || grouped
               ? listSectionsHtml(isBuiltin ? l : { id: l.id, sections: autoSections(shownIds) })
               : `<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`)
-          : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Open any formula and hit &ldquo;+ list&rdquo;, or star one from its page.</div>`}
+          : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
   }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
