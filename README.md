@@ -1,8 +1,9 @@
 # Competition Math Reference
 
-A searchable reference for MATHCOUNTS, AMC 10/12, AIME and olympiad training. 557 cards
-covering formulas, methods, and patterns, plus a database of
-1367 past contest problems cross-linked to the cards their solutions run through.
+A searchable reference for MATHCOUNTS, AMC 10/12, AIME and olympiad training. 680 cards
+covering formulas, methods, and patterns, plus a database of 4,675 past contest problems
+(4,616 with their full statements), of which 1,367 have a written strategy and 1,365 are
+cross-linked to the cards their solutions run through.
 
 Fully static and fully offline: no build step, no server, and nothing fetched at runtime. KaTeX
 0.16.11 is vendored under `vendor/katex/` (its CSS, its JS, and the twenty woff2 faces the CSS
@@ -92,9 +93,11 @@ Hybrid retrieval, rebuilt from scratch and measured rather than tuned by eye.
 Press `/` to focus the box, `Esc` to clear. A query that starts with `Special:` is a command
 instead of a search (see Special pages below).
 
-`tools/search-eval.html` runs 185 labelled queries against the live app and diffs every one
-against `tools/eval-baseline.json`. Current: 170/185 top-1, MRR 0.950 (warm run), with the two
-probe sets at 64/78 and 48/77.
+`tools/search-eval.html` runs 187 labelled queries against the live app and diffs every one
+against `tools/eval-baseline.json`. Last run (2026-10-12, from the cloud session): 160/187 top-1,
+MRR 0.918. That session cannot rebuild the semantic index, so the newest cards are found by the
+lexical search alone until `tools/build-search-index.py` is run on the Mac; the last full warm
+run there gave 170/185, MRR 0.950, with the two probe sets at 64/78 and 48/77.
 **Wait for the semantic vectors to load before reading results**, or the run under-reports
 by a point or two; compare warm runs to warm runs.
 
@@ -113,7 +116,7 @@ by a point or two; compare warm runs to warm runs.
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
-  paragraph each one illustrates (152 on 130 cards).
+  paragraph each one illustrates (210 on 182 cards).
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
   modular basics and eleven more) end with a hand-picked row of the cards that are part of the
   same idea: LTE, Legendre and Kummer under p-adic valuation, the construction cards under
@@ -333,6 +336,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
   Checked by exhaustive search: the coin-row game is a first-player win for every length up to $80$, Chomp is a first-player win on every board up to $4 \times 5$ other than one square, the largest intersecting families match $\binom{n - 1}{k - 1}$ for $(n, k)$ up to $(8, 3)$, and the $2 \times 8$ board has $171$ tilings by dominoes and squares.
 - **Subject chip on problem pages (2.5a).** Every problem page now opens its chip row with the problem's subject, Algebra, Combinatorics, Geometry, or Number Theory, and more than one when it spans subjects (the subject most of its tags belong to first). The same chip leads the chip row of each problem in a contest's list. The chip is derived, never typed by hand: from the subjects of the problem's tagged cards (Counting & Probability shows as Combinatorics; the proof-method cards carry no subject), then from a round that names its subject (HMMT Geometry), and an entry may override it with `subjects`. A problem with nothing to go on shows no chip until it is tagged, so today 1,365 of the 4,675 problems carry one. `tools/validate-problem-db.js` checks that an override names only the four subjects and keeps the subject of every tagged card, and reports the coverage. The plan also called for LIVE's concept tags as a source for untagged problems, but the LIVE cache lives on the Mac and the site is not reachable from the cloud session, so that source waits for a run there.
+- **Formula-box audit (2.4e), approved by Stanley.** Every box was measured at 1280 and 375 px. Nine crowded boxes were trimmed, with each removed row kept in Key forms (Newton's Sums gained $p_4$ there): Order Statistics on $[0, 1]$, Binet's Formula, Sums of Powers of Integers, Vieta's Formulas (Quadratic), Hyperbola Properties, Excentral Triangle, Eccentricity (the four conics now share one row), Polar Coordinates, and Newton's Sums. Twenty-two boxes that ran past three phone widths now break at their natural point inside one `gathered` block, with nothing removed; the Twelvefold Way table is a table and stays as it is. Four boxes that ended a row with a dangling colon were fixed first. Three descriptions that restated their now-shorter box were reworded to define the symbols instead.
+- **Consistency scan, first findings (2.1).** Six route and list blurbs stated the wrong number of cards (AMC Algebra, AMC Counting, AIME Geometry, Deeper Configurations, the Area Toolkit, Solid Geometry); they are corrected, and `tools/check-lists.py` now fails when a blurb's stated card or section count differs from the list. The README's opening line still said 557 cards (now 680, and 4,675 problems), CONVENTIONS quoted the 557-card counts as current, and the search-eval line quoted an older run; all are updated. Every purely numeric equation in the cards, write-ups, examples, and strategies (1,246 of them) was evaluated by computer algebra, and none is wrong.
 - **Gates run on Linux too.** The gates hard-coded macOS paths. They now read `JSC` and `CHROME` from the environment, falling back to the Mac paths. `tools/jsc-node` is a small Node stand-in for `jsc` (`load`, `print`, `read`, `quit`), and `check-labels.py` passes `--no-sandbox` when it runs as root. On Linux, `check-labels.py` reports five far-move labels (`thales-theorem`, `radical-axis`, `weierstrass-substitution`, `harmonic-addition`, `vertex-form`) that come from different font widths; on the Mac they pass. The semantic search index (`tools/build-search-index.py`) cannot be rebuilt from a cloud session, because its model download from HuggingFace is blocked there. Rebuild it on the Mac after pulling; until then, new cards rank by the lexical search alone.
 
 **2026-10-10**

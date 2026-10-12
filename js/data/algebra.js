@@ -34,8 +34,8 @@ window.MATH_SECTIONS.push({
         {
           id: "vietas-quadratic",
           name: "Vieta's Formulas (Quadratic)",
-          latex: String.raw`r + s = -\frac{b}{a}, \qquad rs = \frac{c}{a}, \qquad r^2 + s^2 = (r+s)^2 - 2rs, \qquad \frac{1}{r} + \frac{1}{s} = \frac{r+s}{rs}, \qquad |r - s| = \frac{\sqrt{\Delta}}{|a|}`,
-          description: String.raw`Vieta's Formulas for a quadratic give the sum and product of its roots straight from the coefficients: the roots $r$ and $s$ of $ax^2 + bx + c = 0$ satisfy $r + s = -\frac ba$ and $rs = \frac ca$. Any symmetric expression in the two roots then follows without solving, such as $r^2 + s^2 = (r + s)^2 - 2rs$ and $\frac1r + \frac1s = \frac{r + s}{rs}$. They also run in reverse: two numbers with sum $p$ and product $q$ are the roots of $x^2 - px + q = 0$, which solves a system like $x + y = 7$, $xy = 12$ at once.`,
+          latex: String.raw`r + s = -\frac{b}{a}, \qquad rs = \frac{c}{a}`,
+          description: String.raw`Vieta's Formulas for a quadratic read the sum and product of its roots straight off the coefficients, where $r$ and $s$ are the roots of $ax^2 + bx + c = 0$ with $a \ne 0$. Any symmetric expression in the two roots then follows without solving, such as $r^2 + s^2 = (r + s)^2 - 2rs$ and $\frac1r + \frac1s = \frac{r + s}{rs}$. They also run in reverse: two numbers with sum $p$ and product $q$ are the roots of $x^2 - px + q = 0$, which solves a system like $x + y = 7$, $xy = 12$ at once.`,
           keywords: ["sum of roots", "product of roots", "vieta", "vietas formulas", "roots sum and product", "quadratic root relations"],
           importance: "high",
           tier: "AMC",
@@ -54,8 +54,8 @@ window.MATH_SECTIONS.push({
         {
           id: "newtons-sums",
           name: "Newton's Sums",
-          latex: String.raw`p_k = e_1 p_{k-1} - e_2 p_{k-2} + \cdots + (-1)^{k-1} k\, e_k, \qquad p_1 = e_1, \qquad p_2 = e_1 p_1 - 2e_2, \qquad p_3 = e_1 p_2 - e_2 p_1 + 3e_3, \qquad p_4 = e_1 p_3 - e_2 p_2 + e_3 p_1 - 4e_4`,
-          description: String.raw`Newton's Sums express the power sums $p_k = \sum r_i^k$ of a polynomial's roots in terms of the elementary symmetric functions $e_1, e_2, \ldots$, which the coefficients supply. Each power sum is built from the earlier ones: $p_1 = e_1$, $p_2 = e_1p_1 - 2e_2$, $p_3 = e_1p_2 - e_2p_1 + 3e_3$, and so on. So any power sum of the roots can be found without finding the roots.`,
+          latex: String.raw`p_k = e_1 p_{k-1} - e_2 p_{k-2} + \cdots + (-1)^{k-1} k\, e_k, \qquad p_1 = e_1, \qquad p_2 = e_1 p_1 - 2e_2`,
+          description: String.raw`Newton's Sums express the power sums $p_k = \sum r_i^k$ of a polynomial's roots in terms of the elementary symmetric functions $e_1, e_2, \ldots$, which the coefficients supply. Each power sum is built from the earlier ones and one more coefficient, the third rung being $p_3 = e_1p_2 - e_2p_1 + 3e_3$, so any power sum of the roots can be found without finding the roots.`,
           keywords: ["power sums", "sum of squares of roots", "sum of cubes of roots", "symmetric"],
           importance: "medium",
           tier: "AIME Early",
@@ -106,7 +106,7 @@ window.MATH_SECTIONS.push({
         {
           id: "polynomial-crt",
           name: "Chinese Remainder Theorem for Polynomials",
-          latex: String.raw`P(x) \bmod (x-a)(x-b) = P(a) + \frac{P(b) - P(a)}{b - a}\,(x - a), \qquad \gcd(m_1, m_2) = 1 \implies \text{remainders mod } m_1, m_2 \text{ fix the remainder mod } m_1 m_2`,
+          latex: String.raw`P(x) \bmod (x-a)(x-b) = P(a) + \frac{P(b) - P(a)}{b - a}\,(x - a), \qquad \begin{gathered} \gcd(m_1, m_2) = 1 \implies \text{remainders mod } m_1, m_2 \\ \text{fix the remainder mod } m_1 m_2 \end{gathered}`,
           description: String.raw`The Chinese Remainder Theorem for Polynomials says that the remainders of a polynomial modulo coprime polynomials determine its remainder modulo their product, just as the [[crt|Chinese Remainder Theorem]] does for integers. Its everyday form needs no long division: the remainder modulo a product $(x - a)(x - b)$ is the line through $(a, P(a))$ and $(b, P(b))$, because each value is itself a remainder by the [[factor-remainder-theorem|Remainder Theorem]].`,
           keywords: ["polynomial crt", "chinese remainder theorem for polynomials", "remainder mod a quadratic", "remainder when divided by (x-a)(x-b)", "coprime polynomials", "remainder by a product", "remainder mod a product of factors"],
           importance: "medium",
@@ -518,8 +518,8 @@ window.MATH_SECTIONS.push({
         {
           id: "power-sums",
           name: "Sums of Powers of Integers",
-          latex: String.raw`\sum_{k=1}^{n} k = \frac{n(n+1)}{2}, \quad \sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}, \quad \sum_{k=1}^{n} k^3 = \left(\frac{n(n+1)}{2}\right)^2, \quad \sum_{k=1}^{n} (2k-1) = n^2, \quad \sum_{k=1}^{n} 2k = n(n+1)`,
-          latexPlain: String.raw`1 + 2 + \cdots + n = \tfrac{n(n+1)}{2}, \quad 1^2 + 2^2 + \cdots + n^2 = \tfrac{n(n+1)(2n+1)}{6}, \quad 1^3 + 2^3 + \cdots + n^3 = \left(\tfrac{n(n+1)}{2}\right)^2, \quad 1 + 3 + \cdots + (2n-1) = n^2, \quad 2 + 4 + \cdots + 2n = n(n+1)`,
+          latex: String.raw`\sum_{k=1}^{n} k = \frac{n(n+1)}{2}, \quad \sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}, \quad \sum_{k=1}^{n} k^3 = \left(\frac{n(n+1)}{2}\right)^2`,
+          latexPlain: String.raw`1 + 2 + \cdots + n = \tfrac{n(n+1)}{2}, \quad 1^2 + 2^2 + \cdots + n^2 = \tfrac{n(n+1)(2n+1)}{6}, \quad 1^3 + 2^3 + \cdots + n^3 = \left(\tfrac{n(n+1)}{2}\right)^2`,
           description: String.raw`The power sum formulas give the sums of the first $n$ positive integers, of their squares, and of their cubes in closed form: $\sum k = \frac{n(n+1)}{2}$, $\sum k^2 = \frac{n(n+1)(2n+1)}{6}$, and $\sum k^3 = \left(\frac{n(n+1)}{2}\right)^2$, each summed from $k = 1$ to $n$. With them, any polynomial summed over a range reduces to a formula in $n$. The sum of the cubes is the square of the sum of the numbers, a fact worth knowing on its own. The first $n$ odd numbers add to $n^2$ and the first $n$ even numbers to $n(n+1)$; the number of terms is $n$, so the even numbers up to $100$ have $n = 50$.`,
           keywords: ["sum of squares", "sum of cubes", "square of the sum", "sum of the first n cubes", "sum of the first n squares", "1 cubed plus 2 cubed", "nicomachus", "triangular numbers", "odd numbers"],
           importance: "medium",
@@ -540,8 +540,8 @@ window.MATH_SECTIONS.push({
         {
           id: "binets-formula",
           name: "Binet's Formula",
-          latex: String.raw`F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}, \quad \varphi = \frac{1+\sqrt5}{2},\ \psi = \frac{1-\sqrt5}{2}, \qquad F_{n-1}F_{n+1} - F_n^2 = (-1)^n, \qquad \gcd(F_m, F_n) = F_{\gcd(m,n)}, \qquad F_{m+n} = F_mF_{n+1} + F_{m-1}F_n, \qquad \sum_{i=1}^{n} F_i^2 = F_nF_{n+1}`,
-          latexPlain: String.raw`F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}, \quad \varphi = \frac{1+\sqrt5}{2},\ \psi = \frac{1-\sqrt5}{2}, \qquad F_{n-1}F_{n+1} - F_n^2 = (-1)^n, \qquad \gcd(F_m, F_n) = F_{\gcd(m,n)}, \qquad F_{m+n} = F_mF_{n+1} + F_{m-1}F_n, \qquad F_1^2 + F_2^2 + \cdots + F_n^2 = F_nF_{n+1}`,
+          latex: String.raw`F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}, \quad \varphi = \frac{1+\sqrt5}{2},\ \psi = \frac{1-\sqrt5}{2}`,
+          latexPlain: String.raw`F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}, \quad \varphi = \frac{1+\sqrt5}{2},\ \psi = \frac{1-\sqrt5}{2}`,
           description: String.raw`Binet's Formula writes the $n$th Fibonacci number $F_n$ in closed form through the two roots $\varphi$ and $\psi$ of $x^2 = x + 1$, the golden ratio and its conjugate. Since $|\psi| \lt 1$, $F_n$ is simply the nearest integer to $\frac{\varphi^n}{\sqrt5}$, which gives its growth rate and digit count at once. The card also collects the Fibonacci identities that do most of the contest work: Cassini's identity, the gcd of two Fibonacci numbers, the addition formula, the sum of the squares, and $F_1 + \cdots + F_n = F_{n+2} - 1$.`,
           keywords: ["fibonacci", "binet", "cassini", "golden ratio", "gcd", "lucas numbers"],
           importance: "medium",
@@ -715,7 +715,7 @@ window.MATH_SECTIONS.push({
         {
           id: "schurs-inequality",
           name: "Schur's Inequality",
-          latex: String.raw`x^t(x-y)(x-z) + y^t(y-x)(y-z) + z^t(z-x)(z-y) \ge 0 \ \ (x, y, z \ge 0,\ t > 0), \qquad t = 1: \;\; x^3 + y^3 + z^3 + 3xyz \ge xy(x+y) + yz(y+z) + zx(z+x)`,
+          latex: String.raw`\begin{gathered} x^t(x-y)(x-z) + y^t(y-x)(y-z) + z^t(z-x)(z-y) \ge 0 \\ (x, y, z \ge 0,\ t > 0) \end{gathered}, \qquad \begin{gathered} t = 1: \;\; x^3 + y^3 + z^3 + 3xyz \\ \ge xy(x+y) + yz(y+z) + zx(z+x) \end{gathered}`,
           description: String.raw`The $t = 1$ case expands to $x^3 + y^3 + z^3 + 3xyz \ge xy(x+y) + yz(y+z) + zx(z+x)$, the classic degree-$3$ symmetric inequality that AM–GM and Muirhead cannot reach. Equality when $x = y = z$, or when two are equal and the third is $0$.`,
           keywords: ["schur", "symmetric inequality", "three variables", "t equals 1", "degree 3"],
           importance: "low",

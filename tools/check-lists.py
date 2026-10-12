@@ -190,4 +190,26 @@ if nbad or not nbatches:
         print("   " + b)
     print("FAIL - new-card batches" if nbad else "FAIL - new-cards.js parsed to nothing")
     sys.exit(1)
+# ---- stated counts ---------------------------------------------------------------------------
+# A route or list blurb that says "N cards across M sections" goes stale the moment a card is
+# added or moved, and nothing else notices (six were wrong on 2026-10-12). Count and compare.
+cbad2 = []
+starts = [m.start() for m in re.finditer(r'\{ id: "([a-z0-9-]+)", name: "', src)]
+for k, st in enumerate(starts):
+    chunk = src[st: starts[k + 1] if k + 1 < len(starts) else len(src)]
+    lid = re.match(r'\{ id: "([a-z0-9-]+)"', chunk).group(1)
+    stated = re.search(r'(\d+) cards?(?: across (\d+) sections?)?', chunk.split("ids:")[0].split("sections:")[0])
+    if not stated:
+        continue
+    ids = [i for blob in re.findall(r'ids: \[([^\]]*)\]', chunk) for i in re.findall(r'"([a-z0-9-]+)"', blob)]
+    nsec = len(re.findall(r'\{ title: "', chunk))
+    if int(stated.group(1)) not in (len(ids), len(set(ids))):
+        cbad2.append("%s says %s cards, has %d" % (lid, stated.group(1), len(set(ids))))
+    if stated.group(2) and int(stated.group(2)) != nsec:
+        cbad2.append("%s says %s sections, has %d" % (lid, stated.group(2), nsec))
+if cbad2:
+    for b in cbad2:
+        print("   " + b)
+    print("FAIL - a list blurb states the wrong count")
+    sys.exit(1)
 print("OK - every list id resolves and every route is complete")

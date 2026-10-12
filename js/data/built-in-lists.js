@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 118 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 119 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 68 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 72 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -166,7 +166,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["indicator-variables", "generating-function-method"] }
     ] },
   { id: "route-aime-geometry", name: "AIME Geometry", kind: "route", tier: "AIME", subject: "Geometry",
-    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 81 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 80 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
@@ -451,7 +451,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["medial-triangle", "pedal-triangle", "incenter-coordinates", "barycentric-coordinates", "fermat-point"] }
     ] },
   { id: "config-geometry-deep", name: "Deeper Configurations", kind: "configuration", subject: "Recognize",
-    blurb: "The named-configuration catalogue: results that are genuinely lovely and occasionally decisive, but that you will not meet often \u2014 every card here is low importance or below, and many are olympiad-only. 43 cards across 7 groups. Work Geometry Configurations first; this is what is left after it.",
+    blurb: "The named-configuration catalogue: results that are genuinely lovely and occasionally decisive, but that you will not meet often \u2014 every card here is low importance or below, and many are olympiad-only. 44 cards across 7 groups. Work Geometry Configurations first; this is what is left after it.",
     sections: [
       { title: "Circle Configurations",
         note: "Named results about points on a circle. Beautiful, and worth knowing exist, but rarely the step a problem is waiting for.",
@@ -476,7 +476,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["descartes-circle-theorem", "arbelos", "corner-circle-chain", "caseys-theorem", "mixtilinear-incircle", "sawayama-thebault", "brocards-theorem"] }
     ] },
   { id: "config-area-toolkit", name: "Every Way to Find an Area", kind: "configuration", subject: "Recognize",
-    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 36 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
+    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 38 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
     sections: [
       { title: "From the Side Lengths Alone",
         note: "No angles, no height. Heron is the general answer and the one to reach for when a problem gives you three numbers and nothing else.",
@@ -520,7 +520,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["chord-length", "common-chord-length", "equal-chords-arcs", "ptolemys-theorem", "law-of-cosines", "law-of-sines", "midsegment-theorem", "trapezoid-special-segments", "cotangent-rule"] }
     ] },
   { id: "config-solid-geometry", name: "The 3D Toolkit", kind: "configuration", subject: "Recognize",
-    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 27 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
+    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 26 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
     sections: [
       { title: "Volumes & Surface Areas",
         note: "The memorized layer. Everything else on this page assumes you can already get a volume once the solid is identified.",
