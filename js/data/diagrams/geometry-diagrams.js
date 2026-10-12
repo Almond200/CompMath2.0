@@ -4398,7 +4398,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(A, [16, 6]), "A", GLD, 13),
       txt(add(A2, [6, -12]), "A′", ACC, 13),
       txt(add(onC(O, 60, a0 - th / 2), [8, -4]), "θ", ORG, 13),
-      cap(430, 312, "R_θ turns A to A′ about the origin — det = +1, so orientation is kept")
+      cap(430, 312, "R<sub>θ</sub> turns A to A′ about the origin — det = +1, so orientation is kept")
     ]);
   })(), (() => {
     // Reflection in the line through the origin at angle alpha: the image sits
@@ -4415,7 +4415,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
       txt(add(B, [-3, -12]), "B", GLD, 13),
       txt(add(B2, [14, 10]), "B′", ACC, 13),
       txt(add(M1, [4, -8]), "α", ORG, 13, "start"),
-      cap(430, 312, "F_α reflects B in the mirror at angle α — det = −1, so orientation is reversed")
+      cap(430, 312, "F<sub>α</sub> reflects B in the mirror at angle α — det = −1, so orientation is reversed")
     ]);
   })()];
 
@@ -7176,7 +7176,7 @@ DIAGRAMS["trig-ceva"] = [(() => {
         txt(add(P1, [12, 5]), "1", ACC, 13.5, "start"), txt(add(Pk, [-4, -12]), "ω²", ACC, 13.5),
         txt(add(O, [25, -41]), "kπ/n", GLD, 12, "end"),
         txt(add(O, [60, -3]), "sin(kπ/n)", GLD, 12),
-        cap(430, 300, "On the unit circle the points 1 and ω^k are separated by the central angle 2kπ/n (here n = 7 and k = 2). The radius that bisects that angle meets the chord at a right angle, so each half of the chord is sin(kπ/n), and |1 − ω^k| = 2 sin(kπ/n)." + (ok ? "" : " MISMATCH"))
+        cap(430, 300, "On the unit circle the points 1 and ω<sup>k</sup> are separated by the central angle 2kπ/n (here n = 7 and k = 2). The radius that bisects that angle meets the chord at a right angle, so each half of the chord is sin(kπ/n), and |1 − ω<sup>k</sup>| = 2 sin(kπ/n)." + (ok ? "" : " MISMATCH"))
       ]);
     })()
   };

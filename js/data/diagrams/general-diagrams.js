@@ -670,11 +670,11 @@
       seg(P, F, GLD, 1.5, "4 3"), seg(O, F, GLD, 2.4),
       `<path d="M ${pf(add(O, [30, 0]))} A 30 30 0 0 0 ${pf(onC(O, 30, th))}" fill="none" stroke="${ACC}" stroke-width="1.8"/>`,
       txt(onC(O, 46, th / 2), "θ", ACC, 13),
-      txt(add(P, [30, -10]), "e^{iθ}", GLD, 13),
+      txt(add(P, [30, -10]), 'e<tspan dy="-6" font-size="0.75em">iθ</tspan>', GLD, 13),
       txt([mid(O, F)[0], O[1] + 18], "cos θ", GLD, 12),
       txt([P[0] + 30, mid(P, F)[1]], "sin θ", GLD, 12),
       txt(add(mid(O, P), [-24, -8]), "1", DIM, 12),
-      cap(460, 330, "e^{iθ} is the point at angle θ on the unit circle: real part cos θ, imaginary part sin θ")
+      cap(460, 330, "e<sup>iθ</sup> is the point at angle θ on the unit circle: real part cos θ, imaginary part sin θ")
     ]);
   })()];
 
@@ -2353,7 +2353,7 @@
           parts.push(txt([X0 + (j - 0.5) * c, Y0 + (i - 0.5) * c + 5], `x<tspan font-size="9" dy="-5">${i + j}</tspan>`, hit ? GLD : DIM, 12.5));
         }
       }
-      parts.push(cap(430, 270, `Each cell is one term x^i · x^j = x^(i+j) of (x + x² + ⋯ + x⁶)², one per pair of rolls. The terms with exponent 5 lie on one anti-diagonal, and there are ${cnt} of them, so the coefficient of x⁵, the number of rolls summing to 5, is ${cnt}.` + (cnt === 4 ? "" : " MISMATCH")));
+      parts.push(cap(430, 270, `Each cell is one term x<sup>i</sup> · x<sup>j</sup> = x<sup>i+j</sup> of (x + x² + ⋯ + x⁶)², one per pair of rolls. The terms with exponent 5 lie on one anti-diagonal, and there are ${cnt} of them, so the coefficient of x⁵, the number of rolls summing to 5, is ${cnt}.` + (cnt === 4 ? "" : " MISMATCH")));
       return wrap(430, 270, parts);
     })()
   };
@@ -2439,7 +2439,7 @@
       parts.push(rect(X0, Y0, n * u, n * u, DIM, 1.6));
       parts.push(txt([X0 + n * u + 14, Y0 + 40], `T₄ = ${gold}`, GLD, 13, "start"), txt([X0 + n * u + 14, Y0 + 64], `T₃ = ${blue}`, ACC, 13, "start"));
       parts.push(txt([X0 + n * u / 2, Y0 + n * u + 22], "4", DIM, 13), txt([X0 - 12, Y0 + n * u / 2 + 5], "4", DIM, 13, "end"));
-      parts.push(cap(430, 250, `Two staircases, of heights 1 to 4 (gold) and 1 to 3 (blue), interlock exactly into a 4 × 4 square: T₃ + T₄ = ${blue} + ${gold} = 16 = 4². In general T_(n−1) + T_n = n².` + (gold + blue === 16 && gold === 10 ? "" : " MISMATCH")));
+      parts.push(cap(430, 250, `Two staircases, of heights 1 to 4 (gold) and 1 to 3 (blue), interlock exactly into a 4 × 4 square: T₃ + T₄ = ${blue} + ${gold} = 16 = 4². In general T<sub>n−1</sub> + T<sub>n</sub> = n².` + (gold + blue === 16 && gold === 10 ? "" : " MISMATCH")));
       return wrap(430, 250, parts);
     })()
   };
