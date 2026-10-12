@@ -896,7 +896,7 @@
       f.forEach(function (pe) { tau *= (pe[1] + 1); sig *= (Math.pow(pe[0], pe[1] + 1) - 1) / (pe[0] - 1); });
       out.innerHTML =
         '<div class="tool-fact">' + K(n + " = " + factorTex(f)) + "</div>" +
-        '<div class="tool-cap">Number of divisors τ(n) = ∏(eᵢ+1) = <b>' + tau + "</b>. &nbsp; Sum of divisors σ(n) = ∏ (pᵢ^{eᵢ+1}−1)/(pᵢ−1) = <b>" + Math.round(sig) + "</b>.</div>";
+        '<div class="tool-cap">Number of divisors ' + K("\\tau(n) = \\prod (e_i + 1)") + ' = <b>' + tau + "</b>. &nbsp; Sum of divisors " + K("\\sigma(n) = \\prod \\frac{p_i^{e_i+1} - 1}{p_i - 1}") + " = <b>" + Math.round(sig) + "</b>.</div>";
     }
     host.querySelector(".nd-go").addEventListener("click", run); wireEnter(host, ".nd-n", run); run();
   } };

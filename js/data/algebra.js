@@ -575,7 +575,7 @@ window.MATH_SECTIONS.push({
           name: "First-Order Recurrence $a_n = r a_{n-1} + d$",
           latex: String.raw`L = \frac{d}{1 - r} \;\; (r \ne 1), \qquad a_n - L = r^n (a_0 - L), \qquad a_n = r^n (a_0 - L) + L`,
           description: String.raw`A first-order recurrence $a_n = ra_{n-1} + d$ builds each term from the one before by multiplying by $r$ and adding $d$, and it is solved through its fixed point $L = \frac{d}{1 - r}$: measured from $L$ the sequence is geometric, $a_n - L = r^n(a_0 - L)$. It is the model behind mixing, dilution, interest with deposits, and population questions. The terms approach $L$ when $|r| \lt 1$ and run away otherwise; if $r = 1$ there is no fixed point and the sequence is arithmetic, $a_n = a_0 + nd$.`,
-          keywords: ["first order recurrence", "recursion", "recursive", "recursive sequence", "fixed point", "a_n = r a_{n-1} + d", "geometric plus constant", "steady state", "dilution", "compound interest"],
+          keywords: ["first order recurrence", "recursion", "recursive", "recursive sequence", "fixed point", "a_n = r a_(n-1) + d", "geometric plus constant", "steady state", "dilution", "compound interest"],
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]

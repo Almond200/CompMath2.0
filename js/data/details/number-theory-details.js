@@ -2547,6 +2547,9 @@ An AIME tool: count pairs adding without carrying, or find how a digit sum can c
 - $S(2^k) = \frac{4^k + 2}{3}$ — the recurrence unwound from $S(1) = 1$
 - $S(n) = \alt{\sum_{j \ge 0} \left\lceil \tfrac12 \lfloor n/2^j \rfloor \right\rceil^2}{\left\lceil \tfrac n2 \right\rceil^2 + \left\lceil \tfrac12 \lfloor \tfrac n2 \rfloor \right\rceil^2 + \left\lceil \tfrac12 \lfloor \tfrac n4 \rfloor \right\rceil^2 + \cdots}$ — each round of halving adds the square of its count of odd numbers
 
+## Conditions
+$n$ is a positive integer and $f(k)$ is the largest odd divisor of $k$, so $f(k) = k$ when $k$ is odd. The recurrence starts from $S(1) = 1$, or from $S(0) = 0$.
+
 ## Why it works
 Split the numbers by parity, and the even half is a smaller copy of the same sum.
 
@@ -2560,6 +2563,9 @@ For a power of $2$ the recurrence telescopes: $$S(2^k) = 4^{k-1} + 4^{k-2} + \cd
 
 ## Applications
 Sums over $1, 2, \ldots, n$ of a quantity that depends only on the odd part of each number, such as the largest odd divisor or the highest power of $2$.
+
+## Contest profile
+No problems here are tagged with it yet. On the AIME and in olympiad number theory it appears as a sum of largest odd divisors, or of the powers of $2$ dividing each number, up to a large bound, where the halving recurrence replaces a term-by-term count.
 `,
 
 "cycle-hunting": String.raw`

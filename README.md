@@ -1,6 +1,6 @@
 # Competition Math Reference
 
-A searchable reference for MATHCOUNTS, AMC 10/12, AIME and olympiad training. 680 cards
+A searchable reference for AMC 10/12, AIME and olympiad training. 680 cards
 covering formulas, methods, and patterns, plus a database of 4,675 past contest problems
 (4,616 with their full statements), of which 1,367 have a written strategy and 1,365 are
 cross-linked to the cards their solutions run through.
@@ -44,9 +44,15 @@ CONVENTIONS §0 has the full model.
   `blurb`. A group's address (`#/formulas/geometry/circles`) opens the subject at that heading;
   so do the sidebar's group links. The sidebar shows only the current space; clicking the open
   subject's header folds it.
-- **Problem pages** (`#/problem/<slug>`): the statement first (AMC and AIME problems; other contests link out),
-  with its credit line, then the strategy, and near the bottom the chain of cards the problem uses
-  (Pattern → Method → Formulas). A problem with a figure says so and points to AoPS.
+- **Problem pages** (`#/problem/<slug>`): a subject chip and the contest, the statement with its
+  figures and credit line (AMC and AIME problems; other contests link out), then "How this problem
+  works", which holds the strategy and the chain of cards the problem uses (Pattern → Method → Formulas).
+- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, your lists
+  (and a box to make one), every year of every contest, and the study lists. A contest year
+  (`#/problems/aime/2024`) and a single list (`#/list/<id>`) open as plain pages with a link back.
+- **Search** results are one list in order of relevance (formulas, methods, patterns, problems
+  and study lists, each labelled), shown full width with no space highlighted. So are tag pages
+  and special pages.
 
 ## Credits
 
@@ -57,12 +63,6 @@ which publishes every AMC and AIME problem with the MAA's permission; each probl
 under the statement. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
 answer choices only, never solutions or hints) into `js/data/problems/statements/<year>.js` and `js/data/problems/figures/`.
 (AoPS blocks scripts with a Cloudflare check, so it is not used.)
-- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, your lists
-  (and a box to make one), every year of every contest, and the study lists. A contest year
-  (`#/problems/aime/2024`) and a single list (`#/list/<id>`) open as plain pages with a link back.
-- **Search** results are one list in order of relevance (formulas, methods, patterns, problems
-  and study lists, each labelled), shown full width with no space highlighted. So are tag pages
-  and special pages.
 
 Addresses are real, so Back, Forward and bookmarks work; a revisited history entry returns to
 where it was left, a fresh click opens at the top. The first redesign's addresses
@@ -104,14 +104,15 @@ by a point or two; compare warm runs to warm runs.
 ## Other features
 
 - **Contest tiers** label every card with where it is first needed: AMC (AMC 10 and 12 problems 1 to
-  25), AIME Early (AIME 1 to 10), AIME Late (AIME 11 to 15), or Olympiad. Tier and level filters
-  narrow any section; Settings switches the label to importance (`high` down to
-  `lowest`), and cards are ordered by tier by default.
+  25), AIME Early (AIME 1 to 10), AIME Late (AIME 11 to 15), or Olympiad, and with its importance
+  within its subsection (`high` down to `lowest`); the card's split tag shows both. One filter,
+  behind the funnel in the top bar, narrows every list by tier and importance.
 - **Problems**, reached from Practice by contest and year, each linked to the cards its
-  solution uses, with a pattern, method and formula chain and a strategy that stays hidden until asked for.
-- **Study lists**, also on Practice, hold 31 curated sets alongside your own. Twelve contest routes
-  (tier x subject) plus four olympiad ones are *complete by construction* — every card
-  carrying that level and subject is in them, which `tools/check-lists.py` enforces. A list
+  solution uses, with a pattern, method and formula chain and a strategy that is always shown.
+- **Study lists**, also on Practice, hold 36 curated sets alongside your own. The twelve study
+  routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
+  of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 24
+  are study lists on one theme. A list
   you build yourself is grouped into sections automatically, by matching its cards against
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
@@ -177,7 +178,12 @@ js/data/patterns.js            the Methods and Patterns books, one section each
 js/data/details/*.js           long write-ups, keyed by card id
 js/data/examples-supplement.js worked examples, keyed by card id
 js/data/diagrams/*.js          computed SVG figures, keyed by card id
-js/data/problems/*.js          contest problem database
+js/data/problems/problem-db.js contest problem database: tags and strategies
+js/data/problems/*-problems.js per-card practice questions and contest references
+js/data/problems/statements/   problem statements by year, loaded on demand
+js/data/problems/figures/      the statements' SVG figures
+js/data/new-cards.js           the batches Special:NewCards lists
+js/math-tools.js               the interactive "play with it" widgets on non-geometry cards
 js/geo-interactive.js          draggable geometry widgets
 js/search-semantic.js          semantic channel (loads js/data/search-vectors.*)
 js/data/built-in-lists.js      curated study lists: routes, configurations, curiosities
@@ -193,9 +199,12 @@ tools/label-audit.html         the page check-labels drives; #show draws every o
 tools/check-lists.py           list ids resolve, every route is complete, Connected formulas resolve
 tools/check-topics.py          every card carries a topic chip, and no subsection title awards a wrong one
 tools/check-lab.sh             parse-checks the inline script of each lab page
+tools/check-statements.py      every statement key and figure resolves, the credit header is present
+tools/find-duplicate-forms.py  lists formulas stated on two cards (a report for rule 17)
+tools/jsc-node                 stands in for macOS jsc under Node, for the JS checks
 ```
 
-Run every checker before committing (the seven in CONVENTIONS §7); each exits non-zero on a
+Run every checker before committing (the list in CONVENTIONS §7); each gate exits non-zero on a
 finding.
 
 A card's write-up, examples and diagram are all keyed by its id in flat maps, so **moving a
@@ -226,10 +235,12 @@ index and filters pick it up automatically. Multi-formula `latex` separated by `
 The `subject` field matters: topic chips and the symbol-to-concept rules are gated on it,
 so a method filed under Methods or Patterns still resolves against its home subject.
 
-Longer content goes in the id-keyed side files: `## Why it works`, `## How to use it` and
-`## On contests` in `js/data/details/`, a `{ q, s }` pair in `examples-supplement.js`. On a
-method or pattern card a leading `## Key forms` block is pulled out and rendered under the
-description; each bullet may carry an explanation after a ` — `, shown as gray subtext.
+Longer content goes in the id-keyed side files: the write-up in `js/data/details/`, whose
+headings depend on the card's kind (CONVENTIONS §2), and a `{ q, s }` pair in
+`examples-supplement.js`. A leading `## Key forms` block is pulled out and rendered under the
+description; each bullet may carry an explanation after a ` — `, shown as gray subtext. Register
+the card in `tools/rewrite-register.json` and in a batch of `js/data/new-cards.js`
+(CONVENTIONS, "New cards are registered").
 
 If the `latex` uses `\sum` or `\prod`, add a `latexPlain` right after it with the terms written
 out ($a_1 + a_2 + \cdots + a_n$); a Key forms bullet with a sigma writes both forms as
@@ -338,6 +349,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 - **Subject chip on problem pages (2.5a).** Every problem page now opens its chip row with the problem's subject, Algebra, Combinatorics, Geometry, or Number Theory, and more than one when it spans subjects (the subject most of its tags belong to first). The same chip leads the chip row of each problem in a contest's list. The chip is derived, never typed by hand: from the subjects of the problem's tagged cards (Counting & Probability shows as Combinatorics; the proof-method cards carry no subject), then from a round that names its subject (HMMT Geometry), and an entry may override it with `subjects`. A problem with nothing to go on shows no chip until it is tagged, so today 1,365 of the 4,675 problems carry one. `tools/validate-problem-db.js` checks that an override names only the four subjects and keeps the subject of every tagged card, and reports the coverage. The plan also called for LIVE's concept tags as a source for untagged problems, but the LIVE cache lives on the Mac and the site is not reachable from the cloud session, so that source waits for a run there.
 - **Formula-box audit (2.4e), approved by Stanley.** Every box was measured at 1280 and 375 px. Nine crowded boxes were trimmed, with each removed row kept in Key forms (Newton's Sums gained $p_4$ there): Order Statistics on $[0, 1]$, Binet's Formula, Sums of Powers of Integers, Vieta's Formulas (Quadratic), Hyperbola Properties, Excentral Triangle, Eccentricity (the four conics now share one row), Polar Coordinates, and Newton's Sums. Twenty-two boxes that ran past three phone widths now break at their natural point inside one `gathered` block, with nothing removed; the Twelvefold Way table is a table and stays as it is. Four boxes that ended a row with a dangling colon were fixed first. Three descriptions that restated their now-shorter box were reworded to define the symbols instead.
 - **Consistency scan, first findings (2.1).** Six route and list blurbs stated the wrong number of cards (AMC Algebra, AMC Counting, AIME Geometry, Deeper Configurations, the Area Toolkit, Solid Geometry); they are corrected, and `tools/check-lists.py` now fails when a blurb's stated card or section count differs from the list. The README's opening line still said 557 cards (now 680, and 4,675 problems), CONVENTIONS quoted the 557-card counts as current, and the search-eval line quoted an older run; all are updated. Every purely numeric equation in the cards, write-ups, examples, and strategies (1,246 of them) was evaluated by computer algebra, and none is wrong.
+- **Consistency scan, second findings (2.1).** Three geometry cards (Golden Ratio & the Regular Pentagon, Isosceles Tetrahedron, Tetrahedron Centroid & Medians) still had the old write-up headings (How to use it, On contests) and were missing from the conversion register; they now have the formula layout, with their old sections recorded in the migration ledger. Sum of Largest Odd Divisors had no Conditions or Contest profile, and the Chinese Remainder Theorem for Polynomials no Applications or Contest profile; both are added. The README no longer names MATHCOUNTS, says the strategy is always shown, describes the one tier-and-importance filter, counts 36 study lists with 12 routes, lists the problem page in its current order, and its Structure list names the statements, new-cards, widget, and checker files that were missing. CONVENTIONS §2 lists the headings each kind of card uses (it still showed the old three), and §7 adds `check-statements.py` and `find-duplicate-forms.py`. A caption in the divisor-sum widget and one search keyword no longer carry raw TeX.
 - **Gates run on Linux too.** The gates hard-coded macOS paths. They now read `JSC` and `CHROME` from the environment, falling back to the Mac paths. `tools/jsc-node` is a small Node stand-in for `jsc` (`load`, `print`, `read`, `quit`), and `check-labels.py` passes `--no-sandbox` when it runs as root. On Linux, `check-labels.py` reports five far-move labels (`thales-theorem`, `radical-axis`, `weierstrass-substitution`, `harmonic-addition`, `vertex-form`) that come from different font widths; on the Mac they pass. The semantic search index (`tools/build-search-index.py`) cannot be rebuilt from a cloud session, because its model download from HuggingFace is blocked there. Rebuild it on the Mac after pulling; until then, new cards rank by the lexical search alone.
 
 **2026-10-10**

@@ -4218,6 +4218,12 @@ For the repeated factor, differentiate $P(x) = (x-a)^2 Q(x) + R(x)$: every term 
 ## Useful observations
 - Modulo a product of $k$ distinct linear factors, the remainder is the polynomial of degree less than $k$ through the $k$ values, which the [[lagrange-interpolation-formula|Lagrange Interpolation Formula]] writes down directly.
 - Only the values at the roots of the modulus matter, so a polynomial given by an enormous formula is reduced by evaluating it, never by dividing.
+
+## Applications
+The remainder of a polynomial divided by a quadratic or by a product of linear factors, a polynomial given by its remainders modulo several factors, and remainders of huge powers such as $x^{100}$ modulo $x^2 - 1$ or $x^2 + 1$.
+
+## Contest profile
+No problems here are tagged with it yet. On the AMC 12 and the AIME it appears as a polynomial known only by its remainders modulo two linear factors, asking for the remainder modulo their product.
 `,
 
 "add-all-equations": String.raw`
