@@ -1223,13 +1223,12 @@ An AIME problem is sometimes a nine-point circle fact in disguise: a circle thro
 ## Key forms
 - $d_1 + d_2 + d_3 = R + r$ — the signed distances from the circumcenter to the three sides
 - $d_a = R\cos A$, $d_b = R\cos B$, $d_c = R\cos C$ — each signed distance from its angle
-- $\cos A + \cos B + \cos C = 1 + \dfrac rR$ — the trigonometric form of the same identity
 
 ## Conditions
 A distance counts as positive when the circumcenter is on the same side of the line as the opposite vertex, and as negative when it is beyond, which happens for the side opposite an obtuse angle. In a right triangle that distance is $0$.
 
 ## Why it works
-The side $a$ subtends the central angle $2A$ at $O$, so the distance from $O$ to $a$ is the apothem $R\cos A$, which is negative exactly when $A$ is obtuse. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$ then gives $d_1 + d_2 + d_3 = R + r$.
+The side $a$ subtends the central angle $2A$ at $O$, so the distance from $O$ to $a$ is the apothem $R\cos A$, which is negative exactly when $A$ is obtuse. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$, from the [[triangle-angle-identities|identities for the angles of a triangle]], then gives $d_1 + d_2 + d_3 = R + r$.
 
 ## Useful observations
 - It is the geometric packaging of the cosine identity, and the identity bounds the cosine sum in $(1, \frac32]$, with $\frac32$ only for the equilateral triangle.
@@ -4526,9 +4525,7 @@ A cheap AMC and AIME identity, handy inside trigonometric computations and whene
 ## Key forms
 - $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$ — the inradius from the angles and the circumradius alone
 - $\cos\frac A2\cos\frac B2\cos\frac C2 = \frac{s}{4R}$ — the semiperimeter from the same data
-- $r = (s - a)\tan\frac A2$ — the tangent length from $A$ times the half-angle tangent, the bridge between an angle and the inradius
 - $\sin\frac A2 = \sqrt{\dfrac{(s - b)(s - c)}{bc}}$, $\cos\frac A2 = \sqrt{\dfrac{s(s - a)}{bc}}$ — half-angles from the sides alone
-- $\cos A + \cos B + \cos C = 1 + \dfrac rR$ and $\sin A + \sin B + \sin C = \dfrac sR$ — the full-angle sums
 
 ## Conditions
 $A$, $B$, $C$ are the angles of a triangle with opposite sides $a$, $b$, $c$, semiperimeter $s$, inradius $r$, and circumradius $R$. Every half-angle is acute, so the square roots are positive.
@@ -4542,7 +4539,7 @@ The sine sum is immediate: $\sin A = \frac{a}{2R}$, so $\sin A + \sin B + \sin C
 
 ## Useful observations
 - Since $\cos A + \cos B + \cos C \le \frac32$, the cosine-sum form gives $\frac rR \le \frac12$, which is Euler's Inequality $R \ge 2r$, with equality only for the equilateral triangle.
-- The companions $[ABC] = 2R^2\sin A\sin B\sin C$ and $r_a + r_b + r_c = 4R + r$ come from the same substitutions, and the exradius sum is on [[exradii|the exradii card]].
+- The area from the angles and $R$, and the sum of the exradii, come from the same substitutions; they are on [[trig-area-circumradius|Area from the Angles and the Circumradius]] and [[exradii|Excircles & Exradii]].
 - Each identity moves freely between sides and the data $(R, r, \text{angles})$, so a problem that gives some of these can be turned entirely into algebra.
 
 ## Applications

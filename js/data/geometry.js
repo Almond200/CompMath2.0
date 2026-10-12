@@ -550,7 +550,7 @@ window.MATH_SECTIONS.push({
           id: "triangle-half-angle-identities",
           name: "Triangle Half-Angle, R, r & s Identities",
           latex: String.raw`\sin\tfrac A2\sin\tfrac B2\sin\tfrac C2 = \frac{r}{4R}, \qquad \cos\tfrac A2\cos\tfrac B2\cos\tfrac C2 = \frac{s}{4R}`,
-          description: String.raw`The metric identities tying a triangle's angles to its inradius $r$, circumradius $R$, and semiperimeter $s$. The two half-angle products $\sin\frac A2\sin\frac B2\sin\frac C2 = \frac{r}{4R}$ and $\cos\frac A2\cos\frac B2\cos\frac C2 = \frac{s}{4R}$ are the workhorses; from them $\sin A + \sin B + \sin C = \frac sR = 4\cos\frac A2\cos\frac B2\cos\frac C2$, $\cos A + \cos B + \cos C = 1 + \frac rR$. Companions: $[ABC] = 2R^2\sin A\sin B\sin C$, $r_a + r_b + r_c = 4R + r$, and the side-to-angle bridge $\sin\frac A2 = \sqrt{\frac{(s-b)(s-c)}{bc}}$, $\cos\frac A2 = \sqrt{\frac{s(s-a)}{bc}}$. Together they turn any "given $R$, $r$, $s$" configuration into algebra.`,
+          description: String.raw`The metric identities tying a triangle's angles to its inradius $r$, circumradius $R$, and semiperimeter $s$. The two half-angle products $\sin\frac A2\sin\frac B2\sin\frac C2 = \frac{r}{4R}$ and $\cos\frac A2\cos\frac B2\cos\frac C2 = \frac{s}{4R}$ are the workhorses, and the sums of the full angles' sines and cosines follow from them (those are on the card of identities for angles summing to $180^\circ$). The bridge from sides to angles is $\sin\frac A2 = \sqrt{\frac{(s-b)(s-c)}{bc}}$ and $\cos\frac A2 = \sqrt{\frac{s(s-a)}{bc}}$. Together they turn any "given $R$, $r$, $s$" configuration into algebra.`,
           keywords: ["half angle triangle", "sin half product r/4R", "cos half product s/4R", "r = 4R sin", "s = 4R cos", "sin A + sin B + sin C = s/R", "cos A + cos B + cos C = 1 + r/R", "area 2R^2 sin", "exradii sum 4R+r", "sin half angle sides", "inradius circumradius identities"],
           importance: "medium",
           tier: "AIME Late",
@@ -1023,7 +1023,7 @@ window.MATH_SECTIONS.push({
         {
           id: "carnots-theorem",
           name: "Carnot's Theorem (Distances to the Sides)",
-          latex: String.raw`d_1 + d_2 + d_3 = R + r, \qquad d_a = R\cos A, \qquad \cos A + \cos B + \cos C = 1 + \frac rR`,
+          latex: String.raw`d_1 + d_2 + d_3 = R + r, \qquad d_a = R\cos A`,
           description: String.raw`The signed perpendicular distances from the circumcenter to the three sides sum to $R + r$ (negative if the circumcenter is on the far side of a side, i.e. obtuse triangles).`,
           keywords: ["circumcenter distances", "R plus r", "signed distances", "carnot theorem", "signed distances from circumcenter", "sum of distances to sides"],
           importance: "lower",

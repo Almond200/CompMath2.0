@@ -273,6 +273,14 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - **De Gua's Theorem:** the description now defines $A_0, \dots, A_3$, $h$, and $a, b, c$ (checked numerically).
   - **Hexagonal Pick:** the sentence that mixed cell unions with center-lattice polygons now says that $k$ cells are $2k$ unit triangles.
   - **More Factorizations Worth Knowing** and **Product of Pairwise Sums:** each restated the other's identity; each identity now stays on its own card, with a pointer from the other.
+  - **One home for the triangle-angle identities (rule 17).** Each fact now lives on one card and the others point to it:
+    - $a\sin\theta + b\cos\theta$ as one wave: Harmonic Addition (no longer a Key form of Angle Addition);
+    - $\tan\frac A2 = \frac{r}{s-a}$ and the half-angle tangent sum: the Half-Angle Tangent Identity (removed from Half Angle, the Squared-Angle Identities, and the R, r & s Identities);
+    - the product of three sines $60^\circ$ apart: Evenly-Spaced Angle Products (removed from Triple Angle, whose description now explains the formulas);
+    - $\log_a b = \frac{1}{\log_b a}$: Change of Base (removed from the Exponent–Log Swap);
+    - $\cos A + \cos B + \cos C = 1 + \frac rR$ and the sine sum: Identities for Angles Summing to $180^\circ$ (removed from Carnot's thumbnail and the R, r & s Identities, which point to it).
+
+    `tools/find-duplicate-forms.py` now also reads $\frac A2$ and $\frac{A}{2}$ as one fraction.
 - **Back keeps its place (Stanley).** Pressing the browser's Back button used to leave the page shifted a little. The saved pixel offset was restored before the math, fonts, and a problem's statement had finished laying out, and the browser's own scroll anchoring then moved it again. Each history entry now also saves an anchor (the element at the top of the view and its distance below the bar), and on Back the app puts that element back in place on every frame for a moment, stopping at the reader's first input. Checked on subject pages and problem pages: the anchor returns to within a pixel.
 - **Figures on cards: Off or On (Stanley).** The Curated choice is gone, along with its hand-picked card list (`CARD_DIAGRAM_IDS` in `js/app.js`); a browser that had Curated saved now shows every figure (On).
 - **Six cards from the LIVE concept tags (approved 2026-10-11).** All are AMC tier and low importance, judged from the number of LIVE problems tagged with each concept (`tools/importance-proposal.md`):

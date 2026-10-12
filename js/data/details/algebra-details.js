@@ -1231,7 +1231,7 @@ Almost always paired with [[log-rules|the log rules]], in 11 of the 15 problems 
 ## Key forms
 - $a^{\log_b c} = c^{\log_b a}$ — the base of a power and the argument of the logarithm in its exponent trade places
 - $x^{\log y} = y^{\log x}$ — the common-base version
-- $a^{\log_a x} = x$ and $\log_a b = \dfrac{1}{\log_b a}$ — the related anchors
+- $a^{\log_a x} = x$ — the related anchor; the reciprocal rule $\log_a b = \frac{1}{\log_b a}$ is on [[change-of-base|Change of Base]]
 
 ## Conditions
 The bases and arguments are positive and the bases are not $1$.
@@ -1565,7 +1565,6 @@ Routine simplification on the AMC and AIME, and the key to telescoping or symmet
 - $\sin(a \pm b) = \sin a\cos b \pm \cos a\sin b$ — the sine of a sum or difference
 - $\cos(a \pm b) = \cos a\cos b \mp \sin a\sin b$ — the cosine, with the sign flipped
 - $\tan(a \pm b) = \dfrac{\tan a \pm \tan b}{1 \mp \tan a\tan b}$ and $\cot(a \pm b) = \dfrac{\cot a\cot b \mp 1}{\cot b \pm \cot a}$
-- $a\sin\theta + b\cos\theta = \sqrt{a^2 + b^2}\,\sin(\theta + \varphi)$ with $\tan\varphi = \dfrac ba$ — read backwards, a sum of sine and cosine is one wave
 
 ## Conditions
 The formulas hold for all real angles $a$, $b$. The tangent and cotangent forms need the denominators and the tangents to exist.
@@ -1584,7 +1583,7 @@ The difference formulas follow by replacing $b$ with $-b$, using $\cos(-b) = \co
 ## Useful observations
 - Nearly everything else in trigonometry is downstream. Double angle is the case $a = b$, half angle is double angle read backwards, and shifts like $\sin(\theta + 90^\circ) = \cos\theta$ are the case $b = 90^\circ$.
 - Used directly, the formulas give exact values at $15^\circ$, $75^\circ$, and $105^\circ$ as sums and differences of $30^\circ$, $45^\circ$, and $60^\circ$.
-- Read backwards, they collapse a combination of sine and cosine into one wave, which is [[harmonic-addition|harmonic addition]]; its maximum is $\sqrt{a^2 + b^2}$.
+- Read backwards, they collapse a combination of sine and cosine into one wave, which is harmonic addition; its maximum is $\sqrt{a^2 + b^2}$.
 - The tangent form computes angle sums in geometry, such as the angle between two lines from their slopes, and it telescopes arctangent series.
 
 ## Applications
@@ -1664,7 +1663,6 @@ Mostly an AIME tool. It converts an angle the figure gives into the doubled or h
 ## Key forms
 - $\sin^2\dfrac\theta2 = \dfrac{1 - \cos\theta}{2}$ and $\cos^2\dfrac\theta2 = \dfrac{1 + \cos\theta}{2}$ — the squares of the half angle
 - $\tan\dfrac\theta2 = \dfrac{\sin\theta}{1 + \cos\theta} = \dfrac{1 - \cos\theta}{\sin\theta}$ — the tangent, with no square roots
-- in a triangle: $\tan\dfrac A2 = \dfrac{r}{s - a}$ — the half angle tied to the incircle
 
 ## Conditions
 Taking the square root of the first two needs a sign, decided by the quadrant of $\frac\theta2$. The tangent forms need $1 + \cos\theta \ne 0$ and $\sin\theta \ne 0$ respectively.
@@ -1751,7 +1749,6 @@ Pentagon problems and $15^\circ$ configurations reduce to these. The AIME expect
 - $\sin 3\theta = 3\sin\theta - 4\sin^3\theta$
 - $\cos 3\theta = 4\cos^3\theta - 3\cos\theta$
 - $\tan 3\theta = \dfrac{3\tan\theta - \tan^3\theta}{1 - 3\tan^2\theta}$
-- $\sin\theta\,\sin(60^\circ - \theta)\,\sin(60^\circ + \theta) = \dfrac{\sin 3\theta}{4}$, and the same with cosines: $\cos\theta\cos(60^\circ - \theta)\cos(60^\circ + \theta) = \dfrac{\cos 3\theta}{4}$
 
 ## Conditions
 The identities hold for all angles; the tangent form needs $\cos 3\theta \ne 0$ and $\tan\theta$ defined. In the cubic $4x^3 - 3x = c$ the trigonometric solution needs $\lvert c \rvert \le 1$.
@@ -1759,11 +1756,11 @@ The identities hold for all angles; the tangent form needs $\cos 3\theta \ne 0$ 
 ## Why it works
 Compose double and single angle additions: $\sin 3\theta = \sin(2\theta + \theta) = \sin 2\theta\cos\theta + \cos 2\theta\sin\theta$, and expanding with the double-angle formulas leaves $3\sin\theta - 4\sin^3\theta$.
 
-Alternatively, take the real and imaginary parts of $(\cos\theta + i\sin\theta)^3$ by [[de-moivre|De Moivre's Theorem]]. The product identity follows from multiplying the three factors with the product-to-sum formulas, or by a direct expansion.
+Alternatively, take the real and imaginary parts of $(\cos\theta + i\sin\theta)^3$ by [[de-moivre|De Moivre's Theorem]].
 
 ## Useful observations
 - $\cos 3\theta = 4\cos^3\theta - 3\cos\theta$ turns cubics with three real roots into trigonometric equations (the "casus irreducibilis"): cubics like $4x^3 - 3x = c$ are solved by $x = \cos\frac{\arccos c}{3}$ and its two rotations by $\frac{2\pi}{3}$.
-- The product identity collapses symmetric products: $\sin 20^\circ\sin 40^\circ\sin 80^\circ = \frac{\sin 60^\circ}{4} = \frac{\sqrt3}{8}$ in one line.
+- The sine form factors as a product of three sines $60^\circ$ apart, which collapses symmetric products of sines; that factorization is on [[evenly-spaced-angle-products|Evenly-Spaced Angle Products]].
 - Solved for $\sin^3\theta$ or $\cos^3\theta$, the formulas reduce cubes of sines and cosines to first powers of multiples of $\theta$.
 
 ## Applications
@@ -3333,7 +3330,6 @@ Splitting an integer into positive parts with the largest product is a MATHCOUNT
 ## Key forms
 - $\cos^2 A + \cos^2 B + \cos^2 C + 2\cos A\cos B\cos C = 1$ — the star identity
 - $\sin^2 A + \sin^2 B + \sin^2 C = 2 + 2\cos A\cos B\cos C$ — from $\cos^2 = 1 - \sin^2$
-- $\tan\frac A2\tan\frac B2 + \tan\frac B2\tan\frac C2 + \tan\frac C2\tan\frac A2 = 1$ — the half-angle twin
 - $\cos^2 A + \cos^2 B + \cos^2 C = 1$ exactly when the triangle is right
 
 ## Conditions
@@ -3342,12 +3338,11 @@ $A + B + C = 180^\circ$. The right-triangle test works because the product $\cos
 ## Why it works
 Use $C = \pi - (A + B)$, so $\cos C = -\cos(A + B)$. Substituting into $\cos^2 A + \cos^2 B + \cos^2 C$ and simplifying with product-to-sum collapses it to $1 - 2\cos A\cos B\cos C$, the star identity.
 
-The tangent and cotangent twins come the same way from $A + B + C = \pi$, with the half-angle version $\tan\frac A2\tan\frac B2 + \tan\frac B2\tan\frac C2 + \tan\frac C2\tan\frac A2 = 1$.
+The same substitution of $\pi - (A + B)$ for $C$ proves the tangent and cotangent identities for the angles, and the half angles, which add up to $\frac\pi2$, give the half-angle tangent sum on [[half-angle-tangent-identity|the Half-Angle Tangent Identity]].
 
 ## Useful observations
 - A symmetric combination of $\cos^2$, $\sin^2$, or $\sin\sin\cos$ of a triangle's angles is often the whole problem: the identity is applied and the missing term solved for.
 - The right-triangle test is fast: $\cos^2 A + \cos^2 B + \cos^2 C = 1$ if and only if one angle is $90^\circ$.
-- The half-angle twin is the one for incircle and excircle setups where the angles are halved.
 
 ## Applications
 Relations among the cosines or sines of a triangle's angles, the right-triangle test, and incircle setups.
