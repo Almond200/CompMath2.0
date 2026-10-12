@@ -1756,7 +1756,10 @@
     "nesbitt-inequality": "formula",
     "injectivity-surjectivity": "method",
     "cyclotomic-polynomials": "formula",
-    "gamblers-ruin": "formula"
+    "gamblers-ruin": "formula",
+    "strategy-stealing": "method",
+    "erdos-ko-rado": "formula",
+    "tiling-a-board": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -8362,6 +8365,24 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "strategy-stealing": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "erdos-ko-rado": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "tiling-a-board": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
       ]
     ]
   }

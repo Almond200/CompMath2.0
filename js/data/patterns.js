@@ -1471,7 +1471,7 @@ window.MATH_SECTIONS.push({
         { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
-        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound"] }
+        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
       ],
       formulas: [
         {
@@ -1518,6 +1518,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "strategy-stealing",
+          name: "Strategy Stealing and Symmetry Strategies",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A two-player game with no chance and no hidden information either has a symmetric board, with a center or a mirror line, or has the property that an extra move or piece never hurts the player who has it.`,
+          move: String.raw`For symmetry, answer every move with its mirror image, after first taking the center if there is one, so a reply always exists. For stealing, suppose the second player has a winning strategy, let the first player make any move and then follow that strategy, and derive a contradiction.`,
+          uses: ["sprague-grundy"],
+          latex: String.raw`\begin{gathered} \text{mirror: answer each move with its image} \\ \text{steal: an extra move never hurts} \implies \text{the first player wins} \end{gathered}`,
+          description: String.raw`Two ways to decide a game without solving it position by position. A symmetry strategy keeps the board symmetric after each of your moves, so whenever the opponent can move, the mirror image of that move is still available to you, and you are never the one stuck. Strategy stealing proves that the first player wins without saying how: if the second player had a winning strategy, the first player could make an arbitrary move and then use it, which is a contradiction whenever an extra move can only help.`,
+          keywords: ["strategy stealing", "symmetry strategy", "mirror strategy", "copy the opponent", "first player wins", "chomp", "hex", "take the center then mirror"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME", "Olympiad"]
         },
         {
           id: "complementary-counting",
@@ -2645,7 +2660,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Subset Conditions", blurb: "Subsets that must avoid a forbidden pair, such as two elements with a given sum, difference, or divisibility.", ids: ["subset-avoiding-relation"] },
         { title: "Logic & Probability Setups", blurb: "Puzzles made of statements, where only consistent guesses survive, and draws from a bag that change what is left.", ids: ["truth-tellers-logic", "drawing-without-replacement"] },
-        { title: "Strings & Sequences with a Rule", blurb: "Strings, tilings, and arrangements of a given length where a local rule forbids certain neighbors, counted by tracking what the last few symbols were.", ids: ["restricted-sequences"] }
+        { title: "Strings & Sequences with a Rule", blurb: "Strings, tilings, and arrangements of a given length where a local rule forbids certain neighbors, counted by tracking what the last few symbols were.", ids: ["restricted-sequences", "tiling-a-board"] }
       ],
       formulas: [
         {
@@ -2662,6 +2677,21 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "tiling-a-board",
+          name: "Tiling a Board",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`a board, strip, or region to be covered exactly by dominoes, trominoes, squares, or other given tiles, with no overlaps and no gaps`, String.raw`a question asking how many tilings there are, usually of a $2 \times n$ or $3 \times n$ strip`, String.raw`or a question asking whether any tiling exists at all, or how many tiles of one kind a tiling must use`],
+          suggests: ["recursive-counting", "transfer-matrix-method", "coloring-arguments", "invariants-coloring"],
+          tryFirst: ["recursive-counting", "coloring-arguments", "linear-recurrence"],
+          latex: String.raw`\begin{gathered} \text{how many: classify by the tiles at one end} \\ \text{whether: color so every tile covers a fixed mix of colors} \end{gathered}`,
+          description: String.raw`This is a covering problem: a region and a set of tile shapes, and the tiles must fill the region exactly. The question is either a count, which a recursion on the length of the board answers by looking at how the tiling ends, or an existence question, which a coloring of the board usually settles by showing that the tiles cannot match the colors of the region.`,
+          keywords: ["tiling", "domino tiling", "tromino tiling", "tile a 2 by n board", "cover a board with tiles", "tiling count recursion", "impossible tiling", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "truth-tellers-logic",

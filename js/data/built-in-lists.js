@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 66 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 68 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -142,7 +142,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill"] },
       { title: "Recursion & States",
         note: "When the count for n depends on the count for smaller n.",
-        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "moser-circle", "plane-regions", "restricted-sequences", "simulate-the-process"] },
+        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process"] },
       { title: "Symmetry & Group Counting",
         note: "Counting up to a symmetry, where naive counting overcounts by a factor you must compute.",
         ids: ["permutation-cycle-structure"] },
@@ -160,7 +160,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["eulerian-paths", "graph-coloring"] },
       { title: "Games & Placement",
         note: "Two-player games with a forced outcome, and arrangements with a spacing constraint.",
-        ids: ["backward-induction", "gap-method", "counting-blocks", "geometric-probability", "truth-tellers-logic"] },
+        ids: ["backward-induction", "strategy-stealing", "gap-method", "counting-blocks", "geometric-probability", "truth-tellers-logic"] },
       { title: "Generating Functions",
         note: "Encoding a counting problem as a polynomial and reading off a coefficient.",
         ids: ["indicator-variables", "generating-function-method"] }
@@ -384,7 +384,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["beatty-theorem"] }
     ] },
   { id: "route-olympiad-counting", name: "Olympiad Counting & Probability", kind: "route", tier: "Olympiad", subject: "Counting & Probability",
-    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 19 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 20 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Graph Theory",
         note: "The olympiad graph results. Most combinatorics problems about a network are one of these.",
@@ -394,7 +394,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["burnsides-lemma", "polya-enumeration"] },
       { title: "Partitions & Posets",
         note: "Splitting a set, and the order-theoretic results about chains and antichains.",
-        ids: ["dilworths-theorem", "sperners-theorem"] },
+        ids: ["dilworths-theorem", "sperners-theorem", "erdos-ko-rado"] },
       { title: "Existence & Invariants",
         note: "Proving something must happen without constructing it. The backbone of olympiad combinatorics.",
         ids: ["pigeonhole", "erdos-szekeres", "extremal-principle", "invariants-coloring", "monovariant"] },

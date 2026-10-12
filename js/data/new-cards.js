@@ -16,5 +16,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Card-file scan, batch 2: AIME geometry and Nesbitt", date: "2026-10-12",
     ids: ["van-aubel-cevians", "archimedes-broken-chord", "nesbitt-inequality"] },
   { label: "Card-file scan, batch 3: functions, cyclotomics, random walks", date: "2026-10-12",
-    ids: ["injectivity-surjectivity", "cyclotomic-polynomials", "gamblers-ruin"] }
+    ids: ["injectivity-surjectivity", "cyclotomic-polynomials", "gamblers-ruin"] },
+  { label: "Card-file scan, batch 4: games, set families, tilings", date: "2026-10-12",
+    ids: ["strategy-stealing", "erdos-ko-rado", "tiling-a-board"] }
 ];

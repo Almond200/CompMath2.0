@@ -28,7 +28,8 @@ Things found while working through PLAN.md that are style or judgement calls rat
 
    The Perpendicularity Lemma and Linearity of Power of a Point stay where they are, because they are general tools. OK to move these, or change the list?
 
-## Candidate new cards from the card-file scan (2.4c; waiting for your yes)
+## Candidate new cards from the card-file scan (2.4c; approved and written 2026-10-12)
+All twelve were approved and are now cards (`Special:NewCards/All`, batches 1 to 4 of the card-file scan). The table is kept as the record.
 Each was checked against every card's name, keywords, and description, and none exists. The tier and importance are proposals (rule 12). The evidence is how often the idea appears in solutions at that level, because no practice problem is tagged with these cards yet. Answer per row: yes, no, or a different rating.
 
 | # | Card | Kind, subject / subsection | Tier, importance | Why it is missing / what it adds |

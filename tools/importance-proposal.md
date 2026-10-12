@@ -684,6 +684,9 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | injectivity-surjectivity | algebra (method) / Working with Functions | Olympiad | new (card-file scan) | 0 | **medium** |
 | cyclotomic-polynomials | number theory / Special Numbers & Sequences | Olympiad | new (card-file scan) | 0 | **low** |
 | gamblers-ruin | counting / Probability | AIME Early | new (card-file scan) | 0 | **low** |
+| strategy-stealing | counting (method) / Existence Arguments | AIME Early | new (card-file scan) | 0 | **low** |
+| erdos-ko-rado | counting / Symmetry, Partitions & Posets | Olympiad | new (card-file scan) | 0 | **lower** |
+| tiling-a-board | counting (pattern) / Strings & Sequences with a Rule | AMC | new (card-file scan) | 0 | **low** |
 | defined-operation | algebra (pattern) / Equations with Hidden Structure | AMC | new (LIVE: custom operation, 40 problems) | 0 | **low** |
 | truth-tellers-logic | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: logical deduction 66, truth-tellers 4) | 0 | **low** |
 | organized-listing | counting (method) / Working It Out by Hand | AMC | new (LIVE: systematic listing, 56) | 0 | **low** |

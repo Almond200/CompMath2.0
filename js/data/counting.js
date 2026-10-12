@@ -487,6 +487,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "erdos-ko-rado",
+          name: "Erdős–Ko–Rado Theorem",
+          latex: String.raw`\mathcal F \subseteq \tbinom{[n]}{k} \text{ intersecting},\ \ n \ge 2k \implies |\mathcal F| \le \binom{n - 1}{k - 1}`,
+          description: String.raw`A family $\mathcal F$ of $k$-element subsets of an $n$-element set is intersecting when every two of its members share an element. The obvious way to build one is to fix an element and take every $k$-subset containing it, a "star", which has $\binom{n - 1}{k - 1}$ members. The theorem says no intersecting family is larger, as long as $n \ge 2k$; below that threshold any two $k$-subsets meet, and all $\binom nk$ of them qualify. With [[sperners-theorem|Sperner's Theorem]] and [[dilworths-theorem|Dilworth's Theorem]] it is one of the basic extremal results about families of sets.`,
+          keywords: ["erdos ko rado", "intersecting family", "pairwise intersecting subsets", "star family", "n choose k minus one", "katona circle method", "extremal set theory", "every two sets share an element"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "conditional-probability",
           name: "Conditional Probability & Bayes",
           latex: String.raw`P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \qquad P(A \cap B) = P(B)\,P(A \mid B)`,

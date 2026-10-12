@@ -313,7 +313,7 @@ This is the scan formerly listed as 2.6, moved up to run once 2.4b and 2.4g are 
    New cards wait for Stanley's approval, the same rule as `live-missing.md`.
 4. Then fix the approved findings, add scanner gates for any class that can be checked mechanically, write the approved new cards in batches (the 2.4b checklist, registered for `Special:NewCards`), README entry, backup.
 
-**Status 2026-10-12:** the scan is done and its findings are fixed. Stanley approved all 12 candidate cards in `QUESTIONS.md` (Shooting Lemma, Dumpty Point, √bc Inversion, Van Aubel's Cevian Theorem, Archimedes' Broken Chord, Nesbitt, Injectivity/Surjectivity in FEs, Cyclotomic Polynomials, Gambler's Ruin, Strategy Stealing, Erdős–Ko–Rado, Tiling a Board). They are written in batches of three with the 2.4b checklist.
+**Status 2026-10-12:** the scan is done and its findings are fixed. Stanley approved all 12 candidate cards in `QUESTIONS.md` (Shooting Lemma, Dumpty Point, √bc Inversion, Van Aubel's Cevian Theorem, Archimedes' Broken Chord, Nesbitt, Injectivity/Surjectivity in FEs, Cyclotomic Polynomials, Gambler's Ruin, Strategy Stealing, Erdős–Ko–Rado, Tiling a Board). They are written in batches of three with the 2.4b checklist. **Done 2026-10-12**: all twelve are written, verified, and registered.
 
 ### 2.4f Figure line audit (new, Stanley 2026-10-12: "review cards to ensure that lines aren't cut off")
 1. **Mechanical gate** in `tools/check-diagrams.py`. Flag any drawn segment whose supporting line passes within about 1.5 px of a labeled dot, while the dot lies more than about 3 px beyond the segment's end. That is a line that stops short of a point on it, as in the old Iran figure.
