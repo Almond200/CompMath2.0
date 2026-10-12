@@ -702,3 +702,4 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | dirichlet-primes-progression | number theory / Primes, Factorials & Valuations | Olympiad | new (gap scan) | 0 | **lowest** |
 | partial-fractions | algebra (method) / Factoring & Rewriting | AMC | new (gap scan) | 0 | **medium** |
 | working-backwards | counting (method) / Working It Out by Hand | AMC | new (gap scan) | 0 | **medium** |
+| plane-cross-section | geometry (method) / Working in Three Dimensions | AMC | new (gap scan) | 0 | **medium** |
