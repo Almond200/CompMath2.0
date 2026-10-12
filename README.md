@@ -112,8 +112,7 @@ by a point or two; compare warm runs to warm runs.
   you build yourself is grouped into sections automatically, by matching its cards against
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
-  true intersection, foot or tangency. Settings can show figures on the card faces too (off,
-  curated, or every one), and long write-ups place further figures inside the text, next to the
+  true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
   paragraph each one illustrates (152 on 130 cards).
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
   modular basics and eleven more) end with a hand-picked row of the cards that are part of the
@@ -126,7 +125,7 @@ by a point or two; compare warm runs to warm runs.
 - **Settings** (`#/settings`, the gear in the top bar) cover theme, density (Comfortable, Spacious or Compact: the
   spacing of the whole app), card size (regular, two across on a laptop, or large, one across), **formula lines** (1, 2, 3, or All: the most rows of a card's formulas a browsing card shows; a card's own page always shows all), text size, scroll speed (Slow, Normal or Fast: how far one wheel step moves a
   page; Normal leaves the browser's own scrolling alone), subject pages (cards or a wiki-style A-Z index), card
-  order, keyword chips, figures on card faces (off, curated, or on), and **notation**: in the expanded form, every formula
+  order, keyword chips, figures on card faces (off or on), and **notation**: in the expanded form, every formula
   box and Key forms bullet that uses a sigma or a product sign shows its terms written out. On a
   wide window, a fixed preview panel on the right, behind a dividing line, shows cards while
   browsing, a card's page and a subject page as each setting changes, scaled so all three always
@@ -265,6 +264,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - **Desargues Involution Theorem and Its Dual** (Projective Geometry & Cross-Ratio): the conics through four points cut a line in pairs of one involution, with the dual for tangents from a point. Proved through pencils of quadratics and polar reciprocation, with the fixed-point form $\frac1{MQ} - \frac1{MP} = \frac1{MX} - \frac1{MY}$ that generalizes the butterfly.
 
   Every stated property was checked on thousands of random triangles or configurations; one candidate property (a spiral similarity at $X$) failed the check and was left out. The examples are verified by coordinates ($AX = \frac{6\sqrt{10}}{5}$; $MQ = \frac{30}{19}$ from an explicit circle and chords). The Desargues figure draws each side and diagonal solid inside the circle and dashed out to $\ell$.
+- **Figures on cards: Off or On (Stanley).** The Curated choice is gone, along with its hand-picked card list (`CARD_DIAGRAM_IDS` in `js/app.js`); a browser that had Curated saved now shows every figure (On).
 - **Six cards from the LIVE concept tags (approved 2026-10-11).** All are AMC tier and low importance, judged from the number of LIVE problems tagged with each concept (`tools/importance-proposal.md`):
   - **A Newly Defined Operation** (algebra pattern, Equations with Hidden Structure);
   - **Logical Deduction and Truth-Tellers** (counting pattern, in a new group Logic & Probability Setups);

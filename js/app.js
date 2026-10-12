@@ -214,12 +214,12 @@
   // "wiki" is a bare A-Z index of names, which drops subsections because the alphabet groups
   // instead. Chosen on the Settings page.
   const LAYOUTS = ["cards", "wiki"];
-  // Card-face figures: "none" (the default), "curated" (the cards in CARD_DIAGRAM_IDS, whose
-  // idea is hard to read without a picture) or "on" (every card that has a figure), drawn
-  // across the card's width. Density and tags are booleans in spirit but kept as words so the
+  // Card-face figures: "none" (the default) or "on" (every card that has a figure), drawn
+  // across the card's width. A third mode, "curated" (a hand-picked set of cards), was removed
+  // on 2026-10-12 at Stanley's request; a stored "curated" reads back as "on". Density and tags are booleans in spirit but kept as words so the
   // stored value reads back plainly. Notation picks the expanded form where a card offers
   // one — see latexFor().
-  const DIAGRAM_MODES = ["none", "curated", "on"];
+  const DIAGRAM_MODES = ["none", "on"];
   const DENSITIES = ["comfortable", "compact", "spacious"];
   const NOTATIONS = ["sigma", "expanded"];
   const TEXT_SIZES = ["normal", "large", "larger"];
@@ -279,7 +279,7 @@
     return {
       filter,
       layout: pick(P.layout, LAYOUTS),
-      diagrams: pick(P.diagrams === "thumb" ? "curated" : P.diagrams === "all" ? "on" : P.diagrams, DIAGRAM_MODES),
+      diagrams: pick(P.diagrams === "thumb" || P.diagrams === "curated" || P.diagrams === "all" ? "on" : P.diagrams, DIAGRAM_MODES),
       density: pick(P.density, DENSITIES),
       notation: pick(P.notation, NOTATIONS),
       text: pick(P.text, TEXT_SIZES),
@@ -323,7 +323,7 @@
     activeTopic: null,           // Formulas: the one topic (subsection index) shown, or null for the topic tiles
     activeCluster: null,         // Methods/Patterns: the one group of the subject shown, or null for its group tiles
     layout: _loaded.layout,      // "cards" or "wiki" — how a section page is drawn
-    diagrams: _loaded.diagrams,  // "none" | "curated" | "on" — figures on the card face
+    diagrams: _loaded.diagrams,  // "none" | "on" — figures on the card face
     density: _loaded.density,    // "comfortable" | "spacious" | "compact"
     notation: _loaded.notation,  // "sigma" | "expanded"
     text: _loaded.text,          // "normal" | "large"
@@ -1574,41 +1574,6 @@
     toastTimer = setTimeout(() => t.classList.remove("show"), 1900);
   }
 
-  // Entries whose formula line is hard to parse without the picture — these
-  // show their diagram on the preview card, not just the detail page.
-  const CARD_DIAGRAM_IDS = new Set([
-    "altitude-hypotenuse", "incircle-tangent-lengths", "shared-angle-area-ratio", "exradii",
-    "angle-bisector-theorem", "angle-bisector-length", "stewarts-theorem", "cevas-theorem",
-    "menelaus-theorem", "ratio-lemma", "apollonius-theorem", "rouths-theorem", "trig-ceva",
-    "symmedian-lemoine", "harmonic-quadrilateral", "lemoine-point",
-    "stars-and-bars", "grid-paths", "catalan-numbers", "am-gm", "jensens-inequality",
-    "roots-of-unity", "floor-basics", "absolute-value-rules", "abs-value-relations", "tangent-circles",
-    "lattice-points-gcd",
-    // Cards whose name and one-line text do not tell you the configuration — you have to see
-    // it. "Counting Paths by Filling the Grid" and "3D Tangency via Cross-Sections" are the
-    // clearest: both describe a picture rather than state a fact.
-    "grid-path-fill", "angle-bisector-circumcircle", "cross-section-method", "arbelos",
-    "incircle-excircle-homothety", "corner-circle-chain", "cyclic-perpendicular-diagonals",
-    "mixtilinear-incircle", "pascals-theorem",
-    // These three carried a hand-written `diagram:` field that the card face used directly.
-    // That field is gone, so they are listed here to keep their card-face figure — and going
-    // through this path means they now get `card-glance`, hence cropDiagramHeight.
-    "power-of-a-point", "inscribed-angle-theorem", "picks-theorem",
-    "incenter-excenter-lemma", "orthocenter-properties", "fermat-point",
-    "simson-line", "butterfly-theorem", "radical-axis", "miquels-theorem", "ptolemys-theorem",
-    "ptolemy-second-theorem", "varignons-theorem", "van-aubel", "napoleons-theorem",
-    "trapezoid-special-segments", "intercept-theorem", "british-flag-theorem", "mass-points",
-    "reflect-across-the-line", "rotation-trick", "spiral-similarity", "de-guas-theorem",
-    "skew-lines-distance", "circular-segment", "feuerbach-theorem", "nine-point-circle",
-    "common-tangent-lengths", "angle-chord-secant", "tangent-chord-angle",
-    "centroid-division", "cevian-area-ratio",
-    "midsegment-theorem", "euler-line-ratio", "euler-distance-theorem", "tangent-facts",
-    "law-of-sines", "circumradius-area", "angle-chasing",
-    "pedal-triangle", "orthic-triangle", "medial-triangle", "contact-triangle", 
-    "pole-polar", "directed-angles", "complete-quadrilateral-miquel", "brocards-theorem", "morleys-theorem", 
-    "equal-chords-arcs"
-  ]);
-
   function stripHash() {
     if (location.hash) history.replaceState(null, "", location.pathname + location.search);
   }
@@ -2620,14 +2585,13 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitCardFormulas($content));
 
   // Cards preview only the diagram; examples and questions live on the detail
-  // page. Only cards in CARD_DIAGRAM_IDS — configuration-heavy figures where the
-  // picture is worth a glance — borrow their first detail diagram at a reduced
-  // size; formula-obvious cards stay text-only on the card face. There is one
+  // page. With figures on, every card that has a figure borrows its first detail
+  // diagram at a reduced size on the card face. There is one
   // diagram source now: a handful of cards used to carry raw SVG in a `diagram:`
   // field, which skipped the caption and crop passes and drew outside its own
   // viewBox, so it was migrated into MATH_DIAGRAMS and the field removed.
   function extraHtml(f) {
-    if (state.diagrams === "none" || (state.diagrams === "curated" && !CARD_DIAGRAM_IDS.has(f.id))) return "";
+    if (state.diagrams === "none") return "";
     const glance = ((window.MATH_DIAGRAMS || {})[f.id] || [])[0];
     if (!glance) return "";
     return `
@@ -4002,7 +3966,7 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
           ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]], "browse page")}
-          ${settingRow("Figures on cards", "Figures always appear on a card's own page. Curated shows them while browsing only where the idea is hard to read without one; On shows every figure.", "diagrams", state.diagrams, [["none", "Off"], ["curated", "Curated"], ["on", "On"]], "browse")}
+          ${settingRow("Figures on cards", "Figures always appear on a card's own page. On also shows each card's figure while browsing.", "diagrams", state.diagrams, [["none", "Off"], ["on", "On"]], "browse")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Browsing</h3>
