@@ -1,0 +1,8 @@
+// New cards, batch by batch, oldest first, for Special:NewCards (CONVENTIONS, "New cards are
+// registered"). Every batch of new cards adds one entry here when it is written, so the latest
+// additions can be read through in the app. `ids` are card ids in the order they were written;
+// tools/check-lists.py fails on an id that is not a card.
+window.NEW_CARD_BATCHES = [
+  { label: "Olympiad geometry, batch 1", date: "2026-10-11",
+    ids: ["perpendicularity-lemma", "carnots-perpendicularity-theorem", "iran-lemma"] }
+];

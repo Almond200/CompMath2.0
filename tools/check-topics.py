@@ -20,7 +20,7 @@ one. `--list` prints every card's chips and the reason each was awarded.
 import json, os, re, subprocess, sys, tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-JSC = "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc"
+JSC = os.environ.get("JSC", "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc")
 DATA = ["geometry", "algebra", "counting", "number-theory", "patterns"]
 
 # Pairs measured to be wrong: the subsection title awards this topic to cards the

@@ -5572,6 +5572,19 @@
         const rows = recentRowsHtml(30);
         return { title: "Recently opened", body: rows ? `<div class="recent-list special-recent">${rows}</div>` : `<p class="special-note">Nothing opened yet in this browser.</p>` };
       } },
+    { name: "NewCards", example: "Special:NewCards",
+      desc: "The cards added in the latest batch of new cards, in the order they were written. Special:NewCards/All lists every batch, newest first.",
+      page: arg => {
+        const batches = (window.NEW_CARD_BATCHES || []).slice().reverse();
+        if (!batches.length) return { title: "New cards", body: `<p class="special-note">No batches recorded yet.</p>` };
+        const all = /^all$/i.test(String(arg || "").trim());
+        const rows = b => `<ul class="wiki-list newcards-list">${b.ids.map(id => BY_ID[MERGED_IDS[id] || id]).filter(Boolean).map(e =>
+          `<li><span><a href="#/f/${e.formula.id}">${e.formula.name}</a> <span class="newcards-meta">${e.kind.charAt(0).toUpperCase() + e.kind.slice(1)} &middot; ${SUBJECT_NAMES[subjectOf(e)] || ""} &middot; ${e.subsection.title}</span></span></li>`).join("")}</ul>`;
+        const block = b => `<h3 class="st-head">${escapeAttr(b.label)} (${b.date}, ${b.ids.length} card${b.ids.length === 1 ? "" : "s"})</h3>` + rows(b);
+        return all
+          ? { title: "New cards, every batch", body: `<p class="special-note">${batches.length} batch${batches.length === 1 ? "" : "es"}, newest first.</p>` + batches.map(block).join("") }
+          : { title: "New cards", body: `<p class="special-note">The latest batch. <a href="${specialHref("NewCards", "All")}">Every batch</a>.</p>` + block(batches[0]) };
+      } },
     { name: "AllPages", example: "Special:AllPages",
       desc: "Every card in the library, A to Z.",
       page: () => ({ title: "All pages", body: `<p class="special-note">${ALL.length} cards, A to Z.</p>` + cardIndex(ALL) }) },

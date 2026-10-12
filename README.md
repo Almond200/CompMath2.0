@@ -137,7 +137,8 @@ by a point or two; compare warm runs to warm runs.
   `Special:LonelyPages`, `Special:Statistics`, `Special:Search/<query>`,
   `Special:Browse/<filters>` (every card of a kind, subject, contest tier, or level, given in any
   order, as in `Special:Browse/Method/Geometry`), `Special:ProblemsUsing/<card>`,
-  `Special:Unclassified` (problems still waiting for a card), and `Special:Recent`.
+  `Special:Unclassified` (problems still waiting for a card), `Special:Recent`, and `Special:NewCards`
+  (the latest batch of new cards, in the order written; `Special:NewCards/All` lists every batch).
   `Special:Random` takes the same filters as Browse. Typing `Special:`
   opens a dropdown of the best matches, commands first and then their arguments (a contest, a
   card), which closes when you click away; every special page links back to the command list.
@@ -239,6 +240,26 @@ to `js/data/connected.js` (CONVENTIONS §12).
 The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps are the same as in `CONTRIBUTING.md`: open it in GitHub Desktop (File, Add Local Repository), commit, and push; or run `git add -A && git commit -m "..." && git push` in Terminal. Do not drag files into a second folder (Finder moves them), and do not use the web uploader once there are more than 100 files.
 
 ## Changelog
+
+**2026-10-12**
+
+- **The plan lives in the repo.** `PLAN.md` holds the app's philosophy, the standing rules, what is finished, and what is left in order (2.4d, 2.4b with a new Olympiad Triangle Lemmas subsection, a scan of the five card files for errors and missing advanced lemmas, a figure line audit, the formula-box audit, the rest of the UI scan, tagging, practice expansion, proof depth, and, not a priority, moving the flashcards and the lab into Practice).
+- **`Special:NewCards`.** A new command lists the latest batch of new cards with each card's kind, subject, and group; `Special:NewCards/All` lists every batch, newest first. The batches are recorded in `js/data/new-cards.js`, and `tools/check-lists.py` fails on an id there that is not a card (CONVENTIONS, "New cards are registered").
+- **Iran Lemma figure redrawn.** The bisector $BI$ and the contact chord $EF$ stopped short of the point $K$ where they meet. Now the bisector, the chord, and the midline all run to $K$, solid inside the triangle and dashed where they are extended outside it. Tick marks on the two halves of $CA$ and of $CB$ show that the green line joins midpoints. The triangle was reshaped so that $K$ sits clearly outside it, and the self-check now also tests that $K$ lies on all three lines. New shared helpers in `geometry-diagrams.js`: `segIn` (solid inside a shape, dashed outside) and `ticksOn` (equal-segment marks). The rule is in CONVENTIONS, "Lines in figures run to where they meet".
+- **The exterior-angle card's zigzag.** The figure of a path bending between two parallel lines followed the triangle proof with no word of introduction. Why it works now explains it: the same move, a parallel through the vertex of the angle, splits the bend into copies of the two end angles, $\angle APB = \angle(\ell, AP) + \angle(m, BP)$. It says how this repeats the exterior-angle argument, and the rule is a Key form. The Useful-observations bullet that restated it is gone.
+- **Examples rule amended (Stanley).** Two cards may use the same lengths (the 13-14-15 triangle) when their questions and nuances differ; only a copied question is banned. The scanner gate now fails on shared numbers together with a near-copy question, and lists pairs that share only the numbers.
+- **Olympiad geometry, batch 1 (2.4b; written 2026-10-11).** Three new formula cards in Advanced Triangle Theorems, all Olympiad tier, in the Deeper Configurations list:
+  - **Perpendicularity Lemma** (medium): $AB \perp CD \iff AC^2 - AD^2 = BC^2 - BD^2$, with the quadrilateral form.
+  - **Carnot's Perpendicularity Theorem** (low): perpendiculars at $D, E, F$ concur exactly when $BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0$. The older Carnot card is renamed **Carnot's Theorem (Distances to the Sides)** so the two cannot be confused; its id, links, and old name as an alias are kept.
+  - **Iran Lemma** (low): $BI$, the contact chord $EF$, and the midline parallel to $AB$ meet at the foot of the perpendicular from $C$ to $BI$.
+
+  Each card has a computed figure with a self-check, a verified example, and a full proof.
+- **Same Remainder merged (approved 2026-10-11).** The pattern Same Remainder is now part of the method Subtracting Equal Remainders, which carries its keyword; the old id redirects (`MERGED_IDS`).
+- **2.4d duplicates finished.**
+  - The cotangent identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$ lives only on Identities for Angles Summing to $180^\circ$; The Cotangent Rule points to it.
+  - The two-term Brahmagupta–Fibonacci identity left Lagrange's Identity (thumbnail, expanded form, Key forms) for its own card.
+  - `tools/find-duplicate-forms.py` now finds no plain duplicate between two cards. The method/formula twins it lists (`lte` and `lte-lemma`, `poly-divisible-linear` and `reduce-divisibility-constant`, `cycle-hunting` and `periodic-sequences`, `area-method` and `cevian-area-ratio`) wait for Stanley, as do the 39 cards whose description restates a thumbnail formula while defining its symbols.
+- **Gates run on Linux too.** The gates hard-coded macOS paths. They now read `JSC` and `CHROME` from the environment, falling back to the Mac paths. `tools/jsc-node` is a small Node stand-in for `jsc` (`load`, `print`, `read`, `quit`), and `check-labels.py` passes `--no-sandbox` when it runs as root. On Linux, `check-labels.py` reports five far-move labels (`thales-theorem`, `radical-axis`, `weierstrass-substitution`, `harmonic-addition`, `vertex-form`) that come from different font widths; on the Mac they pass. The semantic search index (`tools/build-search-index.py`) cannot be rebuilt from a cloud session, because its model download from HuggingFace is blocked there. Rebuild it on the Mac after pulling; until then, new cards rank by the lexical search alone.
 
 **2026-10-10**
 

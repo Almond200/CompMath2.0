@@ -152,6 +152,43 @@
     const u = mul(norm(sub(Q, P)), size), v = mul(norm(sub(R, P)), size);
     return `<polyline points="${pf(add(P, u))} ${pf(add(add(P, u), v))} ${pf(add(P, v))}" fill="none" stroke="${c}" stroke-width="1.5"/>`;
   }
+  // Equal-segment marks: n short strokes across the middle of PQ (one tick, two ticks, ...),
+  // the usual way to show that a point is a midpoint or that two lengths are equal.
+  const ticksOn = (P, Q, n = 1, c = DIM) => {
+    const M = mid(P, Q), u = norm(sub(Q, P)), v = perp(u);
+    let out = "";
+    for (let i = 0; i < n; i++) { const c0 = add(M, mul(u, (i - (n - 1) / 2) * 5)); out += seg(add(c0, mul(v, 6)), add(c0, mul(v, -6)), c, 1.8); }
+    return out;
+  };
+  // A line drawn by the figure rule (CONVENTIONS, "Lines run to where they meet"): solid where
+  // it lies inside the shape `shape` (a convex or simple polygon), dashed where it has been
+  // extended outside it. P and Q are the two points it runs between, so it never stops short.
+  const insidePoly = (pt, shape) => {
+    let inside = false;
+    for (let i = 0, j = shape.length - 1; i < shape.length; j = i++) {
+      const a = shape[i], b = shape[j];
+      if ((a[1] > pt[1]) !== (b[1] > pt[1]) && pt[0] < (b[0] - a[0]) * (pt[1] - a[1]) / (b[1] - a[1]) + a[0]) inside = !inside;
+    }
+    return inside;
+  };
+  const segIn = (P, Q, shape, c = DIM, w = 2, dash = "5 4") => {
+    const ts = [0, 1], d = sub(Q, P);
+    for (let i = 0; i < shape.length; i++) {
+      const a = shape[i], b = shape[(i + 1) % shape.length], e = sub(b, a);
+      const den = d[0] * e[1] - d[1] * e[0];
+      if (Math.abs(den) < 1e-12) continue;
+      const w0 = sub(a, P), t = (w0[0] * e[1] - w0[1] * e[0]) / den, s2 = (w0[0] * d[1] - w0[1] * d[0]) / den;
+      if (t > 1e-9 && t < 1 - 1e-9 && s2 >= -1e-9 && s2 <= 1 + 1e-9) ts.push(t);
+    }
+    ts.sort((x, y) => x - y);
+    let out = "";
+    for (let i = 0; i + 1 < ts.length; i++) {
+      if (ts[i + 1] - ts[i] < 1e-9) continue;
+      const p0 = lerp(P, Q, ts[i]), p1 = lerp(P, Q, ts[i + 1]);
+      out += seg(p0, p1, c, w, insidePoly(lerp(P, Q, (ts[i] + ts[i + 1]) / 2), shape) ? "" : dash);
+    }
+    return out;
+  };
   const massBadge = (p, n) =>
     `<circle cx="${r1(p[0])}" cy="${r1(p[1])}" r="12" fill="var(--bg-card)" stroke="${GLD}" stroke-width="1.8"/>` +
     `<text x="${r1(p[0])}" y="${r1(p[1]) + 4.5}" fill="${GLD}" font-size="12.5" font-weight="600" text-anchor="middle">${n}</text>`;
@@ -8509,20 +8546,24 @@ DIAGRAMS["trig-ceva"] = [(() => {
 
   // Iran lemma: BI, the contact chord EF, and the midline parallel to AB meet at the foot of the perpendicular from C to BI.
   DIAGRAMS["iran-lemma"] = [(() => {
-    const A = [150, 44], B = [46, 282], C = [394, 282];
+    const A = [112, 44], B = [36, 286], C = [396, 286], T = [A, B, C];
     const I = incenterOf(A, B, C), E = foot(I, C, A), F = foot(I, A, B), r = dist(I, foot(I, B, C));
     const K = lineInt(B, I, E, F), Mb = mid(C, A), Ma = mid(B, C);
     const cross = (p, q) => p[0] * q[1] - p[1] * q[0];
-    const ok = Math.abs(vdotF(sub(C, K), sub(I, B))) < 1e-6 * dist(C, K) * dist(I, B) && Math.abs(cross(sub(Ma, Mb), sub(K, Mb))) < 1e-6 * dist(Ma, Mb) * dist(K, Mb);
-    function vdotF(p, q) { return p[0] * q[0] + p[1] * q[1]; }
+    const onLine = (P, Q, X) => Math.abs(cross(sub(Q, P), sub(X, P))) < 1e-6 * dist(P, Q) * Math.max(1, dist(P, X));
+    // K is the foot from C to BI, and it lies on all three lines: BI, EF, and the midline.
+    const ok = Math.abs(sub(C, K)[0] * sub(I, B)[0] + sub(C, K)[1] * sub(I, B)[1]) < 1e-6 * dist(C, K) * dist(I, B) &&
+      onLine(B, I, K) && onLine(E, F, K) && onLine(Ma, Mb, K) && !insidePoly(K, T);
+    // Each of the three lines runs all the way to K: solid inside the triangle, dashed outside it.
     return wrap(430, 330, [
-      poly([A, B, C], DIM, 2), circ(I, r, FNT, 1.5),
-      seg(B, add(I, mul(norm(sub(I, B)), 70)), ACC, 1.8), seg(E, F, GLD, 1.8), seg(Ma, Mb, GRN, 1.8, "6 4"),
+      poly(T, DIM, 2), circ(I, r, FNT, 1.5),
+      segIn(B, K, T, ACC, 1.8), segIn(F, K, T, GLD, 1.8), segIn(Ma, K, T, GRN, 1.8),
+      ticksOn(C, Mb, 1, GRN), ticksOn(Mb, A, 1, GRN), ticksOn(B, Ma, 2, GRN), ticksOn(Ma, C, 2, GRN),
       seg(C, K, DIM, 1.6, "5 4"), rightAngle(K, C, B, 10, FNT),
-      dot(I, FNT, 3.5), dot(E, GLD, 4), dot(F, GLD, 4), dot(K, GRN, 5),
+      dot(I, FNT, 3.5), dot(E, GLD, 4), dot(F, GLD, 4), dot(Ma, GRN, 3.5), dot(Mb, GRN, 3.5), dot(K, GRN, 5),
       txt(add(A, [0, -9]), "A", DIM, 14), txt(add(B, [-12, 14]), "B", DIM, 14), txt(add(C, [12, 14]), "C", DIM, 14),
-      txt(add(E, [13, -3]), "E", GLD, 13), txt(add(F, [-13, -2]), "F", GLD, 13), txt(add(I, [4, 17]), "I", FNT, 13), txt(add(K, [12, -9]), "K", GRN, 14),
-      cap(430, 330, "The bisector BI, the contact chord EF, and the midline parallel to AB all pass through K, and K is the foot of the perpendicular from C to BI, so ∠BKC = 90°." + (ok ? "" : " MISMATCH"))
+      txt(add(E, [-3, -12]), "E", GLD, 13), txt(add(F, [-13, -2]), "F", GLD, 13), txt(add(I, [4, 17]), "I", FNT, 13), txt(add(K, [12, -9]), "K", GRN, 14),
+      cap(430, 330, "The bisector BI, the contact chord EF, and the midline through the midpoints of CB and CA (the tick marks show the equal halves) all pass through K, the foot of the perpendicular from C to BI, so ∠BKC = 90°. Each line is solid inside the triangle and dashed where it is extended to K." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 

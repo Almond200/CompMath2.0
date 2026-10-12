@@ -380,7 +380,7 @@ for w in sorted(dupes, key=lambda w: -len(dupes[w]))[:12]:
 print("\n-- figures in write-ups and examples --")
 # The registries are built by JS, so ask JS for their keys rather than regexing object literals.
 import subprocess as _sp, tempfile as _tf, json as _js
-_jsc = "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc"
+_jsc = os.environ.get("JSC", "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc")
 _src = ("var window = {};\n" +
         "".join("load(%r);\n" % f for f in ["js/data/diagrams/geometry-diagrams.js",
                                            "js/data/diagrams/general-diagrams.js"]) +
@@ -868,9 +868,11 @@ print("  legacy practice question repeating the card's example: %d  (must stay 0
 for _x in _repeats[:8]:
     print("    %s (overlap %.2f): %s" % (_x["id"], _x["j"], _x["q"]))
 
-# Examples are not reused between cards (Stanley, 2026-10-10): two converted cards whose worked
-# examples are about triangles must not use the same three numbers (the 13-14-15 triangle in
-# thirteen cards was the case that prompted it).
+# Examples are not copied between cards (Stanley, 2026-10-10; amended 2026-10-12): two converted
+# cards whose worked examples are about triangles may use the same three numbers (the 13-14-15
+# triangle is fine on two cards) only when they ask different questions. A pair sharing the
+# numbers AND reading as a near-copy (word overlap of at least 0.45, the measure in
+# tools/check-example-repeats.js) fails; a pair sharing only the numbers is listed for a look.
 _dx = _sp.run([_jsc, "tools/dump-examples.js"], capture_output=True, text=True)
 _exq = _js.loads(_dx.stdout.strip().splitlines()[-1]) if _dx.returncode == 0 and _dx.stdout.strip() else {}
 _trip = {}
@@ -880,10 +882,20 @@ for _id, _q in _exq.items():
     _ns = sorted({int(x) for x in re.findall(r"(?<![\\\w.])\d+(?![\d.]*\\)", re.sub(r"\\[a-z]+", "", _q)) if int(x) >= 3})
     for _t in __import__("itertools").combinations(_ns, 3):
         _trip.setdefault(_t, []).append(_id)
-_shared = [(t, ks) for t, ks in _trip.items() if len(ks) > 1]
-print("  triangle examples sharing the same three numbers across cards: %d  (must stay 0)" % len(_shared))
+def _exwords(t):
+    t = re.sub(r"\\[a-z]+", " ", t.lower())
+    return {w for w in re.split(r"[^a-z0-9]+", t) if len(w) > 2 or re.search(r"\d", w)}
+_shared, _samenums = [], []
+for _t, _ks in _trip.items():
+    for _a, _b in __import__("itertools").combinations(sorted(set(_ks)), 2):
+        _wa, _wb = _exwords(_exq[_a]), _exwords(_exq[_b])
+        _j = len(_wa & _wb) / max(1, len(_wa | _wb))
+        (_shared if _j >= 0.45 else _samenums).append((_t, _a, _b, _j))
+print("  triangle examples copied across cards (same three numbers, near-copy question): %d  (must stay 0)" % len(_shared))
 for _x in _shared[:8]:
-    print("    %s: %s" % _x)
+    print("    %s: %s and %s (overlap %.2f)" % _x)
+if _samenums:
+    print("  (info) triangle examples sharing three numbers but asking different questions: %d pair(s); allowed when the nuance differs" % len(_samenums))
 
 # A sentence that points at the page it is on adds nothing: the reader is already reading it.
 # These phrases (a section pointing at "the end of this section", "as below", "as the figure on

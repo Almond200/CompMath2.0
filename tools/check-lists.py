@@ -171,4 +171,23 @@ if cbad or not hubs:
         print("   " + b)
     print("FAIL - connected formulas" if cbad else "FAIL - connected.js parsed to nothing")
     sys.exit(1)
+# ---- new-card batches (js/data/new-cards.js) ------------------------------------------------
+# Special:NewCards lists each batch of new cards; app.js skips an id it cannot resolve, so a typo
+# or a card merged away would silently drop out of the review page.
+nsrc = io.open("js/data/new-cards.js", encoding="utf-8").read()
+nbad, nbatches = [], 0
+for bm in re.finditer(r'\{ label: "([^"]+)", date: "(\d{4}-\d{2}-\d{2})",\s*ids: \[([^\]]*)\] \}', nsrc):
+    nbatches += 1
+    ids = re.findall(r'"([a-z0-9-]+)"', bm.group(3))
+    if not ids:
+        nbad.append("batch %s lists no cards" % bm.group(1))
+    for cid in ids:
+        if cid not in cards:
+            nbad.append("batch %s: %s is not a card" % (bm.group(1), cid))
+print("new-card batches: %d" % nbatches)
+if nbad or not nbatches:
+    for b in nbad:
+        print("   " + b)
+    print("FAIL - new-card batches" if nbad else "FAIL - new-cards.js parsed to nothing")
+    sys.exit(1)
 print("OK - every list id resolves and every route is complete")

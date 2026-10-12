@@ -1284,7 +1284,7 @@ The side form follows from $\cot A = \frac{b^2 + c^2 - a^2}{4K}$ and its cyclic 
 ## Useful observations
 - $\cot\omega$ is computed from the angles, or from the sides through the second form, which is the contest-usable one.
 - The bound $\omega \le 30^\circ$, with equality only for the equilateral triangle, settles extremal questions.
-- The identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$, valid in every triangle, is a companion fact that simplifies the algebra.
+- The pairwise cotangent products of a triangle add up to $1$, one of the [[triangle-angle-identities|identities for the three angles of a triangle]], and that sum often simplifies the algebra around $\cot\omega$.
 
 ## Applications
 Brocard points and the Brocard angle from the angles or sides of a triangle.
@@ -7535,6 +7535,7 @@ A MATHCOUNTS and AMC 8 and 10 foundation, usually used silently to show two leng
 - co-interior angles, on the same side between the lines, add up to $180^\circ$
 - $\angle A + \angle B + \angle C = 180^\circ$ — the angle sum of a triangle
 - $\angle ACD = \angle A + \angle B$ — the exterior angle at $C$, formed by extending $BC$ to $D$, equals the sum of the two remote interior angles
+- $\angle APB = \angle(\ell, AP) + \angle(m, BP)$ — a path from $A$ on line $\ell$ to $B$ on a parallel line $m$, bending once at $P$ between them: the angle at the bend is the sum of the angles its two arms make with the parallels
 
 ## Conditions
 The angle facts need the two lines to be parallel; the converses, which prove lines parallel, are on [[parallel-by-angle-sum|Proving Lines Parallel by Angle Sums]].
@@ -7542,12 +7543,17 @@ The angle facts need the two lines to be parallel; the converses, which prove li
 ## Why it works
 Through $C$ draw the line parallel to $AB$. The angle between it and $CA$ equals $\angle A$, as alternate angles, and the angle between it and the extension $CD$ equals $\angle B$, as corresponding angles. Together these two angles fill the exterior angle $ACD$, so $\angle ACD = \angle A + \angle B$. Since $\angle ACD$ and $\angle ACB$ together make a straight angle, $\angle A + \angle B + \angle ACB = 180^\circ$.
 
+The same move, a parallel drawn through the vertex of the angle, also handles a zigzag: a path that leaves a point $A$ on a line $\ell$, bends at a point $P$, and ends at a point $B$ on a line $m$ parallel to $\ell$. Draw the line $n$ through $P$ parallel to both. It cuts $\angle APB$ into two parts. The part on the side of $\ell$ equals the angle $AP$ makes with $\ell$, as alternate angles across $AP$, and the part on the side of $m$ equals the angle $BP$ makes with $m$, as alternate angles across $BP$. So
+
+$$\angle APB = \angle(\ell, AP) + \angle(m, BP).$$
+
+This is the exterior-angle argument again. There, the parallel through $C$ split $\angle ACD$ into copies of the two remote angles; here, the parallel through $P$ splits the bend into copies of the two angles at the ends of the path. The figure is the worked example below, drawn with the line $n$ in place.
+
 {{figure:zigzag}}
 
 ## Useful observations
 - An exterior angle is larger than either remote interior angle.
 - The exterior angles of any polygon, one at each vertex, add up to $360^\circ$, the [[polygon-angle-sums|polygon angle sum]] in another form.
-- A zigzag between two parallel lines has its angles add up across: the angle at a bend equals the sum of the two angles it makes with the parallels.
 
 ## Applications
 Finding unknown angles in figures with parallel lines and triangles, and proving lines parallel from angle information.
