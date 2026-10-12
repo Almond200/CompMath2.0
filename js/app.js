@@ -216,7 +216,7 @@
   const LAYOUTS = ["cards", "wiki"];
   // Card-face figures: "none" (the default) or "on" (every card that has a figure), drawn
   // across the card's width. A third mode, "curated" (a hand-picked set of cards), was removed
-  // on 2026-10-12 at Stanley's request; a stored "curated" reads back as "on". Density and tags are booleans in spirit but kept as words so the
+  // on 2026-10-12; a stored "curated" reads back as "on". Density and tags are booleans in spirit but kept as words so the
   // stored value reads back plainly. Notation picks the expanded form where a card offers
   // one — see latexFor().
   const DIAGRAM_MODES = ["none", "on"];
@@ -3113,7 +3113,13 @@
 
   function contestHtml(f) {
     const probs = PROBLEMS_BY_CARD[f.id] || [];
-    if (!probs.length) return "";
+    // Every pattern is meant to have practice problems; until a pattern has its own, the section
+    // is still shown, empty, so the place for them is visible.
+    if (!probs.length) return kindOf(f) === "pattern" ? `
+      <div class="practice contest-refs practice-empty">
+        <h4>Practice Problems</h4>
+        <p class="practice-placeholder">No practice problems for this pattern yet.</p>
+      </div>` : "";
     const groups = {};
     probs.forEach(p => (groups[p.fam] = groups[p.fam] || []).push(p));
     const fams = Object.keys(groups).sort((a, b) => {
@@ -4456,7 +4462,7 @@
     const handOff = v => {
       $search.value = v;
       $search.dispatchEvent(new Event("input", { bubbles: true }));
-      $search.focus();
+      $search.focus({ preventScroll: true });
       try { $search.setSelectionRange(v.length, v.length); } catch (e) {}
     };
     // A command typed here just runs (there is no header search or suggestion list on this page).
@@ -6608,7 +6614,14 @@
   document.addEventListener("keydown", e => {
     if (e.key === "/" && document.activeElement !== $search && !typingIn(document.activeElement)) {
       e.preventDefault();
-      $search.focus();
+      // When the box is already on screen (the sticky top bar on a wide window), a plain focus()
+      // still scrolled the page up by the scroll padding, so the page is told not to move. On a
+      // narrow screen the bar scrolls away with the page, and then the box is brought into view.
+      const r = $search.getBoundingClientRect();
+      // The bar is at the top of the page, so going to the very top shows it; scrolling to just
+      // short of the top let the cards above, still being typeset, push the page back down.
+      if (r.top < 0 || r.bottom > innerHeight) window.scrollTo(0, 0);
+      $search.focus({ preventScroll: true });
       $search.select();
     } else if (e.key === "Escape" && document.activeElement === $search) {
       clearSearch();
