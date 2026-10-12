@@ -502,6 +502,21 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "projective-transformations",
+          name: "Projective Transformations",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`The claim is a collinearity, a concurrence, a cross-ratio, or a tangency involving lines and one conic, with no lengths or angles that a projection would distort.`,
+          move: String.raw`Apply a projective map that sends a chosen line to infinity, or the conic to a circle with a chosen point at its center, so the figure becomes a special case in which the claim is easy.`,
+          uses: ["cross-ratio", "harmonic-bundle", "pole-polar"],
+          latex: String.raw`\ell \mapsto \ell_\infty: \quad AB \cap CD \in \ell \;\Longrightarrow\; AB \parallel CD, \qquad (A, B; C, D) \text{ is kept}`,
+          description: String.raw`A projective transformation is the map a projector makes from one plane to another: it keeps points on lines, lines through points, tangency to conics, and the [[cross-ratio|cross-ratio]] $(A, B; C, D)$ of four points on a line, while lengths and angles change. Two choices are free: any line $\ell$ can be sent to the line at infinity $\ell_\infty$, so lines that met on $\ell$ become parallel, and any conic can be sent to a circle, with any point inside it sent to the center. A claim that uses only incidences can then be proved in the simplest figure.`,
+          keywords: ["projective transformation", "send a line to infinity", "line at infinity", "projective map", "make it a parallelogram", "conic to circle", "central projection", "method"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "linear-change-of-variables",
           name: "Linear Change of Variables",
           type: "method",

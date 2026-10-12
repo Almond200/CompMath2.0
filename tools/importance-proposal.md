@@ -703,3 +703,8 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | partial-fractions | algebra (method) / Factoring & Rewriting | AMC | new (gap scan) | 0 | **medium** |
 | working-backwards | counting (method) / Working It Out by Hand | AMC | new (gap scan) | 0 | **medium** |
 | plane-cross-section | geometry (method) / Working in Three Dimensions | AMC | new (gap scan) | 0 | **medium** |
+| combinatorial-nullstellensatz | counting / Advanced Counting | Olympiad | new (gap scan) | 0 | **low** |
+| schurs-theorem | counting / Pigeonhole & Ramsey Theory | Olympiad | new (gap scan) | 0 | **lower** |
+| pentagonal-number-theorem | counting / Symmetry, Partitions & Posets | Olympiad | new (gap scan) | 0 | **lower** |
+| hook-length-formula | counting / Symmetry, Partitions & Posets | Olympiad | new (gap scan) | 0 | **lowest** |
+| projective-transformations | geometry (method) / Transformations & Inversion | Olympiad | new (gap scan) | 0 | **lowest** |

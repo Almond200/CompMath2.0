@@ -3251,4 +3251,20 @@
       cap(470, 320, "Katona's circle with n = 8 and k = 3. Every arc of three that meets A = {0, 1, 2} starts or ends inside it, and the arcs come in disjoint pairs (solid and dashed, same color), so an intersecting family holds A and at most one arc of each pair: at most k = 3 arcs." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Hook lengths in the staircase (3, 2, 1), with the hook of the corner cell shaded.
+  DIAGRAMS["hook-length-formula"] = [(() => {
+    const shape = [3, 2, 1], u = 56, L = 131, T = 40;
+    const conj = j => shape.filter(r => r > j).length;
+    const hook = (i, j) => (shape[i] - j - 1) + (conj(j) - i - 1) + 1;
+    const cells = [];
+    shape.forEach((len, i) => { for (let j = 0; j < len; j++) cells.push([i, j]); });
+    const prod = cells.reduce((m, [i, j]) => m * hook(i, j), 1);
+    const ok = prod === 45 && 720 / prod === 16;
+    const inHook = (i, j) => (i === 0 && j >= 0) || (j === 0 && i >= 0);   // the hook of the top-left cell
+    return wrap(430, 250, [
+      ...cells.map(([i, j]) => rect(L + j * u, T + i * u, u, u, DIM, 1.8, inHook(i, j) ? "rgba(91,140,255,0.16)" : "none")),
+      ...cells.map(([i, j]) => txt([L + j * u + u / 2, T + i * u + u / 2 + 7], String(hook(i, j)), inHook(i, j) && i + j === 0 ? ACC : DIM, 20)),
+      cap(430, 250, "The staircase with rows 3, 2, 1 and the hook length of each cell. The shaded hook of the top-left cell holds the cell, the two to its right, and the two below it, so its length is 5. The product is 45, and 6!/45 = 16 fillings." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

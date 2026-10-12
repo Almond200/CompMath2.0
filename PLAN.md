@@ -204,7 +204,7 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 ### 2.1 The approved gap-scan cards (19; `QUESTIONS.md`)
 - [x] Batch 1, geometry: Orthogonal Circles, Weitzenböck and Hadwiger–Finsler, Steiner–Lehmus, Cevian Nest, Regular Dodecahedron & Icosahedron.
 - [x] Batch 2, algebra and number theory: Integer-Valued Polynomials, Dirichlet's Theorem, Partial Fractions (method), Working Backwards (method).
-- [ ] Batch 3, olympiad counting and a geometry method: Combinatorial Nullstellensatz, Schur's Theorem, Pentagonal Number Theorem, Hook Length Formula, Projective Transformations (method).
+- [x] Batch 3, olympiad counting and a geometry method: Combinatorial Nullstellensatz, Schur's Theorem, Pentagonal Number Theorem, Hook Length Formula, Projective Transformations (method).
 - [ ] Batch 4, AMC patterns: Age Problems, Calendar & Day of the Week, Painted Cubes (with boxes, Stanley), Round-Robin Tournaments, Magic Squares.
 ### 2.4e-ii Prose formula boxes on card faces (Stanley, 2026-10-12)
 Some boxes are mostly prose (A Newly Defined Operation, Tiling a Board, Strategy Stealing, ...), so on the card faces they shrink to the minimum size and still scroll. Measure every card face at 1280 and 375 (the `fd-scroll` class and the scale `fitBatch` sets in `js/app.js`), list each one with a proposed rewrite in `QUESTIONS.md`, and apply after approval. A box that cannot be made shorter without losing content stays as it is (Stanley: not ideal, but the best available).

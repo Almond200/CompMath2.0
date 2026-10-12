@@ -8639,5 +8639,39 @@ Projection onto a coordinate plane multiplies every area by the cosine of the an
 
 ## Contest profile
 An AIME staple: a cube or box with three marked points on its edges, asking for the area of the cross-section, the point where the plane meets another edge, or a volume cut off. AMC 12 problems more often ask for the shape of the cross-section or a distance from a vertex to the plane.
+`,
+"projective-transformations": String.raw`
+## When to use
+A collinearity, a concurrence, a harmonic division, or a tangency, in a figure made of lines and at most one conic, where the statement uses no lengths and no angles. The complete quadrilateral, Pascal's and Desargues's configurations, and the polar of a point are the usual settings.
+
+It is the wrong tool when the claim involves lengths, angles, midpoints, or two different circles, which a projection does not keep; then [[inversion-properties|inversion]] or coordinates fit better.
+
+## How
+1. Check that the claim uses only incidences, tangency, and cross-ratios.
+2. Choose the line to send to infinity: usually the line through two points where pairs of lines meet, so that both pairs become parallel.
+3. Or, for a claim about a conic, choose a point inside it to become the center of a circle.
+4. Redraw the special figure: a parallelogram, a midpoint, a diameter, or a pair of parallel tangents.
+5. Prove the claim there, using only facts the map keeps, and conclude it in the original figure.
+
+For instance, for Pascal's Theorem send the line through two of the three meeting points of opposite sides to infinity: two pairs of opposite sides of the hexagon become parallel, and a short angle chase on the circle shows the third pair is parallel too, so its meeting point also lies on the line at infinity.
+
+## Why it works
+A central projection from a point $O$ onto another plane sends lines to lines and keeps which points lie on which lines; the points of the original plane on the line where it meets the plane through $O$ parallel to the target go to infinity. The cross-ratio of four points on a line can be written through the sines of the angles they make at $O$, so it is kept too.
+
+A projective map is fixed by where it sends four points, no three on a line, so there is room to send any chosen line to infinity, or any conic to a circle with a chosen point inside it going to the center. What is not kept is everything metric: lengths, angles, midpoints, and whether a conic is a circle.
+
+## Formulas it uses
+- [[cross-ratio]]: the quantity every projection keeps; with one of the four points sent to infinity it becomes a plain ratio of two lengths.
+- [[harmonic-bundle]]: a harmonic division $(A, B; C, D) = -1$ with $D$ at infinity says that $C$ is the midpoint of $AB$.
+- [[pole-polar]]: when a conic becomes a circle and a point becomes its center, the polar of that point becomes the line at infinity.
+
+## Common traps
+- Using a length, an angle, or a midpoint after the map, unless the line at infinity is the one the midpoint refers to.
+- Sending to infinity a line through a point that the claim needs at a finite place.
+- Sending to infinity a line that meets the conic: the conic then becomes a hyperbola or a parabola, not a circle.
+- Applying it to a claim about two circles; only one conic can be made a circle.
+
+## Contest profile
+An olympiad technique. It is rarely the only way, but it is often the shortest proof of a collinearity or a harmonic division in a complete quadrilateral or a figure with one conic.
 `
 });

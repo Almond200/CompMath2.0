@@ -24,5 +24,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Gap scan, batch 2: algebra, number theory, and two methods", date: "2026-10-12",
     ids: ["integer-valued-polynomials", "dirichlet-primes-progression", "partial-fractions", "working-backwards"] },
   { label: "Cutting a solid with a plane", date: "2026-10-12",
-    ids: ["plane-cross-section"] }
+    ids: ["plane-cross-section"] },
+  { label: "Gap scan, batch 3: olympiad counting and projective maps", date: "2026-10-12",
+    ids: ["combinatorial-nullstellensatz", "schurs-theorem", "pentagonal-number-theorem", "hook-length-formula", "projective-transformations"] }
 ];
