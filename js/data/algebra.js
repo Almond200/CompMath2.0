@@ -663,6 +663,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "nesbitt-inequality",
+          name: "Nesbitt's Inequality",
+          latex: String.raw`\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32 \quad (a, b, c \gt 0)`,
+          description: String.raw`For positive reals $a$, $b$, $c$, each variable is divided by the sum of the other two, and the three fractions together are at least $\frac32$, with equality exactly when $a = b = c$. There is no upper bound for positive reals, but for the sides of a triangle the sum is also below $2$. It is the most quoted named inequality in three variables, and its several short proofs, by [[am-gm|AM–GM]], by [[cauchy-schwarz|Cauchy–Schwarz]], and by [[rearrangement|rearrangement]], make it a standard first exercise for each of those tools.`,
+          keywords: ["nesbitt", "nesbitt inequality", "a over b plus c", "three halves", "cyclic fractions", "sum of a over the other two", "symmetric three-variable inequality", "triangle sides below two"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "trivial-inequality",
           name: "The Trivial Inequality",
           latex: String.raw`x^2 \ge 0, \qquad a^2+b^2+c^2 \ge ab+bc+ca, \qquad a^2+b^2 \ge 2ab`,

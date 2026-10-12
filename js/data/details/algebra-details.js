@@ -2653,6 +2653,49 @@ Maximizing or minimizing a symmetric sum of function values with a fixed sum of 
 The fastest tool for "maximize a symmetric sum of function values with a fixed sum of inputs," and trigonometric sums over triangle angles are the archetype. On the AMC and AIME it usually appears disguised, and recognizing the equality-at-the-mean structure lets one guess the extremal configuration, all variables equal, and verify. Full Jensen citations are an olympiad staple, often with weights equal to side lengths or masses.
 `,
 
+"nesbitt-inequality": String.raw`
+## Key forms
+- $\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32$ for $a, b, c \gt 0$, with equality exactly when $a = b = c$
+- no upper bound for positive reals: $a \to \infty$ with $b$, $c$ fixed sends the sum to infinity
+- for the sides of a triangle, $\frac32 \le \frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \lt 2$
+- in $n$ variables with $S = a_1 + \cdots + a_n$: $\alt{\sum_i \frac{a_i}{S - a_i}}{\frac{a_1}{S - a_1} + \cdots + \frac{a_n}{S - a_n}} \ge \frac{n}{n - 1}$
+
+## Conditions
+All three numbers are positive; one of them may be $0$ as long as no denominator vanishes. With negative values the inequality fails: $a = b = 1$, $c = -\frac32$ gives $-2 - 2 - \frac34 \lt \frac32$. The triangle upper bound needs the strict triangle inequalities.
+
+## Why it works
+Proof 1, by AM–HM. Add $1$ to each fraction: $\frac{a}{b + c} + 1 = \frac{a + b + c}{b + c}$. With $x = b + c$, $y = c + a$, $z = a + b$, whose sum is $2(a + b + c)$,
+
+$$\sum \frac{a}{b + c} + 3 = \frac{x + y + z}{2}\left(\frac1x + \frac1y + \frac1z\right) \ge \frac92,$$
+
+because $(x + y + z)\left(\frac1x + \frac1y + \frac1z\right) \ge 9$ by AM–GM applied to each factor. So the sum is at least $\frac92 - 3 = \frac32$, with equality when $x = y = z$, that is, $a = b = c$.
+
+Proof 2, by Titu's lemma. Write each term as $\frac{a^2}{a(b + c)}$. The Engel form of Cauchy–Schwarz gives
+
+$$\sum \frac{a^2}{a(b + c)} \ge \frac{(a + b + c)^2}{2(ab + bc + ca)} \ge \frac32,$$
+
+the last step because $(a + b + c)^2 - 3(ab + bc + ca) = \frac12\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right] \ge 0$.
+
+Proof 3, by rearrangement. Let $a \ge b \ge c$. Then $b + c \le c + a \le a + b$, so $(a, b, c)$ and $\left(\frac1{b + c}, \frac1{c + a}, \frac1{a + b}\right)$ are ordered the same way, and the Rearrangement Inequality puts the given sum above the sums with the numerators shifted by one place and by two places:
+
+$$2\sum \frac{a}{b + c} \ge \frac{b + c}{b + c} + \frac{c + a}{c + a} + \frac{a + b}{a + b} = 3.$$
+
+The upper bound for a triangle. $a \lt b + c$ is the same as $a + b + c \lt 2(b + c)$, so $\frac{a}{b + c} \lt \frac{2a}{a + b + c}$. Adding the three gives a sum below $2$; a nearly flat triangle with $a = b$ and $c$ close to $0$ comes as close to $2$ as desired.
+
+The $n$-variable form. $f(x) = \frac{x}{S - x}$ is convex on $(0, S)$, so by Jensen's Inequality the sum is at least $n\,f\!\left(\frac Sn\right) = \frac{n}{n - 1}$. The three-variable case of this argument is the worked example on [[homogenization|Homogenization]].
+
+## Useful observations
+- The inequality is homogeneous of degree $0$, so a constraint such as $a + b + c = 1$ or $a + b + c = 3$ can be added or dropped freely.
+- Substituting $a = y + z$, $b = z + x$, $c = x + y$ for triangle sides (the Ravi substitution) turns the upper bound into a statement about positive $x$, $y$, $z$.
+- The cyclic generalization $\sum \frac{x_i}{x_{i+1} + x_{i+2}} \ge \frac n2$, Shapiro's inequality, holds for even $n \le 12$ and odd $n \le 23$ and fails for larger $n$, so the pattern does not extend for free.
+
+## Applications
+Lower bounds for symmetric sums of fractions, minimizing $\sum \frac{x}{S - x}$ under a fixed sum, and bounding ratio sums of a triangle's sides.
+
+## Contest profile
+A named inequality that is quoted directly in olympiad solutions and appears on hard AIME problems in disguise, usually as a sum of fractions with a fixed total. Its three short proofs make it the standard test case for AM–GM, Cauchy–Schwarz, and rearrangement.
+`,
+
 "schurs-inequality": String.raw`
 ## Key forms
 - $x^t(x - y)(x - z) + y^t(y - x)(y - z) + z^t(z - x)(z - y) \ge 0$ for $x, y, z \ge 0$ and $t \gt 0$
@@ -4869,6 +4912,34 @@ Evaluating an inverse at a point, inverting a composition, finding where a funct
 
 ## Contest profile
 Inverses show up in three forms: an inverse that must be evaluated at a point where the formula for it is out of reach but the equation $f(x) = b$ has a visible solution, an inverse of a composition, and a question about where a function crosses its inverse. The mirror-image picture settles many monotonicity and area questions in a line, and the restriction to a one-to-one piece is the step most often forgotten.
+`,
+
+"injectivity-surjectivity": String.raw`
+## When to use
+Functional equations in which $f$ is nested inside itself, such as $f(f(x)) = x + 1$ or $f(x + f(y)) = f(x) + y$, where plugging in special values only produces more unknown values of $f$. Two signs point to this method. A variable that appears outside every $f$ on one side can be made to take any value, which proves surjectivity; and an equation that would be solved by "cancelling $f$" needs injectivity first.
+
+## How
+1. Look for surjectivity: find a side that runs over all reals as one variable varies, while the other side is a value of $f$. Then every real is a value of $f$.
+2. Look for injectivity: assume $f(a) = f(b)$, substitute $a$ and then $b$ into the same position, and use a side where the variable appears outside $f$ to conclude $a = b$. For example, if $f(f(x)) = x + 1$, then $f(a) = f(b)$ gives $a + 1 = f(f(a)) = f(f(b)) = b + 1$.
+3. Use surjectivity: take a point $x_0$ with $f(x_0) = 0$, or with $f(x_0)$ equal to any convenient value, and substitute it; or replace $f(y)$ by a free variable $t$ that ranges over all reals.
+4. Use injectivity: from $f(A) = f(B)$, conclude $A = B$, which removes one layer of $f$.
+5. Solve what remains, often a Cauchy-type equation, and check every candidate in the original equation.
+
+## Why it works
+Injectivity is exactly the statement that $f$ can be cancelled: $f(A) = f(B)$ with $A \ne B$ is what it rules out. Surjectivity is exactly the statement that $f(y)$ takes every value, so an identity that holds for all $f(y)$ holds for every real number in its place. Both properties pass from a composition to the inner function: if $f \circ f$ is injective, so is $f$, since $f(a) = f(b)$ gives $f(f(a)) = f(f(b))$ and so $a = b$; and if $f \circ f$ is surjective, so is $f$, since every value of $f(f(x))$ is a value of $f$. A bijective $f$ has an inverse, and the facts about [[inverse-function-properties|inverse functions]] then apply.
+
+## Formulas it uses
+- [[inverse-function-properties]]: a bijection has an inverse, and $f(f(x)) = x$ means $f$ is its own inverse, with a graph symmetric in $y = x$.
+- [[cauchy-functional-equations]]: the equation that often remains once $f$ has been cancelled or its values freed, with its solutions and the conditions they need.
+
+## Common traps
+- Cancelling $f$ before injectivity is proved.
+- Claiming surjectivity onto all reals from an expression that only covers part of them, such as $x^2$, or forgetting that for $f : \mathbb{N} \to \mathbb{N}$ the target is only the positive integers.
+- Proving injectivity at a single pair of points instead of for all $a$ and $b$.
+- Skipping the final check that each candidate satisfies the original equation.
+
+## Contest profile
+The first move in most olympiad functional equations, and occasionally needed on a hard AIME problem with nested functions. Solutions usually open by proving one of the two properties and then exploit it in the next substitution.
 `,
 
 "function-symmetry-equation": String.raw`

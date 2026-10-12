@@ -487,6 +487,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "erdos-ko-rado",
+          name: "Erdős–Ko–Rado Theorem",
+          latex: String.raw`\mathcal F \subseteq \tbinom{[n]}{k} \text{ intersecting},\ \ n \ge 2k \implies |\mathcal F| \le \binom{n - 1}{k - 1}`,
+          description: String.raw`A family $\mathcal F$ of $k$-element subsets of an $n$-element set is intersecting when every two of its members share an element. The obvious way to build one is to fix an element and take every $k$-subset containing it, a "star", which has $\binom{n - 1}{k - 1}$ members. The theorem says no intersecting family is larger, as long as $n \ge 2k$; below that threshold any two $k$-subsets meet, and all $\binom nk$ of them qualify. With [[sperners-theorem|Sperner's Theorem]] and [[dilworths-theorem|Dilworth's Theorem]] it is one of the basic extremal results about families of sets.`,
+          keywords: ["erdos ko rado", "intersecting family", "pairwise intersecting subsets", "star family", "n choose k minus one", "katona circle method", "extremal set theory", "every two sets share an element"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "conditional-probability",
           name: "Conditional Probability & Bayes",
           latex: String.raw`P(A \mid B) = \frac{P(A \cap B)}{P(B)}, \qquad P(A \cap B) = P(B)\,P(A \mid B)`,
@@ -535,6 +545,16 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AMC",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "gamblers-ruin",
+          name: "Gambler's Ruin",
+          latex: String.raw`P_k = \frac{k}{N}\ \ \left(p = \tfrac12\right), \qquad P_k = \frac{1 - (q/p)^k}{1 - (q/p)^N}\ \ \left(p \ne \tfrac12\right)`,
+          description: String.raw`A walk on the integers $0, 1, \ldots, N$ starts at $k$ and at each step moves up by $1$ with probability $p$ or down by $1$ with probability $q = 1 - p$, stopping when it first reaches $0$ (ruin) or $N$ (the target). $P_k$ is the probability that it reaches $N$ before $0$. For a fair walk the chance grows in proportion to the starting point; for a biased one it depends on $k$ through powers of the ratio $\frac qp$, so a small edge per step becomes a large edge over the whole game. The same first-step equations give the expected length of the game, $k(N - k)$ steps in the fair case.`,
+          keywords: ["gambler's ruin", "probability of reaching N before 0", "random walk with absorbing barriers", "fair game k over N", "biased walk q over p", "expected duration k(N - k)", "ruin probability", "first passage"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AIME"]
         },
         {
           id: "hypergeometric",

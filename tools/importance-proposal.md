@@ -675,6 +675,18 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | power-of-a-point-linearity | geometry / Circles | Olympiad | new | 0 | **low** |
 | humpty-queue-points | geometry / Olympiad Triangle Lemmas | Olympiad | new | 0 | **lower** |
 | desargues-involution | geometry / Projective Geometry & Cross-Ratio | Olympiad | new | 0 | **lower** |
+| shooting-lemma | geometry / Olympiad Triangle Lemmas | Olympiad | new (card-file scan) | 0 | **low** |
+| dumpty-point | geometry / Olympiad Triangle Lemmas | Olympiad | new (card-file scan) | 0 | **lower** |
+| sqrt-bc-inversion | geometry (method) / Transformations & Inversion | Olympiad | new (card-file scan) | 0 | **low** |
+| van-aubel-cevians | geometry / Advanced Triangle Theorems | AIME Late | new (card-file scan) | 0 | **low** |
+| archimedes-broken-chord | geometry / Circles | AIME Late | new (card-file scan) | 0 | **lower** |
+| nesbitt-inequality | algebra / Inequalities | AIME Late | new (card-file scan) | 0 | **low** |
+| injectivity-surjectivity | algebra (method) / Working with Functions | Olympiad | new (card-file scan) | 0 | **medium** |
+| cyclotomic-polynomials | number theory / Special Numbers & Sequences | Olympiad | new (card-file scan) | 0 | **low** |
+| gamblers-ruin | counting / Probability | AIME Early | new (card-file scan) | 0 | **low** |
+| strategy-stealing | counting (method) / Existence Arguments | AIME Early | new (card-file scan) | 0 | **low** |
+| erdos-ko-rado | counting / Symmetry, Partitions & Posets | Olympiad | new (card-file scan) | 0 | **lower** |
+| tiling-a-board | counting (pattern) / Strings & Sequences with a Rule | AMC | new (card-file scan) | 0 | **low** |
 | defined-operation | algebra (pattern) / Equations with Hidden Structure | AMC | new (LIVE: custom operation, 40 problems) | 0 | **low** |
 | truth-tellers-logic | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: logical deduction 66, truth-tellers 4) | 0 | **low** |
 | organized-listing | counting (method) / Working It Out by Hand | AMC | new (LIVE: systematic listing, 56) | 0 | **low** |

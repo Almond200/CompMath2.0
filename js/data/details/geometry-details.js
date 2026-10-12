@@ -8212,6 +8212,188 @@ Showing that the foot of the perpendicular from the orthocenter to a median lies
 An olympiad configuration, recognized when a problem combines the orthocenter, the midpoint of a side, and the circumcircle. The two points are usually named in a solution and then used through their circles, $(BHC)$ for the Humpty point and the circle on diameter $AH$ for the Queue point.
 `,
 
+"dumpty-point": String.raw`
+## Key forms
+- $D$, the $A$-Dumpty point: the midpoint of the chord $AK$, where the $A$-symmedian meets the circumcircle again at $K$
+- $D$ lies on the circle $(BOC)$, the circle with diameter $OT$, where $T$ is the point where the tangents at $B$ and $C$ meet; $OD \perp AK$
+- $\angle ADB = \angle ADC = 180^\circ - A$, so $\angle BDC = 2A$
+- $\triangle DBA \sim \triangle DAC$, so $D$ is the center of the spiral similarity taking $B$ to $A$ and $A$ to $C$
+- $DA^2 = DB \cdot DC$ and $DB : DC = AB^2 : AC^2$
+- the circle through $A$ and $B$ tangent to $AC$ at $A$, and the circle through $A$ and $C$ tangent to $AB$ at $A$, meet again at $D$
+- $AM \cdot AK = bc$, with $M$ the midpoint of $BC$, so $AD = \frac{bc}{2\,AM}$
+
+## Conditions
+$ABC$ is a triangle with $AB \ne AC$; when $AB = AC$ the symmedian is the median through $O$, $K$ is the antipode of $A$, and $D$ is $O$ itself. The circle $(BOC)$ needs angle $A \ne 90^\circ$, since for a right angle at $A$ the point $O$ is on $BC$ and $D$ is the foot of the altitude. The angle statements are written for an acute angle $A$; for an obtuse angle $A$ the same proof works with [[directed-angles|directed angles]], and the similarity and the products are unchanged.
+
+## Why it works
+Step 1, the circle through $B$, $O$, $C$. By [[harmonic-quadrilateral|Harmonic Quadrilaterals]], the $A$-symmedian passes through $T$, the meeting point of the tangents at $B$ and $C$. The tangents are perpendicular to the radii, so $\angle OBT = \angle OCT = 90^\circ$. Since $D$ is the midpoint of the chord $AK$, the radius through $D$ is perpendicular to it, so $\angle ODT = 90^\circ$. All three right angles stand on $OT$, so
+
+$$B,\ C,\ D \text{ lie on the circle with diameter } OT,$$
+
+which passes through $O$: it is the circle $(BOC)$.
+
+Step 2, the angles at $D$. On that circle, $\angle BDT$ and $\angle BOT$ stand on the same chord $BT$, so they are equal. $OT$ bisects the central angle $\angle BOC = 2A$, so $\angle BDT = A$. The point $D$ lies between $A$ and $T$, so $\angle ADB = 180^\circ - A$, and in the same way $\angle ADC = 180^\circ - A$.
+
+Step 3, the similarity. The angles of triangle $ABD$ give $\angle DAB + \angle DBA = A = \angle DAB + \angle DAC$, so $\angle DBA = \angle DAC$. The same with triangle $ACD$ gives $\angle DCA = \angle DAB$. So $\triangle DBA \sim \triangle DAC$, with $B \to A$ and $A \to C$, and the ratios of corresponding sides give
+
+$$\frac{DB}{DA} = \frac{DA}{DC} = \frac{AB}{AC}.$$
+
+Multiplying the first two gives $DA^2 = DB \cdot DC$; multiplying $\frac{DB}{DA}$ by $\frac{DA}{DC}$ gives $DB : DC = AB^2 : AC^2$. The equality $\angle DAC = \angle DBA$ is the [[tangent-chord-angle|tangent–chord angle]] in circle $(ABD)$, so $AC$ is tangent to that circle at $A$; likewise $AB$ is tangent to $(ACD)$.
+
+Step 4, the length. The median $AM$ and the symmedian $AK$ are isogonal, so $\angle BAM = \angle KAC$, and $\angle ABM = \angle AKC$ because both stand on the arc $AC$. So triangles $ABM$ and $AKC$ are similar, $\frac{AB}{AK} = \frac{AM}{AC}$, and $AM \cdot AK = bc$. Halving $AK$ gives $AD = \frac{bc}{2\,AM}$.
+
+## Useful observations
+- The Humpty point $X$ on the median satisfies $XB : XC = AB : AC$, and the Dumpty point on the symmedian satisfies $DB : DC = AB^2 : AC^2$: the symmedian squares the ratio, as it does where it meets $BC$.
+- Step 4 is the [[sqrt-bc-inversion|inversion]] at $A$ with radius $\sqrt{bc}$ at work: that map sends $M$ to $K$, and so the median to the symmedian.
+- The two tangent circles of Key forms give the quickest construction of $D$ in a figure that already has a circle tangent to a side at $A$.
+
+## Applications
+Turning a symmedian into the circle $(BOC)$, locating the center of the spiral similarity between $BA$ and $AC$, and computing lengths along the symmedian chord from $AM \cdot AK = bc$.
+
+## Contest profile
+An olympiad configuration, recognized when a problem combines the symmedian, the circumcenter, and the circle through $B$, $O$, $C$, or two circles tangent to the sides at $A$. It pairs with the Humpty and Queue points, and the two are often used together.
+`,
+
+"shooting-lemma": String.raw`
+## Key forms
+- a circle $\omega$ touches the circle $\Gamma$ internally at $T$ and touches the chord $BC$ at $D$; $M$ is the midpoint of the arc $BC$ of $\Gamma$ that does not contain $T$
+- $T$, $D$, $M$ are collinear: the line from $T$ through $D$ meets $\Gamma$ again at $M$
+- $MD \cdot MT = MB^2 = MC^2$, so the tangent from $M$ to $\omega$ has length $MB$
+- every circle tangent to $BC$ and to $\Gamma$ on the side away from $M$ has the same power, $MB^2$, from $M$
+- when $\Gamma$ is the circumcircle of $ABC$ and $\omega$ lies on the side of $A$, $M$ is the midpoint of the arc $BC$ not containing $A$, and $MB = MI$ for the incenter $I$, so the power of $M$ with respect to $\omega$ is $MI^2$
+
+## Conditions
+$\omega$ lies inside $\Gamma$, tangent to it, and tangent to the chord $BC$ at a point $D$ of the segment $BC$. The arc matters: $M$ is the midpoint of the arc on the far side of $BC$ from $\omega$. When $D$ is the midpoint of $BC$, $T$ is the other arc midpoint and the line $TDM$ is the perpendicular bisector of $BC$.
+
+## Why it works
+Step 1, the collinearity. Let $O$ and $W$ be the centers of $\Gamma$ and $\omega$, with radii $R$ and $r$. The homothety centered at $T$ with ratio $\frac Rr$ maps $\omega$ onto $\Gamma$, because the two circles touch at $T$ and $W$ lies on $OT$. It maps the line $BC$, tangent to $\omega$ at $D$, to a parallel line tangent to $\Gamma$ at the image $D'$ of $D$. The ratio is larger than $1$, so $D'$ lies on ray $TD$ beyond $D$, on the other side of $BC$ from $T$. A tangent to $\Gamma$ parallel to $BC$ touches it where the radius is perpendicular to $BC$, on the perpendicular bisector of $BC$, which is at an arc midpoint. So $D'$ is the arc midpoint on the far side, $D' = M$, and $T$, $D$, $M$ are collinear.
+
+Step 2, the product. $M$ is the midpoint of its arc, so the arcs $MB$ and $MC$ are equal, and the inscribed angles on them are equal:
+
+$$\angle MBD = \angle MBC = \angle MTB.$$
+
+Triangles $MBD$ and $MTB$ share the angle at $M$, so they are similar, and $\frac{MB}{MD} = \frac{MT}{MB}$, that is $MD \cdot MT = MB^2$. Since $MB = MC$, the same holds with $C$.
+
+Step 3, the power. The line $MT$ meets $\omega$ at $T$ and $D$, so $MD \cdot MT$ is the [[power-of-a-point|power]] of $M$ with respect to $\omega$. It equals $MB^2$, which does not depend on $\omega$. For the circumcircle of $ABC$ and the arc not containing $A$, the [[incenter-excenter-lemma|Incenter–Excenter Lemma]] gives $MB = MI$.
+
+## Useful observations
+- Two circles tangent to $BC$ and to $\Gamma$ on the same side give $M$ the same power $MB^2$ with respect to both, so $M$ lies on their [[radical-axis|radical axis]].
+- The circle centered at $M$ with radius $MB$ passes through $B$ and $C$ and is orthogonal to every such $\omega$, because the tangent from $M$ to $\omega$ has length $MB$.
+- Inverting about that circle fixes $B$, $C$, and each $\omega$, and swaps $\Gamma$ with line $BC$; this is the same picture as the [[sqrt-bc-inversion|inversion]] at a vertex with radius $\sqrt{bc}$.
+
+## Applications
+Showing that a line through the point of tangency passes through an arc midpoint, computing lengths along that line from $MD \cdot MT = MB^2$, and proving that the incenter lies on a line joining two points of tangency, as in the Sawayama–Thébault Theorem.
+
+## Contest profile
+An olympiad lemma, used whenever a circle is tangent to the circumcircle and to a side or chord. It is quoted by name in solutions, usually together with the Incenter–Excenter Lemma, to bring the incenter into a figure of tangent circles.
+`,
+
+"sqrt-bc-inversion": String.raw`
+## When to use
+A triangle figure in which the circumcircle and the side $BC$ both carry points, a point on one paired with a point on the other, the incenter together with the $A$-excenter, or the median together with the symmedian from $A$. The tell is a pair of objects that the map swaps: one of them is usually hard to work with and its partner easy. A problem with nothing special at the vertex $A$ gains nothing from it.
+
+## How
+1. Fix the vertex $A$, with $b = CA$ and $c = AB$. The map $\Phi$ sends a point $P$ to the point $P'$ on the reflection of ray $AP$ in the bisector of angle $A$, with $AP \cdot AP' = bc$.
+2. Rewrite the figure through the dictionary: $B \leftrightarrow C$, the circumcircle $\leftrightarrow$ line $BC$, $I \leftrightarrow I_A$, the foot of the altitude from $A$ $\leftrightarrow$ the antipode of $A$, the midpoint $M$ of $BC$ $\leftrightarrow$ the second point $K$ where the symmedian meets the circumcircle. Lines through $A$ go to their isogonal lines, other lines to circles through $A$, and circles not through $A$ to circles.
+3. Solve the rewritten problem, using that $\Phi$ preserves angles between curves (with reversed orientation) and tangency.
+4. Bring lengths back with the inversion distance formula, $P'Q' = \frac{bc \cdot PQ}{AP \cdot AQ}$.
+
+## Why it works
+Step 1, the triangle maps to itself. The point $B$ is at distance $c$ from $A$, so the inversion sends it along ray $AB$ to distance $\frac{bc}{c} = b$, and the reflection carries that point onto ray $AC$ at distance $b$, which is $C$. Since $\Phi$ undoes itself, it also sends $C$ to $B$.
+
+Step 2, circle and line. [[inversion-facts|Inversion]] sends a circle through its center to a line, and a reflection keeps lines as lines. The circumcircle passes through $A$, so its image is a line, and it contains the images $C$ and $B$: it is line $BC$.
+
+Step 3, the incenter and the excenter. Both lie on the bisector, which the reflection fixes. Triangles $ABI$ and $AI_AC$ have $\angle BAI = \angle I_AAC = \frac A2$ and $\angle AIB = 90^\circ + \frac C2 = \angle ACI_A$, the last because $CI_A$ bisects the exterior angle at $C$. So they are similar, $\frac{AB}{AI_A} = \frac{AI}{AC}$, and
+
+$$AI \cdot AI_A = bc.$$
+
+Step 4, the other pairs. The altitude and the circumdiameter from $A$ are isogonal, and the foot $H_a$ and the antipode $A'$ satisfy $AH_a \cdot AA' = h_a \cdot 2R = bc$, from $\frac12 bc \sin A = \frac12 a\,h_a$ and $a = 2R\sin A$. The median and the symmedian are isogonal, and triangles $ABM$ and $AKC$ are similar, so $AM \cdot AK = bc$.
+
+## Formulas it uses
+- [[inversion-facts]]: images of lines and circles, and the distance formula, after which the reflection only relabels.
+- [[isogonal-conjugate]]: the reflection in the bisector sends each line through $A$ to its isogonal line.
+- [[incenter-excenter-lemma]]: the similar triangles behind $AI \cdot AI_A = bc$ and the arc midpoint on the bisector.
+- [[symmedian-lemoine]]: the symmedian as the isogonal of the median, the partner the map produces.
+
+## Common traps
+- Inverting without the reflection, which sends $B$ to a point on ray $AB$ instead of to $C$ and loses the whole dictionary.
+- Taking the radius to be $bc$ instead of $\sqrt{bc}$; the product of the two distances is $bc$.
+- Expecting a line through $A$ to stay where it is: it goes to its isogonal line.
+
+## Contest profile
+An olympiad method for triangle problems that mix the circumcircle with the side $BC$, or the incenter with the excenter. It is often the hidden reason a configuration works, as in the [[shooting-lemma|Shooting Lemma]] and the [[dumpty-point|Dumpty point]], and solutions name it when they use it directly.
+`,
+
+"van-aubel-cevians": String.raw`
+## Key forms
+- $\frac{AP}{PD} = \frac{AF}{FB} + \frac{AE}{EC}$ for cevians $AD$, $BE$, $CF$ through $P$, each side ratio measured from $A$
+- the same at the other vertices: $\frac{BP}{PE} = \frac{BD}{DC} + \frac{BF}{FA}$ and $\frac{CP}{PF} = \frac{CE}{EA} + \frac{CD}{DB}$
+- in areas, with $x = [PBC]$, $y = [PCA]$, $z = [PAB]$: $\frac{AF}{FB} = \frac yx$, $\frac{AE}{EC} = \frac zx$, $\frac{AP}{PD} = \frac{y + z}{x}$
+- the companion relation $\frac{PD}{AD} + \frac{PE}{BE} + \frac{PF}{CF} = 1$
+
+## Conditions
+The three cevians meet at one point $P$ inside the triangle, so all six side ratios are positive. With signed ratios the identity holds for a point $P$ outside the triangle as well. If only two side ratios are known, Ceva's Theorem supplies the third before the formula is used.
+
+## Why it works
+Step 1, side ratios as areas. Triangles $ACF$ and $BCF$ have the same height from $C$, so their areas are in the ratio $AF : FB$; so are the areas of $APF$ and $BPF$, which have the same height from $P$. Subtracting the second pair from the first leaves
+
+$$\frac{AF}{FB} = \frac{[APC]}{[BPC]} = \frac yx,$$
+
+and in the same way $\frac{AE}{EC} = \frac{[APB]}{[CPB]} = \frac zx$. This is the [[cevian-area-ratio|area ratio for a cevian]] applied twice.
+
+Step 2, the cevian from $A$. Triangles $APB$ and $DPB$ have the same height from $B$ over the line $AD$, so their areas are in the ratio $AP : PD$, and likewise triangles $APC$ and $DPC$. Adding the two pairs,
+
+$$\frac{AP}{PD} = \frac{[APB] + [APC]}{[DPB] + [DPC]} = \frac{z + y}{x} = \frac{AF}{FB} + \frac{AE}{EC}.$$
+
+Step 3, the companion. By Step 2, $\frac{PD}{AD} = \frac{x}{x + y + z}$, and the same at $B$ and $C$ gives $\frac{y}{x + y + z}$ and $\frac{z}{x + y + z}$. The three add to $1$.
+
+## Useful observations
+- In [[mass-points|mass points]], with masses $m_A$, $m_B$, $m_C$ at the vertices, the side ratios are $\frac{m_B}{m_A}$ and $\frac{m_C}{m_A}$ and the cevian ratio is $\frac{m_B + m_C}{m_A}$: the theorem is the mass-point rule written as one formula.
+- For the centroid every side ratio is $1$, and the formula gives the familiar $2 : 1$.
+- For the incenter the side ratios from $A$ are $\frac ba$ and $\frac ca$ by the Angle Bisector Theorem, so $\frac{AI}{ID} = \frac{b + c}{a}$.
+
+## Applications
+Finding the ratio in which the point of concurrency divides a cevian, especially when two side ratios are given and the third comes from Ceva, and checking mass-point answers.
+
+## Contest profile
+An AIME tool for concurrent cevians with given side ratios. It replaces a mass-point computation with one line, and it pairs naturally with Ceva's Theorem, which supplies the missing ratio.
+`,
+
+"archimedes-broken-chord": String.raw`
+## Key forms
+- $A$, $B$, $C$ on a circle with $AB \lt BC$; $M$ is the midpoint of the arc $AC$ containing $B$; $F$ is the foot of the perpendicular from $M$ to $BC$: $AB + BF = FC$
+- $BF = \frac{BC - AB}{2}$ and $FC = \frac{AB + BC}{2}$
+- $MC^2 - MB^2 = FC^2 - BF^2 = AB \cdot BC$
+- in trigonometric form, with chords $AB = 2R\sin\alpha$ and $BC = 2R\sin\gamma$, it is the sum-to-product formula $\sin\alpha + \sin\gamma = 2\sin\frac{\alpha + \gamma}{2}\cos\frac{\gamma - \alpha}{2}$
+
+## Conditions
+$B$ lies on the arc $AC$, and the perpendicular is dropped from the midpoint of the arc that contains $B$ to the longer of the two chords. If $AB = BC$, then $M = B$ and $F = B$, and the statement is empty.
+
+## Why it works
+Step 1, a congruence. Mark $G$ on $BC$ with $GC = AB$; it lies between $B$ and $C$ because $AB \lt BC$. $M$ is the midpoint of its arc, so $MA = MC$. The inscribed angles $\angle MAB$ and $\angle MCB$ stand on the same chord $MB$, with $A$ and $C$ on the same side of it, so they are equal. Triangles $MAB$ and $MCG$ therefore agree in two sides and the included angle, and
+
+$$MB = MG.$$
+
+Step 2, the foot is a midpoint. Triangle $MBG$ is isosceles, so the foot $F$ of the perpendicular from $M$ to $BG$ is the midpoint of $BG$, and $BF = FG$. Then
+
+$$FC = FG + GC = BF + AB.$$
+
+Step 3, the product. Since $MF \perp BC$, $MC^2 - MB^2 = FC^2 - BF^2 = (FC - BF)(FC + BF)$. By Step 2, $FC - BF = AB$, and $FC + BF = BC$, which gives $AB \cdot BC$.
+
+Step 4, the trigonometric form. Let the arcs $AB$ and $BC$ have central angles $2\alpha$ and $2\gamma$. Then $MC$ subtends the central angle $\alpha + \gamma$, and the inscribed angle $\angle MCB$ is $\frac{\gamma - \alpha}{2}$, so $FC = MC\cos\angle MCB = 2R\sin\frac{\alpha + \gamma}{2}\cos\frac{\gamma - \alpha}{2}$. Setting this equal to $\frac{AB + BC}{2} = R(\sin\alpha + \sin\gamma)$ is the sum-to-product formula.
+
+## Useful observations
+- The theorem turns the sum $AB + BC$ of two chords into the single length $2\,FC$, which is the form in which it is usually applied.
+- The identity $MC^2 - MB^2 = AB \cdot BC$ is a quick way to get $MB$ or $MC$ once the two chords are known.
+- Archimedes stated it for chords in place of sines; read through Step 4 it is one of the oldest forms of the sum-to-product identities in [[product-sum|Product-to-Sum & Sum-to-Product]].
+
+## Applications
+Computing the distance from an arc midpoint to a chord, splitting a sum of two chords into equal halves, and the length chases in problems where an arc midpoint and two chords from one point appear together.
+
+## Contest profile
+A rare AIME and olympiad result, recognized when a problem gives two chords from one point and the midpoint of the arc they span. It is usually quoted to produce $BF$ or $FC$ at once, after which the Pythagorean Theorem in triangle $MFC$ finishes.
+`,
+
 "desargues-involution": String.raw`
 ## Key forms
 - an involution of a line, in a coordinate $t$ along it: $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$ with $\beta^2 \ne \alpha\gamma$; two pairs determine it, and three pairs belong to one involution exactly when $\det\begin{pmatrix} t_1t_1' & t_1 + t_1' & 1 \\ t_2t_2' & t_2 + t_2' & 1 \\ t_3t_3' & t_3 + t_3' & 1 \end{pmatrix} = 0$

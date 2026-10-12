@@ -1745,7 +1745,8 @@
       for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) {
         const x = X0 + j * s, y = Y0 + i * s, gone = (i === 0 && j === 0) || (i === 7 && j === 7);
         if (gone) {
-          parts.push(rect(x + 2, y + 2, s - 4, s - 4, FNT, 1, "none"), seg([x + 7, y + 7], [x + s - 7, y + s - 7], FNT, 1.4), seg([x + s - 7, y + 7], [x + 7, y + s - 7], FNT, 1.4));
+          // A removed corner keeps its (dark) color under the cross, so the reader can see what was taken away.
+          parts.push(rect(x, y, s, s, FNT, 0.8, "rgba(91,140,255,0.32)"), rect(x + 2, y + 2, s - 4, s - 4, FNT, 1, "none"), seg([x + 7, y + 7], [x + s - 7, y + s - 7], FNT, 1.4), seg([x + s - 7, y + 7], [x + 7, y + s - 7], FNT, 1.4));
           continue;
         }
         const isDark = (i + j) % 2 === 0;
@@ -3140,4 +3141,114 @@
       cap(430, 200, "The draws blue, blue, red, with the fraction of each draw taken from what is left after the earlier ones: 6/10 · 5/9 · 4/8 = 1/6. The faint branches are the draws the path does not take." + (ok ? "" : " MISMATCH"))]);
   })()];
 
+
+  // Cyclotomic polynomials: the twelve 12th roots of unity, colored by their exact order d, so each
+  // color is the set of roots of one Φ_d. The degrees are φ(d), and they add up to 12.
+  DIAGRAMS["cyclotomic-polynomials"] = [(() => {
+    const O = [165, 165], R = 120, PURc = "var(--level-12)", ORGc = "var(--level-aime)";
+    const gcd = (a, b) => b ? gcd(b, a % b) : a;
+    const col = { 1: DIM, 2: DIM, 3: GRN, 4: ORGc, 6: PURc, 12: GLD };
+    const roots = Array.from({ length: 12 }, (_, k) => ({ k, d: 12 / gcd(k, 12), p: onC(O, R, -30 * k) }));
+    const counts = {}; roots.forEach(r => { counts[r.d] = (counts[r.d] || 0) + 1; });
+    const phi = n => Array.from({ length: n }, (_, j) => j + 1).filter(j => gcd(j, n) === 1).length;
+    const ok = [1, 2, 3, 4, 6, 12].every(d => counts[d] === phi(d)) && roots.length === 12;
+    const legend = [[12, "Φ₁₂ = x⁴ − x² + 1"], [6, "Φ₆ = x² − x + 1"], [4, "Φ₄ = x² + 1"], [3, "Φ₃ = x² + x + 1"], [2, "Φ₂ = x + 1"], [1, "Φ₁ = x − 1"]];
+    return wrap(460, 330, [
+      seg([30, O[1]], [300, O[1]], FNT, 1.1), seg([O[0], 30], [O[0], 300], FNT, 1.1),
+      circ(O, R, FNT, 1.4),
+      ...roots.map(r => dot(r.p, col[r.d], r.d === 12 ? 6 : 4.5)),
+      txt(add(roots[0].p, [12, -8]), "1", DIM, 12.5, "start"), txt(add(roots[6].p, [-12, -8]), "−1", DIM, 12.5, "end"),
+      ...legend.map(([d, t], j) => dot([318, 92 + 30 * j], col[d], d === 12 ? 6 : 4.5) + txt([330, 96 + 30 * j], t, col[d], 12.5, "start")),
+      cap(460, 330, "The twelve roots of x¹² − 1, each colored by its order d: the roots of order d are exactly the roots of Φ<sub>d</sub>, so x¹² − 1 = Φ₁Φ₂Φ₃Φ₄Φ₆Φ₁₂. The four gold roots, of order 12, are the roots of Φ₁₂, and the counts 1, 1, 2, 2, 2, 4 are φ(d)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Gambler's Ruin: P_k for N = 6, fair (p = 1/2) against biased (p = 2/3), the card's example.
+  DIAGRAMS["gamblers-ruin"] = [(() => {
+    const m = frame(0, 6, 0, 1, 60, 30, 330, 230), N = 6;
+    const fair = k => k / N, r = 0.5, bias = k => (1 - r ** k) / (1 - r ** N);
+    const ok = Math.abs(bias(3) - 8 / 9) < 1e-12 && Math.abs(fair(3) - 0.5) < 1e-12;
+    const path = (f, c) =>
+      Array.from({ length: N }, (_, k) => seg(m.pt(k, f(k)), m.pt(k + 1, f(k + 1)), c, 2)).join("") +
+      Array.from({ length: N + 1 }, (_, k) => dot(m.pt(k, f(k)), c, k === 3 ? 5.5 : 3.8)).join("");
+    return wrap(430, 310, [
+      seg(m.pt(0, 0), m.pt(6, 0), FNT, 1.2), seg(m.pt(0, 0), m.pt(0, 1), FNT, 1.2),
+      seg(m.pt(0, 1), m.pt(6, 1), FNT, 1, "3 4"),
+      ...[0, 1, 2, 3, 4, 5, 6].map(k => txt(add(m.pt(k, 0), [0, 17]), String(k), FNT, 11.5)),
+      txt(add(m.pt(0, 1), [-10, 4]), "1", FNT, 11.5, "end"), txt(add(m.pt(0, 0.5), [-10, 4]), "½", FNT, 11.5, "end"),
+      txt(add(m.pt(3, 0), [0, 34]), "starting chips k", FNT, 11.5),
+      path(fair, ACC), path(bias, GLD),
+      seg(m.pt(3, 0), m.pt(3, bias(3)), FNT, 1, "3 3"),
+      txt(add(m.pt(3, bias(3)), [-12, -10]), "8/9", GLD, 12.5), txt(add(m.pt(3, fair(3)), [16, 14]), "1/2", ACC, 12.5),
+      txt(m.pt(1.75, 0.9), "p = 2/3", GLD, 12.5, "end"), txt(add(m.pt(5, fair(5)), [10, 18]), "p = 1/2", ACC, 12.5, "start"),
+      cap(430, 310, "The probability of reaching 6 chips before 0, from each start k. The fair walk (blue) is the straight line k/6; with p = 2/3 (gold) the curve (1 − (1/2)<sup>k</sup>)/(1 − (1/2)⁶) bulges upward, and from k = 3 it gives 8/9 instead of 1/2." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Tiling a Board: the three ways the left end of a 2 × n strip can be covered by dominoes and
+  // 2 × 2 squares, each leaving a shorter strip: t_n = t_{n-1} + 2t_{n-2}.
+  DIAGRAMS["tiling-a-board"] = [(() => {
+    const c = 26, X0 = 125, cols = 7, rows = [30, 110, 190], parts = [];
+    const strip = y => rect(X0, y, cols * c, 2 * c, DIM, 1.6);
+    const grid = (y, from) => Array.from({ length: cols - from - 1 }, (_, j) => seg([X0 + (from + j + 1) * c, y], [X0 + (from + j + 1) * c, y + 2 * c], FNT, 0.8)).join("") +
+      seg([X0 + from * c, y + c], [X0 + cols * c, y + c], FNT, 0.8);
+    const rest = (y, from, lab) => rect(X0 + from * c, y, (cols - from) * c, 2 * c, "none", 0, "rgba(140,150,170,0.12)") + grid(y, from) +
+      txt([X0 + cols * c + 14, y + c + 5], lab, DIM, 13, "start");
+    parts.push(rest(rows[0], 1, "t<tspan dy=\"3\" font-size=\"0.75em\">n−1</tspan>"), strip(rows[0]), rect(X0 + 3, rows[0] + 3, c - 6, 2 * c - 6, ACC, 2, ACCS));
+    parts.push(rest(rows[1], 2, "t<tspan dy=\"3\" font-size=\"0.75em\">n−2</tspan>"), strip(rows[1]),
+      rect(X0 + 3, rows[1] + 3, 2 * c - 6, c - 6, GLD, 2, GLDS), rect(X0 + 3, rows[1] + c + 3, 2 * c - 6, c - 6, GLD, 2, GLDS));
+    parts.push(rest(rows[2], 2, "t<tspan dy=\"3\" font-size=\"0.75em\">n−2</tspan>"), strip(rows[2]), rect(X0 + 3, rows[2] + 3, 2 * c - 6, 2 * c - 6, GRN, 2, "rgba(76,195,138,0.13)"));
+    ["vertical domino", "two dominoes", "a square"].forEach((t, j) => parts.push(txt([X0 - 8, rows[j] + c + 5], t, DIM, 11.5, "end")));
+    // the count the picture describes, for the card's example
+    const t = [1, 1]; for (let n = 2; n <= 8; n++) t.push(t[n - 1] + 2 * t[n - 2]);
+    const ok = t[8] === 171;
+    parts.push(cap(430, 270, "The left end of a 2 × n board is a vertical domino (blue), two stacked dominoes (gold), or a 2 × 2 square (green). Each leaves a shorter board (gray), so t<sub>n</sub> = t<sub>n−1</sub> + 2t<sub>n−2</sub>, and t<sub>8</sub> = 171." + (ok ? "" : " MISMATCH")));
+    return wrap(430, 270, parts);
+  })()];
+
+  // Strategy stealing and symmetry: a row of 9 coins after the first player takes the middle one.
+  // The opponent takes coins 2 and 3 (gold); the reply takes their mirror images, 7 and 8 (blue).
+  DIAGRAMS["strategy-stealing"] = [(() => {
+    const n = 9, mid = 4, y = 120, x = j => 55 + j * 40, parts = [];
+    const opp = [1, 2], rep = opp.map(j => n - 1 - j);
+    const ok = rep.join() === "7,6" && rep.every(j => j !== mid && !opp.includes(j));
+    for (let j = 0; j < n; j++) {
+      const P = [x(j), y];
+      if (j === mid) parts.push(circ(P, 15, FNT, 1.4, "none", "4 3"), txt([P[0], y - 28], "first move", FNT, 11));
+      else if (opp.includes(j)) parts.push(circ(P, 15, GLD, 2, GLDS, "4 3"));
+      else if (rep.includes(j)) parts.push(circ(P, 15, ACC, 2, ACCS, "4 3"));
+      else parts.push(circ(P, 15, DIM, 1.8, "rgba(140,150,170,0.15)"));
+    }
+    parts.push(txt([(x(1) + x(2)) / 2, y + 36], "opponent", GLD, 12), txt([(x(6) + x(7)) / 2, y + 36], "mirror reply", ACC, 12));
+    parts.push(`<path d="M ${x(1.5)} ${y + 50} Q ${x(4)} ${y + 85} ${x(6.5)} ${y + 50}" fill="none" stroke="${FNT}" stroke-width="1.4" stroke-dasharray="4 3"/>`);
+    parts.push(cap(430, 210, "After the first player takes the middle coin, the row splits into two equal halves. Each move in one half (gold) is answered by the same move in the other (blue), so the halves stay identical and the first player always has a reply." + (ok ? "" : " MISMATCH")));
+    return wrap(430, 210, parts);
+  })()];
+
+  // Erdős–Ko–Rado, Katona's circle for n = 8, k = 3: the arc A = {0, 1, 2} and the two pairs of arcs
+  // that meet it, each pair disjoint, so at most one of each pair can join A.
+  DIAGRAMS["erdos-ko-rado"] = [(() => {
+    const O = [175, 160], R = 105, n = 8, k = 3;
+    const ang = i => -90 + 360 * i / n, pt = (i, r) => onC(O, r, ang(i));
+    const arc = (a, r, c, w, dash = "") => {
+      let d = ""; const steps = 24;
+      for (let t = 0; t <= steps; t++) { const q = onC(O, r, ang(a - 0.3) + (360 / n) * (k - 1 + 0.6) * t / steps); d += (t ? " L " : "M ") + pf(q); }
+      return `<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round"${dash ? ` stroke-dasharray="${dash}"` : ""}/>`;
+    };
+    const set = a => Array.from({ length: k }, (_, t) => (a + t) % n);
+    const disjoint = (a, b) => set(a).every(v => !set(b).includes(v));
+    const ok = disjoint(1, 6) && disjoint(2, 7) && !disjoint(0, 1) && !disjoint(0, 6) && !disjoint(0, 2) && !disjoint(0, 7);
+    const PURc = "var(--level-12)";
+    return wrap(470, 320, [
+      circ(O, R, FNT, 1.2),
+      arc(0, R + 16, ACC, 6),
+      arc(1, R + 32, GLD, 4), arc(6, R + 32, GLD, 4, "6 4"),
+      arc(2, R + 46, PURc, 4), arc(7, R + 46, PURc, 4, "6 4"),
+      ...Array.from({ length: n }, (_, i) => dot(pt(i, R), DIM, 4) + txt(add(pt(i, R - 18), [0, 4]), String(i), DIM, 12)),
+      txt([333, 70], "A = {0, 1, 2}", ACC, 12.5, "start"),
+      txt([333, 100], "{1, 2, 3} or {6, 7, 0}", GLD, 12, "start"),
+      txt([333, 128], "{2, 3, 4} or {7, 0, 1}", PURc, 12, "start"),
+      cap(470, 320, "Katona's circle with n = 8 and k = 3. Every arc of three that meets A = {0, 1, 2} starts or ends inside it, and the arcs come in disjoint pairs (solid and dashed, same color), so an intersecting family holds A and at most one arc of each pair: at most k = 3 arcs." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

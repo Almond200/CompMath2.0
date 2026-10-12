@@ -1747,7 +1747,19 @@
     "defined-operation": "pattern",
     "coins-and-prices": "pattern",
     "truth-tellers-logic": "pattern",
-    "drawing-without-replacement": "pattern"
+    "drawing-without-replacement": "pattern",
+    "shooting-lemma": "formula",
+    "dumpty-point": "formula",
+    "sqrt-bc-inversion": "method",
+    "van-aubel-cevians": "formula",
+    "archimedes-broken-chord": "formula",
+    "nesbitt-inequality": "formula",
+    "injectivity-surjectivity": "method",
+    "cyclotomic-polynomials": "formula",
+    "gamblers-ruin": "formula",
+    "strategy-stealing": "method",
+    "erdos-ko-rado": "formula",
+    "tiling-a-board": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -8296,6 +8308,78 @@
       ]
     ],
     "drawing-without-replacement": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "shooting-lemma": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "dumpty-point": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "sqrt-bc-inversion": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "van-aubel-cevians": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "archimedes-broken-chord": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "nesbitt-inequality": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "injectivity-surjectivity": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "cyclotomic-polynomials": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "gamblers-ruin": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "strategy-stealing": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "erdos-ko-rado": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "tiling-a-board": [
       [
         "(new card)",
         "written directly in the pattern template"

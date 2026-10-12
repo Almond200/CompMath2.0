@@ -2977,6 +2977,35 @@
     (entry.formulas || []).forEach(fid => { const e = BY_ID[fid]; if (e) e.topics.forEach(push); });
     return out;
   }
+  // The subject chip (plan 2.5a): which of the four contest subjects a problem belongs to,
+  // shown first under its title. It is derived, never typed by hand, apart from a `subjects`
+  // override an entry may carry: first the subjects of the problem's tagged cards (Counting &
+  // Probability shows as Combinatorics, and the proof-method cards carry no subject), then the
+  // round of a paper that names its subject (HMMT Algebra, Geometry, ...). A problem with nothing
+  // to go on shows no chip until it is tagged; the chip is never a guess.
+  const SUBJECT_LABELS = { algebra: "Algebra", counting: "Combinatorics", geometry: "Geometry", "number-theory": "Number Theory" };
+  const SUBJECT_ORDER = ["algebra", "counting", "geometry", "number-theory"];
+  function cardSubject(fid) {
+    const e = BY_ID[fid];
+    if (!e) return "";
+    const s = e.formula.subject || e.section.id;
+    return SUBJECT_LABELS[s] ? s : "";
+  }
+  function problemSubjects(entry, formulas, cname) {
+    if (Array.isArray(entry.subjects) && entry.subjects.length) return entry.subjects.filter(s => SUBJECT_LABELS[s]);
+    const n = {};
+    formulas.forEach(fid => { const s = cardSubject(fid); if (s) n[s] = (n[s] || 0) + 1; });
+    let out = Object.keys(n);
+    if (!out.length && cname) {
+      const c = cname.toLowerCase();
+      [["algebra", "algebra"], ["combinatorics", "counting"], ["geometry", "geometry"], ["number theory", "number-theory"]]
+        .forEach(([w, s]) => { if (c.indexOf(w) !== -1) out.push(s); });
+    }
+    // The subject most of the tags belong to comes first, so a geometry problem that borrows
+    // one algebra card reads "Geometry · Algebra".
+    return out.sort((a, b) => (n[b] || 0) - (n[a] || 0) || SUBJECT_ORDER.indexOf(a) - SUBJECT_ORDER.indexOf(b));
+  }
+  const subjectChips = p => p.subjects.map(s => `<span class="ptype-chip subject-chip">${SUBJECT_LABELS[s]}</span>`).join("");
   const PROBLEM_DB = (window.MATH_PROBLEM_DB || []).map(e => {
     const formulas = (e.formulas || []).filter(fid => BY_ID[fid]);
     const trickFormulas = (e.trickFormulas || []).filter(fid => BY_ID[fid]);
@@ -2984,7 +3013,7 @@
     return {
       ref: e.ref, slug: problemSlug(e.ref),
       url: e.url || aopsUrl(e.ref, pr.fam), urlLabel: linkLabel(pr.fam),
-      formulas, trickFormulas, types: problemTypes(e), strategy: e.strategy || "",
+      formulas, trickFormulas, types: problemTypes(e), subjects: problemSubjects(e, formulas, pr.cname), strategy: e.strategy || "",
       trick: e.trick || "",
       // Hints we write (revealed one at a time before the strategy) and the card that is the
       // problem's central idea. `main` must be one of its own tags; the validator enforces it.
@@ -5151,7 +5180,7 @@
           <span class="prob-ref">${label}</span>
           <span class="prob-formula-count">${p.formulas.length} formula${p.formulas.length === 1 ? "" : "s"}</span>
         </div>
-        ${typeChips ? `<div class="ptype-row">${typeChips}</div>` : ""}
+        ${typeChips || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${typeChips}</div>` : ""}
         ${p.strategy ? `<div class="prob-strategy">${p.strategy}</div>` : ""}
       </a>`;
   }
@@ -5340,7 +5369,7 @@
         <div class="detail-head">
           <h2 class="card-name">${refShort(p.ref)}</h2>
         </div>
-        ${types ? `<div class="ptype-row">${types}</div>` : ""}
+        ${types || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${types}</div>` : ""}
         ${MAA_RE.test(p.ref) ? `<section class="prob-st" id="prob-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
           <p class="prob-credit"></p>

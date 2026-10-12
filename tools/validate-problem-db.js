@@ -9,9 +9,11 @@ window.MATH_SECTIONS = SECTIONS;
 load('js/data/geometry.js'); load('js/data/algebra.js');
 load('js/data/number-theory.js'); load('js/data/counting.js');
 load('js/data/patterns.js');
-var CARDS = {}, DESCS = {}, KIND = {};
+var CARDS = {}, DESCS = {}, KIND = {}, SUBJ = {};
+var SUBJECTS = { "algebra": 1, "counting": 1, "geometry": 1, "number-theory": 1 };
 SECTIONS.forEach(function (s) { (s.subsections || []).forEach(function (sub) { (sub.formulas || []).forEach(function (f) {
   CARDS[f.id] = 1; DESCS[f.id] = f.description || "";
+  var sj = f.subject || s.id; if (SUBJECTS[sj]) SUBJ[f.id] = sj;
   KIND[f.id] = f.type === "method" || f.type === "pattern" ? f.type : "formula";
 }); }); });
 
@@ -56,7 +58,23 @@ DB.forEach(function (e, i) {
       errors.push(at + ": main '" + e.main + "' is not one of the problem's own tagged cards");
   }
   if (e.d != null && (typeof e.d !== "number" || e.d < 1 || e.d > 10)) errors.push(at + ": d out of range");
+  // The subject chip (2.5a) is derived from the tagged cards; an entry may override it with
+  // `subjects`, but the override can only name the four subjects and must keep the subject of
+  // every tagged card, so the chip never contradicts a tag.
+  if (e.subjects != null) {
+    if (!Array.isArray(e.subjects) || !e.subjects.length) errors.push(at + ": subjects must be a non-empty array");
+    else {
+      e.subjects.forEach(function (sj) { if (!SUBJECTS[sj]) errors.push(at + ": unknown subject '" + sj + "'"); });
+      (e.formulas || []).forEach(function (f) {
+        if (SUBJ[f] && e.subjects.indexOf(SUBJ[f]) < 0) errors.push(at + ": subjects omit '" + SUBJ[f] + "', the subject of its tag '" + f + "'");
+      });
+    }
+  }
 });
+var withSubject = DB.filter(function (e) {
+  return (e.subjects && e.subjects.length) || (e.formulas || []).some(function (f) { return SUBJ[f]; }) || /HMMT .*(Algebra|Geometry|Combinatorics|Number Theory)/.test(e.ref);
+}).length;
+print("subject chips: " + withSubject + " of " + DB.length + " problems (the rest wait for tags)");
 // Every [[card-id]] cross-link in a write-up must resolve, or a renamed card leaves a
 // dead link that nothing else would catch.
 var DETAILS = {};

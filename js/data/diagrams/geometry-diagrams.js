@@ -223,10 +223,24 @@
   // ---------- Fundamentals ----------
 
   DIAGRAMS["pythagorean-theorem"] = [(() => {
-    const P = [90, 260], Q = [340, 260], R = [90, 95];
-    return wrap(420, 300, [
-      poly([P, Q, R], DIM, 2, ACCS), rightAngle(P, Q, R),
-      txt([215, 282], "a"), txt([72, 180], "b"), txt([232, 168], "c", ACC, 14)
+    // The statement itself: a square on each side of a 3-4-5 right triangle, so the two
+    // smaller areas visibly add up to the largest one.
+    const k = 30, P = [150, 250], Q = [150 + 4 * k, 250], R = [150, 250 - 3 * k];
+    const out = norm(perp(sub(R, Q))), hyp = dist(Q, R);   // perpendicular to QR, away from P
+    const away = sub(mid(Q, R), P), GRNS = "rgba(76, 195, 138, 0.13)";
+    const n = out[0] * away[0] + out[1] * away[1] > 0 ? mul(out, hyp) : mul(out, -hyp);
+    const sqA = [P, Q, add(Q, [0, 4 * k]), add(P, [0, 4 * k])];
+    const sqB = [P, R, add(R, [-3 * k, 0]), add(P, [-3 * k, 0])];
+    const sqC = [Q, R, add(R, n), add(Q, n)];
+    const ctr = q => mul(q.reduce(add), 1 / 4);
+    const ok = Math.abs(dist(P, Q) ** 2 + dist(P, R) ** 2 - hyp ** 2) < 1e-6;
+    return wrap(430, 390, [
+      poly(sqA, GLD, 1.8, GLDS), poly(sqB, GRN, 1.8, GRNS), poly(sqC, ACC, 1.8, ACCS),
+      poly([P, Q, R], DIM, 2), rightAngle(P, Q, R),
+      txt(add(ctr(sqA), [0, 5]), "a²", GLD, 16), txt(add(ctr(sqB), [0, 5]), "b²", GRN, 16), txt(add(ctr(sqC), [0, 5]), "c²", ACC, 16),
+      txt(add(mid(P, Q), [0, -8]), "a", DIM, 13), txt(add(mid(P, R), [10, 4]), "b", DIM, 13),
+      txt(add(mid(Q, R), mul(n, -0.09)), "c", DIM, 13),
+      cap(430, 390, "the squares on the two legs together have the area of the square on the hypotenuse: a² + b² = c² (here 9 + 16 = 25)" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -8730,4 +8744,128 @@ DIAGRAMS["trig-ceva"] = [(() => {
     return wrap(430, 260, parts);
   })()];
 
+
+  // Shooting Lemma, drawn from the card's example: BC = 8, the arc midpoint M two above BC,
+  // and the circle tangent to BC at D with BD = 3, on the far side of BC from M.
+  DIAGRAMS["shooting-lemma"] = [(() => {
+    const k = 30, P = (x, y) => [215 + k * x, 45 + k * (2 - y)];
+    const B = P(-4, 0), C = P(4, 0), M = P(0, 2), O = P(0, -3), R = 5 * k;
+    const Dt = P(-1, 0), W = P(-1, -3.75), r = 3.75 * k;
+    const T = add(O, mul(sub(W, O), R / (R - r)));                 // the point of tangency of the two circles
+    const ok = Math.abs(dist(O, T) - R) < 1e-6 && Math.abs(dist(W, T) - r) < 1e-6 &&
+      Math.abs((Dt[0] - T[0]) * (M[1] - T[1]) - (Dt[1] - T[1]) * (M[0] - T[0])) < 1e-6 * R * R &&
+      Math.abs(dist(M, Dt) * dist(M, T) - dist(M, B) ** 2) < 1e-6 * R * R &&
+      Math.abs(dist(Dt, T) / k - 3 * Math.sqrt(5)) < 1e-9;
+    return wrap(430, 360, [
+      circ(O, R, FNT, 1.5), circ(W, r, GLD, 1.8),
+      seg(B, C, DIM, 2), seg(M, B, GRN, 1.6), seg(M, C, GRN, 1.6), ticksOn(M, B, 1, GRN), ticksOn(M, C, 1, GRN),
+      seg(M, T, ACC, 2),
+      dot(M, ACC, 4.5), dot(T, ACC, 4.5), dot(Dt, GLD, 4.5), dot(B, DIM, 3.5), dot(C, DIM, 3.5),
+      txt(add(M, [0, -10]), "M", ACC, 14), txt(add(T, [-12, 12]), "T", ACC, 14), txt(add(Dt, [12, -8]), "D", GLD, 14),
+      txt(add(B, [-14, 4]), "B", DIM, 14), txt(add(C, [14, 4]), "C", DIM, 14),
+      cap(430, 360, "The gold circle touches chord BC at D and the circle at T. Line TD passes through M, the midpoint of the arc BC on the other side of BC, and MD · MT = MB² = MC² (MB = MC, ticked). Here BC = 8, M is 2 above BC and BD = 3, so MD = √5, MT = 20/√5 = 4√5 and DT = 3√5." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Dumpty point of the card's example triangle, AB = 7, CA = 11, BC = 12: AK = 11, AD = DK = 11/2.
+  // The tangents at B and C meet far below BC for this triangle, so T is described, not drawn.
+  DIAGRAMS["dumpty-point"] = [(() => {
+    const k = 26, P = (x, y) => [215 + k * (x - 6), 22 + k * (7.12 - y)];
+    const A = P(3, Math.sqrt(40)), B = P(0, 0), C = P(12, 0), tri = [A, B, C];
+    const O = circumcenterOf(A, B, C), R = dist(O, A), Mbc = mid(B, C);
+    const Tt = add(O, mul(sub(Mbc, O), R * R / dist(Mbc, O) ** 2));  // the tangents at B and C meet here
+    const u = sub(Tt, A), tq = -2 * ((A[0] - O[0]) * u[0] + (A[1] - O[1]) * u[1]) / (u[0] ** 2 + u[1] ** 2);
+    const K = add(A, mul(u, tq)), Dp = mid(A, K);
+    const O2 = circumcenterOf(B, O, C);
+    const ang = (U, V, Wp) => { const a = sub(U, V), b = sub(Wp, V); return Math.acos((a[0] * b[0] + a[1] * b[1]) / Math.hypot(...a) / Math.hypot(...b)); };
+    const ok = Math.abs(dist(A, K) / k - 11) < 1e-6 && Math.abs(dist(O2, Dp) - dist(O2, B)) < 1e-6 &&
+      Math.abs(dist(Dp, A) ** 2 - dist(Dp, B) * dist(Dp, C)) < 1e-6 * k * k &&
+      Math.abs(ang(Dp, B, A) - ang(Dp, A, C)) < 1e-9 && Math.abs(ang(Dp, A, B) - ang(Dp, C, A)) < 1e-9;
+    return wrap(430, 350, [
+      circ(O, R, FNT, 1.5), circ(O2, dist(O2, B), GRN, 1.4, "none", "6 4"),
+      poly(tri, DIM, 2), segIn(A, K, tri, ACC, 2), ticksOn(A, Dp, 1, ACC), ticksOn(Dp, K, 1, ACC),
+      seg(Dp, B, GLD, 1.5), seg(Dp, C, GLD, 1.5),
+      dot(O, DIM, 3.5), dot(Dp, GLD, 5), dot(K, ACC, 4),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-13, 8]), "B", DIM, 14), txt(add(C, [13, 8]), "C", DIM, 14),
+      txt(add(O, [12, -6]), "O", DIM, 13), txt(add(Dp, [15, 6]), "D", GLD, 14), txt(add(K, [-13, 8]), "K", ACC, 14),
+      cap(430, 350, "The symmedian from A (blue, solid inside the triangle, dashed beyond BC) meets the circumcircle again at K; extended, it would reach the point where the tangents at B and C meet. The Dumpty point D is the midpoint of AK (ticks). It lies on the dashed green circle through B, O, C, and DA² = DB · DC. Here AB = 7, CA = 11, BC = 12, so AK = 11, DB = 7/2 and DC = 121/14." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // √bc inversion on the triangle of the card's example, AB = 5, AC = 8, angle A = 60°.
+  DIAGRAMS["sqrt-bc-inversion"] = [(() => {
+    const k = 25, P = (x, y) => [125 + k * x, 175 - k * y];
+    const A = P(2.5, 2.5 * Math.sqrt(3)), B = P(0, 0), C = P(7, 0), tri = [A, B, C];
+    const a = dist(B, C), b = dist(C, A), c = dist(A, B);
+    const O = circumcenterOf(A, B, C), R = dist(O, A);
+    const bis = norm(add(mul(sub(B, A), 1 / c), mul(sub(C, A), 1 / b)));
+    const phi = Q => {                                              // invert at A with r² = bc, then reflect in the bisector
+      const v = sub(Q, A), q = add(A, mul(v, b * c / (v[0] ** 2 + v[1] ** 2)));
+      const w = sub(q, A), pr = mul(bis, w[0] * bis[0] + w[1] * bis[1]);
+      return add(A, sub(mul(pr, 2), w));
+    };
+    const Pp = lerp(B, C, 2 / 7), Pc = phi(Pp);                      // P' on BC with BP' = 2, and its partner P on the circle
+    const I = mul(add(add(mul(A, a), mul(B, b)), mul(C, c)), 1 / (a + b + c));
+    const IA = mul(add(add(mul(A, -a), mul(B, b)), mul(C, c)), 1 / (b + c - a));
+    const ok = dist(phi(B), C) < 1e-6 && Math.abs(dist(O, Pc) - R) < 1e-6 && dist(phi(I), IA) < 1e-6 &&
+      Math.abs(dist(A, I) * dist(A, IA) - b * c) < 1e-6 * b * c && Math.abs(dist(A, Pc) * dist(A, Pp) - b * c) < 1e-6 * b * c;
+    return wrap(430, 380, [
+      circ(O, R, FNT, 1.5), seg(lerp(B, C, -0.25), lerp(B, C, 1.25), DIM, 1.2),
+      segIn(A, IA, tri, GRN, 1.4, "5 4"),
+      poly(tri, DIM, 2), segIn(A, Pc, tri, GLD, 1.8), seg(A, Pp, ACC, 1.8),
+      angleArc(A, B, Pp, 34, PUR), angleArc(A, Pc, C, 34, PUR),
+      dot(I, GRN, 4), dot(IA, GRN, 4.5), dot(Pc, GLD, 4.5), dot(Pp, ACC, 4.5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-13, 4]), "B", DIM, 14), txt(add(C, [13, 4]), "C", DIM, 14),
+      txt(add(I, [12, 2]), "I", GRN, 13), txt(add(IA, [13, -19]), subT("I", "A"), GRN, 13),
+      txt(add(Pc, [-12, 12]), "P", GLD, 14), txt(add(Pp, [4, -10]), "P′", ACC, 14),
+      cap(430, 380, "The map inverts at A with radius √(bc) and reflects in the bisector of angle A (green). P on the circumcircle goes to P′ on line BC: AP and AP′ make equal angles with the sides (purple) and AP · AP′ = bc. B and C swap, and so do the incenter I and the excenter I<sub>A</sub>, with AI · AI<sub>A</sub> = bc. Here AB = 5, AC = 8 and A = 60°." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Van Aubel's Theorem for cevians, with the card's example: AF:FB = 1:2 and BD:DC = 3:4 force
+  // AE:EC = 3:8 (Ceva) and AP:PD = 1/2 + 3/8 = 7/8.
+  DIAGRAMS["van-aubel-cevians"] = [(() => {
+    const A = [170, 40], B = [50, 290], C = [390, 290], tri = [A, B, C];
+    const F = lerp(A, B, 1 / 3), Dp = lerp(B, C, 3 / 7), P = lineInt(A, Dp, C, F), E = lineInt(B, P, A, C);
+    const ok = Math.abs(dist(A, E) / dist(E, C) - 3 / 8) < 1e-9 && Math.abs(dist(A, P) / dist(P, Dp) - 7 / 8) < 1e-9 &&
+      Math.abs(dist(A, P) / dist(P, Dp) - (dist(A, F) / dist(F, B) + dist(A, E) / dist(E, C))) < 1e-9;
+    const side = (U, V, t, d) => add(mid(U, V), mul(norm(perp(sub(V, U))), d * t));
+    return wrap(430, 330, [
+      poly(tri, DIM, 2),
+      seg(A, F, GLD, 3), seg(F, B, GLD, 1.2), seg(A, E, GRN, 3), seg(E, C, GRN, 1.2),
+      seg(A, P, ACC, 3.2), seg(P, Dp, ACC, 1.6), seg(B, E, FNT, 1.4), seg(C, F, FNT, 1.4),
+      dot(P, ACC, 5), dot(Dp, ACC, 4), dot(E, GRN, 4), dot(F, GLD, 4),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-13, 8]), "B", DIM, 14), txt(add(C, [13, 8]), "C", DIM, 14),
+      txt(add(F, [-14, 2]), "F", GLD, 14), txt(add(E, [14, 0]), "E", GRN, 14), txt(add(Dp, [0, 20]), "D", ACC, 14),
+      txt(add(P, [14, 8]), "P", ACC, 14),
+      txt(side(A, F, 1, 15), "1", GLD, 12.5), txt(side(F, B, 1, 15), "2", GLD, 12.5),
+      txt(side(A, E, -1, 15), "3", GRN, 12.5), txt(side(E, C, -1, 15), "8", GRN, 12.5),
+      txt(side(B, Dp, -1, 14), "3", DIM, 12.5), txt(side(Dp, C, -1, 14), "4", DIM, 12.5),
+      cap(430, 330, "The pieces next to A are drawn thick. AF : FB = 1 : 2 (gold) and AE : EC = 3 : 8 (green), so AP : PD = 1/2 + 3/8 = 7/8 (blue). Ceva fixes AE : EC from AF : FB and BD : DC = 3 : 4." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Archimedes' Broken Chord, with the card's example: AB = 4, BC = 10, angle ABC = 60°, so
+  // BF = 3, FC = 7, MF = 3√3, MB = 6. G on BC with GC = AB is the point the proof uses.
+  DIAGRAMS["archimedes-broken-chord"] = [(() => {
+    const k = 28, P = (x, y) => [75 + k * x, 22 + k * (4.46 - y)];
+    const B = P(0, 0), C = P(10, 0), A = P(2, 2 * Math.sqrt(3));
+    const O = circumcenterOf(A, B, C), R = dist(O, A), mAC = mid(A, C);
+    const cand = [add(O, mul(norm(sub(mAC, O)), R)), add(O, mul(norm(sub(mAC, O)), -R))];
+    const sideAC = Q => (C[0] - A[0]) * (Q[1] - A[1]) - (C[1] - A[1]) * (Q[0] - A[0]);
+    const M = sideAC(cand[0]) * sideAC(B) > 0 ? cand[0] : cand[1];        // the arc midpoint on B's side of AC
+    const F = foot(M, B, C), G = lerp(C, B, 4 / 10);
+    const ok = Math.abs((dist(A, B) + dist(B, F) - dist(F, C)) / k) < 1e-9 && Math.abs(dist(B, F) / k - 3) < 1e-9 &&
+      Math.abs(dist(M, F) / k - 3 * Math.sqrt(3)) < 1e-9 && Math.abs(dist(M, B) / k - 6) < 1e-9 && Math.abs(dist(M, B) - dist(M, G)) < 1e-9;
+    return wrap(430, 330, [
+      circ(O, R, FNT, 1.5),
+      seg(A, B, ACC, 2.4), seg(B, C, ACC, 2.4), seg(M, A, FNT, 1.2, "4 3"), seg(M, C, FNT, 1.2, "4 3"),
+      seg(M, B, GRN, 1.4), seg(M, G, GRN, 1.4), seg(M, F, GLD, 1.8, "5 4"), rightAngle(F, M, C, 8, GLD),
+      ticksOn(A, B, 1, ACC), ticksOn(G, C, 1, ACC), ticksOn(B, F, 2, GLD), ticksOn(F, G, 2, GLD),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(M, GLD, 5), dot(F, GLD, 4.5), dot(G, GRN, 4),
+      txt(add(A, [-4, -11]), "A", DIM, 14), txt(add(B, [-14, -4]), "B", DIM, 14), txt(add(C, [13, 6]), "C", DIM, 14),
+      txt(add(M, [0, 19]), "M", GLD, 14), txt(add(F, [10, -9]), "F", GLD, 14), txt(add(G, [0, -9]), "G", GRN, 14),
+      cap(430, 330, "M is the midpoint of the arc AC through B, and F is the foot from M to the longer chord BC. Marking G with GC = AB (one tick) makes MB = MG, so F is the midpoint of BG (two ticks), and AB + BF = FC. Here AB = 4, BC = 10 and ∠ABC = 60°: BF = 3, FC = 7, MF = 3√3." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

@@ -16,7 +16,7 @@ window.MATH_SECTIONS.push({
         { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "phantom-point"] },
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
-        { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
+        { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
         { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation"] },
         { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "fit-copies"] }
       ],
@@ -257,6 +257,21 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\begin{gathered} OP \cdot OP^* = r^2 \\ \text{circle through } O \leftrightarrow \text{line} \end{gathered}`,
           description: String.raw`Inversion about a circle with center $O$ and radius $r$ sends each point $P$ to the point $P^*$ on ray $OP$ with $OP \cdot OP^* = r^2$. It swaps the inside and outside of the circle, sends circles through $O$ to lines, and preserves angles, so it can turn a crowded picture of circles into lines and circles that are easy to handle.`,
           keywords: ["inversion properties", "inverse point", "op op* = r^2", "line to circle", "conformal", "inversion distance formula", "circle preserving", "inversive geometry", "inversion"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "sqrt-bc-inversion",
+          name: String.raw`$\sqrt{bc}$ Inversion`,
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A triangle problem joins the circumcircle to the side $BC$, or pairs a point on the circumcircle with a point on $BC$, or involves both the incenter and the $A$-excenter, or both the median and the symmedian from $A$.`,
+          move: String.raw`Apply the map that inverts at $A$ with radius $\sqrt{bc}$ and then reflects in the bisector of angle $A$: it swaps $B$ and $C$, swaps the circumcircle with line $BC$, and keeps the triangle, so the problem can be restated about the partner objects and solved there.`,
+          uses: ["inversion-facts", "isogonal-conjugate", "incenter-excenter-lemma", "symmedian-lemoine"],
+          latex: String.raw`\begin{gathered} AP \cdot AP' = bc,\ \ \angle BAP = \angle P'AC \\ B \leftrightarrow C,\quad (ABC) \leftrightarrow BC,\quad I \leftrightarrow I_A \end{gathered}`,
+          description: String.raw`In triangle $ABC$ with $b = CA$ and $c = AB$, the $\sqrt{bc}$ inversion sends a point $P$ to the point $P'$ on the line through $A$ isogonal to $AP$, at the distance that makes the product of the distances from $A$ equal to $bc$. It is an ordinary [[inversion-properties|circle inversion]] composed with a reflection, chosen so that the triangle maps to itself. Because it trades the circumcircle for the line $BC$ and the incenter $I$ for the excenter $I_A$, a statement about the circle becomes a statement about a line, often much easier to prove.`,
+          keywords: ["sqrt bc inversion", "root bc inversion", "inversion at A with radius square root of bc", "inversion composed with reflection in the bisector", "circumcircle to line BC", "swaps B and C", "incenter to excenter", "median and symmedian swap"],
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
@@ -545,7 +560,7 @@ window.MATH_SECTIONS.push({
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sos-method", "smoothing-method", "tangent-line-trick", "median-minimizes-abs", "slope-to-a-point"] },
         { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "time-per-leg", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "sqrt-approximation"] },
-        { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it.", ids: ["function-symmetry-equation"] },
+        { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Determinants", blurb: "Evaluating a determinant without expanding every term.", ids: ["cofactor-expansion"] }
       ],
       formulas: [
@@ -818,6 +833,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AIME Early",
           level: ["AIME"]
+        },
+        {
+          id: "injectivity-surjectivity",
+          name: "Injectivity and Surjectivity in Functional Equations",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A functional equation nests the unknown function inside itself, as in $f(f(x))$ or $f(x + f(y))$, so that plugging in values never isolates $f$; or one side contains a bare variable that can take every value.`,
+          move: String.raw`Prove that $f$ is injective, so $f(A) = f(B)$ lets you conclude $A = B$, or surjective, so some input gives $f$ any chosen value, such as $0$; then substitute that input, or cancel $f$, to unlock the equation.`,
+          uses: ["inverse-function-properties", "cauchy-functional-equations"],
+          latex: String.raw`\begin{gathered} f(a) = f(b) \implies a = b \quad \text{(injective)} \\ \text{every } y \text{ is some } f(x) \quad \text{(surjective)} \end{gathered}`,
+          description: String.raw`In an olympiad functional equation, the first structural facts to prove are usually that the function is one-to-one or onto. Injectivity lets $f$ be cancelled from both sides of an equation; surjectivity lets $f(y)$ be replaced by a free variable, or lets a point where $f$ vanishes be plugged in. Both are proved from the equation itself, typically from a side where a variable appears outside every $f$, and together they often reduce the problem to a known equation such as [[cauchy-functional-equations|Cauchy's]].`,
+          keywords: ["injective function", "surjective function", "one to one", "onto", "cancel f", "functional equation olympiad", "f(f(x))", "there is a zero of f"],
+          importance: "medium",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "lagrange-interpolation",
@@ -1441,7 +1471,7 @@ window.MATH_SECTIONS.push({
         { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
-        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound"] }
+        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
       ],
       formulas: [
         {
@@ -1488,6 +1518,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "strategy-stealing",
+          name: "Strategy Stealing and Symmetry Strategies",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A two-player game with no chance and no hidden information either has a symmetric board, with a center or a mirror line, or has the property that an extra move or piece never hurts the player who has it.`,
+          move: String.raw`For symmetry, answer every move with its mirror image, after first taking the center if there is one, so a reply always exists. For stealing, suppose the second player has a winning strategy, let the first player make any move and then follow that strategy, and derive a contradiction.`,
+          uses: ["sprague-grundy"],
+          latex: String.raw`\begin{gathered} \text{mirror: answer each move with its image} \\ \text{steal: an extra move never hurts} \implies \text{the first player wins} \end{gathered}`,
+          description: String.raw`Two ways to decide a game without solving it position by position. A symmetry strategy keeps the board symmetric after each of your moves, so whenever the opponent can move, the mirror image of that move is still available to you, and you are never the one stuck. Strategy stealing proves that the first player wins without saying how: if the second player had a winning strategy, the first player could make an arbitrary move and then use it, which is a contradiction whenever an extra move can only help.`,
+          keywords: ["strategy stealing", "symmetry strategy", "mirror strategy", "copy the opponent", "first player wins", "chomp", "hex", "take the center then mirror"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME", "Olympiad"]
         },
         {
           id: "complementary-counting",
@@ -2615,7 +2660,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Subset Conditions", blurb: "Subsets that must avoid a forbidden pair, such as two elements with a given sum, difference, or divisibility.", ids: ["subset-avoiding-relation"] },
         { title: "Logic & Probability Setups", blurb: "Puzzles made of statements, where only consistent guesses survive, and draws from a bag that change what is left.", ids: ["truth-tellers-logic", "drawing-without-replacement"] },
-        { title: "Strings & Sequences with a Rule", blurb: "Strings, tilings, and arrangements of a given length where a local rule forbids certain neighbors, counted by tracking what the last few symbols were.", ids: ["restricted-sequences"] }
+        { title: "Strings & Sequences with a Rule", blurb: "Strings, tilings, and arrangements of a given length where a local rule forbids certain neighbors, counted by tracking what the last few symbols were.", ids: ["restricted-sequences", "tiling-a-board"] }
       ],
       formulas: [
         {
@@ -2632,6 +2677,21 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "tiling-a-board",
+          name: "Tiling a Board",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`a board, strip, or region to be covered exactly by dominoes, trominoes, squares, or other given tiles, with no overlaps and no gaps`, String.raw`a question asking how many tilings there are, usually of a $2 \times n$ or $3 \times n$ strip`, String.raw`or a question asking whether any tiling exists at all, or how many tiles of one kind a tiling must use`],
+          suggests: ["recursive-counting", "transfer-matrix-method", "coloring-arguments", "invariants-coloring"],
+          tryFirst: ["recursive-counting", "coloring-arguments", "linear-recurrence"],
+          latex: String.raw`\begin{gathered} \text{how many: classify by the tiles at one end} \\ \text{whether: color so every tile covers a fixed mix of colors} \end{gathered}`,
+          description: String.raw`This is a covering problem: a region and a set of tile shapes, and the tiles must fill the region exactly. The question is either a count, which a recursion on the length of the board answers by looking at how the tiling ends, or an existence question, which a coloring of the board usually settles by showing that the tiles cannot match the colors of the region.`,
+          keywords: ["tiling", "domino tiling", "tromino tiling", "tile a 2 by n board", "cover a board with tiles", "tiling count recursion", "impossible tiling", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "truth-tellers-logic",

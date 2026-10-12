@@ -1121,6 +1121,41 @@ Expected waiting times for a first success, expected rolls to see every face, an
 Expected number of rolls until a given face, coupon-collector variants such as the expected number of rolls to see every face, and first-passage questions. The self-similar equation is faster and safer than series summation.
 `,
 
+"gamblers-ruin": String.raw`
+## Key forms
+- a walk on $0, 1, \ldots, N$ starts at $k$, steps $+1$ with probability $p$ and $-1$ with probability $q = 1 - p$, and stops at $0$ or $N$; $P_k$ is the probability of reaching $N$ first
+- fair walk, $p = \frac12$: $P_k = \frac kN$, and the expected number of steps is $E_k = k(N - k)$
+- biased walk, $p \ne \frac12$, with $r = \frac qp$: $P_k = \frac{1 - r^k}{1 - r^N}$ and $E_k = \frac{k}{q - p} - \frac{N}{q - p}\cdot\frac{1 - r^k}{1 - r^N}$
+- no upper target, $N \to \infty$: ruin is certain when $p \le \frac12$; when $p \gt \frac12$ the walk escapes forever with probability $1 - \left(\frac qp\right)^k$
+
+## Conditions
+The steps are independent, each exactly $+1$ or $-1$ with fixed probabilities, and the walk stops at the first visit to $0$ or $N$. Steps of other sizes, or a probability of standing still, change the recurrence, though the same first-step method still solves it.
+
+## Why it works
+Step 1, first-step equations. Conditioning on the first step from $k$,
+
+$$P_k = p\,P_{k + 1} + q\,P_{k - 1} \qquad (0 \lt k \lt N), \qquad P_0 = 0,\ P_N = 1.$$
+
+This is the method of [[states-recursion-prob|Markov chains and first-step analysis]], with one state per position.
+
+Step 2, solving the recurrence. Writing $P_k = (p + q)P_k$ turns it into $p\,(P_{k + 1} - P_k) = q\,(P_k - P_{k - 1})$, so the gaps $P_{k + 1} - P_k$ form a geometric sequence with ratio $r = \frac qp$. When $r = 1$ the gaps are equal, $P_k$ is linear, and the boundary values give $\frac kN$. When $r \ne 1$, $P_k$ is proportional to $1 + r + \cdots + r^{k - 1} = \frac{1 - r^k}{1 - r}$, and $P_N = 1$ fixes the constant, giving $\frac{1 - r^k}{1 - r^N}$.
+
+Step 3, the expected length. Now $E_k = 1 + p\,E_{k + 1} + q\,E_{k - 1}$ with $E_0 = E_N = 0$. In the fair case $-k^2$ is a particular solution, so $E_k = -k^2 + \alpha k + \beta$, and the boundary values give $E_k = k(N - k)$. In the biased case $\frac{k}{q - p}$ is a particular solution, and adding a multiple of the homogeneous solution $1 - r^k$ to meet $E_N = 0$ gives the stated formula.
+
+Step 4, the unbounded game. For $p \lt \frac12$, $r \gt 1$ and $P_k = \frac{r^k - 1}{r^N - 1} \to 0$ as $N \to \infty$; for $p = \frac12$, $\frac kN \to 0$. For $p \gt \frac12$, $r^N \to 0$ and $P_k \to 1 - r^k$.
+
+## Useful observations
+- In a fair game the expected fortune never changes, so $k = N \cdot P_k + 0 \cdot (1 - P_k)$, which gives $P_k = \frac kN$ in one line.
+- A small bias has a large effect: with $p = 0.49$, a start of $k = 50$ and target $N = 100$ give $P_{50} \approx 0.12$, not $\frac12$, because $r^{50}$ is large.
+- Doubling the stakes halves $k$ and $N$, which raises the weaker side's chance in a biased game: bold play is better when the odds are against you.
+
+## Applications
+Probabilities that one player is eliminated before another, random walks between two barriers, races of points such as a game won by getting two points ahead, and the expected length of such games.
+
+## Contest profile
+An AIME and AMC probability setup, recognized by a quantity that goes up or down by one each round until it hits one of two limits. The fair case is usually expected to be solved on sight, and the biased case through the recurrence or the formula.
+`,
+
 "turn-based-games": String.raw`
 ## Key forms
 - $P(\text{first player wins}) = \dfrac{p}{p + q - pq}$ — when the first player succeeds with probability $p$ on each turn and the second with probability $q$
@@ -2117,6 +2152,40 @@ Partitioning into monotone pieces, scheduling, and "cover with few chains" probl
 Olympiad combinatorics. Building the right poset and quoting Dilworth or Mirsky is usually the cleanest path.
 `,
 
+"erdos-ko-rado": String.raw`
+## Key forms
+- an intersecting family of $k$-element subsets of an $n$-element set, with $n \ge 2k$, has at most $\binom{n - 1}{k - 1}$ members
+- a star, every $k$-subset containing one fixed element, is intersecting and has exactly $\binom{n - 1}{k - 1}$ members
+- when $n = 2k$ the $k$-subsets split into $\frac12\binom{2k}{k} = \binom{2k - 1}{k - 1}$ complementary pairs, and choosing one set from each pair always gives a family of the maximum size
+- when $n \lt 2k$ every two $k$-subsets meet, so all $\binom nk$ of them form an intersecting family
+- Katona's lemma: among the $n$ arcs of $k$ consecutive points on a circle of $n \ge 2k$ points, an intersecting family contains at most $k$
+
+## Conditions
+Every member has exactly $k$ elements, and $n \ge 2k$. For families of subsets of mixed sizes the right bound is different (see Useful observations).
+
+## Why it works
+Step 1, Katona's lemma. Place the $n$ points around a circle, and let an arc be a set of $k$ consecutive points. Suppose an intersecting family contains the arc $A = \{0, 1, \ldots, k - 1\}$. Any other arc that meets $A$ either starts at one of the points $1, \ldots, k - 1$ or ends at one of the points $0, \ldots, k - 2$. Pair the arc that starts at $j$ with the arc that ends at $j - 1$, for $j = 1, \ldots, k - 1$. Together the two cover $2k$ consecutive points, which are all different because $n \ge 2k$, so the two arcs are disjoint and at most one of them is in the family. That leaves at most $k - 1$ arcs besides $A$, and at most $k$ in all.
+
+Step 2, [[double-counting|double counting]]. Count the pairs $(\sigma, F)$ where $\sigma$ is one of the $n!$ ways to write the elements around the circle in positions $0, 1, \ldots, n - 1$ and $F$ is a member of the family that forms an arc of $\sigma$. For each $\sigma$ there are at most $k$ such $F$, by Step 1, so there are at most $k \cdot n!$ pairs. For each $F$, the arrangements in which it is an arc are counted by choosing the starting position ($n$ ways), the order of $F$ inside its arc ($k!$), and the order of the rest ($(n - k)!$). So
+
+$$|\mathcal F| \cdot n \cdot k!\,(n - k)! \le k \cdot n!, \qquad |\mathcal F| \le \frac{k \cdot n!}{n \cdot k!\,(n - k)!} = \frac{(n - 1)!}{(k - 1)!\,(n - k)!} = \binom{n - 1}{k - 1}.$$
+
+The circle is the go-between that makes the count possible.
+
+Step 3, the case $n = 2k$ directly. Two $k$-subsets of a $2k$-set are disjoint exactly when they are complements, so an intersecting family takes at most one set from each complementary pair, and any choice of one per pair is intersecting. There are $\frac12\binom{2k}{k}$ pairs, and this equals $\binom{2k - 1}{k - 1}$.
+
+## Useful observations
+- Without the size condition, an intersecting family of subsets of an $n$-set has at most $2^{n - 1}$ members, since it cannot contain both a set and its complement; all sets through one fixed element reach this.
+- The proof shows where $n \ge 2k$ is used: only to make the paired arcs disjoint. Below that threshold the paired arcs overlap, and the bound fails, as $n \lt 2k$ makes every pair of $k$-sets intersect.
+- The circle method is a model for other extremal proofs: find a small structure in which the bound is easy, then average over all copies of it.
+
+## Applications
+Bounding the number of committees, teams, or subsets in which every two share a member, and recognizing when the answer is a star, all sets through one person or element.
+
+## Contest profile
+An olympiad result about families of sets, recognized by a condition that every two chosen subsets of a fixed size overlap. It is quoted for the bound, and its circle proof is a standard example of double counting.
+`,
+
 "sperners-theorem": String.raw`
 ## Key forms
 - the largest antichain in the subsets of an $n$-element set has size $\dbinom{n}{\lfloor n/2\rfloor}$, attained by all subsets of the middle size
@@ -2706,6 +2775,34 @@ The same table proves a classic result of Erdős: among any $n + 1$ numbers chos
 Usually the whole argument in two halves: the rows give the upper bound, and the top half of the range shows it is reached.
 `,
 
+"strategy-stealing": String.raw`
+## When to use
+Two-player games with perfect information and no chance, in two situations. The board has a symmetry, a center point or a mirror line, or the position can be split into two identical halves, so one player can copy the other. Or the game cannot end in a draw and an extra piece or an extra move never hurts the player who has it, so the first player can borrow any strategy the second player might have. Games whose positions are small enough to label one by one are better handled by labeling.
+
+## How
+1. Look for a symmetry of the starting position. If the board has a center that a move could occupy, the first player should take it first; then the board is symmetric with the opponent to move.
+2. Answer every move of the opponent with its mirror image. Check that the mirror move is always legal: it must not be the same move, and it must not be blocked by the move it answers.
+3. Conclude that the copying player always has a reply, so in a game where the player unable to move loses, the copying player wins.
+4. For strategy stealing, check that the game is finite, that it cannot end in a draw, and that an extra piece or move never hurts its owner. Then suppose the second player has a winning strategy, and let the first player make an arbitrary move and play that strategy as if they were second. Whenever the strategy calls for the square already taken by the extra piece, the first player makes another arbitrary move. The first player then wins, a contradiction, so the first player has a winning strategy.
+
+## Why it works
+A symmetry strategy keeps an invariant: after each move of the copying player, the position is symmetric. If the opponent has a legal move, its mirror image is legal in the symmetric position before that move, and it stays legal after it, because the move did not block its own image. So the copying player never runs out of moves and never makes the last move first.
+
+Strategy stealing uses the fact that a finite game with no draws is a win for one of the players, which [[backward-induction|labeling positions backward]] proves by assigning every position a label. If the label of the start were a win for the second player, the borrowed strategy would make the first player win, which is impossible. In Chomp, a chocolate bar from which players alternately take a square together with every square above and to its right, and the player who takes the poisoned bottom-left square loses, the first player opens by taking only the top-right square. If some reply then won for the second player, that reply also removes the top-right square, so the first player could have played it first. So the first player wins every bar larger than one square.
+
+## Formulas it uses
+- [[sprague-grundy]]: two identical halves of an impartial game have the same Grundy value $g$, and $g \oplus g = 0$, so the position is a loss for the player to move; mirroring is the strategy that realizes this.
+
+## Common traps
+- Mirroring when the opponent can play on the center or the mirror line, where the image of the move is the move itself.
+- Stealing in a game where moving can hurt, as when a player would rather pass, so the extra move is not harmless.
+- Forgetting that strategy stealing proves a winning strategy exists without describing it; a question asking for the strategy needs more.
+- Ignoring draws: in a game that can be drawn, stealing only shows that the first player does not lose.
+
+## Contest profile
+An AMC and AIME game technique, and a staple of olympiad combinatorics. Symmetry strategies decide many placement and take-away games in a line, and strategy stealing settles who wins games such as Chomp and Hex without describing the winning strategy.
+`,
+
 "backward-induction": String.raw`
 ## When to use
 Two players take turns, there is no chance and no hidden information, every move makes progress toward the end, and the question asks who wins with best play, or how many starting positions up to $N$ are wins for the first or second player. Several piles, or a choice of which pile to play on, make it a game of Nim, which [[sprague-grundy|the Sprague–Grundy Theorem]] handles; dice or random draws make it a probability question instead.
@@ -2882,6 +2979,35 @@ Networks with no redundant links, counting edges and leaves from degree informat
 
 ## Contest profile
 Olympiad graph theory and occasional AIME problems that count leaves or edges from degrees, or prove that some structure is a tree.
+`,
+
+"tiling-a-board": String.raw`
+## Distinguishing clues
+- A region, usually a $1 \times n$, $2 \times n$, or $3 \times n$ strip or a square board, is to be covered exactly by tiles of given shapes, with no overlaps and no gaps.
+- Either the number of tilings is asked, often for one length such as $n = 8$, or the question is whether a tiling exists, or how many tiles of one kind any tiling must use.
+- Not this pattern: placing pieces that need not cover the board, such as non-attacking rooks or non-adjacent chairs, which are selection problems, [[non-adjacent-selection|Non-Adjacent Selection]] among them.
+
+## Methods and Formulas to Try
+For a count, build the tiling from one end; for an existence question, look for a coloring the tiles cannot match.
+
+### Methods to try
+- [[recursive-counting]]: look at the tiles covering the leftmost column. Each way they can sit leaves a shorter strip, and the count is the sum of the counts for those strips.
+- [[transfer-matrix-method]]: for wider strips, where the tiles can stick out of the first column in several ways, record what sticks out as the state and count paths through the states.
+- [[coloring-arguments]]: color the board so that every tile covers a fixed number of cells of each color, then compare with the color counts of the region; a mismatch proves that no tiling exists.
+- [[invariants-coloring]]: for questions about how many tiles of one kind must be used, attach a weight or a coloring that each tile changes by a known amount.
+
+### Formulas to try
+- [[linear-recurrence]]: the counts for a strip of length $n$ satisfy a linear recurrence, solved in closed form by its characteristic roots; domino tilings of a $2 \times n$ strip give the Fibonacci numbers.
+- [[multiset-permutations]]: a $1 \times n$ strip tiled with $j$ dominoes and $n - 2j$ squares is a row of $n - j$ tiles, so there are $\binom{n - j}{j}$ such tilings.
+
+## Common traps
+- Missing a way the tiles can cover the first column, such as two stacked horizontal dominoes beside one vertical one.
+- Counting a tiling twice because two different first moves lead to the same picture; the first column has to be split into cases that cannot overlap.
+- Wrong starting values: the empty strip has exactly one tiling, $t_0 = 1$.
+- Trying to prove impossibility by checking areas only, when the areas match and a coloring is needed.
+
+## Contest profile
+An AMC and AIME counting pattern, most often a $2 \times n$ or $3 \times n$ strip with dominoes and one other tile, answered by a short recursion. Impossibility versions appear on olympiads and on harder AMC problems.
 `,
 
 "restricted-sequences": String.raw`
