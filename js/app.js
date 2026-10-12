@@ -1344,11 +1344,29 @@
   // Each history entry remembers where the reader was on it, so Back and Forward return there,
   // while a fresh click always opens at the top. The position lives in history.state (written
   // with replaceState, debounced): a new entry starts with no state, a revisited one has it.
+  // Besides the pixel offset it saves an anchor: the element with an id at the top of the view
+  // and how far below the top it sat. A page laid out again on Back can come out a few pixels
+  // taller or shorter above that point (math and figures render lazily), so restoring the raw
+  // offset left the page shifted; restoring the anchor puts the same card back in the same place.
   let scrollSaveTimer = 0;
+  function scrollAnchor() {
+    const bar = document.querySelector(".topbar");
+    const yTop = (bar ? bar.getBoundingClientRect().bottom : 0) + 8;
+    const box = $content.getBoundingClientRect();
+    let el = document.elementFromPoint(box.left + Math.min(box.width / 2, 260), yTop);
+    while (el && el !== $content && !el.id) el = el.parentElement;
+    if (!el || el === $content || !$content.contains(el)) {
+      // Nothing with an id under that point: take the first element with an id that is still
+      // on screen below the bar.
+      el = [...$content.querySelectorAll("[id]")].find(e => e.getBoundingClientRect().bottom > yTop) || null;
+      if (!el) return null;
+    }
+    return { a: el.id, o: el.getBoundingClientRect().top };
+  }
   window.addEventListener("scroll", () => {
     clearTimeout(scrollSaveTimer);
     scrollSaveTimer = setTimeout(() => {
-      try { history.replaceState(Object.assign({}, history.state, { y: window.scrollY }), ""); } catch (e) {}
+      try { history.replaceState(Object.assign({}, history.state, { y: window.scrollY }, scrollAnchor() || { a: null }), ""); } catch (e) {}
     }, 150);
   }, { passive: true });
   function openFormula(id) {
@@ -3901,8 +3919,31 @@
   }
   // Where a fresh visit to an address should land: a group's heading, else the top. A
   // revisited history entry passes the position it was left at instead.
-  function scrollForRoute(route, saved) {
-    if (saved != null) { window.scrollTo({ top: saved, behavior: "instant" }); return; }
+  function scrollForRoute(route, saved, st) {
+    if (saved != null) {
+      // Back or Forward: put the saved anchor back where it was, and again once fonts and
+      // lazily rendered math have settled, unless the reader has scrolled in between.
+      const anchor = st && st.a ? document.getElementById(st.a) : null;
+      const place = () => {
+        const top = anchor && document.body.contains(anchor) ? anchor.getBoundingClientRect().top + window.scrollY - st.o : saved;
+        window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
+        return window.scrollY;
+      };
+      // The reader's own scrolling is detected from input events, not from scrollY: the browser's
+      // scroll anchoring also moves scrollY when content above changes, and that must be undone.
+      let done = false;
+      place();
+      const again = () => { if (!done) place(); };
+      // Re-place on every frame while the page settles (math, fonts, a problem statement loading),
+      // so a layout change is corrected in the frame it happens; stop after a moment or at the
+      // reader's first input.
+      const stop = () => { if (done) return; done = true; ["wheel", "touchstart", "keydown", "mousedown"].forEach(t => window.removeEventListener(t, stop, true)); };
+      ["wheel", "touchstart", "keydown", "mousedown"].forEach(t => window.addEventListener(t, stop, true));
+      const t0 = performance.now();
+      const tick = () => { again(); if (!done && performance.now() - t0 < 1500) requestAnimationFrame(tick); else stop(); };
+      requestAnimationFrame(tick);
+      return;
+    }
     const sc = route.section;
     const gi = sc ? (sc.cluster != null ? sc.cluster : sc.topic) : null;
     const el = gi != null ? document.getElementById(groupAnchor(sc.id, sc.sub, gi)) : null;
@@ -6705,7 +6746,7 @@
     render();
     // A revisited entry (Back or Forward) returns to where the reader was on it; a fresh click
     // opens at the top. #/settings/commands scrolls to its own anchor (renderSettingsPage).
-    if (!(route.type === "settings" && route.anchor)) scrollForRoute(route, history.state && typeof history.state.y === "number" ? history.state.y : null);
+    if (!(route.type === "settings" && route.anchor)) scrollForRoute(route, history.state && typeof history.state.y === "number" ? history.state.y : null, history.state);
   });
 
   // ---------- Init ----------

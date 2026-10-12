@@ -364,7 +364,7 @@ window.MATH_SECTIONS.push({
           id: "euler-quadrilateral",
           name: "Euler's Quadrilateral Theorem",
           latex: String.raw`a^2 + b^2 + c^2 + d^2 = p^2 + q^2 + 4m^2 \qquad p^2 + q^2 = 2(a^2 + b^2) \ \text{(parallelogram)}`,
-          description: String.raw`For any convex quadrilateral with diagonals $p, q$ and $m$ the distance between the midpoints of the diagonals. A parallelogram has $m = 0$, and then the identity is the parallelogram law, $p^2 + q^2 = 2(a^2 + b^2)$: the squares of the two diagonals add up to the squares of the four sides.`,
+          description: String.raw`For any quadrilateral with sides $a, b, c, d$, diagonals $p, q$, and $m$ the distance between the midpoints of the diagonals, the sum of the squares of the sides is $p^2 + q^2 + 4m^2$. A parallelogram has $m = 0$, and then the identity is the parallelogram law, $p^2 + q^2 = 2(a^2 + b^2)$: the squares of the two diagonals add up to the squares of the four sides.`,
           keywords: ["parallelogram law", "diagonal midpoints", "generalization", "euler quadrilateral theorem", "diagonals and midpoint segment", "parallelogram law for quadrilaterals"],
           importance: "lower",
           tier: "AIME Late",
@@ -530,7 +530,7 @@ window.MATH_SECTIONS.push({
           id: "incircle-excircle-homothety",
           name: "Incircle to Excircle Homothety",
           latex: String.raw`\frac{r}{r_a} = \frac{s-a}{s}, \qquad A,\; D',\; E \ \text{collinear}`,
-          description: String.raw`The dilation centered at $A$ that carries the incircle to the $A$-excircle has ratio $\frac{s}{s-a}$, since both circles sit in the same angle at $A$. It sends the incircle's touch point on $BC$ to the excircle's touch point only after a half-turn, so what it actually sends to $E$ is $D'$, the point of the incircle diametrically opposite $D$ — which is why $A$, $D'$, and $E$ are collinear.`,
+          description: String.raw`The dilation centered at $A$ that carries the incircle to the $A$-excircle has ratio $\frac{s}{s-a}$, since both circles sit in the same angle at $A$. Let the incircle touch $BC$ at $D$ and the $A$-excircle touch $BC$ at $E$. The dilation does not send $D$ to $E$: the tangent line $BC$ at $D$ goes to the parallel tangent of the excircle on the far side from $A$, so the point it sends to $E$ is $D'$, the point of the incircle diametrically opposite $D$, which is why $A$, $D'$, and $E$ are collinear.`,
           keywords: ["homothety", "incircle excircle", "Nagel", "touch point antipode", "collinear", "dilation at a vertex", "r over ra", "extouch"],
           importance: "medium",
           tier: "AIME Late",
@@ -706,7 +706,7 @@ window.MATH_SECTIONS.push({
           id: "rouths-theorem",
           name: "Routh's Theorem",
           latex: String.raw`\frac{[\triangle]}{[ABC]} = \frac{(xyz-1)^2}{(xy+y+1)(yz+z+1)(zx+x+1)}`,
-          description: String.raw`Routh's Theorem gives the area of the triangle formed by three cevians of $\triangle ABC$ in terms of the ratios $x$, $y$, $z$ in which they cut the sides. For the cevians that cut each side in the ratio $2 : 1$ the inner triangle is $\frac17$ of $\triangle ABC$.`,
+          description: String.raw`Routh's Theorem gives the area of the triangle formed by three cevians $AD$, $BE$, $CF$ of $\triangle ABC$ in terms of the ratios in which they cut the sides, $x = \frac{DC}{BD}$, $y = \frac{EA}{CE}$, $z = \frac{FB}{AF}$, all taken in the same direction around the triangle. For the cevians that cut each side in the ratio $2 : 1$ the inner triangle is $\frac17$ of $\triangle ABC$.`,
           keywords: ["cevian triangle", "one seventh", "area ratio", "routh"],
           importance: "low",
           tier: "AIME Late",
@@ -821,16 +821,22 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "Olympiad",
           level: ["Olympiad"]
-        },
+        }
+      ]
+    },
+    {
+      title: "Olympiad Triangle Lemmas",
+      blurb: "The named lemmas olympiad solutions quote about a triangle: its incircle and excircles, the orthocenter and a median, isogonal lines, and perpendiculars to the sides.",
+      formulas: [
         {
-          id: "carnots-perpendicularity-theorem",
-          name: "Carnot's Perpendicularity Theorem",
-          latex: String.raw`\text{perpendiculars at } D, E, F \text{ concur} \iff BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0`,
-          description: String.raw`Take one point on each side line of a triangle $ABC$: $D$ on $BC$, $E$ on $CA$, $F$ on $AB$, anywhere on the lines, inside the sides or beyond them. Draw the perpendicular to each side line at its point. The three perpendiculars pass through a single point if and only if $BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0$. The sum goes once around the triangle, and each term is the difference of the squares of the two pieces that a point cuts its side into. It turns "three lines meet" into one equation in lengths, which is why the perpendicular bisectors, the altitudes, and the perpendiculars at the incircle's touch points are all seen to concur at once. It is a different theorem from the one about distances from the circumcenter that shares the name.`,
-          keywords: ["carnot perpendicularity", "concurrent perpendiculars", "perpendiculars to the sides concur", "alternating sum of squares", "BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2", "perpendiculars from points on the sides", "carnot concurrency criterion", "perpendicular concurrency criterion"],
-          importance: "low",
-          tier: "Olympiad",
-          level: ["Olympiad"]
+          id: "incenter-excenter-lemma",
+          name: "Incenter–Excenter Lemma (Fact 5)",
+          latex: String.raw`M = \text{arc midpoint of } BC \implies MB = MC = MI = MI_A, \qquad MB = 2R\sin\tfrac A2`,
+          description: String.raw`The midpoint $M$ of arc $BC$ (not containing $A$) is equidistant from $B$, $C$, the incenter $I$, and the $A$-excenter $I_A$ — so $B, C, I, I_A$ lie on a circle centered at $M$. Proof: angle chase shows $\angle MBI = \angle MIB = \frac{A+B}{2}$. Also $AI = \frac{r}{\sin(A/2)}$ and $A$, $I$, $M$ are collinear (the bisector passes through the arc midpoint).`,
+          keywords: ["incenter excenter", "fact 5", "arc midpoint", "equidistant", "bisector through arc midpoint", "AI = r / sin(A/2)", "distance from incenter to vertex", "B C I I_A concyclic"],
+          importance: "high",
+          tier: "AIME Early",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "iran-lemma",
@@ -848,6 +854,36 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\angle BAD = \angle EAC \implies \frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}`,
           description: String.raw`Two cevians $AD$ and $AE$ of triangle $ABC$, with $D$ and $E$ on side $BC$, are isogonal when each is the reflection of the other in the bisector of angle $A$, that is, when $\angle BAD = \angle EAC$. Steiner's theorem says that the two ratios in which they cut $BC$ multiply to the square of the ratio of the adjacent sides, $\frac{BD}{DC} \cdot \frac{BE}{EC} = \frac{AB^2}{AC^2}$, and the converse holds: two points of side $BC$ whose ratios multiply to $\frac{AB^2}{AC^2}$ are the feet of isogonal cevians. It is the [[ratio-lemma|Ratio Lemma]] applied to both cevians at once, where the sines cancel because the two cevians cut the angle at $A$ into the same two pieces in opposite order.`,
           keywords: ["steiner ratio theorem", "steiner theorem isogonal", "isogonal cevians", "product of ratios on the opposite side", "BD/DC times BE/EC", "square of the side ratio", "isogonal feet", "reflection in the angle bisector"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "isogonal-line-lemma",
+          name: "Isogonal Line Lemma",
+          latex: String.raw`\begin{gathered} \angle BAX = \angle YAC,\ \ P = BX \cap CY,\ \ Q = BY \cap CX \\ \implies \angle BAP = \angle QAC \end{gathered}`,
+          description: String.raw`Let $X$ and $Y$ be points on two lines through vertex $A$ of triangle $ABC$ that are isogonal, mirror images in the bisector of angle $A$, so that $\angle BAX = \angle YAC$. Cross the lines from the other two vertices: $P$ is where $BX$ meets $CY$, and $Q$ is where $BY$ meets $CX$. Then $AP$ and $AQ$ are isogonal too, $\angle BAP = \angle QAC$. A pair of isogonal lines through $A$ therefore produces a second pair from any two points on them, and when $X$ and $Y$ are [[isogonal-conjugate|isogonal conjugates]] the new points $P$ and $Q$ are isogonal conjugates as well. The proof is a short computation with [[trig-ceva|Trigonometric Ceva]].`,
+          keywords: ["isogonal line lemma", "isogonal lines lemma", "crossing lines from B and C", "BX meets CY", "pair of isogonal lines", "isogonal conjugate pairs", "reflection in the bisector", "equal angles at A"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "humpty-queue-points",
+          name: "Humpty and Queue Points",
+          latex: String.raw`HX \perp AM,\ \ X \in (BHC),\ \ MX \cdot MA = MB^2, \qquad Q = MH \cap (ABC),\ \ \angle AQH = 90^\circ`,
+          description: String.raw`Two points that the orthocenter $H$ of triangle $ABC$ and the midpoint $M$ of $BC$ produce together. The $A$-Humpty point $X$ is the foot of the perpendicular from $H$ to the median $AM$; it lies on the circle through $B$, $H$, and $C$, satisfies $MX \cdot MA = MB^2$, and sees the two sides in the ratio $XB : XC = AB : AC$. The $A$-Queue point $Q$ is the second point where line $MH$ meets the circumcircle $(ABC)$, the first being the antipode of $A$; it satisfies $\angle AQH = 90^\circ$, so it lies on the circle with diameter $AH$. Both points turn a median and an orthocenter into a circle, which is what olympiad configurations with $H$ and $M$ need.`,
+          keywords: ["humpty point", "queue point", "foot of perpendicular from H to the median", "circle BHC", "MX times MA equals MB squared", "line MH meets the circumcircle", "angle AQH right angle", "orthocenter and midpoint"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "carnots-perpendicularity-theorem",
+          name: "Carnot's Perpendicularity Theorem",
+          latex: String.raw`\text{perpendiculars at } D, E, F \text{ concur} \iff BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0`,
+          description: String.raw`Take one point on each side line of a triangle $ABC$: $D$ on $BC$, $E$ on $CA$, $F$ on $AB$, anywhere on the lines, inside the sides or beyond them. Draw the perpendicular to each side line at its point. The three perpendiculars pass through a single point if and only if $BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2 = 0$. The sum goes once around the triangle, and each term is the difference of the squares of the two pieces that a point cuts its side into. It turns "three lines meet" into one equation in lengths, which is why the perpendicular bisectors, the altitudes, and the perpendiculars at the incircle's touch points are all seen to concur at once. It is a different theorem from the one about distances from the circumcenter that shares the name.`,
+          keywords: ["carnot perpendicularity", "concurrent perpendiculars", "perpendiculars to the sides concur", "alternating sum of squares", "BD^2 - DC^2 + CE^2 - EA^2 + AF^2 - FB^2", "perpendiculars from points on the sides", "carnot concurrency criterion", "perpendicular concurrency criterion"],
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
@@ -881,7 +917,7 @@ window.MATH_SECTIONS.push({
         {
           id: "orthic-triangle",
           name: "Orthic Triangle",
-          latex: String.raw`\text{sides } a\cos A,\, b\cos B,\, c\cos C, \qquad \text{perimeter} = \frac{2[ABC]}{R} = 4R\sin A\sin B\sin C, \qquad [\text{orthic}] = 2\cos A\cos B\cos C\,[ABC]`,
+          latex: String.raw`\text{acute } \triangle ABC: \quad \text{sides } a\cos A,\, b\cos B,\, c\cos C, \qquad \text{perimeter} = \frac{2[ABC]}{R} = 4R\sin A\sin B\sin C, \qquad [\text{orthic}] = 2\cos A\cos B\cos C\,[ABC]`,
           description: String.raw`The triangle formed by the three altitude feet, equivalently the pedal triangle of the orthocenter $H$. In an acute triangle its angles are $\pi-2A,\ \pi-2B,\ \pi-2C$, its sides are $a\cos A,\ b\cos B,\ c\cos C$, and $H$ is its incenter, so the altitudes of $ABC$ bisect its angles.`,
           keywords: ["orthic triangle", "feet of altitudes", "pedal of orthocenter", "fagnano problem", "minimum perimeter inscribed triangle", "nine point circle", "antiparallel sides", "H is incenter of orthic", "angles pi - 2A", "orthic perimeter", "a cos A + b cos B + c cos C", "2[ABC]/R", "4R sin A sin B sin C", "orthic area 2 cos A cos B cos C", "reflection of orthocenter on circumcircle"],
           importance: "medium",
@@ -924,16 +960,6 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{reflect } AP, BP, CP \text{ in the angle bisectors} \implies \text{they concur at } P^*, \qquad (x : y : z) \mapsto \left(\tfrac{a^2}{x} : \tfrac{b^2}{y} : \tfrac{c^2}{z}\right)`,
           description: String.raw`Reflect the cevians $AP$, $BP$, $CP$ across the angle bisectors at $A$, $B$, $C$: the three reflected lines always concur, at the isogonal conjugate $P^*$. The classic pairs are the circumcenter $O$ and the orthocenter $H$, the centroid $G$ and the [[lemoine-point|symmedian (Lemoine) point]] $K$, the incenter (its own conjugate), and the Fermat points and the isodynamic points. $P$ and $P^*$ share a pedal circle.`,
           keywords: ["isogonal conjugate", "reflect cevian over bisector", "O and H conjugate", "symmedian point", "incenter self conjugate", "isodynamic", "common pedal circle"],
-          importance: "low",
-          tier: "Olympiad",
-          level: ["Olympiad"]
-        },
-        {
-          id: "isogonal-line-lemma",
-          name: "Isogonal Line Lemma",
-          latex: String.raw`\angle BAX = \angle YAC,\ \ P = BX \cap CY,\ \ Q = BY \cap CX \implies \angle BAP = \angle QAC`,
-          description: String.raw`Let $X$ and $Y$ be points on two lines through vertex $A$ of triangle $ABC$ that are isogonal, mirror images in the bisector of angle $A$, so that $\angle BAX = \angle YAC$. Cross the lines from the other two vertices: $P$ is where $BX$ meets $CY$, and $Q$ is where $BY$ meets $CX$. Then $AP$ and $AQ$ are isogonal too, $\angle BAP = \angle QAC$. A pair of isogonal lines through $A$ therefore produces a second pair from any two points on them, and when $X$ and $Y$ are [[isogonal-conjugate|isogonal conjugates]] the new points $P$ and $Q$ are isogonal conjugates as well. The proof is a short computation with [[trig-ceva|Trigonometric Ceva]].`,
-          keywords: ["isogonal line lemma", "isogonal lines lemma", "crossing lines from B and C", "BX meets CY", "pair of isogonal lines", "isogonal conjugate pairs", "reflection in the bisector", "equal angles at A"],
           importance: "low",
           tier: "Olympiad",
           level: ["Olympiad"]
@@ -1045,16 +1071,6 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
-          id: "incenter-excenter-lemma",
-          name: "Incenter–Excenter Lemma (Fact 5)",
-          latex: String.raw`M = \text{arc midpoint of } BC \implies MB = MC = MI = MI_A, \qquad MB = 2R\sin\tfrac A2`,
-          description: String.raw`The midpoint $M$ of arc $BC$ (not containing $A$) is equidistant from $B$, $C$, the incenter $I$, and the $A$-excenter $I_A$ — so $B, C, I, I_A$ lie on a circle centered at $M$. Proof: angle chase shows $\angle MBI = \angle MIB = \frac{A+B}{2}$. Also $AI = \frac{r}{\sin(A/2)}$ and $A$, $I$, $M$ are collinear (the bisector passes through the arc midpoint).`,
-          keywords: ["incenter excenter", "fact 5", "arc midpoint", "equidistant", "bisector through arc midpoint", "AI = r / sin(A/2)", "distance from incenter to vertex", "B C I I_A concyclic"],
-          importance: "high",
-          tier: "AIME Early",
-          level: ["AIME", "Olympiad"]
-        },
-        {
           id: "orthocenter-properties",
           name: "Orthocenter Reflections & Distances",
           latex: String.raw`AH = 2R\cos A, \qquad AH^2 + BC^2 = 4R^2, \qquad \vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}`,
@@ -1063,16 +1079,6 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AIME Early",
           level: ["AIME", "Olympiad"]
-        },
-        {
-          id: "humpty-queue-points",
-          name: "Humpty and Queue Points",
-          latex: String.raw`HX \perp AM,\ \ X \in (BHC),\ \ MX \cdot MA = MB^2, \qquad Q = MH \cap (ABC),\ \ \angle AQH = 90^\circ`,
-          description: String.raw`Two points that the orthocenter $H$ of triangle $ABC$ and the midpoint $M$ of $BC$ produce together. The $A$-Humpty point $X$ is the foot of the perpendicular from $H$ to the median $AM$; it lies on the circle through $B$, $H$, and $C$, satisfies $MX \cdot MA = MB^2$, and sees the two sides in the ratio $XB : XC = AB : AC$. The $A$-Queue point $Q$ is the second point where line $MH$ meets the circumcircle $(ABC)$, the first being the antipode of $A$; it satisfies $\angle AQH = 90^\circ$, so it lies on the circle with diameter $AH$. Both points turn a median and an orthocenter into a circle, which is what olympiad configurations with $H$ and $M$ need.`,
-          keywords: ["humpty point", "queue point", "foot of perpendicular from H to the median", "circle BHC", "MX times MA equals MB squared", "line MH meets the circumcircle", "angle AQH right angle", "orthocenter and midpoint"],
-          importance: "lower",
-          tier: "Olympiad",
-          level: ["Olympiad"]
         },
         {
           id: "fermat-point",
@@ -1673,7 +1679,7 @@ window.MATH_SECTIONS.push({
           id: "picks-hexagonal-grid",
           name: "Hexagonal Grids and Pick's Theorem",
           latex: String.raw`\text{centers: } A = 2I + B - 2 \;(\text{unit: center-lattice triangle}) \quad\text{honeycomb: no law}`,
-          description: String.raw`Two different point sets get called hexagonal, and only one of them obeys a Pick law. The centers of the cells of a hexagonal tiling form a triangular lattice, so the [[picks-theorem-general|triangular-grid form]] applies to them, with the area counted in unit triangles of that lattice. A cell of side $s$ has area $\frac{3\sqrt3}{2}s^2$, which is two unit triangles of $\frac{3\sqrt3}{4}s^2$ each, so a region of whole cells has $A = 2I + B - 2$ equal to twice its cell count. The corners of the tiling — the honeycomb — are not a lattice at all, and no formula in $I$ and $B$ alone can give the area there.`,
+          description: String.raw`Two different point sets get called hexagonal, and only one of them obeys a Pick law. The centers of the cells of a hexagonal tiling form a triangular lattice, so the [[picks-theorem-general|triangular-grid form]] applies to them, with the area counted in unit triangles of that lattice. A cell of side $s$ has area $\frac{3\sqrt3}{2}s^2$, which is two unit triangles of $\frac{3\sqrt3}{4}s^2$ each, so an area of $k$ cells is $2k$ unit triangles, the unit in which $2I + B - 2$ counts for a polygon with its corners at cell centers. The corners of the tiling — the honeycomb — are not a lattice at all, and no formula in $I$ and $B$ alone can give the area there.`,
           keywords: ["hexagonal grid", "honeycomb", "hex cells", "hexagonal tiling area", "why Pick fails"],
           importance: "lowest",
           tier: "Olympiad",
@@ -2087,7 +2093,7 @@ window.MATH_SECTIONS.push({
           id: "de-guas-theorem",
           name: "De Gua's Theorem",
           latex: String.raw`A_0^2 = A_1^2 + A_2^2 + A_3^2, \qquad \frac{1}{h^2} = \frac{1}{a^2} + \frac{1}{b^2} + \frac{1}{c^2}`,
-          description: String.raw`3D Pythagorean Theorem for a right-corner tetrahedron (like a sliced cube corner): the squared area of the "hypotenuse face" equals the sum of the squared areas of the three right-angle faces.`,
+          description: String.raw`De Gua's Theorem is the Pythagorean Theorem one dimension up. Take a tetrahedron with a right-angled corner, three edges of lengths $a$, $b$, $c$ meeting at one vertex at right angles, as when a plane slices the corner off a box. If $A_1$, $A_2$, $A_3$ are the areas of the three right-angled faces and $A_0$ is the area of the face opposite the corner, then $A_0^2 = A_1^2 + A_2^2 + A_3^2$. The height $h$ from the corner to that opposite face satisfies $\frac{1}{h^2} = \frac{1}{a^2} + \frac{1}{b^2} + \frac{1}{c^2}$, the three-dimensional form of the altitude relation in a right triangle.`,
           keywords: ["tetrahedron", "right corner", "face areas", "3d pythagorean"],
           importance: "lower",
           tier: "AIME Late",

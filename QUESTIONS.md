@@ -1,4 +1,11 @@
-# Questions for Stanley (waiting for your answer)
+# Questions for Stanley
+
+**Answered 2026-10-12:**
+- Questions 1 and 2: the twins stay, because a card like LTE is both the formula and the method.
+- Question 2: the 39 descriptions define their symbols without restating the thumbnail formula, unless they add something; the paragraph may carry more explanation instead.
+- Question 3: approved; the subsection goes right after Advanced Triangle Theorems, not at the bottom.
+
+These are being carried out.
 
 Things found while working through PLAN.md that are style or judgement calls rather than verified errors. Verified errors are fixed straight away and recorded in the README; everything here waits for your word. Newest at the bottom of each section.
 
