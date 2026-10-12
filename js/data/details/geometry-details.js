@@ -8324,6 +8324,76 @@ Step 4, the other pairs. The altitude and the circumdiameter from $A$ are isogon
 An olympiad method for triangle problems that mix the circumcircle with the side $BC$, or the incenter with the excenter. It is often the hidden reason a configuration works, as in the [[shooting-lemma|Shooting Lemma]] and the [[dumpty-point|Dumpty point]], and solutions name it when they use it directly.
 `,
 
+"van-aubel-cevians": String.raw`
+## Key forms
+- $\frac{AP}{PD} = \frac{AF}{FB} + \frac{AE}{EC}$ for cevians $AD$, $BE$, $CF$ through $P$, each side ratio measured from $A$
+- the same at the other vertices: $\frac{BP}{PE} = \frac{BD}{DC} + \frac{BF}{FA}$ and $\frac{CP}{PF} = \frac{CE}{EA} + \frac{CD}{DB}$
+- in areas, with $x = [PBC]$, $y = [PCA]$, $z = [PAB]$: $\frac{AF}{FB} = \frac yx$, $\frac{AE}{EC} = \frac zx$, $\frac{AP}{PD} = \frac{y + z}{x}$
+- the companion relation $\frac{PD}{AD} + \frac{PE}{BE} + \frac{PF}{CF} = 1$
+
+## Conditions
+The three cevians meet at one point $P$ inside the triangle, so all six side ratios are positive. With signed ratios the identity holds for a point $P$ outside the triangle as well. If only two side ratios are known, Ceva's Theorem supplies the third before the formula is used.
+
+## Why it works
+Step 1, side ratios as areas. Triangles $ACF$ and $BCF$ have the same height from $C$, so their areas are in the ratio $AF : FB$; so are the areas of $APF$ and $BPF$, which have the same height from $P$. Subtracting the second pair from the first leaves
+
+$$\frac{AF}{FB} = \frac{[APC]}{[BPC]} = \frac yx,$$
+
+and in the same way $\frac{AE}{EC} = \frac{[APB]}{[CPB]} = \frac zx$. This is the [[cevian-area-ratio|area ratio for a cevian]] applied twice.
+
+Step 2, the cevian from $A$. Triangles $APB$ and $DPB$ have the same height from $B$ over the line $AD$, so their areas are in the ratio $AP : PD$, and likewise triangles $APC$ and $DPC$. Adding the two pairs,
+
+$$\frac{AP}{PD} = \frac{[APB] + [APC]}{[DPB] + [DPC]} = \frac{z + y}{x} = \frac{AF}{FB} + \frac{AE}{EC}.$$
+
+Step 3, the companion. By Step 2, $\frac{PD}{AD} = \frac{x}{x + y + z}$, and the same at $B$ and $C$ gives $\frac{y}{x + y + z}$ and $\frac{z}{x + y + z}$. The three add to $1$.
+
+## Useful observations
+- In [[mass-points|mass points]], with masses $m_A$, $m_B$, $m_C$ at the vertices, the side ratios are $\frac{m_B}{m_A}$ and $\frac{m_C}{m_A}$ and the cevian ratio is $\frac{m_B + m_C}{m_A}$: the theorem is the mass-point rule written as one formula.
+- For the centroid every side ratio is $1$, and the formula gives the familiar $2 : 1$.
+- For the incenter the side ratios from $A$ are $\frac ba$ and $\frac ca$ by the Angle Bisector Theorem, so $\frac{AI}{ID} = \frac{b + c}{a}$.
+
+## Applications
+Finding the ratio in which the point of concurrency divides a cevian, especially when two side ratios are given and the third comes from Ceva, and checking mass-point answers.
+
+## Contest profile
+An AIME tool for concurrent cevians with given side ratios. It replaces a mass-point computation with one line, and it pairs naturally with Ceva's Theorem, which supplies the missing ratio.
+`,
+
+"archimedes-broken-chord": String.raw`
+## Key forms
+- $A$, $B$, $C$ on a circle with $AB \lt BC$; $M$ is the midpoint of the arc $AC$ containing $B$; $F$ is the foot of the perpendicular from $M$ to $BC$: $AB + BF = FC$
+- $BF = \frac{BC - AB}{2}$ and $FC = \frac{AB + BC}{2}$
+- $MC^2 - MB^2 = FC^2 - BF^2 = AB \cdot BC$
+- in trigonometric form, with chords $AB = 2R\sin\alpha$ and $BC = 2R\sin\gamma$, it is the sum-to-product formula $\sin\alpha + \sin\gamma = 2\sin\frac{\alpha + \gamma}{2}\cos\frac{\gamma - \alpha}{2}$
+
+## Conditions
+$B$ lies on the arc $AC$, and the perpendicular is dropped from the midpoint of the arc that contains $B$ to the longer of the two chords. If $AB = BC$, then $M = B$ and $F = B$, and the statement is empty.
+
+## Why it works
+Step 1, a congruence. Mark $G$ on $BC$ with $GC = AB$; it lies between $B$ and $C$ because $AB \lt BC$. $M$ is the midpoint of its arc, so $MA = MC$. The inscribed angles $\angle MAB$ and $\angle MCB$ stand on the same chord $MB$, with $A$ and $C$ on the same side of it, so they are equal. Triangles $MAB$ and $MCG$ therefore agree in two sides and the included angle, and
+
+$$MB = MG.$$
+
+Step 2, the foot is a midpoint. Triangle $MBG$ is isosceles, so the foot $F$ of the perpendicular from $M$ to $BG$ is the midpoint of $BG$, and $BF = FG$. Then
+
+$$FC = FG + GC = BF + AB.$$
+
+Step 3, the product. Since $MF \perp BC$, $MC^2 - MB^2 = FC^2 - BF^2 = (FC - BF)(FC + BF)$. By Step 2, $FC - BF = AB$, and $FC + BF = BC$, which gives $AB \cdot BC$.
+
+Step 4, the trigonometric form. Let the arcs $AB$ and $BC$ have central angles $2\alpha$ and $2\gamma$. Then $MC$ subtends the central angle $\alpha + \gamma$, and the inscribed angle $\angle MCB$ is $\frac{\gamma - \alpha}{2}$, so $FC = MC\cos\angle MCB = 2R\sin\frac{\alpha + \gamma}{2}\cos\frac{\gamma - \alpha}{2}$. Setting this equal to $\frac{AB + BC}{2} = R(\sin\alpha + \sin\gamma)$ is the sum-to-product formula.
+
+## Useful observations
+- The theorem turns the sum $AB + BC$ of two chords into the single length $2\,FC$, which is the form in which it is usually applied.
+- The identity $MC^2 - MB^2 = AB \cdot BC$ is a quick way to get $MB$ or $MC$ once the two chords are known.
+- Archimedes stated it for chords in place of sines; read through Step 4 it is one of the oldest forms of the sum-to-product identities in [[product-sum|Product-to-Sum & Sum-to-Product]].
+
+## Applications
+Computing the distance from an arc midpoint to a chord, splitting a sum of two chords into equal halves, and the length chases in problems where an arc midpoint and two chords from one point appear together.
+
+## Contest profile
+A rare AIME and olympiad result, recognized when a problem gives two chords from one point and the midpoint of the arc they span. It is usually quoted to produce $BF$ or $FC$ at once, after which the Pythagorean Theorem in triangle $MFC$ finishes.
+`,
+
 "desargues-involution": String.raw`
 ## Key forms
 - an involution of a line, in a coordinate $t$ along it: $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$ with $\beta^2 \ne \alpha\gamma$; two pairs determine it, and three pairs belong to one involution exactly when $\det\begin{pmatrix} t_1t_1' & t_1 + t_1' & 1 \\ t_2t_2' & t_2 + t_2' & 1 \\ t_3t_3' & t_3 + t_3' & 1 \end{pmatrix} = 0$

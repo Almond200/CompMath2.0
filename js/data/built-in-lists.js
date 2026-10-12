@@ -166,11 +166,11 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["indicator-variables", "generating-function-method"] }
     ] },
   { id: "route-aime-geometry", name: "AIME Geometry", kind: "route", tier: "AIME", subject: "Geometry",
-    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 79 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 81 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
-        ids: ["trig-area-circumradius", "incircle-excircle-homothety", "exradii", "triangle-half-angle-identities", "triangle-sin2-sum-ratio", "half-angle-tangent-identity", "menelaus-theorem", "rouths-theorem", "trig-ceva", "erdos-mordell", "ratio-lemma", "law-of-tangents", "napoleons-theorem", "cotangent-rule"] },
+        ids: ["trig-area-circumradius", "incircle-excircle-homothety", "exradii", "triangle-half-angle-identities", "triangle-sin2-sum-ratio", "half-angle-tangent-identity", "menelaus-theorem", "rouths-theorem", "van-aubel-cevians", "trig-ceva", "erdos-mordell", "ratio-lemma", "law-of-tangents", "napoleons-theorem", "cotangent-rule"] },
       { title: "Triangle Centers & Derived Triangles",
         note: "When the problem names a center, or builds a second triangle out of the first.",
         ids: ["euler-line-ratio", "euler-distance-theorem", "nine-point-circle", "carnots-theorem", "simson-line", "brocard-angle", "symmedian-lemoine", "incenter-excenter-lemma", "orthocenter-properties", "fermat-point", "center-distance-formulas", "feuerbach-theorem", "leibniz-formula", "orthocentric-system", "lemoine-point", "spieker-point", "gergonne-nagel-points", "pedal-triangle", "orthic-triangle", "contact-triangle", "euler-line-parallel-side", "anticomplementary-triangle"] },
@@ -179,7 +179,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["ngon-vertex-distance-product", "van-aubel", "bretschneiders-formula", "euler-quadrilateral", "ptolemys-theorem", "pitots-theorem", "ptolemys-inequality", "ptolemy-equilateral", "cyclic-quad-radius", "ptolemy-second-theorem", "japanese-theorem"] },
       { title: "Circles",
         note: "Angles, chords and tangency. A tangency condition almost always reduces to a distance between centers.",
-        ids: ["power-of-a-point", "butterfly-theorem", "radical-axis", "miquels-theorem", "apollonius-circle", "descartes-circle-theorem", "arbelos", "corner-circle-chain", "caseys-theorem"] },
+        ids: ["power-of-a-point", "butterfly-theorem", "archimedes-broken-chord", "radical-axis", "miquels-theorem", "apollonius-circle", "descartes-circle-theorem", "arbelos", "corner-circle-chain", "caseys-theorem"] },
       { title: "Coordinates & Transformations",
         note: "For when the synthetic route stalls and the figure offers a right angle, a midpoint or a natural origin.",
         ids: ["incenter-coordinates", "picks-hexagonal-grid"] },
@@ -206,7 +206,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["inversion-facts"] }
     ] },
   { id: "route-aime-algebra", name: "AIME Algebra", kind: "route", tier: "AIME", subject: "Algebra",
-    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 34 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 35 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -219,7 +219,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["generalized-binomial-series", "abel-summation"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
-        ids: ["am-gm", "rearrangement", "jensens-inequality", "minkowski-inequality", "weighted-am-gm", "tangent-line-trick"] },
+        ids: ["am-gm", "rearrangement", "nesbitt-inequality", "jensens-inequality", "minkowski-inequality", "weighted-am-gm", "tangent-line-trick"] },
       { title: "Exponents, Logs, Radicals & Absolute Value",
         note: "The manipulation rules, including the ones with a trap in them.",
         ids: ["hermite-identity"] },

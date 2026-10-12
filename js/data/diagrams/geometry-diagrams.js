@@ -8821,4 +8821,51 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 380, "The map inverts at A with radius √(bc) and reflects in the bisector of angle A (green). P on the circumcircle goes to P′ on line BC: AP and AP′ make equal angles with the sides (purple) and AP · AP′ = bc. B and C swap, and so do the incenter I and the excenter I<sub>A</sub>, with AI · AI<sub>A</sub> = bc. Here AB = 5, AC = 8 and A = 60°." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+
+  // Van Aubel's Theorem for cevians, with the card's example: AF:FB = 1:2 and BD:DC = 3:4 force
+  // AE:EC = 3:8 (Ceva) and AP:PD = 1/2 + 3/8 = 7/8.
+  DIAGRAMS["van-aubel-cevians"] = [(() => {
+    const A = [170, 40], B = [50, 290], C = [390, 290], tri = [A, B, C];
+    const F = lerp(A, B, 1 / 3), Dp = lerp(B, C, 3 / 7), P = lineInt(A, Dp, C, F), E = lineInt(B, P, A, C);
+    const ok = Math.abs(dist(A, E) / dist(E, C) - 3 / 8) < 1e-9 && Math.abs(dist(A, P) / dist(P, Dp) - 7 / 8) < 1e-9 &&
+      Math.abs(dist(A, P) / dist(P, Dp) - (dist(A, F) / dist(F, B) + dist(A, E) / dist(E, C))) < 1e-9;
+    const side = (U, V, t, d) => add(mid(U, V), mul(norm(perp(sub(V, U))), d * t));
+    return wrap(430, 330, [
+      poly(tri, DIM, 2),
+      seg(A, F, GLD, 3), seg(F, B, GLD, 1.2), seg(A, E, GRN, 3), seg(E, C, GRN, 1.2),
+      seg(A, P, ACC, 3.2), seg(P, Dp, ACC, 1.6), seg(B, E, FNT, 1.4), seg(C, F, FNT, 1.4),
+      dot(P, ACC, 5), dot(Dp, ACC, 4), dot(E, GRN, 4), dot(F, GLD, 4),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-13, 8]), "B", DIM, 14), txt(add(C, [13, 8]), "C", DIM, 14),
+      txt(add(F, [-14, 2]), "F", GLD, 14), txt(add(E, [14, 0]), "E", GRN, 14), txt(add(Dp, [0, 20]), "D", ACC, 14),
+      txt(add(P, [14, 8]), "P", ACC, 14),
+      txt(side(A, F, 1, 15), "1", GLD, 12.5), txt(side(F, B, 1, 15), "2", GLD, 12.5),
+      txt(side(A, E, -1, 15), "3", GRN, 12.5), txt(side(E, C, -1, 15), "8", GRN, 12.5),
+      txt(side(B, Dp, -1, 14), "3", DIM, 12.5), txt(side(Dp, C, -1, 14), "4", DIM, 12.5),
+      cap(430, 330, "The pieces next to A are drawn thick. AF : FB = 1 : 2 (gold) and AE : EC = 3 : 8 (green), so AP : PD = 1/2 + 3/8 = 7/8 (blue). Ceva fixes AE : EC from AF : FB and BD : DC = 3 : 4." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Archimedes' Broken Chord, with the card's example: AB = 4, BC = 10, angle ABC = 60°, so
+  // BF = 3, FC = 7, MF = 3√3, MB = 6. G on BC with GC = AB is the point the proof uses.
+  DIAGRAMS["archimedes-broken-chord"] = [(() => {
+    const k = 28, P = (x, y) => [75 + k * x, 22 + k * (4.46 - y)];
+    const B = P(0, 0), C = P(10, 0), A = P(2, 2 * Math.sqrt(3));
+    const O = circumcenterOf(A, B, C), R = dist(O, A), mAC = mid(A, C);
+    const cand = [add(O, mul(norm(sub(mAC, O)), R)), add(O, mul(norm(sub(mAC, O)), -R))];
+    const sideAC = Q => (C[0] - A[0]) * (Q[1] - A[1]) - (C[1] - A[1]) * (Q[0] - A[0]);
+    const M = sideAC(cand[0]) * sideAC(B) > 0 ? cand[0] : cand[1];        // the arc midpoint on B's side of AC
+    const F = foot(M, B, C), G = lerp(C, B, 4 / 10);
+    const ok = Math.abs((dist(A, B) + dist(B, F) - dist(F, C)) / k) < 1e-9 && Math.abs(dist(B, F) / k - 3) < 1e-9 &&
+      Math.abs(dist(M, F) / k - 3 * Math.sqrt(3)) < 1e-9 && Math.abs(dist(M, B) / k - 6) < 1e-9 && Math.abs(dist(M, B) - dist(M, G)) < 1e-9;
+    return wrap(430, 330, [
+      circ(O, R, FNT, 1.5),
+      seg(A, B, ACC, 2.4), seg(B, C, ACC, 2.4), seg(M, A, FNT, 1.2, "4 3"), seg(M, C, FNT, 1.2, "4 3"),
+      seg(M, B, GRN, 1.4), seg(M, G, GRN, 1.4), seg(M, F, GLD, 1.8, "5 4"), rightAngle(F, M, C, 8, GLD),
+      ticksOn(A, B, 1, ACC), ticksOn(G, C, 1, ACC), ticksOn(B, F, 2, GLD), ticksOn(F, G, 2, GLD),
+      dot(A, DIM, 4), dot(B, DIM, 4), dot(C, DIM, 4), dot(M, GLD, 5), dot(F, GLD, 4.5), dot(G, GRN, 4),
+      txt(add(A, [-4, -11]), "A", DIM, 14), txt(add(B, [-14, -4]), "B", DIM, 14), txt(add(C, [13, 6]), "C", DIM, 14),
+      txt(add(M, [0, 19]), "M", GLD, 14), txt(add(F, [10, -9]), "F", GLD, 14), txt(add(G, [0, -9]), "G", GRN, 14),
+      cap(430, 330, "M is the midpoint of the arc AC through B, and F is the foot from M to the longer chord BC. Marking G with GC = AB (one tick) makes MB = MG, so F is the midpoint of BG (two ticks), and AB + BF = FC. Here AB = 4, BC = 10 and ∠ABC = 60°: BF = 3, FC = 7, MF = 3√3." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

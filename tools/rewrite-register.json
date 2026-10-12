@@ -1750,7 +1750,10 @@
     "drawing-without-replacement": "pattern",
     "shooting-lemma": "formula",
     "dumpty-point": "formula",
-    "sqrt-bc-inversion": "method"
+    "sqrt-bc-inversion": "method",
+    "van-aubel-cevians": "formula",
+    "archimedes-broken-chord": "formula",
+    "nesbitt-inequality": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8320,6 +8323,24 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "van-aubel-cevians": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "archimedes-broken-chord": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "nesbitt-inequality": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

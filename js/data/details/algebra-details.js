@@ -2653,6 +2653,49 @@ Maximizing or minimizing a symmetric sum of function values with a fixed sum of 
 The fastest tool for "maximize a symmetric sum of function values with a fixed sum of inputs," and trigonometric sums over triangle angles are the archetype. On the AMC and AIME it usually appears disguised, and recognizing the equality-at-the-mean structure lets one guess the extremal configuration, all variables equal, and verify. Full Jensen citations are an olympiad staple, often with weights equal to side lengths or masses.
 `,
 
+"nesbitt-inequality": String.raw`
+## Key forms
+- $\frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \ge \frac32$ for $a, b, c \gt 0$, with equality exactly when $a = b = c$
+- no upper bound for positive reals: $a \to \infty$ with $b$, $c$ fixed sends the sum to infinity
+- for the sides of a triangle, $\frac32 \le \frac{a}{b + c} + \frac{b}{c + a} + \frac{c}{a + b} \lt 2$
+- in $n$ variables with $S = a_1 + \cdots + a_n$: $\alt{\sum_i \frac{a_i}{S - a_i}}{\frac{a_1}{S - a_1} + \cdots + \frac{a_n}{S - a_n}} \ge \frac{n}{n - 1}$
+
+## Conditions
+All three numbers are positive; one of them may be $0$ as long as no denominator vanishes. With negative values the inequality fails: $a = b = 1$, $c = -\frac32$ gives $-2 - 2 - \frac34 \lt \frac32$. The triangle upper bound needs the strict triangle inequalities.
+
+## Why it works
+Proof 1, by AM–HM. Add $1$ to each fraction: $\frac{a}{b + c} + 1 = \frac{a + b + c}{b + c}$. With $x = b + c$, $y = c + a$, $z = a + b$, whose sum is $2(a + b + c)$,
+
+$$\sum \frac{a}{b + c} + 3 = \frac{x + y + z}{2}\left(\frac1x + \frac1y + \frac1z\right) \ge \frac92,$$
+
+because $(x + y + z)\left(\frac1x + \frac1y + \frac1z\right) \ge 9$ by AM–GM applied to each factor. So the sum is at least $\frac92 - 3 = \frac32$, with equality when $x = y = z$, that is, $a = b = c$.
+
+Proof 2, by Titu's lemma. Write each term as $\frac{a^2}{a(b + c)}$. The Engel form of Cauchy–Schwarz gives
+
+$$\sum \frac{a^2}{a(b + c)} \ge \frac{(a + b + c)^2}{2(ab + bc + ca)} \ge \frac32,$$
+
+the last step because $(a + b + c)^2 - 3(ab + bc + ca) = \frac12\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right] \ge 0$.
+
+Proof 3, by rearrangement. Let $a \ge b \ge c$. Then $b + c \le c + a \le a + b$, so $(a, b, c)$ and $\left(\frac1{b + c}, \frac1{c + a}, \frac1{a + b}\right)$ are ordered the same way, and the Rearrangement Inequality puts the given sum above the sums with the numerators shifted by one place and by two places:
+
+$$2\sum \frac{a}{b + c} \ge \frac{b + c}{b + c} + \frac{c + a}{c + a} + \frac{a + b}{a + b} = 3.$$
+
+The upper bound for a triangle. $a \lt b + c$ is the same as $a + b + c \lt 2(b + c)$, so $\frac{a}{b + c} \lt \frac{2a}{a + b + c}$. Adding the three gives a sum below $2$; a nearly flat triangle with $a = b$ and $c$ close to $0$ comes as close to $2$ as desired.
+
+The $n$-variable form. $f(x) = \frac{x}{S - x}$ is convex on $(0, S)$, so by Jensen's Inequality the sum is at least $n\,f\!\left(\frac Sn\right) = \frac{n}{n - 1}$. The three-variable case of this argument is the worked example on [[homogenization|Homogenization]].
+
+## Useful observations
+- The inequality is homogeneous of degree $0$, so a constraint such as $a + b + c = 1$ or $a + b + c = 3$ can be added or dropped freely.
+- Substituting $a = y + z$, $b = z + x$, $c = x + y$ for triangle sides (the Ravi substitution) turns the upper bound into a statement about positive $x$, $y$, $z$.
+- The cyclic generalization $\sum \frac{x_i}{x_{i+1} + x_{i+2}} \ge \frac n2$, Shapiro's inequality, holds for even $n \le 12$ and odd $n \le 23$ and fails for larger $n$, so the pattern does not extend for free.
+
+## Applications
+Lower bounds for symmetric sums of fractions, minimizing $\sum \frac{x}{S - x}$ under a fixed sum, and bounding ratio sums of a triangle's sides.
+
+## Contest profile
+A named inequality that is quoted directly in olympiad solutions and appears on hard AIME problems in disguise, usually as a sum of fractions with a fixed total. Its three short proofs make it the standard test case for AM–GM, Cauchy–Schwarz, and rearrangement.
+`,
+
 "schurs-inequality": String.raw`
 ## Key forms
 - $x^t(x - y)(x - z) + y^t(y - x)(y - z) + z^t(z - x)(z - y) \ge 0$ for $x, y, z \ge 0$ and $t \gt 0$

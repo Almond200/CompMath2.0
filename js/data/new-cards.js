@@ -12,5 +12,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Concepts from LIVE (AMC)", date: "2026-10-12",
     ids: ["defined-operation", "truth-tellers-logic", "organized-listing", "simulate-the-process", "coins-and-prices", "drawing-without-replacement"] },
   { label: "Card-file scan, batch 1: olympiad geometry", date: "2026-10-12",
-    ids: ["shooting-lemma", "dumpty-point", "sqrt-bc-inversion"] }
+    ids: ["shooting-lemma", "dumpty-point", "sqrt-bc-inversion"] },
+  { label: "Card-file scan, batch 2: AIME geometry and Nesbitt", date: "2026-10-12",
+    ids: ["van-aubel-cevians", "archimedes-broken-chord", "nesbitt-inequality"] }
 ];

@@ -713,6 +713,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME"]
         },
         {
+          id: "van-aubel-cevians",
+          name: "Van Aubel's Theorem for Cevians",
+          latex: String.raw`\frac{AP}{PD} = \frac{AF}{FB} + \frac{AE}{EC}`,
+          description: String.raw`Three cevians $AD$, $BE$, $CF$ of triangle $ABC$ meet at a point $P$ inside it, with $D$ on $BC$, $E$ on $CA$, and $F$ on $AB$. The theorem splits the cevian from $A$ by the ratios on the two sides through $A$: the ratio in which $P$ divides $AD$ is the sum of the ratios in which $F$ and $E$ divide $AB$ and $AC$, each measured from $A$. It is a different result from the [[van-aubel|Van Aubel's Theorem]] about squares on a quadrilateral, which shares the name. Read with [[cevas-theorem|Ceva's Theorem]], it gives every ratio along the three cevians from two of the side ratios.`,
+          keywords: ["van aubel cevians", "van aubel triangle", "ratio along a cevian", "AP over PD", "sum of side ratios", "concurrent cevians ratio", "cevian division ratio", "point of concurrency splits the cevian"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME"]
+        },
+        {
           id: "vivianis-theorem",
           name: "Viviani's Theorem",
           latex: String.raw`d_1 + d_2 + d_3 = h, \qquad a\,d_a + b\,d_b + c\,d_c = 2[ABC]`,
@@ -1314,6 +1324,16 @@ window.MATH_SECTIONS.push({
           keywords: ["chord midpoint", "butterfly", "symmetric intersections", "butterfly theorem", "midpoint of a chord", "butterfly configuration circle"],
           importance: "lower",
           tier: "Olympiad",
+          level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "archimedes-broken-chord",
+          name: "Archimedes' Broken Chord Theorem",
+          latex: String.raw`AB \lt BC \implies AB + BF = FC`,
+          description: String.raw`Three points $A$, $B$, $C$ on a circle make a "broken chord", the path $A \to B \to C$, here with $AB \lt BC$. Let $M$ be the midpoint of the arc $AC$ that contains $B$, and $F$ the foot of the perpendicular from $M$ to the longer piece $BC$. Then $F$ cuts the broken chord in half: the path from $A$ through $B$ to $F$ is as long as $FC$. It turns a sum of two chords into a single segment, which is how it computes $BF = \frac{BC - AB}{2}$ and lengths from the arc midpoint.`,
+          keywords: ["archimedes broken chord", "broken chord theorem", "foot from the arc midpoint", "bisects the broken chord", "AB plus BF equals FC", "midpoint of arc ABC", "perpendicular from arc midpoint to the longer chord", "two chords from one point"],
+          importance: "lower",
+          tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
         {

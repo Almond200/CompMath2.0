@@ -678,6 +678,9 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | shooting-lemma | geometry / Olympiad Triangle Lemmas | Olympiad | new (card-file scan) | 0 | **low** |
 | dumpty-point | geometry / Olympiad Triangle Lemmas | Olympiad | new (card-file scan) | 0 | **lower** |
 | sqrt-bc-inversion | geometry (method) / Transformations & Inversion | Olympiad | new (card-file scan) | 0 | **low** |
+| van-aubel-cevians | geometry / Advanced Triangle Theorems | AIME Late | new (card-file scan) | 0 | **low** |
+| archimedes-broken-chord | geometry / Circles | AIME Late | new (card-file scan) | 0 | **lower** |
+| nesbitt-inequality | algebra / Inequalities | AIME Late | new (card-file scan) | 0 | **low** |
 | defined-operation | algebra (pattern) / Equations with Hidden Structure | AMC | new (LIVE: custom operation, 40 problems) | 0 | **low** |
 | truth-tellers-logic | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: logical deduction 66, truth-tellers 4) | 0 | **low** |
 | organized-listing | counting (method) / Working It Out by Hand | AMC | new (LIVE: systematic listing, 56) | 0 | **low** |
