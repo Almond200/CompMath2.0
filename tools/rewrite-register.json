@@ -1759,7 +1759,10 @@
     "gamblers-ruin": "formula",
     "strategy-stealing": "method",
     "erdos-ko-rado": "formula",
-    "tiling-a-board": "pattern"
+    "tiling-a-board": "pattern",
+    "golden-ratio-pentagon": "formula",
+    "isosceles-tetrahedron": "formula",
+    "tetrahedron-centroid": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8383,6 +8386,48 @@
       [
         "(new card)",
         "written directly in the pattern template"
+      ]
+    ],
+    "golden-ratio-pentagon": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it (power reduction, Binet, diagonal 1+sqrt5, Ptolemy)",
+        "kept -> Key forms and Useful observations; the side-2 instance stays in the Example"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "isosceles-tetrahedron": [
+      [
+        "Why it works",
+        "kept -> Why it works"
+      ],
+      [
+        "How to use it (trigger, surface area, centers)",
+        "trigger -> Contest profile; facts -> Useful observations; the centers stay in the description"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
+      ]
+    ],
+    "tetrahedron-centroid": [
+      [
+        "Why it works",
+        "kept -> Why it works (split into steps)"
+      ],
+      [
+        "How to use it (averaging, 3:1 vs 2:1, bimedians as origin)",
+        "kept -> Useful observations and Applications"
+      ],
+      [
+        "On contests",
+        "rewritten -> Contest profile"
       ]
     ]
   }

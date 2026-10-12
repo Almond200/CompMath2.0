@@ -2562,6 +2562,14 @@ $15^\circ$ and $75^\circ$ appear in AMC 12 and AIME problems built on square-plu
 `,
 
 "golden-ratio-pentagon": String.raw`
+## Key forms
+- $\varphi^2 = \varphi + 1$ — the equation every power reduction uses
+- $\frac1\varphi = \varphi - 1$ — the reciprocal, from dividing the equation by $\varphi$
+- $d^2 = s^2 + sd$ — the pentagon's diagonal $d$ and side $s$, from [[ptolemys-theorem|Ptolemy's Theorem]] on four vertices
+
+## Conditions
+The pentagon is regular: equal sides and equal angles. In a pentagon with equal sides only, the diagonals need not be equal.
+
 ## Why it works
 Two diagonals and a side of a regular pentagon form a $36$-$72$-$72$ triangle, and that triangle contains a smaller copy of itself, which forces the ratio.
 
@@ -2571,13 +2579,16 @@ Each interior angle of a regular pentagon is $108^\circ$, and the two diagonals 
 
 The similarity gives $\frac ds = \frac{s}{d - s}$. Writing $x = \frac ds$, this is $x = \frac1{x - 1}$, so $x^2 = x + 1$, whose positive root is $\varphi$.
 
-## How to use it
-Reduce powers with $\varphi^2 = \varphi + 1$: $$\varphi^3 = \varphi^2 + \varphi = 2\varphi + 1, \qquad \varphi^n = F_n\varphi + F_{n-1}.$$ The other root, $\psi = \frac{1 - \sqrt5}{2} = -\frac1\varphi$, satisfies the same equation, which is why the two together give [[binets-formula|Binet's Formula]] for the Fibonacci numbers.
+## Useful observations
+- Multiplying $\varphi^2 = \varphi + 1$ by $\varphi$ again and again gives $\varphi^3 = 2\varphi + 1$, $\varphi^4 = 3\varphi + 2$, and so on, the coefficients running through the Fibonacci numbers.
+- The other root, $\psi = \frac{1 - \sqrt5}{2} = -\frac1\varphi$, satisfies the same equation, which is why the two together give [[binets-formula|Binet's Formula]].
+- The diagonals cut each other in the golden ratio, and the small pentagon they enclose has side $\frac{s}{\varphi^2}$.
 
-In a regular pentagon of side $s$ every diagonal is $\varphi s$, so a pentagon of side $2$ has diagonals $1 + \sqrt5$. The diagonals cut each other in the golden ratio, and the small pentagon they enclose has side $\frac{s}{\varphi^2}$. [[ptolemys-theorem|Ptolemy's Theorem]] on four of the vertices gives the same equation, $d^2 = s^2 + sd$.
+## Applications
+Diagonals and pentagram lengths in a regular pentagon, exact values of $\cos 36^\circ$ and $\cos 72^\circ$, golden triangles and their dissections, and powers of $\varphi$.
 
-## On contests
-Four problems here, mostly AMC, none by it alone; three reach it through [[similar-figures-ratios|similar triangles]] in a pentagon or pentagram. Exact values of $\cos 36^\circ$ and $\cos 72^\circ$, pentagram lengths, and dissections of golden triangles are the usual settings.
+## Contest profile
+Four problems here, three AMC and one AIME, none solved by it alone; three reach it through [[similar-figures-ratios|similar triangles]] in a pentagon or pentagram. Its role is to supply the diagonal-to-side ratio once the regular pentagon is in the figure.
 `,
 
 "inscribed-square": String.raw`
@@ -3927,31 +3938,53 @@ A universal but rarely fastest method for tetrahedra. It matters when a tetrahed
 `,
 
 "isosceles-tetrahedron": String.raw`
+## Conditions
+The three pairs of opposite edges are equal. The box then exists exactly when every face is acute, which an isosceles tetrahedron always satisfies; three edge lengths that make an obtuse face give no tetrahedron of this kind.
+
 ## Why it works
 Four alternate corners of a box, no two joined by an edge of the box, are joined in pairs by face diagonals, and opposite diagonals lie on parallel faces, so they are equal.
 
-Going the other way, given the three edge lengths $a$, $b$, $c$, look for a box with $p^2 + q^2 = a^2$, $q^2 + r^2 = b^2$, and $p^2 + r^2 = c^2$. Adding and subtracting solves it: $$p^2 = \frac{a^2 + c^2 - b^2}{2},$$ and similarly for $q^2$ and $r^2$. These are positive exactly when every face is an acute triangle, which is always true for an isosceles tetrahedron.
+Going the other way, given the three edge lengths $a$, $b$, $c$, the box must satisfy $p^2 + q^2 = a^2$, $q^2 + r^2 = b^2$, and $p^2 + r^2 = c^2$. Adding and subtracting solves it: $$p^2 = \frac{a^2 + c^2 - b^2}{2},$$ and similarly for $q^2$ and $r^2$. These are positive exactly when every face is acute.
 
 The rest of the box is four corner pyramids, each with three mutually perpendicular edges from the box, so each has volume $\frac16pqr$, and $$V = pqr - 4 \cdot \frac{pqr}{6} = \frac{pqr}{3}.$$
 
 {{figure:corners}}
 
-## How to use it
-The trigger is three pairs of equal opposite edges. Find the box from the three sum equations, as in the example, and the volume is immediate.
+## Useful observations
+- Adding the three box equations gives $p^2 + q^2 + r^2 = \frac{a^2 + b^2 + c^2}{2}$, and subtracting each equation from it gives one of $p^2$, $q^2$, $r^2$.
+- The four faces are congruent, so the surface area is four times one face, found with [[herons-formula|Heron's Formula]], and the inradius follows from [[insphere-radius|the insphere formula]].
+- The circumradius is half the box's space diagonal, $R = \frac12\sqrt{p^2 + q^2 + r^2}$.
+- Such tetrahedra are also called disphenoids.
 
-The four faces are congruent, so the surface area is four times one face, which pairs with [[insphere-radius|the insphere formula]] $r = \frac{3V}{S}$. The center of the box is the center of both the circumscribed and the inscribed spheres, since the symmetries of the box swap the four faces. Such tetrahedra are also called disphenoids.
+## Applications
+Volume, inradius, and circumradius of a tetrahedron given by three matched pairs of edges, and the point minimizing the sum of distances to the four vertices.
 
-## On contests
-Three problems here, two AIME and one AMC 12, none solved by it alone. The recurring shape gives three pairs of equal opposite edges that are square roots, which fit a box with whole-number sides, and asks for the volume or the insphere radius; others minimize a sum of distances at the center of the box, or use the fact that any acute triangle is the face of one. A tetrahedron given by three matched pairs of edges is always signaling the box.`,
+## Contest profile
+Three problems here, two AIME and one AMC 12, none solved by it alone. The recurring shape gives three pairs of equal opposite edges that are square roots, which fit a box with whole-number sides, and asks for the volume or the insphere radius; a tetrahedron given by three matched pairs of edges is always signaling the box.
+`,
 
-"tetrahedron-centroid": String.raw`## Why it works
-The centroid of equal point masses at the four vertices is their average $\frac{A+B+C+D}{4}$. Writing the face centroid $M_A = \frac{B+C+D}{3}$, the point $\frac{A + 3M_A}{4}$ equals $G$, which places $G$ three-quarters of the way from $A$ to $M_A$ — the $3:1$ split. The three bimedians pass through $G$ because the midpoint of a segment joining two edge-midpoints is again the four-vertex average.
+"tetrahedron-centroid": String.raw`## Conditions
+Any tetrahedron, and the centroid of equal masses at its vertices. The centroid of a solid tetrahedron of uniform density is the same point.
 
-## How to use it
-For any "balance point," "center of mass," or averaged-vertex question, just average coordinates. The $3:1$ median ratio is the 3D analogue of the triangle centroid's $2:1$; the pattern is that in $n$ dimensions the centroid divides a median $n:1$. The concurrent, mutually bisecting bimedians make the centroid a natural origin for symmetric coordinate setups.
+## Why it works
+The centroid of equal point masses at the four vertices is their average $\frac{A+B+C+D}{4}$, and every claim on the card is that average written two ways.
 
-## On contests
-Mass-point and averaging arguments transfer directly to 3D. When a problem hands you the four vertices (or asks about the point minimizing summed squared distances, which is exactly $G$), the centroid is a one-line computation.`
+Write the face centroid $M_A = \frac{B+C+D}{3}$. Then $$\frac{A + 3M_A}{4} = \frac{A + B + C + D}{4} = G,$$ which places $G$ three-quarters of the way from $A$ to $M_A$, the $3:1$ split. The same holds for the median from each vertex, so all four meet at $G$.
+
+For a bimedian, the midpoints of $AB$ and $CD$ are $\frac{A+B}{2}$ and $\frac{C+D}{2}$, and the midpoint of the segment joining them is again $\frac{A+B+C+D}{4}$. So the three bimedians pass through $G$ and bisect each other there.
+
+## Useful observations
+- With coordinates, the centroid is the average of the four vertices, one coordinate at a time.
+- The centroids of the four faces form a tetrahedron similar to the original with ratio $\frac13$, centered at $G$, so its volume is $\frac1{27}$ of the original.
+- $G$ is the point minimizing the sum of squared distances to the four vertices.
+- The triangle's centroid splits a median $2:1$; in $n$ dimensions the split is $n:1$.
+
+## Applications
+The center of mass of a tetrahedron, the tetrahedron of face centroids, symmetric coordinate setups centered at $G$, and sums of squared distances to the vertices.
+
+## Contest profile
+One problem here, an AIME, solved by the tetrahedron of face centroids. Its role is a one-line computation once the vertices are in coordinates or the face centroids are in the figure.
+`
 
 });
 

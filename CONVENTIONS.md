@@ -211,16 +211,19 @@ This is exactly why the duplicate check in §5 must search names, not ids.
 
 **680 write-ups for 680 cards. One each, no orphans, no card without one.**
 
-Three headings, and all three are required:
+The headings depend on the card's kind (counts as of 2026-10-12; the scan fails on a heading the kind does not allow):
 
 ```
-## Why it works      557/557
-## How to use it     557/557
-## On contests       557/557
+formula (506)   ## Key forms, ## Conditions, ## Why it works, ## Useful observations,
+                ## Applications, ## Contest profile, and optionally ## Full proof
+method (140)    ## When to use, ## How, ## Why it works, ## Formulas it uses,
+                ## Common traps, ## Contest profile, and optionally ## Full proof
+pattern (34)    ## Distinguishing clues, ## Methods and Formulas to Try,
+                ## Common traps, ## Contest profile
 ```
 
-Two optional headings, and no others (the scan fails on any other): `## Key forms`, on 113, and
-`## Full proof`, which renders collapsed behind a "Show full proof" button.
+Key forms is optional on a formula card (on 502 of 506). `## Full proof` renders collapsed behind a "Show
+full proof" button. "Pattern and method anatomy" at the end of this file says what each section holds.
 
 - **Why it works explains; Full proof proves.** Open Why it works with the idea in one plain
   sentence, then the argument step by step at a strong AMC 12 reader's level, each step saying why
@@ -232,9 +235,6 @@ Two optional headings, and no others (the scan fails on any other): `## Key form
   pattern with nothing to prove, and do not duplicate a Why it works that is already complete.
   Where the real proof is beyond contest level, say so in Why it works instead.
 
-- **Key forms is a `patterns.js` habit**: 102 of 108 `patterns.js` cards have one, against 11 of 448
-  subject-file cards. If you are writing a formula card and reaching for Key forms, put the material
-  in the prose instead.
 - Key forms lists the shapes a technique takes, not worked examples.
 - **Each bullet leads with the maths, then ` — `, then the gloss:** `- $\frac{n!}{n} = (n-1)!$ — n rotations
   of a row give the same circular arrangement`. It does not lead with a bolded phrase; bold never
@@ -570,6 +570,7 @@ caught only because the census read 554/556.
 
 ```bash
 jsc js/data/<file>.js                    # a `window` ReferenceError means the parse SUCCEEDED
+                                         # (no jsc? tools/jsc-node stands in for it under Node)
 jsc tools/validate-problem-db.js         # 0 violations, and check the card count moved as intended
 python3 tools/check-diagrams.py          # every panel fits its canvas, no labels collide
 python3 tools/check-labels.py            # as rendered: no label on a dot, stroke or label, none moved far
@@ -577,6 +578,8 @@ python3 tools/scan-conventions.py        # the census above; fails on any rule m
 python3 tools/check-lists.py             # list ids resolve, and every route is complete
 python3 tools/check-topics.py            # every card carries a topic chip, and no title awards a wrong one
 ./tools/check-lab.sh                     # the inline script of each lab/ page still parses
+python3 tools/check-statements.py        # every statement and figure resolves, no stray markup
+python3 tools/find-duplicate-forms.py    # lists formulas stated twice (rule 17); a report, not a gate
 python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py --report
 ~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py
 ```
