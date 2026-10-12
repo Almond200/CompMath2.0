@@ -294,7 +294,7 @@ window.MATH_BUILTIN_LISTS = [
     ] },
 
   { id: "route-olympiad-geometry", name: "Olympiad Geometry", kind: "route", tier: "Olympiad", subject: "Geometry",
-    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 51 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 52 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Relations Between Centers",
         note: "The distances and incidences that tie the centers to one another. This is where olympiad triangle problems usually turn.",
@@ -316,7 +316,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["newtons-line", "poncelet-closure"] },
       { title: "Projective & Inversive",
         note: "Cross-ratio, poles and polars, and the theorems that only make sense once you stop measuring lengths.",
-        ids: ["brianchon-theorem", "pascals-theorem", "desargues-theorem", "desargues-involution", "mobius-transformations", "cross-ratio", "harmonic-bundle", "complete-quadrilateral-miquel", "brocards-theorem", "pappus-hexagon"] },
+        ids: ["brianchon-theorem", "pascals-theorem", "desargues-theorem", "desargues-involution", "mobius-transformations", "cross-ratio", "projective-transformations", "harmonic-bundle", "complete-quadrilateral-miquel", "brocards-theorem", "pappus-hexagon"] },
       { title: "Transformations",
         note: "Move the figure rather than measure it. Usually the shortest olympiad solution when it applies.",
         ids: ["inversion-properties", "inversion-facts", "sqrt-bc-inversion", "homothety-monge", "affine-transformations", "gliding-principle"] },
@@ -384,7 +384,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["beatty-theorem"] }
     ] },
   { id: "route-olympiad-counting", name: "Olympiad Counting & Probability", kind: "route", tier: "Olympiad", subject: "Counting & Probability",
-    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 20 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 24 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Graph Theory",
         note: "The olympiad graph results. Most combinatorics problems about a network are one of these.",
@@ -394,13 +394,13 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["burnsides-lemma", "polya-enumeration"] },
       { title: "Partitions & Posets",
         note: "Splitting a set, and the order-theoretic results about chains and antichains.",
-        ids: ["dilworths-theorem", "sperners-theorem", "erdos-ko-rado"] },
+        ids: ["dilworths-theorem", "sperners-theorem", "erdos-ko-rado", "pentagonal-number-theorem", "hook-length-formula"] },
       { title: "Existence & Invariants",
         note: "Proving something must happen without constructing it. The backbone of olympiad combinatorics.",
-        ids: ["pigeonhole", "erdos-szekeres", "extremal-principle", "invariants-coloring", "monovariant"] },
+        ids: ["pigeonhole", "schurs-theorem", "erdos-szekeres", "extremal-principle", "invariants-coloring", "monovariant"] },
       { title: "Double Counting & Probabilistic Arguments",
         note: "Count the same thing twice, or show a random choice works. Both prove existence by averaging.",
-        ids: ["double-counting", "probabilistic-method"] },
+        ids: ["double-counting", "probabilistic-method", "combinatorial-nullstellensatz"] },
       { title: "Generating Functions & Transfer Matrices",
         note: "Encoding a count as an algebraic object and reading the answer off a coefficient.",
         ids: ["exponential-generating-functions", "generating-function-method"] },

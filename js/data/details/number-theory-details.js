@@ -2061,7 +2061,7 @@ Olympiad number theory and combinatorics: the statement that two sequences parti
 The modulus must be prime: modulo $6$, $A = B = \{0, 3\}$ gives $|A + B| = 2 \lt 3$.
 
 ## Why it works
-The proof below uses the polynomial method. Its tool is the Combinatorial Nullstellensatz: if a polynomial $f(x, y)$ over $\mathbb Z_p$ has total degree $s + t$ and a nonzero coefficient of $x^sy^t$, then for any sets $A$, $B$ with $|A| \gt s$ and $|B| \gt t$ there are $a \in A$, $b \in B$ with $f(a, b) \ne 0$.
+The proof below uses the polynomial method: the [[combinatorial-nullstellensatz|Combinatorial Nullstellensatz]] in two variables, with the sets $A$ and $B$ and the exponents $|A| - 1$ and $|B| - 1$.
 
 Suppose $|A| + |B| \le p + 1$ and $A + B \subseteq C$ with $|C| = |A| + |B| - 2$. Let $f(x, y) = \prod_{c \in C}(x + y - c)$, of degree $|A| + |B| - 2$; its coefficient of $x^{|A|-1}y^{|B|-1}$ is $\binom{|A| + |B| - 2}{|A| - 1}$, nonzero mod $p$ since $|A| + |B| - 2 \lt p$. So some $f(a, b) \ne 0$, meaning $a + b \notin C$, a contradiction. Hence $|A + B| \ge |A| + |B| - 1$; if $|A| + |B| \gt p + 1$, shrink $A$ first.
 

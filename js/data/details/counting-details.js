@@ -3182,5 +3182,110 @@ Each step is a function $f_i$ from one state to the next, so $s_n = f_n(f_{n-1}(
 
 ## Contest profile
 An AMC 8 and AMC 10 staple for spending, sharing, and chains of operations on a number, usually a few steps long. The same backward pass from the end is how winning and losing positions in a game are labeled, by [[backward-induction|backward induction]].
+`,
+"combinatorial-nullstellensatz": String.raw`
+## Key forms
+- $n = 1$: a nonzero polynomial of degree $t$ has at most $t$ roots, so it is nonzero somewhere on any $t + 1$ values
+- the first form: if $f$ vanishes on $S_1 \times \cdots \times S_n$, then $f = g_1h_1 + \cdots + g_nh_n$, where $g_i(x_i) = (x_i - s_{i1})\cdots(x_i - s_{ik_i})$ has roots exactly $S_i$ and $\deg h_i \le \deg f - |S_i|$
+- the coefficient of $x^ay^b$ in $(x + y)^{a + b}$ is $\binom{a + b}{a}$, nonzero modulo a prime $p \gt a + b$ — the usual way the top coefficient is shown to be nonzero
+
+## Conditions
+The coefficients lie in a field: $\mathbb{Z}_p$ for a prime $p$, or the rationals or reals. The total degree of $f$ must equal $t_1 + \cdots + t_n$ exactly, so that the monomial is in the top-degree part; a nonzero coefficient on a monomial of lower degree proves nothing.
+
+## Why it works
+Suppose $f$ vanished at every point of the grid $S_1 \times \cdots \times S_n$.
+
+First reduce $f$. On the grid, $g_i(x_i) = 0$, so a power $x_i^{m}$ with $m \ge |S_i|$ can be replaced by $x_i^{m - |S_i|}\left(x_i^{|S_i|} - g_i(x_i)\right)$, which has the same values on the grid and lower degree in $x_i$. Repeating gives a polynomial $\bar f$ with the same values on the grid and degree less than $|S_i|$ in each $x_i$.
+
+Next, such a polynomial that vanishes on the grid is zero. For one variable, it has more roots than its degree. For $n$ variables, write it as a polynomial in $x_n$ whose coefficients are polynomials in the other variables: for each fixed choice of $s_1, \ldots, s_{n-1}$ it has $|S_n|$ roots and lower degree, so every coefficient vanishes on the smaller grid, and by induction every coefficient is zero. So $\bar f = 0$.
+
+But each replacement turns a monomial into monomials of strictly lower total degree, and $x_1^{t_1}\cdots x_n^{t_n}$, with $t_i \lt |S_i|$, is never replaced. Since it has the top total degree, nothing else can create it, so its coefficient in $\bar f$ equals its nonzero coefficient in $f$. That contradicts $\bar f = 0$.
+
+## Useful observations
+- The work in an application is choosing the polynomial: a product of factors that vanish exactly at the bad choices, with the sets $S_i$ as the allowed choices.
+- The top coefficient is usually a binomial or multinomial coefficient, and working modulo a prime larger than the degree keeps it nonzero.
+- [[cauchy-davenport|The Cauchy–Davenport Theorem]] is the model application, with the polynomial $\prod_{c \in C}(x + y - c)$ over a set $C$ that would contain the whole sumset.
+
+## Applications
+Lower bounds on sumsets modulo a prime, covering the points of a grid or a cube by hyperplanes, zero-sum results such as the Erdős–Ginzburg–Ziv Theorem, and choosing values from lists so that no forbidden sum or difference appears.
+
+## Contest profile
+No problems here are tagged with it yet. An olympiad tool behind some of the hardest combinatorics and additive number theory problems, where a clever polynomial and one binomial coefficient replace a long case analysis.
+`,
+"schurs-theorem": String.raw`
+## Key forms
+- Schur numbers $S(1) = 1$, $S(2) = 4$, $S(3) = 13$, $S(4) = 44$ — the largest $N$ with a $k$-coloring of $1, \ldots, N$ that has no one-color $x + y = z$
+- $\{1, 4\}$ and $\{2, 3\}$ — a two-coloring of $1, 2, 3, 4$ with no one-color solution
+- $R_k(3) \le \lfloor e \cdot k! \rfloor + 1$ — any $k$-coloring of the edges of a complete graph on that many vertices has a one-color triangle
+
+## Conditions
+The solution may have $x = y$, as in $2 + 2 = 4$. Requiring $x \ne y$ changes the numbers: two colors can then avoid a solution on $1, \ldots, 8$.
+
+## Why it works
+Turn the numbers into a graph. Take the vertices $0, 1, \ldots, N$ and color the edge between $i$ and $j$ with the color of the number $|i - j|$. A one-color triangle $i \lt j \lt l$ gives $$x = j - i, \quad y = l - j, \quad z = l - i, \qquad x + y = z,$$ all three of the same color.
+
+So it is enough that $N + 1$ vertices force a one-color triangle in $k$ colors, which is the multicolor form of Ramsey's Theorem. Pick a vertex $v$. If there are at least $k(R_{k-1}(3) - 1) + 2$ vertices, then $v$ has at least $k(R_{k-1}(3) - 1) + 1$ edges, so by the pigeonhole principle at least $R_{k-1}(3)$ of them share a color $c$. Among those neighbors, an edge of color $c$ closes a triangle with $v$; if there is none, they use only $k - 1$ colors and contain a one-color triangle by induction. Starting from $R_1(3) = 3$, the bound $R_k(3) \le k(R_{k-1}(3) - 1) + 2$ unwinds to $\lfloor e \cdot k! \rfloor + 1$: $6$, $17$, $66$ for $k = 2, 3, 4$.
+
+## Useful observations
+- For two colors the bound is sharp: $\lfloor 2e \rfloor = 5$ and $S(2) = 4$. For three colors it gives $16$, against the true $14$.
+- Schur's purpose was the congruence $x^n + y^n \equiv z^n \pmod p$: coloring the nonzero residues by their coset of $n$-th powers uses $n$ colors, so for every large prime $p$ some coset holds a solution of $x + y = z$, and dividing through gives a solution in nonzero residues.
+
+## Applications
+Colorings of the integers with a condition on sums, sum-free sets, and showing a congruence like $x^n + y^n \equiv z^n \pmod p$ always has nonzero solutions for large primes.
+
+## Contest profile
+No problems here are tagged with it yet. It appears in olympiad problems that color the integers and ask for a one-color sum, where the difference graph turns them into Ramsey problems.
+`,
+"pentagonal-number-theorem": String.raw`
+## Key forms
+- $p(n) = \alt{\sum_{k \ne 0} (-1)^{k+1}\, p\!\left(n - \tfrac{k(3k - 1)}{2}\right)}{p(n - 1) + p(n - 2) - p(n - 5) - p(n - 7) + p(n - 12) + p(n - 15) - \cdots}$ — the recurrence, with $p(0) = 1$ and $p(m) = 0$ for $m \lt 0$
+- $\frac{k(3k - 1)}{2}$ for $k = 1, -1, 2, -2, 3, -3, \ldots$ gives $1, 2, 5, 7, 12, 15, 22, 26, \ldots$ — the generalized pentagonal numbers
+- partitions of $n$ into an even number of distinct parts minus those into an odd number: $(-1)^k$ when $n = \frac{k(3k \pm 1)}{2}$, and $0$ otherwise
+
+## Conditions
+An identity of formal power series: the coefficients of each power of $x$ agree. No question of convergence arises in a counting argument.
+
+## Why it works
+Expanding the product, each term picks distinct exponents, so the coefficient of $x^n$ counts the partitions of $n$ into distinct parts, each with sign $(-1)^{\text{number of parts}}$. The theorem says these cancel in pairs, except at pentagonal $n$.
+
+Franklin's pairing does the cancelling. Draw a partition into distinct parts as rows of dots, longest first. Let $s$ be the smallest part, and let $\sigma$ be the length of the slope: the number of rows, starting from the top, whose lengths go down by exactly $1$ each step. If $s \le \sigma$, remove the bottom row and add one dot to each of the top $s$ rows; if $s \gt \sigma$, remove the last dot of each of the $\sigma$ rows on the slope and make them a new bottom row. Each move changes the number of parts by one, so it flips the sign, and doing it twice returns the original partition.
+
+The move fails only when the bottom row is itself part of the slope and $s = \sigma$ or $s = \sigma + 1$. Those are the shapes with $k$ rows of lengths $2k - 1, \ldots, k$, which add to $\frac{k(3k - 1)}{2}$, and with rows $2k, \ldots, k + 1$, which add to $\frac{k(3k + 1)}{2}$. Each is left alone with sign $(-1)^k$, which is the theorem.
+
+Multiplying by the partition generating function $\frac{1}{(1 - x)(1 - x^2)\cdots}$ gives $1$, so for $n \ge 1$ the coefficient of $x^n$ in the product of the two series is $0$, and solving for $p(n)$ gives the recurrence.
+
+## Useful observations
+- The recurrence uses only about $\sqrt{n}$ earlier values, which is how tables of $p(n)$ are computed by hand: $p(10) = 42$ takes four terms.
+- The signs come in pairs, $+ + - - + + \cdots$, because $k$ and $-k$ give the two pentagonal numbers $\frac{k(3k - 1)}{2}$ and $\frac{k(3k + 1)}{2}$ with the same sign.
+
+## Applications
+Computing partition numbers, and identities between partitions into distinct parts with an even and an odd number of parts.
+
+## Contest profile
+No problems here are tagged with it yet. An olympiad-level identity, quoted for the recurrence or proved by Franklin's bijection; on the AIME, partition counts small enough to need it are counted directly.
+`,
+"hook-length-formula": String.raw`
+## Key forms
+- $h(c) = (\text{cells to the right of } c) + (\text{cells below } c) + 1$ — the hook length of a cell
+- $f^{(n, n)} = \frac{(2n)!}{(n + 1)!\,n!} = C_n$ — two rows of length $n$, the hooks being $n + 1, n, \ldots, 2$ and $n, \ldots, 1$
+- $\alt{\sum_{\lambda} (f^{\lambda})^2 = n!}{(f^{\lambda_1})^2 + (f^{\lambda_2})^2 + \cdots = n!}$ — over all shapes with $n$ cells
+
+## Conditions
+A standard Young tableau uses each of $1, \ldots, n$ once, increasing left to right along each row and top to bottom down each column, in a diagram whose rows are left-justified and never longer than the row above.
+
+## Why it works
+In any filling, the largest number $n$ must sit in a corner: a cell at the end of its row and the bottom of its column. Removing it leaves a filling of a shape with one cell fewer, so $f^{\lambda}$ is the sum of $f$ over the shapes obtained by removing one corner.
+
+The proof checks that the hook formula satisfies this recurrence, which amounts to showing that the ratios $\frac{f^{\lambda - \text{corner}}}{f^{\lambda}}$ given by the formula add to $1$. Greene, Nijenhuis, and Wilf did it with a hook walk: start at a random cell, jump to a random other cell of its hook, and repeat until a corner is reached. The probability of ending at each corner turns out to be exactly that ratio, and probabilities add to $1$. The details are longer than a contest solution, and the formula is quoted.
+
+## Useful observations
+- A two-row tableau records, for each of $1, \ldots, 2n$, whether it went in the top row or the bottom row, and the column condition says the top row never falls behind: a [[ballot-problem|ballot sequence]]. So the hook formula reproduces the Catalan count.
+- The count can be checked on small shapes by listing: for $(2, 1)$ the hooks are $3, 1, 1$, and $\frac{3!}{3} = 2$ fillings, with $2$ either beside or below $1$.
+
+## Applications
+Counting standard Young tableaux, two-row and rectangular arrays filled increasingly along rows and columns, and ballot-type sequences.
+
+## Contest profile
+No problems here are tagged with it yet. AIME problems that fill a small array increasingly along rows and columns can be counted by hand; the formula is the shortcut, and it is quoted on olympiads.
 `
 });

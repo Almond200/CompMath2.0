@@ -8985,4 +8985,21 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 320, "The cube from (0, 0, 0) to (4, 4, 4) cut by the plane x + 2y − 2z = 6 through P, Q, R (gold). The plane meets one more edge, at S = (0, 3, 0) (green), and the cross-section PSQR is a trapezoid with SQ parallel to PR, of area 12." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Projective transformations: the complete quadrilateral of the card's example, with
+  // (A, B; X, P) = -1 checked numerically.
+  DIAGRAMS["projective-transformations"] = [(() => {
+    const A = [30, 295], B = [230, 295], C = [205, 225], D = [85, 170], quad = [A, B, C, D];
+    const P = lineInt(A, B, C, D), Q = lineInt(A, D, B, C), R = lineInt(A, C, B, D), X = lineInt(Q, R, A, B);
+    const cr = ((X[0] - A[0]) / (B[0] - X[0])) / ((P[0] - A[0]) / (B[0] - P[0]));
+    const ok = Math.abs(cr + 1) < 1e-9;
+    return wrap(430, 330, [
+      segIn(A, P, quad, DIM, 1.6), segIn(D, P, quad, DIM, 1.6), segIn(A, Q, quad, DIM, 1.6), segIn(B, Q, quad, DIM, 1.6),
+      poly(quad, DIM, 2), seg(A, C, FNT, 1.2), seg(B, D, FNT, 1.2),
+      segIn(Q, X, quad, ACC, 1.8),
+      dot(P, GLD, 4.5), dot(Q, GLD, 4.5), dot(R, ACC, 4), dot(X, ACC, 4.5),
+      txt(add(A, [-4, 18]), "A", DIM, 14), txt(add(B, [0, 18]), "B", DIM, 14), txt(add(C, [12, -4]), "C", DIM, 14), txt(add(D, [-12, -4]), "D", DIM, 14),
+      txt(add(P, [0, 18]), "P", GLD, 14), txt(add(Q, [0, -11]), "Q", GLD, 14), txt(add(R, [14, 2]), "R", ACC, 14), txt(add(X, [0, 18]), "X", ACC, 14),
+      cap(430, 330, "Sides AB and CD meet at P, sides AD and BC at Q, and the diagonals at R. The line QR (blue) meets AB at X, and (A, B; X, P) = −1. Sending the line PQ to infinity makes ABCD a parallelogram, where X is the midpoint of AB." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

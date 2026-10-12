@@ -352,6 +352,16 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "combinatorial-nullstellensatz",
+          name: "Combinatorial Nullstellensatz",
+          latex: String.raw`\begin{gathered} \deg f = t_1 + \cdots + t_n,\ \ [x_1^{t_1}\cdots x_n^{t_n}]\,f \ne 0,\ \ |S_i| > t_i \\ \implies f(s_1, \ldots, s_n) \ne 0 \text{ for some } s_i \in S_i \end{gathered}`,
+          description: String.raw`Alon's Combinatorial Nullstellensatz says a polynomial cannot vanish on a large enough grid if its top-degree part contains the right monomial. Here $f$ is a polynomial in $x_1, \ldots, x_n$ over a field such as $\mathbb{Z}_p$, $[x_1^{t_1}\cdots x_n^{t_n}]\,f$ is its coefficient of that monomial, and $S_1, \ldots, S_n$ are sets of field elements. To prove that some choice from given sets avoids every bad value, build a polynomial that is zero exactly at the bad choices and find one nonzero top coefficient. It is the engine of the polynomial method in olympiad combinatorics.`,
+          keywords: ["combinatorial nullstellensatz", "alon nullstellensatz", "polynomial method", "nonvanishing on a grid", "coefficient of the top monomial", "polynomial vanishing on a product set", "cauchy davenport proof"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         }
       ]
     },
@@ -379,6 +389,28 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AIME"]
+        },
+        {
+          id: "pentagonal-number-theorem",
+          name: "Euler's Pentagonal Number Theorem",
+          latex: String.raw`\prod_{n \ge 1}(1 - x^n) = \sum_{k \in \mathbb{Z}} (-1)^k x^{k(3k - 1)/2} = 1 - x - x^2 + x^5 + x^7 - x^{12} - x^{15} + \cdots`,
+          latexPlain: String.raw`(1 - x)(1 - x^2)(1 - x^3)\cdots = 1 - x - x^2 + x^5 + x^7 - x^{12} - x^{15} + x^{22} + x^{26} - \cdots`,
+          description: String.raw`Euler's Pentagonal Number Theorem expands the product $(1 - x)(1 - x^2)(1 - x^3)\cdots$, which is the reciprocal of the generating function of the [[partitions|partition numbers]] $p(n)$. Almost everything cancels: the only exponents left are the generalized pentagonal numbers $\frac{k(3k - 1)}{2}$ for $k = 0, \pm1, \pm2, \ldots$, which are $0, 1, 2, 5, 7, 12, 15, \ldots$, with signs in pairs. Multiplying back by the partition generating function turns this into a fast recurrence for $p(n)$.`,
+          keywords: ["pentagonal number theorem", "euler pentagonal", "generalized pentagonal numbers", "partition recurrence", "product of 1 - x^n", "franklin involution", "p(n) recurrence"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "hook-length-formula",
+          name: "Hook Length Formula",
+          latex: String.raw`f^{\lambda} = \frac{n!}{\prod_{c \in \lambda} h(c)}`,
+          latexPlain: String.raw`f^{\lambda} = \frac{n!}{h(c_1)\,h(c_2)\cdots h(c_n)}`,
+          description: String.raw`The Hook Length Formula counts the ways to fill a Young diagram $\lambda$, a staircase of left-justified rows of $n$ cells with lengths that never increase going down, with $1, 2, \ldots, n$ so that numbers increase along every row and down every column. That count is $f^{\lambda}$. The hook $h(c)$ of a cell $c$ is the number of cells in its hook: the cell itself, the cells to its right, and the cells below it. For two rows of equal length it gives the [[catalan-numbers|Catalan numbers]].`,
+          keywords: ["hook length formula", "young tableaux", "counting standard young tableaux", "young diagram", "hook lengths", "fill a staircase increasing rows and columns", "frame robinson thrall"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "stirling-bell",
@@ -693,6 +725,16 @@ window.MATH_SECTIONS.push({
           importance: "lowest",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "schurs-theorem",
+          name: "Schur's Theorem",
+          latex: String.raw`N \ge \lfloor e \cdot k! \rfloor \implies \text{every } k\text{-coloring of } 1, 2, \ldots, N \text{ has } x + y = z \text{ in one color}`,
+          description: String.raw`Schur's Theorem says that coloring the numbers $1, 2, \ldots, N$ in $k$ colors cannot keep every color free of solutions to $x + y = z$ once $N$ is large, with $x = y$ allowed; the bound uses $e \approx 2.718$. It is [[ramsey-33|Ramsey's Theorem]] in disguise, applied to differences. The largest $N$ that can be colored without a one-color solution is the Schur number: $4$ for two colors, $13$ for three, $44$ for four. It is not Schur's Inequality, a different result with the same name.`,
+          keywords: ["schur theorem", "schur numbers", "sum-free coloring", "monochromatic x+y=z", "coloring integers sum free", "ramsey for sums", "sum-free sets"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "erdos-szekeres",

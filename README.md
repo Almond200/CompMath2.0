@@ -1,6 +1,6 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 690 cards
+A searchable reference for AMC 10/12, AIME and olympiad training. 695 cards
 covering formulas, methods, and patterns, plus a database of 4,675 past contest problems
 (4,616 with their full statements), of which 1,367 have a written strategy and 1,365 are
 cross-linked to the cards their solutions run through.
@@ -359,6 +359,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 - **Pressing "/" no longer moves the page.** Focusing the search box made the browser scroll by the page's scroll padding even though the box sits in the sticky top bar; the page now stays still when the box is on screen, and on a narrow screen, where the bar scrolls away, the page goes to the top so the box is visible.
 - **Patterns show a Practice Problems section even when they have none yet.** The 24 patterns with no tagged problems show the heading with "No practice problems for this pattern yet", so the place for them is visible.
 - The app's files no longer name a person: the new-card batch label and three code comments were reworded.
+- **Gap scan, batch 3: five olympiad cards.** The Combinatorial Nullstellensatz (with its proof, and the Cauchy–Davenport write-up now points to it instead of restating it), Schur's Theorem on one-color solutions of $x + y = z$ (through the difference graph and the multicolor Ramsey bound), Euler's Pentagonal Number Theorem (Franklin's pairing and the partition recurrence), the Hook Length Formula (with a figure of the hooks), and Projective Transformations as a method (send a line to infinity, or a conic to a circle; the figure is the complete quadrilateral of its example). Every number in the examples is checked by computation, including the Schur numbers 4 and 13 by exhaustive search.
 - **Gates run on Linux too.** The gates hard-coded macOS paths. They now read `JSC` and `CHROME` from the environment, falling back to the Mac paths. `tools/jsc-node` is a small Node stand-in for `jsc` (`load`, `print`, `read`, `quit`), and `check-labels.py` passes `--no-sandbox` when it runs as root. On Linux, `check-labels.py` reports five far-move labels (`thales-theorem`, `radical-axis`, `weierstrass-substitution`, `harmonic-addition`, `vertex-form`) that come from different font widths; on the Mac they pass. The semantic search index (`tools/build-search-index.py`) cannot be rebuilt from a cloud session, because its model download from HuggingFace is blocked there. Rebuild it on the Mac after pulling; until then, new cards rank by the lexical search alone.
 
 **2026-10-10**

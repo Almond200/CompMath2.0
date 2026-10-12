@@ -1772,7 +1772,12 @@
     "dirichlet-primes-progression": "formula",
     "partial-fractions": "method",
     "working-backwards": "method",
-    "plane-cross-section": "method"
+    "plane-cross-section": "method",
+    "combinatorial-nullstellensatz": "formula",
+    "schurs-theorem": "formula",
+    "pentagonal-number-theorem": "formula",
+    "hook-length-formula": "formula",
+    "projective-transformations": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8495,6 +8500,36 @@
       ]
     ],
     "plane-cross-section": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "combinatorial-nullstellensatz": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "schurs-theorem": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "pentagonal-number-theorem": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "hook-length-formula": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "projective-transformations": [
       [
         "(new card)",
         "written directly in the method template"
