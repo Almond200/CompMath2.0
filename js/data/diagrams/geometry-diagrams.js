@@ -3642,21 +3642,39 @@ DIAGRAMS["trig-ceva"] = [(() => {
   })()];
 
   DIAGRAMS["desargues-theorem"] = [(() => {
-    const O = [225, 185];
-    const Ap = [195, 130], Bp = [220, 205], Cp = [170, 250];
-    const A = add(O, mul(sub(Ap, O), 1.30)), B = add(O, mul(sub(Bp, O), 1.75)), C = add(O, mul(sub(Cp, O), 2.20));
-    const X = lineInt(A, B, Ap, Bp), Y = lineInt(B, C, Bp, Cp), Z = lineInt(C, A, Cp, Ap);
-    return wrap(470, 360, [
-      seg(O, A, FNT, 1, "4 3"), seg(O, B, FNT, 1, "4 3"), seg(O, C, FNT, 1, "4 3"),
-      seg(lerp(X, Y, -0.12), lerp(X, Y, 1.12), GRN, 2),        // axis of perspectivity
+    // Built in plain coordinates with O at the origin, then fitted to the canvas, so the two
+    // triangles stay well apart and every side line can be followed to its point on the axis.
+    const raw0 = { A: [2.97, -0.12], B: [1.27, 0.37], C: [2.24, -1.27] }, k = { A: 1.97, B: 2.99, C: 1.61 };
+    const raw = { O: [0, 0], A: raw0.A, B: raw0.B, C: raw0.C,
+      Ap: mul(raw0.A, k.A), Bp: mul(raw0.B, k.B), Cp: mul(raw0.C, k.C) };
+    raw.X = lineInt(raw.A, raw.B, raw.Ap, raw.Bp); raw.Y = lineInt(raw.B, raw.C, raw.Bp, raw.Cp); raw.Z = lineInt(raw.C, raw.A, raw.Cp, raw.Ap);
+    const W = 470, H = 360, m = 34, ks = Object.keys(raw);
+    const xs = ks.map(q => raw[q][0]), ys = ks.map(q => raw[q][1]);
+    const sc = Math.min((W - 2 * m) / (Math.max(...xs) - Math.min(...xs)), (H - 2 * m) / (Math.max(...ys) - Math.min(...ys)));
+    const ox = (W - sc * (Math.max(...xs) - Math.min(...xs))) / 2, oy = (H - sc * (Math.max(...ys) - Math.min(...ys))) / 2;
+    const P = {}; ks.forEach(q => { P[q] = [ox + (raw[q][0] - Math.min(...xs)) * sc, oy + (raw[q][1] - Math.min(...ys)) * sc]; });
+    const { O, A, B, C, Ap, Bp, Cp, X, Y, Z } = P;
+    // A side is solid between its vertices and dashed from the nearer vertex out to its axis point.
+    const ext = (U, V, T, c) => seg(dist(U, T) < dist(V, T) ? U : V, T, c, 1.2, "5 4");
+    const cross = (sub(Y, X)[0] * sub(Z, X)[1] - sub(Y, X)[1] * sub(Z, X)[0]) / dist(X, Y);
+    const ok = Math.abs(cross) < 0.5;
+    const ends = [X, Y, Z].sort((u, v) => u[0] - v[0] || u[1] - v[1]);
+    const g = centroidOf(A, B, C), gp = centroidOf(Ap, Bp, Cp);
+    const nrm = norm(perp(sub(ends[2], ends[0])));
+    return wrap(W, H, [
+      seg(O, Ap, FNT, 1, "3 3"), seg(O, Bp, FNT, 1, "3 3"), seg(O, Cp, FNT, 1, "3 3"),
+      seg(lerp(ends[0], ends[2], -0.08), lerp(ends[0], ends[2], 1.08), GRN, 2),
+      ext(A, B, X, ACC), ext(B, C, Y, ACC), ext(C, A, Z, ACC),
+      ext(Ap, Bp, X, GLD), ext(Bp, Cp, Y, GLD), ext(Cp, Ap, Z, GLD),
       poly([A, B, C], ACC, 2), poly([Ap, Bp, Cp], GLD, 2),
-      dot(O, "var(--text)", 4.5), txt(add(O, [4, 16]), "O", "var(--text)", 12.5),
+      dot(O, "var(--text)", 4.5), txt(add(O, [-12, 4]), "O", "var(--text)", 12.5),
       dot(X, GRN, 4), dot(Y, GRN, 4), dot(Z, GRN, 4),
+      ...[["X", X], ["Y", Y], ["Z", Z]].map(([n, q]) => txt(add(q, mul(nrm, 14)), n, GRN, 12)),
       dot(A, ACC, 3.5), dot(B, ACC, 3.5), dot(C, ACC, 3.5),
       dot(Ap, GLD, 3.5), dot(Bp, GLD, 3.5), dot(Cp, GLD, 3.5),
-      txt(add(A, [10, 0]), "A", ACC, 12), txt(add(B, [12, 4]), "B", ACC, 12), txt(add(C, [-10, 14]), "C", ACC, 12),
-      txt(add(Ap, [-12, -4]), "A'", GLD, 11.5), txt(add(Bp, [25, 2]), "B'", GLD, 11.5), txt(add(Cp, [-12, 6]), "C'", GLD, 11.5),
-      cap(470, 360, "perspective from the point O ⇔ the three side-intersections X, Y, Z are collinear (the axis)")
+      txt(add(away(A, g, 13), [0, 4]), "A", ACC, 12), txt(add(away(B, g, 13), [0, 4]), "B", ACC, 12), txt(add(away(C, g, 13), [0, 4]), "C", ACC, 12),
+      txt(add(away(Ap, gp, 14), [0, 4]), "A′", GLD, 12), txt(add(away(Bp, gp, 14), [0, 4]), "B′", GLD, 12), txt(add(away(Cp, gp, 14), [0, 4]), "C′", GLD, 12),
+      cap(W, H, "AA′, BB′, CC′ meet at O, so the side pairs AB and A′B′, BC and B′C′, CA and C′A′ meet at three points X, Y, Z on one line, the axis (green). The sides are dashed where they are extended to the axis." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
@@ -3749,13 +3767,28 @@ DIAGRAMS["trig-ceva"] = [(() => {
       return [add(base, mul(pp, h)), sub(base, mul(pp, h))];
     };
     const cc = circInts(o0, r0, o3, r3);
-    const M = dist(cc[0], P12) > dist(cc[1], P12) ? cc[0] : cc[1];
-    return wrap(470, 370, [
-      ...lines.map(L => seg(L[0], L[1], DIM, 1.6)),
-      circ(o0, r0, ACC, 1.3), circ(o1, r1c, GLD, 1.3), circ(o2, r2c, GRN, 1.3), circ(o3, r3, "rgba(91,140,255,0.55)", 1.3),
-      ...[P01, P02, P03, P12, P13, P23].map(p => dot(p, DIM, 3)),
+    const M0 = dist(cc[0], P12) > dist(cc[1], P12) ? cc[0] : cc[1];
+    // Fit the four circles (not the lines) to the canvas, then draw each line only a little past
+    // its outermost meeting points, so no circle is cut off and no line runs on for nothing.
+    const cs = [[o0, r0], [o1, r1c], [o2, r2c], [o3, r3]];
+    const lo = [Math.min(...cs.map(c => c[0][0] - c[1])), Math.min(...cs.map(c => c[0][1] - c[1]))];
+    const hi = [Math.max(...cs.map(c => c[0][0] + c[1])), Math.max(...cs.map(c => c[0][1] + c[1]))];
+    const W = 470, H = 400, m = 10, k = Math.min((W - 2 * m) / (hi[0] - lo[0]), (H - 2 * m) / (hi[1] - lo[1]));
+    const T = q => [(W - k * (hi[0] - lo[0])) / 2 + (q[0] - lo[0]) * k, (H - k * (hi[1] - lo[1])) / 2 + (q[1] - lo[1]) * k];
+    const meets = [[P01, P02, P03], [P01, P12, P13], [P02, P12, P23], [P03, P13, P23]];
+    const lineSeg = pts => {
+      const d = norm(sub(pts[1], pts[0])), t = pts.map(q => (q[0] - pts[0][0]) * d[0] + (q[1] - pts[0][1]) * d[1]);
+      const pad = 22 / k;
+      return seg(T(add(pts[0], mul(d, Math.min(...t) - pad))), T(add(pts[0], mul(d, Math.max(...t) + pad))), DIM, 1.6);
+    };
+    const M = T(M0);
+    const ok = cs.every(([o, r]) => Math.abs(dist(o, M0) - r) < 0.5);
+    return wrap(W, H, [
+      ...meets.map(lineSeg),
+      ...cs.map(([o, r], i) => circ(T(o), r * k, [ACC, GLD, GRN, "rgba(91,140,255,0.55)"][i], 1.3)),
+      ...[P01, P02, P03, P12, P13, P23].map(q => dot(T(q), DIM, 3)),
       dot(M, "var(--text)", 5.5), txt(add(M, [12, 4]), "M", "var(--text)", 13),
-      cap(470, 370, "four lines → four triangles; the four circumcircles all pass through the Miquel point M")
+      cap(W, H, "four lines → four triangles; the four circumcircles all pass through the Miquel point M" + (ok ? "" : " MISMATCH"))
     ]);
   })()];
 
