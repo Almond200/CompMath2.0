@@ -3058,4 +3058,86 @@
     ]);
   })()];
 
+  // Organized list: integer triangles with perimeter 15, one row per longest side c.
+  DIAGRAMS["organized-listing"] = [(() => {
+    const rows = [];
+    for (let c = 1; c <= 15; c++) { const row = []; for (let a = 1; a <= c; a++) { const b = 15 - a - c; if (b >= a && b <= c && a + b > c) row.push([a, b, c]); } if (row.length) rows.push([c, row]); }
+    let brute = 0;
+    for (let a = 1; a < 15; a++) for (let b = a; b < 15; b++) { const c = 15 - a - b; if (c >= b && a + b > c) brute++; }
+    const total = rows.reduce((t, r) => t + r[1].length, 0), ok = total === 7 && brute === 7;
+    const parts = [];
+    rows.forEach(([c, row], k) => {
+      const y = 46 + k * 58;
+      parts.push(txt([54, y + 5], "c = " + c, GLD, 14));
+      row.forEach((t, m) => { const x = 100 + m * 72; parts.push(rect(x, y - 16, 64, 30, ACC, 1.4, ACCS), txt([x + 32, y + 4], t.join(", "), ACC, 13)); });
+      parts.push(txt([418, y + 5], String(row.length), DIM, 14, "end"));
+    });
+    return wrap(430, 220, [...parts, seg([90, 22], [90, 196], FNT, 1.2),
+      cap(430, 220, "The triangles of the example, listed with a ≤ b ≤ c and one row per longest side c. The triangle inequality makes c run from 5 to 7, and the rows hold 1, 2, and 4 triangles, 7 in all." + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  // Simulating the process: ten people in a circle, every third removed; the small numbers give the order of removal.
+  DIAGRAMS["simulate-the-process"] = [(() => {
+    const ppl = Array.from({ length: 10 }, (_, k) => k + 1), order = [];
+    let i = 0; const left = ppl.slice();
+    while (left.length > 1) { i = (i + 2) % left.length; order.push(left.splice(i, 1)[0]); }
+    const ok = left[0] === 4 && order.join() === "3,6,9,2,7,1,8,5,10";
+    const O = [215, 118], R = 82, parts = [circ(O, R, FNT, 1.2)];
+    ppl.forEach((p, k) => {
+      const P = onC(O, R, -90 + 36 * k), last = p === left[0];
+      parts.push(circ(P, 15, last ? GLD : DIM, last ? 2.2 : 1.4, "var(--bg-card)"), txt([P[0], P[1] + 5], String(p), last ? GLD : DIM, 14));
+      if (!last) { const Q = onC(O, R + 30, -90 + 36 * k); parts.push(txt([Q[0], Q[1] + 4], "#" + (order.indexOf(p) + 1), ACC, 11.5)); }
+    });
+    return wrap(430, 240, [...parts,
+      cap(430, 240, "The circle of the example. The blue labels give the order of removal (person 3 first, then 6, 9, 2, 7, 1, 8, 5, 10), and person 4, in gold, is the last one left." + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  // Truth-tellers: the number of liars L from 0 to 4 against the four statements; only L = 3 is consistent.
+  DIAGRAMS["truth-tellers-logic"] = [(() => {
+    const parts = [], good = [];
+    for (let L = 0; L <= 4; L++) {
+      const trueSt = [1, 2, 3, 4].filter(k => k === L).length, consistent = 4 - trueSt === L;
+      if (consistent) good.push(L);
+      const y = 48 + L * 34;
+      parts.push(txt([56, y + 5], L + (L === 1 ? " liar" : " liars"), consistent ? GLD : DIM, 13));
+      [1, 2, 3, 4].forEach((k, m) => { const x = 108 + m * 56, tr = k === L; parts.push(rect(x, y - 13, 46, 26, tr ? ACC : FNT, 1.2, tr ? ACCS : "none"), txt([x + 23, y + 5], tr ? "T" : "F", tr ? ACC : FNT, 13)); });
+      parts.push(txt([400, y + 5], consistent ? "consistent" : "no", consistent ? GLD : FNT, 12.5, "end"));
+    }
+    const ok = good.length === 1 && good[0] === 3;
+    [1, 2, 3, 4].forEach((k, m) => parts.push(txt([131 + m * 56, 24], "says " + (k === 4 ? "all 4" : k), DIM, 11.5)));
+    return wrap(430, 230, [...parts,
+      cap(430, 230, "Each row assumes a number of liars and marks which statements are then true (T). The assumption holds only if the number of false statements equals it, and that happens only for 3 liars." + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  // Coins and prices: 7p + 11e = 100; the remainder of 100 - 11e mod 7 hits 0 only at e = 4.
+  DIAGRAMS["coins-and-prices"] = [(() => {
+    const parts = [], hits = [];
+    for (let e = 1; e <= 8; e++) {
+      const rest = 100 - 11 * e, r = rest % 7, x = 30 + (e - 1) * 48, hit = r === 0;
+      if (hit) hits.push(e);
+      parts.push(rect(x, 40, 42, 120, hit ? GLD : FNT, hit ? 2 : 1.2, hit ? GLDS : "none"));
+      parts.push(txt([x + 21, 64], "e=" + e, DIM, 12.5), txt([x + 21, 98], String(rest), hit ? GLD : DIM, 14), txt([x + 21, 136], "r " + r, hit ? GLD : FNT, 12.5));
+    }
+    const ok = hits.length === 1 && hits[0] === 4 && (100 - 44) / 7 === 8;
+    return wrap(430, 200, [...parts, txt([215, 186], "100 − 11e, and its remainder r mod 7", DIM, 12.5),
+      cap(430, 200, "For each number e of erasers, the money left for pencils is 100 − 11e cents, and it must be a multiple of 7. Only e = 4 leaves remainder 0, giving 56 cents, or 8 pencils." + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  // Drawing without replacement: the path blue, blue, red with its shrinking fractions.
+  DIAGRAMS["drawing-without-replacement"] = [(() => {
+    const p = (6 / 10) * (5 / 9) * (4 / 8), ok = Math.abs(p - 1 / 6) < 1e-12;
+    const pts = [[40, 110], [150, 70], [260, 40], [370, 40]], alt = [[150, 150], [260, 115], [370, 105]];
+    const parts = [];
+    for (let k = 0; k < 3; k++) {
+      parts.push(seg(pts[k], pts[k + 1], k < 2 ? ACC : GLD, 2.2), seg(pts[k], alt[k], FNT, 1.2, "4 4"));
+      parts.push(dot(alt[k], FNT, 3.5));
+    }
+    pts.forEach(q => parts.push(dot(q, DIM, 4.5)));
+    const lab = [["6/10", "blue"], ["5/9", "blue"], ["4/8", "red"]];
+    lab.forEach(([f, c], k) => { const m = mid(pts[k], pts[k + 1]); parts.push(txt([m[0], m[1] - 10], f, k < 2 ? ACC : GLD, 14), txt([m[0], m[1] + 20], c, k < 2 ? ACC : GLD, 12)); });
+    parts.push(txt([16, 136], "10 marbles", DIM, 12, "start"), txt([150, 98], "9 left", DIM, 12), txt([260, 66], "8 left", DIM, 12));
+    return wrap(430, 200, [...parts, txt([370, 26], "1/6", GLD, 15),
+      cap(430, 200, "The draws blue, blue, red, with the fraction of each draw taken from what is left after the earlier ones: 6/10 · 5/9 · 4/8 = 1/6. The faint branches are the draws the path does not take." + (ok ? "" : " MISMATCH"))]);
+  })()];
+
 })();

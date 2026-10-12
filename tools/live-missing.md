@@ -19,6 +19,8 @@ LIVE tags every problem with concepts (258 distinct strings, 11,229 tags, cached
 
 The strings with no card, with the number of problems tagged, and a proposal. **Nothing is written until Stanley approves** (rule 12):
 
+**Written 2026-10-12:** the six proposed cards below now exist (`defined-operation`, `truth-tellers-logic`, `organized-listing`, `simulate-the-process`, `coins-and-prices`, `drawing-without-replacement`).
+
 | Concept (problems) | Proposed card | Kind | Importance, tier |
 |---|---|---|---|
 | custom operation (40) | A Newly Defined Operation: $a \star b$ is given by a rule, and the question evaluates it or solves for a value | pattern | low, AMC |

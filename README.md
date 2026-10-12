@@ -265,6 +265,14 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - **Desargues Involution Theorem and Its Dual** (Projective Geometry & Cross-Ratio): the conics through four points cut a line in pairs of one involution, with the dual for tangents from a point. Proved through pencils of quadratics and polar reciprocation, with the fixed-point form $\frac1{MQ} - \frac1{MP} = \frac1{MX} - \frac1{MY}$ that generalizes the butterfly.
 
   Every stated property was checked on thousands of random triangles or configurations; one candidate property (a spiral similarity at $X$) failed the check and was left out. The examples are verified by coordinates ($AX = \frac{6\sqrt{10}}{5}$; $MQ = \frac{30}{19}$ from an explicit circle and chords). The Desargues figure draws each side and diagonal solid inside the circle and dashed out to $\ell$.
+- **Six cards from the LIVE concept tags (approved 2026-10-11).** All are AMC tier and low importance, judged from the number of LIVE problems tagged with each concept (`tools/importance-proposal.md`):
+  - **A Newly Defined Operation** (algebra pattern, Equations with Hidden Structure);
+  - **Logical Deduction and Truth-Tellers** (counting pattern, in a new group Logic & Probability Setups);
+  - **Making an Organized List** and **Simulating the Process** (counting methods, in a new group Working It Out by Hand);
+  - **Coins and Prices** (number-theory pattern, in a new group Whole-Number Totals);
+  - **Drawing Without Replacement** (counting pattern).
+
+  Each follows the pattern or method anatomy and has an original example whose answer was confirmed by brute force: $9! + 1$ for a shifted-product operation, three liars, seven integer triangles of perimeter $15$, person $4$ in a circle of ten, eight pencils, and $\frac16$ with $\frac25$ by symmetry. Five of them have a figure of their example; the defined operation is pure algebra and has none. They are placed in the AMC routes.
 - **Same Remainder merged (approved 2026-10-11).** The pattern Same Remainder is now part of the method Subtracting Equal Remainders, which carries its keyword; the old id redirects (`MERGED_IDS`).
 - **2.4d duplicates finished.**
   - The cotangent identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$ lives only on Identities for Angles Summing to $180^\circ$; The Cotangent Rule points to it.

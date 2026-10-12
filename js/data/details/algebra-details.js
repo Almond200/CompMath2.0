@@ -4940,5 +4940,33 @@ For a polygon this means a linear-fractional function over a convex region is ex
 
 ## Contest profile
 A short way through an optimization that would otherwise be a calculus exercise or an inequality with a constraint, and common enough in coordinate problems on circles and polygons to be worth recognizing on sight. It shows up as a request for the extreme value of a quotient of coordinates, and the moment the ratio is read as a slope the figure is a region and a point with its extreme lines.
+`,
+
+"defined-operation": String.raw`
+## Distinguishing clues
+- A new symbol, such as $a \star b$ or $a \diamond b$, defined by a formula in the statement.
+- A chain of the operation to evaluate, often long, such as $((2 \star 3) \star 4) \star \cdots \star 10$.
+- An equation in the new operation to solve, or a question about its properties: commutative, associative, an identity element.
+- Not this pattern: a function defined by an equation it satisfies, such as $f(x) + 2f(1 - x) = x$, which is a functional equation solved by [[functional-substitution|Functional Equation Substitution]].
+
+## Methods and Formulas to Try
+The rule is a familiar operation in disguise, and finding which one is the whole problem.
+
+### Methods to try
+- [[sfft]]: a rule like $ab - a - b + c$ factors as $(a - 1)(b - 1) + (c - 1)$, a shifted product, which makes long chains collapse.
+- [[telescoping]]: a rule like $\frac{1}{a} - \frac{1}{b}$ telescopes along a chain, leaving only the two ends.
+- [[functional-substitution]]: when the operation must satisfy an equation, substitute simple values, such as equal arguments or an identity, to pin it down.
+
+### Formulas to try
+No standard formula is needed: the rule in the statement is the formula, and the work is rewriting it.
+
+## Common traps
+- Evaluating a chain right to left when it is grouped left to right, for an operation that is not associative.
+- Assuming the operation is commutative because the symbol looks symmetric.
+- Expanding a long chain term by term instead of rewriting the rule first.
+- Reading $a \star b$ as multiplication in a step where the rule must be applied.
+
+## Contest profile
+An AMC 8 and 10 favorite, from a single evaluation to a long chain or an equation in the new operation, and an AMC 12 version that asks for the properties of the operation. It pairs with Simon's Favorite Factoring Trick and with telescoping.
 `
 });
