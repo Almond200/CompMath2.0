@@ -48,3 +48,34 @@ Each was checked against every card's name, keywords, and description, and none 
 | 12 | Tiling a Board | pattern, counting / Strings & Sequences with a Rule (or a new Tilings group) | AMC, low | Dominoes, trominoes, or tiles covering a board. The coloring, recursion, and transfer-matrix methods exist, but no pattern card says "this is a tiling problem" and points to them. |
 
 Not proposed (already covered): the radical center (on Radical Axis), tangents meeting on the symmedian (on Harmonic Quadrilaterals), Vieta jumping, Schur, SOS, LTE variants, Hensel, orders, primitive roots, quadratic reciprocity, the extremal principle, double counting, the probabilistic method, and generating functions.
+
+## Formula-box audit (2.4e; waiting for your yes per row)
+Every card's formula box was measured in the browser at 1280 px and 375 px (680 boxes). A one-row box is about 108 px tall at 1280, and each extra row adds about 50 px. No box scrolls sideways at 1280. The rows below are the 19 boxes with five or more rows. "In Key forms" means the rows to be moved already appear in the card's Key forms, so moving them loses nothing; "add" means they would be added there first.
+
+Already fixed (a display bug, not a style choice): four boxes ended a row with a dangling colon, because the app breaks rows at `\qquad`, and the ellipse even had "a > b :" as a row of its own. Ellipse, Hyperbola, Eccentricity, and Conic Classification now read cleanly.
+
+| Card | Rows | What is packed in | Proposal |
+|---|---|---|---|
+| Order Statistics | 7 | five continuous facts, then two long text rows for discrete draws with and without replacement | keep the five continuous rows; move the two discrete rows to Key forms (add) |
+| Binet's Formula | 6 | Binet, the definitions of φ and ψ, then Cassini, gcd, addition, sum of squares | keep Binet and φ, ψ; the four Fibonacci identities leave the box (all in Key forms). One idea per card |
+| Product-to-Sum & Sum-to-Product | 6 | three product-to-sum and three sum-to-product formulas | keep: the six are the card |
+| Reduction Identities | 6 | six cofunction and sign rules | keep: a reference table |
+| Sums of Powers | 5 | Σk, Σk², Σk³, the odd sum, the even sum | keep the first three; the odd and even sums leave the box (in Key forms) |
+| Vieta's Formulas (Quadratic) | 5 | r + s, rs, then r² + s², 1/r + 1/s, \|r − s\| | keep r + s and rs; the three derived forms leave the box (two in Key forms, add 1/r + 1/s) |
+| Special Trig Values | 5 | sin 15°, cos 36°, sin 18°, tan 15°, tan 75° | keep: a reference table |
+| Hyperbola Properties | 5 | equation, focal difference, c², asymptotes, xy = k | move xy = k (rectangular) to Key forms (add) |
+| Cone Formulas | 5 | slant, lateral area, total area, volume, sector angle | keep: a reference card |
+| Excentral Triangle | 5 | I as orthocenter, ABC as orthic triangle, sides, circumradius, area | keep the first, the sides, and R; move "ABC is the orthic triangle" and the area to Key forms (add) |
+| Eccentricity | 5 | the definition, then one row per conic | put the four conic cases on one row ("e = 0 circle, 0 < e < 1 ellipse, …"): 2 rows, nothing moved |
+| Triangle Angle Identities | 5 | five identities for A + B + C = 180° | keep: the card owns these after the rule-17 dedupe |
+| Polar Coordinates | 5 | x, y, r², tan θ, the polar cell area | move the cell area to Key forms (add) |
+| Absolute Value Identities | 5 | five rules | keep: a reference card |
+| Recognition Numbers | 5 | 1001, 999, 1024, 1729, 7⁴ | keep: a reference list |
+| Newton's Sums | 5 | the general recurrence, then p₁ to p₄ | keep the recurrence, p₁, p₂; move p₃, p₄ (p₃ in Key forms, add p₄) |
+| Log Rules | 5 | five rules | keep: a reference card |
+| Divisibility Rules | 5 | five rules | keep: a reference card |
+| Anticomplementary Triangle | 5 | R′, area, O′, N′, H′ | keep |
+
+So the proposal changes 9 cards (Order Statistics, Binet, Sums of Powers, Vieta, Hyperbola, Excentral, Eccentricity, Polar Coordinates, Newton's Sums) and keeps 10.
+
+At 375 px, 397 boxes scroll sideways inside the box, which is by design. In 23 of them the row is more than 2.5 times the phone width. The proposal is one row break at the natural point (before $\iff$, or after the condition), with nothing removed: Desargues Involution, Carnot's Perpendicularity Theorem, Reim's Theorem, Basic Facts about Trees, Total Expectation, British Flag Theorem, Isotomic Conjugate, Schur's Inequality, Lagrange's Theorem on Roots mod p, Polynomial CRT, Inclusion–Exclusion, Pick's Theorem on a Hexagonal Grid, Order Statistics, CRT Solution Counting, Defined Operations, Conway Circle, Japanese Theorem, Pappus's Hexagon Theorem, the Twelvefold Way table, Nine-Point Circle, Integer Triangles with a Given Perimeter, the Steiner Line, and Pigeonhole.

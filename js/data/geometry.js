@@ -1824,7 +1824,7 @@ window.MATH_SECTIONS.push({
         {
           id: "ellipse-properties",
           name: "Ellipse Properties",
-          latex: String.raw`\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1, \quad a > b: \qquad PF_1 + PF_2 = 2a, \qquad c^2 = a^2 - b^2, \qquad [\text{ellipse}] = \pi ab`,
+          latex: String.raw`\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\ \ (a > b), \qquad PF_1 + PF_2 = 2a, \qquad c^2 = a^2 - b^2, \qquad [\text{ellipse}] = \pi ab`,
           description: String.raw`The locus of points whose distances to $(\pm c, 0)$ sum to $2a$. The semi-major axis $a$ is half that constant sum, $b$ is the semi-minor axis, and $c$ is the focal distance from the center; evaluating the locus at the end of the minor axis gives $a^2 = b^2 + c^2$ directly. The area $\pi ab$ is the circle's $\pi r^2$ with the two radii separated, which is what an affine stretch of a circle does to it.`,
           keywords: ["ellipse", "sum of distances to two foci", "semi-major axis", "semi-minor axis", "a squared equals b squared plus c squared", "area pi a b", "foci of an ellipse", "constant focal sum", "latus rectum"],
           importance: "high",
@@ -1834,7 +1834,7 @@ window.MATH_SECTIONS.push({
         {
           id: "hyperbola-properties",
           name: "Hyperbola Properties",
-          latex: String.raw`\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1: \qquad \lvert PF_1 - PF_2 \rvert = 2a, \qquad c^2 = a^2 + b^2, \qquad y = \pm\frac{b}{a}x, \qquad xy = k \text{ (rectangular)}`,
+          latex: String.raw`\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1, \qquad \lvert PF_1 - PF_2 \rvert = 2a, \qquad c^2 = a^2 + b^2, \qquad y = \pm\frac{b}{a}x, \qquad xy = k \text{ (rectangular)}`,
           description: String.raw`Same construction with a difference of focal distances instead of a sum, which is why $c$ now exceeds $a$ and the sign in the $c$-relation flips. The asymptotes are the lines the branches approach: drop the $1$ from the equation and it factors into exactly those two lines, so their slopes $\pm b/a$ control every direction the curve can eventually take. Rotating the rectangular case $a = b$ by $45^\circ$ turns it into $xy = k$, the reciprocal graph.`,
           keywords: ["hyperbola", "difference of distances", "asymptotes of a hyperbola", "slope b over a", "c squared equals a squared plus b squared", "rectangular hyperbola", "xy = k", "branches", "conjugate axis", "latus rectum"],
           importance: "high",
@@ -1854,7 +1854,7 @@ window.MATH_SECTIONS.push({
         {
           id: "eccentricity",
           name: "Eccentricity & the Focus-Directrix Definition",
-          latex: String.raw`e = \frac{c}{a} = \frac{PF}{\operatorname{dist}(P, \ell)}: \qquad e = 0 \text{ circle}, \quad 0 \lt  e \lt  1 \text{ ellipse}, \quad e = 1 \text{ parabola}, \quad e > 1 \text{ hyperbola}`,
+          latex: String.raw`e = \frac{c}{a} = \frac{PF}{\operatorname{dist}(P, \ell)}, \qquad e = 0 \text{ circle}, \quad 0 \lt  e \lt  1 \text{ ellipse}, \quad e = 1 \text{ parabola}, \quad e > 1 \text{ hyperbola}`,
           description: String.raw`One number that names the shape and unifies all three curves: fix a focus $F$ and a directrix $\ell$, and the locus with $PF = e \cdot \operatorname{dist}(P, \ell)$ is an ellipse, a parabola, or a hyperbola according as $e$ is below, equal to, or above $1$. Because $e$ is a ratio of two lengths, it is unchanged by scaling, so two conics of the same type are similar exactly when their eccentricities agree, and every parabola is similar to every other.`,
           keywords: ["eccentricity", "e equals c over a", "focus directrix definition", "how round is the conic", "similar conics", "eccentricity classifies the conic", "all parabolas are similar", "directrix ratio"],
           importance: "medium",
@@ -1864,7 +1864,7 @@ window.MATH_SECTIONS.push({
         {
           id: "conic-classification",
           name: "Classifying a General Second-Degree Equation",
-          latex: String.raw`Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0: \qquad B^2 - 4AC \lt  0 \text{ ellipse}, \quad = 0 \text{ parabola}, \quad > 0 \text{ hyperbola}`,
+          latex: String.raw`Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0, \qquad B^2 - 4AC \lt 0 \text{ ellipse},\ \ = 0 \text{ parabola},\ \ \gt 0 \text{ hyperbola}`,
           description: String.raw`The sign of $B^2 - 4AC$ decides the type, and it survives both rotation and translation, so you can classify without putting the curve into standard form. A nonzero $B$ only means the axes are tilted, and rotating by $\theta$ with $\cot 2\theta = \frac{A - C}{B}$ removes it. Each case has degenerate members, where the plane cuts the cone through its apex: a point or nothing at all, one line or a pair of parallel lines, and two crossing lines respectively.`,
           keywords: ["classify a conic", "B squared minus 4AC", "discriminant of a conic", "xy term", "rotate the axes", "degenerate conic", "pair of lines", "second degree equation"],
           importance: "medium",
