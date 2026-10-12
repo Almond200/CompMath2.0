@@ -2073,7 +2073,26 @@
     }
     bindMathPunctuation(container);
     tidyDiagrams(container);
+    requestAnimationFrame(() => fitInlineMath(container));
     // Card formulas are fitted once, at the end of render(), after the layout settles.
+  }
+  // Inline math wider than its line, on a phone or at a larger text size. Math held to its
+  // punctuation first gets its own line breaks back; math that still overflows (a long root or
+  // a \text{} run, which KaTeX cannot break) scrolls sideways on its own instead of running off
+  // the page. Only math that overflows is touched, so ordinary lines keep their layout.
+  function fitInlineMath(container) {
+    if (!container || !container.querySelectorAll) return;
+    const over = el => {
+      const blk = el.parentElement && el.parentElement.closest("p, li, td, div, section");
+      return blk && el.getBoundingClientRect().right > blk.getBoundingClientRect().right + 1;
+    };
+    container.querySelectorAll(".math-glue.loose, .math-wide").forEach(el => el.classList.remove("loose", "math-wide"));
+    container.querySelectorAll(".katex:not(.katex-display .katex):not(.katex .katex)").forEach(k => {
+      if (k.closest(".formula-display") || !over(k)) return;
+      const glue = k.closest(".math-glue");
+      if (glue) { glue.classList.add("loose"); if (!over(k)) return; }
+      k.classList.add("math-wide");
+    });
   }
   // Punctuation stays with the math it touches, as a word keeps its comma: ", so" after $D$
   // could otherwise wrap alone to the start of the next line, and an opening bracket could hang
@@ -2599,7 +2618,7 @@
     cards.forEach(c => fitObserver.observe(c));
   }
   let fitTimer = 0;
-  window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => fitCardFormulas($content), 120); });
+  window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => { fitCardFormulas($content); fitInlineMath($content); }, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitCardFormulas($content));
 
   // Cards preview only the diagram; examples and questions live on the detail
@@ -5257,7 +5276,7 @@
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 17;
+  const STATEMENTS_V = 18;
   const statementLoads = {};
   function loadStatements(year) {
     if (!statementLoads[year]) {
@@ -5334,6 +5353,39 @@
         : `Text and figures from <a href="${escapeAttr(src || "https://live.poshenloh.com/past-contests")}" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>.`);
   }
 
+  // ---------- Written solutions ----------
+  // A complete solution, written for the app and checked by computation, sits below "How this
+  // problem works". The solutions are stored one file per year under js/data/problems/solutions/
+  // and loaded when a problem page opens, like the statements. A file may also register figures
+  // as MATH_BODY_DIAGRAMS["sol:<slug>"], placed in the text with the {{figure:name}} marker the
+  // write-ups use. SOLUTION_YEARS lists the files that exist (tools/check-solutions.py keeps it
+  // in step), so a year with none makes no request.
+  const SOLUTION_YEARS = new Set([]);
+  const SOLUTIONS_V = 1;
+  const solutionLoads = {};
+  function loadSolutions(year) {
+    if (!solutionLoads[year]) {
+      solutionLoads[year] = new Promise(res => {
+        const sc = document.createElement("script");
+        sc.src = `js/data/problems/solutions/${year}.js?v=${SOLUTIONS_V}`;
+        sc.onload = () => res(true);
+        sc.onerror = () => res(false);
+        document.head.appendChild(sc);
+      });
+    }
+    return solutionLoads[year];
+  }
+  function showSolution(p) {
+    loadSolutions(p.year).then(() => {
+      const sol = window.MATH_SOLUTIONS && window.MATH_SOLUTIONS[p.slug];
+      const wrap = $content.querySelector(`#prob-sol[data-slug="${p.slug}"]`);
+      if (!sol || !wrap) return;
+      wrap.querySelector(".prob-solution-body").innerHTML = detailBodyHtml(sol, "sol:" + p.slug);
+      wrap.hidden = false;
+      renderMath(wrap);
+    });
+  }
+
   function renderProblemDetail(slug) {
     const p = PROBLEM_BY_SLUG[slug];
     if (!p) { location.hash = "#/practice"; return; }
@@ -5377,11 +5429,17 @@
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
         ${chainHtml}
+        ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution" id="prob-sol" data-slug="${p.slug}" hidden>
+          <h4>Solution</h4>
+          <div class="detail-body prob-solution-body"></div>
+        </section>` : ""}
         ${contestNavHtml(p)}
       </div>`;
     renderMath($content);
     if (MAA_RE.test(p.ref)) showStatement(p);
+    if (SOLUTION_YEARS.has(String(p.year))) showSolution(p);
   }
+
 
   // ---------- One step of provenance ----------
   // Arriving at a problem straight from a formula, or at a formula straight from a list,

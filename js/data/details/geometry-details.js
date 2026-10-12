@@ -8461,5 +8461,146 @@ Generalized butterfly problems, proving that two points on a line are symmetric 
 
 ## Contest profile
 An advanced olympiad theorem, usually named and applied in one line to finish a projective argument. It appears when a line cuts the sides and diagonals of a quadrilateral and a conic through its vertices, or, in the dual form, when tangents from a point to an inscribed conic are compared with the lines to the vertices. It pairs with [[desargues-theorem|Desargues's Theorem]] and the [[cross-ratio|cross-ratio]].
+`,
+"orthogonal-circles": String.raw`
+## Key forms
+- $O_1O_2^2 = r_1^2 + r_2^2$ — the test, from the right angle between the two radii at a crossing point
+- $\operatorname{pow}(O_1, \omega_2) = O_1O_2^2 - r_2^2 = r_1^2$ — the same test as a power: the tangent from $O_1$ to $\omega_2$ has length $r_1$
+- a circle through a point $P$ and its inverse $P^*$ in a circle $\omega$ is orthogonal to $\omega$
+- inversion in $\omega$ maps every circle orthogonal to $\omega$ to itself
+- the common chord of two orthogonal circles has length $\frac{2r_1r_2}{O_1O_2}$
+
+## Conditions
+The two circles cross. The test forces this: $r_1^2 + r_2^2$ lies strictly between $(r_1 - r_2)^2$ and $(r_1 + r_2)^2$, so $|r_1 - r_2| \lt O_1O_2 \lt r_1 + r_2$. The angle between crossing circles is the angle between their tangents at a crossing point, and it is the same at both crossing points, by the reflection in the line of centers.
+
+## Why it works
+At a crossing point $X$, the tangent to $\omega_2$ is perpendicular to the radius $O_2X$. The circles cross at right angles exactly when that tangent is the line of the other radius $O_1X$, so exactly when $O_1X \perp O_2X$.
+
+So the circles are orthogonal exactly when triangle $O_1XO_2$ has a right angle at $X$, and by the [[pythagorean-theorem|Pythagorean Theorem]] and its converse that is $$O_1O_2^2 = r_1^2 + r_2^2.$$ The segment $O_1X$ is then tangent to $\omega_2$, so its length $r_1$ is the tangent length from $O_1$, and the square of a tangent length is the power of the point.
+
+For inversion, let $\omega$ have center $O$ and radius $r$, and let a circle $\gamma$ pass through $P$ and its inverse $P^*$. The point $O$ lies on the line $PP^*$, outside the segment, so its power with respect to $\gamma$ is $OP \cdot OP^* = r^2$. By the power form of the test, $\gamma \perp \omega$. Conversely, if $\gamma \perp \omega$, every line through $O$ that meets $\gamma$ meets it in two points whose distances from $O$ multiply to the power $r^2$, so inversion in $\omega$ swaps them, and $\gamma$ is mapped onto itself.
+
+The common chord is perpendicular to $O_1O_2$ and bisected by it, so half of it is the altitude from $X$ in the right triangle, $\frac{r_1r_2}{O_1O_2}$.
+
+## Useful observations
+- A circle centered on the [[radical-axis|radical axis]] of two circles, with radius the tangent length from its center to either of them, is orthogonal to both. The circle orthogonal to three given circles is centered at their radical center.
+- An inversion centered at a crossing point of two orthogonal circles sends them to two perpendicular lines.
+- If $(A, B; C, D)$ is a [[harmonic-bundle|harmonic division]], the circle with diameter $AB$ is orthogonal to every circle through $C$ and $D$: the midpoint $M$ of $AB$ has power $MC \cdot MD = MA^2$ with respect to each of them.
+
+## Applications
+Recognizing the circles an inversion leaves in place, building a circle orthogonal to given circles at their radical center, and turning a right angle between two circles into a condition on lengths.
+
+## Contest profile
+No problems here are tagged with it yet. It appears on olympiads inside inversion solutions, where the circles orthogonal to the circle of inversion are the ones that stay put, and in harmonic configurations.
+`,
+"weitzenbock-inequality": String.raw`
+## Key forms
+- $a^2 - (b - c)^2 = 4(s - b)(s - c) = 4K\tan\frac A2$ — one term of the Hadwiger–Finsler sum, through the tangent lengths and through the half-angle, with $s = \frac{a + b + c}{2}$
+- $a^2 + b^2 + c^2 - (a - b)^2 - (b - c)^2 - (c - a)^2 = 4(xy + yz + zx)$ — with $x = s - a$, $y = s - b$, $z = s - c$
+- $\tan\frac A2 + \tan\frac B2 + \tan\frac C2 \ge \sqrt3$ — the same inequality in the angles
+- $ab + bc + ca \ge 4\sqrt3\,K$ — a rearrangement of Hadwiger–Finsler, stronger than Weitzenböck
+
+## Conditions
+Any triangle, with area $K$. Equality holds in both inequalities exactly when $a = b = c$.
+
+## Why it works
+Write the sides through the tangent lengths from the vertices to the incircle, $x = s - a$, $y = s - b$, $z = s - c$, all positive, as in the figure: then $a = y + z$, $b = z + x$, $c = x + y$.
+
+Each term of the sharper inequality factors as a difference of squares, $$a^2 - (b - c)^2 = (a - b + c)(a + b - c) = 2y \cdot 2z = 4yz,$$ and adding the three such terms gives $a^2 + b^2 + c^2 - (a - b)^2 - (b - c)^2 - (c - a)^2 = 4(xy + yz + zx)$.
+
+[[herons-formula|Heron's Formula]] in the same variables is $K = \sqrt{(x + y + z)xyz}$, since $s = x + y + z$. So Hadwiger–Finsler says $xy + yz + zx \ge \sqrt{3xyz(x + y + z)}$, and squaring, $$(xy + yz + zx)^2 \ge 3(xy \cdot yz + yz \cdot zx + zx \cdot xy).$$ With $p = xy$, $q = yz$, $r = zx$ this is $(p + q + r)^2 \ge 3(pq + qr + rp)$, which is $\frac12\left[(p - q)^2 + (q - r)^2 + (r - p)^2\right] \ge 0$.
+
+Equality needs $p = q = r$, so $x = y = z$, the equilateral triangle. Dropping the squared differences, which are never negative, gives Weitzenböck.
+
+## Useful observations
+- Dividing the sharper inequality by $4K$ and using $a^2 - (b - c)^2 = 4K\tan\frac A2$ gives the angle form, which is also [[jensens-inequality|Jensen's Inequality]] for the tangent, convex on half-angles that add to $90^\circ$.
+- Expanding the squared differences turns Hadwiger–Finsler into $2(ab + bc + ca) - (a^2 + b^2 + c^2) \ge 4\sqrt3\,K$. Since $a^2 + b^2 + c^2 \ge ab + bc + ca$, the left side is at most $ab + bc + ca$, which gives the last Key form.
+
+## Applications
+The largest area of a triangle with a given sum of squared sides, the smallest sum of squares for a given area, and lower bounds for symmetric expressions in the sides.
+
+## Contest profile
+No problems here are tagged with it yet. It is an olympiad inequality comparing the area with the sides; AMC and AIME questions about the largest area are usually settled by [[am-gm|AM-GM]] or the sine area formula instead.
+`,
+"steiner-lehmus": String.raw`
+## Key forms
+- $t_b^2 = ac\left[1 - \left(\frac{b}{a + c}\right)^2\right]$ — the bisector from $B$, by the bisector length formula
+- $t_b^2 - t_c^2 = \dfrac{a(c - b)(a + b + c)(a^3 + a^2b + a^2c + 3abc + b^2c + bc^2)}{(a + b)^2(a + c)^2}$ — every factor but $c - b$ is positive
+- $B > C \iff t_b < t_c$ — the larger angle has the shorter bisector
+
+## Conditions
+Internal bisectors, measured from a vertex to the opposite side. The statement fails for external bisectors: a triangle can have two equal external bisectors without being isosceles.
+
+## Why it works
+Write both bisector lengths with the formula and subtract. Over the common denominator $(a + b)^2(a + c)^2$, the numerator factors as in the second Key form.
+
+Every factor other than $c - b$ is a positive combination of the sides, so $t_b^2 - t_c^2$ has the sign of $c - b$. If $t_b = t_c$, the difference is $0$, so $b = c$. If $b > c$, the difference is negative, so $t_b \lt t_c$.
+
+The classical synthetic proofs argue by contradiction, building a parallelogram on one bisector and comparing angles; the factorization replaces them with one computation.
+
+## Useful observations
+- The same comparison holds for the other two cevians. For medians, $m_b^2 - m_c^2 = \frac34(c^2 - b^2)$ from [[apollonius-theorem|the median length formula]]; for altitudes, $h_b = \frac{2K}{b}$. In each case the cevian to the longer side is the shorter one.
+- Equal angle bisectors are the hard case only because their length formula is the most tangled; equal medians or equal altitudes give an isosceles triangle in one line.
+
+## Applications
+Proving a triangle isosceles from two equal bisectors, and comparing bisector lengths from the side lengths.
+
+## Contest profile
+No problems here are tagged with it yet. A classical olympiad result, quoted to conclude that a triangle is isosceles; contests more often ask for a bisector's length, which the formula gives directly.
+`,
+"cevian-nest": String.raw`
+## Key forms
+- $\dfrac{BX'}{X'C} = \dfrac{FX}{XE} \cdot \dfrac{AB}{AF} \cdot \dfrac{AE}{AC}$ — where line $AX$ meets $BC$ at $X'$, from two area ratios
+- the converse: if $AX$, $BY$, $CZ$ concur, then so do $DX$, $EY$, $FZ$
+
+## Conditions
+$DEF$ is a cevian triangle of $ABC$, so $AD$, $BE$, $CF$ concur, and $X$, $Y$, $Z$ lie on the lines $EF$, $FD$, $DE$. For points outside the segments the same proof works with signed ratios, as in Ceva's Theorem.
+
+## Why it works
+First, where $AX$ meets $BC$. The point $X'$ divides $BC$ in the ratio of the areas of the triangles $ABX$ and $AXC$, which share the side through $A$ and $X$: $$\frac{BX'}{X'C} = \frac{[ABX]}{[AXC]}.$$
+
+The point $X$ divides $FE$, and the area of a triangle with a fixed side changes linearly as its third vertex moves along a line. Since $F$ lies on $AB$, $[ABF] = 0$, so $[ABX] = \frac{FX}{FE}[ABE]$; since $E$ lies on $AC$, $[AEC] = 0$, so $[AXC] = \frac{XE}{FE}[AFC]$. With $[ABE] = \frac{AE}{AC}[ABC]$ and $[AFC] = \frac{AF}{AB}[ABC]$, this is the first Key form.
+
+Now multiply the three such ratios, for $X'$ on $BC$, $Y'$ on $CA$, and $Z'$ on $AB$. The factors $\frac{FX}{XE} \cdot \frac{DY}{YF} \cdot \frac{EZ}{ZD}$ multiply to $1$ by Ceva's Theorem in triangle $DEF$, since $DX$, $EY$, $FZ$ concur. The remaining factors multiply to $$\frac{AE \cdot BF \cdot CD}{AF \cdot BD \cdot CE} = 1,$$ by Ceva's Theorem in $ABC$ for the point $P$. So the three ratios on the sides of $ABC$ multiply to $1$, and by the converse of Ceva's Theorem $AX$, $BY$, $CZ$ concur.
+
+The argument runs the same way backward, which gives the converse.
+
+## Useful observations
+- When $P$ is the centroid, $DEF$ is the medial triangle, the side factors give $\frac{AB}{AF} \cdot \frac{AE}{AC} = 1$, and $AX$ divides $BC$ in the same ratio in which $X$ divides $FE$.
+- Applied to the medial triangle and its incircle, whose touch points form a cevian triangle of it, the theorem shows that the lines from $A$, $B$, $C$ to those touch points concur.
+
+## Applications
+Proving three lines concurrent when the points lie on a cevian triangle (the medial, orthic, or contact triangle) rather than on the sides, and passing a concurrence between the outer and inner triangles of a nest.
+
+## Contest profile
+No problems here are tagged with it yet. An olympiad lemma, used to carry a concurrence from a cevian triangle back to the original triangle in one step.
+`,
+"dodecahedron-icosahedron": String.raw`
+## Key forms
+- icosahedron of edge $2$: vertices $(0, \pm1, \pm\varphi)$, $(\pm1, \pm\varphi, 0)$, $(\pm\varphi, 0, \pm1)$ — the corners of three perpendicular golden rectangles
+- from one vertex of the icosahedron, moving along edges: $5$ vertices at distance $1$, $5$ at distance $2$, and the opposite vertex at distance $3$
+- dodecahedron of edge $s$: the face diagonals have length $\varphi s$, and $12$ of them, one in each face, are the edges of an inscribed cube of edge $\varphi s$
+- volumes with edge $s$: $V_{\text{dodecahedron}} = \frac{15 + 7\sqrt5}{4}s^3$ and $V_{\text{icosahedron}} = \frac{5(3 + \sqrt5)}{12}s^3$
+
+## Conditions
+Regular solids: every face is the same regular polygon and the same number of faces meet at every vertex.
+
+## Why it works
+Counting faces around edges and vertices. Each of the $12$ pentagons of the dodecahedron has $5$ edges and each edge lies on $2$ faces, so $E = \frac{12 \cdot 5}{2} = 30$; three faces meet at each vertex, so $V = \frac{12 \cdot 5}{3} = 20$. For the icosahedron, $E = \frac{20 \cdot 3}{2} = 30$ and $V = \frac{20 \cdot 3}{5} = 12$. Both satisfy [[eulers-polyhedron-formula|Euler's Polyhedron Formula]], $V - E + F = 2$.
+
+For the coordinates, $\varphi^2 = \varphi + 1$ does the work. The vertex $(0, 1, \varphi)$ is at distance $2$ from $(0, -1, \varphi)$, and at squared distance $$1 + (\varphi - 1)^2 + \varphi^2 = 2 + 2\varphi^2 - 2\varphi = 4$$ from $(\pm1, \varphi, 0)$, and likewise from $(\pm\varphi, 0, 1)$. So each vertex has exactly $5$ neighbors at distance $2$, the edge length.
+
+The five neighbors of a vertex form a pentagon around it, and so do the five neighbors of the opposite vertex. These $1 + 5 + 5 + 1 = 12$ points are all the vertices, which gives the distance layers along the edges.
+
+## Useful observations
+- The dual pairing: the $20$ face centers of the icosahedron are the vertices of a dodecahedron, and the $12$ face centers of the dodecahedron are the vertices of an icosahedron.
+- The icosahedron has $\binom{12}{2} - 30 = 36$ segments through its interior, since its faces are triangles with no diagonals.
+- The dodecahedron's inscribed cube is the [[cube|cube]] with vertices $(\pm1, \pm1, \pm1)$; the other $12$ vertices are $(0, \pm\frac1\varphi, \pm\varphi)$ and its cyclic shifts.
+
+## Applications
+Counting vertices, edges, faces, and diagonals; paths along edges and random walks on the vertices; distances between vertices from the golden rectangles.
+
+## Contest profile
+No problems here are tagged with it yet, though five AMC and AIME statements name one of the two solids. The usual question counts paths along the edges or the distances between random vertices, where the layers from one vertex do the counting.
 `
 });

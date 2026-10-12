@@ -80,7 +80,7 @@ So the proposal changes 9 cards (Order Statistics, Binet, Sums of Powers, Vieta,
 
 At 375 px, 397 boxes scroll sideways inside the box, which is by design. In 23 of them the row is more than 2.5 times the phone width. The proposal is one row break at the natural point (before $\iff$, or after the condition), with nothing removed: Desargues Involution Theorem and Its Dual, Carnot's Perpendicularity Theorem, Reim's Theorem, Basic Facts about Trees, Law of Total Expectation, British Flag Theorem, Isotomic Conjugate, Schur's Inequality, Lagrange's Theorem on Polynomial Roots mod p, Chinese Remainder Theorem for Polynomials, Principle of Inclusion-Exclusion, Hexagonal Grids and Pick's Theorem, Order Statistics on [0, 1], Counting Solutions via CRT, A Newly Defined Operation, The Conway Circle, The Japanese Theorem, Pappus's Hexagon Theorem, Balls in Boxes (The Twelvefold Way), The Nine-Point Circle, Counting Integer-Sided Triangles by Perimeter, The Steiner Line, and Pigeonhole Principle.
 
-## Candidate new cards from the gap scan (Step 5, 2026-10-12; awaiting your approval)
+## Candidate new cards from the gap scan (Step 5, 2026-10-12; approved except Perfect Numbers)
 
 How I looked:
 - about 250 topic names, olympiad and AMC, checked against every card's name, keywords, description, and write-up;
@@ -107,7 +107,7 @@ Almost everything standard is already covered. These are what's missing. Tick th
 
 | # | Name | Kind | Where | Tier / importance | What it adds | Evidence |
 |---|---|---|---|---|---|---|
-| 10 | Perfect Numbers (Euclid–Euler) | formula | Number Theory › Special Numbers & Sequences | AIME Early / low | Even perfect numbers are exactly $2^{p-1}(2^p - 1)$ with $2^p - 1$ prime. Today "perfect number" is only a keyword on Sum of Divisors. | AMC/AIME divisor-sum problems |
+| 10 | ~~Perfect Numbers (Euclid–Euler)~~ (not approved) | formula | Number Theory › Special Numbers & Sequences | AIME Early / low | Even perfect numbers are exactly $2^{p-1}(2^p - 1)$ with $2^p - 1$ prime. Today "perfect number" is only a keyword on Sum of Divisors. | AMC/AIME divisor-sum problems |
 | 11 | Dirichlet's Theorem on Primes in Progressions | formula | Number Theory › Primes, Factorials & Valuations | Olympiad / lowest | Infinitely many primes $\equiv a \pmod m$ when $\gcd(a, m) = 1$, quoted (not proved) in olympiad solutions. | Olympiad citations |
 
 **Platonic solids**

@@ -443,7 +443,7 @@ How many of these four amphibians are frogs?
 (A) $\dfrac{\sqrt 2}{4}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{2}{\pi}$  (D) $\dfrac{2}{3}$  (E) $\dfrac{\sqrt 2}{2}$`, u: "https://live.poshenloh.com/past-contests/amc8/2010" },
 "2010-amc-8-24": { s: String.raw`What is the correct ordering of the three numbers, $10^8,$ $5^{12},$ and $2^{24}?$
 
-(A) $2^{24} &lt; 10^8 &lt; 5^{12}$  (B) $2^{24} &lt; 5^{12} &lt; 10^8$  (C) $5^{12} &lt; 2^{24} &lt; 10^8$  (D) $10^8 &lt; 5^{12} &lt; 2^{24}$  (E) $10^8 &lt; 2^{24} &lt; 5^{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/2010" },
+(A) $2^{24} \lt 10^8 \lt 5^{12}$  (B) $2^{24} \lt 5^{12} \lt 10^8$  (C) $5^{12} \lt 2^{24} \lt 10^8$  (D) $10^8 \lt 5^{12} \lt 2^{24}$  (E) $10^8 \lt 2^{24} \lt 5^{12}$`, u: "https://live.poshenloh.com/past-contests/amc8/2010" },
 "2010-amc-8-25": { s: String.raw`Every day at school, Jo climbs a flight of $6$ stairs. Jo can take the stairs $1,$ $2,$ or $3$ at a time. For example, Jo could climb $3,$ then $1,$ then $2.$ In how many ways can Jo climb the stairs?
 
 (A) $\ 13$  (B) $\ 18$  (C) $\ 20$  (D) $\ 22$  (E) $\ 24$`, u: "https://live.poshenloh.com/past-contests/amc8/2010" },

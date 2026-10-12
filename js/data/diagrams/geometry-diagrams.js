@@ -8868,4 +8868,107 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 330, "M is the midpoint of the arc AC through B, and F is the foot from M to the longer chord BC. Marking G with GC = AB (one tick) makes MB = MG, so F is the midpoint of BG (two ticks), and AB + BF = FC. Here AB = 4, BC = 10 and ∠ABC = 60°: BF = 3, FC = 7, MF = 3√3." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // ---- Gap-scan cards, batch 1 (2026-10-12) ----
+  // Orthogonal circles of the card's example: radii 3 and 4, centers 5 apart.
+  DIAGRAMS["orthogonal-circles"] = [(() => {
+    const k = 30, P = (x, y) => [110 + k * x, 150 - k * y];
+    const O1 = P(0, 0), O2 = P(5, 0), X = P(9 / 5, 12 / 5), X2 = P(9 / 5, -12 / 5);
+    const ok = Math.abs(dist(O1, X) - 3 * k) < 1e-9 && Math.abs(dist(O2, X) - 4 * k) < 1e-9 &&
+      Math.abs((X[0] - O1[0]) * (X[0] - O2[0]) + (X[1] - O1[1]) * (X[1] - O2[1])) < 1e-6;
+    return wrap(430, 300, [
+      circ(O1, 3 * k, ACC, 1.8), circ(O2, 4 * k, GLD, 1.8),
+      seg(O1, O2, FNT, 1.2), seg(X, X2, DIM, 1.4, "5 4"),
+      seg(O1, X, ACC, 2), seg(O2, X, GLD, 2), rightAngle(X, O1, O2, 11, DIM),
+      dot(O1, ACC, 4), dot(O2, GLD, 4), dot(X, DIM, 4), dot(X2, DIM, 3.5),
+      txt(add(O1, [-6, 18]), subT("O", "1"), ACC, 14), txt(add(O2, [8, 18]), subT("O", "2"), GLD, 14), txt(add(X, [0, -12]), "X", DIM, 14),
+      txt(add(mid(O1, X), [-12, -4]), "3", ACC, 13), txt(add(mid(O2, X), [12, -4]), "4", GLD, 13), txt(add(mid(O1, O2), [26, 16]), "5", FNT, 13),
+      cap(430, 300, "Radii 3 and 4 with centers 5 apart: the radii to the crossing point X meet at a right angle, so each radius is tangent to the other circle. The common chord (dashed) is twice the altitude from X, 2 · 12/5 = 24/5." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Weitzenböck: the tangent lengths x, y, z from the vertices to the incircle.
+  DIAGRAMS["weitzenbock-inequality"] = [(() => {
+    const I = incenterOf(A, B, C), Ta = foot(I, B, C), Tb = foot(I, C, A), Tc = foot(I, A, B), r = dist(I, Ta);
+    const ok = Math.abs(dist(A, Tb) - dist(A, Tc)) < 1e-6 && Math.abs(dist(B, Tc) - dist(B, Ta)) < 1e-6 &&
+      Math.abs(dist(C, Ta) - dist(C, Tb)) < 1e-6 && Math.abs(dist(I, Tb) - r) < 1e-6 && Math.abs(dist(I, Tc) - r) < 1e-6;
+    const lab = (P1, P2, s, c) => txt(add(away(mid(P1, P2), I, 13), [0, 4.5]), s, c, 14);
+    return wrap(430, 310, [
+      circ(I, r, FNT, 1.5),
+      seg(A, Tb, ACC, 3), seg(A, Tc, ACC, 3), seg(B, Tc, GLD, 3), seg(B, Ta, GLD, 3), seg(C, Ta, GRN, 3), seg(C, Tb, GRN, 3),
+      dot(Ta, DIM, 3.5), dot(Tb, DIM, 3.5), dot(Tc, DIM, 3.5),
+      lab(A, Tb, "x", ACC), lab(A, Tc, "x", ACC), lab(B, Tc, "y", GLD), lab(B, Ta, "y", GLD), lab(C, Ta, "z", GRN), lab(C, Tb, "z", GRN),
+      vlab(A, "A"), vlab(B, "B"), vlab(C, "C"),
+      cap(430, 310, "The tangent lengths from the vertices to the incircle: x from A, y from B, z from C. Each side is a sum of two of them (a = y + z), so a² − (b − c)² = 4yz, and Heron's Formula reads K = √((x + y + z)xyz)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Steiner–Lehmus on the example's triangle a = 6, b = 5, c = 4.
+  DIAGRAMS["steiner-lehmus"] = [(() => {
+    const k = 50, P = (x, y) => [65 + k * x, 245 - k * y];
+    const ax = 27 / 12, Ap = P(ax, Math.sqrt(16 - ax * ax)), Bp = P(0, 0), Cp = P(6, 0), tri = [Ap, Bp, Cp];
+    const E = lerp(Ap, Cp, 0.4), F = lerp(Ap, Bp, 5 / 11);
+    const ok = Math.abs(dist(Bp, E) / k - Math.sqrt(18)) < 1e-6 && Math.abs(dist(Cp, F) / k - 15 * Math.sqrt(14) / 11) < 1e-6 &&
+      Math.abs(dist(Ap, Bp) / k - 4) < 1e-9 && Math.abs(dist(Ap, Cp) / k - 5) < 1e-9;
+    return wrap(430, 300, [
+      poly(tri, DIM, 2), seg(Bp, E, ACC, 2.2), seg(Cp, F, GLD, 2.2),
+      angleArc(Bp, Cp, E, 30, ACC), angleArc(Bp, E, Ap, 36, ACC),
+      angleArc(Cp, F, Bp, 30, GLD, true), angleArc(Cp, Ap, F, 30, GLD, true),
+      dot(E, ACC, 4), dot(F, GLD, 4),
+      txt(add(Ap, [0, -10]), "A", DIM, 14), txt(add(Bp, [-12, 8]), "B", DIM, 14), txt(add(Cp, [12, 8]), "C", DIM, 14),
+      txt(add(E, [12, -4]), "E", ACC, 13.5), txt(add(F, [-12, -2]), "F", GLD, 13.5),
+      txt(add(mid(Bp, E), [10, 16]), subT("t", "b"), ACC, 14), txt(add(mid(Cp, F), [-6, -10]), subT("t", "c"), GLD, 14),
+      cap(430, 300, "The bisectors from B and C in the triangle with a = 6, b = 5, c = 4. The side b = CA is the longer of the two, and the bisector to it is the shorter: BE = 3√2 ≈ 4.24 against CF ≈ 5.10." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Cevian nest: DEF the cevian triangle of P, XYZ the cevian triangle of Q in DEF.
+  DIAGRAMS["cevian-nest"] = [(() => {
+    const bary = (U, V, W, a, b, c) => mul(add(add(mul(U, a), mul(V, b)), mul(W, c)), 1 / (a + b + c));
+    const Pp = bary(A, B, C, 1.3, 1, 1.2);
+    const D = lineInt(A, Pp, B, C), E = lineInt(B, Pp, C, A), F = lineInt(C, Pp, A, B);
+    const Q = bary(D, E, F, 2.4, 0.4, 1);
+    const X = lineInt(D, Q, E, F), Y = lineInt(E, Q, F, D), Z = lineInt(F, Q, D, E);
+    const R = lineInt(A, X, B, Y);
+    const off = (U, V, W) => Math.abs((V[0] - U[0]) * (W[1] - U[1]) - (V[1] - U[1]) * (W[0] - U[0])) / dist(U, V);
+    const ok = off(C, Z, R) < 1e-6;
+    return wrap(430, 310, [
+      poly([A, B, C], DIM, 2), seg(A, D, FNT, 1.2), seg(B, E, FNT, 1.2), seg(C, F, FNT, 1.2),
+      poly([D, E, F], GRN, 1.8), seg(D, X, GRN, 1.1, "4 3"), seg(E, Y, GRN, 1.1, "4 3"), seg(F, Z, GRN, 1.1, "4 3"),
+      ...[[A, X], [B, Y], [C, Z]].map(([U, T]) => seg(U, dist(U, R) > dist(U, T) ? R : T, ACC, 1.8)),   // each runs on to the meeting point
+      dot(D, GRN, 3.5), dot(E, GRN, 3.5), dot(F, GRN, 3.5), dot(X, ACC, 3.5), dot(Y, ACC, 3.5), dot(Z, ACC, 3.5), dot(Pp, DIM, 3), dot(Q, GRN, 3), dot(R, GLD, 4.5),
+      vlab(A, "A"), vlab(B, "B"), vlab(C, "C"),
+      txt(add(D, [0, 17]), "D", GRN, 13), txt(add(E, [13, -2]), "E", GRN, 13), txt(add(F, [-13, -2]), "F", GRN, 13),
+      cap(430, 310, "DEF (green) is the cevian triangle of a point of ABC (gray cevians), and the dashed green cevians of DEF meet the sides EF, FD, DE at X, Y, Z. The lines AX, BY, CZ (blue) then meet at one point (gold)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Icosahedron of edge 2 from its golden-rectangle coordinates, one vertex at the top; hidden
+  // edges dashed, and the vertices colored by their distance from the top along the edges.
+  DIAGRAMS["dodecahedron-icosahedron"] = [(() => {
+    const ph = (1 + Math.sqrt(5)) / 2, V = [];
+    for (const s1 of [-1, 1]) for (const s2 of [-1, 1]) V.push([0, s1, s2 * ph], [s1, s2 * ph, 0], [s2 * ph, 0, s1]);
+    const th = Math.atan2(ph, 1), a = 0.25, b = 0.38;
+    const rot = ([x, y, z]) => {
+      const y1 = y * Math.cos(th) + z * Math.sin(th), z1 = -y * Math.sin(th) + z * Math.cos(th);   // (0, 1, φ) straight up
+      const x2 = x * Math.cos(a) + z1 * Math.sin(a), z2 = -x * Math.sin(a) + z1 * Math.cos(a);     // a quarter turn about the vertical, slightly
+      return [x2, y1 * Math.cos(b) - z2 * Math.sin(b), y1 * Math.sin(b) + z2 * Math.cos(b)];       // tilted to look down on the top
+    };
+    const W = V.map(rot), sc = 66, S = p => [215 + sc * p[0], 160 - sc * p[1]];
+    const d3 = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+    const edges = [], faces = [];
+    for (let i = 0; i < 12; i++) for (let j = i + 1; j < 12; j++) if (Math.abs(d3(V[i], V[j]) - 2) < 1e-9) edges.push([i, j]);
+    for (const [i, j] of edges) for (let m = j + 1; m < 12; m++) if (Math.abs(d3(V[i], V[m]) - 2) < 1e-9 && Math.abs(d3(V[j], V[m]) - 2) < 1e-9) faces.push([i, j, m]);
+    const front = f => W[f[0]][2] + W[f[1]][2] + W[f[2]][2] > 0;       // the outward normal of a face points along its centroid
+    const seen = (i, j) => faces.some(f => f.includes(i) && f.includes(j) && front(f));
+    const top = V.findIndex(p => p[0] === 0 && p[1] === 1 && p[2] > 0);
+    const layer = V.map(p => { const d = d3(p, V[top]); return d < 1e-9 ? 0 : Math.abs(d - 2) < 1e-9 ? 1 : d < 3.5 ? 2 : 3; });
+    const ok = edges.length === 30 && faces.length === 20 && [0, 1, 2, 3].map(L => layer.filter(x => x === L).length).join() === "1,5,5,1";
+    const col = [GLD, GLD, GRN, GRN];
+    return wrap(430, 330, [
+      ...edges.filter(([i, j]) => !seen(i, j)).map(([i, j]) => seg(S(W[i]), S(W[j]), FNT, 1.2, "4 4")),
+      ...edges.filter(([i, j]) => seen(i, j)).map(([i, j]) => seg(S(W[i]), S(W[j]), DIM, 1.8)),
+      ...W.map((p, i) => dot(S(p), col[layer[i]], layer[i] % 3 === 0 ? 5.5 : 4)),
+      cap(430, 330, "A regular icosahedron: 12 vertices, 30 edges, 20 triangular faces, five at each vertex. From the top vertex (large gold dot), 5 vertices are one edge away (gold), 5 are two edges away (green), and the bottom vertex (large green dot) is three away." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

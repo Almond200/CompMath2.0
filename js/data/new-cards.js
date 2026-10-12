@@ -18,5 +18,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Card-file scan, batch 3: functions, cyclotomics, random walks", date: "2026-10-12",
     ids: ["injectivity-surjectivity", "cyclotomic-polynomials", "gamblers-ruin"] },
   { label: "Card-file scan, batch 4: games, set families, tilings", date: "2026-10-12",
-    ids: ["strategy-stealing", "erdos-ko-rado", "tiling-a-board"] }
+    ids: ["strategy-stealing", "erdos-ko-rado", "tiling-a-board"] },
+  { label: "Gap scan, batch 1: geometry", date: "2026-10-12",
+    ids: ["orthogonal-circles", "weitzenbock-inequality", "steiner-lehmus", "cevian-nest", "dodecahedron-icosahedron"] }
 ];

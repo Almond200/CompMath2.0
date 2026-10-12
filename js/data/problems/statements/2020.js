@@ -141,7 +141,7 @@ Find the least possible value of $m + n.$`, u: "https://live.poshenloh.com/past-
 (A) $7$  (B) $9$  (C) $10$  (D) $11$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
 "2020-amc-10b-16": { s: String.raw`Bela and Jenn play the following game on the closed interval $[0, n]$ of the real number line, where $n$ is a fixed integer greater than $4.$ They take turns playing, with Bela going first. At his first turn, Bela chooses any real number in the interval $[0, n].$ Thereafter, the player whose turn it is chooses a real number that is more than one unit away from all numbers previously chosen by either player. A player unable to choose such a number loses. Using optimal strategy, which player will win the game?
 
-(A) Bela will always win.  (B) Jenn will always win.  (C) Bela will win if and only if $n$ is odd.  (D) Jenn will win if and only if $n$ is odd.  (E) Jenn will win if and only if $n&gt;8.$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
+(A) Bela will always win.  (B) Jenn will always win.  (C) Bela will win if and only if $n$ is odd.  (D) Jenn will win if and only if $n$ is odd.  (E) Jenn will win if and only if $n \gt 8.$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },
 "2020-amc-10b-17": { s: String.raw`There are $10$ people standing equally spaced around a circle. Each person knows exactly $3$ of the other $9$ people: the $2$ people standing next to her or him, as well as the person directly across the circle. How many ways are there for the $10$ people to split up into $5$ pairs so that the members of each pair know each other?
 
 (A) $11$  (B) $12$  (C) $13$  (D) $14$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc10/2020B" },

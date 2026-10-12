@@ -693,3 +693,8 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | simulate-the-process | counting (method) / Working It Out by Hand | AMC | new (LIVE: process simulation, 24) | 0 | **low** |
 | coins-and-prices | number theory (pattern) / Whole-Number Totals | AMC | new (LIVE: money, 58) | 0 | **low** |
 | drawing-without-replacement | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: sampling without replacement, 16) | 0 | **low** |
+| orthogonal-circles | geometry / Circles | Olympiad | new (gap scan) | 0 | **low** |
+| weitzenbock-inequality | geometry / Advanced Triangle Theorems | Olympiad | new (gap scan) | 0 | **lower** |
+| steiner-lehmus | geometry / Advanced Triangle Theorems | Olympiad | new (gap scan) | 0 | **lowest** |
+| cevian-nest | geometry / Derived Triangles & Conjugates | Olympiad | new (gap scan) | 0 | **lowest** |
+| dodecahedron-icosahedron | geometry / Solid Geometry (3D) | AMC | new (gap scan) | 0 | **low** |
