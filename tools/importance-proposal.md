@@ -673,3 +673,5 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | steiner-ratio-theorem | geometry / Advanced Triangle Theorems | Olympiad | new | 0 | **low** |
 | isogonal-line-lemma | geometry / Derived Triangles & Conjugates | Olympiad | new | 0 | **low** |
 | power-of-a-point-linearity | geometry / Circles | Olympiad | new | 0 | **low** |
+| humpty-queue-points | geometry / Triangle Centers & the Euler Line | Olympiad | new | 0 | **lower** |
+| desargues-involution | geometry / Projective Geometry & Cross-Ratio | Olympiad | new | 0 | **lower** |

@@ -260,6 +260,11 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - **Linearity of Power of a Point** (Circles): the difference of two powers is linear, equal to $2\,O_1O_2$ times the signed distance to the radical axis, with the weighted-average form, the three-circle identity, and the pencil of circles.
 
   Each statement was checked numerically on random configurations (2,000 triangles for the first two, 500 circle pairs for the third). The examples are verified by coordinates: $BE = \frac{147}{31}$ for the line $AO$ in a 7-8-9 triangle, $80^\circ$ for the crossing points of $BH$, $CO$, $BO$, $CH$, and the distance $\frac73$ from two tangent lengths. Each card has a computed figure with a self-check.
+- **Olympiad geometry, batch 3 (2.4b).** Two new formula cards, Olympiad tier, lower importance:
+  - **Humpty and Queue Points** (Triangle Centers & the Euler Line): the foot $X$ of the perpendicular from $H$ to the median lies on $(BHC)$, with $MX \cdot MA = MB^2$, $XB : XC = AB : AC$, and $\angle XBC = \angle MAB$; the second intersection $Q$ of line $MH$ with the circumcircle has $\angle AQH = 90^\circ$. Proved by reflecting in the midpoint $M$.
+  - **Desargues Involution Theorem and Its Dual** (Projective Geometry & Cross-Ratio): the conics through four points cut a line in pairs of one involution, with the dual for tangents from a point. Proved through pencils of quadratics and polar reciprocation, with the fixed-point form $\frac1{MQ} - \frac1{MP} = \frac1{MX} - \frac1{MY}$ that generalizes the butterfly.
+
+  Every stated property was checked on thousands of random triangles or configurations; one candidate property (a spiral similarity at $X$) failed the check and was left out. The examples are verified by coordinates ($AX = \frac{6\sqrt{10}}{5}$; $MQ = \frac{30}{19}$ from an explicit circle and chords). The Desargues figure draws each side and diagonal solid inside the circle and dashed out to $\ell$.
 - **Same Remainder merged (approved 2026-10-11).** The pattern Same Remainder is now part of the method Subtracting Equal Remainders, which carries its keyword; the old id redirects (`MERGED_IDS`).
 - **2.4d duplicates finished.**
   - The cotangent identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$ lives only on Identities for Angles Summing to $180^\circ$; The Cotangent Rule points to it.

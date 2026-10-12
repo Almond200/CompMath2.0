@@ -1739,7 +1739,9 @@
     "regular-octahedron": "formula",
     "steiner-ratio-theorem": "formula",
     "isogonal-line-lemma": "formula",
-    "power-of-a-point-linearity": "formula"
+    "power-of-a-point-linearity": "formula",
+    "humpty-queue-points": "formula",
+    "desargues-involution": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8240,6 +8242,18 @@
       ]
     ],
     "power-of-a-point-linearity": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "humpty-queue-points": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "desargues-involution": [
       [
         "(new card)",
         "written directly in the formula template"

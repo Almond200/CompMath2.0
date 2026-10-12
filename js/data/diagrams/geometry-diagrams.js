@@ -8637,4 +8637,57 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // Humpty and Queue points: X is the foot from H to the median AM, on circle (BHC); Q is where line MH meets the circumcircle again.
+  DIAGRAMS["humpty-queue-points"] = [(() => {
+    const O = [215, 168], R = 128;
+    const A = onC(O, R, -112), B = onC(O, R, 158), C = onC(O, R, 24), T = [A, B, C];
+    const H = orthocenterOf(A, B, C), M = mid(B, C), X = foot(H, A, M), Ap = sub(mul(M, 2), H);
+    // second intersection of line A'H with the circumcircle
+    const u = norm(sub(H, Ap)), w = sub(Ap, O), bq = w[0] * u[0] + w[1] * u[1], Q = add(Ap, mul(u, -2 * bq));
+    const O2 = sub(mul(M, 2), O);
+    const ok = Math.abs(dist(O2, X) - R) < 1e-6 && Math.abs(dist(O2, H) - R) < 1e-6 &&
+      Math.abs(dist(M, X) * dist(M, A) - dist(M, B) * dist(M, B)) < 1e-6 * dist(M, B) * dist(M, B) &&
+      Math.abs(dist(O, Q) - R) < 1e-6 && Math.abs((A[0] - Q[0]) * (H[0] - Q[0]) + (A[1] - Q[1]) * (H[1] - Q[1])) < 1e-6 * dist(A, Q) * dist(H, Q);
+    // the arc of (BHC) inside the circumcircle, from B over H to C
+    const arcBHC = `<path d="M ${pf(B)} A ${R} ${R} 0 0 1 ${pf(C)}" fill="none" stroke="${GRN}" stroke-width="1.5" stroke-dasharray="6 4"/>`;
+    return wrap(430, 330, [
+      circ(O, R, FNT, 1.5), arcBHC, poly(T, DIM, 2),
+      seg(A, M, ACC, 1.8), seg(H, X, ACC, 1.6), rightAngle(X, H, A, 8, FNT),
+      segIn(M, Q, T, GLD, 1.8), seg(A, Q, GLD, 1.6), rightAngle(Q, A, H, 9, FNT),
+      dot(H, DIM, 4), dot(M, DIM, 3.5), dot(X, ACC, 5), dot(Q, GLD, 5),
+      txt(add(A, [0, -10]), "A", DIM, 14), txt(add(B, [-13, 12]), "B", DIM, 14), txt(add(C, [13, 12]), "C", DIM, 14),
+      txt(add(M, [0, 18]), "M", DIM, 13), gapLabel(H, [A, B, C, M, X, Q], "H", DIM, 13, 15), gapLabel(X, [A, M, H, B, C], "X", ACC, 13, 15),
+      txt(add(Q, mul(norm(sub(Q, O)), 15)), "Q", GLD, 14),
+      cap(430, 330, "X, the Humpty point, is the foot of the perpendicular from H to the median AM, and it lies on the dashed circle through B, H, C. Q, the Queue point, is where line MH meets the circumcircle again (solid inside the triangle, dashed outside), and ∠AQH = 90°." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Desargues Involution Theorem: the sides, diagonals, and circle through A, B, C, D cut line ℓ in four pairs of one involution.
+  DIAGRAMS["desargues-involution"] = [(() => {
+    const O = [215, 128], R = 100, y = 219;
+    const A = onC(O, R, 16.1), B = onC(O, R, 137.2), C = onC(O, R, 298.5), D = onC(O, R, 356.0);
+    const L0 = [0, y], L1 = [1, y];
+    const at = (P, Q) => lineInt(P, Q, L0, L1);
+    const pairs = [[at(A, B), at(C, D), ACC], [at(A, C), at(B, D), GLD], [at(A, D), at(B, C), GRN]];
+    const h = y - O[1], wq = Math.sqrt(R * R - h * h), U = [O[0] - wq, y], V = [O[0] + wq, y];
+    const ts = pairs.map(p => [p[0][0], p[1][0]]).concat([[U[0], V[0]]]);
+    const det3 = (a, b, c) => { const r = q => [q[0] * q[1], q[0] + q[1], 1]; const [p, q, s] = [r(a), r(b), r(c)];
+      return p[0] * (q[1] * s[2] - q[2] * s[1]) - p[1] * (q[0] * s[2] - q[2] * s[0]) + p[2] * (q[0] * s[1] - q[1] * s[0]); };
+    const sc = Math.pow(Math.max(...ts.flat().map(Math.abs)), 4);
+    const ok = Math.abs(det3(ts[0], ts[1], ts[2])) < 1e-9 * sc && Math.abs(det3(ts[0], ts[1], ts[3])) < 1e-9 * sc;
+    const disk = Array.from({ length: 96 }, (_, k) => onC(O, R, k * 3.75));
+    const far = (P, Q, S) => dist(S, P) > dist(S, Q) ? P : Q;
+    const parts = [circ(O, R, PUR, 1.8), seg([16, y], [414, y], DIM, 2)];
+    [[A, B, 0], [C, D, 0], [A, C, 1], [B, D, 1], [A, D, 2], [B, C, 2]].forEach(([P, Q, k]) => {
+      const S = at(P, Q);
+      parts.push(segIn(far(P, Q, S), S, disk, pairs[k][2], 1.6));
+    });
+    pairs.forEach(p => parts.push(dot(p[0], p[2], 4), dot(p[1], p[2], 4)));
+    parts.push(dot(U, PUR, 4), dot(V, PUR, 4));
+    [A, B, C, D].forEach((P, k) => parts.push(dot(P, DIM, 4), txt(add(P, mul(norm(sub(P, O)), 15)), "ABCD"[k], DIM, 14)));
+    parts.push(txt([410, y + 18], "ℓ", DIM, 14, "end"));
+    parts.push(cap(430, 260, "The line ℓ meets the sides and diagonals of ABCD in three pairs, AB with CD (blue), AC with BD (gold), AD with BC (green), and the circle in a fourth pair (purple). All four pairs belong to one involution of ℓ. Each line is solid inside the circle and dashed where it is extended to ℓ." + (ok ? "" : " MISMATCH")));
+    return wrap(430, 260, parts);
+  })()];
+
 })();

@@ -8176,5 +8176,78 @@ Computing the distance from a point to the radical axis from two tangent lengths
 
 ## Contest profile
 An olympiad technique behind many radical-axis arguments. It appears when a point is defined as a midpoint or a weighted combination of points with known powers, and in proofs that a moving circle keeps a fixed radical axis. It pairs with the radical axis and with Power of a Point.
+`,
+
+"humpty-queue-points": String.raw`
+## Key forms
+- $X$, the $A$-Humpty point: the foot of the perpendicular from $H$ to the median $AM$, where $M$ is the midpoint of $BC$
+- $X$ lies on the circle $(BHC)$, and its reflection in $M$ is the second point where the median $AM$ meets the circumcircle
+- $MX \cdot MA = MB^2 = MC^2$, so $MB$ and $MC$ are tangent to the circles $(ABX)$ and $(ACX)$
+- $\angle XBC = \angle MAB$, $\angle XCB = \angle MAC$, and $XB : XC = AB : AC$
+- $Q$, the $A$-Queue point: line $MH$ passes through the antipode $A'$ of $A$ and meets the circumcircle again at $Q$, with $\angle AQH = 90^\circ$
+- $Q$ lies on the circle with diameter $AH$, which passes through the feet of the altitudes from $B$ and $C$
+
+## Conditions
+$ABC$ is a triangle that is not isosceles with $AB = AC$; in that case the median is the altitude, $H$ lies on it, and $X$ and $Q$ degenerate to $H$ and $A$. When angle $A$ is acute, $X$ lies between $A$ and $M$; when it is obtuse, $X$ lies on ray $MA$ beyond $A$. Every statement above holds in both cases.
+
+## Why it works
+Step 1, the circle through $B$, $H$, $C$. Reflect $H$ in $M$ to get $A'$. By [[orthocenter-properties|Orthocenter Reflections & Distances]], $A'$ is the point of the circumcircle opposite $A$, and the circle $(BHC)$ is the circumcircle reflected in $M$, since the reflection fixes the pair $B$, $C$ and sends $A'$ to $H$.
+
+Step 2, the Humpty point. Let the median $AM$ meet the circumcircle again at $N$. Since $AA'$ is a diameter, $\angle ANA' = 90^\circ$, so $A'N \perp AM$. Reflect in $M$: the line $A'N$ goes to the parallel line through $H$ and the reflection $N'$ of $N$, and that line is perpendicular to $AM$, which the reflection maps to itself. So $N'$ is the foot of the perpendicular from $H$ to $AM$:
+
+$$X = N', \qquad \text{the reflection of } N \text{ in } M.$$
+
+As $N$ is on the circumcircle, $X$ is on its reflection $(BHC)$. The power of $M$ with respect to the circumcircle gives $MN \cdot MA = MB \cdot MC$, and $MX = MN$, so $MX \cdot MA = MB^2$.
+
+Step 3, the angles and the ratio. From $\frac{MB}{MX} = \frac{MA}{MB}$ and the shared angle at $M$, triangles $MBX$ and $MAB$ are similar, so $\angle XBC = \angle MAB$ and $\frac{XB}{AB} = \frac{MB}{MA}$. The same with $C$ gives $\angle XCB = \angle MAC$ and $\frac{XC}{AC} = \frac{MC}{MA}$. Dividing, with $MB = MC$, gives $XB : XC = AB : AC$.
+
+Step 4, the Queue point. $H$, $M$, $A'$ are collinear because $M$ is the midpoint of $HA'$. The line meets the circumcircle at $A'$ and at a second point $Q$. Since $AA'$ is a diameter, $\angle AQA' = 90^\circ$, and $H$ lies on line $QA'$, so $\angle AQH = 90^\circ$. That puts $Q$ on the circle with diameter $AH$, and the feet $E$, $F$ of the altitudes from $B$ and $C$ are on it too, because $\angle AEH = \angle AFH = 90^\circ$.
+
+## Useful observations
+- The ratio $XB : XC = AB : AC$ puts $X$ on the [[apollonius-circle|Apollonius circle]] of $B$ and $C$ through $A$.
+- The circle with diameter $AH$ is the circle $(AEF)$, so $Q$ is the second intersection of $(AEF)$ with the circumcircle: the Queue point is where those two circles meet.
+- The Humpty point lives on $(BHC)$ and the Queue point on $(AEF)$, so a problem that names both the orthocenter and the midpoint of a side usually needs one of these two circles.
+
+## Applications
+Showing that the foot of the perpendicular from the orthocenter to a median lies on the circle $(BHC)$, finding a point of the circumcircle that sees $AH$ at a right angle, and computing lengths along the median from $MX \cdot MA = MB^2$.
+
+## Contest profile
+An olympiad configuration, recognized when a problem combines the orthocenter, the midpoint of a side, and the circumcircle. The two points are usually named in a solution and then used through their circles, $(BHC)$ for the Humpty point and the circle on diameter $AH$ for the Queue point.
+`,
+
+"desargues-involution": String.raw`
+## Key forms
+- an involution of a line, in a coordinate $t$ along it: $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$ with $\beta^2 \ne \alpha\gamma$; two pairs determine it, and three pairs belong to one involution exactly when $\det\begin{pmatrix} t_1t_1' & t_1 + t_1' & 1 \\ t_2t_2' & t_2 + t_2' & 1 \\ t_3t_3' & t_3 + t_3' & 1 \end{pmatrix} = 0$
+- DIT: for four points $A$, $B$, $C$, $D$ and a line $\ell$ through none of them, the conics through the four points meet $\ell$ in pairs of one involution, and the pairs include $(\ell \cap AB, \ell \cap CD)$, $(\ell \cap AC, \ell \cap BD)$, $(\ell \cap AD, \ell \cap BC)$
+- DDIT: for four lines and a point $P$ on none of them, the pairs of tangents from $P$ to the conics tangent to the four lines are pairs of one involution of the lines through $P$, and the pairs include the lines from $P$ to the two vertices of each pair of opposite vertices
+- an involution with a fixed point $M$ that swaps two points $X$, $Y$ satisfies $\frac{1}{MQ} - \frac{1}{MP} = \frac{1}{MX} - \frac{1}{MY}$ for each pair $P$, $Q$, with $P$ and $Y$ on one side of $M$ and $Q$ and $X$ on the other; when $M$ is the midpoint of $XY$ it is the reflection in $M$
+
+## Conditions
+The four points (or the four lines) are in general position, no three collinear (no three concurrent), and $\ell$ passes through none of the points ($P$ lies on none of the lines). A conic of the family that misses $\ell$ contributes no real pair, which does not affect the others. The theorem is projective, so it holds for every conic, circles included, and for the degenerate conics made of two lines.
+
+## Why it works
+Step 1, involutions as pencils of quadratics. Take a coordinate $t$ on $\ell$. A pair $\{t, t'\}$ is the pair of roots of $a\,t^2 + b\,t + c$ when $tt' = \frac ca$ and $t + t' = -\frac ba$. So the pair satisfies $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$ exactly when
+
+$$\alpha c - \beta b + \gamma a = 0,$$
+
+a linear condition on the coefficients $(a, b, c)$. The quadratics $\lambda f + \mu g$ of a two-dimensional family satisfy one such condition, with $(\alpha, \beta, \gamma)$ fixed up to a factor, so all their root pairs belong to one involution.
+
+Step 2, the conics through four points. If $F = 0$ and $G = 0$ are two conics through $A$, $B$, $C$, $D$, every conic through the four points is $\lambda F + \mu G = 0$, because five points fix a conic and the family is one free ratio. Restricted to $\ell$, $F$ and $G$ become quadratics $f$ and $g$ in $t$, so Step 1 applies: the pairs where the conics meet $\ell$ belong to one involution. The line pairs $AB \cup CD$, $AC \cup BD$, and $AD \cup BC$ are conics through the four points, which gives the three named pairs.
+
+Step 3, the dual. Polar reciprocation in a circle turns points into lines and conics into conics, turns a conic tangent to four lines into a conic through four points, and turns the lines through $P$ into the points of the polar of $P$. Applying Step 2 to the reciprocal figure and transforming back gives DDIT, with the opposite vertices of the four lines playing the role of the three line pairs.
+
+Step 4, the fixed-point form. With $M$ at $t = 0$ fixed, $\gamma = 0$, and the pair $(x, y)$ gives $\alpha\,xy + \beta\,(x + y) = 0$. A pair $(t, t')$ satisfies $\alpha\,tt' + \beta\,(t + t') = 0$, that is $\frac1t + \frac1{t'} = -\frac\alpha\beta = \frac1x + \frac1y$, which is the stated relation once signs are given to the four distances.
+
+## Useful observations
+- The three line pairs alone are a statement about a complete quadrilateral: the lines through four points cut any line in three pairs of one involution, with no conic in sight.
+- A circle through the four points adds its two intersections with $\ell$ as a fourth pair, which is how circle problems come in.
+- When the involution is known to be a reflection, every pair is symmetric about one point, which proves the [[butterfly-theorem|Butterfly Theorem]] at once: the chords through the midpoint of the chord give a fixed point, and the circle gives a pair symmetric about it.
+- In DDIT, if the involution of lines through $P$ is the reflection in a line, two lines of a pair make equal angles with it, which is how the dual proves isogonal statements.
+
+## Applications
+Generalized butterfly problems, proving that two points on a line are symmetric about a third, showing that lines through a point are isogonal or harmonic, and computing positions on a line cut by a circle and by the sides and diagonals of a quadrilateral.
+
+## Contest profile
+An advanced olympiad theorem, usually named and applied in one line to finish a projective argument. It appears when a line cuts the sides and diagonals of a quadrilateral and a conic through its vertices, or, in the dual form, when tangents from a point to an inscribed conic are compared with the lines to the vertices. It pairs with [[desargues-theorem|Desargues's Theorem]] and the [[cross-ratio|cross-ratio]].
 `
 });

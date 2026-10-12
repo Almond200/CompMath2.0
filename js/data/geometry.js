@@ -1065,6 +1065,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "humpty-queue-points",
+          name: "Humpty and Queue Points",
+          latex: String.raw`HX \perp AM,\ \ X \in (BHC),\ \ MX \cdot MA = MB^2, \qquad Q = MH \cap (ABC),\ \ \angle AQH = 90^\circ`,
+          description: String.raw`Two points that the orthocenter $H$ of triangle $ABC$ and the midpoint $M$ of $BC$ produce together. The $A$-Humpty point $X$ is the foot of the perpendicular from $H$ to the median $AM$; it lies on the circle through $B$, $H$, and $C$, satisfies $MX \cdot MA = MB^2$, and sees the two sides in the ratio $XB : XC = AB : AC$. The $A$-Queue point $Q$ is the second point where line $MH$ meets the circumcircle $(ABC)$, the first being the antipode of $A$; it satisfies $\angle AQH = 90^\circ$, so it lies on the circle with diameter $AH$. Both points turn a median and an orthocenter into a circle, which is what olympiad configurations with $H$ and $M$ need.`,
+          keywords: ["humpty point", "queue point", "foot of perpendicular from H to the median", "circle BHC", "MX times MA equals MB squared", "line MH meets the circumcircle", "angle AQH right angle", "orthocenter and midpoint"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "fermat-point",
           name: "Fermat Point (Torricelli Point)",
           latex: String.raw`\min_X\,(XA + XB + XC) \text{ at } \angle AXB = \angle BXC = \angle CXA = 120^\circ, \qquad \text{valid when every angle of } \triangle ABC < 120^\circ`,
@@ -2337,6 +2347,16 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{perspective from a point} \iff \text{perspective from a line}`,
           description: String.raw`Triangles $ABC$ and $A'B'C'$ are perspective from a point when $AA'$, $BB'$, $CC'$ concur, and perspective from a line when the three points $AB\cap A'B'$, $BC\cap B'C'$, $CA\cap C'A'$ are collinear (the axis of perspectivity). Desargues: either condition implies the other. It trades a concurrency for a collinearity and back — the two things projective problems keep asking for — and its converse proves concurrency by producing the axis.`,
           keywords: ["desargues", "perspective from point", "perspective from line", "axis of perspectivity", "concurrency", "collinearity", "projective duality", "two triangles"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "desargues-involution",
+          name: "Desargues Involution Theorem and Its Dual",
+          latex: String.raw`\text{conics through } A, B, C, D \text{ cut } \ell \text{ in pairs of one involution: } (AB, CD),\ (AC, BD),\ (AD, BC), \qquad \alpha\,tt' + \beta\,(t + t') + \gamma = 0`,
+          description: String.raw`An involution on a line $\ell$ is a pairing of its points that swaps the two members of each pair; in a coordinate $t$ along $\ell$ it is a relation $\alpha\,tt' + \beta\,(t + t') + \gamma = 0$, and two pairs determine it. The Desargues Involution Theorem says that for four points $A$, $B$, $C$, $D$ and a line $\ell$ through none of them, every conic through the four points meets $\ell$ in a pair of one fixed involution. The three line pairs through the points are conics too, so the points where $\ell$ meets $AB$ and $CD$, $AC$ and $BD$, $AD$ and $BC$ are pairs of it. The dual, DDIT, does the same for the lines through a point $P$: for a conic tangent to four lines, the two tangents from $P$ and the lines from $P$ to each pair of opposite vertices are pairs of one involution. A circle meeting $\ell$ supplies a pair, so the theorem turns circle problems into a computation on one line.`,
+          keywords: ["desargues involution theorem", "dual desargues involution", "DDIT", "DIT", "involution on a line", "pencil of conics", "conics through four points", "generalized butterfly"],
           importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
