@@ -1745,7 +1745,8 @@
       for (let i = 0; i < 8; i++) for (let j = 0; j < 8; j++) {
         const x = X0 + j * s, y = Y0 + i * s, gone = (i === 0 && j === 0) || (i === 7 && j === 7);
         if (gone) {
-          parts.push(rect(x + 2, y + 2, s - 4, s - 4, FNT, 1, "none"), seg([x + 7, y + 7], [x + s - 7, y + s - 7], FNT, 1.4), seg([x + s - 7, y + 7], [x + 7, y + s - 7], FNT, 1.4));
+          // A removed corner keeps its (dark) color under the cross, so the reader can see what was taken away.
+          parts.push(rect(x, y, s, s, FNT, 0.8, "rgba(91,140,255,0.32)"), rect(x + 2, y + 2, s - 4, s - 4, FNT, 1, "none"), seg([x + 7, y + 7], [x + s - 7, y + s - 7], FNT, 1.4), seg([x + s - 7, y + 7], [x + 7, y + s - 7], FNT, 1.4));
           continue;
         }
         const isDark = (i + j) % 2 === 0;
