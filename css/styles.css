@@ -3348,7 +3348,7 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 :root[data-theme="dark"] :is(.detail-table td, .special-table td, table:not(.detail-table) th) { color: var(--text-table); }
 :root[data-theme="dark"] .detail-table td:first-child, :root[data-theme="dark"] .special-table td + td { color: var(--text-dim); }
 
-/* Dark mode, second pass (Stanley's answer to the contrast question): Related chips, the random-problem
+/* Dark mode, second pass: Related chips, the random-problem
    buttons, and the math in formula boxes drop one step from white. Dark only. */
 :root[data-theme="dark"] .related-item { color: var(--text-head); }
 :root[data-theme="dark"] :is(.hp-btn, .rand-go, .rand-btns button[aria-checked="true"]) { color: #d3dae9; }
@@ -3358,9 +3358,10 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 :root[data-theme="dark"] :is(.hub-h, .hub-p, .hub-chain-note, .hub-why, .hub-why li, .hc-q, .hs-ask, .hj-col a, .hj-col h4, .hub-card a) { color: #b3bcd5; }
 :root[data-theme="dark"] .hub :is(button, .hp-btn) { color: #d3dae9; }
 
-/* Dark mode, popups, tabs and problem text (Stanley, screenshots of the Filters and Browse by Tag
+/* Dark mode, popups, tabs and problem text (from screenshots of the Filters and Browse by Tag
    windows, the year tabs, and a problem statement). Dark only. */
 :root[data-theme="dark"] :is(.filter-chip.active, .b-lvl-chip.active, .ct-years a[aria-current="page"], .adv-apply) { color: #d3dae9; }
 :root[data-theme="dark"] :is(.adv-tag-chip.adv-tag-topic, .modal-head h3, .info-modal .modal-head h3) { color: var(--text-head); }
 :root[data-theme="dark"] .adv-tag-chip.adv-tag-topic:hover { color: var(--accent); }
 :root[data-theme="dark"] :is(.prob-statement, .prob-statement .katex) { color: #cdd5e8; }
+.practice-placeholder { color: var(--text-faint); font-style: italic; margin: 4px 0 0; }

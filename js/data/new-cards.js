@@ -23,6 +23,6 @@ window.NEW_CARD_BATCHES = [
     ids: ["orthogonal-circles", "weitzenbock-inequality", "steiner-lehmus", "cevian-nest", "dodecahedron-icosahedron"] },
   { label: "Gap scan, batch 2: algebra, number theory, and two methods", date: "2026-10-12",
     ids: ["integer-valued-polynomials", "dirichlet-primes-progression", "partial-fractions", "working-backwards"] },
-  { label: "Requested by Stanley: cutting a solid with a plane", date: "2026-10-12",
+  { label: "Cutting a solid with a plane", date: "2026-10-12",
     ids: ["plane-cross-section"] }
 ];
