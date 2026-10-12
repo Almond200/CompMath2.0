@@ -2753,5 +2753,34 @@ Counting solutions of polynomial congruences modulo a prime, and proofs of Wilso
 
 ## Contest profile
 An olympiad tool, usually the step that bounds the number of solutions of a congruence or proves two polynomials are congruent.
+`,
+
+"coins-and-prices": String.raw`
+## Distinguishing clues
+- A total amount of money made from coins, stamps, or items at a few fixed prices.
+- Counts that must be whole numbers, often at least one of each kind.
+- A question about how many ways the amount can be made, which item count is forced, or the largest amount that cannot be made.
+- Not this pattern: a rate or a percentage problem in which the quantities may be fractions, which needs equations, not whole-number reasoning.
+
+## Methods and Formulas to Try
+One equation in whole numbers, with values that share little, so divisibility fixes one count and bounds finish the list.
+
+### Methods to try
+- [[choose-modulus]]: reduce the equation modulo one of the values to fix the remainder of another count.
+- [[bounding-diophantine]]: the counts are nonnegative and the total is fixed, so each count is bounded, leaving a short list to check.
+- [[casework-method]]: with three or more kinds of items, fix the count of the most valuable kind and solve the rest in each case.
+
+### Formulas to try
+- [[chicken-mcnugget]]: with two coprime values $a$ and $b$, every amount above $ab - a - b$ can be made, and $ab - a - b$ cannot.
+- [[bezouts-identity]]: with values whose gcd is $d$, only multiples of $d$ can be made at all.
+
+## Common traps
+- Forgetting a condition such as "at least one of each", which removes the solutions with a zero count.
+- Mixing units, such as dollars and cents, in one equation.
+- Stopping after one solution when the question asks for the number of ways.
+- Testing every count from zero upward instead of using a remainder to jump between solutions.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 setup, from a single forced count to counting the ways to make change, with the Frobenius bound at AMC 12 and AIME level. It pairs with Choosing the Right Modulus and with the Chicken McNugget Theorem.
 `
 });

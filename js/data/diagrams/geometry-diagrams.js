@@ -755,7 +755,7 @@
     const [Aa, Bb] = circleLineInts(cen, R, P, [140, 205]);
     // O, OP and r are drawn because the common value of every product is OP^2 - r^2,
     // and without them the card's headline quantity appears nowhere in the figure.
-    // This panel is also the card-face thumbnail (CARD_DIAGRAM_IDS), so it has to
+    // This panel is also the card-face thumbnail (Figures on cards: On), so it has to
     // read on its own: hence the value named in the caption rather than only the ratio.
     const rEnd = add(cen, mul(norm(sub(P, cen)), R));
     return wrap(430, 330, [

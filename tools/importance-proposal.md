@@ -675,3 +675,9 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | power-of-a-point-linearity | geometry / Circles | Olympiad | new | 0 | **low** |
 | humpty-queue-points | geometry / Triangle Centers & the Euler Line | Olympiad | new | 0 | **lower** |
 | desargues-involution | geometry / Projective Geometry & Cross-Ratio | Olympiad | new | 0 | **lower** |
+| defined-operation | algebra (pattern) / Equations with Hidden Structure | AMC | new (LIVE: custom operation, 40 problems) | 0 | **low** |
+| truth-tellers-logic | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: logical deduction 66, truth-tellers 4) | 0 | **low** |
+| organized-listing | counting (method) / Working It Out by Hand | AMC | new (LIVE: systematic listing, 56) | 0 | **low** |
+| simulate-the-process | counting (method) / Working It Out by Hand | AMC | new (LIVE: process simulation, 24) | 0 | **low** |
+| coins-and-prices | number theory (pattern) / Whole-Number Totals | AMC | new (LIVE: money, 58) | 0 | **low** |
+| drawing-without-replacement | counting (pattern) / Logic & Probability Setups | AMC | new (LIVE: sampling without replacement, 16) | 0 | **low** |

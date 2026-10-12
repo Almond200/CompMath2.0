@@ -2911,5 +2911,121 @@ The choice among the methods depends on what is asked: one length, a general for
 
 ## Contest profile
 An AIME counting pattern about binary or ternary strings with a forbidden pattern, usually solved by a small table of counts by ending, and occasionally by a transfer matrix.
+`,
+
+"organized-listing": String.raw`
+## When to use
+Use it when the objects are few, perhaps up to a few dozen, and a formula would need several cases of its own or does not exist: integer triangles with a given perimeter, ways to make a sum with restricted parts, paths on a small irregular board. It is also the check on a formula's answer for a small case. When the count is large and the objects have a product structure, [[constructive-counting|Constructive Counting]] is the right tool, and when the cases differ in kind rather than in one ordered quantity, [[casework-method|Casework]] is.
+
+## How
+1. Choose the quantity to order by, usually the largest or the smallest part, or the first position.
+2. Write its possible values from smallest to largest.
+3. For each value, list the objects with that value in order of a second quantity.
+4. Use the problem's conditions to stop each row early instead of testing every candidate.
+5. Count each row, then add the rows.
+
+For three positive parts adding to $9$, ordered so that $a \le b \le c$ and grouped by the largest part $c$: $c = 3$ gives $(3, 3, 3)$; $c = 4$ gives $(1, 4, 4)$ and $(2, 3, 4)$; $c = 5$ gives $(1, 3, 5)$ and $(2, 2, 5)$; $c = 6$ gives $(1, 2, 6)$; $c = 7$ gives $(1, 1, 7)$. That makes $7$.
+
+## Why it works
+Putting the parts of each object in a fixed order, such as $a \le b \le c$, chooses one representative for each object, so no object is listed twice under different orders. Fixing the first quantity and then the second sorts the representatives the way a dictionary sorts words, and in that order every object has exactly one place. A list written in it can be checked row by row, and a missing or repeated object shows up as a gap or a repeat in a row. The method stops being practical when the rows grow long, which is the signal to look for a formula for one row.
+
+## Formulas it uses
+- [[triangle-inequality]]: in lists of triangles it bounds the largest side, which decides where each row starts and stops.
+- [[partitions]]: an organized list of the parts of a number is a list of its partitions, and the card's formulas count the same objects for checking.
+
+## Common traps
+- Listing objects that differ only in order as different, when the problem counts them as one.
+- Changing the ordering rule part-way through the list.
+- Stopping a row at the wrong value because a condition such as the triangle inequality was checked loosely.
+- Forgetting the extreme cases at either end of the list, such as the equal parts.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 staple, and a habit that appears in harder problems as the check on a small case before a general count. It pairs with Casework and with the triangle inequality.
+`,
+
+"simulate-the-process": String.raw`
+## When to use
+Use it when the problem describes a rule applied step by step, such as players removed from a circle, a token moving on a board, or a number transformed again and again, and asks for the state after some number of steps. It is the right first move when the steps are few or the states are few, because then the process either ends quickly or repeats. When the process runs long and is defined by a formula, such as a remainder of a power, Finding the Period is the tool; when a probability is asked rather than a final state, [[states-recursion-prob|First-Step Analysis]] is.
+
+## How
+1. Write down the starting state completely: positions, values, and whose turn it is.
+2. Apply the rule once and write the new state on the next line of a table.
+3. Repeat, checking each new state against the earlier ones.
+4. Stop when the process ends, or when a state repeats.
+5. If a state repeats, the steps from its first appearance form a cycle; use the cycle length to jump to the step asked for.
+
+Starting from $7$ and replacing a number by the sum of the squares of its digits gives $7, 49, 97, 130, 10, 1, 1, \dots$, which ends at $1$ after five steps.
+
+## Why it works
+The table is the process itself, so every recorded state is correct as long as the rule is applied correctly, and no theory is needed. A process with finitely many possible states cannot run forever without revisiting one, by the [[pigeonhole|pigeonhole principle]], and once a state repeats, the rule produces the same states after it as the first time, so the process is periodic from there on. Simulation stops being practical when the cycle is very long or the state is large, which is the point at which a formula for the state is needed instead.
+
+## Formulas it uses
+- [[pigeonhole]]: guarantees that a process with finitely many states eventually repeats one, which bounds how long the simulation can take.
+
+## Common traps
+- Recording only part of the state, such as the value without whose turn it is, so that a false repeat appears.
+- Starting the count of steps at the wrong place, off by one at the end.
+- Assuming the cycle starts at the first state, when it may start later.
+- Applying the rule to a stale state after a removal or a move changed the order.
+
+## Contest profile
+An AMC 8 and 10 tool for games, eliminations, and repeated operations, and the first step in harder problems where the simulation reveals the pattern that a proof then confirms. It pairs with Finding the Period.
+`,
+
+"truth-tellers-logic": String.raw`
+## Distinguishing clues
+- People who always tell the truth or always lie, each making a statement about the others or about how many are lying.
+- Clues about an arrangement, such as who finished where or who owns what, some of which may be false.
+- Statements that mention each other, so their truth values depend on one another.
+- Not this pattern: a probability question about random liars, where each statement is true with some probability, which is a conditional-probability problem.
+
+## Methods and Formulas to Try
+The data are truth values, so the unknown is a choice of who is truthful, and the statements check each choice.
+
+### Methods to try
+- [[casework-method]]: split on the one statement or person that decides the most, often the number of liars, and check each case against every statement.
+- [[proof-by-cases]]: the cases must cover every possibility, so that the surviving one is forced and not merely possible.
+- [[proof-by-contradiction]]: assume a person is truthful, follow what that forces, and reject the assumption when two forced facts disagree.
+
+### Formulas to try
+No formula is needed: the statements themselves are the data, and the work is the case check.
+
+## Common traps
+- Treating a liar's statement as giving no information, when its negation is a fact.
+- Missing that statements like "exactly one of us is lying" are mutually exclusive, so at most one of them is true.
+- Stopping at the first consistent assignment without checking that it is the only one.
+- Forgetting the case in which everyone lies, or everyone tells the truth.
+
+## Contest profile
+An AMC 8 and 10 puzzle type, from knights and knaves to finishing orders, solved by a short, complete set of cases. It pairs with Casework.
+`,
+
+"drawing-without-replacement": String.raw`
+## Distinguishing clues
+- Objects drawn from a bag, deck, or drawer one at a time and not put back.
+- A question about a particular draw, such as the color of the third ball, or about when the first object of a kind appears.
+- A fixed number drawn together, with the count of each kind asked for, the [[hypergeometric|hypergeometric]] setting.
+- Not this pattern: draws with replacement, where each draw is independent and the fractions do not change.
+
+## Methods and Formulas to Try
+Each draw changes what is left, and two facts tame that: products of shrinking fractions for sequences, and symmetry for positions.
+
+### Methods to try
+- [[symmetry-probability]]: every position in the drawing order is equally likely to hold any given object, so the $k$th draw behaves like the first.
+- [[complementary-counting]]: "at least one red" is one minus the probability of drawing no red at all.
+- [[states-recursion-prob]]: when the drawing stops on a condition, the state is what is left in the bag, and the probability satisfies a recursion in it.
+
+### Formulas to try
+- [[hypergeometric]]: the probability of exactly $k$ of a kind among $m$ drawn together.
+- [[conditional-probability]]: the probability of a sequence of draws is the product of the conditional probabilities, each computed from what is left.
+
+## Common traps
+- Using the original fractions for later draws, as if each ball were put back.
+- Multiplying by an extra factor for order when the draws are counted as a set.
+- Forgetting that "the third draw is the first red" needs the first two to be blue.
+- Adding the probabilities of overlapping events, such as "the first is red" and "the second is red".
+
+## Contest profile
+An AMC 10 and 12 probability setup, from a single product of fractions to symmetry arguments about the order of draws. It pairs with the hypergeometric distribution and with Symmetry Arguments.
 `
 });

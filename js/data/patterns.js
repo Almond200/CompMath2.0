@@ -1438,6 +1438,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Reframing the Count", blurb: "Counting something easier with the same answer: the complement, a bijection, a reflected path, a region's area, or the same set counted twice.", ids: ["complementary-counting", "bijection-method", "double-counting", "symmetry-probability", "reflection-principle", "geometric-probability"] },
         { title: "Building & Splitting", blurb: "Building each object step by step, gluing items that must stay together or slotting items into gaps, or splitting the count into cases.", ids: ["constructive-counting", "casework-method", "counting-blocks", "gap-method", "uniform-overcount", "pie"] },
+        { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
         { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound"] }
@@ -1532,6 +1533,36 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "organized-listing",
+          name: "Making an Organized List",
+          type: "method",
+          subject: "counting",
+          when: String.raw`The objects to count are few enough to write down, but no formula fits them, or a formula would need cases of its own; also when a formula's answer needs a check against the actual objects.`,
+          move: String.raw`Choose one quantity to order the list by, usually the largest or the smallest, and write the cases in that order, so each case has exactly one place in the list and none can be skipped or written twice.`,
+          uses: ["triangle-inequality", "partitions"],
+          latex: String.raw`\text{order by one quantity} \;\Rightarrow\; \text{each object appears exactly once}`,
+          description: String.raw`Making an organized list counts by writing every case down in an order chosen in advance. The order is fixed by one quantity, such as the largest part or the first letter, and inside each value of it by the next quantity, so the list has the same shape as a dictionary: nothing can be missed and nothing can appear twice. It is the honest way to count a small set that no formula describes, and the fastest way to check one that a formula does.`,
+          keywords: ["organized list", "systematic listing", "list in order", "enumerate the cases", "dictionary order", "list by largest part", "count by listing", "method"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "simulate-the-process",
+          name: "Simulating the Process",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A problem describes a procedure, such as a game, a sequence of moves, an elimination, or an operation repeated a fixed number of times, and asks for the state at the end, while the number of steps is small or the process soon repeats.`,
+          move: String.raw`Write the state down and apply the rule one step at a time, recording every state in a table, until the process ends or a state repeats; a repeat turns the rest of the process into a cycle.`,
+          uses: ["pigeonhole"],
+          latex: String.raw`s_0 \to s_1 \to s_2 \to \cdots \quad \text{until it ends or } s_i = s_j`,
+          description: String.raw`Simulating the process means doing exactly what the problem describes, one step at a time, and keeping a record of each state. A short process is then simply finished by hand. A longer one usually repeats, because a process with finitely many states must revisit one, and from the first repeated state on the record is a cycle, which [[cycle-hunting|Finding the Period]] turns into the answer for any number of steps.`,
+          keywords: ["simulate", "process simulation", "step by step", "run the procedure", "elimination game", "table of states", "until it repeats", "method"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
           id: "states-recursion-prob",
@@ -2336,7 +2367,7 @@ window.MATH_SECTIONS.push({
       title: "Algebra",
       groups: [
         { title: "Self-Similar & Repeating", blurb: "Expressions and sequences that repeat themselves, so one copy or one cycle settles the rest.", ids: ["infinite-nest", "periodic-sequences"] },
-        { title: "Equations with Hidden Structure", blurb: "Equations that look high-degree or messy but are built from one repeated piece, so naming the piece shrinks them.", ids: ["repeated-block-equation"] },
+        { title: "Equations with Hidden Structure", blurb: "Equations and expressions that look messy but are built from one hidden piece: a repeated block to name, or a new operation that is a familiar one in disguise.", ids: ["repeated-block-equation", "defined-operation"] },
         { title: "Word-Problem Setups", blurb: "Stories whose numbers change part-way through, where the right bookkeeping turns the story into one equation.", ids: ["averages-before-after", "several-rates"] },
         { title: "Logarithms & Complex Numbers", blurb: "Equations in logarithms or complex numbers, where the right representation makes them linear or geometric.", ids: ["log-system", "complex-modulus-argument"] },
         { title: "Floor Functions", blurb: "Sums and equations built from the floor function, where the integer part and the fractional part are handled separately.", ids: ["floor-sum-range", "floor-equation"] }
@@ -2448,6 +2479,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "defined-operation",
+          name: "A Newly Defined Operation",
+          type: "pattern",
+          subject: "algebra",
+          recognize: [String.raw`a new symbol such as $a \star b$ or $a \diamond b$ defined by a formula in the statement`, String.raw`a long chain of the operation to evaluate, such as $((2 \star 3) \star 4) \star \cdots$`, String.raw`an equation in the new operation to solve, or a question whether it is commutative or associative`],
+          suggests: ["sfft", "telescoping", "functional-substitution"],
+          tryFirst: ["sfft", "telescoping", "functional-substitution"],
+          latex: String.raw`a \star b = \text{(a rule given in the problem)} \;\Rightarrow\; \text{rewrite the rule before evaluating}`,
+          description: String.raw`This is the problem that invents an operation, written with a new symbol and defined by a formula, and asks for a value, a solution, or a property of it. The rule is usually a familiar operation in disguise, a product of shifted numbers or a sum of reciprocals, and rewriting it in that form shows whether it is associative and what a long chain of it collapses to.`,
+          keywords: ["defined operation", "custom operation", "new symbol", "star operation", "binary operation rule", "evaluate the chain", "associative operation", "operation as a function", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "infinite-nest",
           name: "Infinite Nested Expressions",
           type: "pattern",
@@ -2483,7 +2529,8 @@ window.MATH_SECTIONS.push({
       title: "Number Theory",
       groups: [
         { title: "Digit Puzzles", blurb: "Problems about the digits of a number rather than its size.", ids: ["cryptarithms", "digit-manipulation", "unknown-base"] },
-        { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear"] }
+        { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear"] },
+        { title: "Whole-Number Totals", blurb: "A total made from items of fixed values, coins, stamps, or prices, where every count must be a whole number.", ids: ["coins-and-prices"] }
       ],
       formulas: [
         {
@@ -2515,6 +2562,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "coins-and-prices",
+          name: "Coins and Prices",
+          type: "pattern",
+          subject: "number-theory",
+          recognize: [String.raw`a total amount of money made from coins, stamps, or items of a few given values`, String.raw`counts that must be whole numbers, often at least one of each`, String.raw`the number of ways to make an amount, or the largest amount that cannot be made`],
+          suggests: ["choose-modulus", "bounding-diophantine", "casework-method"],
+          tryFirst: ["choose-modulus", "chicken-mcnugget", "bezouts-identity"],
+          latex: String.raw`v_1x_1 + v_2x_2 + \cdots + v_kx_k = T, \qquad x_i \in \mathbb{Z}_{\ge 0}`,
+          description: String.raw`This is the problem in which a total $T$ is made from items of given values $v_1, \dots, v_k$, coins, stamps, or goods at fixed prices, in counts $x_1, \dots, x_k$ that must be whole numbers. The single equation has many real solutions but few in whole numbers, so the work is to use divisibility to fix one count and bounds to finish the list.`,
+          keywords: ["coins", "money problem", "prices", "stamps", "total amount", "whole number counts", "making change", "coin values", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
           id: "cryptarithms",
@@ -2552,6 +2614,7 @@ window.MATH_SECTIONS.push({
       title: "Counting & Probability",
       groups: [
         { title: "Subset Conditions", blurb: "Subsets that must avoid a forbidden pair, such as two elements with a given sum, difference, or divisibility.", ids: ["subset-avoiding-relation"] },
+        { title: "Logic & Probability Setups", blurb: "Puzzles made of statements, where only consistent guesses survive, and draws from a bag that change what is left.", ids: ["truth-tellers-logic", "drawing-without-replacement"] },
         { title: "Strings & Sequences with a Rule", blurb: "Strings, tilings, and arrangements of a given length where a local rule forbids certain neighbors, counted by tracking what the last few symbols were.", ids: ["restricted-sequences"] }
       ],
       formulas: [
@@ -2569,6 +2632,36 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "truth-tellers-logic",
+          name: "Logical Deduction and Truth-Tellers",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`people who always tell the truth or always lie, each making a statement`, String.raw`clues about who did what, who sits where, or who finished in which place`, String.raw`statements that refer to each other or to how many of them are true`],
+          suggests: ["casework-method", "proof-by-cases", "proof-by-contradiction"],
+          tryFirst: ["casework-method", "proof-by-cases", "proof-by-contradiction"],
+          latex: String.raw`\text{person } i \text{ truthful} \iff \text{statement } i \text{ is true}`,
+          description: String.raw`This is the puzzle whose data are statements rather than numbers: people who always tell the truth or always lie, or clues about an arrangement, some of which may be false. The rule that ties it together is that a truth-teller's statement is true and a liar's is false, so each guess about who is truthful either agrees with every statement or contradicts one, and only the consistent guesses survive.`,
+          keywords: ["truth teller", "liar", "knights and knaves", "logic puzzle", "logical deduction", "consistent assignment", "who is lying", "arrangement clues", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "drawing-without-replacement",
+          name: "Drawing Without Replacement",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`balls, cards, or socks drawn one at a time from a bag or deck and not put back`, String.raw`a question about the color of a particular draw, or about when the first of a kind appears`, String.raw`a fixed number drawn at once, with a count of each kind asked for`],
+          suggests: ["symmetry-probability", "complementary-counting", "states-recursion-prob"],
+          tryFirst: ["hypergeometric", "symmetry-probability", "conditional-probability"],
+          latex: String.raw`P(\text{the } k\text{th draw has a given color}) = P(\text{the first draw has it}) = \frac{r}{n}`,
+          description: String.raw`This is the setup in which objects are drawn from a collection of $n$, of which $r$ have a given color, and are not put back, so each draw changes what is left. Two facts handle most of it: the probability of a sequence of draws is a product of shrinking fractions, and every position in the drawing order is equally likely to hold any given object, so the $k$th draw is red with probability $\frac rn$, the same as the first.`,
+          keywords: ["without replacement", "drawing marbles", "balls from a bag", "cards from a deck", "draws one at a time", "first red ball", "kth draw", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
           id: "subset-avoiding-relation",

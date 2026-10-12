@@ -8,5 +8,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Olympiad geometry, batch 2", date: "2026-10-12",
     ids: ["steiner-ratio-theorem", "isogonal-line-lemma", "power-of-a-point-linearity"] },
   { label: "Olympiad geometry, batch 3", date: "2026-10-12",
-    ids: ["humpty-queue-points", "desargues-involution"] }
+    ids: ["humpty-queue-points", "desargues-involution"] },
+  { label: "Concepts from LIVE (AMC)", date: "2026-10-12",
+    ids: ["defined-operation", "truth-tellers-logic", "organized-listing", "simulate-the-process", "coins-and-prices", "drawing-without-replacement"] }
 ];
