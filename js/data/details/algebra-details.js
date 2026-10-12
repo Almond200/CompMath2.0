@@ -5040,5 +5040,67 @@ No standard formula is needed: the rule in the statement is the formula, and the
 
 ## Contest profile
 An AMC 8 and 10 favorite, from a single evaluation to a long chain or an equation in the new operation, and an AMC 12 version that asks for the properties of the operation. It pairs with Simon's Favorite Factoring Trick and with telescoping.
+`,
+"integer-valued-polynomials": String.raw`
+## Key forms
+- $c_k = \Delta^k P(0) = \alt{\sum_{j=0}^{k} (-1)^{k-j}\binom{k}{j}P(j)}{P(k) - \binom{k}{1}P(k - 1) + \binom{k}{2}P(k - 2) - \cdots + (-1)^k P(0)}$ — the coefficients are the forward differences at $0$
+- $P(m) \in \mathbb{Z}$ for $n + 1$ consecutive integers $m$ $\implies$ $P(m) \in \mathbb{Z}$ for every integer $m$
+- $n!\,P(x)$ has integer coefficients when $P$ is integer-valued of degree $n$
+- if $m$ divides $P(0), P(1), \ldots, P(n)$, it divides every value $P(k)$ at an integer $k$
+
+## Conditions
+$P$ is a polynomial of degree $n$ with rational, or even real, coefficients. The values that decide the question are at $n + 1$ consecutive integers; fewer, or values at integers with gaps, are not enough.
+
+## Why it works
+First, each $\binom{x}{k}$ is integer-valued. For a whole number $x \ge k$ it counts the $k$-element subsets of an $x$-element set; for $0 \le x \lt k$ it is $0$; and for a negative integer $x = -m$, $$\binom{-m}{k} = \frac{(-m)(-m - 1)\cdots(-m - k + 1)}{k!} = (-1)^k\binom{m + k - 1}{k}.$$ So every integer combination of them is integer-valued.
+
+Conversely, $\binom{x}{k}$ has degree exactly $k$, so the polynomials $\binom{x}{0}, \ldots, \binom{x}{n}$ can be combined to give any polynomial of degree $n$: $P(x) = \sum c_k\binom{x}{k}$ for some numbers $c_k$. The difference operator $\Delta f(x) = f(x + 1) - f(x)$ acts on the basis like Pascal's rule, $\Delta\binom{x}{k} = \binom{x}{k - 1}$, and every $\binom{0}{k}$ with $k \ge 1$ is $0$. So applying $\Delta$ $j$ times and putting $x = 0$ leaves exactly $c_j$, which is the first Key form.
+
+If $P(0), \ldots, P(n)$ are whole numbers, every difference built from them is a whole number, so every $c_k$ is, and $P$ is integer-valued. For any other run of consecutive integers $a, \ldots, a + n$, apply the same argument to $P(x + a)$.
+
+## Useful observations
+- The divisibility $a - b \mid P(a) - P(b)$ of [[factor-remainder-theorem|the Remainder Theorem]] needs integer coefficients and fails here: $\binom{x}{2}$ is $0$ at $x = 0$ and $1$ at $x = 2$.
+- $k!\binom{x}{k} = x(x - 1)\cdots(x - k + 1)$ has integer coefficients, which gives the bound on denominators: an integer-valued polynomial of degree $n$ has coefficients with denominators dividing $n!$.
+- The same differences give divisibility: if $m$ divides $P(0), \ldots, P(n)$, it divides every difference, every $c_k$, and so every value.
+
+## Applications
+Showing that a polynomial's values are integers, or divisible by a given number, from a few of its values; writing the polynomial through given values at consecutive integers in a form that can be evaluated anywhere.
+
+## Contest profile
+No problems here are tagged with it yet. An olympiad tool for polynomials that must take integer values; AIME problems that give values at consecutive integers use the same differences to extend a sequence.
+`,
+"partial-fractions": String.raw`
+## When to use
+A sum of fractions such as $\frac{1}{k(k + 2)}$ or $\frac{1}{k^2 - 1}$ that should telescope once split. A generating function such as $\frac{1}{(1 - x)(1 - 2x)}$ whose coefficients are wanted. A sum over the roots of a polynomial of $\frac{1}{x - r}$, which partial fractions turn into $\frac{P'(x)}{P(x)}$.
+
+It is the wrong first move when the numerator's degree is at least the denominator's, where long division comes first, and when the denominator does not factor, where a quadratic factor with no real roots keeps a linear numerator $\frac{Bx + C}{x^2 + px + q}$.
+
+## How
+1. Divide first if the numerator's degree is not lower than the denominator's, and keep the quotient aside.
+2. Factor the denominator completely.
+3. Write one term for each factor: $\frac{A}{x - a}$ for a simple factor, $\frac{A_1}{x - a} + \frac{A_2}{(x - a)^2}$ for a squared one, and $\frac{Bx + C}{x^2 + px + q}$ for a quadratic with no real roots.
+4. Find the numerator over each simple factor $x - a$ by covering that factor and putting $x = a$ into the rest.
+5. Find any numerators left by putting in convenient values of $x$ or by comparing coefficients.
+6. Check by recombining at one value of $x$.
+
+For instance, for $\frac{x + 5}{(x - 1)(x + 2)}$, covering $x - 1$ and putting $x = 1$ gives $\frac{6}{3} = 2$, and covering $x + 2$ and putting $x = -2$ gives $\frac{3}{-3} = -1$, so the fraction is $\frac{2}{x - 1} - \frac{1}{x + 2}$.
+
+## Why it works
+Suppose $\frac{P(x)}{(x - a)R(x)} = \frac{A}{x - a} + T(x)$, where no term of $T$ has $x - a$ in its denominator. Multiplying by $x - a$ gives $\frac{P(x)}{R(x)} = A + (x - a)T(x)$, and putting $x = a$ leaves $A = \frac{P(a)}{R(a)}$, which is the cover-up.
+
+For distinct linear factors, the split always exists and is unique: over the common denominator, the sum of the cover-up terms has a numerator of degree below that of the denominator that agrees with $P$ at every root, so it is $P$. The cover-up finds only the top power of a repeated factor, since the lower powers are not removed by multiplying by $(x - a)^2$ and setting $x = a$; those need step 5.
+
+## Formulas it uses
+- [[lagrange-interpolation-formula]]: with $Q(x) = (x - a_1)\cdots(x - a_n)$ for distinct $a_i$ and $\deg P \lt n$, $\frac{P(x)}{Q(x)} = \frac{P(a_1)}{Q'(a_1)(x - a_1)} + \cdots + \frac{P(a_n)}{Q'(a_n)(x - a_n)}$, which is the cover-up written for every factor at once.
+- [[geometric-series]]: each piece $\frac{A}{1 - rx}$ expands as $A(1 + rx + r^2x^2 + \cdots)$, so a split generating function gives its coefficients as sums of powers.
+
+## Common traps
+- Using the cover-up on a repeated factor for anything but its highest power.
+- Forgetting to divide first when the fraction is improper.
+- Telescoping $\frac{1}{k(k + 2)} = \frac12\left(\frac1k - \frac1{k + 2}\right)$ as if one term survived at each end: two first terms and two last terms survive.
+- Dropping the constant $\frac{1}{a - b}$ in front of the split.
+
+## Contest profile
+An AMC and AIME tool that rarely stands alone: it is the first step of most telescoping sums of fractions and of generating-function coefficient problems.
 `
 });

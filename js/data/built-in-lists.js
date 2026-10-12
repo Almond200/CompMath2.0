@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 119 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 120 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -68,7 +68,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["difference-of-squares", "an-minus-bn", "sophie-germain", "cubes-minus-3abc", "square-of-sum", "binomial-theorem", "sos-identity", "useful-factorizations", "pairwise-sum-product", "antisymmetric-factorization", "sum-zero-identities", "reciprocal-power-sums", "denesting-radicals", "completing-the-square", "forced-difference-of-squares", "sfft", "rationalizing"] },
       { title: "Sequences & Series",
         note: "Closed forms, and the moves that produce one when the sum looks hopeless.",
-        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "finite-differences", "double-summation", "fx-pairing"] },
+        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
         ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point"] },
@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 72 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 73 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -142,7 +142,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill"] },
       { title: "Recursion & States",
         note: "When the count for n depends on the count for smaller n.",
-        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process"] },
+        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards"] },
       { title: "Symmetry & Group Counting",
         note: "Counting up to a symmetry, where naive counting overcounts by a factor you must compute.",
         ids: ["permutation-cycle-structure"] },
@@ -331,7 +331,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["convex-position", "sylvester-gallai", "hellys-theorem", "minkowski-lattice"] },
     ] },
   { id: "route-olympiad-algebra", name: "Olympiad Algebra", kind: "route", tier: "Olympiad", subject: "Algebra",
-    blurb: "Builds on the AIME algebra route: only the cards that are new at this level, so each list stays short. 25 cards across 8 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME algebra route: only the cards that are new at this level, so each list stays short. 26 cards across 8 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "The Inequality Toolkit",
         note: "The workhorses. Most olympiad inequalities fall to one of these, often after a substitution.",
@@ -344,7 +344,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["sos-method", "uvw-method", "smoothing-method", "homogenization", "tangent-line-trick"] },
       { title: "Polynomials",
         note: "Roots, coefficients and irreducibility, plus the interpolation that reconstructs a polynomial from values.",
-        ids: ["cardano-cubic", "eisenstein-criterion", "resultant-discriminant"] },
+        ids: ["cardano-cubic", "eisenstein-criterion", "resultant-discriminant", "integer-valued-polynomials"] },
       { title: "Trigonometric Identities & Substitutions",
         note: "Identities worth knowing on sight, and the substitutions that make an algebraic problem trigonometric.",
         ids: ["trig-substitution"] },
@@ -359,7 +359,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["injectivity-surjectivity"] }
     ] },
   { id: "route-olympiad-number", name: "Olympiad Number Theory", kind: "route", tier: "Olympiad", subject: "Number Theory",
-    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 17 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 18 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Multiplicative Functions",
         note: "Functions determined by their values on prime powers, and the inversion that recovers one from its sums.",
@@ -372,7 +372,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["quadratic-reciprocity", "jacobi-symbol", "gauss-lemma-qr"] },
       { title: "Primes, Factorials & Valuations",
         note: "Counting how many times a prime divides something. The valuation view turns divisibility into arithmetic on exponents.",
-        ids: ["lucas-theorem"] },
+        ids: ["lucas-theorem", "dirichlet-primes-progression"] },
       { title: "Diophantine & Additive",
         note: "Solving equations in integers, and the theorems that say which numbers are representable at all.",
         ids: ["cauchy-davenport", "erdos-ginzburg-ziv", "chevalley-warning", "vieta-jumping"] },
@@ -543,7 +543,7 @@ window.MATH_BUILTIN_LISTS = [
     sections: [
       { title: "Make the Sum Collapse",
         note: "The terms are meant to cancel; find the pairing that does it.",
-        ids: ["telescoping", "factorial-telescoping", "fx-pairing", "abel-summation", "double-summation"] },
+        ids: ["telescoping", "partial-fractions", "factorial-telescoping", "fx-pairing", "abel-summation", "double-summation"] },
       { title: "Standard Closed Forms",
         note: "Sums you should never derive from scratch.",
         ids: ["arithmetic-series", "geometric-series", "power-sums", "arithmetico-geometric"] },

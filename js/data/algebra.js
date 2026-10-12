@@ -104,6 +104,17 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
+          id: "integer-valued-polynomials",
+          name: "Integer-Valued Polynomials",
+          latex: String.raw`P(\mathbb{Z}) \subseteq \mathbb{Z} \iff P(x) = \sum_{k=0}^{n} c_k \binom{x}{k},\ \ c_k \in \mathbb{Z}`,
+          latexPlain: String.raw`P(\mathbb{Z}) \subseteq \mathbb{Z} \iff P(x) = c_0 + c_1\binom{x}{1} + c_2\binom{x}{2} + \cdots + c_n\binom{x}{n},\ \ c_k \in \mathbb{Z}`,
+          description: String.raw`A polynomial $P$ of degree $n$ can take whole-number values at every integer without having whole-number coefficients: $\frac{x(x - 1)}{2}$ is one. The integer-valued ones are exactly the integer combinations of the binomial polynomials $\binom{x}{k} = \frac{x(x - 1)\cdots(x - k + 1)}{k!}$, and the coefficients $c_k$ are the [[finite-differences|finite differences]] of $P$ at $0$. So $n + 1$ consecutive values decide the question: if they are whole numbers, every value at an integer is.`,
+          keywords: ["integer-valued polynomial", "binomial basis", "x choose k polynomial", "integer values at integers", "fractional coefficients but integer values", "newton forward differences", "n! P(x) has integer coefficients"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "polynomial-crt",
           name: "Chinese Remainder Theorem for Polynomials",
           latex: String.raw`P(x) \bmod (x-a)(x-b) = P(a) + \frac{P(b) - P(a)}{b - a}\,(x - a), \qquad \begin{gathered} \gcd(m_1, m_2) = 1 \implies \text{remainders mod } m_1, m_2 \\ \text{fix the remainder mod } m_1 m_2 \end{gathered}`,

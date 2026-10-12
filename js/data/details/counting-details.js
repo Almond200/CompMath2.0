@@ -3153,5 +3153,34 @@ Each draw changes what is left, and two facts tame that: products of shrinking f
 
 ## Contest profile
 An AMC 10 and 12 probability setup, from a single product of fractions to symmetry arguments about the order of draws. It pairs with the hypergeometric distribution and with Symmetry Arguments.
+`,
+"working-backwards": String.raw`
+## When to use
+A process runs forward through a few steps, such as spending, sharing, doubling, or a chain of operations on a number, and the problem states where it ended and asks where it began. Each step can be undone: adding is undone by subtracting, "gave away half" by doubling.
+
+It is the wrong move when a step loses information, such as rounding down, taking a remainder, or choosing among options, so that several starts lead to the same end; then an equation, or a check of every candidate, is needed. When the start is known and the end is asked for, simulate it forward instead.
+
+## How
+1. Write the final state that the problem gives.
+2. List the steps in the order they happened, and write the inverse of each: subtract for add, halve for double, and for "gave away half of it and then $3$ more", add $3$ and then double.
+3. Apply the inverses from the last step to the first, writing the state after each.
+4. Check by running the original steps forward from the answer.
+
+For instance, someone spends half of their money and then $3$ dollars more, twice, and has $6$ dollars left. Before the second round they had $2(6 + 3) = 18$, and before the first round $2(18 + 3) = 42$; forward, $42 \to 18 \to 6$.
+
+## Why it works
+Each step is a function $f_i$ from one state to the next, so $s_n = f_n(f_{n-1}(\cdots f_1(s_0)))$. When every $f_i$ is one-to-one, it has an inverse, and $$s_0 = f_1^{-1}\left(f_2^{-1}\left(\cdots f_n^{-1}(s_n)\right)\right).$$ The start is determined, and computing it this way never meets an unknown. The method stops working exactly where a step is not one-to-one: then the backward pass gives a set of possible starts, to be checked.
+
+## Formulas it uses
+- [[inverse-function-properties]]: the inverse of a composition undoes the last step first, $(f \circ g)^{-1} = g^{-1} \circ f^{-1}$, which is why the steps are undone in reverse order.
+
+## Common traps
+- Undoing the steps in the order they happened instead of the reverse.
+- Undoing "half of it, then $3$ more" as "double, then add $3$"; the $3$ was taken last, so it is put back first.
+- Steps that round down or take remainders, where more than one start fits.
+- Not checking the answer by running the process forward.
+
+## Contest profile
+An AMC 8 and AMC 10 staple for spending, sharing, and chains of operations on a number, usually a few steps long. The same backward pass from the end is how winning and losing positions in a game are labeled, by [[backward-induction|backward induction]].
 `
 });

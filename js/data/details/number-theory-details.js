@@ -2821,5 +2821,33 @@ One equation in whole numbers, with values that share little, so divisibility fi
 
 ## Contest profile
 A MATHCOUNTS and AMC 8 and 10 setup, from a single forced count to counting the ways to make change, with the Frobenius bound at AMC 12 and AIME level. It pairs with Choosing the Right Modulus and with the Chicken McNugget Theorem.
+`,
+"dirichlet-primes-progression": String.raw`
+## Key forms
+- infinitely many primes $p \equiv 3 \pmod 4$ — if $p_1, \ldots, p_k$ were all of them, $4p_1\cdots p_k - 1$ would have a prime factor $\equiv 3 \pmod 4$ outside the list
+- infinitely many primes $p \equiv 1 \pmod 4$ — every odd prime factor of $(2p_1\cdots p_k)^2 + 1$ is $\equiv 1 \pmod 4$
+- infinitely many primes $p \equiv 1 \pmod n$ — every prime factor of $\Phi_n(N)$ that does not divide $n$ is $\equiv 1 \pmod n$
+
+## Conditions
+$m \ge 1$ and $\gcd(a, m) = 1$. The theorem says nothing about where the first such prime is, and nothing about primes in a progression whose terms share a factor.
+
+## Why it works
+The general theorem, proved by Dirichlet in 1837, uses characters modulo $m$ and the fact that certain infinite series, his $L$-functions, do not vanish at $1$. That is far beyond a contest, and solutions cite it.
+
+The special cases follow Euclid's proof. For $3 \bmod 4$, suppose $p_1, \ldots, p_k$ are all the primes $\equiv 3 \pmod 4$ and let $N = 4p_1\cdots p_k - 1$. It is odd and $\equiv 3 \pmod 4$. A product of primes that are all $\equiv 1 \pmod 4$ is $\equiv 1 \pmod 4$, so some prime factor $q$ of $N$ is $\equiv 3 \pmod 4$. But $N \equiv -1 \pmod{p_i}$ for every $i$, so $q$ is not on the list, a contradiction.
+
+For $1 \bmod 4$, let $N = (2p_1\cdots p_k)^2 + 1$ and let $q$ be a prime factor of it. Then $q$ is odd and $(2p_1\cdots p_k)^2 \equiv -1 \pmod q$, so $-1$ is a square modulo $q$, which by [[eulers-criterion|Euler's Criterion]] forces $q \equiv 1 \pmod 4$. Again $q$ is none of the $p_i$.
+
+The last Key form is the same argument with the [[cyclotomic-polynomials|cyclotomic polynomial]] $\Phi_n$, using $N = n\,p_1\cdots p_k$.
+
+## Useful observations
+- In an olympiad solution the theorem supplies a prime of a chosen residue larger than any given bound, for instance a prime $p \equiv -1 \pmod m$ with $p \gt N$, to substitute into a functional equation or a divisibility.
+- The elementary arguments work exactly for the residues $a$ with $a^2 \equiv 1 \pmod m$; any other residue needs Dirichlet's analysis.
+
+## Applications
+Choosing a large prime in a given residue class to test a divisibility or a functional equation, and proving that the primes of a given form are infinite.
+
+## Contest profile
+No problems here are tagged with it yet. An olympiad citation, quoted in one line; the special cases for $1$ and $3$ modulo $4$ are classical olympiad exercises in their own right.
 `
 });
