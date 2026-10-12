@@ -94,6 +94,55 @@ def dupe_keys(rel):
     return dupes
 
 
+
+# Lines run to where they meet (CONVENTIONS, "Lines in figures run to where they meet"): a drawn
+# line whose extension passes through a marker dot, with the dot a little way past its end and no
+# collinear segment (such as the dashed continuation drawn by segIn) reaching it, stops short of a
+# point that lies on it -- the Iran Lemma figure's bisector did. Panels read and kept on purpose:
+LINE_GAP_ALLOW = {
+    "angle-bisector-theorem#1",   # D lies on BC, which is drawn in full; the hit is the gold ray's direction
+    "extend-sides-to-meet#1",     # the dotted diagonal ends at its vertex; B is on another line
+    "reims-theorem#0",            # Q sits 5px from B on a different line
+    # Coincidental collinearity, read on the contact sheets (2026-10-12): a vertex or center that
+    # happens to lie on the extension of an unrelated segment.
+    "chord-length#1", "sphere-formulas#0", "conic-sections#0", "cross-section-method#1",
+    "extend-sides-to-meet#0", "hyperbola-properties#0", "parallel-line-similarity#0",
+    "parallel-exterior-angles#0", "body:angle-bisector-theorem/reflect",
+    "body:perp-to-angle-bisector/external", "brocards-theorem#0",
+}
+LINE_GAP = 4
+
+def line_gaps(svg):
+    lines = [tuple(map(float, m.groups())) for m in re.finditer(
+        r'<line x1="(-?[\d.]+)" y1="(-?[\d.]+)" x2="(-?[\d.]+)" y2="(-?[\d.]+)"[^>]*stroke-width="([\d.]+)"', svg)]
+    dots = [tuple(map(float, m.groups())) for m in re.finditer(
+        r'<circle cx="(-?[\d.]+)" cy="(-?[\d.]+)" r="([\d.]+)" fill="(?!none)[^"]*"/>', svg)]
+    dots = [d for d in dots if d[2] <= 6]
+    out = []
+    for x1, y1, x2, y2, w in lines:
+        L = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+        if L < 25 or w < 1.3:
+            continue
+        ux, uy = (x2 - x1) / L, (y2 - y1) / L
+        for cx, cy, _ in dots:
+            t = (cx - x1) * ux + (cy - y1) * uy
+            if abs((cx - x1) * uy - (cy - y1) * ux) > 1.5:
+                continue
+            beyond = -t if t < 0 else t - L
+            if not (LINE_GAP < beyond < 2.0 * L):
+                continue
+            covered = False
+            for a1, b1, a2, b2, _w in lines:
+                if abs((a1 - x1) * uy - (b1 - y1) * ux) > 1.5 or abs((a2 - x1) * uy - (b2 - y1) * ux) > 1.5:
+                    continue
+                t1, t2 = (a1 - x1) * ux + (b1 - y1) * uy, (a2 - x1) * ux + (b2 - y1) * uy
+                if min(t1, t2) - LINE_GAP <= t <= max(t1, t2) + LINE_GAP:
+                    covered = True
+                    break
+            if not covered:
+                out.append("a line stops %.0fpx short of the point (%.0f, %.0f) that lies on it" % (beyond, cx, cy))
+    return out
+
 def main():
     findings, panels = [], 0
     for rel in FILES:
@@ -141,6 +190,8 @@ def main():
                         findings.append("%s: circle r=%.0f at (%.0f, %.0f) overshoots the %gx%g "
                                         "canvas by %.0fpx (%.0f%% of r) -- it will be clipped flat"
                                         % (name, r, cx, cy, W, H, out, 100 * out / r))
+            if name.strip() not in LINE_GAP_ALLOW:
+                findings.extend("%s: %s" % (name, g) for g in line_gaps(svg))
             for (s1, a1, b1, c1, d1), (s2, a2, b2, c2, d2) in itertools.combinations(boxes(svg, CW_HIT), 2):
                 if a1 < c2 and a2 < c1 and b1 < d2 and b2 < d1:
                     findings.append("%s: labels %r and %r overlap by %.0fx%.0f px"

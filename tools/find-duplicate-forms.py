@@ -32,6 +32,8 @@ def norm(f):
     f = re.sub(r"\\(left|right|big|Big|bigl|bigr|displaystyle|,|;|!|:|quad|qquad)\b|\\[,;!:]", "", f)
     f = f.replace("\\dfrac", "\\frac").replace("\\tfrac", "\\frac").replace("\\dbinom", "\\binom")
     f = re.sub(r"\\text\{[^}]*\}", "", f)
+    # \frac A2 and \frac{A}{2} are one fraction.
+    f = re.sub(r"\\frac\s*([A-Za-z0-9])\s*([A-Za-z0-9])", r"\\frac{\1}{\2}", f)
     return re.sub(r"\s+", "", f)
 
 def chunks(latex):
