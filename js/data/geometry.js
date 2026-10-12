@@ -344,7 +344,7 @@ window.MATH_SECTIONS.push({
           id: "van-aubel",
           name: "Van Aubel's Theorem",
           latex: String.raw`\text{squares on the sides} \implies \text{opposite-center segments equal and } \perp`,
-          description: String.raw`Erect a square outward on each side of any quadrilateral (even non-convex): the two segments connecting centers of opposite squares have equal length and are perpendicular. Proved neatly with complex numbers — each center is a $90^\circ$-rotation average of its side's endpoints.`,
+          description: String.raw`Erect a square outward on each side of any quadrilateral (even non-convex): the two segments connecting centers of opposite squares have equal length and are perpendicular. Proved neatly with complex numbers — each center is a $90^\circ$-rotation average of its side's endpoints. The triangle result with the same name, about the ratio along a cevian, is [[van-aubel-cevians|Van Aubel's Theorem for Cevians]].`,
           keywords: ["van aubel", "squares on sides", "equal perpendicular segments", "quadrilateral squares"],
           importance: "lower",
           tier: "Olympiad",
