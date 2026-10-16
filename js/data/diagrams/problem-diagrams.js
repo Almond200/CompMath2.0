@@ -440,4 +440,118 @@
     ]);
   })();
 
+  // 2010 AIME I #8: the region, twelve unit squares with lower-left corners on x² + y² = 25.
+  PROB["2010-aime-i-8"] = (() => {
+    const k = 21, O = [200, 152], Q = (x, y) => [O[0] + k * x, O[1] - k * y];
+    const pts = [];
+    for (let x = -5; x <= 5; x++) for (let y = -5; y <= 5; y++) if (x * x + y * y === 25) pts.push([x, y]);
+    const ok = pts.length === 12;
+    return wrap(430, 290, [
+      seg(Q(-6, 0), Q(7, 0), FNT, 1.2), seg(Q(0, -6), Q(0, 6.6), FNT, 1.2),
+      circ(O, 5 * k, FNT, 1.2, "none", "4 4"),
+      ...pts.map(([x, y]) => poly([Q(x, y), Q(x + 1, y), Q(x + 1, y + 1), Q(x, y + 1)], ACC, 1.6, ACCS)),
+      ...pts.map(([x, y]) => dot(Q(x, y), ACC, 2.8)),
+      txt(add(Q(7, 0), [-4, 16]), "x", DIM, 13), txt(add(Q(0, 6.6), [12, 6]), "y", DIM, 13),
+      txt(add(Q(5, 0), [4, 16]), "5", DIM, 12), txt(add(Q(0, 5), [-10, 0]), "5", DIM, 12, "end"),
+      cap(430, 290, "The region: a point is in it when its floors lie on the circle x² + y² = 25 (dashed), so it is the union of the unit squares whose lower-left corners are the twelve lattice points of that circle." + MM(ok))
+    ]);
+  })();
+
+  // 2010 AIME II #14: the right triangle with P on the hypotenuse and the two marked angles.
+  PROB["2010-aime-ii-14"] = (() => {
+    const k = 84, Q = (x, y) => [215 + k * x, 140 - k * y], cx = 5 / (2 * Math.SQRT2), cy = Math.sqrt(4 - cx * cx);
+    const A = Q(-2, 0), B = Q(2, 0), C = Q(cx, cy), P = Q(Math.SQRT2, 0);
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V)));
+    const ok = Math.abs(ang(A, P, C) - 2 * ang(A, C, P)) < 1e-9 && Math.abs(dist(C, P) - k) < 1e-9 && Math.abs(ang(A, C, B) - Math.PI / 2) < 1e-9;
+    return wrap(430, 172, [
+      poly([A, B, C], DIM, 2), seg(C, P, ACC, 2), rightAngle(C, A, B, 9),
+      angleArc(C, A, P, 34, GLD), angleArc(P, A, C, 22, PUR), angleArc(P, A, C, 27, PUR),
+      ...[A, B, C, P].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(P, [0, 18]), "P"),
+      txt(add(mid(A, B), [-40, 18]), "4", DIM, 12.5), txt(add(mid(C, P), [12, 6]), "1", ACC, 12.5, "start"),
+      cap(430, 172, "Right triangle ABC (right angle at C, AB = 4) and P on AB with CP = 1. The double-arc angle APC is twice the gold angle ACP." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AIME I #2: the rectangle with BE parallel to DF and EF parallel to AB.
+  PROB["2011-aime-i-2"] = (() => {
+    const k = 24, Q = (x, y) => [70 + k * x, 262 - k * y], uy = -10 / 17, ux = -Math.sqrt(1 - uy * uy);
+    const A = Q(0, 10), B = Q(12, 10), C = Q(12, 0), D = Q(0, 0), E = Q(12 + 9 * ux, 10 + 9 * uy), F = Q(-8 * ux, -8 * uy);
+    const ok = Math.abs(E[1] - F[1]) < 1e-9 && Math.abs(dist(B, E) - 9 * k) < 1e-9 && Math.abs(dist(D, F) - 8 * k) < 1e-9;
+    return wrap(430, 285, [
+      poly([A, B, C, D], DIM, 2), seg(B, E, ACC, 2), seg(D, F, ACC, 2), seg(E, F, GLD, 2.2),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, -6]), "A"), txt(add(B, [10, -6]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [-10, 14]), "D"),
+      txt(add(E, [-10, 4]), "E", DIM, 13, "end"), txt(add(F, [10, 4]), "F", DIM, 13, "start"),
+      txt(add(mid(B, E), [8, -8]), "9", ACC, 12.5), txt(add(mid(D, F), [-8, 10]), "8", ACC, 12.5),
+      txt(add(mid(A, B), [0, -9]), "12", DIM, 12.5), txt(add(mid(B, C), [14, 4]), "10", DIM, 12.5, "start"),
+      cap(430, 285, "Rectangle ABCD with BE = 9 and DF = 8 parallel, and EF parallel to AB." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AIME II #2: the square with BE = EF = FD.
+  PROB["2011-aime-ii-2"] = (() => {
+    const k = 210, Q = (x, y) => [110 + k * x, 250 - k * y];
+    const A = Q(0, 0), B = Q(1, 0), C = Q(1, 1), D = Q(0, 1), E = Q(0, 1 / 3), F = Q(1, 2 / 3);
+    const ok = Math.abs(dist(B, E) - dist(E, F)) < 1e-9 && Math.abs(dist(E, F) - dist(F, D)) < 1e-9;
+    return wrap(430, 280, [
+      poly([A, B, C, D], DIM, 2), pline([B, E, F, D], ACC, 2.2),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(E, [-10, 4]), "E", DIM, 13, "end"), txt(add(F, [10, 4]), "F", DIM, 13, "start"),
+      ...[[B, E, 1], [E, F, -1], [F, D, -1]].map(([P1, P2, sg]) => txt(add(mid(P1, P2), add(mul(perp(norm(sub(P2, P1))), 14 * sg), [0, 4])), "30", ACC, 12.5)),
+      cap(430, 280, "Square ABCD with E on AD and F on BC such that the zigzag BE, EF, FD has three equal segments of length 30." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AIME II #4: the field and the three routes from the northeast corner to D.
+  PROB["2012-aime-ii-4"] = (() => {
+    const k = 56, L = 6, W = 1.4, c = 4.8, Q = (x, y) => [44 + k * x, 140 - k * y];
+    const NE = Q(L, W), NW = Q(0, W), SW = Q(0, 0), SE = Q(L, 0), D = Q(L - c, 0), g = 5;
+    const ok = Math.abs((2 * L + W - c) / 8.6 - Math.hypot(W, c) / 5) < 1e-9 && Math.abs((W + c) / 6.2 - Math.hypot(W, c) / 5) < 1e-9;
+    return wrap(430, 200, [
+      poly([NW, NE, SE, SW], FNT, 1.4, "rgba(127,127,127,0.06)"),
+      pline([add(NE, [0, g]), add(NW, [g, g]), add(SW, [g, -g]), add(D, [0, -g])], GLD, 2.2),
+      pline([add(NE, [-g, 0]), add(SE, [-g, -g]), add(D, [0, -g])], GRN, 2.2, "6 4"),
+      seg(NE, D, ACC, 2.2), dot(NE, DIM, 4), dot(D, DIM, 4),
+      txt(add(NE, [0, -9]), "start", DIM, 12), txt(add(D, [0, 17]), "D", DIM, 13),
+      txt(add(NW, [70, -8]), "Ana 8.6 m/s", GLD, 12, "start"), txt(add(SE, [-8, 30]), "Bob 6.2 m/s", GRN, 12, "end"),
+      txt(add(lerp(D, NE, 0.42), [0, -10]), "Cao 5 m/s", ACC, 12, "end"),
+      cap(430, 200, "The field, its longer side running west. Ana (gold) rides west along the edge, Bob (green, dashed) south, and Cao (blue) straight across, all from the northeast corner and all reaching D at the same moment." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AIME I #7: the box and the triangle joining the centers of three faces at a corner.
+  PROB["2013-aime-i-7"] = (() => {
+    const h = 36 / 5, { Pj, view } = projector([118, 238], 13, [1, 0], [0.55, -0.35]);
+    const V = { a: [0, 0, 0], b: [12, 0, 0], c: [12, 16, 0], d: [0, 16, 0], e: [0, 0, h], f: [12, 0, h], g: [12, 16, h], m: [0, 16, h] };
+    const faces = [["a", "b", "c", "d"], ["e", "f", "g", "m"], ["a", "b", "f", "e"], ["d", "c", "g", "m"], ["b", "c", "g", "f"], ["a", "d", "m", "e"]];
+    const X = [12, 8, h / 2], Y = [6, 0, h / 2], Z = [6, 8, h];
+    const L3 = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+    const ok = Math.abs(L3(X, Y) - 10) < 1e-9 && Math.abs(0.5 * L3(X, Y) * 6 - 30) < 1e-9 &&
+      Math.abs(Math.sqrt(L3(Z, X) ** 2 - 36) + Math.sqrt(L3(Z, Y) ** 2 - 36) - 10) < 1e-9;
+    return wrap(430, 262, [
+      ...solidEdges(V, faces, view, Pj),
+      poly([X, Y, Z].map(Pj), ACC, 2, ACCS), ...[X, Y, Z].map(q => dot(Pj(q), ACC, 3.5)),
+      txt(add(mid(Pj(V.a), Pj(V.b)), [0, 18]), "12", DIM, 12.5), txt(add(mid(Pj(V.b), Pj(V.c)), [14, 8]), "16", DIM, 12.5, "start"),
+      txt(add(mid(Pj(V.b), Pj(V.f)), [10, 4]), "height", DIM, 12, "start"),
+      cap(430, 262, "The 12 by 16 box. The centers of the three faces that meet at one corner (front, right side and top) form the blue triangle, of area 30." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AIME II #8: the hexagon with sides 22, 22, 20, 22, 22, 20 in its circle.
+  PROB["2013-aime-ii-8"] = (() => {
+    const R = 5 + Math.sqrt(267), k = 5.4, O = [215, 132], sides = [22, 22, 20, 22, 22, 20];
+    const angs = sides.map(c => 2 * Math.asin(c / (2 * R)));
+    let t = -90 - angs[0] * 90 / Math.PI;
+    const V = [];
+    sides.forEach((c, i) => { V.push(onC(O, R * k, t)); t += angs[i] * 180 / Math.PI; });
+    const ok = Math.abs(angs.reduce((a, b) => a + b, 0) - 2 * Math.PI) < 1e-9;
+    return wrap(430, 262, [
+      circ(O, R * k, FNT, 1.6), poly(V, DIM, 2), ...V.map(q => dot(q, DIM, 3.2)),
+      ...sides.map((c, i) => { const M = mid(V[i], V[(i + 1) % 6]); return txt(add(M, mul(norm(sub(M, O)), -16)), String(c), c === 20 ? GLD : DIM, 12.5); }),
+      cap(430, 262, "A hexagon inscribed in a circle with sides 22, 22, 20, 22, 22, 20 in order." + MM(ok))
+    ]);
+  })();
+
 })();
