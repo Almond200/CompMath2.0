@@ -377,21 +377,31 @@
   function arrowAcc(a, b, cls) { var d = norm(sub(b, a)), n = perp(d), bk = sub(b, mul(d, 11)); return seg(a, b, cls || "gl-acc") + '<polygon points="' + r1(b[0]) + "," + r1(b[1]) + " " + r1(bk[0] + n[0] * 5) + "," + r1(bk[1] + n[1] * 5) + " " + r1(bk[0] - n[0] * 5) + "," + r1(bk[1] - n[1] * 5) + '" class="gd-acc"/>'; }
 
   // ---------- Pythagorean theorem (squares on the sides) ----------
+  // The label of a square drawn on segment PQ: just inside the square, beside PQ's midpoint.
+  function sqLabel(sq, P, Q, s, cls) {
+    var m = mid(P, Q), far = mid(sq[2], sq[3]), d = sub(far, m), n = len(d) || 1, k = Math.min(20, n / 2);
+    return txt(add(add(m, [d[0] / n * k, d[1] / n * k]), [0, 4]), s, cls);
+  }
   W["pythagorean-theorem"] = { mount: function (host) {
     var C = [165, 250];
     mountGeo(host, {
       title: "Pythagoras",
-      hint: "Drag the legs.",
+      hint: "Drag A along the bottom leg and B along the side leg. The squares may run past the edge of the frame; the sums stay exact.",
       vx: -15, vy: -90, w: 520, h: 525,
       init: { A: [280, 250], B: [165, 145] },
-      drag: { A: { constrain: function (xy) { return [Math.max(215, Math.min(330, xy[0])), 250]; } }, B: { constrain: function (xy) { return [165, Math.max(100, Math.min(220, xy[1]))]; } } },
+      // Each vertex slides along its own leg anywhere inside the frame, not only where all three
+      // squares still fit: the frame clips the squares, and the caption carries the numbers.
+      drag: { A: { constrain: function (xy) { return [Math.max(195, xy[0]), 250]; } }, B: { constrain: function (xy) { return [165, Math.min(220, xy[1])]; } } },
       render: function (p) {
         var a = len(sub(p.A, C)), b = len(sub(p.B, C)), c = len(sub(p.A, p.B));
         var sqA = squareOn(C, p.A, p.B), sqB = squareOn(C, p.B, p.A), sqC = squareOn(p.A, p.B, C);
         var body = polyS(sqA, "gtri-fill") + polyS(sqB, "gfill-grn") + polyS(sqC, "gfill-gold") +
           polyS([C, p.A, p.B], "gtri") +
-          txt(add(mid(sqA[2], sqA[3]), [0, 4]), "a²", "gt-acc") + txt(mid(sqB[2], sqB[3]), "b²", "gt-grn") + txt(mid(sqC[2], sqC[3]), "c²", "gt-gold") +
-          dotS(C, "gd") + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + txt(add(C, [-16, 6]), "C");
+          // Each square's label sits just inside it, beside its side of the triangle, so it stays
+          // in view when the square runs past the frame.
+          sqLabel(sqA, C, p.A, "a²", "gt-acc") + sqLabel(sqB, C, p.B, "b²", "gt-grn") + sqLabel(sqC, p.A, p.B, "c²", "gt-gold") +
+          dotS(C, "gd") + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + txt(add(C, [-16, 6]), "C") +
+          txt(add(p.A, [-6, -15]), "A") + txt(add(p.B, [-16, -8]), "B");
         return { body: body, caption: "a² + b² = " + uA(a * a) + " + " + uA(b * b) + " = <b>" + uA(a * a + b * b) + "</b> &nbsp;=&nbsp; c² = <b>" + uA(c * c) + "</b> (blue + green = gold)." };
       }
     });

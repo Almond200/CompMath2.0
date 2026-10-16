@@ -2060,7 +2060,7 @@
       // Anywhere a formula NAME can appear needs to be on this list: eight card names carry
       // LaTeX ("Powers of $x + 1/x$", "Primes Are $6k \\pm 1$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them.
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -2124,15 +2124,34 @@
   // This runs once per render and, without touching the geometry, raises dots
   // and labels above the lines, then nudges apart labels that actually overlap.
   function tidyDiagrams(container) {
-    container.querySelectorAll(".diagram svg").forEach(svg => {
+    // The hover preview's thumbnail is the same figure, so it gets the same pass; without it
+    // the preview showed the labels where they were drawn, not where the card page puts them.
+    container.querySelectorAll(".diagram svg, .cp-thumb svg").forEach(svg => {
       try {
         tidyDiagram(svg);
         centerDiagram(svg);
         // Only the at-a-glance figures on the scrolling card list get cropped. Detail pages
         // have room to breathe; the card list is where an over-tall canvas costs real scroll.
         if (svg.closest(".card-glance")) cropDiagramHeight(svg);
+        // A preview has a fixed box: crop to the drawing on both sides so it fills the box.
+        if (svg.closest(".cp-thumb")) fitDiagramToContent(svg);
       } catch (e) { /* getBBox can throw if the svg isn't laid out */ }
     });
+  }
+
+  // Crop the viewBox to the drawing itself, with a small margin, on all four sides. Used for
+  // the hover preview, where many figures drawn on a roomy canvas otherwise filled only half
+  // of the box.
+  function fitDiagramToContent(svg) {
+    const vb = (svg.getAttribute("viewBox") || "").trim().split(/\s+/).map(Number);
+    const bb = svg.getBBox();
+    if (vb.length !== 4 || !vb.every(isFinite) || !bb || !(bb.width > 20) || !(bb.height > 20)) return;
+    // Only inside the original canvas: a figure may draw past its edge (a large circle the
+    // page clips), and that part was never meant to be seen.
+    const pad = 10;
+    const x0 = Math.max(vb[0], bb.x - pad), y0 = Math.max(vb[1], bb.y - pad);
+    const x1 = Math.min(vb[0] + vb[2], bb.x + bb.width + pad), y1 = Math.min(vb[1] + vb[3], bb.y + bb.height + pad);
+    if (x1 - x0 > 20 && y1 - y0 > 20) svg.setAttribute("viewBox", [x0, y0, x1 - x0, y1 - y0].map(v => v.toFixed(1)).join(" "));
   }
 
   // Shift the viewBox sideways so the drawing sits in the middle of its canvas. Only x moves:
@@ -4374,6 +4393,66 @@
   }
   const LOGO_HTML = `<span class="brand-sigma" aria-hidden="true">&Sigma;</span>`;
 
+  // ---------- Front-page panels ----------
+  // Did you know: a striking fact from the curiosity lists, the first Useful observation of one
+  // of their cards (or its opening sentence), chosen by the day and cycled by "Another".
+  function didYouKnowPool() {
+    const ids = [];
+    (window.MATH_BUILTIN_LISTS || []).filter(l => l.kind === "curiosity").forEach(l => l.sections.forEach(sec => sec.ids.forEach(id => { if (BY_ID[id] && ids.indexOf(id) < 0) ids.push(id); })));
+    return ids;
+  }
+  function didYouKnowFact(id) {
+    const body = (window.MATH_DETAILS || {})[id] || "";
+    const m = body.match(/## Useful observations\n+- ([^\n]+)/);
+    const raw = m ? m[1].replace(/ — .*$/, "") : leadSentences(BY_ID[id].formula.description, 240);
+    return raw;
+  }
+  function didYouKnowHtml(offset) {
+    const pool = didYouKnowPool();
+    if (!pool.length) return "";
+    const day = Math.floor(Date.now() / 864e5);
+    const id = pool[((day + offset) % pool.length + pool.length) % pool.length];
+    const f = BY_ID[id].formula;
+    return `<section class="hp-panel dyk" data-offset="${offset}">
+        <div class="hp-label">Did you know?</div>
+        <p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p>
+        <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a><button type="button" class="hp-link dyk-next">Another</button></div>
+      </section>`;
+  }
+  // Newest cards: the latest batch recorded for Special:NewCards.
+  function newestCardsHtml() {
+    // The six most recent cards, newest batch first, across batches.
+    const ids = [];
+    (window.NEW_CARD_BATCHES || []).slice().reverse().forEach(b => b.ids.slice().reverse().forEach(id => { if (BY_ID[id] && ids.length < 6) ids.push(id); }));
+    if (!ids.length) return "";
+    const rows = ids.map(id => {
+      const e = BY_ID[id];
+      return `<a class="rc-row" href="#/f/${id}">${kindBadgeHtml(e.formula)}<span class="rc-name">${e.formula.name}</span><span class="rc-meta">${bySubject(e.section) ? pageTitle(e.section, e.section.subsections.indexOf(e.subsection)) : e.section.title}</span></a>`;
+    }).join("");
+    return `<section class="hp-panel">
+        <div class="hp-label">Newest cards</div>
+        <div class="rc-list">${rows}</div>
+        <a class="hp-link" href="${specialHref("NewCards", "All")}">Every new card, newest first &rarr;</a>
+      </section>`;
+  }
+  // Practice at a glance: the main contests, how many problems each has and how many are
+  // written up, with a way into the latest year.
+  function practiceGlanceHtml() {
+    const main = FAMILIES.filter(f => /^(AMC 8|AJHSME|AMC 10|AMC 12|AIME)$/.test(f));
+    const rows = main.map(f => {
+      const years = Object.keys(DB_TREE[f]).sort();
+      const all = years.reduce((n, y) => n + DB_TREE[f][y].length, 0);
+      const done = PROBLEM_DB.filter(p => p.fam === f && (p.strategy || p.formulas.length)).length;
+      const latest = years[years.length - 1];
+      return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
+    }).join("");
+    return `<section class="hp-panel">
+        <div class="hp-label">Practice at a glance</div>
+        <div class="pg-list">${rows}</div>
+        <div class="hp-mine-foot"><a href="#/special/randomproblem">A random problem</a><a href="#/practice">Every contest and year</a></div>
+      </section>`;
+  }
+
   // The front page: what the app is, why it helps and how to use it, beside what helps today
   // (where you left off, the problem and card of the day, your library). The four spaces and
   // the search sit above both, so nothing needs a scroll to reach.
@@ -4385,20 +4464,15 @@
     const starIds = liveIds(getList("starred"));
     const mine = lists.items.filter(l => l.id !== "starred");
     const nProblems = PROBLEM_DB.filter(p => p.strategy || p.formulas.length).length.toLocaleString();   // problems with their solution written
-    const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-n">${n}</span></a>`;
-    const step = (sp, kind, q, text) => `<a class="hc-step" data-tint="${sp}" href="#/${sp}"><span class="hc-kind">${kind}</span><span class="hc-q">${q}</span><span class="hc-text">${text}</span></a>`;
-    // The front page is mostly a way in: every subject of every space, one click away.
-    const subjectsOf = sp => {
-      const out = [];
-      SECTIONS.filter(x => bookOf(x) === sp).forEach(sec => {
-        if (bySubject(sec)) sec.subsections.forEach((sub, i) => out.push([sub.title, sectionHash(sec.id, { sub: i })]));
-        else out.push([sec.title, sectionHash(sec.id)]);
-      });
-      return out;
+    // Each space says in one line what it holds; the sidebar already lists every subject, so the
+    // front page does not repeat the four spaces a third time.
+    const SPACE_WHAT = {
+      formulas: "Theorems and identities, each with why it holds, when it applies, and a worked example.",
+      methods: "Moves that make progress, with when to reach for them and how to carry them out.",
+      patterns: "Problem shapes worth recognizing on sight, and what to try when you see one.",
+      practice: "Real AMC and AIME problems, linked to the patterns, methods, and formulas they use."
     };
-    const jumpCol = (sp, links) => `<div class="hj-col" data-tint="${sp}"><div class="hj-head">${SPACES[sp].label}</div>${links.map(([t, h]) => `<a href="${h}">${t}</a>`).join("")}</div>`;
-    const jumpCols = ["formulas", "methods", "patterns"].map(sp => jumpCol(sp, subjectsOf(sp))).join("") +
-      jumpCol("practice", [["Contests by year", "#/practice"], ["A random problem", "#/special/randomproblem"], ["Study lists", "#/practice"], ["Starred", "#/list/starred"]]);
+    const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-what">${SPACE_WHAT[sp]}</span><span class="hs-n">${n}</span></a>`;
     $content.innerHTML = `
       <div class="hub">
         <header class="hub-head">
@@ -4413,21 +4487,11 @@
           ${tile("formulas", `${count("formula")} formulas`)}${tile("methods", `${count("method")} methods`)}${tile("patterns", `${count("pattern")} patterns`)}${tile("practice", `${nProblems} problems written`)}
         </nav>
         <div class="hub-main">
-          <section class="hub-about">
-            <h3 class="hub-h">How the four fit together</h3>
-            <div class="hub-chain">
-              ${step("patterns", "Pattern", "What am I looking at?", "A problem shape worth recognizing, like &ldquo;no element divides another&rdquo;.")}
-              <span class="hc-arrow" aria-hidden="true">&rarr;</span>
-              ${step("methods", "Method", "What can I do?", "A move that makes progress, like reflecting a point or substituting.")}
-              <span class="hc-arrow" aria-hidden="true">&rarr;</span>
-              ${step("formulas", "Formula", "What is true?", "A theorem or identity, with why it holds and worked examples.")}
-              <span class="hc-arrow" aria-hidden="true">&rarr;</span>
-              ${step("practice", "Problem", "Can I use it?", "A real contest problem, with the ideas it uses and a strategy.")}
-            </div>
-            <p class="hub-p hub-chain-note">Recognize the shape, choose a move, use the facts it needs, then practice on real problems. Every card links both ways along this chain.</p>
-            <h3 class="hub-h">Jump to</h3>
-            <div class="hub-jump">${jumpCols}</div>
-          </section>
+          <div class="hub-col">
+            ${didYouKnowHtml(0)}
+            ${newestCardsHtml()}
+            ${practiceGlanceHtml()}
+          </div>
           <aside class="hub-side">
             <section class="hp-panel">
               <div class="hp-label">Continue where you left off</div>
@@ -4458,6 +4522,17 @@
     // The hero search waits for Search (or Enter), then hands off to the real search box: the
     // results page shows the header search again with the text in it, so typing continues
     // there.
+    // "Another" swaps in the next fact without re-rendering the page.
+    $content.addEventListener("click", e => {
+      const btn = e.target.closest(".dyk-next");
+      if (!btn) return;
+      const panel = btn.closest(".dyk");
+      const tmp = document.createElement("div");
+      tmp.innerHTML = didYouKnowHtml(+panel.dataset.offset + 1);
+      const next = tmp.firstElementChild;
+      panel.replaceWith(next);
+      renderMath(next);
+    });
     const box = document.getElementById("home-search");
     const handOff = v => {
       $search.value = v;

@@ -20,7 +20,7 @@ $JSC tools/validate-problem-db.js
 ```
 
 - **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (Playwright is preinstalled; `executablePath` is the `CHROME` above): 0 KaTeX errors, no overflow at 375 px, light and dark.
-- **Versions:** bump `?v=` in `index.html` (and the lab pages) for every touched file, and `STATEMENTS_V` in `js/app.js` when statement files change.
+- **Versions:** bump `?v=` in `index.html` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences
 - Never put the owner's name in the app's files.
