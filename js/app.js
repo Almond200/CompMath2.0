@@ -2124,15 +2124,34 @@
   // This runs once per render and, without touching the geometry, raises dots
   // and labels above the lines, then nudges apart labels that actually overlap.
   function tidyDiagrams(container) {
-    container.querySelectorAll(".diagram svg").forEach(svg => {
+    // The hover preview's thumbnail is the same figure, so it gets the same pass; without it
+    // the preview showed the labels where they were drawn, not where the card page puts them.
+    container.querySelectorAll(".diagram svg, .cp-thumb svg").forEach(svg => {
       try {
         tidyDiagram(svg);
         centerDiagram(svg);
         // Only the at-a-glance figures on the scrolling card list get cropped. Detail pages
         // have room to breathe; the card list is where an over-tall canvas costs real scroll.
         if (svg.closest(".card-glance")) cropDiagramHeight(svg);
+        // A preview has a fixed box: crop to the drawing on both sides so it fills the box.
+        if (svg.closest(".cp-thumb")) fitDiagramToContent(svg);
       } catch (e) { /* getBBox can throw if the svg isn't laid out */ }
     });
+  }
+
+  // Crop the viewBox to the drawing itself, with a small margin, on all four sides. Used for
+  // the hover preview, where many figures drawn on a roomy canvas otherwise filled only half
+  // of the box.
+  function fitDiagramToContent(svg) {
+    const vb = (svg.getAttribute("viewBox") || "").trim().split(/\s+/).map(Number);
+    const bb = svg.getBBox();
+    if (vb.length !== 4 || !vb.every(isFinite) || !bb || !(bb.width > 20) || !(bb.height > 20)) return;
+    // Only inside the original canvas: a figure may draw past its edge (a large circle the
+    // page clips), and that part was never meant to be seen.
+    const pad = 10;
+    const x0 = Math.max(vb[0], bb.x - pad), y0 = Math.max(vb[1], bb.y - pad);
+    const x1 = Math.min(vb[0] + vb[2], bb.x + bb.width + pad), y1 = Math.min(vb[1] + vb[3], bb.y + bb.height + pad);
+    if (x1 - x0 > 20 && y1 - y0 > 20) svg.setAttribute("viewBox", [x0, y0, x1 - x0, y1 - y0].map(v => v.toFixed(1)).join(" "));
   }
 
   // Shift the viewBox sideways so the drawing sits in the middle of its canvas. Only x moves:

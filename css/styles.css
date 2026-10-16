@@ -546,7 +546,10 @@ body {
 }
 /* Let the figure use the full width of the wider box; capping only the height keeps the
    card a sensible rectangle instead of stretching to whatever aspect the diagram has. */
-.card-preview .cp-thumb svg { width: 100%; height: auto; max-height: 210px; }
+/* The preview figure is cropped to its drawing (fitDiagramToContent), then drawn as tall as
+   the box allows, so it fills about three quarters of the box or more. */
+.card-preview .cp-thumb { height: 230px; align-items: center; }
+.card-preview .cp-thumb svg { width: 100%; height: 205px; max-height: none; }
 .card-preview .cp-head {
   display: flex;
   align-items: center;
@@ -1869,7 +1872,7 @@ input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
 }
 .geo-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
 .geo-svg {
-  display: block; width: 100%; max-width: 460px; margin: 0 auto;
+  display: block; width: 100%; max-width: 400px; margin: 0 auto; overflow: hidden;
   touch-action: none; user-select: none; -webkit-user-select: none;
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
 }

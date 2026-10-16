@@ -18,5 +18,6 @@ PY
 done
 "$JSC" "$ROOT/lab/lab-common.js" 2>&1 | grep -i "SyntaxError" && { echo "  FAIL lab-common.js"; fail=1; } || echo "  ok   lab-common.js"
 rm -f /tmp/lab-check.js
+python3 "$ROOT/tools/sync-lab-versions.py" --check || fail=1
 [ "$fail" = 0 ] && echo "OK - every lab page parses" || echo "FAIL - see above"
 exit $fail
