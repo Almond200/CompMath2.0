@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 170 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 171 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -37,7 +37,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["conic-sections", "ellipse-properties", "hyperbola-properties", "parabola-focus-directrix", "eccentricity", "conic-classification", "conic-reflective-property", "conic-tangent-lines", "conic-parametric", "focal-radii", "parabolic-segment-area", "axis-stretch-area"] },
       { title: "Coordinates & Transformations",
         note: "For when the synthetic route stalls and the figure offers a right angle, a midpoint or a natural origin.",
-        ids: ["distance-midpoint", "line-forms", "angle-between-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance"] },
+        ids: ["distance-midpoint", "line-forms", "angle-between-lines", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance"] },
       { title: "Three Dimensions",
         note: "Mensuration of the named solids first, then analytic geometry in space for everything that is not one.",
         ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron"] },

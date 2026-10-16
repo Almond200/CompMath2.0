@@ -713,3 +713,4 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | painted-cubes | geometry (pattern) / Solid Configurations | AMC | new (gap scan) | 0 | **low** |
 | round-robin-tournaments | counting (pattern) / Logic & Probability Setups | AMC | new (gap scan) | 0 | **low** |
 | magic-squares | counting (pattern) / Logic & Probability Setups | AMC | new (gap scan) | 0 | **lower** |
+| angle-bisectors-of-lines | geometry / Coordinate & Grid Geometry | AMC | new (gap scan) | 0 | **low** |

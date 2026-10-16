@@ -1725,6 +1725,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12"]
         },
         {
+          id: "angle-bisectors-of-lines",
+          name: "Angle Bisectors of Two Lines",
+          latex: String.raw`\frac{a_1x + b_1y + c_1}{\sqrt{a_1^2 + b_1^2}} = \pm\frac{a_2x + b_2y + c_2}{\sqrt{a_2^2 + b_2^2}}, \qquad y = 0,\ y = mx:\ \ m' = \frac{\sqrt{1 + m^2} - 1}{m}`,
+          description: String.raw`Two crossing lines $a_1x + b_1y + c_1 = 0$ and $a_2x + b_2y + c_2 = 0$ have two angle bisectors, perpendicular to each other, and they are the points at equal distance from both lines. Dividing each equation by the length of its normal vector makes both sides signed distances, and the two signs give the two bisectors. When one line is the $x$-axis and the other has slope $m$, the bisector of the angle between them has slope $m'$, the tangent of half the angle. A slope from a Pythagorean triple, such as $\frac34$, has a rational bisector, here $\frac13$.`,
+          keywords: ["angle bisector of two lines", "bisector slope", "equation of angle bisector", "slope of the bisector", "equidistant from two lines", "half angle slope", "3/4 and 1/3", "incenter coordinates"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "shoelace-formula",
           name: "Shoelace Formula",
           latex: String.raw`A = \frac{1}{2} \left| \sum_{i=1}^{n} (x_i y_{i+1} - y_i x_{i+1}) \right|`,

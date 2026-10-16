@@ -9022,4 +9022,23 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 330, "A 4 × 4 × 4 cube painted on the outside: the small cubes at the 8 corners have three painted faces (gold), the 2 inside each of the 12 edges have two (green), the 4 inside each of the 6 faces have one (blue), and a hidden core of 8 has none. 8 + 24 + 24 + 8 = 64." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Angle bisectors of two lines: the x-axis and y = 3x/4, the bisector y = x/3, and the
+  // example's circle of radius 2 centered at (6, 2).
+  DIAGRAMS["angle-bisectors-of-lines"] = [(() => {
+    const k = 30, P = (x, y) => [45 + k * x, 262 - k * y];
+    const O = P(0, 0), Cn = P(6, 2), T1 = P(6, 0), T2 = P(6 - 2 * 0.6, 2 + 2 * 0.8);   // feet of the radii on the two lines
+    const ok = Math.abs(Math.abs(3 * 6 - 4 * 2) / 5 - 2) < 1e-12 && Math.abs((Math.sqrt(1 + 9 / 16) - 1) / 0.75 - 1 / 3) < 1e-12 &&
+      Math.abs(T2[1] - P(4.8, 3.6)[1]) < 1e-9;
+    return wrap(430, 300, [
+      seg(P(-0.5, 0), P(12, 0), DIM, 2), seg(P(-0.4, -0.3), P(10.8, 8.1), DIM, 2),
+      seg(O, P(12, 4), ACC, 2, "6 4"),
+      circ(Cn, 2 * k, GLD, 1.8), seg(Cn, T1, GLD, 1.4), seg(Cn, T2, GLD, 1.4),
+      rightAngle(T1, Cn, P(12, 0), 9, GLD), rightAngle(T2, Cn, O, 9, GLD),
+      angleArc(O, P(12, 0), P(12, 4), 46, PUR), angleArc(O, P(12, 4), P(10.8, 8.1), 52, PUR),
+      dot(O, DIM, 4), dot(Cn, GLD, 4.5),
+      txt(add(P(12, 0), [-4, 18]), "y = 0", DIM, 13, "end"), txt(add(P(10.8, 8.1), [-8, -2]), "y = 3x/4", DIM, 13, "end"),
+      txt(add(P(12, 4), [-2, -8]), "y = x/3", ACC, 13, "end"), txt(add(Cn, [12, -2]), "(6, 2)", GLD, 13, "start"),
+      cap(430, 300, "The bisector (dashed blue) of the angle between the x-axis and y = 3x/4 has slope 1/3: the two purple angles are equal. A circle tangent to both lines has its center on it; the example's circle of radius 2 is centered at (6, 2), and its radii to the two lines are perpendicular to them." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();

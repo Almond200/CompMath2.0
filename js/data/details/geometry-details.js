@@ -8701,5 +8701,30 @@ The same sort works for an $a \times b \times c$ box with every side at least $2
 
 ## Contest profile
 An AMC 8 and AMC 10 problem, often phrased as a probability or a fraction of painted small faces. Harder versions paint only some faces, or work backwards from a count to the size of the cube.
+`,
+"angle-bisectors-of-lines": String.raw`
+## Key forms
+- $m = \frac34 \to m' = \frac13$, $\ m = \frac43 \to m' = \frac12$, $\ m = \frac{5}{12} \to m' = \frac15$, $\ m = \frac{12}{5} \to m' = \frac23$ — the bisector of the $x$-axis and a slope from a Pythagorean triple
+- $m' = \dfrac{m}{1 + \sqrt{1 + m^2}}$ — the same slope with the root in the denominator, from $\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta}$
+- $m' = \dfrac{m_1m_2 - 1 \pm \sqrt{(1 + m_1^2)(1 + m_2^2)}}{m_1 + m_2}$ — the two bisectors of lines with slopes $m_1$ and $m_2$, for $m_1 + m_2 \ne 0$
+- the two bisectors are perpendicular: their slopes multiply to $-1$
+
+## Conditions
+The two lines cross, so they are not parallel. In the equation form, the bisector with the plus sign bisects the pair of opposite angles in which the two left sides, $a_1x + b_1y + c_1$ and $a_2x + b_2y + c_2$, have the same sign; to pick the bisector of a particular angle, test one point inside it. The slope form $m'$ is the bisector of the angle between the positive $x$-axis and the ray of slope $m$ going to the right.
+
+## Why it works
+A point lies on a bisector exactly when it is at the same distance from both lines. By [[point-line-distance|the point-to-line distance formula]], the distance from $(x, y)$ to the first line is $\frac{|a_1x + b_1y + c_1|}{\sqrt{a_1^2 + b_1^2}}$, and the same for the second. Setting the two equal and removing the absolute values gives the two signs, which are two lines through the crossing point.
+
+For the slope form, the line of slope $m$ makes an angle $\theta$ with the $x$-axis, with $\tan\theta = m$, $\cos\theta = \frac{1}{\sqrt{1 + m^2}}$, and $\sin\theta = \frac{m}{\sqrt{1 + m^2}}$. The bisector makes the angle $\frac\theta2$, and $$\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{m}{1 + \sqrt{1 + m^2}} = \frac{\sqrt{1 + m^2} - 1}{m}.$$ The last step multiplies the numerator and denominator by $\sqrt{1 + m^2} - 1$.
+
+## Useful observations
+- The bisector slope is rational exactly when $\sqrt{1 + m^2}$ is, that is, when $m$ is the ratio of the legs of a Pythagorean triple. Conversely, a rational bisector slope $t$ comes from $m = \frac{2t}{1 - t^2}$, the [[double-angle|double-angle formula]] for the tangent.
+- The center of a circle tangent to both lines lies on a bisector, so the incenter and excenters of a triangle given by its side lines are found by intersecting bisectors.
+
+## Applications
+Centers of circles tangent to two given lines, incenters and excenters in coordinates, reflecting one line in another, and the slope of a line that makes equal angles with two given lines.
+
+## Contest profile
+No problems here are tagged with it yet. It appears on the AMC 12 and the AIME when a circle is tangent to two lines through a common point, or a triangle's incenter is wanted in coordinates, where a Pythagorean slope makes the bisector come out rational.
 `
 });

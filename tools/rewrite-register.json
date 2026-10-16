@@ -1782,7 +1782,8 @@
     "calendar-problems": "pattern",
     "painted-cubes": "pattern",
     "round-robin-tournaments": "pattern",
-    "magic-squares": "pattern"
+    "magic-squares": "pattern",
+    "angle-bisectors-of-lines": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8568,6 +8569,12 @@
       [
         "(new card)",
         "written directly in the pattern template"
+      ]
+    ],
+    "angle-bisectors-of-lines": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-16)
 
-- **Counts:** 700 cards (517 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged.
 - **Last finished:**
   - all 20 gap-scan cards (four batches) and Cutting a Solid with a Plane;
   - the UI scan;
@@ -14,7 +14,7 @@
   - the empty Practice Problems section on patterns;
   - the Solution section groundwork.
 - **In progress:** section 2.2, the small fixes. Nothing is half-done.
-- **Next action:** write the Angle Bisectors of Two Lines card (Geometry › Coordinate & Grid Geometry, after `angle-between-lines`).
+- **Next action:** hover previews: find why a preview's figure differs from the card's figure, then make it fill about three quarters of the box (`js/app.js`, `.cp-thumb`).
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
   - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
@@ -213,7 +213,7 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 
 ### 2.2 Small fixes and one new card
 - [x] Vieta Jumping moves from Number Theory methods to Proof Methods (it is fundamentally a proof method).
-- [ ] New card: Angle Bisectors of Two Lines. It gives the bisector equation and the slope rules: the x-axis and slope $\frac34$ give $\frac13$, and the other Pythagorean-triple pairs.
+- [x] New card: Angle Bisectors of Two Lines. It gives the bisector equation and the slope rules: the x-axis and slope $\frac34$ give $\frac13$, and the other Pythagorean-triple pairs.
 - [ ] Hover previews:
   - find why the preview figure sometimes differs from the card's figure;
   - make the figure fill about three quarters of the box height.
