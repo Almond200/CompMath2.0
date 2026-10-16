@@ -6,15 +6,27 @@
 
 ## Current state (updated 2026-10-16, second cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 10 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 29 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
-  - 2.7a, card 1 (Pythagorean Theorem), the first 18 of its 76 problems in the order `tools/practice-card.js` lists them (2026 AIME I #3, then 1983 AIME #4 up to 2000 AIME II #8); five citations were dropped, so the card now has 71.
-- **In progress:** 2.7a, card 1, Pythagorean Theorem. **Last problem done: 2000 AIME II, Problem 8.** Next is 2000 AIME II, Problem 12, then the rest of the card's list.
-- **Next action:** `node tools/practice-card.js pythagorean-theorem` prints every citing problem with its statement, tags, strategy and trick; `node tools/practice-set.js edits.json` rewrites entries by ref (write the JSON from Python with raw strings so the LaTeX stays intact). For each problem: re-solve it, keep or drop each tag (CONVENTIONS §11, "Tag the specific card"), write the strategy and an "Alternatively, ..." trick where a second good route exists, draw a figure if the statement has none, and check every number by script. Push every 10 to 15 problems.
+  - 2.7a, card 1 (Pythagorean Theorem), the first 43 of its 76 problems in the order `tools/practice-card.js` lists them (2026 AIME I #3, then 1983 AIME #4 up to 2013 AIME II #8); fourteen citations were dropped so far, so the card now has 62.
+- **In progress:** 2.7a, card 1, Pythagorean Theorem. **Last problem done: 2013 AIME II, Problem 8.** Next is 2014 AIME I, Problem 1, then the rest of the card's list. (Batch 6, 2014 AIME I #1 to 2016 AIME I #4, was re-solved and its numbers checked in chat but not yet written; redo it from the problems themselves. Its findings: 2014 I #13 has $s^2+w^2=34^2$, $sw=510$, so $s^2=850$; 2014 I #15 is $G$ the midpoint of $AC$, $F$ the bisector foot, $DE=\tfrac{FG}{\sin(45^\circ-C)}=\tfrac{25\sqrt2}{14}$, no Pythagoras; 2016 I #4 is a dihedral angle with a 30-60-90 triangle.)
+- **Next action (hand-off for the next chat):**
+  1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
+  2. `node tools/practice-card.js pythagorean-theorem` prints every problem citing the card, with statement, tags, strategy and trick. Find the "Next is" problem above and go on in that order.
+  3. For each problem: re-solve it; keep or drop each tag (drop Pythagoras where the step is really a named card: chord length, 3D distance, a special triangle, a triple); write the strategy, plus `trick`/`trickFormulas` ("Alternatively, ...") when a second good route exists; check every number, intermediate ones too, with a Python/sympy script; draw a figure in `js/data/diagrams/problem-diagrams.js` if the statement has none (setup only, `ok` self-check, `MM(ok)` in the caption; 3D solids with `projector` and `solidEdges`).
+  4. Write entries with `node tools/practice-set.js edits.json`, building the JSON from Python raw strings. No raw `<` (use `\lt`).
+  5. Every 8 to 10 problems: gates (CLAUDE.md list), a browser check of the touched pages (`#/problem/<slug>`), bump `?v=` for `problem-db.js` and `problem-diagrams.js` in `index.html` and run `tools/sync-lab-versions.py`, update this block and the README changelog, commit and push.
+  6. When Pythagorean Theorem is finished, move to the next card in `js/data/geometry.js` order (`special-right-triangles`, then `altitude-hypotenuse`, ...). A problem already done under an earlier card needs only a check that the new card's citation is right.
 - **Decisions made in this pass (keep applying them):**
   - a chord at a distance from the center cites `chord-length`, not `pythagorean-theorem`;
   - AA similarity cites `triangle-similarity`; `similar-figures-ratios` is for scaling lengths, areas and volumes;
+  - a distance between points in space cites `distance-3d`; a 13-14-15 triangle cites `triangle-13-14-15`; a hexagonal row offset cites `equilateral-triangle-facts`;
+  - a problem given only in coordinates (2002 AIME II #2) or with nothing to picture beyond its answer gets no figure; 3D figures use `solidEdges` in `problem-diagrams.js`, which dashes hidden edges by ray casting;
+  - a fold cites the `folded-paper` pattern; a 45-45-90 diagonal cites `special-right-triangles`; grid distances cite `distance-midpoint`;
+  - lattice points on a circle cite `lattice-points-circle`; a product of chord pieces cites `power-of-a-point` (2010 AIME II #14 needs no Pythagoras);
+  - a strategy never holds a raw `<`: write `\lt`;
+  - verify every intermediate value written in a strategy, not just the answer (a wrong quadratic in 2004 AIME II #12 was caught this way);
   - a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
@@ -259,6 +271,7 @@ On the Angle Chasing card: a random cyclic quadrilateral configuration with equa
 - Stage R: proof depth.
 - Stage 5: flashcards and the experimental features moved into Practice.
 - Per-contest lists, once enough problems are tagged.
+- Card topic lists that over-reach: Rationalizing carries complex numbers and sequences, so 2002 AIME I #2 shows those chips. Check every card's `topics` in the card-file re-check.
 - The twin cards the duplicate finder flagged (lte and lte-lemma, and three others) are undecided.
 
 ## 3. Housekeeping after every step
