@@ -20,8 +20,8 @@
   - the "/" fix;
   - the empty Practice Problems section on patterns;
   - the Solution section groundwork.
-- **In progress:** nothing is half-done. Sections 2.1 to 2.4 are finished and pushed.
-- **Next action:** section 2.5, the angle-chasing game: a new widget `W["angle-chasing"]` in `js/geo-interactive.js` (the card id is `angle-chasing` in `js/data/patterns.js`), built with `mountGeo`'s helpers. Then 2.6, the interactives audit, and 2.7, the practice pass (cards first, then papers).
+- **In progress:** section 2.6, the interactives audit. Nothing is half-done; 2.1 to 2.5 are finished and pushed.
+- **Next action:** section 2.6. Audit every widget in `js/geo-interactive.js` and `js/math-tools.js` (title, a line saying what to drag and what stays true, labels, live values, no errors), then add drag-the-triangle widgets for the olympiad lemmas. After that comes 2.7, the practice pass (cards first, then papers).
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
   - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
@@ -238,7 +238,7 @@ A Wikipedia-style right-hand column on card pages:
 
 It is off by default and turned on in Settings.
 
-### 2.5 Angle-chasing game
+### 2.5 Angle-chasing game (done 2026-10-16)
 On the Angle Chasing card: a random cyclic quadrilateral configuration with equal chords and one given angle. The reader marks every angle equal to it, presses Check, and sees the reason for each.
 
 ### 2.6 Interactives audit, then drag-the-triangle widgets

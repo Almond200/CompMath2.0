@@ -3410,3 +3410,18 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 html[data-width="readable"] .detail { max-width: 860px; }
 html[data-width="readable"] .detail-with-tools { max-width: calc(860px + 248px); }
 @media print { .page-tools, .sidebar, .topbar { display: none !important; } .detail-with-tools { display: block; } }
+/* Angle-chasing puzzle (js/geo-interactive.js) */
+.ac-intro { font-size: 13.5px; color: var(--text-dim); margin: 0 0 10px; line-height: 1.55; }
+.ac-w { fill: rgba(128, 128, 128, 0.10); stroke: var(--text-faint); stroke-width: 1; cursor: pointer; }
+.ac-w:hover { fill: rgba(245, 196, 81, 0.28); }
+.ac-w.ac-given { fill: rgba(91, 140, 255, 0.40); stroke: var(--accent); cursor: default; }
+.ac-w.ac-sel { fill: rgba(245, 196, 81, 0.55); stroke: var(--gold); }
+.ac-w.ac-ok { fill: rgba(76, 195, 138, 0.55); stroke: var(--level-mc); }
+.ac-w.ac-miss { fill: rgba(226, 85, 95, 0.12); stroke: #e2555f; stroke-dasharray: 3 2; stroke-width: 1.6; }
+.ac-w.ac-wrong { fill: rgba(226, 85, 95, 0.45); stroke: #e2555f; }
+.ac-bar { display: flex; gap: 8px; align-items: center; margin-top: 10px; flex-wrap: wrap; }
+.ac-btn { font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); cursor: pointer; }
+.ac-btn:hover { border-color: var(--accent); color: var(--accent); }
+.ac-score { font-size: 13px; color: var(--text-dim); }
+.ac-reasons { margin: 6px 0; padding-left: 18px; }
+.ac-key { display: block; font-size: 12px; color: var(--text-faint); }
