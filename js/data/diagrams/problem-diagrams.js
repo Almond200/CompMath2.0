@@ -313,4 +313,131 @@
     ]);
   })();
 
+  // An arc of the circle (center c, radius r) from point p to point q, inside the angle they make.
+  const arcPQ = (c, r, p, q, col = FNT, w = 1.5, dash = "") => {
+    const a1 = Math.atan2(p[1] - c[1], p[0] - c[0]), a2 = Math.atan2(q[1] - c[1], q[0] - c[0]);
+    let da = a2 - a1; while (da > Math.PI) da -= 2 * Math.PI; while (da < -Math.PI) da += 2 * Math.PI;
+    return `<path d="M ${p[0].toFixed(1)},${p[1].toFixed(1)} A ${r} ${r} 0 0 ${da > 0 ? 1 : 0} ${q[0].toFixed(1)},${q[1].toFixed(1)}" fill="none" stroke="${col}" stroke-width="${w}"${dash ? ` stroke-dasharray="${dash}"` : ""}/>`;
+  };
+
+  // 2004 AIME II #12: the isosceles trapezoid, the four corner circles (the parts inside it), and
+  // the small circle touching all four.
+  PROB["2004-aime-ii-12"] = (() => {
+    const k = 38, h = 2 * Math.sqrt(6), Q = (x, y) => [215 + k * x, 222 - k * y];
+    const A = Q(-3, 0), B = Q(3, 0), C = Q(2, h), D = Q(-2, h);
+    const r = (-60 + 48 * Math.sqrt(3)) / 23, O = Q(0, Math.sqrt(r * r + 6 * r));
+    const ok = Math.abs(dist(O, A) - (r + 3) * k) < 1e-9 && Math.abs(dist(O, D) - (r + 2) * k) < 1e-9 && Math.abs(dist(A, D) - 5 * k) < 1e-9;
+    const toward = (P, T, len) => add(P, mul(norm(sub(T, P)), len));
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2),
+      arcPQ(A, 3 * k, toward(A, B, 3 * k), toward(A, D, 3 * k), ACC, 1.8), arcPQ(B, 3 * k, toward(B, A, 3 * k), toward(B, C, 3 * k), ACC, 1.8),
+      arcPQ(C, 2 * k, toward(C, D, 2 * k), toward(C, B, 2 * k), GRN, 1.8), arcPQ(D, 2 * k, toward(D, C, 2 * k), toward(D, A, 2 * k), GRN, 1.8),
+      circ(O, r * k, GLD, 2, GLDS),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(mid(A, B), [0, 18]), "6", DIM, 12.5), txt(add(mid(D, C), [0, -8]), "4", DIM, 12.5),
+      txt(add(mid(A, D), [-12, 0]), "5", DIM, 12.5, "end"), txt(add(mid(B, C), [12, 0]), "5", DIM, 12.5, "start"),
+      cap(430, 250, "Isosceles trapezoid ABCD with circles of radius 3 about A and B (blue) and radius 2 about C and D (green), drawn where they lie inside it. The gold circle touches all four." + MM(ok))
+    ]);
+  })();
+
+  // 2005 AIME II #8: circles of radius 4 and 10 inside the circle of radius 14, centers in line,
+  // and the chord that is their common external tangent.
+  PROB["2005-aime-ii-8"] = (() => {
+    const k = 8.8, O = [215, 138], C2 = [O[0] - 4 * k, O[1]], C1 = [O[0] + 10 * k, O[1]];
+    const n = [6 / 14, Math.sqrt(1 - 36 / 196)], h = n[0] * C1[0] + n[1] * C1[1] + 4 * k;
+    const dO = h - n[0] * O[0] - n[1] * O[1], foot = add(O, mul(n, dO)), u = perp(n), half = Math.sqrt(196 * k * k - dO * dO);
+    const E1 = add(foot, mul(u, half)), E2 = sub(foot, mul(u, half));
+    const ok = Math.abs((h - n[0] * C2[0] - n[1] * C2[1]) - 10 * k) < 1e-9 && Math.abs(dist(O, E1) - 14 * k) < 1e-9;
+    return wrap(430, 276, [
+      circ(O, 14 * k, FNT, 1.6), circ(C2, 10 * k, DIM, 1.8), circ(C1, 4 * k, DIM, 1.8),
+      seg(E1, E2, ACC, 2.2), dot(O, DIM, 3.5), dot(C1, DIM, 3.5), dot(C2, DIM, 3.5),
+      txt(add(C2, [0, 18]), subT("C", "2"), DIM, 13), txt(add(C1, [0, 18]), subT("C", "1"), DIM, 13),
+      txt(add(O, [0, -110]), subT("C", "3"), DIM, 13),
+      cap(430, 276, "C1 (radius 4) and C2 (radius 10) touch each other and touch C3 from inside, with all three centers on one line. The blue chord of C3 is a common external tangent of C1 and C2." + MM(ok))
+    ]);
+  })();
+
+  // 2006 AIME I #1: the quadrilateral with its two right angles.
+  PROB["2006-aime-i-1"] = (() => {
+    const k = 7.2, Q = (x, y) => [78 + k * x, 222 - k * y];
+    const u = [18 / Math.hypot(18, 21), 21 / Math.hypot(18, 21)];
+    const B = Q(0, 0), A = Q(0, 18), C = Q(21, 0), D = Q(21 + 14 * u[0], 14 * u[1]);
+    const ok = Math.abs((A[0] - C[0]) * (D[0] - C[0]) + (A[1] - C[1]) * (D[1] - C[1])) < 1e-6 && Math.abs(dist(C, D) - 14 * k) < 1e-9;
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5, "5 4"),
+      rightAngle(B, A, C, 11), rightAngle(C, A, D, 11),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, -4]), "A"), txt(add(B, [-10, 12]), "B"), txt(add(C, [6, 16]), "C"), txt(add(D, [10, -4]), "D", DIM, 13, "start"),
+      txt(add(mid(A, B), [-10, 4]), "18", DIM, 12.5, "end"), txt(add(mid(B, C), [0, 18]), "21", DIM, 12.5), txt(add(mid(C, D), [12, 6]), "14", DIM, 12.5, "start"),
+      cap(430, 250, "Quadrilateral ABCD with a right angle at B and the diagonal AC perpendicular to CD." + MM(ok))
+    ]);
+  })();
+
+  // 2006 AIME II #1: the equilateral hexagon with right angles at A and D.
+  PROB["2006-aime-ii-1"] = (() => {
+    const k = 108, c = Math.SQRT1_2, Q = (x, y) => [83 + k * (x + c), 130 - k * y];
+    const A = Q(-c, 0), B = Q(0, c), C = Q(1, c), D = Q(1 + c, 0), E = Q(1, -c), F = Q(0, -c);
+    const H = [A, B, C, D, E, F], sides = H.map((p, i) => dist(p, H[(i + 1) % 6]));
+    const ok = sides.every(d => Math.abs(d - k) < 1e-9);
+    return wrap(430, 260, [
+      poly(H, DIM, 2), rightAngle(A, B, F, 12), rightAngle(D, C, E, 12),
+      ...H.map((p, i) => ticksOn(p, H[(i + 1) % 6], 1)),
+      ...H.map(p => dot(p, DIM, 3.5)),
+      ...[["A", [-12, 4]], ["B", [-4, -9]], ["C", [4, -9]], ["D", [12, 4]], ["E", [4, 18]], ["F", [-4, 18]]].map(([n, o], i) => txt(add(H[i], o), n)),
+      cap(430, 260, "Convex hexagon ABCDEF with six equal sides, right angles at A and D, and the other four angles equal." + MM(ok))
+    ]);
+  })();
+
+  // 2006 AIME II #6: the unit square, the equilateral triangle AEF, and the small square at B.
+  PROB["2006-aime-ii-6"] = (() => {
+    const k = 230, Q = (x, y) => [100 + k * x, 262 - k * y], x = Math.sqrt(3) - 1, s = (3 - Math.sqrt(3)) / 6;
+    const A = Q(0, 0), B = Q(1, 0), C = Q(1, 1), D = Q(0, 1), E = Q(1, 1 - x), F = Q(1 - x, 1);
+    const S1 = Q(1 - s, 0), S2 = Q(1 - s, s), S3 = Q(1, s);
+    const onAE = Math.abs((S2[0] - A[0]) * (E[1] - A[1]) - (S2[1] - A[1]) * (E[0] - A[0])) < 1e-6;
+    const ok = onAE && Math.abs(dist(A, E) - dist(E, F)) < 1e-9 && Math.abs(dist(A, F) - dist(E, F)) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, C, D], DIM, 2), poly([A, E, F], ACC, 2, ACCS), poly([B, S1, S2, S3], GLD, 2, GLDS),
+      ...[A, B, C, D, E, F, S2].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(E, [12, 4]), "E", DIM, 13, "start"), txt(add(F, [0, -9]), "F"),
+      cap(430, 290, "Square ABCD of side 1 with the equilateral triangle AEF (blue), and the smaller square (gold) with vertex B, sides parallel to ABCD, and its opposite vertex on AE." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AIME II #11: the isosceles triangle and the two circles on the base.
+  PROB["2008-aime-ii-11"] = (() => {
+    const k = 2.45, Q = (x, y) => [215 + k * x, 262 - k * y], rq = 44 - 6 * Math.sqrt(35);
+    const A = Q(0, 96), B = Q(-28, 0), C = Q(28, 0), P = Q(28 - 64 / 3, 16), Qc = Q(-28 + 4 * rq / 3, rq);
+    const dl = (X, Y, Z) => Math.abs((Z[0] - Y[0]) * (Y[1] - X[1]) - (Y[0] - X[0]) * (Z[1] - Y[1])) / dist(Y, Z);
+    const ok = Math.abs(dist(A, B) - 100 * k) < 1e-9 && Math.abs(dl(P, A, C) - 16 * k) < 1e-6 && Math.abs(dl(Qc, A, B) - rq * k) < 1e-6 &&
+      Math.abs(dist(P, Qc) - (16 + rq) * k) < 1e-6;
+    return wrap(430, 282, [
+      poly([A, B, C], DIM, 2), circ(P, 16 * k, ACC, 1.8, ACCS), circ(Qc, rq * k, GLD, 1.8, GLDS),
+      dot(P, ACC, 3), dot(Qc, GLD, 3), ...[A, B, C].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [0, -9]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"),
+      txt(add(P, [9, 5]), "P", ACC, 12, "start"), txt(add(Qc, [0, -rq * k - 7]), "Q", GLD, 12),
+      txt(add(mid(A, C), [12, 0]), "100", DIM, 12.5, "start"), txt(add(mid(A, B), [-12, 0]), "100", DIM, 12.5, "end"), txt(add(mid(B, C), [0, 16]), "56", DIM, 12.5),
+      cap(430, 282, "Triangle ABC with AB = AC = 100 and BC = 56. Circle P (radius 16) touches AC and BC; circle Q touches AB, BC and circle P, and lies inside the triangle." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AMC 12A #19: a regular pentagon and a regular heptagon of side 2, each between its
+  // inscribed and circumscribed circles.
+  PROB["2009-amc-12a-19"] = (() => {
+    const k = 40, fig = (c, n) => {
+      const R = 1 / Math.sin(Math.PI / n), rho = 1 / Math.tan(Math.PI / n);
+      const V = [...Array(n)].map((_, i) => onC(c, R * k, -90 + 360 * i / n));
+      return { R, rho, V, parts: [`<circle cx="${c[0]}" cy="${c[1]}" r="${(R * k).toFixed(1)}" fill="${ACCS}" stroke="${ACC}" stroke-width="1.6"/>`,
+        circ(c, rho * k, ACC, 1.6, "var(--bg-card)"), poly(V, DIM, 2)] };
+    };
+    const P5 = fig([112, 112], 5), P7 = fig([312, 112], 7);
+    const ok = Math.abs(dist(P5.V[0], P5.V[1]) - 2 * k) < 1e-9 && Math.abs(dist(P7.V[0], P7.V[1]) - 2 * k) < 1e-9;
+    return wrap(430, 222, [
+      ...P5.parts, ...P7.parts,
+      txt([112, 216], "pentagon, area A", DIM, 12.5), txt([312, 216], "heptagon, area B", DIM, 12.5),
+      cap(430, 222, "A regular pentagon and a regular heptagon, each of side 2, with the region between the inscribed and circumscribed circles shaded." + MM(ok))
+    ]);
+  })();
+
 })();
