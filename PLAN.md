@@ -4,33 +4,25 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step, update "Current state" below and push. Credits can run out at any moment, so this block must always say exactly where the work stands and what the next action is.
 
-## Current state (updated 2026-10-16, end of the first cloud chat)
+## Current state (updated 2026-10-16, second cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 10 problems have figures drawn for the app.
 - **Last finished:**
-  - all 20 gap-scan cards (four batches), Cutting a Solid with a Plane, and Angle Bisectors of Two Lines (701 cards);
-  - Vieta Jumping moved to Proof Methods;
-  - hover previews that match the card's figure and fill the box;
-  - the freer Pythagoras widget;
-  - lab pages showing every card;
-  - the new front page;
-  - the page tools setting (Tools, Page information, Appearance; full-height divider);
-  - the angle-chasing puzzle with Easy, Medium, and Hard (tick marks, tangent-chord angles, interior-angle rings, an exterior angle, a streak);
-  - the interactives audit (an intro line for 40 tools, named drag hints) and nine draggable olympiad-lemma widgets;
-  - the handoff system (this block, `CLAUDE.md`, `MIGRATION-NOTES.md`);
-  - the UI scan;
-  - the "/" fix;
-  - the empty Practice Problems section on patterns;
-  - the Solution section groundwork.
-- **In progress:** section 2.7, the practice pass, not yet started. Sections 2.1 to 2.6 are finished and pushed.
-- **Next action:** start 2.7a, card by card. Take the cards in `js/data/geometry.js` order. For each card, list its problems (`PROBLEMS_BY_CARD`, or grep `js/data/problems/problem-db.js` for the id), read each statement (`js/data/problems/statements/<year>.js`), and decide whether the best solution really uses the card. Fix the problem's whole entry in one edit: tags, strategy with "Alternatively, ..." where a second route exists, and a diagram where needed. Record progress here (the last card done).
+  - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
+  - 2.7a, card 1 (Pythagorean Theorem), the first 18 of its 76 problems in the order `tools/practice-card.js` lists them (2026 AIME I #3, then 1983 AIME #4 up to 2000 AIME II #8); five citations were dropped, so the card now has 71.
+- **In progress:** 2.7a, card 1, Pythagorean Theorem. **Last problem done: 2000 AIME II, Problem 8.** Next is 2000 AIME II, Problem 12, then the rest of the card's list.
+- **Next action:** `node tools/practice-card.js pythagorean-theorem` prints every citing problem with its statement, tags, strategy and trick; `node tools/practice-set.js edits.json` rewrites entries by ref (write the JSON from Python with raw strings so the LaTeX stays intact). For each problem: re-solve it, keep or drop each tag (CONVENTIONS §11, "Tag the specific card"), write the strategy and an "Alternatively, ..." trick where a second good route exists, draw a figure if the statement has none, and check every number by script. Push every 10 to 15 problems.
+- **Decisions made in this pass (keep applying them):**
+  - a chord at a distance from the center cites `chord-length`, not `pythagorean-theorem`;
+  - AA similarity cites `triangle-similarity`; `similar-figures-ratios` is for scaling lengths, areas and volumes;
+  - a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
   - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
 
 ## Where things are
 
-- Project: the clone `/home/user/CompMath2.0` in the cloud session, branch `claude/inspiring-curie-svp5pr`; on the Mac, `~/Downloads/competition-math-reference`.
+- Project: the clone `/home/user/CompMath2.0` in the cloud session, on the branch the session names (this chat: `claude/epic-curie-8tpif0`; earlier: `claude/inspiring-curie-svp5pr`); on the Mac, `~/Downloads/competition-math-reference`.
 - Code and data: a static JS site with `js/app.js`, `css/styles.css`, data in `js/data/`, write-ups in `js/data/details/`, and gates in `tools/`.
 - Published: https://almond200.github.io/CompMath2.0/ (repo `Almond200/CompMath2.0`). Served locally with `python3 -m http.server 8642`.
 - Upload: GitHub Desktop on the Mac, or `git add -A && git commit && git push` here.
@@ -279,7 +271,7 @@ On the Angle Chasing card: a random cyclic quadrilateral configuration with equa
 - **Versions:** bump `?v=` on every touched asset (`conv/bump.py` on the Mac; by hand in `index.html` here), and bump `STATEMENTS_V` when statement files change.
 - **Browser check** of every touched page: 0 KaTeX errors, no overflow, light and dark.
 - **Markdown:** README changelog entry, CONVENTIONS where a rule changes, CONTRIBUTING where the workflow changes, the memory files, and this plan (`PLAN.md`).
-- **Backup:** commit and `git push -u origin claude/inspiring-curie-svp5pr` here. On the Mac, `rsync` to `~/Documents/CompMath-backup/` (done by `conv/gates.sh`).
+- **Backup:** commit and `git push -u origin <the session's branch>` here. On the Mac, `rsync` to `~/Documents/CompMath-backup/` (done by `conv/gates.sh`).
 - **Never** edit a source file with a slice-and-replace that was not checked afterwards. On 2026-10-11 a mis-sliced edit to `js/app.js` deleted a block. Check syntax (`node --check`, `new Function(text)`, or `jsc`) after any large edit.
 
 ## 4. Decisions already made (do not reopen)

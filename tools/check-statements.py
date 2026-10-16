@@ -45,7 +45,18 @@ for f in sorted(glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")
             ok = head.lstrip().startswith((b"<?xml", b"<svg")) or head.startswith(b"\x89PNG\r\n\x1a\n")
             if not os.path.exists(p) or not ok:
                 bad.append("%s: figure %s missing or not an SVG or PNG" % (slug, fig)); nofig += 1
-print("statements: %d | of %d problems | figures: %d" % (n, len(slugs), figs))
+# A figure drawn for the app (js/data/diagrams/problem-diagrams.js) belongs to a known problem whose
+# statement prints no figure of its own: two pictures of one problem would be redundant.
+withfig = set()
+for f in glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")):
+    for m in re.finditer(r'^"([a-z0-9-]+)": \{ s: String\.raw`(.*?)`', open(f, encoding="utf-8").read(), re.S | re.M):
+        if "@@fig:" in m.group(2): withfig.add(m.group(1))
+own = re.findall(r'PROB\["([^"]+)"\] =', open(os.path.join(ROOT, "js/data/diagrams/problem-diagrams.js"), encoding="utf-8").read())
+for slug in own:
+    if slug not in slugs: bad.append("problem diagram %s: not a problem in the database" % slug)
+    if slug in withfig: bad.append("problem diagram %s: the statement already has a figure" % slug)
+if len(own) != len(set(own)): bad.append("a problem diagram is registered twice")
+print("statements: %d | of %d problems | figures: %d | drawn for the app: %d" % (n, len(slugs), figs, len(own)))
 for b in bad[:25]: print("  " + b)
 print("OK - every statement is a known problem with its credit and figures" if not bad else "FAILURES ABOVE")
 sys.exit(1 if bad else 0)

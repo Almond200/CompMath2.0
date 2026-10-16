@@ -42,6 +42,8 @@ DB.forEach(function (e, i) {
   (e.trickFormulas || []).forEach(function (f) { if (!CARDS[f]) errors.push(at + ": unknown trickFormulas id '" + f + "'"); });
   if (e.trick && !(e.trickFormulas || []).length) errors.push(at + ": trick prose with no trickFormulas");
   if ((e.trickFormulas || []).length && !e.trick) errors.push(at + ": trickFormulas with no trick prose");
+  // The trick is the second good route, printed on the problem page as its own paragraph.
+  if (e.trick && !/^Alternatively, /.test(e.trick)) errors.push(at + ": trick prose must open with 'Alternatively, '");
   (e.trickFormulas || []).forEach(function (f) {
     if ((e.formulas || []).indexOf(f) >= 0) errors.push(at + ": '" + f + "' is in both formulas and trickFormulas");
   });

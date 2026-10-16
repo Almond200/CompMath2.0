@@ -9041,4 +9041,11 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 300, "The bisector (dashed blue) of the angle between the x-axis and y = 3x/4 has slope 1/3: the two purple angles are equal. A circle tangent to both lines has its center on it; the example's circle of radius 2 is centered at (6, 2), and its radii to the two lines are perpendicular to them." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
+  // problems that print none), so a problem figure is built by the same rules as a card's.
+  window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,
+    centroidOf, circumcenterOf, orthocenterOf, incenterOf, circleLineInts, tangentPoints, insideTri, extTangent,
+    proj3, depth3, box3, AX3, AX3_ISO,
+    FNT, DIM, ACC, GLD, GRN, PUR, ORG, PNK, ACCS, GLDS, r1, pf, seg, dot, circ, pline, poly, txt, gapLabel,
+    angleArc, rightAngle, ticksOn, segIn, subT, cap, wrap };
 })();
