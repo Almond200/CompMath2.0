@@ -13,8 +13,8 @@
   - the "/" fix;
   - the empty Practice Problems section on patterns;
   - the Solution section groundwork.
-- **In progress:** section 2.3, the home page. Nothing is half-done.
-- **Next action:** redesign the home page (`js/app.js`, the home render around "How the four fit together"): drop the repeated four-space blocks, add Did you know, Newest cards, and a practice summary.
+- **In progress:** section 2.4, the page tools panel. Nothing is half-done.
+- **Next action:** add the "Page tools" setting and the right-hand Tools / Page information / Appearance column on card pages (`js/app.js` renderDetail and the Settings panel; `css/styles.css`).
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
   - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
@@ -220,7 +220,7 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 - [x] Pythagoras widget: the vertices drag freely, with the squares allowed to leave the frame; the widget gets smaller.
 - [x] Lab pages (quiz, flashcards, formula web) load the data files with the same `?v=` as `index.html`, so new cards appear; a gate checks it.
 
-### 2.3 Home page
+### 2.3 Home page (done 2026-10-16)
 Remove the third repetition of the four spaces ("How the four fit together" and "Jump to"). Give each of the four tiles a line more of explanation. Use the space for things that are not repeated elsewhere: Problem of the day, Continue where you left off, Did you know, Newest cards, and a small practice summary.
 
 ### 2.4 Page tools panel (a setting)
