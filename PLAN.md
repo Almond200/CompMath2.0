@@ -1,29 +1,31 @@
-# Competition Math Reference: philosophy, standing rules, and what is left to do
+# Competition Math Reference: status and plan
 
-Project: the clone `/home/user/CompMath2.0` in this cloud session, on branch `claude/inspiring-curie-svp5pr`. It is the same repository as Stanley's local `~/Downloads/competition-math-reference`.
+**A new chat starts here.** Read "Current state" first, then the open work in section 2. The rules for how things are done are in `CONVENTIONS.md`; what changed and when is in the `README.md` changelog. `CLAUDE.md` points every new session to this file.
+
+**The handoff rule.** After every major change, every finished step, and the start of every new step, update "Current state" below and push. Credits can run out at any moment, so this block must always say exactly where the work stands and what the next action is.
+
+## Current state (updated 2026-10-16)
+
+- **Counts:** 700 cards (517 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged.
+- **Last finished:**
+  - all 20 gap-scan cards (four batches) and Cutting a Solid with a Plane;
+  - the UI scan;
+  - the "/" fix;
+  - the empty Practice Problems section on patterns;
+  - the Solution section groundwork.
+- **In progress:** section 2.2, the small fixes. Nothing is half-done.
+- **Next action:** move Vieta Jumping to Proof Methods (`js/data/patterns.js`, the routes in `js/data/built-in-lists.js`).
+- **Blockers and caveats:**
+  - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
+  - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
+
+## Where things are
+
+- Project: the clone `/home/user/CompMath2.0` in the cloud session, branch `claude/inspiring-curie-svp5pr`; on the Mac, `~/Downloads/competition-math-reference`.
 - Code and data: a static JS site with `js/app.js`, `css/styles.css`, data in `js/data/`, write-ups in `js/data/details/`, and gates in `tools/`.
-- Published copy: https://almond200.github.io/CompMath2.0/ (repo `Almond200/CompMath2.0`).
-- Upload: GitHub Desktop, or `git add -A && git commit && git push`.
-
-This plan will also be saved in the repo as `PLAN.md`, so it lives with the code.
-
-Last updated 2026-10-12 (late).
-- Finished steps are in section 1, so section 2 lists only open work.
-- Order now (Stanley's latest):
-  1. **Content, consistency, and missing-cards scan** (section 2.1), then write what it finds once approved
-  2. **2.4 UI scan**: the remaining fixes
-  3. **2.4e-ii** prose formula boxes on card faces
-  4. **2.5b** tagging, written solutions, and geometry solution diagrams, paper by paper
-  5. **LIVE concept tags**, whenever `live.poshenloh.com` is reachable from the session
-  6. **2.6** a light re-check of the cards changed during tagging
-  7. **Stage 4** the rest of the practice expansion
-  8. **R** proof depth
-  9. **Stage 5** flashcards and experimental features into Practice (not a priority)
-
-The detail of finished work lives in `README.md` (changelog), `CONVENTIONS.md`, `CONTRIBUTING.md`, and `tools/live-missing.md`.
-- **When anything is unclear, look back at these markdown files first.** They record how things are done: card anatomy, figure rules, merge checklists, gates.
-- Most steps are plain writing and go ahead without asking.
-- Stanley is asked only where the plan says so (new-card approval, twin list, concept mapping, the subsection's members, the formula-box worst offenders, the Stage 4 pilot), or where a real choice is unclear.
+- Published: https://almond200.github.io/CompMath2.0/ (repo `Almond200/CompMath2.0`). Served locally with `python3 -m http.server 8642`.
+- Upload: GitHub Desktop on the Mac, or `git add -A && git commit && git push` here.
+- Most steps are plain writing and go ahead without asking. Stanley is asked only for new-card approval, judgment calls listed in `QUESTIONS.md`, and real choices.
 
 ---
 
@@ -182,6 +184,10 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 - [x] **2.4** Whole-app UI scan finished: the three statement KaTeX errors fixed at the importer and gated; inline maths that overflowed on a phone fitted after rendering; every sweep at 375, 768, 1280, and 1920, light, dark, and Larger, in both layouts, and over all 4,616 statements, now reports nothing.
 - [x] **2.1** Content and consistency scan: stale README, CONVENTIONS, and app wording fixed; three old-layout write-ups converted; 19 of the 20 candidate cards approved (not Perfect Numbers), written in four batches.
 
+**2026-10-12 to 2026-10-16**
+- [x] **2.1** Content and consistency scan, the 20 gap-scan cards in four batches, and Cutting a Solid with a Plane (700 cards).
+- [x] **2.4** UI scan finished, the "/" fix, and the empty Practice Problems section on patterns.
+
 ### How the figure reference cards were sorted out (2026-10-11)
 | Where | Cards |
 |---|---|
@@ -199,66 +205,60 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 
 ---
 
-## 2. What is left, in order (Stanley's order)
+## 2. What is left, in order (the 2026-10-16 plan)
 
-### 2.1 The approved gap-scan cards (19; `QUESTIONS.md`)
-- [x] Batch 1, geometry: Orthogonal Circles, Weitzenböck and Hadwiger–Finsler, Steiner–Lehmus, Cevian Nest, Regular Dodecahedron & Icosahedron.
-- [x] Batch 2, algebra and number theory: Integer-Valued Polynomials, Dirichlet's Theorem, Partial Fractions (method), Working Backwards (method).
-- [x] Batch 3, olympiad counting and a geometry method: Combinatorial Nullstellensatz, Schur's Theorem, Pentagonal Number Theorem, Hook Length Formula, Projective Transformations (method).
-- [x] Batch 4, AMC patterns: Age Problems, Calendar & Day of the Week, Painted Cubes (with boxes, Stanley), Round-Robin Tournaments, Magic Squares.
-### 2.4e-ii Prose formula boxes on card faces (Stanley, 2026-10-12)
-Some boxes are mostly prose (A Newly Defined Operation, Tiling a Board, Strategy Stealing, ...), so on the card faces they shrink to the minimum size and still scroll. Measure every card face at 1280 and 375 (the `fd-scroll` class and the scale `fitBatch` sets in `js/app.js`), list each one with a proposed rewrite in `QUESTIONS.md`, and apply after approval. A box that cannot be made shorter without losing content stays as it is (Stanley: not ideal, but the best available).
+### 2.1 Handoff system
+- [x] This file restructured with "Current state" at the top; `CLAUDE.md`; the handoff rule in CONVENTIONS §7 and the README.
+- [x] The old chat's answers recorded in `MIGRATION-NOTES.md` and folded in here and in CONVENTIONS.
 
+### 2.2 Small fixes and one new card
+- [ ] Vieta Jumping moves from Number Theory methods to Proof Methods (it is fundamentally a proof method).
+- [ ] New card: Angle Bisectors of Two Lines. It gives the bisector equation and the slope rules: the x-axis and slope $\frac34$ give $\frac13$, and the other Pythagorean-triple pairs.
+- [ ] Hover previews:
+  - find why the preview figure sometimes differs from the card's figure;
+  - make the figure fill about three quarters of the box height.
+- [ ] Pythagoras widget: the vertices drag freely, with the squares allowed to leave the frame; the widget gets smaller.
+- [ ] Lab pages (quiz, flashcards, formula web) load the data files with the same `?v=` as `index.html`, so new cards appear; a gate checks it.
 
-### 2.5b Tagging, written solutions, and geometry diagrams (paper by paper)
-LIVE is blocked from the cloud session (the proxy refuses `live.poshenloh.com`), so tagging is by hand from the statements in the repo, and LIVE's concept tags are added on top when the site is reachable. Hand tags are never removed.
-- **Per problem:** read and check the statement (text, choices, figures, rendering); solve it and confirm the answer by computation; tag only the cards the solution uses (`tools/RETAG-NOTES.md`); write the short strategy and a full solution.
-- **Solutions** (Stanley): a separate, always-open Solution section below "How this problem works", in per-year files `js/data/problems/solutions/<year>.js`, lazy-loaded like the statements. Original wording, every number verified, ending "The answer is ...".
-- **Geometry diagrams** (Stanley): every geometry solution gets a figure showing the reasoning (auxiliary lines, equal lengths, similar triangles), built from the problem's numbers with the diagram helpers and an `ok` self-check, following rule 18, and passing the figure gates.
-- **Order:** untagged papers newest first (2025 AMC 12B is solved), a word-for-word AMC 10 twin gets the same entry; then a backfill of solutions for the 1,365 already-tagged problems, newest first.
-- **After each paper:** the validators, the solution gate, `audit-problem-tags.py`, a browser check, a commit.
-- **LIVE**, when reachable: fetch the concept cache, build the concept to card table for Stanley's approval, add LIVE tags on top, and use the concepts as the subject-chip source for untagged problems.
+### 2.3 Home page
+Remove the third repetition of the four spaces ("How the four fit together" and "Jump to"). Give each of the four tiles a line more of explanation. Use the space for things that are not repeated elsewhere: Problem of the day, Continue where you left off, Did you know, Newest cards, and a small practice summary.
 
-### 2.6 Card-file re-check after tagging (light; the full scan moved up to 2.4c)
-After 2.5, re-run the 2.4c checks only on cards whose text changed during tagging, plus the mechanical gates. Report anything found, then go on to Stage 4.
+### 2.4 Page tools panel (a setting)
+A Wikipedia-style right-hand column on card pages:
+- **Tools:** What links here, Problems using this card, Related cards, Permanent link, Print, Random card.
+- **Page information:** id, kind, tier, importance, size of the write-up, counts of figures, examples, and links in and out, and the NewCards batch.
+- **Appearance:** text size, page width, and theme.
 
-### Stage 4: practice expansion (after 2.6, before R)
-Stanley merged "more solutions and tags" and "diagrams inside solutions" into one place for growing the practice side, done together, problem by problem.
-1. **A paragraph of explanation on every AMC and AIME problem** (the "How this problem works" text, `chain-strategy` in `renderProblemDetail`).
-   - It is a real explanatory paragraph in the house style: what the problem is asking, why the tagged pattern, method, and formulas apply, and the key step. No hints in the UI sense.
-   - Most-used contests first (AIME, then AMC 12, AMC 10, AMC 8), in batches of about 100.
-   - Also tag with the correct cards as you go, and re-check existing tags where `audit-problem-tags.py` flags one the text does not use.
-2. **Our own diagram for geometry problems whose statement gives no figure**, drawn as we go.
-   - It sits **below the "How this problem works" header and above the explanation text, with no header of its own**, and it is always present for such a problem.
-   - Format first: a figure slot in `renderProblemDetail` between the `<h4>` and `.chain-strategy`. The data is keyed by problem slug (`js/data/problems/solution-figures/`), or reuses the diagram builders in `js/data/diagrams/geometry-diagrams.js` with their `ok` self-checks.
-   - A scanner rule: a geometry problem with no statement figure must have one here. The diagram must show the fact, not a bare shape, and follow rule 18. Labels are checked by `check-labels.py`.
-   - The drawing is checked against the statement's numbers.
-   - **Pilot on about 10 problems for Stanley's review before the mass run.**
-   - Where a statement figure exists, no extra diagram unless it adds something.
-3. Each batch: validators and the scanner at 0, the importance table re-checked for cards whose problem counts changed, the card-search eval at or above 160 of 187, a problems-per-card report, a README entry, and a backup.
+It is off by default and turned on in Settings.
 
-(Diagrams inside card proofs and worked examples are folded into this stage as a later pass, only if it still looks reasonable.)
+### 2.5 Angle-chasing game
+On the Angle Chasing card: a random cyclic quadrilateral configuration with equal chords and one given angle. The reader marks every angle equal to it, presses Check, and sees the reason for each.
 
-### Stage 4b (R): proof-depth pass
-Eventually more cards carry detailed proofs and explanations, and fewer sections are thin.
-- Read every converted card's Why it works, Useful observations, and Applications for thinness: one-line sections, a claim stated without reason, a bullet that is only a pointer. Also check each against rule 14.
-- Start with the important cards (HIGH and MED) and the format-only P29 to P31 cards, thinnest first, in batches of about 9.
-- Expand them in the house style (centered key lines, figures, plain lead-ins), adding diagrams where they help.
-- Report each batch and record it in the README.
+### 2.6 Interactives audit, then drag-the-triangle widgets
+- **The audit:** every widget in `js/geo-interactive.js` and `js/math-tools.js` has a title naming the fact, a line saying what to drag and what stays true, labels on every point and quantity, live values, sensible limits, and no errors.
+- **The new widgets:** olympiad lemmas with a draggable triangle, such as Incenter–Excenter, Iran, Humpty, Dumpty, Shooting, Broken Chord, Perpendicularity, Isogonal Conjugate, and Miquel.
 
-### Stage 5: flashcards and experimental features into Practice (new, Stanley 2026-10-12; NOT a priority)
-Some time after the problem stages (2.5 and Stage 4):
-- **What exists.** Flashcards (an SM-2 review), Quiz, and Formula Web live in `lab/`, linked only from Settings → Experimental. They were put there because they did not fit anywhere else.
-- **Where they go.** Now that there is a Practice space, finalize them so they are actually useful, and place them in Practice:
-  - decks built from study lists, starred cards, and a contest's tagged cards;
-  - problems as flashcards (statement to the pattern and method);
-  - the Quiz drawing on the same decks.
-- **First step.** Test each experimental feature as it stands, then list what to keep, fix, or drop for Stanley before building.
+### 2.7 Practice pass (long; slow and careful; cards first, then papers)
+- **2.7a, card by card:** check every problem a card cites. Remove citations whose best solution does not use the card; Stanley has found many false examples. Fix the problem's whole entry at the same time.
+- **2.7b, paper by paper,** newest first, over the untagged problems and then the rest.
+- **Per problem, everything in one edit:**
+  1. check the statement and its figures;
+  2. tag the pattern, method, and formulas of the best route;
+  3. if a second good route exists (an intended and a faster one), tag its cards too;
+  4. write a strategy paragraph explaining how the listed cards apply, and an "Alternatively, ..." paragraph for the second route;
+  5. draw a geometry diagram where the problem has none;
+  6. verify every number by script.
+- **No written solutions for now** (Stanley, 2026-10-16: too costly in tokens). The Solution section code stays unused.
+- **LIVE concepts** from `tools/live-cache/`, once uploaded, are hints only and never copied.
+- Commit per card group or per paper, and update "Current state" each time.
 
-### Open loose ends
-- Per-contest lists, once enough problems are tagged (2.5b).
-- The search index must be rebuilt on the Mac (`tools/build-search-index.py`); the new cards are found by text search only until then.
-- LIVE access for the cloud session (the network setting; a new session may be needed).
+### Later
+- 2.4e-ii: prose formula boxes on card faces. Measure, propose rewrites in `QUESTIONS.md`, and apply after approval.
+- The card-file re-check after tagging.
+- Stage R: proof depth.
+- Stage 5: flashcards and the experimental features moved into Practice.
+- Per-contest lists, once enough problems are tagged.
+- The twin cards the duplicate finder flagged (lte and lte-lemma, and three others) are undecided.
 
 ## 3. Housekeeping after every step
 - **Gates:**
@@ -274,8 +274,8 @@ Some time after the problem stages (2.5 and Stage 4):
 - **Never** edit a source file with a slice-and-replace that was not checked afterwards. On 2026-10-11 a mis-sliced edit to `js/app.js` deleted a block. Check syntax (`node --check`, `new Function(text)`, or `jsc`) after any large edit.
 
 ## 4. Decisions already made (do not reopen)
-- Problem pages get a separate, always-open Solution section below "How this problem works", verified by computation; geometry solutions carry a figure of the reasoning (Stanley, 2026-10-12).
-- Tags are hand-made until LIVE is reachable; LIVE tags are added on top, never replacing hand tags.
+- Problem pages get a strategy paragraph, plus an "Alternatively, ..." paragraph when a second good route exists, with both routes' cards tagged. Full written solutions are deferred (2026-10-16). Geometry problems without a statement figure get a diagram.
+- Tags come from solving each problem. LIVE's concepts are hints only, never a source of tags or text.
 - Prose formula boxes are rewritten only after Stanley approves the list; a box that cannot be shortened stays as it is.
 - Four kinds, four spaces (Formulas, Methods, Patterns, Practice). No hints in the UI. The problem box shows Pattern, Method, Formulas side by side.
 - Contest tiers (AMC / AIME Early / AIME Late / Olympiad) go together with importance (High / Medium / Low / Lower / Lowest). Importance is judged inside the card's own subsection and shown with the tier as one split oval. No label setting; no level filter.

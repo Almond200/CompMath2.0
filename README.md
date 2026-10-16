@@ -166,6 +166,8 @@ lexical-only. KaTeX is vendored, so math renders offline either way.
 
 ## Structure
 
+Start with `CLAUDE.md` and `PLAN.md`. `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
+
 ```
 index.html                     page shell and script order
 css/styles.css                 theme, layout, card and diagram styling
@@ -361,6 +363,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 - The app's files no longer name a person: the new-card batch label and three code comments were reworded.
 - **Gap scan, batch 3: five olympiad cards.** The Combinatorial Nullstellensatz (with its proof, and the Cauchy–Davenport write-up now points to it instead of restating it), Schur's Theorem on one-color solutions of $x + y = z$ (through the difference graph and the multicolor Ramsey bound), Euler's Pentagonal Number Theorem (Franklin's pairing and the partition recurrence), the Hook Length Formula (with a figure of the hooks), and Projective Transformations as a method (send a line to infinity, or a conic to a circle; the figure is the complete quadrilateral of its example). Every number in the examples is checked by computation, including the Schur numbers 4 and 13 by exhaustive search.
 - **Gap scan, batch 4: five AMC patterns.** Age Problems (the difference of two ages never changes), Calendar and Day-of-the-Week Problems (days modulo $7$, the leap-year rules, the $400$-year cycle), Painted Cubes (corner, edge, face, and core cubes, with a paragraph extending the counts to an $a \times b \times c$ box and to slabs, and a figure of a painted $4 \times 4 \times 4$ cube colored by painted faces), Round-Robin Tournaments (fixed totals of games, wins, and points), and Magic Squares (the magic sum and the center of a $3 \times 3$ square). The counts and the examples are checked by computation, including every painted-face count by brute force. This finishes the 19 approved gap-scan cards plus the plane card: 700 cards in all.
+- **A handoff file for new chats.** `PLAN.md` now opens with "Current state": the counts, what was last finished, what is in progress, the next action, and the blockers. `CLAUDE.md` sends every new session there first, and a rule in `CLAUDE.md` and CONVENTIONS §7 says to update it and push after every major change. The previous chat's answers about the app's history are in `MIGRATION-NOTES.md`, which replaces the list of questions, and the style rules among them are now in CONVENTIONS.
 - **Gates run on Linux too.** The gates hard-coded macOS paths. They now read `JSC` and `CHROME` from the environment, falling back to the Mac paths. `tools/jsc-node` is a small Node stand-in for `jsc` (`load`, `print`, `read`, `quit`), and `check-labels.py` passes `--no-sandbox` when it runs as root. On Linux, `check-labels.py` reports five far-move labels (`thales-theorem`, `radical-axis`, `weierstrass-substitution`, `harmonic-addition`, `vertex-form`) that come from different font widths; on the Mac they pass. The semantic search index (`tools/build-search-index.py`) cannot be rebuilt from a cloud session, because its model download from HuggingFace is blocked there. Rebuild it on the Mac after pulling; until then, new cards rank by the lexical search alone.
 
 **2026-10-10**

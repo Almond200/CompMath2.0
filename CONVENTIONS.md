@@ -568,6 +568,8 @@ caught only because the census read 554/556.
 
 ## 7. Verify, in this order
 
+**The handoff rule (2026-10-16).** After every major change, every finished step, and the start of every new step, update "Current state" at the top of `PLAN.md`, add a README changelog entry, and push. New chats start from that block (`CLAUDE.md` sends them there), so it must never be stale.
+
 ```bash
 jsc js/data/<file>.js                    # a `window` ReferenceError means the parse SUCCEEDED
                                          # (no jsc? tools/jsc-node stands in for it under Node)
@@ -811,3 +813,14 @@ From Stanley's review of the Iran Lemma figure, whose bisector and contact chord
 
 Every batch of new cards adds one entry to `js/data/new-cards.js` (a label, the date, and the ids in the order written) when it is written. `Special:NewCards` shows the latest batch with each card's kind, subject, and group, and `Special:NewCards/All` lists every batch, newest first, so the additions can be read through in the app. `tools/check-lists.py` fails on an id in a batch that is not a card.
 
+## Rules recorded from the previous chat (2026-10-16)
+See `MIGRATION-NOTES.md` for the full answers.
+- **Figures:**
+  - every figure shows the fact, never a bare shape;
+  - a figure appears only where a picture helps, never as decoration;
+  - each figure carries a computed `ok` self-check;
+  - thin strips (a row of cards or numbers) may run up to 600 px wide.
+- **Formula boxes** are not over-packed. The British Flag Theorem's old box was the example of too much.
+- **Dark mode** uses as little pure white as possible.
+- **Never re-add** problem search, the in-app find, hints in the UI, a label setting, a level filter, or proof-based competitions.
+- **Merged cards** keep their old names as aliases (`tools/link-aliases.json`), so old links still resolve.
