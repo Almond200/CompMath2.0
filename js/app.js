@@ -5611,20 +5611,30 @@
     // How this problem works: its tags split by kind into the chain Pattern -> Method ->
     // Formulas. A link nobody has classified yet is shown as missing, never invented. It sits
     // near the bottom of the page: the problem itself, and thinking about it, come first.
+    // The second good route's cards (the "Alternatively, ..." paragraph) sit in the same three
+    // columns, outlined dashed, so both routes read as Pattern -> Method -> Formulas.
     const chain = { pattern: [], method: [], formula: [] };
     p.formulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
-    const chainChip = fid => `<a class="related-item" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
+    p.trickFormulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
+    const altIds = new Set(p.trickFormulas);
+    const chainChip = fid => `<a class="related-item${altIds.has(fid) ? " chain-alt-card" : ""}" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
     // One box, always open: the strategy in a few sentences, then the three cards it connects
     // side by side. No hints and no staged reveals: the page explains how the problem works.
     const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
     const chainHtml = `<div class="prob-chain"><h4>How this problem works</h4>
         ${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
+        ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
           ${chainCol("Method", chain.method, "Not classified yet")}
           ${chainCol("Formulas", chain.formula, "&mdash;")}
         </div>
+        ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}
       </div>`;
+    // A geometry problem printed without a figure gets one drawn for the app
+    // (js/data/diagrams/problem-diagrams.js), labelled as ours so it is never taken for the MAA's.
+    const ownFig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
+    const ownFigHtml = ownFig ? `<div class="diagram prob-own-figure">${ownFig}<div class="prob-own-note">Diagram drawn for this app, not part of the original problem.</div></div>` : "";
     $content.innerHTML = `
       <div class="detail">
         <div class="back-row">
@@ -5642,6 +5652,7 @@
           <div class="prob-statement"></div>
           <p class="prob-credit"></p>
         </section>` : ""}
+        ${ownFigHtml}
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
         ${chainHtml}

@@ -14,7 +14,11 @@ import itertools, os, re, subprocess, sys, tempfile
 
 JSC = os.environ.get("JSC", "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Helpers/jsc")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FILES = ["js/data/diagrams/geometry-diagrams.js", "js/data/diagrams/general-diagrams.js"]
+FILES = ["js/data/diagrams/geometry-diagrams.js", "js/data/diagrams/general-diagrams.js",
+         "js/data/diagrams/problem-diagrams.js"]
+# A file built on another file's helpers (window.GEO_KIT) loads that file first; only its own
+# registry is checked, so the helper file's figures are not counted twice.
+NEEDS = {"js/data/diagrams/problem-diagrams.js": "js/data/diagrams/geometry-diagrams.js"}
 
 # Character-width factors for the sans stack, calibrated against getBBox() in the browser:
 # "tangent at a" and "a - b" both measure ~0.47 x font-size per character. Two factors,
@@ -35,7 +39,9 @@ def dump(rel):
     # figures ({q, s}), and the figures placed inside a write-up at a {{figure:name}} marker.
     # The last two are newer, and a figure nobody checks is exactly how off-canvas points and
     # sliced circles used to ship.
-    src = ('var window = {};\nload(%r);\n'
+    pre = ('load(%r);\nwindow.MATH_DIAGRAMS = {}; window.MATH_EXAMPLE_DIAGRAMS = {}; window.MATH_BODY_DIAGRAMS = {};\n'
+           % os.path.join(ROOT, NEEDS[rel])) if rel in NEEDS else ''
+    src = ('var window = {};\n' + pre + 'load(%r);\n'
            'function out(name, p) { if (typeof p === "string") { print("###" + name); print(p); } }\n'
            'var D = window.MATH_DIAGRAMS || {};\n'
            'Object.keys(D).forEach(function (k) {\n'
@@ -46,7 +52,9 @@ def dump(rel):
            '  if (X[k][w]) out("example:" + k + "#" + w, X[k][w]); }); });\n'
            'var B = window.MATH_BODY_DIAGRAMS || {};\n'
            'Object.keys(B).forEach(function (k) { Object.keys(B[k]).forEach(function (n) {\n'
-           '  out("body:" + k + "/" + n, B[k][n]); }); });\n' % os.path.join(ROOT, rel))
+           '  out("body:" + k + "/" + n, B[k][n]); }); });\n'
+           'var P = window.MATH_PROBLEM_DIAGRAMS || {};\n'
+           'Object.keys(P).forEach(function (k) { out("problem:" + k, P[k]); });\n' % os.path.join(ROOT, rel))
     with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as fh:
         fh.write(src)
         tmp = fh.name

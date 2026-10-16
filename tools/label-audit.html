@@ -31,6 +31,7 @@
 <div id="gallery"></div>
 <script src="../js/data/diagrams/geometry-diagrams.js"></script>
 <script src="../js/data/diagrams/general-diagrams.js"></script>
+<script src="../js/data/diagrams/problem-diagrams.js"></script>
 <script>
 (async function () {
   const out = document.getElementById("out"), stage = document.getElementById("stage");
@@ -45,6 +46,8 @@
   Object.keys(D).forEach(k => [].concat(D[k]).forEach((p, j) => typeof p === "string" && panels.push([k + "#" + j, p])));
   Object.keys(X).forEach(k => ["q", "s"].forEach(w => X[k][w] && panels.push(["example:" + k + "#" + w, X[k][w]])));
   Object.keys(B).forEach(k => Object.keys(B[k]).forEach(n => panels.push(["body:" + k + "/" + n, B[k][n]])));
+  const PD = window.MATH_PROBLEM_DIAGRAMS || {};
+  Object.keys(PD).forEach(k => panels.push(["problem:" + k, PD[k]]));
 
   const findings = [];
   // A glyph box, not the em box getBBox() reports: cap height above the baseline and a little

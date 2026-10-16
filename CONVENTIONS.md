@@ -701,6 +701,20 @@ are untouched.
   however obscure it is.
 - Both trick fields are required together; the validator rejects prose without cards and cards
   without prose.
+- **The trick is printed as the "Alternatively, ..." paragraph** under the strategy on the problem
+  page, and it opens with those words (the validator requires it). Use it when a problem has two
+  good routes, an intended one and a faster one; its cards sit in the chain columns with a dashed
+  outline. (2026-10-16)
+- **Tag the specific card, not the fact under it.** A step that is exactly a chord at a known
+  distance from the center cites Length of a Chord, not the Pythagorean Theorem; a cone's volume
+  cites Prism, Pyramid, Cylinder, Cone Volumes, not Cone Surface Area; two triangles shown similar
+  by their angles cite Triangle Similarity Criteria. The Pythagorean Theorem is cited where a right
+  triangle is set up and solved as a step of its own.
+- **A geometry problem printed without a figure gets one**, in `js/data/diagrams/problem-diagrams.js`
+  as `PROB["<slug>"]`, built with `window.GEO_KIT`. It shows the setup only (the given lengths and
+  points, never a computed answer), carries an `ok` self-check, and the page labels it as drawn
+  for the app. `check-statements.py` fails on a figure for a problem whose statement already has
+  one.
 - A trick-only card still lists the problem among its practice problems, with the row rendered
   exactly like any other. The problem page is the only place a trick is labelled.
 - **A problem no card honestly fits keeps `formulas: []`.** The validator reports it ("no card at all") instead of failing, the app still gives it a page that shows its chain as "Not classified yet", and `Special:Unclassified` lists it. Never tag a card a problem does not use to fill the gap (2011 AIME II #1 and 2013 AIME II #1 once carried Normalization, which neither uses).
