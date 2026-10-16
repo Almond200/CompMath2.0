@@ -8,13 +8,20 @@
 
 - **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged.
 - **Last finished:**
-  - all 20 gap-scan cards (four batches) and Cutting a Solid with a Plane;
+  - all 20 gap-scan cards (four batches), Cutting a Solid with a Plane, and Angle Bisectors of Two Lines (701 cards);
+  - Vieta Jumping moved to Proof Methods;
+  - hover previews that match the card's figure and fill the box;
+  - the freer Pythagoras widget;
+  - lab pages showing every card;
+  - the new front page;
+  - the page tools setting;
+  - the handoff system (this block, `CLAUDE.md`, `MIGRATION-NOTES.md`);
   - the UI scan;
   - the "/" fix;
   - the empty Practice Problems section on patterns;
   - the Solution section groundwork.
-- **In progress:** section 2.4, the page tools panel. Nothing is half-done.
-- **Next action:** add the "Page tools" setting and the right-hand Tools / Page information / Appearance column on card pages (`js/app.js` renderDetail and the Settings panel; `css/styles.css`).
+- **In progress:** nothing is half-done. Sections 2.1 to 2.4 are finished and pushed.
+- **Next action:** section 2.5, the angle-chasing game: a new widget `W["angle-chasing"]` in `js/geo-interactive.js` (the card id is `angle-chasing` in `js/data/patterns.js`), built with `mountGeo`'s helpers. Then 2.6, the interactives audit, and 2.7, the practice pass (cards first, then papers).
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
   - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
@@ -223,7 +230,7 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 ### 2.3 Home page (done 2026-10-16)
 Remove the third repetition of the four spaces ("How the four fit together" and "Jump to"). Give each of the four tiles a line more of explanation. Use the space for things that are not repeated elsewhere: Problem of the day, Continue where you left off, Did you know, Newest cards, and a small practice summary.
 
-### 2.4 Page tools panel (a setting)
+### 2.4 Page tools panel (a setting) (done 2026-10-16)
 A Wikipedia-style right-hand column on card pages:
 - **Tools:** What links here, Problems using this card, Related cards, Permanent link, Print, Random card.
 - **Page information:** id, kind, tier, importance, size of the write-up, counts of figures, examples, and links in and out, and the NewCards batch.
