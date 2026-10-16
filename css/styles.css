@@ -3385,3 +3385,28 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 .pg-n { color: var(--text-dim); font-size: 13px; }
 .pg-done { color: var(--text-faint); font-size: 12.5px; }
 @media (max-width: 560px) { .pg-row { grid-template-columns: 1fr; gap: 2px; } }
+/* Page tools (a setting): a Wikipedia-style column on the right of a card's page. */
+.detail-with-tools { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 28px; align-items: start; }
+.detail-with-tools > .detail { min-width: 0; }
+.page-tools { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 18px; font-size: 13px; padding-left: 16px; border-left: 1px solid var(--border); }
+.pt-block { display: flex; flex-direction: column; gap: 4px; }
+.pt-head { font-size: 11px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); padding-bottom: 5px; margin-bottom: 3px; border-bottom: 1px solid var(--border); }
+.pt-block a, .pt-act { color: var(--accent); text-decoration: none; background: none; border: 0; padding: 2px 0; font: inherit; text-align: left; cursor: pointer; }
+.pt-block a:hover, .pt-act:hover { text-decoration: underline; }
+.pt-hide { color: var(--text-faint); }
+.pt-n { color: var(--text-faint); font-size: 12px; margin-left: 4px; }
+.pt-info { display: flex; justify-content: space-between; gap: 10px; color: var(--text-dim); }
+.pt-info b { color: var(--text); font-weight: 600; text-align: right; }
+.pt-info code { font-size: 11.5px; }
+.pt-label { color: var(--text-dim); margin-top: 4px; }
+.pt-seg { display: flex; flex-wrap: wrap; gap: 4px; }
+.pt-seg button { font: inherit; font-size: 12px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text-dim); cursor: pointer; }
+.pt-seg button[aria-checked="true"] { border-color: var(--accent); color: var(--accent); font-weight: 650; }
+@media (max-width: 1100px) {
+  .detail-with-tools { grid-template-columns: 1fr; }
+  .page-tools { position: static; padding-left: 0; border-left: 0; border-top: 1px solid var(--border); padding-top: 16px; }
+}
+/* Page width: Readable holds a card's page to a comfortable line length. */
+html[data-width="readable"] .detail { max-width: 860px; }
+html[data-width="readable"] .detail-with-tools { max-width: calc(860px + 248px); }
+@media print { .page-tools, .sidebar, .topbar { display: none !important; } .detail-with-tools { display: block; } }

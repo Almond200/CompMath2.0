@@ -233,6 +233,11 @@
   // Figure captions on the browsing cards. A card's own page always shows them, since there
   // the caption is part of the explanation; on the card grid some readers want just the picture.
   const CAPTION_MODES = ["show", "hide"];
+  // A card page can carry a Wikipedia-style column of page tools on the right (off by default),
+  // and the reading width can be held to a comfortable line length ("readable") or use the
+  // whole window ("full", the default).
+  const TOOLS_MODES = ["off", "on"];
+  const WIDTH_MODES = ["full", "readable"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -286,6 +291,8 @@
       lines: pick(P.lines, FORMULA_LINES),
       order: pick(P.order, ORDERS),
       captions: pick(P.captions, CAPTION_MODES),
+      tools: pick(P.tools, TOOLS_MODES),
+      width: pick(P.width, WIDTH_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: pick(P.start, START_MODES),
@@ -301,7 +308,8 @@
           layout: state.layout, diagrams: state.diagrams,
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
-          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start
+          order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
+          tools: state.tools, width: state.width
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -330,6 +338,8 @@
     lines: _loaded.lines,        // "1" | "2" | "3" | "all" -- rows of a card's formulas shown while browsing
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
+    tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
+    width: _loaded.width,        // "full" | "readable" — how wide a card page runs
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
     start: _loaded.start,        // "landing" | "formulas" | "last" — where the app opens when no page is asked for
@@ -3619,6 +3629,79 @@
     } catch (e) { /* a convenience only: a blocked or full storage just means no history */ }
   }
 
+  // ---------- Page tools (a setting) ----------
+  // A right-hand column on a card's page, as on Wikipedia: Tools (links to the special pages
+  // about this card, a permanent link, print, a random card), Page information (counted from
+  // the data), and Appearance (text size, page width, and theme, the same settings as the
+  // Settings page, so the two stay in step).
+  function pageToolsHtml(entry) {
+    const f = entry.formula, id = f.id;
+    const body = (window.MATH_DETAILS || {})[id] || "";
+    const plain = (f.description + " " + body).replace(/\$\$[\s\S]*?\$\$|\$[^$]*\$/g, " ").replace(/\[\[[^\]|]*\|([^\]]*)\]\]/g, "$1");
+    const words = (plain.match(/[A-Za-z][A-Za-z'-]*/g) || []).length;
+    const sections = (body.match(/^## /gm) || []).length;
+    const figures = ((window.MATH_DIAGRAMS || {})[id] || []).length + Object.keys((window.MATH_BODY_DIAGRAMS || {})[id] || {}).length;
+    const examples = ((window.MATH_EXAMPLES || {})[id] ? 1 : 0) + (((window.MATH_PROBLEMS || {})[id]) || []).length;
+    const linksOut = new Set(((f.description + " " + body).match(/\[\[([a-z0-9-]+)/g) || []).map(x => x.slice(2))).size;
+    const linksIn = (getBacklinks()[id] || []).length;
+    const probs = (PROBLEMS_BY_CARD[id] || []).length;
+    const batch = (window.NEW_CARD_BATCHES || []).find(b => b.ids.indexOf(id) !== -1);
+    const tl = TIER_LABELS[tierKey(f)], il = IMPORTANCE_LABELS[f.importance];
+    const kindName = { formula: "Formula", method: "Method", pattern: "Pattern" }[kindOf(f)];
+    const seg = (key, cur, opts) => `<div class="pt-seg" role="radiogroup">${opts.map(([v, l]) => `<button type="button" role="radio" aria-checked="${v === cur ? "true" : "false"}" data-pt-set="${key}" data-val="${v}">${l}</button>`).join("")}</div>`;
+    const row = (k, v) => `<div class="pt-info"><span>${k}</span><b>${v}</b></div>`;
+    return `<aside class="page-tools" aria-label="Page tools">
+        <section class="pt-block"><div class="pt-head">Tools</div>
+          <a href="${specialHref("WhatLinksHere", id)}">What links here <span class="pt-n">${linksIn}</span></a>
+          <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n">${probs}</span></a>
+          <button type="button" class="pt-act" data-pt="permalink">Copy a permanent link</button>
+          <button type="button" class="pt-act" data-pt="print">Print this page</button>
+          <a href="#/special/random">Random card</a>
+          <button type="button" class="pt-act pt-hide" data-pt="hide">Hide page tools</button>
+        </section>
+        <section class="pt-block"><div class="pt-head">Page information</div>
+          ${row("Id", `<code>${id}</code>`)}
+          ${row("Kind", kindName)}
+          ${row("Subject", escapeAttr(entry.section.title))}
+          ${tl ? row("Tier", tl[0]) : ""}
+          ${il ? row("Importance", il[0]) : ""}
+          ${row("Write-up", `${words.toLocaleString()} words, ${sections} section${sections === 1 ? "" : "s"}`)}
+          ${row("Figures", figures)}
+          ${row("Examples", examples)}
+          ${row("Links out / in", `${linksOut} / ${linksIn}`)}
+          ${batch ? row("Added", escapeAttr(batch.date)) : ""}
+        </section>
+        <section class="pt-block"><div class="pt-head">Appearance</div>
+          <div class="pt-label">Text</div>${seg("text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
+          <div class="pt-label">Width</div>${seg("width", state.width, [["full", "Full"], ["readable", "Readable"]])}
+          <div class="pt-label">Theme</div>${seg("theme", currentTheme(), [["light", "Light"], ["dark", "Dark"]])}
+        </section>
+      </aside>`;
+  }
+  function wirePageTools(root, entry) {
+    const aside = root.querySelector(".page-tools");
+    if (!aside) return;
+    aside.addEventListener("click", e => {
+      const set = e.target.closest("[data-pt-set]");
+      if (set) {
+        const key = set.dataset.ptSet, val = set.dataset.val;
+        if (key === "theme") applyTheme(val);
+        else { state[key] = val; applyLayout(); saveSettings(); }
+        set.parentElement.querySelectorAll("button").forEach(b => b.setAttribute("aria-checked", b === set ? "true" : "false"));
+        return;
+      }
+      const act = e.target.closest("[data-pt]");
+      if (!act) return;
+      if (act.dataset.pt === "print") window.print();
+      else if (act.dataset.pt === "hide") { state.tools = "off"; saveSettings(); renderDetail(entry); }
+      else if (act.dataset.pt === "permalink") {
+        const url = location.href.split("#")[0] + "#/f/" + entry.formula.id;
+        const done = () => toast("Link copied.");
+        try { navigator.clipboard.writeText(url).then(done, () => toast(url)); } catch (err) { toast(url); }
+      }
+    });
+  }
+
   function renderDetail(entry) {
     const f = entry.formula;
     noteRecent("f:" + f.id);
@@ -3662,7 +3745,8 @@
     const asyBtn = hasDiagram
       ? `<button class="copy-btn copy-asy-btn" title="Copy Asymptote code for the figure">Copy Asymptote</button>`
       : "";
-    $content.innerHTML = `
+    const withTools = state.tools === "on";
+    $content.innerHTML = `${withTools ? `<div class="detail-with-tools">` : ""}
       <div class="detail">
         <div class="back-row">
           ${backFromSearch
@@ -3713,8 +3797,9 @@
         ${reverseLinksHtml(f)}
         ${connectedHtml(f)}
         <div class="related"><h4>Tags</h4>${tagRowHtml(f, null, entry.topics)}</div>
-      </div>`;
+      </div>${withTools ? pageToolsHtml(entry) + "</div>" : ""}`;
     renderMath($content);
+    if (withTools) wirePageTools($content, entry);
     var wdg = (window.MATH_WIDGETS || {})[f.id];
     if (wdg) { try { wdg.mount(document.getElementById("formula-widget")); } catch (e) { if (window.console) console.warn("widget error:", f.id, e); } }
     try { decorateNumberInputs(document.getElementById("formula-widget")); } catch (e) {}
@@ -4076,6 +4161,7 @@
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
           ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
+          ${settingRow("Page width", "How wide a card's own page runs. Readable holds the text to a comfortable line length; Full uses the whole window.", "width", state.width, [["full", "Full"], ["readable", "Readable"]], "page")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
@@ -4089,6 +4175,7 @@
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in, and Where I left off returns to the last page you had open. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"], ["last", "Where I left off"]])}
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
+          ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls.", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
           </div>
@@ -6543,6 +6630,7 @@
     r.setAttribute("data-tags", state.tags ? "on" : "off");
     r.setAttribute("data-captions", state.captions);
     r.setAttribute("data-cols", state.cols);
+    r.setAttribute("data-width", state.width);
   }
 
   // The latex a card shows. A card may carry latexPlain, the same statement written out
