@@ -359,7 +359,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["injectivity-surjectivity"] }
     ] },
   { id: "route-olympiad-number", name: "Olympiad Number Theory", kind: "route", tier: "Olympiad", subject: "Number Theory",
-    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 18 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 17 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Multiplicative Functions",
         note: "Functions determined by their values on prime powers, and the inversion that recovers one from its sums.",
@@ -375,7 +375,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["lucas-theorem", "dirichlet-primes-progression"] },
       { title: "Diophantine & Additive",
         note: "Solving equations in integers, and the theorems that say which numbers are representable at all.",
-        ids: ["cauchy-davenport", "erdos-ginzburg-ziv", "chevalley-warning", "vieta-jumping"] },
+        ids: ["cauchy-davenport", "erdos-ginzburg-ziv", "chevalley-warning"] },
       { title: "Special Numbers & Sequences",
         note: "Named families whose arithmetic is worth knowing before you meet them in a problem.",
         ids: ["wolstenholme", "zsygmondy", "cyclotomic-polynomials", "carmichael-numbers"] },
@@ -698,7 +698,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["direct-proof", "proof-by-cases", "disproof-by-counterexample", "proof-by-contradiction", "contrapositive", "proving-both-directions"] },
       { title: "Induction & Descent",
         note: "When a statement depends on a whole number, or a smallest bad case must exist.",
-        ids: ["induction", "strong-induction", "forward-backward-induction", "strengthening-the-hypothesis", "minimal-counterexample", "infinite-descent"] },
+        ids: ["induction", "strong-induction", "forward-backward-induction", "strengthening-the-hypothesis", "minimal-counterexample", "infinite-descent", "vieta-jumping"] },
       { title: "Existence & Uniqueness",
         note: "Prove that something exists, by building it or by forcing it, and that only one does.",
         ids: ["proof-by-construction", "proving-uniqueness", "pigeonhole-argument", "discrete-intermediate-value"] },

@@ -14,7 +14,7 @@
   - the empty Practice Problems section on patterns;
   - the Solution section groundwork.
 - **In progress:** section 2.2, the small fixes. Nothing is half-done.
-- **Next action:** move Vieta Jumping to Proof Methods (`js/data/patterns.js`, the routes in `js/data/built-in-lists.js`).
+- **Next action:** write the Angle Bisectors of Two Lines card (Geometry › Coordinate & Grid Geometry, after `angle-between-lines`).
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
   - The semantic search index must be rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
@@ -212,7 +212,7 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
 - [x] The old chat's answers recorded in `MIGRATION-NOTES.md` and folded in here and in CONVENTIONS.
 
 ### 2.2 Small fixes and one new card
-- [ ] Vieta Jumping moves from Number Theory methods to Proof Methods (it is fundamentally a proof method).
+- [x] Vieta Jumping moves from Number Theory methods to Proof Methods (it is fundamentally a proof method).
 - [ ] New card: Angle Bisectors of Two Lines. It gives the bisector equation and the slope rules: the x-axis and slope $\frac34$ give $\frac13$, and the other Pythagorean-triple pairs.
 - [ ] Hover previews:
   - find why the preview figure sometimes differs from the card's figure;

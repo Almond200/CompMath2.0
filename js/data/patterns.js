@@ -1291,7 +1291,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Choosing the Right Lens", blurb: "Picking the modulus or the prime factorization that makes a number theory problem transparent.", ids: ["choose-modulus", "exponent-tracking", "cycle-hunting"] },
         { title: "Reducing to Something Smaller", blurb: "Replacing a divisibility or a numeral by a smaller quantity with the same information: a constant, a difference, or a polynomial in the base.", ids: ["reduce-divisibility-constant", "subtract-equal-remainders", "numeral-as-polynomial"] },
-        { title: "Lifting & Descent", blurb: "Climbing from a prime to its higher powers, or descending from one solution to a smaller one.", ids: ["lte", "hensel-lifting", "vieta-jumping"] },
+        { title: "Lifting to Prime Powers", blurb: "Climbing from a prime to its higher powers: exponents of a prime in a difference of powers, and solutions modulo higher powers.", ids: ["lte", "hensel-lifting"] },
         { title: "The GCD Machinery", blurb: "Using the Euclidean algorithm and common divisors to split a problem into coprime pieces.", ids: ["extended-euclidean-algorithm", "gcd-substitution"] },
         { title: "Bounding & Factoring to Finish", blurb: "Squeezing the possibilities down to a finite list and checking it.", ids: ["bounding-diophantine", "squeeze-between-squares", "factor-pair-counting"] }
       ],
@@ -1370,21 +1370,6 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
-        },
-        {
-          id: "vieta-jumping",
-          name: "Vieta Jumping",
-          type: "method",
-          subject: "number-theory",
-          when: String.raw`A symmetric expression in two positive integers, quadratic in each, is claimed to be an integer or to satisfy a divisibility, and you must find or prove its possible values.`,
-          move: String.raw`Take a solution with the smallest sum, view the condition as a quadratic in the larger variable, replace that root by the other root from Vieta's formulas, and show the new solution is smaller, which forces a boundary case.`,
-          uses: ["vietas-quadratic"],
-          latex: String.raw`a' = kb - a = \frac{b^2 - k}{a}`,
-          description: String.raw`Vieta jumping is a descent that moves from one integer solution of a quadratic equation to another. In the classic equation $a^2 + b^2 = k(ab + 1)$, read as a quadratic in $a$ for fixed $b$, the two roots add to $kb$ and multiply to $b^2 - k$, which is the jump in the formula. The second root of a quadratic is an integer whenever the first is, so every solution has a neighbor, and following the neighbors downhill must end at a smallest solution, where the answer can be read off.`,
-          keywords: ["vieta jumping", "root flipping", "infinite descent", "minimal solution", "symmetric diophantine", "method"],
-          importance: "lower",
-          tier: "Olympiad",
-          level: ["Olympiad"]
         },
         {
           id: "extended-euclidean-algorithm",
@@ -1975,7 +1960,7 @@ window.MATH_SECTIONS.push({
       title: "Proof Methods",
       groups: [
         { title: "Ways to Structure a Proof", blurb: "The basic shapes an argument can take: forward from the hypotheses, by contradiction, through the contrapositive, by cases, or by a counterexample that settles a false claim.", ids: ["direct-proof", "proof-by-contradiction", "contrapositive", "proof-by-cases", "wlog-symmetry", "proving-both-directions", "proving-uniqueness", "disproof-by-counterexample"] },
-        { title: "Induction & Descent", blurb: "Arguments that climb through the integers one case at a time, or descend from a supposed solution to an impossible smaller one.", ids: ["induction", "strong-induction", "forward-backward-induction", "strengthening-the-hypothesis", "minimal-counterexample", "infinite-descent"] },
+        { title: "Induction & Descent", blurb: "Arguments that climb through the integers one case at a time, or descend from a supposed solution to an impossible smaller one.", ids: ["induction", "strong-induction", "forward-backward-induction", "strengthening-the-hypothesis", "minimal-counterexample", "infinite-descent", "vieta-jumping"] },
         { title: "Existence Arguments", blurb: "Showing that something exists: build it, force it with pigeonhole, or catch it with discrete continuity. The extremal principle, invariants, double counting, bijections, and the probabilistic method are filed under Counting & Probability.", ids: ["proof-by-construction", "pigeonhole-argument", "discrete-intermediate-value"] }
       ],
       formulas: [
@@ -2188,6 +2173,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "Olympiad",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "vieta-jumping",
+          name: "Vieta Jumping",
+          type: "method",
+          subject: "proof",
+          when: String.raw`A symmetric expression in two positive integers, quadratic in each, is claimed to be an integer or to satisfy a divisibility, and you must find or prove its possible values.`,
+          move: String.raw`Take a solution with the smallest sum, view the condition as a quadratic in the larger variable, replace that root by the other root from Vieta's formulas, and show the new solution is smaller, which forces a boundary case.`,
+          uses: ["vietas-quadratic"],
+          latex: String.raw`a' = kb - a = \frac{b^2 - k}{a}`,
+          description: String.raw`Vieta jumping is a descent that moves from one integer solution of a quadratic equation to another. In the classic equation $a^2 + b^2 = k(ab + 1)$, read as a quadratic in $a$ for fixed $b$, the two roots add to $kb$ and multiply to $b^2 - k$, which is the jump in the formula. The second root of a quadratic is an integer whenever the first is, so every solution has a neighbor, and following the neighbors downhill must end at a smallest solution, where the answer can be read off.`,
+          keywords: ["vieta jumping", "root flipping", "infinite descent", "minimal solution", "symmetric diophantine", "method"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "proof-by-construction",
