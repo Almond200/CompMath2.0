@@ -3287,5 +3287,58 @@ Counting standard Young tableaux, two-row and rectangular arrays filled increasi
 
 ## Contest profile
 No problems here are tagged with it yet. AIME problems that fill a small array increasingly along rows and columns can be counted by hand; the formula is the shortcut, and it is quoted on olympiads.
+`,
+"round-robin-tournaments": String.raw`
+## Distinguishing clues
+- A tournament in which each of $n$ teams or players meets every other exactly once.
+- Records given as wins, losses, and ties, or as points, such as $3$ for a win and $1$ each for a tie.
+- A question about the number of games or ties, a team's possible record, or how many teams can finish with a given record.
+- Not this pattern: a knockout tournament, where the loser leaves; there every game removes one player, so $n$ players need $n - 1$ games.
+
+## Methods and Formulas to Try
+Every game produces one win and one loss, or one tie, so the totals are known in advance: the wins plus the ties add to $\binom n2$, the wins equal the losses, and with no ties the average team wins $\frac{n - 1}{2}$ games. With points, each decided game gives out the points for a win and each tie the points for two ties, so the total points give the number of ties.
+
+### Methods to try
+- [[double-counting]]: count games once by pairs of teams and once by adding up the teams' records.
+- [[extremal-principle]]: look at the team with the most wins, or the fewest; bounds on it often finish the problem.
+- [[casework-method]]: split by the result of one key game, or by how many teams share a record.
+
+### Formulas to try
+- [[handshake-lemma]]: the teams are vertices and the games are edges of a complete graph, so the games played add up to twice the number of games.
+
+## Common traps
+- Counting each game twice, once for each team, and reporting $n(n - 1)$ games.
+- Forgetting that a tie gives points to both teams, so a tied game gives out a different total from a decided one.
+- Assuming every record is possible: the wins of any $k$ teams must be at least $\binom k2$, the games among themselves.
+- Mixing up a round robin with a knockout tournament.
+
+## Contest profile
+An AMC 10 and AMC 12 setting, sometimes on the AIME as a probability that no two teams finish with the same record. The questions turn on fixed totals, or on the extreme team.
+`,
+"magic-squares": String.raw`
+## Distinguishing clues
+- A square grid whose rows, columns, and, in most problems, both diagonals have a common sum.
+- Some entries given, and a missing entry or the common sum asked for.
+- A set of numbers to be placed, such as $1$ to $9$, or nine given values.
+- Not this pattern: a grid where only the rows and columns have equal sums with no other condition, or one with a product condition; the center argument below needs both diagonals.
+
+## Methods and Formulas to Try
+The $n$ rows together contain every entry once, so the magic sum is the total of the entries divided by $n$; for $1$ to $9$ it is $\frac{45}{3} = 15$. In a $3 \times 3$ square the middle row, the middle column, and the two diagonals all pass through the center $c$. Together they hold every entry once and the center three more times, so their total $4S$ equals the sum of all entries plus $3c$, which is $3S + 3c$, and $S = 3c$. Two entries opposite each other across the center then add to $2c$.
+
+### Methods to try
+- [[add-all-equations]]: add the row, column, and diagonal conditions, or a well-chosen group of them, to find the magic sum and the center.
+- [[casework-method]]: once the center is known, try the possible positions of the largest or smallest entry.
+
+### Formulas to try
+- [[arithmetic-series]]: the total of $1$ to $n^2$ is $\frac{n^2(n^2 + 1)}{2}$, which gives the magic sum $\frac{n(n^2 + 1)}{2}$.
+
+## Common traps
+- Using the center rule in a square larger than $3 \times 3$, or in one without the diagonal condition.
+- Dividing the total by $n^2$ instead of by $n$.
+- Placing the even numbers of $1$ to $9$ on the edges; in the magic square they go in the corners.
+- Forgetting that a square can be rotated or reflected, which matters when the question counts the squares.
+
+## Contest profile
+An occasional AMC problem, and an early AIME one, that gives part of a magic square or a variant of one. The magic sum and the center are always the first two facts to find.
 `
 });

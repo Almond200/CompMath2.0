@@ -2272,6 +2272,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "painted-cubes",
+          name: "Painted Cubes",
+          type: "pattern",
+          subject: "geometry",
+          recognize: [String.raw`a cube or box built from unit cubes, painted on its outside, then taken apart`, String.raw`a question about how many unit cubes have $0$, $1$, $2$, or $3$ painted faces, or the probability of drawing one`, String.raw`variants with only some faces painted, or a cube resting on a table so that its bottom is not painted`],
+          suggests: ["casework-method", "complementary-counting"],
+          tryFirst: ["cube", "casework-method", "complementary-counting"],
+          latex: String.raw`n^3 = \underbrace{8}_{3\text{ faces}} + \underbrace{12(n - 2)}_{2} + \underbrace{6(n - 2)^2}_{1} + \underbrace{(n - 2)^3}_{0}`,
+          description: String.raw`This is the problem of an $n \times n \times n$ cube made of unit cubes, painted on the outside and taken apart, with $n \ge 2$. A unit cube's number of painted faces depends only on where it sat: the $8$ corners have three, the cubes along the $12$ edges two, the cubes in the middle of the $6$ faces one, and the hidden core none. The four counts add back to $n^3$, which is the check.`,
+          keywords: ["painted cube", "unit cubes painted", "cube painted on the outside", "how many faces painted", "painted box", "corner edge face interior cubes", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
           id: "equiangular-polygon",
           name: "Equiangular Polygon",
           type: "pattern",
@@ -2494,6 +2509,21 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
+          id: "age-problems",
+          name: "Age Problems",
+          type: "pattern",
+          subject: "algebra",
+          recognize: [String.raw`two or more people's ages, now and some years ago or from now`, String.raw`statements such as "was three times as old" or "will be twice as old" at different times`, String.raw`a question asking for a present age, a past or future year, or when a ratio of ages will hold`],
+          suggests: ["add-all-equations", "working-backwards", "averages-to-totals"],
+          tryFirst: ["add-all-equations", "working-backwards", "averages-to-totals"],
+          latex: String.raw`a(t) = a + t,\ \ b(t) = b + t, \qquad a(t) - b(t) = a - b`,
+          description: String.raw`This is the word problem about ages at different times. Write $a$ and $b$ for the present ages, so after $t$ years they are $a(t)$ and $b(t)$, with $t$ negative for the past. Every age moves by the same number of years, so the difference between two ages never changes, while their ratio does. Each sentence of the problem becomes one equation in the present ages.`,
+          keywords: ["age problem", "years ago", "years from now", "times as old", "twice as old as", "age difference constant", "present ages", "ages grow at the same rate", "pattern"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
           id: "floor-equation",
           name: "An Equation with a Floor or Fractional Part",
           type: "pattern",
@@ -2669,6 +2699,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "calendar-problems",
+          name: "Calendar and Day-of-the-Week Problems",
+          type: "pattern",
+          subject: "number-theory",
+          recognize: [String.raw`a date and its day of the week, and another date whose day of the week is asked for`, String.raw`counts of how many times a weekday or a date (a Friday the 13th, a Sunday in a month) occurs`, String.raw`leap years, months of different lengths, or a repeating weekly schedule`],
+          suggests: ["choose-modulus", "cycle-hunting", "casework-method"],
+          tryFirst: ["modular-basics", "cycle-hunting", "choose-modulus"],
+          latex: String.raw`\text{day}(n \text{ days later}) = \text{day} + (n \bmod 7), \qquad 365 \equiv 1,\ \ 366 \equiv 2 \pmod 7`,
+          description: String.raw`This is the problem about days of the week across a span of dates. Weekdays repeat every $7$ days, so only the number of days between two dates modulo $7$ matters, and an ordinary year moves every date forward by one weekday, a leap year by two. The work is counting the days correctly: the lengths of the months, which years are leap years, and whether the endpoints are included.`,
+          keywords: ["day of the week", "calendar", "what day will it be", "leap year", "friday the 13th", "weekday after n days", "days mod 7", "pattern"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12"]
+        },
+        {
           id: "coins-and-prices",
           name: "Coins and Prices",
           type: "pattern",
@@ -2782,6 +2827,36 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "round-robin-tournaments",
+          name: "Round-Robin Tournaments",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`$n$ teams or players, each pair playing exactly once`, String.raw`wins, losses, ties, or points for wins and ties, with totals or one team's record given`, String.raw`questions about the number of games, ties, or the most or fewest wins a team can have`],
+          suggests: ["double-counting", "extremal-principle", "casework-method"],
+          tryFirst: ["handshake-lemma", "double-counting", "extremal-principle"],
+          latex: String.raw`\binom n2 \text{ games} = \text{total wins} + \text{ties}, \qquad \text{average wins} = \frac{n - 1}{2}\ \text{(no ties)}`,
+          description: String.raw`This is the tournament in which each of $n$ teams plays every other team once, so there are $\binom n2$ games. Every game gives out exactly one win or one tie, so totals over all teams are fixed before anything else is known, and each team plays $n - 1$ games. Most questions are settled by adding up the records two ways, or by looking at the team with the most or the fewest wins.`,
+          keywords: ["round robin", "round-robin tournament", "each team plays every other team once", "wins and losses", "ties and points", "total number of games", "tournament", "counting the games", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "magic-squares",
+          name: "Magic Squares",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`an $n \times n$ grid whose rows, columns, and usually both diagonals all have the same sum`, String.raw`some entries given and the rest, or the common sum, asked for`, String.raw`the numbers $1$ to $n^2$, or a list of given numbers, to be placed in the grid`],
+          suggests: ["add-all-equations", "casework-method"],
+          tryFirst: ["add-all-equations", "casework-method", "arithmetic-series"],
+          latex: String.raw`\text{magic sum} = \frac{\text{sum of all entries}}{n}, \qquad 3 \times 3:\ \text{center} = \frac{\text{magic sum}}{3}`,
+          description: String.raw`This is the grid in which every row, every column, and both diagonals add to the same magic sum. The $n$ rows together hold every entry once, which fixes the magic sum before any entry is placed. In a $3 \times 3$ square the four lines through the center fix the center too, and two entries opposite each other across the center add to twice it.`,
+          keywords: ["magic square", "magic sum", "rows columns diagonals same sum", "3 by 3 magic square", "center of a magic square", "numbers 1 to 9 in a grid", "arrangement of numbers in a grid", "pattern"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "subset-avoiding-relation",

@@ -708,3 +708,8 @@ Importance is High / Medium / Low / Lower **within each card's own subsection** 
 | pentagonal-number-theorem | counting / Symmetry, Partitions & Posets | Olympiad | new (gap scan) | 0 | **lower** |
 | hook-length-formula | counting / Symmetry, Partitions & Posets | Olympiad | new (gap scan) | 0 | **lowest** |
 | projective-transformations | geometry (method) / Transformations & Inversion | Olympiad | new (gap scan) | 0 | **lowest** |
+| age-problems | algebra (pattern) / Word-Problem Setups | AMC | new (gap scan) | 0 | **medium** |
+| calendar-problems | number theory (pattern) / Divisibility & Remainders | AMC | new (gap scan) | 0 | **medium** |
+| painted-cubes | geometry (pattern) / Solid Configurations | AMC | new (gap scan) | 0 | **low** |
+| round-robin-tournaments | counting (pattern) / Logic & Probability Setups | AMC | new (gap scan) | 0 | **low** |
+| magic-squares | counting (pattern) / Logic & Probability Setups | AMC | new (gap scan) | 0 | **lower** |

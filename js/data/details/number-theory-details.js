@@ -2849,5 +2849,32 @@ Choosing a large prime in a given residue class to test a divisibility or a func
 
 ## Contest profile
 No problems here are tagged with it yet. An olympiad citation, quoted in one line; the special cases for $1$ and $3$ modulo $4$ are classical olympiad exercises in their own right.
+`,
+"calendar-problems": String.raw`
+## Distinguishing clues
+- A known date with its day of the week, and another date whose day of the week is asked for.
+- A count of how often a weekday or a date occurs, such as the Fridays the 13th in a year or the Sundays in a month.
+- Leap years, months of different lengths, or a schedule that repeats every week.
+- Not this pattern: a clock problem about the angle between the hands or the time after some hours, which works modulo $12$ or $60$ and has [[clock-angle|its own card]].
+
+## Methods and Formulas to Try
+Only the number of days between the dates matters, and only modulo $7$. An ordinary year has $365 \equiv 1 \pmod 7$ days and a leap year $366 \equiv 2$; the months have $31 \equiv 3$, $30 \equiv 2$, $28 \equiv 0$, and $29 \equiv 1$. A year is a leap year when it is divisible by $4$, except century years, which must be divisible by $400$, so 2000 was a leap year and 1900 was not. The full $400$-year cycle has $146097$ days, an exact number of weeks, so the calendar repeats every $400$ years.
+
+### Methods to try
+- [[choose-modulus]]: work modulo $7$ from the start, reducing each month and year as it is added.
+- [[cycle-hunting]]: for questions over many years, find the period after which the pattern of weekdays repeats.
+- [[casework-method]]: split a count by the weekday of the first day of the month or year.
+
+### Formulas to try
+- [[modular-basics]]: sums of day counts reduce term by term modulo $7$, so the shifts of the months and years can be added directly.
+
+## Common traps
+- Counting both endpoints: from Monday to the next Monday is $7$ days, not $8$.
+- Applying a leap day to the wrong year: the extra day is February 29, so it matters only for spans that cross it.
+- Treating every year divisible by $4$ as a leap year across a century such as 1900 or 2100.
+- Counting backwards with the wrong sign: going back $n$ days moves the weekday back by $n \bmod 7$.
+
+## Contest profile
+An AMC 8 and AMC 10 problem, usually early in the paper: find a day of the week, or count weekdays in a span. Harder versions count dates with a property over many years, where the repeating cycle does the work.
 `
 });

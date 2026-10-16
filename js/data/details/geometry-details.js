@@ -8673,5 +8673,33 @@ A projective map is fixed by where it sends four points, no three on a line, so 
 
 ## Contest profile
 An olympiad technique. It is rarely the only way, but it is often the shortest proof of a collinearity or a harmonic division in a complete quadrilateral or a figure with one conic.
+`,
+"painted-cubes": String.raw`
+## Distinguishing clues
+- A cube or box assembled from unit cubes, painted on all or some of its outside faces, then taken apart.
+- A question about how many small cubes have $0$, $1$, $2$, or $3$ painted faces, or the probability of picking such a cube, or the fraction of all small faces that are painted.
+- A variant with a cube standing on a table, so its bottom face stays unpainted, or with only some faces painted.
+- Not this pattern: counting the cubes a diagonal passes through, or the visible cubes from one corner, which are counted along lines and not by position on the surface.
+
+## Methods and Formulas to Try
+Sort the small cubes by where they sat. In an $n \times n \times n$ cube with every face painted, the $8$ corners have three painted faces, the $n - 2$ cubes inside each of the $12$ edges have two, the $(n - 2)^2$ cubes inside each of the $6$ faces have one, and the core of $(n - 2)^3$ cubes has none.
+
+The same sort works for an $a \times b \times c$ box with every side at least $2$. There are still $8$ corners with three painted faces. The edges give $4[(a - 2) + (b - 2) + (c - 2)]$ cubes with two, since each of the three edge lengths appears on four parallel edges. The faces give $2[(a - 2)(b - 2) + (b - 2)(c - 2) + (c - 2)(a - 2)]$ cubes with one, two of each face shape, and the core $(a - 2)(b - 2)(c - 2)$ cubes with none. A $3 \times 4 \times 5$ box splits as $8 + 24 + 22 + 6 = 60$. A side of length $2$ makes the core and some face counts zero, and the formulas still hold. A side of length $1$ is a slab, where every cube touches both large faces: the $4$ corners have four painted faces, the other cubes on the rim three, and the inside cubes two.
+
+### Methods to try
+- [[casework-method]]: split the small cubes by their position (corner, edge, face, core) and count each case.
+- [[complementary-counting]]: the cubes with at least one painted face are all of them minus the unpainted core.
+
+### Formulas to try
+- [[cube]]: the $8$ vertices, $12$ edges, and $6$ faces of the cube are the counts behind every case.
+
+## Common traps
+- Using $n$ instead of $n - 2$ for the cubes inside an edge or a face; the corners have already been counted.
+- Forgetting that an unpainted bottom face moves its cubes into lower counts: a bottom corner loses one painted face.
+- Applying the cube formulas to a box, or the box formulas to a slab with a side of length $1$.
+- Not checking that the four counts add to the total number of small cubes.
+
+## Contest profile
+An AMC 8 and AMC 10 problem, often phrased as a probability or a fraction of painted small faces. Harder versions paint only some faces, or work backwards from a count to the size of the cube.
 `
 });
