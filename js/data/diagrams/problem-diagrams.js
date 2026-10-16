@@ -12,6 +12,50 @@
     angleArc, rightAngle, ticksOn, segIn, subT, cap, wrap } = K;
   const MM = ok => ok ? "" : " MISMATCH";
 
+  // ---- 3D: which edges of a polyhedron the viewer cannot see ----------------------------------
+  // V: named 3D points, faces: lists of names (planar polygons), view: a direction pointing from
+  // the solid toward the viewer (parallel projection). An edge is hidden when the ray from its
+  // midpoint toward the viewer passes through a face the edge is not on.
+  const v3 = { sub: (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]], dot: (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2],
+    cross: (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]] };
+  function hiddenEdge(V, faces, view, e) {
+    const M = [0, 1, 2].map(i => (V[e[0]][i] + V[e[1]][i]) / 2);
+    return faces.some(f => {
+      if (f.includes(e[0]) && f.includes(e[1])) return false;
+      const P = f.map(n => V[n]), nrm = v3.cross(v3.sub(P[1], P[0]), v3.sub(P[2], P[0]));
+      const den = v3.dot(nrm, view);
+      if (Math.abs(den) < 1e-12) return false;
+      const t = v3.dot(nrm, v3.sub(P[0], M)) / den;
+      if (t < 1e-6) return false;
+      const X = M.map((m, i) => m + t * view[i]);
+      const drop = [0, 1, 2].reduce((b, i) => Math.abs(nrm[i]) > Math.abs(nrm[b]) ? i : b, 0);
+      const k2 = q => [0, 1, 2].filter(i => i !== drop).map(i => q[i]);
+      const pt = k2(X), pg = P.map(k2);
+      let inside = false;
+      for (let i = 0, j = pg.length - 1; i < pg.length; j = i++)
+        if ((pg[i][1] > pt[1]) !== (pg[j][1] > pt[1]) && pt[0] < (pg[j][0] - pg[i][0]) * (pt[1] - pg[i][1]) / (pg[j][1] - pg[i][1]) + pg[i][0]) inside = !inside;
+      return inside;
+    });
+  }
+  // Every edge of the faces, drawn solid or dashed by hiddenEdge; Pj projects a 3D point.
+  function solidEdges(V, faces, view, Pj, c = DIM, w = 2) {
+    const seen = new Set(), out = [];
+    faces.forEach(f => f.forEach((n, i) => {
+      const m = f[(i + 1) % f.length], key = [n, m].sort().join("|");
+      if (seen.has(key)) return; seen.add(key);
+      out.push(seg(Pj(V[n]), Pj(V[m]), c, w, hiddenEdge(V, faces, view, [n, m]) ? "5 4" : ""));
+    }));
+    return out;
+  }
+  // A parallel projection from two screen axes for x and y and a vertical z, with the direction
+  // toward the viewer that goes with it (perpendicular to both screen directions, from above).
+  function projector(O, k, ex, ey) {
+    const Pj = q => [O[0] + k * (ex[0] * q[0] + ey[0] * q[1]), O[1] + k * (ex[1] * q[0] + ey[1] * q[1] - q[2])];
+    let view = v3.cross([ex[0], ey[0], 0], [ex[1], ey[1], -1]);
+    if (view[2] < 0) view = view.map(x => -x);
+    return { Pj, view };
+  }
+
   const ell = (c, rx, ry, col = FNT, w = 1.5, dash = "") =>
     `<ellipse cx="${c[0]}" cy="${c[1]}" rx="${rx}" ry="${ry}" fill="none" stroke="${col}" stroke-width="${w}"${dash ? ` stroke-dasharray="${dash}"` : ""}/>`;
 
@@ -169,6 +213,103 @@
       txt(add(A, [8, -6]), "A"), txt(add(B, [-10, -6]), "B"), txt(add(C, [-10, 14]), "C"), txt(add(D, [10, 14]), "D"),
       txt(add(mid(A, B), [0, -10]), "√11", GLD, 12.5), txt(add(mid(A, D), [16, -8]), "√1001", GLD, 12.5, "start"),
       cap(430, 190, "Trapezoid ABCD with leg BC perpendicular to both bases and the diagonals AC and BD perpendicular; AB = √11 and AD = √1001." + MM(ok))
+    ]);
+  })();
+
+  // 2000 AIME II #12: the sphere, the plane of A, B, C cutting it in a circle, and the
+  // perpendicular OD from the center to that plane.
+  PROB["2000-aime-ii-12"] = (() => {
+    const k = 6, O = [215, 128], beta = rad(42), Rs = 20, rc = 65 / 8, h = Math.sqrt(400 - rc * rc);
+    const S = (x, y, z) => [O[0] + k * x, O[1] - k * (z * Math.cos(beta) + y * Math.sin(beta))];   // y recedes, z up
+    const D = S(0, 0, -h), A3 = Math.asin(56 / 65), B3 = Math.asin(60 / 65);
+    const on = t => [rc * Math.cos(t), rc * Math.sin(t), -h];
+    const Bq = on(rad(-70)), Cq = on(rad(-70) + 2 * A3), Aq = on(rad(-70) + 2 * A3 + 2 * B3);
+    const L = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+    const ok = Math.abs(L(Bq, Cq) - 14) < 1e-9 && Math.abs(L(Cq, Aq) - 15) < 1e-9 && Math.abs(L(Aq, Bq) - 13) < 1e-9 &&
+      Math.abs(Math.hypot(...Aq) - 20) < 1e-9;
+    const Pa = S(...Aq), Pb = S(...Bq), Pc = S(...Cq);
+    return wrap(430, 262, [
+      circ(O, Rs * k, FNT, 1.6),
+      ell(D, rc * k, rc * k * Math.sin(beta), FNT, 1.3, "4 3"),
+      poly([Pa, Pb, Pc], ACC, 2, ACCS), seg(O, D, GLD, 1.8, "5 4"), seg(O, Pa, DIM, 1.4),
+      dot(O, DIM, 3.5), dot(D, GLD, 3.5), ...[Pa, Pb, Pc].map(q => dot(q, ACC, 3.5)),
+      txt(add(O, [10, -6]), "O", DIM, 13, "start"), txt(add(D, [10, 4]), "D", GLD, 13, "start"),
+      txt(add(Pa, [-12, 0]), "A", ACC), txt(add(Pb, [4, 17]), "B", ACC), txt(add(Pc, [12, 2]), "C", ACC),
+      txt(add(mid(O, Pa), [-10, -2]), "20", DIM, 12.5, "end"),
+      cap(430, 262, "A, B and C on the sphere of radius 20 about O. Their plane cuts the sphere in a circle (dashed), and D is the foot of the perpendicular from O to the plane; OD is the distance asked for." + MM(ok))
+    ]);
+  })();
+
+  // 2002 AIME I #11: the cube, the face BCFG, and the beam's first leg from A to P.
+  PROB["2002-aime-i-11"] = (() => {
+    const { Pj, view } = projector([118, 238], 11.5, [1, 0], [0.62, -0.42]);
+    // x along AB, y along BC, z up: A(0,0,0), B(12,0,0), C(12,12,0), D(0,12,0), G above B, F above C.
+    const V = { A: [0, 0, 0], B: [12, 0, 0], C: [12, 12, 0], D: [0, 12, 0], G: [12, 0, 12], F: [12, 12, 12], H: [0, 0, 12], K: [0, 12, 12] };
+    const faces = [["A", "B", "C", "D"], ["H", "G", "F", "K"], ["A", "B", "G", "H"], ["D", "C", "F", "K"], ["B", "C", "F", "G"], ["A", "D", "K", "H"]];
+    const P3 = [12, 7, 5], P = Pj(P3), A = Pj(V.A);
+    const ok = Math.abs(P3[1] - 7) < 1e-12 && Math.abs(P3[2] - 5) < 1e-12 && P3[0] === V.B[0];
+    return wrap(430, 270, [
+      poly(["B", "C", "F", "G"].map(n => Pj(V[n])), "none", 0, ACCS),
+      ...solidEdges(V, faces, view, Pj),
+      seg(A, P, GLD, 2.2), seg(P, Pj([12, 0, 5]), FNT, 1.3, "3 3"), seg(P, Pj([12, 7, 0]), FNT, 1.3, "3 3"),
+      dot(P, GLD, 4), dot(A, DIM, 3.5),
+      ...["A", "B", "C", "D", "G", "F"].map(n => txt(add(Pj(V[n]), n === "A" ? [-12, 10] : n === "B" ? [10, 12] : n === "C" ? [12, 6] : n === "D" ? [-12, 4] : n === "G" ? [10, -6] : [12, -6]), n)),
+      txt(add(P, [10, -6]), "P", GLD, 13, "start"),
+      txt(add(mid(P, Pj([12, 0, 5])), [0, 16]), "7", DIM, 12), txt(add(mid(P, Pj([12, 7, 0])), [10, 4]), "5", DIM, 12, "start"),
+      cap(430, 270, "The cube with edge 12. The beam leaves A and first hits face BCFG (shaded) at P, which is 7 from edge BG and 5 from edge BC." + MM(ok))
+    ]);
+  })();
+
+  // 2002 AIME I #15: the polyhedron drawn from its coordinates, with the hidden edges dashed.
+  PROB["2002-aime-i-15"] = (() => {
+    const g = -6 + Math.sqrt(19);
+    const V = { A: [-6, -6, 0], B: [6, -6, 0], C: [6, 6, 0], D: [-6, 6, 0], E: [0, 2, 12], F: [3, g, 6], G: [-3, g, 6] };
+    const faces = [["A", "B", "C", "D"], ["A", "B", "F", "G"], ["C", "D", "E"], ["A", "D", "E", "G"], ["B", "C", "E", "F"], ["E", "F", "G"]];
+    const { Pj, view } = projector([205, 214], 13, [1, 0], [0.55, -0.32]);
+    const L = (n, m) => Math.hypot(...[0, 1, 2].map(i => V[n][i] - V[m][i]));
+    const ok = Math.abs(L("B", "F") - 8) < 1e-9 && Math.abs(L("A", "G") - 8) < 1e-9 && Math.abs(L("C", "E") - 14) < 1e-9 && Math.abs(L("F", "G") - 6) < 1e-9;
+    const off = { A: [-10, 12], B: [10, 12], C: [12, 4], D: [-12, -2], E: [0, -10], F: [12, 2], G: [-12, 2] };
+    return wrap(430, 262, [
+      ...solidEdges(V, faces, view, Pj),
+      ...Object.keys(V).map(n => dot(Pj(V[n]), DIM, 3.2)),
+      ...Object.keys(V).map(n => txt(add(Pj(V[n]), off[n]), n)),
+      cap(430, 262, "The polyhedron: square ABCD of side 12 at the bottom, trapezoid ABFG in front (GF = 6, AG = BF = 8), triangle CDE at the back (CE = DE = 14), and E at height 12 above the square." + MM(ok))
+    ]);
+  })();
+
+  // 2003 AIME II #11: the right triangle, the point D over the midpoint M, and triangle CDM.
+  PROB["2003-aime-ii-11"] = (() => {
+    const k = 14.5, Q = (x, y) => [40 + k * x, 175 - k * y];
+    const A = Q(0, 0), B = Q(25, 0), C = Q(49 / 25, 168 / 25), M = Q(12.5, 0), D = Q(12.5, Math.sqrt(225 - 156.25));
+    const ok = Math.abs(dist(A, C) - 7 * k) < 1e-9 && Math.abs(dist(B, C) - 24 * k) < 1e-9 && Math.abs(dist(A, D) - 15 * k) < 1e-9;
+    return wrap(430, 205, [
+      poly([A, B, C], DIM, 2), seg(A, D, DIM, 1.6), seg(B, D, DIM, 1.6), poly([C, D, M], GLD, 1.8, GLDS),
+      rightAngle(C, A, B, 9), ticksOn(A, M, 1), ticksOn(M, B, 1),
+      ...[A, B, C, D, M].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-8, 14]), "A"), txt(add(B, [8, 14]), "B"), txt(add(C, [-4, -9]), "C"), txt(add(D, [0, -9]), "D"), txt(add(M, [0, 16]), "M"),
+      txt(add(mid(A, C), [-10, 0]), "7", DIM, 12, "end"), txt(add(lerp(C, B, 0.74), [0, 15]), "24", DIM, 12),
+      txt(add(mid(A, D), [-6, -8]), "15", DIM, 12), txt(add(mid(B, D), [8, -4]), "15", DIM, 12, "start"),
+      cap(430, 205, "Right triangle ABC (right angle at C), M the midpoint of AB, and D on C's side of AB with AD = BD = 15. Triangle CDM is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2004 AIME I #14: the view from above. The rope wraps part of the tower, then leaves along a
+  // tangent to the unicorn U, which is 4 from the tower, so 12 from its center.
+  PROB["2004-aime-i-14"] = (() => {
+    const k = 9, O = [175, 120], U = [O[0] + 12 * k, O[1]];
+    const th = Math.acos(8 / 12), T = [O[0] + 8 * k * Math.cos(th), O[1] - 8 * k * Math.sin(th)];
+    const wrapAng = (8 * Math.sqrt(6) - 4 * Math.sqrt(5)) / 8, a0 = -th, a1 = a0 - wrapAng;
+    const W = [O[0] + 8 * k * Math.cos(a1), O[1] + 8 * k * Math.sin(a1)];
+    const ok = Math.abs((T[0] - O[0]) * (U[0] - T[0]) + (T[1] - O[1]) * (U[1] - T[1])) < 1e-6 && Math.abs(dist(T, U) - Math.sqrt(80) * k) < 1e-9;
+    return wrap(430, 205, [
+      circ(O, 8 * k, DIM, 2, "var(--bg-card)"),
+      `<path d="M ${T.map(v => v.toFixed(1)).join(",")} A ${8 * k} ${8 * k} 0 0 0 ${W.map(v => v.toFixed(1)).join(",")}" fill="none" stroke="${GLD}" stroke-width="3"/>`,
+      seg(T, U, GLD, 2.4), seg(O, T, FNT, 1.2, "4 3"), seg(O, [O[0] + 8 * k, O[1]], FNT, 1.2, "4 3"),
+      seg([O[0] + 8 * k, O[1]], U, DIM, 1.2, "2 3"), rightAngle(T, O, U, 9),
+      dot(O, DIM, 3.5), dot(U, GLD, 4), dot(W, GLD, 3.5), dot(T, DIM, 3),
+      txt(add(U, [10, 4]), "U", GLD, 13, "start"), txt(add(W, [-10, -6]), "rope tied here", GLD, 11.5, "end"),
+      txt(add(mid(O, T), [-12, -2]), "8", DIM, 12), txt(add(mid([O[0] + 8 * k, O[1]], U), [0, 16]), "4", DIM, 12),
+      cap(430, 205, "The tower and rope seen from above. The rope (gold, 20 long in all) is tied at ground level, wraps part of the way round the tower of radius 8, and leaves it along a tangent to the unicorn U, 4 from the tower, where it is tied 4 above the ground." + MM(ok))
     ]);
   })();
 

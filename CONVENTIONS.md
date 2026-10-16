@@ -714,7 +714,8 @@ are untouched.
   as `PROB["<slug>"]`, built with `window.GEO_KIT`. It shows the setup only (the given lengths and
   points, never a computed answer), carries an `ok` self-check, and the page labels it as drawn
   for the app. `check-statements.py` fails on a figure for a problem whose statement already has
-  one.
+  one. A problem given only in coordinates, or with nothing to picture but its answer, gets none.
+  A solid is drawn from its real coordinates with `solidEdges`, which dashes the hidden edges.
 - A trick-only card still lists the problem among its practice problems, with the row rendered
   exactly like any other. The problem page is the only place a trick is labelled.
 - **A problem no card honestly fits keeps `formulas: []`.** The validator reports it ("no card at all") instead of failing, the app still gives it a page that shows its chain as "Not classified yet", and `Special:Unclassified` lists it. Never tag a card a problem does not use to fill the gap (2011 AIME II #1 and 2013 AIME II #1 once carried Normalization, which neither uses).
