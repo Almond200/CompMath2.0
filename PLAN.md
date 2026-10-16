@@ -4,7 +4,7 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step, update "Current state" below and push. Credits can run out at any moment, so this block must always say exactly where the work stands and what the next action is.
 
-## Current state (updated 2026-10-16)
+## Current state (updated 2026-10-16, end of the first cloud chat)
 
 - **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged.
 - **Last finished:**
@@ -14,7 +14,9 @@
   - the freer Pythagoras widget;
   - lab pages showing every card;
   - the new front page;
-  - the page tools setting;
+  - the page tools setting (Tools, Page information, Appearance; full-height divider);
+  - the angle-chasing puzzle with Easy, Medium, and Hard (tick marks, tangent-chord angles, interior-angle rings, an exterior angle, a streak);
+  - the interactives audit (an intro line for 40 tools, named drag hints) and nine draggable olympiad-lemma widgets;
   - the handoff system (this block, `CLAUDE.md`, `MIGRATION-NOTES.md`);
   - the UI scan;
   - the "/" fix;

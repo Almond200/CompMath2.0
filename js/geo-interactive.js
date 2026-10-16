@@ -1794,47 +1794,103 @@
     var wrap = document.createElement("div");
     wrap.className = "geo-widget ac-game";
     wrap.innerHTML = '<div class="geo-title">Angle-chasing puzzle</div>' +
-      '<p class="ac-intro">Four points on a circle, joined around and across. The blue angle is given. Click every other angle that is equal to it (each angle is a small wedge at a vertex or at the crossing point P), then press Check.</p>' +
+      '<p class="ac-intro">Four points on a circle, joined around and across; sides with the same tick marks are equal, and a line touching the circle at one point is a tangent. The blue angle is given. Click every other angle equal to it, then press Check. Each small wedge is one angle; on Hard, the thin band around a vertex is the whole angle of the quadrilateral there, and one side runs on past a vertex to X. Solve a puzzle perfectly to build a streak.</p>' +
       '<svg viewBox="0 0 400 340" class="geo-svg" role="img" aria-label="Angle-chasing puzzle"></svg>' +
-      '<div class="ac-bar"><button type="button" class="ac-btn" data-ac="check">Check</button><button type="button" class="ac-btn" data-ac="new">New puzzle</button><span class="ac-score"></span></div>' +
+      '<div class="ac-bar"><span class="ac-levels" role="radiogroup" aria-label="Difficulty"><button type="button" class="ac-btn" data-lv="easy">Easy</button><button type="button" class="ac-btn" data-lv="medium" aria-checked="true">Medium</button><button type="button" class="ac-btn" data-lv="hard">Hard</button></span>' +
+      '<button type="button" class="ac-btn" data-ac="check">Check</button><button type="button" class="ac-btn" data-ac="new">New puzzle</button><span class="ac-score"></span></div>' +
       '<div class="geo-cap ac-out"></div>';
     host.appendChild(wrap);
     var svg = wrap.querySelector("svg"), out = wrap.querySelector(".ac-out"), score = wrap.querySelector(".ac-score");
-    var O = [200, 172], R = 132, st = null;
+    var O = [200, 172], R = 132, st = null, level = "medium", streak = 0;
     var deg = function (x) { return x * 180 / Math.PI; };
     function angleAt(V, X, Y) { var a = sub(X, V), b = sub(Y, V); return deg(Math.acos(Math.max(-1, Math.min(1, dot(a, b) / (len(a) * len(b)))))); }
     function randInt(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
     function puzzle() {
-      // Arcs AB, BC, CD, DA in degrees, even, each at least 40.
-      var iso = Math.random() < 0.5, arcs;
-      for (;;) {
-        if (iso) { var ab = 2 * randInt(22, 55), bc = 2 * randInt(20, 70); arcs = [ab, bc, 360 - 2 * ab - bc, ab]; }
-        else { var a1 = 2 * randInt(20, 80), a2 = 2 * randInt(20, 80), a3 = 2 * randInt(20, 80); arcs = [a1, a2, a3, 360 - a1 - a2 - a3]; }
-        if (arcs.every(function (x) { return x >= 40; })) break;
+      for (var tries = 0; tries < 60; tries++) {
+        var st2 = build();
+        if (st2) return st2;
       }
-      var start = -90 - arcs[3] / 2 + randInt(-20, 20), th = [start], i;
+      return build(true);
+    }
+    // One random configuration. Arcs AB, BC, CD, DA are even numbers of degrees, so every angle
+    // is a whole number. Features drawn at random: equal sides (AB = AD, and sometimes also
+    // CB = CD, which makes AC a diameter), and a tangent at one vertex with its two
+    // tangent-chord angles.
+    function build(force) {
+      // Easy: a plain cyclic quadrilateral. Medium: one feature, equal sides or a tangent.
+      // Hard: equal sides (AB = AD, or three equal sides AB = BC = DA) and a tangent together, one side extended past a vertex (its exterior
+      // angle), and the whole interior angle at each vertex as a ring, so the equalities chain
+      // through several theorems.
+      var pairs, withTan, withExt = false, withRings = false, arcs;
+      if (level === "easy") { pairs = 0; withTan = false; }
+      else if (level === "medium") { withTan = Math.random() < 0.5; pairs = withTan ? 0 : 1; }
+      else { pairs = Math.random() < 0.5 ? 1 : 2; withTan = true; withExt = true; withRings = true; }
+      for (;;) {
+        if (pairs === 2) { var x = 2 * randInt(22, 50); arcs = [x, x, 360 - 3 * x, x]; if (Math.abs(arcs[2] - x) < 12 || arcs[2] === 180) continue; }   // AB = BC = DA
+        else if (pairs === 1) { var ab = 2 * randInt(22, 55), bc = 2 * randInt(20, 70); arcs = [ab, bc, 360 - 2 * ab - bc, ab]; }
+        else { var a1 = 2 * randInt(20, 80), a2 = 2 * randInt(20, 80), a3 = 2 * randInt(20, 80); arcs = [a1, a2, a3, 360 - a1 - a2 - a3]; }
+        if (arcs.every(function (q) { return q >= 40; })) break;
+      }
+      var start = -90 - arcs[3] / 2 + randInt(-25, 25), th = [start], i;
       for (i = 0; i < 3; i++) th.push(th[i] + arcs[i]);
       var names = ["A", "B", "C", "D"], pts = {};
       th.forEach(function (t, k) { pts[names[k]] = [O[0] + R * Math.cos(t * Math.PI / 180), O[1] + R * Math.sin(t * Math.PI / 180)]; });
       pts.P = lineInt(pts.A, pts.C, pts.B, pts.D);
-      // At a vertex of the (convex) quadrilateral the diagonal lies between the two sides, so the
-      // two angles there are side-diagonal and diagonal-side; at P the four angles go around.
+      // Each angle records the chord it stands on, which is what makes two angles equal.
       var spec = [["A", "B", "C"], ["A", "C", "D"], ["B", "C", "D"], ["B", "D", "A"], ["C", "D", "A"], ["C", "A", "B"], ["D", "A", "B"], ["D", "B", "C"],
                   ["P", "A", "B"], ["P", "B", "C"], ["P", "C", "D"], ["P", "D", "A"]];
-      var angles = spec.map(function (t) { return { v: t[0], x: t[1], y: t[2], m: Math.round(angleAt(pts[t[0]], pts[t[1]], pts[t[2]])) }; });
-      var pool = angles.filter(function (a) { return a.v !== "P"; });
-      var given = pool[randInt(0, pool.length - 1)];
-      angles.forEach(function (a, k) { a.k = k; a.sel = false; });
-      return { pts: pts, angles: angles, given: given, arcs: arcs, iso: iso, checked: false };
+      var angles = spec.map(function (t) { return { v: t[0], x: t[1], y: t[2], kind: t[0] === "P" ? "P" : "ins", chord: t[0] === "P" ? null : [t[1], t[2]] }; });
+      var tan = null, st_ext = null;
+      if (withTan) {
+        var ti = randInt(0, 3), T = names[ti], N1 = names[(ti + 1) % 4], N2 = names[(ti + 3) % 4];
+        var d = norm(perp(sub(pts[T], O)));
+        if (dot(d, sub(pts[N1], pts[T])) < 0) d = mul(d, -1);
+        var reach = function (dir) { for (var L = 90; L > 30; L -= 10) { var q = add(pts[T], mul(dir, L)); if (q[0] > 14 && q[0] < 386 && q[1] > 14 && q[1] < 326) return q; } return add(pts[T], mul(dir, 30)); };
+        pts.E = reach(d); pts.F = reach(mul(d, -1));
+        tan = { T: T };
+        angles.push({ v: T, x: "E", y: N1, kind: "tan", chord: [T, N1] }, { v: T, x: "F", y: N2, kind: "tan", chord: [T, N2] });
+      }
+      if (withExt) {
+        // Extend side WV past V to X; the exterior angle at V lies between VX and V's other side VU.
+        var vi = randInt(0, 3), V = names[vi], W = names[(vi + 3) % 4], U2 = names[(vi + 1) % 4];
+        if (tan && tan.T === V) { vi = (vi + 1) % 4; V = names[vi]; W = names[(vi + 3) % 4]; U2 = names[(vi + 1) % 4]; }
+        var dir = norm(sub(pts[V], pts[W])), L = 80;
+        while (L > 30) { var qx = add(pts[V], mul(dir, L)); if (qx[0] > 14 && qx[0] < 386 && qx[1] > 14 && qx[1] < 326) break; L -= 10; }
+        pts.X = add(pts[V], mul(dir, L));
+        angles.push({ v: V, x: "X", y: U2, kind: "ext", chord: [W, U2] });
+        st_ext = { V: V, W: W };
+      }
+      if (withRings) names.forEach(function (n, k) { angles.push({ v: n, x: names[(k + 3) % 4], y: names[(k + 1) % 4], kind: "int", chord: [names[(k + 3) % 4], names[(k + 1) % 4]] }); });
+      angles.forEach(function (a, k) { a.k = k; a.sel = false; a.m = Math.round(angleAt(pts[a.v], pts[a.x], pts[a.y])); });
+      var minPartners = level === "hard" ? 3 : 1;
+      // A right angle is never the given one: its partners would be right angles for unrelated reasons.
+      var pool = angles.filter(function (a) { return a.kind !== "P" && a.m !== 90 && angles.filter(function (b) { return b !== a && b.m === a.m; }).length >= minPartners; });
+      if (!pool.length && !force) return null;
+      if (!pool.length) pool = angles.filter(function (a) { return a.kind !== "P"; });
+      // Prefer a given angle with several partners: those make the better puzzles.
+      pool.sort(function (a, b) { return Math.random() - 0.5; });
+      // Score a candidate by its partners, and on Hard also by how many kinds of angle (inscribed,
+      // tangent-chord, exterior, whole interior) its equal set mixes: those chains are the fun ones.
+      var score = function (a) {
+        var set = angles.filter(function (b) { return b.m === a.m; }), kinds = {};
+        set.forEach(function (b) { kinds[b.kind] = 1; });
+        return set.length + (level === "hard" ? 3 * Object.keys(kinds).length : 0);
+      };
+      var given = pool.reduce(function (best, a) { var n = score(a); return !best || n > best.n ? { a: a, n: n } : best; }, null).a;
+      return { pts: pts, angles: angles, given: given, arcs: arcs, pairs: pairs, tan: tan, ext: st_ext, checked: false };
     }
-    function chordLen(p, q) { return dist(st.pts[p], st.pts[q]); }
+    function chordLen(c) { return dist(st.pts[c[0]], st.pts[c[1]]); }
+    function chordName(c) { return c.slice().sort().join(""); }
     function reason(a) {
       var g = st.given;
-      if (a.v === "P") return "an angle between the diagonals is half the sum of the arcs cut off by it and by its vertical angle, and here that half-sum equals the given angle";
-      var cg = [g.x, g.y].sort().join(""), ca = [a.x, a.y].sort().join("");
-      if (cg === ca) return "both are inscribed angles standing on the chord " + cg[0] + cg[1] + ", on the same side of it";
-      if (Math.abs(chordLen(g.x, g.y) - chordLen(a.x, a.y)) < 1e-6) return "they stand on equal chords, " + cg + " and " + ca + " (AB = AD here)";
-      return "the angles of the triangle containing it add up the same way";
+      if (a.kind === "P") return "an angle between the diagonals is half the sum of the arcs cut off by it and by its vertical angle, and here that half-sum equals the given angle";
+      var notes = [];
+      if (a.kind === "tan" || g.kind === "tan") notes.push("an angle between a tangent and a chord equals the inscribed angle on that chord from the other side");
+      if (a.kind === "ext" || g.kind === "ext") notes.push("an exterior angle of a cyclic quadrilateral equals the interior angle at the opposite vertex");
+      var cg = chordName(g.chord), ca = chordName(a.chord), tanNote = notes.length ? " (" + notes.join("; ") + ")" : "";
+      if (cg === ca) return "both stand on the chord " + cg + tanNote;
+      if (Math.abs(chordLen(g.chord) - chordLen(a.chord)) < 1e-6) return "they stand on the equal chords " + cg + " and " + ca + ", marked with the same ticks" + tanNote;
+      return "the arcs they stand on are equal";
     }
     function wedge(a, r) {
       var V = st.pts[a.v], X = st.pts[a.x], Y = st.pts[a.y];
@@ -1842,22 +1898,46 @@
       var cross = u[0] * w[1] - u[1] * w[0];
       return "M" + r1(V[0]) + "," + r1(V[1]) + " L" + r1(p1[0]) + "," + r1(p1[1]) + " A" + r + "," + r + " 0 0 " + (cross > 0 ? 1 : 0) + " " + r1(p2[0]) + "," + r1(p2[1]) + " Z";
     }
+    // The whole interior angle at a vertex, drawn as a thin band outside the small wedges.
+    function ring(a, r0, r1_) {
+      var V = st.pts[a.v], u = norm(sub(st.pts[a.x], V)), w = norm(sub(st.pts[a.y], V)), cross = u[0] * w[1] - u[1] * w[0], sw = cross > 0 ? 1 : 0;
+      var P1 = add(V, mul(u, r1_)), P2 = add(V, mul(w, r1_)), Q2 = add(V, mul(w, r0)), Q1 = add(V, mul(u, r0));
+      var f = function (q) { return r1(q[0]) + "," + r1(q[1]); };
+      return "M" + f(Q1) + " L" + f(P1) + " A" + r1_ + "," + r1_ + " 0 0 " + sw + " " + f(P2) + " L" + f(Q2) + " A" + r0 + "," + r0 + " 0 0 " + (1 - sw) + " " + f(Q1) + " Z";
+    }
+    function ticks(X, Y, n) {
+      var m = mid(X, Y), u = norm(sub(Y, X)), v = perp(u), out = "";
+      for (var i = 0; i < n; i++) { var c = add(m, mul(u, (i - (n - 1) / 2) * 6)); out += seg(add(c, mul(v, 7)), add(c, mul(v, -7)), "gl-acc"); }
+      return out;
+    }
     function draw() {
       var p = st.pts, body = circ(O, R, "gc");
+      if (st.tan) { var tl = lineSpan(p.E, p.F, 400, 340); body += seg(tl[0], tl[1], "gl"); }
       body += polyS([p.A, p.B, p.C, p.D], "gtri") + seg(p.A, p.C, "gl") + seg(p.B, p.D, "gl");
-      st.angles.forEach(function (a) {
-        var isG = a === st.given, r = a.v === "P" ? 20 : 26, cls = "ac-w";
-        if (isG) cls += " ac-given";
-        else if (st.checked) {
-          var eq = a.m === st.given.m;
-          cls += eq && a.sel ? " ac-ok" : eq ? " ac-miss" : a.sel ? " ac-wrong" : "";
-        } else if (a.sel) cls += " ac-sel";
-        body += '<path d="' + wedge(a, r) + '" class="' + cls + '" data-k="' + a.k + '"/>';
+      if (st.ext) body += seg(p[st.ext.V], p.X, "gtri");
+      if (st.pairs >= 1) body += ticks(p.A, p.B, 1) + ticks(p.A, p.D, 1);
+      if (st.pairs >= 2) body += ticks(p.B, p.C, 1);
+      // Neighbouring wedges at one point alternate between two radii, so they never overlap.
+      // Order the wedges at each point by direction, so the alternation is between true neighbours.
+      var dirOf = function (a) { var V = st.pts[a.v], b = add(norm(sub(st.pts[a.x], V)), norm(sub(st.pts[a.y], V))); return Math.atan2(b[1], b[0]); };
+      var seen = {};
+      st.angles.slice().sort(function (a, b) { return a.v < b.v ? -1 : a.v > b.v ? 1 : dirOf(a) - dirOf(b); }).forEach(function (a) {
+        var cls = "ac-w" + (a.kind === "int" ? " ac-ring" : "");
+        var rr;
+        if (a.kind === "int") rr = 44;
+        else { var n = seen[a.v] = (seen[a.v] || 0) + 1; rr = (a.v === "P" ? 18 : 24) + ((n % 2) ? 0 : 9); }
+        if (a === st.given) cls += " ac-given";
+        else if (st.checked) { var eq = a.m === st.given.m; cls += eq && a.sel ? " ac-ok" : eq ? " ac-miss" : a.sel ? " ac-wrong" : ""; }
+        else if (a.sel) cls += " ac-sel";
+        a.r = rr;
+        body += '<path d="' + (a.kind === "int" ? ring(a, 40, 47) : wedge(a, rr)) + '" class="' + cls + '" data-k="' + a.k + '"/>';
       });
       ["A", "B", "C", "D"].forEach(function (n) { body += dotS(p[n], "gd") + lbl(p[n], O, n); });
+      if (st.ext) body += txt(add(p.X, mul(norm(sub(p.X, p[st.ext.V])), 12)), "X", "gt");
+      if (st.tan) body += txt(add(p.E, mul(norm(sub(p.E, p[st.tan.T])), 12)), "E", "gt") + txt(add(p.F, mul(norm(sub(p.F, p[st.tan.T])), 12)), "F", "gt");
       body += dotS(p.P, "gd", 3) + txt(add(p.P, [24, 22]), "P", "gt");
-      var g = st.given, gm = add(st.pts[g.v], mul(norm(add(norm(sub(st.pts[g.x], st.pts[g.v])), norm(sub(st.pts[g.y], st.pts[g.v])))), 40));
-      body += txt(gm, g.m + "°", "gt-acc");
+      var g = st.given, bis = norm(add(norm(sub(st.pts[g.x], st.pts[g.v])), norm(sub(st.pts[g.y], st.pts[g.v]))));
+      body += txt(add(st.pts[g.v], mul(bis, (g.r || 24) + 18)), g.m + "°", "gt-acc");
       svg.innerHTML = body;
     }
     function fresh() { st = puzzle(); out.innerHTML = "The given angle is ∠" + st.given.x + st.given.v + st.given.y + " = " + st.given.m + "°."; score.textContent = ""; draw(); }
@@ -1867,13 +1947,16 @@
       a.sel = !a.sel; draw();
     });
     wrap.addEventListener("click", function (e) {
+      var lv = e.target.closest && e.target.closest("[data-lv]");
+      if (lv) { level = lv.getAttribute("data-lv"); wrap.querySelectorAll("[data-lv]").forEach(function (x) { x.setAttribute("aria-checked", x === lv ? "true" : "false"); }); fresh(); return; }
       var b = e.target.closest && e.target.closest("[data-ac]"); if (!b) return;
       if (b.getAttribute("data-ac") === "new") { fresh(); return; }
       if (st.checked) return;
       st.checked = true;
       var eq = st.angles.filter(function (a) { return a !== st.given && a.m === st.given.m; });
       var hit = eq.filter(function (a) { return a.sel; }).length, wrong = st.angles.filter(function (a) { return a.sel && a.m !== st.given.m; }).length;
-      score.textContent = hit + " of " + eq.length + " found" + (wrong ? ", " + wrong + " marked wrongly" : "") + ".";
+      streak = hit === eq.length && !wrong ? streak + 1 : 0;
+      score.textContent = hit + " of " + eq.length + " found" + (wrong ? ", " + wrong + " marked wrongly" : "") + "." + (streak ? "  Streak: " + streak + (streak >= 3 ? " \u2605" : "") : "");
       out.innerHTML = "The given angle is ∠" + st.given.x + st.given.v + st.given.y + " = " + st.given.m + "°." +
         (eq.length ? "<ul class=\"ac-reasons\">" + eq.map(function (a) { return "<li><b>∠" + a.x + a.v + a.y + "</b>" + (a.sel ? "" : " (missed)") + ": " + reason(a) + ".</li>"; }).join("") + "</ul>" : " No other angle in this figure equals it; press New puzzle.") +
         "<span class=\"ac-key\">Green: found. Dashed red: missed. Red: not equal.</span>";
