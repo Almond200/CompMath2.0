@@ -471,6 +471,34 @@ No particular formula is needed; the argument uses only that the quantity is an 
 
 ## Contest profile
 An olympiad combinatorics idea, often hidden inside a problem about windows, partial sums, or tournaments. It also justifies some AIME arguments about which values are attainable.
-`
+`,
+"vieta-jumping": String.raw`
+## When to use
+The trigger is a symmetric condition on two positive integers, quadratic in each, claimed for every solution: $\frac{a^2 + b^2}{ab + 1}$ is an integer, or $ab \mid a^2 + b^2 + 1$. The question asks which values such an expression can take, or to prove it is always a perfect square. It belongs to olympiads; problems of the same shape at the AIME level are usually small enough to search directly.
 
+## How
+1. Suppose an integer value $k$ occurs, and choose a solution $(a, b)$ with $a + b$ as small as possible and $a \ge b$.
+2. Fix $b$ and write the condition as a quadratic in $a$; call its other root $a'$.
+3. Show $a'$ is an integer, from the sum of the roots, and that $0 \le a' < a$, from the product.
+4. Then $(a', b)$ is a solution with a smaller sum, which contradicts the choice, unless $a'$ is a boundary case such as $a' = 0$.
+5. Read off $k$ at the boundary case.
+
+For $\frac{a^2 + b^2}{ab + 1} = k$ the quadratic is $a^2 - kb\,a + (b^2 - k) = 0$, so $a' = kb - a = \frac{b^2 - k}{a}$. The descent stops at $a' = 0$, where the condition reads $\frac{b^2}{1} = k$: the value $k$ is a perfect square.
+
+## Why it works
+The sum of the roots of $a^2 - kb\,a + (b^2 - k) = 0$ is $kb$, an integer, so the other root $a' = kb - a$ is an integer. The product is $b^2 - k$, so $a' = \frac{b^2 - k}{a}$, and with $a \ge b$ this gives $a' < \frac{b^2}{a} \le b \le a$. And $a'$ cannot be negative: then $a'b + 1 \le 0$, so the right side of $a'^2 + b^2 = k(a'b + 1)$ is at most $0$ while the left side is positive. So $(a', b)$ is another solution in nonnegative integers with a smaller sum.
+
+The figure follows one chain of solutions for $k = 4$ along the curve $a^2 - 4ab + b^2 = 4$, jumping from $(30, 8)$ to $(2, 8)$ to $(2, 0)$. Every chain ends at a solution with a zero, and that is where the value of $k$ shows.
+
+## Formulas it uses
+- [[vietas-quadratic]]: the sum of the roots shows the second root is an integer, and their product bounds its size and sign.
+
+## Common traps
+- Minimizing the wrong quantity, or jumping before putting $a \ge b$, so the new root is not visibly smaller.
+- Skipping the sign check: the descent needs the new root to be nonnegative, not merely smaller.
+- Assuming the chain always ends at $0$; in some problems it ends at $a' = b$ or at a small fixed pair, which must be checked separately.
+
+## Contest profile
+An olympiad technique for symmetric divisibility conditions; below olympiad level the same equations usually have small enough solutions to find by search.
+`
 });

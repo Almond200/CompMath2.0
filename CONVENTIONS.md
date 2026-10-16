@@ -62,7 +62,7 @@ title is slugged into its address, so renaming one changes a bookmarkable URL.
 
 Exactly two field orders exist, and nothing else. Copy one of these.
 
-**Subject file** (`geometry.js`, `algebra.js`, `number-theory.js`, `counting.js`) — 506 of 506 cards:
+**Subject file** (`geometry.js`, `algebra.js`, `number-theory.js`, `counting.js`) — 517 of 517 cards:
 
 ```js
         {
@@ -97,7 +97,7 @@ Exactly two field orders exist, and nothing else. Copy one of these.
   intentional `<br>` in examples.
 - One card deviates: `periodic-sequences` in `patterns.js` orders its fields
   `id, type, subject, name, ...`. That card was corrected, so the corpus now has **no** exception:
-  all 680 cards use one of the four canonical orders, the extra two being the same pair with an
+  all 700 cards use one of the four canonical orders, the extra two being the same pair with an
   optional `latexPlain` after `latex` (79 cards carry one; see "Expanded notation" below).
   `tools/scan-conventions.py` names any card that is not in one of the two orders.
 - Every card has a `latex` and a `description`. **0** cards omit either.
@@ -209,20 +209,20 @@ This is exactly why the duplicate check in §5 must search names, not ids.
 
 ## 2. The write-up — mandatory, in `js/data/details/<subject>-details.js`
 
-**680 write-ups for 680 cards. One each, no orphans, no card without one.**
+**700 write-ups for 700 cards. One each, no orphans, no card without one.**
 
-The headings depend on the card's kind (counts as of 2026-10-12; the scan fails on a heading the kind does not allow):
+The headings depend on the card's kind (counts as of 2026-10-16; the scan fails on a heading the kind does not allow):
 
 ```
-formula (506)   ## Key forms, ## Conditions, ## Why it works, ## Useful observations,
+formula (517)   ## Key forms, ## Conditions, ## Why it works, ## Useful observations,
                 ## Applications, ## Contest profile, and optionally ## Full proof
-method (140)    ## When to use, ## How, ## Why it works, ## Formulas it uses,
+method (144)    ## When to use, ## How, ## Why it works, ## Formulas it uses,
                 ## Common traps, ## Contest profile, and optionally ## Full proof
-pattern (34)    ## Distinguishing clues, ## Methods and Formulas to Try,
+pattern (39)    ## Distinguishing clues, ## Methods and Formulas to Try,
                 ## Common traps, ## Contest profile
 ```
 
-Key forms is optional on a formula card (on 502 of 506). `## Full proof` renders collapsed behind a "Show
+Key forms is optional on a formula card (on 513 of 517). `## Full proof` renders collapsed behind a "Show
 full proof" button. "Pattern and method anatomy" at the end of this file says what each section holds.
 
 - **Why it works explains; Full proof proves.** Open Why it works with the idea in one plain
@@ -339,7 +339,7 @@ positives and should be rejected every time they reappear:
 
 ## 3. The example — mandatory, in `js/data/examples-supplement.js`
 
-**680 example keys for 680 cards. Zero cards lack one.**
+**700 example keys for 700 cards. Zero cards lack one.**
 
 Shape is `{ q, s }`: a clean question, and the solution shown on demand.
 
@@ -370,14 +370,14 @@ window.MATH_EXAMPLES["your-card-id"] = { q: String.raw`...`, s: String.raw`...` 
 
 ## 4. The diagram — mandatory for geometry
 
-**203 of 203 `geometry.js` cards have a diagram.** It is not a strong tendency, it is the rule: a
+**241 of 241 `geometry.js` cards have a diagram.** It is not a strong tendency, it is the rule: a
 geometry card without a figure is incomplete. The count first reached 200/200 only after a card shipped
 without one and had to be fixed, which is why `tools/scan-conventions.py` exits non-zero on any
 geometry card missing a diagram.
 
-Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 90/174,
-`algebra.js` 13/115, `counting.js` 6/73, `number-theory.js` 2/82 (2026-10-12). In-text figures are counted
-separately: 210 placed on 182 cards, in every subject.
+Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 93/183,
+`algebra.js` 13/116, `counting.js` 7/77, `number-theory.js` 2/83 (2026-10-16). In-text figures are counted
+separately: 210 placed on 183 cards, in every subject.
 
 - **Figures inside the text.** A paragraph that is nothing but `{{figure:name}}` draws
   `BODY["card-id"]["name"]` at that point in the write-up. Use one wherever a paragraph describes
@@ -567,6 +567,8 @@ caught only because the census read 554/556.
 ---
 
 ## 7. Verify, in this order
+
+**The handoff rule (2026-10-16).** After every major change, every finished step, and the start of every new step, update "Current state" at the top of `PLAN.md`, add a README changelog entry, and push. New chats start from that block (`CLAUDE.md` sends them there), so it must never be stale.
 
 ```bash
 jsc js/data/<file>.js                    # a `window` ReferenceError means the parse SUCCEEDED
@@ -811,3 +813,14 @@ From Stanley's review of the Iran Lemma figure, whose bisector and contact chord
 
 Every batch of new cards adds one entry to `js/data/new-cards.js` (a label, the date, and the ids in the order written) when it is written. `Special:NewCards` shows the latest batch with each card's kind, subject, and group, and `Special:NewCards/All` lists every batch, newest first, so the additions can be read through in the app. `tools/check-lists.py` fails on an id in a batch that is not a card.
 
+## Rules recorded from the previous chat (2026-10-16)
+See `MIGRATION-NOTES.md` for the full answers.
+- **Figures:**
+  - every figure shows the fact, never a bare shape;
+  - a figure appears only where a picture helps, never as decoration;
+  - each figure carries a computed `ok` self-check;
+  - thin strips (a row of cards or numbers) may run up to 600 px wide.
+- **Formula boxes** are not over-packed. The British Flag Theorem's old box was the example of too much.
+- **Dark mode** uses as little pure white as possible.
+- **Never re-add** problem search, the in-app find, hints in the UI, a label setting, a level filter, or proof-based competitions.
+- **Merged cards** keep their old names as aliases (`tools/link-aliases.json`), so old links still resolve.

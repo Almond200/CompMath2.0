@@ -5102,5 +5102,32 @@ For distinct linear factors, the split always exists and is unique: over the com
 
 ## Contest profile
 An AMC and AIME tool that rarely stands alone: it is the first step of most telescoping sums of fractions and of generating-function coefficient problems.
+`,
+"age-problems": String.raw`
+## Distinguishing clues
+- Two or more people whose ages are compared at different times: now, some years ago, some years from now.
+- Phrases such as "was three times as old as", "will be twice as old as", or "the sum of their ages was".
+- A question asking for a present age, or for the year in which a ratio of ages will hold.
+- Not this pattern: ages that appear only as data in an average, such as the mean age of a club before and after a member joins, which is [[averages-before-after|the averages pattern]].
+
+## Methods and Formulas to Try
+Use the present ages as the unknowns, and write every past or future age as a present age plus or minus the years. The difference of two ages is the same at every time, so when the older person is $r$ times as old as the younger, the younger is $\frac{D}{r - 1}$ and the older $\frac{rD}{r - 1}$, where $D$ is the difference.
+
+### Methods to try
+- [[add-all-equations]]: with several people and several sentences, adding the equations often gives the total of the ages at once.
+- [[working-backwards]]: when the problem walks through the years and gives the end, undo the years from the end.
+- [[averages-to-totals]]: when an average age is given, turn it into a total first, since totals change by a known amount each year.
+
+### Formulas to try
+No formula is needed beyond setting up linear equations: two sentences about two people give two equations in their present ages.
+
+## Common traps
+- Taking the unknown as an age in the past or future, and then answering with it as if it were the present age.
+- Adding the years to one person's age and forgetting the other's.
+- Assuming the ratio of ages stays the same over time; only the difference does.
+- Counting "in 5 years" and "5 years ago" as the same shift with the same sign.
+
+## Contest profile
+An AMC 8 and AMC 10 word problem, usually one of the first ten, settled by two linear equations in the present ages. Harder versions ask in which year a ratio first becomes a whole number, which turns into a divisibility question about the age difference.
 `
 });

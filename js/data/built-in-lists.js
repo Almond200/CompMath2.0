@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 169 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 171 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -37,7 +37,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["conic-sections", "ellipse-properties", "hyperbola-properties", "parabola-focus-directrix", "eccentricity", "conic-classification", "conic-reflective-property", "conic-tangent-lines", "conic-parametric", "focal-radii", "parabolic-segment-area", "axis-stretch-area"] },
       { title: "Coordinates & Transformations",
         note: "For when the synthetic route stalls and the figure offers a right angle, a midpoint or a natural origin.",
-        ids: ["distance-midpoint", "line-forms", "angle-between-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance"] },
+        ids: ["distance-midpoint", "line-forms", "angle-between-lines", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance"] },
       { title: "Three Dimensions",
         note: "Mensuration of the named solids first, then analytic geometry in space for everything that is not one.",
         ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron"] },
@@ -55,10 +55,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cavalieris-principle", "box-tetrahedron", "dihedral-angle", "fit-copies", "plane-cross-section"] },
       { title: "Configurations Worth Recognizing on Sight",
         note: "Whole problem shapes with an intended answer, not techniques.",
-        ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "isosceles-trapezoid"] }
+        ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 120 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 121 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -83,7 +83,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "complex-modulus-argument"] },
       { title: "Rates, Work & Mixtures",
         note: "Word-problem machinery, plus estimation when an exact answer is not required.",
-        ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "mean-median-mode", "percent-change", "several-rates"] },
+        ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "mean-median-mode", "percent-change", "several-rates", "age-problems"] },
       { title: "Substitutions That Simplify",
         note: "Changing variables so the problem becomes one you have already solved.",
         ids: ["log-substitution", "functional-substitution", "cauchy-functional-equations", "substitute-repeated-block"] },
@@ -98,7 +98,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation"] }
     ] },
   { id: "route-amc-number", name: "AMC 10/12 Number Theory", kind: "route", tier: "AMC", subject: "Number Theory",
-    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 58 cards across 9 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 59 cards across 9 sections.",
     sections: [
       { title: "Divisibility & GCD",
         note: "The foundation. Most number theory problems are a gcd statement wearing a disguise.",
@@ -126,10 +126,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["lattice-points-gcd"] },
       { title: "Patterns Worth Recognizing on Sight",
         note: "Problem formats with an intended route.",
-        ids: ["cycle-hunting", "cryptarithms", "digit-manipulation"] }
+        ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 73 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 75 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -160,7 +160,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["eulerian-paths", "graph-coloring"] },
       { title: "Games & Placement",
         note: "Two-player games with a forced outcome, and arrangements with a spacing constraint.",
-        ids: ["backward-induction", "strategy-stealing", "gap-method", "counting-blocks", "geometric-probability", "truth-tellers-logic"] },
+        ids: ["backward-induction", "strategy-stealing", "gap-method", "counting-blocks", "geometric-probability", "truth-tellers-logic", "round-robin-tournaments", "magic-squares"] },
       { title: "Generating Functions",
         note: "Encoding a counting problem as a polynomial and reading off a coefficient.",
         ids: ["indicator-variables", "generating-function-method"] }
@@ -359,7 +359,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["injectivity-surjectivity"] }
     ] },
   { id: "route-olympiad-number", name: "Olympiad Number Theory", kind: "route", tier: "Olympiad", subject: "Number Theory",
-    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 18 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME number theory route: only the cards that are new at this level, so each list stays short. 17 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Multiplicative Functions",
         note: "Functions determined by their values on prime powers, and the inversion that recovers one from its sums.",
@@ -375,7 +375,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["lucas-theorem", "dirichlet-primes-progression"] },
       { title: "Diophantine & Additive",
         note: "Solving equations in integers, and the theorems that say which numbers are representable at all.",
-        ids: ["cauchy-davenport", "erdos-ginzburg-ziv", "chevalley-warning", "vieta-jumping"] },
+        ids: ["cauchy-davenport", "erdos-ginzburg-ziv", "chevalley-warning"] },
       { title: "Special Numbers & Sequences",
         note: "Named families whose arithmetic is worth knowing before you meet them in a problem.",
         ids: ["wolstenholme", "zsygmondy", "cyclotomic-polynomials", "carmichael-numbers"] },
@@ -520,7 +520,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["chord-length", "common-chord-length", "equal-chords-arcs", "ptolemys-theorem", "law-of-cosines", "law-of-sines", "midsegment-theorem", "trapezoid-special-segments", "cotangent-rule"] }
     ] },
   { id: "config-solid-geometry", name: "The 3D Toolkit", kind: "configuration", subject: "Recognize",
-    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 28 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
+    blurb: "Solid geometry gathered into one place, because the library files it across three subsections and a handful of methods, and in a problem you need all of it at once. 29 cards across 5 groups, running from the volumes you memorize to the two moves that collapse a 3D problem into a 2D one.",
     sections: [
       { title: "Volumes & Surface Areas",
         note: "The memorized layer. Everything else on this page assumes you can already get a volume once the solid is identified.",
@@ -536,7 +536,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cross-product-area", "vector-dot-product", "vector-projection", "projected-area-cosine", "plane-cross-section"] },
       { title: "Collapsing 3D into 2D",
         note: "The two moves that make hard solids easy: take the right plane section and work inside it, or unfold the surface flat. Reach for these before coordinates.",
-        ids: ["cross-section-method", "cavalieris-principle", "unfold-the-surface"] }
+        ids: ["cross-section-method", "cavalieris-principle", "unfold-the-surface", "painted-cubes"] }
     ] },
   { id: "config-sums", name: "Sums Worth Recognizing", kind: "configuration", subject: "Recognize",
     blurb: "A sum you can name is a sum you can evaluate. These are the shapes worth spotting before reaching for algebra.",
@@ -698,7 +698,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["direct-proof", "proof-by-cases", "disproof-by-counterexample", "proof-by-contradiction", "contrapositive", "proving-both-directions"] },
       { title: "Induction & Descent",
         note: "When a statement depends on a whole number, or a smallest bad case must exist.",
-        ids: ["induction", "strong-induction", "forward-backward-induction", "strengthening-the-hypothesis", "minimal-counterexample", "infinite-descent"] },
+        ids: ["induction", "strong-induction", "forward-backward-induction", "strengthening-the-hypothesis", "minimal-counterexample", "infinite-descent", "vieta-jumping"] },
       { title: "Existence & Uniqueness",
         note: "Prove that something exists, by building it or by forcing it, and that only one does.",
         ids: ["proof-by-construction", "proving-uniqueness", "pigeonhole-argument", "discrete-intermediate-value"] },

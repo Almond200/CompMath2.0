@@ -8673,5 +8673,58 @@ A projective map is fixed by where it sends four points, no three on a line, so 
 
 ## Contest profile
 An olympiad technique. It is rarely the only way, but it is often the shortest proof of a collinearity or a harmonic division in a complete quadrilateral or a figure with one conic.
+`,
+"painted-cubes": String.raw`
+## Distinguishing clues
+- A cube or box assembled from unit cubes, painted on all or some of its outside faces, then taken apart.
+- A question about how many small cubes have $0$, $1$, $2$, or $3$ painted faces, or the probability of picking such a cube, or the fraction of all small faces that are painted.
+- A variant with a cube standing on a table, so its bottom face stays unpainted, or with only some faces painted.
+- Not this pattern: counting the cubes a diagonal passes through, or the visible cubes from one corner, which are counted along lines and not by position on the surface.
+
+## Methods and Formulas to Try
+Sort the small cubes by where they sat. In an $n \times n \times n$ cube with every face painted, the $8$ corners have three painted faces, the $n - 2$ cubes inside each of the $12$ edges have two, the $(n - 2)^2$ cubes inside each of the $6$ faces have one, and the core of $(n - 2)^3$ cubes has none.
+
+The same sort works for an $a \times b \times c$ box with every side at least $2$. There are still $8$ corners with three painted faces. The edges give $4[(a - 2) + (b - 2) + (c - 2)]$ cubes with two, since each of the three edge lengths appears on four parallel edges. The faces give $2[(a - 2)(b - 2) + (b - 2)(c - 2) + (c - 2)(a - 2)]$ cubes with one, two of each face shape, and the core $(a - 2)(b - 2)(c - 2)$ cubes with none. A $3 \times 4 \times 5$ box splits as $8 + 24 + 22 + 6 = 60$. A side of length $2$ makes the core and some face counts zero, and the formulas still hold. A side of length $1$ is a slab, where every cube touches both large faces: the $4$ corners have four painted faces, the other cubes on the rim three, and the inside cubes two.
+
+### Methods to try
+- [[casework-method]]: split the small cubes by their position (corner, edge, face, core) and count each case.
+- [[complementary-counting]]: the cubes with at least one painted face are all of them minus the unpainted core.
+
+### Formulas to try
+- [[cube]]: the $8$ vertices, $12$ edges, and $6$ faces of the cube are the counts behind every case.
+
+## Common traps
+- Using $n$ instead of $n - 2$ for the cubes inside an edge or a face; the corners have already been counted.
+- Forgetting that an unpainted bottom face moves its cubes into lower counts: a bottom corner loses one painted face.
+- Applying the cube formulas to a box, or the box formulas to a slab with a side of length $1$.
+- Not checking that the four counts add to the total number of small cubes.
+
+## Contest profile
+An AMC 8 and AMC 10 problem, often phrased as a probability or a fraction of painted small faces. Harder versions paint only some faces, or work backwards from a count to the size of the cube.
+`,
+"angle-bisectors-of-lines": String.raw`
+## Key forms
+- $m = \frac34 \to m' = \frac13$, $\ m = \frac43 \to m' = \frac12$, $\ m = \frac{5}{12} \to m' = \frac15$, $\ m = \frac{12}{5} \to m' = \frac23$ — the bisector of the $x$-axis and a slope from a Pythagorean triple
+- $m' = \dfrac{m}{1 + \sqrt{1 + m^2}}$ — the same slope with the root in the denominator, from $\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta}$
+- $m' = \dfrac{m_1m_2 - 1 \pm \sqrt{(1 + m_1^2)(1 + m_2^2)}}{m_1 + m_2}$ — the two bisectors of lines with slopes $m_1$ and $m_2$, for $m_1 + m_2 \ne 0$
+- the two bisectors are perpendicular: their slopes multiply to $-1$
+
+## Conditions
+The two lines cross, so they are not parallel. In the equation form, the bisector with the plus sign bisects the pair of opposite angles in which the two left sides, $a_1x + b_1y + c_1$ and $a_2x + b_2y + c_2$, have the same sign; to pick the bisector of a particular angle, test one point inside it. The slope form $m'$ is the bisector of the angle between the positive $x$-axis and the ray of slope $m$ going to the right.
+
+## Why it works
+A point lies on a bisector exactly when it is at the same distance from both lines. By [[point-line-distance|the point-to-line distance formula]], the distance from $(x, y)$ to the first line is $\frac{|a_1x + b_1y + c_1|}{\sqrt{a_1^2 + b_1^2}}$, and the same for the second. Setting the two equal and removing the absolute values gives the two signs, which are two lines through the crossing point.
+
+For the slope form, the line of slope $m$ makes an angle $\theta$ with the $x$-axis, with $\tan\theta = m$, $\cos\theta = \frac{1}{\sqrt{1 + m^2}}$, and $\sin\theta = \frac{m}{\sqrt{1 + m^2}}$. The bisector makes the angle $\frac\theta2$, and $$\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{m}{1 + \sqrt{1 + m^2}} = \frac{\sqrt{1 + m^2} - 1}{m}.$$ The last step multiplies the numerator and denominator by $\sqrt{1 + m^2} - 1$.
+
+## Useful observations
+- The bisector slope is rational exactly when $\sqrt{1 + m^2}$ is, that is, when $m$ is the ratio of the legs of a Pythagorean triple. Conversely, a rational bisector slope $t$ comes from $m = \frac{2t}{1 - t^2}$, the [[double-angle|double-angle formula]] for the tangent.
+- The center of a circle tangent to both lines lies on a bisector, so the incenter and excenters of a triangle given by its side lines are found by intersecting bisectors.
+
+## Applications
+Centers of circles tangent to two given lines, incenters and excenters in coordinates, reflecting one line in another, and the slope of a line that makes equal angles with two given lines.
+
+## Contest profile
+No problems here are tagged with it yet. It appears on the AMC 12 and the AIME when a circle is tangent to two lines through a common point, or a triangle's incenter is wanted in coordinates, where a Pythagorean slope makes the bisector come out rational.
 `
 });

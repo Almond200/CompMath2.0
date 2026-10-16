@@ -26,5 +26,9 @@ window.NEW_CARD_BATCHES = [
   { label: "Cutting a solid with a plane", date: "2026-10-12",
     ids: ["plane-cross-section"] },
   { label: "Gap scan, batch 3: olympiad counting and projective maps", date: "2026-10-12",
-    ids: ["combinatorial-nullstellensatz", "schurs-theorem", "pentagonal-number-theorem", "hook-length-formula", "projective-transformations"] }
+    ids: ["combinatorial-nullstellensatz", "schurs-theorem", "pentagonal-number-theorem", "hook-length-formula", "projective-transformations"] },
+  { label: "Gap scan, batch 4: AMC patterns", date: "2026-10-12",
+    ids: ["age-problems", "calendar-problems", "painted-cubes", "round-robin-tournaments", "magic-squares"] },
+  { label: "Angle bisectors of two lines", date: "2026-10-12",
+    ids: ["angle-bisectors-of-lines"] }
 ];

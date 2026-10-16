@@ -1,6 +1,6 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 695 cards
+A searchable reference for AMC 10/12, AIME and olympiad training. 701 cards
 covering formulas, methods, and patterns, plus a database of 4,675 past contest problems
 (4,616 with their full statements), of which 1,367 have a written strategy and 1,365 are
 cross-linked to the cards their solutions run through.
@@ -117,7 +117,7 @@ by a point or two; compare warm runs to warm runs.
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
-  paragraph each one illustrates (210 on 182 cards).
+  paragraph each one illustrates (210 on 183 cards).
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
   modular basics and eleven more) end with a hand-picked row of the cards that are part of the
   same idea: LTE, Legendre and Kummer under p-adic valuation, the construction cards under
@@ -165,6 +165,8 @@ the semantic search index cannot be fetched from a `file://` page, so search fal
 lexical-only. KaTeX is vendored, so math renders offline either way.
 
 ## Structure
+
+Start with `CLAUDE.md` and `PLAN.md`. `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
 
 ```
 index.html                     page shell and script order
@@ -360,6 +362,10 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 - **Patterns show a Practice Problems section even when they have none yet.** The 24 patterns with no tagged problems show the heading with "No practice problems for this pattern yet", so the place for them is visible.
 - The app's files no longer name a person: the new-card batch label and three code comments were reworded.
 - **Gap scan, batch 3: five olympiad cards.** The Combinatorial Nullstellensatz (with its proof, and the Cauchy–Davenport write-up now points to it instead of restating it), Schur's Theorem on one-color solutions of $x + y = z$ (through the difference graph and the multicolor Ramsey bound), Euler's Pentagonal Number Theorem (Franklin's pairing and the partition recurrence), the Hook Length Formula (with a figure of the hooks), and Projective Transformations as a method (send a line to infinity, or a conic to a circle; the figure is the complete quadrilateral of its example). Every number in the examples is checked by computation, including the Schur numbers 4 and 13 by exhaustive search.
+- **Gap scan, batch 4: five AMC patterns.** Age Problems (the difference of two ages never changes), Calendar and Day-of-the-Week Problems (days modulo $7$, the leap-year rules, the $400$-year cycle), Painted Cubes (corner, edge, face, and core cubes, with a paragraph extending the counts to an $a \times b \times c$ box and to slabs, and a figure of a painted $4 \times 4 \times 4$ cube colored by painted faces), Round-Robin Tournaments (fixed totals of games, wins, and points), and Magic Squares (the magic sum and the center of a $3 \times 3$ square). The counts and the examples are checked by computation, including every painted-face count by brute force. This finishes the 19 approved gap-scan cards plus the plane card: 700 cards in all.
+- **A handoff file for new chats.** `PLAN.md` now opens with "Current state": the counts, what was last finished, what is in progress, the next action, and the blockers. `CLAUDE.md` sends every new session there first, and a rule in `CLAUDE.md` and CONVENTIONS §7 says to update it and push after every major change. The previous chat's answers about the app's history are in `MIGRATION-NOTES.md`, which replaces the list of questions, and the style rules among them are now in CONVENTIONS.
+- **Vieta Jumping moved to Proof Methods** (Induction & Descent, beside Infinite Descent), since it is a descent argument rather than a number theory fact. The number theory group it left is renamed Lifting to Prime Powers (Lifting the Exponent and Hensel lifting). It leaves the Olympiad number theory route and joins the proof-methods study list.
+- **New card: Angle Bisectors of Two Lines** (Coordinate & Grid Geometry). It covers the bisector equations from equal signed distances; the slope $\frac{\sqrt{1 + m^2} - 1}{m}$ of the bisector of the $x$-axis and a line of slope $m$, with the Pythagorean pairs $\frac34 \to \frac13$, $\frac43 \to \frac12$, $\frac{5}{12} \to \frac15$, and $\frac{12}{5} \to \frac23$; and the two bisectors of any two slopes, checked numerically. The example and the figure place a circle tangent to $y = 0$ and $y = \frac34x$ at $(6, 2)$.
 - **Gates run on Linux too.** The gates hard-coded macOS paths. They now read `JSC` and `CHROME` from the environment, falling back to the Mac paths. `tools/jsc-node` is a small Node stand-in for `jsc` (`load`, `print`, `read`, `quit`), and `check-labels.py` passes `--no-sandbox` when it runs as root. On Linux, `check-labels.py` reports five far-move labels (`thales-theorem`, `radical-axis`, `weierstrass-substitution`, `harmonic-addition`, `vertex-form`) that come from different font widths; on the Mac they pass. The semantic search index (`tools/build-search-index.py`) cannot be rebuilt from a cloud session, because its model download from HuggingFace is blocked there. Rebuild it on the Mac after pulling; until then, new cards rank by the lexical search alone.
 
 **2026-10-10**

@@ -1,0 +1,29 @@
+# Competition Math Reference: read this first
+
+1. **Read `PLAN.md`, "Current state" and section 2, before doing anything.** They say what is finished, what is in progress, and the exact next action.
+2. **The handoff rule.** After every major change, every finished step, and the start of every new step:
+   - update "Current state" in `PLAN.md`;
+   - add a README changelog entry;
+   - commit and push.
+
+   Credits can run out at any time, and the next chat starts from that block.
+3. **How things are done** is in `CONVENTIONS.md`: card anatomy, figure rules, the gates in §7. Approvals waiting on the owner are in `QUESTIONS.md`.
+
+## Running the checks in a cloud session
+
+```bash
+export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1194/chrome-linux/chrome
+python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 tools/check-lists.py
+python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
+python3 tools/check-labels.py          # 5 known "far-move" findings caused by fonts are the baseline
+$JSC tools/validate-problem-db.js
+```
+
+- **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (Playwright is preinstalled; `executablePath` is the `CHROME` above): 0 KaTeX errors, no overflow at 375 px, light and dark.
+- **Versions:** bump `?v=` in `index.html` (and the lab pages) for every touched file, and `STATEMENTS_V` in `js/app.js` when statement files change.
+
+## Standing preferences
+- Never put the owner's name in the app's files.
+- Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
+- One fact, one home.
+- Every number is checked by computation.

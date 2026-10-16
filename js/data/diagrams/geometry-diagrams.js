@@ -9002,4 +9002,43 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 330, "Sides AB and CD meet at P, sides AD and BC at Q, and the diagonals at R. The line QR (blue) meets AB at X, and (A, B; X, P) = −1. Sending the line PQ to infinity makes ABCD a parallelogram, where X is the midpoint of AB." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Painted cubes: the 4 × 4 × 4 cube of the example, each visible unit square colored by how
+  // many painted faces its small cube has (gold 3, green 2, blue 1).
+  DIAGRAMS["painted-cubes"] = [(() => {
+    const n = 4, u = 38, P3 = proj3([212, 200]), Pt = (x, y, z) => P3(u * x, u * y, u * z);
+    const fill = k => (k === 3 ? "rgba(245,196,81,0.55)" : k === 2 ? "rgba(46,160,110,0.40)" : "rgba(91,140,255,0.22)");
+    const painted = (i, j, k) => [i, j, k].filter(t => t === 0 || t === n - 1).length;   // faces of the small cube on the outside
+    const sq = [], tally = { 1: 0, 2: 0, 3: 0 };
+    for (let a = 0; a < n; a++) for (let b = 0; b < n; b++) {
+      // top face z = n, front-left face x = n, front-right face y = n (the three faces toward the viewer)
+      sq.push(poly([Pt(a, b, n), Pt(a + 1, b, n), Pt(a + 1, b + 1, n), Pt(a, b + 1, n)], DIM, 1.1, fill(painted(a, b, n - 1))));
+      sq.push(poly([Pt(n, a, b), Pt(n, a + 1, b), Pt(n, a + 1, b + 1), Pt(n, a, b + 1)], DIM, 1.1, fill(painted(n - 1, a, b))));
+      sq.push(poly([Pt(a, n, b), Pt(a + 1, n, b), Pt(a + 1, n, b + 1), Pt(a, n, b + 1)], DIM, 1.1, fill(painted(a, n - 1, b))));
+    }
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) for (let k = 0; k < n; k++) { const p = painted(i, j, k); if (p) tally[p]++; }
+    const ok = tally[3] === 8 && tally[2] === 24 && tally[1] === 24 && n ** 3 - tally[1] - tally[2] - tally[3] === 8;
+    return wrap(430, 330, [
+      ...sq,
+      cap(430, 330, "A 4 × 4 × 4 cube painted on the outside: the small cubes at the 8 corners have three painted faces (gold), the 2 inside each of the 12 edges have two (green), the 4 inside each of the 6 faces have one (blue), and a hidden core of 8 has none. 8 + 24 + 24 + 8 = 64." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  // Angle bisectors of two lines: the x-axis and y = 3x/4, the bisector y = x/3, and the
+  // example's circle of radius 2 centered at (6, 2).
+  DIAGRAMS["angle-bisectors-of-lines"] = [(() => {
+    const k = 30, P = (x, y) => [45 + k * x, 262 - k * y];
+    const O = P(0, 0), Cn = P(6, 2), T1 = P(6, 0), T2 = P(6 - 2 * 0.6, 2 + 2 * 0.8);   // feet of the radii on the two lines
+    const ok = Math.abs(Math.abs(3 * 6 - 4 * 2) / 5 - 2) < 1e-12 && Math.abs((Math.sqrt(1 + 9 / 16) - 1) / 0.75 - 1 / 3) < 1e-12 &&
+      Math.abs(T2[1] - P(4.8, 3.6)[1]) < 1e-9;
+    return wrap(430, 300, [
+      seg(P(-0.5, 0), P(12, 0), DIM, 2), seg(P(-0.4, -0.3), P(10.8, 8.1), DIM, 2),
+      seg(O, P(12, 4), ACC, 2, "6 4"),
+      circ(Cn, 2 * k, GLD, 1.8), seg(Cn, T1, GLD, 1.4), seg(Cn, T2, GLD, 1.4),
+      rightAngle(T1, Cn, P(12, 0), 9, GLD), rightAngle(T2, Cn, O, 9, GLD),
+      angleArc(O, P(12, 0), P(12, 4), 46, PUR), angleArc(O, P(12, 4), P(10.8, 8.1), 52, PUR),
+      dot(O, DIM, 4), dot(Cn, GLD, 4.5),
+      txt(add(P(12, 0), [-4, 18]), "y = 0", DIM, 13, "end"), txt(add(P(10.8, 8.1), [-8, -2]), "y = 3x/4", DIM, 13, "end"),
+      txt(add(P(12, 4), [-2, -8]), "y = x/3", ACC, 13, "end"), txt(add(Cn, [12, -2]), "(6, 2)", GLD, 13, "start"),
+      cap(430, 300, "The bisector (dashed blue) of the angle between the x-axis and y = 3x/4 has slope 1/3: the two purple angles are equal. A circle tangent to both lines has its center on it; the example's circle of radius 2 is centered at (6, 2), and its radii to the two lines are perpendicular to them." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();
