@@ -3433,3 +3433,4 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
 .ac-levels { display: inline-flex; gap: 4px; margin-right: 8px; }
 .ac-levels .ac-btn[aria-checked="true"] { border-color: var(--accent); color: var(--accent); font-weight: 650; }
 .ac-w.ac-ring { fill: rgba(128, 128, 128, 0.16); }
+.ac-bar.ac-top { margin: 0 0 10px; justify-content: center; }

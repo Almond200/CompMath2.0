@@ -1795,9 +1795,9 @@
     wrap.className = "geo-widget ac-game";
     wrap.innerHTML = '<div class="geo-title">Angle-chasing puzzle</div>' +
       '<p class="ac-intro">Four points on a circle, joined around and across; sides with the same tick marks are equal, and a line touching the circle at one point is a tangent. The blue angle is given. Click every other angle equal to it, then press Check. Each small wedge is one angle; on Hard, the thin band around a vertex is the whole angle of the quadrilateral there, and one side runs on past a vertex to X. Solve a puzzle perfectly to build a streak.</p>' +
+      '<div class="ac-bar ac-top"><span class="ac-levels" role="radiogroup" aria-label="Difficulty"><button type="button" class="ac-btn" data-lv="easy">Easy</button><button type="button" class="ac-btn" data-lv="medium" aria-checked="true">Medium</button><button type="button" class="ac-btn" data-lv="hard">Hard</button></span></div>' +
       '<svg viewBox="0 0 400 340" class="geo-svg" role="img" aria-label="Angle-chasing puzzle"></svg>' +
-      '<div class="ac-bar"><span class="ac-levels" role="radiogroup" aria-label="Difficulty"><button type="button" class="ac-btn" data-lv="easy">Easy</button><button type="button" class="ac-btn" data-lv="medium" aria-checked="true">Medium</button><button type="button" class="ac-btn" data-lv="hard">Hard</button></span>' +
-      '<button type="button" class="ac-btn" data-ac="check">Check</button><button type="button" class="ac-btn" data-ac="new">New puzzle</button><span class="ac-score"></span></div>' +
+      '<div class="ac-bar"><button type="button" class="ac-btn" data-ac="check">Check</button><button type="button" class="ac-btn" data-ac="new">New puzzle</button><span class="ac-score"></span></div>' +
       '<div class="geo-cap ac-out"></div>';
     host.appendChild(wrap);
     var svg = wrap.querySelector("svg"), out = wrap.querySelector(".ac-out"), score = wrap.querySelector(".ac-score");
@@ -1829,7 +1829,7 @@
         if (pairs === 2) { var x = 2 * randInt(22, 50); arcs = [x, x, 360 - 3 * x, x]; if (Math.abs(arcs[2] - x) < 12 || arcs[2] === 180) continue; }   // AB = BC = DA
         else if (pairs === 1) { var ab = 2 * randInt(22, 55), bc = 2 * randInt(20, 70); arcs = [ab, bc, 360 - 2 * ab - bc, ab]; }
         else { var a1 = 2 * randInt(20, 80), a2 = 2 * randInt(20, 80), a3 = 2 * randInt(20, 80); arcs = [a1, a2, a3, 360 - a1 - a2 - a3]; }
-        if (arcs.every(function (q) { return q >= 40; })) break;
+        if (arcs.every(function (q) { return q >= 40 && q <= 150; })) break;   // no arc over 150°, so no corner of the figure is cramped
       }
       var start = -90 - arcs[3] / 2 + randInt(-25, 25), th = [start], i;
       for (i = 0; i < 3; i++) th.push(th[i] + arcs[i]);
