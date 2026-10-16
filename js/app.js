@@ -233,11 +233,8 @@
   // Figure captions on the browsing cards. A card's own page always shows them, since there
   // the caption is part of the explanation; on the card grid some readers want just the picture.
   const CAPTION_MODES = ["show", "hide"];
-  // A card page can carry a Wikipedia-style column of page tools on the right (off by default),
-  // and the reading width can be held to a comfortable line length ("readable") or use the
-  // whole window ("full", the default).
+  // A card page can carry a Wikipedia-style column of page tools on the right (off by default).
   const TOOLS_MODES = ["off", "on"];
-  const WIDTH_MODES = ["full", "readable"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -292,7 +289,6 @@
       order: pick(P.order, ORDERS),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
-      width: pick(P.width, WIDTH_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: pick(P.start, START_MODES),
@@ -309,7 +305,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, width: state.width
+          tools: state.tools
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -339,7 +335,6 @@
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
-    width: _loaded.width,        // "full" | "readable" — how wide a card page runs
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
     start: _loaded.start,        // "landing" | "formulas" | "last" — where the app opens when no page is asked for
@@ -3629,11 +3624,66 @@
     } catch (e) { /* a convenience only: a blocked or full storage just means no history */ }
   }
 
+  // One line for each calculator-style widget saying what it shows and what to try. Added under
+  // the widget's title when the widget has no explanation of its own (2026-10-16 audit).
+  const WIDGET_INTROS = {
+      "roots-of-unity": "The n-th roots of unity are n equally spaced points on the unit circle, starting at 1. Change n and they stay the corners of a regular polygon; for n ≥ 2 they add to 0.",
+      "vietas-general": "Type a polynomial's coefficients, highest power first. The tool finds every root, real and complex, and checks Vieta's relations: the sums and products of the roots against the coefficients.",
+      "pascals-identity": "Each entry is the sum of the two above it. Color the triangle by value, or by remainder modulo 2, 3, or 5 to see its patterns, such as Sierpiński's triangle modulo 2.",
+      "multiplicative-order": "Powers of a modulo m repeat in a cycle. The tool lists a, a², a³, … modulo m until the cycle closes; when a and m are coprime, its length is the order of a.",
+      "euclidean-algorithm": "Each step replaces the larger number by its remainder on division by the smaller. The tool runs the steps for a and b, then works back up to integers x and y with ax + by = gcd(a, b).",
+      "chicken-mcnugget": "Which totals can be made from a's and b's? The reachable totals are marked; when gcd(a, b) = 1, the largest total that cannot be made is ab − a − b.",
+      "vertex-form": "Type a function of x and an interval to graph it. Try a quadratic in vertex form, a(x − h)² + k, and change h and k to move the vertex.",
+      "base-conversion": "Type a number, the base it is written in, and the base to convert it to. Bases run from 2 to 36, with digits 0–9 and then A–Z.",
+      "quadratic-formula": "Set a, b, and c to plot y = ax² + bx + c. The discriminant b² − 4ac decides whether the parabola crosses the x-axis twice, touches it, or misses it; the roots and the vertex are shown.",
+      "am-gm": "Lengths a and b lie end to end along a diameter. The radius is their arithmetic mean, and the half-chord at the point where they meet is their geometric mean: never longer than the radius, and equal only when a = b.",
+      "geometric-series": "Set the first term a, the ratio r, and the number of terms n. The tool adds the first n terms; for |r| < 1 the partial sums close in on a/(1 − r).",
+      "binomial-theorem": "Pick n to expand (x + y)ⁿ. The coefficients are row n of Pascal's triangle, the binomial coefficients C(n, k).",
+      "de-moivre": "Enter z and the highest power. Plotting z, z², z³, … shows the moduli multiplying and the angles adding, which is De Moivre's formula.",
+      "finite-differences": "Type a sequence. Each row is the differences of the row above; a polynomial sequence of degree d reaches a constant row after d steps, and the tool runs the table forward to extend it.",
+      "grid-paths": "Count the paths from the bottom-left corner to the top-right corner that move only right or up: C(w + h, w) for a w × h grid. New path draws one of them.",
+      "reflection-principle": "A path that touches the barrier is reflected after its first touch. The reflection pairs these bad paths with all paths to the mirror image of the endpoint, which is how they are counted.",
+      "permutations-combinations": "Pick n and k. P(n, k) counts ordered choices of k things from n, and C(n, k) unordered ones; they differ by the k! orders of each choice.",
+      "stars-and-bars": "Put n identical items into k bins by laying out n stars and k − 1 bars: every arrangement is one distribution, so there are C(n + k − 1, k − 1) of them.",
+      "catalan-numbers": "Pick n to compute the Catalan number Cₙ = C(2n, n)/(n + 1). It counts strings of n balanced pairs of parentheses, lattice paths that never cross the diagonal, and many other families.",
+      "binomial-probability": "Set the number of trials n and the chance of success p. Each bar is the probability of exactly k successes, and the bars peak near the mean np.",
+      "handshakes-diagonals": "Join every pair of n points: C(n, 2) segments. Of these, n are sides of the polygon and the other n(n − 3)/2 are diagonals.",
+      "number-of-divisors": "Type n to factor it. The number of divisors and their sum both come from the exponents in the factorization.",
+      "eulers-totient": "Type n to factor it and find φ(n), how many of 1, …, n are coprime to n: n times (1 − 1/p) for each prime p dividing n.",
+      "pythagorean-triples": "Pick m > n > 0. Euclid's formula gives the triple (m² − n², 2mn, m² + n²), which is primitive exactly when m and n are coprime and not both odd.",
+      "fermats-little-theorem": "Pick a and a prime p. The tool computes a raised to the power p − 1 modulo p, which is 1 whenever p does not divide a.",
+      "legendres-formula": "Pick n and a prime p. The exponent of p in n! is ⌊n/p⌋ + ⌊n/p²⌋ + ⋯: one for each multiple of p, one more for each multiple of p², and so on.",
+      "crt": "Two congruences with coprime moduli have exactly one solution modulo the product of the moduli. The tool finds it, or says when the two congruences contradict each other.",
+      "regular-polygon-area": "Pick the number of sides and the side length. The area is half the perimeter times the apothem, the distance from the center to a side.",
+      "polygon-angle-sums": "Pick n. The interior angles of an n-gon add to (n − 2) · 180°, from cutting it into n − 2 triangles; in a regular n-gon each angle is that sum divided by n.",
+      "clock-angle": "Set a time. The minute hand moves 6° a minute and the hour hand 0.5° a minute, so the angle between them is the difference of their positions.",
+      "repeating-decimals": "Type a fraction. The tool divides it out and marks where the decimal starts to repeat and how long the repeating block is.",
+      "divisibility-rules": "Type a whole number to test it against every divisibility rule at once, with the reason each rule gives.",
+      "sum-of-divisors": "Type n. Its factorization gives σ(n), the sum of its divisors, d(n), how many there are, and the product of all of them, which is n raised to d(n)/2.",
+      "average-speed": "Two legs of the same distance at different speeds. The average speed is the harmonic mean of the two speeds, less than their ordinary average whenever they differ.",
+      "power-sums": "Pick n to see 1 + 2 + ⋯ + n, the sum of the first n squares, and the sum of the first n cubes, each from its closed form.",
+      "bayes-theorem": "Set how common a condition is and how accurate the test is. The tool shows the chance that a positive result is a true positive, which is often far lower than the test's accuracy.",
+      "modular-inverse": "Pick a and m. The inverse of a modulo m is the x with ax ≡ 1 (mod m); it exists exactly when gcd(a, m) = 1, and the extended Euclidean algorithm finds it.",
+      "complex-basics": "Drag z around the plane. Its conjugate z̄ is its mirror image in the real axis, and the caption follows both as you move.",
+      "ramsey-33": "Six people, each pair either friends (blue) or strangers (red). However the pairs are colored, some three people are all friends or all strangers: Random coloring tries a new one, and Next triangle finds such a trio."
+  };
+  function addWidgetIntro(host, id) {
+    const text = WIDGET_INTROS[id];
+    if (!host || !text || host.querySelector(".tool-intro, .geo-hint, .ac-intro")) return;
+    const title = host.querySelector(".tool-title, .geo-title");
+    const p = document.createElement("p");
+    p.className = "tool-intro";
+    p.textContent = text;
+    if (title) title.insertAdjacentElement("afterend", p); else host.prepend(p);
+  }
+
   // ---------- Page tools (a setting) ----------
   // A right-hand column on a card's page, as on Wikipedia: Tools (links to the special pages
   // about this card, a permanent link, print, a random card), Page information (counted from
   // the data), and Appearance (text size, page width, and theme, the same settings as the
   // Settings page, so the two stay in step).
+  // The column itself runs the full height of the page and carries the divider; only its
+  // contents stick, so the line reaches the top bar and does not jump when the page bounces.
   function pageToolsHtml(entry) {
     const f = entry.formula, id = f.id;
     const body = (window.MATH_DETAILS || {})[id] || "";
@@ -3650,7 +3700,7 @@
     const kindName = { formula: "Formula", method: "Method", pattern: "Pattern" }[kindOf(f)];
     const seg = (key, cur, opts) => `<div class="pt-seg" role="radiogroup">${opts.map(([v, l]) => `<button type="button" role="radio" aria-checked="${v === cur ? "true" : "false"}" data-pt-set="${key}" data-val="${v}">${l}</button>`).join("")}</div>`;
     const row = (k, v) => `<div class="pt-info"><span>${k}</span><b>${v}</b></div>`;
-    return `<aside class="page-tools" aria-label="Page tools">
+    return `<aside class="page-tools" aria-label="Page tools"><div class="pt-inner">
         <section class="pt-block"><div class="pt-head">Tools</div>
           <a href="${specialHref("WhatLinksHere", id)}">What links here <span class="pt-n">${linksIn}</span></a>
           <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n">${probs}</span></a>
@@ -3673,10 +3723,9 @@
         </section>
         <section class="pt-block"><div class="pt-head">Appearance</div>
           <div class="pt-label">Text</div>${seg("text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
-          <div class="pt-label">Width</div>${seg("width", state.width, [["full", "Full"], ["readable", "Readable"]])}
           <div class="pt-label">Theme</div>${seg("theme", currentTheme(), [["light", "Light"], ["dark", "Dark"]])}
         </section>
-      </aside>`;
+      </div></aside>`;
   }
   function wirePageTools(root, entry) {
     const aside = root.querySelector(".page-tools");
@@ -3801,7 +3850,7 @@
     renderMath($content);
     if (withTools) wirePageTools($content, entry);
     var wdg = (window.MATH_WIDGETS || {})[f.id];
-    if (wdg) { try { wdg.mount(document.getElementById("formula-widget")); } catch (e) { if (window.console) console.warn("widget error:", f.id, e); } }
+    if (wdg) { try { wdg.mount(document.getElementById("formula-widget")); addWidgetIntro(document.getElementById("formula-widget"), f.id); } catch (e) { if (window.console) console.warn("widget error:", f.id, e); } }
     try { decorateNumberInputs(document.getElementById("formula-widget")); } catch (e) {}
     wireProblemToggle($content);
     wireProofToggles($content);
@@ -4161,7 +4210,6 @@
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
           ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
-          ${settingRow("Page width", "How wide a card's own page runs. Readable holds the text to a comfortable line length; Full uses the whole window.", "width", state.width, [["full", "Full"], ["readable", "Readable"]], "page")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
@@ -4175,7 +4223,7 @@
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in, and Where I left off returns to the last page you had open. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"], ["last", "Where I left off"]])}
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
-          ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls.", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
+          ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls (text size and theme).", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
           </div>
@@ -6630,7 +6678,6 @@
     r.setAttribute("data-tags", state.tags ? "on" : "off");
     r.setAttribute("data-captions", state.captions);
     r.setAttribute("data-cols", state.cols);
-    r.setAttribute("data-width", state.width);
   }
 
   // The latex a card shows. A card may carry latexPlain, the same statement written out

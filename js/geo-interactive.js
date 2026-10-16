@@ -87,7 +87,8 @@
       '<div class="geo-title">' + (cfg.title || "Play with it") + "</div>" +
       '<svg viewBox="' + vx + " " + vy + " " + cfg.w + " " + cfg.h + '" class="geo-svg" role="img"></svg>' +
       '<div class="geo-cap"></div>' +
-      '<div class="geo-hint">' + (cfg.hint || "Drag the highlighted points.") + "</div>";
+      // The default hint names the points that can be dragged, so the reader knows which dots move.
+      '<div class="geo-hint">' + (cfg.hint || ("Drag " + (function (k) { return k.length > 1 ? k.slice(0, -1).join(", ") + " or " + k[k.length - 1] : k[0] || "the highlighted points"; })(Object.keys(cfg.drag || {})) + "; the caption updates as you go.")) + "</div>";
     host.appendChild(wrap);
     var svg = wrap.querySelector("svg"), cap = wrap.querySelector(".geo-cap");
     var pts = {};
@@ -1062,8 +1063,9 @@
   W["euler-distance-theorem"] = { mount: function (host) {
     mountGeo(host, {
       title: "Euler's distance",
+      hint: "Drag A, B, or C. O (gold) is the circumcenter and I (green) the incenter; they meet only when the triangle is equilateral.",
       w: 420, h: 380,
-      init: { A: [215, 80], B: [110, 290], C: [335, 265] },
+      init: { A: [150, 80], B: [90, 290], C: [350, 280] },
       drag: { A: {}, B: {}, C: {} },
       render: function (p) {
         var O = circum(p.A, p.B, p.C), I = incenter(p.A, p.B, p.C), R = dist(O, p.A) / U;
@@ -1072,7 +1074,8 @@
         var body = circ(O, R * U, "gc") + circ(I, r * U, "gc-acc") + polyS([p.A, p.B, p.C], "gtri") +
           seg(O, I, "gl-acc") + dotS(O, "gd-gold", 4.5) + dotS(I, "gd-grn", 4.5) +
           dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
-          txt(add(O, [6, -4]), "O", "gt-gold") + txt(add(I, [6, 4]), "I", "gt-grn");
+          txt(add(O, [8, -6]), "O", "gt-gold") + txt(add(I, [-14, 14]), "I", "gt-grn") +
+          lbl(p.A, centroid(p.A, p.B, p.C), "A") + lbl(p.B, centroid(p.A, p.B, p.C), "B") + lbl(p.C, centroid(p.A, p.B, p.C), "C");
         return { body: body, caption: "OI² = <b>" + fmt(OI2) + "</b> &nbsp;=&nbsp; R² − 2Rr = " + fmt(R) + "² − 2·" + fmt(R) + "·" + fmt(r) + " = <b>" + fmt(R * R - 2 * R * r) + "</b> (Euler). Since OI² ≥ 0, R ≥ 2r." };
       }
     });
@@ -1877,5 +1880,181 @@
       draw();
     });
     fresh();
+  } };
+  // ---------- Olympiad lemmas with a draggable triangle (2026-10-16) ----------
+  // Each recomputes its configuration as the triangle moves, and the caption carries the
+  // invariant as numbers, so the reader sees the fact hold for every shape.
+  function ccLabelABC(p) { var G = centroid(p.A, p.B, p.C); return lbl(p.A, G, "A") + lbl(p.B, G, "B") + lbl(p.C, G, "C"); }
+  function farInt(O, R, from, through) { var q = circleLine(O, R, from, through); if (!q) return through; return dist(q[0], from) > dist(q[1], from) ? q[0] : q[1]; }
+  function onSeg(xy, P, Q, lo, hi) { var d = sub(Q, P), t = dot(sub(xy, P), d) / (dot(d, d) || 1); t = Math.max(lo || 0.08, Math.min(hi || 0.92, t)); return add(P, mul(d, t)); }
+  function angDeg(V, X, Y) { var a = sub(X, V), b = sub(Y, V); return Math.acos(Math.max(-1, Math.min(1, dot(a, b) / ((len(a) * len(b)) || 1)))) * 180 / Math.PI; }
+  function u(x) { return fmt(x / U); }
+  var TRI = { A: [170, 75], B: [80, 300], C: [345, 290] };
+
+  W["incenter-excenter-lemma"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "Incenter–Excenter Lemma",
+      hint: "Drag A, B, or C. M is where the bisector AI meets the circumcircle again; the dashed circle centered at M passes through B, C, I, and the excenter Iₐ.",
+      w: 420, h: 440, init: TRI, drag: { A: {}, B: {}, C: {} },
+      render: function (p) {
+        var O = circum(p.A, p.B, p.C), R = dist(O, p.A), I = incenter(p.A, p.B, p.C), M = farInt(O, R, p.A, I), IA = sub(mul(M, 2), I);
+        var body = circ(O, R, "gc") + circ(M, dist(M, p.B), "gl-dash") + polyS([p.A, p.B, p.C], "gtri") + seg(p.A, IA, "gl-acc") +
+          seg(M, p.B, "gl-gold") + seg(M, p.C, "gl-gold") +
+          dotS(I, "gd-grn", 4.5) + dotS(IA, "gd-grn", 4.5) + dotS(M, "gd-gold", 4.5) + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
+          ccLabelABC(p) + txt(add(I, [10, -6]), "I", "gt-grn") + txt(add(IA, [10, 4]), "Iₐ", "gt-grn") + txt(add(M, [12, 4]), "M", "gt-gold");
+        return { body: body, caption: "MB = <b>" + u(dist(M, p.B)) + "</b>, MC = <b>" + u(dist(M, p.C)) + "</b>, MI = <b>" + u(dist(M, I)) + "</b>, MIₐ = <b>" + u(dist(M, IA)) + "</b>: all four are equal, so B, C, I, Iₐ lie on one circle centered at M." };
+      }
+    });
+  } };
+
+  W["iran-lemma"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "Iran Lemma",
+      hint: "Drag A, B, or C. K is where the bisector BI meets the line EF through two touch points of the incircle; CK stays perpendicular to BI, and K stays on the dashed midline parallel to AB.",
+      w: 420, h: 400, init: { A: [150, 70], B: [70, 320], C: [360, 320] }, drag: { A: {}, B: {}, C: {} },
+      render: function (p) {
+        var I = incenter(p.A, p.B, p.C), D = foot(I, p.B, p.C), E = foot(I, p.C, p.A), F = foot(I, p.A, p.B), r = dist(I, D);
+        var K = lineInt(p.B, I, E, F), Ma = mid(p.B, p.C), Mb = mid(p.C, p.A);
+        var ml = lineSpan(Ma, Mb, 420, 400), ef = lineSpan(E, F, 420, 400);
+        var offMid = Math.abs((Mb[0] - Ma[0]) * (K[1] - Ma[1]) - (Mb[1] - Ma[1]) * (K[0] - Ma[0])) / (dist(Ma, Mb) || 1);
+        var body = circ(I, r, "gc-acc") + polyS([p.A, p.B, p.C], "gtri") + seg(ml[0], ml[1], "gl-dash") + seg(ef[0], ef[1], "gl") +
+          seg(p.B, K, "gl-acc") + seg(p.C, K, "gl-gold") + rAngle(K, p.B, p.C, 9) +
+          dotS(E, "gd") + dotS(F, "gd") + dotS(I, "gd-grn", 4) + dotS(K, "gd-gold", 5) + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
+          ccLabelABC(p) + txt(add(E, [10, -2]), "E", "gt") + txt(add(F, [-14, -2]), "F", "gt") + txt(add(I, [8, 14]), "I", "gt-grn") + txt(add(K, [10, -8]), "K", "gt-gold");
+        return { body: body, caption: "∠BKC = <b>" + fmt(angDeg(K, p.B, p.C)) + "°</b> and the distance from K to the midline is <b>" + u(offMid) + "</b>, for every triangle." };
+      }
+    });
+  } };
+
+  W["humpty-queue-points"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "The Humpty point",
+      hint: "Drag A, B, or C. X is the foot of the perpendicular from the orthocenter H to the median AM; it stays on the dashed circle through B, H, C.",
+      w: 420, h: 420, init: TRI, drag: { A: {}, B: {}, C: {} },
+      render: function (p) {
+        var H = ortho(p.A, p.B, p.C), M = mid(p.B, p.C), X = foot(H, p.A, M), Oc = circum(p.B, H, p.C), rc = dist(Oc, p.B);
+        var body = circ(Oc, rc, "gl-dash") + polyS([p.A, p.B, p.C], "gtri") + seg(p.A, M, "gl-acc") + seg(H, X, "gl-gold") + rAngle(X, H, M, 8) +
+          dotS(H, "gd", 4) + dotS(M, "gd", 3.5) + dotS(X, "gd-gold", 5) + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
+          ccLabelABC(p) + txt(add(H, [10, -6]), "H", "gt") + txt(add(M, [0, 16]), "M", "gt") + txt(add(X, [12, 4]), "X", "gt-gold");
+        return { body: body, caption: "MX · MA = <b>" + fmt(dist(M, X) * dist(M, p.A) / (U * U)) + "</b> = MB² = <b>" + fmt(dist(M, p.B) * dist(M, p.B) / (U * U)) + "</b>, and X is <b>" + u(Math.abs(dist(Oc, X) - rc)) + "</b> from the circle BHC: it lies on it." };
+      }
+    });
+  } };
+
+  W["dumpty-point"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "The Dumpty point",
+      hint: "Drag A, B, or C. The symmedian from A meets the circumcircle again at K, and D is the midpoint of AK; D stays on the dashed circle through B, O, C.",
+      w: 420, h: 420, init: TRI, drag: { A: {}, B: {}, C: {} },
+      render: function (p) {
+        var O = circum(p.A, p.B, p.C), R = dist(O, p.A);
+        var T = lineInt(p.B, add(p.B, perp(sub(p.B, O))), p.C, add(p.C, perp(sub(p.C, O))));
+        var K = farInt(O, R, p.A, T), D = mid(p.A, K), Oc = circum(p.B, O, p.C), rc = dist(Oc, p.B);
+        var body = circ(O, R, "gc") + circ(Oc, rc, "gl-dash") + polyS([p.A, p.B, p.C], "gtri") + seg(p.A, K, "gl-acc") + seg(D, p.B, "gl-gold") + seg(D, p.C, "gl-gold") +
+          dotS(O, "gd", 3.5) + dotS(K, "gd-acc", 4) + dotS(D, "gd-gold", 5) + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
+          ccLabelABC(p) + txt(add(O, [10, -6]), "O", "gt") + txt(add(K, [10, 12]), "K", "gt-acc") + txt(add(D, [12, 4]), "D", "gt-gold");
+        return { body: body, caption: "DA² = <b>" + fmt(dist(D, p.A) * dist(D, p.A) / (U * U)) + "</b> = DB · DC = <b>" + fmt(dist(D, p.B) * dist(D, p.C) / (U * U)) + "</b>, and D is <b>" + u(Math.abs(dist(Oc, D) - rc)) + "</b> from the circle BOC." };
+      }
+    });
+  } };
+
+  W["shooting-lemma"] = { mount: function (host) {
+    var O = [210, 205], R = 150;
+    mountGeo(host, {
+      title: "Shooting Lemma",
+      hint: "Drag B or C around the circle, or D along the chord BC. The small circle touches BC at D and the big circle at T; the line TD always passes through M, the midpoint of the arc BC on the other side.",
+      w: 420, h: 420, init: { B: [O[0] - 140, O[1] + 54], C: [O[0] + 140, O[1] + 54], D: [O[0] - 30, O[1] + 54] },
+      drag: { B: { constrain: function (xy) { return projectToCircle(xy, O, R); } }, C: { constrain: function (xy) { return projectToCircle(xy, O, R); } },
+              D: { constrain: function (xy, pts) { return onSeg(xy, pts.B, pts.C); } } },
+      render: function (p) {
+        p.B = projectToCircle(p.B, O, R); p.C = projectToCircle(p.C, O, R); p.D = onSeg(p.D, p.B, p.C);
+        var bc = sub(p.C, p.B), n = norm(perp(bc));
+        if (dot(sub(O, p.D), n) < 0) n = mul(n, -1);                    // n points from BC toward the center
+        var od = sub(O, p.D), rho = (R * R - dot(od, od)) / (2 * R - 2 * dot(od, n)), Q = add(p.D, mul(n, rho));
+        var T = add(O, mul(norm(sub(Q, O)), R)), M = add(O, mul(n, -R));
+        var body = circ(O, R, "gc") + circ(Q, rho, "gc-acc") + seg(p.B, p.C, "gtri") + seg(T, M, "gl-gold") + seg(M, p.B, "gl-dash") + seg(M, p.C, "gl-dash") +
+          dotS(T, "gd-gold", 4.5) + dotS(M, "gd-gold", 4.5) + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") + dotS(p.D, "gd-acc") +
+          lbl(p.B, O, "B") + lbl(p.C, O, "C") + txt(add(p.D, [0, -10]), "D", "gt") + lbl(T, O, "T", "gt-gold") + lbl(M, O, "M", "gt-gold");
+        return { body: body, caption: "∠TDM = <b>" + fmt(angDeg(p.D, T, M)) + "°</b> (T, D, M collinear), and MD · MT = <b>" + fmt(dist(M, p.D) * dist(M, T) / (U * U)) + "</b> = MB² = <b>" + fmt(dist(M, p.B) * dist(M, p.B) / (U * U)) + "</b>." };
+      }
+    });
+  } };
+
+  W["archimedes-broken-chord"] = { mount: function (host) {
+    var O = [210, 200], R = 150;
+    var on = { constrain: function (xy) { return projectToCircle(xy, O, R); } };
+    mountGeo(host, {
+      title: "Archimedes' Broken Chord",
+      hint: "Drag A, B, or C around the circle. M is the midpoint of the arc AC through B, and F is the foot from M to the longer of the chords BA and BC; F always splits the broken chord ABC in half.",
+      w: 420, h: 400, init: { A: [O[0] - 145, O[1] + 40], B: [O[0] - 120, O[1] - 90], C: [O[0] + 140, O[1] + 55] }, drag: { A: on, B: on, C: on },
+      render: function (p) {
+        p.A = projectToCircle(p.A, O, R); p.B = projectToCircle(p.B, O, R); p.C = projectToCircle(p.C, O, R);
+        var n = norm(perp(sub(p.C, p.A))), m1 = add(O, mul(n, R)), m2 = add(O, mul(n, -R));
+        var side = function (X) { return (p.C[0] - p.A[0]) * (X[1] - p.A[1]) - (p.C[1] - p.A[1]) * (X[0] - p.A[0]); };
+        var M = side(m1) * side(p.B) > 0 ? m1 : m2;
+        var ab = dist(p.A, p.B), cb = dist(p.C, p.B), longEnd = ab < cb ? p.C : p.A, shortLen = Math.min(ab, cb);
+        var F = foot(M, p.B, longEnd);
+        var body = circ(O, R, "gc") + seg(p.A, p.B, "gtri") + seg(p.B, p.C, "gtri") + seg(M, F, "gl-gold") + rAngle(F, M, longEnd, 8) +
+          seg(M, p.A, "gl-dash") + seg(M, p.C, "gl-dash") +
+          dotS(M, "gd-gold", 4.5) + dotS(F, "gd-gold", 4.5) + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
+          lbl(p.A, O, "A") + lbl(p.B, O, "B") + lbl(p.C, O, "C") + lbl(M, O, "M", "gt-gold") + txt(add(F, [10, 12]), "F", "gt-gold");
+        return { body: body, caption: "Shorter chord + BF = <b>" + u(shortLen + dist(p.B, F)) + "</b> = F to the far end = <b>" + u(dist(F, longEnd)) + "</b>: F is the midpoint of the broken chord." };
+      }
+    });
+  } };
+
+  W["perpendicularity-lemma"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "Perpendicularity Lemma",
+      hint: "Drag any of A, B, C, D. The two differences of squares agree exactly when AB is perpendicular to CD; turn CD until the angle reads 90° and watch them meet.",
+      w: 420, h: 380, init: { A: [90, 300], B: [320, 90], C: [110, 110], D: [330, 290] }, drag: { A: {}, B: {}, C: {}, D: {} },
+      render: function (p) {
+        var sq = function (X, Y) { var d = dist(X, Y) / U; return d * d; };
+        var ang = angDeg([0, 0], sub(p.B, p.A), sub(p.D, p.C)); if (ang > 90) ang = 180 - ang;
+        var body = seg(p.A, p.C, "gl-dash") + seg(p.A, p.D, "gl-dash") + seg(p.B, p.C, "gl-dash") + seg(p.B, p.D, "gl-dash") +
+          seg(p.A, p.B, "gl-acc") + seg(p.C, p.D, "gl-gold") +
+          dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") + dotS(p.D, "gd-acc") +
+          txt(add(p.A, [-12, 14]), "A") + txt(add(p.B, [10, -6]), "B") + txt(add(p.C, [-12, -6]), "C") + txt(add(p.D, [10, 14]), "D");
+        return { body: body, caption: "AC² − AD² = <b>" + fmt(sq(p.A, p.C) - sq(p.A, p.D)) + "</b>, BC² − BD² = <b>" + fmt(sq(p.B, p.C) - sq(p.B, p.D)) + "</b>; the angle between AB and CD is <b>" + fmt(ang) + "°</b>." };
+      }
+    });
+  } };
+
+  W["isogonal-conjugate"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "Isogonal conjugate",
+      hint: "Drag P, or the vertices. Reflecting AP, BP, CP in the angle bisectors at A, B, C gives three gold lines, and they always meet at one point P*.",
+      w: 420, h: 400, init: { A: [170, 70], B: [70, 320], C: [360, 310], P: [125, 262] }, drag: { A: {}, B: {}, C: {}, P: {} },
+      render: function (p) {
+        var A = p.A, B = p.B, C = p.C, a = dist(B, C), b = dist(C, A), c = dist(A, B);
+        var x = Math.abs(sarea([p.P, B, C])), y = Math.abs(sarea([p.P, C, A])), z = Math.abs(sarea([p.P, A, B]));
+        var wa = a * a / (x || 1e-9), wb = b * b / (y || 1e-9), wc = c * c / (z || 1e-9), ws = wa + wb + wc;
+        var Q = [(wa * A[0] + wb * B[0] + wc * C[0]) / ws, (wa * A[1] + wb * B[1] + wc * C[1]) / ws];
+        var body = polyS([A, B, C], "gtri") + seg(A, p.P, "gl-acc") + seg(B, p.P, "gl-acc") + seg(C, p.P, "gl-acc") +
+          seg(A, Q, "gl-gold") + seg(B, Q, "gl-gold") + seg(C, Q, "gl-gold") +
+          dotS(Q, "gd-gold", 5) + dotS(p.P, "gd-acc") + dotS(A, "gd-acc") + dotS(B, "gd-acc") + dotS(C, "gd-acc") +
+          ccLabelABC(p) + txt(add(p.P, [10, -8]), "P", "gt-acc") + txt(add(Q, [10, 14]), "P*", "gt-gold");
+        return { body: body, caption: "At A: ∠BAP = <b>" + fmt(angDeg(A, B, p.P)) + "°</b> and ∠CAP* = <b>" + fmt(angDeg(A, C, Q)) + "°</b>; at B: <b>" + fmt(angDeg(B, C, p.P)) + "°</b> and <b>" + fmt(angDeg(B, A, Q)) + "°</b>. Each pair is equal, and the gold lines meet at P*." };
+      }
+    });
+  } };
+
+  W["miquels-theorem"] = { mount: function (host) {
+    mountGeo(host, {
+      title: "Miquel's Theorem",
+      hint: "Drag D, E, F along the sides, or the vertices. The circles through A, E, F, through B, F, D, and through C, D, E always share one point M.",
+      w: 420, h: 420, init: { A: [175, 80], B: [70, 320], C: [360, 310], D: [230, 314], E: [270, 200], F: [120, 205] },
+      drag: { A: {}, B: {}, C: {}, D: { constrain: function (xy, q) { return onSeg(xy, q.B, q.C); } }, E: { constrain: function (xy, q) { return onSeg(xy, q.C, q.A); } }, F: { constrain: function (xy, q) { return onSeg(xy, q.A, q.B); } } },
+      render: function (p) {
+        p.D = onSeg(p.D, p.B, p.C); p.E = onSeg(p.E, p.C, p.A); p.F = onSeg(p.F, p.A, p.B);
+        var O1 = circum(p.A, p.E, p.F), O2 = circum(p.B, p.F, p.D), O3 = circum(p.C, p.D, p.E);
+        var r1_ = dist(O1, p.A), r2_ = dist(O2, p.B), r3_ = dist(O3, p.C);
+        var Mq = sub(mul(foot(p.F, O1, O2), 2), p.F);                     // the second meeting point of circles 1 and 2
+        var body = circ(O1, r1_, "gc-acc") + circ(O2, r2_, "gc") + circ(O3, r3_, "gl-dash") + polyS([p.A, p.B, p.C], "gtri") +
+          dotS(Mq, "gd-gold", 5) + dotS(p.D, "gd-acc") + dotS(p.E, "gd-acc") + dotS(p.F, "gd-acc") + dotS(p.A, "gd-acc") + dotS(p.B, "gd-acc") + dotS(p.C, "gd-acc") +
+          ccLabelABC(p) + txt(add(p.D, [0, 16]), "D") + txt(add(p.E, [12, 0]), "E") + txt(add(p.F, [-14, 0]), "F") + txt(add(Mq, [10, -8]), "M", "gt-gold");
+        return { body: body, caption: "M lies on the first two circles by construction; its distance from the third circle is <b>" + u(Math.abs(dist(O3, Mq) - r3_)) + "</b>, so all three circles pass through M." };
+      }
+    });
   } };
 })();
