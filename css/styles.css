@@ -3430,3 +3430,5 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
 .ac-reasons { margin: 6px 0; padding-left: 18px; }
 .ac-key { display: block; font-size: 12px; color: var(--text-faint); }
 .tool-intro { font-size: 13.5px; color: var(--text-dim); line-height: 1.55; margin: 2px 0 10px; }
+.ac-levels { display: inline-flex; gap: 4px; margin-right: 8px; }
+.ac-levels .ac-btn[aria-checked="true"] { border-color: var(--accent); color: var(--accent); font-weight: 650; }
