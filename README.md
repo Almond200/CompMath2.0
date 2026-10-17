@@ -535,6 +535,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2001 AIME I #12 ($r=\tfrac23$), 2026 AIME II #12 ($RS=\tfrac{175}{48}$), 2003 AIME I #5 ($\tfrac{462+40\pi}3$), 2012 AIME I #8 ($\tfrac16-\tfrac1{48}$, so $\tfrac{41}{48}$) and 2023 AIME I #13 (Gram determinants $\tfrac{3969}2$ and $1922$, ratio $\tfrac{63}{62}$) are written out with their numbers.
   - Figures drawn for 2023 AMC 12B #21 and 2026 AIME II #12.
   - Four candidate cards, P8 to P11, added to QUESTIONS.md.
+- **Practice pass: geometry finished (2026-10-17).** The last cards (3D distance through cross-ratio) had ten vague strategies, now written in full: 2023 AMC 10B #17 and 12B #13 share one entry ($\tfrac94$); 2024 AIME I #15 finds the extreme box $2\times2\times\tfrac{23}4$ ($r^2=\tfrac{657}{64}$); 2011 AIME I #13 solves $3k^2-66k+265=0$; 1998 AIME #11 and 2007 AIME I #13 get their cross-sections from the shadow area over $\cos\theta$ ($525$ and $\sqrt{80}$); 2006 AIME I #14 gives $h=\tfrac{144}{\sqrt{1585}}$; 2017 AIME I #10 finds the circle's center at real part $56$; 2026 AIME I #12 puts the centers on the bisecting plane ($r=\tfrac{122}{39}$); 1991 AIME #11 has $r=\tan15^\circ$.
 
 **2026-10-10**
 
