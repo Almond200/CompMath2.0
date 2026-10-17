@@ -517,6 +517,17 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2019 AIME I #3 is now the sine area formula on the three corners ($150-10-7.5-12.5=120$), and 2025 AMC 12A #17 is base times height; neither cites the shoelace formula.
   - The AMC 10A/12A/12B line and angle problems state their numbers.
   - Figures drawn for 2017 AIME II #10 and 2019 AIME I #3.
+- **Practice pass: point-line distance through rotations finished (2026-10-17):** ten vague strategies written in full and checked by computation.
+  - 2024 AIME I #9: $\tfrac1{OA^2}+\tfrac1{OB^2}=\tfrac1{120}$, so $BD^2\gt480$.
+  - 2020 AIME II #7: $r=\tfrac{15}{\sqrt{73}}$.
+  - 2025 AIME I #9: the image is the reflection in $y=-\sqrt3x$ (two reflections make the rotation), so the point is on that line; it cites Composing Two Reflections.
+  - 2021 AIME I #15: the combination $2(\text{first})+(\text{second})$ is a circle of radius$^2$ $\tfrac{325}{16}+\tfrac{3k}2$, so $k\le280$, with four intersections from $k=5$.
+  - 2011 AIME I #3: the signed distances give $\alpha+\beta=\tfrac{403}{13}=31$.
+  - 2000 AIME I #2: the area is $u(u+3v)=11\cdot41$, so $u+v=21$ (the old text had a placeholder).
+  - 2005 AIME I #14: equal perpendicular segments in a square give $E=(2,-2)$ and $K=\tfrac{1936}{10}$.
+  - 2010 AIME I #11: two cones, volume $\tfrac{343\pi}{12\sqrt{10}}$.
+  - 2017 AIME II #12: $B=\tfrac{1-r}{1-ri}$, $|B|=\tfrac{49}{61}$ (checked by simulation).
+  - 2017 AIME I #15: the third vertex on the hypotenuse is $\tfrac7{20}p+\tfrac{11\sqrt3}{60}q=1$, so the side squared is $\tfrac{300}{67}$.
 
 **2026-10-10**
 
