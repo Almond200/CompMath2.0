@@ -11,6 +11,7 @@ for(const ref of Object.keys(edits)){
   if(i<0){console.error('NOT FOUND',ref);process.exit(1);}
   const m=lines[i].match(/^  (\{.*\})(,?)\s*$/); const o=eval('('+m[1]+')');
   for(const [k,v] of Object.entries(edits[ref])){ if(v===null) delete o[k]; else o[k]=v; }
+  for(const f of ['strategy','trick']) if(o[f] && /\\'/.test(o[f])) {console.error("escaped quote \\' in "+f,ref);process.exit(1);}
   if(o.strategy && /"|</.test(o.strategy)) {console.error('raw quote or < in',ref);process.exit(1);}
   if(o.trick && /"|</.test(o.trick)) {console.error('raw quote or < in trick',ref);process.exit(1);}
   const keys=[...ORDER.filter(k=>k in o),...Object.keys(o).filter(k=>!ORDER.includes(k))];
