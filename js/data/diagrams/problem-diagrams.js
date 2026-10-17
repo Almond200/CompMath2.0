@@ -2234,7 +2234,7 @@
   })();
 
   // 2018 AMC 10A #24: AB = 50, AC = 10, area 120; the midsegment DE and the bisector AG.
-  PROB["2018-amc-10a-24"] = (() => {
+  PROB["2018-amc-10a-24"] = PROB["2018-amc-12a-18"] = (() => {
     const sA = 0.48, cA = Math.sqrt(1 - sA * sA), k = 7.2, Q = (x, y) => [30 + k * x, 200 - k * y];
     const A = Q(0, 0), B = Q(50, 0), C = Q(10 * cA, 10 * sA), D = mid(A, B), E = mid(A, C), G = lerp(B, C, 5 / 6), F = lineInt(A, G, D, E);
     const ok = Math.abs(0.5 * 50 * 10 * sA - 120) < 1e-9 && Math.abs(dist(A, F) - dist(F, G)) < 1e-6;
@@ -2889,6 +2889,75 @@
       gapLabel(M, [A, B, X], "M"), gapLabel(N, [A, C, Y], "N"),
       txt(add(add(T, mul(bis, 46)), [0, 4]), "30°", PUR, 11.5), txt(add(mid(B, C), [0, 18]), "219", DIM, 12.5),
       cap(430, 270, "BC = 219, M and N are the midpoints of AB and AC, and the splitting lines through them (each cuts the perimeter in half) meet at 30°." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AMC 10A #13: the bisector AP, the perpendicular from B, and the parallel through A,
+  // drawn on a triangle with AB : AC = 2 : 3 (any such triangle; only BP and PC are given).
+  PROB["2022-amc-10a-13"] = (() => {
+    const ax = (16 - 36 + 25) / 10, Am = [ax, Math.sqrt(16 - ax * ax)], Bm = [0, 0], Cm = [5, 0], Pm = [2, 0];
+    const u = norm(sub(Pm, Am)), Dm = lineInt(Bm, add(Bm, perp(u)), Am, add(Am, [1, 0]));
+    const Q = fitQ([Am, Bm, Cm, Dm], 30), A = Q(Am), B = Q(Bm), C = Q(Cm), P = Q(Pm), D = Q(Dm), F = foot(B, A, P);
+    const ok = Math.abs(dist(Am, Bm) / dist(Am, Cm) - 2 / 3) < 1e-9 && Math.abs((Dm[0] - Bm[0]) * u[0] + (Dm[1] - Bm[1]) * u[1]) < 1e-9 && Math.abs(Dm[1] - Am[1]) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, P, GLD, 1.8), seg(A, D, ACC, 1.6), seg(B, D, ACC, 1.6), rightAngle(F, A, D, 9, GLD),
+      ...[A, B, C, P, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-4, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      txt(add(P, [0, 18]), "P"), txt(add(D, [10, 5]), "D", DIM, 13, "start"),
+      txt(add(mid(B, P), [0, 16]), "2", DIM, 12.5), txt(add(mid(P, C), [0, 16]), "3", DIM, 12.5),
+      cap(430, 270, "AP bisects angle BAC with BP = 2 and PC = 3; the line through B perpendicular to AP meets the line through A parallel to BC at D." + MM(ok))
+    ]);
+  })();
+
+  // 2026 AIME II #10: the circle through A tangent to BC at the bisector foot D, drawn in the
+  // triangle with the largest BC (AB = 200, AC = 225, BC = 340), labelling only AB and AC.
+  PROB["2026-aime-ii-10"] = (() => {
+    const c = 200, b = 225, a = 340, Bm = [0, 0], Cm = [a, 0], ax = (c * c - b * b + a * a) / (2 * a), Am = [ax, Math.sqrt(c * c - ax * ax)];
+    const Dm = [160, 0], r = ((Am[0] - Dm[0]) ** 2 + Am[1] ** 2) / (2 * Am[1]), Om = [160, r];
+    const Em = lerp(Am, Bm, 72 / 200), Fm = lerp(Am, Cm, 81 / 225);
+    const Q = fitQ([Am, Bm, Cm, [160, 2 * r]], 28), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm), O = Q(Om);
+    const ok = [Am, Em, Fm].every(X => Math.abs(dist(X, Om) - r) < 1e-9) && Math.abs(dist(Bm, Dm) / dist(Dm, Cm) - c / b) < 1e-9;
+    return wrap(430, 270, [
+      circ(O, r * k, ACC, 1.6), poly([A, B, C], DIM, 2), seg(A, D, GLD, 1.8),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      txt(add(D, [0, 18]), "D"), gapLabel(E, [A, B, D], "E"), gapLabel(F, [A, C, D], "F"),
+      txt(add(mid(A, B), [-14, -4]), "200", DIM, 12.5, "end"), txt(add(mid(A, C), [14, -4]), "225", DIM, 12.5, "start"),
+      cap(430, 270, "AD bisects angle A, and the circle through A tangent to BC at D meets AB again at E and AC at F (AB = 200, AC = 225)." + MM(ok))
+    ]);
+  })();
+
+  // 1992 AIME #9: the trapezoid and the circle centered on AB tangent to both legs.
+  PROB["1992-aime-9"] = (() => {
+    const p0 = 7729 / 146, h = Math.sqrt(4900 - p0 * p0), Am = [0, 0], Bm = [92, 0], Dm = [p0, h], Cm = [p0 + 19, h], Pm = [161 / 3, 0];
+    const dl = (X, U, V) => Math.abs((V[0] - U[0]) * (X[1] - U[1]) - (V[1] - U[1]) * (X[0] - U[0])) / dist(U, V);
+    const r = dl(Pm, Am, Dm), ok = Math.abs(r - dl(Pm, Bm, Cm)) < 1e-9 && Math.abs(dist(Bm, Cm) - 50) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm, [Pm[0], -r]], 30), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), P = Q(Pm);
+    return wrap(430, 270, [
+      circ(P, r * k, ACC, 1.5), poly([A, B, C, D], DIM, 2), dot(P, ACC, 3.5), ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 5]), "A", DIM, 13, "end"), txt(add(B, [10, 5]), "B", DIM, 13, "start"), txt(add(C, [6, -8]), "C", DIM, 13, "start"), txt(add(D, [-6, -8]), "D", DIM, 13, "end"),
+      txt(add(P, [0, 16]), "P", ACC), txt(add(lerp(A, B, 0.15), [0, 16]), "92", DIM, 12.5), txt(add(mid(C, D), [0, -8]), "19", DIM, 12.5),
+      txt(add(mid(A, D), [-10, 0]), "70", DIM, 12.5, "end"), txt(add(mid(B, C), [10, 0]), "50", DIM, 12.5, "start"),
+      cap(430, 270, "Trapezoid ABCD with AB ∥ CD, and the circle with center P on AB tangent to the legs AD and BC." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AIME I #5: K the midpoint of AC, CL the bisector, P = BK ∩ CL, and M with K the midpoint of PM.
+  PROB["2009-aime-i-5"] = (() => {
+    const c = Math.sqrt(297900), Cm = [0, 0], Am = [450, 0], bx = (300 * 300 - c * c + 450 * 450) / 900, Bm = [bx, Math.sqrt(300 * 300 - bx * bx)];
+    const Km = mid(Am, Cm), Lm = lerp(Am, Bm, 3 / 5), Pm = lineInt(Bm, Km, Cm, Lm), Mm = sub(mul(Km, 2), Pm);
+    const Q = fitQ([Am, Bm, Cm, Mm], 26);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), K = Q(Km), L = Q(Lm), P = Q(Pm), M = Q(Mm);
+    const ok = Math.abs(dist(Am, Mm) - 180) < 1e-6;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(C, L, GLD, 1.8), segIn(B, M, [A, B, C], ACC, 1.8), seg(A, M, DIM, 1.6),
+      ticksOn(A, K, 1), ticksOn(K, C, 1), ...[A, B, C, K, L, P, M].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [10, 5]), "A", DIM, 13, "start"), txt(add(B, [0, -10]), "B"), txt(add(C, [-10, 5]), "C", DIM, 13, "end"),
+      txt(add(K, [0, -8]), "K"), gapLabel(L, [A, B, C], "L"), gapLabel(P, [B, K, C, L], "P"), txt(add(M, [0, 18]), "M"),
+      txt(add(mid(B, C), [-10, 0]), "300", DIM, 12.5, "end"), txt(add(mid(A, M), [12, 4]), "180", DIM, 12.5, "start"), txt(add(lerp(C, A, 0.25), [0, -8]), "450", DIM, 12.5),
+      cap(430, 270, "AC = 450, BC = 300; K is the midpoint of AC, CL bisects angle C, P = BK ∩ CL, K is the midpoint of PM, and AM = 180." + MM(ok))
     ]);
   })();
 
