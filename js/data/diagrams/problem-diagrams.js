@@ -1883,4 +1883,75 @@
     ]);
   })();
 
+  // 1998 AIME #10: side view through the center sphere and two opposite spheres of the ring.
+  PROB["1998-aime-10"] = (() => {
+    const R = 100 * Math.sqrt(4 + 2 * Math.SQRT2), r = 100 + 50 * Math.SQRT2, k = 0.52, Q = (x, y) => [215 + k * x, 236 - k * y];  // r is the radius the problem forces
+    const ok = Math.abs(Math.hypot(R, r - 100) - (r + 100)) < 1e-9 && Math.abs(2 * R * Math.sin(Math.PI / 8) - 200) < 1e-9;
+    return wrap(430, 290, [
+      seg(Q(-400, 0), Q(400, 0), DIM, 2), circ(Q(-R, 100), 100 * k, ACC, 1.8), circ(Q(R, 100), 100 * k, ACC, 1.8), circ(Q(0, r), r * k, GLD, 1.8),
+      seg(Q(-R, 100), Q(0, r), FNT, 1.3, "4 3"), seg(Q(-R, 100), Q(-R, 0), FNT, 1.3, "4 3"), dot(Q(-R, 100), ACC, 3), dot(Q(R, 100), ACC, 3), dot(Q(0, r), GLD, 3),
+      txt(add(Q(-R, 50), [8, 0]), "100", ACC, 11.5, "start"),
+      cap(430, 290, "Side view through the center of the ninth sphere (gold) and two opposite spheres of radius 100 (blue) from the ring of eight, all resting on the floor." + MM(ok))
+    ]);
+  })();
+
+  // 2000 AIME II #6: a trapezoid whose bases differ by 100, its midline and the equal-area segment.
+  PROB["2000-aime-ii-6"] = (() => {
+    const b = 75, B = 175, h = 110, k = 1.65, Q = (x, y) => [70 + k * x, 238 - k * y];  // drawn with the bases the condition forces
+    const A = Q(0, 0), Bp = Q(B, 0), C = Q(40 + b, h), D = Q(40, h), M1 = mid(A, D), M2 = mid(Bp, C);
+    const xs = Math.sqrt((b * b + B * B) / 2), t = (B - xs) / (B - b), E1 = lerp(A, D, t), E2 = lerp(Bp, C, t);
+    const ok = Math.abs(dist(E1, E2) / k - xs) < 1e-6 && Math.abs(B - b - 100) < 1e-12;
+    return wrap(430, 290, [
+      poly([A, Bp, C, D], DIM, 2), seg(M1, M2, ACC, 1.8, "5 4"), seg(E1, E2, GLD, 1.8),
+      txt(add(mid(M1, M2), [0, -8]), "midline", ACC, 11.5), txt(add(mid(E1, E2), [0, 16]), "x", GLD, 13),
+      cap(430, 290, "A trapezoid whose bases differ by 100. The midline (dashed) splits it in the ratio 2 : 3, and the segment x (gold), parallel to the bases, splits it into equal areas." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AMC 12B #11: one isosceles trapezoid with legs 1 and one base twice the other.
+  PROB["2023-amc-12b-11"] = (() => {
+    const x = 1.1, h = Math.sqrt(1 - x * x / 4), k = 120, Q = (a, b) => [215 + k * a, 210 - k * b];
+    const A = Q(-x, 0), B = Q(x, 0), C = Q(x / 2, h), D = Q(-x / 2, h);
+    const ok = Math.abs(dist(B, C) / k - 1) < 1e-9 && Math.abs(dist(A, B) - 2 * dist(C, D)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C, D], ACC, 2, ACCS), txt(add(mid(B, C), [12, 0]), "1", DIM, 12.5, "start"), txt(add(mid(A, D), [-12, 0]), "1", DIM, 12.5, "end"),
+      txt(add(mid(C, D), [0, -10]), "x", DIM, 13), txt(add(mid(A, B), [0, 18]), "2x", DIM, 13),
+      cap(430, 270, "One isosceles trapezoid with legs 1 and bases x and 2x; the question asks which x gives the largest area." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AIME I #3: the isosceles trapezoid (500, 650, legs 333) and the bisector points P, Q.
+  PROB["2022-aime-i-3"] = (() => {
+    const k = 0.58, h = Math.sqrt(333 * 333 - 75 * 75), Q0 = (x, y) => [27 + k * x, 240 - k * y];
+    const D = Q0(0, 0), C = Q0(650, 0), B = Q0(575, h), A = Q0(75, h);
+    const bis = (V, X, Y) => add(V, add(norm(sub(X, V)), norm(sub(Y, V))));
+    const P = lineInt(A, bis(A, B, D), D, bis(D, C, A)), Qq = lineInt(B, bis(B, A, C), C, bis(C, D, B));
+    const ok = Math.abs(dist(P, Qq) / k - 242) < 1e-6;
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), seg(A, P, ACC, 1.5), seg(D, P, ACC, 1.5), seg(B, Qq, ACC, 1.5), seg(C, Qq, ACC, 1.5), seg(mid(A, D), mid(B, C), FNT, 1.2, "4 3"),
+      ...[A, B, C, D, P, Qq].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, -8]), "A", DIM, 13, "end"), txt(add(B, [8, -8]), "B", DIM, 13, "start"), txt(add(C, [10, 14]), "C"), txt(add(D, [-10, 14]), "D"),
+      txt(add(P, [0, -10]), "P", ACC), txt(add(Qq, [0, -10]), "Q", ACC),
+      txt(add(mid(A, B), [0, -10]), "500", DIM, 12), txt(add(mid(D, C), [0, 18]), "650", DIM, 12), txt(add(mid(A, D), [-14, 0]), "333", DIM, 12, "end"),
+      cap(430, 270, "Isosceles trapezoid with bases AB = 500 and CD = 650 and legs 333; the bisectors at A and D meet at P, those at B and C at Q." + MM(ok))
+    ]);
+  })();
+
+  // 2021 AIME II #12: the quadrilateral with sides 5, 6, 9, 7 and area 30.
+  PROB["2021-aime-ii-12"] = (() => {
+    const her = (a, b, c) => { const s2 = (a + b + c) / 2; return Math.sqrt(Math.max(0, s2 * (s2 - a) * (s2 - b) * (s2 - c))); };
+    let lo = 4, hi = 11;  // the diagonal AC that makes the area 30 (the area grows with AC on this range)
+    for (let i = 0; i < 80; i++) { const m = (lo + hi) / 2; if (her(5, 6, m) + her(9, 7, m) < 30) lo = m; else hi = m; }
+    const e = (lo + hi) / 2, k = 18, Q = (x, y) => [130 + k * x, 120 - k * y];
+    const ax = (25 - 36 + e * e) / (2 * e), A = Q(0, 0), C = Q(e, 0), B = Q(ax, Math.sqrt(25 - ax * ax));
+    const dx = (49 - 81 + e * e) / (2 * e), D = Q(dx, -Math.sqrt(49 - dx * dx));
+    const ok = Math.abs(her(5, 6, e) + her(9, 7, e) - 30) < 1e-6 && Math.abs(dist(C, D) / k - 9) < 1e-6;
+    return wrap(430, 290, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.4), seg(B, D, FNT, 1.4), angleArc(lineInt(A, C, B, D), C, B, 16, GLD),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(mid(A, B), [-8, -6]), "5", DIM, 12.5, "end"), txt(add(mid(B, C), [8, -6]), "6", DIM, 12.5, "start"), txt(add(mid(C, D), [10, 6]), "9", DIM, 12.5, "start"), txt(add(mid(D, A), [-10, 6]), "7", DIM, 12.5, "end"),
+      cap(430, 290, "A convex quadrilateral with sides 5, 6, 9, 7 in order and area 30; θ (gold) is the acute angle between its diagonals." + MM(ok))
+    ]);
+  })();
+
 })();

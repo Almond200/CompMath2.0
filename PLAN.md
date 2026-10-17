@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 113 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 118 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -20,7 +20,8 @@
   - 2.7a, cards 9 to 11 (Midsegment, Intercept, Centroid): **finished**.
   - 2.7a, cards 12 to 14 (Cevian Area Ratio, Polygon Angle Sums, Regular Polygon Area): **finished**.
   - 2.7a, card 15 (Equilateral Triangle Facts): **finished**.
-- **In progress:** 2.7a, card 16, `regular-hexagon-area`, then `regular-octagon`, `trapezoid-parallelogram-areas` (8), and on down `js/data/geometry.js`. **Last problem done: none yet on this card.** (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing.)
+  - 2.7a, cards 16 to 20 (regular hexagon and octagon, quadrilateral areas, trapezoid segments, diagonal area): **finished**.
+- **In progress:** 2.7a, card 21, `triangle-area-standard` (11), then `trig-area` (20), `herons-formula` (16), `inradius-area` (8), `circumradius-area` (7), `law-of-sines` (16), `law-of-cosines` (44), and on down `js/data/geometry.js`. **Last problem done: none yet on this card.** (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing.)
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
