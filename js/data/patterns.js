@@ -582,7 +582,7 @@ window.MATH_SECTIONS.push({
       title: "Algebra",
       groups: [
         { title: "Substitutions", blurb: "Renaming part of an expression so the problem becomes one you already know how to solve.", ids: ["log-substitution", "weierstrass-substitution", "trig-substitution", "functional-substitution", "palindromic-polynomials", "normalization", "name-the-whole-expression", "substitute-repeated-block"] },
-        { title: "Changing the Representation", blurb: "Rewriting numbers in another form, as logarithms or in polar form, so that products and powers become sums and multiples.", ids: ["take-logs-linearize", "polar-form"] },
+        { title: "Changing the Representation", blurb: "Rewriting numbers in another form, as logarithms or in polar form, so that products and powers become sums and multiples.", ids: ["take-logs-linearize", "polar-form", "conjugate-both-sides"] },
         { title: "Working with Floors", blurb: "Splitting a number into its integer and fractional parts, or grouping the terms of a sum that share a floor.", ids: ["name-the-floor", "group-equal-floors"] },
         { title: "Factoring & Rewriting", blurb: "Rearranging an expression into a product or a square that exposes its structure.", ids: ["sfft", "completing-the-square", "forced-difference-of-squares", "rationalizing", "denesting-radicals"] },
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "lagrange-interpolation", "root-transformations", "roots-of-unity-filter"] },
@@ -636,6 +636,21 @@ window.MATH_SECTIONS.push({
           description: String.raw`Writing a complex number in polar form records its distance from $0$ and its angle instead of its real and imaginary parts. In that form multiplication is a scaling followed by a rotation, so products, quotients, and powers that are tedious in $a + bi$ become a multiplication and an addition of angles.`,
           keywords: ["polar form", "cis", "modulus and argument", "r e^(i theta)", "trigonometric form", "complex powers", "de moivre", "method"],
           importance: "medium",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
+          id: "conjugate-both-sides",
+          name: "Conjugating Both Sides",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`An equation in a complex number $z$ also involves $\bar z$, or a number is given to be real, or $|z| = 1$ is given, so that one equation is not enough to pin $z$ down.`,
+          move: String.raw`Take the complex conjugate of the whole equation to get a second equation, use $\bar z = \frac1z$ on the unit circle or $w = \bar w$ for a real $w$, and solve the two equations together.`,
+          uses: ["complex-basics", "roots-of-unity"],
+          latex: String.raw`f(z) = w \implies \overline{f(z)} = \bar w, \qquad |z| = 1 \implies \bar z = \frac1z, \qquad w \in \mathbb{R} \iff w = \bar w`,
+          description: String.raw`Conjugating both sides of an equation gives a second, equally true equation for free, and that is often the one that was missing. A condition such as "this number is real" becomes the equation $w = \bar w$, and on the unit circle every $\bar z$ can be replaced by $\frac1z$, so the new equation is a polynomial equation in $z$ alone. Subtracting or combining the two equations then cancels the awkward terms and factors what is left.`,
+          keywords: ["conjugate both sides", "take the conjugate of the equation", "z bar equals 1/z", "real iff equal to its conjugate", "equation with z and z bar", "unit circle conjugate", "method"],
+          importance: "low",
           tier: "AMC",
           level: ["AMC12", "AIME"]
         },

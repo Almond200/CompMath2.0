@@ -32,5 +32,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Angle bisectors of two lines", date: "2026-10-12",
     ids: ["angle-bisectors-of-lines"] },
   { label: "Practice pass: four cards the tagged problems needed", date: "2026-10-17",
-    ids: ["diagonal-angle-from-sides", "squares-on-triangle-flanks", "parallel-sided-hexagon", "product-of-uniforms"] }
+    ids: ["diagonal-angle-from-sides", "squares-on-triangle-flanks", "parallel-sided-hexagon", "product-of-uniforms"] },
+  { label: "Conjugating both sides", date: "2026-10-17",
+    ids: ["conjugate-both-sides"] }
 ];

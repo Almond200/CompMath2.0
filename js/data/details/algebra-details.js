@@ -5129,5 +5129,38 @@ No formula is needed beyond setting up linear equations: two sentences about two
 
 ## Contest profile
 An AMC 8 and AMC 10 word problem, usually one of the first ten, settled by two linear equations in the present ages. Harder versions ask in which year a ratio first becomes a whole number, which turns into a divisibility question about the age difference.
+`,
+"conjugate-both-sides": String.raw`
+## When to use
+An equation mixes $z$ and $\bar z$, such as $z^2 + \bar z = 0$; a quantity built from $z$ is said to be real; or the numbers lie on the unit circle and a sum or polynomial in them is known. In each case conjugating supplies a second equation.
+
+It is the wrong move when the equation has real coefficients and no $\bar z$ and nothing is said about $|z|$: conjugating then only says that $\bar z$ is a solution too, which is [[conjugate-root-theorems|the conjugate root theorem]], not a new condition on $z$.
+
+## How
+1. Write the condition as an equation; a condition "$w$ is real" becomes $w = \bar w$.
+2. Take the conjugate of both sides, conjugating each $z$ and each nonreal coefficient.
+3. If $|z| = 1$, replace every $\bar z$ by $\frac1z$ and clear denominators.
+4. Combine the two equations, by subtracting them or substituting one into the other, to cancel the mixed terms.
+5. Factor what is left and solve, then check each solution against the original condition.
+
+For instance, when $|z| = 1$ and $z^2 \ne -1$, the number $\frac{z}{1 + z^2}$ is real: its conjugate is $\frac{1/z}{1 + 1/z^2} = \frac{z}{z^2 + 1}$, the same number.
+
+## Why it works
+Conjugation respects sums and products, $\overline{u + v} = \bar u + \bar v$ and $\overline{uv} = \bar u\,\bar v$, so it carries every true equation to another true equation. The new one is not a copy: it says something about $\bar z$, and $\bar z$ is tied to $z$ by $z\bar z = |z|^2$, so the two together carry more information than either.
+
+On the unit circle $z\bar z = 1$, so $\bar z = \frac1z$ and the conjugated equation is again an equation in $z$ alone. The move adds nothing when the equation is already its own conjugate, as for a polynomial with real coefficients, and any solution found must still be checked in the original equation, since combining two equations can introduce extra roots.
+
+## Formulas it uses
+- [[complex-basics]]: $\overline{uv} = \bar u\,\bar v$, $z\bar z = |z|^2$, so $\bar z = \frac1z$ when $|z| = 1$, and $w$ is real exactly when $w = \bar w$.
+- [[roots-of-unity]]: the solutions of $z^n = 1$ or $z^n = -1$ that the combined equation usually reduces to, $n$ of them equally spaced.
+
+## Common traps
+- Using $\bar z = \frac1z$ when $|z|$ is not $1$; in general $\bar z = \frac{|z|^2}{z}$.
+- Forgetting to conjugate a nonreal coefficient such as $i$, which becomes $-i$.
+- Counting roots of the combined equation that fail the original one, or counting a root shared by two factors twice.
+- Missing $z = 0$ after dividing by $z$.
+
+## Contest profile
+Uncommon but recognizable: late AMC 12 and early-to-middle AIME problems that put complex numbers on the unit circle and say a sum or an expression is real or zero. The conjugated equation usually factors into roots of unity, and the count or sum of the solutions is the answer.
 `
 });

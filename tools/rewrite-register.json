@@ -1787,7 +1787,8 @@
     "diagonal-angle-from-sides": "formula",
     "squares-on-triangle-flanks": "formula",
     "parallel-sided-hexagon": "formula",
-    "product-of-uniforms": "formula"
+    "product-of-uniforms": "formula",
+    "conjugate-both-sides": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8603,6 +8604,12 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "conjugate-both-sides": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }
