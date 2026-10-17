@@ -451,6 +451,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2023 AIME II #12: $Q$ is $P$ reflected in $M$ (opposite angles of the parallelogram $BPCQ$), so $AQ=2\sqrt{37}-\tfrac{49}{2\sqrt{37}}=\tfrac{99}{\sqrt{148}}$.
   - New candidate card P7 in QUESTIONS.md: the Cevian Ratio Sum $\tfrac{PD}{AD}+\tfrac{PE}{BE}+\tfrac{PF}{CF}=1$.
   - Figures drawn for 2003 AIME I #7 and 2023 AIME II #12.
+- **Practice pass: Apollonius's Theorem, Viviani's Theorem, the Ratio Lemma, the Cotangent Rule, the Projection Formula and the Incenter-Excenter Lemma finished (2026-10-17):**
+  - The seven Apollonius problems were re-checked by computation and needed no change.
+  - 2007 AMC 12B #14 and its twin 10B #17 (untagged until now) share one entry: the height is $1+2+3=6$, so $AB=4\sqrt3$.
+  - 2005 AIME II #14 now names the identity it derives as Steiner's Ratio Theorem ($q=463$).
+  - 2016 AIME I #6 is written in full: $DI=DA=5$, $DA^2=DL\cdot DC$ gives $DC=\tfrac{25}3$, so $IC=\tfrac{10}3$. Angle chasing and the cyclic-quadrilateral card are dropped for Triangle Similarity.
+  - Figures drawn for 2007 AMC 12B #14 (shared with 10B #17) and 2016 AIME I #6.
 
 **2026-10-10**
 

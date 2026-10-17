@@ -3058,4 +3058,40 @@
     ]);
   })();
 
+  // 2007 AMC 12B #14: the point P in the equilateral triangle and its distances 1, 2, 3 to the sides.
+  PROB["2007-amc-12b-14"] = PROB["2007-amc-10b-17"] = (() => {
+    const sd = 4 * Math.sqrt(3), Am = [0, 0], Bm = [sd, 0], Cm = [sd / 2, 6], Pm = [7 / Math.sqrt(3), 1];
+    const Q = fitQ([Am, Bm, Cm], 26), A = Q(Am), B = Q(Bm), C = Q(Cm), P = Q(Pm);
+    const Fq = foot(P, A, B), Fr = foot(P, B, C), Fs = foot(P, C, A), k = Q.k;
+    const ok = Math.abs(dist(P, Fq) / k - 1) < 1e-9 && Math.abs(dist(P, Fr) / k - 2) < 1e-9 && Math.abs(dist(P, Fs) / k - 3) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(P, Fq, ACC, 1.8), seg(P, Fr, ACC, 1.8), seg(P, Fs, ACC, 1.8),
+      rightAngle(Fq, P, A, 8), rightAngle(Fr, P, B, 8), rightAngle(Fs, P, C, 8),
+      ...[A, B, C, P, Fq, Fr, Fs].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 5]), "A", DIM, 13, "end"), txt(add(B, [10, 5]), "B", DIM, 13, "start"), txt(add(C, [0, -10]), "C"),
+      txt(add(P, [0, -9]), "P"), txt(add(Fq, [0, 18]), "Q"), gapLabel(Fr, [B, C, P], "R"), gapLabel(Fs, [A, C, P], "S"),
+      txt(add(mid(P, Fq), [8, 4]), "1", ACC, 12, "start"), txt(add(mid(P, Fr), [0, -7]), "2", ACC, 12), txt(add(mid(P, Fs), [0, -7]), "3", ACC, 12),
+      cap(430, 270, "P inside equilateral triangle ABC with PQ = 1, PR = 2 and PS = 3 perpendicular to AB, BC and CA." + MM(ok))
+    ]);
+  })();
+
+  // 2016 AIME I #6: the bisector CL through the incenter I to D on the circumcircle (one triangle with LI = 2, LD = 3).
+  PROB["2016-aime-i-6"] = (() => {
+    const R = 5, Dm = [0, -R], Am = [-R * Math.sqrt(3) / 2, -2.5], Bm = [R * Math.sqrt(3) / 2, -2.5];
+    const cy = (625 / 9 - 50) / 10, Cm = [Math.sqrt(R * R - cy * cy), cy];
+    const a = dist(Bm, Cm), b = dist(Am, Cm), c = dist(Am, Bm);
+    const Im = [(a * Am[0] + b * Bm[0] + c * Cm[0]) / (a + b + c), (a * Am[1] + b * Bm[1] + c * Cm[1]) / (a + b + c)];
+    const Lm = lineInt(Cm, Dm, Am, Bm);
+    const ok = Math.abs(dist(Lm, Im) - 2) < 1e-9 && Math.abs(dist(Lm, Dm) - 3) < 1e-9;
+    const Q = fitQ([[-R, 0], [R, 0], [0, R], [0, -R]], 22, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), I = Q(Im), L = Q(Lm);
+    return wrap(430, 290, [
+      circ(Q([0, 0]), R * k, FNT, 1.4), poly([A, B, C], DIM, 2), seg(C, D, GLD, 1.8),
+      ...[A, B, C, D, L].map(q => dot(q, DIM, 3.2)), dot(I, ACC, 3.6),
+      txt(add(A, [-10, 0]), "A", DIM, 13, "end"), txt(add(B, [10, 0]), "B", DIM, 13, "start"), txt(add(C, [0, -10]), "C"), txt(add(D, [0, 18]), "D"),
+      txt(add(I, [-10, 4]), "I", ACC, 13, "end"), txt(add(L, [-10, 14]), "L", DIM, 13, "end"),
+      cap(430, 290, "I is the incenter, the bisector CL meets the circumcircle again at D, LI = 2 and LD = 3 (one triangle that fits)." + MM(ok))
+    ]);
+  })();
+
 })();
