@@ -38,5 +38,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Closing a polygon with side vectors", date: "2026-10-17",
     ids: ["closing-polygon-vectors"] },
   { label: "Practice pass: five geometry cards the problems needed", date: "2026-10-17",
-    ids: ["cevian-ratio-sum", "square-crossing-segments", "perimeter-cleavers", "conic-perpendicular-radii", "gram-determinant-volume"] }
+    ids: ["cevian-ratio-sum", "square-crossing-segments", "perimeter-cleavers", "conic-perpendicular-radii", "gram-determinant-volume"] },
+  { label: "Practice pass: proportions and linear systems", date: "2026-10-17",
+    ids: ["setting-up-proportions", "linear-elimination"] }
 ];
