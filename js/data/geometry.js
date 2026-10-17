@@ -1526,9 +1526,9 @@ window.MATH_SECTIONS.push({
           id: "arbelos",
           name: "The Arbelos",
           latex: String.raw`[\text{arbelos}] = \tfrac{\pi}{4}\,BD^2, \qquad BD = 2\sqrt{ab}, \qquad r_{\text{twin}} = \frac{ab}{a+b}`,
-          description: String.raw`Cut two semicircles on diameters $AB = 2a$ and $BC = 2b$ out of the semicircle on $AC$, all on the same side. The leftover region's area is exactly that of the circle whose diameter is the perpendicular $BD$ to $AC$ at $B$, and Archimedes' two circles squeezed against that perpendicular, one in each lobe, turn out to have the same radius $\frac{ab}{a+b}$.`,
+          description: String.raw`Put $B$ on a segment $AC$, and let $a$ and $b$ be the radii of the two small semicircles, on the diameters $AB = 2a$ and $BC = 2b$. Cut them out of the semicircle on $AC$, all on the same side. The leftover region's area is exactly that of the circle whose diameter is $BD$, where $D$ is the point of the big semicircle straight above $B$, and Archimedes' two circles squeezed against that perpendicular, one in each lobe, turn out to have the same radius $\frac{ab}{a+b}$.`,
           keywords: ["arbelos", "shoemaker's knife", "Archimedes twin circles", "semicircles", "three semicircles", "twin circles equal radii"],
-          importance: "lower",
+          importance: "lowest",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },

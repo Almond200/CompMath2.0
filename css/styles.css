@@ -2539,10 +2539,14 @@ body.is-landing .nav-toggle { display: none; }
 body.is-landing .layout { max-width: none; }
 body.is-landing .content { padding: 0 0 70px; }
 .hub { max-width: 1160px; margin: 0 auto; padding: 30px 24px 0; }
-.hub-brand { display: flex; align-items: center; gap: 14px; }
+.hub-head { position: relative; }
+.hub-brand { display: flex; align-items: center; gap: 14px; padding-right: 36px; }
+.hub-gear { position: absolute; top: 2px; right: 0; font-size: 24px; line-height: 1; color: var(--text-dim); text-decoration: none; }
+.hub-gear:hover, .hub-gear:focus-visible { color: var(--accent); }
 .hub-brand .brand-sigma { font-size: 44px; }
 .hub-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .hub-sub { margin-top: 2px; font-size: 13.5px; color: var(--text-dim); line-height: 1.45; }
+@media (max-width: 640px) { .hub-sub { display: none; } }
 .home-search { margin: 16px 0 0; display: flex; gap: 8px; }
 .home-search input {
   flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 13px 18px; border-radius: 12px;

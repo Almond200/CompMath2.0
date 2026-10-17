@@ -3005,8 +3005,8 @@ Uncommon on the AMC; on hard AIME and olympiad geometry it appears as an unexpla
 
 "arbelos": String.raw`
 ## Key forms
-- $[\text{arbelos}] = \dfrac\pi4BD^2 = \pi ab$ — the area equals that of the circle whose diameter is the perpendicular $BD$ to $AC$ at $B$
-- $BD = 2\sqrt{ab}$ — for semicircles of radii $a$ and $b$ on $AB$ and $BC$
+- $[\text{arbelos}] = \dfrac\pi4BD^2 = \pi ab$ — the area equals that of the circle whose diameter is the perpendicular $BD$ to $AC$ at $B$, where $a$ and $b$ are the radii of the two small semicircles and $D$ is on the big one
+- $BD = 2\sqrt{ab}$ — the half-chord at $B$, from $AB = 2a$ and $BC = 2b$
 - $r_{\text{twin}} = \dfrac{ab}{a + b}$ — the common radius of Archimedes' two circles squeezed against $BD$ in each lobe
 
 ## Conditions
@@ -3655,6 +3655,7 @@ An occasional AMC and AIME cameo, and the Fermat-point connection makes the conf
 ## Key forms
 - $R = \dfrac{1}{4K}\sqrt{(ab + cd)(ac + bd)(ad + bc)}$ — the circumradius of a cyclic quadrilateral with sides $a, b, c, d$ in order and area $K$
 - the three paired products $ab + cd$, $ac + bd$, $ad + bc$ are the same ones that give the diagonals, on [[ptolemy-second-theorem|Ptolemy's Second Theorem]]
+- $R = \dfrac14\sqrt{\dfrac{(ab + cd)(ac + bd)(ad + bc)}{(s - a)(s - b)(s - c)(s - d)}}$ — the same with $K$ written out by Brahmagupta's Formula, $K = \sqrt{(s - a)(s - b)(s - c)(s - d)}$, where $s = \frac{a + b + c + d}{2}$ is the semiperimeter, so the four sides alone give $R$
 
 ## Conditions
 The quadrilateral is cyclic. The area $K$ comes from Brahmagupta's Formula, and the products are the ones in Ptolemy's Theorem, where $ac + bd = pq$.
