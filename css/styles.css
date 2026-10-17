@@ -1218,8 +1218,6 @@ body.nav-open ::-webkit-scrollbar-thumb { background: var(--scrollbar-dim); }
 .prob-row:hover .prob-open, .prob-row:focus-within .prob-open { color: var(--accent); }
 .prob-row .prob-open { font-size: 13.5px; color: var(--text); text-decoration: none; font-weight: 600; }
 .prob-row .prob-open:hover { color: var(--accent); text-decoration: underline; }
-.prob-row .ref-ext-link { margin-left: auto; font-size: 11.5px; color: var(--accent); text-decoration: none; white-space: nowrap; }
-.prob-row .ref-ext-link:hover { text-decoration: underline; }
 
 /* Browse page: competition/year navigator */
 /* Column geometry matches the Lists sidebar exactly -- 24px left edge, 214px wide, content
@@ -1432,12 +1430,14 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
 .addlist-btn:hover { color: var(--text); border-color: var(--border-light); opacity: 1; }
 
 /* ---------- Topic chips ---------- */
+/* The same pill as a keyword tag, outlined in a light tint of the accent, so a topic reads as
+   a tag of another colour rather than as bare blue text (owner, 2026-10-17). */
 .topic-chip {
   font-size: 10.5px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--accent);
   background: var(--accent-soft);
-  border: 1px solid transparent;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
   border-radius: 999px;
   padding: 1px 9px;
   cursor: pointer;
@@ -3397,10 +3397,12 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 .detail-with-tools { display: grid; grid-template-columns: minmax(0, 1fr) 236px; gap: 28px; align-items: stretch; }
 .detail-with-tools > .detail { min-width: 0; }
 /* The column stretches the whole height of the page and carries the divider, starting at the
-   top bar (the negative margins cancel the page's own padding). Its contents scroll with the
-   page: a sticky panel jumped up and down while scrolling (owner, 2026-10-17). */
+   top bar (the negative margins cancel the page's own padding). As on Wikipedia, the panel starts
+   a little down the column and, once the page scrolls it up to just under the top bar, stays
+   there. It is never taller than the window (it scrolls inside itself instead), because a sticky
+   panel taller than the window was what jumped up and down while scrolling (owner, 2026-10-17). */
 .page-tools { border-left: 1px solid var(--border); padding-left: 16px; margin: -24px 0 -120px; padding-top: 24px; padding-bottom: 120px; font-size: 13px; }
-.pt-inner { display: flex; flex-direction: column; gap: 18px; }
+.pt-inner { position: sticky; top: calc(var(--topbar-h, 61px) + 20px); margin-top: 40px; max-height: calc(100vh - var(--topbar-h, 61px) - 40px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: flex; flex-direction: column; gap: 18px; }
 html[data-density="compact"] .page-tools { margin: -16px 0 -90px; padding-top: 16px; padding-bottom: 90px; }
 html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top: 24px; padding-bottom: 140px; }
 .pt-block { display: flex; flex-direction: column; gap: 4px; }
@@ -3420,8 +3422,9 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
 @media (max-width: 1100px) {
   .detail-with-tools { grid-template-columns: 1fr; }
   .page-tools { margin: 0; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--border); }
+  .pt-inner { position: static; margin-top: 0; max-height: none; overflow: visible; }
 }
-@media print { .page-tools, .sidebar, .topbar { display: none !important; } .detail-with-tools { display: block; } }
+@media print { .page-tools, .sidebar, .topbar, .back-link, .back-row { display: none !important; } .layout, .detail-with-tools { display: block; } .content { max-width: none; margin: 0; } }
 /* Angle-chasing puzzle (js/geo-interactive.js) */
 .ac-intro { font-size: 13.5px; color: var(--text-dim); margin: 0 0 10px; line-height: 1.55; }
 .ac-w { fill: rgba(128, 128, 128, 0.10); stroke: var(--text-faint); stroke-width: 1; cursor: pointer; }

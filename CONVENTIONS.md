@@ -341,7 +341,7 @@ positives and should be rejected every time they reappear:
 
 **700 example keys for 700 cards. Zero cards lack one.**
 
-Shape is `{ q, s }`: a clean question, and the solution shown on demand.
+Shape is `{ q, s }`: a clean question, and its solution, always printed under it as "Solution." (no Show solution button; owner, 2026-10-17).
 
 ```js
 window.MATH_EXAMPLES["your-card-id"] = { q: String.raw`...`, s: String.raw`...` };

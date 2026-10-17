@@ -3578,4 +3578,39 @@
     ]);
   })();
 
+
+  // 2008 AIME II #13: the regular hexagon centered at 0 whose vertical sides are one unit apart.
+  PROB["2008-aime-ii-13"] = (() => {
+    const k = 165, Q = p => [215 + k * p[0], 118 - k * p[1]], R = 1 / Math.sqrt(3);
+    const Vm = [30, 90, 150, 210, 270, 330].map(a => [R * Math.cos(rad(a)), R * Math.sin(rad(a))]);
+    const ok = Math.abs(Vm[0][0] - Vm[5][0]) < 1e-12 && Math.abs((Vm[0][0] - Vm[2][0]) - 1) < 1e-12 && Math.abs(dist(Vm[0], Vm[1]) - R) < 1e-12;
+    const V = Vm.map(Q), O = Q([0, 0]), L = Q([-0.5, -0.72]), Rr = Q([0.5, -0.72]);
+    return wrap(430, 270, [
+      seg(Q([-0.95, 0]), Q([0.95, 0]), DIM, 1), seg(Q([0, -0.64]), Q([0, 0.64]), DIM, 1),
+      poly(V, ACC, 2, ACCS),
+      seg(Q([-0.5, -0.29]), add(L, [0, 6]), DIM, 1, "4 3"), seg(Q([0.5, -0.29]), add(Rr, [0, 6]), DIM, 1, "4 3"), seg(L, Rr, GLD, 2), seg(add(L, [0, -5]), add(L, [0, 5]), GLD, 2), seg(add(Rr, [0, -5]), add(Rr, [0, 5]), GLD, 2),
+      dot(O, DIM, 3), txt(add(O, [-6, 15]), "0", DIM, 12, "end"), txt(add(mid(L, Rr), [0, 17]), "1", GLD, 13),
+      txt(add(Q([0.95, 0]), [6, 4]), "Re", DIM, 12, "start"), txt(add(Q([0, 0.64]), [8, 6]), "Im", DIM, 12, "start"),
+      cap(430, 270, "The regular hexagon centered at 0, with one pair of sides parallel to the imaginary axis and opposite sides 1 apart. R is the region outside it." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AIME II #13: the semicircle of radius 2 cut into seven equal arcs, with the twelve chords from A and B.
+  PROB["2009-aime-ii-13"] = (() => {
+    const k = 92, O = [215, 222], Q = p => [O[0] + k * p[0], O[1] - k * p[1]];
+    const Cm = [1, 2, 3, 4, 5, 6].map(j => [2 * Math.cos(j * Math.PI / 7), 2 * Math.sin(j * Math.PI / 7)]);
+    const Am = [2, 0], Bm = [-2, 0];
+    const ok = Cm.every((c, j) => Math.abs(Math.hypot(...c) - 2) < 1e-12 && Math.abs(dist(c, j ? Cm[j - 1] : Am) - 4 * Math.sin(Math.PI / 14)) < 1e-12);
+    const arc = Array.from({ length: 61 }, (_, i) => Q([2 * Math.cos(Math.PI * i / 60), 2 * Math.sin(Math.PI * i / 60)]));
+    const A = Q(Am), B = Q(Bm), C = Cm.map(Q);
+    return wrap(430, 270, [
+      pline(arc, DIM, 2), seg(A, B, DIM, 1, "4 3"),
+      ...C.map(c => seg(A, c, ACC, 1.4)), ...C.map(c => seg(B, c, GLD, 1.4)),
+      ...[A, B, ...C].map(q => dot(q, DIM, 3)),
+      txt(add(A, [8, 5]), "A", DIM, 13, "start"), txt(add(B, [-8, 5]), "B", DIM, 13, "end"),
+      ...C.map((c, j) => txt(add(c, mul(norm(sub(c, O)), 15)), subT("C", String(j + 1)), DIM, 12)),
+      txt(add(mid(A, O), [0, 16]), "2", DIM, 12),
+      cap(430, 270, "The semicircle of radius 2, cut into seven equal arcs by C<sub>1</sub>, ..., C<sub>6</sub>, with the six chords from A (blue) and the six from B (gold)." + MM(ok))
+    ]);
+  })();
 })();
