@@ -4,7 +4,7 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step, update "Current state" below and push. Credits can run out at any moment, so this block must always say exactly where the work stands and what the next action is.
 
-## Current state (updated 2026-10-17, fifth cloud chat)
+## Current state (updated 2026-10-17, sixth cloud chat)
 
 - **Counts:** 712 cards (527 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 217 problems have figures drawn for the app.
 - **Last finished:**
@@ -54,7 +54,8 @@
   - Approved cards P7 to P11 **written** (2026-10-17): `cevian-ratio-sum`, `square-crossing-segments`, `perimeter-cleavers`, `conic-perpendicular-radii`, `gram-determinant-volume`, each with a write-up, a verified example, a figure, a place in the AIME geometry route and a new-cards batch; their five problems cite them.
   - Owner's fixes (2026-10-17): a plain gear at the top right of the home page opens Settings; "Your library" now links "Make a list" and "Open a list" to the lists on the Practice page; Circumradius of a Cyclic Quadrilateral has a third key form with $K$ written out by Brahmagupta; The Arbelos is now lowest importance and defines $a$, $b$ and $D$; step 2.7c (define every confusing variable on every card) added to section 2.7. On phones the home page hides the line under the title.
   - 2019 HMMT February Geometry #9 now has a strategy (the $6\times6\times49$ box cut through $A$; $a=7$, area $\tfrac{141\sqrt{11}}2$), written from the known statement since HMMT text is not in the app.
-- **In progress:** 2.7a, algebra (`js/data/algebra.js`, 59 cards with problems, 631 citations). Finished in file order through `log-rules` (the cards between cite nothing or were already right; `cubes-minus-3abc` now cites no problem). **Next card: `change-of-base`** (15 problems, some already done under log-rules), then `exponent-laws`, `change-of-base`, `complex-basics`, `de-moivre`, `roots-of-unity`, ... in file order. `node tools/practice-scan.js <card>` lists them (VAGUE = still unchecked; it also flags a strategy ending in a bare "The answer is $x$."); `node tools/practice-card.js <card>` prints them in full; non-geometry problems need no figure.
+- **In progress:** 2.7a, algebra (`js/data/algebra.js`, 59 cards with problems, 631 citations). Finished in file order through `exponent-laws` (the cards between cite nothing or were already right; `cubes-minus-3abc` and `log-swap-identity` cite no problem). **Next card: `complex-basics`** (26 problems, 11 flagged VAGUE), then `eulers-formula`, `de-moivre`, `roots-of-unity`, `roots-unity-distance-product`, `pythagorean-identities`, ... in file order. Many complex-number problems are shared between these cards, so a problem done under one needs only a citation check under the next. `node tools/practice-scan.js <card>` lists them (VAGUE = still unchecked; it also flags a strategy ending in a bare "The answer is $x$."); `node tools/practice-card.js <card>` prints them in full; non-geometry problems need no figure.
+  - Change of Base and Exponent Laws (sixth cloud chat, 2026-10-17): all 18 problems re-checked by script; 2012 AIME I #9 drops `change-of-base` (it uses only the definition), 2025 AIME II #4 cites `log-rules` for the power rule, 2010 AIME I #3 states $r+s$ instead of a bare answer, and 2025 AIME II #15's `main` is now `tangency-equation` (it named a card the problem no longer cites, the validator's one violation).
   - Owner's changes (2026-10-17): the page-tools panel is no longer sticky; the Cleavers formula box is shortened; `square-crossing-segments` is converted to a pattern (in `patterns.js`, Polygon Configurations; suggests `extend-sides-to-meet`, `coordinate-bash`). The search index (`tools/build-search-index.py`, needs a local venv) has not been rebuilt since 2026-10-12.
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P11 all written; a new one goes at the top of the table as P12; the file is newest first), for approval before they are written.
@@ -88,7 +89,7 @@
 
 ## Where things are
 
-- Project: the clone `/home/user/CompMath2.0` in the cloud session, on the branch the session names (this chat: `claude/zealous-keller-4gb8cj`; before it `claude/zen-wozniak-agipdc`, earlier: `claude/epic-curie-8tpif0`, `claude/inspiring-curie-svp5pr`); on the Mac, `~/Downloads/competition-math-reference`.
+- Project: the clone `/home/user/CompMath2.0` in the cloud session, on the branch the session names (this chat: `claude/youthful-feynman-3uar1y`; before it `claude/zealous-keller-4gb8cj`, `claude/zen-wozniak-agipdc`, earlier: `claude/epic-curie-8tpif0`, `claude/inspiring-curie-svp5pr`); on the Mac, `~/Downloads/competition-math-reference`.
 - Code and data: a static JS site with `js/app.js`, `css/styles.css`, data in `js/data/`, write-ups in `js/data/details/`, and gates in `tools/`.
 - Published: https://almond200.github.io/CompMath2.0/ (repo `Almond200/CompMath2.0`). Served locally with `python3 -m http.server 8642`.
 - Upload: GitHub Desktop on the Mac, or `git add -A && git commit && git push` here.
