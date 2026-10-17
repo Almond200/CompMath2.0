@@ -2608,4 +2608,56 @@
     ]);
   })();
 
+  PROB["2012-aime-ii-13"] = (() => {
+    const s = Math.sqrt(111), k = 13.5, A = [250, 115], th = Math.acos(211 / 222) * 180 / Math.PI;
+    const at = deg => onC(A, s * k, -deg);                                  // angles measured counterclockwise on screen
+    const B = at(-90 - 30), C = at(-90 + 30 - 60 + 60), b0 = -120;
+    const Bp = at(b0), Cp = at(b0 + 60), D1 = at(b0 + th), D2 = at(b0 - th);
+    const E = [at(b0 + th + 60), at(b0 + th - 60), at(b0 - th + 60), at(b0 - th - 60)];
+    const ok = Math.abs(dist(Bp, D1) / k - Math.sqrt(11)) < 1e-9 && Math.abs(E.reduce((t, e) => t + (dist(Cp, e) / k) ** 2, 0) - 677) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, Bp, Cp], DIM, 2.2),
+      poly([A, D1, E[0]], ACC, 1.3, "none"), poly([A, D1, E[1]], ACC, 1.3, "none"), poly([A, D2, E[2]], GLD, 1.3, "none"), poly([A, D2, E[3]], GLD, 1.3, "none"),
+      ...[A, Bp, Cp].map(q => dot(q, DIM, 3.5)), dot(D1, ACC, 3.5), dot(D2, GLD, 3.5), ...E.slice(0, 2).map(q => dot(q, ACC, 3)), ...E.slice(2).map(q => dot(q, GLD, 3)),
+      txt(add(A, [8, -8]), "A", DIM, 13, "start"), txt(away(Bp, A, 13), "B"), txt(away(Cp, A, 13), "C"),
+      txt(away(D1, A, 14), subT("D", "1"), ACC), txt(away(D2, A, 14), subT("D", "2"), GLD),
+      ...E.map((e, i) => txt(add(away(e, A, 14), [0, 4]), subT("E", String(i + 1)), i < 2 ? ACC : GLD)),
+      cap(430, 300, "Equilateral triangle ABC of side √111 (black) and the four triangles congruent to it at A, with BD₁ = BD₂ = √11." + MM(ok))
+    ]);
+  })();
+
+  PROB["2012-aime-ii-15"] = (() => {
+    const k = 26, Q = (x, y) => [124 + k * x, 168 - k * y];
+    const ax = (25 - 9 + 49) / 14, Bm = [0, 0], Cm = [7, 0], Am = [ax, -Math.sqrt(25 - ax * ax)];
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), O = K.circumcenterOf(A, B, C), R = dist(O, A), D = Q(35 / 8, 0);
+    const u = norm(sub(D, A)), w = sub(A, O), t = -2 * (u[0] * w[0] + u[1] * w[1]), E = add(A, mul(u, t));
+    const G = mid(D, E), g = dist(D, E) / 2, Fx = sub(mul(foot(E, O, G), 2), E);   // F: E reflected in the line of centers OG
+    const ok = Math.abs(dist(A, Fx) ** 2 / (k * k) - 900 / 19) < 1e-6 && Math.abs(dist(Fx, O) - R) < 1e-6;
+    return wrap(430, 300, [
+      circ(O, R, FNT, 1.5), circ(G, g, ACC, 1.4, "none", "5 4"), poly([A, B, C], DIM, 2), seg(A, E, DIM, 1.6), seg(A, Fx, GLD, 2),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3)), dot(Fx, GLD, 3.5),
+      txt(add(A, [0, 18]), "A"), txt(add(B, [-12, 0]), "B", DIM, 13, "end"), txt(add(C, [12, 0]), "C", DIM, 13, "start"), txt(add(D, [10, 14]), "D", DIM, 13, "start"),
+      txt(add(E, [8, 22], "E", DIM, 13, "start"), txt(away(Fx, O, 14), "F", GLD), txt(add(G, [g + 6, 0]), "γ", ACC, 13, "start"),
+      cap(430, 300, "Triangle ABC (AB = 5, BC = 7, AC = 3) in its circle ω; the bisector from A meets BC at D and ω at E, and the circle γ on diameter DE (dashed) meets ω again at F." + MM(ok))
+    ]);
+  })();
+
+  PROB["2018-aime-ii-12"] = (() => {
+    const k = 13, Q = (x, y) => [55 + k * x, 210 - k * y];
+    const Bm = [0, 0], Cm = [14, 0], Am = [6, 8];                          // the case where P is the midpoint of BD
+    const dd = dist(Am, Cm), ex = sub(Am, Cm).map(z => z / dd), x = (100 - 260 + dd * dd) / (2 * dd), h = Math.sqrt(100 - x * x);
+    const Dm = add(add(Cm, mul(ex, x)), mul([-ex[1], ex[0]], -h));
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm), P = lineInt(A, C, B, D);
+    const ar = (U, V, W) => Math.abs((V[0] - U[0]) * (W[1] - U[1]) - (W[0] - U[0]) * (V[1] - U[1])) / 2;
+    const ok = Math.abs(dist(A, D) / k - 2 * Math.sqrt(65)) < 1e-9 && Math.abs(ar(A, P, B) + ar(C, P, D) - ar(B, P, C) - ar(A, P, D)) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, P, B], "none", 0, ACCS), poly([C, P, D], "none", 0, ACCS), poly([B, P, C], "none", 0, GLDS), poly([A, P, D], "none", 0, GLDS),
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, D, FNT, 1.5),
+      ...[A, B, C, D, P].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, -6]), "A", DIM, 13, "end"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [8, -8]), "D", DIM, 13, "start"), txt(add(P, [0, 20]), "P"),
+      txt(add(mid(A, B), [-14, 4]), "10", DIM, 12, "end"), txt(add(mid(B, C), [0, 18]), "14", DIM, 12), txt(add(mid(C, D), [14, 4]), "10", DIM, 12, "start"), txt(add(mid(A, D), [0, -10]), "2√65", DIM, 12),
+      cap(430, 300, "Convex quadrilateral ABCD with AB = CD = 10, BC = 14, AD = 2√65; the blue triangles APB and CPD together have the same area as the gold BPC and APD." + MM(ok))
+    ]);
+  })();
+
 })();
