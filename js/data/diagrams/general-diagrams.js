@@ -648,7 +648,7 @@
     return wrap(460, 330, [
       seg([60, O[1]], [390, O[1]], FNT, 1.2), seg([O[0], 30], [O[0], 305], FNT, 1.2),
       circ(O, R, FNT, 1.4),
-      poly(V, ACC, 1.5),
+      poly(V, ACC, 1.5), seg(O, V[1], FNT, 1.2),
       ...V.map(p => dot(p, GLD, 4.5)),
       `<path d="M ${pf(add(O, [26, 0]))} A 26 26 0 0 0 ${pf(onC(O, 26, -60))}" fill="none" stroke="${GLD}" stroke-width="1.8"/>`,
       txt(onC(O, 40, -30), "2π/n", GLD, 11.5),
