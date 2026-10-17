@@ -270,16 +270,6 @@ window.MATH_SECTIONS.push({
           level: ["AIME"]
         },
         {
-          id: "square-crossing-segments",
-          name: "Perpendicular Segments Across a Square",
-          latex: String.raw`PQ \perp RS \implies PQ = RS \qquad (P, Q \text{ on one pair of opposite sides}, \; R, S \text{ on the other})`,
-          description: String.raw`In a square, take a segment joining one pair of opposite sides and a segment joining the other pair. If the two segments are perpendicular, they have the same length, wherever they sit. A quarter turn about the center swaps the two pairs of sides and turns one direction into the other, which is why. It lets a square be found from points on its sides: a segment through one point perpendicular to a known one must reach the opposite side at the same distance.`,
-          keywords: ["perpendicular segments in a square", "segments joining opposite sides", "square through four points", "equal crossing segments", "quarter turn about the center", "square with a point on each side", "rotate a segment by 90 degrees in a square"],
-          importance: "lower",
-          tier: "AIME Early",
-          level: ["AIME"]
-        },
-        {
           id: "regular-hexagon-area",
           name: "Regular Hexagon of Side $s$",
           latex: String.raw`A = \frac{3\sqrt3}{2}s^2 \qquad R = s \qquad \text{diagonals } s\sqrt3,\ 2s`,
@@ -1273,8 +1263,8 @@ window.MATH_SECTIONS.push({
         {
           id: "perimeter-cleavers",
           name: "Splitting Lines (Cleavers)",
-          latex: String.raw`MX \parallel CD \quad \text{(the cleaver through the midpoint } M \text{ of } AB \text{ is parallel to the bisector } CD\text{)}, \qquad AX = \tfrac{a + b}{2} \text{ on } CA \text{ when } a \le b`,
-          description: String.raw`A cleaver, or splitting line, of a triangle goes through the midpoint of a side and cuts the perimeter in half. The one through the midpoint $M$ of $AB$ ends on the longer of the other two sides, at distance $\frac{a + b}2$ from the vertex it shares with $AB$, and it is parallel to the bisector of the opposite angle $C$. The three cleavers bisect the angles of the [[medial-triangle|medial triangle]], so they meet at its incenter, the [[spieker-point|Spieker point]], and two of them cross at the same angle as the bisectors they are parallel to.`,
+          latex: String.raw`MX \parallel CD, \qquad AX = \tfrac{a + b}{2} \;\; (a \le b)`,
+          description: String.raw`A cleaver, or splitting line, of a triangle goes through the midpoint of a side and cuts the perimeter in half. The one through the midpoint $M$ of $AB$ ends at a point $X$ on the longer of the other two sides, at distance $\frac{a + b}2$ from the vertex it shares with $AB$ (here $a = BC$, $b = CA$), and it is parallel to the bisector $CD$ of the opposite angle $C$. The three cleavers bisect the angles of the [[medial-triangle|medial triangle]], so they meet at its incenter, the [[spieker-point|Spieker point]], and two of them cross at the same angle as the bisectors they are parallel to.`,
           keywords: ["cleaver", "splitting line", "line halving the perimeter", "perimeter bisector through a midpoint", "parallel to the angle bisector", "cleavers concur", "splitting lines meet at an angle"],
           importance: "lower",
           tier: "AIME Late",
