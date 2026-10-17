@@ -34,5 +34,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Practice pass: four cards the tagged problems needed", date: "2026-10-17",
     ids: ["diagonal-angle-from-sides", "squares-on-triangle-flanks", "parallel-sided-hexagon", "product-of-uniforms"] },
   { label: "Conjugating both sides", date: "2026-10-17",
-    ids: ["conjugate-both-sides"] }
+    ids: ["conjugate-both-sides"] },
+  { label: "Closing a polygon with side vectors", date: "2026-10-17",
+    ids: ["closing-polygon-vectors"] }
 ];

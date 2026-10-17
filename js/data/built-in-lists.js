@@ -166,7 +166,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["indicator-variables", "generating-function-method"] }
     ] },
   { id: "route-aime-geometry", name: "AIME Geometry", kind: "route", tier: "AIME", subject: "Geometry",
-    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 83 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 84 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
@@ -197,7 +197,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["spiral-similarity", "homothety-monge", "monges-theorem", "affine-transformations"] },
       { title: "Coordinate & Algebraic Bashes",
         note: "When the figure resists synthetic attack, trade elegance for reliability.",
-        ids: ["barycentric-coordinates", "complex-bash", "vector-bash"] },
+        ids: ["barycentric-coordinates", "complex-bash", "vector-bash", "closing-polygon-vectors"] },
       { title: "Working in Three Dimensions",
         note: "Reducing a solid to a plane figure you already know how to handle.",
         ids: ["cross-section-method"] },

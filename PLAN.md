@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 706 cards (522 formulas, 145 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 165 problems have figures drawn for the app.
+- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 174 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -26,11 +26,13 @@
   - 2.7a, card 23 (Heron's Formula): **finished**.
   - 2.7a, cards 24 to 30 (inradius, circumradius, right-triangle inradius, incircle tangent lengths, shared-angle and same-base ratios, exradii): **finished**.
   - Missing cards P1 to P4 (QUESTIONS.md) **approved and written**: `diagonal-angle-from-sides`, `squares-on-triangle-flanks`, `parallel-sided-hexagon`, `product-of-uniforms`, each with a write-up, an example, a figure, routes and a new-cards batch; 2021 AIME II #12, 2019 HMMT February Geometry #10, 2024 AIME II #5 and 2024 AMC 12A #20 cite them.
+  - P6 **approved and written**: the method `closing-polygon-vectors`, cited by 2026 AIME I #14.
   - P5 **approved and written**: the method `conjugate-both-sides`, cited by 2018 AIME I #6, 2001 AIME II #14 (both rewritten in full) and 2020 AMC 12B #23 (first strategy).
   - 2.7a, card 31 (`law-of-sines`): **finished**, 15 strategies and 7 figures (2018 AIME II #14 now cites the ratio lemma and the Law of Cosines instead, and got its figure too).
-- **In progress:** 2.7a, card 32, `law-of-cosines` (46 problems), then on down `js/data/geometry.js` (`law-cosines-60-120`, `law-of-cosines-special-triangles`, ...). **Done on this card:** the five AMC problems, and the AIME ones from 2026 I #5 to 2018 II #12 in `practice-card.js` order. **Next:** 2018 AIME II #14 (already done under Law of Sines, only check), then 2019 AIME I #13, and on down that list.
+  - 2.7a, card 32 (`law-of-cosines`, 46 problems): **finished**; 27 strategies completed or rewritten, 24 figures drawn.
+- **In progress:** 2.7a, card 33, `law-cosines-60-120`, then on down `js/data/geometry.js` (`law-of-cosines-special-triangles`, ...). **Last problem done: none yet on this card.** (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing; within a card, AMC 10/12 first, then AIME, AMC 8, HMMT.)
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
-- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P5 written; P6, closing a polygon with side vectors, waits for an answer), for approval before they are written.
+- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P6 all written; a new one goes at the top of the table as P7; the file is newest first), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).

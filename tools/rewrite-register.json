@@ -1788,7 +1788,8 @@
     "squares-on-triangle-flanks": "formula",
     "parallel-sided-hexagon": "formula",
     "product-of-uniforms": "formula",
-    "conjugate-both-sides": "method"
+    "conjugate-both-sides": "method",
+    "closing-polygon-vectors": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8607,6 +8608,12 @@
       ]
     ],
     "conjugate-both-sides": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "closing-polygon-vectors": [
       [
         "(new card)",
         "written directly in the method template"

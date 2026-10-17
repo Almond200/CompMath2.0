@@ -17,7 +17,7 @@ window.MATH_SECTIONS.push({
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
         { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
-        { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation"] },
+        { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation", "closing-polygon-vectors"] },
         { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "fit-copies"] }
       ],
       formulas: [
@@ -470,6 +470,22 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AIME Early",
           level: ["AIME"]
+        },
+        {
+          id: "closing-polygon-vectors",
+          name: "Closing a Polygon with Side Vectors",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A polygon is given by its sides in order and its angles, most often an equiangular hexagon or pentagon, and the question needs a relation among the sides that no single triangle shows.`,
+          move: String.raw`Write each side as its length times a unit vector in its direction and set the sum to zero, since the polygon closes; then read off its components, or dot the sum with itself.`,
+          uses: ["vector-dot-product", "roots-of-unity"],
+          latex: String.raw`\sum_k a_k\,\vec u_k = \vec 0, \qquad \text{equiangular } n\text{-gon: } \sum_{k=0}^{n-1} a_k\,\omega^k = 0, \quad \omega = e^{2\pi i/n}`,
+          latexPlain: String.raw`a_1\vec u_1 + a_2\vec u_2 + \cdots + a_n\vec u_n = \vec 0, \qquad \text{equiangular } n\text{-gon: } a_0 + a_1\omega + \cdots + a_{n-1}\omega^{n-1} = 0`,
+          description: String.raw`Walking once around a closed polygon brings you back to the start, so its sides, taken as vectors in order, add to zero. When the angles are known, every direction is known and only the lengths are unknown, so closure becomes equations in the side lengths. Its two components give linear relations, such as $a - d = e - b = c - f$ for an equiangular hexagon, and dotting the sum with itself gives a relation among the products of the sides.`,
+          keywords: ["closing a polygon", "side vectors add to zero", "equiangular polygon sides", "equiangular hexagon a - d = e - b = c - f", "polygon closure condition", "sum of the side vectors", "method"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "tangent-lines-from-point",

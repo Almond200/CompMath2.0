@@ -9106,6 +9106,22 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 300, "Lines AB, CD, EF make a triangle with sides 10, 12, 15. The gold corners are copies of it scaled by s/10, s/12, s/15, so 1/s = 1/10 + 1/12 + 1/15 = 1/4 and every side of the hexagon is 4." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  DIAGRAMS["closing-polygon-vectors"] = [(() => {
+    const sides = [4, 1, 3, 2, 3, 1], k = 34, V = [[0, 0]];
+    for (let i = 0; i < 6; i++) V.push(add(V[i], mul([Math.cos(rad(60 * i)), -Math.sin(rad(60 * i))], sides[i] * k)));
+    const shift = [215 - (V[0][0] + V[1][0] + V[3][0]) / 3 + 10, 0];
+    const cy = (Math.min(...V.map(p => p[1])) + Math.max(...V.map(p => p[1]))) / 2, P = V.map(p => add(p, [shift[0], 150 - cy]));
+    const ok = dist(P[0], P[6]) < 1e-9;
+    const O = mul(P.slice(0, 6).reduce((s, p) => add(s, p), [0, 0]), 1 / 6), ext = add(P[1], mul(norm(sub(P[1], P[0])), 46));
+    return wrap(430, 300, [
+      poly(P.slice(0, 6), DIM, 2.2, ACCS), seg(P[1], ext, FNT, 1.4, "5 4"), angleArc(P[1], ext, P[2], 30, GLD),
+      ...P.slice(0, 6).map(p => dot(p, DIM, 3)),
+      ...[0, 1, 2, 3, 4, 5].map(i => txt(add(away(mid(P[i], P[i + 1]), O, 14), [0, 5]), String(sides[i]), ACC, 13)),
+      ...["A", "B", "C", "D", "E", "F"].map((n, i) => txt(add(away(P[i], O, 14), [0, 5]), n, DIM, 13)),
+      txt(add(P[1], [50, -6]), "60°", GLD, 12, "start"),
+      cap(430, 300, "An equiangular hexagon: walking around it, each side turns 60° (gold) from the last, so the side vectors are the lengths times 1, ω, ω², ..., ω⁵ and add to zero. With AB = 4, BC = 1, CD = 3, DE = 2, closure forces EF = 3 and FA = 1." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,
