@@ -430,6 +430,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 1995 AIME #14 adds Special Right Triangles and Area of a Triangle Using Sine, and states each step ($FP=9$, pieces $48$ and $30$, third side $42$).
   - 2022 AIME I #14 is written in full: each splitting line is parallel to an angle bisector (Angle Bisector Theorem and the Intercept Theorem), $\angle BIC=90^\circ+\tfrac A2$ forces $A=120^\circ$, and a mod 9 argument reduces $b^2+bc+c^2=219^2$ to $x^2+xy+y^2=73^2$, so the perimeter is $459$. The alternative solves it with Eisenstein integers. Casework is dropped.
   - Figures drawn for 2017 AMC 10B #19 (shared with 12B #15), 1995 AIME #14 and 2022 AIME I #14.
+- **Practice pass: Special Triangles from the Law of Cosines finished (2026-10-17).** 2013 AIME II #5 cites the $60^\circ$ form instead of the general Law of Cosines, and Area Ratios from a Cevian instead of the same-base card (the three triangles share the apex $A$ and have equal bases); the strategy names the $2$-$3$-$\sqrt7$ triangle.
 
 **2026-10-10**
 
