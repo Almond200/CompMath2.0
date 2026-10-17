@@ -1174,4 +1174,34 @@
     ]);
   })();
 
+  // 2008 AIME I #10: the isosceles trapezoid with 60° base angles and diagonals 10√21.
+  PROB["2008-aime-i-10"] = (() => {
+    const r7 = Math.sqrt(7), k = 5.2, Q = (x, y) => [78 + k * x, 222 - k * y];
+    // AD = 20√7 and CD = 10√7 are what the conditions force; E is not drawn (it is part of the answer).
+    const ad = 20 * r7, cd = 10 * r7, h = cd * Math.sqrt(3) / 2;
+    const A = Q(0, 0), D = Q(ad, 0), B = Q(cd / 2, h), C = Q(ad - cd / 2, h), F = Q(ad - cd / 2, 0);
+    const ok = Math.abs(dist(A, C) / k - 10 * Math.sqrt(21)) < 1e-9 && Math.abs(dist(B, D) / k - 10 * Math.sqrt(21)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.4), seg(B, D, FNT, 1.4), seg(C, F, ACC, 1.6, "5 4"), rightAngle(F, C, D, 8),
+      angleArc(A, D, B, 26, GLD), angleArc(D, C, A, 26, GLD),
+      ...[A, B, C, D, F].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [-8, -8]), "B"), txt(add(C, [8, -8]), "C"), txt(add(D, [10, 14]), "D"), txt(add(F, [0, 18]), "F", ACC),
+      txt(add(A, [36, -8]), "60°", GLD, 11.5), txt(add(D, [-51, -9]), "60°", GLD, 11.5), txt(add(lerp(A, C, 0.3), [11, -19]), "10√21", DIM, 12),
+      cap(430, 270, "Isosceles trapezoid ABCD with AD ∥ BC, angles of 60° at the longer base AD and diagonals 10√21; F is the foot of the altitude from C. The point E, 10√7 from A and 30√7 from D, is to be placed." + MM(ok))
+    ]);
+  })();
+
+  // 2024 AMC 12B #20: one triangle with AB = 40, AC = 42 and the median x from A.
+  PROB["2024-amc-12b-20"] = (() => {
+    const t = 68 * Math.PI / 180, k = 5.2, Q = (x, y) => [60 + k * x, 240 - k * y];
+    const A = Q(0, 0), B = Q(40, 0), C = Q(42 * Math.cos(t), 42 * Math.sin(t)), M = mid(B, C);
+    const ok = Math.abs(dist(A, C) / k - 42) < 1e-9 && Math.abs(dist(A, B) / k - 40) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, M, ACC, 2), dot(M, ACC, 3.4), ...[A, B, C].map(q => dot(q, DIM, 3.4)), ticksOn(B, M, 1), ticksOn(M, C, 1),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"),
+      txt(add(mid(A, B), [0, 18]), "40", DIM, 12.5), txt(add(mid(A, C), [-12, 0]), "42", DIM, 12.5, "end"), txt(add(mid(A, M), [10, 10]), "x", ACC, 13, "start"),
+      cap(430, 270, "One of the triangles: AB = 40, AC = 42, and the median from A to the midpoint of BC has length x. The area depends on the angle at A." + MM(ok))
+    ]);
+  })();
+
 })();

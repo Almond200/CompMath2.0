@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 66 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 68 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -14,7 +14,9 @@
   - 2.7a, card 2 (Special Right Triangles): **finished**, all 24 problems checked (5 of them were already done under card 1).
   - 2.7a, card 3 (Altitude to the Hypotenuse): **finished**, all 5 problems.
   - 2.7a, card 4 (Median to the Hypotenuse): **finished**.
-- **In progress:** 2.7a, card 5, Triangle Inequality (`triangle-inequality`, 12 problems). **Last problem done: none yet on this card.** (`triangle-type-by-sides` and `triangle-congruence` cite no problems; after this card comes `triangle-similarity`.)
+  - 2.7a, card 5 (Triangle Inequality): **finished**.
+  - 2.7a, cards 6 and 7 (Triangle Similarity, all 12 already covered by earlier cards; Perpendicular Bisector as a Locus): **finished**.
+- **In progress:** 2.7a, card 8, Similar Figures (`similar-figures-ratios`, 59 problems; geometry.js order skips cards that cite nothing). **Done: the 13 AMC problems.** Next: the AIME problems in list order, starting with 1984 AIME #3 (the sketched strategies first need full routes; every one needs the AA-vs-scaling citation check).
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
@@ -34,6 +36,7 @@
   - verify every intermediate value written in a strategy, not just the answer (a wrong quadratic in 2004 AIME II #12 was caught this way);
   - a dihedral angle cites the `dihedral-angle` method; an isosceles trapezoid cut by its altitudes cites the `isosceles-trapezoid` pattern; corner triangles similar by angles cite `triangle-similarity`, with `similar-figures-ratios` only for the area scaling;
   - spheres in space that touch cite `triangle-of-centers` too (join the centers); `cross-section-method` only where one plane through an axis or the centers holds the whole picture; a sphere's outline in a 3D figure is drawn with `sphereOutline`, not a circle;
+  - lattice points on a circle cite `lattice-points-circle` (2000 AIME II #11 too);
   - a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
