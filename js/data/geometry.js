@@ -194,6 +194,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "cevian-ratio-sum",
+          name: "Cevian Ratio Sum",
+          latex: String.raw`\frac{PD}{AD} + \frac{PE}{BE} + \frac{PF}{CF} = 1, \qquad \frac{AP}{AD} + \frac{BP}{BE} + \frac{CP}{CF} = 2`,
+          description: String.raw`Three cevians $AD$, $BE$, $CF$ of a triangle meet at an interior point $P$. Each short piece, from $P$ to a side, is the same fraction of its whole cevian as the triangle $P$ makes with that side is of the whole triangle, because the two triangles share a base and their heights are in that ratio. The three small triangles $PBC$, $PCA$, $PAB$ fill $ABC$, so the three fractions add up to one, and the long pieces, from a vertex to $P$, add up to two.`,
+          keywords: ["cevian ratio sum", "gergonne ratio identity", "PD over AD", "three cevians through a point", "fractions of the cevians add to one", "vertex to P over the whole cevian", "concurrent cevians lengths", "segments from the vertices to P"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
+        {
           id: "clock-angle",
           name: "Clock Angle Formula",
           latex: String.raw`\theta = \left| 30H - 5.5M \right|^\circ`,
@@ -255,6 +265,16 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\frac1s = \frac1a + \frac1b + \frac1c`,
           description: String.raw`A convex hexagon $ABCDEF$ with all six sides $s$ and each pair of opposite sides parallel need not be regular. Extending the alternate sides $AB$, $CD$, $EF$ makes a triangle, and if its sides are $a$, $b$, $c$, then $\frac1s = \frac1a + \frac1b + \frac1c$. The three corners cut off are copies of that triangle scaled by $\frac sa$, $\frac sb$, $\frac sc$, and adding the pieces along one side gives the formula. An equilateral triangle, $a = b = c$, gives the regular hexagon, with $s = \frac a3$.`,
           keywords: ["equilateral hexagon", "opposite sides parallel", "hexagon with extended sides", "1/s = 1/a + 1/b + 1/c", "triangle from alternate sides", "centrally symmetric hexagon", "corner triangles similar", "extend alternate sides of a hexagon"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
+        {
+          id: "square-crossing-segments",
+          name: "Perpendicular Segments Across a Square",
+          latex: String.raw`PQ \perp RS \implies PQ = RS \qquad (P, Q \text{ on one pair of opposite sides}, \; R, S \text{ on the other})`,
+          description: String.raw`In a square, take a segment joining one pair of opposite sides and a segment joining the other pair. If the two segments are perpendicular, they have the same length, wherever they sit. A quarter turn about the center swaps the two pairs of sides and turns one direction into the other, which is why. It lets a square be found from points on its sides: a segment through one point perpendicular to a known one must reach the opposite side at the same distance.`,
+          keywords: ["perpendicular segments in a square", "segments joining opposite sides", "square through four points", "equal crossing segments", "quarter turn about the center", "square with a point on each side", "rotate a segment by 90 degrees in a square"],
           importance: "lower",
           tier: "AIME Early",
           level: ["AIME"]
@@ -1251,6 +1271,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "perimeter-cleavers",
+          name: "Splitting Lines (Cleavers)",
+          latex: String.raw`MX \parallel CD \quad \text{(the cleaver through the midpoint } M \text{ of } AB \text{ is parallel to the bisector } CD\text{)}, \qquad AX = \tfrac{a + b}{2} \text{ on } CA \text{ when } a \le b`,
+          description: String.raw`A cleaver, or splitting line, of a triangle goes through the midpoint of a side and cuts the perimeter in half. The one through the midpoint $M$ of $AB$ ends on the longer of the other two sides, at distance $\frac{a + b}2$ from the vertex it shares with $AB$, and it is parallel to the bisector of the opposite angle $C$. The three cleavers bisect the angles of the [[medial-triangle|medial triangle]], so they meet at its incenter, the [[spieker-point|Spieker point]], and two of them cross at the same angle as the bisectors they are parallel to.`,
+          keywords: ["cleaver", "splitting line", "line halving the perimeter", "perimeter bisector through a midpoint", "parallel to the angle bisector", "cleavers concur", "splitting lines meet at an angle"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "gergonne-nagel-points",
           name: "Gergonne & Nagel Points",
           latex: String.raw`\text{cevians to the incircle (or excircle) touch points concur}`,
@@ -1496,9 +1526,9 @@ window.MATH_SECTIONS.push({
           id: "arbelos",
           name: "The Arbelos",
           latex: String.raw`[\text{arbelos}] = \tfrac{\pi}{4}\,BD^2, \qquad BD = 2\sqrt{ab}, \qquad r_{\text{twin}} = \frac{ab}{a+b}`,
-          description: String.raw`Cut two semicircles on diameters $AB = 2a$ and $BC = 2b$ out of the semicircle on $AC$, all on the same side. The leftover region's area is exactly that of the circle whose diameter is the perpendicular $BD$ to $AC$ at $B$, and Archimedes' two circles squeezed against that perpendicular, one in each lobe, turn out to have the same radius $\frac{ab}{a+b}$.`,
+          description: String.raw`Put $B$ on a segment $AC$, and let $a$ and $b$ be the radii of the two small semicircles, on the diameters $AB = 2a$ and $BC = 2b$. Cut them out of the semicircle on $AC$, all on the same side. The leftover region's area is exactly that of the circle whose diameter is $BD$, where $D$ is the point of the big semicircle straight above $B$, and Archimedes' two circles squeezed against that perpendicular, one in each lobe, turn out to have the same radius $\frac{ab}{a+b}$.`,
           keywords: ["arbelos", "shoemaker's knife", "Archimedes twin circles", "semicircles", "three semicircles", "twin circles equal radii"],
-          importance: "lower",
+          importance: "lowest",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
@@ -1922,6 +1952,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "conic-perpendicular-radii",
+          name: "Perpendicular Radii of a Central Conic",
+          latex: String.raw`\frac{x^2}{a^2} \pm \frac{y^2}{b^2} = 1, \; OA \perp OB: \qquad \frac{1}{OA^2} + \frac{1}{OB^2} = \frac{1}{a^2} \pm \frac{1}{b^2}`,
+          description: String.raw`Take two points $A$ and $B$ on an ellipse or hyperbola centered at $O$ with $OA \perp OB$. The sum of the reciprocal squares of the two radii does not depend on where the right angle is turned: it is $\frac1{a^2} + \frac1{b^2}$ for the ellipse and $\frac1{a^2} - \frac1{b^2}$ for the hyperbola. So the chord $AB$ always stays the same distance from the center, tangent to one fixed circle, and one radius growing forces the other down toward a limit.`,
+          keywords: ["perpendicular radii", "perpendicular diameters of an ellipse", "reciprocal squares of radii", "rhombus inscribed in a hyperbola", "polar equation of a conic", "chord tangent to a fixed circle", "orthogonal radii"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "parabola-focus-directrix",
           name: "Parabola Focus & Directrix",
           latex: String.raw`x^2 = 4py: \quad \text{focus } (0, p), \quad \text{directrix } y = -p, \quad \text{latus rectum} = \lvert 4p \rvert, \qquad y = ax^2 \implies p = \frac{1}{4a}`,
@@ -2334,6 +2374,16 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "gram-determinant-volume",
+          name: "Volume from Dot Products (Gram Determinant)",
+          latex: String.raw`V^2 = \det\begin{pmatrix} u\cdot u & u\cdot v & u\cdot w \\ u\cdot v & v\cdot v & v\cdot w \\ u\cdot w & v\cdot w & w\cdot w \end{pmatrix}`,
+          description: String.raw`A parallelepiped spanned by the edge vectors $u$, $v$, $w$ from one vertex has its volume squared equal to the determinant of the table of their [[vector-dot-product|dot products]]. So the volume needs only the edge lengths and the angles between the edges, with no coordinates. A tetrahedron on the same three edges has a sixth of it. When all three edges have length $\ell$ and meet pairwise at the angle $\theta$, it becomes $V = \ell^3\sqrt{1 - 3\cos^2\theta + 2\cos^3\theta}$.`,
+          keywords: ["gram determinant", "volume from edge lengths and angles", "parallelepiped volume", "table of dot products", "volume squared", "tetrahedron from three edges at a vertex", "rhombohedron"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "plane-intercept-form",

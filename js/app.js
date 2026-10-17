@@ -4611,6 +4611,7 @@
     $content.innerHTML = `
       <div class="hub">
         <header class="hub-head">
+          <a class="hub-gear" href="#/settings" title="Settings" aria-label="Settings">&#9881;</a>
           <div class="hub-brand">${LOGO_HTML}<div><div class="hub-name">Competition Math Reference</div>
             <div class="hub-sub">Formulas, methods, patterns, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</div></div></div>
           <form class="home-search" role="search">
@@ -4645,8 +4646,8 @@
                    <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
                 : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
               <div class="hp-mine-foot">
-                <a href="#/practice">${mine.length ? `Your ${mine.length} list${mine.length === 1 ? "" : "s"}` : "Make a study list"}</a>
-                <a href="#/special/random">Open a random card</a>
+                <a href="#/practice" data-goto="lists-new-name">Make a list</a>
+                <a href="#/practice" data-goto="pr-lists">Open a list</a>
               </div>
             </section>
           </aside>
@@ -4753,7 +4754,7 @@
             </div>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem &rarr;</a>
           </section>
-          <section class="hp-panel">
+          <section class="hp-panel" id="pr-lists">
             <div class="hp-label">Your lists</div>
             <div class="pl-list">
               <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
@@ -6729,6 +6730,24 @@
     }
   }
   applyLayout();
+
+  // Links that open a page at one of its parts (the home page's "Make a list" and "Open a list"
+  // go to the lists on the Practice page): once the page has rendered, scroll the part into view
+  // and put the cursor in it when it is a text box.
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[data-goto]");
+    if (!a) return;
+    const id = a.getAttribute("data-goto");
+    let tries = 0;
+    const seek = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        (el.closest(".hp-panel") || el).scrollIntoView({ block: "center" });
+        if (el.tagName === "INPUT") el.focus({ preventScroll: true });
+      } else if (++tries < 40) setTimeout(seek, 25);
+    };
+    setTimeout(seek, 0);
+  });
 
   // Settings → the preferences page.
   const $settingsBtn = document.getElementById("settings-btn");

@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, fourth cloud chat)
 
-- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 217 problems have figures drawn for the app.
+- **Counts:** 712 cards (527 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 217 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -51,9 +51,11 @@
   - Missing cards P8 to P11 proposed in QUESTIONS.md (square perpendicular segments, cleavers, perpendicular radii of a conic, Gram determinant volume).
   - 2.7a, the last geometry cards (`distance-3d` through `cross-ratio`): **finished**. Ten strategies written in full (2023 AMC 10B #17 and 12B #13 now share one entry, 2024 AIME I #15, 2011 AIME I #13, 1998 AIME #11, 2007 AIME I #13, 2006 AIME I #14, 2017 AIME I #10, 2026 AIME I #12, 1991 AIME #11).
 - **2.7a geometry is finished:** all 245 cards of `js/data/geometry.js` have been passed in order, and every problem that cites a geometry card is checked (2019 HMMT Feb Geometry #9 has no statement or strategy and is left).
-- **In progress:** writing the approved candidate cards P7 to P11 (approved 2026-10-17), then 2.7a continues with the next card file (algebra, then number theory, counting, patterns, as `index.html` loads them). **Last problem done: 1991 AIME #11.**
+  - Approved cards P7 to P11 **written** (2026-10-17): `cevian-ratio-sum`, `square-crossing-segments`, `perimeter-cleavers`, `conic-perpendicular-radii`, `gram-determinant-volume`, each with a write-up, a verified example, a figure, a place in the AIME geometry route and a new-cards batch; their five problems cite them.
+  - Owner's fixes (2026-10-17): a plain gear at the top right of the home page opens Settings; "Your library" now links "Make a list" and "Open a list" to the lists on the Practice page; Circumradius of a Cyclic Quadrilateral has a third key form with $K$ written out by Brahmagupta; The Arbelos is now lowest importance and defines $a$, $b$ and $D$; step 2.7c (define every confusing variable on every card) added to section 2.7. On phones the home page hides the line under the title.
+- **In progress:** 2.7a continues with the next card file after geometry (algebra, then number theory, counting, patterns, as `index.html` loads them). **Last problem done: 1991 AIME #11.**
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
-- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P6 all written; P7 to P11 open; a new one goes at the top of the table as P12; the file is newest first), for approval before they are written.
+- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P11 all written; a new one goes at the top of the table as P12; the file is newest first), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
@@ -312,6 +314,7 @@ On the Angle Chasing card: a random cyclic quadrilateral configuration with equa
   5. draw a geometry diagram where the problem has none;
   6. verify every number by script.
 - **No written solutions for now** (Stanley, 2026-10-16: too costly in tokens). The Solution section code stays unused.
+- **2.7c, after every card's problems are checked (owner, 2026-10-17):** go through every card once more and make sure each variable a reader could find confusing is defined on the card itself, in the thumbnail, the description or the Key forms (the Arbelos card's $a$ and $b$ were the example).
 - **LIVE concepts** from `tools/live-cache/`, once uploaded, are hints only and never copied.
 - Commit per card group or per paper, and update "Current state" each time.
 
