@@ -1942,4 +1942,63 @@
     ]);
   })();
 
+  // 1984 AIME #9: the tetrahedron with edge AB = 3, faces of area 15 and 12 meeting at 30°.
+  PROB["1984-aime-9"] = (() => {
+    const c30 = Math.cos(Math.PI / 6), s30 = 0.5, { Pj, view } = projector([110, 250], 25, [1, 0], [0.55, -0.42]);
+    const V = { A: [0, 0, 0], B: [3, 0, 0], C: [1.5, 10, 0], D: [1, 8 * c30, 8 * s30] };
+    const faces = [["A", "B", "C"], ["A", "B", "D"], ["A", "C", "D"], ["B", "C", "D"]];
+    const cr = (u, w) => [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]], s3 = (u, w) => u.map((x, i) => x - w[i]);
+    const ar = (a, b, c) => Math.hypot(...cr(s3(V[b], V[a]), s3(V[c], V[a]))) / 2;
+    const ok = Math.abs(ar("A", "B", "C") - 15) < 1e-9 && Math.abs(ar("A", "B", "D") - 12) < 1e-9;
+    const P = n => Pj(V[n]);
+    return wrap(430, 290, [
+      poly(["A", "B", "C"].map(P), "none", 0, ACCS), poly(["A", "B", "D"].map(P), "none", 0, GLDS), ...solidEdges(V, faces, view, Pj), ...["A", "B", "C", "D"].map(n => dot(P(n), DIM, 3.2)),
+      txt(add(P("A"), [-10, 14]), "A"), txt(add(P("B"), [10, 14]), "B"), txt(add(P("C"), [10, -4]), "C", DIM, 13, "start"), txt(add(P("D"), [-10, -6]), "D", DIM, 13, "end"),
+      txt(add(mid(P("A"), P("B")), [0, 18]), "3", DIM, 12.5),
+      cap(430, 290, "Tetrahedron ABCD with AB = 3; face ABC (blue) has area 15, face ABD (gold) has area 12, and the two faces meet at 30°." + MM(ok))
+    ]);
+  })();
+
+  // 1992 AIME #7: the tetrahedron with BC = 10, faces of area 120 and 80 meeting at 30°.
+  PROB["1992-aime-7"] = (() => {
+    const c30 = Math.cos(Math.PI / 6), { Pj, view } = projector([120, 255], 10, [1, 0], [0.55, -0.4]);
+    const V = { B: [0, 0, 0], C: [10, 0, 0], A: [5, 24, 0], D: [4, 16 * c30, 8] };
+    const faces = [["A", "B", "C"], ["B", "C", "D"], ["A", "B", "D"], ["A", "C", "D"]];
+    const cr = (u, w) => [u[1] * w[2] - u[2] * w[1], u[2] * w[0] - u[0] * w[2], u[0] * w[1] - u[1] * w[0]], s3 = (u, w) => u.map((x, i) => x - w[i]);
+    const ar = (a, b, c) => Math.hypot(...cr(s3(V[b], V[a]), s3(V[c], V[a]))) / 2;
+    const ok = Math.abs(ar("A", "B", "C") - 120) < 1e-9 && Math.abs(ar("B", "C", "D") - 80) < 1e-9;
+    const P = n => Pj(V[n]);
+    return wrap(430, 290, [
+      poly(["A", "B", "C"].map(P), "none", 0, ACCS), poly(["B", "C", "D"].map(P), "none", 0, GLDS), ...solidEdges(V, faces, view, Pj), ...["A", "B", "C", "D"].map(n => dot(P(n), DIM, 3.2)),
+      txt(add(P("A"), [10, -4]), "A", DIM, 13, "start"), txt(add(P("B"), [-10, 14]), "B"), txt(add(P("C"), [10, 14]), "C"), txt(add(P("D"), [-10, -6]), "D", DIM, 13, "end"),
+      txt(add(mid(P("B"), P("C")), [0, 18]), "10", DIM, 12.5),
+      cap(430, 290, "Tetrahedron ABCD with BC = 10; face ABC (blue) has area 120, face BCD (gold) has area 80, and they meet at 30°." + MM(ok))
+    ]);
+  })();
+
+  // 1988 AIME #7: triangle ABC and the altitude from A cutting BC into 3 and 17.
+  PROB["1988-aime-7"] = (() => {
+    const h = 11, k = 13, Q = (x, y) => [80 + k * x, 238 - k * y];  // h = 11 is the altitude the tangent forces
+    const B = Q(0, 0), H = Q(3, 0), C = Q(20, 0), A = Q(3, h);
+    const t = (3 / h + 17 / h) / (1 - 51 / (h * h)), ok = Math.abs(t - 22 / 7) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, H, ACC, 1.6, "5 4"), rightAngle(H, A, C, 8), angleArc(A, B, C, 26, GLD), ...[A, B, C, H].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"),
+      txt(add(mid(B, H), [0, 18]), "3", DIM, 12.5), txt(add(mid(H, C), [0, 18]), "17", DIM, 12.5),
+      cap(430, 270, "Triangle ABC with tan∠CAB = 22/7 (gold); the altitude from A (dashed) cuts BC into pieces 3 and 17." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AMC 12B #17: the 6-10-14 triangle with its 120° angle.
+  PROB["2023-amc-12b-17"] = (() => {
+    const k = 17, Q = (x, y) => [100 + k * x, 222 - k * y];  // drawn with the sides the condition forces
+    const C = Q(0, 0), A = Q(10, 0), B = Q(6 * Math.cos(2 * Math.PI / 3), 6 * Math.sin(2 * Math.PI / 3));
+    const ok = Math.abs(dist(A, B) / k - 14) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), angleArc(C, A, B, 22, GLD), ...[A, B, C].map(q => dot(q, DIM, 3.2)),
+      txt(add(C, [0, 18]), "120°", GLD, 11.5), txt(add(mid(B, C), [-12, 0]), "6", DIM, 12.5, "end"),
+      cap(430, 270, "A triangle with sides in arithmetic progression, the smallest 6, and an angle of 120°." + MM(ok))
+    ]);
+  })();
+
 })();
