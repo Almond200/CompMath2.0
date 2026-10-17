@@ -6,12 +6,12 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 41 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 47 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
-  - 2.7a, card 1 (Pythagorean Theorem), the first 60 of its 76 problems in the order `tools/practice-card.js` lists them (2026 AIME I #3, then 1983 AIME #4 up to 2022 AIME II #3); eighteen citations were dropped so far, so the card now has 58.
+  - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
   - 2026 AIME I #3 now cites the method `triangle-of-centers` (Joining the Centers of Tangent Circles), asked by Stanley.
-- **In progress:** 2.7a, card 1, Pythagorean Theorem. **Last problem done: 2022 AIME II, Problem 3.** Next is 2023 AMC 10A, Problem 11, then the rest of the card's list.
+- **In progress:** 2.7a, card 2, Special Right Triangles (`node tools/practice-card.js special-right-triangles`, 24 problems). **Last problem done: none yet on this card** (card 1 ended with 2019 HMMT February Geometry, Problem 5). Problems already done under card 1 need only a check that the new card's citation is right.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
   2. `node tools/practice-card.js pythagorean-theorem` prints every problem citing the card, with statement, tags, strategy and trick. Find the "Next is" problem above and go on in that order.

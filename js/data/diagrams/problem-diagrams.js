@@ -782,4 +782,89 @@
     ]);
   })();
 
+  // 2023 AMC 10A #17: the 30 by 28 rectangle with P on BC and Q on CD.
+  PROB["2023-amc-10a-17"] = (() => {
+    const k = 7.2, Q0 = (x, y) => [108 + k * x, 240 - k * y];
+    const A = Q0(0, 0), B = Q0(30, 0), C = Q0(30, 28), D = Q0(0, 28), P = Q0(30, 16), Q = Q0(21, 28);
+    const L = (u, w) => Math.hypot(u[0] - w[0], u[1] - w[1]) / k, isInt = x => Math.abs(x - Math.round(x)) < 1e-9;
+    const ok = [[A, B], [B, P], [A, P], [P, C], [C, Q], [P, Q], [Q, D], [D, A], [A, Q]].every(([u, w]) => isInt(L(u, w)));
+    return wrap(430, 280, [
+      poly([A, B, C, D], DIM, 2), poly([A, P, Q], ACC, 2, ACCS),
+      ...[A, B, C, D, P, Q].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(P, [10, 4]), "P", ACC, 13, "start"), txt(add(Q, [0, -10]), "Q", ACC, 13),
+      txt(add(mid(A, B), [0, 18]), "30", DIM, 12.5), txt(add(mid(D, A), [-12, 4]), "28", DIM, 12.5, "end"),
+      cap(430, 280, "Rectangle ABCD with AB = 30 and BC = 28, P on BC and Q on CD, with every side of triangles ABP, PCQ and QDA a whole number; triangle APQ is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2024 AIME I #14: the tetrahedron with opposite edges √41, √80, √89 equal in pairs.
+  PROB["2024-aime-i-14"] = (() => {
+    // Built from its 4 × 5 × 8 box so that the six edges come out exactly (x = 4 deep, y = 5 across, z = 8 up).
+    const { Pj, view } = projector([150, 248], 23, [0.55, -0.3], [1, 0]);
+    const V = { A: [0, 0, 0], B: [4, 5, 0], C: [4, 0, 8], D: [0, 5, 8] };
+    const faces = [["A", "B", "C"], ["A", "B", "D"], ["A", "C", "D"], ["B", "C", "D"]];
+    const L3 = (u, w) => Math.hypot(u[0] - w[0], u[1] - w[1], u[2] - w[2]);
+    const want = { AB: 41, CD: 41, AC: 80, BD: 80, BC: 89, AD: 89 };
+    const ok = Object.entries(want).every(([e, l]) => Math.abs(L3(V[e[0]], V[e[1]]) ** 2 - l) < 1e-9);
+    const P = n => Pj(V[n]);
+    const lab = (e, d, anc = "middle") => txt(add(mid(P(e[0]), P(e[1])), d), "√" + want[e], want[e] === 41 ? ACC : want[e] === 80 ? GLD : PUR, 12.5, anc);
+    return wrap(430, 290, [
+      ...solidEdges(V, faces, view, Pj), ...["A", "B", "C", "D"].map(n => dot(P(n), DIM, 3.5)),
+      txt(add(P("A"), [-10, 14]), "A"), txt(add(P("B"), [12, 12]), "B"), txt(add(P("C"), [-10, -8]), "C"), txt(add(P("D"), [12, -6]), "D"),
+      lab("AB", [0, 18]), lab("CD", [0, -10]), lab("AC", [-16, 0], "end"), lab("BD", [16, 4], "start"), lab("AD", [-22, -18]), lab("BC", [-3, 27]),
+      cap(430, 290, "Tetrahedron ABCD with AB = CD = √41, AC = BD = √80 and BC = AD = √89; each opposite pair has one color." + MM(ok))
+    ]);
+  })();
+
+  // 2024 AMC 12B #23: the right pyramid on a regular octagon of side 1, with AV perpendicular to DV.
+  PROB["2024-amc-12b-23"] = (() => {
+    const R = 1 / (2 * Math.sin(Math.PI / 8)), h = Math.sqrt((1 + Math.SQRT2) / 2), { Pj, view } = projector([215, 200], 92, [1, 0], [0.45, -0.42]);
+    const names = "ABCDEFGH".split(""), V = { V: [0, 0, h] };
+    names.forEach((n, i) => { const t = -Math.PI / 2 - Math.PI / 8 - Math.PI / 4 * i; V[n] = [R * Math.cos(t), R * Math.sin(t), 0]; });
+    const faces = [names, ...names.map((n, i) => ["V", n, names[(i + 1) % 8]])];
+    const sub3 = (u, w) => [u[0] - w[0], u[1] - w[1], u[2] - w[2]], dot3 = (u, w) => u[0] * w[0] + u[1] * w[1] + u[2] * w[2];
+    const ok = Math.abs(dot3(sub3(V.A, V.V), sub3(V.D, V.V))) < 1e-9 && Math.abs(Math.hypot(...sub3(V.A, V.B)) - 1) < 1e-9;
+    const P = n => Pj(V[n]);
+    return wrap(430, 290, [
+      ...solidEdges(V, faces, view, Pj, FNT, 1.5),
+      seg(P("V"), P("A"), ACC, 2), seg(P("V"), P("D"), ACC, 2), seg(P("A"), P("D"), ACC, 1.4, "5 4"),
+      ...[...names, "V"].map(n => dot(P(n), n === "V" || n === "A" || n === "D" ? ACC : DIM, 3.2)),
+      ...names.map(n => txt(add(P(n), mul(norm(sub(P(n), Pj([0, 0, 0]))), 15)), n, DIM, 12.5)),
+      txt(add(P("V"), [0, -10]), "V", ACC), txt(add(mid(P("E"), P("F")), mul(norm(sub(mid(P("E"), P("F")), Pj([0, 0, 0]))), 14)), "1", DIM, 12),
+      cap(430, 290, "The right pyramid on regular octagon ABCDEFGH of side 1, with apex V above its center and AV perpendicular to DV (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AIME I #6: the isosceles trapezoid around a circle of radius 3.
+  PROB["2025-aime-i-6"] = (() => {
+    const k = 12.4, Q = (x, y) => [215 + k * x, 222 - k * y], d = 6 * Math.sqrt(3);
+    const r1 = 12 - d, s1 = 12 + d;  // the two bases, r + s = 24 and r - s = ±12√3
+    const A = Q(-s1 / 2, 0), B = Q(s1 / 2, 0), C = Q(r1 / 2, 6), D = Q(-r1 / 2, 6), O = Q(0, 3);
+    const distL = (p, u, w) => Math.abs((w[0] - u[0]) * (u[1] - p[1]) - (u[0] - p[0]) * (w[1] - u[1])) / Math.hypot(w[0] - u[0], w[1] - u[1]) / k;
+    const ok = Math.abs(distL(O, B, C) - 3) < 1e-9 && Math.abs((r1 + s1) / 2 * 6 - 72) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), circ(O, 3 * k, ACC, 1.8), seg(O, Q(0, 0), ACC, 1.4, "4 3"), dot(O, ACC, 3),
+      txt(add(mid(O, Q(0, 0)), [8, 4]), "3", ACC, 12.5, "start"),
+      txt(add(mid(A, B), [0, 18]), "s", DIM, 13), txt(add(mid(C, D), [0, -10]), "r", DIM, 13),
+      cap(430, 270, "An isosceles trapezoid of area 72 with parallel sides r and s, around a circle of radius 3 that touches all four sides." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AMC 10A #23 and AMC 12A #16 (the same problem): the bisector of B and the altitude to AB.
+  PROB["2025-amc-10a-23"] = PROB["2025-amc-12a-16"] = (() => {
+    const k = 4.4, Q = (x, y) => [40 + k * x, 232 - k * y], cx = 35 / 2, cy = Math.sqrt(45 * 45 - cx * cx);
+    const B = Q(0, 0), A = Q(80, 0), C = Q(cx, cy), D = Q(cx, 0);
+    const W = add(B, mul(norm(add(norm(sub(A, B)), norm(sub(C, B)))), 300)), P = lineInt(B, W, C, D);
+    const ok = Math.abs(dist(A, C) / k - 75) < 1e-9 && Math.abs(dist(B, C) / k - 45) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(C, D, ACC, 1.8), seg(B, lineInt(B, W, A, C), GLD, 1.8), rightAngle(D, C, A, 8),
+      angleArc(B, A, P, 30, GLD), angleArc(B, P, C, 36, GLD),
+      ...[A, B, C, D, P].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [10, 14]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(P, [10, -4]), "P", DIM, 13, "start"),
+      txt(add(mid(A, B), [0, 18]), "80", DIM, 12.5), txt(add(mid(B, C), [-12, 0]), "45", DIM, 12.5, "end"), txt(add(mid(A, C), [12, -6]), "75", DIM, 12.5, "start"),
+      cap(430, 270, "Triangle ABC with AB = 80, BC = 45 and CA = 75. The bisector of angle B (gold) meets the altitude from C to AB (blue) at P." + MM(ok))
+    ]);
+  })();
+
 })();
