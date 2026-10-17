@@ -2001,4 +2001,142 @@
     ]);
   })();
 
+  // 2024 AMC 12A #20: the equilateral triangle with P on AB and Q on AC.
+  PROB["2024-amc-12a-20"] = (() => {
+    const k = 230, Q0 = (x, y) => [100 + k * x, 245 - k * y];
+    const A = Q0(0, 0), B = Q0(1, 0), C = Q0(0.5, Math.sqrt(3) / 2), P = lerp(A, B, 0.62), Qq = lerp(A, C, 0.7);
+    const ok = Math.abs(dist(A, B) - dist(B, C)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), poly([A, P, Qq], ACC, 1.8, ACCS), ...[A, B, C, P, Qq].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(P, [0, 18]), "P"), txt(add(Qq, [-10, -4]), "Q", DIM, 13, "end"),
+      cap(430, 270, "Equilateral triangle ABC with P chosen at random on AB and Q at random on AC; the question is when triangle APQ (shaded) has less than half the area." + MM(ok))
+    ]);
+  })();
+
+  // 1997 AIME #15: the 10-by-11 rectangle and one equilateral triangle inside it.
+  PROB["1997-aime-15"] = (() => {
+    const k = 21, Q = (x, y) => [100 + k * x, 245 - k * y], s = 8.4, t = 12 * Math.PI / 180;
+    const T = [Q(1.5, 1.2), Q(1.5 + s * Math.cos(t), 1.2 + s * Math.sin(t)), Q(1.5 + s * Math.cos(t + Math.PI / 3), 1.2 + s * Math.sin(t + Math.PI / 3))];
+    const inside = T.every(([x, y]) => x >= 100 - 1e-9 && x <= 100 + 11 * k + 1e-9 && y <= 245 + 1e-9 && y >= 245 - 10 * k - 1e-9);
+    return wrap(430, 270, [
+      poly([Q(0, 0), Q(11, 0), Q(11, 10), Q(0, 10)], DIM, 2), poly(T, ACC, 1.8, ACCS),
+      txt(add(Q(5.5, 0), [0, 18]), "11", DIM, 12.5), txt(add(Q(11, 5), [12, 4]), "10", DIM, 12.5, "start"),
+      cap(430, 270, "The 10-by-11 rectangle and one equilateral triangle that fits inside it; the question asks for the largest such triangle." + MM(inside))
+    ]);
+  })();
+
+  // 1999 AIME #14: the 13-14-15 triangle and the point P with three equal angles.
+  PROB["1999-aime-14"] = (() => {
+    const k = 17, Q = (x, y) => [95 + k * x, 245 - k * y], th = Math.atan(168 / 295);
+    const B = Q(0, 0), C = Q(14, 0), A = Q(5, 12);
+    const rotv = (v, a) => [v[0] * Math.cos(a) - v[1] * Math.sin(a), v[0] * Math.sin(a) + v[1] * Math.cos(a)];
+    const P = lineInt(A, add(A, rotv(sub(B, A), -th)), B, add(B, rotv(sub(C, B), -th)));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V)));
+    const ok = Math.abs(ang(P, A, B) - th) < 1e-9 && Math.abs(ang(P, B, C) - th) < 1e-9 && Math.abs(ang(P, C, A) - th) < 1e-6;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), ...[A, B, C].map(q => seg(q, P, ACC, 1.5)), angleArc(A, B, P, 30, GLD), angleArc(B, C, P, 30, GLD), angleArc(C, A, P, 30, GLD),
+      ...[A, B, C, P].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(P, [6, 16]), "P", ACC, 13, "start"),
+      txt(add(mid(A, B), [-12, 0]), "13", DIM, 12.5, "end"), txt(add(mid(B, C), [0, 18]), "14", DIM, 12.5), txt(add(mid(A, C), [12, 0]), "15", DIM, 12.5, "start"),
+      cap(430, 270, "Triangle ABC with AB = 13, BC = 14, CA = 15 and the point P inside it with angles PAB, PBC and PCA equal (gold)." + MM(ok))
+    ]);
+  })();
+
+  // 2001 AIME I #4: the triangle with angles 60° and 45° and the bisector AT = 24.
+  PROB["2001-aime-i-4"] = (() => {
+    const k = 8.5, Q = (x, y) => [65 + k * x, 238 - k * y], ab = 24 * Math.sin(75 * Math.PI / 180) / Math.sin(Math.PI / 4);
+    const A = Q(0, 0), B = Q(ab, 0), C = Q(12, 12 * Math.sqrt(3)), T = lineInt(A, Q(Math.cos(Math.PI / 6), Math.sin(Math.PI / 6)), B, C);
+    const ok = Math.abs(dist(A, T) / k - 24) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, T, ACC, 1.8), angleArc(A, B, C, 26, GLD), angleArc(B, C, A, 26, GLD), ...[A, B, C, T].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(T, [10, -4]), "T", DIM, 13, "start"),
+      txt(add(mid(A, T), [0, -10]), "24", ACC, 12.5), txt(add(A, [40, -6]), "60°", GLD, 11), txt(add(B, [-40, -6]), "45°", GLD, 11),
+      cap(430, 270, "Triangle ABC with angle A = 60° and angle B = 45°; the bisector of angle A (blue) meets BC at T, and AT = 24." + MM(ok))
+    ]);
+  })();
+
+  // 2007 AIME I #12: the isosceles triangle and its copy rotated about A, with the common region.
+  PROB["2007-aime-i-12"] = (() => {
+    const k = 6.2, Q = (x, y) => [150 + k * x, 258 - k * y], r = Math.PI / 12, h = 10 * Math.tan(5 * Math.PI / 12);
+    const rot = ([x, y]) => [x * Math.cos(r) - y * Math.sin(r), x * Math.sin(r) + y * Math.cos(r)];
+    const A3 = [0, 0], B3 = [20, 0], C3 = [10, h], [A, B, C, B2, C2] = [A3, B3, C3, rot(B3), rot(C3)].map(q => Q(...q));
+    const ok = Math.abs(C2[0] - A[0]) < 1e-9;
+    const P1 = lineInt(A, B2, B, C), P2 = lineInt(B, C, B2, C2), P3 = lineInt(A, C, B2, C2);
+    return wrap(430, 290, [
+      poly([A, P1, P2, P3], "none", 0, ACCS), poly([A, B, C], DIM, 2), poly([A, B2, C2], ACC, 1.8), ...[A, B, C, B2, C2].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -4]), "C", DIM, 13, "start"), txt(add(B2, [10, -4]), "B′", ACC, 13, "start"), txt(add(C2, [-10, 0]), "C′", ACC, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "20", DIM, 12.5),
+      cap(430, 290, "Isosceles triangle ABC (AC = BC, angle A = 75°, AB = 20) and its image AB′C′ (blue) after the rotation about A that puts C′ on the y-axis; the common region is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AIME I #12: triangle PQR with the regular hexagon of side 1 inside it.
+  PROB["2013-aime-i-12"] = (() => {
+    const r3 = Math.sqrt(3), k = 66, Q0 = (x, y) => [90 + k * x, 252 - k * y], u = [0.5, r3 / 2];
+    const Qv = Q0(0, 0), P = Q0(r3 + 1, 0), R = Q0((2 + r3) * u[0], (2 + r3) * u[1]);
+    const H = [[2, 0], [1, 0], u, [1, r3], [2, r3], [2.5, r3 / 2]].map(q => Q0(...q));
+    const cr = (a, b, c) => (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]);
+    const ok = Math.abs(cr(P, R, H[5])) < 1e-6;
+    return wrap(430, 290, [
+      poly([P, Qv, R], DIM, 2), poly(H, ACC, 1.8, ACCS), ...H.map(q => dot(q, ACC, 3)), ...[P, Qv, R].map(q => dot(q, DIM, 3.4)),
+      txt(add(P, [10, 14]), "P"), txt(add(Qv, [-10, 14]), "Q"), txt(add(R, [0, -10]), "R"),
+      ...["A", "B", "C", "D", "E", "F"].map((n, i) => txt(add(H[i], i < 2 ? [0, 18] : i === 2 ? [-12, 0] : i === 5 ? [12, 0] : [0, -10]), n, ACC, 12.5, i === 2 ? "end" : i === 5 ? "start" : "middle")),
+      cap(430, 290, "Triangle PQR with angle P = 75° and angle Q = 60°, and a regular hexagon of side 1 with AB on PQ, CD on QR and F on RP." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AIME II #5: the equilateral triangle with D and E trisecting BC.
+  PROB["2013-aime-ii-5"] = (() => {
+    const k = 78, Q = (x, y) => [98 + k * x, 245 - k * y];
+    const B = Q(0, 0), C = Q(3, 0), A = Q(1.5, 1.5 * Math.sqrt(3)), D = Q(1, 0), E = Q(2, 0);
+    const ok = Math.abs(dist(A, E) / k - Math.sqrt(7)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.6), seg(A, E, ACC, 1.6), angleArc(A, D, E, 40, GLD), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [0, 18]), "D"), txt(add(E, [0, 18]), "E"),
+      cap(430, 270, "Equilateral triangle ABC with D and E trisecting BC; the angle DAE is marked." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AIME I #13: triangle ABC (30, 32, 34), a point X on BC and the incenters of ABX and ACX.
+  PROB["2018-aime-i-13"] = (() => {
+    const k = 8, Q = (x, y) => [80 + k * x, 245 - k * y], A = Q(12, Math.sqrt(756)), B = Q(0, 0), C = Q(32, 0), X = Q(19, 0);
+    const inc = (P1, P2, P3) => { const a = dist(P2, P3), b = dist(P1, P3), c = dist(P1, P2); return mul(add(add(mul(P1, a), mul(P2, b)), mul(P3, c)), 1 / (a + b + c)); };
+    const I1 = inc(A, B, X), I2 = inc(A, C, X);
+    const ok = Math.abs(dist(A, B) / k - 30) < 1e-9 && Math.abs(dist(A, C) / k - 34) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), seg(A, X, FNT, 1.5), poly([A, I1, I2], ACC, 1.8, ACCS), ...[A, B, C, X].map(q => dot(q, DIM, 3.2)), dot(I1, ACC, 3), dot(I2, ACC, 3),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(X, [0, 18]), "X"),
+      txt(add(I1, [-8, 4]), subT("I", "1"), ACC, 12.5, "end"), txt(add(I2, [8, 4]), subT("I", "2"), ACC, 12.5, "start"),
+      txt(add(mid(A, B), [-12, 0]), "30", DIM, 12.5, "end"), txt(add(mid(B, C), [0, 18]), "32", DIM, 12.5), txt(add(mid(A, C), [12, 0]), "34", DIM, 12.5, "start"),
+      cap(430, 290, "Triangle ABC with AB = 30, BC = 32, AC = 34, a point X on BC, and the incenters I₁ and I₂ of ABX and ACX; triangle AI₁I₂ is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AIME II #12: the non-convex 11-gon, a fan of nine triangles at A₁.
+  PROB["2025-aime-ii-12"] = (() => {
+    const u = (9 * Math.sqrt(5) - 1) / 4, x = (u + Math.sqrt(u * u - 4 * 26 / 5)) / 2, y = 26 / (5 * x), th = Math.acos(12 / 13), k = 40;
+    const O = [225, 150], V = [O];
+    for (let i = 2; i <= 11; i++) { const r = i % 2 === 0 ? x : y, a = -(i - 2) * th; V.push(add(O, [k * r * Math.cos(a), k * r * Math.sin(a)])); }
+    const per = V.reduce((t, p, i) => t + dist(p, V[(i + 1) % 11]), 0) / k, ok = Math.abs(per - 20) < 1e-6;
+    return wrap(430, 300, [
+      poly(V, DIM, 2, ACCS), ...V.slice(1).map(q => seg(O, q, FNT, 1.1)), ...V.map(q => dot(q, DIM, 2.8)),
+      txt(add(O, [-6, 14]), subT("A", "1"), DIM, 12.5, "end"), txt(add(V[1], [10, 4]), subT("A", "2"), DIM, 12.5, "start"), txt(add(V[10], [-4, 12]), subT("A", "11"), DIM, 12.5, "end"),
+      cap(430, 300, "The 11-gon: from A₁ the nine triangles AᵢA₁Aᵢ₊₁ each have area 1 and the same angle at A₁ (cos = 12/13); the perimeter is 20." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AIME II #14: the right triangle with BC = 38 and the points K and L.
+  PROB["2025-aime-ii-14"] = (() => {
+    const r3 = Math.sqrt(3), k = 7.4, Q = (x, y) => [120 + k * x, 240 - k * y];  // the shape the conditions force
+    const A = Q(0, 0), B = Q(16 * r3, 0), C = Q(0, 26), K = Q(8 * r3, 2), L = Q(3 * r3, 13);
+    const ok = [[A, K], [A, L], [B, K], [C, L], [K, L]].every(([p, q]) => Math.abs(dist(p, q) / k - 14) < 1e-9) && Math.abs(dist(B, C) / k - 38) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), rightAngle(A, B, C, 9), poly([B, K, L, C], ACC, 1.8, ACCS), seg(A, K, FNT, 1.4), seg(A, L, FNT, 1.4),
+      ...[A, B, C, K, L].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [-10, -4]), "C"), txt(add(K, [4, -10]), "K"), txt(add(L, [10, -4]), "L", DIM, 13, "start"),
+      txt(add(mid(B, C), [14, -4]), "38", DIM, 12.5, "start"),
+      cap(430, 290, "Right triangle ABC (right angle at A, BC = 38) with points K and L inside such that AK = AL = BK = CL = KL = 14; quadrilateral BKLC is shaded." + MM(ok))
+    ]);
+  })();
+
 })();
