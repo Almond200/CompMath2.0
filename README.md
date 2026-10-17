@@ -424,6 +424,20 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2024 I #10: $DB=\tfrac{225}{22}$ and $AD=\tfrac{325}{22}$, and the power of $D$ gives $AP=\tfrac{100}{13}$.
   - Figures drawn for 2021 II #5, 2023 I #12 and 2024 I #10.
 - **Angle markers that run past their arms, root cause and gate (2026-10-17):** `angleArc` used a fixed radius without looking at the arms. `check-diagrams.py` now fails an angle arc that does not end on a drawn line. It found two: 2023 AIME I #12, now drawn with a ray past the short arm $FP$, and `roots-of-unity`, now with the radius to $\omega$ drawn. The rule is in CONVENTIONS §4.
+- **Practice pass: Law of Cosines at 60° and 120° finished (2026-10-17).**
+  - 2017 AMC 10B #19 and its twin 2017 AMC 12B #15 (untagged until now) share one entry: $\angle B'BC'=120^\circ$ gives $B'C'^2=37$. The alternative cuts off three corner triangles of $12$ times the area each (Shared-Angle Area Ratio).
+  - 1987 AIME #9 drops Fermat Point: the route uses only the three $120^\circ$ angles, never the minimizing property.
+  - 1995 AIME #14 adds Special Right Triangles and Area of a Triangle Using Sine, and states each step ($FP=9$, pieces $48$ and $30$, third side $42$).
+  - 2022 AIME I #14 is written in full: each splitting line is parallel to an angle bisector (Angle Bisector Theorem and the Intercept Theorem), $\angle BIC=90^\circ+\tfrac A2$ forces $A=120^\circ$, and a mod 9 argument reduces $b^2+bc+c^2=219^2$ to $x^2+xy+y^2=73^2$, so the perimeter is $459$. The alternative solves it with Eisenstein integers. Casework is dropped.
+  - Figures drawn for 2017 AMC 10B #19 (shared with 12B #15), 1995 AIME #14 and 2022 AIME I #14.
+- **Practice pass: Special Triangles from the Law of Cosines finished (2026-10-17).** 2013 AIME II #5 cites the $60^\circ$ form instead of the general Law of Cosines, and Area Ratios from a Cevian instead of the same-base card (the three triangles share the apex $A$ and have equal bases); the strategy names the $2$-$3$-$\sqrt7$ triangle.
+- **Practice pass, Angle Bisector Theorem, first ten problems (2026-10-17):**
+  - 2018 AMC 12A #18, the twin of 10A #24, gets the same entry and figure. 2025 AMC 12A #8 cites the $60^\circ$ Law of Cosines.
+  - 2026 AIME II #10 is worked in full: $BE=\tfrac{8y^2}{25}$ and $CF=\tfrac{9y^2}{25}$ force $y=5t$ with $t\le4$, so $BC=340$.
+  - 2002 AIME I #10 gets its first strategy ($[ADC]-[AGF]=\tfrac{1110}7-\tfrac{5250}{481}\approx147.66$), adding Area Ratios from a Cevian.
+  - 2003 AIME I #15 is now a vector route along the bisector ($D=k(u+v)$, $F=2kv$, $t=\tfrac{49}{289}$), citing Vector Bashing instead of mass points.
+  - 2009 AIME I #5: $CP:PL=5:2$ by mass points and $AMCP$ a parallelogram give $LP=72$.
+  - Figures drawn for 2022 AMC 10A #13, 2026 AIME II #10, 1992 AIME #9 and 2009 AIME I #5.
 
 **2026-10-10**
 
