@@ -29,6 +29,7 @@
   - P5 **approved and written**: the method `conjugate-both-sides`, cited by 2018 AIME I #6, 2001 AIME II #14 (both rewritten in full) and 2020 AMC 12B #23 (first strategy).
   - 2.7a, card 31 (`law-of-sines`): **finished**, 15 strategies and 7 figures (2018 AIME II #14 now cites the ratio lemma and the Law of Cosines instead, and got its figure too).
 - **In progress:** 2.7a, card 32, `law-of-cosines` (46 problems), then on down `js/data/geometry.js` (`law-cosines-60-120`, `law-of-cosines-special-triangles`, ...). **Done on this card:** the five AMC problems, and the AIME ones from 2026 I #5 to 2018 II #12 in `practice-card.js` order. **Next:** 2018 AIME II #14 (already done under Law of Sines, only check), then 2019 AIME I #13, and on down that list.
+- **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P5 written; P6, closing a polygon with side vectors, waits for an answer), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
