@@ -2660,4 +2660,129 @@
     ]);
   })();
 
+  // Fit points given in math coordinates (y up) into the 430 x 300 frame, leaving `m` pixels of margin;
+  // returns the map Q and its scale k, so lengths can be checked in the problem's own units.
+  const fitQ = (pts, m = 40, W = 430, H = 270) => {
+    const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+    const k = Math.min((W - 2 * m) / (x1 - x0), (H - 2 * m) / (y1 - y0));
+    const ox = (W - k * (x1 - x0)) / 2, oy = (H - k * (y1 - y0)) / 2;
+    const Q = p => [ox + k * (p[0] - x0), oy + k * (y1 - p[1])];
+    Q.k = k; return Q;
+  };
+  const circ3 = (P1, P2, P3) => { const O = K.circumcenterOf(P1, P2, P3); return [O, dist(O, P1)]; };
+  const angAt = (V, P, R) => { const u = sub(P, V), v = sub(R, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))); };
+
+  PROB["2019-aime-i-13"] = (() => {
+    const cx = 27 / 8, Am = [0, 0], Bm = [4, 0], Cm = [cx, Math.sqrt(36 - cx * cx)];
+    const Dm = [4 + 5 * (1 + Math.SQRT2) / 4, 0], Em = [4 + (5 + 21 * Math.SQRT2) / 4, 0];
+    const [O1m, r1m] = circ3(Am, Cm, Dm), [O2m, r2m] = circ3(Em, Bm, Cm), Fm = sub(mul(foot(Cm, O1m, O2m), 2), Cm);
+    const Q = fitQ([Am, Em, Cm, Fm, [O1m[0], O1m[1] - r1m], [O2m[0], O2m[1] - r2m], [O2m[0], O2m[1] + r2m]], 22), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm), O1 = Q(O1m), O2 = Q(O2m);
+    const ok = Math.abs(dist(D, F) / k - 2) < 1e-9 && Math.abs(dist(E, F) / k - 7) < 1e-9;
+    return wrap(430, 300, [
+      circ(O1, r1m * k, ACC, 1.3, "none", "5 4"), circ(O2, r2m * k, GLD, 1.3, "none", "5 4"),
+      seg(A, C, DIM, 2), seg(B, C, DIM, 2), seg(A, E, DIM, 2), seg(C, D, FNT, 1.3), seg(C, E, FNT, 1.3), seg(D, F, DIM, 1.6), seg(E, F, DIM, 1.6),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3)), dot(F, PUR, 3.5),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(B, [0, -8]), "B"), txt(add(C, [0, -10]), "C"), txt(add(D, [0, -8]), "D"), txt(add(E, [10, 4]), "E", DIM, 13, "start"), txt(add(F, [0, 18]), "F", PUR),
+      cap(430, 300, "Triangle ABC (AB = 4, BC = 5, CA = 6), with D and E on ray AB beyond B; the circles through A, C, D (blue) and E, B, C (gold) meet again at F, with DF = 2 and EF = 7." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-aime-ii-11"] = (() => {
+    const ax = (49 - 81 + 64) / 16, Bm = [0, 0], Cm = [8, 0], Am = [ax, Math.sqrt(49 - ax * ax)];
+    // the center of a circle tangent to a line at A lies on the perpendicular there, equally far from A and the other point
+    const ctr = (P, dir) => { const n = [-dir[1], dir[0]], t = ((P[0] - Am[0]) ** 2 + (P[1] - Am[1]) ** 2) / (2 * ((P[0] - Am[0]) * n[0] + (P[1] - Am[1]) * n[1])); return add(Am, mul(n, t)); };
+    const O1m = ctr(Bm, norm(sub(Cm, Am))), O2m = ctr(Cm, norm(sub(Bm, Am))), Km = sub(mul(foot(Am, O1m, O2m), 2), Am);
+    const r1m = dist(O1m, Am), r2m = dist(O2m, Am);
+    const Q = fitQ([Bm, Cm, Am, [O1m[0] - r1m, O1m[1]], [O1m[0], O1m[1] + r1m], [O2m[0] + r2m, O2m[1]], [O2m[0], O2m[1] + r2m], [O1m[0], O1m[1] - r1m], [O2m[0], O2m[1] - r2m]], 18), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), Kp = Q(Km);
+    const ok = Math.abs(dist(A, Kp) / k - 4.5) < 1e-9;
+    return wrap(430, 300, [
+      circ(Q(O1m), r1m * k, ACC, 1.3, "none", "5 4"), circ(Q(O2m), r2m * k, GLD, 1.3, "none", "5 4"),
+      poly([A, B, C], DIM, 2), seg(A, Kp, PUR, 1.8),
+      ...[A, B, C].map(q => dot(q, DIM, 3)), dot(Kp, PUR, 3.5),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(Kp, [0, 18]), "K", PUR),
+      txt(add(Q(O1m), [-r1m * k * 0.72, -r1m * k * 0.72]), subT("ω", "1"), ACC, 13), txt(add(Q(O2m), [r2m * k * 0.72, -r2m * k * 0.72]), subT("ω", "2"), GLD, 13),
+      cap(430, 300, "Triangle ABC (AB = 7, BC = 8, CA = 9). ω₁ (blue) passes through B and touches AC at A; ω₂ (gold) passes through C and touches AB at A; they meet again at K." + MM(ok))
+    ]);
+  })();
+
+  PROB["2019-aime-ii-15"] = (() => {
+    const kc = 5 / Math.sqrt(56), sA = Math.sqrt(1 - kc * kc), b = Math.sqrt(1000) / kc, c = Math.sqrt(875) / kc;
+    const Am = [0, 0], Bm = [c, 0], Cm = [b * kc, b * sA], Pm = [b * kc, 0], Qm = mul(Cm, c * kc / b);
+    const [Om, R] = circ3(Am, Bm, Cm);
+    const u = norm(sub(Qm, Pm)), w = sub(Pm, Om), pb = u[0] * w[0] + u[1] * w[1], disc = Math.sqrt(pb * pb - (w[0] * w[0] + w[1] * w[1] - R * R));
+    const Xm = add(Pm, mul(u, -pb - disc)), Ym = add(Pm, mul(u, -pb + disc));
+    const Q = fitQ([[Om[0] - R, Om[1]], [Om[0] + R, Om[1]], [Om[0], Om[1] - R], [Om[0], Om[1] + R]], 12), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), P = Q(Pm), Qq = Q(Qm), X = Q(Xm), Y = Q(Ym);
+    const ok = Math.abs(dist(X, P) / k - 10) < 1e-6 && Math.abs(dist(P, Qq) / k - 25) < 1e-6 && Math.abs(dist(Qq, Y) / k - 15) < 1e-6;
+    return wrap(430, 300, [
+      circ(Q(Om), R * k, FNT, 1.5), poly([A, B, C], DIM, 2), seg(C, P, FNT, 1.3), seg(B, Qq, FNT, 1.3), seg(X, Y, ACC, 1.8),
+      rightAngle(P, B, C, 7), rightAngle(Qq, C, B, 7),
+      ...[A, B, C].map(q => dot(q, DIM, 3)), ...[P, Qq, X, Y].map(q => dot(q, ACC, 3)),
+      txt(add(A, [-10, 6]), "A", DIM, 13, "end"), txt(add(B, [10, 6]), "B", DIM, 13, "start"), txt(add(C, [0, -10]), "C"),
+      txt(add(P, [0, 18]), "P", ACC), txt(add(Qq, [-10, -4]), "Q", ACC, 13, "end"), txt(add(X, [-10, 8]), "X", ACC, 13, "end"), txt(add(Y, [10, -4]), "Y", ACC, 13, "start"),
+      cap(430, 300, "Acute triangle ABC with P and Q the feet of the altitudes from C and B; line PQ meets the circumcircle at X and Y, with XP = 10, PQ = 25, QY = 15." + MM(ok))
+    ]);
+  })();
+
+  PROB["2020-aime-i-13"] = (() => {
+    const ax = (16 - 36 + 25) / 10, Bm = [0, 0], Cm = [5, 0], Am = [ax, Math.sqrt(16 - ax * ax)], Dm = [20 / 10, 0];   // BD = 5·4/10 = 2
+    const Mm = mid(Am, Dm), dir = perp(sub(Dm, Am));
+    const bis = (V, P, R) => add(V, add(norm(sub(P, V)), norm(sub(R, V))));
+    const Em = lineInt(Mm, add(Mm, dir), Bm, bis(Bm, Am, Cm)), Fm = lineInt(Mm, add(Mm, dir), Cm, bis(Cm, Am, Bm));
+    const Q = fitQ([Am, Bm, Cm, Em, Fm], 30), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm), M = Q(Mm);
+    const ar = Math.abs((Em[0] - Am[0]) * (Fm[1] - Am[1]) - (Fm[0] - Am[0]) * (Em[1] - Am[1])) / 2;
+    const ok = Math.abs(ar - 15 * Math.sqrt(7) / 14) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, E, F], "none", 0, GLDS), poly([A, B, C], DIM, 2), seg(A, D, DIM, 1.6), seg(E, F, ACC, 1.6), seg(B, E, FNT, 1.3), seg(C, F, FNT, 1.3),
+      rightAngle(M, A, E, 7), poly([A, E, F], GLD, 1.6),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)), dot(E, ACC, 3.5), dot(F, ACC, 3.5),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [0, 18]), "D"),
+      txt(away(E, M, 14), "E", ACC), txt(away(F, M, 14), "F", ACC),
+      cap(430, 300, "Triangle ABC (AB = 4, BC = 5, CA = 6) with the bisector AD; the perpendicular bisector of AD (blue) meets the bisectors from B and C at E and F, and triangle AEF is shaded." + MM(ok))
+    ]);
+  })();
+
+  PROB["2020-aime-ii-15"] = (() => {
+    const cA = 11 / 16, A0 = Math.acos(cA), dBC = Math.acos(85 / 88), Bang = (Math.PI - A0 + dBC) / 2, Cang = (Math.PI - A0 - dBC) / 2;
+    const Bm = [0, 0], Cm = [22, 0], Am = lineInt(Bm, [Math.cos(Bang), Math.sin(Bang)], Cm, [22 - Math.cos(Cang), Math.sin(Cang)]);
+    const Tm = [11, -Math.sqrt(256 - 121)], Xm = foot(Tm, Am, Bm), Ym = foot(Tm, Am, Cm);
+    const Q = fitQ([Am, Bm, Cm, Tm, Xm, Ym], 26), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), T = Q(Tm), X = Q(Xm), Y = Q(Ym);
+    const s2 = (P, R) => (dist(P, R) / k) ** 2, ok = Math.abs(s2(T, X) + s2(T, Y) + s2(X, Y) - 1143) < 1e-6 && Math.abs(s2(X, Y) - 717) < 1e-6;
+    const [Om, R] = circ3(Am, Bm, Cm);
+    return wrap(430, 300, [
+      circ(Q(Om), R * k, FNT, 1.4), poly([A, B, C], DIM, 2), seg(T, B, ACC, 1.6), seg(T, C, ACC, 1.6),
+      seg(X, B, FNT, 1.3, "4 3"), seg(Y, C, FNT, 1.3, "4 3"), seg(T, X, GLD, 1.6), seg(T, Y, GLD, 1.6), seg(X, Y, GLD, 1.6),
+      rightAngle(X, T, A, 7), rightAngle(Y, T, A, 7),
+      ...[A, B, C, T].map(q => dot(q, DIM, 3)), dot(X, GLD, 3), dot(Y, GLD, 3),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-12, 0]), "B", DIM, 13, "end"), txt(add(C, [12, 0]), "C", DIM, 13, "start"), txt(add(T, [0, 18]), "T"),
+      txt(away(X, T, 12), "X", GLD), txt(away(Y, T, 12), "Y", GLD),
+      cap(430, 300, "The tangents to the circumcircle at B and C meet at T (BT = CT = 16, BC = 22); X and Y are the feet of the perpendiculars from T to lines AB and AC." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-aime-i-11"] = (() => {
+    // cyclic quadrilateral with sides 4, 5, 6, 7: the diagonal AC from the cosine of angle B, using B + D = 180°
+    const cB = (16 + 25 - 36 - 49) / (2 * (20 + 42)), ac = Math.sqrt(16 + 25 - 40 * cB);
+    const Am = [0, 0], Cm = [ac, 0], ax = (16 - 25 + ac * ac) / (2 * ac), Bm = [ax, -Math.sqrt(16 - ax * ax)], dx = (49 - 36 + ac * ac) / (2 * ac), Dm = [dx, Math.sqrt(49 - dx * dx)];
+    const A1m = foot(Am, Bm, Dm), C1m = foot(Cm, Bm, Dm), B1m = foot(Bm, Am, Cm), D1m = foot(Dm, Am, Cm);
+    const [Om, R] = circ3(Am, Bm, Cm);
+    const Q = fitQ([[Om[0] - R, Om[1]], [Om[0] + R, Om[1]], [Om[0], Om[1] - R], [Om[0], Om[1] + R]], 14), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), A1 = Q(A1m), B1 = Q(B1m), C1 = Q(C1m), D1 = Q(D1m);
+    const per = (dist(A1, B1) + dist(B1, C1) + dist(C1, D1) + dist(D1, A1)) / k;
+    const ok = Math.abs(dist(C, D) / k - 6) < 1e-9 && Math.abs(per - 242 / 59) < 1e-9;
+    return wrap(430, 300, [
+      circ(Q(Om), R * k, FNT, 1.4), poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.3), seg(B, D, FNT, 1.3),
+      seg(A, A1, FNT, 1.1, "3 3"), seg(C, C1, FNT, 1.1, "3 3"), seg(B, B1, FNT, 1.1, "3 3"), seg(D, D1, FNT, 1.1, "3 3"),
+      poly([A1, B1, C1, D1], ACC, 1.8, ACCS),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)), ...[A1, B1, C1, D1].map(q => dot(q, ACC, 2.6)),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(B, [0, 18]), "B"), txt(add(C, [10, 4]), "C", DIM, 13, "start"), txt(add(D, [10, 4]), "D", DIM, 13, "start"),
+      cap(430, 300, "Cyclic quadrilateral ABCD (AB = 4, BC = 5, CD = 6, DA = 7). The feet A₁, C₁ on BD and B₁, D₁ on AC (dotted perpendiculars) form the small blue quadrilateral A₁B₁C₁D₁." + MM(ok))
+    ]);
+  })();
+
 })();

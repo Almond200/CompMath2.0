@@ -411,6 +411,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 - **Practice pass, Law of Cosines, AIME problems (first eight):** 2026 AIME I #5 now has a full route: reflect $A$ in $B$ to $C$, and $\overrightarrow{CB'}=\overrightarrow{BA'}$, so $AB'^2=5-4\cos\theta$ and $\cos\theta=\tfrac{29}{36}$. 2026 AIME I #14 is worked in full: the closed side vectors give $K\cos36^\circ=246$ and the diagonals give $J\cos72^\circ=92$, so the perimeter squared is $676\sqrt5$. Figures drawn for 2026 I #5, 2026 I #14 and 1989 #10. Angle Between the Diagonals from the Sides moved from low to lower importance. A sixth candidate card, P6, closing a polygon with side vectors, is proposed in QUESTIONS.md.
 - **Practice pass, Law of Cosines, AIME 2002 to 2009:** four strategies completed. 2005 I #7 now extends $AD$ and $BC$ to an equilateral triangle, giving $s^2-18s-60=0$ and $AB=9+\sqrt{141}$. 2009 I #15 finishes the area: $\angle BPC=150^\circ$, so the largest area is $98-49\sqrt3$. 2009 II #5 solves $20p=28$, giving $r=\tfrac{27}5$. 2004 II #11 shows the numbers. Figures drawn for 2003 I #12, 2004 II #11, 2005 I #7 and 2009 I #15.
 - **Practice pass, Law of Cosines, AIME 2010 to 2018:** three strategies completed. 2012 II #15 finds $AF$ by the extended Law of Sines, $AF=2R\cdot\tfrac{DF}{DE}$, with $F$, $D$ and the antipode of $E$ collinear; $AF^2=\tfrac{900}{19}$. 2014 II #12 uses $\cos3A+\cos3B+\cos3C=1-4\prod\sin\tfrac{3A}2$, which forces a $120^\circ$ angle. 2018 II #12 reduces the area condition to $(p-q)(r-t)=0$, and the Heron form gives $AC^2=128$ and area $112$. Figures drawn for 2012 II #13, 2012 II #15 and 2018 II #12.
+- **Practice pass, Law of Cosines, AIME 2019 to 2021:** six vague strategies replaced with full solutions, and six figures drawn.
+  - 2019 I #13: the radical axis $CF$ and the ratio lemma give $XD:XE=5:21$, and equal powers give $BE=\tfrac{5+21\sqrt2}4$.
+  - 2019 II #11: $KBA\sim KAC$, so $AK=\tfrac92$.
+  - 2019 II #15: two powers of a point and $u=bc\cos A=1400$ give $bc=560\sqrt{14}$.
+  - 2020 I #13: $E$ and $F$ are arc midpoints, so the area is $\tfrac{15\sqrt7}{14}$.
+  - 2020 II #15: $\cos(B-C)=\tfrac{85}{88}$ gives $XY^2=717$.
+  - 2021 I #11: the perimeter is $22\cos\theta$, with $\cos\theta=\tfrac{11}{59}$ from the new Angle Between the Diagonals card and Ptolemy.
 
 **2026-10-10**
 
