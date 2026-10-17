@@ -3613,4 +3613,22 @@
       cap(430, 270, "The semicircle of radius 2, cut into seven equal arcs by C<sub>1</sub>, ..., C<sub>6</sub>, with the six chords from A (blue) and the six from B (gold)." + MM(ok))
     ]);
   })();
+
+  // 2016 AIME I #9: triangle ABC (AB = 40, AC = 31, sin A = 1/5) in rectangle AQRS, B on QR and C on RS.
+  PROB["2016-aime-i-9"] = (() => {
+    const A0 = Math.asin(0.2), t = 0.3;
+    const Bm = [40 * Math.cos(t), 40 * Math.sin(t)], Cm = [31 * Math.cos(t + A0), 31 * Math.sin(t + A0)];
+    const Am = [0, 0], Qm = [Bm[0], 0], Rm = [Bm[0], Cm[1]], Sm = [0, Cm[1]];
+    const ok = Bm[1] <= Cm[1] && Cm[0] >= 0 && Cm[0] <= Bm[0] && Math.abs(dist(Am, Bm) - 40) < 1e-9 && Math.abs(dist(Am, Cm) - 31) < 1e-9;
+    const k = 9, Q = p => [215 - k * Bm[0] / 2 + k * p[0], 200 - k * p[1]];
+    const [A, Qq, R, S, B, C] = [Am, Qm, Rm, Sm, Bm, Cm].map(Q);
+    return wrap(430, 270, [
+      poly([A, Qq, R, S], DIM, 1.8), poly([A, B, C], ACC, 2, ACCS),
+      ...[A, Qq, R, S, B, C].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-8, 12]), "A", DIM, 13, "end"), txt(add(Qq, [8, 12]), "Q", DIM, 13, "start"), txt(add(R, [8, -4]), "R", DIM, 13, "start"), txt(add(S, [-8, -4]), "S", DIM, 13, "end"),
+      txt(add(B, [9, 4]), "B", ACC, 13, "start"), txt(add(C, [0, -9]), "C", ACC, 13),
+      txt(add(mid(A, B), [8, 12]), "40", ACC, 12, "start"), txt(add(mid(A, C), [-10, 0]), "31", ACC, 12, "end"),
+      cap(430, 270, "Triangle ABC with AB = 40, AC = 31 and sin A = 1/5, inside rectangle AQRS with B on QR and C on RS (one possible position)." + MM(ok))
+    ]);
+  })();
 })();

@@ -3400,11 +3400,13 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
    top bar (the negative margins cancel the page's own padding). As on Wikipedia, the panel starts
    a little down the column and, once the page scrolls it up to just under the top bar, stays
    there. It is never taller than the window (it scrolls inside itself instead), because a sticky
-   panel taller than the window was what jumped up and down while scrolling (owner, 2026-10-17). */
-.page-tools { border-left: 1px solid var(--border); padding-left: 16px; margin: -24px 0 -120px; padding-top: 24px; padding-bottom: 120px; font-size: 13px; }
+   panel taller than the window was what jumped up and down while scrolling (owner, 2026-10-17).
+   The column has no bottom padding (the negative bottom margin alone carries the divider to the
+   foot of the page), so the panel is not pushed up at the end of a page. */
+.page-tools { border-left: 1px solid var(--border); padding-left: 16px; margin: -24px 0 -120px; padding-top: 24px; font-size: 13px; }
 .pt-inner { position: sticky; top: calc(var(--topbar-h, 61px) + 20px); margin-top: 40px; max-height: calc(100vh - var(--topbar-h, 61px) - 40px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; display: flex; flex-direction: column; gap: 18px; }
-html[data-density="compact"] .page-tools { margin: -16px 0 -90px; padding-top: 16px; padding-bottom: 90px; }
-html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top: 24px; padding-bottom: 140px; }
+html[data-density="compact"] .page-tools { margin: -16px 0 -90px; padding-top: 16px; }
+html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top: 24px; }
 .pt-block { display: flex; flex-direction: column; gap: 4px; }
 .pt-head { font-size: 11px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); padding-bottom: 5px; margin-bottom: 3px; border-bottom: 1px solid var(--border); }
 .pt-block a, .pt-act { color: var(--accent); text-decoration: none; background: none; border: 0; padding: 2px 0; font: inherit; text-align: left; cursor: pointer; }
@@ -3424,7 +3426,7 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
   .page-tools { margin: 0; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--border); }
   .pt-inner { position: static; margin-top: 0; max-height: none; overflow: visible; }
 }
-@media print { .page-tools, .sidebar, .topbar, .back-link, .back-row { display: none !important; } .layout, .detail-with-tools { display: block; } .content { max-width: none; margin: 0; } }
+@media print { .page-tools, .sidebar, .topbar, .back-link, .back-row, .detail-actions { display: none !important; } .layout, .detail-with-tools { display: block; } .content { max-width: none; margin: 0; } }
 /* Angle-chasing puzzle (js/geo-interactive.js) */
 .ac-intro { font-size: 13.5px; color: var(--text-dim); margin: 0 0 10px; line-height: 1.55; }
 .ac-w { fill: rgba(128, 128, 128, 0.10); stroke: var(--text-faint); stroke-width: 1; cursor: pointer; }
