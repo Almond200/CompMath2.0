@@ -8853,5 +8853,155 @@ In the equiangular case the directions are the powers of one root of unity, and 
 
 ## Contest profile
 Uncommon; it appears on the AIME when an equiangular hexagon or pentagon is given by some of its sides, or by sums of squares of its sides and diagonals, and the remaining sides or the perimeter are asked for.
+`,
+"cevian-ratio-sum": String.raw`
+## Key forms
+- $\frac{PD}{AD} = \frac{[PBC]}{[ABC]}$, and likewise $\frac{PE}{BE} = \frac{[PCA]}{[ABC]}$, $\frac{PF}{CF} = \frac{[PAB]}{[ABC]}$
+- $\frac{PD}{AD} + \frac{PE}{BE} + \frac{PF}{CF} = 1$ — the short pieces
+- $\frac{AP}{AD} + \frac{BP}{BE} + \frac{CP}{CF} = 2$ — the long pieces, since $\frac{AP}{AD} = 1 - \frac{PD}{AD}$
+- with barycentric coordinates $P = (\alpha : \beta : \gamma)$, $\alpha + \beta + \gamma = 1$: $\frac{PD}{AD} = \alpha$, $\frac{PE}{BE} = \beta$, $\frac{PF}{CF} = \gamma$
+
+## Conditions
+$P$ is inside the triangle and $D$, $E$, $F$ are where the lines $AP$, $BP$, $CP$ meet the opposite sides. The three cevians concur at $P$ by construction, so no [[cevas-theorem|Ceva]] condition is needed; the identity holds for every interior point.
+
+## Why it works
+Each fraction is an area ratio, and the three areas fill the triangle.
+
+Triangles $PBC$ and $ABC$ share the base $BC$. Their heights over it are the distances from $P$ and from $A$ to line $BC$, and these are in the ratio $PD : AD$, because $P$ and $A$ lie on one line through $D$ and the heights are the vertical components of $DP$ and $DA$. So $$\frac{[PBC]}{[ABC]} = \frac{PD}{AD}.$$
+
+The same argument at $B$ and at $C$ gives $\frac{[PCA]}{[ABC]} = \frac{PE}{BE}$ and $\frac{[PAB]}{[ABC]} = \frac{PF}{CF}$. The triangles $PBC$, $PCA$, $PAB$ cover $ABC$ without overlap, so their areas add to $[ABC]$, and the three fractions add to $1$.
+
+For the long pieces, $\frac{AP}{AD} = 1 - \frac{PD}{AD}$, and adding the three gives $3 - 1 = 2$.
+
+## Useful observations
+- At the centroid each short piece is a third of its median, the case of three equal fractions.
+- Two of the fractions fix the third, so two cevians cut in known ratios give the third ratio with no mass points.
+- When the three short pieces are equal to $d$ and the long pieces are $x$, $y$, $z$, the identity reads $\frac d{x + d} + \frac d{y + d} + \frac d{z + d} = 1$, and clearing denominators gives $xyz = (x + y + z)d^2 + 2d^3$.
+- The fractions are the barycentric coordinates of $P$, so this is the statement that those coordinates add to $1$.
+
+## Applications
+Finding a third cevian ratio from two others, and problems that give the pieces of three concurrent cevians and ask for a product, a sum or an area.
+
+## Contest profile
+Uncommon; it appears on the AIME when three cevians through one point are given by their pieces, often pairing with [[same-base-area-ratio|areas over a shared base]] or with mass points to finish.
+`,
+"square-crossing-segments": String.raw`
+## Key forms
+- $PQ = RS$ when $PQ \perp RS$, with $P$, $Q$ on one pair of opposite sides and $R$, $S$ on the other
+- $PQ = \frac{s}{\cos\varphi}$, where $s$ is the side and $\varphi$ the angle between $PQ$ and the sides it does not touch
+- a square with one given point on each side: the segment from one point perpendicular to the segment joining the other pair, and as long as it, ends on the fourth side
+
+## Conditions
+The segments run from side to side, each joining two opposite sides; their positions do not matter, only that they are perpendicular. The statement is about a square: in a rectangle with sides $p \ne q$ the two lengths are $\frac p{\cos\varphi}$ and $\frac q{\cos\varphi}$, in the ratio of the sides.
+
+## Why it works
+Each segment's length is the distance between its pair of sides divided by the cosine of its tilt, and perpendicular segments have the same tilt.
+
+Let $PQ$ join the bottom and top sides, which are $s$ apart, and let it make the angle $\varphi$ with the vertical. Its vertical component is $s$, so $$PQ = \frac{s}{\cos\varphi}.$$
+
+A segment $RS$ perpendicular to $PQ$ makes the same angle $\varphi$ with the horizontal, and it joins the left and right sides, which are also $s$ apart. Its horizontal component is $s$, so $RS = \frac{s}{\cos\varphi} = PQ$.
+
+Equivalently, a quarter turn about the center carries the square to itself, swaps the two pairs of sides, and turns the direction of $PQ$ into the direction of $RS$; it carries $PQ$ onto a segment of the same length joining the other pair of sides in that direction, and all such segments have equal length.
+
+## Useful observations
+- The segments need not cross each other or pass through the center.
+- Given four points, one on each side, take the segment $BD$ through two of them and turn $\overrightarrow{BD}$ a quarter turn ([[rotation-90|rotating the vector]]) and place it at a third point $A$. Its end lies on the side through the fourth point $C$, which fixes that side's direction.
+- In coordinates, the vector $(p, q)$ turned a quarter turn is $(-q, p)$, which is how the perpendicular segment of equal length is written down.
+
+## Applications
+Squares through given points, one on each side, and lengths of segments drawn across a square at an angle.
+
+## Contest profile
+Rare; it appears on the AIME when a square is determined by four points, one on each side, and its area is asked for, finished with [[parallel-lines-distance|the distance between parallel lines]].
+`,
+"perimeter-cleavers": String.raw`
+## Key forms
+- the cleaver through the midpoint $M$ of $AB$ ends at $X$ on $CA$ with $AX = \frac{a + b}2$ when $a \le b$, or on $CB$ with $BX = \frac{a + b}2$ when $a \ge b$
+- $MX \parallel CD$, where $CD$ is the bisector of angle $C$
+- the three cleavers are the angle bisectors of the medial triangle and meet at the Spieker point
+- two cleavers meet at the same angles as the bisectors they are parallel to; the ones through the midpoints of $AB$ and $AC$ meet at $90^\circ - \frac A2$
+
+## Conditions
+The sides are $a = BC$, $b = CA$, $c = AB$ and $s$ is the semiperimeter. The cleaver through $M$ leaves $s$ of the perimeter on each side of it, counted from $M$ both ways.
+
+## Why it works
+The endpoint is fixed by the perimeter count, and then [[angle-bisector-theorem|the Angle Bisector Theorem]] shows the parallel through equal ratios.
+
+Step 1, the endpoint. From $M$ the perimeter runs $\frac c2$ to $A$ and then along $AC$. Half the perimeter is $s$, so the cleaver ends on $CA$ at $X$ with $AX = s - \frac c2 = \frac{a + b}2$, which lies on the side when $\frac{a + b}2 \le b$, that is $a \le b$. Otherwise it ends on $CB$ with $BX = \frac{a + b}2$.
+
+Step 2, the parallel. The bisector from $C$ meets $AB$ at $D$ with $AD = \frac{bc}{a + b}$. Then $$\frac{AM}{AD} = \frac{c/2}{bc/(a + b)} = \frac{a + b}{2b} = \frac{AX}{AC},$$ so by the converse of [[intercept-theorem|the Intercept Theorem]] $MX \parallel CD$. In the other case $\frac{BM}{BD} = \frac{a + b}{2a} = \frac{BX}{BC}$, with the same conclusion.
+
+Step 3, the concurrence. The medial triangle has its sides parallel to those of $ABC$, so its angle at $M$ has sides parallel to $CA$ and $CB$ and equals angle $C$. A line through $M$ parallel to the bisector of $C$ bisects that angle. So the three cleavers are the bisectors of the medial triangle, and they meet at its incenter, the Spieker point.
+
+Step 4, the angle. Parallel lines meet other lines at equal angles, so two cleavers cross as the two bisectors do, and the bisectors from $B$ and $C$ meet at $90^\circ + \frac A2$, that is at $90^\circ - \frac A2$ the other way.
+
+## Useful observations
+- In an isosceles triangle with $a = b$ the cleaver through $M$ runs to $C$ itself and is the median, the altitude and the bisector at once.
+- A condition on the angle between two cleavers is a condition on one angle of the triangle; a $30^\circ$ crossing forces $A = 120^\circ$.
+- The cleaver through a midpoint always heads toward the longer of the two other sides.
+
+## Applications
+Lines that halve the perimeter of a triangle, the angle between two of them, and the Spieker point as their common point.
+
+## Contest profile
+Rare; it appears late on the AIME as the hidden step in a problem about lines that halve a triangle's perimeter, after which the problem becomes one about the triangle's angles, often finished with [[law-cosines-60-120|the Law of Cosines at a special angle]].
+`,
+"conic-perpendicular-radii": String.raw`
+## Key forms
+- ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$: $\frac1{OA^2} + \frac1{OB^2} = \frac1{a^2} + \frac1{b^2}$ when $OA \perp OB$
+- hyperbola $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$: $\frac1{OA^2} + \frac1{OB^2} = \frac1{a^2} - \frac1{b^2}$, possible only when $b \gt a$
+- the radius at angle $\theta$: $\frac1{\rho^2} = \frac{\cos^2\theta}{a^2} \pm \frac{\sin^2\theta}{b^2}$
+- the chord $AB$ is at distance $d$ from $O$ with $\frac1{d^2} = \frac1{OA^2} + \frac1{OB^2}$, so every such chord touches one circle about $O$
+
+## Conditions
+The conic is centered at the origin with its axes along the coordinate axes, and $O$ is that center. For the hyperbola both radii must meet the curve, so each direction must lie between the asymptotes, which needs $b \gt a$; as one radius turns toward an asymptote it grows without bound.
+
+## Why it works
+Write each point in polar form; turning by $90^\circ$ swaps $\cos^2$ and $\sin^2$, so the two equations add to a constant.
+
+A point at distance $\rho$ from $O$ in the direction $\theta$ is $(\rho\cos\theta, \rho\sin\theta)$. Putting it into the ellipse's equation gives $\rho^2\left(\frac{\cos^2\theta}{a^2} + \frac{\sin^2\theta}{b^2}\right) = 1$, so $$\frac1{OA^2} = \frac{\cos^2\theta}{a^2} + \frac{\sin^2\theta}{b^2}.$$
+
+The perpendicular radius has direction $\theta + 90^\circ$, where the cosine and sine squared trade places: $\frac1{OB^2} = \frac{\sin^2\theta}{a^2} + \frac{\cos^2\theta}{b^2}$. Adding, and using $\cos^2\theta + \sin^2\theta = 1$, gives $\frac1{a^2} + \frac1{b^2}$. The hyperbola is the same with $-\frac1{b^2}$ in place of $\frac1{b^2}$.
+
+For the chord: in the right triangle $AOB$, the altitude $d$ from $O$ satisfies $d \cdot AB = OA \cdot OB$, so $$\frac1{d^2} = \frac{AB^2}{OA^2\,OB^2} = \frac{OA^2 + OB^2}{OA^2\,OB^2} = \frac1{OA^2} + \frac1{OB^2},$$ a constant, so $d$ is fixed.
+
+## Useful observations
+- A rhombus inscribed in a central conic and centered at its center has perpendicular diagonals through $O$, so its half-diagonals are perpendicular radii and the identity applies to them.
+- On a hyperbola, as one radius approaches an asymptote its reciprocal square tends to $0$, so the other radius tends to its smallest value, $\left(\frac1{a^2} - \frac1{b^2}\right)^{-1/2}$, which it never reaches.
+- For a circle, $a = b = r$, and the identity says $\frac2{r^2} = \frac2{r^2}$.
+
+## Applications
+Rhombi and right angles inscribed in an ellipse or hyperbola about its center, bounds on a diagonal, and the fixed circle that the chords of a right angle touch.
+
+## Contest profile
+Rare; it appears late on the AIME when a rhombus or a right angle is inscribed in a conic about its center and a diagonal must be bounded, beside [[hyperbola-properties|the hyperbola's asymptotes]].
+`,
+"gram-determinant-volume": String.raw`
+## Key forms
+- $V^2 = \det G$, where $G$ is the $3 \times 3$ table of the dot products of $u$, $v$, $w$
+- $V^2 = \ell_1^2\ell_2^2\ell_3^2\left(1 - \cos^2\alpha - \cos^2\beta - \cos^2\gamma + 2\cos\alpha\cos\beta\cos\gamma\right)$, with $\alpha$, $\beta$, $\gamma$ the angles between the pairs of edges
+- equal edges $\ell$ and equal angles $\theta$: $V = \ell^3\sqrt{1 - 3\cos^2\theta + 2\cos^3\theta}$
+- the tetrahedron on the same three edges has volume $\frac V6$
+
+## Conditions
+$u$, $v$, $w$ are the three edge vectors from one vertex of the parallelepiped, so the angles are those at that vertex. The determinant is never negative, and it is zero exactly when the three vectors lie in a plane.
+
+## Why it works
+Put the three vectors as the rows of a matrix $M$; the volume is $|\det M|$, and the table of dot products is $MM^{\mathsf T}$.
+
+The volume of the parallelepiped is the absolute value of [[cross-product-area|the triple product]], $|u\cdot(v \times w)| = |\det M|$. The entry in row $i$ and column $j$ of $MM^{\mathsf T}$ is the dot product of row $i$ of $M$ with row $j$, so $MM^{\mathsf T}$ is exactly the table $G$. Since $\det M^{\mathsf T} = \det M$, $$\det G = \det M \cdot \det M^{\mathsf T} = (\det M)^2 = V^2.$$
+
+Writing $u\cdot v = \ell_1\ell_2\cos\gamma$ and so on and expanding the $3 \times 3$ determinant gives the form in the cosines; with all lengths $\ell$ and all cosines $c$ it is $\ell^6\left(1 - 3c^2 + 2c^3\right)$.
+
+## Useful observations
+- The two-dimensional version is $A^2 = |u|^2|v|^2 - (u\cdot v)^2$ for the parallelogram on $u$ and $v$, which is $\sin^2$ of the angle written through the cosine.
+- Changing the signs of the dot products changes only the last term, $2\cos\alpha\cos\beta\cos\gamma$, so two solids with the same edges and the same angles up to supplement differ in volume through that term alone.
+- With angles $60^\circ$ and equal edges the solid is the one built from a regular tetrahedron, and the formula gives $\frac{\ell^3}{\sqrt2}$.
+
+## Applications
+Volumes of parallelepipeds and tetrahedra given by edge lengths and the angles at a vertex, or by the dot products of the edges, with no coordinates set up.
+
+## Contest profile
+Rare; it appears late on the AIME when a parallelepiped is described only by its faces or by the angles at a vertex, often after dot products turn the face data into the angles.
 `
 });

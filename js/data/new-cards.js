@@ -36,5 +36,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Conjugating both sides", date: "2026-10-17",
     ids: ["conjugate-both-sides"] },
   { label: "Closing a polygon with side vectors", date: "2026-10-17",
-    ids: ["closing-polygon-vectors"] }
+    ids: ["closing-polygon-vectors"] },
+  { label: "Practice pass: five geometry cards the problems needed", date: "2026-10-17",
+    ids: ["cevian-ratio-sum", "square-crossing-segments", "perimeter-cleavers", "conic-perpendicular-radii", "gram-determinant-volume"] }
 ];

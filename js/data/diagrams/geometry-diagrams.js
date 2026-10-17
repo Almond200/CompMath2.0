@@ -9083,6 +9083,84 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 340, "Squares on the three sides of triangle ABC. The gold flank between the two squares at A has the triangle's two sides at A with the supplementary angle, so it has the same area K. Its third side is twice the median AM and is perpendicular to the line of that median." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Practice-pass cards P7 to P11 (2026-10-17).
+  DIAGRAMS["cevian-ratio-sum"] = [(() => {
+    const A = [205, 40], B = [50, 262], C = [380, 262], al = 0.25, be = 1 / 3, ga = 1 - al - be;
+    const P = add(add(mul(A, al), mul(B, be)), mul(C, ga));
+    const D = lineInt(A, P, B, C), E = lineInt(B, P, C, A), F = lineInt(C, P, A, B);
+    const ok = Math.abs(dist(P, D) / dist(A, D) + dist(P, E) / dist(B, E) + dist(P, F) / dist(C, F) - 1) < 1e-9;
+    return wrap(430, 300, [
+      poly([P, B, C], "none", 0, ACCS), poly([P, C, A], "none", 0, GLDS), poly([P, A, B], "none", 0, "rgba(160,110,220,0.13)"),
+      poly([A, B, C], DIM, 2), seg(A, D, DIM, 1.6), seg(B, E, DIM, 1.6), seg(C, F, DIM, 1.6),
+      seg(P, D, ACC, 2.6), seg(P, E, GLD, 2.6), seg(P, F, PUR, 2.6),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3.2)), dot(P, DIM, 3.6),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      txt(add(D, [0, 18]), "D"), gapLabel(E, [B, C, A], "E"), gapLabel(F, [A, B, C], "F"), gapLabel(P, [A, B, C, D, E, F], "P"),
+      cap(430, 300, "The short pieces PD, PE, PF (colored) are the fractions of their cevians that the matching triangles PBC, PCA, PAB are of ABC, so the three fractions add to 1." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  DIAGRAMS["square-crossing-segments"] = [(() => {
+    const k = 22, Q2 = (x, y) => [105 + k * x, 270 - k * y];
+    const A = Q2(0, 0), B = Q2(10, 0), C = Q2(10, 10), D = Q2(0, 10);
+    const t = Math.atan(0.42), P = Q2(2.6, 0), Qp = Q2(2.6 + 10 * Math.tan(t), 10), R = Q2(0, 6.8), S = Q2(10, 6.8 - 10 * Math.tan(t));
+    const ok = Math.abs(dist(P, Qp) - dist(R, S)) < 1e-9 && Math.abs((Qp[0] - P[0]) * (S[0] - R[0]) + (Qp[1] - P[1]) * (S[1] - R[1])) < 1e-6;
+    const X = lineInt(P, Qp, R, S);
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2), seg(P, Qp, ACC, 2.4), seg(R, S, GLD, 2.4), rightAngle(X, Qp, S, 9, FNT),
+      ...[P, Qp, R, S].map(q => dot(q, DIM, 3.4)),
+      txt(add(P, [0, 18]), "P"), txt(add(Qp, [0, -8]), "Q"), txt(add(R, [-8, 4]), "R", DIM, 13, "end"), txt(add(S, [8, 4]), "S", DIM, 13, "start"),
+      cap(430, 300, "PQ joins the top and bottom sides and RS joins the left and right sides at right angles to it; a quarter turn about the center carries one direction to the other, so PQ = RS." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  DIAGRAMS["perimeter-cleavers"] = [(() => {
+    const a = 7, b = 8, c = 5, k = 30, Bm = [0, 0], Cm = [a, 0], ax = (c * c - b * b + a * a) / (2 * a), Am = [ax, Math.sqrt(c * c - ax * ax)];
+    const Q2 = p => [80 + k * p[0], 255 - k * p[1]], A = Q2(Am), B = Q2(Bm), C = Q2(Cm);
+    const M = mid(A, B), X = lerp(A, C, ((a + b) / 2) / b), D = lerp(A, B, (b * c / (a + b)) / c);
+    const per = dist(M, A) + dist(A, X), tot = (a + b + c) * k;
+    const cr = (U, V, W, Z) => { const p = sub(V, U), q = sub(Z, W); return Math.abs(p[0] * q[1] - p[1] * q[0]) / (dist(U, V) * dist(W, Z)); };
+    const ok = Math.abs(per - tot / 2) < 1e-6 && cr(M, X, C, D) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(C, D, GLD, 1.8, "6 4"), seg(M, X, ACC, 2.4), ticksOn(A, M, 1), ticksOn(M, B, 1),
+      ...[A, B, C, M, X, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      txt(add(away(M, C, 14), [-2, 4]), "M", DIM, 13, "end"), gapLabel(X, [A, C, M], "X"), txt(add(D, [10, 10]), "D", GLD, 13, "start"),
+      cap(430, 300, "In the 5-7-8 triangle, the cleaver MX from the midpoint of AB halves the perimeter (AM + AX = 2.5 + 7.5 = 10) and runs parallel to the bisector CD (dashed)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  DIAGRAMS["conic-perpendicular-radii"] = [(() => {
+    const a = 3, b = 2, k = 52, O = [215, 150], Q2 = (x, y) => [O[0] + k * x, O[1] - k * y];
+    const rho = th => 1 / Math.sqrt(Math.cos(th) ** 2 / (a * a) + Math.sin(th) ** 2 / (b * b)), t = 0.6;
+    const Am = [rho(t) * Math.cos(t), rho(t) * Math.sin(t)], Bm = [rho(t + Math.PI / 2) * Math.cos(t + Math.PI / 2), rho(t + Math.PI / 2) * Math.sin(t + Math.PI / 2)];
+    const d = 1 / Math.sqrt(1 / (a * a) + 1 / (b * b)), F = foot([0, 0], Am, Bm);
+    const ok = Math.abs(Math.hypot(...F) - d) < 1e-9 && Math.abs(Am[0] ** 2 / 9 + Am[1] ** 2 / 4 - 1) < 1e-9;
+    const ell = Array.from({ length: 121 }, (_, i) => Q2(a * Math.cos(i * Math.PI / 60), b * Math.sin(i * Math.PI / 60)));
+    const A = Q2(...Am), B = Q2(...Bm);
+    return wrap(430, 300, [
+      pline(ell, DIM, 1.8), circ(O, d * k, FNT, 1.2, "none", "5 4"), seg(O, A, ACC, 2.2), seg(O, B, ACC, 2.2), seg(A, B, GLD, 2), rightAngle(O, A, B, 10, FNT),
+      seg(O, Q2(...F), FNT, 1.2, "3 3"), dot(O, DIM, 3.2), dot(A, ACC, 3.4), dot(B, ACC, 3.4),
+      txt(add(O, [-6, 16]), "O", DIM, 13, "end"), txt(add(A, [10, -4]), "A", ACC, 13, "start"), txt(add(B, [-10, -4]), "B", ACC, 13, "end"),
+      cap(430, 300, "On x²/9 + y²/4 = 1, any perpendicular radii OA and OB have 1/OA² + 1/OB² = 1/9 + 1/4, so the chord AB (gold) always touches the dashed circle of radius 6/√13." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  DIAGRAMS["gram-determinant-volume"] = [(() => {
+    const u = [1, 0, 0], v = [1, Math.sqrt(3), 0], w = [1.5, Math.sqrt(3) / 2, Math.sqrt(6)];
+    const dt = (p, q) => p[0] * q[0] + p[1] * q[1] + p[2] * q[2];
+    const G = [[dt(u, u), dt(u, v), dt(u, w)], [dt(u, v), dt(v, v), dt(v, w)], [dt(u, w), dt(v, w), dt(w, w)]];
+    const det = G[0][0] * (G[1][1] * G[2][2] - G[1][2] * G[2][1]) - G[0][1] * (G[1][0] * G[2][2] - G[1][2] * G[2][0]) + G[0][2] * (G[1][0] * G[2][1] - G[1][1] * G[2][0]);
+    const ok = Math.abs(det - 18) < 1e-9;
+    const k = 46, Pj = q => [90 + k * (q[0] + 0.5 * q[1]), 255 - k * (q[2] + 0.32 * q[1])];
+    const ad = (...vs) => vs.reduce((s, x) => [s[0] + x[0], s[1] + x[1], s[2] + x[2]], [0, 0, 0]);
+    const V = [[0, 0, 0], u, v, w, ad(u, v), ad(u, w), ad(v, w), ad(u, v, w)].map(Pj);
+    const [O, U, Vv, W, UV, UW, VW, UVW] = V;
+    const back = [[O, Vv], [Vv, UV], [Vv, VW]];
+    return wrap(430, 300, [
+      ...back.map(([p, q]) => seg(p, q, FNT, 1.4, "5 4")),
+      seg(U, UV, DIM, 1.8), seg(U, UW, DIM, 1.8), seg(W, UW, DIM, 1.8), seg(W, VW, DIM, 1.8), seg(UV, UVW, DIM, 1.8), seg(UW, UVW, DIM, 1.8), seg(VW, UVW, DIM, 1.8),
+      seg(O, U, ACC, 2.6), seg(O, Vv, GLD, 2.6, "5 4"), seg(O, W, PUR, 2.6), dot(O, DIM, 3.4),
+      txt(add(mid(O, U), [0, 17]), "u", ACC, 14), txt(add(mid(O, Vv), [10, 10]), "v", GLD, 14), txt(add(mid(O, W), [-10, 0]), "w", PUR, 14, "end"),
+      cap(430, 300, "The parallelepiped on u, v, w with lengths 1, 2, 3 meeting at 60°: the determinant of the table of dot products is 18, so its volume is 3√2." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
   DIAGRAMS["parallel-sided-hexagon"] = [(() => {
     const a = 10, b = 12, c = 15, s = 1 / (1 / a + 1 / b + 1 / c), k = 24;
     const px = (181 / 30), py = Math.sqrt(100 - px * px);

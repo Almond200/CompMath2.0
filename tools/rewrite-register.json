@@ -1789,7 +1789,12 @@
     "parallel-sided-hexagon": "formula",
     "product-of-uniforms": "formula",
     "conjugate-both-sides": "method",
-    "closing-polygon-vectors": "method"
+    "closing-polygon-vectors": "method",
+    "cevian-ratio-sum": "formula",
+    "square-crossing-segments": "formula",
+    "perimeter-cleavers": "formula",
+    "conic-perpendicular-radii": "formula",
+    "gram-determinant-volume": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8617,6 +8622,36 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "cevian-ratio-sum": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "square-crossing-segments": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "perimeter-cleavers": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "conic-perpendicular-radii": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "gram-determinant-volume": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }
