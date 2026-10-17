@@ -6,12 +6,12 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 33 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 41 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
-  - 2.7a, card 1 (Pythagorean Theorem), the first 51 of its 76 problems in the order `tools/practice-card.js` lists them (2026 AIME I #3, then 1983 AIME #4 up to 2016 AIME I #4); sixteen citations were dropped so far, so the card now has 60.
+  - 2.7a, card 1 (Pythagorean Theorem), the first 60 of its 76 problems in the order `tools/practice-card.js` lists them (2026 AIME I #3, then 1983 AIME #4 up to 2022 AIME II #3); eighteen citations were dropped so far, so the card now has 58.
   - 2026 AIME I #3 now cites the method `triangle-of-centers` (Joining the Centers of Tangent Circles), asked by Stanley.
-- **In progress:** 2.7a, card 1, Pythagorean Theorem. **Last problem done: 2016 AIME I, Problem 4.** Next is 2017 AIME I, Problem 4, then the rest of the card's list.
+- **In progress:** 2.7a, card 1, Pythagorean Theorem. **Last problem done: 2022 AIME II, Problem 3.** Next is 2023 AMC 10A, Problem 11, then the rest of the card's list.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
   2. `node tools/practice-card.js pythagorean-theorem` prints every problem citing the card, with statement, tags, strategy and trick. Find the "Next is" problem above and go on in that order.
@@ -29,6 +29,7 @@
   - a strategy never holds a raw `<`: write `\lt`;
   - verify every intermediate value written in a strategy, not just the answer (a wrong quadratic in 2004 AIME II #12 was caught this way);
   - a dihedral angle cites the `dihedral-angle` method; an isosceles trapezoid cut by its altitudes cites the `isosceles-trapezoid` pattern; corner triangles similar by angles cite `triangle-similarity`, with `similar-figures-ratios` only for the area scaling;
+  - spheres in space that touch cite `triangle-of-centers` too (join the centers); `cross-section-method` only where one plane through an axis or the centers holds the whole picture; a sphere's outline in a 3D figure is drawn with `sphereOutline`, not a circle;
   - a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
