@@ -24,6 +24,8 @@ $JSC tools/validate-problem-db.js
 - **Versions:** bump `?v=` in `index.html` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences
+- Update the files regularly: during the practice pass, update "Current state" in `PLAN.md` and the README changelog, and commit and push, after every card or every 8 to 10 problems, whichever comes first.
+- Every missing formula or card found while tagging goes into `QUESTIONS.md` ("Candidate new cards from the practice pass", next P-number, at the top of the table) for approval; the problem cites the nearest card meanwhile.
 - Never put the owner's name in the app's files.
 - Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
 - One fact, one home.
