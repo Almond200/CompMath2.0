@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, fourth cloud chat)
 
-- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,369 with strategies, 1,368 tagged. 181 problems have figures drawn for the app.
+- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,369 with strategies, 1,368 tagged. 185 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -32,7 +32,8 @@
   - 2.7a, card 32 (`law-of-cosines`, 46 problems): **finished**; 27 strategies completed or rewritten, 24 figures drawn.
   - 2.7a, card 33 (`law-cosines-60-120`, 5 problems): **finished**; 2017 AMC 12B #15 (the twin of 10B #19) tagged, 1987 AIME #9 drops `fermat-point`, 2022 AIME I #14 written in full, three figures drawn.
   - 2.7a, card 34 (`law-of-cosines-special-triangles`, 2 problems): **finished**; 2013 AIME II #5 now cites the $60^\circ$ form and Area Ratios from a Cevian.
-- **In progress:** 2.7a, card 35, `angle-bisector-theorem` (19 problems), then on down `js/data/geometry.js` (`angle-bisector-length`, `altitude-bisector-angle`, `stewarts-theorem`, ...). **Last problem done: 2009 AIME I #5; next is 2009 AIME II #10** (the AMC problems, 2026 II #10, 1990 #7, 1992 #9, 2002 I #10, 2003 I #15 and 2009 I #5 are done). (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing; within a card, AMC 10/12 first, then AIME, AMC 8, HMMT.)
+  - 2.7a, card 35 (`angle-bisector-theorem`, 20 problems): **finished**; 2010 AIME II #15 rewritten (spiral similarity and the ratio lemma replace a radical-axis sketch that did not work), eleven strategies completed, eight figures drawn.
+- **In progress:** 2.7a, card 36, `angle-bisector-length`, then on down `js/data/geometry.js` (`altitude-bisector-angle`, `stewarts-theorem`, `cevas-theorem`, ...). **Last problem done: none yet on this card.**
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P6 all written; a new one goes at the top of the table as P7; the file is newest first), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.

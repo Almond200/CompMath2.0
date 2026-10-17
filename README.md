@@ -438,6 +438,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2003 AIME I #15 is now a vector route along the bisector ($D=k(u+v)$, $F=2kv$, $t=\tfrac{49}{289}$), citing Vector Bashing instead of mass points.
   - 2009 AIME I #5: $CP:PL=5:2$ by mass points and $AMCP$ a parallelogram give $LP=72$.
   - Figures drawn for 2022 AMC 10A #13, 2026 AIME II #10, 1992 AIME #9 and 2009 AIME I #5.
+- **Practice pass: the Angle Bisector Theorem card is finished (2026-10-17):**
+  - 2009 AIME II #10 is a coordinate route ($D=\left(\tfrac{120}{23},-\tfrac{65}{23}\right)$, $AD=\tfrac{60\sqrt{13}}{23}$); Stewart's Theorem is dropped.
+  - 2009 AIME II #15: the Ratio Lemma gives $MW=\tfrac{3x}{3x+4y}$, and AM-GM gives $\tfrac1d\ge7+4\sqrt3$, so $d=7-4\sqrt3$.
+  - 2010 AIME II #15 had a radical-axis sketch that does not reach the answer. It now uses the spiral similarity at $P$ and the Ratio Lemma: $\tfrac{BQ}{CQ}=\tfrac{15}{13}\cdot\tfrac{5/18}{13/58}=\tfrac{725}{507}$.
+  - 2011 AIME II #4 states Menelaus with its numbers ($\tfrac{CP}{PA}=\tfrac{31}{20}$).
+  - Figures drawn for all four. The 2010 II #15 figure's self-check caught a triangle drawn with $AB$ and $AC$ swapped before it was committed.
 
 **2026-10-10**
 

@@ -2961,4 +2961,70 @@
     ]);
   })();
 
+  // 2009 AIME II #10: the 5-12-13 triangle, the bisector from A, and D where CB bisects angle ACD.
+  PROB["2009-aime-ii-10"] = (() => {
+    const Bm = [0, 0], Am = [0, 5], Cm = [12, 0], Om = [10 / 3, 0], Dm = [120 / 23, -65 / 23];
+    const Q = fitQ([Am, Bm, Cm, Dm], 28), A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om), D = Q(Dm);
+    const ang = (P, X, Y) => Math.acos(((X[0] - P[0]) * (Y[0] - P[0]) + (X[1] - P[1]) * (Y[1] - P[1])) / dist(P, X) / dist(P, Y));
+    const ok = Math.abs(ang(Am, Bm, Dm) - ang(Am, Dm, Cm)) < 1e-9 && Math.abs(ang(Cm, Am, Bm) - ang(Cm, Bm, Dm)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, D, GLD, 1.8), seg(C, D, ACC, 1.8), rightAngle(B, A, C, 10),
+      angleArc(A, B, D, 28, GLD), angleArc(A, D, C, 28, GLD), angleArc(C, A, B, 30, ACC, true), angleArc(C, B, D, 30, ACC, true),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, -4]), "A", DIM, 13, "end"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"), txt(add(D, [0, 18]), "D"),
+      txt(add(mid(A, B), [-10, 4]), "5", DIM, 12.5, "end"), txt(add(lerp(B, C, 0.75), [0, -8]), "12", DIM, 12.5), txt(add(mid(A, C), [8, -8]), "13", DIM, 12.5, "start"),
+      cap(430, 270, "AB = 5, BC = 12, CA = 13; AD bisects angle BAC (gold) and CB bisects angle ACD (blue), which fixes the lighthouse D." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AIME II #15: diameter MN, A the midpoint of the upper arc, MB = 3/5, C on the lower arc.
+  PROB["2009-aime-ii-15"] = (() => {
+    const R = 115, O = [215, 135], M = [O[0] - R, O[1]], N = [O[0] + R, O[1]], A = [O[0], O[1] - R];
+    const th = Math.acos(3 / 5), B = add(M, mul([Math.cos(th), -Math.sin(th)], 0.6 * 2 * R));
+    const ph = Math.atan(Math.sqrt(3) / 2), C = add(M, mul([Math.cos(ph), Math.sin(ph)], 2 * R * Math.cos(ph)));
+    const V = lineInt(A, C, M, N), W = lineInt(B, C, M, N);
+    const ok = Math.abs(dist(B, O) - R) < 1e-9 && Math.abs(dist(C, O) - R) < 1e-9 && Math.abs(dist(M, B) / (2 * R) - 0.6) < 1e-9;
+    return wrap(430, 290, [
+      circ(O, R, FNT, 1.5), seg(M, N, DIM, 2), seg(A, C, ACC, 1.8), seg(B, C, GLD, 1.8), seg(V, W, PUR, 3.2),
+      ...[M, N, A, B, C, V, W].map(q => dot(q, DIM, 3.2)),
+      txt(add(M, [-10, 5]), "M", DIM, 13, "end"), txt(add(N, [10, 5]), "N", DIM, 13, "start"), txt(add(A, [0, -10]), "A"),
+      gapLabel(B, [M, C, O], "B"), txt(add(C, [0, 20]), "C"), txt(add(mid(V, W), [0, -9]), "d", PUR, 13),
+      cap(430, 290, "MN is a diameter of length 1, A is the midpoint of the upper arc, MB = 3/5, and C is on the lower arc; d is the piece of MN between the chords AC and BC." + MM(ok))
+    ]);
+  })();
+
+  // 2010 AIME II #15: the 13-14-15 triangle, the circles (AMN) and (ADE), and ray AP to Q.
+  PROB["2010-aime-ii-15"] = (() => {
+    const Bm = [0, 0], Cm = [14, 0], Am = [9, 12], Mm = mid(Am, Cm), Nm = mid(Am, Bm);
+    const Dm = lerp(Am, Cm, 15 / 29), Em = lerp(Am, Bm, 13 / 27);
+    const [O1, r1] = circ3(Am, Mm, Nm), [O2, r2] = circ3(Am, Dm, Em);
+    const f = foot(Am, O1, O2), Pm = sub(mul(f, 2), Am), Qm = lineInt(Am, Pm, Bm, Cm);
+    const ok = Math.abs(dist(Bm, Qm) / dist(Qm, Cm) - 725 / 507) < 1e-9 && Math.abs(dist(Pm, O1) - r1) < 1e-9 && Math.abs(dist(Pm, O2) - r2) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 26), k = Q.k, A = Q(Am), B = Q(Bm), C = Q(Cm), M = Q(Mm), N = Q(Nm), D = Q(Dm), E = Q(Em), P = Q(Pm), Qq = Q(Qm);
+    return wrap(430, 270, [
+      circ(Q(O1), r1 * k, ACC, 1.4), circ(Q(O2), r2 * k, GLD, 1.4), poly([A, B, C], DIM, 2), seg(A, Qq, PUR, 1.8),
+      ...[A, B, C, M, N, D, E, P, Qq].map(q => dot(q, DIM, 3)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      txt(add(N, mul(perp(norm(sub(A, B))), 14)), "N", ACC, 12), txt(add(E, mul(perp(norm(sub(A, B))), -14)), "E", GLD, 12),
+      txt(add(M, mul(perp(norm(sub(C, A))), 14)), "M", ACC, 12), txt(add(D, mul(perp(norm(sub(C, A))), -14)), "D", GLD, 12),
+      gapLabel(P, [A, Qq], "P", PUR, 12), txt(add(Qq, [0, 18]), "Q", PUR),
+      cap(430, 270, "AB = 15, BC = 14, CA = 13; M and N are midpoints, BD and CE bisect angles B and C, the circles AMN (blue) and ADE (gold) meet again at P, and ray AP meets BC at Q." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AIME II #4: AB = 20/11 AC, the bisector AD, its midpoint M, and P = BM ∩ AC.
+  PROB["2011-aime-ii-4"] = (() => {
+    const c = 20, b = 11, a = 24, Bm = [0, 0], Cm = [a, 0], ax = (c * c - b * b + a * a) / (2 * a), Am = [ax, Math.sqrt(c * c - ax * ax)];
+    const Dm = lerp(Bm, Cm, 20 / 31), Mm = mid(Am, Dm), Pm = lineInt(Bm, Mm, Am, Cm);
+    const ok = Math.abs(dist(Cm, Pm) / dist(Pm, Am) - 31 / 20) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 28), A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), M = Q(Mm), P = Q(Pm);
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, D, GLD, 1.8), seg(B, P, ACC, 1.8), ticksOn(A, M, 1), ticksOn(M, D, 1),
+      ...[A, B, C, D, M, P].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      txt(add(D, [0, 18]), "D"), gapLabel(M, [A, D, B, P], "M"), gapLabel(P, [A, C, B], "P"),
+      cap(430, 270, "AB = (20/11)·AC, AD bisects angle A, M is the midpoint of AD, and line BM meets AC at P." + MM(ok))
+    ]);
+  })();
+
 })();
