@@ -488,6 +488,46 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2017 AIME I #6: $2u^2+(1-2u)^2=\tfrac{11}{25}$ gives $x=84^\circ$ or $36^\circ$.
   - 2021 AIME II #14: $AXOG$ and $OGMY$ are cyclic, so $\angle XOY=\angle XAM+\angle AMY=180^\circ-(B-C)=A+2C$ (checked on three triangles), giving $A=\tfrac{585}7$. The cyclic-quadrilateral tag is replaced by the tangent-chord angle.
   - Figures drawn for 1991 AIME #14 and 2021 AIME II #14.
+- **Practice pass: Thales' Theorem, Angles from Chords and Tangent Line Facts finished (2026-10-17):**
+  - 2017 AIME I #8: $QR=200\sin|a-b|$, so $QR\le100$ means $|a-b|\le30$ and the probability is $\tfrac{16}{25}$ (checked by simulation).
+  - 2000 AIME II #10: $\tan(\alpha+\beta)=-\tan(\gamma+\delta)$ gives $105r^2=67935$, $r^2=647$.
+  - 2002 AIME II #15: the radii are the roots of $k^2r^2-(18k+12)r+117=0$, so $\tfrac{117}{k^2}=68$ and $m=\tfrac{12\sqrt{221}}{49}$ (Vieta and the double angle formula).
+  - 2007 AIME I #9: tangent lengths $\tfrac r4$ and $\tfrac{3r}5$, so $\tfrac{57r}{20}=34$.
+  - 2007 AIME II #9: $EP=378-364=14$ and $EQ=378-105=273$, so $PQ=259$; it cites Incircle Tangent Lengths.
+  - 2023 AIME I #8: $r=\tfrac{25}2$, the projections $\tfrac72$ and $\tfrac{15}2$ give $\cos A=\tfrac35$, and the perimeter is $125$.
+  - 2025 AMC 10A #20 cites the distance method for tangent lines.
+  - Figures drawn for 2017 AIME I #8, 2025 AMC 10A #20, 2000 AIME II #10, 2007 AIME I #9, 2007 AIME II #9 and 2023 AIME I #8.
+- **Practice pass: the tangent-chord angle, radical axis, Apollonius circle, Descartes, tangent circles and common tangents cards finished (2026-10-17):**
+  - 2019 AIME I #15: the homotheties at $A$ and $B$ make $OO_1PO_2$ a parallelogram, so $OQ\perp PQ$, $Q$ is the midpoint of $XY$, and $PQ^2=\tfrac{121-60}4=\tfrac{61}4$.
+  - 2021 AIME I #13: linearity of power gives $672r=2d\cdot\tfrac r2$, so $d=672$.
+  - 2015 AIME II #15: in coordinates $\ell$ has slope $\tfrac32$, $AD=\tfrac4{\sqrt{13}}$, and the area is $\tfrac{64}{65}$; the common-tangent card is dropped (not used).
+  - 2005 AIME II #15: the centers lie on $\tfrac{x^2}{100}+\tfrac{(y-12)^2}{75}=1$, and tangency gives $a^2=\tfrac{69}{100}$.
+  - 2023 AMC 12B #10 states the slopes ($-\tfrac52$, so $\tfrac25$).
+  - Figures drawn for 2019 AIME I #15 and 2021 AIME I #13.
+- **Practice pass: cyclic-quadrilateral cards, Ptolemy, Pitot and Distance & Midpoint finished (2026-10-17):**
+  - 2001 AIME I #13: Ptolemy on the trapezoid gives $(c+20)^2=484+22c$, so $c=-9+\sqrt{165}$.
+  - 2020 AIME II #4: a $90^\circ$ clockwise turn about $(21,-3)$, so the answer is $108$.
+  - 2021 AIME I #6: $BP^2+CP^2+DP^2-GP^2=2AP^2$, so $AP=192$ (the old text had a garbled scaling step).
+  - 2022 AIME I #1: $P+Q$ is the line through $(16,108)$ and $(20,106)$, so it cites Forms of a Line, not distance and midpoint.
+  - Figure drawn for 2001 AIME I #13.
+- **Practice pass: Forms of a Line, Angle Between Lines, Shoelace and Pick's Theorem finished (2026-10-17):**
+  - 2005 AIME I #10: $|980-56p|=140$ gives $p=15$ and $p+q=47$.
+  - 2009 AIME I #11: the determinant is $2009(x_1-x_2)$, so the count is $2\binom{25}2=600$.
+  - 2017 AIME II #10: $O=(12,24)$, $[BCON]=2184$, $P=(32,29)$, $[CDP]=546$.
+  - 2019 AIME I #3 is now the sine area formula on the three corners ($150-10-7.5-12.5=120$), and 2025 AMC 12A #17 is base times height; neither cites the shoelace formula.
+  - The AMC 10A/12A/12B line and angle problems state their numbers.
+  - Figures drawn for 2017 AIME II #10 and 2019 AIME I #3.
+- **Practice pass: point-line distance through rotations finished (2026-10-17):** ten vague strategies written in full and checked by computation.
+  - 2024 AIME I #9: $\tfrac1{OA^2}+\tfrac1{OB^2}=\tfrac1{120}$, so $BD^2\gt480$.
+  - 2020 AIME II #7: $r=\tfrac{15}{\sqrt{73}}$.
+  - 2025 AIME I #9: the image is the reflection in $y=-\sqrt3x$ (two reflections make the rotation), so the point is on that line; it cites Composing Two Reflections.
+  - 2021 AIME I #15: the combination $2(\text{first})+(\text{second})$ is a circle of radius$^2$ $\tfrac{325}{16}+\tfrac{3k}2$, so $k\le280$, with four intersections from $k=5$.
+  - 2011 AIME I #3: the signed distances give $\alpha+\beta=\tfrac{403}{13}=31$.
+  - 2000 AIME I #2: the area is $u(u+3v)=11\cdot41$, so $u+v=21$ (the old text had a placeholder).
+  - 2005 AIME I #14: equal perpendicular segments in a square give $E=(2,-2)$ and $K=\tfrac{1936}{10}$.
+  - 2010 AIME I #11: two cones, volume $\tfrac{343\pi}{12\sqrt{10}}$.
+  - 2017 AIME II #12: $B=\tfrac{1-r}{1-ri}$, $|B|=\tfrac{49}{61}$ (checked by simulation).
+  - 2017 AIME I #15: the third vertex on the hypotenuse is $\tfrac7{20}p+\tfrac{11\sqrt3}{60}q=1$, so the side squared is $\tfrac{300}{67}$.
 
 **2026-10-10**
 
