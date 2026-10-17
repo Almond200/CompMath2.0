@@ -3125,7 +3125,7 @@
     return wrap(430, 290, [
       circ(Q(Om), R * k, FNT, 1.4), circ(Q(O2), R2 * k, ACC, 1.2, "none", "5 4"), poly([A, B, C], DIM, 2), seg(A, Q([0, 0]), DIM, 1.2, "4 3"),
       seg(X, Y, GLD, 1.8), ...[A, B, C, X, Y].map(q => dot(q, DIM, 3.2)), dot(H, ACC, 3.4),
-      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"), txt(add(H, [10, 4]), "H", ACC, 13, "start"),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"), txt(add(H, [-9, 4]), "H", ACC, 13, "end"),
       txt(add(X, [0, -10]), "X"), gapLabel(Y, [X], "Y"),
       cap(430, 290, "ω with orthocenter H; the circle HBC (dashed blue) and its tangent at H, which meets ω at X and Y, with HA = 3, HX = 2 and HY = 6." + MM(ok))
     ]);
@@ -3212,6 +3212,64 @@
       poly(cut.map(Pj), GLD, 1.8, GLDS), dot(A, DIM, 3.2), dot(B, DIM, 3.2), dot(O, GLD, 3.2),
       txt(add(A, [0, -9]), "A"), txt(add(B, [0, 18]), "B"), txt(add(O, [-8, -6]), "O", GLD, 13, "end"),
       cap(430, 290, "A cylinder of radius 6 and height 8; A and B on the bottom rim are 120° apart, and the plane through A, B and the center O cuts it (the cut face in gold)." + MM(ok))
+    ]);
+  })();
+
+  // 2001 AIME II #6: square ABCD in its circle and square EFGH on CD reaching the circle.
+  PROB["2001-aime-ii-6"] = (() => {
+    const sq = 0.2, R = Math.SQRT1_2, Am = [-0.5, 0.5], Bm = [0.5, 0.5], Cm = [0.5, -0.5], Dm = [-0.5, -0.5];
+    const Em = [-sq / 2, -0.5], Fm = [sq / 2, -0.5], Gm = [sq / 2, -0.5 - sq], Hm = [-sq / 2, -0.5 - sq];
+    const ok = Math.abs(Math.hypot(...Gm) - R) < 1e-12 && Math.abs(Math.hypot(...Hm) - R) < 1e-12;
+    const Q = fitQ([[-R, -R], [R, R]], 20, 430, 290), k = Q.k;
+    const P = [Am, Bm, Cm, Dm, Em, Fm, Gm, Hm].map(Q), [A, B, C, D, E, F, G, H] = P;
+    return wrap(430, 290, [
+      circ(Q([0, 0]), R * k, FNT, 1.5), poly([A, B, C, D], DIM, 2), poly([E, F, G, H], ACC, 1.8, ACCS),
+      ...P.map(q => dot(q, DIM, 2.8)),
+      txt(add(A, [-8, -6]), "A", DIM, 13, "end"), txt(add(B, [8, -6]), "B", DIM, 13, "start"), txt(add(C, [10, 0]), "C", DIM, 13, "start"), txt(add(D, [-10, 0]), "D", DIM, 13, "end"),
+      txt(add(E, [-4, -7]), "E", ACC, 11.5, "end"), txt(add(F, [4, -7]), "F", ACC, 11.5, "start"), txt(add(G, [8, 10]), "G", ACC, 11.5, "start"), txt(add(H, [-8, 10]), "H", ACC, 11.5, "end"),
+      cap(430, 290, "Square ABCD inscribed in a circle, and square EFGH with E and F on CD and G and H on the circle." + MM(ok))
+    ]);
+  })();
+
+  // 2016 AIME I #15: ω1, ω2 meeting at X and Y, the common tangent AB, and ω through A, B, C, D with C, Y, D collinear
+  // (one configuration that fits; the given lengths fix the answer, not the shape).
+  PROB["2016-aime-i-15"] = (() => {
+    const r1 = 3, r2 = 5, L = 7, O1 = [0, r1], O2 = [L, r2], Am = [0, 0], Bm = [L, 0];
+    const meet = (P0, a0, P1, a1) => { const d = dist(P0, P1), a = (a0 * a0 - a1 * a1 + d * d) / (2 * d), h = Math.sqrt(a0 * a0 - a * a), e = norm(sub(P1, P0));
+      return [add(add(P0, mul(e, a)), mul(perp(e), h)), add(add(P0, mul(e, a)), mul(perp(e), -h))]; };
+    const [U, V] = meet(O1, r1, O2, r2), Xm = U[1] < V[1] ? U : V, Ym = U[1] < V[1] ? V : U;
+    const cfg = kk => { const O = [L / 2, kk], r = dist(O, Am), far = (pr, P) => pr[0][0] === undefined ? pr : (dist(pr[0], P) > dist(pr[1], P) ? pr[0] : pr[1]);
+      return { O, r, D: far(meet(O, r, O1, r1), Am), C: far(meet(O, r, O2, r2), Bm) }; };
+    const crossY = kk => { const { C, D } = cfg(kk); return (C[0] - Ym[0]) * (D[1] - Ym[1]) - (C[1] - Ym[1]) * (D[0] - Ym[0]); };
+    let lo = 3, hi = 10; for (let i = 0; i < 80; i++) { const md = (lo + hi) / 2; if (crossY(lo) * crossY(md) <= 0) hi = md; else lo = md; }
+    const { O, r, C: Cm, D: Dm } = cfg(lo);
+    const ok = Math.abs(crossY(lo)) < 1e-7 && Math.abs(dist(Xm, Cm) * dist(Xm, Dm) - dist(Xm, Ym) ** 2 - L * L) < 1e-6;
+    const Q = fitQ([[-r1, 0], [L + r2, 0], [L / 2, lo + r], [L / 2, lo - r], [0, 2 * r1], [L, 2 * r2]], 14, 430, 300), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), X = Q(Xm), Y = Q(Ym);
+    return wrap(430, 300, [
+      circ(Q(O1), r1 * k, ACC, 1.4), circ(Q(O2), r2 * k, ACC, 1.4), circ(Q(O), r * k, GLD, 1.4, "none", "5 4"),
+      seg(Q([-2, 0]), Q([L + 3, 0]), DIM, 1.6), seg(C, D, DIM, 1.6), seg(X, C, PUR, 1.4), seg(X, D, PUR, 1.4), seg(X, Y, PUR, 1.4),
+      ...[A, B, C, D, X, Y].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-6, 16]), "A", DIM, 13, "end"), txt(add(B, [6, 16]), "B", DIM, 13, "start"), gapLabel(C, [D, X], "C"), gapLabel(D, [C, X], "D"),
+      gapLabel(X, [A, B, C, D, Y], "X"), gapLabel(Y, [C, D, X], "Y"),
+      cap(430, 300, "ω1 and ω2 (blue) meet at X and Y and touch line AB at A and B; ω (dashed gold) through A and B meets them again at D and C, with C, Y, D collinear. XC = 67, XY = 47, XD = 37 in the problem; this drawing shows the shape only." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AIME II #9: ω1, ω2 through P and Q, the tangent AB, and the parallel XY through P (the trapezoid the conditions force).
+  PROB["2023-aime-ii-9"] = (() => {
+    const h = Math.sqrt(15), Pm = [0, -h], Xm = [-10, -h], Ym = [14, -h], Am = [-5, 0], Bm = [7, 0];
+    const [O1, r1] = circ3(Am, Xm, Pm), [O2, r2] = circ3(Bm, Ym, Pm);
+    const Mm = [1, 0], u = norm(sub(Pm, Mm)), Qm = add(Pm, mul(u, 5));
+    const ok = Math.abs(dist(Qm, O1) - r1) < 1e-9 && Math.abs(dist(Qm, O2) - r2) < 1e-9 && Math.abs(Math.abs(O1[1]) - r1) < 1e-9 && Math.abs(Math.abs(O2[1]) - r2) < 1e-9;
+    const Q = fitQ([[O1[0] - r1, 0], [O2[0] + r2, 0], [O1[0], O1[1] - r1], [O2[0], O2[1] - r2], Xm, Ym], 14, 430, 300), k = Q.k;
+    const A = Q(Am), B = Q(Bm), X = Q(Xm), Y = Q(Ym), P = Q(Pm), Qq = Q(Qm);
+    return wrap(430, 300, [
+      circ(Q(O1), r1 * k, ACC, 1.4), circ(Q(O2), r2 * k, ACC, 1.4), poly([X, A, B, Y], GLD, 1.8, GLDS), seg(P, Qq, DIM, 1.3, "4 3"),
+      ...[A, B, X, Y, P, Qq].map(q => dot(q, DIM, 3)),
+      txt(add(A, [0, -9]), "A"), txt(add(B, [0, -9]), "B"), txt(add(X, [-10, 4]), "X", DIM, 13, "end"), txt(add(Y, [10, 4]), "Y", DIM, 13, "start"),
+      txt(add(P, [6, 16]), "P"), gapLabel(Qq, [P], "Q"),
+      cap(430, 300, "ω1 and ω2 meet at P and Q; their common tangent touches them at A and B, and the line through P parallel to AB meets them again at X and Y (PX = 10, PY = 14, PQ = 5)." + MM(ok))
     ]);
   })();
 

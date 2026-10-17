@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, fourth cloud chat)
 
-- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 197 problems have figures drawn for the app.
+- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 200 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -39,8 +39,9 @@
   - 2.7a, cards 46 to 57 (`steiner-ratio-theorem` through `triangle-center-angles`: Carnot's perpendicularity, anticomplementary, orthic and medial triangles, Euler's distance, nine-point circle, Brocard angle, orthocenter properties, Fermat point, Leibniz): **finished**. 2024 AIME II #10, 2020 AIME I #15 and 2025 AIME I #14 written in full with figures; 2025 I #14 is Ptolemy's inequality, not the Fermat point, so `fermat-point` now cites no problem. 2019 HMMT Feb Geometry #7 has no statement text, so it gets no figure.
   - 2.7a, card `circle-basics` (20 problems): **finished**. Full routes for 1983 AIME #15 (coordinates, $\sin=\tfrac7{25}$), 2000 AIME I #13 (the envelope line of slope $-\tfrac7{24}$, $\tfrac{700}{31}$) and 2014 AIME I #10 ($B=(2,3\sqrt3)$); 2022 AMC 10A #15 shows the cosine step; 2025 AMC 10A #25 uses a sector instead of integrals. Figures for 2022 AMC 10A #15, 2014 AIME I #10 and 2008 AIME I #5.
   - 2.7a, card `circular-segment` (7 problems): **finished**; 2015 AIME I #15 now reaches its answer ($\tfrac53(12\pi+18\sqrt3)$, $53$) and has a cylinder figure.
-- **This chat so far (fourth cloud chat):** cards 33 to 57, `circle-basics` and `circular-segment` checked; about 58 geometry cards that cite problems remain.
-- **In progress:** 2.7a, `power-of-a-point` (17 problems), then on down `js/data/geometry.js`. **Last problem done: 2015 AIME I #15.**
+  - 2.7a, card `power-of-a-point` (17 problems): **finished**. Five vague strategies written in full: 2001 AIME II #6 ($s(1+s)=\tfrac{(1-s)(1+s)}4$), 2016 AIME I #15 ($YC\cdot YD=AB^2$ by two similarities, then the bisector length, $270$), 2022 AIME I #11 ($x=\tfrac92$, $147\sqrt3$), 2023 AIME II #9 ($MP=4$, $18\sqrt{15}$), 2024 AIME I #5 ($e(e+184)=561$). Figures for 2001 II #6, 2016 I #15 and 2023 II #9.
+- **Progress in `js/data/geometry.js` (245 cards):** the first 124 cards are done, through `power-of-a-point`; 64 of them cite problems and every one of those is checked. About 59 geometry cards that cite problems remain.
+- **In progress:** 2.7a, the next card after `power-of-a-point` in `js/data/geometry.js` that cites a problem. **Last problem done: 2024 AIME I #5.**
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P6 all written; P7 open; a new one goes at the top of the table as P8; the file is newest first), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.

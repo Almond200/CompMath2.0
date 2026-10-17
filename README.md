@@ -470,6 +470,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2008 AIME I #5 and 2003 AIME I #2 state their numbers in place of "carried through".
   - Figures drawn for 2022 AMC 10A #15, 2014 AIME I #10 and 2008 AIME I #5.
 - **Practice pass: Circular Segment & Lens Areas finished (2026-10-17).** 2015 AIME I #15 stopped before its answer. It now finds the projection, the disc minus two $120^\circ$ segments ($12\pi+18\sqrt3$), and divides by $\cos\theta=\tfrac35$, giving $20\pi+30\sqrt3$ and $53$. Affine Transformations is dropped; Projected Area is the step. A cylinder figure shows the cut. The other six problems were re-checked and needed no change.
+- **Practice pass: Power of a Point finished (2026-10-17):** five vague strategies written in full.
+  - 2001 AIME II #6: the chord through $F$ perpendicular to $CD$ gives $s(1+s)=\tfrac{(1-s)(1+s)}4$, so $s=\tfrac15$. The quadratic formula tag is dropped.
+  - 2016 AIME I #15: tangent-chord angles and the circle $ABCD$ make $ADY$, $YAB$, $YCB$ similar, so $YC\cdot YD=AB^2$; $XY$ bisects $\angle CXD$, and the bisector length gives $AB^2=67\cdot37-47^2=270$ (found and checked on a numerical model).
+  - 2022 AIME I #11: tangent lengths $6$ and $20$, and the diameter between the parallel sides gives $\cos A=\tfrac{6-x}{6+x}$; with $AC=28$, $x=\tfrac92$ and the area is $147\sqrt3$.
+  - 2023 AIME II #9: $A$ and $B$ sit over the midpoints of $XP$ and $PY$, so $AB=12$; $MP(MP+5)=36$ gives $h=\sqrt{15}$ and area $18\sqrt{15}$.
+  - 2024 AIME I #5: the power of $E$ gives $e(e+184)=17\cdot33$, so $CE=104$. Ptolemy is dropped.
+  - Figures drawn for 2001 AIME II #6, 2016 AIME I #15 and 2023 AIME II #9.
 
 **2026-10-10**
 
