@@ -438,6 +438,56 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2003 AIME I #15 is now a vector route along the bisector ($D=k(u+v)$, $F=2kv$, $t=\tfrac{49}{289}$), citing Vector Bashing instead of mass points.
   - 2009 AIME I #5: $CP:PL=5:2$ by mass points and $AMCP$ a parallelogram give $LP=72$.
   - Figures drawn for 2022 AMC 10A #13, 2026 AIME II #10, 1992 AIME #9 and 2009 AIME I #5.
+- **Practice pass: the Angle Bisector Theorem card is finished (2026-10-17):**
+  - 2009 AIME II #10 is a coordinate route ($D=\left(\tfrac{120}{23},-\tfrac{65}{23}\right)$, $AD=\tfrac{60\sqrt{13}}{23}$); Stewart's Theorem is dropped.
+  - 2009 AIME II #15: the Ratio Lemma gives $MW=\tfrac{3x}{3x+4y}$, and AM-GM gives $\tfrac1d\ge7+4\sqrt3$, so $d=7-4\sqrt3$.
+  - 2010 AIME II #15 had a radical-axis sketch that does not reach the answer. It now uses the spiral similarity at $P$ and the Ratio Lemma: $\tfrac{BQ}{CQ}=\tfrac{15}{13}\cdot\tfrac{5/18}{13/58}=\tfrac{725}{507}$.
+  - 2011 AIME II #4 states Menelaus with its numbers ($\tfrac{CP}{PA}=\tfrac{31}{20}$).
+  - Figures drawn for all four. The 2010 II #15 figure's self-check caught a triangle drawn with $AB$ and $AC$ swapped before it was committed.
+- **Practice pass: Length of an Angle Bisector, Stewart's Theorem, Ceva's Theorem and Menelaus' Theorem finished (2026-10-17):**
+  - 1989 AIME #15: mass points give $m_A=2$, $m_B=m_C=1$, so $CP=15$; doubling the median $PD$ gives a $9$-$12$-$15$ right triangle, $[PBC]=54$ and $[ABC]=108$. Stewart and Ceva are dropped.
+  - 1988 AIME #12: the three triangles at $P$ give $\sum\tfrac3{a+3}=1$, so $abc=9\cdot43+54=441$; Ceva is dropped, so Ceva's Theorem cites no problem now.
+  - 2003 AIME I #7 lists the factor pairs and excludes $m=15$ (the degenerate one); the alternative uses the foot at the midpoint of $AC$.
+  - 2023 AIME II #12: $Q$ is $P$ reflected in $M$ (opposite angles of the parallelogram $BPCQ$), so $AQ=2\sqrt{37}-\tfrac{49}{2\sqrt{37}}=\tfrac{99}{\sqrt{148}}$.
+  - New candidate card P7 in QUESTIONS.md: the Cevian Ratio Sum $\tfrac{PD}{AD}+\tfrac{PE}{BE}+\tfrac{PF}{CF}=1$.
+  - Figures drawn for 2003 AIME I #7 and 2023 AIME II #12.
+- **Practice pass: Apollonius's Theorem, Viviani's Theorem, the Ratio Lemma, the Cotangent Rule, the Projection Formula and the Incenter-Excenter Lemma finished (2026-10-17):**
+  - The seven Apollonius problems were re-checked by computation and needed no change.
+  - 2007 AMC 12B #14 and its twin 10B #17 (untagged until now) share one entry: the height is $1+2+3=6$, so $AB=4\sqrt3$.
+  - 2005 AIME II #14 now names the identity it derives as Steiner's Ratio Theorem ($q=463$).
+  - 2016 AIME I #6 is written in full: $DI=DA=5$, $DA^2=DL\cdot DC$ gives $DC=\tfrac{25}3$, so $IC=\tfrac{10}3$. Angle chasing and the cyclic-quadrilateral card are dropped for Triangle Similarity.
+  - Figures drawn for 2007 AMC 12B #14 (shared with 10B #17) and 2016 AIME I #6.
+- **Practice pass: the triangle-center cards finished, Steiner's Ratio Theorem through Angles at the Triangle Centers (2026-10-17):**
+  - 2024 AIME II #10: $OI\perp AI$ makes $I$ the midpoint of the chord $AM$, the power of $I$ gives $AI=\sqrt{156}$, and $AB\cdot AC=AI\cdot AI_A=468$.
+  - 2020 AIME I #15: $HD=2$, the tangent at $H$ is perpendicular to $AO$ (parallelogram $AHO'O$), $R=\tfrac{21}{2\sqrt5}$ and the area is $3\sqrt{55}$.
+  - 2025 AIME I #14 had a garbled strategy. Now: two $30$-$60$-$90$ corners, Ptolemy's inequality twice, and $BE=38$, so the minimum is $38+19\sqrt3$ (checked by numerical minimization). Fermat Point is dropped, so that card cites no problem now.
+  - Figures drawn for all three; the pentagon figure's self-check caught a wrong vertex before it was committed.
+- **Practice pass: Circle Area, Circumference, Arcs & Sectors finished (2026-10-17):**
+  - 1983 AIME #15 gets a full route: the midpoints of chords from $A$ lie on the circle with diameter $AO$, which must touch $BC$; with $BC$ on $y=-4$ this gives $A=(-4,-3)$ and $\sin=\tfrac7{25}$. Circle basics and power of a point are dropped.
+  - 2000 AIME I #13: the line through $(5,0)$ of slope $-\tfrac7{24}$ is tangent to every reachable disc, so the region is $\tfrac{700}{31}$.
+  - 2014 AIME I #10: the disk turns $6\alpha$, so $\alpha=60^\circ$, $B=(2,3\sqrt3)$ and $\sin^2=\tfrac{27}{31}$.
+  - 2022 AMC 10A #15 shows why $AC=25$ ($\cos B=0$ from the two Law of Cosines equations) and cites the Law of Cosines. 2025 AMC 10A #25 replaces its integrals with a $60^\circ$ sector and a $30$-$60$-$90$ triangle (checked by simulation).
+  - 2008 AIME I #5 and 2003 AIME I #2 state their numbers in place of "carried through".
+  - Figures drawn for 2022 AMC 10A #15, 2014 AIME I #10 and 2008 AIME I #5.
+- **Practice pass: Circular Segment & Lens Areas finished (2026-10-17).** 2015 AIME I #15 stopped before its answer. It now finds the projection, the disc minus two $120^\circ$ segments ($12\pi+18\sqrt3$), and divides by $\cos\theta=\tfrac35$, giving $20\pi+30\sqrt3$ and $53$. Affine Transformations is dropped; Projected Area is the step. A cylinder figure shows the cut. The other six problems were re-checked and needed no change.
+- **Practice pass: Power of a Point finished (2026-10-17):** five vague strategies written in full.
+  - 2001 AIME II #6: the chord through $F$ perpendicular to $CD$ gives $s(1+s)=\tfrac{(1-s)(1+s)}4$, so $s=\tfrac15$. The quadratic formula tag is dropped.
+  - 2016 AIME I #15: tangent-chord angles and the circle $ABCD$ make $ADY$, $YAB$, $YCB$ similar, so $YC\cdot YD=AB^2$; $XY$ bisects $\angle CXD$, and the bisector length gives $AB^2=67\cdot37-47^2=270$ (found and checked on a numerical model).
+  - 2022 AIME I #11: tangent lengths $6$ and $20$, and the diameter between the parallel sides gives $\cos A=\tfrac{6-x}{6+x}$; with $AC=28$, $x=\tfrac92$ and the area is $147\sqrt3$.
+  - 2023 AIME II #9: $A$ and $B$ sit over the midpoints of $XP$ and $PY$, so $AB=12$; $MP(MP+5)=36$ gives $h=\sqrt{15}$ and area $18\sqrt{15}$.
+  - 2024 AIME I #5: the power of $E$ gives $e(e+184)=17\cdot33$, so $CE=104$. Ptolemy is dropped.
+  - Figures drawn for 2001 AIME II #6, 2016 AIME I #15 and 2023 AIME II #9.
+- **Practice pass: Length of a Chord finished (2026-10-17):**
+  - 2023 AIME I #5 is now Thales and areas: $P$ is $\tfrac{56}d$ and $\tfrac{90}d$ from the diagonals, so $d^4=44944$ and the area is $106$. Ptolemy and the chord card are dropped.
+  - 1985 AIME #9 states $k^2=\tfrac{256}{15}$ and the two cosines $\tfrac{11}{16}$, $\tfrac{14}{16}$.
+  - 2023 AMC 12B #20 explains the answer correctly: the start lies on the second circle, and the good points form an arc of $2\theta$, $\theta=2\arcsin\tfrac14$.
+  - Figures drawn for 1985 AIME #9 and 2023 AIME I #5; the second figure's self-check caught a misplaced $P$ before commit.
+- **Practice pass: Equal Chords, Arcs & Distances and the Inscribed Angle Theorem finished (2026-10-17):**
+  - 2011 AIME I #10 counts obtuse triangles from their first vertex: $\tfrac{3(k-1)}{2(2k-1)}$ for $n=2k+1$ and $\tfrac{3(k-2)}{2(2k-1)}$ for $n=2k$, giving $127+376=503$.
+  - 2015 AIME I #6: $\tfrac32(m-a)=12^\circ$ and $5m=180^\circ-2a$ give $a=20^\circ$, $m=28^\circ$, so $\angle BAG=10^\circ+48^\circ=58^\circ$.
+  - 2017 AIME I #6: $2u^2+(1-2u)^2=\tfrac{11}{25}$ gives $x=84^\circ$ or $36^\circ$.
+  - 2021 AIME II #14: $AXOG$ and $OGMY$ are cyclic, so $\angle XOY=\angle XAM+\angle AMY=180^\circ-(B-C)=A+2C$ (checked on three triangles), giving $A=\tfrac{585}7$. The cyclic-quadrilateral tag is replaced by the tangent-chord angle.
+  - Figures drawn for 1991 AIME #14 and 2021 AIME II #14.
 
 **2026-10-10**
 
