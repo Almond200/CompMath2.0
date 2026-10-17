@@ -2316,7 +2316,7 @@
   // 1996 AIME #13: triangle ABC, the median AE extended to D with angle ADB = 90°.
   PROB["1996-aime-13"] = (() => {
     const k = 44, Q = (x, y) => [70 + k * x, 220 - k * y], ab = Math.sqrt(30), ac = Math.sqrt(6), bc = Math.sqrt(15);
-    const cx = (ab * ab + bc * bc - ac * ac) / (2 * ab), A = Q(0, 0), B = Q(ab, 0), C = Q(cx, Math.sqrt(bc * bc - cx * cx)), E = mid(B, C), D = foot(B, A, E);
+    const cx = (ab * ab + ac * ac - bc * bc) / (2 * ab), A = Q(0, 0), B = Q(ab, 0), C = Q(cx, Math.sqrt(ac * ac - cx * cx)), E = mid(B, C), D = foot(B, A, E);
     const ok = Math.abs(dist(A, D) / dist(A, E) - 27 / 19) < 1e-9;
     return wrap(430, 270, [
       poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.6), seg(B, D, FNT, 1.4, "4 3"), rightAngle(D, A, B, 8), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
