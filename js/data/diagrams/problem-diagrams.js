@@ -2637,7 +2637,7 @@
       circ(O, R, FNT, 1.5), circ(G, g, ACC, 1.4, "none", "5 4"), poly([A, B, C], DIM, 2), seg(A, E, DIM, 1.6), seg(A, Fx, GLD, 2),
       ...[A, B, C, D, E].map(q => dot(q, DIM, 3)), dot(Fx, GLD, 3.5),
       txt(add(A, [0, 18]), "A"), txt(add(B, [-12, 0]), "B", DIM, 13, "end"), txt(add(C, [12, 0]), "C", DIM, 13, "start"), txt(add(D, [10, 14]), "D", DIM, 13, "start"),
-      txt(add(E, [8, 22], "E", DIM, 13, "start"), txt(away(Fx, O, 14), "F", GLD), txt(add(G, [g + 6, 0]), "γ", ACC, 13, "start"),
+      txt(add(E, [-8, 22]), "E", DIM, 13, "end"), txt(away(Fx, O, 14), "F", GLD), txt(add(G, [g + 6, 0]), "γ", ACC, 13, "start"),
       cap(430, 300, "Triangle ABC (AB = 5, BC = 7, AC = 3) in its circle ω; the bisector from A meets BC at D and ω at E, and the circle γ on diameter DE (dashed) meets ω again at F." + MM(ok))
     ]);
   })();
