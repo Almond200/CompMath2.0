@@ -3578,4 +3578,20 @@
     ]);
   })();
 
+
+  // 2008 AIME II #13: the regular hexagon centered at 0 whose vertical sides are one unit apart.
+  PROB["2008-aime-ii-13"] = (() => {
+    const k = 165, Q = p => [215 + k * p[0], 118 - k * p[1]], R = 1 / Math.sqrt(3);
+    const Vm = [30, 90, 150, 210, 270, 330].map(a => [R * Math.cos(rad(a)), R * Math.sin(rad(a))]);
+    const ok = Math.abs(Vm[0][0] - Vm[5][0]) < 1e-12 && Math.abs((Vm[0][0] - Vm[2][0]) - 1) < 1e-12 && Math.abs(dist(Vm[0], Vm[1]) - R) < 1e-12;
+    const V = Vm.map(Q), O = Q([0, 0]), L = Q([-0.5, -0.72]), Rr = Q([0.5, -0.72]);
+    return wrap(430, 270, [
+      seg(Q([-0.95, 0]), Q([0.95, 0]), DIM, 1), seg(Q([0, -0.64]), Q([0, 0.64]), DIM, 1),
+      poly(V, ACC, 2, ACCS),
+      seg(Q([-0.5, -0.29]), add(L, [0, 6]), DIM, 1, "4 3"), seg(Q([0.5, -0.29]), add(Rr, [0, 6]), DIM, 1, "4 3"), seg(L, Rr, GLD, 2), seg(add(L, [0, -5]), add(L, [0, 5]), GLD, 2), seg(add(Rr, [0, -5]), add(Rr, [0, 5]), GLD, 2),
+      dot(O, DIM, 3), txt(add(O, [-6, 15]), "0", DIM, 12, "end"), txt(add(mid(L, Rr), [0, 17]), "1", GLD, 13),
+      txt(add(Q([0.95, 0]), [6, 4]), "Re", DIM, 12, "start"), txt(add(Q([0, 0.64]), [8, 6]), "Im", DIM, 12, "start"),
+      cap(430, 270, "The regular hexagon centered at 0, with one pair of sides parallel to the imaginary axis and opposite sides 1 apart. R is the region outside it." + MM(ok))
+    ]);
+  })();
 })();
