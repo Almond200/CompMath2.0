@@ -3545,4 +3545,37 @@
     ]);
   })();
 
+  // 2023 AMC 12B #21: the lampshade (frustum, height 3√3, diameters 6 and 12), the bug and the honey opposite it.
+  PROB["2023-amc-12b-21"] = (() => {
+    const h = 3 * Math.sqrt(3), { Pj, view } = projector([215, 205], 14, [1, 0], [0.42, -0.3]);
+    const rim = (r, z, a0, a1, n = 60) => Array.from({ length: n + 1 }, (_, i) => { const t = a0 + (a1 - a0) * i / n; return Pj([r * Math.cos(t), r * Math.sin(t), z]); });
+    const vis = t => Math.cos(t) * view[0] + Math.sin(t) * view[1] > 0;
+    const ts = Math.atan2(view[1], view[0]), s1 = ts + Math.PI / 2;
+    const Bug = [6 * Math.cos(ts), 6 * Math.sin(ts), 0], Hon = [-3 * Math.cos(ts), -3 * Math.sin(ts), h];
+    const ok = Math.abs(Math.hypot(6 - 3, h) - 6) < 1e-12;
+    return wrap(430, 270, [
+      pline(rim(6, 0, s1, s1 + Math.PI), DIM, 1.8, vis(s1 + Math.PI / 2) ? "" : "5 4"), pline(rim(6, 0, s1 + Math.PI, s1 + 2 * Math.PI), DIM, 1.8, vis(s1 + 3 * Math.PI / 2) ? "" : "5 4"),
+      pline(rim(3, h, 0, 2 * Math.PI, 120), DIM, 1.8),
+      seg(Pj([6 * Math.cos(s1), 6 * Math.sin(s1), 0]), Pj([3 * Math.cos(s1), 3 * Math.sin(s1), h]), DIM, 1.8),
+      seg(Pj([-6 * Math.cos(s1), -6 * Math.sin(s1), 0]), Pj([-3 * Math.cos(s1), -3 * Math.sin(s1), h]), DIM, 1.8),
+      dot(Pj(Bug), ACC, 4), dot(Pj(Hon), GLD, 4), txt(add(Pj(Bug), [0, 18]), "bug", ACC, 12), txt(add(Pj(Hon), [0, -9]), "honey", GLD, 12),
+      cap(430, 270, "The lampshade: the side of a frustum of height 3√3 with top diameter 6 and bottom diameter 12; the bug is on the bottom edge and the honey on the top edge at the far side." + MM(ok))
+    ]);
+  })();
+
+  // 2026 AIME II #12: the tetrahedron with edges 10 and 18 opposite and the other four 5√10, from coordinates.
+  PROB["2026-aime-ii-12"] = (() => {
+    const V = { A: [5, 0, 0], B: [-5, 0, 0], C: [0, 9, 12], D: [0, -9, 12] };
+    const faces = [["A", "B", "C"], ["A", "B", "D"], ["A", "C", "D"], ["B", "C", "D"]];
+    const { Pj, view } = projector([215, 215], 10, [1, 0], [0.45, -0.3]);
+    const ok = ["AC", "AD", "BC", "BD"].every(e => Math.abs(Math.hypot(...[0, 1, 2].map(i => V[e[0]][i] - V[e[1]][i])) - 5 * Math.sqrt(10)) < 1e-9);
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj),
+      ...Object.keys(V).map(n => dot(Pj(V[n]), DIM, 3.2)),
+      txt(add(Pj(V.A), [10, 6]), "A", DIM, 13, "start"), txt(add(Pj(V.B), [-10, 6]), "B", DIM, 13, "end"), txt(add(Pj(V.C), [8, -6]), "C", DIM, 13, "start"), txt(add(Pj(V.D), [-8, -6]), "D", DIM, 13, "end"),
+      txt(add(mid(Pj(V.A), Pj(V.B)), [0, 16]), "10", DIM, 12), txt(add(mid(Pj(V.C), Pj(V.D)), [0, -8]), "18", DIM, 12),
+      cap(430, 270, "The tetrahedron: AB = 10, CD = 18, and the other four edges 5√10. Its circumcenter S and incenter R lie on the axis of symmetry." + MM(ok))
+    ]);
+  })();
+
 })();
