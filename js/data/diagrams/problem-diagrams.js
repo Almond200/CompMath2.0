@@ -3454,4 +3454,48 @@
     ]);
   })();
 
+  // 2019 AIME I #15: ω, the chord AB with AP = 5, PB = 3, the circles ω1, ω2 tangent to ω at A and B,
+  // and the line PQ meeting ω at X and Y (the radius of ω chosen so that XY = 11).
+  PROB["2019-aime-i-15"] = (() => {
+    const build = R => { const h = Math.sqrt(R * R - 16), Am = [-4, -h], Bm = [4, -h], Pm = [1, -h];
+      const O1 = mul(Am, 1.5 / 4), O2 = mul(Bm, 2.5 / 4), F = foot(Pm, O1, O2), Qm = sub(mul(F, 2), Pm);
+      const [Xm, Ym] = circleLineInts([0, 0], R, Pm, Qm); return { h, Am, Bm, Pm, O1, O2, Qm, Xm, Ym }; };
+    let lo = 5.6, hi = 60; for (let i = 0; i < 90; i++) { const md = (lo + hi) / 2; if (dist(build(md).Xm, build(md).Ym) < 11) lo = md; else hi = md; }
+    const R = lo, c = build(R);
+    const ok = Math.abs(dist(c.Xm, c.Ym) - 11) < 1e-7 && Math.abs(dist(c.O1, c.Am) - dist(c.O1, c.Pm)) < 1e-9 && Math.abs(dist(c.O1, c.Qm) - dist(c.O1, c.Am)) < 1e-9 &&
+      Math.abs(dist(mid(c.Xm, c.Ym), c.Qm)) < 1e-6;
+    const Q = fitQ([[-R, -R], [R, R]], 22, 430, 290), k = Q.k;
+    const [A, B, P, X, Y, Qq] = [c.Am, c.Bm, c.Pm, c.Xm, c.Ym, c.Qm].map(Q);
+    return wrap(430, 290, [
+      circ(Q([0, 0]), R * k, DIM, 1.6), circ(Q(c.O1), dist(c.O1, c.Am) * k, ACC, 1.4), circ(Q(c.O2), dist(c.O2, c.Bm) * k, GLD, 1.4),
+      seg(A, B, DIM, 1.8), seg(X, Y, PUR, 1.6), ...[A, B, P, X, Y, Qq].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-8, 12]), "A", DIM, 13, "end"), txt(add(B, [8, 12]), "B", DIM, 13, "start"), gapLabel(P, [A, B, X, Y], "P"),
+      gapLabel(Qq, [X, Y], "Q", PUR), gapLabel(X, [Y], "X"), gapLabel(Y, [X], "Y"),
+      cap(430, 290, "Chord AB of ω with AP = 5 and PB = 3; ω1 (blue) through A and P and ω2 (gold) through B and P are tangent to ω inside, meet again at Q, and line PQ meets ω at X and Y with XY = 11." + MM(ok))
+    ]);
+  })();
+
+  // 2021 AIME I #13: ω1 and ω2 (radii 961 and 625) meeting at A and B, and ω outside both, cut by line AB in a 120° arc
+  // (ω drawn with radius 400; any radius gives the same distance 672).
+  PROB["2021-aime-i-13"] = (() => {
+    const d = 672, r = 400, O1 = [0, 0], O2 = [d, 0];
+    const meet = (P0, a0, P1, a1) => { const dd = dist(P0, P1), a = (a0 * a0 - a1 * a1 + dd * dd) / (2 * dd), h = Math.sqrt(a0 * a0 - a * a), e = norm(sub(P1, P0));
+      return [add(add(P0, mul(e, a)), mul(perp(e), h)), add(add(P0, mul(e, a)), mul(perp(e), -h))]; };
+    const [Am, Bm] = meet(O1, 961, O2, 625), [Om] = meet(O1, 961 + r, O2, 625 + r).sort((u, v) => v[1] - u[1]);
+    const [Pm, Qm] = circleLineInts(Om, r, Am, Bm);
+    const cen = (U, V) => Math.acos(((U[0] - Om[0]) * (V[0] - Om[0]) + (U[1] - Om[1]) * (V[1] - Om[1])) / (r * r)) * 180 / Math.PI;
+    const ok = Math.abs(cen(Pm, Qm) - 120) < 1e-9;
+    const Q = fitQ([[-961, -961], [d + 625, 961], [Om[0], Om[1] + r]], 16, 430, 300), k = Q.k;
+    const A = Q(Am), B = Q(Bm), P = Q(Pm), Qq = Q(Qm), O = Q(Om);
+    return wrap(430, 300, [
+      circ(Q(O1), 961 * k, ACC, 1.4), circ(Q(O2), 625 * k, GLD, 1.4), circ(O, r * k, PUR, 1.6),
+      seg(B, Q(add(Pm, mul(norm(sub(Pm, Bm)), 120))), DIM, 1.4), seg(O, P, FNT, 1.2, "4 3"), seg(O, Qq, FNT, 1.2, "4 3"),
+      ...[A, B, P, Qq].map(q => dot(q, DIM, 3)), dot(Q(O1), ACC, 3), dot(Q(O2), GLD, 3), dot(O, PUR, 3),
+      txt(add(A, [-9, 12]), "A", DIM, 13, "end"), gapLabel(B, [A], "B"), gapLabel(P, [O, B], "P"), txt(add(Qq, [9, -3]), "Q", DIM, 13, "start"),
+      txt(add(Q(O1), [0, 16]), "ω₁", ACC, 12), txt(add(Q(O2), [0, 16]), "ω₂", GLD, 12), txt(add(O, [0, -8]), "ω", PUR, 12),
+      cap(430, 300, "ω1 (radius 961) and ω2 (radius 625) meet at A and B; ω touches both from outside, and line AB cuts it in a 120° arc PQ." + MM(ok))
+    ]);
+  })();
+
+
 })();

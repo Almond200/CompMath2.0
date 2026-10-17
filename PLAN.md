@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, fourth cloud chat)
 
-- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 210 problems have figures drawn for the app.
+- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 212 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -43,8 +43,9 @@
   - 2.7a, card `chord-length` (18 problems): **finished**. 2023 AIME I #5 rewritten without Ptolemy (distances $\tfrac{56}d$, $\tfrac{90}d$ to the diagonals, area $106$); 1985 AIME #9 states $k^2=\tfrac{256}{15}$; 2023 AMC 12B #20 explains the arc of $2\theta$. Figures for 1985 AIME #9 and 2023 AIME I #5.
   - 2.7a, cards `equal-chords-arcs` and `inscribed-angle-theorem`: **finished**. Four vague strategies written in full: 2011 AIME I #10 ($n=127$ and $376$), 2015 AIME I #6 ($a=20^\circ$, $m=28^\circ$), 2017 AIME I #6 ($x=84^\circ$ or $36^\circ$), 2021 AIME II #14 ($\angle XOY=A+2C$, checked numerically). Figures for 1991 AIME #14 and 2021 AIME II #14.
   - 2.7a, cards `thales-theorem`, `angle-chord-secant`, `tangent-facts`: **finished**. Seven strategies written in full (2017 AIME I #8, 2000 AIME II #10, 2002 AIME II #15, 2007 AIME I #9, 2007 AIME II #9, 2023 AIME I #8; 2025 AMC 10A #20 retagged); six figures.
-- **Progress in `js/data/geometry.js` (245 cards):** the first 132 cards are done, through `tangent-facts`; 70 of them cite problems and every one of those is checked. About 53 geometry cards that cite problems remain.
-- **In progress:** 2.7a, `tangent-chord-angle`, then `radical-axis`, `apollonius-circle`, `descartes-circle-theorem`, `tangent-circles`, `common-tangent-lengths`, ... **Last problem done: 2023 AIME I #8.** A problem whose strategy says "Carried through", "The requested value is" or only names relations is still unchecked.
+  - 2.7a, cards `tangent-chord-angle`, `radical-axis`, `apollonius-circle`, `descartes-circle-theorem`, `tangent-circles`, `common-tangent-lengths`: **finished**. Five strategies written in full (2023 AMC 12B #10, 2005 AIME II #15, 2019 AIME I #15, 2015 AIME II #15, 2021 AIME I #13); figures for 2019 AIME I #15 and 2021 AIME I #13. 1992 AIME #13 gets no figure (at true scale $A$ and $B$ sit on top of each other).
+- **Progress in `js/data/geometry.js` (245 cards):** the first 141 or so cards are done, through `common-tangent-lengths`; 76 of them cite problems and every one of those is checked. About 47 geometry cards that cite problems remain.
+- **In progress:** 2.7a, the next card after `common-tangent-lengths` in `js/data/geometry.js` that cites a problem. **Last problem done: 2021 AIME I #13.** A problem whose strategy says "Carried through", "The requested value is" or only names relations is still unchecked.
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P6 all written; P7 open; a new one goes at the top of the table as P8; the file is newest first), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.

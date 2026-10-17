@@ -497,6 +497,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2023 AIME I #8: $r=\tfrac{25}2$, the projections $\tfrac72$ and $\tfrac{15}2$ give $\cos A=\tfrac35$, and the perimeter is $125$.
   - 2025 AMC 10A #20 cites the distance method for tangent lines.
   - Figures drawn for 2017 AIME I #8, 2025 AMC 10A #20, 2000 AIME II #10, 2007 AIME I #9, 2007 AIME II #9 and 2023 AIME I #8.
+- **Practice pass: the tangent-chord angle, radical axis, Apollonius circle, Descartes, tangent circles and common tangents cards finished (2026-10-17):**
+  - 2019 AIME I #15: the homotheties at $A$ and $B$ make $OO_1PO_2$ a parallelogram, so $OQ\perp PQ$, $Q$ is the midpoint of $XY$, and $PQ^2=\tfrac{121-60}4=\tfrac{61}4$.
+  - 2021 AIME I #13: linearity of power gives $672r=2d\cdot\tfrac r2$, so $d=672$.
+  - 2015 AIME II #15: in coordinates $\ell$ has slope $\tfrac32$, $AD=\tfrac4{\sqrt{13}}$, and the area is $\tfrac{64}{65}$; the common-tangent card is dropped (not used).
+  - 2005 AIME II #15: the centers lie on $\tfrac{x^2}{100}+\tfrac{(y-12)^2}{75}=1$, and tangency gives $a^2=\tfrac{69}{100}$.
+  - 2023 AMC 12B #10 states the slopes ($-\tfrac52$, so $\tfrac25$).
+  - Figures drawn for 2019 AIME I #15 and 2021 AIME I #13.
 
 **2026-10-10**
 
