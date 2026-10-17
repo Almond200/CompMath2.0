@@ -6,13 +6,14 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 60 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 63 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
   - 2026 AIME I #3 now cites the method `triangle-of-centers` (Joining the Centers of Tangent Circles), asked by Stanley.
   - 2.7a, card 2 (Special Right Triangles): **finished**, all 24 problems checked (5 of them were already done under card 1).
-- **In progress:** 2.7a, card 3, Altitude to the Hypotenuse (`altitude-hypotenuse`, 5 problems: 1994 AIME #10, 2003 AIME II #11, 2009 AIME I #12, 2016 AIME II #5, 2019 AIME I #6). **Last problem done: none yet on this card.**
+  - 2.7a, card 3 (Altitude to the Hypotenuse): **finished**, all 5 problems.
+- **In progress:** 2.7a, card 4, Median to the Hypotenuse (`median-to-hypotenuse`). **Last problem done: none yet on this card.**
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).

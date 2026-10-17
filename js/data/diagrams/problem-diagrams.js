@@ -1073,4 +1073,57 @@
     ]);
   })();
 
+  // 2009 AIME I #12: the 12-35-37 triangle, the altitude CD and the circle on it as diameter.
+  PROB["2009-aime-i-12"] = (() => {
+    const k = 8.4, Q = (x, y) => [92 + k * x, 222 - k * y];
+    // AB along the x-axis; D = (AD, 0) with AD = 144/37 and CD = 420/37.
+    const ad = 144 / 37, cd = 420 / 37, A = Q(0, 0), B = Q(37, 0), C = Q(ad, cd), D = Q(ad, 0), O = Q(ad, cd / 2);
+    const ok = Math.abs(dist(A, C) / k - 12) < 1e-9 && Math.abs(dist(B, C) / k - 35) < 1e-9;
+    // I: the tangents from A and B (other than AB) meet at I; its tangent length is 37/3.
+    const z = 37 / 3, r = cd / 2, tA = 2 * Math.atan(r / ad), tB = 2 * Math.atan(r / (37 - ad));
+    const I = lineInt(A, add(A, [Math.cos(tA), -Math.sin(tA)]), B, add(B, [-Math.cos(tB), -Math.sin(tB)]));
+    const okI = Math.abs(dist(A, I) / k - (ad + z)) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(C, D, FNT, 1.5), circ(O, r * k, ACC, 1.8), rightAngle(D, A, C, 8),
+      seg(A, I, GLD, 1.6, "5 4"), seg(B, I, GLD, 1.6, "5 4"),
+      ...[A, B, C, D, I].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [-10, -2]), "C", DIM, 13, "end"), txt(add(D, [0, 18]), "D"), txt(add(I, [0, -10]), "I", GLD),
+      txt(add(mid(A, C), [-12, 0]), "12", DIM, 12.5, "end"), txt(add(mid(B, C), [8, -10]), "35", DIM, 12.5, "start"), txt(add(O, [r * k + 6, 0]), "ω", ACC, 14, "start"),
+      cap(430, 300, "Right triangle ABC with AC = 12, BC = 35 and altitude CD; ω has diameter CD, and AI and BI (dashed) are the other tangents from A and B." + MM(ok && okI))
+    ]);
+  })();
+
+  // 2016 AIME II #5: the chain of altitude feet C₁, C₂, … toward B.
+  PROB["2016-aime-ii-5"] = (() => {
+    const k = 4.4, Q = (x, y) => [30 + k * x, 200 - k * y];
+    // Drawn as the 13-84-85 triangle the problem forces, to true shape: C₀ = (0, 0), B = (84, 0), A = (0, 13).
+    const C0 = Q(0, 0), B = Q(84, 0), A = Q(0, 13);
+    const pts = [C0, foot(C0, A, B)];
+    for (let n = 2; n <= 60; n++) pts.push(foot(pts[n - 1], pts[n - 2], B));
+    const ok = Math.abs(dist(pts[0], pts[1]) / k - 13 * 84 / 85) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C0], DIM, 2), pline(pts, ACC, 1.2), ...pts.slice(0, 3).map(q => dot(q, ACC, 2.6)),
+      txt(add(A, [-10, -4]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C0, [-12, 14]), subT("C", "0")), txt(add(pts[1], [-4, -12]), subT("C", "1")), txt(add(pts[2], [8, 18]), subT("C", "2")),
+      cap(430, 270, "The right triangle ABC₀ and the zigzag C₀C₁C₂… (blue): each new point is the foot of the altitude in the previous small right triangle, closing in on B. Drawn as the triangle the condition forces." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AIME I #6: quadrilateral KLMN with MN ⟂ KM, KL ⟂ LN, and the perpendicular from L to KN.
+  PROB["2019-aime-i-6"] = (() => {
+    const k = 1.75, Q = (x, y) => [130 + k * x, 140 - k * y];
+    const K = Q(0, 0), M = Q(98, 0), N = Q(98, 65);  // KM = 98 is what the problem forces
+    const kn = Math.hypot(98, 65), t = Math.atan2(65, 98) - Math.acos(28 / kn), L = Q(28 * Math.cos(t), 28 * Math.sin(t));
+    const P = foot(L, K, N), O = lineInt(L, P, K, M);
+    const ok = Math.abs(dist(K, O) / k - 8) < 1e-6 && Math.abs(dist(M, N) / k - 65) < 1e-9 && Math.abs(dist(K, L) / k - 28) < 1e-9;
+    return wrap(430, 300, [
+      poly([K, L, M, N], DIM, 2), seg(K, M, FNT, 1.5), seg(L, N, FNT, 1.5), seg(L, P, ACC, 1.8, "5 4"),
+      rightAngle(M, K, N, 8), rightAngle(L, K, N, 8), rightAngle(P, L, N, 7),
+      ...[K, L, M, N, O, P].map(q => dot(q, DIM, 3.2)),
+      txt(add(K, [-12, 4]), "K", DIM, 13, "end"), txt(add(L, [0, 18]), "L"), txt(add(M, [12, 12]), "M", DIM, 13, "start"), txt(add(N, [10, -4]), "N", DIM, 13, "start"),
+      txt(add(O, [4, -10]), "O", ACC), txt(add(P, [-8, -8]), "P", ACC, 13, "end"),
+      txt(add(mid(M, N), [12, 4]), "65", DIM, 12.5, "start"), txt(add(mid(K, L), [-12, 6]), "28", DIM, 12.5, "end"),
+      cap(430, 300, "Quadrilateral KLMN with MN ⟂ KM, KL ⟂ LN, MN = 65 and KL = 28; the line through L perpendicular to KN (dashed) meets KM at O, with KO = 8." + MM(ok))
+    ]);
+  })();
+
 })();
