@@ -867,4 +867,131 @@
     ]);
   })();
 
+  // 2026 AIME II #3: the nonconvex pentagon with right angles at A and E and 45° angles at B and D.
+  PROB["2026-aime-ii-3"] = (() => {
+    const b = 29, k = 8.6, Q = (x, y) => [80 + k * x, 222 - k * y];  // AB = 29 is one allowed length
+    const A = Q(0, 0), B = Q(b, 0), C = Q(b - 14, 14), D = Q(b - 8, 20), E = Q(0, 20);
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(A, B, C) - 45) < 1e-9 && Math.abs(ang(E, D, C) - 45) < 1e-9 && Math.abs(dist(B, C) / k - 14 * Math.SQRT2) < 1e-9 && dist(D, E) < dist(A, B);
+    return wrap(430, 270, [
+      poly([A, B, C, D, E], DIM, 2), rightAngle(A, B, E, 10), rightAngle(E, A, D, 10),
+      angleArc(B, A, C, 30, GLD), angleArc(D, E, C, 30, GLD),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [-12, 4]), "C", DIM, 13, "end"), txt(add(D, [10, -6]), "D"), txt(add(E, [-10, -6]), "E"),
+      txt(add(mid(A, E), [-12, 4]), "20", DIM, 12.5, "end"), txt(add(mid(B, C), [14, -4]), "14√2", DIM, 12.5, "start"),
+      txt(add(B, [-40, -10]), "45°", GLD, 11.5), txt(add(D, [-38, 22]), "45°", GLD, 11.5),
+      cap(430, 270, "The pentagon ABCDE: right angles at A and E, 45° angles at B and D, AE = 20 and BC = 14√2, with the reflex angle at C. Drawn with AB = 29." + MM(ok))
+    ]);
+  })();
+
+  // 1994 AIME #15: the 30-60-90 triangle, a fold point P and the three creases.
+  PROB["1994-aime-15"] = (() => {
+    const k = 3.9, Q = (x, y) => [70 + k * x, 232 - k * y];
+    const B = Q(0, 0), C = Q(36 * Math.sqrt(3), 0), A = Q(0, 36), P = Q(16, 12);
+    const tri = [A, B, C], inDisk = (X, Y, Z) => dist(Z, mid(X, Y)) < dist(X, Y) / 2;
+    const ok = Math.abs(dist(A, C) / k - 72) < 1e-9 && inDisk(A, B, P) && inDisk(B, C, P);
+    const crease = V => {
+      const M = mid(V, P), u = perp(norm(sub(V, P))), hits = [];
+      tri.forEach((X, i) => { const Y = tri[(i + 1) % 3], H = lineInt(M, add(M, u), X, Y);
+        if (H && Math.abs(dist(X, H) + dist(H, Y) - dist(X, Y)) < 1e-6) hits.push(H); });
+      return seg(hits[0], hits[1], ACC, 1.8);
+    };
+    return wrap(430, 270, [
+      poly(tri, DIM, 2), rightAngle(B, A, C, 10), ...[A, B, C].map(crease),
+      ...[A, B, C].map(V => seg(V, P, FNT, 1.2, "3 3")),
+      ...[A, B, C].map(q => dot(q, DIM, 3.5)), dot(P, GLD, 4),
+      txt(add(A, [-10, -4]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(P, [10, 14]), "P", GLD, 13, "start"),
+      txt(add(mid(A, B), [-12, 4]), "36", DIM, 12.5, "end"), txt(add(mid(A, C), [14, -8]), "72", DIM, 12.5, "start"),
+      cap(430, 270, "Triangle ABC with AB = 36, AC = 72 and a right angle at B. Folding A, B and C onto P makes the three creases (blue); here they do not meet, so P is a fold point." + MM(ok))
+    ]);
+  })();
+
+  // 1995 AIME #12: the square pyramid with equal lateral edges and a 45° angle AOB.
+  PROB["1995-aime-12"] = (() => {
+    const L = 1 / Math.sin(Math.PI / 8), h = Math.sqrt(L * L - 2), { Pj, view } = projector([215, 228], 52, [1, 0], [0.45, -0.36]);
+    const V = { A: [-1, -1, 0], B: [1, -1, 0], C: [1, 1, 0], D: [-1, 1, 0], O: [0, 0, h] };
+    const faces = [["A", "B", "C", "D"], ["O", "A", "B"], ["O", "B", "C"], ["O", "C", "D"], ["O", "D", "A"]];
+    const s3 = (u, w) => [u[0] - w[0], u[1] - w[1], u[2] - w[2]], d3 = (u, w) => u[0] * w[0] + u[1] * w[1] + u[2] * w[2];
+    const u = s3(V.A, V.O), w = s3(V.B, V.O), ok = Math.abs(Math.acos(d3(u, w) / Math.sqrt(d3(u, u) * d3(w, w))) - Math.PI / 4) < 1e-9;
+    const P = n => Pj(V[n]);
+    return wrap(430, 280, [
+      poly(["O", "A", "B"].map(P), "none", 0, ACCS), poly(["O", "B", "C"].map(P), "none", 0, GLDS),
+      ...solidEdges(V, faces, view, Pj), ...["A", "B", "C", "D", "O"].map(n => dot(P(n), DIM, 3.4)),
+      angleArc(P("O"), P("A"), P("B"), 34, GLD),
+      txt(add(P("A"), [-10, 14]), "A"), txt(add(P("B"), [10, 14]), "B"), txt(add(P("C"), [12, 2]), "C", DIM, 13, "start"), txt(add(P("D"), [-10, -6]), "D"), txt(add(P("O"), [0, -10]), "O"),
+      txt(add(P("O"), [-4, 52]), "45°", GLD, 11.5),
+      cap(430, 280, "Pyramid OABCD on square ABCD with OA = OB = OC = OD and angle AOB = 45°; θ is the dihedral angle between the shaded faces OAB and OBC." + MM(ok))
+    ]);
+  })();
+
+  // 2004 AIME II #1: the chord perpendicular to a radius at its midpoint.
+  PROB["2004-aime-ii-1"] = (() => {
+    const r = 108, O = [215, 128], R0 = onC(O, r, 0), Mq = mid(O, R0), [X, Y] = [onC(O, r, -60), onC(O, r, 60)];
+    const ok = Math.abs(dist(mid(X, Y), Mq)) < 1e-9 && Math.abs((X[0] - Y[0])) < 1e-9;
+    return wrap(430, 270, [
+      circ(O, r, DIM, 2), seg(O, R0, FNT, 1.5), seg(X, Y, ACC, 2.2), rightAngle(Mq, R0, Y, 8),
+      ticksOn(O, Mq, 1), ticksOn(Mq, R0, 1), dot(O, DIM, 3.4), dot(Mq, DIM, 3), dot(R0, DIM, 3),
+      cap(430, 270, "A chord (blue) perpendicular to a radius at the midpoint of the radius, cutting the circle into two regions." + MM(ok))
+    ]);
+  })();
+
+  // 2005 AIME I #11: a semicircle inside the square of side 8 (one of many, not the largest).
+  PROB["2005-aime-i-11"] = (() => {
+    const k = 26, Q = (x, y) => [111 + k * x, 238 - k * y], c = [4.1, 3.3], rr = 2.9, t = 20 * Math.PI / 180;
+    const arc = Array.from({ length: 49 }, (_, i) => { const a = t + Math.PI * i / 48; return [c[0] + rr * Math.cos(a), c[1] + rr * Math.sin(a)]; });
+    const ok = arc.every(([x, y]) => x > 0 && x < 8 && y > 0 && y < 8);
+    const e1 = [c[0] + rr * Math.cos(t), c[1] + rr * Math.sin(t)], e2 = [c[0] - rr * Math.cos(t), c[1] - rr * Math.sin(t)];
+    return wrap(430, 270, [
+      poly([Q(0, 0), Q(8, 0), Q(8, 8), Q(0, 8)], DIM, 2), pline(arc.map(p => Q(...p)), ACC, 2), seg(Q(...e1), Q(...e2), ACC, 2),
+      txt(add(Q(4, 0), [0, 18]), "8", DIM, 12.5), txt(add(Q(...mid(e1, e2)), [8, 18]), "d", ACC, 13),
+      cap(430, 270, "A semicircle with diameter d inside a square of side 8. The question asks how large d can be." + MM(ok))
+    ]);
+  })();
+
+  // 2007 AIME II #11: the head-on view at the start, the big tube rolling toward the small one.
+  PROB["2007-aime-ii-11"] = (() => {
+    const k = 1.1, Q = (x, y) => [342 + k * x, 222 - k * y];
+    const S = Q(0, 24), Bc = Q(-215, 72), ok = 215 > Math.sqrt(96 * 96 - 48 * 48);
+    return wrap(430, 270, [
+      seg(Q(-300, 0), Q(78, 0), DIM, 2.4), circ(Bc, 72 * k, ACC, 2), circ(S, 24 * k, GLD, 2),
+      seg(Bc, Q(-215, 0), FNT, 1.3, "4 3"), seg(S, Q(0, 0), FNT, 1.3, "4 3"), dot(Bc, ACC, 3), dot(S, GLD, 3),
+      txt(add(mid(Bc, Q(-215, 0)), [8, 4]), "72", ACC, 12.5, "start"), txt(add(mid(S, Q(0, 0)), [8, 4]), "24", GLD, 12.5, "start"),
+      seg(Q(-125, 60), Q(-80, 60), DIM, 1.6), poly([Q(-80, 64), Q(-72, 60), Q(-80, 56)], DIM, 1.2, DIM),
+      cap(430, 270, "Head-on view: the tube of radius 72 rolls to the right, over the fixed tube of radius 24, and on along the ground." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AIME I #12: the right triangle with the right angle at C trisected by CD and CE.
+  PROB["2012-aime-i-12"] = (() => {
+    const a = 4 * Math.sqrt(3), b = 11, k = 23, Q = (x, y) => [100 + k * x, 222 - k * y];
+    const Cp = Q(0, 0), Bp = Q(b, 0), Ap = Q(0, a);
+    const ray = deg => add(Cp, [Math.cos(deg * Math.PI / 180) * 600, -Math.sin(deg * Math.PI / 180) * 600]);
+    const Dp = lineInt(Cp, ray(60), Ap, Bp), Ep = lineInt(Cp, ray(30), Ap, Bp);
+    const ok = Math.abs(dist(Dp, Ep) / dist(Bp, Ep) - 8 / 15) < 1e-9;
+    return wrap(430, 270, [
+      poly([Ap, Bp, Cp], DIM, 2), seg(Cp, Dp, ACC, 1.8), seg(Cp, Ep, ACC, 1.8), rightAngle(Cp, Ap, Bp, 10),
+      angleArc(Cp, Bp, Ep, 34, GLD), angleArc(Cp, Ep, Dp, 40, GLD), angleArc(Cp, Dp, Ap, 46, GLD),
+      ...[Ap, Bp, Cp, Dp, Ep].map(q => dot(q, DIM, 3.4)),
+      txt(add(Ap, [-10, -4]), "A"), txt(add(Bp, [10, 14]), "B"), txt(add(Cp, [-10, 14]), "C"), txt(add(Dp, [6, -8]), "D", DIM, 13, "start"), txt(add(Ep, [6, -8]), "E", DIM, 13, "start"),
+      cap(430, 270, "Right triangle ABC with the right angle at C split into three equal angles by CD and CE, with DE : BE = 8 : 15." + MM(ok))
+    ]);
+  })();
+
+  // 2014 AIME II #11: triangle RED, the midpoint M, C with RC ⟂ EM, and A on DE extended with CA = AR.
+  PROB["2014-aime-ii-11"] = (() => {
+    const k = 240, Q = (x, y) => [258 + k * x, 244 - k * y];
+    const D = Q(0.5, 0), E = Q(-Math.sqrt(3) / 2, 0), R = Q(0, Math.sqrt(3) / 2), M = mid(R, D);
+    const c = (6 * Math.sqrt(3) - 3) / 22, C = Q(c, 0), A = Q(-Math.sqrt(3) / 2 - (7 - 3 * Math.sqrt(3)) / 22, 0);
+    const d2 = (u, w) => (u[0] * w[0] + u[1] * w[1]);
+    const ok = Math.abs(d2(sub(C, R), sub(M, E))) < 1e-6 && Math.abs(dist(A, C) - dist(A, R)) < 1e-9 && Math.abs(dist(R, D) / k - 1) < 1e-9;
+    return wrap(430, 290, [
+      poly([R, E, D], DIM, 2), seg(A, E, DIM, 2), seg(E, M, ACC, 1.8), seg(R, C, GLD, 1.8), seg(A, R, FNT, 1.4, "4 3"),
+      ...[R, E, D, M, C, A].map(q => dot(q, DIM, 3.4)), ticksOn(R, M, 1), ticksOn(M, D, 1),
+      txt(add(R, [0, -10]), "R"), txt(add(E, [4, 18]), "E"), txt(add(D, [10, 14]), "D"), txt(add(M, [10, -4]), "M", DIM, 13, "start"),
+      txt(add(C, [0, 18]), "C"), txt(add(A, [-8, 18]), "A"), txt(add(lerp(R, D, 0.25), [12, -2]), "1", DIM, 12.5, "start"),
+      txt(add(R, [-12, 34]), "75°", DIM, 11.5), txt(add(E, [40, -8]), "45°", DIM, 11.5),
+      cap(430, 290, "Triangle RED with RD = 1, angle R = 75° and angle E = 45°; M is the midpoint of RD, RC ⟂ EM (gold and blue), and A on DE extended has CA = AR." + MM(ok))
+    ]);
+  })();
+
 })();
