@@ -477,6 +477,11 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2023 AIME II #9: $A$ and $B$ sit over the midpoints of $XP$ and $PY$, so $AB=12$; $MP(MP+5)=36$ gives $h=\sqrt{15}$ and area $18\sqrt{15}$.
   - 2024 AIME I #5: the power of $E$ gives $e(e+184)=17\cdot33$, so $CE=104$. Ptolemy is dropped.
   - Figures drawn for 2001 AIME II #6, 2016 AIME I #15 and 2023 AIME II #9.
+- **Practice pass: Length of a Chord finished (2026-10-17):**
+  - 2023 AIME I #5 is now Thales and areas: $P$ is $\tfrac{56}d$ and $\tfrac{90}d$ from the diagonals, so $d^4=44944$ and the area is $106$. Ptolemy and the chord card are dropped.
+  - 1985 AIME #9 states $k^2=\tfrac{256}{15}$ and the two cosines $\tfrac{11}{16}$, $\tfrac{14}{16}$.
+  - 2023 AMC 12B #20 explains the answer correctly: the start lies on the second circle, and the good points form an arc of $2\theta$, $\theta=2\arcsin\tfrac14$.
+  - Figures drawn for 1985 AIME #9 and 2023 AIME I #5; the second figure's self-check caught a misplaced $P$ before commit.
 
 **2026-10-10**
 

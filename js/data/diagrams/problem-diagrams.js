@@ -3273,4 +3273,37 @@
     ]);
   })();
 
+  // 1985 AIME #9: parallel chords 2, 3, 4 with central angles α, β, α + β (radius 8/√15).
+  PROB["1985-aime-9"] = (() => {
+    const R = 8 / Math.sqrt(15), half = c => Math.asin(c / (2 * R)), a = 2 * half(2), b = 2 * half(3), g = 2 * half(4);
+    const ok = Math.abs(a + b - g) < 1e-12 && Math.abs(Math.cos(a) - 17 / 32) < 1e-12;
+    const k = 52, O = [215, 145], chord = (c, y) => { const x = Math.sqrt(R * R - y * y); return [[O[0] - k * x, O[1] - k * y], [O[0] + k * x, O[1] - k * y]]; };
+    const d2 = R * Math.cos(a / 2), d3 = R * Math.cos(b / 2), d4 = R * Math.cos(g / 2);
+    const rows = [[chord(2, d2), "2"], [chord(3, -d3), "3"], [chord(4, -d4), "4"]];
+    return wrap(430, 290, [
+      circ(O, R * k, FNT, 1.5), ...rows.map(([[P, Q2]], i) => seg(P, Q2, [GLD, ACC, PUR][i], 2)), dot(O, DIM, 3.2),
+      ...rows.map(([[P, Q2]], i) => [seg(O, P, FNT, 1, "4 3"), seg(O, Q2, FNT, 1, "4 3")].join("")),
+      ...rows.map(([[P, Q2], lab], i) => txt(add(mid(P, Q2), [0, i === 0 ? -7 : 15]), lab, [GLD, ACC, PUR][i], 12.5)),
+      gapLabel(O, rows.flatMap(([[P, Q2]]) => [P, Q2]), "O"),
+      cap(430, 290, "Parallel chords of lengths 2, 3 and 4 in one circle, with central angles α, β and α + β." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AIME I #5: square ABCD in its circle and P on the circle (drawn where PA·PC = 56 and PB·PD = 90).
+  PROB["2023-aime-i-5"] = (() => {
+    const d = Math.sqrt(212), R = d / 2, x = 56 / d, y = 90 / d;
+    const Pm = [y, x], Am = [-R, 0], Bm = [0, -R], Cm = [R, 0], Dm = [0, R];
+    const rot = q => [(q[0] - q[1]) / Math.SQRT2, (q[0] + q[1]) / Math.SQRT2];
+    const [A0, B0, C0, D0, P0] = [Am, Bm, Cm, Dm, Pm].map(rot);
+    const ok = Math.abs(Math.hypot(...Pm) - R) < 1e-9 && Math.abs(dist(Pm, Am) * dist(Pm, Cm) - 56) < 1e-9 && Math.abs(dist(Pm, Bm) * dist(Pm, Dm) - 90) < 1e-9;
+    const Q = fitQ([[-R, -R], [R, R]], 22, 430, 290), k = Q.k;
+    const A = Q(A0), B = Q(B0), C = Q(C0), D = Q(D0), P = Q(P0);
+    return wrap(430, 290, [
+      circ(Q([0, 0]), R * k, FNT, 1.5), poly([A, B, C, D], DIM, 2), seg(P, A, ACC, 1.4), seg(P, C, ACC, 1.4), seg(P, B, GLD, 1.4), seg(P, D, GLD, 1.4),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(P, ACC, 3.6),
+      gapLabel(A, [B, D, P], "A"), gapLabel(B, [A, C, P], "B"), gapLabel(C, [B, D, P], "C"), gapLabel(D, [A, C, P], "D"), gapLabel(P, [A, B, C, D], "P", ACC),
+      cap(430, 290, "Square ABCD in its circle and P on the circle with PA·PC = 56 (blue) and PB·PD = 90 (gold)." + MM(ok))
+    ]);
+  })();
+
 })();
