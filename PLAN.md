@@ -16,7 +16,7 @@
   - 2.7a, card 4 (Median to the Hypotenuse): **finished**.
   - 2.7a, card 5 (Triangle Inequality): **finished**.
   - 2.7a, cards 6 and 7 (Triangle Similarity, all 12 already covered by earlier cards; Perpendicular Bisector as a Locus): **finished**.
-- **In progress:** 2.7a, card 8, Similar Figures (`similar-figures-ratios`, 59 problems; geometry.js order skips cards that cite nothing). **Last problem done: none yet on this card.**
+- **In progress:** 2.7a, card 8, Similar Figures (`similar-figures-ratios`, 59 problems; geometry.js order skips cards that cite nothing). **Done: the 13 AMC problems.** Next: the AIME problems in list order, starting with 1984 AIME #3 (the sketched strategies first need full routes; every one needs the AA-vs-scaling citation check).
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
