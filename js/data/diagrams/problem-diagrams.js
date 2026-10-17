@@ -1737,4 +1737,150 @@
     ]);
   })();
 
+  // 2024 AMC 10A #14: the equilateral triangle on ℓ and the circle in the 120° angle at its vertex.
+  PROB["2024-amc-10a-14"] = (() => {
+    const k = 6.6, Q = (x, y) => [150 + k * x, 228 - k * y], sd = 16 * Math.sqrt(3);
+    const V = Q(0, 0), W = Q(sd, 0), Ap = Q(sd / 2, 24), O = Q(-4 * Math.sqrt(3), 12), T1 = Q(-4 * Math.sqrt(3), 0), T2 = foot(O, V, Ap);
+    const ok = Math.abs(dist(O, T2) / k - 12) < 1e-9 && Math.abs(dist(Ap, T1) - dist(Ap, T1)) < 1e-9;
+    const arc = Array.from({ length: 21 }, (_, i) => { const a1 = Math.atan2(T1[1] - O[1], T1[0] - O[0]), a2 = Math.atan2(T2[1] - O[1], T2[0] - O[0]);
+      let d = a2 - a1; if (d > Math.PI) d -= 2 * Math.PI; if (d < -Math.PI) d += 2 * Math.PI; const a = a1 + d * i / 20; return add(O, [12 * k * Math.cos(a), 12 * k * Math.sin(a)]); });
+    return wrap(430, 270, [
+      poly([V, ...arc], "none", 0, ACCS), seg(Q(-24, 0), Q(36, 0), DIM, 1.8), poly([V, W, Ap], DIM, 2), circ(O, 12 * k, ACC, 1.8),
+      seg(Ap, Q(sd / 2, 0), FNT, 1.3, "4 3"), dot(O, ACC, 3),
+      txt(add(Q(sd / 2, 12), [8, 0]), "24", DIM, 12.5, "start"), txt(add(mid(O, T1), [-8, 0]), "12", ACC, 12.5, "end"), txt(add(Q(34, 0), [0, 16]), "ℓ", DIM, 14),
+      cap(430, 270, "An equilateral triangle of height 24 on line ℓ and a circle of radius 12 touching ℓ and the triangle; the region between them is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 1998 AIME #12: the equilateral triangle, its medial triangle DEF, and P, Q, R.
+  PROB["1998-aime-12"] = (() => {
+    const k = 105, Q0 = (x, y) => [110 + k * x, 250 - k * y], x = (Math.sqrt(5) - 1) / 2;
+    const A = Q0(0, 0), B = Q0(2, 0), C = Q0(1, Math.sqrt(3)), D = mid(B, C), E = mid(C, A), F = mid(A, B);
+    const Qq = lerp(E, F, x), Rr = lerp(F, D, x), Pp = lerp(D, E, x);
+    const cr = (u, v, w) => (v[0] - u[0]) * (w[1] - u[1]) - (v[1] - u[1]) * (w[0] - u[0]);
+    const ok = Math.abs(cr(C, Pp, Qq)) < 1e-6 && Math.abs(cr(A, Qq, Rr)) < 1e-6 && Math.abs(cr(B, Rr, Pp)) < 1e-6;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), poly([D, E, F], FNT, 1.5), seg(C, Qq, ACC, 1.4), seg(A, Rr, ACC, 1.4), seg(B, Pp, ACC, 1.4), poly([Pp, Qq, Rr], GLD, 1.8, GLDS),
+      ...[A, B, C, D, E, F, Pp, Qq, Rr].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(D, [10, -4]), "D", DIM, 13, "start"), txt(add(E, [-10, -4]), "E", DIM, 13, "end"), txt(add(F, [0, 18]), "F"),
+      txt(add(Pp, [4, -10]), "P", GLD), txt(add(Qq, [-12, 4]), "Q", GLD, 13, "end"), txt(add(Rr, [10, 10]), "R", GLD, 13, "start"),
+      cap(430, 290, "Equilateral ABC with midpoints D, E, F, and P on DE, Q on EF, R on FD such that P is on CQ, Q on AR and R on BP; triangle PQR is gold." + MM(ok))
+    ]);
+  })();
+
+  // 2003 AIME I #10: the isosceles triangle with the 106° apex and the point M.
+  PROB["2003-aime-i-10"] = (() => {
+    const r = Math.PI / 180, C = [215, 60], L = 230, A = add(C, [-L * Math.sin(53 * r), L * Math.cos(53 * r)]), B = add(C, [L * Math.sin(53 * r), L * Math.cos(53 * r)]);
+    const rotv = (v, d) => [v[0] * Math.cos(d * r) - v[1] * Math.sin(d * r), v[0] * Math.sin(d * r) + v[1] * Math.cos(d * r)];
+    const M = lineInt(A, add(A, rotv(sub(C, A), 7)), C, add(C, rotv(sub(A, C), -23)));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) / r;
+    const ok = Math.abs(ang(M, A, C) - 7) < 1e-6 && Math.abs(ang(M, C, A) - 23) < 1e-6 && Math.abs(ang(A, C, B) - 106) < 1e-6;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, M, ACC, 1.6), seg(C, M, ACC, 1.6), seg(B, M, FNT, 1.4, "5 4"), ...[A, B, C, M].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(M, [0, 18]), "M"),
+      txt(add(C, [0, 30]), "106°", DIM, 11), txt(add(A, [44, -4]), "7°", ACC, 11), txt(add(C, [-11, 48]), "23°", ACC, 11),
+      cap(430, 270, "Isosceles triangle ABC with AC = BC and angle ACB = 106°, and the point M with angle MAC = 7° and angle MCA = 23°." + MM(ok))
+    ]);
+  })();
+
+  // 2005 AIME I #1: the ring of six circles inside the circle of radius 30.
+  PROB["2005-aime-i-1"] = (() => {
+    const O = [215, 140], k = 3.9, small = [0, 1, 2, 3, 4, 5].map(i => onC(O, 20 * k, 60 * i));
+    const ok = Math.abs(dist(small[0], small[1]) - 20 * k) < 1e-9;
+    return wrap(430, 290, [
+      circ(O, 30 * k, DIM, 2, ACCS), ...small.map(c => circ(c, 10 * k, ACC, 1.8, "var(--bg, #fff)")), ...small.map(c => circ(c, 10 * k, ACC, 1.8)),
+      seg(O, onC(O, 30 * k, -30), FNT, 1.3, "4 3"), txt(add(mid(O, onC(O, 30 * k, -30)), [4, -8]), "30", DIM, 12.5),
+      cap(430, 290, "Six equal circles in a ring, each touching its two neighbours and the circle of radius 30; the region inside the big circle and outside the six is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2007 AIME I #15: the equilateral triangle with D, E, F and the 60° angle at E.
+  PROB["2007-aime-i-15"] = (() => {
+    const x = (231 - 3 * Math.sqrt(989)) / 10, y = (5 * x - 66) / 3, k = 17, Q = (a, b) => [96 + k * a, 250 - k * b];  // the smaller of the two possible sides
+    const A = Q(0, 0), B = Q(x, 0), C = Q(x / 2, x * Math.sqrt(3) / 2), F = lerp(A, B, 5 / x), D = lerp(C, B, 2 / x), E = lerp(A, C, y / x);
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V)));
+    const ok = Math.abs(ang(D, E, F) - Math.PI / 3) < 1e-6;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), poly([D, E, F], ACC, 1.8, ACCS), angleArc(E, F, D, 18, GLD), ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(D, [10, -2]), "D", DIM, 13, "start"), txt(add(E, [-10, -2]), "E", DIM, 13, "end"), txt(add(F, [0, 18]), "F"),
+      txt(add(mid(A, F), [0, 18]), "5", DIM, 12.5), txt(add(mid(C, D), [10, -4]), "2", DIM, 12.5, "start"), txt(add(E, [20, -14]), "60°", GLD, 11, "start"),
+      cap(430, 290, "Equilateral ABC with FA = 5, CD = 2 and E on CA so that angle DEF = 60°; triangle DEF (shaded) has area 14√3. Drawn with the smaller of the two possible sides." + MM(ok))
+    ]);
+  })();
+
+  // 2010 AIME I #13: the semicircle on AB, the rectangle ABCD and the line ℓ through N, U, T.
+  PROB["2010-aime-i-13"] = (() => {
+    const h = Math.sqrt(13.5), k = 36, Q = (a, b) => [108 + k * a, 118 - k * b];  // in units of 42; AD = h is what the area ratio forces
+    const A = Q(0, 0), B = Q(6, 0), Cc = Q(6, -h), D = Q(0, -h), O = Q(3, 0), N = Q(1.5, 1.5 * Math.sqrt(3)), U = Q(2, 0), T = Q(2 + h / (3 * Math.sqrt(3)), -h);
+    const arc = Array.from({ length: 37 }, (_, i) => onC(O, 3 * k, 180 + 5 * i));
+    const cr = (u, v, w) => (v[0] - u[0]) * (w[1] - u[1]) - (v[1] - u[1]) * (w[0] - u[0]);
+    const ok = Math.abs(dist(A, N) / k - 3) < 1e-9 && Math.abs(cr(N, U, T)) < 1e-6;
+    return wrap(430, 290, [
+      pline(arc, DIM, 2), poly([A, B, Cc, D], DIM, 2), seg(add(N, mul(sub(N, T), 0.15)), add(T, mul(sub(T, N), 0.1)), ACC, 1.8),
+      ...[A, B, Cc, D, N, U, T].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(B, [10, 4]), "B", DIM, 13, "start"), txt(add(Cc, [10, 14]), "C"), txt(add(D, [-10, 14]), "D"),
+      txt(add(N, [-10, -6]), "N", DIM, 13, "end"), txt(add(U, [8, 16]), "U"), txt(add(T, [10, 14]), "T"),
+      txt(add(mid(A, U), [0, 16]), "84", DIM, 12), txt(add(mid(U, B), [0, 16]), "168", DIM, 12), txt(add(mid(A, N), [-12, 4]), "126", DIM, 12, "end"),
+      cap(430, 290, "The semicircle on AB and the rectangle ABCD on the other side; line ℓ (blue) meets the semicircle at N, AB at U and CD at T, with AU = 84, AN = 126, UB = 168, and cuts the region in the ratio 1 : 2." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AIME I #13: three concentric circles and the largest equilateral triangle with a vertex on each.
+  PROB["2012-aime-i-13"] = (() => {
+    const k = 22, O = [205, 140], P = (rr, deg) => onC(O, rr * k, deg);
+    const Cc = P(3, 0), B = P(4, -150), s = Math.sqrt(25 + 12 * Math.sqrt(3)) * k;
+    const rot = (X, V, d) => { const a = d * Math.PI / 180, w = sub(X, V); return add(V, [w[0] * Math.cos(a) - w[1] * Math.sin(a), w[0] * Math.sin(a) + w[1] * Math.cos(a)]); };
+    const cands = [rot(B, Cc, 60), rot(B, Cc, -60)], A = cands.sort((u, w) => Math.abs(dist(u, O) - 5 * k) - Math.abs(dist(w, O) - 5 * k))[0];
+    const ok = Math.abs(dist(A, O) - 5 * k) < 1e-6 && Math.abs(dist(B, Cc) - s) < 1e-6;
+    return wrap(430, 290, [
+      ...[3, 4, 5].map(rr => circ(O, rr * k, FNT, 1.4)), poly([A, B, Cc], ACC, 2, ACCS), dot(O, DIM, 3), ...[A, B, Cc].map(q => dot(q, ACC, 3.2)),
+      txt(add(O, [0, 16]), "O"), txt(add(onC(O, 3 * k, 100), [0, 0]), "3", DIM, 11), txt(add(onC(O, 4 * k, 100), [0, 0]), "4", DIM, 11), txt(add(onC(O, 5 * k, 100), [0, 0]), "5", DIM, 11),
+      cap(430, 290, "Concentric circles of radii 3, 4 and 5 and an equilateral triangle with one vertex on each (blue), drawn in its largest position." + MM(ok))
+    ]);
+  })();
+
+  // 2015 AIME I #4: the equilateral triangles on AB and BC and the midpoints M and N.
+  PROB["2015-aime-i-4"] = (() => {
+    const k = 13, Q = (a, b) => [85 + k * a, 230 - k * b], r3 = Math.sqrt(3);
+    const A = Q(0, 0), B = Q(16, 0), C = Q(20, 0), D = Q(8, 8 * r3), E = Q(18, 2 * r3), M = mid(A, E), N = mid(C, D);
+    const ok = Math.abs(dist(A, D) / k - 16) < 1e-9 && Math.abs(dist(B, E) / k - 4) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, D], DIM, 2), poly([B, C, E], DIM, 2), seg(A, E, FNT, 1.4), seg(C, D, FNT, 1.4), poly([B, M, N], ACC, 1.8, ACCS),
+      ...[A, B, C, D, E, M, N].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [0, 18]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [0, -10]), "D"), txt(add(E, [10, -6]), "E", DIM, 13, "start"),
+      txt(add(M, [0, 18]), "M", ACC), txt(add(N, [8, -8]), "N", ACC, 13, "start"), txt(add(mid(A, B), [0, 18]), "16", DIM, 12), txt(add(mid(B, C), [0, 18]), "4", DIM, 12),
+      cap(430, 290, "B on AC with AB = 16 and BC = 4, equilateral triangles ABD and BCE on the same side, and M, N the midpoints of AE and CD; triangle BMN is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2016 AIME II #14: the equilateral triangle with P above and Q below on the axis through its center.
+  PROB["2016-aime-ii-14"] = (() => {
+    const R = 200 * Math.sqrt(3), disc = Math.sqrt(900 * 900 - 4 * 120000), p = (900 + disc) / 2, q = (900 - disc) / 2;  // heights the conditions force
+    const { Pj, view } = projector([215, 205], 0.2, [1, 0], [0.45, -0.3]);
+    const V = { A: [R, 0, 0], B: [R * Math.cos(2 * Math.PI / 3), R * Math.sin(2 * Math.PI / 3), 0], C: [R * Math.cos(4 * Math.PI / 3), R * Math.sin(4 * Math.PI / 3), 0], P: [0, 0, p], Q: [0, 0, -q], O: [0, 0, (p - q) / 2] };
+    const L3 = (u, w) => Math.hypot(u[0] - w[0], u[1] - w[1], u[2] - w[2]);
+    const ok = ["A", "B", "C", "P", "Q"].every(n => Math.abs(L3(V[n], V.O) - 450) < 1e-6) && Math.abs(L3(V.A, V.B) - 600) < 1e-6;
+    const P3 = n => Pj(V[n]);
+    return wrap(430, 300, [
+      poly(["A", "B", "C"].map(P3), DIM, 2, ACCS), seg(P3("P"), P3("Q"), FNT, 1.3, "4 3"),
+      ...["A", "B", "C"].map(n => seg(P3("P"), P3(n), ACC, 1.3)), ...["A", "B", "C"].map(n => seg(P3("Q"), P3(n), GLD, 1.3)),
+      ...["A", "B", "C", "P", "Q", "O"].map(n => dot(P3(n), DIM, 3)),
+      txt(add(P3("A"), [12, 4]), "A", DIM, 13, "start"), txt(add(P3("B"), [-4, -10]), "B"), txt(add(P3("C"), [-12, 6]), "C", DIM, 13, "end"),
+      txt(add(P3("P"), [0, -10]), "P", ACC), txt(add(P3("Q"), [0, 18]), "Q", GLD), txt(add(P3("O"), [10, -6]), "O", DIM, 13, "start"),
+      cap(430, 300, "Equilateral ABC of side 600 with P above and Q below its plane, each equally far from A, B and C, the planes PAB and QAB at 120°; O is equally far from all five points." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AIME I #8: the circle of radius 18, its equilateral triangle, the three circles ω_A, ω_B, ω_C.
+  PROB["2022-aime-i-8"] = (() => {
+    const k = 5.6, O = [215, 145], V = [90, 210, 330].map(d => onC(O, 18 * k, d - 180)), Cs = [90, 210, 330].map(d => onC(O, 6 * k, d));
+    const small = [90, 210, 330].map(d => onC(O, (Math.sqrt(117) - 3) * k, d));
+    const ok = Math.abs(dist(small[0], Cs[1]) - 12 * k) < 1e-6 && Math.abs(dist(small[0], Cs[2]) - 12 * k) < 1e-6;
+    return wrap(430, 300, [
+      circ(O, 18 * k, DIM, 1.8), poly(V, DIM, 1.8), ...Cs.map(c => circ(c, 12 * k, ACC, 1.4)), poly(small, GLD, 1.8, GLDS), ...V.map(q => dot(q, DIM, 3)),
+      txt(add(V[0], [0, -10]), "A"), txt(add(V[1], [-10, 12]), "B"), txt(add(V[2], [10, 12]), "C"),
+      cap(430, 300, "Equilateral ABC in the circle ω of radius 18, and the three circles (blue), each touching two sides and ω. The smaller triangle on their inner meeting points is gold." + MM(ok))
+    ]);
+  })();
+
 })();
