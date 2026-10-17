@@ -1499,4 +1499,138 @@
     ]);
   })();
 
+  // 2015 AIME II #7: triangle ABC (12, 25, 17) and a rectangle PQRS standing on BC.
+  PROB["2015-aime-ii-7"] = (() => {
+    const k = 15, Q0 = (x, y) => [28 + k * x, 232 - k * y], t = 3.2;
+    const B = Q0(0, 0), C = Q0(25, 0), A = Q0(9.6, 7.2), P = lineInt(Q0(0, t), Q0(25, t), A, B), Qq = lineInt(Q0(0, t), Q0(25, t), A, C);
+    const S = [P[0], B[1]], R = [Qq[0], B[1]];
+    const ok = Math.abs(dist(A, B) / k - 12) < 1e-9 && Math.abs(dist(A, C) / k - 17) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), poly([P, Qq, R, S], ACC, 1.8, ACCS), ...[A, B, C, P, Qq, R, S].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(P, [-10, -4]), "P", DIM, 13, "end"), txt(add(Qq, [10, -4]), "Q", DIM, 13, "start"),
+      txt(add(R, [0, 18]), "R"), txt(add(S, [0, 18]), "S"), txt(add(mid(P, Qq), [0, -8]), "w", ACC, 13),
+      txt(add(lerp(A, B, 0.3), [-12, 0]), "12", DIM, 12.5, "end"), txt(add(lerp(A, C, 0.3), [12, -4]), "17", DIM, 12.5, "start"), txt(add(mid(B, C), [0, 18]), "25", DIM, 12.5),
+      cap(430, 270, "Triangle ABC with AB = 12, BC = 25, CA = 17 and a rectangle PQRS with P on AB, Q on AC and R, S on BC; PQ = w." + MM(ok))
+    ]);
+  })();
+
+  // 2015 AIME II #11: the circumcircle, O, the line through O perpendicular to OB, and P, Q.
+  PROB["2015-aime-ii-11"] = (() => {
+    // R = 3 and sin A = 2/3 are what BC = 4 and BQ = 4.5 force.
+    const k = 38, O = [215, 150], r = 3 * k, aBC = 2 * Math.asin(2 / 3) * 180 / Math.PI, aAB = 2 * Math.asin(5 / 6) * 180 / Math.PI;
+    const B = onC(O, r, 150), C = onC(O, r, 150 - aBC), A = onC(O, r, 150 + aAB), u = perp(norm(sub(B, O)));
+    const P = lineInt(O, add(O, u), A, B), Qq = lineInt(O, add(O, u), B, C);
+    const ok = Math.abs(dist(A, B) / k - 5) < 1e-9 && Math.abs(dist(B, C) / k - 4) < 1e-9 && Math.abs(dist(B, Qq) / k - 4.5) < 1e-9;
+    return wrap(430, 300, [
+      circ(O, r, FNT, 1.5), poly([A, B, C], DIM, 2), seg(B, Qq, DIM, 1.4, "4 3"), seg(O, B, FNT, 1.4), seg(P, Qq, ACC, 1.8), rightAngle(O, B, Qq, 8),
+      ...[A, B, C, O, P, Qq].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-12, 4]), "B", DIM, 13, "end"), txt(add(C, [6, 16]), "C"), txt(add(O, [-4, 16]), "O"), txt(add(P, [-10, -6]), "P", ACC, 13, "end"), txt(add(Qq, [10, 4]), "Q", ACC, 13, "start"),
+      cap(430, 300, "Acute triangle ABC (AB = 5, BC = 4) in its circumcircle with center O. The line through O perpendicular to OB (blue) meets AB at P and BC extended at Q, with BQ = 4.5." + MM(ok))
+    ]);
+  })();
+
+  // 2016 AIME II #7: the three squares, ABCD, IJKL inscribed in it, and EFGH inscribed in IJKL.
+  PROB["2016-aime-ii-7"] = (() => {
+    const O = [215, 138], S = 220, th = 25 * Math.PI / 180, q = S / (Math.cos(th) + Math.sin(th)), e = q / (Math.cos(th) + Math.sin(th));
+    const sq = (h, rot) => [0, 1, 2, 3].map(i => { const t = rot + Math.PI / 4 + i * Math.PI / 2; return add(O, [h / Math.SQRT2 * Math.cos(t), h / Math.SQRT2 * Math.sin(t)]); });
+    const big = sq(S, 0), mid4 = sq(q, th), small = sq(e, 0);
+    const ok = mid4.every(p => Math.abs(Math.max(Math.abs(p[0] - O[0]), Math.abs(p[1] - O[1])) - S / 2) < 1e-6) && small.every(p => true);
+    return wrap(430, 290, [
+      poly(big, DIM, 2), poly(mid4, ACC, 1.8), poly(small, GLD, 1.8),
+      cap(430, 290, "Square ABCD (gray), the square IJKL with a vertex on each side of it (blue), and the square EFGH parallel to ABCD with its vertices on the sides of IJKL (gold), all with one center." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AIME I #4: the isosceles triangle with AD = DE = EC.
+  PROB["2018-aime-i-4"] = (() => {
+    const k = 17, Q = (x, y) => [215 + k * x, 240 - k * y], x = 250 / 39;  // AD is the length the condition forces
+    const A = Q(0, 8), B = Q(-6, 0), C = Q(6, 0), D = lerp(A, B, x / 10), E = lerp(A, C, (10 - x) / 10);
+    const ok = Math.abs(dist(D, E) / k - x) < 1e-9 && Math.abs(dist(E, C) / k - x) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(D, E, ACC, 2), ticksOn(A, D, 1, ACC), ticksOn(D, E, 1, ACC), ticksOn(E, C, 1, ACC),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [-12, 0]), "D", DIM, 13, "end"), txt(add(E, [12, 0]), "E", DIM, 13, "start"),
+      txt(add(mid(B, C), [0, 18]), "12", DIM, 12.5),
+      cap(430, 270, "Triangle ABC with AB = AC = 10 and BC = 12, D on AB and E on AC with AD = DE = EC (one tick each)." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AIME II #7: triangle ABC and a few of the parallels that cut it into equal areas.
+  PROB["2018-aime-ii-7"] = (() => {
+    const k = 23, Q = (x, y) => [100 + k * x, 250 - k * y], b = 5 * Math.sqrt(3);
+    const ax = (81 + 75 - 144) / (2 * b), ay = Math.sqrt(81 - ax * ax);  // A is 9 from B and 12 from C
+    const B = Q(0, 0), C = Q(b, 0), A = Q(ax, ay);
+    const ok = Math.abs(dist(A, B) / k - 9) < 1e-9 && Math.abs(dist(A, C) / k - 12) < 1e-9;
+    const cuts = [1, 2, 3, 4, 5, 6, 7].map(j => Math.sqrt(j / 8)).map(f => [lerp(A, B, f), lerp(A, C, f)]);
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), ...cuts.map(([u, w]) => seg(u, w, ACC, 1.4)), ...[A, B, C].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"),
+      txt(add(mid(A, B), [-12, 0]), "9", DIM, 12.5, "end"), txt(add(mid(A, C), [12, 0]), "12", DIM, 12.5, "start"), txt(add(mid(B, C), [0, 18]), "5√3", DIM, 12.5),
+      cap(430, 290, "Triangle ABC with AB = 9, BC = 5√3 and AC = 12, cut by segments parallel to BC into regions of equal area; eight regions stand in for the problem's 2450." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AIME II #7: triangle ABC and the three lines parallel to its sides.
+  PROB["2019-aime-ii-7"] = (() => {
+    const k = 1.1, Q = (x, y) => [100 + k * x, 220 - k * y], cx = (220 * 220 + 120 * 120 - 180 * 180) / 440, cy = Math.sqrt(120 * 120 - cx * cx);
+    const B = Q(0, 0), C = Q(220, 0), A = Q(cx, cy);
+    const lineAt = (V, X, Y, f) => [lerp(V, X, f), lerp(V, Y, f)];  // the segment cutting off the corner at V with ratio f
+    const lA = lineAt(A, B, C, 1 / 4), lB = lineAt(B, C, A, 1 / 4), lC = lineAt(C, A, B, 1 / 8);
+    const ok = Math.abs(dist(...lA) / k - 55) < 1e-9 && Math.abs(dist(...lB) / k - 45) < 1e-9 && Math.abs(dist(...lC) / k - 15) < 1e-9;
+    const ext = ([u, w], a, b) => seg(add(u, mul(sub(u, w), a)), add(w, mul(sub(w, u), b)), FNT, 1.2, "4 3");
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), ext(lA, 0.6, 0.6), ext(lB, 0.5, 0.5), ext(lC, 1.4, 1.4),
+      ...[lA, lB, lC].map(([u, w]) => seg(u, w, ACC, 2)), ...[A, B, C].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"),
+      txt(add(mid(...lA), [0, 16]), "55", ACC, 12), txt(add(mid(...lB), [14, -2]), "45", ACC, 12, "start"), txt(add(mid(...lC), [-16, 0]), "15", ACC, 12, "end"),
+      cap(430, 290, "Triangle ABC (AB = 120, BC = 220, AC = 180) and the lines parallel to BC, AC and AB whose pieces inside it (blue) have lengths 55, 45 and 15. The question is about the triangle these three lines (dashed) form." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AIME II #7: the circles of radii 6 and 24 and their three common tangents.
+  PROB["2022-aime-ii-7"] = (() => {
+    const k = 3.3, Q = (x, y) => [50 + k * x, 140 - k * y];
+    const X = Q(0, 0), O1 = Q(10, 0), O2 = Q(40, 0), T = Q(16, 0), tn = 3 / 4;
+    const U1 = Q(16, 12), U2 = Q(16, -12);
+    const ok = Math.abs(dist(O1, foot(O1, X, U1)) / k - 6) < 1e-9 && Math.abs(dist(O2, foot(O2, X, U1)) / k - 24) < 1e-9;
+    return wrap(430, 290, [
+      poly([X, U1, U2], "none", 0, ACCS), circ(O1, 6 * k, ACC, 1.8), circ(O2, 24 * k, ACC, 1.8),
+      seg(X, Q(84, 63), DIM, 1.6), seg(X, Q(84, -63), DIM, 1.6), seg(Q(16, -30), Q(16, 30), DIM, 1.6),
+      dot(O1, ACC, 3), dot(O2, ACC, 3), dot(T, DIM, 3),
+      txt(add(O1, [0, 14]), "6", ACC, 12), txt(add(O2, [0, 14]), "24", ACC, 12),
+      cap(430, 290, "Circles of radii 6 and 24 touching externally, with their two external common tangents and the internal one; the triangle they bound is shaded." + MM(ok && tn === 0.75))
+    ]);
+  })();
+
+  // 2023 AIME II #3: the isosceles right triangle and the point P with three equal angles.
+  PROB["2023-aime-ii-3"] = (() => {
+    const s5 = Math.sqrt(500), k = 9.4, Q = (x, y) => [118 + k * x, 250 - k * y];  // AC² = 500 and tan θ = 1/2 are what the conditions force
+    const A = Q(0, 0), B = Q(s5, 0), C = Q(0, s5), P = Q(20 / Math.sqrt(5), 10 / Math.sqrt(5));
+    const ang = (X, Vv, Y) => Math.acos(((X[0] - Vv[0]) * (Y[0] - Vv[0]) + (X[1] - Vv[1]) * (Y[1] - Vv[1])) / (dist(X, Vv) * dist(Y, Vv)));
+    const ok = Math.abs(ang(P, A, B) - ang(P, B, C)) < 1e-9 && Math.abs(ang(P, B, C) - ang(P, C, A)) < 1e-9 && Math.abs(dist(A, P) / k - 10) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), rightAngle(A, B, C, 10), seg(A, P, ACC, 1.8), seg(B, P, FNT, 1.5), seg(C, P, FNT, 1.5),
+      angleArc(A, B, P, 30, GLD), angleArc(B, C, P, 30, GLD), angleArc(C, A, P, 30, GLD), ...[A, B, C, P].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [-10, -4]), "C"), txt(add(P, [10, -6]), "P", DIM, 13, "start"), txt(add(mid(A, P), [2, 14]), "10", ACC, 12),
+      cap(430, 290, "Isosceles right triangle ABC (right angle at A) and the point P inside it with angle PAB = angle PBC = angle PCA (gold); AP = 10." + MM(ok))
+    ]);
+  })();
+
+  // 2024 AIME II #5: the triangle 200, 240, 300 on the lines AB, CD, EF, and the hexagon.
+  PROB["2024-aime-ii-5"] = (() => {
+    const a = 200, b = 240, c = 300, s = 80, k = 0.95;  // s is the side the problem forces
+    const xz = a, cosX = (a * a + b * b - c * c) / (2 * a * b);
+    const X3 = [0, 0], Z3 = [a, 0], Y3 = [b * cosX, b * Math.sqrt(1 - cosX * cosX)];
+    const Q = q => [110 + k * q[0], 268 - k * q[1]], [X, Y, Z] = [X3, Y3, Z3].map(Q);
+    const Bp = lerp(X, Z, s / c), Cp = lerp(X, Y, s / c), Dp = lerp(Y, X, s / a), Ep = lerp(Y, Z, s / a), Fp = lerp(Z, Y, s / b), Ap = lerp(Z, X, s / b);
+    const hex = [Ap, Bp, Cp, Dp, Ep, Fp], Ls = hex.map((p, i) => dist(p, hex[(i + 1) % 6]) / k);
+    const ok = Ls.every(x => Math.abs(x - s) < 1e-6);
+    return wrap(430, 300, [
+      poly([X, Y, Z], FNT, 1.5, "none", "5 4"), poly(hex, ACC, 2, ACCS), ...hex.map(q => dot(q, ACC, 3.2)),
+      ...[["A", Ap, [4, 16]], ["B", Bp, [-4, 16]], ["C", Cp, [-12, 0]], ["D", Dp, [-12, 0]], ["E", Ep, [12, 0]], ["F", Fp, [12, 0]]].map(([n, p, d]) => txt(add(p, d), n, ACC, 13)),
+      txt(add(mid(X, Z), [0, 18]), "200", DIM, 12), txt(add(mid(X, Y), [-14, 0]), "240", DIM, 12, "end"), txt(add(mid(Y, Z), [14, 0]), "300", DIM, 12, "start"),
+      cap(430, 300, "The convex equilateral hexagon ABCDEF with opposite sides parallel, inside the triangle (dashed) formed by extending AB, CD and EF, with sides 200, 240 and 300." + MM(ok))
+    ]);
+  })();
+
 })();
