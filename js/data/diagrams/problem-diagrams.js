@@ -554,4 +554,85 @@
     ]);
   })();
 
+  // 2014 AIME I #15: the 3-4-5 triangle and circle ω through B meeting the sides at E, D, F, G.
+  PROB["2014-aime-i-15"] = (() => {
+    const k = 56, Q = (x, y) => [128 + k * x, 252 - k * y];
+    // x along BC, y along BA; F and G are the points the conditions force (bisector foot, midpoint).
+    const f = [12 / 7, 12 / 7], g = [2, 1.5];
+    const det = 2 * (f[0] * g[1] - f[1] * g[0]), F2 = f[0] ** 2 + f[1] ** 2, G2 = g[0] ** 2 + g[1] ** 2;
+    const o = [(F2 * g[1] - G2 * f[1]) / det, (G2 * f[0] - F2 * g[0]) / det], r = Math.hypot(o[0], o[1]);
+    const e = [0, 2 * o[1]], d = [2 * o[0], 0];
+    const L = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
+    const ok = Math.abs(L(e, f) - L(d, f)) < 1e-9 && Math.abs(L(d, g) / L(e, g) - 0.75) < 1e-9 &&
+      e[1] > 0 && e[1] < 3 && d[0] > 0 && d[0] < 4 && Math.abs(L(o, g) - r) < 1e-9;
+    const [A, B, C, D, E, F, G] = [[0, 3], [0, 0], [4, 0], d, e, f, g].map(q => Q(...q));
+    return wrap(430, 290, [
+      circ(Q(...o), r * k, ACC, 1.8), poly([A, B, C], DIM, 2), rightAngle(B, A, C, 10),
+      ...[A, B, C, D, E, F, G].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, -4]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"),
+      txt(add(D, [0, 18]), "D"), txt(add(E, [-12, 4]), "E", DIM, 13, "end"),
+      txt(add(F, [-6, -10]), "F", DIM, 13, "end"), txt(add(G, [8, -8]), "G", DIM, 13, "start"),
+      txt(add(Q(...o), [-r * k * 0.25, r * k * 0.3]), "ω", ACC, 14),
+      txt(add(mid(A, B), [-26, 0]), "3", DIM, 12.5), txt(add(mid(B, C), [40, 18]), "4", DIM, 12.5), txt(add(lerp(A, C, 0.25), [12, 6]), "5", DIM, 12.5),
+      cap(430, 290, "Triangle ABC with AB = 3, BC = 4, CA = 5, and circle ω through B meeting AB again at E, BC at D and AC at F and G, with EF = DF and DG : EG = 3 : 4." + MM(ok))
+    ]);
+  })();
+
+  // 2014 AIME II #8: circle C with diameter AB, circle D tangent inside at A, circle E on AB.
+  PROB["2014-aime-ii-8"] = (() => {
+    const k = 62, O = [215, 142], Q = (x, y) => [O[0] + k * x, O[1] - k * y];
+    // r is the radius the conditions force; it is drawn, not labelled.
+    const r = (4 * Math.sqrt(15) - 14) / 3, x = (3 + Math.sqrt(15)) * r - 2, cd = [3 * r - 2, 0], ce = [x, r];
+    const L = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1]);
+    const ok = Math.abs(L(ce, [0, 0]) - (2 - r)) < 1e-9 && Math.abs(L(ce, cd) - 4 * r) < 1e-9;
+    const A = Q(-2, 0), B = Q(2, 0);
+    return wrap(430, 300, [
+      circ(O, 2 * k, DIM, 2), circ(Q(...cd), 3 * r * k, ACC, 1.8), circ(Q(...ce), r * k, GLD, 1.8),
+      seg(A, B, DIM, 1.6), seg(O, Q(Math.cos(2.3) * 2, Math.sin(2.3) * 2), FNT, 1.3, "4 3"),
+      ...[A, B, O].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(B, [10, 4]), "B", DIM, 13, "start"),
+      txt(add(mid(O, Q(Math.cos(2.3) * 2, Math.sin(2.3) * 2)), [8, 10]), "2", DIM, 12.5),
+      txt(Q(1.6, 1.6), "C", DIM, 14), txt(Q(...cd), "D", ACC, 14), txt(add(Q(...ce), [0, 5]), "E", GLD, 13),
+      cap(430, 300, "Circle C of radius 2 with diameter AB. Circle D (blue) touches C inside at A; circle E (gold) touches C inside, D outside, and AB. The radius of D is three times that of E." + MM(ok))
+    ]);
+  })();
+
+  // 2015 AIME II #4: the isosceles trapezoid, drawn to scale with common logarithms.
+  PROB["2015-aime-ii-4"] = (() => {
+    const lg = Math.log10, k = 150, b1 = lg(3), b2 = lg(192), h = lg(16), X0 = 44, Y0 = 228;
+    const A = [X0, Y0], B = [X0 + k * b2, Y0], C = [X0 + k * (b2 + b1) / 2, Y0 - k * h], D = [X0 + k * (b2 - b1) / 2, Y0 - k * h];
+    const ok = Math.abs(dist(A, D) - dist(B, C)) < 1e-9 && Math.abs(dist(C, D) - k * b1) < 1e-9 && Math.abs(dist(A, B) - k * b2) < 1e-9;
+    const Hf = [D[0], Y0];
+    return wrap(430, 290, [
+      poly([A, B, C, D], DIM, 2), seg(D, Hf, ACC, 1.6, "5 4"), rightAngle(Hf, D, B, 9),
+      txt(add(mid(C, D), [0, -10]), "log 3", DIM, 12.5), txt(add(mid(A, B), [0, 20]), "log 192", DIM, 12.5),
+      txt(add(mid(D, Hf), [8, 4]), "log 16", ACC, 12.5, "start"),
+      cap(430, 290, "The isosceles trapezoid with bases log 3 and log 192 and altitude log 16 (dashed), drawn to scale." + MM(ok))
+    ]);
+  })();
+
+  // 2016 AIME I #4: the hexagonal prism and the pyramid on A and its three neighbours.
+  PROB["2016-aime-i-4"] = (() => {
+    const h = 6 * Math.sqrt(3), { Pj, view } = projector([215, 180], 8.6, [1, 0], [0.4, -0.72]);
+    const V = {};
+    for (let i = 0; i < 6; i++) {
+      const t = Math.PI / 3 * i - Math.PI / 2;
+      V["b" + i] = [12 * Math.cos(t), 12 * Math.sin(t), 0]; V["t" + i] = [12 * Math.cos(t), 12 * Math.sin(t), h];
+    }
+    const faces = [[0, 1, 2, 3, 4, 5].map(i => "b" + i), [0, 1, 2, 3, 4, 5].map(i => "t" + i),
+      ...[0, 1, 2, 3, 4, 5].map(i => ["b" + i, "b" + (i + 1) % 6, "t" + (i + 1) % 6, "t" + i])];
+    const A = V.b0, Bv = V.b1, Fv = V.b5, At = V.t0;
+    const L3 = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+    const ok = Math.abs(L3(A, Bv) - 12) < 1e-9 && Math.abs(L3(A, Fv) - 12) < 1e-9 && Math.abs(L3(A, At) - h) < 1e-9;
+    const [a, b, f, t] = [A, Bv, Fv, At].map(Pj);
+    return wrap(430, 300, [
+      poly([b, f, t], "none", 0, ACCS),
+      ...solidEdges(V, faces, view, Pj, FNT, 1.6),
+      seg(a, b, ACC, 2), seg(a, f, ACC, 2), seg(a, t, ACC, 2), seg(b, f, ACC, 2), seg(b, t, ACC, 2), seg(f, t, ACC, 2),
+      ...[a, b, f, t].map(q => dot(q, ACC, 3.5)),
+      txt(add(a, [0, 18]), "A", ACC), txt(add(mid(a, b), [6, 16]), "12", DIM, 12.5), txt(add(mid(a, t), [-8, 4]), "h", DIM, 13, "end"),
+      cap(430, 300, "The right prism on a regular hexagon of side 12, height h. The pyramid (blue) has apex A and its three neighbours; the shaded face is the one not containing A." + MM(ok))
+    ]);
+  })();
+
 })();
