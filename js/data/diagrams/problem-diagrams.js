@@ -1679,4 +1679,62 @@
     ]);
   })();
 
+  // 2021 Fall AMC 10B #11: the hexagon in its circle and the six arcs reflected over its sides.
+  PROB["2021-fall-amc-10b-11"] = (() => {
+    const O = [215, 138], r = 110, V = [0, 1, 2, 3, 4, 5].map(i => onC(O, r, 60 * i));
+    const arcPts = (i, refl) => Array.from({ length: 31 }, (_, j) => {
+      const P = onC(O, r, 60 * i + 2 * j), M = mid(V[i], V[(i + 1) % 6]);
+      if (!refl) return P;
+      const d = norm(sub(V[(i + 1) % 6], V[i])), w = sub(P, M), along = mul(d, w[0] * d[0] + w[1] * d[1]);
+      return add(M, sub(mul(along, 2), w));
+    });
+    const ok = Math.abs(dist(V[0], V[1]) - r) < 1e-9;
+    const region = [].concat(...[0, 1, 2, 3, 4, 5].map(i => arcPts(i, true)));
+    return wrap(430, 290, [
+      poly(region, "none", 0, ACCS), circ(O, r, FNT, 1.4, "none", "4 3"), poly(V, DIM, 2),
+      ...[0, 1, 2, 3, 4, 5].map(i => pline(arcPts(i, true), ACC, 1.8)), ...V.map(q => dot(q, DIM, 3)),
+      txt(add(mid(V[4], V[5]), [0, -9]), "1", DIM, 12.5),
+      cap(430, 290, "A regular hexagon of side 1 in its circle (dashed). Each arc cut off by a side is reflected over that side (blue); the region the six reflected arcs bound is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 1992 AIME #14: triangle ABC with the cevians AA′, BB′, CC′ through O.
+  PROB["1992-aime-14"] = (() => {
+    const A = [150, 40], B = [60, 240], C = [380, 240], O = [190, 165];
+    const A1 = lineInt(A, O, B, C), B1 = lineInt(B, O, A, C), C1 = lineInt(C, O, A, B), ok = A1[1] > 239 && B1[0] > 150;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), seg(A, A1, ACC, 1.6), seg(B, B1, ACC, 1.6), seg(C, C1, ACC, 1.6), ...[A, B, C, A1, B1, C1, O].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(A1, [0, 18]), "A′"), txt(add(B1, [10, -4]), "B′", DIM, 13, "start"),
+      txt(add(C1, [-10, -4]), "C′", DIM, 13, "end"), txt(add(O, [10, 12]), "O", ACC, 13, "start"),
+      cap(430, 290, "Triangle ABC with A′, B′, C′ on its sides and the cevians AA′, BB′, CC′ (blue) meeting at O." + MM(ok))
+    ]);
+  })();
+
+  // 1997 AIME #6: a regular n-gon, the equilateral triangle on A₁A₂ outside it, and the point B.
+  PROB["1997-aime-6"] = (() => {
+    const n = 12, O = [215, 118], r = 88, V = Array.from({ length: n }, (_, i) => onC(O, r, 90 + 360 * i / n));
+    const A1 = V[0], A2 = V[1], An = V[n - 1], d = sub(A2, A1), Bp = add(mid(A1, A2), mul(perp(norm(d)), -Math.sqrt(3) / 2 * dist(A1, A2)));
+    const Bq = dist(Bp, O) > dist(mid(A1, A2), O) ? Bp : add(mid(A1, A2), mul(perp(norm(d)), Math.sqrt(3) / 2 * dist(A1, A2)));
+    const ok = Math.abs(dist(Bq, A1) - dist(A1, A2)) < 1e-9 && dist(Bq, O) > r;
+    return wrap(430, 290, [
+      poly(V, DIM, 2), poly([A1, A2, Bq], ACC, 1.8, ACCS), seg(An, A1, GLD, 2.2), seg(A1, Bq, GLD, 2.2, "6 4"),
+      ...[A1, A2, An, Bq].map(q => dot(q, DIM, 3.4)),
+      txt(add(A1, [0, -10]), subT("A", "1")), txt(add(A2, [-12, -4]), subT("A", "2"), DIM, 13, "end"), txt(add(An, [12, -4]), subT("A", "n"), DIM, 13, "start"), txt(add(Bq, [-8, -8]), "B", ACC, 13, "end"),
+      cap(430, 290, "A regular n-gon (drawn with n = 12) and the equilateral triangle A₁A₂B outside it. The question is when Aₙ, A₁, B (gold) can be consecutive vertices of another regular polygon." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AIME II #13: the regular octagon in a circle of area 1 and the point P.
+  PROB["2019-aime-ii-13"] = (() => {
+    const O = [215, 142], r = 118, V = Array.from({ length: 8 }, (_, i) => onC(O, r, 112.5 + 45 * i)), P = add(O, [-14, 22]);
+    const ok = Math.abs(dist(V[0], V[1]) - 2 * r * Math.sin(Math.PI / 8)) < 1e-9;
+    const reg = (i, c) => [poly([P, V[i], V[(i + 1) % 8]], c, 1.6, c === ACC ? ACCS : GLDS)];
+    return wrap(430, 300, [
+      circ(O, r, DIM, 1.8), poly(V, FNT, 1.4), ...reg(0, ACC), ...reg(2, ACC), ...reg(5, GLD),
+      ...V.map(q => dot(q, DIM, 3)), dot(P, DIM, 3.4),
+      ...V.map((q, i) => txt(add(q, mul(norm(sub(q, O)), 15)), subT("A", String(i + 1)), DIM, 12.5)), txt(add(P, [8, 14]), "P", DIM, 13, "start"),
+      cap(430, 300, "The regular octagon in a circle of area 1 and a point P inside. Each region bounded by P, two adjacent vertices and the arc between them is a triangle (shaded) plus a circular segment; the two blue ones have areas 1/7 and 1/9." + MM(ok))
+    ]);
+  })();
+
 })();
