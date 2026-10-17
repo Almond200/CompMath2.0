@@ -528,6 +528,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2010 AIME I #11: two cones, volume $\tfrac{343\pi}{12\sqrt{10}}$.
   - 2017 AIME II #12: $B=\tfrac{1-r}{1-ri}$, $|B|=\tfrac{49}{61}$ (checked by simulation).
   - 2017 AIME I #15: the third vertex on the hypotenuse is $\tfrac7{20}p+\tfrac{11\sqrt3}{60}q=1$, so the side squared is $\tfrac{300}{67}$.
+- **Practice pass: solid-geometry cards through the insphere finished (2026-10-17):**
+  - 2023 AMC 12B #21: the shade unrolls to a half-annulus of radii $6$ and $12$; the shortest path is a tangent ($6\sqrt3$) plus an arc ($\pi$).
+  - 1993 AIME #10: casework on the vertex degree leaves only $d=4$, $V=30$, $T=P=2$.
+  - 1999 AIME #15 now uses the isosceles tetrahedron ($pqr=1224$, $V=408$).
+  - 2001 AIME I #12 ($r=\tfrac23$), 2026 AIME II #12 ($RS=\tfrac{175}{48}$), 2003 AIME I #5 ($\tfrac{462+40\pi}3$), 2012 AIME I #8 ($\tfrac16-\tfrac1{48}$, so $\tfrac{41}{48}$) and 2023 AIME I #13 (Gram determinants $\tfrac{3969}2$ and $1922$, ratio $\tfrac{63}{62}$) are written out with their numbers.
+  - Figures drawn for 2023 AMC 12B #21 and 2026 AIME II #12.
+  - Four candidate cards, P8 to P11, added to QUESTIONS.md.
 
 **2026-10-10**
 
