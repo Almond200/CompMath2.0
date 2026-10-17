@@ -3192,4 +3192,27 @@
     ]);
   })();
 
+  // 2015 AIME I #15: the cylinder (radius 6, height 8) cut by the plane through A, B and its center.
+  PROB["2015-aime-i-15"] = (() => {
+    const { Pj, view } = projector([200, 222], 14, [1, 0], [0.45, -0.35]);
+    const rim = (z, a0, a1, n = 60) => Array.from({ length: n + 1 }, (_, i) => { const t = a0 + (a1 - a0) * i / n; return Pj([6 * Math.cos(t), 6 * Math.sin(t), z]); });
+    const vis = t => Math.cos(t) * view[0] + Math.sin(t) * view[1] > 0;
+    const ts = Math.atan2(view[1], view[0]), s1 = ts + Math.PI / 2, s2 = ts - Math.PI / 2;
+    const Am = [3, 3 * Math.sqrt(3), 0], Bm = [3, -3 * Math.sqrt(3), 0], Om = [0, 0, 4];
+    const side = (a0, a1) => Array.from({ length: 31 }, (_, i) => { const t = a0 + (a1 - a0) * i / 30; return [6 * Math.cos(t), 6 * Math.sin(t), 4 - 8 * Math.cos(t) / 1]; });
+    const cut = [Am, ...side(Math.PI / 3, 2 * Math.PI / 3), ...side(4 * Math.PI / 3, 5 * Math.PI / 3)];
+    const onPlane = q => Math.abs(q[2] - (4 - 4 * q[0] / 3)) < 1e-9;
+    const ok = cut.every(onPlane) && onPlane(Om) && Math.abs(Math.hypot(Am[0], Am[1]) - 6) < 1e-9 && Math.abs(Math.hypot(Am[0] - Bm[0], Am[1] - Bm[1]) - 6 * Math.sqrt(3)) < 1e-9;
+    const A = Pj(Am), B = Pj(Bm), O = Pj(Om);
+    return wrap(430, 290, [
+      pline(rim(0, s1, s1 + Math.PI), DIM, 1.8, vis(s1 + Math.PI / 2) ? "" : "5 4"), pline(rim(0, s1 + Math.PI, s1 + 2 * Math.PI), DIM, 1.8, vis(s1 + 3 * Math.PI / 2) ? "" : "5 4"),
+      pline(rim(8, 0, 2 * Math.PI, 120), DIM, 1.8),
+      seg(Pj([6 * Math.cos(s1), 6 * Math.sin(s1), 0]), Pj([6 * Math.cos(s1), 6 * Math.sin(s1), 8]), DIM, 1.8),
+      seg(Pj([6 * Math.cos(s2), 6 * Math.sin(s2), 0]), Pj([6 * Math.cos(s2), 6 * Math.sin(s2), 8]), DIM, 1.8),
+      poly(cut.map(Pj), GLD, 1.8, GLDS), dot(A, DIM, 3.2), dot(B, DIM, 3.2), dot(O, GLD, 3.2),
+      txt(add(A, [0, -9]), "A"), txt(add(B, [0, 18]), "B"), txt(add(O, [-8, -6]), "O", GLD, 13, "end"),
+      cap(430, 290, "A cylinder of radius 6 and height 8; A and B on the bottom rim are 120° apart, and the plane through A, B and the center O cuts it (the cut face in gold)." + MM(ok))
+    ]);
+  })();
+
 })();

@@ -469,6 +469,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2022 AMC 10A #15 shows why $AC=25$ ($\cos B=0$ from the two Law of Cosines equations) and cites the Law of Cosines. 2025 AMC 10A #25 replaces its integrals with a $60^\circ$ sector and a $30$-$60$-$90$ triangle (checked by simulation).
   - 2008 AIME I #5 and 2003 AIME I #2 state their numbers in place of "carried through".
   - Figures drawn for 2022 AMC 10A #15, 2014 AIME I #10 and 2008 AIME I #5.
+- **Practice pass: Circular Segment & Lens Areas finished (2026-10-17).** 2015 AIME I #15 stopped before its answer. It now finds the projection, the disc minus two $120^\circ$ segments ($12\pi+18\sqrt3$), and divides by $\cos\theta=\tfrac35$, giving $20\pi+30\sqrt3$ and $53$. Affine Transformations is dropped; Projected Area is the step. A cylinder figure shows the cut. The other six problems were re-checked and needed no change.
 
 **2026-10-10**
 
