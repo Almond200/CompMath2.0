@@ -365,6 +365,13 @@ _bad = [v for v in _shared.values() if len({t for _, t in v}) > 1]
 print("  entry pairs sharing a strategy: %d  |  with MISMATCHED tags: %d" % (len(_shared), len(_bad)))
 for _v in _bad:
     print("    MISMATCH: " + " vs ".join("%s %s" % (r, list(t)) for r, t in _v))
+# A strategy is a JS string, so every LaTeX backslash is doubled there. A lone backslash is eaten
+# by JS: \{ reaches KaTeX as a bare brace (2026 AIME II #15 lost the braces of {-1,0,1}) and \,
+# as a comma (2026 AIME I #7 showed f,6). Only \\ and \" may follow a backslash.
+_brace = [l.split('"')[1] for l in _db.split("\n") if re.search(r'(?<!\\)(?:\\\\)*\\(?![\\"])', l)]
+print("  problem entries with a lone backslash: %d  (must stay 0)" % len(_brace))
+for _r in _brace[:8]:
+    print("    " + _r)
 
 print("\n-- duplicate watch (names sharing a significant word) --")
 STOP = set("the of a an and in to for by with on two three its it is are from at".split())
@@ -946,6 +953,6 @@ for _x in _dupkw[:8]:
 
 bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples or cp_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
-           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared or _ctrl or _dupkw)
+           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared or _ctrl or _dupkw or _brace)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))
 sys.exit(1 if bad else 0)
