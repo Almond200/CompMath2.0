@@ -1633,4 +1633,50 @@
     ]);
   })();
 
+  // 2011 AIME I #4: triangle ABC, the bisectors AL and BK, and the feet M and N from C.
+  PROB["2011-aime-i-4"] = (() => {
+    const k = 2.05, Q = (x, y) => [80 + k * x, 250 - k * y], ax = 16336 / 240, ay = Math.sqrt(125 * 125 - ax * ax);
+    const B = Q(0, 0), C = Q(120, 0), A = Q(ax, ay);
+    const L = lerp(B, C, 125 / (125 + 117)), K = lerp(A, C, 125 / (125 + 120)), M = foot(C, B, K), N = foot(C, A, L);
+    const ok = Math.abs(dist(A, C) / k - 117) < 1e-9 && Math.abs(dist(M, N) / k - 56) < 1e-6;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), seg(A, L, FNT, 1.5), seg(B, K, FNT, 1.5), seg(C, M, ACC, 1.5, "5 4"), seg(C, N, ACC, 1.5, "5 4"), seg(M, N, GLD, 2),
+      rightAngle(M, C, K, 7), rightAngle(N, C, L, 7), ...[A, B, C, K, L, M, N].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(L, [0, 18]), "L"), txt(add(K, [10, -4]), "K", DIM, 13, "start"),
+      txt(add(M, [-10, -6]), "M", DIM, 13, "end"), txt(add(N, [-4, -10]), "N", DIM, 13, "end"),
+      txt(add(mid(A, B), [-14, 0]), "125", DIM, 12, "end"), txt(add(lerp(A, C, 0.25), [12, 0]), "117", DIM, 12, "start"), txt(add(lerp(B, C, 0.25), [0, 18]), "120", DIM, 12),
+      cap(430, 290, "Triangle ABC with AB = 125, AC = 117, BC = 120, the bisectors AL and BK, and the feet M and N of the perpendiculars from C to BK and AL; MN is gold." + MM(ok))
+    ]);
+  })();
+
+  // 2002 AIME I #13: the medians AD and CE, and CE extended to F on the circumcircle.
+  PROB["2002-aime-i-13"] = (() => {
+    const k = 7.2, Q = (x, y) => [130 + k * x, 204 - k * y], cx = 90 / 48, cy = Math.sqrt(630 - cx * cx);  // BC² = 1116 and CA² = 630 from the medians
+    const A = Q(0, 0), B = Q(24, 0), C = Q(cx, cy), D = mid(B, C), E = mid(A, B);
+    const O = lineInt(mid(A, B), add(mid(A, B), perp(sub(B, A))), mid(A, C), add(mid(A, C), perp(sub(C, A)))), R = dist(O, A);
+    const F = circleLineInts(O, R, C, E).sort((u, w) => dist(w, C) - dist(u, C))[0];
+    const ok = Math.abs(dist(A, D) / k - 18) < 1e-9 && Math.abs(dist(C, E) / k - 27) < 1e-9;
+    return wrap(430, 290, [
+      circ(O, R, FNT, 1.5), poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.6), seg(C, F, ACC, 1.6), poly([A, F, B], "none", 0, ACCS),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-12, 4]), "A", DIM, 13, "end"), txt(add(B, [12, 4]), "B", DIM, 13, "start"), txt(add(C, [0, -10]), "C"), txt(add(D, [10, -4]), "D", DIM, 13, "start"),
+      txt(add(E, [8, -8]), "E", DIM, 13, "start"), txt(add(F, [0, 18]), "F"), txt(add(mid(A, E), [0, -8]), "24", DIM, 12),
+      cap(430, 290, "Triangle ABC with medians AD = 18 and CE = 27 and AB = 24; CE extended meets the circumcircle at F, and triangle AFB is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2003 AIME II #6: the 13-14-15 triangle and its image under the half-turn about the centroid.
+  PROB["2003-aime-ii-6"] = (() => {
+    const k = 13, Q = (x, y) => [124 + k * x, 210 - k * y];
+    const B = Q(0, 0), C = Q(14, 0), A = Q(5, 12), G = mul(add(add(A, B), C), 1 / 3), rot = P => sub(mul(G, 2), P);
+    const [A2, B2, C2] = [A, B, C].map(rot);
+    const ok = Math.abs(dist(A, B) / k - 13) < 1e-9 && Math.abs(dist(A, C) / k - 15) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2, ACCS), poly([A2, B2, C2], ACC, 2, ACCS), dot(G, GLD, 3.4), ...[A, B, C, A2, B2, C2].map(q => dot(q, DIM, 3)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(A2, [0, 18]), "A′", ACC), txt(add(B2, [10, -4]), "B′", ACC, 13, "start"), txt(add(C2, [-10, -4]), "C′", ACC, 13, "end"),
+      txt(add(G, [8, 4]), "G", GLD, 13, "start"),
+      cap(430, 290, "Triangle ABC with AB = 13, BC = 14, AC = 15 and its image A′B′C′ (blue) under a half-turn about the centroid G." + MM(ok))
+    ]);
+  })();
+
 })();
