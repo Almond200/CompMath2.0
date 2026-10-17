@@ -419,6 +419,10 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2020 II #15: $\cos(B-C)=\tfrac{85}{88}$ gives $XY^2=717$.
   - 2021 I #11: the perimeter is $22\cos\theta$, with $\cos\theta=\tfrac{11}{59}$ from the new Angle Between the Diagonals card and Ptolemy.
 - **New method card, Closing a Polygon with Side Vectors (2026-10-17):** the side vectors of a closed polygon add to zero. For an equiangular polygon this is $\sum a_k\omega^k=0$; its components give the linear relations, and dotting the sum with itself gives the side products. 2026 AIME I #14 cites it. QUESTIONS.md now lists the newest section first, with the newest rows at the top of each table.
+- **Practice pass, Law of Cosines finished:**
+  - 2023 I #12 now goes through feet of perpendiculars: $BX+CY+AZ=\tfrac{165}2$ and Viviani's sum give $\cot\theta=\tfrac1{5\sqrt3}$, so $\tan^2\theta=75$.
+  - 2024 I #10: $DB=\tfrac{225}{22}$ and $AD=\tfrac{325}{22}$, and the power of $D$ gives $AP=\tfrac{100}{13}$.
+  - Figures drawn for 2021 II #5, 2023 I #12 and 2024 I #10.
 
 **2026-10-10**
 

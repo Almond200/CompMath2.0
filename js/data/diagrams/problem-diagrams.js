@@ -2785,4 +2785,52 @@
     ]);
   })();
 
+  PROB["2021-aime-ii-5"] = (() => {
+    // the two triangles with sides 4 and 10 and the same area: the angle between them θ or 180° − θ
+    const th = rad(55), k = 24, Q = (x, y) => [165 + k * x, 230 - k * y];
+    const Bm = [0, 0], Cm = [10, 0], A1m = [4 * Math.cos(th), 4 * Math.sin(th)], A2m = [-4 * Math.cos(th), 4 * Math.sin(th)];
+    const B = Q(...Bm), C = Q(...Cm), A1 = Q(...A1m), A2 = Q(...A2m);
+    const ok = Math.abs(A1m[1] - A2m[1]) < 1e-12 && Math.abs(Math.hypot(...A2m) - 4) < 1e-12;
+    return wrap(430, 300, [
+      poly([B, C, A1], ACC, 2, ACCS), poly([B, C, A2], GLD, 2), seg(A2, A1, FNT, 1.3, "4 4"),
+      angleArc(B, C, A1, 26, ACC), angleArc(B, C, A2, 40, GLD),
+      ...[B, C, A1, A2].map(q => dot(q, DIM, 3)),
+      txt(add(mid(B, C), [0, 18]), "10", DIM, 12), txt(add(mid(B, A1), [12, 6]), "4", ACC, 12, "start"), txt(add(mid(B, A2), [-12, 10]), "4", GLD, 12, "end"),
+      txt(add(B, [30, -6]), "θ", ACC, 13, "start"), txt(add(B, [-2, -54]), "180° − θ", GLD, 12),
+      cap(430, 300, "Two sides 4 and 10 with the angle θ (blue) or 180° − θ (gold) between them: the same height over the side 10, so the same area." + MM(ok))
+    ]);
+  })();
+
+  PROB["2023-aime-i-12"] = (() => {
+    const k = 5.1, Q = (x, y) => [75 + k * x, 270 - k * y], h = 55 * Math.sqrt(3) / 2;
+    const Am = [27.5, h], Bm = [0, 0], Cm = [55, 0], Dm = lerp(Bm, Cm, 7 / 55), Em = lerp(Cm, Am, 30 / 55), Fm = lerp(Am, Bm, 40 / 55);
+    // P: the point with cot θ = 1/(5√3) from each foot; from D it lies at height d along BC's normal with DX = d cot θ
+    const ct = 1 / (5 * Math.sqrt(3)), Pm = [8 + 8 / 19, 0]; Pm[1] = (Pm[0] - 7) / ct;
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm), E = Q(...Em), F = Q(...Fm), P = Q(...Pm);
+    const ok = Math.abs(Math.tan(angAt(E, A, P)) ** 2 - 75) < 1e-6 && Math.abs(Math.tan(angAt(F, B, P)) ** 2 - 75) < 1e-6 && Math.abs(Math.tan(angAt(D, C, P)) ** 2 - 75) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(P, D, ACC, 1.6), seg(P, E, ACC, 1.6), seg(P, F, ACC, 1.6),
+      angleArc(D, C, P, 18, GLD), angleArc(E, A, P, 18, GLD), angleArc(F, B, P, 18, GLD),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3)), dot(P, ACC, 3.5),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [0, 18]), "D"),
+      txt(add(E, [12, 0]), "E", DIM, 13, "start"), txt(add(F, [-12, 0]), "F", DIM, 13, "end"), txt(add(P, [-4, -10]), "P", ACC),
+      cap(430, 300, "Equilateral triangle ABC of side 55 with BD = 7, CE = 30, AF = 40; the point P makes the three gold angles AEP, BFP, CDP equal." + MM(ok))
+    ]);
+  })();
+
+  PROB["2024-aime-i-10"] = (() => {
+    const ax = (25 - 100 + 81) / 18, Bm = [0, 0], Cm = [9, 0], Am = [ax, Math.sqrt(25 - ax * ax)];
+    const [Om, R] = circ3(Am, Bm, Cm), Dm = [4.5, -Math.sqrt((225 / 22) ** 2 - 4.5 ** 2)];
+    const u = norm(sub(Dm, Am)), Pm = add(Am, mul(u, 100 / 13));
+    const Q = fitQ([[Om[0] - R, Om[1]], [Om[0] + R, Om[1]], [Om[0], Om[1] + R], Dm], 16), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), P = Q(Pm);
+    const ok = Math.abs(dist(Q(Om), P) / k - R) < 1e-9 && Math.abs(dist(Q(Om), B) / k - R) < 1e-9;
+    return wrap(430, 300, [
+      circ(Q(Om), R * k, FNT, 1.4), poly([A, B, C], DIM, 2), seg(B, D, ACC, 1.6), seg(C, D, ACC, 1.6), seg(A, D, GLD, 1.6),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)), dot(P, GLD, 3.5),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-12, 0]), "B", DIM, 13, "end"), txt(add(C, [12, 0]), "C", DIM, 13, "start"), txt(add(D, [0, 18]), "D"), txt(add(P, [12, 4]), "P", GLD, 13, "start"),
+      cap(430, 300, "Triangle ABC (AB = 5, BC = 9, CA = 10) in its circle; the tangents at B and C meet at D, and AD meets the circle again at P." + MM(ok))
+    ]);
+  })();
+
 })();
