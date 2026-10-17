@@ -15,7 +15,8 @@
   - 2.7a, card 3 (Altitude to the Hypotenuse): **finished**, all 5 problems.
   - 2.7a, card 4 (Median to the Hypotenuse): **finished**.
   - 2.7a, card 5 (Triangle Inequality): **finished**.
-- **In progress:** 2.7a, card 6, Triangle Similarity Criteria (`triangle-similarity`; `triangle-type-by-sides` and `triangle-congruence` cite no problems). **Last problem done: none yet on this card.**
+  - 2.7a, cards 6 and 7 (Triangle Similarity, all 12 already covered by earlier cards; Perpendicular Bisector as a Locus): **finished**.
+- **In progress:** 2.7a, card 8, Similar Figures (`similar-figures-ratios`, 59 problems; geometry.js order skips cards that cite nothing). **Last problem done: none yet on this card.**
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
@@ -35,6 +36,7 @@
   - verify every intermediate value written in a strategy, not just the answer (a wrong quadratic in 2004 AIME II #12 was caught this way);
   - a dihedral angle cites the `dihedral-angle` method; an isosceles trapezoid cut by its altitudes cites the `isosceles-trapezoid` pattern; corner triangles similar by angles cite `triangle-similarity`, with `similar-figures-ratios` only for the area scaling;
   - spheres in space that touch cite `triangle-of-centers` too (join the centers); `cross-section-method` only where one plane through an axis or the centers holds the whole picture; a sphere's outline in a 3D figure is drawn with `sphereOutline`, not a circle;
+  - lattice points on a circle cite `lattice-points-circle` (2000 AIME II #11 too);
   - a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.
