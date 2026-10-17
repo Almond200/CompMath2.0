@@ -8726,5 +8726,98 @@ Centers of circles tangent to two given lines, incenters and excenters in coordi
 
 ## Contest profile
 No problems here are tagged with it yet. It appears on the AMC 12 and the AIME when a circle is tangent to two lines through a common point, or a triangle's incenter is wanted in coordinates, where a Pythagorean slope makes the bisector come out rational.
+`,
+"diagonal-angle-from-sides": String.raw`
+## Key forms
+- $\vec{AC}\cdot\vec{BD} = \frac12\left(b^2 + d^2 - a^2 - c^2\right)$ — the signed form, with $a = AB$, $b = BC$, $c = CD$, $d = DA$
+- $\tan\theta = \dfrac{4K}{\left|a^2 + c^2 - b^2 - d^2\right|}$ — the angle from the four sides and the area $K$
+- $a^2 + c^2 = b^2 + d^2 \iff AC \perp BD$ — the test for perpendicular diagonals
+- $16K^2 = 4d_1^2d_2^2 - \left(a^2 + c^2 - b^2 - d^2\right)^2$ — the area from the sides and the diagonals, by $\sin^2\theta + \cos^2\theta = 1$
+
+## Conditions
+The sides are taken in order around the quadrilateral, so $a$ and $c$ are opposite, and so are $b$ and $d$. The vector identity holds for any four points, convex or not. With the absolute value, $\theta$ is the acute angle between the diagonals. When $a^2 + c^2 = b^2 + d^2$ the angle is $90^\circ$ and the tangent form has no value.
+
+## Why it works
+Write each side as a difference of vertex vectors; every square cancels, and the cross terms left over are [[vector-dot-product|the dot product]] of the two diagonals.
+
+Put the vertices at vectors $A$, $B$, $C$, $D$. Then $a^2 = |B - A|^2 = A\cdot A - 2A\cdot B + B\cdot B$, and the same for the other sides. In $b^2 + d^2 - a^2 - c^2$ each of $A\cdot A$, $B\cdot B$, $C\cdot C$, $D\cdot D$ appears once with each sign, so only cross terms remain: $$b^2 + d^2 - a^2 - c^2 = 2\left(A\cdot B - B\cdot C + C\cdot D - D\cdot A\right) = 2\,(C - A)\cdot(D - B).$$
+
+The last step is checked by expanding $(C - A)\cdot(D - B) = C\cdot D - C\cdot B - A\cdot D + A\cdot B$. The right side is $2\,\vec{AC}\cdot\vec{BD}$, which is $\pm2d_1d_2\cos\theta$ by the definition of the dot product.
+
+For the tangent, [[quadrilateral-diagonal-area|the diagonal area formula]] gives $d_1d_2\sin\theta = 2K$, and the identity gives $d_1d_2\cos\theta = \frac12\left|a^2 + c^2 - b^2 - d^2\right|$. Dividing, the product $d_1d_2$ cancels: $$\tan\theta = \frac{2K}{\frac12\left|a^2 + c^2 - b^2 - d^2\right|} = \frac{4K}{\left|a^2 + c^2 - b^2 - d^2\right|}.$$
+
+## Useful observations
+- The diagonals cancel from $\tan\theta$, so four sides and an area fix the angle between the diagonals even though they do not fix either diagonal.
+- Without vectors it is [[law-of-cosines|the Law of Cosines]] four times: in the four triangles around the crossing point the angles alternate between $\theta$ and $180^\circ - \theta$, and the same combination of the four equations cancels the squares of the diagonal pieces.
+- A kite or a rhombus has perpendicular diagonals, so its opposite sides satisfy $a^2 + c^2 = b^2 + d^2$; any quadrilateral whose opposite sides satisfy it has perpendicular diagonals.
+- In a parallelogram, $a = c$ and $b = d$, and the identity becomes $d_1d_2\cos\theta = \left|a^2 - b^2\right|$.
+
+## Applications
+The angle between the diagonals of a quadrilateral given by its four sides and its area, a test for perpendicular diagonals, and the product $d_1d_2$ once the angle is known.
+
+## Contest profile
+Rare; it appears late on the AIME, when a quadrilateral is given by its four sides and its area and the angle between its diagonals is asked for. The diagonals themselves are never needed.
+`,
+"squares-on-triangle-flanks": String.raw`
+## Key forms
+- $\frac12bc\sin\left(180^\circ - A\right) = \frac12bc\sin A = K$ — each flank has the triangle's area
+- $x_a^2 = b^2 + c^2 + 2bc\cos A = 2b^2 + 2c^2 - a^2 = 4m_a^2$ — the third side $x_a$ of the flank at $A$
+- $x_a^2 + x_b^2 + x_c^2 = 3\left(a^2 + b^2 + c^2\right)$ — the three flank sides together
+- $[\text{hexagon}] = a^2 + b^2 + c^2 + 4K$ — the triangle, the three squares, and the three flanks
+
+## Conditions
+The squares are erected outward, away from the triangle, so that the angles at a vertex are the triangle's angle, two right angles, and the flank's angle. Squares erected inward overlap the triangle, the flank's angle is no longer $180^\circ - A$, and the hexagon formula fails.
+
+## Why it works
+The flank at a vertex is the triangle's own two sides there, opened out to the supplementary angle.
+
+At $A$ the angles around the point are the triangle's angle $A$, two right angles from the squares, and the flank's angle, and they add to $360^\circ$, so the flank's angle is $180^\circ - A$. Its two sides are sides of the squares, of lengths $c$ and $b$. Since $\sin(180^\circ - A) = \sin A$, [[trig-area|the sine area formula]] gives it area $\frac12bc\sin A = K$.
+
+By [[law-of-cosines|the Law of Cosines]] with $\cos(180^\circ - A) = -\cos A$, the third side has $x_a^2 = b^2 + c^2 + 2bc\cos A$. Since $2bc\cos A = b^2 + c^2 - a^2$, this is $2b^2 + 2c^2 - a^2$, which is $4m_a^2$ by [[apollonius-theorem|Apollonius's Theorem]].
+
+A rotation shows the doubled median and the right angle at once. Let the flank be $APQ$, with $P$ the corner of the square on $AB$ and $Q$ the corner of the square on $AC$. Turn it by $90^\circ$ about $A$ so that $Q$ lands on $C$; then $P$ lands on $B'$, the reflection of $B$ in $A$.
+
+Now $A$ is the midpoint of $BB'$ and the midpoint $M$ of $BC$ is the midpoint of the other side of triangle $BB'C$, so $AM$ is a midsegment: $B'C = 2AM = 2m_a$, and $B'C \parallel AM$. Since $PQ$ is $B'C$ turned back by $90^\circ$, $PQ = 2m_a$ and $PQ \perp AM$.
+
+## Useful observations
+- The line of the median from $A$, extended past $A$, is the altitude of the flank to its third side. The roles also swap: the flank's own median from $A$ is perpendicular to $BC$ and half as long as it.
+- The three flanks have equal areas whatever the triangle's shape, so the hexagon's area needs only the three sides and $K$.
+- The centers of the squares are a different fact about the same picture; for squares on a quadrilateral's sides, see [[van-aubel|Van Aubel's Theorem]].
+
+## Applications
+The area of the hexagon, or of any figure built from squares on a triangle's sides, the distance between the outer corners of two adjacent squares, and a median recovered from such a distance.
+
+## Contest profile
+Uncommon; it appears when squares are erected on a triangle's sides, sometimes in repeated stages, and the area of the figure their outer corners make is asked for. The equal flank areas do most of the work.
+`,
+"parallel-sided-hexagon": String.raw`
+## Key forms
+- $s = \dfrac{abc}{ab + bc + ca}$ — the same formula solved for $s$, a third of the harmonic mean of $a$, $b$, $c$
+- $a = \frac sb a + s + \frac sc a$ — the side of length $a$, on line $AB$, as two corner pieces and the hexagon's side $AB$
+- $[ABCDEF] = T\left(1 - \frac{s^2}{a^2} - \frac{s^2}{b^2} - \frac{s^2}{c^2}\right)$ — the area, with $T$ the triangle's area
+- $a = b = c \implies s = \frac a3$ — the regular hexagon, inside an equilateral triangle of three times its side
+
+## Conditions
+The hexagon is convex, all six sides are $s$, and $AB \parallel DE$, $BC \parallel EF$, $CD \parallel FA$. Equal sides alone do not make opposite sides parallel, since an equilateral hexagon can flex, and parallel opposite sides alone do not make the sides equal; the formula needs both. Here $a$, $b$, $c$ are the sides of the triangle that lie along lines $AB$, $CD$, $EF$.
+
+## Why it works
+Each corner cut off has its three sides parallel to the big triangle's, so it is a scaled copy, and the hexagon's side fixes the scale.
+
+Let lines $AB$, $CD$, $EF$ form triangle $PQR$, with $P$ on lines $AB$ and $CD$, $Q$ on $CD$ and $EF$, and $R$ on $EF$ and $AB$, so that $RP = a$, $PQ = b$, $QR = c$.
+
+The corner at $P$ is triangle $PBC$. Two of its sides lie along $PR$ and $PQ$, and its third side $BC$ is parallel to $EF$, that is, to $QR$. So it is [[similar-figures-ratios|similar]] to $PQR$, with $BC = s$ matching $QR = c$: the scale is $\frac sc$, and $PB = \frac sc a$. In the same way the corner at $R$, cut off by $FA \parallel CD$, has scale $\frac sb$, and $RA = \frac sb a$.
+
+Line $RP$ is made of $RA$, $AB$, and $BP$, so $$a = \frac sb a + s + \frac sc a.$$ Dividing by $as$ gives $\frac1s = \frac1a + \frac1b + \frac1c$. The corner at $Q$, cut off by $DE \parallel AB$, has scale $\frac sa$, and the other two sides of the triangle give the same equation.
+
+## Useful observations
+- The hexagon is centrally symmetric: $AB$ and $DE$ are equal and parallel, so $ABDE$ is a parallelogram and $AD$ and $BE$ bisect each other, and likewise for $CF$. Extending the other three sides, $BC$, $DE$, $FA$, gives the first triangle reflected through the center, with the same sides.
+- Each of the three sides of the triangle gives the same equation, which checks the assignment of $a$, $b$, $c$ to the corners.
+- When all six angles are $120^\circ$ instead, the corners cut off are equilateral, as on [[equiangular-hexagon-area|Area of an Equiangular Hexagon]]; the regular hexagon is the only one in both families.
+
+## Applications
+The side of such a hexagon from the triangle made by its extended sides, a side of that triangle from the hexagon's side and the other two, and the hexagon's area by subtracting the three corners.
+
+## Contest profile
+Rare; an AIME problem gives the triangle made by extending alternate sides of an equilateral hexagon with parallel opposite sides and asks for the hexagon's side. Seeing the three corners as scaled copies of the triangle is the whole problem.
 `
 });

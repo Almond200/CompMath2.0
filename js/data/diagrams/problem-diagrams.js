@@ -2339,4 +2339,122 @@
     ]);
   })();
 
+  // ---- Law of Sines (practice pass, 2026-10-17) ----
+  PROB["1996-aime-15"] = (() => {
+    const t = rad(15), k = 235, Q = (x, y) => [108 + k * x, 190 - k * y];
+    const ao = Math.sin(t) / Math.sin(rad(135)), o = [ao * Math.cos(2 * t), ao * Math.sin(2 * t)];
+    const A = Q(0, 0), B = Q(1, 0), O = Q(...o), C = Q(2 * o[0], 2 * o[1]), D = Q(2 * o[0] - 1, 2 * o[1]);
+    const ang = (V, P, R) => { const u = sub(P, V), v = sub(R, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))) * 180 / Math.PI; };
+    const ok = Math.abs(ang(B, D, C) - 30) < 1e-9 && Math.abs(ang(B, D, A) - 15) < 1e-9 && Math.abs(ang(C, A, B) / ang(O, A, B) - 7 / 9) < 1e-9;
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.6), seg(B, D, FNT, 1.6),
+      angleArc(B, A, D, 46, ACC), angleArc(B, D, C, 34, GLD), angleArc(A, B, C, 50, GLD),
+      ...[A, B, C, D, O].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-8, 5]), "D", DIM, 13, "end"), txt(add(O, [0, 20]), "O"),
+      txt(add(B, [-58, -6]), "θ", ACC, 13), txt(add(B, [-34, -26]), "2θ", GLD, 13), txt(add(A, [62, -12]), "2θ", GLD, 13),
+      cap(430, 250, "Parallelogram ABCD with diagonals meeting at O: angles CAB and DBC (gold) are each twice angle DBA (blue)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2000-aime-i-14"] = (() => {
+    const k = 82, Q = (x, y) => [215 + k * x, 275 - k * y];
+    const L = 1 / (2 * Math.sin(rad(10))), h = L * Math.cos(rad(10));   // AB = AC with BC = 1 and apex 20°
+    const A = Q(0, h), B = Q(-0.5, 0), C = Q(0.5, 0), P = lerp(A, C, 1 / L), Qp = lerp(A, B, (L - 1) / L);
+    const ok = Math.abs(dist(P, Qp) / k - 1) < 1e-9 && Math.abs(dist(A, P) / k - 1) < 1e-9 && Math.abs(dist(Qp, B) / k - 1) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(P, Qp, ACC, 2),
+      ticksOn(A, P, 1, ACC), ticksOn(P, Qp, 1, ACC), ticksOn(Qp, B, 1, ACC), ticksOn(B, C, 1, ACC),
+      ...[A, B, C, P, Qp].map(q => dot(q, DIM, 3)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(P, [12, 4]), "P", DIM, 13, "start"), txt(add(Qp, [-12, 4]), "Q", DIM, 13, "end"),
+      cap(430, 300, "Isosceles triangle ABC with angles B and C equal, and P on AC, Q on AB with AP = PQ = QB = BC (the four marked segments)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2005-aime-ii-14"] = (() => {
+    const k = 22, Q = (x, y) => [50 + k * x, 270 - k * y];
+    const B = Q(0, 0), C = Q(15, 0), A = Q(6.6, 11.2), D = Q(9, 0), E = Q(2535 / 463, 0);
+    const ang = (V, P, R) => { const u = sub(P, V), v = sub(R, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))); };
+    const ok = Math.abs(dist(A, B) / k - 13) < 1e-9 && Math.abs(dist(A, C) / k - 14) < 1e-9 && Math.abs(ang(A, B, E) - ang(A, C, D)) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.8), seg(A, E, GLD, 1.8),
+      angleArc(A, B, E, 40, GLD), angleArc(A, D, C, 40, ACC),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [0, 18]), "D"), txt(add(E, [0, 18]), "E"),
+      txt(add(mid(A, B), [-14, 0]), "13", DIM, 13, "end"), txt(add(mid(A, C), [14, 0]), "14", DIM, 13, "start"), txt(add(mid(D, C), [0, 18]), "6", DIM, 13),
+      cap(430, 300, "Triangle ABC with AB = 13, BC = 15, CA = 14; D on BC with CD = 6, and E on BC with angle BAE (gold) equal to angle CAD (blue)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2011-aime-ii-13"] = (() => {
+    const k = 9.5, Q = (x, y) => [158 + k * x, 240 - k * y], ap = Math.sqrt(72) + Math.sqrt(24);
+    const A = Q(0, 0), B = Q(12, 0), C = Q(12, 12), D = Q(0, 12), P = Q(ap / Math.SQRT2, ap / Math.SQRT2);
+    const O1 = K.circumcenterOf(A, B, P), O2 = K.circumcenterOf(C, D, P);
+    const u = sub(O1, P), v = sub(O2, P), a = Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))) * 180 / Math.PI;
+    const ok = Math.abs(a - 120) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.6),
+      circ(O1, dist(O1, A), ACC, 1.4, "none", "5 4"), circ(O2, dist(O2, C), GLD, 1.4, "none", "5 4"),
+      seg(P, O1, ACC, 1.8), seg(P, O2, GLD, 1.8), angleArc(P, O1, O2, 18, ORG),
+      ...[A, B, C, D, P].map(q => dot(q, DIM, 3)), dot(O1, ACC, 3.5), dot(O2, GLD, 3.5),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"), txt(add(P, [-4, -12]), "P", DIM, 13, "end"),
+      txt(add(O1, [12, 4]), "O₁", ACC, 13, "start"), txt(add(O2, [-12, 4]), "O₂", GLD, 13, "end"), txt(add(P, [-22, 8]), "120°", ORG, 12, "end"),
+      cap(430, 300, "Square ABCD of side 12 with P on the diagonal AC, nearer C; O₁ and O₂ are the circumcenters of ABP and CDP (dashed circles), and angle O₁PO₂ is 120°." + MM(ok))
+    ]);
+  })();
+
+  PROB["2016-aime-ii-10"] = (() => {
+    // the circle through A and B, and C on it, solved numerically so that AS = 7 and BT = 5; ok checks it
+    const kk = 2.360840969484, ph = 2.335848971156, R0 = Math.hypot(6.5, kk), k = 18, Q = (x, y) => [98 + k * x, 194 - k * y];
+    const Om = [6.5, kk], Cm = [6.5 + R0 * Math.cos(ph), kk + R0 * Math.sin(ph)];
+    const again = X => { const d = sub(X, Cm), w = sub(Cm, Om), t = -2 * (d[0] * w[0] + d[1] * w[1]) / (d[0] * d[0] + d[1] * d[1]); return add(Cm, mul(d, t)); };
+    const Sm = again([4, 0]), Tm = again([7, 0]);
+    const A = Q(0, 0), B = Q(13, 0), P = Q(4, 0), Qq = Q(7, 0), C = Q(...Cm), S = Q(...Sm), T = Q(...Tm), O = Q(...Om);
+    const ok = Math.abs(dist(S, A) / k - 7) < 1e-6 && Math.abs(dist(T, B) / k - 5) < 1e-6 && Math.abs(dist(S, T) / k - 35 / 8) < 1e-6;
+    return wrap(430, 300, [
+      circ(O, R0 * k, FNT, 1.5), poly([A, B, C], DIM, 2), seg(C, S, ACC, 1.8), seg(C, T, GLD, 1.8),
+      seg(A, S, DIM, 1.5, "5 4"), seg(B, T, DIM, 1.5, "5 4"),
+      ...[A, B, C, P, Qq, S, T].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-12, 4]), "A", DIM, 13, "end"), txt(add(B, [12, 4]), "B", DIM, 13, "start"), txt(add(C, [-6, -10]), "C"),
+      txt(add(P, [-8, -8]), "P"), txt(add(Qq, [8, -8]), "Q"), txt(add(S, [-6, 18]), "S"), txt(add(T, [8, 18]), "T"),
+      txt(add(mid(A, P), [0, -8]), "4", DIM, 12), txt(add(mid(P, Qq), [0, -8]), "3", DIM, 12), txt(add(mid(Qq, B), [0, -8]), "6", DIM, 12),
+      txt(add(mid(A, S), [-12, 0]), "7", DIM, 12, "end"), txt(add(mid(B, T), [12, 0]), "5", DIM, 12, "start"),
+      cap(430, 300, "Triangle ABC in its circle, with P and Q on AB (AP = 4, PQ = 3, QB = 6); rays CP and CQ meet the circle again at S and T, with AS = 7 and BT = 5." + MM(ok))
+    ]);
+  })();
+
+  PROB["2018-aime-ii-14"] = (() => {
+    const a = 33 / 5, k = 34, Qf = (x, y) => [70 + k * x, 270 - k * y];
+    const ax = (49 - 64 + a * a) / (2 * a);   // A over BC, with AB = 7 and AC = 8
+    const Bm = [0, 0], Cm = [a, 0], Am = [ax, Math.sqrt(49 - ax * ax)];
+    const Im = K.incenterOf(Am, Bm, Cm), r = Im[1], Xm = [Im[0], 0];
+    const d = sub(Xm, Am), w = sub(Am, Im), dd = d[0] * d[0] + d[1] * d[1], bq = 2 * (d[0] * w[0] + d[1] * w[1]), cq = w[0] * w[0] + w[1] * w[1] - r * r;
+    const Ym = add(Am, mul(d, (-bq - Math.sqrt(bq * bq - 4 * dd * cq)) / (2 * dd)));
+    const Pm = lerp(Am, Bm, 3 / 7), Qm = lerp(Am, Cm, (168 / 59) / 8);
+    const A = Qf(...Am), B = Qf(...Bm), C = Qf(...Cm), I = Qf(...Im), X = Qf(...Xm), Y = Qf(...Ym), P = Qf(...Pm), Q = Qf(...Qm);
+    const F = foot(I, P, Q), ok = Math.abs(dist(I, F) - r * k) < 1e-6 && dist(F, Y) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), circ(I, r * k, ACC, 1.6), seg(A, X, FNT, 1.5), seg(P, Q, GLD, 2),
+      ...[A, B, C, X, P, Q].map(q => dot(q, DIM, 3)), dot(Y, GLD, 3.5),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(X, [0, 18]), "X"),
+      txt(add(P, [-12, 2]), "P", DIM, 13, "end"), txt(add(Q, [12, 2]), "Q", DIM, 13, "start"), txt(add(Y, [10, -8]), "Y", GLD, 13, "start"), txt(add(I, [0, 30]), "ω", ACC, 13),
+      txt(add(mid(A, P), [-12, 0]), "3", DIM, 12, "end"), txt(add(mid(P, B), [-12, 0]), "4", DIM, 12, "end"), txt(add(mid(A, C), [14, 0]), "8", DIM, 12, "start"),
+      cap(430, 300, "The incircle ω of ABC touches BC at X, and AX meets ω again at Y; the tangent at Y meets AB at P and AC at Q, with AP = 3, PB = 4, AC = 8." + MM(ok))
+    ]);
+  })();
+
+  PROB["2024-amc-12b-22"] = (() => {
+    const t = rad(32), k = 260, Q = (x, y) => [80 + k * x, 250 - k * y];   // any triangle with B = 2A; c = AB = 1
+    const bc = Math.sin(t) / Math.sin(3 * t), Cm = [1 - bc * Math.cos(2 * t), bc * Math.sin(2 * t)];
+    const A = Q(0, 0), B = Q(1, 0), C = Q(...Cm);
+    const ang = (V, P, R) => { const u = sub(P, V), v = sub(R, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))); };
+    const ok = Math.abs(ang(B, A, C) - 2 * ang(A, B, C)) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), angleArc(A, B, C, 44, ACC), angleArc(B, C, A, 34, GLD),
+      ...[A, B, C].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"),
+      txt(add(A, [58, -12]), "θ", ACC, 13), txt(add(B, [-36, -24]), "2θ", GLD, 13),
+      cap(430, 300, "A triangle with angle B (gold) twice angle A (blue); the sides are to be integers." + MM(ok))
+    ]);
+  })();
+
 })();

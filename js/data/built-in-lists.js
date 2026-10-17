@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 75 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 76 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -148,7 +148,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["permutation-cycle-structure"] },
       { title: "Probability",
         note: "Turning a probability into a count, which is what nearly every contest probability question is.",
-        ids: ["basic-probability", "conditional-probability", "binomial-probability", "geometric-distribution", "turn-based-games", "hypergeometric", "bayes-theorem", "drawing-without-replacement"] },
+        ids: ["basic-probability", "conditional-probability", "binomial-probability", "geometric-distribution", "turn-based-games", "hypergeometric", "bayes-theorem", "drawing-without-replacement", "product-of-uniforms"] },
       { title: "Expectation & Variance",
         note: "Averages of random quantities, where linearity does most of the work.",
         ids: ["expected-value", "tail-sum-expectation", "total-expectation", "expected-fixed-points", "variance-independence", "order-statistics"] },
@@ -166,17 +166,17 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["indicator-variables", "generating-function-method"] }
     ] },
   { id: "route-aime-geometry", name: "AIME Geometry", kind: "route", tier: "AIME", subject: "Geometry",
-    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 80 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 83 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
-        ids: ["trig-area-circumradius", "incircle-excircle-homothety", "exradii", "triangle-half-angle-identities", "triangle-sin2-sum-ratio", "half-angle-tangent-identity", "menelaus-theorem", "rouths-theorem", "van-aubel-cevians", "trig-ceva", "erdos-mordell", "ratio-lemma", "law-of-tangents", "napoleons-theorem", "cotangent-rule"] },
+        ids: ["trig-area-circumradius", "incircle-excircle-homothety", "exradii", "triangle-half-angle-identities", "triangle-sin2-sum-ratio", "half-angle-tangent-identity", "menelaus-theorem", "rouths-theorem", "van-aubel-cevians", "trig-ceva", "erdos-mordell", "ratio-lemma", "law-of-tangents", "napoleons-theorem", "cotangent-rule", "squares-on-triangle-flanks"] },
       { title: "Triangle Centers & Derived Triangles",
         note: "When the problem names a center, or builds a second triangle out of the first.",
         ids: ["euler-line-ratio", "euler-distance-theorem", "nine-point-circle", "carnots-theorem", "simson-line", "brocard-angle", "symmedian-lemoine", "incenter-excenter-lemma", "orthocenter-properties", "fermat-point", "center-distance-formulas", "feuerbach-theorem", "leibniz-formula", "orthocentric-system", "lemoine-point", "spieker-point", "gergonne-nagel-points", "pedal-triangle", "orthic-triangle", "contact-triangle", "euler-line-parallel-side", "anticomplementary-triangle"] },
       { title: "Polygons & Quadrilaterals",
         note: "Four sides or more. The cyclic case carries most of the contest weight, so check for a circumcircle before anything else.",
-        ids: ["ngon-vertex-distance-product", "van-aubel", "bretschneiders-formula", "euler-quadrilateral", "ptolemys-theorem", "pitots-theorem", "ptolemys-inequality", "ptolemy-equilateral", "cyclic-quad-radius", "ptolemy-second-theorem", "japanese-theorem"] },
+        ids: ["ngon-vertex-distance-product", "van-aubel", "bretschneiders-formula", "euler-quadrilateral", "ptolemys-theorem", "pitots-theorem", "ptolemys-inequality", "ptolemy-equilateral", "cyclic-quad-radius", "ptolemy-second-theorem", "japanese-theorem", "parallel-sided-hexagon", "diagonal-angle-from-sides"] },
       { title: "Circles",
         note: "Angles, chords and tangency. A tangency condition almost always reduces to a distance between centers.",
         ids: ["power-of-a-point", "butterfly-theorem", "archimedes-broken-chord", "radical-axis", "miquels-theorem", "apollonius-circle", "descartes-circle-theorem", "arbelos", "corner-circle-chain", "caseys-theorem"] },

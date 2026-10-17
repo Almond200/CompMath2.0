@@ -250,6 +250,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
+          id: "parallel-sided-hexagon",
+          name: "Equilateral Hexagon with Opposite Sides Parallel",
+          latex: String.raw`\frac1s = \frac1a + \frac1b + \frac1c`,
+          description: String.raw`A convex hexagon $ABCDEF$ with all six sides $s$ and each pair of opposite sides parallel need not be regular. Extending the alternate sides $AB$, $CD$, $EF$ makes a triangle, and if its sides are $a$, $b$, $c$, then $\frac1s = \frac1a + \frac1b + \frac1c$. The three corners cut off are copies of that triangle scaled by $\frac sa$, $\frac sb$, $\frac sc$, and adding the pieces along one side gives the formula. An equilateral triangle, $a = b = c$, gives the regular hexagon, with $s = \frac a3$.`,
+          keywords: ["equilateral hexagon", "opposite sides parallel", "hexagon with extended sides", "1/s = 1/a + 1/b + 1/c", "triangle from alternate sides", "centrally symmetric hexagon", "corner triangles similar", "extend alternate sides of a hexagon"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
+        {
           id: "regular-hexagon-area",
           name: "Regular Hexagon of Side $s$",
           latex: String.raw`A = \frac{3\sqrt3}{2}s^2 \qquad R = s \qquad \text{diagonals } s\sqrt3,\ 2s`,
@@ -339,6 +349,16 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "diagonal-angle-from-sides",
+          name: "Angle Between the Diagonals from the Sides",
+          latex: String.raw`2d_1d_2\cos\theta = \left|a^2 + c^2 - b^2 - d^2\right|, \qquad \tan\theta = \frac{4K}{\left|a^2 + c^2 - b^2 - d^2\right|}`,
+          description: String.raw`In a quadrilateral with sides $a$, $b$, $c$, $d$ in order and diagonals $d_1$, $d_2$ crossing at an angle $\theta$, the squares of one pair of opposite sides minus the squares of the other pair come to $2d_1d_2\cos\theta$, up to sign. Dividing it into the area $K = \frac12d_1d_2\sin\theta$ gives $\tan\theta$ from the four sides and the area alone, with neither diagonal found. The diagonals are perpendicular exactly when $a^2 + c^2 = b^2 + d^2$.`,
+          keywords: ["angle between the diagonals", "diagonal angle from the sides", "a^2 + c^2 - b^2 - d^2", "squares of opposite sides", "perpendicular diagonals condition", "tangent of the angle between diagonals", "quadrilateral sides and area", "dot product of the diagonals"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "van-aubel",
@@ -515,6 +535,16 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "squares-on-triangle-flanks",
+          name: "Flank Triangles of the Squares on a Triangle",
+          latex: String.raw`[\text{flank}] = [ABC] = K, \qquad \text{third side} = 2m_a = \sqrt{2b^2 + 2c^2 - a^2}, \qquad [\text{hexagon}] = a^2 + b^2 + c^2 + 4K`,
+          description: String.raw`Erect a square outward on each side of a triangle $ABC$ of area $K$. The gap between the two squares at a vertex, say $A$, is a flank triangle whose sides are $b$ and $c$ with the angle $180^\circ - A$ between them, so its area is $\frac12bc\sin A = K$, the triangle's own. Its third side is twice the median $m_a$ of $ABC$ and is perpendicular to the line of that median. The six outer corners of the squares make a hexagon of area $a^2 + b^2 + c^2 + 4K$: the triangle, the three squares, and the three flanks.`,
+          keywords: ["squares on the sides of a triangle", "flank triangle", "squares erected outward", "hexagon from three squares", "twice the median", "gap between the squares", "supplementary angle equal area", "outer vertices of squares"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "same-base-area-ratio",
