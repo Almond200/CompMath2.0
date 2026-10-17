@@ -3094,4 +3094,58 @@
     ]);
   })();
 
+  // 2024 AIME II #10: R = 13, r = 6 and IA ⊥ OI, drawn in the triangle those conditions force.
+  PROB["2024-aime-ii-10"] = (() => {
+    const cA = 7 / 13, sA = Math.sqrt(1 - cA * cA), b = 4 * Math.sqrt(30) + 2 * Math.sqrt(3), c = 4 * Math.sqrt(30) - 2 * Math.sqrt(3);
+    const Am = [0, 0], Bm = [c, 0], Cm = [b * cA, b * sA], a = dist(Bm, Cm);
+    const [Om, R] = circ3(Am, Bm, Cm), Im = [(a * Am[0] + b * Bm[0] + c * Cm[0]) / (a + b + c), (a * Am[1] + b * Bm[1] + c * Cm[1]) / (a + b + c)];
+    const ok = Math.abs(R - 13) < 1e-9 && Math.abs(Im[1] - 6) < 1e-9 && Math.abs((Om[0] - Im[0]) * (Am[0] - Im[0]) + (Om[1] - Im[1]) * (Am[1] - Im[1])) < 1e-9;
+    const Q = fitQ([[Om[0] - R, Om[1]], [Om[0] + R, Om[1]], [Om[0], Om[1] + R], [Om[0], Om[1] - R]], 16, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om), I = Q(Im);
+    return wrap(430, 290, [
+      circ(O, R * k, FNT, 1.4), circ(I, 6 * k, ACC, 1.3), poly([A, B, C], DIM, 2), seg(A, I, GLD, 1.8), seg(O, I, GLD, 1.8), rightAngle(I, A, O, 8, GLD),
+      ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, DIM, 3.4), dot(I, ACC, 3.4),
+      gapLabel(A, [B, C, I], "A"), gapLabel(B, [A, C], "B"), gapLabel(C, [A, B], "C"), txt(add(O, [10, 4]), "O", DIM, 13, "start"), txt(add(I, [-4, 16]), "I", ACC),
+      cap(430, 290, "Circumradius 13 and inradius 6 (incircle in blue), with IA perpendicular to OI." + MM(ok))
+    ]);
+  })();
+
+  // 2020 AIME I #15: the tangent at H to circle HBC meets ω at X and Y (HA = 3, HX = 2, HY = 6).
+  PROB["2020-aime-i-15"] = (() => {
+    const BC = 6 * Math.sqrt(55) / 5, dsc = Math.sqrt(BC * BC - 40), u = (BC + dsc) / 2, v = (BC - dsc) / 2;
+    const Am = [0, 5], Bm = [-u, 0], Cm = [v, 0], Hm = [0, 2];
+    const [Om, R] = circ3(Am, Bm, Cm), dirAO = norm(sub(Om, Am)), t = perp(dirAO);
+    const [P1, P2] = circleLineInts(Om, R, Hm, add(Hm, t)), hx = Math.min(dist(Hm, P1), dist(Hm, P2));
+    const Xm = dist(Hm, P1) < dist(Hm, P2) ? P1 : P2, Ym = Xm === P1 ? P2 : P1;
+    const hOk = Math.abs((Hm[0] - Bm[0]) * (Cm[0] - Am[0]) + (Hm[1] - Bm[1]) * (Cm[1] - Am[1])) < 1e-9;
+    const ok = hOk && Math.abs(hx - 2) < 1e-9 && Math.abs(dist(Hm, Ym) - 6) < 1e-9;
+    const [O2, R2] = circ3(Hm, Bm, Cm);
+    const Q = fitQ([[Om[0] - R, Om[1]], [Om[0] + R, Om[1]], [Om[0], Om[1] + R], [O2[0], O2[1] - R2]], 18, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), H = Q(Hm), X = Q(Xm), Y = Q(Ym);
+    return wrap(430, 290, [
+      circ(Q(Om), R * k, FNT, 1.4), circ(Q(O2), R2 * k, ACC, 1.2, "none", "5 4"), poly([A, B, C], DIM, 2), seg(A, Q([0, 0]), DIM, 1.2, "4 3"),
+      seg(X, Y, GLD, 1.8), ...[A, B, C, X, Y].map(q => dot(q, DIM, 3.2)), dot(H, ACC, 3.4),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"), txt(add(H, [10, 4]), "H", ACC, 13, "start"),
+      txt(add(X, [0, -10]), "X"), gapLabel(Y, [X], "Y"),
+      cap(430, 290, "ω with orthocenter H; the circle HBC (dashed blue) and its tangent at H, which meets ω at X and Y, with HA = 3, HX = 2 and HY = 6." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AIME I #14: the pentagon with AB = 14, BC = 7, CD = 24, DE = 13, EA = 26 and 60° at B and E.
+  PROB["2025-aime-i-14"] = (() => {
+    const Am = [0, 0], Bm = [14, 0], Cm = add(Bm, [-3.5, 3.5 * Math.sqrt(3)]);
+    const Dm = [-117 / 14, Math.sqrt(507 - (117 / 14) ** 2)], E2 = [-143 / 7, Math.sqrt(676 - (143 / 7) ** 2)];
+    const ang = (P, X, Y) => Math.acos(((X[0] - P[0]) * (Y[0] - P[0]) + (X[1] - P[1]) * (Y[1] - P[1])) / dist(P, X) / dist(P, Y)) * 180 / Math.PI;
+    const ok = Math.abs(dist(Cm, Dm) - 24) < 1e-9 && Math.abs(dist(Dm, E2) - 13) < 1e-9 && Math.abs(dist(Am, E2) - 26) < 1e-9 && Math.abs(ang(E2, Dm, Am) - 60) < 1e-9 && Math.abs(ang(Bm, Am, Cm) - 60) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm, E2], 28), A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(E2);
+    return wrap(430, 270, [
+      poly([A, B, C, D, E], DIM, 2), angleArc(B, A, C, 16, GLD), angleArc(E, D, A, 16, GLD), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      gapLabel(A, [B, E], "A"), gapLabel(B, [A, C], "B"), gapLabel(C, [B, D], "C"), gapLabel(D, [C, E], "D"), gapLabel(E, [D, A], "E"),
+      txt(add(mid(A, B), [0, 17]), "14", DIM, 12.5), txt(add(mid(B, C), [12, 2]), "7", DIM, 12.5, "start"), txt(add(mid(C, D), [10, -4]), "24", DIM, 12.5, "start"),
+      txt(add(mid(D, E), [-4, -10]), "13", DIM, 12.5, "end"), txt(add(mid(E, A), [-10, 12]), "26", DIM, 12.5, "end"),
+      txt(add(B, [-26, -8]), "60°", GLD, 11), txt(add(E, [26, 0]), "60°", GLD, 11, "start"),
+      cap(430, 270, "Convex pentagon ABCDE with AB = 14, BC = 7, CD = 24, DE = 13, EA = 26 and 60° angles at B and E." + MM(ok))
+    ]);
+  })();
+
 })();

@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, fourth cloud chat)
 
-- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 190 problems have figures drawn for the app.
+- **Counts:** 707 cards (522 formulas, 146 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,370 with strategies, 1,369 tagged. 193 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -36,8 +36,9 @@
   - 2.7a, card 36 (`angle-bisector-length`, 1 problem, already done under the Law of Cosines): **finished**.
   - 2.7a, cards 37 to 39 (`stewarts-theorem`, `cevas-theorem`, `menelaus-theorem`): **finished**. 1989 AIME #15 is now mass points and a doubled median (no Stewart, no Ceva); 1988 AIME #12 cites the area method (no Ceva), so Ceva's Theorem now cites no problem; 2023 AIME II #12 finds $Q$ as the reflection of $P$ in $M$ (no Stewart). Missing card P7 (Cevian Ratio Sum) proposed in QUESTIONS.md.
   - 2.7a, cards 40 to 45 (`apollonius-theorem`, `vivianis-theorem`, `ratio-lemma`, `cotangent-rule`, `projection-formula`, `incenter-excenter-lemma`): **finished**. Apollonius's seven problems were all already right; 2007 AMC 10B #17 (twin of 12B #14) tagged; 2005 AIME II #14 adds Steiner's Ratio Theorem; 2016 AIME I #6 written in full.
-- **This chat so far (fourth cloud chat):** cards 33 to 45 checked. In `js/data/geometry.js` order that is the first 75 or so cards, about 50 of which cite problems; about 70 geometry cards that cite problems remain.
-- **In progress:** 2.7a, the next card after `incenter-excenter-lemma` in `js/data/geometry.js` that cites a problem (cards citing nothing are skipped). **Last problem done: 2016 AIME I #6.**
+  - 2.7a, cards 46 to 57 (`steiner-ratio-theorem` through `triangle-center-angles`: Carnot's perpendicularity, anticomplementary, orthic and medial triangles, Euler's distance, nine-point circle, Brocard angle, orthocenter properties, Fermat point, Leibniz): **finished**. 2024 AIME II #10, 2020 AIME I #15 and 2025 AIME I #14 written in full with figures; 2025 I #14 is Ptolemy's inequality, not the Fermat point, so `fermat-point` now cites no problem. 2019 HMMT Feb Geometry #7 has no statement text, so it gets no figure.
+- **This chat so far (fourth cloud chat):** cards 33 to 57 checked; about 60 geometry cards that cite problems remain, starting with the Circles cards.
+- **In progress:** 2.7a, `circle-basics` (20 problems), then `circular-segment` (7), `power-of-a-point` (17), and on down `js/data/geometry.js`. **Last problem done: 2025 AIME I #14.**
 - **Overnight runs (2026-10-18):** a scheduled task starts a fresh session at 12:35, 2:35 and 4:35 AM Central. Each one reads this block, works on from "Next", and pushes to `claude/zen-wozniak-agipdc` after every batch. A run stops if the newest commit is under 25 minutes old. It proposes missing cards in QUESTIONS.md but does not write them.
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P6 all written; P7 open; a new one goes at the top of the table as P8; the file is newest first), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.

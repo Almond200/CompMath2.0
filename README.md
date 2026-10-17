@@ -457,6 +457,11 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2005 AIME II #14 now names the identity it derives as Steiner's Ratio Theorem ($q=463$).
   - 2016 AIME I #6 is written in full: $DI=DA=5$, $DA^2=DL\cdot DC$ gives $DC=\tfrac{25}3$, so $IC=\tfrac{10}3$. Angle chasing and the cyclic-quadrilateral card are dropped for Triangle Similarity.
   - Figures drawn for 2007 AMC 12B #14 (shared with 10B #17) and 2016 AIME I #6.
+- **Practice pass: the triangle-center cards finished, Steiner's Ratio Theorem through Angles at the Triangle Centers (2026-10-17):**
+  - 2024 AIME II #10: $OI\perp AI$ makes $I$ the midpoint of the chord $AM$, the power of $I$ gives $AI=\sqrt{156}$, and $AB\cdot AC=AI\cdot AI_A=468$.
+  - 2020 AIME I #15: $HD=2$, the tangent at $H$ is perpendicular to $AO$ (parallelogram $AHO'O$), $R=\tfrac{21}{2\sqrt5}$ and the area is $3\sqrt{55}$.
+  - 2025 AIME I #14 had a garbled strategy. Now: two $30$-$60$-$90$ corners, Ptolemy's inequality twice, and $BE=38$, so the minimum is $38+19\sqrt3$ (checked by numerical minimization). Fermat Point is dropped, so that card cites no problem now.
+  - Figures drawn for all three; the pentagon figure's self-check caught a wrong vertex before it was committed.
 
 **2026-10-10**
 
