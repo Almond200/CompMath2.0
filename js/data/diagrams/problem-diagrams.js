@@ -2233,4 +2233,110 @@
     ]);
   })();
 
+  // 2018 AMC 10A #24: AB = 50, AC = 10, area 120; the midsegment DE and the bisector AG.
+  PROB["2018-amc-10a-24"] = (() => {
+    const sA = 0.48, cA = Math.sqrt(1 - sA * sA), k = 7.2, Q = (x, y) => [30 + k * x, 200 - k * y];
+    const A = Q(0, 0), B = Q(50, 0), C = Q(10 * cA, 10 * sA), D = mid(A, B), E = mid(A, C), G = lerp(B, C, 5 / 6), F = lineInt(A, G, D, E);
+    const ok = Math.abs(0.5 * 50 * 10 * sA - 120) < 1e-9 && Math.abs(dist(A, F) - dist(F, G)) < 1e-6;
+    return wrap(430, 250, [
+      poly([F, D, B, G], "none", 0, ACCS), poly([A, B, C], DIM, 2), seg(D, E, FNT, 1.5), seg(A, G, ACC, 1.8), ...[A, B, C, D, E, F, G].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(D, [0, 18]), "D"), txt(add(E, [-4, -10]), "E"), txt(add(F, [4, -10]), "F", ACC), txt(add(G, [8, -8]), "G", ACC, 13, "start"),
+      cap(430, 250, "Triangle ABC with AB = 50, AC = 10 and area 120; D and E are midpoints, and the bisector of angle A meets DE at F and BC at G. Quadrilateral FDBG is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2010 AIME I #15: triangle ABC (12, 13, 15) and M on AC with equal incircles in ABM and CBM.
+  PROB["2010-aime-i-15"] = (() => {
+    const k = 20, Q = (x, y) => [80 + k * x, 245 - k * y], bx = 200 / 30, by = Math.sqrt(144 - bx * bx);
+    const A = Q(0, 0), C = Q(15, 0), B = Q(bx, by), M = Q(22 / 3, 0);
+    const inc = (P1, P2, P3) => { const a = dist(P2, P3), b = dist(P1, P3), c = dist(P1, P2); return [mul(add(add(mul(P1, a), mul(P2, b)), mul(P3, c)), 1 / (a + b + c))]; };
+    const [I1] = inc(A, B, M), [I2] = inc(C, B, M), r1 = 245 - I1[1], r2 = 245 - I2[1], ok = Math.abs(r1 - r2) < 1e-6 && Math.abs(dist(B, M) / k - 10) < 1e-6;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(B, M, ACC, 1.6), circ(I1, r1, GLD, 1.6), circ(I2, r2, GLD, 1.6), ...[A, B, C, M].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [0, -10]), "B"), txt(add(C, [10, 14]), "C"), txt(add(M, [0, 18]), "M", ACC),
+      txt(add(mid(A, B), [-12, 0]), "12", DIM, 12.5, "end"), txt(add(mid(B, C), [12, 0]), "13", DIM, 12.5, "start"),
+      cap(430, 270, "Triangle ABC with AB = 12, BC = 13, AC = 15 and M on AC chosen so that the incircles of ABM and CBM (gold) have equal radii." + MM(ok))
+    ]);
+  })();
+
+  // 2020 AIME II #13: the pentagon with sides 5, 6, 6, 6, 7 around its inscribed circle.
+  PROB["2020-aime-ii-13"] = (() => {
+    const r = 4, t = [3, 2, 4, 2, 4], ph = t.map(x => Math.atan(x / r)), k = 21, O = [215, 145];  // r = 4 is what closes the angles
+    const ang = [0]; for (let i = 1; i < 5; i++) ang.push(ang[i - 1] + ph[i - 1] + ph[i]);
+    const V = ang.map((a, i) => add(O, [k * Math.hypot(t[i], r) * Math.cos(a - 1.2), k * Math.hypot(t[i], r) * Math.sin(a - 1.2)]));
+    const total = ang[4] + ph[4] + ph[0], sides = V.map((p, i) => dist(p, V[(i + 1) % 5]) / k);
+    const ok = Math.abs(total - 2 * Math.PI) < 1e-9 && [5, 6, 6, 6, 7].every((x, i) => Math.abs(sides[i] - x) < 1e-9);
+    return wrap(430, 290, [
+      poly(V, DIM, 2), circ(O, r * k, ACC, 1.6), ...V.map(q => dot(q, DIM, 3.2)),
+      ...V.map((q, i) => txt(add(q, mul(norm(sub(q, O)), 15)), "ABCDE"[i], DIM, 13)),
+      ...V.map((q, i) => { const Mq = mid(q, V[(i + 1) % 5]); return txt(add(Mq, mul(norm(sub(Mq, O)), 14)), String([5, 6, 6, 6, 7][i]), DIM, 12); }),
+      cap(430, 290, "Convex pentagon ABCDE with AB = 5, BC = CD = DE = 6, EA = 7 and an inscribed circle (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2026 AIME I #10: the 13-14-15 triangle, its rotation about the circumcenter, and the hexagon.
+  PROB["2026-aime-i-10"] = (() => {
+    const k = 12.5, Q = (x, y) => [150 + k * x, 188 - k * y];
+    const A = Q(5, 12), B = Q(0, 0), C = Q(14, 0), A2 = Q(81 / 8, 93 / 8), B2 = Q(-43 / 40, 201 / 40), C2 = Q(81 / 8, -27 / 8), O = Q(7, 33 / 8);
+    const ok = Math.abs(A2[0] - C2[0]) < 1e-9 && Math.abs(dist(O, A2) - dist(O, A)) < 1e-9;
+    return wrap(430, 290, [
+      poly([A, A2, C, C2, B, B2], "none", 0, ACCS), circ(O, 65 / 8 * k, FNT, 1.2, "none", "4 3"), poly([A, B, C], DIM, 2), poly([A2, B2, C2], ACC, 1.8),
+      ...[A, B, C, A2, B2, C2].map(q => dot(q, DIM, 3)), dot(O, DIM, 2.6),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [-4, 16]), "C"), txt(add(A2, [10, -4]), "A′", ACC, 13, "start"), txt(add(B2, [-10, 0]), "B′", ACC, 13, "end"), txt(add(C2, [10, 10]), "C′", ACC, 13, "start"),
+      cap(430, 290, "The 13-14-15 triangle ABC and its rotation A′B′C′ (blue) about the circumcenter with A′C′ ⟂ BC; the hexagon AA′CC′BB′ is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2003 AIME II #7: the rhombus and the circumcircles of ABD (12.5) and ACD (25).
+  PROB["2003-aime-ii-7"] = (() => {
+    const k = 3.6, O = [215, 180], Q = (x, y) => [O[0] + k * x, O[1] - k * y];  // half-diagonals 20 and 10 are what the radii force
+    const A = Q(-20, 0), C = Q(20, 0), B = Q(0, 10), D = Q(0, -10);
+    const cc = (P1, P2, P3) => lineInt(mid(P1, P2), add(mid(P1, P2), perp(sub(P2, P1))), mid(P2, P3), add(mid(P2, P3), perp(sub(P3, P2))));
+    const O1 = cc(A, B, D), O2 = cc(A, C, D), ok = Math.abs(dist(O1, A) / k - 12.5) < 1e-9 && Math.abs(dist(O2, A) / k - 25) < 1e-9;
+    return wrap(430, 300, [
+      circ(O1, 12.5 * k, ACC, 1.5), circ(O2, 25 * k, GLD, 1.5), poly([A, B, C, D], DIM, 2), ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(B, [0, -10]), "B"), txt(add(C, [10, 4]), "C", DIM, 13, "start"), txt(add(D, [0, 18]), "D"),
+      cap(430, 300, "Rhombus ABCD with the circumcircle of ABD (radius 12.5, blue) and of ACD (radius 25, gold)." + MM(ok))
+    ]);
+  })();
+
+  // 2001 AIME I #9: triangle ABC (13, 15, 17) with D, E, F on its sides (one allowed choice of p, q, r).
+  PROB["2001-aime-i-9"] = (() => {
+    const p = (8 / 3 - Math.sqrt(64 / 9 - 24 * (4 / 9 - 2 / 5))) / 12, q = p, r = 2 / 3 - 2 * p;
+    const k = 13, Q = (x, y) => [80 + k * x, 245 - k * y], ax = (169 - 289 + 225) / 30, A = Q(ax, Math.sqrt(169 - ax * ax)), B = Q(0, 0), C = Q(15, 0);
+    const D = lerp(A, B, p), E = lerp(B, C, q), F = lerp(C, A, r);
+    const ok = p > 0 && r > 0 && Math.abs(p * p + q * q + r * r - 0.4) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), poly([D, E, F], ACC, 1.8, ACCS), ...[A, B, C, D, E, F].map(q2 => dot(q2, DIM, 3)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [-12, 0]), "D", DIM, 13, "end"), txt(add(E, [0, 18]), "E"), txt(add(F, [12, 0]), "F", DIM, 13, "start"),
+      cap(430, 270, "Triangle ABC with AB = 13, BC = 15, CA = 17 and D, E, F on its sides with AD = p·AB, BE = q·BC, CF = r·CA; drawn with one triple satisfying p + q + r = 2/3 and p² + q² + r² = 2/5." + MM(ok))
+    ]);
+  })();
+
+  // 1996 AIME #13: triangle ABC, the median AE extended to D with angle ADB = 90°.
+  PROB["1996-aime-13"] = (() => {
+    const k = 44, Q = (x, y) => [70 + k * x, 220 - k * y], ab = Math.sqrt(30), ac = Math.sqrt(6), bc = Math.sqrt(15);
+    const cx = (ab * ab + ac * ac - bc * bc) / (2 * ab), A = Q(0, 0), B = Q(ab, 0), C = Q(cx, Math.sqrt(ac * ac - cx * cx)), E = mid(B, C), D = foot(B, A, E);
+    const ok = Math.abs(dist(A, D) / dist(A, E) - 27 / 19) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.6), seg(B, D, FNT, 1.4, "4 3"), rightAngle(D, A, B, 8), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(D, [8, -8]), "D", ACC, 13, "start"), txt(add(E, [-10, -6]), "E", DIM, 13, "end"),
+      cap(430, 270, "Triangle ABC with AB = √30, AC = √6, BC = √15; the line AD through the midpoint E of BC, with angle ADB = 90°." + MM(ok))
+    ]);
+  })();
+
+  // 1993 AIME #15: the altitude CH and the incircles of ACH and BCH touching CH at R and S.
+  PROB["1993-aime-15"] = (() => {
+    const c = 1995, b = 1994, a = 1993, k = 0.13, ah = (b * b - a * a + c * c) / (2 * c), h = Math.sqrt(b * b - ah * ah), Q = (x, y) => [85 + k * x, 262 - k * y];
+    const A = Q(0, 0), B = Q(c, 0), C = Q(ah, h), H = Q(ah, 0);
+    const r1 = (ah + h - b) / 2, r2 = (c - ah + h - a) / 2, I1 = Q(ah - r1, r1), I2 = Q(ah + r2, r2), R = Q(ah, r1), S = Q(ah, r2);
+    const ok = Math.abs(Math.abs(r1 - r2) - 332 / 665) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(C, H, FNT, 1.5), rightAngle(H, A, C, 7), circ(I1, r1 * k, ACC, 1.5), circ(I2, r2 * k, GLD, 1.5), dot(R, ACC, 2.6), dot(S, GLD, 2.6),
+      ...[A, B, C, H].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [0, -10]), "C"), txt(add(H, [0, 18]), "H"), txt(add(R, [-6, -6]), "R", ACC, 12, "end"), txt(add(S, [6, 10]), "S", GLD, 12, "start"),
+      cap(430, 300, "Triangle ABC (AB = 1995, AC = 1994, BC = 1993) with the altitude CH; the incircles of ACH and BCH touch CH at R and S, which are less than a unit apart." + MM(ok))
+    ]);
+  })();
+
 })();
