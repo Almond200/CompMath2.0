@@ -3148,4 +3148,48 @@
     ]);
   })();
 
+  // 2022 AMC 10A #15: the cyclic quadrilateral with sides 7, 24, 20, 15.
+  PROB["2022-amc-10a-15"] = (() => {
+    const Am = [-12.5, 0], Cm = [12.5, 0], a1 = Math.acos(7 / 25), a2 = Math.acos(15 / 25);
+    const Bm = add(Am, mul([Math.cos(a1), Math.sin(a1)], 7)), Dm = add(Am, mul([Math.cos(a2), -Math.sin(a2)], 15));
+    const ok = Math.abs(dist(Bm, Cm) - 24) < 1e-9 && Math.abs(dist(Cm, Dm) - 20) < 1e-9 && Math.abs(Math.hypot(...Bm) - 12.5) < 1e-9 && Math.abs(Math.hypot(...Dm) - 12.5) < 1e-9;
+    const Q = fitQ([[-12.5, 0], [12.5, 0], [0, 12.5], [0, -12.5]], 22, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    return wrap(430, 290, [
+      circ(Q([0, 0]), 12.5 * k, FNT, 1.5, GLDS), poly([A, B, C, D], DIM, 2, "var(--bg)"), ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 5]), "A", DIM, 13, "end"), gapLabel(B, [A, C], "B"), txt(add(C, [10, 5]), "C", DIM, 13, "start"), gapLabel(D, [A, C], "D"),
+      txt(add(mid(A, B), [-10, -2]), "7", DIM, 12.5, "end"), txt(add(mid(B, C), [8, -8]), "24", DIM, 12.5, "start"),
+      txt(add(mid(C, D), [10, 8]), "20", DIM, 12.5, "start"), txt(add(mid(D, A), [-10, 8]), "15", DIM, 12.5, "end"),
+      cap(430, 290, "Quadrilateral ABCD with AB = 7, BC = 24, CD = 20, DA = 15 inscribed in a circle; the shaded part of the disc is the area asked for." + MM(ok))
+    ]);
+  })();
+
+  // 2014 AIME I #10: the unit disk rolled around the radius-5 disk until it has turned 360°.
+  PROB["2014-aime-i-10"] = (() => {
+    const Em = [0, 0], Am = [5, 0], Cm = [6, 0], Dm = [3, 3 * Math.sqrt(3)], Bm = add(Dm, sub(Am, Cm));
+    const ok = Math.abs(dist(Em, Dm) - 6) < 1e-9 && Math.abs(dist(Bm, Dm) - 1) < 1e-9 && Math.abs((Bm[1] - Dm[1]) * (Cm[0] - Am[0]) - (Bm[0] - Dm[0]) * (Cm[1] - Am[1])) < 1e-9;
+    const Q = fitQ([[-5, -5], [7, 0], [3, 3 * Math.sqrt(3) + 1]], 22, 430, 290), k = Q.k;
+    const E = Q(Em), A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    return wrap(430, 290, [
+      circ(E, 5 * k, DIM, 1.6), circ(C, k, ACC, 1.6), circ(D, k, ACC, 1.6, "none", "5 4"),
+      seg(A, C, GLD, 1.8), seg(B, D, GLD, 1.8), seg(E, A, FNT, 1.2), seg(E, B, FNT, 1.2),
+      ...[E, A, B, C, D].map(q => dot(q, DIM, 3)),
+      txt(add(E, [-8, 16]), "E", DIM, 13, "end"), txt(add(A, [-6, 16]), "A", DIM, 13, "end"), txt(add(C, [12, 4]), "C", DIM, 13, "start"),
+      txt(add(D, [12, -4]), "D", DIM, 13, "start"), txt(add(B, [-10, -6]), "B", DIM, 13, "end"),
+      cap(430, 290, "The unit disk starts tangent at A with center C and rolls around the disk of radius 5 (center E) until it has turned 360°, ending with center D; the point that began at A is now at B, with BD ∥ AC." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AIME I #5: the cone on its side, seen from above, and the circle its base point traces about the vertex.
+  PROB["2008-aime-i-5"] = (() => {
+    const O = [215, 150], L = 120, ph = 2 * Math.asin(1 / 17), a0 = -0.35;
+    const P = add(O, mul([Math.cos(a0), Math.sin(a0)], L)), P2 = add(O, mul([Math.cos(a0 - ph), Math.sin(a0 - ph)], L));
+    const ok = Math.abs(Math.sin(ph / 2) * 17 - 1) < 1e-12 && Math.abs(dist(O, P) - L) < 1e-9;
+    return wrap(430, 300, [
+      circ(O, L, ACC, 1.5, "none", "5 4"), poly([O, P, P2], DIM, 2, GLDS), dot(O, DIM, 3.5), dot(P, ACC, 3.5),
+      txt(add(O, [-10, 16]), "V", DIM, 13, "end"), txt(add(P, [10, 10]), "P", ACC, 13, "start"),
+      cap(430, 300, "Seen from above: the cone lies on its side with vertex V fixed, and as it rolls the point P where the base meets the table traces the dashed circle about V." + MM(ok))
+    ]);
+  })();
+
 })();

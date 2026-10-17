@@ -462,6 +462,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2020 AIME I #15: $HD=2$, the tangent at $H$ is perpendicular to $AO$ (parallelogram $AHO'O$), $R=\tfrac{21}{2\sqrt5}$ and the area is $3\sqrt{55}$.
   - 2025 AIME I #14 had a garbled strategy. Now: two $30$-$60$-$90$ corners, Ptolemy's inequality twice, and $BE=38$, so the minimum is $38+19\sqrt3$ (checked by numerical minimization). Fermat Point is dropped, so that card cites no problem now.
   - Figures drawn for all three; the pentagon figure's self-check caught a wrong vertex before it was committed.
+- **Practice pass: Circle Area, Circumference, Arcs & Sectors finished (2026-10-17):**
+  - 1983 AIME #15 gets a full route: the midpoints of chords from $A$ lie on the circle with diameter $AO$, which must touch $BC$; with $BC$ on $y=-4$ this gives $A=(-4,-3)$ and $\sin=\tfrac7{25}$. Circle basics and power of a point are dropped.
+  - 2000 AIME I #13: the line through $(5,0)$ of slope $-\tfrac7{24}$ is tangent to every reachable disc, so the region is $\tfrac{700}{31}$.
+  - 2014 AIME I #10: the disk turns $6\alpha$, so $\alpha=60^\circ$, $B=(2,3\sqrt3)$ and $\sin^2=\tfrac{27}{31}$.
+  - 2022 AMC 10A #15 shows why $AC=25$ ($\cos B=0$ from the two Law of Cosines equations) and cites the Law of Cosines. 2025 AMC 10A #25 replaces its integrals with a $60^\circ$ sector and a $30$-$60$-$90$ triangle (checked by simulation).
+  - 2008 AIME I #5 and 2003 AIME I #2 state their numbers in place of "carried through".
+  - Figures drawn for 2022 AMC 10A #15, 2014 AIME I #10 and 2008 AIME I #5.
 
 **2026-10-10**
 
