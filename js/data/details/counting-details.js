@@ -3340,5 +3340,32 @@ The $n$ rows together contain every entry once, so the magic sum is the total of
 
 ## Contest profile
 An occasional AMC problem, and an early AIME one, that gives part of a magic square or a variant of one. The magic sum and the center are always the first two facts to find.
+`,
+"product-of-uniforms": String.raw`
+## Key forms
+- $P(XY \ge c) = 1 - c + c\ln c$ — the complement, the region above the hyperbola
+- $P(XY \le k) = \frac{k}{ab}\left(1 - \ln\frac{k}{ab}\right)$ — for $X$ uniform on $[0, a]$ and $Y$ on $[0, b]$, with $0 \lt k \le ab$, after rescaling to the unit square
+- $f(t) = -\ln t$ on $(0, 1)$ — the density of the product, the derivative of $c - c\ln c$
+- $P(XYZ \le c) = c\left(1 - \ln c + \frac{(\ln c)^2}{2}\right)$ — three uniform numbers, by the same integral one dimension up
+- $E[XY] = \frac14$ — by independence, $E[X]\,E[Y]$, with no integral
+
+## Conditions
+$X$ and $Y$ are independent and uniform on $[0, 1]$, and the threshold $c$ is between $0$ and $1$; for $c \ge 1$ the probability is $1$. Whether the inequality is strict does not matter, since the curve $xy = c$ has no area. The logarithm is the natural one.
+
+## Why it works
+Two independent uniform numbers are a uniform point of the unit square, so the probability is an area, as in [[geometric-probability|geometric probability]], and the boundary $xy = c$ is a hyperbola, whose area is a logarithm.
+
+For $x \le c$ every $y$ in $[0, 1]$ works, since $xy \le x \le c$; that is a strip of area $c$. For $x \gt c$ the condition is $y \le \frac cx$, which is less than $1$, so that column contributes height $\frac cx$: $$P(XY \le c) = c + \int_c^1 \frac cx\,dx = c + c\left(\ln 1 - \ln c\right) = c - c\ln c.$$
+
+## Useful observations
+- Since $\ln c \lt 0$, the answer is more than $c$: a product is below $c$ more often than one factor alone, which has chance exactly $c$.
+- Values to know: $c = \frac12$ gives $\frac12 + \frac12\ln2 \approx 0.847$, and $c = \frac14$ gives $\frac14 + \frac12\ln2 \approx 0.597$, with $\ln2 \approx 0.693$.
+- An area ratio set by two points chosen uniformly on two sides of a triangle from a common vertex is such a product, by [[shared-angle-area-ratio|the shared-angle area ratio]].
+
+## Applications
+The chance that a product of two random numbers, or an area ratio set by two random points, falls below a threshold, and the distribution of a product of uniform numbers.
+
+## Contest profile
+Rare; it appears late on the AMC 12, when two random numbers or two random points on a triangle's sides set a product, and the chance that it is below a fraction is asked for. A logarithm among the answer choices, or answers given as intervals, is the sign.
 `
 });

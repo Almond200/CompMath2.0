@@ -30,5 +30,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Gap scan, batch 4: AMC patterns", date: "2026-10-12",
     ids: ["age-problems", "calendar-problems", "painted-cubes", "round-robin-tournaments", "magic-squares"] },
   { label: "Angle bisectors of two lines", date: "2026-10-12",
-    ids: ["angle-bisectors-of-lines"] }
+    ids: ["angle-bisectors-of-lines"] },
+  { label: "Practice pass: four cards the tagged problems needed", date: "2026-10-17",
+    ids: ["diagonal-angle-from-sides", "squares-on-triangle-flanks", "parallel-sided-hexagon", "product-of-uniforms"] }
 ];

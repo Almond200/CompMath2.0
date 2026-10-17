@@ -599,6 +599,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "product-of-uniforms",
+          name: "Product of Two Uniform Variables",
+          latex: String.raw`P(XY \le c) = c - c\ln c \qquad (0 \lt c \le 1)`,
+          description: String.raw`If $X$ and $Y$ are chosen independently and uniformly from $[0, 1]$, the chance that their product is at most $c$ is $c - c\ln c$. The outcomes fill the unit square, and the region $xy \le c$ is a strip of width $c$ together with the area under the hyperbola $y = \frac cx$ from $x = c$ to $1$, which is $c\ln\frac1c$. That area under a hyperbola is how a natural logarithm gets into the answer to a probability question about a product, or about an area ratio set by two random points.`,
+          keywords: ["product of two uniform random variables", "xy less than c", "hyperbola in the unit square", "c - c ln c", "probability with a logarithm", "two random points area ratio", "distribution of a product", "integral of 1/x probability"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "coprime-probability",
           name: "Probability Two Random Integers Are Coprime",
           latex: String.raw`P(\gcd = 1) = \frac{6}{\pi^2}`,

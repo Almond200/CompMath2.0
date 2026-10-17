@@ -9041,6 +9041,71 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 300, "The bisector (dashed blue) of the angle between the x-axis and y = 3x/4 has slope 1/3: the two purple angles are equal. A circle tangent to both lines has its center on it; the example's circle of radius 2 is centered at (6, 2), and its radii to the two lines are perpendicular to them." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Practice-pass cards (2026-10-17).
+  DIAGRAMS["diagonal-angle-from-sides"] = [(() => {
+    const A = [70, 250], B = [318, 286], C = [368, 92], D = [132, 58];
+    const X = lineInt(A, C, B, D), G = mul(add(add(A, B), add(C, D)), 0.25);
+    const sq = (P, Q) => (P[0] - Q[0]) ** 2 + (P[1] - Q[1]) ** 2;
+    const ac = sub(C, A), bd = sub(D, B), cosT = Math.abs(ac[0] * bd[0] + ac[1] * bd[1]) / (dist(A, C) * dist(B, D));
+    const ok = Math.abs(2 * dist(A, C) * dist(B, D) * cosT - Math.abs(sq(A, B) + sq(C, D) - sq(B, C) - sq(D, A))) < 1e-6;
+    const side = (P, Q, s, c) => txt(add(away(mid(P, Q), G, 16), [0, 5]), s, c, 14);
+    return wrap(430, 330, [
+      poly([A, B, C, D], DIM, 2),
+      seg(A, B, ACC, 2.6), seg(C, D, ACC, 2.6), seg(B, C, GLD, 2.6), seg(D, A, GLD, 2.6),
+      seg(A, C, FNT, 1.6, "6 4"), seg(B, D, FNT, 1.6, "6 4"),
+      angleArc(X, C, D, 24, ORG), dot(X, ORG, 3.5),
+      dot(A, DIM, 3.5), dot(B, DIM, 3.5), dot(C, DIM, 3.5), dot(D, DIM, 3.5),
+      txt(add(A, [-14, 6]), "A", DIM, 13), txt(add(B, [6, 18]), "B", DIM, 13),
+      txt(add(C, [14, 0]), "C", DIM, 13), txt(add(D, [-8, -10]), "D", DIM, 13),
+      side(A, B, "a", ACC), side(B, C, "b", GLD), side(C, D, "c", ACC), side(D, A, "d", GLD),
+      txt(add(X, [2, -32]), "θ", ORG, 14),
+      cap(430, 330, "With a = AB, b = BC, c = CD, d = DA, the squares of the blue pair of opposite sides minus the squares of the gold pair equal 2 d₁d₂ cos θ, up to sign, where θ is the angle between the dashed diagonals. With the area ½ d₁d₂ sin θ, it gives tan θ without either diagonal." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  DIAGRAMS["squares-on-triangle-flanks"] = [(() => {
+    const A = [200, 140], B = [170, 215], C = [275, 215], G = centroidOf(A, B, C);
+    const out = (P, Q) => { const n = perp(sub(Q, P)); const t = add(mid(P, Q), mul(norm(n), 5)); return dist(t, G) > dist(mid(P, Q), G) ? n : mul(n, -1); };
+    const nAB = out(A, B), nAC = out(A, C), nBC = out(B, C);
+    const Pp = add(A, nAB), Bq = add(B, nAB), Qp = add(A, nAC), Cq = add(C, nAC), Bs = add(B, nBC), Cs = add(C, nBC);
+    const M = mid(B, C), H = lineInt(M, A, Pp, Qp);
+    const ar = (P, Q, R) => Math.abs((Q[0] - P[0]) * (R[1] - P[1]) - (R[0] - P[0]) * (Q[1] - P[1])) / 2;
+    const pq = sub(Qp, Pp), am = sub(A, M);
+    const ok = Math.abs(ar(A, Pp, Qp) - ar(A, B, C)) < 1e-6 && Math.abs(dist(Pp, Qp) - 2 * dist(A, M)) < 1e-6 &&
+      Math.abs(pq[0] * am[0] + pq[1] * am[1]) < 1e-6;
+    return wrap(430, 340, [
+      poly([A, B, C], ACC, 2, ACCS), poly([A, Pp, Qp], GLD, 2, GLDS),
+      poly([A, B, Bq, Pp], DIM, 1.8), poly([A, C, Cq, Qp], DIM, 1.8), poly([B, C, Cs, Bs], DIM, 1.8),
+      seg(M, A, PUR, 2), seg(A, H, PUR, 1.6, "5 4"), rightAngle(H, A, Qp, 8, PUR),
+      dot(A, DIM, 3.5), dot(B, DIM, 3.5), dot(C, DIM, 3.5), dot(M, PUR, 3.5),
+      txt(add(A, [-15, 8]), "A", DIM, 13), txt(add(B, [-12, 14]), "B", DIM, 13), txt(add(C, [12, 14]), "C", DIM, 13),
+      txt(add(M, [8, 16]), "M", PUR, 13), txt(add(G, [0, 12]), "K", ACC, 13), txt(add(centroidOf(A, Pp, Qp), [-32, 6]), "K", GLD, 13),
+      txt(add(mid(Pp, Qp), [-20, -10]), "2mₐ", GLD, 13), txt(add(mid(A, M), [-18, 8]), "mₐ", PUR, 13),
+      cap(430, 340, "Squares on the three sides of triangle ABC. The gold flank between the two squares at A has the triangle's two sides at A with the supplementary angle, so it has the same area K. Its third side is twice the median AM and is perpendicular to the line of that median." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+  DIAGRAMS["parallel-sided-hexagon"] = [(() => {
+    const a = 10, b = 12, c = 15, s = 1 / (1 / a + 1 / b + 1 / c), k = 24;
+    const px = (181 / 30), py = Math.sqrt(100 - px * px);
+    const Q2 = (x, y) => [35 + k * x, 250 - k * y];
+    const R = Q2(0, 0), Q = Q2(15, 0), P = Q2(px, py);
+    const on = (U, V, t) => lerp(U, V, t / dist(U, V) * k);
+    const A = on(R, P, a * s / b), B = on(P, R, a * s / c), C = on(P, Q, b * s / c), D = on(Q, P, b * s / a), E = on(Q, R, c * s / a), F = on(R, Q, c * s / b);
+    const H = [A, B, C, D, E, F], O = mul(H.reduce((u, v) => add(u, v), [0, 0]), 1 / 6), Tc = centroidOf(P, Q, R);
+    const cr = (U, V, W, Z) => { const p = sub(V, U), q = sub(Z, W); return Math.abs(p[0] * q[1] - p[1] * q[0]); };
+    const ok = Math.abs(s - 4) < 1e-12 && H.every((p, i) => Math.abs(dist(p, H[(i + 1) % 6]) - s * k) < 1e-6) &&
+      [0, 1, 2].every(i => cr(H[i], H[i + 1], H[i + 3], H[(i + 4) % 6]) < 1e-6);
+    const lab = (p, n, from) => txt(add(away(p, from, 14), [0, 5]), n, DIM, 13);
+    return wrap(430, 300, [
+      poly([P, B, C], "none", 0, GLDS), poly([Q, D, E], "none", 0, GLDS), poly([R, F, A], "none", 0, GLDS),
+      poly([P, Q, R], DIM, 1.8),
+      poly(H, ACC, 2.4, ACCS),
+      ...H.map(p => dot(p, ACC, 3.5)),
+      lab(A, "A", Tc), lab(B, "B", Tc), lab(C, "C", Tc), lab(D, "D", Tc), lab(E, "E", Tc), lab(F, "F", Tc),
+      txt(add(away(mid(R, P), Tc, 30), [-6, 0]), "10", DIM, 13), txt(add(away(mid(P, Q), Tc, 26), [4, 0]), "12", DIM, 13), txt(add(mid(Q, R), [0, 30]), "15", DIM, 13),
+      txt(add(O, [0, 5]), "s = 4", ACC, 14),
+      cap(430, 300, "Lines AB, CD, EF make a triangle with sides 10, 12, 15. The gold corners are copies of it scaled by s/10, s/12, s/15, so 1/s = 1/10 + 1/12 + 1/15 = 1/4 and every side of the hexagon is 4." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,

@@ -150,8 +150,11 @@ Each is a fact or move a re-solved problem needed and no card holds (checked aga
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|
-| P1 | Angle Between the Diagonals from the Sides: $d_1d_2\cos\theta=\tfrac12\left|a^2+c^2-b^2-d^2\right|$ | formula, geometry / quadrilateral areas | AIME Late, low | 2021 AIME II #12 (with $\tfrac12d_1d_2\sin\theta$ it gives $\tan\theta$ from the sides and the area) |
+| P1 | Angle Between the Diagonals from the Sides: $d_1d_2\cos\theta=\tfrac12\left\lvert a^2+c^2-b^2-d^2\right\rvert$ | formula, geometry / quadrilateral areas | AIME Late, low | 2021 AIME II #12 (with $\tfrac12d_1d_2\sin\theta$ it gives $\tan\theta$ from the sides and the area) |
 | P2 | Flank Triangles of the Squares on a Triangle: each gap triangle between two outward squares has the triangle's area, and its third side is twice the median | formula, geometry / triangle areas | AIME Late, low | 2019 HMMT February Geometry #10 (also the classic "squares on the sides" hexagon problems) |
 | P3 | Equilateral Hexagon with Opposite Sides Parallel: the side $s$ satisfies $\tfrac1s=\tfrac1a+\tfrac1b+\tfrac1c$ for the triangle on alternate sides | formula, geometry / polygons | AIME Late, lower | 2024 AIME II #5 |
 | P4 | Product of Two Uniform Variables: $P(XY\lt c)=c-c\ln c$ for $X$, $Y$ uniform on $[0,1]$ | formula, counting / geometric probability | AMC, lower | 2024 AMC 12A #20 (needs the area under $y=\tfrac cx$) |
+| P5 | Conjugating Both Sides of a Complex Equation: apply $z\mapsto\bar z$ to a given equation to get a second one, then solve the pair (with $z\bar z=\lvert z\rvert^2$) | method, algebra / complex numbers | AIME Early, low | about ten statements use the move, among them 2005 AMC 12B #22, 2004 AMC 12B #16, 2016 AMC 12B #22, 2020 AMC 12B #23, 2023 AMC 12A #14, 1992 AIME #10, 2013 AIME II #12, 2014 AIME I #7, 2018 AIME I #6 and 2001 AIME II #14; no card holds the move (`complex-basics` lists the facts, `conjugate-root-theorems` is about roots) |
+
+**P1 to P4 approved on 2026-10-17 and written** (`diagonal-angle-from-sides`, `squares-on-triangle-flanks`, `parallel-sided-hexagon`, `product-of-uniforms`), and the four problems now cite them. P3 was written as AIME Early, not AIME Late: its one problem is AIME #5, and the tier rubric reads that as early. **P5 is open:** yes, no, or a different rating.
 

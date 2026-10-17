@@ -3267,4 +3267,24 @@
       cap(430, 250, "The staircase with rows 3, 2, 1 and the hook length of each cell. The shaded hook of the top-left cell holds the cell, the two to its right, and the two below it, so its length is 5. The product is 45, and 6!/45 = 16 fillings." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // Practice-pass cards (2026-10-17).
+  DIAGRAMS["product-of-uniforms"] = [(() => {
+    const c = 0.25, m = frame(0, 1, 0, 1, 90, 25, 250, 250);
+    const curve = []; for (let i = 0; i <= 60; i++) { const X = c + (1 - c) * i / 60; curve.push(m.pt(X, c / X)); }
+    const region = [m.pt(0, 0), m.pt(0, 1), ...curve, m.pt(1, 0)];
+    let num = c; for (let i = 0; i < 20000; i++) { const X = c + (1 - c) * (i + 0.5) / 20000; num += (c / X) * (1 - c) / 20000; }
+    const ok = Math.abs(num - (c - c * Math.log(c))) < 1e-6;
+    return wrap(430, 330, [
+      poly(region, "none", 0, ACCS),
+      seg(m.pt(c, 0), m.pt(c, 1), FNT, 1.4, "4 4"),
+      rect(m.L, m.T, m.W, m.H, DIM, 2),
+      plot(X => c / X, m, c, 1, 120, ACC, 2.4),
+      txt(m.pt(c / 2, 0.5), "1/4", ACC, 13), txt(add(m.pt(0.6, 0.18), [0, 5]), "(ln 4)/4", ACC, 13),
+      txt(add(m.pt(0.62, 0.62), [0, 0]), "xy = 1/4", ACC, 13),
+      txt(add(m.pt(0, 0), [-8, 5]), "0", DIM, 12, "end"), txt(add(m.pt(1, 0), [0, 18]), "1", DIM, 12),
+      txt(add(m.pt(0, 1), [-8, 5]), "1", DIM, 12, "end"), txt(add(m.pt(c, 0), [0, 18]), "1/4", DIM, 12),
+      txt(add(m.pt(0.5, 0), [0, 36]), "x", DIM, 13), txt(add(m.pt(0, 0.5), [-24, 5]), "y", DIM, 13),
+      cap(430, 330, "Two uniform numbers are a uniform point of the unit square, and xy ≤ 1/4 is the shaded region: the strip of width 1/4 on the left, plus the area under the hyperbola y = 1/(4x) from 1/4 to 1, which is (ln 4)/4. The total, 1/4 + (ln 4)/4 ≈ 0.597, is P(XY ≤ 1/4)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
 })();
