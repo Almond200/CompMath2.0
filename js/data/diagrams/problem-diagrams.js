@@ -1883,18 +1883,6 @@
     ]);
   })();
 
-  // 1998 AIME #10: side view through the center sphere and two opposite spheres of the ring.
-  PROB["1998-aime-10"] = (() => {
-    const R = 100 * Math.sqrt(4 + 2 * Math.SQRT2), r = 100 + 50 * Math.SQRT2, k = 0.52, Q = (x, y) => [215 + k * x, 236 - k * y];  // r is the radius the problem forces
-    const ok = Math.abs(Math.hypot(R, r - 100) - (r + 100)) < 1e-9 && Math.abs(2 * R * Math.sin(Math.PI / 8) - 200) < 1e-9;
-    return wrap(430, 290, [
-      seg(Q(-400, 0), Q(400, 0), DIM, 2), circ(Q(-R, 100), 100 * k, ACC, 1.8), circ(Q(R, 100), 100 * k, ACC, 1.8), circ(Q(0, r), r * k, GLD, 1.8),
-      seg(Q(-R, 100), Q(0, r), FNT, 1.3, "4 3"), seg(Q(-R, 100), Q(-R, 0), FNT, 1.3, "4 3"), dot(Q(-R, 100), ACC, 3), dot(Q(R, 100), ACC, 3), dot(Q(0, r), GLD, 3),
-      txt(add(Q(-R, 50), [8, 0]), "100", ACC, 11.5, "start"),
-      cap(430, 290, "Side view through the center of the ninth sphere (gold) and two opposite spheres of radius 100 (blue) from the ring of eight, all resting on the floor." + MM(ok))
-    ]);
-  })();
-
   // 2000 AIME II #6: a trapezoid whose bases differ by 100, its midline and the equal-area segment.
   PROB["2000-aime-ii-6"] = (() => {
     const b = 75, B = 175, h = 110, k = 1.65, Q = (x, y) => [70 + k * x, 238 - k * y];  // drawn with the bases the condition forces
