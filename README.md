@@ -444,6 +444,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2010 AIME II #15 had a radical-axis sketch that does not reach the answer. It now uses the spiral similarity at $P$ and the Ratio Lemma: $\tfrac{BQ}{CQ}=\tfrac{15}{13}\cdot\tfrac{5/18}{13/58}=\tfrac{725}{507}$.
   - 2011 AIME II #4 states Menelaus with its numbers ($\tfrac{CP}{PA}=\tfrac{31}{20}$).
   - Figures drawn for all four. The 2010 II #15 figure's self-check caught a triangle drawn with $AB$ and $AC$ swapped before it was committed.
+- **Practice pass: Length of an Angle Bisector, Stewart's Theorem, Ceva's Theorem and Menelaus' Theorem finished (2026-10-17):**
+  - 1989 AIME #15: mass points give $m_A=2$, $m_B=m_C=1$, so $CP=15$; doubling the median $PD$ gives a $9$-$12$-$15$ right triangle, $[PBC]=54$ and $[ABC]=108$. Stewart and Ceva are dropped.
+  - 1988 AIME #12: the three triangles at $P$ give $\sum\tfrac3{a+3}=1$, so $abc=9\cdot43+54=441$; Ceva is dropped, so Ceva's Theorem cites no problem now.
+  - 2003 AIME I #7 lists the factor pairs and excludes $m=15$ (the degenerate one); the alternative uses the foot at the midpoint of $AC$.
+  - 2023 AIME II #12: $Q$ is $P$ reflected in $M$ (opposite angles of the parallelogram $BPCQ$), so $AQ=2\sqrt{37}-\tfrac{49}{2\sqrt{37}}=\tfrac{99}{\sqrt{148}}$.
+  - New candidate card P7 in QUESTIONS.md: the Cevian Ratio Sum $\tfrac{PD}{AD}+\tfrac{PE}{BE}+\tfrac{PF}{CF}=1$.
+  - Figures drawn for 2003 AIME I #7 and 2023 AIME II #12.
 
 **2026-10-10**
 

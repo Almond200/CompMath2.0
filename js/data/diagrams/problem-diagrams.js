@@ -3027,4 +3027,35 @@
     ]);
   })();
 
+  // 2003 AIME I #7: B on AC with AB = 9, BC = 21, and D off the line with AD = CD (drawn with AD = 17, BD = 10).
+  PROB["2003-aime-i-7"] = (() => {
+    const Am = [0, 0], Bm = [9, 0], Cm = [30, 0], Dm = [15, 8];
+    const Q = fitQ([Am, Cm, Dm], 40), A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    const ok = Math.abs(dist(Am, Dm) - dist(Cm, Dm)) < 1e-9 && Math.abs(dist(Am, Dm) - 17) < 1e-9 && Math.abs(dist(Bm, Dm) - 10) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, C, D], DIM, 2), seg(B, D, GLD, 1.8), ticksOn(A, D, 1), ticksOn(C, D, 1),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 5]), "A", DIM, 13, "end"), txt(add(B, [0, 18]), "B"), txt(add(C, [10, 5]), "C", DIM, 13, "start"), txt(add(D, [0, -10]), "D"),
+      txt(add(mid(A, B), [0, 18]), "9", DIM, 12.5), txt(add(mid(B, C), [0, 18]), "21", DIM, 12.5),
+      cap(430, 270, "B on AC with AB = 9 and BC = 21, and D off the line with AD = CD, both AD and BD integers (one of the possible triangles)." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AIME II #12: the 13-14-15 triangle, the median AM extended to P on the circumcircle.
+  PROB["2023-aime-ii-12"] = (() => {
+    const Bm = [0, 0], Cm = [14, 0], Am = [5, 12], Mm = [7, 0], u = norm(sub(Mm, Am)), Pm = add(Mm, mul(u, 49 / Math.sqrt(148)));
+    const [Om, R] = circ3(Am, Bm, Cm);
+    const ok = Math.abs(dist(Pm, Om) - R) < 1e-9 && Math.abs(dist(Am, Bm) - 13) < 1e-9 && Math.abs(dist(Am, Cm) - 15) < 1e-9;
+    const Q = fitQ([[Om[0] - R, Om[1]], [Om[0] + R, Om[1]], [Om[0], Om[1] + R], [Om[0], Om[1] - R]], 18, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), M = Q(Mm), P = Q(Pm);
+    return wrap(430, 290, [
+      circ(Q(Om), R * k, FNT, 1.4), poly([A, B, C], DIM, 2), seg(A, P, GLD, 1.8), seg(B, P, ACC, 1.5), seg(C, P, ACC, 1.5), ticksOn(B, M, 1), ticksOn(M, C, 1),
+      ...[A, B, C, M, P].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 0]), "B", DIM, 13, "end"), txt(add(C, [10, 0]), "C", DIM, 13, "start"),
+      gapLabel(M, [A, B, C, P], "M"), txt(add(P, [12, 6]), "P", DIM, 13, "start"),
+      txt(add(mid(A, B), [-10, 0]), "13", DIM, 12.5, "end"), txt(add(mid(A, C), [10, 0]), "15", DIM, 12.5, "start"),
+      cap(430, 290, "AB = 13, BC = 14, CA = 15; M is the midpoint of BC and the median AM meets the circumcircle again at P. The point Q sought lies on AM." + MM(ok))
+    ]);
+  })();
+
 })();
