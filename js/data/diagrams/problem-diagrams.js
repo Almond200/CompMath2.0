@@ -1126,4 +1126,52 @@
     ]);
   })();
 
+  // 2004 AIME I #4: the square of side 2 and some segments of length 2 with ends on adjacent sides.
+  PROB["2004-aime-i-4"] = (() => {
+    const k = 100, Q = (x, y) => [115 + k * x, 238 - k * y], angs = [0.35, 0.8, 1.2];
+    const segs = [];
+    angs.forEach(t => { segs.push([[2 * Math.cos(t), 0], [0, 2 * Math.sin(t)]]); segs.push([[2, 2 - 2 * Math.cos(t)], [2 - 2 * Math.sin(t), 2]]); });
+    const ok = segs.every(([u, w]) => Math.abs(Math.hypot(u[0] - w[0], u[1] - w[1]) - 2) < 1e-9);
+    return wrap(430, 270, [
+      poly([Q(0, 0), Q(2, 0), Q(2, 2), Q(0, 2)], DIM, 2),
+      ...segs.map(([u, w]) => seg(Q(...u), Q(...w), ACC, 1.6)), ...segs.map(([u, w]) => dot(Q((u[0] + w[0]) / 2, (u[1] + w[1]) / 2), GLD, 3.4)),
+      txt(add(Q(1, 0), [0, 18]), "2", DIM, 12.5), txt(add(Q(0, 1), [-12, 4]), "2", DIM, 12.5, "end"),
+      cap(430, 270, "The square of side 2 and a few of the segments in S (blue): each has length 2 and ends on two adjacent sides. Their midpoints (gold) are what enclose the region." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AIME II #5: the trapezoid with base angles 37° and 53°, and the midpoints M and N.
+  PROB["2008-aime-ii-5"] = (() => {
+    const r = Math.PI / 180, k = 0.17, Q = (x, y) => [44 + k * x, 238 - k * y];
+    // Legs extended meet at E with a right angle; A = (0, 0), D = (2008, 0), E above.
+    const E = [2008 * Math.cos(37 * r) * Math.cos(37 * r), 2008 * Math.cos(37 * r) * Math.sin(37 * r)], f = (2008 - 1000) / 2008;
+    const A = Q(0, 0), D = Q(2008, 0), B = Q(...E.map(v => v * f)), C = Q(2008 + (E[0] - 2008) * f, E[1] * f);
+    const M = mid(B, C), N = mid(A, D);
+    const ok = Math.abs(dist(B, C) / k - 1000) < 1e-6;
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), seg(M, N, ACC, 2), dot(M, ACC, 3.4), dot(N, ACC, 3.4), ...[A, B, C, D].map(q => dot(q, DIM, 3.4)),
+      angleArc(A, D, B, 34, GLD), angleArc(D, C, A, 30, GLD),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [-10, -4]), "B"), txt(add(C, [10, -4]), "C"), txt(add(D, [10, 14]), "D"),
+      txt(add(M, [0, -10]), "M", ACC), txt(add(N, [0, 18]), "N", ACC),
+      txt(add(A, [52, -10]), "37°", GLD, 11.5), txt(add(D, [-46, -10]), "53°", GLD, 11.5),
+      txt(add(mid(B, C), [-40, -10]), "1000", DIM, 12), txt(add(mid(A, D), [60, 18]), "2008", DIM, 12),
+      cap(430, 270, "Trapezoid ABCD with BC ∥ AD, BC = 1000, AD = 2008, angle A = 37° and angle D = 53°; M and N are the midpoints of the bases." + MM(ok))
+    ]);
+  })();
+
+  // 2024 AMC 12A #7: the isosceles right triangle with the points P₁, …, P₂₀₂₄ evenly spaced on AC.
+  PROB["2024-amc-12a-7"] = (() => {
+    const k = 150, Q = (x, y) => [215 + k * x, 222 - k * y];
+    const A = Q(-1, 0), C = Q(1, 0), B = Q(0, -1 + 2);  // AC = 2 on the x-axis, B at height 1
+    const ok = Math.abs(dist(A, B) / k - Math.SQRT2) < 1e-9;
+    const ticks = Array.from({ length: 9 }, (_, i) => lerp(A, C, (i + 1) / 10));
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), rightAngle(B, A, C, 10), ...ticks.map(q => seg(B, q, ACC, 1.1)), ...ticks.map(q => dot(q, ACC, 2.8)),
+      ...[A, B, C].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [0, -10]), "B"), txt(add(C, [10, 14]), "C"),
+      txt(add(mid(A, B), [-14, 0]), "√2", DIM, 12.5, "end"), txt(add(mid(B, C), [14, 0]), "√2", DIM, 12.5, "start"),
+      cap(430, 270, "Triangle ABC with the right angle at B and BA = BC = √2. The 2024 points cut AC into 2025 equal parts; nine evenly spaced vectors from B stand in for them here." + MM(ok))
+    ]);
+  })();
+
 })();
