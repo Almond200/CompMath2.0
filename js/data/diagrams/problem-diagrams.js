@@ -994,4 +994,83 @@
     ]);
   })();
 
+  // 2014 AIME II #14: triangle ABC with the altitude AH, the bisector AD, the midpoint M, N and P.
+  PROB["2014-aime-ii-14"] = (() => {
+    const s2 = Math.SQRT2, ac = 10 * Math.sin(105 * Math.PI / 180) / Math.sin(Math.PI / 4), k = 21, Q = (x, y) => [70 + k * x, 252 - k * y];
+    const C = Q(0, 0), B = Q(5 * s2, 0), A = Q(ac / s2, ac / s2), H = Q(ac / s2, 0), M = Q(5 * s2 / 2, 0);
+    const D = Q(5 * s2 * ac / (10 + ac), 0), N = mid(H, M), P = lineInt(A, D, N, add(N, [0, -1]));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(dist(A, B) / k - 10) < 1e-9 && Math.abs(ang(B, A, C) - 30) < 1e-9 && Math.abs(ang(B, A, D) - ang(D, A, C)) < 1e-9;
+    return wrap(430, 300, [
+      seg(C, H, FNT, 1.4, "4 3"), poly([A, B, C], DIM, 2), seg(A, H, FNT, 1.5, "5 4"), seg(A, D, ACC, 1.8), seg(P, N, GLD, 1.6, "5 4"),
+      rightAngle(H, A, C, 8), rightAngle(N, P, C, 8),
+      ...[A, B, C, H, D, M, N, P].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [6, 18]), "B"), txt(add(C, [-10, 14]), "C"), txt(add(H, [8, 18]), "H"),
+      txt(add(D, [0, 18]), "D"), txt(add(M, [0, 18]), "M"), txt(add(N, [0, 18]), "N"), txt(add(P, [-10, -2]), "P", DIM, 13, "end"),
+      txt(add(mid(A, B), [7, 0]), "10", DIM, 12.5, "start"), txt(add(A, [-40, 28]), "30°", DIM, 11.5), txt(add(C, [36, -8]), "45°", DIM, 11.5),
+      cap(430, 300, "Triangle ABC with AB = 10, angle A = 30° and angle C = 45°. On line BC: the foot H of the altitude, the foot D of the bisector, the midpoint M, and N midway between H and M, with P on AD above N." + MM(ok))
+    ]);
+  })();
+
+  // 2014 AMC 10A #22: the 20 by 10 rectangle and E on CD with angle CBE = 15°.
+  PROB["2014-amc-10a-22"] = (() => {
+    const k = 15, Q = (x, y) => [65 + k * x, 222 - k * y], ce = 10 * Math.tan(Math.PI / 12);
+    const A = Q(0, 0), B = Q(20, 0), C = Q(20, 10), D = Q(0, 10), E = Q(20 - ce, 10);
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(C, B, E) - 15) < 1e-9;
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), seg(B, E, ACC, 2), seg(A, E, GLD, 2, "6 4"), angleArc(B, E, C, 46, ACC),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.5)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"), txt(add(E, [0, -10]), "E"),
+      txt(add(mid(A, B), [0, 18]), "20", DIM, 12.5), txt(add(mid(B, C), [12, 4]), "10", DIM, 12.5, "start"), txt(add(B, [-12, -54]), "15°", ACC, 11.5),
+      cap(430, 270, "Rectangle ABCD with AB = 20 and BC = 10, and E on CD with angle CBE = 15°. The question asks for AE (dashed)." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AIME I #8: the equiangular hexagon with AB = 6, BC = 8, CD = 10, DE = 12.
+  PROB["2018-aime-i-8"] = (() => {
+    const sides = [6, 8, 10, 12, 2, 16], k = 9.2, names = "ABCDEF".split("");
+    let p = [112, 238]; const V = [];
+    sides.forEach((L, i) => { V.push(p); const t = -60 * i * Math.PI / 180; p = add(p, [k * L * Math.cos(t), k * L * Math.sin(t)]); });
+    const ok = Math.abs(p[0] - V[0][0]) < 1e-9 && Math.abs(p[1] - V[0][1]) < 1e-9;
+    const O = V.reduce((a, b) => add(a, mul(b, 1 / 6)), [0, 0]);
+    return wrap(430, 290, [
+      poly(V, DIM, 2), ...V.map(q => dot(q, DIM, 3.4)),
+      ...V.map((q, i) => txt(add(q, mul(norm(sub(q, O)), 15)), names[i], DIM, 13)),
+      ...[0, 1, 2, 3].map(i => { const Mq = mid(V[i], V[i + 1]); return txt(add(Mq, mul(norm(sub(Mq, O)), -16)), String(sides[i]), DIM, 12.5); }),
+      cap(430, 290, "The equiangular hexagon ABCDEF (every angle 120°) with AB = 6, BC = 8, CD = 10 and DE = 12." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AIME II #4: the equiangular octagon CAROLINE and the self-intersecting octagon CORNELIA.
+  PROB["2018-aime-ii-4"] = (() => {
+    const k = 64, Q = (x, y) => [262 + k * x, 228 - k * y];
+    const pts = { C: [0, 0], A: [1, 1], R: [1, 2], O: [0, 3], L: [-1, 3], I: [-2, 2], N: [-2, 1], E: [-1, 0] };
+    const P = n => Q(...pts[n]);
+    const ok = Math.abs(dist(P("C"), P("A")) / k - Math.SQRT2) < 1e-9 && Math.abs(dist(P("A"), P("R")) / k - 1) < 1e-9;
+    const tris = [[[0, 0], [0, 4 / 3], [1, 1]], [[0, 5 / 3], [0, 3], [1, 2]], [[-2, 1], [-1, 4 / 3], [-1, 0]], [[-1, 3], [-1, 5 / 3], [-2, 2]],
+      [[0, 4 / 3], [0, 5 / 3], [-0.5, 1.5]], [[-1, 4 / 3], [-1, 5 / 3], [-0.5, 1.5]]];
+    return wrap(430, 290, [
+      ...tris.map(t => poly(t.map(q => Q(...q)), "none", 0, ACCS)),
+      poly("CAROLINE".split("").map(P), FNT, 1.5, "none", "4 3"), poly("CORNELIA".split("").map(P), ACC, 2),
+      ...Object.keys(pts).map(n => dot(P(n), DIM, 3.4)),
+      ...Object.keys(pts).map(n => txt(add(P(n), mul(norm(sub(P(n), Q(-0.5, 1.5))), 15)), n, DIM, 13)),
+      cap(430, 290, "The equiangular octagon CAROLINE (dashed), with sides √2 and 1 alternating, and the self-intersecting octagon CORNELIA (blue), which encloses six triangles (shaded)." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AMC 10A #5: the unit square with the equilateral hexagon APQCRS.
+  PROB["2022-amc-10a-5"] = (() => {
+    const s = 2 - Math.SQRT2, t = 1 - s, k = 200, Q = (x, y) => [115 + k * x, 238 - k * y];
+    const A = Q(0, 0), B = Q(1, 0), C = Q(1, 1), D = Q(0, 1), P = Q(1 - t, 0), Qq = Q(1, t), R = Q(t, 1), Sq = Q(0, 1 - t);
+    const hex = [A, P, Qq, C, R, Sq], L = hex.map((q, i) => dist(q, hex[(i + 1) % 6]));
+    const ok = L.every(x => Math.abs(x - L[0]) < 1e-9);
+    return wrap(430, 270, [
+      poly([A, B, C, D], FNT, 1.5), poly(hex, ACC, 2, ACCS), ...hex.map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(P, [0, 18]), "P"), txt(add(Qq, [12, 4]), "Q", DIM, 13, "start"), txt(add(R, [0, -10]), "R"), txt(add(Sq, [-12, 4]), "S", DIM, 13, "end"),
+      cap(430, 270, "Square ABCD of side 1 with P, Q, R, S on its sides so that the hexagon APQCRS (blue) has six equal sides." + MM(ok))
+    ]);
+  })();
+
 })();
