@@ -716,8 +716,17 @@ are untouched.
   for the app. `check-statements.py` fails on a figure for a problem whose statement already has
   one. A problem given only in coordinates, or with nothing to picture but its answer, gets none.
   A solid is drawn from its real coordinates with `solidEdges`, which dashes the hidden edges.
+  A sphere in such a figure is drawn with `sphereOutline` (its true outline under the oblique
+  projection, an ellipse), never as a circle. A figure built from a length the conditions force
+  (the answer shape) labels only the given numbers. (2026-10-17)
 - A trick-only card still lists the problem among its practice problems, with the row rendered
   exactly like any other. The problem page is the only place a trick is labelled.
+- **Order of work inside a card:** AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with
+  AIME alongside the AMC 10/12 (Stanley, 2026-10-17).
+- **AA similarity versus scaling.** Two triangles shown similar by their angles (parallel lines,
+  a shared angle and a right angle) cite Triangle Similarity Criteria; Similar Figures is cited
+  only where lengths, areas or volumes are scaled by a known ratio. A strategy states its
+  intermediate values, never "Carried through, the answer is". (2026-10-17)
 - **A problem no card honestly fits keeps `formulas: []`.** The validator reports it ("no card at all") instead of failing, the app still gives it a page that shows its chain as "Not classified yet", and `Special:Unclassified` lists it. Never tag a card a problem does not use to fill the gap (2011 AIME II #1 and 2013 AIME II #1 once carried Normalization, which neither uses).
 - `strategy` is a double-quoted JS string: LaTeX backslashes doubled, no raw `"`, no raw `<`.
 - **AMC 10 and AMC 12 share problems, often a whole run of them.** In 2024, AMC 10B #1-5 are the
