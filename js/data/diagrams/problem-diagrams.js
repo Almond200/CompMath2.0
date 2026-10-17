@@ -2495,4 +2495,169 @@
     ]);
   })();
 
+  PROB["2026-aime-i-5"] = (() => {
+    const th = Math.acos(29 / 36), k = 190, Q = (x, y) => [105 + k * x, 85 - k * y];
+    const Am = [0, 0], Bm = [1, 0], rot = (v, a) => [v[0] * Math.cos(a) - v[1] * Math.sin(a), v[0] * Math.sin(a) + v[1] * Math.cos(a)];
+    const Apm = add(Bm, rot(sub(Am, Bm), th)), Bpm = add(Apm, rot(sub(Bm, Apm), -th));
+    const A = Q(...Am), B = Q(...Bm), Ap = Q(...Apm), Bp = Q(...Bpm);
+    const ok = Math.abs(dist(A, Bp) / k - 4 / 3) < 1e-9 && Math.abs(dist(B, Ap) / k - 1) < 1e-9 && Math.abs(dist(Ap, Bp) / k - 1) < 1e-9;
+    return wrap(430, 300, [
+      seg(A, B, DIM, 2), seg(B, Ap, ACC, 2), seg(Ap, Bp, GLD, 2), seg(A, Bp, FNT, 1.5, "5 4"),
+      angleArc(B, A, Ap, 30, ACC), angleArc(Ap, B, Bp, 30, GLD),
+      ...[A, B, Ap, Bp].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(Ap, [-10, -8]), "A′"), txt(add(Bp, [10, -8]), "B′"),
+      txt(add(B, [-40, 22]), "θ", ACC, 13), txt(add(Ap, [44, -10]), "θ", GLD, 13),
+      txt(add(mid(A, B), [0, 18]), "1", DIM, 12), txt(add(lerp(A, Bp, 0.78), [6, -10]), "4/3", DIM, 12, "start"),
+      cap(430, 300, "A is turned counterclockwise by θ about B to A′ (blue), then B is turned clockwise by θ about A′ to B′ (gold); AB = 1 and AB′ = 4/3." + MM(ok))
+    ]);
+  })();
+
+  PROB["2026-aime-i-14"] = (() => {
+    // sides found numerically so that the squares add to 308 and the diagonals' squares to 800; the last two close the pentagon
+    const u = [0, 1, 2, 3, 4].map(i => [Math.cos(rad(72 * i)), Math.sin(rad(72 * i))]);
+    const a = [6.77422, 7.92370, 8.53810];
+    const r = [0, 1, 2].reduce((s, i) => add(s, mul(u[i], a[i])), [0, 0]), det = u[3][0] * u[4][1] - u[3][1] * u[4][0];
+    a.push((-r[0] * u[4][1] + r[1] * u[4][0]) / det, (-u[3][0] * r[1] + u[3][1] * r[0]) / det);
+    const k = 19, V = [[0, 0]]; for (let i = 0; i < 4; i++) V.push(add(V[i], mul(u[i], a[i])));
+    const cx = V.reduce((s, p) => add(s, p), [0, 0]).map(z => z / 5), P = V.map(p => [215 + k * (p[0] - cx[0]), 150 - k * (p[1] - cx[1])]);
+    const s2 = a.reduce((s, x) => s + x * x, 0), d2 = [0, 1, 2, 3, 4].reduce((s, i) => s + (dist(P[i], P[(i + 2) % 5]) / k) ** 2, 0);
+    const ok = Math.abs(s2 - 308) < 0.01 && Math.abs(d2 - 800) < 0.01 && Math.abs(a.reduce((s, x) => s + x, 0) ** 2 - 676 * Math.sqrt(5)) < 0.05;
+    const O = mul(P.reduce((s, p) => add(s, p), [0, 0]), 1 / 5);
+    return wrap(430, 300, [
+      ...[0, 1, 2, 3, 4].map(i => seg(P[i], P[(i + 2) % 5], FNT, 1.4, "5 4")),
+      poly(P, DIM, 2),
+      ...P.map((p, i) => angleArc(p, P[(i + 4) % 5], P[(i + 1) % 5], 16, ACC)),
+      ...P.map(p => dot(p, DIM, 3)),
+      ...[0, 1, 2, 3, 4].map(i => txt(add(away(mid(P[i], P[(i + 1) % 5]), O, 14), [0, 5]), "a" + "₁₂₃₄₅"[i], DIM, 13)),
+      cap(430, 300, "An equiangular pentagon: every angle (blue) is 108°. The squares of the sides a₁, ..., a₅ add to 308, and the squares of the five dashed diagonals add to 800." + MM(ok))
+    ]);
+  })();
+
+  PROB["1989-aime-10"] = (() => {
+    const A = [80, 240], B = [360, 240], C = [150, 70];
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), angleArc(A, B, C, 30, ACC), angleArc(B, C, A, 34, ACC), angleArc(C, A, B, 26, GLD),
+      ...[A, B, C].map(q => dot(q, DIM, 3)),
+      txt(add(A, [42, -10]), "α", ACC, 13), txt(add(B, [-44, -8]), "β", ACC, 13), txt(add(C, [6, 40]), "γ", GLD, 13),
+      txt(add(mid(B, C), [12, -6]), "a", DIM, 13, "start"), txt(add(mid(A, C), [-12, -4]), "b", DIM, 13, "end"), txt(add(mid(A, B), [0, 20]), "c", DIM, 13),
+      cap(430, 300, "A triangle with sides a, b, c opposite the angles α, β, γ; the condition a² + b² = 1989c² makes c tiny next to a and b, so the real γ is a very small angle, and the figure shows only the labels.")
+    ]);
+  })();
+
+  PROB["2003-aime-i-12"] = (() => {
+    const cA = 7 / 9, sA = Math.sqrt(1 - cA * cA), k = 1.15, Q = (x, y) => [70 + k * x, 250 - k * y];
+    const Am = [0, 0], Bm = [180, 0], Dm = [170 * cA, 170 * sA];       // AD = 170, so BC = 110 by the perimeter
+    const dd = Math.hypot(Dm[0] - Bm[0], Dm[1] - Bm[1]), ex = sub(Dm, Bm).map(z => z / dd), x = (110 * 110 - 180 * 180 + dd * dd) / (2 * dd), h = Math.sqrt(110 * 110 - x * x);
+    const Cm = add(add(Bm, mul(ex, x)), mul([ex[1], -ex[0]], h));
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm);
+    const ang = (V, P, R) => { const u = sub(P, V), v = sub(R, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))); };
+    const ok = Math.abs(dist(C, D) / k - 180) < 1e-6 && Math.abs(ang(A, B, D) - ang(C, B, D)) < 1e-9 && Math.abs((dist(A, D) + dist(B, C)) / k - 280) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2), angleArc(A, B, D, 28, ACC), angleArc(C, D, B, 28, ACC),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [12, -4]), "C"), txt(add(D, [-10, -8]), "D"),
+      txt(add(mid(A, B), [0, 18]), "180", DIM, 12), txt(add(mid(C, D), [0, -10]), "180", DIM, 12),
+      cap(430, 300, "Convex quadrilateral ABCD with AB = CD = 180, equal angles at A and C (blue), AD ≠ BC, and perimeter 640." + MM(ok))
+    ]);
+  })();
+
+  PROB["2004-aime-ii-11"] = (() => {
+    const k = 0.3, V = [215, 40], r = 600 * k, h = 200 * Math.sqrt(7) * k, L = [215 - r, 40 + h], R = [215 + r, 40 + h];
+    const P1 = lerp(V, L, 125 / 800), P2 = lerp(V, R, 375 * Math.SQRT2 / 800);
+    const ok = Math.abs(dist(V, L) / k - 800) < 1e-6;
+    return wrap(430, 300, [
+      `<ellipse cx="215" cy="${K.r1(40 + h)}" rx="${K.r1(r)}" ry="30" fill="none" stroke="${DIM}" stroke-width="2"/>`,
+      seg(V, L, DIM, 2), seg(V, R, DIM, 2), seg(V, [215, 40 + h], FNT, 1.4, "5 4"), seg([215, 40 + h], R, FNT, 1.4, "5 4"),
+      dot(V, DIM, 3), dot(P1, ACC, 4), dot(P2, GLD, 4),
+      txt(add(V, [0, -10]), "V"), txt(add(P1, [-10, 0]), "125", ACC, 12, "end"), txt(add(P2, [10, 4]), "375√2", GLD, 12, "start"),
+      txt(add(mid([215, 40 + h], R), [0, 16]), "600", DIM, 12), txt(add(mid(V, [215, 40 + h]), [8, 0]), "200√7", DIM, 12, "start"),
+      cap(430, 300, "The cone (radius 600, height 200√7). The fly starts 125 from the vertex V (blue) and ends on the exactly opposite side, 375√2 from V (gold)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2005-aime-i-7"] = (() => {
+    const s = 9 + Math.sqrt(141), k = 15, Q = (x, y) => [60 + k * x, 250 - k * y];
+    const A = Q(0, 0), B = Q(s, 0), D = Q(10 * Math.cos(rad(60)), 10 * Math.sin(rad(60))), C = Q(s + 8 * Math.cos(rad(120)), 8 * Math.sin(rad(120)));
+    const ok = Math.abs(dist(C, D) / k - 12) < 1e-9;
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2), angleArc(A, B, D, 30, ACC), angleArc(B, C, A, 30, ACC),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"),
+      txt(add(A, [40, -8]), "60°", ACC, 12, "start"), txt(add(B, [-40, -8]), "60°", ACC, 12, "end"),
+      txt(add(mid(A, D), [-12, 0]), "10", DIM, 12, "end"), txt(add(mid(B, C), [12, 0]), "8", DIM, 12, "start"), txt(add(mid(C, D), [0, -10]), "12", DIM, 12),
+      cap(430, 300, "Quadrilateral ABCD with BC = 8, CD = 12, AD = 10 and 60° angles at A and B." + MM(ok))
+    ]);
+  })();
+
+  PROB["2009-aime-i-15"] = (() => {
+    const k = 17, Q = (x, y) => [95 + k * x, 200 - k * y];
+    const ax = (100 - 256 + 196) / 28, Bm = [0, 0], Cm = [14, 0], Am = [ax, Math.sqrt(100 - ax * ax)], Dm = [6, 0];   // AB = 10, CA = 16; D at BD = 6
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm);
+    const IB = K.incenterOf(A, B, D), IC = K.incenterOf(A, C, D), O1 = K.circumcenterOf(B, IB, D), O2 = K.circumcenterOf(C, IC, D);
+    const P = sub(mul(foot(D, O1, O2), 2), D);                        // the second common point: D reflected in the line of centers
+    const ang = (V, X, Y) => { const u = sub(X, V), v = sub(Y, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))) * 180 / Math.PI; };
+    const ok = Math.abs(ang(P, B, C) - 150) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), seg(A, D, DIM, 1.6),
+      circ(O1, dist(O1, B), ACC, 1.3, "none", "5 4"), circ(O2, dist(O2, C), GLD, 1.3, "none", "5 4"),
+      seg(B, P, FNT, 1.4), seg(C, P, FNT, 1.4),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)), dot(IB, ACC, 3.5), dot(IC, GLD, 3.5), dot(P, PUR, 3.5),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [4, 18]), "D"),
+      txt(add(IB, [-8, -6]), subT("I", "B"), ACC, 12, "end"), txt(add(IC, [8, -6]), subT("I", "C"), GLD, 12, "start"), txt(add(P, [0, 18]), "P", PUR, 13),
+      cap(430, 300, "Triangle ABC (AB = 10, BC = 14, CA = 16) with D inside BC; the circles through B, I<sub>B</sub>, D and through C, I<sub>C</sub>, D (dashed) meet again at P." + MM(ok))
+    ]);
+  })();
+
+  PROB["2012-aime-ii-13"] = (() => {
+    const s = Math.sqrt(111), k = 13.5, A = [250, 115], th = Math.acos(211 / 222) * 180 / Math.PI;
+    const at = deg => onC(A, s * k, -deg);                                  // angles measured counterclockwise on screen
+    const B = at(-90 - 30), C = at(-90 + 30 - 60 + 60), b0 = -120;
+    const Bp = at(b0), Cp = at(b0 + 60), D1 = at(b0 + th), D2 = at(b0 - th);
+    const E = [at(b0 + th + 60), at(b0 + th - 60), at(b0 - th + 60), at(b0 - th - 60)];
+    const ok = Math.abs(dist(Bp, D1) / k - Math.sqrt(11)) < 1e-9 && Math.abs(E.reduce((t, e) => t + (dist(Cp, e) / k) ** 2, 0) - 677) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, Bp, Cp], DIM, 2.2),
+      poly([A, D1, E[0]], ACC, 1.3, "none"), poly([A, D1, E[1]], ACC, 1.3, "none"), poly([A, D2, E[2]], GLD, 1.3, "none"), poly([A, D2, E[3]], GLD, 1.3, "none"),
+      ...[A, Bp, Cp].map(q => dot(q, DIM, 3.5)), dot(D1, ACC, 3.5), dot(D2, GLD, 3.5), ...E.slice(0, 2).map(q => dot(q, ACC, 3)), ...E.slice(2).map(q => dot(q, GLD, 3)),
+      txt(add(A, [8, -8]), "A", DIM, 13, "start"), txt(away(Bp, A, 13), "B"), txt(away(Cp, A, 13), "C"),
+      txt(away(D1, A, 14), subT("D", "1"), ACC), txt(away(D2, A, 14), subT("D", "2"), GLD),
+      ...E.map((e, i) => txt(add(away(e, A, 14), [0, 4]), subT("E", String(i + 1)), i < 2 ? ACC : GLD)),
+      cap(430, 300, "Equilateral triangle ABC of side √111 (black) and the four triangles congruent to it at A, with BD₁ = BD₂ = √11." + MM(ok))
+    ]);
+  })();
+
+  PROB["2012-aime-ii-15"] = (() => {
+    const k = 26, Q = (x, y) => [124 + k * x, 168 - k * y];
+    const ax = (25 - 9 + 49) / 14, Bm = [0, 0], Cm = [7, 0], Am = [ax, -Math.sqrt(25 - ax * ax)];
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), O = K.circumcenterOf(A, B, C), R = dist(O, A), D = Q(35 / 8, 0);
+    const u = norm(sub(D, A)), w = sub(A, O), t = -2 * (u[0] * w[0] + u[1] * w[1]), E = add(A, mul(u, t));
+    const G = mid(D, E), g = dist(D, E) / 2, Fx = sub(mul(foot(E, O, G), 2), E);   // F: E reflected in the line of centers OG
+    const ok = Math.abs(dist(A, Fx) ** 2 / (k * k) - 900 / 19) < 1e-6 && Math.abs(dist(Fx, O) - R) < 1e-6;
+    return wrap(430, 300, [
+      circ(O, R, FNT, 1.5), circ(G, g, ACC, 1.4, "none", "5 4"), poly([A, B, C], DIM, 2), seg(A, E, DIM, 1.6), seg(A, Fx, GLD, 2),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3)), dot(Fx, GLD, 3.5),
+      txt(add(A, [0, 18]), "A"), txt(add(B, [-12, 0]), "B", DIM, 13, "end"), txt(add(C, [12, 0]), "C", DIM, 13, "start"), txt(add(D, [10, 14]), "D", DIM, 13, "start"),
+      txt(add(E, [-8, 22]), "E", DIM, 13, "end"), txt(away(Fx, O, 14), "F", GLD), txt(add(G, [g + 6, 0]), "γ", ACC, 13, "start"),
+      cap(430, 300, "Triangle ABC (AB = 5, BC = 7, AC = 3) in its circle ω; the bisector from A meets BC at D and ω at E, and the circle γ on diameter DE (dashed) meets ω again at F." + MM(ok))
+    ]);
+  })();
+
+  PROB["2018-aime-ii-12"] = (() => {
+    const k = 13, Q = (x, y) => [55 + k * x, 210 - k * y];
+    const Bm = [0, 0], Cm = [14, 0], Am = [6, 8];                          // the case where P is the midpoint of BD
+    const dd = dist(Am, Cm), ex = sub(Am, Cm).map(z => z / dd), x = (100 - 260 + dd * dd) / (2 * dd), h = Math.sqrt(100 - x * x);
+    const Dm = add(add(Cm, mul(ex, x)), mul([-ex[1], ex[0]], -h));
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm), P = lineInt(A, C, B, D);
+    const ar = (U, V, W) => Math.abs((V[0] - U[0]) * (W[1] - U[1]) - (W[0] - U[0]) * (V[1] - U[1])) / 2;
+    const ok = Math.abs(dist(A, D) / k - 2 * Math.sqrt(65)) < 1e-9 && Math.abs(ar(A, P, B) + ar(C, P, D) - ar(B, P, C) - ar(A, P, D)) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, P, B], "none", 0, ACCS), poly([C, P, D], "none", 0, ACCS), poly([B, P, C], "none", 0, GLDS), poly([A, P, D], "none", 0, GLDS),
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, D, FNT, 1.5),
+      ...[A, B, C, D, P].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, -6]), "A", DIM, 13, "end"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [8, -8]), "D", DIM, 13, "start"), txt(add(P, [0, 20]), "P"),
+      txt(add(mid(A, B), [-14, 4]), "10", DIM, 12, "end"), txt(add(mid(B, C), [0, 18]), "14", DIM, 12), txt(add(mid(C, D), [14, 4]), "10", DIM, 12, "start"), txt(add(mid(A, D), [0, -10]), "2√65", DIM, 12),
+      cap(430, 300, "Convex quadrilateral ABCD with AB = CD = 10, BC = 14, AD = 2√65; the blue triangles APB and CPD together have the same area as the gold BPC and APD." + MM(ok))
+    ]);
+  })();
+
 })();
