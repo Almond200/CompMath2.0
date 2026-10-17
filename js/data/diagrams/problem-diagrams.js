@@ -1392,4 +1392,111 @@
     ]);
   })();
 
+  // 2006 AIME II #12: the equilateral triangle in its circle, D and E on the extended sides, F and G.
+  PROB["2006-aime-ii-12"] = (() => {
+    const k = 17, Q = (x, y) => [24 + k * x, 140 - k * y], u = d => [Math.cos(d * Math.PI / 180), Math.sin(d * Math.PI / 180)];
+    const A3 = [0, 0], B3 = mul(u(-30), 2 * Math.sqrt(3)), C3 = mul(u(30), 2 * Math.sqrt(3)), D3 = mul(u(-30), 13), E3 = mul(u(30), 11), F3 = add(D3, E3);
+    const t = 2 * (F3[0] * 2) / (F3[0] ** 2 + F3[1] ** 2), G3 = mul(F3, t);  // second meeting of line AF with the circle (x − 2)² + y² = 4
+    const [A, B, C, D, E, F, G, O] = [A3, B3, C3, D3, E3, F3, G3, [2, 0]].map(q => Q(...q));
+    const ok = Math.abs(Math.hypot(G3[0] - 2, G3[1]) - 2) < 1e-9 && Math.abs(Math.hypot(B3[0] - 2, B3[1]) - 2) < 1e-9;
+    return wrap(430, 290, [
+      circ(O, 2 * k, DIM, 1.8), seg(A, D, DIM, 1.8), seg(A, E, DIM, 1.8), seg(B, C, DIM, 1.8), seg(D, F, FNT, 1.5, "5 4"), seg(E, F, FNT, 1.5, "5 4"), seg(A, F, ACC, 1.6),
+      poly([C, B, G], "none", 0, ACCS), ...[A, B, C, D, E, F, G].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(B, [0, 18]), "B"), txt(add(C, [0, -10]), "C"), txt(add(D, [0, 18]), "D"), txt(add(E, [0, -10]), "E"),
+      txt(add(F, [10, 4]), "F", DIM, 13, "start"), txt(add(G, [10, 4]), "G", ACC, 13, "start"),
+      txt(add(mid(A, D), [-6, 18]), "13", DIM, 12.5), txt(add(mid(A, E), [-6, -10]), "11", DIM, 12.5),
+      cap(430, 290, "Equilateral ABC in a circle of radius 2, AD = 13 along AB and AE = 11 along AC, the parallels through D and E (dashed) meeting at F, and G where AF meets the circle again; triangle CBG is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AIME I #2: square AIME and the isosceles triangle GEM on its side EM.
+  PROB["2008-aime-i-2"] = (() => {
+    const k = 8.4, Q = (x, y) => [215 + k * x, 252 - k * y];  // the altitude 25 is what the area forces
+    const E = Q(-5, 0), M = Q(5, 0), I = Q(5, 10), A = Q(-5, 10), G = Q(0, 25), X = lineInt(G, E, A, I), Y = lineInt(G, M, A, I);
+    const ok = Math.abs(((10 + dist(X, Y) / k) / 2) * 10 - 80) < 1e-9;
+    return wrap(430, 290, [
+      poly([E, X, Y, M], "none", 0, ACCS), poly([A, I, M, E], DIM, 2), poly([G, E, M], ACC, 2),
+      ...[A, I, M, E, G].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 4]), "A", DIM, 13, "end"), txt(add(I, [10, 4]), "I", DIM, 13, "start"), txt(add(M, [10, 14]), "M"), txt(add(E, [-10, 14]), "E"), txt(add(G, [0, -10]), "G", ACC),
+      txt(add(mid(E, M), [0, 18]), "10", DIM, 12.5),
+      cap(430, 290, "Square AIME of side 10 and isosceles triangle GEM on base EM (blue); the region they share (shaded) has area 80." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AIME I #14: diameter AB, C beyond A, the tangent CT and the foot P from A.
+  PROB["2008-aime-i-14"] = (() => {
+    const k = 8, x = 24, Q = (a, b) => [330 + k * a, 160 - k * b];  // O at the origin, C at (−24, 0); one of many positions of C
+    const O = Q(0, 0), A = Q(-9, 0), B = Q(9, 0), C = Q(-x, 0), th = Math.acos(9 / x), T = Q(-9 * Math.cos(th), 9 * Math.sin(th)), P = foot(A, C, T);
+    const ok = Math.abs(dist(O, T) / k - 9) < 1e-9 && Math.abs((T[0] - O[0]) * (T[0] - C[0]) + (T[1] - O[1]) * (T[1] - C[1])) < 1e-6;
+    return wrap(430, 270, [
+      circ(O, 9 * k, DIM, 1.8), seg(C, B, DIM, 1.6), seg(C, add(T, mul(sub(T, C), 0.25)), ACC, 1.8), seg(A, P, GLD, 1.6, "5 4"), seg(B, P, GLD, 1.8), seg(O, T, FNT, 1.3, "4 3"),
+      rightAngle(P, A, C, 7), rightAngle(T, O, C, 7), ...[O, A, B, C, T, P].map(q => dot(q, DIM, 3.2)),
+      txt(add(C, [-10, 14]), "C"), txt(add(A, [-4, 18]), "A"), txt(add(B, [10, 14]), "B"), txt(add(O, [0, 18]), "O"), txt(add(T, [4, -10]), "T"), txt(add(P, [-6, -10]), "P", GLD),
+      cap(430, 270, "Circle ω with diameter AB = 18, C on AB extended past A, the tangent CT (blue) and the foot P of the perpendicular from A; BP is gold. C can be anywhere on the ray." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AIME II #3: rectangle ABCD with AB = 100, E the midpoint of AD and AC ⟂ BE.
+  PROB["2009-aime-ii-3"] = (() => {
+    const ad = 100 * Math.SQRT2, k = 1.5, Q = (x, y) => [140 + k * x, 250 - k * y];  // AD = 100√2 is what the condition forces
+    const A = Q(0, 0), B = Q(100, 0), C = Q(100, ad), D = Q(0, ad), E = Q(0, ad / 2);
+    const ok = Math.abs((C[0] - A[0]) * (E[0] - B[0]) + (C[1] - A[1]) * (E[1] - B[1])) < 1e-6;
+    const X = lineInt(A, C, B, E);
+    return wrap(430, 290, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, ACC, 1.8), seg(B, E, GLD, 1.8), rightAngle(X, C, E, 8), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.4)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(C, [10, -6]), "C"), txt(add(D, [-10, -6]), "D"), txt(add(E, [-12, 4]), "E", DIM, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "100", DIM, 12.5),
+      cap(430, 290, "Rectangle ABCD with AB = 100 and E the midpoint of AD, with AC ⟂ BE." + MM(ok))
+    ]);
+  })();
+
+  // 2010 AIME II #9: the regular hexagon, its side midpoints, the six segments and the small hexagon.
+  PROB["2010-aime-ii-9"] = (() => {
+    const O = [215, 132], R = 112, names = "ABCDEF".split(""), V = names.map((_, i) => onC(O, R, 180 + 60 * i)), Mds = V.map((v, i) => mid(v, V[(i + 1) % 6]));
+    const segs = V.map((v, i) => [v, Mds[(i + 1) % 6]]);  // A to H (midpoint of BC), B to I, …
+    const inner = segs.map((sg, i) => lineInt(sg[0], sg[1], segs[(i + 5) % 6][0], segs[(i + 5) % 6][1]));
+    const side = dist(inner[0], inner[1]), ok = Math.abs(side / R - 4 / Math.sqrt(7) / 2) < 1e-9;
+    const mnames = "GHIJKL".split("");
+    return wrap(430, 290, [
+      poly(inner, "none", 0, ACCS), poly(V, DIM, 2), ...segs.map(([p, q]) => seg(p, q, ACC, 1.4)),
+      ...V.map(q => dot(q, DIM, 3.2)), ...Mds.map(q => dot(q, DIM, 2.6)),
+      ...V.map((q, i) => txt(add(q, mul(norm(sub(q, O)), 15)), names[i], DIM, 13)), ...Mds.map((q, i) => txt(add(q, mul(norm(sub(q, O)), 14)), mnames[i], DIM, 11.5)),
+      cap(430, 290, "Regular hexagon ABCDEF with side midpoints G to L. The segments AH, BI, CJ, DK, EL, FG (blue) bound the smaller regular hexagon (shaded)." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AIME I #13: triangle AB₀C₀ (12, 17, 25) and the nested similar triangles.
+  PROB["2013-aime-i-13"] = (() => {
+    const k = 15, Q = (x, y) => [28 + k * x, 220 - k * y], r = 336 / 625;
+    const B0 = [9.6, 7.2], C0 = [25, 0], Bs = [B0], Cs = [C0];
+    for (let n = 1; n <= 6; n++) { Bs.push(mul(Bs[n - 1], r)); Cs.push(mul(Cs[n - 1], r)); }
+    const L = (u, w) => Math.hypot(u[0] - w[0], u[1] - w[1]);
+    const ok = Math.abs(L(B0, C0) - 17) < 1e-9 && Math.abs(L(B0, [0, 0]) - 12) < 1e-9 && Math.abs(L(Cs[1], C0) - 289 / 25) < 1e-9;
+    const P = q => Q(...q);
+    return wrap(430, 290, [
+      ...[1, 2, 3, 4, 5, 6].map(n => poly([P(Bs[n - 1]), P(Cs[n]), P(Bs[n])], "none", 0, ACCS)),
+      poly([Q(0, 0), P(B0), P(C0)], DIM, 2), ...[1, 2, 3, 4].map(n => seg(P(Bs[n]), P(Cs[n]), FNT, 1.3)), ...[1, 2, 3, 4].map(n => seg(P(Bs[n - 1]), P(Cs[n]), FNT, 1.3)),
+      dot(Q(0, 0), DIM, 3.4), dot(P(B0), DIM, 3.4), dot(P(C0), DIM, 3.4), dot(P(Bs[1]), DIM, 3), dot(P(Cs[1]), DIM, 3),
+      txt(add(Q(0, 0), [-10, 14]), "A"), txt(add(P(B0), [0, -10]), subT("B", "0")), txt(add(P(C0), [10, 14]), subT("C", "0")), txt(add(P(Bs[1]), [-8, -8]), subT("B", "1"), DIM, 12, "end"), txt(add(P(Cs[1]), [0, 18]), subT("C", "1"), DIM, 12),
+      txt(add(lerp(Q(0, 0), P(B0), 0.8), [-12, -2]), "12", DIM, 12.5, "end"), txt(add(mid(P(B0), P(C0)), [12, -4]), "17", DIM, 12.5, "start"),
+      cap(430, 290, "Triangle AB₀C₀ with AB₀ = 12, B₀C₀ = 17 and C₀A = 25, and the points Bₙ, Cₙ closing in on A; the triangles Bₙ₋₁CₙBₙ are shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AIME II #10: the circle of radius √13, the point A, the nearest point B and one line through A.
+  PROB["2013-aime-ii-10"] = (() => {
+    const r = Math.sqrt(13), k = 22, Q = (x, y) => [118 + k * x, 140 - k * y], a = 4 + r, tilt = 0.32;
+    const O = Q(0, 0), A = Q(a, 0), B = Q(r, 0), dir = [-Math.cos(tilt), Math.sin(tilt)];
+    const ints = circleLineInts(O, r * k, A, add(A, [dir[0], -dir[1]]));
+    const ok = ints.length === 2 && Math.abs(dist(O, ints[0]) / k - r) < 1e-9;
+    const [K, Lp] = ints;
+    return wrap(430, 290, [
+      circ(O, r * k, DIM, 1.8), seg(O, A, FNT, 1.4), seg(A, dist(A, K) > dist(A, Lp) ? K : Lp, ACC, 1.6), poly([B, K, Lp], "none", 0, ACCS), poly([B, K, Lp], GLD, 1.4),
+      ...[O, A, B, K, Lp].map(q => dot(q, DIM, 3.2)),
+      txt(add(O, [0, 18]), "O"), txt(add(A, [10, 14]), "A"), txt(add(B, [8, 16]), "B"), txt(add(K, [0, -10]), "K"), txt(add(Lp, [0, -10]), "L"),
+      txt(add(mid(B, A), [0, 16]), "4", DIM, 12.5), txt(add(mid(O, B), [0, 16]), "√13", DIM, 12.5),
+      cap(430, 290, "The circle of radius √13 about O, the point A at distance 4 + √13, the nearest point B, and one line through A meeting the circle at K and L; triangle BKL is shaded." + MM(ok))
+    ]);
+  })();
+
 })();
