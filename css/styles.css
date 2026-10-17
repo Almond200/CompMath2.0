@@ -1218,6 +1218,8 @@ body.nav-open ::-webkit-scrollbar-thumb { background: var(--scrollbar-dim); }
 .prob-row:hover .prob-open, .prob-row:focus-within .prob-open { color: var(--accent); }
 .prob-row .prob-open { font-size: 13.5px; color: var(--text); text-decoration: none; font-weight: 600; }
 .prob-row .prob-open:hover { color: var(--accent); text-decoration: underline; }
+.prob-row .ref-ext-link { margin-left: auto; font-size: 11.5px; color: var(--accent); text-decoration: none; white-space: nowrap; }
+.prob-row .ref-ext-link:hover { text-decoration: underline; }
 
 /* Browse page: competition/year navigator */
 /* Column geometry matches the Lists sidebar exactly -- 24px left edge, 214px wide, content
@@ -3426,7 +3428,16 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
   .page-tools { margin: 0; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--border); }
   .pt-inner { position: static; margin-top: 0; max-height: none; overflow: visible; }
 }
-@media print { .page-tools, .sidebar, .topbar, .back-link, .back-row, .detail-actions { display: none !important; } .layout, .detail-with-tools { display: block; } .content { max-width: none; margin: 0; } }
+/* Printing a card (owner, 2026-10-17): no navigation, buttons or outside links, every example's
+   solution and every practice problem shown; the screen keeps all of them. */
+@media print {
+  .page-tools, .sidebar, .topbar, .back-link, .back-row, .detail-actions,
+  .sol-toggle, .show-more-btn, .ref-ext-link { display: none !important; }
+  .layout, .detail-with-tools { display: block; }
+  .content { max-width: none; margin: 0; }
+  .problem-sol[hidden] { display: block !important; }
+  .contest-refs .prob-extra { display: flex !important; }
+}
 /* Angle-chasing puzzle (js/geo-interactive.js) */
 .ac-intro { font-size: 13.5px; color: var(--text-dim); margin: 0 0 10px; line-height: 1.55; }
 .ac-w { fill: rgba(128, 128, 128, 0.10); stroke: var(--text-faint); stroke-width: 1; cursor: pointer; }
