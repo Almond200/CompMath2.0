@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 121 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 122 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -80,7 +80,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities"] },
       { title: "Complex Numbers & Roots of Unity",
         note: "Algebra that becomes geometry, and the filter that extracts every nth term of a sum.",
-        ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "complex-modulus-argument"] },
+        ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "conjugate-both-sides", "complex-modulus-argument"] },
       { title: "Rates, Work & Mixtures",
         note: "Word-problem machinery, plus estimation when an exact answer is not required.",
         ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "mean-median-mode", "percent-change", "several-rates", "age-problems"] },

@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 705 cards (522 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 153 problems have figures drawn for the app.
+- **Counts:** 706 cards (522 formulas, 145 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 153 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -26,9 +26,10 @@
   - 2.7a, card 23 (Heron's Formula): **finished**.
   - 2.7a, cards 24 to 30 (inradius, circumradius, right-triangle inradius, incircle tangent lengths, shared-angle and same-base ratios, exradii): **finished**.
   - Missing cards P1 to P4 (QUESTIONS.md) **approved and written**: `diagonal-angle-from-sides`, `squares-on-triangle-flanks`, `parallel-sided-hexagon`, `product-of-uniforms`, each with a write-up, an example, a figure, routes and a new-cards batch; 2021 AIME II #12, 2019 HMMT February Geometry #10, 2024 AIME II #5 and 2024 AMC 12A #20 cite them.
+  - P5 **approved and written**: the method `conjugate-both-sides`, cited by 2018 AIME I #6, 2001 AIME II #14 (both rewritten in full) and 2020 AMC 12B #23 (first strategy).
   - 2.7a, card 31 (`law-of-sines`): **finished**, 15 strategies and 7 figures (2018 AIME II #14 now cites the ratio lemma and the Law of Cosines instead, and got its figure too).
 - **In progress:** 2.7a, card 32, `law-of-cosines` (46 problems), then on down `js/data/geometry.js` (`law-cosines-60-120`, `law-of-cosines-special-triangles`, ...). **Done on this card: the five AMC problems** (2024 12A #19, 2024 12B #22, 2025 10A #23 = 12A #16, 2025 12A #8); next the AIME ones in `practice-card.js` order, from 2026 AIME I #5. (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing.)
-- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P4 written; P5, conjugating both sides of a complex equation, approved 2026-10-17 and being written), for approval before they are written.
+- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P5 all written; add any new ones as P6, P7, ...), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
