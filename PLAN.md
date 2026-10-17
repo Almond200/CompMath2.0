@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 96 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 138 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -17,7 +17,15 @@
   - 2.7a, card 5 (Triangle Inequality): **finished**.
   - 2.7a, cards 6 and 7 (Triangle Similarity, all 12 already covered by earlier cards; Perpendicular Bisector as a Locus): **finished**.
   - 2.7a, card 8 (Similar Figures, 59 problems): **finished**; many AA similarities moved to `triangle-similarity`.
-- **In progress:** 2.7a, card 9, Midsegment Theorem (`midsegment-theorem`, 3 problems), then `intercept-theorem` (1), `centroid-division` (5), `cevian-area-ratio` (2), `polygon-angle-sums` (5), `regular-polygon-area` (3), `equilateral-triangle-facts` (17), and on down `js/data/geometry.js`. **Last problem done: none yet on this card.**
+  - 2.7a, cards 9 to 11 (Midsegment, Intercept, Centroid): **finished**.
+  - 2.7a, cards 12 to 14 (Cevian Area Ratio, Polygon Angle Sums, Regular Polygon Area): **finished**.
+  - 2.7a, card 15 (Equilateral Triangle Facts): **finished**.
+  - 2.7a, cards 16 to 20 (regular hexagon and octagon, quadrilateral areas, trapezoid segments, diagonal area): **finished**.
+  - 2.7a, card 21 (Standard Triangle Area): **finished**.
+  - 2.7a, card 22 (`trig-area`): **finished**.
+  - 2.7a, card 23 (Heron's Formula): **finished**.
+- **In progress:** 2.7a, card 24, `inradius-area` (8), `circumradius-area` (7), `law-of-sines` (16), `law-of-cosines` (44), and on down `js/data/geometry.js`. **Last problem done: none yet on this card.** (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing.)
+- **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P4 so far), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
@@ -38,6 +46,7 @@
   - a dihedral angle cites the `dihedral-angle` method; an isosceles trapezoid cut by its altitudes cites the `isosceles-trapezoid` pattern; corner triangles similar by angles cite `triangle-similarity`, with `similar-figures-ratios` only for the area scaling;
   - spheres in space that touch cite `triangle-of-centers` too (join the centers); `cross-section-method` only where one plane through an axis or the centers holds the whole picture; a sphere's outline in a 3D figure is drawn with `sphereOutline`, not a circle;
   - lattice points on a circle cite `lattice-points-circle` (2000 AIME II #11 too);
+  - before drawing a figure, check `PROB["<slug>"]` does not exist already (`check-statements.py` fails on a duplicate);
   - a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
 - **Blockers and caveats:**
   - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.

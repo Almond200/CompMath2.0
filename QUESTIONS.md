@@ -144,3 +144,14 @@ Almost everything standard is already covered. These are what's missing. Tick th
 - Langley's adventitious angles: a single famous puzzle, better as an example than a card;
 - Aurifeuillean factorizations: too rare;
 - Egyptian fractions: already the unit-fraction case of Simon's Favorite Factoring Trick.
+
+## Candidate new cards from the practice pass (2.7a, 2026-10-17)
+Each is a fact or move a re-solved problem needed and no card holds (checked against names, keywords and descriptions). The problems cite the nearest card meanwhile. Tier and importance are proposals (rule 12); the evidence so far is one problem each. Answer per row: yes, no, or a different rating.
+
+| # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
+|---|---|---|---|---|
+| P1 | Angle Between the Diagonals from the Sides: $d_1d_2\cos\theta=\tfrac12\left|a^2+c^2-b^2-d^2\right|$ | formula, geometry / quadrilateral areas | AIME Late, low | 2021 AIME II #12 (with $\tfrac12d_1d_2\sin\theta$ it gives $\tan\theta$ from the sides and the area) |
+| P2 | Flank Triangles of the Squares on a Triangle: each gap triangle between two outward squares has the triangle's area, and its third side is twice the median | formula, geometry / triangle areas | AIME Late, low | 2019 HMMT February Geometry #10 (also the classic "squares on the sides" hexagon problems) |
+| P3 | Equilateral Hexagon with Opposite Sides Parallel: the side $s$ satisfies $\tfrac1s=\tfrac1a+\tfrac1b+\tfrac1c$ for the triangle on alternate sides | formula, geometry / polygons | AIME Late, lower | 2024 AIME II #5 |
+| P4 | Product of Two Uniform Variables: $P(XY\lt c)=c-c\ln c$ for $X$, $Y$ uniform on $[0,1]$ | formula, counting / geometric probability | AMC, lower | 2024 AMC 12A #20 (needs the area under $y=\tfrac cx$) |
+
