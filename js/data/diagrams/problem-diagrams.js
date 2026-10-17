@@ -2809,7 +2809,7 @@
     const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm), E = Q(...Em), F = Q(...Fm), P = Q(...Pm);
     const ok = Math.abs(Math.tan(angAt(E, A, P)) ** 2 - 75) < 1e-6 && Math.abs(Math.tan(angAt(F, B, P)) ** 2 - 75) < 1e-6 && Math.abs(Math.tan(angAt(D, C, P)) ** 2 - 75) < 1e-6;
     return wrap(430, 300, [
-      poly([A, B, C], DIM, 2), seg(P, D, ACC, 1.6), seg(P, E, ACC, 1.6), seg(P, F, ACC, 1.6),
+      poly([A, B, C], DIM, 2), seg(P, D, ACC, 1.6), seg(P, E, ACC, 1.6), seg(F, add(F, mul(norm(sub(P, F)), 28)), ACC, 1.6),   // FP is short: the ray from F runs past P so the marker sits on it
       angleArc(D, C, P, 18, GLD), angleArc(E, A, P, 18, GLD), angleArc(F, B, P, 18, GLD),
       ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3)), dot(P, ACC, 3.5),
       txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 14]), "B"), txt(add(C, [10, 14]), "C"), txt(add(D, [0, 18]), "D"),

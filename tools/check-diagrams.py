@@ -152,6 +152,40 @@ def line_gaps(svg):
                 out.append("a line stops %.0fpx short of the point (%.0f, %.0f) that lies on it" % (beyond, cx, cy))
     return out
 
+# An angle marker (angleArc, stroke-width 1.8) must end on lines that are drawn. A fixed radius
+# on a short arm used to run past the arm's end, so the arc stopped in empty space beside it
+# (the gold marker at F in 2023 AIME I #12, radius 18 on a 6 px arm), and a marker drawn to a
+# direction whose radius was never drawn floated the same way (roots-of-unity). Each end of
+# every such arc must lie within 1.5 px of a drawn segment or polygon edge. The figures below
+# use the helper to draw arcs of circles, not angle markers, and are exempt.
+ARC_ALLOW = {
+    "arbelos#0", "arbelos#1",            # semicircles drawn as arcs
+    "incircle-excircle-homothety#0",     # an arc of the circumcircle
+}
+ARC_RE = re.compile(r'<path d="M (-?[\d.]+),(-?[\d.]+) A ([\d.]+) [\d.]+ 0 0 [01] (-?[\d.]+),(-?[\d.]+)" '
+                    r'fill="none" stroke="[^"]*" stroke-width="1\.8"/>')
+
+def arc_ends(svg):
+    edges = [tuple(map(float, m.groups())) for m in re.finditer(
+        r'<line x1="(-?[\d.]+)" y1="(-?[\d.]+)" x2="(-?[\d.]+)" y2="(-?[\d.]+)"', svg)]
+    for m in re.finditer(r'<(polygon|polyline) points="([^"]+)"', svg):
+        pts = [tuple(map(float, q.split(","))) for q in m.group(2).split()]
+        loop = pts + ([pts[0]] if m.group(1) == "polygon" else [])
+        edges += [(a[0], a[1], b[0], b[1]) for a, b in zip(loop, loop[1:])]
+    def near(px, py, x1, y1, x2, y2):
+        dx, dy = x2 - x1, y2 - y1
+        t = max(0.0, min(1.0, ((px - x1) * dx + (py - y1) * dy) / ((dx * dx + dy * dy) or 1e-9)))
+        return ((px - x1 - t * dx) ** 2 + (py - y1 - t * dy) ** 2) ** 0.5 <= 1.5
+    out = []
+    for m in ARC_RE.finditer(svg):
+        x1, y1, r, x2, y2 = map(float, m.groups())
+        for px, py in ((x1, y1), (x2, y2)):
+            if not any(near(px, py, *e) for e in edges):
+                out.append("an angle arc of radius %.0f ends at (%.0f, %.0f), off every drawn line: "
+                           "the arm is shorter than the radius, or it is not drawn" % (r, px, py))
+                break
+    return out
+
 def main():
     findings, panels = [], 0
     for rel in FILES:
@@ -208,6 +242,8 @@ def main():
                 m = re.search(r"\S_\S|\S\^[\w({]", t)
                 if m:
                     findings.append("%s: raw TeX markup %r in the text %r" % (name, m.group(0), t[:60]))
+            if name.strip() not in ARC_ALLOW:
+                findings.extend("%s: %s" % (name, g) for g in arc_ends(svg))
             if name.strip() not in LINE_GAP_ALLOW:
                 findings.extend("%s: %s" % (name, g) for g in line_gaps(svg))
             for (s1, a1, b1, c1, d1), (s2, a2, b2, c2, d2) in itertools.combinations(boxes(svg, CW_HIT), 2):
