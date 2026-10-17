@@ -3306,4 +3306,42 @@
     ]);
   })();
 
+  // 1991 AIME #14: the hexagon in a circle with five sides 81 and AB = 31, and the diagonals from A.
+  PROB["1991-aime-14"] = (() => {
+    const chord = t => 2 * Math.sin(t / 2), f = t => chord(2 * Math.PI - 5 * t) / chord(t) - 31 / 81;
+    let lo = 1.0, hi = 1.25; for (let i = 0; i < 80; i++) { const md = (lo + hi) / 2; if (f(lo) * f(md) <= 0) hi = md; else lo = md; }
+    const t = lo, R = 81 / chord(t), a0 = Math.PI / 2 + (2 * Math.PI - 5 * t) / 2;
+    const V = [0, 1, 2, 3, 4, 5].map(i => { const ang = a0 - (i === 0 ? 0 : (2 * Math.PI - 5 * t) + (i - 1) * t); return [R * Math.cos(ang), R * Math.sin(ang)]; });
+    const [Am, Bm, Cm, Dm, Em, Fm] = V;
+    const ok = Math.abs(dist(Am, Bm) - 31) < 1e-6 && Math.abs(dist(Am, Cm) + dist(Am, Dm) + dist(Am, Em) - 384) < 1e-6;
+    const Q = fitQ([[-R, -R], [R, R]], 22, 430, 290);
+    const P = V.map(Q), [A, B, C, D, E, F] = P;
+    return wrap(430, 290, [
+      circ(Q([0, 0]), R * Q.k, FNT, 1.5), poly(P, DIM, 2), seg(A, C, ACC, 1.5), seg(A, D, ACC, 1.5), seg(A, E, ACC, 1.5),
+      ...P.map(q => dot(q, DIM, 3.2)), ...P.map((q, i) => gapLabel(q, [P[(i + 1) % 6], P[(i + 5) % 6], Q([0, 0])], "ABCDEF"[i], DIM, 13, 15)),
+      txt(add(mid(A, B), mul(norm(sub(mid(A, B), Q([0, 0]))), 12)), "31", DIM, 12),
+      cap(430, 290, "A hexagon in a circle with AB = 31 and the other five sides 81; the three diagonals from A are drawn in blue." + MM(ok))
+    ]);
+  })();
+
+  // 2021 AIME II #14: the tangent at A, the perpendicular to GO at G, and X, Y (drawn with the angles the conditions force).
+  PROB["2021-aime-ii-14"] = (() => {
+    const k0 = 45 / 7, Aa = 13 * k0 * Math.PI / 180, Ba = 13 * k0 * Math.PI / 180, Ca = 2 * k0 * Math.PI / 180;
+    const pt = th => [Math.cos(th), Math.sin(th)], tA = Math.PI / 2, tB = tA + 2 * Ca, tC = tB + 2 * Aa;
+    const Am = pt(tA), Bm = pt(tB), Cm = pt(tC), Om = [0, 0], Gm = mul(add(add(Am, Bm), Cm), 1 / 3), Mm = mid(Bm, Cm);
+    const Xm = lineInt(Am, add(Am, perp(Am)), Gm, add(Gm, perp(Gm))), Ym = lineInt(Gm, Xm, Bm, Cm);
+    const ang = (V, P, R) => Math.acos(((P[0] - V[0]) * (R[0] - V[0]) + (P[1] - V[1]) * (R[1] - V[1])) / dist(V, P) / dist(V, R)) * 180 / Math.PI;
+    const ok = Math.abs(ang(Om, Xm, Ym) - 17 * k0) < 1e-9 && Math.abs(ang(Bm, Am, Cm) - 13 * k0) < 1e-9;
+    const Q = fitQ([[-1, -1], [1, 1], Xm, Ym], 22, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om), G = Q(Gm), X = Q(Xm), Y = Q(Ym), M = Q(Mm);
+    return wrap(430, 290, [
+      circ(O, k, FNT, 1.4), poly([A, B, C], DIM, 2), segIn(B, Y, [A, B, C], DIM, 1.6), seg(A, X, ACC, 1.6), seg(X, Y, GLD, 1.6), seg(G, O, FNT, 1.3, "4 3"),
+      seg(A, M, FNT, 1.2, "4 3"), seg(O, X, PUR, 1.4), seg(O, Y, PUR, 1.4),
+      ...[A, B, C, X, Y].map(q => dot(q, DIM, 3)), dot(O, DIM, 3), dot(G, GLD, 3.2),
+      gapLabel(A, [B, C, X], "A"), gapLabel(B, [A, C, Y], "B"), gapLabel(C, [A, B], "C"), gapLabel(O, [X, Y, G], "O"), gapLabel(G, [X, Y, O, A], "G", GLD),
+      gapLabel(X, [A, Y, O], "X"), gapLabel(Y, [X, B, O], "Y"),
+      cap(430, 290, "The tangent at A (blue) meets the line through the centroid G perpendicular to GO (gold) at X, and that line meets BC at Y; the angles B, C and XOY are in the ratio 13 : 2 : 17." + MM(ok))
+    ]);
+  })();
+
 })();

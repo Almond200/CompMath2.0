@@ -482,6 +482,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 1985 AIME #9 states $k^2=\tfrac{256}{15}$ and the two cosines $\tfrac{11}{16}$, $\tfrac{14}{16}$.
   - 2023 AMC 12B #20 explains the answer correctly: the start lies on the second circle, and the good points form an arc of $2\theta$, $\theta=2\arcsin\tfrac14$.
   - Figures drawn for 1985 AIME #9 and 2023 AIME I #5; the second figure's self-check caught a misplaced $P$ before commit.
+- **Practice pass: Equal Chords, Arcs & Distances and the Inscribed Angle Theorem finished (2026-10-17):**
+  - 2011 AIME I #10 counts obtuse triangles from their first vertex: $\tfrac{3(k-1)}{2(2k-1)}$ for $n=2k+1$ and $\tfrac{3(k-2)}{2(2k-1)}$ for $n=2k$, giving $127+376=503$.
+  - 2015 AIME I #6: $\tfrac32(m-a)=12^\circ$ and $5m=180^\circ-2a$ give $a=20^\circ$, $m=28^\circ$, so $\angle BAG=10^\circ+48^\circ=58^\circ$.
+  - 2017 AIME I #6: $2u^2+(1-2u)^2=\tfrac{11}{25}$ gives $x=84^\circ$ or $36^\circ$.
+  - 2021 AIME II #14: $AXOG$ and $OGMY$ are cyclic, so $\angle XOY=\angle XAM+\angle AMY=180^\circ-(B-C)=A+2C$ (checked on three triangles), giving $A=\tfrac{585}7$. The cyclic-quadrilateral tag is replaced by the tangent-chord angle.
+  - Figures drawn for 1991 AIME #14 and 2021 AIME II #14.
 
 **2026-10-10**
 
