@@ -3514,4 +3514,35 @@
     ]);
   })();
 
+  // 2017 AIME II #10: the 84-by-42 rectangle, M, N, O = CM ∩ DN, and the quadrilateral BCON.
+  PROB["2017-aime-ii-10"] = (() => {
+    const Am = [0, 0], Bm = [84, 0], Cm = [84, 42], Dm = [0, 42], Mm = [0, 21], Nm = [28, 0], Om = lineInt(Cm, Mm, Dm, Nm);
+    const ok = Math.abs(Om[0] - 12) < 1e-9 && Math.abs(Om[1] - 24) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 30, 430, 250), [A, B, C, D, M, N, O] = [Am, Bm, Cm, Dm, Mm, Nm, Om].map(Q);
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), poly([B, C, O, N], ACC, 1.6, ACCS), seg(C, M, DIM, 1.5), seg(D, N, DIM, 1.5), ticksOn(A, M, 1), ticksOn(M, D, 1),
+      ...[A, B, C, D, M, N, O].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-8, 12]), "A", DIM, 13, "end"), txt(add(B, [8, 12]), "B", DIM, 13, "start"), txt(add(C, [8, -4]), "C", DIM, 13, "start"), txt(add(D, [-8, -4]), "D", DIM, 13, "end"),
+      txt(add(M, [-8, 4]), "M", DIM, 13, "end"), txt(add(N, [0, 18]), "N"), gapLabel(O, [C, M, D, N], "O"),
+      txt(add(mid(A, B), [16, 18]), "84", DIM, 12), txt(add(mid(B, C), [10, 4]), "42", DIM, 12, "start"),
+      cap(430, 250, "Rectangle ABCD (AB = 84, AD = 42), M the midpoint of AD, N with AN = AB/3, O = CM ∩ DN; BP is to bisect the area of BCON (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AIME I #3: the 15-20-25 triangle with the six points 5 from the vertices, and the hexagon ABCDEF.
+  PROB["2019-aime-i-3"] = (() => {
+    const Rm = [0, 0], Pm = [0, 15], Qm = [20, 0], at = (U, V, t) => add(U, mul(norm(sub(V, U)), t));
+    const Am = at(Pm, Qm, 5), Bm = at(Qm, Pm, 5), Cm = at(Qm, Rm, 5), Dm = at(Rm, Qm, 5), Em = at(Rm, Pm, 5), Fm = at(Pm, Rm, 5);
+    const ok = Math.abs(dist(Pm, Qm) - 25) < 1e-9;
+    const Q = fitQ([Pm, Qm, Rm], 28, 430, 270), [P, Qq, R, A, B, C, D, E, F] = [Pm, Qm, Rm, Am, Bm, Cm, Dm, Em, Fm].map(Q);
+    return wrap(430, 270, [
+      poly([P, Qq, R], DIM, 2), poly([A, B, C, D, E, F], ACC, 1.6, ACCS), rightAngle(R, Qq, P, 9),
+      ...[P, Qq, R, A, B, C, D, E, F].map(q => dot(q, DIM, 3)),
+      txt(add(P, [-8, -4]), "P", DIM, 13, "end"), txt(add(Qq, [8, 12]), "Q", DIM, 13, "start"), txt(add(R, [-8, 12]), "R", DIM, 13, "end"),
+      gapLabel(A, [P, Qq, F, B], "A", ACC, 12), gapLabel(B, [P, Qq, A, C], "B", ACC, 12), txt(add(C, [0, 16]), "C", ACC, 12), txt(add(D, [0, 16]), "D", ACC, 12),
+      txt(add(E, [-8, 4]), "E", ACC, 12, "end"), txt(add(F, [-8, 4]), "F", ACC, 12, "end"),
+      cap(430, 270, "Triangle PQR with PR = 15, QR = 20, PQ = 25, and PA = QB = QC = RD = RE = PF = 5; the hexagon ABCDEF is shaded." + MM(ok))
+    ]);
+  })();
+
 })();

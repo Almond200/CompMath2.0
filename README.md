@@ -510,6 +510,13 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2021 AIME I #6: $BP^2+CP^2+DP^2-GP^2=2AP^2$, so $AP=192$ (the old text had a garbled scaling step).
   - 2022 AIME I #1: $P+Q$ is the line through $(16,108)$ and $(20,106)$, so it cites Forms of a Line, not distance and midpoint.
   - Figure drawn for 2001 AIME I #13.
+- **Practice pass: Forms of a Line, Angle Between Lines, Shoelace and Pick's Theorem finished (2026-10-17):**
+  - 2005 AIME I #10: $|980-56p|=140$ gives $p=15$ and $p+q=47$.
+  - 2009 AIME I #11: the determinant is $2009(x_1-x_2)$, so the count is $2\binom{25}2=600$.
+  - 2017 AIME II #10: $O=(12,24)$, $[BCON]=2184$, $P=(32,29)$, $[CDP]=546$.
+  - 2019 AIME I #3 is now the sine area formula on the three corners ($150-10-7.5-12.5=120$), and 2025 AMC 12A #17 is base times height; neither cites the shoelace formula.
+  - The AMC 10A/12A/12B line and angle problems state their numbers.
+  - Figures drawn for 2017 AIME II #10 and 2019 AIME I #3.
 
 **2026-10-10**
 
