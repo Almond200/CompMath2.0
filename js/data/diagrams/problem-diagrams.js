@@ -2457,4 +2457,42 @@
     ]);
   })();
 
+  // ---- Law of Cosines (practice pass, 2026-10-17) ----
+  PROB["2024-amc-12a-19"] = (() => {
+    const Dm = [0, 0], Am = [5, 0], Cm = [3 * Math.cos(rad(120)), 3 * Math.sin(rad(120))], Om = K.circumcenterOf(Am, Cm, Dm);
+    const Bm = sub(mul(foot(Dm, Om, Cm), 2), Dm);   // CB = CD on the same circle: B is D reflected in line OC
+    const k = 30, Q = (x, y) => [215 + k * (x - Om[0]), 148 - k * (y - Om[1])];
+    const A = Q(...Am), B = Q(...Bm), C = Q(...Cm), D = Q(...Dm), O = Q(...Om), R = dist(O, D);
+    const ok = Math.abs(dist(A, C) / k - 7) < 1e-9 && Math.abs(dist(A, B) / k - 8) < 1e-9 && Math.abs(dist(B, C) / k - 3) < 1e-9;
+    return wrap(430, 300, [
+      circ(O, R, FNT, 1.5), poly([A, B, C, D], DIM, 2), angleArc(D, A, C, 22, ORG),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3)),
+      txt(add(away(A, O, 14), [0, 4]), "A"), txt(add(away(B, O, 14), [0, 4]), "B"), txt(add(away(C, O, 14), [0, 4]), "C"), txt(add(away(D, O, 14), [0, 4]), "D"),
+      txt(add(D, [6, -28]), "120°", ORG, 12, "start"),
+      txt(add(mid(D, A), [0, -8]), "5", DIM, 12), txt(add(mid(C, D), [10, 6]), "3", DIM, 12, "start"), txt(add(mid(B, C), [8, 12]), "3", DIM, 12, "start"),
+      cap(430, 300, "Cyclic quadrilateral ABCD with BC = CD = 3, DA = 5, and angle CDA = 120°." + MM(ok))
+    ]);
+  })();
+
+  PROB["2025-amc-12a-8"] = (() => {
+    const Am = [0, 0], Bm = [9 * Math.cos(rad(-30)), 9 * Math.sin(rad(-30))], Dm = [24 * Math.cos(rad(30)), 24 * Math.sin(rad(30))];
+    const Om = K.circumcenterOf(Am, Bm, Dm), k = 10.5, Q = (x, y) => [215 + k * (x - Om[0]), 148 - k * (y - Om[1])];
+    const A = Q(...Am), B = Q(...Bm), D = Q(...Dm), O = K.circumcenterOf(A, B, D), R = dist(O, A);
+    const Cc = (() => { const u = [1, 0], t = 2 * ((O[0] - A[0]) * u[0] + (O[1] - A[1]) * u[1]); return add(A, mul(u, t)); })();
+    const aD = Math.atan2(D[1] - O[1], D[0] - O[0]), aA = Math.atan2(A[1] - O[1], A[0] - O[0]);
+    let da = aA - aD; while (da > 0) da -= 2 * Math.PI;                 // arc D -> A not through B, C
+    const E = onC(O, R, (aD + da / 2) * 180 / Math.PI), F = lineInt(A, Cc, B, D);
+    const ang = (V, P, Rr) => { const u = sub(P, V), v = sub(Rr, V); return Math.acos((u[0] * v[0] + u[1] * v[1]) / (Math.hypot(...u) * Math.hypot(...v))) * 180 / Math.PI; };
+    const ok = Math.abs(ang(E, B, Cc) - 30) < 1e-6 && Math.abs(ang(E, Cc, D) - 30) < 1e-6 && Math.abs(dist(B, F) / k - 63 / 11) < 1e-6;
+    return wrap(430, 300, [
+      circ(O, R, FNT, 1.5), poly([A, B, Cc, D, E], DIM, 2), seg(A, Cc, FNT, 1.5), seg(B, D, FNT, 1.5), seg(A, D, FNT, 1.5), seg(E, B, ACC, 1.5), seg(E, Cc, ACC, 1.5),
+      angleArc(E, B, Cc, 40, ACC), angleArc(E, Cc, D, 50, GLD),
+      ...[A, B, Cc, D, E, F].map(q => dot(q, DIM, 3)),
+      txt(away(A, O, 14), "A"), txt(add(away(B, O, 14), [0, 6]), "B"), txt(add(away(Cc, O, 14), [0, 4]), "C"), txt(away(D, O, 14), "D"), txt(add(away(E, O, 14), [0, 4]), "E"),
+      txt(add(F, [4, 18]), "F", DIM, 13, "start"),
+      txt(add(mid(A, B), [-8, 14]), "9", DIM, 12, "end"), txt(add(mid(A, D), [-6, -8]), "24", DIM, 12, "end"),
+      cap(430, 300, "Pentagon ABCDE in a circle with angles BEC and CED (blue and gold) both 30°; AB = 9, AD = 24, and the diagonals AC and BD cross at F." + MM(ok))
+    ]);
+  })();
+
 })();
