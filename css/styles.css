@@ -3397,9 +3397,10 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 .detail-with-tools { display: grid; grid-template-columns: minmax(0, 1fr) 236px; gap: 28px; align-items: stretch; }
 .detail-with-tools > .detail { min-width: 0; }
 /* The column stretches the whole height of the page and carries the divider, starting at the
-   top bar (the negative margins cancel the page's own padding); only .pt-inner sticks. */
+   top bar (the negative margins cancel the page's own padding). Its contents scroll with the
+   page: a sticky panel jumped up and down while scrolling (owner, 2026-10-17). */
 .page-tools { border-left: 1px solid var(--border); padding-left: 16px; margin: -24px 0 -120px; padding-top: 24px; padding-bottom: 120px; font-size: 13px; }
-.pt-inner { position: sticky; top: 76px; display: flex; flex-direction: column; gap: 18px; }
+.pt-inner { display: flex; flex-direction: column; gap: 18px; }
 html[data-density="compact"] .page-tools { margin: -16px 0 -90px; padding-top: 16px; padding-bottom: 90px; }
 html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top: 24px; padding-bottom: 140px; }
 .pt-block { display: flex; flex-direction: column; gap: 4px; }
@@ -3419,7 +3420,6 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
 @media (max-width: 1100px) {
   .detail-with-tools { grid-template-columns: 1fr; }
   .page-tools { margin: 0; padding: 16px 0 0; border-left: 0; border-top: 1px solid var(--border); }
-  .pt-inner { position: static; }
 }
 @media print { .page-tools, .sidebar, .topbar { display: none !important; } .detail-with-tools { display: block; } }
 /* Angle-chasing puzzle (js/geo-interactive.js) */
