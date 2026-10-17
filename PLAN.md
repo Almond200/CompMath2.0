@@ -25,7 +25,7 @@
   - 2.7a, card 22 (`trig-area`): **finished**.
   - 2.7a, card 23 (Heron's Formula): **finished**.
   - 2.7a, cards 24 to 30 (inradius, circumradius, right-triangle inradius, incircle tangent lengths, shared-angle and same-base ratios, exradii): **finished**.
-- **In progress:** 2.7a, card 31, `law-of-sines` (16), then `law-of-cosines` (44), and on down `js/data/geometry.js`. **Last problem done: none yet on this card.** (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing.)
+- **In progress:** 2.7a, card 31, `law-of-sines`: **strategies done, figures still to draw** (2024 AMC 12B #22, 1996 #15, 2000 I #14, 2005 II #14, 2011 II #13, 2016 II #10, 2018 II #14 have none). Then `law-of-cosines` (44), and on down `js/data/geometry.js`. **Last problem done: none yet on this card.** (Order: the card order of `js/data/geometry.js`, skipping cards that cite nothing.)
 - **Missing cards found while tagging** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P4 so far), for approval before they are written.
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
