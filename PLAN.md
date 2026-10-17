@@ -6,7 +6,7 @@
 
 ## Current state (updated 2026-10-17, third cloud chat)
 
-- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 66 problems have figures drawn for the app.
+- **Counts:** 701 cards (518 formulas, 144 methods, 39 patterns). 4,675 problems, 4,616 with statements, 1,367 with strategies, 1,365 tagged. 68 problems have figures drawn for the app.
 - **Last finished:**
   - 2.7a groundwork: the "Alternatively, ..." paragraph (`trick`) and its dashed cards now show on problem pages; app-drawn problem figures (`js/data/diagrams/problem-diagrams.js`, `GEO_KIT`), covered by `check-diagrams.py`, `check-labels.py` and `check-statements.py`;
   - 2.7a, card 1 (Pythagorean Theorem): **finished**, all 76 problems re-solved, retagged and checked; 21 citations dropped, so the card cites 55 (a trick-only citation still counts).
@@ -14,7 +14,8 @@
   - 2.7a, card 2 (Special Right Triangles): **finished**, all 24 problems checked (5 of them were already done under card 1).
   - 2.7a, card 3 (Altitude to the Hypotenuse): **finished**, all 5 problems.
   - 2.7a, card 4 (Median to the Hypotenuse): **finished**.
-- **In progress:** 2.7a, card 5, Triangle Inequality (`triangle-inequality`, 12 problems). **Last problem done: none yet on this card.** (`triangle-type-by-sides` and `triangle-congruence` cite no problems; after this card comes `triangle-similarity`.)
+  - 2.7a, card 5 (Triangle Inequality): **finished**.
+- **In progress:** 2.7a, card 6, Triangle Similarity Criteria (`triangle-similarity`; `triangle-type-by-sides` and `triangle-congruence` cite no problems). **Last problem done: none yet on this card.**
 - **Priority (Stanley, 2026-10-17):** within a card, do the AMC 10 and AMC 12 problems first, then AMC 8, then HMMT, with AIME alongside the AMC 10/12 as before.
 - **Next action (hand-off for the next chat):**
   1. Read CLAUDE.md, this block, and CONVENTIONS §11 ("Tagging a problem": the trick is the "Alternatively, ..." paragraph, tag the specific card, figures for problems).
