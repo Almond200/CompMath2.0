@@ -2833,4 +2833,63 @@
     ]);
   })();
 
+  // 2017 AMC 10B #19: the equilateral triangle ABC with each side extended three times its length.
+  PROB["2017-amc-10b-19"] = PROB["2017-amc-12b-15"] = (() => {
+    const Am = [0, 0], Bm = [1, 0], Cm = [0.5, Math.sqrt(3) / 2];
+    const Bp = add(Bm, mul(sub(Bm, Am), 3)), Cp = add(Cm, mul(sub(Cm, Bm), 3)), Ap = add(Am, mul(sub(Am, Cm), 3));
+    const Q = fitQ([Ap, Bp, Cp], 24);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), A1 = Q(Ap), B1 = Q(Bp), C1 = Q(Cp);
+    const ok = Math.abs(dist(B, B1) - 3 * dist(A, B)) < 1e-9 && Math.abs(dist(C, C1) - 3 * dist(B, C)) < 1e-9 && Math.abs(dist(A, A1) - 3 * dist(C, A)) < 1e-9;
+    return wrap(430, 270, [
+      poly([A1, B1, C1], ACC, 1.8, ACCS), poly([A, B, C], GLD, 2, GLDS),
+      seg(A, B1, DIM, 1.8), seg(B, C1, DIM, 1.8), seg(C, A1, DIM, 1.8),
+      ...[A, B, C, A1, B1, C1].map(q => dot(q, DIM, 3.2)),
+      gapLabel(A, [B, C, A1, B1], "A", DIM, 12.5, 13), gapLabel(B, [A, C, B1, C1], "B", DIM, 12.5, 13), gapLabel(C, [A, B, A1, C1], "C", DIM, 12.5, 13),
+      gapLabel(A1, [B1, C1], "A′"), gapLabel(B1, [A1, C1], "B′"), gapLabel(C1, [A1, B1], "C′"),
+      cap(430, 270, "Equilateral triangle ABC (gold) with BB′ = 3·AB, CC′ = 3·BC and AA′ = 3·CA, each side extended past its end; the question compares triangle A′B′C′ with ABC." + MM(ok))
+    ]);
+  })();
+
+  // 1995 AIME #14: two chords of length 78 in a circle of radius 42, crossing 18 from the center.
+  PROB["1995-aime-14"] = (() => {
+    const k = 3, Q = (x, y) => [215 + k * x, 150 - k * y], d = 9 * Math.sqrt(3);
+    const ends = sg => { const a = sg * Math.PI / 6, F = [d * Math.cos(a), d * Math.sin(a)], u = [-Math.sin(a), Math.cos(a)];
+      return [add(F, mul(u, 39)), add(F, mul(u, -39))]; };
+    const [e1, e2] = ends(1), [e3, e4] = ends(-1), Pm = [18, 0];
+    const onLine = (p, a, b) => Math.abs((b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0])) < 1e-9;
+    const ok = [e1, e2, e3, e4].every(e => Math.abs(Math.hypot(...e) - 42) < 1e-9) && onLine(Pm, e1, e2) && onLine(Pm, e3, e4);
+    const O = Q(0, 0), P = Q(...Pm), R0 = Q(-42 * Math.cos(Math.PI / 4), -42 * Math.sin(Math.PI / 4));
+    return wrap(430, 300, [
+      circ(O, 42 * k, FNT, 1.6), seg(Q(...e1), Q(...e2), ACC, 2), seg(Q(...e3), Q(...e4), ACC, 2),
+      seg(O, P, GLD, 1.8, "5 4"), seg(O, R0, DIM, 1.4),
+      dot(O, DIM, 3.5), dot(P, GLD, 3.8), ...[e1, e2, e3, e4].map(e => dot(Q(...e), DIM, 3)),
+      txt(add(O, [-6, 16]), "O", DIM, 13, "end"), txt(add(P, [10, 5]), "P", GLD, 13, "start"),
+      txt(add(mid(O, P), [0, -8]), "18", GLD, 12.5), txt(add(mid(O, R0), [10, 2]), "42", DIM, 12.5, "start"),
+      cap(430, 300, "A circle of radius 42 with two chords of length 78 (blue) crossing at P, 18 from the center O; two of the four regions are bordered by pieces of unequal length." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AIME I #14: the splitting lines through the midpoints M and N, drawn in the triangle
+  // the conditions force (AB = 51, AC = 189, BC = 219), labelling only BC and the 30° angle.
+  PROB["2022-aime-i-14"] = (() => {
+    const a = 219, b = 189, c = 51, Bm = [0, 0], Cm = [a, 0], ax = (c * c - b * b + a * a) / (2 * a), Am = [ax, Math.sqrt(c * c - ax * ax)];
+    const Mm = mid(Am, Bm), Nm = mid(Am, Cm), Xm = [(a + b) / 2, 0], Ym = [a - (a + c) / 2, 0];
+    const Q = fitQ([Am, Bm, Cm], 26, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), M = Q(Mm), N = Q(Nm), X = Q(Xm), Y = Q(Ym), T = lineInt(M, X, N, Y);
+    const okM = Math.abs(dist(M, B) + dist(B, X) - (dist(M, A) + dist(A, C) + dist(C, X))) < 1e-6;
+    const okN = Math.abs(dist(N, C) + dist(C, Y) - (dist(N, A) + dist(A, B) + dist(B, Y))) < 1e-6;
+    const u = norm(sub(X, M)), v = norm(sub(Y, N)), ang = Math.acos(Math.abs(u[0] * v[0] + u[1] * v[1])) * 180 / Math.PI;
+    const ok = okM && okN && Math.abs(ang - 30) < 1e-9, bis = norm(add(norm(sub(X, T)), norm(sub(N, T))));
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(M, X, ACC, 1.8), seg(N, Y, GLD, 1.8),
+      ticksOn(A, M, 1), ticksOn(M, B, 1), ticksOn(A, N, 2), ticksOn(N, C, 2),
+      angleArc(T, X, N, 22, PUR),
+      ...[A, B, C, M, N, X, Y].map(q => dot(q, DIM, 3)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 5]), "B", DIM, 13, "end"), txt(add(C, [10, 5]), "C", DIM, 13, "start"),
+      gapLabel(M, [A, B, X], "M"), gapLabel(N, [A, C, Y], "N"),
+      txt(add(add(T, mul(bis, 46)), [0, 4]), "30°", PUR, 11.5), txt(add(mid(B, C), [0, 18]), "219", DIM, 12.5),
+      cap(430, 270, "BC = 219, M and N are the midpoints of AB and AC, and the splitting lines through them (each cuts the perimeter in half) meet at 30°." + MM(ok))
+    ]);
+  })();
+
 })();

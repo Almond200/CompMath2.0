@@ -424,6 +424,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2024 I #10: $DB=\tfrac{225}{22}$ and $AD=\tfrac{325}{22}$, and the power of $D$ gives $AP=\tfrac{100}{13}$.
   - Figures drawn for 2021 II #5, 2023 I #12 and 2024 I #10.
 - **Angle markers that run past their arms, root cause and gate (2026-10-17):** `angleArc` used a fixed radius without looking at the arms. `check-diagrams.py` now fails an angle arc that does not end on a drawn line. It found two: 2023 AIME I #12, now drawn with a ray past the short arm $FP$, and `roots-of-unity`, now with the radius to $\omega$ drawn. The rule is in CONVENTIONS §4.
+- **Practice pass: Law of Cosines at 60° and 120° finished (2026-10-17).**
+  - 2017 AMC 10B #19 and its twin 2017 AMC 12B #15 (untagged until now) share one entry: $\angle B'BC'=120^\circ$ gives $B'C'^2=37$. The alternative cuts off three corner triangles of $12$ times the area each (Shared-Angle Area Ratio).
+  - 1987 AIME #9 drops Fermat Point: the route uses only the three $120^\circ$ angles, never the minimizing property.
+  - 1995 AIME #14 adds Special Right Triangles and Area of a Triangle Using Sine, and states each step ($FP=9$, pieces $48$ and $30$, third side $42$).
+  - 2022 AIME I #14 is written in full: each splitting line is parallel to an angle bisector (Angle Bisector Theorem and the Intercept Theorem), $\angle BIC=90^\circ+\tfrac A2$ forces $A=120^\circ$, and a mod 9 argument reduces $b^2+bc+c^2=219^2$ to $x^2+xy+y^2=73^2$, so the perimeter is $459$. The alternative solves it with Eisenstein integers. Casework is dropped.
+  - Figures drawn for 2017 AMC 10B #19 (shared with 12B #15), 1995 AIME #14 and 2022 AIME I #14.
 
 **2026-10-10**
 
