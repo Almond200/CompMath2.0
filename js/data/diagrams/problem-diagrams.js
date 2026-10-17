@@ -2495,4 +2495,53 @@
     ]);
   })();
 
+  PROB["2026-aime-i-5"] = (() => {
+    const th = Math.acos(29 / 36), k = 190, Q = (x, y) => [105 + k * x, 85 - k * y];
+    const Am = [0, 0], Bm = [1, 0], rot = (v, a) => [v[0] * Math.cos(a) - v[1] * Math.sin(a), v[0] * Math.sin(a) + v[1] * Math.cos(a)];
+    const Apm = add(Bm, rot(sub(Am, Bm), th)), Bpm = add(Apm, rot(sub(Bm, Apm), -th));
+    const A = Q(...Am), B = Q(...Bm), Ap = Q(...Apm), Bp = Q(...Bpm);
+    const ok = Math.abs(dist(A, Bp) / k - 4 / 3) < 1e-9 && Math.abs(dist(B, Ap) / k - 1) < 1e-9 && Math.abs(dist(Ap, Bp) / k - 1) < 1e-9;
+    return wrap(430, 300, [
+      seg(A, B, DIM, 2), seg(B, Ap, ACC, 2), seg(Ap, Bp, GLD, 2), seg(A, Bp, FNT, 1.5, "5 4"),
+      angleArc(B, A, Ap, 30, ACC), angleArc(Ap, B, Bp, 30, GLD),
+      ...[A, B, Ap, Bp].map(q => dot(q, DIM, 3)),
+      txt(add(A, [-10, 14]), "A"), txt(add(B, [10, 14]), "B"), txt(add(Ap, [-10, -8]), "A′"), txt(add(Bp, [10, -8]), "B′"),
+      txt(add(B, [-40, 22]), "θ", ACC, 13), txt(add(Ap, [44, -10]), "θ", GLD, 13),
+      txt(add(mid(A, B), [0, 18]), "1", DIM, 12), txt(add(lerp(A, Bp, 0.78), [6, -10]), "4/3", DIM, 12, "start"),
+      cap(430, 300, "A is turned counterclockwise by θ about B to A′ (blue), then B is turned clockwise by θ about A′ to B′ (gold); AB = 1 and AB′ = 4/3." + MM(ok))
+    ]);
+  })();
+
+  PROB["2026-aime-i-14"] = (() => {
+    // sides found numerically so that the squares add to 308 and the diagonals' squares to 800; the last two close the pentagon
+    const u = [0, 1, 2, 3, 4].map(i => [Math.cos(rad(72 * i)), Math.sin(rad(72 * i))]);
+    const a = [6.77422, 7.92370, 8.53810];
+    const r = [0, 1, 2].reduce((s, i) => add(s, mul(u[i], a[i])), [0, 0]), det = u[3][0] * u[4][1] - u[3][1] * u[4][0];
+    a.push((-r[0] * u[4][1] + r[1] * u[4][0]) / det, (-u[3][0] * r[1] + u[3][1] * r[0]) / det);
+    const k = 19, V = [[0, 0]]; for (let i = 0; i < 4; i++) V.push(add(V[i], mul(u[i], a[i])));
+    const cx = V.reduce((s, p) => add(s, p), [0, 0]).map(z => z / 5), P = V.map(p => [215 + k * (p[0] - cx[0]), 150 - k * (p[1] - cx[1])]);
+    const s2 = a.reduce((s, x) => s + x * x, 0), d2 = [0, 1, 2, 3, 4].reduce((s, i) => s + (dist(P[i], P[(i + 2) % 5]) / k) ** 2, 0);
+    const ok = Math.abs(s2 - 308) < 0.01 && Math.abs(d2 - 800) < 0.01 && Math.abs(a.reduce((s, x) => s + x, 0) ** 2 - 676 * Math.sqrt(5)) < 0.05;
+    const O = mul(P.reduce((s, p) => add(s, p), [0, 0]), 1 / 5);
+    return wrap(430, 300, [
+      ...[0, 1, 2, 3, 4].map(i => seg(P[i], P[(i + 2) % 5], FNT, 1.4, "5 4")),
+      poly(P, DIM, 2),
+      ...P.map((p, i) => angleArc(p, P[(i + 4) % 5], P[(i + 1) % 5], 16, ACC)),
+      ...P.map(p => dot(p, DIM, 3)),
+      ...[0, 1, 2, 3, 4].map(i => txt(add(away(mid(P[i], P[(i + 1) % 5]), O, 14), [0, 5]), "a" + "₁₂₃₄₅"[i], DIM, 13)),
+      cap(430, 300, "An equiangular pentagon: every angle (blue) is 108°. The squares of the sides a₁, ..., a₅ add to 308, and the squares of the five dashed diagonals add to 800." + MM(ok))
+    ]);
+  })();
+
+  PROB["1989-aime-10"] = (() => {
+    const A = [80, 240], B = [360, 240], C = [150, 70];
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), angleArc(A, B, C, 30, ACC), angleArc(B, C, A, 34, ACC), angleArc(C, A, B, 26, GLD),
+      ...[A, B, C].map(q => dot(q, DIM, 3)),
+      txt(add(A, [42, -10]), "α", ACC, 13), txt(add(B, [-44, -8]), "β", ACC, 13), txt(add(C, [6, 40]), "γ", GLD, 13),
+      txt(add(mid(B, C), [12, -6]), "a", DIM, 13, "start"), txt(add(mid(A, C), [-12, -4]), "b", DIM, 13, "end"), txt(add(mid(A, B), [0, 20]), "c", DIM, 13),
+      cap(430, 300, "A triangle with sides a, b, c opposite the angles α, β, γ; the condition a² + b² = 1989c² makes c tiny next to a and b, so the real γ is a very small angle, and the figure shows only the labels.")
+    ]);
+  })();
+
 })();

@@ -356,7 +356,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`2d_1d_2\cos\theta = \left|a^2 + c^2 - b^2 - d^2\right|, \qquad \tan\theta = \frac{4K}{\left|a^2 + c^2 - b^2 - d^2\right|}`,
           description: String.raw`In a quadrilateral with sides $a$, $b$, $c$, $d$ in order and diagonals $d_1$, $d_2$ crossing at an angle $\theta$, the squares of one pair of opposite sides minus the squares of the other pair come to $2d_1d_2\cos\theta$, up to sign. Dividing it into the area $K = \frac12d_1d_2\sin\theta$ gives $\tan\theta$ from the four sides and the area alone, with neither diagonal found. The diagonals are perpendicular exactly when $a^2 + c^2 = b^2 + d^2$.`,
           keywords: ["angle between the diagonals", "diagonal angle from the sides", "a^2 + c^2 - b^2 - d^2", "squares of opposite sides", "perpendicular diagonals condition", "tangent of the angle between diagonals", "quadrilateral sides and area", "dot product of the diagonals"],
-          importance: "low",
+          importance: "lower",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
