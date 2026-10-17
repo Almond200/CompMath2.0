@@ -3344,4 +3344,114 @@
     ]);
   })();
 
+  // 2017 AIME I #8: Q and R with right angles over OP = 200, at angles a and b from OP (one sample choice).
+  PROB["2017-aime-i-8"] = (() => {
+    const a = 52 * Math.PI / 180, b = 24 * Math.PI / 180, Om = [0, 0], Pm = [200, 0];
+    const Qm = mul([Math.cos(a), Math.sin(a)], 200 * Math.cos(a)), Rm = mul([Math.cos(b), Math.sin(b)], 200 * Math.cos(b));
+    const right = X => Math.abs((Om[0] - X[0]) * (Pm[0] - X[0]) + (Om[1] - X[1]) * (Pm[1] - X[1])) < 1e-6;
+    const ok = right(Qm) && right(Rm) && Math.abs(dist(Qm, Rm) - 200 * Math.sin(a - b)) < 1e-9;
+    const Q = fitQ([[0, -100], [200, 100]], 24, 430, 290), k = Q.k;
+    const O = Q(Om), P = Q(Pm), Qp = Q(Qm), R = Q(Rm), C = Q([100, 0]);
+    return wrap(430, 290, [
+      circ(C, 100 * k, FNT, 1.4, "none", "5 4"), seg(O, P, DIM, 2), seg(O, Qp, ACC, 1.6), seg(Qp, P, ACC, 1.6), seg(O, R, GLD, 1.6), seg(R, P, GLD, 1.6), seg(Qp, R, PUR, 2),
+      rightAngle(Qp, O, P, 9, ACC), rightAngle(R, O, P, 9, GLD), angleArc(O, P, R, 40, GLD), angleArc(O, P, Qp, 56, ACC),
+      ...[O, P, Qp, R].map(q => dot(q, DIM, 3.2)),
+      txt(add(O, [-10, 5]), "O", DIM, 13, "end"), txt(add(P, [10, 5]), "P", DIM, 13, "start"), txt(add(Qp, [0, -10]), "Q", ACC), gapLabel(R, [O, P, Qp], "R", GLD),
+      txt(add(O, [62, -14]), "a", ACC, 12.5), txt(add(O, [46, -3]), "b", GLD, 12.5), txt(add(mid(O, P), [0, 18]), "200", DIM, 12.5),
+      cap(430, 290, "OP = 200, with ∠POQ = a and ∠POR = b and right angles at Q and R (one sample choice of a and b); the question is when QR ≤ 100." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AMC 10A #20: the silo seen from above and the line of sight tangent to it (g from the answer shape).
+  PROB["2025-amc-10a-20"] = (() => {
+    const g = (20 * Math.sqrt(21) - 75) / 3, Om = [0, 0], Mm = [-20, -15], Nm = [20, -g];
+    const dl = Math.abs((Nm[0] - Mm[0]) * (Mm[1] - Om[1]) - (Nm[1] - Mm[1]) * (Mm[0] - Om[0])) / dist(Mm, Nm);
+    const ok = Math.abs(dl - 10) < 1e-9;
+    const Q = fitQ([[-22, -16], [22, 11]], 30, 430, 280), k = Q.k;
+    const O = Q(Om), M = Q(Mm), N = Q(Nm), T = Q(foot(Om, Mm, Nm));
+    return wrap(430, 280, [
+      circ(O, 10 * k, DIM, 1.8, GLDS), seg(M, N, ACC, 1.8), seg(O, T, FNT, 1.3, "4 3"), dot(O, DIM, 3), dot(M, ACC, 3.6), dot(N, ACC, 3.6),
+      seg(M, Q([-20, 0]), FNT, 1.1, "3 3"), seg(Q([-20, 0]), O, FNT, 1.1, "3 3"), seg(N, Q([20, 0]), FNT, 1.1, "3 3"), seg(Q([20, 0]), O, FNT, 1.1, "3 3"),
+      txt(add(M, [8, 18]), "MacDonald", ACC, 11.5, "start"), txt(add(N, [-8, -8]), "McGregor", ACC, 11.5, "end"),
+      txt(add(Q([-15, 0]), [0, -6]), "20", DIM, 11.5), txt(add(Q([15, 0]), [0, -6]), "20", DIM, 11.5), txt(add(Q([-20, -7.5]), [-6, 4]), "15", DIM, 11.5, "end"), txt(add(Q([20, -g / 2]), [6, 4]), "g", DIM, 12, "start"),
+      cap(430, 280, "Seen from above: the silo of diameter 20, MacDonald 20 west and 15 south of its center, McGregor 20 east and g south, and the line of sight between them tangent to the silo." + MM(ok))
+    ]);
+  })();
+
+  // 2000 AIME II #10: the quadrilateral around a circle, with tangent lengths 19, 26 at P and 37, 23 at Q.
+  PROB["2000-aime-ii-10"] = (() => {
+    const r = Math.sqrt(647), t = [19, 26, 37, 23], th = t.map(x => Math.atan(x / r));
+    const ok = Math.abs(th.reduce((u, v) => u + v, 0) - Math.PI) < 1e-12;
+    const p0 = Math.PI / 2, dirs = [p0 + th[0], p0 - th[1], p0 - 2 * th[1] - th[2], p0 - 2 * th[1] - 2 * th[2] - th[3]];
+    const Vm = dirs.map((d, i) => mul([Math.cos(d), Math.sin(d)], Math.hypot(r, t[i])));
+    const Pm = mul([Math.cos(p0), Math.sin(p0)], r), Qm = mul([Math.cos(p0 - 2 * th[1] - 2 * th[2]), Math.sin(p0 - 2 * th[1] - 2 * th[2])], r);
+    const Q = fitQ([...Vm, [-r, -r], [r, r]], 26, 430, 290), k = Q.k;
+    const [A, B, C, D] = Vm.map(Q), O = Q([0, 0]), P = Q(Pm), Qq = Q(Qm);
+    return wrap(430, 290, [
+      circ(O, r * k, ACC, 1.5), poly([A, B, C, D], DIM, 2), seg(O, P, FNT, 1.2, "4 3"), seg(O, Qq, FNT, 1.2, "4 3"),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(P, ACC, 3), dot(Qq, ACC, 3), dot(O, DIM, 3),
+      gapLabel(A, [B, D], "A"), gapLabel(B, [A, C], "B"), gapLabel(C, [B, D], "C"), gapLabel(D, [A, C], "D"),
+      txt(add(P, [0, -8]), "P", ACC), gapLabel(Qq, [C, D, O], "Q", ACC),
+      txt(add(mid(A, P), [0, -8]), "19", DIM, 12), txt(add(mid(P, B), [0, -8]), "26", DIM, 12),
+      txt(add(mid(C, Qq), mul(norm(sub(mid(C, Qq), O)), 12)), "37", DIM, 12), txt(add(mid(Qq, D), mul(norm(sub(mid(Qq, D), O)), 12)), "23", DIM, 12),
+      cap(430, 290, "A circle inscribed in ABCD touches AB at P and CD at Q, with AP = 19, PB = 26, CQ = 37 and QD = 23." + MM(ok))
+    ]);
+  })();
+
+  // 2007 AIME I #9: the 16-30-34 right triangle and the two equal circles outside it.
+  PROB["2007-aime-i-9"] = (() => {
+    const r = 680 / 57, Cm = [0, 0], Am = [30, 0], Bm = [0, 16];
+    const u = norm(sub(Bm, Am)), T1 = add(Am, mul(u, r / 4)), T2 = add(Bm, mul(u, -3 * r / 5));
+    const O1 = add(T1, mul([u[1], -u[0]], r)), O2 = add(T2, mul([u[1], -u[0]], r));
+    const ok = Math.abs(O1[1] - r) < 1e-9 && Math.abs(O2[0] - r) < 1e-9 && Math.abs(dist(O1, O2) - 2 * r) < 1e-9;
+    const Q = fitQ([Cm, [O1[0] + r, O1[1] + r], [O2[0] + r, O2[1] + r], [O1[0] - r, 0]], 20, 430, 290), k = Q.k;
+    const C = Q(Cm), A = Q(Am), B = Q(Bm);
+    return wrap(430, 290, [
+      circ(Q(O1), r * k, ACC, 1.6), circ(Q(O2), r * k, ACC, 1.6), poly([A, B, C], DIM, 2),
+      segIn(C, Q([O1[0] + r * 1.2, 0]), [A, B, C], DIM, 1.4), segIn(C, Q([0, O2[1] + r * 1.2]), [A, B, C], DIM, 1.4), rightAngle(C, A, B, 9),
+      ...[A, B, C, Q(O1), Q(O2)].map(q => dot(q, DIM, 3)),
+      txt(add(C, [-8, 14]), "C", DIM, 13, "end"), txt(add(A, [-4, 16]), "A", DIM, 13, "end"), txt(add(B, [-8, -2]), "B", DIM, 13, "end"),
+      txt(add(Q(O1), [8, -6]), "O₁", ACC, 12, "start"), txt(add(Q(O2), [8, -6]), "O₂", ACC, 12, "start"),
+      txt(add(mid(C, A), [0, 16]), "30", DIM, 12), txt(add(mid(C, B), [-8, 4]), "16", DIM, 12, "end"),
+      cap(430, 290, "Right triangle ABC (CA = 30, CB = 16) with the legs extended; two equal circles touch the hypotenuse, the extended legs and each other." + MM(ok))
+    ]);
+  })();
+
+  // 2007 AIME II #9: the 63-by-448 rectangle (drawn lying down), E and F, and the two incircles touching EF at P and Q.
+  PROB["2007-aime-ii-9"] = (() => {
+    const Am = [0, 63], Bm = [0, 0], Cm = [448, 0], Dm = [448, 63], Em = [84, 63], Fm = [448 - 84, 0];
+    const inc = (X, Y, Z) => { const a = dist(Y, Z), b = dist(X, Z), c = dist(X, Y), s = (a + b + c) / 2;
+      return [[(a * X[0] + b * Y[0] + c * Z[0]) / (2 * s), (a * X[1] + b * Y[1] + c * Z[1]) / (2 * s)], Math.sqrt((s - a) * (s - b) * (s - c) / s)]; };
+    const [I1, r1] = inc(Bm, Em, Fm), [I2, r2] = inc(Dm, Em, Fm), Pm = foot(I1, Em, Fm), Qm = foot(I2, Em, Fm);
+    const ok = Math.abs(dist(Pm, Qm) - 259) < 1e-6;
+    const Q = fitQ([Am, Bm, Cm, Dm], 30, 430, 200), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm), P = Q(Pm), Qq = Q(Qm);
+    return wrap(430, 200, [
+      poly([A, B, C, D], DIM, 2), poly([B, E, F], ACC, 1.4), poly([D, E, F], GLD, 1.4), circ(Q(I1), r1 * k, ACC, 1.3), circ(Q(I2), r2 * k, GLD, 1.3),
+      ...[A, B, C, D, E, F].map(q => dot(q, DIM, 3)), dot(P, ACC, 3.2), dot(Qq, GLD, 3.2),
+      txt(add(A, [-8, 4]), "A", DIM, 13, "end"), txt(add(B, [-8, 4]), "B", DIM, 13, "end"), txt(add(C, [8, 4]), "C", DIM, 13, "start"), txt(add(D, [8, 4]), "D", DIM, 13, "start"),
+      txt(add(E, [0, -8]), "E"), txt(add(F, [0, 18]), "F"), txt(add(P, [-4, 16]), "P", ACC, 12), txt(add(Qq, [4, -8]), "Q", GLD, 12),
+      txt(add(mid(A, E), [0, -8]), "84", DIM, 11.5), txt(add(mid(F, C), [0, 18]), "84", DIM, 11.5), txt(add(mid(A, B), [-8, 4]), "63", DIM, 11.5, "end"),
+      cap(430, 200, "Rectangle ABCD with AB = 63 and BC = 448 (drawn lying down), AE = CF = 84; the incircles of BEF and DEF touch EF at P and Q." + MM(ok))
+    ]);
+  })();
+
+  // 2023 AIME I #8: the rhombus, its incircle and P with distances 9, 5, 16 to DA, AB, BC (the rhombus the conditions force).
+  PROB["2023-aime-i-8"] = (() => {
+    const s = 125 / 4, cA = 3 / 5, sA = 4 / 5, Am = [0, 0], Bm = [s, 0], Dm = [s * cA, s * sA], Cm = add(Bm, Dm), Om = mul(Cm, 1 / 2), r = 12.5;
+    const dl = (X, U, V) => Math.abs((V[0] - U[0]) * (X[1] - U[1]) - (V[1] - U[1]) * (X[0] - U[0])) / dist(U, V);
+    const u1 = norm(sub(foot(Om, Dm, Am), Om)), u2 = norm(sub(foot(Om, Am, Bm), Om)), det = u1[0] * u2[1] - u1[1] * u2[0];
+    const v = [(3.5 * u2[1] - 7.5 * u1[1]) / det, (7.5 * u1[0] - 3.5 * u2[0]) / det], Pm = add(Om, v);
+    const ok = Math.abs(Math.hypot(...v) - r) < 1e-9 && Math.abs(dl(Pm, Dm, Am) - 9) < 1e-9 && Math.abs(dl(Pm, Am, Bm) - 5) < 1e-9 && Math.abs(dl(Pm, Bm, Cm) - 16) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 22, 430, 270), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), O = Q(Om), P = Q(Pm);
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), seg(B, Q(foot(Pm, Bm, Cm)), DIM, 1.3, "5 4"), circ(O, r * k, ACC, 1.5), seg(P, Q(foot(Pm, Dm, Am)), GLD, 1.4), seg(P, Q(foot(Pm, Am, Bm)), GLD, 1.4), seg(P, Q(foot(Pm, Bm, Cm)), GLD, 1.4),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(P, GLD, 3.6),
+      txt(add(A, [-8, 12]), "A", DIM, 13, "end"), txt(add(B, [8, 12]), "B", DIM, 13, "start"), txt(add(C, [8, -4]), "C", DIM, 13, "start"), txt(add(D, [-8, -4]), "D", DIM, 13, "end"),
+      gapLabel(P, [Q(foot(Pm, Dm, Am)), Q(foot(Pm, Am, Bm)), Q(foot(Pm, Bm, Cm))], "P", GLD),
+      cap(430, 270, "Rhombus ABCD with its incircle; P on the incircle is 9, 5 and 16 from the lines DA, AB and BC (gold)." + MM(ok))
+    ]);
+  })();
+
 })();

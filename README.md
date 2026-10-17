@@ -488,6 +488,15 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2017 AIME I #6: $2u^2+(1-2u)^2=\tfrac{11}{25}$ gives $x=84^\circ$ or $36^\circ$.
   - 2021 AIME II #14: $AXOG$ and $OGMY$ are cyclic, so $\angle XOY=\angle XAM+\angle AMY=180^\circ-(B-C)=A+2C$ (checked on three triangles), giving $A=\tfrac{585}7$. The cyclic-quadrilateral tag is replaced by the tangent-chord angle.
   - Figures drawn for 1991 AIME #14 and 2021 AIME II #14.
+- **Practice pass: Thales' Theorem, Angles from Chords and Tangent Line Facts finished (2026-10-17):**
+  - 2017 AIME I #8: $QR=200\sin|a-b|$, so $QR\le100$ means $|a-b|\le30$ and the probability is $\tfrac{16}{25}$ (checked by simulation).
+  - 2000 AIME II #10: $\tan(\alpha+\beta)=-\tan(\gamma+\delta)$ gives $105r^2=67935$, $r^2=647$.
+  - 2002 AIME II #15: the radii are the roots of $k^2r^2-(18k+12)r+117=0$, so $\tfrac{117}{k^2}=68$ and $m=\tfrac{12\sqrt{221}}{49}$ (Vieta and the double angle formula).
+  - 2007 AIME I #9: tangent lengths $\tfrac r4$ and $\tfrac{3r}5$, so $\tfrac{57r}{20}=34$.
+  - 2007 AIME II #9: $EP=378-364=14$ and $EQ=378-105=273$, so $PQ=259$; it cites Incircle Tangent Lengths.
+  - 2023 AIME I #8: $r=\tfrac{25}2$, the projections $\tfrac72$ and $\tfrac{15}2$ give $\cos A=\tfrac35$, and the perimeter is $125$.
+  - 2025 AMC 10A #20 cites the distance method for tangent lines.
+  - Figures drawn for 2017 AIME I #8, 2025 AMC 10A #20, 2000 AIME II #10, 2007 AIME I #9, 2007 AIME II #9 and 2023 AIME I #8.
 
 **2026-10-10**
 
