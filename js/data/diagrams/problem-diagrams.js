@@ -3498,4 +3498,20 @@
   })();
 
 
+  // 2001 AIME I #13: chords of d, 2d and 3d degrees as the isosceles trapezoid in the circle (d from the answer shape).
+  PROB["2001-aime-i-13"] = (() => {
+    const c3 = Math.sqrt(165) - 9, hd = Math.acos((c3 + 20) / 44), R = 11 / Math.sin(hd), d = 2 * hd;
+    const pt = t => [R * Math.cos(t), R * Math.sin(t)], t0 = Math.PI / 2 + 1.5 * d;
+    const [Pm, Qm, Sm, Tm] = [0, 1, 2, 3].map(i => pt(t0 - i * d));
+    const ok = Math.abs(dist(Pm, Qm) - 22) < 1e-9 && Math.abs(dist(Pm, Sm) - dist(Pm, Tm) - 20) < 1e-9 && d < 2 * Math.PI / 3;
+    const Q = fitQ([[-R, -R], [R, R]], 22, 430, 290), k = Q.k;
+    const [P, Qp, S, T] = [Pm, Qm, Sm, Tm].map(Q);
+    return wrap(430, 290, [
+      circ(Q([0, 0]), R * k, FNT, 1.5), poly([P, Qp, S, T], DIM, 2), seg(P, S, ACC, 1.6), seg(Qp, T, ACC, 1.6), ...[P, Qp, S, T].map(q => dot(q, DIM, 3.2)),
+      txt(add(mid(P, Qp), mul(norm(sub(mid(P, Qp), Q([0, 0]))), 12)), "22", DIM, 12), txt(add(mid(Qp, S), mul(norm(sub(mid(Qp, S), Q([0, 0]))), 12)), "22", DIM, 12),
+      txt(add(mid(S, T), mul(norm(sub(mid(S, T), Q([0, 0]))), 12)), "22", DIM, 12),
+      cap(430, 290, "Three consecutive chords of a d-degree arc (22 each), the 2d-degree chords as diagonals (blue), and the short 3d-degree chord closing the trapezoid." + MM(ok))
+    ]);
+  })();
+
 })();

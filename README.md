@@ -504,6 +504,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2005 AIME II #15: the centers lie on $\tfrac{x^2}{100}+\tfrac{(y-12)^2}{75}=1$, and tangency gives $a^2=\tfrac{69}{100}$.
   - 2023 AMC 12B #10 states the slopes ($-\tfrac52$, so $\tfrac25$).
   - Figures drawn for 2019 AIME I #15 and 2021 AIME I #13.
+- **Practice pass: cyclic-quadrilateral cards, Ptolemy, Pitot and Distance & Midpoint finished (2026-10-17):**
+  - 2001 AIME I #13: Ptolemy on the trapezoid gives $(c+20)^2=484+22c$, so $c=-9+\sqrt{165}$.
+  - 2020 AIME II #4: a $90^\circ$ clockwise turn about $(21,-3)$, so the answer is $108$.
+  - 2021 AIME I #6: $BP^2+CP^2+DP^2-GP^2=2AP^2$, so $AP=192$ (the old text had a garbled scaling step).
+  - 2022 AIME I #1: $P+Q$ is the line through $(16,108)$ and $(20,106)$, so it cites Forms of a Line, not distance and midpoint.
+  - Figure drawn for 2001 AIME I #13.
 
 **2026-10-10**
 
