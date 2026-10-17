@@ -481,6 +481,7 @@ separately: 210 placed on 183 cards, in every subject.
   two extended sides meet is cut off by the side *between* them; pairing each apex with an adjacent
   side instead produced three non-equilateral slivers that looked fine on screen. Measure the
   triangles you draw.
+- **An angle marker ends on its arms.** `angleArc` draws at the radius it is given and does not look at the arms, so a fixed radius on a short arm ran past the arm's end and the arc stopped in empty space (2023 AIME I #12: radius 18 on a 6 px arm), and a marker to a direction whose radius was never drawn floated the same way (`roots-of-unity`). `check-diagrams.py` now fails any angle arc (stroke width 1.8) whose ends are not within 1.5 px of a drawn segment or polygon edge. Fix it by drawing the arm, or a short ray past a short arm, or by taking a radius smaller than the arm. Circle arcs drawn with the helper (`arbelos`, `incircle-excircle-homothety`) are on the checker's `ARC_ALLOW` list.
 - **Never assign `DIAGRAMS["id"]` twice.** Six keys had drifted into a second definition that
   silently replaced the first, and for `median-to-hypotenuse` the *discarded* copy was the correct
   one. The checker now fails on a repeated key.
