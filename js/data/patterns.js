@@ -2281,12 +2281,27 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Circle Configurations", blurb: "Figures built on a circle, where a stated or hidden circle switches on a whole set of angle and length facts.", ids: ["angle-bisector-circumcircle", "cyclic-quadrilateral", "tangent-circle-packing", "circle-in-angle"] },
         { title: "Triangle Configurations", blurb: "Special triangles, and points inside them, that carry a set of known facts once they are recognized.", ids: ["point-in-equilateral", "right-triangle-altitude"] },
-        { title: "Polygon Configurations", blurb: "Polygons with a special property, such as equal angles, that lets them be completed into a simpler shape.", ids: ["equiangular-polygon", "isosceles-trapezoid"] },
+        { title: "Polygon Configurations", blurb: "Polygons with a special property, such as equal angles, that lets them be completed into a simpler shape.", ids: ["equiangular-polygon", "isosceles-trapezoid", "square-crossing-segments"] },
         { title: "Moved, Folded & Repeated Figures", blurb: "Figures produced by sliding, folding, or repeating a shape, where the motion itself carries the key fact.", ids: ["zonogon-minkowski", "folded-paper", "nested-similar"] },
         { title: "Solid Configurations", blurb: "Solids with a hidden regularity, such as a tetrahedron that sits inside a box, that turns a three-dimensional problem into a familiar one.", ids: ["equal-edge-tetrahedron"] },
         { title: "Tangency & Extremes", blurb: "An extreme value or a unique solution that signals a curve just touching a line.", ids: ["ellipse-tangent-line", "tangency-condition"] }
       ],
       formulas: [
+        {
+          id: "square-crossing-segments",
+          name: "Perpendicular Segments Across a Square",
+          type: "pattern",
+          subject: "geometry",
+          recognize: [String.raw`a square with one given point on each side, or a square to be drawn through four given points`, String.raw`two segments across a square, each joining a pair of opposite sides, that meet at a right angle`, String.raw`a segment drawn across a square at a slant, with the lengths of its pieces or of a perpendicular to it asked for`],
+          suggests: ["extend-sides-to-meet", "coordinate-bash"],
+          tryFirst: ["extend-sides-to-meet", "rotation-90", "triangle-similarity"],
+          latex: String.raw`PQ \perp RS \implies PQ = RS`,
+          description: String.raw`This is a square crossed by two segments, one joining each pair of opposite sides. If the segments are perpendicular they have the same length, wherever they sit, because a quarter turn about the center swaps the two pairs of sides and turns one direction into the other. Extending the segments to the lines of the sides cuts the figure into right triangles that are all similar.`,
+          keywords: ["perpendicular segments in a square", "segments joining opposite sides", "square through four points", "equal crossing segments", "quarter turn about the center", "square with a point on each side", "rotate a segment by 90 degrees in a square", "extend a segment to the sides of a square", "similar triangles in a square"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
         {
           id: "equal-edge-tetrahedron",
           name: "Tetrahedron with Equal Opposite Edges",

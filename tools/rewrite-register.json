@@ -1791,7 +1791,7 @@
     "conjugate-both-sides": "method",
     "closing-polygon-vectors": "method",
     "cevian-ratio-sum": "formula",
-    "square-crossing-segments": "formula",
+    "square-crossing-segments": "pattern",
     "perimeter-cleavers": "formula",
     "conic-perpendicular-radii": "formula",
     "gram-determinant-volume": "formula"
@@ -8634,6 +8634,10 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ],
+      [
+        "converted to a pattern (owner, 2026-10-17)",
+        "the equal-length fact lives in the pattern; methods to try: extending the segments to the side lines, coordinates"
       ]
     ],
     "perimeter-cleavers": [

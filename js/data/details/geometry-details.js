@@ -8887,30 +8887,29 @@ Finding a third cevian ratio from two others, and problems that give the pieces 
 Uncommon; it appears on the AIME when three cevians through one point are given by their pieces, often pairing with [[same-base-area-ratio|areas over a shared base]] or with mass points to finish.
 `,
 "square-crossing-segments": String.raw`
-## Key forms
-- $PQ = RS$ when $PQ \perp RS$, with $P$, $Q$ on one pair of opposite sides and $R$, $S$ on the other
-- $PQ = \frac{s}{\cos\varphi}$, where $s$ is the side and $\varphi$ the angle between $PQ$ and the sides it does not touch
-- a square with one given point on each side: the segment from one point perpendicular to the segment joining the other pair, and as long as it, ends on the fourth side
+## Distinguishing clues
+- A square with one point given on each side, and its side or area asked for.
+- Two segments across a square, one joining each pair of opposite sides, at right angles.
+- A slanted segment across a square, with a perpendicular to it, or the pieces it cuts off, to be measured.
+- Not this pattern: a segment from a side to an adjacent side, or a rectangle that is not a square, where the two lengths differ.
 
-## Conditions
-The segments run from side to side, each joining two opposite sides; their positions do not matter, only that they are perpendicular. The statement is about a square: in a rectangle with sides $p \ne q$ the two lengths are $\frac p{\cos\varphi}$ and $\frac q{\cos\varphi}$, in the ratio of the sides.
+## Methods and Formulas to Try
+Let $PQ$ join the bottom and top sides of a square of side $s$, and $RS$ join the left and right sides, with $PQ \perp RS$. If $PQ$ makes the angle $\varphi$ with the vertical, its vertical part is $s$, so $PQ = \frac{s}{\cos\varphi}$. The segment $RS$ makes the same angle $\varphi$ with the horizontal and its horizontal part is also $s$, so $RS = \frac{s}{\cos\varphi} = PQ$, wherever the segments sit: they need not cross each other or pass through the center. Equivalently, a quarter turn about the center maps the square to itself, swaps the two pairs of sides, and turns the direction of $PQ$ into that of $RS$. In a rectangle with sides $p \ne q$ the same count gives $\frac p{\cos\varphi}$ and $\frac q{\cos\varphi}$.
 
-## Why it works
-Each segment's length is the distance between its pair of sides divided by the cosine of its tilt, and perpendicular segments have the same tilt.
+### Methods to try
+- [[extend-sides-to-meet]]: extend a slanted segment until it meets the lines of the square's sides. Every right triangle it makes with a side line has the angle $\varphi$, so all of them are similar, and the given lengths pass from one triangle to the next by ratios.
+- [[coordinate-bash]]: put the square on the axes; a segment along $(p, q)$ and one along $(-q, p)$ are perpendicular and equally long, so the unknown side drops out of one linear equation.
 
-Let $PQ$ join the bottom and top sides, which are $s$ apart, and let it make the angle $\varphi$ with the vertical. Its vertical component is $s$, so $$PQ = \frac{s}{\cos\varphi}.$$
+### Formulas to try
+- [[rotation-90]]: turning the vector of one segment a quarter turn gives the direction and length of the other, which places the fourth side when four points are given.
+- [[triangle-similarity]]: the right triangles cut off by a slanted segment and the side lines share the angle $\varphi$.
+- [[parallel-lines-distance]]: opposite sides through two of the given points are parallel lines, and their distance is the side of the square.
+- [[pythagorean-theorem]]: a crossing segment of length $L$ is offset by $\sqrt{L^2 - s^2}$ along the sides it joins.
 
-A segment $RS$ perpendicular to $PQ$ makes the same angle $\varphi$ with the horizontal, and it joins the left and right sides, which are also $s$ apart. Its horizontal component is $s$, so $RS = \frac{s}{\cos\varphi} = PQ$.
-
-Equivalently, a quarter turn about the center carries the square to itself, swaps the two pairs of sides, and turns the direction of $PQ$ into the direction of $RS$; it carries $PQ$ onto a segment of the same length joining the other pair of sides in that direction, and all such segments have equal length.
-
-## Useful observations
-- The segments need not cross each other or pass through the center.
-- Given four points, one on each side, take the segment $BD$ through two of them and turn $\overrightarrow{BD}$ a quarter turn ([[rotation-90|rotating the vector]]) and place it at a third point $A$. Its end lies on the side through the fourth point $C$, which fixes that side's direction.
-- In coordinates, the vector $(p, q)$ turned a quarter turn is $(-q, p)$, which is how the perpendicular segment of equal length is written down.
-
-## Applications
-Squares through given points, one on each side, and lengths of segments drawn across a square at an angle.
+## Common traps
+- Pairing a point with the wrong opposite side: the equal segments join opposite sides, one pair each.
+- Using it in a rectangle, where the lengths are in the ratio of the sides.
+- With four points given, forgetting that the perpendicular through the third point is exactly as long as the segment joining the other two; that length is what places the side through the fourth point.
 
 ## Contest profile
 Rare; it appears on the AIME when a square is determined by four points, one on each side, and its area is asked for, finished with [[parallel-lines-distance|the distance between parallel lines]].
