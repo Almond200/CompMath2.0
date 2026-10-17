@@ -418,6 +418,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - 2020 I #13: $E$ and $F$ are arc midpoints, so the area is $\tfrac{15\sqrt7}{14}$.
   - 2020 II #15: $\cos(B-C)=\tfrac{85}{88}$ gives $XY^2=717$.
   - 2021 I #11: the perimeter is $22\cos\theta$, with $\cos\theta=\tfrac{11}{59}$ from the new Angle Between the Diagonals card and Ptolemy.
+- **New method card, Closing a Polygon with Side Vectors (2026-10-17):** the side vectors of a closed polygon add to zero. For an equiangular polygon this is $\sum a_k\omega^k=0$; its components give the linear relations, and dotting the sum with itself gives the side products. 2026 AIME I #14 cites it. QUESTIONS.md now lists the newest section first, with the newest rows at the top of each table.
 
 **2026-10-10**
 

@@ -8819,5 +8819,39 @@ The side of such a hexagon from the triangle made by its extended sides, a side 
 
 ## Contest profile
 Rare; an AIME problem gives the triangle made by extending alternate sides of an equilateral hexagon with parallel opposite sides and asks for the hexagon's side. Seeing the three corners as scaled copies of the triangle is the whole problem.
+`,
+"closing-polygon-vectors": String.raw`
+## When to use
+A polygon has known angles and sides given in order: an equiangular hexagon with four sides known, an equiangular pentagon with conditions on the squares of its sides, or a path of segments turning by fixed angles that must come back to its start. Closure supplies the relations among the sides.
+
+It is the wrong move for a triangle, where the [[law-of-cosines|Law of Cosines]] already says everything closure would, and for a polygon whose angles are unknown, since then the directions are unknowns too.
+
+## How
+1. Go around the polygon in order and write side $k$ as $a_k\vec u_k$, its length times the unit vector along it.
+2. Find the directions from the angles: each side turns by the exterior angle, $180^\circ$ minus the interior angle; for an equiangular $n$-gon take $\vec u_k = \omega^k$ with $\omega = e^{2\pi i/n}$.
+3. Set the sum of the side vectors to zero.
+4. For linear relations, split the sum into two components, or reduce the powers of $\omega$ to $1$ and $\omega$ and set both coefficients to zero.
+5. For a relation among products, dot the sum with itself: $\sum a_k^2 + 2\sum_{j \lt k} a_ja_k\,\vec u_j\cdot\vec u_k = 0$.
+6. Combine the relations with the given data and check that every side comes out positive.
+
+For an equiangular pentagon, step 5 gives $\sum a_k^2 + 2J\cos72^\circ + 2K\cos144^\circ = 0$, where $J$ adds the five products of adjacent sides and $K$ the five products of sides that are not adjacent.
+
+## Why it works
+The sum of the side vectors is the displacement from the starting vertex back to itself, so it is the zero vector. A vector is zero exactly when both its components are zero, which gives two real equations, and exactly when its length is zero, which gives the dotted form, by [[vector-dot-product|the dot product]].
+
+In the equiangular case the directions are the powers of one root of unity, and $\omega^n = 1$ lets every power be reduced. For a hexagon, $\omega^3 = -1$ and $\omega^2 = \omega - 1$, so the closure equation becomes $p + q\omega = 0$ with $p$ and $q$ real, and since $\omega$ is not real, $p = q = 0$. Closure is necessary but not sufficient: it does not make the polygon convex or its sides positive, which is why the last step checks them.
+
+## Formulas it uses
+- [[vector-dot-product]]: $\vec u \cdot \vec v = \cos\theta$ for unit vectors at angle $\theta$, and $|\vec v|^2 = \vec v\cdot\vec v$.
+- [[roots-of-unity]]: the directions $1, \omega, \dots, \omega^{n-1}$ of an equiangular $n$-gon, and $\omega^n = 1$.
+
+## Common traps
+- Turning by the interior angle instead of the exterior angle, $180^\circ$ minus it.
+- Listing the sides out of order, which changes which products are adjacent.
+- Counting each pair once in the dotted form, where it appears twice.
+- Accepting a side that comes out zero or negative.
+
+## Contest profile
+Uncommon; it appears on the AIME when an equiangular hexagon or pentagon is given by some of its sides, or by sums of squares of its sides and diagonals, and the remaining sides or the perimeter are asked for.
 `
 });
