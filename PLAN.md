@@ -39,6 +39,7 @@
   5. Every 8 to 10 problems: gates (CLAUDE.md list), a browser check of the touched pages (`#/problem/<slug>`), bump `?v=` for `problem-db.js` and `problem-diagrams.js` in `index.html` and run `tools/sync-lab-versions.py`, update this block and the README changelog, commit and push.
   6. When Pythagorean Theorem is finished, move to the next card in `js/data/geometry.js` order (`special-right-triangles`, then `altitude-hypotenuse`, ...). A problem already done under an earlier card needs only a check that the new card's citation is right.
 - **Decisions made in this pass (keep applying them):**
+  - commit only after every gate passes: chain the commit after the gates with `&&`, never `;` (a figure file that failed to load was committed once that way and fixed at once);
   - a statement that is only about a triangle's angles or a trigonometric identity, with no construction, gets no figure (2013 AIME II #15, 2014 AIME II #12);
   - a chord at a distance from the center cites `chord-length`, not `pythagorean-theorem`;
   - AA similarity cites `triangle-similarity`; `similar-figures-ratios` is for scaling lengths, areas and volumes;
