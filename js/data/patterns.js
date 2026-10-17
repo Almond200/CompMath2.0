@@ -604,7 +604,7 @@ window.MATH_SECTIONS.push({
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "lagrange-interpolation", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sos-method", "smoothing-method", "tangent-line-trick", "median-minimizes-abs", "slope-to-a-point"] },
-        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "time-per-leg", "averages-to-totals"] },
+        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Determinants", blurb: "Evaluating a determinant without expanding every term.", ids: ["cofactor-expansion"] }
@@ -699,6 +699,36 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "setting-up-proportions",
+          name: "Setting Up a Proportion",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`Two quantities change together at a fixed rate or in a fixed ratio, such as laps per minute, a map scale, a unit price, or a tagged share of a population, or an amount must be changed from one unit to another.`,
+          move: String.raw`Write the fixed ratio twice, once with the known numbers and once with the unknown, keeping the units in the same places, and cross-multiply; for a change of units multiply by factors equal to $1$ so the old units cancel.`,
+          uses: [],
+          latex: String.raw`\begin{gathered} \frac{a}{b} = \frac{c}{x} \iff ax = bc \quad (b, x \ne 0) \\ q\ \text{old} \times \frac{k\ \text{new}}{1\ \text{old}} = qk\ \text{new} \end{gathered}`,
+          description: String.raw`Setting up a proportion turns a fixed rate or ratio into one equation: the known pair $a$, $b$ and the pair $c$, $x$ that holds the unknown must give the same ratio. It is the bookkeeping behind scale drawings, constant speeds, unit prices, and capture-recapture estimates, and a change of units is the same idea, since a factor of $k$ new units per old unit is a ratio equal to $1$.`,
+          keywords: ["proportion", "cross-multiply", "equal ratios", "unit rate", "unit conversion", "scale drawing", "capture recapture", "constant speed", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "linear-elimination",
+          name: "Solving a Linear System by Elimination",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A word problem or a system gives as many independent linear conditions as unknowns: two prices from two shopping lists, a balance, a model with two constants and two data points, or lengths that each change by a fixed amount.`,
+          move: String.raw`Name one unknown per quantity and write one linear equation per condition; then scale two equations so one unknown has matching coefficients and subtract, or substitute forward along a chain, until a single unknown is left, and back-substitute.`,
+          uses: ["cramers-rule"],
+          latex: String.raw`\begin{gathered} E_1\!: \ a_1x + b_1y = c_1, \qquad E_2\!: \ a_2x + b_2y = c_2 \\ b_2E_1 - b_1E_2 \ \text{removes } y \end{gathered}`,
+          description: String.raw`Elimination solves a system of linear equations by combining them until one unknown is left. $E_1$ and $E_2$ name the two equations, and $b_1$, $b_2$ are their coefficients of $y$. Every combination can be undone, so no solution is gained or lost, and the coefficient left on the last unknown says whether the answer is unique.`,
+          keywords: ["elimination", "linear system", "two equations two unknowns", "subtract the equations", "back-substitute", "word problem system", "simultaneous equations", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
           id: "substitute-repeated-block",

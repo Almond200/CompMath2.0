@@ -1789,6 +1789,8 @@
     "parallel-sided-hexagon": "formula",
     "product-of-uniforms": "formula",
     "conjugate-both-sides": "method",
+    "setting-up-proportions": "method",
+    "linear-elimination": "method",
     "closing-polygon-vectors": "method",
     "cevian-ratio-sum": "formula",
     "square-crossing-segments": "pattern",
@@ -8613,6 +8615,18 @@
       ]
     ],
     "conjugate-both-sides": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "setting-up-proportions": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "linear-elimination": [
       [
         "(new card)",
         "written directly in the method template"

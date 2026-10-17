@@ -4381,6 +4381,62 @@ An average is a total divided by a count, so the total is the average times the 
 A MATHCOUNTS and AMC 10 staple, and on the AMC 12 a step inside a problem with an unknown count.
 `,
 
+"setting-up-proportions": String.raw`
+## When to use
+A quantity grows in step with another at a fixed rate: laps and minutes at a constant speed, distance on a map and on the ground, the tagged share of a sample and of the whole lake, a recipe scaled up, or a price per item. Every change of units is the same move, and so is a ratio that must hold after a group is added to, as when a class whose girls and boys are in the ratio $3 : 2$ gains more boys. A rate that changes partway through, two speeds or two workers, is not one proportion: it belongs to [[work-rates|combined work rates]] or to separate legs of the trip. Several equal ratios combined at once are the business of [[proportion-properties|addendo and componendo]].
+
+## How
+1. Find the quantity that stays fixed: a speed, a scale, a share, or a price per item.
+2. Write it twice as a fraction, once with known numbers and once with the unknown, keeping the same units in the same places, $\frac ab = \frac cx$.
+3. Cross-multiply to $ax = bc$ and solve.
+4. For a change of units, multiply by fractions equal to $1$, such as $\frac{1000\ \text{m}}{1\ \text{km}}$, arranged so that each unwanted unit cancels.
+5. Check the size of the answer against the ratio: twice the time should give twice the laps.
+
+If $4$ of $50$ fish in a sample are tagged, and $120$ fish were tagged in a lake of $x$ fish, then $\frac{4}{50} = \frac{120}{x}$, so $4x = 6000$ and $x = 1500$.
+
+## Why it works
+A fixed rate means the ratio of the two quantities is the same number $k$ every time, $\frac ab = k = \frac cx$. Multiplying both sides by $bx$, which is allowed because neither is $0$, clears both denominators and gives $ax = bc$. A conversion factor such as $\frac{1.6\ \text{km}}{1\ \text{mi}}$ is a ratio equal to $1$, so multiplying by it changes the units and not the amount. The move stops being valid when the relation is not a straight proportion: a fixed charge plus a rate, as in a taxi fare, or a rate that changes.
+
+## Formulas it uses
+No formula is needed; the move is one equation between two equal ratios.
+
+## Common traps
+- Putting the units in different places in the two fractions, which turns the answer upside down.
+- Treating a fixed charge plus a rate as a proportion.
+- Converting an area or a volume with the length factor: a square meter is $10^4$ square centimeters, not $100$.
+
+## Contest profile
+A step in the first problems of the AMC 10 and 12, and the first line of a capture-recapture or ratio-change setup on the AIME.
+`,
+
+"linear-elimination": String.raw`
+## When to use
+Each condition in the problem is a linear equation in a few unknowns, and there are as many independent conditions as unknowns: two prices from two shopping lists, a balance scale, a model $T = aL + bG$ with two data points, or dimensions that each grow by a fixed amount. When the equations are rotations of one another, or only a combination of the unknowns is asked for, [[add-all-equations|adding groups of equations]] is shorter. When one variable out of three is wanted, a determinant can give it at once.
+
+## How
+1. Name one unknown for each quantity, in units that keep the coefficients whole.
+2. Write one equation per condition.
+3. Pick the unknown to remove, scale two equations so that its coefficients match, and subtract.
+4. Repeat until one unknown remains, or, when each equation links the next unknown to the last, substitute forward along the chain.
+5. Solve, back-substitute, and check every original condition.
+
+From $x + 2y = 8$ and $3x - y = 3$, doubling the second gives $6x - 2y = 6$, and adding it to the first gives $7x = 14$, so $x = 2$ and then $y = 3$.
+
+## Why it works
+Adding a multiple of one true equation to another gives a true equation, and the step can be undone by subtracting the same multiple, so the new system has exactly the same solutions as the old one. Each round removes one unknown. For two equations, taking $b_2$ times the first minus $b_1$ times the second leaves $(a_1b_2 - a_2b_1)\,x$ alone on the left. When $a_1b_2 - a_2b_1 \ne 0$ there is exactly one solution; when it is $0$ the two equations describe parallel lines, and the elimination ends in $0 = 0$ (infinitely many solutions) or $0 = c$ with $c \ne 0$ (none).
+
+## Formulas it uses
+- [[cramers-rule]]: the same elimination carried out once in general, which gives a single unknown directly as a ratio of determinants and says when the solution is unique.
+
+## Common traps
+- Scaling only one side of an equation.
+- Solving for every unknown when one subtraction already gives the combination the question asks for.
+- Missing that the system is dependent, so that elimination ends in $0 = 0$ and the answer is not determined.
+
+## Contest profile
+A step in the early AMC 10 and 12 problems and the setup of many word problems; on the AIME it usually follows a substitution that makes a nonlinear system linear.
+`,
+
 "repeated-block-equation": String.raw`
 ## Distinguishing clues
 - The degree looks high, often four, yet the equation has more structure than a general quartic.

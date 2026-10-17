@@ -2934,8 +2934,8 @@
   }
 
   function practiceHtml(f) {
-    // Uniform format: numbered examples, each a question with its solution always shown under it
-    // (owner, 2026-10-17: no Show solution button).
+    // Uniform format: numbered examples, each a question with a hidden solution (a printed page
+    // shows every solution; see @media print in styles.css).
     // MATH_EXAMPLES holds { q, s } pairs; legacy inline strings are a fallback.
     const items = [];
     const lead = (window.MATH_EXAMPLES || {})[f.id];
@@ -2951,7 +2951,8 @@
       <div class="problem">
         <p class="problem-q"><strong>Example ${i + 1}.</strong> ${p.q}</p>
         ${figHtml(p.figQ)}
-        ${p.s ? `<div class="problem-sol" id="sol-${f.id}-${i}"><strong>Solution.</strong> ${p.s}${figHtml(p.figS)}</div>` : ""}
+        ${p.s ? `<button class="sol-toggle" data-target="sol-${f.id}-${i}">Show solution</button>
+        <div class="problem-sol" id="sol-${f.id}-${i}" hidden><strong>Solution.</strong> ${p.s}${figHtml(p.figS)}</div>` : ""}
       </div>`);
     return `<div class="practice"><h4>Examples</h4>${blocks.join("")}</div>`;
   }
@@ -3155,6 +3156,7 @@
       const rows = groups[fam].map((p, i) => {
         return `<li class="prob-row${i >= PROB_GROUP_PREVIEW ? " prob-extra" : ""}">
          <a class="prob-open" href="#/problem/${p.slug}">${refShort(p.ref)}</a>
+         ${p.url ? `<a class="ref-ext-link" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer" title="Open the source">${p.urlLabel} <span aria-hidden="true">&#8599;</span></a>` : ""}
        </li>`;
       }).join("");
       return `<div class="prob-group" data-fam="${escapeAttr(fam)}">
