@@ -7,13 +7,13 @@
 ## Current state (updated 2026-10-18, eighth cloud chat)
 
 - **Counts:** 714 cards (527 formulas, 148 methods, 39 patterns). 4,675 problems, 4,616 with statements, about 1,370 with strategies. 228 problems have figures drawn for the app.
-- **Done most recently:** 2.7a, the card-by-card practice pass, is finished (every card with problems checked; `node tools/practice-file.js <file>` reports 0 VAGUE for all five card files). 2.7c is well along: `geometry.js`, `algebra.js`, `number-theory.js` and `counting.js` are done.
-- **In progress: step A below (2.7c).** **Next action:** `node tools/card-text.js patterns.js 0 30`, then on through its 188 cards, 25 to 30 at a time.
+- **Done most recently:** 2.7a, the card-by-card practice pass, is finished (every card with problems checked; `node tools/practice-file.js <file>` reports 0 VAGUE for all five card files). 2.7c, every symbol defined on its own card, is finished: all 714 cards read.
+- **In progress: step B below (2.4e-ii).** **Next action:** measure every card whose formula box is prose rather than formulas, and write the proposals into `QUESTIONS.md`, "Open now".
 - **Missing cards found while working** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P13 are written; a new one goes at the top of the table as P14), for approval before they are written; the problem cites the nearest card meanwhile.
 
 ## The road ahead, in order
 
-**A. 2.7c: every symbol defined on its own card** (in progress). Go through every card once, in file order, and make sure each variable a reader could find confusing is defined on the card itself: in the thumbnail, the description or the Key forms (the Arbelos card's $a$, $b$, $D$ are the model). Define symbols without restating a thumbnail formula in the description (`tools/find-duplicate-forms.py` should stay at its one known line, `parallel-sided-hexagon`). Commit every 25 to 30 cards.
+**A. 2.7c: every symbol defined on its own card** (done 2026-10-18). Go through every card once, in file order, and make sure each variable a reader could find confusing is defined on the card itself: in the thumbnail, the description or the Key forms (the Arbelos card's $a$, $b$, $D$ are the model). Define symbols without restating a thumbnail formula in the description (`tools/find-duplicate-forms.py` should stay at its one known line, `parallel-sided-hexagon`). Commit every 25 to 30 cards.
 
 **B. 2.4e-ii: prose formula boxes on card faces.** Measure the boxes that are written as prose rather than formulas, propose rewrites in `QUESTIONS.md`, and apply them after the owner approves. A box that cannot be shortened stays as it is.
 
