@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 124 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 125 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -71,7 +71,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
-        ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point"] },
+        ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point", "sign-chart"] },
       { title: "Exponents, Logs, Radicals & Absolute Value",
         note: "The manipulation rules, including the ones with a trap in them.",
         ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation"] },
@@ -129,7 +129,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 76 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 77 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
@@ -142,7 +142,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complementary-counting", "symmetry-probability", "bijection-method", "pie", "inclusion-exclusion", "casework-method", "constructive-counting", "uniform-overcount", "grid-path-fill"] },
       { title: "Recursion & States",
         note: "When the count for n depends on the count for smaller n.",
-        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards"] },
+        ids: ["states-recursion-prob", "recursive-counting", "derangements", "non-adjacent-selection", "catalan-numbers", "parking-functions", "moser-circle", "plane-regions", "restricted-sequences", "tiling-a-board", "simulate-the-process", "working-backwards"] },
       { title: "Symmetry & Group Counting",
         note: "Counting up to a symmetry, where naive counting overcounts by a factor you must compute.",
         ids: ["permutation-cycle-structure"] },

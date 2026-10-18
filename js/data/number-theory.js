@@ -656,7 +656,7 @@ window.MATH_SECTIONS.push({
         {
           id: "erdos-ginzburg-ziv",
           name: "Erdős–Ginzburg–Ziv Theorem",
-          latex: String.raw`\text{any } 2n-1 \text{ integers contain } n \text{ with sum divisible by } n`,
+          latex: String.raw`a_1, \ldots, a_{2n-1} \in \mathbb{Z} \implies n \mid a_{i_1} + \cdots + a_{i_n} \qquad \text{for some } i_1 \lt \cdots \lt i_n`,
           description: String.raw`The Erdős–Ginzburg–Ziv Theorem says that among any $2n - 1$ integers, some $n$ of them have a sum divisible by $n$, and $2n - 1$ is the least number that guarantees it.`,
           keywords: ["erdos ginzburg ziv", "egz", "zero sum", "subset divisible by n", "2n-1 integers", "additive number theory"],
           importance: "lower",
@@ -750,7 +750,7 @@ window.MATH_SECTIONS.push({
         {
           id: "zsygmondy",
           name: "Zsigmondy's Theorem",
-          latex: String.raw`a^n - b^n \text{ has a primitive prime divisor (with rare small exceptions)}`,
+          latex: String.raw`\exists\, p \mid a^n - b^n,\ \ p \nmid a^k - b^k \ (k \lt n) \qquad \text{except } 2^6 - 1^6, \text{ and } n = 2 \text{ with } a + b = 2^j`,
           description: String.raw`Zsigmondy's Theorem says that for coprime integers $a \gt b \ge 1$ and $n \ge 2$, the number $a^n - b^n$ has a primitive prime divisor, one dividing no $a^k - b^k$ with $k \lt n$, except when $2^6 - 1^6 = 63$, or $n = 2$ with $a + b$ a power of $2$.`,
           keywords: ["primitive prime divisor", "new prime", "exponential diophantine", "zsygmondy theorem", "zsigmondy theorem"],
           importance: "lower",

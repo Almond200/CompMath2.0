@@ -1791,6 +1791,8 @@
     "conjugate-both-sides": "method",
     "setting-up-proportions": "method",
     "linear-elimination": "method",
+    "sign-chart": "method",
+    "parking-functions": "formula",
     "closing-polygon-vectors": "method",
     "cevian-ratio-sum": "formula",
     "square-crossing-segments": "pattern",
@@ -8630,6 +8632,18 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "sign-chart": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "parking-functions": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ],
     "closing-polygon-vectors": [

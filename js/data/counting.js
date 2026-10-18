@@ -313,6 +313,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "parking-functions",
+          name: "Parking Functions",
+          latex: String.raw`a_{(i)} \le i - 1 \ \ (1 \le i \le n) \qquad \mathrm{PF}_n = (n+1)^{n-1}`,
+          description: String.raw`A parking function of length $n$ is a sequence $a_1, \ldots, a_n$ of numbers from $0$ to $n - 1$ whose sorted form $a_{(1)} \le a_{(2)} \le \cdots \le a_{(n)}$ has $a_{(i)} \le i - 1$ for every $i$; equivalently, for each $j$ at least $j$ of the terms are less than $j$. Their number is $\mathrm{PF}_n = (n+1)^{n-1}$. The name comes from $n$ cars on a one-way street of $n$ spots, each driving to its preferred spot and taking the first free one from there on: these are exactly the preference lists that let every car park. Pollak's proof bends the street into a circle of $n + 1$ spots.`,
+          keywords: ["parking functions", "pollak circle", "cars parking", "preferred spot", "at least j less than j", "sorted sequence bound", "(n+1)^(n-1)"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "ballot-problem",
           name: "The Ballot Problem",
           latex: String.raw`P(A \text{ always strictly ahead}) = \frac{a - b}{a + b}`,
@@ -469,7 +479,7 @@ window.MATH_SECTIONS.push({
         {
           id: "dilworths-theorem",
           name: "Dilworth's Theorem",
-          latex: String.raw`\text{min chains covering a poset} = \text{size of the largest antichain}`,
+          latex: String.raw`\min \#\{\text{chains covering } P\} = \max\,\lvert\text{antichain}\rvert`,
           description: String.raw`In any finite partially ordered set, the fewest chains (totally ordered subsets) needed to cover everything equals the largest antichain (pairwise-incomparable subset). Its dual (Mirsky's theorem) swaps the roles. Erdős–Szekeres is the classic corollary: order points by first coordinate and compare by second — a long chain is an increasing subsequence, a long antichain a decreasing one.`,
           keywords: ["dilworth theorem", "chains antichains", "poset cover", "mirsky dual", "partial order", "erdos szekeres corollary", "extremal combinatorics"],
           importance: "low",
@@ -826,7 +836,7 @@ window.MATH_SECTIONS.push({
         {
           id: "konigs-theorem",
           name: "Kőnig's Theorem",
-          latex: String.raw`\text{bipartite: max matching} = \text{min vertex cover}`,
+          latex: String.raw`G \text{ bipartite} \implies \nu(G) = \tau(G) \qquad \nu = \text{largest matching},\ \tau = \text{smallest vertex cover}`,
           description: String.raw`In bipartite graphs the largest set of independent edges equals the smallest set of vertices touching every edge, a min-max duality that is the dual of [[halls-marriage|Hall's Theorem]] and a special case of max-flow/min-cut. Its complement form (Kőnig–Egerváry): the maximum independent set equals $n$ minus the maximum matching. It is the go-to tool for covering and packing problems on grids and bipartite structures, for example the fewest lines covering all the rooks or marked cells of a board.`,
           keywords: ["konig theorem", "max matching min vertex cover", "bipartite duality", "egervary", "cover marked cells", "lines covering board"],
           importance: "medium",

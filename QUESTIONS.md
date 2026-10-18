@@ -4,7 +4,13 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-### Prose formula boxes (2.4e-ii, 2026-10-18)
+Nothing is open. A new question goes here; a new card candidate starts a table here as P16.
+
+## Answered (kept as the record, newest first)
+
+## Prose formula boxes (2.4e-ii, 2026-10-18; all approved and applied)
+**Status.** B1 to B12 approved on 2026-10-18 and applied as proposed, each definition written beside its formula in the box; B11 is written without a sigma, so it needs no expanded twin.
+
 `node tools/prose-boxes.js 0.6` lists the 127 cards whose formula box is mostly words (share of characters inside `\text{}`). Most are methods and patterns, whose box is a schematic of the move, or theorems whose statement is a sentence (Desargues, Sylvester–Gallai, Napoleon); those stay as they are. These are the ones where symbols would say the same thing more shortly. Answer per row: yes, no, or a different wording. Nothing changes until you answer.
 
 | # | Card | Box now | Proposed box |
@@ -24,7 +30,9 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 Kept as they are (a sentence is the statement, or the box is a schematic of a move): Sylvester–Gallai, Napoleon, Desargues, Brianchon, Pascal, Simson, Morley, Eulerian paths, Helly, the orthocentric system, and the method and pattern schematics (Trig Bashing, Unfolding, Organized Listing, Bijections, the Extremal Principle and the rest).
 
-### Card-file re-check findings (step C, 2026-10-18)
+## Card-file re-check findings (step C, 2026-10-18; all approved)
+**Status.** Approved on 2026-10-18. C1: Pitot's Theorem is now tier AIME Early. C3: the six cards are kept as they are, the first of the two options. C2: the cards stay high, to be revisited once step D has real counts.
+
 Fixed already: `cone-formulas` no longer restates the cone volume, whose home is `prism-pyramid-volumes`. Three calls are yours:
 
 | # | Card | Finding | Proposal |
@@ -33,15 +41,15 @@ Fixed already: `cone-formulas` no longer restates the cone volume, whose home is
 | C3 | Tier AMC, level without AMC | Radical Axis, Descartes' Circle Theorem, Isosceles Tetrahedron, Product-to-Sum, Partitions, Roots of Unity Filter carry tier AMC but list only AIME (and Olympiad) as their level, which is what places them in the AIME study routes; each has AMC 10 or AMC 12 problems tagged | either keep them as they are (AMC-tier facts studied on the AIME route), or add AMC 10/12 to their level, which moves them into the AMC routes |
 | C2 | High importance with no tagged problem yet | Stretching One Axis Scales Area, Determinant of a Small Matrix, Area Ratio from Base Ratios, and the proof methods Direct Proof, Proof by Contradiction, Proving the Contrapositive, Proof by Cases | keep high for now and revisit after step D tags the untagged problems, when real counts exist |
 
-### Candidate new cards from the write-ups (step D, 2026-10-18)
+## Candidate new cards from the write-ups (step D, 2026-10-18; all approved and written)
+**Status.** P14 and P15 approved on 2026-10-18 and written as the formula `parking-functions` (Counting > Advanced Counting, AIME Early, lower) and the method `sign-chart` (Methods > Algebra > Inequalities & Optimization, AMC, medium). 2022 AMC 10A #24 / 12A #24 and 2020 AMC 10A #17 now cite them. A new candidate goes into a new table under "Open now" as P16.
+
 Each is a fact a written-up problem needed and no card holds. The problem cites the nearest card meanwhile. Answer per row: yes, no, or a different rating. A new candidate goes at the top of this table as the next P-number.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|
 | P15 | Sign Chart for a Polynomial Inequality: a product of linear factors changes sign only at its roots, so mark the roots on a line and read each interval's sign from the number of negative factors (a double root does not flip the sign) | method, algebra / inequalities | AMC, medium | 2020 AMC 10A #17 (it cites Casework meanwhile) |
 | P14 | Parking Functions: a sequence $a_1,\dots,a_n$ with values in $\{0,\dots,n-1\}$ whose sorted form has $a_{(i)}\le i-1$; there are $(n+1)^{n-1}$ of them, by Pollak's circle of $n+1$ spots (exactly one rotation of each preference string leaves the extra spot empty) | formula, counting / special counting sequences | AIME Early, lower | 2022 AMC 10A #24 / 12A #24 (it cites Constructive Counting meanwhile) |
-
-## Answered (kept as the record, newest first)
 
 ## Candidate new cards from the practice pass (2.7a, 2026-10-17; all approved and written)
 Each is a fact or move a re-solved problem needed and no card holds (checked against names, keywords and descriptions). The problems cite the nearest card meanwhile. Tier and importance are proposals (rule 12); the evidence so far is one problem each. Answer per row: yes, no, or a different rating. Newest rows first.

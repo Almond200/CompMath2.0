@@ -5220,3 +5220,38 @@ On the unit circle $z\bar z = 1$, so $\bar z = \frac1z$ and the conjugated equat
 Uncommon but recognizable: late AMC 12 and early-to-middle AIME problems that put complex numbers on the unit circle and say a sum or an expression is real or zero. The conjugated equation usually factors into roots of unity, and the count or sum of the solutions is the answer.
 `
 });
+
+// Sign Chart for a Polynomial Inequality (P15, 2026-10-18).
+Object.assign(window.MATH_DETAILS, {
+"sign-chart": String.raw`
+## When to use
+The inequality compares a product or a quotient with $0$, and the factors are known or easy to find: $P(x) \le 0$ for a factored polynomial, $\frac{(x-1)(x+2)}{x-3} \gt 0$, or the number of integers where a product of many factors is negative. When the expression does not factor, or the inequality compares two sides that are not a product and $0$, move everything to one side first; if it still does not factor, a [[tangent-line-trick|bound]] or a graph is the better tool.
+
+## How
+1. Move every term to one side, so the inequality compares one expression with $0$.
+2. Factor it completely into linear factors and factors that never change sign, such as squares.
+3. Mark every root, of the numerator and the denominator, in order on a number line.
+4. On each interval between marks, count the factors that are negative; an odd count makes the expression negative, an even count positive.
+5. Keep the intervals the inequality asks for.
+6. Decide each mark on its own: a root of the numerator is in when equality is allowed, and a root of the denominator is never in.
+
+For $x(x-2)(x+3) \ge 0$ the marks are $-3$, $0$, $2$. Left of $-3$ all three factors are negative, so the product is negative; then two, one and none are negative, giving $+$, $-$, $+$. The answer is $-3 \le x \le 0$ or $x \ge 2$.
+
+## Why it works
+A linear factor $x - r$ is negative to the left of $r$ and positive to the right of it, so it changes sign only at $r$. Between two consecutive roots no factor changes sign, and so the product keeps one sign on the whole interval. That sign is $-1$ raised to the number of negative factors, which is the number of roots to the right of $x$.
+
+A factor $(x - r)^2$ is never negative, so it does not flip the sign at $r$; it only makes the expression $0$ there. The method stops working when a factor is not known to keep its sign between the marks, which is why the factoring has to be complete.
+
+## Formulas it uses
+- [[factor-remainder-theorem]]: each root $r$ of a polynomial gives a factor $x - r$, so knowing the roots gives the factorization the chart is built on.
+
+## Common traps
+- Dividing both sides by an expression whose sign is not known, which can flip the inequality without notice.
+- Letting a squared factor flip the sign at its root.
+- Forgetting the roots themselves: in when equality is allowed, and always out when they make a denominator $0$.
+- Losing the intervals at the two ends, left of the smallest root and right of the largest.
+
+## Contest profile
+An early or middle AMC 10 and 12 step: a factored polynomial with many roots whose sign must be counted over the integers, or a rational inequality in an algebra problem. On the AIME it is usually one line inside a larger solution.
+`
+});
