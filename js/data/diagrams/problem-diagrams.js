@@ -4200,4 +4200,42 @@
       cap(430, 280, "Right triangle XOY with M, N the midpoints of the legs; XN = 19 and YM = 22." + MM(ok))
     ]);
   })();
+
+  PROB["2001-amc-10-15"] = (() => {
+    const P1 = [0, 0], P2 = [30, 40], R1 = [15, 0], R2 = [45, 40], F = foot(R1, P1, P2);
+    const ok = Math.abs(dist(P1, P2) - 50) < 1e-9 && Math.abs(dist(R1, R2) - 50) < 1e-9 && Math.abs(dist(R1, F) - 12) < 1e-9;
+    const Q = fitQ([[-12, 0], [57, 40]], 30, 430, 260);
+    return wrap(430, 260, [
+      poly([P1, R1, R2, P2].map(Q), "none", 0, ACCS), seg(Q([-12, 0]), Q([57, 0]), DIM, 2), seg(Q([-12, 40]), Q([57, 40]), DIM, 2),
+      seg(Q(P1), Q(P2), ACC, 2.2), seg(Q(R1), Q(R2), ACC, 2.2), seg(Q(R1), Q(F), GLD, 1.8, "4 3"), rightAngle(Q(F), Q(R1), Q(P2), 8, GLD),
+      txt(add(Q([7.5, 0]), [0, 16]), "15", DIM, 12), txt(add(Q([39, 32]), [16, 0]), "50", ACC, 12), txt(add(Q([-12, 20]), [14, 4]), "40", DIM, 12),
+      txt(add(Q(mid(R1, F)), [20, 8]), "d", GLD, 13),
+      cap(430, 260, "Curbs 40 apart and two parallel stripes of length 50, which cut 15 off the curb; d is the distance between the stripes." + MM(ok))
+    ]);
+  })();
+
+  PROB["2001-amc-10-21"] = (() => {
+    const r = 30 / 11, L = [-5, 0], Rt = [5, 0], T = [0, 12], R = [[-r, 0], [r, 0], [r, 2 * r], [-r, 2 * r]];
+    const onSide = (P, A, B) => Math.abs((B[0] - A[0]) * (P[1] - A[1]) - (B[1] - A[1]) * (P[0] - A[0])) < 1e-9;
+    const ok = onSide(R[2], Rt, T) && onSide(R[3], L, T);
+    const Q = fitQ([[-6, 0], [6, 12]], 26, 430, 280);
+    return wrap(430, 280, [
+      poly([L, Rt, T].map(Q), DIM, 2), poly(R.map(Q), ACC, 2, ACCS), seg(Q(T), Q([0, 0]), FNT, 1.2, "4 3"),
+      txt(add(Q([2.5, 0]), [0, 16]), "5", DIM, 12), txt(add(Q([0, 7]), [-10, 0]), "12", DIM, 12), txt(add(Q([r, r]), [12, 4]), "2r", ACC, 12),
+      cap(430, 280, "The cross-section through the axis: the cone is a triangle of base 10 and height 12, the cylinder a square of side 2r." + MM(ok))
+    ]);
+  })();
+
+  PROB["2001-amc-10-24"] = (() => {
+    const a = 1.75, b = 7, A = [0, 7], D = [0, 0], B = [a, 7], C = [b, 0];
+    const ok = Math.abs(dist(B, C) - (a + b)) < 1e-9 && Math.abs(a * b - 12.25) < 1e-9;
+    const Q = fitQ([[0, 0], [7, 7]], 30, 430, 270), P = [A, B, C, D].map(Q);
+    return wrap(430, 270, [
+      poly(P, DIM, 2), seg(P[1], Q([a, 0]), FNT, 1.4, "4 3"), rightAngle(P[0], P[1], P[3], 9), rightAngle(P[3], P[0], P[2], 9),
+      gapLabel(P[0], [P[1], P[3]], "A"), gapLabel(P[1], [P[0], P[2]], "B"), gapLabel(P[2], [P[1], P[3]], "C"), gapLabel(P[3], [P[0], P[2]], "D"),
+      txt(add(Q([0, 3.5]), [-12, 4]), "7", DIM, 12), txt(add(Q([a / 2, 7]), [0, -8]), "a", DIM, 12.5), txt(add(Q([3.5, 0]), [0, 16]), "b", DIM, 12.5),
+      txt(add(Q(mid(B, C)), [14, -4]), "a + b", ACC, 12),
+      cap(430, 270, "Right trapezoid ABCD with AD = 7 perpendicular to both bases and BC = AB + CD." + MM(ok))
+    ]);
+  })();
 })();
