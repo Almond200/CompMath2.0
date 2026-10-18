@@ -4041,4 +4041,18 @@
       cap(430, 280, "Regular hexagon ABCDEF with lines AB, ZW, YX and ED parallel and equally spaced; hexagon WCXYFZ is shaded." + MM(ok))
     ]);
   })();
+  PROB["2015-amc-10a-19"] = (() => {
+    const Cm = [0, 0], Am = [5, 0], Bm = [0, 5], ray = t => { const k = 5 / (Math.cos(t) + Math.sin(t)); return [k * Math.cos(t), k * Math.sin(t)]; };
+    const Dm = ray(Math.PI / 6), Em = ray(Math.PI / 3);
+    const ok = Math.abs(Dm[0] + Dm[1] - 5) < 1e-9 && Math.abs(Em[0] + Em[1] - 5) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 260, [
+      poly([C, D, E], "none", 0, ACCS), poly([A, B, C], DIM, 2), seg(C, D, ACC, 1.8), seg(C, E, ACC, 1.8), rightAngle(C, A, B, 9, DIM),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [8, 14]), "A", DIM, 13, "start"), txt(add(B, [-8, -4]), "B", DIM, 13, "end"), txt(add(C, [-8, 14]), "C", DIM, 13, "end"),
+      txt(add(D, [8, 0]), "D", ACC, 13, "start"), txt(add(E, [8, 0]), "E", ACC, 13, "start"),
+      cap(430, 260, "Isosceles right triangle ABC with the right angle at C and area 12.5; the trisectors of angle C meet AB at D and E." + MM(ok))
+    ]);
+  })();
 })();
