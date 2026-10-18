@@ -3745,4 +3745,20 @@
       cap(430, 260, "Right angle at C, angle A = 30°: the altitude CH to the hypotenuse and the median AM to the short side BC cross at the orange point." + MM(ok))
     ]);
   })();
+  PROB["2022-amc-10a-23"] = PROB["2022-amc-12a-20"] = (() => {
+    const a = 2.268809785916864, b = 0.7562699286389547, Pm = [-1.6528490062398784, -0.787776819854278];
+    const Am = [-a, 0], Bm = [-b, 1], Cm = [b, 1], Dm = [a, 0];
+    const ok = [Am, Bm, Cm, Dm].every((q, i) => Math.abs(dist(Pm, q) - (i + 1)) < 1e-9);
+    const Q = fitQ([Am, Bm, Cm, Dm, Pm], 34, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), P = Q(Pm);
+    const len = (X, s, o) => txt(add(mid(P, X), o), s, ACC, 13);
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), ...[A, B, C, D].map(X => seg(P, X, ACC, 1.5)),
+      len(A, "1", [-10, 6]), len(B, "2", [-10, -2]), len(C, "3", [-4, -10]), len(D, "4", [6, 16]),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(P, ORG, 3.6),
+      txt(add(A, [-4, -10]), "A", DIM, 13, "end"), txt(add(B, [-6, -8]), "B", DIM, 13, "end"), txt(add(C, [6, -8]), "C", DIM, 13, "start"),
+      txt(add(D, [8, 4]), "D", DIM, 13, "start"), txt(add(P, [-8, 12]), "P", ORG, 13, "end"),
+      cap(430, 250, "Isosceles trapezoid with AD ∥ BC and AB = CD; the orange point P is 1, 2, 3, 4 from A, B, C, D." + MM(ok))
+    ]);
+  })();
 })();

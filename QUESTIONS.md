@@ -33,7 +33,12 @@ Fixed already: `cone-formulas` no longer restates the cone volume, whose home is
 | C3 | Tier AMC, level without AMC | Radical Axis, Descartes' Circle Theorem, Isosceles Tetrahedron, Product-to-Sum, Partitions, Roots of Unity Filter carry tier AMC but list only AIME (and Olympiad) as their level, which is what places them in the AIME study routes; each has AMC 10 or AMC 12 problems tagged | either keep them as they are (AMC-tier facts studied on the AIME route), or add AMC 10/12 to their level, which moves them into the AMC routes |
 | C2 | High importance with no tagged problem yet | Stretching One Axis Scales Area, Determinant of a Small Matrix, Area Ratio from Base Ratios, and the proof methods Direct Proof, Proof by Contradiction, Proving the Contrapositive, Proof by Cases | keep high for now and revisit after step D tags the untagged problems, when real counts exist |
 
-A new candidate card from the practice work goes into the first table below as P14.
+### Candidate new cards from the write-ups (step D, 2026-10-18)
+Each is a fact a written-up problem needed and no card holds. The problem cites the nearest card meanwhile. Answer per row: yes, no, or a different rating. A new candidate goes at the top of this table as the next P-number.
+
+| # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
+|---|---|---|---|---|
+| P14 | Parking Functions: a sequence $a_1,\dots,a_n$ with values in $\{0,\dots,n-1\}$ whose sorted form has $a_{(i)}\le i-1$; there are $(n+1)^{n-1}$ of them, by Pollak's circle of $n+1$ spots (exactly one rotation of each preference string leaves the extra spot empty) | formula, counting / special counting sequences | AIME Early, lower | 2022 AMC 10A #24 / 12A #24 (it cites Constructive Counting meanwhile) |
 
 ## Answered (kept as the record, newest first)
 
