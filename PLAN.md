@@ -7,8 +7,8 @@
 ## Current state (updated 2026-10-18, eighth cloud chat)
 
 - **Counts:** 714 cards (527 formulas, 148 methods, 39 patterns). 4,675 problems, 4,616 with statements, about 1,370 with strategies. 228 problems have figures drawn for the app.
-- **Done most recently:** 2.7a, the card-by-card practice pass, is finished (every card with problems checked; `node tools/practice-file.js <file>` reports 0 VAGUE for all five card files). 2.7c has started: all 249 cards of `geometry.js` are done, and `algebra.js` cards 0 to 89 are read (fixes made through card 29).
-- **In progress: step A below (2.7c).** **Next action:** `node tools/card-text.js algebra.js 90 116`, then `number-theory.js`, `counting.js`, `patterns.js`, 25 to 30 cards at a time.
+- **Done most recently:** 2.7a, the card-by-card practice pass, is finished (every card with problems checked; `node tools/practice-file.js <file>` reports 0 VAGUE for all five card files). 2.7c is well along: `geometry.js`, `algebra.js`, `number-theory.js` and `counting.js` are done.
+- **In progress: step A below (2.7c).** **Next action:** `node tools/card-text.js patterns.js 0 30`, then on through its 188 cards, 25 to 30 at a time.
 - **Missing cards found while working** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P13 are written; a new one goes at the top of the table as P14), for approval before they are written; the problem cites the nearest card meanwhile.
 
 ## The road ahead, in order

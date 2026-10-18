@@ -866,7 +866,7 @@ Counting the functions that miss no output is a job for [[pie|inclusion–exclus
 
 Start with all $k^n$ functions. For each output, the functions that avoid it number $(k-1)^n$, so subtract $\binom k1 (k-1)^n$. A function missing two outputs has been subtracted twice, so add back $\binom k2 (k-2)^n$, and so on, alternating until every overlap is corrected. That is $\sum_{j=0}^{k}(-1)^j\binom kj(k-j)^n$.
 
-For the second form, a surjection splits the $n$ inputs into $k$ nonempty groups, one for each output. The number of ways to split is the [[stirling-bell|Stirling number of the second kind]] $S(n, k)$, and matching the groups to the $k$ labeled outputs can be done in $k!$ ways.
+For the second form, a surjection splits the $n$ inputs into $k$ nonempty groups, one for each output. The number of ways to split is the Stirling number of the second kind $S(n, k)$, and matching the groups to the $k$ labeled outputs can be done in $k!$ ways.
 
 ## Useful observations
 - No product formula exists, because requiring every output to be used destroys the independence between inputs. That is why this needs inclusion–exclusion while counting plain functions does not.
