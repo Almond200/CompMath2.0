@@ -3775,4 +3775,67 @@
       cap(430, 240, "Rhombus ABCD with angle ADC = 46°, E the midpoint of CD, and AF perpendicular to BE; the asked angle is BFC." + MM(ok))
     ]);
   })();
+  PROB["2021-fall-amc-10a-15"] = (() => {
+    const r = 5 * Math.SQRT2, AO = Math.sqrt(104), c = r / AO, sn = Math.sqrt(1 - c * c);
+    const Om = [0, 0], Am = [0, AO], Bm = [-r * sn, r * c], Cm = [r * sn, r * c];
+    const ok = Math.abs(dist(Am, Bm) - 3 * Math.sqrt(6)) < 1e-9 && Math.abs((Bm[0] - Om[0]) * (Am[0] - Bm[0]) + (Bm[1] - Om[1]) * (Am[1] - Bm[1])) < 1e-9;
+    const Q = fitQ([Am, [-r, -r], [r, r]], 24, 430, 300);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om);
+    return wrap(430, 300, [
+      circ(O, r * Q.k, ACC, 1.8), poly([A, B, C], DIM, 2), seg(O, B, FNT, 1.4, "4 3"), seg(O, C, FNT, 1.4, "4 3"),
+      rightAngle(B, A, O, 8, DIM), rightAngle(C, A, O, 8, DIM),
+      ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, ACC, 3.2),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-10, -2]), "B", DIM, 13, "end"), txt(add(C, [10, -2]), "C", DIM, 13, "start"),
+      txt(add(O, [0, 18]), "O", ACC, 13), txt(add(mid(A, B), [-10, -2]), "3√6", DIM, 12, "end"), txt(add(mid(O, C), [14, 10]), "5√2", ACC, 12, "start"),
+      cap(430, 300, "AB = AC = 3√6, and the blue circle of radius 5√2 touches line AB at B and line AC at C." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-fall-amc-10a-17"] = (() => {
+    const sd = 14, P2 = [0, 1, 2, 3, 4, 5].map(i => [sd * Math.cos(Math.PI * (240 + 60 * i) / 180), sd * Math.sin(Math.PI * (240 + 60 * i) / 180)]);
+    // heights are 13 + L(P) for the linear L with L(A) = -1 and L(C) = -3
+    const [a, b] = P2[0], [c, d] = P2[2], det = a * d - b * c, l1 = (-1 * d + 3 * b) / det, l2 = (-3 * a + 1 * c) / det;
+    const H = P2.map(q => 13 + l1 * q[0] + l2 * q[1]);
+    const ok = Math.abs(H[0] - 12) < 1e-9 && Math.abs(H[1] - 9) < 1e-9 && Math.abs(H[2] - 10) < 1e-9 && Math.abs(H[4] - 17) < 1e-9;
+    const { Pj } = projector([190, 236], 6.5, [1, 0], [0.5, -0.5]);
+    const G = P2.map(q => Pj([q[0], q[1], 0])), T = P2.map((q, i) => Pj([q[0], q[1], H[i]])), O = Pj([0, 0, 0]);
+    const out = (g, m) => { const v = sub(g, O), n = Math.hypot(...v); return add(g, [m * v[0] / n, m * v[1] / n + 4]); };
+    const N = ["A", "B", "C", "D", "E", "F"];
+    const hl = (i, s, dx, f, c = DIM) => txt(add(add(G[i], mul(sub(T[i], G[i]), f)), [dx, 4]), s, c, 12.5, dx < 0 ? "end" : "start");
+    return wrap(430, 300, [
+      poly(G, FNT, 1.6), poly(T, ACC, 1.8, ACCS), ...G.map((g, i) => seg(g, T[i], DIM, 2)),
+      ...G.map(g => dot(g, DIM, 3)), ...G.map((g, i) => txt(out(g, 14), N[i], DIM, 13)),
+      hl(0, "12", -7, 0.8), hl(1, "9", 6, 0.5), hl(2, "10", 6, 0.3), hl(4, "?", -7, 0.6, ORG),
+      cap(430, 300, "Vertical pillars at the vertices of the regular hexagon ABCDEF on the ground, holding up the tilted flat panel (blue); the pillar at E is the one asked for." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-fall-amc-10a-19"] = (() => {
+    const s = 5 + Math.PI / 4, k = 17, y0 = 40, sq = (x0, y) => [[x0, y], [x0 + s * k, y], [x0 + s * k, y + s * k], [x0, y + s * k]];
+    const L = 30 + 2 * k, R = 240 + 2 * k, Ly = y0 + 2 * k;
+    const ok = Math.abs((8 * s + 4 * Math.PI) - 2 * (8 * s - 20 + Math.PI)) < 1e-9;
+    const arc = (c, a0) => Array.from({ length: 13 }, (_, i) => add(c, [k * Math.cos(a0 + i * Math.PI / 24), k * Math.sin(a0 + i * Math.PI / 24)]));
+    const S = s * k, outer = [...arc([R + S, Ly + S], 0), ...arc([R, Ly + S], Math.PI / 2), ...arc([R, Ly], Math.PI), ...arc([R + S, Ly], 3 * Math.PI / 2)];
+    return wrap(430, 240, [
+      poly(sq(L, Ly), DIM, 2), poly([[L + k, Ly + k], [L + S - k, Ly + k], [L + S - k, Ly + S - k], [L + k, Ly + S - k]], FNT, 1.3, "none", "4 3"), circ([L + k, Ly + S / 2], k, ACC, 1.8, ACCS),
+      poly(sq(R, Ly), DIM, 2), poly(outer, FNT, 1.3, "none", "4 3"), circ([R + S + k, Ly + S / 2], k, ACC, 1.8, ACCS),
+      txt([L + S / 2, Ly + S + 36], "inside", DIM, 12), txt([R + S / 2, Ly + S + 36], "outside", DIM, 12), txt([L + S / 2, Ly - 8], "s", DIM, 12),
+      cap(430, 240, "A disk of radius 1 rolls around the inside of the square (left) and around the outside (right); the dashed paths are its center's." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-fall-amc-10a-22"] = (() => {
+    const r = (90 - 40 * Math.sqrt(3)) / 11, d = 2 * r / Math.sqrt(3);
+    const ok = Math.abs((60 - 12 * d - 5 * r) / 13 - r) < 1e-9 && Math.abs(d * Math.sqrt(3) - 2 * r) < 1e-9;
+    const k = 15, B = [30, 220], X = q => [B[0] + 75 + k * q[0], B[1] - k * q[1]];
+    const Vt = X([0, 12]), Bl = X([-5, 0]), Br = X([5, 0]), Ce = X([d, r]);
+    const T = [310, 140], cen = [90, 210, 330].map(a => add(T, [k * d * Math.cos(a * Math.PI / 180), -k * d * Math.sin(a * Math.PI / 180)]));
+    return wrap(430, 266, [
+      poly([Vt, Bl, Br], DIM, 2), seg(Vt, X([0, 0]), FNT, 1.2, "4 3"), circ(Ce, r * k, ACC, 1.8, ACCS), dot(Ce, ACC, 2.6),
+      txt(add(mid(X([0, 0]), Br), [0, 16]), "5", DIM, 12), txt(add(mid(Vt, X([0, 0])), [-6, 0]), "12", DIM, 12, "end"),
+      circ(T, 5 * k, DIM, 2), ...cen.map(c => circ(c, r * k, ACC, 1.8, ACCS)), dot(T, FNT, 2.4),
+      txt([B[0] + 75, 256], "slice through the axis", DIM, 11.5), txt([T[0], 256], "seen from above", DIM, 11.5),
+      cap(430, 266, "The cone of radius 5 and height 12 sliced through its axis and one sphere's center (left), and the three equal spheres seen from above (right)." + MM(ok))
+    ]);
+  })();
 })();
