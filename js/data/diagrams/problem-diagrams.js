@@ -3957,4 +3957,47 @@
       cap(430, 300, "Equilateral triangle ABC with AB and AC tangent to the circle at B and C." + MM(ok))
     ]);
   })();
+  PROB["2017-amc-10b-15"] = (() => {
+    const Am = [0, 0], Bm = [3, 0], Cm = [3, 4], Dm = [0, 4], Em = foot(Bm, Am, Cm);
+    const ok = Math.abs((Em[0] - Bm[0]) * 3 + (Em[1] - Bm[1]) * 4) < 1e-9 && Math.abs(Em[0] * 4 - Em[1] * 3) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 260, [
+      poly([A, D, E], "none", 0, ACCS), poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, E, ACC, 1.8), seg(D, E, ACC, 1.4, "4 3"),
+      rightAngle(E, B, C, 8, ACC), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [8, 14]), "B", DIM, 13, "start"), txt(add(C, [8, -6]), "C", DIM, 13, "start"),
+      txt(add(D, [-8, -6]), "D", DIM, 13, "end"), txt(add(E, [-10, -6]), "E", ACC, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "3", DIM, 12), txt(add(mid(B, C), [12, 4]), "4", DIM, 12, "start"),
+      cap(430, 260, "Rectangle ABCD with AB = 3 and BC = 4; E is the foot of the perpendicular from B to AC, and triangle ADE is shaded." + MM(ok))
+    ]);
+  })();
+
+  PROB["2017-amc-10b-21"] = (() => {
+    const Am = [0, 0], Bm = [6, 0], Cm = [0, 8], Dm = mid(Bm, Cm);
+    const ok = Math.abs(dist(Bm, Cm) - 10) < 1e-9 && Math.abs(dist(Am, Dm) - 5) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    return wrap(430, 260, [
+      poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.8), rightAngle(A, B, C, 9, DIM), ticksOn(B, D, 1, DIM), ticksOn(D, C, 1, DIM),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [8, 14]), "B", DIM, 13, "start"), txt(add(C, [-8, -4]), "C", DIM, 13, "end"),
+      txt(add(D, [10, -4]), "D", ACC, 13, "start"), txt(add(mid(A, B), [0, 18]), "6", DIM, 12), txt(add(mid(A, C), [-10, 4]), "8", DIM, 12, "end"),
+      cap(430, 260, "Triangle ABC with AB = 6, AC = 8, BC = 10, and D the midpoint of BC; AD splits it into triangles ADB and ADC." + MM(ok))
+    ]);
+  })();
+
+  PROB["2017-amc-10b-22"] = PROB["2017-amc-12b-18"] = (() => {
+    const Am = [-2, 0], Bm = [2, 0], Dm = [5, 0], Em = [5, 5], Om = [0, 0], t = 28 / 74, Cm = [-2 + 7 * t, 5 * t];
+    const ok = Math.abs(dist(Om, Cm) - 2) < 1e-9 && Math.abs((Cm[0] - Am[0]) * (Cm[0] - Bm[0]) + Cm[1] * Cm[1]) < 1e-9;
+    const Q = fitQ([[-2, -2], [5, 5]], 26, 430, 280);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), O = Q(Om);
+    return wrap(430, 280, [
+      circ(O, 2 * Q.k, DIM, 2), seg(A, D, DIM, 2), seg(D, E, DIM, 2), seg(A, E, FNT, 1.5), poly([A, B, C], ACC, 1.8, ACCS),
+      rightAngle(D, A, E, 9, DIM), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [0, 18]), "B", DIM, 13), txt(add(C, [-6, -10]), "C", ACC, 13, "end"),
+      txt(add(D, [8, 14]), "D", DIM, 13, "start"), txt(add(E, [8, 0]), "E", DIM, 13, "start"),
+      txt(add(mid(B, D), [0, 18]), "3", DIM, 12), txt(add(mid(D, E), [10, 4]), "5", DIM, 12, "start"),
+      cap(430, 280, "Diameter AB of a circle of radius 2 extended to D with BD = 3, ED = 5 perpendicular to AD, and C where AE meets the circle." + MM(ok))
+    ]);
+  })();
 })();
