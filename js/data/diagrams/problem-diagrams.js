@@ -4159,4 +4159,18 @@
       cap(430, 260, "An equilateral triangle in its circumscribed circle of radius R; each side is R√3." + MM(ok))
     ]);
   })();
+
+  PROB["2002-amc-10a-19"] = (() => {
+    const H = [0, 1, 2, 3, 4, 5].map(k => [Math.cos(rad(60 * k)), Math.sin(rad(60 * k))]);
+    const sector = (c, r, a0, a1) => { const pts = [c]; for (let i = 0; i <= 48; i++) pts.push(onC(c, r, a0 + (a1 - a0) * i / 48)); return pts; };
+    const S0 = sector(H[0], 2, -120, 120), S1 = sector(H[1], 1, 120, 180), S5 = sector(H[5], 1, 180, 240);
+    const ok = Math.abs(dist(H[0], H[1]) - 1) < 1e-9 && Math.abs(dist(onC(H[0], 2, 120), H[1]) - 1) < 1e-9 && Math.abs(dist(onC(H[0], 2, -120), H[5]) - 1) < 1e-9;
+    const Q = fitQ([[-1, -2], [3, 2]], 26, 430, 270);
+    return wrap(430, 270, [
+      poly(S0.map(Q), GLD, 1.6, GLDS), poly(S1.map(Q), GLD, 1.6, GLDS), poly(S5.map(Q), GLD, 1.6, GLDS),
+      poly(H.map(Q), DIM, 2, "var(--bg)"), seg(Q(H[0]), Q(onC(H[0], 2, 30)), ACC, 2), dot(Q(H[0]), ACC, 4),
+      txt(add(Q(onC(H[0], 1, 30)), [-4, -9]), "2", ACC, 12.5), txt(add(Q(mid(H[0], H[1])), [10, 2]), "1", DIM, 12),
+      cap(430, 270, "The hexagonal doghouse (side 1) with the region a 2-yard rope from one vertex reaches: a 240° sector and two 60° sectors." + MM(ok))
+    ]);
+  })();
 })();
