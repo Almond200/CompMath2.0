@@ -3885,4 +3885,18 @@
       cap(430, 280, "Three equally spaced parallel lines cut chords of lengths 38, 38 and 34 from the circle." + MM(ok))
     ]);
   })();
+  PROB["2020-amc-10a-20"] = PROB["2020-amc-12a-18"] = (() => {
+    const Am = [0, 0], Cm = [20, 0], Dm = [20, 30], Em = [5, 0], Bm = [2, -6];
+    const ok = Math.abs((Bm[0] - Am[0]) * (Bm[0] - Cm[0]) + (Bm[1] - Am[1]) * (Bm[1] - Cm[1])) < 1e-9 && Math.abs(lineInt(Bm, Dm, Am, Cm)[0] - 5) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 30, 430, 300);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, D, FNT, 1.5), rightAngle(B, A, C, 8, DIM), rightAngle(C, A, D, 9, DIM),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(E, ACC, 3.2),
+      txt(add(A, [-8, 4]), "A", DIM, 13, "end"), txt(add(B, [-4, 16]), "B", DIM, 13), txt(add(C, [10, 10]), "C", DIM, 13, "start"),
+      txt(add(D, [8, 0]), "D", DIM, 13, "start"), txt(add(E, [2, -9]), "E", ACC, 13),
+      txt(add(mid(A, E), [0, -6]), "5", ACC, 12), txt(add(mid(C, D), [10, 4]), "30", DIM, 12, "start"),
+      cap(430, 300, "Quadrilateral ABCD with right angles at B and C, AC = 20 and CD = 30; the diagonals cross at E with AE = 5." + MM(ok))
+    ]);
+  })();
 })();

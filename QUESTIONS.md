@@ -38,6 +38,7 @@ Each is a fact a written-up problem needed and no card holds. The problem cites 
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|
+| P15 | Sign Chart for a Polynomial Inequality: a product of linear factors changes sign only at its roots, so mark the roots on a line and read each interval's sign from the number of negative factors (a double root does not flip the sign) | method, algebra / inequalities | AMC, medium | 2020 AMC 10A #17 (it cites Casework meanwhile) |
 | P14 | Parking Functions: a sequence $a_1,\dots,a_n$ with values in $\{0,\dots,n-1\}$ whose sorted form has $a_{(i)}\le i-1$; there are $(n+1)^{n-1}$ of them, by Pollak's circle of $n+1$ spots (exactly one rotation of each preference string leaves the extra spot empty) | formula, counting / special counting sequences | AIME Early, lower | 2022 AMC 10A #24 / 12A #24 (it cites Constructive Counting meanwhile) |
 
 ## Answered (kept as the record, newest first)
