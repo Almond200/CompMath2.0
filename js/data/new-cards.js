@@ -40,5 +40,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Practice pass: five geometry cards the problems needed", date: "2026-10-17",
     ids: ["cevian-ratio-sum", "square-crossing-segments", "perimeter-cleavers", "conic-perpendicular-radii", "gram-determinant-volume"] },
   { label: "Practice pass: proportions and linear systems", date: "2026-10-17",
-    ids: ["setting-up-proportions", "linear-elimination"] }
+    ids: ["setting-up-proportions", "linear-elimination"] },
+  { label: "Write-ups: parking functions and sign charts", date: "2026-10-18",
+    ids: ["parking-functions", "sign-chart"] }
 ];

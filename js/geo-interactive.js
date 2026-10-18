@@ -33,6 +33,12 @@
     return [add(p, mul(d, (-b - s) / (2 * a))), add(p, mul(d, (-b + s) / (2 * a)))];
   }
   function projectToCircle(p, cen, r) { return add(cen, mul(norm(sub(p, cen)), r)); }
+  // How far a point can travel from A along the unit direction d before it reaches the
+  // drag margin of a w by h frame, so ray handles run to the edge of the box.
+  function rayMax(A, d, w, h, pad) { if (pad == null) pad = 10; var t = 1e9;
+    if (d[0] > 1e-9) t = Math.min(t, (w - pad - A[0]) / d[0]); if (d[0] < -1e-9) t = Math.min(t, (pad - A[0]) / d[0]);
+    if (d[1] > 1e-9) t = Math.min(t, (h - pad - A[1]) / d[1]); if (d[1] < -1e-9) t = Math.min(t, (pad - A[1]) / d[1]);
+    return t; }
 
   // ---- svg string builders ----
   var r1 = function (x) { return Math.round(x * 10) / 10; };
@@ -1615,7 +1621,7 @@
       init: { P: add(O, mul(ray, baseLen * 1.7)) },
       drag: { P: { constrain: function (xy) {
         var t = dot(sub(xy, O), ray);
-        return add(O, mul(ray, Math.max(baseLen * 0.45, Math.min(baseLen * 2.35, t))));
+        return add(O, mul(ray, Math.max(baseLen * 0.45, Math.min(baseLen * 2.62, t))));
       } } },
       render: function (p) {
         var k = dist(p.P, O) / baseLen;
@@ -1706,7 +1712,7 @@
       hint: "Drag a vertex to resize.",
       w: 440, h: 400,
       init: { A: [220, 65] },
-      drag: { A: { constrain: function (xy) { var d = Math.max(55, Math.min(165, dist(xy, Cn))); return add(Cn, mul(norm(sub(xy, Cn)), d)); } } },
+      drag: { A: { constrain: function (xy) { var d = Math.max(55, Math.min(185, dist(xy, Cn))); return add(Cn, mul(norm(sub(xy, Cn)), d)); } } },
       render: function (p) {
         var R = dist(p.A, Cn), th = Math.atan2(p.A[1] - Cn[1], p.A[0] - Cn[0]);
         function vert(k) { var a = th + 2 * Math.PI * k / 3; return [Cn[0] + R * Math.cos(a), Cn[1] + R * Math.sin(a)]; }
@@ -1731,9 +1737,9 @@
       w: 450, h: 350,
       init: { P: [150, 120], Q: [300, 120], B: [370, 290] },
       drag: {
-        P: { constrain: function (xy, p) { return [Math.min(xy[0], p.Q[0] - 30), Math.max(60, Math.min(250, xy[1]))]; } },
+        P: { constrain: function (xy, p) { return [Math.min(xy[0], p.Q[0] - 30), Math.max(26, Math.min(250, xy[1]))]; } },
         Q: { constrain: function (xy, p) { return [Math.max(xy[0], p.P[0] + 30), p.P[1]]; } },
-        B: { constrain: function (xy) { return [Math.max(180, Math.min(430, xy[0])), 290]; } }
+        B: { constrain: function (xy) { return [Math.max(180, xy[0]), 290]; } }
       },
       render: function (p) {
         p.Q = [Math.max(p.Q[0], p.P[0] + 30), p.P[1]];
@@ -1754,22 +1760,21 @@
 
   // ---------- shared-angle area ratio ----------
   W["shared-angle-area-ratio"] = { mount: function (host) {
-    var A = [90, 300];
+    var A = [90, 300], RAY = norm(sub([250, 90], A)), TMAX = rayMax(A, RAY, 450, 360, 24);
     mountGeo(host, {
       title: "Shared angle",
       hint: "Drag the four points along the two rays.",
       w: 450, h: 360,
       init: { B: [370, 300], C: [250, 90], D: [250, 300], E: [190, 175] },
       drag: {
-        B: { constrain: function (xy) { return [Math.max(A[0] + 90, Math.min(430, xy[0])), 300]; } },
-        D: { constrain: function (xy) { return [Math.max(A[0] + 40, Math.min(430, xy[0])), 300]; } },
-        C: { constrain: function (xy, p) { var d = norm(sub([250, 90], A)); var t = Math.max(120, Math.min(250, dot(sub(xy, A), d))); return add(A, mul(d, t)); } },
-        E: { constrain: function (xy, p) { var d = norm(sub([250, 90], A)); var t = Math.max(50, Math.min(250, dot(sub(xy, A), d))); return add(A, mul(d, t)); } }
+        B: { constrain: function (xy) { return [Math.max(A[0] + 90, xy[0]), 300]; } },
+        D: { constrain: function (xy) { return [Math.max(A[0] + 40, xy[0]), 300]; } },
+        C: { constrain: function (xy, p) { var t = Math.max(120, Math.min(TMAX, dot(sub(xy, A), RAY))); return add(A, mul(RAY, t)); } },
+        E: { constrain: function (xy, p) { var t = Math.max(50, Math.min(TMAX, dot(sub(xy, A), RAY))); return add(A, mul(RAY, t)); } }
       },
       render: function (p) {
-        var ray = norm(sub([250, 90], A));
-        p.C = add(A, mul(ray, Math.max(120, Math.min(250, dot(sub(p.C, A), ray)))));
-        p.E = add(A, mul(ray, Math.max(50, Math.min(250, dot(sub(p.E, A), ray)))));
+        p.C = add(A, mul(RAY, Math.max(120, Math.min(TMAX, dot(sub(p.C, A), RAY)))));
+        p.E = add(A, mul(RAY, Math.max(50, Math.min(TMAX, dot(sub(p.E, A), RAY)))));
         p.B = [p.B[0], 300]; p.D = [p.D[0], 300];
         var big = Math.abs(sarea([A, p.B, p.C])), small = Math.abs(sarea([A, p.D, p.E]));
         var ab = dist(A, p.B), ac = dist(A, p.C), ad = dist(A, p.D), ae = dist(A, p.E);

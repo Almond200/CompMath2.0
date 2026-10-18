@@ -373,7 +373,7 @@ window.MATH_SECTIONS.push({
         {
           id: "van-aubel",
           name: "Van Aubel's Theorem",
-          latex: String.raw`\text{squares on the sides} \implies \text{opposite-center segments equal and } \perp`,
+          latex: String.raw`O_1O_3 = O_2O_4,\ \ O_1O_3 \perp O_2O_4 \qquad O_1, \ldots, O_4 = \text{centers of the squares on the sides, in order}`,
           description: String.raw`Erect a square outward on each side of any quadrilateral (even non-convex): the two segments connecting centers of opposite squares have equal length and are perpendicular. Proved neatly with complex numbers — each center is a $90^\circ$-rotation average of its side's endpoints. The triangle result with the same name, about the ratio along a cevian, is [[van-aubel-cevians|Van Aubel's Theorem for Cevians]].`,
           keywords: ["van aubel", "squares on sides", "equal perpendicular segments", "quadrilateral squares"],
           importance: "lower",
@@ -1273,7 +1273,7 @@ window.MATH_SECTIONS.push({
         {
           id: "gergonne-nagel-points",
           name: "Gergonne & Nagel Points",
-          latex: String.raw`\text{cevians to the incircle (or excircle) touch points concur}`,
+          latex: String.raw`\frac{s-b}{s-c}\cdot\frac{s-c}{s-a}\cdot\frac{s-a}{s-b} = 1 \ \text{(Gergonne)} \qquad \frac{s-c}{s-b}\cdot\frac{s-a}{s-c}\cdot\frac{s-b}{s-a} = 1 \ \text{(Nagel)}`,
           description: String.raw`Two more triangle centers from concurrent cevians. The Gergonne point is where the cevians to the incircle's touch points meet, by Ceva's Theorem. The Nagel point $N$ uses the points where the excircles touch the sides, the $A$-excircle touching $BC$ at $X'$ with $BX' = s-c$ and $CX' = s-b$ ($s$ the semiperimeter), and the cevians again concur; the Nagel point, centroid $G$, and incenter $I$ are collinear on the Nagel line with $NG = 2\,GI$.`,
           keywords: ["gergonne point", "nagel point", "incircle touch cevians", "excircle touch points", "nagel line", "triangle center concurrency"],
           importance: "low",
@@ -1685,7 +1685,7 @@ window.MATH_SECTIONS.push({
           description: String.raw`A quadrilateral is tangential (has an inscribed circle) if and only if the sums of opposite sides are equal.`,
           keywords: ["tangential", "inscribed circle", "opposite sides equal", "pitot theorem", "tangential quadrilateral", "sums of opposite sides equal"],
           importance: "medium",
-          tier: "AMC",
+          tier: "AIME Early",
           level: ["AIME"]
         },
         {
@@ -1731,7 +1731,7 @@ window.MATH_SECTIONS.push({
         {
           id: "newtons-line",
           name: "Newton–Gauss Line",
-          latex: String.raw`\text{complete quadrilateral} \implies \text{its 3 diagonal midpoints are collinear}`,
+          latex: String.raw`M_{AC},\ M_{BD},\ M_{EF} \text{ collinear} \qquad E, F = \text{the two extra vertices},\ M_{XY} = \text{midpoint of } XY`,
           description: String.raw`In a complete quadrilateral, the midpoints of its three diagonals are collinear — the Newton–Gauss line. The classical special case (Newton's line): in a quadrilateral with an inscribed circle, the incenter also lies on the line through the midpoints of the two diagonals. A tidy collinearity that appears in quadrilateral configuration problems.`,
           keywords: ["newton line", "newton gauss line", "diagonal midpoints collinear", "complete quadrilateral", "tangential incenter midpoints"],
           importance: "lower",
@@ -2106,7 +2106,7 @@ window.MATH_SECTIONS.push({
         {
           id: "convex-position",
           name: "Points in Convex Position",
-          latex: String.raw`\text{any 5 points in general position contain 4 in convex position}`,
+          latex: String.raw`\mathrm{ES}(4) = 5,\ \ \mathrm{ES}(5) = 9,\ \ \mathrm{ES}(n) \le \binom{2n-4}{n-2} + 1`,
           description: String.raw`The convex hull is the smallest convex polygon enclosing a point set; points are "in convex position" if they're all hull vertices. The Erdős–Szekeres (Happy Ending) theorem: for each $n$ there's a least number $\mathrm{ES}(n)$ of points in general position guaranteeing a convex $n$-gon — $\mathrm{ES}(4) = 5$, $\mathrm{ES}(5) = 9$, and $\mathrm{ES}(n) = 2^{n-2}+1$ is conjectured. The [[pigeonhole|pigeonhole]] proof classifies points by the hull structure.`,
           keywords: ["convex position", "convex hull", "happy ending problem", "erdos szekeres geometric", "convex polygon points", "general position"],
           importance: "lower",
@@ -2136,7 +2136,7 @@ window.MATH_SECTIONS.push({
         {
           id: "minkowski-lattice",
           name: "Minkowski's Lattice Point Theorem",
-          latex: String.raw`\text{symmetric convex, area} > 4 \implies \text{a nonzero lattice point inside}`,
+          latex: String.raw`K = -K \text{ convex},\ [K] > 4 \implies K \cap \mathbb{Z}^2 \ne \{0\}`,
           description: String.raw`A convex region symmetric about the origin with area exceeding $4$ must contain a lattice point other than the origin (volume $> 2^d$ in $d$ dimensions). The proof tiles the plane by the integer lattice and applies pigeonhole to overlaps. The geometry-of-numbers bridge to number theory — it proves the two-squares theorem and bounds for Diophantine approximation.`,
           keywords: ["minkowski lattice theorem", "geometry of numbers", "centrally symmetric convex", "lattice point", "area greater than 4", "two squares proof"],
           importance: "lower",
@@ -2222,7 +2222,7 @@ window.MATH_SECTIONS.push({
         {
           id: "cavalieris-principle",
           name: "Cavalieri's Principle",
-          latex: String.raw`\text{equal cross-sections at every height} \Rightarrow \text{equal volumes}`,
+          latex: String.raw`A_1(h) = A_2(h) \text{ for every } h \implies V_1 = V_2`,
           description: String.raw`Two solids that every horizontal plane slices into cross-sections of equal area have the same volume — whatever their shapes. This is why an oblique prism or cylinder keeps $V = Bh$ (shear it upright, no slice changes), and it delivers the sphere's volume by comparing it to a cylinder with a cone removed.`,
           keywords: ["cavalieri", "cross section", "equal slices equal volume", "oblique prism", "shear"],
           importance: "medium",
@@ -2590,7 +2590,7 @@ window.MATH_SECTIONS.push({
         {
           id: "complete-quadrilateral-miquel",
           name: "Miquel Point of a Complete Quadrilateral",
-          latex: String.raw`\text{the 4 circumcircles of a complete quadrilateral meet at one point } M`,
+          latex: String.raw`\odot(\triangle_1) \cap \odot(\triangle_2) \cap \odot(\triangle_3) \cap \odot(\triangle_4) = \{M\} \qquad \triangle_i = \text{the triangle of the three lines other than } \ell_i`,
           description: String.raw`Four lines in general position make six intersection points and four triangles, one per choice of three lines. The circumcircles of those four triangles all pass through a single point $M$, the Miquel point.`,
           keywords: ["complete quadrilateral", "miquel point", "four circumcircles", "spiral similarity center", "four lines", "newton gauss line", "concyclic circumcenters", "miquel"],
           importance: "lower",

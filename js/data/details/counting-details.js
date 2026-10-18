@@ -3369,3 +3369,36 @@ The chance that a product of two random numbers, or an area ratio set by two ran
 Rare; it appears late on the AMC 12, when two random numbers or two random points on a triangle's sides set a product, and the chance that it is below a fraction is asked for. A logarithm among the answer choices, or answers given as intervals, is the sign.
 `
 });
+
+// Parking Functions (P14, 2026-10-18).
+Object.assign(window.MATH_DETAILS, {
+"parking-functions": String.raw`
+## Key forms
+- $a_{(i)} \le i - 1$ for $i = 1, \ldots, n$ — the sorted form of a parking function, with entries from $0$ to $n - 1$
+- $\#\{t : a_t \lt j\} \ge j$ for $j = 1, \ldots, n$ — the same condition read as counts: at least $j$ terms are less than $j$
+- $\frac{(n+1)^n}{n+1} = (n+1)^{n-1}$ — Pollak's count: all preference strings on a circle of $n + 1$ spots, one in each class of $n + 1$ rotations
+
+## Conditions
+The sequence is ordered, so the cars are told apart, and values may repeat. With entries from $1$ to $n$ instead, the condition reads $a_{(i)} \le i$; subtracting $1$ from every entry turns one form into the other.
+
+## Why it works
+The idea is to put the cars on a circle, where every preference list works, and then pick out the lists that would also work on a street.
+
+Take a circle of $n + 1$ spots numbered $0$ to $n$, and let each of the $n$ cars prefer any spot, which gives $(n+1)^n$ strings. Each car drives to its spot and takes the first free one going round. On a circle a car always finds a free spot, so all $n$ cars park and exactly one spot stays empty.
+
+Adding the same number $c$ to every preference, mod $n + 1$, rotates the whole parking by $c$, so the empty spot moves by $c$. The $n + 1$ choices of $c$ give $n + 1$ different strings, and exactly one of them leaves spot $n$ empty. So $\frac{(n+1)^n}{n+1} = (n+1)^{n-1}$ strings leave spot $n$ empty.
+
+Those are exactly the parking functions. If spot $n$ is empty, no car ever reached it, so no car went past spot $n - 1$: every preference is at most $n - 1$, and the spots $0, \ldots, j - 1$ were filled by cars that preferred one of them, so at least $j$ preferences are less than $j$. Conversely, suppose some spot $e \lt n$ is empty. The cars preferring a spot $\le e$ never pass $e$, since it is free, so they all park in the $e$ spots below it; then at most $e$ of them exist, and fewer than $e + 1$ preferences are less than $e + 1$.
+
+## Useful observations
+- $(n+1)^{n-1}$ is also [[cayleys-formula|Cayley's count]] of labeled trees on $n + 1$ vertices, and there are bijections between the two families.
+- The parking functions that are already in increasing order are counted by the [[catalan-numbers|Catalan numbers]]: $1, 2, 5, 14, 42$ for $n = 1, \ldots, 5$. The condition $a_{(i)} \le i - 1$ is a lattice path staying on one side of the diagonal.
+- The counts for $n = 1, \ldots, 5$ are $1, 3, 16, 125, 1296$, and $n = 2$ can be checked by listing: $00$, $01$, $10$.
+
+## Applications
+Counting strings with at least $j$ digits less than $j$ for each $j$, preference lists in which everyone gets a place, and sequences whose sorted form stays below a staircase.
+
+## Contest profile
+Rare; it appears as a late AMC 10 or 12 problem that disguises the definition as a condition on the digits of a string. Recognizing the definition is the step: after that the count is quoted, or Pollak's circle is rebuilt in a few lines.
+`
+});
