@@ -3873,4 +3873,16 @@
       cap(430, 300, "The equiangular hexagon ABCDEF; lines AB, CD, EF make the blue triangle (area 192√3) and lines BC, DE, FA the gold one (area 324√3)." + MM(ok))
     ]);
   })();
+  PROB["2021-spring-amc-10b-14"] = PROB["2021-spring-amc-12b-8"] = (() => {
+    const dd = 6, r = Math.sqrt(19 * 19 + dd * dd / 4), ys = [dd / 2, -dd / 2, -3 * dd / 2];
+    const half = ys.map(y => Math.sqrt(r * r - y * y));
+    const ok = Math.abs(2 * half[0] - 38) < 1e-9 && Math.abs(2 * half[1] - 38) < 1e-9 && Math.abs(2 * half[2] - 34) < 1e-9;
+    const Q = fitQ([[-r, -r], [r, r]], 22, 430, 280), O = Q([0, 0]);
+    const ch = ys.map((y, i) => [Q([-half[i], y]), Q([half[i], y])]);
+    return wrap(430, 280, [
+      circ(O, r * Q.k, DIM, 2), ...ch.map(([P, R]) => seg(P, R, ACC, 2)), ...ch.flatMap(([P, R]) => [dot(P, ACC, 3), dot(R, ACC, 3)]),
+      ...ch.map(([P, R], i) => txt(add(mid(P, R), [0, -6]), ["38", "38", "34"][i], ACC, 12.5)),
+      cap(430, 280, "Three equally spaced parallel lines cut chords of lengths 38, 38 and 34 from the circle." + MM(ok))
+    ]);
+  })();
 })();
