@@ -4107,4 +4107,45 @@
       cap(430, 260, "Two equilateral triangles on opposite sides of a square of side 2√3; their overlap is the shaded rhombus." + MM(ok))
     ]);
   })();
+
+  PROB["2004-amc-10b-9"] = (() => {
+    const O = [0, 0], S = [[0, 0], [10, 0], [10, 10], [0, 10]];
+    const ok = Math.abs(dist(O, S[1]) - 10) < 1e-9 && dist(O, S[2]) > 10;
+    const Q = fitQ([[-10, -10], [10, 10]], 34, 430, 260), r = 10 * Q.k;
+    return wrap(430, 260, [
+      circ(Q(O), r, GLD, 1.8, GLDS), poly(S.map(Q), ACC, 2, ACCS), dot(Q(O), DIM, 3.5),
+      seg(Q(O), Q([-10, 0]), DIM, 1.4, "4 3"), txt(add(Q([-5, 0]), [0, -7]), "10", DIM, 12), txt(add(Q([5, 10]), [0, -7]), "10", DIM, 12),
+      cap(430, 260, "A square of side 10 and a circle of radius 10 centered at one of its corners; a quarter of the circle lies in the square." + MM(ok))
+    ]);
+  })();
+
+  PROB["2004-amc-10b-22"] = (() => {
+    const C = [0, 0], B = [12, 0], A = [0, 5], I = [2, 2], O = [6, 2.5];
+    const dHyp = Math.abs(5 * I[0] + 12 * I[1] - 60) / 13;
+    const ok = Math.abs(dHyp - 2) < 1e-9 && Math.abs(dist(O, A) - 6.5) < 1e-9 && Math.abs(dist(O, C) - 6.5) < 1e-9 && Math.abs(dist(O, I) - Math.sqrt(65) / 2) < 1e-9;
+    const Q = fitQ([[-0.5, -4], [12.5, 9]], 30, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), 6.5 * k, FNT, 1.5), circ(Q(I), 2 * k, GLD, 1.8, GLDS), poly([A, B, C].map(Q), DIM, 2), rightAngle(Q(C), Q(B), Q(A), 10),
+      seg(Q(I), Q(O), ACC, 2.2), dot(Q(I), GLD, 3.5), dot(Q(O), ACC, 3.5),
+      txt(add(Q(I), [-10, 4]), "I", GLD, 12.5), txt(add(Q(O), [2, 17]), "O", ACC, 12.5),
+      txt(add(Q([0, 2.5]), [-12, 4]), "5", DIM, 12), txt(add(Q([6, 0]), [0, 16]), "12", DIM, 12), txt(add(Q([9, 1.25]), [10, -8]), "13", DIM, 12),
+      cap(430, 270, "The 5-12-13 triangle with its incircle (center I) and circumcircle (center O, the hypotenuse's midpoint)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2004-amc-10b-24"] = (() => {
+    const B = [0, 0], C = [9, 0], A = [11 / 3, 8 * Math.sqrt(5) / 3];
+    const [O, R] = circ3(A, B, C), D = [4.5, O[1] - R];
+    const ok = Math.abs(dist(A, B) - 7) < 1e-9 && Math.abs(dist(A, C) - 8) < 1e-9 && Math.abs(angAt(A, B, D) - angAt(A, D, C)) < 1e-9 &&
+      Math.abs(dist(A, D) / dist(C, D) - 5 / 3) < 1e-9;
+    const Q = fitQ([[O[0] - R, O[1] - R], [O[0] + R, O[1] + R]], 22, 430, 280), k = Q.k;
+    const P = [A, B, C, D].map(Q);
+    return wrap(430, 280, [
+      circ(Q(O), R * k, FNT, 1.5), poly([P[0], P[1], P[2]], DIM, 2), seg(P[0], P[3], ACC, 2), seg(P[1], P[3], GLD, 1.8), seg(P[2], P[3], GLD, 1.8),
+      angleArc(P[0], P[1], P[3], 24, ACC), angleArc(P[0], P[3], P[2], 30, ACC),
+      gapLabel(P[0], [P[1], P[2], P[3]], "A"), gapLabel(P[1], [P[0], P[2], P[3]], "B"), gapLabel(P[2], [P[0], P[1], P[3]], "C"), gapLabel(P[3], [P[0], P[1], P[2]], "D"),
+      txt(add(mid(P[0], P[1]), [-12, 0]), "7", DIM, 12), txt(add(mid(P[0], P[2]), [12, 0]), "8", DIM, 12), txt(add(Q([2.4, 0]), [0, -6]), "9", DIM, 12),
+      cap(430, 280, "Triangle ABC with AB = 7, AC = 8, BC = 9; the bisector of angle A meets the circumcircle again at D." + MM(ok))
+    ]);
+  })();
 })();
