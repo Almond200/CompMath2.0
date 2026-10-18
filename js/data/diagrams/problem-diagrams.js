@@ -3913,4 +3913,18 @@
       cap(430, 250, "Right angle at C, with AC = CD (blue ticks), DE = EB (gold ticks) and AC : DE = 4 : 3." + MM(ok))
     ]);
   })();
+  PROB["2018-amc-10b-24"] = PROB["2018-amc-12b-20"] = (() => {
+    const Vm = [0, 1, 2, 3, 4, 5].map(k => [Math.cos(Math.PI * k / 3), Math.sin(Math.PI * k / 3)]);
+    const Xm = mid(Vm[0], Vm[1]), Ym = mid(Vm[2], Vm[3]), Zm = mid(Vm[4], Vm[5]);
+    const ok = Math.abs(dist(Xm, Ym) - 1.5) < 1e-9 && Math.abs(dist(Vm[0], Vm[2]) - Math.sqrt(3)) < 1e-9;
+    const Q = fitQ(Vm, 34, 430, 280);
+    const V = Vm.map(Q), X = Q(Xm), Y = Q(Ym), Z = Q(Zm), c = Q([0, 0]), N = ["A", "B", "C", "D", "E", "F"];
+    return wrap(430, 280, [
+      poly(V, DIM, 2), poly([V[0], V[2], V[4]], ACC, 1.8, ACCS), poly([X, Y, Z], GLD, 1.8, GLDS),
+      ...V.map(q => dot(q, DIM, 3)), ...[X, Y, Z].map(q => dot(q, GLD, 3)),
+      ...V.map((q, i) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [14 * v[0] / n, 14 * v[1] / n + 4]), N[i], DIM, 13); }),
+      ...[[X, "X"], [Y, "Y"], [Z, "Z"]].map(([q, t]) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [14 * v[0] / n, 14 * v[1] / n + 4]), t, GLD, 13); }),
+      cap(430, 280, "Regular hexagon ABCDEF with side 1: triangle ACE (blue) and triangle XYZ on the midpoints of AB, CD, EF (gold); their overlap is the hexagon asked about." + MM(ok))
+    ]);
+  })();
 })();
