@@ -1,8 +1,14 @@
-# Questions for Stanley
+# Questions for the owner
 
-Things found while working through PLAN.md that are style or judgement calls rather than verified errors. Verified errors are fixed straight away and recorded in the README; everything here waits for your word. Newest first: the newest section is at the top, and within a section the newest items come first.
+Style and judgment calls found while working through `PLAN.md`. Verified errors are fixed straight away and recorded in the README; only real choices wait here.
 
-## Candidate new cards from the practice pass (2.7a, 2026-10-17)
+## Open now
+
+Nothing is waiting on the owner. Step B of the plan (2.4e-ii, prose formula boxes) will add its proposals here, and a new candidate card from the practice work goes into the first table below as P14.
+
+## Answered (kept as the record, newest first)
+
+## Candidate new cards from the practice pass (2.7a, 2026-10-17; all approved and written)
 Each is a fact or move a re-solved problem needed and no card holds (checked against names, keywords and descriptions). The problems cite the nearest card meanwhile. Tier and importance are proposals (rule 12); the evidence so far is one problem each. Answer per row: yes, no, or a different rating. Newest rows first.
 
 **Status, newest first.** P6 approved on 2026-10-17 and written as the method `closing-polygon-vectors`; 2026 AIME I #14 cites it. P1's importance was lowered from low to lower on 2026-10-17, at the owner's request. P5 approved on 2026-10-17 and written as the method `conjugate-both-sides`. On re-reading, three of the listed problems use the move (2018 AIME I #6, 2001 AIME II #14, 2020 AMC 12B #23) and now cite it. The others only use $z\bar z=\lvert z\rvert^2$ or the conjugate root theorem, and 2016 AMC 12B #22 is about repeating decimals. P5 was written as AMC, not AIME Early, because one of its problems is on the AMC 12. P1 to P4 approved on 2026-10-17 and written (`diagonal-angle-from-sides`, `squares-on-triangle-flanks`, `parallel-sided-hexagon`, `product-of-uniforms`), and the four problems now cite them. P3 was written as AIME Early, not AIME Late: its one problem is AIME #5, and the tier rubric reads that as early. P7 to P11 approved on 2026-10-17 and written as `cevian-ratio-sum`, `square-crossing-segments`, `perimeter-cleavers`, `conic-perpendicular-radii` and `gram-determinant-volume`; 1988 AIME #12, 2005 AIME I #14, 2022 AIME I #14, 2024 AIME I #9 and 2023 AIME I #13 cite them. P12 and P13 approved on 2026-10-17 and written as the methods `setting-up-proportions` (Setting Up a Proportion) and `linear-elimination` (Solving a Linear System by Elimination), in Methods > Algebra > Setting Up Equations; their 8 and 9 problems cite them, and Addendo, Componendo & Dividendo, which none of those problems used, now cites no problem. **Nothing is open here now.** A new candidate goes at the top of the table as P14.
@@ -140,7 +146,7 @@ Each was checked against every card's name, keywords, and description, and none 
 
 Not proposed (already covered): the radical center (on Radical Axis), tangents meeting on the symmedian (on Harmonic Quadrilaterals), Vieta jumping, Schur, SOS, LTE variants, Hensel, orders, primitive roots, quadratic reciprocity, the extremal principle, double counting, the probabilistic method, and generating functions.
 
-## New Geometry subsection: Olympiad Triangle Lemmas (2.4g)
+## New Geometry subsection: Olympiad Triangle Lemmas (2.4g; approved and done 2026-10-12)
 3. The proposed members, to be moved there (ids unchanged):
    - Iran Lemma
    - Carnot's Perpendicularity Theorem
@@ -151,7 +157,7 @@ Not proposed (already covered): the radical center (on Radical Axis), tangents m
 
    The Perpendicularity Lemma and Linearity of Power of a Point stay where they are, because they are general tools. OK to move these, or change the list?
 
-## Duplicates and style (rule 17)
+## Duplicates and style (rule 17; answered 2026-10-12, see below: the twins stay, and descriptions define their symbols without restating the thumbnail)
 1. **Method/formula twins** that `tools/find-duplicate-forms.py` finds: the same formula on both cards' thumbnails. They may be deliberate, since a method can quote the formula it uses. Keep them as they are, or move the formula to one card and point from the other?
    - `lte` and `lte-lemma`: $v_p(a^n - b^n) = v_p(a - b) + v_p(n)$
    - `poly-divisible-linear` and `reduce-divisibility-constant`: $n + a \mid P(n) \iff n + a \mid P(-a)$

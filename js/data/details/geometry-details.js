@@ -2949,6 +2949,7 @@ The ratio itself is the usable half at AIME level, since the squared side ratio 
 "cyclic-perpendicular-diagonals": String.raw`
 ## Key forms
 - $a^2 + c^2 = b^2 + d^2 = 4R^2$ — for a cyclic quadrilateral with perpendicular diagonals and sides $a, b, c, d$ in order, opposite sides pair up
+- $\overset{\frown}{AB} + \overset{\frown}{CD} = \overset{\frown}{BC} + \overset{\frown}{DA} = 180^\circ$ — the arcs cut off by opposite sides are supplementary, and conversely a cyclic quadrilateral whose opposite arcs sum to $180^\circ$ has perpendicular diagonals
 - $a^2 + c^2 = b^2 + d^2$ holds for any quadrilateral with perpendicular diagonals; only the value $4R^2$ needs cyclicity
 - the perpendicular from the diagonals' intersection to a side, extended, bisects the opposite side — Brahmagupta's theorem
 - $\dfrac12 d_1d_2$ — the area, for perpendicular diagonals

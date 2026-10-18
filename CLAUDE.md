@@ -1,6 +1,6 @@
 # Competition Math Reference: read this first
 
-1. **Read `PLAN.md`, "Current state" and section 2, before doing anything.** They say what is finished, what is in progress, and the exact next action.
+1. **Read `PLAN.md`, "Current state" and "The road ahead", before doing anything.** They say what is finished, what is in progress, the order of the remaining steps, and the exact next action.
 2. **The handoff rule.** After every major change, every finished step, and the start of every new step:
    - update "Current state" in `PLAN.md`;
    - add a README changelog entry;
