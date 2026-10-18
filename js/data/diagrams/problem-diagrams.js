@@ -3729,4 +3729,20 @@
       cap(430, 260, "The fence runs east-west; the two dashed routes go through the two unlocked gates to the box." + MM(ok))
     ]);
   })();
+
+  // 2025 AMC 10B #13: a 30-60-90 triangle with the altitude CH to the hypotenuse and the median AM to the short side BC.
+  PROB["2025-amc-10b-13"] = (() => {
+    const s3 = Math.sqrt(3), Cm = [0, 0], Bm = [0, 1], Am = [s3, 0], Hm = foot(Cm, Am, Bm), Mm = mid(Bm, Cm), Pm = lineInt(Cm, Hm, Am, Mm);
+    const ok = Math.abs(dist(Am, Bm) - 2) < 1e-12 && Math.abs(dist(Cm, Pm) / dist(Cm, Hm) - 4 / 7) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), H = Q(Hm), M = Q(Mm), P = Q(Pm);
+    return wrap(430, 260, [
+      poly([A, B, C], DIM, 2), seg(C, H, ACC, 1.8), seg(A, M, GLD, 1.8), rightAngle(C, A, B, 10, DIM), rightAngle(H, C, B, 8, ACC),
+      ticksOn(B, M, 1, GLD), ticksOn(M, C, 1, GLD), angleArc(A, B, C, 30, DIM), txt(add(A, [-40, -6]), "30°", DIM, 12, "end"),
+      ...[A, B, C, H, M].map(q => dot(q, DIM, 3.2)), dot(P, ORG, 3.6),
+      txt(add(A, [10, 6]), "A", DIM, 13, "start"), txt(add(B, [-8, -6]), "B", DIM, 13, "end"), txt(add(C, [-8, 14]), "C", DIM, 13, "end"),
+      txt(add(H, [8, -8]), "H", ACC, 13, "start"), txt(add(M, [-10, 4]), "M", GLD, 13, "end"),
+      cap(430, 260, "Right angle at C, angle A = 30°: the altitude CH to the hypotenuse and the median AM to the short side BC cross at the orange point." + MM(ok))
+    ]);
+  })();
 })();
