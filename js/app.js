@@ -646,12 +646,22 @@
     "Symmetry, Partitions & Posets": ["stars-bars"],
     "Stars & Bars / Distributions": ["probability"]
   };
+  // A card's own words can still over-reach: a keyword that names a use, not the
+  // topic. Rationalizing lists "telescoping" and "conjugate", which awarded it the
+  // sequences and complex-numbers chips, and a problem page shows every chip of
+  // every card it cites. CARD_TOPIC_STOP vetoes a topic for one card by id; add a
+  // card here when the practice pass finds a problem page with a wrong chip.
+  const CARD_TOPIC_STOP = {
+    "rationalizing": ["sequences-series", "complex-numbers"]
+  };
 
   function topicsForCard(f, sub, section, subjectId) {
     const own = (f.name + " " + f.keywords.join(" ")).toLowerCase();
     const hay = section.group === "tools" ? own : own + " " + sub.title.toLowerCase();
     const stop = TITLE_STOP[sub.title] || [];
+    const cardStop = CARD_TOPIC_STOP[f.id] || [];
     const out = TOPIC_RULES.filter(t => {
+      if (cardStop.indexOf(t.id) !== -1) return false;
       if (t.sec && t.sec.indexOf(subjectId) === -1) return false;
       if (!t.re || !t.re.test(hay)) return false;
       if (stop.indexOf(t.id) !== -1 && !t.re.test(own)) return false;

@@ -3693,4 +3693,418 @@
       cap(430, 290, "Each 60° angle cut into three 20° angles; the shaded hexagon is where the three middle wedges overlap." + MM(ok))
     ]);
   })();
+
+  // 2025 AMC 10B #5: AB = 10, AC = 18, angle B = 130°, with the circumcircle and its center O.
+  PROB["2025-amc-10b-5"] = (() => {
+    const B0 = 130 * Math.PI / 180, sC = 10 * Math.sin(B0) / 18, Cang = Math.asin(sC), Aang = Math.PI - B0 - Cang;
+    const a = 18 * Math.sin(Aang) / Math.sin(B0);
+    const Bm = [0, 0], Cm = [a, 0], Am = [10 * Math.cos(B0), 10 * Math.sin(B0)];
+    const [Om, R] = circ3(Am, Bm, Cm);
+    const ok = Math.abs(dist(Am, Cm) - 18) < 1e-9 && Math.abs(angAt(Bm, Am, Cm) - B0) < 1e-9;
+    const Q = fitQ([[Om[0] - R, Om[1] - R], [Om[0] + R, Om[1] + R]], 18, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om);
+    return wrap(430, 290, [
+      circ(O, R * k, FNT, 1.4), poly([A, B, C], DIM, 2), seg(A, O, GLD, 1.6, "5 4"), seg(C, O, GLD, 1.6, "5 4"),
+      angleArc(B, C, A, 16, ACC), txt(add(B, [8, -14]), "130°", ACC, 12, "start"),
+      ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, GLD, 3.4),
+      gapLabel(A, [B, C, O], "A"), gapLabel(B, [A, C], "B"), gapLabel(C, [A, B, O], "C"), txt(add(O, [10, 4]), "O", GLD, 13, "start"),
+      txt(add(mid(A, B), [-27, -6]), "10", ACC, 12, "end"), txt(add(mid(A, C), [0, -8]), "18", ACC, 12),
+      cap(430, 290, "AB = 10, AC = 18, angle B = 130°; O is the center of the circle through A, B, C." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AMC 10B #7: Frances 15 m south of the locked gate; the box is x east of it, with unlocked gates 9 m east of the box and 8 m west of the locked gate.
+  PROB["2025-amc-10b-7"] = (() => {
+    const x = 25 / 7, Fm = [0, -15], Gm = [0, 0], Xm = [x, 0], Em = [x + 9, 0], Wm = [-8, 0];
+    const ok = Math.abs(dist(Fm, Em) + 9 - (dist(Fm, Wm) + 8 + x)) < 1e-9;
+    const Q = fitQ([[-10, -15], [x + 11, 2]], 26, 430, 260);
+    const F = Q(Fm), G = Q(Gm), X = Q(Xm), E = Q(Em), W = Q(Wm), L = Q([-10, 0]), Rr = Q([x + 11, 0]);
+    return wrap(430, 260, [
+      seg(L, Rr, DIM, 2.4), seg(F, G, FNT, 1.2, "3 3"),
+      seg(F, E, GLD, 1.6, "6 4"), seg(E, X, GLD, 1.6, "6 4"), seg(F, W, ACC, 1.6, "6 4"), seg(W, X, ACC, 1.6, "6 4"),
+      dot(F, DIM, 3.4), dot(G, DIM, 3.2), dot(E, GRN, 3.4), dot(W, GRN, 3.4), dot(X, ORG, 4),
+      txt(add(F, [0, 16]), "Frances"), txt(add(G, [-21, 17]), "locked", DIM, 11), txt(add(E, [0, -10]), "unlocked", GRN, 11), txt(add(W, [0, -10]), "unlocked", GRN, 11),
+      txt(add(X, [0, -10]), "box", ORG, 12), txt(add(mid(F, G), [-6, 0]), "15", DIM, 12, "end"),
+      txt(add(mid(G, X), [0, -8]), "x", DIM, 12), txt(add(mid(X, E), [0, -8]), "9", DIM, 12), txt(add(mid(W, G), [0, -8]), "8", DIM, 12),
+      cap(430, 260, "The fence runs east-west; the two dashed routes go through the two unlocked gates to the box." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AMC 10B #13: a 30-60-90 triangle with the altitude CH to the hypotenuse and the median AM to the short side BC.
+  PROB["2025-amc-10b-13"] = (() => {
+    const s3 = Math.sqrt(3), Cm = [0, 0], Bm = [0, 1], Am = [s3, 0], Hm = foot(Cm, Am, Bm), Mm = mid(Bm, Cm), Pm = lineInt(Cm, Hm, Am, Mm);
+    const ok = Math.abs(dist(Am, Bm) - 2) < 1e-12 && Math.abs(dist(Cm, Pm) / dist(Cm, Hm) - 4 / 7) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), H = Q(Hm), M = Q(Mm), P = Q(Pm);
+    return wrap(430, 260, [
+      poly([A, B, C], DIM, 2), seg(C, H, ACC, 1.8), seg(A, M, GLD, 1.8), rightAngle(C, A, B, 10, DIM), rightAngle(H, C, B, 8, ACC),
+      ticksOn(B, M, 1, GLD), ticksOn(M, C, 1, GLD), angleArc(A, B, C, 30, DIM), txt(add(A, [-40, -6]), "30°", DIM, 12, "end"),
+      ...[A, B, C, H, M].map(q => dot(q, DIM, 3.2)), dot(P, ORG, 3.6),
+      txt(add(A, [10, 6]), "A", DIM, 13, "start"), txt(add(B, [-8, -6]), "B", DIM, 13, "end"), txt(add(C, [-8, 14]), "C", DIM, 13, "end"),
+      txt(add(H, [8, -8]), "H", ACC, 13, "start"), txt(add(M, [-10, 4]), "M", GLD, 13, "end"),
+      cap(430, 260, "Right angle at C, angle A = 30°: the altitude CH to the hypotenuse and the median AM to the short side BC cross at the orange point." + MM(ok))
+    ]);
+  })();
+  PROB["2022-amc-10a-23"] = PROB["2022-amc-12a-20"] = (() => {
+    const a = 2.268809785916864, b = 0.7562699286389547, Pm = [-1.6528490062398784, -0.787776819854278];
+    const Am = [-a, 0], Bm = [-b, 1], Cm = [b, 1], Dm = [a, 0];
+    const ok = [Am, Bm, Cm, Dm].every((q, i) => Math.abs(dist(Pm, q) - (i + 1)) < 1e-9);
+    const Q = fitQ([Am, Bm, Cm, Dm, Pm], 34, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), P = Q(Pm);
+    const len = (X, s, o) => txt(add(mid(P, X), o), s, ACC, 13);
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), ...[A, B, C, D].map(X => seg(P, X, ACC, 1.5)),
+      len(A, "1", [-10, 6]), len(B, "2", [-10, -2]), len(C, "3", [-4, -10]), len(D, "4", [6, 16]),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(P, ORG, 3.6),
+      txt(add(A, [-4, -10]), "A", DIM, 13, "end"), txt(add(B, [-6, -8]), "B", DIM, 13, "end"), txt(add(C, [6, -8]), "C", DIM, 13, "start"),
+      txt(add(D, [8, 4]), "D", DIM, 13, "start"), txt(add(P, [-8, 12]), "P", ORG, 13, "end"),
+      cap(430, 250, "Isosceles trapezoid with AD ∥ BC and AB = CD; the orange point P is 1, 2, 3, 4 from A, B, C, D." + MM(ok))
+    ]);
+  })();
+  PROB["2022-amc-10b-20"] = (() => {
+    const t = 46 * Math.PI / 180, Dm = [0, 0], Cm = [1, 0], Am = [Math.cos(t), Math.sin(t)], Bm = add(Am, Cm), Em = mid(Cm, Dm), Fm = foot(Am, Bm, Em);
+    const ok = Math.abs(angAt(Fm, Bm, Cm) - 113 * Math.PI / 180) < 1e-9 && Math.abs(dist(Dm, Fm) - 1) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 240);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm);
+    return wrap(430, 240, [
+      poly([A, B, C, D], DIM, 2), seg(B, E, ACC, 1.6), seg(A, F, GLD, 1.6), seg(F, C, ORG, 1.4), rightAngle(F, A, B, 8, GLD),
+      angleArc(D, A, C, 26, DIM), txt(add(D, [30, -8]), "46°", DIM, 12, "start"), ticksOn(C, E, 1, DIM), ticksOn(E, D, 1, DIM),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)), dot(F, ORG, 3.6),
+      txt(add(A, [-8, -8]), "A", DIM, 13, "end"), txt(add(B, [8, -8]), "B", DIM, 13, "start"), txt(add(C, [8, 14]), "C", DIM, 13, "start"),
+      txt(add(D, [-8, 14]), "D", DIM, 13, "end"), txt(add(E, [0, 18]), "E", DIM, 13), txt(add(F, [-10, 4]), "F", ORG, 13, "end"),
+      cap(430, 240, "Rhombus ABCD with angle ADC = 46°, E the midpoint of CD, and AF perpendicular to BE; the asked angle is BFC." + MM(ok))
+    ]);
+  })();
+  PROB["2021-fall-amc-10a-15"] = (() => {
+    const r = 5 * Math.SQRT2, AO = Math.sqrt(104), c = r / AO, sn = Math.sqrt(1 - c * c);
+    const Om = [0, 0], Am = [0, AO], Bm = [-r * sn, r * c], Cm = [r * sn, r * c];
+    const ok = Math.abs(dist(Am, Bm) - 3 * Math.sqrt(6)) < 1e-9 && Math.abs((Bm[0] - Om[0]) * (Am[0] - Bm[0]) + (Bm[1] - Om[1]) * (Am[1] - Bm[1])) < 1e-9;
+    const Q = fitQ([Am, [-r, -r], [r, r]], 24, 430, 300);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om);
+    return wrap(430, 300, [
+      circ(O, r * Q.k, ACC, 1.8), poly([A, B, C], DIM, 2), seg(O, B, FNT, 1.4, "4 3"), seg(O, C, FNT, 1.4, "4 3"),
+      rightAngle(B, A, O, 8, DIM), rightAngle(C, A, O, 8, DIM),
+      ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, ACC, 3.2),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-10, -2]), "B", DIM, 13, "end"), txt(add(C, [10, -2]), "C", DIM, 13, "start"),
+      txt(add(O, [0, 18]), "O", ACC, 13), txt(add(mid(A, B), [-10, -2]), "3√6", DIM, 12, "end"), txt(add(mid(O, C), [14, 10]), "5√2", ACC, 12, "start"),
+      cap(430, 300, "AB = AC = 3√6, and the blue circle of radius 5√2 touches line AB at B and line AC at C." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-fall-amc-10a-17"] = (() => {
+    const sd = 14, P2 = [0, 1, 2, 3, 4, 5].map(i => [sd * Math.cos(Math.PI * (240 + 60 * i) / 180), sd * Math.sin(Math.PI * (240 + 60 * i) / 180)]);
+    // heights are 13 + L(P) for the linear L with L(A) = -1 and L(C) = -3
+    const [a, b] = P2[0], [c, d] = P2[2], det = a * d - b * c, l1 = (-1 * d + 3 * b) / det, l2 = (-3 * a + 1 * c) / det;
+    const H = P2.map(q => 13 + l1 * q[0] + l2 * q[1]);
+    const ok = Math.abs(H[0] - 12) < 1e-9 && Math.abs(H[1] - 9) < 1e-9 && Math.abs(H[2] - 10) < 1e-9 && Math.abs(H[4] - 17) < 1e-9;
+    const { Pj } = projector([190, 236], 6.5, [1, 0], [0.5, -0.5]);
+    const G = P2.map(q => Pj([q[0], q[1], 0])), T = P2.map((q, i) => Pj([q[0], q[1], H[i]])), O = Pj([0, 0, 0]);
+    const out = (g, m) => { const v = sub(g, O), n = Math.hypot(...v); return add(g, [m * v[0] / n, m * v[1] / n + 4]); };
+    const N = ["A", "B", "C", "D", "E", "F"];
+    const hl = (i, s, dx, f, c = DIM) => txt(add(add(G[i], mul(sub(T[i], G[i]), f)), [dx, 4]), s, c, 12.5, dx < 0 ? "end" : "start");
+    return wrap(430, 300, [
+      poly(G, FNT, 1.6), poly(T, ACC, 1.8, ACCS), ...G.map((g, i) => seg(g, T[i], DIM, 2)),
+      ...G.map(g => dot(g, DIM, 3)), ...G.map((g, i) => txt(out(g, 14), N[i], DIM, 13)),
+      hl(0, "12", -7, 0.8), hl(1, "9", 6, 0.5), hl(2, "10", 6, 0.3), hl(4, "?", -7, 0.6, ORG),
+      cap(430, 300, "Vertical pillars at the vertices of the regular hexagon ABCDEF on the ground, holding up the tilted flat panel (blue); the pillar at E is the one asked for." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-fall-amc-10a-19"] = (() => {
+    const s = 5 + Math.PI / 4, k = 17, y0 = 40, sq = (x0, y) => [[x0, y], [x0 + s * k, y], [x0 + s * k, y + s * k], [x0, y + s * k]];
+    const L = 30 + 2 * k, R = 240 + 2 * k, Ly = y0 + 2 * k;
+    const ok = Math.abs((8 * s + 4 * Math.PI) - 2 * (8 * s - 20 + Math.PI)) < 1e-9;
+    const arc = (c, a0) => Array.from({ length: 13 }, (_, i) => add(c, [k * Math.cos(a0 + i * Math.PI / 24), k * Math.sin(a0 + i * Math.PI / 24)]));
+    const S = s * k, outer = [...arc([R + S, Ly + S], 0), ...arc([R, Ly + S], Math.PI / 2), ...arc([R, Ly], Math.PI), ...arc([R + S, Ly], 3 * Math.PI / 2)];
+    return wrap(430, 240, [
+      poly(sq(L, Ly), DIM, 2), poly([[L + k, Ly + k], [L + S - k, Ly + k], [L + S - k, Ly + S - k], [L + k, Ly + S - k]], FNT, 1.3, "none", "4 3"), circ([L + k, Ly + S / 2], k, ACC, 1.8, ACCS),
+      poly(sq(R, Ly), DIM, 2), poly(outer, FNT, 1.3, "none", "4 3"), circ([R + S + k, Ly + S / 2], k, ACC, 1.8, ACCS),
+      txt([L + S / 2, Ly + S + 36], "inside", DIM, 12), txt([R + S / 2, Ly + S + 36], "outside", DIM, 12), txt([L + S / 2, Ly - 8], "s", DIM, 12),
+      cap(430, 240, "A disk of radius 1 rolls around the inside of the square (left) and around the outside (right); the dashed paths are its center's." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-fall-amc-10a-22"] = (() => {
+    const r = (90 - 40 * Math.sqrt(3)) / 11, d = 2 * r / Math.sqrt(3);
+    const ok = Math.abs((60 - 12 * d - 5 * r) / 13 - r) < 1e-9 && Math.abs(d * Math.sqrt(3) - 2 * r) < 1e-9;
+    const k = 15, B = [30, 220], X = q => [B[0] + 75 + k * q[0], B[1] - k * q[1]];
+    const Vt = X([0, 12]), Bl = X([-5, 0]), Br = X([5, 0]), Ce = X([d, r]);
+    const T = [310, 140], cen = [90, 210, 330].map(a => add(T, [k * d * Math.cos(a * Math.PI / 180), -k * d * Math.sin(a * Math.PI / 180)]));
+    return wrap(430, 266, [
+      poly([Vt, Bl, Br], DIM, 2), seg(Vt, X([0, 0]), FNT, 1.2, "4 3"), circ(Ce, r * k, ACC, 1.8, ACCS), dot(Ce, ACC, 2.6),
+      txt(add(mid(X([0, 0]), Br), [0, 16]), "5", DIM, 12), txt(add(mid(Vt, X([0, 0])), [-6, 0]), "12", DIM, 12, "end"),
+      circ(T, 5 * k, DIM, 2), ...cen.map(c => circ(c, r * k, ACC, 1.8, ACCS)), dot(T, FNT, 2.4),
+      txt([B[0] + 75, 256], "slice through the axis", DIM, 11.5), txt([T[0], 256], "seen from above", DIM, 11.5),
+      cap(430, 266, "The cone of radius 5 and height 12 sliced through its axis and one sphere's center (left), and the three equal spheres seen from above (right)." + MM(ok))
+    ]);
+  })();
+  PROB["2021-spring-amc-10a-17"] = PROB["2021-spring-amc-12a-17"] = (() => {
+    // D at the origin with DB along the x-axis, then turned so that CD lies along the bottom
+    const a = Math.sqrt(3040), raw = { D: [0, 0], B: [66, 0], A: [0, a], C: [33, -a / 2] }, t = -Math.atan2(-a / 2, 33);
+    const rot = q => [Math.cos(t) * q[0] - Math.sin(t) * q[1], Math.sin(t) * q[0] + Math.cos(t) * q[1]];
+    const Am = rot(raw.A), Bm = rot(raw.B), Cm = rot(raw.C), Dm = rot(raw.D), Om = lineInt(Am, Cm, Bm, Dm), Pm = mid(Bm, Dm);
+    const ok = Math.abs(dist(Bm, Cm) - 43) < 1e-9 && Math.abs(dist(Cm, Dm) - 43) < 1e-9 && Math.abs(dist(Om, Pm) - 11) < 1e-9 && Math.abs(Am[1] - Bm[1]) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), O = Q(Om), P = Q(Pm);
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, D, FNT, 1.5), rightAngle(D, A, B, 9, DIM), seg(O, P, ACC, 2.4),
+      ticksOn(B, P, 1, DIM), ticksOn(P, D, 1, DIM),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(O, ACC, 3.2), dot(P, ACC, 3.2),
+      txt(add(A, [-8, -8]), "A", DIM, 13, "end"), txt(add(B, [8, -8]), "B", DIM, 13, "start"), txt(add(C, [8, 14]), "C", DIM, 13, "start"),
+      txt(add(D, [-8, 14]), "D", DIM, 13, "end"), txt(add(O, [-4, 18]), "O", ACC, 13), txt(add(P, [6, -8]), "P", ACC, 13, "start"),
+      txt(add(mid(C, D), [0, 18]), "43", DIM, 12), txt(add(mid(B, C), [12, 4]), "43", DIM, 12, "start"),
+      cap(430, 250, "Trapezoid ABCD with AB ∥ CD, BC = CD = 43 and AD ⊥ BD; O is where the diagonals cross and P is the midpoint of BD, with OP = 11 (blue)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-spring-amc-10a-21"] = (() => {
+    const d = 36 - 16 * Math.sqrt(3), e = (32 * Math.sqrt(3) - 36) / 3, sd = [e + d, e, e + d, e, e + d, e];
+    const V = [[0, 0]];
+    sd.slice(0, 5).forEach((L, i) => { const g = Math.PI * i / 3; V.push(add(V[i], [L * Math.cos(g), L * Math.sin(g)])); });
+    const [Am, Bm, Cm, Dm, Em, Fm] = V, ln = (P1, P2, P3, P4, P5, P6) => [lineInt(P1, P2, P3, P4), lineInt(P3, P4, P5, P6), lineInt(P5, P6, P1, P2)];
+    const T1 = ln(Am, Bm, Cm, Dm, Em, Fm), T2 = ln(Bm, Cm, Dm, Em, Fm, Am);
+    const area = T => Math.abs((T[1][0] - T[0][0]) * (T[2][1] - T[0][1]) - (T[2][0] - T[0][0]) * (T[1][1] - T[0][1])) / 2;
+    const ok = Math.abs(area(T1) - 192 * Math.sqrt(3)) < 1e-6 && Math.abs(area(T2) - 324 * Math.sqrt(3)) < 1e-6 && Math.abs(dist(Fm, Am) - sd[5]) < 1e-9;
+    const Q = fitQ([...T1, ...T2], 30, 430, 300);
+    const H = V.map(Q), N = ["A", "B", "C", "D", "E", "F"], c = Q(mid(Am, Dm));
+    return wrap(430, 300, [
+      poly(T1.map(Q), ACC, 1.5, "none", "5 4"), poly(T2.map(Q), GLD, 1.5, "none", "5 4"), poly(H, DIM, 2.2),
+      ...H.map(q => dot(q, DIM, 3)), ...H.map((q, i) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [-14 * v[0] / n, -14 * v[1] / n + 4]), N[i], DIM, 13); }),
+      cap(430, 300, "The equiangular hexagon ABCDEF; lines AB, CD, EF make the blue triangle (area 192√3) and lines BC, DE, FA the gold one (area 324√3)." + MM(ok))
+    ]);
+  })();
+  PROB["2021-spring-amc-10b-14"] = PROB["2021-spring-amc-12b-8"] = (() => {
+    const dd = 6, r = Math.sqrt(19 * 19 + dd * dd / 4), ys = [dd / 2, -dd / 2, -3 * dd / 2];
+    const half = ys.map(y => Math.sqrt(r * r - y * y));
+    const ok = Math.abs(2 * half[0] - 38) < 1e-9 && Math.abs(2 * half[1] - 38) < 1e-9 && Math.abs(2 * half[2] - 34) < 1e-9;
+    const Q = fitQ([[-r, -r], [r, r]], 22, 430, 280), O = Q([0, 0]);
+    const ch = ys.map((y, i) => [Q([-half[i], y]), Q([half[i], y])]);
+    return wrap(430, 280, [
+      circ(O, r * Q.k, DIM, 2), ...ch.map(([P, R]) => seg(P, R, ACC, 2)), ...ch.flatMap(([P, R]) => [dot(P, ACC, 3), dot(R, ACC, 3)]),
+      ...ch.map(([P, R], i) => txt(add(mid(P, R), [0, -6]), ["38", "38", "34"][i], ACC, 12.5)),
+      cap(430, 280, "Three equally spaced parallel lines cut chords of lengths 38, 38 and 34 from the circle." + MM(ok))
+    ]);
+  })();
+  PROB["2020-amc-10a-20"] = PROB["2020-amc-12a-18"] = (() => {
+    const Am = [0, 0], Cm = [20, 0], Dm = [20, 30], Em = [5, 0], Bm = [2, -6];
+    const ok = Math.abs((Bm[0] - Am[0]) * (Bm[0] - Cm[0]) + (Bm[1] - Am[1]) * (Bm[1] - Cm[1])) < 1e-9 && Math.abs(lineInt(Bm, Dm, Am, Cm)[0] - 5) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 30, 430, 300);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 300, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, D, FNT, 1.5), rightAngle(B, A, C, 8, DIM), rightAngle(C, A, D, 9, DIM),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(E, ACC, 3.2),
+      txt(add(A, [-8, 4]), "A", DIM, 13, "end"), txt(add(B, [-4, 16]), "B", DIM, 13), txt(add(C, [10, 10]), "C", DIM, 13, "start"),
+      txt(add(D, [8, 0]), "D", DIM, 13, "start"), txt(add(E, [2, -9]), "E", ACC, 13),
+      txt(add(mid(A, E), [0, -6]), "5", ACC, 12), txt(add(mid(C, D), [10, 4]), "30", DIM, 12, "start"),
+      cap(430, 300, "Quadrilateral ABCD with right angles at B and C, AC = 20 and CD = 30; the diagonals cross at E with AE = 5." + MM(ok))
+    ]);
+  })();
+  PROB["2019-amc-10b-16"] = (() => {
+    const Cm = [0, 0], Am = [0, 4], Bm = [8, 0], Dm = [3.2, 2.4], Em = [5, 0];
+    const ok = Math.abs(dist(Cm, Dm) - 4) < 1e-9 && Math.abs(dist(Dm, Em) - 3) < 1e-9 && Math.abs(dist(Em, Bm) - 3) < 1e-9 && Math.abs((Dm[0] - Am[0]) * (Bm[1] - Am[1]) - (Dm[1] - Am[1]) * (Bm[0] - Am[0])) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 250, [
+      poly([A, B, C], DIM, 2), seg(C, D, ACC, 1.8), seg(D, E, GLD, 1.8), rightAngle(C, A, B, 9, DIM),
+      ticksOn(A, C, 1, ACC), ticksOn(C, D, 1, ACC), ticksOn(D, E, 2, GLD), ticksOn(E, B, 2, GLD),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 4]), "A", DIM, 13, "end"), txt(add(B, [8, 6]), "B", DIM, 13, "start"), txt(add(C, [-8, 14]), "C", DIM, 13, "end"),
+      txt(add(D, [6, -8]), "D", DIM, 13, "start"), txt(add(E, [0, 18]), "E", DIM, 13),
+      cap(430, 250, "Right angle at C, with AC = CD (blue ticks), DE = EB (gold ticks) and AC : DE = 4 : 3." + MM(ok))
+    ]);
+  })();
+  PROB["2018-amc-10b-24"] = PROB["2018-amc-12b-20"] = (() => {
+    const Vm = [0, 1, 2, 3, 4, 5].map(k => [Math.cos(Math.PI * k / 3), Math.sin(Math.PI * k / 3)]);
+    const Xm = mid(Vm[0], Vm[1]), Ym = mid(Vm[2], Vm[3]), Zm = mid(Vm[4], Vm[5]);
+    const ok = Math.abs(dist(Xm, Ym) - 1.5) < 1e-9 && Math.abs(dist(Vm[0], Vm[2]) - Math.sqrt(3)) < 1e-9;
+    const Q = fitQ(Vm, 34, 430, 280);
+    const V = Vm.map(Q), X = Q(Xm), Y = Q(Ym), Z = Q(Zm), c = Q([0, 0]), N = ["A", "B", "C", "D", "E", "F"];
+    return wrap(430, 280, [
+      poly(V, DIM, 2), poly([V[0], V[2], V[4]], ACC, 1.8, ACCS), poly([X, Y, Z], GLD, 1.8, GLDS),
+      ...V.map(q => dot(q, DIM, 3)), ...[X, Y, Z].map(q => dot(q, GLD, 3)),
+      ...V.map((q, i) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [14 * v[0] / n, 14 * v[1] / n + 4]), N[i], DIM, 13); }),
+      ...[[X, "X"], [Y, "Y"], [Z, "Z"]].map(([q, t]) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [14 * v[0] / n, 14 * v[1] / n + 4]), t, GLD, 13); }),
+      cap(430, 280, "Regular hexagon ABCDEF with side 1: triangle ACE (blue) and triangle XYZ on the midpoints of AB, CD, EF (gold); their overlap is the hexagon asked about." + MM(ok))
+    ]);
+  })();
+  PROB["2017-amc-10a-21"] = PROB["2017-amc-12a-19"] = (() => {
+    const x = 12 / 7, y = 60 / 37, k = 40;
+    const ok = Math.abs(x / 4 + x / 3 - 1) < 1e-9 && Math.abs(y / 5 - (12 / 5 - y) / (12 / 5)) < 1e-9;
+    // left: legs along the axes, square at the right angle
+    const L = q => [24 + k * q[0], 200 - k * q[1]];
+    const lt = [[0, 0], [4, 0], [0, 3]].map(L), ls = [[0, 0], [x, 0], [x, x], [0, x]].map(L);
+    // right: hypotenuse along the bottom, apex at height 12/5 above the point 16/5 from the left end
+    const R = q => [222 + k * q[0], 200 - k * q[1]], h = 12 / 5, u = 5 * (h - y) / h;
+    const rt = [[0, 0], [5, 0], [16 / 5, h]].map(R), x0 = 16 / 5 - (16 / 5) * (h - y) / h;
+    const rs = [[x0, 0], [x0 + y, 0], [x0 + y, y], [x0, y]].map(R);
+    return wrap(430, 240, [
+      poly(lt, DIM, 2), poly(ls, ACC, 1.8, ACCS), poly(rt, DIM, 2), poly(rs, GLD, 1.8, GLDS),
+      txt(add(mid(lt[0], lt[1]), [0, 18]), "4", DIM, 12), txt(add(mid(lt[0], lt[2]), [-10, 4]), "3", DIM, 12, "end"), txt(add(mid(ls[1], ls[2]), [10, 4]), "x", ACC, 13, "start"),
+      txt(add(mid(rt[0], rt[1]), [0, 18]), "5", DIM, 12), txt(add(mid(rs[1], rs[2]), [10, 4]), "y", GLD, 13, "start"),
+      cap(430, 240, "Two 3-4-5 triangles: a square of side x at the right angle (left), and a square of side y standing on the hypotenuse (right)." + MM(ok && Math.abs(u - (5 - 5 * y / h)) < 1e-9))
+    ]);
+  })();
+
+  PROB["2017-amc-10a-22"] = (() => {
+    const s = 1, r = s / Math.sqrt(3), Bm = [0, 0], Cm = [s, 0], Am = [s / 2, s * Math.sqrt(3) / 2], Om = [s / 2, -r / 2];
+    const ok = Math.abs(dist(Om, Bm) - r) < 1e-9 && Math.abs((Am[0] - Bm[0]) * (Om[0] - Bm[0]) + (Am[1] - Bm[1]) * (Om[1] - Bm[1])) < 1e-9;
+    const Q = fitQ([Am, [s / 2 - r, Om[1] - r], [s / 2 + r, Om[1] + r]], 24, 430, 300);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om);
+    return wrap(430, 300, [
+      circ(O, r * Q.k, ACC, 1.8), poly([A, B, C], DIM, 2), seg(O, B, FNT, 1.3, "4 3"), seg(O, C, FNT, 1.3, "4 3"),
+      rightAngle(B, A, O, 8, DIM), rightAngle(C, A, O, 8, DIM), ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, ACC, 3),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-10, 0]), "B", DIM, 13, "end"), txt(add(C, [10, 0]), "C", DIM, 13, "start"),
+      cap(430, 300, "Equilateral triangle ABC with AB and AC tangent to the circle at B and C." + MM(ok))
+    ]);
+  })();
+  PROB["2017-amc-10b-15"] = (() => {
+    const Am = [0, 0], Bm = [3, 0], Cm = [3, 4], Dm = [0, 4], Em = foot(Bm, Am, Cm);
+    const ok = Math.abs((Em[0] - Bm[0]) * 3 + (Em[1] - Bm[1]) * 4) < 1e-9 && Math.abs(Em[0] * 4 - Em[1] * 3) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 260, [
+      poly([A, D, E], "none", 0, ACCS), poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, E, ACC, 1.8), seg(D, E, ACC, 1.4, "4 3"),
+      rightAngle(E, B, C, 8, ACC), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [8, 14]), "B", DIM, 13, "start"), txt(add(C, [8, -6]), "C", DIM, 13, "start"),
+      txt(add(D, [-8, -6]), "D", DIM, 13, "end"), txt(add(E, [-10, -6]), "E", ACC, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "3", DIM, 12), txt(add(mid(B, C), [12, 4]), "4", DIM, 12, "start"),
+      cap(430, 260, "Rectangle ABCD with AB = 3 and BC = 4; E is the foot of the perpendicular from B to AC, and triangle ADE is shaded." + MM(ok))
+    ]);
+  })();
+
+  PROB["2017-amc-10b-21"] = (() => {
+    const Am = [0, 0], Bm = [6, 0], Cm = [0, 8], Dm = mid(Bm, Cm);
+    const ok = Math.abs(dist(Bm, Cm) - 10) < 1e-9 && Math.abs(dist(Am, Dm) - 5) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    return wrap(430, 260, [
+      poly([A, B, C], DIM, 2), seg(A, D, ACC, 1.8), rightAngle(A, B, C, 9, DIM), ticksOn(B, D, 1, DIM), ticksOn(D, C, 1, DIM),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [8, 14]), "B", DIM, 13, "start"), txt(add(C, [-8, -4]), "C", DIM, 13, "end"),
+      txt(add(D, [10, -4]), "D", ACC, 13, "start"), txt(add(mid(A, B), [0, 18]), "6", DIM, 12), txt(add(mid(A, C), [-10, 4]), "8", DIM, 12, "end"),
+      cap(430, 260, "Triangle ABC with AB = 6, AC = 8, BC = 10, and D the midpoint of BC; AD splits it into triangles ADB and ADC." + MM(ok))
+    ]);
+  })();
+
+  PROB["2017-amc-10b-22"] = PROB["2017-amc-12b-18"] = (() => {
+    const Am = [-2, 0], Bm = [2, 0], Dm = [5, 0], Em = [5, 5], Om = [0, 0], t = 28 / 74, Cm = [-2 + 7 * t, 5 * t];
+    const ok = Math.abs(dist(Om, Cm) - 2) < 1e-9 && Math.abs((Cm[0] - Am[0]) * (Cm[0] - Bm[0]) + Cm[1] * Cm[1]) < 1e-9;
+    const Q = fitQ([[-2, -2], [5, 5]], 26, 430, 280);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), O = Q(Om);
+    return wrap(430, 280, [
+      circ(O, 2 * Q.k, DIM, 2), seg(A, D, DIM, 2), seg(D, E, DIM, 2), seg(A, E, FNT, 1.5), poly([A, B, C], ACC, 1.8, ACCS),
+      rightAngle(D, A, E, 9, DIM), ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [0, 18]), "B", DIM, 13), txt(add(C, [-6, -10]), "C", ACC, 13, "end"),
+      txt(add(D, [8, 14]), "D", DIM, 13, "start"), txt(add(E, [8, 0]), "E", DIM, 13, "start"),
+      txt(add(mid(B, D), [0, 18]), "3", DIM, 12), txt(add(mid(D, E), [10, 4]), "5", DIM, 12, "start"),
+      cap(430, 280, "Diameter AB of a circle of radius 2 extended to D with BD = 3, ED = 5 perpendicular to AD, and C where AE meets the circle." + MM(ok))
+    ]);
+  })();
+  PROB["2016-amc-10a-21"] = PROB["2016-amc-12a-15"] = (() => {
+    const Pm = [0, 1], Qm = [2 * Math.SQRT2, 2], Rm = [2 * Math.SQRT2 + 2 * Math.sqrt(6), 3];
+    const ok = Math.abs(dist(Pm, Qm) - 3) < 1e-9 && Math.abs(dist(Qm, Rm) - 5) < 1e-9;
+    const Q = fitQ([[-1, 0], [Rm[0] + 3, 6]], 24, 430, 240);
+    const P = Q(Pm), Qc = Q(Qm), R = Q(Rm), k = Q.k;
+    return wrap(430, 240, [
+      seg(Q([-1.6, 0]), Q([Rm[0] + 3.6, 0]), DIM, 2), circ(P, k, ACC, 1.8), circ(Qc, 2 * k, ACC, 1.8), circ(R, 3 * k, ACC, 1.8),
+      poly([P, Qc, R], GLD, 1.6, GLDS), ...[P, Qc, R].map(q => dot(q, DIM, 3)),
+      ...[[Pm, "P"], [Qm, "Q"], [Rm, "R"]].map(([m, t]) => txt(add(Q(m), [0, -8]), t, DIM, 13)),
+      ...[[Pm, "P′"], [Qm, "Q′"], [Rm, "R′"]].map(([m, t]) => txt(add(Q([m[0], 0]), [0, 16]), t, DIM, 12)),
+      txt(add(Q([Rm[0] + 3.4, 0]), [0, -6]), "l", DIM, 13),
+      cap(430, 240, "Circles of radii 1, 2 and 3 tangent to line l at P′, Q′ and R′, the middle one tangent to the other two; triangle PQR is shaded." + MM(ok))
+    ]);
+  })();
+
+  PROB["2016-amc-10a-24"] = PROB["2016-amc-12a-21"] = (() => {
+    const Rr = 200 * Math.SQRT2, a = 2 * Math.asin(1 / (2 * Math.SQRT2)), ang = [0, a, 2 * a, 3 * a].map(t => t - 1.5 * a + Math.PI / 2);
+    const Vm = ang.map(t => [Rr * Math.cos(t), Rr * Math.sin(t)]);
+    const ok = [0, 1, 2].every(i => Math.abs(dist(Vm[i], Vm[i + 1]) - 200) < 1e-6);
+    const Q = fitQ([[-Rr, -Rr], [Rr, Rr]], 22, 430, 300), V = Vm.map(Q), O = Q([0, 0]);
+    return wrap(430, 300, [
+      circ(O, Rr * Q.k, DIM, 2), poly(V, ACC, 2), ...V.map(q => dot(q, ACC, 3)),
+      ...[0, 1, 2].map(i => txt(add(mid(V[i], V[i + 1]), [0, -8]), "200", DIM, 12)), txt(add(mid(V[3], V[0]), [0, 16]), "?", ORG, 13),
+      cap(430, 300, "A quadrilateral inscribed in a circle of radius 200√2 with three sides of length 200; the fourth side is asked for." + MM(ok))
+    ]);
+  })();
+  PROB["2016-amc-10b-23"] = (() => {
+    const h = Math.sqrt(3) / 2, Hm = { A: [-0.5, -h], B: [0.5, -h], C: [1, 0], D: [0.5, h], E: [-0.5, h], F: [-1, 0] };
+    const at = (P, R, y) => { const t = (y - P[1]) / (R[1] - P[1]); return [P[0] + t * (R[0] - P[0]), y]; };
+    const y1 = -h / 3, y2 = h / 3, Wm = at(Hm.B, Hm.C, y1), Xm = at(Hm.C, Hm.D, y2), Ym = at(Hm.E, Hm.F, y2), Zm = at(Hm.F, Hm.A, y1);
+    const ok = Math.abs(dist(Wm, Zm) - 5 / 3) < 1e-9 && Math.abs(dist(Xm, Ym) - 5 / 3) < 1e-9;
+    const Q = fitQ(Object.values(Hm), 30, 430, 280), N = Object.keys(Hm), c = Q([0, 0]);
+    const V = N.map(n => Q(Hm[n])), W = Q(Wm), X = Q(Xm), Y = Q(Ym), Z = Q(Zm);
+    const lab = (q, t, col) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [14 * v[0] / n, 14 * v[1] / n + 4]), t, col, 13); };
+    return wrap(430, 280, [
+      poly([W, V[2], X, Y, V[5], Z], "none", 0, ACCS), poly(V, DIM, 2), seg(Z, W, ACC, 1.8), seg(Y, X, ACC, 1.8),
+      ...V.map(q => dot(q, DIM, 3)), ...[W, X, Y, Z].map(q => dot(q, ACC, 3)),
+      ...V.map((q, i) => lab(q, N[i], DIM)), lab(W, "W", ACC), lab(X, "X", ACC), lab(Y, "Y", ACC), lab(Z, "Z", ACC),
+      cap(430, 280, "Regular hexagon ABCDEF with lines AB, ZW, YX and ED parallel and equally spaced; hexagon WCXYFZ is shaded." + MM(ok))
+    ]);
+  })();
+  PROB["2015-amc-10a-19"] = (() => {
+    const Cm = [0, 0], Am = [5, 0], Bm = [0, 5], ray = t => { const k = 5 / (Math.cos(t) + Math.sin(t)); return [k * Math.cos(t), k * Math.sin(t)]; };
+    const Dm = ray(Math.PI / 6), Em = ray(Math.PI / 3);
+    const ok = Math.abs(Dm[0] + Dm[1] - 5) < 1e-9 && Math.abs(Em[0] + Em[1] - 5) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 260);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 260, [
+      poly([C, D, E], "none", 0, ACCS), poly([A, B, C], DIM, 2), seg(C, D, ACC, 1.8), seg(C, E, ACC, 1.8), rightAngle(C, A, B, 9, DIM),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [8, 14]), "A", DIM, 13, "start"), txt(add(B, [-8, -4]), "B", DIM, 13, "end"), txt(add(C, [-8, 14]), "C", DIM, 13, "end"),
+      txt(add(D, [8, 0]), "D", ACC, 13, "start"), txt(add(E, [8, 0]), "E", ACC, 13, "start"),
+      cap(430, 260, "Isosceles right triangle ABC with the right angle at C and area 12.5; the trisectors of angle C meet AB at D and E." + MM(ok))
+    ]);
+  })();
+  PROB["2015-amc-10b-19"] = PROB["2015-amc-12b-19"] = (() => {
+    const L = 6 * Math.SQRT2, Cm = [0, 0], Am = [L, 0], Bm = [0, L];
+    // square ABXY outside (away from C), square ACWZ below AC
+    const Xm = [L, L + L], Ym = [L + L, L], Wm = [0, -L], Zm = [L, -L], Mm = mid(Am, Bm);
+    const ok = [Xm, Ym, Zm, Wm].every(q => Math.abs(dist(Mm, q) - Math.sqrt(180)) < 1e-9) && Math.abs(dist(Am, Bm) - 12) < 1e-9;
+    const Q = fitQ([Wm, Zm, Xm, Ym, [Mm[0] - Math.sqrt(180), Mm[1]]], 18, 430, 320);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), X = Q(Xm), Y = Q(Ym), W = Q(Wm), Z = Q(Zm), M = Q(Mm);
+    return wrap(430, 320, [
+      circ(M, Math.sqrt(180) * Q.k, FNT, 1.4, "none", "5 4"), poly([A, B, X, Y], ACC, 1.8, ACCS), poly([A, C, W, Z], GLD, 1.8, GLDS), poly([A, B, C], DIM, 2),
+      rightAngle(C, A, B, 8, DIM), ...[A, B, C, X, Y, W, Z].map(q => dot(q, DIM, 3)),
+      txt(add(A, [10, 14]), "A", DIM, 13, "start"), txt(add(B, [-8, -4]), "B", DIM, 13, "end"), txt(add(C, [-8, 4]), "C", DIM, 13, "end"),
+      txt(add(X, [-8, -6]), "X", ACC, 13, "end"), txt(add(Y, [8, 4]), "Y", ACC, 13, "start"), txt(add(W, [-8, 10]), "W", GLD, 13, "end"), txt(add(Z, [8, 10]), "Z", GLD, 13, "start"),
+      cap(430, 320, "Right angle at C with AB = 12; squares ABXY and ACWZ stand outside the triangle, and X, Y, Z, W lie on one circle (dashed)." + MM(ok))
+    ]);
+  })();
+  PROB["2014-amc-10b-21"] = (() => {
+    const h = Math.sqrt(96), Am = [0, 0], Bm = [33, 0], Dm = [2, h], Cm = [23, h];
+    const ok = Math.abs(dist(Am, Dm) - 10) < 1e-9 && Math.abs(dist(Bm, Cm) - 14) < 1e-9 && Math.abs(dist(Am, Cm) - 25) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 220);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    return wrap(430, 220, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.4, "4 3"), seg(B, D, FNT, 1.4, "4 3"), ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [8, 14]), "B", DIM, 13, "start"), txt(add(C, [8, -6]), "C", DIM, 13, "start"), txt(add(D, [-8, -6]), "D", DIM, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "33", DIM, 12), txt(add(mid(C, D), [0, -8]), "21", DIM, 12), txt(add(mid(A, D), [-10, 4]), "10", DIM, 12, "end"), txt(add(mid(B, C), [10, 4]), "14", DIM, 12, "start"),
+      cap(430, 220, "Trapezoid ABCD with AB = 33 parallel to CD = 21, legs 10 and 14, and acute angles at A and B; the diagonals are dashed." + MM(ok))
+    ]);
+  })();
+  PROB["2013-amc-10b-23"] = PROB["2013-amc-12b-19"] = (() => {
+    const Am = [5, 12], Bm = [0, 0], Cm = [14, 0], Dm = [5, 0], Em = foot(Dm, Am, Cm);
+    const t = 3.2 / dist(Dm, Em), Fm = add(Dm, [t * (Em[0] - Dm[0]), t * (Em[1] - Dm[1])]);
+    const ok = Math.abs((Am[0] - Fm[0]) * (Bm[0] - Fm[0]) + (Am[1] - Fm[1]) * (Bm[1] - Fm[1])) < 1e-6 && Math.abs(dist(Am, Bm) - 13) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 30, 430, 270);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm);
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, D, FNT, 1.5), seg(D, E, ACC, 1.8), seg(A, F, GLD, 1.4), seg(B, F, GLD, 1.4),
+      rightAngle(D, A, C, 7, DIM), rightAngle(E, D, C, 7, ACC), rightAngle(F, A, B, 7, GLD),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3)), dot(F, ORG, 3.4),
+      txt(add(A, [0, -9]), "A", DIM, 13), txt(add(B, [-8, 14]), "B", DIM, 13, "end"), txt(add(C, [8, 14]), "C", DIM, 13, "start"),
+      txt(add(D, [0, 18]), "D", DIM, 13), txt(add(E, [9, -2]), "E", ACC, 13, "start"), txt(add(F, [-6, -9]), "F", ORG, 13, "end"),
+      cap(430, 270, "Triangle ABC with sides 13, 14, 15: AD ⊥ BC, DE ⊥ AC, and F on DE with AF ⊥ BF." + MM(ok))
+    ]);
+  })();
+  PROB["2012-amc-10b-14"] = (() => {
+    const s = 2 * Math.sqrt(3), P = [[0, 0], [s, 0], [s, s], [0, s]], T1 = [[0, 0], [s, 0], [s / 2, 3]], T2 = [[0, s], [s, s], [s / 2, s - 3]];
+    const ok = Math.abs(dist(T1[0], T1[2]) - s) < 1e-9 && Math.abs(dist(T2[0], T2[2]) - s) < 1e-9;
+    const Q = fitQ(P, 34, 430, 260), L = lineInt(T1[0], T1[2], T2[0], T2[2]), Rr = lineInt(T1[1], T1[2], T2[1], T2[2]);
+    return wrap(430, 260, [
+      poly([T1[2], L, T2[2], Rr].map(Q), "none", 0, ACCS), poly(P.map(Q), DIM, 2), poly(T1.map(Q), ACC, 1.6), poly(T2.map(Q), GLD, 1.6),
+      txt(add(Q([s / 2, 0]), [0, 18]), "2√3", DIM, 12),
+      cap(430, 260, "Two equilateral triangles on opposite sides of a square of side 2√3; their overlap is the shaded rhombus." + MM(ok))
+    ]);
+  })();
 })();

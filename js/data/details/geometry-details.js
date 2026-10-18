@@ -2283,7 +2283,6 @@ Spheres inscribed in or circumscribed about solids are common on the AIME; the w
 - $\pi r\ell$ — the lateral surface area (not $\pi rh$)
 - $SA = \pi r\ell + \pi r^2$ — the total surface area, lateral plus base
 - $\theta = \dfrac{2\pi r}{\ell}$ — the angle of the sector that the lateral surface unrolls to
-- $V = \dfrac13\pi r^2h$ — the volume, by the pyramid rule
 
 ## Conditions
 A right circular cone with base radius $r$ and height $h$ measured along the axis. The lateral formulas use the slant height $\ell$, never $h$.
@@ -2295,7 +2294,7 @@ The height, the base radius, and the slant height form a right triangle through 
 
 For the area, cut the lateral surface along a slant line and flatten it. Every point of the base's edge is $\ell$ from the tip, so the surface flattens into a sector of a circle of radius $\ell$, and its arc is the base's circumference, $2\pi r$. A sector's area is half its arc times its radius, $\frac12 \cdot 2\pi r \cdot \ell = \pi r\ell$, and the sector is the fraction $\frac{2\pi r}{2\pi\ell} = \frac r\ell$ of a full circle.
 
-Adding the base, $\pi r^2$, gives the total surface area. The volume is the pyramid rule, a third of the base area times the height, $\frac13\pi r^2h$.
+Adding the base, $\pi r^2$, gives the total surface area. The volume is not a surface fact: it has its home on [[prism-pyramid-volumes|Prism, Pyramid, Cylinder, Cone Volumes]], a third of the base area times the height.
 
 ## Useful observations
 - The unrolled sector is the problem half the time: its angle is $\frac{2\pi r}{\ell}$ radians, the fraction $\frac r\ell$ of a full turn.
@@ -2949,6 +2948,7 @@ The ratio itself is the usable half at AIME level, since the squared side ratio 
 "cyclic-perpendicular-diagonals": String.raw`
 ## Key forms
 - $a^2 + c^2 = b^2 + d^2 = 4R^2$ — for a cyclic quadrilateral with perpendicular diagonals and sides $a, b, c, d$ in order, opposite sides pair up
+- $\overset{\frown}{AB} + \overset{\frown}{CD} = \overset{\frown}{BC} + \overset{\frown}{DA} = 180^\circ$ — the arcs cut off by opposite sides are supplementary, and conversely a cyclic quadrilateral whose opposite arcs sum to $180^\circ$ has perpendicular diagonals
 - $a^2 + c^2 = b^2 + d^2$ holds for any quadrilateral with perpendicular diagonals; only the value $4R^2$ needs cyclicity
 - the perpendicular from the diagonals' intersection to a side, extended, bisects the opposite side — Brahmagupta's theorem
 - $\dfrac12 d_1d_2$ — the area, for perpendicular diagonals

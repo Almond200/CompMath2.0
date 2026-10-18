@@ -2202,7 +2202,7 @@ window.MATH_SECTIONS.push({
         {
           id: "cone-formulas",
           name: "Cone Surface Area",
-          latex: String.raw`\ell = \sqrt{r^2 + h^2}, \qquad A_{\text{lateral}} = \pi r\ell, \qquad SA = \pi r\ell + \pi r^2, \qquad V = \tfrac13\pi r^2h, \qquad \theta_{\text{sector}} = \frac{2\pi r}{\ell}`,
+          latex: String.raw`\ell = \sqrt{r^2 + h^2}, \qquad A_{\text{lateral}} = \pi r\ell, \qquad SA = \pi r\ell + \pi r^2, \qquad \theta_{\text{sector}} = \frac{2\pi r}{\ell}`,
           description: String.raw`A cone with base radius $r$, height $h$ and slant height $\ell = \sqrt{r^2 + h^2}$ has lateral surface area $\pi r\ell$ and total surface area $\pi r\ell + \pi r^2$. The lateral area uses the slant height, the distance from the tip to the edge of the base, not the height. Unrolled, the lateral surface is a sector of a circle of radius $\ell$ whose arc is the base's circumference $2\pi r$, and that flat picture is what problems about paths on a cone, or cones rolled from paper, really use.`,
           keywords: ["cone", "slant height", "lateral area", "unroll", "sector"],
           importance: "high",
