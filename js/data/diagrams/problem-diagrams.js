@@ -4097,4 +4097,14 @@
       cap(430, 270, "Triangle ABC with sides 13, 14, 15: AD ⊥ BC, DE ⊥ AC, and F on DE with AF ⊥ BF." + MM(ok))
     ]);
   })();
+  PROB["2012-amc-10b-14"] = (() => {
+    const s = 2 * Math.sqrt(3), P = [[0, 0], [s, 0], [s, s], [0, s]], T1 = [[0, 0], [s, 0], [s / 2, 3]], T2 = [[0, s], [s, s], [s / 2, s - 3]];
+    const ok = Math.abs(dist(T1[0], T1[2]) - s) < 1e-9 && Math.abs(dist(T2[0], T2[2]) - s) < 1e-9;
+    const Q = fitQ(P, 34, 430, 260), L = lineInt(T1[0], T1[2], T2[0], T2[2]), Rr = lineInt(T1[1], T1[2], T2[1], T2[2]);
+    return wrap(430, 260, [
+      poly([T1[2], L, T2[2], Rr].map(Q), "none", 0, ACCS), poly(P.map(Q), DIM, 2), poly(T1.map(Q), ACC, 1.6), poly(T2.map(Q), GLD, 1.6),
+      txt(add(Q([s / 2, 0]), [0, 18]), "2√3", DIM, 12),
+      cap(430, 260, "Two equilateral triangles on opposite sides of a square of side 2√3; their overlap is the shaded rhombus." + MM(ok))
+    ]);
+  })();
 })();
