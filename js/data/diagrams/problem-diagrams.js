@@ -4055,4 +4055,19 @@
       cap(430, 260, "Isosceles right triangle ABC with the right angle at C and area 12.5; the trisectors of angle C meet AB at D and E." + MM(ok))
     ]);
   })();
+  PROB["2015-amc-10b-19"] = PROB["2015-amc-12b-19"] = (() => {
+    const L = 6 * Math.SQRT2, Cm = [0, 0], Am = [L, 0], Bm = [0, L];
+    // square ABXY outside (away from C), square ACWZ below AC
+    const Xm = [L, L + L], Ym = [L + L, L], Wm = [0, -L], Zm = [L, -L], Mm = mid(Am, Bm);
+    const ok = [Xm, Ym, Zm, Wm].every(q => Math.abs(dist(Mm, q) - Math.sqrt(180)) < 1e-9) && Math.abs(dist(Am, Bm) - 12) < 1e-9;
+    const Q = fitQ([Wm, Zm, Xm, Ym, [Mm[0] - Math.sqrt(180), Mm[1]]], 18, 430, 320);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), X = Q(Xm), Y = Q(Ym), W = Q(Wm), Z = Q(Zm), M = Q(Mm);
+    return wrap(430, 320, [
+      circ(M, Math.sqrt(180) * Q.k, FNT, 1.4, "none", "5 4"), poly([A, B, X, Y], ACC, 1.8, ACCS), poly([A, C, W, Z], GLD, 1.8, GLDS), poly([A, B, C], DIM, 2),
+      rightAngle(C, A, B, 8, DIM), ...[A, B, C, X, Y, W, Z].map(q => dot(q, DIM, 3)),
+      txt(add(A, [10, 14]), "A", DIM, 13, "start"), txt(add(B, [-8, -4]), "B", DIM, 13, "end"), txt(add(C, [-8, 4]), "C", DIM, 13, "end"),
+      txt(add(X, [-8, -6]), "X", ACC, 13, "end"), txt(add(Y, [8, 4]), "Y", ACC, 13, "start"), txt(add(W, [-8, 10]), "W", GLD, 13, "end"), txt(add(Z, [8, 10]), "Z", GLD, 13, "start"),
+      cap(430, 320, "Right angle at C with AB = 12; squares ABXY and ACWZ stand outside the triangle, and X, Y, Z, W lie on one circle (dashed)." + MM(ok))
+    ]);
+  })();
 })();
