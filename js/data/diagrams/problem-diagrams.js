@@ -4026,4 +4026,19 @@
       cap(430, 300, "A quadrilateral inscribed in a circle of radius 200√2 with three sides of length 200; the fourth side is asked for." + MM(ok))
     ]);
   })();
+  PROB["2016-amc-10b-23"] = (() => {
+    const h = Math.sqrt(3) / 2, Hm = { A: [-0.5, -h], B: [0.5, -h], C: [1, 0], D: [0.5, h], E: [-0.5, h], F: [-1, 0] };
+    const at = (P, R, y) => { const t = (y - P[1]) / (R[1] - P[1]); return [P[0] + t * (R[0] - P[0]), y]; };
+    const y1 = -h / 3, y2 = h / 3, Wm = at(Hm.B, Hm.C, y1), Xm = at(Hm.C, Hm.D, y2), Ym = at(Hm.E, Hm.F, y2), Zm = at(Hm.F, Hm.A, y1);
+    const ok = Math.abs(dist(Wm, Zm) - 5 / 3) < 1e-9 && Math.abs(dist(Xm, Ym) - 5 / 3) < 1e-9;
+    const Q = fitQ(Object.values(Hm), 30, 430, 280), N = Object.keys(Hm), c = Q([0, 0]);
+    const V = N.map(n => Q(Hm[n])), W = Q(Wm), X = Q(Xm), Y = Q(Ym), Z = Q(Zm);
+    const lab = (q, t, col) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [14 * v[0] / n, 14 * v[1] / n + 4]), t, col, 13); };
+    return wrap(430, 280, [
+      poly([W, V[2], X, Y, V[5], Z], "none", 0, ACCS), poly(V, DIM, 2), seg(Z, W, ACC, 1.8), seg(Y, X, ACC, 1.8),
+      ...V.map(q => dot(q, DIM, 3)), ...[W, X, Y, Z].map(q => dot(q, ACC, 3)),
+      ...V.map((q, i) => lab(q, N[i], DIM)), lab(W, "W", ACC), lab(X, "X", ACC), lab(Y, "Y", ACC), lab(Z, "Z", ACC),
+      cap(430, 280, "Regular hexagon ABCDEF with lines AB, ZW, YX and ED parallel and equally spaced; hexagon WCXYFZ is shaded." + MM(ok))
+    ]);
+  })();
 })();
