@@ -3693,4 +3693,40 @@
       cap(430, 290, "Each 60° angle cut into three 20° angles; the shaded hexagon is where the three middle wedges overlap." + MM(ok))
     ]);
   })();
+
+  // 2025 AMC 10B #5: AB = 10, AC = 18, angle B = 130°, with the circumcircle and its center O.
+  PROB["2025-amc-10b-5"] = (() => {
+    const B0 = 130 * Math.PI / 180, sC = 10 * Math.sin(B0) / 18, Cang = Math.asin(sC), Aang = Math.PI - B0 - Cang;
+    const a = 18 * Math.sin(Aang) / Math.sin(B0);
+    const Bm = [0, 0], Cm = [a, 0], Am = [10 * Math.cos(B0), 10 * Math.sin(B0)];
+    const [Om, R] = circ3(Am, Bm, Cm);
+    const ok = Math.abs(dist(Am, Cm) - 18) < 1e-9 && Math.abs(angAt(Bm, Am, Cm) - B0) < 1e-9;
+    const Q = fitQ([[Om[0] - R, Om[1] - R], [Om[0] + R, Om[1] + R]], 18, 430, 290), k = Q.k;
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om);
+    return wrap(430, 290, [
+      circ(O, R * k, FNT, 1.4), poly([A, B, C], DIM, 2), seg(A, O, GLD, 1.6, "5 4"), seg(C, O, GLD, 1.6, "5 4"),
+      angleArc(B, C, A, 16, ACC), txt(add(B, [8, -14]), "130°", ACC, 12, "start"),
+      ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, GLD, 3.4),
+      gapLabel(A, [B, C, O], "A"), gapLabel(B, [A, C], "B"), gapLabel(C, [A, B, O], "C"), txt(add(O, [10, 4]), "O", GLD, 13, "start"),
+      txt(add(mid(A, B), [-27, -6]), "10", ACC, 12, "end"), txt(add(mid(A, C), [0, -8]), "18", ACC, 12),
+      cap(430, 290, "AB = 10, AC = 18, angle B = 130°; O is the center of the circle through A, B, C." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AMC 10B #7: Frances 15 m south of the locked gate; the box is x east of it, with unlocked gates 9 m east of the box and 8 m west of the locked gate.
+  PROB["2025-amc-10b-7"] = (() => {
+    const x = 25 / 7, Fm = [0, -15], Gm = [0, 0], Xm = [x, 0], Em = [x + 9, 0], Wm = [-8, 0];
+    const ok = Math.abs(dist(Fm, Em) + 9 - (dist(Fm, Wm) + 8 + x)) < 1e-9;
+    const Q = fitQ([[-10, -15], [x + 11, 2]], 26, 430, 260);
+    const F = Q(Fm), G = Q(Gm), X = Q(Xm), E = Q(Em), W = Q(Wm), L = Q([-10, 0]), Rr = Q([x + 11, 0]);
+    return wrap(430, 260, [
+      seg(L, Rr, DIM, 2.4), seg(F, G, FNT, 1.2, "3 3"),
+      seg(F, E, GLD, 1.6, "6 4"), seg(E, X, GLD, 1.6, "6 4"), seg(F, W, ACC, 1.6, "6 4"), seg(W, X, ACC, 1.6, "6 4"),
+      dot(F, DIM, 3.4), dot(G, DIM, 3.2), dot(E, GRN, 3.4), dot(W, GRN, 3.4), dot(X, ORG, 4),
+      txt(add(F, [0, 16]), "Frances"), txt(add(G, [-21, 17]), "locked", DIM, 11), txt(add(E, [0, -10]), "unlocked", GRN, 11), txt(add(W, [0, -10]), "unlocked", GRN, 11),
+      txt(add(X, [0, -10]), "box", ORG, 12), txt(add(mid(F, G), [-6, 0]), "15", DIM, 12, "end"),
+      txt(add(mid(G, X), [0, -8]), "x", DIM, 12), txt(add(mid(X, E), [0, -8]), "9", DIM, 12), txt(add(mid(W, G), [0, -8]), "8", DIM, 12),
+      cap(430, 260, "The fence runs east-west; the two dashed routes go through the two unlocked gates to the box." + MM(ok))
+    ]);
+  })();
 })();

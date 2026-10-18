@@ -51,6 +51,8 @@ def lift_from_app():
     out.append(src[i:src.index("\n", i) + 1])
     i = src.index("  const TITLE_STOP = {")
     out.append(src[i:src.index("\n  };", i) + 5])
+    i = src.index("  const CARD_TOPIC_STOP = {")
+    out.append(src[i:src.index("\n  };", i) + 5])
     i = src.index("  function topicsForCard(")
     out.append(src[i:src.index("\n  }\n", i) + 4])
     return "\n".join(out)
