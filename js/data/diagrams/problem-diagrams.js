@@ -4000,4 +4000,30 @@
       cap(430, 280, "Diameter AB of a circle of radius 2 extended to D with BD = 3, ED = 5 perpendicular to AD, and C where AE meets the circle." + MM(ok))
     ]);
   })();
+  PROB["2016-amc-10a-21"] = PROB["2016-amc-12a-15"] = (() => {
+    const Pm = [0, 1], Qm = [2 * Math.SQRT2, 2], Rm = [2 * Math.SQRT2 + 2 * Math.sqrt(6), 3];
+    const ok = Math.abs(dist(Pm, Qm) - 3) < 1e-9 && Math.abs(dist(Qm, Rm) - 5) < 1e-9;
+    const Q = fitQ([[-1, 0], [Rm[0] + 3, 6]], 24, 430, 240);
+    const P = Q(Pm), Qc = Q(Qm), R = Q(Rm), k = Q.k;
+    return wrap(430, 240, [
+      seg(Q([-1.6, 0]), Q([Rm[0] + 3.6, 0]), DIM, 2), circ(P, k, ACC, 1.8), circ(Qc, 2 * k, ACC, 1.8), circ(R, 3 * k, ACC, 1.8),
+      poly([P, Qc, R], GLD, 1.6, GLDS), ...[P, Qc, R].map(q => dot(q, DIM, 3)),
+      ...[[Pm, "P"], [Qm, "Q"], [Rm, "R"]].map(([m, t]) => txt(add(Q(m), [0, -8]), t, DIM, 13)),
+      ...[[Pm, "P′"], [Qm, "Q′"], [Rm, "R′"]].map(([m, t]) => txt(add(Q([m[0], 0]), [0, 16]), t, DIM, 12)),
+      txt(add(Q([Rm[0] + 3.4, 0]), [0, -6]), "l", DIM, 13),
+      cap(430, 240, "Circles of radii 1, 2 and 3 tangent to line l at P′, Q′ and R′, the middle one tangent to the other two; triangle PQR is shaded." + MM(ok))
+    ]);
+  })();
+
+  PROB["2016-amc-10a-24"] = PROB["2016-amc-12a-21"] = (() => {
+    const Rr = 200 * Math.SQRT2, a = 2 * Math.asin(1 / (2 * Math.SQRT2)), ang = [0, a, 2 * a, 3 * a].map(t => t - 1.5 * a + Math.PI / 2);
+    const Vm = ang.map(t => [Rr * Math.cos(t), Rr * Math.sin(t)]);
+    const ok = [0, 1, 2].every(i => Math.abs(dist(Vm[i], Vm[i + 1]) - 200) < 1e-6);
+    const Q = fitQ([[-Rr, -Rr], [Rr, Rr]], 22, 430, 300), V = Vm.map(Q), O = Q([0, 0]);
+    return wrap(430, 300, [
+      circ(O, Rr * Q.k, DIM, 2), poly(V, ACC, 2), ...V.map(q => dot(q, ACC, 3)),
+      ...[0, 1, 2].map(i => txt(add(mid(V[i], V[i + 1]), [0, -8]), "200", DIM, 12)), txt(add(mid(V[3], V[0]), [0, 16]), "?", ORG, 13),
+      cap(430, 300, "A quadrilateral inscribed in a circle of radius 200√2 with three sides of length 200; the fourth side is asked for." + MM(ok))
+    ]);
+  })();
 })();
