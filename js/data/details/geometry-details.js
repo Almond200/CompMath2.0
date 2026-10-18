@@ -3278,22 +3278,22 @@ Everywhere on the AMC 10 and 12 as points on two sides asking for a fraction of 
 
 "exradii": String.raw`
 ## Key forms
-- $r_a = \frac{A}{s - a} = s\tan\frac A2$ — the radius of the excircle opposite $A$, mirroring $r = \frac As$
+- $r_a = \frac{K}{s - a} = s\tan\frac A2$ — the radius of the excircle opposite $A$, mirroring $r = \frac Ks$
 - $\frac1r = \frac1{r_a} + \frac1{r_b} + \frac1{r_c}$ — the reciprocals of the exradii add up to the reciprocal of the inradius
-- $r\,r_ar_br_c = A^2$ — the product of the four radii is the square of the area
+- $r\,r_ar_br_c = K^2$ — the product of the four radii is the square of the area
 - $r_a + r_b + r_c = 4R + r$ — the exradii sum
 - $r_a = 4R\sin\frac A2\cos\frac B2\cos\frac C2$ — the trigonometric form
 - $\frac{r}{r_a} = \frac{s - a}{s}$ — the ratio of the homothety at $A$ carrying the incircle to the $A$-excircle
 
 ## Conditions
-The $A$-excircle is tangent to side $a$ and to the extensions of the other two sides; $s$ is the semiperimeter and $A$ the area, with angles $A$, $B$, $C$ written by their vertices.
+The $A$-excircle is tangent to side $a$ and to the extensions of the other two sides; $s$ is the semiperimeter, $K$ the area, $r$ the inradius and $R$ the circumradius, with angles $A$, $B$, $C$ written by their vertices.
 
 ## Why it works
-The excenter opposite $A$ sits at the intersection of the external bisectors from $B$ and $C$; joining it to the vertices splits the triangle with signed areas, giving $A = r_a(s - a)$ in place of $A = rs$. The tangent-length bookkeeping mirrors the incircle's, but the tangent length from $A$ is now $s$ itself, and that gives $r_a = s\tan\frac A2$ while $r = (s - a)\tan\frac A2$.
+The excenter opposite $A$ sits at the intersection of the external bisectors from $B$ and $C$; joining it to the vertices splits the triangle with signed areas, giving $K = r_a(s - a)$ in place of $K = rs$. The tangent-length bookkeeping mirrors the incircle's, but the tangent length from $A$ is now $s$ itself, and that gives $r_a = s\tan\frac A2$ while $r = (s - a)\tan\frac A2$.
 
 ## Useful observations
 - Any incircle technique has an excircle twin; the touch point of the $A$-excircle on $BC$ mirrors the incircle's touch point across the midpoint of $BC$.
-- Multiplying the four radius formulas, $r = \frac As$, $r_a = \frac A{s - a}$, $r_b = \frac A{s - b}$, $r_c = \frac A{s - c}$, gives $r\,r_ar_br_c = \frac{A^4}{s(s - a)(s - b)(s - c)} = A^2$ by Heron's Formula.
+- Multiplying the four radius formulas, $r = \frac Ks$, $r_a = \frac K{s - a}$, $r_b = \frac K{s - b}$, $r_c = \frac K{s - c}$, gives $r\,r_ar_br_c = \frac{K^4}{s(s - a)(s - b)(s - c)} = K^2$ by Heron's Formula.
 - The [[incenter-excenter-lemma|incenter-excenter lemma]] connects the excenter $I_A$ to the arc midpoints of the circumcircle.
 
 ## Applications
