@@ -4070,4 +4070,16 @@
       cap(430, 320, "Right angle at C with AB = 12; squares ABXY and ACWZ stand outside the triangle, and X, Y, Z, W lie on one circle (dashed)." + MM(ok))
     ]);
   })();
+  PROB["2014-amc-10b-21"] = (() => {
+    const h = Math.sqrt(96), Am = [0, 0], Bm = [33, 0], Dm = [2, h], Cm = [23, h];
+    const ok = Math.abs(dist(Am, Dm) - 10) < 1e-9 && Math.abs(dist(Bm, Cm) - 14) < 1e-9 && Math.abs(dist(Am, Cm) - 25) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 220);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm);
+    return wrap(430, 220, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.4, "4 3"), seg(B, D, FNT, 1.4, "4 3"), ...[A, B, C, D].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 14]), "A", DIM, 13, "end"), txt(add(B, [8, 14]), "B", DIM, 13, "start"), txt(add(C, [8, -6]), "C", DIM, 13, "start"), txt(add(D, [-8, -6]), "D", DIM, 13, "end"),
+      txt(add(mid(A, B), [0, 18]), "33", DIM, 12), txt(add(mid(C, D), [0, -8]), "21", DIM, 12), txt(add(mid(A, D), [-10, 4]), "10", DIM, 12, "end"), txt(add(mid(B, C), [10, 4]), "14", DIM, 12, "start"),
+      cap(430, 220, "Trapezoid ABCD with AB = 33 parallel to CD = 21, legs 10 and 14, and acute angles at A and B; the diagonals are dashed." + MM(ok))
+    ]);
+  })();
 })();
