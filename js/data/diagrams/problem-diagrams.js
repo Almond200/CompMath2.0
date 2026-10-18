@@ -3899,4 +3899,18 @@
       cap(430, 300, "Quadrilateral ABCD with right angles at B and C, AC = 20 and CD = 30; the diagonals cross at E with AE = 5." + MM(ok))
     ]);
   })();
+  PROB["2019-amc-10b-16"] = (() => {
+    const Cm = [0, 0], Am = [0, 4], Bm = [8, 0], Dm = [3.2, 2.4], Em = [5, 0];
+    const ok = Math.abs(dist(Cm, Dm) - 4) < 1e-9 && Math.abs(dist(Dm, Em) - 3) < 1e-9 && Math.abs(dist(Em, Bm) - 3) < 1e-9 && Math.abs((Dm[0] - Am[0]) * (Bm[1] - Am[1]) - (Dm[1] - Am[1]) * (Bm[0] - Am[0])) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 34, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 250, [
+      poly([A, B, C], DIM, 2), seg(C, D, ACC, 1.8), seg(D, E, GLD, 1.8), rightAngle(C, A, B, 9, DIM),
+      ticksOn(A, C, 1, ACC), ticksOn(C, D, 1, ACC), ticksOn(D, E, 2, GLD), ticksOn(E, B, 2, GLD),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-8, 4]), "A", DIM, 13, "end"), txt(add(B, [8, 6]), "B", DIM, 13, "start"), txt(add(C, [-8, 14]), "C", DIM, 13, "end"),
+      txt(add(D, [6, -8]), "D", DIM, 13, "start"), txt(add(E, [0, 18]), "E", DIM, 13),
+      cap(430, 250, "Right angle at C, with AC = CD (blue ticks), DE = EB (gold ticks) and AC : DE = 4 : 3." + MM(ok))
+    ]);
+  })();
 })();
