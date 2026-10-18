@@ -8,7 +8,7 @@
 
 - **Counts:** 714 cards (527 formulas, 148 methods, 39 patterns). 4,675 problems, 4,616 with statements, about 1,370 with strategies. 228 problems have figures drawn for the app.
 - **Done most recently:** 2.7a, the card-by-card practice pass, is finished (every card with problems checked; `node tools/practice-file.js <file>` reports 0 VAGUE for all five card files). 2.7c, every symbol defined on its own card, is finished: all 714 cards read.
-- **Waiting on the owner: step B (2.4e-ii).** Twelve proposed box rewrites, B1 to B12, are in `QUESTIONS.md`, "Open now" (`node tools/prose-boxes.js 0.6` lists the prose boxes). Apply the approved ones when the answer comes. **In progress meanwhile: step C**, the card-file re-check. **Next action:** go through the five card files and their write-ups for general issues (start with the duplicate-fact report, `python3 tools/find-duplicate-forms.py`, and the known `cone-formulas` volume).
+- **Waiting on the owner: step B (2.4e-ii).** Twelve proposed box rewrites, B1 to B12, are in `QUESTIONS.md`, "Open now" (`node tools/prose-boxes.js 0.6` lists the prose boxes). Apply the approved ones when the answer comes. **In progress meanwhile: step C**, the card-file re-check. **Next action:** go through the five card files and their write-ups for general issues (done so far: the `cone-formulas` volume moved to its home, C1 to C3 in `QUESTIONS.md`). Remaining checks: stale or misleading cross-references in write-ups, examples whose numbers no longer match their card, and anything else that drifted from CONVENTIONS.
 - **Missing cards found while working** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P13 are written; a new one goes at the top of the table as P14), for approval before they are written; the problem cites the nearest card meanwhile.
 
 ## The road ahead, in order
@@ -17,7 +17,7 @@
 
 **B. 2.4e-ii: prose formula boxes on card faces.** Measure the boxes that are written as prose rather than formulas, propose rewrites in `QUESTIONS.md`, and apply them after the owner approves. A box that cannot be shortened stays as it is.
 
-**C. The card-file re-check (general issues).** One more pass over the five card files and their write-ups for anything wrong: facts stated on two cards (one fact, one home; for example `cone-formulas` restates $V = \tfrac13\pi r^2h$, whose home is `prism-pyramid-volumes`), stale links, wrong importance or tier, examples that no longer fit, formatting that drifted from CONVENTIONS.
+**C. The card-file re-check (general issues).** One more pass over the five card files and their write-ups for anything wrong: facts stated on two cards (one fact, one home), stale links, wrong importance or tier, examples that no longer fit, formatting that drifted from CONVENTIONS.
 
 **D. Write-ups for every practice problem that has none (2.7b).** About 3,300 problems have no cards and no strategy. Work through them by contest: **AMC 10 first, then AMC 12, then AMC 8**, newest paper first within each, with the per-problem routine below (tags for the best route, a strategy paragraph, an "Alternatively, ..." paragraph when a second good route exists, a figure for a geometry problem printed without one, every number checked by script). AMC 10 and AMC 12 share many problems: a shared problem gets the same entry in both. While doing this, check each tagged card's `topics` list (the chips on a problem page come from it): a card whose topics over-reach is fixed then (Rationalizing carries complex numbers and sequences, so 2002 AIME I #2 shows those chips). Commit every 8 to 10 problems. When the three contests are done, **stop and report to the owner** before going on.
 
@@ -52,7 +52,7 @@
 - a dihedral angle cites the `dihedral-angle` method; an isosceles trapezoid cut by its altitudes cites the `isosceles-trapezoid` pattern; corner triangles similar by angles cite `triangle-similarity`, with `similar-figures-ratios` only for the area scaling;
 - spheres in space that touch cite `triangle-of-centers` too (join the centers); `cross-section-method` only where one plane through an axis or the centers holds the whole picture; a sphere's outline in a 3D figure is drawn with `sphereOutline`, not a circle;
 - before drawing a figure, check `PROB["<slug>"]` does not exist already (`check-statements.py` fails on a duplicate);
-- a cone's volume cites `prism-pyramid-volumes`. (`cone-formulas` also states $V = \tfrac13\pi r^2h$, a fact whose home is the volume card: one to fix in the card-file re-check.)
+- a cone's volume cites `prism-pyramid-volumes` (since 2026-10-18 `cone-formulas` no longer states it);
 
 ## Blockers and caveats
 - LIVE (`live.poshenloh.com`) returns 403 from the cloud container. Fetching works on the Mac with `tools/fetch-live-statements.py`, which caches pages in `~/aops-cache/live/`. Stanley will upload that cache to `tools/live-cache/` for concept hints.

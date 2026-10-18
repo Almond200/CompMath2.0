@@ -24,6 +24,15 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 Kept as they are (a sentence is the statement, or the box is a schematic of a move): Sylvester–Gallai, Napoleon, Desargues, Brianchon, Pascal, Simson, Morley, Eulerian paths, Helly, the orthocentric system, and the method and pattern schematics (Trig Bashing, Unfolding, Organized Listing, Bijections, the Extremal Principle and the rest).
 
+### Card-file re-check findings (step C, 2026-10-18)
+Fixed already: `cone-formulas` no longer restates the cone volume, whose home is `prism-pyramid-volumes`. Three calls are yours:
+
+| # | Card | Finding | Proposal |
+|---|---|---|---|
+| C1 | Pitot's Theorem | tier AMC, but its level is AIME only and its one tagged problem is an AIME | tier AIME Early (or add AMC 12 to its level if you see it as AMC material) |
+| C3 | Tier AMC, level without AMC | Radical Axis, Descartes' Circle Theorem, Isosceles Tetrahedron, Product-to-Sum, Partitions, Roots of Unity Filter carry tier AMC but list only AIME (and Olympiad) as their level, which is what places them in the AIME study routes; each has AMC 10 or AMC 12 problems tagged | either keep them as they are (AMC-tier facts studied on the AIME route), or add AMC 10/12 to their level, which moves them into the AMC routes |
+| C2 | High importance with no tagged problem yet | Stretching One Axis Scales Area, Determinant of a Small Matrix, Area Ratio from Base Ratios, and the proof methods Direct Proof, Proof by Contradiction, Proving the Contrapositive, Proof by Cases | keep high for now and revisit after step D tags the untagged problems, when real counts exist |
+
 A new candidate card from the practice work goes into the first table below as P14.
 
 ## Answered (kept as the record, newest first)
