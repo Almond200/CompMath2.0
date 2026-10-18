@@ -4107,4 +4107,160 @@
       cap(430, 260, "Two equilateral triangles on opposite sides of a square of side 2√3; their overlap is the shaded rhombus." + MM(ok))
     ]);
   })();
+
+  PROB["2004-amc-10b-9"] = (() => {
+    const O = [0, 0], S = [[0, 0], [10, 0], [10, 10], [0, 10]];
+    const ok = Math.abs(dist(O, S[1]) - 10) < 1e-9 && dist(O, S[2]) > 10;
+    const Q = fitQ([[-10, -10], [10, 10]], 34, 430, 260), r = 10 * Q.k;
+    return wrap(430, 260, [
+      circ(Q(O), r, GLD, 1.8, GLDS), poly(S.map(Q), ACC, 2, ACCS), dot(Q(O), DIM, 3.5),
+      seg(Q(O), Q([-10, 0]), DIM, 1.4, "4 3"), txt(add(Q([-5, 0]), [0, -7]), "10", DIM, 12), txt(add(Q([5, 10]), [0, -7]), "10", DIM, 12),
+      cap(430, 260, "A square of side 10 and a circle of radius 10 centered at one of its corners; a quarter of the circle lies in the square." + MM(ok))
+    ]);
+  })();
+
+  PROB["2004-amc-10b-22"] = (() => {
+    const C = [0, 0], B = [12, 0], A = [0, 5], I = [2, 2], O = [6, 2.5];
+    const dHyp = Math.abs(5 * I[0] + 12 * I[1] - 60) / 13;
+    const ok = Math.abs(dHyp - 2) < 1e-9 && Math.abs(dist(O, A) - 6.5) < 1e-9 && Math.abs(dist(O, C) - 6.5) < 1e-9 && Math.abs(dist(O, I) - Math.sqrt(65) / 2) < 1e-9;
+    const Q = fitQ([[-0.5, -4], [12.5, 9]], 30, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), 6.5 * k, FNT, 1.5), circ(Q(I), 2 * k, GLD, 1.8, GLDS), poly([A, B, C].map(Q), DIM, 2), rightAngle(Q(C), Q(B), Q(A), 10),
+      seg(Q(I), Q(O), ACC, 2.2), dot(Q(I), GLD, 3.5), dot(Q(O), ACC, 3.5),
+      txt(add(Q(I), [-10, 4]), "I", GLD, 12.5), txt(add(Q(O), [2, 17]), "O", ACC, 12.5),
+      txt(add(Q([0, 2.5]), [-12, 4]), "5", DIM, 12), txt(add(Q([6, 0]), [0, 16]), "12", DIM, 12), txt(add(Q([9, 1.25]), [10, -8]), "13", DIM, 12),
+      cap(430, 270, "The 5-12-13 triangle with its incircle (center I) and circumcircle (center O, the hypotenuse's midpoint)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2004-amc-10b-24"] = (() => {
+    const B = [0, 0], C = [9, 0], A = [11 / 3, 8 * Math.sqrt(5) / 3];
+    const [O, R] = circ3(A, B, C), D = [4.5, O[1] - R];
+    const ok = Math.abs(dist(A, B) - 7) < 1e-9 && Math.abs(dist(A, C) - 8) < 1e-9 && Math.abs(angAt(A, B, D) - angAt(A, D, C)) < 1e-9 &&
+      Math.abs(dist(A, D) / dist(C, D) - 5 / 3) < 1e-9;
+    const Q = fitQ([[O[0] - R, O[1] - R], [O[0] + R, O[1] + R]], 22, 430, 280), k = Q.k;
+    const P = [A, B, C, D].map(Q);
+    return wrap(430, 280, [
+      circ(Q(O), R * k, FNT, 1.5), poly([P[0], P[1], P[2]], DIM, 2), seg(P[0], P[3], ACC, 2), seg(P[1], P[3], GLD, 1.8), seg(P[2], P[3], GLD, 1.8),
+      angleArc(P[0], P[1], P[3], 24, ACC), angleArc(P[0], P[3], P[2], 30, ACC),
+      gapLabel(P[0], [P[1], P[2], P[3]], "A"), gapLabel(P[1], [P[0], P[2], P[3]], "B"), gapLabel(P[2], [P[0], P[1], P[3]], "C"), gapLabel(P[3], [P[0], P[1], P[2]], "D"),
+      txt(add(mid(P[0], P[1]), [-12, 0]), "7", DIM, 12), txt(add(mid(P[0], P[2]), [12, 0]), "8", DIM, 12), txt(add(Q([2.4, 0]), [0, -6]), "9", DIM, 12),
+      cap(430, 280, "Triangle ABC with AB = 7, AC = 8, BC = 9; the bisector of angle A meets the circumcircle again at D." + MM(ok))
+    ]);
+  })();
+
+  PROB["2003-amc-10a-17"] = (() => {
+    const O = [0, 0], V = [90, 210, 330].map(a => [Math.cos(rad(a)), Math.sin(rad(a))]);
+    const ok = Math.abs(dist(V[0], V[1]) - Math.sqrt(3)) < 1e-9 && Math.abs(dist(V[1], V[2]) - Math.sqrt(3)) < 1e-9;
+    const Q = fitQ([[-1, -1], [1, 1]], 30, 430, 260), P = V.map(Q);
+    return wrap(430, 260, [
+      circ(Q(O), Q.k, GLD, 1.8, GLDS), poly(P, ACC, 2, ACCS), seg(Q(O), P[1], DIM, 1.5, "4 3"), dot(Q(O), DIM, 3.5),
+      txt(add(mid(Q(O), P[1]), [4, -8]), "R", DIM, 12.5), txt(add(mid(P[1], P[2]), [0, 18]), "R√3", ACC, 12.5),
+      cap(430, 260, "An equilateral triangle in its circumscribed circle of radius R; each side is R√3." + MM(ok))
+    ]);
+  })();
+
+  PROB["2002-amc-10a-19"] = (() => {
+    const H = [0, 1, 2, 3, 4, 5].map(k => [Math.cos(rad(60 * k)), Math.sin(rad(60 * k))]);
+    const sector = (c, r, a0, a1) => { const pts = [c]; for (let i = 0; i <= 48; i++) pts.push(onC(c, r, a0 + (a1 - a0) * i / 48)); return pts; };
+    const S0 = sector(H[0], 2, -120, 120), S1 = sector(H[1], 1, 120, 180), S5 = sector(H[5], 1, 180, 240);
+    const ok = Math.abs(dist(H[0], H[1]) - 1) < 1e-9 && Math.abs(dist(onC(H[0], 2, 120), H[1]) - 1) < 1e-9 && Math.abs(dist(onC(H[0], 2, -120), H[5]) - 1) < 1e-9;
+    const Q = fitQ([[-1, -2], [3, 2]], 26, 430, 270);
+    return wrap(430, 270, [
+      poly(S0.map(Q), GLD, 1.6, GLDS), poly(S1.map(Q), GLD, 1.6, GLDS), poly(S5.map(Q), GLD, 1.6, GLDS),
+      poly(H.map(Q), DIM, 2, "var(--bg)"), seg(Q(H[0]), Q(onC(H[0], 2, 30)), ACC, 2), dot(Q(H[0]), ACC, 4),
+      txt(add(Q(onC(H[0], 1, 30)), [-4, -9]), "2", ACC, 12.5), txt(add(Q(mid(H[0], H[1])), [10, 2]), "1", DIM, 12),
+      cap(430, 270, "The hexagonal doghouse (side 1) with the region a 2-yard rope from one vertex reaches: a 240° sector and two 60° sectors." + MM(ok))
+    ]);
+  })();
+
+  PROB["2002-amc-10b-17"] = (() => {
+    const w = 1 + Math.SQRT2, V = [[1, w], [w, 1], [w, -1], [1, -w], [-1, -w], [-w, -1], [-w, 1], [-1, w]];
+    const [A, D, G] = [V[0], V[3], V[6]], area = Math.abs((D[0] - A[0]) * (G[1] - A[1]) - (D[1] - A[1]) * (G[0] - A[0])) / 2;
+    const ok = V.every((P, i) => Math.abs(dist(P, V[(i + 1) % 8]) - 2) < 1e-9) && Math.abs(area - (4 + 3 * Math.SQRT2)) < 1e-9;
+    const Q = fitQ([[-w, -w], [w, w]], 26, 430, 270), P = V.map(Q), names = "ABCDEFGH";
+    return wrap(430, 270, [
+      poly([A, D, G].map(Q), ACC, 2, ACCS), poly(P, DIM, 2),
+      ...P.map((p, i) => gapLabel(p, [P[(i + 1) % 8], P[(i + 7) % 8]], names[i])),
+      txt(add(mid(P[0], P[1]), [10, -6]), "2", DIM, 12),
+      cap(430, 270, "Regular octagon ABCDEFGH with sides 2 and the triangle ADG." + MM(ok))
+    ]);
+  })();
+
+  PROB["2002-amc-10b-22"] = (() => {
+    const a = 8, b = Math.sqrt(105), O = [0, 0], X = [2 * a, 0], Y = [0, 2 * b], M = [a, 0], N = [0, b];
+    const ok = Math.abs(dist(X, N) - 19) < 1e-9 && Math.abs(dist(Y, M) - 22) < 1e-9 && Math.abs(dist(X, Y) - 26) < 1e-9;
+    const Q = fitQ([O, X, Y], 30, 430, 280), P = [O, X, Y, M, N].map(Q);
+    return wrap(430, 280, [
+      poly([P[0], P[1], P[2]], DIM, 2), rightAngle(P[0], P[1], P[2], 10), seg(P[1], P[4], ACC, 2), seg(P[2], P[3], GLD, 2),
+      ticksOn(P[0], P[3], 1), ticksOn(P[3], P[1], 1), ticksOn(P[0], P[4], 2), ticksOn(P[4], P[2], 2),
+      gapLabel(P[0], [P[1], P[2]], "O"), gapLabel(P[1], [P[0], P[2], P[4]], "X"), gapLabel(P[2], [P[0], P[1], P[3]], "Y"),
+      gapLabel(P[3], [P[0], P[1], P[2]], "M"), gapLabel(P[4], [P[0], P[2], P[1]], "N"),
+      txt(add(mid(P[1], P[4]), [10, -8]), "19", ACC, 12), txt(add(mid(P[2], P[3]), [10, 4]), "22", GLD, 12),
+      cap(430, 280, "Right triangle XOY with M, N the midpoints of the legs; XN = 19 and YM = 22." + MM(ok))
+    ]);
+  })();
+
+  PROB["2001-amc-10-15"] = (() => {
+    const P1 = [0, 0], P2 = [30, 40], R1 = [15, 0], R2 = [45, 40], F = foot(R1, P1, P2);
+    const ok = Math.abs(dist(P1, P2) - 50) < 1e-9 && Math.abs(dist(R1, R2) - 50) < 1e-9 && Math.abs(dist(R1, F) - 12) < 1e-9;
+    const Q = fitQ([[-12, 0], [57, 40]], 30, 430, 260);
+    return wrap(430, 260, [
+      poly([P1, R1, R2, P2].map(Q), "none", 0, ACCS), seg(Q([-12, 0]), Q([57, 0]), DIM, 2), seg(Q([-12, 40]), Q([57, 40]), DIM, 2),
+      seg(Q(P1), Q(P2), ACC, 2.2), seg(Q(R1), Q(R2), ACC, 2.2), seg(Q(R1), Q(F), GLD, 1.8, "4 3"), rightAngle(Q(F), Q(R1), Q(P2), 8, GLD),
+      txt(add(Q([7.5, 0]), [0, 16]), "15", DIM, 12), txt(add(Q([39, 32]), [16, 0]), "50", ACC, 12), txt(add(Q([-12, 20]), [14, 4]), "40", DIM, 12),
+      txt(add(Q(mid(R1, F)), [20, 8]), "d", GLD, 13),
+      cap(430, 260, "Curbs 40 apart and two parallel stripes of length 50, which cut 15 off the curb; d is the distance between the stripes." + MM(ok))
+    ]);
+  })();
+
+  PROB["2001-amc-10-21"] = (() => {
+    const r = 30 / 11, L = [-5, 0], Rt = [5, 0], T = [0, 12], R = [[-r, 0], [r, 0], [r, 2 * r], [-r, 2 * r]];
+    const onSide = (P, A, B) => Math.abs((B[0] - A[0]) * (P[1] - A[1]) - (B[1] - A[1]) * (P[0] - A[0])) < 1e-9;
+    const ok = onSide(R[2], Rt, T) && onSide(R[3], L, T);
+    const Q = fitQ([[-6, 0], [6, 12]], 26, 430, 280);
+    return wrap(430, 280, [
+      poly([L, Rt, T].map(Q), DIM, 2), poly(R.map(Q), ACC, 2, ACCS), seg(Q(T), Q([0, 0]), FNT, 1.2, "4 3"),
+      txt(add(Q([2.5, 0]), [0, 16]), "5", DIM, 12), txt(add(Q([0, 7]), [-10, 0]), "12", DIM, 12), txt(add(Q([r, r]), [12, 4]), "2r", ACC, 12),
+      cap(430, 280, "The cross-section through the axis: the cone is a triangle of base 10 and height 12, the cylinder a square of side 2r." + MM(ok))
+    ]);
+  })();
+
+  PROB["2001-amc-10-24"] = (() => {
+    const a = 1.75, b = 7, A = [0, 7], D = [0, 0], B = [a, 7], C = [b, 0];
+    const ok = Math.abs(dist(B, C) - (a + b)) < 1e-9 && Math.abs(a * b - 12.25) < 1e-9;
+    const Q = fitQ([[0, 0], [7, 7]], 30, 430, 270), P = [A, B, C, D].map(Q);
+    return wrap(430, 270, [
+      poly(P, DIM, 2), seg(P[1], Q([a, 0]), FNT, 1.4, "4 3"), rightAngle(P[0], P[1], P[3], 9), rightAngle(P[3], P[0], P[2], 9),
+      gapLabel(P[0], [P[1], P[3]], "A"), gapLabel(P[1], [P[0], P[2]], "B"), gapLabel(P[2], [P[1], P[3]], "C"), gapLabel(P[3], [P[0], P[2]], "D"),
+      txt(add(Q([0, 3.5]), [-12, 4]), "7", DIM, 12), txt(add(Q([a / 2, 7]), [0, -8]), "a", DIM, 12.5), txt(add(Q([3.5, 0]), [0, 16]), "b", DIM, 12.5),
+      txt(add(Q(mid(B, C)), [14, -4]), "a + b", ACC, 12),
+      cap(430, 270, "Right trapezoid ABCD with AD = 7 perpendicular to both bases and BC = AB + CD." + MM(ok))
+    ]);
+  })();
+
+  PROB["2000-amc-10-18"] = (() => {
+    const out = [];
+    [[5, 5, 0], [0, 5, 90], [0, 0, 180], [5, 0, 270]].forEach(([cx, cy, a0]) => { for (let i = 0; i <= 12; i++) out.push(onC([cx, cy], 1, a0 + 90 * i / 12)); });
+    const S = [[0, 0], [5, 0], [5, 5], [0, 5]], In = [[1, 1], [4, 1], [4, 4], [1, 4]];
+    const ok = Math.abs(dist(out[0], [6, 5]) - 0) < 1e-9 && Math.abs(25 - 9 + 20 + Math.PI - 39.14) < 0.01;
+    const Q = fitQ([[-1, -1], [6, 6]], 24, 430, 270);
+    return wrap(430, 270, [
+      poly(out.map(Q), GLD, 1.6, GLDS), poly(In.map(Q), FNT, 1.2, "var(--bg)", "4 3"), poly(S.map(Q), ACC, 2.2),
+      txt(add(Q([2.5, 0]), [0, -8]), "5", ACC, 12), seg(Q([5, 2.5]), Q([6, 2.5]), DIM, 1.4), txt(add(Q([5.5, 2.5]), [0, -6]), "1", DIM, 12),
+      cap(430, 270, "The 5 km square path (blue) and everything within 1 km of it: a band inside, rectangles outside, quarter circles at the corners." + MM(ok))
+    ]);
+  })();
+
+  PROB["2000-amc-10-19"] = (() => {
+    const m = 0.75, a = 2 * m, b = 1 / (2 * m), O = [0, 0], X = [1 + a, 0], Y = [0, 1 + b], P = [1, 1];
+    const ok = Math.abs(P[0] / X[0] + P[1] / Y[1] - 1) < 1e-9 && Math.abs(a / 2 - m) < 1e-9 && Math.abs(b / 2 - 1 / (4 * m)) < 1e-9;
+    const Q = fitQ([O, X, Y], 34, 430, 270);
+    return wrap(430, 270, [
+      poly([[1, 0], X, P].map(Q), "none", 0, GLDS), poly([[0, 1], P, Y].map(Q), "none", 0, ACCS), poly([O, [1, 0], P, [0, 1]].map(Q), ACC, 1.8),
+      poly([O, X, Y].map(Q), DIM, 2), rightAngle(Q(O), Q(X), Q(Y), 9), dot(Q(P), DIM, 3.5),
+      txt(add(Q([0.5, 0.5]), [0, 4]), "1", ACC, 13), txt(add(Q([1.45, 0.3]), [0, 4]), "m", GLD, 13), txt(add(Q([0.3, 1.2]), [0, 4]), "?", ACC, 13),
+      cap(430, 270, "Lines through a point of the hypotenuse, parallel to the legs, cut off a square and two small right triangles." + MM(ok))
+    ]);
+  })();
 })();
