@@ -8,7 +8,7 @@
 
 - **Counts:** 714 cards (527 formulas, 148 methods, 39 patterns). 4,675 problems, 4,616 with statements, about 1,370 with strategies. 228 problems have figures drawn for the app.
 - **Done most recently:** 2.7a, the card-by-card practice pass, is finished (every card with problems checked; `node tools/practice-file.js <file>` reports 0 VAGUE for all five card files). 2.7c, every symbol defined on its own card, is finished: all 714 cards read.
-- **In progress: step B below (2.4e-ii).** **Next action:** measure every card whose formula box is prose rather than formulas, and write the proposals into `QUESTIONS.md`, "Open now".
+- **Waiting on the owner: step B (2.4e-ii).** Twelve proposed box rewrites, B1 to B12, are in `QUESTIONS.md`, "Open now" (`node tools/prose-boxes.js 0.6` lists the prose boxes). Apply the approved ones when the answer comes. **In progress meanwhile: step C**, the card-file re-check. **Next action:** go through the five card files and their write-ups for general issues (start with the duplicate-fact report, `python3 tools/find-duplicate-forms.py`, and the known `cone-formulas` volume).
 - **Missing cards found while working** go to `QUESTIONS.md`, "Candidate new cards from the practice pass" (P1 to P13 are written; a new one goes at the top of the table as P14), for approval before they are written; the problem cites the nearest card meanwhile.
 
 ## The road ahead, in order

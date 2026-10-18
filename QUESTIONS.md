@@ -4,7 +4,27 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-Nothing is waiting on the owner. Step B of the plan (2.4e-ii, prose formula boxes) will add its proposals here, and a new candidate card from the practice work goes into the first table below as P14.
+### Prose formula boxes (2.4e-ii, 2026-10-18)
+`node tools/prose-boxes.js 0.6` lists the 127 cards whose formula box is mostly words (share of characters inside `\text{}`). Most are methods and patterns, whose box is a schematic of the move, or theorems whose statement is a sentence (Desargues, Sylvester–Gallai, Napoleon); those stay as they are. These are the ones where symbols would say the same thing more shortly. Answer per row: yes, no, or a different wording. Nothing changes until you answer.
+
+| # | Card | Box now | Proposed box |
+|---|---|---|---|
+| B1 | Pairing Elements to Bound a Set | at most one from each pair | $\lvert S \cap P_i\rvert \le 1 \text{ for every pair } P_i \implies \lvert S\rvert \le \#\text{pairs}$ |
+| B2 | Points in Convex Position | any 5 points in general position contain 4 in convex position | $\mathrm{ES}(4) = 5,\ \ \mathrm{ES}(5) = 9,\ \ \mathrm{ES}(n) \le \binom{2n-4}{n-2} + 1$ (the description already defines $\mathrm{ES}(n)$) |
+| B3 | Miquel Point of a Complete Quadrilateral | the 4 circumcircles of a complete quadrilateral meet at one point $M$ | $\odot(\triangle_1) \cap \odot(\triangle_2) \cap \odot(\triangle_3) \cap \odot(\triangle_4) = \{M\}$, with $\triangle_i$ the triangle of the three lines other than $\ell_i$ |
+| B4 | Gergonne & Nagel Points | cevians to the incircle (or excircle) touch points concur | $\frac{s-b}{s-c}\cdot\frac{s-c}{s-a}\cdot\frac{s-a}{s-b} = 1$ (Ceva for the incircle touch points: Gergonne point), and the reciprocal ratios for the excircle touch points (Nagel point) |
+| B5 | Van Aubel's Theorem | squares on the sides ⟹ opposite-center segments equal and ⊥ | $O_1O_3 = O_2O_4,\ \ O_1O_3 \perp O_2O_4$, with $O_1, \ldots, O_4$ the centers of the squares on the sides in order |
+| B6 | Dilworth's Theorem | min chains covering a poset = size of the largest antichain | $\min \#\{\text{chains covering } P\} = \max\,\lvert\text{antichain}\rvert$ |
+| B7 | Cavalieri's Principle | equal cross-sections at every height ⟹ equal volumes | $A_1(h) = A_2(h) \text{ for every } h \implies V_1 = V_2$ |
+| B8 | Newton–Gauss Line | complete quadrilateral ⟹ its 3 diagonal midpoints are collinear | $M_{AC},\ M_{BD},\ M_{EF} \text{ collinear}$, with $E$, $F$ the two extra vertices and $M_{XY}$ the midpoint of $XY$ |
+| B9 | Minkowski's Lattice Point Theorem | symmetric convex, area > 4 ⟹ a nonzero lattice point inside | $K = -K \text{ convex},\ [K] \gt 4 \implies K \cap \mathbb{Z}^2 \ne \{0\}$ |
+| B10 | Kőnig's Theorem | bipartite: max matching = min vertex cover | $G \text{ bipartite} \implies \nu(G) = \tau(G)$, with $\nu$ the largest matching and $\tau$ the smallest vertex cover |
+| B11 | Erdős–Ginzburg–Ziv Theorem | any $2n-1$ integers contain $n$ with sum divisible by $n$ | $a_1, \ldots, a_{2n-1} \in \mathbb{Z} \implies n \mid \sum_{i \in I} a_i \text{ for some } \lvert I\rvert = n$ |
+| B12 | Zsigmondy's Theorem | $a^n - b^n$ has a primitive prime divisor (with rare small exceptions) | $\exists\, p \mid a^n - b^n \text{ with } p \nmid a^k - b^k \ (k \lt n)$, except $2^6 - 1^6$ and $n = 2$ with $a + b$ a power of $2$ |
+
+Kept as they are (a sentence is the statement, or the box is a schematic of a move): Sylvester–Gallai, Napoleon, Desargues, Brianchon, Pascal, Simson, Morley, Eulerian paths, Helly, the orthocentric system, and the method and pattern schematics (Trig Bashing, Unfolding, Organized Listing, Bijections, the Extremal Principle and the rest).
+
+A new candidate card from the practice work goes into the first table below as P14.
 
 ## Answered (kept as the record, newest first)
 
