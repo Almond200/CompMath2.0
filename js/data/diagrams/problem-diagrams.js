@@ -3927,4 +3927,34 @@
       cap(430, 280, "Regular hexagon ABCDEF with side 1: triangle ACE (blue) and triangle XYZ on the midpoints of AB, CD, EF (gold); their overlap is the hexagon asked about." + MM(ok))
     ]);
   })();
+  PROB["2017-amc-10a-21"] = PROB["2017-amc-12a-19"] = (() => {
+    const x = 12 / 7, y = 60 / 37, k = 40;
+    const ok = Math.abs(x / 4 + x / 3 - 1) < 1e-9 && Math.abs(y / 5 - (12 / 5 - y) / (12 / 5)) < 1e-9;
+    // left: legs along the axes, square at the right angle
+    const L = q => [24 + k * q[0], 200 - k * q[1]];
+    const lt = [[0, 0], [4, 0], [0, 3]].map(L), ls = [[0, 0], [x, 0], [x, x], [0, x]].map(L);
+    // right: hypotenuse along the bottom, apex at height 12/5 above the point 16/5 from the left end
+    const R = q => [222 + k * q[0], 200 - k * q[1]], h = 12 / 5, u = 5 * (h - y) / h;
+    const rt = [[0, 0], [5, 0], [16 / 5, h]].map(R), x0 = 16 / 5 - (16 / 5) * (h - y) / h;
+    const rs = [[x0, 0], [x0 + y, 0], [x0 + y, y], [x0, y]].map(R);
+    return wrap(430, 240, [
+      poly(lt, DIM, 2), poly(ls, ACC, 1.8, ACCS), poly(rt, DIM, 2), poly(rs, GLD, 1.8, GLDS),
+      txt(add(mid(lt[0], lt[1]), [0, 18]), "4", DIM, 12), txt(add(mid(lt[0], lt[2]), [-10, 4]), "3", DIM, 12, "end"), txt(add(mid(ls[1], ls[2]), [10, 4]), "x", ACC, 13, "start"),
+      txt(add(mid(rt[0], rt[1]), [0, 18]), "5", DIM, 12), txt(add(mid(rs[1], rs[2]), [10, 4]), "y", GLD, 13, "start"),
+      cap(430, 240, "Two 3-4-5 triangles: a square of side x at the right angle (left), and a square of side y standing on the hypotenuse (right)." + MM(ok && Math.abs(u - (5 - 5 * y / h)) < 1e-9))
+    ]);
+  })();
+
+  PROB["2017-amc-10a-22"] = (() => {
+    const s = 1, r = s / Math.sqrt(3), Bm = [0, 0], Cm = [s, 0], Am = [s / 2, s * Math.sqrt(3) / 2], Om = [s / 2, -r / 2];
+    const ok = Math.abs(dist(Om, Bm) - r) < 1e-9 && Math.abs((Am[0] - Bm[0]) * (Om[0] - Bm[0]) + (Am[1] - Bm[1]) * (Om[1] - Bm[1])) < 1e-9;
+    const Q = fitQ([Am, [s / 2 - r, Om[1] - r], [s / 2 + r, Om[1] + r]], 24, 430, 300);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), O = Q(Om);
+    return wrap(430, 300, [
+      circ(O, r * Q.k, ACC, 1.8), poly([A, B, C], DIM, 2), seg(O, B, FNT, 1.3, "4 3"), seg(O, C, FNT, 1.3, "4 3"),
+      rightAngle(B, A, O, 8, DIM), rightAngle(C, A, O, 8, DIM), ...[A, B, C].map(q => dot(q, DIM, 3.2)), dot(O, ACC, 3),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-10, 0]), "B", DIM, 13, "end"), txt(add(C, [10, 0]), "C", DIM, 13, "start"),
+      cap(430, 300, "Equilateral triangle ABC with AB and AC tangent to the circle at B and C." + MM(ok))
+    ]);
+  })();
 })();
