@@ -4173,4 +4173,31 @@
       cap(430, 270, "The hexagonal doghouse (side 1) with the region a 2-yard rope from one vertex reaches: a 240° sector and two 60° sectors." + MM(ok))
     ]);
   })();
+
+  PROB["2002-amc-10b-17"] = (() => {
+    const w = 1 + Math.SQRT2, V = [[1, w], [w, 1], [w, -1], [1, -w], [-1, -w], [-w, -1], [-w, 1], [-1, w]];
+    const [A, D, G] = [V[0], V[3], V[6]], area = Math.abs((D[0] - A[0]) * (G[1] - A[1]) - (D[1] - A[1]) * (G[0] - A[0])) / 2;
+    const ok = V.every((P, i) => Math.abs(dist(P, V[(i + 1) % 8]) - 2) < 1e-9) && Math.abs(area - (4 + 3 * Math.SQRT2)) < 1e-9;
+    const Q = fitQ([[-w, -w], [w, w]], 26, 430, 270), P = V.map(Q), names = "ABCDEFGH";
+    return wrap(430, 270, [
+      poly([A, D, G].map(Q), ACC, 2, ACCS), poly(P, DIM, 2),
+      ...P.map((p, i) => gapLabel(p, [P[(i + 1) % 8], P[(i + 7) % 8]], names[i])),
+      txt(add(mid(P[0], P[1]), [10, -6]), "2", DIM, 12),
+      cap(430, 270, "Regular octagon ABCDEFGH with sides 2 and the triangle ADG." + MM(ok))
+    ]);
+  })();
+
+  PROB["2002-amc-10b-22"] = (() => {
+    const a = 8, b = Math.sqrt(105), O = [0, 0], X = [2 * a, 0], Y = [0, 2 * b], M = [a, 0], N = [0, b];
+    const ok = Math.abs(dist(X, N) - 19) < 1e-9 && Math.abs(dist(Y, M) - 22) < 1e-9 && Math.abs(dist(X, Y) - 26) < 1e-9;
+    const Q = fitQ([O, X, Y], 30, 430, 280), P = [O, X, Y, M, N].map(Q);
+    return wrap(430, 280, [
+      poly([P[0], P[1], P[2]], DIM, 2), rightAngle(P[0], P[1], P[2], 10), seg(P[1], P[4], ACC, 2), seg(P[2], P[3], GLD, 2),
+      ticksOn(P[0], P[3], 1), ticksOn(P[3], P[1], 1), ticksOn(P[0], P[4], 2), ticksOn(P[4], P[2], 2),
+      gapLabel(P[0], [P[1], P[2]], "O"), gapLabel(P[1], [P[0], P[2], P[4]], "X"), gapLabel(P[2], [P[0], P[1], P[3]], "Y"),
+      gapLabel(P[3], [P[0], P[1], P[2]], "M"), gapLabel(P[4], [P[0], P[2], P[1]], "N"),
+      txt(add(mid(P[1], P[4]), [10, -8]), "19", ACC, 12), txt(add(mid(P[2], P[3]), [10, 4]), "22", GLD, 12),
+      cap(430, 280, "Right triangle XOY with M, N the midpoints of the legs; XN = 19 and YM = 22." + MM(ok))
+    ]);
+  })();
 })();

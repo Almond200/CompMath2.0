@@ -201,6 +201,9 @@ def main():
                 continue
             panels += 1
             W, H = float(vb.group(1)), float(vb.group(2))
+            # A figure's `ok` self-check prints MISMATCH in its caption when a number is wrong.
+            if "MISMATCH" in svg:
+                findings.append("%s: the figure's self-check failed (MISMATCH in its caption)" % name)
             for label, x0, y0, x1, y1 in boxes(svg, CW_FIT):
                 if x0 < -1 or x1 > W + 1 or y0 < -1 or y1 > H + 1:
                     findings.append("%s: label %r at x[%.0f,%.0f] y[%.0f,%.0f] "
