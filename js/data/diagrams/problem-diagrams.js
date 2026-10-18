@@ -4082,4 +4082,19 @@
       cap(430, 220, "Trapezoid ABCD with AB = 33 parallel to CD = 21, legs 10 and 14, and acute angles at A and B; the diagonals are dashed." + MM(ok))
     ]);
   })();
+  PROB["2013-amc-10b-23"] = PROB["2013-amc-12b-19"] = (() => {
+    const Am = [5, 12], Bm = [0, 0], Cm = [14, 0], Dm = [5, 0], Em = foot(Dm, Am, Cm);
+    const t = 3.2 / dist(Dm, Em), Fm = add(Dm, [t * (Em[0] - Dm[0]), t * (Em[1] - Dm[1])]);
+    const ok = Math.abs((Am[0] - Fm[0]) * (Bm[0] - Fm[0]) + (Am[1] - Fm[1]) * (Bm[1] - Fm[1])) < 1e-6 && Math.abs(dist(Am, Bm) - 13) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm], 30, 430, 270);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm);
+    return wrap(430, 270, [
+      poly([A, B, C], DIM, 2), seg(A, D, FNT, 1.5), seg(D, E, ACC, 1.8), seg(A, F, GLD, 1.4), seg(B, F, GLD, 1.4),
+      rightAngle(D, A, C, 7, DIM), rightAngle(E, D, C, 7, ACC), rightAngle(F, A, B, 7, GLD),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3)), dot(F, ORG, 3.4),
+      txt(add(A, [0, -9]), "A", DIM, 13), txt(add(B, [-8, 14]), "B", DIM, 13, "end"), txt(add(C, [8, 14]), "C", DIM, 13, "start"),
+      txt(add(D, [0, 18]), "D", DIM, 13), txt(add(E, [9, -2]), "E", ACC, 13, "start"), txt(add(F, [-6, -9]), "F", ORG, 13, "end"),
+      cap(430, 270, "Triangle ABC with sides 13, 14, 15: AD ⊥ BC, DE ⊥ AC, and F on DE with AF ⊥ BF." + MM(ok))
+    ]);
+  })();
 })();
