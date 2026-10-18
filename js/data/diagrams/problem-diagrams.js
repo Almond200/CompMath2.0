@@ -4148,4 +4148,15 @@
       cap(430, 280, "Triangle ABC with AB = 7, AC = 8, BC = 9; the bisector of angle A meets the circumcircle again at D." + MM(ok))
     ]);
   })();
+
+  PROB["2003-amc-10a-17"] = (() => {
+    const O = [0, 0], V = [90, 210, 330].map(a => [Math.cos(rad(a)), Math.sin(rad(a))]);
+    const ok = Math.abs(dist(V[0], V[1]) - Math.sqrt(3)) < 1e-9 && Math.abs(dist(V[1], V[2]) - Math.sqrt(3)) < 1e-9;
+    const Q = fitQ([[-1, -1], [1, 1]], 30, 430, 260), P = V.map(Q);
+    return wrap(430, 260, [
+      circ(Q(O), Q.k, GLD, 1.8, GLDS), poly(P, ACC, 2, ACCS), seg(Q(O), P[1], DIM, 1.5, "4 3"), dot(Q(O), DIM, 3.5),
+      txt(add(mid(Q(O), P[1]), [4, -8]), "R", DIM, 12.5), txt(add(mid(P[1], P[2]), [0, 18]), "R√3", ACC, 12.5),
+      cap(430, 260, "An equilateral triangle in its circumscribed circle of radius R; each side is R√3." + MM(ok))
+    ]);
+  })();
 })();
