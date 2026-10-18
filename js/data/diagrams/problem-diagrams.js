@@ -4238,4 +4238,29 @@
       cap(430, 270, "Right trapezoid ABCD with AD = 7 perpendicular to both bases and BC = AB + CD." + MM(ok))
     ]);
   })();
+
+  PROB["2000-amc-10-18"] = (() => {
+    const out = [];
+    [[5, 5, 0], [0, 5, 90], [0, 0, 180], [5, 0, 270]].forEach(([cx, cy, a0]) => { for (let i = 0; i <= 12; i++) out.push(onC([cx, cy], 1, a0 + 90 * i / 12)); });
+    const S = [[0, 0], [5, 0], [5, 5], [0, 5]], In = [[1, 1], [4, 1], [4, 4], [1, 4]];
+    const ok = Math.abs(dist(out[0], [6, 5]) - 0) < 1e-9 && Math.abs(25 - 9 + 20 + Math.PI - 39.14) < 0.01;
+    const Q = fitQ([[-1, -1], [6, 6]], 24, 430, 270);
+    return wrap(430, 270, [
+      poly(out.map(Q), GLD, 1.6, GLDS), poly(In.map(Q), FNT, 1.2, "var(--bg)", "4 3"), poly(S.map(Q), ACC, 2.2),
+      txt(add(Q([2.5, 0]), [0, -8]), "5", ACC, 12), seg(Q([5, 2.5]), Q([6, 2.5]), DIM, 1.4), txt(add(Q([5.5, 2.5]), [0, -6]), "1", DIM, 12),
+      cap(430, 270, "The 5 km square path (blue) and everything within 1 km of it: a band inside, rectangles outside, quarter circles at the corners." + MM(ok))
+    ]);
+  })();
+
+  PROB["2000-amc-10-19"] = (() => {
+    const m = 0.75, a = 2 * m, b = 1 / (2 * m), O = [0, 0], X = [1 + a, 0], Y = [0, 1 + b], P = [1, 1];
+    const ok = Math.abs(P[0] / X[0] + P[1] / Y[1] - 1) < 1e-9 && Math.abs(a / 2 - m) < 1e-9 && Math.abs(b / 2 - 1 / (4 * m)) < 1e-9;
+    const Q = fitQ([O, X, Y], 34, 430, 270);
+    return wrap(430, 270, [
+      poly([[1, 0], X, P].map(Q), "none", 0, GLDS), poly([[0, 1], P, Y].map(Q), "none", 0, ACCS), poly([O, [1, 0], P, [0, 1]].map(Q), ACC, 1.8),
+      poly([O, X, Y].map(Q), DIM, 2), rightAngle(Q(O), Q(X), Q(Y), 9), dot(Q(P), DIM, 3.5),
+      txt(add(Q([0.5, 0.5]), [0, 4]), "1", ACC, 13), txt(add(Q([1.45, 0.3]), [0, 4]), "m", GLD, 13), txt(add(Q([0.3, 1.2]), [0, 4]), "?", ACC, 13),
+      cap(430, 270, "Lines through a point of the hypotenuse, parallel to the legs, cut off a square and two small right triangles." + MM(ok))
+    ]);
+  })();
 })();
