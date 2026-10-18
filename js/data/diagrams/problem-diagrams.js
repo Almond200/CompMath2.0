@@ -3838,4 +3838,39 @@
       cap(430, 266, "The cone of radius 5 and height 12 sliced through its axis and one sphere's center (left), and the three equal spheres seen from above (right)." + MM(ok))
     ]);
   })();
+  PROB["2021-spring-amc-10a-17"] = PROB["2021-spring-amc-12a-17"] = (() => {
+    // D at the origin with DB along the x-axis, then turned so that CD lies along the bottom
+    const a = Math.sqrt(3040), raw = { D: [0, 0], B: [66, 0], A: [0, a], C: [33, -a / 2] }, t = -Math.atan2(-a / 2, 33);
+    const rot = q => [Math.cos(t) * q[0] - Math.sin(t) * q[1], Math.sin(t) * q[0] + Math.cos(t) * q[1]];
+    const Am = rot(raw.A), Bm = rot(raw.B), Cm = rot(raw.C), Dm = rot(raw.D), Om = lineInt(Am, Cm, Bm, Dm), Pm = mid(Bm, Dm);
+    const ok = Math.abs(dist(Bm, Cm) - 43) < 1e-9 && Math.abs(dist(Cm, Dm) - 43) < 1e-9 && Math.abs(dist(Om, Pm) - 11) < 1e-9 && Math.abs(Am[1] - Bm[1]) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 250);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), O = Q(Om), P = Q(Pm);
+    return wrap(430, 250, [
+      poly([A, B, C, D], DIM, 2), seg(A, C, FNT, 1.5), seg(B, D, FNT, 1.5), rightAngle(D, A, B, 9, DIM), seg(O, P, ACC, 2.4),
+      ticksOn(B, P, 1, DIM), ticksOn(P, D, 1, DIM),
+      ...[A, B, C, D].map(q => dot(q, DIM, 3.2)), dot(O, ACC, 3.2), dot(P, ACC, 3.2),
+      txt(add(A, [-8, -8]), "A", DIM, 13, "end"), txt(add(B, [8, -8]), "B", DIM, 13, "start"), txt(add(C, [8, 14]), "C", DIM, 13, "start"),
+      txt(add(D, [-8, 14]), "D", DIM, 13, "end"), txt(add(O, [-4, 18]), "O", ACC, 13), txt(add(P, [6, -8]), "P", ACC, 13, "start"),
+      txt(add(mid(C, D), [0, 18]), "43", DIM, 12), txt(add(mid(B, C), [12, 4]), "43", DIM, 12, "start"),
+      cap(430, 250, "Trapezoid ABCD with AB ∥ CD, BC = CD = 43 and AD ⊥ BD; O is where the diagonals cross and P is the midpoint of BD, with OP = 11 (blue)." + MM(ok))
+    ]);
+  })();
+
+  PROB["2021-spring-amc-10a-21"] = (() => {
+    const d = 36 - 16 * Math.sqrt(3), e = (32 * Math.sqrt(3) - 36) / 3, sd = [e + d, e, e + d, e, e + d, e];
+    const V = [[0, 0]];
+    sd.slice(0, 5).forEach((L, i) => { const g = Math.PI * i / 3; V.push(add(V[i], [L * Math.cos(g), L * Math.sin(g)])); });
+    const [Am, Bm, Cm, Dm, Em, Fm] = V, ln = (P1, P2, P3, P4, P5, P6) => [lineInt(P1, P2, P3, P4), lineInt(P3, P4, P5, P6), lineInt(P5, P6, P1, P2)];
+    const T1 = ln(Am, Bm, Cm, Dm, Em, Fm), T2 = ln(Bm, Cm, Dm, Em, Fm, Am);
+    const area = T => Math.abs((T[1][0] - T[0][0]) * (T[2][1] - T[0][1]) - (T[2][0] - T[0][0]) * (T[1][1] - T[0][1])) / 2;
+    const ok = Math.abs(area(T1) - 192 * Math.sqrt(3)) < 1e-6 && Math.abs(area(T2) - 324 * Math.sqrt(3)) < 1e-6 && Math.abs(dist(Fm, Am) - sd[5]) < 1e-9;
+    const Q = fitQ([...T1, ...T2], 30, 430, 300);
+    const H = V.map(Q), N = ["A", "B", "C", "D", "E", "F"], c = Q(mid(Am, Dm));
+    return wrap(430, 300, [
+      poly(T1.map(Q), ACC, 1.5, "none", "5 4"), poly(T2.map(Q), GLD, 1.5, "none", "5 4"), poly(H, DIM, 2.2),
+      ...H.map(q => dot(q, DIM, 3)), ...H.map((q, i) => { const v = sub(q, c), n = Math.hypot(...v); return txt(add(q, [-14 * v[0] / n, -14 * v[1] / n + 4]), N[i], DIM, 13); }),
+      cap(430, 300, "The equiangular hexagon ABCDEF; lines AB, CD, EF make the blue triangle (area 192√3) and lines BC, DE, FA the gold one (area 324√3)." + MM(ok))
+    ]);
+  })();
 })();
