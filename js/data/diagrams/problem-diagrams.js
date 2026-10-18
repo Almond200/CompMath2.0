@@ -3761,4 +3761,18 @@
       cap(430, 250, "Isosceles trapezoid with AD ∥ BC and AB = CD; the orange point P is 1, 2, 3, 4 from A, B, C, D." + MM(ok))
     ]);
   })();
+  PROB["2022-amc-10b-20"] = (() => {
+    const t = 46 * Math.PI / 180, Dm = [0, 0], Cm = [1, 0], Am = [Math.cos(t), Math.sin(t)], Bm = add(Am, Cm), Em = mid(Cm, Dm), Fm = foot(Am, Bm, Em);
+    const ok = Math.abs(angAt(Fm, Bm, Cm) - 113 * Math.PI / 180) < 1e-9 && Math.abs(dist(Dm, Fm) - 1) < 1e-9;
+    const Q = fitQ([Am, Bm, Cm, Dm], 34, 430, 240);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em), F = Q(Fm);
+    return wrap(430, 240, [
+      poly([A, B, C, D], DIM, 2), seg(B, E, ACC, 1.6), seg(A, F, GLD, 1.6), seg(F, C, ORG, 1.4), rightAngle(F, A, B, 8, GLD),
+      angleArc(D, A, C, 26, DIM), txt(add(D, [30, -8]), "46°", DIM, 12, "start"), ticksOn(C, E, 1, DIM), ticksOn(E, D, 1, DIM),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)), dot(F, ORG, 3.6),
+      txt(add(A, [-8, -8]), "A", DIM, 13, "end"), txt(add(B, [8, -8]), "B", DIM, 13, "start"), txt(add(C, [8, 14]), "C", DIM, 13, "start"),
+      txt(add(D, [-8, 14]), "D", DIM, 13, "end"), txt(add(E, [0, 18]), "E", DIM, 13), txt(add(F, [-10, 4]), "F", ORG, 13, "end"),
+      cap(430, 240, "Rhombus ABCD with angle ADC = 46°, E the midpoint of CD, and AF perpendicular to BE; the asked angle is BFC." + MM(ok))
+    ]);
+  })();
 })();
