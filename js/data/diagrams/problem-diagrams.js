@@ -3631,4 +3631,66 @@
       cap(430, 270, "Triangle ABC with AB = 40, AC = 31 and sin A = 1/5, inside rectangle AQRS with B on QR and C on RS (one possible position)." + MM(ok))
     ]);
   })();
+
+  // 2020 AIME I #1: AB = AC and AE = ED = DB = BC, drawn in the triangle those equalities force.
+  PROB["2020-aime-i-1"] = (() => {
+    const x = Math.PI / 7, L = 1 / (2 * Math.sin(x / 2));
+    const Am = [0, 0], Bm = [-L * Math.sin(x / 2), -L * Math.cos(x / 2)], Cm = [L * Math.sin(x / 2), -L * Math.cos(x / 2)];
+    const Em = lerp(Am, Bm, 1 / L), Dm = lerp(Am, Cm, 2 * Math.cos(x) / L);
+    const ok = [dist(Am, Em), dist(Em, Dm), dist(Dm, Bm), dist(Bm, Cm)].every(d => Math.abs(d - 1) < 1e-9) && Math.abs(dist(Am, Bm) - dist(Am, Cm)) < 1e-12;
+    const Q = fitQ([Am, Bm, Cm], 26, 430, 290);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), E = Q(Em);
+    return wrap(430, 290, [
+      poly([A, B, C], DIM, 2), seg(E, D, GLD, 1.8), seg(D, B, GLD, 1.8),
+      ticksOn(A, E, 1, ACC), ticksOn(E, D, 1, ACC), ticksOn(D, B, 1, ACC), ticksOn(B, C, 1, ACC),
+      ...[A, B, C, D, E].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [0, -10]), "A"), txt(add(B, [-10, 6]), "B", DIM, 13, "end"), txt(add(C, [10, 6]), "C", DIM, 13, "start"),
+      txt(add(D, [10, 0]), "D", DIM, 13, "start"), txt(add(E, [-10, 0]), "E", DIM, 13, "end"),
+      cap(430, 290, "AB = AC, and the four ticked segments AE, ED, DB, BC are equal." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AIME II #11: AB = 2, AD = 7, CD = 3, the bisectors at A and D meeting at the midpoint M of BC.
+  PROB["2022-aime-ii-11"] = (() => {
+    const xM = 3, Mm = [xM, Math.sqrt(14 - xM * xM)], al = Math.atan2(Mm[1], Mm[0]), de = Math.atan2(Mm[1], 7 - Mm[0]);
+    const Am = [0, 0], Dm = [7, 0], Bm = [2 * Math.cos(2 * al), 2 * Math.sin(2 * al)], Cm = [7 - 3 * Math.cos(2 * de), 3 * Math.sin(2 * de)];
+    const ok = dist(mid(Bm, Cm), Mm) < 1e-9 && Math.abs(dist(Am, Bm) - 2) < 1e-12 && Math.abs(dist(Dm, Cm) - 3) < 1e-12 && 2 * al < Math.PI / 2 && 2 * de < Math.PI / 2;
+    const Q = fitQ([Am, Bm, Cm, Dm], 30, 430, 270);
+    const A = Q(Am), B = Q(Bm), C = Q(Cm), D = Q(Dm), M = Q(Mm);
+    return wrap(430, 270, [
+      poly([A, B, C, D], DIM, 2), seg(A, M, GLD, 1.8), seg(D, M, GLD, 1.8),
+      angleArc(A, D, M, 30, ACC), angleArc(A, M, B, 36, ACC), angleArc(D, M, A, 30, GRN, true), angleArc(D, C, M, 36, GRN, true),
+      ticksOn(B, M, 1, DIM), ticksOn(M, C, 1, DIM),
+      ...[A, B, C, D, M].map(q => dot(q, DIM, 3.2)),
+      txt(add(A, [-10, 6]), "A", DIM, 13, "end"), txt(add(D, [10, 6]), "D", DIM, 13, "start"), txt(add(B, [-8, -8]), "B", DIM, 13, "end"),
+      txt(add(C, [8, -8]), "C", DIM, 13, "start"), txt(add(M, [0, -12]), "M"),
+      txt(add(mid(A, B), [-10, 0]), "2", ACC, 12, "end"), txt(add(mid(C, D), [10, 0]), "3", ACC, 12, "start"), txt(add(mid(A, D), [0, 18]), "7", ACC, 12),
+      cap(430, 270, "AB = 2, AD = 7, CD = 3; the bisectors of the acute angles at A and D meet at the midpoint M of BC." + MM(ok))
+    ]);
+  })();
+
+  // 2025 AMC 10A #6: the three middle 20° wedges of an equilateral triangle overlap in a hexagon.
+  PROB["2025-amc-10a-6"] = (() => {
+    const s3 = Math.sqrt(3), V = [[0, 0], [1, 0], [0.5, s3 / 2]], G = [0.5, s3 / 6];
+    const deg = Math.PI / 180, base = [0, 120, 240];
+    const rays = [];
+    V.forEach((P, i) => [20, 40].forEach(a => { const t = (base[i] + a) * deg; rays.push([P, add(P, [Math.cos(t), Math.sin(t)])]); }));
+    const side = (r, X) => (r[1][0] - r[0][0]) * (X[1] - r[0][1]) - (r[1][1] - r[0][1]) * (X[0] - r[0][0]);
+    let H = [];
+    rays.forEach((r, i) => rays.forEach((q, j) => { if (j <= i) return; const X = lineInt(r[0], r[1], q[0], q[1]);
+      if (X && rays.every(z => side(z, X) * side(z, G) >= -1e-9) && !H.some(Y => dist(X, Y) < 1e-9)) H.push(X); }));
+    H.sort((p, q) => Math.atan2(p[1] - G[1], p[0] - G[0]) - Math.atan2(q[1] - G[1], q[0] - G[0]));
+    const angs = H.map((X, i) => angAt(X, H[(i + 5) % 6], H[(i + 1) % 6]) / deg);
+    const ok = H.length === 6 && angs.every(a => Math.abs(a - 100) < 1e-6 || Math.abs(a - 140) < 1e-6);
+    const ends = rays.map((r, k) => { const i = Math.floor(k / 2), o = [V[(i + 1) % 3], V[(i + 2) % 3]]; return lineInt(r[0], r[1], o[0], o[1]); });
+    const Q = fitQ(V, 30, 430, 290);
+    const P = V.map(Q);
+    return wrap(430, 290, [
+      poly(H.map(Q), ACC, 1.8, ACCS), poly(P, DIM, 2),
+      ...rays.map((r, k) => seg(Q(r[0]), Q(ends[k]), GLD, 1.3)),
+      ...P.map(q => dot(q, DIM, 3.2)),
+      txt(add(P[0], [-10, 6]), "A", DIM, 13, "end"), txt(add(P[1], [10, 6]), "B", DIM, 13, "start"), txt(add(P[2], [0, -10]), "C"),
+      cap(430, 290, "Each 60° angle cut into three 20° angles; the shaded hexagon is where the three middle wedges overlap." + MM(ok))
+    ]);
+  })();
 })();
