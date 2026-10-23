@@ -4360,4 +4360,31 @@
       cap(430, 270, "The semicircle Γ on AB = 14, and the circle Ω tangent to AB at P, meeting Γ at Q and R with QR = 3√3 and ∠QPR = 60°." + MM(ok))
     ]);
   })();
+  // 2021 Spring AMC 12B #11: the 13-14-15 triangle, P on AC with PC = 10, and line BP.
+  PROB["2021-spring-amc-12b-11"] = (() => {
+    const B = [0, 0], C = [14, 0], A = [5, 12], P = lerp(C, A, 10 / 15), far = add(B, mul(sub(P, B), 2.2));
+    const ok = Math.abs(dist(A, B) - 13) < 1e-9 && Math.abs(dist(A, C) - 15) < 1e-9 && Math.abs(dist(P, C) - 10) < 1e-9;
+    const Q = fitQ([A, B, C, far], 26, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(B), Q(P), ACC, 1.8), seg(Q(P), Q(far), ACC, 1.6, "6 4"), dot(Q(P), ACC, 3.5),
+      txt(add(Q(A), [-4, -10]), "A"), txt(add(Q(B), [-12, 6]), "B"), txt(add(Q(C), [12, 6]), "C"), txt(add(Q(P), [-12, -6]), "P", ACC, 13),
+      txt(add(Q(mid(A, B)), [-14, 0]), "13", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "14", DIM, 12),
+      txt(add(Q(mid(A, P)), [10, -2]), "5", DIM, 12), txt(add(Q(mid(P, C)), [12, 0]), "10", DIM, 12),
+      cap(430, 270, "Triangle ABC with AB = 13, BC = 14, CA = 15, the point P on AC with PC = 10, and line BP extended past P (dashed), where D and E lie." + MM(ok))
+    ]);
+  })();
+
+  // 2021 Spring AMC 12B #14: rectangle ABCD with DM perpendicular to its plane.
+  PROB["2021-spring-amc-12b-14"] = (() => {
+    const { Pj, view } = projector([150, 222], 21, [1, 0.12], [0.62, -0.36]);
+    const p = Math.sqrt(40), q = Math.sqrt(72);
+    const V = { D: [0, 0, 0], A: [p, 0, 0], B: [p, q, 0], C: [0, q, 0], M: [0, 0, 3 * 2.2] };
+    const faces = [["A", "B", "C", "D"], ["M", "A", "B"], ["M", "B", "C"], ["M", "C", "D"], ["M", "D", "A"]];
+    const ok = Math.abs(V.M[0]) < 1e-12 && Math.abs(V.M[1]) < 1e-12;
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj),
+      ...["A", "B", "C", "D", "M"].map(n => txt(add(Pj(V[n]), n === "M" ? [0, -10] : n === "D" ? [-14, 6] : n === "A" ? [-4, 18] : n === "B" ? [14, 6] : [12, -4]), n)),
+      cap(430, 270, "The rectangle ABCD and the segment DM perpendicular to its plane at D; MA, MC and MB are consecutive odd integers. (Heights drawn stretched.)" + MM(ok))
+    ]);
+  })();
 })();
