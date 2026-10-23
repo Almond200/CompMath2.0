@@ -2,8 +2,8 @@
 
 > **Adding a card? Read [CONVENTIONS.md](CONVENTIONS.md) instead.** It is the short checklist:
 > the two legal field orders, the three required write-up headings, the mandatory example, the
-> diagram rule for geometry, and the duplicate check — each with the measurement across all 557
-> cards that proves it, regenerable with `python3 tools/scan-conventions.py`. This file holds the
+> diagram rule for geometry, and the duplicate check — each with the measurement that proves it
+> (first taken across 557 cards; 738 now), regenerable with `python3 tools/scan-conventions.py`. This file holds the
 > reasoning, the coverage-gap register and the per-year retag notes, which is why it is long.
 
 
@@ -30,16 +30,19 @@ The folder `~/Downloads/competition-math-reference` **is** the repository: it is
 
 ## Write-up style
 
-**Five headings, and no sixth.** A write-up uses `## Why it works`, `## How to use it`,
-`## On contests`, and optionally `## Key forms` and `## Full proof` (collapsed behind a button;
-see CONVENTIONS §2 for when one belongs). Do not invent another one; `scan-conventions.py` fails on
-any other heading. A card may gain or lose an optional block as its content changes. Census
-across 557 write-ups: Why it works 557, On contests 557, How to use it 557, Key forms 113.
+**The headings depend on the card's kind** (CONVENTIONS §2 is the rule, and `scan-conventions.py`
+fails on any other heading): a formula uses Key forms, Conditions, Why it works, Useful
+observations, Applications, Contest profile, and optionally Full proof; a method uses When to use,
+How, Why it works, Formulas it uses, Common traps, Contest profile, and optionally Full proof; a
+pattern uses Distinguishing clues, Methods and Formulas to Try, Common traps, Contest profile.
+Before the four-kind conversion (finished 2026-10-16) every write-up used Why it works, How to use
+it and On contests; none does now.
 
-- **Key forms is not a default section.** It belongs to cards that are a technique or a bundle
-  of related statements, which in practice means methods and patterns: 102 of the 108 cards in
-  `patterns.js` have one, against 11 of the 448 in the subject files. A formula card whose latex
-  already shows the statement does not get one; put the material in the prose instead.
+- **Key forms belongs to formula cards.** Since the four-kind conversion it is the first section of
+  a formula write-up (535 of 539 formula cards have one, 2026-10-23), listing the forms the fact
+  takes; methods put that material under How, patterns under Methods and Formulas to Try, and
+  neither uses Key forms. (Before the conversion it was the reverse: 102 of 108 `patterns.js`
+  cards had one.)
 - Key forms lists the shapes a technique takes, not examples of it. This is now gated:
   `scan-conventions.py` fails on a bullet that is mostly concrete digits. Exactly one existed
   (`squared-binomial-sum` carried "row $n = 4$: $1+16+36+16+1=70$"), so the rule was being kept
@@ -50,9 +53,8 @@ across 557 write-ups: Why it works 557, On contests 557, How to use it 557, Key 
   are raw HTML strings and `<b>` there does render, which is the existing precedent.)
 - **Em dashes: none in a rewritten card, and prefer commas everywhere.** The ` — ` inside a
   Key forms bullet is a structural separator and does not count. The corpus measured a median
-  of 2 per write-up when this was first written; with 210 cards rewritten it is a median of 1,
-  a 90th percentile of 4, and 206 write-ups use none. The rewrite helper refuses an em dash in
-  any rewritten prose, so the remainder is on cards not yet reached.
+  of 2 per write-up when this was first written; on 2026-10-23 it is a median of 0, a 90th
+  percentile of 4, and 375 write-ups use none (`scan-conventions.py` prints the current figures).
 - **American spellings.** `center`, not `centre` (the corpus runs about 4:1 American, and the
   problem database was 100% American before it drifted). Likewise `-ize`, not `-ise`:
   `recognize`, `normalize`, `minimize`. That axis is messier — 221 `-ize` against 75 `-ise`, and
@@ -205,9 +207,10 @@ collide with a 12B entry.
 ### Where new cards go
 
 A card for a **technique** belongs in `js/data/patterns.js` with `type: "method"` (or
-`"pattern"`) and a `subject`, so it lands under Additional Tools. Only genuine formulas go in
-the four subject files. Dumping techniques into the formula sections is exactly what the
-Additional Tools split exists to prevent.
+`"pattern"`) and a `subject`, so it lands in the Methods or Patterns book. Only genuine formulas go
+in the four subject files. Dumping techniques into the formula sections is exactly what the
+split into Formulas, Methods and Patterns exists to prevent. `tools/add-cards.py` inserts a batch of
+new cards and registers them (CONVENTIONS, "New cards are registered").
 
 ### Recording missing coverage
 
@@ -284,6 +287,8 @@ Then classify it, because that decides where a card would go:
   algebra. It reads as a solution, not a pattern, which is exactly what the first bar above rejects.
 
 #### Open candidates
+
+This table predates `QUESTIONS.md` (2026-10-16), which is now where every candidate goes, as the next P-number, for the owner's approval. Of the rows below, the magic-square fact is now on the pattern card `magic-squares`; the others have not been proposed, and step D should propose one in `QUESTIONS.md` when a problem it writes needs it.
 
 | gap | kind | sightings | nearest existing card |
 |---|---|---|---|

@@ -6,7 +6,7 @@ The app moved here from an earlier conversation. These are that chat's answers (
 - **LIVE access.**
   - `tools/fetch-live-statements.py` ran on the Mac with Python's `urllib`: a plain HTTPS GET of each LIVE page, a simple User-Agent, 1.5 s between requests, and no cookies, login, or API. It reads the JSON embedded in each page and pulls the SVG figures.
   - The raw pages are cached on the Mac in `~/aops-cache/live/`: 211 files, one per paper, such as `aime-1983.json`.
-  - The cloud container's 403 comes from its own proxy, not from LIVE. Run the fetch on the Mac and commit the output, or copy the cache into the repo.
+  - The cloud container's 403 came from its own proxy, not from LIVE. (Since 2026-10-23 LIVE is reachable from the cloud, and the concept tags of all 211 papers are cached in `tools/live-cache/`.)
 - **Concept tags.** Each cached problem has a `concepts` field, a free-text string of tags separated by semicolons, such as `"logarithm; algebraic manipulation"`. There are 258 distinct strings and about 11,229 tags. The fetch script never imports them; they were used only for the gap table in `tools/live-missing.md`.
 - **How the 1,365 problems were tagged:** unknown. Not every tag was checked against a solution: `tools/audit-problem-tags.py` exists because 2026 AIME I #5 carried `rotation-trick`, which its solution never uses.
 - **About 3,100 problems were added from LIVE as text only**, on purpose, to be tagged later.
@@ -34,7 +34,7 @@ The app moved here from an earlier conversation. These are that chat's answers (
 - **Rebuilding the index.** model2vec 0.9.0 distills `BAAI/bge-base-en-v1.5` into a 256-dimension word table, with numpy 2.4.6, tokenizers 0.22.2, and safetensors 0.8.0 on Python 3.11, in a separate environment:
   - setup: `python3 -m venv env && env/bin/pip install "model2vec[distill]"`;
   - the first run downloads the model from Hugging Face;
-  - it should work in a cloud container if Hugging Face is reachable; otherwise build on the Mac and commit `search-vectors.*`.
+  - it works in a cloud container when Hugging Face and its CDN hosts are reachable (first done 2026-10-23: 161/187 top-1, 738 cards); otherwise build on the Mac and commit `search-vectors.*`.
 - **The 187 labelled queries:** origin unknown.
 - **Target:** at least 160 of 187 top-1. Last full run (2026-10-11): 162/187, top-3 97.3%, MRR 0.922. The older "170/185 warm" figure predates that chat's memory.
 
