@@ -7,7 +7,7 @@
   const PROB = window.MATH_PROBLEM_DIAGRAMS = window.MATH_PROBLEM_DIAGRAMS || {};
   const K = window.GEO_KIT;
   if (!K) return;
-  const { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, lineInt, foot, circleLineInts,
+  const { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot, circleLineInts,
     FNT, DIM, ACC, GLD, GRN, PUR, ORG, ACCS, GLDS, seg, dot, circ, pline, poly, txt, gapLabel,
     angleArc, rightAngle, ticksOn, segIn, subT, cap, wrap } = K;
   const MM = ok => ok ? "" : " MISMATCH";
@@ -4261,6 +4261,37 @@
       poly([O, X, Y].map(Q), DIM, 2), rightAngle(Q(O), Q(X), Q(Y), 9), dot(Q(P), DIM, 3.5),
       txt(add(Q([0.5, 0.5]), [0, 4]), "1", ACC, 13), txt(add(Q([1.45, 0.3]), [0, 4]), "m", GLD, 13), txt(add(Q([0.3, 1.2]), [0, 4]), "?", ACC, 13),
       cap(430, 270, "Lines through a point of the hypotenuse, parallel to the legs, cut off a square and two small right triangles." + MM(ok))
+    ]);
+  })();
+  PROB["2025-amc-12b-10"] = (() => {
+    const C = [0, 0], B = [1, 0], A = [0, Math.sqrt(3)], H = foot(C, A, B), M = mid(B, C), P = lineInt(C, H, A, M);
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(C, A, B) - 30) < 1e-9 && Math.abs(ang(A, B, C) - 60) < 1e-9 && dist(P, H) < dist(C, P);
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), rightAngle(Q(C), Q(B), Q(A), 10), rightAngle(Q(H), Q(A), Q(C), 9),
+      seg(Q(C), Q(H), ACC, 2), seg(Q(A), Q(M), GLD, 1.8), ticksOn(Q(C), Q(M), 1, GLD), ticksOn(Q(M), Q(B), 1, GLD),
+      dot(Q(P), DIM, 3.5), dot(Q(H), ACC, 3), dot(Q(M), GLD, 3),
+      txt(add(Q(A), [-12, 4]), "A", DIM, 13), txt(add(Q(B), [12, 6]), "B", DIM, 13), txt(add(Q(C), [-12, 6]), "C", DIM, 13),
+      txt(add(Q(H), [10, -6]), "H", ACC, 12.5), txt(add(Q(M), [0, 16]), "M", GLD, 12.5),
+      txt(add(Q(mid(P, H)), [-2, -9]), "x", ACC, 13), txt(add(Q(mid(C, P)), [-10, -6]), "y", ACC, 13),
+      angleArc(Q(A), Q(C), Q(B), 30, FNT), txt(add(Q(A), [8, 44]), "30°", FNT, 11.5), angleArc(Q(B), Q(A), Q(C), 24, FNT), txt(add(Q(B), [-34, -10]), "60°", FNT, 11.5),
+      cap(430, 270, "The 30-60-90 triangle with the altitude CH to the hypotenuse (blue) and the median AM to the shortest side BC (gold), which cuts the altitude into x and y." + MM(ok))
+    ]);
+  })();
+
+  PROB["2025-amc-12b-25"] = (() => {
+    const O = [0, 0], A = [1, 0], B = [-1, Math.sqrt(3)];
+    const C1 = add(A, rotv(sub(B, A), Math.PI / 3)), C2 = add(A, rotv(sub(B, A), -Math.PI / 3)), C = Math.abs(dist(O, C1) - 3) < 1e-9 ? C1 : C2;
+    const ok = Math.abs(dist(O, C) - 3) < 1e-9 && Math.abs(dist(A, B) - dist(B, C)) < 1e-9 && Math.abs(dist(B, C) - dist(C, A)) < 1e-9;
+    const Q = fitQ([[-3, -3], [3, 3]], 14, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), k, FNT, 1.3), circ(Q(O), 2 * k, FNT, 1.3), circ(Q(O), 3 * k, FNT, 1.3),
+      poly([A, B, C].map(Q), ACC, 2), seg(Q(O), Q(A), DIM, 1.2, "4 3"), seg(Q(O), Q(B), DIM, 1.2, "4 3"), seg(Q(O), Q(C), DIM, 1.2, "4 3"),
+      dot(Q(O), DIM, 3.5), dot(Q(A), ACC, 3.5), dot(Q(B), ACC, 3.5), dot(Q(C), ACC, 3.5),
+      txt(add(Q(O), [-8, 14]), "O", DIM, 12.5), txt(add(Q(A), [12, 4]), "A", ACC, 13), txt(add(Q(B), [-6, -10]), "B", ACC, 13), txt(add(Q(C), [8, 14]), "C", ACC, 13),
+      txt(add(Q(mid(O, A)), [0, -6]), "1", DIM, 11.5), txt(add(Q(mid(O, B)), [8, 4]), "2", DIM, 11.5), txt(add(Q(mid(O, C)), [10, 0]), "3", DIM, 11.5),
+      cap(430, 270, "Circles of radii 1, 2, 3 about O, and the equilateral triangle ABC with one vertex on each." + MM(ok))
     ]);
   })();
 })();
