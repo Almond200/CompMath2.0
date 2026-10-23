@@ -226,10 +226,12 @@
   // How many rows of a card's formulas a browsing card shows: 1, 2, 3, or all of them. A card's
   // own page always shows every form.
   const FORMULA_LINES = ["1", "2", "3", "all"];
-  // Card order on a section page. "tier" puts the cards in the order of the chosen label (AMC
-  // first by default); "curated" is file order, which is how the cards were written up; "problems" puts the cards the practice problems actually use first, and only
+  // Card order on a section page. "curated" is file order, which is how the cards were written up; "problems" puts the cards the practice problems actually use first, and only
   // falls back to the (subjective) importance tier for the cards no problem uses yet.
-  const ORDERS = ["tier", "curated", "problems"];
+  const ORDERS = ["curated", "problems"];
+  // A problem page's strategy and card chain: shown at once, or behind a button so the reader
+  // can try the problem first (Settings -> Practice).
+  const STRATEGY_MODES = ["show", "click"];
   // Figure captions on the browsing cards. A card's own page always shows them, since there
   // the caption is part of the explanation; on the card grid some readers want just the picture.
   const CAPTION_MODES = ["show", "hide"];
@@ -287,6 +289,7 @@
       text: pick(P.text, TEXT_SIZES),
       lines: pick(P.lines, FORMULA_LINES),
       order: pick(P.order, ORDERS),
+      strategy: pick(P.strategy, STRATEGY_MODES),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
@@ -305,7 +308,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools
+          tools: state.tools, strategy: state.strategy
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -335,6 +338,7 @@
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
+    strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
     start: _loaded.start,        // "landing" | "formulas" | "last" — where the app opens when no page is asked for
@@ -2011,9 +2015,6 @@
   // Used cards first, most-used first; the importance tier only decides ties and the cards no
   // problem uses yet, which is the one place the subjective ranking is still all we have.
   function browseOrder(entries) {
-    if (state.order === "tier") {
-      return entries.map((e, i) => ({ e, i })).sort((a, b) => labelRank(a.e.formula) - labelRank(b.e.formula) || a.i - b.i).map(x => x.e);
-    }
     if (state.order !== "problems") return entries;
     return entries.map((e, i) => ({ e, i, n: problemCount(e.formula.id) }))
       .sort((a, b) => b.n - a.n || impRank(a.e.formula) - impRank(b.e.formula) || a.i - b.i)
@@ -2699,6 +2700,13 @@
   const chipRow = (title, ids, cls) => ids.length
     ? `<div class="related kind-row${cls ? " " + cls : ""}"><h4>${title}</h4><div class="related-grid">${ids.map(cardChip).join("")}</div></div>`
     : "";
+  // A row of plain blue card links, separated by dots: hovering one opens the card preview.
+  const cardLinkList = ids => `<p class="link-row">${ids.map(id => BY_ID[id]
+    ? `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`
+    : redLink(id)).join(` <span class="pf-dot">&middot;</span> `)}</p>`;
+  const linkRow = (title, ids) => ids.length
+    ? `<div class="related kind-row"><h4>${title}</h4>${cardLinkList(ids)}</div>`
+    : "";
   // The pattern family a pattern sits in: the cluster heading of its subject in patterns.js.
   function familyOf(entry) {
     const g = (entry.subsection.groups || []).find(x => x.ids.indexOf(entry.formula.id) !== -1);
@@ -2817,9 +2825,9 @@
   // patterns that suggest it.
   function reverseLinksHtml(f) {
     const k = kindOf(f);
-    if (k === "formula") return chipRow("Used by methods", USED_BY[f.id] || []);
+    if (k === "formula") return linkRow("Used by methods", USED_BY[f.id] || []);
     // A converted method lists these under "When to use" instead.
-    if (k === "method") return isConverted(f) ? "" : chipRow("Suggested by patterns", SUGGESTED_BY[f.id] || []);
+    if (k === "method") return isConverted(f) ? "" : linkRow("Suggested by patterns", SUGGESTED_BY[f.id] || []);
     return "";
   }
 
@@ -2939,8 +2947,7 @@
   function connectedHtml(f) {
     const list = ((window.MATH_CONNECTED || {})[f.id] || []).filter(c => BY_ID[c.id]);
     const title = { formula: "Related formulas", method: "Related methods", pattern: "Related patterns" }[kindOf(f)];
-    return `<div class="connected"><h4>${title}</h4>${list.length ? `<div class="related-grid">${list.map(c =>
-      `<a class="related-item" href="#/f/${c.id}">${BY_ID[c.id].formula.name}</a>`).join("")}</div>` : `<p class="related-empty">None yet.</p>`}</div>`;
+    return `<div class="connected"><h4>${title}</h4>${list.length ? cardLinkList(list.map(c => c.id)) : `<p class="related-empty">None yet.</p>`}</div>`;
   }
 
   function practiceHtml(f) {
@@ -3126,7 +3133,7 @@
   // Competition → year → problems tree for the Database sidebar navigator.
   const DB_TREE = {};
   PROBLEM_DB.forEach(p => { (DB_TREE[p.fam] = DB_TREE[p.fam] || {}); (DB_TREE[p.fam][p.year] = DB_TREE[p.fam][p.year] || []).push(p); });
-  const FAM_ORDER = ["AMC 10", "AMC 12", "AIME", "AMC 8", "HMMT February", "HMMT November", "Putnam", "HMMT"];
+  const FAM_ORDER = ["AMC 8", "AMC 10", "AMC 12", "AIME", "HMMT February", "HMMT November", "Putnam", "HMMT"];
   const FAMILIES = Object.keys(DB_TREE).sort((a, b) => {
     const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
     return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -4227,7 +4234,8 @@
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
           ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
-          ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]])}
+          ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
+          ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
@@ -4237,14 +4245,17 @@
         <section class="set-panel">
           <h3 class="set-panel-title">Browsing</h3>
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
-          ${settingRow("Card order", "How cards are ordered on a subject page. By contest tier puts AMC cards first, then AIME Early, AIME Late, and Olympiad, with the most important cards first inside each tier. Curated keeps the order the cards were written in. Most used puts first the cards that the most practice problems use. Search results always rank by relevance.", "order", state.order, [["tier", "By contest tier"], ["curated", "Curated"], ["problems", "Most used"]], "subject")}
+          ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in, and Where I left off returns to the last page you had open. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"], ["last", "Where I left off"]])}
-          ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls (text size and theme).", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
           </div>
+        </section>
+        <section class="set-panel">
+          <h3 class="set-panel-title">Practice</h3>
+          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Shown puts them under the problem at once; Click to show keeps them behind a button, so you can try the problem first.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel" id="set-commands">
           <h3 class="set-panel-title">Commands</h3>
@@ -4258,6 +4269,18 @@
             <button type="button" class="show-more-btn command-toggle" aria-expanded="false">Show all commands</button>
             <div class="command-all" hidden>${commandListHtml()}</div>
           </div>
+        </section>
+        <section class="set-panel" id="set-progress">
+          <h3 class="set-panel-title">Your progress</h3>
+          <div class="set-row">
+            <div class="set-text"><div class="set-name">Export progress</div><div class="set-desc">Save your lists, stars, settings, theme, recently opened pages, and flashcard and quiz progress as one file (versioned JSON), to keep as a backup or to move to another browser.</div></div>
+            <div class="seg"><button type="button" class="progress-export">Export</button></div>
+          </div>
+          <div class="set-row">
+            <div class="set-text"><div class="set-name">Import progress</div><div class="set-desc">Load a file made by Export. Lists are merged into the ones you have (no card is removed from a list); settings, theme, and flashcard progress are replaced by the file's.</div></div>
+            <div class="seg"><button type="button" class="progress-import">Import</button><input type="file" class="progress-file" accept="application/json,.json" hidden></div>
+          </div>
+          <p class="settings-hint progress-msg" hidden></p>
         </section>
         <details class="set-panel set-lab">
           <summary class="set-panel-title">Experimental <span class="lab-tag">for fun</span></summary>
@@ -4299,6 +4322,7 @@
       const grp = $content.querySelector(".command-box");
       if (grp) setTimeout(() => grp.closest(".set-panel").scrollIntoView({ block: "start", behavior: "instant" }), 0);
     }
+    wireProgressPanel();
     const $cmdForm = $content.querySelector(".command-box");
     if ($cmdForm) $cmdForm.addEventListener("submit", e => {
       e.preventDefault();
@@ -4335,6 +4359,70 @@
     $page.addEventListener("mouseleave", () => { delete $pv.dataset.focus; });
   }
 
+  // ---------- Export and import progress (Settings -> Your progress) ----------
+  // Everything this browser keeps for the app, in one versioned JSON file. Version 1 holds each
+  // localStorage key's value as parsed JSON (a plain string where the key holds one). An import
+  // merges study lists, so a list built on this device is never lost to an older file, and
+  // replaces the rest; then the page reloads to read it back.
+  const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "mq-last", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses"];
+  function exportProgress() {
+    const data = {};
+    PROGRESS_KEYS.forEach(k => {
+      let raw = null;
+      try { raw = localStorage.getItem(k); } catch (e) {}
+      if (raw == null) return;
+      try { data[k] = JSON.parse(raw); } catch (e) { data[k] = raw; }
+    });
+    const out = { format: PROGRESS_FORMAT, version: PROGRESS_VERSION, exported: new Date().toISOString(), data };
+    const blob = new Blob([JSON.stringify(out, null, 2)], { type: "application/json" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "compmath-progress-" + out.exported.slice(0, 10) + ".json";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  // Returns a message for the reader; throws on a file that is not a progress file.
+  function importProgress(text) {
+    const obj = JSON.parse(text);
+    if (!obj || obj.format !== PROGRESS_FORMAT || typeof obj.data !== "object") throw new Error("This is not a progress file exported from this app.");
+    if (!(obj.version >= 1 && obj.version <= PROGRESS_VERSION)) throw new Error("This file was made by a newer version of the app (format " + obj.version + ").");
+    const d = obj.data;
+    PROGRESS_KEYS.forEach(k => {
+      if (!(k in d) || k === "mq-lists") return;
+      localStorage.setItem(k, typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]));
+    });
+    const inc = d["mq-lists"];
+    if (inc && Array.isArray(inc.items)) {
+      inc.items.forEach(l => {
+        if (!l || typeof l.id !== "string" || !Array.isArray(l.ids)) return;
+        const mine = getList(l.id);
+        if (mine) l.ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
+        else lists.items.push({ id: l.id, name: String(l.name || "Imported list"), ids: l.ids.filter(x => typeof x === "string") });
+      });
+      if (!saveLists()) throw new Error("This browser is blocking storage, so nothing could be saved.");
+    }
+    return "Imported progress from " + (obj.exported ? obj.exported.slice(0, 10) : "the file") + ". Reloading\u2026";
+  }
+  function wireProgressPanel() {
+    const ex = $content.querySelector(".progress-export"), im = $content.querySelector(".progress-import");
+    const file = $content.querySelector(".progress-file"), msg = $content.querySelector(".progress-msg");
+    if (!ex || !im) return;
+    const say = t => { msg.hidden = false; msg.textContent = t; };
+    ex.addEventListener("click", () => { try { exportProgress(); say("Exported."); } catch (e) { say("Export failed: " + e.message); } });
+    im.addEventListener("click", () => file.click());
+    file.addEventListener("change", () => {
+      const f = file.files && file.files[0];
+      if (!f) return;
+      if (!confirm("Import this file? Your lists keep their cards and gain the file's; your settings, theme, and flashcard progress are replaced.")) { file.value = ""; return; }
+      f.text().then(t => {
+        try { say(importProgress(t)); setTimeout(() => location.reload(), 800); }
+        catch (e) { say(e instanceof SyntaxError ? "That file is not valid JSON." : e.message); }
+        file.value = "";
+      });
+    });
+  }
+
   // ---------- Settings preview ----------
   // Beside the settings, when the window is wide enough, three small screens drawn with the
   // real card and page markup, so every setting shows its effect as it is changed: cards while
@@ -4342,8 +4430,10 @@
   // width and scaled down to fit, so card size changes how many cards fit across exactly as
   // it does in the app.
   const PV_W = 1100, PV_H = 640, PV_MEDIA = "(min-width: 1280px)";
-  const PV_CARDS = ["stewarts-theorem", "power-of-a-point", "hockey-stick", "herons-formula"];
-  const PV_PAGE = "hockey-stick", PV_SUBJECT = "number-theory";
+  // Chosen so every setting changes something: several formula rows (Formula lines), a sigma
+  // in the first row (Notation), and figures (Figures on cards).
+  const PV_CARDS = ["altitude-hypotenuse", "hockey-stick", "linear-recurrence", "power-of-a-point"];
+  const PV_PAGE = "hockey-stick", PV_SUBJECT = "number-theory", PV_PROBLEM = "2025 AMC 10A, Problem 9";
   let pvResize = null;
   // A screen may be laid out wider than the others (the subject page carries the sidebar too),
   // keeping the same proportions, so all three frames are the same size.
@@ -4359,7 +4449,7 @@
     if (!entry) return "";
     const f = entry.formula, split = splitKeyForms(notate((window.MATH_DETAILS || {})[f.id]));
     const rest = pullSection(split.rest, "Contest profile").rest;
-    return `<div class="detail">
+    const page = `<div class="detail">
         <p class="detail-crumb">${entry.section.title} &rsaquo; ${entry.subsection.title}</p>
         <div class="detail-head"><h2 class="card-name">${f.name}</h2><div class="card-meta detail-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div></div>
         ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
@@ -4368,6 +4458,20 @@
         ${rest && rest.trim() ? `<div class="detail-body">${detailBodyHtml(rest, f.id)}</div>` : ""}
       </div>
       ${state.tags ? `<div class="pv-foot detail"><div class="detail-body"><h4>Tags</h4></div>${tagRowHtml(f, null, [])}</div>` : ""}`;
+    return state.tools === "on" ? `<div class="detail-with-tools"><div>${page}</div>${pageToolsHtml(entry)}</div>` : page;
+  }
+  // A problem page's "How this problem works" box, as the Practice setting shows it.
+  function pvProblemHtml() {
+    const p = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
+    if (!p) return "";
+    const chain = { pattern: [], method: [], formula: [] };
+    p.formulas.forEach(fid => BY_ID[fid] && chain[kindOf(BY_ID[fid].formula)].push(fid));
+    const chip = fid => `<a class="related-item">${BY_ID[fid].formula.name}</a>`;
+    const col = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
+    return `<div class="detail"><div class="book-eyebrow prob-eyebrow">Practice</div>
+        <div class="detail-head"><h2 class="card-name">${refShort(p.ref)}</h2></div>
+        <p class="prob-statement">Let $f(x) = 100x^3 - 300x^2 + 200x$. For how many real numbers $a$ does the graph of $y = f(x - a)$ pass through the point $(1, 25)$?</p>
+        ${chainBoxHtml(p, col, chain, new Set())}</div>`;
   }
   // The subject page beside its sidebar, drawn with the sidebar's own markup, so density shows
   // in the navigation as well as in the page.
@@ -4408,7 +4512,8 @@
     aside.innerHTML = `<div class="pv-title">Preview</div>` +
       pvScreen("browse", "Cards while browsing", pvBrowseHtml()) +
       pvScreen("page", "A card&rsquo;s page", pvPageHtml()) +
-      pvScreen("subject", "A subject page", pvSubjectHtml(), PV_W + 260);
+      pvScreen("subject", "A subject page", pvSubjectHtml(), PV_W + 260) +
+      pvScreen("problem", "A problem page", pvProblemHtml());
     renderMath(aside);
     // Lay the panel out from what is left of the window right of the settings: the screens are
     // as large as three of them fit in the panel's height (and the space allows), and the
@@ -4420,12 +4525,13 @@
       aside.style.setProperty("--pv-top", (bar ? bar.getBoundingClientRect().bottom : 0) + "px");
       const frames = [...aside.querySelectorAll(".pv-frame")];
       const cs = getComputedStyle(aside);
-      let fixed = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.rowGap || 0) * 3;
+      const nScreens = frames.length;
+      let fixed = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.rowGap || 0) * nScreens;
       fixed += aside.querySelector(".pv-title").offsetHeight;
       aside.querySelectorAll(".pv-label").forEach(l => { fixed += l.offsetHeight + 5; });
       const right = page ? page.getBoundingClientRect().right : 0;
       const region = document.documentElement.clientWidth - right;
-      let w = Math.min(560, (aside.clientHeight - fixed) / 3 * PV_W / PV_H, region - 48);
+      let w = Math.min(560, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, region - 48);
       w = Math.max(120, w);
       const gap = Math.max(16, (region - w) / 3);
       aside.style.setProperty("--pv-left", (right + gap) + "px");
@@ -5621,6 +5727,23 @@
     });
   }
 
+  // The "How this problem works" box. With Settings -> Practice -> Strategy on "Click to show",
+  // its contents wait behind a button so the reader can try the problem first.
+  function chainBoxHtml(p, chainCol, chain, altIds) {
+    const inner = `${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
+        ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
+        <div class="chain-grid">
+          ${chainCol("Pattern", chain.pattern, "Not classified yet")}
+          ${chainCol("Method", chain.method, "Not classified yet")}
+          ${chainCol("Formulas", chain.formula, "&mdash;")}
+        </div>
+        ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}`;
+    const hide = state.strategy === "click" && (p.strategy || p.formulas.length);
+    return `<div class="prob-chain"><h4>How this problem works</h4>
+        ${hide ? `<button type="button" class="show-more-btn chain-reveal" onclick="this.nextElementSibling.hidden=false;this.remove()">Show the strategy</button><div class="chain-hidden" hidden>${inner}</div>` : inner}
+      </div>`;
+  }
+
   function renderProblemDetail(slug) {
     const p = PROBLEM_BY_SLUG[slug];
     if (!p) { location.hash = "#/practice"; return; }
@@ -5640,16 +5763,7 @@
     // One box, always open: the strategy in a few sentences, then the three cards it connects
     // side by side. No hints and no staged reveals: the page explains how the problem works.
     const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
-    const chainHtml = `<div class="prob-chain"><h4>How this problem works</h4>
-        ${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
-        ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
-        <div class="chain-grid">
-          ${chainCol("Pattern", chain.pattern, "Not classified yet")}
-          ${chainCol("Method", chain.method, "Not classified yet")}
-          ${chainCol("Formulas", chain.formula, "&mdash;")}
-        </div>
-        ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}
-      </div>`;
+    const chainHtml = chainBoxHtml(p, chainCol, chain, altIds);
     // A geometry problem printed without a figure gets one drawn for the app
     // (js/data/diagrams/problem-diagrams.js), labelled as ours so it is never taken for the MAA's.
     const ownFig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];

@@ -12,8 +12,10 @@
 
 ## Running the checks in a cloud session
 
+`./tools/gates.sh` runs all of these but `check-labels.py` in order and stops at the first failure.
+
 ```bash
-export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1194/chrome-linux/chrome
+export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome
 python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 tools/check-lists.py
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
 python3 tools/check-labels.py          # 5 known "far-move" findings caused by fonts are the baseline
@@ -21,7 +23,7 @@ $JSC tools/validate-problem-db.js
 ```
 
 - **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (Playwright is preinstalled; `executablePath` is the `CHROME` above): 0 KaTeX errors, no overflow at 375 px, light and dark.
-- **Versions:** bump `?v=` in `index.html` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
+- **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences
 - Update the files regularly: during the practice pass, update "Current state" in `PLAN.md` and the README changelog, and commit and push, after every card or every 8 to 10 problems, whichever comes first.

@@ -418,7 +418,7 @@ window.MATH_SECTIONS.push({
           latexPlain: String.raw`f^{\lambda} = \frac{n!}{h(c_1)\,h(c_2)\cdots h(c_n)}`,
           description: String.raw`The Hook Length Formula counts the ways to fill a Young diagram $\lambda$, a staircase of left-justified rows of $n$ cells with lengths that never increase going down, with $1, 2, \ldots, n$ so that numbers increase along every row and down every column. That count is $f^{\lambda}$. The hook $h(c)$ of a cell $c$ is the number of cells in its hook: the cell itself, the cells to its right, and the cells below it. For two rows of equal length it gives the [[catalan-numbers|Catalan numbers]].`,
           keywords: ["hook length formula", "young tableaux", "counting standard young tableaux", "young diagram", "hook lengths", "fill a staircase increasing rows and columns", "frame robinson thrall"],
-          importance: "lowest",
+          importance: "lower",
           tier: "Olympiad",
           level: ["Olympiad"]
         },
@@ -742,7 +742,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`R(3, 3) = 6`,
           description: String.raw`Among any 6 people, some 3 are mutual friends or mutual strangers — and 6 is minimal. Proof: pigeonhole on one person's 5 relationships.`,
           keywords: ["ramsey", "friends strangers", "party problem", "coloring edges"],
-          importance: "lowest",
+          importance: "lower",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },
