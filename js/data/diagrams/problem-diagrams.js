@@ -4294,4 +4294,21 @@
       cap(430, 270, "Circles of radii 1, 2, 3 about O, and the equilateral triangle ABC with one vertex on each." + MM(ok))
     ]);
   })();
+  // 2022 AMC 12A #12: the regular tetrahedron, the midpoint M of AB, and the triangle CMD.
+  PROB["2022-amc-12a-12"] = (() => {
+    const { Pj, view } = projector([100, 215], 72, [1, 0.14], [0.78, -0.3]);
+    const r3 = Math.sqrt(3), V = { A: [0, 0, 0], B: [2, 0, 0], C: [1, r3, 0], D: [1, r3 / 3, Math.sqrt(8 / 3)] };
+    const faces = [["A", "B", "C"], ["A", "B", "D"], ["B", "C", "D"], ["A", "C", "D"]];
+    const M3 = [1, 0, 0], M = Pj(M3), d3 = (p, q) => Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]);
+    const ok = ["AB", "AC", "AD", "BC", "BD", "CD"].every(e => Math.abs(d3(V[e[0]], V[e[1]]) - 2) < 1e-9) && Math.abs(d3(M3, V.C) - r3) < 1e-9 && Math.abs(d3(M3, V.D) - r3) < 1e-9;
+    return wrap(430, 270, [
+      poly([M, Pj(V.C), Pj(V.D)], "none", 0, ACCS),
+      ...solidEdges(V, faces, view, Pj),
+      seg(M, Pj(V.C), ACC, 1.8, "5 4"), seg(M, Pj(V.D), ACC, 1.8), ticksOn(Pj(V.A), M, 1, DIM), ticksOn(M, Pj(V.B), 1, DIM),
+      angleArc(M, Pj(V.C), Pj(V.D), 22, GLD), dot(M, ACC, 3.5),
+      txt(add(Pj(V.A), [-12, 6]), "A"), txt(add(Pj(V.B), [12, 6]), "B"), txt(add(Pj(V.C), [12, -2]), "C"), txt(add(Pj(V.D), [0, -10]), "D"),
+      txt(add(M, [0, 17]), "M", ACC, 13),
+      cap(430, 270, "The regular tetrahedron ABCD, M the midpoint of AB, and the triangle CMD (shaded) whose angle at M is asked for." + MM(ok))
+    ]);
+  })();
 })();
