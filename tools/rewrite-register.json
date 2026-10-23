@@ -1809,7 +1809,8 @@
     "lester-circle": "formula",
     "droz-farny": "formula",
     "anti-steiner-point": "formula",
-    "kruskal-katona": "formula"
+    "kruskal-katona": "formula",
+    "quadratic-perfect-square": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -8761,6 +8762,12 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "quadratic-perfect-square": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
       ]
     ]
   }

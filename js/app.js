@@ -4233,12 +4233,12 @@
           ${settingRow("Theme", "Light or dark. Dark is easier at night.", "theme", theme, [["light", "Light"], ["dark", "Dark"]])}
           ${settingRow("Density", "How tightly the whole app is spaced: page margins, the gaps between cards and sections, and the padding inside panels. Spacious gives everything more room; Compact fits more on each screen. Neither changes text size or card size.", "density", state.density, [["comfortable", "Comfortable"], ["spacious", "Spacious"], ["compact", "Compact"]])}
           ${settingRow("Card size", "How big each card is while browsing. Large cards are wider, so fewer fit across.", "cols", state.cols, [["regular", "Regular"], ["spacious", "Large"]], "browse")}
-          ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
           ${settingRow("Text size", "How big the prose and the formulas are, everywhere in the app. Each step up is about 20% larger.", "text", state.text, [["normal", "Normal"], ["large", "Large"], ["larger", "Larger"]], "browse page subject problem")}
-          ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Reading the math</h3>
+          ${settingRow("Formula lines", "The most rows of a card's formulas to show while browsing, so the cards in a grid stay even. A card's own page always shows all of them. Card thumbnails are written with the most important formula first.", "lines", state.lines, [["1", "1"], ["2", "2"], ["3", "3"], ["all", "All"]], "browse")}
+          ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]], "browse page")}
           ${settingRow("Figures on cards", "Figures always appear on a card's own page. On also shows each card's figure while browsing.", "diagrams", state.diagrams, [["none", "Off"], ["on", "On"]], "browse")}
         </section>

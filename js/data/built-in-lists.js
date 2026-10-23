@@ -98,7 +98,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation"] }
     ] },
   { id: "route-amc-number", name: "AMC 10/12 Number Theory", kind: "route", tier: "AMC", subject: "Number Theory",
-    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 59 cards across 9 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 60 cards across 9 sections.",
     sections: [
       { title: "Divisibility & GCD",
         note: "The foundation. Most number theory problems are a gcd statement wearing a disguise.",
@@ -126,7 +126,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["lattice-points-gcd"] },
       { title: "Patterns Worth Recognizing on Sight",
         note: "Problem formats with an intended route.",
-        ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems"] }
+        ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
     blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 77 cards across 11 sections.",
