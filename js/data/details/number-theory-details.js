@@ -2883,3 +2883,33 @@ The constant has only finitely many factor pairs, so the equation has only finit
 An AMC 10 and 12 setup that returns at AIME level with larger constants: the whole solution is one completed square and a short list of factor pairs. It pairs with Completing the Square, Listing Factor Pairs, and the Difference of Squares.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"palindromes": String.raw`
+## Distinguishing clues
+- A number that reads the same both ways, written as a word ("palindrome") or as a digit pattern such as $\overline{abcba}$.
+- A count of palindromes in a range, or of the palindromes with a divisibility property.
+- A number plus a fixed amount that is a palindrome, or a palindrome as the sum of a number and its reversal.
+- Not this pattern: a palindromic polynomial, whose coefficients read the same both ways; that is the $x + \tfrac1x$ substitution, not a digit question.
+
+## Methods and Formulas to Try
+A palindrome's second half copies its first, so it is built digit by digit up to the middle, and its value in place value collects into a few round coefficients.
+
+$$\overline{abba} = 1001a + 110b = 11(91a + 10b), \qquad \overline{abcba} = 10001a + 1010b + 100c$$
+
+### Methods to try
+- [[constructive-counting]]: choose the first half, $9$ ways for the leading digit and $10$ for each other, which fixes the rest.
+- [[numeral-as-polynomial]]: write the palindrome in place value, as a polynomial in $10$, to read off its divisibility or its relation to another number.
+
+### Formulas to try
+- [[divisibility-rules]]: the alternating digit sum of an even-length palindrome is $0$, so it is a multiple of $11$; the digit sum decides divisibility by $3$ and $9$.
+
+## Common traps
+- Letting the leading digit be $0$, which gives a shorter number.
+- Counting both halves as free choices, which counts every palindrome many times.
+- Forgetting the middle digit of an odd-length palindrome, which is free.
+- Assuming odd-length palindromes are also multiples of $11$; $121$ is, but $131$ is not.
+
+## Contest profile
+An AMC 8 and early AMC 10 and 12 setup: counting palindromes, a palindrome near a given number, or a divisibility question. It pairs with Constructive Counting and the divisibility rules for $3$, $9$, and $11$.
+`
+});

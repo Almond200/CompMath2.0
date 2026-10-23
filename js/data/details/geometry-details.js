@@ -9175,3 +9175,37 @@ Olympiad problems with lines through the orthocenter, reflections of lines in th
 An olympiad configuration tool, used to name the point where reflections of a line through the orthocenter meet. It pairs with the Steiner line and the orthocenter's reflections.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"composing-transformations": String.raw`
+## When to use
+A figure is rotated and reflected several times, and the question is about the net effect: what single move the sequence equals, how many sequences bring the figure back, or where one point lands. It is cleanest when every move fixes the origin; with a different center, shift the center to the origin first. Lookalikes: one rotation of one point is just Rotating a Point, and a pair of reflections in lines through a point is the single fact that they compose to a rotation by twice the angle between the lines.
+
+## How
+1. Write the matrix of each move: a rotation by $\theta$ is $\begin{pmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{pmatrix}$, and a reflection in the line through the origin at angle $\alpha$ is $\begin{pmatrix}\cos2\alpha & \sin2\alpha \\ \sin2\alpha & -\cos2\alpha\end{pmatrix}$.
+2. Multiply in order, the first move on the right and the last on the left.
+3. Read the product: determinant $1$ means a rotation, by the angle whose cosine is the top-left entry; determinant $-1$ means a reflection.
+4. For a question about returning to the start, count the sequences whose product is the identity, using the determinant to sort rotations from reflections first.
+5. For a move about a point $C \ne 0$, apply it as $x \mapsto C + M(x - C)$.
+
+Rotating $90^\circ$ counterclockwise and then reflecting in $y = x$ gives $\begin{pmatrix}0&1\\1&0\end{pmatrix}\begin{pmatrix}0&-1\\1&0\end{pmatrix} = \begin{pmatrix}1&0\\0&-1\end{pmatrix}$, the reflection in the $x$-axis.
+
+## Why it works
+A rotation or reflection about the origin is a linear map, so it is multiplication by a matrix, and doing one map after another multiplies their matrices. The order matters because matrix products do not commute in general: $M_2M_1$ means $M_1$ first.
+
+Determinants multiply, and a rotation has determinant $1$ while a reflection has $-1$, so the product of the moves has determinant $(-1)^{r}$ for $r$ reflections. An even number of reflections leaves a rotation and an odd number a reflection, which is often the first thing a counting question needs. The method stops at moves that are not about a common point, where the translations have to be carried along.
+
+## Formulas it uses
+- [[rotation-reflection-matrices]]: gives the matrix of each rotation and reflection in the chain.
+- [[matrix-multiplication]]: multiplies the matrices in order, the last move on the left.
+- [[reflection-composition]]: two reflections make a rotation by twice the angle between their lines, a quick check on a product of two reflection matrices.
+
+## Common traps
+- Multiplying in the order the moves are listed, which applies the last move first.
+- Forgetting that a rotation about a point other than the origin is not a matrix alone.
+- Treating clockwise and counterclockwise as the same angle; they are $\theta$ and $-\theta$.
+- Counting a reflection's matrix as its own inverse but a rotation's as well: only the half-turn is.
+
+## Contest profile
+An AMC 10 and 12 tool for sequences of rotations and reflections of a figure, often the whole solution of a counting question about which sequences return a triangle to its place. It pairs with the Rotation and Reflection Matrices and with the rule that two reflections make a rotation.
+`
+});

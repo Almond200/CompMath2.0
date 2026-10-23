@@ -1,9 +1,9 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 701 cards
-covering formulas, methods, and patterns, plus a database of 4,675 past contest problems
-(4,616 with their full statements), of which 1,367 have a written strategy and 1,365 are
-cross-linked to the cards their solutions run through.
+A searchable reference for AMC 10/12, AIME and olympiad training. 738 cards
+covering formulas, methods, and patterns (539 formulas, 155 methods, 44 patterns), plus a database
+of 4,675 past contest problems (4,616 with their full statements), of which 3,059 have a written
+strategy and 2,779 are cross-linked to the cards their solutions run through (2026-10-23).
 
 Fully static and fully offline: no build step, no server, and nothing fetched at runtime. KaTeX
 0.16.11 is vendored under `vendor/katex/` (its CSS, its JS, and the twenty woff2 faces the CSS
@@ -95,9 +95,9 @@ instead of a search (see Special pages below).
 
 `tools/search-eval.html` runs 187 labelled queries against the live app and diffs every one
 against `tools/eval-baseline.json`. Last run (2026-10-23, from the cloud session, after a full index rebuild): 161/187 top-1,
-MRR 0.917. That session cannot rebuild the semantic index, so the newest cards are found by the
-lexical search alone until `tools/build-search-index.py` is run on the Mac; the last full warm
-run there gave 170/185, MRR 0.950, with the two probe sets at 64/78 and 48/77.
+MRR 0.917. The index is now rebuilt in the cloud as well as on the Mac (PLAN, Blockers, has the
+commands); the best recorded warm run, on the Mac with an older query set, gave 170/185, MRR
+0.950, with the two probe sets at 64/78 and 48/77.
 **Wait for the semantic vectors to load before reading results**, or the run under-reports
 by a point or two; compare warm runs to warm runs.
 
@@ -107,8 +107,9 @@ by a point or two; compare warm runs to warm runs.
   25), AIME Early (AIME 1 to 10), AIME Late (AIME 11 to 15), or Olympiad, and with its importance
   within its subsection (`high` down to `lowest`); the card's split tag shows both. One filter,
   behind the funnel in the top bar, narrows every list by tier and importance.
-- **Problems**, reached from Practice by contest and year, each linked to the cards its
-  solution uses, with a pattern, method and formula chain and a strategy that is always shown.
+- **Problems**, reached from Practice by contest and year (AMC 8, AMC 10, AMC 12, then AIME), each
+  linked to the cards its solution uses, with a pattern, method and formula chain and a strategy,
+  shown at once or behind a button (Settings, Practice).
 - **Study lists**, also on Practice, hold 36 curated sets alongside your own. The twelve study
   routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
   of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 24
@@ -117,23 +118,35 @@ by a point or two; compare warm runs to warm runs.
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
-  paragraph each one illustrates (210 on 183 cards).
+  paragraph each one illustrates (210 on 182 cards). Problems printed without a figure get one
+  drawn for the app, labelled as such (282 so far).
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
-  modular basics and eleven more) end with a hand-picked row of the cards that are part of the
+  modular basics and fourteen more; 18 hubs, 96 links) end with a hand-picked row of the cards that are part of the
   same idea: LTE, Legendre and Kummer under p-adic valuation, the construction cards under
-  auxiliary lines. It is curated and means "these belong to this card". The list is
+  auxiliary lines. It is curated and means "these belong to this card". Like Used by methods, it is
+  a row of blue links that open a hover preview. The list is
   `js/data/connected.js`. (A computed "Related" row of nearby cards used to sit beside it; it was
   removed in October 2026 as more noise than help.)
-- **Interactive widgets** on selected cards: drag the vertices and watch the invariant hold.
+- **Interactive widgets** on selected cards (75 geometry widgets you drag, 39 others you set): drag
+  the vertices and watch the invariant hold.
 - **Advanced search** builds a query from tag chips across the whole library.
-- **Settings** (`#/settings`, the gear in the top bar) cover theme, density (Comfortable, Spacious or Compact: the
-  spacing of the whole app), card size (regular, two across on a laptop, or large, one across), **formula lines** (1, 2, 3, or All: the most rows of a card's formulas a browsing card shows; a card's own page always shows all), text size, scroll speed (Slow, Normal or Fast: how far one wheel step moves a
-  page; Normal leaves the browser's own scrolling alone), subject pages (cards or a wiki-style A-Z index), card
-  order, keyword chips, figures on card faces (off or on), and **notation**: in the expanded form, every formula
-  box and Key forms bullet that uses a sigma or a product sign shows its terms written out. On a
-  wide window, a fixed preview panel on the right, behind a dividing line, shows cards while
-  browsing, a card's page and a subject page as each setting changes, scaled so all three always
-  fit.
+- **Settings** (`#/settings`, the gear in the top bar), in panels:
+  - Appearance: theme, density (Comfortable, Spacious or Compact: the spacing of the whole app), card
+    size (regular, or large, one across), and text size.
+  - Reading the math: **formula lines** (1, 2, 3, or All: the most rows of a card's formulas a
+    browsing card shows; a card's own page always shows all), keyword tags, **notation** (in the
+    expanded form, every formula box and Key forms bullet with a sigma or product sign shows its
+    terms written out), and figures on card faces.
+  - Browsing: subject pages (cards or a wiki-style A-Z index), card order (Curated or Most used),
+    scroll speed, where the app opens, and the page-tools column.
+  - Practice: the strategy on a problem page, shown at once or behind a button.
+  - Commands, and **Your progress**: Export writes everything the app keeps in this browser
+    (lists, stars, settings, theme, recent pages, flashcard and quiz progress) to one versioned
+    JSON file (`competition-math-reference/progress`, version 1); Import merges its lists into
+    yours and replaces the rest.
+
+  On a wide window, a fixed preview panel on the right shows cards while browsing, a card's page,
+  a subject page and a problem page as each setting changes, scaled so all four always fit.
 - **Special pages**, run from the search box or from Settings → Commands, in the style of
   Wikipedia's: `Special:Random`, `Special:RandomProblem/<contest>`, `Special:RandomStarred`,
   `Special:WhatLinksHere/<card>`, `Special:AllPages` (an A-Z index with a letter bar),
@@ -204,6 +217,17 @@ tools/check-lab.sh             parse-checks the inline script of each lab page
 tools/check-statements.py      every statement key and figure resolves, the credit header is present
 tools/find-duplicate-forms.py  lists formulas stated on two cards (a report for rule 17)
 tools/jsc-node                 stands in for macOS jsc under Node, for the JS checks
+tools/gates.sh                 runs every gate above but check-labels, in order, stopping at the first failure
+tools/bump-versions.py         bumps ?v= in index.html for changed files (--changed) and syncs the lab pages
+tools/check-pages.js           browser check of pages: KaTeX errors, broken links, overflow, at 1280 and 375, light and dark
+tools/add-cards.py             inserts a batch of new cards with write-ups, examples and registrations
+tools/add-to-list.py           adds cards to a section of a built-in list and keeps its blurb's count true
+tools/untagged.js              step D: the next problems without a write-up, newest paper first
+tools/near-twins.js            step D: AMC 12 problems whose statement nearly matches a written AMC 10 one
+tools/show.js                  prints problem statements by slug
+tools/practice-set.js          writes problem entries from a JSON file of edits
+tools/add-tag.js               adds a card to problems and to their AMC 10/12 twins
+tools/live-cache/              LIVE's concept tags for every paper (hints only, never a source of tags)
 ```
 
 Run every checker before committing (the list in CONVENTIONS §7); each gate exits non-zero on a
@@ -258,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-23**
 
+- **Eleven approved cards (P16 to P26), and a markdown review begun (2026-10-23).** Written as approved: Composing Transformations as Matrix Products (with a figure), Taking a Matrix Power by Diagonalizing, Dimension Arguments (Oddtown), Summing a Trigonometric Series with $e^{i\theta}$ (example $\sum\binom6k\cos\tfrac{k\pi}3=-27$), Independent Events (with a paragraph showing the product rule is the multiplication principle divided by the total, as the owner asked), Estimating to Choose an Answer, Palindromes, Counting the Shapes in a Figure, Fencepost Counting, Reading Graphs and Tables, and Using a Derivative to Find an Extremum. The method group Determinants is renamed Matrices & Determinants. Fourteen problems cite the new cards, their AMC 10/12 twins included (`tools/add-tag.js`). The search index was rebuilt again: 738 cards, 161/187 top-1. The owner asked for a full read-through of the markdown files: the README's intro counts, search note, Problems and Settings descriptions and file map, and CONVENTIONS' stale counts, card-order rule, stored keys (with the progress export) and Connected formulas section are brought up to date.
 - **Ramsey Number $R(3,3)=6$ removed (owner, 2026-10-23).** The card, its write-up, example, Friends and Strangers widget, list entries and register rows are gone; its old address opens the Pigeonhole Principle (`MERGED_IDS`). 2021 Fall AMC 10B #23, its one problem, now cites the Pigeonhole Principle: four edges at a vertex in two colors, and three of one color would close a one-color triangle. Schur's Theorem mentions Ramsey's theorem without a link.
 - **Step D: 2021 Spring AMC 12A finished (2026-10-23).** The $12$ unwritten problems written and checked by script, with a figure for #24: #8 has period $7$ mod $2$ ($(E,O,E)$); #13 compares $32\cos5\theta$ ($-\sqrt3+i$); #15 turns the condition into $t+(8-b)\equiv0\pmod4$ and sums $\binom{14}m$ ($4095$, remainder $95$); #19 makes both angles lie where sine is one-to-one ($2$ solutions); #20 solves $3p^2-40p+41=0$ ($\tfrac{40}3$); #21 fits the ellipse through the five roots ($e^2=\tfrac16$); #24 uses the radical axis of the two circles, and only $t=4$ keeps $P$ on the diameter ($\tfrac{99\sqrt3}{20}$, $122$).
 - **Search index rebuilt; 2022 AMC 12B finished (2026-10-23).** The semantic index is rebuilt in the cloud for the first time (model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions, 17,785 words, all 728 cards), so the newest cards are found by meaning as well as by words; the search eval gives 161/187 top-1, top-3 97.3%, MRR 0.917, cold and warm alike. The $12$ unwritten problems of 2022 AMC 12B written and checked by script, with figures for #10 and #19: #9 forces $a_7=32$ ($a_2=12$); #12 subtracts the two failure cases ($\tfrac{61}{81}$); #17 forces the array once the sums are placed ($24\cdot24=576$); #19 by complex coordinates ($\cos C=\tfrac{5\sqrt{13}}{26}$, $44$); #24 sums $\lvert1-\omega^k\rvert^4$ to $42$ ($147$); #25 cuts four kites $9-5\sqrt3$ from a square of side $2\sqrt3-1$ ($16\sqrt3-23$, $-4$).

@@ -9316,6 +9316,24 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // Composing two moves: a 90° turn about O, then the reflection in y = x, is the reflection in
+  // the x-axis, as the matrix product says.
+  DIAGRAMS["composing-transformations"] = [(() => {
+    const k = 34, O = [215, 150], Pp = ([x, y]) => [O[0] + k * x, O[1] - k * y];
+    const T = [[1, 1], [3, 1], [1, 2]];
+    const rot = ([x, y]) => [-y, x], ref = ([x, y]) => [y, x];
+    const T1 = T.map(rot), T2 = T1.map(ref), T3 = T.map(([x, y]) => [x, -y]);
+    const ok = T2.every((p, i) => Math.abs(p[0] - T3[i][0]) < 1e-12 && Math.abs(p[1] - T3[i][1]) < 1e-12);
+    return wrap(430, 300, [
+      seg(Pp([-4, 0]), Pp([4.6, 0]), FNT, 1.2), seg(Pp([0, -3.4]), Pp([0, 3.6]), FNT, 1.2), seg(Pp([-3.4, -3.4]), Pp([3.6, 3.6]), GLD, 1.4, "6 4"),
+      poly(T.map(Pp), DIM, 2, "rgba(120,120,140,0.12)"), poly(T1.map(Pp), ACC, 1.8, ACCS), poly(T2.map(Pp), GRN, 2, "rgba(76,195,138,0.13)"),
+      dot(Pp(T[1]), DIM, 3.5), dot(Pp(T1[1]), ACC, 3.5), dot(Pp(T2[1]), GRN, 3.5), dot(O, DIM, 3),
+      txt(add(Pp([2.2, 2.0]), [0, 4]), "T", DIM, 13.5), txt(add(Pp([-2.6, 1.6]), [0, 4]), "T₁", ACC, 13), txt(add(Pp([2.2, -2.4]), [0, 4]), "T₂", GRN, 13),
+      txt(add(Pp([3.6, 3.6]), [-8, -6]), "y = x", GLD, 12, "end"), txt(add(O, [-10, 14]), "O", DIM, 12.5),
+      cap(430, 300, "T (gray) turned 90° counterclockwise about O gives T₁ (blue); reflecting T₁ in y = x (gold) gives T₂ (green), which is T reflected in the x-axis. The matrix product of the two moves is diag(1, −1)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,

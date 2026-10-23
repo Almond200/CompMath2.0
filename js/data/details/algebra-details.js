@@ -5432,3 +5432,164 @@ Polynomial equations of Fermat or Catalan type, bounds on $\deg(f^3 - g^2)$, and
 An olympiad result for polynomial Diophantine equations, quoted to rule out solutions in a line. It pairs with the Fundamental Theorem of Algebra and with derivative arguments on repeated roots.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"matrix-power-diagonalizing": String.raw`
+## When to use
+The same linear step is applied over and over: a probability vector moved by a transition matrix, a recurrence such as $F_{n+1} = F_n + F_{n-1}$ written as $\begin{pmatrix}1&1\\1&0\end{pmatrix}$, or a linear map iterated. Reach for it when $n$ is large or the answer must be a formula in $n$. For a handful of steps, multiplying the matrix out directly, or filling in a step-by-step table, is faster.
+
+## How
+1. Find the eigenvalues of $M$ from $\det(M - \lambda I) = 0$.
+2. For each eigenvalue $\lambda$, find an eigenvector $v$ with $Mv = \lambda v$.
+3. Put the eigenvectors as columns of $P$ and the eigenvalues on the diagonal of $D$, in the same order.
+4. Compute $M^n = PD^nP^{-1}$, or, if only one entry or one combination is asked for, write it as $\sum c_i\lambda_i^n$ and fit the constants $c_i$ from the first few values.
+5. Without eigenvectors, the Cayley–Hamilton Theorem reduces $M^n$ to a combination of $I$ and $M$ (for $2 \times 2$) whose coefficients satisfy the same recurrence.
+
+For $M = \begin{pmatrix}1&2\\2&1\end{pmatrix}$ the eigenvalues are $3$ and $-1$, with eigenvectors $(1, 1)$ and $(1, -1)$, so $M^n = \tfrac12\begin{pmatrix}3^n + (-1)^n & 3^n - (-1)^n \\ 3^n - (-1)^n & 3^n + (-1)^n\end{pmatrix}$.
+
+## Why it works
+If $MP = PD$, the columns of $P$ are eigenvectors, and when $P$ is invertible this says $M = PDP^{-1}$. In the power $M^n = (PDP^{-1})(PDP^{-1})\cdots(PDP^{-1})$ every inner $P^{-1}P$ cancels, leaving $PD^nP^{-1}$, and the power of a diagonal matrix is the diagonal of powers.
+
+It needs enough independent eigenvectors to make $P$ invertible, which holds whenever the eigenvalues are distinct. With a repeated eigenvalue and too few eigenvectors, terms $n\lambda^n$ appear instead, exactly as for a linear recurrence with a double root.
+
+## Formulas it uses
+- [[eigenvalues-characteristic]]: the characteristic polynomial gives the eigenvalues that $D$ holds.
+- [[matrix-multiplication]]: the product $PD^nP^{-1}$, and the check $MP = PD$.
+- [[cayley-hamilton]]: reduces $M^n$ to a combination of lower powers when eigenvectors are not needed.
+
+## Common traps
+- Putting the eigenvectors in $P$ in a different order from the eigenvalues in $D$.
+- Forgetting $P^{-1}$, or inverting it wrongly; a quick check is that $n = 1$ gives back $M$.
+- Assuming every matrix diagonalizes; a repeated eigenvalue may not.
+- Using it for a few steps, where direct multiplication is shorter.
+
+## Contest profile
+A late AIME and olympiad tool, behind closed forms for Markov chains, linear recurrences, and repeated linear maps. On contests the same answer usually comes from the recurrence or a table, and this method explains why those answers are sums of powers.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"trig-series-complex": String.raw`
+## When to use
+A sum runs over $\cos k\theta$ or $\sin k\theta$ for $k$ in an arithmetic progression, plain or weighted by $\binom nk$, $r^k$, or similar coefficients. The plain sum of sines or cosines in arithmetic progression has its own closed form; this method is the way to derive it, and the only quick way when the terms carry weights. A sum of $\cos^2$ or of products is first rewritten with the double-angle or product-to-sum identities.
+
+## How
+1. Replace $\cos k\theta$ by $\operatorname{Re} e^{ik\theta}$ (or $\sin k\theta$ by $\operatorname{Im} e^{ik\theta}$), keeping the real weights.
+2. Recognize the complex sum: $\sum r^ke^{ik\theta}$ is geometric with ratio $re^{i\theta}$, and $\sum\binom nke^{ik\theta} = (1 + e^{i\theta})^n$.
+3. Sum it in closed form.
+4. Simplify, often by factoring out a half angle: $1 + e^{i\theta} = 2\cos\tfrac\theta2\,e^{i\theta/2}$.
+5. Take the real or imaginary part.
+
+For $\sum_{k=0}^{n}\binom nk\cos k\theta$, $(1 + e^{i\theta})^n = \left(2\cos\tfrac\theta2\right)^ne^{in\theta/2}$, whose real part is $\left(2\cos\tfrac\theta2\right)^n\cos\tfrac{n\theta}2$.
+
+## Why it works
+Euler's Formula $e^{ik\theta} = \cos k\theta + i\sin k\theta$ makes $\cos k\theta$ the real part of $e^{ik\theta}$, and taking real parts commutes with adding up terms and multiplying by real weights. So the cosine sum is the real part of the complex sum, term by term.
+
+The point of the move is that $e^{ik\theta} = \left(e^{i\theta}\right)^k$: angles in arithmetic progression become powers of one number, and sums of powers have closed forms. It stops working when the weights are not real, because then taking the real part mixes the cosine and sine sums.
+
+## Formulas it uses
+- [[eulers-formula]]: $e^{ik\theta} = \cos k\theta + i\sin k\theta$ turns each term into a power of $e^{i\theta}$.
+- [[geometric-series]]: sums $\sum\left(re^{i\theta}\right)^k$ in closed form.
+- [[binomial-theorem]]: sums $\sum\binom nk e^{ik\theta}$ as $(1 + e^{i\theta})^n$.
+
+## Common traps
+- Taking the real part of a quotient term by term; first make the denominator real, by multiplying by its conjugate or factoring a half angle out of it.
+- Forgetting the $k = 0$ term, $\cos0 = 1$.
+- Using complex weights and then reading off the real part as if they were real.
+- Missing the half-angle factorization, which turns $1 - e^{i\theta}$ into $-2i\sin\tfrac\theta2\,e^{i\theta/2}$.
+
+## Contest profile
+An AIME tool for cosine and sine sums with weights, and the derivation behind the closed form for sines and cosines in arithmetic progression. It pairs with Euler's Formula, geometric series, and the Binomial Theorem.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"estimating-answers": String.raw`
+## When to use
+The question asks which choice is closest, or the choices differ by factors of two or more, so a rough value settles it. Typical cases are products and quotients of awkward numbers, unit conversions, square roots, and a physical quantity with real-world data. When two choices are close together, estimate more finely or compute exactly; estimation is a way to save time, not a replacement for care.
+
+## How
+1. Look at the choices first, to see how accurate the estimate must be.
+2. Round each number to a convenient one: a power of ten, a round multiple, or a known square.
+3. Note the direction of each rounding: rounding a factor up raises a product, rounding a divisor up lowers a quotient.
+4. Compute the rough value, and if it lands near a boundary, make a lower and an upper estimate.
+5. Choose the only answer within the bounds.
+
+For $\tfrac{1024 \cdot 243}{2401}$, round to $\tfrac{1000 \cdot 250}{2400} \approx 104$; the errors are a few percent each, so the value is close to $100$.
+
+## Why it works
+A product or quotient changes by about the sum of the relative errors of its parts, so rounding each part by a few percent moves the result by only a few percent. If the gap between the estimate and the next-closest choice is larger than that, the estimate picks the answer.
+
+Keeping track of directions turns an estimate into a bound: rounding every factor up gives an upper bound and every factor down a lower one. When both bounds lie nearer one choice than any other, the choice is certain, not just likely.
+
+## Formulas it uses
+This method uses no particular formula card: it rests only on how relative errors combine in products and quotients.
+
+## Common traps
+- Rounding several factors the same way, so the errors add up instead of canceling.
+- Forgetting that dividing by a rounded-up number makes the quotient smaller.
+- Estimating when two choices are within the error of the estimate.
+- Rounding before a subtraction of nearly equal numbers, where small errors become large ones.
+
+## Contest profile
+An AMC 8 and early AMC 10 and 12 skill, behind every "closest to" question and many unit-conversion and real-data problems. It pairs with Approximating Square Roots and with Setting Up a Proportion.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"derivative-extremum": String.raw`
+## When to use
+A quantity depends on one variable through a smooth formula, such as a polynomial, a product, or a quotient, and its maximum or minimum is asked for. On a multiple-choice or short-answer contest the derivative is a legitimate way to find the answer, and a fast check on an algebraic one. It needs a single variable: with two, eliminate one first. For a quadratic, the vertex formula is shorter.
+
+## How
+1. Write the quantity as a function $f(x)$ of one variable, and find the interval it is allowed on.
+2. Differentiate, using the power, product, and quotient rules: $(x^n)' = nx^{n-1}$, $(uv)' = u'v + uv'$.
+3. Solve $f'(x) = 0$ and keep the solutions inside the interval.
+4. Evaluate $f$ at those points and at the ends of the interval.
+5. Take the largest or smallest value.
+
+For $f(x) = x(10 - 2x)^2$ on $0 \lt x \lt 5$, $f'(x) = (10 - 2x)^2 - 4x(10 - 2x) = (10 - 2x)(10 - 6x)$, which vanishes inside the interval only at $x = \tfrac53$, where $f = \tfrac{2000}{27}$.
+
+## Why it works
+The derivative $f'(x)$ is the slope of the graph at $x$. At an interior maximum the function rises up to the point and falls after it, so the slope changes from positive to negative and is $0$ at the top; the same holds at a minimum with the signs reversed. So every interior extreme is a critical point.
+
+A continuous function on a closed interval has a largest and a smallest value, and they occur either at a critical point or at an end. Checking that finite list is therefore complete. On an open interval, or for a function that is not smooth (with a corner, like $\lvert x\rvert$), the ends and the corners must be examined separately.
+
+## Formulas it uses
+This method uses no formula card of the library, which has no calculus cards; the power, product, and quotient rules are stated in How.
+
+## Common traps
+- Forgetting the ends of the interval, where the extreme often is.
+- Keeping a critical point outside the allowed interval.
+- Taking $f'(x) = 0$ to mean a maximum when it is a minimum or a flat point; compare values.
+- Differentiating with respect to the wrong variable after a substitution.
+
+## Contest profile
+An occasional AIME shortcut for one-variable optimization, and a check on an algebraic answer from AM-GM or completing the square. Contest solutions usually present the algebraic proof; the derivative finds where to look.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"reading-graphs": String.raw`
+## Distinguishing clues
+- A picture of data: bars, a line, a circle cut into sectors, or a table of values.
+- A question asking for a total, an average, a percent, a change, or which item is largest.
+- An axis that starts above $0$, a scale with several units per mark, or units stated only in the axis label.
+- Not this pattern: the graph of a function in coordinates, where the question is about the equation, not data.
+
+## Methods and Formulas to Try
+First turn the picture into a list of numbers, checking the scale and the units of each axis, then answer the question with ordinary arithmetic. For a pie chart, a sector of angle $\theta$ is $\tfrac{\theta}{360^\circ}$ of the total.
+
+### Methods to try
+- [[averages-to-totals]]: a question about the average of the data is answered through the total.
+- [[setting-up-proportions]]: a pie chart or a scale drawing is a proportion between the picture and the data.
+
+### Formulas to try
+- [[percent-change]]: changes between bars or points are asked for as percents of the starting value.
+- [[mean-median-mode]]: the average, median, and mode of the values read from the graph.
+
+## Common traps
+- Comparing bar heights when the axis does not start at $0$.
+- Missing that each mark stands for several units, or that values are in thousands.
+- Taking a percent change from the wrong starting value.
+- Reading a pie chart's angles as percents.
+
+## Contest profile
+Mostly an AMC 8 setup, rarer on the AMC 10: one graph or table and a question about its numbers. It pairs with Percent Change and with the mean, median, and mode.
+`
+});

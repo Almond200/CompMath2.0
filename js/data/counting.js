@@ -72,6 +72,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "fencepost-counting",
+          name: "Fencepost Counting",
+          latex: String.raw`\#\{a, a+1, \ldots, b\} = b - a + 1, \qquad n \text{ posts}: \ n - 1 \text{ gaps in a line},\ n \text{ gaps in a loop}`,
+          description: String.raw`Fencepost counting is the count of posts against the gaps between them: $n$ posts in a straight line make $n - 1$ gaps, but $n$ posts around a closed loop make $n$ gaps. In the same way the integers from $a$ to $b$ inclusive number $b - a + 1$, not $b - a$, and getting this off by one is the most common counting slip on contests.`,
+          keywords: ["fencepost", "fence post problem", "off by one", "posts and gaps", "inclusive count", "b minus a plus 1", "trees along a road"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "handshakes-diagonals",
           name: "Handshakes, Games, Diagonals & Triangles",
           latex: String.raw`\text{pairs} = \binom{n}{2} = \frac{n(n-1)}{2}, \qquad \text{diagonals} = \frac{n(n-3)}{2}, \qquad \text{triangles} = \binom{n}{3}`,
@@ -547,6 +557,16 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "independent-events",
+          name: "Independent Events",
+          latex: String.raw`A, B \text{ independent} \iff P(A \cap B) = P(A)\,P(B)`,
+          description: String.raw`Two events $A$ and $B$ are independent when knowing that one happened does not change the chance of the other, which is the same as $P(A \cap B) = P(A)\,P(B)$. Separate coins, dice, spinners, and draws with replacement give independent events, so the chance that several of them all happen is the product of their chances; draws without replacement do not.`,
+          keywords: ["independent events", "independence", "multiply probabilities", "product rule for probability", "p of a and b equals p of a times p of b", "dependent events", "with replacement"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
           id: "conditional-probability",

@@ -3418,3 +3418,124 @@ Bounds on the number of edges covered by a set of triangles, on the faces of sim
 An extremal set theory theorem from olympiad combinatorics, seldom quoted by name but behind several problems about how few smaller sets a family must cover. It pairs with Sperner's Theorem and the Erdős–Ko–Rado Theorem.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"dimension-arguments": String.raw`
+## When to use
+The problem asks how large a family can be when its members satisfy conditions on their sizes and pairwise intersections, especially parity conditions, and pigeonhole or double counting give a bound that is far from tight. Signals: odd and even sizes, exactly one or exactly $\lambda$ common elements, or sums that must vanish mod $2$. When the conditions are about sizes only, with no intersections, counting is usually enough.
+
+## How
+1. Encode each object as a vector: a set $S \subseteq \{1, \ldots, n\}$ becomes its $0$-$1$ incidence vector $v_S$.
+2. Translate the conditions into dot products: $v_S \cdot v_T = \lvert S \cap T\rvert$, computed mod $2$ over $\mathbb{F}_2$.
+3. Suppose $\sum c_S v_S = 0$ and dot both sides with one vector $v_T$; the conditions make every term vanish except $c_T(v_T \cdot v_T)$, so $c_T = 0$.
+4. Conclude the vectors are independent, so there are at most $n$ of them.
+5. Show the bound is reached, often by the simplest family, such as the $n$ single people as clubs.
+
+For Oddtown, $v_S \cdot v_S = \lvert S\rvert \equiv 1$ and $v_S \cdot v_T \equiv 0 \pmod 2$, so dotting $\sum c_Sv_S = 0$ with $v_T$ leaves $c_T = 0$.
+
+## Why it works
+In an $n$-dimensional vector space, any $n + 1$ vectors are linearly dependent: some combination with not all coefficients zero adds up to $0$. So a family of independent vectors has at most $n$ members, and the problem reduces to proving independence.
+
+The dot product is what connects the combinatorial conditions to independence: it turns intersection sizes into numbers that can be computed from the conditions alone. The method works over any field, and parity conditions call for $\mathbb{F}_2$, where $1 + 1 = 0$, so that even intersections become exactly $0$.
+
+## Formulas it uses
+This method uses no particular formula card: its one fact, that $n$-dimensional space holds at most $n$ independent vectors, is the definition of dimension.
+
+## Common traps
+- Working over $\mathbb{R}$ when the conditions are parities, where an even intersection is not zero.
+- Forgetting to show the bound is reached.
+- Dotting with a vector whose own dot product vanishes, which proves nothing about its coefficient.
+- Applying it to conditions that are not about pairwise intersections, where the dot products tell nothing.
+
+## Contest profile
+An olympiad technique for extremal set families, the source of the Oddtown and Eventown theorems and of Fisher's inequality. It pairs with double counting and with incidence matrices, and is rarely needed below olympiad level.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"independent-events": String.raw`
+## Key forms
+- $P(A \cap B) = P(A)\,P(B)$ — the definition of independence, and the product rule it gives
+- $P(A \mid B) = P(A)$ — the same condition when $P(B) \gt 0$: knowing $B$ does not change the chance of $A$
+- $P(A_1 \cap \cdots \cap A_n) = P(A_1)\cdots P(A_n)$ — for mutually independent events, such as separate rolls
+- $P(\text{at least one}) = 1 - (1 - p_1)\cdots(1 - p_n)$ — the complement of none happening, for independent events
+
+## Conditions
+Independence is a property of the probabilities, not of the story. Physically separate experiments, such as two dice or draws with replacement, are independent. Draws without replacement are not, because the first draw changes what is left. Three or more events need every subset to multiply, not just every pair.
+
+## Why it works
+By the definition of conditional probability, $P(A \cap B) = P(B)\,P(A \mid B)$. Saying that $B$ carries no information about $A$ means $P(A \mid B) = P(A)$, and substituting gives the product rule. The product form is taken as the definition because it is symmetric and still makes sense when $P(B) = 0$.
+
+Independence is the probability version of [[constructive-counting|constructive counting]]. When two separate experiments have $m$ and $n$ equally likely outcomes, the pairs of outcomes are the $mn$ cells of a grid, all equally likely, and the event "$A$ on the first and $B$ on the second" is a rectangle of $a \cdot b$ cells. Its probability is $\tfrac{ab}{mn} = \tfrac am \cdot \tfrac bn$: the multiplication principle for counting, divided by the total, is the product rule.
+
+$$P(A \cap B) = \frac{a \cdot b}{m \cdot n} = \frac{a}{m}\cdot\frac{b}{n} = P(A)\,P(B)$$
+
+So the two ideas are one: building an outcome in independent stages multiplies the number of choices, and multiplying the probabilities of independent events is the same count divided by the same total. The product rule is the faster of the two when the stages have unequal chances, such as a biased coin, where there is no list of equally likely outcomes to count.
+
+## Useful observations
+- To test whether two events are independent, compute $P(A \cap B)$ and compare it with $P(A)P(B)$; intuition is unreliable.
+- Disjoint events with positive probabilities are never independent: if one happens the other cannot.
+- If $A$ and $B$ are independent, so are $A$ and not $B$, which gives the "at least one" formula.
+
+## Applications
+Repeated trials, products of chances for separate experiments, the "at least one" complement, and checking whether two conditions on one experiment are independent.
+
+## Contest profile
+An AMC staple in probability problems with separate rolls, flips, or spins, often paired with Complementary Counting for "at least one". It pairs with Conditional Probability & Bayes when the events are not independent.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"fencepost-counting": String.raw`
+## Key forms
+- $b - a + 1$ — the number of integers from $a$ to $b$, both ends included
+- $\left\lfloor\tfrac{b - a}{d}\right\rfloor + 1$ — the terms $a, a + d, a + 2d, \ldots$ that do not pass $b$
+- $n$ posts in a line make $n - 1$ gaps; around a closed loop they make $n$
+- a fence of length $L$ with posts every $d$, ends included, has $\tfrac Ld + 1$ posts in a line and $\tfrac Ld$ around a loop
+
+## Conditions
+The ends are counted as stated: "from $a$ to $b$ inclusive" includes both, and a loop has no ends at all. When the length is not a multiple of the spacing, the last gap is shorter and the counts use the floor.
+
+## Why it works
+Pair each gap with the post at its left end. In a line every post but the last starts a gap, so the gaps are one fewer than the posts. Around a loop every post starts a gap and the last gap returns to the first post, so the counts are equal.
+
+For the integers from $a$ to $b$, subtracting $a - 1$ from each turns them into $1, 2, \ldots, b - a + 1$, a list whose length is its last entry. The steps of size $d$ work the same way after dividing by $d$.
+
+## Useful observations
+- When a count looks off by one, check a tiny case: from $3$ to $5$ there are $3$ numbers, not $2$.
+- Posts on the sides of a rectangle share the four corners, so the total is the sum over the sides minus $4$.
+- A calendar is a fence: from Monday to the next Monday is $7$ days but $8$ Mondays counted inclusively.
+
+## Applications
+Posts along a fence, trees along a road, pages in a range, days between dates, and the number of terms of an arithmetic sequence.
+
+## Contest profile
+An AMC 8 and early AMC 10 and 12 step inside word problems and the length of arithmetic sequences. It pairs with Arithmetic Sequence & Series and with counting the corners of a rectangle once.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"counting-shapes": String.raw`
+## Distinguishing clues
+- A figure of lines or a grid, and a question asking how many shapes of one kind it contains.
+- Shapes of several sizes that share sides, so a large shape is made of small ones.
+- An answer that a careless count by eye gets wrong: the large and middle-sized shapes are easy to miss.
+- Not this pattern: lattice points or paths on a grid, which count points or routes, not the shapes the lines make.
+
+## Methods and Formulas to Try
+Every shape in such a figure is fixed by a few of the figure's lines or points: a rectangle by two horizontal and two vertical lines, a triangle cut from one corner by the two segments from that corner. Counting those choices counts each shape exactly once.
+
+### Methods to try
+- [[organized-listing]]: list the shapes by size, from the smallest piece up to the whole figure, and count the positions of each size.
+- [[casework-method]]: split by a feature, such as the vertex at the top or the number of small pieces a shape is made of.
+- [[constructive-counting]]: build a shape by choosing its bounding lines or vertices, one choice at a time.
+
+### Formulas to try
+- [[rectangles-in-grid]]: an $m \times n$ grid of lines has $\binom m2\binom n2$ rectangles, chosen by their two horizontal and two vertical lines.
+
+## Common traps
+- Missing the shapes made of several small pieces, especially the largest ones.
+- Counting a shape twice, once from each corner, when listing by a corner.
+- Counting a square of an oblique grid as a rectangle of the main grid, or missing tilted squares when they count.
+- Assuming every set of chosen lines bounds a shape; check the lines really meet in the figure.
+
+## Contest profile
+An AMC 8 and early AMC 10 and 12 setup with a picture, from triangles in a divided triangle to squares in a grid. It pairs with Organized Listing and with Rectangles in a Grid.
+`
+});
