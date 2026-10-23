@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 171 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 172 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -37,7 +37,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["conic-sections", "ellipse-properties", "hyperbola-properties", "parabola-focus-directrix", "eccentricity", "conic-classification", "conic-reflective-property", "conic-tangent-lines", "conic-parametric", "focal-radii", "parabolic-segment-area", "axis-stretch-area"] },
       { title: "Coordinates & Transformations",
         note: "For when the synthetic route stalls and the figure offers a right angle, a midpoint or a natural origin.",
-        ids: ["distance-midpoint", "line-forms", "angle-between-lines", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance"] },
+        ids: ["distance-midpoint", "line-forms", "angle-between-lines", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "point-line-distance", "circle-equation", "polar-coordinates", "british-flag-theorem", "ellipse-tangent-line", "section-formula", "reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "rotation-center", "picks-theorem-general", "picks-with-holes", "parallel-lines-distance", "composing-transformations"] },
       { title: "Three Dimensions",
         note: "Mensuration of the named solids first, then analytic geometry in space for everything that is not one.",
         ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron"] },
@@ -58,7 +58,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 125 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 127 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -83,7 +83,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["complex-basics", "eulers-formula", "de-moivre", "roots-of-unity", "polar-form", "conjugate-both-sides", "complex-modulus-argument"] },
       { title: "Rates, Work & Mixtures",
         note: "Word-problem machinery, plus estimation when an exact answer is not required.",
-        ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "setting-up-proportions", "mean-median-mode", "percent-change", "several-rates", "age-problems"] },
+        ids: ["work-rates", "average-speed", "relative-motion", "weighted-average", "proportion-properties", "sqrt-approximation", "abs-value-graphing", "abs-value-relations", "time-per-leg", "averages-to-totals", "setting-up-proportions", "mean-median-mode", "percent-change", "several-rates", "age-problems", "estimating-answers"] },
       { title: "Substitutions That Simplify",
         note: "Changing variables so the problem becomes one you have already solved.",
         ids: ["log-substitution", "functional-substitution", "cauchy-functional-equations", "substitute-repeated-block"] },
@@ -95,10 +95,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["odd-even-functions", "inverse-function-properties"] },
       { title: "Shapes Worth Recognizing on Sight",
         note: "Whole problem formats with an intended route.",
-        ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation"] }
+        ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation", "reading-graphs"] }
     ] },
   { id: "route-amc-number", name: "AMC 10/12 Number Theory", kind: "route", tier: "AMC", subject: "Number Theory",
-    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 60 cards across 9 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 61 cards across 9 sections.",
     sections: [
       { title: "Divisibility & GCD",
         note: "The foundation. Most number theory problems are a gcd statement wearing a disguise.",
@@ -126,14 +126,14 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["lattice-points-gcd"] },
       { title: "Patterns Worth Recognizing on Sight",
         note: "Problem formats with an intended route.",
-        ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square"] }
+        ids: ["cycle-hunting", "cryptarithms", "digit-manipulation", "calendar-problems", "quadratic-perfect-square", "palindromes"] }
     ] },
   { id: "route-amc-counting", name: "AMC 10/12 Counting & Probability", kind: "route", tier: "AMC", subject: "Counting & Probability",
-    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 77 cards across 11 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of counting & probability, in the order you would reach for it. 80 cards across 11 sections.",
     sections: [
       { title: "Counting Basics",
         note: "Arrangements, selections and distributions. Almost every harder count reduces to one of these.",
-        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing"] },
+        ids: ["permutations-combinations", "multiset-permutations", "circular-permutations", "grid-paths", "rectangles-in-grid", "handshakes-diagonals", "counting-functions", "subset-sum-facts", "stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table", "organized-listing", "fencepost-counting", "counting-shapes"] },
       { title: "Binomial Coefficients",
         note: "The identities worth knowing cold, since they turn a sum into a single coefficient.",
         ids: ["pascals-identity", "binomial-row-sums", "hockey-stick", "vandermonde", "committee-chair", "multinomial-theorem", "pascal-parity", "nested-subset-pairs", "squared-binomial-sum"] },
@@ -148,7 +148,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["permutation-cycle-structure"] },
       { title: "Probability",
         note: "Turning a probability into a count, which is what nearly every contest probability question is.",
-        ids: ["basic-probability", "conditional-probability", "binomial-probability", "geometric-distribution", "turn-based-games", "hypergeometric", "bayes-theorem", "drawing-without-replacement", "product-of-uniforms"] },
+        ids: ["basic-probability", "conditional-probability", "binomial-probability", "geometric-distribution", "turn-based-games", "hypergeometric", "bayes-theorem", "drawing-without-replacement", "product-of-uniforms", "independent-events"] },
       { title: "Expectation & Variance",
         note: "Averages of random quantities, where linearity does most of the work.",
         ids: ["expected-value", "tail-sum-expectation", "total-expectation", "expected-fixed-points", "variance-independence", "order-statistics"] },
@@ -206,7 +206,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["inversion-facts"] }
     ] },
   { id: "route-aime-algebra", name: "AIME Algebra", kind: "route", tier: "AIME", subject: "Algebra",
-    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 35 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 38 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -219,13 +219,13 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["generalized-binomial-series", "abel-summation"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
-        ids: ["am-gm", "rearrangement", "nesbitt-inequality", "jensens-inequality", "minkowski-inequality", "weighted-am-gm", "tangent-line-trick"] },
+        ids: ["am-gm", "rearrangement", "nesbitt-inequality", "jensens-inequality", "minkowski-inequality", "weighted-am-gm", "tangent-line-trick", "derivative-extremum"] },
       { title: "Exponents, Logs, Radicals & Absolute Value",
         note: "The manipulation rules, including the ones with a trap in them.",
         ids: ["hermite-identity"] },
       { title: "Trigonometry",
         note: "Identities, and the triangle-specific relations that live between algebra and geometry.",
-        ids: ["product-sum", "triple-angle", "cosecant-cotangent-square-sums", "arctan-telescoping", "sin-cos-ap-sum", "triangle-angle-identities", "triangle-square-identities", "evenly-spaced-angle-products", "cot-tan-telescoping"] },
+        ids: ["product-sum", "triple-angle", "cosecant-cotangent-square-sums", "arctan-telescoping", "sin-cos-ap-sum", "triangle-angle-identities", "triangle-square-identities", "evenly-spaced-angle-products", "cot-tan-telescoping", "trig-series-complex"] },
       { title: "Complex Numbers & Roots of Unity",
         note: "Algebra that becomes geometry, and the filter that extracts every nth term of a sum.",
         ids: ["roots-unity-distance-product", "roots-of-unity-filter"] },
@@ -237,7 +237,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["function-symmetry-equation"] },
       { title: "Systems & Determinants",
         note: "AIME hides linear systems inside logs, side lengths and reciprocals. Spot the symmetry before eliminating, and know what a determinant is before a problem hands you one.",
-        ids: ["cramers-rule", "determinant-basics", "matrix-multiplication", "cofactor-expansion", "matrix-inverse"] },
+        ids: ["cramers-rule", "determinant-basics", "matrix-multiplication", "cofactor-expansion", "matrix-inverse", "matrix-power-diagonalizing"] },
     ] },
   { id: "route-aime-number", name: "AIME Number Theory", kind: "route", tier: "AIME", subject: "Number Theory",
     blurb: "Builds on the AMC 10/12 number theory route: only the cards that are new at this level, so each list stays short. 29 cards across 7 sections.",
@@ -384,7 +384,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["beatty-theorem"] }
     ] },
   { id: "route-olympiad-counting", name: "Olympiad Counting & Probability", kind: "route", tier: "Olympiad", subject: "Counting & Probability",
-    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 25 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 26 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Graph Theory",
         note: "The olympiad graph results. Most combinatorics problems about a network are one of these.",
@@ -397,7 +397,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["dilworths-theorem", "sperners-theorem", "erdos-ko-rado", "pentagonal-number-theorem", "hook-length-formula", "kruskal-katona"] },
       { title: "Existence & Invariants",
         note: "Proving something must happen without constructing it. The backbone of olympiad combinatorics.",
-        ids: ["pigeonhole", "schurs-theorem", "erdos-szekeres", "extremal-principle", "invariants-coloring", "monovariant"] },
+        ids: ["pigeonhole", "schurs-theorem", "erdos-szekeres", "extremal-principle", "invariants-coloring", "monovariant", "dimension-arguments"] },
       { title: "Double Counting & Probabilistic Arguments",
         note: "Count the same thing twice, or show a random choice works. Both prove existence by averaging.",
         ids: ["double-counting", "probabilistic-method", "combinatorial-nullstellensatz"] },

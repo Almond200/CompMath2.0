@@ -1809,7 +1809,18 @@
     "droz-farny": "formula",
     "anti-steiner-point": "formula",
     "kruskal-katona": "formula",
-    "quadratic-perfect-square": "pattern"
+    "quadratic-perfect-square": "pattern",
+    "composing-transformations": "method",
+    "matrix-power-diagonalizing": "method",
+    "dimension-arguments": "method",
+    "trig-series-complex": "method",
+    "estimating-answers": "method",
+    "derivative-extremum": "method",
+    "independent-events": "formula",
+    "fencepost-counting": "formula",
+    "palindromes": "pattern",
+    "counting-shapes": "pattern",
+    "reading-graphs": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -8750,6 +8761,72 @@
       ]
     ],
     "quadratic-perfect-square": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "composing-transformations": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "matrix-power-diagonalizing": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "dimension-arguments": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "trig-series-complex": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "estimating-answers": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "derivative-extremum": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "independent-events": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "fencepost-counting": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "palindromes": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "counting-shapes": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "reading-graphs": [
       [
         "(new card)",
         "written directly in the pattern template"

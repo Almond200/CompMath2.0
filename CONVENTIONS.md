@@ -1,7 +1,8 @@
 # CONVENTIONS
 
-Every rule here was measured against all 557 cards, and the count that proves it is quoted. If a
-rule has no number, it is not a rule. `CONTRIBUTING.md` holds the reasoning, the gap register and
+Every rule here was measured against the cards of its day, and the count that proves it is quoted
+(most against 557 cards in September 2026, some against 700 in October; there are 738 now, and
+`tools/scan-conventions.py` prints the current counts). If a rule has no number, it is not a rule. `CONTRIBUTING.md` holds the reasoning, the gap register and
 the per-year retag notes; this file is the checklist you follow while actually adding a card.
 
 Regenerate the numbers with `tools/scan-conventions.py`.
@@ -118,7 +119,7 @@ A card's `tier` says where it is **first needed**; later stages still use the ea
 - Tier and importance are shown together as **one split oval**: the contest tier on the left, the importance (HIGH, MED, LOW, LOWER, LOWEST) on the right in a lighter tint of the same color. There is no setting to switch labels (removed 2026-10-10: two label systems were confusing).
 - A card shows exactly one tag beside its kind, the split oval. The `level` array is not shown as text (no MATHCOUNTS / Olympiad wording beside the badge) and is no longer a filter; it remains in the data for Special:Browse and the lab. Nothing on a card may say the same thing twice.
 - **The filter is one global filter** (contest tier and importance), stored under `mq-settings.filter`, applied identically to subject, group, and topic pages, the sidebar (counts and greyed links follow it), and a card listed in two subjects (`ALSO_LISTED_IN`). It is never per section.
-- Every card list uses the chosen order (tier by default), including Special:Browse results; lists a reader curated, search results, and tag matches keep their own order.
+- A subject page uses the chosen card order, Curated (file order, the default) or Most used (the cards the most practice problems use first). The By contest tier order was removed on 2026-10-23 at the owner's request; a stored "tier" reads back as Curated. Lists a reader curated, search results, and tag matches keep their own order.
 - The reviewed assignment of every card, with its problem evidence, is `tools/tier-proposal.md`. A new card's tier goes in the card and, when the table is regenerated, in that file.
 - `scan-conventions.py` fails on a card with a missing or unknown tier.
 
@@ -209,7 +210,7 @@ This is exactly why the duplicate check in §5 must search names, not ids.
 
 ## 2. The write-up — mandatory, in `js/data/details/<subject>-details.js`
 
-**700 write-ups for 700 cards. One each, no orphans, no card without one.**
+**One write-up for every card (738 of 738 on 2026-10-23), no orphans, no card without one.**
 
 The headings depend on the card's kind (counts as of 2026-10-16; the scan fails on a heading the kind does not allow):
 
@@ -339,7 +340,7 @@ positives and should be rejected every time they reappear:
 
 ## 3. The example — mandatory, in `js/data/examples-supplement.js`
 
-**700 example keys for 700 cards. Zero cards lack one.**
+**One example key for every card (738 of 738 on 2026-10-23). Zero cards lack one.**
 
 Shape is `{ q, s }`: a clean question, and its solution behind a Show solution button. A printed card shows every solution, and hides the buttons, the AoPS links and the back links (owner, 2026-10-17).
 
@@ -370,13 +371,13 @@ window.MATH_EXAMPLES["your-card-id"] = { q: String.raw`...`, s: String.raw`...` 
 
 ## 4. The diagram — mandatory for geometry
 
-**241 of 241 `geometry.js` cards have a diagram.** It is not a strong tendency, it is the rule: a
+**Every geometry card has a diagram (254 of 254 on 2026-10-23, geometry methods included).** It is not a strong tendency, it is the rule: a
 geometry card without a figure is incomplete. The count first reached 200/200 only after a card shipped
 without one and had to be fixed, which is why `tools/scan-conventions.py` exits non-zero on any
 geometry card missing a diagram.
 
-Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 93/183,
-`algebra.js` 13/116, `counting.js` 7/77, `number-theory.js` 2/83 (2026-10-16). In-text figures are counted
+Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 95/199,
+`algebra.js` 13/121, `counting.js` 8/81, `number-theory.js` 2/83 (2026-10-23). In-text figures are counted
 separately: 210 placed on 183 cards, in every subject.
 
 - **Figures inside the text.** A paragraph that is nothing but `{{figure:name}}` draws
@@ -665,9 +666,15 @@ The failure is invisible in the UI -- the route just quietly omits a card the re
 
 ## 10. Touching persisted state
 
-The app keeps five keys in `localStorage`: `mq-lists`, `mq-stars`, `mq-settings`, `theme` and
+The app keeps six keys in `localStorage`: `mq-lists`, `mq-stars` (read once, to migrate old stars), `mq-settings`, `theme`,
+`mq-last` (the page last open, for "When the app opens: Where I left off") and
 `mq-recent` (the last 30 cards and problems opened, as `"f:<id>"` / `"p:<slug>"`, for "Continue
-where you left off"; a convenience only, so a failed write is silent). The
+where you left off"; a convenience only, so a failed write is silent). Settings → Your progress
+exports these and the lab keys to one JSON file (`{ format: "competition-math-reference/progress",
+version: 1, exported, data: { <key>: <parsed value> } }`) and imports it back. An import merges
+lists (no card leaves a list) and replaces the other keys; a new key belongs in `PROGRESS_KEYS` in
+`js/app.js`, and a change of shape bumps `PROGRESS_VERSION`, with the importer still reading the
+older versions. The
 lab pages keep their own (`mq-quiz-misses`, `mq-flashcards`, `mq-flashcards-prefs`), which the app
 never reads. One rule governs all of them, and it exists because breaking it destroyed user data
 twice.
@@ -743,9 +750,10 @@ are untouched.
 ## 12. Connected formulas
 
 `js/data/connected.js` gives a few broad cards a curated row of the cards that are part of the
-same idea. It renders after Practice Problems, as a row of name chips (an earlier version with a
-line of text under each name was replaced because it read as a different kind of section). It is
-hand-written and means "these belong to this card". 15 hubs carry 84 links.
+same idea. It renders after Practice Problems as a row of blue card links, each opening the hover
+preview, like the Used by methods row (owner, 2026-10-23; they were name chips before, and an
+earlier version with a line of text under each name read as a different kind of section). It is
+hand-written and means "these belong to this card". 18 hubs carry 96 links (2026-10-23).
 
 - **Only broad cards get one**: a card whose topic is an umbrella over other cards
   (`auxiliary-lines` over the construction cards, `p-adic-valuation` over LTE, Legendre and

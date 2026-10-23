@@ -6,29 +6,37 @@
 
 ## Current state (updated 2026-10-23, tenth cloud chat)
 
-- **Counts:** 728 cards (539 formulas, 149 methods, 40 patterns). 4,675 problems, 4,616 with statements. Check with `$JSC tools/validate-problem-db.js`.
-- **Done this chat (2026-10-23):** Settings reworked (Card order is Curated or Most used; Formula lines and Keyword tags moved to Reading the math; a Practice panel with Strategy Shown / Click to show; Your progress with Export and Import of a versioned JSON file; the preview shows every setting's effect, with a fourth problem-page screen). Used by methods, Suggested by patterns and Related formulas are blue links with the hover preview. Practice lists AMC 8, AMC 10, AMC 12, AIME. Twelve new cards (two batches plus a pattern): Popoviciu, Vornicu–Schur, Cohn, Gauss–Lucas, Mason–Stothers, the rotated-line angle, spheres tangent to two planes, Lester, Droz-Farny, the anti-Steiner point, Kruskal–Katona, and the pattern A Quadratic That Must Be a Perfect Square. Ptolemy on an Equilateral Triangle states its converse and is the Alternatively route of 2025 AMC 12B #25. Poncelet's porism and Markov-chain matrices added to their cards. 2025 AMC 10A #9 lost its wrong Cardano tag.
-- **Waiting on the owner:** `QUESTIONS.md`, "Open now": P16 to P19 (linear-algebra and complex-number methods) and P20 to P26 (concepts LIVE tags that no card holds). Nothing there is written until answered.
-- **LIVE works from the cloud now.** The concept tags of all 211 papers are cached in `tools/live-cache/<contest>-<year>.json` as `{n, concepts}`; they are hints only (PLAN, decisions), never a source of tags.
-- **In progress: step D**, write-ups for problems without one, now the **AMC 12** (`node tools/untagged.js "AMC 12" 10 --full` lists the next ten, newest first; about 600 left), then the AMC 8. Before each AMC 12 paper, run the near-twin scan (50-character prefix match after removing spaces, quotes and `\dfrac`, then check the answer choices). After the AMC 12 and AMC 8, the owner wants an error check of every existing tag (2025 AMC 10A #9 carried Cardano's formula; `tools/audit-problem-tags.py` is the starting point), then LIVE-tag-guided labelling.
-- **Next action:** 2022 AMC 12A and 12B are finished; continue with `node tools/untagged.js "AMC 12" 10 --full` (2021 Spring AMC 12A next), running `node tools/near-twins.js "<paper>"` first.
-- **Search index rebuilt in the cloud (2026-10-23)** with the commands in Blockers, after the owner allowed the Hugging Face CDN hosts: 161/187 top-1 on the eval. Rebuild it after each card batch.
-- **New helpers:** `tools/gates.sh` (every gate but check-labels, stops at the first failure), `tools/bump-versions.py --changed`, `tools/add-cards.py batch.py` (inserts cards with write-ups, examples and registrations), `tools/add-to-list.py`, `tools/check-pages.js` (KaTeX, links, overflow at 1280 and 375 in both themes).
-- **Missing cards found while working** go to `QUESTIONS.md` as the next P-number (P27 next).
+- **Counts:** 738 cards (539 formulas, 155 methods, 44 patterns). 4,675 problems, 4,616 with statements, 3,059 with strategies, 282 figures drawn for the app. Check with `$JSC tools/validate-problem-db.js` and `python3 tools/check-statements.py`.
+- **Done this chat (2026-10-23):**
+  - Settings: Card order is Curated or Most used; Formula lines and Keyword tags are under Reading the math; a Practice panel (Strategy: Shown or Click to show); Your progress (Export and Import of a versioned JSON file); a preview that shows every previewable setting, with a fourth problem-page screen.
+  - Used by methods, Suggested by patterns and Related formulas are blue links with the hover preview. Practice lists AMC 8, AMC 10, AMC 12, AIME.
+  - 23 new cards: Popoviciu, Vornicu–Schur, Cohn, Gauss–Lucas, Mason–Stothers, the rotated-line angle, spheres tangent to two planes, Lester, Droz-Farny, the anti-Steiner point, Kruskal–Katona, the pattern A Quadratic That Must Be a Perfect Square, and the eleven approved P16 to P26 (composing transformations, matrix powers, dimension arguments, trig series with $e^{i\theta}$, Independent Events, estimating, palindromes, counting shapes, fencepost counting, reading graphs, derivatives). Ramsey $R(3,3)$ removed (owner); its address opens the Pigeonhole Principle.
+  - The semantic search index is rebuilt in the cloud (Hugging Face reachable after the owner allowed its CDN hosts): 161/187 top-1, MRR 0.917, 738 cards.
+  - Step D: 2022 AMC 12A, 2022 AMC 12B, and 2021 Spring AMC 12A finished, with figures.
+- **In progress: 2021 Spring AMC 12B.** Everything but #24 is solved and checked; the verified answers and routes are in the scratch notes copied into this block: #3 $x=\tfrac34$ (A); #9 $=2$ (D); #10 $(x+1)(y+1)=704$, difference $10$ (E); #11 $DE=12\sqrt2$ (D); #13 $6$ (D); #14 $h^2=(a-6)(a+2)$, $a=7$, $V=24\sqrt5$ (A); #15 four equilateral triangles of side $2$, area $\sqrt{11}+\sqrt{12}$, $23$ (D); #16 $\tfrac{1+a+b+c}c$ (A); #17 $2+\sqrt2$ (B); #18 $-2$ (A); #19 $8+9=17$ (B); #20 $-z$ (A); #21 roots $\sqrt2$ and about $3.136$, $S\approx4.55$ (D); #23 $\tfrac6{49}$, $55$ (A). #24 (the parallelogram with $PQ=6$, $RS=8$) is still to solve.
+- **Next action:** write 2021 Spring AMC 12B (above), then continue `node tools/untagged.js "AMC 12" 10 --full`, running `node tools/near-twins.js "<paper>"` first; then the AMC 8. After both, the owner wants an error check of every existing tag (2025 AMC 10A #9 carried Cardano's formula), then LIVE-tag-guided labelling.
+- **The owner asked (2026-10-23) for a full read-through of every markdown file** once the new cards were in; it started this chat with README and CONVENTIONS (stale counts and settings fixed) and continues with PLAN, CONTRIBUTING, QUESTIONS, MIGRATION-NOTES and CLAUDE.
+- **Nothing is open in `QUESTIONS.md`.** A new card candidate starts a table there as P27; the problem cites the nearest card meanwhile.
+- **LIVE concept tags** for all 211 papers are in `tools/live-cache/<contest>-<year>.json` as `{n, concepts}`; hints only, never a source of tags.
+- **Helpers:** `tools/gates.sh`, `tools/bump-versions.py --changed`, `tools/add-cards.py`, `tools/add-to-list.py`, `tools/add-tag.js`, `tools/check-pages.js`, `tools/near-twins.js`, `tools/show.js` (README, Structure).
 
 ## The road ahead, in order
 
 **A. 2.7c: every symbol defined on its own card** (done 2026-10-18). Go through every card once, in file order, and make sure each variable a reader could find confusing is defined on the card itself: in the thumbnail, the description or the Key forms (the Arbelos card's $a$, $b$, $D$ are the model). Define symbols without restating a thumbnail formula in the description (`tools/find-duplicate-forms.py` should stay at its one known line, `parallel-sided-hexagon`). Commit every 25 to 30 cards.
 
-**B. 2.4e-ii: prose formula boxes on card faces.** Measure the boxes that are written as prose rather than formulas, propose rewrites in `QUESTIONS.md`, and apply them after the owner approves. A box that cannot be shortened stays as it is.
+**B. 2.4e-ii: prose formula boxes on card faces** (done 2026-10-18). Measure the boxes that are written as prose rather than formulas, propose rewrites in `QUESTIONS.md`, and apply them after the owner approves. A box that cannot be shortened stays as it is.
 
-**C. The card-file re-check (general issues).** One more pass over the five card files and their write-ups for anything wrong: facts stated on two cards (one fact, one home), stale links, wrong importance or tier, examples that no longer fit, formatting that drifted from CONVENTIONS.
+**C. The card-file re-check (general issues)** (done 2026-10-18). One more pass over the five card files and their write-ups for anything wrong: facts stated on two cards (one fact, one home), stale links, wrong importance or tier, examples that no longer fit, formatting that drifted from CONVENTIONS.
 
-**D. Write-ups for every practice problem that has none (2.7b).** About 3,300 problems have no cards and no strategy (1,145 AMC 10, 1,159 AMC 12, 650 AMC 8 and 350 AJHSME). Work through them by contest: **AMC 10 first, then AMC 12, then AMC 8**, newest paper first within each, with the per-problem routine below (tags for the best route, a strategy paragraph, an "Alternatively, ..." paragraph when a second good route exists, a figure for a geometry problem printed without one, every number checked by script). AMC 10 and AMC 12 share many problems: a shared problem gets the same entry in both. While doing this, check each tagged card's `topics` list (the chips on a problem page come from it): a card whose topics over-reach is fixed then by adding it to `CARD_TOPIC_STOP` in `js/app.js` (Rationalizing is the first entry: it no longer awards sequences or complex numbers). Commit every 8 to 10 problems. When the three contests are done, **stop and report to the owner** before going on.
+**D. Write-ups for every practice problem that has none (2.7b).** On 2026-10-23, 1,567 problems had no strategy: every AMC 10 and AIME problem is written, and 567 AMC 12, 650 AMC 8 and 350 AJHSME remain (`node tools/untagged.js "<contest>" 1` prints the count). Work through them by contest: **AMC 10 first, then AMC 12, then AMC 8**, newest paper first within each, with the per-problem routine below (tags for the best route, a strategy paragraph, an "Alternatively, ..." paragraph when a second good route exists, a figure for a geometry problem printed without one, every number checked by script). AMC 10 and AMC 12 share many problems: a shared problem gets the same entry in both. While doing this, check each tagged card's `topics` list (the chips on a problem page come from it): a card whose topics over-reach is fixed then by adding it to `CARD_TOPIC_STOP` in `js/app.js` (Rationalizing is the first entry: it no longer awards sequences or complex numbers). Commit every 8 to 10 problems. When the three contests are done, **stop and report to the owner** before going on.
+
+**D2. The error check (owner, 2026-10-23).** After the AMC 12 and AMC 8, re-read every existing tag for errors like Cardano's formula on 2025 AMC 10A #9: a card the route does not use, a Lowest-importance card on an AMC problem, a strategy that names no card it tags. `tools/audit-problem-tags.py` is the starting point.
+
+**D3. LIVE-guided labelling (owner, 2026-10-23).** Use LIVE's concept tags (`tools/live-cache/`) as hints to find problems a card should cite, and put any concept no card holds into `QUESTIONS.md` for approval. Tags still come from solving the problem.
 
 **E. Stage R: proof depth.** Add more to the proofs: every card's "Why it works" gets a complete argument (lemma, steps, conclusion) wherever it is now a sketch or missing (rule 14; the P29 to P31 cards are format only and wait for this).
 
-**Later (not scheduled):** Stage 5, moving the flashcards and the experimental features into Practice; per-contest lists, once enough problems are tagged; rebuilding the search index on the Mac (see Blockers).
+**Later (not scheduled):** Stage 5, moving the flashcards and the experimental features into Practice; per-contest lists, once enough problems are tagged.
 
 ## How the practice work is done
 
@@ -59,10 +67,13 @@
 - before drawing a figure, check `PROB["<slug>"]` does not exist already (`check-statements.py` fails on a duplicate);
 - `check-diagrams.py` fails when a figure's `ok` self-check prints MISMATCH (added 2026-10-18, after a figure with wrong leg lengths passed every gate);
 - a cone's volume cites `prism-pyramid-volumes` (since 2026-10-18 `cone-formulas` no longer states it);
+- a new helper used in `problem-diagrams.js` must be added to its `GEO_KIT` import list at the top (a missing `rotv` made the whole file fail to load on 2026-10-23; `check-diagrams.py` caught it);
+- a card is tagged only where the route really uses it: the rotated-line card is not on 2023 AMC 10B #7, whose $35^\circ$ still needs the isosceles triangle (2026-10-23);
+- a tag added to a shared AMC 10/12 problem goes on both twins (`node tools/add-tag.js <card> "<ref>"` does it).
 
 ## Blockers and caveats
 - LIVE (`live.poshenloh.com`) is reachable from the cloud since 2026-10-23; the concept tags are in `tools/live-cache/`.
-- The semantic search index can be rebuilt in a cloud chat once huggingface.co is reachable: `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` (a few minutes), then `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Test first with `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights are served from `us.aws.cdn.hf.co` and the Xet hosts `cas-server.xethub.hf.co`; on 2026-10-23 those were refused while huggingface.co answered). Otherwise it is rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
+- The semantic search index is rebuilt in a cloud chat (it worked on 2026-10-23, once the owner allowed Hugging Face's CDN hosts): `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` (a few minutes), then `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Test first with `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights are served from `us.aws.cdn.hf.co` and the Xet hosts `cas-server.xethub.hf.co`; on 2026-10-23 those were refused while huggingface.co answered). Otherwise it is rebuilt on the Mac (`tools/build-search-index.py`; model2vec 0.9.0 distilling `BAAI/bge-base-en-v1.5`, 256 dimensions). The newest ~150 cards are found by lexical search only until then.
 
 
 ## Where things are
@@ -165,9 +176,10 @@ How they connect: a pattern **suggests** methods, a method **uses** formulas, an
   - `sh tools/check-lab.sh`;
   - `tools/validate-problem-db.js` (jsc, or here the Node shim);
   - the card-search eval after content or tag changes.
-- **Search index:** rebuild it with `tools/build-search-index.py` (on the Mac, the `~/Downloads/competition-math-buildenv` python).
-- **Versions:** bump `?v=` on every touched asset (`conv/bump.py` on the Mac; by hand in `index.html` here), and bump `STATEMENTS_V` when statement files change.
-- **Browser check** of every touched page: 0 KaTeX errors, no overflow, light and dark.
+- **Search index:** rebuild it with `tools/build-search-index.py` after card changes: in the cloud with the venv in Blockers, on the Mac with the `~/Downloads/competition-math-buildenv` python. Then run the eval (`tools/search-eval.html`, at least 160/187) and confirm `MathSemantic.info().cards` is the card count.
+- **Versions:** bump `?v=` on every touched asset (`python3 tools/bump-versions.py --changed` here; `conv/bump.py` on the Mac), and bump `STATEMENTS_V` when statement files change.
+- **Gates in one command:** `./tools/gates.sh` (all but `check-labels.py`, which takes minutes; run it after figure changes).
+- **Browser check** of every touched page: 0 KaTeX errors, no overflow, light and dark (`node tools/check-pages.js '#/f/<id>' ...`).
 - **Markdown:** README changelog entry, CONVENTIONS where a rule changes, CONTRIBUTING where the workflow changes, the memory files, and this plan (`PLAN.md`).
 - **Backup:** commit and `git push -u origin <the session's branch>` here. On the Mac, `rsync` to `~/Documents/CompMath-backup/` (done by `conv/gates.sh`).
 - **Never** edit a source file with a slice-and-replace that was not checked afterwards. On 2026-10-11 a mis-sliced edit to `js/app.js` deleted a block. Check syntax (`node --check`, `new Function(text)`, or `jsc`) after any large edit.

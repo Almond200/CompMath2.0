@@ -4,8 +4,12 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-## Candidate new cards (2026-10-23): linear algebra and complex numbers, and concepts from LIVE
-Answer per row: yes, no, or a different rating. Nothing is written until you answer. Tier and importance are proposals (rule 12), from the problems listed.
+Nothing is open. A new question goes here; a new card candidate starts a table here as P27.
+
+## Answered (kept as the record, newest first)
+
+## Candidate new cards (2026-10-23; all approved and written)
+**Status.** All eleven approved by the owner on 2026-10-23 and written as proposed: `composing-transformations`, `matrix-power-diagonalizing`, `dimension-arguments`, `trig-series-complex`, `independent-events` (with a paragraph on independence as constructive counting divided by the total, as the owner asked), `estimating-answers`, `palindromes`, `counting-shapes`, `fencepost-counting`, `reading-graphs`, `derivative-extremum`. The Determinants method group is renamed Matrices & Determinants. The same day the owner removed Ramsey Number $R(3,3)=6$; its address opens the Pigeonhole Principle.
 
 **Linear algebra and complex numbers (you asked for proposals).** The library already has the facts: Matrix Multiplication & Powers, Eigenvalues & the Characteristic Polynomial, Cayley–Hamilton, Rotation & Reflection Matrices, Composing Two Reflections, the Transfer Matrix Method, Complex Number Bashing, Writing in Polar Form, Conjugating Both Sides, and the roots-of-unity cards. What is missing is a few of the moves:
 
@@ -31,8 +35,6 @@ Considered and not proposed: equilateral triangles by multiplying by $e^{i\pi/3}
 | P26 | Using a Derivative to Find an Extremum: set $f'(x)=0$ and compare with the ends, as a check or a shortcut where an algebraic route is long | method, Methods > Algebra > Inequalities & Optimization | AIME Late, lower | 7; 2008 AMC 12B #13, 2023 AIME II #14, 2025 AIME II #9 |
 
 Not proposed: the distributive property (10 tags; too basic for a card) and rotational symmetry (1 tag; Burnside's Lemma covers it).
-
-## Answered (kept as the record, newest first)
 
 ## Prose formula boxes (2.4e-ii, 2026-10-18; all approved and applied)
 **Status.** B1 to B12 approved on 2026-10-18 and applied as proposed, each definition written beside its formula in the box; B11 is written without a sigma, so it needs no expanded twin.

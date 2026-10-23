@@ -48,5 +48,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Completeness batch 2: rotations, spheres, triangle lines, and shadows", date: "2026-10-23",
     ids: ["rotated-line-angle", "spheres-two-planes", "lester-circle", "droz-farny", "anti-steiner-point", "kruskal-katona"] },
   { label: "A quadratic that must be a square", date: "2026-10-23",
-    ids: ["quadratic-perfect-square"] }
+    ids: ["quadratic-perfect-square"] },
+  { label: "Approved P16 to P26: matrices, complex sums, and LIVE concepts", date: "2026-10-23",
+    ids: ["composing-transformations", "matrix-power-diagonalizing", "dimension-arguments", "trig-series-complex", "estimating-answers", "derivative-extremum", "independent-events", "fencepost-counting", "palindromes", "counting-shapes", "reading-graphs"] }
 ];

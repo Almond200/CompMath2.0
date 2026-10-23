@@ -32,3 +32,6 @@ $JSC tools/validate-problem-db.js
 - Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
 - One fact, one home.
 - Every number is checked by computation.
+- Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
+- Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
+- LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.

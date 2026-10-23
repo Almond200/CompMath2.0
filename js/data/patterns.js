@@ -16,7 +16,7 @@ window.MATH_SECTIONS.push({
         { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "phantom-point"] },
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
-        { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
+        { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "composing-transformations", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
         { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation", "closing-polygon-vectors"] },
         { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "fit-copies"] }
       ],
@@ -322,6 +322,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "composing-transformations",
+          name: "Composing Transformations as Matrix Products",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A figure is moved by several rotations and reflections in a row, and the question asks what the combined move is, which sequences return the figure to where it started, or where a point ends up.`,
+          move: String.raw`Write each rotation or reflection about the origin as a $2 \times 2$ matrix, multiply them in order with the last move on the left, and read the product as one rotation or one reflection.`,
+          uses: ["rotation-reflection-matrices", "matrix-multiplication", "reflection-composition"],
+          latex: String.raw`T_k \circ \cdots \circ T_1 \ \leftrightarrow\ M_k \cdots M_2 M_1`,
+          description: String.raw`Composing transformations as matrix products turns a chain of rotations and reflections about the origin into one matrix: each move $T_i$ has a matrix $M_i$, and doing $T_1$ first and $T_k$ last is the product $M_k \cdots M_1$. The product is again a rotation (determinant $1$) or a reflection (determinant $-1$), so a long sequence of moves collapses to a single one that can be read off. A move about another center becomes translate to the origin, apply the matrix, translate back.`,
+          keywords: ["compose transformations", "product of rotation matrices", "sequence of rotations and reflections", "which sequences return the figure", "isometries as matrices", "determinant plus or minus one", "method"],
+          importance: "low",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "rotation-trick",
           name: "The Rotation Trick",
           type: "method",
@@ -598,16 +613,16 @@ window.MATH_SECTIONS.push({
       title: "Algebra",
       groups: [
         { title: "Substitutions", blurb: "Renaming part of an expression so the problem becomes one you already know how to solve.", ids: ["log-substitution", "weierstrass-substitution", "trig-substitution", "functional-substitution", "palindromic-polynomials", "normalization", "name-the-whole-expression", "substitute-repeated-block"] },
-        { title: "Changing the Representation", blurb: "Rewriting numbers in another form, as logarithms or in polar form, so that products and powers become sums and multiples.", ids: ["take-logs-linearize", "polar-form", "conjugate-both-sides"] },
+        { title: "Changing the Representation", blurb: "Rewriting numbers in another form, as logarithms or in polar form, so that products and powers become sums and multiples.", ids: ["take-logs-linearize", "trig-series-complex", "polar-form", "conjugate-both-sides"] },
         { title: "Working with Floors", blurb: "Splitting a number into its integer and fractional parts, or grouping the terms of a sum that share a floor.", ids: ["name-the-floor", "group-equal-floors"] },
         { title: "Factoring & Rewriting", blurb: "Rearranging an expression into a product or a square that exposes its structure.", ids: ["sfft", "completing-the-square", "forced-difference-of-squares", "rationalizing", "denesting-radicals"] },
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "lagrange-interpolation", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
-        { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "median-minimizes-abs", "slope-to-a-point"] },
+        { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point"] },
         { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "averages-to-totals"] },
-        { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "sqrt-approximation"] },
+        { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
-        { title: "Determinants", blurb: "Evaluating a determinant without expanding every term.", ids: ["cofactor-expansion"] }
+        { title: "Matrices & Determinants", blurb: "Evaluating a determinant without expanding every term, and raising a matrix to a high power.", ids: ["matrix-power-diagonalizing", "cofactor-expansion"] }
       ],
       formulas: [
         {
@@ -639,6 +654,22 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
+          id: "trig-series-complex",
+          name: "Summing a Trigonometric Series with $e^{i\theta}$",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A sum of cosines or sines with angles in arithmetic progression, possibly weighted by binomial coefficients or powers, $\sum a_k\cos k\theta$ or $\sum a_k\sin k\theta$, must be found in closed form.`,
+          move: String.raw`Write $\cos k\theta = \operatorname{Re} e^{ik\theta}$ and $\sin k\theta = \operatorname{Im} e^{ik\theta}$, sum the complex series, which is usually geometric or binomial, and take the real or imaginary part of the result.`,
+          uses: ["eulers-formula", "geometric-series", "binomial-theorem"],
+          latex: String.raw`\sum_k a_k\cos k\theta = \operatorname{Re}\sum_k a_k e^{ik\theta}`,
+          latexPlain: String.raw`a_0\cos 0 + a_1\cos\theta + a_2\cos2\theta + \cdots = \operatorname{Re}\left(a_0 + a_1e^{i\theta} + a_2e^{2i\theta} + \cdots\right)`,
+          description: String.raw`Summing a trigonometric series with $e^{i\theta}$ replaces each $\cos k\theta$ by the real part of $e^{ik\theta}$, so a sum of cosines becomes the real part of a sum of powers of $e^{i\theta}$. That complex sum is a geometric series or a binomial expansion with a closed form, and taking its real or imaginary part gives the trigonometric sum, including weighted sums such as $\sum\binom nk\cos k\theta$ that have no simple real-variable route.`,
+          keywords: ["trigonometric series complex exponential", "sum of cosines with e to the i theta", "real part of a geometric series", "binomial cosine sum", "re of 1 plus e to the i theta", "method"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AIME"]
         },
         {
           id: "polar-form",
@@ -761,6 +792,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "derivative-extremum",
+          name: "Using a Derivative to Find an Extremum",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A smooth function of one variable on an interval must be maximized or minimized, and the algebraic routes (completing the square, AM-GM, a known inequality) are long or not apparent.`,
+          move: String.raw`Differentiate, solve $f'(x) = 0$ for the critical points inside the interval, and compare the values of $f$ there and at the ends.`,
+          uses: [],
+          latex: String.raw`f'(x_0) = 0 \text{ or } x_0 \text{ an endpoint} \implies \text{extremum candidates}`,
+          description: String.raw`Using a derivative finds the largest or smallest value of a smooth function $f$ on an interval by checking only a few candidates: the critical points, where the derivative $f'(x)$ is zero, and the ends of the interval. At an interior maximum or minimum the graph is momentarily flat, so $f'(x) = 0$ there, and comparing the candidates settles the extreme value, which an algebraic proof such as AM-GM can then confirm.`,
+          keywords: ["derivative", "calculus", "critical point", "f prime equals zero", "maximize with calculus", "optimization by differentiation", "first derivative test", "method"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME"]
+        },
+        {
           id: "median-minimizes-abs",
           name: "The Median Trick",
           type: "method",
@@ -851,6 +897,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME"]
         },
         {
+          id: "estimating-answers",
+          name: "Estimating to Choose an Answer",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`The answer choices are far apart, or the question says "closest to" or "approximately", and an exact computation would be long.`,
+          move: String.raw`Replace each number by a round one nearby, keeping track of whether each rounding makes the result larger or smaller, compute the rough value, and pick the only choice it can be.`,
+          uses: [],
+          latex: String.raw`\text{round, bound, compare: } \ L \le \text{value} \le U \implies \text{one choice}`,
+          description: String.raw`Estimating to choose an answer replaces an exact computation by a rough one that is still accurate enough to rule out all but one choice. Round each quantity to a convenient nearby number, note which way each rounding moves the result, and if needed bound the value between a lower and an upper estimate. It is the fastest route whenever the choices are far apart or the question asks for the closest value.`,
+          keywords: ["estimation", "estimate the answer", "closest to", "approximately", "rounding to eliminate choices", "upper and lower bounds", "order of magnitude", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "sqrt-approximation",
           name: "Approximating Square Roots",
           type: "method",
@@ -894,6 +955,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "matrix-power-diagonalizing",
+          name: "Taking a Matrix Power by Diagonalizing",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A quantity is produced by applying the same linear step many times, $v_n = v_0M^n$ or $x_{n+1} = Mx_n$: a Markov chain after $n$ steps, a linear recurrence written with a matrix, or a repeated linear map, and $n$ is large or general.`,
+          move: String.raw`Find the eigenvalues and eigenvectors of $M$, write $M = PDP^{-1}$ with $D$ diagonal, and use $M^n = PD^nP^{-1}$, so each eigenvalue is simply raised to the $n$th power.`,
+          uses: ["eigenvalues-characteristic", "matrix-multiplication", "cayley-hamilton"],
+          latex: String.raw`M = PDP^{-1} \implies M^n = PD^nP^{-1}`,
+          description: String.raw`Diagonalizing a matrix $M$ writes it as $PDP^{-1}$, with $D$ the diagonal matrix of its eigenvalues and $P$ the matrix whose columns are matching eigenvectors. Then the $n$th power is $PD^nP^{-1}$, where $D^n$ just raises each eigenvalue to the $n$th power, so a matrix power, and every quantity built from it, becomes a combination of $\lambda_1^n, \ldots, \lambda_k^n$.`,
+          keywords: ["diagonalize a matrix", "matrix power closed form", "eigenvalues to the nth power", "pdp inverse", "markov chain after n steps", "fibonacci matrix", "method"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
         },
         {
           id: "cofactor-expansion",
@@ -1577,7 +1653,7 @@ window.MATH_SECTIONS.push({
         { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
         { title: "Algebraic Machinery", blurb: "Encoding a count as algebra, with generating functions or indicator variables.", ids: ["generating-function-method", "indicator-variables"] },
-        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
+        { title: "Existence Arguments", blurb: "Proving that something exists, or cannot, with invariants, monovariants, extremes, or probability.", ids: ["invariants-coloring", "monovariant", "extremal-principle", "dimension-arguments", "probabilistic-method", "odd-part-chains", "coloring-arguments", "pairing-to-bound", "strategy-stealing"] }
       ],
       formulas: [
         {
@@ -1999,6 +2075,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AIME Early",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "dimension-arguments",
+          name: "Dimension Arguments (Linear Algebra Method)",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A family of sets, or other objects, must satisfy conditions on sizes and intersections, often parities, and the question asks for the most such objects there can be.`,
+          move: String.raw`Turn each object into a vector, over $\mathbb{F}_2$ for parity conditions or over $\mathbb{R}$, show the conditions make the vectors linearly independent, and conclude there are at most as many as the dimension.`,
+          uses: [],
+          latex: String.raw`v_1, \ldots, v_m \in \mathbb{F}^n \text{ independent} \implies m \le n`,
+          description: String.raw`A dimension argument bounds the number of objects by turning each into a vector in an $n$-dimensional space and proving the vectors linearly independent, since $n$-dimensional space holds at most $n$ independent vectors. The classic case is Oddtown: clubs in a town of $n$ people, each of odd size, with every two sharing an even number of members, number at most $n$, because their membership vectors over $\mathbb{F}_2$ are independent.`,
+          keywords: ["dimension argument", "linear algebra method", "oddtown", "incidence vectors", "linearly independent vectors bound", "fisher inequality", "vectors over f2", "method"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "probabilistic-method",
@@ -2579,11 +2670,26 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Self-Similar & Repeating", blurb: "Expressions and sequences that repeat themselves, so one copy or one cycle settles the rest.", ids: ["infinite-nest", "periodic-sequences"] },
         { title: "Equations with Hidden Structure", blurb: "Equations and expressions that look messy but are built from one hidden piece: a repeated block to name, or a new operation that is a familiar one in disguise.", ids: ["repeated-block-equation", "defined-operation"] },
-        { title: "Word-Problem Setups", blurb: "Stories whose numbers change part-way through, where the right bookkeeping turns the story into one equation.", ids: ["averages-before-after", "several-rates"] },
+        { title: "Word-Problem Setups", blurb: "Stories whose numbers change part-way through, where the right bookkeeping turns the story into one equation.", ids: ["averages-before-after", "reading-graphs", "several-rates"] },
         { title: "Logarithms & Complex Numbers", blurb: "Equations in logarithms or complex numbers, where the right representation makes them linear or geometric.", ids: ["log-system", "complex-modulus-argument"] },
         { title: "Floor Functions", blurb: "Sums and equations built from the floor function, where the integer part and the fractional part are handled separately.", ids: ["floor-sum-range", "floor-equation"] }
       ],
       formulas: [
+        {
+          id: "reading-graphs",
+          name: "Reading Graphs and Tables",
+          type: "pattern",
+          subject: "algebra",
+          recognize: [String.raw`a bar graph, line graph, pie chart, or table that holds the numbers the question needs`, String.raw`a question about a total, an average, a percent, or a change read from the picture`, String.raw`an axis that may not start at $0$, or a scale that is not one unit per mark`],
+          suggests: ["averages-to-totals", "setting-up-proportions"],
+          tryFirst: ["averages-to-totals", "percent-change", "mean-median-mode"],
+          latex: String.raw`\text{value} = \text{axis start} + (\text{marks}) \times (\text{scale}), \qquad \text{pie: } \tfrac{\text{angle}}{360^\circ}\times\text{total}`,
+          description: String.raw`This is the problem that gives its data as a bar graph, a line graph, a pie chart, or a table, and asks for a total, an average, a percent, or a change. The work is reading the numbers correctly: the scale, the units, and where an axis starts, since a bar twice as tall stands for twice as much only when the axis starts at $0$.`,
+          keywords: ["bar graph", "line graph", "pie chart", "table of data", "reading a graph", "data interpretation", "scale of an axis", "statistics from a chart", "pattern"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
         {
           id: "several-rates",
           name: "A Problem with Several Rates",
@@ -2754,7 +2860,7 @@ window.MATH_SECTIONS.push({
     {
       title: "Number Theory",
       groups: [
-        { title: "Digit Puzzles", blurb: "Problems about the digits of a number rather than its size.", ids: ["cryptarithms", "digit-manipulation", "unknown-base"] },
+        { title: "Digit Puzzles", blurb: "Problems about the digits of a number rather than its size.", ids: ["cryptarithms", "palindromes", "digit-manipulation", "unknown-base"] },
         { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear"] },
         { title: "Whole-Number Totals", blurb: "A total made from items of fixed values, coins, stamps, or prices, where every count must be a whole number.", ids: ["coins-and-prices"] },
         { title: "Perfect-Square Conditions", blurb: "An expression in an integer that must come out a perfect square, where completing the square leaves a difference of two squares with only a few factorizations.", ids: ["quadratic-perfect-square"] }
@@ -2851,6 +2957,21 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "palindromes",
+          name: "Palindromes",
+          type: "pattern",
+          subject: "number-theory",
+          recognize: [String.raw`a number that reads the same forwards and backwards, such as $\overline{abba}$ or $\overline{abcba}$`, String.raw`a count of palindromes, or a question about which palindromes are divisible by a given number`, String.raw`a number and its reversal, or a palindrome that changes when a number is added`],
+          suggests: ["constructive-counting", "numeral-as-polynomial"],
+          tryFirst: ["constructive-counting", "divisibility-rules", "numeral-as-polynomial"],
+          latex: String.raw`\overline{abba} = 1001a + 110b, \qquad 9 \cdot 10^{k-1} \text{ palindromes with } 2k - 1 \text{ or } 2k \text{ digits}`,
+          description: String.raw`This is the problem about palindromes, numbers that read the same forwards and backwards, such as $\overline{abba}$ with digits $a \ne 0$ and $b$. A palindrome is fixed by its first half, which makes counting them a matter of choosing that half, and writing it in place value, as $\overline{abba} = 1001a + 110b$, shows its divisibility: every palindrome with an even number of digits is a multiple of $11$.`,
+          keywords: ["palindrome", "palindromic number", "reads the same backwards", "abba", "count palindromes", "palindrome divisible by 11", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "digit-manipulation",
           name: "Digit Manipulation",
           type: "pattern",
@@ -2871,7 +2992,7 @@ window.MATH_SECTIONS.push({
       title: "Counting & Probability",
       groups: [
         { title: "Subset Conditions", blurb: "Subsets that must avoid a forbidden pair, such as two elements with a given sum, difference, or divisibility.", ids: ["subset-avoiding-relation"] },
-        { title: "Logic & Probability Setups", blurb: "Puzzles made of statements, where only consistent guesses survive, and draws from a bag that change what is left.", ids: ["truth-tellers-logic", "drawing-without-replacement"] },
+        { title: "Logic & Probability Setups", blurb: "Puzzles made of statements, where only consistent guesses survive, and draws from a bag that change what is left.", ids: ["truth-tellers-logic", "counting-shapes", "drawing-without-replacement"] },
         { title: "Strings & Sequences with a Rule", blurb: "Strings, tilings, and arrangements of a given length where a local rule forbids certain neighbors, counted by tracking what the last few symbols were.", ids: ["restricted-sequences", "tiling-a-board"] }
       ],
       formulas: [
@@ -2916,6 +3037,21 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{person } i \text{ truthful} \iff \text{statement } i \text{ is true}`,
           description: String.raw`This is the puzzle whose data are statements rather than numbers: people who always tell the truth or always lie, or clues about an arrangement, some of which may be false. The rule that ties it together is that a truth-teller's statement is true and a liar's is false, so each guess about who is truthful either agrees with every statement or contradicts one, and only the consistent guesses survive.`,
           keywords: ["truth teller", "liar", "knights and knaves", "logic puzzle", "logical deduction", "consistent assignment", "who is lying", "arrangement clues", "pattern"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "counting-shapes",
+          name: "Counting the Shapes in a Figure",
+          type: "pattern",
+          subject: "counting",
+          recognize: [String.raw`a figure made of lines or a grid, and the question "how many triangles (or squares, or rectangles) are in it"`, String.raw`shapes of several sizes that overlap, so the same lines belong to many shapes`, String.raw`a count that must include shapes made of several small pieces`],
+          suggests: ["organized-listing", "casework-method", "constructive-counting"],
+          tryFirst: ["organized-listing", "constructive-counting", "rectangles-in-grid"],
+          latex: String.raw`\#\text{shapes} = \#(\text{size } 1) + \#(\text{size } 2) + \cdots, \qquad \text{or choose the lines that bound one}`,
+          description: String.raw`This is the problem that shows a figure built from lines, such as a grid or a triangle cut by segments, and asks how many triangles, squares, or rectangles it contains, counting the large shapes made of several small ones. The shapes overlap, so the work is to count each exactly once, either by size and position or by choosing the lines that bound a shape.`,
+          keywords: ["count triangles in a figure", "how many squares", "how many rectangles", "shapes of all sizes", "overlapping shapes", "count figures", "pattern"],
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
