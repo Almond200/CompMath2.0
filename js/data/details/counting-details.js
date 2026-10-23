@@ -1254,6 +1254,19 @@ For example, a bug starts at a vertex of a cube and each minute walks to one of 
 
 Each entry comes from the row above it. After minute $3$, for instance, distance $1$ collects every move from distance $0$ and two thirds of the moves from distance $2$, so its chance is $\frac13 + \frac23 \cdot \frac23 = \frac79$. The last row answers the question: the bug is at the opposite vertex with probability $\frac{20}{81}$. Every row adds up to $1$, a quick check on the arithmetic, and the zeros alternate because each move changes the distance by exactly one.
 
+### The same steps as a matrix
+The step-by-step table is a matrix product in disguise. Put the chances of one step in a transition matrix $M$, with $M_{ij}$ the chance of moving from group $i$ to group $j$, so every row of $M$ adds up to $1$. If $v_n$ is the row of probabilities after $n$ steps, building the next row of the table is exactly
+
+$$v_{n+1} = v_n M, \qquad v_n = v_0 M^n.$$
+
+So a question about a large number of steps is a question about a matrix power, and powers are computed by repeated squaring, or in closed form from the eigenvalues of $M$. A transition matrix always has the eigenvalue $1$, which gives the long-run distribution, and the other eigenvalues have absolute value at most $1$ and say how the rest of the distribution behaves step by step.
+
+For the bug on the cube, $M$ has eigenvalues $1$, $-1$, $\frac13$, and $-\frac13$, so the chance of being at the opposite vertex is a combination of their $n$th powers. Fitting it to the first rows of the table gives
+
+$$P(\text{opposite vertex after } n \text{ minutes}) = \frac{1 - (-1)^n - 3\left(\frac13\right)^n + 3\left(-\frac13\right)^n}{8},$$
+
+which is $\frac14\left(1 - 3^{1-n}\right)$ for odd $n$, $\frac{20}{81}$ at $n = 5$, and tends to $\frac14$. The ending questions have a matrix form too: if $Q$ holds the steps between the states that are not end states, the first-step equations for expected steps say $(I - Q)E = \mathbf 1$, a linear system with one equation per state. On a contest the table or the first-step equations are almost always quicker; the matrix view earns its keep when $n$ is large or a closed form is asked for.
+
 ## Why it works
 The future depends only on the current state, so after the first step the process starts afresh from wherever it landed. Averaging over the first step therefore gives each state's value in terms of the next states' values, which is the law of total probability; for expected steps, the first step adds $1$. When an end state can be reached from every state, the system has exactly one solution.
 
