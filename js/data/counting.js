@@ -497,6 +497,16 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "kruskal-katona",
+          name: "Kruskal–Katona Theorem",
+          latex: String.raw`\lvert\mathcal F\rvert = \binom{a_k}{k} + \binom{a_{k-1}}{k-1} + \cdots \implies \lvert\partial\mathcal F\rvert \ge \binom{a_k}{k-1} + \binom{a_{k-1}}{k-2} + \cdots`,
+          description: String.raw`The Kruskal–Katona Theorem gives the smallest possible shadow of a family $\mathcal F$ of $k$-element sets, where the shadow $\partial\mathcal F$ is the family of all $(k-1)$-element subsets of its members. Writing $\lvert\mathcal F\rvert$ in its $k$-cascade form, a greedy sum of binomial coefficients with $a_k \gt a_{k-1} \gt \cdots$, the shadow has at least the matching sum with each lower index reduced by one, and the first sets in colex order reach it.`,
+          keywords: ["kruskal katona", "shadow of a family", "minimum shadow", "binomial cascade", "colex order", "lovasz version", "k-subsets and their (k-1)-subsets"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "erdos-ko-rado",
           name: "Erdős–Ko–Rado Theorem",
           latex: String.raw`\mathcal F \subseteq \tbinom{[n]}{k} \text{ intersecting},\ \ n \ge 2k \implies |\mathcal F| \le \binom{n - 1}{k - 1}`,

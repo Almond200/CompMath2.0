@@ -1803,7 +1803,13 @@
     "vornicu-schur": "formula",
     "cohn-irreducibility": "formula",
     "gauss-lucas": "formula",
-    "mason-stothers": "formula"
+    "mason-stothers": "formula",
+    "rotated-line-angle": "formula",
+    "spheres-two-planes": "formula",
+    "lester-circle": "formula",
+    "droz-farny": "formula",
+    "anti-steiner-point": "formula",
+    "kruskal-katona": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8716,6 +8722,42 @@
       ]
     ],
     "mason-stothers": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "rotated-line-angle": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "spheres-two-planes": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "lester-circle": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "droz-farny": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "anti-steiner-point": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "kruskal-katona": [
       [
         "(new card)",
         "written directly in the formula template"

@@ -9019,3 +9019,159 @@ Volumes of parallelepipeds and tetrahedra given by edge lengths and the angles a
 Rare; it appears late on the AIME when a parallelepiped is described only by its faces or by the angles at a vertex, often after dot products turn the face data into the angles.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"rotated-line-angle": String.raw`
+## Key forms
+- $\angle(\ell, \rho(\ell)) = \theta$ — a rotation by $\theta$ about any center turns every line by $\theta$, measured as an angle between lines, modulo $180^\circ$
+- $\theta = \angle(AB, A'B')$ — the converse reading: the angle of a rotation is the angle between any segment $AB$ and its image $A'B'$
+- $\theta = 180^\circ \implies \ell' \parallel \ell$ — a half-turn sends every line to a parallel one
+
+## Conditions
+The angle is between lines, so it is defined up to $180^\circ$: a rotation by $\theta$ and one by $\theta + 180^\circ$ turn lines the same way. As angles between rays, a ray and its image make exactly $\theta$.
+
+## Why it works
+The idea is that a rotation turns every direction by the same angle, wherever it is applied, because a rotation is a translation-free turn followed by nothing else: the vector from any point $X$ to any point $Y$ is turned by $\theta$.
+
+The perpendicular from the center shows it in the figure. Let $F$ be the foot of the perpendicular from $O$ to $\ell$. The rotation sends $F$ to $F'$ and $\ell$ to the line through $F'$ perpendicular to $OF'$, since right angles are kept, and $\angle FOF' = \theta$.
+
+If the lines meet at $P$, the quadrilateral $OFPF'$ has right angles at $F$ and $F'$, so its angles at $O$ and $P$ add up to $180^\circ$:
+
+$$\angle FPF' = 180^\circ - \angle FOF' = 180^\circ - \theta.$$
+
+The two lines therefore make the angles $180^\circ - \theta$ and $\theta$ at $P$, which is the claim.
+
+## Useful observations
+- Finding a rotation is half done once its angle is known: the angle between one side and its image gives it, and [[rotation-center|finding the center]] gives the rest.
+- When a figure is rotated so that a side becomes vertical or horizontal, the rotation angle is the angle that side makes with that direction, read from its slope.
+- The point $P$ where $\ell$ and $\ell'$ meet lies on the circle through $O$, $F$, and $F'$, the circle with diameter $OP$.
+
+## Applications
+Rotated copies of polygons and triangles, the angle between a side and its image, and choosing the angle of a rotation from a direction a side must take.
+
+## Contest profile
+An AIME fact used inside rotation problems: it fixes the angle of a rotation from one side and its image. It pairs with Rotating a Point and with coordinates.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"spheres-two-planes": String.raw`
+## Key forms
+- $\operatorname{dist}(O, \mathcal P) = \operatorname{dist}(O, \mathcal T) = r$ — the center of a sphere tangent to both planes is equidistant from them
+- centers of spheres tangent to $\mathcal P$ and $\mathcal T$, on the same sides, lie on one bisecting plane — so any number of such centers are coplanar
+- $r = d\tan\tfrac{\varphi}{2}$ — with $d$ the distance from the tangency point on $\mathcal P$ to the edge $\mathcal P \cap \mathcal T$ and $\varphi$ the dihedral angle, so $r$ is a linear function of the tangency point
+
+## Conditions
+The spheres lie on the same side of $\mathcal P$ and on the same side of $\mathcal T$, so their centers are in one of the four wedges and on its bisecting plane. If the planes are parallel, the radius is half their distance and the centers lie on the midway plane.
+
+## Why it works
+The idea is that tangency to a plane fixes the distance from the center to that plane, and the points at equal distances from two planes form the two planes that bisect the angles between them.
+
+A sphere of radius $r$ is tangent to a plane exactly when its center is at distance $r$ from the plane, the radius to the point of tangency being perpendicular to the plane. Tangent to both, the center is at distance $r$ from each, so it is equidistant from $\mathcal P$ and $\mathcal T$.
+
+Seen along the edge, as in the figure, each plane is a line through a point $E$ and each sphere is a circle tangent to both lines. The points equidistant from two lines are their angle bisectors, so the centers lie on the bisector of the wedge that holds the spheres, and in space that bisector is a plane through the edge.
+
+For the radius, the center $O$ is straight above its tangency point $T$ on $\mathcal P$, at height $r$, and the bisecting plane makes the angle $\tfrac{\varphi}{2}$ with $\mathcal P$. In the cross-section through $T$ perpendicular to the edge, the right triangle with legs $d$ and $r$ has angle $\tfrac{\varphi}{2}$ at the edge, so $r = d\tan\tfrac{\varphi}{2}$.
+
+## Useful observations
+- In coordinates with $\mathcal P$ the plane $z = 0$, the centers are $(x_i, y_i, r_i)$ with $(x_i, y_i)$ the tangency points; one plane through three centers gives the radius of a fourth sphere from its tangency point alone.
+- The distance from a tangency point to the edge sets the radius, so tangency points in a line parallel to the edge give equal radii.
+- In two dimensions the same fact puts the centers of circles tangent to two lines on an angle bisector, the start of [[triangle-of-centers|joining the centers]] in corner problems.
+
+## Applications
+Spheres resting on a table and touching a tilted plane, balls in a wedge, and finding one radius from the others when all touch the same two planes.
+
+## Contest profile
+A late AIME fact in three-dimensional tangency problems: it turns several spheres touching two planes into one plane of centers. It pairs with coordinates in space and Point-to-Plane Distance.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"lester-circle": String.raw`
+## Key forms
+- $F_1$, $F_2$, $O$, $N$ lie on one circle — for every scalene triangle
+- $N$ is the midpoint of $OH$ — so the circle meets the Euler line at $O$ and at the nine-point center
+
+## Conditions
+The triangle is scalene. In an isosceles triangle the four points lie on the axis of symmetry, so they are collinear rather than concyclic, and in an equilateral triangle they coincide.
+
+## Why it works
+The idea of the known proofs is that all four points sit on one special curve through the centroid and the orthocenter, the Kiepert hyperbola, and a circle meeting that hyperbola can be pinned down from its other properties. That argument, and the coordinate computation that also proves it, are beyond contest level, so the theorem is quoted rather than proved in contest solutions.
+
+The two Fermat points come from the construction in [[fermat-point|Fermat Point (Torricelli Point)]]: the three lines from the vertices to the apexes of equilateral triangles erected on the opposite sides meet at one point, outward for $F_1$ and inward for $F_2$. The nine-point center is the midpoint of $O$ and the orthocenter $H$, as on the [[nine-point-circle|nine-point circle]] card.
+
+## Useful observations
+- The figure shows a triangle with no angle near $60^\circ$; as one angle approaches $60^\circ$, the inward lines become parallel and $F_2$ runs off to infinity.
+- The circle through $F_1$, $F_2$, and the centroid $G$ is another classical circle, and $F_1F_2$ passes through the symmedian point; these and Lester's circle are all consequences of the Kiepert hyperbola.
+
+## Applications
+Concyclicity results about triangle centers, and as a check in computer explorations of triangle geometry.
+
+## Contest profile
+A triangle-geometry curiosity, never needed on the AMC or AIME and rarely in olympiads. It pairs with the Fermat Point and the Nine-Point Circle.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"droz-farny": String.raw`
+## Key forms
+- $\ell_1 \perp \ell_2$ through $H$ $\implies$ the midpoints of the three segments they cut on $BC$, $CA$, $AB$ are collinear
+- the circles on those three segments as diameters all pass through $H$ — each segment subtends the right angle at $H$
+
+## Conditions
+The side lines are extended as needed, and neither $\ell_1$ nor $\ell_2$ is parallel to a side. The triangle is not right-angled, so that $H$ is not on a side.
+
+## Why it works
+The idea is to put the right angle on the coordinate axes: then each midpoint has coordinates read off the intercepts of a side line, and the orthocenter condition is a statement about the normals of the side lines.
+
+Step 1, the setup. Put $H$ at the origin with $\ell_1$ and $\ell_2$ as the axes, and write side line $i$ as $u_i x + v_i y = 1$. It meets the axes at $\left(\tfrac1{u_i}, 0\right)$ and $\left(0, \tfrac1{v_i}\right)$, so its midpoint is $M_i = \left(\tfrac1{2u_i}, \tfrac1{2v_i}\right)$.
+
+Step 2, the orthocenter. The vertex opposite side $i$ lies on the altitude through $H$, the line along the normal $n_i = (u_i, v_i)$, so it is $t_i n_i$. Lying on the other two side lines gives $t_i(n_i \cdot n_j) = 1 = t_i(n_i \cdot n_k)$, so all three dot products $n_1 \cdot n_2$, $n_2 \cdot n_3$, $n_3 \cdot n_1$ are equal, say to $c$.
+
+Step 3, the collinearity. The midpoints are collinear exactly when the three points $\left(\tfrac1{u_i}, \tfrac1{v_i}\right)$ are, and multiplying row $i$ of that determinant by $u_iv_i$ turns the condition into
+
+$$\det\begin{pmatrix} v_1 & u_1 & u_1v_1 \\ v_2 & u_2 & u_2v_2 \\ v_3 & u_3 & u_3v_3 \end{pmatrix} = 0,$$
+
+which follows from the three equal dot products by expanding along the last column; the algebra is routine but long.
+
+## Useful observations
+- Turning the right angle about $H$ moves the line; when one of the lines is an altitude the segment on that side collapses toward the foot.
+- The circles on the three segments as diameters pass through $H$, and their centers are the three midpoints, so the theorem says these circles share a second common point.
+
+## Applications
+Collinearity statements about the orthocenter and lines through it.
+
+## Contest profile
+A classical olympiad statement, set as a problem more often than quoted. It pairs with the orthocenter's reflection properties and with coordinates centered at $H$.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"anti-steiner-point": String.raw`
+## Key forms
+- $s_{BC}(\ell)$, $s_{CA}(\ell)$, $s_{AB}(\ell)$ concur at $S$ on the circumcircle — for every line $\ell$ through $H$
+- $\ell$ is the Steiner line of $S$ — the reflections of $S$ in the three sides lie on $\ell$, so the two constructions undo each other
+- the anti-Steiner point of the Euler line is the Euler reflection point — the best-known case
+
+## Conditions
+The line passes through the orthocenter. For a line not through $H$ the three reflections form a triangle instead of meeting at a point.
+
+## Why it works
+The idea is that each reflected line passes through a reflection of $H$, which lies on the circumcircle, and a directed-angle count shows that two reflected lines meet on the circle.
+
+Step 1, three points on the circle. The reflection $H_a$ of $H$ in $BC$ lies on the circumcircle ([[orthocenter-properties|Orthocenter Reflections & Distances]]), and so do $H_b$ and $H_c$. The reflection of $\ell$ in $BC$ passes through $H_a$, since $\ell$ passes through $H$, and likewise for the other two.
+
+Step 2, two lines meet on the circle. Reflecting in $BC$ and in $CA$ turns the directions of lines so that, in [[directed-angles|directed angles]] modulo $180^\circ$,
+
+$$\angle\big(s_{BC}(\ell), s_{CA}(\ell)\big) = 2\angle(BC, CA) = \angle(CH_a, CH_b),$$
+
+the last because $CH_a$ and $CH_b$ are the reflections of $CH$ in $BC$ and $CA$. So the two reflected lines meet at a point $S$ with $\angle H_aSH_b = \angle H_aCH_b$, and $S$ lies on the circle through $H_a$, $C$, $H_b$, the circumcircle.
+
+Step 3, the third line. The same argument for $s_{BC}(\ell)$ and $s_{AB}(\ell)$ gives a point on the circumcircle and on $s_{BC}(\ell)$. A line meets the circle at $H_a$ and one more point, and both points found are that second point, so all three lines pass through $S$.
+
+## Useful observations
+- The Steiner line of a point $P$ on the circumcircle passes through $H$; the anti-Steiner point goes the other way, from a line through $H$ back to the point.
+- Two lines through $H$ that are perpendicular have anti-Steiner points at the ends of a diameter of the circumcircle.
+
+## Applications
+Olympiad problems with lines through the orthocenter, reflections of lines in the sides, and points on the circumcircle defined by them.
+
+## Contest profile
+An olympiad configuration tool, used to name the point where reflections of a line through the orthocenter meet. It pairs with the Steiner line and the orthocenter's reflections.
+`
+});
