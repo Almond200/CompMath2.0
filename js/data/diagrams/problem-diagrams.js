@@ -4387,4 +4387,30 @@
       cap(430, 270, "The rectangle ABCD and the segment DM perpendicular to its plane at D; MA, MC and MB are consecutive odd integers. (Heights drawn stretched.)" + MM(ok))
     ]);
   })();
+  // 2020 AMC 12A #14: the regular octagon and the square ACEG on every other vertex.
+  PROB["2020-amc-12a-14"] = (() => {
+    const V = Array.from({ length: 8 }, (_, i) => [Math.cos(Math.PI / 2 + Math.PI / 4 * i - Math.PI / 8), Math.sin(Math.PI / 2 + Math.PI / 4 * i - Math.PI / 8)]);
+    const sq = [0, 2, 4, 6].map(i => V[i]), names = "ABCDEFGH";
+    const ok = V.every((v, i) => Math.abs(dist(v, V[(i + 1) % 8]) - dist(V[0], V[1])) < 1e-9) && Math.abs(dist(sq[0], sq[1]) - dist(sq[1], sq[2])) < 1e-9;
+    const Q = fitQ(V, 30, 430, 270);
+    return wrap(430, 270, [
+      poly(V.map(Q), DIM, 2), poly(sq.map(Q), ACC, 1.8, ACCS),
+      ...V.map((v, i) => txt(add(Q(v), mul(norm([v[0], -v[1]]), 15)), names[i], i % 2 ? DIM : ACC, 13)),
+      cap(430, 270, "The regular octagon ABCDEFGH and the quadrilateral ACEG (blue) on every other vertex." + MM(ok))
+    ]);
+  })();
+
+  // 2020 AMC 12A #24: the equilateral triangle and the point P with AP = 1, BP = √3, CP = 2.
+  PROB["2020-amc-12a-24"] = (() => {
+    const s7 = Math.sqrt(7), A = [0, 0], B = [s7, 0], C = [s7 / 2, s7 * Math.sqrt(3) / 2];
+    const x = (1 - 3 + 7) / (2 * s7), P = [x, Math.sqrt(1 - x * x)];
+    const ok = Math.abs(dist(P, A) - 1) < 1e-9 && Math.abs(dist(P, B) - Math.sqrt(3)) < 1e-9 && Math.abs(dist(P, C) - 2) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(P), Q(A), ACC, 1.6), seg(Q(P), Q(B), ACC, 1.6), seg(Q(P), Q(C), ACC, 1.6), dot(Q(P), ACC, 3.5),
+      txt(add(Q(A), [-12, 6]), "A"), txt(add(Q(B), [12, 6]), "B"), txt(add(Q(C), [0, -10]), "C"), txt(add(Q(P), [-4, 16]), "P", ACC, 13),
+      txt(add(Q(mid(P, A)), [-2, -9]), "1", ACC, 12), txt(add(Q(mid(P, B)), [4, -8]), "√3", ACC, 12), txt(add(Q(mid(P, C)), [-12, 0]), "2", ACC, 12),
+      cap(430, 270, "The equilateral triangle ABC of side s and the point P inside it with AP = 1, BP = √3, CP = 2." + MM(ok))
+    ]);
+  })();
 })();
