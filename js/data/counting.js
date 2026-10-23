@@ -747,20 +747,10 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME", "Olympiad"]
         },
         {
-          id: "ramsey-33",
-          name: "Ramsey Number $R(3,3) = 6$",
-          latex: String.raw`R(3, 3) = 6`,
-          description: String.raw`Among any 6 people, some 3 are mutual friends or mutual strangers — and 6 is minimal. Proof: pigeonhole on one person's 5 relationships.`,
-          keywords: ["ramsey", "friends strangers", "party problem", "coloring edges"],
-          importance: "lower",
-          tier: "AIME Late",
-          level: ["AIME", "Olympiad"]
-        },
-        {
           id: "schurs-theorem",
           name: "Schur's Theorem",
           latex: String.raw`N \ge \lfloor e \cdot k! \rfloor \implies \text{every } k\text{-coloring of } 1, 2, \ldots, N \text{ has } x + y = z \text{ in one color}`,
-          description: String.raw`Schur's Theorem says that coloring the numbers $1, 2, \ldots, N$ in $k$ colors cannot keep every color free of solutions to $x + y = z$ once $N$ is large, with $x = y$ allowed; the bound uses $e \approx 2.718$. It is [[ramsey-33|Ramsey's Theorem]] in disguise, applied to differences. The largest $N$ that can be colored without a one-color solution is the Schur number: $4$ for two colors, $13$ for three, $44$ for four. It is not Schur's Inequality, a different result with the same name.`,
+          description: String.raw`Schur's Theorem says that coloring the numbers $1, 2, \ldots, N$ in $k$ colors cannot keep every color free of solutions to $x + y = z$ once $N$ is large, with $x = y$ allowed; the bound uses $e \approx 2.718$. It is Ramsey's theorem in disguise, applied to differences. The largest $N$ that can be colored without a one-color solution is the Schur number: $4$ for two colors, $13$ for three, $44$ for four. It is not Schur's Inequality, a different result with the same name.`,
           keywords: ["schur theorem", "schur numbers", "sum-free coloring", "monochromatic x+y=z", "coloring integers sum free", "ramsey for sums", "sum-free sets"],
           importance: "lower",
           tier: "Olympiad",

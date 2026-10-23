@@ -1531,32 +1531,6 @@ The equation is free; the work is choosing what to count. The right set is one w
 Usually the key step of a proof, or of an AIME count over incidences: one side is computed directly and the other is solved for.
 `,
 
-"ramsey-33": String.raw`
-## Key forms
-- $R(3, 3) = 6$ — among any $6$ people, some $3$ are mutual friends or mutual strangers, and $6$ is the smallest such number
-- a $5$-cycle of friendships, with the complementary $5$-cycle of strangers, has no monochromatic triangle — so $5$ people do not suffice
-- the number of non-monochromatic triangles in a $2$-coloring of $K_6$ is $\alt{\dfrac12\sum_v d_v(5 - d_v)}{\dfrac12\left[d_1(5 - d_1) + d_2(5 - d_2) + \cdots + d_6(5 - d_6)\right]}$, where $d_v$ is the number of friends of $v$
-
-## Conditions
-Every pair of people is in exactly one of two relations, friends or strangers. The result is about the complete graph $K_6$ with edges colored in two colors.
-
-## Why it works
-Among one person's $5$ relations, pigeonhole gives $3$ of one type, say three friends. Those three either contain a pair of friends, which closes a monochromatic triangle with the fixed person, or are all strangers to one another, which is the opposite triangle themselves.
-
-Minimality needs a construction: the pentagon coloring of $K_5$, the $5$-cycle in one color and its complement in the other, has no monochromatic triangle, so $6$ is tight.
-
-## Useful observations
-- The proof is a two-step pigeonhole worth reproducing: fix one person, and of their five relationships at least three share a color.
-- Minimality needs a construction, not an argument. Contest problems asking to show a bound is tight always need this second half.
-- The general lesson is that these results are proved by fixing one vertex and pigeonholing its edges, the standard opening for any small Ramsey-style question. Ramsey numbers grow ferociously, with $R(4, 4) = 18$ and $R(5, 5)$ still unknown.
-
-## Applications
-Guaranteed monochromatic triangles, party problems, and small Ramsey-style coloring questions.
-
-## Contest profile
-The $6$-people puzzle appears verbatim in competition folklore; the argument template, fixing a vertex and pigeonholing its edges, solves related coloring questions.
-`
-
 });
 
 // Entries added from the 2023-2025 AMC/AIME sweep.

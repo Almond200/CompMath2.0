@@ -846,7 +846,7 @@
       "change-of-base", "exponent-laws", "log-rules", "log-swap-identity"
     ],
     "pigeonhole and extremal": [
-      "erdos-szekeres", "extremal-principle", "handshake-lemma", "pigeonhole", "ramsey-33"
+      "erdos-szekeres", "extremal-principle", "handshake-lemma", "pigeonhole"
     ],
     "primes and factorials": [
       "bertrands-postulate", "consecutive-product-factorial", "floor-multiples",
@@ -1320,7 +1320,7 @@
 
   // A card merged into another keeps working at its old address, so bookmarks and shared
   // links land on the card that absorbed it.
-  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies", "picks-triangular-lattice": "picks-theorem-general", "hexagon-diagonals": "regular-hexagon-area", "cyclic-quad-diagonals": "ptolemy-second-theorem", "same-remainder": "subtract-equal-remainders" };
+  const MERGED_IDS = { "sp-substitution": "symmetric-polynomial-strategies", "picks-triangular-lattice": "picks-theorem-general", "hexagon-diagonals": "regular-hexagon-area", "cyclic-quad-diagonals": "ptolemy-second-theorem", "same-remainder": "subtract-equal-remainders", "ramsey-33": "pigeonhole" };
   function getRoute() {
     let m = location.hash.match(/^#\/f\/([\w-]+)$/);
     if (m && BY_ID[m[1]]) return { type: "formula", entry: BY_ID[m[1]] };
@@ -3683,7 +3683,6 @@
       "bayes-theorem": "Set how common a condition is and how accurate the test is. The tool shows the chance that a positive result is a true positive, which is often far lower than the test's accuracy.",
       "modular-inverse": "Pick a and m. The inverse of a modulo m is the x with ax ≡ 1 (mod m); it exists exactly when gcd(a, m) = 1, and the extended Euclidean algorithm finds it.",
       "complex-basics": "Drag z around the plane. Its conjugate z̄ is its mirror image in the real axis, and the caption follows both as you move.",
-      "ramsey-33": "Six people, each pair either friends (blue) or strangers (red). However the pairs are colored, some three people are all friends or all strangers: Random coloring tries a new one, and Next triangle finds such a trio."
   };
   function addWidgetIntro(host, id) {
     const text = WIDGET_INTROS[id];
