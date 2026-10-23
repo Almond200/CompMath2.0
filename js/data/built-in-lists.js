@@ -166,7 +166,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["indicator-variables", "generating-function-method"] }
     ] },
   { id: "route-aime-geometry", name: "AIME Geometry", kind: "route", tier: "AIME", subject: "Geometry",
-    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 89 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 geometry route: only the cards that are new at this level, so each list stays short. 91 cards across 12 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Triangles: Sides, Areas & Radii",
         note: "The workhorses. Come here first when the figure hands you side lengths and wants another length or an area.",
@@ -182,10 +182,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["power-of-a-point", "butterfly-theorem", "archimedes-broken-chord", "radical-axis", "miquels-theorem", "apollonius-circle", "descartes-circle-theorem", "arbelos", "corner-circle-chain", "caseys-theorem"] },
       { title: "Coordinates & Transformations",
         note: "For when the synthetic route stalls and the figure offers a right angle, a midpoint or a natural origin.",
-        ids: ["incenter-coordinates", "picks-hexagonal-grid", "conic-perpendicular-radii"] },
+        ids: ["incenter-coordinates", "picks-hexagonal-grid", "conic-perpendicular-radii", "rotated-line-angle"] },
       { title: "Three Dimensions",
         note: "Mensuration of the named solids first, then analytic geometry in space for everything that is not one.",
-        ids: ["descartes-sphere-theorem", "de-guas-theorem", "cayley-menger", "isosceles-tetrahedron", "insphere-radius", "pappus-centroid", "point-plane-distance", "skew-lines-distance", "projected-area-cosine", "gram-determinant-volume"] },
+        ids: ["descartes-sphere-theorem", "de-guas-theorem", "cayley-menger", "isosceles-tetrahedron", "insphere-radius", "pappus-centroid", "point-plane-distance", "skew-lines-distance", "projected-area-cosine", "gram-determinant-volume", "spheres-two-planes"] },
       { title: "Projective, Inversive & Convex",
         note: "The deep end. Rare below olympiad, but decisive when a configuration refuses to yield to anything else.",
         ids: ["harmonic-quadrilateral"] },
@@ -294,11 +294,11 @@ window.MATH_BUILTIN_LISTS = [
     ] },
 
   { id: "route-olympiad-geometry", name: "Olympiad Geometry", kind: "route", tier: "Olympiad", subject: "Geometry",
-    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 52 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 55 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Relations Between Centers",
         note: "The distances and incidences that tie the centers to one another. This is where olympiad triangle problems usually turn.",
-        ids: ["steiner-line"] },
+        ids: ["steiner-line", "lester-circle", "droz-farny", "anti-steiner-point"] },
       { title: "Derived Triangles & Conjugates",
         note: "A second triangle built from the first, and the point-pairings that come with it.",
         ids: ["excentral-triangle", "isogonal-conjugate", "isotomic-conjugate", "cevian-nest"] },
@@ -384,7 +384,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["beatty-theorem"] }
     ] },
   { id: "route-olympiad-counting", name: "Olympiad Counting & Probability", kind: "route", tier: "Olympiad", subject: "Counting & Probability",
-    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 24 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME counting and probability route: only the cards that are new at this level, so each list stays short. 25 cards across 7 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Graph Theory",
         note: "The olympiad graph results. Most combinatorics problems about a network are one of these.",
@@ -394,7 +394,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["burnsides-lemma", "polya-enumeration"] },
       { title: "Partitions & Posets",
         note: "Splitting a set, and the order-theoretic results about chains and antichains.",
-        ids: ["dilworths-theorem", "sperners-theorem", "erdos-ko-rado", "pentagonal-number-theorem", "hook-length-formula"] },
+        ids: ["dilworths-theorem", "sperners-theorem", "erdos-ko-rado", "pentagonal-number-theorem", "hook-length-formula", "kruskal-katona"] },
       { title: "Existence & Invariants",
         note: "Proving something must happen without constructing it. The backbone of olympiad combinatorics.",
         ids: ["pigeonhole", "schurs-theorem", "erdos-szekeres", "extremal-principle", "invariants-coloring", "monovariant"] },

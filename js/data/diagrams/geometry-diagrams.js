@@ -9200,6 +9200,122 @@ DIAGRAMS["trig-ceva"] = [(() => {
       cap(430, 300, "An equiangular hexagon: walking around it, each side turns 60° (gold) from the last, so the side vectors are the lengths times 1, ω, ω², ..., ω⁵ and add to zero. With AB = 4, BC = 1, CD = 3, DE = 2, closure forces EF = 3 and FA = 1." + (ok ? "" : " MISMATCH"))
     ]);
   })()];
+  // ---------- Completeness batch 2 (2026-10-23) ----------
+  // Rotating a line: the image crosses the original at the angle of rotation. The feet F, F' of
+  // the perpendiculars from the center O make OFPF' a quadrilateral with two right angles, so
+  // the angle at P is 180° minus the angle FOF', which is the rotation angle.
+  DIAGRAMS["rotated-line-angle"] = [(() => {
+    const O = [215, 250], th = 50, d = 125;
+    const F = add(O, mul([Math.cos(rad(-115)), Math.sin(rad(-115))], d));        // foot of the perpendicular on ℓ
+    const F2 = add(O, rotv(sub(F, O), rad(th)));                                 // its image, the foot on ℓ′
+    const P = lineInt(F, add(F, perp(sub(F, O))), F2, add(F2, perp(sub(F2, O))));
+    const L1 = [add(F, mul(norm(sub(F, P)), 70)), add(P, mul(norm(sub(P, F)), 60))];
+    const L2 = [add(F2, mul(norm(sub(F2, P)), 70)), add(P, mul(norm(sub(P, F2)), 60))];
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(F, O, F2) - th) < 1e-6 && Math.abs(ang(F, P, L2[1]) - th) < 1e-6;
+    return wrap(430, 300, [
+      seg(L1[0], L1[1], DIM, 2.2), seg(L2[0], L2[1], ACC, 2.2),
+      seg(O, F, FNT, 1.5, "5 4"), seg(O, F2, FNT, 1.5, "5 4"), rightAngle(F, O, P, 10), rightAngle(F2, O, P, 10),
+      angleArc(O, F, F2, 30, GLD), angleArc(P, F, L2[1], 26, GLD),
+      dot(O, DIM, 4), dot(F, DIM, 3.5), dot(F2, ACC, 3.5), dot(P, GLD, 4),
+      txt(add(O, [0, 20]), "O", DIM, 13.5), txt(add(F, [-14, 4]), "F", DIM, 13), txt(add(F2, [14, 6]), "F′", ACC, 13),
+      txt(add(P, [0, -12]), "P", GLD, 13.5), txt(add(L1[0], [-10, 4]), "ℓ", DIM, 14), txt(add(L2[0], [12, 4]), "ℓ′", ACC, 14),
+      txt(add(O, mul(norm(sub(mid(F, F2), O)), 44)), "θ", GLD, 13), txt(add(P, mul(norm(add(norm(sub(F, P)), norm(sub(L2[1], P)))), 40)), "θ", GLD, 13),
+      cap(430, 300, "Turning ℓ by θ = 50° about O gives ℓ′. The perpendiculars OF and OF′ turn together, so ∠FOF′ = θ, and with right angles at F and F′ the lines meet at P at the same angle θ." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Spheres tangent to two planes, seen along the planes' common edge: each plane is a line
+  // through the edge E, each sphere a circle tangent to both, and every center sits on the
+  // bisector of the angle.
+  DIAGRAMS["spheres-two-planes"] = [(() => {
+    const E = [40, 262], phi = 40, half = rad(phi / 2);
+    const dirP = [1, 0], dirT = [Math.cos(rad(-phi)), Math.sin(rad(-phi))], bis = [Math.cos(-half), Math.sin(-half)];
+    const rs = [12, 26, 56], cens = rs.map(r => add(E, mul(bis, r / Math.sin(half))));
+    const dl = (X, a, b) => Math.abs((b[0] - a[0]) * (a[1] - X[1]) - (a[0] - X[0]) * (b[1] - a[1])) / dist(a, b);
+    const Pend = add(E, mul(dirP, 380)), Tend = add(E, mul(dirT, 380)), Bend = add(E, mul(bis, 370));
+    const ok = cens.every((c, i) => Math.abs(dl(c, E, Pend) - rs[i]) < 1e-6 && Math.abs(dl(c, E, Tend) - rs[i]) < 1e-6);
+    return wrap(430, 300, [
+      seg(E, Pend, DIM, 2.2), seg(E, Tend, DIM, 2.2), seg(E, Bend, GLD, 1.6, "6 4"),
+      ...cens.map((c, i) => circ(c, rs[i], ACC, 1.8, ACCS)), ...cens.map(c => dot(c, ACC, 3.5)),
+      ...cens.map((c, i) => seg(c, foot(c, E, Pend), FNT, 1.3, "4 3")),
+      angleArc(E, Pend, Bend, 46, GLD), angleArc(E, Bend, Tend, 52, GLD),
+      dot(E, DIM, 4), txt(add(E, [-14, 4]), "E", DIM, 13.5),
+      txt(add(Pend, [-24, 18]), "𝒫", DIM, 14), txt(add(Tend, [-34, 18]), "𝒯", DIM, 14),
+      cap(430, 300, "The view along the edge where the planes 𝒫 and 𝒯 meet at 40°. A sphere tangent to both is a circle tangent to both lines, so its center is r from each plane and lies on the bisecting plane (gold); every such center is there, at distance r/sin 20° from the edge." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Lester's theorem: the two Fermat points, the circumcenter, and the nine-point center lie on
+  // one circle.
+  DIAGRAMS["lester-circle"] = [(() => {
+    const A = [364, 36], B = [93, 243], C = [350, 204];
+    const apex = (P, Q, R, out) => {
+      let X = add(P, rotv(sub(Q, P), rad(60)));
+      const s = (U, V, W) => (V[0] - U[0]) * (W[1] - U[1]) - (V[1] - U[1]) * (W[0] - U[0]);
+      if ((s(P, Q, R) * s(P, Q, X) > 0) === out) X = add(P, rotv(sub(Q, P), rad(-60)));
+      return X;
+    };
+    const fermat = out => lineInt(A, apex(B, C, A, out), B, apex(C, A, B, out));
+    const F1 = fermat(true), F2 = fermat(false);
+    const O = circumcenterOf(A, B, C), H = orthocenterOf(A, B, C), N = mid(O, H);
+    const L = circumcenterOf(O, N, F1), rL = dist(L, O);
+    const ok = Math.abs(dist(L, F2) - rL) < 1e-6;
+    return wrap(430, 300, [
+      poly([A, B, C], DIM, 2), circ(L, rL, GLD, 1.8),
+      dot(O, ACC, 4), dot(N, GRN, 4), dot(F1, PNK, 4), dot(F2, PNK, 4), dot(H, FNT, 3), seg(O, H, FNT, 1.2, "4 3"),
+      vlab(A, "A"), vlab(B, "B"), vlab(C, "C"),
+      txt(add(O, [12, 4]), "O", ACC, 13), txt(add(N, [-12, 12]), "N", GRN, 13), txt(add(H, [-12, -2]), "H", FNT, 12),
+      txt(add(F1, [-13, 4]), subT("F", "1"), PNK, 13), txt(add(F2, [-14, -6]), subT("F", "2"), PNK, 13),
+      cap(430, 300, "Lester's Theorem: the first and second Fermat points F₁ and F₂, the circumcenter O, and the nine-point center N (the midpoint of OH) lie on one circle (gold)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // Droz-Farny: two perpendicular lines through the orthocenter cut the three side lines in
+  // three segments whose midpoints are collinear.
+  DIAGRAMS["droz-farny"] = [(() => {
+    const A = [268, 104], B = [50, 253], C = [348, 275];
+    const H = orthocenterOf(A, B, C), t = rad(44), d1 = [Math.cos(t), Math.sin(t)], d2 = perp(d1);
+    const sides = [[B, C], [C, A], [A, B]];
+    const cut = d => sides.map(([P, Q]) => lineInt(H, add(H, d), P, Q));
+    const X = cut(d1), Y = cut(d2), M = X.map((x, i) => mid(x, Y[i]));
+    const col = Math.abs((M[1][0] - M[0][0]) * (M[2][1] - M[0][1]) - (M[1][1] - M[0][1]) * (M[2][0] - M[0][0])) < 1e-6;
+    const ext = pts => { const d = norm(sub(pts[1], pts[0])); const ts = pts.map(p => (p[0] - pts[0][0]) * d[0] + (p[1] - pts[0][1]) * d[1]); return [add(pts[0], mul(d, Math.min(...ts) - 14)), add(pts[0], mul(d, Math.max(...ts) + 14))]; };
+    const l1 = ext([H, ...X]), l2 = ext([H, ...Y]), lm = ext(M);
+    const sideExt = ([P, Q], i) => { const pts = [P, Q, X[i], Y[i]]; const e = ext(pts); return seg(e[0], e[1], FNT, 1.2, "5 4"); };
+    return wrap(430, 320, [
+      ...sides.map(sideExt), poly([A, B, C], DIM, 2),
+      seg(l1[0], l1[1], ACC, 1.8), seg(l2[0], l2[1], ACC, 1.8), rightAngle(H, X[0], Y[0], 10, ACC),
+      seg(lm[0], lm[1], GLD, 2),
+      ...X.map(p => dot(p, ACC, 3)), ...Y.map(p => dot(p, ACC, 3)), ...M.map(p => dot(p, GLD, 4.5)), dot(H, DIM, 4),
+      vlab(A, "A"), vlab(B, "B"), vlab(C, "C"), txt(add(H, [12, 14]), "H", DIM, 13),
+      cap(430, 320, "Two perpendicular lines through the orthocenter H (blue) cut each side line, extended where needed, in a segment. The midpoints of the three segments (gold) lie on one line, the Droz-Farny line." + (col ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // The anti-Steiner point: reflect a line through H in the three sides; the three images meet
+  // on the circumcircle.
+  DIAGRAMS["anti-steiner-point"] = [(() => {
+    const A = [175, 52], B = [92, 215], C = [312, 215];
+    const O = circumcenterOf(A, B, C), R = dist(O, A), H = orthocenterOf(A, B, C), t = rad(48), d = [Math.cos(t), Math.sin(t)];
+    const refl = (X, P, Q) => { const F = foot(X, P, Q); return sub(mul(F, 2), X); };
+    const imgs = [[B, C], [C, A], [A, B]].map(([P, Q]) => [refl(H, P, Q), refl(add(H, d), P, Q)]);
+    const S = lineInt(imgs[0][0], imgs[0][1], imgs[1][0], imgs[1][1]);
+    const on3 = Math.abs((imgs[2][1][0] - imgs[2][0][0]) * (S[1] - imgs[2][0][1]) - (imgs[2][1][1] - imgs[2][0][1]) * (S[0] - imgs[2][0][0])) / dist(imgs[2][0], imgs[2][1]) < 1e-6;
+    const ok = on3 && Math.abs(dist(O, S) - R) < 1e-6;
+    const ext = (P, Q, a, b) => { const u = norm(sub(Q, P)); return [add(P, mul(u, a)), add(P, mul(u, b))]; };
+    const lines = imgs.map(([P, Q]) => { const u = norm(sub(Q, P)), tS = (S[0] - P[0]) * u[0] + (S[1] - P[1]) * u[1], tH = 0; return [add(P, mul(u, Math.min(tS, tH) - 20)), add(P, mul(u, Math.max(tS, tH) + 20))]; });
+    const ell = ext(H, add(H, d), -130, 150);
+    return wrap(430, 320, [
+      circ(O, R, FNT, 1.5), poly([A, B, C], DIM, 2), seg(ell[0], ell[1], ACC, 2),
+      ...lines.map(([P, Q]) => seg(P, Q, GRN, 1.5, "6 4")), ...imgs.map(([P]) => dot(P, GRN, 3)),
+      dot(H, ACC, 4), dot(S, GLD, 5),
+      vlab(A, "A"), vlab(B, "B"), vlab(C, "C"), txt(add(H, [-4, -10]), "H", ACC, 13), txt(add(ell[1], [-6, -8]), "ℓ", ACC, 14),
+      txt(add(S, [14, 6]), "S", GLD, 13.5),
+      cap(430, 320, "A line ℓ through the orthocenter H (blue), and its mirror images in the three sides (green, dashed), which pass through the reflections of H (green dots). The three images meet at one point S on the circumcircle, the anti-Steiner point of ℓ." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,

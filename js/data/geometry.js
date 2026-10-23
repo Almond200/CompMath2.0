@@ -1151,6 +1151,16 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "anti-steiner-point",
+          name: "The Anti-Steiner Point",
+          latex: String.raw`H \in \ell \implies s_{BC}(\ell),\ s_{CA}(\ell),\ s_{AB}(\ell) \text{ meet at } S \in \odot(ABC)`,
+          description: String.raw`For a line $\ell$ through the orthocenter $H$ of triangle $ABC$, the three reflections of $\ell$ in the side lines, written $s_{BC}(\ell)$, $s_{CA}(\ell)$, $s_{AB}(\ell)$, pass through one point $S$ on the circumcircle, the anti-Steiner point of $\ell$. It is the converse of [[steiner-line|the Steiner line]]: $\ell$ is exactly the Steiner line of $S$, so every line through $H$ comes from one point of the circumcircle, sometimes called its ghost point.`,
+          keywords: ["anti-steiner point", "ghost point", "reflections of a line through the orthocenter", "reflect a line in the sides", "converse of the steiner line", "euler reflection point"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "brocard-angle",
           name: "The Brocard Angle",
           latex: String.raw`\cot \omega = \cot A + \cot B + \cot C`,
@@ -1181,6 +1191,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "droz-farny",
+          name: "Droz-Farny Line Theorem",
+          latex: String.raw`\ell_1 \perp \ell_2 \text{ at } H \implies M_a,\ M_b,\ M_c \text{ collinear}`,
+          description: String.raw`The Droz-Farny Line Theorem says that if two perpendicular lines $\ell_1$ and $\ell_2$ are drawn through the orthocenter $H$ of a triangle, they cut each side line in a segment, and the midpoints $M_a$, $M_b$, $M_c$ of the three segments lie on one line. The line moves as the right angle turns about $H$, and it is a classic statement about the orthocenter with a short coordinate proof.`,
+          keywords: ["droz-farny", "droz farny line", "perpendicular lines through the orthocenter", "midpoints collinear", "orthocenter right angle", "intercepted segments on the sides"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "fermat-point",
           name: "Fermat Point (Torricelli Point)",
           latex: String.raw`\min_X\,(XA + XB + XC) \text{ at } \angle AXB = \angle BXC = \angle CXA = 120^\circ, \qquad \text{valid when every angle of } \triangle ABC < 120^\circ`,
@@ -1189,6 +1209,16 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "lester-circle",
+          name: "Lester's Theorem",
+          latex: String.raw`F_1,\ F_2,\ O,\ N \text{ concyclic}`,
+          description: String.raw`Lester's Theorem says that in any scalene triangle the two Fermat points $F_1$ and $F_2$, the circumcenter $O$, and the nine-point center $N$ lie on one circle, the Lester circle. Here $F_1$ is the point where the lines from each vertex to the apex of the outward equilateral triangle on the opposite side meet, and $F_2$ is the same point for the inward equilateral triangles.`,
+          keywords: ["lester circle", "lester theorem", "fermat points concyclic", "first and second fermat points", "nine-point center and circumcenter", "kiepert hyperbola"],
+          importance: "lowest",
+          tier: "Olympiad",
+          level: ["Olympiad"]
         },
         {
           id: "center-distance-formulas",
@@ -2088,6 +2118,16 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "rotated-line-angle",
+          name: "Angle Between a Line and Its Rotated Image",
+          latex: String.raw`\angle(\ell, \ell') = \theta \pmod{180^\circ} \qquad \ell' = \rho_{O,\theta}(\ell)`,
+          description: String.raw`When a line $\ell$ is rotated by an angle $\theta$ about any center $O$, its image $\ell'$ crosses $\ell$ at the angle $\theta$, taken modulo $180^\circ$, wherever the center is. Read backward, it measures a rotation: the angle between any segment and its image is the angle of the rotation, so a rotation that sends one side of a figure to a known direction is pinned down by that direction alone.`,
+          keywords: ["angle between a line and its image", "rotation angle from a line", "rotated line crosses at the rotation angle", "image of a line under rotation", "directions turn by the rotation angle", "rotating a segment"],
+          importance: "low",
+          tier: "AIME Early",
+          level: ["AIME"]
+        },
+        {
           id: "rotation-90",
           name: "Rotating a Point",
           latex: String.raw`(x, y) \xrightarrow{90^\circ \text{ ccw}} (-y, x), \qquad (x,y) \xrightarrow{\theta} (x\cos\theta - y\sin\theta,\; x\sin\theta + y\cos\theta)`,
@@ -2188,6 +2228,16 @@ window.MATH_SECTIONS.push({
           importance: "high",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "spheres-two-planes",
+          name: "Spheres Tangent to Two Planes",
+          latex: String.raw`r = d \tan\tfrac{\varphi}{2}, \qquad \text{centers on one bisecting plane}`,
+          description: String.raw`A sphere tangent to two planes that meet at a dihedral angle $\varphi$ has its center the same distance $r$ from both, so the center lies on a plane bisecting the angle between them. Spheres tangent to both planes, on the same sides of each, therefore have coplanar centers, and the radius is proportional to $d$, the distance from the point of tangency on one plane to the line where the planes meet.`,
+          keywords: ["spheres tangent to two planes", "centers are coplanar", "bisecting plane", "dihedral angle sphere", "radius proportional to distance from the edge", "sphere in a wedge"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME"]
         },
         {
           id: "descartes-sphere-theorem",

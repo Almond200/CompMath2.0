@@ -3415,3 +3415,32 @@ Counting strings with at least $j$ digits less than $j$ for each $j$, preference
 Rare; it appears as a late AMC 10 or 12 problem that disguises the definition as a condition on the digits of a string. Recognizing the definition is the step: after that the count is quoted, or Pollak's circle is rebuilt in a few lines.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"kruskal-katona": String.raw`
+## Key forms
+- $m = \binom{a_k}{k} + \binom{a_{k-1}}{k-1} + \cdots + \binom{a_t}{t}$ with $a_k \gt a_{k-1} \gt \cdots \gt a_t \ge t \ge 1$ — the $k$-cascade form of $m$, found greedily
+- $\lvert\partial\mathcal F\rvert \ge \binom{a_k}{k-1} + \binom{a_{k-1}}{k-2} + \cdots + \binom{a_t}{t-1}$ — the least shadow of $m$ sets of size $k$, reached by the first $m$ sets in colex order
+- $\lvert\mathcal F\rvert = \binom{x}{k} \implies \lvert\partial\mathcal F\rvert \ge \binom{x}{k-1}$ for real $x \ge k$ — Lovász's simpler form
+
+## Conditions
+$\mathcal F$ is a family of distinct $k$-element subsets of a finite set, and the shadow counts each $(k-1)$-subset once, however many members contain it.
+
+## Why it works
+The idea is that the shadow is smallest when the sets are packed as tightly as possible, and colex order, which lists the sets inside $\{1, \ldots, n\}$ before any set using $n + 1$, packs them: its first $\binom{a}{k}$ sets are all the $k$-subsets of $\{1, \ldots, a\}$, whose shadow is all $\binom{a}{k-1}$ of the $(k-1)$-subsets.
+
+Step 1, the bound is reached. The first $m$ sets in colex order are all $k$-subsets of $\{1, \ldots, a_k\}$, then the sets containing $a_k + 1$ together with a $(k-1)$-subset of $\{1, \ldots, a_{k-1}\}$, and so on. Their shadow is exactly the cascade sum in the second Key form, one binomial for each block.
+
+Step 2, nothing beats it. The standard proof replaces $\mathcal F$ by a compressed family of the same size whose shadow is no larger, by repeatedly swapping one element for a smaller one wherever that does not create a duplicate. A family that no swap changes is shown, by induction on $k$ and on the size of the ground set, to have a shadow at least the cascade sum. The compression step is the heart of it; the full argument takes a few pages and is in texts on extremal set theory.
+
+## Useful observations
+- Taking shadows repeatedly gives the least possible number of $j$-sets below a family, which bounds the faces of a simplicial complex.
+- For $m = \binom{a}{k}$ exactly, the answer $\binom{a}{k-1}$ is the shadow of a complete family, which is the easy case to remember.
+- It pairs with [[sperners-theorem|Sperner's Theorem]] and the LYM inequality, which bound families with no containments.
+
+## Applications
+Bounds on the number of edges covered by a set of triangles, on the faces of simplicial complexes, and on families of sets closed under taking subsets.
+
+## Contest profile
+An extremal set theory theorem from olympiad combinatorics, seldom quoted by name but behind several problems about how few smaller sets a family must cover. It pairs with Sperner's Theorem and the Erdős–Ko–Rado Theorem.
+`
+});

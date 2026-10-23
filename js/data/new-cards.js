@@ -44,5 +44,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Write-ups: parking functions and sign charts", date: "2026-10-18",
     ids: ["parking-functions", "sign-chart"] },
   { label: "Completeness batch 1: inequalities and polynomials", date: "2026-10-23",
-    ids: ["popoviciu-inequality", "vornicu-schur", "cohn-irreducibility", "gauss-lucas", "mason-stothers"] }
+    ids: ["popoviciu-inequality", "vornicu-schur", "cohn-irreducibility", "gauss-lucas", "mason-stothers"] },
+  { label: "Completeness batch 2: rotations, spheres, triangle lines, and shadows", date: "2026-10-23",
+    ids: ["rotated-line-angle", "spheres-two-planes", "lester-circle", "droz-farny", "anti-steiner-point", "kruskal-katona"] }
 ];
