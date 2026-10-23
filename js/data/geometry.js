@@ -1701,9 +1701,9 @@ window.MATH_SECTIONS.push({
         {
           id: "ptolemy-equilateral",
           name: "Ptolemy on an Equilateral Triangle",
-          latex: String.raw`PA = PB + PC`,
-          description: String.raw`If $P$ lies on arc $BC$ of the circumcircle of equilateral $\triangle ABC$, the distance to the far vertex equals the sum of the distances to the near two — a classic AIME shortcut.`,
-          keywords: ["equilateral", "circumcircle point", "distance sum", "pompeiu"],
+          latex: String.raw`P \text{ on arc } BC \iff PA = PB + PC`,
+          description: String.raw`For a point $P$ on arc $BC$ of the circumcircle of an equilateral triangle $ABC$, the distance to the far vertex $A$ equals the sum of the distances to the near vertices $B$ and $C$. It turns two distances into the third, and its converse places a point on the circumcircle as soon as one of its three distances is the sum of the other two, which then gives a $120^\circ$ angle at $P$.`,
+          keywords: ["equilateral", "circumcircle point", "distance sum", "pompeiu", "van schooten", "longest distance is the sum of the other two"],
           importance: "lower",
           tier: "AIME Late",
           level: ["AIME"]

@@ -1798,7 +1798,12 @@
     "square-crossing-segments": "pattern",
     "perimeter-cleavers": "formula",
     "conic-perpendicular-radii": "formula",
-    "gram-determinant-volume": "formula"
+    "gram-determinant-volume": "formula",
+    "popoviciu-inequality": "formula",
+    "vornicu-schur": "formula",
+    "cohn-irreducibility": "formula",
+    "gauss-lucas": "formula",
+    "mason-stothers": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8681,6 +8686,36 @@
       ]
     ],
     "gram-determinant-volume": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "popoviciu-inequality": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "vornicu-schur": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "cohn-irreducibility": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "gauss-lucas": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "mason-stothers": [
       [
         "(new card)",
         "written directly in the formula template"

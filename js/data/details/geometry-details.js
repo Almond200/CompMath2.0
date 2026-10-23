@@ -1879,12 +1879,19 @@ More olympiad than AIME, but the equality case doubles as a slick proof that a c
 ## Key forms
 - $PA = PB + PC$ — for $P$ on arc $BC$ of the circumcircle of an equilateral triangle $ABC$, the distance to the far vertex is the sum of the distances to the near two
 - $\angle BPC = 120^\circ$ — the angle at $P$, which gives the side with the Law of Cosines
+- $PA = PB + PC \implies P$ on arc $BC$ — the converse: for any point $P$ in the plane, $PA \le PB + PC$, with equality only on that arc
 
 ## Conditions
-$P$ lies on the arc $BC$ that does not contain $A$. For a point inside the triangle or off the circle, Pompeiu's theorem says the three distances form a triangle.
+$P$ lies on the arc $BC$ that does not contain $A$. For any other point, $PA \lt PB + PC$ (Pompeiu's theorem: the three distances form a genuine triangle), so equality pins $P$ to the arc.
 
 ## Why it works
 Apply [[ptolemys-theorem|Ptolemy's Theorem]] to the cyclic quadrilateral $ABPC$, with $P$ on arc $BC$: $PA \cdot BC = PB \cdot CA + PC \cdot AB$. All three triangle sides are equal, so they divide out and leave $PA = PB + PC$.
+
+The converse comes from [[ptolemys-inequality|Ptolemy's Inequality]], which holds for any four points: $PA \cdot BC \le PB \cdot CA + PC \cdot AB$, with equality exactly when $A$, $B$, $P$, $C$ lie on a circle in that order. Dividing by the common side $s$ gives $PA \le PB + PC$ for every point $P$, and equality forces $ABPC$ to be cyclic with $P$ between $B$ and $C$, that is, $P$ on arc $BC$.
+
+$$PA \cdot s \le PB \cdot s + PC \cdot s \implies PA \le PB + PC.$$
+
+So when one of a point's three distances to the vertices of an equilateral triangle is the sum of the other two, the point is on the circumcircle, and then $\angle BPC = 180^\circ - \angle BAC = 120^\circ$, the opposite angle of a cyclic quadrilateral.
 
 ## Useful observations
 - For any point on the circumcircle arc of an equilateral triangle, the longest of the three distances equals the sum of the other two.
@@ -6444,6 +6451,7 @@ Cyclic quadrilateral problems on the AIME that hand over four sides and want a d
 - a triangle inscribed in a circle of radius $R$ and circumscribed about a circle of radius $r$ whose centers are $d$ apart has $d^2 = R^2 - 2Rr$
 - a quadrilateral with the same property has $\dfrac{1}{(R - d)^2} + \dfrac{1}{(R + d)^2} = \dfrac{1}{r^2}$ (Fuss)
 - Poncelet closure: if one $n$-gon is inscribed in the outer circle and circumscribed about the inner one, then every point of the outer circle is a vertex of such an $n$-gon
+- Poncelet's porism: for two conics, one inside the other, the tangent path from a starting point either closes after $n$ steps from every starting point or from none
 
 ## Conditions
 The inner circle lies inside the outer one. For $n = 3$ the relation is necessary and sufficient: two circles satisfying it carry a triangle between them.
@@ -6452,6 +6460,12 @@ The inner circle lies inside the outer one. For $n = 3$ the relation is necessar
 For the triangle the relation is [[euler-distance-theorem|Euler's Distance Formula]], which holds in every triangle. So a circumcircle and incircle of the same triangle must satisfy it; the content of the converse is that the condition is also sufficient.
 
 Poncelet's closure theorem is the part with no elementary proof. Start anywhere on the outer circle, draw a tangent to the inner circle, continue around, and if the path closes after $n$ steps for one starting point, it closes after $n$ steps for every starting point.
+
+Poncelet's porism is the full statement, and it needs no circles: take any two conics, one inside the other, and run the same path, from a point of the outer conic along a tangent to the inner one, to the next point of the outer conic, and on. A porism is a theorem of exactly this all-or-nothing kind: a configuration that either has no solution or has infinitely many. Here either the path never closes up, from any starting point, or it closes after the same number $n$ of steps from every starting point, possibly winding several times around the inner conic and tracing a star polygon.
+
+The reason it is all or nothing is that, in a well-chosen parameter on the outer conic, one step of the path is the same rotation by a fixed angle $\theta$ for every starting point. A rotation brings every point back after $n$ steps exactly when $n\theta$ is a whole number of turns, and that condition does not mention the starting point. Finding the parameter is the hard part (it is an elliptic integral, which is why the proof is beyond contest level), but it shows why the triangle and quadrilateral conditions involve only $R$, $r$, and $d$.
+
+$$\text{closes from one point after } n \text{ steps} \iff n\theta \in 2\pi\mathbb{Z} \iff \text{closes from every point.}$$
 
 ## Useful observations
 - Told that a bicentric $n$-gon exists, one gets a relation among $R$, $r$, and $d$ for free.

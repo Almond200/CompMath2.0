@@ -207,6 +207,36 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "cohn-irreducibility",
+          name: "Cohn's Irreducibility Criterion",
+          latex: String.raw`p = \overline{a_m a_{m-1} \ldots a_0}_{(10)} \text{ prime} \implies a_m x^m + a_{m-1}x^{m-1} + \cdots + a_0 \text{ irreducible over } \mathbb{Z}`,
+          description: String.raw`Cohn's criterion says that if a prime $p$ is written in base $10$ with digits $a_m, \ldots, a_0$, then the polynomial with those digits as coefficients, $f(x) = a_m x^m + \cdots + a_0$, cannot be factored into two nonconstant polynomials with integer coefficients. It proves irreducibility where [[eisenstein-criterion|Eisenstein's Criterion]] does not apply, and the same holds in every base $b \ge 2$, so a prime's digits in any base give an irreducible polynomial.`,
+          keywords: ["cohn criterion", "cohn irreducibility", "prime digits polynomial", "digits as coefficients", "irreducible polynomial from a prime", "brillhart filaseta odlyzko"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "gauss-lucas",
+          name: "Gauss–Lucas Theorem",
+          latex: String.raw`P'(w) = 0 \implies w \in \operatorname{conv}\{z_1, z_2, \ldots, z_n\}`,
+          description: String.raw`The Gauss–Lucas Theorem says that every root $w$ of the derivative $P'$ of a nonconstant complex polynomial lies in the convex hull of the roots $z_1, \ldots, z_n$ of $P$, the smallest convex polygon containing them. It is the complex-plane version of Rolle's theorem, and it locates the critical points of a polynomial without computing them: roots in a disk, a half-plane, or a triangle force the critical points to lie there too.`,
+          keywords: ["gauss lucas", "roots of the derivative", "critical points in the convex hull", "complex rolle theorem", "convex hull of the roots", "location of zeros"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "mason-stothers",
+          name: "Mason–Stothers Theorem",
+          latex: String.raw`a + b = c,\ \gcd(a, b) = 1 \implies \max(\deg a, \deg b, \deg c) \le n_0(abc) - 1`,
+          description: String.raw`The Mason–Stothers Theorem is the polynomial abc theorem: if polynomials $a$, $b$, $c$, not all constant and with no common root, satisfy $a + b = c$, then the largest of their degrees is less than $n_0(abc)$, the number of distinct roots of the product $abc$. Polynomials with many repeated roots therefore cannot add up to each other, which settles polynomial versions of Fermat-type equations in a few lines.`,
+          keywords: ["mason stothers", "polynomial abc theorem", "abc conjecture for polynomials", "distinct roots of abc", "radical of a polynomial", "fermat for polynomials", "wronskian"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "chebyshev-polynomials",
           name: "Chebyshev Polynomials",
           latex: String.raw`T_n(\cos\theta) = \cos n\theta, \qquad U_n(\cos\theta) = \frac{\sin(n+1)\theta}{\sin\theta}, \qquad T_{n+1} = 2x\,T_n - T_{n-1}`,
@@ -734,6 +764,16 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "vornicu-schur",
+          name: "Vornicu–Schur Inequality",
+          latex: String.raw`a(x-y)(x-z) + b(y-x)(y-z) + c(z-x)(z-y) \ge 0 \qquad (x \ge y \ge z,\ \ a, b, c \ge 0,\ \ a \ge b \text{ or } c \ge b)`,
+          description: String.raw`The Vornicu–Schur Inequality replaces the powers $x^t$, $y^t$, $z^t$ in [[schurs-inequality|Schur's Inequality]] by any nonnegative weights $a$, $b$, $c$ attached to the ordered variables $x \ge y \ge z$. The sum is nonnegative as soon as the middle weight $b$ is not the largest of the three, that is $a \ge b$ or $c \ge b$, so a symmetric three-variable inequality can be proved by writing it in this shape and comparing weights.`,
+          keywords: ["vornicu schur", "generalized schur", "schur with weights", "a(x-y)(x-z)", "middle weight not largest", "sos for schur"],
+          importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "muirheads-inequality",
           name: "Muirhead's Inequality",
           latex: String.raw`(a_1, a_2, a_3) \succ (b_1, b_2, b_3) \implies \sum_{\text{sym}} x^{a_1} y^{a_2} z^{a_3} \;\ge\; \sum_{\text{sym}} x^{b_1} y^{b_2} z^{b_3}`,
@@ -795,6 +835,16 @@ window.MATH_SECTIONS.push({
           description: String.raw`If the sorted sequence $(x_i)$ majorizes $(y_i)$ — equal totals, but every partial sum of the larger-sorted $x$'s is at least that of the $y$'s — then a convex $f$ spreads the $x$'s further apart and yields a larger sum. It is the master convexity inequality: Jensen is the special case where every $y_i$ equals the common mean, and AM–GM, power-mean, and many symmetric-sum bounds drop out as corollaries. Reverse the inequality for concave $f$.`,
           keywords: ["karamata inequality", "majorization", "convex function sum", "generalizes jensen", "hardy littlewood polya", "spreads apart"],
           importance: "lower",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
+          id: "popoviciu-inequality",
+          name: "Popoviciu's Inequality",
+          latex: String.raw`f(x) + f(y) + f(z) + 3f\!\left(\tfrac{x+y+z}{3}\right) \ge 2\left[f\!\left(\tfrac{x+y}{2}\right) + f\!\left(\tfrac{y+z}{2}\right) + f\!\left(\tfrac{z+x}{2}\right)\right]`,
+          description: String.raw`For a convex function $f$ on an interval and any three points $x$, $y$, $z$ of it, the three values plus three times the value at the mean $\tfrac{x+y+z}{3}$ are at least twice the sum of the values at the three pairwise midpoints. It strengthens [[jensens-inequality|Jensen's Inequality]] for three points by bringing in the midpoints, and with $f(t) = \lvert t\rvert$ it gives Hlawka's inequality $\lvert a\rvert + \lvert b\rvert + \lvert c\rvert + \lvert a+b+c\rvert \ge \lvert a+b\rvert + \lvert b+c\rvert + \lvert c+a\rvert$. The inequality reverses for a concave $f$.`,
+          keywords: ["popoviciu", "popoviciu inequality", "convex function three points", "pairwise midpoints", "hlawka inequality", "majorization of six points"],
+          importance: "lowest",
           tier: "Olympiad",
           level: ["Olympiad"]
         },

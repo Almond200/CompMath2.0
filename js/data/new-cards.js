@@ -42,5 +42,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Practice pass: proportions and linear systems", date: "2026-10-17",
     ids: ["setting-up-proportions", "linear-elimination"] },
   { label: "Write-ups: parking functions and sign charts", date: "2026-10-18",
-    ids: ["parking-functions", "sign-chart"] }
+    ids: ["parking-functions", "sign-chart"] },
+  { label: "Completeness batch 1: inequalities and polynomials", date: "2026-10-23",
+    ids: ["popoviciu-inequality", "vornicu-schur", "cohn-irreducibility", "gauss-lucas", "mason-stothers"] }
 ];

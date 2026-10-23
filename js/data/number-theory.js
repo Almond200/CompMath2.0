@@ -824,7 +824,7 @@ window.MATH_SECTIONS.push({
           latex: String.raw`F_n \bmod m \text{ is periodic}; \qquad \pi(2) = 3, \;\; \pi(5) = 20, \;\; \pi(10) = 60`,
           description: String.raw`The Fibonacci sequence taken modulo $m$ eventually repeats, and since the recurrence runs backward too, it repeats from the very start. The period $\pi(m)$ controls every question about $F_n \bmod m$, and the last digit of $F_n$ cycles with period $\pi(10) = 60$. To find $F_n \bmod m$, the index $n$ is reduced modulo $\pi(m)$.`,
           keywords: ["pisano period", "fibonacci mod m", "last digit of fibonacci", "periodic recurrence", "cycle"],
-          importance: "lowest",
+          importance: "lower",
           tier: "AIME Late",
           level: ["AIME", "Olympiad"]
         },

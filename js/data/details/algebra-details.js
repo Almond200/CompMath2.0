@@ -5255,3 +5255,180 @@ A factor $(x - r)^2$ is never negative, so it does not flip the sign at $r$; it 
 An early or middle AMC 10 and 12 step: a factored polynomial with many roots whose sign must be counted over the integers, or a rational inequality in an algebra problem. On the AIME it is usually one line inside a larger solution.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"popoviciu-inequality": String.raw`
+## Key forms
+- $f(x) + f(y) + f(z) + 3f(s) \ge 2\left[f\!\left(\tfrac{x+y}{2}\right) + f\!\left(\tfrac{y+z}{2}\right) + f\!\left(\tfrac{z+x}{2}\right)\right]$ with $s = \tfrac{x+y+z}{3}$ — for $f$ convex; reversed for $f$ concave
+- $\lvert a\rvert + \lvert b\rvert + \lvert c\rvert + \lvert a+b+c\rvert \ge \lvert a+b\rvert + \lvert b+c\rvert + \lvert c+a\rvert$ — Hlawka's inequality for real numbers, from $f(t) = \lvert t\rvert$ at $x = 2a$, $y = 2b$, $z = 2c$
+
+## Conditions
+$f$ is convex on an interval containing $x$, $y$, and $z$. Equality holds when $x = y = z$, and for every $x$, $y$, $z$ when $f$ is linear.
+
+## Why it works
+The idea is that the six numbers on the left are more spread out than the six on the right, so a convex function gives the left side the larger total. Both sides have six terms: on the left $x$, $y$, $z$, $s$, $s$, $s$, and on the right each midpoint twice. Both lists add up to $2(x+y+z)$.
+
+$$(x,\ y,\ z,\ s,\ s,\ s) \succ \left(\tfrac{x+y}{2},\ \tfrac{x+y}{2},\ \tfrac{x+z}{2},\ \tfrac{x+z}{2},\ \tfrac{y+z}{2},\ \tfrac{y+z}{2}\right)$$
+
+Step 1, the ordering. Take $x \ge y \ge z$, so the right list in decreasing order is the one written above. Suppose first that $y \ge s$, which is the same as $2y \ge x + z$. Then the left list in decreasing order is $x$, $y$, $s$, $s$, $s$, $z$.
+
+Step 2, the partial sums. The first term gives $x \ge \tfrac{x+y}{2}$. The first two give $x + y = x + y$. The third and fourth each need $s \ge \tfrac{x+z}{2}$, which is $2y \ge x + z$ again. The fifth needs $x + y + 3s - (2x + y + z) \ge \tfrac{y+z}{2}$, that is $y \ge \tfrac{y+z}{2}$, which holds since $y \ge z$. The totals are equal, so the left list majorizes the right one.
+
+Step 3, the other case. If $y \le s$, replace $x$, $y$, $z$ by $-z$, $-y$, $-x$ and $f$ by $t \mapsto f(-t)$, which is still convex; this swaps the two cases. Then [[karamata-inequality|Karamata's Inequality]] turns the majorization into the inequality.
+
+For Hlawka's inequality take $f(t) = \lvert t\rvert$ and $x = 2a$, $y = 2b$, $z = 2c$: the midpoints become $a+b$, $b+c$, $c+a$, and $3f(s) = 2\lvert a+b+c\rvert$, so every term doubles and the factor $2$ cancels.
+
+## Useful observations
+- With $f(t) = t^2$ the difference of the two sides is $\tfrac13(a^2 + b^2 + c^2 - ab - bc - ca)$, never negative, a quick check of the direction.
+- Compared with Jensen's Inequality, which only compares the values with the value at the mean, the midpoint terms make it sharper for three points.
+- A weighted form and versions for $n$ points exist; the three-point form is the one quoted.
+
+## Applications
+Three-variable inequalities with a convex function evaluated at the points, their pairwise midpoints, and their mean, and Hlawka-type inequalities for absolute values.
+
+## Contest profile
+An olympiad curiosity, quoted mostly as the source of Hlawka's inequality. It pairs with Karamata's Inequality, which proves it, and with Jensen's Inequality, which it refines.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"vornicu-schur": String.raw`
+## Key forms
+- $a(x-y)(x-z) + b(y-x)(y-z) + c(z-x)(z-y) \ge 0$ — for real $x \ge y \ge z$ and $a, b, c \ge 0$, whenever $a \ge b$ or $c \ge b$
+- $a = x^t$, $b = y^t$, $c = z^t$ — with $x \ge y \ge z \ge 0$ and $t \gt 0$ this gives $a \ge b$, which is Schur's Inequality
+
+## Conditions
+The weights are nonnegative and the variables are ordered $x \ge y \ge z$, with the weight $a$ on the largest variable's term. Without one of the two weight conditions the sum can be negative: $a = c = 0$, $b = 1$ gives $(y-x)(y-z) \le 0$.
+
+## Why it works
+The middle term is the only one that can be negative, because $(y-x)(y-z) \le 0$ when $y$ lies between $x$ and $z$, while $(x-y)(x-z) \ge 0$ and $(z-x)(z-y) \ge 0$. The proof pairs the middle term with whichever outer term has the larger weight.
+
+Case $a \ge b$. Group the first two terms:
+
+$$a(x-y)(x-z) + b(y-x)(y-z) = (x-y)\big[a(x-z) - b(y-z)\big].$$
+
+Here $x - y \ge 0$, and $a(x-z) \ge b(x-z) \ge b(y-z)$ because $a \ge b \ge 0$ and $x - z \ge y - z \ge 0$. So the pair is nonnegative, and the third term $c(x-z)(y-z)$ is too.
+
+Case $c \ge b$. Group the last two terms the same way:
+
+$$b(y-x)(y-z) + c(z-x)(z-y) = (y-z)\big[c(x-z) - b(x-y)\big] \ge 0,$$
+
+since $c(x-z) \ge b(x-z) \ge b(x-y)$. The first term is nonnegative, which finishes the proof.
+
+For Schur's Inequality put $a = x^t$, $b = y^t$, $c = z^t$ with $x \ge y \ge z \ge 0$: then $a \ge b$, and the first case applies.
+
+## Useful observations
+- A symmetric inequality is first written as $\sum a(x-y)(x-z)$ with weights that are expressions in the variables, then the variables are ordered and the weights compared.
+- Other sufficient conditions are known, such as $ax \ge by$ when $x, y, z \ge 0$, and they are proved by the same grouping.
+- Every symmetric cubic in three variables that vanishes at $x = y = z$ can be tried in this form before reaching for sum of squares.
+
+## Applications
+Schur-like symmetric inequalities in three variables whose weights are not powers, including weights such as $y + z$ or $\tfrac1x$.
+
+## Contest profile
+An olympiad tool in the same family as Schur's Inequality and the sum-of-squares method, for the symmetric three-variable inequalities that need more than AM-GM.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"cohn-irreducibility": String.raw`
+## Key forms
+- $f(10) = p$ prime, coefficients the digits $0, \ldots, 9$ $\implies f$ irreducible over $\mathbb{Z}$ — Cohn's criterion in base $10$
+- the same for the digits $0, \ldots, b - 1$ of a prime in any base $b \ge 2$ — the general form, due to Brillhart, Filaseta, and Odlyzko
+
+## Conditions
+The coefficients are the digits, so each lies between $0$ and $b - 1$ and the leading one is at least $1$. The criterion is one-directional: a composite number can still give an irreducible polynomial.
+
+## Why it works
+The idea is that a factor $g$ of $f$ would make $g(10)$ a divisor of $p$, but every root of $f$ is far from $10$, so $\lvert g(10)\rvert$ is too big to be $1$.
+
+Step 1, where the roots are. Let $z$ be a complex number with $\operatorname{Re} z \ge 0$ and $\lvert z\rvert \gt 1$. Dividing by $z^m$ and using $a_m \ge 1$, $a_{m-1} \ge 0$, $\operatorname{Re}\tfrac1z \ge 0$, and $a_i \le 9$,
+
+$$\left\lvert \frac{f(z)}{z^m}\right\rvert \ge \operatorname{Re}\!\left(a_m + \frac{a_{m-1}}{z}\right) - 9\left(\frac{1}{\lvert z\rvert^2} + \frac{1}{\lvert z\rvert^3} + \cdots\right) \ge 1 - \frac{9}{\lvert z\rvert^2 - \lvert z\rvert}.$$
+
+This is positive once $\lvert z\rvert^2 - \lvert z\rvert \gt 9$, that is $\lvert z\rvert \gt \tfrac{1+\sqrt{37}}{2} \approx 3.54$. So every root $\alpha$ of $f$ has $\operatorname{Re}\alpha \lt 0$ or $\lvert \alpha\rvert \le 3.54$, and in both cases $\lvert 10 - \alpha\rvert \gt 1$.
+
+Step 2, a factor. Suppose $f = gh$ with $g$, $h$ nonconstant and integer coefficients. By the [[fundamental-theorem-algebra|Fundamental Theorem of Algebra]], $g(x) = c\prod(x - \alpha_i)$ over some of the roots of $f$, with $c$ a nonzero integer, so $\lvert g(10)\rvert = \lvert c\rvert\prod\lvert 10 - \alpha_i\rvert \gt 1$, and likewise $\lvert h(10)\rvert \gt 1$.
+
+Step 3, the contradiction. Then $p = f(10) = g(10)h(10)$ is a product of two integers each larger than $1$ in absolute value, which a prime is not.
+
+## Useful observations
+- Read the other way, it gives a test that is sometimes easier than Eisenstein: evaluate at the base and check for a prime.
+- The bound in Step 1 uses only that the digits are at most $9$, so the same proof runs in base $b \ge 3$ with $b - 1$ in place of $9$; base $2$ needs a separate argument.
+- Eisenstein's Criterion is the other standard irreducibility test; the two cover different polynomials.
+
+## Applications
+Irreducibility of polynomials with small nonnegative coefficients, and olympiad problems that ask whether such a polynomial factors.
+
+## Contest profile
+An olympiad result, set itself as a problem more often than quoted. It pairs with Eisenstein's Criterion and with root-location bounds on polynomials.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"gauss-lucas": String.raw`
+## Key forms
+- $P'(w) = 0 \implies w \in \operatorname{conv}\{z_1, \ldots, z_n\}$ — the critical points lie in the convex hull of the roots
+- $\dfrac{P'(w)}{P(w)} = \dfrac{1}{w - z_1} + \cdots + \dfrac{1}{w - z_n}$ — the logarithmic derivative behind the proof
+- for real roots, every root of $P'$ lies between the least and the greatest root — the real-line case, which Rolle's theorem sharpens to one root in each gap
+
+## Conditions
+$P$ is a nonconstant polynomial with complex coefficients, and roots are counted with multiplicity. A repeated root of $P$ is itself a root of $P'$, which lies in the hull trivially.
+
+## Why it works
+The idea is that a critical point outside the hull would see every root on one side of it, and then the terms of the logarithmic derivative could not cancel.
+
+Step 1, the logarithmic derivative. Write $P(x) = c(x - z_1)\cdots(x - z_n)$. By the product rule, at any $w$ that is not a root,
+
+$$\frac{P'(w)}{P(w)} = \sum_{k=1}^{n} \frac{1}{w - z_k} = \sum_{k=1}^{n} \frac{\overline{w - z_k}}{\lvert w - z_k\rvert^2}.$$
+
+Step 2, a weighted average. If $P'(w) = 0$ and $P(w) \ne 0$, the sum is zero. Taking conjugates and writing $m_k = \tfrac{1}{\lvert w - z_k\rvert^2} \gt 0$ gives $\sum m_k (w - z_k) = 0$, so
+
+$$w = \frac{m_1 z_1 + m_2 z_2 + \cdots + m_n z_n}{m_1 + m_2 + \cdots + m_n},$$
+
+an average of the roots with positive weights, and such an average lies in their convex hull. If $P(w) = 0$ as well, $w$ is a root of $P$ and so in the hull anyway.
+
+## Useful observations
+- If all roots of $P$ lie in a disk or a half-plane, so do all roots of $P'$, $P''$, and every higher derivative, since each of those sets is convex.
+- For a cubic with roots at the vertices of a triangle, the two critical points are the foci of the ellipse inscribed in the triangle and tangent to its sides at their midpoints (Marden's theorem), a sharp form of the statement.
+- With all roots real it reduces to the statement that $P'$ has its roots between the extreme roots of $P$.
+
+## Applications
+Locating the roots of a derivative, olympiad problems about polynomials whose roots lie in a region, and bounds on critical points.
+
+## Contest profile
+An olympiad tool for complex polynomials, often paired with Vieta's Formulas or with a root-location argument on the polynomial itself.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"mason-stothers": String.raw`
+## Key forms
+- $a + b = c$, $a$, $b$, $c$ coprime, not all constant $\implies \max(\deg a, \deg b, \deg c) \le n_0(abc) - 1$ — with $n_0$ the number of distinct complex roots
+- $x(t)^n + y(t)^n = z(t)^n$ has no solution in coprime nonconstant polynomials for $n \ge 3$ — Fermat's Last Theorem for polynomials, a corollary
+
+## Conditions
+The polynomials have complex (or real, or rational) coefficients, no root common to all three, and their derivatives are not all zero, which over the complex numbers just means not all of them are constant. Any two of them coprime makes all three coprime, since $c = a + b$.
+
+## Why it works
+The idea is that the Wronskian $W = ab' - a'b$ is divisible by every repeated root to one power less than its multiplicity, yet its degree is small.
+
+Step 1, the Wronskian is not zero and is shared. Since $a + b = c$, also $a' + b' = c'$, so $W = ab' - a'b = ac' - a'c = cb' - c'b$. If $W = 0$, then $\left(\tfrac ba\right)' = 0$, so $b$ is a constant multiple of $a$, which coprimality rules out unless both are constant, and then $c$ is constant too.
+
+Step 2, the divisibility. A root of $a$ of multiplicity $m$ is a root of $a'$ of multiplicity $m - 1$, so it divides $W = ab' - a'b$ to power at least $m - 1$; the same holds for the roots of $b$ and $c$, using the other two forms of $W$. These roots are all different, so $\dfrac{abc}{\operatorname{rad}(abc)}$ divides $W$, where $\operatorname{rad}(abc)$ has each distinct root once.
+
+Step 3, the degrees. Then
+
+$$\deg a + \deg b + \deg c - n_0(abc) \le \deg W \le \deg a + \deg b - 1.$$
+
+So $\deg c \le n_0(abc) - 1$, and by the symmetric forms of $W$ the same bound holds for $\deg a$ and $\deg b$.
+
+For the Fermat corollary, apply the theorem to $x^n + y^n = z^n$: the distinct roots of $x^n y^n z^n$ number at most $\deg x + \deg y + \deg z \le 3d$, with $d$ the largest of the three degrees, so $nd \le 3d - 1$ and $n \lt 3$.
+
+## Useful observations
+- The theorem is the polynomial case of the abc conjecture, where the radical of an integer plays the part of $n_0$; for polynomials it has this short proof.
+- It also bounds how close a cube and a square can be: for coprime nonconstant $f$, $g$ with $f^3 \ne g^2$, $\deg(f^3 - g^2) \ge \tfrac12\deg f + 1$ (Davenport).
+- The count $n_0$ is of distinct roots, so a polynomial like $(x-1)^{10}$ contributes only $1$.
+
+## Applications
+Polynomial equations of Fermat or Catalan type, bounds on $\deg(f^3 - g^2)$, and olympiad problems about sums of polynomial powers.
+
+## Contest profile
+An olympiad result for polynomial Diophantine equations, quoted to rule out solutions in a line. It pairs with the Fundamental Theorem of Algebra and with derivative arguments on repeated roots.
+`
+});

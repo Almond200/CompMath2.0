@@ -1372,6 +1372,9 @@ html[data-text="larger"] .prob-statement { font-size: 21px; }
 }
 
 .related-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+/* Used by methods, Related formulas: inline blue links that open the hover preview. */
+.link-row { margin: 0; font-size: 14.5px; line-height: 1.9; }
+.link-row .card-link { white-space: nowrap; }
 
 .related-item {
   font-size: 13px;
