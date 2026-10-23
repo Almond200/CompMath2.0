@@ -2849,3 +2849,37 @@ Only the number of days between the dates matters, and only modulo $7$. An ordin
 An AMC 8 and AMC 10 problem, usually early in the paper: find a day of the week, or count weekdays in a span. Harder versions count dates with a property over many years, where the repeating cycle does the work.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"quadratic-perfect-square": String.raw`
+## Distinguishing clues
+- A quadratic in an integer, $x^2 + bx + c$, that must equal a perfect square, written as $y^2$ or as "is a perfect square".
+- A square root $\sqrt{n^2 + bn + c}$ that must be an integer.
+- A product of two integers a fixed distance apart, $n(n + b)$, or a quadratic and a square on two sides of an equation, $x^2 + bx = y^2$.
+- Not this pattern: a quadratic whose roots must be integers. There the discriminant $b^2 - 4c$ must be a square, a condition on the coefficients, handled with Vieta's Formulas.
+
+## Methods and Formulas to Try
+Multiply by $4$ to clear the half in completing the square, and move the square to the other side: the condition becomes a constant equal to a difference of two squares.
+
+$$x^2 + bx + c = y^2 \iff (2x + b)^2 - (2y)^2 = b^2 - 4c$$
+
+The constant has only finitely many factor pairs, so the equation has only finitely many solutions unless the constant is $0$.
+
+### Methods to try
+- [[completing-the-square]]: write $4(x^2 + bx + c) = (2x + b)^2 - (b^2 - 4c)$, which brings the quadratic to a single square.
+- [[factor-pair-counting]]: list the factor pairs $d \cdot e = b^2 - 4c$; the two factors $2x + b - 2y$ and $2x + b + 2y$ have the same parity, which removes half of them.
+- [[squeeze-between-squares]]: for large $x$, show the quadratic lies strictly between $(x + k)^2$ and $(x + k + 1)^2$, which leaves only a few small $x$ to test, a check on the factoring.
+
+### Formulas to try
+- [[difference-of-squares]]: $A^2 - B^2 = (A - B)(A + B)$ turns the completed square into a product equal to a constant.
+- [[difference-of-squares-rep]]: an integer is a difference of two squares exactly when it is odd or a multiple of $4$, which says at once whether solutions can exist.
+
+## Common traps
+- Forgetting the negative factor pairs, or the negative values of $x$ they give, when the question allows any integer.
+- Keeping factor pairs of opposite parity: the two factors differ by $4y$, an even number, so they must be both even or both odd.
+- Counting $y$ and $-y$ as different solutions when the question asks for $x$ only.
+- Completing the square with a fraction and losing track of it; multiplying by $4$ first keeps everything in integers.
+
+## Contest profile
+An AMC 10 and 12 setup that returns at AIME level with larger constants: the whole solution is one completed square and a short list of factor pairs. It pairs with Completing the Square, Listing Factor Pairs, and the Difference of Squares.
+`
+});

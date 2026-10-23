@@ -2756,7 +2756,8 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Digit Puzzles", blurb: "Problems about the digits of a number rather than its size.", ids: ["cryptarithms", "digit-manipulation", "unknown-base"] },
         { title: "Divisibility & Remainders", blurb: "Divisibility conditions with an unknown on one side, where reducing by the right quantity leaves a short list of cases.", ids: ["poly-divisible-linear"] },
-        { title: "Whole-Number Totals", blurb: "A total made from items of fixed values, coins, stamps, or prices, where every count must be a whole number.", ids: ["coins-and-prices"] }
+        { title: "Whole-Number Totals", blurb: "A total made from items of fixed values, coins, stamps, or prices, where every count must be a whole number.", ids: ["coins-and-prices"] },
+        { title: "Perfect-Square Conditions", blurb: "An expression in an integer that must come out a perfect square, where completing the square leaves a difference of two squares with only a few factorizations.", ids: ["quadratic-perfect-square"] }
       ],
       formulas: [
         {
@@ -2818,6 +2819,21 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "quadratic-perfect-square",
+          name: "A Quadratic That Must Be a Perfect Square",
+          type: "pattern",
+          subject: "number-theory",
+          recognize: [String.raw`an equation $x^2 + bx + c = y^2$ in integers, or a question asking for which $n$ a quadratic in $n$ is a perfect square`, String.raw`a square root of a quadratic, $\sqrt{n^2 + bn + c}$, that must be an integer`, String.raw`a product of two numbers a fixed distance apart, $n(n + b)$, that must be a square`],
+          suggests: ["completing-the-square", "factor-pair-counting", "squeeze-between-squares"],
+          tryFirst: ["completing-the-square", "difference-of-squares", "factor-pair-counting"],
+          latex: String.raw`x^2 + bx + c = y^2 \iff (2x + b)^2 - (2y)^2 = b^2 - 4c`,
+          description: String.raw`This is the problem in which a quadratic in an integer $x$, $x^2 + bx + c$, must equal a perfect square $y^2$. Multiplying by $4$ and completing the square turns the condition into a difference of two squares equal to the constant $b^2 - 4c$, which factors as $(2x + b - 2y)(2x + b + 2y)$, so the integer solutions come from the factor pairs of that constant with matching parity.`,
+          keywords: ["quadratic is a perfect square", "x^2 + bx = y^2", "n^2 + bn + c square", "integer square root of a quadratic", "complete the square then factor", "difference of two squares equals a constant", "diophantine equation with a square", "pattern"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
         },
         {
           id: "cryptarithms",

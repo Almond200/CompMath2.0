@@ -4,7 +4,33 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-Nothing is open. A new question goes here; a new card candidate starts a table here as P16.
+## Candidate new cards (2026-10-23): linear algebra and complex numbers, and concepts from LIVE
+Answer per row: yes, no, or a different rating. Nothing is written until you answer. Tier and importance are proposals (rule 12), from the problems listed.
+
+**Linear algebra and complex numbers (you asked for proposals).** The library already has the facts: Matrix Multiplication & Powers, Eigenvalues & the Characteristic Polynomial, Cayley–Hamilton, Rotation & Reflection Matrices, Composing Two Reflections, the Transfer Matrix Method, Complex Number Bashing, Writing in Polar Form, Conjugating Both Sides, and the roots-of-unity cards. What is missing is a few of the moves:
+
+| # | Card | Kind, where | Tier, importance | Evidence |
+|---|---|---|---|---|
+| P16 | Composing Transformations as Matrix Products: write each rotation and reflection about the origin as a $2\times2$ matrix, multiply in order (the last move on the left), and read the result as one rotation or reflection; a move about another center becomes "translate, act, translate back" | method, Methods > Geometry > Transformations & Inversion | AMC, low | 2020 AMC 10A #23 / 12A #20, 2020 AMC 10B #23, 2021 Spring AMC 10B #9 / 12B #5 (they cite the two formula cards meanwhile) |
+| P17 | Taking a Matrix Power by Diagonalizing: for $v_n = v_0M^n$ (a Markov chain, a linear recurrence as $\begin{pmatrix}1&1\\1&0\end{pmatrix}^n$, a repeated linear map), write $M = PDP^{-1}$ so $M^n = PD^nP^{-1}$, or use Cayley–Hamilton to reduce the power | method, Methods > Algebra > Determinants (renamed "Matrices & Determinants") | AIME Late, lower | the cube walk on First-Step Analysis (closed form now in its write-up), Fibonacci identities; no AMC or AIME problem needs it outright |
+| P18 | Dimension Arguments (the linear algebra method): turn objects into vectors over $\mathbb F_2$ or $\mathbb R$ and bound their number by the dimension, as in the Oddtown theorem (at most $n$ odd clubs with even pairwise intersections) and Fisher's inequality | method, Methods > Counting > Existence Arguments | Olympiad, lower | olympiad combinatorics only |
+| P19 | Summing a Trigonometric Series with $e^{i\theta}$: write $\cos k\theta = \operatorname{Re} e^{ik\theta}$, sum the geometric series, and take the real part; it also gives $\sum \binom nk\cos k\theta$ and products of cosines | method, Methods > Algebra > Changing the Representation | AIME Early, low | 1997 AIME #11 (cites the AP sum of sines and cosines meanwhile), 2004 AMC 12A #21; overlaps that card, so a no is reasonable |
+
+Considered and not proposed: equilateral triangles by multiplying by $e^{i\pi/3}$ (already the heart of Complex Number Bashing), counting walks with $A^n$ (the Transfer Matrix Method holds it), Cramer's rule (Solving a Linear System by Elimination covers the contest use).
+
+**Concepts LIVE tags that no card holds.** LIVE's 11,229 concept tags (258 distinct, all 211 papers now cached in `tools/live-cache/`) were matched against every card's name and keywords, then checked by hand. Everything else is covered (percentages by Percent Change, modular powers by Euler's Theorem and Last Digits, multisets by Multiset Permutations, pattern recognition by Hunting for a Cycle, bounding by the bounding methods). These are the gaps:
+
+| # | Card | Kind, where | Tier, importance | LIVE count, examples |
+|---|---|---|---|---|
+| P20 | Independent Events: $P(A \cap B) = P(A)P(B)$, what independence means, and the trap of multiplying dependent events | formula, Counting > Probability | AMC, medium | 23; 2014 AIME I #2, 2024 AMC 12B #25 (now stated only inside write-ups) |
+| P21 | Estimating to Choose an Answer: round, bound above and below, or compare with a benchmark, so only one choice survives | method, Methods > Algebra > Graphs, Estimates & Rates | AMC, medium | 61; 2008 AMC 12B #6, 2024 AMC 12B #3, many AMC 8 |
+| P22 | Palindromes: a palindrome is fixed by its first half, so there are $9\cdot10^{k-1}$ with $2k-1$ or $2k$ digits, and every even-length palindrome is a multiple of $11$ | pattern, Patterns > Number Theory > Digit Puzzles | AMC, low | 17; 2010 AMC 12A #6, 2010 AMC 10B #21 |
+| P23 | Counting the Shapes in a Figure: count by size, or by a distinguished corner or apex, so each shape is counted once | pattern, Patterns > Counting > Logic & Probability Setups | AMC, low | 15; 2016 AMC 10B #14, 1988 AJHSME #4 (Rectangles in a Grid covers only grids) |
+| P24 | Fencepost Counting: $n$ posts make $n-1$ gaps on a line and $n$ around a loop; the count from $a$ to $b$ inclusive is $b-a+1$ | formula, Counting > Basic Counting | AMC, low | 4; 2016 AMC 10B #11, 2016 AMC 12B #9, 2001 AMC 8 #6 |
+| P25 | Reading Graphs and Tables: read the scale and the units first, then turn the picture into numbers | pattern, Patterns > Algebra > Word-Problem Setups | AMC, lower | 48, almost all AMC 8 and AJHSME |
+| P26 | Using a Derivative to Find an Extremum: set $f'(x)=0$ and compare with the ends, as a check or a shortcut where an algebraic route is long | method, Methods > Algebra > Inequalities & Optimization | AIME Late, lower | 7; 2008 AMC 12B #13, 2023 AIME II #14, 2025 AIME II #9 |
+
+Not proposed: the distributive property (10 tags; too basic for a card) and rotational symmetry (1 tag; Burnside's Lemma covers it).
 
 ## Answered (kept as the record, newest first)
 

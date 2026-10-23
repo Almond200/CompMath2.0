@@ -46,5 +46,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Completeness batch 1: inequalities and polynomials", date: "2026-10-23",
     ids: ["popoviciu-inequality", "vornicu-schur", "cohn-irreducibility", "gauss-lucas", "mason-stothers"] },
   { label: "Completeness batch 2: rotations, spheres, triangle lines, and shadows", date: "2026-10-23",
-    ids: ["rotated-line-angle", "spheres-two-planes", "lester-circle", "droz-farny", "anti-steiner-point", "kruskal-katona"] }
+    ids: ["rotated-line-angle", "spheres-two-planes", "lester-circle", "droz-farny", "anti-steiner-point", "kruskal-katona"] },
+  { label: "A quadratic that must be a square", date: "2026-10-23",
+    ids: ["quadratic-perfect-square"] }
 ];
