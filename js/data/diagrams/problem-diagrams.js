@@ -4311,4 +4311,53 @@
       cap(430, 270, "The regular tetrahedron ABCD, M the midpoint of AB, and the triangle CMD (shaded) whose angle at M is asked for." + MM(ok))
     ]);
   })();
+  // 2022 AMC 12B #10: the regular hexagon of side 2 with the midpoints G and H, and GCHF.
+  PROB["2022-amc-12b-10"] = (() => {
+    const V = [0, 1, 2, 3, 4, 5].map(k => [2 * Math.cos(Math.PI / 3 * k + Math.PI), 2 * Math.sin(Math.PI / 3 * k + Math.PI)]);
+    const [A, B, C, D, E, F] = V, G = mid(A, B), H = mid(D, E);
+    const ok = V.every((v, i) => Math.abs(dist(v, V[(i + 1) % 6]) - 2) < 1e-9);
+    const Q = fitQ(V, 34, 430, 270), names = ["A", "B", "C", "D", "E", "F"];
+    return wrap(430, 270, [
+      poly(V.map(Q), DIM, 2), poly([G, C, H, F].map(Q), ACC, 2, ACCS),
+      ticksOn(Q(A), Q(G), 1, DIM), ticksOn(Q(G), Q(B), 1, DIM), ticksOn(Q(D), Q(H), 2, DIM), ticksOn(Q(H), Q(E), 2, DIM),
+      ...V.map(v => dot(Q(v), DIM, 3)), dot(Q(G), ACC, 3.5), dot(Q(H), ACC, 3.5),
+      ...V.map((v, i) => txt(add(Q(v), mul(norm(v), 15)), names[i])), txt(add(Q(G), mul(norm(G), 15)), "G", ACC, 13), txt(add(Q(H), mul(norm(H), 15)), "H", ACC, 13),
+      txt(add(Q(mid(B, C)), mul(norm(mid(B, C)), 12)), "2", DIM, 12),
+      cap(430, 270, "The regular hexagon ABCDEF of side 2, with G and H the midpoints of AB and DE, and the quadrilateral GCHF (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2022 AMC 12B #19: medians AD and BE meeting at G, with triangle AGE equilateral.
+  PROB["2022-amc-12b-19"] = (() => {
+    const A = [0, 0], G = [1, 0], E = [0.5, Math.sqrt(3) / 2], B = sub(G, mul(sub(E, G), 2)), C = mul(E, 2), D = mid(B, C);
+    const ok = Math.abs(dist(A, G) - 1) < 1e-9 && Math.abs(dist(G, E) - 1) < 1e-9 && Math.abs(dist(A, E) - 1) < 1e-9 && dist(lineInt(A, D, B, E), G) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, G, E].map(Q), "none", 0, GLDS), poly([A, B, C].map(Q), DIM, 2),
+      seg(Q(A), Q(D), ACC, 1.8), seg(Q(B), Q(E), ACC, 1.8), poly([A, G, E].map(Q), GLD, 1.6),
+      ticksOn(Q(B), Q(D), 1, DIM), ticksOn(Q(D), Q(C), 1, DIM), ticksOn(Q(A), Q(E), 2, DIM), ticksOn(Q(E), Q(C), 2, DIM),
+      dot(Q(G), ACC, 3.5), dot(Q(D), ACC, 3), dot(Q(E), ACC, 3),
+      txt(add(Q(A), [-12, 4]), "A"), txt(add(Q(B), [0, 16]), "B"), txt(add(Q(C), [0, -10]), "C"),
+      txt(add(Q(D), [14, 2]), "D", ACC, 13), txt(add(Q(E), [-12, -4]), "E", ACC, 13), txt(add(Q(G), [12, 10]), "G", ACC, 13),
+      cap(430, 270, "Medians AD and BE meet at the centroid G, and triangle AGE (gold) is equilateral." + MM(ok))
+    ]);
+  })();
+  // 2021 Spring AMC 12A #24: the semicircle on AB = 14 and the circle of radius 3 tangent at P.
+  PROB["2021-spring-amc-12a-24"] = (() => {
+    const O = [0, 0], A = [-7, 0], B = [7, 0], P = [4, 0], W = [4, 3];
+    const [Q, R] = circleLineInts(W, 3, [0, 65 / 6], [65 / 8, 0]).sort((u, v) => u[0] - v[0]);
+    const arc = Array.from({ length: 121 }, (_, i) => onC(O, 7, 180 * i / 120));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(dist(Q, O) - 7) < 1e-9 && Math.abs(dist(R, O) - 7) < 1e-9 && Math.abs(dist(Q, R) - 3 * Math.sqrt(3)) < 1e-9 && Math.abs(ang(Q, P, R) - 60) < 1e-6;
+    const Qs = fitQ([A, B, [0, 7]], 26, 430, 270), k = Qs.k;
+    return wrap(430, 270, [
+      pline(arc.map(Qs), DIM, 2), seg(Qs(A), Qs(B), DIM, 2), circ(Qs(W), 3 * k, ACC, 1.8),
+      poly([P, Q, R].map(Qs), GLD, 1.8, GLDS), angleArc(Qs(P), Qs(Q), Qs(R), 20, GLD),
+      dot(Qs(P), DIM, 3.5), dot(Qs(Q), DIM, 3.5), dot(Qs(R), DIM, 3.5),
+      txt(add(Qs(A), [-10, 4]), "A"), txt(add(Qs(B), [10, 4]), "B"), txt(add(Qs(P), [0, 16]), "P"),
+      txt(add(Qs(Q), [-10, -6]), "Q"), txt(add(Qs(R), [12, -2]), "R"), txt(add(Qs(P), [-4, -26]), "60°", GLD, 11.5),
+      txt(add(Qs(W), [-58, -44]), "Ω", ACC, 14), txt(add(Qs([-5, 5]), [-10, -8]), "Γ", DIM, 14), txt(add(Qs([0, 0]), [0, 16]), "14", DIM, 12),
+      cap(430, 270, "The semicircle Γ on AB = 14, and the circle Ω tangent to AB at P, meeting Γ at Q and R with QR = 3√3 and ∠QPR = 60°." + MM(ok))
+    ]);
+  })();
 })();

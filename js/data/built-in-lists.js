@@ -265,7 +265,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["fermat-numbers", "lattice-points-circle", "gaussian-integers", "pisano-periods", "farey-sequences", "continued-fraction-convergents", "zeckendorf-theorem", "floor-sum-reciprocity"] },
     ] },
   { id: "route-aime-counting", name: "AIME Counting & Probability", kind: "route", tier: "AIME", subject: "Counting & Probability",
-    blurb: "Builds on the AMC 10/12 counting and probability route: only the cards that are new at this level, so each list stays short. 23 cards across 8 sections.",
+    blurb: "Builds on the AMC 10/12 counting and probability route: only the cards that are new at this level, so each list stays short. 22 cards across 8 sections.",
     sections: [
       { title: "Binomial Coefficients",
         note: "The identities worth knowing cold, since they turn a sum into a single coefficient.",
@@ -284,7 +284,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["markovs-inequality", "coprime-probability", "probability-generating-functions", "gamblers-ruin"] },
       { title: "Existence Arguments",
         note: "Proving something must exist without constructing it.",
-        ids: ["ramsey-33", "monovariant", "extremal-principle"] },
+        ids: ["monovariant", "extremal-principle"] },
       { title: "Graph Theory",
         note: "Vertices and edges, and the counting arguments specific to them.",
         ids: ["cayleys-formula", "planar-graph-bound", "tree-basics"] },
@@ -617,7 +617,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["invariants-coloring", "monovariant", "extremal-principle", "probabilistic-method"] },
       { title: "Something Must Exist",
         note: "Pigeonhole and its descendants: crowd the objects and a coincidence is forced.",
-        ids: ["pigeonhole", "erdos-szekeres", "dilworths-theorem", "sperners-theorem", "ramsey-33"] },
+        ids: ["pigeonhole", "erdos-szekeres", "dilworths-theorem", "sperners-theorem"] },
       { title: "Count It Twice",
         note: "Count the same set two ways and the identity is the answer.",
         ids: ["double-counting", "handshake-lemma", "bijection-method", "constructive-counting"] },
@@ -686,7 +686,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["hockey-stick", "vandermonde", "stirling-bell", "states-recursion-prob", "expected-fixed-points"] },
       { title: "Guaranteed to Happen",
         note: "Existence and game results: with enough objects, the outcome is forced.",
-        ids: ["ramsey-33", "erdos-szekeres", "ballot-problem", "sprague-grundy"] },
+        ids: ["erdos-szekeres", "ballot-problem", "sprague-grundy"] },
     ] },
 
   // ---- Added 2026-10-11: proof methods, core sets (every high-importance card of a subject), and three study sheets.

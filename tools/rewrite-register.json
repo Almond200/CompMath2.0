@@ -1589,7 +1589,6 @@
     "power-mean-inequality": "formula",
     "zeckendorf-theorem": "formula",
     "stirling-bell": "formula",
-    "ramsey-33": "formula",
     "planar-graph-bound": "formula",
     "pascals-theorem": "formula",
     "pole-polar": "formula",
@@ -6371,20 +6370,6 @@
       ]
     ],
     "stirling-bell": [
-      [
-        "Why it works",
-        "kept -> Why it works"
-      ],
-      [
-        "How to use it",
-        "moved -> Useful observations"
-      ],
-      [
-        "On contests",
-        "rewritten -> Contest profile"
-      ]
-    ],
-    "ramsey-33": [
       [
         "Why it works",
         "kept -> Why it works"
