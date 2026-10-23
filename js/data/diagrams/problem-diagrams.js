@@ -4342,4 +4342,22 @@
       cap(430, 270, "Medians AD and BE meet at the centroid G, and triangle AGE (gold) is equilateral." + MM(ok))
     ]);
   })();
+  // 2021 Spring AMC 12A #24: the semicircle on AB = 14 and the circle of radius 3 tangent at P.
+  PROB["2021-spring-amc-12a-24"] = (() => {
+    const O = [0, 0], A = [-7, 0], B = [7, 0], P = [4, 0], W = [4, 3];
+    const [Q, R] = circleLineInts(W, 3, [0, 65 / 6], [65 / 8, 0]).sort((u, v) => u[0] - v[0]);
+    const arc = Array.from({ length: 121 }, (_, i) => onC(O, 7, 180 * i / 120));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(dist(Q, O) - 7) < 1e-9 && Math.abs(dist(R, O) - 7) < 1e-9 && Math.abs(dist(Q, R) - 3 * Math.sqrt(3)) < 1e-9 && Math.abs(ang(Q, P, R) - 60) < 1e-6;
+    const Qs = fitQ([A, B, [0, 7]], 26, 430, 270), k = Qs.k;
+    return wrap(430, 270, [
+      pline(arc.map(Qs), DIM, 2), seg(Qs(A), Qs(B), DIM, 2), circ(Qs(W), 3 * k, ACC, 1.8),
+      poly([P, Q, R].map(Qs), GLD, 1.8, GLDS), angleArc(Qs(P), Qs(Q), Qs(R), 20, GLD),
+      dot(Qs(P), DIM, 3.5), dot(Qs(Q), DIM, 3.5), dot(Qs(R), DIM, 3.5),
+      txt(add(Qs(A), [-10, 4]), "A"), txt(add(Qs(B), [10, 4]), "B"), txt(add(Qs(P), [0, 16]), "P"),
+      txt(add(Qs(Q), [-10, -6]), "Q"), txt(add(Qs(R), [12, -2]), "R"), txt(add(Qs(P), [-4, -26]), "60°", GLD, 11.5),
+      txt(add(Qs(W), [-58, -44]), "Ω", ACC, 14), txt(add(Qs([-5, 5]), [-10, -8]), "Γ", DIM, 14), txt(add(Qs([0, 0]), [0, 16]), "14", DIM, 12),
+      cap(430, 270, "The semicircle Γ on AB = 14, and the circle Ω tangent to AB at P, meeting Γ at Q and R with QR = 3√3 and ∠QPR = 60°." + MM(ok))
+    ]);
+  })();
 })();
