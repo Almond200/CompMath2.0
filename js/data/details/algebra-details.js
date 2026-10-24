@@ -3036,7 +3036,9 @@ Fractions that mix $\sin\theta$, $\cos\theta$ and $\tan\theta$, equations such a
 Solve $\sin\theta + \cos\theta = 1$ for $0 \le \theta < 2\pi$. Substituting gives $\frac{2t + 1 - t^2}{1 + t^2} = 1$, so $2t - 2t^2 = 0$ and $t = 0$ or $t = 1$, that is $\theta = 0$ or $\theta = \frac\pi2$. The excluded value $\theta = \pi$ gives $-1$, not a solution.
 
 ## Why it works
-The double angle formulas give $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$ and $\cos\theta = \cos^2\frac\theta2 - \sin^2\frac\theta2$. Factoring out $\cos^2\frac\theta2 = \frac{1}{1 + t^2}$ turns both into rational functions of $t = \tan\frac\theta2$: $$\sin\theta = \frac{2t}{1 + t^2}, \qquad \cos\theta = \frac{1 - t^2}{1 + t^2}.$$
+The double angle formulas give $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$ and $\cos\theta = \cos^2\frac\theta2 - \sin^2\frac\theta2$. Factoring out $\cos^2\frac\theta2 = \frac{1}{1 + t^2}$ turns both into rational functions of $t = \tan\frac\theta2$:
+$$\sin\theta = \frac{2t}{1 + t^2}, \qquad \cos\theta = \frac{1 - t^2}{1 + t^2},$$
+and their quotient is $\tan\theta = \frac{2t}{1 - t^2}$. The substitution misses only $\theta = \pi$, where $\cos\frac\theta2 = 0$.
 
 Geometrically, the line through $(-1, 0)$ with slope $t$ meets the unit circle again at exactly this point, as the figure shows. Every rational slope gives a rational point, and with $t = \frac mn$, clearing denominators gives $(n^2 - m^2)^2 + (2mn)^2 = (n^2 + m^2)^2$, the formula for Pythagorean triples.
 
@@ -3342,7 +3344,9 @@ Rare below olympiad level, and when it appears the polynomial is usually cycloto
 $A_k$ is the partial sum of the sequence $a$. When $b_k$ is monotone, the transformed sum has terms of one sign.
 
 ## Why it works
-Substitute $a_k = A_k - A_{k-1}$ and reindex. This mirrors $\int u\,\mathrm{d}v = uv - \int v\,\mathrm{d}u$: the boundary term $A_nb_n$ minus the sum of the $A_k$ against the forward differences $b_{k+1} - b_k$ rebuilds the original sum.
+Substitute $a_k = A_k - A_{k-1}$, with $A_0 = 0$, and shift the index in the second sum:
+$$\sum_{k=1}^{n}a_kb_k = \sum_{k=1}^{n}A_kb_k - \sum_{k=1}^{n}A_{k-1}b_k = \sum_{k=1}^{n}A_kb_k - \sum_{k=1}^{n-1}A_kb_{k+1} = A_nb_n - \sum_{k=1}^{n-1}A_k(b_{k+1} - b_k).$$
+This mirrors $\int u\,\mathrm{d}v = uv - \int v\,\mathrm{d}u$: the boundary term $A_nb_n$ minus the sum of the $A_k$ against the forward differences $b_{k+1} - b_k$ rebuilds the original sum. When $b$ is monotone, all the differences have one sign.
 
 ## Useful observations
 - It pays off when one factor has a clean partial sum (arithmetic, geometric, binomial) or the other is monotone.
@@ -3488,7 +3492,11 @@ Splitting an integer into positive parts with the largest product is a MATHCOUNT
 $A + B + C = 180^\circ$. The right-triangle test works because the product $\cos A\cos B\cos C$ vanishes exactly when one angle is $90^\circ$.
 
 ## Why it works
-Use $C = \pi - (A + B)$, so $\cos C = -\cos(A + B)$. Substituting into $\cos^2 A + \cos^2 B + \cos^2 C$ and simplifying with product-to-sum collapses it to $1 - 2\cos A\cos B\cos C$, the star identity.
+Use $C = \pi - (A + B)$, so $\cos C = -\cos(A + B)$. By the double-angle and sum-to-product formulas,
+$$\cos^2 A + \cos^2 B = 1 + \tfrac12(\cos 2A + \cos 2B) = 1 + \cos(A + B)\cos(A - B) = 1 - \cos C\cos(A - B),$$
+and $\cos^2 C = -\cos C\cos(A + B)$. Adding, $1 - \cos C\left(\cos(A - B) + \cos(A + B)\right) = 1 - 2\cos A\cos B\cos C$, the star identity.
+
+Replacing each $\cos^2$ by $1 - \sin^2$ turns it into the sine form, $3 - \sum\sin^2 = 1 - 2\cos A\cos B\cos C$. The right-triangle test follows: the sum of the squared cosines is $1$ exactly when the product $\cos A\cos B\cos C$ is $0$, that is, when one angle is $90^\circ$.
 
 The same substitution of $\pi - (A + B)$ for $C$ proves the tangent and cotangent identities for the angles, and the half angles, which add up to $\frac\pi2$, give the half-angle tangent sum on [[half-angle-tangent-identity|the Half-Angle Tangent Identity]].
 
@@ -3777,9 +3785,9 @@ A recurring AIME and olympiad "evaluate this trigonometric sum" trick; noticing 
 For a repeating radical the equation $x = f(x)$ has a spurious root in general; the positive root that the iteration converges to is the value.
 
 ## Why it works
-A self-referential radical satisfies its own equation: $x = \sqrt{1 + x}$ gives $x = \varphi = \frac{1 + \sqrt5}{2}$.
+A self-referential radical satisfies its own equation: $x = \sqrt{1 + x}$ gives $x = \varphi = \frac{1 + \sqrt5}{2}$. To see that the tower really converges there, start at $x_0 = 1$ and set $x_{k+1} = \sqrt{1 + x_k}$. If $x_k \lt \varphi$, then $x_k^2 \lt 1 + x_k$, so $x_{k+1} \gt x_k$, and $x_{k+1} \lt \sqrt{1 + \varphi} = \varphi$. An increasing sequence bounded by $\varphi$ converges, and its limit solves $x = \sqrt{1 + x}$, so it is $\varphi$; the negative root is never reached.
 
-Ramanujan's radical unrolls the identity $n + 2 = \sqrt{1 + (n + 1)(n + 3)} = \sqrt{1 + (n + 1)\sqrt{1 + (n + 2)(n + 4)}}$, so starting at $n = 1$ the whole tower equals $3$.
+Ramanujan's radical unrolls the identity $n + 2 = \sqrt{1 + (n + 1)(n + 3)} = \sqrt{1 + (n + 1)\sqrt{1 + (n + 2)(n + 4)}}$, so starting at $n = 1$ every finite tower ending in $\sqrt{1 + m(m + 2)}$ equals $3$. That the infinite tower converges to this value is quoted, not proved here; see A. Herschfeld, "On Infinite Radicals", American Mathematical Monthly 42 (1935), 419–429.
 
 ## Useful observations
 - For an infinitely repeating radical, setting it equal to $x$ and solving the fixed-point equation handles most cases.

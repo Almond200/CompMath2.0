@@ -1140,7 +1140,7 @@ AMC and AIME problems hide familiar triples in given lengths or in tangents of a
 $D \gt 0$ is not a perfect square. For a square $D$ the only solutions are trivial, and $x^2 - Dy^2 = -1$ may or may not have solutions.
 
 ## Why it works
-The norm $N(x + y\sqrt D) = x^2 - Dy^2$ is multiplicative, since $(x^2 - Dy^2)(u^2 - Dv^2) = (xu + Dyv)^2 - D(xv + yu)^2$. So powers of a solution are solutions.
+The norm $N(x + y\sqrt D) = x^2 - Dy^2$ is multiplicative, since $(x^2 - Dy^2)(u^2 - Dv^2) = (xu + Dyv)^2 - D(xv + yu)^2$. So powers of a solution are solutions, and multiplying $x_k + y_k\sqrt D$ by $x_1 + y_1\sqrt D$ and collecting the rational and irrational parts is the recurrence.
 
 Conversely, let $\varepsilon = x_1 + y_1\sqrt D \gt 1$ be the smallest solution larger than $1$ and $\eta \gt 1$ any solution. Choose $k$ with $\varepsilon^k \le \eta \lt \varepsilon^{k+1}$. Then $\eta\varepsilon^{-k}$ has norm $1$, since $\varepsilon^{-1} = x_1 - y_1\sqrt D$, and lies in $[1, \varepsilon)$. A norm-$1$ number $u + v\sqrt D \gt 1$ has $u, v \gt 0$, since its conjugate $u - v\sqrt D$ is its reciprocal, in $(0, 1)$. So $\eta\varepsilon^{-k}$, being smaller than $\varepsilon$, must equal $1$, and $\eta = \varepsilon^k$.
 

@@ -5223,7 +5223,9 @@ The circles cross, which needs $\lvert R - r\rvert \lt d \lt R + r$. The common 
 ## Why it works
 Both endpoints of the common chord lie on each circle, so the segment is a chord of both, and the line of centers is its perpendicular bisector, meeting it at right angles at its midpoint.
 
-Writing the half-chord $h$ two ways, $h^2 = R^2 - d_1^2$ from one circle and $h^2 = r^2 - d_2^2$ from the other with $d_1 + d_2 = d$, and subtracting gives $d_1 = \frac{d^2 + R^2 - r^2}{2d}$, which is just the location of the radical axis.
+Writing the half-chord $h$ two ways, $h^2 = R^2 - d_1^2$ from one circle and $h^2 = r^2 - d_2^2$ from the other with $d_2 = d - d_1$, and equating:
+$$R^2 - d_1^2 = r^2 - d^2 + 2dd_1 - d_1^2, \qquad d_1 = \frac{d^2 + R^2 - r^2}{2d},$$
+which is just the location of the radical axis.
 
 ## Useful observations
 - $d_1$ is computed from the three lengths, then the chord is $2\sqrt{R^2 - d_1^2}$; the intersection points are never needed.
@@ -5790,7 +5792,9 @@ A staple olympiad configuration, where recognizing a complete quadrilateral and 
 $P$ lies on the circumcircle of radius $R$ of a regular $n$-gon.
 
 ## Why it works
-Place the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and the point at $P = Re^{i\theta}$. Since $\prod_k (z - \zeta^k) = z^n - 1$, the product of the $n$ distances is $R^n\,|z^n - 1|$. Writing $z = e^{i\theta}$ and using $|e^{i\phi} - 1| = 2\left|\sin\frac\phi2\right|$ gives $R^n \cdot 2\left|\sin\frac{n\theta}{2}\right|$.
+Place the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and the point at $P = Re^{i\theta}$. Since $\prod_k (z - \zeta^k) = z^n - 1$, the product of the $n$ distances is $R^n\,|z^n - 1|$. Writing $z = e^{i\theta}$ and using $|e^{i\phi} - 1| = 2\left|\sin\frac\phi2\right|$ gives $R^n \cdot 2\left|\sin\frac{n\theta}{2}\right|$. The sine is $1$ exactly when $\theta$ is an odd multiple of $\frac\pi n$, the arc midpoints.
+
+For the fixed vertex at $z = 1$, divide out its own factor: $\prod_{k=1}^{n-1}(z - \zeta^k) = \frac{z^n - 1}{z - 1} = 1 + z + \cdots + z^{n-1}$, which is $n$ at $z = 1$. So the $n - 1$ distances multiply to $nR^{n-1}$.
 
 ## Useful observations
 - The extremes are read straight off the sine: it is $0$ at a vertex and equal to $1$ when $\frac{n\theta}{2}$ is an odd multiple of $\frac\pi2$.

@@ -152,3 +152,13 @@ center-distance-formulas  # dot products, the angle form, the power of I
 mean-median-mode
 median-triangle-area      # medians form a triangle
 vector-projection         # shortest-distance claim
+triangle-square-identities # the sum-to-product step written out
+common-chord-length
+weierstrass-substitution
+pell-equation             # recurrence as multiplication
+brahmagupta-fibonacci
+ngon-vertex-distance-product # the fixed-vertex product derived
+abel-summation            # the reindexing written out
+ramanujan-nested-radical  # golden-ratio convergence proved; the infinite tower quoted with a reference
+trig-telescoping-product
+trig-area-circumradius
