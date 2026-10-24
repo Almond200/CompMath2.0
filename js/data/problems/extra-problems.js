@@ -472,4 +472,90 @@
     { q: String.raw`Show that $\tan B\tan C = 3$ is equivalent to $\cos A = 2\cos B\cos C$ in a triangle.`,
       s: String.raw`Since $A = 180^\circ - B - C$, $\cos A = -\cos(B + C) = \sin B\sin C - \cos B\cos C = \cos B\cos C\,(\tan B\tan C - 1)$. This equals $2\cos B\cos C$ exactly when $\tan B\tan C - 1 = 2$ (neither cosine can vanish, since $\tan B \tan C = 3$ needs both tangents defined, and $\cos A = 2\cos B\cos C$ fails at a right angle $B$ or $C$).` }
   );
+  add("simson-line",
+    { q: String.raw`The triangle $A(0, 0)$, $B(6, 0)$, $C(0, 8)$ has circumcircle $(x - 3)^2 + (y - 4)^2 = 25$, which passes through $P(-1, 7)$. Find the feet of the perpendiculars from $P$ to the three side lines and check that they are collinear.`,
+      s: String.raw`On $AB$ ($y = 0$) the foot is $(-1, 0)$ and on $AC$ ($x = 0$) it is $(0, 7)$. On $BC$ ($4x + 3y = 24$), $P$ gives $4(-1) + 3\cdot7 - 24 = -7$, so the foot is $P + \tfrac7{25}(4, 3) = \left(\tfrac3{25}, \tfrac{196}{25}\right)$. The line through the first two is $y = 7(x + 1)$, and $7\left(\tfrac3{25} + 1\right) = \tfrac{196}{25}$, so all three are on it. It also passes through $\left(-\tfrac12, \tfrac72\right)$, the midpoint of $P$ and the orthocenter $H = A$.` }
+  );
+  add("symmedian-lemoine",
+    { q: String.raw`Show that in a triangle with a right angle at $A$, the $A$-symmedian is the altitude from $A$.`,
+      s: String.raw`The altitude from the right angle meets $BC$ at $D$ with $BD = \tfrac{c^2}a$ and $DC = \tfrac{b^2}a$ (each leg is the geometric mean of the hypotenuse and its own projection). So $BD : DC = c^2 : b^2$, the symmedian's ratio, and the two lines from $A$ meet $BC$ at the same point.` },
+    { q: String.raw`In triangle $ABC$, $AB = 4$, $AC = 6$, $BC = 7$. Find the distances from $B$ to the points where the median, the angle bisector and the symmedian from $A$ meet $BC$.`,
+      s: String.raw`The median splits $BC$ evenly, $3.5$ from $B$. The bisector splits it as $4 : 6$, so $7\cdot\tfrac4{10} = 2.8$. The symmedian splits it as $4^2 : 6^2 = 4 : 9$, so $7\cdot\tfrac4{13} = \tfrac{28}{13} \approx 2.15$. The bisector lies between the other two, as the reflection requires.` }
+  );
+  add("fermat-point",
+    { q: String.raw`Find the least value of $XA + XB + XC$ for an equilateral triangle $ABC$ of side $6$.`,
+      s: String.raw`Every angle is below $120^\circ$ and by symmetry the Fermat point is the center, which is $\tfrac6{\sqrt3} = 2\sqrt3$ from each vertex, so the least value is $6\sqrt3$. The construction agrees: the apex of the equilateral triangle erected outward on $BC$ is two heights, $6\sqrt3$, from $A$.` },
+    { q: String.raw`In triangle $ABC$, $AB = 3$, $AC = 5$ and $\angle A = 130^\circ$. Find the least value of $XA + XB + XC$.`,
+      s: String.raw`The angle at $A$ is at least $120^\circ$, so the minimizer is the vertex $A$ itself, and the least value is $AB + AC = 8$.` }
+  );
+  add("apollonius-circle",
+    { q: String.raw`With $A = (-2, 0)$ and $B = (2, 0)$, find the locus of points $P$ with $PA = 2\,PB$.`,
+      s: String.raw`The points dividing $AB$ in the ratio $2 : 1$ are $\left(\tfrac23, 0\right)$ inside and $(6, 0)$ outside, so the locus is the circle with that diameter: center $\left(\tfrac{10}3, 0\right)$, radius $\tfrac83$. Check: $(x + 2)^2 + y^2 = 4\left((x - 2)^2 + y^2\right)$ simplifies to $\left(x - \tfrac{10}3\right)^2 + y^2 = \tfrac{64}9$.` }
+  );
+  add("concyclicity-tests",
+    { q: String.raw`Prove that an isosceles trapezoid (parallel sides $AB$ and $CD$, legs $AD = BC$) is cyclic.`,
+      s: String.raw`The equal legs make the base angles equal, $\angle A = \angle B$. The parallel sides make $\angle B + \angle C = 180^\circ$, as co-interior angles. So $\angle A + \angle C = 180^\circ$, and opposite angles supplementary is the first test.` },
+    { q: String.raw`In triangle $ABC$ the altitudes from $B$ and $C$ have feet $E$ on $AC$ and $F$ on $AB$. Prove that $B$, $C$, $E$, $F$ lie on one circle.`,
+      s: String.raw`The segment $BC$ subtends a right angle at both $E$ and $F$, which lie on the same side of $BC$. Equal angles on one segment from the same side is the second test, so the four points are concyclic: the circle is the one with diameter $BC$.` }
+  );
+  add("brahmaguptas-formula",
+    { q: String.raw`A cyclic quadrilateral has sides $7$, $15$, $20$, $24$ in order. Find its area, and check it against the circle's diameter.`,
+      s: String.raw`Here $s = 33$, so the area is $\sqrt{26\cdot18\cdot13\cdot9} = \sqrt{54756} = 234$. Check: $7^2 + 24^2 = 15^2 + 20^2 = 25^2$, so the diagonal between the sides $7, 15$ and the sides $20, 24$ can be a diameter of length $25$, splitting the quadrilateral into right triangles of areas $84$ and $150$.` }
+  );
+  add("cyclic-perpendicular-diagonals",
+    { q: String.raw`A quadrilateral with perpendicular diagonals is inscribed in a circle, and two opposite sides are $5$ and $12$. Find the radius and $b^2 + d^2$ for the other two sides.`,
+      s: String.raw`Opposite sides give $4R^2 = 5^2 + 12^2 = 169$, so $R = \tfrac{13}2$, and the other pair also has $b^2 + d^2 = 169$.` },
+    { q: String.raw`The perpendicular diagonals of a cyclic quadrilateral $ABCD$ meet at $P$ with $PA = 2$, $PC = 8$ and $PB = PD = 4$. Find the circumradius.`,
+      s: String.raw`The lengths are consistent with a circle, since $PA\cdot PC = 16 = PB\cdot PD$. The right triangles at $P$ give $AB^2 = 4 + 16 = 20$ and $CD^2 = 64 + 16 = 80$, so $4R^2 = 100$ and $R = 5$.` }
+  );
+  add("incenter-coordinates",
+    { q: String.raw`Find the incenter of the triangle $A(0, 0)$, $B(14, 0)$, $C(5, 12)$.`,
+      s: String.raw`The sides are $a = BC = 15$, $b = CA = 13$ and $c = AB = 14$, with sum $42$. So $I = \tfrac{15(0, 0) + 13(14, 0) + 14(5, 12)}{42} = \tfrac{(252, 168)}{42} = (6, 4)$. The $y$-coordinate is the inradius $\tfrac{84}{21} = 4$, as it must be with $AB$ on the $x$-axis.` },
+    { q: String.raw`For the same triangle, find the excenter opposite $A$.`,
+      s: String.raw`Flip the sign of $a$: $\tfrac{-15(0, 0) + 13(14, 0) + 14(5, 12)}{-15 + 13 + 14} = \tfrac{(252, 168)}{12} = (21, 14)$. Its height above $AB$ is the exradius $\tfrac{84}{s - a} = \tfrac{84}6 = 14$.` }
+  );
+  add("section-formula",
+    { q: String.raw`For the triangle $A(1, 2)$, $B(7, 4)$, $C(4, 9)$, find the point that divides the median from $A$ in the ratio $2 : 1$, and compare it with the centroid.`,
+      s: String.raw`The median runs to the midpoint $M = \left(\tfrac{11}2, \tfrac{13}2\right)$ of $BC$. With $AP : PM = 2 : 1$, $P = \tfrac{2M + 1\cdot A}{3} = \tfrac{(11 + 1, 13 + 2)}3 = (4, 5)$, which is the centroid $\tfrac{A + B + C}3 = \left(\tfrac{12}3, \tfrac{15}3\right)$.` }
+  );
+  add("conic-classification",
+    { q: String.raw`Classify the curves $4x^2 - 4xy + y^2 + 2x - 3 = 0$ and $2x^2 + xy + 3y^2 = 5$.`,
+      s: String.raw`For the first, $B^2 - 4AC = 16 - 16 = 0$: a parabola (its quadratic part is $(2x - y)^2$). For the second, $1 - 24 \lt 0$: an ellipse, and a real one, since $\left(\sqrt{5/2}, 0\right)$ lies on it.` }
+  );
+  add("conic-tangent-lines",
+    { q: String.raw`Find the tangent to $\frac{x^2}{16} + \frac{y^2}{9} = 1$ at $\left(\frac{16}5, \frac95\right)$, and check it with the slope condition.`,
+      s: String.raw`The point is on the ellipse, since $\tfrac{16}{25} + \tfrac9{25} = 1$. The tangent is $\tfrac{x\cdot16/5}{16} + \tfrac{y\cdot9/5}9 = 1$, that is $x + y = 5$. In slope form $y = -x + 5$, and $k^2 = 25 = 16\cdot1 + 9 = a^2m^2 + b^2$, as it should.` },
+    { q: String.raw`Find the lines of slope $1$ tangent to the hyperbola $\frac{x^2}9 - \frac{y^2}4 = 1$.`,
+      s: String.raw`Substitute $y = x + k$: $4x^2 - 9(x + k)^2 = 36$, that is $5x^2 + 18kx + 9k^2 + 36 = 0$. Tangency means a double root: $(18k)^2 - 20(9k^2 + 36) = 144k^2 - 720 = 0$, so $k^2 = 5$ (the hyperbola's version $k^2 = a^2m^2 - b^2$). The tangents are $y = x \pm \sqrt5$.` }
+  );
+  add("conic-parametric",
+    { q: String.raw`Find the largest area of a rectangle with sides parallel to the axes inscribed in $\frac{x^2}{16} + \frac{y^2}9 = 1$.`,
+      s: String.raw`Put a corner at $(4\cos t, 3\sin t)$ with $0 \lt t \lt \tfrac\pi2$. The area is $(8\cos t)(6\sin t) = 24\sin2t$, largest at $t = \tfrac\pi4$: the area is $24$, with corner $\left(2\sqrt2, \tfrac{3\sqrt2}2\right)$.` },
+    { q: String.raw`Find the point of the parabola $x^2 = 4y$ closest to $(0, 5)$.`,
+      s: String.raw`Write the point as $(2t, t^2)$. The squared distance is $4t^2 + (t^2 - 5)^2 = t^4 - 6t^2 + 25 = (t^2 - 3)^2 + 16$, least at $t^2 = 3$. The closest points are $(\pm2\sqrt3, 3)$, at distance $4$.` }
+  );
+  add("cavalieris-principle",
+    { q: String.raw`Use Cavalieri's Principle to find the volume of a hemisphere of radius $r$.`,
+      s: String.raw`Compare it with a cylinder of radius $r$ and height $r$ from which a cone with its apex at the bottom center and base on top is removed. At height $h$ the hemisphere's slice is a disk of area $\pi(r^2 - h^2)$, and the other solid's slice is a ring of area $\pi r^2 - \pi h^2$. So the volumes agree: $\pi r^3 - \tfrac13\pi r^3 = \tfrac23\pi r^3$.` }
+  );
+  add("tetrahedron-centroid",
+    { q: String.raw`For the tetrahedron $A(0, 0, 0)$, $B(6, 0, 0)$, $C(0, 6, 0)$, $D(0, 0, 6)$, check that the centroid lies three quarters of the way from $D$ to the centroid of face $ABC$, and at the midpoint of the bimedian joining the midpoints of $AB$ and $CD$.`,
+      s: String.raw`The centroid is $G = \left(\tfrac32, \tfrac32, \tfrac32\right)$ and face $ABC$ has centroid $(2, 2, 0)$. Three quarters of the way from $D$: $(0, 0, 6) + \tfrac34(2, 2, -6) = \left(\tfrac32, \tfrac32, \tfrac32\right)$. The midpoints of $AB$ and $CD$ are $(3, 0, 0)$ and $(0, 3, 3)$, whose midpoint is $G$ again.` }
+  );
+  add("pascals-theorem",
+    { q: String.raw`The points $A(5, 0)$, $B(3, 4)$, $C(0, 5)$, $D(-4, 3)$, $E(-5, 0)$, $F(0, -5)$ lie on $x^2 + y^2 = 25$. Find the three points where opposite sides of hexagon $ABCDEF$ meet, and check that they are collinear.`,
+      s: String.raw`$AB$ is $2x + y = 10$ and $DE$ is $3x - y = -15$, meeting at $(-1, 12)$. $BC$ is $x + 3y = 15$ and $EF$ is $x + y = -5$, meeting at $(-15, 10)$. $CD$ is $x - 2y = -10$ and $FA$ is $x - y = 5$, meeting at $(20, 15)$. All three satisfy $x - 7y + 85 = 0$, the Pascal line.` },
+    { q: String.raw`A hexagon $ABCDEF$ inscribed in a circle has $AB \parallel DE$ and $BC \parallel EF$. Prove that $CD \parallel FA$.`,
+      s: String.raw`Parallel lines meet at a point at infinity, so two of Pascal's three points are at infinity, and the Pascal line through them is the line at infinity. The third point, $CD \cap FA$, lies on that line too, which means $CD$ and $FA$ are parallel.` }
+  );
+  add("pole-polar",
+    { q: String.raw`Find the polar of $P = (5, 10)$ with respect to $x^2 + y^2 = 25$, and check that it is the chord of contact.`,
+      s: String.raw`The polar of $(x_0, y_0)$ is $x_0x + y_0y = 25$, here $5x + 10y = 25$, or $x + 2y = 5$. It meets the circle where $(5 - 2y)^2 + y^2 = 25$, that is $y = 0$ or $y = 4$: at $(5, 0)$ and $(-3, 4)$. The tangents there, $x = 5$ and $-3x + 4y = 25$, both pass through $P$.` },
+    { q: String.raw`With the same circle, $Q = (1, 2)$ lies on the polar of $P = (5, 10)$. Check La Hire's duality.`,
+      s: String.raw`Indeed $1 + 2\cdot2 = 5$, so $Q$ is on $x + 2y = 5$. The polar of $Q$ is $x + 2y = 25$, and $5 + 20 = 25$, so $P$ lies on the polar of $Q$, as La Hire says.` }
+  );
+  add("harmonic-bundle",
+    { q: String.raw`In triangle $ABC$, $AB = 6$, $AC = 3$ and $BC = 6$. The internal and external bisectors from $A$ meet line $BC$ at $D$ and $E$. Find them and show that $(B, C; D, E) = -1$.`,
+      s: String.raw`Put $B = 0$ and $C = 6$ on the line. The internal bisector splits $BC$ as $6 : 3$, so $D = 4$; the external one divides it externally in the same ratio, $EB : EC = 2 : 1$, so $E = 12$. Then $\tfrac{BD}{DC} = \tfrac42 = 2 = \tfrac{BE}{EC} = \tfrac{12}6$, one internal and one external, so the bundle is harmonic. Check with the midpoint $M = 3$: $MD\cdot ME = 1\cdot9 = 9 = MB^2$.` }
+  );
 })();
