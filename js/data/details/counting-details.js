@@ -946,6 +946,8 @@ These are the unsigned numbers; the signed ones come from the falling factorial.
 ## Why it works
 Permutations decompose uniquely into disjoint cycles, and $c(n, k)$ counts those with exactly $k$ cycles. For the recursion, element $n$ either forms a cycle by itself, giving $c(n-1, k-1)$, or is inserted after one of the $n - 1$ existing elements inside the cycles, giving $(n - 1)\,c(n-1, k)$.
 
+For the rising factorial, multiply $\sum_k c(n-1, k)x^k$ by $x + (n - 1)$: the coefficient of $x^k$ becomes $c(n-1, k-1) + (n - 1)c(n-1, k)$, the same recursion with the same start, so the coefficients are $c(n, k)$. Setting $x = 1$ gives the row sum $n!$, and $c(n, 1) = (n - 1)!$, the number of single cycles, is $\frac1n$ of all permutations.
+
 ## Useful observations
 - There are two readings: algebraically, the coefficients when a rising factorial is expanded into powers; combinatorially, permutations counted by cycle number.
 - The recursion follows the same last-element argument as the second-kind numbers, with multiplier $n - 1$ in place of $k$.
@@ -1441,7 +1443,11 @@ Both a one-line quotable fact and a proof pattern: AIME expected-value questions
 "Probability" means a limiting density over a growing range, since there is no uniform measure on the integers.
 
 ## Why it works
-A fixed prime $p$ divides both of two numbers with probability $\frac1{p^2}$. These events are independent across primes, so the coprime density is $\prod_p\left(1 - \frac1{p^2}\right) = \frac1{\zeta(2)} = \frac6{\pi^2}$.
+Step 1, an exact count. By Möbius inversion the number of pairs $a, b \le N$ with $\gcd(a, b) = 1$ is $\sum_{d \le N}\mu(d)\left\lfloor\frac Nd\right\rfloor^2$, since a pair with $\gcd = g$ is counted by the divisors $d$ of $g$ with total weight $\sum_{d \mid g}\mu(d)$, which is $1$ for $g = 1$ and $0$ otherwise.
+
+Step 2, the limit. Each $\left\lfloor\frac Nd\right\rfloor^2$ is $\frac{N^2}{d^2}$ up to an error at most $\frac{2N}d$, and those errors add up to at most $2N(1 + \ln N)$; the terms of the full series beyond $d = N$ add up to less than $\frac1N$. Dividing by $N^2$, the density is $\sum_d\frac{\mu(d)}{d^2}$, and multiplying this series by $\sum_n\frac1{n^2}$ gives $\sum_n\frac1{n^2}\sum_{d \mid n}\mu(d) = 1$. So the density is $\frac1{\zeta(2)}$, and $\zeta(2) = \frac{\pi^2}6$ is Euler's evaluation, quoted here.
+
+The other densities run the same way: the squarefree numbers up to $N$ number $\sum_d\mu(d)\left\lfloor\frac N{d^2}\right\rfloor$, and $k$-tuples or $k$th powers replace $d^2$ by $d^k$. The product $\prod_p\left(1 - \frac1{p^2}\right)$ is the same constant, as the Euler product of $\frac1{\zeta(2)}$.
 
 ## Useful observations
 - The derivation is the useful part, since the same product for $k$ numbers gives $\frac1{\zeta(k)}$.
@@ -2600,7 +2606,13 @@ Usually the whole count for a non-adjacency condition, sometimes inside casework
 The graph is finite and may have multiple edges. Deleting any one row and the matching column gives the same determinant.
 
 ## Why it works
-Expanding a cofactor of $L = D - A$ by the Cauchy–Binet formula gives a signed sum over subsets of edges, and only the acyclic spanning subsets survive, so the cofactor counts spanning trees. Equivalently it equals $\frac1n$ times the product of the Laplacian eigenvalues with one $0$ removed, which for a connected graph is the product of the nonzero ones.
+Step 1, the factorization. Orient each edge and let $B$ be the $n \times m$ incidence matrix, with $+1$ and $-1$ at the two ends of each edge. Then $BB^{\mathsf T} = D - A = L$. Deleting row $r$ of $B$ gives $B_r$, and the cofactor is $\det(B_rB_r^{\mathsf T})$.
+
+Step 2, Cauchy–Binet. The Cauchy–Binet formula, a standard identity for determinants of such products, gives $\det(B_rB_r^{\mathsf T}) = \sum_S\det(B_r[S])^2$, over the sets $S$ of $n - 1$ edges, with $B_r[S]$ the columns in $S$.
+
+Step 3, the lemma: $\det B_r[S]$ is $\pm1$ when $S$ is a spanning tree and $0$ otherwise. If $S$ is not a tree it is disconnected, and the rows of a component missing $r$ add up to $0$. If it is a tree, a leaf other than $r$ has a single $\pm1$ in its row; expanding along it leaves the same matrix for a smaller tree. So the cofactor counts spanning trees.
+
+Step 4, eigenvalues. The coefficient of $\lambda$ in $\det(L - \lambda I)$ is, up to sign, the sum of the $n$ principal cofactors, which is $n\tau$ by Step 3. From $\det(L - \lambda I) = \prod(\lambda_i - \lambda)$ with $\lambda_0 = 0$, the same coefficient is $\pm\lambda_1\cdots\lambda_{n-1}$. For $K_n$, $L = nI - J$ has the eigenvalue $n$ with multiplicity $n - 1$, so $\tau = \frac{n^{n-1}}n = n^{n-2}$.
 
 ## Useful observations
 - Putting each degree on the diagonal and $-1$ for each edge builds $L$, and the row to delete is whichever makes the arithmetic easiest.

@@ -194,3 +194,15 @@ kummers-theorem
 jacobi-symbol             # supplements derived
 totient-divisor-sum
 zsygmondy                 # quoted with the original reference; q = 1 mod n proved
+pappus-hexagon            # hexagon corrected to AECDBF (card and example); direct Menelaus proof
+carmichael-numbers        # Korselt both directions; wrong link to Fermat numbers removed
+matrix-tree-theorem       # incidence matrix, Cauchy-Binet, the tree lemma, eigenvalues, K_n
+minkowski-lattice
+coprime-probability       # Mobius count and the limit; zeta(2) quoted
+probability-generating-functions
+wolstenholme              # binomial forms and power sums proved
+stirling-first-kind
+resultant-discriminant    # vanishing criterion proved; product formula quoted (Lang); cubic sign
+cardano-cubic
+markovs-inequality
+floor-sum-reciprocity

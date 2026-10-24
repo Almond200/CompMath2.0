@@ -1429,6 +1429,12 @@ $p \ge 5$ is prime; fractions are read as residues, since their denominators are
 ## Why it works
 Pair $k$ with $p - k$: $\frac1k + \frac{1}{p - k} = \frac{p}{k(p - k)}$, so $2H = p\sum_{k=1}^{p-1}\frac{1}{k(p - k)}$, where $H$ is the harmonic sum. It remains to show the last sum is $0$ mod $p$. Modulo $p$, $\frac{1}{k(p - k)} \equiv -\frac{1}{k^2}$, and as $k$ runs over the nonzero residues so does $\frac1k$, so $\sum\frac{1}{k^2} \equiv \sum_{j=1}^{p-1} j^2 = \frac{(p - 1)p(2p - 1)}{6}$, which is divisible by $p$ when $p \ge 5$, since then $6$ is invertible. So $H \equiv 0 \pmod{p^2}$.
 
+For the binomials, expand
+$$\binom{2p-1}{p-1} = \prod_{k=1}^{p-1}\frac{p + k}k = \prod_{k=1}^{p-1}\left(1 + \frac pk\right) \equiv 1 + pH + p^2\sum_{j \lt k}\frac1{jk} \pmod{p^3}.$$
+Here $pH \equiv 0 \pmod{p^3}$, and $\sum_{j \lt k}\frac1{jk} = \frac12\left(H^2 - \sum\frac1{k^2}\right) \equiv 0 \pmod p$, so the whole is $1$ mod $p^3$, and $\binom{2p}p = 2\binom{2p-1}{p-1} \equiv 2$.
+
+For the general power sums, with $g$ a primitive root, $\sum_k k^m \equiv \sum_{j=0}^{p-2}g^{jm} = \frac{g^{m(p-1)} - 1}{g^m - 1} \equiv 0$ whenever $g^m \not\equiv 1$, that is $(p - 1) \nmid m$.
+
 ## Useful observations
 - The pairing alone shows the numerator of the harmonic sum is divisible by $p$ for every odd prime; the extra factor of $p$ needs the sum of inverse squares.
 - The extra factor of $p$ is visible already at $p = 5$: $1 + \frac12 + \frac13 + \frac14 = \frac{25}{12}$, with numerator exactly $5^2$.
@@ -1660,6 +1666,8 @@ $p$ and $q$ are positive and coprime, so that no interior lattice point lies on 
 
 ## Why it works
 The term $\lfloor\frac{kp}{q}\rfloor$ counts the lattice points $(k, j)$ with $1 \le j \le \frac{kp}{q}$, the points strictly below the diagonal in column $k$ of the $q \times p$ rectangle. Coprimality keeps the diagonal off the lattice, and the half-turn symmetry of the rectangle pairs each interior point below the diagonal with one above, which splits the $(p-1)(q-1)$ interior points evenly.
+
+The same pairing in numbers: $\frac{kp}q$ is not an integer for $0 \lt k \lt q$, so $\left\lfloor\frac{kp}q\right\rfloor + \left\lfloor p - \frac{kp}q\right\rfloor = p - 1$, the second Key form. Adding it over $k = 1, \ldots, q - 1$ counts each term twice and gives $(q - 1)(p - 1)$.
 
 ## Useful observations
 - Floor sums over a full period are evaluated at once, and partial ranges pair $k$ with $q - k$.
@@ -2180,7 +2188,11 @@ The standard zero-sum theorem of olympiad combinatorics.
 $n$ is composite and odd. The Carmichael function $\lambda(n)$ has the same name and is an unrelated object.
 
 ## Why it works
-A [[fermat-numbers|Fermat pseudoprime]] slips past the test $b^{n-1} \equiv 1 \pmod n$ despite being composite. Korselt's Criterion pins down those that fool every coprime base: $n$ must be squarefree with $(p - 1) \mid (n - 1)$ for each prime $p \mid n$, and then by the [[crt|Chinese Remainder Theorem]] the congruence holds for every base.
+A Fermat pseudoprime slips past the test $b^{n-1} \equiv 1 \pmod n$ despite being composite. Korselt's Criterion pins down those that fool every coprime base.
+
+Sufficiency. If $n$ is squarefree and $(p - 1) \mid (n - 1)$ for each $p \mid n$, then for $b$ coprime to $n$, Fermat's Little Theorem gives $b^{n-1} = \left(b^{p-1}\right)^{(n-1)/(p-1)} \equiv 1 \pmod p$ for each $p$. The primes are distinct, so by the [[crt|Chinese Remainder Theorem]] $b^{n-1} \equiv 1 \pmod n$.
+
+Necessity. If $p^2 \mid n$, take $b = 1 + p$, coprime to $n$ after adjusting modulo the other prime factors by the Chinese Remainder Theorem. Modulo $p^2$, $(1 + p)^{n-1} \equiv 1 + (n - 1)p$, which is $1$ only if $p \mid n - 1$, impossible since $p \mid n$. And for $p \mid n$, take $b$ to be a [[primitive-roots|primitive root]] mod $p$ and $1$ mod the rest of $n$: then $b^{n-1} \equiv 1 \pmod p$ forces $(p - 1) \mid (n - 1)$.
 
 ## Useful observations
 - To test a candidate, check squarefreeness and the divisibility $(p - 1) \mid (n - 1)$ over its prime factors.

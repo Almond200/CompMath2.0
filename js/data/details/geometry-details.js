@@ -4906,7 +4906,11 @@ Olympiad combinatorial geometry. The planar form and the need for convexity are 
 The region is convex and centrally symmetric about the origin. Area exactly $4$ is not enough in general without a closedness condition.
 
 ## Why it works
-Shrink the region by a factor of $\frac12$: if the original area exceeds $4$, the half-size region has area greater than $1$, so some of its integer translates overlap, by pigeonhole on the unit square. Two overlapping translates differ by a nonzero lattice vector, and central symmetry with convexity puts that vector's endpoint inside the original region.
+Step 1. Shrink the region $K$ to $\frac12K$, of area greater than $1$. Cut $\frac12K$ along the integer grid and slide each piece by a lattice vector into the unit square. The pieces have total area more than $1$, so two of them overlap: there are points $x \ne y$ of $\frac12K$ with $x - y$ a lattice vector, nonzero.
+
+Step 2. Now $2x$ and $2y$ are in $K$, and so is $-2y$, by symmetry. Their midpoint is
+$$\tfrac12(2x) + \tfrac12(-2y) = x - y,$$
+which is in $K$ because $K$ is convex. So $x - y$ is a nonzero lattice point of $K$. In $\mathbb R^d$ the same argument runs with volume, and shrinking by $\frac12$ divides the volume by $2^d$.
 
 ## Useful observations
 - It forces a small integer solution by enclosing the constraint in a symmetric convex region of large enough area.
@@ -6757,7 +6761,15 @@ Rare, and almost always the punchline of a problem built around it rather than a
 The two lines are distinct. The statement is purely projective: it uses no lengths, angles, or circles, so it survives any projective transformation.
 
 ## Why it works
-A pair of distinct lines is a conic, since its equation factors into two linear factors. So six points, three on each line, are six points of a conic, and Pascal says the three intersections of opposite sides of the hexagon $AEBFCD$ are collinear. Those opposite-side pairs are exactly $AE$ with $BD$, $AF$ with $CD$, and $BF$ with $CE$.
+In Pascal's terms, the hexagon is $AECDBF$: its opposite sides are $AE$ and $DB$, $EC$ and $BF$, $CD$ and $FA$, which meet in exactly the three points, and a pair of lines is a degenerate conic. Since the projective proof of Pascal needs a genuine conic, here is a direct proof by [[menelaus-theorem|Menelaus]].
+
+Let the lines $AE$, $CD$, $BF$ form a triangle $UVW$, with $U = AE \cap CD$, $V = CD \cap BF$, $W = BF \cap AE$, and let $X = AE \cap BD$, $Y = AF \cap CD$, $Z = BF \cap CE$. Five lines each cut all three sides: $ABC$, $DEF$, $BDX$, $AFY$ and $CEZ$. With signed ratios, Menelaus gives for each
+$$\frac{UP}{PV} \cdot \frac{VQ}{QW} \cdot \frac{WR}{RU} = -1,$$
+with $P$, $Q$, $R$ its points on $UV$, $VW$, $WU$.
+
+Multiply the relations for $BDX$, $AFY$ and $CEZ$, and divide by those for $ABC$ and $DEF$. Every ratio at $A$, $B$, $C$, $D$, $E$, $F$ appears once on each side and cancels, leaving
+$$\frac{UY}{YV} \cdot \frac{VZ}{ZW} \cdot \frac{WX}{XU} = \frac{(-1)^3}{(-1)^2} = -1,$$
+so $X$, $Y$, $Z$ are collinear by the converse of Menelaus.
 
 ## Useful observations
 - It answers collinearity questions in figures made only of lines and their crossings, where metric tools have nothing to grip.

@@ -3249,9 +3249,11 @@ The engine behind AIME and olympiad generating-function counts; it is [[stars-an
 For $\Delta \gt 0$ the cube roots are of complex numbers (the casus irreducibilis), even though all three roots are real, and the trigonometric substitution is cleaner there. The two cube roots are chosen so that their product is $-\frac p3$.
 
 ## Why it works
-The substitution $x = t - \frac{b}{3a}$ kills the quadratic term, leaving $t^3 + pt + q = 0$. Setting $t = u + v$ with $3uv + p = 0$ turns it into $u^3 + v^3 = -q$ and $u^3v^3 = -\frac{p^3}{27}$.
+The substitution $x = t - \frac{b}{3a}$ kills the quadratic term, leaving $t^3 + pt + q = 0$. Setting $t = u + v$ gives
+$$t^3 = u^3 + v^3 + 3uv(u + v) = u^3 + v^3 + 3uv\,t,$$
+so if $3uv = -p$ and $u^3 + v^3 = -q$, then $t^3 + pt + q = 0$.
 
-So $u^3$ and $v^3$ are the two roots of $z^2 + qz - \frac{p^3}{27} = 0$, which are $-\frac q2 \pm \sqrt{\frac{q^2}{4} + \frac{p^3}{27}}$. That gives the nested cube-root expression. The term under the inner square root is, up to a constant, the discriminant $\Delta = -4p^3 - 27q^2$.
+So $u^3$ and $v^3$ are the two roots of $z^2 + qz - \frac{p^3}{27} = 0$, which are $-\frac q2 \pm \sqrt{\frac{q^2}{4} + \frac{p^3}{27}}$. That gives the nested cube-root expression. The term under the inner square root is $-\frac{\Delta}{108}$ with $\Delta = -4p^3 - 27q^2$, and the sign of $\Delta$ counts the real roots as on [[resultant-discriminant|the discriminant card]].
 
 ## Useful observations
 - The cubic is depressed, the formula applied, and $-\frac{b}{3a}$ added back.
@@ -3696,7 +3698,11 @@ A MATHCOUNTS and AMC time-saver, and often the whole solution when it applies. T
 The leading coefficients are nonzero. The resultant is a polynomial in the coefficients of $f$ and $g$, so it can be evaluated without finding any roots.
 
 ## Why it works
-The resultant is singular exactly when $f$ and $g$ share a root, and in terms of the roots it is the product of all differences $\alpha_i - \beta_j$, which vanishes when some $\alpha_i = \beta_j$. Taking $g = f'$ detects a repeated root of $f$, since a repeated root of $f$ is a root of $f'$, and that is the discriminant.
+Step 1, the vanishing criterion. The Sylvester matrix is the matrix of the linear map $(u, v) \mapsto uf + vg$ on pairs with $\deg u \lt n$ and $\deg v \lt m$, between spaces of the same dimension $m + n$. It is singular exactly when $uf = -vg$ for some nonzero pair. If $f$ and $g$ share a factor $h$, then $u = \frac gh$, $v = -\frac fh$ works. Conversely, if $uf = -vg$, then $f$ divides $vg$ with $\deg v \lt \deg f$, so $f$ and $g$ share a factor, and over $\mathbb C$ a root.
+
+Step 2. The product formula is quoted, not proved here; see S. Lang, Algebra. It gives $\operatorname{Res}(f, f') = a_n^{\,n-1}\prod_i f'(\alpha_i)$, and $f'(\alpha_i) = a_n\prod_{j \ne i}(\alpha_i - \alpha_j)$, so up to the sign $(-1)^{n(n-1)/2}$ this is $a_n^{\,2n-1}\prod_{i \lt j}(\alpha_i - \alpha_j)^2$, which vanishes exactly at a repeated root.
+
+Step 3, the cubic. With three real roots the squared differences are positive, so $\Delta \gt 0$. With one real root $r$ and a pair $z, \bar z$, $(r - z)(r - \bar z) = \lvert r - z\rvert^2 \gt 0$ appears squared, while $(z - \bar z)^2 = -4(\operatorname{Im} z)^2 \lt 0$, so $\Delta \lt 0$.
 
 ## Useful observations
 - Setting a resultant to $0$ eliminates a variable between two polynomial equations.
