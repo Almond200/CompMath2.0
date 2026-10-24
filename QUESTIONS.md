@@ -4,10 +4,11 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-No question is open. **P27 was approved by the owner on 2026-10-24 and written as `steiner-neighborhood`**; the table is kept as the record. A new card candidate goes at the top of a table here as P28.
+**P28 is open (2026-10-24).** P27 was approved by the owner on 2026-10-24 and written as `steiner-neighborhood`. The next candidate is P29.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|
+| P28 | Most Edges in a Disconnected Graph: a graph on $n$ vertices with more than $\binom{n-1}2$ edges is connected, since a disconnected one misses every edge across some split and the fewest missed is $n-1$, isolating one vertex; for a bipartite graph with parts $a\ge b$ the bound is $(a-1)b$, so the $((a-1)b+1)$th edge always connects | formula, Combinatorics > Graph Theory | AMC, lower | 2021 Fall AMC 12A #16 (keeps `formulas: []` meanwhile) |
 | P27 | Area of a Neighborhood (Steiner's Formula): the points within distance $r$ of a convex region of area $A$ and perimeter $P$ cover $A+Pr+\pi r^2$, since the band over each side or arc adds length times $r$ and the corner sectors add up to one full disk | formula, Geometry > Areas | AIME, lower | 2004 AMC 12A #24 (cites Circle Area, Circumference, Arcs & Sectors meanwhile) |
 
 ## Answered (kept as the record, newest first)

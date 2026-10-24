@@ -5199,4 +5199,93 @@
       cap(430, 300, "The centers of the covering disks fill the lens L; S is everything within 1 of L. One such disk (dashed) is centered at a corner of the lens." + MM(ok))
     ]);
   })();
+  // 2021 Fall AMC 12A #11: concentric circles of radii 17 and 19, and a chord of the larger one half inside the smaller.
+  PROB["2021-fall-amc-12a-11"] = (() => {
+    const O = [0, 0], d = Math.sqrt(361 - 96), h = Math.sqrt(96);
+    const P1 = [-h, -d], P2 = [h, -d], I1 = [-h / 2, -d], I2 = [h / 2, -d];
+    const ok = Math.abs(dist(O, P1) - 19) < 1e-9 && Math.abs(dist(O, I1) - 17) < 1e-9 && Math.abs(dist(I1, I2) - dist(P1, P2) / 2) < 1e-9;
+    const Q = fitQ([[-19, -19], [19, 19]], 22, 430, 300), k = Q.k;
+    return wrap(430, 300, [
+      circ(Q(O), 19 * k, DIM, 1.8), circ(Q(O), 17 * k, FNT, 1.5), seg(Q(P1), Q(P2), ACC, 2), seg(Q(I1), Q(I2), GLD, 3),
+      dot(Q(O), DIM, 3), seg(Q(O), Q([0, 19]), DIM, 1.2, "4 3"), seg(Q(O), Q([-17 * Math.cos(rad(30)), 17 * Math.sin(rad(30))]), DIM, 1.2, "4 3"),
+      txt(add(Q([0, 9.5]), [10, 0]), "19"), txt(add(Q([-7.4, 4.2]), [0, -8]), "17"), txt(add(Q(O), [0, 16]), "O"),
+      cap(430, 300, "Circles of radii 17 and 19 about O; a chord of the larger circle (blue) whose middle half (gold) lies inside the smaller." + MM(ok))
+    ]);
+  })();
+
+  // 2021 Fall AMC 12A #24: a trapezoid ABCD with AB = 18, angle A = 60 degrees and AB parallel to CD (one of the two that occur).
+  PROB["2021-fall-amc-12a-24"] = (() => {
+    const A = [0, 0], B = [18, 0], D = [8, 8 * Math.sqrt(3)], C = [20, 8 * Math.sqrt(3)];
+    const ok = Math.abs(dist(A, D) - 16) < 1e-9 && Math.abs(dist(B, C) - 14) < 1e-9 && Math.abs(dist(C, D) - 12) < 1e-9 && Math.abs(D[1] - C[1]) < 1e-12;
+    const Q = fitQ([A, B, C, D], 34, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), angleArc(Q(A), Q(B), Q(D), 22, ACC),
+      txt(add(Q(A), [-12, 10]), "A"), txt(add(Q(B), [12, 10]), "B"), txt(add(Q(C), [12, -4]), "C"), txt(add(Q(D), [-12, -4]), "D"),
+      txt(add(Q(mid(A, B)), [0, 18]), "18"), txt(add(Q(A), [34, -10]), "60°", ACC, 12),
+      cap(430, 270, "A convex quadrilateral ABCD with AB = 18, ∠A = 60° and AB ∥ CD; the four sides form an arithmetic progression with AB longest." + MM(ok))
+    ]);
+  })();
+
+  // 2021 Fall AMC 12B #8: an obtuse isosceles triangle with its height to the base.
+  PROB["2021-fall-amc-12b-8"] = (() => {
+    const th = rad(150), a = 1, b = 2 * Math.sin(th / 2), h = Math.cos(th / 2);
+    const L = [-b / 2, 0], R = [b / 2, 0], T = [0, h], F = [0, 0];
+    const ok = Math.abs(a * a - 2 * b * h) < 1e-9 && Math.abs(dist(T, L) - a) < 1e-9;
+    const Q = fitQ([L, R, T, [0, -0.15]], 30, 430, 220);
+    return wrap(430, 220, [
+      poly([L, R, T].map(Q), DIM, 2), seg(Q(T), Q(F), ACC, 1.6, "5 4"), rightAngle(Q(F), Q(R), Q(T), 9),
+      txt(add(Q(mid(T, L)), [-6, -12]), "a"), txt(add(Q(mid(T, R)), [6, -12]), "a"), txt(add(Q(mid(L, R)), [40, 18]), "b"), txt(add(Q(mid(T, F)), [9, 4]), "h", ACC),
+      cap(430, 220, "An obtuse isosceles triangle with legs a, base b and height h to the base, where a² = 2bh." + MM(ok))
+    ]);
+  })();
+
+  // 2021 Fall AMC 12B #9: equilateral triangle ABC of side 6, its center O, and the circle through A, O, C.
+  PROB["2021-fall-amc-12b-9"] = (() => {
+    const A = [0, 0], C = [6, 0], B = [3, 3 * Math.sqrt(3)], O = [3, Math.sqrt(3)];
+    const K = [3, -Math.sqrt(3)], r = dist(K, A);                       // center of the circle through A, O, C
+    const ok = Math.abs(dist(K, O) - r) < 1e-9 && Math.abs(dist(K, C) - r) < 1e-9 && Math.abs(dist(O, A) - dist(O, B)) < 1e-9;
+    const Q = fitQ([[K[0] - r, K[1] - r], [K[0] + r, K[1] + r], B], 18, 430, 300), k = Q.k;
+    return wrap(430, 300, [
+      circ(Q(K), r * k, ACC, 1.8), poly([A, B, C].map(Q), DIM, 2), dot(Q(O), GLD, 4),
+      txt(add(Q(A), [-12, 4]), "A"), txt(add(Q(B), [14, 2]), "B"), txt(add(Q(C), [12, 4]), "C"), txt(add(Q(O), [12, -4]), "O", GLD),
+      txt(add(Q(mid(A, B)), [-14, 0]), "6"),
+      cap(430, 300, "Equilateral triangle ABC of side 6 with incenter O, and the circle through A, O and C." + MM(ok))
+    ]);
+  })();
+
+  // 2021 Fall AMC 12B #22: right triangle ABC (6-8-10) with the circle at O tangent to BC at B through A, and the circle at P tangent to AC at A through B.
+  PROB["2021-fall-amc-12b-22"] = (() => {
+    const B = [0, 0], C = [6, 0], A = [6, 8], O = [0, 25 / 4], P = [-7 / 3, 8];
+    const ok = Math.abs(dist(O, B) - dist(O, A)) < 1e-9 && Math.abs(dist(P, A) - dist(P, B)) < 1e-9;
+    const rO = dist(O, B), rP = dist(P, A);
+    const Q = fitQ([[O[0] - rO, O[1] - rO], [O[0] + rO, O[1] + rO], [P[0] - rP, P[1] - rP], [P[0] + rP, P[1] + rP]], 16, 430, 330), k = Q.k;
+    return wrap(430, 330, [
+      circ(Q(O), rO * k, ACC, 1.5), circ(Q(P), rP * k, GLD, 1.5), poly([A, B, C].map(Q), DIM, 2), rightAngle(Q(C), Q(B), Q(A), 9),
+      dot(Q(O), ACC, 3.5), dot(Q(P), GLD, 3.5), seg(Q(O), Q(P), DIM, 1.4, "5 4"),
+      txt(add(Q(A), [10, -6]), "A"), txt(add(Q(B), [-6, 14]), "B"), txt(add(Q(C), [10, 12]), "C"), txt(add(Q(O), [12, 4]), "O", ACC), txt(add(Q(P), [-12, 4]), "P", GLD),
+      txt(add(Q(mid(B, C)), [0, 14]), "6"), txt(add(Q(mid(A, C)), [10, 0]), "8"), txt(add(Q(mid(A, B)), [-10, -6]), "10"),
+      cap(430, 330, "Right triangle ABC with BC = 6, AC = 8, AB = 10; the circle at O touches line BC at B and passes through A, the circle at P touches line AC at A and passes through B." + MM(ok))
+    ]);
+  })();
+
+  // 2021 Fall AMC 12B #24: triangle ABC (11, 24, 20), the bisector from A meeting BC at D and the circumcircle at E, and the circle BED meeting line AB again at F.
+  PROB["2021-fall-amc-12b-24"] = (() => {
+    const A = [0, 0], B = [11, 0], cx = (400 - 576 + 121) / 22, C = [cx, Math.sqrt(400 - cx * cx)];
+    const D = lerp(B, C, 11 / 31);
+    const cc = (P1, P2, P3) => { const ax = P1[0], ay = P1[1], bx = P2[0], by = P2[1], qx = P3[0], qy = P3[1];
+      const dd = 2 * (ax * (by - qy) + bx * (qy - ay) + qx * (ay - by));
+      return [((ax * ax + ay * ay) * (by - qy) + (bx * bx + by * by) * (qy - ay) + (qx * qx + qy * qy) * (ay - by)) / dd,
+              ((ax * ax + ay * ay) * (qx - bx) + (bx * bx + by * by) * (ax - qx) + (qx * qx + qy * qy) * (bx - ax)) / dd]; };
+    const W = cc(A, B, C), R = dist(W, A), u = norm(sub(D, A)), E = add(A, mul(u, 2 * ((W[0] - A[0]) * u[0] + (W[1] - A[1]) * u[1])));
+    const V = cc(B, E, D), r = dist(V, B), F = [2 * V[0] - B[0], 0];
+    const ok = Math.abs(dist(B, C) - 24) < 1e-9 && Math.abs(dist(A, C) - 20) < 1e-9 && Math.abs(dist(W, E) - R) < 1e-9 && Math.abs(dist(V, F) - r) < 1e-9 && Math.abs(dist(V, D) - r) < 1e-9;
+    const Q = fitQ([[W[0] - R, W[1] - R], [W[0] + R, W[1] + R], [V[0] - r, V[1] - r], [V[0] + r, V[1] + r], F], 14, 430, 330), k = Q.k;
+    return wrap(430, 330, [
+      circ(Q(W), R * k, FNT, 1.4), circ(Q(V), r * k, GLD, 1.4), poly([A, B, C].map(Q), DIM, 2), seg(Q(A), Q(E), ACC, 1.6), seg(Q(A), Q(F), DIM, 1.4, "5 4"),
+      [A, B, C, D, E, F].map(X => dot(Q(X), DIM, 3)).join(""),
+      txt(add(Q(A), [-10, 10]), "A"), txt(add(Q(B), [4, 14]), "B"), txt(add(Q(C), [-6, -10]), "C"), txt(add(Q(D), [12, -2]), "D"), txt(add(Q(E), [10, 8]), "E"), txt(add(Q(F), [8, 14]), "F"),
+      txt(add(Q(mid(A, B)), [0, 14]), "11"), txt(add(Q(mid(B, C)), [14, 0]), "24"), txt(add(Q(mid(A, C)), [-12, -4]), "20"),
+      cap(430, 330, "Triangle ABC with AB = 11, BC = 24, CA = 20; the bisector of ∠A meets BC at D and the circumcircle at E, and the circle through B, E, D meets line AB again at F." + MM(ok))
+    ]);
+  })();
 })();
