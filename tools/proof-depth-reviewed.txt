@@ -1,0 +1,8 @@
+# Step E: cards read and judged complete, though short (one id per line; text after # is a note).
+proof-by-cases            # the rule of cases, stated and justified
+contrapositive            # truth-table argument
+proof-by-contradiction    # excluded middle
+direct-proof              # chaining implications
+completing-the-square     # expansion, the minimum, and the integer form are all argued
+squares-mod-small         # rewritten 2026-10-24
+floor-multiples           # rewritten 2026-10-24

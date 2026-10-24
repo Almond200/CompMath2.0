@@ -602,7 +602,19 @@ A supporting skill inside congruence problems, binomial coefficients modulo prim
 $x$ is an integer. Modulo an odd prime $p$, exactly $\frac{p - 1}{2}$ nonzero residues are squares.
 
 ## Why it works
-A square's remainder depends only on the remainder of the number being squared, so it is enough to square each residue. Modulo $4$, $0, 1, 2, 3$ square to $0, 1, 0, 1$. For odd $x = 2k + 1$, $x^2 = 4k(k + 1) + 1$, and $k(k + 1)$ is even, so $x^2 \equiv 1 \pmod 8$. Modulo $9$ and $16$ the same enumeration gives the lists above.
+A square's remainder depends only on the remainder of the number being squared: if $x \equiv r$, then $x^2 \equiv r^2$. So it is enough to square each residue once, and since $(m - r)^2 \equiv r^2 \pmod m$, only the residues up to $\frac m2$ are needed.
+
+Modulo $3$, $0, 1$ square to $0, 1$. Modulo $4$, $0, 1, 2$ square to $0, 1, 0$. Modulo $5$, $0, 1, 2$ square to $0, 1, 4$, and squaring these again gives the fourth powers $0, 1, 1$. Modulo $9$, $0, 1, 2, 3, 4$ square to $0, 1, 4, 0, 7$. Modulo $16$, $0, 1, \ldots, 8$ square to $0, 1, 4, 9, 0, 9, 4, 1, 0$. Modulo $10$, $0, \ldots, 5$ square to $0, 1, 4, 9, 6, 5$, which are the possible last digits.
+
+Modulo $8$, write an odd $x$ as $2k + 1$:
+$$x^2 = 4k(k + 1) + 1,$$
+and $k(k + 1)$ is even, so $x^2 \equiv 1$. An even $x = 2k$ gives $4k^2$, which is $0$ or $4$ as $k$ is even or odd. So the squares mod $8$ are $0, 1, 4$.
+
+The sums follow by adding the lists. Two squares mod $4$ give $0 + 0$, $0 + 1$, $1 + 1$, never $3$. Three squares mod $8$, each $0$, $1$ or $4$, give the ten sums $0, 1, 2, 3, 4, 5, 6, 8, 9, 12$, which are $0, 1, 2, 3, 4, 5, 6, 0, 1, 4$ mod $8$, never $7$.
+
+Step 1, the count modulo an odd prime $p$. If $x^2 \equiv y^2$, then $p \mid (x - y)(x + y)$, and since $p$ is prime, $y \equiv x$ or $y \equiv -x$.
+
+Step 2. The nonzero residues split into the $\frac{p - 1}2$ pairs $\{x, -x\}$, and $x \not\equiv -x$ because $p$ is odd. Both members of a pair have the same square, and by Step 1 different pairs have different squares. So exactly $\frac{p - 1}2$ nonzero residues are squares.
 
 ## Useful observations
 - A sum of two squares is never $3 \bmod 4$, and a sum of three squares is never $7 \bmod 8$.
@@ -950,7 +962,11 @@ $n \ge 0$ and $d \ge 1$ are integers. The count is of positive multiples; includ
 ## Why it works
 The multiples of $d$ up to $n$ are $d, 2d, \ldots, kd$, where $k$ is the largest whole number with $kd \le n$, and there are exactly $k$ of them. The condition $kd \le n$ says $k \le \frac nd$, so $k = \left\lfloor \frac nd \right\rfloor$. For $n = 100$ and $d = 7$, $7 \cdot 14 = 98 \le 100 \lt 105 = 7 \cdot 15$, so there are $14$.
 
-The numbers divisible by both $a$ and $b$ are exactly the multiples of $\operatorname{lcm}(a, b)$, which is why that term appears when [[pie|inclusion-exclusion]] removes the double count.
+The numbers divisible by both $a$ and $b$ are exactly the multiples of $\operatorname{lcm}(a, b)$, which is why that term appears when [[pie|inclusion-exclusion]] removes the double count. In a range $a \le k \le b$, the multiples are those up to $b$ minus those up to $a - 1$.
+
+The observations follow from the same count. A multiple $kab$ is at most $n$ exactly when $kb \le \frac na$, and since $kb$ is a whole number that means $kb \le \left\lfloor \frac na \right\rfloor$; so both sides of the staged count number the same $k$.
+
+The numbers with remainder $r$ are $r, r + d, \ldots, r + jd$ with $r + jd \le n$, so $j$ runs from $0$ to $\left\lfloor \frac{n - r}d \right\rfloor$. Finally, $\sum_{d \le n}\left\lfloor \frac nd \right\rfloor$ counts the pairs $(d, k)$ with $d \mid k \le n$; grouping the pairs by $k$ instead counts the divisors of each $k$.
 
 ## Useful observations
 - $\left\lfloor \frac{\lfloor n/a \rfloor}{b} \right\rfloor = \left\lfloor \frac{n}{ab} \right\rfloor$, so counts of multiples of multiples can be taken in stages.
