@@ -1656,4 +1656,58 @@
     { q: String.raw`Use EGFs to count the words of length $n \ge 1$ over $\{a, b\}$ with an even number of $a$'s.`,
       s: String.raw`The $a$'s contribute $\cosh x = \tfrac{e^x + e^{-x}}2$ (even sizes only) and the $b$'s contribute $e^x$, so the EGF is $\tfrac{e^{2x} + 1}2$. For $n \ge 1$ the coefficient of $\tfrac{x^n}{n!}$ is $\tfrac{2^n}2 = 2^{n-1}$.` }
   );
+  add("necklace-formula",
+    { q: String.raw`How many necklaces of $6$ beads in $2$ colors are there, up to rotation?`,
+      s: String.raw`The divisors of $6$ give $\tfrac16\left(\varphi(1)2^6 + \varphi(2)2^3 + \varphi(3)2^2 + \varphi(6)2^1\right) = \tfrac{64 + 8 + 8 + 4}6 = 14$.` },
+    { q: String.raw`How many necklaces of $5$ beads in $3$ colors are there, up to rotation, and why is the prime length easy?`,
+      s: String.raw`With $n = 5$ prime only $d = 1$ and $d = 5$ appear: $\tfrac15\left(3^5 + 4\cdot3\right) = \tfrac{255}5 = 51$. Directly: the $3$ one-color strings are fixed by every rotation, and the other $240$ fall into orbits of exactly $5$, giving $3 + 48$.` }
+  );
+  add("pentagonal-number-theorem",
+    { q: String.raw`Use the pentagonal recurrence to find $p(6)$ from $p(5) = 7$, $p(4) = 5$ and $p(1) = 1$.`,
+      s: String.raw`The recurrence is $p(n) = p(n - 1) + p(n - 2) - p(n - 5) - p(n - 7) + \cdots$, with $p$ of a negative number equal to $0$. So $p(6) = 7 + 5 - 1 - 0 = 11$.` },
+    { q: String.raw`Multiply out $(1 - x)(1 - x^2)\cdots(1 - x^8)$ up to $x^8$ and compare with the theorem.`,
+      s: String.raw`The coefficients of $1, x, \ldots, x^8$ come out as $1, -1, -1, 0, 0, 1, 0, 1, 0$: the series $1 - x - x^2 + x^5 + x^7 - \cdots$, nonzero only at the pentagonal numbers $0, 1, 2, 5, 7$ (the next ones are $12$ and $15$).` }
+  );
+  add("polya-enumeration",
+    { q: String.raw`The vertices of a square are colored with $3$ colors. How many colorings are there up to rotation?`,
+      s: String.raw`The rotations by $0^\circ, 90^\circ, 180^\circ, 270^\circ$ have $4, 1, 2, 1$ cycles on the vertices, so the count is $\tfrac{3^4 + 3 + 3^2 + 3}4 = \tfrac{96}4 = 24$.` },
+    { q: String.raw`With reflections allowed as well, how many $3$-colorings of the square's vertices are there?`,
+      s: String.raw`The four reflections add two through opposite vertices, with $3$ cycles each, and two through opposite edge midpoints, with $2$ cycles each. The count is $\tfrac{96 + 27 + 27 + 9 + 9}8 = \tfrac{168}8 = 21$.` }
+  );
+  add("erdos-ko-rado",
+    { q: String.raw`What is the largest family of $2$-element subsets of $\{1, \ldots, 6\}$ in which every two members share an element?`,
+      s: String.raw`With $n = 6 \ge 2k = 4$, the bound is $\binom51 = 5$, reached by the star of all pairs containing $1$. The triangle $\{1, 2\}, \{1, 3\}, \{2, 3\}$ is intersecting too, but has only $3$ members.` },
+    { q: String.raw`For $3$-element subsets of a $6$-element set, show that the Erdős–Ko–Rado bound is exactly half of all the subsets, and that many families reach it.`,
+      s: String.raw`The bound is $\binom52 = 10$, half of $\binom63 = 20$. Here $n = 2k$, so the subsets fall into $10$ complementary pairs, and two complements never meet. Any choice of one set from each pair that stays intersecting reaches the bound; the star is one, but not the only one.` }
+  );
+  add("product-of-uniforms",
+    { q: String.raw`For $x$ and $y$ independent and uniform on the unit interval, find the chance that $xy$ does not exceed one half.`,
+      s: String.raw`$P(XY \le c) = c - c\ln c$ with $c = \tfrac12$ gives $\tfrac12 + \tfrac12\ln2 \approx 0.847$.` },
+    { q: String.raw`For the same two numbers, what is the probability that the product is at least $\tfrac14$?`,
+      s: String.raw`It is $1 - \left(\tfrac14 - \tfrac14\ln\tfrac14\right) = \tfrac34 - \tfrac{\ln4}4 = \tfrac34 - \tfrac{\ln2}2 \approx 0.403$.` }
+  );
+  add("variance-independence",
+    { q: String.raw`Find the variance of a fair die roll $X$, and of $2X + 3$.`,
+      s: String.raw`$E[X] = \tfrac72$ and $E[X^2] = \tfrac{91}6$, so $\operatorname{Var}(X) = \tfrac{91}6 - \tfrac{49}4 = \tfrac{35}{12}$. Shifting adds nothing and scaling by $2$ multiplies by $4$: $\operatorname{Var}(2X + 3) = \tfrac{35}3$.` },
+    { q: String.raw`Find the variance of the number of heads in $10$ independent fair coin flips.`,
+      s: String.raw`Each flip has variance $\tfrac12 - \tfrac14 = \tfrac14$, and for independent flips variances add, so the variance is $\tfrac{10}4 = 2.5$.` }
+  );
+  add("schurs-theorem",
+    { q: String.raw`What length does the bound $\lfloor e\cdot k!\rfloor$ give for $3$ colors, and how does it compare with the truth?`,
+      s: String.raw`$\lfloor6e\rfloor = \lfloor16.31\rfloor = 16$, so every $3$-coloring of $1, \ldots, 16$ has a one-color solution of $x + y = z$. The truth is smaller: $13$ numbers can be $3$-colored without one, but $14$ cannot.` }
+  );
+  add("cayleys-formula",
+    { q: String.raw`Check Cayley's formula for $4$ labeled vertices by counting paths and stars.`,
+      s: String.raw`A tree on $4$ vertices is a path or a star. Paths: $\tfrac{4!}2 = 12$ (orderings up to reversal). Stars: $4$ (choice of center). Total $16 = 4^2$.` },
+    { q: String.raw`Among the $125$ labeled trees on the vertices $1$ to $5$, how many give vertex $1$ a single neighbour?`,
+      s: String.raw`In the Prüfer code a vertex appears $(\text{degree} - 1)$ times, so leaves are the vertices that do not appear. Codes of length $3$ avoiding $1$ number $4^3 = 64$, out of $5^3 = 125$ trees.` }
+  );
+  add("matrix-tree-theorem",
+    { q: String.raw`The $4$-cycle has $4$ spanning trees, one for each edge left out. Confirm this with a cofactor of its Laplacian.`,
+      s: String.raw`Every vertex has degree $2$. Deleting the first row and column of $L = D - A$ leaves $\begin{pmatrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2 \end{pmatrix}$ (vertices in cyclic order), with determinant $2\cdot3 - (-1)(-2) = 4$. Indeed, removing any one of the $4$ edges leaves a spanning path.` }
+  );
+  add("lgv-lemma",
+    { q: String.raw`With unit right and up steps, count the pairs of non-intersecting paths $(0, 0) \to (1, 2)$ and $(1, 0) \to (2, 2)$.`,
+      s: String.raw`The path counts are $M_{11} = \binom31 = 3$, $M_{12} = \binom42 = 6$ (to $(2, 2)$), $M_{21} = 1$ (from $(1, 0)$ to $(1, 2)$) and $M_{22} = \binom31 = 3$. The determinant is $3\cdot3 - 6\cdot1 = 3$, which a direct check confirms.` }
+  );
 })();
