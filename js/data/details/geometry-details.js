@@ -1016,13 +1016,14 @@ The line does not pass through a vertex. If it is parallel to a side, the point 
 ## Why it works
 Drop perpendiculars from $A$, $B$, $C$ to the line, of lengths $d_A$, $d_B$, $d_C$. The right triangles at $F$ are similar, so $\frac{AF}{FB} = \frac{d_A}{d_B}$, and likewise $\frac{BD}{DC} = \frac{d_B}{d_C}$ and $\frac{CE}{EA} = \frac{d_C}{d_A}$. The product telescopes to $1$.
 
-The $-1$ for directed lengths records the sign: a line cuts either one or all three side lines outside the segments, which makes an odd number of the three ratios negative.
+The $-1$ for [[directed-lengths|directed lengths]] records the sign: a line cuts either one or all three side lines outside the segments, which makes an odd number of the three ratios negative.
 
 ## Useful observations
 - Menelaus' Theorem is the collinearity counterpart of Ceva's: three points on a line instead of three cevians through a point.
 - It reaches ratios that Ceva cannot, because the points may lie outside the segments.
 - The skill is choosing the triangle: pick the one whose three side lines the known line crosses, and a chain of intersection points often needs two applications.
 - [[mass-points|Mass points]] with a negative mass are Menelaus in disguise.
+- The unsigned converse needs the count of points outside the sides; the directed form needs nothing. The three midpoints show why: their unsigned product is $1$, yet they are not collinear.
 
 ## Applications
 Ratios along a cevian cut by a line, and collinearity of three points on the side lines of a triangle.
@@ -1331,7 +1332,7 @@ The building blocks of shaded-region problems, rarely the whole problem: the wor
 
 "power-of-a-point": String.raw`
 ## Conditions
-$P$ is any point in the plane of the circle, and the lines are any lines through $P$ that meet the circle; a tangent counts as meeting it twice at its point of contact $T$. With directed lengths along each line, $PX \cdot PY = OP^2 - r^2$ including the sign; with ordinary lengths the product is $|OP^2 - r^2|$.
+$P$ is any point in the plane of the circle, and the lines are any lines through $P$ that meet the circle; a tangent counts as meeting it twice at its point of contact $T$. With [[directed-lengths|directed lengths]] along each line, $PX \cdot PY = OP^2 - r^2$ including the sign; with ordinary lengths the product is $|OP^2 - r^2|$.
 
 ## Why it works
 Start from what is fixed. Choose a point $P$ and a circle, and the single number $OP^2 - r^2$ is decided before any line is drawn. Now draw any line through $P$ meeting the circle at $X$ and $Y$: the product comes out to that same number, $$PX \cdot PY = |OP^2 - r^2|,$$ whichever line you chose. The three familiar forms, two chords, two secants, and a secant with a tangent, are the three ways a line through $P$ can cross the circle, not three separate facts.
@@ -3392,6 +3393,7 @@ The distances follow. $O$ is the midpoint of $AA'$ and $M$ is the midpoint of $H
 - The altitude from $A$ has length $AD = 2R\sin B\sin C$, so $HD = AD - AH = 2R(\sin B\sin C - \cos A) = 2R\cos B\cos C$, because $\cos A = -\cos(B + C)$.
 - With $O$ at the origin, $H = A + B + C$ as vectors, the quickest route to coordinates.
 - With the three vertices, $H$ forms an [[orthocentric-system|orthocentric system]], in which each of the four points is the orthocenter of the other three.
+- The distances $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$ are signed: in an obtuse triangle one of them is negative and $H$ lies outside, so a relation proved with unsigned lengths for an acute triangle must be rechecked ([[directed-lengths|directed lengths]] keep track of this).
 
 ## Applications
 Triangles given with their circumradius and an orthocenter distance, circles through the orthocenter and two vertices, and the lengths of the altitude segments $AH$ and $HD$.
@@ -6232,6 +6234,7 @@ Converting to angles needs only the two standard distances, $AH = 2R\cos A$ and 
 - Recognition runs in both directions. Told that the Euler line is parallel to a side, write $\tan B\tan C = 3$ as one more equation in the angles; told two angles whose tangents multiply to $3$, the configuration is known without computing either center.
 - The altitude reading is the one to use when the problem gives a length rather than an angle, since it turns the configuration into a $2 : 1$ division of a segment that can be measured.
 - The hypothesis combines with the [[law-of-sines|Law of Sines]] or with $A + B + C = 180^\circ$ like any other angle relation, and with the Euler line itself when a problem also involves the centroid, which sits one third of the way from $O$ to $H$.
+- The obtuse case is where unsigned reasoning breaks, which is a standard reason to measure heights with signs, as in [[directed-lengths|directed lengths]].
 
 ## Applications
 Triangles whose Euler line is parallel to a side, and relations between the angles $B$, $C$ and the position of the orthocenter on an altitude.
@@ -9207,5 +9210,46 @@ Determinants multiply, and a rotation has determinant $1$ while a reflection has
 
 ## Contest profile
 An AMC 10 and 12 tool for sequences of rotations and reflections of a figure, often the whole solution of a counting question about which sequences return a triangle to its place. It pairs with the Rotation and Reflection Matrices and with the rule that two reflections make a rotation.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"directed-lengths": String.raw`
+## When to use
+A computation uses ratios or products of lengths on a line, through Menelaus, Ceva, power of a point, or distances along an altitude, and the figure might change shape: a point on the extension of a side rather than on the side, an obtuse angle that sends the foot of an altitude outside the opposite side, a point inside a circle rather than outside. Directed lengths let one formula cover all of these at once. A length asked for as an answer is still a distance, so it is the absolute value of the directed one.
+
+## How
+1. Say for each quantity whether it is a distance, a directed length, or a signed coordinate.
+2. Choose a direction on each line before writing a ratio, so that $\overline{AB} = x_B - x_A$.
+3. Note for each point whether it lies inside a segment or on an extension: $\frac{\overline{AF}}{\overline{FB}}$ is positive for a point inside $AB$ and negative outside.
+4. Write the theorem in its directed form, with Menelaus' product $-1$ and power $\overline{PA} \cdot \overline{PB} = OP^2 - r^2$.
+5. Compute, and take absolute values only for the lengths the answer asks for.
+6. Check the result against a redrawn figure with an obtuse angle or a point moved outside.
+
+For a point $P$ on a chord $AB$ of a circle with center $O$ and radius $r$, the directed product $\overline{PA} \cdot \overline{PB}$ is $OP^2 - r^2$ in every case. Inside the circle $A$ and $B$ lie on opposite sides of $P$, the product is negative, and the unsigned lengths satisfy $PA \cdot PB = r^2 - OP^2$. Outside, both point the same way and $PA \cdot PB = OP^2 - r^2$.
+
+## Why it works
+Directed lengths along a line are differences of coordinates, so $\overline{AB} + \overline{BC} = (x_B - x_A) + (x_C - x_B) = x_C - x_A = \overline{AC}$ whatever the order of the three points. Unsigned lengths satisfy $AB + BC = AC$ only when $B$ is between $A$ and $C$, which is why a proof written with them silently assumes one picture.
+
+The chosen direction does not matter for the quantities theorems use. Reversing the line negates every directed length on it, so a ratio $\frac{\overline{AF}}{\overline{FB}}$ of two lengths on one line and a product $\overline{PA} \cdot \overline{PB}$ of two lengths on one line are unchanged. A ratio is negative exactly when $F$ is outside the segment, which is the information an unsigned ratio throws away.
+
+That lost sign is why unsigned converses fail. The three midpoints of the sides give unsigned Menelaus ratios $1$, $1$, $1$ with product $1$, but all three points are inside their sides, the directed product is $+1$ rather than $-1$, and the points are not collinear. With directed lengths the converse needs no extra hypothesis.
+
+The same thing happens along an altitude. With $BC$ directed from $B$ to $C$, the foot $D$ of the altitude from $A$ has $\overline{BD} = AB\cos B$, which is negative when $B$ is obtuse, and $\overline{DC} = \overline{DB} + \overline{BC}$ still holds. Statements such as "the orthocenter is two thirds of the way down the altitude" compare unsigned lengths and hold only for acute triangles; written with signed heights they hold for all triangles.
+
+The method has a limit: a sign is defined only along one line, or along parallel lines given one common direction. A ratio of segments on two lines that are not parallel has no sign.
+
+## Formulas it uses
+- [[menelaus-theorem]]: its directed form, product $-1$, is a test for collinearity with no conditions on the configuration.
+- [[power-of-a-point]]: the directed product $\overline{PA} \cdot \overline{PB} = OP^2 - r^2$ covers points inside and outside the circle at once.
+- [[orthocenter-properties]]: the distances $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$ are signed, which is what makes them valid for obtuse triangles.
+
+## Common traps
+- Concluding collinearity from an unsigned Menelaus product of $1$ without checking how many points lie outside the sides.
+- Writing $OP^2 - r^2$ as the unsigned product $PA \cdot PB$ for a point inside the circle, where it is negative.
+- Proving a relation for an acute triangle with unsigned lengths and applying it to an obtuse one.
+- Changing the direction of a line halfway through a computation.
+
+## Contest profile
+An AIME and olympiad habit more than a single step: it keeps a ratio computation from breaking when a point falls outside a side, and it is how Menelaus, Ceva and power of a point are stated in their general forms. On the AMC it shows up as the check that an obtuse triangle's foot of an altitude lies outside the base.
 `
 });

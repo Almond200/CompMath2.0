@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 172 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 173 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -43,7 +43,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["eulers-polyhedron-formula", "prism-pyramid-volumes", "sphere-formulas", "cone-formulas", "frustum-volume", "regular-tetrahedron", "regular-octahedron", "tetrahedron-centroid", "distance-3d", "space-diagonal", "cross-product-area", "plane-intercept-form", "vector-dot-product", "vector-projection", "cube", "dodecahedron-icosahedron"] },
       { title: "Angle & Configuration Chasing",
         note: "The default opening move: name the angles and see what the configuration forces.",
-        ids: ["angle-chasing", "extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "shared-leg-pythagoras", "bisector-closer-region", "scale-one-level"] },
+        ids: ["angle-chasing", "extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "shared-leg-pythagoras", "bisector-closer-region", "scale-one-level", "directed-lengths"] },
       { title: "Ratios, Masses & Areas",
         note: "Turning a ratio question into an area question, or into a weighing.",
         ids: ["mass-points", "area-method"] },
@@ -58,11 +58,11 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 127 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 130 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
-        ids: ["quadratic-formula", "vietas-quadratic", "vietas-general", "fundamental-theorem-algebra", "factor-remainder-theorem", "rational-root-theorem", "coefficient-extraction", "conjugate-root-theorems", "vertex-form", "descartes-rule-signs", "newtons-sums", "symmetric-polynomial-strategies", "products-over-roots", "fundamental-theorem-symmetric", "root-transformations", "quadratic-forms"] },
+        ids: ["quadratic-formula", "vietas-quadratic", "vietas-general", "fundamental-theorem-algebra", "factor-remainder-theorem", "rational-root-theorem", "coefficient-extraction", "conjugate-root-theorems", "vertex-form", "descartes-rule-signs", "newtons-sums", "symmetric-polynomial-strategies", "products-over-roots", "fundamental-theorem-symmetric", "root-transformations", "quadratic-forms", "polynomial-division", "quadratic-root-location"] },
       { title: "Factoring & Identities",
         note: "The rewrites worth recognizing instantly, because spotting one usually ends the problem.",
         ids: ["difference-of-squares", "an-minus-bn", "sophie-germain", "cubes-minus-3abc", "square-of-sum", "binomial-theorem", "sos-identity", "useful-factorizations", "pairwise-sum-product", "antisymmetric-factorization", "sum-zero-identities", "reciprocal-power-sums", "denesting-radicals", "completing-the-square", "forced-difference-of-squares", "sfft", "rationalizing"] },
@@ -74,7 +74,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point", "sign-chart"] },
       { title: "Exponents, Logs, Radicals & Absolute Value",
         note: "The manipulation rules, including the ones with a trap in them.",
-        ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation"] },
+        ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation", "transforming-equations"] },
       { title: "Trigonometry",
         note: "Identities, and the triangle-specific relations that live between algebra and geometry.",
         ids: ["pythagorean-identities", "common-angle-values", "reduction-identities", "angle-addition", "harmonic-addition", "double-angle", "half-angle", "special-trig-values", "even-power-sin-cos-sums", "trig-telescoping-product", "inverse-trig-identities"] },
@@ -607,7 +607,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["mass-points", "area-method", "affine-transformations"] },
       { title: "Move the Figure",
         note: "Transformations that carry one part of the picture onto another, so a hard relation becomes an obvious one.",
-        ids: ["directed-angles", "phantom-point", "pole-polar", "spiral-similarity", "rotation-trick", "inversion-properties", "homothety-monge"] },
+        ids: ["directed-angles", "phantom-point", "pole-polar", "spiral-similarity", "rotation-trick", "inversion-properties", "homothety-monge", "directed-lengths"] },
     ] },
   { id: "set-invariants", name: "Invariants, Coloring & Extremal", kind: "thinking", subject: "Methods",
     blurb: "Arguments that prove something must be so without constructing it. The common thread is a quantity that cannot change.",
@@ -929,5 +929,18 @@ window.MATH_BUILTIN_LISTS = [
       { title: "Symmetric Machinery",
         note: "Olympiad-level tools for symmetric expressions.",
         ids: ["schurs-inequality", "muirheads-inequality", "maclaurin-inequality", "holders-inequality", "minkowski-inequality"] },
+    ] },
+  { id: "set-checking", name: "Checking Your Work", kind: "thinking", subject: "Methods",
+    blurb: "The moves that make sure an answer is really an answer: keeping every solution while solving, choosing the right sign for the picture, and testing the result before it is marked.",
+    sections: [
+      { title: "Solving Without Gaining or Losing Solutions",
+        note: "Every one-way step in an equation or inequality, and the condition it needs checked.",
+        ids: ["transforming-equations", "sign-chart", "quadratic-root-location", "polynomial-division"] },
+      { title: "Signs and Configurations",
+        note: "A figure that can change shape needs a convention that changes with it.",
+        ids: ["directed-lengths", "directed-angles"] },
+      { title: "Testing the Answer",
+        note: "Before marking a choice: estimate it, try a small case, or look for a counterexample.",
+        ids: ["estimating-answers", "disproof-by-counterexample", "organized-listing"] },
     ] },
 ];

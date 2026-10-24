@@ -1099,6 +1099,7 @@ AIME expected-value problems are almost always linearity of indicators in disgui
 ## Key forms
 - $E[\text{trials until the first success}] = \dfrac1p$ — and the first success is on trial $k$ with probability $(1 - p)^{k-1}p$
 - $\dfrac{1 - p}{p}$ — the expected number of failures before the first success
+- $E[\text{trials until the } r\text{th success}] = \dfrac rp$, with the $r$th success on trial $k$ with probability $\dbinom{k - 1}{r - 1}p^r(1 - p)^{k - r}$; the expected number of failures before it is $\dfrac{r(1 - p)}{p}$ — waiting for the $r$th success (the negative binomial)
 - $\alt{E[\text{collect all } n \text{ types}] = nH_n = n\sum_{k=1}^{n}\frac1k}{E[\text{collect all } n \text{ types}] = n\left(1 + \frac12 + \cdots + \frac1n\right)}$ — the coupon collector
 
 ## Conditions
@@ -1109,10 +1110,13 @@ Self-similarity: after one failure the situation resets, so $E = 1 + (1 - p)E$, 
 
 The coupon collector is a sum of geometric waits. Once $k$ distinct types are held, the chance the next draw is new is $\frac{n - k}{n}$, so that stage takes $\frac{n}{n - k}$ on average; adding the stages gives $nH_n$.
 
+Waiting for the $r$th success is $r$ first-success waits in a row: after each success the trials start fresh, so the total is a sum of $r$ independent waits of mean $\frac1p$, which gives $\frac rp$. For the distribution, the $r$th success falls on trial $k$ exactly when trial $k$ succeeds and the first $k - 1$ trials hold $r - 1$ successes, in any of $\binom{k-1}{r-1}$ positions. Counting failures instead of trials subtracts the $r$ successes: $\frac rp - r = \frac{r(1 - p)}{p}$. A fair coin needs $4$ flips on average for $2$ heads, $2$ of them tails.
+
 ## Useful observations
 - The self-similar equation is set up rather than a series summed: after one trial the process has either succeeded or is back where it started.
 - The same conditioning handles variants the closed form does not cover.
 - Recognizing the coupon collector as a sum of independent waits is what makes it easy.
+- Read whether a problem counts trials or failures: the two answers differ by $1$ for one success and by $r$ for the $r$th.
 
 ## Applications
 Expected waiting times for a first success, expected rolls to see every face, and first-passage questions.

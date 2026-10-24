@@ -603,7 +603,7 @@ window.MATH_SECTIONS.push({
           name: "Waiting for Success",
           latex: String.raw`E[\text{trials until first success}] = \frac{1}{p}, \qquad E[\text{collect all } n \text{ types}] = nH_n = n\left(1 + \tfrac{1}{2} + \cdots + \tfrac{1}{n}\right)`,
           description: String.raw`The number of independent trials up to and including the first success, when each trial succeeds with probability $p$, has expected value $\frac1p$. The quickest proof is the self-similar equation $E = 1 + (1 - p)E$: one trial is always spent, and with probability $1 - p$ the wait starts over. Collecting all $n$ equally likely types of coupon is a chain of such waits, one for each new type, with success probabilities $\frac nn, \frac{n-1}{n}, \ldots, \frac1n$, which is where the harmonic number in the second formula comes from.`,
-          keywords: ["first success", "geometric", "coupon collector", "expected wait", "dice until"],
+          keywords: ["first success", "geometric", "coupon collector", "expected wait", "dice until", "rth success", "negative binomial"],
           importance: "low",
           tier: "AMC",
           level: ["AMC12", "AIME"]

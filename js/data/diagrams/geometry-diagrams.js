@@ -3213,6 +3213,24 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // Directed lengths: with the line BC pointing right, the foot D of the altitude from A lies
+  // beyond B when the angle at B is obtuse, so the directed length BD is negative.
+  DIAGRAMS["directed-lengths"] = [(() => {
+    const y0 = 220, A = [100, 64], B = [180, y0], C = [372, y0], D = [A[0], y0];
+    const arrow = (P, Q, col, w = 2.2) => { const d = norm(sub(Q, P)), q = perp(d);
+      return seg(P, Q, col, w) + `<polygon points="${pf(Q)} ${pf(add(sub(Q, mul(d, 10)), mul(q, 5)))} ${pf(sub(sub(Q, mul(d, 10)), mul(q, 5)))}" fill="${col}"/>`; };
+    const ok = (A[0] - B[0]) * (C[0] - B[0]) + (A[1] - B[1]) * (C[1] - B[1]) < 0 && D[0] < B[0];
+    return wrap(430, 330, [
+      arrow([34, y0], [412, y0], FNT, 1.4),
+      poly([A, B, C], DIM, 2), seg(A, D, FNT, 1.5, "5 4"), rightAngle(D, A, C, 11),
+      arrow([B[0], y0 + 30], [D[0], y0 + 30], GLD), arrow([B[0], y0 + 56], [C[0], y0 + 56], ACC),
+      dot(A, DIM, 3.5), dot(B, DIM, 3.5), dot(C, DIM, 3.5), dot(D, GLD, 3.5),
+      txt(add(A, [0, -12]), "A", DIM, 13), txt(add(B, [6, -10]), "B", DIM, 13), txt(add(C, [0, -12]), "C", DIM, 13), txt(add(D, [-14, -8]), "D", GLD, 13),
+      txt([D[0] + 40, y0 + 48], "BD < 0", GLD, 12.5), txt([(B[0] + C[0]) / 2, y0 + 74], "BC > 0", ACC, 12.5),
+      cap(430, 330, "With the line pointing right, directed lengths read off coordinates: BC is positive, and BD is negative because the angle at B is obtuse and the foot D lies beyond B." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   DIAGRAMS["phantom-point"] = [(() => {
     // Two circles meet in ≤ 2 points; if X and X' are both the second common point
     // beyond the known K, they must coincide — the standard phantom-point closer.

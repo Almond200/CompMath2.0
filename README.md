@@ -1,6 +1,6 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 738 cards
+A searchable reference for AMC 10/12, AIME and olympiad training. 742 cards
 covering formulas, methods, and patterns (539 formulas, 155 methods, 44 patterns), plus a database
 of 4,675 past contest problems (4,616 with their full statements), of which 3,059 have a written
 strategy and 2,779 are cross-linked to the cards their solutions run through (2026-10-23).
@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Four method cards the owner asked for, and a new list (2026-10-24).** Transforming Equations Without Losing Solutions (equivalent and one-way steps, the zero case, sign conditions before squaring, substitution ranges, parameters; it holds the radical-equation routine), Polynomial Long and Synthetic Division, Locating the Roots of a Quadratic Without Solving, and Directed Lengths and Sign Checks (with a figure). Every example was checked by script. Waiting for Success gains the $r$th success (negative binomial, $\frac rp$ trials, $\frac{r(1-p)}p$ failures). The cards join the AMC routes and are linked from Menelaus, Orthocenter, Euler Line Parallel to a Side, Power of a Point, Logarithm Rules, Partial Fractions, Substituting $y=x+1/x$, Vieta and the Remainder Theorem. A new thinking list, Checking Your Work, gathers the moves that keep every solution and test the answer. 742 cards.
 - **Reported errors checked and fixed (owner, 2026-10-24).** Each claim was checked by computation before editing, and each card face now agrees with its write-up. Wald's identity: a stopping time needs independent terms (counterexample: $X_i=B$ and $N=1+B$ give $1$, not $\frac34$). Basic Probability: only favorable over total needs equally likely outcomes. LGV: the identity-matching condition is now beside the determinant. Regions: a circle with $k\gt0$ crossings adds $k$ regions. Variance: independence is enough but not needed. Graph Coloring: bipartite iff $\chi\le2$, and Brooks needs a connected graph. Fencepost: a short last gap gives $\lceil L/d\rceil+1$, and the 8 Mondays line is fixed. Sprague–Grundy: the reverse statement corrected. Cauchy example: the solution no longer relies on $c^x$. Matrix–Tree: the eigenvalue form is stated for connected graphs. Vieta: the root gap is now $\sqrt{\lvert\Delta\rvert}/\lvert a\rvert$. Menelaus: the converse needs directed lengths or a count of the points outside the sides. First-order recurrences: a classification table. Euler line parallel to a side: $AH=2HD$ only for acute triangles (counterexample given). Focal radii: $PF=\lvert y+p\rvert$, and the hyperbola's latus rectum is now written $c^2/a-a$. Circle-power families: real only when $r_t^2\ge0$. Lester: the false Kiepert and $60^\circ$ claims replaced. Soddy–Gosset and Kruskal–Katona are labelled as quoted, with references. Strategies: 2002 AIME I #3 finishes the count ($36-8-3=25$), and 2025 AMC 10B #21 / 12B #17 show the complete case analysis (4 classes of sizes $8,8,4,8$).
 
 **2026-10-23**

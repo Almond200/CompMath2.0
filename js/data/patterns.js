@@ -13,7 +13,7 @@ window.MATH_SECTIONS.push({
     {
       title: "Geometry",
       groups: [
-        { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "phantom-point"] },
+        { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "directed-lengths", "phantom-point"] },
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
         { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
         { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "composing-transformations", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
@@ -578,6 +578,21 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "directed-lengths",
+          name: "Directed Lengths and Sign Checks",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A theorem about ratios or products of lengths (Menelaus, Ceva, power of a point, distances along an altitude) is used where a point may lie on an extension rather than inside a segment, or where the triangle may be obtuse.`,
+          move: String.raw`Choose a direction on each line, write every length along it as a difference of coordinates, $\overline{AB} = x_B - x_A$, use the directed form of the theorem, and take absolute values only for the final answer.`,
+          uses: ["menelaus-theorem", "power-of-a-point", "orthocenter-properties"],
+          latex: String.raw`\overline{AB} = x_B - x_A, \qquad \overline{BA} = -\overline{AB}, \qquad \overline{AB} + \overline{BC} = \overline{AC} \ \text{(any order)}`,
+          description: String.raw`A distance is never negative, but a directed length $\overline{AB}$ along an oriented line is the coordinate difference $x_B - x_A$, so it records which way $B$ lies from $A$. Directed lengths add for every order of the points, and a ratio of two directed lengths on one line is negative exactly when the point divides the segment externally. Writing a theorem with directed lengths makes one formula cover every picture: an obtuse angle that pushes a foot outside a side, or a point on an extension. An unsigned version needs its configuration stated: three side midpoints give an unsigned Menelaus product of $1$ and are not collinear.`,
+          keywords: ["directed lengths", "directed segments", "signed lengths", "signed distance", "sign convention", "external division", "obtuse case", "configuration issues", "method"],
+          importance: "medium",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "phantom-point",
           name: "Phantom Point Method",
           type: "method",
@@ -616,10 +631,10 @@ window.MATH_SECTIONS.push({
         { title: "Changing the Representation", blurb: "Rewriting numbers in another form, as logarithms or in polar form, so that products and powers become sums and multiples.", ids: ["take-logs-linearize", "trig-series-complex", "polar-form", "conjugate-both-sides"] },
         { title: "Working with Floors", blurb: "Splitting a number into its integer and fractional parts, or grouping the terms of a sum that share a floor.", ids: ["name-the-floor", "group-equal-floors"] },
         { title: "Factoring & Rewriting", blurb: "Rearranging an expression into a product or a square that exposes its structure.", ids: ["sfft", "completing-the-square", "forced-difference-of-squares", "rationalizing", "denesting-radicals"] },
-        { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "lagrange-interpolation", "root-transformations", "roots-of-unity-filter"] },
+        { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point"] },
-        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "averages-to-totals"] },
+        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Matrices & Determinants", blurb: "Evaluating a determinant without expanding every term, and raising a matrix to a high power.", ids: ["matrix-power-diagonalizing", "cofactor-expansion"] }
@@ -867,6 +882,21 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12", "AIME"]
         },
         {
+          id: "transforming-equations",
+          name: "Transforming Equations Without Losing Solutions",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`Solving an equation needs a step that cannot be undone: squaring, dividing or canceling a factor that might be $0$, taking logarithms, substituting a new variable, or dividing by a parameter.`,
+          move: String.raw`Before each such step, write down what it assumes (the domain, the zero case, the sign of each side, the range of the new variable), handle the excluded case separately, and at the end keep only the candidates that satisfy the original equation.`,
+          uses: ["log-rules", "am-gm"],
+          latex: String.raw`A \iff B \ \text{(same solutions)}, \qquad A \Rightarrow B \ \text{(check every candidate in } A)`,
+          description: String.raw`An equivalent step, such as adding the same quantity to both sides or multiplying by a nonzero constant, keeps exactly the same solutions. A one-way step only guarantees that every solution of $A$ solves $B$: squaring can add solutions, and dividing by an expression that can be $0$ can lose them. So record what each one-way step assumes, treat the excluded case on its own, and check every candidate in the original equation. Squaring $\sqrt{x + 2} = x$ gives $x = 2$ or $x = -1$, and only $2$ works.`,
+          keywords: ["extraneous solutions", "extraneous roots", "radical equation", "check the answer", "lost solutions", "squaring both sides", "dividing by a variable", "domain of an equation", "equivalent transformation", "method"],
+          importance: "high",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "add-all-equations",
           name: "Adding Groups of Equations",
           type: "method",
@@ -1017,6 +1047,21 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "polynomial-division",
+          name: "Polynomial Long and Synthetic Division",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A polynomial must be divided by another: the quotient left after a known root is removed, a rational expression whose numerator has degree at least the denominator's, a remainder by a divisor that is not linear, or the integer values of a quotient of polynomials.`,
+          move: String.raw`Divide the leading term of what remains by the leading term of the divisor, subtract that multiple of the divisor, and repeat until the remainder has smaller degree than the divisor; for a divisor $x - a$, do the same with synthetic division.`,
+          uses: ["factor-remainder-theorem", "rational-root-theorem"],
+          latex: String.raw`P(x) = D(x)\,Q(x) + R(x), \qquad \deg R \lt \deg D`,
+          description: String.raw`Division writes a polynomial $P$ as a multiple of a divisor $D$ plus a remainder of smaller degree, $P = DQ + R$, and the quotient $Q$ and remainder $R$ are unique. Long division builds $Q$ one term at a time from the leading terms. For a divisor $x - a$, synthetic division keeps only the coefficients: bring down the first, then repeatedly multiply by $a$ and add the next; the last number is $R = P(a)$ and the others are the coefficients of $Q$.`,
+          keywords: ["polynomial long division", "synthetic division", "quotient and remainder", "divide polynomials", "division algorithm for polynomials", "improper rational function", "slant asymptote", "method"],
+          importance: "high",
+          tier: "AMC",
+          level: ["AMC10", "AMC12", "AIME"]
+        },
+        {
           id: "lagrange-interpolation",
           name: "Interpolating a Polynomial",
           type: "method",
@@ -1060,6 +1105,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "quadratic-root-location",
+          name: "Locating the Roots of a Quadratic Without Solving",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A quadratic with a parameter must have its roots real and positive, on either side of a number, or both inside an interval, and solving for the roots would bury the parameter in square roots.`,
+          move: String.raw`Make the leading coefficient positive, then read the location off the sign of $f$ at the given numbers, the position of the vertex, and the discriminant (for signs alone, off Vieta's sum and product).`,
+          uses: ["quadratic-formula", "vietas-quadratic", "vertex-form"],
+          latex: String.raw`a \gt 0: \quad f(k) \lt 0 \iff r_1 \lt k \lt r_2, \qquad r_1, r_2 \in (m, n) \iff \Delta \ge 0,\ m \lt -\tfrac{b}{2a} \lt n,\ f(m) \gt 0,\ f(n) \gt 0`,
+          description: String.raw`The roots of $f(x) = ax^2 + bx + c$ can be placed without being found. With $a \gt 0$ the parabola is negative exactly between its roots, so a single value $f(k) \lt 0$ puts $k$ strictly between two real roots. Both roots lie in $(m, n)$ exactly when the discriminant $\Delta = b^2 - 4ac$ is at least $0$, the vertex $-\frac{b}{2a}$ lies in $(m, n)$, and $f$ is positive at both ends. Both roots are positive exactly when $\Delta \ge 0$ and their sum and product are positive.`,
+          keywords: ["location of roots", "roots in an interval", "roots on either side", "both roots positive", "quadratic with a parameter", "sign of f at a point", "root separation", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
         },
         {
           id: "root-transformations",

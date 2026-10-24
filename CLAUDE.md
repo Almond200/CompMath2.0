@@ -18,7 +18,7 @@
 export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome
 python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 tools/check-lists.py
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
-python3 tools/check-labels.py          # 5 known "far-move" findings caused by fonts are the baseline
+python3 tools/check-labels.py          # 7 known "far-move" findings caused by fonts are the baseline (2026-10-24)
 $JSC tools/validate-problem-db.js
 ```
 
