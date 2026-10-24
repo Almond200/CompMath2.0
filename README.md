@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2000 AMC 8 #11 to #20; end of the tenth cloud chat (2026-10-24).** Answers C ($17$), D ($353$), C ($72^\circ$), D, C ($15$), C ($400$), A ($-\tfrac23$), E, C ($50$), A (one dime). 30 AMC 8 problems (2000 #21 to #25, all of 1999) and the 350 AJHSME remain. All checked by script.
 - **Step D: 2000 AMC 8 #1 to #10 (2026-10-24).** Answers B, A, D, E, C, A, B, D ($63-22$), D ($256$), E. All checked by script.
 - **Step D: 2001 AMC 8 finished (2026-10-24).** #16 ($\tfrac56$), 17 (B), 18 ($\tfrac{11}{36}$), 19 (D), 20 (S, Q, M), 21 ($35$), 22 ($97$), 23 ($4$ shapes, by script), 24 ($5$), 25 ($7425=3\cdot2475$, by search). All checked by script.
 - **Step D: 2001 AMC 8 #6 to #15 (2026-10-24).** Answers B, A ($21$), E ($39$), D ($189$), A, C, A (its Defined Operation tag kept), D, C, A. All checked by script.
