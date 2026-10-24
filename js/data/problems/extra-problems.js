@@ -2034,4 +2034,70 @@
     { q: String.raw`Find $\sum_{k=1}^{4}\left\lfloor \frac{13k}{5} \right\rfloor$ two ways.`,
       s: String.raw`By reciprocity it is $\frac{(13 - 1)(5 - 1)}2 = 24$, the same as $\sum_{k=1}^{12}\left\lfloor \frac{5k}{13} \right\rfloor$. Directly, $2 + 5 + 7 + 10 = 24$.` }
   );
+  add("cayley-menger",
+    { q: String.raw`A corner of a unit cube is cut off: three edges of length $1$ meet at right angles, and the other three edges are $\sqrt2$. Check the volume with the determinant.`,
+      s: String.raw`With $a = b = c = 1$ and $d = e = f = \sqrt2$, the matrix has $1$s in the first-vertex row and $2$s elsewhere off the diagonal, and its determinant is $8$. So $V^2 = \frac{8}{288} = \frac1{36}$ and $V = \frac16$, which is $\frac13 \cdot \frac12 \cdot 1$, the familiar corner volume.` },
+    { q: String.raw`What does the determinant give for the four corners of a unit square, taken as a "flat tetrahedron"?`,
+      s: String.raw`With $P_1P_2 = P_1P_4 = P_2P_3 = P_3P_4 = 1$ and diagonals $P_1P_3 = P_2P_4 = \sqrt2$, the determinant comes out $0$, so $V = 0$. A zero Cayley–Menger determinant is exactly the test for four points being coplanar.` }
+  );
+  add("pappus-hexagon",
+    { q: String.raw`Put $A = (0, 0)$, $B = (1, 0)$, $C = (3, 0)$ on $y = 0$ and $D = (0, 2)$, $E = (1, 2)$, $F = (2, 2)$ on $y = 2$. Find the three crossing points and the line through them.`,
+      s: String.raw`$AE \cap BD = \left(\tfrac12, 1\right)$, $AF \cap CD = \left(\tfrac65, \tfrac65\right)$ and $BF \cap CE = \left(\tfrac53, \tfrac43\right)$. Both slopes from the first are $\frac{1/5}{7/10} = \frac{1/3}{7/6} = \frac27$, so all three lie on $y = 1 + \frac27\left(x - \frac12\right)$. Parallel carrier lines are allowed: they meet at infinity.` },
+    { q: String.raw`Repeat with $A = (1, 0)$, $B = (2, 0)$, $C = (4, 0)$ on the $x$-axis and $D = (1, 1)$, $E = (3, 3)$, $F = (4, 4)$ on $y = x$.`,
+      s: String.raw`The crossings are $AE \cap BD = (1.4, 0.6)$, $AF \cap CD = (1.6, 0.8)$ and $BF \cap CE = (3.2, 2.4)$, and all three satisfy $y = x - 0.8$.` }
+  );
+  add("desargues-involution",
+    { q: String.raw`Use the involution to prove the Butterfly Theorem: $M$ is the midpoint of chord $XY$, chords $AC$ and $BD$ pass through $M$, and $AD$, $BC$ meet $XY$ at $P$, $Q$. Show $MP = MQ$.`,
+      s: String.raw`Put $M$ at $t = 0$. The degenerate conic $AC \cup BD$ meets the line twice at $M$, so $0$ is paired with itself, which forces $\gamma = 0$; the relation becomes $\frac1t + \frac1{t'} = $ constant. The circle gives the pair $X = -m$, $Y = m$, so the constant is $0$. Then $P = p$ pairs with $Q = -p$, so $MP = MQ$.` },
+    { q: String.raw`Through a point $M$ of chord $XY$, with $MX = 2$ and $MY = 6$, draw chords $AC$ and $BD$; let $AD$ and $BC$ cross $XY$ at $P$ and $Q$. If $P$ is $3$ from $M$ toward $Y$, where is $Q$?`,
+      s: String.raw`As in the butterfly case, $M = 0$ is paired with itself, so $\frac1t + \frac1{t'}$ is constant, and the pair $X = -2$, $Y = 6$ fixes it at $-\frac12 + \frac16 = -\frac13$. Then $\frac13 + \frac1q = -\frac13$ gives $q = -\frac32$: $Q$ is $\frac32$ from $M$ toward $X$.` }
+  );
+  add("mobius-transformations",
+    { q: String.raw`Where does $f(z) = \frac{z - i}{z + i}$ send the real line and the upper half-plane?`,
+      s: String.raw`For real $x$, $|x - i| = |x + i|$ (both are $\sqrt{x^2 + 1}$), so $|f(x)| = 1$: the real line goes to the unit circle, with $f(0) = -1$, $f(1) = -i$, $f(\infty) = 1$. Since $f(i) = 0$, the upper half-plane, the side holding $i$, goes to the inside of the disk.` },
+    { q: String.raw`Find the fixed points of $f(z) = \frac{2z + 1}{z + 2}$ and show that it maps the unit circle to itself.`,
+      s: String.raw`$f(z) = z$ means $2z + 1 = z^2 + 2z$, so $z = \pm1$. For $|z| = 1$, $|2z + 1|^2 = 4 + 4\operatorname{Re} z + 1$ and $|z + 2|^2 = 1 + 4\operatorname{Re} z + 4$ are equal, so $|f(z)| = 1$.` }
+  );
+  add("complete-quadrilateral-miquel",
+    { q: String.raw`$A = (5, 0)$, $B = (3, 4)$, $C = (-4, 3)$, $D = (-3, -4)$ lie on $x^2 + y^2 = 25$, with $E = AB \cap CD = (-7, 24)$ and $F = AD \cap BC = (17, 6)$. Check that $(9, 12)$ lies on the circumcircles of all four triangles of the lines $AB$, $BC$, $CD$, $DA$.`,
+      s: String.raw`The triangles are $BCE$, $ADE$, $ABF$ and $CDF$, one for each line left out. Computing each circumcircle, $(9, 12)$ lies on all four, so it is the Miquel point.` },
+    { q: String.raw`In the same configuration, where does the Miquel point sit relative to line $EF$ and the center $O$?`,
+      s: String.raw`Line $EF$ is $3x + 4y = 75$, and $3 \cdot 9 + 4 \cdot 12 = 75$, so $M = (9, 12)$ is on it. It is also the foot of the perpendicular from $O$: the foot is $\frac{75}{25}(3, 4) = (9, 12)$. For a cyclic quadrilateral, the Miquel point is always the foot from $O$ to $EF$.` }
+  );
+  add("brocards-theorem",
+    { q: String.raw`A cyclic quadrilateral on $x^2 + y^2 = 25$ has diagonals meeting at $G = (1, 2)$. Which line holds the two crossing points $E$ and $F$ of opposite sides?`,
+      s: String.raw`By Brocard, $EF$ is the polar of $G$: $1 \cdot x + 2 \cdot y = 25$. As a check, $OG$ has direction $(1, 2)$, the normal of that line, so $OG \perp EF$ as the theorem says.` },
+    { q: String.raw`With $E = (-7, 24)$ and $F = (17, 6)$ outside the circle $x^2 + y^2 = 25$, compute $EF$ by the formula $EF^2 = EO^2 + FO^2 - 2R^2$ and compare with the distance formula.`,
+      s: String.raw`$EO^2 = 49 + 576 = 625$ and $FO^2 = 289 + 36 = 325$, so $EF^2 = 625 + 325 - 50 = 900$ and $EF = 30$. Directly, $24^2 + 18^2 = 900$.` }
+  );
+  add("projective-transformations",
+    { q: String.raw`Points at $t = 0, 1, 2, 3$ on a line are sent by $t \mapsto \frac1{t + 1}$. Compare the cross-ratio $(A, B; C, D) = \frac{(c - a)/(c - b)}{(d - a)/(d - b)}$ before and after.`,
+      s: String.raw`Before: $\frac{2/1}{3/2} = \frac43$. After, the points are $1, \frac12, \frac13, \frac14$: $\frac{(-2/3)/(-1/6)}{(-3/4)/(-1/4)} = \frac{4}{3}$. The lengths changed, the cross-ratio did not.` },
+    { q: String.raw`On a line, $A = 0$, $B = 6$, $C = 2$. Find $D$ with $(A, B; C, D) = -1$, and say what a projective map sending $D$ to infinity does to $C$.`,
+      s: String.raw`$\frac{2/(2 - 6)}{d/(d - 6)} = -\frac12 \cdot \frac{d - 6}{d} = -1$ gives $d - 6 = 2d$, so $D = -6$. When $D$ goes to infinity the ratio reduces to $\frac{CA}{CB} = -1$, so $C$ lands on the midpoint of the images of $A$ and $B$.` }
+  );
+  add("derivative-extremum",
+    { q: String.raw`Find the largest and smallest values of $f(x) = x^3 - 6x^2 + 9x + 1$ on $[0, 4]$.`,
+      s: String.raw`$f'(x) = 3x^2 - 12x + 9 = 3(x - 1)(x - 3)$, so the candidates are $x = 0, 1, 3, 4$, with values $1, 5, 1, 5$. The maximum is $5$ (at $x = 1$ and $x = 4$) and the minimum is $1$ (at $x = 0$ and $x = 3$).` },
+    { q: String.raw`A rectangular pen against a long wall uses $40$ m of fence for the other three sides. What is the largest area?`,
+      s: String.raw`With the two sides off the wall of length $x$, the area is $A(x) = x(40 - 2x)$ for $0 \lt x \lt 20$. $A'(x) = 40 - 4x = 0$ at $x = 10$, and $A \to 0$ at both ends, so the maximum is $10 \cdot 20 = 200$ m$^2$.` }
+  );
+  add("matrix-power-diagonalizing",
+    { q: String.raw`Raise the upper triangular $\begin{pmatrix}2&1\\0&3\end{pmatrix}$ to the fifth power through its eigenvectors. What sits above the diagonal?`,
+      s: String.raw`The eigenvalues are $2$ and $3$, with eigenvectors $(1, 0)$ and $(1, 1)$. So $M^n = \begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}2^n&0\\0&3^n\end{pmatrix}\begin{pmatrix}1&-1\\0&1\end{pmatrix} = \begin{pmatrix}2^n&3^n - 2^n\\0&3^n\end{pmatrix}$, and the entry is $243 - 32 = 211$.` },
+    { q: String.raw`Diagonalize $\begin{pmatrix}1&1\\1&0\end{pmatrix}$ to get a formula for its $n$th power's top-right entry, and evaluate it at $n = 10$.`,
+      s: String.raw`The eigenvalues are the roots $\varphi, \psi = \frac{1 \pm \sqrt5}2$ of $\lambda^2 = \lambda + 1$, and the top-right entry of the $n$th power is $\frac{\varphi^n - \psi^n}{\sqrt5} = F_n$ (Binet). At $n = 10$ it is $F_{10} = 55$.` }
+  );
+  add("dimension-arguments",
+    { q: String.raw`Without expanding, why must $x^2$, $(x + 1)^2$, $(x + 2)^2$, $(x + 3)^2$ be linearly dependent? Find a relation.`,
+      s: String.raw`They are four vectors in the space of polynomials of degree at most $2$, which has dimension $3$. A relation is the third difference: $(x + 3)^2 - 3(x + 2)^2 + 3(x + 1)^2 - x^2 = 0$ (the $x^2$, $x$ and constant terms give $1 - 3 + 3 - 1$, $6 - 12 + 6$, and $9 - 12 + 3$).` },
+    { q: String.raw`Are $(1, 1, 0)$, $(0, 1, 1)$, $(1, 0, 1)$ independent? Answer over the reals and over $\mathbb F_2$.`,
+      s: String.raw`Over the reals the determinant is $2 \ne 0$, so they are independent. Over $\mathbb F_2$ their sum is $(2, 2, 2) = 0$, so they are dependent. A dimension argument must say which field it works in.` }
+  );
+  add("vieta-jumping",
+    { q: String.raw`$(a, b) = (30, 8)$ solves $a^2 + b^2 = k(ab + 1)$. Find $k$, then jump down until a coordinate is $0$. What does that show about $k$?`,
+      s: String.raw`$900 + 64 = 964 = 4 \cdot 241$, so $k = 4$. The jump $a' = kb - a$ gives $(30, 8) \to (8, 2)$, since $32 - 30 = 2$, and then $(8, 2) \to (2, 0)$, since $8 - 8 = 0$. At $(2, 0)$ the equation reads $4 = k$, so $k = 2^2$ is a perfect square, as the classic result says.` },
+    { q: String.raw`Starting from $(1, 1)$, jump upward to list four more solutions of $a^2 + b^2 + 1 = 3ab$.`,
+      s: String.raw`Replacing the smaller entry $b$ of $(a, b)$ by $3a - b$ gives $(1, 1) \to (2, 1) \to (5, 2) \to (13, 5) \to (34, 13)$. Check: $169 + 25 + 1 = 195 = 3 \cdot 65$, and $1156 + 169 + 1 = 1326 = 3 \cdot 442$.` }
+  );
 })();

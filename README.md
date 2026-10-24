@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: the last 11 cards with no practice (2026-10-24).** Cayley–Menger, Pappus, the Desargues involution, Möbius maps, the Miquel point, Brocard, projective maps, derivative extrema, matrix powers, dimension arguments and Vieta jumping, two exercises each. Every card now has at least one practice problem. Cards under two: 39.
 - **F: 11 number-theory cards (2026-10-24).** Gauss's totient sum, Dirichlet, Thue, Cauchy–Davenport, Erdős–Ginzburg–Ziv, Wolstenholme, Zsigmondy, Fermat numbers, Carmichael numbers, Beatty and floor-sum reciprocity, two exercises each. Cards under two: 50.
 - **F: 10 more Lowest/Lower geometry cards (2026-10-24).** The Japanese theorem, Poncelet closure, the circumradius of a cyclic quadrilateral, the Newton–Gauss line, Pick on the hexagonal grid, convex position, Sylvester–Gallai, Helly, Minkowski and Soddy–Gosset, two exercises each. Cards under two: 61.
 - **F: 10 Lowest/Lower geometry cards (2026-10-24).** Morley, Steiner–Lehmus, the cevian nest, Droz-Farny, Lester, the broken chord, Reim, the arbelos, Sawayama–Thébault and the mixtilinear incircle, two exercises each. Cards under two: 71.
