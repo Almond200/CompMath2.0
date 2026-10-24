@@ -3341,7 +3341,19 @@ Everywhere on the AMC 10 and 12 as points on two sides asking for a fraction of 
 The $A$-excircle is tangent to side $a$ and to the extensions of the other two sides; $s$ is the semiperimeter, $K$ the area, $r$ the inradius and $R$ the circumradius, with angles $A$, $B$, $C$ written by their vertices.
 
 ## Why it works
-The excenter opposite $A$ sits at the intersection of the external bisectors from $B$ and $C$; joining it to the vertices splits the triangle with signed areas, giving $K = r_a(s - a)$ in place of $K = rs$. The tangent-length bookkeeping mirrors the incircle's, but the tangent length from $A$ is now $s$ itself, and that gives $r_a = s\tan\frac A2$ while $r = (s - a)\tan\frac A2$.
+Step 1, the area. The excenter $I_A$ is $r_a$ from all three side lines, so with signed areas
+$$K = [ABI_A] + [ACI_A] - [BCI_A] = \tfrac12 r_a(c + b - a) = r_a(s - a),$$
+in place of $K = rs$. The reciprocal sum follows: $\frac1{r_a} + \frac1{r_b} + \frac1{r_c} = \frac{(s - a) + (s - b) + (s - c)}K = \frac sK = \frac1r$.
+
+Step 2, tangent lengths. With $T_a$, $T_b$, $T_c$ the touch points, equal tangents give $AT_b + AT_c = (c + BT_a) + (b + CT_a) = a + b + c$, so each tangent from $A$ is $s$. In the right triangle $AT_cI_A$ the angle at $A$ is $\frac A2$, so $r_a = s\tan\frac A2$, just as $r = (s - a)\tan\frac A2$. Also $BT_a = s - c$, which is the incircle's tangent length from $C$, so the two touch points on $BC$ mirror each other across its midpoint.
+
+Step 3, the trigonometric form. The angle between $BC$ and $BI_A$ is $90^\circ - \frac B2$, so $BT_a = r_a\tan\frac B2$, and likewise $CT_a = r_a\tan\frac C2$. Adding,
+$$a = r_a\left(\tan\tfrac B2 + \tan\tfrac C2\right) = r_a\frac{\cos\frac A2}{\cos\frac B2\cos\frac C2},$$
+and $a = 4R\sin\frac A2\cos\frac A2$ gives $r_a = 4R\sin\frac A2\cos\frac B2\cos\frac C2$.
+
+Step 4, the sum. From Step 1, $r_a - r = \frac{Ka}{s(s - a)}$ and $r_b + r_c = \frac{Ka}{(s - b)(s - c)}$. Since $(s - b)(s - c) + s(s - a) = bc$, adding gives
+$$r_a + r_b + r_c - r = \frac{Ka \cdot bc}{s(s - a)(s - b)(s - c)} = \frac{abc}K = 4R.$$
+The homothety ratio is $\frac r{r_a} = \frac{K/s}{K/(s - a)} = \frac{s - a}s$.
 
 ## Useful observations
 - Any incircle technique has an excircle twin; the touch point of the $A$-excircle on $BC$ mirrors the incircle's touch point across the midpoint of $BC$.
@@ -4628,6 +4640,8 @@ $a$, $b$, $c$ are the sides opposite $A$, $B$, $C$. The formulas hold for every 
 
 ## Why it works
 Drop the altitude from $A$ to line $BC$ at the foot $H$. In the two right triangles, $BH = c\cos B$ and $HC = b\cos C$, and $a = BH + HC$. The other two identities are the same construction from $B$ and from $C$. When $B$ is obtuse the foot lies beyond $B$, and the negative cosine makes $c\cos B$ the signed length that keeps the sum equal to $a$.
+
+Multiplying the three identities by $a$, $b$, $c$ gives $a^2 = ab\cos C + ac\cos B$, $b^2 = bc\cos A + ab\cos C$ and $c^2 = ac\cos B + bc\cos A$. Adding the last two and subtracting the first leaves $b^2 + c^2 - a^2 = 2bc\cos A$, the Law of Cosines. For a path, projection onto a fixed direction is additive, so the projections of the pieces add to the projection of the whole displacement.
 
 ## Useful observations
 - It is the quickest linear relation between a side and the two adjacent base angles, with no squaring.

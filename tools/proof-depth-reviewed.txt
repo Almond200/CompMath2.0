@@ -72,3 +72,13 @@ subtract-equal-remainders
 fermat-point              # bound, equality, and the 120-degree case
 multiplicative-order      # all observations
 crt-solution-counting     # prime powers counted
+averages-to-totals
+numeral-as-polynomial
+projection-formula        # Law of Cosines from it, the path form
+consecutive-coprime       # negative runs, k = 2, the square observation
+take-logs-linearize
+stars-bars-upper-bound
+inverse-trig-identities   # each identity and the correction proved
+primes-6k
+exradii                   # every Key form proved
+trig-substitution         # the tangent condition derived

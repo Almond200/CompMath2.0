@@ -2094,9 +2094,11 @@ Radicals such as $\sqrt{1 - x^2}$ or $\sqrt{x^2 + 4}$, optimizing an expression 
 Maximize $x + \sqrt{1 - x^2}$ for $-1 \le x \le 1$. With $x = \sin\theta$ and $-\frac\pi2 \le \theta \le \frac\pi2$, the root is $\cos\theta$, so the expression is $\sin\theta + \cos\theta = \sqrt2\sin\left(\theta + \frac\pi4\right)$, whose maximum $\sqrt2$ occurs at $\theta = \frac\pi4$, that is $x = \frac{\sqrt2}{2}$.
 
 ## Why it works
-Each substitution matches a Pythagorean identity. With $x = a\sin\theta$, $$\sqrt{a^2 - x^2} = a\sqrt{1 - \sin^2\theta} = a\cos\theta,$$ which is right because $\cos\theta \ge 0$ for $-\frac\pi2 \le \theta \le \frac\pi2$. The figure shows the same fact as a right triangle with hypotenuse $a$ and one leg $x$.
+Each substitution matches a Pythagorean identity. With $x = a\sin\theta$,
+$$\sqrt{a^2 - x^2} = a\sqrt{1 - \sin^2\theta} = a\cos\theta,$$
+which is right because $\cos\theta \ge 0$ for $-\frac\pi2 \le \theta \le \frac\pi2$. The figure shows the same fact as a right triangle with hypotenuse $a$ and one leg $x$.
 
-Recursions close because identities double or add angles: $\cos 2\theta = 2\cos^2\theta - 1$ turns $x \mapsto 2x^2 - 1$ into $\theta \mapsto 2\theta$. And for angles with $A + B + C = \pi$, $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, which is the condition $a + b + c = abc$.
+Recursions close because identities double or add angles: $\cos 2\theta = 2\cos^2\theta - 1$ turns $x \mapsto 2x^2 - 1$ into $\theta \mapsto 2\theta$. And for angles with $A + B + C = \pi$, $\tan(A + B) = -\tan C$ reads $\frac{\tan A + \tan B}{1 - \tan A\tan B} = -\tan C$, which rearranges to $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, the condition $a + b + c = abc$.
 
 ## Formulas it uses
 - [[pythagorean-identities]]: $\sin^2\theta + \cos^2\theta = 1$ and $1 + \tan^2\theta = \sec^2\theta$, which clear the radicals.
@@ -3317,9 +3319,11 @@ An olympiad and advanced-AIME tool that turns an intractable sum of products int
 Each identity holds on the principal ranges. $\arcsin(\sin x) = x$ only for $x \in \left[-\frac\pi2, \frac\pi2\right]$, and $\arccos(\cos x) = x$ only for $x \in [0, \pi]$; elsewhere the answer is the reflection or shift that lands in the range.
 
 ## Why it works
-$\arcsin x + \arccos x = \frac\pi2$ because sine and cosine are cofunctions on the principal ranges. $\arctan x + \arctan\frac1x = \pm\frac\pi2$ because the tangent of the sum blows up and the sign is set by the sign of $x$.
+Step 1, the complement. Let $\theta = \arcsin x$, in $\left[-\frac\pi2, \frac\pi2\right]$. Then $\frac\pi2 - \theta$ is in $[0, \pi]$, the range of $\arccos$, and $\cos\left(\frac\pi2 - \theta\right) = \sin\theta = x$, so $\arccos x = \frac\pi2 - \theta$.
 
-The arctan addition formula is tangent addition read backward, valid only while the true sum stays inside $\left(-\frac\pi2, \frac\pi2\right)$; once $xy \gt 1$ pushes it out, $\pi$ is added or subtracted.
+Step 2, reciprocals. For $x \gt 0$, $\theta = \arctan x$ is in $\left(0, \frac\pi2\right)$, so is $\frac\pi2 - \theta$, and $\tan\left(\frac\pi2 - \theta\right) = \frac1x$; so the sum is $\frac\pi2$. Both functions are odd, so for $x \lt 0$ it is $-\frac\pi2$.
+
+Step 3, addition. With $A = \arctan x$ and $B = \arctan y$, tangent addition gives $\tan(A + B) = \frac{x + y}{1 - xy}$. The sum $A + B$ lies in $(-\pi, \pi)$, and inside the principal range exactly when $\cos(A + B) = \cos A\cos B(1 - xy) \gt 0$, that is $xy \lt 1$. When $xy \gt 1$ it is outside, and the arctangent of $\frac{x + y}{1 - xy}$ differs from it by $\pi$, added when $x \gt 0$ and subtracted when $x \lt 0$.
 
 ## Useful observations
 - The ranges are pinned first: $\arcsin, \arctan \in \left[-\frac\pi2, \frac\pi2\right]$ and $\arccos \in [0, \pi]$.

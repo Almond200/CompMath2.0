@@ -568,7 +568,9 @@ The $x_i$ are nonnegative integers with a common cap $m$. With different caps th
 ## Why it works
 Violating a cap $x_i \le m$ means $x_i \ge m + 1$: substituting $x_i' = x_i - (m + 1)$ and counting freely gives the number of solutions in which that variable busts. Inclusion-exclusion alternates over which caps are violated, since violations can overlap.
 
-With a common cap $m$ on all $k$ variables this closes up as $\sum_j(-1)^j\binom kj\binom{n - j(m+1) + k - 1}{k - 1}$, and the terms vanish once $j(m + 1) \gt n$.
+A chosen set of $j$ variables all bust exactly when, after removing $m + 1$ from each, the rest $n - j(m + 1)$ is distributed freely, in $\binom{n - j(m+1) + k - 1}{k - 1}$ ways. With a common cap the count is the same for each of the $\binom kj$ sets, which gives
+$$\sum_j(-1)^j\binom kj\binom{n - j(m+1) + k - 1}{k - 1},$$
+and once $j(m + 1) \gt n$ there is nothing left to distribute, so those terms are $0$.
 
 ## Useful observations
 - The upper bound is handled by violation rather than by construction. Everything is counted with plain [[stars-and-bars|stars and bars]], then the cases where a chosen variable exceeds $m$ are subtracted, each forced by pre-assigning the overflow and re-counting the remainder.

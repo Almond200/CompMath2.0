@@ -152,9 +152,11 @@ An AIME tool for gcds with huge exponents, where the answer is read from the gcd
 $n$ and $k$ are integers. The product statement includes products containing $0$ or negative numbers.
 
 ## Why it works
-A common divisor of $n$ and $n + k$ divides their difference, $k$, and conversely $\gcd(n, n + k) = \gcd(n, k)$ by one step of the Euclidean algorithm; with $k = 1$ the gcd is $1$.
+A common divisor of $n$ and $n + k$ divides their difference, $k$, and conversely $\gcd(n, n + k) = \gcd(n, k)$ by one step of the Euclidean algorithm; with $k = 1$ the gcd is $1$, and with $k = 2$ it is $\gcd(n, 2)$, which is $1$ or $2$ by parity.
 
-Among $k$ consecutive integers the remainders mod $k$ are all different, so exactly one is $0$. For the product, $(n + 1)(n + 2)\cdots(n + k) = k!\binom{n + k}{k}$ when $n \ge 0$, and a binomial coefficient is an integer.
+Among $k$ consecutive integers the remainders mod $k$ are all different, so exactly one is $0$. For the product, $(n + 1)(n + 2)\cdots(n + k) = k!\binom{n + k}{k}$ when $n \ge 0$, and a binomial coefficient is an integer. A run containing $0$ has product $0$, and a run of negative numbers has the product of the positive run of the same length, up to sign. With $k = 2, 3, 4$ this gives the factors $2$, $6$ and $24$.
+
+For the square observation: $n$ and $n + 1$ are coprime, so if their product is a square, each is a square, by unique factorization. Two positive squares differ by at least $3$, so that cannot happen for $n \ge 1$.
 
 ## Useful observations
 - $n(n + 1)$ is never a perfect square for $n \ge 1$: the factors are coprime, so both would be squares, and no two positive squares differ by $1$.
