@@ -4570,4 +4570,20 @@
       cap(430, 270, "AB = 10, and the bisector of angle A meets BC at D with CD = 3 (drawn for one possible AC)." + MM(ok))
     ]);
   })();
+
+  // 2018 AMC 12B #21: the 5-12-13 triangle with its circumcenter O, incenter I, and the circle
+  // centered at M tangent to both legs and internally to the circumcircle.
+  PROB["2018-amc-12b-21"] = (() => {
+    const C = [0, 0], A = [12, 0], B = [0, 5], O = mid(A, B), R = 6.5, I = [2, 2], M = [4, 4], rm = 4;
+    const ok = Math.abs(dist(O, M) - (R - rm)) < 1e-12 && Math.abs(dist(A, B) - 13) < 1e-12;
+    const Q = fitQ([[O[0] - R, O[1] - R], [O[0] + R, O[1] + R]], 12, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, FNT, 1.4), circ(Q(M), rm * k, GLD, 1.6), poly([A, B, C].map(Q), DIM, 2), rightAngle(Q(C), Q(A), Q(B), 9),
+      poly([M, O, I].map(Q), ACC, 1.8, ACCS), dot(Q(O), ACC, 3), dot(Q(I), ACC, 3), dot(Q(M), GLD, 3.5),
+      txt(add(Q(A), [10, 12]), "A"), txt(add(Q(B), [-10, -4]), "B"), txt(add(Q(C), [-10, 12]), "C"),
+      txt(add(Q(O), [10, 10]), "O", ACC, 13), txt(add(Q(I), [-11, 4]), "I", ACC, 13), txt(add(Q(M), [0, -9]), "M", GLD, 13),
+      txt(add(Q(mid(C, A)), [30, 14]), "12", DIM, 12), txt(add(Q(mid(C, B)), [-12, 4]), "5", DIM, 12), txt(add(Q(mid(A, B)), [6, -8]), "13", DIM, 12),
+      cap(430, 270, "The 5-12-13 triangle with circumcenter O and incenter I; the circle centered at M touches both legs and the circumcircle." + MM(ok))
+    ]);
+  })();
 })();
