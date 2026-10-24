@@ -4610,4 +4610,33 @@
       cap(430, 270, "ABCD inscribed in circle O with AB = 3, BC = 2, CD = 6, DA = 8; X and Y on BD, YE ∥ AD, EF ∥ AC (gold), and G on line CX and the circle." + MM(ok))
     ]);
   })();
+
+  // 2017 AMC 12B #14: the ice cream seen from the side, a cut through the axis: the frustum
+  // (bottom diameter 2, top diameter 4, height 4) with the cone of height 4 on top.
+  PROB["2017-amc-12b-14"] = (() => {
+    const P = [[-1, 0], [1, 0], [2, 4], [-2, 4]], T = [0, 8];
+    const ok = Math.abs(dist(P[0], P[1]) - 2) < 1e-12 && Math.abs(dist(P[2], P[3]) - 4) < 1e-12 && T[1] - P[2][1] === 4;
+    const Q = fitQ([[-2, 0], [2, 8]], 22, 430, 270);
+    return wrap(430, 270, [
+      poly(P.map(Q), DIM, 2, ACCS), poly([P[3], P[2], T].map(Q), GLD, 2, GLDS), seg(Q([0, 0]), Q(T), FNT, 1.2, "4 4"),
+      txt(add(Q([0, 0]), [0, 16]), "2", DIM, 12), txt(add(Q([1, 4]), [0, -6]), "4", DIM, 12),
+      txt(add(Q([0, 2]), [16, 4]), "h = 4", DIM, 12), txt(add(Q([0, 5.6]), [16, 4]), "h = 4", GLD, 12),
+      txt(add(Q([0, 1]), [-26, 4]), "frustum", ACC, 12), txt(add(Q([0, 4.9]), [-24, 4]), "cone", GLD, 12),
+      cap(430, 270, "A cut through the axis: the frustum (diameters 2 and 4, height 4) and the cone of height 4 standing on its top." + MM(ok))
+    ]);
+  })();
+
+  // 2017 AMC 12B #24: ABCD with right angles at B and C, ABC ~ BCD, and E inside with ABC ~ CEB.
+  PROB["2017-amc-12b-24"] = (() => {
+    const x = 2 + Math.sqrt(5), A = [0, x], B = [0, 0], C = [1, 0], D = [1, 1 / x], E = [1 / (1 + x * x), x / (1 + x * x)];
+    const sh = (P, Qq, R) => Math.abs((Qq[0] - P[0]) * (R[1] - P[1]) - (R[0] - P[0]) * (Qq[1] - P[1])) / 2;
+    const ok = Math.abs(sh(A, E, D) / sh(C, E, B) - 17) < 1e-9 && Math.abs((E[0] - B[0]) * (E[0] - C[0]) + (E[1] - B[1]) * (E[1] - C[1])) < 1e-12;
+    const Q = fitQ([A, B, C, D], 24, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), poly([C, E, B].map(Q), ACC, 1.6, ACCS), poly([A, E, D].map(Q), GLD, 1.6, GLDS),
+      rightAngle(Q(B), Q(A), Q(C), 9), rightAngle(Q(C), Q(B), Q(D), 9), rightAngle(Q(E), Q(B), Q(C), 7),
+      txt(add(Q(A), [-12, 4]), "A"), txt(add(Q(B), [-12, 10]), "B"), txt(add(Q(C), [12, 10]), "C"), txt(add(Q(D), [12, -2]), "D"), txt(add(Q(E), [10, -6]), "E", ACC, 12.5),
+      cap(430, 270, "Right angles at B and C, triangle ABC ∼ BCD, and E inside with ABC ∼ CEB (blue); the area of AED (gold) is 17 times that of CEB." + MM(ok))
+    ]);
+  })();
 })();
