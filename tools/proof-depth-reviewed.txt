@@ -92,3 +92,13 @@ rectangles-in-grid
 euclids-lemma
 halls-marriage            # full induction proof of sufficiency
 eulers-polyhedron-formula # spanning-tree proof, bounds, Platonic solids; genus quoted
+vertex-form
+eulers-theorem            # exponent reduction
+exponent-laws
+angle-between-lines       # perpendicular and vertical cases
+jensens-inequality        # induction, derivative test, specializations
+parabola-focus-directrix
+sos-identity              # n-variable form
+coloring-arguments
+fundamental-theorem-algebra # analytic core labelled quoted, with a reference; the rest proved
+incircle-excircle-touch   # tangent lengths derived

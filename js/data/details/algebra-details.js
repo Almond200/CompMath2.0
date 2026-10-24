@@ -162,9 +162,13 @@ Collecting the choices with the same $k$, the coefficient of $x^{n-k}$ is $(-1)^
 The polynomial is nonconstant, and roots are counted with multiplicity. Over the real numbers the count of real roots can be smaller than the degree; it is over $\mathbb{C}$ that there are exactly $n$.
 
 ## Why it works
-The analytic core is that every non-constant complex polynomial has at least one root, provable via Liouville's theorem, a winding-number argument, or a minimum-modulus argument.
+The analytic core is that every non-constant complex polynomial has at least one root. It is quoted, not proved here: proofs go through Liouville's theorem, a winding-number argument, or a minimum-modulus argument, and B. Fine and G. Rosenberger, The Fundamental Theorem of Algebra (Springer, 1997), collects them.
 
 Once there is one root $r$, dividing out $(x - r)$ drops the degree by one, and repeating gives, after $n$ steps, $n$ linear factors, $P(x) = a_n\prod (x - r_k)$, with exactly $n$ roots counted by multiplicity.
+
+The other Key forms need only the Factor Theorem. If a polynomial of degree at most $n$ had $n + 1$ distinct roots and were not zero, it would have $n + 1$ linear factors and degree at least $n + 1$. So two polynomials of degree at most $n$ that agree at $n + 1$ points are equal.
+
+For real coefficients, $\overline{P(z)} = P(\bar z)$, so non-real roots come in conjugate pairs, and $(x - r)(x - \bar r) = x^2 - 2\operatorname{Re}(r)\,x + \lvert r\rvert^2$ is a real quadratic. An odd degree cannot be made of pairs alone, so one root is real.
 
 ## Useful observations
 - It is the license behind "a degree-$n$ polynomial has $n$ roots," which underwrites [[vietas-general|Vieta's Formulas]], partial fractions, and all root counting.
@@ -2503,7 +2507,10 @@ The variables are real, so that every square is nonnegative. The identity itself
 ## Why it works
 Expand the right side: each $(x - y)^2$ contributes $x^2 + y^2 - 2xy$, and the halved total collects exactly $x^2 + y^2 + z^2 - xy - yz - zx$. Each variable appears in two of the three squares, which gives its square the coefficient $\frac12 \cdot 2 = 1$, and each pair appears once with $-2$, which gives $-1$ after halving.
 
-Being a sum of real squares, it is nonnegative and vanishes only when all pairwise differences do.
+Being a sum of real squares, it is nonnegative and vanishes only when all pairwise differences do. The third Key form is the same expression, since $(x + y + z)^2 - 3(xy + yz + zx) = x^2 + y^2 + z^2 - xy - yz - zx$.
+
+With $n$ variables, each $x_i^2$ appears in $n - 1$ of the squares, so
+$$\sum_{i \lt j}(x_i - x_j)^2 = (n - 1)\sum_i x_i^2 - 2\sum_{i \lt j}x_ix_j = n\sum_i x_i^2 - \Big(\sum_i x_i\Big)^2.$$
 
 ## Useful observations
 - Three standard deployments: proving $\sum x^2 \ge \sum xy$ with the equality analysis; cracking symmetric conditions, since any equation reducible to $\sum(x - y)^2 = 0$ forces all variables equal; and the factor analysis of $x^3 + y^3 + z^3 - 3xyz = (x + y + z)\cdot\frac12\sum(x - y)^2$, which shows the second factor's sign is fixed (see [[cubes-minus-3abc|the cubes factorization]]).
@@ -2688,9 +2695,15 @@ Object.assign(window.MATH_DETAILS, {
 The function is convex or concave on an interval containing every $x_i$; for twice-differentiable $f$, convex means $f'' \ge 0$ and concave means $f'' \le 0$. Equality needs all the $x_i$ equal unless $f$ is linear on the relevant stretch.
 
 ## Why it works
-Convexity means every chord lies above the graph. The average $\frac{x_1 + \cdots + x_n}{n}$ is a point inside the interval, and the average of the values $\frac{\sum f(x_i)}{n}$ is the corresponding point on the "chord polygon" above it, so the function value at the average sits below the average of the values.
+Convexity means every chord lies above the graph: $f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$ for $0 \le \lambda \le 1$. That is the weighted statement for two points.
 
-Induction from the two-point definition $f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$ gives the full weighted statement.
+Step 1, induction on $n$. Given weights $\lambda_1, \ldots, \lambda_n$ with $\lambda_n \lt 1$, put $y = \sum_{i \lt n}\frac{\lambda_i}{1 - \lambda_n}x_i$, an average of $n - 1$ points. Then
+$$f\Big(\sum\lambda_ix_i\Big) = f\big(\lambda_nx_n + (1 - \lambda_n)y\big) \le \lambda_nf(x_n) + (1 - \lambda_n)f(y),$$
+and the induction hypothesis bounds $f(y)$ by $\sum_{i \lt n}\frac{\lambda_i}{1 - \lambda_n}f(x_i)$. Equal weights $\frac1n$ give the first Key form, and $-f$ gives the concave one.
+
+Step 2, the derivative test. If $f'' \ge 0$, then $f'$ is increasing, so for $x \lt z \lt y$ the mean value theorem makes the slope of the chord from $x$ to $z$ at most the slope from $z$ to $y$; that is the chord inequality at $z$. Strict convexity makes it strict unless the points coincide, which is the equality case.
+
+The specializations are this applied once. Jensen for the concave $\ln$ says the log of the mean is at least the mean of the logs, which is AM-GM. For the convex $\frac1x$ it says $\frac1{\text{AM}}$ is at most the mean of the reciprocals, which is AM-HM.
 
 ## Useful observations
 - Convexity is checked with the second derivative: $f'' \ge 0$ convex (inequality as stated), $f'' \le 0$ concave (flip it).

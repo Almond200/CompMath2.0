@@ -481,7 +481,11 @@ A frequent AIME step, usually leading to the multiplicative order or combined wi
 $\gcd(a, n) = 1$ is essential: $2^{\varphi(4)} = 4 \equiv 0 \pmod 4$. For a base sharing a factor with $n$, the modulus is split into a coprime part, where the theorem applies, and a part where high powers vanish.
 
 ## Why it works
-Multiplying by $a$ shuffles the residues coprime to $n$. Let $r_1, \ldots, r_k$ be those residues, $k = \varphi(n)$. The numbers $ar_1, \ldots, ar_k$ are also coprime to $n$ and all different mod $n$, since $ar_i \equiv ar_j$ would let the invertible $a$ cancel. So they are the same residues in a new order, and $$a^k\,r_1\cdots r_k \equiv r_1\cdots r_k \pmod n.$$ The product is coprime to $n$, so it cancels, leaving $a^{\varphi(n)} \equiv 1$. For prime $n$ this is Fermat's argument.
+Multiplying by $a$ shuffles the residues coprime to $n$. Let $r_1, \ldots, r_k$ be those residues, $k = \varphi(n)$. The numbers $ar_1, \ldots, ar_k$ are also coprime to $n$ and all different mod $n$, since $ar_i \equiv ar_j$ would let the invertible $a$ cancel. So they are the same residues in a new order, and
+$$a^k\,r_1\cdots r_k \equiv r_1\cdots r_k \pmod n.$$
+The product is coprime to $n$, so it cancels, leaving $a^{\varphi(n)} \equiv 1$. For prime $n$ this is Fermat's argument.
+
+For the second form, write $k = q\varphi(n) + r$ with $0 \le r \lt \varphi(n)$; then $a^k = \left(a^{\varphi(n)}\right)^q a^r \equiv a^r$. The smallest exponent giving $1$, the order, divides $\varphi(n)$, as the [[multiplicative-order|order card]] shows.
 
 ## Useful observations
 - Exponents reduce modulo $\varphi(n)$, and often a smaller exponent already gives $1$: with $\varphi(100) = 40$, $3^{100} \equiv 3^{20} = (3^{10})^2 \equiv 49^2 \equiv 1 \pmod{100}$.

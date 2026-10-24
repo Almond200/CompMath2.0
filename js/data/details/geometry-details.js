@@ -3900,9 +3900,11 @@ An AIME and AMC area step, rarely alone: the central angle usually comes from a 
 Neither line is vertical for the main formula, because a vertical line has no slope. The formula gives the acute angle; the obtuse angle between the lines is its supplement.
 
 ## Why it works
-A line of slope $m$ makes angle $\arctan m$ with the $x$-axis; the angle between the lines is the difference of their inclinations, and the tangent subtraction formula gives $\tan(\alpha_1 - \alpha_2)$ in terms of the slopes. The absolute value selects the acute angle.
+A line of slope $m$ makes angle $\arctan m$ with the $x$-axis; the angle between the lines is the difference of their inclinations $\alpha_1$ and $\alpha_2$, and the tangent subtraction formula gives
+$$\tan(\alpha_1 - \alpha_2) = \frac{\tan\alpha_1 - \tan\alpha_2}{1 + \tan\alpha_1\tan\alpha_2} = \frac{m_1 - m_2}{1 + m_1m_2}.$$
+The absolute value selects the acute angle, and $m_1 = m_2$ gives $0$.
 
-When $1 + m_1m_2 = 0$ the denominator vanishes and the tangent is undefined, which is the right answer: the angle is $90^\circ$.
+The denominator is $\frac{\cos(\alpha_1 - \alpha_2)}{\cos\alpha_1\cos\alpha_2}$, so it vanishes exactly when the inclinations differ by $90^\circ$: $1 + m_1m_2 = 0$ is perpendicularity. A vertical line has inclination $90^\circ$, so the angle with it is $90^\circ - \arctan\lvert m\rvert$, whose tangent is $\frac1{\lvert m\rvert}$.
 
 ## Useful observations
 - Directly, two slopes go in and the angle comes out.
@@ -5264,7 +5266,9 @@ A staple of AMC circle problems and the opening line of most AIME circle-packing
 $a = BC$, $b = CA$, $c = AB$, and $s$ is the semiperimeter; the excircle is the one opposite $A$, tangent to $BC$ and the extensions of $AB$ and $AC$.
 
 ## Why it works
-Equal tangents from a vertex fix the incircle contact distances: the two tangents from $B$ are equal, forcing the touch point on $BC$ to be $s - b$ from $B$. The $A$-excircle touches $BC$ with the roles of $b$ and $c$ swapped, at $s - c$ from $B$. Since $(s - b) + (s - c) = a$, those two points average to $\frac a2$, the midpoint $M$ of $BC$, so they are reflections of each other in $M$, a distance $(s - b) - (s - c) = |b - c|$ apart.
+Let the tangent lengths from $A$, $B$, $C$ to the incircle be $t_A$, $t_B$, $t_C$. Equal tangents give $t_A + t_B = c$, $t_B + t_C = a$ and $t_C + t_A = b$; adding all three gives $t_A + t_B + t_C = s$, so $t_B = s - b$ is the distance from $B$ to the touch point on $BC$.
+
+For the $A$-excircle the tangent from $A$ is $s$, as on [[exradii|the exradii card]], so the tangent from $B$ is $s - c$, and so is the distance from $B$ to its touch point on $BC$. Since $(s - b) + (s - c) = a$, those two points average to $\frac a2$, the midpoint $M$ of $BC$, so they are reflections of each other in $M$, a distance $\lvert(s - b) - (s - c)\rvert = \lvert b - c\rvert$ apart.
 
 ## Useful observations
 - Both contact points are placed from the side lengths alone, with $M$ as their common midpoint.
@@ -6196,7 +6200,9 @@ A recurring AIME shape asks for the infimum of a length over figures inscribed i
 The vertex is at the origin in these forms; a parabola with vertex $(h, k)$ replaces $x$ and $y$ by $x - h$ and $y - k$. A parabola opening downward or leftward has $p \lt 0$.
 
 ## Why it works
-Impose $\operatorname{dist}(P, F) = \operatorname{dist}(P, \ell)$ with $F = (0, p)$ and $\ell: y = -p$. Squaring gives $x^2 + (y - p)^2 = (y + p)^2$, and the $y^2$ and $p^2$ terms cancel on both sides, leaving $x^2 = 4py$. Almost nothing survives the cancellation, which is why the parabola has the simplest equation of the three conics and why $p$ is the only parameter it has.
+Impose $\operatorname{dist}(P, F) = \operatorname{dist}(P, \ell)$ with $F = (0, p)$ and $\ell: y = -p$. Squaring gives
+$$x^2 + (y - p)^2 = (y + p)^2,$$
+and the $y^2$ and $p^2$ terms cancel on both sides, leaving $x^2 = 4py$. Almost nothing survives the cancellation, which is why the parabola has the simplest equation of the three conics and why $p$ is the only parameter it has. Swapping the roles of $x$ and $y$ gives $y^2 = 4px$, and $y = ax^2$ is $x^2 = \frac1a y$, so $4p = \frac1a$.
 
 Setting $y = p$ recovers the latus rectum: $x^2 = 4p^2$, so the chord runs from $-2p$ to $2p$ and has length $\lvert 4p\rvert$.
 
