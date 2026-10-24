@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2020 AMC 8 #1 to #10 (2026-10-24).** Answers E, C, D, B ($37$ dots), C, A, C ($15$), C ($8072$), D ($8+12=20$), C ($12$). All checked by script.
 - **Step D: 2022 AMC 8 finished (2026-10-24).** #16 ($25$), 17 ($2$), 18 (Varignon, $40$), 19 ($4$ students), 20 ($x\gt7$, $8$), 21 ($8$ and $17$), 22 (minute $17$), 23 ($42+42=84$), 24 ($192$), 25 ($p_{n+1}=\tfrac{1-p_n}3$, $\tfrac7{27}$). All checked by script.
 - **Step D: 2022 AMC 8 #6 to #15 (2026-10-24).** Answers C, B, B, B, E (home at $2{:}30$), D ($44$), B, D ($9$), D ($24$), C (lowest ratio $\tfrac{2.5}3$, read from the plotted points). All checked by script.
 - **Step D: 2023 AMC 8 finished, 2022 AMC 8 begun (2026-10-24).** 2023 AMC 8 #21 ($2$ ways), 22 ($a^3b^5=2^55^3$), 23 ($\tfrac4{256}$), 24 ($h=14.6$), 25 ($d=17$, $a_{14}=224$); 2022 AMC 8 #1 (Pick, $10$), 2 (its Defined Operation tag kept), 3 ($4$), 4 (a clockwise quarter turn, (E)), 5. All checked by script.
