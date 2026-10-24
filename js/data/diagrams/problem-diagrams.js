@@ -5123,4 +5123,17 @@
       cap(430, 270, "Trapezoid ABCD with AB ∥ CD; the bisectors at A and D meet at P, those at B and C at Q, and the hexagon ABQCDP is shaded." + MM(ok))
     ]);
   })();
+
+  // 2007 AMC 12A #8: the clock face with the star polygon joining each number to the fifth one clockwise.
+  PROB["2007-amc-12a-8"] = (() => {
+    const pos = h => [Math.sin(rad(30 * h)), Math.cos(rad(30 * h))], star = [];
+    for (let k = 0; k < 12; k++) star.push(pos((5 * k) % 12));
+    const ok = star.length === 12;
+    const Q = fitQ([[-1, -1], [1, 1]], 26, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q([0, 0]), k, FNT, 1.3), poly(star.map(Q), ACC, 1.5),
+      ...[12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(h => txt(add(Q(mul(pos(h), 1.14)), [0, 4]), String(h), DIM, 11)),
+      cap(430, 270, "The star polygon drawn on a clock face: each number is joined to the fifth number clockwise from it (12 to 5, 5 to 10, ...)." + MM(ok))
+    ]);
+  })();
 })();

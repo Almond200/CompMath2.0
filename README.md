@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2007 AMC 12A, ten more (2026-10-24).** #8 (with a clock-star figure), 13, 14, 15, 16, 17, 18, 19, 20, 21 (answers C, B, C, E, C, B, D, E, B, A). All checked by script.
 - **Step D: 2008 AMC 12B finished, 2007 AMC 12A begun (2026-10-24).** 2008 AMC 12B #17 ($c^2=a^2-1$, digit sum $18$), 18 (a $13$-$14$-$15$ cross-section, $784$), 19 ($\sqrt2$), 21, 22 ($\tfrac{17}{28}$), 23 ($n=11$), 24 ($s_n=\tfrac{2n}3$, $n=17$), 25 ($12h=30\sqrt3$), with figures for #18 and #25; 2007 AMC 12A #4 and #7. All checked by script.
 - **Step D: 2008 AMC 12A finished, 2008 AMC 12B begun (2026-10-24).** 2008 AMC 12A #20 ($\tfrac{3(10-\sqrt2)}{28}$, with a figure), 21 (symmetry plus $24$ ties: $48$), 23 ($(z+i)^4=1+i$, $2^{5/4}$), 24 (tangent circle, $CA^2=8$), 25 ($\tfrac1{2^{98}}$); 2008 AMC 12B #4, 11, 13 ($\tfrac{12-5\sqrt3}{36}$), 14, 15 (four $30^\circ$ gaps, $1$), with figures for 12B #13 and #15. All checked by script.
 - **Step D: 2009 AMC 12B finished, 2008 AMC 12A begun (2026-10-24).** 2009 AMC 12B #25 ($k\times k$ placements for each side vector: $225$); 2008 AMC 12A #2, 8, 11 (opposite faces of the net, $164$), 12, 14, 16 ($n=112$), 17 ($a_1\equiv3\pmod4$: $502$), 18 ($\sqrt{95}$), 19 ($224$). All checked by script.
