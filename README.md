@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2014 AMC 12B finished, 2013 AMC 12A begun (2026-10-24).** 2014 AMC 12B #20, 21 ($\cos t=\tfrac12$, $BE=2-\sqrt3$), 23 ($\binom{-3}k$ modulo $2017$: $1024$), 24 (three Ptolemy relations, $x^3-109x-420=0$, $\tfrac{385}6$; with a figure), 25 ($\cos a\cos b=1$, $1080\pi$); 2013 AMC 12A #7, 8, 10, 11, 12. All checked by script.
 - **Step D: 2014 AMC 12A finished, 2014 AMC 12B begun (2026-10-24).** 2014 AMC 12A #25 ($u=4x+3y$, $v=3x-4y$ turn the parabola into $u^2=625-50v$; $40$ points); 2014 AMC 12B #6, 7, 9, 12, 13 ($a=\varphi$, $b=\tfrac{3+\sqrt5}2$), 14, 15, 16, 17. All checked by script.
 - **Step D: 2014 AMC 12A, ten more (2026-10-24).** #13 ($2220$), 14, 15 (pair palindromes to $110000$), 17 ($2+2\sqrt7$), 18 ($\tfrac{15}{256}$), 19 ($78$), 20 (two reflections and the Law of Cosines at $120^\circ$: $14$; with a figure), 21 (telescoping lengths, $1$), 23 (blocks $00$ to $99$ without $98$: $883$), 24 ($301$). All checked by script.
 - **Step D: 2015 AMC 12B finished, 2014 AMC 12A begun (2026-10-24).** 2015 AMC 12B #20 (rows become constant at row $5$), 22 ($20$), 24 (centers on the perpendicular bisector, $153+39=192$, with a figure), 25 (arithmetico-geometric sum of complex steps, $1008(\sqrt6+\sqrt2)$); 2014 AMC 12A #1, 2, 6, 7, 10, 12 (figures for #10 and #12). All checked by script.

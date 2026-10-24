@@ -4796,4 +4796,22 @@
       cap(430, 270, "∠BAC = 40°, AB = 10, AC = 6, with D on AB and E on AC; the path B–E–D–C (blue) is drawn for one choice of D and E." + MM(ok))
     ]);
   })();
+
+  // 2014 AMC 12B #24: the cyclic pentagon with sides 3, 10, 3, 10, 14 and its five diagonals.
+  PROB["2014-amc-12b-24"] = (() => {
+    const sides = [3, 10, 3, 10, 14], arc = R => sides.reduce((t, x) => t + 2 * Math.asin(x / (2 * R)), 0) - 2 * Math.PI;
+    let lo = 7.0001, hi = 100; for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (arc(m) > 0) lo = m; else hi = m; }
+    const R = (lo + hi) / 2; let t = Math.PI / 2 + Math.asin(7 / R); const P = [];
+    sides.forEach(x => { P.push([R * Math.cos(t), R * Math.sin(t)]); t -= 2 * Math.asin(x / (2 * R)); });
+    const [A, B, C, D, E] = P, diag = dist(A, C) + dist(B, D) + dist(C, E) + dist(A, D) + dist(B, E);
+    const ok = Math.abs(diag - 385 / 6) < 1e-6 && Math.abs(dist(E, A) - 14) < 1e-6;
+    const Q = fitQ([[-R, -R], [R, R]], 22, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q([0, 0]), R * k, FNT, 1.3), poly(P.map(Q), DIM, 2),
+      ...[[A, C], [B, D], [C, E], [A, D], [B, E]].map(([X, Y]) => seg(Q(X), Q(Y), ACC, 1.3)),
+      ...[["A", A], ["B", B], ["C", C], ["D", D], ["E", E]].map(([n, X]) => txt(add(Q(X), mul(norm([X[0], -X[1]]), 14)), n)),
+      ...[[A, B, "3"], [B, C, "10"], [C, D, "3"], [D, E, "10"], [E, A, "14"]].map(([X, Y, l]) => txt(add(Q(mid(X, Y)), mul(norm([(X[0] + Y[0]) / 2, -(X[1] + Y[1]) / 2]), 12)), l, DIM, 11.5)),
+      cap(430, 270, "The pentagon ABCDE inscribed in a circle with AB = CD = 3, BC = DE = 10 and AE = 14, and its five diagonals (blue)." + MM(ok))
+    ]);
+  })();
 })();
