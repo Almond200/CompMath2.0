@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2025 AMC 8 #11 to #20 (2026-10-24).** Answers C (L and L, the only tiling with an S, by search), C ($r=\sqrt5$), A, E ($N=34$), C ($5+11$), C ($105$), D ($115$), B ($R=2$), D (mile $8.5$), A ($\tfrac47$). All checked by script.
 - **Step D: the AMC 8 begun with 2025 AMC 8 #1 to #10 (2026-10-24).** Answers B, B, C, B, C, C, D, A, B, D (#5 by street distance, $24$; #10 overlap $6.25$, total $23.75$). All checked by script.
 - **Step D: 2000 AMC 12 finished; the AMC 12 is done (2026-10-24).** 2000 AMC 12 #19 ($[ADE]=3$), 20 ($xyz=1$), 22 (the non-real pair multiplies to under $\tfrac56$), 23 (four balanced sets, $\tfrac14$), 24 ($s=\tfrac{3r}8$, $27$), 25 ($\tfrac{8!}{24}=1680$). Every AMC 10, AMC 12 and AIME problem now has a strategy; the AMC 8 is next. All checked by script.
 - **Step D: 2001 AMC 12 finished, 2000 AMC 12 begun (2026-10-24).** 2001 AMC 12 #24 ($75^\circ$), 25 (period $5$, four values); 2000 AMC 12 #2, 5, 15 (twins of 10 #2, #9, #24), 7, 10, 12 ($125-13=112$), 16 ($555$), 17 ($\tfrac1{1+\sin\theta}$). All checked by script.
