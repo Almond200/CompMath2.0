@@ -50,5 +50,7 @@ window.NEW_CARD_BATCHES = [
   { label: "A quadratic that must be a square", date: "2026-10-23",
     ids: ["quadratic-perfect-square"] },
   { label: "Approved P16 to P26: matrices, complex sums, and LIVE concepts", date: "2026-10-23",
-    ids: ["composing-transformations", "matrix-power-diagonalizing", "dimension-arguments", "trig-series-complex", "estimating-answers", "derivative-extremum", "independent-events", "fencepost-counting", "palindromes", "counting-shapes", "reading-graphs"] }
+    ids: ["composing-transformations", "matrix-power-diagonalizing", "dimension-arguments", "trig-series-complex", "estimating-answers", "derivative-extremum", "independent-events", "fencepost-counting", "palindromes", "counting-shapes", "reading-graphs"] },
+  { label: "Owner's method cards: checking that a solution is really a solution", date: "2026-10-24",
+    ids: ["transforming-equations", "polynomial-division", "quadratic-root-location", "directed-lengths"] }
 ];

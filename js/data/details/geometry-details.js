@@ -1016,13 +1016,14 @@ The line does not pass through a vertex. If it is parallel to a side, the point 
 ## Why it works
 Drop perpendiculars from $A$, $B$, $C$ to the line, of lengths $d_A$, $d_B$, $d_C$. The right triangles at $F$ are similar, so $\frac{AF}{FB} = \frac{d_A}{d_B}$, and likewise $\frac{BD}{DC} = \frac{d_B}{d_C}$ and $\frac{CE}{EA} = \frac{d_C}{d_A}$. The product telescopes to $1$.
 
-The $-1$ for directed lengths records the sign: a line cuts either one or all three side lines outside the segments, which makes an odd number of the three ratios negative.
+The $-1$ for [[directed-lengths|directed lengths]] records the sign: a line cuts either one or all three side lines outside the segments, which makes an odd number of the three ratios negative.
 
 ## Useful observations
 - Menelaus' Theorem is the collinearity counterpart of Ceva's: three points on a line instead of three cevians through a point.
 - It reaches ratios that Ceva cannot, because the points may lie outside the segments.
 - The skill is choosing the triangle: pick the one whose three side lines the known line crosses, and a chain of intersection points often needs two applications.
 - [[mass-points|Mass points]] with a negative mass are Menelaus in disguise.
+- The unsigned converse needs the count of points outside the sides; the directed form needs nothing. The three midpoints show why: their unsigned product is $1$, yet they are not collinear.
 
 ## Applications
 Ratios along a cevian cut by a line, and collinearity of three points on the side lines of a triangle.
@@ -1331,7 +1332,7 @@ The building blocks of shaded-region problems, rarely the whole problem: the wor
 
 "power-of-a-point": String.raw`
 ## Conditions
-$P$ is any point in the plane of the circle, and the lines are any lines through $P$ that meet the circle; a tangent counts as meeting it twice at its point of contact $T$. With directed lengths along each line, $PX \cdot PY = OP^2 - r^2$ including the sign; with ordinary lengths the product is $|OP^2 - r^2|$.
+$P$ is any point in the plane of the circle, and the lines are any lines through $P$ that meet the circle; a tangent counts as meeting it twice at its point of contact $T$. With [[directed-lengths|directed lengths]] along each line, $PX \cdot PY = OP^2 - r^2$ including the sign; with ordinary lengths the product is $|OP^2 - r^2|$.
 
 ## Why it works
 Start from what is fixed. Choose a point $P$ and a circle, and the single number $OP^2 - r^2$ is decided before any line is drawn. Now draw any line through $P$ meeting the circle at $X$ and $Y$: the product comes out to that same number, $$PX \cdot PY = |OP^2 - r^2|,$$ whichever line you chose. The three familiar forms, two chords, two secants, and a secant with a tangent, are the three ways a line through $P$ can cross the circle, not three separate facts.
@@ -3392,6 +3393,7 @@ The distances follow. $O$ is the midpoint of $AA'$ and $M$ is the midpoint of $H
 - The altitude from $A$ has length $AD = 2R\sin B\sin C$, so $HD = AD - AH = 2R(\sin B\sin C - \cos A) = 2R\cos B\cos C$, because $\cos A = -\cos(B + C)$.
 - With $O$ at the origin, $H = A + B + C$ as vectors, the quickest route to coordinates.
 - With the three vertices, $H$ forms an [[orthocentric-system|orthocentric system]], in which each of the four points is the orthocenter of the other three.
+- The distances $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$ are signed: in an obtuse triangle one of them is negative and $H$ lies outside, so a relation proved with unsigned lengths for an acute triangle must be rechecked ([[directed-lengths|directed lengths]] keep track of this).
 
 ## Applications
 Triangles given with their circumradius and an orthocenter distance, circles through the orthocenter and two vertices, and the lengths of the altitude segments $AH$ and $HD$.
@@ -5484,7 +5486,7 @@ A recurring configuration in olympiad geometry whenever a circle touches two sid
 A sphere enclosing the others has negative curvature, and a plane has curvature $0$. The circle theorem is the case $n = 2$ and this is $n = 3$.
 
 ## Why it works
-It is the $n = 3$ case of the Soddy–Gosset relation: in $n$ dimensions, $n + 2$ mutually tangent spheres have curvatures obeying that quadratic. The Descartes Circle Theorem is the $n = 2$ instance of the same identity.
+Quoted, not proved here. It is the $n = 3$ case of the Soddy–Gosset relation: in $n$ dimensions, $n + 2$ mutually tangent spheres have curvatures obeying that quadratic, and the Descartes Circle Theorem is the $n = 2$ instance. A complete proof for every dimension, by writing each sphere as a vector and tangency as a fixed value of a quadratic form, is in J. C. Lagarias, C. L. Mallows and A. R. Wilks, "Beyond the Descartes Circle Theorem", American Mathematical Monthly 109 (2002), 338–361.
 
 ## Useful observations
 - The two roots for the fifth sphere are the small sphere in the central gap and the large sphere enclosing the rest, which has negative curvature.
@@ -6216,15 +6218,15 @@ It makes a class of AIME solids tractable without any integration. The slanted s
 "euler-line-parallel-side": String.raw`
 ## Key forms
 - $\tan B\tan C = 3$ — the angle test for the Euler line being parallel to $BC$, and the quickest way in
-- $AH : HD = (\tan B\tan C - 1) : 1$ — the general ratio along the $A$-altitude, with $D$ the foot
-- $AH = 2\,HD$ — the parallel case, the orthocenter two thirds of the way down from $A$
+- $AH : HD = (\tan B\tan C - 1) : 1$ — the general ratio along the $A$-altitude of an acute triangle, with $D$ the foot
+- $AH = 2\,HD$ — the parallel case in an acute triangle, the orthocenter two thirds of the way down from $A$
 - $\cos A = 2\cos B\cos C$ — the same statement before dividing through
 
 ## Conditions
-$O$ and $H$ are the circumcenter and orthocenter of a non-equilateral triangle, so the Euler line $OH$ exists. The condition is symmetric in $B$ and $C$ and says nothing about $A$, so it describes a one-parameter family of triangles. If $B = C$ then $\tan^2B = 3$ forces $B = 60^\circ$ and an equilateral triangle, where $O$ and $H$ coincide and there is no line, so an isosceles configuration is never the intended reading.
+$O$ and $H$ are the circumcenter and orthocenter of a non-equilateral triangle, so the Euler line $OH$ exists. The condition is symmetric in $B$ and $C$ and says nothing about $A$, so it describes a one-parameter family of triangles. If $B = C$ then $\tan^2B = 3$ forces $B = 60^\circ$ and an equilateral triangle, where $O$ and $H$ coincide and there is no line, so an isosceles configuration is never the intended reading. The angle test $\tan B\tan C = 3$ holds for every triangle and forces it to be acute: if $A$ is obtuse then $B + C \lt 90^\circ$ and $\tan B\tan C \lt 1$, and if $B$ or $C$ is obtuse the product is negative. The unsigned test $AH = 2\,HD$ is valid only for acute triangles: $A = (0, \sqrt2)$, $B = (1, 0)$, $C = (2, 0)$ has $H = (0, -\sqrt2)$, $D = (0, 0)$, so $AH = 2\,HD$, but $O = (\frac32, \sqrt2)$ and $OH$ is not parallel to $BC$.
 
 ## Why it works
-Both centers sit above $BC$, so the line joining them is parallel to $BC$ exactly when their heights above it are equal. One of those heights costs nothing, because [[orthocenter-properties|the circumcenter's distance to a side]] is half the distance from the opposite vertex to the orthocenter, so the height of $O$ is $\frac12 AH$ whatever the triangle. Requiring $H$ to sit at the same height gives $HD = \frac12 AH$ directly, so the orthocenter cuts the $A$-altitude in the ratio $2 : 1$.
+Measure heights above $BC$ with signs, the side of $A$ positive. The line $OH$ is parallel to $BC$ exactly when the two signed heights are equal. The height of $O$ is $R\cos A$, which is [[orthocenter-properties|half of the directed distance]] from $A$ to $H$ along the altitude, and the height of $H$ is $2R\cos B\cos C$. In an acute triangle both are positive, both centers lie inside, and equal heights read $HD = \frac12 AH$ directly, so the orthocenter cuts the $A$-altitude in the ratio $2 : 1$; in an obtuse triangle one of the signs flips and the unsigned lengths can no longer be compared.
 
 Converting to angles needs only the two standard distances, $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$. Equating $\cos A$ with $2\cos B\cos C$, then writing $\cos A = -\cos(B + C) = \sin B\sin C - \cos B\cos C$ and dividing through by $\cos B\cos C$, leaves $\tan B\tan C = 3$. The same two distances give the general ratio $AH : HD = (\tan B\tan C - 1) : 1$, and the parallel configuration is its $2 : 1$ case.
 
@@ -6232,6 +6234,7 @@ Converting to angles needs only the two standard distances, $AH = 2R\cos A$ and 
 - Recognition runs in both directions. Told that the Euler line is parallel to a side, write $\tan B\tan C = 3$ as one more equation in the angles; told two angles whose tangents multiply to $3$, the configuration is known without computing either center.
 - The altitude reading is the one to use when the problem gives a length rather than an angle, since it turns the configuration into a $2 : 1$ division of a segment that can be measured.
 - The hypothesis combines with the [[law-of-sines|Law of Sines]] or with $A + B + C = 180^\circ$ like any other angle relation, and with the Euler line itself when a problem also involves the centroid, which sits one third of the way from $O$ to $H$.
+- The obtuse case is where unsigned reasoning breaks, which is a standard reason to measure heights with signs, as in [[directed-lengths|directed lengths]].
 
 ## Applications
 Triangles whose Euler line is parallel to a side, and relations between the angles $B$, $C$ and the position of the orthocenter on an altitude.
@@ -7487,7 +7490,7 @@ AMC 12 and AIME: extreme values of a linear or quadratic expression on an ellips
 ## Key forms
 - $PF_1 = a + ex$, $PF_2 = a - ex$ — the ellipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with $F_1 = (-c, 0)$, $F_2 = (c, 0)$, and $e = \frac ca$
 - $PF_1 = \lvert ex + a\rvert$, $PF_2 = \lvert ex - a\rvert$ — the hyperbola $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$, which is $ex \pm a$ on the right branch
-- $PF = y + p$ — the parabola $x^2 = 4py$ with focus $(0, p)$
+- $PF = \lvert y + p\rvert$ — the parabola $x^2 = 4py$ with focus $(0, p)$, which is $y + p$ when $p \gt 0$ (the parabola opens upward)
 - $\frac{2b^2}{a}$ — the latus rectum of an ellipse or hyperbola, the focal chord perpendicular to the major axis
 
 ## Conditions
@@ -7496,13 +7499,13 @@ $P = (x, y)$ lies on the conic, which is in standard position. On the ellipse $c
 ## Why it works
 Each formula is the focus-directrix definition with the directrix written in. The ellipse has directrices $x = \pm\frac{a}{e}$, and the distance to a focus is $e$ times the distance to the matching directrix: $PF_2 = e\left(\frac{a}{e} - x\right) = a - ex$, and likewise $PF_1 = a + ex$. Adding them gives the constant sum $2a$.
 
-The same result comes straight from coordinates. With $y^2 = b^2\left(1 - \frac{x^2}{a^2}\right)$, $$PF_1^2 = (x + c)^2 + y^2 = \frac{c^2}{a^2}x^2 + 2cx + a^2 = (a + ex)^2.$$ On the hyperbola the same computation gives $(ex + a)^2$, and on the parabola $x^2 + (y - p)^2 = 4py + (y - p)^2 = (y + p)^2$.
+The same result comes straight from coordinates. With $y^2 = b^2\left(1 - \frac{x^2}{a^2}\right)$, $$PF_1^2 = (x + c)^2 + y^2 = \frac{c^2}{a^2}x^2 + 2cx + a^2 = (a + ex)^2.$$ On the hyperbola the same computation gives $(ex + a)^2$, and on the parabola $x^2 + (y - p)^2 = 4py + (y - p)^2 = (y + p)^2$, whose square root is $\lvert y + p\rvert$ (for $x^2 = -4y$ the vertex is at distance $1$, not $-1$).
 
 {{figure:radii}}
 
 ## Useful observations
 - The nearest point of an ellipse to a focus is the near vertex, at distance $a - c$, and the farthest is the far vertex, at $a + c$.
-- At $x = c$ the focal radius is $a - \frac{c^2}{a} = \frac{b^2}{a}$, which is half the latus rectum, so the latus rectum is $\frac{2b^2}{a}$ on both the ellipse and the hyperbola.
+- At $x = c$ the focal radius to the near focus is $a - \frac{c^2}{a} = \frac{b^2}{a}$ on the ellipse and $\frac{c^2}{a} - a = \frac{b^2}{a}$ on the hyperbola, half the latus rectum in both cases, so the latus rectum is $\frac{2b^2}{a}$ on both.
 - The product of the two focal radii of an ellipse is $a^2 - e^2x^2$, largest at the ends of the minor axis, where both radii equal $a$.
 
 ## Applications
@@ -8196,7 +8199,7 @@ An olympiad lemma, quoted inside solutions about isogonal lines, isogonal conjug
 - $f(P) = 2\,O_1O_2 \cdot d(P, \ell)$ — $d$ the signed distance to the radical axis $\ell$, positive on the side of $O_2$
 - $f\big(tX + (1 - t)Y\big) = t\,f(X) + (1 - t)\,f(Y)$, and in general $f(t_1X_1 + \cdots + t_nX_n) = t_1f(X_1) + \cdots + t_nf(X_n)$ whenever $t_1 + \cdots + t_n = 1$
 - $f_{12} + f_{23} + f_{31} = 0$ for three circles, where $f_{ij}$ is the difference of the powers with respect to $\omega_i$ and $\omega_j$
-- the circles $\omega_t$ with $\operatorname{pow}(P, \omega_t) = t\operatorname{pow}(P, \omega_1) + (1 - t)\operatorname{pow}(P, \omega_2)$ all share the radical axis $\ell$, and pass through the common points of $\omega_1$ and $\omega_2$ when there are any
+- the circles $\omega_t$ with $\operatorname{pow}(P, \omega_t) = t\operatorname{pow}(P, \omega_1) + (1 - t)\operatorname{pow}(P, \omega_2)$ all share the radical axis $\ell$, and pass through the common points of $\omega_1$ and $\omega_2$ when there are any; $\omega_t$ has center $tO_1 + (1 - t)O_2$ and $r_t^2 = tr_1^2 + (1 - t)r_2^2 - t(1 - t)\,O_1O_2^2$, so it is a real circle only when $r_t^2 \ge 0$
 
 ## Conditions
 The circles have different centers, $O_1 \ne O_2$; for concentric circles $f$ is constant and there is no radical axis. The power of a point with respect to a circle of center $O$ and radius $r$ is $\operatorname{pow}(P) = PO^2 - r^2$. A point counts as a circle of radius $0$, and the statement holds word for word for spheres in space.
@@ -8208,7 +8211,7 @@ $$f(P) = 2\,(O_2 - O_1) \cdot P + \left(\lvert O_1\rvert^2 - r_1^2 - \lvert O_2\
 
 A dot product with a fixed vector plus a constant is a linear (affine) function, which is the whole lemma. Its zero set is a line perpendicular to $O_1O_2$, the radical axis $\ell$. For $R$ on $\ell$, $f(R) = 0$, and subtracting gives $f(P) = 2\,(O_2 - O_1) \cdot (P - R)$. The component of $P - R$ along $O_1O_2$ is the signed distance from $P$ to $\ell$, which gives the distance form.
 
-An affine function commutes with weighted averages whose weights add up to $1$, because the constant term is taken once in total. That is the weighted form. For three circles, $f_{12} + f_{23} + f_{31}$ is a sum of six powers in which each appears once with each sign, so it is $0$. For the family $\omega_t$, the right-hand side is $\lvert P\rvert^2 - 2\big(tO_1 + (1 - t)O_2\big) \cdot P + \text{const}$, the power with respect to a circle centered at $tO_1 + (1 - t)O_2$. Its difference with the power for $\omega_1$ is $(1 - t)$ times $-f$, which vanishes exactly on $\ell$. At a common point of $\omega_1$ and $\omega_2$ both powers are $0$, so $\omega_t$ passes through it.
+An affine function commutes with weighted averages whose weights add up to $1$, because the constant term is taken once in total. That is the weighted form. For three circles, $f_{12} + f_{23} + f_{31}$ is a sum of six powers in which each appears once with each sign, so it is $0$. For the family $\omega_t$, the right-hand side is $\lvert P\rvert^2 - 2\big(tO_1 + (1 - t)O_2\big) \cdot P + \text{const}$, the power with respect to a circle centered at $tO_1 + (1 - t)O_2$, with $r_t^2 = tr_1^2 + (1 - t)r_2^2 - t(1 - t)\,O_1O_2^2$. That is a real circle only when $r_t^2 \ge 0$: averaging two unit circles centered at $(0, 0)$ and $(4, 0)$ gives $(x - 2)^2 + y^2 + 3$, which would need $r^2 = -3$. The affine identities for $f$ hold either way; only the reading as a circle needs the sign check. Its difference with the power for $\omega_1$ is $(1 - t)$ times $-f$, which vanishes exactly on $\ell$. At a common point of $\omega_1$ and $\omega_2$ both powers are $0$, so $\omega_t$ passes through it.
 
 ## Useful observations
 - The three-circle identity is a one-line proof that the three radical axes meet: where $f_{12} = 0$ and $f_{23} = 0$, also $f_{31} = 0$, which is the radical center.
@@ -9093,13 +9096,13 @@ Object.assign(window.MATH_DETAILS, {
 The triangle is scalene. In an isosceles triangle the four points lie on the axis of symmetry, so they are collinear rather than concyclic, and in an equilateral triangle they coincide.
 
 ## Why it works
-The idea of the known proofs is that all four points sit on one special curve through the centroid and the orthocenter, the Kiepert hyperbola, and a circle meeting that hyperbola can be pinned down from its other properties. That argument, and the coordinate computation that also proves it, are beyond contest level, so the theorem is quoted rather than proved in contest solutions.
+Quoted, not proved here. The proofs in print are a coordinate computation (in trilinear or complex coordinates) and short synthetic arguments that need more triangle geometry than this card can set up: J. F. Rigby, "A Simple Proof of Lester's Theorem", Mathematical Gazette 81 (1997), and P. Yiu, "The circles of Lester, Evans, Parry, and their generalizations", Forum Geometricorum 10 (2010). The Kiepert hyperbola, the rectangular hyperbola through the vertices, the centroid, the orthocenter and both Fermat points, appears in several of these arguments, but $O$ and $N$ are generally not on it. No contest solution proves the theorem; it is quoted.
 
 The two Fermat points come from the construction in [[fermat-point|Fermat Point (Torricelli Point)]]: the three lines from the vertices to the apexes of equilateral triangles erected on the opposite sides meet at one point, outward for $F_1$ and inward for $F_2$. The nine-point center is the midpoint of $O$ and the orthocenter $H$, as on the [[nine-point-circle|nine-point circle]] card.
 
 ## Useful observations
-- The figure shows a triangle with no angle near $60^\circ$; as one angle approaches $60^\circ$, the inward lines become parallel and $F_2$ runs off to infinity.
-- The circle through $F_1$, $F_2$, and the centroid $G$ is another classical circle, and $F_1F_2$ passes through the symmedian point; these and Lester's circle are all consequences of the Kiepert hyperbola.
+- The figure shows a triangle with no angle near $60^\circ$. As the angle at a vertex approaches $60^\circ$, the second Fermat point $F_2$ approaches that vertex (with $A = (0, 0)$, $B = (4, 0)$, $C = 2(\cos\theta, \sin\theta)$, at $\theta = 59.9^\circ$ it is about $(0.004, -0.007)$), so the picture crowds there.
+- The line $F_1F_2$ passes through the symmedian point, another of the collinearities in this corner of triangle geometry.
 
 ## Applications
 Concyclicity results about triangle centers, and as a check in computer explorations of triangle geometry.
@@ -9207,5 +9210,46 @@ Determinants multiply, and a rotation has determinant $1$ while a reflection has
 
 ## Contest profile
 An AMC 10 and 12 tool for sequences of rotations and reflections of a figure, often the whole solution of a counting question about which sequences return a triangle to its place. It pairs with the Rotation and Reflection Matrices and with the rule that two reflections make a rotation.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"directed-lengths": String.raw`
+## When to use
+A computation uses ratios or products of lengths on a line, through Menelaus, Ceva, power of a point, or distances along an altitude, and the figure might change shape: a point on the extension of a side rather than on the side, an obtuse angle that sends the foot of an altitude outside the opposite side, a point inside a circle rather than outside. Directed lengths let one formula cover all of these at once. A length asked for as an answer is still a distance, so it is the absolute value of the directed one.
+
+## How
+1. Say for each quantity whether it is a distance, a directed length, or a signed coordinate.
+2. Choose a direction on each line before writing a ratio, so that $\overline{AB} = x_B - x_A$.
+3. Note for each point whether it lies inside a segment or on an extension: $\frac{\overline{AF}}{\overline{FB}}$ is positive for a point inside $AB$ and negative outside.
+4. Write the theorem in its directed form, with Menelaus' product $-1$ and power $\overline{PA} \cdot \overline{PB} = OP^2 - r^2$.
+5. Compute, and take absolute values only for the lengths the answer asks for.
+6. Check the result against a redrawn figure with an obtuse angle or a point moved outside.
+
+For a point $P$ on a chord $AB$ of a circle with center $O$ and radius $r$, the directed product $\overline{PA} \cdot \overline{PB}$ is $OP^2 - r^2$ in every case. Inside the circle $A$ and $B$ lie on opposite sides of $P$, the product is negative, and the unsigned lengths satisfy $PA \cdot PB = r^2 - OP^2$. Outside, both point the same way and $PA \cdot PB = OP^2 - r^2$.
+
+## Why it works
+Directed lengths along a line are differences of coordinates, so $\overline{AB} + \overline{BC} = (x_B - x_A) + (x_C - x_B) = x_C - x_A = \overline{AC}$ whatever the order of the three points. Unsigned lengths satisfy $AB + BC = AC$ only when $B$ is between $A$ and $C$, which is why a proof written with them silently assumes one picture.
+
+The chosen direction does not matter for the quantities theorems use. Reversing the line negates every directed length on it, so a ratio $\frac{\overline{AF}}{\overline{FB}}$ of two lengths on one line and a product $\overline{PA} \cdot \overline{PB}$ of two lengths on one line are unchanged. A ratio is negative exactly when $F$ is outside the segment, which is the information an unsigned ratio throws away.
+
+That lost sign is why unsigned converses fail. The three midpoints of the sides give unsigned Menelaus ratios $1$, $1$, $1$ with product $1$, but all three points are inside their sides, the directed product is $+1$ rather than $-1$, and the points are not collinear. With directed lengths the converse needs no extra hypothesis.
+
+The same thing happens along an altitude. With $BC$ directed from $B$ to $C$, the foot $D$ of the altitude from $A$ has $\overline{BD} = AB\cos B$, which is negative when $B$ is obtuse, and $\overline{DC} = \overline{DB} + \overline{BC}$ still holds. Statements such as "the orthocenter is two thirds of the way down the altitude" compare unsigned lengths and hold only for acute triangles; written with signed heights they hold for all triangles.
+
+The method has a limit: a sign is defined only along one line, or along parallel lines given one common direction. A ratio of segments on two lines that are not parallel has no sign.
+
+## Formulas it uses
+- [[menelaus-theorem]]: its directed form, product $-1$, is a test for collinearity with no conditions on the configuration.
+- [[power-of-a-point]]: the directed product $\overline{PA} \cdot \overline{PB} = OP^2 - r^2$ covers points inside and outside the circle at once.
+- [[orthocenter-properties]]: the distances $AH = 2R\cos A$ and $HD = 2R\cos B\cos C$ are signed, which is what makes them valid for obtuse triangles.
+
+## Common traps
+- Concluding collinearity from an unsigned Menelaus product of $1$ without checking how many points lie outside the sides.
+- Writing $OP^2 - r^2$ as the unsigned product $PA \cdot PB$ for a point inside the circle, where it is negative.
+- Proving a relation for an acute triangle with unsigned lengths and applying it to an obtuse one.
+- Changing the direction of a line halfway through a computation.
+
+## Contest profile
+An AIME and olympiad habit more than a single step: it keeps a ratio computation from breaking when a point falls outside a side, and it is how Menelaus, Ceva and power of a point are stated in their general forms. On the AMC it shows up as the check that an obtuse triangle's foot of an altitude lies outside the base.
 `
 });

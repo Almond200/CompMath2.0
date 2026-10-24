@@ -716,7 +716,7 @@ window.MATH_SECTIONS.push({
           id: "menelaus-theorem",
           name: "Menelaus' Theorem",
           latex: String.raw`\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1 \ \text{(unsigned)}, \qquad \frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = -1 \ \text{(directed)}`,
-          description: String.raw`Menelaus' Theorem says that a line meeting the lines $BC$, $CA$, $AB$ of triangle $ABC$ at $D$, $E$, $F$ satisfies $\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1$ with unsigned lengths, or $-1$ with directed ones, and the converse holds. It is the collinearity partner of [[cevas-theorem|Ceva's Theorem]], which has the same product for concurrent cevians.`,
+          description: String.raw`Menelaus' Theorem says that a line meeting the lines $BC$, $CA$, $AB$ of triangle $ABC$ at $D$, $E$, $F$ satisfies $\frac{AF}{FB} \cdot \frac{BD}{DC} \cdot \frac{CE}{EA} = 1$ with unsigned lengths, or $-1$ with directed ones. The converse needs the directed form: an unsigned product of $1$ proves collinearity only when one or all three of the points lie on extensions of the sides (the three midpoints give $1$ and are not collinear). It is the collinearity partner of [[cevas-theorem|Ceva's Theorem]], which has the same product for concurrent cevians.`,
           keywords: ["transversal", "collinear", "directed segments", "menelaus theorem", "transversal ratio product", "collinearity test"],
           importance: "medium",
           tier: "AIME Early",
@@ -1093,8 +1093,8 @@ window.MATH_SECTIONS.push({
         {
           id: "euler-line-parallel-side",
           name: "Euler Line Parallel to a Side",
-          latex: String.raw`OH \parallel BC \iff \tan B \tan C = 3, \qquad OH \parallel BC \iff AH = 2\,HD \iff \cos A = 2\cos B\cos C`,
-          description: String.raw`The [[euler-line-ratio|Euler line]] $OH$ runs parallel to $BC$ exactly when $O$ and $H$ stand at the same height above that side. One of those heights is free: the circumcenter's distance to $BC$ is always half of $AH$, so the condition forces $HD = \frac{1}{2}AH$, with $D$ the foot of the altitude from $A$, and the orthocenter cuts the $A$-altitude in the ratio $2 : 1$ from the vertex. In angles that is $\tan B \tan C = 3$. More generally $AH : HD = (\tan B \tan C - 1) : 1$, so the parallel case is simply the one where that ratio equals $2$.`,
+          latex: String.raw`OH \parallel BC \iff \tan B \tan C = 3 \iff \cos A = 2\cos B\cos C, \qquad \text{acute } \triangle: \ OH \parallel BC \iff AH = 2\,HD`,
+          description: String.raw`The [[euler-line-ratio|Euler line]] $OH$ runs parallel to $BC$ exactly when $O$ and $H$ stand at the same signed height above that side, the side of $A$ counted positive. The heights are $R\cos A$ and $2R\cos B\cos C$, so the condition is $\cos A = 2\cos B\cos C$, that is $\tan B \tan C = 3$, and it forces an acute triangle (an obtuse angle makes the product negative or less than $1$). In an acute triangle both centers are inside, and the condition reads $HD = \frac{1}{2}AH$, with $D$ the foot of the altitude from $A$: the orthocenter cuts the $A$-altitude $2 : 1$ from the vertex, and in general $AH : HD = (\tan B \tan C - 1) : 1$. With unsigned lengths $AH = 2\,HD$ alone is not enough: $A = (0, \sqrt2)$, $B = (1, 0)$, $C = (2, 0)$ has $AH = 2\sqrt2 = 2\,HD$, an obtuse angle at $B$, and $OH$ not parallel to $BC$.`,
           keywords: ["euler line parallel to a side", "OH parallel to BC", "euler line parallel to the base", "tan B tan C = 3", "orthocenter two thirds down the altitude", "cos A = 2 cos B cos C", "AH = 2 HD"],
           importance: "medium",
           tier: "AIME Late",
@@ -2044,9 +2044,9 @@ window.MATH_SECTIONS.push({
         {
           id: "focal-radii",
           name: "Focal Radii of the Conics",
-          latex: String.raw`PF_1 = a + ex,\ \ PF_2 = a - ex, \qquad PF_{1,2} = \lvert ex \pm a \rvert, \qquad PF = y + p`,
-          description: String.raw`A focal radius is the distance from a point of a conic to a focus, and on each conic it is a linear expression in one coordinate. On the [[ellipse-properties|ellipse]] $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with foci $(\mp c, 0)$ and eccentricity $e = \frac ca$, the two focal radii are $a + ex$ and $a - ex$; on the hyperbola they are $\lvert ex + a\rvert$ and $\lvert ex - a\rvert$; and on the parabola $x^2 = 4py$ the distance to the focus is $y + p$.`,
-          keywords: ["focal radius", "focal distance", "distance to the focus", "a plus ex", "a minus ex", "PF = y + p", "latus rectum", "focal chord", "conic", "ellipse"],
+          latex: String.raw`PF_1 = a + ex,\ \ PF_2 = a - ex, \qquad PF_{1,2} = \lvert ex \pm a \rvert, \qquad PF = \lvert y + p \rvert`,
+          description: String.raw`A focal radius is the distance from a point of a conic to a focus, and on each conic it is a linear expression in one coordinate. On the [[ellipse-properties|ellipse]] $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ with foci $(\mp c, 0)$ and eccentricity $e = \frac ca$, the two focal radii are $a + ex$ and $a - ex$; on the hyperbola they are $\lvert ex + a\rvert$ and $\lvert ex - a\rvert$; and on the parabola $x^2 = 4py$ the distance to the focus is $\lvert y + p \rvert$, which is $y + p$ when $p \gt 0$.`,
+          keywords: ["focal radius", "focal distance", "distance to the focus", "a plus ex", "a minus ex", "PF = y + p", "PF = |y + p|", "latus rectum", "focal chord", "conic", "ellipse"],
           importance: "low",
           tier: "AIME Early",
           level: ["AMC12", "AIME"]

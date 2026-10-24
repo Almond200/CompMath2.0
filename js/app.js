@@ -260,7 +260,7 @@
   // leaves the browser's own scrolling alone; the others scale each wheel step.
   const SCROLL_SPEEDS = ["normal", "slow", "fast"];
   // Where the app opens: the front page, the Formulas space, or the page the reader last had open.
-  const START_MODES = ["landing", "formulas", "last"];
+  const START_MODES = ["landing", "formulas"];
   const SCROLL_FACTOR = { normal: 1, slow: 0.6, fast: 1.6 };
   // One filter for the whole app: contest tier and importance (persisted).
   function loadSettings() {
@@ -294,7 +294,7 @@
       tools: pick(P.tools, TOOLS_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
-      start: pick(P.start, START_MODES),
+      start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
       tags: P.tags === false ? false : true,
       autoGroup: P.autoGroup === false ? false : true
     };
@@ -341,7 +341,7 @@
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
-    start: _loaded.start,        // "landing" | "formulas" | "last" — where the app opens when no page is asked for
+    start: _loaded.start,        // "landing" | "formulas" — where the app opens when no page is asked for
     tags: _loaded.tags,          // keyword chips on the card face
     autoGroup: _loaded.autoGroup // group a saved list into sections instead of one flat run
   };
@@ -4246,7 +4246,7 @@
           ${settingRow("Subject pages", "Every card in a subject on one scrolling page, grouped by topic, or just the names, A to Z.", "layout", state.layout, [["cards", "Cards"], ["wiki", "A&ndash;Z index"]], "subject")}
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
-          ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in, and Where I left off returns to the last page you had open. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"], ["last", "Where I left off"]])}
+          ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
           ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls (text size and theme).", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
@@ -4364,7 +4364,7 @@
   // merges study lists, so a list built on this device is never lost to an older file, and
   // replaces the rest; then the page reloads to read it back.
   const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
-  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "mq-last", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses"];
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses"];
   function exportProgress() {
     const data = {};
     PROGRESS_KEYS.forEach(k => {
@@ -7212,7 +7212,6 @@
   window.addEventListener("hashchange", () => {
     clearTimeout(scrollSaveTimer);
     legacyRedirect();
-    try { if (/^#\/(?!settings)/.test(location.hash)) localStorage.setItem("mq-last", location.hash); } catch (e) {}
     const route = getRoute();
     render();
     // A revisited entry (Back or Forward) returns to where the reader was on it; a fresh click
@@ -7228,13 +7227,10 @@
 
   // Opening the bare address can skip the front page (Settings: "When the app opens").
   if ((!location.hash || location.hash === "#") && state.start !== "landing") {
-    let to = null;
-    if (state.start === "last") { try { to = localStorage.getItem("mq-last"); } catch (e) {} }
-    if (!to || !/^#\/(?!settings)/.test(to)) to = spaceEntry("formulas");
-    history.replaceState(null, "", to);
+    history.replaceState(null, "", spaceEntry("formulas"));
   }
   legacyRedirect();
-  try { if (/^#\/(?!settings)/.test(location.hash)) localStorage.setItem("mq-last", location.hash); } catch (e) {}
+  try { localStorage.removeItem("mq-last"); } catch (e) {}
   buildSidebar();
   render();
   scrollForRoute(getRoute(), null);

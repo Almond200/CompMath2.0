@@ -1820,7 +1820,11 @@
     "fencepost-counting": "formula",
     "palindromes": "pattern",
     "counting-shapes": "pattern",
-    "reading-graphs": "pattern"
+    "reading-graphs": "pattern",
+    "transforming-equations": "method",
+    "polynomial-division": "method",
+    "quadratic-root-location": "method",
+    "directed-lengths": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8830,6 +8834,30 @@
       [
         "(new card)",
         "written directly in the pattern template"
+      ]
+    ],
+    "transforming-equations": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "polynomial-division": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "quadratic-root-location": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "directed-lengths": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }

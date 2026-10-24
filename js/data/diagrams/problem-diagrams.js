@@ -4413,4 +4413,201 @@
       cap(430, 270, "The equilateral triangle ABC of side s and the point P inside it with AP = 1, BP = √3, CP = 2." + MM(ok))
     ]);
   })();
+
+  // 2020 AMC 12B #10: the unit square, its inscribed circle, M on CD, and AM meeting the circle again at P.
+  PROB["2020-amc-12b-10"] = (() => {
+    const A = [0, 0], B = [1, 0], C = [1, 1], D = [0, 1], O = [0.5, 0.5], r = 0.5, M = [0.5, 1];
+    const t = 0.25 / (M[0] * M[0] + M[1] * M[1]), P = mul(M, t);             // second root of |tM - O| = r
+    const ok = Math.abs(dist(P, O) - r) < 1e-12 && Math.abs(dist(M, O) - r) < 1e-12 && t > 0 && t < 1;
+    const Q = fitQ([A, B, C, D], 34, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), circ(Q(O), r * k, ACC, 1.8), seg(Q(A), Q(M), GLD, 1.8),
+      dot(Q(M), DIM, 3.5), dot(Q(P), GLD, 4),
+      txt(add(Q(A), [-12, 12]), "A"), txt(add(Q(B), [12, 12]), "B"), txt(add(Q(C), [12, -4]), "C"), txt(add(Q(D), [-12, -4]), "D"),
+      txt(add(Q(M), [0, -10]), "M"), txt(add(Q(P), [-13, 2]), "P", GLD, 13), txt(add(Q(O), [r * k * 0.72, r * k * 0.82]), "ω", ACC, 14),
+      cap(430, 270, "The unit square ABCD with its inscribed circle ω, which touches CD at M; the segment AM meets ω again at P." + MM(ok))
+    ]);
+  })();
+
+  // 2020 AMC 12B #12: the diameter AB, E on it with BE = 2√5, and the chord CD through E at 45°.
+  PROB["2020-amc-12b-12"] = (() => {
+    const R = 5 * Math.sqrt(2), O = [0, 0], A = [-R, 0], B = [R, 0], E = [R - 2 * Math.sqrt(5), 0];
+    const u = [-Math.SQRT1_2, Math.SQRT1_2], b = 2 * (E[0] * u[0] + E[1] * u[1]), c = E[0] * E[0] - R * R;
+    const t1 = (-b + Math.sqrt(b * b - 4 * c)) / 2, t2 = (-b - Math.sqrt(b * b - 4 * c)) / 2;
+    const Cp = add(E, mul(u, t1)), Dp = add(E, mul(u, t2));
+    const ang = Math.acos(((A[0] - E[0]) * (Cp[0] - E[0]) + (A[1] - E[1]) * (Cp[1] - E[1])) / (dist(A, E) * dist(Cp, E))) * 180 / Math.PI;
+    const ok = Math.abs(dist(Cp, O) - R) < 1e-9 && Math.abs(dist(Dp, O) - R) < 1e-9 && Math.abs(ang - 45) < 1e-9 && Math.abs(dist(B, E) - 2 * Math.sqrt(5)) < 1e-12;
+    const Q = fitQ([[-R, -R], [R, R]], 24, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, DIM, 1.8), seg(Q(A), Q(B), DIM, 1.8), seg(Q(Cp), Q(Dp), ACC, 1.8),
+      angleArc(Q(E), Q(A), Q(Cp), 22, GLD), dot(Q(O), DIM, 2.5), dot(Q(E), ACC, 3.5),
+      txt(add(Q(A), [-12, 5]), "A"), txt(add(Q(B), [12, 5]), "B"), txt(add(Q(Cp), [-10, -6]), "C", ACC, 13), txt(add(Q(Dp), [8, 14]), "D", ACC, 13),
+      txt(add(Q(E), [6, 16]), "E", ACC, 13), txt(add(Q(O), [0, 15]), "O", DIM, 12), txt(add(Q(E), [-36, -10]), "45°", GLD, 12),
+      txt(add(Q(mid(E, B)), [0, -8]), "2√5", DIM, 12),
+      cap(430, 270, "The circle of radius 5√2 with diameter AB; the chord CD crosses AB at E with BE = 2√5 and ∠AEC = 45°." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AMC 12A #22: circles of radii 20 and 17 about O, the equilateral triangle with A on the
+  // larger one and BC tangent to the smaller one, and AO crossing BC at P with BP = 3 CP. The view
+  // is zoomed on the triangle (true shape and scale), so O, 17 below line BC, is off the frame.
+  PROB["2019-amc-12a-22"] = (() => {
+    const s3 = Math.sqrt(3), sd = 80 / Math.sqrt(13) - 34 / s3;
+    const B = [0, 0], C = [sd, 0], A = [sd / 2, sd * s3 / 2], P = [3 * sd / 4, 0];
+    const t = (A[1] + 17) / A[1], O = [A[0] + t * (P[0] - A[0]), -17];
+    const ok = Math.abs(dist(O, A) - 20) < 1e-9 && Math.abs(dist(B, P) - 3 * dist(P, C)) < 1e-9 && dist(O, B) > 17 && dist(O, C) > 17;
+    const x0 = -1.2, x1 = 4.6, y0 = -1.6, Q = fitQ([[x0, y0], [x1, 3.0]], 16, 430, 270);
+    const arc = r => Array.from({ length: 41 }, (_, i) => { const x = x0 + (x1 - x0) * i / 40; return Q([x, O[1] + Math.sqrt(r * r - (x - O[0]) ** 2)]); });
+    const exit = add(A, mul(sub(O, A), (y0 - A[1]) / (O[1] - A[1])));       // where AO leaves the frame
+    return wrap(430, 270, [
+      pline(arc(20), DIM, 1.8), pline(arc(17), FNT, 1.8),
+      seg(Q([x0, 0]), Q([x1, 0]), FNT, 1.2, "4 4"), poly([A, B, C].map(Q), ACC, 2), seg(Q(A), Q(exit), GLD, 1.5, "5 4"),
+      dot(Q(P), GLD, 3.5),
+      txt(add(Q(A), [-4, -10]), "A", ACC, 13), txt(add(Q(B), [-12, 14]), "B", ACC, 13), txt(add(Q(C), [12, 14]), "C", ACC, 13),
+      txt(add(Q(P), [-10, 15]), "P", GLD, 13), txt(add(Q(exit), [30, -6]), "to O", GLD, 12),
+      txt(add(arc(20)[3], [0, -9]), "ω", DIM, 14), txt(add(arc(17)[37], [0, 16]), "γ", FNT, 14),
+      cap(430, 270, "Zoomed on the triangle: A lies on ω (radius 20), line BC touches γ (radius 17), and AO, heading to the common center O far below, crosses BC at P with BP = 3CP." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AMC 12B #18: the square pyramid with apex E above A, and the points P, Q, R on BE, DE, CE.
+  PROB["2019-amc-12b-18"] = (() => {
+    const { Pj, view } = projector([235, 212], 27, [-0.62, 0.36], [1, 0.17]);
+    const V = { A: [0, 0, 0], B: [3, 0, 0], C: [3, 3, 0], D: [0, 3, 0], E: [0, 0, 6] };
+    const at = (X, Y, t) => [0, 1, 2].map(i => V[X][i] + (V[Y][i] - V[X][i]) * t);
+    const P = at("B", "E", 1 / 3), Qp = at("D", "E", 1 / 3), R = at("C", "E", 2 / 3);
+    const faces = [["A", "B", "C", "D"], ["E", "A", "B"], ["E", "B", "C"], ["E", "C", "D"], ["E", "D", "A"]];
+    const ok = Math.abs(P[2] - 2) < 1e-12 && Math.abs(Qp[2] - 2) < 1e-12 && Math.abs(R[2] - 4) < 1e-12;
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj),
+      poly([P, Qp, R].map(Pj), ACC, 1.8, ACCS), dot(Pj(P), ACC, 3.5), dot(Pj(Qp), ACC, 3.5), dot(Pj(R), ACC, 3.5),
+      ...["A", "B", "C", "D", "E"].map(n => txt(add(Pj(V[n]), { A: [-4, -10], B: [-12, 10], C: [12, 12], D: [14, 4], E: [0, -10] }[n]), n)),
+      txt(add(Pj(P), [-12, 4]), "P", ACC, 13), txt(add(Pj(Qp), [12, 2]), "Q", ACC, 13), txt(add(Pj(R), [12, 0]), "R", ACC, 13),
+      cap(430, 270, "Base ABCD with side 3, altitude AE = 6; P and Q are a third of the way up BE and DE, and R two thirds of the way up CE." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AMC 12B #25: the quadrilateral with BC = 2, CD = 6 and the centroids of ABC, BCD, ACD,
+  // drawn in the shape where the centroid triangle is equilateral (then ABD is equilateral too).
+  PROB["2019-amc-12b-25"] = (() => {
+    const C = [0, 0], th = rad(150), B = [2, 0], D = [6 * Math.cos(th), 6 * Math.sin(th)];
+    const M = mid(B, D), u = norm(perp(sub(D, B))), h = dist(B, D) * Math.sqrt(3) / 2;
+    const A1 = add(M, mul(u, h)), A2 = sub(M, mul(u, h)), A = dist(A1, C) > dist(A2, C) ? A1 : A2;
+    const cen = (X, Y, Z) => [(X[0] + Y[0] + Z[0]) / 3, (X[1] + Y[1] + Z[1]) / 3];
+    const G1 = cen(A, B, C), G2 = cen(B, C, D), G3 = cen(A, C, D);
+    const ok = Math.abs(dist(G1, G2) - dist(G2, G3)) < 1e-9 && Math.abs(dist(G2, G3) - dist(G1, G3)) < 1e-9;
+    const Q = fitQ([A, B, C, D], 28, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), poly([G1, G2, G3].map(Q), ACC, 1.8, ACCS),
+      dot(Q(G1), ACC, 3), dot(Q(G2), ACC, 3), dot(Q(G3), ACC, 3),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [12, 6]), "B"), txt(add(Q(C), [0, 16]), "C"), txt(add(Q(D), [-12, 4]), "D"),
+      txt(add(Q(mid(B, C)), [4, 15]), "2", DIM, 12), txt(add(Q(mid(C, D)), [-8, 14]), "6", DIM, 12),
+      cap(430, 270, "A convex quadrilateral ABCD with BC = 2 and CD = 6, and the centroids of ABC, BCD and ACD (blue) forming an equilateral triangle." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12A #20: the isosceles right triangle ABC, M the midpoint of BC, and the cyclic AIME.
+  PROB["2018-amc-12a-20"] = (() => {
+    const A = [0, 0], B = [3, 0], C = [0, 3], M = mid(B, C), ci = (3 - Math.sqrt(7)) / 2;
+    const I = [0, 3 - ci], E = [3 - I[1], 0];   // the quarter turn about M carries line AC to line AB, so AE = 3 - AI
+    const cr = (u, v) => u[0] * v[1] - u[1] * v[0], area = Math.abs(cr(sub(E, M), sub(I, M))) / 2;
+    const dot2 = (u, v) => u[0] * v[0] + u[1] * v[1];
+    const ok = Math.abs(area - 2) < 1e-9 && Math.abs(dot2(sub(E, M), sub(I, M))) < 1e-9 && dist(A, I) > dist(A, E);
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), poly([A, I, M, E].map(Q), ACC, 1.8, ACCS), seg(Q(E), Q(I), ACC, 1.2, "4 4"),
+      rightAngle(Q(A), Q(B), Q(C), 11), dot(Q(M), ACC, 3), dot(Q(I), ACC, 3), dot(Q(E), ACC, 3),
+      txt(add(Q(A), [-12, 12]), "A"), txt(add(Q(B), [12, 12]), "B"), txt(add(Q(C), [-12, -2]), "C"),
+      txt(add(Q(M), [12, -4]), "M", ACC, 13), txt(add(Q(I), [-12, 5]), "I", ACC, 13), txt(add(Q(E), [0, 16]), "E", ACC, 13),
+      txt(add(Q(mid(A, B)), [24, 16]), "3", DIM, 12), txt(add(Q(mid(A, C)), [-14, 24]), "3", DIM, 12),
+      cap(430, 270, "The isosceles right triangle ABC with legs 3 and M the midpoint of BC; AIME is cyclic, AI > AE, and triangle EMI has area 2." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12A #23: triangle PAT with angles 36° at P and 56° at A, PU = AG = 1, and the midpoints M, N.
+  PROB["2018-amc-12a-23"] = (() => {
+    const P = [0, 0], A = [10, 0], u = [Math.cos(rad(36)), Math.sin(rad(36))], w = [Math.cos(rad(124)), Math.sin(rad(124))];
+    const T = lineInt(P, add(P, u), A, add(A, w)), U = add(P, u), G = add(A, w), M = mid(P, A), N = mid(U, G);
+    const ok = Math.abs(dist(P, U) - 1) < 1e-12 && Math.abs(dist(A, G) - 1) < 1e-12 && T[1] > 0;
+    const Q = fitQ([P, A, T], 26, 430, 270);
+    return wrap(430, 270, [
+      poly([P, A, T].map(Q), DIM, 2), seg(Q(U), Q(G), FNT, 1.4), seg(Q(M), Q(N), ACC, 1.8),
+      angleArc(Q(P), Q(A), Q(T), 26, GLD), angleArc(Q(A), Q(T), Q(P), 22, GLD),
+      dot(Q(U), DIM, 3), dot(Q(G), DIM, 3), dot(Q(M), ACC, 3.5), dot(Q(N), ACC, 3.5),
+      txt(add(Q(P), [-12, 10]), "P"), txt(add(Q(A), [12, 10]), "A"), txt(add(Q(T), [0, -10]), "T"),
+      txt(add(Q(U), [-12, -2]), "U"), txt(add(Q(G), [12, -2]), "G"), txt(add(Q(M), [0, 16]), "M", ACC, 13), txt(add(Q(N), [10, -6]), "N", ACC, 13),
+      txt(add(Q(P), [40, -8]), "36°", GLD, 11.5), txt(add(Q(A), [-38, -8]), "56°", GLD, 11.5), txt(add(Q(mid(P, M)), [0, 16]), "PA = 10", DIM, 12),
+      cap(430, 270, "Triangle PAT with ∠P = 36°, ∠A = 56° and PA = 10; PU = AG = 1, and M, N are the midpoints of PA and UG." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12B #4: a chord of length 10 at distance 5 from the center.
+  PROB["2018-amc-12b-4"] = (() => {
+    const r = Math.sqrt(50), O = [0, 0], X = [-5, -5], Y = [5, -5], F = [0, -5];
+    const ok = Math.abs(dist(O, X) - r) < 1e-12 && Math.abs(dist(X, Y) - 10) < 1e-12 && Math.abs(dist(O, F) - 5) < 1e-12;
+    const Q = fitQ([[-r, -r], [r, r]], 24, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), r * k, DIM, 1.8), seg(Q(X), Q(Y), ACC, 2), seg(Q(O), Q(F), GLD, 1.6, "5 4"), rightAngle(Q(F), Q(O), Q(Y), 10),
+      dot(Q(O), DIM, 3), txt(add(Q(O), [0, -10]), "O"), txt(add(Q(mid(F, Y)), [0, -8]), "XY = 10", ACC, 12), txt(add(Q(X), [-6, 14]), "X", ACC, 12.5), txt(add(Q(Y), [6, 14]), "Y", ACC, 12.5),
+      txt(add(Q(mid(O, F)), [-12, 4]), "5", GLD, 12.5),
+      cap(430, 270, "A chord XY of length 10 whose distance from the center O is 5." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12B #12: AB = 10, the bisector of angle A meets BC at D with CD = 3. Drawn with
+  // AC = 8, one value inside the answer interval; AC is the unknown, so it is not labelled.
+  PROB["2018-amc-12b-12"] = (() => {
+    const b = 8, a = 3 + 30 / b, c = 10;                       // BD = 30/AC by the bisector theorem
+    const B = [0, 0], C = [a, 0], xA = (c * c - b * b + a * a) / (2 * a), A = [xA, Math.sqrt(c * c - xA * xA)];
+    const D = [30 / b, 0];
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V)));
+    const ok = Math.abs(ang(B, A, D) - ang(D, A, C)) < 1e-9 && Math.abs(dist(C, D) - 3) < 1e-9 && Math.abs(dist(A, B) - 10) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(A), Q(D), ACC, 1.8), angleArc(Q(A), Q(B), Q(D), 26, GLD), angleArc(Q(A), Q(D), Q(C), 32, GLD),
+      dot(Q(D), ACC, 3.5), txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(D), [0, 16]), "D", ACC, 13),
+      txt(add(Q(mid(A, B)), [-14, 0]), "10", DIM, 12), txt(add(Q(mid(D, C)), [0, 16]), "3", DIM, 12),
+      cap(430, 270, "AB = 10, and the bisector of angle A meets BC at D with CD = 3 (drawn for one possible AC)." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12B #21: the 5-12-13 triangle with its circumcenter O, incenter I, and the circle
+  // centered at M tangent to both legs and internally to the circumcircle.
+  PROB["2018-amc-12b-21"] = (() => {
+    const C = [0, 0], A = [12, 0], B = [0, 5], O = mid(A, B), R = 6.5, I = [2, 2], M = [4, 4], rm = 4;
+    const ok = Math.abs(dist(O, M) - (R - rm)) < 1e-12 && Math.abs(dist(A, B) - 13) < 1e-12;
+    const Q = fitQ([[O[0] - R, O[1] - R], [O[0] + R, O[1] + R]], 12, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, FNT, 1.4), circ(Q(M), rm * k, GLD, 1.6), poly([A, B, C].map(Q), DIM, 2), rightAngle(Q(C), Q(A), Q(B), 9),
+      poly([M, O, I].map(Q), ACC, 1.8, ACCS), dot(Q(O), ACC, 3), dot(Q(I), ACC, 3), dot(Q(M), GLD, 3.5),
+      txt(add(Q(A), [10, 12]), "A"), txt(add(Q(B), [-10, -4]), "B"), txt(add(Q(C), [-10, 12]), "C"),
+      txt(add(Q(O), [10, 10]), "O", ACC, 13), txt(add(Q(I), [-11, 4]), "I", ACC, 13), txt(add(Q(M), [0, -9]), "M", GLD, 13),
+      txt(add(Q(mid(C, A)), [30, 14]), "12", DIM, 12), txt(add(Q(mid(C, B)), [-12, 4]), "5", DIM, 12), txt(add(Q(mid(A, B)), [6, -8]), "13", DIM, 12),
+      cap(430, 270, "The 5-12-13 triangle with circumcenter O and incenter I; the circle centered at M touches both legs and the circumcircle." + MM(ok))
+    ]);
+  })();
+
+  // 2017 AMC 12A #24: the cyclic ABCD with sides 3, 2, 6, 8, the points X, Y on BD, and the
+  // constructed E (on AX, YE ∥ AD), F (on CX, EF ∥ AC) and G (the second point of CX on the circle).
+  PROB["2017-amc-12a-24"] = (() => {
+    const bd = Math.sqrt(51), B = [0, 0], D = [bd, 0];
+    const third = (P, Qq, r1, r2, up) => { const d = dist(P, Qq), x = (r1 * r1 - r2 * r2 + d * d) / (2 * d), y = Math.sqrt(r1 * r1 - x * x), u = norm(sub(Qq, P)), v = perp(u);
+      return add(add(P, mul(u, x)), mul(v, up ? y : -y)); };
+    const A = third(B, D, 3, 8, true), C = third(B, D, 2, 6, false);
+    const X = lerp(D, B, 1 / 4), Y = lerp(B, D, 11 / 36);
+    const E = lineInt(A, X, Y, add(Y, sub(D, A))), F = lineInt(C, X, E, add(E, sub(C, A)));
+    const O = K.circumcenterOf(A, B, D), R = dist(O, A);
+    const dC = norm(sub(X, C)), tG = -2 * ((C[0] - O[0]) * dC[0] + (C[1] - O[1]) * dC[1]), G = add(C, mul(dC, tG));
+    const ok = Math.abs(dist(O, C) - R) < 1e-9 && Math.abs(dist(X, F) * dist(X, G) - 17) < 1e-9 && Math.abs(dist(B, C) - 2) < 1e-9;
+    const Q = fitQ([[O[0] - R, O[1] - R], [O[0] + R, O[1] + R], E, F], 16, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, FNT, 1.4), poly([A, B, C, D].map(Q), DIM, 2), seg(Q(B), Q(D), DIM, 1.4),
+      seg(Q(A), Q(E), FNT, 1.3), seg(Q(Y), Q(E), GLD, 1.5), seg(Q(C), Q(dist(C, F) > dist(C, G) ? F : G), FNT, 1.3), seg(Q(E), Q(F), GLD, 1.5),
+      ...[X, Y, E, F, G].map(P => dot(Q(P), ACC, 3)),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 4]), "B"), txt(add(Q(C), [0, 16]), "C"), txt(add(Q(D), [12, 4]), "D"),
+      txt(add(Q(X), [6, 15]), "X", ACC, 12.5), txt(add(Q(Y), [-4, 15]), "Y", ACC, 12.5), txt(add(Q(E), [-12, -4]), "E", ACC, 12.5),
+      txt(add(Q(F), [12, 2]), "F", ACC, 12.5), txt(add(Q(G), [8, -8]), "G", ACC, 12.5),
+      cap(430, 270, "ABCD inscribed in circle O with AB = 3, BC = 2, CD = 6, DA = 8; X and Y on BD, YE ∥ AD, EF ∥ AC (gold), and G on line CX and the circle." + MM(ok))
+    ]);
+  })();
 })();

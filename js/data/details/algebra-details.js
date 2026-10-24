@@ -92,7 +92,7 @@ Seldom alone, because it finishes a setup rather than building it; the partners 
 ## Key forms
 - $r + s = -\frac ba$ and $rs = \frac ca$ — the sum and product straight from the coefficients
 - $r^2 + s^2 = (r + s)^2 - 2rs$ and $\frac1r + \frac1s = \frac{r + s}{rs}$ — symmetric expressions without the roots
-- $|r - s| = \frac{\sqrt{\Delta}}{|a|}$ — the gap between the roots, from the [[quadratic-formula|discriminant]]
+- $|r - s| = \frac{\sqrt{|\Delta|}}{|a|}$ — the gap between the roots, real or complex ($x^2 + 1$: $|i - (-i)| = 2$), from the [[quadratic-formula|discriminant]]
 - $x^2 - px + q = 0$ — the quadratic whose roots have sum $p$ and product $q$
 
 ## Conditions
@@ -109,6 +109,7 @@ The reverse direction is the same identity read the other way. If two numbers ha
 - Every symmetric polynomial expression in $r$ and $s$ is a polynomial in $r + s$ and $rs$, by the [[fundamental-theorem-symmetric|Fundamental Theorem of Symmetric Polynomials]]; for example, $r^3 + s^3 = (r + s)^3 - 3rs(r + s)$.
 - A monic quadratic with integer coefficients has integer roots exactly when its discriminant is a perfect square.
 - Power sums of the roots beyond the second are handled by [[newtons-sums|Newton's Sums]].
+- The sum and product also place the roots without finding them: both positive when the discriminant is at least $0$ and the sum and product are positive, opposite signs when the product is negative, which [[quadratic-root-location|locating the roots of a quadratic]] extends to any point and interval.
 
 ## Applications
 Symmetric expressions in the roots of a quadratic, systems given by a sum and a product, and quadratics with integer roots.
@@ -197,6 +198,7 @@ The integer statement is the same theorem read over the integers. Apply the Fact
 - Divisibility questions reduce to evaluations at the roots of the divisor, complex ones included: $x^2 + 1 \mid P(x)$ exactly when $P(i) = 0$, and [[roots-of-unity|roots of unity]] handle $x^2 + x + 1$ and its relatives.
 - Over the integers, $a - b \mid P(a) - P(b)$ is a filter that settles most "can such a polynomial exist" questions by parity alone.
 - It also constrains fixed points and cycles: if $P(P(x)) = x$ on the integers, then $a - b \mid P(a) - P(b) \mid P(P(a)) - P(P(b)) = a - b$, which forces $|P(a) - P(b)| = |a - b|$, the key step in polynomial 2-cycle problems.
+- When the quotient is needed as well as the remainder, [[polynomial-division|synthetic division]] by $x - a$ produces both in one row, the last number being $P(a)$.
 
 ## Applications
 Remainders of polynomial division, divisibility by a given factor, and existence questions for integer polynomials.
@@ -349,6 +351,7 @@ For a polynomial of degree $n$ with nonzero constant term, $x^nP\!\left(\frac1x\
 - Substituting before removing the factor $x + 1$ from an odd-degree palindrome.
 - Forgetting that a real $y$ with $|y| \lt 2$ gives complex roots on the unit circle, not real ones.
 - Writing $x^2 + \frac{1}{x^2} = y^2 + 2$ instead of $y^2 - 2$.
+- Forgetting that $y = x + \frac1x$ satisfies $\lvert y\rvert \ge 2$ for real $x$: a root $y$ with $\lvert y\rvert \lt 2$ gives two non-real $x$ (see [[transforming-equations|transforming equations without losing solutions]]).
 
 ## Contest profile
 An AMC 12 and AIME step: a quartic or sextic with palindromic coefficients, and a question about its real roots or their sum.
@@ -1188,6 +1191,7 @@ A power on the base divides instead of multiplying. By [[change-of-base|change o
 - Contest logs are mostly about converting to a common base: sums of logs collapse into the log of a product (a telescoping product often hides inside), and an exponent on the argument or the base comes out front.
 - Domain discipline is where most marks are lost. Arguments must be positive and the base must avoid $1$, so every solution is checked against the original equation; extraneous roots are the most common error in log problems.
 - For an inequality, check whether the base exceeds $1$ before deciding which way the sign goes.
+- Applying a logarithm to both sides of an equation assumes both sides are positive: $x^2 = 4$ becomes $2\log\lvert x\rvert = \log 4$, not $2\log x = \log 4$, which would lose $x = -2$ (see [[transforming-equations|transforming equations without losing solutions]]).
 
 ## Applications
 Equations and systems with logarithms, exponents that include logs, and sums of logs that telescope into one.
@@ -3483,10 +3487,17 @@ A frequent AMC and occasional AIME tool: one picture replaces a dozen sign cases
 - $L = \dfrac{d}{1 - r}$ for $r \ne 1$ — the fixed point of $a_n = ra_{n-1} + d$, the value the rule leaves unchanged
 - $a_n - L = r^n(a_0 - L)$ — measured from $L$ the sequence is geometric
 - $a_n = r^n(a_0 - L) + L$ — the closed form
-- $a_n = a_0 + nd$ when $r = 1$, where there is no fixed point and the sequence is arithmetic
+- $a_n = a_0 + nd$ when $r = 1$, where the sequence is arithmetic (no fixed point if $d \ne 0$; every value fixed if $d = 0$)
 
 ## Conditions
-The rule has a constant ratio $r$ and a constant added amount $d$. The terms approach $L$ when $\lvert r \rvert \lt 1$, run away when $\lvert r \rvert \gt 1$, and alternate around $L$ when $r$ is negative.
+The rule has a constant ratio $r$ and a constant added amount $d$. The behavior, for $r \ne 1$:
+
+| case | behavior |
+|---|---|
+| $a_0 = L$ | constant, for every $r$ |
+| $\lvert r \rvert \lt 1$ | approaches $L$ (from one side if $r \gt 0$, alternating if $r \lt 0$) |
+| $r = -1$ | a two-cycle, $a_0, 2L - a_0, a_0, \ldots$ |
+| $\lvert r \rvert \gt 1$ | runs away from $L$ (alternating if $r \lt -1$) |
 
 ## Why it works
 The fixed point is the one value the recurrence leaves alone: solving $L = rL + d$ gives $L = \frac{d}{1 - r}$. Subtracting $L = rL + d$ from $a_n = ra_{n-1} + d$ removes the constant, $$a_n - L = r(a_{n-1} - L), \qquad \text{so} \qquad a_n - L = r^n(a_0 - L).$$
@@ -3495,9 +3506,9 @@ That subtraction is the whole content: $d$ disappears into the change of origin,
 
 {{figure:gaps}}
 
-So $a_n$ approaches $L$ when $\lvert r \rvert \lt 1$, runs away when $\lvert r \rvert \gt 1$, and alternates around $L$ when $r$ is negative.
+So, unless $a_0 = L$ (a constant sequence), $a_n$ approaches $L$ when $\lvert r \rvert \lt 1$, keeps a constant distance from it when $r = -1$ (a two-cycle), runs away when $\lvert r \rvert \gt 1$, and alternates sides when $r$ is negative.
 
-The excluded case is $r = 1$, where $x \mapsto x + d$ has no fixed point at all; there the recurrence is an [[arithmetic-series|arithmetic sequence]], $a_n = a_0 + nd$.
+The excluded case is $r = 1$, where $x \mapsto x + d$ has no fixed point at all when $d \ne 0$ (and fixes everything when $d = 0$); there the recurrence is an [[arithmetic-series|arithmetic sequence]], $a_n = a_0 + nd$.
 
 ## Useful observations
 - The process is: solve $L = rL + d$, write $a_n = r^n(a_0 - L) + L$, and read off what the question wants, a specific term, the limit $L$, or the step at which a threshold is crossed, which is a logarithm away.
@@ -5155,6 +5166,7 @@ For distinct linear factors, the split always exists and is unique: over the com
 - Forgetting to divide first when the fraction is improper.
 - Telescoping $\frac{1}{k(k + 2)} = \frac12\left(\frac1k - \frac1{k + 2}\right)$ as if one term survived at each end: two first terms and two last terms survive.
 - Dropping the constant $\frac{1}{a - b}$ in front of the split.
+- Decomposing before dividing: when the numerator's degree is at least the denominator's, divide first by [[polynomial-division|polynomial long division]] and decompose only the proper remainder.
 
 ## Contest profile
 An AMC and AIME tool that rarely stands alone: it is the first step of most telescoping sums of fractions and of generating-function coefficient problems.
@@ -5591,5 +5603,114 @@ First turn the picture into a list of numbers, checking the scale and the units 
 
 ## Contest profile
 Mostly an AMC 8 setup, rarer on the AMC 10: one graph or table and a question about its numbers. It pairs with Percent Change and with the mean, median, and mode.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"transforming-equations": String.raw`
+## When to use
+Any equation whose solution needs a step that is not reversible: squaring both sides, multiplying by an expression that can be $0$ (clearing a variable denominator), dividing by or canceling a factor, taking logarithms of both sides, substituting a new variable, or dividing by a parameter. Steps that are always reversible need no check: adding the same expression to both sides, multiplying by a nonzero constant, or applying a one-to-one function such as $x \mapsto x^3$.
+
+## How
+1. Write down the domain of the original equation: denominators nonzero, even roots of nonnegative numbers, logarithms of positive numbers.
+2. Before dividing by a factor or canceling it, set it equal to $0$ and solve that case separately.
+3. Before squaring, isolate the radical on one side and record that the other side must be nonnegative.
+4. When substituting a new variable, record the values it can actually take.
+5. Solve the transformed equation, splitting on the cases a parameter needs.
+6. Keep only the candidates that meet every recorded condition, or substitute each one into the original equation.
+
+For $\sqrt{x + 2} = x$ the right side must be nonnegative, so $x \ge 0$. Squaring gives $x^2 - x - 2 = 0$, with candidates $2$ and $-1$. The candidate $-1$ breaks $x \ge 0$ (indeed $\sqrt{1} = 1 \ne -1$), so the only solution is $x = 2$.
+
+## Why it works
+A step is safe in both directions when it can be undone. Squaring cannot: $a = b$ implies $a^2 = b^2$, but $a^2 = b^2$ only says $a = b$ or $a = -b$. So the squared equation holds the solutions of both $\sqrt{x + 2} = x$ and $\sqrt{x + 2} = -x$, and the sign condition recorded in step 3 is exactly what separates them. Isolating the radical first matters for the same reason: with only one radical on one side, a single squaring removes it.
+
+Dividing goes wrong in the other direction. From $x(x - 1) = x$, dividing by $x$ gives $x = 2$ and loses $x = 0$; setting the factor to $0$ first, as in step 2, keeps it. Canceling cannot add a value the original excludes: $\frac{x^2 - 1}{x - 1} = 2$ excludes $x = 1$, and canceling to $x + 1 = 2$ gives exactly $x = 1$, so the equation has no solution.
+
+Logarithms and substitutions narrow the domain. Writing $x^2 = 4$ as $2\log x = \log 4$ assumes $x \gt 0$ and loses $-2$; the correct form is $2\log\lvert x\rvert = \log 4$. Setting $t = x + \frac1x$ for real $x \ne 0$ forces $\lvert t\rvert \ge 2$, by AM–GM applied to $\lvert x\rvert$ and $\frac1{\lvert x\rvert}$, so a root $t = 1$ of the new equation gives no real $x$. A parameter is a case split: $ax = a$ has the single solution $x = 1$ when $a \ne 0$, and every real $x$ when $a = 0$.
+
+## Formulas it uses
+- [[log-rules]]: $\log x^2 = 2\log\lvert x\rvert$, not $2\log x$, which is the rule that keeps the negative solutions.
+- [[am-gm]]: $\lvert x\rvert + \frac1{\lvert x\rvert} \ge 2$ gives the range $\lvert t\rvert \ge 2$ of the substitution $t = x + \frac1x$.
+
+## Common traps
+- Squaring before isolating the radical, which leaves a radical behind and multiplies the candidates.
+- Dividing both sides by a variable expression and losing the solutions where it is $0$.
+- Reporting a root of a canceled or substituted equation that is outside the original domain.
+- Forgetting the value of a parameter that makes a coefficient $0$.
+
+## Contest profile
+A step inside many AMC 10 and 12 algebra problems rather than a problem of its own: a radical equation whose squared form has an extra root, a logarithmic equation whose candidates must keep every argument positive, or a parameter question whose answer hinges on the case where a coefficient vanishes. The answer choices often include the extraneous root.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"polynomial-division": String.raw`
+## When to use
+A polynomial has to be divided by another one: removing a known root $r$ to get the remaining factor of degree one less, simplifying a rational expression whose numerator has degree at least the denominator's (before [[partial-fractions|partial fractions]], which need a smaller numerator, or to find a slant asymptote), finding the remainder by a quadratic or higher divisor, or deciding when a quotient of polynomials is an integer. When only the remainder by $x - a$ is wanted, the [[factor-remainder-theorem|Remainder Theorem]] gives it as $P(a)$ with no division at all.
+
+## How
+1. Write $P$ and $D$ in descending powers, putting a $0$ for every missing power of $P$.
+2. Divide the leading term of what remains by the leading term of $D$; the result is the next term of $Q$.
+3. Multiply $D$ by that term and subtract it from what remains.
+4. Repeat steps 2 and 3 until what remains has smaller degree than $D$; that is the remainder $R$.
+5. For $D = x - a$, use synthetic division instead: bring down the first coefficient, then repeatedly multiply the last number by $a$ and add it to the next coefficient.
+6. Read the answer: the last number of the synthetic row is $R = P(a)$, and the numbers before it are the coefficients of $Q$.
+
+To divide $x^3 - 2x + 5$ by $x - 2$, list the coefficients $1, 0, -2, 5$. Bring down $1$; then $1 \cdot 2 + 0 = 2$, $2 \cdot 2 - 2 = 2$ and $2 \cdot 2 + 5 = 9$. So $x^3 - 2x + 5 = (x - 2)(x^2 + 2x + 2) + 9$, and indeed $P(2) = 8 - 4 + 5 = 9$.
+
+## Why it works
+Each step of long division subtracts a multiple of $D$, so the remainder at every stage differs from $P$ by a multiple of $D$. Each step also removes the leading term of what remains, so the degree drops, and the process stops once the degree is below $\deg D$. Collecting the multiples subtracted gives $Q$ with $P = DQ + R$.
+
+The quotient and remainder are unique. If $DQ + R = DQ' + R'$, then $D(Q - Q') = R' - R$. The right side has degree less than $\deg D$, and a nonzero multiple of $D$ cannot, so $Q = Q'$ and $R = R'$.
+
+Synthetic division is long division by $x - a$ with the bookkeeping removed. The leading coefficient of $D$ is $1$, so each new quotient coefficient is just the leading coefficient of what remains, and subtracting $-a$ times it is the same as adding $a$ times it. The numbers produced are the quotient coefficients $q_k = p_k + a\,q_{k-1}$, which is also Horner's way of evaluating $P(a)$; that is why the last number is $P(a)$.
+
+## Formulas it uses
+- [[factor-remainder-theorem]]: the remainder on division by $x - a$ is $P(a)$, and it is $0$ exactly when $x - a$ is a factor.
+- [[rational-root-theorem]]: lists the candidates $a$ to try, after which division by $x - a$ lowers the degree.
+
+## Common traps
+- Leaving out a $0$ coefficient for a missing power, which shifts every later column.
+- Using $a$ instead of $-a$ for a divisor $x + a$: synthetic division by $x + 3$ multiplies by $-3$.
+- Dividing synthetically by $bx - c$ as if it were $x - \frac cb$ and forgetting to divide the quotient by $b$.
+- Stopping before the remainder's degree is below the divisor's.
+
+## Contest profile
+A routine step on the AMC 10 and 12: removing a root found by inspection to reach a quadratic, rewriting a rational function as a polynomial plus a proper fraction to find integer values or an asymptote, or finding a remainder by a quadratic. On the AIME it is usually one line inside a polynomial problem.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"quadratic-root-location": String.raw`
+## When to use
+A quadratic whose coefficients involve a parameter must have its roots in a stated place: both real and positive, one on each side of a number $k$, both greater than $k$, or both inside an interval. The question asks for the parameter values, and the quadratic formula would bury the parameter under a square root. When the roots come out cleanly, solving directly is simpler.
+
+## How
+1. Make the leading coefficient positive, multiplying the equation by $-1$ if needed, so the parabola opens upward.
+2. For one root on each side of $k$, require only $f(k) \lt 0$.
+3. For both roots greater than $k$, require $\Delta \ge 0$, the vertex $-\frac{b}{2a} \gt k$, and $f(k) \gt 0$.
+4. For both roots inside $(m, n)$, require $\Delta \ge 0$, $m \lt -\frac{b}{2a} \lt n$, $f(m) \gt 0$ and $f(n) \gt 0$.
+5. For signs only (the case $k = 0$), use Vieta: both roots positive when $\Delta \ge 0$, $r_1 + r_2 \gt 0$ and $r_1r_2 \gt 0$; opposite signs exactly when $r_1r_2 \lt 0$.
+6. Intersect the conditions to get the parameter range.
+
+For which $m$ does $x^2 - 2mx + m + 2 = 0$ have one root on each side of $1$? The test is $f(1) = 1 - 2m + m + 2 = 3 - m \lt 0$, so $m \gt 3$. At $m = 4$ the roots are $4 \pm \sqrt{10}$, about $0.84$ and $7.16$.
+
+## Why it works
+With $a \gt 0$, $f(x) = a(x - r_1)(x - r_2)$ when the roots are real, and the product is negative exactly between them. So $f(k) \lt 0$ forces two distinct real roots with $k$ between them; if the roots were not real, $f$ would be positive everywhere. No discriminant check is needed for this case.
+
+For both roots on one side of $k$, $f(k) \gt 0$ says only that $k$ is outside the interval between the roots, or that there are no real roots at all. The discriminant rules out the second possibility. The vertex then says which side: its $x$-coordinate $-\frac{b}{2a}$ is the midpoint of the roots, so it is to the right of $k$ exactly when both roots are. The interval case applies this at both ends.
+
+The sign test is the case $k = 0$ written with Vieta's Formulas. A positive product $\frac ca$ means the real roots have the same sign, and a positive sum $-\frac ba$ makes that sign positive. A negative product already forces real roots of opposite signs, since then $\Delta = b^2 - 4ac \gt 0$.
+
+## Formulas it uses
+- [[quadratic-formula]]: the discriminant $\Delta = b^2 - 4ac$ decides whether the roots are real.
+- [[vietas-quadratic]]: the sum $-\frac ba$ and product $\frac ca$ give the signs of the roots.
+- [[vertex-form]]: the vertex $-\frac{b}{2a}$ is the midpoint of the roots, which places them relative to $k$.
+
+## Common traps
+- Checking $f(k) \gt 0$ and the vertex but not $\Delta \ge 0$, which admits parameters with no real roots.
+- Using the tests with a negative leading coefficient; either flip the sign first or use $a\,f(k) \lt 0$.
+- Mixing strict and non-strict inequalities at the endpoints, where a root equal to $k$ is or is not allowed.
+- Forgetting that a parameter in the leading coefficient can make the equation linear.
+
+## Contest profile
+An AMC 12 and occasional AIME step: a parameter range for which a quadratic has two positive roots, or roots on either side of a number, often inside a problem about the intersections of a line and a parabola. The sign of a single value $f(k)$ is the fastest test and the one most often missed.
 `
 });
