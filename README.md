@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2001 AMC 8 #6 to #15 (2026-10-24).** Answers B, A ($21$), E ($39$), D ($189$), A, C, A (its Defined Operation tag kept), D, C, A. All checked by script.
 - **Step D: 2002 AMC 8 finished, 2001 AMC 8 begun (2026-10-24).** 2002 AMC 8 #21 ($\tfrac{11}{16}$), 22 ($26$), 23 ($\tfrac49$), 24 ($40\%$), 25 ($\tfrac14$); 2001 AMC 8 #1 to #5. All checked by script.
 - **Step D: 2002 AMC 8 #11 to #20 (2026-10-24).** Answers C, B, E, B, E (areas from the figure, $5.5$ largest), E ($X+Y=Z$), C, E, D, D. All checked by script.
 - **Step D: 2002 AMC 8 #1 to #10 (2026-10-24).** Answers D, A, C, B, C, A, E, D, B, E. All checked by script.
