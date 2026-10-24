@@ -654,4 +654,102 @@
     { q: String.raw`Find every complex $z$ with $z^3 = 8i$.`,
       s: String.raw`$8i = 8e^{i\pi/2}$, so $z = 2e^{i(\pi/6 + 2\pi k/3)}$ for $k = 0, 1, 2$: $2e^{i\pi/6} = \sqrt3 + i$, $2e^{5\pi i/6} = -\sqrt3 + i$ and $2e^{3\pi i/2} = -2i$.` }
   );
+  add("take-logs-linearize",
+    { q: String.raw`Positive reals satisfy $a^2b = 128$ and $ab^3 = 2048$. Find $a$ and $b$.`,
+      s: String.raw`With $A = \log_2a$ and $B = \log_2b$ the equations are linear: $2A + B = 7$ and $A + 3B = 11$. Then $A = 2$ and $B = 3$, so $a = 4$ and $b = 8$. Check: $16\cdot8 = 128$ and $4\cdot512 = 2048$.` }
+  );
+  add("palindromic-polynomials",
+    { q: String.raw`Solve $x^4 - 5x^3 + 8x^2 - 5x + 1 = 0$.`,
+      s: String.raw`Divide by $x^2$ and set $y = x + \tfrac1x$: $(y^2 - 2) - 5y + 8 = y^2 - 5y + 6 = 0$, so $y = 2$ or $y = 3$. Then $x + \tfrac1x = 2$ gives the double root $x = 1$, and $x + \tfrac1x = 3$ gives $x = \tfrac{3 \pm \sqrt5}2$, a pair of reciprocals.` },
+    { q: String.raw`The cubic $2x^3 + 3x^2 + 3x + 2$ has coefficients that read the same both ways. Which real number must be a root, and what else is there?`,
+      s: String.raw`The degree is odd and the coefficients read the same backwards, so $x = -1$ is a root: $-2 + 3 - 3 + 2 = 0$. Dividing leaves $2x^2 + x + 2$, again palindromic, whose discriminant $1 - 16$ is negative. So $x = -1$ is the only real root.` }
+  );
+  add("sqrt-approximation",
+    { q: String.raw`Estimate $\sqrt{50}$ to three decimal places by hand.`,
+      s: String.raw`From $7^2 = 49$, $\sqrt{50} \approx 7 + \tfrac1{14} \approx 7.0714$. This overshoots: $7.0714^2 \approx 50.005$, so subtract about $\tfrac{0.005}{2\cdot7.07} \approx 0.0004$, giving $7.071$. (The true value is $7.07107$.)` },
+    { q: String.raw`Which is larger, $\sqrt{101} - 10$ or $\tfrac1{20}$?`,
+      s: String.raw`The estimate $\sqrt{101} \approx 10 + \tfrac1{20}$ is always an overestimate, since $\left(10 + \tfrac1{20}\right)^2 = 101 + \tfrac1{400}$. So $\sqrt{101} - 10 \lt \tfrac1{20}$.` }
+  );
+  add("products-over-roots",
+    { q: String.raw`The fifth roots of unity other than $1$ are $\omega^k$ for $k = 1, 2, 3, 4$, with $\omega = e^{2\pi i/5}$. Multiply together the four numbers $1 - \omega^k$.`,
+      s: String.raw`The four numbers $\omega^k$ are the roots of $P(x) = \tfrac{x^5 - 1}{x - 1} = x^4 + x^3 + x^2 + x + 1$, so the product is $P(1) = 5$.` },
+    { q: String.raw`Without finding them, add up the reciprocals $\tfrac1{1 - r}$ over the three roots $r$ of $x^3 - 4x + 1$.`,
+      s: String.raw`With $P(x) = x^3 - 4x + 1$ the sum is $\tfrac{P'(1)}{P(1)}$. Here $P'(x) = 3x^2 - 4$, so $P'(1) = -1$, and $P(1) = -2$, giving $\tfrac12$.` }
+  );
+  add("function-symmetry-equation",
+    { q: String.raw`For every real $x$, the values of $f$ at $x$ and at $4 - x$ add to $6$. If $f(1) = 2$, what is $f(3)$, and about which point is the graph symmetric?`,
+      s: String.raw`At $x = 1$ the equation reads $f(1) + f(3) = 6$, so $f(3) = 4$. The arguments always add to $4$ and the values to $6$, so the graph is symmetric about the point $(2, 3)$.` }
+  );
+  add("injectivity-surjectivity",
+    { q: String.raw`A function $f : \mathbb R \to \mathbb R$ satisfies $f(f(x)) = x + 1$. Show that $f$ is injective and that $f(x + 1) = f(x) + 1$.`,
+      s: String.raw`If $f(a) = f(b)$, applying $f$ gives $a + 1 = b + 1$, so $a = b$. For the second, compute $f(f(f(x)))$ two ways: as $f$ of $f(f(x)) = x + 1$ it is $f(x + 1)$, and as the identity applied at $f(x)$ it is $f(x) + 1$.` },
+    { q: String.raw`Show that a function $f : \mathbb R \to \mathbb R$ with $f(f(x)) = 2x + 3$ is both injective and surjective.`,
+      s: String.raw`Injective: $f(a) = f(b)$ gives $2a + 3 = 2b + 3$. Surjective: for any $y$, the number $x = \tfrac{y - 3}2$ has $f(f(x)) = y$, so $y$ is a value of $f$, at the point $f(x)$.` }
+  );
+  add("quadratic-root-location",
+    { q: String.raw`For which $k$ does $x^2 - kx + 4 = 0$ have one root above $5$ and one below?`,
+      s: String.raw`The parabola opens upward, so $5$ lies strictly between the roots exactly when $f(5) = 29 - 5k \lt 0$, that is $k \gt \tfrac{29}5$. No discriminant check is needed: a negative value already forces two real roots.` },
+    { q: String.raw`For which $m$ do both roots of $x^2 - 2mx + m + 2 = 0$ lie strictly between $0$ and $3$?`,
+      s: String.raw`Four conditions. The discriminant $4(m^2 - m - 2) \ge 0$ gives $m \le -1$ or $m \ge 2$. The vertex $m$ lies in $(0, 3)$. The ends are positive: $f(0) = m + 2 \gt 0$ and $f(3) = 11 - 5m \gt 0$, so $m \lt \tfrac{11}5$. Together, $2 \le m \lt \tfrac{11}5$.` }
+  );
+  add("numeral-as-polynomial",
+    { q: String.raw`Show that $121_b$ is a perfect square in every base $b \ge 3$.`,
+      s: String.raw`As a polynomial in the base, $121_b = b^2 + 2b + 1 = (b + 1)^2$, and $b \ge 3$ makes the digit $2$ legal.` },
+    { q: String.raw`In which base does $132_b$ equal $56$?`,
+      s: String.raw`$b^2 + 3b + 2 = 56$ gives $b^2 + 3b - 54 = (b + 9)(b - 6) = 0$, so $b = 6$, which allows the digit $3$. Check: $36 + 18 + 2 = 56$.` }
+  );
+  add("subtract-equal-remainders",
+    { q: String.raw`Find the largest $d$ for which $437$, $563$ and $1067$ leave the same remainder on division by $d$, and find that remainder.`,
+      s: String.raw`$d$ must divide the differences $126$ and $504$, so it divides $\gcd(126, 504) = 126$, and $d = 126$ works. The common remainder is $437 - 3\cdot126 = 59$.` }
+  );
+  add("reduce-divisibility-constant",
+    { q: String.raw`For how many integers $n$, negative ones included, is $n - 3$ a divisor of $n^2 + 5$?`,
+      s: String.raw`Modulo $n - 3$, $n \equiv 3$, so $n^2 + 5 \equiv 14$ and $n - 3$ must divide $14$: $n - 3 \in \{\pm1, \pm2, \pm7, \pm14\}$. That gives $8$ integers, $n = -11, -4, 1, 2, 4, 5, 10, 17$.` }
+  );
+  add("grid-path-fill",
+    { q: String.raw`A walker heading from the origin to $(4, 4)$ by unit moves east or north must avoid the flooded corner $(2, 2)$. Count the routes.`,
+      s: String.raw`Fill the grid with the blocked point set to $0$. Row by row from the bottom: $1,1,1,1,1$; $1,2,3,4,5$; $1,3,0,4,9$; $1,4,4,8,17$; $1,5,9,17,34$. So $34$ paths avoid it, which matches $\binom84 - \binom42^2 = 70 - 36$.` }
+  );
+  add("proving-both-directions",
+    { q: String.raw`Prove that an integer $n$ is even if and only if $n^2$ is even.`,
+      s: String.raw`If $n = 2k$, then $n^2 = 2(2k^2)$ is even. Conversely, suppose $n^2$ is even; if $n$ were odd, $n = 2k + 1$, then $n^2 = 2(2k^2 + 2k) + 1$ would be odd, so $n$ is even. The second direction is the one that needs an argument by contrapositive.` },
+    { q: String.raw`Prove that for sets, $A \cap B = A$ if and only if $A \subseteq B$.`,
+      s: String.raw`If $A \cap B = A$, every element of $A$ is in $A \cap B$, hence in $B$, so $A \subseteq B$. If $A \subseteq B$, then $A \cap B \subseteq A$ always, and every $x \in A$ is also in $B$, so $A \subseteq A \cap B$; the two inclusions give $A \cap B = A$.` }
+  );
+  add("induction",
+    { q: String.raw`Prove that $1 + 3 + 5 + \cdots + (2n - 1) = n^2$ for every $n \ge 1$.`,
+      s: String.raw`For $n = 1$ both sides are $1$. If the sum of the first $n$ odd numbers is $n^2$, adding the next one gives $n^2 + (2n + 1) = (n + 1)^2$, the statement for $n + 1$.` },
+    { q: String.raw`Prove that $3$ divides $4^n - 1$ for every $n \ge 1$.`,
+      s: String.raw`For $n = 1$, $4 - 1 = 3$. For the step, find the case $n$ inside the case $n + 1$: $4^{n+1} - 1 = 4(4^n - 1) + 3$, and both terms are multiples of $3$ when $4^n - 1$ is.` }
+  );
+  add("strong-induction",
+    { q: String.raw`Prove that every integer $n \ge 2$ is a product of primes.`,
+      s: String.raw`Assume it for every integer from $2$ to $n - 1$. If $n$ is prime, it is a product of one prime. Otherwise $n = ab$ with $2 \le a, b \le n - 1$, and both $a$ and $b$ are products of primes by hypothesis, so $n$ is too. The step reaches back to $a$ and $b$, which can be far below $n - 1$.` },
+    { q: String.raw`The Fibonacci numbers have $F_1 = F_2 = 1$ and $F_n = F_{n-1} + F_{n-2}$. Prove that $F_n \lt 2^n$ for every $n \ge 1$.`,
+      s: String.raw`The cases $n = 1$ and $n = 2$ hold: $1 \lt 2$ and $1 \lt 4$. For $n \ge 3$, assuming the claim for all smaller indices, $F_n = F_{n-1} + F_{n-2} \lt 2^{n-1} + 2^{n-2} \lt 2^{n-1} + 2^{n-1} = 2^n$. The step uses the two previous cases, so two starting cases are needed.` }
+  );
+  add("minimal-counterexample",
+    { q: String.raw`Prove that $\sqrt2$ is irrational by taking the smallest possible denominator.`,
+      s: String.raw`Suppose $\sqrt2 = \tfrac pq$ with $q$ the smallest positive denominator possible. From $1 \lt \sqrt2 \lt 2$, $q \lt p \lt 2q$. Then $\tfrac{2q - p}{p - q}$ also equals $\sqrt2$: cross-multiplying, $2q - p = \sqrt2(p - q)$ becomes $2q + \sqrt2q = p + \sqrt2p$, which holds since $p = \sqrt2q$. Its denominator $p - q$ is positive and smaller than $q$, contradicting the choice of $q$.` },
+    { q: String.raw`Prove that every positive integer is a sum of distinct powers of $2$.`,
+      s: String.raw`Suppose not, and let $n$ be the smallest positive integer that is not; $n \ne 1 = 2^0$. Take the largest $2^k \le n$. If $n = 2^k$ we are done, so $0 \lt n - 2^k \lt 2^k$, and $n - 2^k$, being smaller, is a sum of distinct powers of $2$, all below $2^k$. Adding $2^k$ writes $n$ the same way, a contradiction.` }
+  );
+  add("infinite-descent",
+    { q: String.raw`Prove by descent that no positive integers satisfy $x^2 = 2y^2$, and say what this shows about $\sqrt2$.`,
+      s: String.raw`The right side is even, so $x = 2a$, and then $4a^2 = 2y^2$ gives $y^2 = 2a^2$: the pair $(y, a)$ satisfies the same equation with $y \lt x$. A positive solution would start an endless decreasing chain $x \gt y \gt a \gt \cdots$, so there is none, and $\sqrt2 = \tfrac xy$ is impossible.` },
+    { q: String.raw`Show by descent that the only integer triple with $x^3 + 2y^3 = 4z^3$ is $(0, 0, 0)$.`,
+      s: String.raw`The equation forces $x$ even; with $x = 2a$ it becomes $4a^3 + y^3 = 2z^3$, which forces $y$ even; with $y = 2b$ it becomes $2a^3 + 4b^3 = z^3$, which forces $z$ even; with $z = 2c$ it becomes $a^3 + 2b^3 = 4c^3$. So halving all three gives another solution, and a nonzero solution could be halved forever, which no nonzero integer allows. Only $(0, 0, 0)$ remains.` }
+  );
+  add("proof-by-construction",
+    { q: String.raw`Prove that there are $100$ consecutive positive integers, none of them prime.`,
+      s: String.raw`Take $101! + 2, 101! + 3, \ldots, 101! + 101$. For $2 \le k \le 101$, $k$ divides both $101!$ and $k$, so it divides $101! + k$, which is larger than $k$ and so not prime.` },
+    { q: String.raw`Prove that every odd number $2n + 1 \ge 3$ is a leg of a right triangle with integer sides.`,
+      s: String.raw`Take the legs $2n + 1$ and $2n^2 + 2n$ and the hypotenuse $2n^2 + 2n + 1$. The hypotenuse and the second leg differ by $1$, so the difference of their squares is their sum, $4n^2 + 4n + 1 = (2n + 1)^2$. For $n = 1$ this is $3, 4, 5$ and for $n = 2$ it is $5, 12, 13$.` }
+  );
+  add("pigeonhole-argument",
+    { q: String.raw`Prove that among any $5$ points in a square of side $1$, two are at most $\tfrac{\sqrt2}2$ apart.`,
+      s: String.raw`Cut the square into four squares of side $\tfrac12$; these are the boxes. Two of the five points share a small square, and two points of a square of side $\tfrac12$ are at most its diagonal, $\tfrac{\sqrt2}2$, apart.` },
+    { q: String.raw`Prove that among any $6$ numbers chosen from $1, 2, \ldots, 10$, two are coprime.`,
+      s: String.raw`Use the five boxes $\{1, 2\}$, $\{3, 4\}$, $\{5, 6\}$, $\{7, 8\}$, $\{9, 10\}$. Two of the six numbers fall in one box, so they are consecutive integers, and consecutive integers are coprime.` }
+  );
 })();
