@@ -4688,4 +4688,48 @@
       cap(430, 270, "The unit square: Q₁ is the midpoint of CD, P₁ is where AQ₁ meets BD, Q₂ is the foot below P₁, and so on (first triangle shaded)." + MM(ok))
     ]);
   })();
+
+  // 2015 AMC 12B #13: ABCD inscribed in a circle with ∠BAC = 70°, ∠ADB = 40°, AD = 4, BC = 6.
+  PROB["2015-amc-12b-13"] = (() => {
+    const R = 3 / Math.sin(rad(70)), at = d => [R * Math.cos(rad(90 - d)), R * Math.sin(rad(90 - d))];
+    const arcAD = 2 * Math.asin(4 / (2 * R)) * 180 / Math.PI;
+    const A = at(0), B = at(80), C = at(220), D = at(360 - arcAD), O = [0, 0];
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(B, A, C) - 70) < 1e-9 && Math.abs(ang(A, D, B) - 40) < 1e-9 && Math.abs(dist(A, D) - 4) < 1e-9 && Math.abs(dist(B, C) - 6) < 1e-9;
+    const Q = fitQ([[-R, -R], [R, R]], 26, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, FNT, 1.4), poly([A, B, C, D].map(Q), DIM, 2), seg(Q(A), Q(C), ACC, 1.6), seg(Q(B), Q(D), DIM, 1.3),
+      angleArc(Q(A), Q(B), Q(C), 24, GLD), angleArc(Q(D), Q(A), Q(B), 24, GLD),
+      ...[["A", A], ["B", B], ["C", C], ["D", D]].map(([n, P]) => txt(add(Q(P), mul(norm([P[0], -P[1]]), 15)), n)),
+      txt(add(Q(A), [12, 32]), "70°", GLD, 11.5), txt(add(Q(D), [30, 2]), "40°", GLD, 11.5),
+      txt(add(Q(mid(A, D)), [-14, -2]), "4", DIM, 12), txt(add(Q(mid(B, C)), [14, 4]), "6", DIM, 12),
+      cap(430, 270, "ABCD inscribed in a circle with ∠BAC = 70°, ∠ADB = 40°, AD = 4 and BC = 6." + MM(ok))
+    ]);
+  })();
+
+  // 2015 AMC 12B #14: the circle of radius 2 about A and the equilateral triangle of side 4 with a vertex at A.
+  PROB["2015-amc-12b-14"] = (() => {
+    const A = [0, 0], B = [4, 0], C = [2, 2 * Math.sqrt(3)];
+    const ok = Math.abs(dist(A, C) - 4) < 1e-12 && 2 < 2 * Math.sqrt(3);
+    const Q = fitQ([[-2, -2], [4, 2 * Math.sqrt(3)]], 22, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(A), 2 * k, ACC, 1.8, ACCS), poly([A, B, C].map(Q), GLD, 2, GLDS), dot(Q(A), DIM, 3),
+      txt(add(Q(A), [-12, 4]), "A"), txt(add(Q(mid(A, B)), [6, 16]), "4", DIM, 12), txt(add(Q([-1, 0]), [0, -6]), "2", ACC, 12), seg(Q(A), Q([-2, 0]), ACC, 1.2, "4 4"),
+      cap(430, 270, "A circle of radius 2 centered at A and an equilateral triangle of side 4 with a vertex at A." + MM(ok))
+    ]);
+  })();
+
+  // 2015 AMC 12B #16: the regular hexagon of side 6 folded up into a pyramid with lateral edges 8.
+  PROB["2015-amc-12b-16"] = (() => {
+    const { Pj, view } = projector([200, 196], 17, [1, 0.12], [0.62, -0.36]);
+    const H = Math.sqrt(64 - 36), V = { T: [0, 0, H] };
+    for (let i = 0; i < 6; i++) V["V" + i] = [6 * Math.cos(rad(60 * i)), 6 * Math.sin(rad(60 * i)), 0];
+    const base = [0, 1, 2, 3, 4, 5].map(i => "V" + i), faces = [base, ...[0, 1, 2, 3, 4, 5].map(i => ["T", "V" + i, "V" + ((i + 1) % 6)])];
+    const ok = Math.abs(Math.hypot(6, H) - 8) < 1e-12;
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj),
+      txt(add(Pj(V.T), [0, -10]), "apex"), txt(add(Pj(mid(V.V5, V.V0)), [12, 12]), "6", DIM, 12), txt(add(Pj(mid(V.T, V.V0)), [12, -2]), "8", DIM, 12),
+      cap(430, 270, "The pyramid on the regular hexagon of side 6, with every lateral edge 8 (the isosceles triangles folded up)." + MM(ok))
+    ]);
+  })();
 })();
