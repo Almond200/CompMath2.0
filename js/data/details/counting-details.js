@@ -2083,6 +2083,8 @@ Tag each term $x_i$ with $(u_i, d_i)$: the lengths of the longest increasing and
 
 With $mn + 1$ terms but only $mn$ tags satisfying $u \le m$ and $d \le n$, the [[pigeonhole|pigeonhole principle]] forces some $u \ge m + 1$ or $d \ge n + 1$.
 
+For sharpness, write $m$ blocks, each a decreasing run of $n$ terms, with every term of a later block larger than every term of an earlier one: $n, n - 1, \ldots, 1,\ 2n, \ldots, n + 1, \ldots$. An increasing subsequence takes at most one term from each block, so at most $m$, and a decreasing one stays inside one block, so at most $n$.
+
 ## Useful observations
 - The proof is the technique worth carrying: to each term is attached the pair (longest increasing run ending there, longest decreasing run ending there), and any two terms have different labels, because whichever comes first extends one of the other's runs.
 - The trigger is a problem asking to guarantee a monotone subsequence, or to show a sequence cannot avoid one.
@@ -2355,7 +2357,11 @@ Olympiad extremal graph theory, with Mantel occasionally surfacing on harder pro
 The coloring is proper, so adjacent vertices get different colors, and the graph is simple. Greedy coloring works in any vertex order.
 
 ## Why it works
-Greedy coloring in any order uses at most $\Delta + 1$ colors: each vertex sees at most $\Delta$ colored neighbors, so a color is free. Two colors suffice exactly when the graph is bipartite, which is equivalent to having no odd cycle, since a $2$-coloring is a bipartition. Planar $4$-colorability is the deep Four Color Theorem.
+Greedy coloring in any order uses at most $\Delta + 1$ colors: each vertex sees at most $\Delta$ colored neighbors, so a color is free. A clique of size $\omega$ needs $\omega$ different colors, which gives the lower bound.
+
+Two colors suffice exactly when there is no odd cycle. An odd cycle cannot alternate two colors. Conversely, in each component pick a vertex and color by the parity of the distance from it; an edge between two vertices of equal parity would close an odd walk, and an odd closed walk contains an odd cycle.
+
+The other two Key forms are quoted, not proved here. Brooks' Theorem is R. L. Brooks, "On colouring the nodes of a network", Proceedings of the Cambridge Philosophical Society 37 (1941), 194–197. The Four Color Theorem is proved, with computer checking, in N. Robertson, D. Sanders, P. Seymour and R. Thomas, "The four-colour theorem", Journal of Combinatorial Theory, Series B 70 (1997), 2–44.
 
 ## Useful observations
 - The chromatic number is bounded from both sides: the greedy bound caps it above, and any clique caps it below, so exhibiting a $k$-clique together with a $k$-coloring settles $\chi = k$ exactly.
@@ -2521,9 +2527,13 @@ Advanced olympiad and Putnam counting, where EGFs handle counts that ordinary ge
 No three chords meet at one interior point. With a regular polygon chords do meet three at a time, and the count drops.
 
 ## Why it works
-Apply [[eulers-formula|Euler's Formula]] $V - E + F = 2$ to the planar graph of points, chord crossings, and arcs. There are $\binom n2$ chords and $\binom n4$ interior crossings, one per choice of $4$ points, and bookkeeping the edges and faces yields $R(n) = \binom n4 + \binom n2 + 1$.
+Apply [[eulers-polyhedron-formula|Euler's Formula]] $V - E + F = 2$ to the planar graph of points, chord crossings, and arcs. Its vertices are the $n$ points and the $\binom n4$ interior crossings, one for each choice of $4$ points, whose two diagonals cross:
+$$V = n + \binom n4.$$
 
-Equivalently, each new chord adds one region plus one more for every crossing it makes.
+Each crossing lies on two chords, so the chords carry $2\binom n4$ crossings in all, and a chord with $j$ crossings is cut into $j + 1$ edges. Adding the $n$ arcs of the circle,
+$$E = \binom n2 + 2\binom n4 + n.$$
+
+Then $F = 2 - V + E = 2 + \binom n2 + \binom n4$, and removing the outer face leaves $R(n) = \binom n4 + \binom n2 + 1$. Equivalently, each new chord adds one region plus one more for every crossing it makes. For $n = 6$ this gives $15 + 15 + 1 = 31$, not $32$.
 
 ## Useful observations
 - The formula is a warning: five data points agreeing with $2^{n-1}$ prove nothing, and the sequence breaks at exactly the moment most people stop checking.

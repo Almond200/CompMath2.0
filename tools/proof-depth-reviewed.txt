@@ -132,3 +132,13 @@ descartes-rule-signs      # parity and the sign-change lemma proved
 sperners-theorem          # LYM by counting chains
 turn-based-games
 cotangent-rule
+monovariant
+power-minus-self          # the small cases worked from the rule
+freshmans-dream
+cauchy-functional-equations # rationals, regularity, the other three forms
+erdos-szekeres            # sharpness construction
+lagrange-roots-mod-p      # the factorization of x^(p-1) - 1 proved
+moser-circle              # Euler count written out; link fixed to the polyhedron card
+graph-coloring            # bipartite test proved; Brooks and Four Color quoted with references
+reduction-identities
+pappus-centroid

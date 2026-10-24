@@ -1576,7 +1576,7 @@ The identities hold for all angles where the functions are defined. Any angle re
 ## Why it works
 Everything is a unit-circle reflection. Reflecting across $y = x$ swaps coordinates, giving the cofunction pair $\sin(90^\circ - \theta) = \cos\theta$. Reflecting across the $x$-axis negates $y$, so sine is odd, and fixes $x$, so cosine is even.
 
-Reflecting across the $y$-axis is the supplement $180^\circ - \theta$: $y$ stays and $x$ flips, so sine is preserved and cosine negates.
+Reflecting across the $y$-axis is the supplement $180^\circ - \theta$: $y$ stays and $x$ flips, so sine is preserved and cosine negates. A full turn of $360^\circ$ returns every point, so sine and cosine repeat. A half turn sends $(x, y)$ to $(-x, -y)$, which keeps the ratio $\frac yx$, so tangent repeats every $180^\circ$; tangent and cotangent are odd as quotients of an odd and an even function.
 
 ## Useful observations
 - Awkward angles are collapsed to first-quadrant values before other identities are applied.
@@ -2233,7 +2233,11 @@ Usually a quick AMC or AIME computation: the table identifies the degree and sup
 Each template assumes continuity, monotonicity, or boundedness on an interval; contest problems always supply enough regularity. The multiplicative forms need positivity to take logarithms, and the degenerate solution $f \equiv 0$ is checked separately.
 
 ## Why it works
-For additive $f$: build from $f(1)$ over the integers, then the rationals ($q\,f(p/q) = f(p)$); regularity forces the rational-linear behavior to extend to all reals. The other three templates reduce to the additive one via logarithms and exponentials, for example $g = \ln f$ turns the multiplicative equation into an additive one.
+Step 1, the rationals. From $f(x + y) = f(x) + f(y)$: $x = y = 0$ gives $f(0) = 0$, then $f(-x) = -f(x)$, and induction gives $f(nx) = nf(x)$. With $c = f(1)$, $q\,f\!\left(\frac pq\right) = f(p) = pc$, so $f(r) = cr$ for every rational $r$.
+
+Step 2, regularity. If $f$ is continuous, take rationals $r_k \to x$; then $f(x) = \lim cr_k = cx$. If $f$ is increasing, then $cr \le f(x) \le cs$ for rationals $r \lt x \lt s$, and squeezing gives $f(x) = cx$; a bound on an interval works the same way.
+
+Step 3, the other three. If $f(x + y) = f(x)f(y)$, then $f(x) = f\!\left(\frac x2\right)^2 \ge 0$, and a single zero makes $f \equiv 0$; otherwise $g = \ln f$ is additive, so $f = e^{cx}$. If $f(xy) = f(x) + f(y)$ on positive reals, then $g(t) = f(e^t)$ is additive, so $f(x) = c\ln x$. If $f(xy) = f(x)f(y)$ with $f \gt 0$, then $\ln f(e^t)$ is additive, so $f(x) = x^c$.
 
 ## Useful observations
 - The template is matched, the regularity hypothesis the problem provides is verified, the general solution is written with one unknown constant, and the constant is pinned from a given value.

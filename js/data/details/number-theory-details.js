@@ -2381,7 +2381,9 @@ An olympiad lemma, occasionally behind AIME binomial-coefficient divisibility qu
 $k \ge 2$ and $n$ is any integer. No prime square divides $n^k - n$ for all $n$: taking $n = p$ gives $p^k - p$, which is divisible by $p$ but not by $p^2$.
 
 ## Why it works
-If $(p - 1) \mid (k - 1)$, then for $p \nmid n$ Fermat's Little Theorem gives $n^{k-1} \equiv 1$, so $n^k \equiv n$, and for $p \mid n$ both sides are $0$. Conversely, if $p$ divides $n^k - n$ for all $n$, take a primitive root $g$ modulo $p$: $g^{k-1} \equiv 1$ forces $(p - 1) \mid (k - 1)$. The primes are distinct, so their product divides $n^k - n$, and the remark on $n = p$ shows no larger number works.
+If $(p - 1) \mid (k - 1)$, then for $p \nmid n$ Fermat's Little Theorem gives $n^{k-1} \equiv 1$, so $n^k \equiv n$, and for $p \mid n$ both sides are $0$. Conversely, if $p$ divides $n^k - n$ for all $n$, take a [[primitive-roots|primitive root]] $g$ modulo $p$: $g^{k-1} \equiv 1$ forces $(p - 1) \mid (k - 1)$. The primes are distinct, so their product divides $n^k - n$, and the remark on $n = p$ shows no larger number works.
+
+The first Key form is this rule for small $k$. For $k = 3$ the primes with $(p - 1) \mid 2$ are $2$ and $3$; for $k = 5$, with $(p - 1) \mid 4$, they are $2, 3, 5$; for $k = 7$, with $(p - 1) \mid 6$, they are $2, 3, 7$. Their products are $6$, $30$ and $42$.
 
 ## Useful observations
 - For small exponents the factorization shows the divisibility directly: $n^3 - n = (n - 1)n(n + 1)$ is a product of three consecutive integers, so $6$ divides it.
@@ -2826,6 +2828,8 @@ The modulus must be prime. For a composite modulus the bound fails: $x^2 \equiv 
 
 ## Why it works
 Modulo a prime, a product is $0$ only when a factor is $0$, by [[euclids-lemma|Euclid's Lemma]], so the Factor Theorem works as it does for real numbers. If $r$ is a root of $f$, then $f(x) \equiv (x - r)g(x)$ with $\deg g = d - 1$. Any other root $s \not\equiv r$ makes $(s - r)g(s) \equiv 0$ with $s - r \not\equiv 0$, so $g(s) \equiv 0$. By induction on the degree, $g$ has at most $d - 1$ roots, so $f$ has at most $d$.
+
+For the factorization, both sides are monic of degree $p - 1$, and both vanish at $1, \ldots, p - 1$, the left by Fermat's Little Theorem. Their difference has degree less than $p - 1$ and $p - 1$ roots, so by the bound every coefficient is $0$ modulo $p$. The same argument shows that two polynomials of degree less than $p$ agreeing at more points than their degree are congruent coefficient by coefficient.
 
 ## Useful observations
 - Comparing constant terms in $x^{p-1} - 1 \equiv (x - 1)\cdots(x - (p - 1))$ gives $(p - 1)! \equiv -1 \pmod p$, which is [[wilsons-theorem|Wilson's Theorem]].
