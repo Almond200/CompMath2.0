@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2010 AMC 8 #11 to #20 (2026-10-24).** Answers B, D, E, C, C, B, D ($\tfrac23$), C ($6:\pi$), C ($64\pi$), A. All checked by script.
 - **Step D: 2010 AMC 8 #1 to #10 (2026-10-24).** Answers C, D, C, C, B, E, B ($10$ coins), D, D, B. All checked by script.
 - **Step D: 2011 AMC 8 finished (2026-10-24).** #16 ($A=B=300$), 17 ($21$), 18 ($\tfrac7{12}$), 19 ($11$ rectangles, counted by script from the figure), 20 ($750$), 21 ($37$), 22 ($7^{2011}\equiv43$), 23 ($36+48=84$), 24 ($0$), 25 ($\tfrac{\pi-2}2\approx\tfrac12$). All checked by script.
 - **Step D: 2011 AMC 8 #6 to #15 (2026-10-24).** Answers D, C, B, E, C, A, B, C, C, D. All checked by script.
