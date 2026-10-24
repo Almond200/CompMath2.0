@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: the first 10 Lower cards (2026-10-24).** Integer-valued polynomials, Cohn, Gauss–Lucas, Mason–Stothers, Brahmagupta–Fibonacci, Lagrange's identity, Abel summation, Vornicu–Schur, Maclaurin and Chebyshev's sum inequality. Cards under two: 114.
 - **F: the Low cards finished (2026-10-24).** The last six (the minimum focal sum, the bisector carried to the circumcircle, repeated blocks, drawing without replacement, subsets avoiding a relation, harmonic quadrilaterals) are done. Every High, Medium and Low card now has two practice problems except the Isogonal Line Lemma, which has one. Cards under two: 122, Lower and Lowest.
 - **F: 10 more Low cards (2026-10-24).** Pairing to bound, strategy stealing (the coin table and Chomp), odd-part chains, monovariants, the probabilistic method, transfer matrices, uniqueness, forward-backward induction, strengthening the hypothesis and discrete continuity. Cards under two: 128.
 - **F: 10 more Low cards (2026-10-24).** Forcing a difference of squares, SOS, uvw, Weierstrass, normalization, homogenization, the tangent line trick, squeezing between squares, the extended Euclidean algorithm and choosing a modulus. Cards under two: 138.

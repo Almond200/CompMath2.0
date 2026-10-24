@@ -1542,4 +1542,60 @@
     { q: String.raw`The tangents to a circle at $B$ and $C$ meet at $X$, and the line through $X$ and a point $A$ of the circle meets it again at $D$. Prove that $AB\cdot CD = AC\cdot BD$.`,
       s: String.raw`The tangent-chord angle gives $\angle XBD = \angle XAB$, and the triangles $XBD$ and $XAB$ share the angle at $X$, so they are similar and $\tfrac{BD}{AB} = \tfrac{XB}{XA}$. In the same way $\tfrac{CD}{AC} = \tfrac{XC}{XA}$. The tangents are equal, $XB = XC$, so $\tfrac{BD}{AB} = \tfrac{CD}{AC}$, which is the claim.` }
   );
+  add("integer-valued-polynomials",
+    { q: String.raw`Show that $\tfrac{x(x - 1)}2$ takes integer values at every integer, although its coefficients are not integers.`,
+      s: String.raw`It is $\binom x2$, a binomial basis polynomial with coefficient $1$. At a nonnegative integer it counts pairs, and at a negative integer $-m$ it is $\tfrac{m(m + 1)}2$, also an integer.` },
+    { q: String.raw`Write $P(x) = 1^2 + 2^2 + \cdots + x^2 = \tfrac{x(x + 1)(2x + 1)}6$ in the binomial basis.`,
+      s: String.raw`Take differences of $P(0), P(1), P(2), P(3) = 0, 1, 5, 14$: first differences $1, 4, 9$, second $3, 5$, third $2$. So $P(x) = \binom x1 + 3\binom x2 + 2\binom x3$, with integer coefficients as the theorem says. Check at $x = 3$: $3 + 9 + 2 = 14$.` }
+  );
+  add("cohn-irreducibility",
+    { q: String.raw`Show that $x^4 + x^2 + 3x + 3$ is irreducible over the integers.`,
+      s: String.raw`Its coefficients are the digits of $10133$, which is prime (no prime up to $100$ divides it). Cohn's criterion then says the polynomial cannot be factored.` },
+    { q: String.raw`The digits of $10201$ give $x^4 + 2x^2 + 1$. Does Cohn's criterion say anything here?`,
+      s: String.raw`No: $10201 = 101^2$ is not prime, and the criterion only runs one way. Here the polynomial does factor, as $(x^2 + 1)^2$, matching $10201 = 101\cdot101$.` }
+  );
+  add("gauss-lucas",
+    { q: String.raw`A cubic has a simple root at $1$ and a double root at $3$. Where are the zeros of its derivative, and how do they sit relative to its roots?`,
+      s: String.raw`With $P(z) = (z - 1)(z - 3)^2$, $P'(z) = (z - 3)^2 + 2(z - 1)(z - 3) = (z - 3)(3z - 5)$, with roots $3$ and $\tfrac53$. The roots of $P$ are $1$ and $3$, whose hull is the segment $[1, 3]$, and both lie on it.` },
+    { q: String.raw`Use Gauss–Lucas to show that if all roots of a polynomial are real, so are all roots of its derivative.`,
+      s: String.raw`The convex hull of real numbers is an interval of the real line, and the roots of $P'$ lie in that hull. So they are real.` }
+  );
+  add("mason-stothers",
+    { q: String.raw`Check Mason–Stothers on $t^2 + (2t + 1) = (t + 1)^2$.`,
+      s: String.raw`The three are coprime, and $abc = t^2(2t + 1)(t + 1)^2$ has the distinct roots $0$, $-\tfrac12$, $-1$, so $n_0 = 3$. The largest degree is $2 \le 3 - 1$, with equality: the bound is sharp.` }
+  );
+  add("brahmagupta-fibonacci",
+    { q: String.raw`Since $5$ and $17$ are each a sum of two squares, so is their product $85$. Produce two different representations from the identity.`,
+      s: String.raw`With $5 = 1^2 + 2^2$ and $17 = 1^2 + 4^2$: $(1\cdot1 - 2\cdot4)^2 + (1\cdot4 + 2\cdot1)^2 = 49 + 36$, and switching a sign, $(1\cdot1 + 2\cdot4)^2 + (1\cdot4 - 2\cdot1)^2 = 81 + 4$. So $85 = 7^2 + 6^2 = 9^2 + 2^2$.` }
+  );
+  add("lagranges-identity",
+    { q: String.raw`Use Lagrange's Identity to prove the Cauchy–Schwarz inequality and find its equality case.`,
+      s: String.raw`The right side is a sum of squares, so $\left(\sum a_i^2\right)\left(\sum b_i^2\right) \ge \left(\sum a_ib_i\right)^2$. Equality needs every $a_ib_j = a_jb_i$, that is, the vectors $a$ and $b$ proportional.` },
+    { q: String.raw`Check the two-term case $(a^2 + b^2)(c^2 + d^2) - (ac + bd)^2 = (ad - bc)^2$ at $a, b, c, d = 1, 2, 3, 4$.`,
+      s: String.raw`The left side is $5\cdot25 - 11^2 = 4$ and the right side is $(4 - 6)^2 = 4$.` }
+  );
+  add("abel-summation",
+    { q: String.raw`With $H_k = 1 + \tfrac12 + \cdots + \tfrac1k$, find $H_1 + H_2 + \cdots + H_n$ by summation by parts.`,
+      s: String.raw`Take $a_k = 1$, so $A_k = k$, and $b_k = H_k$. Then $\sum H_k = nH_n - \sum_{k=1}^{n-1}k\cdot\tfrac1{k + 1} = nH_n - (n - H_n) = (n + 1)H_n - n$. Check $n = 2$: $1 + \tfrac32 = \tfrac52 = 3\cdot\tfrac32 - 2$.` },
+    { q: String.raw`Prove Abel's inequality: if $b_1 \ge b_2 \ge \cdots \ge b_n \ge 0$ and every partial sum satisfies $|A_k| \le M$, then $\left|\sum a_kb_k\right| \le Mb_1$.`,
+      s: String.raw`Summation by parts gives $\sum a_kb_k = A_nb_n + \sum_{k=1}^{n-1}A_k(b_k - b_{k+1})$, where every weight $b_n$ and $b_k - b_{k+1}$ is nonnegative. So the absolute value is at most $M\left(b_n + \sum(b_k - b_{k+1})\right) = Mb_1$.` }
+  );
+  add("vornicu-schur",
+    { q: String.raw`Show that Schur's inequality with $t = 1$ is the case $a = x$, $b = y$, $c = z$ of Vornicu–Schur.`,
+      s: String.raw`With $x \ge y \ge z \ge 0$ the weights satisfy $a = x \ge y = b$, so the theorem applies, and the left side becomes $x(x - y)(x - z) + y(y - x)(y - z) + z(z - x)(z - y)$, Schur's expression.` },
+    { q: String.raw`What does Vornicu–Schur give with $a = b = c = 1$?`,
+      s: String.raw`$(x - y)(x - z) + (y - x)(y - z) + (z - x)(z - y) \ge 0$. Expanding, the left side is $x^2 + y^2 + z^2 - xy - yz - zx$, so this is the familiar $x^2 + y^2 + z^2 \ge xy + yz + zx$.` }
+  );
+  add("maclaurin-inequality",
+    { q: String.raw`Nonnegative reals satisfy $a + b + c = 6$. Use Maclaurin's inequalities to bound $ab + bc + ca$ and $abc$.`,
+      s: String.raw`Here $p_1 = 2$. From $p_1 \ge \sqrt{p_2}$, $p_2 = \tfrac{ab + bc + ca}3 \le 4$, so $ab + bc + ca \le 12$. From $p_1 \ge \sqrt[3]{p_3}$, $abc \le 8$. Both are reached at $a = b = c = 2$.` },
+    { q: String.raw`Check Newton's inequality $p_2^2 \ge p_1p_3$ for the numbers $1, 2, 3$.`,
+      s: String.raw`$e_1 = 6$, $e_2 = 11$, $e_3 = 6$, so $p_1 = 2$, $p_2 = \tfrac{11}3$, $p_3 = 6$. Then $p_2^2 = \tfrac{121}9 \approx 13.4 \ge 12 = p_1p_3$.` }
+  );
+  add("chebyshev-sum-inequality",
+    { q: String.raw`Use Chebyshev's inequality to prove $(a + b + c)\left(\tfrac1a + \tfrac1b + \tfrac1c\right) \ge 9$ for positive reals.`,
+      s: String.raw`Sort $a \le b \le c$; then $\tfrac1a \ge \tfrac1b \ge \tfrac1c$ is in the opposite order, so $3\sum a\cdot\tfrac1a \le \left(\sum a\right)\left(\sum\tfrac1a\right)$. The left side is $3\cdot3 = 9$.` },
+    { q: String.raw`Prove $3(a^2 + b^2 + c^2) \ge (a + b + c)^2$ with Chebyshev's inequality.`,
+      s: String.raw`Take both sequences to be $a, b, c$ in increasing order, which are similarly ordered: $3(a\cdot a + b\cdot b + c\cdot c) \ge (a + b + c)(a + b + c)$.` }
+  );
 })();
