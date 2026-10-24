@@ -666,8 +666,7 @@ The failure is invisible in the UI -- the route just quietly omits a card the re
 
 ## 10. Touching persisted state
 
-The app keeps six keys in `localStorage`: `mq-lists`, `mq-stars` (read once, to migrate old stars), `mq-settings`, `theme`,
-`mq-last` (the page last open, for "When the app opens: Where I left off") and
+The app keeps five keys in `localStorage`: `mq-lists`, `mq-stars` (read once, to migrate old stars), `mq-settings`, `theme` and
 `mq-recent` (the last 30 cards and problems opened, as `"f:<id>"` / `"p:<slug>"`, for "Continue
 where you left off"; a convenience only, so a failed write is silent). Settings → Your progress
 exports these and the lab keys to one JSON file (`{ format: "competition-math-reference/progress",
