@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: 10 more Lower cards (2026-10-24).** The parallel-sided hexagon, distance products to an $n$-gon, Van Aubel, Bretschneider, Euler's quadrilateral theorem, area from the circumradius, Erdős–Mordell, the Law of Tangents, Weitzenböck and the Humpty point. Cards under two: 89.
 - **F: 10 more Lower cards (2026-10-24).** Necklaces, the pentagonal number theorem, Pólya, Erdős–Ko–Rado, products of uniforms, variance, Schur's theorem, Cayley, the Matrix–Tree Theorem and LGV. Cards under two: 95.
 - **F: 10 more Lower cards (2026-10-24).** Minkowski, Karamata, cosecant and cotangent square sums, cosine products, evenly spaced sine products, cotangent-tangent telescoping, Hermite, nested radicals, weighted binomial sums and EGFs. The infinite-nest exercise $\sqrt{12 + \cdots} = 4$ repeated the nested-radical card's worked example, so it now uses $20$. Cards under two: 104.
 - **F: the first 10 Lower cards (2026-10-24).** Integer-valued polynomials, Cohn, Gauss–Lucas, Mason–Stothers, Brahmagupta–Fibonacci, Lagrange's identity, Abel summation, Vornicu–Schur, Maclaurin and Chebyshev's sum inequality. Cards under two: 114.

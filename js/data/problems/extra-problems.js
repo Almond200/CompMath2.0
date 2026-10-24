@@ -1710,4 +1710,54 @@
     { q: String.raw`With unit right and up steps, count the pairs of non-intersecting paths $(0, 0) \to (1, 2)$ and $(1, 0) \to (2, 2)$.`,
       s: String.raw`The path counts are $M_{11} = \binom31 = 3$, $M_{12} = \binom42 = 6$ (to $(2, 2)$), $M_{21} = 1$ (from $(1, 0)$ to $(1, 2)$) and $M_{22} = \binom31 = 3$. The determinant is $3\cdot3 - 6\cdot1 = 3$, which a direct check confirms.` }
   );
+  add("parallel-sided-hexagon",
+    { q: String.raw`Check the formula on a regular hexagon of side $1$.`,
+      s: String.raw`Extending alternate sides of a regular hexagon of side $1$ gives an equilateral triangle of side $3$: each side of the triangle is one hexagon side plus two corner triangles' sides. Then $\tfrac13 + \tfrac13 + \tfrac13 = 1 = \tfrac1s$.` },
+    { q: String.raw`Three lines carrying alternate sides of a hexagon (all sides equal, opposite sides parallel) bound a $4$-$6$-$6$ triangle. How long is each side of the hexagon?`,
+      s: String.raw`$\tfrac1s = \tfrac14 + \tfrac16 + \tfrac16 = \tfrac7{12}$, so $s = \tfrac{12}7$.` }
+  );
+  add("ngon-vertex-distance-product",
+    { q: String.raw`A square is inscribed in a circle of radius $1$, and $P$ is the midpoint of one of the arcs between two vertices. Find the product of the distances from $P$ to the four vertices.`,
+      s: String.raw`Here $\theta = 45^\circ$, so the product is $2\cdot1^4\cdot\left|\sin\tfrac{4\cdot45^\circ}2\right| = 2$. Directly: the distances are $2\sin22.5^\circ$ twice and $2\sin67.5^\circ$ twice, and $16\sin^222.5^\circ\cos^222.5^\circ = 4\sin^245^\circ = 2$.` },
+    { q: String.raw`For a regular hexagon inscribed in a circle of radius $2$, where on the circle is the product of distances to the vertices largest, and what is it?`,
+      s: String.raw`The product is $2\cdot2^6\left|\sin3\theta\right|$, largest when $\left|\sin3\theta\right| = 1$, that is $\theta = 30^\circ$: at the midpoints of the arcs between vertices. The maximum is $128$.` }
+  );
+  add("van-aubel",
+    { q: String.raw`Check Van Aubel's Theorem on a square of side $2$.`,
+      s: String.raw`The outward squares on the sides of a square have centers $1$ unit outside the midpoints of its sides. Opposite centers are $2 + 1 + 1 = 4$ apart, along the two perpendicular axes of the square, so the two segments are equal and perpendicular.` }
+  );
+  add("bretschneiders-formula",
+    { q: String.raw`Show that Bretschneider's Formula becomes Brahmagupta's for a cyclic quadrilateral, and that the cyclic one has the largest area among quadrilaterals with the same sides.`,
+      s: String.raw`Opposite angles of a cyclic quadrilateral add to $180^\circ$, so $\cos^2\tfrac{A + C}2 = \cos^290^\circ = 0$ and the formula is $\sqrt{(s - a)(s - b)(s - c)(s - d)}$. For fixed sides the subtracted term $abcd\cos^2\tfrac{A + C}2$ is never negative, so the area is largest exactly when it vanishes.` }
+  );
+  add("euler-quadrilateral",
+    { q: String.raw`A parallelogram has sides $3$ and $5$ and one diagonal $6$. Find the other diagonal.`,
+      s: String.raw`The diagonals of a parallelogram bisect each other, so $m = 0$ and $p^2 + q^2 = 2(9 + 25) = 68$. The other diagonal is $\sqrt{68 - 36} = \sqrt{32} = 4\sqrt2$.` },
+    { q: String.raw`The quadrilateral $(0, 0)$, $(4, 0)$, $(5, 3)$, $(0, 2)$ is not a parallelogram. Check Euler's theorem on it and find how far apart the midpoints of its diagonals are.`,
+      s: String.raw`The sides squared are $16$, $10$, $26$, $4$, adding to $56$, and the diagonals squared are $34$ and $20$. So $4m^2 = 56 - 54 = 2$ and $m = \tfrac{\sqrt2}2$. Directly, the midpoints are $\left(\tfrac52, \tfrac32\right)$ and $(2, 1)$, at distance $\sqrt{\tfrac14 + \tfrac14}$.` }
+  );
+  add("trig-area-circumradius",
+    { q: String.raw`Find the area of an equilateral triangle with circumradius $2$, and check it.`,
+      s: String.raw`$2\cdot4\cdot\left(\tfrac{\sqrt3}2\right)^3 = 3\sqrt3$. Check: the side is $2\sqrt3$, and $\tfrac{\sqrt3}4\cdot12 = 3\sqrt3$.` },
+    { q: String.raw`A right triangle with circumradius $5$ has a $30^\circ$ angle. Find its area.`,
+      s: String.raw`$2\cdot25\cdot\sin90^\circ\sin30^\circ\sin60^\circ = 50\cdot\tfrac12\cdot\tfrac{\sqrt3}2 = \tfrac{25\sqrt3}2$. Check: the hypotenuse is the diameter $10$, the legs are $5$ and $5\sqrt3$.` }
+  );
+  add("erdos-mordell",
+    { q: String.raw`Check that the Erdős–Mordell inequality is an equality for the center of an equilateral triangle of side $2$.`,
+      s: String.raw`The center is $\tfrac2{\sqrt3}$ from each vertex and $\tfrac1{\sqrt3}$ from each side. So $PA + PB + PC = 2\sqrt3$ and $2(d_a + d_b + d_c) = 2\sqrt3$.` }
+  );
+  add("law-of-tangents",
+    { q: String.raw`A right triangle has its right angle at $C$ and legs $a = 7$, $b = 3$. Find $\tan\tfrac{A - B}2$.`,
+      s: String.raw`Here $\tfrac{A + B}2 = 45^\circ$, so the Law of Tangents gives $\tan\tfrac{A - B}2 = \tfrac{7 - 3}{7 + 3}\tan45^\circ = 0.4$. Check: $A = \arctan\tfrac73 \approx 66.80^\circ$ and $B \approx 23.20^\circ$, and $\tan21.80^\circ \approx 0.4$.` }
+  );
+  add("weitzenbock-inequality",
+    { q: String.raw`Check both inequalities on the $3$-$4$-$5$ triangle.`,
+      s: String.raw`Here $a^2 + b^2 + c^2 = 50$ and $K = 6$. Weitzenböck: $50 \ge 24\sqrt3 \approx 41.6$. Hadwiger–Finsler adds $(3 - 4)^2 + (4 - 5)^2 + (5 - 3)^2 = 6$: $50 \ge 47.6$, a much closer bound.` },
+    { q: String.raw`Show that both inequalities are equalities for an equilateral triangle.`,
+      s: String.raw`With side $a$, $a^2 + b^2 + c^2 = 3a^2$ and $4\sqrt3K = 4\sqrt3\cdot\tfrac{\sqrt3}4a^2 = 3a^2$. The extra squared differences in Hadwiger–Finsler are all $0$.` }
+  );
+  add("humpty-queue-points",
+    { q: String.raw`In the isosceles triangle $A(0, 2)$, $B(-1, 0)$, $C(1, 0)$, find the $A$-Humpty point and check $MX\cdot MA = MB^2$.`,
+      s: String.raw`The median from $A$ is the altitude $x = 0$, so the orthocenter $H$ lies on it and its foot $X$ on the median is $H$ itself. The altitude from $B$ is perpendicular to $AC$, direction $(1, -2)$, so it is $(-1, 0) + t(2, 1)$, meeting $x = 0$ at $H = \left(0, \tfrac12\right)$. With $M = (0, 0)$, $MX\cdot MA = \tfrac12\cdot2 = 1 = MB^2$.` }
+  );
 })();
