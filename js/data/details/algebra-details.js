@@ -1362,6 +1362,8 @@ Comparing Taylor series of $e^{i\theta}$, $\cos\theta$, and $\sin\theta$ shows t
 
 Alternatively it can be accepted as the definition of complex exponentials, and the multiplication law verified through [[angle-addition|angle addition]] formulas, which it then re-derives, circularly but consistently.
 
+The other Key forms follow. A number at distance $r$ from $0$ and angle $\theta$ is $r(\cos\theta + i\sin\theta) = re^{i\theta}$. Adding and subtracting $e^{i\theta} = \cos\theta + i\sin\theta$ and $e^{-i\theta} = \cos\theta - i\sin\theta$ gives the forms of cosine and sine. To rotate $z$ about $p$, move $p$ to $0$, multiply by $e^{i\theta}$, which rotates by $\theta$, and move back: $p + e^{i\theta}(z - p)$.
+
 ## Useful observations
 - Polar form makes multiplication trivial: moduli multiply and angles add. Converting to polar suits any power, root, or rotation task, and converting back suits addition.
 - Rotation of the point $z$ about $p$ by $\theta$ is $p + e^{i\theta}(z - p)$, so geometry problems become one-line computations.
@@ -2636,9 +2638,13 @@ The three quantities sum to zero. The identities hold for real or complex number
 ## Why it works
 Everything follows from the elementary symmetric values $e_1 = a + b + c = 0$, $e_2 = ab + bc + ca$, and $e_3 = abc$.
 
-Squaring $a + b + c = 0$ gives $a^2 + b^2 + c^2 + 2e_2 = 0$, which is the square identity. For cubes, the factorization $$a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$$ has a first factor of $0$, so $a^3 + b^3 + c^3 = 3abc$.
+Squaring $a + b + c = 0$ gives $a^2 + b^2 + c^2 + 2e_2 = 0$, which is the square identity. For cubes, the factorization
+$$a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$$
+has a first factor of $0$, so $a^3 + b^3 + c^3 = 3abc$.
 
-Higher powers come from Newton's Sums. Each of $a$, $b$, $c$ is a root of $t^3 + e_2t - e_3$, so $t^3 = -e_2t + e_3$; multiplying by $t^{k-3}$ and adding over the three roots gives $$p_k = -e_2\,p_{k-2} + e_3\,p_{k-3},$$ where $p_k = a^k + b^k + c^k$. Starting from $p_0 = 3$, $p_1 = 0$, and $p_2 = -2e_2$, it produces $p_4 = 2e_2^2$, $p_5 = -5e_2e_3$, and $p_7 = 7e_2^2e_3$.
+Higher powers come from Newton's Sums. Each of $a$, $b$, $c$ is a root of $t^3 + e_2t - e_3$, so $t^3 = -e_2t + e_3$; multiplying by $t^{k-3}$ and adding over the three roots gives
+$$p_k = -e_2\,p_{k-2} + e_3\,p_{k-3},$$
+where $p_k = a^k + b^k + c^k$. Starting from $p_0 = 3$, $p_1 = 0$, and $p_2 = -2e_2$, it produces $p_3 = 3e_3$, $p_4 = 2e_2^2$, $p_5 = -5e_2e_3$, $p_6 = -2e_2^3 + 3e_3^2$ and $p_7 = 7e_2^2e_3$. Then $p_4 = \frac12p_2^2$, and $\frac{p_5}5 = -e_2e_3 = \frac{p_3}3 \cdot \frac{p_2}2$.
 
 ## Useful observations
 - The zero sum is often hidden. The roots of a cubic with no $x^2$ term sum to $0$ by [[vietas-general|Vieta's Formulas]], and the differences of any three numbers always sum to $0$, so for all $a$, $b$, $c$, $$(a - b)^3 + (b - c)^3 + (c - a)^3 = 3(a - b)(b - c)(c - a).$$
@@ -2988,6 +2994,10 @@ Distance from $c$ is the same in both directions, which is why every absolute va
 $|x - c| \lt d$ says $x$ is less than $d$ away from $c$, so it lies strictly between $c - d$ and $c + d$. $|x - c| \gt d$ says it is more than $d$ away, so it lies beyond one end or the other. And $\sqrt{x^2} = |x|$ because the square root symbol means the nonnegative root, while $x$ itself may be negative.
 
 {{figure:number-line}}
+
+The product rule holds sign by sign: both sides are $\pm xy$ with the sign that makes them nonnegative, so they agree. Then $|x| = |y|$ means $x^2 = y^2$, that is $(x - y)(x + y) = 0$. For the triangle inequality,
+$$|x + y|^2 = x^2 + 2xy + y^2 \le x^2 + 2|x||y| + y^2 = (|x| + |y|)^2,$$
+with equality exactly when $xy \ge 0$. For the sum of distances, a point between $a$ and $b$ splits the segment, so $|x - a| + |x - b| = |a - b|$, and a point a distance $t$ beyond one end adds $2t$, since both distances include that stretch.
 
 ## Useful observations
 - Each absolute value is turned into a distance or into two cases. To solve $|2x - 1| \lt 5$, divide by $2$ to get $\left|x - \frac12\right| \lt \frac52$: $x$ is within $\frac52$ of $\frac12$, so $-2 \lt x \lt 3$. For an equation $|A| = |B|$, the two equations $A = B$ and $A = -B$ are solved separately.
@@ -4162,13 +4172,15 @@ A supporting move in AIME sums and in number theory: swapping a divisor sum into
 $n$ is a positive integer, with $T_0 = 0$. The test $8T + 1$ is a square must be an odd square, and every odd square greater than $1$ arises this way, since $(2n + 1)^2$ is the value at $T_n$.
 
 ## Why it works
-Writing the sum forwards and backwards pairs its ends: $1$ with $n$, $2$ with $n - 1$, and so on, $n$ pairs each adding to $n + 1$, so twice the sum is $n(n + 1)$. Choosing two of $n + 1$ objects gives the same count, $\binom{n + 1}{2}$.
+Writing the sum forwards and backwards pairs its ends: $1$ with $n$, $2$ with $n - 1$, and so on, $n$ pairs each adding to $n + 1$, so twice the sum is $n(n + 1)$. Choosing two of $n + 1$ objects gives the same count, $\binom{n + 1}{2}$, and adding the next row is adding $n + 1$.
 
 Two staircases, of heights $1$ to $n - 1$ and $1$ to $n$, interlock exactly into an $n \times n$ square, which is $T_{n-1} + T_n = n^2$.
 
 {{figure:staircases}}
 
-For the test, multiply $T = \frac{n(n + 1)}{2}$ by $8$ and add $1$: $$8T + 1 = 4n^2 + 4n + 1 = (2n + 1)^2.$$ So a triangular number always gives an odd square, and an odd square $(2n + 1)^2$ always comes from $T_n$.
+For the test, multiply $T = \frac{n(n + 1)}{2}$ by $8$ and add $1$:
+$$8T + 1 = 4n^2 + 4n + 1 = (2n + 1)^2.$$
+So a triangular number always gives an odd square, and an odd square $(2n + 1)^2$ always comes from $T_n$. For the tetrahedral numbers, $\sum_k\binom{k+1}2 = \binom{n+2}3$ by the [[hockey-stick|hockey stick]].
 
 ## Useful observations
 - The shape is recognized rather than the formula: any count of pairs, handshakes, or unordered choices of two is triangular, as on [[handshakes-diagonals|the handshakes card]].
@@ -4984,7 +4996,9 @@ A MATHCOUNTS and AMC 10 staple: building a quadratic from a vertex and a point, 
 $A$ is square. When $\det A = 0$ there is no inverse, and the system $A\mathbf{x} = \mathbf{b}$ has no solution or infinitely many.
 
 ## Why it works
-Expanding a determinant along row $i$ with the cofactors of row $i$ gives $\det A$; using the cofactors of a different row instead computes the determinant of a matrix with two equal rows, which is $0$. In matrix language that is $A \cdot \operatorname{adj} A = (\det A)\,I$, so dividing by $\det A$ gives the inverse. For a $2 \times 2$ matrix, multiplying out $\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = (ad - bc)I$ checks it directly. Conversely, $\det A \cdot \det A^{-1} = \det I = 1$ shows that a matrix with determinant $0$ cannot have an inverse.
+Expanding a determinant along row $i$ with the cofactors of row $i$ gives $\det A$; using the cofactors of a different row instead computes the determinant of a matrix with two equal rows, which is $0$. In matrix language that is $A \cdot \operatorname{adj} A = (\det A)\,I$, so dividing by $\det A$ gives the inverse. For a $2 \times 2$ matrix, multiplying out $\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = (ad - bc)I$ checks it directly. Conversely, $\det A \cdot \det A^{-1} = \det I = 1$ shows that a matrix with determinant $0$ cannot have an inverse, and gives $\det(A^{-1}) = \frac1{\det A}$.
+
+The other rules are checks by multiplication: $(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I$, and transposing $AA^{-1} = I$ gives $(A^{-1})^{\top}A^{\top} = I$. Multiplying $A\mathbf x = \mathbf b$ by $A^{-1}$ gives $\mathbf x = A^{-1}\mathbf b$, and that $\mathbf x$ does solve it. For integer entries: if $A^{-1}$ is also integral, then $\det A$ and $\det A^{-1}$ are integers with product $1$, so $\det A = \pm1$; conversely, $\pm\operatorname{adj}A$ is integral.
 
 ## Useful observations
 - [[cramers-rule|Cramer's Rule]] is $\mathbf{x} = A^{-1}\mathbf{b}$ read one coordinate at a time.

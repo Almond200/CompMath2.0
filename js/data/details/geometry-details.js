@@ -6099,6 +6099,10 @@ Long division gives, for $c \ne 0$, a composition of $z \mapsto cz + d$, then $w
 
 If $ad = bc$ the numerator is a multiple of the denominator and $f$ is constant. Composing maps is multiplying the matrices $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$.
 
+The cross-ratio is unchanged by each piece: affine maps scale every difference by the same factor, and under $w \mapsto \frac1w$ each difference becomes $\frac1{w_i} - \frac1{w_j} = \frac{w_j - w_i}{w_iw_j}$, whose extra factors cancel in the cross-ratio. For three points, $S(z) = \frac{(z - z_1)(z_2 - z_3)}{(z - z_3)(z_2 - z_1)}$ sends $z_1, z_2, z_3$ to $0, 1, \infty$, and composing one such map with the inverse of another gives existence. A map fixing $0$, $1$, $\infty$ has $c = 0$, $b = 0$ and $a = d$, so it is the identity, which gives uniqueness.
+
+The fixed points solve $cz^2 + (d - a)z - b = 0$, a quadratic. An inversion in a circle with center $p$ and radius $r$ is $z \mapsto p + \frac{r^2}{\overline{z - p}}$, and conjugating it gives $p + \frac{r^2}{z - p}$, a Möbius map.
+
 ## Useful observations
 - The three-point property is the working tool: send three convenient points to $0$, $1$, and $\infty$, which is exactly the cross-ratio.
 - Sending a circle to a line straightens a configuration, and sending two disjoint circles to concentric ones turns a chain of tangencies into a rotation.

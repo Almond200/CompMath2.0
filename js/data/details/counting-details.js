@@ -671,9 +671,11 @@ Usually the counting engine of an AIME problem, set up after complementary count
 A derangement moves every object. As $n$ grows the probability that a random permutation is a derangement tends to $\frac1e$, and is already within $\frac{1}{(n+1)!}$ of it for the nearest-integer formula.
 
 ## Why it works
-[[pie|Inclusion-exclusion]] over the events "object $i$ stays fixed" gives $D_n = \sum_j (-1)^j\binom nj(n - j)! = n!\sum_j \frac{(-1)^j}{j!}$, the truncated series of $e^{-1}$, whence the nearest-integer form.
+[[pie|Inclusion-exclusion]] over the events "object $i$ stays fixed" gives $D_n = \sum_j (-1)^j\binom nj(n - j)! = n!\sum_j \frac{(-1)^j}{j!}$, the truncated series of $e^{-1}$. The tail of that alternating series is less than its first term, so $\left\lvert\frac{D_n}{n!} - \frac1e\right\rvert \lt \frac1{(n + 1)!}$, and $\left\lvert D_n - \frac{n!}e\right\rvert \lt \frac1{n + 1} \le \frac12$, which is the nearest-integer form.
 
 The recurrence $D_n = (n - 1)(D_{n-1} + D_{n-2})$ conditions on where object $1$ goes: to one of $n - 1$ positions $j$, and then either object $j$ goes to position $1$, leaving a derangement of the other $n - 2$, or it does not, leaving a derangement of $n - 1$ objects with $j$ playing the role of $1$.
+
+The other recurrence comes from the sum: $n$ times $D_{n-1} = (n - 1)!\sum_{j \le n-1}\frac{(-1)^j}{j!}$ gives every term of $D_n$ except the last, which is $(-1)^n$. Starting from $D_1 = 0$ and $D_2 = 1$ it gives $2, 9, 44, 265$.
 
 ## Useful observations
 - The setup is recognized as "no object in its own place": hats returned to the wrong owners, letters in wrong envelopes, a permutation with no fixed point.
@@ -1361,7 +1363,11 @@ The pool is fixed and sampled without replacement, every draw is equally likely,
 ## Why it works
 Choosing $n$ from a population with $K$ marked items: the favorable choices pick $k$ marked and $n - k$ unmarked ones independently, in $\binom Kk\binom{N-K}{n-k}$ ways, and the total number of equally likely choices is $\binom Nn$.
 
-Because it is a ratio of counts, order never enters, and no arrangement factor appears. The probabilities over all $k$ add to $1$ by [[vandermonde|Vandermonde's Identity]].
+Because it is a ratio of counts, order never enters, and no arrangement factor appears. The probabilities over all $k$ add to $1$ by [[vandermonde|Vandermonde's Identity]]. Writing both sides of the exchange form in factorials gives the same expression, $\frac{K!\,(N - K)!\,n!\,(N - n)!}{N!\,k!\,(K - k)!\,(n - k)!\,(N - K - n + k)!}$.
+
+For the moments, let $J_s$ indicate that the $s$th marked item is drawn. Each has $P(J_s = 1) = \frac nN$, and two of them are both drawn with probability $\frac{n(n - 1)}{N(N - 1)}$. So the mean is $K\frac nN$, and
+$$\operatorname{Var} = K\frac nN\left(1 - \frac nN\right) + K(K - 1)\left(\frac{n(n - 1)}{N(N - 1)} - \frac{n^2}{N^2}\right),$$
+which simplifies to $n\frac KN\left(1 - \frac KN\right)\frac{N - n}{N - 1}$.
 
 ## Useful observations
 - The trials are dependent, so the binomial formula does not apply: drawing without replacement changes the odds at each step.
@@ -3434,7 +3440,12 @@ $X$ and $Y$ are independent and uniform on $[0, 1]$, and the threshold $c$ is be
 ## Why it works
 Two independent uniform numbers are a uniform point of the unit square, so the probability is an area, as in [[geometric-probability|geometric probability]], and the boundary $xy = c$ is a hyperbola, whose area is a logarithm.
 
-For $x \le c$ every $y$ in $[0, 1]$ works, since $xy \le x \le c$; that is a strip of area $c$. For $x \gt c$ the condition is $y \le \frac cx$, which is less than $1$, so that column contributes height $\frac cx$: $$P(XY \le c) = c + \int_c^1 \frac cx\,dx = c + c\left(\ln 1 - \ln c\right) = c - c\ln c.$$
+For $x \le c$ every $y$ in $[0, 1]$ works, since $xy \le x \le c$; that is a strip of area $c$. For $x \gt c$ the condition is $y \le \frac cx$, which is less than $1$, so that column contributes height $\frac cx$:
+$$P(XY \le c) = c + \int_c^1 \frac cx\,dx = c + c\left(\ln 1 - \ln c\right) = c - c\ln c.$$
+The complement is $1 - c + c\ln c$, and the derivative of $c - c\ln c$ is $-\ln c$, the density. For $X$ on $[0, a]$ and $Y$ on $[0, b]$, the rescaled $\frac Xa$ and $\frac Yb$ are uniform on $[0, 1]$, and $XY \le k$ means their product is at most $\frac k{ab}$.
+
+For three numbers, condition on $Z = z$: for $z \le c$ the event is certain, and for $z \gt c$ it has probability $\frac cz\left(1 - \ln\frac cz\right)$. Integrating,
+$$P(XYZ \le c) = c + \int_c^1\frac cz\left(1 - \ln c + \ln z\right)dz = c\left(1 - \ln c + \frac{(\ln c)^2}2\right).$$
 
 ## Useful observations
 - Since $\ln c \lt 0$, the answer is more than $c$: a product is below $c$ more often than one factor alone, which has chance exactly $c$.

@@ -211,3 +211,14 @@ conic-classification      # invariance by det of the quadratic form (marker scan
 picks-with-holes          # Pick applied to the outer polygon and the holes (marker scan)
 sum-of-three-squares      # converse quoted with a reference (marker scan)
 base10-curiosities        # cyclic number and 1089 proved; finite facts checked by computer (marker scan)
+# second pass (proof-depth --dense), 2026-10-24
+absolute-value-rules
+product-of-uniforms       # three-variable form derived
+matrix-inverse
+eulers-formula
+mobius-transformations    # cross-ratio, three points, fixed points, inversion
+derangements              # nearest integer and the second recurrence proved
+hypergeometric            # exchange form and variance derived
+sum-zero-identities
+triangular-numbers
+pythagorean-identities
