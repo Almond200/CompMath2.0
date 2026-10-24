@@ -1848,4 +1848,64 @@
     { q: String.raw`Check both Mollweide formulas on an equilateral triangle.`,
       s: String.raw`With $a = b = c$ and all angles $60^\circ$: $\tfrac{a + b}c = 2$ and $\tfrac{\cos0}{\sin30^\circ} = 2$; $\tfrac{a - b}c = 0$ and $\tfrac{\sin0}{\cos30^\circ} = 0$.` }
   );
+  add("morleys-theorem",
+    { q: String.raw`An isosceles right triangle has hypotenuse $2$. How long is each side of its Morley triangle?`,
+      s: String.raw`The circumradius is half the hypotenuse, $R = 1$, and the angles $45^\circ$, $45^\circ$, $90^\circ$ trisect to $15^\circ$, $15^\circ$, $30^\circ$. The side is $8\sin^2 15^\circ \sin 30^\circ = 4\sin^2 15^\circ = 2(1 - \cos 30^\circ) = 2 - \sqrt3 \approx 0.268$.` },
+    { q: String.raw`In an equilateral triangle of side $6$, what is the ratio of the Morley triangle's side to the original side?`,
+      s: String.raw`Here $R = \tfrac{6}{\sqrt3} = 2\sqrt3$ and every trisected angle is $20^\circ$, so the Morley side is $16\sqrt3\sin^3 20^\circ \approx 1.109$. Since $6 = 2R\sin 60^\circ$, the ratio is $\frac{8R\sin^3 20^\circ}{2R\sin 60^\circ} = \frac{8\sin^3 20^\circ}{\sqrt3} \approx 0.185$.` }
+  );
+  add("steiner-lehmus",
+    { q: String.raw`For the triangle with $a = 7$, $b = 8$, $c = 5$, compute both bisector lengths $t_b$ and $t_c$ and say which side the shorter one goes to.`,
+      s: String.raw`$t_b^2 = ac\left[1 - \left(\tfrac{b}{a + c}\right)^2\right] = 35 \cdot \tfrac59 = \tfrac{175}9$, so $t_b = \tfrac{5\sqrt7}{3} \approx 4.41$; $t_c^2 = ab\left[1 - \left(\tfrac{c}{a + b}\right)^2\right] = 56 \cdot \tfrac89 = \tfrac{448}9$, so $t_c = \tfrac{8\sqrt7}{3} \approx 7.06$. The shorter bisector, $t_b$, goes to the longer side $b = 8$.` },
+    { q: String.raw`The bisectors from $B$ and $C$ both have length $\sqrt{10}$, and $BC = 3$. Find $AB$.`,
+      s: String.raw`Equal bisectors force $b = c$. Then $t_c^2 = 3c\left[1 - \left(\tfrac{c}{3 + c}\right)^2\right] = \frac{9c(3 + 2c)}{(3 + c)^2} = 10$, so $8c^2 - 33c - 90 = 0$ and $c = \frac{33 + 63}{16} = 6$. So $AB = AC = 6$; check: $\frac{9 \cdot 6 \cdot 15}{81} = 10$.` }
+  );
+  add("cevian-nest",
+    { q: String.raw`$D$, $E$, $F$ are the midpoints of the sides of triangle $ABC$, and $X$, $Y$, $Z$ are the midpoints of $EF$, $FD$, $DE$. Where do $AX$, $BY$, $CZ$ meet?`,
+      s: String.raw`$DX$, $EY$, $FZ$ are the medians of $DEF$, so they concur and the theorem says $AX$, $BY$, $CZ$ do too. The midpoint of $EF$ lies on the median $AD$ of $ABC$ (the median bisects every segment parallel to $BC$), so $AX$ is that median, and the three lines meet at the centroid of $ABC$.` },
+    { q: String.raw`$DEF$ is the medial triangle of $ABC$, with $D$, $E$, $F$ on $BC$, $CA$, $AB$. On its sides, $FX : XE = 3 : 1$ and $FY : YD = 2 : 1$. Where must $Z$ sit on $DE$ for $DX$, $EY$, $FZ$ to concur, and in what ratio does $CZ$ then cut $AB$?`,
+      s: String.raw`Ceva in $DEF$: $\frac{EX}{XF} \cdot \frac{FY}{YD} \cdot \frac{DZ}{ZE} = \frac13 \cdot 2 \cdot \frac{DZ}{ZE} = 1$, so $DZ : ZE = 3 : 2$. The homothety at $C$ with factor $2$ sends $D \to B$ and $E \to A$, so $CZ$ meets $AB$ at $Z'$ with $BZ' : Z'A = 3 : 2$. The same homotheties give $BX' : X'C = 3 : 1$ and $AY' : Y'C = 2 : 1$, and Ceva in $ABC$ checks: $3 \cdot \frac12 \cdot \frac23 = 1$.` }
+  );
+  add("droz-farny",
+    { q: String.raw`Triangle $A = (0, 3)$, $B = (-1, 0)$, $C = (3, 0)$ has orthocenter $H = (0, 1)$. Through $H$ draw the perpendicular lines $y = 1 + 2x$ and $y = 1 - \tfrac x2$. Find the midpoints of the three segments they cut on the side lines, and the line through them.`,
+      s: String.raw`On $BC$ ($y = 0$) the lines cross at $x = -\tfrac12$ and $x = 2$: midpoint $\left(\tfrac34, 0\right)$. On $CA$ ($x + y = 3$) they cross at $\left(\tfrac23, \tfrac73\right)$ and $(4, -1)$: midpoint $\left(\tfrac73, \tfrac23\right)$. On $AB$ ($y = 3x + 3$) they cross at $(-2, -3)$ and $\left(-\tfrac47, \tfrac97\right)$: midpoint $\left(-\tfrac97, -\tfrac67\right)$. Both slopes from the first midpoint are $\tfrac8{19}$, so all three lie on $y = \tfrac8{19}\left(x - \tfrac34\right)$.` },
+    { q: String.raw`Same triangle and $H = (0, 1)$, but now turn the right angle to the lines $y = 1 - 2x$ and $y = 1 + \tfrac x2$. Find the new Droz-Farny line.`,
+      s: String.raw`On $BC$ the crossings are $x = \tfrac12$ and $x = -2$: midpoint $\left(-\tfrac34, 0\right)$. On $CA$ they are $(-2, 5)$ and $\left(\tfrac43, \tfrac53\right)$: midpoint $\left(-\tfrac13, \tfrac{10}3\right)$. On $AB$ they are $\left(-\tfrac25, \tfrac95\right)$ and $\left(-\tfrac45, \tfrac35\right)$: midpoint $\left(-\tfrac35, \tfrac65\right)$. All three satisfy $y = 8x + 6$, so the line has turned with the right angle.` }
+  );
+  add("lester-circle",
+    { q: String.raw`Why does Lester's Theorem ask for a scalene triangle? Look at an equilateral triangle and an isosceles one.`,
+      s: String.raw`In an equilateral triangle $O$, $N$ and the first Fermat point all coincide with the center, so there is no circle to speak of. In an isosceles triangle all four points lie on the axis of symmetry, and four collinear points lie on no circle. Only a scalene triangle gives four points in general position.` },
+    { q: String.raw`The right triangle $A = (0, 0)$, $B = (4, 0)$, $C = (0, 3)$ has its Fermat points at about $(0.696, 0.751)$ and $(0.983, 3.228)$. Find $O$ and $N$, then check numerically that the circle through $O$, $N$ and the first Fermat point passes through the second.`,
+      s: String.raw`The circumcenter is the midpoint of the hypotenuse, $O = (2, 1.5)$, and the orthocenter is the right-angle vertex $A$, so $N = (1, 0.75)$. The circle through $O$, $N$ and $(0.696, 0.751)$ has center about $(0.853, 1.988)$ and radius about $1.247$. The distance from that center to $(0.983, 3.228)$ is also about $1.247$, so the second Fermat point is on it.` }
+  );
+  add("archimedes-broken-chord",
+    { q: String.raw`On a circle, $AB = 5$ and $BC = 11$. $M$ is the midpoint of arc $AC$ through $B$, and $F$ the foot from $M$ to $BC$. How far is $F$ from $B$?`,
+      s: String.raw`$FC = \frac{AB + BC}{2} = 8$, so $BF = 11 - 8 = 3$: the foot sits half the difference $\frac{11 - 5}{2}$ from $B$.` },
+    { q: String.raw`A broken chord $A \to B \to C$ has pieces $3$ and $7$ meeting at an angle of $120^\circ$. Drop a perpendicular from the arc midpoint (on $B$'s side) to the longer piece. How long is it?`,
+      s: String.raw`$FC = 5$. Next $AC^2 = 9 + 49 + 21 = 79$. The angle $\angle AMC$ equals $\angle ABC = 120^\circ$, and $MA = MC$, so $AC = \sqrt3\,MC$ and $MC^2 = \frac{79}3$. Then $MF^2 = \frac{79}3 - 25 = \frac43$, so $MF = \frac{2\sqrt3}{3}$. Coordinates with $B$ at the origin and $C = (7, 0)$ confirm $F = (2, 0)$ and this height.` }
+  );
+  add("reims-theorem",
+    { q: String.raw`Two radius-$5$ circles centred at the origin and at $(8, 0)$ share the points $P = (4, 3)$, $Q = (4, -3)$. Extend chord $AP$ of the left one, from $A = (-3, 4)$, and chord $BQ$, from $B = (-5, 0)$, until each hits the right one, at $C$ and $D$. Without solving for those points, give the gradient of $CD$.`,
+      s: String.raw`Reim's Theorem makes $CD$ parallel to $AB$, whose slope is $\frac{4 - 0}{-3 + 5} = 2$. Check: $C = \left(\frac{317}{25}, \frac{44}{25}\right)$ and $D = \left(\frac{47}5, -\frac{24}5\right)$, and $\frac{44/25 + 120/25}{317/25 - 235/25} = \frac{164}{82} = 2$.` },
+    { q: String.raw`Circles meet at $P$ and $Q$; $A, P, C$ and $B, Q, D$ are collinear with $A, B$ on the first circle and $C, D$ on the second, and $\angle PAB = 70^\circ$. Find $\angle PCD$ and deduce that $AB \parallel CD$.`,
+      s: String.raw`In cyclic $ABQP$, $\angle PQB = 180^\circ - 70^\circ = 110^\circ$. In cyclic $PQDC$, $\angle PCD = 180^\circ - \angle PQD = \angle PQB = 110^\circ$. Then $\angle CAB + \angle ACD = 70^\circ + 110^\circ = 180^\circ$, co-interior angles on the transversal $AC$, so $AB \parallel CD$.` }
+  );
+  add("arbelos",
+    { q: String.raw`An arbelos has $AC = 13$ and height $BD = 6$. Find its area, the two small radii, and the radius of the twin circles.`,
+      s: String.raw`$BD^2 = 4ab = 36$ gives $ab = 9$, and $a + b = \tfrac{13}2$, so $a$ and $b$ are the roots of $x^2 - \tfrac{13}2x + 9$: $\tfrac92$ and $2$. The area is $\pi ab = 9\pi$ (the circle on $BD$: $\pi \cdot 3^2$), and the twins have radius $\frac{ab}{a + b} = \frac{18}{13}$.` },
+    { q: String.raw`Small semicircles of radii $3$ and $2$ make an arbelos. Compare its curved boundary to the big arc.`,
+      s: String.raw`The small arcs have lengths $3\pi$ and $2\pi$, and the big semicircle of radius $5$ has length $5\pi$. They agree, as they always do: $\pi a + \pi b = \pi(a + b)$. So the whole boundary is $10\pi$, twice the big arc.` }
+  );
+  add("sawayama-thebault",
+    { q: String.raw`Triangle $A = (5, 12)$, $B = (0, 0)$, $C = (14, 0)$ has incenter $I = (6, 4)$ and altitude foot $D = (5, 0)$. A circle touches $DA$, $DC$ and the circumcircle internally. Use the lemma to find its radius.`,
+      s: String.raw`The angle at $D$ is right, so the touch points are $E = (5, t)$ and $F = (5 + t, 0)$ with $t$ the radius. The chord $EF$ is $x + y = 5 + t$, and it must pass through $I$: $10 = 5 + t$, so $t = 5$. A numerical check of tangency to the circumcircle gives radius $5$ too.` },
+    { q: String.raw`Same triangle, same $D = (5, 0)$, now the circle in the other region: touching $DA$, $DB$ and the circumcircle. Find its radius.`,
+      s: String.raw`Now $E = (5, t)$ and $F = (5 - t, 0)$, and the chord $EF$ is $y = x - 5 + t$. Through $I = (6, 4)$: $4 = 1 + t$, so $t = 3$. Check with the tangent-length formula: $DF = \frac{a\cdot AD + b \cdot BD - c \cdot DC}{2s} = \frac{168 + 75 - 117}{42} = 3$.` }
+  );
+  add("mixtilinear-incircle",
+    { q: String.raw`In the right triangle with $BC = 5$, $CA = 4$, $AB = 3$, find the radius of the $A$-mixtilinear incircle and the distance $AE$.`,
+      s: String.raw`$s = 6$ and $r = 1$. Then $AE = \frac{bc}{s} = 2$ and $\rho = \frac{r\,bc}{s(s - a)} = \frac{12}{6} = 2$. Check: $\frac{r}{\cos^2 45^\circ} = 2$.` },
+    { q: String.raw`In an equilateral triangle of side $6$, find $AE$ for the $A$-mixtilinear incircle and check that the incenter is the midpoint of $EF$.`,
+      s: String.raw`$s = 9$, so $AE = AF = \frac{36}9 = 4$. The midpoint of $EF$ is $4\cos 30^\circ = 2\sqrt3$ from $A$ along the bisector, and $AI = \frac{r}{\sin 30^\circ} = 2\sqrt3$ with $r = \sqrt3$. They agree, so $I$ is the midpoint.` }
+  );
 })();
