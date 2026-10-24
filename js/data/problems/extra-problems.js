@@ -250,4 +250,132 @@
     { q: String.raw`Prove the triangle inequality $\lvert x + y\rvert \le \lvert x\rvert + \lvert y\rvert$ for real numbers.`,
       s: String.raw`If $x + y \ge 0$, then $\lvert x + y\rvert = x + y \le \lvert x\rvert + \lvert y\rvert$, since each number is at most its absolute value. If $x + y \lt 0$, then $\lvert x + y\rvert = -x - y \le \lvert x\rvert + \lvert y\rvert$, since each of $-x$ and $-y$ is at most its absolute value. One of the two cases always holds.` }
   );
+  add("fundamental-theorem-symmetric",
+    { q: String.raw`The roots of $t^3 - 3t + 1$ are $x$, $y$, $z$. Find $x^4 + y^4 + z^4$ without solving the cubic.`,
+      s: String.raw`Vieta gives $e_1 = 0$, $e_2 = -3$, $e_3 = -1$. Then $x^2 + y^2 + z^2 = e_1^2 - 2e_2 = 6$, and $x^2y^2 + y^2z^2 + z^2x^2 = e_2^2 - 2e_1e_3 = 9$. So $x^4 + y^4 + z^4 = 6^2 - 2\cdot9 = 18$.` },
+    { q: String.raw`The roots of $t^3 - 2t^2 + 3t - 5$ are $x$, $y$, $z$. Find $x^2 + y^2 + z^2$ and $\tfrac1x + \tfrac1y + \tfrac1z$.`,
+      s: String.raw`By Vieta, $e_1 = 2$, $e_2 = 3$, $e_3 = 5$. Both quantities are symmetric, so they are polynomials (or a quotient) in these: $x^2 + y^2 + z^2 = e_1^2 - 2e_2 = 4 - 6 = -2$, and $\tfrac1x + \tfrac1y + \tfrac1z = \tfrac{e_2}{e_3} = \tfrac35$. The negative sum of squares shows that two of the roots are not real.` }
+  );
+  add("lagrange-interpolation-formula",
+    { q: String.raw`Without computing its coefficients, evaluate $Q(0)$ for the cubic $Q$ with $Q(1) = 1$, $Q(2) = 2$, $Q(3) = 3$, $Q(4) = 5$.`,
+      s: String.raw`Evaluate each Lagrange basis polynomial at $0$: $L_1(0) = \tfrac{(-2)(-3)(-4)}{(-1)(-2)(-3)} = 4$, $L_2(0) = \tfrac{(-1)(-3)(-4)}{(1)(-1)(-2)} = -6$, $L_3(0) = \tfrac{(-1)(-2)(-4)}{(2)(1)(-1)} = 4$ and $L_4(0) = \tfrac{(-1)(-2)(-3)}{(3)(2)(1)} = -1$. So $Q(0) = 1\cdot4 + 2\cdot(-6) + 3\cdot4 + 5\cdot(-1) = -1$.` },
+    { q: String.raw`A polynomial of degree at most $4$ equals $1$ at each of $x = 0, 1, 2, 3, 4$. What is it?`,
+      s: String.raw`The constant polynomial $1$ passes through all five points and has degree at most $4$, and through five points with distinct $x$-coordinates there is only one such polynomial. So it is the constant $1$; no basis polynomials need computing.` }
+  );
+  add("quadratic-forms",
+    { q: String.raw`Write $y = x^2 - 6x + 5$ in vertex form and in factored form, and read off its vertex, roots and $y$-intercept.`,
+      s: String.raw`Completing the square, $y = (x - 3)^2 - 4$, so the vertex is $(3, -4)$. Factoring, $y = (x - 1)(x - 5)$, so the roots are $1$ and $5$, symmetric about $x = 3$. The standard form shows the $y$-intercept $5$.` },
+    { q: String.raw`A quadratic vanishes at $1$ and $7$ and takes the value $16$ at $3$. Find its largest value.`,
+      s: String.raw`In factored form $y = a(x - 1)(x - 7)$, and $(3, 16)$ gives $a\cdot2\cdot(-4) = 16$, so $a = -2$. The vertex is midway between the roots, at $x = 4$, where $y = -2\cdot3\cdot(-3) = 18$. Since $a \lt 0$ the parabola opens downward, so the largest value is $18$, at the vertex $(4, 18)$.` }
+  );
+  add("inverse-function-properties",
+    { q: String.raw`Let $f(x) = \dfrac{2x + 1}{x - 3}$. Find $f^{-1}(x)$ and $f^{-1}(5)$.`,
+      s: String.raw`Solve $y = \tfrac{2x + 1}{x - 3}$ for $x$: $xy - 3y = 2x + 1$, so $x(y - 2) = 3y + 1$ and $f^{-1}(x) = \tfrac{3x + 1}{x - 2}$. Then $f^{-1}(5) = \tfrac{16}3$. Check: $f\left(\tfrac{16}3\right) = \tfrac{35/3}{7/3} = 5$.` }
+  );
+  add("matrix-multiplication",
+    { q: String.raw`Three towns are joined by a road between every two of them. How many walks of length $4$ start and end at the first town?`,
+      s: String.raw`The adjacency matrix is $A = \begin{pmatrix} 0 & 1 & 1 \\ 1 & 0 & 1 \\ 1 & 1 & 0 \end{pmatrix}$, and $A^2 = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix}$. The top-left entry of $A^4 = (A^2)^2$ is row $1$ of $A^2$ against column $1$: $2\cdot2 + 1\cdot1 + 1\cdot1 = 6$ walks.` },
+    { q: String.raw`Compute $\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^6$.`,
+      s: String.raw`Square three times over: $A^2 = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$, $A^3 = A^2A = \begin{pmatrix} 3 & 2 \\ 2 & 1 \end{pmatrix}$, and $A^6 = (A^3)^2 = \begin{pmatrix} 13 & 8 \\ 8 & 5 \end{pmatrix}$. The entries are Fibonacci numbers, $\begin{pmatrix} F_7 & F_6 \\ F_6 & F_5 \end{pmatrix}$.` }
+  );
+  add("cramers-rule",
+    { q: String.raw`Solve $3x + 4y = 10$, $5x - 2y = 8$ by Cramer's rule.`,
+      s: String.raw`The coefficient determinant is $3\cdot(-2) - 4\cdot5 = -26$. Replacing the first column by $(10, 8)$ gives $10\cdot(-2) - 4\cdot8 = -52$, so $x = 2$; replacing the second gives $3\cdot8 - 10\cdot5 = -26$, so $y = 1$.` },
+    { q: String.raw`For which $k$ does the system $kx + y = 1$, $x + ky = 1$ have exactly one solution, and what is $x$ then?`,
+      s: String.raw`The determinant is $k^2 - 1$, so there is exactly one solution for $k \ne \pm1$, and then $x = \tfrac{1\cdot k - 1\cdot1}{k^2 - 1} = \tfrac1{k + 1}$. At $k = 1$ both equations are $x + y = 1$, infinitely many solutions; at $k = -1$ they are $-x + y = 1$ and $x - y = 1$, none.` }
+  );
+  add("matrix-inverse",
+    { q: String.raw`Find the inverse of $\begin{pmatrix} 4 & 7 \\ 2 & 6 \end{pmatrix}$.`,
+      s: String.raw`The determinant is $24 - 14 = 10$, so the inverse is $\tfrac1{10}\begin{pmatrix} 6 & -7 \\ -2 & 4 \end{pmatrix}$. Check the top-left entry of the product: $\tfrac{4\cdot6 + 7\cdot(-2)}{10} = 1$.` },
+    { q: String.raw`Find the inverse of $\begin{pmatrix} 1 & 2 & 0 \\ 0 & 1 & 3 \\ 0 & 0 & 1 \end{pmatrix}$.`,
+      s: String.raw`The determinant is $1$, so the inverse is the adjugate. Its cofactors give $\begin{pmatrix} 1 & -2 & 6 \\ 0 & 1 & -3 \\ 0 & 0 & 1 \end{pmatrix}$. Check: row $1$ of the matrix against column $3$ of this is $1\cdot6 + 2\cdot(-3) + 0 = 0$, and the diagonal entries of the product are $1$.` }
+  );
+  add("an-minus-bn",
+    { q: String.raw`Find the prime factorization of $2^{15} + 1$.`,
+      s: String.raw`The exponent $15$ is odd, so $a^3 + b^3$ with $a = 2^5$ and $b = 1$ gives $2^{15} + 1 = (2^5 + 1)(2^{10} - 2^5 + 1) = 33\cdot993$. Then $993 = 3\cdot331$, and $331$ is prime (no prime up to $18$ divides it). So $2^{15} + 1 = 3^2\cdot11\cdot331$.` }
+  );
+  add("sos-identity",
+    { q: String.raw`Find all real $(x, y, z)$ with $x^2 + y^2 + z^2 = xy + yz + zx$ and $x + y + z = 12$.`,
+      s: String.raw`The first equation says $\tfrac12\left[(x - y)^2 + (y - z)^2 + (z - x)^2\right] = 0$, and a sum of squares of reals vanishes only when each square does, so $x = y = z$. Then $x + y + z = 12$ gives $(4, 4, 4)$, the only solution.` },
+    { q: String.raw`Real numbers satisfy $x - z = 6$. Find the least possible value of $x^2 + y^2 + z^2 - xy - yz - zx$.`,
+      s: String.raw`Let $a = x - y$ and $b = y - z$, so $a + b = 6$. The expression is $\tfrac12\left(a^2 + b^2 + 36\right)$, and with $a + b$ fixed, $a^2 + b^2$ is least when $a = b = 3$. The least value is $\tfrac12(9 + 9 + 36) = 27$, at $y$ midway between $x$ and $z$.` }
+  );
+  add("useful-factorizations",
+    { q: String.raw`Show that $n^4 + n^2 + 1$ is composite for every integer $n \ge 2$.`,
+      s: String.raw`The first identity with $a = n$, $b = 1$ gives $n^4 + n^2 + 1 = (n^2 + n + 1)(n^2 - n + 1)$. For $n \ge 2$ the smaller factor is $n^2 - n + 1 = n(n - 1) + 1 \ge 3$, so both factors exceed $1$. For example, $n = 2$ gives $21 = 7\cdot3$.` },
+    { q: String.raw`Compute $(2 + 3 + 5)^3 - 2^3 - 3^3 - 5^3$ by factoring.`,
+      s: String.raw`The second identity gives $3(2 + 3)(3 + 5)(5 + 2) = 3\cdot5\cdot8\cdot7 = 840$. Check: $1000 - 8 - 27 - 125 = 840$.` }
+  );
+  add("bernoulli-inequality",
+    { q: String.raw`Show that $\left(1 - \tfrac1{2n}\right)^n \ge \tfrac12$ for every positive integer $n$.`,
+      s: String.raw`Here $x = -\tfrac1{2n} \ge -1$ and the exponent is $n \ge 1$, so Bernoulli's Inequality gives $\left(1 - \tfrac1{2n}\right)^n \ge 1 - n\cdot\tfrac1{2n} = \tfrac12$.` },
+    { q: String.raw`Which is larger, $1.1^{20}$ or $3$?`,
+      s: String.raw`Bernoulli's Inequality gives $(1 + 0.1)^{20} \ge 1 + 20\cdot0.1 = 3$, with equality only at $x = 0$, so $1.1^{20}$ is larger. (It is about $6.73$.)` }
+  );
+  add("jensens-inequality",
+    { q: String.raw`Positive reals satisfy $a + b + c = 1$. Find the least value of $\tfrac1a + \tfrac1b + \tfrac1c$.`,
+      s: String.raw`The function $f(x) = \tfrac1x$ has $f''(x) = \tfrac2{x^3} \gt 0$, so it is convex for $x \gt 0$. Jensen gives $\tfrac13\left(\tfrac1a + \tfrac1b + \tfrac1c\right) \ge f\left(\tfrac{a + b + c}3\right) = 3$, so the sum is at least $9$, with equality at $a = b = c = \tfrac13$.` },
+    { q: String.raw`Use Jensen's Inequality on $\ln x$ to prove that positive reals with $a + b + c = 3$ have $abc \le 1$.`,
+      s: String.raw`The logarithm has second derivative $-\tfrac1{x^2} \lt 0$, so it is concave and Jensen reverses: $\tfrac{\ln a + \ln b + \ln c}3 \le \ln\tfrac{a + b + c}3 = \ln1 = 0$. So $\ln(abc) \le 0$ and $abc \le 1$, with equality at $a = b = c = 1$. This is AM-GM for three numbers.` }
+  );
+  add("power-mean-inequality",
+    { q: String.raw`Positive reals satisfy $a + b + c = 6$. Find the least value of $a^2 + b^2 + c^2$.`,
+      s: String.raw`With exponents $1 \lt 2$, $M_1 \le M_2$: $2 = \tfrac{a + b + c}3 \le \sqrt{\tfrac{a^2 + b^2 + c^2}3}$, so $a^2 + b^2 + c^2 \ge 12$, with equality at $a = b = c = 2$.` },
+    { q: String.raw`Positive reals satisfy $a^2 + b^2 = 8$. Find the largest value of $a + b$ and the least value of $\tfrac1a + \tfrac1b$.`,
+      s: String.raw`Here $M_2 = \sqrt{\tfrac82} = 2$. From $M_1 \le M_2$, $\tfrac{a + b}2 \le 2$, so $a + b \le 4$. From $M_{-1} \le M_2$, $\tfrac2{1/a + 1/b} \le 2$, so $\tfrac1a + \tfrac1b \ge 1$. Both bounds are reached at $a = b = 2$.` }
+  );
+  add("common-angle-values",
+    { q: String.raw`Evaluate $\cos300^\circ + \sin210^\circ\cdot\tan135^\circ$.`,
+      s: String.raw`The reference angles are $60^\circ$, $30^\circ$ and $45^\circ$. Cosine is positive in the fourth quadrant, so $\cos300^\circ = \tfrac12$; sine is negative in the third, so $\sin210^\circ = -\tfrac12$; tangent is negative in the second, so $\tan135^\circ = -1$. The value is $\tfrac12 + \left(-\tfrac12\right)(-1) = 1$.` }
+  );
+  add("special-trig-values",
+    { q: String.raw`Find $\tan15^\circ + \tan75^\circ$ and $\tan15^\circ\cdot\tan75^\circ$.`,
+      s: String.raw`With $\tan15^\circ = 2 - \sqrt3$ and $\tan75^\circ = 2 + \sqrt3$, the sum is $4$ and the product is $4 - 3 = 1$. The product had to be $1$: $75^\circ = 90^\circ - 15^\circ$, so $\tan75^\circ = \tfrac1{\tan15^\circ}$.` }
+  );
+  add("arctan-telescoping",
+    { q: String.raw`Find $\displaystyle\sum_{n=1}^{\infty}\arctan\frac1{n^2 + n + 1}$.`,
+      s: String.raw`Since $n^2 + n + 1 = 1 + n(n + 1)$, each term is $\arctan(n + 1) - \arctan n$. The partial sums telescope to $\arctan(N + 1) - \arctan1$, which tends to $\tfrac\pi2 - \tfrac\pi4 = \tfrac\pi4$.` }
+  );
+  add("proportion-properties",
+    { q: String.raw`If $\tfrac ab = \tfrac34$, find $\tfrac{a + b}{a - b}$.`,
+      s: String.raw`Componendo and dividendo together turn $\tfrac ab = \tfrac34$ into $\tfrac{a + b}{a - b} = \tfrac{3 + 4}{3 - 4} = -7$. Check with $a = 3$, $b = 4$: $\tfrac7{-1}$.` },
+    { q: String.raw`Nonzero reals satisfy $\dfrac{x}{y + z} = \dfrac{y}{z + x} = \dfrac{z}{x + y} = k$. Find every possible value of $k$.`,
+      s: String.raw`If $x + y + z \ne 0$, addendo gives $k = \tfrac{x + y + z}{2(x + y + z)} = \tfrac12$, as with $x = y = z$. Addendo cannot be used when $x + y + z = 0$, and then $y + z = -x$, so each ratio is $-1$, as with $(x, y, z) = (1, 1, -2)$. So $k = \tfrac12$ or $k = -1$.` }
+  );
+  add("rectangles-in-grid",
+    { q: String.raw`How many of the rectangles in a $4 \times 4$ grid of unit squares are not squares?`,
+      s: String.raw`There are $\binom52\binom52 = 100$ rectangles and $1^2 + 2^2 + 3^2 + 4^2 = 30$ squares, so $70$ are not squares.` }
+  );
+  add("nested-subset-pairs",
+    { q: String.raw`A club of $6$ people elects a committee of $4$, and the committee then names a working group from its own members (possibly nobody, possibly all four). How many outcomes are there?`,
+      s: String.raw`This is the $k = 4$ term of the sum: choose the committee in $\binom64 = 15$ ways, then the working group as any of its $2^4 = 16$ subsets, for $240$ outcomes.` },
+    { q: String.raw`Evaluate $\displaystyle\sum_{k=0}^{7}\binom7k2^k$ by a counting argument.`,
+      s: String.raw`The sum counts pairs $A \subseteq B$ inside a $7$-element set by the size $k$ of $B$. Counting by element instead, each element is in $A$, in $B$ only, or in neither, so the sum is $3^7 = 2187$.` }
+  );
+  add("squared-binomial-sum",
+    { q: String.raw`Evaluate $\binom50^2 + \binom51^2 + \cdots + \binom55^2$.`,
+      s: String.raw`The identity gives $\binom{10}5 = 252$. Directly: $1 + 25 + 100 + 100 + 25 + 1 = 252$.` },
+    { q: String.raw`How many subsets of $\{1, 2, \ldots, 12\}$ contain as many numbers from $1$ to $6$ as from $7$ to $12$?`,
+      s: String.raw`Taking $k$ from each half can be done in $\binom6k^2$ ways, so the count is $\sum_{k=0}^{6}\binom6k^2 = \binom{12}6 = 924$.` }
+  );
+  add("committee-chair",
+    { q: String.raw`A subset of $\{1, 2, \ldots, 10\}$ is chosen uniformly at random. What is its expected size?`,
+      s: String.raw`The expected size is $\tfrac1{2^{10}}\sum_k k\binom{10}k = \tfrac{10\cdot2^9}{2^{10}} = 5$, as symmetry between a subset and its complement also shows.` }
+  );
+  add("stirling-bell",
+    { q: String.raw`In how many ways can $5$ different books be split into $3$ nonempty piles, if the piles are not labeled?`,
+      s: String.raw`This is $S(5, 3)$. From $S(4, 3) = 6$ and $S(4, 2) = 7$, the recurrence gives $S(5, 3) = 3\cdot6 + 7 = 25$.` },
+    { q: String.raw`In how many ways can $4$ people be divided into nonempty unlabeled groups, any number of groups allowed?`,
+      s: String.raw`This is the Bell number $B_4 = S(4, 1) + S(4, 2) + S(4, 3) + S(4, 4) = 1 + 7 + 6 + 1 = 15$.` }
+  );
+  add("tail-sum-expectation",
+    { q: String.raw`A fair die is rolled until a $6$ appears. Use the tail-sum formula to find the expected number of rolls.`,
+      s: String.raw`At least $k$ rolls are needed exactly when the first $k - 1$ rolls all miss, so $P(X \ge k) = \left(\tfrac56\right)^{k-1}$. Then $E[X] = \sum_{k\ge1}\left(\tfrac56\right)^{k-1} = \tfrac1{1 - 5/6} = 6$.` }
+  );
+  add("total-expectation",
+    { q: String.raw`A fair die is rolled. If it shows an even number, that many fair coins are flipped; otherwise one coin is flipped. What is the expected number of heads?`,
+      s: String.raw`Condition on the parity. Given an even roll, the number of coins is $2$, $4$ or $6$, averaging $4$, so the expected heads is $2$; given an odd roll it is $\tfrac12$. So $E = \tfrac12\cdot2 + \tfrac12\cdot\tfrac12 = \tfrac54$.` },
+    { q: String.raw`A fair die is rolled to get $N$, and then $N$ more dice are rolled and added. What is the expected total?`,
+      s: String.raw`The number $N$ is independent of the later rolls, so Wald's identity gives $E[\text{total}] = E[N]\cdot E[X] = \tfrac72\cdot\tfrac72 = \tfrac{49}4$.` }
+  );
 })();
