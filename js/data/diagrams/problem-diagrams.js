@@ -4978,4 +4978,21 @@
       cap(430, 270, "Triangle ABC with sides 13, 14, 15, the midpoints D, E, F, and the circumcircles of BDE (blue) and CEF (gold), which meet again at X." + MM(ok))
     ]);
   })();
+
+  // 2010 AMC 12B #22: the cyclic quadrilateral with AB = 6, BC = 7, CD = 12, DA = 14 (so BC·CD = AB·DA),
+  // the one giving the largest BD.
+  PROB["2010-amc-12b-22"] = (() => {
+    const sides = [6, 7, 12, 14], arc = R => sides.reduce((t, x) => t + 2 * Math.asin(Math.min(1, x / (2 * R))), 0) - 2 * Math.PI;
+    let lo = 7.0001, hi = 200; for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (arc(m) > 0) lo = m; else hi = m; }
+    const R = (lo + hi) / 2; let t = Math.PI * 0.75; const P = [];
+    sides.forEach(x => { P.push([R * Math.cos(t), R * Math.sin(t)]); t -= 2 * Math.asin(x / (2 * R)); });
+    const [A, B, C, D] = P, ok = Math.abs(dist(B, D) ** 2 - 212.5) < 1e-6 && Math.abs(dist(D, A) - 14) < 1e-6;
+    const Q = fitQ([[-R, -R], [R, R]], 28, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q([0, 0]), R * k, FNT, 1.3), poly(P.map(Q), DIM, 2), seg(Q(B), Q(D), ACC, 1.8),
+      ...[["A", A], ["B", B], ["C", C], ["D", D]].map(([n, X]) => txt(add(Q(X), mul(norm([X[0], -X[1]]), 14)), n)),
+      ...[[A, B, "6"], [B, C, "7"], [C, D, "12"], [D, A, "14"]].map(([X, Y, l]) => txt(add(Q(mid(X, Y)), mul(norm([(X[0] + Y[0]) / 2, -(X[1] + Y[1]) / 2]), 12)), l, DIM, 11.5)),
+      cap(430, 270, "A cyclic quadrilateral with distinct integer sides and BC·CD = AB·DA: here AB = 6, BC = 7, CD = 12, DA = 14, with the diagonal BD (blue)." + MM(ok))
+    ]);
+  })();
 })();
