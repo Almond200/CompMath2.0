@@ -4413,4 +4413,38 @@
       cap(430, 270, "The equilateral triangle ABC of side s and the point P inside it with AP = 1, BP = √3, CP = 2." + MM(ok))
     ]);
   })();
+
+  // 2020 AMC 12B #10: the unit square, its inscribed circle, M on CD, and AM meeting the circle again at P.
+  PROB["2020-amc-12b-10"] = (() => {
+    const A = [0, 0], B = [1, 0], C = [1, 1], D = [0, 1], O = [0.5, 0.5], r = 0.5, M = [0.5, 1];
+    const t = 0.25 / (M[0] * M[0] + M[1] * M[1]), P = mul(M, t);             // second root of |tM - O| = r
+    const ok = Math.abs(dist(P, O) - r) < 1e-12 && Math.abs(dist(M, O) - r) < 1e-12 && t > 0 && t < 1;
+    const Q = fitQ([A, B, C, D], 34, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), circ(Q(O), r * k, ACC, 1.8), seg(Q(A), Q(M), GLD, 1.8),
+      dot(Q(M), DIM, 3.5), dot(Q(P), GLD, 4),
+      txt(add(Q(A), [-12, 12]), "A"), txt(add(Q(B), [12, 12]), "B"), txt(add(Q(C), [12, -4]), "C"), txt(add(Q(D), [-12, -4]), "D"),
+      txt(add(Q(M), [0, -10]), "M"), txt(add(Q(P), [-13, 2]), "P", GLD, 13), txt(add(Q(O), [r * k * 0.72, r * k * 0.82]), "ω", ACC, 14),
+      cap(430, 270, "The unit square ABCD with its inscribed circle ω, which touches CD at M; the segment AM meets ω again at P." + MM(ok))
+    ]);
+  })();
+
+  // 2020 AMC 12B #12: the diameter AB, E on it with BE = 2√5, and the chord CD through E at 45°.
+  PROB["2020-amc-12b-12"] = (() => {
+    const R = 5 * Math.sqrt(2), O = [0, 0], A = [-R, 0], B = [R, 0], E = [R - 2 * Math.sqrt(5), 0];
+    const u = [-Math.SQRT1_2, Math.SQRT1_2], b = 2 * (E[0] * u[0] + E[1] * u[1]), c = E[0] * E[0] - R * R;
+    const t1 = (-b + Math.sqrt(b * b - 4 * c)) / 2, t2 = (-b - Math.sqrt(b * b - 4 * c)) / 2;
+    const Cp = add(E, mul(u, t1)), Dp = add(E, mul(u, t2));
+    const ang = Math.acos(((A[0] - E[0]) * (Cp[0] - E[0]) + (A[1] - E[1]) * (Cp[1] - E[1])) / (dist(A, E) * dist(Cp, E))) * 180 / Math.PI;
+    const ok = Math.abs(dist(Cp, O) - R) < 1e-9 && Math.abs(dist(Dp, O) - R) < 1e-9 && Math.abs(ang - 45) < 1e-9 && Math.abs(dist(B, E) - 2 * Math.sqrt(5)) < 1e-12;
+    const Q = fitQ([[-R, -R], [R, R]], 24, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, DIM, 1.8), seg(Q(A), Q(B), DIM, 1.8), seg(Q(Cp), Q(Dp), ACC, 1.8),
+      angleArc(Q(E), Q(A), Q(Cp), 22, GLD), dot(Q(O), DIM, 2.5), dot(Q(E), ACC, 3.5),
+      txt(add(Q(A), [-12, 5]), "A"), txt(add(Q(B), [12, 5]), "B"), txt(add(Q(Cp), [-10, -6]), "C", ACC, 13), txt(add(Q(Dp), [8, 14]), "D", ACC, 13),
+      txt(add(Q(E), [6, 16]), "E", ACC, 13), txt(add(Q(O), [0, 15]), "O", DIM, 12), txt(add(Q(E), [-36, -10]), "45°", GLD, 12),
+      txt(add(Q(mid(E, B)), [0, -8]), "2√5", DIM, 12),
+      cap(430, 270, "The circle of radius 5√2 with diameter AB; the chord CD crosses AB at E with BE = 2√5 and ∠AEC = 45°." + MM(ok))
+    ]);
+  })();
 })();
