@@ -1813,7 +1813,15 @@ An AIME length tool that is rarely the whole solution: equal chords or a symmetr
 The quadrilateral is cyclic. For a quadrilateral that is not cyclic the area is smaller, by [[bretschneiders-formula|Bretschneider's Formula]], so for given sides the cyclic arrangement has the maximum possible area.
 
 ## Why it works
-Follow Heron's derivation but for a cyclic quadrilateral: split along a diagonal, use $\frac12(ab + cd)\sin B$ for the total area, and apply the Law of Cosines to both triangles with $\cos D = -\cos B$. Eliminating the diagonal and factoring gives the product of four factors.
+Split $ABCD$, with $AB = a$, $BC = b$, $CD = c$, $DA = d$, along the diagonal $AC$. In a cyclic quadrilateral $D = 180^\circ - B$, so $\sin D = \sin B$ and $\cos D = -\cos B$, and the area is
+$$K = \tfrac12 ab\sin B + \tfrac12 cd\sin D = \tfrac12(ab + cd)\sin B.$$
+
+The Law of Cosines in both triangles gives $AC^2 = a^2 + b^2 - 2ab\cos B = c^2 + d^2 + 2cd\cos B$, so $2(ab + cd)\cos B = a^2 + b^2 - c^2 - d^2$. Then $16K^2 = 4(ab + cd)^2(1 - \cos^2 B)$ is a difference of squares:
+$$16K^2 = \left(2(ab + cd)\right)^2 - \left(a^2 + b^2 - c^2 - d^2\right)^2.$$
+
+Factoring twice, the two factors are $(c + d)^2 - (a - b)^2$ and $(a + b)^2 - (c - d)^2$, so
+$$16K^2 = (b + c + d - a)(a + c + d - b)(a + b + d - c)(a + b + c - d) = 16(s - a)(s - b)(s - c)(s - d).$$
+With $d = 0$ the quadrilateral is a triangle and this is Heron's Formula.
 
 ## Useful observations
 - With $d = 0$ it degrades gracefully to Heron, which is the easiest way to keep the form straight.
@@ -1862,7 +1870,13 @@ AMC and AIME tangential-quadrilateral problems open with Pitot almost by definit
 The four points are in the plane, or in space. Equality needs the four points on a circle in the order $A, B, C, D$; for a different order of the points, a different pairing of the products is the one that gives equality.
 
 ## Why it works
-Inversion centered at one vertex maps the other three points to a configuration where the inequality becomes the triangle inequality. Equality, collinearity after inversion, corresponds exactly to concyclicity in the right order before inversion.
+Invert about $A$ with radius $1$. The [[inversion-facts|distance rule for inversion]] gives $B'C' = \frac{BC}{AB \cdot AC}$, and likewise for the other pairs.
+
+The triangle inequality $B'D' \le B'C' + C'D'$ then reads
+$$\frac{BD}{AB \cdot AD} \le \frac{BC}{AB \cdot AC} + \frac{CD}{AC \cdot AD},$$
+and multiplying by $AB \cdot AC \cdot AD$ gives $AC \cdot BD \le BC \cdot DA + AB \cdot CD$.
+
+Equality holds exactly when $C'$ lies on the segment $B'D'$. A line not through $A$ inverts to a circle through $A$, so this happens exactly when $A$, $B$, $C$, $D$ lie on one circle with $C$ on the arc $BD$ away from $A$, the order $A, B, C, D$.
 
 ## Useful observations
 - As a bound: among all quadrilaterals with given side lengths, the product of the diagonals is largest for the cyclic arrangement.
@@ -4124,6 +4138,10 @@ The two solids lie between the same two parallel planes, and every plane paralle
 
 ## Why it works
 Volume is the integral of cross-sectional area over height. If two solids present the same area $A(h)$ at every height $h$, their volume integrals are identical, and the shapes of the slices, and how they are stacked or sheared, are irrelevant.
+
+The sphere is the standard check. Cut a hemisphere of radius $R$, and a cylinder of radius $R$ and height $R$ with a cone bored out from its top face down to a point at the bottom, at height $h$ above the base. The hemisphere's slice is a disk of radius $\sqrt{R^2 - h^2}$, and the other slice is a ring between radii $h$ and $R$:
+$$\pi\left(R^2 - h^2\right) = \pi R^2 - \pi h^2.$$
+So the hemisphere has volume $\pi R^3 - \frac13\pi R^3 = \frac23\pi R^3$.
 
 ## Useful observations
 - It transports a volume that is unknown onto one that is known. An oblique prism or cylinder shears to an upright one slice for slice, so it keeps $V = Bh$.

@@ -31,3 +31,13 @@ name-the-floor
 harmonic-addition         # cosine form and range argued
 perfect-square-divisors   # jth powers and the smallest multiplier argued
 plane-regions             # circle count summed
+fit-copies
+infinite-descent
+shared-leg-pythagoras
+substitute-repeated-block
+prime-divides-binomial    # prime powers and both observations proved
+brahmaguptas-formula      # full derivation
+modular-inverse           # 2^{-1}, the unit count, and the g > 1 case proved
+cavalieris-principle      # the sphere slice check
+bernoulli-inequality      # equality case and the fractional form by convexity
+ptolemys-inequality       # inversion argument in full

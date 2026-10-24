@@ -579,7 +579,9 @@ An AIME tool, usually fed by Fermat's Little Theorem, for periods and for divisi
 $\gcd(a, n) = 1$. If $\gcd(a, n) = g \gt 1$, the congruence $ax \equiv b \pmod n$ is solvable exactly when $g \mid b$, with $g$ solutions modulo $n$.
 
 ## Why it works
-If $\gcd(a, n) = 1$, Bézout's Identity gives integers $x$ and $y$ with $ax + ny = 1$, so $ax \equiv 1 \pmod n$. If $x$ and $x'$ are both inverses, then $x \equiv x(ax') = (xa)x' \equiv x'$, so the inverse is unique. Conversely, if $ax \equiv 1$, any common factor of $a$ and $n$ divides $1$. The power form follows from Euler's Theorem, $a \cdot a^{\varphi(n) - 1} = a^{\varphi(n)} \equiv 1$.
+If $\gcd(a, n) = 1$, Bézout's Identity gives integers $x$ and $y$ with $ax + ny = 1$, so $ax \equiv 1 \pmod n$. If $x$ and $x'$ are both inverses, then $x \equiv x(ax') = (xa)x' \equiv x'$, so the inverse is unique. Conversely, if $ax \equiv 1$, any common factor of $a$ and $n$ divides $1$. The power form follows from Euler's Theorem, $a \cdot a^{\varphi(n) - 1} = a^{\varphi(n)} \equiv 1$. For odd $p$, $2 \cdot \frac{p + 1}2 = p + 1 \equiv 1$. The residues with inverses are those coprime to $n$, and there are $\varphi(n)$ of them.
+
+When $\gcd(a, n) = g \gt 1$: if $ax \equiv b$, then $g$ divides $ax - b$ and $a$, so $g \mid b$. If $g \mid b$, dividing through gives $\frac ag x \equiv \frac bg \pmod{\frac ng}$, where $\frac ag$ is invertible. That fixes $x$ modulo $\frac ng$, which is $g$ different residues modulo $n$.
 
 ## Useful observations
 - An inverse is checked by a single multiplication, even when finding it takes work: $5^{-1} \equiv 3 \pmod 7$, since $15 \equiv 1$.
@@ -995,6 +997,12 @@ $p$ is prime. For composite $n$ the statement fails: $4 \nmid \binom 42 = 6$.
 
 ## Why it works
 $\binom pk = \frac{p!}{k!(p - k)!}$ is an integer. The prime $p$ divides the numerator once, and for $0 \lt k \lt p$ every factor of $k!$ and $(p - k)!$ is less than $p$, so by Euclid's Lemma $p$ does not divide the denominator. Hence $p$ divides the integer $\binom pk$. For $\binom{p-1}{k}$, each factor $\frac{p - j}{j} \equiv -1 \pmod p$ in the product $\prod_{j=1}^{k}\frac{p - j}{j}$.
+
+For a prime power, the absorption identity gives
+$$j\binom{p^m}{j} = p^m\binom{p^m - 1}{j - 1}.$$
+The right side has at least $m$ factors of $p$, while $0 \lt j \lt p^m$ has at most $m - 1$, so at least one factor of $p$ is left in $\binom{p^m}{j}$.
+
+The observations follow by expanding. In $(a + b)^p = \sum \binom pk a^kb^{p-k}$ every middle coefficient is $0 \bmod p$, leaving $a^p + b^p$. With $a = b = 1$, $2^p = \sum_k \binom pk$, and removing the two end terms leaves $2^p - 2$, a sum of multiples of $p$.
 
 ## Useful observations
 - The whole interior of row $p$ of Pascal's triangle is divisible by $p$: row $7$ reads $7, 21, 35, 35, 21, 7$ inside.

@@ -1166,9 +1166,11 @@ Most often a quick bounding step in a complex-number or coordinate problem, and 
 $x \ge -1$ so that $1 + x \ge 0$, and the exponent is a real number at least $1$ for the first form, in particular any positive integer.
 
 ## Why it works
-Induct on $n$: it holds at $n = 1$, and if $(1 + x)^k \ge 1 + kx$ then, since $x \ge -1$ keeps $1 + x \ge 0$, multiplying preserves the inequality: $(1 + x)^{k+1} \ge (1 + kx)(1 + x) = 1 + (k + 1)x + kx^2 \ge 1 + (k + 1)x$.
+Induct on $n$: it holds at $n = 1$, and if $(1 + x)^k \ge 1 + kx$ then, since $x \ge -1$ keeps $1 + x \ge 0$, multiplying preserves the inequality: $(1 + x)^{k+1} \ge (1 + kx)(1 + x) = 1 + (k + 1)x + kx^2 \ge 1 + (k + 1)x$. The last step drops $kx^2$, which is $0$ only at $x = 0$, so for $n \ge 2$ equality needs $x = 0$.
 
-Geometrically, $y = 1 + nx$ is the tangent at $x = 0$ to the convex curve $y = (1 + x)^n$, so the curve never dips below it; for real exponents it is just convexity of $t \mapsto t^n$.
+For a real exponent $r$, compare $f(x) = (1 + x)^r$ with its tangent line $1 + rx$ at $x = 0$. Since
+$$f''(x) = r(r - 1)(1 + x)^{r - 2},$$
+$f$ is convex for $r \ge 1$ and lies above the tangent, and concave for $0 \le r \le 1$ and lies below it. That gives both forms, and $\sqrt{1 + x} \le 1 + \frac x2$ is the case $r = \frac12$.
 
 ## Useful observations
 - It is a fast, calculus-free bound on a power: it estimates compound growth, shows a power clears a linear target, or sandwiches limits like $\left(1 + \frac1n\right)^n$.
