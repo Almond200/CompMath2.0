@@ -4586,4 +4586,28 @@
       cap(430, 270, "The 5-12-13 triangle with circumcenter O and incenter I; the circle centered at M touches both legs and the circumcircle." + MM(ok))
     ]);
   })();
+
+  // 2017 AMC 12A #24: the cyclic ABCD with sides 3, 2, 6, 8, the points X, Y on BD, and the
+  // constructed E (on AX, YE ∥ AD), F (on CX, EF ∥ AC) and G (the second point of CX on the circle).
+  PROB["2017-amc-12a-24"] = (() => {
+    const bd = Math.sqrt(51), B = [0, 0], D = [bd, 0];
+    const third = (P, Qq, r1, r2, up) => { const d = dist(P, Qq), x = (r1 * r1 - r2 * r2 + d * d) / (2 * d), y = Math.sqrt(r1 * r1 - x * x), u = norm(sub(Qq, P)), v = perp(u);
+      return add(add(P, mul(u, x)), mul(v, up ? y : -y)); };
+    const A = third(B, D, 3, 8, true), C = third(B, D, 2, 6, false);
+    const X = lerp(D, B, 1 / 4), Y = lerp(B, D, 11 / 36);
+    const E = lineInt(A, X, Y, add(Y, sub(D, A))), F = lineInt(C, X, E, add(E, sub(C, A)));
+    const O = K.circumcenterOf(A, B, D), R = dist(O, A);
+    const dC = norm(sub(X, C)), tG = -2 * ((C[0] - O[0]) * dC[0] + (C[1] - O[1]) * dC[1]), G = add(C, mul(dC, tG));
+    const ok = Math.abs(dist(O, C) - R) < 1e-9 && Math.abs(dist(X, F) * dist(X, G) - 17) < 1e-9 && Math.abs(dist(B, C) - 2) < 1e-9;
+    const Q = fitQ([[O[0] - R, O[1] - R], [O[0] + R, O[1] + R], E, F], 16, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), R * k, FNT, 1.4), poly([A, B, C, D].map(Q), DIM, 2), seg(Q(B), Q(D), DIM, 1.4),
+      seg(Q(A), Q(E), FNT, 1.3), seg(Q(Y), Q(E), GLD, 1.5), seg(Q(C), Q(dist(C, F) > dist(C, G) ? F : G), FNT, 1.3), seg(Q(E), Q(F), GLD, 1.5),
+      ...[X, Y, E, F, G].map(P => dot(Q(P), ACC, 3)),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 4]), "B"), txt(add(Q(C), [0, 16]), "C"), txt(add(Q(D), [12, 4]), "D"),
+      txt(add(Q(X), [6, 15]), "X", ACC, 12.5), txt(add(Q(Y), [-4, 15]), "Y", ACC, 12.5), txt(add(Q(E), [-12, -4]), "E", ACC, 12.5),
+      txt(add(Q(F), [12, 2]), "F", ACC, 12.5), txt(add(Q(G), [8, -8]), "G", ACC, 12.5),
+      cap(430, 270, "ABCD inscribed in circle O with AB = 3, BC = 2, CD = 6, DA = 8; X and Y on BD, YE ∥ AD, EF ∥ AC (gold), and G on line CX and the circle." + MM(ok))
+    ]);
+  })();
 })();
