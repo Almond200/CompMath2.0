@@ -4995,4 +4995,19 @@
       cap(430, 270, "A cyclic quadrilateral with distinct integer sides and BC·CD = AB·DA: here AB = 6, BC = 7, CD = 12, DA = 14, with the diagonal BD (blue)." + MM(ok))
     ]);
   })();
+
+  // 2009 AMC 12A #22: the regular octahedron (side 1) and the plane through its center parallel to two
+  // opposite faces, which cuts it in a regular hexagon through six edge midpoints.
+  PROB["2009-amc-12a-22"] = (() => {
+    const { Pj, view } = projector([215, 135], 125, [0.95, 0.38], [-0.42, 0.3]);
+    const u = Math.SQRT1_2, V = { P: [u, 0, 0], N: [-u, 0, 0], Q: [0, u, 0], S: [0, -u, 0], T: [0, 0, u], B: [0, 0, -u] };
+    const faces = [["P", "Q", "T"], ["Q", "N", "T"], ["N", "S", "T"], ["S", "P", "T"], ["P", "Q", "B"], ["Q", "N", "B"], ["N", "S", "B"], ["S", "P", "B"]];
+    const m = (X, Y) => [0, 1, 2].map(i => (V[X][i] + V[Y][i]) / 2);
+    const hex = [m("P", "S"), m("P", "B"), m("Q", "B"), m("Q", "N"), m("N", "T"), m("S", "T")];   // all on x + y + z = 0, parallel to faces PQT and NSB
+    const ok = Math.abs(dist(V.P, V.Q) - 1) < 1e-12 && hex.every(h => Math.abs(h[0] + h[1] + h[2]) < 1e-12);
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj), poly(hex.map(Pj), ACC, 1.6, ACCS),
+      cap(430, 270, "A regular octahedron of side 1 and the plane through its center parallel to two opposite faces; the cut (blue) is a regular hexagon." + MM(ok))
+    ]);
+  })();
 })();
