@@ -378,4 +378,98 @@
     { q: String.raw`A fair die is rolled to get $N$, and then $N$ more dice are rolled and added. What is the expected total?`,
       s: String.raw`The number $N$ is independent of the later rolls, so Wald's identity gives $E[\text{total}] = E[N]\cdot E[X] = \tfrac72\cdot\tfrac72 = \tfrac{49}4$.` }
   );
+  add("expected-fixed-points",
+    { q: String.raw`A shuffled deck has cards numbered $1$ to $10$ in positions $1$ to $10$. What is the expected number of cards in their own position, and the expected number of pairs of cards that have swapped places with each other?`,
+      s: String.raw`Each card is in its own position with probability $\tfrac1{10}$, so by linearity the first expectation is $10\cdot\tfrac1{10} = 1$. A given pair $\{i, j\}$ is swapped when card $i$ sits at $j$ and card $j$ at $i$, probability $\tfrac1{10}\cdot\tfrac19$, and there are $\binom{10}2 = 45$ pairs, so the second expectation is $\tfrac{45}{90} = \tfrac12$.` },
+    { q: String.raw`What is the probability that a random arrangement of $6$ objects leaves exactly $2$ of them in place?`,
+      s: String.raw`Choose the two fixed objects in $\binom62 = 15$ ways; the other four must be a derangement, $D_4 = 9$. So the probability is $\tfrac{15\cdot9}{6!} = \tfrac{135}{720} = \tfrac3{16}$.` }
+  );
+  add("tree-basics",
+    { q: String.raw`A connected graph has $12$ vertices and $20$ edges. How many edges must be removed to leave a tree, and how many cycles does a connected graph with $12$ vertices and $11$ edges have?`,
+      s: String.raw`A tree on $12$ vertices has $11$ edges, and removing an edge from a cycle keeps the graph connected, so $20 - 11 = 9$ edges must go. A connected graph with $12$ vertices and $11$ edges is already a tree, so it has no cycles.` },
+    { q: String.raw`A forest (a graph with no cycles) has $20$ vertices and $3$ connected pieces. How many edges does it have?`,
+      s: String.raw`Each piece is a tree, with one edge fewer than its vertices. Adding over the three pieces, the forest has $20 - 3 = 17$ edges.` }
+  );
+  add("planar-graph-bound",
+    { q: String.raw`What is the largest number of edges in a simple planar graph on $10$ vertices? Can a planar graph on $6$ vertices have $14$ edges?`,
+      s: String.raw`The bound gives $3\cdot10 - 6 = 24$, reached by any triangulation of $10$ points. On $6$ vertices the bound is $3\cdot6 - 6 = 12 \lt 14$, so no: $K_6$ with one edge removed is not planar.` },
+    { q: String.raw`Show that a planar graph on $8$ vertices with no triangles has at most $12$ edges, and name one that has exactly $12$.`,
+      s: String.raw`With no triangles every face is bounded by at least $4$ edges, so the bound is $2v - 4 = 12$. The graph of the cube's edges reaches it: $8$ vertices, $12$ edges, and every face a square.` }
+  );
+  add("halls-marriage",
+    { q: String.raw`Four students choose projects: the first accepts $a$ or $b$, the second $b$ or $c$, the third $a$ or $c$, and the fourth any of $a$, $b$, $c$, $d$. Can each be given a different project? Check Hall's condition.`,
+      s: String.raw`Any one or two of the first three students accept at least two projects, all three together accept $\{a, b, c\}$, and any set with the fourth student accepts at least $|S|$ projects since the fourth adds $d$. Hall's condition holds, so yes: for example $a$, $b$, $c$, $d$ in order.` },
+    { q: String.raw`In a bipartite graph every vertex has the same degree $k \ge 1$. Prove that the graph has a perfect matching.`,
+      s: String.raw`Both sides have the same size, since each side meets all $k$ times the side's size of edges. For a set $S$ on one side, its $k|S|$ edges all end in $N(S)$, which receives at most $k|N(S)|$ edges in all, so $|N(S)| \ge |S|$. Hall's condition holds, so one side can be matched completely, and with equal sides that is a perfect matching.` }
+  );
+  add("konigs-theorem",
+    { q: String.raw`On a grid, the cells $(1, 1)$, $(1, 2)$, $(2, 1)$ and $(3, 3)$ are marked (row, column). Find the most marked cells with no two in a row or column, and the fewest rows and columns that cover every mark.`,
+      s: String.raw`Rows and columns are the two sides of a bipartite graph whose edges are the marks. The marks $(1, 2)$, $(2, 1)$, $(3, 3)$ share no row or column, so the matching has size $3$, and rows $1$, $2$, $3$ cover every mark, so a cover of size $3$ exists. By Kőnig's Theorem both are optimal.` },
+    { q: String.raw`A bipartite graph on $10$ vertices has a largest matching of $3$ edges. How large is its largest set of vertices with no edge between any two of them?`,
+      s: String.raw`The complement of a vertex cover is an independent set and the other way round, so the largest independent set has $10 - \tau$ vertices. Kőnig's Theorem gives $\tau = \nu = 3$, so the answer is $7$.` }
+  );
+  add("triangle-type-by-sides",
+    { q: String.raw`Classify the triangles with sides $7, 8, 11$ and $6, 7, 9$ as acute, right or obtuse.`,
+      s: String.raw`Compare the square of the longest side with the sum of the other two squares. For $7, 8, 11$: $121 \gt 49 + 64 = 113$, so it is obtuse. For $6, 7, 9$: $81 \lt 36 + 49 = 85$, so it is acute.` },
+    { q: String.raw`For which positive integers $x$ is the triangle with sides $x$, $x + 1$, $x + 2$ acute?`,
+      s: String.raw`It is a triangle when $x + (x + 1) \gt x + 2$, that is $x \ge 2$. It is acute when $(x + 2)^2 \lt x^2 + (x + 1)^2$, which simplifies to $x^2 - 2x - 3 \gt 0$, $(x - 3)(x + 1) \gt 0$, so $x \gt 3$. So $x \ge 4$; $x = 3$ gives the right triangle $3, 4, 5$ and $x = 2$ the obtuse $2, 3, 4$.` }
+  );
+  add("incenter-area-split",
+    { q: String.raw`In the right triangle with $BC = 5$, $CA = 12$, $AB = 13$, find the areas of $BIC$, $CIA$ and $AIB$, where $I$ is the incenter.`,
+      s: String.raw`The area is $30$ and the perimeter $30$, so each piece is its side's share of $30$: $[BIC] = 5$, $[CIA] = 12$, $[AIB] = 13$. The inradius is $\tfrac{30}{15} = 2$, and indeed $\tfrac12\cdot5\cdot2 = 5$.` },
+    { q: String.raw`A point $P$ inside triangle $ABC$ has $[PBC] : [PCA] : [PAB] = a : b : c$, the ratio of the opposite sides. Prove that $P$ is the incenter.`,
+      s: String.raw`With $d_a$, $d_b$, $d_c$ the distances from $P$ to the sides, the areas are $\tfrac12ad_a$, $\tfrac12bd_b$, $\tfrac12cd_c$. Their being in the ratio $a : b : c$ forces $d_a = d_b = d_c$. The only interior point equally far from all three sides is the incenter.` }
+  );
+  add("incircle-excircle-touch",
+    { q: String.raw`In triangle $ABC$ with $BC = 14$, $CA = 15$, $AB = 13$, find where the incircle and the $A$-excircle touch $BC$.`,
+      s: String.raw`Here $s = 21$. The incircle touches $BC$ at $s - b = 6$ from $B$, and the $A$-excircle at $s - c = 8$ from $B$. The two points are $2 = |b - c|$ apart and symmetric about the midpoint of $BC$, which is $7$ from $B$.` },
+    { q: String.raw`The incircle of triangle $ABC$ touches $BC$ at $D$ with $BD = 3$ and $DC = 5$. The $A$-excircle touches $BC$ at $E$. Find $BE$.`,
+      s: String.raw`The two touch points are mirror images across the midpoint of $BC$, so $BE = DC = 5$.` }
+  );
+  add("incircle-excircle-homothety",
+    { q: String.raw`Find the inradius and the $A$-exradius of the triangle with $BC = 5$, $CA = 4$, $AB = 3$.`,
+      s: String.raw`Here $s = 6$, $s - a = 1$ and the area is $6$, so $r = \tfrac66 = 1$. The homothety at $A$ scales by $\tfrac s{s - a} = 6$, so $r_a = 6$. Check: $r_a = \tfrac{\text{area}}{s - a} = \tfrac61$.` },
+    { q: String.raw`A triangle has semiperimeter $15$, inradius $2$ and $A$-exradius $5$. Find $BC$.`,
+      s: String.raw`From $\tfrac r{r_a} = \tfrac{s - a}s$, $\tfrac25 = \tfrac{15 - a}{15}$, so $15 - a = 6$ and $a = 9$. Both radii give the same area, $rs = 30 = r_a(s - a) = 5\cdot6$.` }
+  );
+  add("triangle-half-angle-identities",
+    { q: String.raw`For the $3$-$4$-$5$ triangle, find $\sin\tfrac A2\sin\tfrac B2\sin\tfrac C2$ and $\cos\tfrac A2\cos\tfrac B2\cos\tfrac C2$.`,
+      s: String.raw`The area is $6$ and $s = 6$, so $r = 1$, and the hypotenuse is a diameter, so $R = \tfrac52$. The products are $\tfrac r{4R} = \tfrac1{10}$ and $\tfrac s{4R} = \tfrac6{10} = \tfrac35$.` },
+    { q: String.raw`A triangle has inradius $2$ and semiperimeter $12$. Find $\tan\tfrac A2\tan\tfrac B2\tan\tfrac C2$.`,
+      s: String.raw`Divide the two identities: the product of the tangents is $\tfrac{r/4R}{s/4R} = \tfrac rs = \tfrac2{12} = \tfrac16$, whatever $R$ is. For the $6$-$8$-$10$ triangle, which fits, the factors are $\tan45^\circ = 1$, $\tfrac13$ and $\tfrac12$.` }
+  );
+  add("altitude-bisector-angle",
+    { q: String.raw`Prove that the altitude and the angle bisector from $A$ are the same line exactly when $AB = AC$.`,
+      s: String.raw`The angle between them is $\tfrac{|B - C|}2$, which is $0$ exactly when $\angle B = \angle C$, that is, when the sides opposite those angles, $AC$ and $AB$, are equal.` },
+    { q: String.raw`In triangle $ABC$ the altitude and the bisector from $A$ meet at $10^\circ$, and $\angle B = 50^\circ$. Find $\angle C$.`,
+      s: String.raw`The condition is $\tfrac{|B - C|}2 = 10^\circ$, so $C = 30^\circ$ or $C = 70^\circ$. Both give triangles, with $\angle A = 100^\circ$ or $60^\circ$.` }
+  );
+  add("cevas-theorem",
+    { q: String.raw`Use Ceva's Theorem to show that the lines from the vertices of a triangle to the points where the incircle touches the opposite sides pass through one point.`,
+      s: String.raw`Equal tangents give $AF = AE = s - a$, $BF = BD = s - b$ and $CD = CE = s - c$. Then $\tfrac{AF}{FB}\cdot\tfrac{BD}{DC}\cdot\tfrac{CE}{EA} = \tfrac{s - a}{s - b}\cdot\tfrac{s - b}{s - c}\cdot\tfrac{s - c}{s - a} = 1$, so by the converse the three lines meet (at the Gergonne point).` },
+    { q: String.raw`Use Ceva's Theorem to show that the altitudes of an acute triangle pass through one point.`,
+      s: String.raw`The feet split the sides as $AF = b\cos A$, $FB = a\cos B$, $BD = c\cos B$, $DC = b\cos C$, $CE = a\cos C$, $EA = c\cos A$. The product of the three ratios is $\tfrac{b\cos A\cdot c\cos B\cdot a\cos C}{a\cos B\cdot b\cos C\cdot c\cos A} = 1$, so the altitudes are concurrent.` }
+  );
+  add("perpendicularity-lemma",
+    { q: String.raw`With $A = (0, 0)$, $B = (4, 2)$, $C = (1, 3)$ and $D = (3, -1)$, test with lengths alone whether $AB \perp CD$.`,
+      s: String.raw`Here $AC^2 = 10$, $AD^2 = 10$, $BC^2 = 9 + 1 = 10$ and $BD^2 = 1 + 9 = 10$, so $AC^2 - AD^2 = 0 = BC^2 - BD^2$ and the lines are perpendicular. Check with slopes: $\tfrac12$ and $-2$.` },
+    { q: String.raw`Prove that the diagonals of a kite are perpendicular.`,
+      s: String.raw`In kite $ABCD$ with $AB = BC$ and $CD = DA$, the sums $AB^2 + CD^2$ and $BC^2 + DA^2$ are equal term by term. By the lemma the diagonals $AC$ and $BD$ are perpendicular.` }
+  );
+  add("contact-triangle",
+    { q: String.raw`For the triangle with $BC = 14$, $CA = 15$, $AB = 13$, find the tangent lengths from each vertex and the area of the contact triangle.`,
+      s: String.raw`With $s = 21$ the tangent lengths are $s - a = 7$ from $A$, $s - b = 6$ from $B$ and $s - c = 8$ from $C$. The area is $84$, so $r = 4$ and $R = \tfrac{13\cdot14\cdot15}{4\cdot84} = \tfrac{65}8$. The contact triangle has area $\tfrac r{2R}\cdot84 = \tfrac{16}{65}\cdot84 = \tfrac{1344}{65}$.` }
+  );
+  add("euler-line-ratio",
+    { q: String.raw`A triangle has circumradius $5$ and $a^2 + b^2 + c^2 = 200$. How far is the orthocenter from the circumcenter, and the centroid from the circumcenter?`,
+      s: String.raw`The formula gives $OH^2 = 9\cdot25 - 200 = 25$, so $OH = 5$, and the centroid is a third of the way along, $OG = \tfrac53$. The $6$-$8$-$10$ triangle fits: $H$ is the right-angle vertex and $O$ the midpoint of the hypotenuse, $5$ away.` },
+    { q: String.raw`The points $A = (5, 0)$, $B = (0, 5)$, $C = (-3, 4)$ lie on the circle of radius $5$ about the origin. Find the orthocenter of triangle $ABC$.`,
+      s: String.raw`With the circumcenter at the origin, $H = A + B + C = (2, 9)$. Check: $H - A = (-3, 9)$ is perpendicular to $C - B = (-3, -1)$, since $9 - 9 = 0$, and $H - B = (2, 4)$ is perpendicular to $C - A = (-8, 4)$.` }
+  );
+  add("euler-line-parallel-side",
+    { q: String.raw`In triangle $ABC$ the Euler line is parallel to $BC$ and $\angle B = 45^\circ$. Find $\tan C$ and $\tan A$.`,
+      s: String.raw`The condition $\tan B\tan C = 3$ with $\tan B = 1$ gives $\tan C = 3$. Then $\tan A = -\tan(B + C) = -\tfrac{1 + 3}{1 - 3} = 2$, so all three angles are acute, as the card says they must be.` },
+    { q: String.raw`Show that $\tan B\tan C = 3$ is equivalent to $\cos A = 2\cos B\cos C$ in a triangle.`,
+      s: String.raw`Since $A = 180^\circ - B - C$, $\cos A = -\cos(B + C) = \sin B\sin C - \cos B\cos C = \cos B\cos C\,(\tan B\tan C - 1)$. This equals $2\cos B\cos C$ exactly when $\tan B\tan C - 1 = 2$ (neither cosine can vanish, since $\tan B \tan C = 3$ needs both tangents defined, and $\cos A = 2\cos B\cos C$ fails at a right angle $B$ or $C$).` }
+  );
 })();
