@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2009 AMC 12B finished, 2008 AMC 12A begun (2026-10-24).** 2009 AMC 12B #25 ($k\times k$ placements for each side vector: $225$); 2008 AMC 12A #2, 8, 11 (opposite faces of the net, $164$), 12, 14, 16 ($n=112$), 17 ($a_1\equiv3\pmod4$: $502$), 18 ($\sqrt{95}$), 19 ($224$). All checked by script.
 - **Step D: 2009 AMC 12B, ten more (2026-10-24).** #12, 13 ($14+4$), 15, 16 (extend to an isosceles triangle, $\tfrac45$), 19 (Sophie-style factoring, $41+761$), 20 ($300$), 21 (Fibonacci, $89$), 22 ($28^2=784$), 23 ($\tfrac79$), 24 ($4$ solutions), with figures for #13 and #16. All checked by script.
 - **Step D: 2009 AMC 12A finished, 2009 AMC 12B begun (2026-10-24).** 2009 AMC 12A #14, 15 ($n=97$), 16, 17, 21 ($8$ nonreal), 22 (hexagon of side $\tfrac12$, with an octahedron figure), 23 ($450+300\sqrt2$), 24 ($k=2013$), 25 (tangent addition, angles modulo $180^\circ$: $0$); 2009 AMC 12B #9. All checked by script.
 - **Step D: 2010 AMC 12B finished, 2009 AMC 12A begun (2026-10-24).** 2010 AMC 12B #22 ($BD^2$ is half the sum of the squared sides: $\tfrac{425}2$, with a figure), 23 ($-100$), 24 (Vieta on the cubic: $3$), 25 ($77$ factors of $67$); 2009 AMC 12A #1, 3, 7, 9, 12, 13. All checked by script.
