@@ -4469,4 +4469,40 @@
       cap(430, 270, "Zoomed on the triangle: A lies on ω (radius 20), line BC touches γ (radius 17), and AO, heading to the common center O far below, crosses BC at P with BP = 3CP." + MM(ok))
     ]);
   })();
+
+  // 2019 AMC 12B #18: the square pyramid with apex E above A, and the points P, Q, R on BE, DE, CE.
+  PROB["2019-amc-12b-18"] = (() => {
+    const { Pj, view } = projector([235, 212], 27, [-0.62, 0.36], [1, 0.17]);
+    const V = { A: [0, 0, 0], B: [3, 0, 0], C: [3, 3, 0], D: [0, 3, 0], E: [0, 0, 6] };
+    const at = (X, Y, t) => [0, 1, 2].map(i => V[X][i] + (V[Y][i] - V[X][i]) * t);
+    const P = at("B", "E", 1 / 3), Qp = at("D", "E", 1 / 3), R = at("C", "E", 2 / 3);
+    const faces = [["A", "B", "C", "D"], ["E", "A", "B"], ["E", "B", "C"], ["E", "C", "D"], ["E", "D", "A"]];
+    const ok = Math.abs(P[2] - 2) < 1e-12 && Math.abs(Qp[2] - 2) < 1e-12 && Math.abs(R[2] - 4) < 1e-12;
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj),
+      poly([P, Qp, R].map(Pj), ACC, 1.8, ACCS), dot(Pj(P), ACC, 3.5), dot(Pj(Qp), ACC, 3.5), dot(Pj(R), ACC, 3.5),
+      ...["A", "B", "C", "D", "E"].map(n => txt(add(Pj(V[n]), { A: [-4, -10], B: [-12, 10], C: [12, 12], D: [14, 4], E: [0, -10] }[n]), n)),
+      txt(add(Pj(P), [-12, 4]), "P", ACC, 13), txt(add(Pj(Qp), [12, 2]), "Q", ACC, 13), txt(add(Pj(R), [12, 0]), "R", ACC, 13),
+      cap(430, 270, "Base ABCD with side 3, altitude AE = 6; P and Q are a third of the way up BE and DE, and R two thirds of the way up CE." + MM(ok))
+    ]);
+  })();
+
+  // 2019 AMC 12B #25: the quadrilateral with BC = 2, CD = 6 and the centroids of ABC, BCD, ACD,
+  // drawn in the shape where the centroid triangle is equilateral (then ABD is equilateral too).
+  PROB["2019-amc-12b-25"] = (() => {
+    const C = [0, 0], th = rad(150), B = [2, 0], D = [6 * Math.cos(th), 6 * Math.sin(th)];
+    const M = mid(B, D), u = norm(perp(sub(D, B))), h = dist(B, D) * Math.sqrt(3) / 2;
+    const A1 = add(M, mul(u, h)), A2 = sub(M, mul(u, h)), A = dist(A1, C) > dist(A2, C) ? A1 : A2;
+    const cen = (X, Y, Z) => [(X[0] + Y[0] + Z[0]) / 3, (X[1] + Y[1] + Z[1]) / 3];
+    const G1 = cen(A, B, C), G2 = cen(B, C, D), G3 = cen(A, C, D);
+    const ok = Math.abs(dist(G1, G2) - dist(G2, G3)) < 1e-9 && Math.abs(dist(G2, G3) - dist(G1, G3)) < 1e-9;
+    const Q = fitQ([A, B, C, D], 28, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), poly([G1, G2, G3].map(Q), ACC, 1.8, ACCS),
+      dot(Q(G1), ACC, 3), dot(Q(G2), ACC, 3), dot(Q(G3), ACC, 3),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [12, 6]), "B"), txt(add(Q(C), [0, 16]), "C"), txt(add(Q(D), [-12, 4]), "D"),
+      txt(add(Q(mid(B, C)), [4, 15]), "2", DIM, 12), txt(add(Q(mid(C, D)), [-8, 14]), "6", DIM, 12),
+      cap(430, 270, "A convex quadrilateral ABCD with BC = 2 and CD = 6, and the centroids of ABC, BCD and ACD (blue) forming an equilateral triangle." + MM(ok))
+    ]);
+  })();
 })();
