@@ -4850,4 +4850,55 @@
       cap(430, 270, "An equiangular pentagon (all angles 108°, sides not all equal) and the five-pointed star made by extending its sides (blue)." + MM(ok))
     ]);
   })();
+
+  // 2013 AMC 12B #24: AC = 2, M the midpoint of AC, CN the bisector of angle C, X = BM ∩ CN, and
+  // triangle BXN equilateral (angle C = 2γ with sin 2γ sin 60° = sin²(60° − γ)).
+  PROB["2013-amc-12b-24"] = (() => {
+    let lo = 0.05, hi = 1.0; const F = g => Math.sin(2 * g) * Math.sin(Math.PI / 3) - Math.sin(Math.PI / 3 - g) ** 2;
+    for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (F(lo) * F(m) <= 0) hi = m; else lo = m; }
+    const g = (lo + hi) / 2, C = [0, 0], A = [2, 0], M = [1, 0];
+    const BC = 2 * Math.sin(Math.PI / 3 - g) / Math.sin(2 * Math.PI / 3 - g), B = [BC * Math.cos(2 * g), BC * Math.sin(2 * g)];
+    const N = lineInt(A, B, C, [Math.cos(g), Math.sin(g)]), X = lineInt(B, M, C, N);
+    const ok = Math.abs(dist(B, X) - dist(X, N)) < 1e-9 && Math.abs(dist(B, N) - dist(B, X)) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(B), Q(M), FNT, 1.4), seg(Q(C), Q(N), FNT, 1.4), poly([B, X, N].map(Q), ACC, 1.8, ACCS),
+      txt(add(Q(A), [12, 6]), "A"), txt(add(Q(B), [0, -10]), "B"), txt(add(Q(C), [-12, 6]), "C"), txt(add(Q(M), [0, 16]), "M"),
+      txt(add(Q(N), [10, -6]), "N", ACC, 12.5), txt(add(Q(X), [-4, 16]), "X", ACC, 12.5), txt(add(Q(mid(C, M)), [0, 16]), "1", DIM, 11.5), txt(add(Q(mid(M, A)), [0, 16]), "1", DIM, 11.5),
+      cap(430, 270, "AC = 2 with midpoint M; the median BM and the bisector CN meet at X, and triangle BXN (blue) is equilateral." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AMC 12A #16: circle C1 centered at O on circle C2; they meet at X and Y; Z on C2 outside C1.
+  PROB["2012-amc-12a-16"] = (() => {
+    const r = Math.sqrt(30), cz = 79 / 121, XY = 20 * r / 11, R2 = XY / (2 * Math.sqrt(1 - cz * cz));   // C2's radius from XY and angle Z
+    const O2 = [0, 0], O = [0, R2];                                                                       // O on C2
+    const half = Math.asin(XY / (2 * R2)), X = [R2 * Math.sin(2 * Math.asin(r / (2 * R2))), R2 * Math.cos(2 * Math.asin(r / (2 * R2)))], Y = [-X[0], X[1]];
+    // Z on C2 with ZX = 13 and ZY = 7: search the lower arc
+    let best = null, be = 1e9; for (let i = 0; i <= 20000; i++) { const t = Math.PI + 2 * Math.PI * i / 20000; const Z = [R2 * Math.sin(t), R2 * Math.cos(t)]; const e = Math.abs(dist(Z, X) - 13) + Math.abs(dist(Z, Y) - 7); if (e < be) { be = e; best = Z; } }
+    const Z = best, ok = Math.abs(dist(O, X) - r) < 1e-9 && Math.abs(dist(Z, O) - 11) < 0.05 && be < 0.05 && half > 0;
+    const Q = fitQ([[-R2, -R2], [R2, R2 + r]], 14, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O2), R2 * k, DIM, 1.5), circ(Q(O), r * k, ACC, 1.5), seg(Q(Z), Q(X), GLD, 1.4), seg(Q(Z), Q(Y), GLD, 1.4), seg(Q(Z), Q(O), GLD, 1.4),
+      dot(Q(O), ACC, 3), dot(Q(X), DIM, 3), dot(Q(Y), DIM, 3), dot(Q(Z), GLD, 3),
+      txt(add(Q(O), [0, -10]), "O", ACC, 12.5), txt(add(Q(X), [12, 2]), "X"), txt(add(Q(Y), [-12, 2]), "Y"), txt(add(Q(Z), [0, 16]), "Z", GLD, 12.5),
+      txt(add(Q(mid(Z, X)), [10, 4]), "13", GLD, 11.5), txt(add(Q(mid(Z, Y)), [-10, 4]), "7", GLD, 11.5), txt(add(Q(mid(Z, O)), [8, 0]), "11", GLD, 11.5),
+      txt(add(Q([R2 * 0.72, -R2 * 0.72]), [10, 10]), "C₂", DIM, 12), txt(add(Q([r * 0.8, R2 + r * 0.6]), [8, 0]), "C₁", ACC, 12),
+      cap(430, 270, "Circle C₁ is centered at O on circle C₂; they meet at X and Y, and Z on C₂ outside C₁ has ZX = 13, ZO = 11, ZY = 7." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AMC 12A #18: the 25-26-27 triangle and its incenter I.
+  PROB["2012-amc-12a-18"] = (() => {
+    const a = 25, b = 26, c = 27, B = [0, 0], C = [a, 0], xA = (c * c - b * b + a * a) / (2 * a), A = [xA, Math.sqrt(c * c - xA * xA)];
+    const I = [(a * A[0] + b * B[0] + c * C[0]) / (a + b + c), (a * A[1] + b * B[1] + c * C[1]) / (a + b + c)];
+    const ok = Math.abs(dist(B, I) - 15) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), circ(Q(I), I[1] * k, FNT, 1.3), seg(Q(B), Q(I), ACC, 1.8), dot(Q(I), ACC, 3.5),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(I), [10, -6]), "I", ACC, 12.5),
+      txt(add(Q(mid(A, B)), [-14, 0]), "27", DIM, 12), txt(add(Q(mid(A, C)), [14, 0]), "26", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "25", DIM, 12),
+      cap(430, 270, "The triangle with AB = 27, AC = 26, BC = 25 and its incenter I." + MM(ok))
+    ]);
+  })();
 })();
