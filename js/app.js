@@ -4893,7 +4893,7 @@
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
-              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} of ${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"} written</span></a>
+              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
               <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
             </div>`).join("")}
             ${(() => {
