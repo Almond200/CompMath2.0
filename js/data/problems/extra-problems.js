@@ -1278,4 +1278,62 @@
     { q: String.raw`Since $\sum_{d \mid n}\varphi(d) = n$, Möbius inversion gives $\varphi(n) = \sum_{d \mid n}\mu(d)\tfrac nd$. Use it to compute $\varphi(12)$.`,
       s: String.raw`Only the squarefree divisors $1, 2, 3, 6$ count: $12 - 6 - 4 + 2 = 4$. Indeed $1, 5, 7, 11$ are the numbers up to $12$ coprime to it.` }
   );
+  add("lagrange-roots-mod-p",
+    { q: String.raw`Show that $x^2 \equiv 1 \pmod p$ has only the solutions $\pm1$ for a prime $p$, and compare with the modulus $8$.`,
+      s: String.raw`A polynomial of degree $2$ has at most $2$ roots modulo a prime, and $1$ and $-1$ are roots, so there are no others. Modulo $8$ the four numbers $1, 3, 5, 7$ all square to $1$: the theorem needs a prime modulus.` },
+    { q: String.raw`For a prime $p$, show that $x^{p-1} - 1 \equiv (x - 1)(x - 2)\cdots(x - (p - 1)) \pmod p$ as polynomials.`,
+      s: String.raw`Both sides are monic of degree $p - 1$, so their difference has degree at most $p - 2$. By Fermat both sides vanish at $x = 1, \ldots, p - 1$, so the difference has $p - 1$ roots, more than its degree. By Lagrange it is the zero polynomial modulo $p$.` }
+  );
+  add("primitive-roots",
+    { q: String.raw`Is $3$ a primitive root modulo $7$, and how many primitive roots does $7$ have?`,
+      s: String.raw`The powers of $3$ are $3, 2, 6, 4, 5, 1$, so $3$ has order $6 = \varphi(7)$: yes. There are $\varphi(6) = 2$ primitive roots, $3$ and $5$.` },
+    { q: String.raw`Show that there is no primitive root modulo $8$.`,
+      s: String.raw`The units are $1, 3, 5, 7$, and each squares to $1$ modulo $8$, so every order is at most $2$, while a primitive root would need order $\varphi(8) = 4$. This is why $8$ is not on the list $1, 2, 4, p^k, 2p^k$.` }
+  );
+  add("freshmans-dream",
+    { q: String.raw`Simplify $(x + 2)^7$ modulo $7$.`,
+      s: String.raw`$(x + 2)^7 \equiv x^7 + 2^7 \pmod 7$, and $2^7 = 128 = 18\cdot7 + 2$, so $(x + 2)^7 \equiv x^7 + 2$.` }
+  );
+  add("quadratic-reciprocity",
+    { q: String.raw`Is $5$ a square modulo $19$?`,
+      s: String.raw`Since $5 \equiv 1 \pmod 4$, reciprocity gives $\left(\tfrac5{19}\right) = \left(\tfrac{19}5\right) = \left(\tfrac45\right) = 1$. Yes: $9^2 = 81 = 4\cdot19 + 5$.` },
+    { q: String.raw`Is $2$ a square modulo $17$?`,
+      s: String.raw`$\left(\tfrac2{17}\right) = (-1)^{(289 - 1)/8} = (-1)^{36} = 1$, so yes: $6^2 = 36 = 2\cdot17 + 2$.` }
+  );
+  add("bertrands-postulate",
+    { q: String.raw`Show that $1 + \tfrac12 + \cdots + \tfrac1n$ is never an integer for $n \ge 2$, using Bertrand's Postulate.`,
+      s: String.raw`Bertrand gives a prime $p$ with $\tfrac n2 \lt p \le n$, and $2p \gt n$, so $p$ divides exactly one of the denominators $1, \ldots, n$. Over the common denominator $n!$, every numerator except the one for $\tfrac1p$ contains the factor $p$, so the total numerator is not a multiple of $p$ while $n!$ is. So the sum is not an integer.` },
+    { q: String.raw`Show that the $k$th prime satisfies $p_k \lt 2^k$ for $k \ge 2$.`,
+      s: String.raw`For $k = 2$, $3 \lt 4$. If $p_k \lt 2^k$, Bertrand gives a prime between $p_k$ and $2p_k$, so $p_{k+1} \le 2p_k \lt 2^{k+1}$.` }
+  );
+  add("sum-of-three-squares",
+    { q: String.raw`Is $60$ a sum of three squares?`,
+      s: String.raw`$60 = 4\cdot15$ and $15 = 8 + 7$, so $60$ has the form $4^k(8m + 7)$ and is not a sum of three squares.` },
+    { q: String.raw`Write $7$ as a sum of four squares, and explain why three cannot do it.`,
+      s: String.raw`$7 = 4 + 1 + 1 + 1$. Squares are $0$, $1$ or $4$ modulo $8$, and no three of them add to $7$ modulo $8$, so three squares are not enough.` }
+  );
+  add("terminating-decimals",
+    { q: String.raw`Does $\tfrac{21}{140}$ have a terminating decimal?`,
+      s: String.raw`In lowest terms it is $\tfrac3{20}$, and $20 = 2^2\cdot5$, so yes: $0.15$. The factor $7$ of $140$ cancels, which is why the test uses lowest terms.` },
+    { q: String.raw`How many digits follow the decimal point in $\tfrac1{800}$?`,
+      s: String.raw`$800 = 2^5\cdot5^2$. Multiplying top and bottom by $5^3$ gives $\tfrac{125}{10^5}$, so $\tfrac1{800} = 0.00125$, with $\max(5, 2) = 5$ digits after the point.` }
+  );
+  add("cyclotomic-polynomials",
+    { q: String.raw`Find $\Phi_6(x)$ and $\Phi_{12}(x)$.`,
+      s: String.raw`$x^6 - 1 = \Phi_1\Phi_2\Phi_3\Phi_6 = (x - 1)(x + 1)(x^2 + x + 1)\Phi_6$, so $\Phi_6 = x^2 - x + 1$. Then $x^{12} - 1 = (x^6 - 1)(x^6 + 1)$, and $x^6 + 1 = \Phi_4\Phi_{12} = (x^2 + 1)\Phi_{12}$, so $\Phi_{12} = x^4 - x^2 + 1$.` },
+    { q: String.raw`Factor $x^6 - 1$ completely over the rationals.`,
+      s: String.raw`By the product over divisors of $6$: $(x - 1)(x + 1)(x^2 + x + 1)(x^2 - x + 1)$, the cyclotomic polynomials $\Phi_1$, $\Phi_2$, $\Phi_3$, $\Phi_6$.` }
+  );
+  add("gaussian-integers",
+    { q: String.raw`Compute $(1 + 2i)(2 + i)$ and check that norms multiply.`,
+      s: String.raw`The product is $2 + i + 4i + 2i^2 = 5i$, of norm $25$, and the factors have norms $5$ and $5$.` },
+    { q: String.raw`Use $(2 + i)^2$ to write $25$ as a sum of two nonzero squares.`,
+      s: String.raw`$(2 + i)^2 = 3 + 4i$, whose norm is $N(2 + i)^2 = 25$. So $25 = 3^2 + 4^2$.` }
+  );
+  add("inversion-properties",
+    { q: String.raw`Under inversion about $O = (0, 0)$ with radius $2$, find the image of the circle with center $(5, 0)$ and radius $1$.`,
+      s: String.raw`The circle does not pass through $O$, so its image is a circle, symmetric about the $x$-axis. Its points $(4, 0)$ and $(6, 0)$ go to $(1, 0)$ and $\left(\tfrac23, 0\right)$, the ends of a diameter of the image: center $\left(\tfrac56, 0\right)$, radius $\tfrac16$.` },
+    { q: String.raw`Two circles pass through $O$ and are tangent to each other there. What happens to them under inversion about $O$?`,
+      s: String.raw`Each circle through $O$ becomes a line. The circles meet only at $O$, which goes to infinity, so the two lines do not meet: they are parallel, both perpendicular to the common diameter direction at $O$.` }
+  );
 })();
