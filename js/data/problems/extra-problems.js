@@ -796,4 +796,118 @@
     { q: String.raw`For how many positive integers $n$ does $n + 4$ divide $n^2 + 50$?`,
       s: String.raw`Replace $n$ by $-4$: $n^2 + 50 \equiv 66$, so $n + 4$ must be a divisor of $66$ that is at least $5$: $6, 11, 22, 33, 66$. That gives $5$ values, $n = 2, 7, 18, 29, 62$.` }
   );
+  add("cauchy-functional-equations",
+    { q: String.raw`A continuous $f : \mathbb R \to \mathbb R$ satisfies $f(x + y) = f(x) + f(y)$ and $f(3) = 12$. Find $f(7)$.`,
+      s: String.raw`A continuous additive function is linear, $f(x) = cx$, and $3c = 12$ gives $c = 4$. So $f(7) = 28$.` },
+    { q: String.raw`A continuous $f$ on the positive reals satisfies $f(xy) = f(x) + f(y)$ and $f(8) = 6$. Find $f(2)$ and $f\left(\tfrac14\right)$.`,
+      s: String.raw`Such a function is a multiple of a logarithm, $f(x) = c\log_2x$, and $f(8) = 3c = 6$ gives $c = 2$. So $f(2) = 2$ and $f\left(\tfrac14\right) = 2\cdot(-2) = -4$.` }
+  );
+  add("descartes-rule-signs",
+    { q: String.raw`Count the sign changes in $P(x) = x^4 + 2x^3 - x - 1$ and in $P(-x)$. What do they say about its positive and negative roots?`,
+      s: String.raw`The signs $+, +, -, -$ change once, so there is exactly one positive root. For negative roots look at $P(-x) = x^4 - 2x^3 + x - 1$, with signs $+, -, +, -$: three changes, so $3$ or $1$ negative roots.` },
+    { q: String.raw`Show that $x^3 + x + 1$ has no positive root and exactly one negative root.`,
+      s: String.raw`The coefficients $+, +, +$ never change sign, so there is no positive root. $P(-x) = -x^3 - x + 1$ has signs $-, -, +$, one change, so exactly one negative root.` }
+  );
+  add("eisenstein-criterion",
+    { q: String.raw`Which prime makes Eisenstein's criterion work for $x^5 - 6x + 3$, and what does that prove?`,
+      s: String.raw`Take $p = 3$: it divides the lower coefficients $0, 0, 0, -6, 3$, it does not divide the leading $1$, and $9$ does not divide the constant $3$. So the polynomial cannot be written as a product of two rational polynomials of lower degree.` },
+    { q: String.raw`No prime divides the constant term of $x^2 + 1$, so Eisenstein's criterion cannot start. Find a substitution that rescues it.`,
+      s: String.raw`No prime divides the constant $1$, so substitute $x = y + 1$: $(y + 1)^2 + 1 = y^2 + 2y + 2$. With $p = 2$ Eisenstein applies, and a factorization of $x^2 + 1$ would give one of $y^2 + 2y + 2$.` }
+  );
+  add("chebyshev-polynomials",
+    { q: String.raw`Find $T_3(x)$ from the recurrence, and use it to find $\cos3\theta$ when $\cos\theta = \tfrac13$.`,
+      s: String.raw`With $T_0 = 1$, $T_1 = x$: $T_2 = 2x^2 - 1$ and $T_3 = 2x(2x^2 - 1) - x = 4x^3 - 3x$. So $\cos3\theta = \tfrac4{27} - 1 = -\tfrac{23}{27}$.` }
+  );
+  add("cayley-hamilton",
+    { q: String.raw`Let $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$. Check that $A^2 = 4A - 3I$, and use it to find $A^3$.`,
+      s: String.raw`The trace is $4$ and the determinant $3$, so Cayley–Hamilton gives $A^2 = 4A - 3I = \begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix}$, which is the direct square. Then $A^3 = 4A^2 - 3A = \begin{pmatrix} 14 & 13 \\ 13 & 14 \end{pmatrix}$.` },
+    { q: String.raw`A $2\times2$ matrix has trace $5$ and determinant $6$. Express $A^{-1}$ in terms of $A$.`,
+      s: String.raw`Cayley–Hamilton gives $A^2 - 5A + 6I = 0$, that is $A(5I - A) = 6I$. So $A^{-1} = \tfrac16(5I - A)$.` }
+  );
+  add("vandermonde-determinant",
+    { q: String.raw`Evaluate $\det\begin{pmatrix} 1 & 1 & 1 \\ a & b & c \\ a^2 & b^2 & c^2 \end{pmatrix}$ for $a = 1$, $b = 2$, $c = 4$.`,
+      s: String.raw`This is the Vandermonde determinant (transposed, which does not change it): $(b - a)(c - a)(c - b) = 1\cdot3\cdot2 = 6$.` },
+    { q: String.raw`Show that for any numbers $y_1$, $y_2$, $y_3$ there is exactly one polynomial $c_0 + c_1x + c_2x^2$ with values $y_1, y_2, y_3$ at $x = 1, 2, 3$.`,
+      s: String.raw`The conditions are a linear system in $c_0, c_1, c_2$ whose matrix has rows $(1, x_i, x_i^2)$, a Vandermonde matrix with determinant $(2 - 1)(3 - 1)(3 - 2) = 2 \ne 0$. A nonzero determinant means exactly one solution.` }
+  );
+  add("pairwise-sum-product",
+    { q: String.raw`The roots of $t^3 - 3t^2 + 5t - 7$ are $x$, $y$, $z$. Find $(x + y)(y + z)(z + x)$.`,
+      s: String.raw`By Vieta, $x + y + z = 3$, $xy + yz + zx = 5$ and $xyz = 7$, so the product is $3\cdot5 - 7 = 8$.` },
+    { q: String.raw`Show that if $a + b + c = 0$, then $(a + b)(b + c)(c + a) = -abc$.`,
+      s: String.raw`The identity gives $(a + b + c)(ab + bc + ca) - abc = 0 - abc$. Directly: $a + b = -c$ and so on, so the product is $(-c)(-a)(-b)$.` }
+  );
+  add("antisymmetric-factorization",
+    { q: String.raw`Evaluate $a^2(b - c) + b^2(c - a) + c^2(a - b)$ at $a = 1$, $b = 2$, $c = 3$ with the factorization, and check directly.`,
+      s: String.raw`The factored form gives $-(1 - 2)(2 - 3)(3 - 1) = -2$. Directly: $1\cdot(-1) + 4\cdot2 + 9\cdot(-1) = -2$.` },
+    { q: String.raw`Write $a^3(b - c) + b^3(c - a) + c^3(a - b)$ as a product of four linear factors.`,
+      s: String.raw`It vanishes when any two variables are equal, so $(a - b)(b - c)(c - a)$ divides it, leaving a symmetric factor of degree $1$, a multiple of $a + b + c$. Comparing the coefficient of $a^3b$ gives $-(a - b)(b - c)(c - a)(a + b + c)$. Check at $a, b, c = 0, 1, 2$: $0 + 1\cdot(2) + 8\cdot(-1) = -6 = -(-1)(-1)(2)(3)$.` }
+  );
+  add("factorial-telescoping",
+    { q: String.raw`Show that $1\cdot1! + 2\cdot2! + \cdots + n\cdot n!$ is always one less than a factorial, and compute it for $n = 6$.`,
+      s: String.raw`Write $k\cdot k! = (k + 1)! - k!$. The sum telescopes to $(n + 1)! - 1$, which for $n = 6$ is $7! - 1 = 5039$.` }
+  );
+  add("generalized-binomial-series",
+    { q: String.raw`Find the coefficient of $x^3$ in $\dfrac1{(1 - x)^4}$.`,
+      s: String.raw`The series gives $\binom{3 + 4 - 1}{4 - 1} = \binom63 = 20$. Counting check: it is the number of ways to write $3$ as an ordered sum of four nonnegative integers.` },
+    { q: String.raw`Use the first three terms of $(1 + x)^{-1/2}$ to estimate $\tfrac1{\sqrt{1.1}}$.`,
+      s: String.raw`$\binom{-1/2}1 = -\tfrac12$ and $\binom{-1/2}2 = \tfrac{(-1/2)(-3/2)}2 = \tfrac38$, so $(1 + x)^{-1/2} \approx 1 - \tfrac x2 + \tfrac{3x^2}8$. At $x = 0.1$ that is $1 - 0.05 + 0.00375 = 0.95375$; the true value is $0.95346$.` }
+  );
+  add("nesbitt-inequality",
+    { q: String.raw`Prove Nesbitt's Inequality by adding $1$ to each fraction.`,
+      s: String.raw`With $S = a + b + c$, each fraction plus $1$ is $\tfrac{S}{b + c}$ and so on, so the sum plus $3$ is $S\left(\tfrac1{b + c} + \tfrac1{c + a} + \tfrac1{a + b}\right)$. The three denominators add to $2S$, and AM-HM gives $\left(\sum(b + c)\right)\left(\sum\tfrac1{b + c}\right) \ge 9$, so the bracket is at least $\tfrac9{2S}$. The sum plus $3$ is at least $\tfrac92$, so the sum is at least $\tfrac32$.` },
+    { q: String.raw`If $a$, $b$, $c$ are the sides of a triangle, show that $\dfrac a{b + c} + \dfrac b{c + a} + \dfrac c{a + b} \lt 2$.`,
+      s: String.raw`The triangle inequality $a \lt b + c$ gives $a + b + c \lt 2(b + c)$, so $\tfrac a{b + c} \lt \tfrac{2a}{a + b + c}$, and likewise for the others. Adding, the sum is less than $\tfrac{2(a + b + c)}{a + b + c} = 2$. So for triangles the sum lies in $\left[\tfrac32, 2\right)$.` }
+  );
+  add("schurs-inequality",
+    { q: String.raw`Find every equality case of Schur's Inequality with $t = 1$, and check one with two equal variables and the third zero.`,
+      s: String.raw`Equality holds when $x = y = z$, or when two variables are equal and the third is $0$. At $(1, 1, 0)$: $1 + 1 + 0 + 0 = 2$ on the left and $1\cdot1\cdot2 + 0 + 0 = 2$ on the right.` },
+    { q: String.raw`With $p = x + y + z$, $q = xy + yz + zx$ and $r = xyz$, show that the $t = 1$ case says $p^3 - 4pq + 9r \ge 0$.`,
+      s: String.raw`The power sum is $x^3 + y^3 + z^3 = p^3 - 3pq + 3r$, and the right side is $xy(x + y) + yz(y + z) + zx(z + x) = pq - 3r$. So the inequality reads $p^3 - 3pq + 3r + 3r \ge pq - 3r$, that is $p^3 - 4pq + 9r \ge 0$.` }
+  );
+  add("muirheads-inequality",
+    { q: String.raw`Prove that $2(x^3 + y^3 + z^3) \ge x^2y + x^2z + y^2x + y^2z + z^2x + z^2y$ for positive reals.`,
+      s: String.raw`The exponent triple $(3, 0, 0)$ majorizes $(2, 1, 0)$: $3 \ge 2$, $3 + 0 \ge 2 + 1$, and the totals agree. The symmetric sum of $x^3$ over the six orderings is $2(x^3 + y^3 + z^3)$, and that of $x^2y$ is the six terms on the right, so Muirhead gives the inequality.` },
+    { q: String.raw`For positive reals, which is larger: the symmetric sum of $x^3y$ or the symmetric sum of $x^2y^2$?`,
+      s: String.raw`$(3, 1, 0)$ majorizes $(2, 2, 0)$, since $3 \ge 2$ and $3 + 1 \ge 2 + 2$, so the sum of $x^3y$ is at least the sum of $x^2y^2$. With two variables this is $x^3y + xy^3 \ge 2x^2y^2$, which is $xy(x - y)^2 \ge 0$.` }
+  );
+  add("holders-inequality",
+    { q: String.raw`Positive reals satisfy $a + b = 2$. Use Hölder's Inequality to find the least value of $a^3 + b^3$.`,
+      s: String.raw`Hölder with three factors gives $(a^3 + b^3)(1 + 1)(1 + 1) \ge (a + b)^3 = 8$, so $a^3 + b^3 \ge 2$, with equality at $a = b = 1$.` },
+    { q: String.raw`Prove that $(x + y + z)^2\left(\tfrac1{x^2} + \tfrac1{y^2} + \tfrac1{z^2}\right) \ge 27$ for positive reals.`,
+      s: String.raw`Apply the three-factor form with $a_i = b_i = x_i$ and $c_i = \tfrac1{x_i^2}$: each $\sqrt[3]{a_ib_ic_i} = 1$, so the product of the three sums is at least $(1 + 1 + 1)^3 = 27$. Equality holds at $x = y = z$.` }
+  );
+  add("weighted-am-gm",
+    { q: String.raw`Show that $a^{1/3}b^{2/3} \le \tfrac{a + 2b}3$ for positive reals.`,
+      s: String.raw`Weighted AM-GM with weights $\tfrac13$ and $\tfrac23$ gives $\tfrac13a + \tfrac23b \ge a^{1/3}b^{2/3}$, with equality at $a = b$.` },
+    { q: String.raw`Find the least value of $x + \dfrac4{x^2}$ for $x \gt 0$.`,
+      s: String.raw`Split $x$ into two halves so the product is constant: $\tfrac x2 + \tfrac x2 + \tfrac4{x^2} \ge 3\sqrt[3]{\tfrac x2\cdot\tfrac x2\cdot\tfrac4{x^2}} = 3$. Equality needs $\tfrac x2 = \tfrac4{x^2}$, that is $x = 2$, where the value is $2 + 1 = 3$.` }
+  );
+  add("log-swap-identity",
+    { q: String.raw`Compute $3^{\log_9 16}$.`,
+      s: String.raw`Swap: $3^{\log_916} = 16^{\log_93} = 16^{1/2} = 4$.` },
+    { q: String.raw`Simplify $2^{\log_35} - 5^{\log_32}$.`,
+      s: String.raw`The swap identity says the two terms are equal, so the difference is $0$.` }
+  );
+  add("even-power-sin-cos-sums",
+    { q: String.raw`Find the largest and smallest values of $\sin^6\theta + \cos^6\theta$.`,
+      s: String.raw`It equals $1 - \tfrac34\sin^22\theta$, and $\sin^22\theta$ runs from $0$ to $1$. So the largest value is $1$ (at $\theta = 0$) and the smallest is $\tfrac14$ (at $\theta = 45^\circ$).` },
+    { q: String.raw`Find $\sin^415^\circ + \cos^415^\circ$.`,
+      s: String.raw`With $\sin^230^\circ = \tfrac14$, the identity gives $1 - \tfrac12\cdot\tfrac14 = \tfrac78$.` }
+  );
+  add("triangle-angle-identities",
+    { q: String.raw`Two angles of a triangle have cotangents $1$ and $2$. Use the cotangent identity to find the cotangent of the third angle, and say whether that angle is acute.`,
+      s: String.raw`The identity $\cot A\cot B + \cot B\cot C + \cot C\cot A = 1$ gives $2 + 2\cot C + \cot C = 1$, so $\cot C = -\tfrac13$, and $C$ is obtuse ($C \approx 108.4^\circ$).` },
+    { q: String.raw`Check $\sin2A + \sin2B + \sin2C = 4\sin A\sin B\sin C$ for the $30^\circ$-$60^\circ$-$90^\circ$ triangle.`,
+      s: String.raw`The left side is $\sin60^\circ + \sin120^\circ + \sin180^\circ = \sqrt3$, and the right is $4\cdot\tfrac12\cdot\tfrac{\sqrt3}2\cdot1 = \sqrt3$.` }
+  );
+  add("triangle-square-identities",
+    { q: String.raw`Use the first identity to show that a triangle with $C = 90^\circ$ has $\cos^2A + \cos^2B = 1$.`,
+      s: String.raw`With $\cos C = 0$ both the term $\cos^2C$ and the product term vanish, leaving $\cos^2A + \cos^2B = 1$. This is $\cos^2A + \sin^2A = 1$, since $B = 90^\circ - A$.` },
+    { q: String.raw`A triangle has $\cos A\cos B\cos C = \tfrac18$. Find $\cos^2A + \cos^2B + \cos^2C$.`,
+      s: String.raw`The identity gives $1 - 2\cdot\tfrac18 = \tfrac34$. (The product $\tfrac18$ is its largest possible value, reached only by the equilateral triangle, where each cosine is $\tfrac12$.)` }
+  );
+  add("absolute-value-identities",
+    { q: String.raw`Solve $\lvert3x - 12\rvert = 2\lvert x\rvert$.`,
+      s: String.raw`Factor out the coefficient: $3\lvert x - 4\rvert = 2\lvert x\rvert$, so $x - 4 = \pm\tfrac23x$. The plus sign gives $x = 12$ and the minus sign $x = \tfrac{12}5$. Check: $\lvert24\rvert = 24$ and $\lvert7.2 - 12\rvert = 4.8 = 2\cdot2.4$.` }
+  );
 })();
