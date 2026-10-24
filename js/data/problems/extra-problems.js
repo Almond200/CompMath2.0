@@ -621,8 +621,8 @@
   add("box-tetrahedron",
     { q: String.raw`A tetrahedron has three mutually perpendicular edges of lengths $3$, $4$, $5$ meeting at one vertex. Find its volume.`,
       s: String.raw`It is a corner cut off a $3\times4\times5$ box, so its volume is $\tfrac{3\cdot4\cdot5}6 = 10$.` },
-    { q: String.raw`Find the volume of a regular tetrahedron with edge $6\sqrt2$ by boxing it.`,
-      s: String.raw`Its edges are face diagonals of a cube of side $6$, with the four vertices at alternate corners. Removing the four corner tetrahedra, each $\tfrac{216}6 = 36$, leaves $216 - 144 = 72$, which is $\tfrac{pqr}3$. Check: $\tfrac{a^3}{6\sqrt2} = \tfrac{(6\sqrt2)^3}{6\sqrt2} = 72$.` }
+    { q: String.raw`Find the volume of a regular tetrahedron with edge $3\sqrt2$ by boxing it.`,
+      s: String.raw`Its edges are face diagonals of a cube of side $3$, with the four vertices at alternate corners. Removing the four corner tetrahedra, each $\tfrac{27}6$, leaves $27 - 18 = 9$, which is $\tfrac{pqr}3$. Check: $\tfrac{a^3}{6\sqrt2} = \tfrac{(3\sqrt2)^3}{6\sqrt2} = 9$.` }
   );
   add("scale-one-level",
     { q: String.raw`Join the midpoints of a square of side $4$ to form a new square, and repeat forever. Find the total area of all the squares.`,
@@ -751,5 +751,49 @@
       s: String.raw`Cut the square into four squares of side $\tfrac12$; these are the boxes. Two of the five points share a small square, and two points of a square of side $\tfrac12$ are at most its diagonal, $\tfrac{\sqrt2}2$, apart.` },
     { q: String.raw`Prove that among any $6$ numbers chosen from $1, 2, \ldots, 10$, two are coprime.`,
       s: String.raw`Use the five boxes $\{1, 2\}$, $\{3, 4\}$, $\{5, 6\}$, $\{7, 8\}$, $\{9, 10\}$. Two of the six numbers fall in one box, so they are consecutive integers, and consecutive integers are coprime.` }
+  );
+  add("equal-edge-tetrahedron",
+    { q: String.raw`A tetrahedron has opposite edges equal in pairs, of lengths $\sqrt5$, $\sqrt{10}$ and $\sqrt{13}$. Find the box it sits in, its volume and its circumradius.`,
+      s: String.raw`Solve $p^2 + q^2 = 5$, $q^2 + r^2 = 10$, $r^2 + p^2 = 13$: the three add to $2(p^2 + q^2 + r^2) = 28$, so $p^2 = 4$, $q^2 = 1$, $r^2 = 9$ and the box is $2\times1\times3$. The volume is $\tfrac{pqr}3 = 2$, and the circumsphere is the box's, with radius half the space diagonal, $\tfrac{\sqrt{14}}2$.` },
+    { q: String.raw`Show that all four faces of a tetrahedron with opposite edges equal in pairs are congruent.`,
+      s: String.raw`Each face uses three of the six edges, one from each opposite pair, since two edges of a face always meet and opposite edges never do. So every face has sides $a$, $b$, $c$, and the four faces are congruent by SSS.` }
+  );
+  add("nested-similar",
+    { q: String.raw`An equilateral triangle of side $8$ is joined at its side midpoints to form a smaller triangle, and the process is repeated inside the new triangle forever. Find the total perimeter of all the triangles.`,
+      s: String.raw`Each new triangle has half the side of the last, so perimeters scale by $k = \tfrac12$: $24 + 12 + 6 + \cdots = \tfrac{24}{1 - 1/2} = 48$.` },
+    { q: String.raw`Inside a square of side $4$, a new square is drawn with its vertices on the sides, each a quarter of the way along its side, and the process repeats forever. Find the total area of all the squares.`,
+      s: String.raw`The new side is the hypotenuse of a right triangle with legs $\tfrac14$ and $\tfrac34$ of the old side, so $k^2 = \tfrac1{16} + \tfrac9{16} = \tfrac58$. The total area is $\tfrac{16}{1 - 5/8} = \tfrac{128}3$.` }
+  );
+  add("point-in-equilateral",
+    { q: String.raw`A point inside an equilateral triangle of side $6$ is $1$ and $2$ away from two of its sides. How far is it from the third side?`,
+      s: String.raw`The three distances to the sides add to the height, $3\sqrt3$, so the third distance is $3\sqrt3 - 3 \approx 2.20$.` }
+  );
+  add("floor-sum-range",
+    { q: String.raw`Compute $\lfloor\sqrt1\rfloor + \lfloor\sqrt2\rfloor + \cdots + \lfloor\sqrt{100}\rfloor$.`,
+      s: String.raw`The floor equals $m$ on the block $m^2 \le k \lt (m + 1)^2$, which holds $2m + 1$ integers. So the sum is $\sum_{m=1}^{9}m(2m + 1) + 10 = 2\cdot285 + 45 + 10 = 625$, the last $10$ from $k = 100$ alone.` },
+    { q: String.raw`Compute $\sum_{k=1}^{50}\left\lfloor\tfrac k3\right\rfloor$.`,
+      s: String.raw`The terms are $0, 0$ and then each value $m$ three times, for $k = 3m, 3m + 1, 3m + 2$. Values $1$ to $15$ give $3(1 + \cdots + 15) = 360$, and $k = 48, 49, 50$ give $3\cdot16 = 48$, for a total of $408$.` }
+  );
+  add("log-system",
+    { q: String.raw`Solve $\log_2x + \log_x2 = \tfrac52$.`,
+      s: String.raw`With $t = \log_2x$, $\log_x2 = \tfrac1t$, so $t + \tfrac1t = \tfrac52$ and $2t^2 - 5t + 2 = 0$: $t = 2$ or $\tfrac12$. So $x = 4$ or $x = \sqrt2$.` },
+    { q: String.raw`One number is twice another, and raising each to the power of the other gives the same result. Find the two numbers (both positive).`,
+      s: String.raw`With $y = 2x$ the condition is $x^y = y^x$. Take logarithms: $y\ln x = x\ln y$, that is $2x\ln x = x\ln(2x)$. Dividing by $x$, $2\ln x = \ln2 + \ln x$, so $\ln x = \ln2$: $x = 2$ and $y = 4$. Check: $2^4 = 4^2$.` }
+  );
+  add("infinite-nest",
+    { q: String.raw`Evaluate $\sqrt{12 + \sqrt{12 + \sqrt{12 + \cdots}}}$.`,
+      s: String.raw`The value $x$ satisfies $x = \sqrt{12 + x}$, so $x^2 - x - 12 = 0$ and $x = 4$ or $-3$. A square root is not negative, so $x = 4$. (The nest converges: starting from $\sqrt{12} \approx 3.46$ the layers increase toward $4$.)` }
+  );
+  add("unknown-base",
+    { q: String.raw`For which bases $b$ is $12_b \times 12_b = 144_b$ true?`,
+      s: String.raw`As polynomials, $(b + 2)^2 = b^2 + 4b + 4$, which is $144_b$, so it holds in every base where the digit $4$ is allowed: every $b \ge 5$.` },
+    { q: String.raw`Find the base $b$ in which $54_b + 45_b = 121_b$.`,
+      s: String.raw`The left side is $(5b + 4) + (4b + 5) = 9b + 9$ and the right is $b^2 + 2b + 1$. So $b^2 - 7b - 8 = (b - 8)(b + 1) = 0$ and $b = 8$, which allows the digit $5$. Check: $44 + 37 = 81 = 121_8$.` }
+  );
+  add("poly-divisible-linear",
+    { q: String.raw`Find all integers $n$ for which $\dfrac{n^3 + 1}{n - 1}$ is an integer.`,
+      s: String.raw`Modulo $n - 1$, $n^3 + 1 \equiv 1 + 1 = 2$, so $n - 1$ divides $2$: $n - 1 = \pm1, \pm2$, giving $n = 2, 0, 3, -1$. The values are $9$, $-1$, $14$ and $0$.` },
+    { q: String.raw`For how many positive integers $n$ does $n + 4$ divide $n^2 + 50$?`,
+      s: String.raw`Replace $n$ by $-4$: $n^2 + 50 \equiv 66$, so $n + 4$ must be a divisor of $66$ that is at least $5$: $6, 11, 22, 33, 66$. That gives $5$ values, $n = 2, 7, 18, 29, 62$.` }
   );
 })();
