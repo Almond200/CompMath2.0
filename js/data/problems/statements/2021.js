@@ -214,9 +214,148 @@ Which of the following is equal to $\frac{n}{4}?$
 "2021-fall-amc-10b-9": { s: String.raw`The knights in a certain kingdom come in two colors: $\frac{2}{7}$ of them are red, and the rest are blue. Furthermore, $\frac{1}{6}$ of the knights are magical, and the fraction of red knights who are magical is $2$ times the fraction of blue knights who are magical. What fraction of red knights are magical?
 
 (A) $\frac{2}{9}$  (B) $\frac{3}{13}$  (C) $\frac{7}{27}$  (D) $\frac{2}{7}$  (E) $\frac{1}{3}$`, u: "pdf:fall-2021-amc-10b" },
-"2021-fall-amc-12b-23": { s: String.raw`What is the average number of pairs of consecutive integers in a randomly selected subset of $5$ distinct integers chosen from the set $\{ 1, 2, 3, \ldots, 30\}$? (For example the set $\{1, 17, 18, 19, 30\}$ has $2$ pairs of consecutive integers.)
+"2021-fall-amc-12a-1": { s: String.raw`What is the value of$$ \frac{(2112 - 2021)^2}{169}? $$(A) $7$  (B) $21$  (C) $49$  (D) $64$  (E) $91$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-10": { s: String.raw`The base-nine representation of the number $N$ is $27{,}006{,}000{,}052_9.$ What is the remainder when $N$ is divided by $5?$
 
-(A) $\frac{2}{3}$  (B) $\frac{29}{36}$  (C) $\frac{5}{6}$  (D) $\frac{29}{30}$  (E) $1$`, u: "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_12B_Problems/Problem_23" },
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-11": { s: String.raw`Consider two concentric circles of radius $17$ and $19.$ The larger circle has a chord, half of which lies inside the smaller circle. What is the length of the chord in the larger circle?
+
+(A) $12\sqrt{2}$  (B) $10\sqrt{3}$  (C) $\sqrt{17 \cdot 19}$  (D) $18$  (E) $8\sqrt{6}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-12": { s: String.raw`What is the number of terms with rational coefficients among the $1001$ terms in the expansion of$$ \left(x\sqrt[3]{2} + y\sqrt{3}\right)^{1000}? $$(A) $0$  (B) $166$  (C) $167$  (D) $500$  (E) $501$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-13": { s: String.raw`The angle bisector of the acute angle formed at the origin by the graphs of the lines $y = x$ and $y = 3x$ has equation $y = kx.$ What is $k?$
+
+(A) $\dfrac{1 + \sqrt{5}}{2}$  (B) $\dfrac{1 + \sqrt{7}}{2}$  (C) $\dfrac{2 + \sqrt{3}}{2}$  (D) $2$  (E) $\dfrac{2 + \sqrt{5}}{2}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-14": { s: String.raw`In the figure, equilateral hexagon $ABCDEF$ has three nonadjacent acute interior angles that each measure $30^\circ.$ The enclosed area of the hexagon is $6\sqrt{3}.$ What is the perimeter of the hexagon?
+
+@@fig:amc12/2021C/14.svg@@
+
+(A) $4$  (B) $4\sqrt{3}$  (C) $12$  (D) $18$  (E) $12\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-15": { s: String.raw`Recall that the conjugate of the complex number $w = a + bi,$ where $a$ and $b$ are real numbers and $i = \sqrt{-1},$ is the complex number $\overline{w} = a - bi.$ For any complex number $z,$ let $f(z) = 4i\overline{z}.$ The polynomial$$ P(z) = z^4 + 4z^3 + 3z^2 + 2z + 1 $$has four complex roots: $z_1,$ $z_2,$ $z_3,$ and $z_4.$ Let$$Q(z) = z^4 + Az^3 + Bz^2 + Cz + D$$be the polynomial whose roots are $f(z_1),$ $f(z_2),$ $f(z_3),$ and $f(z_4),$ where the coefficients $A,$ $B,$ $C,$ and $D$ are complex numbers. What is $B + D?$
+
+(A) $-304$  (B) $-208$  (C) $12i$  (D) $208$  (E) $304$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-16": { s: String.raw`An organization has $30$ employees, $20$ of whom have a brand A computer while the other $10$ have a brand B computer. For security, the computers can only be connected to each other and only by cables. The cables can only connect a brand A computer to a brand B computer. Employees can communicate with each other if their computers are directly connected by a cable or by relaying messages through a series of connected computers. Initially, no computer is connected to any other. A technician arbitrarily selects one computer of each brand and installs a cable between them, provided there is not already a cable between that pair. The technician stops once every employee can communicate with each other. What is the maximum possible number of cables used?
+
+(A) $190$  (B) $191$  (C) $192$  (D) $195$  (E) $196$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-17": { s: String.raw`For how many ordered pairs $(b, c)$ of positive integers does neither $x^2 + bx + c = 0$ nor $x^2 + cx + b = 0$ have two distinct real solutions?
+
+(A) $4$  (B) $6$  (C) $8$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-18": { s: String.raw`Each of $20$ balls is tossed independently and at random into one of $5$ bins. Let $p$ be the probability that some bin ends up with $3$ balls, another with $5$ balls, and the other three with $4$ balls each. Let $q$ be the probability that every bin ends up with $4$ balls. What is $\dfrac{p}{q}?$
+
+(A) $1$  (B) $4$  (C) $8$  (D) $12$  (E) $16$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-19": { s: String.raw`Let $x$ be the least real number greater than $1$ such that $\sin(x) = \sin(x^2),$ where the arguments are in degrees. What is $x$ rounded up to the closest integer?
+
+(A) $10$  (B) $13$  (C) $14$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-2": { s: String.raw`Menkara has a $4 \times 6$ index card. If she shortens the length of one side of this card by $1$ inch, the card would have area $18$ square inches. What would the area of the card be in square inches if instead she shortens the length of the other side by $1$ inch?
+
+(A) $16$  (B) $17$  (C) $18$  (D) $19$  (E) $20$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-20": { s: String.raw`For each positive integer $n,$ let $f_1(n)$ be twice the number of positive integer divisors of $n,$ and for $j \ge 2,$ let $f_j(n) = f_1(f_{j-1}(n)).$ For how many values of $n \le 50$ is $f_{50}(n) = 12?$
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-21": { s: String.raw`Let $ABCD$ be an isosceles trapezoid with $\overline{BC} \parallel \overline{AD}$ and $AB = CD.$ Points $X$ and $Y$ lie on diagonal $\overline{AC}$ with $X$ between $A$ and $Y,$ as shown in the figure. Suppose $\angle AXD = \angle BYC = 90^\circ,$ $AX = 3,$ $XY = 1,$ and $YC = 2.$ What is the area of $ABCD?$
+
+@@fig:amc12/2021C/21.svg@@
+
+(A) $15$  (B) $5\sqrt{11}$  (C) $3\sqrt{35}$  (D) $18$  (E) $7\sqrt{7}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-22": { s: String.raw`Azar and Carl play a game of tic-tac-toe. Azar places an $X$ in one of the boxes in a $3$-by-$3$ array of boxes, then Carl places an $O$ in one of the remaining boxes. After that, Azar places an $X$ in one of the remaining boxes, and so on until all $9$ boxes are filled or one of the players has $3$ of their symbols in a row — horizontal, vertical, or diagonal — whichever comes first, in which case that player wins the game. Suppose the players make their moves at random, rather than trying to follow a rational strategy, and that Carl wins the game when he places his third $O.$ How many ways can the board look after the game is over?
+
+(A) $36$  (B) $112$  (C) $120$  (D) $148$  (E) $160$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-23": { s: String.raw`A quadratic polynomial with real coefficients and leading coefficient $1$ is called disrespectful if the equation $p(p(x)) = 0$ is satisfied by exactly three real numbers. Among all the disrespectful quadratic polynomials, there is a unique such polynomial $\tilde{p}(x)$ for which the sum of the roots is maximized. What is $\tilde{p}(1)?$
+
+(A) $\dfrac{5}{16}$  (B) $\dfrac{1}{2}$  (C) $\dfrac{5}{8}$  (D) $1$  (E) $\dfrac{9}{8}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-24": { s: String.raw`Convex quadrilateral $ABCD$ has $AB = 18,$ $\angle A = 60^\circ,$ and $\overline{AB} \parallel \overline{CD}.$ In some order, the lengths of the four sides form an arithmetic progression, and side $AB$ is a side of maximum length. The length of another side is $a.$ What is the sum of all possible values of $a?$
+
+(A) $24$  (B) $42$  (C) $60$  (D) $66$  (E) $84$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-25": { s: String.raw`Let $m \ge 5$ be an odd integer, and let $D(m)$ denote the number of quadruples $(a_1, a_2, a_3, a_4)$ of distinct integers with $1 \le a_i \le m$ for all $i$ such that $m$ divides $a_1 + a_2 + a_3 + a_4.$ There is a polynomial$$ q(x) = c_3x^3 + c_2x^2 + c_1x + c_0 $$such that $D(m) = q(m)$ for all odd integers $m \ge 5.$ What is $c_1?$
+
+(A) $-6$  (B) $-1$  (C) $4$  (D) $6$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-3": { s: String.raw`Mr. Lopez has a choice of two routes to get to work. Route A is $6$ miles long, and his average speed along this route is $30$ miles per hour. Route B is $5$ miles long, and his average speed along this route is $40$ miles per hour, except for a $\tfrac{1}{2}$-mile stretch in a school zone where his average speed is $20$ miles per hour. By how many minutes is Route B quicker than Route A?
+
+(A) $2 \tfrac{3}{4}$  (B) $3 \tfrac{3}{4}$  (C) $4 \tfrac{1}{2}$  (D) $5 \tfrac{1}{2}$  (E) $6 \tfrac{3}{4}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-4": { s: String.raw`The six-digit number $\underline{2}\,\underline{0}\,\underline{2}\,\underline{1}\,\underline{0}\,\underline{A}$ is prime for only one digit $A.$ What is $A?$
+
+(A) $1$  (B) $3$  (C) $5$  (D) $7$  (E) $9$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-5": { s: String.raw`Elmer the emu takes $44$ equal strides to walk between consecutive telephone poles on a rural road. Oscar the ostrich can cover the same distance in $12$ equal leaps. The telephone poles are evenly spaced, and the $41$st pole along this road is exactly one mile ($5280$ feet) from the first pole. How much longer, in feet, is Oscar’s leap than Elmer’s stride?
+
+(A) $6$  (B) $8$  (C) $10$  (D) $11$  (E) $15$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-6": { s: String.raw`As shown in the figure below, point $E$ lies on the opposite half-plane determined by line $CD$ from point $A$ so that $\angle CDE = 110^\circ.$ Point $F$ lies on $\overline{AD}$ so that $DE = DF,$ and $ABCD$ is a square. What is the degree measure of $\angle AFE?$
+
+@@fig:amc12/2021C/6.svg@@
+
+(A) $160$  (B) $164$  (C) $166$  (D) $170$  (E) $174$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-7": { s: String.raw`A school has $100$ students and $5$ teachers. In the first period, each student is taking one class, and each teacher is teaching one class. The enrollments in the classes are $50,$ $20,$ $20,$ $5,$ and $5.$ Let $t$ be the average value obtained if a teacher is picked at random and the number of students in their class is noted. Let $s$ be the average value obtained if a student was picked at random and the number of students in their class, including the student, is noted. What is $t - s?$
+
+(A) $-18.5$  (B) $-13.5$  (C) $0$  (D) $13.5$  (E) $18.5$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-8": { s: String.raw`Let $M$ be the least common multiple of all the integers $10$ through $30,$ inclusive. Let $N$ be the least common multiple of $M,$ $32,$ $33,$ $34,$ $35,$ $36,$ $37,$ $38,$ $39,$ and $40.$ What is the value of $\dfrac{N}{M}?$
+
+(A) $1$  (B) $2$  (C) $37$  (D) $74$  (E) $2886$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12a-9": { s: String.raw`A right rectangular prism whose surface area and volume are numerically equal has edge lengths $\log_2 x,$ $\log_3 x,$ and $\log_4 x.$ What is $x?$
+
+(A) $2\sqrt{6}$  (B) $6\sqrt{6}$  (C) $24$  (D) $48$  (E) $576$`, u: "https://live.poshenloh.com/past-contests/amc12/2021C" },
+"2021-fall-amc-12b-1": { s: String.raw`What is the value of$$1234 + 2341 + 3412 + 4123?$$(A) $10{,}000$  (B) $10{,}010$  (C) $10{,}110$  (D) $11{,}000$  (E) $11{,}110$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-10": { s: String.raw`What is the sum of all possible values of $t$ between $0$ and $360$ such that the triangle in the coordinate plane whose vertices are $(\cos 40^\circ, \sin 40^\circ),$ $(\cos 60^\circ, \sin 60^\circ),$ and $\ \ (\cos t^\circ, \sin t^\circ)$ is isosceles?
+
+(A) $100$  (B) $150$  (C) $330$  (D) $360$  (E) $380$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-11": { s: String.raw`Una rolls $6$ standard $6$-sided dice simultaneously and calculates the product of the $6$ numbers obtained. What is the probability that the product is divisible by $4?$
+
+(A) $\dfrac{3}{4}$  (B) $\dfrac{57}{64}$  (C) $\dfrac{59}{64}$  (D) $\dfrac{187}{192}$  (E) $\dfrac{63}{64}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-12": { s: String.raw`For $n$ a positive integer, let $f(n)$ be the quotient obtained when the sum of all positive divisors of $n$ is divided by $n.$ For example,$$f(14) = (1 + 2 + 7 + 14) \div 14 = \dfrac{12}{7}.$$What is $f(768) - f(384)?$
+
+(A) $\dfrac{1}{768}$  (B) $\dfrac{1}{192}$  (C) $1$  (D) $\dfrac{4}{3}$  (E) $\dfrac{8}{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-13": { s: String.raw`Let $c = \dfrac{2\pi}{11}.$ What is the value of$$\dfrac{\sin 3c \cdot \sin 6c \cdot \sin 9c \cdot \sin 12c \cdot \sin 15c}{\sin c \cdot \sin 2c \cdot \sin 3c \cdot \sin 4c \cdot \sin 5c}?$$(A) $-1$  (B) $-\dfrac{\sqrt{11}}{5}$  (C) $\dfrac{\sqrt{11}}{5}$  (D) $\dfrac{10}{11}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-14": { s: String.raw`Suppose that $P(z),$ $Q(z),$ and $R(z)$ are polynomials with real coefficients, having degrees $2,$ $3,$ and $6,$ respectively, and constant terms $1,$ $2,$ and $3,$ respectively. Let $N$ be the number of distinct complex numbers $z$ that satisfy the equation$$P(z) \cdot Q(z) = R(z).$$What is the minimum possible value of $N?$
+
+(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $5$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-15": { s: String.raw`Three identical square sheets of paper each with side length $6$ are stacked on top of each other. The middle sheet is rotated clockwise $30^\circ$ about its center and the top sheet is rotated clockwise $60^\circ$ about its center, resulting in the $24$-sided polygon shown in the figure below. The area of this polygon can be expressed in the form $a - b\sqrt{c},$ where $a,$ $b,$ and $c$ are positive integers, and $c$ is not divisible by the square of any prime. What is $a + b + c?$
+
+@@fig:amc12/2021D/15.svg@@
+
+(A) $75$  (B) $93$  (C) $96$  (D) $129$  (E) $147$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-16": { s: String.raw`Suppose $a,$ $b,$ $c$ are positive integers such that$$a + b + c = 23$$and$$\gcd(a, b) + \gcd(b, c) + \gcd(c, a) = 9.$$What is the sum of all possible distinct values of $a^2 + b^2 + c^2?$
+
+(A) $259$  (B) $438$  (C) $516$  (D) $625$  (E) $687$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-17": { s: String.raw`A bug starts at a vertex of a grid made of equilateral triangles of side length $1.$ At each step the bug moves in one of the $6$ possible directions along the grid lines randomly and independently with equal probability. What is the probability that after $5$ moves the bug never will have been more than $1$ unit away from the starting position?
+
+(A) $\dfrac{13}{108}$  (B) $\dfrac{7}{54}$  (C) $\dfrac{29}{216}$  (D) $\dfrac{4}{27}$  (E) $\dfrac{1}{16}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-18": { s: String.raw`Set $u_0 = \dfrac{1}{4},$ and for $k \ge 0$ let $u_{k+1}$ be determined by the recurrence$$u_{k+1} = 2u_k - 2u_k^2.$$This sequence tends to a limit; call it $L.$ What is the least value of $k$ such that$$|u_k - L| \le \dfrac{1}{2^{1000}}?$$(A) $10$  (B) $87$  (C) $123$  (D) $329$  (E) $401$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-19": { s: String.raw`Regular polygons with $5,$ $6,$ $7,$ and $8$ sides are inscribed in the same circle. No two of the polygons share a vertex, and no three of their sides intersect at a common point. At how many points inside the circle do two of their sides intersect?
+
+(A) $52$  (B) $56$  (C) $60$  (D) $64$  (E) $68$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-2": { s: String.raw`What is the area of the shaded figure shown below?
+
+@@fig:amc12/2021D/2.svg@@
+
+(A) $4$  (B) $6$  (C) $8$  (D) $10$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-20": { s: String.raw`A cube is constructed from $4$ white unit cubes and $4$ blue unit cubes. How many different ways are there to construct the $2 \times 2 \times 2$ cube using these smaller cubes? (Two constructions are considered the same if one can be rotated to match the other.)
+
+(A) $7$  (B) $8$  (C) $9$  (D) $10$  (E) $11$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-21": { s: String.raw`For real numbers $x,$ let$$P(x) = 1 + \cos(x) + i\sin(x) - \cos(2x) - i\sin(2x) + \cos(3x) + i\sin(3x)$$where $i = \sqrt{-1}.$ For how many values of $x$ with $0 \le x \lt 2\pi$ does$$P(x) = 0?$$(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-22": { s: String.raw`Right triangle $ABC$ has side lengths $BC = 6,$ $AC = 8,$ and $AB = 10.$ A circle centered at $O$ is tangent to line $BC$ at $B$ and passes through $A.$ A circle centered at $P$ is tangent to line $AC$ at $A$ and passes through $B.$ What is $OP?$
+
+(A) $\dfrac{23}{8}$  (B) $\dfrac{29}{10}$  (C) $\dfrac{35}{12}$  (D) $\dfrac{73}{25}$  (E) $3$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-23": { s: String.raw`What is the average number of pairs of consecutive integers in a randomly selected subset of $5$ distinct integers chosen from the set $\{1, 2, 3, \ldots, 30\}?$ (For example the set $\{1, 17, 18, 19, 30\}$ has $2$ pairs of consecutive integers.)
+
+(A) $\dfrac{2}{3}$  (B) $\dfrac{29}{36}$  (C) $\dfrac{5}{6}$  (D) $\dfrac{29}{30}$  (E) $1$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-24": { s: String.raw`Triangle $ABC$ has side lengths $AB = 11,$ $BC = 24,$ and $CA = 20.$ The bisector of $\angle BAC$ intersects $\overline{BC}$ in point $D,$ and intersects the circumcircle of $\triangle ABC$ in point $E \neq A.$ The circumcircle of $\triangle BED$ intersects the line $AB$ in points $B$ and $F \neq B.$ What is $CF?$
+
+(A) $28$  (B) $20\sqrt{2}$  (C) $30$  (D) $32$  (E) $20\sqrt{3}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-25": { s: String.raw`For $n$ a positive integer, let $R(n)$ be the sum of the remainders when $n$ is divided by $2,$ $3,$ $4,$ $5,$ $6,$ $7,$ $8,$ $9,$ and $10.$ For example,$$R(15) = 1 + 0 + 3 + 0 + 3 + 1 + 7 + 6 + 5 = 26.$$How many two-digit positive integers $n$ satisfy$$R(n) = R(n + 1)?$$(A) $0$  (B) $1$  (C) $2$  (D) $3$  (E) $4$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-3": { s: String.raw`At noon on a certain day, Minneapolis is $N$ degrees warmer than St. Louis. At $4{:}00$ the temperature in Minneapolis has fallen by $5$ degrees while the temperature in St. Louis has risen by $3$ degrees, at which time the temperatures in the two cities differ by $2$ degrees. What is the product of all possible values of $N?$
+
+(A) $10$  (B) $30$  (C) $60$  (D) $100$  (E) $120$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-4": { s: String.raw`Let $n = 8^{2022}.$ Which of the following is equal to$$\dfrac{n}{4}?$$(A) $4^{1010}$  (B) $2^{2022}$  (C) $8^{2018}$  (D) $4^{3031}$  (E) $4^{3032}$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-5": { s: String.raw`Call a fraction $\dfrac{a}{b},$ not necessarily in the simplest form, special if $a$ and $b$ are positive integers whose sum is $15.$ How many distinct integers can be written as the sum of two, not necessarily different, special fractions?
+
+(A) $9$  (B) $10$  (C) $11$  (D) $12$  (E) $13$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-6": { s: String.raw`The greatest prime number that is a divisor of $16{,}384$ is $2$ because $16{,}384 = 2^{14}.$ What is the sum of the digits of the greatest prime number that is a divisor of $16{,}383?$
+
+(A) $3$  (B) $7$  (C) $10$  (D) $16$  (E) $22$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-7": { s: String.raw`Which of the following conditions is sufficient to guarantee that integers $x,$ $y,$ and $z$ satisfy the equation$$x(x - y) + y(y - z) + z(z - x) = 1?$$(A) $x \gt y$ and $y = z$  (B) $x = y - 1$ and $y = z - 1$  (C) $x = z + 1$ and $y = x + 1$  (D) $x = z$ and $y - 1 = x$  (E) $x + y + z = 1$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-8": { s: String.raw`The product of the lengths of the two congruent sides of an obtuse isosceles triangle is equal to the product of the base and twice the triangle’s height to the base. What is the measure, in degrees, of the vertex angle of this triangle?
+
+(A) $105$  (B) $120$  (C) $135$  (D) $150$  (E) $165$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
+"2021-fall-amc-12b-9": { s: String.raw`Triangle $ABC$ is equilateral with side length $6.$ Suppose that $O$ is the center of the inscribed circle of this triangle. What is the area of the circle passing through $A,$ $O,$ and $C?$
+
+(A) $9\pi$  (B) $12\pi$  (C) $18\pi$  (D) $24\pi$  (E) $27\pi$`, u: "https://live.poshenloh.com/past-contests/amc12/2021D" },
 "2021-spring-amc-10a-1": { s: String.raw`What is the value of$$(2^2-2)-(3^2-3)+(4^2-4)?$$(A) $1$  (B) $2$  (C) $5$  (D) $8$  (E) $12$`, u: "https://live.poshenloh.com/past-contests/amc10/2021A" },
 "2021-spring-amc-10a-10": { s: String.raw`Which of the following is equivalent to$$(2+3)(2^2+3^2) \cdot(2^4+3^4)(2^8+3^8) \cdot(2^{16}+3^{16})(2^{32}+3^{32}) \cdot(2^{64}+3^{64})?$$(A) $3^{127} + 2^{127}$
 (B) $3^{127} + 2^{127} + 2 \cdot 3^{63}$$+ 3 \cdot 2^{63}$
