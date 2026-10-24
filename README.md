@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2013 AMC 12B, ten problems (2026-10-24).** #8, 9, 11 ($\sqrt{78}$ then $\sqrt{102}$), 12 (an Euler trail; $4+12=16$), 13 ($240^\circ$), 16 (the star's perimeter is $\tfrac1{\cos72^\circ}$ for every such pentagon; with a figure), 18 (period $5$), 20 ($\sin x\cos x=\sin x+\cos x$, $2-2\sqrt2$), 21 ($810$), 22 ($m^7n^6$ an eighth power, $m+n=12$). All checked by script.
 - **Step D: 2013 AMC 12A finished (2026-10-24).** #14, 15 ($204$), 16 (mean of $B$ and $C$ below $59\tfrac13$), 20 (sets inside $10$ consecutive places fail: $3\cdot285=855$), 21, 22 (no-carry palindromes, $\tfrac{11}{30}$), 23 (the swept region read radially from $P$: $\tfrac{10\pi+6}3$, with a figure), 24 (ten failing length classes, $\tfrac{223}{286}$), 25 ($b^2\gt a-1$, $399$); 2013 AMC 12B #3 copied from 10B #4. All checked by script.
 - **Step D: 2014 AMC 12B finished, 2013 AMC 12A begun (2026-10-24).** 2014 AMC 12B #20, 21 ($\cos t=\tfrac12$, $BE=2-\sqrt3$), 23 ($\binom{-3}k$ modulo $2017$: $1024$), 24 (three Ptolemy relations, $x^3-109x-420=0$, $\tfrac{385}6$; with a figure), 25 ($\cos a\cos b=1$, $1080\pi$); 2013 AMC 12A #7, 8, 10, 11, 12. All checked by script.
 - **Step D: 2014 AMC 12A finished, 2014 AMC 12B begun (2026-10-24).** 2014 AMC 12A #25 ($u=4x+3y$, $v=3x-4y$ turn the parabola into $u^2=625-50v$; $40$ points); 2014 AMC 12B #6, 7, 9, 12, 13 ($a=\varphi$, $b=\tfrac{3+\sqrt5}2$), 14, 15, 16, 17. All checked by script.

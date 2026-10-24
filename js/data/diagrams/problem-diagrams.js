@@ -4829,4 +4829,25 @@
       cap(430, 270, "The square ABCD of side √3 + 1, the point P on AC with AP = √2, and the square after turning 90° counterclockwise about P (dashed)." + MM(ok))
     ]);
   })();
+
+  // 2013 AMC 12B #16: an equiangular pentagon (sides not all equal) and the star formed by extending its sides.
+  PROB["2013-amc-12b-16"] = (() => {
+    // equiangular: side directions turn by 72°; choose sides that close: a + b w + c w^2 + d w^3 + e w^4 = 0
+    const w = k => [Math.cos(rad(72 * k)), Math.sin(rad(72 * k))];
+    const a = 0.24, b = 0.18, c = 0.22;
+    // solve for d, e so the polygon closes
+    const S = add(add(mul(w(0), a), mul(w(1), b)), mul(w(2), c));
+    const det = w(3)[0] * w(4)[1] - w(3)[1] * w(4)[0];
+    const d = (-S[0] * w(4)[1] + S[1] * w(4)[0]) / det, e = (-w(3)[0] * S[1] + w(3)[1] * S[0]) / det;
+    const L = [a, b, c, d, e], V = [[0, 0]];
+    for (let k = 0; k < 4; k++) V.push(add(V[k], mul(w(k), L[k])));
+    const T = V.map((X, k) => lineInt(V[(k + 4) % 5], X, V[(k + 1) % 5], V[(k + 2) % 5]));   // tip beyond side k
+    const ok = L.every(x => x > 0) && Math.abs(dist(V[4], V[0]) - e) < 1e-9;
+    const Q = fitQ(T, 18, 430, 270), star = [];
+    for (let k = 0; k < 5; k++) star.push(V[k], T[k]);
+    return wrap(430, 270, [
+      poly(star.map(Q), ACC, 1.6, ACCS), poly(V.map(Q), DIM, 2),
+      cap(430, 270, "An equiangular pentagon (all angles 108°, sides not all equal) and the five-pointed star made by extending its sides (blue)." + MM(ok))
+    ]);
+  })();
 })();
