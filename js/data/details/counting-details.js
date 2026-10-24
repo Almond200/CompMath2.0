@@ -1188,7 +1188,7 @@ The players alternate strictly, the success probabilities are the same every rou
 ## Why it works
 The geometric series over rounds sums to the formula, or equivalently by self-similarity: the first player wins now, with probability $p$, or both miss, with probability $(1 - p)(1 - q)$, and the game restarts identically. So $P = p + (1 - p)(1 - q)P$.
 
-The series version is $p + (1 - p)(1 - q)p + \cdots$, a geometric series with ratio $(1 - p)(1 - q)$.
+The series version is $p + (1 - p)(1 - q)p + \cdots$, a geometric series with ratio $(1 - p)(1 - q)$, whose sum is $\frac{p}{1 - (1 - p)(1 - q)} = \frac{p}{p + q - pq}$. With $q = p$ this is $\frac{p}{2p - p^2} = \frac1{2 - p}$, which is more than $\frac12$ because $2 - p \lt 2$.
 
 ## Useful observations
 - The first round is conditioned on rather than the series summed: either the first player succeeds immediately, or both fail and the position resets exactly. Solving takes one line and generalizes to variants the closed form does not cover.
@@ -1693,7 +1693,12 @@ Direct AMC questions ask for the most pieces from a few straight cuts, such as $
 The points are independent and uniform on $[0, 1]$. The first discrete form is for $k$ distinct values drawn from $\{1, \ldots, n\}$ without replacement; with replacement the draws are independent and the second form applies. Using the wrong one is the usual slip: for $n = 6$ and $k = 3$ they give $\frac{21}{4}$ and $\frac{119}{24}$.
 
 ## Why it works
-By symmetry, $n$ uniform points plus the two interval endpoints split $[0, 1]$ into $n + 1$ exchangeable gaps, so each gap expects $\frac{1}{n+1}$; the $k$th smallest point sits after $k$ gaps, at $E[X_{(k)}] = \frac{k}{n+1}$. Directly, $P(\max \le x) = x^n$ integrates to $E[\max] = \frac{n}{n+1}$. With replacement on $\{1, \ldots, n\}$ the same idea gives $P(\max \le m) = \left(\frac mn\right)^k$, so $E[\max] = \sum_{m=1}^{n}P(\max \ge m) = n - \sum_{j=1}^{n-1}\left(\frac jn\right)^k$.
+Step 1, the gaps. Put $n + 1$ independent uniform points on a circle of length $1$ and cut it open at the first one. The other $n$ points are then $n$ independent uniform points on $[0, 1]$, and the $n + 1$ arcs of the circle become the $n + 1$ gaps. Rotating the circle permutes the arcs without changing the distribution, so the gaps are exchangeable, each expects $\frac1{n+1}$, and the $k$th smallest point, after $k$ gaps, has $E[X_{(k)}] = \frac{k}{n+1}$. The range is $\frac{n}{n+1} - \frac1{n+1}$.
+
+Step 2, the distribution functions. The maximum is at most $x$ exactly when every point is, which has probability $x^n$ by independence, and the minimum is at least $x$ with probability $(1 - x)^n$.
+
+Step 3, discrete draws. With replacement, $P(\max \le m) = \left(\frac mn\right)^k$, so the [[tail-sum-expectation|tail sum]] gives $E[\max] = \sum_{m=1}^{n}P(\max \ge m) = n - \sum_{j=1}^{n-1}\left(\frac jn\right)^k$. Without replacement, $P(\max = m) = \binom{m-1}{k-1}\big/\binom nk$, and with $m\binom{m-1}{k-1} = k\binom mk$ and the [[hockey-stick|hockey stick]],
+$$E[\max] = \frac{k}{\binom nk}\sum_{m=k}^{n}\binom mk = \frac{k\binom{n+1}{k+1}}{\binom nk} = \frac{k(n + 1)}{k + 1}.$$
 
 ## Useful observations
 - The distribution-function route ($P(\max \le x) = x^n$, $P(\min \ge x) = (1 - x)^n$) answers probability questions; the gap-symmetry route answers expectation questions instantly.
@@ -2221,9 +2226,11 @@ An olympiad result about families of sets, recognized by a condition that every 
 An antichain is a family of subsets with none containing another. The bound is for families of subsets of one $n$-element set, with no restriction on sizes.
 
 ## Why it works
-Partition the subset lattice of $\{1, \ldots, n\}$ into $\binom{n}{\lfloor n/2\rfloor}$ symmetric chains; an antichain meets each chain at most once, capping its size, and the middle layer attains it.
+Count maximal chains $\varnothing \subset \{x_1\} \subset \{x_1, x_2\} \subset \cdots$, one for each of the $n!$ orderings of the set. A set of size $k$ lies on exactly $k!(n - k)!$ of them: its own elements first, in any order, then the rest. A chain can pass through at most one member of an antichain, so
+$$\sum_A \lvert A\rvert!\,(n - \lvert A\rvert)! \le n!,$$
+which, divided by $n!$, is the LYM inequality.
 
-The LYM inequality over any antichain gives the bound directly, since $\binom{n}{\lvert A\rvert} \le \binom{n}{\lfloor n/2\rfloor}$ for every size, so each term is at least $\binom{n}{\lfloor n/2\rfloor}^{-1}$.
+Since $\binom{n}{\lvert A\rvert} \le \binom{n}{\lfloor n/2\rfloor}$ for every size, each term is at least $\binom{n}{\lfloor n/2\rfloor}^{-1}$, so the antichain has at most $\binom{n}{\lfloor n/2\rfloor}$ members, and the middle layer attains it.
 
 ## Useful observations
 - The construction is immediate: every subset of size $\lfloor n/2\rfloor$ is taken. Proving that no larger family exists is the real content.

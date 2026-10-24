@@ -2166,7 +2166,15 @@ Object.assign(window.MATH_DETAILS, {
 The coefficients are real, roots are counted with multiplicity, and zero coefficients are skipped. A root at $0$ is removed first by factoring out a power of $x$.
 
 ## Why it works
-Each positive root forces at least one sign change, since a polynomial with all-positive coefficients has none. A careful induction on factoring out $(x - r)$ shows that roots consume sign changes in pairs-preserving fashion, hence "equal, or less by an even number."
+Let $V(P)$ be the number of sign changes. Assume $P(0) \ne 0$ and the leading coefficient is positive.
+
+Step 1, parity. $V(P)$ is even exactly when the constant term is positive. The number of positive roots, with multiplicity, is even exactly when $P$ has the same sign at $0$ and for large $x$, which is again when the constant term is positive. So the two numbers have the same parity.
+
+Step 2, the lemma: for $r \gt 0$, $V((x - r)Q) \ge V(Q) + 1$. Write $Q = \sum b_ix^i$ with $b_d \gt 0$, so the coefficients of $(x - r)Q$ are $c_i = b_{i-1} - rb_i$. Let $i_1 \gt i_2 \gt \cdots \gt i_V$ be the indices where the sign of $Q$'s coefficients first switches, so $b_{i_k}$ has sign $(-1)^k$ and $b_{i_k + 1}$ is $0$ or of the opposite sign.
+
+Then $c_{i_k + 1} = b_{i_k} - rb_{i_k + 1}$ has the sign $(-1)^k$. Together with $c_{d+1} = b_d \gt 0$ and $c_0 = -rb_0$, of sign $(-1)^{V+1}$, the coefficients $c_{d+1}, c_{i_1 + 1}, \ldots, c_{i_V + 1}, c_0$ alternate in sign, so $(x - r)Q$ has at least $V + 1$ sign changes.
+
+Step 3. Factor $P = (x - r_1)\cdots(x - r_k)Q$ over its $k$ positive roots. The lemma, applied $k$ times, gives $V(P) \ge k$, and by Step 1 the difference is even. For negative roots, the roots of $P(-x)$ are the negatives of those of $P$.
 
 ## Useful observations
 - Sign changes of $P(x)$ are counted for positive roots and sign changes of $P(-x)$ for negative roots, and the complex roots, which come in pairs, fill the gap to the degree.
@@ -2321,9 +2329,12 @@ Common on the AMC and AIME: a term numbered in the thousands, the last digits of
 All hold whenever $A + B + C = 180^\circ$. The tangent identity needs every tangent defined, so no right angle.
 
 ## Why it works
-All spring from $C = 180^\circ - A - B$. For the tangent identity, $\tan(A + B) = \tan(180^\circ - C) = -\tan C$ is expanded and denominators cleared.
+All spring from $C = 180^\circ - A - B$. For the tangent identity, $\tan(A + B) = \tan(180^\circ - C) = -\tan C$ is expanded and denominators cleared. For the cotangents, $\cot C = -\cot(A + B) = \frac{1 - \cot A\cot B}{\cot A + \cot B}$, and clearing the denominator gives $\sum\cot A\cot B = 1$, which holds even with a right angle.
 
-The cosine and sine sums follow from sum-to-product plus half-angle conversions, which is where $r$ and $R$ enter (the cosine sum) and $s$ (the sine sum).
+The sine sum is $\frac{a + b + c}{2R}$ by the Law of Sines. For the cosines, sum-to-product and $\cos C = 1 - 2\sin^2\frac C2$ give
+$$\cos A + \cos B + \cos C = 1 + 2\sin\tfrac C2\left(\cos\tfrac{A - B}2 - \cos\tfrac{A + B}2\right) = 1 + 4\sin\tfrac A2\sin\tfrac B2\sin\tfrac C2.$$
+
+To bring in $r$: the incircle touches $BC$ at distances $r\cot\frac B2$ and $r\cot\frac C2$ from $B$ and $C$, so $a = r\frac{\cos\frac A2}{\sin\frac B2\sin\frac C2}$, and $a = 4R\sin\frac A2\cos\frac A2$ turns this into $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$. So the cosine sum is $1 + \frac rR$. The $\sin 2A$ identity is proved on [[triangle-sin2-sum-ratio|its own card]].
 
 ## Useful observations
 - Two directions: given trigonometric data about a triangle's angles, convert to $r$, $R$, $s$; and given an equation like $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, recognize it as saying the angles sum to $180^\circ$ (used both ways).
@@ -3497,7 +3508,9 @@ The trigonometric form uses $x = \cos\theta$ with $\lvert x\rvert \le 1$; the po
 ## Why it works
 Expanding $\cos n\theta$ with [[angle-addition|angle addition]] always yields a polynomial in $\cos\theta$, since the odd powers of $\sin\theta$ pair up, and that polynomial is $T_n$.
 
-Its recurrence mirrors $\cos(n + 1)\theta = 2\cos\theta\cos n\theta - \cos(n - 1)\theta$. The second kind $U_n$, with $U_n(\cos\theta) = \frac{\sin(n+1)\theta}{\sin\theta}$, obeys the same recurrence.
+Its recurrence mirrors $\cos(n + 1)\theta = 2\cos\theta\cos n\theta - \cos(n - 1)\theta$. The second kind obeys the same recurrence because $\sin(n + 2)\theta + \sin n\theta = 2\cos\theta\sin(n + 1)\theta$. The recurrence also shows that $T_n$ has leading coefficient $2^{n-1}$ for $n \ge 1$. The roots come from $\cos n\theta = 0$, that is $n\theta = \frac{(2k - 1)\pi}2$, and $T_m(T_n(\cos\theta)) = \cos(mn\theta)$ gives the composition rule.
+
+For the minimax fact, put $t = \frac{T_n}{2^{n-1}}$, monic, with $\lvert t\rvert \le \frac1{2^{n-1}}$ on $[-1, 1]$ and the value $\pm\frac1{2^{n-1}}$, alternating in sign, at the $n + 1$ points $\cos\frac{j\pi}n$. If a monic $p$ of degree $n$ had $\lvert p\rvert \lt \frac1{2^{n-1}}$ there, then $t - p$, of degree at most $n - 1$, would alternate in sign at those $n + 1$ points, so it would have $n$ roots and be $0$, which is impossible.
 
 ## Useful observations
 - Two moves. Substituting $x = \cos\theta$ evaluates stubborn polynomials or nested cosine products: the roots $x_k$ give exact values and a product of cosines collapses.
@@ -3856,9 +3869,11 @@ An AIME favorite: a product such as $\prod(r^2 + 1)$ over ugly roots, where one 
 The expressions are symmetric in $\sin^2\theta$ and $\cos^2\theta$, with $\sin^2\theta + \cos^2\theta = 1$.
 
 ## Why it works
-Write $u = \sin^2\theta$ and $v = \cos^2\theta$, so $u + v = 1$. Every symmetric expression in $u$ and $v$ is then a polynomial in the single quantity $uv = \sin^2\theta\cos^2\theta = \frac14\sin^2 2\theta$.
+Write $u = \sin^2\theta$ and $v = \cos^2\theta$, so $u + v = 1$. Every symmetric expression in $u$ and $v$ is then a polynomial in the single quantity $p = uv = \sin^2\theta\cos^2\theta = \frac14\sin^2 2\theta$.
 
-Squaring the Pythagorean identity gives $u^2 + v^2 = (u + v)^2 - 2uv = 1 - 2uv$, the first formula. For the cubes, $u^3 + v^3 = (u + v)^3 - 3uv(u + v) = 1 - 3uv$, the second. Substituting $uv = \frac14\sin^2 2\theta$ gives the forms above.
+Squaring the Pythagorean identity gives $u^2 + v^2 = (u + v)^2 - 2uv = 1 - 2p$, the first formula. For the cubes, $u^3 + v^3 = (u + v)^3 - 3uv(u + v) = 1 - 3p$, the second. For the fourth powers of $u$ and $v$,
+$$u^4 + v^4 = (u^2 + v^2)^2 - 2p^2 = 1 - 4p + 2p^2,$$
+which is $1 - \sin^2 2\theta + \frac18\sin^4 2\theta$. The difference is $u^2 - v^2 = (u - v)(u + v) = \sin^2\theta - \cos^2\theta = -\cos 2\theta$.
 
 ## Useful observations
 - The moment an expression is symmetric in $\sin^2$ and $\cos^2$, expanding stops and $p = uv$ takes over: any even-power symmetric combination collapses to a polynomial in $p$.

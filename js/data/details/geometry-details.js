@@ -1588,6 +1588,8 @@ Each radius is perpendicular to its tangent, so quadrilateral $PAOB$ has right a
 
 Equivalently the exterior-vertex rule gives $\angle P = \frac12(\text{far arc} - \text{near arc})$, and because the two arcs sum to $360^\circ$ that is $180^\circ - \angle AOB$.
 
+The right triangles $OAP$ and $OBP$ share the hypotenuse $OP$ and have legs $OA = OB = r$, so they are congruent: $PA = PB = \sqrt{OP^2 - r^2}$, and $OP$ bisects the angle at $P$, with $\sin\frac{\angle APB}2 = \frac{r}{OP}$. Since $O$ and $P$ are each equidistant from $A$ and $B$, line $OP$ is the perpendicular bisector of $AB$. Half the chord is the altitude of triangle $OAP$ to $OP$, which is $\frac{r \cdot PA}{OP}$.
+
 ## Useful observations
 - Dropping both radii to the tangent points splits $PAOB$ along $OP$ into two congruent right triangles with legs $r$ and the tangent length $\sqrt{OP^2 - r^2}$. One picture yields the angle, the tangent length, and $PA = PB$ together.
 - The center sits on the bisector of $\angle APB$, which pins down the whole configuration.

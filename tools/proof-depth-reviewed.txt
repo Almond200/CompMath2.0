@@ -122,3 +122,13 @@ generalized-binomial-series # convergence and identity by the differential equat
 inscribed-square          # right-triangle forms derived
 clock-angle
 schurs-inequality         # equality, the expanded and s, q, r forms
+two-tangents-angle
+chebyshev-polynomials     # U recurrence, roots, composition, the minimax proof
+triangle-angle-identities # cosine sum via r = 4R sin sin sin, cotangent identity
+even-power-sin-cos-sums
+order-statistics          # circle argument for the gaps, discrete forms derived
+forward-backward-induction
+descartes-rule-signs      # parity and the sign-change lemma proved
+sperners-theorem          # LYM by counting chains
+turn-based-games
+cotangent-rule
