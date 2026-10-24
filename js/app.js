@@ -5616,7 +5616,7 @@
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
   // Bumped by tools/fetch-live-statements.py whenever the statement files change, so a browser that
   // cached an older file loads the new one.
-  const STATEMENTS_V = 18;
+  const STATEMENTS_V = 20;
   const statementLoads = {};
   function loadStatements(year) {
     if (!statementLoads[year]) {

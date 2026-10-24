@@ -37,7 +37,7 @@ def get(url, binary=False):
 
 def contest_key(ref):
     """'2019 AMC 12A, Problem 17' -> ('amc12', '2019A', 17, slug)"""
-    m = re.match(r"(\d{4})\s+(?:Spring\s+)?(AIME II|AIME I|AIME|AMC 10A|AMC 10B|AMC 12A|AMC 12B|AMC 10|AMC 12|AMC 8|AJHSME),\s*Problem\s+(\d+)$", ref)
+    m = re.match(r"(\d{4})\s+(?:Spring\s+|Fall\s+)?(AIME II|AIME I|AIME|AMC 10A|AMC 10B|AMC 12A|AMC 12B|AMC 10|AMC 12|AMC 8|AJHSME),\s*Problem\s+(\d+)$", ref)
     if not m: return None
     year, fam, n = m.group(1), m.group(2), int(m.group(3))
     if fam.startswith("AIME"): c, y = "aime", year + fam[4:].strip()
@@ -45,6 +45,11 @@ def contest_key(ref):
     elif fam in ("AMC 10", "AMC 12"): c, y = fam[:3].lower() + fam[4:6], year   # 2000 and 2001 were single sittings, no A or B
     else: c, y = fam[:3].lower() + fam[4:6], year + fam[-1]
     spring = "spring-" if re.match(r"\d{4}\s+Spring\s", ref) else ""
+    if re.match(r"\d{4}\s+Fall\s", ref):
+        # LIVE files the Fall 2021 AMC 12A and 12B as its 2021 "C" and "D" papers. The Fall AMC 10A and 10B
+        # come from the PDFs in tools/manual_statements.py, so they are left out here.
+        if fam not in ("AMC 12A", "AMC 12B"): return None
+        y, spring = year + ("C" if fam.endswith("A") else "D"), "fall-"
     slug = "%s-%s%s-%d" % (year, spring, re.sub(r"[^a-z0-9]+", "-", fam.lower()).strip("-"), n)
     return c, y, n, slug
 
@@ -110,7 +115,8 @@ def tex(t):
     # A dollar sign for money is written bare before the maths ("$\(1500\)"): make it part of the maths, and
     # escape any other bare dollar sign, so it is never mistaken for a delimiter.
     t = re.sub(r"(?<!\\)\$\s*\\\((.*?)(?<!\\)\\\)", lambda m: "$\\$" + m.group(1).strip() + "$", t, flags=re.S)
-    t = re.sub(r"(?<!\\)\\\((.*?)(?<!\\)\\\)", lambda m: "$" + m.group(1).strip() + "$", t, flags=re.S)
+    # A trailing "\ " (a forced space, 2021 Fall AMC 12B #10) is dropped: stripped to a lone backslash it would escape the closing $.
+    t = re.sub(r"(?<!\\)\\\((.*?)(?<!\\)\\\)", lambda m: "$" + re.sub(r"(?<!\\)\\$", "", m.group(1).strip()).rstrip() + "$", t, flags=re.S)
     t = re.sub(r"(?<!\\)\\\[(.*?)(?<!\\)\\\]", lambda m: "$$" + unwrap_display(m.group(1)) + "$$", t, flags=re.S)
     return t
 
@@ -137,14 +143,11 @@ FIGURE_AS_TEX = {
     "amc10/2025A/19.svg": r"$$\begin{array}{ccccccccc} & & -1 & & \phantom{-}3 & & \phantom{-}1 & & \\[0.6em] & -1 & & \phantom{-}2 & & \phantom{-}4 & & \phantom{-}1 & \\[0.6em] -1 & & \phantom{-}1 & & \phantom{-}6 & & \phantom{-}5 & & \phantom{-}1 \end{array}$$",
 }
 
-# Statements LIVE does not carry, taken from the AoPS Wiki (2021 Fall AMC): written into the year file on every run.
+# Statements LIVE does not carry, taken from the AoPS Wiki (2021 Fall AMC 10B #11): written into the year file on every run.
 MANUAL_STATEMENTS = {
     "2021-fall-amc-10b-11": {"s": r"""A regular hexagon of side length $1$ is inscribed in a circle. Each minor arc of the circle determined by a side of the hexagon is reflected over that side. What is the area of the region bounded by these $6$ reflected arcs?
 
 (A) $\frac{5\sqrt{3}}{2} - \pi$  (B) $3\sqrt{3}-\pi$  (C) $4\sqrt{3}-\frac{3\pi}{2}$  (D) $\pi - \frac{\sqrt{3}}{2}$  (E) $\frac{\pi + \sqrt{3}}{2}$""", "u": "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_10B_Problems/Problem_11"},
-    "2021-fall-amc-12b-23": {"s": r"""What is the average number of pairs of consecutive integers in a randomly selected subset of $5$ distinct integers chosen from the set $\{ 1, 2, 3, \ldots, 30\}$? (For example the set $\{1, 17, 18, 19, 30\}$ has $2$ pairs of consecutive integers.)
-
-(A) $\frac{2}{3}$  (B) $\frac{29}{36}$  (C) $\frac{5}{6}$  (D) $\frac{29}{30}$  (E) $1$""", "u": "https://artofproblemsolving.com/wiki/index.php/2021_Fall_AMC_12B_Problems/Problem_23"},
 }
 
 # The Fall 2021 AMC 10A and 10B problems typed in from the PDFs Stanley supplied (tools/manual_statements.py).
@@ -228,6 +231,13 @@ def discover():
     for l in lacking: print("  lacks:", l)
     return lacking
 
+def existing_year(path):
+    """The statements already written to a year file, as {slug: {s, u}} (read with node, which parses the JS)."""
+    if not os.path.exists(path): return {}
+    import subprocess
+    js = "global.window={};require(%s);console.log(JSON.stringify(window.MATH_STATEMENTS))" % json.dumps(path)
+    return json.loads(subprocess.run(["node", "-e", js], capture_output=True, text=True, check=True).stdout)
+
 def main():
     if "--all" in sys.argv: discover()
     refs = json.load(open(os.path.join(ROOT, "tools", "aops-titles.json")))
@@ -236,6 +246,8 @@ def main():
         k = contest_key(it["ref"])
         if k: todo[(k[0], k[1])].append((k[2], k[3], it["ref"]))
     keys = sorted(todo)
+    only = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None   # e.g. amc12/2021C,amc12/2021D
+    if only: keys = [k for k in keys if "%s/%s" % k in only]
     if limit: keys = keys[:limit]
     by_year = collections.defaultdict(dict)
     missing, bad = [], []
@@ -264,6 +276,9 @@ def main():
     outdir = os.path.join(ROOT, "js", "data", "problems", "statements")
     os.makedirs(outdir, exist_ok=True)
     for year, items in sorted(by_year.items()):
+        if only:   # keep every statement already in the year file; the fetched ones replace theirs
+            old = existing_year(os.path.join(outdir, "%s.js" % year))
+            old.update(items); items.clear(); items.update(old)
         lines = ["// Statements of AMC and AIME problems of %s, from LIVE by Po-Shen Loh (live.poshenloh.com), which publishes them" % year,
                  "// with the permission of the Mathematical Association of America. Problems (c) MAA, CC BY-NC-SA 4.0.",
                  "// Generated by tools/fetch-live-statements.py.",
