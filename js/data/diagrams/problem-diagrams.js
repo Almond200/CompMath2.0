@@ -4901,4 +4901,20 @@
       cap(430, 270, "The triangle with AB = 27, AC = 26, BC = 25 and its incenter I." + MM(ok))
     ]);
   })();
+
+  // 2012 AMC 12A #22: the cube with, on each visible face, the six segments joining midpoints of its edges.
+  PROB["2012-amc-12a-22"] = (() => {
+    const { Pj, view } = projector([150, 230], 110, [1, 0.12], [0.62, -0.36]);
+    const V = { A: [0, 0, 0], B: [1, 0, 0], C: [1, 1, 0], D: [0, 1, 0], E: [0, 0, 1], F: [1, 0, 1], G: [1, 1, 1], H: [0, 1, 1] };
+    const faces = [["A", "B", "C", "D"], ["E", "F", "G", "H"], ["A", "B", "F", "E"], ["B", "C", "G", "F"], ["C", "D", "H", "G"], ["D", "A", "E", "H"]];
+    const m = (X, Y) => [0, 1, 2].map(i => (V[X][i] + V[Y][i]) / 2);
+    const vis = [["E", "F", "G", "H"], ["A", "B", "F", "E"], ["B", "C", "G", "F"]];   // top, front, right
+    const segsOn = f => { const M = [m(f[0], f[1]), m(f[1], f[2]), m(f[2], f[3]), m(f[3], f[0])], out = [];
+      for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) out.push(seg(Pj(M[i]), Pj(M[j]), ACC, 1.5)); return out; };
+    const ok = vis.every(f => f.length === 4);
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj), ...vis.flatMap(segsOn),
+      cap(430, 270, "The cube with, on each face, all six segments joining midpoints of its edges (shown on the three visible faces)." + MM(ok))
+    ]);
+  })();
 })();
