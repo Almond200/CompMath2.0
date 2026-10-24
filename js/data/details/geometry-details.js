@@ -3770,7 +3770,10 @@ An occasional AMC and AIME cameo, and the Fermat-point connection makes the conf
 The quadrilateral is cyclic. The area $K$ comes from Brahmagupta's Formula, and the products are the ones in Ptolemy's Theorem, where $ac + bd = pq$.
 
 ## Why it works
-Split the quadrilateral by a diagonal and apply $R = \frac{\text{product of sides}}{4 \cdot \text{area}}$ to each triangle, since both triangles share the circumcircle. Combining the two expressions with Ptolemy's relation between the diagonals produces the symmetric three-product form.
+Split the quadrilateral by the diagonal $p$ that separates the sides $a, b$ from $c, d$. Both triangles share the circumcircle, so the area formula $K = \frac{\text{product of sides}}{4R}$ for each gives
+$$K = \frac{abp}{4R} + \frac{cdp}{4R} = \frac{p(ab + cd)}{4R}.$$
+
+By Ptolemy's Second Theorem that diagonal has $p^2 = \frac{(ac + bd)(ad + bc)}{ab + cd}$. Squaring $R = \frac{p(ab + cd)}{4K}$ and substituting gives $R^2 = \frac{(ab + cd)(ac + bd)(ad + bc)}{16K^2}$, the Key form; Brahmagupta's Formula for $K$ gives the version in the sides alone.
 
 ## Useful observations
 - For a cyclic quadrilateral with known sides, Brahmagupta's Formula gives $K$ and then this gives $R$, a two-step pipeline that replaces any diagonal-hunting.
@@ -4861,7 +4864,13 @@ Olympiad combinatorial geometry. The minimal-distance extremal argument is a mod
 The family is finite and every set is convex. Without convexity the conclusion fails.
 
 ## Why it works
-The proof is by induction using Radon's theorem: any $d + 2$ points in $\mathbb{R}^d$ split into two sets whose convex hulls intersect. That lets the hypotheses "every $d + 1$ meet" merge upward until all the sets share a point. In the plane $d + 1 = 3$.
+Step 1, Radon's lemma. Any $d + 2$ points $p_i$ in $\mathbb R^d$ are affinely dependent: $\sum\lambda_ip_i = 0$ and $\sum\lambda_i = 0$ with the $\lambda_i$ not all $0$. Split the indices by the sign of $\lambda_i$ and let $\Lambda$ be the sum of the positive ones. Then
+$$\sum_{\lambda_i \gt 0}\frac{\lambda_i}{\Lambda}p_i = \sum_{\lambda_j \lt 0}\frac{-\lambda_j}{\Lambda}p_j$$
+is a point in the convex hulls of both parts.
+
+Step 2, induction on the number $m \ge d + 2$ of sets. By induction, the family without $C_i$ has a common point $p_i$, for each $i$. Radon splits these points into parts $I$ and $J$ whose hulls share a point $q$.
+
+Step 3. Take any $C_k$. If $k \notin I$, every $p_i$ with $i \in I$ lies in $C_k$, so their hull does, and $q \in C_k$. If $k \in I$, then $k \notin J$ and the same argument with $J$ gives $q \in C_k$. So $q$ is in every set.
 
 ## Useful observations
 - It reduces a global intersection question to a check on small subfamilies.
@@ -5632,7 +5641,9 @@ Rare. It appears in problems that are structurally the three-dimensional version
 Every side of the hexagon is tangent to the same conic. Letting adjacent tangency points merge gives the statements for circumscribed pentagons and quadrilaterals.
 
 ## Why it works
-It is the projective dual of Pascal's Theorem: replace "point on the conic" by "tangent line" and "collinear" by "concurrent", and Pascal's collinearity becomes Brianchon's concurrency. Any proof of Pascal dualizes into a proof of Brianchon.
+It is the projective dual of Pascal's Theorem, carried out by [[pole-polar|poles and polars]] with respect to the conic. The pole of a tangent line is its point of contact, so the six sides of the hexagon have as poles six points on the conic. The polar of a vertex, where two consecutive sides meet, is the chord joining their two contact points, so the hexagon's vertices correspond to the sides of the inscribed contact hexagon.
+
+A main diagonal joins two opposite vertices, so its pole is where the polars of those vertices meet: the crossing of two opposite sides of the inscribed hexagon. Pascal puts the three crossings on one line, and the polars of collinear points all pass through the pole of that line, so the three diagonals are concurrent.
 
 ## Useful observations
 - Merging adjacent tangency points degenerates it to concurrency in tangential pentagons and quadrilaterals.
@@ -5766,7 +5777,15 @@ An olympiad method, occasionally behind a hard AIME problem on tangent circles; 
 The four lines are in general position, with no two parallel and no three concurrent.
 
 ## Why it works
-Repeated use of the Miquel-point lemma forces the four circumcircles through one common point $M$. Equivalently, $M$ is the center of the spiral similarity carrying one pair of opposite sides onto the other.
+Step 1. Take the triangle $ABC$ formed by three of the lines; the fourth cuts its side lines at $D$, $E$, $F$. By Miquel's Theorem the circles $AEF$, $BFD$, $CDE$ meet at a point $M$, and these are the circumcircles of the three triangles that use the fourth line.
+
+Step 2, the fourth circle. With directed angles mod $180^\circ$, and $D$, $E$, $F$ collinear,
+$$\angle(BM, BA) = \angle(DM, DF) = \angle(DM, DE) = \angle(CM, CA),$$
+by the circles $BFDM$ and $CDEM$. So $A$, $B$, $C$, $M$ are concyclic, and all four circles pass through $M$.
+
+Step 3, the spiral similarity. Two of the lines cut segments $PQ$ and $RS$ on the other two, with $PR$ and $QS$ meeting at $X$. The circles $PQX$ and $RSX$ are two of the four, so they meet again at $M$, and $\angle MPQ = \angle MXQ = \angle MRS$, $\angle MQP = \angle MXP = \angle MSR$. Triangles $MPQ$ and $MRS$ are similar, so the spiral similarity at $M$ carries $PQ$ to $RS$.
+
+The concyclicity of $M$ with the four circumcenters is quoted, not proved here; see R. A. Johnson, Advanced Euclidean Geometry (Dover, 1960).
 
 ## Useful observations
 - The Miquel point is the second intersection of any two of the four circumcircles, and it is often the hidden center behind a concyclicity or a spiral-similarity claim.

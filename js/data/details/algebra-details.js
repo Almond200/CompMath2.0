@@ -1945,7 +1945,13 @@ Floor equations and floor-counting problems permeate the AMC and AIME, and the c
 $n$ is a positive integer and $x$ is real.
 
 ## Why it works
-As $x$ increases by steps of $\frac1n$, exactly one of the shifted floors $\lfloor x + \frac kn\rfloor$ ticks up at each step, and the left side $\lfloor nx\rfloor$ ticks at the same moments. Both sides are step functions with identical jumps and equal value at $x = 0$.
+Let $f(x) = \sum_{k=0}^{n-1}\left\lfloor x + \frac kn\right\rfloor - \lfloor nx\rfloor$.
+
+Step 1, period $\frac1n$. Replacing $x$ by $x + \frac1n$ shifts the terms of the sum along by one: the terms for $k = 1, \ldots, n - 1$ appear again, and the new last term is $\lfloor x + 1\rfloor = \lfloor x\rfloor + 1$. The other side becomes $\lfloor nx + 1\rfloor = \lfloor nx\rfloor + 1$. So $f\left(x + \frac1n\right) = f(x)$.
+
+Step 2. For $0 \le x \lt \frac1n$, every $x + \frac kn$ is below $1$ and $nx$ is below $1$, so $f(x) = 0$. By Step 1, $f$ is $0$ everywhere.
+
+For the companion, $\lfloor x\rfloor + \lfloor -x\rfloor$ is $0$ when $x$ is an integer, and otherwise $\lfloor -x\rfloor = -\lfloor x\rfloor - 1$, so the sum is $-1$.
 
 ## Useful observations
 - It splits $\lfloor nx\rfloor$ into pieces when summing floors of arithmetic sequences, and collapses sums like $\sum_{k=0}^{n-1}\lfloor x + \frac kn\rfloor$ on sight.
@@ -3128,7 +3134,9 @@ Olympiad inequalities, cyclic fractions above all. Rarely needed below olympiad 
 Both sequences are sorted, in the same direction for $\ge$ and in opposite directions for $\le$. The direction depends entirely on the sorting.
 
 ## Why it works
-Sum the $n^2$ products $(a_i - a_j)(b_i - b_j)$, each nonnegative when the sequences are sorted the same way. Expanding gives $n\sum a_ib_i - (\sum a_i)(\sum b_j) \ge 0$. Opposite ordering makes every factor flip sign, reversing the inequality.
+Sum the $n^2$ products $(a_i - a_j)(b_i - b_j)$ over all pairs $i, j$; each is nonnegative when the sequences are sorted the same way, since $a_i - a_j$ and $b_i - b_j$ then have the same sign. Expanding,
+$$\sum_{i, j}(a_i - a_j)(b_i - b_j) = 2n\sum_i a_ib_i - 2\Big(\sum_i a_i\Big)\Big(\sum_j b_j\Big) \ge 0.$$
+Opposite ordering makes every product at most $0$, reversing the inequality. With $b = a$ it gives $n\sum a_i^2 \ge \left(\sum a_i\right)^2$.
 
 ## Useful observations
 - It is the averaged cousin of the Rearrangement Inequality.
@@ -3178,7 +3186,12 @@ The exponent-two form is an AIME-level "minimize a sum of hypotenuses" trick whe
 Both sequences are sorted in decreasing order, with equal totals, and $f$ is convex (or concave) on an interval containing all the values.
 
 ## Why it works
-Each value of a convex $f$ lies above its tangent line. Combining the tangent-line comparisons by summation by parts with the majorization prefix-sum inequalities gives $\sum f(x_i) \ge \sum f(y_i)$. Convexity is what makes the tangent slopes line up with the partial sums.
+Step 1, slopes. For convex $f$ the chord slope $\frac{f(u) - f(v)}{u - v}$ increases with each of $u$ and $v$. Put $c_i = \frac{f(x_i) - f(y_i)}{x_i - y_i}$, or a one-sided derivative when $x_i = y_i$. Both sequences are decreasing, so $c_1 \ge c_2 \ge \cdots \ge c_n$.
+
+Step 2, [[abel-summation|Abel summation]]. With $D_k = \sum_{i \le k}(x_i - y_i)$, which is at least $0$ by majorization and $0$ at $k = n$,
+$$\sum_i\big(f(x_i) - f(y_i)\big) = \sum_i c_i(x_i - y_i) = \sum_{k=1}^{n-1}D_k(c_k - c_{k+1}) + D_nc_n \ge 0.$$
+
+For concave $f$ apply this to $-f$. Any decreasing sequence majorizes the constant sequence of its mean, since its first $k$ terms are its largest, which gives Jensen's Inequality.
 
 ## Useful observations
 - Establishing majorization is the real work; the inequality is then automatic.
@@ -3738,7 +3751,12 @@ Behind many AIME optimization answers as an unstated step, and an olympiad metho
 The angles are equally spaced by $\frac\pi n$. The constant $\frac{1}{2^{n-1}}$ is what the factorization of $z^n \pm 1$ leaves behind.
 
 ## Why it works
-Writing each sine as complex exponentials turns an equally spaced product into a factorization of $z^n - 1$ (or $z^n + 1$), which collapses to a single $\sin n\theta$. The constant $\frac{1}{2^{n-1}}$ is exactly what that factorization leaves behind.
+Step 1, absolute values. With $\omega = e^{2\pi i/n}$, $1 - z^n = \prod_{k=0}^{n-1}(1 - z\omega^k)$, since both sides have the roots $\omega^{-k}$ and the constant term $1$. Put $z = e^{2i\theta}$ and use $\lvert 1 - e^{i\varphi}\rvert = 2\left\lvert\sin\frac\varphi2\right\rvert$ on each factor:
+$$2\lvert\sin n\theta\rvert = \prod_{k=0}^{n-1}2\left\lvert\sin\left(\theta + \tfrac{k\pi}n\right)\right\rvert.$$
+
+Step 2, signs. For $0 \lt \theta \lt \frac\pi n$ every factor and $\sin n\theta$ are positive, so the identity holds without absolute values. Replacing $\theta$ by $\theta + \frac\pi n$ turns the product into the same product with $\sin\theta$ replaced by $\sin(\theta + \pi) = -\sin\theta$, and turns $\sin n\theta$ into $-\sin n\theta$, so both sides change sign together and the identity holds for every $\theta$.
+
+Step 3, the special cases. Dividing by $\sin\theta$ and letting $\theta \to 0$ gives $\prod_{k=1}^{n-1}\sin\frac{k\pi}n = \frac n{2^{n-1}}$. For $n = 3$, $\sin(\theta + 120^\circ) = \sin(60^\circ - \theta)$ gives the $\frac14\sin 3\theta$ form; replacing $\theta$ by $\theta + 90^\circ$ gives $\cos\theta\cos(60^\circ - \theta)\cos(60^\circ + \theta) = \frac14\cos 3\theta$, and dividing the two gives the tangent form.
 
 ## Useful observations
 - Sines, cosines, or tangents at a common spacing $\frac{k\pi}{n}$ are replaced by one term.
@@ -3762,7 +3780,11 @@ An AIME and olympiad trigonometry gem: recognizing the equal spacing turns an in
 The angles double at each term. For an infinite sum, a limit is taken, with $2^n\cot(2^n\theta) \to 0$ when $\theta$ is small enough.
 
 ## Why it works
-Both identities fall out of the double-angle formulas: $\cot\theta - \cot 2\theta = \csc 2\theta$ and $\tan\theta = \cot\theta - 2\cot 2\theta$ each rewrite a term as a difference of the same function at $\theta$ and $2\theta$, so a sum over doubling angles cancels internally.
+Both identities fall out of the double-angle formulas. For the first,
+$$\cot\theta - \cot 2\theta = \frac{\cos\theta}{\sin\theta} - \frac{\cos 2\theta}{\sin 2\theta} = \frac{2\cos^2\theta - \cos 2\theta}{\sin 2\theta} = \frac{1}{\sin 2\theta}.$$
+For the second, $2\cot 2\theta = \frac{\cos^2\theta - \sin^2\theta}{\sin\theta\cos\theta} = \cot\theta - \tan\theta$.
+
+Multiplying the second by $2^k$ at the angle $2^k\theta$ gives $2^k\tan(2^k\theta) = 2^k\cot(2^k\theta) - 2^{k+1}\cot(2^{k+1}\theta)$, and summing over $k = 0, \ldots, n - 1$ cancels everything but $\cot\theta - 2^n\cot(2^n\theta)$.
 
 ## Useful observations
 - When a sum has terms like $\csc 2^k\theta$ or $2^k\tan(2^k\theta)$, each is replaced by its cotangent difference and the sum telescopes.

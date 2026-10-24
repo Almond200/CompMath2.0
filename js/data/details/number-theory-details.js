@@ -2080,7 +2080,11 @@ Occasional AIME and olympiad appearances (Fibonacci representations, Wythoff and
 $\alpha$ and $\beta$ are irrational and greater than $1$. If one of them were rational the two sequences would collide or leave gaps.
 
 ## Why it works
-The number of terms $\lfloor n\alpha\rfloor \le N$ is about $\frac N\alpha$, and similarly $\frac N\beta$ for the other sequence. Since $\frac1\alpha + \frac1\beta = 1$ the two counts add to $N$ for every $N$, and irrationality prevents any collision, so together they hit each integer exactly once.
+Since $\alpha, \beta \gt 1$, each sequence is strictly increasing, and $\frac1\beta = 1 - \frac1\alpha$ gives the partner $\beta = \frac\alpha{\alpha - 1}$. Irrationality makes every $n\alpha$ and $m\beta$ a non-integer, so the inequalities below are strict.
+
+No collision. If $\lfloor n\alpha\rfloor = \lfloor m\beta\rfloor = k$, then $k \lt n\alpha \lt k + 1$ and $k \lt m\beta \lt k + 1$, so $\frac{n}{k+1} \lt \frac1\alpha \lt \frac nk$ and the same for $m$ and $\beta$. Adding, $\frac{n + m}{k + 1} \lt 1 \lt \frac{n + m}k$, so $k \lt n + m \lt k + 1$, impossible for an integer.
+
+No gap. If $k$ is missed by both, there are $n$ and $m$ with $n\alpha \lt k$ and $(n + 1)\alpha \gt k + 1$, and likewise $m\beta \lt k$ and $(m + 1)\beta \gt k + 1$. Then $\frac nk \lt \frac1\alpha \lt \frac{n + 1}{k + 1}$ and the same for $m$; adding, $\frac{n + m}k \lt 1 \lt \frac{n + m + 2}{k + 1}$, so $k - 1 \lt n + m \lt k$, again impossible.
 
 ## Useful observations
 - A single irrational $\alpha > 1$ generates a complementary pair of sequences that tile the positive integers.

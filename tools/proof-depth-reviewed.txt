@@ -162,3 +162,13 @@ abel-summation            # the reindexing written out
 ramanujan-nested-radical  # golden-ratio convergence proved; the infinite tower quoted with a reference
 trig-telescoping-product
 trig-area-circumradius
+chebyshev-sum-inequality
+cot-tan-telescoping
+complete-quadrilateral-miquel # full proof via Miquel; circumcenter circle quoted with a reference
+evenly-spaced-angle-products  # roots-of-unity proof with the sign argument
+hermite-identity          # periodicity proof
+beatty-theorem            # no collision, no gap
+hellys-theorem            # Radon and the induction
+cyclic-quad-radius
+brianchon-theorem         # polarity carried out
+karamata-inequality       # slopes and Abel summation
