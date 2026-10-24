@@ -4961,4 +4961,21 @@
       cap(430, 270, "Circles of radii 1, 2 and 3, each tangent to the other two, and the triangle (blue) formed by the three points of tangency." + MM(ok))
     ]);
   })();
+
+  // 2011 AMC 12B #20: the 13-14-15 triangle, the midpoints D, E, F, and the circumcircles of BDE and CEF,
+  // which meet again at X.
+  PROB["2011-amc-12b-20"] = (() => {
+    const B = [0, 0], C = [14, 0], A = [5, 12], D = mid(A, B), E = mid(B, C), F = mid(A, C);
+    const c1 = K.circumcenterOf(B, D, E), c2 = K.circumcenterOf(C, E, F), r1 = dist(c1, B), r2 = dist(c2, C);
+    const d = sub(c2, c1), t = ((E[0] - c1[0]) * d[0] + (E[1] - c1[1]) * d[1]) / (d[0] * d[0] + d[1] * d[1]), X = sub(mul(add(c1, mul(d, t)), 2), E);   // E reflected in the line of centers
+    const ok = Math.abs(dist(X, c1) - r1) < 1e-9 && Math.abs(dist(X, c2) - r2) < 1e-9 && Math.abs(dist(X, A) - dist(X, B)) < 1e-9;
+    const Q = fitQ([A, B, C, [c1[0] - r1, c1[1] - r1], [c1[0] + r1, c1[1] + r1], [c2[0] - r2, c2[1] - r2], [c2[0] + r2, c2[1] + r2], [A[0], A[1] + 1.2]], 14, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), circ(Q(c1), r1 * k, ACC, 1.4), circ(Q(c2), r2 * k, GLD, 1.4), poly([D, E, F].map(Q), FNT, 1.2, "none", "4 4"),
+      dot(Q(X), DIM, 3.5), txt(add(Q(X), [10, -4]), "X"),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"),
+      txt(add(Q(D), [-12, 0]), "D"), txt(add(Q(E), [0, 16]), "E"), txt(add(Q(F), [12, 0]), "F"),
+      cap(430, 270, "Triangle ABC with sides 13, 14, 15, the midpoints D, E, F, and the circumcircles of BDE (blue) and CEF (gold), which meet again at X." + MM(ok))
+    ]);
+  })();
 })();
