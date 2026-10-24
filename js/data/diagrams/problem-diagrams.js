@@ -5010,4 +5010,35 @@
       cap(430, 270, "A regular octahedron of side 1 and the plane through its center parallel to two opposite faces; the cut (blue) is a regular hexagon." + MM(ok))
     ]);
   })();
+
+  // 2009 AMC 12B #13: AB = 13, AC = 15, altitude 12 to line BC; B can be on either side of the foot D.
+  PROB["2009-amc-12b-13"] = (() => {
+    const D = [0, 0], A = [0, 12], C = [9, 0], B1 = [-5, 0], B2 = [5, 0];
+    const ok = Math.abs(dist(A, B1) - 13) < 1e-12 && Math.abs(dist(A, C) - 15) < 1e-12 && Math.abs(dist(A, B2) - 13) < 1e-12;
+    const Q = fitQ([A, B1, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B1, C].map(Q), DIM, 2), seg(Q(A), Q(B2), ACC, 1.6, "5 4"), seg(Q(A), Q(D), FNT, 1.4, "4 4"), rightAngle(Q(D), Q(A), Q(C), 9),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B1), [-12, 8]), "B"), txt(add(Q(B2), [6, 16]), "B′", ACC, 12.5), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(D), [-8, 16]), "D", FNT, 12),
+      txt(add(Q(mid(A, B1)), [-14, 0]), "13", DIM, 12), txt(add(Q(mid(A, C)), [14, 0]), "15", DIM, 12), txt(add(Q(mid(A, D)), [-10, 0]), "12", FNT, 12),
+      cap(430, 270, "AB = 13, AC = 15 and the altitude AD = 12; B may lie on either side of D (the second position B′ dashed)." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AMC 12B #16: trapezoid ABCD with AD ∥ BC, BD = 1, ∠DBA = 23°, ∠BDC = 46°, BC : AD = 9 : 5.
+  PROB["2009-amc-12b-16"] = (() => {
+    // E = intersection of BA and CD; triangle BDE is isosceles with DE = BD = 1, CE = 9/5.
+    const B = [0, 0], D = [Math.cos(rad(40)), Math.sin(rad(40))];
+    const dirBA = [Math.cos(rad(63)), Math.sin(rad(63))];                      // BA turned 23° from BD
+    const E = add(B, mul(dirBA, 2 * Math.cos(rad(23))));                       // BE = 2 cos 23° (isosceles BDE)
+    const C = add(E, mul(norm(sub(D, E)), 9 / 5)), A = lineInt(B, E, D, add(D, sub(C, B)));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(D, B, A) - 23) < 1e-6 && Math.abs(ang(B, D, C) - 46) < 1e-6 && Math.abs(dist(B, C) / dist(A, D) - 1.8) < 1e-6 && Math.abs(dist(C, D) - 0.8) < 1e-9;
+    const Q = fitQ([A, B, C, D], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), seg(Q(B), Q(D), ACC, 1.6), angleArc(Q(B), Q(D), Q(A), 30, GLD), angleArc(Q(D), Q(B), Q(C), 26, GLD),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 6]), "B"), txt(add(Q(C), [12, 6]), "C"), txt(add(Q(D), [10, -8]), "D"),
+      txt(add(Q(B), [42, -26]), "23°", GLD, 11), txt(add(Q(D), [6, 30]), "46°", GLD, 11), txt(add(Q(mid(B, D)), [10, 8]), "1", ACC, 12),
+      cap(430, 270, "Trapezoid ABCD with AD ∥ BC, BD = 1, ∠DBA = 23°, ∠BDC = 46° and BC : AD = 9 : 5." + MM(ok))
+    ]);
+  })();
 })();
