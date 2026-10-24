@@ -2561,6 +2561,8 @@ The identities hold for all numbers or expressions $x$, $y$, $z$. They convert a
 ## Why it works
 Expand $(x + y)(y + z)(z + x)$: the degree-$3$ terms are all six $x^2y$-type monomials plus $2xyz$. Meanwhile $(x + y + z)(xy + yz + zx)$ produces those same six monomials but with $3xyz$. Subtracting one $xyz$ makes them agree, so $(x + y)(y + z)(z + x) = e_1e_2 - e_3$.
 
+For the companion, the left side vanishes when $x = -y$, so $x + y$ is a factor, and likewise $y + z$ and $z + x$. Both sides have degree $3$, and comparing the coefficient of $x^2y$, which is $3$ on the left, fixes the constant $3$.
+
 ## Useful observations
 - When $x + y + z$, $xy + yz + zx$, and $xyz$ are known, most often as $-\frac ba$, $\frac ca$, $-\frac da$ from a cubic's coefficients via [[vietas-general|Vieta's Formulas]], any product of the pairwise sums is just $e_1e_2 - e_3$, with no expansion.
 - Read backward, it simplifies a stubborn product of three binomials into symmetric-sum arithmetic.
@@ -2638,9 +2640,11 @@ Three problems here, all AIME, none solved by it alone. The usual trigger is a c
 $x \ne 0$. The same recurrence holds for $a^n + b^n$ whenever $ab = 1$, with $t = a + b$.
 
 ## Why it works
-Multiply $s_{n-1} = x^{n-1} + x^{-(n-1)}$ by $t = x + x^{-1}$: the cross terms give $x^n + x^{-n} + x^{n-2} + x^{-(n-2)} = s_n + s_{n-2}$, so $s_n = t\,s_{n-1} - s_{n-2}$.
+Multiply $s_{n-1} = x^{n-1} + x^{-(n-1)}$ by $t = x + x^{-1}$: the cross terms give $x^n + x^{-n} + x^{n-2} + x^{-(n-2)} = s_n + s_{n-2}$, so $s_n = t\,s_{n-1} - s_{n-2}$. The same computation works for $a$ and $b$ with $ab = 1$, since only $ab = 1$ was used.
 
-Starting from $s_0 = 2$ and $s_1 = t$, this produces each $s_n$ as a degree-$n$ polynomial in $t$, the Chebyshev and Dickson polynomials.
+Starting from $s_0 = 2$ and $s_1 = t$, this produces each $s_n$ as a degree-$n$ polynomial in $t$, the Chebyshev and Dickson polynomials:
+$$s_2 = t^2 - 2, \qquad s_3 = t(t^2 - 2) - t = t^3 - 3t, \qquad s_4 = t(t^3 - 3t) - (t^2 - 2) = t^4 - 4t^2 + 2.$$
+With $x = e^{i\theta}$, $x^n + x^{-n} = 2\cos n\theta$ by [[de-moivre|De Moivre's Theorem]].
 
 ## Useful observations
 - Given $x + \frac1x$, any $x^n + \frac1{x^n}$ is reached with the two-term recurrence, with no need to solve for $x$.
@@ -2666,7 +2670,9 @@ The terms must be rewritten as a difference of consecutive factorial expressions
 ## Why it works
 $k \cdot k! = (k + 1)! - k!$ is just $(k + 1)! = (k + 1) \cdot k!$ rearranged; summing telescopes to $(n + 1)! - 1!$.
 
-The fraction version rewrites $\frac{k}{(k+1)!} = \frac{(k + 1) - 1}{(k + 1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$.
+The fraction version rewrites $\frac{k}{(k+1)!} = \frac{(k + 1) - 1}{(k + 1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$, and in the same way $\frac{k - 1}{k!} = \frac{k}{k!} - \frac1{k!} = \frac1{(k - 1)!} - \frac1{k!}$.
+
+For base factorial, digits $d_k \le k$ give $\sum_{k \le n} d_k \cdot k! \le \sum_{k \le n} k \cdot k! = (n + 1)! - 1$, which is less than the next place value. So the top digit of a number is forced, and by induction all of them are.
 
 ## Useful observations
 - A sum with $k \cdot k!$, $\frac{k}{(k+1)!}$, or $\frac{k-1}{k!}$ terms telescopes immediately.
@@ -3261,7 +3267,9 @@ The workhorse behind "compare these symmetric sums" inequalities on the AIME and
 The weights are positive and add to $1$, and the $a_i$ are positive. Equal weights give the ordinary AM-GM inequality.
 
 ## Why it works
-It is Jensen's Inequality for the concave logarithm: $\ln\!\big(\sum w_ia_i\big) \ge \sum w_i\ln a_i = \ln\!\big(\prod a_i^{w_i}\big)$. Rational weights reduce to ordinary AM-GM by repeating terms; arbitrary weights follow by continuity.
+It is [[jensens-inequality|Jensen's Inequality]] in its weighted form for the concave logarithm:
+$$\ln\Big(\sum w_ia_i\Big) \ge \sum w_i\ln a_i = \ln\Big(\prod a_i^{\,w_i}\Big),$$
+and exponentiating gives the inequality for any positive weights adding to $1$. Since $\ln$ is strictly concave, equality needs all the $a_i$ equal. For rational weights $w_i = \frac{m_i}M$ the same result is plain AM-GM on $M$ numbers, with $a_i$ repeated $m_i$ times.
 
 ## Useful observations
 - The weights are chosen to produce the exponents wanted. To bound a product $\prod a_i^{c_i}$, weights $w_i \propto c_i$ make the weighted geometric mean the product and the weighted arithmetic mean a sum that is under control. This is how targeted bounds like $a^3 + a^3 + b^3 \ge 3a^2b$ are proved.

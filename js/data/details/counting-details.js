@@ -2317,7 +2317,13 @@ Olympiad combinatorics on grids and bipartite structures. The min-max duality is
 The graph is simple and has no clique on $r + 1$ vertices. The exact maximum, when $r$ does not divide $n$, is the number of edges of the Turán graph with parts of sizes differing by at most one.
 
 ## Why it works
-Among $K_{r+1}$-free graphs, rebalancing (Zykov symmetrization) never creates a clique and only adds edges, pushing the maximum to the Turán graph, which has $\left(1 - \frac1r\right)\frac{n^2}{2}$ edges when $r$ divides $n$.
+Step 1, Mantel ($r = 2$). In a triangle-free graph the two ends of an edge $uv$ have no common neighbour, so $d(u) + d(v) \le n$. Adding over the $e$ edges, each vertex $v$ is counted $d(v)$ times:
+$$\sum_v d(v)^2 \le ne, \qquad \sum_v d(v)^2 \ge \frac{\left(\sum d(v)\right)^2}n = \frac{4e^2}n,$$
+by [[cauchy-schwarz|Cauchy-Schwarz]], so $e \le \frac{n^2}4$.
+
+Step 2, the general bound, by induction on $n$. For $n \le r$ even the complete graph has $\frac{n(n-1)}2 \le \left(1 - \frac1r\right)\frac{n^2}2$ edges. Otherwise, if $G$ has no $K_r$, the bound for $r - 1$ is smaller and applies. If it has a $K_r$ on a set $A$, then $A$ holds $\binom r2$ edges, each outside vertex has at most $r - 1$ neighbours in $A$, and the other $n - r$ vertices hold at most $\left(1 - \frac1r\right)\frac{(n - r)^2}2$ edges by induction.
+
+Adding, $e \le \binom r2 + (r - 1)(n - r) + \frac{r - 1}{2r}(n - r)^2 = \frac{r - 1}{2r}\left(r^2 + 2r(n - r) + (n - r)^2\right) = \left(1 - \frac1r\right)\frac{n^2}2$. The Turán graph with $r$ parts of size $\frac nr$ misses exactly the edges inside parts, so it has $\binom n2 - r\binom{n/r}2 = \left(1 - \frac1r\right)\frac{n^2}2$ edges.
 
 ## Useful observations
 - The shape is an extremal question: how many edges can a graph have before a clique of a given size is unavoidable. The bound answers it and the Turán graph shows it cannot be improved.

@@ -102,3 +102,13 @@ sos-identity              # n-variable form
 coloring-arguments
 fundamental-theorem-algebra # analytic core labelled quoted, with a reference; the rest proved
 incircle-excircle-touch   # tangent lengths derived
+factorial-telescoping     # third form and base-factorial uniqueness
+proving-uniqueness
+discrete-intermediate-value
+log-swap-identity
+trapezoid-consecutive-angles
+weighted-am-gm            # via weighted Jensen, equality
+reciprocal-power-sums     # first few and the cosine form derived
+miquels-theorem           # spiral-similarity Key form restated correctly and proved
+pairwise-sum-product      # companion identity proved
+turans-theorem            # Mantel and the induction proof

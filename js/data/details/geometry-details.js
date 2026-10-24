@@ -3140,7 +3140,7 @@ Five problems here, four of them AIME, one solved by it alone and three combined
 "miquels-theorem": String.raw`
 ## Key forms
 - $\odot(AEF)$, $\odot(BFD)$, $\odot(CDE)$ meet at one point — for any points $D$, $E$, $F$ on the lines $BC$, $CA$, $AB$, the circle through each vertex and its two adjacent chosen points passes through a common point, the Miquel point
-- the Miquel point is the center of the [[spiral-similarity|spiral similarity]] taking the configuration of $EF$ to that of $BC$
+- the lines $MD$, $ME$, $MF$ make equal angles with $BC$, $CA$, $AB$, so $M$ is the center of a [[spiral-similarity|spiral similarity]] taking its pedal triangle to $DEF$
 
 ## Conditions
 $D$, $E$, $F$ lie on the side lines, not necessarily on the segments. The points are distinct from the vertices, so that each circle is determined.
@@ -3148,9 +3148,13 @@ $D$, $E$, $F$ lie on the side lines, not necessarily on the segments. The points
 ## Why it works
 Let the circles through $(B, F, D)$ and $(C, D, E)$ meet again at $M$. Cyclic quadrilaterals give $\angle FMD = 180^\circ - B$ and $\angle DME = 180^\circ - C$, so $\angle FME = 360^\circ - (180^\circ - B) - (180^\circ - C) = B + C = 180^\circ - A$, which says exactly that $A, F, M, E$ are concyclic. One angle chase, fully general.
 
+For the equal angles, use directed angles mod $180^\circ$. The three circles give
+$$\angle(DM, BC) = \angle(FM, AB) = \angle(EM, CA),$$
+the first from $B, F, M, D$ concyclic and the second from $A, F, M, E$ concyclic. Call that angle $90^\circ - \theta$. Then each of $D$, $E$, $F$ is the foot of the perpendicular from $M$ to its side, turned by $\theta$ about $M$ and pushed out by the factor $\frac1{\cos\theta}$, and that one spiral similarity carries all three feet at once.
+
 ## Useful observations
 - A configuration with one point on each side of a triangle and circles through vertex-adjacent triples has its three circles sharing a point, often the key hidden point of the problem.
-- The spiral-similarity connection: the Miquel point is the center of the spiral similarity taking the $EF$ configuration to the $BC$ one.
+- Since the three lines from $M$ meet the sides at one common angle, sliding $D$, $E$, $F$ so that the angle changes, with $M$ fixed, keeps the triangle $DEF$ similar to itself.
 - The complete-quadrilateral version, the Miquel point of four lines, is an olympiad staple.
 
 ## Applications
