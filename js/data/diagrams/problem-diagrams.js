@@ -5136,4 +5136,19 @@
       cap(430, 270, "The star polygon drawn on a clock face: each number is joined to the fifth number clockwise from it (12 to 5, 5 to 10, ...)." + MM(ok))
     ]);
   })();
+  PROB["2007-amc-12b-22"] = (() => {
+    const A = [0, 0], B = [4, 0], C = [2, 2 * Math.sqrt(3)];
+    const Ma = mid(B, C), Mb = mid(C, A), Mc = mid(A, B);
+    const R = [mid(A, Ma), mid(B, Mb), mid(C, Mc)], G = [(A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3];
+    const ok = R.every((r, i) => dist(r, G) * 4 - dist([A, B, C][i], G) < 1e-9) && Math.abs(dist(R[0], R[1]) - 1) < 1e-9;
+    const Q = fitQ([A, B, C, [2, -0.3], [2, 3.8]], 28, 430, 290);
+    return wrap(430, 290, [
+      poly([A, B, C].map(Q), DIM, 2),
+      ...[[A, Ma], [B, Mb], [C, Mc]].map(([p, q]) => seg(Q(p), Q(q), FNT, 1.2, "4 3")),
+      poly(R.map(Q), ACC, 2, ACCS), ...R.map(r => dot(Q(r), ACC, 3)), dot(Q(Ma), DIM, 3.5),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [0, -8]), "C"),
+      txt(add(Q(Ma), [12, -2]), "M", DIM, 12), txt(add(Q(R[1]), [14, 14]), "R", ACC, 12),
+      cap(430, 290, "One particle starts at A, the other at M, the midpoint of BC. The corners of R are the midpoints of the three medians." + MM(ok))
+    ]);
+  })();
 })();

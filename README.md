@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2007 AMC 12B finished, 2006 AMC 12A begun (2026-10-24).** 2007 AMC 12B #17 (median $b$), 18 ($178$, $187$), 19 ($\sin=\tfrac\pi9$), 20 ($d=3c$, $16$), 21 ($100$ palindromes), 22 (a homothety of ratio $\tfrac14$, with a figure), 23 ($(a-12)(b-12)=72$, six triangles), 25 (right angle at $D$, area $2$); 2006 AMC 12A #4 (twin of 10A #4) and #7. All checked by script.
 - **Step D: 2007 AMC 12A finished, 2007 AMC 12B begun (2026-10-24).** 2007 AMC 12A #23 ($a^6=3$), 24 ($F(n)=n+1$ less one when $n\equiv1\pmod4$, sum $2016532$), 25 ($s_n=s_{n-1}+s_{n-3}$, $129$); 2007 AMC 12B #4, 5 (twin of 10B #6), 6, 9, 13, 15, 16 (Burnside, $15$). All checked by script.
 - **Step D: 2007 AMC 12A, ten more (2026-10-24).** #8 (with a clock-star figure), 13, 14, 15, 16, 17, 18, 19, 20, 21 (answers C, B, C, E, C, B, D, E, B, A). All checked by script.
 - **Step D: 2008 AMC 12B finished, 2007 AMC 12A begun (2026-10-24).** 2008 AMC 12B #17 ($c^2=a^2-1$, digit sum $18$), 18 (a $13$-$14$-$15$ cross-section, $784$), 19 ($\sqrt2$), 21, 22 ($\tfrac{17}{28}$), 23 ($n=11$), 24 ($s_n=\tfrac{2n}3$, $n=17$), 25 ($12h=30\sqrt3$), with figures for #18 and #25; 2007 AMC 12A #4 and #7. All checked by script.
