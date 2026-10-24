@@ -142,3 +142,13 @@ moser-circle              # Euler count written out; link fixed to the polyhedro
 graph-coloring            # bipartite test proved; Brooks and Four Color quoted with references
 reduction-identities
 pappus-centroid
+alternating-squared-binomials
+vandermonde-determinant
+dilworths-theorem         # Galvin's induction proof and Mirsky
+normalization
+muirheads-inequality      # the one-move inequality proved; the transfer lemma quoted with a reference
+percent-change
+center-distance-formulas  # dot products, the angle form, the power of I
+mean-median-mode
+median-triangle-area      # medians form a triangle
+vector-projection         # shortest-distance claim

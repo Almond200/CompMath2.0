@@ -2820,7 +2820,11 @@ An olympiad tool: it settles many symmetric three-variable inequalities that res
 The sums are full symmetric sums, over all $3! = 6$ permutations, and both sides are homogeneous of the same degree. Cyclic sums are not covered.
 
 ## Why it works
-Majorization means the exponent vector $a$ can be reached from $b$ by repeatedly moving two exponents apart: $(b_i, b_j) \to (b_i + \epsilon, b_j - \epsilon)$ with $b_i \ge b_j$. Each such move is a two-variable AM-GM-style smoothing step on the symmetric sum, so the more spread-out exponent triple dominates. In fact every Muirhead inequality is a positive combination of weighted AM-GMs.
+Step 1, one move. Suppose two exponents $\alpha \ge \beta$ are moved apart to $\alpha + \varepsilon$ and $\beta - \varepsilon$, with the others fixed. In the symmetric sum, the terms pair off by swapping the two variables carrying these exponents, and for each pair
+$$x^{\alpha+\varepsilon}y^{\beta-\varepsilon} + x^{\beta-\varepsilon}y^{\alpha+\varepsilon} - x^{\alpha}y^{\beta} - x^{\beta}y^{\alpha} = (xy)^{\beta-\varepsilon}\left(x^{\alpha-\beta+\varepsilon} - y^{\alpha-\beta+\varepsilon}\right)\left(x^{\varepsilon} - y^{\varepsilon}\right),$$
+which is at least $0$ because the last two factors have the same sign. So each move can only raise the symmetric sum.
+
+Step 2, reaching $a$. If $a \succ b$, then $a$ can be reached from $b$ by finitely many such moves. This lemma is quoted, not proved here; see G. H. Hardy, J. E. Littlewood and G. Pólya, Inequalities (Cambridge University Press, 2nd ed. 1952). Chaining the moves of Step 1 gives the inequality.
 
 ## Useful observations
 - Both exponent triples are sorted in decreasing order and the partial sums checked; if all hold, the symmetric sum of the $a$-monomial dominates.
@@ -4853,6 +4857,10 @@ A finite list of numbers, with repeated values counted as often as they appear. 
 ## Why it works
 The mean is the balance point of the list: the deviations $x_i - \bar x$ always add up to $0$, because their sum is $(x_1 + \cdots + x_n) - n\bar x$. The median is the point with half the values on each side, so it depends only on the order of the values near the middle; pushing the largest value even larger does not move it at all, while the mean moves by the change divided by $n$.
 
+Adding $c$ to every value, or multiplying by $k$, moves every value the same way, so it moves the middle value, the most frequent value and the mean along with it, while the range changes only by the factor $\lvert k\rvert$. And since the deviations add to $0$,
+$$\sum(x_i - t)^2 = \sum(x_i - \bar x)^2 + n(\bar x - t)^2,$$
+which is smallest at $t = \bar x$.
+
 ## Useful observations
 - An outlier pulls the mean toward itself but leaves the median unchanged unless it crosses the middle.
 - The mean minimizes the sum of squared deviations $\sum (x_i - t)^2$, while the median minimizes the sum of absolute deviations $\sum \lvert x_i - t\rvert$, the fact behind [[median-minimizes-abs|the median trick]].
@@ -4878,7 +4886,9 @@ A MATHCOUNTS and AMC 8 and 10 staple: lists with a given mean, median, and mode,
 Each percent is taken of the value at that moment, not of the original, unless the problem says otherwise.
 
 ## Why it works
-Percent means per hundred, so $p\%$ of a quantity is $\frac{p}{100}$ of it, and adding that to the quantity multiplies it by $1 + \frac{p}{100}$. Each later change multiplies the current value again, so successive changes multiply, and since multiplication does not care about order, neither do the changes. The same reasoning applied $n$ times at one rate gives $(1 + r)^n$.
+Percent means per hundred, so $p\%$ of a quantity is $\frac{p}{100}$ of it, and adding that to the quantity multiplies it by $1 + \frac{p}{100}$. Each later change multiplies the current value again, so successive changes multiply, and since multiplication does not care about order, neither do the changes. The same reasoning applied $n$ times at one rate gives $(1 + r)^n$, and $k$ compoundings a year at $\frac rk$ each give $\left(1 + \frac rk\right)^{kn}$; simple interest adds the same $rP$ each period instead.
+
+The observations are factor arithmetic. Undoing a factor $1 + \frac p{100}$ needs its reciprocal, which is $1 - \frac{p}{100 + p}$. Both $x\%$ of $y$ and $y\%$ of $x$ are $\frac{xy}{100}$. The factor $1 - \frac{x^2}{10000}$ is below $1$. For doubling, $(1 + \frac r{100})^n = 2$ gives $n = \frac{\ln 2}{\ln(1 + r/100)} \approx \frac{69.3}{r}$ for small $r$; $72$ is the customary round number, slightly better for rates of several percent.
 
 ## Useful observations
 - Undoing a change of $p\%$ takes a change of $\frac{-p}{100 + p} \cdot 100\%$: undoing a $25\%$ increase is a $20\%$ decrease, since $\frac{1}{1.25} = 0.8$.

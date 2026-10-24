@@ -1078,6 +1078,8 @@ Let $G$ be the centroid and $M$ the midpoint of $BC$, and reflect $G$ across $M$
 
 The triangle $BGP$ in the figure has sides $BG = \frac23m_b$, $GP = 2GM = \frac23m_a$, and $BP = GC = \frac23m_c$. It is therefore the median triangle scaled by $\frac23$, with area $\frac49$ of the median triangle's. On the other hand $[BGP] = 2[BGM] = 2 \cdot \frac16[ABC] = \frac13[ABC]$, since $[BGM]$ is one sixth of the whole triangle. Equating, $\frac49T = \frac13[ABC]$, so $[ABC] = \frac43T$.
 
+The same triangle $BGP$ proves the second Key form: it is a genuine triangle, since $B$, $G$, $P$ are not collinear, so its sides $\frac23m_a$, $\frac23m_b$, $\frac23m_c$ satisfy the triangle inequality, and so do the medians.
+
 ## Useful observations
 - The area comes without solving for the sides, which would need the side-from-medians form on [[apollonius-theorem|the median-length card]] and then a square root.
 - The factor $\frac23$ is the centroid's $2 : 1$ ratio, so the same picture shows $GM = \frac13m_a$ for each median.
@@ -3589,9 +3591,13 @@ Object.assign(window.MATH_DETAILS, {
 The triangle has sides $a, b, c$, circumradius $R$, and inradius $r$. For a right triangle $a^2 + b^2 + c^2 = 8R^2$, so $OH = R$, and $H$ is the right-angle vertex.
 
 ## Why it works
-With the circumcenter as origin, $\vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}$. Expanding $\lvert\vec{OH}\rvert^2$ gives $3R^2$ plus dot products, and each $\vec{OA} \cdot \vec{OB} = R^2\cos 2C = R^2 - \frac{c^2}{2}$; summing produces $9R^2 - \sum a^2$.
+With the circumcenter as origin, $\vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}$. Expanding $\lvert\vec{OH}\rvert^2$ gives $3R^2$ plus twice the three dot products. The central angle $AOB$ is $2C$, so $\vec{OA} \cdot \vec{OB} = R^2\cos 2C$, and $c^2 = \lvert\vec{OA} - \vec{OB}\rvert^2 = 2R^2 - 2\,\vec{OA} \cdot \vec{OB}$ turns it into $R^2 - \frac{c^2}{2}$; summing produces $9R^2 - \sum a^2$. Since $\vec{OG} = \frac13(\vec{OA} + \vec{OB} + \vec{OC})$, $OG = \frac13 OH$, which is the [[euler-line-ratio|Euler line]] ratio.
 
-Dividing the [[euler-line-ratio|Euler line]] in thirds gives $OG$. The incenter identity is the power of $I$: a chord through $I$ and a vertex has segment product $2Rr$, by the [[incenter-excenter-lemma|Incenter–Excenter Lemma]].
+For the angle form, $a = 2R\sin A$, and
+$$\sin^2 A + \sin^2 B + \sin^2 C = 2 + 2\cos A\cos B\cos C,$$
+because $\sin^2 A + \sin^2 B = 1 + \cos C\cos(A - B)$ and $\sin^2 C = 1 + \cos C\cos(A + B)$. So $OH^2 = 9R^2 - 4R^2(2 + 2\cos A\cos B\cos C) = R^2(1 - 8\cos A\cos B\cos C)$. A right triangle has $\sum a^2 = 2c^2 = 8R^2$, so $OH = R$.
+
+The incenter identity is the power of $I$. The chord from $A$ through $I$ meets the circle again at the arc midpoint $M$, with $MI = MB = 2R\sin\frac A2$ by the [[incenter-excenter-lemma|Incenter–Excenter Lemma]] and $AI = \frac r{\sin(A/2)}$. Their product is $2Rr$, which equals $R^2 - OI^2$.
 
 ## Useful observations
 - Given the sides, or $\sum a^2$, and $R$, all the Euler-line distances follow. It runs backwards too: contest problems specify $OH$ or $OG$ and ask for $\sum a^2$.
@@ -6103,6 +6109,8 @@ $\vec v \ne \vec 0$. The scalar $\frac{\vec u \cdot \vec v}{\lvert\vec v\rvert}$
 Demand that $\vec u$ split as $c\vec v$ plus something perpendicular to $\vec v$. Dotting the split with $\vec v$ kills the perpendicular piece and leaves $\vec u \cdot \vec v = c\,(\vec v \cdot \vec v)$, which is the coefficient in the formula and the only value of $c$ that can work.
 
 Since [[vector-dot-product|the dot product]] equals $\lvert\vec u\rvert\lvert\vec v\rvert\cos\theta$, that coefficient times $\lvert\vec v\rvert$ is $\lvert\vec u\rvert\cos\theta$: the shadow $\vec u$ casts on the direction of $\vec v$.
+
+For any other point $t\vec v$ of the line, $\vec u - t\vec v$ is the perpendicular part plus $(c - t)\vec v$, two perpendicular pieces, so by Pythagoras $\lvert\vec u - t\vec v\rvert^2 = \lvert\vec u - c\vec v\rvert^2 + (c - t)^2\lvert\vec v\rvert^2$. The perpendicular part is therefore the shortest.
 
 ## Useful observations
 - Two payoffs. The component along a direction: a force, a displacement, or a side resolved onto an axis is this formula and nothing else. And, more useful on contests, the leftover $\vec u - \operatorname{proj}_{\vec v}\vec u$ is a distance.

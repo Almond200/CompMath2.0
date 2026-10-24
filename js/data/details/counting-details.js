@@ -2171,7 +2171,13 @@ Object.assign(window.MATH_DETAILS, {
 The poset is finite. Divisibility, containment, and dominance in two coordinates are the usual partial orders.
 
 ## Why it works
-A chain and an antichain share at most one element, so at least as many chains as the largest antichain are always needed: the easy direction. That this many suffice is the theorem, provable by induction or via [[konigs-theorem|Kőnig's Theorem]] on an associated bipartite graph. Mirsky's dual swaps chains and antichains.
+A chain and an antichain share at most one element, so at least as many chains as the largest antichain are always needed: the easy direction.
+
+That this many suffice goes by induction on the size of the poset $P$. Remove a maximal element $a$; the rest, $P'$, has largest antichain size $k$ and is covered by chains $C_1, \ldots, C_k$. Every $k$-element antichain of $P'$ meets each $C_i$ once; let $x_i$ be the largest element of $C_i$ lying in some such antichain.
+
+The $x_i$ form an antichain: if $x_i \lt x_j$, a $k$-antichain through $x_j$ meets $C_i$ at some $y \le x_i \lt x_j$, which is impossible. If $a$ is comparable to none of them, $P$ has a $(k + 1)$-antichain and the chains $C_1, \ldots, C_k, \{a\}$ do. Otherwise $a \gt x_i$ for some $i$. Then $K = \{a\} \cup \{z \in C_i : z \le x_i\}$ is a chain, $P \setminus K$ has no $k$-antichain, so by induction it needs only $k - 1$ chains, and with $K$ that is $k$.
+
+For Mirsky's dual, label each element by the length of the longest chain ending at it. Equal labels are never comparable, so each label class is an antichain, and there are as many classes as the longest chain is long; a chain needs that many antichains anyway, one per element.
 
 ## Useful observations
 - The setup is recognized as a partial order, where everything must be covered with few chains or a large incomparable family found.
@@ -2664,7 +2670,7 @@ Compare the coefficient of $x^m$ on both sides of $(1 - x)^m(1 + x)^m = (1 - x^2
 
 On the left, expand each factor: $(1 - x)^m = \sum_j(-1)^j\binom mjx^j$ and $(1 + x)^m = \sum_i\binom mix^i$. Collecting $x^m$ needs $i + j = m$, so the coefficient is $\sum_j(-1)^j\binom mj\binom m{m-j}$, and $\binom m{m-j} = \binom mj$ turns it into $\sum_j(-1)^j\binom mj^2$.
 
-On the right, $(1 - x^2)^m = \sum_t(-1)^t\binom mtx^{2t}$ contains only even powers. If $m = 2n$ is even, $x^m$ arises from $t = n$, contributing $(-1)^n\binom{2n}{n}$. If $m$ is odd there is no $t$ with $2t = m$, so the coefficient is $0$.
+On the right, $(1 - x^2)^m = \sum_t(-1)^t\binom mtx^{2t}$ contains only even powers. If $m = 2n$ is even, $x^m$ arises from $t = n$, contributing $(-1)^n\binom{2n}{n}$. If $m$ is odd there is no $t$ with $2t = m$, so the coefficient is $0$. Collecting $x^r$ instead of $x^m$ gives the third Key form in the same way: $\sum_k(-1)^k\binom mk\binom m{r-k}$ on the left, and $0$ or $(-1)^{r/2}\binom m{r/2}$ on the right.
 
 ## Useful observations
 - A sum of squared binomials with alternating signs is one coefficient of $(1 - x^2)^m$, so the parity of the upper index is read first. An odd upper index means the answer is $0$ with no work, a common trap since the sum looks like it should be messy.
