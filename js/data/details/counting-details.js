@@ -1707,6 +1707,10 @@ The cases $A_i$ are disjoint and exhaustive. Wald's identity needs the contribut
 ## Why it works
 Group the outcomes by which case $A_i$ occurred and average within cases first: the inner averages are the conditional expectations, and recombining with weights $P(A_i)$ reproduces the overall average. It is associativity of [[weighted-average|weighted averages]], elevated to a principle.
 
+For Wald's identity, write the total as $\sum_{i \ge 1}X_i\mathbf 1[N \ge i]$ and take expectations term by term. If $N$ is independent of the contributions, or if it is a stopping time for independent ones, the event $N \ge i$ is settled before $X_i$ is seen, so it is independent of $X_i$ and
+$$E[\text{total}] = \sum_{i \ge 1}E[X]\,P(N \ge i) = E[X]\,E[N],$$
+the last step being the [[tail-sum-expectation|tail-sum formula]]. A look-ahead $N$ breaks exactly that independence.
+
 ## Useful observations
 - The partition is chosen so that each conditional expectation is easy, and conditioning on the first step is almost always that choice.
 - Wald's identity is the case worth recognizing separately: when a random number of independent pieces are summed, the expected total is the product of the two expectations, provided $N$ is independent of the pieces or is a stopping time for them. Dropping that proviso is the standard error: let the $X_i$ be fair $0$-$1$ coins and let $N = 2$ if $X_2 = 1$ and $N = 1$ otherwise, so that $N$ looks at the term it decides to take. Then $E[\text{total}] = E[X_1] + E[X_2 \cdot \mathbf 1_{X_2 = 1}] = \frac12 + \frac12 = 1$, while $E[N]\,E[X] = \frac32 \cdot \frac12 = \frac34$.

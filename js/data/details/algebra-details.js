@@ -3203,7 +3203,15 @@ Object.assign(window.MATH_DETAILS, {
 The $a_i$ are positive reals. The case $p = 0$ is defined as the limit, the geometric mean, and negative exponents need positive values.
 
 ## Why it works
-The map $p \mapsto M_p$ is nondecreasing because $x \mapsto x^{p/q}$ is convex for $p \gt q \gt 0$ (Jensen applied to $a_i^q$); limiting and sign arguments extend the chain through $p = 0$, which is the geometric mean, and to negative exponents. All values equal collapses every mean to the same number, which is the equality case.
+Step 1, $0 \lt p \lt q$. The function $f(t) = t^{q/p}$ is convex for $t \gt 0$, so [[jensens-inequality|Jensen]] applied to $t_i = a_i^{\,p}$ gives
+$$\left(\frac1n\sum a_i^{\,p}\right)^{q/p} \le \frac1n\sum a_i^{\,q},$$
+and taking $q$th roots gives $M_p \le M_q$.
+
+Step 2, $p \lt q \lt 0$. Now $\frac qp$ is between $0$ and $1$, so $f$ is concave and the inequality above reverses. Taking the power $\frac1q$, which is negative, reverses it again, so $M_p \le M_q$ still.
+
+Step 3, through $0$. [[am-gm|AM-GM]] on the numbers $a_i^{\,q}$ gives $G^q \le \frac1n\sum a_i^{\,q}$, so $G \le M_q$ for $q \gt 0$, where $G$ is the geometric mean. On the numbers $a_i^{\,p}$ with $p \lt 0$ it gives $G^p \le \frac1n\sum a_i^{\,p}$, and the negative power $\frac1p$ turns this into $G \ge M_p$. As $p \to 0$, $a^p = e^{p\ln a} \approx 1 + p\ln a$, so $\ln M_p \to \frac1n\sum\ln a_i = \ln G$, which is why $M_0$ is defined as $G$.
+
+Equality: Jensen and AM-GM are strict unless all the $a_i$ are equal, and equal values make every mean the same number.
 
 ## Useful observations
 - The two exponents are matched to the data: $M_2 \ge M_1$ compares $\sum a_i^2$ with $(\sum a_i)^2$; $M_1 \ge M_{-1}$ is AM-HM; $M_1 \ge M_0$ is AM-GM.

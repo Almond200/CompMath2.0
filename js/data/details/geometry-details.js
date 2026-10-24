@@ -1252,7 +1252,15 @@ Rare directly, but the cosine identity underneath appears in AIME trigonometry, 
 The feet are taken on the lines $BC$, $CA$, $AB$, extended where needed. The statement is an equivalence, so it also proves that a point lies on the circumcircle.
 
 ## Why it works
-Two of the feet form a cyclic quadrilateral with $P$ and a vertex, since the right angles at the feet subtend diameters, and [[angle-chasing|angle chasing]] in the two circles shows that the three feet make a straight angle exactly when $P$ lies on the circumcircle, and only then.
+Directed angles between lines, taken mod $180^\circ$, avoid case splits. Let $D$, $E$, $F$ be the feet on $BC$, $CA$, $AB$. The right angles at $D$ and $F$ put $P$, $D$, $B$, $F$ on a circle with diameter $PB$, and the right angles at $D$ and $E$ put $P$, $D$, $C$, $E$ on a circle with diameter $PC$.
+
+Step 1, the equivalence. In those two circles,
+$$\angle(DF, DP) = \angle(BF, BP) = \angle(BA, BP), \qquad \angle(DE, DP) = \angle(CE, CP) = \angle(CA, CP).$$
+The feet are collinear exactly when the two left sides are equal, so exactly when $\angle(BA, BP) = \angle(CA, CP)$, which is the condition for $A$, $B$, $C$, $P$ to be concyclic.
+
+Step 2, the direction. Since $PD \perp BC$, Step 1 gives $\angle(DF, BC) = \angle(BA, BP) + 90^\circ$. For a second point $Q$ the Simson line makes $\angle(BA, BQ) + 90^\circ$ with $BC$, so the two lines meet at $\angle(BP, BQ)$, an inscribed angle on the arc $PQ$, which is half that arc.
+
+Step 3, the midpoint of $PH$. The homothety at $P$ with ratio $2$ sends each foot to the reflection of $P$ in that side, so it carries the Simson line to the [[steiner-line|Steiner line]], which passes through $H$. Undoing it, the Simson line passes through the midpoint of $PH$.
 
 ## Useful observations
 - The configuration is recognizable by its data: perpendiculars dropped from one point to all three sides with collinear feet. Conversely, to prove a point lies on the circumcircle, show its feet are collinear.
@@ -2426,7 +2434,13 @@ Never alone: the square-of-a-sum identity is the usual partner. Typical versions
 The vectors are in three-dimensional space, and the cross product is anticommutative, so the order sets the sign. Only the absolute values give areas and volumes.
 
 ## Why it works
-$\lvert\vec u \times \vec v\rvert$ is the parallelogram area, base times height, encoded in the sine of the included angle; the triangle halves it. The scalar triple product is the parallelepiped volume, the base parallelogram area times the projected height, and the tetrahedron is $\frac16$ of the parallelepiped.
+Step 1, the length. Expanding the components gives Lagrange's Identity,
+$$\lvert\vec u \times \vec v\rvert^2 = \lvert\vec u\rvert^2\lvert\vec v\rvert^2 - (\vec u \cdot \vec v)^2 = \lvert\vec u\rvert^2\lvert\vec v\rvert^2\sin^2\theta,$$
+so $\lvert\vec u \times \vec v\rvert$ is base times height of the parallelogram on $\vec u$ and $\vec v$, and the triangle is half of it. The products $\vec u \cdot (\vec u \times \vec v)$ and $\vec v \cdot (\vec u \times \vec v)$ are determinants with a repeated row, so they are $0$: the cross product is perpendicular to both.
+
+Step 2, the volume. Since $\vec v \times \vec w$ is perpendicular to the base, $\lvert\vec u \cdot (\vec v \times \vec w)\rvert$ is the base area $\lvert\vec v \times \vec w\rvert$ times $\lvert\vec u\rvert\lvert\cos\varphi\rvert$, the height of $\vec u$ above the base. That is the parallelepiped's volume, and it is $0$ exactly when the height is $0$, the coplanar case.
+
+Step 3. The tetrahedron has half the base and is a pyramid, so its volume is $\frac13 \cdot \frac12 = \frac16$ of the parallelepiped. Solving $V = \frac13 \cdot (\text{base area}) \cdot h$ for $h$ gives the distance from the apex to the base plane.
 
 ## Useful observations
 - The triple product is a $3 \times 3$ determinant of the edge vectors: its sign gives orientation and its absolute value gives volume.
@@ -3630,7 +3644,14 @@ Locus questions where a sum of squared distances to the vertices is fixed, and m
 The weights are $a = BC$, $b = CA$, $c = AB$, each attached to the opposite vertex. The coordinates are Cartesian, and the formula applies coordinate by coordinate.
 
 ## Why it works
-The incenter divides the bisector from $A$ in the ratio $\frac{b + c}{a}$ (the bisector theorem applied twice), which is exactly the balance point of masses $a$, $b$, $c$ at the vertices. Mass-point mechanics then give the weighted-average coordinate formula; the centroid is the equal-mass case.
+Step 1. The bisector from $A$ meets $BC$ at $D$ with $BD : DC = c : b$ by the [[angle-bisector-theorem|Angle Bisector Theorem]], so $D = \frac{bB + cC}{b + c}$ and $BD = \frac{ac}{b + c}$.
+
+Step 2. In triangle $ABD$ the bisector from $B$ passes through $I$, so the same theorem gives
+$$\frac{AI}{ID} = \frac{AB}{BD} = \frac{c}{ac/(b + c)} = \frac{b + c}a.$$
+
+Step 3. Then $I = \frac{aA + (b + c)D}{a + b + c} = \frac{aA + bB + cC}{a + b + c}$. For $I_A$ the external bisector at $B$ divides $AD$ externally in the same ratio, which flips the sign of $a$: $I_A = \frac{-aA + bB + cC}{-a + b + c}$.
+
+The centroid is the case of equal weights, and the mass formula is the same balance computation for any masses: a mass $m_B$ at $B$ and $m_C$ at $C$ balance at $\frac{m_BB + m_CC}{m_B + m_C}$, and adding $m_A$ at $A$ balances that point with $A$.
 
 ## Useful observations
 - Once a triangle is coordinatized, $I$ is written down directly, with no bisector intersections needed.
@@ -5093,6 +5114,10 @@ $I$ is the incenter, $r$ the inradius, and $s$ the semiperimeter; the same split
 ## Why it works
 The incircle is tangent to all three sides, so the incenter is a distance $r$ from each, and that $r$ is the height of each sub-triangle onto the side it rests on. Hence $[BIC] = \frac12 ar$, $[CIA] = \frac12 br$, and $[AIB] = \frac12 cr$, proportional to $a$, $b$, $c$. Adding gives $[ABC] = \frac12(a + b + c)r = rs$, the standard area formula, and dividing gives $[BIC] = \frac{a}{a + b + c}[ABC]$.
 
+For any interior point $P$, let $AP$ meet $BC$ at $D$. Triangles $ABP$ and $ACP$ share the base $AP$, so $\frac{BD}{DC} = \frac{[ABP]}{[ACP]}$, and comparing heights over $BC$ gives $\frac{AP}{PD} = \frac{[ABP] + [ACP]}{[PBC]}$. These are the ratios of the masses $[PBC]$, $[PCA]$, $[PAB]$ at $A$, $B$, $C$, so
+$$P = \frac{[PBC]A + [PCA]B + [PAB]C}{[ABC]},$$
+and for $P = I$ the weights are $\frac12 r(a, b, c)$.
+
 ## Useful observations
 - A side-length ratio reads straight off as an area ratio, and the reverse.
 - Because the three areas are the natural weights, they are the incenter's barycentric coordinates, the quickest way to place the incenter in a coordinate or vector computation.
@@ -6428,7 +6453,13 @@ $P$ lies on the circumcircle. As $P$ approaches a vertex the line approaches the
 ## Why it works
 Take $P$ on the circumcircle and drop the perpendicular to $BC$, landing at the foot $F$. The reflection of $P$ in $BC$ is the point $2F - P$, so reflecting is exactly the homothety centered at $P$ with ratio $2$ applied to the foot. Doing that for all three sides carries the whole Simson line to the line of reflections, which therefore exists and is parallel to it.
 
-That the Steiner line passes through $H$ takes one more fact: the reflection of $H$ in a side lies on the circumcircle, as on [[orthocenter-properties|the orthocenter card]]. It makes the reflection of $P$ in a side lie on a line through $H$, and running it for each side puts $H$ on the common line.
+For $H$, use directed angles mod $180^\circ$. Let $P_a$, $P_b$ be the reflections of $P$ in $BC$ and $CA$, and $H_a$, $H_b$ those of $H$; both $H_a$ and $H_b$ lie on the circumcircle ([[orthocenter-properties|the orthocenter card]]), on the altitudes $AH$ and $BH$. Reflecting in $BC$ sends line $H_aP$ to line $HP_a$, so
+$$\angle(HP_a, AH) = -\angle(H_aP, H_aA) = -\angle(CP, CA),$$
+the last step by inscribed angles. In the same way $\angle(HP_b, BH) = -\angle(CP, CB)$.
+
+Adding $\angle(AH, BH) = \angle(CB, CA)$, as the altitudes are the sides turned by $90^\circ$,
+$$\angle(HP_a, HP_b) = -\angle(CP, CA) + \angle(CB, CA) + \angle(CP, CB) = 0.$$
+So $H$, $P_a$, $P_b$ are collinear, and the same holds with the third side.
 
 ## Useful observations
 - A problem that reflects a circumcircle point over the sides, which otherwise looks like three unrelated constructions, is recognized here. The collinearity is the payoff, and the extra information over the Simson line is the point $H$.

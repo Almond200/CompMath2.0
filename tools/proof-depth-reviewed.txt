@@ -51,3 +51,14 @@ lagrange-interpolation-formula
 cramers-rule              # the det = 0 cases argued
 p-adic-valuation
 tail-sum-expectation      # continuous form, maxima, geometric wait
+generating-function-method
+lcm-pair-counting         # variants argued
+incenter-coordinates      # bisector theorem twice, excenter, masses
+cross-product-area        # Lagrange identity, triple product, distance
+power-mean-inequality     # all sign cases and the limit
+incenter-area-split       # any interior point
+simson-line               # equivalence, direction, midpoint of PH
+steiner-line              # directed-angle proof through H
+induction
+total-expectation         # Wald's identity proved
+difference-of-squares-rep # the count for odd n

@@ -425,6 +425,8 @@ $a$ and $b$ are positive integers and the pairs are ordered; unordered pairs num
 ## Why it works
 For one prime $p$ with target exponent $e$, the pair's exponents $(x, y)$ must satisfy $\max(x, y) = e$ with $0 \le x, y \le e$. There are $(e + 1)^2$ pairs with both at most $e$ and $e^2$ with both at most $e - 1$, so $(e + 1)^2 - e^2 = 2e + 1$ have maximum exactly $e$. The exponents of different primes are chosen independently, so the counts multiply.
 
+The variants change only the count per prime. With $k$ numbers the same subtraction gives $(e + 1)^k - e^k$, the cube case for triples. Requiring $\gcd = 1$ as well forces $\min(x, y) = 0$, leaving only $(e, 0)$ and $(0, e)$, so $2$ per prime. For unordered pairs, the ordered count includes $(L, L)$ once, with $L$ the lcm, and every other pair twice.
+
 ## Useful observations
 - The count is a product of factors $2e + 1$, one per prime, since the primes act independently: $\operatorname{lcm}(a, b) = 72 = 2^3 \cdot 3^2$ has $7 \cdot 5 = 35$ ordered pairs.
 - With $k$ numbers, the count per prime is $(e + 1)^k - e^k$.
@@ -1225,6 +1227,8 @@ $n$ is a positive integer and $a, b$ are nonnegative integers; allowing $b = 0$ 
 
 ## Why it works
 The factors $a - b$ and $a + b$ differ by $2b$, so they have the same parity: both odd makes $n$ odd, both even makes $n$ a multiple of $4$, and so $n \equiv 2 \pmod 4$ is impossible. Conversely, if $n = st$ with $s \le t$ of the same parity, $a = \frac{s + t}{2}$ and $b = \frac{t - s}{2}$ are integers with $a^2 - b^2 = n$. Every odd $n$ has the pair $1 \cdot n$, and every multiple of $4$ has $2 \cdot \frac n2$.
+
+The two maps undo each other, so representations match same-parity factor pairs one to one. For odd $n$ every factor pair is odd, and the pairs $s \le t$ number $\left\lceil \frac{d(n)}2 \right\rceil$, the pair $s = t$ (which gives $b = 0$) occurring exactly when $n$ is a square.
 
 ## Useful observations
 - Consecutive squares differ by consecutive odd numbers, $(k + 1)^2 - k^2 = 2k + 1$, which is why every odd number is a difference of squares.
