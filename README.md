@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2010 AMC 12A, ten more (2026-10-24).** #5 ($42$), 10, 11, 13, 15, 18 (one crossing of $x+y=0$ per path: $1698$), 20 ($n=8$), 21 ($(x+1)(x-2)(x-4)$), 22 (weighted median, $49$), 24 (parity of $\sum\lfloor kx\rfloor$ on $22$ intervals: $12$). All checked by script.
 - **Step D: 2011 AMC 12B finished, 2010 AMC 12A begun (2026-10-24).** 2011 AMC 12B #20 ($X$ is the circumcenter: $3R=\tfrac{195}8$, with a figure), 21 ($66$), 22 (copied from 2011 AMC 10B #25), 23 ($195$ lattice points), 24 (alternating octagon, $8\sqrt2$), 25 ($P(67)=\tfrac{34}{67}$); 2010 AMC 12A #1 to #4. All checked by script.
 - **Step D: 2011 AMC 12A finished, 2011 AMC 12B begun (2026-10-24).** 2011 AMC 12A #24 (tangential and cyclic, $r=2\sqrt6$) and #25 ($B$, $C$, $O$, $I$, $H$ concyclic; area $\propto2\sin(B-60^\circ)+\sin2B$, maximal at $80^\circ$); 2011 AMC 12B #1, 5, 6, 7, 11 (parity of $x+y$, $3$ jumps), 14 ($-\tfrac35$), 15 ($12$), 17 ($16089$). All checked by script.
 - **Step D: 2011 AMC 12A, ten more (2026-10-24).** #12 (in the water's frame, $4.5$ hours), 13 ($AB+AC=30$), 14, 15 ($3\sqrt2$), 17 ($\tfrac65$), 18, 19 ($154$), 20 ($k=3$), 21 ($N+c=-226$), 23 (Möbius matrix with eigenvalue ratio $-1$ or $\pm i$: $\sqrt3-1$), with figures for #13, #15 and #17. All checked by script.
