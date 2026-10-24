@@ -1336,4 +1336,64 @@
     { q: String.raw`Two circles pass through $O$ and are tangent to each other there. What happens to them under inversion about $O$?`,
       s: String.raw`Each circle through $O$ becomes a line. The circles meet only at $O$, which goes to infinity, so the two lines do not meet: they are parallel, both perpendicular to the common diameter direction at $O$.` }
   );
+  add("sqrt-bc-inversion",
+    { q: String.raw`In triangle $ABC$, $AB = 4$ and $AC = 9$. Under the $\sqrt{bc}$ inversion at $A$, where does the point $P$ of segment $AB$ with $AP = 2$ go?`,
+      s: String.raw`The map multiplies distances from $A$ into $bc = 36$ and reflects in the bisector of angle $A$, which swaps the rays $AB$ and $AC$. So $P$ goes to the point of ray $AC$ at distance $\tfrac{36}2 = 18$ from $A$, twice as far as $C$.` },
+    { q: String.raw`Check $AI\cdot AI_A = bc$ on the right triangle with legs $AB = 3$, $AC = 4$.`,
+      s: String.raw`With the right angle at $A$, the centers lie on the bisector at $45^\circ$, so $AI = r\sqrt2$ and $AI_A = r_A\sqrt2$. Here $r = 1$ and $r_A = \tfrac{6}{s - a} = \tfrac61 = 6$, so $AI\cdot AI_A = 2\cdot6 = 12 = bc$.` }
+  );
+  add("barycentric-coordinates",
+    { q: String.raw`With $A = (0, 0)$, $B = (6, 0)$, $C = (0, 6)$, find the point with barycentric coordinates $(1 : 2 : 3)$.`,
+      s: String.raw`Normalize to $\left(\tfrac16, \tfrac26, \tfrac36\right)$ and average: $P = \tfrac16A + \tfrac13B + \tfrac12C = (2, 3)$.` },
+    { q: String.raw`Give the barycentric coordinates of the point $D$ on $BC$ with $BD : DC = 2 : 3$.`,
+      s: String.raw`A point on $BC$ has no weight at $A$, and the weights at $B$ and $C$ are in the inverse ratio of the distances: $D = (0 : 3 : 2)$, that is $D = \tfrac35B + \tfrac25C$.` }
+  );
+  add("trig-bash",
+    { q: String.raw`An isosceles triangle has legs $1$ and apex angle $2\theta$. For which $\theta$ is its base equal to its height?`,
+      s: String.raw`Everything in terms of $\theta$: the base is $2\sin\theta$ and the height to it is $\cos\theta$. Setting them equal gives $\tan\theta = \tfrac12$, so the apex angle is $2\arctan\tfrac12 \approx 53.1^\circ$.` },
+    { q: String.raw`A ladder of length $10$ leans against a wall. The height of its top and the distance of its foot from the wall add to $14$. Find them.`,
+      s: String.raw`With angle $\theta$ to the floor, $10\sin\theta + 10\cos\theta = 14$. Squaring, $1 + \sin2\theta = 1.96$, so $\sin2\theta = 0.96$, which gives $\sin\theta, \cos\theta = 0.8, 0.6$ in some order. The two lengths are $8$ and $6$.` }
+  );
+  add("affine-transformations",
+    { q: String.raw`Show that the midpoints of the chords of slope $1$ of the ellipse $\frac{x^2}9 + \frac{y^2}4 = 1$ lie on one line through the center, and find it.`,
+      s: String.raw`Put $x = 3u$, $y = 2v$: the ellipse becomes the unit circle and the chords get slope $\tfrac32$ in the $uv$-plane. Midpoints of parallel chords of a circle lie on the perpendicular diameter, $v = -\tfrac23u$, and the affine map keeps midpoints, so the line is $\tfrac y2 = -\tfrac23\cdot\tfrac x3$, that is $y = -\tfrac49x$. Check: the chord $y = x + k$ has midpoint $\left(-\tfrac{9k}{13}, \tfrac{4k}{13}\right)$.` },
+    { q: String.raw`A hexagon is inscribed in the ellipse $\frac{x^2}{25} + \frac{y^2}9 = 1$ as the image of a regular hexagon inscribed in the unit circle. Find its area.`,
+      s: String.raw`The map $(u, v) \mapsto (5u, 3v)$ multiplies areas by $15$, and the regular hexagon in the unit circle has area $\tfrac{3\sqrt3}2$. So the area is $\tfrac{45\sqrt3}2$.` }
+  );
+  add("directed-angles",
+    { q: String.raw`Two circles meet at $P$ and $Q$. A line through $P$ meets them again at $A$ and $B$. Show with directed angles that $\angle(QA, QB)$ does not depend on the line.`,
+      s: String.raw`On the first circle, $\angle(AQ, AP)$ is fixed, the directed angle subtending chord $QP$; on the second, so is $\angle(BQ, BP)$. Since $A$, $P$, $B$ are collinear, $AP$ and $BP$ are the same line, and in triangle $QAB$ the directed angle at $Q$ is $\angle(QA, QB) = \angle(AQ, AB) + \angle(AB, BQ)$, a sum of two fixed angles. Directed angles make this hold whichever side of $P$ the points fall.` },
+    { q: String.raw`Let $H$ be the orthocenter of triangle $ABC$ and $H'$ its reflection in line $BC$. Show with directed angles that $H'$ lies on the circumcircle.`,
+      s: String.raw`Reflection reverses directed angles, so $\angle(BH', CH') = -\angle(BH, CH) = \angle(CH, BH)$. The lines $BH$ and $CH$ are perpendicular to $AC$ and $AB$, so $\angle(CH, BH) = \angle(AB, AC)$. Hence $\angle(BH', CH') = \angle(BA, CA)$, and $A$, $B$, $C$, $H'$ are concyclic, with no case split for obtuse triangles.` }
+  );
+  add("phantom-point",
+    { q: String.raw`Show that the bisector of angle $A$ and the external bisectors of angles $B$ and $C$ meet in one point.`,
+      s: String.raw`Let $J$ be the point where the two external bisectors meet. A point on the external bisector at $B$ is equally far from lines $BA$ and $BC$, and likewise at $C$, so $J$ is equally far from all three side lines. It lies inside angle $A$, so it is on the internal bisector of $A$: the phantom $J$ is the excenter $I_A$.` },
+    { q: String.raw`Point $P$ inside square $ABCD$ has $\angle PAB = \angle PBA = 15^\circ$. Prove that triangle $PCD$ is equilateral.`,
+      s: String.raw`Build the phantom: let $P'$ be the point inside with $P'CD$ equilateral. Then $DA = DP'$ and $\angle ADP' = 90^\circ - 60^\circ = 30^\circ$, so triangle $ADP'$ is isosceles with base angles $75^\circ$, and $\angle P'AB = 90^\circ - 75^\circ = 15^\circ$; likewise $\angle P'BA = 15^\circ$. The two angles at $A$ and $B$ fix the point, so $P' = P$.` }
+  );
+  add("trig-series-complex",
+    { q: String.raw`Show that $\cos72^\circ + \cos144^\circ + \cos216^\circ + \cos288^\circ = -1$.`,
+      s: String.raw`The fifth roots of unity $e^{2\pi ik/5}$ add to $0$, so their real parts do too: $1 + \cos72^\circ + \cos144^\circ + \cos216^\circ + \cos288^\circ = 0$.` },
+    { q: String.raw`Add up the infinite series whose $k$th term, from $k = 0$, is $\cos\tfrac{k\pi}3$ divided by $2^k$.`,
+      s: String.raw`It is the real part of $\sum\left(\tfrac{e^{i\pi/3}}2\right)^k = \tfrac1{1 - e^{i\pi/3}/2}$. The denominator is $\tfrac34 - \tfrac{\sqrt3}4i$, of squared modulus $\tfrac34$, so the sum is $\tfrac43\left(\tfrac34 + \tfrac{\sqrt3}4i\right) = 1 + \tfrac i{\sqrt3}$, with real part $1$.` }
+  );
+  add("slope-to-a-point",
+    { q: String.raw`If $x^2 + y^2 = 1$, find the range of $\dfrac{y + 1}{x - 2}$.`,
+      s: String.raw`It is the slope from $(2, -1)$ to a point of the circle. The extreme slopes are the tangents: the line $y + 1 = m(x - 2)$ is $1$ from the origin when $(2m + 1)^2 = 1 + m^2$, that is $3m^2 + 4m = 0$. So the range is $-\tfrac43 \le \tfrac{y + 1}{x - 2} \le 0$.` },
+    { q: String.raw`Find the range of $\dfrac{y}{x + 1}$ for points $(x, y)$ on the segment from $(0, 0)$ to $(1, 2)$.`,
+      s: String.raw`It is the slope from $(-1, 0)$ to a point of the segment, which turns steadily from $0$ at $(0, 0)$ to $1$ at $(1, 2)$. So the range is $[0, 1]$.` }
+  );
+  add("cofactor-expansion",
+    { q: String.raw`Which row or column turns the determinant of $\begin{pmatrix} 2 & 0 & 1 \\ 3 & 0 & 4 \\ 5 & 6 & 7 \end{pmatrix}$ into a one-term expansion? Use it.`,
+      s: String.raw`Expand along the second column, whose only nonzero entry is $6$ in position $(3, 2)$, with sign $(-1)^{3+2} = -1$: $-6\begin{vmatrix} 2 & 1 \\ 3 & 4 \end{vmatrix} = -6\cdot5 = -30$.` },
+    { q: String.raw`Let $D_n$ be the determinant of the $n\times n$ matrix with $2$ on the diagonal, $1$ just above and below it, and $0$ elsewhere. Find $D_5$.`,
+      s: String.raw`Expanding along the first row gives $D_n = 2D_{n-1} - D_{n-2}$, with $D_1 = 2$ and $D_2 = 3$. So $D_n = n + 1$ and $D_5 = 6$.` }
+  );
+  add("lagrange-interpolation",
+    { q: String.raw`A cubic (or lower) agrees with $2^k$ at the four integers $k = 0, 1, 2, 3$. What does it give at $k = 4$, compared with $16$?`,
+      s: String.raw`Evaluate the Lagrange basis at $4$: $L_0(4) = -1$, $L_1(4) = 4$, $L_2(4) = -6$, $L_3(4) = 4$. Then $P(4) = -1 + 8 - 24 + 32 = 15$, one less than $2^4$.` },
+    { q: String.raw`A quadratic has $P(1) = P(2) = 0$ and $P(3) = 4$. Find $P(0)$.`,
+      s: String.raw`Only the third basis polynomial survives: $P(x) = 4\cdot\tfrac{(x - 1)(x - 2)}{(3 - 1)(3 - 2)} = 2(x - 1)(x - 2)$. So $P(0) = 4$.` }
+  );
 })();
