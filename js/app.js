@@ -3140,8 +3140,8 @@
   });
   const FAM_BY_SLUG = {}; FAMILIES.forEach(f => { FAM_BY_SLUG[famSlug(f)] = f; });
   const famCount = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].length, 0);
-  // "Written" means the problem has its solution in the app: a strategy or its cards. A problem that only has its text is not counted.
-  const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy || p.formulas.length).length, 0);
+  // "Written" means the problem has its write-up (a strategy) in the app. A problem with only its text, or only its cards, is not counted.
+  const famWritten = f => Object.keys(DB_TREE[f]).reduce((n, y) => n + DB_TREE[f][y].filter(p => p.strategy).length, 0);
   // Whether the Practice page lists the contests still to come (hidden until asked for).
   let showUnwritten = false;
   const DEFAULT_FAM = FAMILIES.slice().sort((a, b) => famCount(b) - famCount(a))[0] || null;
@@ -4700,7 +4700,7 @@
     const rows = main.map(f => {
       const years = Object.keys(DB_TREE[f]).sort();
       const all = years.reduce((n, y) => n + DB_TREE[f][y].length, 0);
-      const done = PROBLEM_DB.filter(p => p.fam === f && (p.strategy || p.formulas.length)).length;
+      const done = famWritten(f);
       const latest = years[years.length - 1];
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
@@ -4721,7 +4721,7 @@
     const card = dailyCard();
     const starIds = liveIds(getList("starred"));
     const mine = lists.items.filter(l => l.id !== "starred");
-    const nProblems = PROBLEM_DB.filter(p => p.strategy || p.formulas.length).length.toLocaleString();   // problems with their solution written
+    const nProblems = PROBLEM_DB.filter(p => p.strategy).length.toLocaleString();   // problems with their write-up
     // Each space says in one line what it holds; the sidebar already lists every subject, so the
     // front page does not repeat the four spaces a third time.
     const SPACE_WHAT = {
@@ -4893,7 +4893,7 @@
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
-              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} problem${famWritten(f) === 1 ? "" : "s"} written</span></a>
+              <a class="ct-name" href="#/problems/${famSlug(f)}/${yearsOf(f)[0]}">${f}<span class="ct-n">${famWritten(f).toLocaleString()} of ${famCount(f).toLocaleString()} problem${famCount(f) === 1 ? "" : "s"} written</span></a>
               <div class="ct-years">${yearsOf(f).map(y => `<a href="#/problems/${famSlug(f)}/${y}">${y}</a>`).join("")}</div>
             </div>`).join("")}
             ${(() => {

@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: the AMC 8 finished; honest \"written\" counts (2026-10-24).** 2000 AMC 8 #21 to #25 and all of 1999 AMC 8 written and checked by script: 2000 #24 by the Exterior Angle Theorem ($80^\circ$); 2000 #25 cuts three corners off the rectangle ($27$); 1999 #8 folds the net to put $B$ opposite $W$; 1999 #21 chases two triangles ($30^\circ$); 1999 #25 sums a geometric series ($6$). The Practice page's contest rows now read \"N of M problems written\" and, like the home page, count only problems with a strategy (a problem with cards but no strategy used to count). The AMC 12 row shows 1,251 of 1,300: 2021 Fall AMC 12A and 12B have no text yet. The AJHSME (350) is next.
 - **Step D: 2000 AMC 8 #11 to #20; end of the tenth cloud chat (2026-10-24).** Answers C ($17$), D ($353$), C ($72^\circ$), D, C ($15$), C ($400$), A ($-\tfrac23$), E, C ($50$), A (one dime). 30 AMC 8 problems (2000 #21 to #25, all of 1999) and the 350 AJHSME remain. All checked by script.
 - **Step D: 2000 AMC 8 #1 to #10 (2026-10-24).** Answers B, A, D, E, C, A, B, D ($63-22$), D ($256$), E. All checked by script.
 - **Step D: 2001 AMC 8 finished (2026-10-24).** #16 ($\tfrac56$), 17 (B), 18 ($\tfrac{11}{36}$), 19 (D), 20 (S, Q, M), 21 ($35$), 22 ($97$), 23 ($4$ shapes, by script), 24 ($5$), 25 ($7425=3\cdot2475$, by search). All checked by script.
