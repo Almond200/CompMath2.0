@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2020 AMC 8 finished, 2019 AMC 8 begun (2026-10-24).** 2020 AMC 8 #21 ($35-7=28$ by reflection), 22 ($1+8+10+64=83$), 23 ($150$ surjections), 24 ($\tfrac6{25}$), 25 ($b=a+c-2020=651$); 2019 AMC 8 #1 to #5 (D, E, E, D, B). All checked by script.
 - **Step D: 2020 AMC 8 #11 to #20 (2026-10-24).** Answers E, A, B, D, C, E ($B$ on three lines, $5$), B ($7$), A ($240$), B ($4$), B ($24.2$). All checked by script.
 - **Step D: 2020 AMC 8 #1 to #10 (2026-10-24).** Answers E, C, D, B ($37$ dots), C, A, C ($15$), C ($8072$), D ($8+12=20$), C ($12$). All checked by script.
 - **Step D: 2022 AMC 8 finished (2026-10-24).** #16 ($25$), 17 ($2$), 18 (Varignon, $40$), 19 ($4$ students), 20 ($x\gt7$, $8$), 21 ($8$ and $17$), 22 (minute $17$), 23 ($42+42=84$), 24 ($192$), 25 ($p_{n+1}=\tfrac{1-p_n}3$, $\tfrac7{27}$). All checked by script.
