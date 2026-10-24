@@ -694,6 +694,8 @@ The triangle has a right angle; $a$ and $b$ are the legs and $c$ the hypotenuse.
 ## Why it works
 The tangent lengths from the right-angle vertex to the incircle are both $r$, since the incircle together with the two legs and the radii to the touch points makes an $r \times r$ square in the corner. The tangent lengths from the other two vertices add up with those to the hypotenuse, so $c = (a - r) + (b - r)$, giving $r = \frac{a + b - c}{2}$. Thales' Theorem gives $R = \frac c2$, since the hypotenuse subtends a right angle and is therefore a diameter.
 
+Then $a + b = 2r + c = 2r + 2R$, and the incenter is the far corner of the $r \times r$ square, at distance $r\sqrt2$ from the right angle.
+
 ## Useful observations
 - The inradius needs no area: it comes from the three sides at once.
 - The integer right triangles $(3, 4, 5)$, $(5, 12, 13)$, and $(8, 15, 17)$ have $r = 1$, $2$, and $3$.
@@ -1018,7 +1020,9 @@ The line does not pass through a vertex. If it is parallel to a side, the point 
 ## Why it works
 Drop perpendiculars from $A$, $B$, $C$ to the line, of lengths $d_A$, $d_B$, $d_C$. The right triangles at $F$ are similar, so $\frac{AF}{FB} = \frac{d_A}{d_B}$, and likewise $\frac{BD}{DC} = \frac{d_B}{d_C}$ and $\frac{CE}{EA} = \frac{d_C}{d_A}$. The product telescopes to $1$.
 
-The $-1$ for [[directed-lengths|directed lengths]] records the sign: a line cuts either one or all three side lines outside the segments, which makes an odd number of the three ratios negative.
+The $-1$ for [[directed-lengths|directed lengths]] records the sign. A line meets the boundary of the triangle, which is convex, in $0$ or $2$ points, so it cuts either one or all three side lines outside the segments, never exactly two, which makes an odd number of the three ratios negative.
+
+For the converse, suppose $D$, $E$, $F$ give the product $-1$, and let line $EF$ meet $BC$ at $D'$. Menelaus for that line gives the product $-1$ with $D'$, so $\frac{BD}{DC} = \frac{BD'}{D'C}$, and a directed ratio fixes the point: $D = D'$. If $EF \parallel BC$, the same comparison forces the ratio $-1$ at infinity, the parallel case.
 
 ## Useful observations
 - Menelaus' Theorem is the collinearity counterpart of Ceva's: three points on a line instead of three cevians through a point.
@@ -2092,9 +2096,13 @@ Never alone: it is the last step once [[coordinate-bash|coordinates]] are set up
 The polygon is simple, with no self-crossings, and every vertex is a lattice point. A hole is a separate boundary and changes the formula as above.
 
 ## Why it works
-Both sides are additive when gluing polygons along a shared edge, and the formula checks on unit lattice triangles, with area $\frac12$, $I = 0$, and $B = 3$. Induction on triangulations does the rest.
+Step 1, additivity. Glue two lattice polygons along a shared boundary path with $j$ lattice points, ends included. The $j - 2$ inner points of the path become interior, and the boundary loses $2j - 2$ counts, so $I = I_1 + I_2 + j - 2$ and $B = B_1 + B_2 - 2j + 2$. Then $I + \frac B2 - 1 = \left(I_1 + \frac{B_1}2 - 1\right) + \left(I_2 + \frac{B_2}2 - 1\right)$, exactly like area.
 
-For a triangle of this kind with $I = 0$ and $B = 3$, the formula gives $0 + \frac32 - 1 = \frac12$, the area of the smallest lattice triangle. Every lattice polygon can be cut into such triangles, so the formula holds throughout.
+Step 2, rectangles and right triangles. An $a \times b$ rectangle with sides on grid lines has $I = (a - 1)(b - 1)$ and $B = 2a + 2b$, so $I + \frac B2 - 1 = ab$. Its diagonal splits it into two congruent right triangles with equal counts, so by Step 1 each has $I + \frac B2 - 1 = \frac{ab}2$, its area.
+
+Step 3, all polygons. Any lattice triangle is its bounding rectangle minus at most three such right triangles and a rectangle, so by Step 1 the formula holds for it, and any simple lattice polygon is cut by diagonals into lattice triangles, so Step 1 again gives the formula.
+
+A side from $(x_1, y_1)$ to $(x_2, y_2)$ has the lattice points $(x_1, y_1) + \frac kg(\Delta x, \Delta y)$ for $k = 0, \ldots, g$, with $g = \gcd(\lvert\Delta x\rvert, \lvert\Delta y\rvert)$, which is the second Key form; the third is the first rearranged. The holes form is on [[picks-with-holes|its own card]].
 
 ## Useful observations
 - Three quantities, one equation: any two give the third.
@@ -2394,7 +2402,7 @@ The coordinates are Cartesian, with the axes mutually perpendicular. Every plana
 ## Why it works
 One Pythagorean step per axis. Take the axis-aligned box whose opposite corners are the two points. Its base diagonal is $\sqrt{(\Delta x)^2 + (\Delta y)^2}$ by the Pythagorean Theorem, and the remaining rise $\Delta z$ is perpendicular to the whole base plane, so a second right triangle closes on it.
 
-Perpendicular contributions add in squares, one axis at a time, which is why the pattern keeps going into any number of dimensions.
+Perpendicular contributions add in squares, one axis at a time, which is why the pattern keeps going into any number of dimensions. The midpoint and the division point are the vector formula $P_1 + \frac{k}{1 + k}(P_2 - P_1)$ read coordinate by coordinate, and the sphere is the set where the distance to the center is $r$, squared. For two spheres, the triangle inequality bounds the distance between any two of their points by $d + r_1 + r_2$ and below by $d - r_1 - r_2$, with equality only on the line of centers.
 
 ## Useful observations
 - Coordinatizing first lets the formula do the rest, which is the usual reason the three-dimensional playbook opens by choosing axes.
@@ -7638,11 +7646,13 @@ The point forms need $(x_0, y_0)$ on the curve; for a point off the curve the sa
 ## Why it works
 A line meets a conic where a quadratic equation holds, and it is tangent exactly when the two intersections merge, that is, when the quadratic has a double root.
 
-Substitute $y = mx + k$ into $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ and clear denominators: $(b^2 + a^2m^2)x^2 + 2a^2mkx + a^2(k^2 - b^2) = 0$. Its discriminant simplifies to $4a^2b^2(a^2m^2 + b^2 - k^2)$, which is zero exactly when $k^2 = a^2m^2 + b^2$. For the hyperbola, $b^2$ becomes $-b^2$; for the parabola, $x^2 = 4p(mx + k)$ has discriminant $16p^2m^2 + 16pk$, zero when $k = -pm^2$.
+Substitute $y = mx + k$ into $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ and clear denominators: $(b^2 + a^2m^2)x^2 + 2a^2mkx + a^2(k^2 - b^2) = 0$. Its discriminant simplifies to $4a^2b^2(a^2m^2 + b^2 - k^2)$, which is zero exactly when $k^2 = a^2m^2 + b^2$. For the hyperbola, $b^2$ becomes $-b^2$, and $k^2 = a^2m^2 - b^2$ needs $\lvert m\rvert \ge \frac ba$, with $\lvert m\rvert = \frac ba$ giving $k = 0$, an asymptote rather than a tangent. For the parabola, $x^2 = 4p(mx + k)$ has discriminant $16p^2m^2 + 16pk$, zero when $k = -pm^2$.
 
 {{figure:double}}
 
-The point form comes from the normal direction. The ellipse is a level curve of $\frac{x^2}{a^2} + \frac{y^2}{b^2}$, whose gradient at $(x_0, y_0)$ is proportional to $\left(\frac{x_0}{a^2}, \frac{y_0}{b^2}\right)$. The tangent is the line through $(x_0, y_0)$ perpendicular to it, $\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = \frac{x_0^2}{a^2} + \frac{y_0^2}{b^2} = 1$.
+The point form comes from the normal direction. The ellipse is a level curve of $\frac{x^2}{a^2} + \frac{y^2}{b^2}$, whose gradient at $(x_0, y_0)$ is proportional to $\left(\frac{x_0}{a^2}, \frac{y_0}{b^2}\right)$. The tangent is the line through $(x_0, y_0)$ perpendicular to it, $\frac{xx_0}{a^2} + \frac{yy_0}{b^2} = \frac{x_0^2}{a^2} + \frac{y_0^2}{b^2} = 1$. The hyperbola works the same way, and for $x^2 - 4py$ the gradient $(2x_0, -4p)$ gives $x_0x - 2py = x_0^2 - 2py_0 = 2py_0$, which is $xx_0 = 2p(y + y_0)$.
+
+For the director circle, the tangents from $(x, y)$ have slopes $m$ with $(y - mx)^2 = a^2m^2 + b^2$, that is $(x^2 - a^2)m^2 - 2xym + (y^2 - b^2) = 0$. They are perpendicular when the product of the roots is $-1$: $y^2 - b^2 = a^2 - x^2$, the circle $x^2 + y^2 = a^2 + b^2$.
 
 ## Useful observations
 - Every point form follows one rule: replace $x^2$ by $xx_0$, $y^2$ by $yy_0$, $x$ by $\frac{x + x_0}{2}$, and $y$ by $\frac{y + y_0}{2}$. For the circle $x^2 + y^2 = r^2$ it gives $xx_0 + yy_0 = r^2$.
@@ -7668,11 +7678,13 @@ An AMC 12 and AIME topic: finding the tangent at a point, the parameter that mak
 The conics are centered at the origin with axes along the coordinate axes; for a conic centered at $(h, k)$, add $h$ and $k$ to the coordinates. On an ellipse, $t$ is the eccentric angle, the angle of the matching point on the circle of radius $a$, not the angle of the point itself from the center unless $a = b$.
 
 ## Why it works
-Each form is a Pythagorean identity in disguise. For the ellipse, $\frac{(a\cos t)^2}{a^2} + \frac{(b\sin t)^2}{b^2} = \cos^2 t + \sin^2 t = 1$. For the hyperbola, $\sec^2 t - \tan^2 t = 1$. For the parabola, $(2pt)^2 = 4p^2t^2 = 4p \cdot pt^2$.
+Each form is a Pythagorean identity in disguise. For the ellipse, $\frac{(a\cos t)^2}{a^2} + \frac{(b\sin t)^2}{b^2} = \cos^2 t + \sin^2 t = 1$, and conversely any point of the ellipse has $\left(\frac xa, \frac yb\right)$ on the unit circle, so it is reached by exactly one $t$. For the hyperbola, $\sec^2 t - \tan^2 t = 1$, and $\sec t$ takes every value of absolute value at least $1$, which covers both branches. For the parabola, $(2pt)^2 = 4p^2t^2 = 4p \cdot pt^2$, and the slope $\frac{dy}{dx} = \frac{x}{2p}$ at $x = 2pt$ is $t$.
 
 {{figure:eccentric}}
 
-The ellipse picture explains the name of $t$. Take the point $Q = (a\cos t, a\sin t)$ on the circle of radius $a$ and squash the plane vertically by the factor $\frac ba$: $Q$ moves straight down to $(a\cos t, b\sin t)$ on the ellipse, so the ellipse is the circle squashed, and $t$ is the circle's angle.
+The ellipse picture explains the name of $t$. Take the point $Q = (a\cos t, a\sin t)$ on the circle of radius $a$ and squash the plane vertically by the factor $\frac ba$: $Q$ moves straight down to $(a\cos t, b\sin t)$ on the ellipse, so the ellipse is the circle squashed, and $t$ is the circle's angle. The squash multiplies areas by $\frac ba$, so the area is $\pi a^2 \cdot \frac ba = \pi ab$.
+
+On the parabola, the chord from $t_1$ to $t_2$ has slope $\frac{p(t_2^2 - t_1^2)}{2p(t_2 - t_1)} = \frac{t_1 + t_2}2$, and at $x = 0$ it is at height $pt_1^2 - pt_1(t_1 + t_2) = -pt_1t_2$, which is the focus height $p$ exactly when $t_1t_2 = -1$.
 
 ## Useful observations
 - The largest value of $px + qy$ on the ellipse is $\sqrt{p^2a^2 + q^2b^2}$, since $pa\cos t + qb\sin t$ is at most that by [[harmonic-addition|harmonic addition]]; for $x + y$ it is $\sqrt{a^2 + b^2}$.
@@ -7726,11 +7738,14 @@ AMC 12 and AIME problems that give a focal distance and ask for a point, or ask 
 The parabola's axis is vertical, $y = ax^2 + bx + c$, and the line or the second parabola crosses it at two points $x_1 \lt x_2$. For a tilted parabola the $\frac43$ form still holds.
 
 ## Why it works
-Archimedes filled the segment with triangles. Let the chord span the width $d = x_2 - x_1$, and let $T$ be the triangle with its third vertex $M$ above the midpoint. The parabola sits $\lvert a\rvert\left(\frac d2\right)^2$ away from the chord, measured vertically, at that midpoint, so $T = \frac12 \cdot d \cdot \frac{\lvert a\rvert d^2}{4} = \frac{\lvert a\rvert d^3}{8}$.
+Archimedes filled the segment with triangles. Let the chord span the width $d = x_2 - x_1$. The parabola minus the chord's line is $a(x - x_1)(x - x_2)$, which at the midpoint has size $\lvert a\rvert\left(\frac d2\right)^2$. The tangent there has slope $2a\cdot\frac{x_1 + x_2}2 + b$, the chord's slope, so the triangle $T$ with that third vertex has area $\frac12 \cdot d \cdot \frac{\lvert a\rvert d^2}{4} = \frac{\lvert a\rvert d^3}{8}$.
 
 {{figure:exhaust}}
 
-The two leftover pieces are segments of width $\frac d2$, so each new triangle has area $\frac{\lvert a\rvert (d/2)^3}{8} = \frac T8$, and the pair adds $\frac T4$. Repeating forever fills the segment with $$T\left(1 + \frac14 + \frac1{16} + \cdots\right) = \frac43 T = \frac{\lvert a\rvert d^3}{6}.$$
+The two leftover pieces are segments of width $\frac d2$, so each new triangle has area $\frac{\lvert a\rvert (d/2)^3}{8} = \frac T8$, and the pair adds $\frac T4$. Repeating forever fills the segment with
+$$T\left(1 + \frac14 + \frac1{16} + \cdots\right) = \frac43 T = \frac{\lvert a\rvert d^3}{6}.$$
+
+Between two parabolas the difference is a quadratic with leading coefficient $a_1 - a_2$ and the same crossings, so the same value results. Under $y = x^2$ from $0$ to $b$, the triangle under the chord to $(b, b^2)$ has area $\frac{b^3}2$, and the segment is $\frac{b^3}6$, leaving $\frac{b^3}3$. A tilted parabola is a rotated one, and the triangle is defined by the tangent parallel to the chord, which a rotation keeps, so the ratio $\frac43$ survives.
 
 ## Useful observations
 - The area does not depend on where the chord sits or how it tilts, only on the leading coefficient and the width $x_2 - x_1$.

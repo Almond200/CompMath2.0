@@ -222,3 +222,13 @@ hypergeometric            # exchange form and variance derived
 sum-zero-identities
 triangular-numbers
 pythagorean-identities
+right-triangle-inradius
+menelaus-theorem          # converse and the outside-count proved
+distance-3d
+binets-formula            # squares, Cassini, addition, gcd proved
+conic-parametric
+tree-basics               # all three pairs, cycles, leaf bound
+picks-theorem             # full proof: additivity, rectangles, triangles
+conic-tangent-lines       # parabola point form, hyperbola slopes, director circle
+committee-chair
+parabolic-segment-area

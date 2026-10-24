@@ -84,7 +84,7 @@ window.MATH_SECTIONS.push({
         {
           id: "handshakes-diagonals",
           name: "Handshakes, Games, Diagonals & Triangles",
-          latex: String.raw`\text{pairs} = \binom{n}{2} = \frac{n(n-1)}{2}, \qquad \text{diagonals} = \frac{n(n-3)}{2}, \qquad \text{triangles} = \binom{n}{3}`,
+          latex: String.raw`\text{pairs} = \binom{n}{2} = \frac{n(n-1)}{2}, \qquad \text{diagonals} = \frac{n(n-3)}{2}, \qquad \text{triangles} = \binom{n}{3}, \qquad \text{diagonal crossings} = \binom{n}{4}`,
           description: String.raw`Handshakes, round-robin games, diagonals, and triangles are all counts of unordered pairs or triples: $n$ people shake hands $\binom n2 = \frac{n(n - 1)}{2}$ times, $n$ teams play $\binom n2$ games in a round robin, an $n$-gon has $\binom n2 - n = \frac{n(n - 3)}{2}$ diagonals, and $n$ points with no three on a line determine $\binom n3$ triangles. Inside a convex $n$-gon the diagonals cross at $\binom n4$ points when no three meet at one point, because every four vertices give exactly one crossing.`,
           keywords: ["handshakes", "round robin", "diagonals", "pairs", "points determine", "diagonal intersections", "n choose 4"],
           importance: "medium",

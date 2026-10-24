@@ -453,7 +453,10 @@ $n \ge 1$ and $1 \le k \le n$ for the absorption rule. The sums are over all $k$
 ## Why it works
 Count the pairs (committee, chair) twice: pick the $k$-person committee and then its chair, in $k\binom nk$ ways, or pick the chair first and then the other $k - 1$ members, in $n\binom{n-1}{k-1}$ ways. The two counts are equal.
 
-Summing over $k$ counts all pairs: the chair is chosen first, in $n$ ways, and each of the remaining $n - 1$ people is independently in or out, in $2^{n-1}$ ways. The same sum is also the derivative of $(1 + x)^n$ at $x = 1$.
+Summing over $k$ counts all pairs: the chair is chosen first, in $n$ ways, and each of the remaining $n - 1$ people is independently in or out, in $2^{n-1}$ ways. The same sum is also the derivative of $(1 + x)^n$ at $x = 1$. Dividing by the $2^n$ subsets gives the expected size $\frac n2$.
+
+For the squares, a committee with a chair and a vice-chair counts $k(k - 1)\binom nk = n(n - 1)\binom{n-2}{k-2}$, so
+$$\sum k^2\binom nk = \sum k(k - 1)\binom nk + \sum k\binom nk = n(n - 1)2^{n-2} + n2^{n-1} = n(n + 1)2^{n-2}.$$
 
 ## Useful observations
 - Operationally it is an absorption rule: it removes a factor of $k$ from a [[weighted-binomial-sums|weighted binomial sum]], converting $\sum k\binom nk$ into $n\sum\binom{n-1}{k-1} = n \cdot 2^{n-1}$.
@@ -3049,9 +3052,11 @@ Finite simple graphs. A tree with one vertex has no edges and no leaves.
 ## Why it works
 The two ends of a longest path in a tree are leaves: any other neighbor of an end would either extend the path or close a cycle. So a tree with at least two vertices has at least two leaves.
 
-Removing a leaf and its edge leaves a smaller tree, still connected and still without cycles, with one vertex and one edge fewer. Repeating down to a single vertex with no edges shows that the number of edges is always one less than the number of vertices. Two different paths between the same two vertices would together contain a cycle, so the path is unique.
+Removing a leaf and its edge leaves a smaller tree, still connected and still without cycles, with one vertex and one edge fewer. Repeating down to a single vertex with no edges shows that the number of edges is always one less than the number of vertices. Two different paths between the same two vertices would together contain a cycle, so the path is unique. Adding an edge $uv$ closes exactly one cycle, the unique $u$–$v$ path plus the new edge, and removing an edge disconnects its ends, since another path would make a cycle.
 
 {{figure:leaves}}
+
+The other two pairs: each component of a forest is a tree, so a forest with $c$ components has $n - c$ edges, and acyclic with $n - 1$ edges forces $c = 1$. A connected graph with a cycle stays connected when one cycle edge is removed; removing such edges until none is left gives a spanning tree, so connected with $n - 1$ edges means nothing was removed. For the leaf bound, removing a vertex of largest degree $\Delta$ leaves $\Delta$ branches, and each branch contains a leaf of the tree: a single vertex, or one of its two leaves not joined to the removed vertex.
 
 ## Useful observations
 - The degrees of a tree add up to $2(n - 1)$, by the [[handshake-lemma|Handshake Lemma]], so the average degree is just under $2$.
