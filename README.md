@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2009 AMC 8 #6 to #15 (2026-10-24).** Answers A, C, B, B ($33-10=23$), D, D, D ($\tfrac79$), B, B ($48$), D. All checked by script.
 - **Step D: 2010 AMC 8 finished, 2009 AMC 8 begun (2026-10-24).** 2010 AMC 8 #21 ($240$, working backward), 22 ($198$), 23 ($\tfrac12$), 24 (fourth powers), 25 ($24$); 2009 AMC 8 #1 to #5. All checked by script.
 - **Step D: 2010 AMC 8 #11 to #20 (2026-10-24).** Answers B, D, E, C, C, B, D ($\tfrac23$), C ($6:\pi$), C ($64\pi$), A. All checked by script.
 - **Step D: 2010 AMC 8 #1 to #10 (2026-10-24).** Answers C, D, C, C, B, E, B ($10$ coins), D, D, B. All checked by script.
