@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2004 AMC 8 finished, 2003 AMC 8 begun (2026-10-24).** 2004 AMC 8 #21 ($\tfrac23$), 22 ($\tfrac38$), 23 (D), 24 ($\tfrac{38}5$), 25 ($28-2\pi$); 2003 AMC 8 #1 to #5. All checked by script.
 - **New card: Area of a Neighborhood (Steiner's Formula), approved P27 (2026-10-24).** $A_r=A+Pr+\pi r^2$ for a convex region, with the box form $V+Sr+\tfrac\pi4Lr^2+\tfrac43\pi r^3$, a full proof, an example and a figure; in Combinatorial & Convex Geometry, on the AMC 10/12 Geometry route and in Every Way to Find an Area. 2004 AMC 12A #24 and 2003 AIME I #5 now cite it. Search index rebuilt for 743 cards (157/187 top-1, MRR 0.907). Also 2004 AMC 8 #11 to #20 earlier today.
 - **Step D: 2004 AMC 8 #11 to #20 (2026-10-24).** Answers C, B, E, C ($22\tfrac12$), C, C, D, A, B, D. All checked by script.
 - **Step D: 2004 AMC 8 #1 to #10 (2026-10-24).** Answers B, B, A, B, D, C, B, B, D, E. All checked by script.
