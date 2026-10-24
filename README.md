@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2006 AMC 8 #11 to #20 (2026-10-24).** Answers C ($17$), D, D, B, C ($456$), E ($7200$), B, D, D, C. All checked by script.
 - **Step D: 2006 AMC 8 #1 to #10 (2026-10-24).** Answers D, C, A, B, D, C, B, E ($75\%$), C, A. All checked by script.
 - **Step D: 2007 AMC 8 finished (2026-10-24).** #16 (A), 17 ($40\%$), 18 ($3015$, $8$), 19 ($79$), 20 ($48$), 21 ($\tfrac47$), 22 ($5$), 23 ($6$), 24 ($\tfrac12$), 25 ($\tfrac{35}{72}$). All checked by script.
 - **Step D: 2007 AMC 8 #6 to #15 (2026-10-24).** Answers E, D, B, B (grid completed by search), D, D (tile placement by search), A, C, C, A. All checked by script.
