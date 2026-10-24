@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2011 AMC 12A finished, 2011 AMC 12B begun (2026-10-24).** 2011 AMC 12A #24 (tangential and cyclic, $r=2\sqrt6$) and #25 ($B$, $C$, $O$, $I$, $H$ concyclic; area $\propto2\sin(B-60^\circ)+\sin2B$, maximal at $80^\circ$); 2011 AMC 12B #1, 5, 6, 7, 11 (parity of $x+y$, $3$ jumps), 14 ($-\tfrac35$), 15 ($12$), 17 ($16089$). All checked by script.
 - **Step D: 2011 AMC 12A, ten more (2026-10-24).** #12 (in the water's frame, $4.5$ hours), 13 ($AB+AC=30$), 14, 15 ($3\sqrt2$), 17 ($\tfrac65$), 18, 19 ($154$), 20 ($k=3$), 21 ($N+c=-226$), 23 (Möbius matrix with eigenvalue ratio $-1$ or $\pm i$: $\sqrt3-1$), with figures for #13, #15 and #17. All checked by script.
 - **Step D: 2012 AMC 12B finished, 2011 AMC 12A begun (2026-10-24).** 2012 AMC 12B #13, 17 ($\tan\theta=3$, $6.4$), 19 ($t=\tfrac34$), 20 (three valid trapezoids, $63$), 21 ($BX=21\sqrt3-20$, side $29\sqrt3$), 23 (the triangle inequality on $(z-1)P(z)$, $92$), 24 ($18$), 25 (reflection pairs leave the triangles at the corner $(4,0)$: $\tfrac{625}{144}$); 2011 AMC 12A #2 (the figure's stacking order) and #9 ($441$). All checked by script.
 - **Step D: 2012 AMC 12A finished, 2012 AMC 12B begun (2026-10-24).** 2012 AMC 12A #20 (the unused powers add to $35$: $2^6$), 22 (four kinds of plane, $27-7=20$, with a cube figure), 23 ($P(2)=P(0)=0.16$), 24 (the terms interleave; only $k=1341$ is fixed), 25 ($2n^2$ solutions, $n=32$); 2012 AMC 12B #4, 7, 10, 11, 12. All checked by script.
