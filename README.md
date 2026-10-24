@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2022 AMC 8 #6 to #15 (2026-10-24).** Answers C, B, B, B, E (home at $2{:}30$), D ($44$), B, D ($9$), D ($24$), C (lowest ratio $\tfrac{2.5}3$, read from the plotted points). All checked by script.
 - **Step D: 2023 AMC 8 finished, 2022 AMC 8 begun (2026-10-24).** 2023 AMC 8 #21 ($2$ ways), 22 ($a^3b^5=2^55^3$), 23 ($\tfrac4{256}$), 24 ($h=14.6$), 25 ($d=17$, $a_{14}=224$); 2022 AMC 8 #1 (Pick, $10$), 2 (its Defined Operation tag kept), 3 ($4$), 4 (a clockwise quarter turn, (E)), 5. All checked by script.
 - **Step D: 2023 AMC 8 #11 to #20 (2026-10-24).** Answers C, B ($\tfrac{11}{36}$), D ($48$), E ($55$), B ($4.2$), C ($133,134,133$), A (the six-face band closes up; checked by labelling the folded vertices), D ($411$), C ($5:12$), D ($60$). All checked by script.
 - **Step D: 2023 AMC 8 begun, #1 to #10 (2026-10-24).** Answers D, E, B, D (spiral values $19,39,23,47$), B, C, B, A (two wins per round), B ($8$ s, read from the enlarged graph), D. All checked by script.
