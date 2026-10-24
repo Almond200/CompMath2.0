@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2016 AMC 8 #1 to #10 (2026-10-24).** Answers C, A, A, B, E ($73$), B, B, C, B, D. All checked by script.
 - **Step D: 2017 AMC 8 finished (2026-10-24).** #16 ($\tfrac{12}5$), 17 ($45$), 18 ($30-6=24$), 19 ($98!\cdot10^4$, $26$), 20 ($\tfrac{56}{225}$), 21 ($0$), 22 ($9r=30$), 23 ($25$), 24 ($365-219=146$), 25 ($4\sqrt3-\tfrac{4\pi}3$). All checked by script.
 - **Step D: 2017 AMC 8 #6 to #15 (2026-10-24).** Answers D, A, D ($98$), D, C, C ($361$), D, B, C ($93\%$), D ($24$ paths, by search). All checked by script.
 - **Step D: 2018 AMC 8 finished, 2017 AMC 8 begun (2026-10-24).** 2018 AMC 8 #21 ($n+4$ divisible by $198$, $5$), 22 ($s^2=108$), 23 ($\tfrac{40}{56}$), 24 ($R^2=\tfrac32$), 25 ($58$ cubes); 2017 AMC 8 #1 to #5. All checked by script.
