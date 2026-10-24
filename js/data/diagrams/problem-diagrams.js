@@ -5092,4 +5092,35 @@
       cap(430, 270, "The unit square with an equilateral triangle on each side and two more on each of those, all of side 1; S is the smallest convex polygon around it." + MM(ok))
     ]);
   })();
+
+  // 2008 AMC 12B #18: the cut through E perpendicular to AB and CD: the slant heights 15 and 13 over the
+  // base width 14 make a 13-14-15 triangle whose height is the pyramid's.
+  PROB["2008-amc-12b-18"] = (() => {
+    const P = [0, 0], R = [14, 0], xE = (225 - 169 + 196) / 28, E = [xE, Math.sqrt(225 - xE * xE)], F = [xE, 0];
+    const ok = Math.abs(dist(E, R) - 13) < 1e-12 && Math.abs(E[1] - 12) < 1e-12;
+    const Q = fitQ([P, R, E], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([P, R, E].map(Q), DIM, 2), seg(Q(E), Q(F), ACC, 1.5, "5 4"), rightAngle(Q(F), Q(E), Q(R), 9),
+      txt(add(Q(P), [-26, 4]), "on AB", DIM, 11.5), txt(add(Q(R), [28, 4]), "on CD", DIM, 11.5), txt(add(Q(E), [0, -10]), "E"),
+      txt(add(Q(mid(P, E)), [-14, 0]), "15", DIM, 12), txt(add(Q(mid(R, E)), [14, 0]), "13", DIM, 12), txt(add(Q(mid(P, R)), [0, 16]), "14", DIM, 12),
+      cap(430, 270, "The cut through the apex E perpendicular to AB and CD: the heights of faces ABE and CDE are 15 and 13, across the base width 14." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #25: trapezoid ABCD (AB ∥ CD, 11, 5, 19, 7) with the bisectors meeting at P (from A, D) and Q (from B, C).
+  PROB["2008-amc-12b-25"] = (() => {
+    const h = Math.sqrt(49 - 5.5 * 5.5), D = [0, 0], C = [19, 0], A = [5.5, h], B = [16.5, h];
+    const bis = (V, X, Y) => add(V, add(norm(sub(X, V)), norm(sub(Y, V))));
+    const P = lineInt(A, bis(A, B, D), D, bis(D, A, C)), Qp = lineInt(B, bis(B, A, C), C, bis(C, B, D));
+    const ok = Math.abs(dist(B, C) - 5) < 1e-12 && Math.abs(P[1] - h / 2) < 1e-9 && Math.abs(Qp[1] - h / 2) < 1e-9;
+    const Q = fitQ([A, B, C, D], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, Qp, C, D, P].map(Q), ACC, 1.2, ACCS), poly([A, B, C, D].map(Q), DIM, 2),
+      seg(Q(A), Q(P), GLD, 1.4), seg(Q(D), Q(P), GLD, 1.4), seg(Q(B), Q(Qp), GLD, 1.4), seg(Q(C), Q(Qp), GLD, 1.4),
+      txt(add(Q(A), [-6, -8]), "A"), txt(add(Q(B), [6, -8]), "B"), txt(add(Q(C), [12, 6]), "C"), txt(add(Q(D), [-12, 6]), "D"),
+      txt(add(Q(P), [12, 4]), "P", GLD, 12.5), txt(add(Q(Qp), [-12, 4]), "Q", GLD, 12.5),
+      txt(add(Q(mid(A, B)), [0, -8]), "11", DIM, 12), txt(add(Q(mid(B, C)), [12, 0]), "5", DIM, 12), txt(add(Q(mid(C, D)), [0, 16]), "19", DIM, 12), txt(add(Q(mid(D, A)), [-12, 0]), "7", DIM, 12),
+      cap(430, 270, "Trapezoid ABCD with AB ∥ CD; the bisectors at A and D meet at P, those at B and C at Q, and the hexagon ABQCDP is shaded." + MM(ok))
+    ]);
+  })();
 })();
