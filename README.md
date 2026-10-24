@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2005 AMC 12B begun (2026-10-24).** #7 ($24$), 8, 13 ($\log_4128=\tfrac72$), 14 ($6+6\sqrt2$), 15 (missing $4$), 16 ($1+\sqrt3$), 17 (one tuple), 18 ($90-12.5\pi\approx50.7$, with a figure), 20 ($34$), 21 ($k=2$). All checked by script.
 - **Step D: 2005 AMC 12A finished (2026-10-24).** #16 ($r=9s$), 17 (a pyramid of volume $\tfrac1{12}$), 18 ($266-1-165=100$), 19 ($2004_9=1462$), 20 ($2^{2005}$), 21 ($2$ triples), 22 (diagonal $20$), 23 ($\tfrac{62}{600}$), 24 ($27-5=22$), 25 ($64+8+8=80$ triangles). All checked by script.
 - **Step D: 2006 AMC 12 finished, 2005 AMC 12A begun (2026-10-24).** 2006 AMC 12B #21 ($b^2=\tfrac{xy}2$, $8\sqrt{1003}$), 22 ($492$, e.g. $624,624,758$), 23 (a $90^\circ$ rotation, $85+42\sqrt2$), 24 ($(u+\tfrac12)(v-\tfrac12)\ge0$, $\tfrac{\pi^2}6$), 25 ($324$); 2005 AMC 12A #1, 7, 8, 12, 14. All checked by script.
 - **Step D: 2006 AMC 12A finished, 2006 AMC 12B begun (2026-10-24).** 2006 AMC 12B #4, 5, 7, 8 (twin of 10B #12), 9 ($3+10+21=34$), 12 ($b=4$), 15 (twin of 10B #24), 16 ($25\sqrt3$), 18 ($121$ end points), 20 ($\tfrac16$). All checked by script.

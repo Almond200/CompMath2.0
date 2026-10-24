@@ -5166,4 +5166,21 @@
       cap(430, 330, "Extending two sides of the hexagon that skip one side between them: from the highlighted 30° arc beyond W, all three sides between them are in view." + MM(ok))
     ]);
   })();
+  PROB["2005-amc-12b-18"] = (() => {
+    const A = [2, 2], B = [7, 7], O = mid(A, B), rr = dist(A, B) / 2;
+    const ok = Math.abs(rr * rr * Math.PI - 12.5 * Math.PI) < 1e-9 && Math.abs(90 - rr * rr * Math.PI - 50.73) < 0.01;
+    const Q = fitQ([[-0.8, -0.8], [15, 15]], 26, 430, 330), k = Q.k;
+    const strip = [[4, 0], [14, 0], [0, 14], [0, 4]];
+    return wrap(430, 330, [
+      poly(strip.map(Q), ACC, 1.5, ACCS),
+      circ(Q(O), rr * k, DIM, 1.5, "var(--bg-card)"),
+      seg(Q([0, 0]), Q([15, 0]), FNT, 1.2), seg(Q([0, 0]), Q([0, 15]), FNT, 1.2),
+      seg(Q(A), Q(B), DIM, 1.5), dot(Q(A), DIM, 3.5), dot(Q(B), DIM, 3.5),
+      txt(add(Q(A), [-10, 14]), "A"), txt(add(Q(B), [12, -6]), "B"),
+      txt(add(Q([4, 0]), [0, 16]), "4", DIM, 11), txt(add(Q([14, 0]), [0, 16]), "14", DIM, 11),
+      txt(add(Q([0, 4]), [-12, 4]), "4", DIM, 11), txt(add(Q([0, 14]), [-14, 4]), "14", DIM, 11),
+      txt(Q([10.2, 1.6]), "R", ACC, 13),
+      cap(430, 330, "R is the strip 4 < x + y < 14 in the first quadrant with the disk on diameter AB removed." + MM(ok))
+    ]);
+  })();
 })();
