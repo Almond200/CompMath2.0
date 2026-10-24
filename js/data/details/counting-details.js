@@ -1643,7 +1643,14 @@ Drawing a figure without lifting the pencil, closed walks that use every street 
 The maximum needs general position: no two lines parallel and no three lines or circles through one point. Any parallel pair or triple concurrence loses regions, and problems often specify a configuration that deliberately fails it.
 
 ## Why it works
-Incremental counting: a new line crossing $k$ existing lines is cut into $k + 1$ pieces, each splitting one region, so lines add $1, 2, 3, \ldots$ new regions, summing to $1 + \sum_{i=1}^{n} i = \frac{n^2 + n + 2}{2}$. A new circle crossing each old one twice is cut into $2(n - 1)$ arcs, each adding a region.
+Incremental counting. When a new curve is drawn, it is cut by the earlier curves into pieces, and each piece splits the one region it runs through into two. So the new curve adds one region per piece.
+
+A new line crossing $k$ existing lines is cut into $k + 1$ pieces, so the lines add $1, 2, 3, \ldots$ new regions, and
+$$R_{\text{lines}} = 1 + \sum_{i=1}^{n} i = \frac{n^2 + n + 2}{2}.$$
+The same count line by line gives regions $= 1 + (\text{lines}) + (\text{crossings})$.
+
+The first circle makes $2$ regions. The $k$th circle crosses each earlier one twice, at $2(k - 1)$ points, which cut it into $2(k - 1)$ arcs, so it adds $2(k - 1)$ regions:
+$$R_{\text{circles}} = 2 + \sum_{k=2}^{n} 2(k - 1) = 2 + n(n - 1) = n^2 - n + 2.$$
 
 ## Useful observations
 - The formulas are derived rather than memorized: adding the $k$th line crosses the previous $k - 1$ lines, and each crossing splits one more region, so it adds $k$ regions in total. The same argument with two crossings per circle gives the circle count.

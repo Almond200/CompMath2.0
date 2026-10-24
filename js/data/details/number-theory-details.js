@@ -393,6 +393,10 @@ $n$ is a positive integer with the given prime factorization; $1$ counts as a pe
 ## Why it works
 A divisor of $n$ is $\prod p_i^{f_i}$ with $0 \le f_i \le e_i$, and it is a perfect square exactly when every $f_i$ is even, since its square root is then $\prod p_i^{f_i/2}$. The even numbers from $0$ to $e_i$ are $0, 2, \ldots, 2\left\lfloor \frac{e_i}{2} \right\rfloor$, which is $\left\lfloor \frac{e_i}{2} \right\rfloor + 1$ choices, and the choices for different primes are independent.
 
+The same count with multiples of $j$ in place of even numbers gives the $j$th powers: $0, j, \ldots, j\left\lfloor \frac{e_i}{j} \right\rfloor$. The map $m \mapsto m^2$ matches the $m$ with $m^2 \mid n$ to the square divisors one to one.
+
+For the smallest multiplier, $mn$ is a square exactly when every exponent of $mn$ is even. Each prime at an odd exponent in $n$ must appear in $m$ at least once, and the product of those primes, each once, already makes every exponent even.
+
 ## Useful observations
 - Each prime contributes its number of even exponent choices, so primes to the first power contribute only a factor of $1$: $12! = 2^{10} \cdot 3^5 \cdot 5^2 \cdot 7 \cdot 11$ has $6 \cdot 3 \cdot 2 \cdot 1 \cdot 1 = 36$ square divisors.
 - The $m$ with $m^2 \mid n$ are in one-to-one correspondence with the square divisors of $n$.

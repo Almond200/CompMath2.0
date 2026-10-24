@@ -19,3 +19,15 @@ sophie-germain            # observations proved
 digit-count               # observations proved
 vector-dot-product        # each Key form derived
 section-formula           # external division and centroid derived
+triple-angle              # tangent form, the cubic, and the cube reductions derived
+frustum-volume            # full derivation
+wlog-symmetry
+minimal-counterexample
+an-minus-bn               # divisibility and gcd of a^n - 1 proved
+arithmetico-geometric     # finite sum, x = 2, and the k^2 sum derived
+polar-form
+special-trig-values       # pentagon values derived from sin 2t = cos 3t
+name-the-floor
+harmonic-addition         # cosine form and range argued
+perfect-square-divisors   # jth powers and the smallest multiplier argued
+plane-regions             # circle count summed

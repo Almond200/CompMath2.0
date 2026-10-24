@@ -2327,7 +2327,12 @@ Mostly an AIME topic. The classic setups are an ant walking around a cone, a con
 The two faces are parallel and similar, with $A_1$ and $A_2$ their areas, and $h$ is the perpendicular distance between them. If $A_2 = 0$ it is a pyramid, and if $A_1 = A_2$ it is a prism.
 
 ## Why it works
-A frustum is a big pyramid minus a similar small one. With similarity ratio $k$, the volume is $\frac13(h_{\text{big}}B_1 - h_{\text{small}}B_2)$, and the phantom heights are eliminated using $k = \sqrt{B_2/B_1}$. The $\sqrt{B_1B_2}$ term is the geometric-mean cross-section.
+A frustum is a big pyramid minus a similar small one cut off at the top. Let the small one have height $x$, so the big one has height $x + h$. Cross-sections scale as the square of the distance from the apex, so
+$$\frac{x}{x + h} = \frac{\sqrt{A_2}}{\sqrt{A_1}}, \qquad x = \frac{h\sqrt{A_2}}{\sqrt{A_1} - \sqrt{A_2}}, \qquad x + h = \frac{h\sqrt{A_1}}{\sqrt{A_1} - \sqrt{A_2}}.$$
+
+Subtracting the two pyramid volumes,
+$$V = \frac13\left(A_1(x + h) - A_2x\right) = \frac h3 \cdot \frac{\sqrt{A_1}^{\,3} - \sqrt{A_2}^{\,3}}{\sqrt{A_1} - \sqrt{A_2}} = \frac h3\left(A_1 + \sqrt{A_1A_2} + A_2\right),$$
+by the difference of cubes. When $A_1 = A_2$ there is no apex, but the formula gives $hA_1$, the prism. For a cone, $A_1 = \pi R^2$ and $A_2 = \pi r^2$ give $\frac{\pi h}3(R^2 + Rr + r^2)$.
 
 ## Useful observations
 - It is often cleaner to restore the apex: the frustum is extended to the full cone or pyramid, the two similar solids are worked with ($k$ and $k^3$ scaling), and the small one is subtracted.

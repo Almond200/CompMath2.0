@@ -495,7 +495,13 @@ Rarely the whole problem, because it is a move rather than a result. Its standin
 The sum factorization needs an odd exponent; for even $n$, $a^n + b^n$ has no factor $a + b$, though it can factor in other ways, for example $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$.
 
 ## Why it works
-The geometric-series identity: multiplying $(a - b)$ by the sum $a^{n-1} + a^{n-2}b + \cdots + b^{n-1}$ makes everything telescope, each product cancelling the next, and leaves $a^n - b^n$. For odd $n$, substituting $-b$ for $b$ gives the $a^n + b^n$ version, since $(-b)^n = -b^n$.
+The geometric-series identity: multiplying $(a - b)$ by the sum $a^{n-1} + a^{n-2}b + \cdots + b^{n-1}$ makes everything telescope, each product cancelling the next, and leaves $a^n - b^n$. For odd $n$, substituting $-b$ for $b$ gives the $a^n + b^n$ version, since $(-b)^n = -b^n$. For even exponents, $a^{2m} - b^{2m}$ is a difference of squares, $(a^m - b^m)(a^m + b^m)$.
+
+Step 1, divisibility of $a^n - 1$ (with $a \ge 2$). If $n = mq$, then $a^n - 1 = (a^m)^q - 1$, which the first Key form makes a multiple of $a^m - 1$. Conversely, write $n = qm + r$ with $0 \le r \lt m$:
+$$a^n - 1 = a^r\left(a^{qm} - 1\right) + \left(a^r - 1\right).$$
+If $a^m - 1$ divides $a^n - 1$, it divides $a^r - 1$, which is smaller, so $a^r - 1 = 0$ and $r = 0$.
+
+Step 2, the gcd. The same display shows $\gcd(a^n - 1, a^m - 1) = \gcd(a^m - 1, a^r - 1)$, which is one step of the [[euclidean-algorithm|Euclidean algorithm]] run on the exponents. Repeating it ends at $\gcd(a^{d} - 1, a^0 - 1) = a^d - 1$ with $d = \gcd(m, n)$.
 
 ## Useful observations
 - It is a divisibility engine: $a - b \mid a^n - b^n$ always, and $a + b \mid a^n + b^n$ for odd $n$. This is key for number-theory divisibility arguments.
@@ -876,6 +882,12 @@ The infinite sums need $\lvert x \rvert \lt 1$ to converge. The finite sum holds
 Differentiate $\sum x^k = \frac{1}{1-x}$ termwise, or avoid calculus: $S - xS$ turns the linear coefficients into a plain geometric series.
 
 Take $S = x + 2x^2 + 3x^3 + \cdots$ and subtract $xS = x^2 + 2x^3 + \cdots$. The coefficient of each power of $x$ drops from $k$ to $k - (k - 1) = 1$, so $S - xS = x + x^2 + x^3 + \cdots = \frac{x}{1-x}$, and $S = \frac{x}{(1-x)^2}$.
+
+For the finite sum, the subtraction leaves one extra term at the end:
+$$S_n - xS_n = x + x^2 + \cdots + x^n - nx^{n+1} = \frac{x(1 - x^n)}{1 - x} - nx^{n+1}.$$
+Dividing by $1 - x$ and collecting gives $\frac{x\left(1 - (n+1)x^n + nx^{n+1}\right)}{(1-x)^2}$. At $x = 2$ the denominator is $1$, and $2\left(1 - (n+1)2^n + n2^{n+1}\right) = (n - 1)2^{n+1} + 2$.
+
+For the squares, $T = \sum k^2x^k$ gives $T - xT = \sum \left(k^2 - (k-1)^2\right)x^k = \sum (2k - 1)x^k = 2S - \frac{x}{1-x}$, which is $\frac{x(1 + x)}{(1-x)^2}$; dividing by $1 - x$ once more gives $\frac{x(1+x)}{(1-x)^3}$.
 
 ## Useful observations
 - The shift-subtract derivation is fast and safe under pressure, and it works for finite sums too: the leftover term at the end gives the $(n+1)x^n$ correction.
@@ -1613,9 +1625,11 @@ An AIME and AMC 12 tool. Its usual partners are [[trig-substitution|trigonometri
 $a$ and $b$ are not both zero. The relation $\tan\varphi = \frac ba$ alone does not distinguish $\varphi$ from $\varphi + 180^\circ$, and the signs of $a$ and $b$ fix the quadrant.
 
 ## Why it works
-Expand the right-hand side by [[angle-addition|angle addition]]: $R\sin(\theta + \varphi) = (R\cos\varphi)\sin\theta + (R\sin\varphi)\cos\theta$. Matching coefficients forces $R\cos\varphi = a$ and $R\sin\varphi = b$, so $a^2 + b^2 = R^2$ and $\tan\varphi = \frac{b}{a}$.
+Expand the right-hand side by [[angle-addition|angle addition]]: $R\sin(\theta + \varphi) = (R\cos\varphi)\sin\theta + (R\sin\varphi)\cos\theta$. Matching coefficients forces $R\cos\varphi = a$ and $R\sin\varphi = b$, so $a^2 + b^2 = R^2$ and $\tan\varphi = \frac{b}{a}$. Such a $\varphi$ exists because $\left(\frac aR, \frac bR\right)$ is a point of the unit circle.
 
-The pair $(a, b)$ is just the point $(R, \varphi)$ in [[eulers-formula|polar form]], which is why the amplitude is a hypotenuse.
+The pair $(a, b)$ is just the point $(R, \varphi)$ in [[eulers-formula|polar form]], which is why the amplitude is a hypotenuse. The cosine form works the same way: $R\cos(\theta - \varphi') = (R\sin\varphi')\sin\theta + (R\cos\varphi')\cos\theta$, so $R\sin\varphi' = a$ and $R\cos\varphi' = b$.
+
+Since $\sin(\theta + \varphi)$ takes every value in $[-1, 1]$ as $\theta$ varies, the expression takes every value in $[-R, R]$ and no other. That gives the maximum $R$, the minimum $-R$, and the solvability condition $\lvert c \rvert \le R$.
 
 ## Useful observations
 - It is read as a range statement. Since $\sin$ covers $[-1, 1]$, the expression covers $[-R, R]$, so the maximum is $\sqrt{a^2 + b^2}$ with no calculus and no critical points. The maximum of $3\sin x + 4\cos x$ is $5$ on sight.
@@ -1739,7 +1753,13 @@ Six problems here, all AIME, none by it alone: two feed a telescoping sum such a
 The values are exact, with $\sin 15^\circ = \sin(45^\circ - 30^\circ)$ and the $18^\circ$ family following from the regular pentagon.
 
 ## Why it works
-$\sin 15^\circ$ comes from the angle subtraction $45^\circ - 30^\circ$. The $18^\circ$ and $36^\circ$ family comes from the isosceles $36$-$72$-$72$ triangle, whose self-similarity yields the golden ratio, or from solving $\sin 2\theta = \cos 3\theta$ at $\theta = 18^\circ$, which is a cubic in $\sin\theta$ with the root $\frac{\sqrt5 - 1}{4}$.
+$\sin 15^\circ$ comes from the angle subtraction $45^\circ - 30^\circ$: $\sin 45^\circ\cos 30^\circ - \cos 45^\circ\sin 30^\circ = \frac{\sqrt6 - \sqrt2}4$.
+
+For the pentagon family, let $\theta = 18^\circ$, so $2\theta = 90^\circ - 3\theta$ and $\sin 2\theta = \cos 3\theta$. With $s = \sin\theta$ and $c = \cos\theta \ne 0$, that is $2sc = 4c^3 - 3c$; dividing by $c$,
+$$2s = 4c^2 - 3 = 1 - 4s^2, \qquad 4s^2 + 2s - 1 = 0,$$
+and the positive root is $s = \frac{\sqrt5 - 1}4$. This is also $\cos 72^\circ$.
+
+Then $\cos 36^\circ = 1 - 2\sin^2 18^\circ = 1 - \frac{6 - 2\sqrt5}8 = \frac{1 + \sqrt5}4$. With $\varphi = \frac{1 + \sqrt5}2$ these are $\frac\varphi2$ and $\frac{\varphi - 1}2$. Their difference is $\frac{(1 + \sqrt5) - (\sqrt5 - 1)}4 = \frac12$ and their product is $\frac{5 - 1}{16} = \frac14$.
 
 ## Useful observations
 - The family resemblance is the guide: anything with $\sqrt6 \pm \sqrt2$ is the $15^\circ$ and $75^\circ$ family, and anything with $\sqrt5$ is the $18^\circ$ and $36^\circ$ pentagon family.
@@ -1763,9 +1783,13 @@ Pentagon problems and $15^\circ$ configurations reduce to these. The AIME expect
 The identities hold for all angles; the tangent form needs $\cos 3\theta \ne 0$ and $\tan\theta$ defined. In the cubic $4x^3 - 3x = c$ the trigonometric solution needs $\lvert c \rvert \le 1$.
 
 ## Why it works
-Compose double and single angle additions: $\sin 3\theta = \sin(2\theta + \theta) = \sin 2\theta\cos\theta + \cos 2\theta\sin\theta$, and expanding with the double-angle formulas leaves $3\sin\theta - 4\sin^3\theta$.
+Compose double and single angle additions: $\sin 3\theta = \sin(2\theta + \theta) = \sin 2\theta\cos\theta + \cos 2\theta\sin\theta$, and expanding with the double-angle formulas leaves $3\sin\theta - 4\sin^3\theta$. The same expansion of $\cos(2\theta + \theta)$ gives $4\cos^3\theta - 3\cos\theta$.
 
-Alternatively, take the real and imaginary parts of $(\cos\theta + i\sin\theta)^3$ by [[de-moivre|De Moivre's Theorem]].
+Alternatively, by [[de-moivre|De Moivre's Theorem]], with $c = \cos\theta$ and $s = \sin\theta$,
+$$\cos 3\theta + i\sin 3\theta = (c + is)^3 = (c^3 - 3cs^2) + i(3c^2s - s^3).$$
+Dividing the imaginary part by the real part, then top and bottom by $c^3$, gives $\tan 3\theta = \frac{3t - t^3}{1 - 3t^2}$ with $t = \tan\theta$.
+
+For the cubic, put $x = \cos t$. Then $4x^3 - 3x = \cos 3t$, so the equation $4x^3 - 3x = c$ with $\lvert c \rvert \le 1$ holds when $3t = \arccos c + 2\pi k$. The values $k = 0, 1, 2$ give the roots $\cos\frac{\arccos c + 2\pi k}3$, which are distinct for $\lvert c \rvert \lt 1$, and a cubic has no more. Solving the Key forms for the cube gives $\sin^3\theta = \frac{3\sin\theta - \sin 3\theta}4$ and $\cos^3\theta = \frac{3\cos\theta + \cos 3\theta}4$.
 
 ## Useful observations
 - $\cos 3\theta = 4\cos^3\theta - 3\cos\theta$ turns cubics with three real roots into trigonometric equations (the "casus irreducibilis"): cubics like $4x^3 - 3x = c$ are solved by $x = \cos\frac{\arccos c}{3}$ and its two rotations by $\frac{2\pi}{3}$.
