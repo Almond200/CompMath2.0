@@ -4796,4 +4796,407 @@
       cap(430, 270, "∠BAC = 40°, AB = 10, AC = 6, with D on AB and E on AC; the path B–E–D–C (blue) is drawn for one choice of D and E." + MM(ok))
     ]);
   })();
+
+  // 2014 AMC 12B #24: the cyclic pentagon with sides 3, 10, 3, 10, 14 and its five diagonals.
+  PROB["2014-amc-12b-24"] = (() => {
+    const sides = [3, 10, 3, 10, 14], arc = R => sides.reduce((t, x) => t + 2 * Math.asin(x / (2 * R)), 0) - 2 * Math.PI;
+    let lo = 7.0001, hi = 100; for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (arc(m) > 0) lo = m; else hi = m; }
+    const R = (lo + hi) / 2; let t = Math.PI / 2 + Math.asin(7 / R); const P = [];
+    sides.forEach(x => { P.push([R * Math.cos(t), R * Math.sin(t)]); t -= 2 * Math.asin(x / (2 * R)); });
+    const [A, B, C, D, E] = P, diag = dist(A, C) + dist(B, D) + dist(C, E) + dist(A, D) + dist(B, E);
+    const ok = Math.abs(diag - 385 / 6) < 1e-6 && Math.abs(dist(E, A) - 14) < 1e-6;
+    const Q = fitQ([[-R, -R], [R, R]], 22, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q([0, 0]), R * k, FNT, 1.3), poly(P.map(Q), DIM, 2),
+      ...[[A, C], [B, D], [C, E], [A, D], [B, E]].map(([X, Y]) => seg(Q(X), Q(Y), ACC, 1.3)),
+      ...[["A", A], ["B", B], ["C", C], ["D", D], ["E", E]].map(([n, X]) => txt(add(Q(X), mul(norm([X[0], -X[1]]), 14)), n)),
+      ...[[A, B, "3"], [B, C, "10"], [C, D, "3"], [D, E, "10"], [E, A, "14"]].map(([X, Y, l]) => txt(add(Q(mid(X, Y)), mul(norm([(X[0] + Y[0]) / 2, -(X[1] + Y[1]) / 2]), 12)), l, DIM, 11.5)),
+      cap(430, 270, "The pentagon ABCDE inscribed in a circle with AB = CD = 3, BC = DE = 10 and AE = 14, and its five diagonals (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AMC 12A #23: the square of side √3 + 1, P on AC with AP = √2, and the square after the
+  // quarter turn about P (dashed).
+  PROB["2013-amc-12a-23"] = (() => {
+    const sd = Math.sqrt(3) + 1, A = [0, 0], B = [sd, 0], C = [sd, sd], D = [0, sd], P = [1, 1];
+    const turn = X => add(P, rotv(sub(X, P), Math.PI / 2)), S2 = [A, B, C, D].map(turn);
+    const ok = Math.abs(dist(A, P) - Math.sqrt(2)) < 1e-12 && Math.abs(dist(P, C) - Math.sqrt(6)) < 1e-12;
+    const Q = fitQ([A, B, C, D, ...S2], 22, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), poly(S2.map(Q), ACC, 1.6, "none", "5 4"), seg(Q(A), Q(C), FNT, 1.2), dot(Q(P), GLD, 3.5),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [10, -4]), "C"), txt(add(Q(D), [-6, -8]), "D"),
+      txt(add(Q(P), [12, 10]), "P", GLD, 12.5), txt(add(Q(mid(A, P)), [10, 6]), "√2", GLD, 11.5),
+      cap(430, 270, "The square ABCD of side √3 + 1, the point P on AC with AP = √2, and the square after turning 90° counterclockwise about P (dashed)." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AMC 12B #16: an equiangular pentagon (sides not all equal) and the star formed by extending its sides.
+  PROB["2013-amc-12b-16"] = (() => {
+    // equiangular: side directions turn by 72°; choose sides that close: a + b w + c w^2 + d w^3 + e w^4 = 0
+    const w = k => [Math.cos(rad(72 * k)), Math.sin(rad(72 * k))];
+    const a = 0.24, b = 0.18, c = 0.22;
+    // solve for d, e so the polygon closes
+    const S = add(add(mul(w(0), a), mul(w(1), b)), mul(w(2), c));
+    const det = w(3)[0] * w(4)[1] - w(3)[1] * w(4)[0];
+    const d = (-S[0] * w(4)[1] + S[1] * w(4)[0]) / det, e = (-w(3)[0] * S[1] + w(3)[1] * S[0]) / det;
+    const L = [a, b, c, d, e], V = [[0, 0]];
+    for (let k = 0; k < 4; k++) V.push(add(V[k], mul(w(k), L[k])));
+    const T = V.map((X, k) => lineInt(V[(k + 4) % 5], X, V[(k + 1) % 5], V[(k + 2) % 5]));   // tip beyond side k
+    const ok = L.every(x => x > 0) && Math.abs(dist(V[4], V[0]) - e) < 1e-9;
+    const Q = fitQ(T, 18, 430, 270), star = [];
+    for (let k = 0; k < 5; k++) star.push(V[k], T[k]);
+    return wrap(430, 270, [
+      poly(star.map(Q), ACC, 1.6, ACCS), poly(V.map(Q), DIM, 2),
+      cap(430, 270, "An equiangular pentagon (all angles 108°, sides not all equal) and the five-pointed star made by extending its sides (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2013 AMC 12B #24: AC = 2, M the midpoint of AC, CN the bisector of angle C, X = BM ∩ CN, and
+  // triangle BXN equilateral (angle C = 2γ with sin 2γ sin 60° = sin²(60° − γ)).
+  PROB["2013-amc-12b-24"] = (() => {
+    let lo = 0.05, hi = 1.0; const F = g => Math.sin(2 * g) * Math.sin(Math.PI / 3) - Math.sin(Math.PI / 3 - g) ** 2;
+    for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (F(lo) * F(m) <= 0) hi = m; else lo = m; }
+    const g = (lo + hi) / 2, C = [0, 0], A = [2, 0], M = [1, 0];
+    const BC = 2 * Math.sin(Math.PI / 3 - g) / Math.sin(2 * Math.PI / 3 - g), B = [BC * Math.cos(2 * g), BC * Math.sin(2 * g)];
+    const N = lineInt(A, B, C, [Math.cos(g), Math.sin(g)]), X = lineInt(B, M, C, N);
+    const ok = Math.abs(dist(B, X) - dist(X, N)) < 1e-9 && Math.abs(dist(B, N) - dist(B, X)) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(B), Q(M), FNT, 1.4), seg(Q(C), Q(N), FNT, 1.4), poly([B, X, N].map(Q), ACC, 1.8, ACCS),
+      txt(add(Q(A), [12, 6]), "A"), txt(add(Q(B), [0, -10]), "B"), txt(add(Q(C), [-12, 6]), "C"), txt(add(Q(M), [0, 16]), "M"),
+      txt(add(Q(N), [10, -6]), "N", ACC, 12.5), txt(add(Q(X), [-4, 16]), "X", ACC, 12.5), txt(add(Q(mid(C, M)), [0, 16]), "1", DIM, 11.5), txt(add(Q(mid(M, A)), [0, 16]), "1", DIM, 11.5),
+      cap(430, 270, "AC = 2 with midpoint M; the median BM and the bisector CN meet at X, and triangle BXN (blue) is equilateral." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AMC 12A #16: circle C1 centered at O on circle C2; they meet at X and Y; Z on C2 outside C1.
+  PROB["2012-amc-12a-16"] = (() => {
+    const r = Math.sqrt(30), cz = 79 / 121, XY = 20 * r / 11, R2 = XY / (2 * Math.sqrt(1 - cz * cz));   // C2's radius from XY and angle Z
+    const O2 = [0, 0], O = [0, R2];                                                                       // O on C2
+    const half = Math.asin(XY / (2 * R2)), X = [R2 * Math.sin(2 * Math.asin(r / (2 * R2))), R2 * Math.cos(2 * Math.asin(r / (2 * R2)))], Y = [-X[0], X[1]];
+    // Z on C2 with ZX = 13 and ZY = 7: search the lower arc
+    let best = null, be = 1e9; for (let i = 0; i <= 20000; i++) { const t = Math.PI + 2 * Math.PI * i / 20000; const Z = [R2 * Math.sin(t), R2 * Math.cos(t)]; const e = Math.abs(dist(Z, X) - 13) + Math.abs(dist(Z, Y) - 7); if (e < be) { be = e; best = Z; } }
+    const Z = best, ok = Math.abs(dist(O, X) - r) < 1e-9 && Math.abs(dist(Z, O) - 11) < 0.05 && be < 0.05 && half > 0;
+    const Q = fitQ([[-R2, -R2], [R2, R2 + r]], 14, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O2), R2 * k, DIM, 1.5), circ(Q(O), r * k, ACC, 1.5), seg(Q(Z), Q(X), GLD, 1.4), seg(Q(Z), Q(Y), GLD, 1.4), seg(Q(Z), Q(O), GLD, 1.4),
+      dot(Q(O), ACC, 3), dot(Q(X), DIM, 3), dot(Q(Y), DIM, 3), dot(Q(Z), GLD, 3),
+      txt(add(Q(O), [0, -10]), "O", ACC, 12.5), txt(add(Q(X), [12, 2]), "X"), txt(add(Q(Y), [-12, 2]), "Y"), txt(add(Q(Z), [0, 16]), "Z", GLD, 12.5),
+      txt(add(Q(mid(Z, X)), [10, 4]), "13", GLD, 11.5), txt(add(Q(mid(Z, Y)), [-10, 4]), "7", GLD, 11.5), txt(add(Q(mid(Z, O)), [8, 0]), "11", GLD, 11.5),
+      txt(add(Q([R2 * 0.72, -R2 * 0.72]), [10, 10]), "C₂", DIM, 12), txt(add(Q([r * 0.8, R2 + r * 0.6]), [8, 0]), "C₁", ACC, 12),
+      cap(430, 270, "Circle C₁ is centered at O on circle C₂; they meet at X and Y, and Z on C₂ outside C₁ has ZX = 13, ZO = 11, ZY = 7." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AMC 12A #18: the 25-26-27 triangle and its incenter I.
+  PROB["2012-amc-12a-18"] = (() => {
+    const a = 25, b = 26, c = 27, B = [0, 0], C = [a, 0], xA = (c * c - b * b + a * a) / (2 * a), A = [xA, Math.sqrt(c * c - xA * xA)];
+    const I = [(a * A[0] + b * B[0] + c * C[0]) / (a + b + c), (a * A[1] + b * B[1] + c * C[1]) / (a + b + c)];
+    const ok = Math.abs(dist(B, I) - 15) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), circ(Q(I), I[1] * k, FNT, 1.3), seg(Q(B), Q(I), ACC, 1.8), dot(Q(I), ACC, 3.5),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(I), [10, -6]), "I", ACC, 12.5),
+      txt(add(Q(mid(A, B)), [-14, 0]), "27", DIM, 12), txt(add(Q(mid(A, C)), [14, 0]), "26", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "25", DIM, 12),
+      cap(430, 270, "The triangle with AB = 27, AC = 26, BC = 25 and its incenter I." + MM(ok))
+    ]);
+  })();
+
+  // 2012 AMC 12A #22: the cube with, on each visible face, the six segments joining midpoints of its edges.
+  PROB["2012-amc-12a-22"] = (() => {
+    const { Pj, view } = projector([150, 230], 110, [1, 0.12], [0.62, -0.36]);
+    const V = { A: [0, 0, 0], B: [1, 0, 0], C: [1, 1, 0], D: [0, 1, 0], E: [0, 0, 1], F: [1, 0, 1], G: [1, 1, 1], H: [0, 1, 1] };
+    const faces = [["A", "B", "C", "D"], ["E", "F", "G", "H"], ["A", "B", "F", "E"], ["B", "C", "G", "F"], ["C", "D", "H", "G"], ["D", "A", "E", "H"]];
+    const m = (X, Y) => [0, 1, 2].map(i => (V[X][i] + V[Y][i]) / 2);
+    const vis = [["E", "F", "G", "H"], ["A", "B", "F", "E"], ["B", "C", "G", "F"]];   // top, front, right
+    const segsOn = f => { const M = [m(f[0], f[1]), m(f[1], f[2]), m(f[2], f[3]), m(f[3], f[0])], out = [];
+      for (let i = 0; i < 4; i++) for (let j = i + 1; j < 4; j++) out.push(seg(Pj(M[i]), Pj(M[j]), ACC, 1.5)); return out; };
+    const ok = vis.every(f => f.length === 4);
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj), ...vis.flatMap(segsOn),
+      cap(430, 270, "The cube with, on each face, all six segments joining midpoints of its edges (shown on the three visible faces)." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AMC 12A #13: triangle ABC (12, 24, 18), its incenter I, and the parallel to BC through I.
+  PROB["2011-amc-12a-13"] = (() => {
+    const a = 24, b = 18, c = 12, B = [0, 0], C = [a, 0], xA = (c * c - b * b + a * a) / (2 * a), A = [xA, Math.sqrt(c * c - xA * xA)];
+    const I = [(a * A[0] + b * B[0] + c * C[0]) / (a + b + c), (a * A[1] + b * B[1] + c * C[1]) / (a + b + c)];
+    const M = lineInt(A, B, I, add(I, [1, 0])), N = lineInt(A, C, I, add(I, [1, 0]));
+    const ok = Math.abs(dist(A, M) + dist(M, N) + dist(N, A) - 30) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(M), Q(N), ACC, 1.8), seg(Q(B), Q(I), FNT, 1.2, "4 4"), seg(Q(C), Q(I), FNT, 1.2, "4 4"), dot(Q(I), ACC, 3.5),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(I), [0, 16]), "I", ACC, 12.5),
+      txt(add(Q(M), [-12, 0]), "M", ACC, 12.5), txt(add(Q(N), [12, 0]), "N", ACC, 12.5),
+      txt(add(Q(lerp(A, B, 0.75)), [-14, 0]), "12", DIM, 12), txt(add(Q(mid(A, C)), [14, -4]), "18", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "24", DIM, 12),
+      cap(430, 270, "Triangle ABC with AB = 12, BC = 24, AC = 18; the line through the incenter I parallel to BC meets AB at M and AC at N." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AMC 12A #15: the cut through the apex perpendicular to two opposite base edges: the pyramid's
+  // cross-section is a triangle of height 6 and the hemisphere's is a half disk of radius 2 touching both slants.
+  PROB["2011-amc-12a-15"] = (() => {
+    const x = 3 / Math.SQRT2, L = [-x, 0], R = [x, 0], T = [0, 6], O = [0, 0];
+    const dl = Math.abs(6 * x) / Math.hypot(6, x), ok = Math.abs(dl - 2) < 1e-12;
+    const Q = fitQ([L, R, T, [-2, 0], [2, 0]], 22, 430, 270), k = Q.k;
+    const arc = Array.from({ length: 61 }, (_, i) => Q([2 * Math.cos(Math.PI * i / 60), 2 * Math.sin(Math.PI * i / 60)]));
+    return wrap(430, 270, [
+      poly([L, R, T].map(Q), DIM, 2), pline(arc, ACC, 1.8), seg(Q(O), Q(T), FNT, 1.2, "4 4"), dot(Q(O), DIM, 3),
+      txt(add(Q(T), [12, 8]), "apex"), txt(add(Q(mid(O, T)), [10, 0]), "6", DIM, 12), txt(add(Q([1, 0]), [0, 14]), "2", ACC, 12),
+      cap(430, 270, "A cut through the apex perpendicular to two opposite base edges: the pyramid of height 6 and the hemisphere of radius 2 touching its faces." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AMC 12A #17: circles of radii 1, 2, 3 mutually externally tangent, and the triangle of tangency points.
+  PROB["2011-amc-12a-17"] = (() => {
+    const O1 = [0, 0], O2 = [3, 0], O3 = [0, 4], r = [1, 2, 3];
+    const T12 = lerp(O1, O2, 1 / 3), T13 = lerp(O1, O3, 1 / 4), T23 = lerp(O2, O3, 2 / 5);
+    const area = (P, Qq, R) => Math.abs((Qq[0] - P[0]) * (R[1] - P[1]) - (R[0] - P[0]) * (Qq[1] - P[1])) / 2;
+    const ok = Math.abs(area(T12, T13, T23) - 1.2) < 1e-12;
+    const Q = fitQ([[-3, -3], [5, 7]], 12, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O1), k, DIM, 1.5), circ(Q(O2), 2 * k, DIM, 1.5), circ(Q(O3), 3 * k, DIM, 1.5), poly([T12, T13, T23].map(Q), ACC, 1.8, ACCS),
+      txt(Q(O1), "1", DIM, 12), txt(Q(O2), "2", DIM, 12), txt(Q(O3), "3", DIM, 12),
+      cap(430, 270, "Circles of radii 1, 2 and 3, each tangent to the other two, and the triangle (blue) formed by the three points of tangency." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AMC 12B #20: the 13-14-15 triangle, the midpoints D, E, F, and the circumcircles of BDE and CEF,
+  // which meet again at X.
+  PROB["2011-amc-12b-20"] = (() => {
+    const B = [0, 0], C = [14, 0], A = [5, 12], D = mid(A, B), E = mid(B, C), F = mid(A, C);
+    const c1 = K.circumcenterOf(B, D, E), c2 = K.circumcenterOf(C, E, F), r1 = dist(c1, B), r2 = dist(c2, C);
+    const d = sub(c2, c1), t = ((E[0] - c1[0]) * d[0] + (E[1] - c1[1]) * d[1]) / (d[0] * d[0] + d[1] * d[1]), X = sub(mul(add(c1, mul(d, t)), 2), E);   // E reflected in the line of centers
+    const ok = Math.abs(dist(X, c1) - r1) < 1e-9 && Math.abs(dist(X, c2) - r2) < 1e-9 && Math.abs(dist(X, A) - dist(X, B)) < 1e-9;
+    const Q = fitQ([A, B, C, [c1[0] - r1, c1[1] - r1], [c1[0] + r1, c1[1] + r1], [c2[0] - r2, c2[1] - r2], [c2[0] + r2, c2[1] + r2], [A[0], A[1] + 1.2]], 14, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), circ(Q(c1), r1 * k, ACC, 1.4), circ(Q(c2), r2 * k, GLD, 1.4), poly([D, E, F].map(Q), FNT, 1.2, "none", "4 4"),
+      dot(Q(X), DIM, 3.5), txt(add(Q(X), [10, -4]), "X"),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"),
+      txt(add(Q(D), [-12, 0]), "D"), txt(add(Q(E), [0, 16]), "E"), txt(add(Q(F), [12, 0]), "F"),
+      cap(430, 270, "Triangle ABC with sides 13, 14, 15, the midpoints D, E, F, and the circumcircles of BDE (blue) and CEF (gold), which meet again at X." + MM(ok))
+    ]);
+  })();
+
+  // 2010 AMC 12B #22: the cyclic quadrilateral with AB = 6, BC = 7, CD = 12, DA = 14 (so BC·CD = AB·DA),
+  // the one giving the largest BD.
+  PROB["2010-amc-12b-22"] = (() => {
+    const sides = [6, 7, 12, 14], arc = R => sides.reduce((t, x) => t + 2 * Math.asin(Math.min(1, x / (2 * R))), 0) - 2 * Math.PI;
+    let lo = 7.0001, hi = 200; for (let i = 0; i < 200; i++) { const m = (lo + hi) / 2; if (arc(m) > 0) lo = m; else hi = m; }
+    const R = (lo + hi) / 2; let t = Math.PI * 0.75; const P = [];
+    sides.forEach(x => { P.push([R * Math.cos(t), R * Math.sin(t)]); t -= 2 * Math.asin(x / (2 * R)); });
+    const [A, B, C, D] = P, ok = Math.abs(dist(B, D) ** 2 - 212.5) < 1e-6 && Math.abs(dist(D, A) - 14) < 1e-6;
+    const Q = fitQ([[-R, -R], [R, R]], 28, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q([0, 0]), R * k, FNT, 1.3), poly(P.map(Q), DIM, 2), seg(Q(B), Q(D), ACC, 1.8),
+      ...[["A", A], ["B", B], ["C", C], ["D", D]].map(([n, X]) => txt(add(Q(X), mul(norm([X[0], -X[1]]), 14)), n)),
+      ...[[A, B, "6"], [B, C, "7"], [C, D, "12"], [D, A, "14"]].map(([X, Y, l]) => txt(add(Q(mid(X, Y)), mul(norm([(X[0] + Y[0]) / 2, -(X[1] + Y[1]) / 2]), 12)), l, DIM, 11.5)),
+      cap(430, 270, "A cyclic quadrilateral with distinct integer sides and BC·CD = AB·DA: here AB = 6, BC = 7, CD = 12, DA = 14, with the diagonal BD (blue)." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AMC 12A #22: the regular octahedron (side 1) and the plane through its center parallel to two
+  // opposite faces, which cuts it in a regular hexagon through six edge midpoints.
+  PROB["2009-amc-12a-22"] = (() => {
+    const { Pj, view } = projector([215, 135], 125, [0.95, 0.38], [-0.42, 0.3]);
+    const u = Math.SQRT1_2, V = { P: [u, 0, 0], N: [-u, 0, 0], Q: [0, u, 0], S: [0, -u, 0], T: [0, 0, u], B: [0, 0, -u] };
+    const faces = [["P", "Q", "T"], ["Q", "N", "T"], ["N", "S", "T"], ["S", "P", "T"], ["P", "Q", "B"], ["Q", "N", "B"], ["N", "S", "B"], ["S", "P", "B"]];
+    const m = (X, Y) => [0, 1, 2].map(i => (V[X][i] + V[Y][i]) / 2);
+    const hex = [m("P", "S"), m("P", "B"), m("Q", "B"), m("Q", "N"), m("N", "T"), m("S", "T")];   // all on x + y + z = 0, parallel to faces PQT and NSB
+    const ok = Math.abs(dist(V.P, V.Q) - 1) < 1e-12 && hex.every(h => Math.abs(h[0] + h[1] + h[2]) < 1e-12);
+    return wrap(430, 270, [
+      ...solidEdges(V, faces, view, Pj), poly(hex.map(Pj), ACC, 1.6, ACCS),
+      cap(430, 270, "A regular octahedron of side 1 and the plane through its center parallel to two opposite faces; the cut (blue) is a regular hexagon." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AMC 12B #13: AB = 13, AC = 15, altitude 12 to line BC; B can be on either side of the foot D.
+  PROB["2009-amc-12b-13"] = (() => {
+    const D = [0, 0], A = [0, 12], C = [9, 0], B1 = [-5, 0], B2 = [5, 0];
+    const ok = Math.abs(dist(A, B1) - 13) < 1e-12 && Math.abs(dist(A, C) - 15) < 1e-12 && Math.abs(dist(A, B2) - 13) < 1e-12;
+    const Q = fitQ([A, B1, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B1, C].map(Q), DIM, 2), seg(Q(A), Q(B2), ACC, 1.6, "5 4"), seg(Q(A), Q(D), FNT, 1.4, "4 4"), rightAngle(Q(D), Q(A), Q(C), 9),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B1), [-12, 8]), "B"), txt(add(Q(B2), [6, 16]), "B′", ACC, 12.5), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(D), [-8, 16]), "D", FNT, 12),
+      txt(add(Q(mid(A, B1)), [-14, 0]), "13", DIM, 12), txt(add(Q(mid(A, C)), [14, 0]), "15", DIM, 12), txt(add(Q(mid(A, D)), [-10, 0]), "12", FNT, 12),
+      cap(430, 270, "AB = 13, AC = 15 and the altitude AD = 12; B may lie on either side of D (the second position B′ dashed)." + MM(ok))
+    ]);
+  })();
+
+  // 2009 AMC 12B #16: trapezoid ABCD with AD ∥ BC, BD = 1, ∠DBA = 23°, ∠BDC = 46°, BC : AD = 9 : 5.
+  PROB["2009-amc-12b-16"] = (() => {
+    // E = intersection of BA and CD; triangle BDE is isosceles with DE = BD = 1, CE = 9/5.
+    const B = [0, 0], D = [Math.cos(rad(40)), Math.sin(rad(40))];
+    const dirBA = [Math.cos(rad(63)), Math.sin(rad(63))];                      // BA turned 23° from BD
+    const E = add(B, mul(dirBA, 2 * Math.cos(rad(23))));                       // BE = 2 cos 23° (isosceles BDE)
+    const C = add(E, mul(norm(sub(D, E)), 9 / 5)), A = lineInt(B, E, D, add(D, sub(C, B)));
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V))) * 180 / Math.PI;
+    const ok = Math.abs(ang(D, B, A) - 23) < 1e-6 && Math.abs(ang(B, D, C) - 46) < 1e-6 && Math.abs(dist(B, C) / dist(A, D) - 1.8) < 1e-6 && Math.abs(dist(C, D) - 0.8) < 1e-9;
+    const Q = fitQ([A, B, C, D], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), seg(Q(B), Q(D), ACC, 1.6), angleArc(Q(B), Q(D), Q(A), 30, GLD), angleArc(Q(D), Q(B), Q(C), 26, GLD),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 6]), "B"), txt(add(Q(C), [12, 6]), "C"), txt(add(Q(D), [10, -8]), "D"),
+      txt(add(Q(B), [42, -26]), "23°", GLD, 11), txt(add(Q(D), [6, 30]), "46°", GLD, 11), txt(add(Q(mid(B, D)), [10, 8]), "1", ACC, 12),
+      cap(430, 270, "Trapezoid ABCD with AD ∥ BC, BD = 1, ∠DBA = 23°, ∠BDC = 46° and BC : AD = 9 : 5." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12A #20: the 3-4-5 triangle, the bisector CD of the right angle, and the incircles of ADC and BCD.
+  PROB["2008-amc-12a-20"] = (() => {
+    const C = [0, 0], A = [0, 3], B = [4, 0], D = lerp(A, B, 3 / 7);
+    const inc = (P, Qq, R) => { const a = dist(Qq, R), b = dist(P, R), c = dist(P, Qq), s = a + b + c; return [[(a * P[0] + b * Qq[0] + c * R[0]) / s, (a * P[1] + b * Qq[1] + c * R[1]) / s], Math.sqrt((s / 2 - a) * (s / 2 - b) * (s / 2 - c) / (s / 2))]; };
+    const [Ia, ra] = inc(A, D, C), [Ib, rb] = inc(B, C, D);
+    const ok = Math.abs(ra / rb - 3 * (10 - Math.SQRT2) / 28) < 1e-12;
+    const Q = fitQ([A, B, C], 30, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(C), Q(D), ACC, 1.6), rightAngle(Q(C), Q(A), Q(B), 10),
+      circ(Q(Ia), ra * k, GLD, 1.5), circ(Q(Ib), rb * k, GLD, 1.5),
+      txt(add(Q(A), [-10, -4]), "A"), txt(add(Q(B), [12, 6]), "B"), txt(add(Q(C), [-10, 12]), "C"), txt(add(Q(D), [8, -8]), "D", ACC, 12.5),
+      txt(add(Q(mid(A, C)), [-12, 4]), "3", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "4", DIM, 12), txt(add(Q(mid(A, B)), [12, -6]), "5", DIM, 12),
+      cap(430, 270, "The 3-4-5 triangle with the bisector CD of the right angle, and the incircles of ADC and BCD (gold)." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #13: the unit square ABCD, equilateral ABE inside it, and the region R between the lines at distance 1/3 and 2/3 from AD.
+  PROB["2008-amc-12b-13"] = (() => {
+    const A = [0, 0], B = [1, 0], C = [1, 1], D = [0, 1], E = [0.5, Math.sqrt(3) / 2];
+    const ok = Math.abs(dist(A, E) - 1) < 1e-12;
+    const Q = fitQ([A, B, C, D], 30, 430, 270);
+    const h = x => x <= 0.5 ? Math.sqrt(3) * x : Math.sqrt(3) * (1 - x);
+    const top = [[1 / 3, 1], [2 / 3, 1]], low = [[2 / 3, h(2 / 3)], [0.5, h(0.5)], [1 / 3, h(1 / 3)]];
+    return wrap(430, 270, [
+      poly([...top, ...low].map(Q), ACC, 1.2, ACCS), poly([A, B, C, D].map(Q), DIM, 2), poly([A, B, E].map(Q), GLD, 1.8),
+      seg(Q([1 / 3, 0]), Q([1 / 3, 1]), FNT, 1.1, "4 4"), seg(Q([2 / 3, 0]), Q([2 / 3, 1]), FNT, 1.1, "4 4"),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [10, -4]), "C"), txt(add(Q(D), [-10, -4]), "D"), txt(add(Q(E), [0, -8]), "E", GLD, 12.5),
+      txt(add(Q([1 / 3, 0]), [0, 14]), "1/3", FNT, 11), txt(add(Q([2 / 3, 0]), [0, 14]), "2/3", FNT, 11),
+      cap(430, 270, "The unit square with equilateral triangle ABE inside; R (blue) lies outside the triangle, between the lines 1/3 and 2/3 from AD." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #15: the unit square with two layers of unit equilateral triangles, and the gaps left inside the convex hull.
+  PROB["2008-amc-12b-15"] = (() => {
+    const sq = [[0, 0], [1, 0], [1, 1], [0, 1]], h = Math.sqrt(3) / 2, tris = [], hullPts = [...sq];
+    for (let i = 0; i < 4; i++) {
+      const P = sq[i], R = sq[(i + 1) % 4], d = sub(R, P), n = [d[1], -d[0]], T = add(mid(P, R), mul(n, h));
+      tris.push([P, R, T]); hullPts.push(T);
+      const c = [(P[0] + R[0] + T[0]) / 3, (P[1] + R[1] + T[1]) / 3];
+      [[P, T], [T, R]].forEach(([X, Y]) => { const dd = sub(Y, X); let nn = [dd[1], -dd[0]]; let T2 = add(mid(X, Y), mul(nn, h));
+        if ((T2[0] - mid(X, Y)[0]) * (c[0] - mid(X, Y)[0]) + (T2[1] - mid(X, Y)[1]) * (c[1] - mid(X, Y)[1]) > 0) T2 = sub(mid(X, Y), mul(nn, h));
+        tris.push([X, Y, T2]); hullPts.push(T2); });
+    }
+    const ok = tris.length === 12;
+    const Q = fitQ(hullPts, 18, 430, 270);
+    return wrap(430, 270, [
+      poly(sq.map(Q), DIM, 1.8, ACCS), ...tris.map(t => poly(t.map(Q), DIM, 1.4, ACCS)),
+      cap(430, 270, "The unit square with an equilateral triangle on each side and two more on each of those, all of side 1; S is the smallest convex polygon around it." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #18: the cut through E perpendicular to AB and CD: the slant heights 15 and 13 over the
+  // base width 14 make a 13-14-15 triangle whose height is the pyramid's.
+  PROB["2008-amc-12b-18"] = (() => {
+    const P = [0, 0], R = [14, 0], xE = (225 - 169 + 196) / 28, E = [xE, Math.sqrt(225 - xE * xE)], F = [xE, 0];
+    const ok = Math.abs(dist(E, R) - 13) < 1e-12 && Math.abs(E[1] - 12) < 1e-12;
+    const Q = fitQ([P, R, E], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([P, R, E].map(Q), DIM, 2), seg(Q(E), Q(F), ACC, 1.5, "5 4"), rightAngle(Q(F), Q(E), Q(R), 9),
+      txt(add(Q(P), [-26, 4]), "on AB", DIM, 11.5), txt(add(Q(R), [28, 4]), "on CD", DIM, 11.5), txt(add(Q(E), [0, -10]), "E"),
+      txt(add(Q(mid(P, E)), [-14, 0]), "15", DIM, 12), txt(add(Q(mid(R, E)), [14, 0]), "13", DIM, 12), txt(add(Q(mid(P, R)), [0, 16]), "14", DIM, 12),
+      cap(430, 270, "The cut through the apex E perpendicular to AB and CD: the heights of faces ABE and CDE are 15 and 13, across the base width 14." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #25: trapezoid ABCD (AB ∥ CD, 11, 5, 19, 7) with the bisectors meeting at P (from A, D) and Q (from B, C).
+  PROB["2008-amc-12b-25"] = (() => {
+    const h = Math.sqrt(49 - 5.5 * 5.5), D = [0, 0], C = [19, 0], A = [5.5, h], B = [16.5, h];
+    const bis = (V, X, Y) => add(V, add(norm(sub(X, V)), norm(sub(Y, V))));
+    const P = lineInt(A, bis(A, B, D), D, bis(D, A, C)), Qp = lineInt(B, bis(B, A, C), C, bis(C, B, D));
+    const ok = Math.abs(dist(B, C) - 5) < 1e-12 && Math.abs(P[1] - h / 2) < 1e-9 && Math.abs(Qp[1] - h / 2) < 1e-9;
+    const Q = fitQ([A, B, C, D], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, Qp, C, D, P].map(Q), ACC, 1.2, ACCS), poly([A, B, C, D].map(Q), DIM, 2),
+      seg(Q(A), Q(P), GLD, 1.4), seg(Q(D), Q(P), GLD, 1.4), seg(Q(B), Q(Qp), GLD, 1.4), seg(Q(C), Q(Qp), GLD, 1.4),
+      txt(add(Q(A), [-6, -8]), "A"), txt(add(Q(B), [6, -8]), "B"), txt(add(Q(C), [12, 6]), "C"), txt(add(Q(D), [-12, 6]), "D"),
+      txt(add(Q(P), [12, 4]), "P", GLD, 12.5), txt(add(Q(Qp), [-12, 4]), "Q", GLD, 12.5),
+      txt(add(Q(mid(A, B)), [0, -8]), "11", DIM, 12), txt(add(Q(mid(B, C)), [12, 0]), "5", DIM, 12), txt(add(Q(mid(C, D)), [0, 16]), "19", DIM, 12), txt(add(Q(mid(D, A)), [-12, 0]), "7", DIM, 12),
+      cap(430, 270, "Trapezoid ABCD with AB ∥ CD; the bisectors at A and D meet at P, those at B and C at Q, and the hexagon ABQCDP is shaded." + MM(ok))
+    ]);
+  })();
+
+  // 2007 AMC 12A #8: the clock face with the star polygon joining each number to the fifth one clockwise.
+  PROB["2007-amc-12a-8"] = (() => {
+    const pos = h => [Math.sin(rad(30 * h)), Math.cos(rad(30 * h))], star = [];
+    for (let k = 0; k < 12; k++) star.push(pos((5 * k) % 12));
+    const ok = star.length === 12;
+    const Q = fitQ([[-1, -1], [1, 1]], 26, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q([0, 0]), k, FNT, 1.3), poly(star.map(Q), ACC, 1.5),
+      ...[12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(h => txt(add(Q(mul(pos(h), 1.14)), [0, 4]), String(h), DIM, 11)),
+      cap(430, 270, "The star polygon drawn on a clock face: each number is joined to the fifth number clockwise from it (12 to 5, 5 to 10, ...)." + MM(ok))
+    ]);
+  })();
+  PROB["2007-amc-12b-22"] = (() => {
+    const A = [0, 0], B = [4, 0], C = [2, 2 * Math.sqrt(3)];
+    const Ma = mid(B, C), Mb = mid(C, A), Mc = mid(A, B);
+    const R = [mid(A, Ma), mid(B, Mb), mid(C, Mc)], G = [(A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3];
+    const ok = R.every((r, i) => dist(r, G) * 4 - dist([A, B, C][i], G) < 1e-9) && Math.abs(dist(R[0], R[1]) - 1) < 1e-9;
+    const Q = fitQ([A, B, C, [2, -0.3], [2, 3.8]], 28, 430, 290);
+    return wrap(430, 290, [
+      poly([A, B, C].map(Q), DIM, 2),
+      ...[[A, Ma], [B, Mb], [C, Mc]].map(([p, q]) => seg(Q(p), Q(q), FNT, 1.2, "4 3")),
+      poly(R.map(Q), ACC, 2, ACCS), ...R.map(r => dot(Q(r), ACC, 3)), dot(Q(Ma), DIM, 3.5),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [0, -8]), "C"),
+      txt(add(Q(Ma), [12, -2]), "M", DIM, 12), txt(add(Q(R[1]), [14, 14]), "R", ACC, 12),
+      cap(430, 290, "One particle starts at A, the other at M, the midpoint of BC. The corners of R are the midpoints of the three medians." + MM(ok))
+    ]);
+  })();
+  PROB["2006-amc-12a-22"] = (() => {
+    const r = 3 * Math.sqrt(2) + Math.sqrt(6), at = (d, t) => [d * Math.cos(rad(t)), d * Math.sin(rad(t))];
+    const V = [0, 1, 2, 3, 4, 5].map(k => at(2, 60 * k)), W = at(2 * Math.sqrt(3), 30);
+    const arc = []; for (let t = 15; t <= 45.01; t += 1) arc.push(at(r, t));
+    const e1 = lineInt(V[5], V[0], [0, 0], arc[30]), e2 = lineInt(V[2], V[1], [0, 0], arc[0]);
+    const ok = dist(e1, arc[30]) < 1e-9 && dist(e2, arc[0]) < 1e-9 && Math.abs(dist(W, V[0]) - 2) < 1e-9;
+    const Q = fitQ([[-r, -r], [r, r]], 24, 430, 330), k = Q.k;
+    return wrap(430, 330, [
+      circ(Q([0, 0]), r * k, FNT, 1.3), poly(V.map(Q), DIM, 2),
+      seg(Q(V[5]), Q(arc[30]), FNT, 1.2, "4 3"), seg(Q(V[2]), Q(arc[0]), FNT, 1.2, "4 3"),
+      pline(arc.map(Q), ACC, 3.5), dot(Q(W), DIM, 3), dot(Q([0, 0]), DIM, 3),
+      txt(add(Q(at(r - 0.9, 30)), [-4, 4]), "30°", ACC, 12), txt(add(Q(W), [10, 16]), "W", DIM, 12),
+      cap(430, 330, "Extending two sides of the hexagon that skip one side between them: from the highlighted 30° arc beyond W, all three sides between them are in view." + MM(ok))
+    ]);
+  })();
+  PROB["2005-amc-12b-18"] = (() => {
+    const A = [2, 2], B = [7, 7], O = mid(A, B), rr = dist(A, B) / 2;
+    const ok = Math.abs(rr * rr * Math.PI - 12.5 * Math.PI) < 1e-9 && Math.abs(90 - rr * rr * Math.PI - 50.73) < 0.01;
+    const Q = fitQ([[-0.8, -0.8], [15, 15]], 26, 430, 330), k = Q.k;
+    const strip = [[4, 0], [14, 0], [0, 14], [0, 4]];
+    return wrap(430, 330, [
+      poly(strip.map(Q), ACC, 1.5, ACCS),
+      circ(Q(O), rr * k, DIM, 1.5, "var(--bg-card)"),
+      seg(Q([0, 0]), Q([15, 0]), FNT, 1.2), seg(Q([0, 0]), Q([0, 15]), FNT, 1.2),
+      seg(Q(A), Q(B), DIM, 1.5), dot(Q(A), DIM, 3.5), dot(Q(B), DIM, 3.5),
+      txt(add(Q(A), [-10, 14]), "A"), txt(add(Q(B), [12, -6]), "B"),
+      txt(add(Q([4, 0]), [0, 16]), "4", DIM, 11), txt(add(Q([14, 0]), [0, 16]), "14", DIM, 11),
+      txt(add(Q([0, 4]), [-12, 4]), "4", DIM, 11), txt(add(Q([0, 14]), [-14, 4]), "14", DIM, 11),
+      txt(Q([10.2, 1.6]), "R", ACC, 13),
+      cap(430, 330, "R is the strip 4 < x + y < 14 in the first quadrant with the disk on diameter AB removed." + MM(ok))
+    ]);
+  })();
+  PROB["2004-amc-12a-24"] = (() => {
+    const A = [0, 0], B = [1, 0], h = Math.sqrt(3) / 2, T = [0.5, h], D = [0.5, -h];
+    const arcPts = (c, r, t0, t1) => { const out = []; for (let i = 0; i <= 40; i++) { const t = rad(t0 + (t1 - t0) * i / 40); out.push(add(c, [r * Math.cos(t), r * Math.sin(t)])); } return out; };
+    const lens = [...arcPts(A, 1, -60, 60), ...arcPts(B, 1, 120, 240)];
+    const outer = [...arcPts(A, 2, -60, 60), ...arcPts(T, 1, 60, 120), ...arcPts(B, 2, 120, 240), ...arcPts(D, 1, 240, 300)];
+    const ok = dist(outer[40], outer[41]) < 1e-9 && dist(outer[81], outer[82]) < 1e-9 && Math.abs(dist(T, A) - 1) < 1e-9;
+    const Q = fitQ([[-1.1, -1.8], [2.1, 1.8]], 22, 430, 300);
+    return wrap(430, 300, [
+      poly(outer.map(Q), ACC, 2, ACCS), poly(lens.map(Q), DIM, 1.5, "var(--bg-card)"),
+      circ(Q(T), Q.k, FNT, 1, "none", "3 3"),
+      seg(Q(A), Q(B), DIM, 2), dot(Q(A), DIM, 3.5), dot(Q(B), DIM, 3.5), dot(Q(T), FNT, 3),
+      txt(add(Q(A), [-12, 5]), "A"), txt(add(Q(B), [12, 5]), "B"), txt(add(Q([0.5, 0.42]), [0, 0]), "L", DIM, 12),
+      txt(Q([0.5, 1.45]), "S", ACC, 13),
+      cap(430, 300, "The centers of the covering disks fill the lens L; S is everything within 1 of L. One such disk (dashed) is centered at a corner of the lens." + MM(ok))
+    ]);
+  })();
 })();

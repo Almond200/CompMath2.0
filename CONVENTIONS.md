@@ -1,7 +1,7 @@
 # CONVENTIONS
 
 Every rule here was measured against the cards of its day, and the count that proves it is quoted
-(most against 557 cards in September 2026, some against 700 in October; there are 742 now, and
+(most against 557 cards in September 2026, some against 700 in October; there are 743 now, and
 `tools/scan-conventions.py` prints the current counts). If a rule has no number, it is not a rule. `CONTRIBUTING.md` holds the reasoning, the gap register and
 the per-year retag notes; this file is the checklist you follow while actually adding a card.
 
@@ -210,7 +210,7 @@ This is exactly why the duplicate check in §5 must search names, not ids.
 
 ## 2. The write-up — mandatory, in `js/data/details/<subject>-details.js`
 
-**One write-up for every card (742 of 742 on 2026-10-24), no orphans, no card without one.**
+**One write-up for every card (743 of 743 on 2026-10-24), no orphans, no card without one.**
 
 The headings depend on the card's kind (counts as of 2026-10-16; the scan fails on a heading the kind does not allow):
 
@@ -340,7 +340,7 @@ positives and should be rejected every time they reappear:
 
 ## 3. The example — mandatory, in `js/data/examples-supplement.js`
 
-**One example key for every card (742 of 742 on 2026-10-24). Zero cards lack one.**
+**One example key for every card (743 of 743 on 2026-10-24). Zero cards lack one.**
 
 Shape is `{ q, s }`: a clean question, and its solution behind a Show solution button. A printed card shows every solution, and hides the buttons, the AoPS links and the back links (owner, 2026-10-17).
 

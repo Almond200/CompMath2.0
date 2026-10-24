@@ -1824,7 +1824,8 @@
     "transforming-equations": "method",
     "polynomial-division": "method",
     "quadratic-root-location": "method",
-    "directed-lengths": "method"
+    "directed-lengths": "method",
+    "steiner-neighborhood": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8858,6 +8859,12 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "steiner-neighborhood": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }
