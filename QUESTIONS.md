@@ -4,10 +4,11 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-**P28 to P37 are open (2026-10-24).** P29 to P37 come from classifying the problems that cited no card (owner request, 2026-10-24): each is an idea several problems use and no card holds; the problems keep `formulas: []` until a card is approved. P27 was approved by the owner on 2026-10-24 and written as `steiner-neighborhood`. The next candidate is P38.
+**P28 to P38 are open (2026-10-24).** P38 comes from the D2 tag audit. P29 to P37 come from classifying the problems that cited no card (owner request, 2026-10-24): each is an idea several problems use and no card holds; the problems keep `formulas: []` until a card is approved. P27 was approved by the owner on 2026-10-24 and written as `steiner-neighborhood`. The next candidate is P39.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|
+| P38 | Common Multiples Are Multiples of the LCM: a number divisible by each of $a,b,c$ is exactly a multiple of $\operatorname{lcm}(a,b,c)$, so "together again", "divisible by all of" and "$r$ more than a multiple of each" become one divisibility | formula, Number Theory > Divisibility | AMC, medium | 2001 AMC 10 #8, 2003 AMC 8 #19, 2004 AMC 8 #19, 2012 AMC 8 #15, 2017 AMC 8 #12, 2018 AMC 8 #21, 1989 AJHSME #22, 2011 AMC 12B #5, 2019 AMC 10B #7 / 12B #5, 2015 AIME II #1 (all cite `gcd-lcm-product`, whose fact is $\gcd\cdot\operatorname{lcm}=ab$, meanwhile) |
 | P37 | Extend Adding Groups of Equations to multiplying them: when the equations are products ($xy$, $yz$, $zx$ given), multiply them all to get $(xyz)^2$ and divide back | edit to the method `add-all-equations` (no new card) | AMC, medium (as now) | 2001 AMC 10 #10, 2018 AMC 10B #4, 2000 AMC 12 #20 (2002 AMC 12B #19 already cites the card) |
 | P36 | Assuming All Are of One Kind: suppose every item is the cheaper or smaller kind, then each swap to the other kind adds a fixed amount (chickens and rabbits, bicycles and tricycles) | method, Algebra > Word-problem setups | AMC, lower | 2003 AMC 8 #4, 2012 AMC 8 #9 |
 | P35 | Joining Shapes Hides Edges: each place two pieces meet removes the shared length from the perimeter (or twice the shared face from a surface), and a rectilinear outline's horizontal edges add up to its width | method, Geometry > Areas and perimeters | AMC, low | 1986 AJHSME #13, 1990 AJHSME #15, 1992 AJHSME #22, 2006 AMC 8 #6, 2002 AMC 8 #22, 2009 AMC 8 #9 |
