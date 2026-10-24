@@ -615,7 +615,7 @@ window.MATH_SECTIONS.push({
           id: "first-order-recurrence",
           name: "First-Order Recurrence $a_n = r a_{n-1} + d$",
           latex: String.raw`L = \frac{d}{1 - r} \;\; (r \ne 1), \qquad a_n - L = r^n (a_0 - L), \qquad a_n = r^n (a_0 - L) + L`,
-          description: String.raw`A first-order recurrence $a_n = ra_{n-1} + d$ builds each term from the one before by multiplying by $r$ and adding $d$, and it is solved through its fixed point $L = \frac{d}{1 - r}$: measured from $L$ the sequence is geometric, $a_n - L = r^n(a_0 - L)$. It is the model behind mixing, dilution, interest with deposits, and population questions. The terms approach $L$ when $|r| \lt 1$ and run away otherwise; if $r = 1$ there is no fixed point and the sequence is arithmetic, $a_n = a_0 + nd$.`,
+          description: String.raw`A first-order recurrence $a_n = ra_{n-1} + d$ builds each term from the one before by multiplying by $r$ and adding $d$, and it is solved through its fixed point $L = \frac{d}{1 - r}$: measured from $L$ the sequence is geometric, $a_n - L = r^n(a_0 - L)$. It is the model behind mixing, dilution, interest with deposits, and population questions. Starting at $a_0 = L$ the sequence is constant. Otherwise the terms approach $L$ when $|r| \lt 1$, alternate between $a_0$ and $2L - a_0$ when $r = -1$, and run away when $|r| \gt 1$. If $r = 1$ the sequence is arithmetic, $a_n = a_0 + nd$: with $d \ne 0$ there is no fixed point, and with $d = 0$ every term is one.`,
           keywords: ["first order recurrence", "recursion", "recursive", "recursive sequence", "fixed point", "a_n = r a_(n-1) + d", "geometric plus constant", "steady state", "dilution", "compound interest"],
           importance: "medium",
           tier: "AMC",

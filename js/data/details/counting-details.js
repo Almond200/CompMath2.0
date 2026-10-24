@@ -978,7 +978,7 @@ Circular strings and bead necklaces up to rotation. The prime-length case double
 - $P(A \cap B) = P(A)\,P(B)$ — for independent events only
 
 ## Conditions
-Everything above except the last line needs the outcomes to be equally likely; when they are not, rebuild the sample space from a finer list that is. The product rule needs the events to be independent.
+Only favorable over total needs the outcomes to be equally likely; when they are not, rebuild the sample space from a finer list that is, or work with the probabilities directly. The union and complement rules hold for any probabilities, a biased coin included. The product rule needs the events to be independent.
 
 ## Why it works
 If all the outcomes are equally likely, each one holds the same share of the total probability, so an event's probability is just how many shares it holds.
@@ -987,7 +987,7 @@ Suppose there are $N$ equally likely outcomes. Their probabilities add up to $1$
 
 The union rule is a counting fact divided by $N$. Counting the outcomes in $A$ and then the outcomes in $B$ counts every outcome in both of them twice, so $|A \cup B| = |A| + |B| - |A \cap B|$, and dividing by $N$ gives the rule. With three or more events the same correction becomes [[pie|inclusion-exclusion]]. The complement rule is the special case where $A$ and "not $A$" never overlap and together cover every outcome, so their probabilities add to $1$.
 
-When the outcomes are not equally likely, none of this applies. The sums $2, 3, \ldots, 12$ of two dice are eleven outcomes, but a sum of $7$ happens six ways and a sum of $2$ only one, so they do not share the probability equally. The fix is to go back to a finer list that is equally likely, here the $36$ ordered pairs, and count there.
+When the outcomes are not equally likely, favorable over total does not apply. The sums $2, 3, \ldots, 12$ of two dice are eleven outcomes, but a sum of $7$ happens six ways and a sum of $2$ only one, so they do not share the probability equally. The fix is to go back to a finer list that is equally likely, here the $36$ ordered pairs, and count there.
 
 ## Useful observations
 - Choosing the sample space so that a single count answers the question is most of the work; the union rule handles "or" and the complement handles "at least one".
@@ -1372,7 +1372,7 @@ Independence makes cross terms factor: $E[XY] = E[X]E[Y]$, so $\operatorname{Cov
 Affine changes need no independence at all: a shift moves the whole distribution without changing its spread, and a scale by $a$ multiplies every deviation by $a$, so the variance by $a^2$.
 
 ## Useful observations
-- The contrast with expectation is the point worth internalizing: applying the product and variance rules to dependent variables is the standard error.
+- The contrast with expectation is the point worth internalizing: applying the product and variance rules to correlated variables is the standard error. Independence is the usual way to know the covariance is zero, but not the only one: $X$ uniform on $\{-1, 0, 1\}$ and $Y = X^2$ are dependent with $\operatorname{Cov}(X, Y) = E[X^3] = 0$.
 - Variance is computed as $E[X^2] - E[X]^2$, which usually means finding $E[X^2]$ by the same indicator or [[casework-method|casework]] method used for $E[X]$.
 - For an indicator, $E[X^2] = E[X]$, since $0$ and $1$ square to themselves, which simplifies sums of indicators considerably.
 
@@ -1633,7 +1633,7 @@ Drawing a figure without lifting the pencil, closed walks that use every street 
 ## Key forms
 - $R_{\text{lines}} = \dfrac{n^2 + n + 2}{2}$ — the maximum regions from $n$ lines, no two parallel and no three through one point
 - $R_{\text{circles}} = n^2 - n + 2$ — the maximum regions from $n$ circles, each pair meeting in two points
-- regions $= 1 + (\text{lines}) + (\text{crossings})$ for lines in the plane, and each new curve adds one region per crossing plus one
+- regions $= 1 + (\text{lines}) + (\text{crossings})$ for lines in the plane: each new line adds one region per crossing plus one, while each new circle that crosses the earlier curves at $k \gt 0$ points adds $k$ (a closed curve is cut into $k$ arcs, not $k + 1$)
 
 ## Conditions
 The maximum needs general position: no two lines parallel and no three lines or circles through one point. Any parallel pair or triple concurrence loses regions, and problems often specify a configuration that deliberately fails it.
@@ -1683,18 +1683,18 @@ Expected largest, smallest, or $k$th of several random points, expected gaps, an
 "total-expectation": String.raw`
 ## Key forms
 - $\alt{E[X] = \sum_i P(A_i)\,E[X \mid A_i]}{E[X] = P(A_1)E[X \mid A_1] + P(A_2)E[X \mid A_2] + \cdots}$ — the expectation as the probability-weighted average of the case expectations
-- $E[\text{total}] = E[N] \cdot E[X]$ — Wald's identity, for a random number $N$ of identically distributed contributions, with $N$ independent of them or a stopping time and $E[N]$ finite
+- $E[\text{total}] = E[N] \cdot E[X]$ — Wald's identity, for a random number $N$ of identically distributed contributions, with $E[N]$ finite and either $N$ independent of them, or the contributions independent and $N$ a stopping time
 - conditioning on the first step turns a process into an equation relating $E[X]$ to itself
 
 ## Conditions
-The cases $A_i$ are disjoint and exhaustive. Wald's identity needs the contributions to have the same expectation, $E[N]$ to be finite, and $N$ to be either independent of the contributions or a stopping time, meaning that whether to take term $k + 1$ is decided from the first $k$ terms only. An $N$ that looks ahead at later contributions breaks it.
+The cases $A_i$ are disjoint and exhaustive. Wald's identity needs the contributions to have the same expectation, $E[N]$ to be finite, and one of two things: $N$ independent of the contributions, or the contributions independent of each other (the usual statement: independent and identically distributed, with finite mean) and $N$ a stopping time, meaning that whether to take term $k + 1$ is decided from the first $k$ terms only. An $N$ that looks ahead at later contributions breaks it, and so do dependent contributions under a stopping time: if every $X_i$ equals one fair $0$-$1$ coin $B$ and $N = 1 + B$, the total is $NB$, which averages $1$, while $E[N]E[X] = \frac32 \cdot \frac12 = \frac34$.
 
 ## Why it works
 Group the outcomes by which case $A_i$ occurred and average within cases first: the inner averages are the conditional expectations, and recombining with weights $P(A_i)$ reproduces the overall average. It is associativity of [[weighted-average|weighted averages]], elevated to a principle.
 
 ## Useful observations
 - The partition is chosen so that each conditional expectation is easy, and conditioning on the first step is almost always that choice.
-- Wald's identity is the case worth recognizing separately: when a random number of independent pieces are summed, the expected total is the product of the two expectations, provided $N$ is independent of the pieces or a stopping time. Dropping that proviso is the standard error: let the $X_i$ be fair $0$-$1$ coins and let $N = 2$ if $X_2 = 1$ and $N = 1$ otherwise, so that $N$ looks at the term it decides to take. Then $E[\text{total}] = E[X_1] + E[X_2 \cdot \mathbf 1_{X_2 = 1}] = \frac12 + \frac12 = 1$, while $E[N]\,E[X] = \frac32 \cdot \frac12 = \frac34$.
+- Wald's identity is the case worth recognizing separately: when a random number of independent pieces are summed, the expected total is the product of the two expectations, provided $N$ is independent of the pieces or is a stopping time for them. Dropping that proviso is the standard error: let the $X_i$ be fair $0$-$1$ coins and let $N = 2$ if $X_2 = 1$ and $N = 1$ otherwise, so that $N$ looks at the term it decides to take. Then $E[\text{total}] = E[X_1] + E[X_2 \cdot \mathbf 1_{X_2 = 1}] = \frac12 + \frac12 = 1$, while $E[N]\,E[X] = \frac32 \cdot \frac12 = \frac34$.
 - The technique pairs naturally with state recursions: it writes one equation per state, and solving the small system gives every expectation at once.
 - Whichever partition is picked, it must be disjoint and exhaustive, the same requirement as ordinary [[casework-method|casework]] and the usual source of a wrong weighted average.
 
@@ -2017,7 +2017,7 @@ Object.assign(window.MATH_DETAILS, {
 The game is impartial (both players have the same moves), finite, and ends when no move is possible, with the last mover winning.
 
 ## Why it works
-In Nim the XOR of the pile sizes is a handle one controls: if it is nonzero, some pile has a leading bit that can be cleared to make the whole XOR zero, a move to a position that is losing for the opponent; if it is zero, every move breaks it. Sprague–Grundy generalizes this by giving each position its mex value. A position with $g = 0$ can only move to positions with $g \ne 0$ and the reverse, which is Nim's win-and-loss logic.
+In Nim the XOR of the pile sizes is a handle one controls: if it is nonzero, some pile has a leading bit that can be cleared to make the whole XOR zero, a move to a position that is losing for the opponent; if it is zero, every move breaks it. Sprague–Grundy generalizes this by giving each position its mex value. A position with $g = 0$ can only move to positions with $g \ne 0$, and a position with $g \ne 0$ has at least one move to a position with $g = 0$ (its other moves may stay nonzero: a Nim heap of $2$ can move to a heap of $1$). That is Nim's win-and-loss logic.
 
 Independent games combine because the XOR of Grundy values behaves like one Nim position.
 
@@ -2296,7 +2296,7 @@ Olympiad extremal graph theory, with Mantel occasionally surfacing on harder pro
 ## Key forms
 - $\chi(G) \le \Delta + 1$ — greedy coloring, where $\Delta$ is the maximum degree
 - $\chi(G) \le \Delta$ for every connected graph except complete graphs and odd cycles — Brooks' theorem
-- $G$ is bipartite $\iff \chi = 2 \iff$ $G$ has no odd cycle
+- $G$ is bipartite $\iff \chi \le 2 \iff$ $G$ has no odd cycle ($\chi = 1$ when there are no edges)
 - $\chi(G) \ge \omega(G)$, the size of the largest clique, and $G$ planar $\implies \chi \le 4$ — the Four Color Theorem
 
 ## Conditions
@@ -2515,14 +2515,14 @@ Usually the whole count for a non-adjacency condition, sometimes inside casework
 "matrix-tree-theorem": String.raw`
 ## Key forms
 - the number of spanning trees of a graph is any cofactor of its Laplacian $L = D - A$, degree matrix minus adjacency matrix
-- equivalently it is $\dfrac1n\lambda_1\lambda_2\cdots\lambda_{n-1}$, the product of the nonzero Laplacian eigenvalues over $n$
+- equivalently it is $\dfrac1n\lambda_1\lambda_2\cdots\lambda_{n-1}$, where $\lambda_1, \ldots, \lambda_{n-1}$ are the Laplacian eigenvalues left after removing one $0$; for a connected graph these are exactly the nonzero ones, while a disconnected graph has a second $0$ and no spanning tree (an edge plus an isolated vertex has eigenvalues $0, 0, 2$)
 - for the complete graph $K_n$ it gives $n^{n-2}$
 
 ## Conditions
 The graph is finite and may have multiple edges. Deleting any one row and the matching column gives the same determinant.
 
 ## Why it works
-Expanding a cofactor of $L = D - A$ by the Cauchy–Binet formula gives a signed sum over subsets of edges, and only the acyclic spanning subsets survive, so the cofactor counts spanning trees. Equivalently it equals $\frac1n$ times the product of the nonzero Laplacian eigenvalues.
+Expanding a cofactor of $L = D - A$ by the Cauchy–Binet formula gives a signed sum over subsets of edges, and only the acyclic spanning subsets survive, so the cofactor counts spanning trees. Equivalently it equals $\frac1n$ times the product of the Laplacian eigenvalues with one $0$ removed, which for a connected graph is the product of the nonzero ones.
 
 ## Useful observations
 - Putting each degree on the diagonal and $-1$ for each edge builds $L$, and the row to delete is whichever makes the arithmetic easiest.
@@ -3404,7 +3404,7 @@ The idea is that the shadow is smallest when the sets are packed as tightly as p
 
 Step 1, the bound is reached. The first $m$ sets in colex order are all $k$-subsets of $\{1, \ldots, a_k\}$, then the sets containing $a_k + 1$ together with a $(k-1)$-subset of $\{1, \ldots, a_{k-1}\}$, and so on. Their shadow is exactly the cascade sum in the second Key form, one binomial for each block.
 
-Step 2, nothing beats it. The standard proof replaces $\mathcal F$ by a compressed family of the same size whose shadow is no larger, by repeatedly swapping one element for a smaller one wherever that does not create a duplicate. A family that no swap changes is shown, by induction on $k$ and on the size of the ground set, to have a shadow at least the cascade sum. The compression step is the heart of it; the full argument takes a few pages and is in texts on extremal set theory.
+Step 2, nothing beats it. The standard proof replaces $\mathcal F$ by a compressed family of the same size whose shadow is no larger, by repeatedly swapping one element for a smaller one wherever that does not create a duplicate. A family that no swap changes is shown, by induction on $k$ and on the size of the ground set, to have a shadow at least the cascade sum. The compression step is the heart of it; this step is quoted, not proved here. A complete two-page proof is P. Frankl, "A New Short Proof for the Kruskal–Katona Theorem", Discrete Mathematics 48 (1984), 327–329.
 
 ## Useful observations
 - Taking shadows repeatedly gives the least possible number of $j$-sets below a family, which bounds the faces of a simplicial complex.
@@ -3491,7 +3491,7 @@ Object.assign(window.MATH_DETAILS, {
 - a fence of length $L$ with posts every $d$, ends included, has $\tfrac Ld + 1$ posts in a line and $\tfrac Ld$ around a loop
 
 ## Conditions
-The ends are counted as stated: "from $a$ to $b$ inclusive" includes both, and a loop has no ends at all. When the length is not a multiple of the spacing, the last gap is shorter and the counts use the floor.
+The ends are counted as stated: "from $a$ to $b$ inclusive" includes both, and a loop has no ends at all. When the length is not a multiple of the spacing, two readings differ. The posts at $0, d, 2d, \ldots$ that do not pass $L$ number $\left\lfloor\tfrac Ld\right\rfloor + 1$; if the far end must also get a post, with a shorter last gap, the line has $\left\lceil\tfrac Ld\right\rceil + 1$ posts (a $10$-foot fence with $4$-foot gaps has posts at $0, 4, 8, 10$: four).
 
 ## Why it works
 Pair each gap with the post at its left end. In a line every post but the last starts a gap, so the gaps are one fewer than the posts. Around a loop every post starts a gap and the last gap returns to the first post, so the counts are equal.
@@ -3501,7 +3501,7 @@ For the integers from $a$ to $b$, subtracting $a - 1$ from each turns them into 
 ## Useful observations
 - When a count looks off by one, check a tiny case: from $3$ to $5$ there are $3$ numbers, not $2$.
 - Posts on the sides of a rectangle share the four corners, so the total is the sum over the sides minus $4$.
-- A calendar is a fence: from Monday to the next Monday is $7$ days but $8$ Mondays counted inclusively.
+- A calendar is a fence: from one Monday to the next is $7$ days apart but $8$ dates counted inclusively.
 
 ## Applications
 Posts along a fence, trees along a road, pages in a range, days between dates, and the number of terms of an arithmetic sequence.

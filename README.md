@@ -280,6 +280,10 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
+**2026-10-24**
+
+- **Reported errors checked and fixed (owner, 2026-10-24).** Each claim was checked by computation before editing, and each card face now agrees with its write-up. Wald's identity: a stopping time needs independent terms (counterexample: $X_i=B$ and $N=1+B$ give $1$, not $\frac34$). Basic Probability: only favorable over total needs equally likely outcomes. LGV: the identity-matching condition is now beside the determinant. Regions: a circle with $k\gt0$ crossings adds $k$ regions. Variance: independence is enough but not needed. Graph Coloring: bipartite iff $\chi\le2$, and Brooks needs a connected graph. Fencepost: a short last gap gives $\lceil L/d\rceil+1$, and the 8 Mondays line is fixed. Sprague–Grundy: the reverse statement corrected. Cauchy example: the solution no longer relies on $c^x$. Matrix–Tree: the eigenvalue form is stated for connected graphs. Vieta: the root gap is now $\sqrt{\lvert\Delta\rvert}/\lvert a\rvert$. Menelaus: the converse needs directed lengths or a count of the points outside the sides. First-order recurrences: a classification table. Euler line parallel to a side: $AH=2HD$ only for acute triangles (counterexample given). Focal radii: $PF=\lvert y+p\rvert$, and the hyperbola's latus rectum is now written $c^2/a-a$. Circle-power families: real only when $r_t^2\ge0$. Lester: the false Kiepert and $60^\circ$ claims replaced. Soddy–Gosset and Kruskal–Katona are labelled as quoted, with references. Strategies: 2002 AIME I #3 finishes the count ($36-8-3=25$), and 2025 AMC 10B #21 / 12B #17 show the complete case analysis (4 classes of sizes $8,8,4,8$).
+
 **2026-10-23**
 
 - **Settings: "Where I left off" removed (owner, 2026-10-23).** When the app opens now offers Front page or Formulas; a saved "Where I left off" opens Formulas. The app no longer records the last page (`mq-last`), clears the old key on load, and leaves it out of the progress export.

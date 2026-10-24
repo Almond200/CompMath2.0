@@ -92,7 +92,7 @@ Seldom alone, because it finishes a setup rather than building it; the partners 
 ## Key forms
 - $r + s = -\frac ba$ and $rs = \frac ca$ — the sum and product straight from the coefficients
 - $r^2 + s^2 = (r + s)^2 - 2rs$ and $\frac1r + \frac1s = \frac{r + s}{rs}$ — symmetric expressions without the roots
-- $|r - s| = \frac{\sqrt{\Delta}}{|a|}$ — the gap between the roots, from the [[quadratic-formula|discriminant]]
+- $|r - s| = \frac{\sqrt{|\Delta|}}{|a|}$ — the gap between the roots, real or complex ($x^2 + 1$: $|i - (-i)| = 2$), from the [[quadratic-formula|discriminant]]
 - $x^2 - px + q = 0$ — the quadratic whose roots have sum $p$ and product $q$
 
 ## Conditions
@@ -3483,10 +3483,17 @@ A frequent AMC and occasional AIME tool: one picture replaces a dozen sign cases
 - $L = \dfrac{d}{1 - r}$ for $r \ne 1$ — the fixed point of $a_n = ra_{n-1} + d$, the value the rule leaves unchanged
 - $a_n - L = r^n(a_0 - L)$ — measured from $L$ the sequence is geometric
 - $a_n = r^n(a_0 - L) + L$ — the closed form
-- $a_n = a_0 + nd$ when $r = 1$, where there is no fixed point and the sequence is arithmetic
+- $a_n = a_0 + nd$ when $r = 1$, where the sequence is arithmetic (no fixed point if $d \ne 0$; every value fixed if $d = 0$)
 
 ## Conditions
-The rule has a constant ratio $r$ and a constant added amount $d$. The terms approach $L$ when $\lvert r \rvert \lt 1$, run away when $\lvert r \rvert \gt 1$, and alternate around $L$ when $r$ is negative.
+The rule has a constant ratio $r$ and a constant added amount $d$. The behavior, for $r \ne 1$:
+
+| case | behavior |
+|---|---|
+| $a_0 = L$ | constant, for every $r$ |
+| $\lvert r \rvert \lt 1$ | approaches $L$ (from one side if $r \gt 0$, alternating if $r \lt 0$) |
+| $r = -1$ | a two-cycle, $a_0, 2L - a_0, a_0, \ldots$ |
+| $\lvert r \rvert \gt 1$ | runs away from $L$ (alternating if $r \lt -1$) |
 
 ## Why it works
 The fixed point is the one value the recurrence leaves alone: solving $L = rL + d$ gives $L = \frac{d}{1 - r}$. Subtracting $L = rL + d$ from $a_n = ra_{n-1} + d$ removes the constant, $$a_n - L = r(a_{n-1} - L), \qquad \text{so} \qquad a_n - L = r^n(a_0 - L).$$
@@ -3495,9 +3502,9 @@ That subtraction is the whole content: $d$ disappears into the change of origin,
 
 {{figure:gaps}}
 
-So $a_n$ approaches $L$ when $\lvert r \rvert \lt 1$, runs away when $\lvert r \rvert \gt 1$, and alternates around $L$ when $r$ is negative.
+So, unless $a_0 = L$ (a constant sequence), $a_n$ approaches $L$ when $\lvert r \rvert \lt 1$, keeps a constant distance from it when $r = -1$ (a two-cycle), runs away when $\lvert r \rvert \gt 1$, and alternates sides when $r$ is negative.
 
-The excluded case is $r = 1$, where $x \mapsto x + d$ has no fixed point at all; there the recurrence is an [[arithmetic-series|arithmetic sequence]], $a_n = a_0 + nd$.
+The excluded case is $r = 1$, where $x \mapsto x + d$ has no fixed point at all when $d \ne 0$ (and fixes everything when $d = 0$); there the recurrence is an [[arithmetic-series|arithmetic sequence]], $a_n = a_0 + nd$.
 
 ## Useful observations
 - The process is: solve $L = rL + d$, write $a_n = r^n(a_0 - L) + L$, and read off what the question wants, a specific term, the limit $L$, or the step at which a threshold is crossed, which is a logarithm away.
