@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Bug fixed: a card name with an eaten escape (2026-10-24).** "Summing a Trigonometric Series with $e^{i\theta}$" was written in a plain string, so `\t` became a tab and the name showed "$e^{i\,heta}$". It now uses `\\theta`, and `scan-conventions.py` has a new gate that flags `\t`, `\f`, `\b`, `\v`, `\r` or `\n` before a letter in any plain (not `String.raw`) string of the data files.
 - **F: 10 more Low cards (2026-10-24).** Roots modulo $p$, primitive roots, the freshman's dream, quadratic reciprocity, Bertrand, three and four squares, terminating decimals, cyclotomic polynomials, Gaussian integers and circle inversion. Cards under two: 158.
 - **F: 10 more Low cards, and second exercises for four (2026-10-24).** The regular tetrahedron, dodecahedron and icosahedron, Pappus, projection, skew lines, isoperimetric facts, harmonic quadrilaterals, $\gcd(a^m - 1, a^n - 1)$, the parity of $\sigma$ and Möbius inversion, plus second exercises for the Iran lemma, isogonal conjugates and the gliding principle. Cards under two: 168.
 - **F: 10 more Low cards (2026-10-24).** Monge, Ptolemy's second theorem, bisectors of two lines, Pick on any lattice and with holes, polar coordinates, the reflective property, focal radii, parabolic segments and the gliding principle. Cards under two: 180.

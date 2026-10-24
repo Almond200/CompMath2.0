@@ -940,6 +940,23 @@ print("  control characters (tabs) inside data files: %d  (must stay 0)" % len(_
 for _x in _ctrl[:8]:
     print("    %s:%d %s" % _x)
 
+# The same eaten escape in an ordinary double-quoted string: "$e^{i\theta}$" turns "\t" into a
+# tab when the page loads (a card name, 2026-10-24). LaTeX in a plain string needs "\\theta".
+_ESC_STR = re.compile(r'"(?:[^"\\\n]|\\.)*"')
+_ESC = re.compile(r'(?<!\\)\\[tfbvrn][a-z]')
+_esc = []
+for _dp, _dn, _fn in os.walk(os.path.join(ROOT, "js", "data")):
+    for _f in _fn:
+        if not _f.endswith(".js"): continue
+        _fp = os.path.join(_dp, _f)
+        _txt = re.sub(r"`[^`]*`", lambda m: "\n" * m.group(0).count("\n"), io.open(_fp, encoding="utf-8").read())
+        for _ln, _line in enumerate(_txt.split("\n"), 1):
+            for _sm in _ESC_STR.finditer(_line):
+                if _ESC.search(_sm.group(0)): _esc.append((os.path.relpath(_fp, ROOT), _ln, _sm.group(0)[:60]))
+print("  LaTeX escape eaten in a plain string (\\t, \\f, \\b, \\n...): %d  (must stay 0)" % len(_esc))
+for _x in _esc[:8]:
+    print("    %s:%d %s" % _x)
+
 # A keyword listed twice in one card's keywords array is dead weight in the search index and a sign
 # of a careless merge (eight cards had one on 2026-10-11).
 _dupkw = []
@@ -953,6 +970,6 @@ for _x in _dupkw[:8]:
 
 bad = bool(_bad_tier or _selfptr or _repeats or _esc_q or missing_wu or _late or _twice or _lowcap or missing_ex or missing_dia or bare or _bad or mislaid or emph or kf_examples or cp_examples
            or _lt or fig_bad or _odd_heads or _kind_err or _unknown or _long_paras or _probref_hits
-           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared or _ctrl or _dupkw or _brace)
+           or _no_plain or _twin or _kf_sigma or _bad_alt or _no_ledger or _proc_hits or _calc or _shared or _ctrl or _esc or _dupkw or _brace)
 print("\n%s" % ("FAILURES ABOVE" if bad else "no convention violations found"))
 sys.exit(1 if bad else 0)
