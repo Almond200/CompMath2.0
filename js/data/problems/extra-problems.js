@@ -1968,4 +1968,70 @@
     { q: String.raw`Two parallel planes $2$ apart sandwich two touching unit balls. What radius must a fifth ball have to touch both planes and both balls?`,
       s: String.raw`The planes count as curvature $0$, so $\sum k = 2$ and $\sum k^2 = 2$, and $k_5 = 1 \pm \frac{\sqrt3}2\sqrt{4 - 4} = 1$: radius $1$, in either of the two spots beside the pair. Check: balls at $(0, 0, 0)$ and $(2, 0, 0)$, and a third at $(1, \sqrt3, 0)$ is $2$ from both.` }
   );
+  add("totient-divisor-sum",
+    { q: String.raw`Check Gauss's totient sum for $n = 36$ by listing $\varphi(d)$ for every divisor.`,
+      s: String.raw`The divisors $1, 2, 3, 4, 6, 9, 12, 18, 36$ have totients $1, 1, 2, 2, 2, 6, 4, 6, 12$, and $1 + 1 + 2 + 2 + 2 + 6 + 4 + 6 + 12 = 36$.` },
+    { q: String.raw`Reduce each of $\frac1{30}, \frac2{30}, \ldots, \frac{30}{30}$ to lowest terms. How many end with denominator $10$, and why do the counts over all denominators add to $30$?`,
+      s: String.raw`$\frac{k}{30}$ reduces to denominator $10$ exactly when it equals $\frac{j}{10}$ with $\gcd(j, 10) = 1$, so there are $\varphi(10) = 4$: $\frac3{30}, \frac9{30}, \frac{21}{30}, \frac{27}{30}$. Each fraction lands on exactly one denominator $d \mid 30$, with $\varphi(d)$ fractions there, so $\sum_{d \mid 30}\varphi(d) = 30$.` }
+  );
+  add("dirichlet-primes-progression",
+    { q: String.raw`Are there infinitely many primes of the form $12k + 5$? Of the form $12k + 9$?`,
+      s: String.raw`$\gcd(5, 12) = 1$, so Dirichlet gives infinitely many: $5, 17, 29, 41, \ldots$ But $\gcd(9, 12) = 3$ divides every $12k + 9$, and none of them equals $3$, so there are no primes of that form at all.` },
+    { q: String.raw`Must some prime end in the digits $999$? Find the smallest.`,
+      s: String.raw`Ending in $999$ means $p \equiv 999 \pmod{1000}$, and $\gcd(999, 1000) = 1$, so there are infinitely many. The candidates are $999 = 27 \cdot 37$, then $1999$, which is prime.` }
+  );
+  add("thues-lemma",
+    { q: String.raw`$6^2 \equiv -1 \pmod{37}$. Apply Thue's Lemma with $a = 6$ to write $37$ as a sum of two squares.`,
+      s: String.raw`We want $x \equiv 6y$ with $|x|, |y| \le 6$. Already $y = 1$, $x = 6$ works, and then $x^2 + y^2 \equiv (a^2 + 1)y^2 \equiv 0 \pmod{37}$ with $0 \lt x^2 + y^2 \le 72$, so $x^2 + y^2 = 37$: $37 = 36 + 1$.` },
+    { q: String.raw`$9^2 = 81 \equiv -1 \pmod{41}$. Find small $x$, $y$ with $x \equiv 9y \pmod{41}$ and use them to write $41$ as a sum of two squares.`,
+      s: String.raw`With $|x|, |y| \le 6$: $y = 1, 2, 3$ give $9, 18, 27 \equiv -14$, all too big, and $y = 4$ gives $36 \equiv -5$. So $x = -5$, $y = 4$, and $25 + 16 = 41$.` }
+  );
+  add("cauchy-davenport",
+    { q: String.raw`Mod $11$, a set $A$ of size $3$ and a set $B$ of size $2$. What is the smallest $|A + B|$ can be, and when is it reached?`,
+      s: String.raw`Cauchy–Davenport gives $|A + B| \ge \min(11, 3 + 2 - 1) = 4$. It is reached by progressions with the same difference: $A = \{0, 1, 2\}$, $B = \{0, 1\}$ give $A + B = \{0, 1, 2, 3\}$.` },
+    { q: String.raw`The fourth powers mod $17$ are $\{0, 1, 4, 13, 16\}$. How many fourth powers does Cauchy–Davenport guarantee are enough to write every residue mod $17$ as their sum?`,
+      s: String.raw`A sum of $k$ copies of a $5$-element set has at least $\min(17, 5k - (k - 1)) = \min(17, 4k + 1)$ elements, which reaches $17$ at $k = 4$. So four fourth powers always suffice mod $17$ (a direct check shows three already do).` }
+  );
+  add("erdos-ginzburg-ziv",
+    { q: String.raw`Show that $2n - 1$ cannot be lowered to $2n - 2$, using $n = 4$.`,
+      s: String.raw`Take $0, 0, 0, 1, 1, 1$. Any four of them include between $1$ and $3$ ones, so their sum is $1$, $2$ or $3$, never a multiple of $4$. In general, $n - 1$ zeros and $n - 1$ ones defeat every choice of $n$.` },
+    { q: String.raw`Find four of $1, 3, 4, 6, 7, 9, 10$ whose sum is divisible by $4$.`,
+      s: String.raw`Seven numbers is $2 \cdot 4 - 1$, so the theorem promises one. The residues mod $4$ are $1, 3, 0, 2, 3, 1, 2$; taking $1 + 3 + 2 + 2$ gives $1 + 3 + 6 + 10 = 20$.` }
+  );
+  add("wolstenholme",
+    { q: String.raw`Check Wolstenholme's Theorem for $p = 7$ using $\binom{14}{7}$.`,
+      s: String.raw`$\binom{14}7 = 3432 = 10 \cdot 343 + 2$, so $\binom{14}7 \equiv 2 \pmod{7^3}$.` },
+    { q: String.raw`Why does the theorem start at $p = 5$? Compute $\binom{2p}{p} \bmod p^3$ for $p = 3$ and $p = 5$.`,
+      s: String.raw`For $p = 3$, $\binom63 = 20$, which is $20 \not\equiv 2 \pmod{27}$. For $p = 5$, $\binom{10}5 = 252 = 2 \cdot 125 + 2 \equiv 2 \pmod{125}$. Small primes fail because the harmonic-sum step needs $p \ge 5$.` }
+  );
+  add("zsygmondy",
+    { q: String.raw`$2^{10} - 1 = 1023 = 3 \cdot 11 \cdot 31$. Which of these primes is primitive?`,
+      s: String.raw`$3$ divides $2^2 - 1$ and $31$ divides $2^5 - 1$, so they appeared earlier. The order of $2$ mod $11$ is $10$, so $11$ divides no earlier $2^k - 1$: it is the primitive prime divisor Zsigmondy promises.` },
+    { q: String.raw`Show that $2^6 - 1$ has no primitive prime divisor, then find the primitive ones of $3^4 - 1$.`,
+      s: String.raw`$63 = 3^2 \cdot 7$, with $3 \mid 2^2 - 1$ and $7 \mid 2^3 - 1$: this is the exception. $3^4 - 1 = 80 = 2^4 \cdot 5$; $2$ divides $3 - 1$, but $5$ divides none of $2, 8, 26$, so $5$ is primitive.` }
+  );
+  add("fermat-numbers",
+    { q: String.raw`Show $641 \mid F_5 = 2^{32} + 1$ using $641 = 5 \cdot 2^7 + 1 = 5^4 + 2^4$.`,
+      s: String.raw`Mod $641$, $5 \cdot 2^7 \equiv -1$, so $5^4 \cdot 2^{28} \equiv 1$. Also $5^4 \equiv -2^4$, so $-2^4 \cdot 2^{28} = -2^{32} \equiv 1$, i.e. $2^{32} + 1 \equiv 0$. Indeed $F_5 = 641 \cdot 6700417$.` },
+    { q: String.raw`Use the product identity to show $F_2$ and $F_5$ share no factor.`,
+      s: String.raw`$F_5 - 2 = F_0F_1F_2F_3F_4$, so a common divisor of $F_2$ and $F_5$ divides $F_5 - (F_5 - 2) = 2$. Fermat numbers are odd, so the divisor is $1$.` }
+  );
+  add("carmichael-numbers",
+    { q: String.raw`Is $1105$ a Carmichael number?`,
+      s: String.raw`$1105 = 5 \cdot 13 \cdot 17$ is squarefree, and $4$, $12$, $16$ all divide $1104 = 16 \cdot 69$ ($1104 = 12 \cdot 92$). By Korselt, yes.` },
+    { q: String.raw`$341 = 11 \cdot 31$ satisfies $2^{340} \equiv 1 \pmod{341}$. Is it a Carmichael number?`,
+      s: String.raw`It is a pseudoprime to base $2$: $2^{10} = 1024 = 3 \cdot 341 + 1$, so $2^{340} = (2^{10})^{34} \equiv 1$. But $31 - 1 = 30 \nmid 340$, so Korselt fails, and indeed $3^{340} \equiv 56 \pmod{341}$. Not Carmichael.` }
+  );
+  add("beatty-theorem",
+    { q: String.raw`Take $\alpha = \varphi = \frac{1 + \sqrt5}2$. Find its partner and the first few terms of both sequences.`,
+      s: String.raw`$\frac1\beta = 1 - \frac1\varphi = 1 - (\varphi - 1) = 2 - \varphi$, so $\beta = \frac{1}{2 - \varphi} = \varphi^2 = \varphi + 1$. The terms are $\lfloor n\varphi \rfloor = 1, 3, 4, 6, 8, 9, 11, 12, \ldots$ and $\lfloor n\varphi^2 \rfloor = 2, 5, 7, 10, 13, \ldots$, which fill in exactly the gaps.` },
+    { q: String.raw`How many of $1, 2, \ldots, 100$ have the form $\lfloor n\sqrt2 \rfloor$?`,
+      s: String.raw`$\lfloor n\sqrt2 \rfloor \le 100$ exactly when $n\sqrt2 \lt 101$, so $n \le \lfloor 101/\sqrt2 \rfloor = 71$. The partner $2 + \sqrt2$ gives $\lfloor 101/(2 + \sqrt2) \rfloor = 29$, and $71 + 29 = 100$, as the partition requires.` }
+  );
+  add("floor-sum-reciprocity",
+    { q: String.raw`Find $\left\lfloor \frac3{11} \right\rfloor + \left\lfloor \frac6{11} \right\rfloor + \cdots + \left\lfloor \frac{30}{11} \right\rfloor$.`,
+      s: String.raw`This is $\sum_{k=1}^{10}\left\lfloor \frac{3k}{11} \right\rfloor$ with $\gcd(3, 11) = 1$, so it equals $\frac{2 \cdot 10}2 = 10$. Directly: $0, 0, 0, 1, 1, 1, 1, 2, 2, 2$.` },
+    { q: String.raw`Find $\sum_{k=1}^{4}\left\lfloor \frac{13k}{5} \right\rfloor$ two ways.`,
+      s: String.raw`By reciprocity it is $\frac{(13 - 1)(5 - 1)}2 = 24$, the same as $\sum_{k=1}^{12}\left\lfloor \frac{5k}{13} \right\rfloor$. Directly, $2 + 5 + 7 + 10 = 24$.` }
+  );
 })();
