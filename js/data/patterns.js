@@ -672,7 +672,7 @@ window.MATH_SECTIONS.push({
         },
         {
           id: "trig-series-complex",
-          name: "Summing a Trigonometric Series with $e^{i\theta}$",
+          name: "Summing a Trigonometric Series with $e^{i\\theta}$",
           type: "method",
           subject: "algebra",
           when: String.raw`A sum of cosines or sines with angles in arithmetic progression, possibly weighted by binomial coefficients or powers, $\sum a_k\cos k\theta$ or $\sum a_k\sin k\theta$, must be found in closed form.`,

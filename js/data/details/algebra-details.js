@@ -13,7 +13,7 @@ Object.assign(window.MATH_DETAILS, {
 The $x_i$ are distinct. With $n$ points the polynomial has degree at most $n - 1$, and it can be lower, as when the points are collinear.
 
 ## Why it works
-Each basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, vanishes at every $x_j$ with $j \ne i$, and equals $1$ at $x_i$. So $y_1L_1 + \cdots + y_nL_n$ takes the value $y_i$ at each $x_i$.
+Each basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, vanishes at every $x_j$ with $j \ne i$, and equals $1$ at $x_i$. So $y_1L_1 + \cdots + y_nL_n$ takes the value $y_i$ at each $x_i$. With two points this is the line through them, and putting $x = 0$ turns each factor into $\frac{-x_j}{x_i - x_j} = \frac{x_j}{x_j - x_i}$, which is the $P(0)$ form.
 
 Uniqueness: if two polynomials of degree at most $n - 1$ agree at $n$ points, their difference has degree at most $n - 1$ and $n$ roots, so it is zero.
 
@@ -162,9 +162,13 @@ Collecting the choices with the same $k$, the coefficient of $x^{n-k}$ is $(-1)^
 The polynomial is nonconstant, and roots are counted with multiplicity. Over the real numbers the count of real roots can be smaller than the degree; it is over $\mathbb{C}$ that there are exactly $n$.
 
 ## Why it works
-The analytic core is that every non-constant complex polynomial has at least one root, provable via Liouville's theorem, a winding-number argument, or a minimum-modulus argument.
+The analytic core is that every non-constant complex polynomial has at least one root. It is quoted, not proved here: proofs go through Liouville's theorem, a winding-number argument, or a minimum-modulus argument, and B. Fine and G. Rosenberger, The Fundamental Theorem of Algebra (Springer, 1997), collects them.
 
 Once there is one root $r$, dividing out $(x - r)$ drops the degree by one, and repeating gives, after $n$ steps, $n$ linear factors, $P(x) = a_n\prod (x - r_k)$, with exactly $n$ roots counted by multiplicity.
+
+The other Key forms need only the Factor Theorem. If a polynomial of degree at most $n$ had $n + 1$ distinct roots and were not zero, it would have $n + 1$ linear factors and degree at least $n + 1$. So two polynomials of degree at most $n$ that agree at $n + 1$ points are equal.
+
+For real coefficients, $\overline{P(z)} = P(\bar z)$, so non-real roots come in conjugate pairs, and $(x - r)(x - \bar r) = x^2 - 2\operatorname{Re}(r)\,x + \lvert r\rvert^2$ is a real quadratic. An odd degree cannot be made of pairs alone, so one root is real.
 
 ## Useful observations
 - It is the license behind "a degree-$n$ polynomial has $n$ roots," which underwrites [[vietas-general|Vieta's Formulas]], partial fractions, and all root counting.
@@ -247,9 +251,12 @@ Three problems here, all AIME, none solved by it alone: it usually factors a cub
 The polynomial is evaluated in whatever form it is given, so a product, a power, or a composition is never expanded. For two variables, the other variable is fixed first.
 
 ## Why it works
-Evaluating a polynomial at a number weights each coefficient by a power of that number, so a well-chosen point makes the weights collapse: $$P(1) = a_0 + a_1 + a_2 + \cdots, \qquad P(-1) = a_0 - a_1 + a_2 - \cdots.$$
+Evaluating a polynomial at a number weights each coefficient by a power of that number, so a well-chosen point makes the weights collapse:
+$$P(1) = a_0 + a_1 + a_2 + \cdots, \qquad P(-1) = a_0 - a_1 + a_2 - \cdots.$$
 
-Adding and subtracting those cancels one parity at a time: $$\frac{P(1) + P(-1)}{2} = a_0 + a_2 + a_4 + \cdots, \qquad \frac{P(1) - P(-1)}{2} = a_1 + a_3 + a_5 + \cdots.$$ At $x = 0$ every weight but the first vanishes, leaving $a_0$.
+Adding and subtracting those cancels one parity at a time:
+$$\frac{P(1) + P(-1)}{2} = a_0 + a_2 + a_4 + \cdots, \qquad \frac{P(1) - P(-1)}{2} = a_1 + a_3 + a_5 + \cdots.$$
+At $x = 0$ every weight but the first vanishes, leaving $a_0$. If the coefficients are all of one sign, $\lvert P(1) \rvert$ is the sum of their absolute values; if they alternate in sign, $\lvert a_k \rvert = \pm(-1)^ka_k$ with one fixed sign, so the sum is $\lvert P(-1) \rvert$.
 
 ## Useful observations
 - The polynomial is evaluated in the form the problem gives, never expanded. For $(1 + 2x)^{10}(1 - x)^4$ the coefficient sum is $3^{10} \cdot 0^4 = 0$, and the constant term is $1$.
@@ -495,7 +502,13 @@ Rarely the whole problem, because it is a move rather than a result. Its standin
 The sum factorization needs an odd exponent; for even $n$, $a^n + b^n$ has no factor $a + b$, though it can factor in other ways, for example $a^4 + 4b^4 = (a^2 + 2ab + 2b^2)(a^2 - 2ab + 2b^2)$.
 
 ## Why it works
-The geometric-series identity: multiplying $(a - b)$ by the sum $a^{n-1} + a^{n-2}b + \cdots + b^{n-1}$ makes everything telescope, each product cancelling the next, and leaves $a^n - b^n$. For odd $n$, substituting $-b$ for $b$ gives the $a^n + b^n$ version, since $(-b)^n = -b^n$.
+The geometric-series identity: multiplying $(a - b)$ by the sum $a^{n-1} + a^{n-2}b + \cdots + b^{n-1}$ makes everything telescope, each product cancelling the next, and leaves $a^n - b^n$. For odd $n$, substituting $-b$ for $b$ gives the $a^n + b^n$ version, since $(-b)^n = -b^n$. For even exponents, $a^{2m} - b^{2m}$ is a difference of squares, $(a^m - b^m)(a^m + b^m)$.
+
+Step 1, divisibility of $a^n - 1$ (with $a \ge 2$). If $n = mq$, then $a^n - 1 = (a^m)^q - 1$, which the first Key form makes a multiple of $a^m - 1$. Conversely, write $n = qm + r$ with $0 \le r \lt m$:
+$$a^n - 1 = a^r\left(a^{qm} - 1\right) + \left(a^r - 1\right).$$
+If $a^m - 1$ divides $a^n - 1$, it divides $a^r - 1$, which is smaller, so $a^r - 1 = 0$ and $r = 0$.
+
+Step 2, the gcd. The same display shows $\gcd(a^n - 1, a^m - 1) = \gcd(a^m - 1, a^r - 1)$, which is one step of the [[euclidean-algorithm|Euclidean algorithm]] run on the exponents. Repeating it ends at $\gcd(a^{d} - 1, a^0 - 1) = a^d - 1$ with $d = \gcd(m, n)$.
 
 ## Useful observations
 - It is a divisibility engine: $a - b \mid a^n - b^n$ always, and $a + b \mid a^n + b^n$ for odd $n$. This is key for number-theory divisibility arguments.
@@ -518,7 +531,12 @@ Finding the largest prime factor of a number such as a power minus one is done b
 The identity holds for all real or complex $a$ and $b$. For integer factorization arguments, $a$ and $b$ are positive integers, and the smaller factor $(a - b)^2 + b^2$ exceeds $1$ unless $a = b = 1$.
 
 ## Why it works
-Adding and subtracting $4a^2b^2$ completes a square: $$a^4 + 4b^4 = a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2 = (a^2 + 2b^2)^2 - (2ab)^2.$$ The result is a difference of two squares, which factors as $(a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)$. Rewriting $a^2 - 2ab + 2b^2$ as $(a - b)^2 + b^2$ shows that each factor is a sum of two squares.
+Adding and subtracting $4a^2b^2$ completes a square:
+$$a^4 + 4b^4 = a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2 = (a^2 + 2b^2)^2 - (2ab)^2.$$
+The result is a difference of two squares, which factors as $(a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)$. Rewriting $a^2 - 2ab + 2b^2$ as $(a - b)^2 + b^2$ shows that each factor is a sum of two squares.
+
+The observations are direct checks. With $b = 1$ the smaller factor is $(n - 1)^2 + 1$, which is more than $1$ once $n \ge 2$, so $n^4 + 4$ is then composite. For odd $k$, $4^k = 4 \cdot 4^{k - 1} = 4\left(2^{(k - 1)/2}\right)^4$. And
+$$g(x + 2b) = (x + 2b)^2 - 2b(x + 2b) + 2b^2 = x^2 + 2bx + 2b^2 = f(x).$$
 
 ## Useful observations
 - With $b = 1$ it reads $n^4 + 4 = (n^2 - 2n + 2)(n^2 + 2n + 2)$, so $n^4 + 4$ is prime only for $n = 1$, where it equals $5$.
@@ -872,6 +890,12 @@ Differentiate $\sum x^k = \frac{1}{1-x}$ termwise, or avoid calculus: $S - xS$ t
 
 Take $S = x + 2x^2 + 3x^3 + \cdots$ and subtract $xS = x^2 + 2x^3 + \cdots$. The coefficient of each power of $x$ drops from $k$ to $k - (k - 1) = 1$, so $S - xS = x + x^2 + x^3 + \cdots = \frac{x}{1-x}$, and $S = \frac{x}{(1-x)^2}$.
 
+For the finite sum, the subtraction leaves one extra term at the end:
+$$S_n - xS_n = x + x^2 + \cdots + x^n - nx^{n+1} = \frac{x(1 - x^n)}{1 - x} - nx^{n+1}.$$
+Dividing by $1 - x$ and collecting gives $\frac{x\left(1 - (n+1)x^n + nx^{n+1}\right)}{(1-x)^2}$. At $x = 2$ the denominator is $1$, and $2\left(1 - (n+1)2^n + n2^{n+1}\right) = (n - 1)2^{n+1} + 2$.
+
+For the squares, $T = \sum k^2x^k$ gives $T - xT = \sum \left(k^2 - (k-1)^2\right)x^k = \sum (2k - 1)x^k = 2S - \frac{x}{1-x}$, which is $\frac{x(1 + x)}{(1-x)^2}$; dividing by $1 - x$ once more gives $\frac{x(1+x)}{(1-x)^3}$.
+
 ## Useful observations
 - The shift-subtract derivation is fast and safe under pressure, and it works for finite sums too: the leftover term at the end gives the $(n+1)x^n$ correction.
 - Each further factor of $k$ needs one more round of the derivation, or one more derivative, which is why $\sum k^2x^k$ has $(1-x)^3$ in the denominator.
@@ -1149,9 +1173,11 @@ Most often a quick bounding step in a complex-number or coordinate problem, and 
 $x \ge -1$ so that $1 + x \ge 0$, and the exponent is a real number at least $1$ for the first form, in particular any positive integer.
 
 ## Why it works
-Induct on $n$: it holds at $n = 1$, and if $(1 + x)^k \ge 1 + kx$ then, since $x \ge -1$ keeps $1 + x \ge 0$, multiplying preserves the inequality: $(1 + x)^{k+1} \ge (1 + kx)(1 + x) = 1 + (k + 1)x + kx^2 \ge 1 + (k + 1)x$.
+Induct on $n$: it holds at $n = 1$, and if $(1 + x)^k \ge 1 + kx$ then, since $x \ge -1$ keeps $1 + x \ge 0$, multiplying preserves the inequality: $(1 + x)^{k+1} \ge (1 + kx)(1 + x) = 1 + (k + 1)x + kx^2 \ge 1 + (k + 1)x$. The last step drops $kx^2$, which is $0$ only at $x = 0$, so for $n \ge 2$ equality needs $x = 0$.
 
-Geometrically, $y = 1 + nx$ is the tangent at $x = 0$ to the convex curve $y = (1 + x)^n$, so the curve never dips below it; for real exponents it is just convexity of $t \mapsto t^n$.
+For a real exponent $r$, compare $f(x) = (1 + x)^r$ with its tangent line $1 + rx$ at $x = 0$. Since
+$$f''(x) = r(r - 1)(1 + x)^{r - 2},$$
+$f$ is convex for $r \ge 1$ and lies above the tangent, and concave for $0 \le r \le 1$ and lies below it. That gives both forms, and $\sqrt{1 + x} \le 1 + \frac x2$ is the case $r = \frac12$.
 
 ## Useful observations
 - It is a fast, calculus-free bound on a power: it estimates compound growth, shows a power clears a linear target, or sandwiches limits like $\left(1 + \frac1n\right)^n$.
@@ -1335,6 +1361,8 @@ The angle $\theta$ is in radians, and the polar form of a number is determined o
 Comparing Taylor series of $e^{i\theta}$, $\cos\theta$, and $\sin\theta$ shows they agree term by term once $i^2 = -1$ is used: the even powers of $i\theta$ give the cosine series and the odd powers give $i$ times the sine series.
 
 Alternatively it can be accepted as the definition of complex exponentials, and the multiplication law verified through [[angle-addition|angle addition]] formulas, which it then re-derives, circularly but consistently.
+
+The other Key forms follow. A number at distance $r$ from $0$ and angle $\theta$ is $r(\cos\theta + i\sin\theta) = re^{i\theta}$. Adding and subtracting $e^{i\theta} = \cos\theta + i\sin\theta$ and $e^{-i\theta} = \cos\theta - i\sin\theta$ gives the forms of cosine and sine. To rotate $z$ about $p$, move $p$ to $0$, multiply by $e^{i\theta}$, which rotates by $\theta$, and move back: $p + e^{i\theta}(z - p)$.
 
 ## Useful observations
 - Polar form makes multiplication trivial: moduli multiply and angles add. Converting to polar suits any power, root, or rotation task, and converting back suits addition.
@@ -1550,7 +1578,7 @@ The identities hold for all angles where the functions are defined. Any angle re
 ## Why it works
 Everything is a unit-circle reflection. Reflecting across $y = x$ swaps coordinates, giving the cofunction pair $\sin(90^\circ - \theta) = \cos\theta$. Reflecting across the $x$-axis negates $y$, so sine is odd, and fixes $x$, so cosine is even.
 
-Reflecting across the $y$-axis is the supplement $180^\circ - \theta$: $y$ stays and $x$ flips, so sine is preserved and cosine negates.
+Reflecting across the $y$-axis is the supplement $180^\circ - \theta$: $y$ stays and $x$ flips, so sine is preserved and cosine negates. A full turn of $360^\circ$ returns every point, so sine and cosine repeat. A half turn sends $(x, y)$ to $(-x, -y)$, which keeps the ratio $\frac yx$, so tangent repeats every $180^\circ$; tangent and cotangent are odd as quotients of an odd and an even function.
 
 ## Useful observations
 - Awkward angles are collapsed to first-quadrant values before other identities are applied.
@@ -1608,9 +1636,11 @@ An AIME and AMC 12 tool. Its usual partners are [[trig-substitution|trigonometri
 $a$ and $b$ are not both zero. The relation $\tan\varphi = \frac ba$ alone does not distinguish $\varphi$ from $\varphi + 180^\circ$, and the signs of $a$ and $b$ fix the quadrant.
 
 ## Why it works
-Expand the right-hand side by [[angle-addition|angle addition]]: $R\sin(\theta + \varphi) = (R\cos\varphi)\sin\theta + (R\sin\varphi)\cos\theta$. Matching coefficients forces $R\cos\varphi = a$ and $R\sin\varphi = b$, so $a^2 + b^2 = R^2$ and $\tan\varphi = \frac{b}{a}$.
+Expand the right-hand side by [[angle-addition|angle addition]]: $R\sin(\theta + \varphi) = (R\cos\varphi)\sin\theta + (R\sin\varphi)\cos\theta$. Matching coefficients forces $R\cos\varphi = a$ and $R\sin\varphi = b$, so $a^2 + b^2 = R^2$ and $\tan\varphi = \frac{b}{a}$. Such a $\varphi$ exists because $\left(\frac aR, \frac bR\right)$ is a point of the unit circle.
 
-The pair $(a, b)$ is just the point $(R, \varphi)$ in [[eulers-formula|polar form]], which is why the amplitude is a hypotenuse.
+The pair $(a, b)$ is just the point $(R, \varphi)$ in [[eulers-formula|polar form]], which is why the amplitude is a hypotenuse. The cosine form works the same way: $R\cos(\theta - \varphi') = (R\sin\varphi')\sin\theta + (R\cos\varphi')\cos\theta$, so $R\sin\varphi' = a$ and $R\cos\varphi' = b$.
+
+Since $\sin(\theta + \varphi)$ takes every value in $[-1, 1]$ as $\theta$ varies, the expression takes every value in $[-R, R]$ and no other. That gives the maximum $R$, the minimum $-R$, and the solvability condition $\lvert c \rvert \le R$.
 
 ## Useful observations
 - It is read as a range statement. Since $\sin$ covers $[-1, 1]$, the expression covers $[-R, R]$, so the maximum is $\sqrt{a^2 + b^2}$ with no calculus and no critical points. The maximum of $3\sin x + 4\cos x$ is $5$ on sight.
@@ -1734,7 +1764,13 @@ Six problems here, all AIME, none by it alone: two feed a telescoping sum such a
 The values are exact, with $\sin 15^\circ = \sin(45^\circ - 30^\circ)$ and the $18^\circ$ family following from the regular pentagon.
 
 ## Why it works
-$\sin 15^\circ$ comes from the angle subtraction $45^\circ - 30^\circ$. The $18^\circ$ and $36^\circ$ family comes from the isosceles $36$-$72$-$72$ triangle, whose self-similarity yields the golden ratio, or from solving $\sin 2\theta = \cos 3\theta$ at $\theta = 18^\circ$, which is a cubic in $\sin\theta$ with the root $\frac{\sqrt5 - 1}{4}$.
+$\sin 15^\circ$ comes from the angle subtraction $45^\circ - 30^\circ$: $\sin 45^\circ\cos 30^\circ - \cos 45^\circ\sin 30^\circ = \frac{\sqrt6 - \sqrt2}4$.
+
+For the pentagon family, let $\theta = 18^\circ$, so $2\theta = 90^\circ - 3\theta$ and $\sin 2\theta = \cos 3\theta$. With $s = \sin\theta$ and $c = \cos\theta \ne 0$, that is $2sc = 4c^3 - 3c$; dividing by $c$,
+$$2s = 4c^2 - 3 = 1 - 4s^2, \qquad 4s^2 + 2s - 1 = 0,$$
+and the positive root is $s = \frac{\sqrt5 - 1}4$. This is also $\cos 72^\circ$.
+
+Then $\cos 36^\circ = 1 - 2\sin^2 18^\circ = 1 - \frac{6 - 2\sqrt5}8 = \frac{1 + \sqrt5}4$. With $\varphi = \frac{1 + \sqrt5}2$ these are $\frac\varphi2$ and $\frac{\varphi - 1}2$. Their difference is $\frac{(1 + \sqrt5) - (\sqrt5 - 1)}4 = \frac12$ and their product is $\frac{5 - 1}{16} = \frac14$.
 
 ## Useful observations
 - The family resemblance is the guide: anything with $\sqrt6 \pm \sqrt2$ is the $15^\circ$ and $75^\circ$ family, and anything with $\sqrt5$ is the $18^\circ$ and $36^\circ$ pentagon family.
@@ -1758,9 +1794,13 @@ Pentagon problems and $15^\circ$ configurations reduce to these. The AIME expect
 The identities hold for all angles; the tangent form needs $\cos 3\theta \ne 0$ and $\tan\theta$ defined. In the cubic $4x^3 - 3x = c$ the trigonometric solution needs $\lvert c \rvert \le 1$.
 
 ## Why it works
-Compose double and single angle additions: $\sin 3\theta = \sin(2\theta + \theta) = \sin 2\theta\cos\theta + \cos 2\theta\sin\theta$, and expanding with the double-angle formulas leaves $3\sin\theta - 4\sin^3\theta$.
+Compose double and single angle additions: $\sin 3\theta = \sin(2\theta + \theta) = \sin 2\theta\cos\theta + \cos 2\theta\sin\theta$, and expanding with the double-angle formulas leaves $3\sin\theta - 4\sin^3\theta$. The same expansion of $\cos(2\theta + \theta)$ gives $4\cos^3\theta - 3\cos\theta$.
 
-Alternatively, take the real and imaginary parts of $(\cos\theta + i\sin\theta)^3$ by [[de-moivre|De Moivre's Theorem]].
+Alternatively, by [[de-moivre|De Moivre's Theorem]], with $c = \cos\theta$ and $s = \sin\theta$,
+$$\cos 3\theta + i\sin 3\theta = (c + is)^3 = (c^3 - 3cs^2) + i(3c^2s - s^3).$$
+Dividing the imaginary part by the real part, then top and bottom by $c^3$, gives $\tan 3\theta = \frac{3t - t^3}{1 - 3t^2}$ with $t = \tan\theta$.
+
+For the cubic, put $x = \cos t$. Then $4x^3 - 3x = \cos 3t$, so the equation $4x^3 - 3x = c$ with $\lvert c \rvert \le 1$ holds when $3t = \arccos c + 2\pi k$. The values $k = 0, 1, 2$ give the roots $\cos\frac{\arccos c + 2\pi k}3$, which are distinct for $\lvert c \rvert \lt 1$, and a cubic has no more. Solving the Key forms for the cube gives $\sin^3\theta = \frac{3\sin\theta - \sin 3\theta}4$ and $\cos^3\theta = \frac{3\cos\theta + \cos 3\theta}4$.
 
 ## Useful observations
 - $\cos 3\theta = 4\cos^3\theta - 3\cos\theta$ turns cubics with three real roots into trigonometric equations (the "casus irreducibilis"): cubics like $4x^3 - 3x = c$ are solved by $x = \cos\frac{\arccos c}{3}$ and its two rotations by $\frac{2\pi}{3}$.
@@ -1810,7 +1850,12 @@ The addition and subtraction formulas hold with $\arctan$ taking values in $\lef
 ## Why it works
 The tangent subtraction formula $\tan(A - B) = \frac{\tan A - \tan B}{1 + \tan A\tan B}$, read as a statement about arctangents. With $A = \arctan a$ and $B = \arctan b$, the formula says $A - B$ has tangent $\frac{a - b}{1 + ab}$, so $A - B = \arctan\frac{a - b}{1 + ab}$ when that angle is in the principal range.
 
-Read right to left, a term $\arctan\frac{a - b}{1 + ab}$ splits into a difference of two arctangents, and a sum of such terms telescopes.
+That range condition is $ab \gt -1$. The difference $A - B$ lies in $(-\pi, \pi)$, and it lies in $\left(-\frac\pi2, \frac\pi2\right)$ exactly when $\cos(A - B) = \cos A\cos B(1 + ab)$ is positive; since $\cos A\cos B \gt 0$, that means $1 + ab \gt 0$.
+
+Read right to left, a term $\arctan\frac{a - b}{1 + ab}$ splits into a difference of two arctangents, and a sum of such terms telescopes. The two families are instances: $\frac{(n + 1) - n}{1 + n(n + 1)} = \frac1{n^2 + n + 1}$, and
+$$\frac{\frac1{2n - 1} - \frac1{2n + 1}}{1 + \frac1{4n^2 - 1}} = \frac{2}{4n^2} = \frac1{2n^2}.$$
+
+For the classic, $\tan(\arctan 2 + \arctan 3) = \frac{5}{1 - 6} = -1$, and the sum lies between $\frac\pi2$ and $\pi$, so it is $\frac{3\pi}4$; adding $\arctan 1 = \frac\pi4$ gives $\pi$.
 
 ## Useful observations
 - To telescope $\sum \arctan t_n$, the terms are matched with $t_n = \frac{a_n - b_n}{1 + a_nb_n}$, usually with $a_n = n + 1$ and $b_n = n$, which gives the denominator $n^2 + n + 1$, or with a similar pair of consecutive values.
@@ -1835,9 +1880,13 @@ AIME arctangent sums are built for this; the family with a quadratic denominator
 The common difference $d$ is not a multiple of $2\pi$, so that $\sin\frac d2 \ne 0$. The number of terms is $n$ and the angle in the last factor is the middle angle of the progression.
 
 ## Why it works
-Multiply the sum by $2\sin\frac d2$: each product-to-sum expansion telescopes, leaving only boundary terms, which reassemble into the closed form, a "Dirichlet kernel" argument.
+Multiply by $2\sin\frac d2$ and use product-to-sum on each term:
+$$2\sin\tfrac d2\sin(a + kd) = \cos\left(a + \left(k - \tfrac12\right)d\right) - \cos\left(a + \left(k + \tfrac12\right)d\right).$$
+Summing over $k = 0, \ldots, n - 1$ telescopes to $\cos\left(a - \frac d2\right) - \cos\left(a + \left(n - \frac12\right)d\right)$, which by sum-to-product is $2\sin\left(a + \frac{(n - 1)d}2\right)\sin\frac{nd}2$. Dividing by $2\sin\frac d2$ gives the formula.
 
-Alternatively, the sum is the imaginary part of the [[geometric-series|geometric series]] $\sum e^{i(a + kd)}$, whose closed form is $e^{ia}\frac{e^{ind} - 1}{e^{id} - 1}$.
+For cosines, $2\sin\frac d2\cos(a + kd) = \sin\left(a + \left(k + \frac12\right)d\right) - \sin\left(a + \left(k - \frac12\right)d\right)$, which telescopes to $2\cos\left(a + \frac{(n - 1)d}2\right)\sin\frac{nd}2$. Alternatively, the sum is the imaginary part of the [[geometric-series|geometric series]] $\sum e^{i(a + kd)}$, whose closed form is $e^{ia}\frac{e^{ind} - 1}{e^{id} - 1}$.
+
+The special case takes $n - 1$ terms with $a = d = \frac\pi n$: the middle angle is $\frac\pi2$ and the ratio is $\frac{\sin\left(\frac\pi2 - \frac\pi{2n}\right)}{\sin\frac\pi{2n}} = \cot\frac\pi{2n}$. Around a full circle $nd = 2\pi$, so $\sin\frac{nd}2 = 0$ and the sum vanishes.
 
 ## Useful observations
 - Both routes are worth knowing: the multiplication by $2\sin\frac d2$ is self-contained, and the complex geometric series is faster with fluency.
@@ -1898,7 +1947,13 @@ Floor equations and floor-counting problems permeate the AMC and AIME, and the c
 $n$ is a positive integer and $x$ is real.
 
 ## Why it works
-As $x$ increases by steps of $\frac1n$, exactly one of the shifted floors $\lfloor x + \frac kn\rfloor$ ticks up at each step, and the left side $\lfloor nx\rfloor$ ticks at the same moments. Both sides are step functions with identical jumps and equal value at $x = 0$.
+Let $f(x) = \sum_{k=0}^{n-1}\left\lfloor x + \frac kn\right\rfloor - \lfloor nx\rfloor$.
+
+Step 1, period $\frac1n$. Replacing $x$ by $x + \frac1n$ shifts the terms of the sum along by one: the terms for $k = 1, \ldots, n - 1$ appear again, and the new last term is $\lfloor x + 1\rfloor = \lfloor x\rfloor + 1$. The other side becomes $\lfloor nx + 1\rfloor = \lfloor nx\rfloor + 1$. So $f\left(x + \frac1n\right) = f(x)$.
+
+Step 2. For $0 \le x \lt \frac1n$, every $x + \frac kn$ is below $1$ and $nx$ is below $1$, so $f(x) = 0$. By Step 1, $f$ is $0$ everywhere.
+
+For the companion, $\lfloor x\rfloor + \lfloor -x\rfloor$ is $0$ when $x$ is an integer, and otherwise $\lfloor -x\rfloor = -\lfloor x\rfloor - 1$, so the sum is $-1$.
 
 ## Useful observations
 - It splits $\lfloor nx\rfloor$ into pieces when summing floors of arithmetic sequences, and collapses sums like $\sum_{k=0}^{n-1}\lfloor x + \frac kn\rfloor$ on sight.
@@ -2051,9 +2106,11 @@ Radicals such as $\sqrt{1 - x^2}$ or $\sqrt{x^2 + 4}$, optimizing an expression 
 Maximize $x + \sqrt{1 - x^2}$ for $-1 \le x \le 1$. With $x = \sin\theta$ and $-\frac\pi2 \le \theta \le \frac\pi2$, the root is $\cos\theta$, so the expression is $\sin\theta + \cos\theta = \sqrt2\sin\left(\theta + \frac\pi4\right)$, whose maximum $\sqrt2$ occurs at $\theta = \frac\pi4$, that is $x = \frac{\sqrt2}{2}$.
 
 ## Why it works
-Each substitution matches a Pythagorean identity. With $x = a\sin\theta$, $$\sqrt{a^2 - x^2} = a\sqrt{1 - \sin^2\theta} = a\cos\theta,$$ which is right because $\cos\theta \ge 0$ for $-\frac\pi2 \le \theta \le \frac\pi2$. The figure shows the same fact as a right triangle with hypotenuse $a$ and one leg $x$.
+Each substitution matches a Pythagorean identity. With $x = a\sin\theta$,
+$$\sqrt{a^2 - x^2} = a\sqrt{1 - \sin^2\theta} = a\cos\theta,$$
+which is right because $\cos\theta \ge 0$ for $-\frac\pi2 \le \theta \le \frac\pi2$. The figure shows the same fact as a right triangle with hypotenuse $a$ and one leg $x$.
 
-Recursions close because identities double or add angles: $\cos 2\theta = 2\cos^2\theta - 1$ turns $x \mapsto 2x^2 - 1$ into $\theta \mapsto 2\theta$. And for angles with $A + B + C = \pi$, $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, which is the condition $a + b + c = abc$.
+Recursions close because identities double or add angles: $\cos 2\theta = 2\cos^2\theta - 1$ turns $x \mapsto 2x^2 - 1$ into $\theta \mapsto 2\theta$. And for angles with $A + B + C = \pi$, $\tan(A + B) = -\tan C$ reads $\frac{\tan A + \tan B}{1 - \tan A\tan B} = -\tan C$, which rearranges to $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, the condition $a + b + c = abc$.
 
 ## Formulas it uses
 - [[pythagorean-identities]]: $\sin^2\theta + \cos^2\theta = 1$ and $1 + \tan^2\theta = \sec^2\theta$, which clear the radicals.
@@ -2117,7 +2174,15 @@ Object.assign(window.MATH_DETAILS, {
 The coefficients are real, roots are counted with multiplicity, and zero coefficients are skipped. A root at $0$ is removed first by factoring out a power of $x$.
 
 ## Why it works
-Each positive root forces at least one sign change, since a polynomial with all-positive coefficients has none. A careful induction on factoring out $(x - r)$ shows that roots consume sign changes in pairs-preserving fashion, hence "equal, or less by an even number."
+Let $V(P)$ be the number of sign changes. Assume $P(0) \ne 0$ and the leading coefficient is positive.
+
+Step 1, parity. $V(P)$ is even exactly when the constant term is positive. The number of positive roots, with multiplicity, is even exactly when $P$ has the same sign at $0$ and for large $x$, which is again when the constant term is positive. So the two numbers have the same parity.
+
+Step 2, the lemma: for $r \gt 0$, $V((x - r)Q) \ge V(Q) + 1$. Write $Q = \sum b_ix^i$ with $b_d \gt 0$, so the coefficients of $(x - r)Q$ are $c_i = b_{i-1} - rb_i$. Let $i_1 \gt i_2 \gt \cdots \gt i_V$ be the indices where the sign of $Q$'s coefficients first switches, so $b_{i_k}$ has sign $(-1)^k$ and $b_{i_k + 1}$ is $0$ or of the opposite sign.
+
+Then $c_{i_k + 1} = b_{i_k} - rb_{i_k + 1}$ has the sign $(-1)^k$. Together with $c_{d+1} = b_d \gt 0$ and $c_0 = -rb_0$, of sign $(-1)^{V+1}$, the coefficients $c_{d+1}, c_{i_1 + 1}, \ldots, c_{i_V + 1}, c_0$ alternate in sign, so $(x - r)Q$ has at least $V + 1$ sign changes.
+
+Step 3. Factor $P = (x - r_1)\cdots(x - r_k)Q$ over its $k$ positive roots. The lemma, applied $k$ times, gives $V(P) \ge k$, and by Step 1 the difference is even. For negative roots, the roots of $P(-x)$ are the negatives of those of $P$.
 
 ## Useful observations
 - Sign changes of $P(x)$ are counted for positive roots and sign changes of $P(-x)$ for negative roots, and the complex roots, which come in pairs, fill the gap to the degree.
@@ -2176,7 +2241,11 @@ Usually a quick AMC or AIME computation: the table identifies the degree and sup
 Each template assumes continuity, monotonicity, or boundedness on an interval; contest problems always supply enough regularity. The multiplicative forms need positivity to take logarithms, and the degenerate solution $f \equiv 0$ is checked separately.
 
 ## Why it works
-For additive $f$: build from $f(1)$ over the integers, then the rationals ($q\,f(p/q) = f(p)$); regularity forces the rational-linear behavior to extend to all reals. The other three templates reduce to the additive one via logarithms and exponentials, for example $g = \ln f$ turns the multiplicative equation into an additive one.
+Step 1, the rationals. From $f(x + y) = f(x) + f(y)$: $x = y = 0$ gives $f(0) = 0$, then $f(-x) = -f(x)$, and induction gives $f(nx) = nf(x)$. With $c = f(1)$, $q\,f\!\left(\frac pq\right) = f(p) = pc$, so $f(r) = cr$ for every rational $r$.
+
+Step 2, regularity. If $f$ is continuous, take rationals $r_k \to x$; then $f(x) = \lim cr_k = cx$. If $f$ is increasing, then $cr \le f(x) \le cs$ for rationals $r \lt x \lt s$, and squeezing gives $f(x) = cx$; a bound on an interval works the same way.
+
+Step 3, the other three. If $f(x + y) = f(x)f(y)$, then $f(x) = f\!\left(\frac x2\right)^2 \ge 0$, and a single zero makes $f \equiv 0$; otherwise $g = \ln f$ is additive, so $f = e^{cx}$. If $f(xy) = f(x) + f(y)$ on positive reals, then $g(t) = f(e^t)$ is additive, so $f(x) = c\ln x$. If $f(xy) = f(x)f(y)$ with $f \gt 0$, then $\ln f(e^t)$ is additive, so $f(x) = x^c$.
 
 ## Useful observations
 - The template is matched, the regularity hypothesis the problem provides is verified, the general solution is written with one unknown constant, and the constant is pinned from a given value.
@@ -2272,9 +2341,12 @@ Common on the AMC and AIME: a term numbered in the thousands, the last digits of
 All hold whenever $A + B + C = 180^\circ$. The tangent identity needs every tangent defined, so no right angle.
 
 ## Why it works
-All spring from $C = 180^\circ - A - B$. For the tangent identity, $\tan(A + B) = \tan(180^\circ - C) = -\tan C$ is expanded and denominators cleared.
+All spring from $C = 180^\circ - A - B$. For the tangent identity, $\tan(A + B) = \tan(180^\circ - C) = -\tan C$ is expanded and denominators cleared. For the cotangents, $\cot C = -\cot(A + B) = \frac{1 - \cot A\cot B}{\cot A + \cot B}$, and clearing the denominator gives $\sum\cot A\cot B = 1$, which holds even with a right angle.
 
-The cosine and sine sums follow from sum-to-product plus half-angle conversions, which is where $r$ and $R$ enter (the cosine sum) and $s$ (the sine sum).
+The sine sum is $\frac{a + b + c}{2R}$ by the Law of Sines. For the cosines, sum-to-product and $\cos C = 1 - 2\sin^2\frac C2$ give
+$$\cos A + \cos B + \cos C = 1 + 2\sin\tfrac C2\left(\cos\tfrac{A - B}2 - \cos\tfrac{A + B}2\right) = 1 + 4\sin\tfrac A2\sin\tfrac B2\sin\tfrac C2.$$
+
+To bring in $r$: the incircle touches $BC$ at distances $r\cot\frac B2$ and $r\cot\frac C2$ from $B$ and $C$, so $a = r\frac{\cos\frac A2}{\sin\frac B2\sin\frac C2}$, and $a = 4R\sin\frac A2\cos\frac A2$ turns this into $r = 4R\sin\frac A2\sin\frac B2\sin\frac C2$. So the cosine sum is $1 + \frac rR$. The $\sin 2A$ identity is proved on [[triangle-sin2-sum-ratio|its own card]].
 
 ## Useful observations
 - Two directions: given trigonometric data about a triangle's angles, convert to $r$, $R$, $s$; and given an equation like $\tan A + \tan B + \tan C = \tan A\tan B\tan C$, recognize it as saying the angles sum to $180^\circ$ (used both ways).
@@ -2458,7 +2530,10 @@ The variables are real, so that every square is nonnegative. The identity itself
 ## Why it works
 Expand the right side: each $(x - y)^2$ contributes $x^2 + y^2 - 2xy$, and the halved total collects exactly $x^2 + y^2 + z^2 - xy - yz - zx$. Each variable appears in two of the three squares, which gives its square the coefficient $\frac12 \cdot 2 = 1$, and each pair appears once with $-2$, which gives $-1$ after halving.
 
-Being a sum of real squares, it is nonnegative and vanishes only when all pairwise differences do.
+Being a sum of real squares, it is nonnegative and vanishes only when all pairwise differences do. The third Key form is the same expression, since $(x + y + z)^2 - 3(xy + yz + zx) = x^2 + y^2 + z^2 - xy - yz - zx$.
+
+With $n$ variables, each $x_i^2$ appears in $n - 1$ of the squares, so
+$$\sum_{i \lt j}(x_i - x_j)^2 = (n - 1)\sum_i x_i^2 - 2\sum_{i \lt j}x_ix_j = n\sum_i x_i^2 - \Big(\sum_i x_i\Big)^2.$$
 
 ## Useful observations
 - Three standard deployments: proving $\sum x^2 \ge \sum xy$ with the equality analysis; cracking symmetric conditions, since any equation reducible to $\sum(x - y)^2 = 0$ forces all variables equal; and the factor analysis of $x^3 + y^3 + z^3 - 3xyz = (x + y + z)\cdot\frac12\sum(x - y)^2$, which shows the second factor's sign is fixed (see [[cubes-minus-3abc|the cubes factorization]]).
@@ -2485,6 +2560,8 @@ $a^4 + a^2b^2 + b^4$: adding and subtracting $a^2b^2$ reaches $(a^2 + b^2)^2 - (
 
 The cube identity expands directly, or follows from symmetry: the left side vanishes when $a = -b$ (and likewise for the other pairs), so $(a + b)(b + c)(c + a)$ divides it, and comparing degree and leading coefficient fixes the factor $3$.
 
+For the last identity, both sides expand to $a^2b + a^2c + b^2a + b^2c + c^2a + c^2b + 2abc$: the product $(a + b + c)(ab + bc + ca)$ gives each of the six $a^2b$ terms once and $abc$ three times. The chaining in the first observation is $(n - 1)^2 + (n - 1) + 1 = n^2 - n + 1$.
+
 ## Useful observations
 - $x^4 + x^2 + 1$ and its iterate $x^8 + x^4 + 1$ show up in telescoping products and "factor this large number" problems. For example $n^4 + n^2 + 1 = (n^2 + n + 1)(n^2 - n + 1)$, with the bonus that $n^2 - n + 1 = (n - 1)^2 + (n - 1) + 1$, chaining consecutive values into telescoping fractions.
 - The identity $(a + b)(b + c)(c + a) = (a + b + c)(ab + bc + ca) - abc$ converts products of pairwise sums into elementary symmetric data, which is Vieta-ready; it has [[pairwise-sum-product|its own card]].
@@ -2506,6 +2583,8 @@ The identities hold for all numbers or expressions $x$, $y$, $z$. They convert a
 
 ## Why it works
 Expand $(x + y)(y + z)(z + x)$: the degree-$3$ terms are all six $x^2y$-type monomials plus $2xyz$. Meanwhile $(x + y + z)(xy + yz + zx)$ produces those same six monomials but with $3xyz$. Subtracting one $xyz$ makes them agree, so $(x + y)(y + z)(z + x) = e_1e_2 - e_3$.
+
+For the companion, the left side vanishes when $x = -y$, so $x + y$ is a factor, and likewise $y + z$ and $z + x$. Both sides have degree $3$, and comparing the coefficient of $x^2y$, which is $3$ on the left, fixes the constant $3$.
 
 ## Useful observations
 - When $x + y + z$, $xy + yz + zx$, and $xyz$ are known, most often as $-\frac ba$, $\frac ca$, $-\frac da$ from a cubic's coefficients via [[vietas-general|Vieta's Formulas]], any product of the pairwise sums is just $e_1e_2 - e_3$, with no expansion.
@@ -2559,9 +2638,13 @@ The three quantities sum to zero. The identities hold for real or complex number
 ## Why it works
 Everything follows from the elementary symmetric values $e_1 = a + b + c = 0$, $e_2 = ab + bc + ca$, and $e_3 = abc$.
 
-Squaring $a + b + c = 0$ gives $a^2 + b^2 + c^2 + 2e_2 = 0$, which is the square identity. For cubes, the factorization $$a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$$ has a first factor of $0$, so $a^3 + b^3 + c^3 = 3abc$.
+Squaring $a + b + c = 0$ gives $a^2 + b^2 + c^2 + 2e_2 = 0$, which is the square identity. For cubes, the factorization
+$$a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$$
+has a first factor of $0$, so $a^3 + b^3 + c^3 = 3abc$.
 
-Higher powers come from Newton's Sums. Each of $a$, $b$, $c$ is a root of $t^3 + e_2t - e_3$, so $t^3 = -e_2t + e_3$; multiplying by $t^{k-3}$ and adding over the three roots gives $$p_k = -e_2\,p_{k-2} + e_3\,p_{k-3},$$ where $p_k = a^k + b^k + c^k$. Starting from $p_0 = 3$, $p_1 = 0$, and $p_2 = -2e_2$, it produces $p_4 = 2e_2^2$, $p_5 = -5e_2e_3$, and $p_7 = 7e_2^2e_3$.
+Higher powers come from Newton's Sums. Each of $a$, $b$, $c$ is a root of $t^3 + e_2t - e_3$, so $t^3 = -e_2t + e_3$; multiplying by $t^{k-3}$ and adding over the three roots gives
+$$p_k = -e_2\,p_{k-2} + e_3\,p_{k-3},$$
+where $p_k = a^k + b^k + c^k$. Starting from $p_0 = 3$, $p_1 = 0$, and $p_2 = -2e_2$, it produces $p_3 = 3e_3$, $p_4 = 2e_2^2$, $p_5 = -5e_2e_3$, $p_6 = -2e_2^3 + 3e_3^2$ and $p_7 = 7e_2^2e_3$. Then $p_4 = \frac12p_2^2$, and $\frac{p_5}5 = -e_2e_3 = \frac{p_3}3 \cdot \frac{p_2}2$.
 
 ## Useful observations
 - The zero sum is often hidden. The roots of a cubic with no $x^2$ term sum to $0$ by [[vietas-general|Vieta's Formulas]], and the differences of any three numbers always sum to $0$, so for all $a$, $b$, $c$, $$(a - b)^3 + (b - c)^3 + (c - a)^3 = 3(a - b)(b - c)(c - a).$$
@@ -2584,9 +2667,11 @@ Three problems here, all AIME, none solved by it alone. The usual trigger is a c
 $x \ne 0$. The same recurrence holds for $a^n + b^n$ whenever $ab = 1$, with $t = a + b$.
 
 ## Why it works
-Multiply $s_{n-1} = x^{n-1} + x^{-(n-1)}$ by $t = x + x^{-1}$: the cross terms give $x^n + x^{-n} + x^{n-2} + x^{-(n-2)} = s_n + s_{n-2}$, so $s_n = t\,s_{n-1} - s_{n-2}$.
+Multiply $s_{n-1} = x^{n-1} + x^{-(n-1)}$ by $t = x + x^{-1}$: the cross terms give $x^n + x^{-n} + x^{n-2} + x^{-(n-2)} = s_n + s_{n-2}$, so $s_n = t\,s_{n-1} - s_{n-2}$. The same computation works for $a$ and $b$ with $ab = 1$, since only $ab = 1$ was used.
 
-Starting from $s_0 = 2$ and $s_1 = t$, this produces each $s_n$ as a degree-$n$ polynomial in $t$, the Chebyshev and Dickson polynomials.
+Starting from $s_0 = 2$ and $s_1 = t$, this produces each $s_n$ as a degree-$n$ polynomial in $t$, the Chebyshev and Dickson polynomials:
+$$s_2 = t^2 - 2, \qquad s_3 = t(t^2 - 2) - t = t^3 - 3t, \qquad s_4 = t(t^3 - 3t) - (t^2 - 2) = t^4 - 4t^2 + 2.$$
+With $x = e^{i\theta}$, $x^n + x^{-n} = 2\cos n\theta$ by [[de-moivre|De Moivre's Theorem]].
 
 ## Useful observations
 - Given $x + \frac1x$, any $x^n + \frac1{x^n}$ is reached with the two-term recurrence, with no need to solve for $x$.
@@ -2612,7 +2697,9 @@ The terms must be rewritten as a difference of consecutive factorial expressions
 ## Why it works
 $k \cdot k! = (k + 1)! - k!$ is just $(k + 1)! = (k + 1) \cdot k!$ rearranged; summing telescopes to $(n + 1)! - 1!$.
 
-The fraction version rewrites $\frac{k}{(k+1)!} = \frac{(k + 1) - 1}{(k + 1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$.
+The fraction version rewrites $\frac{k}{(k+1)!} = \frac{(k + 1) - 1}{(k + 1)!} = \frac{1}{k!} - \frac{1}{(k+1)!}$, and in the same way $\frac{k - 1}{k!} = \frac{k}{k!} - \frac1{k!} = \frac1{(k - 1)!} - \frac1{k!}$.
+
+For base factorial, digits $d_k \le k$ give $\sum_{k \le n} d_k \cdot k! \le \sum_{k \le n} k \cdot k! = (n + 1)! - 1$, which is less than the next place value. So the top digit of a number is forced, and by induction all of them are.
 
 ## Useful observations
 - A sum with $k \cdot k!$, $\frac{k}{(k+1)!}$, or $\frac{k-1}{k!}$ terms telescopes immediately.
@@ -2641,9 +2728,15 @@ Object.assign(window.MATH_DETAILS, {
 The function is convex or concave on an interval containing every $x_i$; for twice-differentiable $f$, convex means $f'' \ge 0$ and concave means $f'' \le 0$. Equality needs all the $x_i$ equal unless $f$ is linear on the relevant stretch.
 
 ## Why it works
-Convexity means every chord lies above the graph. The average $\frac{x_1 + \cdots + x_n}{n}$ is a point inside the interval, and the average of the values $\frac{\sum f(x_i)}{n}$ is the corresponding point on the "chord polygon" above it, so the function value at the average sits below the average of the values.
+Convexity means every chord lies above the graph: $f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$ for $0 \le \lambda \le 1$. That is the weighted statement for two points.
 
-Induction from the two-point definition $f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y)$ gives the full weighted statement.
+Step 1, induction on $n$. Given weights $\lambda_1, \ldots, \lambda_n$ with $\lambda_n \lt 1$, put $y = \sum_{i \lt n}\frac{\lambda_i}{1 - \lambda_n}x_i$, an average of $n - 1$ points. Then
+$$f\Big(\sum\lambda_ix_i\Big) = f\big(\lambda_nx_n + (1 - \lambda_n)y\big) \le \lambda_nf(x_n) + (1 - \lambda_n)f(y),$$
+and the induction hypothesis bounds $f(y)$ by $\sum_{i \lt n}\frac{\lambda_i}{1 - \lambda_n}f(x_i)$. Equal weights $\frac1n$ give the first Key form, and $-f$ gives the concave one.
+
+Step 2, the derivative test. If $f'' \ge 0$, then $f'$ is increasing, so for $x \lt z \lt y$ the mean value theorem makes the slope of the chord from $x$ to $z$ at most the slope from $z$ to $y$; that is the chord inequality at $z$. Strict convexity makes it strict unless the points coincide, which is the equality case.
+
+The specializations are this applied once. Jensen for the concave $\ln$ says the log of the mean is at least the mean of the logs, which is AM-GM. For the convex $\frac1x$ it says $\frac1{\text{AM}}$ is at most the mean of the reciprocals, which is AM-HM.
 
 ## Useful observations
 - Convexity is checked with the second derivative: $f'' \ge 0$ convex (inequality as stated), $f'' \le 0$ concave (flip it).
@@ -2711,7 +2804,11 @@ A named inequality that is quoted directly in olympiad solutions and appears on 
 The variables are nonnegative. The $t = 2$ case gives the degree-$4$ version.
 
 ## Why it works
-By symmetry assume $x \ge y \ge z$. Group the three terms as $(x - y)\big(x^t(x - z) - y^t(y - z)\big) + z^t(x - z)(y - z)$: every factor in both products is nonnegative under the ordering, so the whole sum is. This ordering-and-grouping argument is the entire proof, with no expansion needed.
+By symmetry assume $x \ge y \ge z$. Group the three terms as
+$$(x - y)\big(x^t(x - z) - y^t(y - z)\big) + z^t(x - z)(y - z).$$
+Here $x^t \ge y^t$ and $x - z \ge y - z \ge 0$, so the bracket is nonnegative, and every other factor is nonnegative under the ordering, so the whole sum is. This ordering-and-grouping argument is the entire proof, with no expansion needed. Equality needs both products to vanish: $x = y = z$, or $x = y$ with $z = 0$.
+
+For $t = 1$, expanding $\sum x(x - y)(x - z)$ gives $\sum x^3 - \sum_{\text{sym}}x^2y + 3xyz$, the second Key form. In $s$, $q$, $r$, $\sum x^3 = s^3 - 3sq + 3r$ and $\sum_{\text{sym}}x^2y = sq - 3r$, so the inequality reads $s^3 - 3sq + 6r \ge sq - 3r$, which is $s^3 + 9r \ge 4sq$.
 
 ## Useful observations
 - The $t = 1$ expansion is used when a symmetric degree-$3$ inequality has the "wrong direction" for AM-GM: the $+3xyz$ on the small side is Schur's signature, and no bunching argument produces it, since [[muirheads-inequality|Muirhead's Inequality]] can never yield it.
@@ -2735,7 +2832,11 @@ An olympiad tool: it settles many symmetric three-variable inequalities that res
 The sums are full symmetric sums, over all $3! = 6$ permutations, and both sides are homogeneous of the same degree. Cyclic sums are not covered.
 
 ## Why it works
-Majorization means the exponent vector $a$ can be reached from $b$ by repeatedly moving two exponents apart: $(b_i, b_j) \to (b_i + \epsilon, b_j - \epsilon)$ with $b_i \ge b_j$. Each such move is a two-variable AM-GM-style smoothing step on the symmetric sum, so the more spread-out exponent triple dominates. In fact every Muirhead inequality is a positive combination of weighted AM-GMs.
+Step 1, one move. Suppose two exponents $\alpha \ge \beta$ are moved apart to $\alpha + \varepsilon$ and $\beta - \varepsilon$, with the others fixed. In the symmetric sum, the terms pair off by swapping the two variables carrying these exponents, and for each pair
+$$x^{\alpha+\varepsilon}y^{\beta-\varepsilon} + x^{\beta-\varepsilon}y^{\alpha+\varepsilon} - x^{\alpha}y^{\beta} - x^{\beta}y^{\alpha} = (xy)^{\beta-\varepsilon}\left(x^{\alpha-\beta+\varepsilon} - y^{\alpha-\beta+\varepsilon}\right)\left(x^{\varepsilon} - y^{\varepsilon}\right),$$
+which is at least $0$ because the last two factors have the same sign. So each move can only raise the symmetric sum.
+
+Step 2, reaching $a$. If $a \succ b$, then $a$ can be reached from $b$ by finitely many such moves. This lemma is quoted, not proved here; see G. H. Hardy, J. E. Littlewood and G. Pólya, Inequalities (Cambridge University Press, 2nd ed. 1952). Chaining the moves of Step 1 gives the inequality.
 
 ## Useful observations
 - Both exponent triples are sorted in decreasing order and the partial sums checked; if all hold, the symmetric sum of the $a$-monomial dominates.
@@ -2759,9 +2860,11 @@ The rigorous stamp for "bunching" steps in olympiad solutions: a chain of majori
 The $x_i$ are nonnegative reals. Newton's inequality holds for all real $x_i$.
 
 ## Why it works
-The engine is Newton's inequality. It comes from the fact that $\prod_i(t + x_i)$ has only real roots, and so do its derivatives (Rolle), and a real-rooted quadratic slice forces $p_k^2 \ge p_{k-1}p_{k+1}$.
+Step 1, Newton. Let $P(t) = \prod_i(t + x_i) = \sum_k\binom nk p_kt^{n-k}$, which has only real roots. By Rolle's theorem every derivative of a real-rooted polynomial is real-rooted, and so is the reversal $t^mQ\left(\frac1t\right)$ of one. Differentiate $P$ $n - k - 1$ times, reverse, and differentiate $k - 1$ more times: the result is a quadratic, and a direct computation shows it is
+$$\frac{n!}2\left(p_{k+1}t^2 + 2p_kt + p_{k-1}\right).$$
+A real-rooted quadratic has a nonnegative discriminant, so $p_k^2 \ge p_{k-1}p_{k+1}$.
 
-Chaining the log-concavity and taking $k$th roots gives Maclaurin's descending chain.
+Step 2, Maclaurin, by induction on $k$, with $p_0 = 1$. Newton at $k = 1$ is $p_1^2 \ge p_2$. If $p_{k-1}^{1/(k-1)} \ge p_k^{1/k}$, then $p_{k-1} \ge p_k^{(k-1)/k}$, and Newton gives $p_k^2 \ge p_k^{(k-1)/k}p_{k+1}$, that is $p_k^{(k+1)/k} \ge p_{k+1}$, which is $p_k^{1/k} \ge p_{k+1}^{1/(k+1)}$. The two ends are $p_1$, the arithmetic mean, and $p_n^{1/n}$, the geometric mean.
 
 ## Useful observations
 - The middle links give sharper bounds than AM–GM when several elementary symmetric quantities appear together.
@@ -2892,6 +2995,10 @@ $|x - c| \lt d$ says $x$ is less than $d$ away from $c$, so it lies strictly bet
 
 {{figure:number-line}}
 
+The product rule holds sign by sign: both sides are $\pm xy$ with the sign that makes them nonnegative, so they agree. Then $|x| = |y|$ means $x^2 = y^2$, that is $(x - y)(x + y) = 0$. For the triangle inequality,
+$$|x + y|^2 = x^2 + 2xy + y^2 \le x^2 + 2|x||y| + y^2 = (|x| + |y|)^2,$$
+with equality exactly when $xy \ge 0$. For the sum of distances, a point between $a$ and $b$ splits the segment, so $|x - a| + |x - b| = |a - b|$, and a point a distance $t$ beyond one end adds $2t$, since both distances include that stretch.
+
 ## Useful observations
 - Each absolute value is turned into a distance or into two cases. To solve $|2x - 1| \lt 5$, divide by $2$ to get $\left|x - \frac12\right| \lt \frac52$: $x$ is within $\frac52$ of $\frac12$, so $-2 \lt x \lt 3$. For an equation $|A| = |B|$, the two equations $A = B$ and $A = -B$ are solved separately.
 - A sum of distances reads off the number line: $|x - a| + |x - b|$ is smallest, equal to $|a - b|$, for $x$ between $a$ and $b$, and grows by $2$ for every unit outside.
@@ -2947,7 +3054,9 @@ Fractions that mix $\sin\theta$, $\cos\theta$ and $\tan\theta$, equations such a
 Solve $\sin\theta + \cos\theta = 1$ for $0 \le \theta < 2\pi$. Substituting gives $\frac{2t + 1 - t^2}{1 + t^2} = 1$, so $2t - 2t^2 = 0$ and $t = 0$ or $t = 1$, that is $\theta = 0$ or $\theta = \frac\pi2$. The excluded value $\theta = \pi$ gives $-1$, not a solution.
 
 ## Why it works
-The double angle formulas give $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$ and $\cos\theta = \cos^2\frac\theta2 - \sin^2\frac\theta2$. Factoring out $\cos^2\frac\theta2 = \frac{1}{1 + t^2}$ turns both into rational functions of $t = \tan\frac\theta2$: $$\sin\theta = \frac{2t}{1 + t^2}, \qquad \cos\theta = \frac{1 - t^2}{1 + t^2}.$$
+The double angle formulas give $\sin\theta = 2\sin\frac\theta2\cos\frac\theta2$ and $\cos\theta = \cos^2\frac\theta2 - \sin^2\frac\theta2$. Factoring out $\cos^2\frac\theta2 = \frac{1}{1 + t^2}$ turns both into rational functions of $t = \tan\frac\theta2$:
+$$\sin\theta = \frac{2t}{1 + t^2}, \qquad \cos\theta = \frac{1 - t^2}{1 + t^2},$$
+and their quotient is $\tan\theta = \frac{2t}{1 - t^2}$. The substitution misses only $\theta = \pi$, where $\cos\frac\theta2 = 0$.
 
 Geometrically, the line through $(-1, 0)$ with slope $t$ meets the unit circle again at exactly this point, as the figure shows. Every rational slope gives a rational point, and with $t = \frac mn$, clearing denominators gives $(n^2 - m^2)^2 + (2mn)^2 = (n^2 + m^2)^2$, the formula for Pythagorean triples.
 
@@ -3037,7 +3146,9 @@ Olympiad inequalities, cyclic fractions above all. Rarely needed below olympiad 
 Both sequences are sorted, in the same direction for $\ge$ and in opposite directions for $\le$. The direction depends entirely on the sorting.
 
 ## Why it works
-Sum the $n^2$ products $(a_i - a_j)(b_i - b_j)$, each nonnegative when the sequences are sorted the same way. Expanding gives $n\sum a_ib_i - (\sum a_i)(\sum b_j) \ge 0$. Opposite ordering makes every factor flip sign, reversing the inequality.
+Sum the $n^2$ products $(a_i - a_j)(b_i - b_j)$ over all pairs $i, j$; each is nonnegative when the sequences are sorted the same way, since $a_i - a_j$ and $b_i - b_j$ then have the same sign. Expanding,
+$$\sum_{i, j}(a_i - a_j)(b_i - b_j) = 2n\sum_i a_ib_i - 2\Big(\sum_i a_i\Big)\Big(\sum_j b_j\Big) \ge 0.$$
+Opposite ordering makes every product at most $0$, reversing the inequality. With $b = a$ it gives $n\sum a_i^2 \ge \left(\sum a_i\right)^2$.
 
 ## Useful observations
 - It is the averaged cousin of the Rearrangement Inequality.
@@ -3087,7 +3198,12 @@ The exponent-two form is an AIME-level "minimize a sum of hypotenuses" trick whe
 Both sequences are sorted in decreasing order, with equal totals, and $f$ is convex (or concave) on an interval containing all the values.
 
 ## Why it works
-Each value of a convex $f$ lies above its tangent line. Combining the tangent-line comparisons by summation by parts with the majorization prefix-sum inequalities gives $\sum f(x_i) \ge \sum f(y_i)$. Convexity is what makes the tangent slopes line up with the partial sums.
+Step 1, slopes. For convex $f$ the chord slope $\frac{f(u) - f(v)}{u - v}$ increases with each of $u$ and $v$. Put $c_i = \frac{f(x_i) - f(y_i)}{x_i - y_i}$, or a one-sided derivative when $x_i = y_i$. Both sequences are decreasing, so $c_1 \ge c_2 \ge \cdots \ge c_n$.
+
+Step 2, [[abel-summation|Abel summation]]. With $D_k = \sum_{i \le k}(x_i - y_i)$, which is at least $0$ by majorization and $0$ at $k = n$,
+$$\sum_i\big(f(x_i) - f(y_i)\big) = \sum_i c_i(x_i - y_i) = \sum_{k=1}^{n-1}D_k(c_k - c_{k+1}) + D_nc_n \ge 0.$$
+
+For concave $f$ apply this to $-f$. Any decreasing sequence majorizes the constant sequence of its mean, since its first $k$ terms are its largest, which gives Jensen's Inequality.
 
 ## Useful observations
 - Establishing majorization is the real work; the inequality is then automatic.
@@ -3113,9 +3229,13 @@ Olympiad inequalities, especially symmetric ones whose extremum is at a boundary
 The numerical series converges for $\lvert x\rvert \lt 1$. For formal coefficient extraction in a generating function, convergence never matters.
 
 ## Why it works
-Taylor-expanding $(1 + x)^\alpha$ gives the $n$th coefficient $\frac{\alpha(\alpha - 1)\cdots(\alpha - n + 1)}{n!} = \binom\alpha n$.
+Let $f(x) = \sum_n \binom\alpha n x^n$. The ratio of consecutive coefficients is $\frac{\alpha - n}{n + 1}$, which tends to $-1$, so the series converges for $\lvert x\rvert \lt 1$. Comparing coefficients, with $(n + 1)\binom\alpha{n+1} = (\alpha - n)\binom\alpha n$,
+$$(1 + x)f'(x) = \alpha f(x).$$
+Then $\frac{f(x)}{(1 + x)^\alpha}$ has derivative $0$ and equals $1$ at $x = 0$, so $f(x) = (1 + x)^\alpha$.
 
-For $\alpha = -k$, $\binom{-k}{n} = (-1)^n\binom{n + k - 1}{n}$, and those signs cancel the $(-x)^n$ inside $\frac{1}{(1 - x)^k}$, leaving the positive coefficients $\binom{n + k - 1}{k - 1}$, the stars-and-bars count of $n$ as an ordered sum of $k$ nonnegative parts.
+For $\alpha = -k$, $\binom{-k}{n} = \frac{(-k)(-k - 1)\cdots(-k - n + 1)}{n!} = (-1)^n\binom{n + k - 1}{n}$, and those signs cancel the $(-x)^n$ inside $\frac{1}{(1 - x)^k}$, leaving the positive coefficients $\binom{n + k - 1}{k - 1}$, the stars-and-bars count of $n$ as an ordered sum of $k$ nonnegative parts. With $k = 1, 2$ these are $1$ and $n + 1$.
+
+For $\alpha = \frac12$: $\binom{1/2}2 = \frac{\frac12 \cdot \left(-\frac12\right)}{2} = -\frac18$ and $\binom{1/2}3 = \frac{\frac12 \cdot \left(-\frac12\right) \cdot \left(-\frac32\right)}{6} = \frac1{16}$.
 
 ## Useful observations
 - This is the dictionary that turns generating functions into numbers. Unlimited repetition of $k$ item types is modeled by $\frac{1}{(1 - x)^k}$ and the $x^n$ coefficient is read as $\binom{n + k - 1}{k - 1}$.
@@ -3139,9 +3259,11 @@ The engine behind AIME and olympiad generating-function counts; it is [[stars-an
 For $\Delta \gt 0$ the cube roots are of complex numbers (the casus irreducibilis), even though all three roots are real, and the trigonometric substitution is cleaner there. The two cube roots are chosen so that their product is $-\frac p3$.
 
 ## Why it works
-The substitution $x = t - \frac{b}{3a}$ kills the quadratic term, leaving $t^3 + pt + q = 0$. Setting $t = u + v$ with $3uv + p = 0$ turns it into $u^3 + v^3 = -q$ and $u^3v^3 = -\frac{p^3}{27}$.
+The substitution $x = t - \frac{b}{3a}$ kills the quadratic term, leaving $t^3 + pt + q = 0$. Setting $t = u + v$ gives
+$$t^3 = u^3 + v^3 + 3uv(u + v) = u^3 + v^3 + 3uv\,t,$$
+so if $3uv = -p$ and $u^3 + v^3 = -q$, then $t^3 + pt + q = 0$.
 
-So $u^3$ and $v^3$ are the two roots of $z^2 + qz - \frac{p^3}{27} = 0$, which are $-\frac q2 \pm \sqrt{\frac{q^2}{4} + \frac{p^3}{27}}$. That gives the nested cube-root expression. The term under the inner square root is, up to a constant, the discriminant $\Delta = -4p^3 - 27q^2$.
+So $u^3$ and $v^3$ are the two roots of $z^2 + qz - \frac{p^3}{27} = 0$, which are $-\frac q2 \pm \sqrt{\frac{q^2}{4} + \frac{p^3}{27}}$. That gives the nested cube-root expression. The term under the inner square root is $-\frac{\Delta}{108}$ with $\Delta = -4p^3 - 27q^2$, and the sign of $\Delta$ counts the real roots as on [[resultant-discriminant|the discriminant card]].
 
 ## Useful observations
 - The cubic is depressed, the formula applied, and $-\frac{b}{3a}$ added back.
@@ -3169,7 +3291,15 @@ Object.assign(window.MATH_DETAILS, {
 The $a_i$ are positive reals. The case $p = 0$ is defined as the limit, the geometric mean, and negative exponents need positive values.
 
 ## Why it works
-The map $p \mapsto M_p$ is nondecreasing because $x \mapsto x^{p/q}$ is convex for $p \gt q \gt 0$ (Jensen applied to $a_i^q$); limiting and sign arguments extend the chain through $p = 0$, which is the geometric mean, and to negative exponents. All values equal collapses every mean to the same number, which is the equality case.
+Step 1, $0 \lt p \lt q$. The function $f(t) = t^{q/p}$ is convex for $t \gt 0$, so [[jensens-inequality|Jensen]] applied to $t_i = a_i^{\,p}$ gives
+$$\left(\frac1n\sum a_i^{\,p}\right)^{q/p} \le \frac1n\sum a_i^{\,q},$$
+and taking $q$th roots gives $M_p \le M_q$.
+
+Step 2, $p \lt q \lt 0$. Now $\frac qp$ is between $0$ and $1$, so $f$ is concave and the inequality above reverses. Taking the power $\frac1q$, which is negative, reverses it again, so $M_p \le M_q$ still.
+
+Step 3, through $0$. [[am-gm|AM-GM]] on the numbers $a_i^{\,q}$ gives $G^q \le \frac1n\sum a_i^{\,q}$, so $G \le M_q$ for $q \gt 0$, where $G$ is the geometric mean. On the numbers $a_i^{\,p}$ with $p \lt 0$ it gives $G^p \le \frac1n\sum a_i^{\,p}$, and the negative power $\frac1p$ turns this into $G \ge M_p$. As $p \to 0$, $a^p = e^{p\ln a} \approx 1 + p\ln a$, so $\ln M_p \to \frac1n\sum\ln a_i = \ln G$, which is why $M_0$ is defined as $G$.
+
+Equality: Jensen and AM-GM are strict unless all the $a_i$ are equal, and equal values make every mean the same number.
 
 ## Useful observations
 - The two exponents are matched to the data: $M_2 \ge M_1$ compares $\sum a_i^2$ with $(\sum a_i)^2$; $M_1 \ge M_{-1}$ is AM-HM; $M_1 \ge M_0$ is AM-GM.
@@ -3193,7 +3323,9 @@ The workhorse behind "compare these symmetric sums" inequalities on the AIME and
 The weights are positive and add to $1$, and the $a_i$ are positive. Equal weights give the ordinary AM-GM inequality.
 
 ## Why it works
-It is Jensen's Inequality for the concave logarithm: $\ln\!\big(\sum w_ia_i\big) \ge \sum w_i\ln a_i = \ln\!\big(\prod a_i^{w_i}\big)$. Rational weights reduce to ordinary AM-GM by repeating terms; arbitrary weights follow by continuity.
+It is [[jensens-inequality|Jensen's Inequality]] in its weighted form for the concave logarithm:
+$$\ln\Big(\sum w_ia_i\Big) \ge \sum w_i\ln a_i = \ln\Big(\prod a_i^{\,w_i}\Big),$$
+and exponentiating gives the inequality for any positive weights adding to $1$. Since $\ln$ is strictly concave, equality needs all the $a_i$ equal. For rational weights $w_i = \frac{m_i}M$ the same result is plain AM-GM on $M$ numbers, with $a_i$ repeated $m_i$ times.
 
 ## Useful observations
 - The weights are chosen to produce the exponents wanted. To bound a product $\prod a_i^{c_i}$, weights $w_i \propto c_i$ make the weighted geometric mean the product and the weighted arithmetic mean a sum that is under control. This is how targeted bounds like $a^3 + a^3 + b^3 \ge 3a^2b$ are proved.
@@ -3239,7 +3371,9 @@ Rare below olympiad level, and when it appears the polynomial is usually cycloto
 $A_k$ is the partial sum of the sequence $a$. When $b_k$ is monotone, the transformed sum has terms of one sign.
 
 ## Why it works
-Substitute $a_k = A_k - A_{k-1}$ and reindex. This mirrors $\int u\,\mathrm{d}v = uv - \int v\,\mathrm{d}u$: the boundary term $A_nb_n$ minus the sum of the $A_k$ against the forward differences $b_{k+1} - b_k$ rebuilds the original sum.
+Substitute $a_k = A_k - A_{k-1}$, with $A_0 = 0$, and shift the index in the second sum:
+$$\sum_{k=1}^{n}a_kb_k = \sum_{k=1}^{n}A_kb_k - \sum_{k=1}^{n}A_{k-1}b_k = \sum_{k=1}^{n}A_kb_k - \sum_{k=1}^{n-1}A_kb_{k+1} = A_nb_n - \sum_{k=1}^{n-1}A_k(b_{k+1} - b_k).$$
+This mirrors $\int u\,\mathrm{d}v = uv - \int v\,\mathrm{d}u$: the boundary term $A_nb_n$ minus the sum of the $A_k$ against the forward differences $b_{k+1} - b_k$ rebuilds the original sum. When $b$ is monotone, all the differences have one sign.
 
 ## Useful observations
 - It pays off when one factor has a clean partial sum (arithmetic, geometric, binomial) or the other is monotone.
@@ -3264,9 +3398,11 @@ An olympiad and advanced-AIME tool that turns an intractable sum of products int
 Each identity holds on the principal ranges. $\arcsin(\sin x) = x$ only for $x \in \left[-\frac\pi2, \frac\pi2\right]$, and $\arccos(\cos x) = x$ only for $x \in [0, \pi]$; elsewhere the answer is the reflection or shift that lands in the range.
 
 ## Why it works
-$\arcsin x + \arccos x = \frac\pi2$ because sine and cosine are cofunctions on the principal ranges. $\arctan x + \arctan\frac1x = \pm\frac\pi2$ because the tangent of the sum blows up and the sign is set by the sign of $x$.
+Step 1, the complement. Let $\theta = \arcsin x$, in $\left[-\frac\pi2, \frac\pi2\right]$. Then $\frac\pi2 - \theta$ is in $[0, \pi]$, the range of $\arccos$, and $\cos\left(\frac\pi2 - \theta\right) = \sin\theta = x$, so $\arccos x = \frac\pi2 - \theta$.
 
-The arctan addition formula is tangent addition read backward, valid only while the true sum stays inside $\left(-\frac\pi2, \frac\pi2\right)$; once $xy \gt 1$ pushes it out, $\pi$ is added or subtracted.
+Step 2, reciprocals. For $x \gt 0$, $\theta = \arctan x$ is in $\left(0, \frac\pi2\right)$, so is $\frac\pi2 - \theta$, and $\tan\left(\frac\pi2 - \theta\right) = \frac1x$; so the sum is $\frac\pi2$. Both functions are odd, so for $x \lt 0$ it is $-\frac\pi2$.
+
+Step 3, addition. With $A = \arctan x$ and $B = \arctan y$, tangent addition gives $\tan(A + B) = \frac{x + y}{1 - xy}$. The sum $A + B$ lies in $(-\pi, \pi)$, and inside the principal range exactly when $\cos(A + B) = \cos A\cos B(1 - xy) \gt 0$, that is $xy \lt 1$. When $xy \gt 1$ it is outside, and the arctangent of $\frac{x + y}{1 - xy}$ differs from it by $\pi$, added when $x \gt 0$ and subtracted when $x \lt 0$.
 
 ## Useful observations
 - The ranges are pinned first: $\arcsin, \arctan \in \left[-\frac\pi2, \frac\pi2\right]$ and $\arccos \in [0, \pi]$.
@@ -3383,7 +3519,11 @@ Splitting an integer into positive parts with the largest product is a MATHCOUNT
 $A + B + C = 180^\circ$. The right-triangle test works because the product $\cos A\cos B\cos C$ vanishes exactly when one angle is $90^\circ$.
 
 ## Why it works
-Use $C = \pi - (A + B)$, so $\cos C = -\cos(A + B)$. Substituting into $\cos^2 A + \cos^2 B + \cos^2 C$ and simplifying with product-to-sum collapses it to $1 - 2\cos A\cos B\cos C$, the star identity.
+Use $C = \pi - (A + B)$, so $\cos C = -\cos(A + B)$. By the double-angle and sum-to-product formulas,
+$$\cos^2 A + \cos^2 B = 1 + \tfrac12(\cos 2A + \cos 2B) = 1 + \cos(A + B)\cos(A - B) = 1 - \cos C\cos(A - B),$$
+and $\cos^2 C = -\cos C\cos(A + B)$. Adding, $1 - \cos C\left(\cos(A - B) + \cos(A + B)\right) = 1 - 2\cos A\cos B\cos C$, the star identity.
+
+Replacing each $\cos^2$ by $1 - \sin^2$ turns it into the sine form, $3 - \sum\sin^2 = 1 - 2\cos A\cos B\cos C$. The right-triangle test follows: the sum of the squared cosines is $1$ exactly when the product $\cos A\cos B\cos C$ is $0$, that is, when one angle is $90^\circ$.
 
 The same substitution of $\pi - (A + B)$ for $C$ proves the tangent and cotangent identities for the angles, and the half angles, which add up to $\frac\pi2$, give the half-angle tangent sum on [[half-angle-tangent-identity|the Half-Angle Tangent Identity]].
 
@@ -3411,7 +3551,9 @@ The trigonometric form uses $x = \cos\theta$ with $\lvert x\rvert \le 1$; the po
 ## Why it works
 Expanding $\cos n\theta$ with [[angle-addition|angle addition]] always yields a polynomial in $\cos\theta$, since the odd powers of $\sin\theta$ pair up, and that polynomial is $T_n$.
 
-Its recurrence mirrors $\cos(n + 1)\theta = 2\cos\theta\cos n\theta - \cos(n - 1)\theta$. The second kind $U_n$, with $U_n(\cos\theta) = \frac{\sin(n+1)\theta}{\sin\theta}$, obeys the same recurrence.
+Its recurrence mirrors $\cos(n + 1)\theta = 2\cos\theta\cos n\theta - \cos(n - 1)\theta$. The second kind obeys the same recurrence because $\sin(n + 2)\theta + \sin n\theta = 2\cos\theta\sin(n + 1)\theta$. The recurrence also shows that $T_n$ has leading coefficient $2^{n-1}$ for $n \ge 1$. The roots come from $\cos n\theta = 0$, that is $n\theta = \frac{(2k - 1)\pi}2$, and $T_m(T_n(\cos\theta)) = \cos(mn\theta)$ gives the composition rule.
+
+For the minimax fact, put $t = \frac{T_n}{2^{n-1}}$, monic, with $\lvert t\rvert \le \frac1{2^{n-1}}$ on $[-1, 1]$ and the value $\pm\frac1{2^{n-1}}$, alternating in sign, at the $n + 1$ points $\cos\frac{j\pi}n$. If a monic $p$ of degree $n$ had $\lvert p\rvert \lt \frac1{2^{n-1}}$ there, then $t - p$, of degree at most $n - 1$, would alternate in sign at those $n + 1$ points, so it would have $n$ roots and be $0$, which is impossible.
 
 ## Useful observations
 - Two moves. Substituting $x = \cos\theta$ evaluates stubborn polynomials or nested cosine products: the roots $x_k$ give exact values and a product of cosines collapses.
@@ -3437,7 +3579,7 @@ The sequences are real, of the same length $n$. Equality in the Cauchy–Schwarz
 ## Why it works
 Expand both sides. The product of the two sums of squares splits into diagonal terms $\sum a_i^2b_i^2$ and off-diagonal terms $\sum_{i \ne j}a_i^2b_j^2$. The squared dot product has the same diagonal and off-diagonal terms $\sum_{i \ne j}a_ib_ia_jb_j$.
 
-Subtracting, the diagonals cancel and the off-diagonal remainder pairs up: $a_i^2b_j^2 + a_j^2b_i^2 - 2a_ib_ia_jb_j = (a_ib_j - a_jb_i)^2$ for each pair $i < j$, which is the right-hand side.
+Subtracting, the diagonals cancel and the off-diagonal remainder pairs up: $a_i^2b_j^2 + a_j^2b_i^2 - 2a_ib_ia_jb_j = (a_ib_j - a_jb_i)^2$ for each pair $i \lt j$, which is the right-hand side. With $n = 3$ the three numbers $a_ib_j - a_jb_i$ are, up to sign, the components of $\mathbf a \times \mathbf b$, which gives the vector form.
 
 ## Useful observations
 - Because the right side is a sum of squares, the identity contains Cauchy–Schwarz and its equality case.
@@ -3566,7 +3708,11 @@ A MATHCOUNTS and AMC time-saver, and often the whole solution when it applies. T
 The leading coefficients are nonzero. The resultant is a polynomial in the coefficients of $f$ and $g$, so it can be evaluated without finding any roots.
 
 ## Why it works
-The resultant is singular exactly when $f$ and $g$ share a root, and in terms of the roots it is the product of all differences $\alpha_i - \beta_j$, which vanishes when some $\alpha_i = \beta_j$. Taking $g = f'$ detects a repeated root of $f$, since a repeated root of $f$ is a root of $f'$, and that is the discriminant.
+Step 1, the vanishing criterion. The Sylvester matrix is the matrix of the linear map $(u, v) \mapsto uf + vg$ on pairs with $\deg u \lt n$ and $\deg v \lt m$, between spaces of the same dimension $m + n$. It is singular exactly when $uf = -vg$ for some nonzero pair. If $f$ and $g$ share a factor $h$, then $u = \frac gh$, $v = -\frac fh$ works. Conversely, if $uf = -vg$, then $f$ divides $vg$ with $\deg v \lt \deg f$, so $f$ and $g$ share a factor, and over $\mathbb C$ a root.
+
+Step 2. The product formula is quoted, not proved here; see S. Lang, Algebra. It gives $\operatorname{Res}(f, f') = a_n^{\,n-1}\prod_i f'(\alpha_i)$, and $f'(\alpha_i) = a_n\prod_{j \ne i}(\alpha_i - \alpha_j)$, so up to the sign $(-1)^{n(n-1)/2}$ this is $a_n^{\,2n-1}\prod_{i \lt j}(\alpha_i - \alpha_j)^2$, which vanishes exactly at a repeated root.
+
+Step 3, the cubic. With three real roots the squared differences are positive, so $\Delta \gt 0$. With one real root $r$ and a pair $z, \bar z$, $(r - z)(r - \bar z) = \lvert r - z\rvert^2 \gt 0$ appears squared, while $(z - \bar z)^2 = -4(\operatorname{Im} z)^2 \lt 0$, so $\Delta \lt 0$.
 
 ## Useful observations
 - Setting a resultant to $0$ eliminates a variable between two polynomial equations.
@@ -3623,7 +3769,12 @@ Behind many AIME optimization answers as an unstated step, and an olympiad metho
 The angles are equally spaced by $\frac\pi n$. The constant $\frac{1}{2^{n-1}}$ is what the factorization of $z^n \pm 1$ leaves behind.
 
 ## Why it works
-Writing each sine as complex exponentials turns an equally spaced product into a factorization of $z^n - 1$ (or $z^n + 1$), which collapses to a single $\sin n\theta$. The constant $\frac{1}{2^{n-1}}$ is exactly what that factorization leaves behind.
+Step 1, absolute values. With $\omega = e^{2\pi i/n}$, $1 - z^n = \prod_{k=0}^{n-1}(1 - z\omega^k)$, since both sides have the roots $\omega^{-k}$ and the constant term $1$. Put $z = e^{2i\theta}$ and use $\lvert 1 - e^{i\varphi}\rvert = 2\left\lvert\sin\frac\varphi2\right\rvert$ on each factor:
+$$2\lvert\sin n\theta\rvert = \prod_{k=0}^{n-1}2\left\lvert\sin\left(\theta + \tfrac{k\pi}n\right)\right\rvert.$$
+
+Step 2, signs. For $0 \lt \theta \lt \frac\pi n$ every factor and $\sin n\theta$ are positive, so the identity holds without absolute values. Replacing $\theta$ by $\theta + \frac\pi n$ turns the product into the same product with $\sin\theta$ replaced by $\sin(\theta + \pi) = -\sin\theta$, and turns $\sin n\theta$ into $-\sin n\theta$, so both sides change sign together and the identity holds for every $\theta$.
+
+Step 3, the special cases. Dividing by $\sin\theta$ and letting $\theta \to 0$ gives $\prod_{k=1}^{n-1}\sin\frac{k\pi}n = \frac n{2^{n-1}}$. For $n = 3$, $\sin(\theta + 120^\circ) = \sin(60^\circ - \theta)$ gives the $\frac14\sin 3\theta$ form; replacing $\theta$ by $\theta + 90^\circ$ gives $\cos\theta\cos(60^\circ - \theta)\cos(60^\circ + \theta) = \frac14\cos 3\theta$, and dividing the two gives the tangent form.
 
 ## Useful observations
 - Sines, cosines, or tangents at a common spacing $\frac{k\pi}{n}$ are replaced by one term.
@@ -3647,7 +3798,11 @@ An AIME and olympiad trigonometry gem: recognizing the equal spacing turns an in
 The angles double at each term. For an infinite sum, a limit is taken, with $2^n\cot(2^n\theta) \to 0$ when $\theta$ is small enough.
 
 ## Why it works
-Both identities fall out of the double-angle formulas: $\cot\theta - \cot 2\theta = \csc 2\theta$ and $\tan\theta = \cot\theta - 2\cot 2\theta$ each rewrite a term as a difference of the same function at $\theta$ and $2\theta$, so a sum over doubling angles cancels internally.
+Both identities fall out of the double-angle formulas. For the first,
+$$\cot\theta - \cot 2\theta = \frac{\cos\theta}{\sin\theta} - \frac{\cos 2\theta}{\sin 2\theta} = \frac{2\cos^2\theta - \cos 2\theta}{\sin 2\theta} = \frac{1}{\sin 2\theta}.$$
+For the second, $2\cot 2\theta = \frac{\cos^2\theta - \sin^2\theta}{\sin\theta\cos\theta} = \cot\theta - \tan\theta$.
+
+Multiplying the second by $2^k$ at the angle $2^k\theta$ gives $2^k\tan(2^k\theta) = 2^k\cot(2^k\theta) - 2^{k+1}\cot(2^{k+1}\theta)$, and summing over $k = 0, \ldots, n - 1$ cancels everything but $\cot\theta - 2^n\cot(2^n\theta)$.
 
 ## Useful observations
 - When a sum has terms like $\csc 2^k\theta$ or $2^k\tan(2^k\theta)$, each is replaced by its cotangent difference and the sum telescopes.
@@ -3670,9 +3825,9 @@ A recurring AIME and olympiad "evaluate this trigonometric sum" trick; noticing 
 For a repeating radical the equation $x = f(x)$ has a spurious root in general; the positive root that the iteration converges to is the value.
 
 ## Why it works
-A self-referential radical satisfies its own equation: $x = \sqrt{1 + x}$ gives $x = \varphi = \frac{1 + \sqrt5}{2}$.
+A self-referential radical satisfies its own equation: $x = \sqrt{1 + x}$ gives $x = \varphi = \frac{1 + \sqrt5}{2}$. To see that the tower really converges there, start at $x_0 = 1$ and set $x_{k+1} = \sqrt{1 + x_k}$. If $x_k \lt \varphi$, then $x_k^2 \lt 1 + x_k$, so $x_{k+1} \gt x_k$, and $x_{k+1} \lt \sqrt{1 + \varphi} = \varphi$. An increasing sequence bounded by $\varphi$ converges, and its limit solves $x = \sqrt{1 + x}$, so it is $\varphi$; the negative root is never reached.
 
-Ramanujan's radical unrolls the identity $n + 2 = \sqrt{1 + (n + 1)(n + 3)} = \sqrt{1 + (n + 1)\sqrt{1 + (n + 2)(n + 4)}}$, so starting at $n = 1$ the whole tower equals $3$.
+Ramanujan's radical unrolls the identity $n + 2 = \sqrt{1 + (n + 1)(n + 3)} = \sqrt{1 + (n + 1)\sqrt{1 + (n + 2)(n + 4)}}$, so starting at $n = 1$ every finite tower ending in $\sqrt{1 + m(m + 2)}$ equals $3$. That the infinite tower converges to this value is quoted, not proved here; see A. Herschfeld, "On Infinite Radicals", American Mathematical Monthly 42 (1935), 419–429.
 
 ## Useful observations
 - For an infinitely repeating radical, setting it equal to $x$ and solving the fixed-point equation handles most cases.
@@ -3770,9 +3925,11 @@ An AIME favorite: a product such as $\prod(r^2 + 1)$ over ugly roots, where one 
 The expressions are symmetric in $\sin^2\theta$ and $\cos^2\theta$, with $\sin^2\theta + \cos^2\theta = 1$.
 
 ## Why it works
-Write $u = \sin^2\theta$ and $v = \cos^2\theta$, so $u + v = 1$. Every symmetric expression in $u$ and $v$ is then a polynomial in the single quantity $uv = \sin^2\theta\cos^2\theta = \frac14\sin^2 2\theta$.
+Write $u = \sin^2\theta$ and $v = \cos^2\theta$, so $u + v = 1$. Every symmetric expression in $u$ and $v$ is then a polynomial in the single quantity $p = uv = \sin^2\theta\cos^2\theta = \frac14\sin^2 2\theta$.
 
-Squaring the Pythagorean identity gives $u^2 + v^2 = (u + v)^2 - 2uv = 1 - 2uv$, the first formula. For the cubes, $u^3 + v^3 = (u + v)^3 - 3uv(u + v) = 1 - 3uv$, the second. Substituting $uv = \frac14\sin^2 2\theta$ gives the forms above.
+Squaring the Pythagorean identity gives $u^2 + v^2 = (u + v)^2 - 2uv = 1 - 2p$, the first formula. For the cubes, $u^3 + v^3 = (u + v)^3 - 3uv(u + v) = 1 - 3p$, the second. For the fourth powers of $u$ and $v$,
+$$u^4 + v^4 = (u^2 + v^2)^2 - 2p^2 = 1 - 4p + 2p^2,$$
+which is $1 - \sin^2 2\theta + \frac18\sin^4 2\theta$. The difference is $u^2 - v^2 = (u - v)(u + v) = \sin^2\theta - \cos^2\theta = -\cos 2\theta$.
 
 ## Useful observations
 - The moment an expression is symmetric in $\sin^2$ and $\cos^2$, expanding stops and $p = uv$ takes over: any even-power symmetric combination collapses to a polynomial in $p$.
@@ -4015,13 +4172,15 @@ A supporting move in AIME sums and in number theory: swapping a divisor sum into
 $n$ is a positive integer, with $T_0 = 0$. The test $8T + 1$ is a square must be an odd square, and every odd square greater than $1$ arises this way, since $(2n + 1)^2$ is the value at $T_n$.
 
 ## Why it works
-Writing the sum forwards and backwards pairs its ends: $1$ with $n$, $2$ with $n - 1$, and so on, $n$ pairs each adding to $n + 1$, so twice the sum is $n(n + 1)$. Choosing two of $n + 1$ objects gives the same count, $\binom{n + 1}{2}$.
+Writing the sum forwards and backwards pairs its ends: $1$ with $n$, $2$ with $n - 1$, and so on, $n$ pairs each adding to $n + 1$, so twice the sum is $n(n + 1)$. Choosing two of $n + 1$ objects gives the same count, $\binom{n + 1}{2}$, and adding the next row is adding $n + 1$.
 
 Two staircases, of heights $1$ to $n - 1$ and $1$ to $n$, interlock exactly into an $n \times n$ square, which is $T_{n-1} + T_n = n^2$.
 
 {{figure:staircases}}
 
-For the test, multiply $T = \frac{n(n + 1)}{2}$ by $8$ and add $1$: $$8T + 1 = 4n^2 + 4n + 1 = (2n + 1)^2.$$ So a triangular number always gives an odd square, and an odd square $(2n + 1)^2$ always comes from $T_n$.
+For the test, multiply $T = \frac{n(n + 1)}{2}$ by $8$ and add $1$:
+$$8T + 1 = 4n^2 + 4n + 1 = (2n + 1)^2.$$
+So a triangular number always gives an odd square, and an odd square $(2n + 1)^2$ always comes from $T_n$. For the tetrahedral numbers, $\sum_k\binom{k+1}2 = \binom{n+2}3$ by the [[hockey-stick|hockey stick]].
 
 ## Useful observations
 - The shape is recognized rather than the formula: any count of pairs, handshakes, or unordered choices of two is triangular, as on [[handshakes-diagonals|the handshakes card]].
@@ -4133,6 +4292,8 @@ The system is square, with as many equations as unknowns. When $\det A = 0$ the 
 
 ## Why it works
 Replace column $i$ of $A$ by $\mathbf b = \sum_j x_j(\text{column } j)$ and expand using linearity in that column. Every term except the $j = i$ one has a repeated column and so contributes zero, leaving $\det A_i = x_i\det A$. The rule is therefore not a separate theorem, just [[determinant-basics|column linearity]] applied once.
+
+That argument shows any solution must be the quotient. When $\det A \ne 0$ the matrix is invertible and $\mathbf x = A^{-1}\mathbf b$ is a solution, so there is exactly one. When $\det A = 0$ the columns are dependent, so $A\mathbf v = \mathbf 0$ for some $\mathbf v \ne \mathbf 0$. Then if $\mathbf x_0$ is a solution, so is every $\mathbf x_0 + t\mathbf v$, infinitely many; otherwise there is none.
 
 ## Useful observations
 - It earns its keep when a problem asks for one unknown out of three and the other two would otherwise be eliminated. Writing the single quotient is faster and far less error-prone than two rounds of substitution.
@@ -4746,6 +4907,10 @@ A finite list of numbers, with repeated values counted as often as they appear. 
 ## Why it works
 The mean is the balance point of the list: the deviations $x_i - \bar x$ always add up to $0$, because their sum is $(x_1 + \cdots + x_n) - n\bar x$. The median is the point with half the values on each side, so it depends only on the order of the values near the middle; pushing the largest value even larger does not move it at all, while the mean moves by the change divided by $n$.
 
+Adding $c$ to every value, or multiplying by $k$, moves every value the same way, so it moves the middle value, the most frequent value and the mean along with it, while the range changes only by the factor $\lvert k\rvert$. And since the deviations add to $0$,
+$$\sum(x_i - t)^2 = \sum(x_i - \bar x)^2 + n(\bar x - t)^2,$$
+which is smallest at $t = \bar x$.
+
 ## Useful observations
 - An outlier pulls the mean toward itself but leaves the median unchanged unless it crosses the middle.
 - The mean minimizes the sum of squared deviations $\sum (x_i - t)^2$, while the median minimizes the sum of absolute deviations $\sum \lvert x_i - t\rvert$, the fact behind [[median-minimizes-abs|the median trick]].
@@ -4771,7 +4936,9 @@ A MATHCOUNTS and AMC 8 and 10 staple: lists with a given mean, median, and mode,
 Each percent is taken of the value at that moment, not of the original, unless the problem says otherwise.
 
 ## Why it works
-Percent means per hundred, so $p\%$ of a quantity is $\frac{p}{100}$ of it, and adding that to the quantity multiplies it by $1 + \frac{p}{100}$. Each later change multiplies the current value again, so successive changes multiply, and since multiplication does not care about order, neither do the changes. The same reasoning applied $n$ times at one rate gives $(1 + r)^n$.
+Percent means per hundred, so $p\%$ of a quantity is $\frac{p}{100}$ of it, and adding that to the quantity multiplies it by $1 + \frac{p}{100}$. Each later change multiplies the current value again, so successive changes multiply, and since multiplication does not care about order, neither do the changes. The same reasoning applied $n$ times at one rate gives $(1 + r)^n$, and $k$ compoundings a year at $\frac rk$ each give $\left(1 + \frac rk\right)^{kn}$; simple interest adds the same $rP$ each period instead.
+
+The observations are factor arithmetic. Undoing a factor $1 + \frac p{100}$ needs its reciprocal, which is $1 - \frac{p}{100 + p}$. Both $x\%$ of $y$ and $y\%$ of $x$ are $\frac{xy}{100}$. The factor $1 - \frac{x^2}{10000}$ is below $1$. For doubling, $(1 + \frac r{100})^n = 2$ gives $n = \frac{\ln 2}{\ln(1 + r/100)} \approx \frac{69.3}{r}$ for small $r$; $72$ is the customary round number, slightly better for rates of several percent.
 
 ## Useful observations
 - Undoing a change of $p\%$ takes a change of $\frac{-p}{100 + p} \cdot 100\%$: undoing a $25\%$ increase is a $20\%$ decrease, since $\frac{1}{1.25} = 0.8$.
@@ -4800,6 +4967,10 @@ $a \ne 0$. The factored form exists over the reals only when $b^2 - 4ac \ge 0$; 
 ## Why it works
 Each form expands to the standard one. Expanding $a(x - h)^2 + k$ gives $ax^2 - 2ahx + ah^2 + k$, so matching coefficients gives $b = -2ah$ and $c = ah^2 + k$, which is $h = -\frac{b}{2a}$ and $k = c - \frac{b^2}{4a}$; going from standard to vertex form is [[completing-the-square|completing the square]]. Expanding $a(x - r)(x - s) = ax^2 - a(r + s)x + ars$ gives $r + s = -\frac ba$ and $rs = \frac ca$, which is [[vietas-quadratic|Vieta's Formulas]].
 
+Then $h = -\frac b{2a} = \frac{r + s}2$, halfway between the roots. The form $a(x - p)(x - q) + c$ equals $c$ at $p$ and $q$, and it is the factored form shifted up by $c$, so its axis is $x = \frac{p + q}2$. Since $a(x - h)^2 \ge 0$ when $a \gt 0$, the smallest value is $k$, and the largest when $a \lt 0$.
+
+Three points fix the quadratic: two quadratics through the same three points differ by a polynomial of degree at most $2$ with three roots, which is $0$. With the vertex known, $h$ and $k$ are fixed and one more point gives $a$; with the roots known, one more point gives $a$ in the factored form.
+
 ## Useful observations
 - The axis of symmetry is $x = h$, halfway between the roots and between any two points of the parabola at the same height.
 - The vertex form shows the range at once: for $a \gt 0$ the smallest value is $k$, and for $a \lt 0$ the largest value is $k$.
@@ -4825,7 +4996,9 @@ A MATHCOUNTS and AMC 10 staple: building a quadratic from a vertex and a point, 
 $A$ is square. When $\det A = 0$ there is no inverse, and the system $A\mathbf{x} = \mathbf{b}$ has no solution or infinitely many.
 
 ## Why it works
-Expanding a determinant along row $i$ with the cofactors of row $i$ gives $\det A$; using the cofactors of a different row instead computes the determinant of a matrix with two equal rows, which is $0$. In matrix language that is $A \cdot \operatorname{adj} A = (\det A)\,I$, so dividing by $\det A$ gives the inverse. For a $2 \times 2$ matrix, multiplying out $\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = (ad - bc)I$ checks it directly. Conversely, $\det A \cdot \det A^{-1} = \det I = 1$ shows that a matrix with determinant $0$ cannot have an inverse.
+Expanding a determinant along row $i$ with the cofactors of row $i$ gives $\det A$; using the cofactors of a different row instead computes the determinant of a matrix with two equal rows, which is $0$. In matrix language that is $A \cdot \operatorname{adj} A = (\det A)\,I$, so dividing by $\det A$ gives the inverse. For a $2 \times 2$ matrix, multiplying out $\begin{pmatrix} a & b \\ c & d \end{pmatrix}\begin{pmatrix} d & -b \\ -c & a \end{pmatrix} = (ad - bc)I$ checks it directly. Conversely, $\det A \cdot \det A^{-1} = \det I = 1$ shows that a matrix with determinant $0$ cannot have an inverse, and gives $\det(A^{-1}) = \frac1{\det A}$.
+
+The other rules are checks by multiplication: $(AB)(B^{-1}A^{-1}) = A(BB^{-1})A^{-1} = I$, and transposing $AA^{-1} = I$ gives $(A^{-1})^{\top}A^{\top} = I$. Multiplying $A\mathbf x = \mathbf b$ by $A^{-1}$ gives $\mathbf x = A^{-1}\mathbf b$, and that $\mathbf x$ does solve it. For integer entries: if $A^{-1}$ is also integral, then $\det A$ and $\det A^{-1}$ are integers with product $1$, so $\det A = \pm1$; conversely, $\pm\operatorname{adj}A$ is integral.
 
 ## Useful observations
 - [[cramers-rule|Cramer's Rule]] is $\mathbf{x} = A^{-1}\mathbf{b}$ read one coordinate at a time.

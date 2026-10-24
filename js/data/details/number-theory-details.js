@@ -128,7 +128,13 @@ MATHCOUNTS and AMC use the rules for missing digits; AIME problems use them as e
 $a \ge 2$ and $m, n \ge 1$ are integers. The same holds for $a^m - b^m$ and $a^n - b^n$ with $\gcd(a, b) = 1$: their gcd is $a^{\gcd(m, n)} - b^{\gcd(m, n)}$.
 
 ## Why it works
-If $m = qn + r$, then $a^m - 1 = a^r(a^{qn} - 1) + (a^r - 1)$, and $a^{qn} - 1$ is divisible by $a^n - 1$, since $x - 1$ divides $x^q - 1$ with $x = a^n$. So $a^m - 1 \equiv a^r - 1 \pmod{a^n - 1}$, and $$\gcd(a^m - 1, a^n - 1) = \gcd(a^n - 1, a^r - 1).$$ The exponents $(m, n) \to (n, r)$ follow exactly the Euclidean algorithm, which ends at $\gcd(m, n)$, and the numbers end at $a^{\gcd(m, n)} - 1$.
+If $m = qn + r$, then $a^m - 1 = a^r(a^{qn} - 1) + (a^r - 1)$, and $a^{qn} - 1$ is divisible by $a^n - 1$, since $x - 1$ divides $x^q - 1$ with $x = a^n$. So $a^m - 1 \equiv a^r - 1 \pmod{a^n - 1}$, and
+$$\gcd(a^m - 1, a^n - 1) = \gcd(a^n - 1, a^r - 1).$$
+The exponents $(m, n) \to (n, r)$ follow exactly the Euclidean algorithm, which ends at $\gcd(m, n)$, and the numbers end at $a^{\gcd(m, n)} - 1$. The same steps with $a^r(a^{qn} - b^{qn}) + b^{qn}(a^r - b^r)$ give the version for $a^m - b^m$.
+
+The divisibility form follows: $a^m - 1 \mid a^n - 1$ exactly when the gcd is $a^m - 1$, that is $\gcd(m, n) = m$. For repunits, $9R_k = 10^k - 1$, so $9\gcd(R_m, R_n) = 10^{\gcd(m, n)} - 1 = 9R_{\gcd(m, n)}$.
+
+For the observations: if $n = de$ with $1 \lt d \lt n$, then $2^d - 1$ is a proper factor of $2^n - 1$. And $2^m + 1$ and $2^m - 1$ are odd and differ by $2$, so their gcd is $1$.
 
 ## Useful observations
 - The gcd collapses to the gcd of the exponents, so enormous numbers reduce to a small one: $\gcd(2^{100} - 1, 2^{36} - 1) = 2^{\gcd(100, 36)} - 1 = 15$.
@@ -152,9 +158,11 @@ An AIME tool for gcds with huge exponents, where the answer is read from the gcd
 $n$ and $k$ are integers. The product statement includes products containing $0$ or negative numbers.
 
 ## Why it works
-A common divisor of $n$ and $n + k$ divides their difference, $k$, and conversely $\gcd(n, n + k) = \gcd(n, k)$ by one step of the Euclidean algorithm; with $k = 1$ the gcd is $1$.
+A common divisor of $n$ and $n + k$ divides their difference, $k$, and conversely $\gcd(n, n + k) = \gcd(n, k)$ by one step of the Euclidean algorithm; with $k = 1$ the gcd is $1$, and with $k = 2$ it is $\gcd(n, 2)$, which is $1$ or $2$ by parity.
 
-Among $k$ consecutive integers the remainders mod $k$ are all different, so exactly one is $0$. For the product, $(n + 1)(n + 2)\cdots(n + k) = k!\binom{n + k}{k}$ when $n \ge 0$, and a binomial coefficient is an integer.
+Among $k$ consecutive integers the remainders mod $k$ are all different, so exactly one is $0$. For the product, $(n + 1)(n + 2)\cdots(n + k) = k!\binom{n + k}{k}$ when $n \ge 0$, and a binomial coefficient is an integer. A run containing $0$ has product $0$, and a run of negative numbers has the product of the positive run of the same length, up to sign. With $k = 2, 3, 4$ this gives the factors $2$, $6$ and $24$.
+
+For the square observation: $n$ and $n + 1$ are coprime, so if their product is a square, each is a square, by unique factorization. Two positive squares differ by at least $3$, so that cannot happen for $n \ge 1$.
 
 ## Useful observations
 - $n(n + 1)$ is never a perfect square for $n \ge 1$: the factors are coprime, so both would be squares, and no two positive squares differ by $1$.
@@ -239,7 +247,11 @@ An AMC and AIME computation, usually a restricted sum split by the power of $2$ 
 $n$ is a positive integer. The formula gives an integer even when $d(n)$ is odd, since then $n$ is a perfect square.
 
 ## Why it works
-The map $d \mapsto \frac nd$ sends divisors to divisors and undoes itself, so listing the divisors in the order $\frac nd$ gives the same divisors again. Multiplying the two lists term by term, $$\left(\prod_{d \mid n} d\right)^2 = \prod_{d \mid n} d \cdot \frac nd = n^{d(n)},$$ so the product is $n^{d(n)/2}$. Squaring first avoids a special case for perfect squares.
+The map $d \mapsto \frac nd$ sends divisors to divisors and undoes itself, so listing the divisors in the order $\frac nd$ gives the same divisors again. Multiplying the two lists term by term,
+$$\left(\prod_{d \mid n} d\right)^2 = \prod_{d \mid n} d \cdot \frac nd = n^{d(n)},$$
+so the product is $n^{d(n)/2}$. Squaring first avoids a special case for perfect squares.
+
+Leaving out the divisor $n$ itself divides the product by $n$, which gives $n^{d(n)/2 - 1}$; this is $n$ exactly when $\frac{d(n)}2 - 1 = 1$, that is $d(n) = 4$, and the divisor count $(e_1 + 1)(e_2 + 1)\cdots = 4$ means $n = pq$ or $n = p^3$. Taking logarithms of the product gives the sum of logarithms.
 
 ## Useful observations
 - When $n$ is not a square the divisors pair off exactly, so the product is a whole power of $n$: $42 = 2 \cdot 3 \cdot 7$ has $8$ divisors, whose product is $42^4$.
@@ -293,6 +305,8 @@ $n$ is a positive integer and $d$ runs over all its positive divisors, including
 
 ## Why it works
 Sort the fractions $\frac1n, \frac2n, \ldots, \frac nn$ by the denominator each one reduces to. The fraction $\frac kn$ reduces to denominator $d = \frac{n}{\gcd(k, n)}$, with a numerator coprime to $d$; conversely, every fraction $\frac ad$ with $d \mid n$ and $\gcd(a, d) = 1$ comes from exactly one $k$. So the class with denominator $d$ has exactly $\varphi(d)$ members, the classes partition all $n$ fractions, and the class sizes add up to $n$.
+
+The class with denominator $\frac ng$ is the set of $k$ with $\gcd(k, n) = g$, which gives the second Key form. Adding $\gcd(k, n)$ class by class then gives $\sum_{g \mid n} g\,\varphi\left(\frac ng\right)$, the third.
 
 ## Useful observations
 - Each $k \le n$ is counted exactly once, by the divisor $\frac{n}{\gcd(k, n)}$, which is why the sum is $n$: for $n = 12$, $\varphi(1) + \varphi(2) + \varphi(3) + \varphi(4) + \varphi(6) + \varphi(12) = 1 + 1 + 2 + 2 + 2 + 4 = 12$.
@@ -367,7 +381,9 @@ The silent step behind most divisor and totient computations; problems test it d
 $n \gt 1$; for $n = 1$ the sum is $1$ while the formula gives $\frac12$.
 
 ## Why it works
-If $\gcd(k, n) = 1$ then $\gcd(n - k, n) = 1$, since a common divisor of $n - k$ and $n$ divides $k$. So the coprime residues pair off as $k$ and $n - k$, each pair summing to $n$. For $n \gt 2$ no residue pairs with itself, since $k = \frac n2$ would share the factor $\frac n2$ with $n$, so there are $\frac{\varphi(n)}{2}$ pairs and the sum is $\frac{n\varphi(n)}{2}$; for $n = 2$ it is $1 = \frac{2 \cdot 1}{2}$.
+If $\gcd(k, n) = 1$ then $\gcd(n - k, n) = 1$, since a common divisor of $n - k$ and $n$ divides $k$. So the coprime residues pair off as $k$ and $n - k$, each pair summing to $n$. For $n \gt 2$ no residue pairs with itself, since $k = \frac n2$ would share the factor $\frac n2$ with $n$, so there are $\frac{\varphi(n)}{2}$ pairs and the sum is $\frac{n\varphi(n)}{2}$, and $\varphi(n)$ is even; for $n = 2$ it is $1 = \frac{2 \cdot 1}{2}$. Dividing by $n$ gives the sum of the reduced fractions.
+
+For the range up to $mn$, block $j$ (from $jn + 1$ to $jn + n$) holds the numbers $jn + k$, which add to $jn\varphi(n) + \frac{n\varphi(n)}2$. Summing over $j = 0, \ldots, m - 1$ gives $n\varphi(n)\left(\frac{m(m - 1)}2 + \frac m2\right) = \frac{m^2n\varphi(n)}2$.
 
 ## Useful observations
 - The coprime residues pair as $k$ and $n - k$, so their average is exactly $\frac n2$: the coprime residues of $12$ are $1, 5, 7, 11$, summing to $24 = \frac{12 \cdot 4}{2}$.
@@ -393,6 +409,10 @@ $n$ is a positive integer with the given prime factorization; $1$ counts as a pe
 ## Why it works
 A divisor of $n$ is $\prod p_i^{f_i}$ with $0 \le f_i \le e_i$, and it is a perfect square exactly when every $f_i$ is even, since its square root is then $\prod p_i^{f_i/2}$. The even numbers from $0$ to $e_i$ are $0, 2, \ldots, 2\left\lfloor \frac{e_i}{2} \right\rfloor$, which is $\left\lfloor \frac{e_i}{2} \right\rfloor + 1$ choices, and the choices for different primes are independent.
 
+The same count with multiples of $j$ in place of even numbers gives the $j$th powers: $0, j, \ldots, j\left\lfloor \frac{e_i}{j} \right\rfloor$. The map $m \mapsto m^2$ matches the $m$ with $m^2 \mid n$ to the square divisors one to one.
+
+For the smallest multiplier, $mn$ is a square exactly when every exponent of $mn$ is even. Each prime at an odd exponent in $n$ must appear in $m$ at least once, and the product of those primes, each once, already makes every exponent even.
+
 ## Useful observations
 - Each prime contributes its number of even exponent choices, so primes to the first power contribute only a factor of $1$: $12! = 2^{10} \cdot 3^5 \cdot 5^2 \cdot 7 \cdot 11$ has $6 \cdot 3 \cdot 2 \cdot 1 \cdot 1 = 36$ square divisors.
 - The $m$ with $m^2 \mid n$ are in one-to-one correspondence with the square divisors of $n$.
@@ -416,6 +436,8 @@ $a$ and $b$ are positive integers and the pairs are ordered; unordered pairs num
 
 ## Why it works
 For one prime $p$ with target exponent $e$, the pair's exponents $(x, y)$ must satisfy $\max(x, y) = e$ with $0 \le x, y \le e$. There are $(e + 1)^2$ pairs with both at most $e$ and $e^2$ with both at most $e - 1$, so $(e + 1)^2 - e^2 = 2e + 1$ have maximum exactly $e$. The exponents of different primes are chosen independently, so the counts multiply.
+
+The variants change only the count per prime. With $k$ numbers the same subtraction gives $(e + 1)^k - e^k$, the cube case for triples. Requiring $\gcd = 1$ as well forces $\min(x, y) = 0$, leaving only $(e, 0)$ and $(0, e)$, so $2$ per prime. For unordered pairs, the ordered count includes $(L, L)$ once, with $L$ the lcm, and every other pair twice.
 
 ## Useful observations
 - The count is a product of factors $2e + 1$, one per prime, since the primes act independently: $\operatorname{lcm}(a, b) = 72 = 2^3 \cdot 3^2$ has $7 \cdot 5 = 35$ ordered pairs.
@@ -469,7 +491,11 @@ A frequent AIME step, usually leading to the multiplicative order or combined wi
 $\gcd(a, n) = 1$ is essential: $2^{\varphi(4)} = 4 \equiv 0 \pmod 4$. For a base sharing a factor with $n$, the modulus is split into a coprime part, where the theorem applies, and a part where high powers vanish.
 
 ## Why it works
-Multiplying by $a$ shuffles the residues coprime to $n$. Let $r_1, \ldots, r_k$ be those residues, $k = \varphi(n)$. The numbers $ar_1, \ldots, ar_k$ are also coprime to $n$ and all different mod $n$, since $ar_i \equiv ar_j$ would let the invertible $a$ cancel. So they are the same residues in a new order, and $$a^k\,r_1\cdots r_k \equiv r_1\cdots r_k \pmod n.$$ The product is coprime to $n$, so it cancels, leaving $a^{\varphi(n)} \equiv 1$. For prime $n$ this is Fermat's argument.
+Multiplying by $a$ shuffles the residues coprime to $n$. Let $r_1, \ldots, r_k$ be those residues, $k = \varphi(n)$. The numbers $ar_1, \ldots, ar_k$ are also coprime to $n$ and all different mod $n$, since $ar_i \equiv ar_j$ would let the invertible $a$ cancel. So they are the same residues in a new order, and
+$$a^k\,r_1\cdots r_k \equiv r_1\cdots r_k \pmod n.$$
+The product is coprime to $n$, so it cancels, leaving $a^{\varphi(n)} \equiv 1$. For prime $n$ this is Fermat's argument.
+
+For the second form, write $k = q\varphi(n) + r$ with $0 \le r \lt \varphi(n)$; then $a^k = \left(a^{\varphi(n)}\right)^q a^r \equiv a^r$. The smallest exponent giving $1$, the order, divides $\varphi(n)$, as the [[multiplicative-order|order card]] shows.
 
 ## Useful observations
 - Exponents reduce modulo $\varphi(n)$, and often a smaller exponent already gives $1$: with $\varphi(100) = 40$, $3^{100} \equiv 3^{20} = (3^{10})^2 \equiv 49^2 \equiv 1 \pmod{100}$.
@@ -493,9 +519,13 @@ AMC and AIME last-digit questions, usually paired with the Chinese Remainder The
 $p$ is prime. For composite $n \gt 4$, $(n - 1)! \equiv 0 \pmod n$, and $3! \equiv 2 \pmod 4$.
 
 ## Why it works
-Each of $1, 2, \ldots, p - 1$ has an inverse modulo $p$, and the inverse is unique. A number is its own inverse exactly when $x^2 \equiv 1$, that is $p \mid (x - 1)(x + 1)$, so $x \equiv \pm1$. So the numbers $2, 3, \ldots, p - 2$ split into pairs $\{x, x^{-1}\}$, each multiplying to $1$, and $(p - 1)! \equiv 1 \cdot (p - 1) \equiv -1$.
+Each of $1, 2, \ldots, p - 1$ has an inverse modulo $p$, and the inverse is unique. A number is its own inverse exactly when $x^2 \equiv 1$, that is $p \mid (x - 1)(x + 1)$, so $x \equiv \pm1$. So the numbers $2, 3, \ldots, p - 2$ split into pairs $\{x, x^{-1}\}$, each multiplying to $1$, and $(p - 1)! \equiv 1 \cdot (p - 1) \equiv -1$. Dividing by $p - 1 \equiv -1$ gives $(p - 2)! \equiv 1$.
 
-For the converse, if $n = ab$ with $1 \lt a \le b \lt n$, then $a$ divides $(n - 1)!$, so $(n - 1)! \equiv -1 \pmod n$ would make $a$ divide $1$. The half-factorial form pairs $k$ with $p - k \equiv -k$: $(p - 1)! = \prod_{k \le (p-1)/2} k(p - k) \equiv (-1)^{(p-1)/2}\left(\left(\frac{p-1}{2}\right)!\right)^2$.
+For the converse, if $n = ab$ with $1 \lt a \le b \lt n$, then $a$ divides $(n - 1)!$, so $(n - 1)! \equiv -1 \pmod n$ would make $a$ divide $1$. In fact, for composite $n \gt 4$, $n \mid (n - 1)!$: if $a \lt b$ both factors appear in $(n - 1)!$, and if $n = a^2$ with $a \gt 2$, then $a$ and $2a$ are both below $n$, and $a \cdot 2a$ is a multiple of $n$.
+
+The half-factorial form pairs $k$ with $p - k \equiv -k$:
+$$(p - 1)! = \prod_{k \le (p-1)/2} k(p - k) \equiv (-1)^{(p-1)/2}\left(\left(\tfrac{p-1}{2}\right)!\right)^2.$$
+Setting this equal to $-1$ gives $\left(\left(\frac{p-1}{2}\right)!\right)^2 \equiv (-1)^{(p+1)/2}$, which is $-1$ when $p \equiv 1 \pmod 4$.
 
 ## Useful observations
 - The product pairs each residue with its inverse, leaving only $1$ and $-1$ unpaired: modulo $7$, $6! = 1 \cdot (2 \cdot 4)(3 \cdot 5) \cdot 6 \equiv -1$, and indeed $720 = 7 \cdot 103 - 1$.
@@ -546,11 +576,13 @@ Let $N = n_1\cdots n_k$ with the $n_i$ pairwise coprime. If $x$ and $y$ both sol
 $\gcd(a, n) = 1$; otherwise no power of $a$ is $1$ modulo $n$.
 
 ## Why it works
-Write $m = qd + r$ with $0 \le r \lt d$. Then $a^m = (a^d)^q a^r \equiv a^r$, and since $d$ is the smallest positive exponent giving $1$, $a^r \equiv 1$ only when $r = 0$. So $a^m \equiv 1$ exactly when $d \mid m$, and Euler's Theorem, $a^{\varphi(n)} \equiv 1$, gives $d \mid \varphi(n)$.
+Write $m = qd + r$ with $0 \le r \lt d$, where $d = \operatorname{ord}_n(a)$. Then $a^m = (a^d)^q a^r \equiv a^r$, and since $d$ is the smallest positive exponent giving $1$, $a^r \equiv 1$ only when $r = 0$. So $a^m \equiv 1$ exactly when $d \mid m$, and Euler's Theorem, $a^{\varphi(n)} \equiv 1$, gives $d \mid \varphi(n)$. Since $a$ is invertible, $a^i \equiv a^j$ means $a^{i - j} \equiv 1$, so $d \mid i - j$.
 
-There is also a picture: multiplying by $a$ splits the $\varphi(n)$ residues coprime to $n$ into cycles, and every cycle has the same length $d$.
+There is also a picture: multiplying by $a$ splits the $\varphi(n)$ residues coprime to $n$ into cycles $x, xa, xa^2, \ldots$, and each cycle closes exactly when $xa^j \equiv x$, that is $a^j \equiv 1$, so every cycle has length $d$.
 
 {{figure:cycles}}
+
+The observations are the first Key form applied. The decimal of $\frac1n$ repeats with period $k$ exactly when $n \mid 10^k - 1$. If $p \mid a^{2^k} + 1$, then $a^{2^{k+1}} \equiv 1$ but $a^{2^k} \equiv -1 \not\equiv 1$ (as $p$ is odd), so the order divides $2^{k+1}$ and not $2^k$; it is $2^{k+1}$, which divides $p - 1$. Finally $(a^k)^m \equiv 1$ exactly when $d \mid km$, that is $\frac d{\gcd(k, d)} \mid m$.
 
 ## Useful observations
 - The order divides every exponent that gives $1$, in particular $p - 1$, and can be a proper divisor: $\operatorname{ord}_7(2) = 3$, since $2^3 = 8 \equiv 1$, and $3 \mid 6$.
@@ -575,7 +607,9 @@ An AIME tool, usually fed by Fermat's Little Theorem, for periods and for divisi
 $\gcd(a, n) = 1$. If $\gcd(a, n) = g \gt 1$, the congruence $ax \equiv b \pmod n$ is solvable exactly when $g \mid b$, with $g$ solutions modulo $n$.
 
 ## Why it works
-If $\gcd(a, n) = 1$, Bézout's Identity gives integers $x$ and $y$ with $ax + ny = 1$, so $ax \equiv 1 \pmod n$. If $x$ and $x'$ are both inverses, then $x \equiv x(ax') = (xa)x' \equiv x'$, so the inverse is unique. Conversely, if $ax \equiv 1$, any common factor of $a$ and $n$ divides $1$. The power form follows from Euler's Theorem, $a \cdot a^{\varphi(n) - 1} = a^{\varphi(n)} \equiv 1$.
+If $\gcd(a, n) = 1$, Bézout's Identity gives integers $x$ and $y$ with $ax + ny = 1$, so $ax \equiv 1 \pmod n$. If $x$ and $x'$ are both inverses, then $x \equiv x(ax') = (xa)x' \equiv x'$, so the inverse is unique. Conversely, if $ax \equiv 1$, any common factor of $a$ and $n$ divides $1$. The power form follows from Euler's Theorem, $a \cdot a^{\varphi(n) - 1} = a^{\varphi(n)} \equiv 1$. For odd $p$, $2 \cdot \frac{p + 1}2 = p + 1 \equiv 1$. The residues with inverses are those coprime to $n$, and there are $\varphi(n)$ of them.
+
+When $\gcd(a, n) = g \gt 1$: if $ax \equiv b$, then $g$ divides $ax - b$ and $a$, so $g \mid b$. If $g \mid b$, dividing through gives $\frac ag x \equiv \frac bg \pmod{\frac ng}$, where $\frac ag$ is invertible. That fixes $x$ modulo $\frac ng$, which is $g$ different residues modulo $n$.
 
 ## Useful observations
 - An inverse is checked by a single multiplication, even when finding it takes work: $5^{-1} \equiv 3 \pmod 7$, since $15 \equiv 1$.
@@ -602,7 +636,19 @@ A supporting skill inside congruence problems, binomial coefficients modulo prim
 $x$ is an integer. Modulo an odd prime $p$, exactly $\frac{p - 1}{2}$ nonzero residues are squares.
 
 ## Why it works
-A square's remainder depends only on the remainder of the number being squared, so it is enough to square each residue. Modulo $4$, $0, 1, 2, 3$ square to $0, 1, 0, 1$. For odd $x = 2k + 1$, $x^2 = 4k(k + 1) + 1$, and $k(k + 1)$ is even, so $x^2 \equiv 1 \pmod 8$. Modulo $9$ and $16$ the same enumeration gives the lists above.
+A square's remainder depends only on the remainder of the number being squared: if $x \equiv r$, then $x^2 \equiv r^2$. So it is enough to square each residue once, and since $(m - r)^2 \equiv r^2 \pmod m$, only the residues up to $\frac m2$ are needed.
+
+Modulo $3$, $0, 1$ square to $0, 1$. Modulo $4$, $0, 1, 2$ square to $0, 1, 0$. Modulo $5$, $0, 1, 2$ square to $0, 1, 4$, and squaring these again gives the fourth powers $0, 1, 1$. Modulo $9$, $0, 1, 2, 3, 4$ square to $0, 1, 4, 0, 7$. Modulo $16$, $0, 1, \ldots, 8$ square to $0, 1, 4, 9, 0, 9, 4, 1, 0$. Modulo $10$, $0, \ldots, 5$ square to $0, 1, 4, 9, 6, 5$, which are the possible last digits.
+
+Modulo $8$, write an odd $x$ as $2k + 1$:
+$$x^2 = 4k(k + 1) + 1,$$
+and $k(k + 1)$ is even, so $x^2 \equiv 1$. An even $x = 2k$ gives $4k^2$, which is $0$ or $4$ as $k$ is even or odd. So the squares mod $8$ are $0, 1, 4$.
+
+The sums follow by adding the lists. Two squares mod $4$ give $0 + 0$, $0 + 1$, $1 + 1$, never $3$. Three squares mod $8$, each $0$, $1$ or $4$, give the ten sums $0, 1, 2, 3, 4, 5, 6, 8, 9, 12$, which are $0, 1, 2, 3, 4, 5, 6, 0, 1, 4$ mod $8$, never $7$.
+
+Step 1, the count modulo an odd prime $p$. If $x^2 \equiv y^2$, then $p \mid (x - y)(x + y)$, and since $p$ is prime, $y \equiv x$ or $y \equiv -x$.
+
+Step 2. The nonzero residues split into the $\frac{p - 1}2$ pairs $\{x, -x\}$, and $x \not\equiv -x$ because $p$ is odd. Both members of a pair have the same square, and by Step 1 different pairs have different squares. So exactly $\frac{p - 1}2$ nonzero residues are squares.
 
 ## Useful observations
 - A sum of two squares is never $3 \bmod 4$, and a sum of three squares is never $7 \bmod 8$.
@@ -740,6 +786,10 @@ $f$ has integer coefficients and $\gcd(m, n) = 1$. Prime powers must be counted 
 ## Why it works
 For coprime $m$ and $n$, the map $x \mapsto (x \bmod m, x \bmod n)$ is a bijection from residues mod $mn$ to pairs of residues, by the Chinese Remainder Theorem. Since $f$ has integer coefficients, $f(x) \bmod m$ depends only on $x \bmod m$, and $mn \mid f(x)$ exactly when $m \mid f(x)$ and $n \mid f(x)$. So solutions mod $mn$ correspond to pairs of solutions, and the counts multiply.
 
+So each prime power is counted alone. Modulo an odd $p^e$, $x^2 \equiv 1$ means $p^e \mid (x - 1)(x + 1)$; the two factors differ by $2$, so $p$ divides at most one of them, and $x \equiv \pm1$: two solutions. Modulo $p^e$, $x^2 \equiv x$ means $p^e \mid x(x - 1)$ with coprime factors, so $x \equiv 0$ or $1$: two solutions, which for $10^k$ makes $4$.
+
+Modulo $2^k$ with $k \ge 3$, $x$ is odd, and one of $x - 1$, $x + 1$ is $2 \bmod 4$, so the other carries $2^{k-1}$. That gives $x \equiv \pm1 \pmod{2^{k-1}}$, the four residues $\pm1$ and $2^{k-1} \pm 1$ modulo $2^k$.
+
 ## Useful observations
 - Each odd prime contributes its own pair $\pm1$, so modulo a product of $k$ distinct odd primes $x^2 \equiv 1$ has $2^k$ solutions: modulo $105$ there are $2 \cdot 2 \cdot 2 = 8$.
 - $x^2 \equiv x \pmod{10^k}$ has $4$ solutions, the endings of $0$, $1$, and the automorphic numbers ending in $5$ and $6$.
@@ -829,7 +879,11 @@ Usually the main computation rather than a supporting step, applied to a factori
 $p$ is prime and $m, n \ge 0$. Carries are counted at every position, including chains of carries.
 
 ## Why it works
-By Legendre's Formula in digit-sum form, $v_p(N!) = \frac{N - s_p(N)}{p - 1}$, so $$v_p\binom{m+n}{m} = \frac{s_p(m) + s_p(n) - s_p(m + n)}{p - 1}.$$ When $m$ and $n$ are added digit by digit, each position without a carry contributes its digits unchanged to the sum's digits, and each carry replaces a digit total of $d + p$ by $d$ in that position and adds $1$ to the next, lowering the digit sum by exactly $p - 1$. So $s_p(m) + s_p(n) - s_p(m + n) = (p - 1) \times$ the number of carries.
+By Legendre's Formula in digit-sum form, $v_p(N!) = \frac{N - s_p(N)}{p - 1}$, so
+$$v_p\binom{m+n}{m} = \frac{s_p(m) + s_p(n) - s_p(m + n)}{p - 1}.$$
+When $m$ and $n$ are added digit by digit, each position without a carry contributes its digits unchanged to the sum's digits, and each carry replaces a digit total of $d + p$ by $d$ in that position and adds $1$ to the next, lowering the digit sum by exactly $p - 1$. So $s_p(m) + s_p(n) - s_p(m + n) = (p - 1) \times$ the number of carries.
+
+Adding $n + n$ in binary, every $1$ digit of $n$ makes $1 + 1$, which carries, and a $0$ digit never does, even with an incoming carry. So the carries number $s_2(n)$, which is at least $1$, and at least $2$ unless $n$ is a power of $2$.
 
 ## Useful observations
 - The carries read off the exact power with no factorials computed: in binary $101 + 101$ carries twice, and indeed $\binom{10}{5} = 252 = 4 \cdot 63$.
@@ -894,7 +948,7 @@ Exponent questions about a huge difference or sum of powers: the largest power o
 4. Add $v_p(a - b)$ and $v_p(n)$, with the extra terms of the form for $2$.
 
 ## Why it works
-Valuations turn products into sums, so the exponent of $p$ in a large number can be found without knowing the number. The lemma says that raising to the $n$th power adds exactly one factor of $p$ for each factor of $p$ in $n$, and nothing for the part of $n$ coprime to $p$, so the whole computation comes down to two small valuations.
+Valuations turn products into sums, so the exponent of $p$ in a large number can be found without knowing the number. The lemma says that raising to the $n$th power adds exactly one factor of $p$ for each factor of $p$ in $n$, and nothing for the part of $n$ coprime to $p$, so the whole computation comes down to two small valuations. The proof is on [[lte-lemma|the Lifting the Exponent card]].
 
 ## Formulas it uses
 - [[lte-lemma]]: the exponent formula itself, $v_p(a^n - b^n) = v_p(a - b) + v_p(n)$ for an odd prime $p$ dividing $a - b$ but neither $a$ nor $b$; one line then decides most uses, as in $v_3(4^{729} - 1) = v_3(3) + v_3(729) = 1 + 6 = 7$.
@@ -950,7 +1004,11 @@ $n \ge 0$ and $d \ge 1$ are integers. The count is of positive multiples; includ
 ## Why it works
 The multiples of $d$ up to $n$ are $d, 2d, \ldots, kd$, where $k$ is the largest whole number with $kd \le n$, and there are exactly $k$ of them. The condition $kd \le n$ says $k \le \frac nd$, so $k = \left\lfloor \frac nd \right\rfloor$. For $n = 100$ and $d = 7$, $7 \cdot 14 = 98 \le 100 \lt 105 = 7 \cdot 15$, so there are $14$.
 
-The numbers divisible by both $a$ and $b$ are exactly the multiples of $\operatorname{lcm}(a, b)$, which is why that term appears when [[pie|inclusion-exclusion]] removes the double count.
+The numbers divisible by both $a$ and $b$ are exactly the multiples of $\operatorname{lcm}(a, b)$, which is why that term appears when [[pie|inclusion-exclusion]] removes the double count. In a range $a \le k \le b$, the multiples are those up to $b$ minus those up to $a - 1$.
+
+The observations follow from the same count. A multiple $kab$ is at most $n$ exactly when $kb \le \frac na$, and since $kb$ is a whole number that means $kb \le \left\lfloor \frac na \right\rfloor$; so both sides of the staged count number the same $k$.
+
+The numbers with remainder $r$ are $r, r + d, \ldots, r + jd$ with $r + jd \le n$, so $j$ runs from $0$ to $\left\lfloor \frac{n - r}d \right\rfloor$. Finally, $\sum_{d \le n}\left\lfloor \frac nd \right\rfloor$ counts the pairs $(d, k)$ with $d \mid k \le n$; grouping the pairs by $k$ instead counts the divisors of each $k$.
 
 ## Useful observations
 - $\left\lfloor \frac{\lfloor n/a \rfloor}{b} \right\rfloor = \left\lfloor \frac{n}{ab} \right\rfloor$, so counts of multiples of multiples can be taken in stages.
@@ -975,6 +1033,12 @@ $p$ is prime. For composite $n$ the statement fails: $4 \nmid \binom 42 = 6$.
 
 ## Why it works
 $\binom pk = \frac{p!}{k!(p - k)!}$ is an integer. The prime $p$ divides the numerator once, and for $0 \lt k \lt p$ every factor of $k!$ and $(p - k)!$ is less than $p$, so by Euclid's Lemma $p$ does not divide the denominator. Hence $p$ divides the integer $\binom pk$. For $\binom{p-1}{k}$, each factor $\frac{p - j}{j} \equiv -1 \pmod p$ in the product $\prod_{j=1}^{k}\frac{p - j}{j}$.
+
+For a prime power, the absorption identity gives
+$$j\binom{p^m}{j} = p^m\binom{p^m - 1}{j - 1}.$$
+The right side has at least $m$ factors of $p$, while $0 \lt j \lt p^m$ has at most $m - 1$, so at least one factor of $p$ is left in $\binom{p^m}{j}$.
+
+The observations follow by expanding. In $(a + b)^p = \sum \binom pk a^kb^{p-k}$ every middle coefficient is $0 \bmod p$, leaving $a^p + b^p$. With $a = b = 1$, $2^p = \sum_k \binom pk$, and removing the two end terms leaves $2^p - 2$, a sum of multiples of $p$.
 
 ## Useful observations
 - The whole interior of row $p$ of Pascal's triangle is divisible by $p$: row $7$ reads $7, 21, 35, 35, 21, 7$ inside.
@@ -1084,7 +1148,7 @@ AMC and AIME problems hide familiar triples in given lengths or in tangents of a
 $D \gt 0$ is not a perfect square. For a square $D$ the only solutions are trivial, and $x^2 - Dy^2 = -1$ may or may not have solutions.
 
 ## Why it works
-The norm $N(x + y\sqrt D) = x^2 - Dy^2$ is multiplicative, since $(x^2 - Dy^2)(u^2 - Dv^2) = (xu + Dyv)^2 - D(xv + yu)^2$. So powers of a solution are solutions.
+The norm $N(x + y\sqrt D) = x^2 - Dy^2$ is multiplicative, since $(x^2 - Dy^2)(u^2 - Dv^2) = (xu + Dyv)^2 - D(xv + yu)^2$. So powers of a solution are solutions, and multiplying $x_k + y_k\sqrt D$ by $x_1 + y_1\sqrt D$ and collecting the rational and irrational parts is the recurrence.
 
 Conversely, let $\varepsilon = x_1 + y_1\sqrt D \gt 1$ be the smallest solution larger than $1$ and $\eta \gt 1$ any solution. Choose $k$ with $\varepsilon^k \le \eta \lt \varepsilon^{k+1}$. Then $\eta\varepsilon^{-k}$ has norm $1$, since $\varepsilon^{-1} = x_1 - y_1\sqrt D$, and lies in $[1, \varepsilon)$. A norm-$1$ number $u + v\sqrt D \gt 1$ has $u, v \gt 0$, since its conjugate $u - v\sqrt D$ is its reciprocal, in $(0, 1)$. So $\eta\varepsilon^{-k}$, being smaller than $\varepsilon$, must equal $1$, and $\eta = \varepsilon^k$.
 
@@ -1194,6 +1258,8 @@ $n$ is a positive integer and $a, b$ are nonnegative integers; allowing $b = 0$ 
 ## Why it works
 The factors $a - b$ and $a + b$ differ by $2b$, so they have the same parity: both odd makes $n$ odd, both even makes $n$ a multiple of $4$, and so $n \equiv 2 \pmod 4$ is impossible. Conversely, if $n = st$ with $s \le t$ of the same parity, $a = \frac{s + t}{2}$ and $b = \frac{t - s}{2}$ are integers with $a^2 - b^2 = n$. Every odd $n$ has the pair $1 \cdot n$, and every multiple of $4$ has $2 \cdot \frac n2$.
 
+The two maps undo each other, so representations match same-parity factor pairs one to one. For odd $n$ every factor pair is odd, and the pairs $s \le t$ number $\left\lceil \frac{d(n)}2 \right\rceil$, the pair $s = t$ (which gives $b = 0$) occurring exactly when $n$ is a square.
+
 ## Useful observations
 - Consecutive squares differ by consecutive odd numbers, $(k + 1)^2 - k^2 = 2k + 1$, which is why every odd number is a difference of squares.
 - Squares two apart differ by multiples of $4$: $(k + 1)^2 - (k - 1)^2 = 4k$.
@@ -1216,7 +1282,13 @@ AMC and AIME questions: how many numbers in a range are differences of squares, 
 $F_n$ lists the reduced fractions in $[0, 1]$ with denominator at most $n$, in increasing order.
 
 ## Why it works
-The condition $bc - ad = 1$ says that consecutive Farey fractions form a unimodular pair, with no lattice point strictly between their vectors ([[picks-theorem|Pick's Theorem]] on the empty triangle). The mediant is the sum of the two lattice vectors, the unique next fraction between them.
+Step 1, the gap lemma. Let $\frac ab \lt \frac cd$ with $bc - ad = 1$, and let $\frac xy$ lie strictly between. Then $bx - ay \ge 1$ and $cy - dx \ge 1$, so
+$$\frac1{bd} = \frac cd - \frac ab = \frac{cy - dx}{dy} + \frac{bx - ay}{by} \ge \frac1{dy} + \frac1{by} = \frac{b + d}{bdy},$$
+which gives $y \ge b + d$. Equality forces $bx - ay = cy - dx = 1$, whose only solution is $x = a + c$, $y = b + d$: the mediant, already in lowest terms.
+
+Step 2, induction on $n$. $F_1$ is $\frac01, \frac11$, with $1 \cdot 1 - 0 \cdot 1 = 1$. Passing from $F_{n-1}$ to $F_n$, by Step 1 the only fraction that can enter between neighbours $\frac ab$, $\frac cd$ is their mediant, exactly when $b + d = n$, and it forms determinant-$1$ pairs with both, since $b(a + c) - a(b + d) = bc - ad$. So neighbours always have $bc - ad = 1$; conversely, a pair with $bc - ad = 1$ is adjacent in $F_{\max(b, d)}$, by Step 1. The geometric reading is that the two lattice vectors span an empty triangle, as [[picks-theorem|Pick's Theorem]] confirms.
+
+Step 3, the count. $F_n$ holds $\frac01$ and, for each $k \le n$, the $\varphi(k)$ fractions $\frac jk$ with $\gcd(j, k) = 1$ and $1 \le j \le k$. The estimate $\frac{3n^2}{\pi^2}$ is the coprime-pair density $\frac6{\pi^2}$ applied to the roughly $\frac{n^2}2$ pairs $j \le k \le n$.
 
 ## Useful observations
 - The fraction with the smallest denominator between two given fractions comes from descending through mediants, as in a Stern–Brocot search.
@@ -1269,6 +1341,10 @@ The fraction must be in lowest terms: $\frac36$ terminates although $6$ has the 
 
 ## Why it works
 A decimal with $k$ places is an integer over $10^k$. So $\frac mn$ terminates with $k$ places exactly when $10^k \cdot \frac mn$ is an integer, that is, when $n \mid 10^km$, which for $\gcd(m, n) = 1$ means $n \mid 10^k = 2^k5^k$. That happens for some $k$ exactly when $n = 2^a5^b$, and the least $k$ is $\max(a, b)$.
+
+Step 1, purely repeating decimals. If $\gcd(d, 10) = 1$, then $10^p \equiv 1 \pmod d$ for $p = \operatorname{ord}_d(10)$, so $\frac cd = \frac{N}{10^p - 1}$ with $N$ an integer, which repeats with period $p$ from the start. Conversely, a decimal repeating from the start is an integer over $10^p - 1$, and $10^p - 1$ is coprime to $10$.
+
+Step 2, the delay. Write $n = 2^a5^b n'$ with $n' \gt 1$ coprime to $10$. Shifting $k$ places gives $10^k \cdot \frac mn$, whose reduced denominator is $2^{a - \min(a, k)}5^{b - \min(b, k)}n'$. By Step 1 its fractional part repeats from the start exactly when that denominator is coprime to $10$, that is $k \ge \max(a, b)$. In base $b$ the same argument runs with the primes of $b$.
 
 ## Useful observations
 - Only the reduced denominator matters, so a factor of the numerator can cancel an unwanted prime: $\frac{k}{120}$ terminates exactly when $3 \mid k$.
@@ -1353,6 +1429,12 @@ $p \ge 5$ is prime; fractions are read as residues, since their denominators are
 ## Why it works
 Pair $k$ with $p - k$: $\frac1k + \frac{1}{p - k} = \frac{p}{k(p - k)}$, so $2H = p\sum_{k=1}^{p-1}\frac{1}{k(p - k)}$, where $H$ is the harmonic sum. It remains to show the last sum is $0$ mod $p$. Modulo $p$, $\frac{1}{k(p - k)} \equiv -\frac{1}{k^2}$, and as $k$ runs over the nonzero residues so does $\frac1k$, so $\sum\frac{1}{k^2} \equiv \sum_{j=1}^{p-1} j^2 = \frac{(p - 1)p(2p - 1)}{6}$, which is divisible by $p$ when $p \ge 5$, since then $6$ is invertible. So $H \equiv 0 \pmod{p^2}$.
 
+For the binomials, expand
+$$\binom{2p-1}{p-1} = \prod_{k=1}^{p-1}\frac{p + k}k = \prod_{k=1}^{p-1}\left(1 + \frac pk\right) \equiv 1 + pH + p^2\sum_{j \lt k}\frac1{jk} \pmod{p^3}.$$
+Here $pH \equiv 0 \pmod{p^3}$, and $\sum_{j \lt k}\frac1{jk} = \frac12\left(H^2 - \sum\frac1{k^2}\right) \equiv 0 \pmod p$, so the whole is $1$ mod $p^3$, and $\binom{2p}p = 2\binom{2p-1}{p-1} \equiv 2$.
+
+For the general power sums, with $g$ a primitive root, $\sum_k k^m \equiv \sum_{j=0}^{p-2}g^{jm} = \frac{g^{m(p-1)} - 1}{g^m - 1} \equiv 0$ whenever $g^m \not\equiv 1$, that is $(p - 1) \nmid m$.
+
 ## Useful observations
 - The pairing alone shows the numerator of the harmonic sum is divisible by $p$ for every odd prime; the extra factor of $p$ needs the sum of inverse squares.
 - The extra factor of $p$ is visible already at $p = 5$: $1 + \frac12 + \frac13 + \frac14 = \frac{25}{12}$, with numerator exactly $5^2$.
@@ -1408,7 +1490,9 @@ An olympiad tool for number theory problems about the prime factors of $a^n - 1$
 $a \gt b \ge 1$ are coprime and $n \ge 2$. For $n = 1$ the statement is about $a - b \gt 1$ having any prime factor.
 
 ## Why it works
-The proof is long. It factors $a^n - b^n$ into cyclotomic pieces $\Phi_d(a, b)$ over the divisors $d$ of $n$ and shows that $\Phi_n(a, b)$ is larger than the product of the primes it could share with earlier terms: any such shared prime divides $n$ and appears in $\Phi_n(a, b)$ only to the first power, while $\Phi_n(a, b)$ grows like $a^{\varphi(n)}$. Comparing sizes leaves a new prime except in the listed cases.
+The proof is long, and it is quoted, not proved here: K. Zsigmondy, "Zur Theorie der Potenzreste", Monatshefte für Mathematik und Physik 3 (1892), 265–284. It factors $a^n - b^n$ into cyclotomic pieces $\Phi_d(a, b)$ over the divisors $d$ of $n$ and shows that $\Phi_n(a, b)$ is larger than the product of the primes it could share with earlier terms: any such shared prime divides $n$ and appears in $\Phi_n(a, b)$ only to the first power, while $\Phi_n(a, b)$ grows like $a^{\varphi(n)}$. Comparing sizes leaves a new prime except in the listed cases.
+
+The first observation needs only orders. If $q$ is a primitive prime of $a^n - b^n$, then $b$ is invertible mod $q$ and $ab^{-1}$ has order exactly $n$, since a smaller $k$ with $(ab^{-1})^k \equiv 1$ would put $q$ in $a^k - b^k$. The order divides $q - 1$, so $q \equiv 1 \pmod n$.
 
 ## Useful observations
 - A primitive prime $q$ of $a^n - b^n$ has $a$ of order $n$ relative to $b$ mod $q$, so $q \equiv 1 \pmod n$.
@@ -1433,9 +1517,9 @@ An olympiad sledgehammer; most contest uses can also be done with orders or the 
 $n \ge 0$. The only Fermat numbers known to be prime are $F_0$ through $F_4$.
 
 ## Why it works
-The product identity follows by telescoping $(2^{2^k} - 1)(2^{2^k} + 1) = 2^{2^{k+1}} - 1$. Any common divisor of two Fermat numbers then divides $2$, but all Fermat numbers are odd, so they are pairwise coprime.
+The product identity follows by telescoping $(2^{2^k} - 1)(2^{2^k} + 1) = 2^{2^{k+1}} - 1$: starting from $F_0 - 2 = 1 = 2^1 - 1$, multiplying by $F_0, F_1, \ldots, F_{n-1}$ in turn reaches $2^{2^n} - 1 = F_n - 2$. Any common divisor of $F_m$ and $F_n$ with $m \lt n$ then divides $F_n - F_0\cdots F_{n-1} = 2$, but all Fermat numbers are odd, so they are pairwise coprime. Each $F_n$ has a prime factor, and no two share one, which gives infinitely many primes.
 
-If $m$ has an odd factor $q > 1$, then $2^m + 1$ is divisible by $2^{m/q} + 1$, which is why only powers of $2$ can occur.
+If $m$ has an odd factor $q \gt 1$, then $2^m + 1 = (2^{m/q})^q + 1$ is divisible by $2^{m/q} + 1$, since $x + 1$ divides $x^q + 1$ for odd $q$, which is why only powers of $2$ can occur. The link with constructible polygons is the Gauss–Wantzel theorem, quoted here.
 
 ## Useful observations
 - Pairwise coprimality gives infinitely many primes, since each $F_n$ contributes a prime factor no other one has.
@@ -1486,6 +1570,10 @@ $n$ is a positive integer. Near powers of ten the logarithm must be known accura
 
 ## Why it works
 $n$ has $d$ digits exactly when $10^{d-1} \le n \lt 10^d$; taking logarithms, $d - 1 \le \log_{10} n \lt d$, so $d - 1 = \lfloor \log_{10} n \rfloor$. If $\log_{10} n = k + f$ with $0 \le f \lt 1$, then $n = 10^f \cdot 10^k$, and $10^f$, between $1$ and $10$, is $n$ with its decimal point moved, which gives the leading digits.
+
+The observations come from adding logarithms. For any reals, $\lfloor \alpha + \beta \rfloor$ is $\lfloor \alpha \rfloor + \lfloor \beta \rfloor$ or one more, so the digit count of $xy$ is the sum of the two counts or one fewer. For $2^k$ and $5^k$ the logarithms add to the integer $k$ and neither is an integer, so their floors add to $k - 1$, and the digit counts add to $k + 1$.
+
+Finally, $2^k$ starts with the digit $1$ exactly when $1 \le 10^f \lt 2$, that is $f \lt \log_{10} 2$, where $f$ is the fractional part of $k\log_{10} 2$.
 
 ## Useful observations
 - A product has either the sum of its factors' digit counts or one fewer, since logarithms add.
@@ -1579,6 +1667,8 @@ $p$ and $q$ are positive and coprime, so that no interior lattice point lies on 
 ## Why it works
 The term $\lfloor\frac{kp}{q}\rfloor$ counts the lattice points $(k, j)$ with $1 \le j \le \frac{kp}{q}$, the points strictly below the diagonal in column $k$ of the $q \times p$ rectangle. Coprimality keeps the diagonal off the lattice, and the half-turn symmetry of the rectangle pairs each interior point below the diagonal with one above, which splits the $(p-1)(q-1)$ interior points evenly.
 
+The same pairing in numbers: $\frac{kp}q$ is not an integer for $0 \lt k \lt q$, so $\left\lfloor\frac{kp}q\right\rfloor + \left\lfloor p - \frac{kp}q\right\rfloor = p - 1$, the second Key form. Adding it over $k = 1, \ldots, q - 1$ counts each term twice and gives $(q - 1)(p - 1)$.
+
 ## Useful observations
 - Floor sums over a full period are evaluated at once, and partial ranges pair $k$ with $q - k$.
 - Sums of floors are counts of lattice points under a line, so Pick-style arguments and symmetry both apply.
@@ -1605,7 +1695,9 @@ Object.assign(window.MATH_DETAILS, {
 The count is of ordered, signed representations, so $(a, b)$, $(-a, b)$, $(b, a)$ and so on are all counted.
 
 ## Why it works
-In the Gaussian integers $\mathbb{Z}[i]$, $a^2 + b^2 = (a + bi)(a - bi)$, and unique factorization sorts primes into split ($p \equiv 1 \pmod 4$, contributing choices), inert ($p \equiv 3 \pmod 4$, demanding even exponents), and ramified ($2$). Counting the factorization choices yields $4(d_1 - d_3)$, the $4$ being the unit rotations $\pm1, \pm i$.
+In the Gaussian integers $\mathbb{Z}[i]$, $a^2 + b^2 = (a + bi)(a - bi)$, and unique factorization sorts primes into split ($p \equiv 1 \pmod 4$, contributing choices), inert ($p \equiv 3 \pmod 4$, demanding even exponents), and ramified ($2$). Counting the factorization choices yields $4(d_1 - d_3)$, the $4$ being the unit rotations $\pm1, \pm i$. This count is quoted, not proved here; it is Theorem 278 in G. H. Hardy and E. M. Wright, An Introduction to the Theory of Numbers.
+
+The rest follows from the formula. The difference $d_1(n) - d_3(n) = \sum_{d \mid n}\chi(d)$, where $\chi(d)$ is $1$, $-1$ or $0$ as $d \equiv 1$, $3$ or even mod $4$, is multiplicative, since $\chi$ is. At $2^e$ it is $1$; at $p^e$ with $p \equiv 1$ it is $e + 1$; at $p^e$ with $p \equiv 3$ it is $1 - 1 + \cdots \pm 1$, which is $1$ for even $e$ and $0$ for odd $e$. So the count vanishes exactly when such a prime has an odd exponent.
 
 ## Useful observations
 - Representations are counted without being found: $d_1(n) - d_3(n)$ is computed over the divisors.
@@ -1827,7 +1919,9 @@ The recurrence is $F_{n+1} = F_n + F_{n-1}$ with $F_0 = 0$ and $F_1 = 1$, reduce
 ## Why it works
 A Fibonacci term mod $m$ is determined by the pair $(F_{n-1}, F_n) \bmod m$, and there are only $m^2$ possible pairs, so the sequence of pairs must eventually repeat.
 
-Because the recurrence $F_{n-1} = F_{n+1} - F_n$ runs backward as cleanly as forward, the repetition cannot start late: it cycles from the very beginning, giving a pure period $\pi(m)$.
+Because the recurrence $F_{n-1} = F_{n+1} - F_n$ runs backward as cleanly as forward, the repetition cannot start late: it cycles from the very beginning, giving a pure period $\pi(m)$, and then $F_n$ depends only on $n \bmod \pi(m)$.
+
+For coprime $m_1$ and $m_2$, the sequence is periodic mod $m_1m_2$ with period $T$ exactly when it is periodic mod both, by the Chinese Remainder Theorem, so the least such $T$ is $\operatorname{lcm}(\pi(m_1), \pi(m_2))$. Listing terms gives $\pi(2) = 3$, $\pi(3) = 8$ and $\pi(5) = 20$, and so $\pi(10) = \operatorname{lcm}(3, 20) = 60$.
 
 ## Useful observations
 - To find $F_n \bmod m$, the period $\pi(m)$ is computed by listing terms mod $m$ until $0, 1$ reappears, and then the index is reduced.
@@ -1891,7 +1985,7 @@ Squares may be $0$, so "three squares" includes numbers that need fewer.
 ## Why it works
 The necessity is a short computation. Squares are $0, 1, 4 \pmod 8$, so a sum of three of them is never $7 \bmod 8$. And a sum of three squares that is divisible by $4$ must have all three squares even, since odd squares are $1 \bmod 4$ and one or two of them would leave $1$, $2$ or $3 \bmod 4$; dividing each by $4$ represents $\frac n4$. So if $n$ fails, $4n$ fails too, which excludes all of $4^k(8m + 7)$.
 
-The converse, that every other number is a sum of three squares, needs the theory of ternary quadratic forms. Lagrange's theorem has an elementary proof: Euler's four-square identity makes representable numbers closed under multiplication, so it suffices to represent primes, which a descent argument does.
+The converse, that every other number is a sum of three squares, needs the theory of ternary quadratic forms, and it is quoted, not proved here; a complete proof is in M. B. Nathanson, Additive Number Theory: The Classical Bases (Springer, 1996). Lagrange's four-square theorem has an elementary proof: Euler's four-square identity makes representable numbers closed under multiplication, so it suffices to represent primes, which a descent argument does.
 
 ## Useful observations
 - Removing factors of $4$ never changes the answer, so the test strips powers of $4$ and checks the residue mod $8$ of what remains; $28 = 4 \cdot 7$ needs four squares, while $29 = 25 + 4$ does not.
@@ -1985,7 +2079,13 @@ Object.assign(window.MATH_DETAILS, {
 The Fibonacci numbers used are $F_2 = 1, F_3 = 2, F_4 = 3, \ldots$, each at most once, since $F_1 = F_2$ would duplicate the value $1$.
 
 ## Why it works
-Greedily subtracting the largest Fibonacci number $\le n$ can never leave a remainder that needs two adjacent Fibonacci numbers, because $F_k + F_{k-1} = F_{k+1}$ would merge them into a larger term. That gives both existence and uniqueness of the non-consecutive representation.
+Step 1, the lemma. A sum of non-consecutive Fibonacci numbers whose largest term is $F_k$ is less than $F_{k+1}$. By induction on $k$: the rest of the sum has largest term at most $F_{k-2}$, so it is less than $F_{k-1}$, and the whole sum is less than $F_k + F_{k-1} = F_{k+1}$.
+
+Step 2, existence. Take the largest $F_k \le n$. The remainder $n - F_k$ is less than $F_{k+1} - F_k = F_{k-1}$, so the next term chosen is at most $F_{k-2}$, never the neighbour $F_{k-1}$. Repeating ends at $0$ with non-consecutive terms.
+
+Step 3, uniqueness. Suppose two different representations have the same value, and cancel the terms they share. If something is left, let $F_k$ be the largest remaining term, say in the first. The second then has all its remaining terms at most $F_{k-1}$, so by Step 1 its sum is less than $F_k$, while the first is at least $F_k$: a contradiction.
+
+Step 4, the count. A string of $n$ binary digits for $F_2, \ldots, F_{n+1}$ with no two adjacent $1$s gives, by Step 1, a number below $F_{n+2}$, and by Steps 2 and 3 every number from $0$ to $F_{n+2} - 1$ arises exactly once. So there are $F_{n+2}$ such strings, the same count as [[tiling-a-board|the tilings of a board]] by squares and dominoes.
 
 ## Useful observations
 - The greedy algorithm is both the construction and the proof: taking the largest Fibonacci number at each step automatically leaves a remainder smaller than the previous term's predecessor, which is exactly the non-consecutive condition.
@@ -2008,7 +2108,11 @@ Occasional AIME and olympiad appearances (Fibonacci representations, Wythoff and
 $\alpha$ and $\beta$ are irrational and greater than $1$. If one of them were rational the two sequences would collide or leave gaps.
 
 ## Why it works
-The number of terms $\lfloor n\alpha\rfloor \le N$ is about $\frac N\alpha$, and similarly $\frac N\beta$ for the other sequence. Since $\frac1\alpha + \frac1\beta = 1$ the two counts add to $N$ for every $N$, and irrationality prevents any collision, so together they hit each integer exactly once.
+Since $\alpha, \beta \gt 1$, each sequence is strictly increasing, and $\frac1\beta = 1 - \frac1\alpha$ gives the partner $\beta = \frac\alpha{\alpha - 1}$. Irrationality makes every $n\alpha$ and $m\beta$ a non-integer, so the inequalities below are strict.
+
+No collision. If $\lfloor n\alpha\rfloor = \lfloor m\beta\rfloor = k$, then $k \lt n\alpha \lt k + 1$ and $k \lt m\beta \lt k + 1$, so $\frac{n}{k+1} \lt \frac1\alpha \lt \frac nk$ and the same for $m$ and $\beta$. Adding, $\frac{n + m}{k + 1} \lt 1 \lt \frac{n + m}k$, so $k \lt n + m \lt k + 1$, impossible for an integer.
+
+No gap. If $k$ is missed by both, there are $n$ and $m$ with $n\alpha \lt k$ and $(n + 1)\alpha \gt k + 1$, and likewise $m\beta \lt k$ and $(m + 1)\beta \gt k + 1$. Then $\frac nk \lt \frac1\alpha \lt \frac{n + 1}{k + 1}$ and the same for $m$; adding, $\frac{n + m}k \lt 1 \lt \frac{n + m + 2}{k + 1}$, so $k - 1 \lt n + m \lt k$, again impossible.
 
 ## Useful observations
 - A single irrational $\alpha > 1$ generates a complementary pair of sequences that tile the positive integers.
@@ -2084,7 +2188,11 @@ The standard zero-sum theorem of olympiad combinatorics.
 $n$ is composite and odd. The Carmichael function $\lambda(n)$ has the same name and is an unrelated object.
 
 ## Why it works
-A [[fermat-numbers|Fermat pseudoprime]] slips past the test $b^{n-1} \equiv 1 \pmod n$ despite being composite. Korselt's Criterion pins down those that fool every coprime base: $n$ must be squarefree with $(p - 1) \mid (n - 1)$ for each prime $p \mid n$, and then by the [[crt|Chinese Remainder Theorem]] the congruence holds for every base.
+A Fermat pseudoprime slips past the test $b^{n-1} \equiv 1 \pmod n$ despite being composite. Korselt's Criterion pins down those that fool every coprime base.
+
+Sufficiency. If $n$ is squarefree and $(p - 1) \mid (n - 1)$ for each $p \mid n$, then for $b$ coprime to $n$, Fermat's Little Theorem gives $b^{n-1} = \left(b^{p-1}\right)^{(n-1)/(p-1)} \equiv 1 \pmod p$ for each $p$. The primes are distinct, so by the [[crt|Chinese Remainder Theorem]] $b^{n-1} \equiv 1 \pmod n$.
+
+Necessity. If $p^2 \mid n$, take $b = 1 + p$, coprime to $n$ after adjusting modulo the other prime factors by the Chinese Remainder Theorem. Modulo $p^2$, $(1 + p)^{n-1} \equiv 1 + (n - 1)p$, which is $1$ only if $p \mid n - 1$, impossible since $p \mid n$. And for $p \mid n$, take $b$ to be a [[primitive-roots|primitive root]] mod $p$ and $1$ mod the rest of $n$: then $b^{n-1} \equiv 1 \pmod p$ forces $(p - 1) \mid (n - 1)$.
 
 ## Useful observations
 - To test a candidate, check squarefreeness and the divisibility $(p - 1) \mid (n - 1)$ over its prime factors.
@@ -2236,7 +2344,9 @@ An olympiad framework; contest problems use its identities without the notation.
 $n$ is odd and positive. $\left(\frac an\right) = -1$ proves $a$ is not a square mod $n$; $\left(\frac an\right) = 1$ proves nothing for composite $n$.
 
 ## Why it works
-Multiplicativity in each argument is inherited from the Legendre symbol, factor by factor. For reciprocity, write $m$ and $n$ as products of odd primes and expand both symbols into Legendre symbols $\left(\frac pq\right)$; each pair contributes the sign $(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$. The total exponent is $\sum_{p, q}\frac{p-1}{2}\frac{q-1}{2} = \left(\sum\frac{p-1}{2}\right)\left(\sum\frac{q-1}{2}\right)$, and $\sum\frac{p-1}{2} \equiv \frac{m-1}{2} \pmod 2$, because $\frac{xy - 1}{2} \equiv \frac{x - 1}{2} + \frac{y - 1}{2} \pmod 2$ for odd $x$, $y$. The supplements follow the same way.
+Multiplicativity in each argument is inherited from the Legendre symbol, factor by factor, and so is the dependence on $a \bmod n$ only. For reciprocity, write $m$ and $n$ as products of odd primes and expand both symbols into Legendre symbols $\left(\frac pq\right)$; each pair contributes the sign $(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$. The total exponent is $\sum_{p, q}\frac{p-1}{2}\frac{q-1}{2} = \left(\sum\frac{p-1}{2}\right)\left(\sum\frac{q-1}{2}\right)$, and $\sum\frac{p-1}{2} \equiv \frac{m-1}{2} \pmod 2$, because $\frac{xy - 1}{2} \equiv \frac{x - 1}{2} + \frac{y - 1}{2} \pmod 2$ for odd $x$, $y$.
+
+The supplements multiply the prime cases the same way. For $-1$ the same congruence gives $(-1)^{(n-1)/2}$. For $2$, $\frac{x^2y^2 - 1}8 = \frac{x^2 - 1}8 + \frac{y^2 - 1}8 + \frac{(x^2 - 1)(y^2 - 1)}8$, and the last term is even because each factor is a multiple of $8$, so the exponents $\frac{p^2 - 1}8$ add up to $\frac{n^2 - 1}8$ mod $2$.
 
 ## Useful observations
 - A Jacobi symbol equal to $1$ does not certify a square, since two failures multiply to $1$: $\left(\frac{2}{15}\right) = \left(\frac 23\right)\left(\frac 25\right) = (-1)(-1) = 1$, yet $2$ is not a square modulo $15$.
@@ -2309,7 +2419,9 @@ An olympiad lemma, occasionally behind AIME binomial-coefficient divisibility qu
 $k \ge 2$ and $n$ is any integer. No prime square divides $n^k - n$ for all $n$: taking $n = p$ gives $p^k - p$, which is divisible by $p$ but not by $p^2$.
 
 ## Why it works
-If $(p - 1) \mid (k - 1)$, then for $p \nmid n$ Fermat's Little Theorem gives $n^{k-1} \equiv 1$, so $n^k \equiv n$, and for $p \mid n$ both sides are $0$. Conversely, if $p$ divides $n^k - n$ for all $n$, take a primitive root $g$ modulo $p$: $g^{k-1} \equiv 1$ forces $(p - 1) \mid (k - 1)$. The primes are distinct, so their product divides $n^k - n$, and the remark on $n = p$ shows no larger number works.
+If $(p - 1) \mid (k - 1)$, then for $p \nmid n$ Fermat's Little Theorem gives $n^{k-1} \equiv 1$, so $n^k \equiv n$, and for $p \mid n$ both sides are $0$. Conversely, if $p$ divides $n^k - n$ for all $n$, take a [[primitive-roots|primitive root]] $g$ modulo $p$: $g^{k-1} \equiv 1$ forces $(p - 1) \mid (k - 1)$. The primes are distinct, so their product divides $n^k - n$, and the remark on $n = p$ shows no larger number works.
+
+The first Key form is this rule for small $k$. For $k = 3$ the primes with $(p - 1) \mid 2$ are $2$ and $3$; for $k = 5$, with $(p - 1) \mid 4$, they are $2, 3, 5$; for $k = 7$, with $(p - 1) \mid 6$, they are $2, 3, 7$. Their products are $6$, $30$ and $42$.
 
 ## Useful observations
 - For small exponents the factorization shows the divisibility directly: $n^3 - n = (n - 1)n(n + 1)$ is a product of three consecutive integers, so $6$ divides it.
@@ -2413,11 +2525,13 @@ Mostly MATHCOUNTS and early AMC: a short column-by-column argument, with a littl
 These are facts about base-ten digits, not theorems about all bases. Kaprekar's routine needs a four-digit number with at least two different digits.
 
 ## Why it works
-The cyclic run of $142857$ is the six-digit repeating block of $\frac17$: $10$ is a primitive root mod $7$, so the period is full and multiplying by $1$ through $6$ rotates the digits. Narcissistic numbers and Kaprekar's routine are finite digit-map facts that can be checked directly.
+The cyclic run of $142857$ is the six-digit repeating block of $\frac17$. Since $10$ is a primitive root mod $7$, every $k$ from $1$ to $6$ is $10^j \bmod 7$ for some $j$, so $\frac k7$ is the fractional part of $\frac{10^j}7$: the same decimal shifted $j$ places, which rotates the block. And $7 \cdot 142857 = 10^6 - 1$.
 
-The repunit family explains most of the rest. A string of $n$ ones is $\frac{10^n - 1}{9}$, which is why $\frac19 = 0.\overline{1}$, $\frac1{99} = 0.\overline{01}$, and why squaring a repunit of length $n \le 9$ gives the palindrome $123\ldots n\ldots321$.
+Narcissistic numbers and Kaprekar's routine are finite digit-map facts, checked by computer: the three-digit numbers equal to the sum of the cubes of their digits are exactly $153$, $370$, $371$, $407$, and every four-digit number with two different digits reaches $6174$ in at most $7$ steps.
 
-The $1089$ trick is the same base-ten bookkeeping: reversing a three-digit number and subtracting always leaves a multiple of $99$, and adding that result to its own reverse always gives $1089$.
+The repunit family explains most of the rest. A string of $n$ ones is $\frac{10^n - 1}{9}$, which is why $\frac19 = 0.\overline{1}$, $\frac1{99} = 0.\overline{01}$, and why squaring a repunit of length $n \le 9$ gives the palindrome $123\ldots n\ldots321$: the digit products add up without carries.
+
+For the $1089$ trick, write the number as $100a + 10b + c$ with $a \gt c$. Subtracting its reverse leaves $99(a - c) = 99k$, whose digits are $k - 1$, $9$, $10 - k$ (reading $99$ as $099$). Adding the reverse of that, $100(k - 1) + 90 + (10 - k) + 100(10 - k) + 90 + (k - 1) = 1089$.
 
 ## Useful observations
 - $142857$ is recognized on sight, with $\frac27, \ldots, \frac67$ as its rotations.
@@ -2445,6 +2559,8 @@ $p$ is prime and $m, n$ are nonzero integers (or rationals, for quotients).
 
 ## Why it works
 By unique factorization, the power of $p$ in a product is the sum of the powers in the factors, which makes $v_p$ behave like a logarithm for one prime. For a sum, write $m = p^a m'$ and $n = p^b n'$ with $p \nmid m', n'$ and $a \le b$: then $m + n = p^a(m' + p^{b-a}n')$, so $v_p(m + n) \ge a$. When $a \lt b$, the bracket is $m' + (\text{multiple of } p) \not\equiv 0$, so the valuation is exactly $a$.
+
+The rest is unique factorization read one prime at a time. $p^k \mid N$ means $N = p^k M$, which is $v_p(N) \ge k$. A common divisor can carry at most the smaller power of each prime and a common multiple at least the larger, which gives $\min$ for the gcd and $\max$ for the lcm. And $N = M^2$ exactly when every exponent of $N$ is twice an exponent of $M$.
 
 ## Useful observations
 - The valuation of a sum can exceed the minimum only when the minimum is tied: $v_2(48) = v_2(80) = 4$, but $v_2(48 + 80) = v_2(128) = 7$.
@@ -2752,6 +2868,8 @@ The modulus must be prime. For a composite modulus the bound fails: $x^2 \equiv 
 
 ## Why it works
 Modulo a prime, a product is $0$ only when a factor is $0$, by [[euclids-lemma|Euclid's Lemma]], so the Factor Theorem works as it does for real numbers. If $r$ is a root of $f$, then $f(x) \equiv (x - r)g(x)$ with $\deg g = d - 1$. Any other root $s \not\equiv r$ makes $(s - r)g(s) \equiv 0$ with $s - r \not\equiv 0$, so $g(s) \equiv 0$. By induction on the degree, $g$ has at most $d - 1$ roots, so $f$ has at most $d$.
+
+For the factorization, both sides are monic of degree $p - 1$, and both vanish at $1, \ldots, p - 1$, the left by Fermat's Little Theorem. Their difference has degree less than $p - 1$ and $p - 1$ roots, so by the bound every coefficient is $0$ modulo $p$. The same argument shows that two polynomials of degree less than $p$ agreeing at more points than their degree are congruent coefficient by coefficient.
 
 ## Useful observations
 - Comparing constant terms in $x^{p-1} - 1 \equiv (x - 1)\cdots(x - (p - 1))$ gives $(p - 1)! \equiv -1 \pmod p$, which is [[wilsons-theorem|Wilson's Theorem]].

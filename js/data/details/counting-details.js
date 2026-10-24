@@ -14,7 +14,13 @@ Object.assign(window.MATH_DETAILS, {
 The sets are finite subsets of one universe. The same identity holds for probabilities, $P(A \cup B) = P(A) + P(B) - P(A \cap B)$, and for any additive measure, such as area.
 
 ## Why it works
-Take an element that lies in exactly $m \ge 1$ of the sets. The right side counts it once for each set containing it, $\binom m1$ times, subtracts it once for each pair of those sets, $\binom m2$ times, and so on, for a net count of $$\binom m1 - \binom m2 + \binom m3 - \cdots \pm \binom mm = 1 - (1 - 1)^m = 1.$$ An element in none of the sets is counted zero times. So every element of the union is counted exactly once.
+Take an element that lies in exactly $m \ge 1$ of the sets. The right side counts it once for each set containing it, $\binom m1$ times, subtracts it once for each pair of those sets, $\binom m2$ times, and so on, for a net count of
+$$\binom m1 - \binom m2 + \binom m3 - \cdots \pm \binom mm = 1 - (1 - 1)^m = 1.$$
+An element in none of the sets is counted zero times. So every element of the union is counted exactly once. Subtracting from $N$ gives the complement form, and when all $k$-fold intersections have size $N_k$ the inner sum is $\binom nk N_k$.
+
+For the bounds, stop after the terms with $k \le t$. The element above is then counted $\sum_{k=1}^{t}(-1)^{k+1}\binom mk = 1 - (-1)^t\binom{m-1}{t}$ times, by Pascal's rule telescoping. That is at least $1$ when $t$ is odd and at most $1$ when $t$ is even, so the partial sums alternate above and below.
+
+The two observations are the complement form with the right $N_k$. For derangements, $A_i$ is the set of permutations fixing $i$, and fixing $k$ chosen points leaves $(n - k)!$ permutations. For onto maps, $A_i$ is the set of maps missing the value $i$, and missing $j$ chosen values leaves $(k - j)^n$ maps.
 
 ## Useful observations
 - Stopping after any term gives a bound: stopping after an added term overestimates the union, and stopping after a subtracted term underestimates it.
@@ -216,7 +222,9 @@ The rectangles have sides along the grid lines. Tilted rectangles on lattice poi
 ## Why it works
 A rectangle is determined by choosing $2$ of the $m + 1$ vertical grid lines and $2$ of the $n + 1$ horizontal ones, and the choices are independent.
 
-Squares are the constrained version, since the two spans must be equal: summing over the side length $k$ gives $\sum_k (m + 1 - k)(n + 1 - k)$, which collapses to the [[power-sums|sum of the squares]], $\sum_{k=1}^{n} k^2$, on a square grid.
+Squares are the constrained version, since the two spans must be equal. A $k \times k$ square has its left edge on one of the first $m + 1 - k$ vertical lines and its bottom edge on one of the first $n + 1 - k$ horizontal lines, so summing over $k$ gives $\sum_k (m + 1 - k)(n + 1 - k)$. On a square grid the terms are $(n + 1 - k)^2$, which run through the [[power-sums|sum of the squares]], $\sum_{j=1}^{n} j^2$.
+
+For the cell in column $i$ and row $j$, the left side of the rectangle is one of the $i$ vertical lines to its left and the right side one of the $m - i + 1$ to its right, and the same for rows.
 
 ## Useful observations
 - The key move is to stop counting rectangles and start counting the lines that bound them: any two vertical lines and any two horizontal lines determine exactly one rectangle, so the count is a product of two binomial coefficients.
@@ -383,9 +391,13 @@ The AMC and AIME phrasings hide it well: ordered pairs of subsets with a contain
 The lower index is fixed and the upper index runs through consecutive values starting at that lower index, where the first term is $1$.
 
 ## Why it works
-Telescoping Pascal's rule, $\binom{n+1}{r+1} = \binom{n}{r} + \binom{n}{r+1}$, and expanding the last term repeatedly gives the sum.
+Telescoping Pascal's rule. Apply $\binom{m+1}{r+1} = \binom{m}{r} + \binom{m}{r+1}$ to the last term again and again:
+$$\binom{n+1}{r+1} = \binom nr + \binom n{r+1} = \binom nr + \binom{n-1}r + \binom{n-1}{r+1} = \cdots = \binom nr + \binom{n-1}r + \cdots + \binom rr,$$
+stopping when the last term is $\binom r{r+1} = 0$.
 
 Combinatorially, to choose $r + 1$ objects from $\{1, \ldots, n + 1\}$, condition on the largest element chosen: if it is $i + 1$, the other $r$ come from $\{1, \ldots, i\}$ in $\binom ir$ ways, and the cases are the diagonal terms.
+
+The second form is the first read with $\binom{r+k}{k} = \binom{r+k}{r}$ and $n = r + m$, since $\binom{r+m+1}{r+1} = \binom{r+m+1}{m}$. The binomial basis checks by expanding: $2\binom k2 + \binom k1 = k(k - 1) + k = k^2$, and $2\binom{k+1}2 = (k + 1)k$.
 
 ## Useful observations
 - Any sum of binomial coefficients with a fixed lower index collapses in one step, so recognizing the diagonal is all that is required.
@@ -564,7 +576,9 @@ The $x_i$ are nonnegative integers with a common cap $m$. With different caps th
 ## Why it works
 Violating a cap $x_i \le m$ means $x_i \ge m + 1$: substituting $x_i' = x_i - (m + 1)$ and counting freely gives the number of solutions in which that variable busts. Inclusion-exclusion alternates over which caps are violated, since violations can overlap.
 
-With a common cap $m$ on all $k$ variables this closes up as $\sum_j(-1)^j\binom kj\binom{n - j(m+1) + k - 1}{k - 1}$, and the terms vanish once $j(m + 1) \gt n$.
+A chosen set of $j$ variables all bust exactly when, after removing $m + 1$ from each, the rest $n - j(m + 1)$ is distributed freely, in $\binom{n - j(m+1) + k - 1}{k - 1}$ ways. With a common cap the count is the same for each of the $\binom kj$ sets, which gives
+$$\sum_j(-1)^j\binom kj\binom{n - j(m+1) + k - 1}{k - 1},$$
+and once $j(m + 1) \gt n$ there is nothing left to distribute, so those terms are $0$.
 
 ## Useful observations
 - The upper bound is handled by violation rather than by construction. Everything is counted with plain [[stars-and-bars|stars and bars]], then the cases where a chosen variable exceeds $m$ are subtracted, each forced by pre-assigning the overflow and re-counting the remainder.
@@ -657,9 +671,11 @@ Usually the counting engine of an AIME problem, set up after complementary count
 A derangement moves every object. As $n$ grows the probability that a random permutation is a derangement tends to $\frac1e$, and is already within $\frac{1}{(n+1)!}$ of it for the nearest-integer formula.
 
 ## Why it works
-[[pie|Inclusion-exclusion]] over the events "object $i$ stays fixed" gives $D_n = \sum_j (-1)^j\binom nj(n - j)! = n!\sum_j \frac{(-1)^j}{j!}$, the truncated series of $e^{-1}$, whence the nearest-integer form.
+[[pie|Inclusion-exclusion]] over the events "object $i$ stays fixed" gives $D_n = \sum_j (-1)^j\binom nj(n - j)! = n!\sum_j \frac{(-1)^j}{j!}$, the truncated series of $e^{-1}$. The tail of that alternating series is less than its first term, so $\left\lvert\frac{D_n}{n!} - \frac1e\right\rvert \lt \frac1{(n + 1)!}$, and $\left\lvert D_n - \frac{n!}e\right\rvert \lt \frac1{n + 1} \le \frac12$, which is the nearest-integer form.
 
 The recurrence $D_n = (n - 1)(D_{n-1} + D_{n-2})$ conditions on where object $1$ goes: to one of $n - 1$ positions $j$, and then either object $j$ goes to position $1$, leaving a derangement of the other $n - 2$, or it does not, leaving a derangement of $n - 1$ objects with $j$ playing the role of $1$.
+
+The other recurrence comes from the sum: $n$ times $D_{n-1} = (n - 1)!\sum_{j \le n-1}\frac{(-1)^j}{j!}$ gives every term of $D_n$ except the last, which is $(-1)^n$. Starting from $D_1 = 0$ and $D_2 = 1$ it gives $2, 9, 44, 265$.
 
 ## Useful observations
 - The setup is recognized as "no object in its own place": hats returned to the wrong owners, letters in wrong envelopes, a permutation with no fixed point.
@@ -685,9 +701,11 @@ Hat checks, mismatched letters and envelopes, and "no one gets their own" scenar
 The structure is built by nesting or by never letting one running count fall behind another. The number of triangulations is $C_n$ for a convex polygon with $n + 2$ sides.
 
 ## Why it works
-[[reflection-principle|Reflection principle]]: monotone paths crossing the diagonal biject, by reflecting after the first violation, with paths to a shifted endpoint, giving $\binom{2n}{n} - \binom{2n}{n+1} = \frac{1}{n+1}\binom{2n}{n}$.
+[[reflection-principle|Reflection principle]]: monotone paths crossing the diagonal biject, by reflecting after the first violation, with paths to a shifted endpoint, giving $\binom{2n}{n} - \binom{2n}{n+1}$. Since $\binom{2n}{n+1} = \frac{n}{n+1}\binom{2n}{n}$, this is $\frac{1}{n+1}\binom{2n}{n}$.
 
 The recurrence $C_{n+1} = \sum C_iC_{n-i}$ conditions on the first return to the diagonal: what happens before the return and after it are independent smaller structures.
+
+The other families satisfy the same recurrence with $C_0 = 1$, so they have the same numbers. In $n + 1$ pairs of parentheses, the first pair encloses $i$ pairs and is followed by $n - i$. A binary tree with $n + 1$ nodes has a root, a left subtree with $i$ nodes and a right one with $n - i$. In an $(n + 3)$-gon, the triangle on a fixed side has its third vertex somewhere that leaves polygons with $i + 2$ and $n - i + 2$ sides.
 
 ## Useful observations
 - The skill is recognition rather than computation: whenever a structure is built by nesting or by never letting one running count fall behind another, it is Catalan.
@@ -929,6 +947,8 @@ These are the unsigned numbers; the signed ones come from the falling factorial.
 
 ## Why it works
 Permutations decompose uniquely into disjoint cycles, and $c(n, k)$ counts those with exactly $k$ cycles. For the recursion, element $n$ either forms a cycle by itself, giving $c(n-1, k-1)$, or is inserted after one of the $n - 1$ existing elements inside the cycles, giving $(n - 1)\,c(n-1, k)$.
+
+For the rising factorial, multiply $\sum_k c(n-1, k)x^k$ by $x + (n - 1)$: the coefficient of $x^k$ becomes $c(n-1, k-1) + (n - 1)c(n-1, k)$, the same recursion with the same start, so the coefficients are $c(n, k)$. Setting $x = 1$ gives the row sum $n!$, and $c(n, 1) = (n - 1)!$, the number of single cycles, is $\frac1n$ of all permutations.
 
 ## Useful observations
 - There are two readings: algebraically, the coefficients when a rising factorial is expanded into powers; combinatorially, permutations counted by cycle number.
@@ -1172,7 +1192,7 @@ The players alternate strictly, the success probabilities are the same every rou
 ## Why it works
 The geometric series over rounds sums to the formula, or equivalently by self-similarity: the first player wins now, with probability $p$, or both miss, with probability $(1 - p)(1 - q)$, and the game restarts identically. So $P = p + (1 - p)(1 - q)P$.
 
-The series version is $p + (1 - p)(1 - q)p + \cdots$, a geometric series with ratio $(1 - p)(1 - q)$.
+The series version is $p + (1 - p)(1 - q)p + \cdots$, a geometric series with ratio $(1 - p)(1 - q)$, whose sum is $\frac{p}{1 - (1 - p)(1 - q)} = \frac{p}{p + q - pq}$. With $q = p$ this is $\frac{p}{2p - p^2} = \frac1{2 - p}$, which is more than $\frac12$ because $2 - p \lt 2$.
 
 ## Useful observations
 - The first round is conditioned on rather than the series summed: either the first player succeeds immediately, or both fail and the position resets exactly. Solving takes one line and generalizes to variants the closed form does not cover.
@@ -1343,7 +1363,11 @@ The pool is fixed and sampled without replacement, every draw is equally likely,
 ## Why it works
 Choosing $n$ from a population with $K$ marked items: the favorable choices pick $k$ marked and $n - k$ unmarked ones independently, in $\binom Kk\binom{N-K}{n-k}$ ways, and the total number of equally likely choices is $\binom Nn$.
 
-Because it is a ratio of counts, order never enters, and no arrangement factor appears. The probabilities over all $k$ add to $1$ by [[vandermonde|Vandermonde's Identity]].
+Because it is a ratio of counts, order never enters, and no arrangement factor appears. The probabilities over all $k$ add to $1$ by [[vandermonde|Vandermonde's Identity]]. Writing both sides of the exchange form in factorials gives the same expression, $\frac{K!\,(N - K)!\,n!\,(N - n)!}{N!\,k!\,(K - k)!\,(n - k)!\,(N - K - n + k)!}$.
+
+For the moments, let $J_s$ indicate that the $s$th marked item is drawn. Each has $P(J_s = 1) = \frac nN$, and two of them are both drawn with probability $\frac{n(n - 1)}{N(N - 1)}$. So the mean is $K\frac nN$, and
+$$\operatorname{Var} = K\frac nN\left(1 - \frac nN\right) + K(K - 1)\left(\frac{n(n - 1)}{N(N - 1)} - \frac{n^2}{N^2}\right),$$
+which simplifies to $n\frac KN\left(1 - \frac KN\right)\frac{N - n}{N - 1}$.
 
 ## Useful observations
 - The trials are dependent, so the binomial formula does not apply: drawing without replacement changes the odds at each step.
@@ -1371,7 +1395,9 @@ Unlike $E[X + Y] = E[X] + E[Y]$, which always holds, the statements for products
 ## Why it works
 $\operatorname{Var}(X) = E[(X - E[X])^2] = E[X^2] - 2E[X]^2 + E[X]^2 = E[X^2] - E[X]^2$ is algebra on the definition.
 
-Independence makes cross terms factor: $E[XY] = E[X]E[Y]$, so $\operatorname{Cov}(X, Y) = 0$ and in $\operatorname{Var}(X + Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2\operatorname{Cov}(X, Y)$ the covariance term vanishes.
+For a sum, write $\mu = E[X]$ and $\nu = E[Y]$ and expand
+$$\operatorname{Var}(X + Y) = E\big[(X - \mu + Y - \nu)^2\big] = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2E[(X - \mu)(Y - \nu)],$$
+and the last expectation is $E[XY] - \mu\nu = \operatorname{Cov}(X, Y)$. For independent variables $P(X = x, Y = y) = P(X = x)P(Y = y)$, so $E[XY] = \sum xy\,P(X = x)P(Y = y)$ factors into $E[X]E[Y]$, the covariance is $0$, and the variances add.
 
 Affine changes need no independence at all: a shift moves the whole distribution without changing its spread, and a scale by $a$ multiplies every deviation by $a$, so the variance by $a^2$.
 
@@ -1423,7 +1449,11 @@ Both a one-line quotable fact and a proof pattern: AIME expected-value questions
 "Probability" means a limiting density over a growing range, since there is no uniform measure on the integers.
 
 ## Why it works
-A fixed prime $p$ divides both of two numbers with probability $\frac1{p^2}$. These events are independent across primes, so the coprime density is $\prod_p\left(1 - \frac1{p^2}\right) = \frac1{\zeta(2)} = \frac6{\pi^2}$.
+Step 1, an exact count. By Möbius inversion the number of pairs $a, b \le N$ with $\gcd(a, b) = 1$ is $\sum_{d \le N}\mu(d)\left\lfloor\frac Nd\right\rfloor^2$, since a pair with $\gcd = g$ is counted by the divisors $d$ of $g$ with total weight $\sum_{d \mid g}\mu(d)$, which is $1$ for $g = 1$ and $0$ otherwise.
+
+Step 2, the limit. Each $\left\lfloor\frac Nd\right\rfloor^2$ is $\frac{N^2}{d^2}$ up to an error at most $\frac{2N}d$, and those errors add up to at most $2N(1 + \ln N)$; the terms of the full series beyond $d = N$ add up to less than $\frac1N$. Dividing by $N^2$, the density is $\sum_d\frac{\mu(d)}{d^2}$, and multiplying this series by $\sum_n\frac1{n^2}$ gives $\sum_n\frac1{n^2}\sum_{d \mid n}\mu(d) = 1$. So the density is $\frac1{\zeta(2)}$, and $\zeta(2) = \frac{\pi^2}6$ is Euler's evaluation, quoted here.
+
+The other densities run the same way: the squarefree numbers up to $N$ number $\sum_d\mu(d)\left\lfloor\frac N{d^2}\right\rfloor$, and $k$-tuples or $k$th powers replace $d^2$ by $d^k$. The product $\prod_p\left(1 - \frac1{p^2}\right)$ is the same constant, as the Euler product of $\frac1{\zeta(2)}$.
 
 ## Useful observations
 - The derivation is the useful part, since the same product for $k$ numbers gives $\frac1{\zeta(k)}$.
@@ -1643,7 +1673,14 @@ Drawing a figure without lifting the pencil, closed walks that use every street 
 The maximum needs general position: no two lines parallel and no three lines or circles through one point. Any parallel pair or triple concurrence loses regions, and problems often specify a configuration that deliberately fails it.
 
 ## Why it works
-Incremental counting: a new line crossing $k$ existing lines is cut into $k + 1$ pieces, each splitting one region, so lines add $1, 2, 3, \ldots$ new regions, summing to $1 + \sum_{i=1}^{n} i = \frac{n^2 + n + 2}{2}$. A new circle crossing each old one twice is cut into $2(n - 1)$ arcs, each adding a region.
+Incremental counting. When a new curve is drawn, it is cut by the earlier curves into pieces, and each piece splits the one region it runs through into two. So the new curve adds one region per piece.
+
+A new line crossing $k$ existing lines is cut into $k + 1$ pieces, so the lines add $1, 2, 3, \ldots$ new regions, and
+$$R_{\text{lines}} = 1 + \sum_{i=1}^{n} i = \frac{n^2 + n + 2}{2}.$$
+The same count line by line gives regions $= 1 + (\text{lines}) + (\text{crossings})$.
+
+The first circle makes $2$ regions. The $k$th circle crosses each earlier one twice, at $2(k - 1)$ points, which cut it into $2(k - 1)$ arcs, so it adds $2(k - 1)$ regions:
+$$R_{\text{circles}} = 2 + \sum_{k=2}^{n} 2(k - 1) = 2 + n(n - 1) = n^2 - n + 2.$$
 
 ## Useful observations
 - The formulas are derived rather than memorized: adding the $k$th line crosses the previous $k - 1$ lines, and each crossing splits one more region, so it adds $k$ regions in total. The same argument with two crossings per circle gives the circle count.
@@ -1670,7 +1707,12 @@ Direct AMC questions ask for the most pieces from a few straight cuts, such as $
 The points are independent and uniform on $[0, 1]$. The first discrete form is for $k$ distinct values drawn from $\{1, \ldots, n\}$ without replacement; with replacement the draws are independent and the second form applies. Using the wrong one is the usual slip: for $n = 6$ and $k = 3$ they give $\frac{21}{4}$ and $\frac{119}{24}$.
 
 ## Why it works
-By symmetry, $n$ uniform points plus the two interval endpoints split $[0, 1]$ into $n + 1$ exchangeable gaps, so each gap expects $\frac{1}{n+1}$; the $k$th smallest point sits after $k$ gaps, at $E[X_{(k)}] = \frac{k}{n+1}$. Directly, $P(\max \le x) = x^n$ integrates to $E[\max] = \frac{n}{n+1}$. With replacement on $\{1, \ldots, n\}$ the same idea gives $P(\max \le m) = \left(\frac mn\right)^k$, so $E[\max] = \sum_{m=1}^{n}P(\max \ge m) = n - \sum_{j=1}^{n-1}\left(\frac jn\right)^k$.
+Step 1, the gaps. Put $n + 1$ independent uniform points on a circle of length $1$ and cut it open at the first one. The other $n$ points are then $n$ independent uniform points on $[0, 1]$, and the $n + 1$ arcs of the circle become the $n + 1$ gaps. Rotating the circle permutes the arcs without changing the distribution, so the gaps are exchangeable, each expects $\frac1{n+1}$, and the $k$th smallest point, after $k$ gaps, has $E[X_{(k)}] = \frac{k}{n+1}$. The range is $\frac{n}{n+1} - \frac1{n+1}$.
+
+Step 2, the distribution functions. The maximum is at most $x$ exactly when every point is, which has probability $x^n$ by independence, and the minimum is at least $x$ with probability $(1 - x)^n$.
+
+Step 3, discrete draws. With replacement, $P(\max \le m) = \left(\frac mn\right)^k$, so the [[tail-sum-expectation|tail sum]] gives $E[\max] = \sum_{m=1}^{n}P(\max \ge m) = n - \sum_{j=1}^{n-1}\left(\frac jn\right)^k$. Without replacement, $P(\max = m) = \binom{m-1}{k-1}\big/\binom nk$, and with $m\binom{m-1}{k-1} = k\binom mk$ and the [[hockey-stick|hockey stick]],
+$$E[\max] = \frac{k}{\binom nk}\sum_{m=k}^{n}\binom mk = \frac{k\binom{n+1}{k+1}}{\binom nk} = \frac{k(n + 1)}{k + 1}.$$
 
 ## Useful observations
 - The distribution-function route ($P(\max \le x) = x^n$, $P(\min \ge x) = (1 - x)^n$) answers probability questions; the gap-symmetry route answers expectation questions instantly.
@@ -1695,6 +1737,10 @@ The cases $A_i$ are disjoint and exhaustive. Wald's identity needs the contribut
 
 ## Why it works
 Group the outcomes by which case $A_i$ occurred and average within cases first: the inner averages are the conditional expectations, and recombining with weights $P(A_i)$ reproduces the overall average. It is associativity of [[weighted-average|weighted averages]], elevated to a principle.
+
+For Wald's identity, write the total as $\sum_{i \ge 1}X_i\mathbf 1[N \ge i]$ and take expectations term by term. If $N$ is independent of the contributions, or if it is a stopping time for independent ones, the event $N \ge i$ is settled before $X_i$ is seen, so it is independent of $X_i$ and
+$$E[\text{total}] = \sum_{i \ge 1}E[X]\,P(N \ge i) = E[X]\,E[N],$$
+the last step being the [[tail-sum-expectation|tail-sum formula]]. A look-ahead $N$ breaks exactly that independence.
 
 ## Useful observations
 - The partition is chosen so that each conditional expectation is easy, and conditioning on the first step is almost always that choice.
@@ -2051,6 +2097,8 @@ Tag each term $x_i$ with $(u_i, d_i)$: the lengths of the longest increasing and
 
 With $mn + 1$ terms but only $mn$ tags satisfying $u \le m$ and $d \le n$, the [[pigeonhole|pigeonhole principle]] forces some $u \ge m + 1$ or $d \ge n + 1$.
 
+For sharpness, write $m$ blocks, each a decreasing run of $n$ terms, with every term of a later block larger than every term of an earlier one: $n, n - 1, \ldots, 1,\ 2n, \ldots, n + 1, \ldots$. An increasing subsequence takes at most one term from each block, so at most $m$, and a decreasing one stays inside one block, so at most $n$.
+
 ## Useful observations
 - The proof is the technique worth carrying: to each term is attached the pair (longest increasing run ending there, longest decreasing run ending there), and any two terms have different labels, because whichever comes first extends one of the other's runs.
 - The trigger is a problem asking to guarantee a monotone subsequence, or to show a sequence cannot avoid one.
@@ -2073,9 +2121,11 @@ Olympiad combinatorics, typically as a lemma, and a natural companion to the Pig
 The graph is simple, with no loops or repeated edges, and planar. The bound runs one way only: violating it disproves planarity, but satisfying it proves nothing.
 
 ## Why it works
-Euler's Formula $v - e + f = 2$ holds for any connected planar drawing. Every face is bounded by at least $3$ edges and every edge borders exactly $2$ faces, so $2e \ge 3f$, that is $f \le \frac{2e}{3}$; substituting into Euler's Formula gives $e \le 3v - 6$.
+Euler's Formula $v - e + f = 2$ holds for any connected planar drawing. Every face is bounded by at least $3$ edges and every edge borders exactly $2$ faces, so $2e \ge 3f$, that is $f \le \frac{2e}{3}$; substituting into Euler's Formula gives $e \le 3v - 6$. A disconnected planar graph can have edges added between its pieces without crossings, which only raises $e$, so the bound holds for it too.
 
 If the graph is triangle-free, every face needs at least $4$ edges, so $2e \ge 4f$ and $e \le 2v - 4$.
+
+For the degree corollary, the degrees add up to $2e \le 6v - 12$, so their average is below $6$, and some vertex has degree at most $5$.
 
 ## Useful observations
 - The bound proves non-planarity by counting: a graph with more edges than $3v - 6$ allows cannot be drawn without crossings. This settles $K_5$ immediately, since $10 \gt 3 \cdot 5 - 6 = 9$.
@@ -2101,7 +2151,13 @@ The graph is bipartite, with the applicants $X$ on one side and the jobs on the 
 ## Why it works
 The condition $\lvert N(S)\rvert \ge \lvert S\rvert$ for every $S \subseteq X$ is clearly necessary: a group of applicants adjacent to fewer jobs than its size cannot all be matched.
 
-Sufficiency is the theorem: if no matching saturates $X$, an augmenting-path argument extracts a specific deficient set $S$ with $\lvert N(S)\rvert \lt \lvert S\rvert$. So the sole obstruction to a full matching is one bottleneck set.
+Sufficiency, by induction on $\lvert X\rvert$; one applicant is matched to any neighbour. Case 1: every nonempty $S \ne X$ has $\lvert N(S)\rvert \ge \lvert S\rvert + 1$. Match any $x$ to any neighbour $y$ and delete both. Every $N(S)$ loses at most $y$, so the condition still holds and the rest is matched by induction.
+
+Case 2: some nonempty $S_0 \ne X$ has $\lvert N(S_0)\rvert = \lvert S_0\rvert$. Within $S_0$ and $N(S_0)$ the condition holds, so $S_0$ is matched by induction. For the rest, take $T \subseteq X \setminus S_0$; its new neighbourhood, outside $N(S_0)$, has size
+$$\lvert N(T \cup S_0)\rvert - \lvert N(S_0)\rvert \ge \lvert T\rvert + \lvert S_0\rvert - \lvert S_0\rvert = \lvert T\rvert,$$
+so $X \setminus S_0$ is matched into the remaining jobs by induction, and the two matchings together saturate $X$.
+
+For a $k$-regular bipartite graph, the $k\lvert S\rvert$ edges leaving $S$ all end in $N(S)$, which receives at most $k\lvert N(S)\rvert$ edges, so $\lvert N(S)\rvert \ge \lvert S\rvert$. Counting edges also gives $k\lvert X\rvert = k\lvert Y\rvert$, so the matching is perfect.
 
 ## Useful observations
 - To prove a matching exists, Hall's condition is verified; to prove none exists, one deficient set is exhibited. That asymmetry makes the theorem practical, since disproof needs only a single example.
@@ -2129,7 +2185,13 @@ Object.assign(window.MATH_DETAILS, {
 The poset is finite. Divisibility, containment, and dominance in two coordinates are the usual partial orders.
 
 ## Why it works
-A chain and an antichain share at most one element, so at least as many chains as the largest antichain are always needed: the easy direction. That this many suffice is the theorem, provable by induction or via [[konigs-theorem|Kőnig's Theorem]] on an associated bipartite graph. Mirsky's dual swaps chains and antichains.
+A chain and an antichain share at most one element, so at least as many chains as the largest antichain are always needed: the easy direction.
+
+That this many suffice goes by induction on the size of the poset $P$. Remove a maximal element $a$; the rest, $P'$, has largest antichain size $k$ and is covered by chains $C_1, \ldots, C_k$. Every $k$-element antichain of $P'$ meets each $C_i$ once; let $x_i$ be the largest element of $C_i$ lying in some such antichain.
+
+The $x_i$ form an antichain: if $x_i \lt x_j$, a $k$-antichain through $x_j$ meets $C_i$ at some $y \le x_i \lt x_j$, which is impossible. If $a$ is comparable to none of them, $P$ has a $(k + 1)$-antichain and the chains $C_1, \ldots, C_k, \{a\}$ do. Otherwise $a \gt x_i$ for some $i$. Then $K = \{a\} \cup \{z \in C_i : z \le x_i\}$ is a chain, $P \setminus K$ has no $k$-antichain, so by induction it needs only $k - 1$ chains, and with $K$ that is $k$.
+
+For Mirsky's dual, label each element by the length of the longest chain ending at it. Equal labels are never comparable, so each label class is an antichain, and there are as many classes as the longest chain is long; a chain needs that many antichains anyway, one per element.
 
 ## Useful observations
 - The setup is recognized as a partial order, where everything must be covered with few chains or a large incomparable family found.
@@ -2186,9 +2248,11 @@ An olympiad result about families of sets, recognized by a condition that every 
 An antichain is a family of subsets with none containing another. The bound is for families of subsets of one $n$-element set, with no restriction on sizes.
 
 ## Why it works
-Partition the subset lattice of $\{1, \ldots, n\}$ into $\binom{n}{\lfloor n/2\rfloor}$ symmetric chains; an antichain meets each chain at most once, capping its size, and the middle layer attains it.
+Count maximal chains $\varnothing \subset \{x_1\} \subset \{x_1, x_2\} \subset \cdots$, one for each of the $n!$ orderings of the set. A set of size $k$ lies on exactly $k!(n - k)!$ of them: its own elements first, in any order, then the rest. A chain can pass through at most one member of an antichain, so
+$$\sum_A \lvert A\rvert!\,(n - \lvert A\rvert)! \le n!,$$
+which, divided by $n!$, is the LYM inequality.
 
-The LYM inequality over any antichain gives the bound directly, since $\binom{n}{\lvert A\rvert} \le \binom{n}{\lfloor n/2\rfloor}$ for every size, so each term is at least $\binom{n}{\lfloor n/2\rfloor}^{-1}$.
+Since $\binom{n}{\lvert A\rvert} \le \binom{n}{\lfloor n/2\rfloor}$ for every size, each term is at least $\binom{n}{\lfloor n/2\rfloor}^{-1}$, so the antichain has at most $\binom{n}{\lfloor n/2\rfloor}$ members, and the middle layer attains it.
 
 ## Useful observations
 - The construction is immediate: every subset of size $\lfloor n/2\rfloor$ is taken. Proving that no larger family exists is the real content.
@@ -2212,7 +2276,9 @@ Olympiad extremal set theory. Two things are carried: the size of the largest fa
 $G$ is a finite group acting on the positions. A coloring is fixed by $g$ exactly when it is constant on each cycle of $g$.
 
 ## Why it works
-Burnside counts orbits by averaging fixed points, and Pólya refines "fixed" into a generating function through each symmetry's cycle structure. A coloring is fixed by $g$ exactly when it is constant on every cycle of $g$, so weighting by colors gives $\prod_k(\text{sum over colors of color}^k)^{c_k(g)}$, and averaging over $G$ gives the cycle index.
+Burnside counts orbits by averaging fixed points, and Pólya refines "fixed" into a generating function through each symmetry's cycle structure. A coloring is fixed by $g$ exactly when it is constant on every cycle of $g$, so weighting by colors gives $\prod_k(\text{sum over colors of color}^k)^{c_k(g)}$, and averaging over $G$ gives the cycle index. With $m$ colors and no weights, each cycle has $m$ choices, so $t_k = m$ gives Burnside's count.
+
+For the necklace, the rotation by $j$ places splits the $n$ beads into $\gcd(j, n)$ cycles of length $\frac n{\gcd(j, n)}$. A rotation of order $d$ therefore has $\frac nd$ cycles of length $d$, and the rotations of order $d$ are $\varphi(d)$ in number, which gives the term $\varphi(d)\,t_d^{\,n/d}$.
 
 ## Useful observations
 - For plain orbit counts, Burnside's Lemma is enough.
@@ -2282,7 +2348,13 @@ Olympiad combinatorics on grids and bipartite structures. The min-max duality is
 The graph is simple and has no clique on $r + 1$ vertices. The exact maximum, when $r$ does not divide $n$, is the number of edges of the Turán graph with parts of sizes differing by at most one.
 
 ## Why it works
-Among $K_{r+1}$-free graphs, rebalancing (Zykov symmetrization) never creates a clique and only adds edges, pushing the maximum to the Turán graph, which has $\left(1 - \frac1r\right)\frac{n^2}{2}$ edges when $r$ divides $n$.
+Step 1, Mantel ($r = 2$). In a triangle-free graph the two ends of an edge $uv$ have no common neighbour, so $d(u) + d(v) \le n$. Adding over the $e$ edges, each vertex $v$ is counted $d(v)$ times:
+$$\sum_v d(v)^2 \le ne, \qquad \sum_v d(v)^2 \ge \frac{\left(\sum d(v)\right)^2}n = \frac{4e^2}n,$$
+by [[cauchy-schwarz|Cauchy-Schwarz]], so $e \le \frac{n^2}4$.
+
+Step 2, the general bound, by induction on $n$. For $n \le r$ even the complete graph has $\frac{n(n-1)}2 \le \left(1 - \frac1r\right)\frac{n^2}2$ edges. Otherwise, if $G$ has no $K_r$, the bound for $r - 1$ is smaller and applies. If it has a $K_r$ on a set $A$, then $A$ holds $\binom r2$ edges, each outside vertex has at most $r - 1$ neighbours in $A$, and the other $n - r$ vertices hold at most $\left(1 - \frac1r\right)\frac{(n - r)^2}2$ edges by induction.
+
+Adding, $e \le \binom r2 + (r - 1)(n - r) + \frac{r - 1}{2r}(n - r)^2 = \frac{r - 1}{2r}\left(r^2 + 2r(n - r) + (n - r)^2\right) = \left(1 - \frac1r\right)\frac{n^2}2$. The Turán graph with $r$ parts of size $\frac nr$ misses exactly the edges inside parts, so it has $\binom n2 - r\binom{n/r}2 = \left(1 - \frac1r\right)\frac{n^2}2$ edges.
 
 ## Useful observations
 - The shape is an extremal question: how many edges can a graph have before a clique of a given size is unavoidable. The bound answers it and the Turán graph shows it cannot be improved.
@@ -2307,7 +2379,11 @@ Olympiad extremal graph theory, with Mantel occasionally surfacing on harder pro
 The coloring is proper, so adjacent vertices get different colors, and the graph is simple. Greedy coloring works in any vertex order.
 
 ## Why it works
-Greedy coloring in any order uses at most $\Delta + 1$ colors: each vertex sees at most $\Delta$ colored neighbors, so a color is free. Two colors suffice exactly when the graph is bipartite, which is equivalent to having no odd cycle, since a $2$-coloring is a bipartition. Planar $4$-colorability is the deep Four Color Theorem.
+Greedy coloring in any order uses at most $\Delta + 1$ colors: each vertex sees at most $\Delta$ colored neighbors, so a color is free. A clique of size $\omega$ needs $\omega$ different colors, which gives the lower bound.
+
+Two colors suffice exactly when there is no odd cycle. An odd cycle cannot alternate two colors. Conversely, in each component pick a vertex and color by the parity of the distance from it; an edge between two vertices of equal parity would close an odd walk, and an odd closed walk contains an odd cycle.
+
+The other two Key forms are quoted, not proved here. Brooks' Theorem is R. L. Brooks, "On colouring the nodes of a network", Proceedings of the Cambridge Philosophical Society 37 (1941), 194–197. The Four Color Theorem is proved, with computer checking, in N. Robertson, D. Sanders, P. Seymour and R. Thomas, "The four-colour theorem", Journal of Combinatorial Theory, Series B 70 (1997), 2–44.
 
 ## Useful observations
 - The chromatic number is bounded from both sides: the greedy bound caps it above, and any clique caps it below, so exhibiting a $k$-clique together with a $k$-coloring settles $\chi = k$ exactly.
@@ -2420,7 +2496,9 @@ $X$ takes nonnegative integer values for the sum, and the sum starts at $k = 1$ 
 ## Why it works
 Write $X$ as a sum of indicators of its own tail: $X = \sum_{k \ge 1}\mathbf 1[X \ge k]$, since a value of $X = m$ makes exactly the first $m$ indicators equal to $1$. Taking expectations and using linearity, $E[X] = \sum_{k \ge 1}P(X \ge k)$.
 
-Equivalently, it is a swap of summation order: $\sum_k P(X \ge k) = \sum_k\sum_{m \ge k}P(X = m) = \sum_m m\,P(X = m)$. The continuous version replaces the sum by $\int_0^\infty P(X \gt t)\,\mathrm{d}t$.
+Equivalently, it is a swap of summation order: $\sum_k P(X \ge k) = \sum_k\sum_{m \ge k}P(X = m) = \sum_m m\,P(X = m)$. The continuous version uses $X = \int_0^\infty \mathbf 1[X \gt t]\,\mathrm{d}t$ and takes expectations the same way.
+
+The maximum is below $k$ exactly when every draw is, and independence turns that event's probability into the product $\prod_i P(X_i \lt k)$. For a geometric wait, $\sum_{k \ge 1}(1 - p)^{k-1} = \frac1{1 - (1 - p)} = \frac1p$.
 
 ## Useful observations
 - It is used whenever $P(X \ge k)$ is easier to describe than $P(X = k)$, which happens far more often than not.
@@ -2448,7 +2526,11 @@ Object.assign(window.MATH_DETAILS, {
 The objects are labeled. The coefficient of $\frac{x^n}{n!}$ gives the count $a_n$, so the final factor $n!$ must be restored when reading off a coefficient.
 
 ## Why it works
-Weighting the $n$th term by $\frac1{n!}$ makes the product of two EGFs reindex as $c_n = \sum_k\binom nka_kb_{n-k}$: exactly the number of ways to split the $n$ labels between two labeled structures. So EGF multiplication is the labeled analogue of choosing, which ordinary generating functions would undercount.
+Weighting the $n$th term by $\frac1{n!}$ makes the product of two EGFs reindex as
+$$\frac{c_n}{n!} = \sum_k\frac{a_k}{k!}\cdot\frac{b_{n-k}}{(n-k)!}, \qquad c_n = \sum_k\binom nka_kb_{n-k}:$$
+exactly the number of ways to split the $n$ labels between two labeled structures. So EGF multiplication is the labeled analogue of choosing, which ordinary generating functions would undercount.
+
+The basic series are read off the same way: $e^x$ has every $a_n = 1$, one structure on each label set; $e^x - 1$ drops the empty set; and $\frac1{1 - x} = \sum n!\frac{x^n}{n!}$ counts the $n!$ orders. For $\exp(C) = \sum_k\frac{C^k}{k!}$: by the product rule $C^k$ counts ordered lists of $k$ connected structures on disjoint label sets that cover all the labels, and the $k$ blocks are distinct sets, so each unordered collection is listed $k!$ times.
 
 ## Useful observations
 - EGFs are the right tool whenever the count involves choosing which labels go to which part.
@@ -2471,9 +2553,13 @@ Advanced olympiad and Putnam counting, where EGFs handle counts that ordinary ge
 No three chords meet at one interior point. With a regular polygon chords do meet three at a time, and the count drops.
 
 ## Why it works
-Apply [[eulers-formula|Euler's Formula]] $V - E + F = 2$ to the planar graph of points, chord crossings, and arcs. There are $\binom n2$ chords and $\binom n4$ interior crossings, one per choice of $4$ points, and bookkeeping the edges and faces yields $R(n) = \binom n4 + \binom n2 + 1$.
+Apply [[eulers-polyhedron-formula|Euler's Formula]] $V - E + F = 2$ to the planar graph of points, chord crossings, and arcs. Its vertices are the $n$ points and the $\binom n4$ interior crossings, one for each choice of $4$ points, whose two diagonals cross:
+$$V = n + \binom n4.$$
 
-Equivalently, each new chord adds one region plus one more for every crossing it makes.
+Each crossing lies on two chords, so the chords carry $2\binom n4$ crossings in all, and a chord with $j$ crossings is cut into $j + 1$ edges. Adding the $n$ arcs of the circle,
+$$E = \binom n2 + 2\binom n4 + n.$$
+
+Then $F = 2 - V + E = 2 + \binom n2 + \binom n4$, and removing the outer face leaves $R(n) = \binom n4 + \binom n2 + 1$. Equivalently, each new chord adds one region plus one more for every crossing it makes. For $n = 6$ this gives $15 + 15 + 1 = 31$, not $32$.
 
 ## Useful observations
 - The formula is a warning: five data points agreeing with $2^{n-1}$ prove nothing, and the sequence breaks at exactly the moment most people stop checking.
@@ -2526,7 +2612,13 @@ Usually the whole count for a non-adjacency condition, sometimes inside casework
 The graph is finite and may have multiple edges. Deleting any one row and the matching column gives the same determinant.
 
 ## Why it works
-Expanding a cofactor of $L = D - A$ by the Cauchy–Binet formula gives a signed sum over subsets of edges, and only the acyclic spanning subsets survive, so the cofactor counts spanning trees. Equivalently it equals $\frac1n$ times the product of the Laplacian eigenvalues with one $0$ removed, which for a connected graph is the product of the nonzero ones.
+Step 1, the factorization. Orient each edge and let $B$ be the $n \times m$ incidence matrix, with $+1$ and $-1$ at the two ends of each edge. Then $BB^{\mathsf T} = D - A = L$. Deleting row $r$ of $B$ gives $B_r$, and the cofactor is $\det(B_rB_r^{\mathsf T})$.
+
+Step 2, Cauchy–Binet. The Cauchy–Binet formula, a standard identity for determinants of such products, gives $\det(B_rB_r^{\mathsf T}) = \sum_S\det(B_r[S])^2$, over the sets $S$ of $n - 1$ edges, with $B_r[S]$ the columns in $S$.
+
+Step 3, the lemma: $\det B_r[S]$ is $\pm1$ when $S$ is a spanning tree and $0$ otherwise. If $S$ is not a tree it is disconnected, and the rows of a component missing $r$ add up to $0$. If it is a tree, a leaf other than $r$ has a single $\pm1$ in its row; expanding along it leaves the same matrix for a smaller tree. So the cofactor counts spanning trees.
+
+Step 4, eigenvalues. The coefficient of $\lambda$ in $\det(L - \lambda I)$ is, up to sign, the sum of the $n$ principal cofactors, which is $n\tau$ by Step 3. From $\det(L - \lambda I) = \prod(\lambda_i - \lambda)$ with $\lambda_0 = 0$, the same coefficient is $\pm\lambda_1\cdots\lambda_{n-1}$. For $K_n$, $L = nI - J$ has the eigenvalue $n$ with multiplicity $n - 1$, so $\tau = \frac{n^{n-1}}n = n^{n-2}$.
 
 ## Useful observations
 - Putting each degree on the diagonal and $-1$ for each edge builds $L$, and the row to delete is whichever makes the arithmetic easiest.
@@ -2549,7 +2641,9 @@ Advanced olympiad and Putnam combinatorics: a daunting spanning-tree enumeration
 The graph is directed and has no cycles. The sources and sinks must be arranged so that every non-intersecting system is the identity matching, or else the signs of the other matchings must be accounted for.
 
 ## Why it works
-Swapping the tails of two crossing paths at the first crossing pairs every intersecting system with another of opposite sign in the determinant expansion, so those terms cancel. Only the non-intersecting families remain, and their signed count is $\det[M_{ij}]$.
+Expanding the determinant, $\det[M_{ij}] = \sum_\sigma \operatorname{sgn}\sigma\prod_iM_{i\sigma(i)}$ counts every family of paths $a_i \to b_{\sigma(i)}$, intersecting or not, with the sign of its matching.
+
+For an intersecting family, take the smallest $i$ whose path meets another, the first vertex $v$ on that path shared with another path, and the smallest $j$ whose path passes $v$; swap the parts of paths $i$ and $j$ after $v$. The new family is again intersecting, and the same $i$, $v$, $j$ are chosen in it, because nothing before $v$ changed and the vertices used by the other paths are the same. So the swap pairs the intersecting families off, and each pair has matchings differing by one transposition, of opposite signs. They cancel, and only the non-intersecting families remain.
 
 ## Useful observations
 - The word "non-intersecting" in a problem statement is the cue.
@@ -2604,7 +2698,7 @@ Compare the coefficient of $x^m$ on both sides of $(1 - x)^m(1 + x)^m = (1 - x^2
 
 On the left, expand each factor: $(1 - x)^m = \sum_j(-1)^j\binom mjx^j$ and $(1 + x)^m = \sum_i\binom mix^i$. Collecting $x^m$ needs $i + j = m$, so the coefficient is $\sum_j(-1)^j\binom mj\binom m{m-j}$, and $\binom m{m-j} = \binom mj$ turns it into $\sum_j(-1)^j\binom mj^2$.
 
-On the right, $(1 - x^2)^m = \sum_t(-1)^t\binom mtx^{2t}$ contains only even powers. If $m = 2n$ is even, $x^m$ arises from $t = n$, contributing $(-1)^n\binom{2n}{n}$. If $m$ is odd there is no $t$ with $2t = m$, so the coefficient is $0$.
+On the right, $(1 - x^2)^m = \sum_t(-1)^t\binom mtx^{2t}$ contains only even powers. If $m = 2n$ is even, $x^m$ arises from $t = n$, contributing $(-1)^n\binom{2n}{n}$. If $m$ is odd there is no $t$ with $2t = m$, so the coefficient is $0$. Collecting $x^r$ instead of $x^m$ gives the third Key form in the same way: $\sum_k(-1)^k\binom mk\binom m{r-k}$ on the left, and $0$ or $(-1)^{r/2}\binom m{r/2}$ on the right.
 
 ## Useful observations
 - A sum of squared binomials with alternating signs is one coefficient of $(1 - x^2)^m$, so the parity of the upper index is read first. An odd upper index means the answer is $0$ with no work, a common trap since the sum looks like it should be messy.
@@ -3346,7 +3440,12 @@ $X$ and $Y$ are independent and uniform on $[0, 1]$, and the threshold $c$ is be
 ## Why it works
 Two independent uniform numbers are a uniform point of the unit square, so the probability is an area, as in [[geometric-probability|geometric probability]], and the boundary $xy = c$ is a hyperbola, whose area is a logarithm.
 
-For $x \le c$ every $y$ in $[0, 1]$ works, since $xy \le x \le c$; that is a strip of area $c$. For $x \gt c$ the condition is $y \le \frac cx$, which is less than $1$, so that column contributes height $\frac cx$: $$P(XY \le c) = c + \int_c^1 \frac cx\,dx = c + c\left(\ln 1 - \ln c\right) = c - c\ln c.$$
+For $x \le c$ every $y$ in $[0, 1]$ works, since $xy \le x \le c$; that is a strip of area $c$. For $x \gt c$ the condition is $y \le \frac cx$, which is less than $1$, so that column contributes height $\frac cx$:
+$$P(XY \le c) = c + \int_c^1 \frac cx\,dx = c + c\left(\ln 1 - \ln c\right) = c - c\ln c.$$
+The complement is $1 - c + c\ln c$, and the derivative of $c - c\ln c$ is $-\ln c$, the density. For $X$ on $[0, a]$ and $Y$ on $[0, b]$, the rescaled $\frac Xa$ and $\frac Yb$ are uniform on $[0, 1]$, and $XY \le k$ means their product is at most $\frac k{ab}$.
+
+For three numbers, condition on $Z = z$: for $z \le c$ the event is certain, and for $z \gt c$ it has probability $\frac cz\left(1 - \ln\frac cz\right)$. Integrating,
+$$P(XYZ \le c) = c + \int_c^1\frac cz\left(1 - \ln c + \ln z\right)dz = c\left(1 - \ln c + \frac{(\ln c)^2}2\right).$$
 
 ## Useful observations
 - Since $\ln c \lt 0$, the answer is more than $c$: a product is below $c$ more often than one factor alone, which has chance exactly $c$.

@@ -481,6 +481,8 @@ Time is read as $H$ hours $M$ minutes on a $12$-hour clock, with $H$ from $0$ to
 ## Why it works
 The minute hand moves $360^\circ$ per hour, which is $6^\circ$ per minute, and the hour hand moves $30^\circ$ per hour, which is $0.5^\circ$ per minute. At $H{:}M$ the hour hand sits at $30H + 0.5M$ degrees from $12$ and the minute hand at $6M$ degrees, and subtracting gives $|30H - 5.5M|$.
 
+The gap between the hands changes at $6 - 0.5 = 5.5^\circ$ per minute, so it grows by a full $360^\circ$ every $\frac{360}{5.5} = \frac{720}{11}$ minutes. That is the time between overlaps, and a day of $1440$ minutes holds $1440 \div \frac{720}{11} = 22$ of them.
+
 ## Useful observations
 - The hands are together when $30H - 5.5M = 0$, that is, at $M = \frac{60H}{11}$ minutes past hour $H$; overlaps are $\frac{720}{11}$ minutes apart, $22$ times in a day.
 - The hands are opposite when $30H - 5.5M = \pm 180$, and perpendicular when it is $\pm 90$ or $\pm 270$; each is a linear equation in $M$.
@@ -1076,6 +1078,8 @@ Let $G$ be the centroid and $M$ the midpoint of $BC$, and reflect $G$ across $M$
 
 The triangle $BGP$ in the figure has sides $BG = \frac23m_b$, $GP = 2GM = \frac23m_a$, and $BP = GC = \frac23m_c$. It is therefore the median triangle scaled by $\frac23$, with area $\frac49$ of the median triangle's. On the other hand $[BGP] = 2[BGM] = 2 \cdot \frac16[ABC] = \frac13[ABC]$, since $[BGM]$ is one sixth of the whole triangle. Equating, $\frac49T = \frac13[ABC]$, so $[ABC] = \frac43T$.
 
+The same triangle $BGP$ proves the second Key form: it is a genuine triangle, since $B$, $G$, $P$ are not collinear, so its sides $\frac23m_a$, $\frac23m_b$, $\frac23m_c$ satisfy the triangle inequality, and so do the medians.
+
 ## Useful observations
 - The area comes without solving for the sides, which would need the side-from-medians form on [[apollonius-theorem|the median-length card]] and then a square root.
 - The factor $\frac23$ is the centroid's $2 : 1$ ratio, so the same picture shows $GM = \frac13m_a$ for each median.
@@ -1229,7 +1233,7 @@ An AIME problem is sometimes a nine-point circle fact in disguise: a circle thro
 A distance counts as positive when the circumcenter is on the same side of the line as the opposite vertex, and as negative when it is beyond, which happens for the side opposite an obtuse angle. In a right triangle that distance is $0$.
 
 ## Why it works
-The side $a$ subtends the central angle $2A$ at $O$, so the distance from $O$ to $a$ is the apothem $R\cos A$, which is negative exactly when $A$ is obtuse. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$, from the [[triangle-angle-identities|identities for the angles of a triangle]], then gives $d_1 + d_2 + d_3 = R + r$.
+The side $a$ subtends the central angle $2A$ at $O$, so in the isosceles triangle $OBC$ the distance from $O$ to $BC$ is $R\cos A$, which is negative exactly when $A$ is obtuse and $O$ falls beyond $BC$. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$, from the [[triangle-angle-identities|identities for the angles of a triangle]], then gives $d_1 + d_2 + d_3 = R + r$. The bound in the observations is $0 \lt \frac rR \le \frac12$, the second part being Euler's Inequality $R \ge 2r$.
 
 ## Useful observations
 - It is the geometric packaging of the cosine identity, and the identity bounds the cosine sum in $(1, \frac32]$, with $\frac32$ only for the equilateral triangle.
@@ -1252,7 +1256,15 @@ Rare directly, but the cosine identity underneath appears in AIME trigonometry, 
 The feet are taken on the lines $BC$, $CA$, $AB$, extended where needed. The statement is an equivalence, so it also proves that a point lies on the circumcircle.
 
 ## Why it works
-Two of the feet form a cyclic quadrilateral with $P$ and a vertex, since the right angles at the feet subtend diameters, and [[angle-chasing|angle chasing]] in the two circles shows that the three feet make a straight angle exactly when $P$ lies on the circumcircle, and only then.
+Directed angles between lines, taken mod $180^\circ$, avoid case splits. Let $D$, $E$, $F$ be the feet on $BC$, $CA$, $AB$. The right angles at $D$ and $F$ put $P$, $D$, $B$, $F$ on a circle with diameter $PB$, and the right angles at $D$ and $E$ put $P$, $D$, $C$, $E$ on a circle with diameter $PC$.
+
+Step 1, the equivalence. In those two circles,
+$$\angle(DF, DP) = \angle(BF, BP) = \angle(BA, BP), \qquad \angle(DE, DP) = \angle(CE, CP) = \angle(CA, CP).$$
+The feet are collinear exactly when the two left sides are equal, so exactly when $\angle(BA, BP) = \angle(CA, CP)$, which is the condition for $A$, $B$, $C$, $P$ to be concyclic.
+
+Step 2, the direction. Since $PD \perp BC$, Step 1 gives $\angle(DF, BC) = \angle(BA, BP) + 90^\circ$. For a second point $Q$ the Simson line makes $\angle(BA, BQ) + 90^\circ$ with $BC$, so the two lines meet at $\angle(BP, BQ)$, an inscribed angle on the arc $PQ$, which is half that arc.
+
+Step 3, the midpoint of $PH$. The homothety at $P$ with ratio $2$ sends each foot to the reflection of $P$ in that side, so it carries the Simson line to the [[steiner-line|Steiner line]], which passes through $H$. Undoing it, the Simson line passes through the midpoint of $PH$.
 
 ## Useful observations
 - The configuration is recognizable by its data: perpendiculars dropped from one point to all three sides with collinear feet. Conversely, to prove a point lies on the circumcircle, show its feet are collinear.
@@ -1277,9 +1289,11 @@ A niche but decisive AIME and olympiad tool: when a problem drops three perpendi
 The point $P$ is chosen so that $\angle PAB = \angle PBC = \angle PCA = \omega$. A second point, the twin Brocard point, has the same angle in the other orientation.
 
 ## Why it works
-Requiring the cevians $AP$, $BP$, $CP$ to make equal angles $\omega$ with the sides $AB$, $BC$, $CA$ respectively forces, through the Law of Sines in the three sub-triangles, the relation $\cot\omega = \cot A + \cot B + \cot C$. Symmetry gives the twin Brocard point with the same angle.
+In triangle $ABP$ the angles at $A$ and $B$ are $\omega$ and $B - \omega$, so the angle at $P$ is $180^\circ - B$, and the Law of Sines gives $BP = \frac{c\sin\omega}{\sin B}$. In triangle $BCP$ the angles at $B$ and $C$ are $\omega$ and $C - \omega$, so $BP = \frac{a\sin(C - \omega)}{\sin C}$. Equating, with $\frac ac = \frac{\sin A}{\sin C}$ and $\sin(C - \omega) = \sin C\cos\omega - \cos C\sin\omega$, and dividing by $\sin\omega$:
+$$\cot\omega - \cot C = \frac{\sin C}{\sin A\sin B} = \frac{\sin(A + B)}{\sin A\sin B} = \cot A + \cot B.$$
+Symmetry gives the twin Brocard point with the same angle.
 
-The side form follows from $\cot A = \frac{b^2 + c^2 - a^2}{4K}$ and its cyclic versions, whose sum is $\frac{a^2 + b^2 + c^2}{4K}$.
+The side form follows from $\cot A = \frac{b^2 + c^2 - a^2}{4K}$ and its cyclic versions, whose sum is $\frac{a^2 + b^2 + c^2}{4K}$. Since $\sum\cot A\cot B = 1$, squaring gives $\csc^2\omega = 1 + \cot^2\omega = 3 + \sum\cot^2A = \sum\csc^2A$, and $(\sum\cot A)^2 \ge 3\sum\cot A\cot B = 3$ gives $\cot\omega \ge \sqrt3$, so $\omega \le 30^\circ$, with equality when the three cotangents are equal.
 
 ## Useful observations
 - $\cot\omega$ is computed from the angles, or from the sides through the second form, which is the contest-usable one.
@@ -1578,6 +1592,8 @@ Each radius is perpendicular to its tangent, so quadrilateral $PAOB$ has right a
 
 Equivalently the exterior-vertex rule gives $\angle P = \frac12(\text{far arc} - \text{near arc})$, and because the two arcs sum to $360^\circ$ that is $180^\circ - \angle AOB$.
 
+The right triangles $OAP$ and $OBP$ share the hypotenuse $OP$ and have legs $OA = OB = r$, so they are congruent: $PA = PB = \sqrt{OP^2 - r^2}$, and $OP$ bisects the angle at $P$, with $\sin\frac{\angle APB}2 = \frac{r}{OP}$. Since $O$ and $P$ are each equidistant from $A$ and $B$, line $OP$ is the perpendicular bisector of $AB$. Half the chord is the altitude of triangle $OAP$ to $OP$, which is $\frac{r \cdot PA}{OP}$.
+
 ## Useful observations
 - Dropping both radii to the tangent points splits $PAOB$ along $OP$ into two congruent right triangles with legs $r$ and the tangent length $\sqrt{OP^2 - r^2}$. One picture yields the angle, the tangent length, and $PA = PB$ together.
 - The center sits on the bisector of $\angle APB$, which pins down the whole configuration.
@@ -1813,7 +1829,15 @@ An AIME length tool that is rarely the whole solution: equal chords or a symmetr
 The quadrilateral is cyclic. For a quadrilateral that is not cyclic the area is smaller, by [[bretschneiders-formula|Bretschneider's Formula]], so for given sides the cyclic arrangement has the maximum possible area.
 
 ## Why it works
-Follow Heron's derivation but for a cyclic quadrilateral: split along a diagonal, use $\frac12(ab + cd)\sin B$ for the total area, and apply the Law of Cosines to both triangles with $\cos D = -\cos B$. Eliminating the diagonal and factoring gives the product of four factors.
+Split $ABCD$, with $AB = a$, $BC = b$, $CD = c$, $DA = d$, along the diagonal $AC$. In a cyclic quadrilateral $D = 180^\circ - B$, so $\sin D = \sin B$ and $\cos D = -\cos B$, and the area is
+$$K = \tfrac12 ab\sin B + \tfrac12 cd\sin D = \tfrac12(ab + cd)\sin B.$$
+
+The Law of Cosines in both triangles gives $AC^2 = a^2 + b^2 - 2ab\cos B = c^2 + d^2 + 2cd\cos B$, so $2(ab + cd)\cos B = a^2 + b^2 - c^2 - d^2$. Then $16K^2 = 4(ab + cd)^2(1 - \cos^2 B)$ is a difference of squares:
+$$16K^2 = \left(2(ab + cd)\right)^2 - \left(a^2 + b^2 - c^2 - d^2\right)^2.$$
+
+Factoring twice, the two factors are $(c + d)^2 - (a - b)^2$ and $(a + b)^2 - (c - d)^2$, so
+$$16K^2 = (b + c + d - a)(a + c + d - b)(a + b + d - c)(a + b + c - d) = 16(s - a)(s - b)(s - c)(s - d).$$
+With $d = 0$ the quadrilateral is a triangle and this is Heron's Formula.
 
 ## Useful observations
 - With $d = 0$ it degrades gracefully to Heron, which is the easiest way to keep the form straight.
@@ -1862,7 +1886,13 @@ AMC and AIME tangential-quadrilateral problems open with Pitot almost by definit
 The four points are in the plane, or in space. Equality needs the four points on a circle in the order $A, B, C, D$; for a different order of the points, a different pairing of the products is the one that gives equality.
 
 ## Why it works
-Inversion centered at one vertex maps the other three points to a configuration where the inequality becomes the triangle inequality. Equality, collinearity after inversion, corresponds exactly to concyclicity in the right order before inversion.
+Invert about $A$ with radius $1$. The [[inversion-facts|distance rule for inversion]] gives $B'C' = \frac{BC}{AB \cdot AC}$, and likewise for the other pairs.
+
+The triangle inequality $B'D' \le B'C' + C'D'$ then reads
+$$\frac{BD}{AB \cdot AD} \le \frac{BC}{AB \cdot AC} + \frac{CD}{AC \cdot AD},$$
+and multiplying by $AB \cdot AC \cdot AD$ gives $AC \cdot BD \le BC \cdot DA + AB \cdot CD$.
+
+Equality holds exactly when $C'$ lies on the segment $B'D'$. A line not through $A$ inverts to a circle through $A$, so this happens exactly when $A$, $B$, $C$, $D$ lie on one circle with $C$ on the arc $BD$ away from $A$, the order $A, B, C, D$.
 
 ## Useful observations
 - As a bound: among all quadrilaterals with given side lengths, the product of the diagonals is largest for the cyclic arrangement.
@@ -2210,7 +2240,13 @@ Seven problems here, five of them AIME, none by it alone; two do the rotation in
 The polyhedron is convex, or more generally has no holes, and the graph is connected. Every edge borders exactly two faces and meets two vertices, which is what the double counts below use.
 
 ## Why it works
-Flatten the polyhedron into a planar graph by removing one face and stretching; then induct. Each added edge either creates a new face, when it joins two vertices already connected, or attaches a new vertex, when it does not, and in both cases $V - E + F$ is unchanged. The sphere's Euler characteristic $2$ is what is really being computed.
+Flatten the polyhedron into a planar graph by removing one face and stretching it out as the outer region. Then build the connected graph in two stages. A spanning tree has $V$ vertices, $V - 1$ edges and one face, so $V - E + F = 2$.
+
+Each remaining edge joins two vertices already connected, so it closes a loop and splits one face into two: $E$ and $F$ both rise by $1$, and $V - E + F$ stays $2$.
+
+The bounds come from the double counts. Each edge borders two faces, so adding the sides of all faces gives $2E \ge 3F$; similarly the degrees give $2E \ge 3V$. Then $F \le \frac{2E}3$ in Euler's Formula gives $E \le 3V - 6$, and $F = 2 - V + E \le 2V - 4$.
+
+If every face is a $p$-gon and every vertex has degree $q$, then $pF = 2E = qV$, and Euler's Formula becomes $\frac1p + \frac1q = \frac12 + \frac1E \gt \frac12$. With $p, q \ge 3$ only $(3, 3)$, $(3, 4)$, $(4, 3)$, $(3, 5)$, $(5, 3)$ remain, the five Platonic solids. The form $2 - 2g$ for surfaces with holes is quoted, not proved here; see D. Richeson, Euler's Gem (Princeton University Press, 2008).
 
 ## Useful observations
 - Face-edge and vertex-edge double counts combine with the formula. Each edge lies on two faces, so adding up the sides of every face counts every edge twice, and similarly for the degrees at the vertices.
@@ -2327,7 +2363,12 @@ Mostly an AIME topic. The classic setups are an ant walking around a cone, a con
 The two faces are parallel and similar, with $A_1$ and $A_2$ their areas, and $h$ is the perpendicular distance between them. If $A_2 = 0$ it is a pyramid, and if $A_1 = A_2$ it is a prism.
 
 ## Why it works
-A frustum is a big pyramid minus a similar small one. With similarity ratio $k$, the volume is $\frac13(h_{\text{big}}B_1 - h_{\text{small}}B_2)$, and the phantom heights are eliminated using $k = \sqrt{B_2/B_1}$. The $\sqrt{B_1B_2}$ term is the geometric-mean cross-section.
+A frustum is a big pyramid minus a similar small one cut off at the top. Let the small one have height $x$, so the big one has height $x + h$. Cross-sections scale as the square of the distance from the apex, so
+$$\frac{x}{x + h} = \frac{\sqrt{A_2}}{\sqrt{A_1}}, \qquad x = \frac{h\sqrt{A_2}}{\sqrt{A_1} - \sqrt{A_2}}, \qquad x + h = \frac{h\sqrt{A_1}}{\sqrt{A_1} - \sqrt{A_2}}.$$
+
+Subtracting the two pyramid volumes,
+$$V = \frac13\left(A_1(x + h) - A_2x\right) = \frac h3 \cdot \frac{\sqrt{A_1}^{\,3} - \sqrt{A_2}^{\,3}}{\sqrt{A_1} - \sqrt{A_2}} = \frac h3\left(A_1 + \sqrt{A_1A_2} + A_2\right),$$
+by the difference of cubes. When $A_1 = A_2$ there is no apex, but the formula gives $hA_1$, the prism. For a cone, $A_1 = \pi R^2$ and $A_2 = \pi r^2$ give $\frac{\pi h}3(R^2 + Rr + r^2)$.
 
 ## Useful observations
 - It is often cleaner to restore the apex: the frustum is extended to the full cone or pyramid, the two similar solids are worked with ($k$ and $k^3$ scaling), and the small one is subtracted.
@@ -2407,7 +2448,13 @@ Never alone: the square-of-a-sum identity is the usual partner. Typical versions
 The vectors are in three-dimensional space, and the cross product is anticommutative, so the order sets the sign. Only the absolute values give areas and volumes.
 
 ## Why it works
-$\lvert\vec u \times \vec v\rvert$ is the parallelogram area, base times height, encoded in the sine of the included angle; the triangle halves it. The scalar triple product is the parallelepiped volume, the base parallelogram area times the projected height, and the tetrahedron is $\frac16$ of the parallelepiped.
+Step 1, the length. Expanding the components gives Lagrange's Identity,
+$$\lvert\vec u \times \vec v\rvert^2 = \lvert\vec u\rvert^2\lvert\vec v\rvert^2 - (\vec u \cdot \vec v)^2 = \lvert\vec u\rvert^2\lvert\vec v\rvert^2\sin^2\theta,$$
+so $\lvert\vec u \times \vec v\rvert$ is base times height of the parallelogram on $\vec u$ and $\vec v$, and the triangle is half of it. The products $\vec u \cdot (\vec u \times \vec v)$ and $\vec v \cdot (\vec u \times \vec v)$ are determinants with a repeated row, so they are $0$: the cross product is perpendicular to both.
+
+Step 2, the volume. Since $\vec v \times \vec w$ is perpendicular to the base, $\lvert\vec u \cdot (\vec v \times \vec w)\rvert$ is the base area $\lvert\vec v \times \vec w\rvert$ times $\lvert\vec u\rvert\lvert\cos\varphi\rvert$, the height of $\vec u$ above the base. That is the parallelepiped's volume, and it is $0$ exactly when the height is $0$, the coplanar case.
+
+Step 3. The tetrahedron has half the base and is a pyramid, so its volume is $\frac13 \cdot \frac12 = \frac16$ of the parallelepiped. Solving $V = \frac13 \cdot (\text{base area}) \cdot h$ for $h$ gives the distance from the apex to the base plane.
 
 ## Useful observations
 - The triple product is a $3 \times 3$ determinant of the edge vectors: its sign gives orientation and its absolute value gives volume.
@@ -2555,6 +2602,8 @@ The triangle is right with acute angles $15^\circ$ and $75^\circ$. The values ar
 ## Why it works
 From $\sin 15^\circ = \frac{\sqrt6 - \sqrt2}{4}$ and $\cos 15^\circ = \frac{\sqrt6 + \sqrt2}{4}$, found by angle subtraction from $45^\circ$ and $30^\circ$, the sides are $\sin 15^\circ$, $\cos 15^\circ$, and $1$ times the hypotenuse, and scaling the hypotenuse to $4$ gives the ratio.
 
+Dividing, $\tan 15^\circ = \frac{\sqrt6 - \sqrt2}{\sqrt6 + \sqrt2} = \frac{(\sqrt6 - \sqrt2)^2}{4} = \frac{8 - 4\sqrt3}4 = 2 - \sqrt3$, and $\tan 75^\circ$ is its reciprocal, $\frac1{2 - \sqrt3} = 2 + \sqrt3$.
+
 The altitude fact is the double-angle identity: the altitude to the hypotenuse is $c\sin 15^\circ\cos 15^\circ = \frac c2\sin 30^\circ = \frac c4$, so the awkward $15^\circ$ values cancel completely.
 
 ## Useful observations
@@ -2609,6 +2658,9 @@ The square has one side on a side of the triangle and its two other corners on t
 
 ## Why it works
 The triangle above the square is similar to the original, since its base is parallel to the original base, with height $h - x$ and base scaled by the same factor: $\frac{x}{a} = \frac{h - x}{h}$. Solving for $x$ gives $x = \frac{ah}{a + h}$, which is symmetric in $a$ and $h$.
+
+The right-triangle forms are this formula with the right base and height. In the right angle, the base is the leg $a$ and the height is the other leg $b$, so $x = \frac{ab}{a + b}$. On the hypotenuse, the base is $c$ and the height is $\frac{ab}c$, so
+$$x = \frac{c \cdot \frac{ab}c}{c + \frac{ab}c} = \frac{abc}{c^2 + ab}.$$
 
 ## Useful observations
 - The square's base can sit on any side: that side's length and its altitude are used. The side follows from [[similar-figures-ratios|similar figure ratios]], since the cut-off top triangle is similar to the whole.
@@ -3099,7 +3151,7 @@ Five problems here, four of them AIME, one solved by it alone and three combined
 "miquels-theorem": String.raw`
 ## Key forms
 - $\odot(AEF)$, $\odot(BFD)$, $\odot(CDE)$ meet at one point — for any points $D$, $E$, $F$ on the lines $BC$, $CA$, $AB$, the circle through each vertex and its two adjacent chosen points passes through a common point, the Miquel point
-- the Miquel point is the center of the [[spiral-similarity|spiral similarity]] taking the configuration of $EF$ to that of $BC$
+- the lines $MD$, $ME$, $MF$ make equal angles with $BC$, $CA$, $AB$, so $M$ is the center of a [[spiral-similarity|spiral similarity]] taking its pedal triangle to $DEF$
 
 ## Conditions
 $D$, $E$, $F$ lie on the side lines, not necessarily on the segments. The points are distinct from the vertices, so that each circle is determined.
@@ -3107,9 +3159,13 @@ $D$, $E$, $F$ lie on the side lines, not necessarily on the segments. The points
 ## Why it works
 Let the circles through $(B, F, D)$ and $(C, D, E)$ meet again at $M$. Cyclic quadrilaterals give $\angle FMD = 180^\circ - B$ and $\angle DME = 180^\circ - C$, so $\angle FME = 360^\circ - (180^\circ - B) - (180^\circ - C) = B + C = 180^\circ - A$, which says exactly that $A, F, M, E$ are concyclic. One angle chase, fully general.
 
+For the equal angles, use directed angles mod $180^\circ$. The three circles give
+$$\angle(DM, BC) = \angle(FM, AB) = \angle(EM, CA),$$
+the first from $B, F, M, D$ concyclic and the second from $A, F, M, E$ concyclic. Call that angle $90^\circ - \theta$. Then each of $D$, $E$, $F$ is the foot of the perpendicular from $M$ to its side, turned by $\theta$ about $M$ and pushed out by the factor $\frac1{\cos\theta}$, and that one spiral similarity carries all three feet at once.
+
 ## Useful observations
 - A configuration with one point on each side of a triangle and circles through vertex-adjacent triples has its three circles sharing a point, often the key hidden point of the problem.
-- The spiral-similarity connection: the Miquel point is the center of the spiral similarity taking the $EF$ configuration to the $BC$ one.
+- Since the three lines from $M$ meet the sides at one common angle, sliding $D$, $E$, $F$ so that the angle changes, with $M$ fixed, keeps the triangle $DEF$ similar to itself.
 - The complete-quadrilateral version, the Miquel point of four lines, is an olympiad staple.
 
 ## Applications
@@ -3129,7 +3185,16 @@ AIME-level circle problems sometimes plant a Miquel configuration without naming
 The six points lie on a circle, or on any conic. Different orderings of the same six points give different hexagons and different Pascal lines.
 
 ## Why it works
-It is projective magic: the clean proofs use cross-ratios or the radical axes of three cleverly chosen circles. For contest purposes the statement is what matters, together with its stability under re-ordering the six vertices and its degenerate forms.
+For a circle the cleanest proof is [[menelaus-theorem|Menelaus]] three times. Let the lines $AB$, $CD$, $EF$ form a triangle $XYZ$, with $X = EF \cap AB$, $Y = AB \cap CD$, $Z = CD \cap EF$, and let $P = AB \cap DE$, $Q = BC \cap EF$, $R = CD \cap FA$. All lengths below are signed.
+
+Step 1. Menelaus for triangle $XYZ$ with the lines $DE$, $BC$ and $FA$ gives
+$$\frac{XP}{PY} \cdot \frac{YD}{DZ} \cdot \frac{ZE}{EX} = \frac{XB}{BY} \cdot \frac{YC}{CZ} \cdot \frac{ZQ}{QX} = \frac{XA}{AY} \cdot \frac{YR}{RZ} \cdot \frac{ZF}{FX} = -1.$$
+
+Step 2. Multiply the three. The factors that are not about $P$, $Q$, $R$ group by vertex into $\frac{XA \cdot XB}{XE \cdot XF}$, $\frac{YC \cdot YD}{YA \cdot YB}$ and $\frac{ZE \cdot ZF}{ZC \cdot ZD}$, and each is $1$ by the [[power-of-a-point|power of the point]] $X$, $Y$ or $Z$.
+
+Step 3. What is left is $\frac{XP}{PY} \cdot \frac{YR}{RZ} \cdot \frac{ZQ}{QX} = -1$, so by the converse of Menelaus, $P$, $R$, $Q$ are collinear.
+
+The same proof works when two vertices merge, with the tangent in place of the side and the tangent length squared as the power. For any conic, a [[projective-transformations|projective map]] sends the conic to a circle and keeps lines and intersections. Brianchon's Theorem is the polar dual: taking polars with respect to the circle turns tangent lines into points of contact and collinear points into concurrent lines.
 
 ## Useful observations
 - The degenerate versions do the work: merging two adjacent vertices makes the side through them the tangent at that point. With a triangle, three merged pairs, Pascal says tangent-at-$A$ $\cap\, BC$, tangent-at-$B$ $\cap\, CA$, tangent-at-$C$ $\cap\, AB$ are collinear.
@@ -3297,7 +3362,19 @@ Everywhere on the AMC 10 and 12 as points on two sides asking for a fraction of 
 The $A$-excircle is tangent to side $a$ and to the extensions of the other two sides; $s$ is the semiperimeter, $K$ the area, $r$ the inradius and $R$ the circumradius, with angles $A$, $B$, $C$ written by their vertices.
 
 ## Why it works
-The excenter opposite $A$ sits at the intersection of the external bisectors from $B$ and $C$; joining it to the vertices splits the triangle with signed areas, giving $K = r_a(s - a)$ in place of $K = rs$. The tangent-length bookkeeping mirrors the incircle's, but the tangent length from $A$ is now $s$ itself, and that gives $r_a = s\tan\frac A2$ while $r = (s - a)\tan\frac A2$.
+Step 1, the area. The excenter $I_A$ is $r_a$ from all three side lines, so with signed areas
+$$K = [ABI_A] + [ACI_A] - [BCI_A] = \tfrac12 r_a(c + b - a) = r_a(s - a),$$
+in place of $K = rs$. The reciprocal sum follows: $\frac1{r_a} + \frac1{r_b} + \frac1{r_c} = \frac{(s - a) + (s - b) + (s - c)}K = \frac sK = \frac1r$.
+
+Step 2, tangent lengths. With $T_a$, $T_b$, $T_c$ the touch points, equal tangents give $AT_b + AT_c = (c + BT_a) + (b + CT_a) = a + b + c$, so each tangent from $A$ is $s$. In the right triangle $AT_cI_A$ the angle at $A$ is $\frac A2$, so $r_a = s\tan\frac A2$, just as $r = (s - a)\tan\frac A2$. Also $BT_a = s - c$, which is the incircle's tangent length from $C$, so the two touch points on $BC$ mirror each other across its midpoint.
+
+Step 3, the trigonometric form. The angle between $BC$ and $BI_A$ is $90^\circ - \frac B2$, so $BT_a = r_a\tan\frac B2$, and likewise $CT_a = r_a\tan\frac C2$. Adding,
+$$a = r_a\left(\tan\tfrac B2 + \tan\tfrac C2\right) = r_a\frac{\cos\frac A2}{\cos\frac B2\cos\frac C2},$$
+and $a = 4R\sin\frac A2\cos\frac A2$ gives $r_a = 4R\sin\frac A2\cos\frac B2\cos\frac C2$.
+
+Step 4, the sum. From Step 1, $r_a - r = \frac{Ka}{s(s - a)}$ and $r_b + r_c = \frac{Ka}{(s - b)(s - c)}$. Since $(s - b)(s - c) + s(s - a) = bc$, adding gives
+$$r_a + r_b + r_c - r = \frac{Ka \cdot bc}{s(s - a)(s - b)(s - c)} = \frac{abc}K = 4R.$$
+The homothety ratio is $\frac r{r_a} = \frac{K/s}{K/(s - a)} = \frac{s - a}s$.
 
 ## Useful observations
 - Any incircle technique has an excircle twin; the touch point of the $A$-excircle on $BC$ mirrors the incircle's touch point across the midpoint of $BC$.
@@ -3321,7 +3398,13 @@ AIME problems about a circle tangent to one side and the extensions of the other
 $D$ is a point of the side $BC$ (or its extension, with the usual care about signs), and the angles are the two parts into which $AD$ divides angle $A$.
 
 ## Why it works
-Triangles $ABD$ and $ACD$ share the altitude from $A$ onto line $BC$, and also the side $AD$, so $$\frac{BD}{DC} = \frac{[ABD]}{[ACD]} = \frac{\tfrac12\,AB \cdot AD \sin\angle BAD}{\tfrac12\,AC \cdot AD \sin\angle DAC} = \frac{AB \sin\angle BAD}{AC \sin\angle DAC}.$$
+Triangles $ABD$ and $ACD$ share the altitude from $A$ onto line $BC$, and also the side $AD$, so
+$$\frac{BD}{DC} = \frac{[ABD]}{[ACD]} = \frac{\tfrac12\,AB \cdot AD \sin\angle BAD}{\tfrac12\,AC \cdot AD \sin\angle DAC} = \frac{AB \sin\angle BAD}{AC \sin\angle DAC}.$$
+
+The special cevians follow by putting in their angles. For the bisector the two angles are equal. For the median $BD = DC$, so the sine ratio must be $\frac{AC}{AB}$.
+
+For the altitude, $\angle BAD = 90^\circ - B$ and $\angle DAC = 90^\circ - C$, so the sine ratio is $\frac{\cos B}{\cos C}$. The symmedian is the median reflected in the bisector, so its two angles are the median's two angles swapped, and its sine ratio is $\frac{AB}{AC}$; then
+$$\frac{BD}{DC} = \frac{AB}{AC} \cdot \frac{AB}{AC} = \left(\frac{AB}{AC}\right)^2.$$
 
 ## Useful observations
 - It is the all-purpose converter between side data and angle data for a cevian.
@@ -3412,7 +3495,15 @@ Three problems here, two AIME and one HMMT, none solved by it alone, and two fin
 The triangle's largest angle decides the case. The construction of the point needs all angles below $120^\circ$; otherwise there is no interior point with three $120^\circ$ angles.
 
 ## Why it works
-Rotate triangle $APB$ by $60^\circ$ about $B$: the path $AP + PC$ becomes a broken path of the same total length, and the extra segment $PP'$ equals $BP$ because triangle $PBP'$ is equilateral. So $PA + PB + PC$ equals the length of a path from a fixed erected vertex to $C$, minimized when it is straight, which forces the $120^\circ$ angles.
+Step 1, the lower bound. Rotate by $60^\circ$ about $B$, away from $C$, sending $A$ to $A'$ and any point $P$ to $P'$. Triangle $PBP'$ is equilateral, so $PP' = PB$, and $P'A' = PA$. Hence
+$$PA + PB + PC = A'P' + P'P + PC \ge A'C.$$
+Triangle $A'BC$ has $BA' = c$, $BC = a$ and $\angle A'BC = B + 60^\circ$, so $A'C^2 = a^2 + c^2 - 2ac\cos(B + 60^\circ)$; by symmetry the same value arises from any vertex.
+
+Step 2, equality. If every angle is below $120^\circ$, let $X$ be the point with $\angle AXB = \angle BXC = \angle CXA = 120^\circ$. Then $\angle BXX' = 60^\circ$ and $\angle BXC = 120^\circ$ put $X'$, $X$, $C$ on a line, and $\angle BX'A' = 120^\circ$ with $\angle BX'X = 60^\circ$ puts $A'$, $X'$, $X$ on it too. The path is straight, so $X$ attains $A'C$ and lies on segment $A'C$, which is why the three lines to the apexes concur there.
+
+Step 3, an angle of at least $120^\circ$, say at $A$. Let $\vec u$ and $\vec v$ be unit vectors along $AB$ and $AC$; the angle between them is at least $120^\circ$, so $\lvert\vec u + \vec v\rvert \le 1$. For any $P$, projecting gives $PB \ge AB - \overrightarrow{AP} \cdot \vec u$ and $PC \ge AC - \overrightarrow{AP} \cdot \vec v$, so
+$$PB + PC \ge AB + AC - \overrightarrow{AP} \cdot (\vec u + \vec v) \ge AB + AC - PA,$$
+and $PA + PB + PC \ge AB + AC$, with equality at $P = A$.
 
 ## Useful observations
 - For "minimize the sum of distances to three points," the largest angle is checked first: if it is at least $120^\circ$, the answer is at that vertex.
@@ -3502,9 +3593,13 @@ Object.assign(window.MATH_DETAILS, {
 The triangle has sides $a, b, c$, circumradius $R$, and inradius $r$. For a right triangle $a^2 + b^2 + c^2 = 8R^2$, so $OH = R$, and $H$ is the right-angle vertex.
 
 ## Why it works
-With the circumcenter as origin, $\vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}$. Expanding $\lvert\vec{OH}\rvert^2$ gives $3R^2$ plus dot products, and each $\vec{OA} \cdot \vec{OB} = R^2\cos 2C = R^2 - \frac{c^2}{2}$; summing produces $9R^2 - \sum a^2$.
+With the circumcenter as origin, $\vec{OH} = \vec{OA} + \vec{OB} + \vec{OC}$. Expanding $\lvert\vec{OH}\rvert^2$ gives $3R^2$ plus twice the three dot products. The central angle $AOB$ is $2C$, so $\vec{OA} \cdot \vec{OB} = R^2\cos 2C$, and $c^2 = \lvert\vec{OA} - \vec{OB}\rvert^2 = 2R^2 - 2\,\vec{OA} \cdot \vec{OB}$ turns it into $R^2 - \frac{c^2}{2}$; summing produces $9R^2 - \sum a^2$. Since $\vec{OG} = \frac13(\vec{OA} + \vec{OB} + \vec{OC})$, $OG = \frac13 OH$, which is the [[euler-line-ratio|Euler line]] ratio.
 
-Dividing the [[euler-line-ratio|Euler line]] in thirds gives $OG$. The incenter identity is the power of $I$: a chord through $I$ and a vertex has segment product $2Rr$, by the [[incenter-excenter-lemma|Incenter–Excenter Lemma]].
+For the angle form, $a = 2R\sin A$, and
+$$\sin^2 A + \sin^2 B + \sin^2 C = 2 + 2\cos A\cos B\cos C,$$
+because $\sin^2 A + \sin^2 B = 1 + \cos C\cos(A - B)$ and $\sin^2 C = 1 + \cos C\cos(A + B)$. So $OH^2 = 9R^2 - 4R^2(2 + 2\cos A\cos B\cos C) = R^2(1 - 8\cos A\cos B\cos C)$. A right triangle has $\sum a^2 = 2c^2 = 8R^2$, so $OH = R$.
+
+The incenter identity is the power of $I$. The chord from $A$ through $I$ meets the circle again at the arc midpoint $M$, with $MI = MB = 2R\sin\frac A2$ by the [[incenter-excenter-lemma|Incenter–Excenter Lemma]] and $AI = \frac r{\sin(A/2)}$. Their product is $2Rr$, which equals $R^2 - OI^2$.
 
 ## Useful observations
 - Given the sides, or $\sum a^2$, and $R$, all the Euler-line distances follow. It runs backwards too: contest problems specify $OH$ or $OG$ and ask for $\sum a^2$.
@@ -3596,7 +3691,14 @@ Locus questions where a sum of squared distances to the vertices is fixed, and m
 The weights are $a = BC$, $b = CA$, $c = AB$, each attached to the opposite vertex. The coordinates are Cartesian, and the formula applies coordinate by coordinate.
 
 ## Why it works
-The incenter divides the bisector from $A$ in the ratio $\frac{b + c}{a}$ (the bisector theorem applied twice), which is exactly the balance point of masses $a$, $b$, $c$ at the vertices. Mass-point mechanics then give the weighted-average coordinate formula; the centroid is the equal-mass case.
+Step 1. The bisector from $A$ meets $BC$ at $D$ with $BD : DC = c : b$ by the [[angle-bisector-theorem|Angle Bisector Theorem]], so $D = \frac{bB + cC}{b + c}$ and $BD = \frac{ac}{b + c}$.
+
+Step 2. In triangle $ABD$ the bisector from $B$ passes through $I$, so the same theorem gives
+$$\frac{AI}{ID} = \frac{AB}{BD} = \frac{c}{ac/(b + c)} = \frac{b + c}a.$$
+
+Step 3. Then $I = \frac{aA + (b + c)D}{a + b + c} = \frac{aA + bB + cC}{a + b + c}$. For $I_A$ the external bisector at $B$ divides $AD$ externally in the same ratio, which flips the sign of $a$: $I_A = \frac{-aA + bB + cC}{-a + b + c}$.
+
+The centroid is the case of equal weights, and the mass formula is the same balance computation for any masses: a mass $m_B$ at $B$ and $m_C$ at $C$ balance at $\frac{m_BB + m_CC}{m_B + m_C}$, and adding $m_A$ at $A$ balances that point with $A$.
 
 ## Useful observations
 - Once a triangle is coordinatized, $I$ is written down directly, with no bisector intersections needed.
@@ -3670,7 +3772,10 @@ An occasional AMC and AIME cameo, and the Fermat-point connection makes the conf
 The quadrilateral is cyclic. The area $K$ comes from Brahmagupta's Formula, and the products are the ones in Ptolemy's Theorem, where $ac + bd = pq$.
 
 ## Why it works
-Split the quadrilateral by a diagonal and apply $R = \frac{\text{product of sides}}{4 \cdot \text{area}}$ to each triangle, since both triangles share the circumcircle. Combining the two expressions with Ptolemy's relation between the diagonals produces the symmetric three-product form.
+Split the quadrilateral by the diagonal $p$ that separates the sides $a, b$ from $c, d$. Both triangles share the circumcircle, so the area formula $K = \frac{\text{product of sides}}{4R}$ for each gives
+$$K = \frac{abp}{4R} + \frac{cdp}{4R} = \frac{p(ab + cd)}{4R}.$$
+
+By Ptolemy's Second Theorem that diagonal has $p^2 = \frac{(ac + bd)(ad + bc)}{ab + cd}$. Squaring $R = \frac{p(ab + cd)}{4K}$ and substituting gives $R^2 = \frac{(ab + cd)(ac + bd)(ad + bc)}{16K^2}$, the Key form; Brahmagupta's Formula for $K$ gives the version in the sides alone.
 
 ## Useful observations
 - For a cyclic quadrilateral with known sides, Brahmagupta's Formula gives $K$ and then this gives $R$, a two-step pipeline that replaces any diagonal-hunting.
@@ -3691,7 +3796,11 @@ The finishing move for cyclic quadrilateral problems that give four sides and as
 The squares are built outward; the quadrilateral may be non-convex and may even be degenerate.
 
 ## Why it works
-In complex numbers the center of the square erected outward on the segment from $p$ to $q$ is $\frac{p + q}{2} + \frac i2(q - p)$. Writing the two center-difference vectors and simplifying, one comes out exactly $i$ times the other, which is perpendicular and equal in length in one stroke.
+In complex numbers the center of the square erected outward on the segment from $p$ to $q$ is $\frac{p + q}{2} + \frac i2(q - p)$: the midpoint, pushed half a side length along the side turned by $90^\circ$. With the vertices $z_1, z_2, z_3, z_4$ in clockwise order, the centers are $c_k = \frac{z_k + z_{k+1}}2 + \frac i2(z_{k+1} - z_k)$.
+
+Expanding both differences,
+$$2(c_3 - c_1) = (-1 + i)z_1 + (-1 - i)z_2 + (1 - i)z_3 + (1 + i)z_4 = 2i(c_4 - c_2).$$
+So $c_3 - c_1 = i(c_4 - c_2)$: one join is the other turned by $90^\circ$, perpendicular and equal in length in one stroke.
 
 ## Useful observations
 - The theorem is the quadrilateral cousin of [[napoleons-theorem|Napoleon's Theorem]], which builds equilateral triangles on the sides of a triangle.
@@ -3817,9 +3926,11 @@ An AIME and AMC area step, rarely alone: the central angle usually comes from a 
 Neither line is vertical for the main formula, because a vertical line has no slope. The formula gives the acute angle; the obtuse angle between the lines is its supplement.
 
 ## Why it works
-A line of slope $m$ makes angle $\arctan m$ with the $x$-axis; the angle between the lines is the difference of their inclinations, and the tangent subtraction formula gives $\tan(\alpha_1 - \alpha_2)$ in terms of the slopes. The absolute value selects the acute angle.
+A line of slope $m$ makes angle $\arctan m$ with the $x$-axis; the angle between the lines is the difference of their inclinations $\alpha_1$ and $\alpha_2$, and the tangent subtraction formula gives
+$$\tan(\alpha_1 - \alpha_2) = \frac{\tan\alpha_1 - \tan\alpha_2}{1 + \tan\alpha_1\tan\alpha_2} = \frac{m_1 - m_2}{1 + m_1m_2}.$$
+The absolute value selects the acute angle, and $m_1 = m_2$ gives $0$.
 
-When $1 + m_1m_2 = 0$ the denominator vanishes and the tangent is undefined, which is the right answer: the angle is $90^\circ$.
+The denominator is $\frac{\cos(\alpha_1 - \alpha_2)}{\cos\alpha_1\cos\alpha_2}$, so it vanishes exactly when the inclinations differ by $90^\circ$: $1 + m_1m_2 = 0$ is perpendicularity. A vertical line has inclination $90^\circ$, so the angle with it is $90^\circ - \arctan\lvert m\rvert$, whose tangent is $\frac1{\lvert m\rvert}$.
 
 ## Useful observations
 - Directly, two slopes go in and the angle comes out.
@@ -4055,7 +4166,11 @@ Object.assign(window.MATH_DETAILS, {
 The ratio $m : n$ is read as $AP : PB$, so the larger coefficient goes on the endpoint the point is closer to. For external division $m \ne n$.
 
 ## Why it works
-The point at fraction $\frac{m}{m + n}$ of the way from $A$ to $B$ is $A + \frac{m}{m + n}(B - A)$, which rearranges to the weighted average $\frac{nA + mB}{m + n}$, with more weight on the endpoint the point is closer to. The midpoint is the balanced case $m = n$.
+The point at fraction $\frac{m}{m + n}$ of the way from $A$ to $B$ is
+$$A + \frac{m}{m + n}(B - A) = \frac{nA + mB}{m + n},$$
+a weighted average with more weight on the endpoint the point is closer to. The midpoint is the balanced case $m = n$.
+
+For external division, $P$ lies on line $AB$ beyond the segment with $AP : PB = m : n$, so $P = A + \frac{m}{m - n}(B - A)$, which is $\frac{mB - nA}{m - n}$. For the centroid, the medians meet $\frac23$ of the way from a vertex to the opposite midpoint ([[centroid-division|the centroid divides each median two to one]]), so with $M = \frac{B + C}2$ it is $\frac{A + 2M}3 = \frac{A + B + C}3$.
 
 ## Useful observations
 - The ratio must be read carefully: $AP : PB = m : n$ puts the coefficient $m$ on the far point $B$.
@@ -4080,7 +4195,11 @@ The workhorse for coordinate solutions to ratio problems. When a problem gives a
 The angle formula needs nonzero vectors. The sign of the dot product is the sign of $\cos\theta$: positive for an acute angle, zero for a right angle, and negative for an obtuse angle.
 
 ## Why it works
-Expanding $\lvert\vec u - \vec v\rvert^2 = \lvert\vec u\rvert^2 + \lvert\vec v\rvert^2 - 2\,\vec u \cdot \vec v$ and comparing with the Law of Cosines forces $\vec u \cdot \vec v = \lvert\vec u\rvert\lvert\vec v\rvert\cos\theta$. So the sign of the dot product is the sign of $\cos\theta$: positive means acute, zero means perpendicular, negative means obtuse.
+Expanding $\lvert\vec u - \vec v\rvert^2 = \lvert\vec u\rvert^2 + \lvert\vec v\rvert^2 - 2\,\vec u \cdot \vec v$ and comparing with the Law of Cosines, $\lvert\vec u - \vec v\rvert^2 = \lvert\vec u\rvert^2 + \lvert\vec v\rvert^2 - 2\lvert\vec u\rvert\lvert\vec v\rvert\cos\theta$, forces
+$$\vec u \cdot \vec v = \lvert\vec u\rvert\lvert\vec v\rvert\cos\theta.$$
+So the sign of the dot product is the sign of $\cos\theta$: positive means acute, zero means perpendicular, negative means obtuse.
+
+The other forms are this one read differently. Dividing by $\lvert\vec u\rvert\lvert\vec v\rvert$ gives the angle. The product is $0$ exactly when $\cos\theta = 0$, a right angle. The scalar projection of $\vec u$ onto $\vec v$ is $\lvert\vec u\rvert\cos\theta$, which is $\frac{\vec u \cdot \vec v}{\lvert\vec v\rvert}$. With $\vec v = \vec u$, $\theta = 0$ and $\vec u \cdot \vec u = \lvert\vec u\rvert^2$, which is also $u_1^2 + u_2^2$ by Pythagoras.
 
 ## Useful observations
 - Three standard reads: the angle between two vectors, a perpendicularity test, and the length of the projection of $\vec u$ onto $\vec v$. Coordinates make it mechanical.
@@ -4105,6 +4224,10 @@ The two solids lie between the same two parallel planes, and every plane paralle
 
 ## Why it works
 Volume is the integral of cross-sectional area over height. If two solids present the same area $A(h)$ at every height $h$, their volume integrals are identical, and the shapes of the slices, and how they are stacked or sheared, are irrelevant.
+
+The sphere is the standard check. Cut a hemisphere of radius $R$, and a cylinder of radius $R$ and height $R$ with a cone bored out from its top face down to a point at the bottom, at height $h$ above the base. The hemisphere's slice is a disk of radius $\sqrt{R^2 - h^2}$, and the other slice is a ring between radii $h$ and $R$:
+$$\pi\left(R^2 - h^2\right) = \pi R^2 - \pi h^2.$$
+So the hemisphere has volume $\pi R^3 - \frac13\pi R^3 = \frac23\pi R^3$.
 
 ## Useful observations
 - It transports a volume that is unknown onto one that is known. An oblique prism or cylinder shears to an upright one slice for slice, so it keeps $V = Bh$.
@@ -4552,6 +4675,8 @@ $a$, $b$, $c$ are the sides opposite $A$, $B$, $C$. The formulas hold for every 
 ## Why it works
 Drop the altitude from $A$ to line $BC$ at the foot $H$. In the two right triangles, $BH = c\cos B$ and $HC = b\cos C$, and $a = BH + HC$. The other two identities are the same construction from $B$ and from $C$. When $B$ is obtuse the foot lies beyond $B$, and the negative cosine makes $c\cos B$ the signed length that keeps the sum equal to $a$.
 
+Multiplying the three identities by $a$, $b$, $c$ gives $a^2 = ab\cos C + ac\cos B$, $b^2 = bc\cos A + ab\cos C$ and $c^2 = ac\cos B + bc\cos A$. Adding the last two and subtracting the first leaves $b^2 + c^2 - a^2 = 2bc\cos A$, the Law of Cosines. For a path, projection onto a fixed direction is additive, so the projections of the pieces add to the projection of the whole displacement.
+
 ## Useful observations
 - It is the quickest linear relation between a side and the two adjacent base angles, with no squaring.
 - Multiplying the three identities by $a$, $b$, $c$ and combining them reproduces the Law of Cosines, so the cosines enter linearly here and quadratically there.
@@ -4678,7 +4803,13 @@ Olympiad triangle geometry and the occasional AIME contact-point setup. Companio
 The three diagonals of a complete quadrilateral join the three pairs of opposite vertices among its six intersection points. Newton's line needs a tangential quadrilateral.
 
 ## Why it works
-The collinearity of the three diagonal midpoints is an affine fact, provable by vectors. For a tangential quadrilateral, equal tangent lengths balance the areas on the two sides of the line through the diagonal midpoints, which places the incenter on that line.
+Let the quadrilateral be $ABCD$, with $E = AB \cap CD$ and $F = AD \cap BC$, and let $L$, $M$, $N$ be the midpoints of $AC$, $BD$, $EF$. With signed areas, put
+$$g(P) = [PAB] - [PBC] + [PCD] - [PDA].$$
+Each signed area is an affine function of $P$, so $g$ is too, and its zero set is a line unless $g$ is constant.
+
+At the midpoint $L$ of $AC$, each area is the average of its values at $A$ and $C$, which gives $g(L) = \frac12\left([ABC] - [ABC] + [ACD] - [ACD]\right) = 0$, and in the same way $g(M) = 0$. From any point $P$, $[PAB] + [PBC] + [PCD] + [PDA] = [ABCD]$. At $E$ the terms $[EAB]$ and $[ECD]$ vanish, so $g(E) = -[ABCD]$; at $F$ the terms $[FBC]$ and $[FDA]$ vanish, so $g(F) = [ABCD]$. Hence $g$ is not constant, $g(N) = 0$, and $L$, $M$, $N$ lie on the line $g = 0$.
+
+For a tangential quadrilateral the incenter $I$ is $r$ from every side, so $g(I) = \frac r2(AB - BC + CD - DA)$, which is $0$ by the equal tangent sums $AB + CD = BC + DA$. So $I$ is on the same line.
 
 ## Useful observations
 - Any collinearity of diagonal midpoints in a quadrilateral figure is a candidate for this theorem.
@@ -4701,7 +4832,9 @@ Olympiad quadrilateral configurations. A niche collinearity that is worth recogn
 Points are in general position, meaning no three are collinear. Points are in convex position when all of them are vertices of their convex hull.
 
 ## Why it works
-The Happy Ending theorem is a Ramsey-style argument on quadruples. Its base case is a short case check on the convex hull of five points: a hull of $5$ or $4$ points gives a convex quadrilateral outright, and a triangular hull with two interior points gives one through the line joining the interior pair.
+The base case is a check on the convex hull of five points. A hull of $5$ or $4$ points gives a convex quadrilateral outright. A triangular hull has two interior points $P$ and $Q$; the line $PQ$ passes through no vertex, so it leaves two hull vertices on one side, and those two with $P$ and $Q$ are in convex position.
+
+The general existence of $\mathrm{ES}(n)$, with the bound $\binom{2n-4}{n-2} + 1$, is quoted, not proved here: P. Erdős and G. Szekeres, "A combinatorial problem in geometry", Compositio Mathematica 2 (1935), 463–470. The value $\mathrm{ES}(5) = 9$ is a longer case analysis, also quoted: J. D. Kalbfleisch, J. G. Kalbfleisch and R. G. Stanton, "A combinatorial problem on convex regions" (1970). The formula $2^{n-2} + 1$ is still a conjecture.
 
 ## Useful observations
 - Organizing by the convex hull is the natural split: the extreme points are the polygon's candidates and the interior points are the leftovers.
@@ -4745,7 +4878,13 @@ Olympiad combinatorial geometry. The minimal-distance extremal argument is a mod
 The family is finite and every set is convex. Without convexity the conclusion fails.
 
 ## Why it works
-The proof is by induction using Radon's theorem: any $d + 2$ points in $\mathbb{R}^d$ split into two sets whose convex hulls intersect. That lets the hypotheses "every $d + 1$ meet" merge upward until all the sets share a point. In the plane $d + 1 = 3$.
+Step 1, Radon's lemma. Any $d + 2$ points $p_i$ in $\mathbb R^d$ are affinely dependent: $\sum\lambda_ip_i = 0$ and $\sum\lambda_i = 0$ with the $\lambda_i$ not all $0$. Split the indices by the sign of $\lambda_i$ and let $\Lambda$ be the sum of the positive ones. Then
+$$\sum_{\lambda_i \gt 0}\frac{\lambda_i}{\Lambda}p_i = \sum_{\lambda_j \lt 0}\frac{-\lambda_j}{\Lambda}p_j$$
+is a point in the convex hulls of both parts.
+
+Step 2, induction on the number $m \ge d + 2$ of sets. By induction, the family without $C_i$ has a common point $p_i$, for each $i$. Radon splits these points into parts $I$ and $J$ whose hulls share a point $q$.
+
+Step 3. Take any $C_k$. If $k \notin I$, every $p_i$ with $i \in I$ lies in $C_k$, so their hull does, and $q \in C_k$. If $k \in I$, then $k \notin J$ and the same argument with $J$ gives $q \in C_k$. So $q$ is in every set.
 
 ## Useful observations
 - It reduces a global intersection question to a check on small subfamilies.
@@ -4767,7 +4906,11 @@ Olympiad combinatorial geometry. The planar form and the need for convexity are 
 The region is convex and centrally symmetric about the origin. Area exactly $4$ is not enough in general without a closedness condition.
 
 ## Why it works
-Shrink the region by a factor of $\frac12$: if the original area exceeds $4$, the half-size region has area greater than $1$, so some of its integer translates overlap, by pigeonhole on the unit square. Two overlapping translates differ by a nonzero lattice vector, and central symmetry with convexity puts that vector's endpoint inside the original region.
+Step 1. Shrink the region $K$ to $\frac12K$, of area greater than $1$. Cut $\frac12K$ along the integer grid and slide each piece by a lattice vector into the unit square. The pieces have total area more than $1$, so two of them overlap: there are points $x \ne y$ of $\frac12K$ with $x - y$ a lattice vector, nonzero.
+
+Step 2. Now $2x$ and $2y$ are in $K$, and so is $-2y$, by symmetry. Their midpoint is
+$$\tfrac12(2x) + \tfrac12(-2y) = x - y,$$
+which is in $K$ because $K$ is convex. So $x - y$ is a nonzero lattice point of $K$. In $\mathbb R^d$ the same argument runs with volume, and shrinking by $\frac12$ divides the volume by $2^d$.
 
 ## Useful observations
 - It forces a small integer solution by enclosing the constraint in a symmetric convex region of large enough area.
@@ -5047,6 +5190,10 @@ $I$ is the incenter, $r$ the inradius, and $s$ the semiperimeter; the same split
 ## Why it works
 The incircle is tangent to all three sides, so the incenter is a distance $r$ from each, and that $r$ is the height of each sub-triangle onto the side it rests on. Hence $[BIC] = \frac12 ar$, $[CIA] = \frac12 br$, and $[AIB] = \frac12 cr$, proportional to $a$, $b$, $c$. Adding gives $[ABC] = \frac12(a + b + c)r = rs$, the standard area formula, and dividing gives $[BIC] = \frac{a}{a + b + c}[ABC]$.
 
+For any interior point $P$, let $AP$ meet $BC$ at $D$. Triangles $ABP$ and $ACP$ share the base $AP$, so $\frac{BD}{DC} = \frac{[ABP]}{[ACP]}$, and comparing heights over $BC$ gives $\frac{AP}{PD} = \frac{[ABP] + [ACP]}{[PBC]}$. These are the ratios of the masses $[PBC]$, $[PCA]$, $[PAB]$ at $A$, $B$, $C$, so
+$$P = \frac{[PBC]A + [PCA]B + [PAB]C}{[ABC]},$$
+and for $P = I$ the weights are $\frac12 r(a, b, c)$.
+
 ## Useful observations
 - A side-length ratio reads straight off as an area ratio, and the reverse.
 - Because the three areas are the natural weights, they are the incenter's barycentric coordinates, the quickest way to place the incenter in a coordinate or vector computation.
@@ -5103,7 +5250,9 @@ The circles cross, which needs $\lvert R - r\rvert \lt d \lt R + r$. The common 
 ## Why it works
 Both endpoints of the common chord lie on each circle, so the segment is a chord of both, and the line of centers is its perpendicular bisector, meeting it at right angles at its midpoint.
 
-Writing the half-chord $h$ two ways, $h^2 = R^2 - d_1^2$ from one circle and $h^2 = r^2 - d_2^2$ from the other with $d_1 + d_2 = d$, and subtracting gives $d_1 = \frac{d^2 + R^2 - r^2}{2d}$, which is just the location of the radical axis.
+Writing the half-chord $h$ two ways, $h^2 = R^2 - d_1^2$ from one circle and $h^2 = r^2 - d_2^2$ from the other with $d_2 = d - d_1$, and equating:
+$$R^2 - d_1^2 = r^2 - d^2 + 2dd_1 - d_1^2, \qquad d_1 = \frac{d^2 + R^2 - r^2}{2d},$$
+which is just the location of the radical axis.
 
 ## Useful observations
 - $d_1$ is computed from the three lengths, then the chord is $2\sqrt{R^2 - d_1^2}$; the intersection points are never needed.
@@ -5163,7 +5312,9 @@ A staple of AMC circle problems and the opening line of most AIME circle-packing
 $a = BC$, $b = CA$, $c = AB$, and $s$ is the semiperimeter; the excircle is the one opposite $A$, tangent to $BC$ and the extensions of $AB$ and $AC$.
 
 ## Why it works
-Equal tangents from a vertex fix the incircle contact distances: the two tangents from $B$ are equal, forcing the touch point on $BC$ to be $s - b$ from $B$. The $A$-excircle touches $BC$ with the roles of $b$ and $c$ swapped, at $s - c$ from $B$. Since $(s - b) + (s - c) = a$, those two points average to $\frac a2$, the midpoint $M$ of $BC$, so they are reflections of each other in $M$, a distance $(s - b) - (s - c) = |b - c|$ apart.
+Let the tangent lengths from $A$, $B$, $C$ to the incircle be $t_A$, $t_B$, $t_C$. Equal tangents give $t_A + t_B = c$, $t_B + t_C = a$ and $t_C + t_A = b$; adding all three gives $t_A + t_B + t_C = s$, so $t_B = s - b$ is the distance from $B$ to the touch point on $BC$.
+
+For the $A$-excircle the tangent from $A$ is $s$, as on [[exradii|the exradii card]], so the tangent from $B$ is $s - c$, and so is the distance from $B$ to its touch point on $BC$. Since $(s - b) + (s - c) = a$, those two points average to $\frac a2$, the midpoint $M$ of $BC$, so they are reflections of each other in $M$, a distance $\lvert(s - b) - (s - c)\rvert = \lvert b - c\rvert$ apart.
 
 ## Useful observations
 - Both contact points are placed from the side lengths alone, with $M$ as their common midpoint.
@@ -5508,7 +5659,9 @@ Rare. It appears in problems that are structurally the three-dimensional version
 Every side of the hexagon is tangent to the same conic. Letting adjacent tangency points merge gives the statements for circumscribed pentagons and quadrilaterals.
 
 ## Why it works
-It is the projective dual of Pascal's Theorem: replace "point on the conic" by "tangent line" and "collinear" by "concurrent", and Pascal's collinearity becomes Brianchon's concurrency. Any proof of Pascal dualizes into a proof of Brianchon.
+It is the projective dual of Pascal's Theorem, carried out by [[pole-polar|poles and polars]] with respect to the conic. The pole of a tangent line is its point of contact, so the six sides of the hexagon have as poles six points on the conic. The polar of a vertex, where two consecutive sides meet, is the chord joining their two contact points, so the hexagon's vertices correspond to the sides of the inscribed contact hexagon.
+
+A main diagonal joins two opposite vertices, so its pole is where the polars of those vertices meet: the crossing of two opposite sides of the inscribed hexagon. Pascal puts the three crossings on one line, and the polars of collinear points all pass through the pole of that line, so the three diagonals are concurrent.
 
 ## Useful observations
 - Merging adjacent tangency points degenerates it to concurrency in tangential pentagons and quadrilaterals.
@@ -5532,7 +5685,11 @@ An olympiad tool for tangential-polygon concurrencies, where the hypothesis is t
 The two triangles are in the plane (or in space) with corresponding vertices $A, A'$, $B, B'$, $C, C'$ distinct. The statement is projective: no lengths or angles are involved.
 
 ## Why it works
-Lift to space. Two triangles perspective from a point lie in two planes that meet in a line, and each pair of corresponding sides meets on that line, which is the axis of perspectivity. Projecting the spatial picture back to the plane proves the planar theorem, and since the statement is self-dual the converse is automatic.
+Step 1, point to line. Let $AA'$, $BB'$, $CC'$ meet at $O$, and let $P = AB \cap A'B'$, $Q = BC \cap B'C'$, $R = CA \cap C'A'$. With signed ratios, [[menelaus-theorem|Menelaus]] for triangle $OAB$ and the line $A'B'P$, then for $OBC$ with $B'C'Q$ and for $OCA$ with $C'A'R$, gives
+$$\frac{OA'}{A'A}\cdot\frac{AP}{PB}\cdot\frac{BB'}{B'O} = \frac{OB'}{B'B}\cdot\frac{BQ}{QC}\cdot\frac{CC'}{C'O} = \frac{OC'}{C'C}\cdot\frac{CR}{RA}\cdot\frac{AA'}{A'O} = -1.$$
+Multiplying the three, the ratios along $OA$, $OB$, $OC$ cancel in pairs, leaving $\frac{AP}{PB}\cdot\frac{BQ}{QC}\cdot\frac{CR}{RA} = -1$, so $P$, $Q$, $R$ are collinear by the converse of Menelaus.
+
+Step 2, line to point. Suppose $P$, $Q$, $R$ are collinear and let $O = AA' \cap BB'$. The triangles $RAA'$ and $QBB'$ are perspective from $P$, since $RQ$, $AB$ and $A'B'$ all pass through $P$. By Step 1 their corresponding sides meet on a line: $RA \cap QB = C$, $RA' \cap QB' = C'$ and $AA' \cap BB' = O$. So $CC'$ passes through $O$.
 
 ## Useful observations
 - A concurrency can be traded for a collinearity and back.
@@ -5583,7 +5740,11 @@ The backbone of projective olympiad problems and of "moving points" and projecti
 $C$ and $D$ are distinct points on line $AB$, other than $A$ and $B$. A harmonic range projected from any point gives four concurrent lines called a harmonic bundle.
 
 ## Why it works
-The relation $(A, B; C, D) = -1$ says $C$ and $D$ divide $AB$ internally and externally in the same ratio $\frac{AC}{CB} = \frac{AD}{DB}$; the minus sign is exactly the record that one division is internal and the other external. It is the most symmetric cross-ratio value, fixed when $C$ and $D$ are swapped.
+The relation $(A, B; C, D) = -1$ says $C$ and $D$ divide $AB$ internally and externally in the same ratio $\frac{AC}{CB} = \frac{AD}{DB}$; the minus sign is exactly the record that one division is internal and the other external. Swapping $C$ and $D$ turns the ratio into its reciprocal, and so does swapping $A$ and $B$; $-1$ is its own reciprocal, so both swaps keep it.
+
+For the midpoint criterion, put coordinates on the line with $M = 0$, $A = -1$, $B = 1$, $C = c$, $D = d$. The harmonic condition in signed form is
+$$\frac{c + 1}{1 - c} = -\frac{d + 1}{1 - d},$$
+which expands to $1 + c - d - cd = -1 + c - d + cd$, that is $cd = 1$. This says $C$ and $D$ are on the same side of $M$ with $MC \cdot MD = 1 = MA^2$, and every step reverses.
 
 ## Useful observations
 - Harmonic bundles sit at fixed spots: two tangents plus a secant from an external point cut the polar harmonically; the internal and external bisectors from a vertex meet the opposite line at harmonic conjugates; a complete quadrilateral's diagonal is cut harmonically.
@@ -5638,7 +5799,15 @@ An olympiad method, occasionally behind a hard AIME problem on tangent circles; 
 The four lines are in general position, with no two parallel and no three concurrent.
 
 ## Why it works
-Repeated use of the Miquel-point lemma forces the four circumcircles through one common point $M$. Equivalently, $M$ is the center of the spiral similarity carrying one pair of opposite sides onto the other.
+Step 1. Take the triangle $ABC$ formed by three of the lines; the fourth cuts its side lines at $D$, $E$, $F$. By Miquel's Theorem the circles $AEF$, $BFD$, $CDE$ meet at a point $M$, and these are the circumcircles of the three triangles that use the fourth line.
+
+Step 2, the fourth circle. With directed angles mod $180^\circ$, and $D$, $E$, $F$ collinear,
+$$\angle(BM, BA) = \angle(DM, DF) = \angle(DM, DE) = \angle(CM, CA),$$
+by the circles $BFDM$ and $CDEM$. So $A$, $B$, $C$, $M$ are concyclic, and all four circles pass through $M$.
+
+Step 3, the spiral similarity. Two of the lines cut segments $PQ$ and $RS$ on the other two, with $PR$ and $QS$ meeting at $X$. The circles $PQX$ and $RSX$ are two of the four, so they meet again at $M$, and $\angle MPQ = \angle MXQ = \angle MRS$, $\angle MQP = \angle MXP = \angle MSR$. Triangles $MPQ$ and $MRS$ are similar, so the spiral similarity at $M$ carries $PQ$ to $RS$.
+
+The concyclicity of $M$ with the four circumcenters is quoted, not proved here; see R. A. Johnson, Advanced Euclidean Geometry (Dover, 1960).
 
 ## Useful observations
 - The Miquel point is the second intersection of any two of the four circumcircles, and it is often the hidden center behind a concyclicity or a spiral-similarity claim.
@@ -5664,7 +5833,9 @@ A staple olympiad configuration, where recognizing a complete quadrilateral and 
 $P$ lies on the circumcircle of radius $R$ of a regular $n$-gon.
 
 ## Why it works
-Place the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and the point at $P = Re^{i\theta}$. Since $\prod_k (z - \zeta^k) = z^n - 1$, the product of the $n$ distances is $R^n\,|z^n - 1|$. Writing $z = e^{i\theta}$ and using $|e^{i\phi} - 1| = 2\left|\sin\frac\phi2\right|$ gives $R^n \cdot 2\left|\sin\frac{n\theta}{2}\right|$.
+Place the vertices at $R\zeta^k$ with $\zeta = e^{2\pi i/n}$ and the point at $P = Re^{i\theta}$. Since $\prod_k (z - \zeta^k) = z^n - 1$, the product of the $n$ distances is $R^n\,|z^n - 1|$. Writing $z = e^{i\theta}$ and using $|e^{i\phi} - 1| = 2\left|\sin\frac\phi2\right|$ gives $R^n \cdot 2\left|\sin\frac{n\theta}{2}\right|$. The sine is $1$ exactly when $\theta$ is an odd multiple of $\frac\pi n$, the arc midpoints.
+
+For the fixed vertex at $z = 1$, divide out its own factor: $\prod_{k=1}^{n-1}(z - \zeta^k) = \frac{z^n - 1}{z - 1} = 1 + z + \cdots + z^{n-1}$, which is $n$ at $z = 1$. So the $n - 1$ distances multiply to $nR^{n-1}$.
 
 ## Useful observations
 - The extremes are read straight off the sine: it is $0$ at a vertex and equal to $1$ when $\frac{n\theta}{2}$ is an odd multiple of $\frac\pi2$.
@@ -5691,7 +5862,9 @@ Object.assign(window.MATH_DETAILS, {
 One side of the rectangle lies on a side of the triangle chosen as the base, and the other two corners lie on the other two sides. The ratio one half is the same for every choice of base.
 
 ## Why it works
-Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, so the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$.
+Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, so the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$. At $t = \frac12$ the width is $\frac b2$ and the top edge is the midline.
+
+In the right-angle version, the free corner $(x, y)$ lies on the hypotenuse $\frac xa + \frac yb = 1$, and AM-GM gives $\frac{xy}{ab} = \frac xa \cdot \frac yb \le \frac14$, so $xy \le \frac{ab}4$, half of $\frac{ab}2$.
 
 ## Useful observations
 - The same $t(1 - t)$ maximization handles a rectangle inscribed under any straight slanted boundary.
@@ -5715,11 +5888,13 @@ A recurring AMC and early AIME optimization one-liner; knowing the maximum is ex
 $A$, $B$, $C$ are the angles of a triangle, with inradius $r$, circumradius $R$, and semiperimeter $s$.
 
 ## Why it works
-For the numerator, sum-to-product gives $\sin 2A + \sin 2B = 2\sin(A + B)\cos(A - B) = 2\sin C\cos(A - B)$, and $\sin 2C = 2\sin C\cos C = -2\sin C\cos(A + B)$. Adding, $$2\sin C\bigl[\cos(A - B) - \cos(A + B)\bigr] = 4\sin A\sin B\sin C.$$ With $\sin A = \frac{a}{2R}$ this is $\frac{abc}{2R^3}$, and $abc = 4R[ABC]$ turns it into $\frac{2[ABC]}{R^2}$.
+For the numerator, sum-to-product gives $\sin 2A + \sin 2B = 2\sin(A + B)\cos(A - B) = 2\sin C\cos(A - B)$, and $\sin 2C = 2\sin C\cos C = -2\sin C\cos(A + B)$. Adding,
+$$2\sin C\bigl[\cos(A - B) - \cos(A + B)\bigr] = 4\sin A\sin B\sin C.$$
+With $\sin A = \frac{a}{2R}$ this is $\frac{abc}{2R^3}$, and $abc = 4R[ABC]$ turns it into $\frac{2[ABC]}{R^2}$.
 
-For the denominator, $\sin A + \sin B + \sin C = \frac{a + b + c}{2R} = \frac sR$.
+For the denominator, $\sin A + \sin B + \sin C = \frac{a + b + c}{2R} = \frac sR$. In product form, $\sin A + \sin B = 2\cos\frac C2\cos\frac{A - B}2$ and $\sin C = 2\cos\frac C2\cos\frac{A + B}2$, and adding the two cosines gives $4\cos\frac A2\cos\frac B2\cos\frac C2$.
 
-The quotient is therefore $\frac{2[ABC]/R^2}{s/R} = \frac{2[ABC]}{Rs}$, and $[ABC] = rs$ makes it $\frac{2r}{R}$.
+The quotient is therefore $\frac{2[ABC]/R^2}{s/R} = \frac{2[ABC]}{Rs}$, and $[ABC] = rs$ makes it $\frac{2r}{R}$. Euler's Inequality $R \ge 2r$, which follows from [[euler-distance-theorem|Euler's Distance Formula]] $OI^2 = R(R - 2r)$, bounds it by $1$, with equality only when $O = I$, the equilateral case.
 
 ## Useful observations
 - Because $\frac rR \le \frac12$, the ratio is at most $1$, with equality only for the equilateral triangle.
@@ -5924,6 +6099,10 @@ Long division gives, for $c \ne 0$, a composition of $z \mapsto cz + d$, then $w
 
 If $ad = bc$ the numerator is a multiple of the denominator and $f$ is constant. Composing maps is multiplying the matrices $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$.
 
+The cross-ratio is unchanged by each piece: affine maps scale every difference by the same factor, and under $w \mapsto \frac1w$ each difference becomes $\frac1{w_i} - \frac1{w_j} = \frac{w_j - w_i}{w_iw_j}$, whose extra factors cancel in the cross-ratio. For three points, $S(z) = \frac{(z - z_1)(z_2 - z_3)}{(z - z_3)(z_2 - z_1)}$ sends $z_1, z_2, z_3$ to $0, 1, \infty$, and composing one such map with the inverse of another gives existence. A map fixing $0$, $1$, $\infty$ has $c = 0$, $b = 0$ and $a = d$, so it is the identity, which gives uniqueness.
+
+The fixed points solve $cz^2 + (d - a)z - b = 0$, a quadratic. An inversion in a circle with center $p$ and radius $r$ is $z \mapsto p + \frac{r^2}{\overline{z - p}}$, and conjugating it gives $p + \frac{r^2}{z - p}$, a Möbius map.
+
 ## Useful observations
 - The three-point property is the working tool: send three convenient points to $0$, $1$, and $\infty$, which is exactly the cross-ratio.
 - Sending a circle to a line straightens a configuration, and sending two disjoint circles to concentric ones turns a chain of tangencies into a rotation.
@@ -5979,6 +6158,8 @@ $\vec v \ne \vec 0$. The scalar $\frac{\vec u \cdot \vec v}{\lvert\vec v\rvert}$
 Demand that $\vec u$ split as $c\vec v$ plus something perpendicular to $\vec v$. Dotting the split with $\vec v$ kills the perpendicular piece and leaves $\vec u \cdot \vec v = c\,(\vec v \cdot \vec v)$, which is the coefficient in the formula and the only value of $c$ that can work.
 
 Since [[vector-dot-product|the dot product]] equals $\lvert\vec u\rvert\lvert\vec v\rvert\cos\theta$, that coefficient times $\lvert\vec v\rvert$ is $\lvert\vec u\rvert\cos\theta$: the shadow $\vec u$ casts on the direction of $\vec v$.
+
+For any other point $t\vec v$ of the line, $\vec u - t\vec v$ is the perpendicular part plus $(c - t)\vec v$, two perpendicular pieces, so by Pythagoras $\lvert\vec u - t\vec v\rvert^2 = \lvert\vec u - c\vec v\rvert^2 + (c - t)^2\lvert\vec v\rvert^2$. The perpendicular part is therefore the shortest.
 
 ## Useful observations
 - Two payoffs. The component along a direction: a force, a displacement, or a side resolved onto an axis is this formula and nothing else. And, more useful on contests, the leftover $\vec u - \operatorname{proj}_{\vec v}\vec u$ is a distance.
@@ -6091,7 +6272,9 @@ A recurring AIME shape asks for the infimum of a length over figures inscribed i
 The vertex is at the origin in these forms; a parabola with vertex $(h, k)$ replaces $x$ and $y$ by $x - h$ and $y - k$. A parabola opening downward or leftward has $p \lt 0$.
 
 ## Why it works
-Impose $\operatorname{dist}(P, F) = \operatorname{dist}(P, \ell)$ with $F = (0, p)$ and $\ell: y = -p$. Squaring gives $x^2 + (y - p)^2 = (y + p)^2$, and the $y^2$ and $p^2$ terms cancel on both sides, leaving $x^2 = 4py$. Almost nothing survives the cancellation, which is why the parabola has the simplest equation of the three conics and why $p$ is the only parameter it has.
+Impose $\operatorname{dist}(P, F) = \operatorname{dist}(P, \ell)$ with $F = (0, p)$ and $\ell: y = -p$. Squaring gives
+$$x^2 + (y - p)^2 = (y + p)^2,$$
+and the $y^2$ and $p^2$ terms cancel on both sides, leaving $x^2 = 4py$. Almost nothing survives the cancellation, which is why the parabola has the simplest equation of the three conics and why $p$ is the only parameter it has. Swapping the roles of $x$ and $y$ gives $y^2 = 4px$, and $y = ax^2$ is $x^2 = \frac1a y$, so $4p = \frac1a$.
 
 Setting $y = p$ recovers the latus rectum: $x^2 = 4p^2$, so the chord runs from $-2p$ to $2p$ and has length $\lvert 4p\rvert$.
 
@@ -6144,9 +6327,9 @@ Equal eccentricity is the phrase to watch for: two ellipses with the same eccent
 The coefficients are real and $A$, $B$, $C$ are not all zero. The sign of $B^2 - 4AC$ survives both rotation and translation, so it classifies the curve without putting it in standard form.
 
 ## Why it works
-Rotating the axes by $\theta$ mixes $x$ and $y$ linearly, and a direct computation shows $B^2 - 4AC$ comes out unchanged; translating changes only $D$, $E$, and $F$. So the quantity is a property of the curve, not of the coordinates chosen to write it.
+Write the second-degree part as $Ax^2 + Bxy + Cy^2 = \mathbf x^{\mathsf T}M\mathbf x$ with $M = \begin{pmatrix} A & B/2 \\ B/2 & C\end{pmatrix}$, so that $\det M = AC - \frac{B^2}4 = -\frac{B^2 - 4AC}4$. Rotating the axes replaces $\mathbf x$ by $R\mathbf x$ with $\det R = 1$, so $M$ becomes $R^{\mathsf T}MR$, which has the same determinant; translating changes only $D$, $E$, and $F$. So $B^2 - 4AC$ is a property of the curve, not of the coordinates chosen to write it.
 
-Its sign measures how the second-degree part factors: negative and it does not factor over the reals, which forces a closed curve; zero and it is a perfect square, which is the parabolic boundary case; positive and it splits into two real directions, which become the hyperbola's asymptotes.
+Its sign measures how the second-degree part factors. Rotate so that $B = 0$; then $B^2 - 4AC = -4AC$. Negative means $A$ and $C$ have the same sign, which after completing the squares gives an ellipse, a point, or nothing: a closed curve. Zero means one of them is $0$, a parabola or a degenerate case. Positive means opposite signs, a hyperbola, whose two real directions where the quadratic part vanishes are the asymptotes.
 
 ## Useful observations
 - $B^2 - 4AC$ is computed first, since it says what the curve is and therefore which card applies.
@@ -6378,7 +6561,13 @@ $P$ lies on the circumcircle. As $P$ approaches a vertex the line approaches the
 ## Why it works
 Take $P$ on the circumcircle and drop the perpendicular to $BC$, landing at the foot $F$. The reflection of $P$ in $BC$ is the point $2F - P$, so reflecting is exactly the homothety centered at $P$ with ratio $2$ applied to the foot. Doing that for all three sides carries the whole Simson line to the line of reflections, which therefore exists and is parallel to it.
 
-That the Steiner line passes through $H$ takes one more fact: the reflection of $H$ in a side lies on the circumcircle, as on [[orthocenter-properties|the orthocenter card]]. It makes the reflection of $P$ in a side lie on a line through $H$, and running it for each side puts $H$ on the common line.
+For $H$, use directed angles mod $180^\circ$. Let $P_a$, $P_b$ be the reflections of $P$ in $BC$ and $CA$, and $H_a$, $H_b$ those of $H$; both $H_a$ and $H_b$ lie on the circumcircle ([[orthocenter-properties|the orthocenter card]]), on the altitudes $AH$ and $BH$. Reflecting in $BC$ sends line $H_aP$ to line $HP_a$, so
+$$\angle(HP_a, AH) = -\angle(H_aP, H_aA) = -\angle(CP, CA),$$
+the last step by inscribed angles. In the same way $\angle(HP_b, BH) = -\angle(CP, CB)$.
+
+Adding $\angle(AH, BH) = \angle(CB, CA)$, as the altitudes are the sides turned by $90^\circ$,
+$$\angle(HP_a, HP_b) = -\angle(CP, CA) + \angle(CB, CA) + \angle(CP, CB) = 0.$$
+So $H$, $P_a$, $P_b$ are collinear, and the same holds with the third side.
 
 ## Useful observations
 - A problem that reflects a circumcircle point over the sides, which otherwise looks like three unrelated constructions, is recognized here. The collinearity is the payoff, and the extra information over the Simson line is the point $H$.
@@ -6576,7 +6765,15 @@ Rare, and almost always the punchline of a problem built around it rather than a
 The two lines are distinct. The statement is purely projective: it uses no lengths, angles, or circles, so it survives any projective transformation.
 
 ## Why it works
-A pair of distinct lines is a conic, since its equation factors into two linear factors. So six points, three on each line, are six points of a conic, and Pascal says the three intersections of opposite sides of the hexagon $AEBFCD$ are collinear. Those opposite-side pairs are exactly $AE$ with $BD$, $AF$ with $CD$, and $BF$ with $CE$.
+In Pascal's terms, the hexagon is $AECDBF$: its opposite sides are $AE$ and $DB$, $EC$ and $BF$, $CD$ and $FA$, which meet in exactly the three points, and a pair of lines is a degenerate conic. Since the projective proof of Pascal needs a genuine conic, here is a direct proof by [[menelaus-theorem|Menelaus]].
+
+Let the lines $AE$, $CD$, $BF$ form a triangle $UVW$, with $U = AE \cap CD$, $V = CD \cap BF$, $W = BF \cap AE$, and let $X = AE \cap BD$, $Y = AF \cap CD$, $Z = BF \cap CE$. Five lines each cut all three sides: $ABC$, $DEF$, $BDX$, $AFY$ and $CEZ$. With signed ratios, Menelaus gives for each
+$$\frac{UP}{PV} \cdot \frac{VQ}{QW} \cdot \frac{WR}{RU} = -1,$$
+with $P$, $Q$, $R$ its points on $UV$, $VW$, $WU$.
+
+Multiply the relations for $BDX$, $AFY$ and $CEZ$, and divide by those for $ABC$ and $DEF$. Every ratio at $A$, $B$, $C$, $D$, $E$, $F$ appears once on each side and cancels, leaving
+$$\frac{UY}{YV} \cdot \frac{VZ}{ZW} \cdot \frac{WX}{XU} = \frac{(-1)^3}{(-1)^2} = -1,$$
+so $X$, $Y$, $Z$ are collinear by the converse of Menelaus.
 
 ## Useful observations
 - It answers collinearity questions in figures made only of lines and their crossings, where metric tools have nothing to grip.
@@ -6662,9 +6859,12 @@ Never asked as a statement. It matters because the instinct to apply Pick's Theo
 The region is a lattice polygon with polygonal holes whose vertices are lattice points. The holes do not touch the outer boundary or each other.
 
 ## Why it works
-Cut the region into a single hole-free piece by slicing from the outer boundary to each hole along lattice segments. Each of the $h$ cuts is traversed twice, once in each direction, so every lattice point on a cut is counted twice as a boundary point of the sliced polygon while being counted once, or not at all, in the original.
+Let the outer polygon be $Q$ and the holes $H_1, \ldots, H_h$, all lattice polygons, with the holes disjoint from each other and from the outer boundary. The area of the region is $[Q] - \sum_j[H_j]$. Its boundary points are those of $Q$ and of every hole, and its interior points are those interior to $Q$ that are neither inside nor on a hole:
+$$B = B(Q) + \sum_j B(H_j), \qquad I = I(Q) - \sum_j\big(I(H_j) + B(H_j)\big).$$
 
-Tracking that bookkeeping across all $h$ cuts, the $-1$ in [[picks-theorem|Pick's Theorem]] becomes $-1 + h$. The clean statement is $A = I + \frac B2 - \chi$, where $\chi$ is $1$ for a disc and $1 - h$ with $h$ holes, so it is not a patch on Pick but the same theorem with the constant showing what it always was.
+Apply [[picks-theorem|Pick's Theorem]] to $Q$ and to each hole and subtract:
+$$A = \Big(I(Q) + \tfrac{B(Q)}2 - 1\Big) - \sum_j\Big(I(H_j) + \tfrac{B(H_j)}2 - 1\Big) = I + \tfrac B2 - 1 + h.$$
+The clean statement is $A = I + \frac B2 - \chi$, where $\chi$ is $1$ for a disc and $1 - h$ with $h$ holes, so it is not a patch on Pick but the same theorem with the constant showing what it always was.
 
 ## Useful observations
 - Two counting rules matter more than the formula: $B$ is counted over every boundary curve, and $I$ only at points strictly inside the region.
@@ -9125,13 +9325,13 @@ The idea is to put the right angle on the coordinate axes: then each midpoint ha
 
 Step 1, the setup. Put $H$ at the origin with $\ell_1$ and $\ell_2$ as the axes, and write side line $i$ as $u_i x + v_i y = 1$. It meets the axes at $\left(\tfrac1{u_i}, 0\right)$ and $\left(0, \tfrac1{v_i}\right)$, so its midpoint is $M_i = \left(\tfrac1{2u_i}, \tfrac1{2v_i}\right)$.
 
-Step 2, the orthocenter. The vertex opposite side $i$ lies on the altitude through $H$, the line along the normal $n_i = (u_i, v_i)$, so it is $t_i n_i$. Lying on the other two side lines gives $t_i(n_i \cdot n_j) = 1 = t_i(n_i \cdot n_k)$, so all three dot products $n_1 \cdot n_2$, $n_2 \cdot n_3$, $n_3 \cdot n_1$ are equal, say to $c$.
+Step 2, the orthocenter. The vertex opposite side $i$ lies on the altitude through $H$, the line along the normal $n_i = (u_i, v_i)$, so it is $t_i n_i$. Lying on the other two side lines gives $t_i(n_i \cdot n_j) = 1 = t_i(n_i \cdot n_k)$, so all three dot products $n_1 \cdot n_2$, $n_2 \cdot n_3$, $n_3 \cdot n_1$ are equal. In particular $n_k \cdot (n_i - n_j) = 0$, which says
+$$\frac{u_i - u_j}{v_i - v_j} = -\frac{v_k}{u_k}$$
+for each labelling $i, j, k$ of $1, 2, 3$.
 
-Step 3, the collinearity. The midpoints are collinear exactly when the three points $\left(\tfrac1{u_i}, \tfrac1{v_i}\right)$ are, and multiplying row $i$ of that determinant by $u_iv_i$ turns the condition into
-
-$$\det\begin{pmatrix} v_1 & u_1 & u_1v_1 \\ v_2 & u_2 & u_2v_2 \\ v_3 & u_3 & u_3v_3 \end{pmatrix} = 0,$$
-
-which follows from the three equal dot products by expanding along the last column; the algebra is routine but long.
+Step 3, the collinearity. The midpoints are collinear exactly when the points $Q_i = \left(\tfrac1{u_i}, \tfrac1{v_i}\right)$ are. The slope from $Q_i$ to $Q_j$ is
+$$\frac{\frac1{v_j} - \frac1{v_i}}{\frac1{u_j} - \frac1{u_i}} = \frac{u_iu_j}{v_iv_j}\cdot\frac{v_i - v_j}{u_i - u_j} = -\frac{u_1u_2u_3}{v_1v_2v_3},$$
+by Step 2. That value is the same for every pair, so the three points lie on one line.
 
 ## Useful observations
 - Turning the right angle about $H$ moves the line; when one of the lines is an altitude the segment on that side collapses toward the foot.

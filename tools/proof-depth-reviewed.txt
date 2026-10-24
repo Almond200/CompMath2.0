@@ -1,0 +1,224 @@
+# Step E: cards read and judged complete, though short (one id per line; text after # is a note).
+proof-by-cases            # the rule of cases, stated and justified
+contrapositive            # truth-table argument
+proof-by-contradiction    # excluded middle
+direct-proof              # chaining implications
+completing-the-square     # expansion, the minimum, and the integer form are all argued
+squares-mod-small         # rewritten 2026-10-24
+floor-multiples           # rewritten 2026-10-24
+pigeonhole-argument       # the counting argument is complete
+proving-both-directions
+disproof-by-counterexample
+strong-induction          # reduces to ordinary induction on Q(n)
+proof-by-construction
+reduce-divisibility-constant
+group-equal-floors
+invariants-coloring
+ratio-lemma               # altitude and symmedian cases added
+sophie-germain            # observations proved
+digit-count               # observations proved
+vector-dot-product        # each Key form derived
+section-formula           # external division and centroid derived
+triple-angle              # tangent form, the cubic, and the cube reductions derived
+frustum-volume            # full derivation
+wlog-symmetry
+minimal-counterexample
+an-minus-bn               # divisibility and gcd of a^n - 1 proved
+arithmetico-geometric     # finite sum, x = 2, and the k^2 sum derived
+polar-form
+special-trig-values       # pentagon values derived from sin 2t = cos 3t
+name-the-floor
+harmonic-addition         # cosine form and range argued
+perfect-square-divisors   # jth powers and the smallest multiplier argued
+plane-regions             # circle count summed
+fit-copies
+infinite-descent
+shared-leg-pythagoras
+substitute-repeated-block
+prime-divides-binomial    # prime powers and both observations proved
+brahmaguptas-formula      # full derivation
+modular-inverse           # 2^{-1}, the unit count, and the g > 1 case proved
+cavalieris-principle      # the sphere slice check
+bernoulli-inequality      # equality case and the fractional form by convexity
+ptolemys-inequality       # inversion argument in full
+product-of-divisors       # proper-divisor and d(n) = 4 observations argued
+zeckendorf-theorem        # lemma, existence, uniqueness, count
+harmonic-bundle           # midpoint criterion and the swaps proved
+pascals-theorem           # Menelaus proof, degenerate and conic cases, Brianchon by duality
+coefficient-extraction    # absolute-value sums argued
+hockey-stick              # telescoping written out, second form, binomial basis
+lagrange-interpolation-formula
+cramers-rule              # the det = 0 cases argued
+p-adic-valuation
+tail-sum-expectation      # continuous form, maxima, geometric wait
+generating-function-method
+lcm-pair-counting         # variants argued
+incenter-coordinates      # bisector theorem twice, excenter, masses
+cross-product-area        # Lagrange identity, triple product, distance
+power-mean-inequality     # all sign cases and the limit
+incenter-area-split       # any interior point
+simson-line               # equivalence, direction, midpoint of PH
+steiner-line              # directed-angle proof through H
+induction
+total-expectation         # Wald's identity proved
+difference-of-squares-rep # the count for odd n
+planar-graph-bound        # disconnected case and the degree corollary
+arctan-telescoping        # range condition, both families, the classic
+quadratic-forms
+useful-factorizations
+sin-cos-ap-sum            # telescoping written out, special cases
+subtract-equal-remainders
+15-75-90-triangle
+fermat-point              # bound, equality, and the 120-degree case
+multiplicative-order      # all observations
+crt-solution-counting     # prime powers counted
+averages-to-totals
+numeral-as-polynomial
+projection-formula        # Law of Cosines from it, the path form
+consecutive-coprime       # negative runs, k = 2, the square observation
+take-logs-linearize
+stars-bars-upper-bound
+inverse-trig-identities   # each identity and the correction proved
+primes-6k
+exradii                   # every Key form proved
+trig-substitution         # the tangent condition derived
+inclusion-exclusion       # Bonferroni bounds, derangements, onto maps
+scale-one-level
+wilsons-theorem           # (p-2)!, composite n > 4, the half-factorial
+catalan-numbers           # the other families by the recurrence
+working-backwards
+lte                       # method card; the proof is on lte-lemma
+rectangles-in-grid
+euclids-lemma
+halls-marriage            # full induction proof of sufficiency
+eulers-polyhedron-formula # spanning-tree proof, bounds, Platonic solids; genus quoted
+vertex-form
+eulers-theorem            # exponent reduction
+exponent-laws
+angle-between-lines       # perpendicular and vertical cases
+jensens-inequality        # induction, derivative test, specializations
+parabola-focus-directrix
+sos-identity              # n-variable form
+coloring-arguments
+fundamental-theorem-algebra # analytic core labelled quoted, with a reference; the rest proved
+incircle-excircle-touch   # tangent lengths derived
+factorial-telescoping     # third form and base-factorial uniqueness
+proving-uniqueness
+discrete-intermediate-value
+log-swap-identity
+trapezoid-consecutive-angles
+weighted-am-gm            # via weighted Jensen, equality
+reciprocal-power-sums     # first few and the cosine form derived
+miquels-theorem           # spiral-similarity Key form restated correctly and proved
+pairwise-sum-product      # companion identity proved
+turans-theorem            # Mantel and the induction proof
+triangle-sin2-sum-ratio   # product form and the bound by Euler's inequality
+gcd-power-minus-one       # divisibility, repunits, a^m - b^m, observations
+max-rectangle-in-triangle
+strengthening-the-hypothesis
+counting-functions
+terminating-decimals      # preperiod and purely periodic decimals proved
+generalized-binomial-series # convergence and identity by the differential equation
+inscribed-square          # right-triangle forms derived
+clock-angle
+schurs-inequality         # equality, the expanded and s, q, r forms
+two-tangents-angle
+chebyshev-polynomials     # U recurrence, roots, composition, the minimax proof
+triangle-angle-identities # cosine sum via r = 4R sin sin sin, cotangent identity
+even-power-sin-cos-sums
+order-statistics          # circle argument for the gaps, discrete forms derived
+forward-backward-induction
+descartes-rule-signs      # parity and the sign-change lemma proved
+sperners-theorem          # LYM by counting chains
+turn-based-games
+cotangent-rule
+monovariant
+power-minus-self          # the small cases worked from the rule
+freshmans-dream
+cauchy-functional-equations # rationals, regularity, the other three forms
+erdos-szekeres            # sharpness construction
+lagrange-roots-mod-p      # the factorization of x^(p-1) - 1 proved
+moser-circle              # Euler count written out; link fixed to the polyhedron card
+graph-coloring            # bipartite test proved; Brooks and Four Color quoted with references
+reduction-identities
+pappus-centroid
+alternating-squared-binomials
+vandermonde-determinant
+dilworths-theorem         # Galvin's induction proof and Mirsky
+normalization
+muirheads-inequality      # the one-move inequality proved; the transfer lemma quoted with a reference
+percent-change
+center-distance-formulas  # dot products, the angle form, the power of I
+mean-median-mode
+median-triangle-area      # medians form a triangle
+vector-projection         # shortest-distance claim
+triangle-square-identities # the sum-to-product step written out
+common-chord-length
+weierstrass-substitution
+pell-equation             # recurrence as multiplication
+brahmagupta-fibonacci
+ngon-vertex-distance-product # the fixed-vertex product derived
+abel-summation            # the reindexing written out
+ramanujan-nested-radical  # golden-ratio convergence proved; the infinite tower quoted with a reference
+trig-telescoping-product
+trig-area-circumradius
+chebyshev-sum-inequality
+cot-tan-telescoping
+complete-quadrilateral-miquel # full proof via Miquel; circumcenter circle quoted with a reference
+evenly-spaced-angle-products  # roots-of-unity proof with the sign argument
+hermite-identity          # periodicity proof
+beatty-theorem            # no collision, no gap
+hellys-theorem            # Radon and the induction
+cyclic-quad-radius
+brianchon-theorem         # polarity carried out
+karamata-inequality       # slopes and Abel summation
+carnots-theorem
+maclaurin-inequality      # Newton via Rolle (quadratic checked by computer), Maclaurin by induction
+lgv-lemma                 # the involution made precise
+lattice-points-circle     # the count quoted (Hardy and Wright, Thm 278); the zero criterion derived
+van-aubel                 # the complex computation written out
+newtons-line              # signed-area proof of both statements
+fermat-numbers
+coprime-residue-sum
+exponential-generating-functions
+thues-lemma
+farey-sequences           # gap lemma and induction
+pisano-periods            # lcm by CRT
+polya-enumeration         # the necklace cycle index derived
+brocard-angle             # Law of Sines derivation, csc form, the 30-degree bound
+convex-position           # base case argued; Erdos-Szekeres and ES(5) quoted with references
+variance-independence
+lagranges-identity
+desargues-theorem         # Menelaus proof and the converse
+kummers-theorem
+jacobi-symbol             # supplements derived
+totient-divisor-sum
+zsygmondy                 # quoted with the original reference; q = 1 mod n proved
+pappus-hexagon            # hexagon corrected to AECDBF (card and example); direct Menelaus proof
+carmichael-numbers        # Korselt both directions; wrong link to Fermat numbers removed
+matrix-tree-theorem       # incidence matrix, Cauchy-Binet, the tree lemma, eigenvalues, K_n
+minkowski-lattice
+coprime-probability       # Mobius count and the limit; zeta(2) quoted
+probability-generating-functions
+wolstenholme              # binomial forms and power sums proved
+stirling-first-kind
+resultant-discriminant    # vanishing criterion proved; product formula quoted (Lang); cubic sign
+cardano-cubic
+markovs-inequality
+floor-sum-reciprocity
+droz-farny                # collinearity by equal slopes (marker scan)
+conic-classification      # invariance by det of the quadratic form (marker scan)
+picks-with-holes          # Pick applied to the outer polygon and the holes (marker scan)
+sum-of-three-squares      # converse quoted with a reference (marker scan)
+base10-curiosities        # cyclic number and 1089 proved; finite facts checked by computer (marker scan)
+# second pass (proof-depth --dense), 2026-10-24
+absolute-value-rules
+product-of-uniforms       # three-variable form derived
+matrix-inverse
+eulers-formula
+mobius-transformations    # cross-ratio, three points, fixed points, inversion
+derangements              # nearest integer and the second recurrence proved
+hypergeometric            # exchange form and variance derived
+sum-zero-identities
+triangular-numbers
+pythagorean-identities
