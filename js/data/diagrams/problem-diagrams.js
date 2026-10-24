@@ -4540,4 +4540,34 @@
       cap(430, 270, "Triangle PAT with ∠P = 36°, ∠A = 56° and PA = 10; PU = AG = 1, and M, N are the midpoints of PA and UG." + MM(ok))
     ]);
   })();
+
+  // 2018 AMC 12B #4: a chord of length 10 at distance 5 from the center.
+  PROB["2018-amc-12b-4"] = (() => {
+    const r = Math.sqrt(50), O = [0, 0], X = [-5, -5], Y = [5, -5], F = [0, -5];
+    const ok = Math.abs(dist(O, X) - r) < 1e-12 && Math.abs(dist(X, Y) - 10) < 1e-12 && Math.abs(dist(O, F) - 5) < 1e-12;
+    const Q = fitQ([[-r, -r], [r, r]], 24, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O), r * k, DIM, 1.8), seg(Q(X), Q(Y), ACC, 2), seg(Q(O), Q(F), GLD, 1.6, "5 4"), rightAngle(Q(F), Q(O), Q(Y), 10),
+      dot(Q(O), DIM, 3), txt(add(Q(O), [0, -10]), "O"), txt(add(Q(mid(F, Y)), [0, -8]), "XY = 10", ACC, 12), txt(add(Q(X), [-6, 14]), "X", ACC, 12.5), txt(add(Q(Y), [6, 14]), "Y", ACC, 12.5),
+      txt(add(Q(mid(O, F)), [-12, 4]), "5", GLD, 12.5),
+      cap(430, 270, "A chord XY of length 10 whose distance from the center O is 5." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12B #12: AB = 10, the bisector of angle A meets BC at D with CD = 3. Drawn with
+  // AC = 8, one value inside the answer interval; AC is the unknown, so it is not labelled.
+  PROB["2018-amc-12b-12"] = (() => {
+    const b = 8, a = 3 + 30 / b, c = 10;                       // BD = 30/AC by the bisector theorem
+    const B = [0, 0], C = [a, 0], xA = (c * c - b * b + a * a) / (2 * a), A = [xA, Math.sqrt(c * c - xA * xA)];
+    const D = [30 / b, 0];
+    const ang = (X, V, Y) => Math.acos(((X[0] - V[0]) * (Y[0] - V[0]) + (X[1] - V[1]) * (Y[1] - V[1])) / (dist(X, V) * dist(Y, V)));
+    const ok = Math.abs(ang(B, A, D) - ang(D, A, C)) < 1e-9 && Math.abs(dist(C, D) - 3) < 1e-9 && Math.abs(dist(A, B) - 10) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(A), Q(D), ACC, 1.8), angleArc(Q(A), Q(B), Q(D), 26, GLD), angleArc(Q(A), Q(D), Q(C), 32, GLD),
+      dot(Q(D), ACC, 3.5), txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(D), [0, 16]), "D", ACC, 13),
+      txt(add(Q(mid(A, B)), [-14, 0]), "10", DIM, 12), txt(add(Q(mid(D, C)), [0, 16]), "3", DIM, 12),
+      cap(430, 270, "AB = 10, and the bisector of angle A meets BC at D with CD = 3 (drawn for one possible AC)." + MM(ok))
+    ]);
+  })();
 })();
