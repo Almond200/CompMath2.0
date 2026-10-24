@@ -4917,4 +4917,48 @@
       cap(430, 270, "The cube with, on each face, all six segments joining midpoints of its edges (shown on the three visible faces)." + MM(ok))
     ]);
   })();
+
+  // 2011 AMC 12A #13: triangle ABC (12, 24, 18), its incenter I, and the parallel to BC through I.
+  PROB["2011-amc-12a-13"] = (() => {
+    const a = 24, b = 18, c = 12, B = [0, 0], C = [a, 0], xA = (c * c - b * b + a * a) / (2 * a), A = [xA, Math.sqrt(c * c - xA * xA)];
+    const I = [(a * A[0] + b * B[0] + c * C[0]) / (a + b + c), (a * A[1] + b * B[1] + c * C[1]) / (a + b + c)];
+    const M = lineInt(A, B, I, add(I, [1, 0])), N = lineInt(A, C, I, add(I, [1, 0]));
+    const ok = Math.abs(dist(A, M) + dist(M, N) + dist(N, A) - 30) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(M), Q(N), ACC, 1.8), seg(Q(B), Q(I), FNT, 1.2, "4 4"), seg(Q(C), Q(I), FNT, 1.2, "4 4"), dot(Q(I), ACC, 3.5),
+      txt(add(Q(A), [0, -10]), "A"), txt(add(Q(B), [-12, 8]), "B"), txt(add(Q(C), [12, 8]), "C"), txt(add(Q(I), [0, 16]), "I", ACC, 12.5),
+      txt(add(Q(M), [-12, 0]), "M", ACC, 12.5), txt(add(Q(N), [12, 0]), "N", ACC, 12.5),
+      txt(add(Q(lerp(A, B, 0.75)), [-14, 0]), "12", DIM, 12), txt(add(Q(mid(A, C)), [14, -4]), "18", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "24", DIM, 12),
+      cap(430, 270, "Triangle ABC with AB = 12, BC = 24, AC = 18; the line through the incenter I parallel to BC meets AB at M and AC at N." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AMC 12A #15: the cut through the apex perpendicular to two opposite base edges: the pyramid's
+  // cross-section is a triangle of height 6 and the hemisphere's is a half disk of radius 2 touching both slants.
+  PROB["2011-amc-12a-15"] = (() => {
+    const x = 3 / Math.SQRT2, L = [-x, 0], R = [x, 0], T = [0, 6], O = [0, 0];
+    const dl = Math.abs(6 * x) / Math.hypot(6, x), ok = Math.abs(dl - 2) < 1e-12;
+    const Q = fitQ([L, R, T, [-2, 0], [2, 0]], 22, 430, 270), k = Q.k;
+    const arc = Array.from({ length: 61 }, (_, i) => Q([2 * Math.cos(Math.PI * i / 60), 2 * Math.sin(Math.PI * i / 60)]));
+    return wrap(430, 270, [
+      poly([L, R, T].map(Q), DIM, 2), pline(arc, ACC, 1.8), seg(Q(O), Q(T), FNT, 1.2, "4 4"), dot(Q(O), DIM, 3),
+      txt(add(Q(T), [12, 8]), "apex"), txt(add(Q(mid(O, T)), [10, 0]), "6", DIM, 12), txt(add(Q([1, 0]), [0, 14]), "2", ACC, 12),
+      cap(430, 270, "A cut through the apex perpendicular to two opposite base edges: the pyramid of height 6 and the hemisphere of radius 2 touching its faces." + MM(ok))
+    ]);
+  })();
+
+  // 2011 AMC 12A #17: circles of radii 1, 2, 3 mutually externally tangent, and the triangle of tangency points.
+  PROB["2011-amc-12a-17"] = (() => {
+    const O1 = [0, 0], O2 = [3, 0], O3 = [0, 4], r = [1, 2, 3];
+    const T12 = lerp(O1, O2, 1 / 3), T13 = lerp(O1, O3, 1 / 4), T23 = lerp(O2, O3, 2 / 5);
+    const area = (P, Qq, R) => Math.abs((Qq[0] - P[0]) * (R[1] - P[1]) - (R[0] - P[0]) * (Qq[1] - P[1])) / 2;
+    const ok = Math.abs(area(T12, T13, T23) - 1.2) < 1e-12;
+    const Q = fitQ([[-3, -3], [5, 7]], 12, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O1), k, DIM, 1.5), circ(Q(O2), 2 * k, DIM, 1.5), circ(Q(O3), 3 * k, DIM, 1.5), poly([T12, T13, T23].map(Q), ACC, 1.8, ACCS),
+      txt(Q(O1), "1", DIM, 12), txt(Q(O2), "2", DIM, 12), txt(Q(O3), "3", DIM, 12),
+      cap(430, 270, "Circles of radii 1, 2 and 3, each tangent to the other two, and the triangle (blue) formed by the three points of tangency." + MM(ok))
+    ]);
+  })();
 })();
