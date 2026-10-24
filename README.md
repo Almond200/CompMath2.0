@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2000 AMC 12 finished; the AMC 12 is done (2026-10-24).** 2000 AMC 12 #19 ($[ADE]=3$), 20 ($xyz=1$), 22 (the non-real pair multiplies to under $\tfrac56$), 23 (four balanced sets, $\tfrac14$), 24 ($s=\tfrac{3r}8$, $27$), 25 ($\tfrac{8!}{24}=1680$). Every AMC 10, AMC 12 and AIME problem now has a strategy; the AMC 8 is next. All checked by script.
 - **Step D: 2001 AMC 12 finished, 2000 AMC 12 begun (2026-10-24).** 2001 AMC 12 #24 ($75^\circ$), 25 (period $5$, four values); 2000 AMC 12 #2, 5, 15 (twins of 10 #2, #9, #24), 7, 10, 12 ($125-13=112$), 16 ($555$), 17 ($\tfrac1{1+\sin\theta}$). All checked by script.
 - **Step D: 2001 AMC 12, ten more (2026-10-24).** #14 ($66$), 15 (unfolded rhombus, $1$), 16 ($\tfrac{16!}{2^8}$), 17 ($\tfrac5{16}$), 18 ($r=\tfrac49$), 19 ($b=-11$), 20 (Varignon, $D=(7,3)$), 21 ($(24,20,6,14)$), 22 ($[EHJ]=3$), 23 ($x^2-x+3$). All checked by script.
 - **Step D: 2002 AMC 12B finished, 2001 AMC 12 begun (2026-10-24).** 2002 AMC 12B #18 ($\tfrac34$), 19 ($abc=720$), 21 ($448$), 22 ($-1$), 23 (Apollonius, $\sqrt2$), 24 (right angles at $P$, $4(36+\sqrt{113})$), 25 (half a disk, $8\pi$); 2001 AMC 12 #5, 9, 13. All checked by script.
