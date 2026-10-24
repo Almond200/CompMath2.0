@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: 8 Lowest cards (2026-10-24).** Cardano's cubic formula, Popoviciu, Stirling numbers of the first kind, Kruskal–Katona, Markov's inequality, coprime probability, probability generating functions and Mollweide. Cards under two: 81.
 - **F: 10 more Lower cards (2026-10-24).** The Dumpty point, pedal triangles, isotomic conjugates, Carnot, the Steiner line, the anti-Steiner point, Feuerbach, Leibniz, orthocentric systems and the Spieker point. Cards under two: 85.
 - **F: 10 more Lower cards (2026-10-24).** The parallel-sided hexagon, distance products to an $n$-gon, Van Aubel, Bretschneider, Euler's quadrilateral theorem, area from the circumradius, Erdős–Mordell, the Law of Tangents, Weitzenböck and the Humpty point. Cards under two: 89.
 - **F: 10 more Lower cards (2026-10-24).** Necklaces, the pentagonal number theorem, Pólya, Erdős–Ko–Rado, products of uniforms, variance, Schur's theorem, Cayley, the Matrix–Tree Theorem and LGV. Cards under two: 95.

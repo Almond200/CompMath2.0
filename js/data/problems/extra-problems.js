@@ -1808,4 +1808,44 @@
     { q: String.raw`Locate the Spieker point of the $3$-$4$-$5$ triangle placed with its right angle at the origin, legs along the axes, and confirm that it bisects the segment from the incenter to the Nagel point.`,
       s: String.raw`Take $A = (0, 0)$, $B = (4, 0)$, $C = (0, 3)$. Here $a = BC = 5$, $b = 3$, $c = 4$, so $S = (7 : 9 : 8)$, that is $\tfrac{7A + 9B + 8C}{24} = \left(\tfrac32, 1\right)$. The incenter is $(1, 1)$ and the Nagel point $(s - a : s - b : s - c) = (1 : 3 : 2)$ is $(2, 1)$, whose midpoint with $I$ is $\left(\tfrac32, 1\right)$. The Spieker circle has radius $\tfrac r2 = \tfrac12$.` }
   );
+  add("cardano-cubic",
+    { q: String.raw`Write the real root of $t^3 - 6t - 9$ as a sum of two cube roots, then simplify it.`,
+      s: String.raw`Here $p = -6$, $q = -9$, so $\tfrac{q^2}4 + \tfrac{p^3}{27} = \tfrac{81}4 - 8 = \tfrac{49}4$, with square root $\tfrac72$. Then $t = \sqrt[3]{\tfrac92 + \tfrac72} + \sqrt[3]{\tfrac92 - \tfrac72} = 2 + 1 = 3$. Check: $27 - 18 - 9 = 0$. The other two roots, from $t^2 + 3t + 3$, are not real.` },
+    { q: String.raw`Use the discriminant to decide how many real roots $t^3 - 3t + 1$ has.`,
+      s: String.raw`$\Delta = -4p^3 - 27q^2 = -4(-27) - 27 = 81 \gt 0$, so there are three distinct real roots (they are $2\cos40^\circ$, $2\cos80^\circ$, $2\cos160^\circ$).` }
+  );
+  add("popoviciu-inequality",
+    { q: String.raw`Check Popoviciu's Inequality with $f(t) = t^2$ at $(x, y, z) = (0, 0, 6)$.`,
+      s: String.raw`The left side is $0 + 0 + 36 + 3\cdot2^2 = 48$, and the right side is $2(0 + 3^2 + 3^2) = 36$. Indeed $48 \ge 36$.` }
+  );
+  add("stirling-first-kind",
+    { q: String.raw`Expand $x(x+1)(x+2)(x+3)$ and read off how many arrangements of four labelled items split into two cycles.`,
+      s: String.raw`Expand $x(x + 1)(x + 2)(x + 3) = x^4 + 6x^3 + 11x^2 + 6x$; the coefficient of $x^2$ is $\left[{4 \atop 2}\right] = 11$. Check: $8$ are a $3$-cycle with a fixed point and $3$ are two $2$-cycles.` },
+    { q: String.raw`Why do the Stirling numbers of the first kind in row $n$ add to $n!$? Check $n = 4$.`,
+      s: String.raw`Every permutation has some number of cycles, so summing over that number counts all $n!$ permutations; in the product, this is $x = 1$, giving $1\cdot2\cdots n$. For $n = 4$: $6 + 11 + 6 + 1 = 24$.` }
+  );
+  add("kruskal-katona",
+    { q: String.raw`Ten $3$-element sets are chosen. What is the smallest possible number of $2$-element sets contained in at least one of them?`,
+      s: String.raw`$10 = \binom53$, so Kruskal–Katona gives at least $\binom52 = 10$ pairs, reached by taking all $10$ triples from $5$ elements.` }
+  );
+  add("markovs-inequality",
+    { q: String.raw`Incomes in a town average $50$ thousand dollars. At most what fraction of people earn $200$ thousand or more?`,
+      s: String.raw`Incomes are nonnegative, so Markov gives at most $\tfrac{50}{200} = \tfrac14$.` },
+    { q: String.raw`Bound the probability that a fair die shows at least $6$ with Markov's inequality, and compare with the truth.`,
+      s: String.raw`Markov gives $\tfrac{3.5}6 \approx 0.58$, while the true value is $\tfrac16$. The bound only uses the mean, so it can be far from sharp.` }
+  );
+  add("coprime-probability",
+    { q: String.raw`Count the coprime ordered pairs $(a, b)$ with $1 \le a, b \le 6$ and compare the fraction with $\tfrac6{\pi^2}$.`,
+      s: String.raw`There are $23$ of the $36$ pairs, a fraction of about $0.639$, against $\tfrac6{\pi^2} \approx 0.608$. The limit only appears as the range grows.` }
+  );
+  add("probability-generating-functions",
+    { q: String.raw`Use the PGF of the number of heads in $3$ fair flips to find $P(2\text{ heads})$ and the mean.`,
+      s: String.raw`Each flip has PGF $\tfrac{1 + s}2$, so three have $\tfrac{(1 + s)^3}8 = \tfrac{1 + 3s + 3s^2 + s^3}8$. So $P(2) = \tfrac38$, and $G'(s) = \tfrac{3(1 + s)^2}8$ gives the mean $G'(1) = \tfrac32$.` },
+    { q: String.raw`Find the variance of a fair die roll from its PGF.`,
+      s: String.raw`$G''(1) = E[X(X - 1)] = \tfrac{0 + 2 + 6 + 12 + 20 + 30}6 = \tfrac{35}3$ and $G'(1) = \tfrac72$. So $\operatorname{Var} = \tfrac{35}3 + \tfrac72 - \tfrac{49}4 = \tfrac{35}{12}$.` }
+  );
+  add("mollweides-formula",
+    { q: String.raw`Check both Mollweide formulas on an equilateral triangle.`,
+      s: String.raw`With $a = b = c$ and all angles $60^\circ$: $\tfrac{a + b}c = 2$ and $\tfrac{\cos0}{\sin30^\circ} = 2$; $\tfrac{a - b}c = 0$ and $\tfrac{\sin0}{\cos30^\circ} = 0$.` }
+  );
 })();
