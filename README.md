@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: second exercises for 13 more cards (2026-10-24).** The Humpty and Dumpty points, the Steiner line, the anti-Steiner point, Feuerbach, orthocentric systems, the Spieker point, cleavers, the butterfly, circles in a corner, Casey, Ptolemy on an equilateral triangle and perpendicular radii of a conic. Cards under two: 13.
 - **F: second exercises for 13 one-exercise cards (2026-10-24).** Mason–Stothers, resultants, eigenvalues, Brahmagupta–Fibonacci, Popoviciu, Kruskal–Katona, coprime probability, Schur, Van Aubel, Erdős–Mordell, the Law of Tangents, Mollweide and the Isogonal Line Lemma. Cards under two: 26.
 - **F: the last 11 cards with no practice (2026-10-24).** Cayley–Menger, Pappus, the Desargues involution, Möbius maps, the Miquel point, Brocard, projective maps, derivative extrema, matrix powers, dimension arguments and Vieta jumping, two exercises each. Every card now has at least one practice problem. Cards under two: 39.
 - **F: 11 number-theory cards (2026-10-24).** Gauss's totient sum, Dirichlet, Thue, Cauchy–Davenport, Erdős–Ginzburg–Ziv, Wolstenholme, Zsigmondy, Fermat numbers, Carmichael numbers, Beatty and floor-sum reciprocity, two exercises each. Cards under two: 50.

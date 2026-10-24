@@ -2152,4 +2152,56 @@
     { q: String.raw`In $A = (0, 0)$, $B = (3, 0)$, $C = (0, 6)$, the points $X = (1, \tfrac12)$ and $Y = (1, 2)$. Check that they are isogonal from $A$, find $P = BX \cap CY$ and $Q = BY \cap CX$, and confirm $AP$, $AQ$ are isogonal too.`,
       s: String.raw`The bisector of the right angle at $A$ is $y = x$, and the directions $(2, 1)$ and $(1, 2)$ are mirror images in it, so $AX$, $AY$ are isogonal. Solving gives $P = \left(\tfrac75, \tfrac25\right)$ and $Q = \left(\tfrac23, \tfrac73\right)$, with directions $(7, 2)$ and $(2, 7)$: mirror images again.` }
   );
+  add("humpty-queue-points",
+    { q: String.raw`For $B = (0, 0)$, $C = (6, 0)$, $A = (1, 4)$, locate the $A$-Humpty point $X$ and confirm $MX \cdot MA = MB^2$.`,
+      s: String.raw`The altitudes $x = 1$ and $y = \tfrac54x$ meet at $H = \left(1, \tfrac54\right)$. The median runs from $M = (3, 0)$ toward $A$ with direction $(-2, 4)$, and the foot from $H$ on it is $X = \left(\tfrac{21}{10}, \tfrac95\right)$. Then $MX = \sqrt{0.81 + 3.24} = \tfrac{9}{2\sqrt5}$ and $MA = 2\sqrt5$, so $MX \cdot MA = 9 = MB^2$.` }
+  );
+  add("dumpty-point",
+    { q: String.raw`Where is the $A$-Dumpty point of a triangle with a right angle at $A$? Check $DA^2 = DB \cdot DC$ on the $3$-$4$-$5$ triangle.`,
+      s: String.raw`With the right angle at $A$, the symmedian from $A$ is the altitude, and since $BC$ is a diameter the altitude meets the circle again at the reflection $K$ of $A$ in $BC$. So $D$, the midpoint of $AK$, is the foot of the altitude; the circle $BOC$ degenerates to the line $BC$, which holds it. For legs $3$, $4$: $DA = \tfrac{12}5$, $DB = \tfrac{16}5$, $DC = \tfrac95$, and $\tfrac{16}5 \cdot \tfrac95 = \tfrac{144}{25} = DA^2$.` }
+  );
+  add("steiner-line",
+    { q: String.raw`On $x^2 + y^2 = 25$, take $A = (0, 5)$, $B = (-3, -4)$, $C = (4, -3)$ and $P = (-5, 0)$. Reflect $P$ in the three side lines and find the line they lie on.`,
+      s: String.raw`$O$ is the origin, so $H = A + B + C = (1, -2)$. The reflections in $BC$, $CA$, $AB$ are $\left(-\tfrac{19}5, -\tfrac{42}5\right)$, $(7, 6)$ and $(1, -2)$, the last being $H$ itself. All three lie on $y + 2 = \tfrac43(x - 1)$, the Steiner line, which passes through $H$ as it must.` }
+  );
+  add("anti-steiner-point",
+    { q: String.raw`Why is the anti-Steiner point of any line joining a vertex to the orthocenter simply that vertex? Test it on the vertical altitude of the triangle with corners $A = (0, 6)$, $B = (-3, 0)$, $C = (2, 0)$.`,
+      s: String.raw`If $\ell$ passes through $A$, its reflections in $AB$ and $AC$ still pass through $A$, so they meet there, and $A$ is on the circumcircle. Here $H = (0, 1)$ and $\ell$ is $x = 0$; it is perpendicular to $BC$, so its reflection in $BC$ is itself, also through $A$. All three meet at $S = A$.` }
+  );
+  add("feuerbach-theorem",
+    { q: String.raw`For sides $13$, $14$, $15$, the incircle sits inside the nine-point circle almost centered. Measure the gap $NI$, and also $NI_A$ for the excircle on the side $14$.`,
+      s: String.raw`$K = 84$ and $s = 21$, so $R = \tfrac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \tfrac{65}8$, $r = 4$, and $r_A = \tfrac{84}{21 - 14} = 12$. Then $NI = \tfrac{65}{16} - 4 = \tfrac1{16}$ and $NI_A = \tfrac{65}{16} + 12 = \tfrac{257}{16}$. Coordinates with $B = (0, 0)$, $C = (14, 0)$, $A = (5, 12)$ give the same two distances.` }
+  );
+  add("orthocentric-system",
+    { q: String.raw`For $A = (0, 6)$, $B = (-3, 0)$, $C = (2, 0)$, find $H$, then check that $A$ is the orthocenter of $HBC$ and that the circumcenter of $HBC$ is the reflection of $O$ in $BC$.`,
+      s: String.raw`The altitudes $x = 0$ and $y = \tfrac{x + 3}3$ meet at $H = (0, 1)$. In $HBC$, the altitude from $H$ is $x = 0$ and the altitude from $B$, perpendicular to $HC$, is $y = 2(x + 3)$; they meet at $(0, 6) = A$. The circumcenter of $ABC$ is $O = \left(-\tfrac12, \tfrac52\right)$, and its reflection $\left(-\tfrac12, -\tfrac52\right)$ is $\sqrt{12.5}$ from $H$, $B$ and $C$ alike.` }
+  );
+  add("spieker-point",
+    { q: String.raw`The Spieker point is the incenter of the medial triangle. Check this for $A = (0, 0)$, $B = (12, 0)$, $C = (0, 5)$.`,
+      s: String.raw`With $a = 13$, $b = 5$, $c = 12$: $S = \frac{17A + 25B + 18C}{60} = \left(5, \tfrac32\right)$. The medial triangle $(6, 0)$, $\left(6, \tfrac52\right)$, $\left(0, \tfrac52\right)$ has its right angle at $\left(6, \tfrac52\right)$ and sides $6$, $\tfrac52$, $\tfrac{13}2$, so its inradius is $\frac{6 + 5/2 - 13/2}2 = 1 = \tfrac r2$ and its incenter is $\left(6 - 1, \tfrac52 - 1\right) = \left(5, \tfrac32\right)$.` }
+  );
+  add("perimeter-cleavers",
+    { q: String.raw`In the triangle with $AB = 13$, $BC = 14$, $CA = 15$, the cleaver starts at the midpoint $M$ of $BC$. Which side does it end on, and where?`,
+      s: String.raw`Half the perimeter is $21$. Going from $M$ through $C$ needs $7 + CX = 21$, so $CX = 14 \le 15$: the cleaver ends on $CA$ with $AX = 1$ (through $B$ it would need $14 \gt 13$). With $B = (0, 0)$, $C = (14, 0)$, $A = (5, 12)$, $X = (5.6, 11.2)$ and $MX$ has direction $(-1, 8)$, parallel to the bisector of angle $A$.` }
+  );
+  add("butterfly-theorem",
+    { q: String.raw`On the radius-$5$ circle about the origin, $y = 3$ cuts a chord bisected at $(0, 3)$. Two more chords pass through that point: $(3, 4)$ to $\left(-\tfrac{24}5, \tfrac75\right)$, and the vertical diameter. Join $(3, 4)$ to $(0, -5)$ and $\left(-\tfrac{24}5, \tfrac75\right)$ to $(0, 5)$; at what $x$ do these joins reach height $3$?`,
+      s: String.raw`$AD$ is $y = 3x - 5$, which reaches $y = 3$ at $x = \tfrac83$. The theorem then puts $BC$'s crossing at $x = -\tfrac83$; check: $BC$ is $y = 5 + \tfrac34x$, which is $3$ at $x = -\tfrac83$. So $MX = MY = \tfrac83$.` }
+  );
+  add("corner-circle-chain",
+    { q: String.raw`Circles fill a right angle, each touching both sides and the one before. The first has radius $1$. Find the second.`,
+      s: String.raw`The half-angle is $45^\circ$, so the ratio is $\frac{1 + \sin45^\circ}{1 - \sin45^\circ} = \frac{2 + \sqrt2}{2 - \sqrt2} = 3 + 2\sqrt2$, and the second radius is $3 + 2\sqrt2 \approx 5.83$. Check: the centers are $\sqrt2$ and $\sqrt2(3 + 2\sqrt2)$ from the corner, which differ by $2 + 2\sqrt2 = 1 + (3 + 2\sqrt2)$.` }
+  );
+  add("caseys-theorem",
+    { q: String.raw`Shrink all four circles in Casey's Theorem to points on a circle. What does it become? Check it on a $3 \times 4$ rectangle.`,
+      s: String.raw`Tangent lengths between point-circles are plain distances, so Casey becomes Ptolemy: $AB \cdot CD + AD \cdot BC = AC \cdot BD$. For the rectangle, $3 \cdot 3 + 4 \cdot 4 = 25 = 5 \cdot 5$.` }
+  );
+  add("ptolemy-equilateral",
+    { q: String.raw`Equilateral $ABC$ has side $7$, and $P$ on arc $BC$ has $PB = 3$. Find $PC$ and $PA$.`,
+      s: String.raw`The angle $BPC$ is $120^\circ$, so $49 = 9 + PC^2 + 3PC$, giving $PC^2 + 3PC - 40 = 0$ and $PC = 5$. Then $PA = PB + PC = 8$. Check with Ptolemy on $ABPC$: $PA \cdot 7 = 3 \cdot 7 + 5 \cdot 7$.` }
+  );
+  add("conic-perpendicular-radii",
+    { q: String.raw`Can two points of the hyperbola $\frac{x^2}9 - \frac{y^2}4 = 1$ be seen from its center at a right angle?`,
+      s: String.raw`It would need $\frac1{OA^2} + \frac1{OB^2} = \frac19 - \frac14 = -\frac5{36}$, which is negative, so no. The asymptotes make an angle less than $90^\circ$ around the $x$-axis, and every point of the curve lies inside it. Perpendicular radii exist on $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ only when $a \lt b$.` }
+  );
 })();
