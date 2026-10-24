@@ -558,4 +558,100 @@
     { q: String.raw`In triangle $ABC$, $AB = 6$, $AC = 3$ and $BC = 6$. The internal and external bisectors from $A$ meet line $BC$ at $D$ and $E$. Find them and show that $(B, C; D, E) = -1$.`,
       s: String.raw`Put $B = 0$ and $C = 6$ on the line. The internal bisector splits $BC$ as $6 : 3$, so $D = 4$; the external one divides it externally in the same ratio, $EB : EC = 2 : 1$, so $E = 12$. Then $\tfrac{BD}{DC} = \tfrac42 = 2 = \tfrac{BE}{EC} = \tfrac{12}6$, one internal and one external, so the bundle is harmonic. Check with the midpoint $M = 3$: $MD\cdot ME = 1\cdot9 = 9 = MB^2$.` }
   );
+  add("largest-odd-divisor-sum",
+    { q: String.raw`With $f(k)$ the largest odd divisor of $k$, find $f(1) + f(2) + \cdots + f(10)$ from the recurrence, and check it directly.`,
+      s: String.raw`$S(10) = 5^2 + S(5)$, $S(5) = 3^2 + S(2)$ and $S(2) = 1^2 + S(1) = 2$, so $S(5) = 11$ and $S(10) = 36$. Directly: $1 + 1 + 3 + 1 + 5 + 3 + 7 + 1 + 9 + 5 = 36$.` },
+    { q: String.raw`Find $f(1) + f(2) + \cdots + f(100)$.`,
+      s: String.raw`Halve repeatedly: $S(100) = 2500 + S(50)$, $S(50) = 625 + S(25)$, $S(25) = 13^2 + S(12)$, $S(12) = 36 + S(6)$, $S(6) = 9 + S(3)$ and $S(3) = 2^2 + S(1) = 5$. Back up: $S(6) = 14$, $S(12) = 50$, $S(25) = 219$, $S(50) = 844$, $S(100) = 3344$.` }
+  );
+  add("multiplicative-functions",
+    { q: String.raw`Compute $\varphi(360)$ and $d(360)$.`,
+      s: String.raw`Split $360 = 2^3\cdot3^2\cdot5$ into coprime prime powers. Then $\varphi(360) = \varphi(8)\varphi(9)\varphi(5) = 4\cdot6\cdot4 = 96$ and $d(360) = 4\cdot3\cdot2 = 24$.` }
+  );
+  add("lcm-pair-counting",
+    { q: String.raw`In how many ways can $360$ be written as $a\cdot b$, in order, with $a$ and $b$ coprime?`,
+      s: String.raw`Coprime factors have $\operatorname{lcm}(a, b) = ab = 360$ and $\gcd(a, b) = 1$. For each prime of $360 = 2^3\cdot3^2\cdot5$ the larger exponent must be the full one and the smaller must be $0$, so the whole prime power goes to $a$ or to $b$: $2$ choices instead of $2e + 1$. That gives $2^3 = 8$ pairs.` }
+  );
+  add("carmichael-function",
+    { q: String.raw`Find $\lambda(100)$, and conclude that $a^{20} \equiv 1 \pmod{100}$ for every $a$ coprime to $100$.`,
+      s: String.raw`$\lambda(100) = \operatorname{lcm}(\lambda(4), \lambda(25)) = \operatorname{lcm}(2, 20) = 20$, half of $\varphi(100) = 40$. So every $a$ coprime to $100$ has $a^{20} \equiv 1$; for example $3^{20} = 3486784401$ ends in $01$.` },
+    { q: String.raw`Find the smallest $m$ with $a^m \equiv 1 \pmod{240}$ for every $a$ coprime to $240$.`,
+      s: String.raw`$240 = 16\cdot3\cdot5$, so $m = \lambda(240) = \operatorname{lcm}(\lambda(16), \lambda(3), \lambda(5)) = \operatorname{lcm}(4, 2, 4) = 4$, although $\varphi(240) = 64$. Check: $7^4 = 2401 = 10\cdot240 + 1$.` }
+  );
+  add("crt-solution-counting",
+    { q: String.raw`Count the integers $x$ from $0$ to $90$ whose cube leaves remainder $1$ on division by $91$.`,
+      s: String.raw`Split $91 = 7\cdot13$. Modulo $7$ the solutions are $1, 2, 4$, and modulo $13$ they are $1, 3, 9$, three each. So there are $3\cdot3 = 9$ solutions modulo $91$.` }
+  );
+  add("eulers-criterion",
+    { q: String.raw`Is $2$ a quadratic residue modulo $17$?`,
+      s: String.raw`Compute $2^{(17-1)/2} = 2^8 = 256 = 15\cdot17 + 1 \equiv 1$, so yes. Indeed $6^2 = 36 = 2\cdot17 + 2$.` },
+    { q: String.raw`Show that $x^2 \equiv -1 \pmod{23}$ has no solution.`,
+      s: String.raw`By Euler's Criterion, $(-1)^{(23-1)/2} = (-1)^{11} = -1$, so $-1$ is a non-residue modulo $23$. This is the case $p \equiv 3 \pmod 4$.` }
+  );
+  add("lte-lemma",
+    { q: String.raw`Find the exponent of $3$ in $10^9 - 1$.`,
+      s: String.raw`Here $3 \mid 10 - 1$ and $3 \nmid 10$, so $v_3(10^9 - 1) = v_3(9) + v_3(9) = 2 + 2 = 4$. Check: $999999999 = 81\cdot12345679$, and $12345679$ has digit sum $37$, not a multiple of $3$.` },
+    { q: String.raw`Find the exponent of $5$ in $6^{25} - 1$, and of $7$ in $3^{21} + 4^{21}$.`,
+      s: String.raw`For the first, $5 \mid 6 - 1$, so $v_5(6^{25} - 1) = v_5(5) + v_5(25) = 1 + 2 = 3$. For the second, $21$ is odd and $7 \mid 3 + 4$, so $v_7(3^{21} + 4^{21}) = v_7(7) + v_7(21) = 1 + 1 = 2$.` }
+  );
+  add("primes-6k",
+    { q: String.raw`Find the greatest common divisor of all the numbers $p^2 - 1$ for primes $p \gt 3$.`,
+      s: String.raw`Every such $p^2 - 1$ is a multiple of $24$. And $5^2 - 1 = 24$ itself is one of them, so the greatest common divisor is exactly $24$.` },
+    { q: String.raw`Twin primes $p$ and $p + 2$ are both larger than $3$. Show that $12$ divides their sum.`,
+      s: String.raw`Each is $\pm1$ modulo $6$, and they differ by $2$, so $p \equiv -1$ and $p + 2 \equiv 1$. Then $p + 1$ is a multiple of $6$ and the sum $2p + 2 = 2(p + 1)$ is a multiple of $12$. For example, $11 + 13 = 24$.` }
+  );
+  add("prime-divides-binomial",
+    { q: String.raw`Show that $(a + b)^p - a^p - b^p$ is a multiple of $p$ for any integers $a$, $b$ and prime $p$, and check it with $p = 5$, $a = 1$, $b = 2$.`,
+      s: String.raw`Expanding, the difference is $\sum_{k=1}^{p-1}\binom pka^kb^{p-k}$, and each $\binom pk$ with $0 \lt k \lt p$ is a multiple of $p$. Check: $3^5 - 1 - 32 = 210 = 5\cdot42$.` },
+    { q: String.raw`Are all of $\binom{12}1, \ldots, \binom{12}{11}$ multiples of $12$? Compare with $\binom{11}k$.`,
+      s: String.raw`No: $\binom{12}4 = 495$ is odd. The argument needs $p$ prime, so that no factor of $k!(p - k)!$ cancels it. For $11$ every $\binom{11}k$ with $1 \le k \le 10$ is a multiple of $11$, from $\binom{11}1 = 11$ to $\binom{11}5 = 462 = 11\cdot42$.` }
+  );
+  add("sum-of-two-squares",
+    { q: String.raw`Which of $2025$, $2026$ and $2027$ are sums of two squares?`,
+      s: String.raw`$2025 = 3^4\cdot5^2$ has the prime $3$ to an even power, so it is one: $27^2 + 36^2$ (and $45^2 + 0^2$). $2026 = 2\cdot1013$ with $1013 \equiv 1 \pmod 4$ prime, so it is one: $45^2 + 1^2$. $2027$ is a prime $\equiv 3 \pmod 4$, so it is not.` }
+  );
+  add("zeckendorf-theorem",
+    { q: String.raw`List every way to write $10$ as a sum of distinct Fibonacci numbers ($1, 2, 3, 5, 8$), and pick out the Zeckendorf one.`,
+      s: String.raw`With $8$ the rest is $2$, giving $8 + 2$. Without $8$, the rest $1 + 2 + 3 + 5 = 11$ must lose $1$, giving $5 + 3 + 2$. So there are two, and only $8 + 2$ avoids consecutive Fibonacci numbers ($5 + 3 + 2$ uses three in a row). It is also what the greedy rule gives.` }
+  );
+  add("fit-copies",
+    { q: String.raw`A solid cylinder of radius $3$ is cut by a slanted plane, so that the remaining piece has height $4$ at the lowest point of its top edge and $6$ at the highest. Find its volume.`,
+      s: String.raw`Turn a second copy upside down and set it on top, rotated half a turn: its height $6$ meets the first copy's $4$ and its $4$ meets the $6$, and the two pieces fill a cylinder of radius $3$ and height $10$. So the piece has volume $\tfrac12\cdot9\pi\cdot10 = 45\pi$, the cylinder of the average height $5$.` }
+  );
+  add("box-tetrahedron",
+    { q: String.raw`A tetrahedron has three mutually perpendicular edges of lengths $3$, $4$, $5$ meeting at one vertex. Find its volume.`,
+      s: String.raw`It is a corner cut off a $3\times4\times5$ box, so its volume is $\tfrac{3\cdot4\cdot5}6 = 10$.` },
+    { q: String.raw`Find the volume of a regular tetrahedron with edge $6\sqrt2$ by boxing it.`,
+      s: String.raw`Its edges are face diagonals of a cube of side $6$, with the four vertices at alternate corners. Removing the four corner tetrahedra, each $\tfrac{216}6 = 36$, leaves $216 - 144 = 72$, which is $\tfrac{pqr}3$. Check: $\tfrac{a^3}{6\sqrt2} = \tfrac{(6\sqrt2)^3}{6\sqrt2} = 72$.` }
+  );
+  add("scale-one-level",
+    { q: String.raw`Join the midpoints of a square of side $4$ to form a new square, and repeat forever. Find the total area of all the squares.`,
+      s: String.raw`Each new square has side $\tfrac1{\sqrt2}$ times the last, so area ratio $k^2 = \tfrac12$. The total is $\tfrac{16}{1 - 1/2} = 32$.` },
+    { q: String.raw`A square of side $2$ has a circle inscribed in it, a square inscribed in that circle, and so on forever. Find the total perimeter of all the squares.`,
+      s: String.raw`The circle has diameter $2$, and the square inside it has diagonal $2$, so side $\sqrt2$: each level scales lengths by $k = \tfrac1{\sqrt2}$. Perimeters use $k$, not $k^2$: the total is $\tfrac8{1 - 1/\sqrt2} = \tfrac{8\sqrt2}{\sqrt2 - 1} = 16 + 8\sqrt2$.` }
+  );
+  add("shared-leg-pythagoras",
+    { q: String.raw`Find the altitude to the side of length $14$ in the triangle with sides $13$, $14$, $15$.`,
+      s: String.raw`Let the altitude cut the side $14$ into $x$ (next to the side $13$) and $14 - x$. Then $13^2 - x^2 = 15^2 - (14 - x)^2$, so $169 = 29 + 28x$ and $x = 5$. The altitude is $\sqrt{169 - 25} = 12$.` },
+    { q: String.raw`Find the altitude to the side of length $56$ in the triangle with sides $25$, $39$, $56$.`,
+      s: String.raw`With pieces $x$ and $56 - x$, $25^2 - x^2 = 39^2 - (56 - x)^2$ gives $625 = -1615 + 112x$, so $x = 20$ and the altitude is $\sqrt{625 - 400} = 15$.` }
+  );
+  add("ravi-substitution",
+    { q: String.raw`A triangle has incircle tangent lengths $1$, $2$, $3$. Find its sides and its area.`,
+      s: String.raw`The sides are $2 + 3 = 5$, $3 + 1 = 4$ and $1 + 2 = 3$. Heron's Formula in tangent lengths is $\sqrt{xyz(x + y + z)} = \sqrt{1\cdot2\cdot3\cdot6} = 6$, the area of the $3$-$4$-$5$ right triangle.` },
+    { q: String.raw`Prove that the sides of every triangle satisfy $abc \ge (a + b - c)(b + c - a)(c + a - b)$.`,
+      s: String.raw`With $a = y + z$, $b = z + x$, $c = x + y$ the right side is $2z\cdot2x\cdot2y = 8xyz$, and the left is $(y + z)(z + x)(x + y)$. AM-GM gives $y + z \ge 2\sqrt{yz}$ and so on, and multiplying, the left side is at least $8xyz$. Equality holds for the equilateral triangle.` }
+  );
+  add("directed-lengths",
+    { q: String.raw`On a number line $A = 2$, $B = 7$, $C = -3$. Find $\overline{AB}$, $\overline{BC}$, $\overline{AC}$ and the ratio $\tfrac{\overline{AC}}{\overline{CB}}$.`,
+      s: String.raw`$\overline{AB} = 5$, $\overline{BC} = -10$ and $\overline{AC} = -5$, and indeed $5 + (-10) = -5$ although $C$ is not between $A$ and $B$. The ratio is $\tfrac{-5}{10} = -\tfrac12$, negative because $C$ lies outside the segment $AB$.` },
+    { q: String.raw`A chord of $x^2 + y^2 = 25$ lies along the $x$-axis and passes through $P = (1, 0)$. Check that the directed product $\overline{PA}\cdot\overline{PB}$ equals $OP^2 - r^2$.`,
+      s: String.raw`The chord meets the circle at $A = (-5, 0)$ and $B = (5, 0)$, so $\overline{PA}\cdot\overline{PB} = (-6)(4) = -24$, and $OP^2 - r^2 = 1 - 25 = -24$. The negative sign records that $P$ is inside the circle.` }
+  );
+  add("polar-form",
+    { q: String.raw`Compute $(1 + i)^{12}$.`,
+      s: String.raw`$1 + i = \sqrt2\,e^{i\pi/4}$, so $(1 + i)^{12} = (\sqrt2)^{12}e^{3\pi i} = 64\cdot(-1) = -64$.` },
+    { q: String.raw`Find every complex $z$ with $z^3 = 8i$.`,
+      s: String.raw`$8i = 8e^{i\pi/2}$, so $z = 2e^{i(\pi/6 + 2\pi k/3)}$ for $k = 0, 1, 2$: $2e^{i\pi/6} = \sqrt3 + i$, $2e^{5\pi i/6} = -\sqrt3 + i$ and $2e^{3\pi i/2} = -2i$.` }
+  );
 })();
