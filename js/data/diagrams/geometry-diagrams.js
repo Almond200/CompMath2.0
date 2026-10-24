@@ -9264,6 +9264,37 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // Steiner's formula: the points within r of a convex polygon are the polygon, a strip of width r
+  // on each side, and a sector at each corner; the sectors' angles are the exterior angles, so they
+  // make one disk.
+  DIAGRAMS["steiner-neighborhood"] = [(() => {
+    const P = [[120, 210], [310, 230], [250, 90]], r = 30, n = P.length;
+    const cen = mul(add(add(P[0], P[1]), P[2]), 1 / 3);
+    const nrm = i => { const a = P[i], b = P[(i + 1) % n], u = norm(sub(b, a)); let v = [u[1], -u[0]]; if ((cen[0] - a[0]) * v[0] + (cen[1] - a[1]) * v[1] > 0) v = mul(v, -1); return v; };
+    const N = P.map((_, i) => nrm(i)), bd = [], sectors = [];
+    for (let i = 0; i < n; i++) {
+      const b = P[(i + 1) % n], n1 = N[i], n2 = N[(i + 1) % n];
+      bd.push(add(P[i], mul(n1, r)), add(b, mul(n1, r)));
+      let a1 = Math.atan2(n1[1], n1[0]), a2 = Math.atan2(n2[1], n2[0]), da = a2 - a1;
+      while (da > Math.PI) da -= 2 * Math.PI; while (da < -Math.PI) da += 2 * Math.PI;
+      const arcPts = Array.from({ length: 25 }, (_, k) => add(b, mul([Math.cos(a1 + da * k / 24), Math.sin(a1 + da * k / 24)], r)));
+      bd.push(...arcPts); sectors.push([b, ...arcPts]);
+    }
+    const area = pts => Math.abs(pts.reduce((s, p, i) => { const q = pts[(i + 1) % pts.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0)) / 2;
+    const A = area(P), Per = P.reduce((s, p, i) => s + dist(p, P[(i + 1) % n]), 0);
+    const ok = Math.abs(area(bd) - (A + Per * r + Math.PI * r * r)) / area(bd) < 0.005;
+    return wrap(430, 300, [
+      poly(bd, ACC, 1.8, ACCS),
+      ...sectors.map(sc => poly(sc, GLD, 1.2, GLDS)),
+      ...P.map((p, i) => seg(add(p, mul(N[i], r)), p, FNT, 1.2, "4 3")),
+      ...P.map((p, i) => seg(add(P[(i + 1) % n], mul(N[i], r)), P[(i + 1) % n], FNT, 1.2, "4 3")),
+      poly(P, DIM, 2.2),
+      txt(add(mid(P[0], P[1]), mul(N[0], r / 2 - 4)), "r", ACC, 13),
+      txt(cen, "A", DIM, 14),
+      cap(430, 300, "The points within r of a convex region: the region itself, a strip of width r on each side (total area Pr), and a sector of radius r at each corner (gold). The sectors' angles are the exterior angles, which add to 360°, so together they make one disk of area πr²." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // Lester's theorem: the two Fermat points, the circumcenter, and the nine-point center lie on
   // one circle.
   DIAGRAMS["lester-circle"] = [(() => {

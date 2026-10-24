@@ -15,7 +15,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 173 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 174 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -46,7 +46,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["angle-chasing", "extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "shared-leg-pythagoras", "bisector-closer-region", "scale-one-level", "directed-lengths"] },
       { title: "Ratios, Masses & Areas",
         note: "Turning a ratio question into an area question, or into a weighing.",
-        ids: ["mass-points", "area-method"] },
+        ids: ["mass-points", "area-method", "steiner-neighborhood"] },
       { title: "Coordinate & Algebraic Bashes",
         note: "When the figure resists synthetic attack, trade elegance for reliability.",
         ids: ["coordinate-bash", "linear-change-of-variables", "trig-bash", "tangent-lines-from-point"] },
@@ -479,7 +479,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["shooting-lemma", "isogonal-line-lemma", "steiner-ratio-theorem", "humpty-queue-points", "dumpty-point"] },
     ] },
   { id: "config-area-toolkit", name: "Every Way to Find an Area", kind: "configuration", subject: "Recognize",
-    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 39 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
+    blurb: "Indexed by what the problem hands you rather than by what shape it is, because that is the order you actually need them in: you know what you have been given, and you are looking for the formula that eats it. 40 cards across 6 groups. If a figure's area is the unknown, the route to it is on this page.",
     sections: [
       { title: "From the Side Lengths Alone",
         note: "No angles, no height. Heron is the general answer and the one to reach for when a problem gives you three numbers and nothing else.",
@@ -489,7 +489,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["trig-area", "trig-area-circumradius", "shared-angle-area-ratio", "quadrilateral-diagonal-area"] },
       { title: "From a Radius",
         note: "When a circle is in the picture, its radius usually is the area. These convert in both directions, so they also find r or R from a known area.",
-        ids: ["inradius-area", "circumradius-area", "circle-basics", "circular-segment", "regular-polygon-area", "regular-hexagon-area", "regular-dodecagon", "cyclic-quad-radius"] },
+        ids: ["inradius-area", "circumradius-area", "circle-basics", "circular-segment", "regular-polygon-area", "regular-hexagon-area", "regular-dodecagon", "cyclic-quad-radius", "steiner-neighborhood"] },
       { title: "From Coordinates or Lattice Points",
         note: "Once the vertices have coordinates the area is mechanical. Pick's is the one that pays when the vertices are lattice points and the polygon is ugly.",
         ids: ["shoelace-formula", "picks-theorem", "picks-theorem-general", "picks-with-holes", "determinant-geometric", "cross-product-area"] },

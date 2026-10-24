@@ -2144,6 +2144,16 @@ window.MATH_SECTIONS.push({
       blurb: "Facts about many points and convex sets, where counting and position meet.",
       formulas: [
         {
+          id: "steiner-neighborhood",
+          name: "Area of a Neighborhood (Steiner's Formula)",
+          latex: String.raw`A_r = A + Pr + \pi r^2, \qquad V_r = V + Sr + \tfrac{\pi}{4}Lr^2 + \tfrac43\pi r^3 \ \ \text{(box)}`,
+          description: String.raw`The points within distance $r$ of a convex region with area $A$ and perimeter $P$ cover the area $A_r = A + Pr + \pi r^2$: the band along the boundary adds perimeter times $r$, and the corner pieces fit together into one full disk. In space, the points within $r$ of a box with volume $V$, surface area $S$ and total edge length $L$ fill $V + Sr + \frac{\pi}{4}Lr^2 + \frac43\pi r^3$, from slabs on the faces, quarter-cylinders along the edges and eighth-spheres at the corners.`,
+          keywords: ["steiner formula", "points within distance", "neighborhood of a region", "parallel region", "within one unit", "offset region", "rounded rectangle", "minkowski sum with a disk", "union of disks"],
+          importance: "lower",
+          tier: "AIME Early",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "convex-position",
           name: "Points in Convex Position",
           latex: String.raw`\mathrm{ES}(4) = 5,\ \ \mathrm{ES}(5) = 9,\ \ \mathrm{ES}(n) \le \binom{2n-4}{n-2} + 1`,

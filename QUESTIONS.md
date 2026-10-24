@@ -4,7 +4,7 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-No question is open. New card candidates from Step D wait in the table below; answer per row: yes, no, or a different rating. The problem cites the nearest card meanwhile, and a new candidate goes at the top as the next P-number.
+No question is open. **P27 was approved by the owner on 2026-10-24 and written as `steiner-neighborhood`**; the table is kept as the record. A new card candidate goes at the top of a table here as P28.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|

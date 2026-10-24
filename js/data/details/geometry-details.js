@@ -9253,3 +9253,34 @@ The method has a limit: a sign is defined only along one line, or along parallel
 An AIME and olympiad habit more than a single step: it keeps a ratio computation from breaking when a point falls outside a side, and it is how Menelaus, Ceva and power of a point are stated in their general forms. On the AMC it shows up as the check that an obtuse triangle's foot of an altitude lies outside the base.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"steiner-neighborhood": String.raw`
+## Key forms
+- $A_r = A + Pr + \pi r^2$ — the points within $r$ of a convex region with area $A$ and perimeter $P$
+- $A_r = ab + 2(a + b)r + \pi r^2$ — for an $a \times b$ rectangle
+- $V_r = abc + 2(ab + bc + ca)r + \pi(a + b + c)r^2 + \tfrac43\pi r^3$ — for an $a \times b \times c$ box, the same as $V + Sr + \tfrac{\pi}{4}Lr^2 + \tfrac43\pi r^3$ with $L = 4(a + b + c)$ the total edge length
+
+## Conditions
+The region must be convex; then the pieces around its boundary do not overlap. For a non-convex region the pieces at a dent overlap, so the formula overcounts and the region has to be split by hand. The boundary may be curved: a convex region bounded by arcs works the same way, with $P$ its total arc length.
+
+## Why it works
+The idea is that every point near the region is nearest to exactly one boundary point, and grouping the points by that nearest boundary point cuts the neighborhood into simple pieces.
+
+Take a convex polygon. A point outside it within distance $r$ is nearest either to a point inside a side or to a vertex. The points nearest to inside points of a side fill a rectangle on that side, with the side as base and height $r$, so the sides together add $Pr$. The points nearest to a vertex fill a circular sector of radius $r$ at that vertex, between the outward perpendiculars to its two sides. The angle of that sector is the exterior angle at the vertex, and the exterior angles of a convex polygon add to $360^\circ$, so the sectors make one full disk, $\pi r^2$. Convexity makes these pieces fit without overlap, which gives $A + Pr + \pi r^2$.
+
+For a convex region with curved boundary, the band over an arc of a circle of radius $\rho$ with angle $\theta$ is a sector of the ring between radii $\rho$ and $\rho + r$, of area $\tfrac12\theta\big((\rho + r)^2 - \rho^2\big) = \rho\theta\, r + \tfrac12\theta r^2$. The first term is arc length times $r$, and the angles $\theta$ of the arcs and the exterior angles at the corners again add to $360^\circ$, so the same formula holds.
+
+In space the box splits the same way: slabs of thickness $r$ on the six faces ($Sr$), quarter-cylinders of radius $r$ along the twelve edges (a quarter of $\pi r^2$ per unit of edge length), and eighth-spheres at the eight corners, which make one ball.
+
+## Useful observations
+- The set of centers of radius-$r$ disks that touch a region is its $r$-neighborhood, so "the union of all unit disks that meet $K$" and "all points within $1$ of $K$" are the same set.
+- Subtracting $A_r$ for two values of $r$ gives the area of the band between two offset curves.
+- For a segment of length $\ell$, the formula with $A = 0$ and $P = 2\ell$ gives a stadium of area $2\ell r + \pi r^2$.
+
+## Applications
+Points within a fixed distance of a rectangle, a box or a lens; the region swept by a disk whose center stays in a convex set; and paint or fence problems where a border of fixed width surrounds a shape.
+
+## Contest profile
+An AMC 12 and early AIME tool: the rectangle and box forms settle a "within one unit" question in one line, and the convex form handles curved regions such as a lens. It pairs with Circle Area, Circumference, Arcs & Sectors for the corner pieces.
+`
+});
