@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2023 AMC 8 begun, #1 to #10 (2026-10-24).** Answers D, E, B, D (spiral values $19,39,23,47$), B, C, B, A (two wins per round), B ($8$ s, read from the enlarged graph), D. All checked by script.
 - **Step D: 2024 AMC 8 finished (2026-10-24).** #16 ($11$), 17 ($72-40=32$), 18 ($108^\circ$), 19 ($\tfrac4{15}$), 20 ($3$), 21 ($24$), 22 ($\approx628$ in), 23 ($8000-1000=7000$ cells), 24 ($h=5$), 25 ($(1+3x+x^2)^4$, $\tfrac{20}{33}$). All checked by script.
 - **Step D: 2024 AMC 8 #6 to #15 (2026-10-24).** Answers D, E (each row needs an odd number of $1\times1$ tiles, and their count is $1\bmod4$: at least $5$, reached by search), D, E, B, D, E, B (Catalan $C_3$), A ($28$ km), C ($123+984$). All checked by script.
 - **Step D: 2025 AMC 8 finished, 2024 AMC 8 begun (2026-10-24).** 2025 AMC 8 #21 ($C,F$ get $1,7$; sum $12$), 22 ($(c+1)(g+1)=36$, $7$), 23 ($3599$ only), 24 ($3a+2b=30$, $4$), 25 (average area $\tfrac{25}2$, $3150$); 2024 AMC 8 #1 to #5. All checked by script.
