@@ -4505,4 +4505,39 @@
       cap(430, 270, "A convex quadrilateral ABCD with BC = 2 and CD = 6, and the centroids of ABC, BCD and ACD (blue) forming an equilateral triangle." + MM(ok))
     ]);
   })();
+
+  // 2018 AMC 12A #20: the isosceles right triangle ABC, M the midpoint of BC, and the cyclic AIME.
+  PROB["2018-amc-12a-20"] = (() => {
+    const A = [0, 0], B = [3, 0], C = [0, 3], M = mid(B, C), ci = (3 - Math.sqrt(7)) / 2;
+    const I = [0, 3 - ci], E = [3 - I[1], 0];   // the quarter turn about M carries line AC to line AB, so AE = 3 - AI
+    const cr = (u, v) => u[0] * v[1] - u[1] * v[0], area = Math.abs(cr(sub(E, M), sub(I, M))) / 2;
+    const dot2 = (u, v) => u[0] * v[0] + u[1] * v[1];
+    const ok = Math.abs(area - 2) < 1e-9 && Math.abs(dot2(sub(E, M), sub(I, M))) < 1e-9 && dist(A, I) > dist(A, E);
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), poly([A, I, M, E].map(Q), ACC, 1.8, ACCS), seg(Q(E), Q(I), ACC, 1.2, "4 4"),
+      rightAngle(Q(A), Q(B), Q(C), 11), dot(Q(M), ACC, 3), dot(Q(I), ACC, 3), dot(Q(E), ACC, 3),
+      txt(add(Q(A), [-12, 12]), "A"), txt(add(Q(B), [12, 12]), "B"), txt(add(Q(C), [-12, -2]), "C"),
+      txt(add(Q(M), [12, -4]), "M", ACC, 13), txt(add(Q(I), [-12, 5]), "I", ACC, 13), txt(add(Q(E), [0, 16]), "E", ACC, 13),
+      txt(add(Q(mid(A, B)), [24, 16]), "3", DIM, 12), txt(add(Q(mid(A, C)), [-14, 24]), "3", DIM, 12),
+      cap(430, 270, "The isosceles right triangle ABC with legs 3 and M the midpoint of BC; AIME is cyclic, AI > AE, and triangle EMI has area 2." + MM(ok))
+    ]);
+  })();
+
+  // 2018 AMC 12A #23: triangle PAT with angles 36° at P and 56° at A, PU = AG = 1, and the midpoints M, N.
+  PROB["2018-amc-12a-23"] = (() => {
+    const P = [0, 0], A = [10, 0], u = [Math.cos(rad(36)), Math.sin(rad(36))], w = [Math.cos(rad(124)), Math.sin(rad(124))];
+    const T = lineInt(P, add(P, u), A, add(A, w)), U = add(P, u), G = add(A, w), M = mid(P, A), N = mid(U, G);
+    const ok = Math.abs(dist(P, U) - 1) < 1e-12 && Math.abs(dist(A, G) - 1) < 1e-12 && T[1] > 0;
+    const Q = fitQ([P, A, T], 26, 430, 270);
+    return wrap(430, 270, [
+      poly([P, A, T].map(Q), DIM, 2), seg(Q(U), Q(G), FNT, 1.4), seg(Q(M), Q(N), ACC, 1.8),
+      angleArc(Q(P), Q(A), Q(T), 26, GLD), angleArc(Q(A), Q(T), Q(P), 22, GLD),
+      dot(Q(U), DIM, 3), dot(Q(G), DIM, 3), dot(Q(M), ACC, 3.5), dot(Q(N), ACC, 3.5),
+      txt(add(Q(P), [-12, 10]), "P"), txt(add(Q(A), [12, 10]), "A"), txt(add(Q(T), [0, -10]), "T"),
+      txt(add(Q(U), [-12, -2]), "U"), txt(add(Q(G), [12, -2]), "G"), txt(add(Q(M), [0, 16]), "M", ACC, 13), txt(add(Q(N), [10, -6]), "N", ACC, 13),
+      txt(add(Q(P), [40, -8]), "36°", GLD, 11.5), txt(add(Q(A), [-38, -8]), "56°", GLD, 11.5), txt(add(Q(mid(P, M)), [0, 16]), "PA = 10", DIM, 12),
+      cap(430, 270, "Triangle PAT with ∠P = 36°, ∠A = 56° and PA = 10; PU = AG = 1, and M, N are the midpoints of PA and UG." + MM(ok))
+    ]);
+  })();
 })();
