@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2019 AMC 8 finished (2026-10-24).** #16 ($110$), 17 ($\tfrac{50}{99}$), 18 ($\tfrac59$), 19 ($24$), 20 ($4$), 21 ($16$), 22 ($40\%$), 23 ($T=56$, $11$), 24 (mass points, $30$), 25 ($\binom{20}2=190$). All checked by script.
 - **Step D: 2019 AMC 8 #6 to #15 (2026-10-24).** Answers C, A, E, B, B, D, A (red opposite aqua), A ($110$), C (Wednesday), B. All checked by script.
 - **Step D: 2020 AMC 8 finished, 2019 AMC 8 begun (2026-10-24).** 2020 AMC 8 #21 ($35-7=28$ by reflection), 22 ($1+8+10+64=83$), 23 ($150$ surjections), 24 ($\tfrac6{25}$), 25 ($b=a+c-2020=651$); 2019 AMC 8 #1 to #5 (D, E, E, D, B). All checked by script.
 - **Step D: 2020 AMC 8 #11 to #20 (2026-10-24).** Answers E, A, B, D, C, E ($B$ on three lines, $5$), B ($7$), A ($240$), B ($4$), B ($24.2$). All checked by script.
