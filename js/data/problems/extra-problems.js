@@ -1760,4 +1760,52 @@
     { q: String.raw`In the isosceles triangle $A(0, 2)$, $B(-1, 0)$, $C(1, 0)$, find the $A$-Humpty point and check $MX\cdot MA = MB^2$.`,
       s: String.raw`The median from $A$ is the altitude $x = 0$, so the orthocenter $H$ lies on it and its foot $X$ on the median is $H$ itself. The altitude from $B$ is perpendicular to $AC$, direction $(1, -2)$, so it is $(-1, 0) + t(2, 1)$, meeting $x = 0$ at $H = \left(0, \tfrac12\right)$. With $M = (0, 0)$, $MX\cdot MA = \tfrac12\cdot2 = 1 = MB^2$.` }
   );
+  add("dumpty-point",
+    { q: String.raw`In an isosceles triangle with $AB = AC$, where is the $A$-Dumpty point, and why does $DA^2 = DB\cdot DC$ hold there?`,
+      s: String.raw`The symmedian from $A$ is the median, which is the axis of symmetry, so it meets the circumcircle again at the point $K$ diametrically opposite $A$. The midpoint of $AK$ is the circumcenter $O$. Then $DA = DB = DC = R$, and $R^2 = R\cdot R$.` }
+  );
+  add("pedal-triangle",
+    { q: String.raw`What is the pedal triangle of the circumcenter, and what fraction of $[ABC]$ is its area?`,
+      s: String.raw`The feet of the perpendiculars from $O$ are the midpoints of the sides, so it is the medial triangle. With $OP = 0$ the formula gives $\tfrac{R^2}{4R^2} = \tfrac14$, as expected.` },
+    { q: String.raw`A triangle has circumradius $4$. For which distances $OP$ is the pedal triangle of $P$ one eighth of $[ABC]$?`,
+      s: String.raw`Solve $\tfrac{|16 - OP^2|}{64} = \tfrac18$: $|16 - OP^2| = 8$, so $OP^2 = 8$ or $24$, that is $OP = 2\sqrt2$ (inside the circumcircle) or $OP = 2\sqrt6$ (outside).` }
+  );
+  add("isotomic-conjugate",
+    { q: String.raw`Find the isotomic conjugate of the centroid.`,
+      s: String.raw`The centroid is $(1 : 1 : 1)$, which goes to $\left(\tfrac11 : \tfrac11 : \tfrac11\right)$: itself. Its cevian feet are the midpoints, which reflection over the midpoints leaves in place.` },
+    { q: String.raw`Show that the Gergonne and Nagel points are isotomic conjugates.`,
+      s: String.raw`The Gergonne point is $\left(\tfrac1{s-a} : \tfrac1{s-b} : \tfrac1{s-c}\right)$, and inverting each coordinate gives $(s - a : s - b : s - c)$, the Nagel point. Geometrically, the incircle and excircle touch points on each side are mirror images across its midpoint.` }
+  );
+  add("carnots-theorem",
+    { q: String.raw`Check Carnot's Theorem on an equilateral triangle of side $2\sqrt3$.`,
+      s: String.raw`Here $R = 2$ and $r = 1$, and the circumcenter is the incenter, $1$ from each side. The sum of the distances is $3 = R + r$.` },
+    { q: String.raw`Check Carnot's Theorem on the $6$-$8$-$10$ right triangle.`,
+      s: String.raw`The circumcenter is the midpoint of the hypotenuse, so its distances are $0$ to the hypotenuse and half the other leg to each leg: $4$ and $3$. The sum is $7$, and $R + r = 5 + 2$.` }
+  );
+  add("steiner-line",
+    { q: String.raw`Prove that the reflections of a point $P$ of the circumcircle in the three sides are collinear and lie on a line through the orthocenter.`,
+      s: String.raw`Each reflection is the image of the foot of the perpendicular from $P$ under the homothety at $P$ with ratio $2$. The feet lie on the Simson line, so the reflections lie on its image, a line parallel to it. The Simson line passes through the midpoint of $PH$, and the homothety sends that midpoint to $H$.` }
+  );
+  add("anti-steiner-point",
+    { q: String.raw`In a right triangle the orthocenter is the right-angle vertex $C$, so each leg is a line through $H$. With legs $CA = 3$ and $CB = 4$, which point of the circumcircle is the anti-Steiner point of the leg $CB$?`,
+      s: String.raw`Place $C = (0, 0)$, $B = (4, 0)$, $A = (0, 3)$. The leg $CB$ is the $x$-axis, which passes through $H = C$. Its reflection in $BC$ is itself, its reflection in $CA$ (the $y$-axis) is itself, and its reflection in $AB$ passes through $B$, which lies on both lines. So the three reflections meet at $S = B$, a point of the circumcircle.` }
+  );
+  add("feuerbach-theorem",
+    { q: String.raw`For the $3$-$4$-$5$ triangle, find the distance from the nine-point center to the incenter, and check it in coordinates.`,
+      s: String.raw`With $R = \tfrac52$ and $r = 1$, $NI = \tfrac54 - 1 = \tfrac14$. Put the right angle at $(0, 0)$ with legs to $(4, 0)$ and $(0, 3)$: $I = (1, 1)$, $O = \left(2, \tfrac32\right)$, $H = (0, 0)$, so $N = \left(1, \tfrac34\right)$, and $NI = \tfrac14$.` }
+  );
+  add("leibniz-formula",
+    { q: String.raw`Find the least value of $PA^2 + PB^2 + PC^2$ for an equilateral triangle of side $3$.`,
+      s: String.raw`It is least at $P = G$, where it equals $\tfrac{a^2 + b^2 + c^2}3 = \tfrac{27}3 = 9$: each vertex is $\sqrt3$ from the center.` },
+    { q: String.raw`Check the formula at $P = (0, 0)$ for $A = (0, 0)$, $B = (4, 0)$, $C = (2, 6)$.`,
+      s: String.raw`Directly, $0 + 16 + 40 = 56$. With $G = (2, 2)$, $3PG^2 = 24$, and the sides squared are $16, 40, 40$, so $\tfrac{96}3 = 32$; again $56$.` }
+  );
+  add("orthocentric-system",
+    { q: String.raw`In an orthocentric system $\{A, B, C, H\}$, prove that the four triangles have equal circumradii.`,
+      s: String.raw`The reflection of $H$ in $BC$ lies on the circumcircle of $ABC$, so reflecting that circle in $BC$ gives a circle through $B$, $C$ and $H$: the circumcircle of $HBC$, with the same radius. The same holds for $HCA$ and $HAB$.` }
+  );
+  add("spieker-point",
+    { q: String.raw`Locate the Spieker point of the $3$-$4$-$5$ triangle placed with its right angle at the origin, legs along the axes, and confirm that it bisects the segment from the incenter to the Nagel point.`,
+      s: String.raw`Take $A = (0, 0)$, $B = (4, 0)$, $C = (0, 3)$. Here $a = BC = 5$, $b = 3$, $c = 4$, so $S = (7 : 9 : 8)$, that is $\tfrac{7A + 9B + 8C}{24} = \left(\tfrac32, 1\right)$. The incenter is $(1, 1)$ and the Nagel point $(s - a : s - b : s - c) = (1 : 3 : 2)$ is $(2, 1)$, whose midpoint with $I$ is $\left(\tfrac32, 1\right)$. The Spieker circle has radius $\tfrac r2 = \tfrac12$.` }
+  );
 })();
