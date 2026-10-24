@@ -1104,4 +1104,60 @@
     { q: String.raw`Find the excentral triangle of an equilateral triangle of side $2$.`,
       s: String.raw`Here $R = \tfrac2{\sqrt3}$, so the excentral triangle has circumradius $2R = \tfrac4{\sqrt3}$ and sides $4R\cos30^\circ = 4$. It is the equilateral triangle of side $4$ with the original as its medial triangle, and its orthocenter is the incenter of the original.` }
   );
+  add("isogonal-conjugate",
+    { q: String.raw`Find the isogonal conjugate of the centroid $(1 : 1 : 1)$ and of the incenter $(a : b : c)$.`,
+      s: String.raw`The centroid goes to $\left(\tfrac{a^2}1 : \tfrac{b^2}1 : \tfrac{c^2}1\right) = (a^2 : b^2 : c^2)$, the Lemoine point. The incenter goes to $\left(\tfrac{a^2}a : \tfrac{b^2}b : \tfrac{c^2}c\right) = (a : b : c)$, itself: the bisectors are their own reflections.` }
+  );
+  add("center-distance-formulas",
+    { q: String.raw`For the right triangle with legs $6$ and $8$, find $OH$ and $OI$ from the formulas and check them in coordinates.`,
+      s: String.raw`Here $R = 5$, $r = 2$ and $a^2 + b^2 + c^2 = 200$. So $OH^2 = 225 - 200 = 25$ and $OI^2 = 25 - 20 = 5$. With the right angle at $(0, 0)$ and legs on the axes to $(8, 0)$ and $(0, 6)$, $H = (0, 0)$, $O = (4, 3)$ and $I = (2, 2)$: $OH = 5$ and $OI = \sqrt5$.` },
+    { q: String.raw`For the triangle with sides $13$, $14$, $15$, find $OI$ and $OH$.`,
+      s: String.raw`With $R = \tfrac{65}8$ and $r = 4$, $OI^2 = R^2 - 2Rr = \tfrac{4225}{64} - 65 = \tfrac{65}{64}$, so $OI = \tfrac{\sqrt{65}}8$. And $OH^2 = 9R^2 - 590 = \tfrac{38025 - 37760}{64} = \tfrac{265}{64}$, so $OH = \tfrac{\sqrt{265}}8$.` }
+  );
+  add("lemoine-point",
+    { q: String.raw`For the $3$-$4$-$5$ right triangle, find the barycentric coordinates of the Lemoine point and its distances to the three sides.`,
+      s: String.raw`$K = (9 : 16 : 25)$. The distances are $ka$, $kb$, $kc$, and the three small triangles from $K$ fill the area: $\tfrac12k(a^2 + b^2 + c^2) = 6$, so $k = \tfrac{12}{50} = \tfrac6{25}$. The distances are $\tfrac{18}{25}$, $\tfrac{24}{25}$ and $\tfrac65$; the last is half the altitude $\tfrac{12}5$ to the hypotenuse, since in a right triangle $K$ is the midpoint of that altitude.` },
+    { q: String.raw`For the isosceles $5$-$5$-$6$ triangle, the symmedian point sits at distances proportional to the sides. Compute them.`,
+      s: String.raw`The area is $12$ and $a^2 + b^2 + c^2 = 36 + 25 + 25 = 86$, so $k = \tfrac{24}{86} = \tfrac{12}{43}$. The distance to the base is $\tfrac{72}{43}$ and to each leg $\tfrac{60}{43}$.` }
+  );
+  add("gergonne-nagel-points",
+    { q: String.raw`For the triangle with $a = 5$, $b = 4$, $c = 3$, give the barycentric coordinates of the Gergonne and Nagel points.`,
+      s: String.raw`With $s = 6$ the tangent lengths are $s - a = 1$, $s - b = 2$, $s - c = 3$. The Gergonne point is $\left(\tfrac1{s-a} : \tfrac1{s-b} : \tfrac1{s-c}\right) = \left(1 : \tfrac12 : \tfrac13\right) = (6 : 3 : 2)$, and the Nagel point is $(s - a : s - b : s - c) = (1 : 2 : 3)$.` },
+    { q: String.raw`Show that the Nagel cevian from $A$ splits the perimeter in half: going from $A$ to its foot on $BC$ along either side of the triangle covers a distance $s$.`,
+      s: String.raw`The $A$-excircle touches $BC$ at the point $s - c$ from $B$ and $s - b$ from $C$. So the path $A \to B \to$ foot has length $c + (s - c) = s$, and the path $A \to C \to$ foot has length $b + (s - b) = s$.` }
+  );
+  add("two-tangents-angle",
+    { q: String.raw`Two tangents from $P$ to a circle meet at $40^\circ$. Find the two arcs between the points of tangency.`,
+      s: String.raw`The central angle is $180^\circ - 40^\circ = 140^\circ$, so the near arc is $140^\circ$ and the far arc $220^\circ$. Check: $\tfrac{220 - 140}2 = 40$.` },
+    { q: String.raw`From an outside point, the two tangent lines to a circle of radius $6$ cross at $60^\circ$. How far is the point from the center, and how long is each tangent segment?`,
+      s: String.raw`$OP$ bisects the $60^\circ$ angle, so the right triangle $OAP$ has $\angle APO = 30^\circ$: $OP = 2\cdot6 = 12$ and $PA = 6\sqrt3$.` }
+  );
+  add("inversion-facts",
+    { q: String.raw`Under inversion in the circle of radius $4$ about $O$, where does a point $8$ from $O$ go, and what is the image of the circle through $O$ with diameter $OD$, $OD = 4$?`,
+      s: String.raw`The point goes to distance $\tfrac{16}8 = 2$ on the same ray. A circle through $O$ goes to a line perpendicular to its diameter $OD$, at distance $\tfrac{16}{OD} = 4$ from $O$. Here $D$ lies on the circle of inversion and stays fixed, so the image is the line through $D$ perpendicular to $OD$, tangent there to the original circle.` },
+    { q: String.raw`Under inversion in the circle of radius $6$ about $O$, what is the image of a line $3$ from $O$?`,
+      s: String.raw`A line not through $O$ goes to a circle through $O$. The foot of the perpendicular, $3$ from $O$, goes to distance $\tfrac{36}3 = 12$, the far end of a diameter, so the image is the circle through $O$ with diameter $12$ along that perpendicular.` }
+  );
+  add("power-of-a-point-linearity",
+    { q: String.raw`Find the radical axis of $x^2 + y^2 = 4$ and $(x - 6)^2 + y^2 = 9$, and check the linearity formula at the origin.`,
+      s: String.raw`Setting the powers equal, $x^2 + y^2 - 4 = x^2 - 12x + 36 + y^2 - 9$, gives $x = \tfrac{31}{12}$. At $P = (0, 0)$ the powers are $-4$ and $27$, a difference of $-31$, and $2\cdot O_1O_2\cdot d(P, \ell) = 2\cdot6\cdot\tfrac{31}{12} = 31$, the same size (the sign records the side of the axis).` }
+  );
+  add("common-chord-length",
+    { q: String.raw`Two equal circles of radius $5$ overlap, with centers $6$ apart. How long is the segment joining their crossing points?`,
+      s: String.raw`By symmetry the chord is halfway, $3$ from each center, so it is $2\sqrt{25 - 9} = 8$. The formula agrees: $d_1 = \tfrac{36 + 25 - 25}{12} = 3$.` },
+    { q: String.raw`Circles of radii $13$ and $15$, whose centers are $14$ apart, cross at two points. How far apart are those points?`,
+      s: String.raw`$d_1 = \tfrac{196 + 169 - 225}{28} = 5$, so the chord is $2\sqrt{169 - 25} = 24$. (The centers and an end of the chord form the $13$-$14$-$15$ triangle, whose altitude to $14$ is $12$.)` }
+  );
+  add("miquels-theorem",
+    { q: String.raw`Take $D$, $E$, $F$ to be the midpoints of $BC$, $CA$, $AB$. Which point lies on all three Miquel circles?`,
+      s: String.raw`The circumcenter $O$. The perpendicular bisectors through $E$ and $F$ give $\angle AFO = \angle AEO = 90^\circ$, so $A$, $E$, $F$, $O$ lie on the circle with diameter $AO$; likewise for the other two circles.` },
+    { q: String.raw`Take $D$, $E$, $F$ to be the points where the incircle touches the sides. Which point lies on all three Miquel circles?`,
+      s: String.raw`The incenter $I$. The radii to the touch points are perpendicular to the sides, so $\angle AEI = \angle AFI = 90^\circ$ and circle $AEF$ has diameter $AI$; likewise $BI$ and $CI$ are diameters of the others.` }
+  );
+  add("orthogonal-circles",
+    { q: String.raw`A circle has center $(0, 0)$ and radius $5$. What radius must a circle centered at $(13, 0)$ have to cross it at right angles?`,
+      s: String.raw`Orthogonality needs $O_1O_2^2 = r_1^2 + r_2^2$: $169 = 25 + r^2$, so $r = 12$. The radii to a crossing point are then perpendicular, the legs of the $5$-$12$-$13$ triangle.` },
+    { q: String.raw`Are the circles $x^2 + y^2 = 1$ and $(x - 2)^2 + y^2 = 3$ orthogonal?`,
+      s: String.raw`The centers are $2$ apart and $2^2 = 1 + 3$, so yes. Equivalently, the power of $(2, 0)$ with respect to the first circle is $4 - 1 = 3$, the square of the second radius.` }
+  );
 })();

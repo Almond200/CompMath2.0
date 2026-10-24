@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: 10 more Low cards (2026-10-24).** Isogonal conjugates, center distances, the Lemoine point, Gergonne and Nagel points, two tangents, inversion, linearity of power, common chords, Miquel's theorem and orthogonal circles. Cards under two: 189.
 - **F: 15 more Low cards (2026-10-24).** Triangle geometry: the Conway circle, flank triangles, the sine-sum ratio, half-angle tangents, the median triangle, Routh, Van Aubel, trigonometric Ceva, Napoleon, the Iran lemma, Steiner's ratio theorem, the isogonal line lemma, the shooting lemma, Carnot and the excentral triangle. Cards under two: 198.
 - **F: 20 more Low cards (2026-10-24).** Counting functions, subset sums, alternating squared binomials, Pascal parity, ballots, Moser's circle, the Nullstellensatz (with Cauchy–Davenport), Dilworth, Sperner, gambler's ruin, order statistics, Erdős–Szekeres, Turán, trapezoid angles, parallel lines, integer triangles, the intercept theorem, cevian ratios, the dodecagon and the largest rectangle in a triangle. Cards under two: 211.
 - **F: the first 20 Low cards (2026-10-24).** Functional equations, Descartes, Eisenstein, Chebyshev, Cayley–Hamilton, Vandermonde, pairwise sums, antisymmetric factorizations, factorial telescoping, binomial series, the Nesbitt, Schur, Muirhead, Hölder and weighted AM–GM inequalities, the log swap, power sums of sine and cosine, triangle angle identities and absolute values. Cards under two: 231.
