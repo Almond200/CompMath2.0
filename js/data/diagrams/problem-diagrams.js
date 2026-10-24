@@ -4814,4 +4814,19 @@
       cap(430, 270, "The pentagon ABCDE inscribed in a circle with AB = CD = 3, BC = DE = 10 and AE = 14, and its five diagonals (blue)." + MM(ok))
     ]);
   })();
+
+  // 2013 AMC 12A #23: the square of side √3 + 1, P on AC with AP = √2, and the square after the
+  // quarter turn about P (dashed).
+  PROB["2013-amc-12a-23"] = (() => {
+    const sd = Math.sqrt(3) + 1, A = [0, 0], B = [sd, 0], C = [sd, sd], D = [0, sd], P = [1, 1];
+    const turn = X => add(P, rotv(sub(X, P), Math.PI / 2)), S2 = [A, B, C, D].map(turn);
+    const ok = Math.abs(dist(A, P) - Math.sqrt(2)) < 1e-12 && Math.abs(dist(P, C) - Math.sqrt(6)) < 1e-12;
+    const Q = fitQ([A, B, C, D, ...S2], 22, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), poly(S2.map(Q), ACC, 1.6, "none", "5 4"), seg(Q(A), Q(C), FNT, 1.2), dot(Q(P), GLD, 3.5),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [10, -4]), "C"), txt(add(Q(D), [-6, -8]), "D"),
+      txt(add(Q(P), [12, 10]), "P", GLD, 12.5), txt(add(Q(mid(A, P)), [10, 6]), "√2", GLD, 11.5),
+      cap(430, 270, "The square ABCD of side √3 + 1, the point P on AC with AP = √2, and the square after turning 90° counterclockwise about P (dashed)." + MM(ok))
+    ]);
+  })();
 })();
