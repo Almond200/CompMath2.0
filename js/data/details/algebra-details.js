@@ -3567,7 +3567,7 @@ The sequences are real, of the same length $n$. Equality in the Cauchy–Schwarz
 ## Why it works
 Expand both sides. The product of the two sums of squares splits into diagonal terms $\sum a_i^2b_i^2$ and off-diagonal terms $\sum_{i \ne j}a_i^2b_j^2$. The squared dot product has the same diagonal and off-diagonal terms $\sum_{i \ne j}a_ib_ia_jb_j$.
 
-Subtracting, the diagonals cancel and the off-diagonal remainder pairs up: $a_i^2b_j^2 + a_j^2b_i^2 - 2a_ib_ia_jb_j = (a_ib_j - a_jb_i)^2$ for each pair $i < j$, which is the right-hand side.
+Subtracting, the diagonals cancel and the off-diagonal remainder pairs up: $a_i^2b_j^2 + a_j^2b_i^2 - 2a_ib_ia_jb_j = (a_ib_j - a_jb_i)^2$ for each pair $i \lt j$, which is the right-hand side. With $n = 3$ the three numbers $a_ib_j - a_jb_i$ are, up to sign, the components of $\mathbf a \times \mathbf b$, which gives the vector form.
 
 ## Useful observations
 - Because the right side is a sum of squares, the identity contains Cauchy–Schwarz and its equality case.

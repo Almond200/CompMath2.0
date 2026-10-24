@@ -1387,7 +1387,9 @@ Unlike $E[X + Y] = E[X] + E[Y]$, which always holds, the statements for products
 ## Why it works
 $\operatorname{Var}(X) = E[(X - E[X])^2] = E[X^2] - 2E[X]^2 + E[X]^2 = E[X^2] - E[X]^2$ is algebra on the definition.
 
-Independence makes cross terms factor: $E[XY] = E[X]E[Y]$, so $\operatorname{Cov}(X, Y) = 0$ and in $\operatorname{Var}(X + Y) = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2\operatorname{Cov}(X, Y)$ the covariance term vanishes.
+For a sum, write $\mu = E[X]$ and $\nu = E[Y]$ and expand
+$$\operatorname{Var}(X + Y) = E\big[(X - \mu + Y - \nu)^2\big] = \operatorname{Var}(X) + \operatorname{Var}(Y) + 2E[(X - \mu)(Y - \nu)],$$
+and the last expectation is $E[XY] - \mu\nu = \operatorname{Cov}(X, Y)$. For independent variables $P(X = x, Y = y) = P(X = x)P(Y = y)$, so $E[XY] = \sum xy\,P(X = x)P(Y = y)$ factors into $E[X]E[Y]$, the covariance is $0$, and the variances add.
 
 Affine changes need no independence at all: a shift moves the whole distribution without changing its spread, and a scale by $a$ multiplies every deviation by $a$, so the variance by $a^2$.
 
@@ -2262,7 +2264,9 @@ Olympiad extremal set theory. Two things are carried: the size of the largest fa
 $G$ is a finite group acting on the positions. A coloring is fixed by $g$ exactly when it is constant on each cycle of $g$.
 
 ## Why it works
-Burnside counts orbits by averaging fixed points, and Pólya refines "fixed" into a generating function through each symmetry's cycle structure. A coloring is fixed by $g$ exactly when it is constant on every cycle of $g$, so weighting by colors gives $\prod_k(\text{sum over colors of color}^k)^{c_k(g)}$, and averaging over $G$ gives the cycle index.
+Burnside counts orbits by averaging fixed points, and Pólya refines "fixed" into a generating function through each symmetry's cycle structure. A coloring is fixed by $g$ exactly when it is constant on every cycle of $g$, so weighting by colors gives $\prod_k(\text{sum over colors of color}^k)^{c_k(g)}$, and averaging over $G$ gives the cycle index. With $m$ colors and no weights, each cycle has $m$ choices, so $t_k = m$ gives Burnside's count.
+
+For the necklace, the rotation by $j$ places splits the $n$ beads into $\gcd(j, n)$ cycles of length $\frac n{\gcd(j, n)}$. A rotation of order $d$ therefore has $\frac nd$ cycles of length $d$, and the rotations of order $d$ are $\varphi(d)$ in number, which gives the term $\varphi(d)\,t_d^{\,n/d}$.
 
 ## Useful observations
 - For plain orbit counts, Burnside's Lemma is enough.

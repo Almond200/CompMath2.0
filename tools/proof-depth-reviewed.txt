@@ -182,3 +182,15 @@ fermat-numbers
 coprime-residue-sum
 exponential-generating-functions
 thues-lemma
+farey-sequences           # gap lemma and induction
+pisano-periods            # lcm by CRT
+polya-enumeration         # the necklace cycle index derived
+brocard-angle             # Law of Sines derivation, csc form, the 30-degree bound
+convex-position           # base case argued; Erdos-Szekeres and ES(5) quoted with references
+variance-independence
+lagranges-identity
+desargues-theorem         # Menelaus proof and the converse
+kummers-theorem
+jacobi-symbol             # supplements derived
+totient-divisor-sum
+zsygmondy                 # quoted with the original reference; q = 1 mod n proved

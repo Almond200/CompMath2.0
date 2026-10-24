@@ -306,6 +306,8 @@ $n$ is a positive integer and $d$ runs over all its positive divisors, including
 ## Why it works
 Sort the fractions $\frac1n, \frac2n, \ldots, \frac nn$ by the denominator each one reduces to. The fraction $\frac kn$ reduces to denominator $d = \frac{n}{\gcd(k, n)}$, with a numerator coprime to $d$; conversely, every fraction $\frac ad$ with $d \mid n$ and $\gcd(a, d) = 1$ comes from exactly one $k$. So the class with denominator $d$ has exactly $\varphi(d)$ members, the classes partition all $n$ fractions, and the class sizes add up to $n$.
 
+The class with denominator $\frac ng$ is the set of $k$ with $\gcd(k, n) = g$, which gives the second Key form. Adding $\gcd(k, n)$ class by class then gives $\sum_{g \mid n} g\,\varphi\left(\frac ng\right)$, the third.
+
 ## Useful observations
 - Each $k \le n$ is counted exactly once, by the divisor $\frac{n}{\gcd(k, n)}$, which is why the sum is $n$: for $n = 12$, $\varphi(1) + \varphi(2) + \varphi(3) + \varphi(4) + \varphi(6) + \varphi(12) = 1 + 1 + 2 + 2 + 2 + 4 = 12$.
 - In Dirichlet convolution form it reads $\varphi * \mathbf 1 = \mathrm{id}$, and Möbius inversion turns it into $\varphi(n) = \sum_{d \mid n}\mu(d)\frac nd$.
@@ -877,7 +879,11 @@ Usually the main computation rather than a supporting step, applied to a factori
 $p$ is prime and $m, n \ge 0$. Carries are counted at every position, including chains of carries.
 
 ## Why it works
-By Legendre's Formula in digit-sum form, $v_p(N!) = \frac{N - s_p(N)}{p - 1}$, so $$v_p\binom{m+n}{m} = \frac{s_p(m) + s_p(n) - s_p(m + n)}{p - 1}.$$ When $m$ and $n$ are added digit by digit, each position without a carry contributes its digits unchanged to the sum's digits, and each carry replaces a digit total of $d + p$ by $d$ in that position and adds $1$ to the next, lowering the digit sum by exactly $p - 1$. So $s_p(m) + s_p(n) - s_p(m + n) = (p - 1) \times$ the number of carries.
+By Legendre's Formula in digit-sum form, $v_p(N!) = \frac{N - s_p(N)}{p - 1}$, so
+$$v_p\binom{m+n}{m} = \frac{s_p(m) + s_p(n) - s_p(m + n)}{p - 1}.$$
+When $m$ and $n$ are added digit by digit, each position without a carry contributes its digits unchanged to the sum's digits, and each carry replaces a digit total of $d + p$ by $d$ in that position and adds $1$ to the next, lowering the digit sum by exactly $p - 1$. So $s_p(m) + s_p(n) - s_p(m + n) = (p - 1) \times$ the number of carries.
+
+Adding $n + n$ in binary, every $1$ digit of $n$ makes $1 + 1$, which carries, and a $0$ digit never does, even with an incoming carry. So the carries number $s_2(n)$, which is at least $1$, and at least $2$ unless $n$ is a power of $2$.
 
 ## Useful observations
 - The carries read off the exact power with no factorials computed: in binary $101 + 101$ carries twice, and indeed $\binom{10}{5} = 252 = 4 \cdot 63$.
@@ -1276,7 +1282,13 @@ AMC and AIME questions: how many numbers in a range are differences of squares, 
 $F_n$ lists the reduced fractions in $[0, 1]$ with denominator at most $n$, in increasing order.
 
 ## Why it works
-The condition $bc - ad = 1$ says that consecutive Farey fractions form a unimodular pair, with no lattice point strictly between their vectors ([[picks-theorem|Pick's Theorem]] on the empty triangle). The mediant is the sum of the two lattice vectors, the unique next fraction between them.
+Step 1, the gap lemma. Let $\frac ab \lt \frac cd$ with $bc - ad = 1$, and let $\frac xy$ lie strictly between. Then $bx - ay \ge 1$ and $cy - dx \ge 1$, so
+$$\frac1{bd} = \frac cd - \frac ab = \frac{cy - dx}{dy} + \frac{bx - ay}{by} \ge \frac1{dy} + \frac1{by} = \frac{b + d}{bdy},$$
+which gives $y \ge b + d$. Equality forces $bx - ay = cy - dx = 1$, whose only solution is $x = a + c$, $y = b + d$: the mediant, already in lowest terms.
+
+Step 2, induction on $n$. $F_1$ is $\frac01, \frac11$, with $1 \cdot 1 - 0 \cdot 1 = 1$. Passing from $F_{n-1}$ to $F_n$, by Step 1 the only fraction that can enter between neighbours $\frac ab$, $\frac cd$ is their mediant, exactly when $b + d = n$, and it forms determinant-$1$ pairs with both, since $b(a + c) - a(b + d) = bc - ad$. So neighbours always have $bc - ad = 1$; conversely, a pair with $bc - ad = 1$ is adjacent in $F_{\max(b, d)}$, by Step 1. The geometric reading is that the two lattice vectors span an empty triangle, as [[picks-theorem|Pick's Theorem]] confirms.
+
+Step 3, the count. $F_n$ holds $\frac01$ and, for each $k \le n$, the $\varphi(k)$ fractions $\frac jk$ with $\gcd(j, k) = 1$ and $1 \le j \le k$. The estimate $\frac{3n^2}{\pi^2}$ is the coprime-pair density $\frac6{\pi^2}$ applied to the roughly $\frac{n^2}2$ pairs $j \le k \le n$.
 
 ## Useful observations
 - The fraction with the smallest denominator between two given fractions comes from descending through mediants, as in a Stern–Brocot search.
@@ -1472,7 +1484,9 @@ An olympiad tool for number theory problems about the prime factors of $a^n - 1$
 $a \gt b \ge 1$ are coprime and $n \ge 2$. For $n = 1$ the statement is about $a - b \gt 1$ having any prime factor.
 
 ## Why it works
-The proof is long. It factors $a^n - b^n$ into cyclotomic pieces $\Phi_d(a, b)$ over the divisors $d$ of $n$ and shows that $\Phi_n(a, b)$ is larger than the product of the primes it could share with earlier terms: any such shared prime divides $n$ and appears in $\Phi_n(a, b)$ only to the first power, while $\Phi_n(a, b)$ grows like $a^{\varphi(n)}$. Comparing sizes leaves a new prime except in the listed cases.
+The proof is long, and it is quoted, not proved here: K. Zsigmondy, "Zur Theorie der Potenzreste", Monatshefte für Mathematik und Physik 3 (1892), 265–284. It factors $a^n - b^n$ into cyclotomic pieces $\Phi_d(a, b)$ over the divisors $d$ of $n$ and shows that $\Phi_n(a, b)$ is larger than the product of the primes it could share with earlier terms: any such shared prime divides $n$ and appears in $\Phi_n(a, b)$ only to the first power, while $\Phi_n(a, b)$ grows like $a^{\varphi(n)}$. Comparing sizes leaves a new prime except in the listed cases.
+
+The first observation needs only orders. If $q$ is a primitive prime of $a^n - b^n$, then $b$ is invertible mod $q$ and $ab^{-1}$ has order exactly $n$, since a smaller $k$ with $(ab^{-1})^k \equiv 1$ would put $q$ in $a^k - b^k$. The order divides $q - 1$, so $q \equiv 1 \pmod n$.
 
 ## Useful observations
 - A primitive prime $q$ of $a^n - b^n$ has $a$ of order $n$ relative to $b$ mod $q$, so $q \equiv 1 \pmod n$.
@@ -1897,7 +1911,9 @@ The recurrence is $F_{n+1} = F_n + F_{n-1}$ with $F_0 = 0$ and $F_1 = 1$, reduce
 ## Why it works
 A Fibonacci term mod $m$ is determined by the pair $(F_{n-1}, F_n) \bmod m$, and there are only $m^2$ possible pairs, so the sequence of pairs must eventually repeat.
 
-Because the recurrence $F_{n-1} = F_{n+1} - F_n$ runs backward as cleanly as forward, the repetition cannot start late: it cycles from the very beginning, giving a pure period $\pi(m)$.
+Because the recurrence $F_{n-1} = F_{n+1} - F_n$ runs backward as cleanly as forward, the repetition cannot start late: it cycles from the very beginning, giving a pure period $\pi(m)$, and then $F_n$ depends only on $n \bmod \pi(m)$.
+
+For coprime $m_1$ and $m_2$, the sequence is periodic mod $m_1m_2$ with period $T$ exactly when it is periodic mod both, by the Chinese Remainder Theorem, so the least such $T$ is $\operatorname{lcm}(\pi(m_1), \pi(m_2))$. Listing terms gives $\pi(2) = 3$, $\pi(3) = 8$ and $\pi(5) = 20$, and so $\pi(10) = \operatorname{lcm}(3, 20) = 60$.
 
 ## Useful observations
 - To find $F_n \bmod m$, the period $\pi(m)$ is computed by listing terms mod $m$ until $0, 1$ reappears, and then the index is reduced.
@@ -2316,7 +2332,9 @@ An olympiad framework; contest problems use its identities without the notation.
 $n$ is odd and positive. $\left(\frac an\right) = -1$ proves $a$ is not a square mod $n$; $\left(\frac an\right) = 1$ proves nothing for composite $n$.
 
 ## Why it works
-Multiplicativity in each argument is inherited from the Legendre symbol, factor by factor. For reciprocity, write $m$ and $n$ as products of odd primes and expand both symbols into Legendre symbols $\left(\frac pq\right)$; each pair contributes the sign $(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$. The total exponent is $\sum_{p, q}\frac{p-1}{2}\frac{q-1}{2} = \left(\sum\frac{p-1}{2}\right)\left(\sum\frac{q-1}{2}\right)$, and $\sum\frac{p-1}{2} \equiv \frac{m-1}{2} \pmod 2$, because $\frac{xy - 1}{2} \equiv \frac{x - 1}{2} + \frac{y - 1}{2} \pmod 2$ for odd $x$, $y$. The supplements follow the same way.
+Multiplicativity in each argument is inherited from the Legendre symbol, factor by factor, and so is the dependence on $a \bmod n$ only. For reciprocity, write $m$ and $n$ as products of odd primes and expand both symbols into Legendre symbols $\left(\frac pq\right)$; each pair contributes the sign $(-1)^{\frac{p-1}{2}\frac{q-1}{2}}$. The total exponent is $\sum_{p, q}\frac{p-1}{2}\frac{q-1}{2} = \left(\sum\frac{p-1}{2}\right)\left(\sum\frac{q-1}{2}\right)$, and $\sum\frac{p-1}{2} \equiv \frac{m-1}{2} \pmod 2$, because $\frac{xy - 1}{2} \equiv \frac{x - 1}{2} + \frac{y - 1}{2} \pmod 2$ for odd $x$, $y$.
+
+The supplements multiply the prime cases the same way. For $-1$ the same congruence gives $(-1)^{(n-1)/2}$. For $2$, $\frac{x^2y^2 - 1}8 = \frac{x^2 - 1}8 + \frac{y^2 - 1}8 + \frac{(x^2 - 1)(y^2 - 1)}8$, and the last term is even because each factor is a multiple of $8$, so the exponents $\frac{p^2 - 1}8$ add up to $\frac{n^2 - 1}8$ mod $2$.
 
 ## Useful observations
 - A Jacobi symbol equal to $1$ does not certify a square, since two failures multiply to $1$: $\left(\frac{2}{15}\right) = \left(\frac 23\right)\left(\frac 25\right) = (-1)(-1) = 1$, yet $2$ is not a square modulo $15$.

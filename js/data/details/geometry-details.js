@@ -1289,9 +1289,11 @@ A niche but decisive AIME and olympiad tool: when a problem drops three perpendi
 The point $P$ is chosen so that $\angle PAB = \angle PBC = \angle PCA = \omega$. A second point, the twin Brocard point, has the same angle in the other orientation.
 
 ## Why it works
-Requiring the cevians $AP$, $BP$, $CP$ to make equal angles $\omega$ with the sides $AB$, $BC$, $CA$ respectively forces, through the Law of Sines in the three sub-triangles, the relation $\cot\omega = \cot A + \cot B + \cot C$. Symmetry gives the twin Brocard point with the same angle.
+In triangle $ABP$ the angles at $A$ and $B$ are $\omega$ and $B - \omega$, so the angle at $P$ is $180^\circ - B$, and the Law of Sines gives $BP = \frac{c\sin\omega}{\sin B}$. In triangle $BCP$ the angles at $B$ and $C$ are $\omega$ and $C - \omega$, so $BP = \frac{a\sin(C - \omega)}{\sin C}$. Equating, with $\frac ac = \frac{\sin A}{\sin C}$ and $\sin(C - \omega) = \sin C\cos\omega - \cos C\sin\omega$, and dividing by $\sin\omega$:
+$$\cot\omega - \cot C = \frac{\sin C}{\sin A\sin B} = \frac{\sin(A + B)}{\sin A\sin B} = \cot A + \cot B.$$
+Symmetry gives the twin Brocard point with the same angle.
 
-The side form follows from $\cot A = \frac{b^2 + c^2 - a^2}{4K}$ and its cyclic versions, whose sum is $\frac{a^2 + b^2 + c^2}{4K}$.
+The side form follows from $\cot A = \frac{b^2 + c^2 - a^2}{4K}$ and its cyclic versions, whose sum is $\frac{a^2 + b^2 + c^2}{4K}$. Since $\sum\cot A\cot B = 1$, squaring gives $\csc^2\omega = 1 + \cot^2\omega = 3 + \sum\cot^2A = \sum\csc^2A$, and $(\sum\cot A)^2 \ge 3\sum\cot A\cot B = 3$ gives $\cot\omega \ge \sqrt3$, so $\omega \le 30^\circ$, with equality when the three cotangents are equal.
 
 ## Useful observations
 - $\cot\omega$ is computed from the angles, or from the sides through the second form, which is the contest-usable one.
@@ -4830,7 +4832,9 @@ Olympiad quadrilateral configurations. A niche collinearity that is worth recogn
 Points are in general position, meaning no three are collinear. Points are in convex position when all of them are vertices of their convex hull.
 
 ## Why it works
-The Happy Ending theorem is a Ramsey-style argument on quadruples. Its base case is a short case check on the convex hull of five points: a hull of $5$ or $4$ points gives a convex quadrilateral outright, and a triangular hull with two interior points gives one through the line joining the interior pair.
+The base case is a check on the convex hull of five points. A hull of $5$ or $4$ points gives a convex quadrilateral outright. A triangular hull has two interior points $P$ and $Q$; the line $PQ$ passes through no vertex, so it leaves two hull vertices on one side, and those two with $P$ and $Q$ are in convex position.
+
+The general existence of $\mathrm{ES}(n)$, with the bound $\binom{2n-4}{n-2} + 1$, is quoted, not proved here: P. Erdős and G. Szekeres, "A combinatorial problem in geometry", Compositio Mathematica 2 (1935), 463–470. The value $\mathrm{ES}(5) = 9$ is a longer case analysis, also quoted: J. D. Kalbfleisch, J. G. Kalbfleisch and R. G. Stanton, "A combinatorial problem on convex regions" (1970). The formula $2^{n-2} + 1$ is still a conjecture.
 
 ## Useful observations
 - Organizing by the convex hull is the natural split: the extreme points are the polygon's candidates and the interior points are the leftovers.
@@ -5677,7 +5681,11 @@ An olympiad tool for tangential-polygon concurrencies, where the hypothesis is t
 The two triangles are in the plane (or in space) with corresponding vertices $A, A'$, $B, B'$, $C, C'$ distinct. The statement is projective: no lengths or angles are involved.
 
 ## Why it works
-Lift to space. Two triangles perspective from a point lie in two planes that meet in a line, and each pair of corresponding sides meets on that line, which is the axis of perspectivity. Projecting the spatial picture back to the plane proves the planar theorem, and since the statement is self-dual the converse is automatic.
+Step 1, point to line. Let $AA'$, $BB'$, $CC'$ meet at $O$, and let $P = AB \cap A'B'$, $Q = BC \cap B'C'$, $R = CA \cap C'A'$. With signed ratios, [[menelaus-theorem|Menelaus]] for triangle $OAB$ and the line $A'B'P$, then for $OBC$ with $B'C'Q$ and for $OCA$ with $C'A'R$, gives
+$$\frac{OA'}{A'A}\cdot\frac{AP}{PB}\cdot\frac{BB'}{B'O} = \frac{OB'}{B'B}\cdot\frac{BQ}{QC}\cdot\frac{CC'}{C'O} = \frac{OC'}{C'C}\cdot\frac{CR}{RA}\cdot\frac{AA'}{A'O} = -1.$$
+Multiplying the three, the ratios along $OA$, $OB$, $OC$ cancel in pairs, leaving $\frac{AP}{PB}\cdot\frac{BQ}{QC}\cdot\frac{CR}{RA} = -1$, so $P$, $Q$, $R$ are collinear by the converse of Menelaus.
+
+Step 2, line to point. Suppose $P$, $Q$, $R$ are collinear and let $O = AA' \cap BB'$. The triangles $RAA'$ and $QBB'$ are perspective from $P$, since $RQ$, $AB$ and $A'B'$ all pass through $P$. By Step 1 their corresponding sides meet on a line: $RA \cap QB = C$, $RA' \cap QB' = C'$ and $AA' \cap BB' = O$. So $CC'$ passes through $O$.
 
 ## Useful observations
 - A concurrency can be traded for a collinearity and back.
