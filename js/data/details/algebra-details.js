@@ -923,9 +923,11 @@ The sequence starts $F_0 = 0$, $F_1 = 1$, and $F_{n+1} = F_n + F_{n-1}$. The num
 ## Why it works
 A geometric sequence $r^n$ satisfies the Fibonacci rule exactly when $r^2 = r + 1$, and the combination of the two such sequences that fits the first two terms is the whole sequence.
 
-Putting $r^n$ into $F_{n+1} = F_n + F_{n-1}$ and dividing by $r^{n-1}$ gives $r^2 = r + 1$, with roots $\varphi$ and $\psi$. The rule is linear, so $A\varphi^n + B\psi^n$ satisfies it for any constants, and matching $F_0 = 0$ and $F_1 = 1$ gives $A = -B = \frac1{\sqrt5}$. This is the general method for [[linear-recurrence|linear recurrences]].
+Putting $r^n$ into $F_{n+1} = F_n + F_{n-1}$ and dividing by $r^{n-1}$ gives $r^2 = r + 1$, with roots $\varphi$ and $\psi$. The rule is linear, so $A\varphi^n + B\psi^n$ satisfies it for any constants, and matching $F_0 = 0$ and $F_1 = 1$ gives $A = -B = \frac1{\sqrt5}$. This is the general method for [[linear-recurrence|linear recurrences]]. Since $\left\lvert\frac{\psi^n}{\sqrt5}\right\rvert \lt \frac12$, $F_n$ is the nearest integer to $\frac{\varphi^n}{\sqrt5}$.
 
-The identities come from the recurrence itself. Since $F_i = F_{i+2} - F_{i+1}$, the sum $F_1 + \cdots + F_n$ [[telescoping|telescopes]] to $F_{n+2} - F_2 = F_{n+2} - 1$.
+The sums [[telescoping|telescope]]. Since $F_i = F_{i+2} - F_{i+1}$, the sum $F_1 + \cdots + F_n$ is $F_{n+2} - F_2 = F_{n+2} - 1$. Since $F_i^2 = F_iF_{i+1} - F_{i-1}F_i$, the squares add to $F_nF_{n+1} - F_0F_1 = F_nF_{n+1}$.
+
+The rest comes from the matrix $M = \begin{pmatrix}1&1\\1&0\end{pmatrix}$, for which induction gives $M^n = \begin{pmatrix}F_{n+1}&F_n\\F_n&F_{n-1}\end{pmatrix}$. Its determinant is $(-1)^n$, which is Cassini. Reading an off-diagonal entry of $M^{m+n} = M^mM^n$ gives $F_{m+n} = F_mF_{n+1} + F_{m-1}F_n$. With Cassini, $\gcd(F_n, F_{n+1}) = 1$, so the addition rule gives $\gcd(F_{m+n}, F_n) = \gcd(F_m, F_n)$, and running the Euclidean algorithm on the indices ends at $F_{\gcd(m, n)}$.
 
 ## Useful observations
 - For a single far-out term or its size, the closed form is used: $F_n$ is the nearest integer to $\frac{\varphi^n}{\sqrt5}$, so it has roughly $0.209n$ digits, since $\log_{10}\varphi \approx 0.209$. For $n = 100$ that is $21$ digits.

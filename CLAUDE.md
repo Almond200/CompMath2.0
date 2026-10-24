@@ -26,7 +26,7 @@ $JSC tools/validate-problem-db.js
 - **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences
-- Update the files regularly: during the practice pass, update "Current state" in `PLAN.md` and the README changelog, and commit and push, after every card or every 8 to 10 problems, whichever comes first.
+- Update the files regularly, but not too often (owner, 2026-10-24): update "Current state" in `PLAN.md` and the README changelog, and commit and push, about every 30 cards or 25 problems, and at the end of a step.
 - Every missing formula or card found while tagging goes into `QUESTIONS.md` ("Candidate new cards from the practice pass", next P-number, at the top of the table) for approval; the problem cites the nearest card meanwhile.
 - Never put the owner's name in the app's files.
 - Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
