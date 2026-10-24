@@ -1022,4 +1022,86 @@
     { q: String.raw`Prove that the largest rectangle with a side on the base of any triangle has half the triangle's height.`,
       s: String.raw`With base $b$ and height $h$, a rectangle of height $y$ has width $b\left(1 - \tfrac yh\right)$ by similar triangles, so its area is $\tfrac bh\,y(h - y)$. The product $y(h - y)$ is largest at $y = \tfrac h2$, where the area is $\tfrac{bh}4$, half of $[\triangle] = \tfrac{bh}2$.` }
   );
+  add("conway-circle",
+    { q: String.raw`For the $3$-$4$-$5$ triangle, where is the center of the Conway circle and what is its radius?`,
+      s: String.raw`The six points are pairwise equally far from the incenter (each is a tangent length plus a full side away from a touch point), so the center is the incenter. With $r = 1$ and $s = 6$ the radius is $\sqrt{r^2 + s^2} = \sqrt{37}$.` },
+    { q: String.raw`Find the radius of the Conway circle of an equilateral triangle with side $2$.`,
+      s: String.raw`Here $s = 3$ and $r = \tfrac{\text{area}}s = \tfrac{\sqrt3}3$, so $\rho = \sqrt{\tfrac13 + 9} = \sqrt{\tfrac{28}3} = \tfrac{2\sqrt{21}}3$.` }
+  );
+  add("squares-on-triangle-flanks",
+    { q: String.raw`On each side of the $13$-$14$-$15$ triangle stands a square, and between neighbouring squares lies a flank triangle. How big is each flank, and the whole outer hexagon?`,
+      s: String.raw`Each flank triangle has the triangle's area, $84$. The hexagon is the triangle, the three squares and the three flanks: $169 + 196 + 225 + 4\cdot84 = 926$.` },
+    { q: String.raw`Squares are erected outward on the sides of an equilateral triangle of side $1$. Find the third side of a flank triangle and the hexagon's area.`,
+      s: String.raw`The third side is $2m_a = \sqrt{2 + 2 - 1} = \sqrt3$, as the flank has sides $1$, $1$ around an angle of $120^\circ$. The hexagon has area $3 + 4\cdot\tfrac{\sqrt3}4 = 3 + \sqrt3$.` }
+  );
+  add("triangle-sin2-sum-ratio",
+    { q: String.raw`Check the ratio $\dfrac{\sin2A + \sin2B + \sin2C}{\sin A + \sin B + \sin C} = \dfrac{2r}R$ for the $6$-$8$-$10$ right triangle.`,
+      s: String.raw`Here $r = 2$ and $R = 5$, so the ratio should be $\tfrac45$. Directly, with sines $0.6$, $0.8$, $1$: the numerator is $2(0.6)(0.8) + 2(0.8)(0.6) + 0 = 1.92$ and the denominator $2.4$, giving $0.8$.` },
+    { q: String.raw`Show that the ratio equals $1$ for an equilateral triangle, and explain why it is less than $1$ for every other triangle.`,
+      s: String.raw`For the equilateral triangle $\sin120^\circ = \sin60^\circ$, so numerator and denominator agree, and indeed $R = 2r$. Euler's inequality $R \ge 2r$, with equality only for the equilateral triangle, makes $\tfrac{2r}R \lt 1$ otherwise.` }
+  );
+  add("half-angle-tangent-identity",
+    { q: String.raw`A right triangle has $\tan\tfrac A2 = \tfrac12$. Find $\tan\tfrac B2$.`,
+      s: String.raw`The right angle gives $\tan\tfrac C2 = 1$. The identity becomes $\tfrac12t + t + \tfrac12 = 1$ with $t = \tan\tfrac B2$, so $t = \tfrac13$. Check: $A = 2\arctan\tfrac12 \approx 53.13^\circ$ and $B \approx 36.87^\circ$, whose half has tangent $\tfrac13$.` },
+    { q: String.raw`For the $3$-$4$-$5$ triangle, compute the three half-angle tangents from $\tan\tfrac A2 = \tfrac r{s - a}$ and check the identity.`,
+      s: String.raw`With $r = 1$ and $s = 6$, the values $s - a$ are $3$, $2$, $1$, so the tangents are $\tfrac13$, $\tfrac12$, $1$. Then $\tfrac13\cdot\tfrac12 + \tfrac12\cdot1 + 1\cdot\tfrac13 = \tfrac16 + \tfrac12 + \tfrac13 = 1$.` }
+  );
+  add("median-triangle-area",
+    { q: String.raw`The median lengths of a triangle, $9$, $12$ and $15$, happen to form a right triangle. Deduce the original triangle's area.`,
+      s: String.raw`The medians form a right triangle of area $\tfrac12\cdot9\cdot12 = 54$, so the triangle has area $\tfrac43\cdot54 = 72$.` },
+    { q: String.raw`Check the formula on an equilateral triangle of side $2$.`,
+      s: String.raw`Each median is $\sqrt3$, so the median triangle is equilateral with area $\tfrac{\sqrt3}4\cdot3 = \tfrac{3\sqrt3}4$. Then $\tfrac43\cdot\tfrac{3\sqrt3}4 = \sqrt3$, the area of the original triangle.` }
+  );
+  add("rouths-theorem",
+    { q: String.raw`Each cevian of triangle $ABC$ cuts its side in the ratio $2 : 1$, going around the triangle the same way ($BD : DC = CE : EA = AF : FB = 2 : 1$). What fraction of the area is the small inner triangle?`,
+      s: String.raw`With $x = y = z = 2$, Routh gives $\tfrac{(8 - 1)^2}{(4 + 2 + 1)^3} = \tfrac{49}{343} = \tfrac17$.` },
+    { q: String.raw`What does Routh's Theorem give when every ratio is $3$, and when every ratio is $1$?`,
+      s: String.raw`At $x = y = z = 3$: $\tfrac{(27 - 1)^2}{(9 + 3 + 1)^3} = \tfrac{676}{2197} = \tfrac4{13}$. At $x = y = z = 1$ the numerator $(1 - 1)^2$ is $0$: the cevians are the medians, which meet in a point, so the inner triangle has shrunk to nothing.` }
+  );
+  add("van-aubel-cevians",
+    { q: String.raw`Check Van Aubel's Theorem at the centroid.`,
+      s: String.raw`The medians cut the sides in half, so $\tfrac{AF}{FB} = \tfrac{AE}{EC} = 1$ and the theorem gives $\tfrac{AP}{PD} = 2$, the familiar $2 : 1$ split of a median.` },
+    { q: String.raw`In the triangle with $BC = 14$, $CA = 15$, $AB = 13$, the cevians are the angle bisectors and $P$ is the incenter. Find $AP : PD$.`,
+      s: String.raw`The bisector from $C$ gives $\tfrac{AF}{FB} = \tfrac{CA}{CB} = \tfrac{15}{14}$, and the one from $B$ gives $\tfrac{AE}{EC} = \tfrac{AB}{BC} = \tfrac{13}{14}$. So $\tfrac{AP}{PD} = \tfrac{15 + 13}{14} = 2$, which is $\tfrac{b + c}a$.` }
+  );
+  add("trig-ceva",
+    { q: String.raw`Use Trigonometric Ceva to show that the three angle bisectors of a triangle meet in one point.`,
+      s: String.raw`Each bisector splits its angle into equal halves, so every ratio $\tfrac{\sin\angle BAD}{\sin\angle DAC}$ is $\tfrac{\sin(A/2)}{\sin(A/2)} = 1$. The product is $1$, so by the converse the bisectors are concurrent.` },
+    { q: String.raw`Use Trigonometric Ceva to show that the altitudes of an acute triangle meet in one point.`,
+      s: String.raw`The altitude from $A$ makes $\angle BAD = 90^\circ - B$ and $\angle DAC = 90^\circ - C$, and likewise at the other vertices. The product is $\tfrac{\cos B}{\cos C}\cdot\tfrac{\cos C}{\cos A}\cdot\tfrac{\cos A}{\cos B} = 1$, so the altitudes are concurrent.` }
+  );
+  add("napoleons-theorem",
+    { q: String.raw`Build an outward equilateral triangle on each side of the $3$-$4$-$5$ right triangle and join the three centers. How long is each side of the result?`,
+      s: String.raw`The Napoleon triangle's side $t$ has $t^2 = \tfrac{a^2 + b^2 + c^2}6 + \tfrac2{\sqrt3}K = \tfrac{50}6 + \tfrac{12}{\sqrt3} = \tfrac{25}3 + 4\sqrt3$, so $t = \sqrt{\tfrac{25}3 + 4\sqrt3} \approx 3.91$. Coordinates with $A = (0, 0)$, $B = (3, 0)$, $C = (0, 4)$ give the same distance between each pair of centers.` },
+    { q: String.raw`What is the Napoleon triangle of an equilateral triangle with side $3$?`,
+      s: String.raw`The formula gives $t^2 = \tfrac{27}6 + \tfrac2{\sqrt3}\cdot\tfrac{9\sqrt3}4 = \tfrac92 + \tfrac92 = 9$, so it is equilateral with side $3$, congruent to the original (it is the original turned $180^\circ$ about its center).` }
+  );
+  add("iran-lemma",
+    { q: String.raw`In the triangle with $BC = 14$, $CA = 15$, $AB = 13$, the incircle touches $CA$ at $E$ and $AB$ at $F$, and $BI$ meets $EF$ at $K$. Find $CK$ and check that $K$ lies on the midline parallel to $AB$.`,
+      s: String.raw`Since $CK \perp BI$ and $BK$ is the bisector, $CK = BC\sin\tfrac B2$. Here $\cos B = \tfrac{196 + 169 - 225}{2\cdot14\cdot13} = \tfrac5{13}$, so $\sin\tfrac B2 = \sqrt{\tfrac{1 - 5/13}2} = \tfrac2{\sqrt{13}}$ and $CK = \tfrac{28}{\sqrt{13}}$. In coordinates $B = (0, 0)$, $C = (14, 0)$, $A = (5, 12)$, $K = \left(\tfrac{126}{13}, \tfrac{84}{13}\right)$, which is $(7, 0) + \tfrac7{13}(5, 12)$: on the line through the midpoint of $BC$ parallel to $AB$.` }
+  );
+  add("steiner-ratio-theorem",
+    { q: String.raw`Use Steiner's Ratio Theorem to show that the symmedian from $A$ divides $BC$ in the ratio $AB^2 : AC^2$.`,
+      s: String.raw`The median $AD$ and the symmedian $AE$ are isogonal, so $\tfrac{BD}{DC}\cdot\tfrac{BE}{EC} = \tfrac{AB^2}{AC^2}$. The median has $\tfrac{BD}{DC} = 1$, which leaves $\tfrac{BE}{EC} = \tfrac{AB^2}{AC^2}$.` }
+  );
+  add("isogonal-line-lemma",
+    { q: String.raw`In the right triangle $A = (0, 0)$, $B = (4, 0)$, $C = (0, 4)$, take $X = (2, 1)$ and $Y = (1.5, 3)$, so that $AX$ and $AY$ make equal angles with $AB$ and $AC$. Find $P = BX \cap CY$ and $Q = BY \cap CX$, and check the lemma.`,
+      s: String.raw`The rays $AX$ and $AY$ have directions $(2, 1)$ and $(1, 2)$, mirror images in the bisector $y = x$. Solving, $P = (12, -4)$ and $Q = \left(-\tfrac83, 8\right)$. Line $AP$ makes an angle with $\tan = \tfrac13$ below $AB$, and line $AQ$ makes an angle with $\tan = \tfrac13$ beyond $AC$ ($\tfrac{8/3}8 = \tfrac13$), so $AP$ and $AQ$ are isogonal, as the lemma says.` }
+  );
+  add("shooting-lemma",
+    { q: String.raw`$M$ is the midpoint of arc $BC$ of a circle, with $MB = 5$. A line from $M$ meets chord $BC$ at $D$, with $MD = 3$, and the circle again at $T$. Find $MT$ and $DT$.`,
+      s: String.raw`The lemma gives $MD\cdot MT = MB^2 = 25$, so $MT = \tfrac{25}3$ and $DT = \tfrac{25}3 - 3 = \tfrac{16}3$.` },
+    { q: String.raw`Prove $MD\cdot MT = MB^2$ in the shooting lemma by similar triangles.`,
+      s: String.raw`The arcs $MB$ and $MC$ are equal, so the inscribed angles on them are equal: $\angle MBD = \angle MBC = \angle MTB$. Triangles $MBD$ and $MTB$ also share the angle at $M$, so they are similar, and $\tfrac{MD}{MB} = \tfrac{MB}{MT}$.` }
+  );
+  add("carnots-perpendicularity-theorem",
+    { q: String.raw`Use Carnot's theorem to show that the three perpendicular bisectors of a triangle meet in one point.`,
+      s: String.raw`Take $D$, $E$, $F$ to be the midpoints, so $BD = DC$, $CE = EA$, $AF = FB$. Every difference $BD^2 - DC^2$ and so on is $0$, the sum is $0$, and the perpendiculars at the midpoints concur.` },
+    { q: String.raw`Use Carnot's theorem to show that the altitudes of a triangle meet in one point.`,
+      s: String.raw`With $D$ the foot of the altitude from $A$, the two right triangles on $AD$ give $BD^2 - DC^2 = AB^2 - AC^2 = c^2 - b^2$. Likewise $CE^2 - EA^2 = a^2 - c^2$ and $AF^2 - FB^2 = b^2 - a^2$. The sum is $0$, so the perpendiculars to the sides at the feet, which are the altitudes, concur.` }
+  );
+  add("excentral-triangle",
+    { q: String.raw`Find the excentral triangle of an equilateral triangle of side $2$.`,
+      s: String.raw`Here $R = \tfrac2{\sqrt3}$, so the excentral triangle has circumradius $2R = \tfrac4{\sqrt3}$ and sides $4R\cos30^\circ = 4$. It is the equilateral triangle of side $4$ with the original as its medial triangle, and its orthocenter is the incenter of the original.` }
+  );
 })();
