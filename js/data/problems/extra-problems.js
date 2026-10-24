@@ -1908,4 +1908,64 @@
     { q: String.raw`In an equilateral triangle of side $6$, find $AE$ for the $A$-mixtilinear incircle and check that the incenter is the midpoint of $EF$.`,
       s: String.raw`$s = 9$, so $AE = AF = \frac{36}9 = 4$. The midpoint of $EF$ is $4\cos 30^\circ = 2\sqrt3$ from $A$ along the bisector, and $AI = \frac{r}{\sin 30^\circ} = 2\sqrt3$ with $r = \sqrt3$. They agree, so $I$ is the midpoint.` }
   );
+  add("japanese-theorem",
+    { q: String.raw`Take the square $A = (0, 0)$, $B = (2, 0)$, $C = (2, 2)$, $D = (0, 2)$. Find the four incenters of $ABC$, $BCD$, $CDA$, $DAB$ and the shape they make.`,
+      s: String.raw`Each triangle is right isosceles with legs $2$, so $r = \frac{2 + 2 - 2\sqrt2}{2} = 2 - \sqrt2$, and each incenter sits $r$ from both legs: $(\sqrt2, 2 - \sqrt2)$, $(\sqrt2, \sqrt2)$, $(2 - \sqrt2, \sqrt2)$, $(2 - \sqrt2, 2 - \sqrt2)$. That is a square of side $2\sqrt2 - 2 \approx 0.83$, a rectangle as promised.` },
+    { q: String.raw`Cyclic $ABCD$ has $AB = 25$, $BC = 39$, $CD = 52$, $DA = 60$, so $BD = 65$ and $AC = 56$. Compare the sum of the inradii on each side of $BD$ with the sum on each side of $AC$.`,
+      s: String.raw`Across $BD$: triangles $25, 60, 65$ and $39, 52, 65$ are right, with inradii $\frac{25 + 60 - 65}2 = 10$ and $\frac{39 + 52 - 65}2 = 13$, total $23$. Across $AC$: triangle $25, 39, 56$ has area $420$ and $s = 60$, so $r = 7$; triangle $52, 60, 56$ has area $1344$ and $s = 84$, so $r = 16$; total $23$. The equal sums are the companion of the rectangle: they hold for every cyclic polygon and every triangulation.` }
+  );
+  add("poncelet-closure",
+    { q: String.raw`The outer circle has radius $10$ and the inner circle's center is $6$ from its center. What inner radius makes bicentric triangles possible?`,
+      s: String.raw`Euler's relation $d^2 = R^2 - 2Rr$ gives $36 = 100 - 20r$, so $r = \frac{16}5$. Then by Poncelet every point of the outer circle starts such a triangle.` },
+    { q: String.raw`For bicentric quadrilaterals with $R = \tfrac72$ and $d = \tfrac12$, what must the inradius be? Check the square case $d = 0$ too.`,
+      s: String.raw`$R - d = 3$ and $R + d = 4$, so Fuss's relation gives $\frac1{r^2} = \frac19 + \frac1{16} = \frac{25}{144}$ and $r = \frac{12}5$. With $d = 0$ it reads $\frac2{R^2} = \frac1{r^2}$, so $r = \frac{R}{\sqrt2}$, which is exactly the square's inradius.` }
+  );
+  add("cyclic-quad-radius",
+    { q: String.raw`An isosceles trapezoid has bases $8$ and $2$ and legs $5$. Find its circumradius with the four-side formula, and check it with coordinates.`,
+      s: String.raw`The height is $4$, so $K = \frac{8 + 2}2 \cdot 4 = 20$. With sides $2, 5, 8, 5$ in order the products are $10 + 40 = 50$, $16 + 25 = 41$, $10 + 40 = 50$, so $R = \frac{50\sqrt{41}}{80} = \frac{5\sqrt{41}}8$. Check: with vertices $(\pm4, 0)$, $(\pm1, 4)$, the center $(0, k)$ needs $16 + k^2 = 1 + (4 - k)^2$, so $k = \frac18$ and $R^2 = \frac{1025}{64}$, the same.` },
+    { q: String.raw`What is $R$ for the cyclic quadrilateral with sides $7, 15, 20, 24$ in that order?`,
+      s: String.raw`$7^2 + 24^2 = 15^2 + 20^2 = 625$, so the diagonal between them is $25$ and $K = 84 + 150 = 234$. The products are $105 + 480 = 585$, $140 + 360 = 500$, $168 + 300 = 468$, and $\sqrt{585 \cdot 500 \cdot 468} = 11700$, so $R = \frac{11700}{936} = \frac{25}2$, half the diameter $25$.` }
+  );
+  add("newtons-line",
+    { q: String.raw`Quadrilateral $A = (0, 0)$, $B = (4, 0)$, $C = (3, 2)$, $D = (0, 4)$. Extend opposite sides to meet at $E = AB \cap CD$ and $F = BC \cap DA$, and find the line through the midpoints of $AC$, $BD$, $EF$.`,
+      s: String.raw`Line $CD$ is $y = 4 - \tfrac23x$, which meets $y = 0$ at $E = (6, 0)$; line $BC$ is $y = -2(x - 4)$, which meets $x = 0$ at $F = (0, 8)$. The midpoints are $\left(\tfrac32, 1\right)$, $(2, 2)$ and $(3, 4)$, all on $y = 2x - 2$.` },
+    { q: String.raw`The trapezoid $(0, 0)$, $(3, 0)$, $\left(\tfrac32, 2\right)$, $(0, 2)$ has an incircle centered at $(1, 1)$. Check that the center lies on the line through the diagonals' midpoints.`,
+      s: String.raw`The slanted side $4x + 3y = 12$ is at distance $\frac{|4 + 3 - 12|}5 = 1$ from $(1, 1)$, so the circle of radius $1$ touches all four sides. The diagonal midpoints are $\left(\tfrac34, 1\right)$ and $\left(\tfrac32, 1\right)$, so the Newton line is $y = 1$, and it passes through $(1, 1)$.` }
+  );
+  add("picks-hexagonal-grid",
+    { q: String.raw`On the triangular lattice of honeycomb cell centers, an equilateral triangle has side $2$ lattice steps. Count $B$ and $I$ and get its area in unit triangles.`,
+      s: String.raw`Each side carries $3$ points, so $B = 6$, and there is no interior point, $I = 0$. Then $A = 2 \cdot 0 + 6 - 2 = 4$ unit triangles, matching the $4$ small triangles a side-$2$ triangle splits into.` },
+    { q: String.raw`On the same lattice, a regular hexagon has side $2$. Find its area in unit triangles both by the formula and by cutting.`,
+      s: String.raw`The boundary has $6 \cdot 2 = 12$ points, and the interior holds the center and the $6$ points around it, $I = 7$. So $A = 14 + 12 - 2 = 24$. Cutting from the center gives $6$ triangles of side $2$, each of $4$ unit triangles: $24$.` }
+  );
+  add("convex-position",
+    { q: String.raw`How many points in general position guarantee a convex pentagon, and how many can avoid one?`,
+      s: String.raw`$\mathrm{ES}(5) = 9$: any $9$ points with no three collinear contain $5$ in convex position, and there are sets of $8$ points with no convex pentagon among them.` },
+    { q: String.raw`Evaluate the Erdős–Szekeres bound $\binom{2n - 4}{n - 2} + 1$ at $n = 4$ and $n = 5$. How far is each from the truth?`,
+      s: String.raw`$n = 4$: $\binom42 + 1 = 7$, against the true $\mathrm{ES}(4) = 5$. $n = 5$: $\binom63 + 1 = 21$, against $\mathrm{ES}(5) = 9$. The bound always holds but grows like $4^n$, while the conjectured truth is $2^{n - 2} + 1$, which gives $5$ and $9$ here.` }
+  );
+  add("sylvester-gallai",
+    { q: String.raw`Find a line through exactly two points of the $3 \times 3$ grid $\{0, 1, 2\}^2$.`,
+      s: String.raw`The line through $(0, 0)$ and $(1, 2)$ has slope $2$; its next grid point would be $(2, 4)$, outside the grid, so it holds exactly two. (Rows, columns and the two long diagonals each hold three.)` },
+    { q: String.raw`For the points $(0, 0)$, $(2, 0)$, $(4, 0)$, $(2, 1)$, find the point and connecting line (not through it) at the least distance, and say how many points that line holds.`,
+      s: String.raw`The candidates are $1$ for $(2, 1)$ and $y = 0$, $2$ for $(0, 0)$ or $(4, 0)$ and $x = 2$, $\frac4{\sqrt5}$ for $(0, 0)$ and $x + 2y = 4$, and $\frac2{\sqrt5} \approx 0.89$ for $(2, 0)$ and either $x - 2y = 0$ or $x + 2y = 4$. The least is $\frac2{\sqrt5}$, and its line $x = 2y$ holds exactly $(0, 0)$ and $(2, 1)$: an ordinary line, as the proof predicts.` }
+  );
+  add("hellys-theorem",
+    { q: String.raw`Three convex sets in the plane meet two at a time. Must all three share a point?`,
+      s: String.raw`No. The three sides of a triangle are convex segments; each two share a vertex, but no point is on all three. In the plane, Helly needs every three to meet, not every two.` },
+    { q: String.raw`Six intervals on a line overlap in every pair: $[0, 5]$, $[1, 6]$, $[2, 7]$, $[3, 8]$, $[4, 9]$, $[4.5, 10]$. Find a point in all of them.`,
+      s: String.raw`On a line $d = 1$, so pairwise overlap is enough. The largest left end is $4.5$ and the smallest right end is $5$; every interval contains $[4.5, 5]$, for example the point $4.75$.` }
+  );
+  add("minkowski-lattice",
+    { q: String.raw`Show that the bound $4$ cannot be lowered: give a symmetric convex region of area $4$ whose only lattice point is the origin.`,
+      s: String.raw`The open square $|x| \lt 1$, $|y| \lt 1$ has area $4$, is convex and symmetric, and every other lattice point has a coordinate of absolute value at least $1$, so it lies outside.` },
+    { q: String.raw`Is there an integer pair $(x, y) \ne (0, 0)$ with $x^2 + 3y^2 \lt 5$? Decide from the ellipse's size before searching.`,
+      s: String.raw`Its semi-axes are $\sqrt5$ and $\sqrt{5/3}$, so its area is $\frac{5\pi}{\sqrt3} \approx 9.07 \gt 4$, and Minkowski says yes. For example $(1, 1)$: $1 + 3 = 4 \lt 5$.` }
+  );
+  add("descartes-sphere-theorem",
+    { q: String.raw`Four unit balls touch each other. Find the radii of the small ball nestled among them and of the ball enclosing them.`,
+      s: String.raw`$\sum k = 4$ and $\sum k^2 = 4$, so $k_5 = 2 \pm \frac{\sqrt3}{2}\sqrt{16 - 8} = 2 \pm \sqrt6$. The inner ball has $r = \frac1{2 + \sqrt6} = \frac{\sqrt6 - 2}2 \approx 0.225$, and $k = 2 - \sqrt6$ gives the enclosing ball with $r = \frac{\sqrt6 + 2}{2} \approx 2.225$. Check: the centers form a tetrahedron of edge $2$ with circumradius $\frac{\sqrt6}2$, and $\frac{\sqrt6}2 \pm 1$ are these radii.` },
+    { q: String.raw`Two parallel planes $2$ apart sandwich two touching unit balls. What radius must a fifth ball have to touch both planes and both balls?`,
+      s: String.raw`The planes count as curvature $0$, so $\sum k = 2$ and $\sum k^2 = 2$, and $k_5 = 1 \pm \frac{\sqrt3}2\sqrt{4 - 4} = 1$: radius $1$, in either of the two spots beside the pair. Check: balls at $(0, 0, 0)$ and $(2, 0, 0)$, and a third at $(1, \sqrt3, 0)$ is $2$ from both.` }
+  );
 })();
