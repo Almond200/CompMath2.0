@@ -5183,4 +5183,20 @@
       cap(430, 330, "R is the strip 4 < x + y < 14 in the first quadrant with the disk on diameter AB removed." + MM(ok))
     ]);
   })();
+  PROB["2004-amc-12a-24"] = (() => {
+    const A = [0, 0], B = [1, 0], h = Math.sqrt(3) / 2, T = [0.5, h], D = [0.5, -h];
+    const arcPts = (c, r, t0, t1) => { const out = []; for (let i = 0; i <= 40; i++) { const t = rad(t0 + (t1 - t0) * i / 40); out.push(add(c, [r * Math.cos(t), r * Math.sin(t)])); } return out; };
+    const lens = [...arcPts(A, 1, -60, 60), ...arcPts(B, 1, 120, 240)];
+    const outer = [...arcPts(A, 2, -60, 60), ...arcPts(T, 1, 60, 120), ...arcPts(B, 2, 120, 240), ...arcPts(D, 1, 240, 300)];
+    const ok = dist(outer[40], outer[41]) < 1e-9 && dist(outer[81], outer[82]) < 1e-9 && Math.abs(dist(T, A) - 1) < 1e-9;
+    const Q = fitQ([[-1.1, -1.8], [2.1, 1.8]], 22, 430, 300);
+    return wrap(430, 300, [
+      poly(outer.map(Q), ACC, 2, ACCS), poly(lens.map(Q), DIM, 1.5, "var(--bg-card)"),
+      circ(Q(T), Q.k, FNT, 1, "none", "3 3"),
+      seg(Q(A), Q(B), DIM, 2), dot(Q(A), DIM, 3.5), dot(Q(B), DIM, 3.5), dot(Q(T), FNT, 3),
+      txt(add(Q(A), [-12, 5]), "A"), txt(add(Q(B), [12, 5]), "B"), txt(add(Q([0.5, 0.42]), [0, 0]), "L", DIM, 12),
+      txt(Q([0.5, 1.45]), "S", ACC, 13),
+      cap(430, 300, "The centers of the covering disks fill the lens L; S is everything within 1 of L. One such disk (dashed) is centered at a corner of the lens." + MM(ok))
+    ]);
+  })();
 })();

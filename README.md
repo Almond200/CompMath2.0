@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2004 AMC 12A finished, 2004 AMC 12B begun (2026-10-24).** 2004 AMC 12A #13 ($20$ lines), 16 ($2001^{2002}$), 20 ($\tfrac34$), 21 ($\tfrac35$), 23 ($P(x)=x(x^{2003}+1)$ shows (E) can be nonzero), 24 ($3\pi-\tfrac{\sqrt3}2$, with a figure), 25 ($\tfrac{962}{98!}$); 2004 AMC 12B #3, 4, 9. New card candidate P27 (Steiner's formula for a neighborhood) in `QUESTIONS.md`. All checked by script.
 - **Step D: 2005 AMC 12 finished, 2004 AMC 12A begun (2026-10-24).** 2005 AMC 12B #22 ($2^{2005}$), 23 ($a+b=\tfrac{29}2$), 24 (slopes add to $\tfrac6{11}$, $m+n=14$), 25 ($80$ good moves of $4096$); 2004 AMC 12A #2, 3, 5, 6, 10, 12, 17 (twin of 10A #24). All checked by script.
 - **Step D: 2005 AMC 12B begun (2026-10-24).** #7 ($24$), 8, 13 ($\log_4128=\tfrac72$), 14 ($6+6\sqrt2$), 15 (missing $4$), 16 ($1+\sqrt3$), 17 (one tuple), 18 ($90-12.5\pi\approx50.7$, with a figure), 20 ($34$), 21 ($k=2$). All checked by script.
 - **Step D: 2005 AMC 12A finished (2026-10-24).** #16 ($r=9s$), 17 (a pyramid of volume $\tfrac1{12}$), 18 ($266-1-165=100$), 19 ($2004_9=1462$), 20 ($2^{2005}$), 21 ($2$ triples), 22 (diagonal $20$), 23 ($\tfrac{62}{600}$), 24 ($27-5=22$), 25 ($64+8+8=80$ triangles). All checked by script.

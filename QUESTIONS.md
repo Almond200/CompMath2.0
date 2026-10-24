@@ -4,7 +4,11 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-Nothing is open. A new question goes here; a new card candidate starts a table here as P27.
+No question is open. New card candidates from Step D wait in the table below; answer per row: yes, no, or a different rating. The problem cites the nearest card meanwhile, and a new candidate goes at the top as the next P-number.
+
+| # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
+|---|---|---|---|---|
+| P27 | Area of a Neighborhood (Steiner's Formula): the points within distance $r$ of a convex region of area $A$ and perimeter $P$ cover $A+Pr+\pi r^2$, since the band over each side or arc adds length times $r$ and the corner sectors add up to one full disk | formula, Geometry > Areas | AIME, lower | 2004 AMC 12A #24 (cites Circle Area, Circumference, Arcs & Sectors meanwhile) |
 
 ## Answered (kept as the record, newest first)
 
