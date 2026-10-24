@@ -193,4 +193,61 @@
     { q: String.raw`Positive reals satisfy $a+b+c=abc$. Show that $a,b,c$ are the tangents of the angles of a triangle.`,
       s: String.raw`Set $a=\tan A,\ b=\tan B,\ c=\tan C$ with $A,B,C\in(0,\tfrac\pi2)$. The identity $\tan A+\tan B+\tan C=\tan A\tan B\tan C$ holds precisely when $A+B+C=\pi$, which the hypothesis $a+b+c=abc$ forces — so $A,B,C$ are the angles of a triangle.` }
   );
+  // ---------- Step F (2026-10-24): two practice problems on every card ----------
+  add("determinant-basics",
+    { q: String.raw`Let $A = \begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix}$. Find $\det(A^3)$ and $\det(2A)$ without multiplying any matrices.`,
+      s: String.raw`$\det A = 2\cdot4 - 1\cdot3 = 5$. The product rule gives $\det(A^3) = (\det A)^3 = 125$. Doubling $A$ doubles each of its two rows, and each row scales the determinant once, so $\det(2A) = 2^2\cdot5 = 20$.` }
+  );
+  add("anticomplementary-triangle",
+    { q: String.raw`Triangle $ABC$ has area $7$, circumcenter $O = (1, 2)$ and orthocenter $H = (4, -2)$. Find the area, the circumcenter and the orthocenter of its anticomplementary triangle.`,
+      s: String.raw`The area is $4\cdot7 = 28$. The circumcenter of the anticomplementary triangle is $H = (4, -2)$, and its orthocenter is the reflection of $H$ over $O$: $2O - H = (2 - 4, 4 + 2) = (-2, 6)$.` }
+  );
+  add("nine-point-circle",
+    { q: String.raw`Find the center and radius of the nine-point circle of the triangle with vertices $A(0, 0)$, $B(6, 0)$, $C(0, 8)$, and check that it passes through the foot of the altitude from $A$.`,
+      s: String.raw`The right angle at $A$ puts the circumcenter at the midpoint of the hypotenuse, $O = (3, 4)$, with $R = 5$, and the orthocenter at $H = A = (0, 0)$. So the center is the midpoint of $OH$, $\left(\tfrac32, 2\right)$, and the radius is $\tfrac52$. The foot of the altitude from $A$ to $BC$ ($4x + 3y = 24$) is $\left(\tfrac{96}{25}, \tfrac{72}{25}\right)$, whose distance from the center satisfies $\left(\tfrac{96}{25} - \tfrac32\right)^2 + \left(\tfrac{72}{25} - 2\right)^2 = \tfrac{117^2 + 44^2}{50^2} = \tfrac{15625}{2500} = \tfrac{25}4$, as it should.` }
+  );
+  add("hyperbola-properties",
+    { q: String.raw`A point $P$ on $\frac{x^2}{9} - \frac{y^2}{16} = 1$ is $10$ from the focus $(5, 0)$. How far can it be from the other focus?`,
+      s: String.raw`Here $a = 3$, so the distances to the two foci differ by $2a = 6$: the other distance is $4$ or $16$. Both happen. On the right branch the nearer focus is $(5, 0)$ and $P = (7.8, \pm9.6)$ gives $10$ and $16$; on the left branch $(5, 0)$ is the farther focus and $P = (-4.2, \pm\sqrt{15.36})$ gives $10$ and $4$.` }
+  );
+  add("axis-stretch-area",
+    { q: String.raw`Find the area of the part of the ellipse $\dfrac{x^2}{9} + \dfrac{y^2}{4} \le 1$ that lies above the $x$-axis and below the line $y = \tfrac{2}{\sqrt3}x$.`,
+      s: String.raw`Write $x = 3u$ and $y = 2v$, which turns the ellipse into the unit disk and multiplies every area by $\tfrac16$. The line becomes $2v = \tfrac2{\sqrt3}\cdot3u$, that is $v = \sqrt3u$, the ray at $60^\circ$. So the region is the image of a $60^\circ$ sector of the unit disk, area $\tfrac\pi6$, and its own area is $6\cdot\tfrac\pi6 = \pi$.` },
+    { q: String.raw`$P$ moves on the ellipse $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$. Find the largest area of the triangle with vertices $(3, 0)$, $(0, 2)$ and $P$.`,
+      s: String.raw`Shrink by $3$ along $x$ and by $2$ along $y$: the ellipse becomes the unit circle, the fixed vertices become $(1, 0)$ and $(0, 1)$, and every area is divided by $6$, so the largest triangle is the image of the largest one in the circle. That chord has length $\sqrt2$ and lies $\tfrac1{\sqrt2}$ from the center, so the farthest point of the circle is $1 + \tfrac1{\sqrt2}$ from it and the largest area there is $\tfrac12\sqrt2\left(1 + \tfrac1{\sqrt2}\right) = \tfrac{\sqrt2 + 1}2$. Back on the ellipse the largest area is $6\cdot\tfrac{\sqrt2+1}2 = 3\sqrt2 + 3$, at $P = \left(-\tfrac3{\sqrt2}, -\sqrt2\right)$.` }
+  );
+  add("area-method",
+    { q: String.raw`Triangle $ABC$ has area $60$. The point $D$ on $BC$ has $BD : DC = 2 : 3$, and $E$ is the midpoint of $AD$. Find $[ABE]$ and $[BEC]$.`,
+      s: String.raw`With apex $A$ and bases on $BC$, $[ABD] = \tfrac25\cdot60 = 24$ and $[ADC] = 36$. In triangle $ABD$ the point $E$ halves the base $AD$ seen from $B$, so $[ABE] = [BED] = 12$; likewise $[CED] = 18$. Then $[BEC] = [BED] + [CED] = 30$.` },
+    { q: String.raw`$P$ is a point inside triangle $ABC$, and line $AP$ meets $BC$ at $D$ with $AP : PD = 3 : 1$. Find $\dfrac{[PBC]}{[ABC]}$.`,
+      s: String.raw`Triangles $PBC$ and $ABC$ share the base $BC$, so their areas are in the ratio of their heights above $BC$. Those heights are proportional to $PD$ and $AD$ along the same line through $D$, so the ratio is $\tfrac{PD}{AD} = \tfrac14$.` }
+  );
+  add("polynomial-division",
+    { q: String.raw`Divide $x^4 - 3x^3 + 2x - 5$ by $x^2 + x - 1$.`,
+      s: String.raw`Leading terms first: $x^4 \div x^2 = x^2$, and subtracting $x^2(x^2 + x - 1)$ leaves $-4x^3 + x^2 + 2x - 5$. Next $-4x$, leaving $5x^2 - 2x - 5$, and then $5$, leaving $-7x$. So the quotient is $x^2 - 4x + 5$ and the remainder is $-7x$. Check: $(x^2 + x - 1)(x^2 - 4x + 5) - 7x = x^4 - 3x^3 + 9x - 5 - 7x$.` },
+    { q: String.raw`Use synthetic division to divide $2x^3 - 5x^2 + 4x - 7$ by $x - 3$.`,
+      s: String.raw`Multiply by $3$ and add along the coefficients $2, -5, 4, -7$: bring down $2$; $-5 + 6 = 1$; $4 + 3 = 7$; $-7 + 21 = 14$. So the quotient is $2x^2 + x + 7$ and the remainder is $14$, which is $P(3) = 54 - 45 + 12 - 7$.` }
+  );
+  add("gcd-substitution",
+    { q: String.raw`Find all pairs of positive integers $(a, b)$ with $a + b = 150$ and $\operatorname{lcm}(a, b) = 4\gcd(a, b)$.`,
+      s: String.raw`Write $a = dx$, $b = dy$ with $d = \gcd(a, b)$ and $\gcd(x, y) = 1$. Then $\operatorname{lcm}(a, b) = dxy$, so $xy = 4$, and coprimality leaves $(x, y) = (1, 4)$ or $(4, 1)$. The sum is $d(x + y) = 5d = 150$, so $d = 30$ and the pairs are $(30, 120)$ and $(120, 30)$.` }
+  );
+  add("direct-proof",
+    { q: String.raw`Prove that if $a$ and $b$ are odd, then $a^2 + b^2$ is even but not divisible by $4$.`,
+      s: String.raw`Write $a = 2m + 1$ and $b = 2n + 1$. Then $a^2 + b^2 = 4m^2 + 4m + 1 + 4n^2 + 4n + 1 = 4(m^2 + m + n^2 + n) + 2$, which leaves remainder $2$ on division by $4$: even, and not a multiple of $4$.` },
+    { q: String.raw`Prove that a two-digit number plus the number with its digits reversed is always a multiple of $11$.`,
+      s: String.raw`With tens digit $a$ and units digit $b$ the numbers are $10a + b$ and $10b + a$, and their sum is $11a + 11b = 11(a + b)$. For example, $47 + 74 = 121 = 11\cdot11$.` }
+  );
+  add("proof-by-contradiction",
+    { q: String.raw`Prove that $\sqrt3$ is irrational.`,
+      s: String.raw`Suppose $\sqrt3 = \tfrac pq$ in lowest terms. Then $p^2 = 3q^2$, so $3 \mid p^2$, and since $3$ is prime, $3 \mid p$. Writing $p = 3r$ gives $9r^2 = 3q^2$, so $q^2 = 3r^2$ and $3 \mid q$ as well. Then $\tfrac pq$ was not in lowest terms, a contradiction.` },
+    { q: String.raw`Prove that $\log_2 3$ is irrational.`,
+      s: String.raw`Suppose $\log_2 3 = \tfrac pq$ with positive integers $p, q$ (it is positive, since $3 \gt 1$). Then $2^{p/q} = 3$, so $2^p = 3^q$. The left side is even and the right side is odd, which is impossible.` }
+  );
+  add("proof-by-cases",
+    { q: String.raw`Prove that no integer of the form $4k + 3$ is a sum of two squares.`,
+      s: String.raw`Split on parity: an even square is $(2m)^2 = 4m^2 \equiv 0$ and an odd square is $(2m + 1)^2 = 4(m^2 + m) + 1 \equiv 1 \pmod 4$. So a sum of two squares is $0 + 0$, $0 + 1$ or $1 + 1$ modulo $4$, that is $0$, $1$ or $2$, and never $3$.` },
+    { q: String.raw`Prove the triangle inequality $\lvert x + y\rvert \le \lvert x\rvert + \lvert y\rvert$ for real numbers.`,
+      s: String.raw`If $x + y \ge 0$, then $\lvert x + y\rvert = x + y \le \lvert x\rvert + \lvert y\rvert$, since each number is at most its absolute value. If $x + y \lt 0$, then $\lvert x + y\rvert = -x - y \le \lvert x\rvert + \lvert y\rvert$, since each of $-x$ and $-y$ is at most its absolute value. One of the two cases always holds.` }
+  );
 })();
