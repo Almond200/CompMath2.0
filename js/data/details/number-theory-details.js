@@ -1985,7 +1985,7 @@ Squares may be $0$, so "three squares" includes numbers that need fewer.
 ## Why it works
 The necessity is a short computation. Squares are $0, 1, 4 \pmod 8$, so a sum of three of them is never $7 \bmod 8$. And a sum of three squares that is divisible by $4$ must have all three squares even, since odd squares are $1 \bmod 4$ and one or two of them would leave $1$, $2$ or $3 \bmod 4$; dividing each by $4$ represents $\frac n4$. So if $n$ fails, $4n$ fails too, which excludes all of $4^k(8m + 7)$.
 
-The converse, that every other number is a sum of three squares, needs the theory of ternary quadratic forms. Lagrange's theorem has an elementary proof: Euler's four-square identity makes representable numbers closed under multiplication, so it suffices to represent primes, which a descent argument does.
+The converse, that every other number is a sum of three squares, needs the theory of ternary quadratic forms, and it is quoted, not proved here; a complete proof is in M. B. Nathanson, Additive Number Theory: The Classical Bases (Springer, 1996). Lagrange's four-square theorem has an elementary proof: Euler's four-square identity makes representable numbers closed under multiplication, so it suffices to represent primes, which a descent argument does.
 
 ## Useful observations
 - Removing factors of $4$ never changes the answer, so the test strips powers of $4$ and checks the residue mod $8$ of what remains; $28 = 4 \cdot 7$ needs four squares, while $29 = 25 + 4$ does not.
@@ -2525,11 +2525,13 @@ Mostly MATHCOUNTS and early AMC: a short column-by-column argument, with a littl
 These are facts about base-ten digits, not theorems about all bases. Kaprekar's routine needs a four-digit number with at least two different digits.
 
 ## Why it works
-The cyclic run of $142857$ is the six-digit repeating block of $\frac17$: $10$ is a primitive root mod $7$, so the period is full and multiplying by $1$ through $6$ rotates the digits. Narcissistic numbers and Kaprekar's routine are finite digit-map facts that can be checked directly.
+The cyclic run of $142857$ is the six-digit repeating block of $\frac17$. Since $10$ is a primitive root mod $7$, every $k$ from $1$ to $6$ is $10^j \bmod 7$ for some $j$, so $\frac k7$ is the fractional part of $\frac{10^j}7$: the same decimal shifted $j$ places, which rotates the block. And $7 \cdot 142857 = 10^6 - 1$.
 
-The repunit family explains most of the rest. A string of $n$ ones is $\frac{10^n - 1}{9}$, which is why $\frac19 = 0.\overline{1}$, $\frac1{99} = 0.\overline{01}$, and why squaring a repunit of length $n \le 9$ gives the palindrome $123\ldots n\ldots321$.
+Narcissistic numbers and Kaprekar's routine are finite digit-map facts, checked by computer: the three-digit numbers equal to the sum of the cubes of their digits are exactly $153$, $370$, $371$, $407$, and every four-digit number with two different digits reaches $6174$ in at most $7$ steps.
 
-The $1089$ trick is the same base-ten bookkeeping: reversing a three-digit number and subtracting always leaves a multiple of $99$, and adding that result to its own reverse always gives $1089$.
+The repunit family explains most of the rest. A string of $n$ ones is $\frac{10^n - 1}{9}$, which is why $\frac19 = 0.\overline{1}$, $\frac1{99} = 0.\overline{01}$, and why squaring a repunit of length $n \le 9$ gives the palindrome $123\ldots n\ldots321$: the digit products add up without carries.
+
+For the $1089$ trick, write the number as $100a + 10b + c$ with $a \gt c$. Subtracting its reverse leaves $99(a - c) = 99k$, whose digits are $k - 1$, $9$, $10 - k$ (reading $99$ as $099$). Adding the reverse of that, $100(k - 1) + 90 + (10 - k) + 100(10 - k) + 90 + (k - 1) = 1089$.
 
 ## Useful observations
 - $142857$ is recognized on sight, with $\frac27, \ldots, \frac67$ as its rotations.

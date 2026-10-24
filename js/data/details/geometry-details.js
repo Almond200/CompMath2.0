@@ -6323,9 +6323,9 @@ Equal eccentricity is the phrase to watch for: two ellipses with the same eccent
 The coefficients are real and $A$, $B$, $C$ are not all zero. The sign of $B^2 - 4AC$ survives both rotation and translation, so it classifies the curve without putting it in standard form.
 
 ## Why it works
-Rotating the axes by $\theta$ mixes $x$ and $y$ linearly, and a direct computation shows $B^2 - 4AC$ comes out unchanged; translating changes only $D$, $E$, and $F$. So the quantity is a property of the curve, not of the coordinates chosen to write it.
+Write the second-degree part as $Ax^2 + Bxy + Cy^2 = \mathbf x^{\mathsf T}M\mathbf x$ with $M = \begin{pmatrix} A & B/2 \\ B/2 & C\end{pmatrix}$, so that $\det M = AC - \frac{B^2}4 = -\frac{B^2 - 4AC}4$. Rotating the axes replaces $\mathbf x$ by $R\mathbf x$ with $\det R = 1$, so $M$ becomes $R^{\mathsf T}MR$, which has the same determinant; translating changes only $D$, $E$, and $F$. So $B^2 - 4AC$ is a property of the curve, not of the coordinates chosen to write it.
 
-Its sign measures how the second-degree part factors: negative and it does not factor over the reals, which forces a closed curve; zero and it is a perfect square, which is the parabolic boundary case; positive and it splits into two real directions, which become the hyperbola's asymptotes.
+Its sign measures how the second-degree part factors. Rotate so that $B = 0$; then $B^2 - 4AC = -4AC$. Negative means $A$ and $C$ have the same sign, which after completing the squares gives an ellipse, a point, or nothing: a closed curve. Zero means one of them is $0$, a parabola or a degenerate case. Positive means opposite signs, a hyperbola, whose two real directions where the quadratic part vanishes are the asymptotes.
 
 ## Useful observations
 - $B^2 - 4AC$ is computed first, since it says what the curve is and therefore which card applies.
@@ -6855,9 +6855,12 @@ Never asked as a statement. It matters because the instinct to apply Pick's Theo
 The region is a lattice polygon with polygonal holes whose vertices are lattice points. The holes do not touch the outer boundary or each other.
 
 ## Why it works
-Cut the region into a single hole-free piece by slicing from the outer boundary to each hole along lattice segments. Each of the $h$ cuts is traversed twice, once in each direction, so every lattice point on a cut is counted twice as a boundary point of the sliced polygon while being counted once, or not at all, in the original.
+Let the outer polygon be $Q$ and the holes $H_1, \ldots, H_h$, all lattice polygons, with the holes disjoint from each other and from the outer boundary. The area of the region is $[Q] - \sum_j[H_j]$. Its boundary points are those of $Q$ and of every hole, and its interior points are those interior to $Q$ that are neither inside nor on a hole:
+$$B = B(Q) + \sum_j B(H_j), \qquad I = I(Q) - \sum_j\big(I(H_j) + B(H_j)\big).$$
 
-Tracking that bookkeeping across all $h$ cuts, the $-1$ in [[picks-theorem|Pick's Theorem]] becomes $-1 + h$. The clean statement is $A = I + \frac B2 - \chi$, where $\chi$ is $1$ for a disc and $1 - h$ with $h$ holes, so it is not a patch on Pick but the same theorem with the constant showing what it always was.
+Apply [[picks-theorem|Pick's Theorem]] to $Q$ and to each hole and subtract:
+$$A = \Big(I(Q) + \tfrac{B(Q)}2 - 1\Big) - \sum_j\Big(I(H_j) + \tfrac{B(H_j)}2 - 1\Big) = I + \tfrac B2 - 1 + h.$$
+The clean statement is $A = I + \frac B2 - \chi$, where $\chi$ is $1$ for a disc and $1 - h$ with $h$ holes, so it is not a patch on Pick but the same theorem with the constant showing what it always was.
 
 ## Useful observations
 - Two counting rules matter more than the formula: $B$ is counted over every boundary curve, and $I$ only at points strictly inside the region.
@@ -9318,13 +9321,13 @@ The idea is to put the right angle on the coordinate axes: then each midpoint ha
 
 Step 1, the setup. Put $H$ at the origin with $\ell_1$ and $\ell_2$ as the axes, and write side line $i$ as $u_i x + v_i y = 1$. It meets the axes at $\left(\tfrac1{u_i}, 0\right)$ and $\left(0, \tfrac1{v_i}\right)$, so its midpoint is $M_i = \left(\tfrac1{2u_i}, \tfrac1{2v_i}\right)$.
 
-Step 2, the orthocenter. The vertex opposite side $i$ lies on the altitude through $H$, the line along the normal $n_i = (u_i, v_i)$, so it is $t_i n_i$. Lying on the other two side lines gives $t_i(n_i \cdot n_j) = 1 = t_i(n_i \cdot n_k)$, so all three dot products $n_1 \cdot n_2$, $n_2 \cdot n_3$, $n_3 \cdot n_1$ are equal, say to $c$.
+Step 2, the orthocenter. The vertex opposite side $i$ lies on the altitude through $H$, the line along the normal $n_i = (u_i, v_i)$, so it is $t_i n_i$. Lying on the other two side lines gives $t_i(n_i \cdot n_j) = 1 = t_i(n_i \cdot n_k)$, so all three dot products $n_1 \cdot n_2$, $n_2 \cdot n_3$, $n_3 \cdot n_1$ are equal. In particular $n_k \cdot (n_i - n_j) = 0$, which says
+$$\frac{u_i - u_j}{v_i - v_j} = -\frac{v_k}{u_k}$$
+for each labelling $i, j, k$ of $1, 2, 3$.
 
-Step 3, the collinearity. The midpoints are collinear exactly when the three points $\left(\tfrac1{u_i}, \tfrac1{v_i}\right)$ are, and multiplying row $i$ of that determinant by $u_iv_i$ turns the condition into
-
-$$\det\begin{pmatrix} v_1 & u_1 & u_1v_1 \\ v_2 & u_2 & u_2v_2 \\ v_3 & u_3 & u_3v_3 \end{pmatrix} = 0,$$
-
-which follows from the three equal dot products by expanding along the last column; the algebra is routine but long.
+Step 3, the collinearity. The midpoints are collinear exactly when the points $Q_i = \left(\tfrac1{u_i}, \tfrac1{v_i}\right)$ are. The slope from $Q_i$ to $Q_j$ is
+$$\frac{\frac1{v_j} - \frac1{v_i}}{\frac1{u_j} - \frac1{u_i}} = \frac{u_iu_j}{v_iv_j}\cdot\frac{v_i - v_j}{u_i - u_j} = -\frac{u_1u_2u_3}{v_1v_2v_3},$$
+by Step 2. That value is the same for every pair, so the three points lie on one line.
 
 ## Useful observations
 - Turning the right angle about $H$ moves the line; when one of the lines is an altitude the segment on that side collapses toward the foot.

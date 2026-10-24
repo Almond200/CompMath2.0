@@ -206,3 +206,8 @@ resultant-discriminant    # vanishing criterion proved; product formula quoted (
 cardano-cubic
 markovs-inequality
 floor-sum-reciprocity
+droz-farny                # collinearity by equal slopes (marker scan)
+conic-classification      # invariance by det of the quadratic form (marker scan)
+picks-with-holes          # Pick applied to the outer polygon and the holes (marker scan)
+sum-of-three-squares      # converse quoted with a reference (marker scan)
+base10-curiosities        # cyclic number and 1089 proved; finite facts checked by computer (marker scan)
