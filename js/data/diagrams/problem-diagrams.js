@@ -5041,4 +5041,55 @@
       cap(430, 270, "Trapezoid ABCD with AD ∥ BC, BD = 1, ∠DBA = 23°, ∠BDC = 46° and BC : AD = 9 : 5." + MM(ok))
     ]);
   })();
+
+  // 2008 AMC 12A #20: the 3-4-5 triangle, the bisector CD of the right angle, and the incircles of ADC and BCD.
+  PROB["2008-amc-12a-20"] = (() => {
+    const C = [0, 0], A = [0, 3], B = [4, 0], D = lerp(A, B, 3 / 7);
+    const inc = (P, Qq, R) => { const a = dist(Qq, R), b = dist(P, R), c = dist(P, Qq), s = a + b + c; return [[(a * P[0] + b * Qq[0] + c * R[0]) / s, (a * P[1] + b * Qq[1] + c * R[1]) / s], Math.sqrt((s / 2 - a) * (s / 2 - b) * (s / 2 - c) / (s / 2))]; };
+    const [Ia, ra] = inc(A, D, C), [Ib, rb] = inc(B, C, D);
+    const ok = Math.abs(ra / rb - 3 * (10 - Math.SQRT2) / 28) < 1e-12;
+    const Q = fitQ([A, B, C], 30, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), seg(Q(C), Q(D), ACC, 1.6), rightAngle(Q(C), Q(A), Q(B), 10),
+      circ(Q(Ia), ra * k, GLD, 1.5), circ(Q(Ib), rb * k, GLD, 1.5),
+      txt(add(Q(A), [-10, -4]), "A"), txt(add(Q(B), [12, 6]), "B"), txt(add(Q(C), [-10, 12]), "C"), txt(add(Q(D), [8, -8]), "D", ACC, 12.5),
+      txt(add(Q(mid(A, C)), [-12, 4]), "3", DIM, 12), txt(add(Q(mid(B, C)), [0, 16]), "4", DIM, 12), txt(add(Q(mid(A, B)), [12, -6]), "5", DIM, 12),
+      cap(430, 270, "The 3-4-5 triangle with the bisector CD of the right angle, and the incircles of ADC and BCD (gold)." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #13: the unit square ABCD, equilateral ABE inside it, and the region R between the lines at distance 1/3 and 2/3 from AD.
+  PROB["2008-amc-12b-13"] = (() => {
+    const A = [0, 0], B = [1, 0], C = [1, 1], D = [0, 1], E = [0.5, Math.sqrt(3) / 2];
+    const ok = Math.abs(dist(A, E) - 1) < 1e-12;
+    const Q = fitQ([A, B, C, D], 30, 430, 270);
+    const h = x => x <= 0.5 ? Math.sqrt(3) * x : Math.sqrt(3) * (1 - x);
+    const top = [[1 / 3, 1], [2 / 3, 1]], low = [[2 / 3, h(2 / 3)], [0.5, h(0.5)], [1 / 3, h(1 / 3)]];
+    return wrap(430, 270, [
+      poly([...top, ...low].map(Q), ACC, 1.2, ACCS), poly([A, B, C, D].map(Q), DIM, 2), poly([A, B, E].map(Q), GLD, 1.8),
+      seg(Q([1 / 3, 0]), Q([1 / 3, 1]), FNT, 1.1, "4 4"), seg(Q([2 / 3, 0]), Q([2 / 3, 1]), FNT, 1.1, "4 4"),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [10, -4]), "C"), txt(add(Q(D), [-10, -4]), "D"), txt(add(Q(E), [0, -8]), "E", GLD, 12.5),
+      txt(add(Q([1 / 3, 0]), [0, 14]), "1/3", FNT, 11), txt(add(Q([2 / 3, 0]), [0, 14]), "2/3", FNT, 11),
+      cap(430, 270, "The unit square with equilateral triangle ABE inside; R (blue) lies outside the triangle, between the lines 1/3 and 2/3 from AD." + MM(ok))
+    ]);
+  })();
+
+  // 2008 AMC 12B #15: the unit square with two layers of unit equilateral triangles, and the gaps left inside the convex hull.
+  PROB["2008-amc-12b-15"] = (() => {
+    const sq = [[0, 0], [1, 0], [1, 1], [0, 1]], h = Math.sqrt(3) / 2, tris = [], hullPts = [...sq];
+    for (let i = 0; i < 4; i++) {
+      const P = sq[i], R = sq[(i + 1) % 4], d = sub(R, P), n = [d[1], -d[0]], T = add(mid(P, R), mul(n, h));
+      tris.push([P, R, T]); hullPts.push(T);
+      const c = [(P[0] + R[0] + T[0]) / 3, (P[1] + R[1] + T[1]) / 3];
+      [[P, T], [T, R]].forEach(([X, Y]) => { const dd = sub(Y, X); let nn = [dd[1], -dd[0]]; let T2 = add(mid(X, Y), mul(nn, h));
+        if ((T2[0] - mid(X, Y)[0]) * (c[0] - mid(X, Y)[0]) + (T2[1] - mid(X, Y)[1]) * (c[1] - mid(X, Y)[1]) > 0) T2 = sub(mid(X, Y), mul(nn, h));
+        tris.push([X, Y, T2]); hullPts.push(T2); });
+    }
+    const ok = tris.length === 12;
+    const Q = fitQ(hullPts, 18, 430, 270);
+    return wrap(430, 270, [
+      poly(sq.map(Q), DIM, 1.8, ACCS), ...tris.map(t => poly(t.map(Q), DIM, 1.4, ACCS)),
+      cap(430, 270, "The unit square with an equilateral triangle on each side and two more on each of those, all of side 1; S is the smallest convex polygon around it." + MM(ok))
+    ]);
+  })();
 })();
