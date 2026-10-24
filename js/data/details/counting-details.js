@@ -2088,9 +2088,11 @@ Olympiad combinatorics, typically as a lemma, and a natural companion to the Pig
 The graph is simple, with no loops or repeated edges, and planar. The bound runs one way only: violating it disproves planarity, but satisfying it proves nothing.
 
 ## Why it works
-Euler's Formula $v - e + f = 2$ holds for any connected planar drawing. Every face is bounded by at least $3$ edges and every edge borders exactly $2$ faces, so $2e \ge 3f$, that is $f \le \frac{2e}{3}$; substituting into Euler's Formula gives $e \le 3v - 6$.
+Euler's Formula $v - e + f = 2$ holds for any connected planar drawing. Every face is bounded by at least $3$ edges and every edge borders exactly $2$ faces, so $2e \ge 3f$, that is $f \le \frac{2e}{3}$; substituting into Euler's Formula gives $e \le 3v - 6$. A disconnected planar graph can have edges added between its pieces without crossings, which only raises $e$, so the bound holds for it too.
 
 If the graph is triangle-free, every face needs at least $4$ edges, so $2e \ge 4f$ and $e \le 2v - 4$.
+
+For the degree corollary, the degrees add up to $2e \le 6v - 12$, so their average is below $6$, and some vertex has degree at most $5$.
 
 ## Useful observations
 - The bound proves non-planarity by counting: a graph with more edges than $3v - 6$ allows cannot be drawn without crossings. This settles $K_5$ immediately, since $10 \gt 3 \cdot 5 - 6 = 9$.

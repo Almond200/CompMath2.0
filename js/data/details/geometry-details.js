@@ -2588,6 +2588,8 @@ The triangle is right with acute angles $15^\circ$ and $75^\circ$. The values ar
 ## Why it works
 From $\sin 15^\circ = \frac{\sqrt6 - \sqrt2}{4}$ and $\cos 15^\circ = \frac{\sqrt6 + \sqrt2}{4}$, found by angle subtraction from $45^\circ$ and $30^\circ$, the sides are $\sin 15^\circ$, $\cos 15^\circ$, and $1$ times the hypotenuse, and scaling the hypotenuse to $4$ gives the ratio.
 
+Dividing, $\tan 15^\circ = \frac{\sqrt6 - \sqrt2}{\sqrt6 + \sqrt2} = \frac{(\sqrt6 - \sqrt2)^2}{4} = \frac{8 - 4\sqrt3}4 = 2 - \sqrt3$, and $\tan 75^\circ$ is its reciprocal, $\frac1{2 - \sqrt3} = 2 + \sqrt3$.
+
 The altitude fact is the double-angle identity: the altitude to the hypotenuse is $c\sin 15^\circ\cos 15^\circ = \frac c2\sin 30^\circ = \frac c4$, so the awkward $15^\circ$ values cancel completely.
 
 ## Useful observations
@@ -3460,7 +3462,15 @@ Three problems here, two AIME and one HMMT, none solved by it alone, and two fin
 The triangle's largest angle decides the case. The construction of the point needs all angles below $120^\circ$; otherwise there is no interior point with three $120^\circ$ angles.
 
 ## Why it works
-Rotate triangle $APB$ by $60^\circ$ about $B$: the path $AP + PC$ becomes a broken path of the same total length, and the extra segment $PP'$ equals $BP$ because triangle $PBP'$ is equilateral. So $PA + PB + PC$ equals the length of a path from a fixed erected vertex to $C$, minimized when it is straight, which forces the $120^\circ$ angles.
+Step 1, the lower bound. Rotate by $60^\circ$ about $B$, away from $C$, sending $A$ to $A'$ and any point $P$ to $P'$. Triangle $PBP'$ is equilateral, so $PP' = PB$, and $P'A' = PA$. Hence
+$$PA + PB + PC = A'P' + P'P + PC \ge A'C.$$
+Triangle $A'BC$ has $BA' = c$, $BC = a$ and $\angle A'BC = B + 60^\circ$, so $A'C^2 = a^2 + c^2 - 2ac\cos(B + 60^\circ)$; by symmetry the same value arises from any vertex.
+
+Step 2, equality. If every angle is below $120^\circ$, let $X$ be the point with $\angle AXB = \angle BXC = \angle CXA = 120^\circ$. Then $\angle BXX' = 60^\circ$ and $\angle BXC = 120^\circ$ put $X'$, $X$, $C$ on a line, and $\angle BX'A' = 120^\circ$ with $\angle BX'X = 60^\circ$ puts $A'$, $X'$, $X$ on it too. The path is straight, so $X$ attains $A'C$ and lies on segment $A'C$, which is why the three lines to the apexes concur there.
+
+Step 3, an angle of at least $120^\circ$, say at $A$. Let $\vec u$ and $\vec v$ be unit vectors along $AB$ and $AC$; the angle between them is at least $120^\circ$, so $\lvert\vec u + \vec v\rvert \le 1$. For any $P$, projecting gives $PB \ge AB - \overrightarrow{AP} \cdot \vec u$ and $PC \ge AC - \overrightarrow{AP} \cdot \vec v$, so
+$$PB + PC \ge AB + AC - \overrightarrow{AP} \cdot (\vec u + \vec v) \ge AB + AC - PA,$$
+and $PA + PB + PC \ge AB + AC$, with equality at $P = A$.
 
 ## Useful observations
 - For "minimize the sum of distances to three points," the largest angle is checked first: if it is at least $120^\circ$, the answer is at that vertex.

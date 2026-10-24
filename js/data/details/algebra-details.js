@@ -1844,7 +1844,12 @@ The addition and subtraction formulas hold with $\arctan$ taking values in $\lef
 ## Why it works
 The tangent subtraction formula $\tan(A - B) = \frac{\tan A - \tan B}{1 + \tan A\tan B}$, read as a statement about arctangents. With $A = \arctan a$ and $B = \arctan b$, the formula says $A - B$ has tangent $\frac{a - b}{1 + ab}$, so $A - B = \arctan\frac{a - b}{1 + ab}$ when that angle is in the principal range.
 
-Read right to left, a term $\arctan\frac{a - b}{1 + ab}$ splits into a difference of two arctangents, and a sum of such terms telescopes.
+That range condition is $ab \gt -1$. The difference $A - B$ lies in $(-\pi, \pi)$, and it lies in $\left(-\frac\pi2, \frac\pi2\right)$ exactly when $\cos(A - B) = \cos A\cos B(1 + ab)$ is positive; since $\cos A\cos B \gt 0$, that means $1 + ab \gt 0$.
+
+Read right to left, a term $\arctan\frac{a - b}{1 + ab}$ splits into a difference of two arctangents, and a sum of such terms telescopes. The two families are instances: $\frac{(n + 1) - n}{1 + n(n + 1)} = \frac1{n^2 + n + 1}$, and
+$$\frac{\frac1{2n - 1} - \frac1{2n + 1}}{1 + \frac1{4n^2 - 1}} = \frac{2}{4n^2} = \frac1{2n^2}.$$
+
+For the classic, $\tan(\arctan 2 + \arctan 3) = \frac{5}{1 - 6} = -1$, and the sum lies between $\frac\pi2$ and $\pi$, so it is $\frac{3\pi}4$; adding $\arctan 1 = \frac\pi4$ gives $\pi$.
 
 ## Useful observations
 - To telescope $\sum \arctan t_n$, the terms are matched with $t_n = \frac{a_n - b_n}{1 + a_nb_n}$, usually with $a_n = n + 1$ and $b_n = n$, which gives the denominator $n^2 + n + 1$, or with a similar pair of consecutive values.
@@ -1869,9 +1874,13 @@ AIME arctangent sums are built for this; the family with a quadratic denominator
 The common difference $d$ is not a multiple of $2\pi$, so that $\sin\frac d2 \ne 0$. The number of terms is $n$ and the angle in the last factor is the middle angle of the progression.
 
 ## Why it works
-Multiply the sum by $2\sin\frac d2$: each product-to-sum expansion telescopes, leaving only boundary terms, which reassemble into the closed form, a "Dirichlet kernel" argument.
+Multiply by $2\sin\frac d2$ and use product-to-sum on each term:
+$$2\sin\tfrac d2\sin(a + kd) = \cos\left(a + \left(k - \tfrac12\right)d\right) - \cos\left(a + \left(k + \tfrac12\right)d\right).$$
+Summing over $k = 0, \ldots, n - 1$ telescopes to $\cos\left(a - \frac d2\right) - \cos\left(a + \left(n - \frac12\right)d\right)$, which by sum-to-product is $2\sin\left(a + \frac{(n - 1)d}2\right)\sin\frac{nd}2$. Dividing by $2\sin\frac d2$ gives the formula.
 
-Alternatively, the sum is the imaginary part of the [[geometric-series|geometric series]] $\sum e^{i(a + kd)}$, whose closed form is $e^{ia}\frac{e^{ind} - 1}{e^{id} - 1}$.
+For cosines, $2\sin\frac d2\cos(a + kd) = \sin\left(a + \left(k + \frac12\right)d\right) - \sin\left(a + \left(k - \frac12\right)d\right)$, which telescopes to $2\cos\left(a + \frac{(n - 1)d}2\right)\sin\frac{nd}2$. Alternatively, the sum is the imaginary part of the [[geometric-series|geometric series]] $\sum e^{i(a + kd)}$, whose closed form is $e^{ia}\frac{e^{ind} - 1}{e^{id} - 1}$.
+
+The special case takes $n - 1$ terms with $a = d = \frac\pi n$: the middle angle is $\frac\pi2$ and the ratio is $\frac{\sin\left(\frac\pi2 - \frac\pi{2n}\right)}{\sin\frac\pi{2n}} = \cot\frac\pi{2n}$. Around a full circle $nd = 2\pi$, so $\sin\frac{nd}2 = 0$ and the sum vanishes.
 
 ## Useful observations
 - Both routes are worth knowing: the multiplication by $2\sin\frac d2$ is self-contained, and the complex geometric series is faster with fluency.
@@ -2518,6 +2527,8 @@ All three are identities in any commutative setting. The first is a disguised di
 $a^4 + a^2b^2 + b^4$: adding and subtracting $a^2b^2$ reaches $(a^2 + b^2)^2 - (ab)^2$, then the difference of squares.
 
 The cube identity expands directly, or follows from symmetry: the left side vanishes when $a = -b$ (and likewise for the other pairs), so $(a + b)(b + c)(c + a)$ divides it, and comparing degree and leading coefficient fixes the factor $3$.
+
+For the last identity, both sides expand to $a^2b + a^2c + b^2a + b^2c + c^2a + c^2b + 2abc$: the product $(a + b + c)(ab + bc + ca)$ gives each of the six $a^2b$ terms once and $abc$ three times. The chaining in the first observation is $(n - 1)^2 + (n - 1) + 1 = n^2 - n + 1$.
 
 ## Useful observations
 - $x^4 + x^2 + 1$ and its iterate $x^8 + x^4 + 1$ show up in telescoping products and "factor this large number" problems. For example $n^4 + n^2 + 1 = (n^2 + n + 1)(n^2 - n + 1)$, with the bonus that $n^2 - n + 1 = (n - 1)^2 + (n - 1) + 1$, chaining consecutive values into telescoping fractions.
@@ -4843,6 +4854,10 @@ $a \ne 0$. The factored form exists over the reals only when $b^2 - 4ac \ge 0$; 
 
 ## Why it works
 Each form expands to the standard one. Expanding $a(x - h)^2 + k$ gives $ax^2 - 2ahx + ah^2 + k$, so matching coefficients gives $b = -2ah$ and $c = ah^2 + k$, which is $h = -\frac{b}{2a}$ and $k = c - \frac{b^2}{4a}$; going from standard to vertex form is [[completing-the-square|completing the square]]. Expanding $a(x - r)(x - s) = ax^2 - a(r + s)x + ars$ gives $r + s = -\frac ba$ and $rs = \frac ca$, which is [[vietas-quadratic|Vieta's Formulas]].
+
+Then $h = -\frac b{2a} = \frac{r + s}2$, halfway between the roots. The form $a(x - p)(x - q) + c$ equals $c$ at $p$ and $q$, and it is the factored form shifted up by $c$, so its axis is $x = \frac{p + q}2$. Since $a(x - h)^2 \ge 0$ when $a \gt 0$, the smallest value is $k$, and the largest when $a \lt 0$.
+
+Three points fix the quadratic: two quadratics through the same three points differ by a polynomial of degree at most $2$ with three roots, which is $0$. With the vertex known, $h$ and $k$ are fixed and one more point gives $a$; with the roots known, one more point gives $a$ in the factored form.
 
 ## Useful observations
 - The axis of symmetry is $x = h$, halfway between the roots and between any two points of the parabola at the same height.

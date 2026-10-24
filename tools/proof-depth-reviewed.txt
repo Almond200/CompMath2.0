@@ -62,3 +62,13 @@ steiner-line              # directed-angle proof through H
 induction
 total-expectation         # Wald's identity proved
 difference-of-squares-rep # the count for odd n
+planar-graph-bound        # disconnected case and the degree corollary
+arctan-telescoping        # range condition, both families, the classic
+quadratic-forms
+useful-factorizations
+sin-cos-ap-sum            # telescoping written out, special cases
+subtract-equal-remainders
+15-75-90-triangle
+fermat-point              # bound, equality, and the 120-degree case
+multiplicative-order      # all observations
+crt-solution-counting     # prime powers counted

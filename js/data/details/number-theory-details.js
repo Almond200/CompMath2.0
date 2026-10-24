@@ -556,11 +556,13 @@ Let $N = n_1\cdots n_k$ with the $n_i$ pairwise coprime. If $x$ and $y$ both sol
 $\gcd(a, n) = 1$; otherwise no power of $a$ is $1$ modulo $n$.
 
 ## Why it works
-Write $m = qd + r$ with $0 \le r \lt d$. Then $a^m = (a^d)^q a^r \equiv a^r$, and since $d$ is the smallest positive exponent giving $1$, $a^r \equiv 1$ only when $r = 0$. So $a^m \equiv 1$ exactly when $d \mid m$, and Euler's Theorem, $a^{\varphi(n)} \equiv 1$, gives $d \mid \varphi(n)$.
+Write $m = qd + r$ with $0 \le r \lt d$, where $d = \operatorname{ord}_n(a)$. Then $a^m = (a^d)^q a^r \equiv a^r$, and since $d$ is the smallest positive exponent giving $1$, $a^r \equiv 1$ only when $r = 0$. So $a^m \equiv 1$ exactly when $d \mid m$, and Euler's Theorem, $a^{\varphi(n)} \equiv 1$, gives $d \mid \varphi(n)$. Since $a$ is invertible, $a^i \equiv a^j$ means $a^{i - j} \equiv 1$, so $d \mid i - j$.
 
-There is also a picture: multiplying by $a$ splits the $\varphi(n)$ residues coprime to $n$ into cycles, and every cycle has the same length $d$.
+There is also a picture: multiplying by $a$ splits the $\varphi(n)$ residues coprime to $n$ into cycles $x, xa, xa^2, \ldots$, and each cycle closes exactly when $xa^j \equiv x$, that is $a^j \equiv 1$, so every cycle has length $d$.
 
 {{figure:cycles}}
+
+The observations are the first Key form applied. The decimal of $\frac1n$ repeats with period $k$ exactly when $n \mid 10^k - 1$. If $p \mid a^{2^k} + 1$, then $a^{2^{k+1}} \equiv 1$ but $a^{2^k} \equiv -1 \not\equiv 1$ (as $p$ is odd), so the order divides $2^{k+1}$ and not $2^k$; it is $2^{k+1}$, which divides $p - 1$. Finally $(a^k)^m \equiv 1$ exactly when $d \mid km$, that is $\frac d{\gcd(k, d)} \mid m$.
 
 ## Useful observations
 - The order divides every exponent that gives $1$, in particular $p - 1$, and can be a proper divisor: $\operatorname{ord}_7(2) = 3$, since $2^3 = 8 \equiv 1$, and $3 \mid 6$.
@@ -763,6 +765,10 @@ $f$ has integer coefficients and $\gcd(m, n) = 1$. Prime powers must be counted 
 
 ## Why it works
 For coprime $m$ and $n$, the map $x \mapsto (x \bmod m, x \bmod n)$ is a bijection from residues mod $mn$ to pairs of residues, by the Chinese Remainder Theorem. Since $f$ has integer coefficients, $f(x) \bmod m$ depends only on $x \bmod m$, and $mn \mid f(x)$ exactly when $m \mid f(x)$ and $n \mid f(x)$. So solutions mod $mn$ correspond to pairs of solutions, and the counts multiply.
+
+So each prime power is counted alone. Modulo an odd $p^e$, $x^2 \equiv 1$ means $p^e \mid (x - 1)(x + 1)$; the two factors differ by $2$, so $p$ divides at most one of them, and $x \equiv \pm1$: two solutions. Modulo $p^e$, $x^2 \equiv x$ means $p^e \mid x(x - 1)$ with coprime factors, so $x \equiv 0$ or $1$: two solutions, which for $10^k$ makes $4$.
+
+Modulo $2^k$ with $k \ge 3$, $x$ is odd, and one of $x - 1$, $x + 1$ is $2 \bmod 4$, so the other carries $2^{k-1}$. That gives $x \equiv \pm1 \pmod{2^{k-1}}$, the four residues $\pm1$ and $2^{k-1} \pm 1$ modulo $2^k$.
 
 ## Useful observations
 - Each odd prime contributes its own pair $\pm1$, so modulo a product of $k$ distinct odd primes $x^2 \equiv 1$ has $2^k$ solutions: modulo $105$ there are $2 \cdot 2 \cdot 2 = 8$.
