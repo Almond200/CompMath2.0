@@ -781,8 +781,8 @@
       s: String.raw`With $y = 2x$ the condition is $x^y = y^x$. Take logarithms: $y\ln x = x\ln y$, that is $2x\ln x = x\ln(2x)$. Dividing by $x$, $2\ln x = \ln2 + \ln x$, so $\ln x = \ln2$: $x = 2$ and $y = 4$. Check: $2^4 = 4^2$.` }
   );
   add("infinite-nest",
-    { q: String.raw`Evaluate $\sqrt{12 + \sqrt{12 + \sqrt{12 + \cdots}}}$.`,
-      s: String.raw`The value $x$ satisfies $x = \sqrt{12 + x}$, so $x^2 - x - 12 = 0$ and $x = 4$ or $-3$. A square root is not negative, so $x = 4$. (The nest converges: starting from $\sqrt{12} \approx 3.46$ the layers increase toward $4$.)` }
+    { q: String.raw`Evaluate $\sqrt{20 + \sqrt{20 + \sqrt{20 + \cdots}}}$.`,
+      s: String.raw`The value $x$ satisfies $x = \sqrt{20 + x}$, so $x^2 - x - 20 = 0$ and $x = 5$ or $-4$. A square root is not negative, so $x = 5$. (The nest converges: starting from $\sqrt{20} \approx 4.47$ the layers increase toward $5$.)` }
   );
   add("unknown-base",
     { q: String.raw`For which bases $b$ is $12_b \times 12_b = 144_b$ true?`,
@@ -1597,5 +1597,63 @@
       s: String.raw`Sort $a \le b \le c$; then $\tfrac1a \ge \tfrac1b \ge \tfrac1c$ is in the opposite order, so $3\sum a\cdot\tfrac1a \le \left(\sum a\right)\left(\sum\tfrac1a\right)$. The left side is $3\cdot3 = 9$.` },
     { q: String.raw`Prove $3(a^2 + b^2 + c^2) \ge (a + b + c)^2$ with Chebyshev's inequality.`,
       s: String.raw`Take both sequences to be $a, b, c$ in increasing order, which are similarly ordered: $3(a\cdot a + b\cdot b + c\cdot c) \ge (a + b + c)(a + b + c)$.` }
+  );
+  add("minkowski-inequality",
+    { q: String.raw`Real numbers satisfy $a + b + c = 8$. Find the least value of $\sqrt{a^2 + 1} + \sqrt{b^2 + 4} + \sqrt{c^2 + 9}$.`,
+      s: String.raw`These are the lengths of the vectors $(a, 1)$, $(b, 2)$, $(c, 3)$, and their sum is $(8, 6)$. Minkowski gives at least $\sqrt{64 + 36} = 10$, with equality when the vectors point the same way: $a : b : c = 1 : 2 : 3$, so $a = \tfrac43$, $b = \tfrac83$, $c = 4$.` },
+    { q: String.raw`Real numbers satisfy $a + b = 6$. Find the least value of $\sqrt{a^2 + 1} + \sqrt{b^2 + 1}$.`,
+      s: String.raw`With the vectors $(a, 1)$ and $(b, 1)$, whose sum is $(6, 2)$, the value is at least $\sqrt{36 + 4} = 2\sqrt{10}$, reached at $a = b = 3$.` }
+  );
+  add("karamata-inequality",
+    { q: String.raw`Use majorization to show $5^4 + 1^4 \ge 3^4 + 3^4$.`,
+      s: String.raw`$(5, 1)$ majorizes $(3, 3)$: $5 \ge 3$ and the totals agree. Since $x^4$ is convex, Karamata gives the inequality: $626 \ge 162$.` },
+    { q: String.raw`Nonnegative reals satisfy $x + y + z = 6$. Find the largest value of $x^3 + y^3 + z^3$.`,
+      s: String.raw`Every such triple, sorted, is majorized by $(6, 0, 0)$: its largest term is at most $6$, its two largest add to at most $6$, and the totals agree. With $f(t) = t^3$ convex on $t \ge 0$, Karamata gives $x^3 + y^3 + z^3 \le 216$, reached at $(6, 0, 0)$.` }
+  );
+  add("cosecant-cotangent-square-sums",
+    { q: String.raw`Check the cosecant formula for $n = 6$ with known values.`,
+      s: String.raw`The angles are $30^\circ, 60^\circ, 90^\circ, 120^\circ, 150^\circ$, with $\csc^2$ values $4, \tfrac43, 1, \tfrac43, 4$, adding to $\tfrac{35}3 = \tfrac{36 - 1}3$.` },
+    { q: String.raw`Find $\displaystyle\sum_{k=1}^{6}\cot^2\frac{k\pi}7$.`,
+      s: String.raw`With $n = 7$, the formula gives $\tfrac{6\cdot5}3 = 10$.` }
+  );
+  add("trig-telescoping-product",
+    { q: String.raw`Compute $\cos\tfrac\pi7\cos\tfrac{2\pi}7\cos\tfrac{4\pi}7$.`,
+      s: String.raw`With $\theta = \tfrac\pi7$ and $n = 3$, the product is $\tfrac{\sin(8\pi/7)}{8\sin(\pi/7)}$, and $\sin\tfrac{8\pi}7 = -\sin\tfrac\pi7$, so it equals $-\tfrac18$.` },
+    { q: String.raw`Compute $\cos20^\circ\cos40^\circ\cos80^\circ$.`,
+      s: String.raw`It is $\tfrac{\sin160^\circ}{8\sin20^\circ} = \tfrac18$, since $\sin160^\circ = \sin20^\circ$.` }
+  );
+  add("evenly-spaced-angle-products",
+    { q: String.raw`Compute $\sin20^\circ\sin40^\circ\sin80^\circ$.`,
+      s: String.raw`With $\theta = 20^\circ$, the triple is $\sin\theta\sin(60^\circ - \theta)\sin(60^\circ + \theta) = \tfrac14\sin60^\circ = \tfrac{\sqrt3}8$.` },
+    { q: String.raw`Check $\prod_{k=1}^{n-1}\sin\tfrac{k\pi}n = \tfrac n{2^{n-1}}$ for $n = 6$.`,
+      s: String.raw`$\sin30^\circ\sin60^\circ\sin90^\circ\sin120^\circ\sin150^\circ = \tfrac12\cdot\tfrac{\sqrt3}2\cdot1\cdot\tfrac{\sqrt3}2\cdot\tfrac12 = \tfrac3{16}$, and $\tfrac6{32} = \tfrac3{16}$.` }
+  );
+  add("cot-tan-telescoping",
+    { q: String.raw`Show that $\tan20^\circ + 2\tan40^\circ + 4\cot80^\circ = \cot20^\circ$.`,
+      s: String.raw`The sum formula with $\theta = 20^\circ$ and $n = 2$ gives $\tan20^\circ + 2\tan40^\circ = \cot20^\circ - 4\cot80^\circ$. Move the last term across.` },
+    { q: String.raw`Check $\tan\theta = \cot\theta - 2\cot2\theta$ at $\theta = 22.5^\circ$.`,
+      s: String.raw`$\tan22.5^\circ = \sqrt2 - 1$, $\cot22.5^\circ = \sqrt2 + 1$ and $\cot45^\circ = 1$, so the right side is $\sqrt2 + 1 - 2 = \sqrt2 - 1$.` }
+  );
+  add("hermite-identity",
+    { q: String.raw`Compute $\displaystyle\sum_{k=0}^{99}\left\lfloor0.4567 + \tfrac k{100}\right\rfloor$.`,
+      s: String.raw`By Hermite's Identity with $n = 100$, it is $\lfloor45.67\rfloor = 45$: the terms are $0$ until $k + 45.67 \ge 100$, that is from $k = 55$ on, giving $45$ ones.` },
+    { q: String.raw`Check the case $n = 2$, $\lfloor x\rfloor + \left\lfloor x + \tfrac12\right\rfloor = \lfloor2x\rfloor$, at $x = 2.7$ and $x = 2.3$.`,
+      s: String.raw`At $2.7$: $2 + 3 = 5 = \lfloor5.4\rfloor$. At $2.3$: $2 + 2 = 4 = \lfloor4.6\rfloor$.` }
+  );
+  add("ramanujan-nested-radical",
+    { q: String.raw`Check the first layers of Ramanujan's $3 = \sqrt{1 + 2\sqrt{1 + 3\sqrt{1 + 4\sqrt{\cdots}}}}$.`,
+      s: String.raw`Each layer is $n = \sqrt{1 + (n - 1)(n + 1)}$: $3 = \sqrt{1 + 2\cdot4}$, $4 = \sqrt{1 + 3\cdot5}$, $5 = \sqrt{1 + 4\cdot6}$, and so on. Substituting each into the one before builds the nest.` }
+  );
+  add("weighted-binomial-sums",
+    { q: String.raw`Evaluate $\sum_{k=0}^{5}k^2\binom5k$.`,
+      s: String.raw`The formula gives $5\cdot6\cdot2^3 = 240$. Directly: $0 + 5 + 40 + 90 + 80 + 25 = 240$.` },
+    { q: String.raw`A fair coin is flipped $10$ times and $X$ is the number of heads. Find $E[X^2]$.`,
+      s: String.raw`$E[X^2] = \tfrac1{2^{10}}\sum k^2\binom{10}k = \tfrac{10\cdot11\cdot2^8}{2^{10}} = \tfrac{110}4 = 27.5$. (So the variance is $27.5 - 25 = 2.5$.)` }
+  );
+  add("exponential-generating-functions",
+    { q: String.raw`The sequence $1, 1, 1, \ldots$ has EGF $e^x$. What sequence has EGF $e^{2x} = e^x\cdot e^x$, and what does the product rule say it counts?`,
+      s: String.raw`$e^{2x} = \sum 2^n\tfrac{x^n}{n!}$, so the sequence is $2^n$. The product rule gives $c_n = \sum_k\binom nk\cdot1\cdot1$: split $n$ labeled objects into two labeled groups, which is $2^n$.` },
+    { q: String.raw`Use EGFs to count the words of length $n \ge 1$ over $\{a, b\}$ with an even number of $a$'s.`,
+      s: String.raw`The $a$'s contribute $\cosh x = \tfrac{e^x + e^{-x}}2$ (even sizes only) and the $b$'s contribute $e^x$, so the EGF is $\tfrac{e^{2x} + 1}2$. For $n \ge 1$ the coefficient of $\tfrac{x^n}{n!}$ is $\tfrac{2^n}2 = 2^{n-1}$.` }
   );
 })();
