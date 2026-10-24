@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2014 AMC 8 finished, 2013 AMC 8 begun (2026-10-24).** 2014 AMC 8 #21 ($C\equiv1\pmod3$), 22 ($b=9$), 23 ($11$), 24 ($3.5$), 25 ($\tfrac\pi{10}$ h); 2013 AMC 8 #1 to #5. All checked by script.
 - **Step D: 2014 AMC 8 #11 to #20 (2026-10-24).** Answers A ($10-6$), B, D, B, C ($30^\circ+60^\circ$), B, B, D, A, B ($15-\tfrac{7\pi}2$). All checked by script.
 - **Step D: 2014 AMC 8 #1 to #10 (2026-10-24).** Answers A, E, B, E, C, D, B, D, D, A. All checked by script.
 - **Step D: 2015 AMC 8 finished (2026-10-24).** #16 ($\tfrac4{11}$), 17 ($9$), 18 ($31$), 19 ($\tfrac16$), 20 ($7$), 21 ($\angle KBC=90^\circ$, $12$), 22 ($60$), 23 (cup $D$, confirmed by search), 24 ($48$), 25 ($a(5-a)=5$, area $15$). All checked by script.
