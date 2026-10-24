@@ -3148,7 +3148,16 @@ AIME-level circle problems sometimes plant a Miquel configuration without naming
 The six points lie on a circle, or on any conic. Different orderings of the same six points give different hexagons and different Pascal lines.
 
 ## Why it works
-It is projective magic: the clean proofs use cross-ratios or the radical axes of three cleverly chosen circles. For contest purposes the statement is what matters, together with its stability under re-ordering the six vertices and its degenerate forms.
+For a circle the cleanest proof is [[menelaus-theorem|Menelaus]] three times. Let the lines $AB$, $CD$, $EF$ form a triangle $XYZ$, with $X = EF \cap AB$, $Y = AB \cap CD$, $Z = CD \cap EF$, and let $P = AB \cap DE$, $Q = BC \cap EF$, $R = CD \cap FA$. All lengths below are signed.
+
+Step 1. Menelaus for triangle $XYZ$ with the lines $DE$, $BC$ and $FA$ gives
+$$\frac{XP}{PY} \cdot \frac{YD}{DZ} \cdot \frac{ZE}{EX} = \frac{XB}{BY} \cdot \frac{YC}{CZ} \cdot \frac{ZQ}{QX} = \frac{XA}{AY} \cdot \frac{YR}{RZ} \cdot \frac{ZF}{FX} = -1.$$
+
+Step 2. Multiply the three. The factors that are not about $P$, $Q$, $R$ group by vertex into $\frac{XA \cdot XB}{XE \cdot XF}$, $\frac{YC \cdot YD}{YA \cdot YB}$ and $\frac{ZE \cdot ZF}{ZC \cdot ZD}$, and each is $1$ by the [[power-of-a-point|power of the point]] $X$, $Y$ or $Z$.
+
+Step 3. What is left is $\frac{XP}{PY} \cdot \frac{YR}{RZ} \cdot \frac{ZQ}{QX} = -1$, so by the converse of Menelaus, $P$, $R$, $Q$ are collinear.
+
+The same proof works when two vertices merge, with the tangent in place of the side and the tangent length squared as the power. For any conic, a [[projective-transformations|projective map]] sends the conic to a circle and keeps lines and intersections. Brianchon's Theorem is the polar dual: taking polars with respect to the circle turns tangent lines into points of contact and collinear points into concurrent lines.
 
 ## Useful observations
 - The degenerate versions do the work: merging two adjacent vertices makes the side through them the tangent at that point. With a triangle, three merged pairs, Pascal says tangent-at-$A$ $\cap\, BC$, tangent-at-$B$ $\cap\, CA$, tangent-at-$C$ $\cap\, AB$ are collinear.
@@ -5620,7 +5629,11 @@ The backbone of projective olympiad problems and of "moving points" and projecti
 $C$ and $D$ are distinct points on line $AB$, other than $A$ and $B$. A harmonic range projected from any point gives four concurrent lines called a harmonic bundle.
 
 ## Why it works
-The relation $(A, B; C, D) = -1$ says $C$ and $D$ divide $AB$ internally and externally in the same ratio $\frac{AC}{CB} = \frac{AD}{DB}$; the minus sign is exactly the record that one division is internal and the other external. It is the most symmetric cross-ratio value, fixed when $C$ and $D$ are swapped.
+The relation $(A, B; C, D) = -1$ says $C$ and $D$ divide $AB$ internally and externally in the same ratio $\frac{AC}{CB} = \frac{AD}{DB}$; the minus sign is exactly the record that one division is internal and the other external. Swapping $C$ and $D$ turns the ratio into its reciprocal, and so does swapping $A$ and $B$; $-1$ is its own reciprocal, so both swaps keep it.
+
+For the midpoint criterion, put coordinates on the line with $M = 0$, $A = -1$, $B = 1$, $C = c$, $D = d$. The harmonic condition in signed form is
+$$\frac{c + 1}{1 - c} = -\frac{d + 1}{1 - d},$$
+which expands to $1 + c - d - cd = -1 + c - d + cd$, that is $cd = 1$. This says $C$ and $D$ are on the same side of $M$ with $MC \cdot MD = 1 = MA^2$, and every step reverses.
 
 ## Useful observations
 - Harmonic bundles sit at fixed spots: two tangents plus a secant from an external point cut the polar harmonically; the internal and external bisectors from a vertex meet the opposite line at harmonic conjugates; a complete quadrilateral's diagonal is cut harmonically.

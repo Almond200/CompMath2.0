@@ -383,9 +383,13 @@ The AMC and AIME phrasings hide it well: ordered pairs of subsets with a contain
 The lower index is fixed and the upper index runs through consecutive values starting at that lower index, where the first term is $1$.
 
 ## Why it works
-Telescoping Pascal's rule, $\binom{n+1}{r+1} = \binom{n}{r} + \binom{n}{r+1}$, and expanding the last term repeatedly gives the sum.
+Telescoping Pascal's rule. Apply $\binom{m+1}{r+1} = \binom{m}{r} + \binom{m}{r+1}$ to the last term again and again:
+$$\binom{n+1}{r+1} = \binom nr + \binom n{r+1} = \binom nr + \binom{n-1}r + \binom{n-1}{r+1} = \cdots = \binom nr + \binom{n-1}r + \cdots + \binom rr,$$
+stopping when the last term is $\binom r{r+1} = 0$.
 
 Combinatorially, to choose $r + 1$ objects from $\{1, \ldots, n + 1\}$, condition on the largest element chosen: if it is $i + 1$, the other $r$ come from $\{1, \ldots, i\}$ in $\binom ir$ ways, and the cases are the diagonal terms.
+
+The second form is the first read with $\binom{r+k}{k} = \binom{r+k}{r}$ and $n = r + m$, since $\binom{r+m+1}{r+1} = \binom{r+m+1}{m}$. The binomial basis checks by expanding: $2\binom k2 + \binom k1 = k(k - 1) + k = k^2$, and $2\binom{k+1}2 = (k + 1)k$.
 
 ## Useful observations
 - Any sum of binomial coefficients with a fixed lower index collapses in one step, so recognizing the diagonal is all that is required.
@@ -2427,7 +2431,9 @@ $X$ takes nonnegative integer values for the sum, and the sum starts at $k = 1$ 
 ## Why it works
 Write $X$ as a sum of indicators of its own tail: $X = \sum_{k \ge 1}\mathbf 1[X \ge k]$, since a value of $X = m$ makes exactly the first $m$ indicators equal to $1$. Taking expectations and using linearity, $E[X] = \sum_{k \ge 1}P(X \ge k)$.
 
-Equivalently, it is a swap of summation order: $\sum_k P(X \ge k) = \sum_k\sum_{m \ge k}P(X = m) = \sum_m m\,P(X = m)$. The continuous version replaces the sum by $\int_0^\infty P(X \gt t)\,\mathrm{d}t$.
+Equivalently, it is a swap of summation order: $\sum_k P(X \ge k) = \sum_k\sum_{m \ge k}P(X = m) = \sum_m m\,P(X = m)$. The continuous version uses $X = \int_0^\infty \mathbf 1[X \gt t]\,\mathrm{d}t$ and takes expectations the same way.
+
+The maximum is below $k$ exactly when every draw is, and independence turns that event's probability into the product $\prod_i P(X_i \lt k)$. For a geometric wait, $\sum_{k \ge 1}(1 - p)^{k-1} = \frac1{1 - (1 - p)} = \frac1p$.
 
 ## Useful observations
 - It is used whenever $P(X \ge k)$ is easier to describe than $P(X = k)$, which happens far more often than not.

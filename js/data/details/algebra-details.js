@@ -13,7 +13,7 @@ Object.assign(window.MATH_DETAILS, {
 The $x_i$ are distinct. With $n$ points the polynomial has degree at most $n - 1$, and it can be lower, as when the points are collinear.
 
 ## Why it works
-Each basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, vanishes at every $x_j$ with $j \ne i$, and equals $1$ at $x_i$. So $y_1L_1 + \cdots + y_nL_n$ takes the value $y_i$ at each $x_i$.
+Each basis polynomial $L_i(x) = \prod_{j \ne i} \frac{x - x_j}{x_i - x_j}$ has degree $n - 1$, vanishes at every $x_j$ with $j \ne i$, and equals $1$ at $x_i$. So $y_1L_1 + \cdots + y_nL_n$ takes the value $y_i$ at each $x_i$. With two points this is the line through them, and putting $x = 0$ turns each factor into $\frac{-x_j}{x_i - x_j} = \frac{x_j}{x_j - x_i}$, which is the $P(0)$ form.
 
 Uniqueness: if two polynomials of degree at most $n - 1$ agree at $n$ points, their difference has degree at most $n - 1$ and $n$ roots, so it is zero.
 
@@ -247,9 +247,12 @@ Three problems here, all AIME, none solved by it alone: it usually factors a cub
 The polynomial is evaluated in whatever form it is given, so a product, a power, or a composition is never expanded. For two variables, the other variable is fixed first.
 
 ## Why it works
-Evaluating a polynomial at a number weights each coefficient by a power of that number, so a well-chosen point makes the weights collapse: $$P(1) = a_0 + a_1 + a_2 + \cdots, \qquad P(-1) = a_0 - a_1 + a_2 - \cdots.$$
+Evaluating a polynomial at a number weights each coefficient by a power of that number, so a well-chosen point makes the weights collapse:
+$$P(1) = a_0 + a_1 + a_2 + \cdots, \qquad P(-1) = a_0 - a_1 + a_2 - \cdots.$$
 
-Adding and subtracting those cancels one parity at a time: $$\frac{P(1) + P(-1)}{2} = a_0 + a_2 + a_4 + \cdots, \qquad \frac{P(1) - P(-1)}{2} = a_1 + a_3 + a_5 + \cdots.$$ At $x = 0$ every weight but the first vanishes, leaving $a_0$.
+Adding and subtracting those cancels one parity at a time:
+$$\frac{P(1) + P(-1)}{2} = a_0 + a_2 + a_4 + \cdots, \qquad \frac{P(1) - P(-1)}{2} = a_1 + a_3 + a_5 + \cdots.$$
+At $x = 0$ every weight but the first vanishes, leaving $a_0$. If the coefficients are all of one sign, $\lvert P(1) \rvert$ is the sum of their absolute values; if they alternate in sign, $\lvert a_k \rvert = \pm(-1)^ka_k$ with one fixed sign, so the sum is $\lvert P(-1) \rvert$.
 
 ## Useful observations
 - The polynomial is evaluated in the form the problem gives, never expanded. For $(1 + 2x)^{10}(1 - x)^4$ the coefficient sum is $3^{10} \cdot 0^4 = 0$, and the constant term is $1$.
@@ -4164,6 +4167,8 @@ The system is square, with as many equations as unknowns. When $\det A = 0$ the 
 
 ## Why it works
 Replace column $i$ of $A$ by $\mathbf b = \sum_j x_j(\text{column } j)$ and expand using linearity in that column. Every term except the $j = i$ one has a repeated column and so contributes zero, leaving $\det A_i = x_i\det A$. The rule is therefore not a separate theorem, just [[determinant-basics|column linearity]] applied once.
+
+That argument shows any solution must be the quotient. When $\det A \ne 0$ the matrix is invertible and $\mathbf x = A^{-1}\mathbf b$ is a solution, so there is exactly one. When $\det A = 0$ the columns are dependent, so $A\mathbf v = \mathbf 0$ for some $\mathbf v \ne \mathbf 0$. Then if $\mathbf x_0$ is a solution, so is every $\mathbf x_0 + t\mathbf v$, infinitely many; otherwise there is none.
 
 ## Useful observations
 - It earns its keep when a problem asks for one unknown out of three and the other two would otherwise be eliminated. Writing the single quotient is faster and far less error-prone than two rounds of substitution.

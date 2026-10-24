@@ -41,3 +41,13 @@ modular-inverse           # 2^{-1}, the unit count, and the g > 1 case proved
 cavalieris-principle      # the sphere slice check
 bernoulli-inequality      # equality case and the fractional form by convexity
 ptolemys-inequality       # inversion argument in full
+product-of-divisors       # proper-divisor and d(n) = 4 observations argued
+zeckendorf-theorem        # lemma, existence, uniqueness, count
+harmonic-bundle           # midpoint criterion and the swaps proved
+pascals-theorem           # Menelaus proof, degenerate and conic cases, Brianchon by duality
+coefficient-extraction    # absolute-value sums argued
+hockey-stick              # telescoping written out, second form, binomial basis
+lagrange-interpolation-formula
+cramers-rule              # the det = 0 cases argued
+p-adic-valuation
+tail-sum-expectation      # continuous form, maxima, geometric wait

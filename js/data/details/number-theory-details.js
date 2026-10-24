@@ -239,7 +239,11 @@ An AMC and AIME computation, usually a restricted sum split by the power of $2$ 
 $n$ is a positive integer. The formula gives an integer even when $d(n)$ is odd, since then $n$ is a perfect square.
 
 ## Why it works
-The map $d \mapsto \frac nd$ sends divisors to divisors and undoes itself, so listing the divisors in the order $\frac nd$ gives the same divisors again. Multiplying the two lists term by term, $$\left(\prod_{d \mid n} d\right)^2 = \prod_{d \mid n} d \cdot \frac nd = n^{d(n)},$$ so the product is $n^{d(n)/2}$. Squaring first avoids a special case for perfect squares.
+The map $d \mapsto \frac nd$ sends divisors to divisors and undoes itself, so listing the divisors in the order $\frac nd$ gives the same divisors again. Multiplying the two lists term by term,
+$$\left(\prod_{d \mid n} d\right)^2 = \prod_{d \mid n} d \cdot \frac nd = n^{d(n)},$$
+so the product is $n^{d(n)/2}$. Squaring first avoids a special case for perfect squares.
+
+Leaving out the divisor $n$ itself divides the product by $n$, which gives $n^{d(n)/2 - 1}$; this is $n$ exactly when $\frac{d(n)}2 - 1 = 1$, that is $d(n) = 4$, and the divisor count $(e_1 + 1)(e_2 + 1)\cdots = 4$ means $n = pq$ or $n = p^3$. Taking logarithms of the product gives the sum of logarithms.
 
 ## Useful observations
 - When $n$ is not a square the divisors pair off exactly, so the product is a whole power of $n$: $42 = 2 \cdot 3 \cdot 7$ has $8$ divisors, whose product is $42^4$.
@@ -2017,7 +2021,13 @@ Object.assign(window.MATH_DETAILS, {
 The Fibonacci numbers used are $F_2 = 1, F_3 = 2, F_4 = 3, \ldots$, each at most once, since $F_1 = F_2$ would duplicate the value $1$.
 
 ## Why it works
-Greedily subtracting the largest Fibonacci number $\le n$ can never leave a remainder that needs two adjacent Fibonacci numbers, because $F_k + F_{k-1} = F_{k+1}$ would merge them into a larger term. That gives both existence and uniqueness of the non-consecutive representation.
+Step 1, the lemma. A sum of non-consecutive Fibonacci numbers whose largest term is $F_k$ is less than $F_{k+1}$. By induction on $k$: the rest of the sum has largest term at most $F_{k-2}$, so it is less than $F_{k-1}$, and the whole sum is less than $F_k + F_{k-1} = F_{k+1}$.
+
+Step 2, existence. Take the largest $F_k \le n$. The remainder $n - F_k$ is less than $F_{k+1} - F_k = F_{k-1}$, so the next term chosen is at most $F_{k-2}$, never the neighbour $F_{k-1}$. Repeating ends at $0$ with non-consecutive terms.
+
+Step 3, uniqueness. Suppose two different representations have the same value, and cancel the terms they share. If something is left, let $F_k$ be the largest remaining term, say in the first. The second then has all its remaining terms at most $F_{k-1}$, so by Step 1 its sum is less than $F_k$, while the first is at least $F_k$: a contradiction.
+
+Step 4, the count. A string of $n$ binary digits for $F_2, \ldots, F_{n+1}$ with no two adjacent $1$s gives, by Step 1, a number below $F_{n+2}$, and by Steps 2 and 3 every number from $0$ to $F_{n+2} - 1$ arises exactly once. So there are $F_{n+2}$ such strings, the same count as [[tiling-a-board|the tilings of a board]] by squares and dominoes.
 
 ## Useful observations
 - The greedy algorithm is both the construction and the proof: taking the largest Fibonacci number at each step automatically leaves a remainder smaller than the previous term's predecessor, which is exactly the non-consecutive condition.
@@ -2477,6 +2487,8 @@ $p$ is prime and $m, n$ are nonzero integers (or rationals, for quotients).
 
 ## Why it works
 By unique factorization, the power of $p$ in a product is the sum of the powers in the factors, which makes $v_p$ behave like a logarithm for one prime. For a sum, write $m = p^a m'$ and $n = p^b n'$ with $p \nmid m', n'$ and $a \le b$: then $m + n = p^a(m' + p^{b-a}n')$, so $v_p(m + n) \ge a$. When $a \lt b$, the bracket is $m' + (\text{multiple of } p) \not\equiv 0$, so the valuation is exactly $a$.
+
+The rest is unique factorization read one prime at a time. $p^k \mid N$ means $N = p^k M$, which is $v_p(N) \ge k$. A common divisor can carry at most the smaller power of each prime and a common multiple at least the larger, which gives $\min$ for the gcd and $\max$ for the lcm. And $N = M^2$ exactly when every exponent of $N$ is twice an exponent of $M$.
 
 ## Useful observations
 - The valuation of a sum can exceed the minimum only when the minimum is tied: $v_2(48) = v_2(80) = 4$, but $v_2(48 + 80) = v_2(128) = 7$.
