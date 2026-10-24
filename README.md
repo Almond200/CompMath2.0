@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2002 AMC 12A, ten more (2026-10-24).** #12 (twin of 10A #14), 13 ($\sqrt5$), 14 ($N=2$), 17 ($207$), 18 ($20$), 19 ($6$ solutions), 20 ($5$ denominators), 21 (period $12$, $n=1999$), 22 ($\tfrac{3-\sqrt3}3$), 23 ($AB=12$, $14\sqrt5$). All checked by script.
 - **Step D: 2003 AMC 12 finished, 2002 AMC 12A begun (2026-10-24).** 2003 AMC 12B #18 ($x=7^511^8$), 19 ($\tfrac3{16}$), 20 ($b=-2$), 21 ($\tfrac13$), 22 ($\tfrac{120}{17}$), 23 ($2865$ zeros), 24 ($b+c=2003$, $c=1002$), 25 ($\tfrac1{12}$); 2002 AMC 12A #1 (twin of 10A #10) and #4. All checked by script.
 - **Step D: 2003 AMC 12A finished, 2003 AMC 12B begun (2026-10-24).** 2003 AMC 12A #21 ($d\ne0$), 22 ($\binom{12}5/2^{12}\approx0.19$), 23 ($2^{30}3^{13}5^57^3$, $672$), 24 ($0$), 25 ($a=0,-4$); 2003 AMC 12B #7 ($64$), 9, 10, 11 ($10{:}25$), 17 ($\tfrac35$). All checked by script.
 - **Step D: 2004 AMC 12 finished, 2003 AMC 12A begun (2026-10-24).** 2004 AMC 12B #24 ($\angle DBE=45^\circ$, $\tan\angle DBC=\tfrac13$, area $\tfrac{50}3$), 25 ($2004-3\cdot603=195$); 2003 AMC 12A #9, 10 ($\tfrac5{18}$), 11 ($\tfrac{27}{32}$), 14 ($32+16\sqrt3$), 16 ($\tfrac13$), 17 ($\tfrac{16}5$), 19, 20 ($\sum\binom5k^3$). All checked by script.
