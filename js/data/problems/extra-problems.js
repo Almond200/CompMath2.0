@@ -1214,4 +1214,68 @@
     { q: String.raw`Triangle $A(0, 0)$, $B(2, 0)$, $C(0, 2)$ is turned $90^\circ$ about the origin to $A'(0, 0)$, $B'(0, 2)$, $C'(-2, 0)$. Show that the midpoints of $AA'$, $BB'$, $CC'$ form a triangle similar to $ABC$ with the same orientation.`,
       s: String.raw`The midpoints are $P = (0, 0)$, $Q = (1, 1)$, $R = (-1, 1)$. Then $PQ = PR = \sqrt2$ with a right angle at $P$, so $PQR$ is a right isosceles triangle like $ABC$, scaled by $\tfrac1{\sqrt2}$, and $P \to Q \to R$ runs counterclockwise like $A \to B \to C$.` }
   );
+  add("iran-lemma",
+    { q: String.raw`Prove the Iran Lemma's right angle: with $K$ on ray $BI$ beyond $I$ and on line $FE$ beyond $E$, show that $\angle BKC = 90^\circ$.`,
+      s: String.raw`The angle $\angle BIC = 90^\circ + \tfrac A2$, so $\angle KIC = 90^\circ - \tfrac A2$. Triangle $AEF$ is isosceles ($AE = AF$), so $\angle AEF = 90^\circ - \tfrac A2$, and its vertical angle $\angle KEC$ is the same. So $I$ and $E$ see $KC$ at equal angles from the same side, and $K$, $C$, $I$, $E$ are concyclic. In that circle $\angle IEC = 90^\circ$ (radius to a tangent point), so $IC$ is a diameter and $\angle IKC = 90^\circ$.` }
+  );
+  add("isogonal-conjugate",
+    { q: String.raw`Show that the isogonal conjugate of the orthocenter $(\tan A : \tan B : \tan C)$ is the circumcenter $(\sin2A : \sin2B : \sin2C)$.`,
+      s: String.raw`The map sends it to $\left(\tfrac{a^2}{\tan A} : \tfrac{b^2}{\tan B} : \tfrac{c^2}{\tan C}\right)$. By the Law of Sines $a^2 \propto \sin^2A$, and $\tfrac{\sin^2A}{\tan A} = \sin A\cos A = \tfrac12\sin2A$. So the image is $(\sin2A : \sin2B : \sin2C)$, the circumcenter.` }
+  );
+  add("gliding-principle",
+    { q: String.raw`Two squares with the same orientation are drawn anywhere in the plane, corresponding corners labelled alike. Joining corresponding corners and taking midpoints gives four points. Prove that they form a square or a single point.`,
+      s: String.raw`Apply the gliding principle with ratio $\tfrac12$ to the directly similar triangles $ABC$ and $A'B'C'$: the midpoints $P$, $Q$, $R$ form a triangle directly similar to $ABC$, a right isosceles triangle with the right angle at $Q$. Doing the same for $ACD$ and $A'C'D'$ puts the fourth midpoint $S$ where it completes $PQRS$ to a square. If the scale factor is $0$, all four midpoints coincide.` }
+  );
+  add("regular-tetrahedron",
+    { q: String.raw`A regular tetrahedron has surface area $16\sqrt3$. Find its edge, height and volume.`,
+      s: String.raw`From $s^2\sqrt3 = 16\sqrt3$, $s = 4$. Then $h = \tfrac{4\sqrt6}3$ and $V = \tfrac{64\sqrt2}{12} = \tfrac{16\sqrt2}3$, which is also $\tfrac13\cdot4\sqrt3\cdot\tfrac{4\sqrt6}3$.` }
+  );
+  add("dodecahedron-icosahedron",
+    { q: String.raw`Of the segments joining two of the $12$ vertices of an icosahedron, how many are neither edges nor lie in a face?`,
+      s: String.raw`There are $\binom{12}2 = 66$ segments. The faces are triangles, so a segment in a face is an edge, and the $30$ edges are the only ones to remove: $66 - 30 = 36$ pass through the interior.` },
+    { q: String.raw`Check Euler's formula for the dodecahedron and the icosahedron, and explain why they have the same number of edges.`,
+      s: String.raw`$20 - 30 + 12 = 2$ and $12 - 30 + 20 = 2$. The two solids are dual: putting a vertex at the center of each face of one and joining neighbouring faces gives the other, so the dodecahedron's $20$ vertices match the icosahedron's $20$ faces and its $12$ faces the $12$ vertices, while each edge crosses exactly one edge of the dual.` }
+  );
+  add("pappus-centroid",
+    { q: String.raw`A circle of radius $2$ whose center is $5$ from an axis is revolved about it. Find the volume and surface area of the torus.`,
+      s: String.raw`The centroid travels $2\pi\cdot5$. The volume is $10\pi\cdot4\pi = 40\pi^2$ and the surface area $10\pi\cdot4\pi = 40\pi^2$ (the circumference is $4\pi$, the area $4\pi$ too).` },
+    { q: String.raw`A $2 \times 3$ rectangle, with its side of length $3$ parallel to an axis and $1$ unit from it, is revolved about the axis. Find the volume with Pappus and check it.`,
+      s: String.raw`The centroid is $1 + 1 = 2$ from the axis, so $V = 2\pi\cdot2\cdot6 = 24\pi$. Check: the solid is a tube of height $3$ with radii $1$ and $3$, volume $\pi(9 - 1)\cdot3 = 24\pi$.` }
+  );
+  add("vector-projection",
+    { q: String.raw`Find the projection of $\vec u = (1, 2, 2)$ onto $\vec v = (2, -1, 2)$, and its length.`,
+      s: String.raw`$\vec u\cdot\vec v = 2 - 2 + 4 = 4$ and $\vec v\cdot\vec v = 9$, so the projection is $\tfrac49(2, -1, 2) = \left(\tfrac89, -\tfrac49, \tfrac89\right)$, of length $\tfrac43$.` }
+  );
+  add("skew-lines-distance",
+    { q: String.raw`Find the distance between the lines $t(1, 1, 0)$ and $(1, 0, 1) + s(0, 1, 1)$.`,
+      s: String.raw`The cross product of the directions is $(1, 1, 0)\times(0, 1, 1) = (1, -1, 1)$, of length $\sqrt3$. The points $(0, 0, 0)$ and $(1, 0, 1)$ differ by $(1, 0, 1)$, whose dot product with it is $2$. So $d = \tfrac2{\sqrt3}$.` }
+  );
+  add("isoperimetric-facts",
+    { q: String.raw`Find the largest area of a rectangle with perimeter $20$, and of a triangle with perimeter $12$.`,
+      s: String.raw`The square wins among rectangles: $\tfrac{20^2}{16} = 25$. The equilateral triangle wins among triangles: $\tfrac{144}{12\sqrt3} = 4\sqrt3$, the area of the triangle with side $4$.` },
+    { q: String.raw`A farmer has $100$ m of fence to enclose land along a straight river, which needs no fence. What is the largest area for a rectangle, and for any shape?`,
+      s: String.raw`A rectangle with sides $x$, $y$, $x$ has $2x + y = 100$, and $x(100 - 2x)$ is largest at $x = 25$: $1250$ m$^2$. For any shape, reflect it in the river: a closed curve of length $200$ encloses at most $\tfrac{200^2}{4\pi}$, so the half has at most $\tfrac{5000}\pi \approx 1592$ m$^2$, reached by a semicircle.` }
+  );
+  add("harmonic-quadrilateral",
+    { q: String.raw`Which rectangles inscribed in a circle are harmonic quadrilaterals?`,
+      s: String.raw`A cyclic quadrilateral is harmonic when $AB\cdot CD = BC\cdot DA$. A rectangle with sides $a$ and $b$ has $AB\cdot CD = a^2$ and $BC\cdot DA = b^2$, so only the squares are harmonic.` }
+  );
+  add("gcd-power-minus-one",
+    { q: String.raw`Compute $\gcd(3^{15} - 1, 3^{10} - 1)$.`,
+      s: String.raw`$\gcd(15, 10) = 5$, so it is $3^5 - 1 = 242$.` },
+    { q: String.raw`Show that $2^7 - 1$ and $2^5 - 1$ are coprime, and say when $2^m - 1$ and $2^n - 1$ are coprime in general.`,
+      s: String.raw`The gcd is $2^{\gcd(7, 5)} - 1 = 2^1 - 1 = 1$ (indeed $127$ and $31$ are distinct primes). In general they are coprime exactly when $\gcd(m, n) = 1$, since only then is $2^{\gcd(m,n)} - 1 = 1$.` }
+  );
+  add("sigma-parity",
+    { q: String.raw`Is $\sigma(50)$ odd?`,
+      s: String.raw`$50 = 2\cdot5^2$ is twice a square, so yes: $\sigma(50) = 1 + 2 + 5 + 10 + 25 + 50 = 93$.` },
+    { q: String.raw`Among the numbers $1$ through $50$, count those whose divisor sum is even.`,
+      s: String.raw`$\sigma(n)$ is odd for the $7$ squares up to $49$ and for the $5$ numbers $2m^2$ up to $50$ ($2, 8, 18, 32, 50$), $12$ in all. So $50 - 12 = 38$ have $\sigma(n)$ even.` }
+  );
+  add("mobius-inversion",
+    { q: String.raw`Find $\mu(1)$, $\mu(12)$ and $\mu(30)$.`,
+      s: String.raw`$\mu(1) = 1$; $12 = 2^2\cdot3$ has a square factor, so $\mu(12) = 0$; $30 = 2\cdot3\cdot5$ has three distinct primes, so $\mu(30) = (-1)^3 = -1$.` },
+    { q: String.raw`Since $\sum_{d \mid n}\varphi(d) = n$, Möbius inversion gives $\varphi(n) = \sum_{d \mid n}\mu(d)\tfrac nd$. Use it to compute $\varphi(12)$.`,
+      s: String.raw`Only the squarefree divisors $1, 2, 3, 6$ count: $12 - 6 - 4 + 2 = 4$. Indeed $1, 5, 7, 11$ are the numbers up to $12$ coprime to it.` }
+  );
 })();

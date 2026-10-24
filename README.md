@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: 10 more Low cards, and second exercises for four (2026-10-24).** The regular tetrahedron, dodecahedron and icosahedron, Pappus, projection, skew lines, isoperimetric facts, harmonic quadrilaterals, $\gcd(a^m - 1, a^n - 1)$, the parity of $\sigma$ and Möbius inversion, plus second exercises for the Iran lemma, isogonal conjugates and the gliding principle. Cards under two: 168.
 - **F: 10 more Low cards (2026-10-24).** Monge, Ptolemy's second theorem, bisectors of two lines, Pick on any lattice and with holes, polar coordinates, the reflective property, focal radii, parabolic segments and the gliding principle. Cards under two: 180.
 - **F: 10 more Low cards (2026-10-24).** Isogonal conjugates, center distances, the Lemoine point, Gergonne and Nagel points, two tangents, inversion, linearity of power, common chords, Miquel's theorem and orthogonal circles. Cards under two: 189.
 - **F: 15 more Low cards (2026-10-24).** Triangle geometry: the Conway circle, flank triangles, the sine-sum ratio, half-angle tangents, the median triangle, Routh, Van Aubel, trigonometric Ceva, Napoleon, the Iran lemma, Steiner's ratio theorem, the isogonal line lemma, the shooting lemma, Carnot and the excentral triangle. Cards under two: 198.
