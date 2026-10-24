@@ -4447,4 +4447,26 @@
       cap(430, 270, "The circle of radius 5√2 with diameter AB; the chord CD crosses AB at E with BE = 2√5 and ∠AEC = 45°." + MM(ok))
     ]);
   })();
+
+  // 2019 AMC 12A #22: circles of radii 20 and 17 about O, the equilateral triangle with A on the
+  // larger one and BC tangent to the smaller one, and AO crossing BC at P with BP = 3 CP. The view
+  // is zoomed on the triangle (true shape and scale), so O, 17 below line BC, is off the frame.
+  PROB["2019-amc-12a-22"] = (() => {
+    const s3 = Math.sqrt(3), sd = 80 / Math.sqrt(13) - 34 / s3;
+    const B = [0, 0], C = [sd, 0], A = [sd / 2, sd * s3 / 2], P = [3 * sd / 4, 0];
+    const t = (A[1] + 17) / A[1], O = [A[0] + t * (P[0] - A[0]), -17];
+    const ok = Math.abs(dist(O, A) - 20) < 1e-9 && Math.abs(dist(B, P) - 3 * dist(P, C)) < 1e-9 && dist(O, B) > 17 && dist(O, C) > 17;
+    const x0 = -1.2, x1 = 4.6, y0 = -1.6, Q = fitQ([[x0, y0], [x1, 3.0]], 16, 430, 270);
+    const arc = r => Array.from({ length: 41 }, (_, i) => { const x = x0 + (x1 - x0) * i / 40; return Q([x, O[1] + Math.sqrt(r * r - (x - O[0]) ** 2)]); });
+    const exit = add(A, mul(sub(O, A), (y0 - A[1]) / (O[1] - A[1])));       // where AO leaves the frame
+    return wrap(430, 270, [
+      pline(arc(20), DIM, 1.8), pline(arc(17), FNT, 1.8),
+      seg(Q([x0, 0]), Q([x1, 0]), FNT, 1.2, "4 4"), poly([A, B, C].map(Q), ACC, 2), seg(Q(A), Q(exit), GLD, 1.5, "5 4"),
+      dot(Q(P), GLD, 3.5),
+      txt(add(Q(A), [-4, -10]), "A", ACC, 13), txt(add(Q(B), [-12, 14]), "B", ACC, 13), txt(add(Q(C), [12, 14]), "C", ACC, 13),
+      txt(add(Q(P), [-10, 15]), "P", GLD, 13), txt(add(Q(exit), [30, -6]), "to O", GLD, 12),
+      txt(add(arc(20)[3], [0, -9]), "ω", DIM, 14), txt(add(arc(17)[37], [0, 16]), "γ", FNT, 14),
+      cap(430, 270, "Zoomed on the triangle: A lies on ω (radius 20), line BC touches γ (radius 17), and AO, heading to the common center O far below, crosses BC at P with BP = 3CP." + MM(ok))
+    ]);
+  })();
 })();
