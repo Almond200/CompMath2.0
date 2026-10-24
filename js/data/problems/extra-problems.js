@@ -1160,4 +1160,58 @@
     { q: String.raw`Are the circles $x^2 + y^2 = 1$ and $(x - 2)^2 + y^2 = 3$ orthogonal?`,
       s: String.raw`The centers are $2$ apart and $2^2 = 1 + 3$, so yes. Equivalently, the power of $(2, 0)$ with respect to the first circle is $4 - 1 = 3$, the square of the second radius.` }
   );
+  add("monges-theorem",
+    { q: String.raw`Check Monge numerically: three circles have centers $(0, 0)$, $(4, 0)$, $(0, 4)$ and radii $1$, $2$, $4$. Locate the three points where each pair's outer common tangents meet.`,
+      s: String.raw`The external center for centers $O_i$, $O_j$ and radii $r_i$, $r_j$ is $\tfrac{r_jO_i - r_iO_j}{r_j - r_i}$. This gives $E_{12} = (-4, 0)$, $E_{13} = \tfrac{4(0, 0) - (0, 4)}3 = \left(0, -\tfrac43\right)$ and $E_{23} = \tfrac{4(4, 0) - 2(0, 4)}2 = (8, -4)$. All three lie on $x + 3y + 4 = 0$.` },
+    { q: String.raw`Explain Monge's Theorem by thinking of the three circles as spheres resting on a table.`,
+      s: String.raw`Replace each circle by a sphere with that circle as its equator, lying on the plane of the circles. For two spheres, the cone tangent to both has its apex at their external center of similitude, in the plane. A second plane rests on top of all three spheres, and it is tangent to each cone, so it contains all three apexes. The three points lie in two different planes, hence on the line where those planes meet.` }
+  );
+  add("ptolemy-second-theorem",
+    { q: String.raw`A cyclic quadrilateral has $AB = 7$, $BC = 15$, $CD = 20$, $DA = 24$. Find both diagonals.`,
+      s: String.raw`With $ac + bd = 140 + 360 = 500$, $ad + bc = 168 + 300 = 468$ and $ab + cd = 105 + 480 = 585$: $AC^2 = \tfrac{500\cdot468}{585} = 400$ and $BD^2 = \tfrac{500\cdot585}{468} = 625$. So $AC = 20$ and $BD = 25$, and $BD$ is a diameter, since $7^2 + 24^2 = 15^2 + 20^2 = 25^2$.` },
+    { q: String.raw`Check the ratio $\tfrac pq = \tfrac{ad + bc}{ab + cd}$ for a rectangle with sides $3$ and $4$.`,
+      s: String.raw`With $a = c = 3$ and $b = d = 4$ (or the other way), $ad + bc = 12 + 12$ and $ab + cd = 12 + 12$, so the diagonals are equal, as in every rectangle. The other formula gives $p^2 = \tfrac{(9 + 16)\cdot24}{24} = 25$, so $p = 5$.` }
+  );
+  add("angle-bisectors-of-lines",
+    { q: String.raw`Find the bisectors of the angles between $3x + 4y = 0$ and $4x + 3y = 0$, and use the slope formula to bisect the angle between $y = 0$ and $y = \sqrt3x$.`,
+      s: String.raw`Both normals have length $5$, so the bisectors are $3x + 4y = \pm(4x + 3y)$: $y = x$ and $y = -x$. For $m = \sqrt3$, $m' = \tfrac{\sqrt{1 + 3} - 1}{\sqrt3} = \tfrac1{\sqrt3}$, the line at $30^\circ$, half of $60^\circ$.` }
+  );
+  add("picks-theorem-general",
+    { q: String.raw`Using only the points $(2m, 3n)$ as the lattice, a polygon with vertices there has $2$ of those points inside and $10$ on its edges. What is its area, and what polygon fits?`,
+      s: String.raw`A fundamental cell has area $d = 6$, so the area is $6\left(2 + 5 - 1\right) = 36$. The rectangle of $3 \times 2$ cells, $[0, 6] \times [0, 6]$, fits: $10$ lattice points on its boundary, $2$ inside, area $36$.` },
+    { q: String.raw`On the triangular lattice of unit equilateral triangles, find the area of a lattice triangle with no interior points and only its three vertices on the boundary.`,
+      s: String.raw`The cell spanned by two unit vectors at $60^\circ$ has area $d = \tfrac{\sqrt3}2$, so the area is $\tfrac{\sqrt3}2\left(0 + \tfrac32 - 1\right) = \tfrac{\sqrt3}4$: a single unit triangle.` }
+  );
+  add("picks-with-holes",
+    { q: String.raw`A $4\times4$ lattice square has a $1\times1$ lattice square removed from its middle. Check the formula on it.`,
+      s: String.raw`The boundary has $16$ outer and $4$ inner points, $B = 20$. Of the $9$ points strictly inside the big square, $4$ are on the hole's edge, so $I = 5$. With $h = 1$, $A = 5 + 10 + 1 - 1 = 15$, which is $16 - 1$.` },
+    { q: String.raw`A lattice polygon with $2$ holes has $10$ interior and $20$ boundary lattice points. Find its area.`,
+      s: String.raw`$A = I + \tfrac B2 + h - 1 = 10 + 10 + 2 - 1 = 21$.` }
+  );
+  add("polar-coordinates",
+    { q: String.raw`Write the point $(-1, \sqrt3)$ in polar coordinates.`,
+      s: String.raw`$r = \sqrt{1 + 3} = 2$, and the point is in the second quadrant with $\tan\theta = -\sqrt3$, so $\theta = 120^\circ$: $(2, 120^\circ)$.` },
+    { q: String.raw`Convert $r = \dfrac2{1 - \cos\theta}$ to rectangular coordinates and name the curve.`,
+      s: String.raw`Clear the fraction: $r - r\cos\theta = 2$, that is $\sqrt{x^2 + y^2} = x + 2$. Squaring, $x^2 + y^2 = x^2 + 4x + 4$, so $y^2 = 4x + 4$: a parabola with vertex $(-1, 0)$ and focus at the origin.` }
+  );
+  add("conic-reflective-property",
+    { q: String.raw`A ray travelling straight down, parallel to the axis of the parabola $y = \tfrac{x^2}4$, strikes it at $(2, 1)$. Where does the reflected ray go?`,
+      s: String.raw`The parabola is $x^2 = 4y$ with focus $(0, 1)$. A ray parallel to the axis reflects through the focus, so it leaves $(2, 1)$ heading straight to $(0, 1)$, horizontally.` }
+  );
+  add("focal-radii",
+    { q: String.raw`Find the distances from $P = \left(3, \tfrac{12}5\right)$ on $\frac{x^2}{25} + \frac{y^2}9 = 1$ to its two foci.`,
+      s: String.raw`Here $a = 5$, $c = 4$, $e = \tfrac45$. The focal radii are $a \pm ex = 5 \pm \tfrac{12}5$: $\tfrac{37}5$ to $(-4, 0)$ and $\tfrac{13}5$ to $(4, 0)$. They add to $10 = 2a$.` },
+    { q: String.raw`A point on the parabola $x^2 = 8y$ has $y = 6$. How far is it from the focus?`,
+      s: String.raw`Here $4p = 8$, so $p = 2$ and the distance is $y + p = 8$. Check with $P = (4\sqrt3, 6)$ and focus $(0, 2)$: $\sqrt{48 + 16} = 8$.` }
+  );
+  add("parabolic-segment-area",
+    { q: String.raw`The parabola $y = x^2$ and the horizontal line $y = 4$ enclose a cap. How big is it?`,
+      s: String.raw`The curves meet at $x = \pm2$, so the area is $\tfrac{|a|(x_2 - x_1)^3}6 = \tfrac{64}6 = \tfrac{32}3$.` },
+    { q: String.raw`Check Archimedes' ratio on the segment of $y = 4 - x^2$ above the $x$-axis, using the triangle with vertices $(-2, 0)$, $(2, 0)$, $(0, 4)$.`,
+      s: String.raw`The triangle's apex is the point where the tangent is parallel to the chord, and its area is $\tfrac12\cdot4\cdot4 = 8$. Then $\tfrac43\cdot8 = \tfrac{32}3$, the same as $\tfrac{1\cdot4^3}6$.` }
+  );
+  add("gliding-principle",
+    { q: String.raw`Triangle $A(0, 0)$, $B(2, 0)$, $C(0, 2)$ is turned $90^\circ$ about the origin to $A'(0, 0)$, $B'(0, 2)$, $C'(-2, 0)$. Show that the midpoints of $AA'$, $BB'$, $CC'$ form a triangle similar to $ABC$ with the same orientation.`,
+      s: String.raw`The midpoints are $P = (0, 0)$, $Q = (1, 1)$, $R = (-1, 1)$. Then $PQ = PR = \sqrt2$ with a right angle at $P$, so $PQR$ is a right isosceles triangle like $ABC$, scaled by $\tfrac1{\sqrt2}$, and $P \to Q \to R$ runs counterclockwise like $A \to B \to C$.` }
+  );
 })();
