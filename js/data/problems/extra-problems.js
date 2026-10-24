@@ -2100,4 +2100,56 @@
     { q: String.raw`Starting from $(1, 1)$, jump upward to list four more solutions of $a^2 + b^2 + 1 = 3ab$.`,
       s: String.raw`Replacing the smaller entry $b$ of $(a, b)$ by $3a - b$ gives $(1, 1) \to (2, 1) \to (5, 2) \to (13, 5) \to (34, 13)$. Check: $169 + 25 + 1 = 195 = 3 \cdot 65$, and $1156 + 169 + 1 = 1326 = 3 \cdot 442$.` }
   );
+  add("mason-stothers",
+    { q: String.raw`Apply Mason–Stothers to the identity $a = t^3$, $b = 1$, $c = t^3 + 1$, so $a + b = c$. Is the bound tight?`,
+      s: String.raw`The three are coprime. $abc = t^3(t^3 + 1)$ has the distinct roots $0$ and the three cube roots of $-1$, so $n_0 = 4$. The largest degree is $3 \le 4 - 1$: equality, so the bound cannot be improved.` }
+  );
+  add("resultant-discriminant",
+    { q: String.raw`Find $\operatorname{Res}(x^2 - 5x + 6,\ x^2 - 1)$ from the roots. What does its value say?`,
+      s: String.raw`The roots are $2, 3$ and $1, -1$, and both polynomials are monic, so the resultant is $(2 - 1)(2 + 1)(3 - 1)(3 + 1) = 1 \cdot 3 \cdot 2 \cdot 4 = 24$. It is nonzero, so the two polynomials share no root.` }
+  );
+  add("eigenvalues-characteristic",
+    { q: String.raw`Find the eigenvalues and eigenvectors of $\begin{pmatrix}4&1\\2&3\end{pmatrix}$, and check them against the trace and the determinant.`,
+      s: String.raw`$\det(A - \lambda I) = (4 - \lambda)(3 - \lambda) - 2 = \lambda^2 - 7\lambda + 10 = (\lambda - 2)(\lambda - 5)$. For $\lambda = 5$, $(1, 1)$ works ($4 + 1 = 5$, $2 + 3 = 5$); for $\lambda = 2$, $(1, -2)$ works ($4 - 2 = 2$, $2 - 6 = -4$). The sum $7$ is the trace and the product $10$ is $\det A = 12 - 2$.` }
+  );
+  add("brahmagupta-fibonacci",
+    { q: String.raw`From $5 = 1^2 + 2^2$ and $13 = 2^2 + 3^2$, find both representations of $65$ as a sum of two squares.`,
+      s: String.raw`$(1 \cdot 2 - 2 \cdot 3)^2 + (1 \cdot 3 + 2 \cdot 2)^2 = 16 + 49 = 65$, and with the sign switched, $(1 \cdot 2 + 2 \cdot 3)^2 + (1 \cdot 3 - 2 \cdot 2)^2 = 64 + 1 = 65$. So $65 = 4^2 + 7^2 = 8^2 + 1^2$.` }
+  );
+  add("popoviciu-inequality",
+    { q: String.raw`Test Popoviciu's Inequality for $f(t) = t^4$ at $0$, $1$, $2$.`,
+      s: String.raw`The mean is $1$, so the left side is $0 + 1 + 16 + 3 \cdot 1 = 20$. The pairwise midpoints are $\tfrac12$, $\tfrac32$, $1$, so the right side is $2\left(\tfrac1{16} + \tfrac{81}{16} + 1\right) = \tfrac{49}4 = 12.25$. Indeed $20 \ge 12.25$.` }
+  );
+  add("kruskal-katona",
+    { q: String.raw`Five triples are chosen. How few pairs can they cover? Write $5$ in the cascade form first.`,
+      s: String.raw`$5 = \binom43 + \binom22$, so the shadow has at least $\binom42 + \binom21 = 6 + 2 = 8$ pairs. Reached by all four triples of $\{1, 2, 3, 4\}$ plus $\{1, 2, 5\}$, which adds only the pairs $15$ and $25$.` }
+  );
+  add("coprime-probability",
+    { q: String.raw`The probability is $\prod_p \left(1 - \frac1{p^2}\right)$, since two integers are both divisible by $p$ with chance $\frac1{p^2}$. Multiply the factors for $p = 2, 3, 5$ and compare with $\frac6{\pi^2}$.`,
+      s: String.raw`$\frac34 \cdot \frac89 \cdot \frac{24}{25} = \frac{576}{900} = 0.64$. The remaining primes pull it down to $\frac6{\pi^2} \approx 0.608$; the product over all primes is $\frac1{\zeta(2)}$.` }
+  );
+  add("schurs-theorem",
+    { q: String.raw`Check that coloring $\{1, 4, 10, 13\}$ red, $\{2, 3, 11, 12\}$ blue and $\{5, 6, 7, 8, 9\}$ green leaves no color with $x + y = z$.`,
+      s: String.raw`Red: the sums $2, 5, 8, 11, 14, 17, 20, 23, 26$ of two reds are never red. Blue: the sums $4, 5, 6, 13, 14, 15, 22, 23, 24$ are never blue. Green: every sum of two greens is at least $10$, beyond the green block. So $1, \ldots, 13$ can be $3$-colored, and $S(3) = 13$ is the true length.` }
+  );
+  add("van-aubel",
+    { q: String.raw`Erect squares outward on the sides of $(0, 0)$, $(4, 0)$, $(4, 2)$, $(0, 3)$. Check Van Aubel with the centers.`,
+      s: String.raw`The centers are $(2, -2)$, $(5, 1)$, $\left(\tfrac52, \tfrac92\right)$, $\left(-\tfrac32, \tfrac32\right)$, each the side's midpoint pushed out by half the side, turned $90^\circ$. The joins of opposite centers are $\left(\tfrac12, \tfrac{13}2\right)$ and $\left(-\tfrac{13}2, \tfrac12\right)$: the same length, and their dot product is $0$.` }
+  );
+  add("erdos-mordell",
+    { q: String.raw`For $A = (0, 3)$, $B = (4, 0)$, $C = (0, 0)$, let $P$ be the centroid. How much slack does Erdős–Mordell leave?`,
+      s: String.raw`$P = \left(\tfrac43, 1\right)$, with $PA = \tfrac{2\sqrt{13}}3$, $PB = \tfrac{\sqrt{73}}3$, $PC = \tfrac53$, total about $6.92$. Its distances to the sides are $1$, $\tfrac43$ and $\tfrac{|4 + 4 - 12|}5 = \tfrac45$, so $2(d_a + d_b + d_c) \approx 6.27$. The slack is about $0.65$.` }
+  );
+  add("law-of-tangents",
+    { q: String.raw`Sides $a = 9$ and $b = 5$ meet at $C = 120^\circ$. Find $A$ and $B$ without finding $c$ first.`,
+      s: String.raw`$\tfrac{A + B}2 = 30^\circ$, so $\tan\tfrac{A - B}2 = \tfrac{4}{14}\tan30^\circ = \tfrac{2}{7\sqrt3} \approx 0.165$, so $\tfrac{A - B}2 \approx 9.37^\circ$. Then $A \approx 39.37^\circ$ and $B \approx 20.63^\circ$. Check: $c = \sqrt{151}$ and the Law of Cosines gives the same $A$.` }
+  );
+  add("mollweides-formula",
+    { q: String.raw`The triangle with $a = 8$, $b = 5$, $c = 7$ has $C = 60^\circ$. Use Mollweide to find $\cos\frac{A - B}2$ and $\sin\frac{A - B}2$, and check they fit together.`,
+      s: String.raw`$\cos\frac{A - B}2 = \frac{a + b}c\sin30^\circ = \frac{13}{14}$ and $\sin\frac{A - B}2 = \frac{a - b}c\cos30^\circ = \frac{3\sqrt3}{14}$. Then $\frac{169 + 27}{196} = 1$, as it must.` }
+  );
+  add("isogonal-line-lemma",
+    { q: String.raw`In $A = (0, 0)$, $B = (3, 0)$, $C = (0, 6)$, the points $X = (1, \tfrac12)$ and $Y = (1, 2)$. Check that they are isogonal from $A$, find $P = BX \cap CY$ and $Q = BY \cap CX$, and confirm $AP$, $AQ$ are isogonal too.`,
+      s: String.raw`The bisector of the right angle at $A$ is $y = x$, and the directions $(2, 1)$ and $(1, 2)$ are mirror images in it, so $AX$, $AY$ are isogonal. Solving gives $P = \left(\tfrac75, \tfrac25\right)$ and $Q = \left(\tfrac23, \tfrac73\right)$, with directions $(7, 2)$ and $(2, 7)$: mirror images again.` }
+  );
 })();
