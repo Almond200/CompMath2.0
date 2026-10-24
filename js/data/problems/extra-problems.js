@@ -1512,4 +1512,34 @@
     { q: String.raw`A basketball player's season free-throw percentage starts below $80\%$ and ends above it. Prove that it was exactly $80\%$ at some moment.`,
       s: String.raw`Look at the first shot that takes the percentage from below $80\%$ to at least $80\%$; it must be a make. With $m$ makes in $n$ attempts before it, the integers satisfy $5m \lt 4n$, so $5m \le 4n - 1$, and $5(m + 1) \ge 4(n + 1)$, so $5m \ge 4n - 1$. Hence $5m = 4n - 1$, and after the shot $5(m + 1) = 4(n + 1)$: the percentage is exactly $80\%$.` }
   );
+  add("ellipse-tangent-line",
+    { q: String.raw`With $F_1 = (1, 2)$ and $F_2 = (5, 1)$, find the least value of $PF_1 + PF_2$ for $P$ on the $x$-axis, and the point where it is reached.`,
+      s: String.raw`Reflect $F_1$ in the axis to $F_1' = (1, -2)$. Then $PF_1 + PF_2 = PF_1' + PF_2 \ge F_1'F_2 = \sqrt{16 + 9} = 5$, with equality where the segment $F_1'F_2$ crosses the axis: $y = -2 + \tfrac34(x - 1) = 0$ at $P = \left(\tfrac{11}3, 0\right)$. The ellipse with these foci and major axis $5$ touches the axis there.` }
+  );
+  add("angle-bisector-circumcircle",
+    { q: String.raw`A triangle has a $60^\circ$ angle at $A$, opposite a side of length $6$. Its bisector from $A$, extended, meets the circumcircle at $D$. How far is $D$ from $B$, and from the incenter $I$?`,
+      s: String.raw`$ABDC$ is cyclic, so $\angle BDC = 180^\circ - 60^\circ = 120^\circ$, and $DB = DC$. The isosceles triangle $BDC$ with apex $120^\circ$ and base $6$ has legs $\tfrac{6}{2\sin60^\circ} = 2\sqrt3$. So $DB = 2\sqrt3$, and $DI = DB = 2\sqrt3$ as well.` }
+  );
+  add("repeated-block-equation",
+    { q: String.raw`Solve $(x^2 + x)^2 - 8(x^2 + x) + 12 = 0$.`,
+      s: String.raw`With $u = x^2 + x$ it is $u^2 - 8u + 12 = 0$, so $u = 2$ or $u = 6$. Then $x^2 + x = 2$ gives $x = 1, -2$, and $x^2 + x = 6$ gives $x = 2, -3$.` },
+    { q: String.raw`Solve $4^x - 6\cdot2^x + 8 = 0$.`,
+      s: String.raw`The block is $u = 2^x$, with $4^x = u^2$: $u^2 - 6u + 8 = 0$ gives $u = 2$ or $4$, so $x = 1$ or $x = 2$.` }
+  );
+  add("drawing-without-replacement",
+    { q: String.raw`A shuffled deck of $52$ cards is dealt one card at a time. What is the probability that the fifth card dealt is a heart?`,
+      s: String.raw`By symmetry every position is equally likely to hold any given card, so the fifth card is a heart with probability $\tfrac{13}{52} = \tfrac14$, the same as the first.` },
+    { q: String.raw`Two marbles are taken one after the other, not put back, from $5$ red and $3$ blue. Find the chance that both are red.`,
+      s: String.raw`Multiply the shrinking fractions: $\tfrac58\cdot\tfrac47 = \tfrac{20}{56} = \tfrac5{14}$, which is also $\binom52\big/\binom82 = \tfrac{10}{28}$.` }
+  );
+  add("subset-avoiding-relation",
+    { q: String.raw`What is the largest subset of $\{1, 2, \ldots, 15\}$ with no two elements differing by $3$?`,
+      s: String.raw`The difference $3$ splits the set into three chains, $1, 4, 7, 10, 13$ and $2, 5, \ldots, 14$ and $3, 6, \ldots, 15$, each of length $5$. Within a chain no two neighbours may both be chosen, so at most $3$ per chain, $9$ in all, reached by the first, third and fifth of each chain.` },
+    { q: String.raw`What is the largest subset of $\{1, 2, \ldots, 20\}$ in which no element is twice another?`,
+      s: String.raw`Doubling links the chains $m, 2m, 4m, \ldots$ for odd $m$: $\{1, 2, 4, 8, 16\}$ allows $3$, $\{3, 6, 12\}$ and $\{5, 10, 20\}$ allow $2$ each, $\{7, 14\}$ and $\{9, 18\}$ allow $1$ each, and the five single chains $11, 13, 15, 17, 19$ allow $1$ each. The largest subset has $3 + 2 + 2 + 1 + 1 + 5 = 14$ elements.` }
+  );
+  add("harmonic-quadrilateral",
+    { q: String.raw`The tangents to a circle at $B$ and $C$ meet at $X$, and the line through $X$ and a point $A$ of the circle meets it again at $D$. Prove that $AB\cdot CD = AC\cdot BD$.`,
+      s: String.raw`The tangent-chord angle gives $\angle XBD = \angle XAB$, and the triangles $XBD$ and $XAB$ share the angle at $X$, so they are similar and $\tfrac{BD}{AB} = \tfrac{XB}{XA}$. In the same way $\tfrac{CD}{AC} = \tfrac{XC}{XA}$. The tangents are equal, $XB = XC$, so $\tfrac{BD}{AB} = \tfrac{CD}{AC}$, which is the claim.` }
+  );
 })();
