@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2016 AMC 12A finished, 2016 AMC 12B begun (2026-10-24).** 2016 AMC 12A #25 ($f(2m)=25\cdot10^{2m-2}+10^m$, digit sum $8064$); 2016 AMC 12B #2, 5, 7, 10, 13 (with a 3D figure), 17 ($\tfrac8{15}\sqrt5$), 19, 21 (telescoping areas, $\tfrac14$, with a figure), 22 ($n=297$). All checked by script.
 - **Step D: 2016 AMC 12A, ten problems (2026-10-24).** #7, 9 ($s=\tfrac{4-\sqrt2}7$), 11 (inclusion-exclusion, $64$), 12, 14 (copied from 2016 AMC 10A #18), 16 ($5$ points), 17 ($\tfrac{2+\sqrt3}3$, with a figure), 19 (reflection principle, $\tfrac{23}{128}$), 23, 24 (AM–GM forces a triple root $\sqrt3$, $b=9$). All checked by script.
 - **Step D: 2017 AMC 12B finished, 2016 AMC 12A begun (2026-10-24).** 2017 AMC 12B #9 (radical axis), 12, 14 (with a side-view figure), 17, 20, 22 ($540$ balanced pass sequences, $\tfrac5{192}$), 23 ($f(x)=x^2+a(x-2)(x-3)(x-4)$, $\tfrac{24}5$), 24 ($x^2-1+x^{-2}=17$, with a figure), 25 ($T=P/10080$; $557$ by residues); 2016 AMC 12A #5. All checked by script.
 - **Step D: 2017 AMC 12A finished, 2017 AMC 12B begun (2026-10-24).** 2017 AMC 12A #17, 20 ($3\cdot199$), 21 (the Rational Root Theorem caps $S$ at the $9$ divisors of $10$ with $0$), 22 (three states, $\tfrac4{35}$), 24 (two similarities and the power of $X$ reduce it to $\tfrac13BD^2=17$; with a figure); 2017 AMC 12B #1, 5, 6, 7, 8. All checked by script.

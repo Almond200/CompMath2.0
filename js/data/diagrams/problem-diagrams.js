@@ -4656,4 +4656,36 @@
       cap(430, 270, "The square ABCD with equilateral triangles on its sides, outside; E, F, G, H are their centers." + MM(ok))
     ]);
   })();
+
+  // 2016 AMC 12B #13: Alice looks north and Bob looks west at the same airplane; they are 10 apart.
+  // G is the point on the ground below the plane, h its altitude.
+  PROB["2016-amc-12b-13"] = (() => {
+    const { Pj } = projector([150, 200], 15, [1, 0.12], [0.62, -0.36]);
+    const h = Math.sqrt(30), a = h * Math.sqrt(3), b = h / Math.sqrt(3);         // AG = h cot 30°, BG = h cot 60°
+    const G = [0, 0, 0], Al = [0, -a, 0], Bo = [b, 0, 0], X = [0, 0, h];          // north = +y, east = +x
+    const ok = Math.abs(Math.hypot(a, b) - 10) < 1e-9;
+    return wrap(430, 270, [
+      seg(Pj(Al), Pj(Bo), DIM, 1.6, "5 4"), seg(Pj(Al), Pj(G), DIM, 1.8), seg(Pj(Bo), Pj(G), DIM, 1.8), seg(Pj(G), Pj(X), FNT, 1.4, "4 4"),
+      seg(Pj(Al), Pj(X), ACC, 1.8), seg(Pj(Bo), Pj(X), GLD, 1.8), dot(Pj(X), DIM, 4),
+      txt(add(Pj(Al), [-16, 6]), "Alice"), txt(add(Pj(Bo), [18, 10]), "Bob"), txt(add(Pj(G), [10, 14]), "G"), txt(add(Pj(X), [0, -10]), "plane"),
+      txt(add(Pj(mid(Al, Bo)), [6, 16]), "10", DIM, 12), txt(add(Pj(Al), [34, -8]), "30°", ACC, 12), txt(add(Pj(Bo), [-22, -14]), "60°", GLD, 12),
+      cap(430, 270, "Alice looks due north and Bob due west at the same plane, at elevations 30° and 60°; they stand 10 miles apart, and G is the point below the plane." + MM(ok))
+    ]);
+  })();
+
+  // 2016 AMC 12B #21: the unit square, the diagonal BD, and the first triangles D Q_i P_i.
+  PROB["2016-amc-12b-21"] = (() => {
+    const A = [0, 1], B = [1, 1], C = [1, 0], D = [0, 0];
+    const qs = [1 / 2, 1 / 3, 1 / 4], Ps = qs.map(q => [q / (1 + q), q / (1 + q)]);
+    const ok = Ps.every((P, i) => Math.abs(P[0] - 1 / (i + 3)) < 1e-12);
+    const Q = fitQ([A, B, C, D], 26, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C, D].map(Q), DIM, 2), seg(Q(B), Q(D), DIM, 1.4),
+      ...qs.map((q, i) => poly([D, [q, 0], Ps[i]].map(Q), i ? FNT : ACC, 1.5, i ? "none" : ACCS)),
+      ...qs.map((q, i) => seg(Q(A), Q([q, 0]), FNT, 1.2)),
+      ...qs.map((q, i) => txt(add(Q([q, 0]), [0, 16]), "Q" + "₁₂₃"[i], ACC, 12)), ...Ps.map((P, i) => txt(add(Q(P), [[-10, -8], [-12, -6], [16, -2]][i]), "P" + "₁₂₃"[i], ACC, 11.5)),
+      txt(add(Q(A), [-12, -2]), "A"), txt(add(Q(B), [12, -2]), "B"), txt(add(Q(C), [12, 12]), "C"), txt(add(Q(D), [-12, 12]), "D"),
+      cap(430, 270, "The unit square: Q₁ is the midpoint of CD, P₁ is where AQ₁ meets BD, Q₂ is the foot below P₁, and so on (first triangle shaded)." + MM(ok))
+    ]);
+  })();
 })();
