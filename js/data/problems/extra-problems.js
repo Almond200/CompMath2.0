@@ -2204,4 +2204,60 @@
     { q: String.raw`Can two points of the hyperbola $\frac{x^2}9 - \frac{y^2}4 = 1$ be seen from its center at a right angle?`,
       s: String.raw`It would need $\frac1{OA^2} + \frac1{OB^2} = \frac19 - \frac14 = -\frac5{36}$, which is negative, so no. The asymptotes make an angle less than $90^\circ$ around the $x$-axis, and every point of the curve lies inside it. Perpendicular radii exist on $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ only when $a \lt b$.` }
   );
+  add("spheres-two-planes",
+    { q: String.raw`A floor and a wall meet at a dihedral angle of $120^\circ$. A ball of radius $3$ touches both. How far from the edge does it touch the floor?`,
+      s: String.raw`The center lies on the bisecting plane, which makes $60^\circ$ with the floor, so $r = d\tan60^\circ$ and $d = \frac3{\sqrt3} = \sqrt3$.` },
+    { q: String.raw`With a floor and a vertical wall, a ball touches the floor $4$ units from the edge. Find its radius, and say what changes if the wall leans out to $120^\circ$.`,
+      s: String.raw`At $90^\circ$, $r = 4\tan45^\circ = 4$: the center is $4$ from both planes. At $120^\circ$, $r = 4\tan60^\circ = 4\sqrt3$, a larger ball for the same contact point, because the wider wedge lets it sit further from the wall.` }
+  );
+  add("gram-determinant-volume",
+    { q: String.raw`Three edges of length $2$ leave one vertex; two of them meet at $60^\circ$ and the third is perpendicular to both. Find the parallelepiped's volume with the Gram determinant.`,
+      s: String.raw`The dot products are $u \cdot u = v \cdot v = w \cdot w = 4$, $u \cdot v = 2$, and $u \cdot w = v \cdot w = 0$. So $V^2 = \det\begin{pmatrix}4&2&0\\2&4&0\\0&0&4\end{pmatrix} = 4(16 - 4) = 48$ and $V = 4\sqrt3$. Check: the base rhombus has area $4\sin60^\circ = 2\sqrt3$ and height $2$.` },
+    { q: String.raw`What does the Gram determinant say when one edge vector is the sum of the other two? Try $u = (1, 0, 0)$, $v = (0, 1, 0)$, $w = (1, 1, 0)$.`,
+      s: String.raw`The dot products give $\det\begin{pmatrix}1&0&1\\0&1&1\\1&1&2\end{pmatrix} = 1(2 - 1) - 0 + 1(0 - 1) = 0$, so $V = 0$: the three edges lie in one plane, and a zero Gram determinant is exactly the test for dependence.` }
+  );
+  add("brianchon-theorem",
+    { q: String.raw`The trapezoid $(0, 0)$, $(3, 0)$, $\left(\tfrac32, 2\right)$, $(0, 2)$ has incircle center $(1, 1)$, radius $1$. Brianchon on the degenerate hexagon says the two diagonals and the two lines joining opposite touch points concur. Check it.`,
+      s: String.raw`The touch points are $(1, 0)$, $(0, 1)$, $(1, 2)$ and, on $4x + 3y = 12$, the point $(1, 1) + \tfrac15(4, 3) = (1.8, 1.6)$. The joins of opposite touch points are $x = 1$ and $y = 1 + \tfrac x3$, meeting at $\left(1, \tfrac43\right)$. The diagonals $y = \tfrac43x$ and $y = 2 - \tfrac23x$ both pass through $\left(1, \tfrac43\right)$ too.` }
+  );
+  add("desargues-theorem",
+    { q: String.raw`Triangles $A = (1, 0)$, $B = (0, 1)$, $C = (1, 1)$ and $A' = (2, 0)$, $B' = (0, 3)$, $C' = (4, 4)$ are in perspective from the origin. Find the three crossings of corresponding sides and their line.`,
+      s: String.raw`$AB$ is $x + y = 1$ and $A'B'$ is $3x + 2y = 6$, meeting at $(4, -3)$. $BC$ is $y = 1$ and $B'C'$ is $y = 3 + \tfrac x4$, meeting at $(-8, 1)$. $CA$ is $x = 1$ and $C'A'$ is $y = 2x - 4$, meeting at $(1, -2)$. All three lie on $x + 3y = -5$, the axis of perspective.` }
+  );
+  add("coprime-residue-sum",
+    { q: String.raw`Add the integers from $1$ to $29$ that are coprime to $30$.`,
+      s: String.raw`$\varphi(30) = 8$, and the residues pair as $k$ and $30 - k$, each pair summing to $30$, so the total is $\frac{30 \cdot 8}2 = 120$. They are $1, 7, 11, 13, 17, 19, 23, 29$.` }
+  );
+  add("dirichlet-convolution",
+    { q: String.raw`Since $\sigma = \mathrm{id} * \mathbf 1$, Möbius inversion gives $\mu * \sigma = \mathrm{id}$. Check it at $n = 12$.`,
+      s: String.raw`The squarefree divisors of $12$ are $1, 2, 3, 6$, so $(\mu * \sigma)(12) = \sigma(12) - \sigma(6) - \sigma(4) + \sigma(2) = 28 - 12 - 7 + 3 = 12$.` }
+  );
+  add("jacobi-symbol",
+    { q: String.raw`Compute $\left(\frac2{15}\right)$. Is $2$ a square mod $15$?`,
+      s: String.raw`$\left(\frac2{15}\right) = \left(\frac23\right)\left(\frac25\right) = (-1)(-1) = 1$. But the squares mod $15$ are $0, 1, 4, 6, 9, 10$, so $2$ is not one. A Jacobi symbol of $1$ does not make $a$ a residue; only $-1$ settles the question.` }
+  );
+  add("gauss-lemma-qr",
+    { q: String.raw`Use Gauss's Lemma to decide whether $5$ is a square mod $13$.`,
+      s: String.raw`The residues of $5 \cdot 1, \ldots, 5 \cdot 6$ mod $13$ are $5, 10, 2, 7, 12, 4$; those above $6.5$ are $10, 7, 12$, so $\mu = 3$ and $\left(\frac5{13}\right) = -1$. Check: the squares mod $13$ are $1, 3, 4, 9, 10, 12$.` }
+  );
+  add("kummers-theorem",
+    { q: String.raw`Find the exponent of $2$ in $\binom{100}{50}$.`,
+      s: String.raw`$50 = 110010_2$. Adding $50 + 50$ in base $2$ carries once for each $1$ digit, so there are $3$ carries and $2^3 \parallel \binom{100}{50}$.` }
+  );
+  add("chevalley-warning",
+    { q: String.raw`Count the solutions of $x^2 + y^2 + z^2 \equiv 0 \pmod 3$ with $x, y, z \in \{0, 1, 2\}$ and check the count against Chevalley–Warning.`,
+      s: String.raw`Squares mod $3$ are $0$ or $1$, so the sum is $0$ when all three are $0$ ($1$ way) or all three are nonzero ($2^3 = 8$ ways): $9$ solutions. The degree $2$ is less than $3$ variables, and indeed $3 \mid 9$.` }
+  );
+  add("pisano-periods",
+    { q: String.raw`Find the Pisano period mod $3$, then $F_{100} \bmod 3$.`,
+      s: String.raw`Mod $3$ the sequence runs $0, 1, 1, 2, 0, 2, 2, 1$ and then $0, 1$ again, so $\pi(3) = 8$. Since $100 = 12 \cdot 8 + 4$, $F_{100} \equiv F_4 = 3 \equiv 0$.` }
+  );
+  add("closing-polygon-vectors",
+    { q: String.raw`Can the numbers $1, 2, 3, 4, 5, 6$ be the sides of an equiangular hexagon, in some order?`,
+      s: String.raw`Writing the sides as $a, b, c, d, e, f$, closing needs $a - d = c - f = e - b$. Pairing $1, 2, 3$ with $4, 5, 6$ by a difference of $3$ works: $a = 4$, $d = 1$, $c = 5$, $f = 2$, $e = 6$, $b = 3$. So the order $4, 3, 5, 1, 6, 2$ closes up; a check gives $\sum a_k\omega^k = 0$ with $\omega = e^{i\pi/3}$.` }
+  );
+  add("square-crossing-segments",
+    { q: String.raw`In a square of side $8$, a segment from the bottom side to the top side has its ends $6$ apart horizontally. How long is any segment from the left side to the right side perpendicular to it?`,
+      s: String.raw`The first segment is $\sqrt{8^2 + 6^2} = 10$. A $90^\circ$ turn of the square carries one direction to the other, so the perpendicular segment also spans $8$ one way and $6$ the other: its length is $10$ too.` }
+  );
 })();
