@@ -1454,4 +1454,62 @@
     { q: String.raw`Show that $y^2 = 3x^2 + 2$ has no integer solutions.`,
       s: String.raw`Modulo $3$ the right side is $2$, but squares are $0$ or $1$ modulo $3$.` }
   );
+  add("pairing-to-bound",
+    { q: String.raw`Choose numbers from $1$ to $20$ so that no two chosen ones sum to $21$. How many can be chosen at most?`,
+      s: String.raw`The pairs $\{1, 20\}, \{2, 19\}, \ldots, \{10, 11\}$ cover the set, and the subset takes at most one from each, so at most $10$. The set $\{1, \ldots, 10\}$ reaches it.` },
+    { q: String.raw`What is the largest subset of $\{1, 2, \ldots, 50\}$ containing no two consecutive integers?`,
+      s: String.raw`Pair $\{1, 2\}, \{3, 4\}, \ldots, \{49, 50\}$: $25$ pairs, each giving at most one element, so at most $25$, and the odd numbers reach it.` }
+  );
+  add("strategy-stealing",
+    { q: String.raw`Two players take turns placing identical coins flat on a round table, without overlapping; the player who cannot move loses. Who wins?`,
+      s: String.raw`The first player. Put the first coin at the center, then answer every coin by its mirror image through the center. The mirror spot is always free, because the position stays symmetric and the only coin on its own mirror image is the central one. So the first player always has a move.` },
+    { q: String.raw`In Chomp, players alternately bite a rectangular bar of at least two squares: a bite takes a square and every square above and to the right of it, and whoever takes the poisoned bottom-left square loses. Show that the first player has a winning strategy.`,
+      s: String.raw`Suppose the second player could always win. Let the first player bite only the top-right square, and let the second player answer with the winning reply. That reply leaves a position the first player could have reached in one move from the start, since any bite also removes the top-right square. So the first player could have used it, and the second player's strategy cannot always win. The game cannot end in a draw, so the first player wins.` }
+  );
+  add("odd-part-chains",
+    { q: String.raw`Show that any $11$ numbers chosen from $1, 2, \ldots, 20$ include two, one of which divides the other.`,
+      s: String.raw`Write each number as $2^am$ with $m$ odd. The odd parts are among the $10$ numbers $1, 3, \ldots, 19$, so two of the $11$ share an odd part, and of two numbers $2^am$ and $2^bm$ the smaller divides the larger.` },
+    { q: String.raw`Split $\{1, 2, \ldots, 30\}$ into chains by odd part. How many chains are there, and how long is the longest?`,
+      s: String.raw`There is one chain for each odd number up to $29$, so $15$ chains. The longest is the chain of powers of $2$: $1, 2, 4, 8, 16$, of length $5$.` }
+  );
+  add("monovariant",
+    { q: String.raw`A list of integers is rearranged by repeatedly swapping two neighbours that are out of order (the left one larger). Show that this must stop, and describe the final list.`,
+      s: String.raw`Count the pairs of positions $i \lt j$ whose entries are out of order. A swap of out-of-order neighbours fixes that pair and changes no other, so the count drops by exactly $1$. It cannot drop forever, so the process stops, and it stops only when no neighbours are out of order: the list is sorted.` },
+    { q: String.raw`Positive integers are on a board. A move takes two numbers $a \gt b$ and replaces $a$ by $a - b$. Show that the moves stop, and find the final numbers when the board starts with $12$ and $18$.`,
+      s: String.raw`The total is a positive integer that drops by $b \ge 1$ each move, so the moves stop, and they stop when all numbers are equal. The gcd never changes, since $\gcd(a - b, b) = \gcd(a, b)$, so $12, 18$ ends at $6, 6$: $(12, 18) \to (12, 6) \to (6, 6)$.` }
+  );
+  add("probabilistic-method",
+    { q: String.raw`Every two of $n$ people are either friends or strangers. Show that the relations can be chosen so that at most $\tfrac14\binom n3$ trios are all friends or all strangers.`,
+      s: String.raw`Decide each pair at random, friends or strangers with probability $\tfrac12$. A given trio is all one kind with probability $\tfrac28 = \tfrac14$, so the expected number of such triangles is $\tfrac14\binom n3$. Some coloring does no worse than the average.` },
+    { q: String.raw`Show that every graph with $m$ edges has a bipartite subgraph with at least $\tfrac m2$ edges.`,
+      s: String.raw`Put each vertex into one of two parts at random. An edge crosses between the parts with probability $\tfrac12$, so on average $\tfrac m2$ edges cross. Some split has at least that many crossing edges, and those edges form a bipartite subgraph.` }
+  );
+  add("transfer-matrix-method",
+    { q: String.raw`How many strings of $5$ letters from $\{A, B\}$ have no three equal letters in a row?`,
+      s: String.raw`Track the length of the final run: $x_n$ strings end in a run of $1$ and $y_n$ in a run of $2$. Then $x_{n+1} = x_n + y_n$ (switch letters) and $y_{n+1} = x_n$ (repeat once), the matrix $\begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}$. From $(x_1, y_1) = (2, 0)$: $(2, 2)$, $(4, 2)$, $(6, 4)$, $(10, 6)$, so $16$ strings.` }
+  );
+  add("proving-uniqueness",
+    { q: String.raw`Prove that $x^3 + x = 10$ has exactly one real solution.`,
+      s: String.raw`Existence: $x = 2$ works. Uniqueness: $x^3 + x$ is strictly increasing, since both terms are, so it takes the value $10$ at most once.` },
+    { q: String.raw`An operation $*$ on a set has an identity $e$, with $e * a = a * e = a$ for every $a$. Prove that it has only one identity.`,
+      s: String.raw`If $e'$ is another identity, then $e * e'$ equals $e'$ because $e$ is an identity, and equals $e$ because $e'$ is one. So $e = e'$.` }
+  );
+  add("forward-backward-induction",
+    { q: String.raw`Assuming the two-term mean inequality $\tfrac{a + b}2 \ge \sqrt{ab}$, prove the four-term one.`,
+      s: String.raw`Apply it twice: $\tfrac{a + b + c + d}4 = \tfrac12\left(\tfrac{a + b}2 + \tfrac{c + d}2\right) \ge \tfrac12\left(\sqrt{ab} + \sqrt{cd}\right) \ge \sqrt{\sqrt{ab}\sqrt{cd}} = \sqrt[4]{abcd}$. This is the forward step $P(2) \Rightarrow P(4)$.` },
+    { q: String.raw`Deduce the three-term mean inequality from the four-term one.`,
+      s: String.raw`Take the fourth number to be the mean $m = \tfrac{a + b + c}3$. The four-term case gives $\tfrac{a + b + c + m}4 = m \ge \sqrt[4]{abcm}$, so $m^4 \ge abcm$ and $m^3 \ge abc$. This is the backward step $P(4) \Rightarrow P(3)$.` }
+  );
+  add("strengthening-the-hypothesis",
+    { q: String.raw`Prove that $1 + \tfrac1{\sqrt2} + \cdots + \tfrac1{\sqrt n} \lt 2\sqrt n$ by proving something stronger.`,
+      s: String.raw`Prove $\sum_{k \le n}\tfrac1{\sqrt k} \le 2\sqrt n - 1$. For $n = 1$ both sides are $1$. The step needs $\tfrac1{\sqrt{n + 1}} \le 2\left(\sqrt{n + 1} - \sqrt n\right) = \tfrac2{\sqrt{n + 1} + \sqrt n}$, which holds since $\sqrt n \le \sqrt{n + 1}$. The plain bound $2\sqrt n$ would not carry through the step on its own.` },
+    { q: String.raw`Prove that $\tfrac{1\cdot3\cdot5\cdots(2n - 1)}{2\cdot4\cdot6\cdots2n} \le \tfrac1{\sqrt{2n}}$ by proving the stronger bound $\tfrac1{\sqrt{3n + 1}}$.`,
+      s: String.raw`At $n = 1$ the product is $\tfrac12 = \tfrac1{\sqrt4}$. Multiplying by the next factor $\tfrac{2n + 1}{2n + 2}$, the step needs $\tfrac{(2n + 1)^2}{(2n + 2)^2} \le \tfrac{3n + 1}{3n + 4}$, that is $12n^3 + 28n^2 + 19n + 4 \le 12n^3 + 28n^2 + 20n + 4$, true. Then $\tfrac1{\sqrt{3n + 1}} \le \tfrac1{\sqrt{2n}}$.` }
+  );
+  add("discrete-intermediate-value",
+    { q: String.raw`A walk on the integers moves $\pm1$ at each step and goes from $0$ to $10$. Must it visit $7$?`,
+      s: String.raw`Yes. Its position changes by $1$ at a time, so it cannot jump over any integer between where it starts and where it ends.` },
+    { q: String.raw`A basketball player's season free-throw percentage starts below $80\%$ and ends above it. Prove that it was exactly $80\%$ at some moment.`,
+      s: String.raw`Look at the first shot that takes the percentage from below $80\%$ to at least $80\%$; it must be a make. With $m$ makes in $n$ attempts before it, the integers satisfy $5m \lt 4n$, so $5m \le 4n - 1$, and $5(m + 1) \ge 4(n + 1)$, so $5m \ge 4n - 1$. Hence $5m = 4n - 1$, and after the shot $5(m + 1) = 4(n + 1)$: the percentage is exactly $80\%$.` }
+  );
 })();
