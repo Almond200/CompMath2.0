@@ -4639,4 +4639,21 @@
       cap(430, 270, "Right angles at B and C, triangle ABC ∼ BCD, and E inside with ABC ∼ CEB (blue); the area of AED (gold) is 17 times that of CEB." + MM(ok))
     ]);
   })();
+
+  // 2016 AMC 12A #17: the square ABCD and the centers E, F, G, H of the outward equilateral triangles.
+  PROB["2016-amc-12a-17"] = (() => {
+    const A = [-0.5, -0.5], B = [0.5, -0.5], C = [0.5, 0.5], D = [-0.5, 0.5], h = Math.sqrt(3) / 2;
+    const apex = (P, Qq) => { const m = mid(P, Qq); return add(m, mul(norm(m), h)); };
+    const cen = (P, Qq) => { const T = apex(P, Qq); return [(P[0] + Qq[0] + T[0]) / 3, (P[1] + Qq[1] + T[1]) / 3]; };
+    const sides = [[A, B], [B, C], [C, D], [D, A]], Ts = sides.map(([P, Qq]) => apex(P, Qq)), Cs = sides.map(([P, Qq]) => cen(P, Qq));
+    const ok = Math.abs(dist(Cs[0], Cs[1]) ** 2 - (2 + Math.sqrt(3)) / 3) < 1e-12;
+    const Q = fitQ(Ts, 22, 430, 270);
+    return wrap(430, 270, [
+      ...sides.map(([P, Qq], i) => poly([P, Qq, Ts[i]].map(Q), FNT, 1.3)), poly([A, B, C, D].map(Q), DIM, 2), poly(Cs.map(Q), ACC, 1.8, ACCS),
+      ...Cs.map(P => dot(Q(P), ACC, 3)),
+      txt(add(Q(A), [-10, 12]), "A"), txt(add(Q(B), [10, 12]), "B"), txt(add(Q(C), [10, -4]), "C"), txt(add(Q(D), [-10, -4]), "D"),
+      ...["E", "F", "G", "H"].map((n, i) => txt(add(Q(Cs[i]), [[0, 16], [14, 4], [0, -8], [-14, 4]][i]), n, ACC, 12.5)),
+      cap(430, 270, "The square ABCD with equilateral triangles on its sides, outside; E, F, G, H are their centers." + MM(ok))
+    ]);
+  })();
 })();
