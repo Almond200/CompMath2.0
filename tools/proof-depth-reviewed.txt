@@ -112,3 +112,13 @@ reciprocal-power-sums     # first few and the cosine form derived
 miquels-theorem           # spiral-similarity Key form restated correctly and proved
 pairwise-sum-product      # companion identity proved
 turans-theorem            # Mantel and the induction proof
+triangle-sin2-sum-ratio   # product form and the bound by Euler's inequality
+gcd-power-minus-one       # divisibility, repunits, a^m - b^m, observations
+max-rectangle-in-triangle
+strengthening-the-hypothesis
+counting-functions
+terminating-decimals      # preperiod and purely periodic decimals proved
+generalized-binomial-series # convergence and identity by the differential equation
+inscribed-square          # right-triangle forms derived
+clock-angle
+schurs-inequality         # equality, the expanded and s, q, r forms

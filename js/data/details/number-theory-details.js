@@ -128,7 +128,13 @@ MATHCOUNTS and AMC use the rules for missing digits; AIME problems use them as e
 $a \ge 2$ and $m, n \ge 1$ are integers. The same holds for $a^m - b^m$ and $a^n - b^n$ with $\gcd(a, b) = 1$: their gcd is $a^{\gcd(m, n)} - b^{\gcd(m, n)}$.
 
 ## Why it works
-If $m = qn + r$, then $a^m - 1 = a^r(a^{qn} - 1) + (a^r - 1)$, and $a^{qn} - 1$ is divisible by $a^n - 1$, since $x - 1$ divides $x^q - 1$ with $x = a^n$. So $a^m - 1 \equiv a^r - 1 \pmod{a^n - 1}$, and $$\gcd(a^m - 1, a^n - 1) = \gcd(a^n - 1, a^r - 1).$$ The exponents $(m, n) \to (n, r)$ follow exactly the Euclidean algorithm, which ends at $\gcd(m, n)$, and the numbers end at $a^{\gcd(m, n)} - 1$.
+If $m = qn + r$, then $a^m - 1 = a^r(a^{qn} - 1) + (a^r - 1)$, and $a^{qn} - 1$ is divisible by $a^n - 1$, since $x - 1$ divides $x^q - 1$ with $x = a^n$. So $a^m - 1 \equiv a^r - 1 \pmod{a^n - 1}$, and
+$$\gcd(a^m - 1, a^n - 1) = \gcd(a^n - 1, a^r - 1).$$
+The exponents $(m, n) \to (n, r)$ follow exactly the Euclidean algorithm, which ends at $\gcd(m, n)$, and the numbers end at $a^{\gcd(m, n)} - 1$. The same steps with $a^r(a^{qn} - b^{qn}) + b^{qn}(a^r - b^r)$ give the version for $a^m - b^m$.
+
+The divisibility form follows: $a^m - 1 \mid a^n - 1$ exactly when the gcd is $a^m - 1$, that is $\gcd(m, n) = m$. For repunits, $9R_k = 10^k - 1$, so $9\gcd(R_m, R_n) = 10^{\gcd(m, n)} - 1 = 9R_{\gcd(m, n)}$.
+
+For the observations: if $n = de$ with $1 \lt d \lt n$, then $2^d - 1$ is a proper factor of $2^n - 1$. And $2^m + 1$ and $2^m - 1$ are odd and differ by $2$, so their gcd is $1$.
 
 ## Useful observations
 - The gcd collapses to the gcd of the exponents, so enormous numbers reduce to a small one: $\gcd(2^{100} - 1, 2^{36} - 1) = 2^{\gcd(100, 36)} - 1 = 15$.
@@ -1321,6 +1327,10 @@ The fraction must be in lowest terms: $\frac36$ terminates although $6$ has the 
 
 ## Why it works
 A decimal with $k$ places is an integer over $10^k$. So $\frac mn$ terminates with $k$ places exactly when $10^k \cdot \frac mn$ is an integer, that is, when $n \mid 10^km$, which for $\gcd(m, n) = 1$ means $n \mid 10^k = 2^k5^k$. That happens for some $k$ exactly when $n = 2^a5^b$, and the least $k$ is $\max(a, b)$.
+
+Step 1, purely repeating decimals. If $\gcd(d, 10) = 1$, then $10^p \equiv 1 \pmod d$ for $p = \operatorname{ord}_d(10)$, so $\frac cd = \frac{N}{10^p - 1}$ with $N$ an integer, which repeats with period $p$ from the start. Conversely, a decimal repeating from the start is an integer over $10^p - 1$, and $10^p - 1$ is coprime to $10$.
+
+Step 2, the delay. Write $n = 2^a5^b n'$ with $n' \gt 1$ coprime to $10$. Shifting $k$ places gives $10^k \cdot \frac mn$, whose reduced denominator is $2^{a - \min(a, k)}5^{b - \min(b, k)}n'$. By Step 1 its fractional part repeats from the start exactly when that denominator is coprime to $10$, that is $k \ge \max(a, b)$. In base $b$ the same argument runs with the primes of $b$.
 
 ## Useful observations
 - Only the reduced denominator matters, so a factor of the numerator can cancel an unwanted prime: $\frac{k}{120}$ terminates exactly when $3 \mid k$.

@@ -2777,7 +2777,11 @@ A named inequality that is quoted directly in olympiad solutions and appears on 
 The variables are nonnegative. The $t = 2$ case gives the degree-$4$ version.
 
 ## Why it works
-By symmetry assume $x \ge y \ge z$. Group the three terms as $(x - y)\big(x^t(x - z) - y^t(y - z)\big) + z^t(x - z)(y - z)$: every factor in both products is nonnegative under the ordering, so the whole sum is. This ordering-and-grouping argument is the entire proof, with no expansion needed.
+By symmetry assume $x \ge y \ge z$. Group the three terms as
+$$(x - y)\big(x^t(x - z) - y^t(y - z)\big) + z^t(x - z)(y - z).$$
+Here $x^t \ge y^t$ and $x - z \ge y - z \ge 0$, so the bracket is nonnegative, and every other factor is nonnegative under the ordering, so the whole sum is. This ordering-and-grouping argument is the entire proof, with no expansion needed. Equality needs both products to vanish: $x = y = z$, or $x = y$ with $z = 0$.
+
+For $t = 1$, expanding $\sum x(x - y)(x - z)$ gives $\sum x^3 - \sum_{\text{sym}}x^2y + 3xyz$, the second Key form. In $s$, $q$, $r$, $\sum x^3 = s^3 - 3sq + 3r$ and $\sum_{\text{sym}}x^2y = sq - 3r$, so the inequality reads $s^3 - 3sq + 6r \ge sq - 3r$, which is $s^3 + 9r \ge 4sq$.
 
 ## Useful observations
 - The $t = 1$ expansion is used when a symmetric degree-$3$ inequality has the "wrong direction" for AM-GM: the $+3xyz$ on the small side is Schur's signature, and no bunching argument produces it, since [[muirheads-inequality|Muirhead's Inequality]] can never yield it.
@@ -3179,9 +3183,13 @@ Olympiad inequalities, especially symmetric ones whose extremum is at a boundary
 The numerical series converges for $\lvert x\rvert \lt 1$. For formal coefficient extraction in a generating function, convergence never matters.
 
 ## Why it works
-Taylor-expanding $(1 + x)^\alpha$ gives the $n$th coefficient $\frac{\alpha(\alpha - 1)\cdots(\alpha - n + 1)}{n!} = \binom\alpha n$.
+Let $f(x) = \sum_n \binom\alpha n x^n$. The ratio of consecutive coefficients is $\frac{\alpha - n}{n + 1}$, which tends to $-1$, so the series converges for $\lvert x\rvert \lt 1$. Comparing coefficients, with $(n + 1)\binom\alpha{n+1} = (\alpha - n)\binom\alpha n$,
+$$(1 + x)f'(x) = \alpha f(x).$$
+Then $\frac{f(x)}{(1 + x)^\alpha}$ has derivative $0$ and equals $1$ at $x = 0$, so $f(x) = (1 + x)^\alpha$.
 
-For $\alpha = -k$, $\binom{-k}{n} = (-1)^n\binom{n + k - 1}{n}$, and those signs cancel the $(-x)^n$ inside $\frac{1}{(1 - x)^k}$, leaving the positive coefficients $\binom{n + k - 1}{k - 1}$, the stars-and-bars count of $n$ as an ordered sum of $k$ nonnegative parts.
+For $\alpha = -k$, $\binom{-k}{n} = \frac{(-k)(-k - 1)\cdots(-k - n + 1)}{n!} = (-1)^n\binom{n + k - 1}{n}$, and those signs cancel the $(-x)^n$ inside $\frac{1}{(1 - x)^k}$, leaving the positive coefficients $\binom{n + k - 1}{k - 1}$, the stars-and-bars count of $n$ as an ordered sum of $k$ nonnegative parts. With $k = 1, 2$ these are $1$ and $n + 1$.
+
+For $\alpha = \frac12$: $\binom{1/2}2 = \frac{\frac12 \cdot \left(-\frac12\right)}{2} = -\frac18$ and $\binom{1/2}3 = \frac{\frac12 \cdot \left(-\frac12\right) \cdot \left(-\frac32\right)}{6} = \frac1{16}$.
 
 ## Useful observations
 - This is the dictionary that turns generating functions into numbers. Unlimited repetition of $k$ item types is modeled by $\frac{1}{(1 - x)^k}$ and the $x^n$ coefficient is read as $\binom{n + k - 1}{k - 1}$.

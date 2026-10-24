@@ -481,6 +481,8 @@ Time is read as $H$ hours $M$ minutes on a $12$-hour clock, with $H$ from $0$ to
 ## Why it works
 The minute hand moves $360^\circ$ per hour, which is $6^\circ$ per minute, and the hour hand moves $30^\circ$ per hour, which is $0.5^\circ$ per minute. At $H{:}M$ the hour hand sits at $30H + 0.5M$ degrees from $12$ and the minute hand at $6M$ degrees, and subtracting gives $|30H - 5.5M|$.
 
+The gap between the hands changes at $6 - 0.5 = 5.5^\circ$ per minute, so it grows by a full $360^\circ$ every $\frac{360}{5.5} = \frac{720}{11}$ minutes. That is the time between overlaps, and a day of $1440$ minutes holds $1440 \div \frac{720}{11} = 22$ of them.
+
 ## Useful observations
 - The hands are together when $30H - 5.5M = 0$, that is, at $M = \frac{60H}{11}$ minutes past hour $H$; overlaps are $\frac{720}{11}$ minutes apart, $22$ times in a day.
 - The hands are opposite when $30H - 5.5M = \pm 180$, and perpendicular when it is $\pm 90$ or $\pm 270$; each is a linear equation in $M$.
@@ -2650,6 +2652,9 @@ The square has one side on a side of the triangle and its two other corners on t
 
 ## Why it works
 The triangle above the square is similar to the original, since its base is parallel to the original base, with height $h - x$ and base scaled by the same factor: $\frac{x}{a} = \frac{h - x}{h}$. Solving for $x$ gives $x = \frac{ah}{a + h}$, which is symmetric in $a$ and $h$.
+
+The right-triangle forms are this formula with the right base and height. In the right angle, the base is the leg $a$ and the height is the other leg $b$, so $x = \frac{ab}{a + b}$. On the hypotenuse, the base is $c$ and the height is $\frac{ab}c$, so
+$$x = \frac{c \cdot \frac{ab}c}{c + \frac{ab}c} = \frac{abc}{c^2 + ab}.$$
 
 ## Useful observations
 - The square's base can sit on any side: that side's length and its altitude are used. The side follows from [[similar-figures-ratios|similar figure ratios]], since the cut-off top triangle is similar to the whole.
@@ -5804,7 +5809,9 @@ Object.assign(window.MATH_DETAILS, {
 One side of the rectangle lies on a side of the triangle chosen as the base, and the other two corners lie on the other two sides. The ratio one half is the same for every choice of base.
 
 ## Why it works
-Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, so the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$.
+Slide a rectangle up from the base: at a fraction $t$ of the way to the apex the triangle's width has shrunk to $(1 - t)b$, so the rectangle's area is $(th)\,(1 - t)b = bh\,t(1 - t)$. That is largest at $t = \frac12$, giving $\frac{bh}{4} = \frac12[\triangle]$, because $t(1 - t) = \frac14 - \left(t - \frac12\right)^2$. At $t = \frac12$ the width is $\frac b2$ and the top edge is the midline.
+
+In the right-angle version, the free corner $(x, y)$ lies on the hypotenuse $\frac xa + \frac yb = 1$, and AM-GM gives $\frac{xy}{ab} = \frac xa \cdot \frac yb \le \frac14$, so $xy \le \frac{ab}4$, half of $\frac{ab}2$.
 
 ## Useful observations
 - The same $t(1 - t)$ maximization handles a rectangle inscribed under any straight slanted boundary.
@@ -5828,11 +5835,13 @@ A recurring AMC and early AIME optimization one-liner; knowing the maximum is ex
 $A$, $B$, $C$ are the angles of a triangle, with inradius $r$, circumradius $R$, and semiperimeter $s$.
 
 ## Why it works
-For the numerator, sum-to-product gives $\sin 2A + \sin 2B = 2\sin(A + B)\cos(A - B) = 2\sin C\cos(A - B)$, and $\sin 2C = 2\sin C\cos C = -2\sin C\cos(A + B)$. Adding, $$2\sin C\bigl[\cos(A - B) - \cos(A + B)\bigr] = 4\sin A\sin B\sin C.$$ With $\sin A = \frac{a}{2R}$ this is $\frac{abc}{2R^3}$, and $abc = 4R[ABC]$ turns it into $\frac{2[ABC]}{R^2}$.
+For the numerator, sum-to-product gives $\sin 2A + \sin 2B = 2\sin(A + B)\cos(A - B) = 2\sin C\cos(A - B)$, and $\sin 2C = 2\sin C\cos C = -2\sin C\cos(A + B)$. Adding,
+$$2\sin C\bigl[\cos(A - B) - \cos(A + B)\bigr] = 4\sin A\sin B\sin C.$$
+With $\sin A = \frac{a}{2R}$ this is $\frac{abc}{2R^3}$, and $abc = 4R[ABC]$ turns it into $\frac{2[ABC]}{R^2}$.
 
-For the denominator, $\sin A + \sin B + \sin C = \frac{a + b + c}{2R} = \frac sR$.
+For the denominator, $\sin A + \sin B + \sin C = \frac{a + b + c}{2R} = \frac sR$. In product form, $\sin A + \sin B = 2\cos\frac C2\cos\frac{A - B}2$ and $\sin C = 2\cos\frac C2\cos\frac{A + B}2$, and adding the two cosines gives $4\cos\frac A2\cos\frac B2\cos\frac C2$.
 
-The quotient is therefore $\frac{2[ABC]/R^2}{s/R} = \frac{2[ABC]}{Rs}$, and $[ABC] = rs$ makes it $\frac{2r}{R}$.
+The quotient is therefore $\frac{2[ABC]/R^2}{s/R} = \frac{2[ABC]}{Rs}$, and $[ABC] = rs$ makes it $\frac{2r}{R}$. Euler's Inequality $R \ge 2r$, which follows from [[euler-distance-theorem|Euler's Distance Formula]] $OI^2 = R(R - 2r)$, bounds it by $1$, with equality only when $O = I$, the equilateral case.
 
 ## Useful observations
 - Because $\frac rR \le \frac12$, the ratio is at most $1$, with equality only for the equilateral triangle.
