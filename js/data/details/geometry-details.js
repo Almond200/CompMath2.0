@@ -3321,7 +3321,13 @@ AIME problems about a circle tangent to one side and the extensions of the other
 $D$ is a point of the side $BC$ (or its extension, with the usual care about signs), and the angles are the two parts into which $AD$ divides angle $A$.
 
 ## Why it works
-Triangles $ABD$ and $ACD$ share the altitude from $A$ onto line $BC$, and also the side $AD$, so $$\frac{BD}{DC} = \frac{[ABD]}{[ACD]} = \frac{\tfrac12\,AB \cdot AD \sin\angle BAD}{\tfrac12\,AC \cdot AD \sin\angle DAC} = \frac{AB \sin\angle BAD}{AC \sin\angle DAC}.$$
+Triangles $ABD$ and $ACD$ share the altitude from $A$ onto line $BC$, and also the side $AD$, so
+$$\frac{BD}{DC} = \frac{[ABD]}{[ACD]} = \frac{\tfrac12\,AB \cdot AD \sin\angle BAD}{\tfrac12\,AC \cdot AD \sin\angle DAC} = \frac{AB \sin\angle BAD}{AC \sin\angle DAC}.$$
+
+The special cevians follow by putting in their angles. For the bisector the two angles are equal. For the median $BD = DC$, so the sine ratio must be $\frac{AC}{AB}$.
+
+For the altitude, $\angle BAD = 90^\circ - B$ and $\angle DAC = 90^\circ - C$, so the sine ratio is $\frac{\cos B}{\cos C}$. The symmedian is the median reflected in the bisector, so its two angles are the median's two angles swapped, and its sine ratio is $\frac{AB}{AC}$; then
+$$\frac{BD}{DC} = \frac{AB}{AC} \cdot \frac{AB}{AC} = \left(\frac{AB}{AC}\right)^2.$$
 
 ## Useful observations
 - It is the all-purpose converter between side data and angle data for a cevian.
@@ -4055,7 +4061,11 @@ Object.assign(window.MATH_DETAILS, {
 The ratio $m : n$ is read as $AP : PB$, so the larger coefficient goes on the endpoint the point is closer to. For external division $m \ne n$.
 
 ## Why it works
-The point at fraction $\frac{m}{m + n}$ of the way from $A$ to $B$ is $A + \frac{m}{m + n}(B - A)$, which rearranges to the weighted average $\frac{nA + mB}{m + n}$, with more weight on the endpoint the point is closer to. The midpoint is the balanced case $m = n$.
+The point at fraction $\frac{m}{m + n}$ of the way from $A$ to $B$ is
+$$A + \frac{m}{m + n}(B - A) = \frac{nA + mB}{m + n},$$
+a weighted average with more weight on the endpoint the point is closer to. The midpoint is the balanced case $m = n$.
+
+For external division, $P$ lies on line $AB$ beyond the segment with $AP : PB = m : n$, so $P = A + \frac{m}{m - n}(B - A)$, which is $\frac{mB - nA}{m - n}$. For the centroid, the medians meet $\frac23$ of the way from a vertex to the opposite midpoint ([[centroid-division|the centroid divides each median two to one]]), so with $M = \frac{B + C}2$ it is $\frac{A + 2M}3 = \frac{A + B + C}3$.
 
 ## Useful observations
 - The ratio must be read carefully: $AP : PB = m : n$ puts the coefficient $m$ on the far point $B$.
@@ -4080,7 +4090,11 @@ The workhorse for coordinate solutions to ratio problems. When a problem gives a
 The angle formula needs nonzero vectors. The sign of the dot product is the sign of $\cos\theta$: positive for an acute angle, zero for a right angle, and negative for an obtuse angle.
 
 ## Why it works
-Expanding $\lvert\vec u - \vec v\rvert^2 = \lvert\vec u\rvert^2 + \lvert\vec v\rvert^2 - 2\,\vec u \cdot \vec v$ and comparing with the Law of Cosines forces $\vec u \cdot \vec v = \lvert\vec u\rvert\lvert\vec v\rvert\cos\theta$. So the sign of the dot product is the sign of $\cos\theta$: positive means acute, zero means perpendicular, negative means obtuse.
+Expanding $\lvert\vec u - \vec v\rvert^2 = \lvert\vec u\rvert^2 + \lvert\vec v\rvert^2 - 2\,\vec u \cdot \vec v$ and comparing with the Law of Cosines, $\lvert\vec u - \vec v\rvert^2 = \lvert\vec u\rvert^2 + \lvert\vec v\rvert^2 - 2\lvert\vec u\rvert\lvert\vec v\rvert\cos\theta$, forces
+$$\vec u \cdot \vec v = \lvert\vec u\rvert\lvert\vec v\rvert\cos\theta.$$
+So the sign of the dot product is the sign of $\cos\theta$: positive means acute, zero means perpendicular, negative means obtuse.
+
+The other forms are this one read differently. Dividing by $\lvert\vec u\rvert\lvert\vec v\rvert$ gives the angle. The product is $0$ exactly when $\cos\theta = 0$, a right angle. The scalar projection of $\vec u$ onto $\vec v$ is $\lvert\vec u\rvert\cos\theta$, which is $\frac{\vec u \cdot \vec v}{\lvert\vec v\rvert}$. With $\vec v = \vec u$, $\theta = 0$ and $\vec u \cdot \vec u = \lvert\vec u\rvert^2$, which is also $u_1^2 + u_2^2$ by Pythagoras.
 
 ## Useful observations
 - Three standard reads: the angle between two vectors, a perpendicularity test, and the length of the projection of $\vec u$ onto $\vec v$. Coordinates make it mechanical.

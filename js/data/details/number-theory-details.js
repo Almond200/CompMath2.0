@@ -1503,6 +1503,10 @@ $n$ is a positive integer. Near powers of ten the logarithm must be known accura
 ## Why it works
 $n$ has $d$ digits exactly when $10^{d-1} \le n \lt 10^d$; taking logarithms, $d - 1 \le \log_{10} n \lt d$, so $d - 1 = \lfloor \log_{10} n \rfloor$. If $\log_{10} n = k + f$ with $0 \le f \lt 1$, then $n = 10^f \cdot 10^k$, and $10^f$, between $1$ and $10$, is $n$ with its decimal point moved, which gives the leading digits.
 
+The observations come from adding logarithms. For any reals, $\lfloor \alpha + \beta \rfloor$ is $\lfloor \alpha \rfloor + \lfloor \beta \rfloor$ or one more, so the digit count of $xy$ is the sum of the two counts or one fewer. For $2^k$ and $5^k$ the logarithms add to the integer $k$ and neither is an integer, so their floors add to $k - 1$, and the digit counts add to $k + 1$.
+
+Finally, $2^k$ starts with the digit $1$ exactly when $1 \le 10^f \lt 2$, that is $f \lt \log_{10} 2$, where $f$ is the fractional part of $k\log_{10} 2$.
+
 ## Useful observations
 - A product has either the sum of its factors' digit counts or one fewer, since logarithms add.
 - $2^k$ and $5^k$ together have $k + 1$ digits, because $2^k \cdot 5^k = 10^k$ and neither is a power of ten.

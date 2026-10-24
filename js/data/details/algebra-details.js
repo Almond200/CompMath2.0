@@ -518,7 +518,12 @@ Finding the largest prime factor of a number such as a power minus one is done b
 The identity holds for all real or complex $a$ and $b$. For integer factorization arguments, $a$ and $b$ are positive integers, and the smaller factor $(a - b)^2 + b^2$ exceeds $1$ unless $a = b = 1$.
 
 ## Why it works
-Adding and subtracting $4a^2b^2$ completes a square: $$a^4 + 4b^4 = a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2 = (a^2 + 2b^2)^2 - (2ab)^2.$$ The result is a difference of two squares, which factors as $(a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)$. Rewriting $a^2 - 2ab + 2b^2$ as $(a - b)^2 + b^2$ shows that each factor is a sum of two squares.
+Adding and subtracting $4a^2b^2$ completes a square:
+$$a^4 + 4b^4 = a^4 + 4a^2b^2 + 4b^4 - 4a^2b^2 = (a^2 + 2b^2)^2 - (2ab)^2.$$
+The result is a difference of two squares, which factors as $(a^2 + 2b^2 - 2ab)(a^2 + 2b^2 + 2ab)$. Rewriting $a^2 - 2ab + 2b^2$ as $(a - b)^2 + b^2$ shows that each factor is a sum of two squares.
+
+The observations are direct checks. With $b = 1$ the smaller factor is $(n - 1)^2 + 1$, which is more than $1$ once $n \ge 2$, so $n^4 + 4$ is then composite. For odd $k$, $4^k = 4 \cdot 4^{k - 1} = 4\left(2^{(k - 1)/2}\right)^4$. And
+$$g(x + 2b) = (x + 2b)^2 - 2b(x + 2b) + 2b^2 = x^2 + 2bx + 2b^2 = f(x).$$
 
 ## Useful observations
 - With $b = 1$ it reads $n^4 + 4 = (n^2 - 2n + 2)(n^2 + 2n + 2)$, so $n^4 + 4$ is prime only for $n = 1$, where it equals $5$.

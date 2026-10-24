@@ -6,3 +6,16 @@ direct-proof              # chaining implications
 completing-the-square     # expansion, the minimum, and the integer form are all argued
 squares-mod-small         # rewritten 2026-10-24
 floor-multiples           # rewritten 2026-10-24
+pigeonhole-argument       # the counting argument is complete
+proving-both-directions
+disproof-by-counterexample
+strong-induction          # reduces to ordinary induction on Q(n)
+proof-by-construction
+reduce-divisibility-constant
+group-equal-floors
+invariants-coloring
+ratio-lemma               # altitude and symmedian cases added
+sophie-germain            # observations proved
+digit-count               # observations proved
+vector-dot-product        # each Key form derived
+section-formula           # external division and centroid derived
