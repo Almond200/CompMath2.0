@@ -2854,9 +2854,11 @@ The rigorous stamp for "bunching" steps in olympiad solutions: a chain of majori
 The $x_i$ are nonnegative reals. Newton's inequality holds for all real $x_i$.
 
 ## Why it works
-The engine is Newton's inequality. It comes from the fact that $\prod_i(t + x_i)$ has only real roots, and so do its derivatives (Rolle), and a real-rooted quadratic slice forces $p_k^2 \ge p_{k-1}p_{k+1}$.
+Step 1, Newton. Let $P(t) = \prod_i(t + x_i) = \sum_k\binom nk p_kt^{n-k}$, which has only real roots. By Rolle's theorem every derivative of a real-rooted polynomial is real-rooted, and so is the reversal $t^mQ\left(\frac1t\right)$ of one. Differentiate $P$ $n - k - 1$ times, reverse, and differentiate $k - 1$ more times: the result is a quadratic, and a direct computation shows it is
+$$\frac{n!}2\left(p_{k+1}t^2 + 2p_kt + p_{k-1}\right).$$
+A real-rooted quadratic has a nonnegative discriminant, so $p_k^2 \ge p_{k-1}p_{k+1}$.
 
-Chaining the log-concavity and taking $k$th roots gives Maclaurin's descending chain.
+Step 2, Maclaurin, by induction on $k$, with $p_0 = 1$. Newton at $k = 1$ is $p_1^2 \ge p_2$. If $p_{k-1}^{1/(k-1)} \ge p_k^{1/k}$, then $p_{k-1} \ge p_k^{(k-1)/k}$, and Newton gives $p_k^2 \ge p_k^{(k-1)/k}p_{k+1}$, that is $p_k^{(k+1)/k} \ge p_{k+1}$, which is $p_k^{1/k} \ge p_{k+1}^{1/(k+1)}$. The two ends are $p_1$, the arithmetic mean, and $p_n^{1/n}$, the geometric mean.
 
 ## Useful observations
 - The middle links give sharper bounds than AM–GM when several elementary symmetric quantities appear together.

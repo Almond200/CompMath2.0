@@ -1233,7 +1233,7 @@ An AIME problem is sometimes a nine-point circle fact in disguise: a circle thro
 A distance counts as positive when the circumcenter is on the same side of the line as the opposite vertex, and as negative when it is beyond, which happens for the side opposite an obtuse angle. In a right triangle that distance is $0$.
 
 ## Why it works
-The side $a$ subtends the central angle $2A$ at $O$, so the distance from $O$ to $a$ is the apothem $R\cos A$, which is negative exactly when $A$ is obtuse. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$, from the [[triangle-angle-identities|identities for the angles of a triangle]], then gives $d_1 + d_2 + d_3 = R + r$.
+The side $a$ subtends the central angle $2A$ at $O$, so in the isosceles triangle $OBC$ the distance from $O$ to $BC$ is $R\cos A$, which is negative exactly when $A$ is obtuse and $O$ falls beyond $BC$. The identity $\cos A + \cos B + \cos C = 1 + \frac rR$, from the [[triangle-angle-identities|identities for the angles of a triangle]], then gives $d_1 + d_2 + d_3 = R + r$. The bound in the observations is $0 \lt \frac rR \le \frac12$, the second part being Euler's Inequality $R \ge 2r$.
 
 ## Useful observations
 - It is the geometric packaging of the cosine identity, and the identity bounds the cosine sum in $(1, \frac32]$, with $\frac32$ only for the equilateral triangle.
@@ -3794,7 +3794,11 @@ The finishing move for cyclic quadrilateral problems that give four sides and as
 The squares are built outward; the quadrilateral may be non-convex and may even be degenerate.
 
 ## Why it works
-In complex numbers the center of the square erected outward on the segment from $p$ to $q$ is $\frac{p + q}{2} + \frac i2(q - p)$. Writing the two center-difference vectors and simplifying, one comes out exactly $i$ times the other, which is perpendicular and equal in length in one stroke.
+In complex numbers the center of the square erected outward on the segment from $p$ to $q$ is $\frac{p + q}{2} + \frac i2(q - p)$: the midpoint, pushed half a side length along the side turned by $90^\circ$. With the vertices $z_1, z_2, z_3, z_4$ in clockwise order, the centers are $c_k = \frac{z_k + z_{k+1}}2 + \frac i2(z_{k+1} - z_k)$.
+
+Expanding both differences,
+$$2(c_3 - c_1) = (-1 + i)z_1 + (-1 - i)z_2 + (1 - i)z_3 + (1 + i)z_4 = 2i(c_4 - c_2).$$
+So $c_3 - c_1 = i(c_4 - c_2)$: one join is the other turned by $90^\circ$, perpendicular and equal in length in one stroke.
 
 ## Useful observations
 - The theorem is the quadrilateral cousin of [[napoleons-theorem|Napoleon's Theorem]], which builds equilateral triangles on the sides of a triangle.
@@ -4797,7 +4801,13 @@ Olympiad triangle geometry and the occasional AIME contact-point setup. Companio
 The three diagonals of a complete quadrilateral join the three pairs of opposite vertices among its six intersection points. Newton's line needs a tangential quadrilateral.
 
 ## Why it works
-The collinearity of the three diagonal midpoints is an affine fact, provable by vectors. For a tangential quadrilateral, equal tangent lengths balance the areas on the two sides of the line through the diagonal midpoints, which places the incenter on that line.
+Let the quadrilateral be $ABCD$, with $E = AB \cap CD$ and $F = AD \cap BC$, and let $L$, $M$, $N$ be the midpoints of $AC$, $BD$, $EF$. With signed areas, put
+$$g(P) = [PAB] - [PBC] + [PCD] - [PDA].$$
+Each signed area is an affine function of $P$, so $g$ is too, and its zero set is a line unless $g$ is constant.
+
+At the midpoint $L$ of $AC$, each area is the average of its values at $A$ and $C$, which gives $g(L) = \frac12\left([ABC] - [ABC] + [ACD] - [ACD]\right) = 0$, and in the same way $g(M) = 0$. From any point $P$, $[PAB] + [PBC] + [PCD] + [PDA] = [ABCD]$. At $E$ the terms $[EAB]$ and $[ECD]$ vanish, so $g(E) = -[ABCD]$; at $F$ the terms $[FBC]$ and $[FDA]$ vanish, so $g(F) = [ABCD]$. Hence $g$ is not constant, $g(N) = 0$, and $L$, $M$, $N$ lie on the line $g = 0$.
+
+For a tangential quadrilateral the incenter $I$ is $r$ from every side, so $g(I) = \frac r2(AB - BC + CD - DA)$, which is $0$ by the equal tangent sums $AB + CD = BC + DA$. So $I$ is on the same line.
 
 ## Useful observations
 - Any collinearity of diagonal midpoints in a quadrilateral figure is a candidate for this theorem.

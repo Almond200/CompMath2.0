@@ -172,3 +172,13 @@ hellys-theorem            # Radon and the induction
 cyclic-quad-radius
 brianchon-theorem         # polarity carried out
 karamata-inequality       # slopes and Abel summation
+carnots-theorem
+maclaurin-inequality      # Newton via Rolle (quadratic checked by computer), Maclaurin by induction
+lgv-lemma                 # the involution made precise
+lattice-points-circle     # the count quoted (Hardy and Wright, Thm 278); the zero criterion derived
+van-aubel                 # the complex computation written out
+newtons-line              # signed-area proof of both statements
+fermat-numbers
+coprime-residue-sum
+exponential-generating-functions
+thues-lemma

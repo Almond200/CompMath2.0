@@ -2510,7 +2510,11 @@ Object.assign(window.MATH_DETAILS, {
 The objects are labeled. The coefficient of $\frac{x^n}{n!}$ gives the count $a_n$, so the final factor $n!$ must be restored when reading off a coefficient.
 
 ## Why it works
-Weighting the $n$th term by $\frac1{n!}$ makes the product of two EGFs reindex as $c_n = \sum_k\binom nka_kb_{n-k}$: exactly the number of ways to split the $n$ labels between two labeled structures. So EGF multiplication is the labeled analogue of choosing, which ordinary generating functions would undercount.
+Weighting the $n$th term by $\frac1{n!}$ makes the product of two EGFs reindex as
+$$\frac{c_n}{n!} = \sum_k\frac{a_k}{k!}\cdot\frac{b_{n-k}}{(n-k)!}, \qquad c_n = \sum_k\binom nka_kb_{n-k}:$$
+exactly the number of ways to split the $n$ labels between two labeled structures. So EGF multiplication is the labeled analogue of choosing, which ordinary generating functions would undercount.
+
+The basic series are read off the same way: $e^x$ has every $a_n = 1$, one structure on each label set; $e^x - 1$ drops the empty set; and $\frac1{1 - x} = \sum n!\frac{x^n}{n!}$ counts the $n!$ orders. For $\exp(C) = \sum_k\frac{C^k}{k!}$: by the product rule $C^k$ counts ordered lists of $k$ connected structures on disjoint label sets that cover all the labels, and the $k$ blocks are distinct sets, so each unordered collection is listed $k!$ times.
 
 ## Useful observations
 - EGFs are the right tool whenever the count involves choosing which labels go to which part.
@@ -2615,7 +2619,9 @@ Advanced olympiad and Putnam combinatorics: a daunting spanning-tree enumeration
 The graph is directed and has no cycles. The sources and sinks must be arranged so that every non-intersecting system is the identity matching, or else the signs of the other matchings must be accounted for.
 
 ## Why it works
-Swapping the tails of two crossing paths at the first crossing pairs every intersecting system with another of opposite sign in the determinant expansion, so those terms cancel. Only the non-intersecting families remain, and their signed count is $\det[M_{ij}]$.
+Expanding the determinant, $\det[M_{ij}] = \sum_\sigma \operatorname{sgn}\sigma\prod_iM_{i\sigma(i)}$ counts every family of paths $a_i \to b_{\sigma(i)}$, intersecting or not, with the sign of its matching.
+
+For an intersecting family, take the smallest $i$ whose path meets another, the first vertex $v$ on that path shared with another path, and the smallest $j$ whose path passes $v$; swap the parts of paths $i$ and $j$ after $v$. The new family is again intersecting, and the same $i$, $v$, $j$ are chosen in it, because nothing before $v$ changed and the vertices used by the other paths are the same. So the swap pairs the intersecting families off, and each pair has matchings differing by one transposition, of opposite signs. They cancel, and only the non-intersecting families remain.
 
 ## Useful observations
 - The word "non-intersecting" in a problem statement is the cue.

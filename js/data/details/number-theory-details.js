@@ -379,7 +379,9 @@ The silent step behind most divisor and totient computations; problems test it d
 $n \gt 1$; for $n = 1$ the sum is $1$ while the formula gives $\frac12$.
 
 ## Why it works
-If $\gcd(k, n) = 1$ then $\gcd(n - k, n) = 1$, since a common divisor of $n - k$ and $n$ divides $k$. So the coprime residues pair off as $k$ and $n - k$, each pair summing to $n$. For $n \gt 2$ no residue pairs with itself, since $k = \frac n2$ would share the factor $\frac n2$ with $n$, so there are $\frac{\varphi(n)}{2}$ pairs and the sum is $\frac{n\varphi(n)}{2}$; for $n = 2$ it is $1 = \frac{2 \cdot 1}{2}$.
+If $\gcd(k, n) = 1$ then $\gcd(n - k, n) = 1$, since a common divisor of $n - k$ and $n$ divides $k$. So the coprime residues pair off as $k$ and $n - k$, each pair summing to $n$. For $n \gt 2$ no residue pairs with itself, since $k = \frac n2$ would share the factor $\frac n2$ with $n$, so there are $\frac{\varphi(n)}{2}$ pairs and the sum is $\frac{n\varphi(n)}{2}$, and $\varphi(n)$ is even; for $n = 2$ it is $1 = \frac{2 \cdot 1}{2}$. Dividing by $n$ gives the sum of the reduced fractions.
+
+For the range up to $mn$, block $j$ (from $jn + 1$ to $jn + n$) holds the numbers $jn + k$, which add to $jn\varphi(n) + \frac{n\varphi(n)}2$. Summing over $j = 0, \ldots, m - 1$ gives $n\varphi(n)\left(\frac{m(m - 1)}2 + \frac m2\right) = \frac{m^2n\varphi(n)}2$.
 
 ## Useful observations
 - The coprime residues pair as $k$ and $n - k$, so their average is exactly $\frac n2$: the coprime residues of $12$ are $1, 5, 7, 11$, summing to $24 = \frac{12 \cdot 4}{2}$.
@@ -1495,9 +1497,9 @@ An olympiad sledgehammer; most contest uses can also be done with orders or the 
 $n \ge 0$. The only Fermat numbers known to be prime are $F_0$ through $F_4$.
 
 ## Why it works
-The product identity follows by telescoping $(2^{2^k} - 1)(2^{2^k} + 1) = 2^{2^{k+1}} - 1$. Any common divisor of two Fermat numbers then divides $2$, but all Fermat numbers are odd, so they are pairwise coprime.
+The product identity follows by telescoping $(2^{2^k} - 1)(2^{2^k} + 1) = 2^{2^{k+1}} - 1$: starting from $F_0 - 2 = 1 = 2^1 - 1$, multiplying by $F_0, F_1, \ldots, F_{n-1}$ in turn reaches $2^{2^n} - 1 = F_n - 2$. Any common divisor of $F_m$ and $F_n$ with $m \lt n$ then divides $F_n - F_0\cdots F_{n-1} = 2$, but all Fermat numbers are odd, so they are pairwise coprime. Each $F_n$ has a prime factor, and no two share one, which gives infinitely many primes.
 
-If $m$ has an odd factor $q > 1$, then $2^m + 1$ is divisible by $2^{m/q} + 1$, which is why only powers of $2$ can occur.
+If $m$ has an odd factor $q \gt 1$, then $2^m + 1 = (2^{m/q})^q + 1$ is divisible by $2^{m/q} + 1$, since $x + 1$ divides $x^q + 1$ for odd $q$, which is why only powers of $2$ can occur. The link with constructible polygons is the Gauss–Wantzel theorem, quoted here.
 
 ## Useful observations
 - Pairwise coprimality gives infinitely many primes, since each $F_n$ contributes a prime factor no other one has.
@@ -1671,7 +1673,9 @@ Object.assign(window.MATH_DETAILS, {
 The count is of ordered, signed representations, so $(a, b)$, $(-a, b)$, $(b, a)$ and so on are all counted.
 
 ## Why it works
-In the Gaussian integers $\mathbb{Z}[i]$, $a^2 + b^2 = (a + bi)(a - bi)$, and unique factorization sorts primes into split ($p \equiv 1 \pmod 4$, contributing choices), inert ($p \equiv 3 \pmod 4$, demanding even exponents), and ramified ($2$). Counting the factorization choices yields $4(d_1 - d_3)$, the $4$ being the unit rotations $\pm1, \pm i$.
+In the Gaussian integers $\mathbb{Z}[i]$, $a^2 + b^2 = (a + bi)(a - bi)$, and unique factorization sorts primes into split ($p \equiv 1 \pmod 4$, contributing choices), inert ($p \equiv 3 \pmod 4$, demanding even exponents), and ramified ($2$). Counting the factorization choices yields $4(d_1 - d_3)$, the $4$ being the unit rotations $\pm1, \pm i$. This count is quoted, not proved here; it is Theorem 278 in G. H. Hardy and E. M. Wright, An Introduction to the Theory of Numbers.
+
+The rest follows from the formula. The difference $d_1(n) - d_3(n) = \sum_{d \mid n}\chi(d)$, where $\chi(d)$ is $1$, $-1$ or $0$ as $d \equiv 1$, $3$ or even mod $4$, is multiplicative, since $\chi$ is. At $2^e$ it is $1$; at $p^e$ with $p \equiv 1$ it is $e + 1$; at $p^e$ with $p \equiv 3$ it is $1 - 1 + \cdots \pm 1$, which is $1$ for even $e$ and $0$ for odd $e$. So the count vanishes exactly when such a prime has an odd exponent.
 
 ## Useful observations
 - Representations are counted without being found: $d_1(n) - d_3(n)$ is computed over the divisors.
