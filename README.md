@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2024 AMC 8 #6 to #15 (2026-10-24).** Answers D, E (each row needs an odd number of $1\times1$ tiles, and their count is $1\bmod4$: at least $5$, reached by search), D, E, B, D, E, B (Catalan $C_3$), A ($28$ km), C ($123+984$). All checked by script.
 - **Step D: 2025 AMC 8 finished, 2024 AMC 8 begun (2026-10-24).** 2025 AMC 8 #21 ($C,F$ get $1,7$; sum $12$), 22 ($(c+1)(g+1)=36$, $7$), 23 ($3599$ only), 24 ($3a+2b=30$, $4$), 25 (average area $\tfrac{25}2$, $3150$); 2024 AMC 8 #1 to #5. All checked by script.
 - **Step D: 2025 AMC 8 #11 to #20 (2026-10-24).** Answers C (L and L, the only tiling with an S, by search), C ($r=\sqrt5$), A, E ($N=34$), C ($5+11$), C ($105$), D ($115$), B ($R=2$), D (mile $8.5$), A ($\tfrac47$). All checked by script.
 - **Step D: the AMC 8 begun with 2025 AMC 8 #1 to #10 (2026-10-24).** Answers B, B, C, B, C, C, D, A, B, D (#5 by street distance, $24$; #10 overlap $6.25$, total $23.75$). All checked by script.
