@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2015 AMC 12B finished, 2014 AMC 12A begun (2026-10-24).** 2015 AMC 12B #20 (rows become constant at row $5$), 22 ($20$), 24 (centers on the perpendicular bisector, $153+39=192$, with a figure), 25 (arithmetico-geometric sum of complex steps, $1008(\sqrt6+\sqrt2)$); 2014 AMC 12A #1, 2, 6, 7, 10, 12 (figures for #10 and #12). All checked by script.
 - **Step D: 2015 AMC 12B, ten problems (2026-10-24).** #7, 8, 9, 10, 13 (inscribed angles make $ABC$ isosceles, $6$), 14 ($4(\pi-\sqrt3)$), 15 ($\tfrac{11}{24}$), 16 ($36\sqrt{21}$), 17 ($n=11$), 18, with figures for #13, #14 and #16. All checked by script.
 - **Step D: 2015 AMC 12A finished, 2015 AMC 12B begun (2026-10-24).** 2015 AMC 12A #13, 14, 15, 20 (the cubic $b^3-9b^2+64$ has the known root $8$), 21 ($[\sqrt{15},8)$), 22 ($c(n)$ modulo $2$ and $3$, $8$), 24 ($\tfrac6{25}$), 25 ($T_k=3T_{k-1}-s$, $\tfrac{143}{14}$); 2015 AMC 12B #5 and #6. All checked by script.
 - **Step D: 2016 AMC 12B finished, 2015 AMC 12A begun (2026-10-24).** 2016 AMC 12B #23 (two square pyramids, $\tfrac16$), #24 (per-prime count $2(6e^2+1)$, so exponents $1,2,3$ and $n=27720$), #25 ($b_n=\tfrac{2^n-(-1)^n}3$ and the order of $2$ mod $19$: $k=17$); 2015 AMC 12A #1 (copied from 10A #1), 2, 5, 9, 10, 11, 12. All checked by script.

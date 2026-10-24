@@ -4732,4 +4732,52 @@
       cap(430, 270, "The pyramid on the regular hexagon of side 6, with every lateral edge 8 (the isosceles triangles folded up)." + MM(ok))
     ]);
   })();
+
+  // 2015 AMC 12B #24: four circles through P and Q (PQ = 48); the centers lie on the perpendicular
+  // bisector of PQ through its midpoint R. Signed positions: A at 57, B at 96; C at -7, D at 32.
+  PROB["2015-amc-12b-24"] = (() => {
+    const R = [0, 0], P = [-24, 0], Qp = [24, 0], cs = { A: 57, B: 96, C: -7, D: 32 };
+    const ctr = n => [0, cs[n]], rad2 = n => Math.hypot(24, cs[n]);
+    const ok = Math.abs(rad2("A") / rad2("B") - 5 / 8) < 1e-12 && Math.abs(rad2("C") / rad2("D") - 5 / 8) < 1e-12;
+    const Q = fitQ([[-110, -110], [110, 200]], 10, 430, 270), k = Q.k;
+    const col = { A: ACC, B: ACC, C: GLD, D: GLD };
+    return wrap(430, 270, [
+      ...["A", "B", "C", "D"].map(n => circ(Q(ctr(n)), rad2(n) * k, col[n], 1.3)),
+      seg(Q([0, -110]), Q([0, 200]), FNT, 1.1, "4 4"), seg(Q(P), Q(Qp), DIM, 1.8),
+      ...["A", "B", "C", "D"].map(n => dot(Q(ctr(n)), col[n], 3)), dot(Q(R), DIM, 3),
+      ...["A", "B", "C", "D"].map(n => txt(add(Q(ctr(n)), [10, 4]), n, col[n], 12.5)),
+      txt(add(Q(P), [-10, 4]), "P"), txt(add(Q(Qp), [10, 4]), "Q"), txt(add(Q(R), [-10, 14]), "R"),
+      cap(430, 270, "Four circles through P and Q, PQ = 48; their centers A, B, C, D lie on the perpendicular bisector of PQ through its midpoint R." + MM(ok))
+    ]);
+  })();
+
+  // 2014 AMC 12A #10: three congruent isosceles triangles on the sides of the unit equilateral triangle.
+  PROB["2014-amc-12a-10"] = (() => {
+    const A = [0, 0], B = [1, 0], C = [0.5, Math.sqrt(3) / 2], G = [(A[0] + B[0] + C[0]) / 3, (A[1] + B[1] + C[1]) / 3];
+    const h = Math.sqrt(3) / 6, apex = (X, Y) => { const m = mid(X, Y); return add(m, mul(norm(sub(m, G)), h)); };
+    const T = [apex(A, B), apex(B, C), apex(C, A)];
+    const area = (X, Y, Z) => Math.abs((Y[0] - X[0]) * (Z[1] - X[1]) - (Z[0] - X[0]) * (Y[1] - X[1])) / 2;
+    const ok = Math.abs(area(A, B, T[0]) * 3 - area(A, B, C)) < 1e-12;
+    const Q = fitQ([A, B, C, ...T], 24, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), poly([A, B, T[0]].map(Q), ACC, 1.6, ACCS), poly([B, C, T[1]].map(Q), ACC, 1.6, ACCS), poly([C, A, T[2]].map(Q), ACC, 1.6, ACCS),
+      txt(add(Q(mid(A, B)), [0, -8]), "1", DIM, 12),
+      cap(430, 270, "Three congruent isosceles triangles (blue) on the sides of an equilateral triangle of side 1, together as large as it." + MM(ok))
+    ]);
+  })();
+
+  // 2014 AMC 12A #12: two circles meeting at A and B, the common chord cutting a 30° arc on one and a 60° arc on the other.
+  PROB["2014-amc-12a-12"] = (() => {
+    const c = 1, r1 = c / (2 * Math.sin(rad(15))), r2 = c / (2 * Math.sin(rad(30)));
+    const A = [0, c / 2], B = [0, -c / 2], O1 = [-Math.sqrt(r1 * r1 - c * c / 4), 0], O2 = [-Math.sqrt(r2 * r2 - c * c / 4), 0];
+    const ok = Math.abs(dist(O1, A) - r1) < 1e-12 && Math.abs(dist(O2, A) - r2) < 1e-12;
+    const Q = fitQ([[O1[0] - r1, -r1], [O2[0] + r2, r1]], 12, 430, 270), k = Q.k;
+    return wrap(430, 270, [
+      circ(Q(O1), r1 * k, DIM, 1.6), circ(Q(O2), r2 * k, ACC, 1.6), seg(Q(A), Q(B), GLD, 1.8),
+      seg(Q(O1), Q(A), FNT, 1.1, "4 4"), seg(Q(O1), Q(B), FNT, 1.1, "4 4"), seg(Q(O2), Q(A), FNT, 1.1, "4 4"), seg(Q(O2), Q(B), FNT, 1.1, "4 4"),
+      dot(Q(A), GLD, 3), dot(Q(B), GLD, 3), txt(add(Q(A), [8, -6]), "A", GLD, 12.5), txt(add(Q(B), [8, 12]), "B", GLD, 12.5),
+      txt(add(Q(O1), [-10, 4]), "30°", DIM, 11), txt(add(Q(O2), [-10, 4]), "60°", ACC, 11),
+      cap(430, 270, "Two circles meeting at A and B; the minor arc AB is 30° on the larger circle and 60° on the smaller." + MM(ok))
+    ]);
+  })();
 })();
