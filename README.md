@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **Step D: 2014 AMC 12A, ten more (2026-10-24).** #13 ($2220$), 14, 15 (pair palindromes to $110000$), 17 ($2+2\sqrt7$), 18 ($\tfrac{15}{256}$), 19 ($78$), 20 (two reflections and the Law of Cosines at $120^\circ$: $14$; with a figure), 21 (telescoping lengths, $1$), 23 (blocks $00$ to $99$ without $98$: $883$), 24 ($301$). All checked by script.
 - **Step D: 2015 AMC 12B finished, 2014 AMC 12A begun (2026-10-24).** 2015 AMC 12B #20 (rows become constant at row $5$), 22 ($20$), 24 (centers on the perpendicular bisector, $153+39=192$, with a figure), 25 (arithmetico-geometric sum of complex steps, $1008(\sqrt6+\sqrt2)$); 2014 AMC 12A #1, 2, 6, 7, 10, 12 (figures for #10 and #12). All checked by script.
 - **Step D: 2015 AMC 12B, ten problems (2026-10-24).** #7, 8, 9, 10, 13 (inscribed angles make $ABC$ isosceles, $6$), 14 ($4(\pi-\sqrt3)$), 15 ($\tfrac{11}{24}$), 16 ($36\sqrt{21}$), 17 ($n=11$), 18, with figures for #13, #14 and #16. All checked by script.
 - **Step D: 2015 AMC 12A finished, 2015 AMC 12B begun (2026-10-24).** 2015 AMC 12A #13, 14, 15, 20 (the cubic $b^3-9b^2+64$ has the known root $8$), 21 ($[\sqrt{15},8)$), 22 ($c(n)$ modulo $2$ and $3$, $8$), 24 ($\tfrac6{25}$), 25 ($T_k=3T_{k-1}-s$, $\tfrac{143}{14}$); 2015 AMC 12B #5 and #6. All checked by script.

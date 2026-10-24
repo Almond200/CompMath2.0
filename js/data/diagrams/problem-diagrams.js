@@ -4780,4 +4780,20 @@
       cap(430, 270, "Two circles meeting at A and B; the minor arc AB is 30° on the larger circle and 60° on the smaller." + MM(ok))
     ]);
   })();
+
+  // 2014 AMC 12A #20: angle BAC = 40°, AB = 10, AC = 6, with D on AB and E on AC and the path B-E-D-C
+  // drawn for one choice of D and E.
+  PROB["2014-amc-12a-20"] = (() => {
+    const A = [0, 0], B = [10, 0], C = [6 * Math.cos(rad(40)), 6 * Math.sin(rad(40))], D = [4.2, 0], E = mul(norm(C), 3.4);
+    const ok = Math.abs(dist(A, C) - 6) < 1e-12 && Math.abs(Math.atan2(C[1], C[0]) * 180 / Math.PI - 40) < 1e-9;
+    const Q = fitQ([A, B, C], 30, 430, 270);
+    return wrap(430, 270, [
+      poly([A, B, C].map(Q), DIM, 2), pline([B, E, D, C].map(Q), ACC, 1.8), angleArc(Q(A), Q(B), Q(C), 30, GLD),
+      dot(Q(D), ACC, 3), dot(Q(E), ACC, 3),
+      txt(add(Q(A), [-12, 6]), "A"), txt(add(Q(B), [12, 6]), "B"), txt(add(Q(C), [0, -10]), "C"),
+      txt(add(Q(D), [0, 16]), "D", ACC, 12.5), txt(add(Q(E), [-12, -4]), "E", ACC, 12.5), txt(add(Q(A), [44, -10]), "40°", GLD, 11.5),
+      txt(add(Q(mid(A, B)), [0, 16]), "10", DIM, 12), txt(add(Q(mid(A, C)), [-12, -4]), "6", DIM, 12),
+      cap(430, 270, "∠BAC = 40°, AB = 10, AC = 6, with D on AB and E on AC; the path B–E–D–C (blue) is drawn for one choice of D and E." + MM(ok))
+    ]);
+  })();
 })();
