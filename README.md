@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-24**
 
+- **F: 10 more Low cards (2026-10-24).** Forcing a difference of squares, SOS, uvw, Weierstrass, normalization, homogenization, the tangent line trick, squeezing between squares, the extended Euclidean algorithm and choosing a modulus. Cards under two: 138.
 - **F: 10 more Low cards (2026-10-24).** The $\sqrt{bc}$ inversion, barycentric coordinates, trig bashing, affine maps, directed angles, phantom points, trigonometric series by $e^{i\theta}$, slopes to a point, cofactor expansion and interpolation. Cards under two: 148.
 - **Bug fixed: a card name with an eaten escape (2026-10-24).** "Summing a Trigonometric Series with $e^{i\theta}$" was written in a plain string, so `\t` became a tab and the name showed "$e^{i\,heta}$". It now uses `\\theta`, and `scan-conventions.py` has a new gate that flags `\t`, `\f`, `\b`, `\v`, `\r` or `\n` before a letter in any plain (not `String.raw`) string of the data files.
 - **F: 10 more Low cards (2026-10-24).** Roots modulo $p$, primitive roots, the freshman's dream, quadratic reciprocity, Bertrand, three and four squares, terminating decimals, cyclotomic polynomials, Gaussian integers and circle inversion. Cards under two: 158.

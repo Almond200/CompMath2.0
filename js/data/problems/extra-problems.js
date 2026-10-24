@@ -1396,4 +1396,62 @@
     { q: String.raw`A quadratic has $P(1) = P(2) = 0$ and $P(3) = 4$. Find $P(0)$.`,
       s: String.raw`Only the third basis polynomial survives: $P(x) = 4\cdot\tfrac{(x - 1)(x - 2)}{(3 - 1)(3 - 2)} = 2(x - 1)(x - 2)$. So $P(0) = 4$.` }
   );
+  add("forced-difference-of-squares",
+    { q: String.raw`Show that $n^4 + 4$ is composite for every integer $n \ge 2$.`,
+      s: String.raw`Add and subtract $4n^2$: $n^4 + 4 = (n^2 + 2)^2 - (2n)^2 = (n^2 - 2n + 2)(n^2 + 2n + 2)$. For $n \ge 2$ the smaller factor is $(n - 1)^2 + 1 \ge 2$, so both factors exceed $1$. For $n = 3$: $85 = 5\cdot17$.` },
+    { q: String.raw`Factor $x^4 + 64$ over the integers.`,
+      s: String.raw`Complete the square with $16x^2$: $x^4 + 64 = (x^2 + 8)^2 - (4x)^2 = (x^2 - 4x + 8)(x^2 + 4x + 8)$.` }
+  );
+  add("sos-method",
+    { q: String.raw`Prove that $a^3 + b^3 + c^3 - 3abc \ge 0$ for nonnegative reals.`,
+      s: String.raw`It equals $\tfrac12(a + b + c)\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right]$, an SOS form with $S_a = S_b = S_c = \tfrac{a + b + c}2 \ge 0$. Equality holds at $a = b = c$.` }
+  );
+  add("uvw-method",
+    { q: String.raw`Three nonnegative numbers add to $3$. How large can their product be? Use the reduction to two equal numbers or one zero.`,
+      s: String.raw`With $u = a + b + c$ and $v = ab + bc + ca$ held, $abc$ is linear in $w^3$, so the extremes occur with two variables equal or one zero. With $c = 0$ the product is $0$. With $b = c$, $a = 3 - 2b$ and $abc = b^2(3 - 2b)$, largest at $b = 1$, value $1$. So the maximum is $1$, at $a = b = c = 1$.` },
+    { q: String.raw`For three nonnegative numbers adding to $3$, which values can the sum of their pairwise products take?`,
+      s: String.raw`The largest value comes with all equal: $(a + b + c)^2 \ge 3(ab + bc + ca)$ gives $3$. The smallest is $0$, at $(3, 0, 0)$, since every term is nonnegative. So the range is $[0, 3]$.` }
+  );
+  add("weierstrass-substitution",
+    { q: String.raw`Using the half-angle tangent, find every angle in $[0, 2\pi)$ at which sine and cosine add to exactly $1$, and say which angle the substitution can miss.`,
+      s: String.raw`The equation becomes $\tfrac{2t + 1 - t^2}{1 + t^2} = 1$, that is $2t = 2t^2$, so $t = 0$ or $t = 1$: $\theta = 0$ or $\tfrac\pi2$. The substitution misses $\theta = \pi$, where $t$ is undefined, so check it separately: $0 - 1 \ne 1$.` },
+    { q: String.raw`Find the smallest value of $\dfrac{2 - \cos\theta}{\sin\theta}$ for $0 \lt \theta \lt \pi$.`,
+      s: String.raw`With $t = \tan\tfrac\theta2 \gt 0$ the expression is $\tfrac{2(1 + t^2) - (1 - t^2)}{2t} = \tfrac1{2t} + \tfrac{3t}2$, at least $2\sqrt{\tfrac34} = \sqrt3$ by AM-GM, with equality at $t = \tfrac1{\sqrt3}$, that is $\theta = \tfrac\pi3$.` }
+  );
+  add("normalization",
+    { q: String.raw`Prove that $(a + b + c)\left(\tfrac1a + \tfrac1b + \tfrac1c\right) \ge 9$ for positive reals by normalizing.`,
+      s: String.raw`Scaling $a, b, c$ by the same factor leaves the expression unchanged, so assume $a + b + c = 3$. Then $\tfrac1a + \tfrac1b + \tfrac1c \ge \tfrac9{a + b + c} = 3$ by AM-HM, and the product is at least $9$.` },
+    { q: String.raw`Prove $(x + y + z)^3 \ge 27xyz$ for positive reals, assuming $xyz = 1$ first.`,
+      s: String.raw`Both sides have degree $3$, so scaling all three variables scales both sides alike, and $xyz = 1$ may be assumed. Then AM-GM gives $x + y + z \ge 3$, so the left side is at least $27 = 27xyz$.` }
+  );
+  add("homogenization",
+    { q: String.raw`Three positive numbers add to $1$. Show that their squares add to at least one third, by first making both sides the same degree.`,
+      s: String.raw`Replace $\tfrac13$ by $\tfrac{(a + b + c)^2}3$ to match degrees. The inequality becomes $3(a^2 + b^2 + c^2) \ge (a + b + c)^2$, that is $a^2 + b^2 + c^2 \ge ab + bc + ca$, which holds for all reals.` },
+    { q: String.raw`Two positive numbers have sum $2$. Homogenize to show that their cubes add to at least $2$.`,
+      s: String.raw`Write $2 = \tfrac{(a + b)^3}4$. The inequality becomes $4(a^3 + b^3) \ge (a + b)^3$, which expands to $3(a + b)(a - b)^2 \ge 0$.` }
+  );
+  add("tangent-line-trick",
+    { q: String.raw`Three positive numbers add to $3$. Comparing $\sqrt x$ with its tangent line at $x = 1$, show that their square roots add to at most $3$.`,
+      s: String.raw`The tangent line of $\sqrt x$ at $x = 1$ is $\tfrac12 + \tfrac x2$, and since $\sqrt x$ is concave it lies below that line: $\sqrt x \le \tfrac{1 + x}2$ (equivalently $(\sqrt x - 1)^2 \ge 0$). Adding the three, $\sum\sqrt a \le \tfrac32 + \tfrac32 = 3$.` },
+    { q: String.raw`Three positive numbers have sum $3$. Bound the sum of their squares from below with the tangent of $x^2$ at $1$.`,
+      s: String.raw`At $x = 1$ the tangent to $x^2$ is $2x - 1$, and $x^2 \ge 2x - 1$ because $(x - 1)^2 \ge 0$. Adding, $\sum a^2 \ge 2\cdot3 - 3 = 3$.` }
+  );
+  add("squeeze-between-squares",
+    { q: String.raw`Why can the product of two consecutive positive integers never be a perfect square?`,
+      s: String.raw`The product is $n(n + 1) = n^2 + n$, and $n^2 \lt n^2 + n \lt n^2 + 2n + 1 = (n + 1)^2$. No square lies strictly between two consecutive squares.` },
+    { q: String.raw`Find every positive integer $n$ for which $n^2 + 3n + 5$ is a perfect square.`,
+      s: String.raw`For $n \ge 1$, $(n + 1)^2 \lt n^2 + 3n + 5 \lt (n + 3)^2$, so it must be $(n + 2)^2 = n^2 + 4n + 4$, which gives $n = 1$. Check: $1 + 3 + 5 = 9$.` }
+  );
+  add("extended-euclidean-algorithm",
+    { q: String.raw`Find integers $x$, $y$ with $17x + 5y = 1$.`,
+      s: String.raw`Divide: $17 = 3\cdot5 + 2$ and $5 = 2\cdot2 + 1$. Back-substitute: $1 = 5 - 2\cdot2 = 5 - 2(17 - 3\cdot5) = 7\cdot5 - 2\cdot17$. So $x = -2$, $y = 7$.` },
+    { q: String.raw`Find the inverse of $11$ modulo $30$.`,
+      s: String.raw`$30 = 2\cdot11 + 8$, $11 = 8 + 3$, $8 = 2\cdot3 + 2$, $3 = 2 + 1$. Working back, $1 = 3\cdot3 - 8 = 3\cdot11 - 4\cdot8 = 11\cdot11 - 4\cdot30$. So the inverse is $11$: indeed $121 = 4\cdot30 + 1$.` }
+  );
+  add("choose-modulus",
+    { q: String.raw`Show that $x^2 + y^2 = 1003$ has no integer solutions.`,
+      s: String.raw`Squares are $0$ or $1$ modulo $4$, so $x^2 + y^2$ is $0$, $1$ or $2$ modulo $4$, while $1003 \equiv 3$.` },
+    { q: String.raw`Show that $y^2 = 3x^2 + 2$ has no integer solutions.`,
+      s: String.raw`Modulo $3$ the right side is $2$, but squares are $0$ or $1$ modulo $3$.` }
+  );
 })();
