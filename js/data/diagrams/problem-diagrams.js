@@ -5151,4 +5151,19 @@
       cap(430, 290, "One particle starts at A, the other at M, the midpoint of BC. The corners of R are the midpoints of the three medians." + MM(ok))
     ]);
   })();
+  PROB["2006-amc-12a-22"] = (() => {
+    const r = 3 * Math.sqrt(2) + Math.sqrt(6), at = (d, t) => [d * Math.cos(rad(t)), d * Math.sin(rad(t))];
+    const V = [0, 1, 2, 3, 4, 5].map(k => at(2, 60 * k)), W = at(2 * Math.sqrt(3), 30);
+    const arc = []; for (let t = 15; t <= 45.01; t += 1) arc.push(at(r, t));
+    const e1 = lineInt(V[5], V[0], [0, 0], arc[30]), e2 = lineInt(V[2], V[1], [0, 0], arc[0]);
+    const ok = dist(e1, arc[30]) < 1e-9 && dist(e2, arc[0]) < 1e-9 && Math.abs(dist(W, V[0]) - 2) < 1e-9;
+    const Q = fitQ([[-r, -r], [r, r]], 24, 430, 330), k = Q.k;
+    return wrap(430, 330, [
+      circ(Q([0, 0]), r * k, FNT, 1.3), poly(V.map(Q), DIM, 2),
+      seg(Q(V[5]), Q(arc[30]), FNT, 1.2, "4 3"), seg(Q(V[2]), Q(arc[0]), FNT, 1.2, "4 3"),
+      pline(arc.map(Q), ACC, 3.5), dot(Q(W), DIM, 3), dot(Q([0, 0]), DIM, 3),
+      txt(add(Q(at(r - 0.9, 30)), [-4, 4]), "30°", ACC, 12), txt(add(Q(W), [10, 16]), "W", DIM, 12),
+      cap(430, 330, "Extending two sides of the hexagon that skip one side between them: from the highlighted 30° arc beyond W, all three sides between them are in view." + MM(ok))
+    ]);
+  })();
 })();
