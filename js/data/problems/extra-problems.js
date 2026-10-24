@@ -910,4 +910,116 @@
     { q: String.raw`Solve $\lvert3x - 12\rvert = 2\lvert x\rvert$.`,
       s: String.raw`Factor out the coefficient: $3\lvert x - 4\rvert = 2\lvert x\rvert$, so $x - 4 = \pm\tfrac23x$. The plus sign gives $x = 12$ and the minus sign $x = \tfrac{12}5$. Check: $\lvert24\rvert = 24$ and $\lvert7.2 - 12\rvert = 4.8 = 2\cdot2.4$.` }
   );
+  add("counting-functions",
+    { q: String.raw`How many functions are there from a $3$-element set to a $2$-element set, and how many of them take both values?`,
+      s: String.raw`Each of the $3$ inputs has $2$ possible outputs, so there are $2^3 = 8$ functions. Only the two constant functions miss a value, so $8 - 2 = 6$ take both. (No function here is one-to-one, since $3 \gt 2$.)` }
+  );
+  add("subset-sum-facts",
+    { q: String.raw`A subset of $\{1, 2, \ldots, 10\}$ is chosen uniformly at random, the empty set included. What is the expected sum of its elements?`,
+      s: String.raw`The sums of all $2^{10}$ subsets add to $2^9\cdot55$, since each element lies in half the subsets. Dividing by $2^{10}$, the expected sum is $\tfrac{55}2 = 27.5$.` },
+    { q: String.raw`How many subsets of $\{1, 2, \ldots, 10\}$ have an odd sum?`,
+      s: String.raw`Adding or removing the element $1$ changes the parity of the sum, and it pairs the subsets up, one odd and one even in each pair. So exactly half, $2^9 = 512$, have an odd sum.` }
+  );
+  add("alternating-squared-binomials",
+    { q: String.raw`Check the formula on $\sum_{k=0}^{4}(-1)^k\binom4k^2$.`,
+      s: String.raw`The formula gives $(-1)^2\binom42 = 6$. Directly: $1 - 16 + 36 - 16 + 1 = 6$.` },
+    { q: String.raw`Explain without computing why $\sum_{k=0}^{7}(-1)^k\binom7k^2 = 0$.`,
+      s: String.raw`Pair the term $k$ with the term $7 - k$. The squares are equal, since $\binom7k = \binom7{7-k}$, and the signs are opposite, since $k$ and $7 - k$ have different parity. So the eight terms cancel in four pairs.` }
+  );
+  add("pascal-parity",
+    { q: String.raw`For which $n$ is every entry of row $n$ odd? List those below $100$.`,
+      s: String.raw`Row $n$ has $n + 1$ entries and $2^{s_2(n)}$ odd ones, and $2^{s_2(n)} = n + 1$ exactly when the binary digits of $n$ are all $1$, that is $n = 2^k - 1$. Below $100$: $n = 0, 1, 3, 7, 15, 31, 63$.` },
+    { q: String.raw`Show that $\binom{64}k$ is even for every $k$ from $1$ to $63$.`,
+      s: String.raw`$64 = 1000000_2$ has a single $1$, so only $2^1 = 2$ entries are odd: the two $1$s at the ends. Every $\binom{64}k$ with $0 \lt k \lt 64$ is even.` }
+  );
+  add("ballot-problem",
+    { q: String.raw`Candidate $A$ receives $7$ votes and $B$ receives $4$, counted in random order. What is the probability that $A$ leads throughout?`,
+      s: String.raw`The ballot formula gives $\tfrac{7 - 4}{7 + 4} = \tfrac3{11}$.` },
+    { q: String.raw`In how many orders of $6$ votes for $A$ and $2$ for $B$ is $A$ strictly ahead after every vote?`,
+      s: String.raw`There are $\binom82 = 28$ orders, and the fraction with $A$ always ahead is $\tfrac{6 - 2}{8} = \tfrac12$, so $14$ orders. (Listing them confirms it: the first two votes must go to $A$, and so on.)` }
+  );
+  add("moser-circle",
+    { q: String.raw`The region counts for $1$ to $5$ points on a circle are $1, 2, 4, 8, 16$, which suggests powers of $2$. Using the formula, how many regions do $8$ points give, and how far off is the guess?`,
+      s: String.raw`$R(8) = \binom84 + \binom82 + 1 = 70 + 28 + 1 = 99$, while the guess says $2^7 = 128$. The formula is a polynomial of degree $4$ in $n$, so it falls far behind any doubling.` }
+  );
+  add("combinatorial-nullstellensatz",
+    { q: String.raw`A polynomial $f(x, y)$ of total degree $2$ has a nonzero coefficient of $xy$. Show that it is nonzero at some point of $\{0, 1\}\times\{0, 1\}$, and check this for $f = xy - x - y + 1$.`,
+      s: String.raw`Take $t_1 = t_2 = 1$ and $S_1 = S_2 = \{0, 1\}$, each of size $2 \gt 1$. The degree is $t_1 + t_2$ and the coefficient of $x^1y^1$ is nonzero, so the Nullstellensatz gives a point where $f \ne 0$. Here $f = (x - 1)(y - 1)$ vanishes at three of the four points but is $1$ at $(0, 0)$.` },
+    { q: String.raw`Prove the Cauchy–Davenport bound: for nonempty $A, B \subseteq \mathbb Z_p$ ($p$ prime), the sumset $A + B$ has at least $\min(p, |A| + |B| - 1)$ elements.`,
+      s: String.raw`If $|A| + |B| \gt p$, every residue is a sum, by pigeonhole. Otherwise suppose $A + B$ lies inside a set $C$ of size $|A| + |B| - 2$, and let $f(x, y) = \prod_{c \in C}(x + y - c)$, of degree $|A| + |B| - 2$. Its coefficient of $x^{|A|-1}y^{|B|-1}$ is $\binom{|A| + |B| - 2}{|A| - 1}$, which is not a multiple of $p$ since $|A| + |B| - 2 \lt p$. The Nullstellensatz with $S_1 = A$, $S_2 = B$ gives $a \in A$, $b \in B$ with $f(a, b) \ne 0$, so $a + b \notin C$, a contradiction.` }
+  );
+  add("dilworths-theorem",
+    { q: String.raw`The nine grid points $(i, j)$ with $i, j \in \{1, 2, 3\}$ are ordered by $(a, b) \le (c, d)$ when $a \le c$ and $b \le d$. Find a largest set of pairwise incomparable points and the fewest chains that cover the grid.`,
+      s: String.raw`The anti-diagonal $(1, 3)$, $(2, 2)$, $(3, 1)$ is pairwise incomparable: each point is higher in one coordinate and lower in the other. The three rows $(i, 1) \le (i, 2) \le (i, 3)$ are chains covering the grid. Both numbers are $3$, as Dilworth's Theorem requires.` },
+    { q: String.raw`A partially ordered set has $13$ elements and no chain of more than $3$. Show that it has an antichain of at least $5$ elements.`,
+      s: String.raw`Sort the elements by the length of the longest chain ending at each: $1$, $2$ or $3$. Two elements with the same length are incomparable (otherwise the larger would have a longer chain), so this splits the set into $3$ antichains. One of them has at least $\lceil\tfrac{13}3\rceil = 5$ elements. This is the dual of Dilworth's Theorem.` }
+  );
+  add("sperners-theorem",
+    { q: String.raw`For a $5$-element set the middle layer is not unique. Which layers give a largest antichain, and how large is it?`,
+      s: String.raw`Sperner gives $\binom52 = 10$. Both the layer of $2$-element subsets and the layer of $3$-element subsets reach it, and these are the only two families of that size.` },
+    { q: String.raw`Show that any $7$ subsets of $\{1, 2, 3, 4\}$ include two with one contained in the other.`,
+      s: String.raw`An antichain of subsets of a $4$-element set has at most $\binom42 = 6$ members, so $7$ subsets cannot form one.` }
+  );
+  add("gamblers-ruin",
+    { q: String.raw`A player with $4$ chips bets one chip at a time on a fair coin and stops at $0$ or $10$ chips. What is the probability of reaching $10$?`,
+      s: String.raw`For a fair game $P_k = \tfrac kN$, so the probability is $\tfrac4{10} = \tfrac25$.` },
+    { q: String.raw`A player with $1$ chip wins each round with probability $\tfrac13$ and stops at $0$ or $3$ chips. What is the probability of reaching $3$?`,
+      s: String.raw`Here $\tfrac qp = 2$, so $P_1 = \tfrac{1 - 2}{1 - 2^3} = \tfrac17$. Check by first steps: $P_1 = \tfrac13P_2$ and $P_2 = \tfrac13 + \tfrac23P_1$, so $P_1 = \tfrac19 + \tfrac29P_1$, giving $\tfrac17$.` }
+  );
+  add("order-statistics",
+    { q: String.raw`Three random points land independently and uniformly on $[0, 1]$. What is the chance that all three are in the left half, and what is the average position of the leftmost?`,
+      s: String.raw`$P(\max \le \tfrac12) = \left(\tfrac12\right)^3 = \tfrac18$, and $E[\min] = \tfrac1{3 + 1} = \tfrac14$.` },
+    { q: String.raw`Two points are chosen at random on a stick of length $1$. What is the expected distance between them?`,
+      s: String.raw`The distance is the range of $n = 2$ uniform points, with expectation $\tfrac{n - 1}{n + 1} = \tfrac13$. Equivalently, the two points cut the stick into three pieces of expected length $\tfrac13$ each, and the distance is the middle piece.` }
+  );
+  add("erdos-szekeres",
+    { q: String.raw`Five students of different heights stand in a line. Show that some three of them, in line order, are increasing or decreasing in height. Does it work with four students?`,
+      s: String.raw`With $m = n = 2$, any $mn + 1 = 5$ distinct heights contain a monotone run of length $3$. Four is not enough: heights $2, 1, 4, 3$ have no increasing or decreasing triple.` },
+    { q: String.raw`What is the shortest length of a sequence of distinct numbers that is sure to contain an increasing subsequence of length $6$ or a decreasing one of length $6$?`,
+      s: String.raw`The theorem with $m = n = 5$ gives $26$. And $25$ is not enough: five decreasing blocks of five increasing numbers, such as $21\ldots25, 16\ldots20, \ldots, 1\ldots5$, have no monotone subsequence of length $6$.` }
+  );
+  add("turans-theorem",
+    { q: String.raw`Ten players arrange some games, each between two of them, so that no three players have all played one another. At most how many games can there be?`,
+      s: String.raw`No triangle means no $K_3$, so $r = 2$ and $e \le \left(1 - \tfrac12\right)\tfrac{100}2 = 25$. The complete bipartite graph $K_{5,5}$ has $25$ edges and no triangle.` },
+    { q: String.raw`Must a graph with $9$ vertices and $28$ edges contain four mutually adjacent vertices?`,
+      s: String.raw`With $r = 3$ the bound for avoiding $K_4$ is $\left(1 - \tfrac13\right)\tfrac{81}2 = 27$. Since $28 \gt 27$, yes.` }
+  );
+  add("trapezoid-consecutive-angles",
+    { q: String.raw`An isosceles trapezoid has one angle of $70^\circ$. Find the other three.`,
+      s: String.raw`The angle beside it along a leg is $180^\circ - 70^\circ = 110^\circ$, and the equal legs make the base angles equal in pairs: $70^\circ, 70^\circ, 110^\circ, 110^\circ$.` },
+    { q: String.raw`In trapezoid $ABCD$ with $AB \parallel DC$, the bisectors of angles $A$ and $D$ meet at $P$. Find $\angle APD$.`,
+      s: String.raw`Since $\angle A + \angle D = 180^\circ$, the halves add to $90^\circ$, and triangle $APD$ has $\angle APD = 180^\circ - 90^\circ = 90^\circ$.` }
+  );
+  add("parallel-by-angle-sum",
+    { q: String.raw`A transversal makes co-interior angles of $(3x + 10)^\circ$ and $(5x - 6)^\circ$ with two lines. For which $x$ are the lines parallel?`,
+      s: String.raw`They are parallel exactly when $(3x + 10) + (5x - 6) = 180$, that is $8x = 176$ and $x = 22$, giving angles $76^\circ$ and $104^\circ$.` },
+    { q: String.raw`A quadrilateral $ABCD$ has $\angle A + \angle B = 180^\circ$ and $\angle B + \angle C = 180^\circ$. Prove that it is a parallelogram.`,
+      s: String.raw`Along side $AB$, the angles at $A$ and $B$ are co-interior for the lines $AD$ and $BC$, so $AD \parallel BC$. Along side $BC$, the angles at $B$ and $C$ are co-interior for $AB$ and $CD$, so $AB \parallel CD$. Both pairs of opposite sides are parallel.` }
+  );
+  add("integer-triangles-perimeter",
+    { q: String.raw`Use the formula to count the integer-sided triangles with perimeter $12$, and list them.`,
+      s: String.raw`For even $n$ the count is the nearest integer to $\tfrac{144}{48} = 3$: the triangles $(2, 5, 5)$, $(3, 4, 5)$ and $(4, 4, 4)$.` },
+    { q: String.raw`Use the odd-perimeter formula to count the triangles whose whole-number sides add to $25$, and confirm it by sorting them by longest side.`,
+      s: String.raw`For odd $n$ the count is the nearest integer to $\tfrac{(25 + 3)^2}{48} = \tfrac{784}{48} \approx 16.3$, so $16$. A direct count by the longest side, from $9$ to $12$, gives $2 + 3 + 5 + 6 = 16$.` }
+  );
+  add("intercept-theorem",
+    { q: String.raw`In triangle $ABC$, $D$ is on $AB$ with $AD = 3$, $DB = 5$, and $E$ on $AC$ with $AE = 4.5$ and $DE \parallel BC$. Find $EC$. Then decide whether $DE \parallel BC$ when $AD = 4$, $DB = 6$, $AE = 6$, $EC = 9$.`,
+      s: String.raw`Parallel lines cut proportionally: $\tfrac{AE}{EC} = \tfrac35$, so $EC = 7.5$. In the second case $\tfrac46 = \tfrac69$, so by the converse $DE \parallel BC$.` }
+  );
+  add("cevian-ratio-sum",
+    { q: String.raw`Check both cevian identities when $P$ is the centroid.`,
+      s: String.raw`The medians are cut $2 : 1$ at the centroid, so each $\tfrac{PD}{AD} = \tfrac13$, and the three add to $1$. Each $\tfrac{AP}{AD} = \tfrac23$, and the three add to $2$.` }
+  );
+  add("regular-dodecagon",
+    { q: String.raw`A regular dodecagon is inscribed in a circle of radius $1$. Find its area and compare it with the circle.`,
+      s: String.raw`The area is $3R^2 = 3$, made of twelve triangles of area $\tfrac12\sin30^\circ = \tfrac14$. The circle's area is $\pi \approx 3.14$, so the dodecagon fills about $95.5\%$ of it.` },
+    { q: String.raw`Working backwards: a regular $12$-gon covers $12$ square units. How long is each side, and how far are the vertices from the center?`,
+      s: String.raw`From $3R^2 = 12$, $R = 2$. From $3(2 + \sqrt3)s^2 = 12$, $s^2 = \tfrac4{2 + \sqrt3} = 4(2 - \sqrt3) = 8 - 4\sqrt3$, so $s = \sqrt6 - \sqrt2$, since $(\sqrt6 - \sqrt2)^2 = 8 - 2\sqrt{12}$.` }
+  );
+  add("max-rectangle-in-triangle",
+    { q: String.raw`A triangle has base $10$ and height $6$. Find the largest rectangle with one side on the base and its top corners on the other two sides.`,
+      s: String.raw`At height $y$ the triangle is $10\left(1 - \tfrac y6\right)$ wide, so the area is $10y\left(1 - \tfrac y6\right)$, largest at $y = 3$: a $5 \times 3$ rectangle of area $15$, half the triangle's $30$.` },
+    { q: String.raw`Prove that the largest rectangle with a side on the base of any triangle has half the triangle's height.`,
+      s: String.raw`With base $b$ and height $h$, a rectangle of height $y$ has width $b\left(1 - \tfrac yh\right)$ by similar triangles, so its area is $\tfrac bh\,y(h - y)$. The product $y(h - y)$ is largest at $y = \tfrac h2$, where the area is $\tfrac{bh}4$, half of $[\triangle] = \tfrac{bh}2$.` }
+  );
 })();
