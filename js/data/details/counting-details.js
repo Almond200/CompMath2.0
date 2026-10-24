@@ -14,7 +14,13 @@ Object.assign(window.MATH_DETAILS, {
 The sets are finite subsets of one universe. The same identity holds for probabilities, $P(A \cup B) = P(A) + P(B) - P(A \cap B)$, and for any additive measure, such as area.
 
 ## Why it works
-Take an element that lies in exactly $m \ge 1$ of the sets. The right side counts it once for each set containing it, $\binom m1$ times, subtracts it once for each pair of those sets, $\binom m2$ times, and so on, for a net count of $$\binom m1 - \binom m2 + \binom m3 - \cdots \pm \binom mm = 1 - (1 - 1)^m = 1.$$ An element in none of the sets is counted zero times. So every element of the union is counted exactly once.
+Take an element that lies in exactly $m \ge 1$ of the sets. The right side counts it once for each set containing it, $\binom m1$ times, subtracts it once for each pair of those sets, $\binom m2$ times, and so on, for a net count of
+$$\binom m1 - \binom m2 + \binom m3 - \cdots \pm \binom mm = 1 - (1 - 1)^m = 1.$$
+An element in none of the sets is counted zero times. So every element of the union is counted exactly once. Subtracting from $N$ gives the complement form, and when all $k$-fold intersections have size $N_k$ the inner sum is $\binom nk N_k$.
+
+For the bounds, stop after the terms with $k \le t$. The element above is then counted $\sum_{k=1}^{t}(-1)^{k+1}\binom mk = 1 - (-1)^t\binom{m-1}{t}$ times, by Pascal's rule telescoping. That is at least $1$ when $t$ is odd and at most $1$ when $t$ is even, so the partial sums alternate above and below.
+
+The two observations are the complement form with the right $N_k$. For derangements, $A_i$ is the set of permutations fixing $i$, and fixing $k$ chosen points leaves $(n - k)!$ permutations. For onto maps, $A_i$ is the set of maps missing the value $i$, and missing $j$ chosen values leaves $(k - j)^n$ maps.
 
 ## Useful observations
 - Stopping after any term gives a bound: stopping after an added term overestimates the union, and stopping after a subtracted term underestimates it.
@@ -216,7 +222,9 @@ The rectangles have sides along the grid lines. Tilted rectangles on lattice poi
 ## Why it works
 A rectangle is determined by choosing $2$ of the $m + 1$ vertical grid lines and $2$ of the $n + 1$ horizontal ones, and the choices are independent.
 
-Squares are the constrained version, since the two spans must be equal: summing over the side length $k$ gives $\sum_k (m + 1 - k)(n + 1 - k)$, which collapses to the [[power-sums|sum of the squares]], $\sum_{k=1}^{n} k^2$, on a square grid.
+Squares are the constrained version, since the two spans must be equal. A $k \times k$ square has its left edge on one of the first $m + 1 - k$ vertical lines and its bottom edge on one of the first $n + 1 - k$ horizontal lines, so summing over $k$ gives $\sum_k (m + 1 - k)(n + 1 - k)$. On a square grid the terms are $(n + 1 - k)^2$, which run through the [[power-sums|sum of the squares]], $\sum_{j=1}^{n} j^2$.
+
+For the cell in column $i$ and row $j$, the left side of the rectangle is one of the $i$ vertical lines to its left and the right side one of the $m - i + 1$ to its right, and the same for rows.
 
 ## Useful observations
 - The key move is to stop counting rectangles and start counting the lines that bound them: any two vertical lines and any two horizontal lines determine exactly one rectangle, so the count is a product of two binomial coefficients.
@@ -691,9 +699,11 @@ Hat checks, mismatched letters and envelopes, and "no one gets their own" scenar
 The structure is built by nesting or by never letting one running count fall behind another. The number of triangulations is $C_n$ for a convex polygon with $n + 2$ sides.
 
 ## Why it works
-[[reflection-principle|Reflection principle]]: monotone paths crossing the diagonal biject, by reflecting after the first violation, with paths to a shifted endpoint, giving $\binom{2n}{n} - \binom{2n}{n+1} = \frac{1}{n+1}\binom{2n}{n}$.
+[[reflection-principle|Reflection principle]]: monotone paths crossing the diagonal biject, by reflecting after the first violation, with paths to a shifted endpoint, giving $\binom{2n}{n} - \binom{2n}{n+1}$. Since $\binom{2n}{n+1} = \frac{n}{n+1}\binom{2n}{n}$, this is $\frac{1}{n+1}\binom{2n}{n}$.
 
 The recurrence $C_{n+1} = \sum C_iC_{n-i}$ conditions on the first return to the diagonal: what happens before the return and after it are independent smaller structures.
+
+The other families satisfy the same recurrence with $C_0 = 1$, so they have the same numbers. In $n + 1$ pairs of parentheses, the first pair encloses $i$ pairs and is followed by $n - i$. A binary tree with $n + 1$ nodes has a root, a left subtree with $i$ nodes and a right one with $n - i$. In an $(n + 3)$-gon, the triangle on a fixed side has its third vertex somewhere that leaves polygons with $i + 2$ and $n - i + 2$ sides.
 
 ## Useful observations
 - The skill is recognition rather than computation: whenever a structure is built by nesting or by never letting one running count fall behind another, it is Catalan.
@@ -2120,7 +2130,13 @@ The graph is bipartite, with the applicants $X$ on one side and the jobs on the 
 ## Why it works
 The condition $\lvert N(S)\rvert \ge \lvert S\rvert$ for every $S \subseteq X$ is clearly necessary: a group of applicants adjacent to fewer jobs than its size cannot all be matched.
 
-Sufficiency is the theorem: if no matching saturates $X$, an augmenting-path argument extracts a specific deficient set $S$ with $\lvert N(S)\rvert \lt \lvert S\rvert$. So the sole obstruction to a full matching is one bottleneck set.
+Sufficiency, by induction on $\lvert X\rvert$; one applicant is matched to any neighbour. Case 1: every nonempty $S \ne X$ has $\lvert N(S)\rvert \ge \lvert S\rvert + 1$. Match any $x$ to any neighbour $y$ and delete both. Every $N(S)$ loses at most $y$, so the condition still holds and the rest is matched by induction.
+
+Case 2: some nonempty $S_0 \ne X$ has $\lvert N(S_0)\rvert = \lvert S_0\rvert$. Within $S_0$ and $N(S_0)$ the condition holds, so $S_0$ is matched by induction. For the rest, take $T \subseteq X \setminus S_0$; its new neighbourhood, outside $N(S_0)$, has size
+$$\lvert N(T \cup S_0)\rvert - \lvert N(S_0)\rvert \ge \lvert T\rvert + \lvert S_0\rvert - \lvert S_0\rvert = \lvert T\rvert,$$
+so $X \setminus S_0$ is matched into the remaining jobs by induction, and the two matchings together saturate $X$.
+
+For a $k$-regular bipartite graph, the $k\lvert S\rvert$ edges leaving $S$ all end in $N(S)$, which receives at most $k\lvert N(S)\rvert$ edges, so $\lvert N(S)\rvert \ge \lvert S\rvert$. Counting edges also gives $k\lvert X\rvert = k\lvert Y\rvert$, so the matching is perfect.
 
 ## Useful observations
 - To prove a matching exists, Hall's condition is verified; to prove none exists, one deficient set is exhibited. That asymmetry makes the theorem practical, since disproof needs only a single example.

@@ -505,9 +505,13 @@ AMC and AIME last-digit questions, usually paired with the Chinese Remainder The
 $p$ is prime. For composite $n \gt 4$, $(n - 1)! \equiv 0 \pmod n$, and $3! \equiv 2 \pmod 4$.
 
 ## Why it works
-Each of $1, 2, \ldots, p - 1$ has an inverse modulo $p$, and the inverse is unique. A number is its own inverse exactly when $x^2 \equiv 1$, that is $p \mid (x - 1)(x + 1)$, so $x \equiv \pm1$. So the numbers $2, 3, \ldots, p - 2$ split into pairs $\{x, x^{-1}\}$, each multiplying to $1$, and $(p - 1)! \equiv 1 \cdot (p - 1) \equiv -1$.
+Each of $1, 2, \ldots, p - 1$ has an inverse modulo $p$, and the inverse is unique. A number is its own inverse exactly when $x^2 \equiv 1$, that is $p \mid (x - 1)(x + 1)$, so $x \equiv \pm1$. So the numbers $2, 3, \ldots, p - 2$ split into pairs $\{x, x^{-1}\}$, each multiplying to $1$, and $(p - 1)! \equiv 1 \cdot (p - 1) \equiv -1$. Dividing by $p - 1 \equiv -1$ gives $(p - 2)! \equiv 1$.
 
-For the converse, if $n = ab$ with $1 \lt a \le b \lt n$, then $a$ divides $(n - 1)!$, so $(n - 1)! \equiv -1 \pmod n$ would make $a$ divide $1$. The half-factorial form pairs $k$ with $p - k \equiv -k$: $(p - 1)! = \prod_{k \le (p-1)/2} k(p - k) \equiv (-1)^{(p-1)/2}\left(\left(\frac{p-1}{2}\right)!\right)^2$.
+For the converse, if $n = ab$ with $1 \lt a \le b \lt n$, then $a$ divides $(n - 1)!$, so $(n - 1)! \equiv -1 \pmod n$ would make $a$ divide $1$. In fact, for composite $n \gt 4$, $n \mid (n - 1)!$: if $a \lt b$ both factors appear in $(n - 1)!$, and if $n = a^2$ with $a \gt 2$, then $a$ and $2a$ are both below $n$, and $a \cdot 2a$ is a multiple of $n$.
+
+The half-factorial form pairs $k$ with $p - k \equiv -k$:
+$$(p - 1)! = \prod_{k \le (p-1)/2} k(p - k) \equiv (-1)^{(p-1)/2}\left(\left(\tfrac{p-1}{2}\right)!\right)^2.$$
+Setting this equal to $-1$ gives $\left(\left(\frac{p-1}{2}\right)!\right)^2 \equiv (-1)^{(p+1)/2}$, which is $-1$ when $p \equiv 1 \pmod 4$.
 
 ## Useful observations
 - The product pairs each residue with its inverse, leaving only $1$ and $-1$ unpaired: modulo $7$, $6! = 1 \cdot (2 \cdot 4)(3 \cdot 5) \cdot 6 \equiv -1$, and indeed $720 = 7 \cdot 103 - 1$.
@@ -926,7 +930,7 @@ Exponent questions about a huge difference or sum of powers: the largest power o
 4. Add $v_p(a - b)$ and $v_p(n)$, with the extra terms of the form for $2$.
 
 ## Why it works
-Valuations turn products into sums, so the exponent of $p$ in a large number can be found without knowing the number. The lemma says that raising to the $n$th power adds exactly one factor of $p$ for each factor of $p$ in $n$, and nothing for the part of $n$ coprime to $p$, so the whole computation comes down to two small valuations.
+Valuations turn products into sums, so the exponent of $p$ in a large number can be found without knowing the number. The lemma says that raising to the $n$th power adds exactly one factor of $p$ for each factor of $p$ in $n$, and nothing for the part of $n$ coprime to $p$, so the whole computation comes down to two small valuations. The proof is on [[lte-lemma|the Lifting the Exponent card]].
 
 ## Formulas it uses
 - [[lte-lemma]]: the exponent formula itself, $v_p(a^n - b^n) = v_p(a - b) + v_p(n)$ for an odd prime $p$ dividing $a - b$ but neither $a$ nor $b$; one line then decides most uses, as in $v_3(4^{729} - 1) = v_3(3) + v_3(729) = 1 + 6 = 7$.

@@ -2232,7 +2232,13 @@ Seven problems here, five of them AIME, none by it alone; two do the rotation in
 The polyhedron is convex, or more generally has no holes, and the graph is connected. Every edge borders exactly two faces and meets two vertices, which is what the double counts below use.
 
 ## Why it works
-Flatten the polyhedron into a planar graph by removing one face and stretching; then induct. Each added edge either creates a new face, when it joins two vertices already connected, or attaches a new vertex, when it does not, and in both cases $V - E + F$ is unchanged. The sphere's Euler characteristic $2$ is what is really being computed.
+Flatten the polyhedron into a planar graph by removing one face and stretching it out as the outer region. Then build the connected graph in two stages. A spanning tree has $V$ vertices, $V - 1$ edges and one face, so $V - E + F = 2$.
+
+Each remaining edge joins two vertices already connected, so it closes a loop and splits one face into two: $E$ and $F$ both rise by $1$, and $V - E + F$ stays $2$.
+
+The bounds come from the double counts. Each edge borders two faces, so adding the sides of all faces gives $2E \ge 3F$; similarly the degrees give $2E \ge 3V$. Then $F \le \frac{2E}3$ in Euler's Formula gives $E \le 3V - 6$, and $F = 2 - V + E \le 2V - 4$.
+
+If every face is a $p$-gon and every vertex has degree $q$, then $pF = 2E = qV$, and Euler's Formula becomes $\frac1p + \frac1q = \frac12 + \frac1E \gt \frac12$. With $p, q \ge 3$ only $(3, 3)$, $(3, 4)$, $(4, 3)$, $(3, 5)$, $(5, 3)$ remain, the five Platonic solids. The form $2 - 2g$ for surfaces with holes is quoted, not proved here; see D. Richeson, Euler's Gem (Princeton University Press, 2008).
 
 ## Useful observations
 - Face-edge and vertex-edge double counts combine with the formula. Each edge lies on two faces, so adding up the sides of every face counts every edge twice, and similarly for the degrees at the vertices.

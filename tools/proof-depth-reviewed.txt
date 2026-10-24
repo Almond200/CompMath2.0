@@ -82,3 +82,13 @@ inverse-trig-identities   # each identity and the correction proved
 primes-6k
 exradii                   # every Key form proved
 trig-substitution         # the tangent condition derived
+inclusion-exclusion       # Bonferroni bounds, derangements, onto maps
+scale-one-level
+wilsons-theorem           # (p-2)!, composite n > 4, the half-factorial
+catalan-numbers           # the other families by the recurrence
+working-backwards
+lte                       # method card; the proof is on lte-lemma
+rectangles-in-grid
+euclids-lemma
+halls-marriage            # full induction proof of sufficiency
+eulers-polyhedron-formula # spanning-tree proof, bounds, Platonic solids; genus quoted
