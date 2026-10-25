@@ -280,6 +280,11 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
+**2026-10-25**
+
+- **Search index rebuilt for 753 cards (2026-10-25).** 157/187 top-1, MRR 0.906, the same as the last rebuild. E (renovation) continues: the circumradius and inradius product, carries in doubling, quadrant reductions, the trace and determinant of eigenvalues, inversion of circles not through the center and of angles, chains of reflections, the triangle isoperimetric bound (the circle bound labelled quoted, with a reference), the cross-ratio's complex form, rearrangements and sign, and the recognition numbers (checked by computer).
+- **New cards P28 to P38 (2026-10-25).** Approved by the owner: Most Edges in a Disconnected Graph, Folding a Net into a Cube, Counting by What Each Step Removes, Area by Adding and Subtracting Pieces, Rounding Up to Whole Items, Views of a Stack of Cubes, Symmetries of a Figure, Joining Shapes Hides Edges, Assuming All Are of One Kind, and Common Multiples Are Multiples of the LCM, each with a proof, an example and (for the five geometry cards) a computed figure; Adding Groups of Equations now covers multiplying them. 65 problems tagged, AMC 10/12 twins included (604 still cite no card); every route complete. E is widened to a general card renovation (owner).
+
 **2026-10-24**
 
 - **E: second pass, second batch (2026-10-24).** Pick's Theorem now has a full proof (additivity, rectangles, right triangles, all polygons); Binet's card proves the sum of squares, Cassini, the addition rule and the gcd property; Menelaus proves its converse; tangents to conics derive the parabola form and the director circle; trees prove all three "two of three" pairs; parametric conics, the parabolic segment, committee-and-chair, 3D distance and the right-triangle inradius completed. The Handshakes card's main box now also shows $\binom n4$ for the diagonal crossings (owner). Commits now come about every 30 cards (owner). Thin cards left: 0.

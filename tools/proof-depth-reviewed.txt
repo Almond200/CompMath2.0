@@ -232,3 +232,13 @@ picks-theorem             # full proof: additivity, rectangles, triangles
 conic-tangent-lines       # parabola point form, hyperbola slopes, director circle
 committee-chair
 parabolic-segment-area
+circumradius-area         # rR and the observations derived
+digit-sum-carries
+common-angle-values
+eigenvalues-characteristic # trace and determinant coefficients derived
+law-cosines-60-120
+inversion-facts           # circles not through O and angle preservation proved
+reflection-composition    # longer chains; odd case classification quoted
+isoperimetric-facts       # triangle bound derived; circle and polygon steps quoted (Blasjo)
+cross-ratio               # complex form, rearrangements, sign
+recognition-numbers       # values checked by computer

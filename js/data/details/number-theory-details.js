@@ -1793,11 +1793,13 @@ Usually a single decisive line: the right modulus either ends a "show there are 
 There is no theorem here: these are facts about particular numbers, and the decimal values are approximations. The factorizations are exact.
 
 ## Why it works
-There is no theorem here, only the reason these particular numbers keep appearing.
+There is no theorem here, only the reason these particular numbers keep appearing. Every factorization and value on this card was checked by computer.
 
 Divisibility by $2$, $3$, and $5$ can be seen at a glance, so a number that passes those tests looks prime. A composite number that passes them has all its prime factors at least $7$, and the products of two primes from $7$ to $19$ are the ones that turn up most. Knowing those few products means $221$ or $323$ never slows anything down.
 
-$1001 = 7 \cdot 11 \cdot 13$ is behind a whole family of tricks. Repeating a three-digit block multiplies it by $1001$, $$\overline{abcabc} = \overline{abc} \cdot 1001 = \overline{abc} \cdot 7 \cdot 11 \cdot 13,$$ so every such six-digit number is divisible by $7$, $11$, and $13$. And $2^{10} = 1024$ is so close to $10^3$ that it converts between powers of $2$ and powers of $10$ with an error under $3\%$.
+$1001 = 7 \cdot 11 \cdot 13$ is behind a whole family of tricks. Repeating a three-digit block multiplies it by $1001$,
+$$\overline{abcabc} = \overline{abc} \cdot 1001 = \overline{abc} \cdot 7 \cdot 11 \cdot 13,$$
+so every such six-digit number is divisible by $7$, $11$, and $13$. And $2^{10} = 1024$ is so close to $10^3$ that it converts between powers of $2$ and powers of $10$ with an error under $3\%$.
 
 ## Useful observations
 - To factor a three-digit number, the primes $7$, $11$, $13$, $17$, and $19$ are tested after the obvious small ones. A number below $529 = 23^2$ that passes all of them is prime, since a composite one would need two prime factors of at least $23$.
@@ -2612,7 +2614,9 @@ The invisible step in a large share of AIME number theory, rarely named even whe
 $a$ and $b$ are nonnegative integers; carries are counted column by column, including chains.
 
 ## Why it works
-Adding two digits in a column, plus any incoming carry, either stays below $10$ or does not. When it does not, the column keeps the total minus $10$ and passes $1$ to the next column, so the overall digit sum loses $10$ and gains $1$, a net drop of $9$. Without carries every digit of the sum is the sum of the digits, so each carry accounts for exactly one drop of $9$.
+Adding two digits in a column, plus any incoming carry, either stays below $10$ or does not. When it does not, the column keeps the total minus $10$ and passes $1$ to the next column, so the overall digit sum loses $10$ and gains $1$, a net drop of $9$. Without carries every digit of the sum is the sum of the digits, so each carry accounts for exactly one drop of $9$. In base $b$ a carry keeps the total minus $b$ and passes $1$, a drop of $b - 1$.
+
+For doubling, a column holds $2d$ plus an incoming carry of at most $1$. That reaches $10$ exactly when $d \ge 5$, since $2 \cdot 4 + 1 = 9$, so the carries are the digits $5$ to $9$. Every correction is a multiple of $9$, so the digit sum keeps the same remainder mod $9$ through any addition; the reason $n \equiv s(n) \pmod 9$ for a single number is that $10 \equiv 1$, so each place value is $1$ mod $9$.
 
 ## Useful observations
 - "No carrying" means each column adds to at most $9$, so the digits of different places are chosen independently and counts become products.

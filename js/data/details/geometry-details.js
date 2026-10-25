@@ -15,9 +15,14 @@ Object.assign(window.MATH_DETAILS, {
 $P \ne O$: the center has no image, and plays the role of the point at infinity. A circle not through $O$ maps to a circle, but its center does not map to the center of the image.
 
 ## Why it works
-For two points $P$ and $Q$, the definition gives $OP \cdot OP^* = OQ \cdot OQ^*$, so $\frac{OP}{OQ} = \frac{OQ^*}{OP^*}$. With the shared angle at $O$, triangles $OPQ$ and $OQ^*P^*$ are similar, and matching sides gives $$\frac{P^*Q^*}{PQ} = \frac{OQ^*}{OP} = \frac{r^2}{OP \cdot OQ}.$$
+For two points $P$ and $Q$, the definition gives $OP \cdot OP^* = OQ \cdot OQ^*$, so $\frac{OP}{OQ} = \frac{OQ^*}{OP^*}$. With the shared angle at $O$, triangles $OPQ$ and $OQ^*P^*$ are similar, and matching sides gives
+$$\frac{P^*Q^*}{PQ} = \frac{OQ^*}{OP} = \frac{r^2}{OP \cdot OQ}.$$
 
-The same similarity carries lines to circles. Let $A$ be the foot of the perpendicular from $O$ to a line not through $O$, and $P$ any point of the line. Triangles $OAP$ and $OP^*A^*$ are similar, so the angle at $P^*$ is a right angle, and $P^*$ lies on the circle with diameter $OA^*$.
+Lines. A line through $O$ goes to itself, since $P^*$ is on ray $OP$. For a line not through $O$, let $A$ be the foot of the perpendicular from $O$ and $P$ any point of the line. Triangles $OAP$ and $OP^*A^*$ are similar, so the angle at $P^*$ is a right angle, and $P^*$ lies on the circle with diameter $OA^*$. Inversion undoes itself, so a circle through $O$ goes back to a line.
+
+Circles not through $O$. Let the circle have power $k \ne 0$ with respect to $O$. The ray from $O$ through a point $P$ of it meets it again at $Q$, with $OP \cdot OQ = k$ (signed). Then $OP^* = \frac{r^2}{OP} = \frac{r^2}{k}OQ$, so $P^*$ is the image of $Q$ under the homothety at $O$ with ratio $\frac{r^2}k$, and the whole image is a circle not through $O$.
+
+Angles. The similar triangles give $\angle OPQ = \angle OQ^*P^*$: as $Q$ approaches $P$ along a curve, the angle between the curve and the line $OP$ at $P$ equals the angle between the image curve and the same line at $P^*$, with the orientation reversed. Two curves through $P$ therefore meet at the same angle as their images.
 
 ## Useful observations
 - Centering at a point where many circles meet turns every circle through it into a line, and tangent circles through it into parallel lines.
@@ -667,6 +672,10 @@ The formula is the [[trig-area|sine area formula]] with the sine replaced by a l
 The area is $\frac12ab\sin C$ by the sine area formula. The side $c$ is a chord of the circumcircle and the inscribed angle $C$ stands on it, so the [[law-of-sines|Extended Law of Sines]] gives $c = 2R\sin C$, that is, $\sin C = \frac{c}{2R}$. Substituting, $A = \frac12ab \cdot \frac{c}{2R} = \frac{abc}{4R}$.
 
 {{figure:both-radii}}
+
+The other forms follow at once. In a right triangle the hypotenuse subtends a right angle, so it is a diameter and $R = \frac c2$. Since also $A = rs$, multiplying $R = \frac{abc}{4A}$ by $r = \frac As$ gives $rR = \frac{abc}{4s}$.
+
+For the observations: the circumcenter is on the perpendicular bisector of side $a$, and the right triangle formed by $O$, the midpoint of $a$, and an end of $a$ gives the distance $\sqrt{R^2 - \frac{a^2}4}$, which is $R\lvert\cos A\rvert$; it lies on $A$'s side of $a$ exactly when $A$ is acute. For an isosceles triangle with legs $\ell$, base $b$ and height $h$, $R = \frac{\ell \cdot \ell \cdot b}{4 \cdot \frac12bh} = \frac{\ell^2}{2h}$.
 
 ## Useful observations
 - The circumcenter lies on the perpendicular bisector of each side, at distance $\sqrt{R^2 - \frac{a^2}{4}}$ from side $a$, inside the triangle exactly when the triangle is acute.
@@ -4018,9 +4027,11 @@ AIME three-dimensional problems: the distance between skew edges or face diagona
 The perimeter is fixed. Equality holds only for the symmetric shape, and the statement is about closed curves in the plane; a wall or a missing side changes the optimum.
 
 ## Why it works
-Rectangle: $xy \le \left(\frac{x + y}{2}\right)^2$ is AM-GM. Triangle: Heron's product $(s - a)(s - b)(s - c)$ with fixed sum is maximized at equality, AM-GM again, since the three factors add to $s$.
+Rectangle: with sides $x$ and $y$ and $x + y = \frac P2$, AM-GM gives $xy \le \left(\frac{x + y}{2}\right)^2 = \frac{P^2}{16}$, with equality for the square.
 
-For polygons the classical chain is: the cyclic arrangement maximizes area for given sides, because [[bretschneiders-formula|Bretschneider's]] cosine term vanishes; then the regular polygon among cyclic ones; then the circle. Each step trades asymmetry for area.
+Triangle: Heron's Formula gives $A^2 = s(s - a)(s - b)(s - c)$, and the three factors after $s$ add to $3s - 2s = s$, so AM-GM gives $(s - a)(s - b)(s - c) \le \left(\frac s3\right)^3$. Then $A^2 \le \frac{s^4}{27}$, so $A \le \frac{s^2}{3\sqrt3} = \frac{P^2}{12\sqrt3}$, with equality for the equilateral triangle.
+
+For polygons the classical chain is: the cyclic arrangement maximizes area for given sides, because [[bretschneiders-formula|Bretschneider's]] cosine term vanishes; then the regular polygon among cyclic ones; then the circle. The circle bound $A \le \frac{P^2}{4\pi}$ for all closed curves, and the step to the regular polygon, are quoted, not proved here; a survey of the proofs is V. Blåsjö, "The Isoperimetric Problem", American Mathematical Monthly 112 (2005), 526–566.
 
 ## Useful observations
 - Optimization problems that ask for a maximum area with a perimeter budget, or a minimum perimeter for an area, end at the symmetric configuration: the fact is quoted, the symmetric case computed, and the equality condition confirmed.
@@ -5724,7 +5735,13 @@ The four points are distinct and collinear, or lie on a circle, or are the inter
 ## Why it works
 A projection from a point $P$ cannot change the cross-ratio, because each length is expressed through angles at $P$ and the rest cancels.
 
-Let $h$ be the distance from $P$ to the line. The triangle $PAC$ has area $\frac12 h \cdot AC = \frac12 PA \cdot PC \sin\angle APC$, so $AC = \frac{PA \cdot PC \sin\angle APC}{h}$, and the same holds for $BD$, $BC$, and $AD$. In the quotient $\frac{AC \cdot BD}{BC \cdot AD}$ each of $PA$, $PB$, $PC$, $PD$ appears once above and once below, and $h$ twice above and twice below. What remains is $$\frac{\sin\angle APC\,\sin\angle BPD}{\sin\angle BPC\,\sin\angle APD},$$ which depends only on the four lines through $P$, so every line cutting them gives the same value.
+Let $h$ be the distance from $P$ to the line. The triangle $PAC$ has area $\frac12 h \cdot AC = \frac12 PA \cdot PC \sin\angle APC$, so $AC = \frac{PA \cdot PC \sin\angle APC}{h}$, and the same holds for $BD$, $BC$, and $AD$. In the quotient $\frac{AC \cdot BD}{BC \cdot AD}$ each of $PA$, $PB$, $PC$, $PD$ appears once above and once below, and $h$ twice above and twice below. What remains is
+$$\frac{\sin\angle APC\,\sin\angle BPD}{\sin\angle BPC\,\sin\angle APD},$$
+which depends only on the four lines through $P$, so every line cutting them gives the same value.
+
+For complex numbers, the argument of $\frac{a - c}{b - c}$ is the angle $ACB$ and that of $\frac{a - d}{b - d}$ is the angle $ADB$, so the cross-ratio is real exactly when those angles are equal or supplementary, which by the [[inscribed-angle-theorem|Inscribed Angle Theorem]] is when $A$, $B$, $C$, $D$ are concyclic or collinear.
+
+The rearrangements come from the definition $\lambda = \frac{(c - a)(d - b)}{(c - b)(d - a)}$. Swapping $C$ and $D$ inverts it, giving $\frac1\lambda$, and the expansion $(c - b)(d - a) - (c - a)(d - b) = (a - b)(d - c)$ shows that swapping $B$ and $C$ gives $1 - \lambda$; the other three values are these two moves combined. The sign: $\frac{c - a}{c - b}$ is negative exactly when $C$ is between $A$ and $B$, so $\lambda \lt 0$ exactly when one of $C$, $D$ separates $A$ from $B$ and the other does not.
 
 ## Useful observations
 - The method is to compute the cross-ratio where it is easy, on a line or a circle, and then project into the hard configuration, where it must match. Equating two cross-ratios solves for an unknown length or proves a coincidence.
@@ -6136,9 +6153,11 @@ Essentially never needed below the olympiad level, and even there a structural t
 The angle $\theta$ is the directed angle from $\ell_1$ to $\ell_2$. Two coincident mirrors compose to the identity.
 
 ## Why it works
-Track directions. Reflecting a line at angle $\alpha$ in a mirror at angle $\mu$ sends it to $2\mu - \alpha$, so reflecting in $\ell_1$ and then $\ell_2$ sends $\alpha$ to $2\mu_2 - (2\mu_1 - \alpha) = \alpha + 2(\mu_2 - \mu_1)$.
+Track directions. Reflecting a line at angle $\alpha$ in a mirror at angle $\mu$ sends it to $2\mu - \alpha$, so reflecting in $\ell_1$ and then $\ell_2$ sends $\alpha$ to $2\mu_2 - (2\mu_1 - \alpha) = \alpha + 2(\mu_2 - \mu_1)$. Swapping the order gives $\alpha - 2(\mu_2 - \mu_1)$, the opposite turn.
 
 Every direction therefore turns by the same $2\theta$, and the intersection point is fixed by both mirrors, so the composite can only be a rotation about it. Parallel mirrors have no fixed point: a point at signed distance $t$ from the first lands at $t + 2d$, which is a translation.
+
+For longer chains, each reflection reverses orientation, so an even number of them keeps it. A motion keeping orientation turns every direction by one angle $\varphi$; if $\varphi \ne 0$ it has a fixed point, since $x \mapsto Rx + t$ with $R$ a rotation has $x = (I - R)^{-1}t$, so it is a rotation, and if $\varphi = 0$ it is a translation. An odd number is one reflection followed by such a motion, which works out to a reflection or a glide reflection, a reflection followed by a slide along its mirror; that classification of the odd case is quoted here.
 
 ## Useful observations
 - A chain of reflections collapses: a long alternating process is secretly one rotation applied over and over, and the question becomes the order of that rotation.

@@ -1552,6 +1552,8 @@ The values come from the two [[special-right-triangles|special right triangles]]
 
 On the unit circle the point at angle $\theta$ is $(\cos\theta, \sin\theta)$, so $0^\circ$ and $90^\circ$ are the points $(1, 0)$ and $(0, 1)$, and $\tan 90^\circ = \frac10$ is undefined.
 
+The other quadrants are reflections of the first. The points at $180^\circ - \theta$, $180^\circ + \theta$ and $360^\circ - \theta$ are the reflections of the point at $\theta$ in the $y$-axis, the origin and the $x$-axis, so their coordinates are those at $\theta$ with signs changed. The signs are those of $x$ and $y$ in each quadrant, which gives the positive functions quadrant by quadrant, as on [[reduction-identities|the reduction identities card]].
+
 ## Useful observations
 - For any angle, the reference angle is found and the sign of its quadrant attached. So $\sin 150^\circ = \sin 30^\circ = \frac12$, $\cos 225^\circ = -\cos 45^\circ = -\frac{\sqrt2}{2}$, and $\tan 300^\circ = -\tan 60^\circ = -\sqrt3$.
 
@@ -4320,9 +4322,11 @@ A number of problems in this library's database solve a system somewhere in the 
 $A$ is a square matrix, and $\lambda$ counts with multiplicity as a root of the characteristic polynomial. The diagonal form $A = PDP^{-1}$ needs $n$ independent eigenvectors.
 
 ## Why it works
-$A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v} \ne \mathbf{0}$ says $A - \lambda I$ kills a nonzero vector, so its rows are dependent and its determinant vanishes. Expanding $\det(A - \lambda I)$ gives a degree-$n$ polynomial in $\lambda$ whose roots are the eigenvalues. [[vietas-general|Vieta's Formulas]] then identify the coefficient of $\lambda^{n-1}$ with the trace and the constant term with the determinant.
+$A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v} \ne \mathbf{0}$ says $A - \lambda I$ kills a nonzero vector, so its columns are dependent and its determinant vanishes; conversely a zero determinant gives such a vector. Expanding $\det(A - \lambda I)$ gives a degree-$n$ polynomial in $\lambda$ whose roots are the eigenvalues.
 
-The identity $\operatorname{tr}(AB) = \operatorname{tr}(BA)$ holds because both equal $\sum_{i, j}a_{ij}b_{ji}$. So $AB - BA$ always has trace $0$, and it can never equal the identity matrix, whose trace is $n$.
+Read off two of its coefficients. Setting $\lambda = 0$ gives the constant term $\det A$. In the expansion over permutations, a term with $\lambda^{n-1}$ must use at least $n - 1$ diagonal entries, so it is the diagonal product $\prod(a_{ii} - \lambda)$, whose $\lambda^{n-1}$ coefficient is $(-1)^{n-1}\sum a_{ii}$. By [[vietas-general|Vieta's Formulas]] for $\prod(\lambda_i - \lambda)$, those coefficients are $\prod\lambda_i$ and $(-1)^{n-1}\sum\lambda_i$, which gives the product and the sum.
+
+If $A\mathbf v = \lambda\mathbf v$, applying $A$ again gives $A^2\mathbf v = \lambda^2\mathbf v$, and so on, so $A^n$ has eigenvalue $\lambda^n$ on the same vector. The identity $\operatorname{tr}(AB) = \operatorname{tr}(BA)$ holds because both equal $\sum_{i, j}a_{ij}b_{ji}$. So $AB - BA$ always has trace $0$, and it can never equal the identity matrix, whose trace is $n$.
 
 ## Useful observations
 - Eigenvalues are what turn $A^n$ into a closed form: if $A = PDP^{-1}$ then $A^n = PD^nP^{-1}$, using the [[matrix-inverse|inverse]] $P^{-1}$.
