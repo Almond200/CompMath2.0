@@ -4657,7 +4657,7 @@
 
   // ---------- Front-page panels ----------
   // Did you know: a striking fact from the curiosity lists, the first Useful observation of one
-  // of their cards (or its opening sentence), chosen by the day and cycled by "Another".
+  // of their cards (or its opening sentence), with the card's diagram when it has one.
   function didYouKnowPool() {
     const ids = [];
     (window.MATH_BUILTIN_LISTS || []).filter(l => l.kind === "curiosity").forEach(l => l.sections.forEach(sec => sec.ids.forEach(id => { if (BY_ID[id] && ids.indexOf(id) < 0) ids.push(id); })));
@@ -4669,15 +4669,33 @@
     const raw = m ? m[1].replace(/ — .*$/, "") : leadSentences(BY_ID[id].formula.description, 240);
     return raw;
   }
-  function didYouKnowHtml(offset) {
+  // A different card on every visit and every "Another": a random pick that skips the cards
+  // shown most recently (kept in localStorage, so a reload does not bring the same one back).
+  function didYouKnowPick() {
     const pool = didYouKnowPool();
-    if (!pool.length) return "";
-    const day = Math.floor(Date.now() / 864e5);
-    const id = pool[((day + offset) % pool.length + pool.length) % pool.length];
+    if (!pool.length) return null;
+    let seen = [];
+    try { seen = JSON.parse(localStorage.getItem("dykSeen") || "[]"); } catch (e) {}
+    if (!Array.isArray(seen)) seen = [];
+    seen = seen.filter(id => pool.indexOf(id) >= 0).slice(-Math.floor(pool.length / 2));
+    const fresh = pool.filter(id => seen.indexOf(id) < 0);
+    const id = fresh[Math.floor(Math.random() * fresh.length)];
+    seen.push(id);
+    try { localStorage.setItem("dykSeen", JSON.stringify(seen)); } catch (e) {}
+    return id;
+  }
+  function didYouKnowHtml() {
+    const id = didYouKnowPick();
+    if (!id) return "";
     const f = BY_ID[id].formula;
-    return `<section class="hp-panel dyk" data-offset="${offset}">
+    // The card's first diagram, without its caption (which may describe another fact), as on
+    // the hover preview. It shows whatever "Figures on cards" says, since that setting is for
+    // browsing card faces and the fact here is the card's own content.
+    const panel = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
+    const fig = panel ? `<div class="dyk-fig">${String(panel).replace(/<div class="diagram-cap">[\s\S]*?<\/div>/, "")}</div>` : "";
+    return `<section class="hp-panel dyk${fig ? " dyk-has-fig" : ""}">
         <div class="hp-label">Did you know?</div>
-        <p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p>
+        <div class="dyk-body">${fig}<p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p></div>
         <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a><button type="button" class="hp-link dyk-next">Another</button></div>
       </section>`;
   }
@@ -4751,7 +4769,7 @@
         </nav>
         <div class="hub-main">
           <div class="hub-col">
-            ${didYouKnowHtml(0)}
+            ${didYouKnowHtml()}
             ${newestCardsHtml()}
             ${practiceGlanceHtml()}
           </div>
@@ -4793,7 +4811,7 @@
       if (!btn) return;
       const panel = btn.closest(".dyk");
       const tmp = document.createElement("div");
-      tmp.innerHTML = didYouKnowHtml(+panel.dataset.offset + 1);
+      tmp.innerHTML = didYouKnowHtml();
       const next = tmp.firstElementChild;
       panel.replaceWith(next);
       renderMath(next);

@@ -3390,6 +3390,8 @@ html[data-text="larger"] .try-block .try-sub, html[data-text="larger"] .detail-b
 .hs-what { font-size: 12.5px; color: var(--text-dim); line-height: 1.45; }
 .hub-col { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
 .dyk-fact { font-size: 15px; line-height: 1.65; color: var(--text); margin: 4px 0 10px; }
+.dyk-fig { margin: 6px 0 10px; text-align: center; }
+.dyk-fig svg { max-width: 100%; max-height: 190px; height: auto; }
 .dyk-foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; }
 .dyk-foot a { color: var(--accent); text-decoration: none; }
 .dyk-next { background: none; border: 0; cursor: pointer; padding: 0; font: inherit; }
