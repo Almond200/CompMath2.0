@@ -6766,7 +6766,7 @@ The inner circle lies inside the outer one. For $n = 3$ the relation is necessar
 ## Why it works
 For the triangle the relation is [[euler-distance-theorem|Euler's Distance Formula]], which holds in every triangle. So a circumcircle and incircle of the same triangle must satisfy it; the content of the converse is that the condition is also sufficient.
 
-Poncelet's closure theorem is the part with no elementary proof. Start anywhere on the outer circle, draw a tangent to the inner circle, continue around, and if the path closes after $n$ steps for one starting point, it closes after $n$ steps for every starting point.
+Poncelet's closure theorem, and Fuss's relation for the quadrilateral, are quoted, not proved here (L. Flatto, Poncelet's Theorem, American Mathematical Society, 2009); they have no elementary proof. Start anywhere on the outer circle, draw a tangent to the inner circle, continue around, and if the path closes after $n$ steps for one starting point, it closes after $n$ steps for every starting point.
 
 Poncelet's porism is the full statement, and it needs no circles: take any two conics, one inside the other, and run the same path, from a point of the outer conic along a tangent to the inner one, to the next point of the outer conic, and on. A porism is a theorem of exactly this all-or-nothing kind: a configuration that either has no solution or has infinitely many. Here either the path never closes up, from any starting point, or it closes after the same number $n$ of steps from every starting point, possibly winding several times around the inner conic and tracing a star polygon.
 

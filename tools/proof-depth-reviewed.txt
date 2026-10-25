@@ -564,3 +564,33 @@ parking-functions # counts checked, no change
 reims-theorem # checked, no change
 corner-circle-chain # flat-case step written out
 anti-steiner-point # checked, no change
+bertrands-postulate # threshold 468 checked numerically, no change
+cevian-nest # checked, no change
+isosceles-tetrahedron # checked, no change
+mean-chain # checked, no change
+pascal-parity # checked, no change
+pentagonal-number-theorem # checked, no change
+poncelet-closure # closure and Fuss labelled quoted with reference
+steiner-neighborhood # checked, no change
+lucas-theorem # checked, no change
+popoviciu-inequality # majorization steps checked, no change
+cayleys-formula # checked, no change
+mixtilinear-incircle # checked, no change
+feuerbach-theorem # both distances checked numerically, no change
+lester-circle # quoted with references, no change
+orthocentric-system # checked, no change
+ptolemys-theorem # checked, no change
+reflect-across-the-line # example checked, no change
+complementary-counting # checked, no change
+unfold-the-surface # example checked, no change
+dihedral-angle # example checked, no change
+elimination-counting # new card, checked
+probabilistic-method # checked, no change
+name-the-whole-expression # checked, no change
+time-per-leg # example checked, no change
+palindromic-polynomials # example checked, no change
+pairing-to-bound # checked, no change
+pie # example checked, no change
+area-by-pieces # new card, checked
+lagrange-interpolation # example checked, no change
+brocards-theorem # checked, no change
