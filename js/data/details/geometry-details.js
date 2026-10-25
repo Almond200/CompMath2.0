@@ -9499,3 +9499,156 @@ Points within a fixed distance of a rectangle, a box or a lens; the region swept
 An AMC 12 and early AIME tool: the rectangle and box forms settle a "within one unit" question in one line, and the convex form handles curved regions such as a lens. It pairs with Circle Area, Circumference, Arcs & Sectors for the corner pieces.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"figure-symmetries": String.raw`
+## Key forms
+- a regular $n$-gon has $n$ lines of symmetry and $n$ rotations onto itself, by $0, \frac{360^\circ}{n}, \ldots$, so its smallest nonzero turn is $\frac{360^\circ}{n}$
+- for odd $n$ each line passes through a vertex and the midpoint of the opposite side; for even $n$, $\frac n2$ lines join opposite vertices and $\frac n2$ join midpoints of opposite sides
+- square $4$ lines, rectangle and rhombus $2$, isosceles triangle $1$, parallelogram $0$ lines but a half-turn, a circle infinitely many
+- two lines of symmetry meeting at an angle $\theta$ force a rotational symmetry by $2\theta$
+- a symmetric shading of a grid is constant on each group of cells that the symmetries move into one another, so it is counted by those groups
+
+## Conditions
+The figure is in the plane, and a symmetry must carry the whole figure onto itself, shading and markings included. Rotations are about a fixed center, counted up to a full turn.
+
+## Why it works
+Step 1, the regular $n$-gon. A symmetry sends vertices to vertices and neighbours to neighbours, so it is fixed by where one vertex goes, $n$ choices, and whether the order around the polygon is kept or reversed, $2$ choices. The $n$ order-keeping ones are the rotations by multiples of $\frac{360^\circ}{n}$; the $n$ order-reversing ones are reflections, one in each line through the center and a vertex or a side midpoint.
+
+Step 2, the shape of the lines. A mirror line through the center meets the boundary twice, on opposite sides. For odd $n$ the point opposite a vertex is a side midpoint, so each of the $n$ lines passes through one of each. For even $n$ opposite vertices pair up, giving $\frac n2$ lines, and opposite side midpoints give the other $\frac n2$.
+
+Step 3. Reflecting in one line and then another at angle $\theta$ is a rotation by $2\theta$ about their crossing, as on [[reflection-composition|the card on composing reflections]], so two mirror lines always bring a rotation with them. And a symmetric shading must give each cell the same color as every image of it, which is why the cells split into groups that are shaded or unshaded together.
+
+## Useful observations
+- To make a shading symmetric with the fewest added cells, list each shaded cell's images and add the missing ones; cells on a mirror line are their own images.
+- The lines of symmetry of a figure all pass through one point when there are two or more of them, the center of the rotation they generate.
+- Letters and polyomino shapes are checked line by line: a mirror line can only be horizontal, vertical, or diagonal for a shape on a square grid.
+
+## Applications
+Counting lines of symmetry and rotational symmetries of polygons and grid figures, completing a figure to be symmetric, and reflections of a picture in a line.
+
+## Contest profile
+An AMC 8 favourite with figures, and an early AMC 10 and 12 question about regular polygons and symmetric shadings of grids.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"cube-nets": String.raw`
+## When to use
+A pattern of six squares (five for an open box) is folded along its edges, and the question asks which face is opposite a given one, which patterns close up, which faces meet at a corner, or what sum of dots is hidden on a die. The same tracking works for nets of other solids, such as a strip of faces of an octahedron.
+
+## How
+1. Choose a floor square, preferably one with many neighbours in the net.
+2. Fold its edge-neighbours up into walls. A square attached to the far edge of a wall folds over onto the face beyond that wall: the opposite wall or the lid.
+3. Read off opposite faces: in any straight row of three squares, the two ends are opposite; in a straight row of four, the first and third, and the second and fourth.
+4. If two squares land on the same face, the pattern is not a net.
+5. A corner of the cube is where three mutually adjacent faces meet, one from each opposite pair.
+
+The cross with a column $A, C, E, F$ and arms $B$, $D$ beside $C$ folds with $C$ as the floor: $A$ and $E$ are opposite, $B$ and $D$ are opposite, and $F$, two steps beyond $C$, is the lid, opposite $C$.
+
+## Why it works
+Each fold along a shared edge turns the next square through $90^\circ$ about that edge. Along a straight row, two folds turn the third square through $180^\circ$ from the first, so it faces the opposite way, parallel to the first and on the far side of the cube: they are opposite faces. A square two steps away along a bent path has turned about two different edges and ends up adjacent instead.
+
+A cube has $6$ faces in $3$ opposite pairs, and the three faces at a corner are pairwise adjacent, so no two of them are opposite: there is one from each pair. A pattern of six squares folds to a cube exactly when the six squares land on six different faces.
+
+## Formulas it uses
+- [[cube]]: the cube has $6$ faces, $12$ edges and $8$ corners, with three faces at each corner, which is what the folding has to fill.
+
+## Common traps
+- Treating two squares that touch only at a corner of the net as adjacent faces.
+- Applying the row rule along a bent path; it holds only for a straight row.
+- Forgetting that on a standard die the opposite faces add to $7$, which settles most dice questions at once.
+
+## Contest profile
+A steady AMC 8 question with a picture of a net, and an occasional AMC 10 or 12 problem about stacked dice or an open box.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"cube-stack-views": String.raw`
+## When to use
+A figure built from unit cubes is drawn from several directions or described by a grid of heights. The question asks what another view looks like, how many cubes there are, the least or greatest number of cubes consistent with the views, or the area of the exposed faces.
+
+## How
+1. Write the solid as a grid of heights $h_{ij}$, the number of cubes stacked on each square, with rows running back to front and columns left to right.
+2. The front view has, in column $j$, height $\max_i h_{ij}$; the side view has, in row $i$, height $\max_j h_{ij}$; the top view shows the squares with $h_{ij} \ge 1$.
+3. For the most cubes matching a front and a side view, put $\min(\text{side}_i, \text{front}_j)$ on every square.
+4. For the fewest, for each height $h$ count the columns $c_h$ and rows $r_h$ that need it; the minimum is $\sum_h h \cdot \max(c_h, r_h)$.
+
+With rows $(1, 2, 1)$, $(3, 1, 0)$, $(2, 0, 1)$ from back to front, the front view is $3, 2, 1$ and the right side view is $2, 3, 2$, from $11$ cubes.
+
+## Why it works
+Along each line of sight the nearer cubes hide the farther ones only where they are at least as tall, so what shows in a column is the height of its tallest stack, and the same for rows seen from the side.
+
+For the greatest number, a stack can be no taller than its row's maximum or its column's maximum, so $h_{ij} \le \min(\text{side}_i, \text{front}_j)$, and filling every square to that bound keeps the views: the tallest row reaches every column's height. For the least, each column with front height $h$ needs a stack of exactly $h$, and so does each row with side height $h$. One stack lies in one row and one column, so at least $\max(c_h, r_h)$ stacks of height $h$ are needed, and placing them so that each serves a row and a column of height $h$ where possible reaches that count.
+
+## Formulas it uses
+- [[cube]]: each unit cube has $6$ faces of area $1$, so an exposed surface is counted face by face.
+
+## Common traps
+- Reading the side view from the wrong side, which reverses the order of the rows.
+- Counting only the cubes that are visible when the question asks how many there could be.
+- Assuming the views determine the solid: the fewest and the most cubes usually differ.
+
+## Contest profile
+An AMC 8 question with a picture of a stack and its views, sometimes asking for the exposed surface area instead.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"area-by-pieces": String.raw`
+## When to use
+The shaded region has no formula of its own: an L shape, a frame around a picture, a square with quarter circles cut from its corners, a box net with corners removed, or the part of one shape not covered by another. Look for a rectangle, triangle or circle that contains the region with simple pieces left over, or for a way to cut the region into such pieces.
+
+## How
+1. Find a simple shape that contains the region, or a set of simple pieces that make it up.
+2. Read the dimensions of the pieces from the figure, often as differences of given lengths.
+3. Add the areas of the pieces, or subtract the removed pieces from the whole.
+4. To compare two regions, add a common piece to each and compare the larger shapes instead.
+
+An L shape inside a $6 \times 9$ rectangle with a $2 \times 4$ corner missing has area $54 - 8 = 46$, the same as splitting it into a $4 \times 9$ and a $2 \times 5$ rectangle.
+
+## Why it works
+Area is additive: if a region is split into pieces that overlap only along boundaries, which have no area, its area is the sum of theirs. A shape with pieces removed is the remaining region together with those pieces, so the region's area is the whole minus the pieces.
+
+For a comparison, if $Z$ overlaps neither $X$ nor $Y$, then $[X \cup Z] - [Y \cup Z] = ([X] + [Z]) - ([Y] + [Z]) = [X] - [Y]$, so the difference can be computed for the larger shapes.
+
+## Formulas it uses
+- [[triangle-area-standard]]: the triangles cut from a rectangle or added to it have area $\frac12bh$.
+- [[circle-basics]]: the quarter circles, semicircles, and sectors removed from or added to a figure.
+
+## Common traps
+- Subtracting a piece that overlaps another removed piece, so the overlap is subtracted twice; add it back, as in inclusion-exclusion.
+- Reading a missing length wrongly: the size of a cut-out corner is a difference of two given lengths.
+- Forgetting a piece, such as the fourth corner.
+
+## Contest profile
+Constant on the AMC 8 and early AMC 10 and 12 with a figure, and the standard first step for shaded regions involving circles.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"joined-shapes-perimeter": String.raw`
+## When to use
+A figure is built from pieces placed edge to edge, such as squares in a row, a T made of two rectangles, polygons joined side to side, or cubes glued face to face, and its perimeter, number of sides, or surface area is asked for. Also an outline with only right-angle corners whose individual edges are not all given.
+
+## How
+1. Add the perimeters of all the pieces, or their surface areas.
+2. For each place where two pieces touch, subtract twice the shared length, or twice the shared face area.
+3. For the number of sides after joining polygons, subtract $2$ for each join, then check whether any two remaining sides now line up into one.
+4. For a right-angle outline, add the horizontal edges as twice the overall width and the vertical edges as twice the overall height, when no line parallel to a side crosses the outline more than twice.
+
+Ten unit squares in a $2 \times 5$ block have perimeters adding to $40$ and $13$ shared edges, $8$ along the rows and $5$ between them, so the block's perimeter is $40 - 26 = 14 = 2(2 + 5)$.
+
+## Why it works
+The boundary of the joined figure is made of the pieces' boundaries, except the parts where two pieces touch. A shared edge belonged to the boundary of both pieces and now lies inside, so it is subtracted once for each, twice in all. Faces of solids work the same way.
+
+For the right-angle outline, a vertical line through the figure crosses the outline at its top edge and its bottom edge, once each. So, moving that line across the whole width, the horizontal edges above it and below it together sweep out twice the width, and the vertical edges sweep twice the height in the same way.
+
+## Formulas it uses
+No particular formula is needed; the count is of shared edges and faces.
+
+## Common traps
+- Subtracting a shared edge only once.
+- Counting pieces that touch only at a corner as sharing an edge.
+- Using the width-and-height shortcut on an outline with a notch cut into it from the top or bottom, where a vertical line crosses more than twice and the notch's sides add extra length.
+
+## Contest profile
+An AMC 8 question with a figure of squares, polygons, or cubes, and an early AMC 10 step.
+`
+});

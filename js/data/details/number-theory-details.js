@@ -3031,3 +3031,31 @@ $$\overline{abba} = 1001a + 110b = 11(91a + 10b), \qquad \overline{abcba} = 1000
 An AMC 8 and early AMC 10 and 12 setup: counting palindromes, a palindrome near a given number, or a divisibility question. It pairs with Constructive Counting and the divisibility rules for $3$, $9$, and $11$.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"lcm-common-multiples": String.raw`
+## Key forms
+- $a \mid N$ and $b \mid N$ $\iff$ $\operatorname{lcm}(a, b) \mid N$, and the same for any number of divisors
+- $N \equiv r$ modulo each of $a, b, c$ $\iff$ $N \equiv r \pmod{\operatorname{lcm}(a, b, c)}$; being $1$ short of a multiple of each means $N + 1$ is a multiple of the lcm
+- the common multiples from $1$ to $X$ number $\left\lfloor \frac XL \right\rfloor$, with $L = \operatorname{lcm}(a, b, c)$
+- for pairwise coprime $a$, $b$, $c$ the lcm is the product $abc$
+
+## Conditions
+$a$, $b$, $c$ and $N$ are positive integers. The remainder must be the same for every divisor; different remainders for different divisors need the [[crt|Chinese Remainder Theorem]].
+
+## Why it works
+Work one prime at a time. If $p^e$ is the highest power of $p$ in any of $a$, $b$, $c$, then $p^e$ is exactly the power of $p$ in $\operatorname{lcm}(a, b, c)$. A number $N$ divisible by each of $a$, $b$, $c$ must contain at least $p^e$, since one of them does, and that for every prime is the statement $\operatorname{lcm}(a, b, c) \mid N$. Conversely the lcm is a multiple of each of $a$, $b$, $c$, so every multiple of it is too.
+
+The remainder form is the same fact for $N - r$: $N \equiv r$ modulo each divisor exactly when each divides $N - r$. The count of common multiples up to $X$ is then the count of multiples of $L$, which is [[floor-multiples|the floor]] $\left\lfloor \frac XL \right\rfloor$. When the numbers are pairwise coprime, each prime occurs in only one of them, so the highest powers multiply to $abc$.
+
+## Useful observations
+- The first time several cycles of lengths $a$, $b$, $c$ line up again is after $\operatorname{lcm}(a, b, c)$ steps: buses, lights, and repeating patterns all meet at the lcm.
+- $\operatorname{lcm}(1, 2, \ldots, 6) = 60$ and $\operatorname{lcm}(1, \ldots, 10) = 2520$ come up often.
+- A remainder that is $1$ less than each divisor, as in remainders $1, 2, 3$ on division by $2, 3, 4$, signals $N + 1$ as the common multiple.
+
+## Applications
+Repeating schedules and patterns, numbers with given remainders that all match or all fall short by the same amount, and divisibility by every number in a range.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 staple, and an AMC 10 and 12 first step; on the AIME it is usually one line inside a longer argument.
+`
+});

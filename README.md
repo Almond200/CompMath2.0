@@ -1,9 +1,9 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 743 cards
-covering formulas, methods, and patterns (539 formulas, 155 methods, 44 patterns), plus a database
-of 4,675 past contest problems (4,616 with their full statements), of which 3,059 have a written
-strategy and 2,779 are cross-linked to the cards their solutions run through (2026-10-23).
+A searchable reference for AMC 10/12, AIME and olympiad training. 753 cards
+covering formulas, methods, and patterns (543 formulas, 166 methods, 44 patterns), plus a database
+of 4,675 past contest problems (4,665 with their full statements), every one with a written
+strategy and 4,071 cross-linked to the cards their solutions run through (2026-10-24).
 
 Fully static and fully offline: no build step, no server, and nothing fetched at runtime. KaTeX
 0.16.11 is vendored under `vendor/katex/` (its CSS, its JS, and the twenty woff2 faces the CSS

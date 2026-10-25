@@ -4402,7 +4402,7 @@ No problems here are tagged with it yet. On the AMC 12 and the AIME it appears a
 
 "add-all-equations": String.raw`
 ## When to use
-The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables, or some other combination of them, rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]].
+The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables, or some other combination of them, rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]]. When the equations are products, as in $xy = 24$, $yz = 48$, $zx = 72$, the same idea works with multiplication in place of addition.
 
 ## How
 1. Decide what the sum should produce: the total $S$ of all the variables, or the exact expression the question asks for.
@@ -4410,13 +4410,18 @@ The equations look alike, each obtained from the last by relabeling or rotating 
 3. Solve for $S$, the sum of the right sides divided by $k$.
 4. Subtract each original equation from the right multiple of $S$, or subtract equations in pairs, to isolate each variable.
 5. If $k = 0$, adding gives no information about $S$; use differences of equations instead.
+6. For a system of products, multiply all the equations to get a power of the product $P$ of the variables, take the root, and divide by each equation.
 
 For $x + y = 10$, $y + z = 14$, $z + x = 12$, adding all three gives $2S = 36$, so $S = 18$, and then $z = 18 - 10 = 8$, $x = 18 - 14 = 4$, and $y = 18 - 12 = 6$. A group can be enough: from $x + 2y = 7$ and $2y + 3z = 11$, the question "find $x + 4y + 3z$" is answered by adding just those two, $18$, though neither $x$, $y$, nor $z$ is determined.
 
 {{figure:columns}}
 
+For $xy = 24$, $yz = 48$, $zx = 72$, multiplying gives $(xyz)^2 = 24 \cdot 48 \cdot 72 = 288^2$, so $xyz = 288$ for positive values, and dividing by each equation gives $z = \frac{288}{24} = 12$, $x = \frac{288}{48} = 6$, $y = \frac{288}{72} = 4$.
+
 ## Why it works
 Any sum of true equations is a true equation, so adding a group of them is always allowed. In a system unchanged by relabeling the variables, every variable occupies each position equally often across the equations, so in the sum every variable has the same coefficient and the sum is a multiple of $S$. Once $S$ is known, each equation of the form "$S$ minus one variable" or "$S$ plus one variable" names that variable directly.
+
+Multiplying works for the same reason: a product of true equations is true, and in a symmetric system of products every variable appears equally often, so the product is a power of $xyz$. Dividing it by one equation leaves the missing variable, which needs every variable nonzero.
 
 ## Formulas it uses
 No formula is needed; the method is bookkeeping with the total of the variables.
@@ -4425,6 +4430,7 @@ No formula is needed; the method is bookkeeping with the total of the variables.
 - Dividing by the coefficient of $S$ when it is $0$, where the system has no unique solution.
 - Solving for every variable when the question asks only for the total or another combination; look for a group of equations that adds to it.
 - Miscounting how many times each variable appears after adding.
+- Taking the square root of $(xyz)^2$ without checking the sign: for positive lengths it is positive, but in general both signs may occur.
 
 ## Contest profile
 A short AMC problem, often with four or five variables to make elimination tedious, and an AIME first step after a substitution turns a logarithmic system into a linear one.
@@ -5887,5 +5893,63 @@ The sign test is the case $k = 0$ written with Vieta's Formulas. A positive prod
 
 ## Contest profile
 An AMC 12 and occasional AIME step: a parameter range for which a quadratic has two positive roots, or roots on either side of a number, often inside a problem about the intersections of a line and a parabola. The sign of a single value $f(k)$ is the fastest test and the one most often missed.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"round-up-whole-items": String.raw`
+## When to use
+A word problem buys or uses things that come only whole: full recipes, cans of paint, buses, boxes, bottles, discs. It asks how many are needed to cover an amount, or how many fit within a limit, and often what that whole number of items costs or uses.
+
+## How
+1. Find the amount $N$ to be covered and the size $s$ of one item, in the same units.
+2. For how many are needed, take $\left\lceil \frac Ns \right\rceil$; for how many fit, take $\left\lfloor \frac Ns \right\rfloor$.
+3. Check by bracketing: the answer $k$ for "needed" satisfies $(k - 1)s \lt N \le ks$.
+4. Compute any further quantities from $k$, the whole number of items.
+
+For $250$ people in buses of $48$: $5 \cdot 48 = 240 \lt 250 \le 288 = 6 \cdot 48$, so $6$ buses.
+
+## Why it works
+$k$ items hold $ks$ in all, so they cover $N$ exactly when $ks \ge N$, that is $k \ge \frac Ns$; the least whole such $k$ is the ceiling of $\frac Ns$. They fit within $N$ exactly when $ks \le N$, that is $k \le \frac Ns$, and the greatest whole such $k$ is the floor. When $\frac Ns$ is already a whole number both answers equal it.
+
+## Formulas it uses
+No particular formula is needed; the step is a division followed by rounding in the right direction.
+
+## Common traps
+- Rounding to the nearest whole number instead of up, which leaves the amount uncovered.
+- Rounding the final cost or total instead of the number of items, after multiplying by a fractional quotient.
+- Rounding twice in a chain: round the items once, then use whole items for the next step, which may itself need rounding up.
+
+## Contest profile
+An opening question on the AMC 8 and AMC 10, and a step inside word problems about schedules and supplies.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"assume-all-one-kind": String.raw`
+## When to use
+A story has items of two kinds, the total number of items, and the total of a quantity that depends on the kind: legs, wheels, points, prices, or minutes. It asks how many there are of each kind.
+
+## How
+1. Suppose every item is of the first kind, with value $a$ each, and compute the total $na$.
+2. Compare with the true total $T$: the difference is $T - na$.
+3. Switching one item to the second kind, of value $b$, changes the total by $b - a$, so the number of the second kind is $\frac{T - na}{b - a}$.
+4. The rest are of the first kind; check by computing the total.
+
+With $30$ animals and $84$ legs: all chickens would give $60$ legs, each rabbit adds $2$, so there are $\frac{24}{2} = 12$ rabbits and $18$ chickens.
+
+## Why it works
+With $x$ items of the second kind and $n - x$ of the first, the total is
+$$a(n - x) + bx = na + (b - a)x.$$
+Setting it equal to $T$ and solving gives $x = \frac{T - na}{b - a}$. This is the system $x + y = n$, $ax + by = T$ with one variable eliminated, done as a story: the assumed total, and the change per switch.
+
+## Formulas it uses
+No particular formula is needed; the step is one linear equation.
+
+## Common traps
+- Dividing by the value of one kind instead of the difference $b - a$.
+- Forgetting to find the first kind as $n - x$ when that is what is asked.
+- Getting a fraction or a negative number, which means the totals are inconsistent or a quantity was misread.
+
+## Contest profile
+An AMC 8 and MATHCOUNTS classic, usually early in the paper, with legs, wheels, or prices.
 `
 });

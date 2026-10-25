@@ -54,5 +54,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Owner's method cards: checking that a solution is really a solution", date: "2026-10-24",
     ids: ["transforming-equations", "polynomial-division", "quadratic-root-location", "directed-lengths"] },
   { label: "Approved P27: the area of a neighborhood", date: "2026-10-24",
-    ids: ["steiner-neighborhood"] }
+    ids: ["steiner-neighborhood"] },
+  { label: "Approved P28 to P36 and P38 (owner)", date: "2026-10-24",
+    ids: ["lcm-common-multiples", "disconnected-graph-edges", "figure-symmetries", "cube-nets", "cube-stack-views", "area-by-pieces", "joined-shapes-perimeter", "round-up-whole-items", "assume-all-one-kind", "elimination-counting"] }
 ];

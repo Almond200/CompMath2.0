@@ -2260,4 +2260,8 @@
     { q: String.raw`In a square of side $8$, a segment from the bottom side to the top side has its ends $6$ apart horizontally. How long is any segment from the left side to the right side perpendicular to it?`,
       s: String.raw`The first segment is $\sqrt{8^2 + 6^2} = 10$. A $90^\circ$ turn of the square carries one direction to the other, so the perpendicular segment also spans $8$ one way and $6$ the other: its length is $10$ too.` }
   );
+  add("disconnected-graph-edges",
+    { q: String.raw`Roads may join any of $8$ coastal towns to any of $4$ inland towns, but no two towns of the same kind. What is the fewest roads that guarantees every town can reach every other, however the roads are placed?`,
+      s: String.raw`This is the bipartite form with parts $a = 8$ and $b = 4$. A disconnected network has at most $(a - 1)b = 7 \cdot 4 = 28$ roads, reached by leaving one coastal town with no road and joining every other pair. So $28$ roads may still fail, and $29$ always connect everything.` }
+  );
 })();

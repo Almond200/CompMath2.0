@@ -230,6 +230,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "figure-symmetries",
+          name: "Symmetries of a Figure",
+          latex: String.raw`\text{regular } n\text{-gon: } n \text{ lines of symmetry}, \quad \text{rotations by multiples of } \tfrac{360^\circ}{n}`,
+          description: String.raw`A line of symmetry is a mirror line that carries a figure onto itself, and rotational symmetry is a turn about a center that does the same. A regular $n$-gon has $n$ lines of symmetry and is carried onto itself by turns of $\frac{360^\circ}{n}$ and its multiples. Requiring a figure to be symmetric forces every cell of a grid figure to match its images, so the cells fall into groups that must be filled alike.`,
+          keywords: ["line of symmetry", "lines of symmetry", "rotational symmetry", "mirror line", "reflection symmetry", "symmetric figure", "order of rotation", "regular polygon symmetry"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "regular-polygon-area",
           name: "Regular Polygon Area",
           latex: String.raw`A = \tfrac{1}{2}ap = \tfrac{1}{2}nR^2\sin\tfrac{360^\circ}{n}`,

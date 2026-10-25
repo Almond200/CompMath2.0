@@ -3647,3 +3647,59 @@ Every shape in such a figure is fixed by a few of the figure's lines or points: 
 An AMC 8 and early AMC 10 and 12 setup with a picture, from triangles in a divided triangle to squares in a grid. It pairs with Organized Listing and with Rectangles in a Grid.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"disconnected-graph-edges": String.raw`
+## Key forms
+- a disconnected simple graph on $n$ vertices has at most $\binom{n-1}{2}$ edges, reached by a complete graph on $n - 1$ vertices and one isolated vertex
+- so any graph on $n$ vertices with more than $\binom{n-1}{2}$ edges is connected
+- a disconnected bipartite graph with parts of sizes $a \ge b$ has at most $(a - 1)b$ edges, reached by cutting off one vertex of the larger part
+
+## Conditions
+The graph is simple, with no loops or repeated edges. In the bipartite form every edge joins the two parts, and both parts are nonempty.
+
+## Why it works
+A disconnected graph splits its vertices into two nonempty groups, of sizes $k$ and $n - k$, with no edge between them. That leaves out all $k(n - k)$ edges across the split, and since
+$$k(n - k) - (n - 1) = (k - 1)(n - k - 1) \ge 0,$$
+at least $n - 1$ of the $\binom n2$ possible edges are missing. So $e \le \binom n2 - (n - 1) = \binom{n-1}{2}$, with equality when one vertex is cut off and the rest is complete.
+
+In the bipartite case, let the group $S$ hold $a_1$ vertices of the larger part and $b_1$ of the smaller, and the other group the rest. The missing edges number $a_1(b - b_1) + (a - a_1)b_1$. If $b_1 = 0$ then $a_1 \ge 1$ and this is at least $b$; if $b_1 = b$ then $a_1 \le a - 1$ and it is at least $b$; otherwise both $b - b_1$ and $b_1$ are at least $1$, so it is at least $a_1 + (a - a_1) = a \ge b$. So at least $b$ of the $ab$ edges are missing, and $e \le ab - b = (a - 1)b$.
+
+## Useful observations
+- The extremal graph is always the most lopsided split, one vertex against everything else, because the product $k(n - k)$ is smallest at the ends.
+- For $10$ vertices the threshold is $\binom92 = 36$: $36$ edges can still leave a vertex isolated, but $37$ cannot.
+- In a "how many must be added before it is certainly connected" question, the answer is the bound plus one.
+
+## Applications
+Guarantees that a network is connected, worst-case counts of links or cables before everyone can reach everyone, and the edge case of extremal graph questions.
+
+## Contest profile
+Rare. It appears as an AMC 12 worst-case problem about cables or roads, where the bipartite version is the one asked.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"elimination-counting": String.raw`
+## When to use
+A process changes a count by the same amount at every step: a tournament where each game has one loser who leaves, races that eliminate a fixed number of runners each, cuts or breaks that each make one more piece, or merges that each make one fewer pile. The question asks for the number of steps, often with byes or uneven rounds that make a round-by-round count tedious.
+
+## How
+1. Find the starting count $n$ and the final count $m$.
+2. Find how much one step changes the count, $k$.
+3. The number of steps is $\frac{n - m}{k}$.
+
+A $6 \times 8$ chocolate bar broken along its lines into single squares needs $47$ breaks: each break turns one piece into two, and the count goes from $1$ piece to $48$.
+
+## Why it works
+The count changes by exactly $k$ at every step, whatever else happens, so after $t$ steps it has changed by $kt$. Going from $n$ to $m$ therefore takes exactly $\frac{n - m}k$ steps, and the order or grouping of the steps cannot change that. In a tournament each game produces exactly one loser, who leaves, so the players remaining drop by $1$ per game, from $n$ to the single winner: $n - 1$ games.
+
+## Formulas it uses
+No particular formula is needed; the count is the total change divided by the change per step.
+
+## Common traps
+- Counting round by round and losing track of byes, when the total is fixed from the start.
+- Forgetting that the process stops at a final count other than $0$, such as the one winner.
+- Using it when a step can remove different numbers, such as a race that sometimes eliminates two and sometimes three.
+
+## Contest profile
+An AMC 8 and AMC 10 counting question, often a tournament, where the one-line argument replaces a bracket.
+`
+});
