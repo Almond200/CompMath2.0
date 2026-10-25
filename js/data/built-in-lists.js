@@ -1000,7 +1000,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["wlog-symmetry"] },
     ] },
   { id: "contest-amc12", name: "What the AMC 12 Uses", kind: "contest", subject: "Contests",
-    blurb: "Every card that at least 5 of the 1,300 AMC 12 problems here use in their strategies, by subject, most used first: 109 cards across 5 sections.",
+    blurb: "Every card that at least 5 of the 1,300 AMC 12 problems here use in their strategies, by subject, most used first: 110 cards across 5 sections.",
     sections: [
       { title: "Geometry",
         note: "Used in 43 problems down to 5.",
@@ -1010,7 +1010,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["log-rules", "arithmetic-series", "geometric-series", "vietas-quadratic", "complex-basics", "mean-median-mode", "vietas-general", "change-of-base", "linear-elimination", "exponent-laws", "roots-of-unity", "averages-to-totals", "difference-of-squares", "setting-up-proportions", "quadratic-formula", "weighted-average", "angle-addition", "sfft", "average-speed", "percent-change", "telescoping", "defined-operation", "completing-the-square", "periodic-sequences", "work-rates", "absolute-value-rules", "factor-remainder-theorem", "vertex-form", "am-gm", "conjugate-root-theorems", "binomial-theorem", "reduction-identities", "floor-basics", "functional-substitution", "abs-value-relations", "relative-motion", "piecewise-graph-counting", "de-moivre", "double-angle", "eulers-formula", "first-order-recurrence", "pythagorean-identities", "symmetric-polynomial-strategies", "time-per-leg"] },
       { title: "Number Theory",
         note: "Used in 24 problems down to 5.",
-        ids: ["fundamental-theorem-arithmetic", "modular-basics", "digit-manipulation", "number-of-divisors", "base-conversion", "divisibility-rules", "legendres-formula", "floor-multiples", "repeating-decimals", "calendar-problems", "palindromes"] },
+        ids: ["fundamental-theorem-arithmetic", "modular-basics", "digit-manipulation", "number-of-divisors", "base-conversion", "divisibility-rules", "legendres-formula", "floor-multiples", "repeating-decimals", "calendar-problems", "crt", "palindromes"] },
       { title: "Counting & Probability",
         note: "Used in 81 problems down to 5.",
         ids: ["casework-method", "geometric-probability", "basic-probability", "complementary-counting", "constructive-counting", "independent-events", "states-recursion-prob", "simulate-the-process", "permutations-combinations", "symmetry-probability", "working-backwards", "multiset-permutations", "pie", "burnsides-lemma", "non-adjacent-selection", "truth-tellers-logic", "pigeonhole", "stars-and-bars"] },
