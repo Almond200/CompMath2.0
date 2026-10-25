@@ -981,7 +981,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["basic-probability", "permutations-combinations", "complementary-counting", "truth-tellers-logic", "pie", "working-backwards", "double-counting", "fencepost-counting", "casework-method", "independent-events", "inclusion-exclusion"] },
     ] },
   { id: "contest-amc10", name: "What the AMC 10 Uses", kind: "contest", subject: "Contests",
-    blurb: "Every card that at least 5 of the 1,300 AMC 10 problems here use in their strategies, by subject, most used first: 95 cards across 5 sections.",
+    blurb: "Every card that at least 5 of the 1,300 AMC 10 problems here use in their strategies, by subject, most used first: 96 cards across 5 sections.",
     sections: [
       { title: "Geometry",
         note: "Used in 53 problems down to 5.",
@@ -994,7 +994,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["modular-basics", "fundamental-theorem-arithmetic", "digit-manipulation", "number-of-divisors", "divisibility-rules", "base-conversion", "floor-multiples", "factor-pair-counting", "calendar-problems", "last-digit-patterns", "legendres-formula", "bounding-diophantine", "crt", "consecutive-coprime"] },
       { title: "Counting & Probability",
         note: "Used in 82 problems down to 5.",
-        ids: ["casework-method", "constructive-counting", "complementary-counting", "basic-probability", "geometric-probability", "inclusion-exclusion", "conditional-probability", "truth-tellers-logic", "pigeonhole", "fencepost-counting", "permutations-combinations", "stars-and-bars", "working-backwards", "multiset-permutations", "independent-events", "binomial-probability", "simulate-the-process", "symmetry-probability", "bijection-method", "double-counting", "expected-value", "states-recursion-prob", "organized-listing"] },
+        ids: ["casework-method", "constructive-counting", "complementary-counting", "basic-probability", "geometric-probability", "inclusion-exclusion", "conditional-probability", "truth-tellers-logic", "pigeonhole", "fencepost-counting", "permutations-combinations", "stars-and-bars", "working-backwards", "multiset-permutations", "independent-events", "binomial-probability", "simulate-the-process", "symmetry-probability", "bijection-method", "coloring-arguments", "double-counting", "expected-value", "states-recursion-prob", "organized-listing"] },
       { title: "Problem Solving",
         note: "Each used in 7 problems.",
         ids: ["wlog-symmetry"] },
