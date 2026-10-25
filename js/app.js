@@ -6419,8 +6419,8 @@
 
 
 
-  const LIST_KINDS = [["route", "Study Routes"], ["core", "Starting Points"], ["configuration", "Configurations"],
-                      ["thinking", "Ways of Thinking"], ["curiosity", "Curiosities"]];
+  const LIST_KINDS = [["route", "Study Routes"], ["contest", "By Contest"], ["core", "Starting Points"],
+                      ["configuration", "Configurations"], ["thinking", "Ways of Thinking"], ["curiosity", "Curiosities"]];
 
   function buildSidebar() {
     // Four groups, one per space, only the current space's shown: FORMULAS lists its subjects

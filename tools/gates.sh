@@ -5,6 +5,7 @@ set -e
 python3 tools/scan-conventions.py > /tmp/gate-scan.txt || { tail -30 /tmp/gate-scan.txt; exit 1; }
 python3 tools/check-topics.py > /tmp/gate-topics.txt || { tail /tmp/gate-topics.txt; exit 1; }
 python3 tools/check-lists.py > /tmp/gate-lists.txt || { tail /tmp/gate-lists.txt; exit 1; }
+node tools/build-contest-lists.js --check || exit 1
 python3 tools/check-diagrams.py > /tmp/gate-diag.txt || { tail -20 /tmp/gate-diag.txt; exit 1; }
 python3 tools/check-statements.py > /tmp/gate-stmt.txt || { tail -20 /tmp/gate-stmt.txt; exit 1; }   # not piped: a pipe would hide its exit code
 tail -2 /tmp/gate-stmt.txt && ./tools/check-lab.sh > /dev/null
