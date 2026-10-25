@@ -4613,7 +4613,8 @@
   // day number is hashed so neighbouring days land far apart in the lists.
   const dayNumber = () => { const d = new Date(); return Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000); };
   const dayPick = (arr, salt) => arr.length ? arr[Math.abs(Math.imul(dayNumber() + salt, 2654435761)) % arr.length] : null;
-  function dailyProblem() { return dayPick(PROBLEM_DB.filter(p => p.strategy && p.formulas.length >= 1), 7); }
+  // Only the AMC and AIME problems, whose statements are stored, so the panel can show the text itself.
+  function dailyProblem() { return dayPick(PROBLEM_DB.filter(p => p.strategy && p.formulas.length >= 1 && MAA_RE.test(p.ref)), 7); }
   function dailyCard() {
     const pool = ALL.filter(e => (tierKey(e.formula) === "amc" || tierKey(e.formula) === "aime-early") && (window.MATH_EXAMPLES || {})[e.formula.id])
       .sort((a, b) => a.formula.id.localeCompare(b.formula.id));
@@ -4623,13 +4624,16 @@
   function dailyProblemHtml() {
     const p = dailyProblem();
     if (!p) return "";
-    // The whole panel opens the problem's page; only the link out to the statement differs.
+    // The whole panel opens the problem's page. The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
         <div class="hp-label">Problem of the day</div>
         <div class="daily-title">${refShort(p.ref)}</div>
         <div class="daily-types">${p.types.slice(0, 4).map(t => `<span class="daily-type">${escapeAttr(t.label)}</span>`).join("")}</div>
+        <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
+          <div class="prob-statement"></div>
+          <p class="prob-credit"></p>
+        </section>
         <p class="daily-note">Try it first, then open it for the ideas it uses and the strategy.</p>
-        ${p.url ? `<div class="daily-actions"><a class="hp-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read it on ${p.urlLabel === "archive" ? "the archive" : "AoPS"} &#8599;</a></div>` : ""}
       </div>`;
   }
   function recentRowsHtml(limit, kinds) {
@@ -4778,6 +4782,8 @@
         <footer class="hub-foot"></footer>
       </div>`;
     renderMath($content);
+    const daily = dailyProblem();
+    if (daily) showStatement(daily, ".daily-st");
     // The hero search waits for Search (or Enter), then hands off to the real search box: the
     // results page shows the header search again with the text in it, so typing continues
     // there.
@@ -5630,10 +5636,11 @@
     }
     return statementLoads[year];
   }
-  function showStatement(p) {
+  // `box` picks the section to fill: the problem page's own, or the home page's problem of the day.
+  function showStatement(p, box = "#prob-st") {
     loadStatements(p.year).then(() => {
       const st = window.MATH_STATEMENTS && window.MATH_STATEMENTS[p.slug];
-      const wrap = $content.querySelector(`#prob-st[data-slug="${p.slug}"]`);
+      const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
       if (!st || !wrap) return;
       const body = wrap.querySelector(".prob-statement");
       body.textContent = "";
