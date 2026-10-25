@@ -963,11 +963,11 @@ Geometric sequences are the building blocks: substituting $a_n = r^n$ turns the 
 
 Put $a_n = r^n$ into $a_n = c_1a_{n-1} + \cdots + c_ka_{n-k}$ and divide by $r^{n-k}$. The result is $$r^k = c_1r^{k-1} + \cdots + c_k,$$ the characteristic equation, so its roots are exactly the ratios whose geometric sequences obey the rule.
 
-The rule is linear, so a sum of solutions, or a multiple of one, is again a solution, and $\sum_i A_ir_i^{\,n}$ works for any constants $A_i$. With $k$ distinct roots there are $k$ constants, just enough to match the $k$ initial terms, and since those terms determine the whole sequence, the matching combination is the sequence.
+The rule is linear, so a sum of solutions, or a multiple of one, is again a solution, and $\sum_i A_ir_i^{\,n}$ works for any constants $A_i$. With $k$ distinct roots there are $k$ constants, and the $k$ equations from the initial terms have a Vandermonde matrix, whose determinant $\prod_{i \lt j}(r_j - r_i)$ is nonzero, so they can always be solved. Since the initial terms determine the whole sequence, the matching combination is the sequence.
 
 For $a_n = a_{n-1} + 2a_{n-2}$ the characteristic equation is $x^2 = x + 2$, with roots $2$ and $-1$, so $a_n = A \cdot 2^n + B(-1)^n$.
 
-A repeated root leaves one constant short, and $nr^n$ supplies the missing solution: it is what two geometric solutions look like in the limit as their ratios merge. A complex-conjugate pair combines into the real form $\rho^n(A\cos n\phi + B\sin n\phi)$, which is why some linear recurrences oscillate instead of growing steadily; when $\rho = 1$ and $\phi$ is a rational multiple of $\pi$, the sequence is periodic.
+A repeated root leaves one constant short, and $nr^n$ supplies the missing solution. With $p(x) = x^k - c_1x^{k-1} - \cdots - c_k$, substituting $a_n = nr^n$ leaves $(n - k)r^{n-k}p(r) + r^{n-k+1}p'(r)$, and a double root makes both $p(r)$ and $p'(r)$ zero. A complex-conjugate pair combines into the real form $\rho^n(A\cos n\phi + B\sin n\phi)$, which is why some linear recurrences oscillate; when $\rho = 1$ and $\phi$ is a rational multiple of $\pi$, the sequence is periodic.
 
 ## Useful observations
 - The general solution is assembled from the roots of the characteristic equation, and the small linear system the initial terms give fixes the constants. Checking one term beyond the ones fitted catches almost every algebra slip.

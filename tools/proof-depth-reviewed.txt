@@ -474,3 +474,33 @@ rotated-line-angle # opening sentence made clear
 pythagorean-theorem # dangling 'four above' fixed
 gamblers-ruin # checked (p=0.49 value), no change
 japanese-theorem # rectangle proved by angle chase (checked); polygon form via Carnot
+regular-polygon-area # checked, no change
+trig-area # checked, no change
+roots-unity-distance-product # checked, no change
+floor-basics # checked, no change
+lte-lemma # p=2 forms proved (checked by computer)
+handshakes-diagonals # checked, no change
+cyclic-equal-angles # checked, no change
+vornicu-schur # checked, no change
+similar-figures-ratios # checked, no change
+law-of-cosines-special-triangles # every table entry checked, no change
+sphere-formulas # cap volume, surface, cap and zone area proved
+weighted-average # checked, no change
+regular-tetrahedron # checked, no change
+harmonic-quadrilateral # checked, no change
+linear-recurrence # Vandermonde solvability and double-root solution proved
+squared-binomial-sum # checked, no change
+equilateral-triangle-facts # checked, no change
+circle-basics # checked, no change
+law-of-cosines # checked, no change
+law-of-sines # checked, no change
+double-angle # checked, no change
+carnots-perpendicularity-theorem # checked, no change
+picks-hexagonal-grid # checked, no change
+conic-sections # checked, no change
+circular-segment # checked, no change
+number-of-divisors # checked, no change
+orthogonal-circles # checked, no change
+quadratic-formula # checked, no change
+balls-boxes-table # worked numbers checked, no change
+concyclicity-tests # checked, no change

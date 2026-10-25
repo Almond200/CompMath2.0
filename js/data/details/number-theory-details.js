@@ -835,6 +835,8 @@ For odd $p$ the second term is divisible by $p^2$, since $\frac{p-1}{2}$ is an i
 
 Applying the case $n = p$ once for each factor of $p$ in $n$, and the coprime case for the rest, adds exactly $v_p(n)$.
 
+For $p = 2$ with $a$, $b$ odd: if $n$ is odd, the second factor is a sum of $n$ odd terms, so it is odd and adds nothing. If $n = 2^sm$ with $m$ odd and $s \ge 1$, the odd part adds nothing for the same reason, and $$a^{2^s} - b^{2^s} = (a - b)(a + b)(a^2 + b^2)(a^4 + b^4)\cdots\left(a^{2^{s-1}} + b^{2^{s-1}}\right).$$ Each factor $a^{2^j} + b^{2^j}$ with $j \ge 1$ is a sum of two odd squares, so it is $2 \bmod 4$ and adds exactly one factor of $2$. That is $s - 1$ factors beyond $(a - b)(a + b)$, which is the form for $2$.
+
 ## Useful observations
 - The case $b = 1$ is the most common: for an odd prime $p$ with $a \equiv 1 \pmod p$, $v_p(a^n - 1) = v_p(a - 1) + v_p(n)$.
 - When $p \nmid a - b$, $p$ divides $a^n - b^n$ only if the [[multiplicative-order|multiplicative order]] $d$ of $ab^{-1}$ modulo $p$ divides $n$, and then the lemma applies to $(a^d)^{n/d} - (b^d)^{n/d}$.

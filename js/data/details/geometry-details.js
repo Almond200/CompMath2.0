@@ -2346,9 +2346,11 @@ The cap has $0 \le h \le 2r$. The zone formula holds for the curved surface betw
 ## Why it works
 Archimedes compared the sphere with the cylinder around it. At height $z$ above the center, the cross-section of the sphere is a disc of area $\pi(r^2 - z^2) = \pi r^2 - \pi z^2$, which is the cross-section of the cylinder of radius $r$ with the double cone $\pi z^2$ removed. Slice for slice the two solids have the same area, so by [[cavalieris-principle|Cavalieri's Principle]] they have the same volume, $2\pi r^3 - 2\cdot\frac13\pi r^3 = \frac43\pi r^3$.
 
-The surface area follows because the sphere of radius $r$ is made of thin shells: the volume grows by $4\pi r^2\,\mathrm{d}r$ when the radius grows by $\mathrm{d}r$, so $SA = \frac{\mathrm{d}V}{\mathrm{d}r} = 4\pi r^2$.
+The same slices give the cap. Between heights $r - h$ and $r$ the cylinder-minus-cone has volume $\pi r^2h - \frac\pi3\left(r^3 - (r - h)^3\right) = \pi\left(rh^2 - \frac{h^3}{3}\right) = \frac{\pi h^2(3r - h)}{3}$.
 
-The zone formula is Archimedes' hat-box theorem: the area of the curved surface between two parallel planes equals the lateral area $2\pi r \cdot h$ of the cylinder of radius $r$ around the sphere between the same planes. The full sphere is the case $h = 2r$, and the cap volume is the volume of the full ball cut by the plane, $\frac{\pi h^2(3r - h)}{3}$.
+For areas, cut the ball into thin pyramids from the center: a piece of surface of area $S$ carries a volume $\frac13rS$, just as for a [[insphere-radius|polyhedron with an insphere]]. The whole ball gives $\frac43\pi r^3 = \frac13r \cdot SA$, so $SA = 4\pi r^2$.
+
+For a cap, the pyramids fill the cap together with the cone from the center to its rim, of base area $\pi(2rh - h^2)$ and height $r - h$. Adding, $\frac{\pi h^2(3r - h)}{3} + \frac{\pi(2rh - h^2)(r - h)}{3} = \frac{2\pi r^2h}{3}$, which is $\frac13r$ times the cap's area, so the area is $2\pi rh$. A zone is the difference of two caps, so its area is $2\pi r$ times its height too, which is Archimedes' hat-box theorem.
 
 ## Useful observations
 - Spherical caps and zones occasionally matter: the cap volume and the zone area are derived from the full formulas when needed, and that only the height matters is striking.
