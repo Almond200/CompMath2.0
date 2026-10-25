@@ -1179,6 +1179,10 @@ The [[homothety-monge|homothety]] centered at the centroid $G$ with factor $-\fr
 
 The vector form comes from putting $O$ at the origin. For $H = A + B + C$, the vector $H - A = B + C$ is perpendicular to $B - C$, because $(B + C)\cdot(B - C) = |B|^2 - |C|^2 = 0$, and likewise at the other vertices, so $H$ lies on all three altitudes. Then $G = \frac13(A + B + C) = \frac13H$.
 
+For the distance, $|A - B|^2 = 2R^2 - 2A \cdot B = c^2$ gives $A \cdot B = R^2 - \frac{c^2}{2}$, and likewise for the other pairs. So $$OH^2 = |A + B + C|^2 = 3R^2 + 2\left(3R^2 - \tfrac{a^2 + b^2 + c^2}{2}\right) = 9R^2 - (a^2 + b^2 + c^2).$$ With $a = 2R\sin A$ and the identity $\sin^2A + \sin^2B + \sin^2C = 2 + 2\cos A\cos B\cos C$, this is $R^2(1 - 8\cos A\cos B\cos C)$.
+
+The nine-point center $N$ is the circumcenter of the medial triangle, the image of $O$ under the same homothety, so $N - G = -\frac12(O - G)$. With $O$ at the origin and $G = \frac13H$ this gives $N = \frac12H$, the midpoint of $OH$, and $NG = \left(\frac12 - \frac13\right)OH = \frac16OH$.
+
 ## Useful observations
 - With the circumcenter as origin the centroid and orthocenter are the sum of the vertices over $3$ and the sum itself, so given any two of $O$, $G$, $H$ in coordinates the third is immediate.
 - The two expressions for $OH^2$ turn a distance between centers into the sides or the angles.
@@ -5160,7 +5164,9 @@ The medial triangle is the triangle whose vertices are the midpoints of the side
 ## Why it works
 The midpoints halve every side, so each of the four small triangles is similar to $ABC$ with ratio $\frac12$ by SAS on the midsegments, which gives a quarter of the area and half the perimeter apiece. The medial triangle is the image of $ABC$ under the homothety centered at the centroid $G$ with ratio $-\frac12$, which is why $G$ is shared and the orientation flips.
 
-The same homothety carries the orthocenter $H$ of $ABC$ to the orthocenter of the medial triangle, which is $O$, because $H = 3G - 2O$. Its circumcircle passes through the three midpoints, and so it is the nine-point circle, with radius $\frac R2$.
+Its sides are parallel to those of $ABC$, so the altitude of the medial triangle from the midpoint of $BC$ is perpendicular to $BC$ and passes through its midpoint: it is the perpendicular bisector of $BC$. The three altitudes are the three perpendicular bisectors of $ABC$, so the orthocenter of the medial triangle is $O$.
+
+Its circumcircle passes through the three midpoints, so it is the nine-point circle. It is the image of the circumcircle under the homothety of ratio $-\frac12$, so its radius is $\frac R2$.
 
 ## Useful observations
 - The four-congruent-triangles picture proves midsegment and area-quartering claims at a glance.
@@ -6711,11 +6717,11 @@ Olympiad and the occasional hard AIME geometry problem built on midpoints.
 $ABCD$ is a cyclic quadrilateral with its vertices in that order around the circle, so $a, b, c, d$ are consecutive sides.
 
 ## Why it works
-The quickest route is the one that proves the first theorem: invert at $A$. Inversion sends $B$, $C$, $D$ to collinear points, and distances transform by $B'C' = \frac{BC \cdot k}{AB \cdot AC}$.
+The diagonal $p = AC$ is a side of two triangles: $ABC$, with sides $a$, $b$ around angle $B$, and $ACD$, with sides $c$, $d$ around angle $D$. In a cyclic quadrilateral $D = 180^\circ - B$, so $\cos D = -\cos B$, and the [[law-of-cosines|Law of Cosines]] twice gives $$p^2 = a^2 + b^2 - 2ab\cos B = c^2 + d^2 + 2cd\cos B.$$
 
-Writing the collinearity $B'C' + C'D' = B'D'$ gives Ptolemy's product formula, and comparing the two ratios in which $C'$ divides $B'D'$ gives this one. Both are the same picture, read for a sum or for a ratio.
+Solving the second equation for the cosine, $\cos B = \frac{a^2 + b^2 - c^2 - d^2}{2(ab + cd)}$. Substituting back, $$p^2 = \frac{(a^2 + b^2)cd + ab(c^2 + d^2)}{ab + cd} = \frac{(ac + bd)(ad + bc)}{ab + cd},$$ since $(ac + bd)(ad + bc) = a^2cd + abc^2 + abd^2 + b^2cd$. The same steps with the diagonal $q = BD$, shared by triangles $ABD$ and $BCD$, give $q^2 = \frac{(ac + bd)(ab + cd)}{ad + bc}$.
 
-A route without inversion is the Law of Cosines on the two triangles that share the diagonal $p$, using $\cos B = -\cos D$ for the opposite angles of a cyclic quadrilateral. Eliminating the angle and solving for $p^2$ gives the explicit formula, which packages into the paired products. Dividing the two diagonal formulas then gives the ratio, and multiplying them recovers Ptolemy's product.
+Dividing the two formulas, $\frac{p^2}{q^2} = \frac{(ad + bc)^2}{(ab + cd)^2}$, which is the ratio. Multiplying them gives $p^2q^2 = (ac + bd)^2$, which recovers Ptolemy's product $pq = ac + bd$.
 
 ## Useful observations
 - The two theorems are used together: multiplying and dividing the product and the ratio recovers $AC^2$ and $BD^2$, both diagonals of a cyclic quadrilateral from the four sides alone, with no angles anywhere. The first theorem alone leaves one equation short.
@@ -8831,7 +8837,7 @@ Each term of the sharper inequality factors as a difference of squares, $$a^2 - 
 Equality needs $p = q = r$, so $x = y = z$, the equilateral triangle. Dropping the squared differences, which are never negative, gives Weitzenböck.
 
 ## Useful observations
-- Dividing the sharper inequality by $4K$ and using $a^2 - (b - c)^2 = 4K\tan\frac A2$ gives the angle form, which is also [[jensens-inequality|Jensen's Inequality]] for the tangent, convex on half-angles that add to $90^\circ$.
+- Dividing the sharper inequality by $4K$ gives the angle form, since $4(s - b)(s - c) = 4K\tan\frac A2$: with $\tan\frac A2 = \frac{r}{s - a}$ and $K = rs$, $K\tan\frac A2 = \frac{r^2s}{s - a} = (s - b)(s - c)$, because $r^2s = (s - a)(s - b)(s - c)$. It is also [[jensens-inequality|Jensen's Inequality]] for the tangent, convex on half-angles that add to $90^\circ$.
 - Expanding the squared differences turns Hadwiger–Finsler into $2(ab + bc + ca) - (a^2 + b^2 + c^2) \ge 4\sqrt3\,K$. Since $a^2 + b^2 + c^2 \ge ab + bc + ca$, the left side is at most $ab + bc + ca$, which gives the last Key form.
 
 ## Applications
@@ -9033,7 +9039,9 @@ The two lines cross, so they are not parallel. In the equation form, the bisecto
 ## Why it works
 A point lies on a bisector exactly when it is at the same distance from both lines. By [[point-line-distance|the point-to-line distance formula]], the distance from $(x, y)$ to the first line is $\frac{|a_1x + b_1y + c_1|}{\sqrt{a_1^2 + b_1^2}}$, and the same for the second. Setting the two equal and removing the absolute values gives the two signs, which are two lines through the crossing point.
 
-For the slope form, the line of slope $m$ makes an angle $\theta$ with the $x$-axis, with $\tan\theta = m$, $\cos\theta = \frac{1}{\sqrt{1 + m^2}}$, and $\sin\theta = \frac{m}{\sqrt{1 + m^2}}$. The bisector makes the angle $\frac\theta2$, and $$\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{m}{1 + \sqrt{1 + m^2}} = \frac{\sqrt{1 + m^2} - 1}{m}.$$ The last step multiplies the numerator and denominator by $\sqrt{1 + m^2} - 1$.
+For the slope form, the line of slope $m$ makes an angle $\theta$ with the $x$-axis, with $\tan\theta = m$, $\cos\theta = \frac{1}{\sqrt{1 + m^2}}$, and $\sin\theta = \frac{m}{\sqrt{1 + m^2}}$. The bisector makes the angle $\frac\theta2$, and $$\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{m}{1 + \sqrt{1 + m^2}} = \frac{\sqrt{1 + m^2} - 1}{m}.$$ The last step multiplies the numerator and denominator by $\sqrt{1 + m^2} - 1$. For $m = \frac34$ it gives $\frac{5/4 - 1}{3/4} = \frac13$.
+
+For two lines at angles $\theta_1$ and $\theta_2$, the bisectors are at $\varphi = \frac{\theta_1 + \theta_2}{2}$ and $\varphi + 90^\circ$, and both satisfy $\tan 2\varphi = T$ with $T = \tan(\theta_1 + \theta_2) = \frac{m_1 + m_2}{1 - m_1m_2}$. With $t = \tan\varphi$ this is $\frac{2t}{1 - t^2} = T$, the quadratic $Tt^2 + 2t - T = 0$. Its roots are $\frac{-1 \pm \sqrt{1 + T^2}}{T}$, and since $1 + T^2 = \frac{(1 + m_1^2)(1 + m_2^2)}{(1 - m_1m_2)^2}$ they simplify to the formula. The product of the roots is $\frac{-T}{T} = -1$, so the bisectors are perpendicular.
 
 ## Useful observations
 - The bisector slope is rational exactly when $\sqrt{1 + m^2}$ is, that is, when $m$ is the ratio of the legs of a Pythagorean triple. Conversely, a rational bisector slope $t$ comes from $m = \frac{2t}{1 - t^2}$, the [[double-angle|double-angle formula]] for the tangent.

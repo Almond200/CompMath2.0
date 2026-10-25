@@ -364,3 +364,33 @@ isogonal-conjugate # common pedal circle proved
 isotomic-conjugate # checked, no change
 carmichael-function # 2^k case proved
 gauss-lemma-qr # the 2 case counted exactly (checked)
+weighted-binomial-sums # checked, no change
+triangle-half-angle-identities # checked, no change
+ballot-problem # full reflection proof and never-behind version (checked)
+fundamental-theorem-arithmetic # checked, no change
+partitions # k-part compositions and generating function explained
+angle-bisectors-of-lines # two-line bisector formula and perpendicularity derived
+circle-equation # checked, no change
+bezouts-identity # checked, no change
+cauchy-schwarz # checked, no change
+regular-dodecagon # checked, no change
+weitzenbock-inequality # tan form derived
+contact-triangle # checked, no change
+ptolemy-second-theorem # full Law of Cosines derivation (checked)
+insphere-radius # checked, no change
+trivial-inequality # checked, no change
+nested-subset-pairs # checked, no change
+triangle-area-standard # checked, no change
+cone-formulas # checked, no change
+sigma-parity # checked, no change
+van-aubel-cevians # checked, no change
+excentral-triangle # checked (area), no change
+parallel-lines-distance # checked, no change
+cube # checked, no change
+space-diagonal # checked, no change
+polygon-angle-sums # checked, no change
+medial-triangle # orthocenter proved directly (no Euler-line circularity)
+orthocenter-properties # checked, no change
+gauss-lucas # checked, no change
+bayes-theorem # checked, no change
+euler-line-ratio # OH^2 both forms and NG derived (checked)

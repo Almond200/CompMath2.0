@@ -734,9 +734,13 @@ The values $1, 2, 5, 14, 42, 132, 429, 1430$ should be recognizable on sight. AI
 Every ordering of the $a + b$ votes is equally likely. The two versions, strictly ahead and never behind, give different answers, and problems exploit the distinction.
 
 ## Why it works
-The cycle lemma or the reflection principle: bad sequences, where $B$ ties or leads at some point, are in bijection with sequences starting with a $B$-vote, which gives the clean $\frac{a-b}{a+b}$ fraction of orderings.
+Count the orderings in which $A$ is strictly ahead after every vote. Such an ordering must start with an $A$. Among the orderings that start with an $A$, the bad ones are those where the counts tie at some point.
 
-The reflection argument is the one to reproduce: any ordering where the counts tie can be reflected before the first tie, so the bad orderings biject with the ones starting with a $B$, and the subtraction gives the fraction.
+Reflection: in a bad ordering that starts with an $A$, swap every vote up to and including the first tie, $A$ for $B$ and $B$ for $A$. The result starts with a $B$ and ties at the same moment. Conversely every ordering that starts with a $B$ must tie at some point, since $A$ finishes ahead, and swapping up to its first tie undoes the move. So the bad orderings starting with $A$ are exactly as many as the orderings starting with $B$.
+
+A random ordering starts with $B$ with probability $\frac{b}{a + b}$, so the bad orderings have probability $\frac{2b}{a + b}$ in all, those starting with $B$ and the bad ones starting with $A$. The good ones have $1 - \frac{2b}{a + b} = \frac{a - b}{a + b}$.
+
+For "never behind", add one extra vote for $A$ at the front. $A$ is then strictly ahead throughout exactly when the original count is never behind. With $a + 1$ and $b$ votes, the strict probability is $\frac{a + 1 - b}{a + b + 1}$, and every such ordering starts with an $A$, which happens with probability $\frac{a + 1}{a + b + 1}$. Dividing, $\frac{a - b + 1}{a + 1}$. At $a = b$ this is $\frac{1}{a + 1}$, and multiplying by the $\binom{2a}{a}$ orderings gives the Catalan number.
 
 ## Useful observations
 - The shape is a running-total condition: one count must stay ahead of another throughout a random ordering. Vote counts are the classic dressing, but queues with correct change and lattice paths above a line are the same problem.
@@ -856,13 +860,15 @@ Almost never alone; the count often becomes a [[basic-probability|probability]] 
 The parts are positive integers. Partitions ignore order and compositions do not, and the two counts are very different, so which one a problem asks for is the first thing to decide.
 
 ## Why it works
-Compositions are easy because order makes every choice independent. Write $n$ as $n$ ones in a row; a composition is a choice, at each of the $n - 1$ gaps, of whether to break there, so there are $2^{n-1}$.
+Compositions are easy because order makes every choice independent. Write $n$ as $n$ ones in a row; a composition is a choice, at each of the $n - 1$ gaps, of whether to break there, so there are $2^{n-1}$. Exactly $k$ parts means exactly $k - 1$ breaks, chosen in $\binom{n - 1}{k - 1}$ ways.
 
 Partitions ignore order, which destroys that independence, so there is no formula. What they have instead is a picture, the Ferrers diagram, with one row of dots for each part, longest first. Reflecting it across its diagonal swaps rows and columns, so it matches the partitions with at most $k$ parts with the partitions whose parts are at most $k$.
 
 {{figure:conjugate}}
 
 Euler's Theorem comes from splitting parts. An odd part repeated $m$ times regroups, by writing $m$ in binary, into distinct parts, and every distinct part is an odd number times a power of $2$, so the process runs backwards and the two kinds of partitions are equally many.
+
+In the generating function, the factor $\frac1{1 - x^k} = 1 + x^k + x^{2k} + \cdots$ chooses how many parts equal $k$. Multiplying the factors and collecting $x^n$ counts each choice of multiplicities with total $n$ once, which is one partition.
 
 ## Useful observations
 - For small $n$, partitions are listed in decreasing order of the largest part to avoid repeats.
