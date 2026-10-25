@@ -6727,7 +6727,14 @@
       </div>`;
     document.body.appendChild(infoEl);
     infoEl.addEventListener("click", e => {
-      if (e.target === infoEl || e.target.closest(".modal-close") || e.target.closest("a")) closeSpaceInfo();
+      const a = e.target.closest("a");
+      // A link here is a fresh navigation: drop any search still in the box, or the page
+      // would keep showing the results and the link would seem to do nothing.
+      if (a && (state.query.trim() || state.adv)) {
+        clearSearch();
+        if (a.getAttribute("href") === location.hash) { e.preventDefault(); render(); }
+      }
+      if (e.target === infoEl || e.target.closest(".modal-close") || a) closeSpaceInfo();
     });
     renderMath(infoEl);
     const x = infoEl.querySelector(".modal-close");
