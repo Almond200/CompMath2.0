@@ -369,6 +369,15 @@ window.MATH_EXAMPLES["your-card-id"] = { q: String.raw`...`, s: String.raw`...` 
 
 ---
 
+## 3b. Practice problems — mandatory, at least two per card (owner, 2026-10-25)
+
+**Every card has at least two practice problems, and a new card has them before it is committed.** `node tools/practice-gaps.js --check` is a gate in `tools/gates.sh` and fails on any card under two (`--list` names them). A practice problem is either:
+
+- **a linked contest problem**: a problem in `problem-db.js` that cites the card in `formulas` or `trickFormulas`. The tag goes on only where the problem's written route really uses the card (§11), never to give a new card its problems; a tag on a shared AMC 10/12 problem goes on both twins (`node tools/add-tag.js <card> "<ref>"`). The strategy names the card at the step that uses it; or
+- **a supplementary exercise** in `js/data/problems/extra-problems.js` (`MATH_PROBLEMS[id]`), used only when no real contest route uses the card. It asks its own question, never repeats the worked example (§3) or a neighbour's numbers, and every number in it is checked by computation.
+
+Search the whole archive for real routes first (`node tools/few-tags.js`, LIVE's concept hints, the card's keywords); exercises are the fallback, not the default.
+
 ## 4. The diagram — mandatory for geometry
 
 **Every geometry card has a diagram (256 of 256 in `geometry.js` on 2026-10-24, and every geometry method in `patterns.js` too).** It is not a strong tendency, it is the rule: a
@@ -844,6 +853,18 @@ From Stanley's review of the Iran Lemma figure, whose bisector and contact chord
 ## New cards are registered (2026-10-12)
 
 Every batch of new cards adds one entry to `js/data/new-cards.js` (a label, the date, and the ids in the order written) when it is written. `Special:NewCards` shows the latest batch with each card's kind, subject, and group, and `Special:NewCards/All` lists every batch, newest first, so the additions can be read through in the app. `tools/check-lists.py` fails on an id in a batch that is not a card.
+
+**The new-card checklist (2026-10-25).** A card is finished only when all of these hold; the gates check the ones marked (gate).
+
+1. Approved by the owner in `QUESTIONS.md` (a candidate from practice goes in as the next P-number, at the top of the table).
+2. The card object in its subject file or `patterns.js`, with every field of §1; written with `tools/add-cards.py`.
+3. The write-up (§2): When to use, How, Why it works with a complete proof, Formulas it uses, Common traps, Contest profile.
+4. The worked example (§3), using the card's own method, every number checked by computation.
+5. A diagram if it is a geometry card (§4), with a computed `ok` self-check (gate: `check-diagrams.py`).
+6. A topic chip earned from its name, keywords or group (gate: `check-topics.py`).
+7. At least two practice problems (§3b) (gate: `practice-gaps.js --check`).
+8. Registered in `js/data/new-cards.js` and placed in every study route it belongs to (`tools/add-to-list.py`) (gate: `check-lists.py`).
+9. `?v=` bumped (`python3 tools/bump-versions.py --changed`), every gate passing, then the README changelog, "Current state" and a push. The search index is rebuilt once at the end of a step, not after each card (owner, 2026-10-25).
 
 ## Rules recorded from the previous chat (2026-10-16)
 See `MIGRATION-NOTES.md` for the full answers.
