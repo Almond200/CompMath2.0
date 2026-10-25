@@ -594,3 +594,33 @@ pie # example checked, no change
 area-by-pieces # new card, checked
 lagrange-interpolation # example checked, no change
 brocards-theorem # checked, no change
+picks-theorem-general # trapezoid example checked, no change
+median-minimizes-abs # checked, no change
+backward-induction # checked, no change
+tangency-equation # checked, no change
+cycle-hunting # checked, no change
+counting-blocks # checked, no change
+recursive-counting # checked, no change
+piecewise-graph-counting # all four counts checked, no change
+rationalizing # checked, no change
+matrix-power-diagonalizing # checked, no change
+transfer-matrix-method # Lucas traces checked, no change
+products-over-roots # examples checked, no change
+squeeze-between-squares # algebra and n=5 figure checked, no change
+box-tetrahedron # checked, no change
+trig-series-complex # checked, no change
+denesting-radicals # checked, no change
+coordinate-bash # checked, no change
+setting-up-proportions # checked, no change
+triangle-of-centers # checked, no change
+homogenization # checked, no change
+ravi-substitution # checked, no change
+forced-difference-of-squares # checked, no change
+tangent-line-trick # example checked, no change
+subtract-and-factor # example checked, no change
+rotation-trick # example checked, no change
+vieta-jumping # chain checked, no change
+shoelace-formula # checked, no change
+functional-substitution # example checked, no change
+indicator-variables # example checked, no change
+mass-points # example checked, no change
