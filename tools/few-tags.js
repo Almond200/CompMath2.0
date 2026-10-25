@@ -4,13 +4,14 @@
 // no card holds goes into QUESTIONS.md as a candidate.
 // usage: node tools/few-tags.js "<contest>" [from] [count] [--min 2] [--skip "<contest>"] [--count]
 //   <contest> is matched against the ref ("AMC 10", "AIME", "AMC 8", "AJHSME"); --count prints only totals;
-//   --skip "AMC 10" hides twins already read there (same strategy text).
+//   --skip "AMC 10" hides twins already read there (same strategy text); --atleast N lists only
+//   problems citing at least N cards (with --min 99, every problem citing N or more).
 global.window = global;
 const fs = require('fs'), vm = require('vm'), path = require('path');
 vm.runInThisContext(fs.readFileSync(path.join(__dirname, '..', 'js', 'data', 'problems', 'problem-db.js'), 'utf8'));
 const args = process.argv.slice(2);
 const opt = k => { const i = args.indexOf(k); return i >= 0 ? args.splice(i, 2)[1] : null; };
-const MIN = +(opt('--min') || 2), skip = opt('--skip'), countOnly = args.includes('--count');
+const MIN = +(opt('--min') || 2), LEAST = +(opt('--atleast') || 0), skip = opt('--skip'), countOnly = args.includes('--count');
 const [contest = 'AMC 10', from = '0', count = '40'] = args.filter(a => a !== '--count');
 
 // LIVE concepts by ref (the same file-to-ref mapping as tools/live-gaps.js).
@@ -35,7 +36,7 @@ for (const f of fs.readdirSync(LC)) {
 const key = r => { const m = r.match(/^(\d+)(?: (Spring|Fall))? (.*?), Problem (\d+)$/); return m ? [+m[1], m[2] === 'Fall' ? 1 : 0, m[3], +m[4]] : [0, 0, r, 0]; };
 const tagsOf = p => [...new Set([...(p.formulas || []), ...(p.trickFormulas || [])])];
 const seen = new Set(skip ? window.MATH_PROBLEM_DB.filter(p => p.ref.includes(skip) && p.strategy).map(p => p.strategy) : []);
-const list = window.MATH_PROBLEM_DB.filter(p => p.ref.includes(contest) && tagsOf(p).length < MIN && !seen.has(p.strategy))
+const list = window.MATH_PROBLEM_DB.filter(p => p.ref.includes(contest) && tagsOf(p).length < MIN && tagsOf(p).length >= LEAST && !seen.has(p.strategy))
   .sort((a, b) => { const x = key(a.ref), y = key(b.ref); return y[0] - x[0] || y[1] - x[1] || (x[2] < y[2] ? -1 : x[2] > y[2] ? 1 : 0) || x[3] - y[3]; });
 if (countOnly) { console.log(list.length + ' ' + contest + ' problems cite fewer than ' + MIN + ' cards'); process.exit(0); }
 for (const p of list.slice(+from, +from + +count)) {
