@@ -736,6 +736,10 @@ For a prime $p$, consider the number of residues of each order $d \mid p - 1$. I
 
 Every residue has some order dividing $p - 1$, and $\sum_{d \mid p - 1}\varphi(d) = p - 1$. The counts can only add up if every order is taken by exactly $\varphi(d)$ residues, in particular order $p - 1$ by $\varphi(p - 1) \ge 1$ residues: primitive roots exist.
 
+The same count works for any modulus that has a primitive root $g$: $g^j$ is again one exactly when $\gcd(j, \varphi(n)) = 1$, which gives $\varphi(\varphi(n))$ of them. Which moduli have one at all, the list $1, 2, 4, p^k, 2p^k$, is quoted, not proved here (K. Ireland and M. Rosen, A Classical Introduction to Modern Number Theory, Chapter 4).
+
+For $x^k \equiv a$ modulo $p$, write $a = g^t$ and $x = g^y$. The congruence becomes $ky \equiv t \pmod{p - 1}$, which is solvable exactly when $d = \gcd(k, p - 1)$ divides $t$, and then has $d$ solutions. And $d \mid t$ is the same as $p - 1 \mid t\frac{p - 1}{d}$, that is, $a^{(p-1)/d} \equiv 1$.
+
 ## Useful observations
 - The powers of a primitive root run through every nonzero residue exactly once: modulo $7$ the powers of $3$ are $3, 2, 6, 4, 5, 1$.
 - With a primitive root, multiplication becomes addition of exponents modulo $\varphi(n)$, the index or discrete logarithm.
@@ -1133,6 +1137,10 @@ In a primitive triple the legs cannot both be even, and not both odd, since then
 Geometrically, a triple is a rational point $\left(\frac ac, \frac bc\right)$ on the unit circle, and the line through $(-1, 0)$ with slope $\frac nm$ meets the circle again at exactly that point.
 
 {{figure:rational}}
+
+The divisibility facts are checks on squares. Squares are $0$ or $1$ mod $3$, so if neither leg were a multiple of $3$ the hypotenuse would have $c^2 \equiv 2$, impossible. Squares are $0$ or $\pm1$ mod $5$, and two nonzero ones add to $2$, $0$ or $-2$, of which only $0$ is a square, so a leg or the hypotenuse is a multiple of $5$. For $4$: in $2mn$ one of $m$, $n$ is even. Each fact passes to multiples of a primitive triple.
+
+The inradius of a right triangle is $r = \frac{a + b - c}{2}$, since the tangent length at the right angle is $s - c$. For the primitive triangle this is $\frac{(m^2 - n^2) + 2mn - (m^2 + n^2)}{2} = n(m - n)$.
 
 ## Useful observations
 - Small coprime pairs $(m, n)$ of opposite parity give the familiar primitive triples: $(2, 1), (3, 2), (4, 1), (4, 3)$ give $3$-$4$-$5$, $5$-$12$-$13$, $15$-$8$-$17$, and $7$-$24$-$25$.
@@ -1652,7 +1660,11 @@ Object.assign(window.MATH_DETAILS, {
 The universal exponent applies to bases coprime to $n$. The order of any particular base divides $\lambda(n)$, which divides $\varphi(n)$.
 
 ## Why it works
-For odd primes the units mod $p^k$ form a cyclic group of order $\varphi(p^k)$, so the smallest exponent killing every unit is $\varphi(p^k)$ itself. Mod $2^k$ with $k \ge 3$ they do not: every odd square is $1 \bmod 8$, and squaring repeatedly shows $a^{2^{k-2}} \equiv 1 \pmod{2^k}$ for every odd $a$, while $5$ has order exactly $2^{k-2}$. The Chinese Remainder Theorem splits congruences mod $n$ into congruences mod each prime power, and an exponent works for all of them exactly when it is a multiple of each one's universal exponent, that is, of their lcm.
+For odd primes the units mod $p^k$ form a cyclic group of order $\varphi(p^k)$, so the smallest exponent killing every unit is $\varphi(p^k)$ itself.
+
+Mod $2^k$ with $k \ge 3$ they do not. An odd square is $1 + 8t$, and squaring $1 + 2^{j}u$ gives $1 + 2^{j+1}u + 2^{2j}u^2$, so each squaring raises the guaranteed power of $2$ by one: $a^{2^{k-2}} \equiv 1 \pmod{2^k}$ for every odd $a$. For $5 = 1 + 4$, the same expansion keeps the cofactor odd, $5^{2^j} = 1 + 2^{j+2} \cdot \text{odd}$, so $5$ has order exactly $2^{k-2}$.
+
+The Chinese Remainder Theorem splits congruences mod $n$ into congruences mod each prime power, and an exponent works for all of them exactly when it is a multiple of each one's universal exponent, that is, of their lcm. Each $\lambda(p^a)$ divides $\varphi(p^a)$, so the lcm divides the product, $\varphi(n)$.
 
 ## Useful observations
 - $\lambda$ can be much smaller than $\varphi$, since the cycles of the prime-power parts need only a common multiple: $\lambda(1000) = \operatorname{lcm}(\lambda(8), \lambda(125)) = \operatorname{lcm}(2, 100) = 100$, against $\varphi(1000) = 400$.
@@ -2344,7 +2356,9 @@ The functions are arbitrary complex-valued functions on the positive integers; $
 ## Why it works
 The sum runs over factorizations $n = de$ in ordered pairs, which is symmetric in the two factors, so $f * g = g * f$. Three-fold convolutions run over $n = abc$, so the order of grouping does not matter. $\varepsilon$ is the identity because only the factorization $n = n \cdot 1$ survives.
 
-For multiplicative $f$ and $g$ and coprime $m$, $n$, the factorizations of $mn$ are exactly products of factorizations of $m$ and of $n$, so $(f * g)(mn) = (f * g)(m)\,(f * g)(n)$. The identity $\mu * \mathbf 1 = \varepsilon$ is the statement that $\sum_{d \mid n}\mu(d)$ vanishes for $n \gt 1$, and convolving $g = f * \mathbf 1$ with $\mu$ gives $f$.
+For multiplicative $f$ and $g$ and coprime $m$, $n$, the factorizations of $mn$ are exactly products of factorizations of $m$ and of $n$, so $(f * g)(mn) = (f * g)(m)\,(f * g)(n)$. That reduces each listed identity to prime powers. At $p^e$: $\sum_{j \le e}\mu(p^j) = 1 - 1 = 0$ for $e \ge 1$, so $\mu * \mathbf 1 = \varepsilon$; and $\sum_{j \le e}\varphi(p^j) = 1 + (p - 1)(1 + p + \cdots + p^{e-1}) = p^e$, so $\varphi * \mathbf 1 = \mathrm{id}$.
+
+Convolving $g = f * \mathbf 1$ with $\mu$ gives $g * \mu = f * (\mathbf 1 * \mu) = f * \varepsilon = f$, which is Möbius inversion. An inverse of $f$ is built one $n$ at a time: $(f * h)(1) = f(1)h(1)$ must be $1$, and for $n \gt 1$ the equation $(f * h)(n) = 0$ determines $h(n)$ from the earlier values, which works exactly when $f(1) \ne 0$.
 
 ## Useful observations
 - Summing over divisors is convolving with $\mathbf 1$, so every divisor-sum identity is a convolution identity: $\sum_{d \mid 12}\varphi(d) = (\varphi * \mathbf 1)(12) = 12$.
@@ -2399,7 +2413,7 @@ Multiplying all $ka$ therefore gives $a^{\frac{p-1}{2}}\left(\frac{p-1}{2}\right
 
 ## Useful observations
 - Counting remainders above $\frac p2$ settles small cases by hand: for $\left(\frac 27\right)$, the remainders $2, 4, 6$ have two above $3.5$, so the symbol is $1$, and indeed $3^2 \equiv 2$.
-- For $a = 2$, the multiples $2, 4, \ldots, p - 1$ exceed $\frac p2$ for about half of them, which gives the formula $(-1)^{(p^2-1)/8}$.
+- For $a = 2$, the products $2, 4, \ldots, p - 1$ are their own remainders, and those above $\frac p2$ number $\mu = \frac{p-1}{2} - \left\lfloor\frac p4\right\rfloor$. For $p = 8m + 1, 8m + 3, 8m + 5, 8m + 7$ this is $2m$, $2m + 1$, $2m + 1$, $2m + 2$, so $2$ is a square exactly when $p \equiv \pm1 \pmod 8$, which is the parity of $\frac{p^2 - 1}{8}$.
 - For $a = -1$, every one of the $\frac{p-1}{2}$ remainders is above $\frac p2$, giving $\left(\frac{-1}{p}\right) = (-1)^{\frac{p-1}{2}}$.
 
 ## Applications

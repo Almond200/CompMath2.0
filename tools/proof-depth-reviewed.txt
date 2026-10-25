@@ -334,3 +334,33 @@ altitude-bisector-angle # checked, no change
 binomial-probability # variance derived
 pigeonhole # checked, no change
 symmedian-lemoine # sine ratio corrected (was c/b, is b/c); tangent point proved
+cyclic-perpendicular-diagonals # Brahmagupta's theorem proved; converse noted
+primitive-roots # count and kth-power criterion derived; classification quoted
+integer-triangles-perimeter # inner count derived; closed form quoted and checked to 300
+incenter-excenter-lemma # checked, no change
+work-rates # checked, no change
+factor-remainder-theorem # checked, no change
+power-sums # checked, no change
+grid-paths # checked, no change
+regular-hexagon-area # checked, no change
+incircle-tangent-lengths # excircle touch point and right-angle case shown
+vietas-quadratic # checked, no change
+determinant-basics # triangular, transpose and product rules proved
+midsegment-theorem # trapezoid midline proved
+diagonal-angle-from-sides # checked, no change
+trig-ceva # checked, no change
+burnsides-lemma # checked (cube count 10), no change
+pitots-theorem # converse proved; area rs shown
+conic-reflective-property # hyperbola case explained
+surjections # checked, no change
+regular-octahedron # dihedral angle computed
+dirichlet-convolution # identities at prime powers; inverse existence
+pythagorean-triples # 3-4-5 divisibility and inradius proved
+pascals-identity # checked, no change
+triangle-inequality # checked, no change
+log-rules # checked, no change
+same-base-area-ratio # checked, no change
+isogonal-conjugate # common pedal circle proved
+isotomic-conjugate # checked, no change
+carmichael-function # 2^k case proved
+gauss-lemma-qr # the 2 case counted exactly (checked)

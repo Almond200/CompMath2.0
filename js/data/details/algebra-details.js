@@ -4234,6 +4234,10 @@ The determinant is the one function of the rows that is linear in each row, flip
 
 The general formula is the Leibniz formula, $\det A = \sum_{\sigma} \operatorname{sgn}(\sigma)\, a_{1\sigma(1)} a_{2\sigma(2)} \cdots a_{n\sigma(n)}$: one term for each way of choosing one entry from every row and every column, signed by the parity of the permutation. Sarrus's six terms are the case $n = 3$.
 
+The other rules follow from these. In a triangular matrix every term of the Leibniz sum but the diagonal one uses an entry from the zero side, so only the product of the diagonal survives. For the transpose, the term for $\sigma$ in $\det A^{\top}$ is the term for $\sigma^{-1}$ in $\det A$, and a permutation and its inverse have the same sign.
+
+For the product, fix $B$ with $\det B \ne 0$. The rows of $AB$ are the rows of $A$ times $B$, so $A \mapsto \frac{\det(AB)}{\det B}$ is linear in each row of $A$, flips sign on a swap, and gives $1$ at $A = I$; by uniqueness it is $\det A$. If $\det B = 0$, then $B$ sends some nonzero vector to $0$, so does $AB$, and both sides are $0$.
+
 ## Useful observations
 - The properties are used before the formula. Row operations of the add-a-multiple kind cost nothing, so they manufacture zeros, after which the determinant is expanded along the sparsest row.
 - $\det(AB) = \det A \cdot \det B$ turns a product that cannot be computed into two that can, and $\det(A^{\top}) = \det A$ lets any row argument be run on columns instead.

@@ -302,6 +302,8 @@ All three midsegments together cut the triangle into four triangles whose sides 
 
 {{figure:four}}
 
+For a trapezoid with bases $a$ and $b$, draw one diagonal. It splits the trapezoid into two triangles, one on each base. The midpoint of one leg, the midpoint of the diagonal, and the midpoint of the other leg give a midsegment of each triangle, of lengths $\frac a2$ and $\frac b2$, both parallel to the bases and sharing the diagonal's midpoint, so they lie on one line and add to $\frac{a + b}{2}$.
+
 ## Useful observations
 - For a $6$-$8$-$10$ triangle the medial triangle is $3$-$4$-$5$.
 - The midpoints of the sides of any quadrilateral form a parallelogram, [[varignons-theorem|Varignon's Theorem]], because each of its sides is parallel to a diagonal and half as long.
@@ -730,7 +732,9 @@ Any triangle; $s$ is the semiperimeter.
 ## Why it works
 The two tangent segments from a point outside a circle are equal, by symmetry across the line through the point and the center. Label the common lengths from $A$, $B$, $C$ as $x$, $y$, $z$. Then $y + z = a$, $x + z = b$, and $x + y = c$. Adding all three gives $2(x + y + z) = 2s$, so $x + y + z = s$, and subtracting each equation gives $x = s - a$, $y = s - b$, $z = s - c$.
 
-For the excircle opposite $A$, the tangent lengths from $A$ to the two extended sides are equal, and together they cover $AB + BD' + D'C + CA$ with $BD'$ and $D'C$ matching tangents from $B$ and $C$, which is the whole perimeter, so each is $s$.
+For the excircle opposite $A$, the tangent lengths from $A$ to the two extended sides are equal, and together they cover $AB + BD' + D'C + CA$ with $BD'$ and $D'C$ matching tangents from $B$ and $C$, which is the whole perimeter, so each is $s$. Then $BD' = s - AB = s - c$.
+
+At a right angle $C$, the incenter and the two touch points on the legs form a square with $C$, since its angles are all right and the two radii are equal. Its side is both $r$ and the tangent length from $C$, so $r = s - c$.
 
 ## Useful observations
 - The incircle and the $A$-excircle touch $BC$ at points symmetric about its midpoint, since one is $s - b$ from $B$ and the other $s - b$ from $C$.
@@ -1880,7 +1884,9 @@ The quadrilateral is convex. The theorem is an equivalence for convex quadrilate
 ## Why it works
 Equal tangent lengths from each vertex: going around the quadrilateral, each side is a sum of two tangent lengths, and the two tangent lengths from a vertex are equal. The sum of one pair of opposite sides is $(x + y) + (z + w)$, and the other pair is $(y + z) + (w + x)$, so both opposite-side sums count all four tangent lengths exactly once.
 
-The converse also holds for convex quadrilaterals: if the sums are equal, the tangent lengths can be chosen consistently and the incircle exists.
+For the converse, suppose $AB + CD = BC + AD$. The bisectors of the angles at $B$ and $C$ meet at the center of a circle tangent to $AB$, $BC$, and $CD$. Draw the other tangent from $A$ to that circle and let it meet line $CD$ at $D'$. Then $ABCD'$ has an incircle, so $AB + CD' = BC + AD'$. Subtracting, $CD - CD' = AD - AD'$, so $\pm DD' = AD - AD'$. In triangle $ADD'$ a side cannot equal the difference of the other two, so $D' = D$ and the circle touches $AD$ too.
+
+For the area, join the incenter to the four vertices. The four triangles have the sides as bases and the inradius $r$ as their common height, so $[ABCD] = \frac12r(AB + BC + CD + DA) = rs$.
 
 ## Useful observations
 - Checking $AB + CD = BC + AD$ instantly certifies or refutes an inscribed circle.
@@ -3048,11 +3054,13 @@ The ratio itself is the usable half at AIME level, since the squared side ratio 
 The quadrilateral is cyclic and its diagonals are perpendicular. The equality of the two opposite-side pairs needs only perpendicular diagonals.
 
 ## Why it works
-Two chords crossing inside a circle meet at an angle equal to half the sum of the two arcs they cut off. Demanding a right angle therefore says those two arcs total $180^\circ$.
+Two chords crossing inside a circle meet at an angle equal to half the sum of the two arcs they cut off. Demanding a right angle therefore says those two arcs total $180^\circ$, and conversely arcs totalling $180^\circ$ make the angle $90^\circ$.
 
 Write the arc under $AB$ as $2\beta$; then the arc under $CD$ is $2(90^\circ - \beta)$, and the [[chord-length|chord length formula]] gives $AB = 2R\sin\beta$ and $CD = 2R\cos\beta$. Squaring and adding, the trigonometry cancels and leaves $AB^2 + CD^2 = 4R^2$. The other pair of arcs also totals $180^\circ$, so $BC^2 + DA^2 = 4R^2$ as well.
 
 There is a second, coordinate-free way to see the equality of the pairs. If the diagonals meet at $P$ and cut them into $p, q$ and $u, v$, then perpendicularity makes each side a hypotenuse: $a^2 = p^2 + u^2$, $b^2 = q^2 + u^2$, $c^2 = q^2 + v^2$, $d^2 = p^2 + v^2$. Both $a^2 + c^2$ and $b^2 + d^2$ come to $p^2 + q^2 + u^2 + v^2$.
+
+For Brahmagupta's theorem, let $H$ be the foot of the perpendicular from $P$ to $AB$ and let line $HP$ meet $CD$ at $M$. In the right triangle $APB$, $\angle APH = \angle ABP = \angle ABD$, and $\angle ABD = \angle ACD$ on the arc $AD$. The vertical angle $\angle CPM$ equals $\angle APH$, so $\angle CPM = \angle PCM$ and $MP = MC$. The angles at $P$ and at $D$ are the complements of those, so $MP = MD$ too, and $M$ is the midpoint of $CD$.
 
 ## Useful observations
 - The configuration is recognized from the right angle at the diagonals, and the pairing gives the answer immediately: three of the four sides determine the fourth, and any one of them together with $R$ determines the opposite one.
@@ -5064,6 +5072,10 @@ Reflecting a [[cevas-theorem|cevian]] in the angle bisector swaps the two parts 
 
 The coordinates follow from the [[ratio-lemma|Ratio Lemma]]. If $D = (0 : y : z)$ is the foot of $AP$ on $BC$, then $BD : DC = z : y$, and swapping the sine ratio at $A$ turns it into $c^2y : b^2z$. So the reflected foot is $(0 : b^2z : c^2y) \propto \left(0 : \frac{b^2}{y} : \frac{c^2}{z}\right)$, and the three feet give $P^* = \left(\frac{a^2}{x} : \frac{b^2}{y} : \frac{c^2}{z}\right)$.
 
+For the pedal circle, let $P$ have feet $F$, $E$ on $AB$, $AC$, and $P^*$ have feet $F^*$, $E^*$. Then $AF \cdot AF^* = AP\cos\angle PAB \cdot AP^*\cos\angle P^*AB$ and $AE \cdot AE^* = AP\cos\angle PAC \cdot AP^*\cos\angle P^*AC$. Isogonality swaps the two angles, so the products agree and $F$, $F^*$, $E$, $E^*$ are concyclic by the converse of Power of a Point.
+
+The midpoint $M$ of $PP^*$ projects onto $AB$ at the midpoint of $FF^*$, so $M$ lies on the perpendicular bisector of $FF^*$, and likewise of $EE^*$: that circle is centered at $M$. The circles at the other vertices are also centered at $M$ and share a foot with this one, so all six feet lie on one circle.
+
 ## Useful observations
 - A hard point can often be swapped for an easy one: $O \leftrightarrow H$, and the centroid $G = (1 : 1 : 1)$ goes to $(a^2 : b^2 : c^2)$, the symmedian point $K$.
 - The symmedian is the isogonal of the median, the most frequent special case at AIME level.
@@ -5385,7 +5397,9 @@ Triangles are counted up to congruence, so each side triple $a \le b \le c$ coun
 ## Why it works
 Count triples ordered by size, $a \le b \le c$, with $a + b + c = n$ and the single binding constraint $a + b \gt c$, which is the same as $c \lt \frac n2$ since the other two inequalities are automatic once the sides are sorted.
 
-Fix the longest side $c$. Then $a + b = n - c$ with $a \le b \le c$, a short run of pairs $(a, b)$ to count. Summing the counts over the allowed $c$, from $\lceil \frac n3 \rceil$ up to $\lfloor \frac{n - 1}{2} \rfloor$, gives a quadratic in $n$, and it collapses to the nearest integer to $\frac{n^2}{48}$ for even $n$ and to $\frac{(n + 3)^2}{48}$ for odd $n$. This is Alcuin's sequence.
+Fix the longest side $c$, from $\lceil \frac n3 \rceil$ up to $\lfloor \frac{n - 1}{2} \rfloor$. Then $a + b = n - c$ with $a \le b \le c$, so $b$ runs from $\left\lceil\frac{n - c}{2}\right\rceil$ up to $c$, and $a = n - c - b$ is automatically at least $1$ because $b \le c \lt n - c$. That gives $c - \left\lceil\frac{n - c}{2}\right\rceil + 1$ triangles for each $c$.
+
+Adding these up gives the nearest integer to $\frac{n^2}{48}$ for even $n$ and to $\frac{(n + 3)^2}{48}$ for odd $n$, the sequence named after Alcuin. The closed form is quoted, not proved here (G. E. Andrews, A note on partitions and triangles with integer sides, Amer. Math. Monthly 86 (1979)); it agrees with the sum for every $n$ up to $300$, checked by computer. For $n = 12$: $c = 4$ gives $1$ and $c = 5$ gives $2$, three in all.
 
 ## Useful observations
 - For one specific small $n$, the sum over $c$ can be written out directly, and the rounded formula is the quick check on a full count.
@@ -5471,6 +5485,8 @@ All twelve edges are equal and four faces meet at each vertex.
 
 ## Why it works
 The four vertices that are not at the top or the bottom form a square of side $s$, since their diagonals are a pair of opposite octahedron edges. Above and below it sit two congruent pyramids with apex over the center of the square, at height $\frac{s}{\sqrt2}$, half a face diagonal of the square, so $$V = 2 \cdot \frac13 \cdot s^2 \cdot \frac{s}{\sqrt2} = \frac{s^3\sqrt2}{3}.$$ The surface is eight equilateral triangles, $8 \cdot \frac{\sqrt3}{4}s^2 = 2s^2\sqrt3$. The center is at distance $\frac{s}{\sqrt2}$ from every vertex, so $R = \frac{s\sqrt2}{2}$, and $r = \frac{3V}{S} = \frac{s\sqrt6}{6}$.
+
+For the dihedral angle, put the vertices at $(\pm1, 0, 0)$, $(0, \pm1, 0)$, $(0, 0, \pm1)$. Two faces sharing the edge from $(1, 0, 0)$ to $(0, 1, 0)$ have outward normals $(1, 1, 1)$ and $(1, 1, -1)$, at an angle with cosine $\frac13$. The angle between the faces themselves is the supplement, $\arccos\left(-\frac13\right)$.
 
 For the cube relation, the centers of two adjacent faces of a cube of edge $e$ are $\frac{e\sqrt2}{2}$ apart, which is the octahedron's edge, and substituting $s = \frac{e\sqrt2}{2}$ gives $V = \frac{e^3}{6}$. Equivalently, the octahedron is two pyramids on the square through four face centers, with base area $\frac{e^2}{2}$ and height $\frac e2$.
 
@@ -6428,6 +6444,8 @@ The reflection is off the curve, that is, off its tangent line at the point. The
 
 ## Why it works
 Take a point $T$ on an ellipse and move slightly along the tangent. To first order the sum $PF_1 + PF_2$ must not change, since $T$ already sits on the level curve where that sum is $2a$. The rate at which each focal distance changes is the cosine of the angle between the tangent direction and that focal radius, so the two cosines must cancel, which says the tangent makes equal angles with the two radii. That is the reflection law.
+
+On a hyperbola the difference $PF_1 - PF_2$ is the constant, so the two cosines must be equal instead of opposite: the tangent bisects the angle between the two focal radii, and a ray aimed at one focus reflects as if it came from the other.
 
 On a parabola the second focus is at infinity, so the second radius points along the axis and a ray from the focus leaves parallel to it.
 
