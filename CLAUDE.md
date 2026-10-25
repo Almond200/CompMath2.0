@@ -19,6 +19,7 @@ export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1243/chrome-linu
 python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 tools/check-lists.py
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
 python3 tools/check-labels.py          # 7 known "far-move" findings caused by fonts are the baseline (2026-10-24)
+node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
 
@@ -32,6 +33,9 @@ $JSC tools/validate-problem-db.js
 - Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
 - One fact, one home.
 - Every number is checked by computation.
+- Every card, new ones included, has at least two practice problems (linked contest problems, else exercises in `extra-problems.js`); `gates.sh` fails otherwise. A new card follows the checklist in CONVENTIONS ("New cards are registered").
+- A "tag" on a problem is a formula, method or pattern card it cites (`formulas`, `trickFormulas`).
+- Rebuild the search index once at the end of a step, not after each small card edit (owner, 2026-10-25).
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.

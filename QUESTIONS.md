@@ -2,6 +2,8 @@
 
 Style and judgment calls found while working through `PLAN.md`. Verified errors are fixed straight away and recorded in the README; only real choices wait here.
 
+A candidate card lists, under "Needed by", the problems whose routes would cite it. A card needs at least two practice problems before it ships (CONVENTIONS §3b); when fewer than two real problems use it, the row says so and the card gets supplementary exercises.
+
 ## Open now
 
 **The tag pass (H, 2026-10-25): P39 to P41 approved by the owner and written (2026-10-25)** as `comparing-coefficients`, `rolling-without-slipping` and `tethered-animal`, with the problems listed tagged (2004 AIME I #14 is left out of P41: it asks for the rope's length on a tower, not a reachable region). Nothing is open; the next candidate is P42. P28 to P38 (approved 2026-10-24, written 2026-10-25) are kept below as the record.
