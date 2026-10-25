@@ -568,6 +568,11 @@ A frequent AIME step, most often splitting a modulus such as $1000$ into $8$ and
 
 ## Full proof
 Let $N = n_1\cdots n_k$ with the $n_i$ pairwise coprime. If $x$ and $y$ both solve the system, every $n_i$ divides $x - y$, and since their lcm is their product, $N$ divides $x - y$. For existence, $N_i = \frac{N}{n_i}$ is coprime to $n_i$, so it has an inverse $M_i$ modulo $n_i$, and $x = \sum_i a_iN_iM_i$ works: modulo $n_i$, every term but the $i$th contains the factor $n_i$, and the $i$th is $a_i \cdot N_iM_i \equiv a_i$.
+
+General moduli, two at a time. A solution of $x \equiv a_1 \pmod{n_1}$ and $x \equiv a_2 \pmod{n_2}$ is congruent to both $a_1$ and $a_2$ modulo $g = \gcd(n_1, n_2)$, so $a_1 \equiv a_2 \pmod g$ is necessary.
+
+Conversely, write $x = a_1 + n_1t$; the second congruence becomes $n_1t \equiv a_2 - a_1 \pmod{n_2}$, which by [[bezouts-identity|Bézout's Identity]] is solvable exactly when $g \mid a_2 - a_1$, with $t$ unique modulo $\frac{n_2}{g}$. Then $x$ is unique modulo $n_1 \cdot \frac{n_2}{g} = \operatorname{lcm}(n_1, n_2)$, and further congruences are merged one at a time.
+
 `,
 
 "multiplicative-order": String.raw`
@@ -2969,17 +2974,17 @@ A MATHCOUNTS and AMC 8 and 10 setup, from a single forced count to counting the 
 $m \ge 1$ and $\gcd(a, m) = 1$. The theorem says nothing about where the first such prime is, and nothing about primes in a progression whose terms share a factor.
 
 ## Why it works
-The general theorem, proved by Dirichlet in 1837, uses characters modulo $m$ and the fact that certain infinite series, his $L$-functions, do not vanish at $1$. That is far beyond a contest, and solutions cite it.
+The general theorem, proved by Dirichlet in 1837, uses characters modulo $m$ and the fact that certain infinite series, his $L$-functions, do not vanish at $1$. It is quoted, not proved here (K. Ireland and M. Rosen, A Classical Introduction to Modern Number Theory, Chapter 16); contest solutions cite it.
 
 The special cases follow Euclid's proof. For $3 \bmod 4$, suppose $p_1, \ldots, p_k$ are all the primes $\equiv 3 \pmod 4$ and let $N = 4p_1\cdots p_k - 1$. It is odd and $\equiv 3 \pmod 4$. A product of primes that are all $\equiv 1 \pmod 4$ is $\equiv 1 \pmod 4$, so some prime factor $q$ of $N$ is $\equiv 3 \pmod 4$. But $N \equiv -1 \pmod{p_i}$ for every $i$, so $q$ is not on the list, a contradiction.
 
 For $1 \bmod 4$, let $N = (2p_1\cdots p_k)^2 + 1$ and let $q$ be a prime factor of it. Then $q$ is odd and $(2p_1\cdots p_k)^2 \equiv -1 \pmod q$, so $-1$ is a square modulo $q$, which by [[eulers-criterion|Euler's Criterion]] forces $q \equiv 1 \pmod 4$. Again $q$ is none of the $p_i$.
 
-The last Key form is the same argument with the [[cyclotomic-polynomials|cyclotomic polynomial]] $\Phi_n$, using $N = n\,p_1\cdots p_k$.
+For $1 \bmod n$ the argument is the same with $N = n\,p_1\cdots p_k$ and the number $\Phi_n(N)$: its prime factors divide neither $n$ nor any $p_i$, and each is $\equiv 1 \pmod n$. That step is proved in full on the [[cyclotomic-polynomials|cyclotomic polynomials]] card.
 
 ## Useful observations
 - In an olympiad solution the theorem supplies a prime of a chosen residue larger than any given bound, for instance a prime $p \equiv -1 \pmod m$ with $p \gt N$, to substitute into a functional equation or a divisibility.
-- The elementary arguments work exactly for the residues $a$ with $a^2 \equiv 1 \pmod m$; any other residue needs Dirichlet's analysis.
+- Euclid-style arguments like these are known only for some residues, those with $a^2 \equiv 1 \pmod m$; any other residue needs Dirichlet's analysis.
 
 ## Applications
 Choosing a large prime in a given residue class to test a divisibility or a functional equation, and proving that the primes of a given form are infinite.

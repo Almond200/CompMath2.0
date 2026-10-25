@@ -644,7 +644,7 @@ The argument uses only that one point is at distance $r$ from every side, so it 
 
 {{figure:polygon}}
 
-For a polygon the circle is not automatic as it is for a triangle: a convex quadrilateral has one exactly when its opposite sides have equal sums, by [[pitots-theorem|Pitot's Theorem]]. For the excircle opposite $A$, the same three triangles fit together with $IBC$ subtracted, giving $A = r_a(s - a)$.
+For a polygon the circle is not automatic as it is for a triangle: a convex quadrilateral has one exactly when its opposite sides have equal sums, by [[pitots-theorem|Pitot's Theorem]]. For the excircle opposite $A$, use the excenter $I_A$ in place of $I$: it is at distance $r_a$ from all three side lines, and $[I_AAB] + [I_ACA] - [I_ABC] = \frac12r_a(c + b - a) = r_a(s - a)$.
 
 ## Useful observations
 - In a right triangle the incircle's contact points on the legs and the right-angle vertex form a square of side $r$, which with the [[incircle-tangent-lengths|incircle tangent lengths]] gives $r = s - c$.
@@ -1550,7 +1550,9 @@ The touch point is the point of the tangent line closest to the center, and the 
 
 Every point of the tangent line other than the touch point $T$ lies outside the circle, so its distance from the center $O$ is more than the radius; that makes $T$ the point of the line closest to $O$. The closest point of a line to $O$ is also the foot $F$ of the perpendicular from $O$, because any other point $Q$ of the line makes a right triangle $OFQ$ with hypotenuse $OQ$, and $OQ^2 = OF^2 + FQ^2 \gt OF^2$. So $T = F$ and $OT$ is perpendicular to the line.
 
-The equal tangents follow at once. Triangles $OAP$ and $OBP$ have right angles at $A$ and $B$, share the hypotenuse $OP$, and have equal legs $OA = OB = r$, so by the [[pythagorean-theorem|Pythagorean Theorem]] $PA = \sqrt{OP^2 - r^2} = PB$. The figure at the top shows the kite this makes, symmetric about $OP$.
+The equal tangents follow at once. Triangles $OAP$ and $OBP$ have right angles at $A$ and $B$, share the hypotenuse $OP$, and have equal legs $OA = OB = r$, so by the [[pythagorean-theorem|Pythagorean Theorem]] $PA = \sqrt{OP^2 - r^2} = PB$. The figure at the top shows the kite this makes, symmetric about $OP$: reflecting in $OP$ swaps $A$ and $B$, so $OP$ bisects both angles of the kite and is perpendicular to $AB$.
+
+A circle tangent to both sides of an angle has its center at distance $r$ from each side, and the points equidistant from two crossing lines lie on the bisectors of their angles.
 
 The tangent–chord angle is the inscribed angle rule in its limiting case: slide one endpoint of a chord along the circle into the other, and the chord turns into the tangent while the angle stays half the arc.
 
@@ -3126,7 +3128,9 @@ Write $AB = 2a$ and $BC = 2b$, so the outer semicircle has radius $a + b$. The l
 
 Now the perpendicular at $B$. Because $AC$ is a diameter, [[thales-theorem|Thales' Theorem]] makes $\angle ADC$ a right angle, so $BD$ is the [[altitude-hypotenuse|altitude to the hypotenuse]] of a right triangle and the geometric mean relation gives $BD^2 = AB \cdot BC = 4ab$. The circle on $BD$ as diameter therefore has area $\frac\pi4 \cdot 4ab = \pi ab$, the same number. The two regions are not congruent, but their areas agree exactly.
 
-Archimedes' twin circles are the striking part. A circle inscribed in the left lobe, tangent to $BD$, to the outer semicircle, and to the semicircle on $AB$, and the same on the right, both have radius $\frac{ab}{a + b}$, even though the lobes are different sizes whenever $a \ne b$.
+For the twin circles, put $B$ at the origin with $A$ to the left, so the semicircle on $AB$ has center $(-a, 0)$ and the outer one has center $(b - a, 0)$. A circle of radius $\rho$ in the left lobe touching $BD$ has center $(-\rho, y)$. Touching the small semicircle from outside gives $(a - \rho)^2 + y^2 = (a + \rho)^2$, so $y^2 = 4a\rho$.
+
+Touching the outer semicircle from inside gives $(b - a + \rho)^2 + y^2 = (a + b - \rho)^2$, so $y^2 = 4b(a - \rho)$. Equating, $a\rho = b(a - \rho)$ and $\rho = \frac{ab}{a + b}$, a formula symmetric in $a$ and $b$, so the circle in the right lobe has the same radius even when the lobes differ.
 
 ## Useful observations
 - The figure is recognized from three semicircles on collinear diameters, all on one side. The area identity is what makes the shape worth naming: a region bounded by three arcs is replaced by one circle.
@@ -5195,7 +5199,7 @@ Connect-the-midpoints configurations, area quartering, and the bridge into Euler
 
 "triangle-13-14-15": String.raw`
 ## Key forms
-- $s = 21$ and $[ABC] = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$, the smallest scalene triangle after $3$-$4$-$5$ with whole-number sides and a whole-number area
+- $s = 21$ and $[ABC] = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$, after $3$-$4$-$5$, the smallest triangle with consecutive whole-number sides and a whole-number area (the next is $51$-$52$-$53$)
 - the altitude to the side $14$ is $12$ and splits it into $5 + 9$, so the triangle is a $5$-$12$-$13$ and a $9$-$12$-$15$ right triangle glued along that altitude
 - $r = \frac{A}{s} = 4$ and $R = \frac{abc}{4A} = \frac{65}{8}$; the exradii are $\frac{21}{2}$, $12$, $14$ opposite the sides $13$, $14$, $15$
 - the cosines of the angles opposite $13$ and $15$ are $\frac{3}{5}$ and $\frac{5}{13}$, so both are angles you already know from the small Pythagorean triples

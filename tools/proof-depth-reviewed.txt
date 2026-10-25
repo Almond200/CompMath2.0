@@ -504,3 +504,33 @@ orthogonal-circles # checked, no change
 quadratic-formula # checked, no change
 balls-boxes-table # worked numbers checked, no change
 concyclicity-tests # checked, no change
+polar-coordinates # checked, no change
+nesbitt-inequality # checked, no change
+inscribed-angle-theorem # checked, no change
+point-plane-distance # checked, no change
+crt # general-moduli criterion proved
+schurs-theorem # bounds checked, no change
+vivianis-theorem # checked, no change
+humpty-queue-points # checked, no change
+power-of-a-point-linearity # checked, no change
+figure-symmetries # new card, checked
+permutation-cycle-structure # checked, no change
+inradius-area # excircle case corrected to use the excenter
+caseys-theorem # checked, no change
+multiset-permutations # checked, no change
+leibniz-formula # checked, no change
+tangent-facts # kite symmetry and center-on-bisector shown
+square-of-sum # checked, no change
+parallel-exterior-angles # checked, no change
+shooting-lemma # checked, no change
+ptolemy-equilateral # checked, no change
+squares-on-triangle-flanks # checked, no change
+triangle-13-14-15 # false 'smallest scalene' claim corrected (consecutive sides)
+equiangular-hexagon-area # checked, no change
+shared-angle-area-ratio # checked, no change
+hook-length-formula # labelled quoted with reference
+conway-circle # checked, no change
+angle-addition # checked, no change
+arbelos # twin-circle radius derived
+independent-events # checked, no change
+dirichlet-primes-progression # general case quoted with reference; 1 mod n points to its home
