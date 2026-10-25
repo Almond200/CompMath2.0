@@ -4657,7 +4657,7 @@
 
   // ---------- Front-page panels ----------
   // Did you know: a striking fact from the curiosity lists, the first Useful observation of one
-  // of their cards (or its opening sentence), with the card's diagram when it has one.
+  // of their cards (or its opening sentence), as text only.
   function didYouKnowPool() {
     const ids = [];
     (window.MATH_BUILTIN_LISTS || []).filter(l => l.kind === "curiosity").forEach(l => l.sections.forEach(sec => sec.ids.forEach(id => { if (BY_ID[id] && ids.indexOf(id) < 0) ids.push(id); })));
@@ -4688,14 +4688,9 @@
     const id = didYouKnowPick();
     if (!id) return "";
     const f = BY_ID[id].formula;
-    // The card's first diagram, without its caption (which may describe another fact), as on
-    // the hover preview. It shows whatever "Figures on cards" says, since that setting is for
-    // browsing card faces and the fact here is the card's own content.
-    const panel = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
-    const fig = panel ? `<div class="dyk-fig">${String(panel).replace(/<div class="diagram-cap">[\s\S]*?<\/div>/, "")}</div>` : "";
-    return `<section class="hp-panel dyk${fig ? " dyk-has-fig" : ""}">
+    return `<section class="hp-panel dyk">
         <div class="hp-label">Did you know?</div>
-        <div class="dyk-body">${fig}<p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p></div>
+        <p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p>
         <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a><button type="button" class="hp-link dyk-next">Another</button></div>
       </section>`;
   }
@@ -4792,7 +4787,7 @@
                 : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
               <div class="hp-mine-foot">
                 <a href="#/practice" data-goto="lists-new-name">Make a list</a>
-                <a href="#/practice" data-goto="pr-lists">Open a list</a>
+                <a href="#/practice" data-goto="pr-study">Open a list</a>
               </div>
             </section>
           </aside>
@@ -4933,7 +4928,7 @@
             })()}
           </div>
         </section>
-        <section class="sh-section">
+        <section class="sh-section" id="pr-study">
           <h3>Study lists</h3>
           <div class="grid-scroll"><table class="cy-grid route-grid">
             <thead><tr><th></th>${subjects.map(x => `<th>${x}</th>`).join("")}</tr></thead>
@@ -6894,9 +6889,10 @@
   }
   applyLayout();
 
-  // Links that open a page at one of its parts (the home page's "Make a list" and "Open a list"
-  // go to the lists on the Practice page): once the page has rendered, scroll the part into view
-  // and put the cursor in it when it is a text box.
+  // Links that open a page at one of its parts (the home page's "Make a list" goes to the new-list
+  // box and "Open a list" to the Study lists section of the Practice page): once the page has
+  // rendered, scroll the part into view, a text box centred with the cursor in it, a section
+  // with its heading just under the top bar.
   document.addEventListener("click", e => {
     const a = e.target.closest("a[data-goto]");
     if (!a) return;
@@ -6905,8 +6901,13 @@
     const seek = () => {
       const el = document.getElementById(id);
       if (el) {
-        (el.closest(".hp-panel") || el).scrollIntoView({ block: "center" });
-        if (el.tagName === "INPUT") el.focus({ preventScroll: true });
+        if (el.tagName === "INPUT") {
+          (el.closest(".hp-panel") || el).scrollIntoView({ block: "center" });
+          el.focus({ preventScroll: true });
+        } else {
+          const bar = document.querySelector(".topbar");
+          window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - 14), behavior: "instant" });
+        }
       } else if (++tries < 40) setTimeout(seek, 25);
     };
     setTimeout(seek, 0);
