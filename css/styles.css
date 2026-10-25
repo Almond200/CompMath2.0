@@ -2522,7 +2522,9 @@ body[data-space="practice"] [data-space-go="practice"] { background: var(--space
 .daily-type { font-size: 11.5px; font-weight: 650; padding: 2px 9px; border-radius: 999px; background: var(--bg-panel); color: var(--text-dim); }
 .daily-note { margin: 8px 0; font-size: 13px; color: var(--text-dim); }
 .daily-st { margin: 12px 0 4px; }
-.daily-st .prob-statement { font-size: 15px; padding: 12px 14px; }
+.daily-st .prob-statement { font-size: 15px; padding: 12px 14px; transition: border-color 0.12s, background 0.12s; }
+/* The statement box takes the panel's hover tint, so the panel reads as one piece. */
+.hp-click:hover .daily-st .prob-statement { background: var(--bg-card-hover); border-color: var(--accent); }
 .daily-reveal summary { cursor: pointer; font-size: 13px; font-weight: 650; color: var(--accent); margin-bottom: 8px; }
 .hp-btn {
   display: inline-block; font-size: 13px; font-weight: 700; padding: 7px 13px; border-radius: 9px; text-decoration: none;
