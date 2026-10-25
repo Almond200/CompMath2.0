@@ -654,3 +654,33 @@ sign-chart # checked, no change
 uvw-method # example checked, no change
 factor-pair-counting # checked, no change
 gcd-substitution # checked, no change
+rotation-center # example checked, no change
+abs-value-relations # checked, no change
+conjugate-both-sides # checked, no change
+linear-change-of-variables # checked, no change
+joined-shapes-perimeter # new card, checked
+sos-method # checked, no change
+uniform-overcount # checked, no change
+bijection-method # checked, no change
+area-method # example checked, no change
+derivative-extremum # example checked, no change
+symmetry-probability # checked, no change
+perp-to-angle-bisector # example checked, no change
+cube-nets # new card, checked
+finite-differences # example checked, no change
+phantom-point # checked, no change
+cofactor-expansion # checked, no change
+composing-transformations # checked, no change
+sqrt-approximation # bounds checked, no change
+symmetric-polynomial-strategies # examples checked, no change
+log-substitution # checked, no change
+largest-term-ratio # tie value checked, no change
+double-summation # checked, no change
+affine-transformations # example checked, no change
+homothety-monge # checked, no change
+projective-transformations # checked, no change
+reflection-principle # checked, no change
+closing-polygon-vectors # checked, no change
+abs-value-graphing # checked, no change
+cross-section-method # checked, no change
+root-transformations # example checked, no change
