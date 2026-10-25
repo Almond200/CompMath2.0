@@ -734,9 +734,13 @@ The values $1, 2, 5, 14, 42, 132, 429, 1430$ should be recognizable on sight. AI
 Every ordering of the $a + b$ votes is equally likely. The two versions, strictly ahead and never behind, give different answers, and problems exploit the distinction.
 
 ## Why it works
-The cycle lemma or the reflection principle: bad sequences, where $B$ ties or leads at some point, are in bijection with sequences starting with a $B$-vote, which gives the clean $\frac{a-b}{a+b}$ fraction of orderings.
+Count the orderings in which $A$ is strictly ahead after every vote. Such an ordering must start with an $A$. Among the orderings that start with an $A$, the bad ones are those where the counts tie at some point.
 
-The reflection argument is the one to reproduce: any ordering where the counts tie can be reflected before the first tie, so the bad orderings biject with the ones starting with a $B$, and the subtraction gives the fraction.
+Reflection: in a bad ordering that starts with an $A$, swap every vote up to and including the first tie, $A$ for $B$ and $B$ for $A$. The result starts with a $B$ and ties at the same moment. Conversely every ordering that starts with a $B$ must tie at some point, since $A$ finishes ahead, and swapping up to its first tie undoes the move. So the bad orderings starting with $A$ are exactly as many as the orderings starting with $B$.
+
+A random ordering starts with $B$ with probability $\frac{b}{a + b}$, so the bad orderings have probability $\frac{2b}{a + b}$ in all, those starting with $B$ and the bad ones starting with $A$. The good ones have $1 - \frac{2b}{a + b} = \frac{a - b}{a + b}$.
+
+For "never behind", add one extra vote for $A$ at the front. $A$ is then strictly ahead throughout exactly when the original count is never behind. With $a + 1$ and $b$ votes, the strict probability is $\frac{a + 1 - b}{a + b + 1}$, and every such ordering starts with an $A$, which happens with probability $\frac{a + 1}{a + b + 1}$. Dividing, $\frac{a - b + 1}{a + 1}$. At $a = b$ this is $\frac{1}{a + 1}$, and multiplying by the $\binom{2a}{a}$ orderings gives the Catalan number.
 
 ## Useful observations
 - The shape is a running-total condition: one count must stay ahead of another throughout a random ordering. Vote counts are the classic dressing, but queues with correct change and lattice paths above a line are the same problem.
@@ -856,13 +860,15 @@ Almost never alone; the count often becomes a [[basic-probability|probability]] 
 The parts are positive integers. Partitions ignore order and compositions do not, and the two counts are very different, so which one a problem asks for is the first thing to decide.
 
 ## Why it works
-Compositions are easy because order makes every choice independent. Write $n$ as $n$ ones in a row; a composition is a choice, at each of the $n - 1$ gaps, of whether to break there, so there are $2^{n-1}$.
+Compositions are easy because order makes every choice independent. Write $n$ as $n$ ones in a row; a composition is a choice, at each of the $n - 1$ gaps, of whether to break there, so there are $2^{n-1}$. Exactly $k$ parts means exactly $k - 1$ breaks, chosen in $\binom{n - 1}{k - 1}$ ways.
 
 Partitions ignore order, which destroys that independence, so there is no formula. What they have instead is a picture, the Ferrers diagram, with one row of dots for each part, longest first. Reflecting it across its diagonal swaps rows and columns, so it matches the partitions with at most $k$ parts with the partitions whose parts are at most $k$.
 
 {{figure:conjugate}}
 
 Euler's Theorem comes from splitting parts. An odd part repeated $m$ times regroups, by writing $m$ in binary, into distinct parts, and every distinct part is an odd number times a power of $2$, so the process runs backwards and the two kinds of partitions are equally many.
+
+In the generating function, the factor $\frac1{1 - x^k} = 1 + x^k + x^{2k} + \cdots$ chooses how many parts equal $k$. Multiplying the factors and collecting $x^n$ counts each choice of multiplicities with total $n$ once, which is one partition.
 
 ## Useful observations
 - For small $n$, partitions are listed in decreasing order of the largest part to avoid repeats.
@@ -2078,7 +2084,9 @@ The game is impartial (both players have the same moves), finite, and ends when 
 ## Why it works
 In Nim the XOR of the pile sizes is a handle one controls: if it is nonzero, some pile has a leading bit that can be cleared to make the whole XOR zero, a move to a position that is losing for the opponent; if it is zero, every move breaks it. Sprague–Grundy generalizes this by giving each position its mex value. A position with $g = 0$ can only move to positions with $g \ne 0$, and a position with $g \ne 0$ has at least one move to a position with $g = 0$ (its other moves may stay nonzero: a Nim heap of $2$ can move to a heap of $1$). That is Nim's win-and-loss logic.
 
-Independent games combine because the XOR of Grundy values behaves like one Nim position.
+For a sum of two games with values $g_1$ and $g_2$, argue by induction on the positions, so that every option already obeys the rule. A move is made in one part, say to $G_1'$, giving the value $g(G_1') \oplus g_2$, which differs from $g_1 \oplus g_2$ because $g(G_1') \ne g_1$. So no option has the value $g_1 \oplus g_2$.
+
+Every smaller value $x$ is reached. Let $y = x \oplus g_1 \oplus g_2$; its leading bit is set in $g_1$ or in $g_2$, say in $g_1$. Then $g_1 \oplus y \lt g_1$, so by the mex rule $G_1$ has an option of value $g_1 \oplus y$, and moving there gives $g_1 \oplus y \oplus g_2 = x$. So the mex of the options is exactly $g_1 \oplus g_2$, and more parts follow one at a time.
 
 ## Useful observations
 - For a single game type, tabulating $g(0), g(1), \ldots$ by the mex rule usually shows a periodic pattern, and $g = 0$ marks the losing positions.
@@ -3378,7 +3386,7 @@ A standard Young tableau uses each of $1, \ldots, n$ once, increasing left to ri
 ## Why it works
 In any filling, the largest number $n$ must sit in a corner: a cell at the end of its row and the bottom of its column. Removing it leaves a filling of a shape with one cell fewer, so $f^{\lambda}$ is the sum of $f$ over the shapes obtained by removing one corner.
 
-The proof checks that the hook formula satisfies this recurrence, which amounts to showing that the ratios $\frac{f^{\lambda - \text{corner}}}{f^{\lambda}}$ given by the formula add to $1$. Greene, Nijenhuis, and Wilf did it with a hook walk: start at a random cell, jump to a random other cell of its hook, and repeat until a corner is reached. The probability of ending at each corner turns out to be exactly that ratio, and probabilities add to $1$. The details are longer than a contest solution, and the formula is quoted.
+The proof checks that the hook formula satisfies this recurrence, which amounts to showing that the ratios $\frac{f^{\lambda - \text{corner}}}{f^{\lambda}}$ given by the formula add to $1$. Greene, Nijenhuis, and Wilf did it with a hook walk: start at a random cell, jump to a random other cell of its hook, and repeat until a corner is reached. The probability of ending at each corner turns out to be exactly that ratio, and probabilities add to $1$. The details are longer than a contest solution, so the formula is quoted, not proved here (C. Greene, A. Nijenhuis and H. S. Wilf, "A probabilistic proof of a formula for the number of Young tableaux of a given shape", Advances in Mathematics 31 (1979), 104–109).
 
 ## Useful observations
 - A two-row tableau records, for each of $1, \ldots, 2n$, whether it went in the top row or the bottom row, and the column condition says the top row never falls behind: a [[ballot-problem|ballot sequence]]. So the hook formula reproduces the Catalan count.

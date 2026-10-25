@@ -334,3 +334,378 @@ altitude-bisector-angle # checked, no change
 binomial-probability # variance derived
 pigeonhole # checked, no change
 symmedian-lemoine # sine ratio corrected (was c/b, is b/c); tangent point proved
+cyclic-perpendicular-diagonals # Brahmagupta's theorem proved; converse noted
+primitive-roots # count and kth-power criterion derived; classification quoted
+integer-triangles-perimeter # inner count derived; closed form quoted and checked to 300
+incenter-excenter-lemma # checked, no change
+work-rates # checked, no change
+factor-remainder-theorem # checked, no change
+power-sums # checked, no change
+grid-paths # checked, no change
+regular-hexagon-area # checked, no change
+incircle-tangent-lengths # excircle touch point and right-angle case shown
+vietas-quadratic # checked, no change
+determinant-basics # triangular, transpose and product rules proved
+midsegment-theorem # trapezoid midline proved
+diagonal-angle-from-sides # checked, no change
+trig-ceva # checked, no change
+burnsides-lemma # checked (cube count 10), no change
+pitots-theorem # converse proved; area rs shown
+conic-reflective-property # hyperbola case explained
+surjections # checked, no change
+regular-octahedron # dihedral angle computed
+dirichlet-convolution # identities at prime powers; inverse existence
+pythagorean-triples # 3-4-5 divisibility and inradius proved
+pascals-identity # checked, no change
+triangle-inequality # checked, no change
+log-rules # checked, no change
+same-base-area-ratio # checked, no change
+isogonal-conjugate # common pedal circle proved
+isotomic-conjugate # checked, no change
+carmichael-function # 2^k case proved
+gauss-lemma-qr # the 2 case counted exactly (checked)
+weighted-binomial-sums # checked, no change
+triangle-half-angle-identities # checked, no change
+ballot-problem # full reflection proof and never-behind version (checked)
+fundamental-theorem-arithmetic # checked, no change
+partitions # k-part compositions and generating function explained
+angle-bisectors-of-lines # two-line bisector formula and perpendicularity derived
+circle-equation # checked, no change
+bezouts-identity # checked, no change
+cauchy-schwarz # checked, no change
+regular-dodecagon # checked, no change
+weitzenbock-inequality # tan form derived
+contact-triangle # checked, no change
+ptolemy-second-theorem # full Law of Cosines derivation (checked)
+insphere-radius # checked, no change
+trivial-inequality # checked, no change
+nested-subset-pairs # checked, no change
+triangle-area-standard # checked, no change
+cone-formulas # checked, no change
+sigma-parity # checked, no change
+van-aubel-cevians # checked, no change
+excentral-triangle # checked (area), no change
+parallel-lines-distance # checked, no change
+cube # checked, no change
+space-diagonal # checked, no change
+polygon-angle-sums # checked, no change
+medial-triangle # orthocenter proved directly (no Euler-line circularity)
+orthocenter-properties # checked, no change
+gauss-lucas # checked, no change
+bayes-theorem # checked, no change
+euler-line-ratio # OH^2 both forms and NG derived (checked)
+mollweides-formula # checked, no change
+euclidean-algorithm # checked, no change
+modular-basics # checked, no change
+roots-of-unity # filter sum and primitive count proved
+cayley-menger # proof by row reduction to the Gram determinant (checked)
+newtons-sums # general ladder by logarithmic derivative
+eisenstein-criterion # proof completed (Gauss's lemma quoted); cyclotomic shift
+eulerian-paths # checked, no change
+triangle-type-by-sides # checked, no change
+trapezoid-special-segments # checked, no change
+de-moivre # checked, no change
+eulers-totient # checked, no change
+parallel-by-angle-sum # checked, no change
+quadrilateral-diagonal-area # vector form proved via shoelace
+descartes-sphere-theorem # quoted with reference; fifth-curvature root checked
+steiner-lehmus # factorization checked by computer, no change
+angle-chord-secant # checked, no change
+projected-area-cosine # checked, no change
+lattice-points-gcd # checked, no change
+odd-even-functions # checked, no change
+geometric-series # checked, no change
+napoleons-theorem # areas checked by computer, no change
+point-line-distance # checked, no change
+apollonius-theorem # checked, no change
+perpendicularity-lemma # checked, no change
+descartes-circle-theorem # labelled quoted with reference; root formula derived
+base-conversion # checked, no change
+axis-stretch-area # checked, no change
+lcm-common-multiples # new card, checked
+conjugate-root-theorems # multiplicity proved
+thales-theorem # checked, no change
+dodecahedron-icosahedron # both volumes derived (checked numerically)
+sum-of-two-squares # r_2 labelled quoted with reference and example
+inverse-function-properties # checked, no change
+first-order-recurrence # checked, no change
+non-adjacent-selection # checked, no change
+special-right-triangles # checked, no change
+reflection-coordinates # checked, no change
+necklace-formula # checked, no change
+centroid-division # checked, no change
+varignons-theorem # area, rectangle/rhombus and center proved
+sylvester-gallai # minimal-distance argument made exact
+law-of-tangents # checked, no change
+anticomplementary-triangle # O'=H argued directly
+chicken-mcnugget # pairing proved by unique y
+stars-and-bars # checked, no change
+binomial-theorem # checked, no change
+binomial-row-sums # checked, no change
+conditional-probability # checked, no change
+euler-line-parallel-side # checked, no change
+cyclic-opposite-angles # checked, no change
+integer-valued-polynomials # checked, no change
+permutations-combinations # checked, no change
+perpendicular-bisector-locus # checked, no change
+parallel-sided-hexagon # area formula explained
+fundamental-theorem-symmetric # checked, no change
+polynomial-crt # checked, no change
+euler-quadrilateral # vector identity written out
+pedal-triangle # power formula derived (checked numerically)
+radical-axis # checked, no change
+common-tangent-lengths # checked, no change
+legendres-formula # checked, no change
+archimedes-broken-chord # step 4 checked numerically, no change
+golden-ratio-pentagon # checked, no change
+geometric-distribution # checked, no change
+cevas-theorem # checked, no change
+half-angle # checked, no change
+dumpty-point # checked, no change
+erdos-ginzburg-ziv # checked, no change
+distance-midpoint # checked, no change
+disconnected-graph-edges # new card, checked
+tangent-circles # checked, no change
+am-gm # checked, no change
+sprague-grundy # XOR rule for sums proved
+chord-length # checked, no change
+erdos-mordell # checked, no change
+rotated-line-angle # opening sentence made clear
+pythagorean-theorem # dangling 'four above' fixed
+gamblers-ruin # checked (p=0.49 value), no change
+japanese-theorem # rectangle proved by angle chase (checked); polygon form via Carnot
+regular-polygon-area # checked, no change
+trig-area # checked, no change
+roots-unity-distance-product # checked, no change
+floor-basics # checked, no change
+lte-lemma # p=2 forms proved (checked by computer)
+handshakes-diagonals # checked, no change
+cyclic-equal-angles # checked, no change
+vornicu-schur # checked, no change
+similar-figures-ratios # checked, no change
+law-of-cosines-special-triangles # every table entry checked, no change
+sphere-formulas # cap volume, surface, cap and zone area proved
+weighted-average # checked, no change
+regular-tetrahedron # checked, no change
+harmonic-quadrilateral # checked, no change
+linear-recurrence # Vandermonde solvability and double-root solution proved
+squared-binomial-sum # checked, no change
+equilateral-triangle-facts # checked, no change
+circle-basics # checked, no change
+law-of-cosines # checked, no change
+law-of-sines # checked, no change
+double-angle # checked, no change
+carnots-perpendicularity-theorem # checked, no change
+picks-hexagonal-grid # checked, no change
+conic-sections # checked, no change
+circular-segment # checked, no change
+number-of-divisors # checked, no change
+orthogonal-circles # checked, no change
+quadratic-formula # checked, no change
+balls-boxes-table # worked numbers checked, no change
+concyclicity-tests # checked, no change
+polar-coordinates # checked, no change
+nesbitt-inequality # checked, no change
+inscribed-angle-theorem # checked, no change
+point-plane-distance # checked, no change
+crt # general-moduli criterion proved
+schurs-theorem # bounds checked, no change
+vivianis-theorem # checked, no change
+humpty-queue-points # checked, no change
+power-of-a-point-linearity # checked, no change
+figure-symmetries # new card, checked
+permutation-cycle-structure # checked, no change
+inradius-area # excircle case corrected to use the excenter
+caseys-theorem # checked, no change
+multiset-permutations # checked, no change
+leibniz-formula # checked, no change
+tangent-facts # kite symmetry and center-on-bisector shown
+square-of-sum # checked, no change
+parallel-exterior-angles # checked, no change
+shooting-lemma # checked, no change
+ptolemy-equilateral # checked, no change
+squares-on-triangle-flanks # checked, no change
+triangle-13-14-15 # false 'smallest scalene' claim corrected (consecutive sides)
+equiangular-hexagon-area # checked, no change
+shared-angle-area-ratio # checked, no change
+hook-length-formula # labelled quoted with reference
+conway-circle # checked, no change
+angle-addition # checked, no change
+arbelos # twin-circle radius derived
+independent-events # checked, no change
+dirichlet-primes-progression # general case quoted with reference; 1 mod n points to its home
+arithmetic-series # checked, no change
+perimeter-cleavers # checked, no change
+cohn-irreducibility # checked, no change
+iran-lemma # checked, no change
+vietas-general # checked, no change
+basic-probability # checked, no change
+incircle-excircle-homothety # checked, no change
+skew-lines-distance # checked, no change
+isogonal-line-lemma # checked, no change
+nine-point-circle # diameter step justified by vectors (was circular)
+spieker-point # checked, no change
+erdos-ko-rado # checked, no change
+prism-pyramid-volumes # cube dissection extended to all pyramids by stretching
+morleys-theorem # side formula checked numerically, no change
+combinatorial-nullstellensatz # checked, no change
+butterfly-theorem # checked, no change
+relative-motion # checked, no change
+quadratic-reciprocity # examples checked, no change
+cyclotomic-polynomials # checked, no change
+sawayama-thebault # checked, no change
+desargues-involution # checked, no change
+spheres-two-planes # checked, no change
+kruskal-katona # quoted with reference, no change
+tetrahedron-centroid # checked, no change
+angle-bisector-theorem # checked, no change
+mason-stothers # checked, no change
+parking-functions # counts checked, no change
+reims-theorem # checked, no change
+corner-circle-chain # flat-case step written out
+anti-steiner-point # checked, no change
+bertrands-postulate # threshold 468 checked numerically, no change
+cevian-nest # checked, no change
+isosceles-tetrahedron # checked, no change
+mean-chain # checked, no change
+pascal-parity # checked, no change
+pentagonal-number-theorem # checked, no change
+poncelet-closure # closure and Fuss labelled quoted with reference
+steiner-neighborhood # checked, no change
+lucas-theorem # checked, no change
+popoviciu-inequality # majorization steps checked, no change
+cayleys-formula # checked, no change
+mixtilinear-incircle # checked, no change
+feuerbach-theorem # both distances checked numerically, no change
+lester-circle # quoted with references, no change
+orthocentric-system # checked, no change
+ptolemys-theorem # checked, no change
+reflect-across-the-line # example checked, no change
+complementary-counting # checked, no change
+unfold-the-surface # example checked, no change
+dihedral-angle # example checked, no change
+elimination-counting # new card, checked
+probabilistic-method # checked, no change
+name-the-whole-expression # checked, no change
+time-per-leg # example checked, no change
+palindromic-polynomials # example checked, no change
+pairing-to-bound # checked, no change
+pie # example checked, no change
+area-by-pieces # new card, checked
+lagrange-interpolation # example checked, no change
+brocards-theorem # checked, no change
+picks-theorem-general # trapezoid example checked, no change
+median-minimizes-abs # checked, no change
+backward-induction # checked, no change
+tangency-equation # checked, no change
+cycle-hunting # checked, no change
+counting-blocks # checked, no change
+recursive-counting # checked, no change
+piecewise-graph-counting # all four counts checked, no change
+rationalizing # checked, no change
+matrix-power-diagonalizing # checked, no change
+transfer-matrix-method # Lucas traces checked, no change
+products-over-roots # examples checked, no change
+squeeze-between-squares # algebra and n=5 figure checked, no change
+box-tetrahedron # checked, no change
+trig-series-complex # checked, no change
+denesting-radicals # checked, no change
+coordinate-bash # checked, no change
+setting-up-proportions # checked, no change
+triangle-of-centers # checked, no change
+homogenization # checked, no change
+ravi-substitution # checked, no change
+forced-difference-of-squares # checked, no change
+tangent-line-trick # example checked, no change
+subtract-and-factor # example checked, no change
+rotation-trick # example checked, no change
+vieta-jumping # chain checked, no change
+shoelace-formula # checked, no change
+functional-substitution # example checked, no change
+indicator-variables # example checked, no change
+mass-points # example checked, no change
+linear-elimination # checked, no change
+grid-path-fill # count 5 rechecked, no change
+bisector-closer-region # checked, no change
+spiral-similarity # example checked, no change
+double-counting # checked, no change
+fx-pairing # checked, no change
+sfft # checked, no change
+casework-method # checked, no change
+estimating-answers # checked, no change
+partial-fractions # checked, no change
+complex-bash # example checked, no change
+median-doubling # example checked, no change
+gap-method # checked, no change
+constructive-counting # checked, no change
+inversion-properties # example checked, no change
+dimension-arguments # checked, no change
+injectivity-surjectivity # checked, no change
+trig-bash # example checked, no change
+hensel-lifting # lifts checked mod 25 and 125, no change
+roots-of-unity-filter # 341 checked, no change
+telescoping # example checked, no change
+parallel-line-similarity # example checked, no change
+simulate-the-process # checked, no change
+organized-listing # checked, no change
+geometric-probability # checked, no change
+states-recursion-prob # cube table and closed form checked, no change
+sign-chart # checked, no change
+uvw-method # example checked, no change
+factor-pair-counting # checked, no change
+gcd-substitution # checked, no change
+rotation-center # example checked, no change
+abs-value-relations # checked, no change
+conjugate-both-sides # checked, no change
+linear-change-of-variables # checked, no change
+joined-shapes-perimeter # new card, checked
+sos-method # checked, no change
+uniform-overcount # checked, no change
+bijection-method # checked, no change
+area-method # example checked, no change
+derivative-extremum # example checked, no change
+symmetry-probability # checked, no change
+perp-to-angle-bisector # example checked, no change
+cube-nets # new card, checked
+finite-differences # example checked, no change
+phantom-point # checked, no change
+cofactor-expansion # checked, no change
+composing-transformations # checked, no change
+sqrt-approximation # bounds checked, no change
+symmetric-polynomial-strategies # examples checked, no change
+log-substitution # checked, no change
+largest-term-ratio # tie value checked, no change
+double-summation # checked, no change
+affine-transformations # example checked, no change
+homothety-monge # checked, no change
+projective-transformations # checked, no change
+reflection-principle # checked, no change
+closing-polygon-vectors # checked, no change
+abs-value-graphing # checked, no change
+cross-section-method # checked, no change
+root-transformations # example checked, no change
+add-all-equations # examples checked (288^2), no change
+choose-modulus # checked, no change
+slope-to-a-point # tangent slopes checked, no change
+power-of-a-point # checked, no change
+cube-stack-views # new card, example checked
+exponent-tracking # count 35 checked, no change
+extended-euclidean-algorithm # checked, no change
+vector-bash # example checked, no change
+smoothing-method # checked, no change
+extremal-principle # checked, no change
+bounding-diophantine # checked, no change
+plane-cross-section # checked, no change
+polynomial-division # checked, no change
+quadratic-root-location # example checked, no change
+directed-angles # checked, no change
+function-symmetry-equation # checked, no change
+sqrt-bc-inversion # checked, no change
+transforming-equations # checked, no change
+odd-part-chains # checked, no change
+extend-sides-to-meet # checked, no change
+angle-chasing # checked, no change
+tangent-lines-from-point # example checked, no change
+strategy-stealing # checked, no change
+directed-lengths # checked, no change
+barycentric-coordinates # example checked, no change

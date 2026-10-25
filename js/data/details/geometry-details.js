@@ -109,7 +109,7 @@ There is also a proof at a glance. Four copies of the triangle fit inside a squa
 - A chord of length $\ell$ at distance $d$ from the center of a circle of radius $R$ satisfies $R^2 = d^2 + \left(\frac\ell2\right)^2$, since the perpendicular from the center bisects the chord.
 - The tangent length from a point at distance $D$ from the center is $\sqrt{D^2 - R^2}$, since the tangent is perpendicular to the radius.
 - The distance formula is the theorem in coordinates, and applying it twice gives the space diagonal of a box.
-- Primitive triples are $(m^2 - n^2, 2mn, m^2 + n^2)$; beyond the four above, $(9, 40, 41)$ and $(20, 21, 29)$ also appear often.
+- Primitive triples are $(m^2 - n^2, 2mn, m^2 + n^2)$; besides $(3, 4, 5)$, $(5, 12, 13)$, $(8, 15, 17)$ and $(7, 24, 25)$, the triples $(9, 40, 41)$ and $(20, 21, 29)$ also appear often.
 
 ## Applications
 Distances in the plane and in space, lengths in circles through chords, tangents, and radii, altitudes and heights of triangles and solids, and recognizing right angles from three lengths.
@@ -302,6 +302,8 @@ All three midsegments together cut the triangle into four triangles whose sides 
 
 {{figure:four}}
 
+For a trapezoid with bases $a$ and $b$, draw one diagonal. It splits the trapezoid into two triangles, one on each base. The midpoint of one leg, the midpoint of the diagonal, and the midpoint of the other leg give a midsegment of each triangle, of lengths $\frac a2$ and $\frac b2$, both parallel to the bases and sharing the diagonal's midpoint, so they lie on one line and add to $\frac{a + b}{2}$.
+
 ## Useful observations
 - For a $6$-$8$-$10$ triangle the medial triangle is $3$-$4$-$5$.
 - The midpoints of the sides of any quadrilateral form a parallelogram, [[varignons-theorem|Varignon's Theorem]], because each of its sides is parallel to a diagonal and half as long.
@@ -430,7 +432,7 @@ Let the diagonals cross at $P$, cutting them into pieces $a$ and $c$ along one a
 
 {{figure:four}}
 
-The formula also holds for a quadrilateral that is not convex, where one diagonal lies outside it: in vectors the area is half the cross product of the diagonals.
+The formula also holds for a quadrilateral that is not convex, where one diagonal lies outside it. Writing $u \times v$ for the planar cross product $u_1v_2 - u_2v_1$, the [[shoelace-formula|shoelace formula]] gives twice the area as $|A \times B + B \times C + C \times D + D \times A|$, and expanding $$(C - A) \times (D - B) = C \times D - C \times B - A \times D + A \times B$$ gives exactly those four terms, since $-C \times B = B \times C$ and $-A \times D = D \times A$.
 
 ## Useful observations
 - Among quadrilaterals with given diagonals, the area is largest, $\frac12d_1d_2$, when the diagonals are perpendicular, which is how many maximization problems end.
@@ -642,7 +644,7 @@ The argument uses only that one point is at distance $r$ from every side, so it 
 
 {{figure:polygon}}
 
-For a polygon the circle is not automatic as it is for a triangle: a convex quadrilateral has one exactly when its opposite sides have equal sums, by [[pitots-theorem|Pitot's Theorem]]. For the excircle opposite $A$, the same three triangles fit together with $IBC$ subtracted, giving $A = r_a(s - a)$.
+For a polygon the circle is not automatic as it is for a triangle: a convex quadrilateral has one exactly when its opposite sides have equal sums, by [[pitots-theorem|Pitot's Theorem]]. For the excircle opposite $A$, use the excenter $I_A$ in place of $I$: it is at distance $r_a$ from all three side lines, and $[I_AAB] + [I_ACA] - [I_ABC] = \frac12r_a(c + b - a) = r_a(s - a)$.
 
 ## Useful observations
 - In a right triangle the incircle's contact points on the legs and the right-angle vertex form a square of side $r$, which with the [[incircle-tangent-lengths|incircle tangent lengths]] gives $r = s - c$.
@@ -730,7 +732,9 @@ Any triangle; $s$ is the semiperimeter.
 ## Why it works
 The two tangent segments from a point outside a circle are equal, by symmetry across the line through the point and the center. Label the common lengths from $A$, $B$, $C$ as $x$, $y$, $z$. Then $y + z = a$, $x + z = b$, and $x + y = c$. Adding all three gives $2(x + y + z) = 2s$, so $x + y + z = s$, and subtracting each equation gives $x = s - a$, $y = s - b$, $z = s - c$.
 
-For the excircle opposite $A$, the tangent lengths from $A$ to the two extended sides are equal, and together they cover $AB + BD' + D'C + CA$ with $BD'$ and $D'C$ matching tangents from $B$ and $C$, which is the whole perimeter, so each is $s$.
+For the excircle opposite $A$, the tangent lengths from $A$ to the two extended sides are equal, and together they cover $AB + BD' + D'C + CA$ with $BD'$ and $D'C$ matching tangents from $B$ and $C$, which is the whole perimeter, so each is $s$. Then $BD' = s - AB = s - c$.
+
+At a right angle $C$, the incenter and the two touch points on the legs form a square with $C$, since its angles are all right and the two radii are equal. Its side is both $r$ and the tangent length from $C$, so $r = s - c$.
 
 ## Useful observations
 - The incircle and the $A$-excircle touch $BC$ at points symmetric about its midpoint, since one is $s - b$ from $B$ and the other $s - b$ from $C$.
@@ -1175,6 +1179,10 @@ The [[homothety-monge|homothety]] centered at the centroid $G$ with factor $-\fr
 
 The vector form comes from putting $O$ at the origin. For $H = A + B + C$, the vector $H - A = B + C$ is perpendicular to $B - C$, because $(B + C)\cdot(B - C) = |B|^2 - |C|^2 = 0$, and likewise at the other vertices, so $H$ lies on all three altitudes. Then $G = \frac13(A + B + C) = \frac13H$.
 
+For the distance, $|A - B|^2 = 2R^2 - 2A \cdot B = c^2$ gives $A \cdot B = R^2 - \frac{c^2}{2}$, and likewise for the other pairs. So $$OH^2 = |A + B + C|^2 = 3R^2 + 2\left(3R^2 - \tfrac{a^2 + b^2 + c^2}{2}\right) = 9R^2 - (a^2 + b^2 + c^2).$$ With $a = 2R\sin A$ and the identity $\sin^2A + \sin^2B + \sin^2C = 2 + 2\cos A\cos B\cos C$, this is $R^2(1 - 8\cos A\cos B\cos C)$.
+
+The nine-point center $N$ is the circumcenter of the medial triangle, the image of $O$ under the same homothety, so $N - G = -\frac12(O - G)$. With $O$ at the origin and $G = \frac13H$ this gives $N = \frac12H$, the midpoint of $OH$, and $NG = \left(\frac12 - \frac13\right)OH = \frac16OH$.
+
 ## Useful observations
 - With the circumcenter as origin the centroid and orthocenter are the sum of the vertices over $3$ and the sum itself, so given any two of $O$, $G$, $H$ in coordinates the third is immediate.
 - The two expressions for $OH^2$ turn a distance between centers into the sides or the angles.
@@ -1227,7 +1235,7 @@ $ABC$ is any triangle, with circumcenter $O$, orthocenter $H$, centroid $G$, and
 ## Why it works
 Two homotheties give the same circle. The [[homothety-monge|homothety]] centered at $H$ with ratio $\frac12$ sends the circumcircle to a circle of radius $\frac R2$ through the midpoints of $HA$, $HB$, $HC$, with center the midpoint of $HO$. The homothety centered at the centroid $G$ with ratio $-\frac12$ sends the circumcircle to the circumcircle of the [[medial-triangle|medial triangle]], a circle through the three side midpoints, also of radius $\frac R2$, and it sends $O$ to $\frac12H$ (with $O$ as the origin), the midpoint of $OH$ again. The two circles have the same center and radius, so they are one circle, through six of the nine points.
 
-The altitude feet complete it. The midpoint $P_a$ of $HA$ and the midpoint $M_a$ of $BC$ are opposite ends of a diameter, since the circle's center is the midpoint of both $P_aM_a$ and the midpoint of $OH$. The foot $D$ of the altitude from $A$ lies on line $AH$, perpendicular to $BC$, so the angle $P_aDM_a$ is a right angle and $D$ is on the circle with that diameter.
+The altitude feet complete it. The midpoint $P_a$ of $HA$ and the midpoint $M_a$ of $BC$ are opposite ends of a diameter: with $O$ as origin, $H = A + B + C$, so $P_a = A + \frac{B + C}{2}$ and $M_a = \frac{B + C}{2}$, whose midpoint is $\frac{A + B + C}{2} = N$. The foot $D$ of the altitude from $A$ lies on line $AH$, perpendicular to $BC$, so the angle $P_aDM_a$ is a right angle and $D$ is on the circle with that diameter.
 
 ## Useful observations
 - Nine points on one circle give enormous cyclic-quadrilateral leverage: any four of them are concyclic, and the inscribed-angle chases follow.
@@ -1542,7 +1550,9 @@ The touch point is the point of the tangent line closest to the center, and the 
 
 Every point of the tangent line other than the touch point $T$ lies outside the circle, so its distance from the center $O$ is more than the radius; that makes $T$ the point of the line closest to $O$. The closest point of a line to $O$ is also the foot $F$ of the perpendicular from $O$, because any other point $Q$ of the line makes a right triangle $OFQ$ with hypotenuse $OQ$, and $OQ^2 = OF^2 + FQ^2 \gt OF^2$. So $T = F$ and $OT$ is perpendicular to the line.
 
-The equal tangents follow at once. Triangles $OAP$ and $OBP$ have right angles at $A$ and $B$, share the hypotenuse $OP$, and have equal legs $OA = OB = r$, so by the [[pythagorean-theorem|Pythagorean Theorem]] $PA = \sqrt{OP^2 - r^2} = PB$. The figure at the top shows the kite this makes, symmetric about $OP$.
+The equal tangents follow at once. Triangles $OAP$ and $OBP$ have right angles at $A$ and $B$, share the hypotenuse $OP$, and have equal legs $OA = OB = r$, so by the [[pythagorean-theorem|Pythagorean Theorem]] $PA = \sqrt{OP^2 - r^2} = PB$. The figure at the top shows the kite this makes, symmetric about $OP$: reflecting in $OP$ swaps $A$ and $B$, so $OP$ bisects both angles of the kite and is perpendicular to $AB$.
+
+A circle tangent to both sides of an angle has its center at distance $r$ from each side, and the points equidistant from two crossing lines lie on the bisectors of their angles.
 
 The tangent–chord angle is the inscribed angle rule in its limiting case: slide one endpoint of a chord along the circle into the other, and the chord turns into the tangent while the angle stays half the arc.
 
@@ -1662,9 +1672,9 @@ Three problems here, all AIME, none solved by it alone. The recurring shape is c
 The four circles are tangent to each other in pairs, at six different points. The sign convention is part of the statement: the enclosing circle's curvature is taken negative.
 
 ## Why it works
-The proof is a long computation with center distances, or a short argument by inversion, and neither is contest material; what matters is the shape of the result.
+The relation itself is quoted, not proved here; a complete proof, by writing each circle as a vector and tangency as a fixed value of a quadratic form, is in J. C. Lagarias, C. L. Mallows and A. R. Wilks, "Beyond the Descartes Circle Theorem", American Mathematical Monthly 109 (2002), 338–361. What matters in contests is the shape of the result.
 
-The relation is a quadratic in $k_4$, so three mutually tangent circles have two circles tangent to all three. Solving it gives $$k_4 = k_1 + k_2 + k_3 \pm 2\sqrt{k_1k_2 + k_2k_3 + k_3k_1},$$ and the two roots are the small circle in the gap and the large circle around the three.
+The relation is a quadratic in $k_4$, so three mutually tangent circles have two circles tangent to all three. With $S = k_1 + k_2 + k_3$ and $Q = k_1^2 + k_2^2 + k_3^2$ it reads $k_4^2 - 2Sk_4 + 2Q - S^2 = 0$, and since $S^2 - Q = 2(k_1k_2 + k_2k_3 + k_3k_1)$ the roots are $$k_4 = k_1 + k_2 + k_3 \pm 2\sqrt{k_1k_2 + k_2k_3 + k_3k_1}.$$ The two roots are the small circle in the gap and the large circle around the three, and they add to $2S$.
 
 {{figure:soddy}}
 
@@ -1880,7 +1890,9 @@ The quadrilateral is convex. The theorem is an equivalence for convex quadrilate
 ## Why it works
 Equal tangent lengths from each vertex: going around the quadrilateral, each side is a sum of two tangent lengths, and the two tangent lengths from a vertex are equal. The sum of one pair of opposite sides is $(x + y) + (z + w)$, and the other pair is $(y + z) + (w + x)$, so both opposite-side sums count all four tangent lengths exactly once.
 
-The converse also holds for convex quadrilaterals: if the sums are equal, the tangent lengths can be chosen consistently and the incircle exists.
+For the converse, suppose $AB + CD = BC + AD$. The bisectors of the angles at $B$ and $C$ meet at the center of a circle tangent to $AB$, $BC$, and $CD$. Draw the other tangent from $A$ to that circle and let it meet line $CD$ at $D'$. Then $ABCD'$ has an incircle, so $AB + CD' = BC + AD'$. Subtracting, $CD - CD' = AD - AD'$, so $\pm DD' = AD - AD'$. In triangle $ADD'$ a side cannot equal the difference of the other two, so $D' = D$ and the circle touches $AD$ too.
+
+For the area, join the incenter to the four vertices. The four triangles have the sides as bases and the inradius $r$ as their common height, so $[ABCD] = \frac12r(AB + BC + CD + DA) = rs$.
 
 ## Useful observations
 - Checking $AB + CD = BC + AD$ instantly certifies or refutes an inscribed circle.
@@ -1991,7 +2003,11 @@ The fact that the cyclic quadrilateral has the largest area occasionally decides
 Any quadrilateral, including a non-convex one; the midpoints are of the four sides in order.
 
 ## Why it works
-In each of the two triangles that a diagonal creates, the segment joining the midpoints of two sides is parallel to the diagonal and half as long, by the [[midsegment-theorem|Midsegment Theorem]]. So both pairs of opposite sides of the midpoint quadrilateral are parallel to a diagonal, which makes it a parallelogram with sides $\frac p2$ and $\frac q2$, where $p$ and $q$ are the diagonals. The area halves because each of the four corner triangles cut off has a quarter of the area of the triangle it sits in, and the four corner triangles together make up half of the quadrilateral.
+In each of the two triangles that a diagonal creates, the segment joining the midpoints of two sides is parallel to the diagonal and half as long, by the [[midsegment-theorem|Midsegment Theorem]]. So both pairs of opposite sides of the midpoint quadrilateral are parallel to a diagonal, which makes it a parallelogram with sides $\frac p2$ and $\frac q2$, where $p$ and $q$ are the diagonals.
+
+For the area, the corner triangle at $A$ is the triangle $ABD$ shrunk by half toward $A$, so it has a quarter of $[ABD]$; the one at $C$ has a quarter of $[CBD]$. Together they are a quarter of $[ABCD]$, and the corners at $B$ and $D$ are likewise a quarter of $[ABC] + [ACD] = [ABCD]$. Removing half the area leaves half.
+
+Its sides point along the diagonals, so its angles are right exactly when the diagonals are perpendicular, and its sides $\frac p2$, $\frac q2$ are equal exactly when the diagonals are. Its center is the average $\frac{A + B + C + D}{4}$, which is also the midpoint of the segment joining the midpoints $\frac{A + C}{2}$ and $\frac{B + D}{2}$ of the diagonals.
 
 ## Useful observations
 - The segment joining the midpoints of the diagonals passes through the center of the Varignon parallelogram.
@@ -2015,7 +2031,7 @@ The AMC uses it directly, asking what figure the midpoints form and its area; th
 The identity holds for any quadrilateral, convex or not, with its sides and diagonals as segment lengths.
 
 ## Why it works
-In vectors, the vector between the midpoints of the diagonals is $\vec m = \frac{(\vec a + \vec c) - (\vec b + \vec d)}{2}$, with $\vec a$, $\vec b$, $\vec c$, $\vec d$ the position vectors of the vertices. Expand all six squared lengths in terms of the vertices; every cross term cancels, leaving the identity. The parallelogram law is the case $m = 0$, where the diagonal midpoints coincide.
+Use position vectors $A$, $B$, $C$, $D$ for the vertices. The midpoints of the diagonals are $\frac{A + C}{2}$ and $\frac{B + D}{2}$, so $2m = |A + C - B - D|$. Expanding both sides in dot products, $$|A - B|^2 + |B - C|^2 + |C - D|^2 + |D - A|^2 - |A - C|^2 - |B - D|^2 = |A + C - B - D|^2,$$ since each side equals $|A|^2 + |B|^2 + |C|^2 + |D|^2 + 2A \cdot C + 2B \cdot D - 2(A \cdot B + B \cdot C + C \cdot D + D \cdot A)$. That is $a^2 + b^2 + c^2 + d^2 - p^2 - q^2 = 4m^2$. The parallelogram law is the case $m = 0$, where the diagonal midpoints coincide.
 
 In a parallelogram with sides $a$ and $b$ and an angle $\theta$ between them, the other angle is $180^\circ - \theta$, so the Law of Cosines gives the diagonals $p^2 = a^2 + b^2 - 2ab\cos\theta$ and $q^2 = a^2 + b^2 + 2ab\cos\theta$. Adding them cancels the cosines and leaves $$p^2 + q^2 = 2(a^2 + b^2),$$ which is the identity above with $c = a$, $d = b$, and $m = 0$, now seen from the angles instead of from the vectors.
 
@@ -2305,7 +2321,7 @@ For a pyramid, the slice at height $z$ above the base is a copy of the base scal
 
 {{figure:cube}}
 
-By Cavalieri, any pyramid with the same base area and height has the same volume, whatever the shape of its base.
+Stretching that pyramid vertically by a factor multiplies its height and its volume by that factor, and scaling it horizontally multiplies its base area and its volume alike, so $V = \frac13Bh$ holds for every square pyramid. By Cavalieri, any pyramid with the same base area and height has the same volume, whatever the shape of its base.
 
 ## Useful observations
 - Because any face of a tetrahedron can serve as the base, computing the volume with one base and equating it with the volume from another gives heights that are hard to reach directly, such as the distance from a vertex to a slanted face.
@@ -2332,9 +2348,11 @@ The cap has $0 \le h \le 2r$. The zone formula holds for the curved surface betw
 ## Why it works
 Archimedes compared the sphere with the cylinder around it. At height $z$ above the center, the cross-section of the sphere is a disc of area $\pi(r^2 - z^2) = \pi r^2 - \pi z^2$, which is the cross-section of the cylinder of radius $r$ with the double cone $\pi z^2$ removed. Slice for slice the two solids have the same area, so by [[cavalieris-principle|Cavalieri's Principle]] they have the same volume, $2\pi r^3 - 2\cdot\frac13\pi r^3 = \frac43\pi r^3$.
 
-The surface area follows because the sphere of radius $r$ is made of thin shells: the volume grows by $4\pi r^2\,\mathrm{d}r$ when the radius grows by $\mathrm{d}r$, so $SA = \frac{\mathrm{d}V}{\mathrm{d}r} = 4\pi r^2$.
+The same slices give the cap. Between heights $r - h$ and $r$ the cylinder-minus-cone has volume $\pi r^2h - \frac\pi3\left(r^3 - (r - h)^3\right) = \pi\left(rh^2 - \frac{h^3}{3}\right) = \frac{\pi h^2(3r - h)}{3}$.
 
-The zone formula is Archimedes' hat-box theorem: the area of the curved surface between two parallel planes equals the lateral area $2\pi r \cdot h$ of the cylinder of radius $r$ around the sphere between the same planes. The full sphere is the case $h = 2r$, and the cap volume is the volume of the full ball cut by the plane, $\frac{\pi h^2(3r - h)}{3}$.
+For areas, cut the ball into thin pyramids from the center: a piece of surface of area $S$ carries a volume $\frac13rS$, just as for a [[insphere-radius|polyhedron with an insphere]]. The whole ball gives $\frac43\pi r^3 = \frac13r \cdot SA$, so $SA = 4\pi r^2$.
+
+For a cap, the pyramids fill the cap together with the cone from the center to its rim, of base area $\pi(2rh - h^2)$ and height $r - h$. Adding, $\frac{\pi h^2(3r - h)}{3} + \frac{\pi(2rh - h^2)(r - h)}{3} = \frac{2\pi r^2h}{3}$, which is $\frac13r$ times the cap's area, so the area is $2\pi rh$. A zone is the difference of two caps, so its area is $2\pi r$ times its height too, which is Archimedes' hat-box theorem.
 
 ## Useful observations
 - Spherical caps and zones occasionally matter: the cap volume and the zone area are derived from the full formulas when needed, and that only the height matters is striking.
@@ -3048,11 +3066,13 @@ The ratio itself is the usable half at AIME level, since the squared side ratio 
 The quadrilateral is cyclic and its diagonals are perpendicular. The equality of the two opposite-side pairs needs only perpendicular diagonals.
 
 ## Why it works
-Two chords crossing inside a circle meet at an angle equal to half the sum of the two arcs they cut off. Demanding a right angle therefore says those two arcs total $180^\circ$.
+Two chords crossing inside a circle meet at an angle equal to half the sum of the two arcs they cut off. Demanding a right angle therefore says those two arcs total $180^\circ$, and conversely arcs totalling $180^\circ$ make the angle $90^\circ$.
 
 Write the arc under $AB$ as $2\beta$; then the arc under $CD$ is $2(90^\circ - \beta)$, and the [[chord-length|chord length formula]] gives $AB = 2R\sin\beta$ and $CD = 2R\cos\beta$. Squaring and adding, the trigonometry cancels and leaves $AB^2 + CD^2 = 4R^2$. The other pair of arcs also totals $180^\circ$, so $BC^2 + DA^2 = 4R^2$ as well.
 
 There is a second, coordinate-free way to see the equality of the pairs. If the diagonals meet at $P$ and cut them into $p, q$ and $u, v$, then perpendicularity makes each side a hypotenuse: $a^2 = p^2 + u^2$, $b^2 = q^2 + u^2$, $c^2 = q^2 + v^2$, $d^2 = p^2 + v^2$. Both $a^2 + c^2$ and $b^2 + d^2$ come to $p^2 + q^2 + u^2 + v^2$.
+
+For Brahmagupta's theorem, let $H$ be the foot of the perpendicular from $P$ to $AB$ and let line $HP$ meet $CD$ at $M$. In the right triangle $APB$, $\angle APH = \angle ABP = \angle ABD$, and $\angle ABD = \angle ACD$ on the arc $AD$. The vertical angle $\angle CPM$ equals $\angle APH$, so $\angle CPM = \angle PCM$ and $MP = MC$. The angles at $P$ and at $D$ are the complements of those, so $MP = MD$ too, and $M$ is the midpoint of $CD$.
 
 ## Useful observations
 - The configuration is recognized from the right angle at the diagonals, and the pairing gives the answer immediately: three of the four sides determine the fourth, and any one of them together with $R$ determines the opposite one.
@@ -3108,7 +3128,9 @@ Write $AB = 2a$ and $BC = 2b$, so the outer semicircle has radius $a + b$. The l
 
 Now the perpendicular at $B$. Because $AC$ is a diameter, [[thales-theorem|Thales' Theorem]] makes $\angle ADC$ a right angle, so $BD$ is the [[altitude-hypotenuse|altitude to the hypotenuse]] of a right triangle and the geometric mean relation gives $BD^2 = AB \cdot BC = 4ab$. The circle on $BD$ as diameter therefore has area $\frac\pi4 \cdot 4ab = \pi ab$, the same number. The two regions are not congruent, but their areas agree exactly.
 
-Archimedes' twin circles are the striking part. A circle inscribed in the left lobe, tangent to $BD$, to the outer semicircle, and to the semicircle on $AB$, and the same on the right, both have radius $\frac{ab}{a + b}$, even though the lobes are different sizes whenever $a \ne b$.
+For the twin circles, put $B$ at the origin with $A$ to the left, so the semicircle on $AB$ has center $(-a, 0)$ and the outer one has center $(b - a, 0)$. A circle of radius $\rho$ in the left lobe touching $BD$ has center $(-\rho, y)$. Touching the small semicircle from outside gives $(a - \rho)^2 + y^2 = (a + \rho)^2$, so $y^2 = 4a\rho$.
+
+Touching the outer semicircle from inside gives $(b - a + \rho)^2 + y^2 = (a + b - \rho)^2$, so $y^2 = 4b(a - \rho)$. Equating, $a\rho = b(a - \rho)$ and $\rho = \frac{ab}{a + b}$, a formula symmetric in $a$ and $b$, so the circle in the right lobe has the same radius even when the lobes differ.
 
 ## Useful observations
 - The figure is recognized from three semicircles on collinear diameters, all on one side. The area identity is what makes the shape worth naming: a region bounded by three arcs is replaced by one circle.
@@ -3135,7 +3157,7 @@ A circle tangent to both sides of an angle is centered on the bisector, since th
 
 Chain two of them. Consecutive circles are externally tangent and both centers are on the bisector, so $d_{k+1} - d_k = r_k + r_{k+1}$. Substituting $d = r/\sin\theta$ turns that into $\frac{r_{k+1} - r_k}{\sin\theta} = r_k + r_{k+1}$, and collecting terms gives $\frac{r_{k+1}}{r_k} = \frac{1 + \sin\theta}{1 - \sin\theta}$. The ratio is the same at every step, so the radii form a geometric progression.
 
-The flat relation is the same idea with a line in place of the second side. Two circles of radii $r_1$ and $r_2$ tangent to each other and to a common line have their tangency points $2\sqrt{r_1r_2}$ apart, which is [[common-tangent-lengths|the common tangent length]]. Fitting a third circle into the gap and applying that twice gives the reciprocal square-root relation. It is also what [[descartes-circle-theorem|Descartes' Circle Theorem]] reduces to when one curvature is set to zero.
+The flat relation is the same idea with a line in place of the second side. Two circles of radii $r_1$ and $r_2$ tangent to each other and to a common line have their tangency points $2\sqrt{r_1r_2}$ apart, which is [[common-tangent-lengths|the common tangent length]]. Fitting a third circle of radius $r_3$ into the gap and applying that twice gives $2\sqrt{r_1r_3} + 2\sqrt{r_2r_3} = 2\sqrt{r_1r_2}$, and dividing by $2\sqrt{r_1r_2r_3}$ gives the reciprocal square-root relation. It is also what [[descartes-circle-theorem|Descartes' Circle Theorem]] reduces to when one curvature is set to zero.
 
 ## Useful observations
 - When circles are stacked into a corner, they are not chased one at a time: the ratio is identified from the angle once, and the whole chain is a [[geometric-series|geometric sequence]], so sums of radii are geometric series.
@@ -4077,7 +4099,11 @@ Object.assign(window.MATH_DETAILS, {
 Entry $(i, j)$ is the squared distance between vertices $i$ and $j$. The edge lengths must satisfy the triangle inequalities on every face and the solid inequality.
 
 ## Why it works
-It is Heron's Formula lifted one dimension. In the plane a triangle's area is fixed by its three sides, and in space a tetrahedron's volume is fixed by its six edges; both are a bordered determinant of squared distances, at size $4$ for the triangle (where it equals $-16[\triangle]^2$, a sign flip from Heron's form) and size $5$ for the tetrahedron. The bordering row and column of $1$s encode that the points live in space.
+It is Heron's Formula lifted one dimension. In the plane a triangle's area is fixed by its three sides, and in space a tetrahedron's volume is fixed by its six edges; both are a bordered determinant of squared distances, at size $4$ for the triangle (where it equals $-16[\triangle]^2$, a sign flip from Heron's form) and size $5$ for the tetrahedron.
+
+To see it, put $P_1$ at the origin and let $u_2$, $u_3$, $u_4$ be the vectors to the other vertices. In the determinant, subtract the row of $P_1$ from the three rows below it, then the column of $P_1$ from the three columns to its right. The top row and left column become $0$ there, and the entry for vertices $i$ and $j$ becomes $d_{ij}^2 - d_{1i}^2 - d_{1j}^2 = -2\,u_i \cdot u_j$, since $d_{ij}^2 = |u_i|^2 + |u_j|^2 - 2u_i \cdot u_j$.
+
+Expanding along the top row, whose only nonzero entry is the $1$ above the $P_1$ column, and then down the left column, leaves $-\det(-2G) = 8\det G$, where $G$ is the $3 \times 3$ table of dot products $u_i \cdot u_j$. That table's determinant is the squared volume of the parallelepiped on $u_2$, $u_3$, $u_4$, as on [[gram-determinant-volume|the Gram determinant card]], which is $(6V)^2$. So the determinant is $8 \cdot 36V^2 = 288V^2$. The triangle case is the same computation with a $2 \times 2$ table: $-\det(-2G) = -4(2[\triangle])^2 = -16[\triangle]^2$.
 
 ## Useful observations
 - It gives the volume from the edge lengths alone, which is useful when placing coordinates is awkward.
@@ -4897,7 +4923,9 @@ Olympiad combinatorial geometry. The small cases and the hull-based flavor of th
 The set is finite and not all collinear.
 
 ## Why it works
-Among all pairs of a point and a line through two other points that does not contain it, take the pair with the smallest positive distance. If that line held a third point, two of its three points would fall on the same side of the foot of the perpendicular, giving a point and a connecting line strictly closer. That contradiction shows the minimal line has exactly two points.
+Consider every pair of a point $P$ of the set and a line through two other points of the set that misses $P$. Such pairs exist, since the points are not all collinear, and there are finitely many, so take one with the smallest distance from $P$ to its line $\ell$. Let $Q$ be the foot of the perpendicular from $P$.
+
+Suppose $\ell$ held three points of the set. Two of them, say $B$ and $C$, lie on the same side of $Q$ (one may be $Q$ itself), with $B$ between $Q$ and $C$. Then the line $PC$ passes through two points of the set and misses $B$, and the distance from $B$ to $PC$ is less than the distance from $Q$ to $PC$, which is less than $PQ$. That pair beats the minimum, a contradiction, so $\ell$ holds exactly two points.
 
 ## Useful observations
 - The theorem seeds inductions: an ordinary line lets one delete two points and continue.
@@ -5064,6 +5092,10 @@ Reflecting a [[cevas-theorem|cevian]] in the angle bisector swaps the two parts 
 
 The coordinates follow from the [[ratio-lemma|Ratio Lemma]]. If $D = (0 : y : z)$ is the foot of $AP$ on $BC$, then $BD : DC = z : y$, and swapping the sine ratio at $A$ turns it into $c^2y : b^2z$. So the reflected foot is $(0 : b^2z : c^2y) \propto \left(0 : \frac{b^2}{y} : \frac{c^2}{z}\right)$, and the three feet give $P^* = \left(\frac{a^2}{x} : \frac{b^2}{y} : \frac{c^2}{z}\right)$.
 
+For the pedal circle, let $P$ have feet $F$, $E$ on $AB$, $AC$, and $P^*$ have feet $F^*$, $E^*$. Then $AF \cdot AF^* = AP\cos\angle PAB \cdot AP^*\cos\angle P^*AB$ and $AE \cdot AE^* = AP\cos\angle PAC \cdot AP^*\cos\angle P^*AC$. Isogonality swaps the two angles, so the products agree and $F$, $F^*$, $E$, $E^*$ are concyclic by the converse of Power of a Point.
+
+The midpoint $M$ of $PP^*$ projects onto $AB$ at the midpoint of $FF^*$, so $M$ lies on the perpendicular bisector of $FF^*$, and likewise of $EE^*$: that circle is centered at $M$. The circles at the other vertices are also centered at $M$ and share a foot with this one, so all six feet lie on one circle.
+
 ## Useful observations
 - A hard point can often be swapped for an easy one: $O \leftrightarrow H$, and the centroid $G = (1 : 1 : 1)$ goes to $(a^2 : b^2 : c^2)$, the symmedian point $K$.
 - The symmedian is the isogonal of the median, the most frequent special case at AIME level.
@@ -5088,7 +5120,9 @@ $P$ is any point of the plane, $O$ and $R$ are the circumcenter and circumradius
 ## Why it works
 Each side of the pedal triangle is a chord of a circle with diameter $PA$, since $A$, $F$, $P$, $E$ lie on it; hence $EF = PA\sin A$. For $P$ inside the triangle the angle at $P$ between $PE$ and $PF$ is $180^\circ - A$, and cutting the pedal triangle into its three pieces at $P$ gives $[DEF] = \frac12\left(d_bd_c\sin A + d_cd_a\sin B + d_ad_b\sin C\right)$, where $d_a$, $d_b$, $d_c$ are the distances from $P$ to the sides.
 
-In normalized barycentric coordinates $(u, v, w)$ of $P$ these distances are $d_a = \frac{2[ABC]u}{a}$ and so on, and $\sin A = \frac{a}{2R}$. Substituting and using $abc = 4R[ABC]$ gives $$\frac{[DEF]}{[ABC]} = \frac{a^2vw + b^2wu + c^2uv}{4R^2}.$$ The numerator is $R^2 - OP^2$, the negative of the power of $P$ with respect to the circumcircle, by the standard barycentric formula for that power. For $P$ outside the triangle the same formula holds with signed areas, which is why the absolute value appears.
+In normalized barycentric coordinates $(u, v, w)$ of $P$ these distances are $d_a = \frac{2[ABC]u}{a}$ and so on, and $\sin A = \frac{a}{2R}$. Substituting and using $abc = 4R[ABC]$ gives $$\frac{[DEF]}{[ABC]} = \frac{a^2vw + b^2wu + c^2uv}{4R^2}.$$
+
+The numerator is $R^2 - OP^2$. With $O$ as origin, $P = uA + vB + wC$ and $A \cdot B = R^2 - \frac{c^2}{2}$, and likewise for the other pairs, so $$OP^2 = R^2(u^2 + v^2 + w^2) + 2\sum uv\left(R^2 - \tfrac{c^2}{2}\right) = R^2(u + v + w)^2 - (a^2vw + b^2wu + c^2uv),$$ and $u + v + w = 1$. For $P$ outside the triangle the same formula holds with signed areas, which is why the absolute value appears.
 
 ## Useful observations
 - $P = O$ gives $\frac14[ABC]$, the medial triangle.
@@ -5148,7 +5182,9 @@ The medial triangle is the triangle whose vertices are the midpoints of the side
 ## Why it works
 The midpoints halve every side, so each of the four small triangles is similar to $ABC$ with ratio $\frac12$ by SAS on the midsegments, which gives a quarter of the area and half the perimeter apiece. The medial triangle is the image of $ABC$ under the homothety centered at the centroid $G$ with ratio $-\frac12$, which is why $G$ is shared and the orientation flips.
 
-The same homothety carries the orthocenter $H$ of $ABC$ to the orthocenter of the medial triangle, which is $O$, because $H = 3G - 2O$. Its circumcircle passes through the three midpoints, and so it is the nine-point circle, with radius $\frac R2$.
+Its sides are parallel to those of $ABC$, so the altitude of the medial triangle from the midpoint of $BC$ is perpendicular to $BC$ and passes through its midpoint: it is the perpendicular bisector of $BC$. The three altitudes are the three perpendicular bisectors of $ABC$, so the orthocenter of the medial triangle is $O$.
+
+Its circumcircle passes through the three midpoints, so it is the nine-point circle. It is the image of the circumcircle under the homothety of ratio $-\frac12$, so its radius is $\frac R2$.
 
 ## Useful observations
 - The four-congruent-triangles picture proves midsegment and area-quartering claims at a glance.
@@ -5163,7 +5199,7 @@ Connect-the-midpoints configurations, area quartering, and the bridge into Euler
 
 "triangle-13-14-15": String.raw`
 ## Key forms
-- $s = 21$ and $[ABC] = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$, the smallest scalene triangle after $3$-$4$-$5$ with whole-number sides and a whole-number area
+- $s = 21$ and $[ABC] = \sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$, after $3$-$4$-$5$, the smallest triangle with consecutive whole-number sides and a whole-number area (the next is $51$-$52$-$53$)
 - the altitude to the side $14$ is $12$ and splits it into $5 + 9$, so the triangle is a $5$-$12$-$13$ and a $9$-$12$-$15$ right triangle glued along that altitude
 - $r = \frac{A}{s} = 4$ and $R = \frac{abc}{4A} = \frac{65}{8}$; the exradii are $\frac{21}{2}$, $12$, $14$ opposite the sides $13$, $14$, $15$
 - the cosines of the angles opposite $13$ and $15$ are $\frac{3}{5}$ and $\frac{5}{13}$, so both are angles you already know from the small Pythagorean triples
@@ -5385,7 +5421,9 @@ Triangles are counted up to congruence, so each side triple $a \le b \le c$ coun
 ## Why it works
 Count triples ordered by size, $a \le b \le c$, with $a + b + c = n$ and the single binding constraint $a + b \gt c$, which is the same as $c \lt \frac n2$ since the other two inequalities are automatic once the sides are sorted.
 
-Fix the longest side $c$. Then $a + b = n - c$ with $a \le b \le c$, a short run of pairs $(a, b)$ to count. Summing the counts over the allowed $c$, from $\lceil \frac n3 \rceil$ up to $\lfloor \frac{n - 1}{2} \rfloor$, gives a quadratic in $n$, and it collapses to the nearest integer to $\frac{n^2}{48}$ for even $n$ and to $\frac{(n + 3)^2}{48}$ for odd $n$. This is Alcuin's sequence.
+Fix the longest side $c$, from $\lceil \frac n3 \rceil$ up to $\lfloor \frac{n - 1}{2} \rfloor$. Then $a + b = n - c$ with $a \le b \le c$, so $b$ runs from $\left\lceil\frac{n - c}{2}\right\rceil$ up to $c$, and $a = n - c - b$ is automatically at least $1$ because $b \le c \lt n - c$. That gives $c - \left\lceil\frac{n - c}{2}\right\rceil + 1$ triangles for each $c$.
+
+Adding these up gives the nearest integer to $\frac{n^2}{48}$ for even $n$ and to $\frac{(n + 3)^2}{48}$ for odd $n$, the sequence named after Alcuin. The closed form is quoted, not proved here (G. E. Andrews, A note on partitions and triangles with integer sides, Amer. Math. Monthly 86 (1979)); it agrees with the sum for every $n$ up to $300$, checked by computer. For $n = 12$: $c = 4$ gives $1$ and $c = 5$ gives $2$, three in all.
 
 ## Useful observations
 - For one specific small $n$, the sum over $c$ can be written out directly, and the rounded formula is the quick check on a full count.
@@ -5471,6 +5509,8 @@ All twelve edges are equal and four faces meet at each vertex.
 
 ## Why it works
 The four vertices that are not at the top or the bottom form a square of side $s$, since their diagonals are a pair of opposite octahedron edges. Above and below it sit two congruent pyramids with apex over the center of the square, at height $\frac{s}{\sqrt2}$, half a face diagonal of the square, so $$V = 2 \cdot \frac13 \cdot s^2 \cdot \frac{s}{\sqrt2} = \frac{s^3\sqrt2}{3}.$$ The surface is eight equilateral triangles, $8 \cdot \frac{\sqrt3}{4}s^2 = 2s^2\sqrt3$. The center is at distance $\frac{s}{\sqrt2}$ from every vertex, so $R = \frac{s\sqrt2}{2}$, and $r = \frac{3V}{S} = \frac{s\sqrt6}{6}$.
+
+For the dihedral angle, put the vertices at $(\pm1, 0, 0)$, $(0, \pm1, 0)$, $(0, 0, \pm1)$. Two faces sharing the edge from $(1, 0, 0)$ to $(0, 1, 0)$ have outward normals $(1, 1, 1)$ and $(1, 1, -1)$, at an angle with cosine $\frac13$. The angle between the faces themselves is the supplement, $\arccos\left(-\frac13\right)$.
 
 For the cube relation, the centers of two adjacent faces of a cube of edge $e$ are $\frac{e\sqrt2}{2}$ apart, which is the octahedron's edge, and substituting $s = \frac{e\sqrt2}{2}$ gives $V = \frac{e^3}{6}$. Equivalently, the octahedron is two pyramids on the square through four face centers, with base area $\frac{e^2}{2}$ and height $\frac e2$.
 
@@ -6429,6 +6469,8 @@ The reflection is off the curve, that is, off its tangent line at the point. The
 ## Why it works
 Take a point $T$ on an ellipse and move slightly along the tangent. To first order the sum $PF_1 + PF_2$ must not change, since $T$ already sits on the level curve where that sum is $2a$. The rate at which each focal distance changes is the cosine of the angle between the tangent direction and that focal radius, so the two cosines must cancel, which says the tangent makes equal angles with the two radii. That is the reflection law.
 
+On a hyperbola the difference $PF_1 - PF_2$ is the constant, so the two cosines must be equal instead of opposite: the tangent bisects the angle between the two focal radii, and a ray aimed at one focus reflects as if it came from the other.
+
 On a parabola the second focus is at infinity, so the second radius points along the axis and a ray from the focus leaves parallel to it.
 
 ## Useful observations
@@ -6667,7 +6709,7 @@ $ABC$ is any triangle, $G$ its centroid, $O$ its circumcenter, and $H$ its ortho
 ## Why it works
 Every statement follows from one homothety. The map centered at the centroid $G$ with ratio $-2$ sends $A$, $B$, $C$ to the vertices of $A'B'C'$, and the inverse map with ratio $-\frac12$ is exactly the one that produces the medial triangle. A homothety of ratio $-2$ doubles every length and reverses direction, so the sides are parallel and twice as long, the circumradius doubles, and the area quadruples.
 
-The centers move by the same map. The circumcenter of $A'B'C'$ is the image of the circumcenter of $ABC$ taken one level down, and that is the orthocenter of $ABC$: the perpendicular bisectors of the sides of $A'B'C'$ are the altitudes of $ABC$, because $A$, $B$, $C$ are the midpoints. The circumcircle of the medial triangle $ABC$ is the nine-point circle of $A'B'C'$, so its nine-point center is $O$. The [[euler-line-ratio|Euler line]] of $A'B'C'$ passes through $G$, $O' = H$, and $N' = O$, and $H' = 3G - 2O' = 3G - 2H = 2O - H$.
+The side $B'C'$ has midpoint $A$ and is parallel to $BC$, so its perpendicular bisector is the line through $A$ perpendicular to $BC$, the altitude from $A$. The three perpendicular bisectors of $A'B'C'$ are the three altitudes of $ABC$, so $O' = H$. The circumcircle of the medial triangle $ABC$ is the nine-point circle of $A'B'C'$, so its nine-point center is $O$. The [[euler-line-ratio|Euler line]] of $A'B'C'$ passes through $G$, $O' = H$, and $N' = O$, and $H' = 3G - 2O' = 3G - 2H = 2O - H$.
 
 ## Useful observations
 - A fact about the orthocenter of a triangle is a fact about the circumcenter of its anticomplementary triangle, so an awkward $H$ can be traded for a comfortable $O$.
@@ -6693,11 +6735,11 @@ Olympiad and the occasional hard AIME geometry problem built on midpoints.
 $ABCD$ is a cyclic quadrilateral with its vertices in that order around the circle, so $a, b, c, d$ are consecutive sides.
 
 ## Why it works
-The quickest route is the one that proves the first theorem: invert at $A$. Inversion sends $B$, $C$, $D$ to collinear points, and distances transform by $B'C' = \frac{BC \cdot k}{AB \cdot AC}$.
+The diagonal $p = AC$ is a side of two triangles: $ABC$, with sides $a$, $b$ around angle $B$, and $ACD$, with sides $c$, $d$ around angle $D$. In a cyclic quadrilateral $D = 180^\circ - B$, so $\cos D = -\cos B$, and the [[law-of-cosines|Law of Cosines]] twice gives $$p^2 = a^2 + b^2 - 2ab\cos B = c^2 + d^2 + 2cd\cos B.$$
 
-Writing the collinearity $B'C' + C'D' = B'D'$ gives Ptolemy's product formula, and comparing the two ratios in which $C'$ divides $B'D'$ gives this one. Both are the same picture, read for a sum or for a ratio.
+Solving the second equation for the cosine, $\cos B = \frac{a^2 + b^2 - c^2 - d^2}{2(ab + cd)}$. Substituting back, $$p^2 = \frac{(a^2 + b^2)cd + ab(c^2 + d^2)}{ab + cd} = \frac{(ac + bd)(ad + bc)}{ab + cd},$$ since $(ac + bd)(ad + bc) = a^2cd + abc^2 + abd^2 + b^2cd$. The same steps with the diagonal $q = BD$, shared by triangles $ABD$ and $BCD$, give $q^2 = \frac{(ac + bd)(ab + cd)}{ad + bc}$.
 
-A route without inversion is the Law of Cosines on the two triangles that share the diagonal $p$, using $\cos B = -\cos D$ for the opposite angles of a cyclic quadrilateral. Eliminating the angle and solving for $p^2$ gives the explicit formula, which packages into the paired products. Dividing the two diagonal formulas then gives the ratio, and multiplying them recovers Ptolemy's product.
+Dividing the two formulas, $\frac{p^2}{q^2} = \frac{(ad + bc)^2}{(ab + cd)^2}$, which is the ratio. Multiplying them gives $p^2q^2 = (ac + bd)^2$, which recovers Ptolemy's product $pq = ac + bd$.
 
 ## Useful observations
 - The two theorems are used together: multiplying and dividing the product and the ratio recovers $AC^2$ and $BD^2$, both diagonals of a cyclic quadrilateral from the four sides alone, with no angles anywhere. The first theorem alone leaves one equation short.
@@ -6724,7 +6766,7 @@ The inner circle lies inside the outer one. For $n = 3$ the relation is necessar
 ## Why it works
 For the triangle the relation is [[euler-distance-theorem|Euler's Distance Formula]], which holds in every triangle. So a circumcircle and incircle of the same triangle must satisfy it; the content of the converse is that the condition is also sufficient.
 
-Poncelet's closure theorem is the part with no elementary proof. Start anywhere on the outer circle, draw a tangent to the inner circle, continue around, and if the path closes after $n$ steps for one starting point, it closes after $n$ steps for every starting point.
+Poncelet's closure theorem, and Fuss's relation for the quadrilateral, are quoted, not proved here (L. Flatto, Poncelet's Theorem, American Mathematical Society, 2009); they have no elementary proof. Start anywhere on the outer circle, draw a tangent to the inner circle, continue around, and if the path closes after $n$ steps for one starting point, it closes after $n$ steps for every starting point.
 
 Poncelet's porism is the full statement, and it needs no circles: take any two conics, one inside the other, and run the same path, from a point of the outer conic along a tangent to the inner one, to the next point of the outer conic, and on. A porism is a theorem of exactly this all-or-nothing kind: a configuration that either has no solution or has infinitely many. Here either the path never closes up, from any starting point, or it closes after the same number $n$ of steps from every starting point, possibly winding several times around the inner conic and tracing a star polygon.
 
@@ -6814,9 +6856,11 @@ Reachable from the AMC upward, since the tools are standard (semiperimeter, inra
 $ABCD$ is cyclic; nothing else is needed, and the sides may be as uneven as you like. The polygon version needs all vertices on one circle.
 
 ## Why it works
-Each incenter is placed by [[incenter-excenter-lemma|the arc-midpoint lemma]]: the incenter of $\triangle ABC$ lies on the bisector from $B$, at a position governed by the midpoint of arc $AC$. Placing all four incenters this way and comparing the angles they make shows that each pair of adjacent ones subtends a right angle.
+Write $I_d$, $I_c$, $I_a$ for the incenters of $ABC$, $ABD$ and $BCD$. By [[incenter-excenter-lemma|the arc-midpoint lemma]], the incenter of any triangle inscribed in the circle with side $AB$ is at distance $MA = MB$ from the midpoint $M$ of the arc $AB$ on the other side. Both $I_d$ and $I_c$ are, so $A$, $B$, $I_d$, $I_c$ lie on the circle about $M$; in the same way $B$, $C$, $I_d$, $I_a$ are concyclic.
 
-The reason for a rectangle rather than a general quadrilateral is parallelism. Two opposite sides of the figure come out parallel to the bisector of one diagonal, the other two parallel to the bisector of the other diagonal, and those two bisectors are perpendicular.
+In the cyclic quadrilateral $ABI_dI_c$ the angle at $I_d$ is opposite the angle at $A$, which is $\angle BAI_c = \frac12\angle DAB$, so $\angle BI_dI_c = 180^\circ - \frac12\angle DAB$. Likewise $\angle BI_dI_a = 180^\circ - \frac12\angle BCD$. The three angles around $I_d$ add to $360^\circ$, so $$\angle I_cI_dI_a = \tfrac12\left(\angle DAB + \angle BCD\right) = 90^\circ,$$ since opposite angles of the cyclic quadrilateral $ABCD$ are supplementary. The same holds at every incenter, so the four form a rectangle.
+
+For the polygon version, [[carnots-theorem|Carnot's Theorem]] gives $r = \sum(\text{signed distances from } O \text{ to the sides}) - R$ for each triangle. A diagonal is a side of two triangles of the triangulation, seen from opposite sides, so its two signed distances cancel. Adding over the $n - 2$ triangles leaves the signed distances to the polygon's own sides minus $(n - 2)R$, which does not depend on the triangulation.
 
 ## Useful observations
 - A rectangle gives right angles and equal diagonals for free, so a length or angle question about the four incenters collapses.
@@ -8813,7 +8857,7 @@ Each term of the sharper inequality factors as a difference of squares, $$a^2 - 
 Equality needs $p = q = r$, so $x = y = z$, the equilateral triangle. Dropping the squared differences, which are never negative, gives Weitzenböck.
 
 ## Useful observations
-- Dividing the sharper inequality by $4K$ and using $a^2 - (b - c)^2 = 4K\tan\frac A2$ gives the angle form, which is also [[jensens-inequality|Jensen's Inequality]] for the tangent, convex on half-angles that add to $90^\circ$.
+- Dividing the sharper inequality by $4K$ gives the angle form, since $4(s - b)(s - c) = 4K\tan\frac A2$: with $\tan\frac A2 = \frac{r}{s - a}$ and $K = rs$, $K\tan\frac A2 = \frac{r^2s}{s - a} = (s - b)(s - c)$, because $r^2s = (s - a)(s - b)(s - c)$. It is also [[jensens-inequality|Jensen's Inequality]] for the tangent, convex on half-angles that add to $90^\circ$.
 - Expanding the squared differences turns Hadwiger–Finsler into $2(ab + bc + ca) - (a^2 + b^2 + c^2) \ge 4\sqrt3\,K$. Since $a^2 + b^2 + c^2 \ge ab + bc + ca$, the left side is at most $ab + bc + ca$, which gives the last Key form.
 
 ## Applications
@@ -8891,6 +8935,10 @@ Counting faces around edges and vertices. Each of the $12$ pentagons of the dode
 For the coordinates, $\varphi^2 = \varphi + 1$ does the work. The vertex $(0, 1, \varphi)$ is at distance $2$ from $(0, -1, \varphi)$, and at squared distance $$1 + (\varphi - 1)^2 + \varphi^2 = 2 + 2\varphi^2 - 2\varphi = 4$$ from $(\pm1, \varphi, 0)$, and likewise from $(\pm\varphi, 0, 1)$. So each vertex has exactly $5$ neighbors at distance $2$, the edge length.
 
 The five neighbors of a vertex form a pentagon around it, and so do the five neighbors of the opposite vertex. These $1 + 5 + 5 + 1 = 12$ points are all the vertices, which gives the distance layers along the edges.
+
+Icosahedron volume: the face $(0, \pm1, \varphi)$, $(\varphi, 0, 1)$ has centroid $\left(\frac\varphi3, 0, \frac{2\varphi + 1}{3}\right)$, at squared distance $\frac{5\varphi^2 + 4\varphi + 1}{9} = \frac{3\varphi + 2}{3} = \frac{\varphi^4}{3}$ from the center. So for edge $s$ the inradius is $\frac{\varphi^2s}{2\sqrt3}$, and twenty pyramids give $V = 20 \cdot \frac13 \cdot \frac{\sqrt3}{4}s^2 \cdot \frac{\varphi^2s}{2\sqrt3} = \frac56\varphi^2s^3 = \frac{5(3 + \sqrt5)}{12}s^3$.
+
+Dodecahedron volume: with the inscribed cube $(\pm1, \pm1, \pm1)$, the edge is $s = \frac2\varphi$, and over each face of the cube sits a roof whose ridge, such as $(0, \pm\frac1\varphi, \varphi)$, has length $s$ and height $\varphi - 1 = \frac1\varphi$. A roof on an $a \times a$ base with ridge $c$ and height $h$ is a prism plus two end pyramids, of volume $\frac12ahc + \frac13ah(a - c) = \frac{ah(2a + c)}{6}$. So $V = 8 + 6 \cdot \frac{2}{6\varphi}\left(4 + \frac2\varphi\right)$, which divided by $s^3 = \frac{8}{\varphi^3}$ is $\varphi^3 + \varphi^2 + \frac\varphi2 = \frac{7\varphi + 4}{2} = \frac{15 + 7\sqrt5}{4}$.
 
 ## Useful observations
 - The dual pairing: the $20$ face centers of the icosahedron are the vertices of a dodecahedron, and the $12$ face centers of the dodecahedron are the vertices of an icosahedron.
@@ -9015,7 +9063,9 @@ The two lines cross, so they are not parallel. In the equation form, the bisecto
 ## Why it works
 A point lies on a bisector exactly when it is at the same distance from both lines. By [[point-line-distance|the point-to-line distance formula]], the distance from $(x, y)$ to the first line is $\frac{|a_1x + b_1y + c_1|}{\sqrt{a_1^2 + b_1^2}}$, and the same for the second. Setting the two equal and removing the absolute values gives the two signs, which are two lines through the crossing point.
 
-For the slope form, the line of slope $m$ makes an angle $\theta$ with the $x$-axis, with $\tan\theta = m$, $\cos\theta = \frac{1}{\sqrt{1 + m^2}}$, and $\sin\theta = \frac{m}{\sqrt{1 + m^2}}$. The bisector makes the angle $\frac\theta2$, and $$\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{m}{1 + \sqrt{1 + m^2}} = \frac{\sqrt{1 + m^2} - 1}{m}.$$ The last step multiplies the numerator and denominator by $\sqrt{1 + m^2} - 1$.
+For the slope form, the line of slope $m$ makes an angle $\theta$ with the $x$-axis, with $\tan\theta = m$, $\cos\theta = \frac{1}{\sqrt{1 + m^2}}$, and $\sin\theta = \frac{m}{\sqrt{1 + m^2}}$. The bisector makes the angle $\frac\theta2$, and $$\tan\frac\theta2 = \frac{\sin\theta}{1 + \cos\theta} = \frac{m}{1 + \sqrt{1 + m^2}} = \frac{\sqrt{1 + m^2} - 1}{m}.$$ The last step multiplies the numerator and denominator by $\sqrt{1 + m^2} - 1$. For $m = \frac34$ it gives $\frac{5/4 - 1}{3/4} = \frac13$.
+
+For two lines at angles $\theta_1$ and $\theta_2$, the bisectors are at $\varphi = \frac{\theta_1 + \theta_2}{2}$ and $\varphi + 90^\circ$, and both satisfy $\tan 2\varphi = T$ with $T = \tan(\theta_1 + \theta_2) = \frac{m_1 + m_2}{1 - m_1m_2}$. With $t = \tan\varphi$ this is $\frac{2t}{1 - t^2} = T$, the quadratic $Tt^2 + 2t - T = 0$. Its roots are $\frac{-1 \pm \sqrt{1 + T^2}}{T}$, and since $1 + T^2 = \frac{(1 + m_1^2)(1 + m_2^2)}{(1 - m_1m_2)^2}$ they simplify to the formula. The product of the roots is $\frac{-T}{T} = -1$, so the bisectors are perpendicular.
 
 ## Useful observations
 - The bisector slope is rational exactly when $\sqrt{1 + m^2}$ is, that is, when $m$ is the ratio of the legs of a Pythagorean triple. Conversely, a rational bisector slope $t$ comes from $m = \frac{2t}{1 - t^2}$, the [[double-angle|double-angle formula]] for the tangent.
@@ -9107,7 +9157,7 @@ Let lines $AB$, $CD$, $EF$ form triangle $PQR$, with $P$ on lines $AB$ and $CD$,
 
 The corner at $P$ is triangle $PBC$. Two of its sides lie along $PR$ and $PQ$, and its third side $BC$ is parallel to $EF$, that is, to $QR$. So it is [[similar-figures-ratios|similar]] to $PQR$, with $BC = s$ matching $QR = c$: the scale is $\frac sc$, and $PB = \frac sc a$. In the same way the corner at $R$, cut off by $FA \parallel CD$, has scale $\frac sb$, and $RA = \frac sb a$.
 
-Line $RP$ is made of $RA$, $AB$, and $BP$, so $$a = \frac sb a + s + \frac sc a.$$ Dividing by $as$ gives $\frac1s = \frac1a + \frac1b + \frac1c$. The corner at $Q$, cut off by $DE \parallel AB$, has scale $\frac sa$, and the other two sides of the triangle give the same equation.
+Line $RP$ is made of $RA$, $AB$, and $BP$, so $$a = \frac sb a + s + \frac sc a.$$ Dividing by $as$ gives $\frac1s = \frac1a + \frac1b + \frac1c$. The corner at $Q$, cut off by $DE \parallel AB$, has scale $\frac sa$, and the other two sides of the triangle give the same equation. The three corners have areas $\frac{s^2}{a^2}T$, $\frac{s^2}{b^2}T$, $\frac{s^2}{c^2}T$, since areas scale by the square, and removing them from $T$ gives the area formula.
 
 ## Useful observations
 - The hexagon is centrally symmetric: $AB$ and $DE$ are equal and parallel, so $ABDE$ is a parallelogram and $AD$ and $BE$ bisect each other, and likewise for $CF$. Extending the other three sides, $BC$, $DE$, $FA$, gives the first triangle reflected through the center, with the same sides.
@@ -9315,7 +9365,7 @@ Object.assign(window.MATH_DETAILS, {
 The angle is between lines, so it is defined up to $180^\circ$: a rotation by $\theta$ and one by $\theta + 180^\circ$ turn lines the same way. As angles between rays, a ray and its image make exactly $\theta$.
 
 ## Why it works
-The idea is that a rotation turns every direction by the same angle, wherever it is applied, because a rotation is a translation-free turn followed by nothing else: the vector from any point $X$ to any point $Y$ is turned by $\theta$.
+A rotation by $\theta$ turns the vector from any point $X$ to any point $Y$ by $\theta$, wherever $X$ and $Y$ are, so every direction turns by the same angle.
 
 The perpendicular from the center shows it in the figure. Let $F$ be the foot of the perpendicular from $O$ to $\ell$. The rotation sends $F$ to $F'$ and $\ell$ to the line through $F'$ perpendicular to $OF'$, since right angles are kept, and $\angle FOF' = \theta$.
 

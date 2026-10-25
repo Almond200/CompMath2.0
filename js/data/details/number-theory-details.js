@@ -568,6 +568,11 @@ A frequent AIME step, most often splitting a modulus such as $1000$ into $8$ and
 
 ## Full proof
 Let $N = n_1\cdots n_k$ with the $n_i$ pairwise coprime. If $x$ and $y$ both solve the system, every $n_i$ divides $x - y$, and since their lcm is their product, $N$ divides $x - y$. For existence, $N_i = \frac{N}{n_i}$ is coprime to $n_i$, so it has an inverse $M_i$ modulo $n_i$, and $x = \sum_i a_iN_iM_i$ works: modulo $n_i$, every term but the $i$th contains the factor $n_i$, and the $i$th is $a_i \cdot N_iM_i \equiv a_i$.
+
+General moduli, two at a time. A solution of $x \equiv a_1 \pmod{n_1}$ and $x \equiv a_2 \pmod{n_2}$ is congruent to both $a_1$ and $a_2$ modulo $g = \gcd(n_1, n_2)$, so $a_1 \equiv a_2 \pmod g$ is necessary.
+
+Conversely, write $x = a_1 + n_1t$; the second congruence becomes $n_1t \equiv a_2 - a_1 \pmod{n_2}$, which by [[bezouts-identity|Bézout's Identity]] is solvable exactly when $g \mid a_2 - a_1$, with $t$ unique modulo $\frac{n_2}{g}$. Then $x$ is unique modulo $n_1 \cdot \frac{n_2}{g} = \operatorname{lcm}(n_1, n_2)$, and further congruences are merged one at a time.
+
 `,
 
 "multiplicative-order": String.raw`
@@ -736,6 +741,10 @@ For a prime $p$, consider the number of residues of each order $d \mid p - 1$. I
 
 Every residue has some order dividing $p - 1$, and $\sum_{d \mid p - 1}\varphi(d) = p - 1$. The counts can only add up if every order is taken by exactly $\varphi(d)$ residues, in particular order $p - 1$ by $\varphi(p - 1) \ge 1$ residues: primitive roots exist.
 
+The same count works for any modulus that has a primitive root $g$: $g^j$ is again one exactly when $\gcd(j, \varphi(n)) = 1$, which gives $\varphi(\varphi(n))$ of them. Which moduli have one at all, the list $1, 2, 4, p^k, 2p^k$, is quoted, not proved here (K. Ireland and M. Rosen, A Classical Introduction to Modern Number Theory, Chapter 4).
+
+For $x^k \equiv a$ modulo $p$, write $a = g^t$ and $x = g^y$. The congruence becomes $ky \equiv t \pmod{p - 1}$, which is solvable exactly when $d = \gcd(k, p - 1)$ divides $t$, and then has $d$ solutions. And $d \mid t$ is the same as $p - 1 \mid t\frac{p - 1}{d}$, that is, $a^{(p-1)/d} \equiv 1$.
+
 ## Useful observations
 - The powers of a primitive root run through every nonzero residue exactly once: modulo $7$ the powers of $3$ are $3, 2, 6, 4, 5, 1$.
 - With a primitive root, multiplication becomes addition of exponents modulo $\varphi(n)$, the index or discrete logarithm.
@@ -830,6 +839,8 @@ If $n = p$: write $a = b + t$ with $p \mid t$. To first order in $t$, the $k$th 
 For odd $p$ the second term is divisible by $p^2$, since $\frac{p-1}{2}$ is an integer and $p \mid t$, so the factor is $\equiv pb^{p-1} \pmod{p^2}$ and adds exactly one factor of $p$. For $p = 2$ the coefficient $\frac{p(p-1)}{2}$ is $1$, which is where the extra terms of the form for $2$ come from.
 
 Applying the case $n = p$ once for each factor of $p$ in $n$, and the coprime case for the rest, adds exactly $v_p(n)$.
+
+For $p = 2$ with $a$, $b$ odd: if $n$ is odd, the second factor is a sum of $n$ odd terms, so it is odd and adds nothing. If $n = 2^sm$ with $m$ odd and $s \ge 1$, the odd part adds nothing for the same reason, and $$a^{2^s} - b^{2^s} = (a - b)(a + b)(a^2 + b^2)(a^4 + b^4)\cdots\left(a^{2^{s-1}} + b^{2^{s-1}}\right).$$ Each factor $a^{2^j} + b^{2^j}$ with $j \ge 1$ is a sum of two odd squares, so it is $2 \bmod 4$ and adds exactly one factor of $2$. That is $s - 1$ factors beyond $(a - b)(a + b)$, which is the form for $2$.
 
 ## Useful observations
 - The case $b = 1$ is the most common: for an odd prime $p$ with $a \equiv 1 \pmod p$, $v_p(a^n - 1) = v_p(a - 1) + v_p(n)$.
@@ -1104,7 +1115,9 @@ Sort the amounts by remainder mod $a$. Adding an $a$ stays in the class, so once
 
 {{figure:grid}}
 
-The class that starts last begins at $(a - 1)b$, so the amount just before it, $(a - 1)b - a = ab - a - b$, is the largest one not representable. For the count, if both $n$ and $ab - a - b - n$ were representable, so would be their sum $ab - a - b$; and if neither were, the class argument shows $ab - a - b - n$ is. So exactly half of $0, \ldots, ab - a - b$ are not representable.
+The class that starts last begins at $(a - 1)b$, so the amount just before it, $(a - 1)b - a = ab - a - b$, is the largest one not representable.
+
+For the pairing, write any integer $n$ as $n = xa + yb$ with $0 \le y \le a - 1$, which can be done in exactly one way; $n$ is representable exactly when $x \ge 0$. Then $ab - a - b - n = (-1 - x)a + (a - 1 - y)b$, again with $0 \le a - 1 - y \le a - 1$, so it is representable exactly when $x \le -1$. Exactly one of the two holds, so exactly half of $0, \ldots, ab - a - b$, that is $\frac{(a - 1)(b - 1)}{2}$ amounts, are not representable.
 
 ## Useful observations
 - Exactly half of the amounts $0, \ldots, ab - a - b$ are impossible, $\frac{(a - 1)(b - 1)}{2}$ of them: with stamps of $5$ and $8$, the largest impossible amount is $27$, and $14$ amounts are impossible.
@@ -1133,6 +1146,10 @@ In a primitive triple the legs cannot both be even, and not both odd, since then
 Geometrically, a triple is a rational point $\left(\frac ac, \frac bc\right)$ on the unit circle, and the line through $(-1, 0)$ with slope $\frac nm$ meets the circle again at exactly that point.
 
 {{figure:rational}}
+
+The divisibility facts are checks on squares. Squares are $0$ or $1$ mod $3$, so if neither leg were a multiple of $3$ the hypotenuse would have $c^2 \equiv 2$, impossible. Squares are $0$ or $\pm1$ mod $5$, and two nonzero ones add to $2$, $0$ or $-2$, of which only $0$ is a square, so a leg or the hypotenuse is a multiple of $5$. For $4$: in $2mn$ one of $m$, $n$ is even. Each fact passes to multiples of a primitive triple.
+
+The inradius of a right triangle is $r = \frac{a + b - c}{2}$, since the tangent length at the right angle is $s - c$. For the primitive triangle this is $\frac{(m^2 - n^2) + 2mn - (m^2 + n^2)}{2} = n(m - n)$.
 
 ## Useful observations
 - Small coprime pairs $(m, n)$ of opposite parity give the familiar primitive triples: $(2, 1), (3, 2), (4, 1), (4, 3)$ give $3$-$4$-$5$, $5$-$12$-$13$, $15$-$8$-$17$, and $7$-$24$-$25$.
@@ -1185,9 +1202,11 @@ $n$ is a positive integer, and $a$, $b$ may be zero or negative. "Only one way" 
 ## Why it works
 One direction is a parity argument: every square is $0$ or $1$ modulo $4$, so a sum of two squares is never $3 \pmod 4$, which rules out every prime $p \equiv 3 \pmod 4$.
 
-For $p \equiv 1 \pmod 4$, the congruence $x^2 \equiv -1 \pmod p$ has a solution, so $p$ divides $x^2 + 1$ for some $x$. [[thues-lemma|Thue's Lemma]] then gives integers $a$, $b$ with $0 \lt a, b \lt \sqrt p$ and $a \equiv xb \pmod p$, so $p$ divides $a^2 + b^2$, and $0 \lt a^2 + b^2 \lt 2p$ forces $a^2 + b^2 = p$. Uniqueness is clearest in the [[gaussian-integers|Gaussian integers]], where $p = (a + bi)(a - bi)$ and factorization is unique.
+For $p \equiv 1 \pmod 4$, the congruence $x^2 \equiv -1 \pmod p$ has a solution, so $p$ divides $x^2 + 1$ for some $x$. [[thues-lemma|Thue's Lemma]] then gives integers $a$, $b$ with $0 \lt a, b \lt \sqrt p$ and $a \equiv xb \pmod p$, so $p$ divides $a^2 + b^2 \equiv b^2(x^2 + 1)$, and $0 \lt a^2 + b^2 \lt 2p$ forces $a^2 + b^2 = p$. Uniqueness is clearest in the [[gaussian-integers|Gaussian integers]], where $p = (a + bi)(a - bi)$ and factorization is unique.
 
 For general $n$, the identity multiplies representations, so a product of primes $\equiv 1 \pmod 4$, of $2 = 1^2 + 1^2$, and of squares is a sum of two squares. Conversely, a prime $q \equiv 3 \pmod 4$ that divides $a^2 + b^2$ must divide both $a$ and $b$, since $-1$ is not a square modulo $q$, so $q$ divides $n$ to an even power.
+
+The count $r_2(n)$ is quoted, not proved here (G. H. Hardy and E. M. Wright, An Introduction to the Theory of Numbers, Theorem 278). For $n = 25$ the divisors $1$, $5$, $25$ are all $1 \bmod 4$, so $r_2 = 12$: the points $(\pm5, 0)$, $(0, \pm5)$, $(\pm3, \pm4)$, $(\pm4, \pm3)$.
 
 ## Useful observations
 - A right triangle with a prime hypotenuse $p$ exists only when $p \equiv 1 \pmod 4$, and then it is unique: $p = m^2 + n^2$ gives legs $m^2 - n^2$ and $2mn$. For $p = 13 = 3^2 + 2^2$ the legs are $5$ and $12$.
@@ -1652,7 +1671,11 @@ Object.assign(window.MATH_DETAILS, {
 The universal exponent applies to bases coprime to $n$. The order of any particular base divides $\lambda(n)$, which divides $\varphi(n)$.
 
 ## Why it works
-For odd primes the units mod $p^k$ form a cyclic group of order $\varphi(p^k)$, so the smallest exponent killing every unit is $\varphi(p^k)$ itself. Mod $2^k$ with $k \ge 3$ they do not: every odd square is $1 \bmod 8$, and squaring repeatedly shows $a^{2^{k-2}} \equiv 1 \pmod{2^k}$ for every odd $a$, while $5$ has order exactly $2^{k-2}$. The Chinese Remainder Theorem splits congruences mod $n$ into congruences mod each prime power, and an exponent works for all of them exactly when it is a multiple of each one's universal exponent, that is, of their lcm.
+For odd primes the units mod $p^k$ form a cyclic group of order $\varphi(p^k)$, so the smallest exponent killing every unit is $\varphi(p^k)$ itself.
+
+Mod $2^k$ with $k \ge 3$ they do not. An odd square is $1 + 8t$, and squaring $1 + 2^{j}u$ gives $1 + 2^{j+1}u + 2^{2j}u^2$, so each squaring raises the guaranteed power of $2$ by one: $a^{2^{k-2}} \equiv 1 \pmod{2^k}$ for every odd $a$. For $5 = 1 + 4$, the same expansion keeps the cofactor odd, $5^{2^j} = 1 + 2^{j+2} \cdot \text{odd}$, so $5$ has order exactly $2^{k-2}$.
+
+The Chinese Remainder Theorem splits congruences mod $n$ into congruences mod each prime power, and an exponent works for all of them exactly when it is a multiple of each one's universal exponent, that is, of their lcm. Each $\lambda(p^a)$ divides $\varphi(p^a)$, so the lcm divides the product, $\varphi(n)$.
 
 ## Useful observations
 - $\lambda$ can be much smaller than $\varphi$, since the cycles of the prime-power parts need only a common multiple: $\lambda(1000) = \operatorname{lcm}(\lambda(8), \lambda(125)) = \operatorname{lcm}(2, 100) = 100$, against $\varphi(1000) = 400$.
@@ -2344,7 +2367,9 @@ The functions are arbitrary complex-valued functions on the positive integers; $
 ## Why it works
 The sum runs over factorizations $n = de$ in ordered pairs, which is symmetric in the two factors, so $f * g = g * f$. Three-fold convolutions run over $n = abc$, so the order of grouping does not matter. $\varepsilon$ is the identity because only the factorization $n = n \cdot 1$ survives.
 
-For multiplicative $f$ and $g$ and coprime $m$, $n$, the factorizations of $mn$ are exactly products of factorizations of $m$ and of $n$, so $(f * g)(mn) = (f * g)(m)\,(f * g)(n)$. The identity $\mu * \mathbf 1 = \varepsilon$ is the statement that $\sum_{d \mid n}\mu(d)$ vanishes for $n \gt 1$, and convolving $g = f * \mathbf 1$ with $\mu$ gives $f$.
+For multiplicative $f$ and $g$ and coprime $m$, $n$, the factorizations of $mn$ are exactly products of factorizations of $m$ and of $n$, so $(f * g)(mn) = (f * g)(m)\,(f * g)(n)$. That reduces each listed identity to prime powers. At $p^e$: $\sum_{j \le e}\mu(p^j) = 1 - 1 = 0$ for $e \ge 1$, so $\mu * \mathbf 1 = \varepsilon$; and $\sum_{j \le e}\varphi(p^j) = 1 + (p - 1)(1 + p + \cdots + p^{e-1}) = p^e$, so $\varphi * \mathbf 1 = \mathrm{id}$.
+
+Convolving $g = f * \mathbf 1$ with $\mu$ gives $g * \mu = f * (\mathbf 1 * \mu) = f * \varepsilon = f$, which is Möbius inversion. An inverse of $f$ is built one $n$ at a time: $(f * h)(1) = f(1)h(1)$ must be $1$, and for $n \gt 1$ the equation $(f * h)(n) = 0$ determines $h(n)$ from the earlier values, which works exactly when $f(1) \ne 0$.
 
 ## Useful observations
 - Summing over divisors is convolving with $\mathbf 1$, so every divisor-sum identity is a convolution identity: $\sum_{d \mid 12}\varphi(d) = (\varphi * \mathbf 1)(12) = 12$.
@@ -2399,7 +2424,7 @@ Multiplying all $ka$ therefore gives $a^{\frac{p-1}{2}}\left(\frac{p-1}{2}\right
 
 ## Useful observations
 - Counting remainders above $\frac p2$ settles small cases by hand: for $\left(\frac 27\right)$, the remainders $2, 4, 6$ have two above $3.5$, so the symbol is $1$, and indeed $3^2 \equiv 2$.
-- For $a = 2$, the multiples $2, 4, \ldots, p - 1$ exceed $\frac p2$ for about half of them, which gives the formula $(-1)^{(p^2-1)/8}$.
+- For $a = 2$, the products $2, 4, \ldots, p - 1$ are their own remainders, and those above $\frac p2$ number $\mu = \frac{p-1}{2} - \left\lfloor\frac p4\right\rfloor$. For $p = 8m + 1, 8m + 3, 8m + 5, 8m + 7$ this is $2m$, $2m + 1$, $2m + 1$, $2m + 2$, so $2$ is a square exactly when $p \equiv \pm1 \pmod 8$, which is the parity of $\frac{p^2 - 1}{8}$.
 - For $a = -1$, every one of the $\frac{p-1}{2}$ remainders is above $\frac p2$, giving $\left(\frac{-1}{p}\right) = (-1)^{\frac{p-1}{2}}$.
 
 ## Applications
@@ -2949,17 +2974,17 @@ A MATHCOUNTS and AMC 8 and 10 setup, from a single forced count to counting the 
 $m \ge 1$ and $\gcd(a, m) = 1$. The theorem says nothing about where the first such prime is, and nothing about primes in a progression whose terms share a factor.
 
 ## Why it works
-The general theorem, proved by Dirichlet in 1837, uses characters modulo $m$ and the fact that certain infinite series, his $L$-functions, do not vanish at $1$. That is far beyond a contest, and solutions cite it.
+The general theorem, proved by Dirichlet in 1837, uses characters modulo $m$ and the fact that certain infinite series, his $L$-functions, do not vanish at $1$. It is quoted, not proved here (K. Ireland and M. Rosen, A Classical Introduction to Modern Number Theory, Chapter 16); contest solutions cite it.
 
 The special cases follow Euclid's proof. For $3 \bmod 4$, suppose $p_1, \ldots, p_k$ are all the primes $\equiv 3 \pmod 4$ and let $N = 4p_1\cdots p_k - 1$. It is odd and $\equiv 3 \pmod 4$. A product of primes that are all $\equiv 1 \pmod 4$ is $\equiv 1 \pmod 4$, so some prime factor $q$ of $N$ is $\equiv 3 \pmod 4$. But $N \equiv -1 \pmod{p_i}$ for every $i$, so $q$ is not on the list, a contradiction.
 
 For $1 \bmod 4$, let $N = (2p_1\cdots p_k)^2 + 1$ and let $q$ be a prime factor of it. Then $q$ is odd and $(2p_1\cdots p_k)^2 \equiv -1 \pmod q$, so $-1$ is a square modulo $q$, which by [[eulers-criterion|Euler's Criterion]] forces $q \equiv 1 \pmod 4$. Again $q$ is none of the $p_i$.
 
-The last Key form is the same argument with the [[cyclotomic-polynomials|cyclotomic polynomial]] $\Phi_n$, using $N = n\,p_1\cdots p_k$.
+For $1 \bmod n$ the argument is the same with $N = n\,p_1\cdots p_k$ and the number $\Phi_n(N)$: its prime factors divide neither $n$ nor any $p_i$, and each is $\equiv 1 \pmod n$. That step is proved in full on the [[cyclotomic-polynomials|cyclotomic polynomials]] card.
 
 ## Useful observations
 - In an olympiad solution the theorem supplies a prime of a chosen residue larger than any given bound, for instance a prime $p \equiv -1 \pmod m$ with $p \gt N$, to substitute into a functional equation or a divisibility.
-- The elementary arguments work exactly for the residues $a$ with $a^2 \equiv 1 \pmod m$; any other residue needs Dirichlet's analysis.
+- Euclid-style arguments like these are known only for some residues, those with $a^2 \equiv 1 \pmod m$; any other residue needs Dirichlet's analysis.
 
 ## Applications
 Choosing a large prime in a given residue class to test a divisibility or a functional equation, and proving that the primes of a given form are infinite.
