@@ -2084,7 +2084,9 @@ The game is impartial (both players have the same moves), finite, and ends when 
 ## Why it works
 In Nim the XOR of the pile sizes is a handle one controls: if it is nonzero, some pile has a leading bit that can be cleared to make the whole XOR zero, a move to a position that is losing for the opponent; if it is zero, every move breaks it. Sprague–Grundy generalizes this by giving each position its mex value. A position with $g = 0$ can only move to positions with $g \ne 0$, and a position with $g \ne 0$ has at least one move to a position with $g = 0$ (its other moves may stay nonzero: a Nim heap of $2$ can move to a heap of $1$). That is Nim's win-and-loss logic.
 
-Independent games combine because the XOR of Grundy values behaves like one Nim position.
+For a sum of two games with values $g_1$ and $g_2$, argue by induction on the positions, so that every option already obeys the rule. A move is made in one part, say to $G_1'$, giving the value $g(G_1') \oplus g_2$, which differs from $g_1 \oplus g_2$ because $g(G_1') \ne g_1$. So no option has the value $g_1 \oplus g_2$.
+
+Every smaller value $x$ is reached. Let $y = x \oplus g_1 \oplus g_2$; its leading bit is set in $g_1$ or in $g_2$, say in $g_1$. Then $g_1 \oplus y \lt g_1$, so by the mex rule $G_1$ has an option of value $g_1 \oplus y$, and moving there gives $g_1 \oplus y \oplus g_2 = x$. So the mex of the options is exactly $g_1 \oplus g_2$, and more parts follow one at a time.
 
 ## Useful observations
 - For a single game type, tabulating $g(0), g(1), \ldots$ by the mex rule usually shows a periodic pattern, and $g = 0$ marks the losing positions.

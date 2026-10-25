@@ -109,7 +109,7 @@ There is also a proof at a glance. Four copies of the triangle fit inside a squa
 - A chord of length $\ell$ at distance $d$ from the center of a circle of radius $R$ satisfies $R^2 = d^2 + \left(\frac\ell2\right)^2$, since the perpendicular from the center bisects the chord.
 - The tangent length from a point at distance $D$ from the center is $\sqrt{D^2 - R^2}$, since the tangent is perpendicular to the radius.
 - The distance formula is the theorem in coordinates, and applying it twice gives the space diagonal of a box.
-- Primitive triples are $(m^2 - n^2, 2mn, m^2 + n^2)$; beyond the four above, $(9, 40, 41)$ and $(20, 21, 29)$ also appear often.
+- Primitive triples are $(m^2 - n^2, 2mn, m^2 + n^2)$; besides $(3, 4, 5)$, $(5, 12, 13)$, $(8, 15, 17)$ and $(7, 24, 25)$, the triples $(9, 40, 41)$ and $(20, 21, 29)$ also appear often.
 
 ## Applications
 Distances in the plane and in space, lengths in circles through chords, tangents, and radii, altitudes and heights of triangles and solids, and recognizing right angles from three lengths.
@@ -2029,7 +2029,7 @@ The AMC uses it directly, asking what figure the midpoints form and its area; th
 The identity holds for any quadrilateral, convex or not, with its sides and diagonals as segment lengths.
 
 ## Why it works
-In vectors, the vector between the midpoints of the diagonals is $\vec m = \frac{(\vec a + \vec c) - (\vec b + \vec d)}{2}$, with $\vec a$, $\vec b$, $\vec c$, $\vec d$ the position vectors of the vertices. Expand all six squared lengths in terms of the vertices; every cross term cancels, leaving the identity. The parallelogram law is the case $m = 0$, where the diagonal midpoints coincide.
+Use position vectors $A$, $B$, $C$, $D$ for the vertices. The midpoints of the diagonals are $\frac{A + C}{2}$ and $\frac{B + D}{2}$, so $2m = |A + C - B - D|$. Expanding both sides in dot products, $$|A - B|^2 + |B - C|^2 + |C - D|^2 + |D - A|^2 - |A - C|^2 - |B - D|^2 = |A + C - B - D|^2,$$ since each side equals $|A|^2 + |B|^2 + |C|^2 + |D|^2 + 2A \cdot C + 2B \cdot D - 2(A \cdot B + B \cdot C + C \cdot D + D \cdot A)$. That is $a^2 + b^2 + c^2 + d^2 - p^2 - q^2 = 4m^2$. The parallelogram law is the case $m = 0$, where the diagonal midpoints coincide.
 
 In a parallelogram with sides $a$ and $b$ and an angle $\theta$ between them, the other angle is $180^\circ - \theta$, so the Law of Cosines gives the diagonals $p^2 = a^2 + b^2 - 2ab\cos\theta$ and $q^2 = a^2 + b^2 + 2ab\cos\theta$. Adding them cancels the cosines and leaves $$p^2 + q^2 = 2(a^2 + b^2),$$ which is the identity above with $c = a$, $d = b$, and $m = 0$, now seen from the angles instead of from the vectors.
 
@@ -5114,7 +5114,9 @@ $P$ is any point of the plane, $O$ and $R$ are the circumcenter and circumradius
 ## Why it works
 Each side of the pedal triangle is a chord of a circle with diameter $PA$, since $A$, $F$, $P$, $E$ lie on it; hence $EF = PA\sin A$. For $P$ inside the triangle the angle at $P$ between $PE$ and $PF$ is $180^\circ - A$, and cutting the pedal triangle into its three pieces at $P$ gives $[DEF] = \frac12\left(d_bd_c\sin A + d_cd_a\sin B + d_ad_b\sin C\right)$, where $d_a$, $d_b$, $d_c$ are the distances from $P$ to the sides.
 
-In normalized barycentric coordinates $(u, v, w)$ of $P$ these distances are $d_a = \frac{2[ABC]u}{a}$ and so on, and $\sin A = \frac{a}{2R}$. Substituting and using $abc = 4R[ABC]$ gives $$\frac{[DEF]}{[ABC]} = \frac{a^2vw + b^2wu + c^2uv}{4R^2}.$$ The numerator is $R^2 - OP^2$, the negative of the power of $P$ with respect to the circumcircle, by the standard barycentric formula for that power. For $P$ outside the triangle the same formula holds with signed areas, which is why the absolute value appears.
+In normalized barycentric coordinates $(u, v, w)$ of $P$ these distances are $d_a = \frac{2[ABC]u}{a}$ and so on, and $\sin A = \frac{a}{2R}$. Substituting and using $abc = 4R[ABC]$ gives $$\frac{[DEF]}{[ABC]} = \frac{a^2vw + b^2wu + c^2uv}{4R^2}.$$
+
+The numerator is $R^2 - OP^2$. With $O$ as origin, $P = uA + vB + wC$ and $A \cdot B = R^2 - \frac{c^2}{2}$, and likewise for the other pairs, so $$OP^2 = R^2(u^2 + v^2 + w^2) + 2\sum uv\left(R^2 - \tfrac{c^2}{2}\right) = R^2(u + v + w)^2 - (a^2vw + b^2wu + c^2uv),$$ and $u + v + w = 1$. For $P$ outside the triangle the same formula holds with signed areas, which is why the absolute value appears.
 
 ## Useful observations
 - $P = O$ gives $\frac14[ABC]$, the medial triangle.
@@ -6848,9 +6850,11 @@ Reachable from the AMC upward, since the tools are standard (semiperimeter, inra
 $ABCD$ is cyclic; nothing else is needed, and the sides may be as uneven as you like. The polygon version needs all vertices on one circle.
 
 ## Why it works
-Each incenter is placed by [[incenter-excenter-lemma|the arc-midpoint lemma]]: the incenter of $\triangle ABC$ lies on the bisector from $B$, at a position governed by the midpoint of arc $AC$. Placing all four incenters this way and comparing the angles they make shows that each pair of adjacent ones subtends a right angle.
+Write $I_d$, $I_c$, $I_a$ for the incenters of $ABC$, $ABD$ and $BCD$. By [[incenter-excenter-lemma|the arc-midpoint lemma]], the incenter of any triangle inscribed in the circle with side $AB$ is at distance $MA = MB$ from the midpoint $M$ of the arc $AB$ on the other side. Both $I_d$ and $I_c$ are, so $A$, $B$, $I_d$, $I_c$ lie on the circle about $M$; in the same way $B$, $C$, $I_d$, $I_a$ are concyclic.
 
-The reason for a rectangle rather than a general quadrilateral is parallelism. Two opposite sides of the figure come out parallel to the bisector of one diagonal, the other two parallel to the bisector of the other diagonal, and those two bisectors are perpendicular.
+In the cyclic quadrilateral $ABI_dI_c$ the angle at $I_d$ is opposite the angle at $A$, which is $\angle BAI_c = \frac12\angle DAB$, so $\angle BI_dI_c = 180^\circ - \frac12\angle DAB$. Likewise $\angle BI_dI_a = 180^\circ - \frac12\angle BCD$. The three angles around $I_d$ add to $360^\circ$, so $$\angle I_cI_dI_a = \tfrac12\left(\angle DAB + \angle BCD\right) = 90^\circ,$$ since opposite angles of the cyclic quadrilateral $ABCD$ are supplementary. The same holds at every incenter, so the four form a rectangle.
+
+For the polygon version, [[carnots-theorem|Carnot's Theorem]] gives $r = \sum(\text{signed distances from } O \text{ to the sides}) - R$ for each triangle. A diagonal is a side of two triangles of the triangulation, seen from opposite sides, so its two signed distances cancel. Adding over the $n - 2$ triangles leaves the signed distances to the polygon's own sides minus $(n - 2)R$, which does not depend on the triangulation.
 
 ## Useful observations
 - A rectangle gives right angles and equal diagonals for free, so a length or angle question about the four incenters collapses.
@@ -9147,7 +9151,7 @@ Let lines $AB$, $CD$, $EF$ form triangle $PQR$, with $P$ on lines $AB$ and $CD$,
 
 The corner at $P$ is triangle $PBC$. Two of its sides lie along $PR$ and $PQ$, and its third side $BC$ is parallel to $EF$, that is, to $QR$. So it is [[similar-figures-ratios|similar]] to $PQR$, with $BC = s$ matching $QR = c$: the scale is $\frac sc$, and $PB = \frac sc a$. In the same way the corner at $R$, cut off by $FA \parallel CD$, has scale $\frac sb$, and $RA = \frac sb a$.
 
-Line $RP$ is made of $RA$, $AB$, and $BP$, so $$a = \frac sb a + s + \frac sc a.$$ Dividing by $as$ gives $\frac1s = \frac1a + \frac1b + \frac1c$. The corner at $Q$, cut off by $DE \parallel AB$, has scale $\frac sa$, and the other two sides of the triangle give the same equation.
+Line $RP$ is made of $RA$, $AB$, and $BP$, so $$a = \frac sb a + s + \frac sc a.$$ Dividing by $as$ gives $\frac1s = \frac1a + \frac1b + \frac1c$. The corner at $Q$, cut off by $DE \parallel AB$, has scale $\frac sa$, and the other two sides of the triangle give the same equation. The three corners have areas $\frac{s^2}{a^2}T$, $\frac{s^2}{b^2}T$, $\frac{s^2}{c^2}T$, since areas scale by the square, and removing them from $T$ gives the area formula.
 
 ## Useful observations
 - The hexagon is centrally symmetric: $AB$ and $DE$ are equal and parallel, so $ABDE$ is a parallelogram and $AD$ and $BE$ bisect each other, and likewise for $CF$. Extending the other three sides, $BC$, $DE$, $FA$, gives the first triangle reflected through the center, with the same sides.
@@ -9355,7 +9359,7 @@ Object.assign(window.MATH_DETAILS, {
 The angle is between lines, so it is defined up to $180^\circ$: a rotation by $\theta$ and one by $\theta + 180^\circ$ turn lines the same way. As angles between rays, a ray and its image make exactly $\theta$.
 
 ## Why it works
-The idea is that a rotation turns every direction by the same angle, wherever it is applied, because a rotation is a translation-free turn followed by nothing else: the vector from any point $X$ to any point $Y$ is turned by $\theta$.
+A rotation by $\theta$ turns the vector from any point $X$ to any point $Y$ by $\theta$, wherever $X$ and $Y$ are, so every direction turns by the same angle.
 
 The perpendicular from the center shows it in the figure. Let $F$ be the foot of the perpendicular from $O$ to $\ell$. The rotation sends $F$ to $F'$ and $\ell$ to the line through $F'$ perpendicular to $OF'$, since right angles are kept, and $\angle FOF' = \theta$.
 

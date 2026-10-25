@@ -444,3 +444,33 @@ binomial-theorem # checked, no change
 binomial-row-sums # checked, no change
 conditional-probability # checked, no change
 euler-line-parallel-side # checked, no change
+cyclic-opposite-angles # checked, no change
+integer-valued-polynomials # checked, no change
+permutations-combinations # checked, no change
+perpendicular-bisector-locus # checked, no change
+parallel-sided-hexagon # area formula explained
+fundamental-theorem-symmetric # checked, no change
+polynomial-crt # checked, no change
+euler-quadrilateral # vector identity written out
+pedal-triangle # power formula derived (checked numerically)
+radical-axis # checked, no change
+common-tangent-lengths # checked, no change
+legendres-formula # checked, no change
+archimedes-broken-chord # step 4 checked numerically, no change
+golden-ratio-pentagon # checked, no change
+geometric-distribution # checked, no change
+cevas-theorem # checked, no change
+half-angle # checked, no change
+dumpty-point # checked, no change
+erdos-ginzburg-ziv # checked, no change
+distance-midpoint # checked, no change
+disconnected-graph-edges # new card, checked
+tangent-circles # checked, no change
+am-gm # checked, no change
+sprague-grundy # XOR rule for sums proved
+chord-length # checked, no change
+erdos-mordell # checked, no change
+rotated-line-angle # opening sentence made clear
+pythagorean-theorem # dangling 'four above' fixed
+gamblers-ruin # checked (p=0.49 value), no change
+japanese-theorem # rectangle proved by angle chase (checked); polygon form via Carnot
