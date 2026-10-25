@@ -4609,6 +4609,8 @@ Circumcenter: the inscribed-angle theorem says the arc $BC$ subtends $\angle A$ 
 
 Incenter: in $\triangle BIC$ the angles at $B$ and $C$ are the halves $\frac B2$ and $\frac C2$, so $\angle BIC = 180^\circ - \frac{B + C}{2} = 180^\circ - \frac{180^\circ - A}{2} = 90^\circ + \frac A2$.
 
+Excenter: the internal and external bisectors at $B$ are perpendicular, so $\angle IBI_A = 90^\circ$, and likewise $\angle ICI_A = 90^\circ$. So $B$ and $C$ lie on the circle with diameter $II_A$, and in the cyclic quadrilateral $IBI_AC$ the angle $BI_AC$ is $180^\circ - \left(90^\circ + \frac A2\right) = 90^\circ - \frac A2$.
+
 Orthocenter: with $E$ and $F$ the feet of the altitudes from $B$ and $C$, the quadrilateral $AFHE$ has two right angles at $F$ and $E$, so $\angle FHE = 180^\circ - A$, and $\angle BHC$ is the vertical angle.
 
 ## Useful observations
@@ -4798,9 +4800,11 @@ Famous and beautiful but almost never the intended method; ordinary angle chasin
 The cevians go from each vertex to the touch point on the opposite side: of the incircle for the Gergonne point, and of the excircle opposite that vertex for the Nagel point. The two points are [[isotomic-conjugate|isotomic conjugates]] of each other.
 
 ## Why it works
-Both are Ceva concurrences. Gergonne: the [[incircle-tangent-lengths|incircle tangent lengths]] give equal pairs, so the Ceva product for the cevians to the touch points is $1$.
+Both are Ceva concurrences. Gergonne: the [[incircle-tangent-lengths|incircle tangent lengths]] give the touch points on $BC$, $CA$, $AB$ the ratios $\frac{s - b}{s - c}$, $\frac{s - c}{s - a}$, $\frac{s - a}{s - b}$, whose product is $1$, so the cevians concur by Ceva's Theorem. Masses $\frac1{s - a}$, $\frac1{s - b}$, $\frac1{s - c}$ at the vertices balance every one of those ratios, which gives the barycentric coordinates.
 
-Nagel: the $A$-excircle touches $BC$ with $BX' = s - c$ and $CX' = s - b$, and Ceva's Theorem again gives concurrence. The Nagel point, the centroid, and the [[incenter-excenter-lemma|incenter]] are collinear with $NG = 2\,GI$, the Nagel line.
+Nagel: the $A$-excircle touches $BC$ with $BX' = s - c$ and $CX' = s - b$, the incircle's lengths swapped, as on [[incircle-excircle-touch|the touch-point card]]; the ratios are the reciprocals of Gergonne's, their product is again $1$, and masses $s - a$, $s - b$, $s - c$ balance them. Swapping each touch point for its reflection in the side's midpoint is what makes the two points isotomic conjugates.
+
+For the Nagel line, write the points as weighted averages with weights adding to $1$: $N = \frac{(s - a)A + (s - b)B + (s - c)C}{s}$ and $I = \frac{aA + bB + cC}{2s}$. Then $N + 2I = A + B + C = 3G$, so $G = \frac{N + 2I}3$ lies on segment $NI$ with $NG = 2\,GI$.
 
 ## Useful observations
 - "Cevians to the incircle or excircle contact points" is recognized, and concurrence invoked instead of re-derived.
@@ -5092,9 +5096,13 @@ Simson-line problems and "area of the triangle formed by the three feet" questio
 The orthic triangle is the triangle of the three altitude feet, equivalently the pedal triangle of the orthocenter $H$. The formulas above are for an acute triangle; for an obtuse triangle $H$ becomes an excenter of the orthic triangle instead of its incenter.
 
 ## Why it works
-Each altitude foot sees the opposite side at a right angle, so pairs of feet are concyclic with the vertices, and a short angle chase gives the orthic angles $180^\circ - 2A$ and shows that each orthic side is antiparallel to the matching side of $ABC$.
+Let $D$, $E$, $F$ be the feet of the altitudes from $A$, $B$, $C$. Since $\angle BEC = \angle BFC = 90^\circ$, the points $B$, $C$, $E$, $F$ lie on the circle with diameter $BC$, so $\angle AFE = \angle ACB = C$ and $\angle AEF = B$. Triangle $AEF$ is therefore similar to $ABC$, and since $AE = AB\cos A$ the ratio is $\cos A$; in particular $EF = a\cos A$.
 
-The corner triangle cut off at $A$ is similar to $ABC$ with ratio $\cos A$, so it has area $\cos^2A\,[ABC]$, and likewise at $B$ and $C$. Hence $$[\text{orthic}] = \left(1 - \cos^2A - \cos^2B - \cos^2C\right)[ABC] = 2\cos A\cos B\cos C\,[ABC],$$ by the identity $\cos^2A + \cos^2B + \cos^2C + 2\cos A\cos B\cos C = 1$. The side opposite the foot on $BC$ is $a\cos A = R\sin 2A$, so the perimeter is $R(\sin 2A + \sin 2B + \sin 2C) = 4R\sin A\sin B\sin C = \frac{2[ABC]}{R}$, using $[ABC] = 2R^2\sin A\sin B\sin C$ from [[trig-area|the trig-area formula]].
+The same chase at $B$ gives $\angle BFD = C$, so the angle of the orthic triangle at $F$ is $180^\circ - 2C$. Because $CF \perp AB$, it makes equal angles $90^\circ - C$ with $FE$ and $FD$, so the altitude $CF$ bisects that angle; doing this at all three feet makes $H$ the incenter.
+
+The corner triangle cut off at $A$ is similar to $ABC$ with ratio $\cos A$, so it has area $\cos^2A\,[ABC]$, and likewise at $B$ and $C$. Hence $$[\text{orthic}] = \left(1 - \cos^2A - \cos^2B - \cos^2C\right)[ABC] = 2\cos A\cos B\cos C\,[ABC],$$ by the identity $\cos^2A + \cos^2B + \cos^2C + 2\cos A\cos B\cos C = 1$.
+
+For the perimeter, $EF = a\cos A = R\sin 2A$, so the perimeter is $R(\sin 2A + \sin 2B + \sin 2C) = 4R\sin A\sin B\sin C = \frac{2[ABC]}{R}$, using $[ABC] = 2R^2\sin A\sin B\sin C$ from [[trig-area|the trig-area formula]].
 
 ## Useful observations
 - Because $H$ is the [[incenter-excenter-lemma|incenter]] of the orthic triangle, the altitudes of $ABC$ are its angle bisectors, which explains the reflect-$H$ facts.
@@ -6006,6 +6014,8 @@ Each intercept satisfies the equation, and three points that are not on one line
 
 Substituting $(a, 0, 0)$ gives $\frac aa + 0 + 0 = 1$, and the same happens at the other two intercepts. The equation is linear, so it describes a plane, and three non-collinear points fix exactly one plane, so this is the plane through the intercepts, shown in the figure at the top. It is the three-dimensional copy of the intercept form of a line, $\frac xa + \frac yb = 1$.
 
+Multiplying by $abc$ gives the standard form, whose coefficients are the normal $(bc, ca, ab)$. The tetrahedron cut off has three perpendicular edges $a$, $b$, $c$ at the origin, so its volume is $\frac13 \cdot \frac{ab}2 \cdot c$. The point-plane distance from the origin is $\frac{\lvert abc\rvert}{\sqrt{(bc)^2 + (ca)^2 + (ab)^2}}$.
+
 ## Useful observations
 - When a problem names where a plane crosses the axes, the intercept form is written straight down instead of solving for $Ax + By + Cz = D$. The normal vector $(bc, ca, ab)$ gives the angle between two planes or the [[point-plane-distance|distance from a point]].
 - Going the other way, a plane $Ax + By + Cz = D$ with $D \ne 0$ has intercepts $\frac DA$, $\frac DB$, and $\frac DC$: divide through by $D$.
@@ -6270,7 +6280,9 @@ Recognizing the constant sum is the problem, and the algebra afterward is routin
 The foci are on the $x$-axis for the form above; for $\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1$ they are on the $y$-axis and the asymptotes are $y = \pm\frac abx$. The latus rectum has length $\frac{2b^2}{a}$ here too.
 
 ## Why it works
-The derivation is the ellipse's with $|PF_1 - PF_2| = 2a$ instead of a sum. Now $c > a$, since the difference of two sides of a triangle is less than the third, so $a^2 - c^2$ is negative and the standard form carries a minus sign with $b^2 = c^2 - a^2$.
+Put the foci at $(\pm c, 0)$ and write $r_1 = PF_1$, $r_2 = PF_2$. Subtracting the squared distances, $r_1^2 - r_2^2 = (x + c)^2 - (x - c)^2 = 4cx$. On the right branch $r_1 - r_2 = 2a$, so dividing gives $r_1 + r_2 = \frac{2cx}{a}$, and adding the two equations gives $r_1 = a + \frac{c}{a}x$; the left branch gives the same up to sign.
+
+Squaring, $(x + c)^2 + y^2 = \left(a + \frac cax\right)^2$. The $2cx$ terms cancel, leaving $x^2\left(1 - \frac{c^2}{a^2}\right) + y^2 = a^2 - c^2$. Here $c \gt a$, since in triangle $PF_1F_2$ the difference of two sides is less than the third, so $a^2 - c^2 = -b^2$ with $b^2 = c^2 - a^2$, and dividing by $-b^2$ gives $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$.
 
 The asymptotes come out of the equation rather than from a limit. Replacing the $1$ by $0$ gives $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 0$, which factors as $\left(\frac xa - \frac yb\right)\left(\frac xa + \frac yb\right) = 0$, a pair of lines through the center. Far from the center the $1$ is negligible against terms growing like $x^2$, so the curve hugs them.
 
@@ -6279,7 +6291,7 @@ The latus rectum has length $\frac{2b^2}{a}$: at $x = c$ the equation gives $\fr
 ## Useful observations
 - Asymptotes cap the slopes the curve can reach. Substituting a line $y = mx$ into the equation gives a real intersection only when $|m| < \frac ba$, and an infimum that is never attained is the standard consequence.
 - The rectangular case $a = b$ makes the asymptotes perpendicular, and a $45^\circ$ rotation turns the curve into $xy = k$, so any problem about the graph of a reciprocal is a hyperbola problem in other coordinates.
-- A hyperbola with given asymptotes $y = \pm mx$ has the form $x^2 - \frac{y^2}{m^2} = a^2$ for some $a$, so the asymptotes fix the shape and one more condition fixes the size.
+- The hyperbolas with asymptotes $y = \pm mx$ are $x^2 - \frac{y^2}{m^2} = k$ for some $k \ne 0$: positive $k$ opens left and right, negative $k$ opens up and down. The asymptotes fix the shape and one more condition fixes $k$.
 
 ## Applications
 Equations and foci of hyperbolas, asymptote slopes, reciprocal graphs, and infimum problems with figures inscribed in a hyperbola.
@@ -6328,9 +6340,13 @@ Parabolas reach the AIME as constraint curves rather than as objects to describe
 The focus is not on the directrix. For an ellipse or hyperbola with axes along the coordinate axes, $a$ is the semi-major axis for the ellipse and the distance from the center to a vertex for the hyperbola.
 
 ## Why it works
-Fix a focus $F$ and a line $\ell$, and take all $P$ with $PF = e \cdot \operatorname{dist}(P, \ell)$. Squaring gives a second-degree equation whose $x^2$ and $y^2$ coefficients differ by a factor involving $1 - e^2$, so the sign of $1 - e^2$ alone decides whether the curve closes up, opens once, or opens twice.
+Put the focus at the origin and the directrix at $x = d$ with $d \gt 0$. The condition $PF = e \cdot \operatorname{dist}(P, \ell)$, squared, is $x^2 + y^2 = e^2(d - x)^2$, that is, $$(1 - e^2)\,x^2 + 2e^2d\,x + y^2 = e^2d^2.$$ The $y^2$ coefficient is $1$, so the sign of $1 - e^2$ alone decides the shape.
 
-That is the unified construction: the three conics are one locus with one parameter. For an ellipse or hyperbola, comparing this with the two-focus definition gives $e = c/a$ and puts the directrix at $x = a/e$.
+For $e \lt 1$ both squares have positive coefficients and completing the square gives an ellipse; for $e = 1$ the $x^2$ term vanishes and $y^2 = d^2 - 2dx$ is a parabola; for $e \gt 1$ the signs differ and the curve is a hyperbola. So the three conics are one locus with one parameter.
+
+To match this with the two-focus picture, use the focal radii of the ellipse with foci $(\pm c, 0)$: $PF_2 = a - \frac cax$. With $e = \frac ca$ this is $e\left(\frac ae - x\right)$, which is $e$ times the distance from $P$ to the line $x = \frac ae$. So that line is the directrix and $e = \frac ca$; the hyperbola, with $PF_2 = \lvert ex - a\rvert$, works the same way.
+
+For similarity: an ellipse's shape is fixed by $\frac ba = \sqrt{1 - e^2}$ and a hyperbola's by $\frac ba = \sqrt{e^2 - 1}$, so equal eccentricities give the same ratio, and a scaling carries one curve onto the other.
 
 ## Useful observations
 - Since $e$ is a ratio of lengths it survives any scaling, so two ellipses are similar exactly when their eccentricities match, and then every corresponding length is in one fixed ratio.
@@ -7797,6 +7813,8 @@ Each criterion pins the triangle down completely. Two sides with a fixed angle b
 SSA fails because the side opposite the given angle can swing: a circle around the far end of the known side can cross the other ray of the angle twice.
 
 {{figure:ssa}}
+
+When does SSA still work? With the angle at $A$ and the known side $AB$, the third vertex is where the circle of radius $a$ about $B$ meets the ray from $A$. If $a \ge AB$, the point $A$ is inside or on that circle, so the line through $A$ meets it once on each side of $A$, and only one crossing is on the ray. If the given angle is right or obtuse, the side opposite it is the longest, so the same case applies.
 
 ## Useful observations
 - SSA does determine the triangle when the side opposite the given angle is at least as long as the other given side, or when the given angle is right or obtuse.

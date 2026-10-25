@@ -630,7 +630,9 @@ The factorization holds for all numbers. The inequality needs $a, b, c \ge 0$, s
 ## Why it works
 Direct expansion proves it: multiplying out $(a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$ leaves the cubes and cancels every mixed term except $-3abc$.
 
-A more conceptual route sees $a^3 + b^3 + c^3 - 3abc$ as the determinant of a circulant matrix, which factors through the cube [[roots-of-unity|roots of unity]].
+A more conceptual route uses the cube roots of unity $1, \omega, \omega^2$, with $\omega + \omega^2 = -1$ and $\omega^3 = 1$. Expanding,
+$$(a + b\omega + c\omega^2)(a + b\omega^2 + c\omega) = a^2 + b^2 + c^2 - ab - bc - ca,$$
+so the expression is $(a + b + c)(a + b\omega + c\omega^2)(a + b\omega^2 + c\omega)$, the three factors that a circulant determinant splits into.
 
 The second factor is $\frac12\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right]$, manifestly nonnegative, and it vanishes only when $a = b = c$. That is why the product has the sign of $a + b + c$, and why for nonnegative numbers the cubes dominate $3abc$.
 
@@ -1246,6 +1248,8 @@ A logarithm asks what power of the base gives the number, and writing both the n
 Let $\log_b a = t$, so $b^t = a$. Take $\log_c$ of both sides: $\log_c(b^t) = \log_c a$, and by the power rule this is $t\log_c b = \log_c a$. Dividing, $t = \frac{\log_c a}{\log_c b}$. Choosing $c = a$ makes the numerator $1$, which is the reciprocal rule $\log_b a = \frac{1}{\log_a b}$.
 
 The chain rule is the same formula applied to every factor at once. Over a common base, $$\log_a b \cdot \log_b c \cdot \log_c d = \frac{\log b}{\log a} \cdot \frac{\log c}{\log b} \cdot \frac{\log d}{\log c},$$ and each numerator cancels the next denominator, leaving $\frac{\log d}{\log a} = \log_a d$. The same cancellation runs through a chain of any length, which is why these products [[telescoping|telescope]].
+
+The last two forms are one line each. Over a common base, $\log_{a^m}(b^n) = \frac{n\log b}{m\log a} = \frac nm\log_a b$. For the exchange rule, take $\log_b$ of both sides: $a^{\log_b c}$ gives $\log_b c \cdot \log_b a$ and $c^{\log_b a}$ gives $\log_b a \cdot \log_b c$, the same product, and two positive numbers with the same logarithm are equal. For example $2^{\log_3 9} = 2^2 = 4$ and $9^{\log_3 2} = 3^{2\log_3 2} = 4$.
 
 ## Useful observations
 - Normalizing every logarithm to one base makes the other rules usable, and after that the chain rule collapses products like $\log_2 3 \cdot \log_3 4 \cdots \log_{63} 64$ to $\log_2 64 = 6$ at once.
@@ -2612,12 +2616,14 @@ The signature AIME setup hands over the three symmetric sums, or a cubic whose r
 The expression is a polynomial that is antisymmetric, or at least vanishes whenever two variables coincide. A symmetric polynomial that does not vanish at $a = b$ has no such factor.
 
 ## Why it works
-Read the expression as a polynomial in $a$. Substituting $a = b$ makes it vanish, so $(a - b)$ divides it; by the cyclic symmetry $(b - c)$ and $(c - a)$ divide it too.
+Read the expression as a polynomial in $a$. Substituting $a = b$ makes it vanish, so $(a - b)$ divides it by the [[factor-remainder-theorem|Factor Theorem]]. The cyclic shift $a \to b \to c \to a$ leaves the expression unchanged, so $(b - c)$ and $(c - a)$ divide it too, and since the three factors are distinct linear polynomials their product divides it.
 
-Their product already has degree $3$, so the degree-$2$ sum equals that product times a constant, and one test point fixes the constant to $-1$. The degree-$3$ sum has one degree to spare, and symmetry forces the leftover factor to be $a + b + c$.
+The product already has degree $3$, so the degree-$2$ sum equals that product times a constant. At $(a, b, c) = (0, 1, 2)$ the sum is $0 + 1 \cdot 2 + 4 \cdot (-1) = -2$ and the product is $(-1)(-1)(2) = 2$, so the constant is $-1$.
+
+The degree-$3$ sum leaves a factor of degree $1$. Swapping two variables changes the sign of both the sum and the product, so the quotient is symmetric, hence $k(a + b + c)$. At $(0, 1, 2)$ the sum is $2 - 8 = -6$ and the product times $a + b + c$ is $2 \cdot 3 = 6$, so $k = -1$.
 
 ## Useful observations
-- Any cyclic expression that dies when two variables coincide factors as $(a - b)(b - c)(c - a)$ times a symmetric polynomial of the leftover degree; the skeleton is written down, then the coefficient is pinned with an easy substitution.
+- Any cyclic expression that dies when two variables coincide factors as $(a - b)(b - c)(c - a)$ times a cyclic polynomial of the leftover degree, which is symmetric when swapping two variables flips the sign of the expression. The skeleton is written down, then the coefficients are pinned with easy substitutions.
 - This turns "factor this cyclic mess" or "show this symmetric sum vanishes" into a two-line argument.
 - The sign is the classic slip, so every answer is checked against $(a, b, c) = (1, 2, 3)$.
 
@@ -3173,12 +3179,14 @@ An olympiad tool and a clean lemma inside longer inequality chains.
 - a sum $\alt{\sum\sqrt{x_i^2 + y_i^2}}{\sqrt{x_1^2 + y_1^2} + \sqrt{x_2^2 + y_2^2} + \cdots}$ is least when the little vectors are parallel, and then equals $\sqrt{(x_1 + x_2 + \cdots)^2 + (y_1 + y_2 + \cdots)^2}$
 
 ## Conditions
-$p \ge 1$. Equality needs all the vectors to point the same way, that is, to be nonnegative multiples of one another.
+$p \ge 1$. Equality needs all the vectors to point the same way, that is, to be nonnegative multiples of one another. For $p \lt 1$ the inequality fails: with $p = \frac12$, $a = (1, 0)$ and $b = (0, 1)$, the left side is $(1 + 1)^2 = 4$ and the right side is $1 + 1 = 2$.
 
 ## Why it works
 It is the triangle inequality for the norm $\lVert x\rVert_p = (\sum\lvert x_i\rvert^p)^{1/p}$. For $p = 2$, expand: $\lvert\vec u + \vec v\rvert^2 = \lvert\vec u\rvert^2 + 2\,\vec u \cdot \vec v + \lvert\vec v\rvert^2 \le \lvert\vec u\rvert^2 + 2\lvert\vec u\rvert\lvert\vec v\rvert + \lvert\vec v\rvert^2 = (\lvert\vec u\rvert + \lvert\vec v\rvert)^2$, by Cauchy–Schwarz $\vec u \cdot \vec v \le \lvert\vec u\rvert\lvert\vec v\rvert$. Taking square roots gives the claim.
 
-The general case follows from [[holders-inequality|Hölder's Inequality]]: writing $\sum\lvert a_i + b_i\rvert^p \le \sum\lvert a_i\rvert\lvert a_i + b_i\rvert^{p-1} + \sum\lvert b_i\rvert\lvert a_i + b_i\rvert^{p-1}$ and applying Hölder to each sum with exponents $p$ and $\frac{p}{p-1}$ bounds each by the norm of $a$ (or $b$) times $\left(\sum\lvert a_i + b_i\rvert^p\right)^{(p-1)/p}$; dividing by that factor gives the result.
+For $p = 1$ it is the triangle inequality for numbers, added term by term. For general $p \gt 1$, write $s_i = \lvert a_i + b_i\rvert$ and $q = \frac{p}{p-1}$. Since $s_i \le \lvert a_i\rvert + \lvert b_i\rvert$, $$\sum s_i^p = \sum s_i \cdot s_i^{p-1} \le \sum\lvert a_i\rvert s_i^{p-1} + \sum\lvert b_i\rvert s_i^{p-1}.$$
+
+[[holders-inequality|Hölder's Inequality]] with exponents $p$ and $q$ bounds the first sum by $\lVert a\rVert_p\left(\sum s_i^{(p-1)q}\right)^{1/q}$, and $(p - 1)q = p$, so this is $\lVert a\rVert_p\left(\sum s_i^p\right)^{(p-1)/p}$; the second sum is bounded the same way with $\lVert b\rVert_p$. Dividing both sides by $\left(\sum s_i^p\right)^{(p-1)/p}$, which may be assumed nonzero, leaves $\left(\sum s_i^p\right)^{1/p} \le \lVert a\rVert_p + \lVert b\rVert_p$.
 
 ## Useful observations
 - A sum of square-root terms is read as a sum of vector lengths and the vectors are added tip to tail.
@@ -3499,7 +3507,11 @@ An olympiad tool for symmetric inequalities in three variables; it settles where
 The parts are positive integers adding to $n \ge 2$; for $n = 1$ the single part $1$ gives product $1$, and the $r = 1$ line, which needs $q \ge 1$, does not apply. For parts restricted to be at least $2$, or to a fixed count, the rule changes and the equal-parts principle is used directly.
 
 ## Why it works
-For a fixed sum, AM–GM makes the product largest when the parts are equal, so the ideal part is near $e \approx 2.718$, and among integers $3$ beats $2$. Two local swaps pin the integer rule: a $1$ is always wasteful, since merging it into a neighbor, $1 + x \to x + 1$, raises the product from $x$ to $x + 1$, and three $2$'s lose to two $3$'s, which have the same sum $6$ but $8 \lt 9$, so never keep more than two $2$'s.
+Take a split with the largest product and look at its parts. A $1$ is wasteful: merging it into another part $x$ raises the product from $x$ to $x + 1$. A part $x \ge 5$ is wasteful too: splitting it as $2 + (x - 2)$ gives $2x - 4 \gt x$. A $4$ can be traded for $2 + 2$ with the same product. So an optimal split can be taken to use only $2$'s and $3$'s.
+
+Three $2$'s lose to two $3$'s, which have the same sum $6$ but $8 \lt 9$, so there are at most two $2$'s. The count of $2$'s is then forced by $n \bmod 3$: none when $r = 0$, two when $r = 1$ (that is, $4 \cdot 3^{q-1}$), and one when $r = 2$.
+
+For real parts, [[am-gm|AM-GM]] makes $k$ parts with sum $s$ best when all equal $\frac sk$, giving $\left(\frac sk\right)^k$. As a function of a real $k$ this peaks where $\frac sk = e$, which explains why $3$, the integer nearest $e \approx 2.718$, is the best integer part.
 
 ## Useful observations
 - Writing $n = 3q + r$ gives the split at once: $r = 0$ gives $3^q$; $r = 1$ gives $4 \cdot 3^{q-1}$, since a leftover $1$ and a $3$ become a $4$ (or two $2$'s); $r = 2$ gives $2 \cdot 3^q$.
@@ -5035,9 +5047,13 @@ Rare on answer-only contests; it appears in olympiad and AIME problems phrased w
 $A$ is any square matrix, diagonalizable or not, with entries in any field.
 
 ## Why it works
-For a $2 \times 2$ matrix the theorem is a direct computation. With $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $A^2 = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & d^2 + bc \end{pmatrix}$, and subtracting $(a + d)A$ leaves $(bc - ad)I = -(\det A)\,I$.
+For a $2 \times 2$ matrix the theorem is a direct computation. With $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $A^2 = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & d^2 + bc \end{pmatrix}$, and subtracting $(a + d)A$ leaves $(bc - ad)I = -(\det A)\,I$. Rearranged as $A\left((\operatorname{tr}A)\,I - A\right) = (\det A)\,I$, this is the inverse formula.
 
-In general, let $B(\lambda) = \operatorname{adj}(\lambda I - A)$, a matrix whose entries are polynomials in $\lambda$ of degree at most $n - 1$. The adjugate identity gives $B(\lambda)(\lambda I - A) = p(\lambda)\,I$. Writing $B(\lambda) = B_0 + B_1\lambda + \cdots + B_{n-1}\lambda^{n-1}$ and $p(\lambda) = c_0 + c_1\lambda + \cdots + \lambda^n$ and comparing the coefficients of each power of $\lambda$ gives $n + 1$ matrix equations. Multiplying the equation for $\lambda^k$ by $A^k$ on the right and adding them all, the left sides telescope to $0$ and the right sides add up to $p(A)$.
+In general, let $B(\lambda) = \operatorname{adj}(\lambda I - A)$, a matrix whose entries are polynomials in $\lambda$ of degree at most $n - 1$. The adjugate identity gives $B(\lambda)(\lambda I - A) = p(\lambda)\,I$. Write $B(\lambda) = B_0 + B_1\lambda + \cdots + B_{n-1}\lambda^{n-1}$ and $p(\lambda) = c_0 + c_1\lambda + \cdots + c_n\lambda^n$, and set $B_{-1} = B_n = 0$.
+
+Comparing the coefficients of $\lambda^k$ gives $B_{k-1} - B_kA = c_kI$ for $k = 0, \ldots, n$. Multiplying the $k$-th equation by $A^k$ on the right gives $B_{k-1}A^k - B_kA^{k+1} = c_kA^k$. Adding them all, the left sides telescope to $B_{-1} - B_nA^{n+1} = 0$, and the right sides add up to $p(A)$.
+
+The tempting shortcut, substituting $\lambda = A$ into $\det(\lambda I - A)$ to get $\det 0 = 0$, is not a proof: it produces the number $0$, not the zero matrix, because $\lambda I$ with a matrix in place of $\lambda$ is not what the determinant was computed from.
 
 ## Useful observations
 - It replaces diagonalization: $A^n = PD^nP^{-1}$ needs $A$ to be diagonalizable, while the recurrence for $A^n$ always holds.

@@ -793,7 +793,9 @@ The objects are labeled and the groups are unlabeled and nonempty. Labeling the 
 ## Why it works
 The recursion for $S(n, k)$ conditions on element $n$: either it forms its own block, leaving $S(n-1, k-1)$ ways to partition the rest, or it joins one of the $k$ blocks of a partition of the other $n - 1$ elements, in $k\,S(n-1, k)$ ways. Bell numbers sum over all block counts.
 
-The Bell recurrence comes from choosing the block containing a fixed element: if that block has the fixed element and $j$ others chosen in $\binom nj$ ways, the remaining $n - j$ elements are partitioned freely.
+A surjection onto $k$ labeled outputs is the same as a partition into $k$ blocks, the preimages of the outputs, together with a choice of which output each block goes to. The blocks are distinct, so there are $k!$ ways to assign them, giving $k!\,S(n, k)$. For example $S(3, 2) = 3$, and the maps from $3$ objects onto $2$ outputs number $2^3 - 2 = 6 = 2! \cdot 3$.
+
+The Bell recurrence comes from the block containing one fixed element of an $(n+1)$-element set. If that block has $j$ other members, chosen in $\binom nj$ ways, the remaining $n - j$ elements are partitioned freely in $B_{n-j}$ ways. Summing over $j$ and writing $k = n - j$, with $\binom nj = \binom nk$, gives $B_{n+1} = \sum_k\binom nk B_k$. For example $B_4 = 1 \cdot 1 + 3 \cdot 1 + 3 \cdot 2 + 1 \cdot 5 = 15$.
 
 ## Useful observations
 - The recurrence is the practical tool and its derivation says how to adapt it: the last element either joins one of the $k$ existing blocks or forms a block of its own.
@@ -2328,7 +2330,13 @@ A convenience for sums of independent counts, essentially ordinary [[generating-
 The graph is bipartite. The theorem genuinely fails without it: a triangle has a maximum matching of size $1$ and a minimum vertex cover of size $2$.
 
 ## Why it works
-Any vertex cover must contain an endpoint of every matched edge, so cover $\ge$ matching always. In bipartite graphs, an augmenting-path argument, equivalently max-flow/min-cut on the bipartite network, constructs a cover of exactly the maximum matching's size, giving equality. It is a min-max duality, the dual of Hall's Theorem and a special case of max-flow/min-cut.
+Any vertex cover must contain an endpoint of every matched edge, and matched edges share no endpoints, so cover $\ge$ matching always. For equality, let the sides be $X$ and $Y$ and let $M$ be a maximum matching. Call a path alternating if its edges alternate between unmatched and matched, starting with an unmatched edge. Let $Z$ be the set of vertices reachable by an alternating path from an unmatched vertex of $X$, and take $K = (X \setminus Z) \cup (Y \cap Z)$.
+
+$K$ is a cover. Take an edge $xy$ with $x \in X$. If $x \notin Z$, then $x \in K$. If $x \in Z$, an alternating path reaches $x$ along its matched edge or starts there, so an unmatched edge $xy$ extends it and puts $y$ in $Z$. If $xy$ is matched, $x$ is not a starting point, so the path reached $x$ through $y$, and again $y \in Z$, so $y \in K$.
+
+$K$ has exactly $|M|$ vertices. Each $y \in Y \cap Z$ is matched, since otherwise the path to it would be augmenting and $M$ could be enlarged; its partner is then in $Z$, so not in $K$. Each $x \in X \setminus Z$ is matched, since unmatched vertices of $X$ are in $Z$. So every vertex of $K$ is matched, no matched edge has both ends in $K$, and $|K| \le |M|$.
+
+It is a min-max duality, equivalent to Hall's Marriage Theorem and a special case of max-flow/min-cut. The independent-set form follows because a set is independent exactly when its complement is a vertex cover.
 
 ## Useful observations
 - It converts between two bounds of very different difficulty. Exhibiting a matching of size $k$ bounds the cover from below, and exhibiting a cover of size $k$ bounds the matching from above; when the two agree, both are optimal and the equality is proved.

@@ -332,7 +332,11 @@ $f$ and $g$ are any functions on the positive integers; no multiplicativity is n
 ## Why it works
 The key lemma first. For $n \gt 1$, let $p$ be one of its primes. The divisors with $\mu(d) \ne 0$ are the squarefree ones, and they pair up as $d$ and $dp$ for $p \nmid d$, with opposite signs, so the sum is $0$; for $n = 1$ it is $\mu(1) = 1$.
 
-For the inversion, substitute $g$ into the right side: $\sum_{d \mid n}\mu(d)\sum_{e \mid n/d} f(e)$. Swapping the order, $f(e)$ is multiplied by $\sum \mu(d)$ over the $d$ dividing $\frac ne$, which is $1$ when $e = n$ and $0$ otherwise. So only $f(n)$ survives.
+For the inversion, substitute $g$ into the right side: $\sum_{d \mid n}\mu(d)\sum_{e \mid n/d} f(e)$. Swapping the order, $f(e)$ is multiplied by $\sum \mu(d)$ over the $d$ dividing $\frac ne$, which is $1$ when $e = n$ and $0$ otherwise. So only $f(n)$ survives. The converse direction is the same swap with the roles reversed.
+
+For squarefree numbers, let $m^2$ be the largest square dividing $n$. The $k$ with $k^2 \mid n$ are exactly the divisors of $m$, so by the lemma $\sum_{k^2 \mid n}\mu(k)$ is $1$ when $m = 1$, that is when $n$ is squarefree, and $0$ otherwise. Adding over $n \le N$ and counting, for each $k$, the $\left\lfloor \frac N{k^2} \right\rfloor$ multiples of $k^2$ gives the formula.
+
+For the strings, each binary string of length $n$ is a repetition of exactly one shortest block, whose length $d$ divides $n$. So with $A(d)$ the strings that repeat no shorter block, $\sum_{d \mid n}A(d) = 2^n$, and inversion gives $A(n) = \sum_{d \mid n}\mu(d)2^{n/d}$.
 
 ## Useful observations
 - Squarefree numbers are counted by inclusion-exclusion over square divisors, $\sum_d \mu(d)\left\lfloor \frac{N}{d^2} \right\rfloor$: up to $30$ there are $30 - 7 - 3 - 1 = 19$.
@@ -1536,21 +1540,25 @@ The telescoping factorization and the coprimality argument recur in contest numb
 "continued-fraction-convergents": String.raw`
 ## Key forms
 - $p_k = a_kp_{k-1} + p_{k-2}$ and $q_k = a_kq_{k-1} + q_{k-2}$ — the recurrences for the convergents $\frac{p_k}{q_k}$ of $[a_0; a_1, a_2, \ldots]$
-- $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$ — consecutive convergents are Farey neighbors
-- the convergents are the best rational approximations with a bounded denominator
+- $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$ — consecutive convergents are Farey neighbors, and every convergent is in lowest terms
+- every best approximation, a fraction $\frac pq$ making $\lvert qx - p\rvert$ smaller than any fraction with a smaller denominator does, is a convergent
 
 ## Conditions
 The partial quotients $a_k$ are positive integers for $k \ge 1$. The starting values are $p_{-1} = 1$, $q_{-1} = 0$, $p_0 = a_0$, $q_0 = 1$.
 
 ## Why it works
-Convergents satisfy the recurrence above, and the determinant identity follows by induction. At the first step $p_0q_{-1} - p_{-1}q_0 = -1$, and substituting the recurrence, $p_kq_{k-1} - p_{k-1}q_k = (a_kp_{k-1} + p_{k-2})q_{k-1} - p_{k-1}(a_kq_{k-1} + q_{k-2}) = -(p_{k-1}q_{k-2} - p_{k-2}q_{k-1})$, which flips the sign each step.
+Write $M(a) = \begin{pmatrix} a & 1 \\ 1 & 0 \end{pmatrix}$. The map $x \mapsto a + \frac1x = \frac{ax + 1}{x}$ is the fraction-linear map of $M(a)$, and composing such maps multiplies their matrices. So $[a_0; a_1, \ldots, a_k]$, which nests these maps, is the product $M(a_0)M(a_1)\cdots M(a_k)$ applied to $x = \infty$, that is, the ratio of the two entries of its first column.
 
-In matrix form each step multiplies by a matrix of determinant $-1$, a unimodular [[matrix-multiplication|matrix multiplication]], which is why the determinant stays $\pm1$.
+Call that product $\begin{pmatrix} p_k & p_{k-1} \\ q_k & q_{k-1} \end{pmatrix}$. Multiplying by $M(a_{k+1})$ on the right sends the columns $(P, P')$ to $(a_{k+1}P + P', P)$, which is exactly the recurrence, and $M(a_0)$ alone gives the starting values $p_0 = a_0$, $q_0 = 1$, $p_{-1} = 1$, $q_{-1} = 0$.
+
+Each $M(a)$ has determinant $-1$, so the product has determinant $(-1)^{k+1}$, which is the identity $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$. A common factor of $p_k$ and $q_k$ would divide the left side, so every convergent is already in lowest terms.
+
+The best-approximation property is quoted, not proved here (A. Ya. Khinchin, Continued Fractions, Chapter II). It does not say the closest fraction with denominator at most $N$ is always a convergent: for $\pi$ and $N = 57$ the closest is $\frac{179}{57}$, an intermediate fraction between $\frac{22}{7}$ and $\frac{333}{106}$, which beats $\frac{22}{7}$ by about $0.00002$.
 
 ## Useful observations
-- Best rational approximations with bounded denominator are convergents, the tool for "closest fraction to a number with denominator under a bound" questions.
+- For "closest fraction to a number with denominator under a bound" questions, the answer is a convergent or one of the intermediate fractions $\frac{p_{k-1} + mp_k}{q_{k-1} + mq_k}$ between two of them.
 - The determinant identity gives instant solutions to $ax - by = \pm 1$, which is [[bezouts-identity|Bézout's Identity]] via continued fractions.
-- Consecutive convergents are Farey neighbors.
+- The convergents alternate sides of the number, and each lies within $\frac{1}{q_kq_{k+1}}$ of it, since the number lies between two consecutive convergents and they differ by exactly that much.
 
 ## Applications
 Rational approximation, Pell equations, and Stern–Brocot and mediant arguments.
@@ -2138,9 +2146,13 @@ Olympiad number theory and combinatorics: the statement that two sequences parti
 The modulus must be prime: modulo $6$, $A = B = \{0, 3\}$ gives $|A + B| = 2 \lt 3$.
 
 ## Why it works
-The proof below uses the polynomial method: the [[combinatorial-nullstellensatz|Combinatorial Nullstellensatz]] in two variables, with the sets $A$ and $B$ and the exponents $|A| - 1$ and $|B| - 1$.
+The proof is the polynomial method: the [[combinatorial-nullstellensatz|Combinatorial Nullstellensatz]] in two variables. In the form used here it says that if $f(x, y)$ has degree $s + t$, its coefficient of $x^sy^t$ is nonzero, $|A| \gt s$ and $|B| \gt t$, then $f(a, b) \ne 0$ for some $a \in A$ and $b \in B$.
 
-Suppose $|A| + |B| \le p + 1$ and $A + B \subseteq C$ with $|C| = |A| + |B| - 2$. Let $f(x, y) = \prod_{c \in C}(x + y - c)$, of degree $|A| + |B| - 2$; its coefficient of $x^{|A|-1}y^{|B|-1}$ is $\binom{|A| + |B| - 2}{|A| - 1}$, nonzero mod $p$ since $|A| + |B| - 2 \lt p$. So some $f(a, b) \ne 0$, meaning $a + b \notin C$, a contradiction. Hence $|A + B| \ge |A| + |B| - 1$; if $|A| + |B| \gt p + 1$, shrink $A$ first.
+First take $|A| + |B| \le p + 1$ and suppose the bound fails, so $|A + B| \le |A| + |B| - 2$. That number is at most $p - 1$, so the sumset fits inside a set $C$ of exactly $|A| + |B| - 2$ residues. Let $f(x, y) = \prod_{c \in C}(x + y - c)$. Every $f(a, b)$ is $0$, because $a + b$ lies in $C$.
+
+But $f$ has degree $(|A| - 1) + (|B| - 1)$ and its top part is $(x + y)^{|C|}$, so its coefficient of $x^{|A|-1}y^{|B|-1}$ is $\binom{|A| + |B| - 2}{|A| - 1}$. That is nonzero mod $p$, because $|A| + |B| - 2 \lt p$ keeps every factor of $p$ out of the factorials. The Nullstellensatz then gives a pair with $f(a, b) \ne 0$, a contradiction.
+
+If $|A| + |B| \gt p + 1$, delete elements of $A$ to get a nonempty $A'$ with $|A'| + |B| = p + 1$; then $|A + B| \ge |A' + B| \ge p$. The iterated form follows by induction, adding one set at a time.
 
 ## Useful observations
 - Adding sets one at a time grows the sumset by at least $|A_i| - 1$ each step until it fills $\mathbb Z_p$, so a few large sets always cover every residue.

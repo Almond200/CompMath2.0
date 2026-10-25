@@ -242,3 +242,35 @@ reflection-composition    # longer chains; odd case classification quoted
 isoperimetric-facts       # triangle bound derived; circle and polygon steps quoted (Blasjo)
 cross-ratio               # complex form, rearrangements, sign
 recognition-numbers       # values checked by computer
+mobius-inversion          # squarefree count and the strings formula proved
+fencepost-counting
+handshake-lemma
+triangle-congruence       # when SSA works, proved
+gliding-principle
+cubes-minus-3abc          # roots-of-unity factorization written out
+regular-octagon
+triangle-center-angles    # excenter angle proved
+gergonne-nagel-points     # ratios, barycentrics, Nagel line proved
+plane-intercept-form
+minkowski-inequality # p-norm step spelled out; p<1 counterexample
+change-of-base # proofs of power and exchange forms
+stirling-bell # surjection and Bell recurrence reindexing
+sum-of-divisors # checked, no change
+cauchy-davenport # proof completed: padding C, coefficient, large case
+continued-fraction-convergents # matrix proof; best-approximation quoted and corrected
+cayley-hamilton # coefficient equations explicit; fake proof trap
+circular-permutations # checked, no change
+triangle-similarity # checked, no change
+herons-formula # checked, no change
+hyperbola-properties # derivation written out; asymptote family corrected
+eccentricity # focus-directrix equation derived; similarity reason
+rotation-90 # checked, no change
+konigs-theorem # full alternating-path proof
+orthic-triangle # angle chase written out
+antisymmetric-factorization # quotient symmetry and constants checked; observation corrected
+max-product-fixed-sum # complete exchange proof
+product-sum # checked, no change
+stewarts-theorem # checked, no change
+focal-radii # checked, no change
+assume-all-one-kind # new card, short but complete
+round-up-whole-items # new card, short but complete
