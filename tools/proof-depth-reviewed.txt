@@ -394,3 +394,33 @@ orthocenter-properties # checked, no change
 gauss-lucas # checked, no change
 bayes-theorem # checked, no change
 euler-line-ratio # OH^2 both forms and NG derived (checked)
+mollweides-formula # checked, no change
+euclidean-algorithm # checked, no change
+modular-basics # checked, no change
+roots-of-unity # filter sum and primitive count proved
+cayley-menger # proof by row reduction to the Gram determinant (checked)
+newtons-sums # general ladder by logarithmic derivative
+eisenstein-criterion # proof completed (Gauss's lemma quoted); cyclotomic shift
+eulerian-paths # checked, no change
+triangle-type-by-sides # checked, no change
+trapezoid-special-segments # checked, no change
+de-moivre # checked, no change
+eulers-totient # checked, no change
+parallel-by-angle-sum # checked, no change
+quadrilateral-diagonal-area # vector form proved via shoelace
+descartes-sphere-theorem # quoted with reference; fifth-curvature root checked
+steiner-lehmus # factorization checked by computer, no change
+angle-chord-secant # checked, no change
+projected-area-cosine # checked, no change
+lattice-points-gcd # checked, no change
+odd-even-functions # checked, no change
+geometric-series # checked, no change
+napoleons-theorem # areas checked by computer, no change
+point-line-distance # checked, no change
+apollonius-theorem # checked, no change
+perpendicularity-lemma # checked, no change
+descartes-circle-theorem # labelled quoted with reference; root formula derived
+base-conversion # checked, no change
+axis-stretch-area # checked, no change
+lcm-common-multiples # new card, checked
+conjugate-root-theorems # multiplicity proved

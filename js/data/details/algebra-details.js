@@ -287,7 +287,9 @@ Every root satisfies the polynomial, so multiplying that equation by a power of 
 
 Take a cubic with roots $r$, $s$, $t$ and $e_1 = r + s + t$, $e_2 = rs + st + tr$, $e_3 = rst$. Each root satisfies $$x^3 = e_1x^2 - e_2x + e_3.$$ Multiplying by $x^{k-3}$ and adding over the three roots gives, for $k \ge 3$, $$p_k = e_1p_{k-1} - e_2p_{k-2} + e_3p_{k-3},$$ with $p_0 = 3$, because each root contributes $1$. At $k = 3$ the last term is $3e_3$, the source of the $k\,e_k$ in the general ladder.
 
-Below the degree the same shape holds: $p_1 = e_1$, and squaring the sum of the roots gives $p_2 = e_1^2 - 2e_2 = e_1p_1 - 2e_2$. Only the coefficients enter, so the ladder works just as well when the roots are complex.
+Below the degree the same shape holds, and one computation gives every rung for every degree. Let $E(x) = \prod_i(1 - r_ix) = \sum_j(-1)^je_jx^j$. Its logarithmic derivative gives $$\frac{xE'(x)}{E(x)} = -\sum_i\frac{r_ix}{1 - r_ix} = -\sum_{m \ge 1}p_mx^m.$$ So $xE'(x) = -E(x)\sum_{m \ge 1}p_mx^m$. The coefficient of $x^k$ on the left is $(-1)^kk\,e_k$, and on the right it is $-\sum_{j=0}^{k-1}(-1)^je_jp_{k-j}$. Solving for $p_k$, the $j = 0$ term, gives the ladder, with $e_j = 0$ past the degree.
+
+For example $p_2 = e_1p_1 - 2e_2 = e_1^2 - 2e_2$, which is squaring the sum of the roots. Only the coefficients enter, so the ladder works just as well when the roots are complex.
 
 ## Useful observations
 - The coefficients give $e_1, e_2, \ldots$ with Vieta's Formulas, minding the alternating signs, and then the ladder is climbed one power at a time. For $x^3 - 6x^2 + 11x - 6$, with $e_1 = 6$, $e_2 = 11$, and $e_3 = 6$, $p_1 = 6$, $p_2 = 36 - 22 = 14$, and $p_3 = 6 \cdot 14 - 11 \cdot 6 + 18 = 36$. The roots are $1$, $2$, $3$, and indeed $1 + 8 + 27 = 36$.
@@ -317,7 +319,9 @@ If $P(r) = 0$, conjugate both sides. Conjugation respects sums and products, and
 
 {{figure:mirror}}
 
-The radical version works the same way with the map $\sqrt d \mapsto -\sqrt d$ on numbers $x + y\sqrt d$ with $x$ and $y$ rational. It respects sums and products, because $\sqrt d$ and $-\sqrt d$ have the same square, and it leaves rational numbers fixed, so it sends roots of a rational polynomial to roots.
+For multiplicity, divide $P$ by the real quadratic $(x - r)(x - \bar r) = x^2 - 2\operatorname{Re}(r)\,x + \lvert r\rvert^2$. The quotient again has real coefficients, so if $r$ is still a root of it, so is $\bar r$, and the division repeats. Each round removes one copy of $r$ and one of $\bar r$, so they occur equally often.
+
+The radical version works the same way with the map $\sqrt d \mapsto -\sqrt d$ on numbers $x + y\sqrt d$ with $x$ and $y$ rational. It respects sums and products, because $\sqrt d$ and $-\sqrt d$ have the same square, and it leaves rational numbers fixed, so it sends roots of a rational polynomial to roots; dividing by the rational quadratic $x^2 - 2ax + (a^2 - b^2d)$ settles multiplicity the same way.
 
 ## Useful observations
 - Each pair comes with its quadratic factor. A rational cubic with root $2 + \sqrt3$ therefore has the factor $x^2 - 4x + 1$, and its third root follows from [[vietas-general|Vieta's Formulas]].
@@ -1432,6 +1436,8 @@ A root of $z^n = 1$ must have length $1$, and its angle must come back to a whol
 Write $z = r(\cos\theta + i\sin\theta)$. By [[de-moivre|De Moivre's Theorem]], $z^n$ has length $r^n$ and angle $n\theta$. For $z^n = 1$ the length must be $1$, so $r = 1$, and the angle $n\theta$ must be a whole number of turns, $2\pi k$, so $$\theta = \frac{2\pi k}{n}.$$ The values $k = 0, 1, \ldots, n - 1$ give $n$ different points, and every other $k$ repeats one of them, as the figure at the top shows.
 
 Since $x^n - 1$ has degree $n$ and these are $n$ distinct roots, they are all of its roots, and $$x^n - 1 = \prod_{k=0}^{n-1}(x - \omega^k).$$ Vieta's Formulas then read their sum from the missing $x^{n-1}$ term, which gives $0$ when $n > 1$, and their product from the constant term, $(-1)^n \cdot (-1) = (-1)^{n+1}$. The zero sum has a picture too: the points are balanced around the center, so their average is the center.
+
+The power sum is a geometric series. If $n \mid j$, every term is $1$ and the sum is $n$. Otherwise $\omega^j \ne 1$ and the sum is $\frac{\omega^{jn} - 1}{\omega^j - 1} = 0$, since $\omega^{jn} = 1$. Finally, the powers of $\omega^k$ repeat after $\frac{n}{\gcd(k, n)}$ steps, the least $m$ with $n \mid km$, so $\omega^k$ reaches all $n$ roots exactly when $\gcd(k, n) = 1$.
 
 ## Useful observations
 - Evaluating the factorization at a chosen point turns a product over the roots into a number. Dividing out the factor $x - 1$ leaves $1 + x + \cdots + x^{n-1} = \prod_{k=1}^{n-1}(x - \omega^k)$, and at $x = 1$ this gives $\prod_{k=1}^{n-1}(1 - \omega^k) = n$: the product of the distances from one vertex of the polygon to all the others is $n$.
@@ -3364,7 +3370,13 @@ The weighted form is what unequal exponents demand; equal weights (plain AM-GM) 
 The coefficients are integers. The criterion only ever proves irreducibility; failing it says nothing.
 
 ## Why it works
-If a prime $p$ divides every coefficient except the leading one and $p^2$ does not divide the constant term, reducing a hypothetical factorization mod $p$ forces both factors to be powers of $x$ times a unit. Their constant terms would then both be divisible by $p$, making the product's constant term divisible by $p^2$, which contradicts the hypothesis. So no factorization into lower-degree rational polynomials exists.
+Suppose $f = a_nx^n + \cdots + a_0$ factors over $\mathbb{Q}$ into two polynomials of lower degree. By Gauss's Lemma on polynomials (not the quadratic-residue lemma of the same name), quoted here (a factorization over $\mathbb{Q}$ can be rescaled into one over $\mathbb{Z}$), it factors as $f = gh$ with integer coefficients and $\deg g, \deg h \ge 1$.
+
+Reduce mod $p$. Every coefficient but the leading one vanishes, so $f \equiv a_nx^n$ with $a_n \not\equiv 0$. Polynomials mod $p$ factor uniquely, so $g \equiv bx^r$ and $h \equiv cx^s$ with $r + s = n$. The leading coefficients of $g$ and $h$ divide $a_n$, so they are not multiples of $p$, the degrees survive the reduction, and $r, s \ge 1$.
+
+So $p$ divides the constant terms of both $g$ and $h$, and $p^2$ divides their product $a_0$, a contradiction.
+
+For the shift, $\Phi_p(x + 1) = \frac{(x + 1)^p - 1}{x} = x^{p-1} + \binom p1x^{p-2} + \cdots + \binom p{p-1}$. Every $\binom pk$ with $0 \lt k \lt p$ is divisible by $p$, and the constant term $\binom p{p-1} = p$ is not divisible by $p^2$.
 
 ## Useful observations
 - The three conditions are checked in order: $p \mid a_0, \ldots, a_{n-1}$, then $p \nmid a_n$, then $p^2 \nmid a_0$.

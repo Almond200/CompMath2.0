@@ -432,7 +432,7 @@ Let the diagonals cross at $P$, cutting them into pieces $a$ and $c$ along one a
 
 {{figure:four}}
 
-The formula also holds for a quadrilateral that is not convex, where one diagonal lies outside it: in vectors the area is half the cross product of the diagonals.
+The formula also holds for a quadrilateral that is not convex, where one diagonal lies outside it. Writing $u \times v$ for the planar cross product $u_1v_2 - u_2v_1$, the [[shoelace-formula|shoelace formula]] gives twice the area as $|A \times B + B \times C + C \times D + D \times A|$, and expanding $$(C - A) \times (D - B) = C \times D - C \times B - A \times D + A \times B$$ gives exactly those four terms, since $-C \times B = B \times C$ and $-A \times D = D \times A$.
 
 ## Useful observations
 - Among quadrilaterals with given diagonals, the area is largest, $\frac12d_1d_2$, when the diagonals are perpendicular, which is how many maximization problems end.
@@ -1670,9 +1670,9 @@ Three problems here, all AIME, none solved by it alone. The recurring shape is c
 The four circles are tangent to each other in pairs, at six different points. The sign convention is part of the statement: the enclosing circle's curvature is taken negative.
 
 ## Why it works
-The proof is a long computation with center distances, or a short argument by inversion, and neither is contest material; what matters is the shape of the result.
+The relation itself is quoted, not proved here; a complete proof, by writing each circle as a vector and tangency as a fixed value of a quadratic form, is in J. C. Lagarias, C. L. Mallows and A. R. Wilks, "Beyond the Descartes Circle Theorem", American Mathematical Monthly 109 (2002), 338–361. What matters in contests is the shape of the result.
 
-The relation is a quadratic in $k_4$, so three mutually tangent circles have two circles tangent to all three. Solving it gives $$k_4 = k_1 + k_2 + k_3 \pm 2\sqrt{k_1k_2 + k_2k_3 + k_3k_1},$$ and the two roots are the small circle in the gap and the large circle around the three.
+The relation is a quadratic in $k_4$, so three mutually tangent circles have two circles tangent to all three. With $S = k_1 + k_2 + k_3$ and $Q = k_1^2 + k_2^2 + k_3^2$ it reads $k_4^2 - 2Sk_4 + 2Q - S^2 = 0$, and since $S^2 - Q = 2(k_1k_2 + k_2k_3 + k_3k_1)$ the roots are $$k_4 = k_1 + k_2 + k_3 \pm 2\sqrt{k_1k_2 + k_2k_3 + k_3k_1}.$$ The two roots are the small circle in the gap and the large circle around the three, and they add to $2S$.
 
 {{figure:soddy}}
 
@@ -4089,7 +4089,11 @@ Object.assign(window.MATH_DETAILS, {
 Entry $(i, j)$ is the squared distance between vertices $i$ and $j$. The edge lengths must satisfy the triangle inequalities on every face and the solid inequality.
 
 ## Why it works
-It is Heron's Formula lifted one dimension. In the plane a triangle's area is fixed by its three sides, and in space a tetrahedron's volume is fixed by its six edges; both are a bordered determinant of squared distances, at size $4$ for the triangle (where it equals $-16[\triangle]^2$, a sign flip from Heron's form) and size $5$ for the tetrahedron. The bordering row and column of $1$s encode that the points live in space.
+It is Heron's Formula lifted one dimension. In the plane a triangle's area is fixed by its three sides, and in space a tetrahedron's volume is fixed by its six edges; both are a bordered determinant of squared distances, at size $4$ for the triangle (where it equals $-16[\triangle]^2$, a sign flip from Heron's form) and size $5$ for the tetrahedron.
+
+To see it, put $P_1$ at the origin and let $u_2$, $u_3$, $u_4$ be the vectors to the other vertices. In the determinant, subtract the row of $P_1$ from the three rows below it, then the column of $P_1$ from the three columns to its right. The top row and left column become $0$ there, and the entry for vertices $i$ and $j$ becomes $d_{ij}^2 - d_{1i}^2 - d_{1j}^2 = -2\,u_i \cdot u_j$, since $d_{ij}^2 = |u_i|^2 + |u_j|^2 - 2u_i \cdot u_j$.
+
+Expanding along the top row, whose only nonzero entry is the $1$ above the $P_1$ column, and then down the left column, leaves $-\det(-2G) = 8\det G$, where $G$ is the $3 \times 3$ table of dot products $u_i \cdot u_j$. That table's determinant is the squared volume of the parallelepiped on $u_2$, $u_3$, $u_4$, as on [[gram-determinant-volume|the Gram determinant card]], which is $(6V)^2$. So the determinant is $8 \cdot 36V^2 = 288V^2$. The triangle case is the same computation with a $2 \times 2$ table: $-\det(-2G) = -4(2[\triangle])^2 = -16[\triangle]^2$.
 
 ## Useful observations
 - It gives the volume from the edge lengths alone, which is useful when placing coordinates is awkward.
