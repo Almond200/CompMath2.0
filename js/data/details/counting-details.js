@@ -2949,10 +2949,13 @@ A region is to be tiled by dominoes, trominoes, or $1 \times k$ bars, a piece mo
 3. Count the cells of each color in the region.
 4. If no combination of pieces matches those counts, the tiling is impossible.
 5. For a covering question, mark cells that every placement must touch; the number of marked cells is a lower bound on the pieces needed.
+6. To count or understand a figure made of cells, checkerboard it and look at each color on its own; each half is often a simpler shape.
 
 An $8 \times 8$ board with two opposite corners removed cannot be tiled by dominoes: every domino covers one dark and one light cell, but the removed corners share a color, leaving $30$ cells of one color and $32$ of the other.
 
 {{figure:board}}
+
+A checkerboard need not prove anything impossible; it can simply show structure. In a diamond of cells, the cells within $n$ steps of a center cell counting only horizontal and vertical steps, the cells of each color line up in a square array turned $45^\circ$, so the figure is the sum of two consecutive squares, one array per color.
 
 ## Why it works
 Each piece covers a fixed number of cells of each color wherever it is placed, so the totals covered by any set of pieces are fixed combinations of those numbers. A region whose color counts are not such a combination cannot be covered exactly. A coloring proves impossibility only; matching counts do not by themselves show that a tiling exists.
@@ -2966,7 +2969,7 @@ Each piece covers a fixed number of cells of each color wherever it is placed, s
 - Forgetting that a $1 \times k$ bar may lie in a row or a column; the diagonal coloring handles both.
 
 ## Contest profile
-AMC tiling and covering questions, often as a lower bound from marked cells, and olympiad impossibility proofs.
+AMC tiling and covering questions, often as a lower bound from marked cells, counting the cells of a grid figure by color, and olympiad impossibility proofs.
 `,
 
 "pairing-to-bound": String.raw`
