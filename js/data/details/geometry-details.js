@@ -2001,7 +2001,11 @@ The fact that the cyclic quadrilateral has the largest area occasionally decides
 Any quadrilateral, including a non-convex one; the midpoints are of the four sides in order.
 
 ## Why it works
-In each of the two triangles that a diagonal creates, the segment joining the midpoints of two sides is parallel to the diagonal and half as long, by the [[midsegment-theorem|Midsegment Theorem]]. So both pairs of opposite sides of the midpoint quadrilateral are parallel to a diagonal, which makes it a parallelogram with sides $\frac p2$ and $\frac q2$, where $p$ and $q$ are the diagonals. The area halves because each of the four corner triangles cut off has a quarter of the area of the triangle it sits in, and the four corner triangles together make up half of the quadrilateral.
+In each of the two triangles that a diagonal creates, the segment joining the midpoints of two sides is parallel to the diagonal and half as long, by the [[midsegment-theorem|Midsegment Theorem]]. So both pairs of opposite sides of the midpoint quadrilateral are parallel to a diagonal, which makes it a parallelogram with sides $\frac p2$ and $\frac q2$, where $p$ and $q$ are the diagonals.
+
+For the area, the corner triangle at $A$ is the triangle $ABD$ shrunk by half toward $A$, so it has a quarter of $[ABD]$; the one at $C$ has a quarter of $[CBD]$. Together they are a quarter of $[ABCD]$, and the corners at $B$ and $D$ are likewise a quarter of $[ABC] + [ACD] = [ABCD]$. Removing half the area leaves half.
+
+Its sides point along the diagonals, so its angles are right exactly when the diagonals are perpendicular, and its sides $\frac p2$, $\frac q2$ are equal exactly when the diagonals are. Its center is the average $\frac{A + B + C + D}{4}$, which is also the midpoint of the segment joining the midpoints $\frac{A + C}{2}$ and $\frac{B + D}{2}$ of the diagonals.
 
 ## Useful observations
 - The segment joining the midpoints of the diagonals passes through the center of the Varignon parallelogram.
@@ -4913,7 +4917,9 @@ Olympiad combinatorial geometry. The small cases and the hull-based flavor of th
 The set is finite and not all collinear.
 
 ## Why it works
-Among all pairs of a point and a line through two other points that does not contain it, take the pair with the smallest positive distance. If that line held a third point, two of its three points would fall on the same side of the foot of the perpendicular, giving a point and a connecting line strictly closer. That contradiction shows the minimal line has exactly two points.
+Consider every pair of a point $P$ of the set and a line through two other points of the set that misses $P$. Such pairs exist, since the points are not all collinear, and there are finitely many, so take one with the smallest distance from $P$ to its line $\ell$. Let $Q$ be the foot of the perpendicular from $P$.
+
+Suppose $\ell$ held three points of the set. Two of them, say $B$ and $C$, lie on the same side of $Q$ (one may be $Q$ itself), with $B$ between $Q$ and $C$. Then the line $PC$ passes through two points of the set and misses $B$, and the distance from $B$ to $PC$ is less than the distance from $Q$ to $PC$, which is less than $PQ$. That pair beats the minimum, a contradiction, so $\ell$ holds exactly two points.
 
 ## Useful observations
 - The theorem seeds inductions: an ordinary line lets one delete two points and continue.
@@ -6695,7 +6701,7 @@ $ABC$ is any triangle, $G$ its centroid, $O$ its circumcenter, and $H$ its ortho
 ## Why it works
 Every statement follows from one homothety. The map centered at the centroid $G$ with ratio $-2$ sends $A$, $B$, $C$ to the vertices of $A'B'C'$, and the inverse map with ratio $-\frac12$ is exactly the one that produces the medial triangle. A homothety of ratio $-2$ doubles every length and reverses direction, so the sides are parallel and twice as long, the circumradius doubles, and the area quadruples.
 
-The centers move by the same map. The circumcenter of $A'B'C'$ is the image of the circumcenter of $ABC$ taken one level down, and that is the orthocenter of $ABC$: the perpendicular bisectors of the sides of $A'B'C'$ are the altitudes of $ABC$, because $A$, $B$, $C$ are the midpoints. The circumcircle of the medial triangle $ABC$ is the nine-point circle of $A'B'C'$, so its nine-point center is $O$. The [[euler-line-ratio|Euler line]] of $A'B'C'$ passes through $G$, $O' = H$, and $N' = O$, and $H' = 3G - 2O' = 3G - 2H = 2O - H$.
+The side $B'C'$ has midpoint $A$ and is parallel to $BC$, so its perpendicular bisector is the line through $A$ perpendicular to $BC$, the altitude from $A$. The three perpendicular bisectors of $A'B'C'$ are the three altitudes of $ABC$, so $O' = H$. The circumcircle of the medial triangle $ABC$ is the nine-point circle of $A'B'C'$, so its nine-point center is $O$. The [[euler-line-ratio|Euler line]] of $A'B'C'$ passes through $G$, $O' = H$, and $N' = O$, and $H' = 3G - 2O' = 3G - 2H = 2O - H$.
 
 ## Useful observations
 - A fact about the orthocenter of a triangle is a fact about the circumcenter of its anticomplementary triangle, so an awkward $H$ can be traded for a comfortable $O$.
@@ -8919,6 +8925,10 @@ Counting faces around edges and vertices. Each of the $12$ pentagons of the dode
 For the coordinates, $\varphi^2 = \varphi + 1$ does the work. The vertex $(0, 1, \varphi)$ is at distance $2$ from $(0, -1, \varphi)$, and at squared distance $$1 + (\varphi - 1)^2 + \varphi^2 = 2 + 2\varphi^2 - 2\varphi = 4$$ from $(\pm1, \varphi, 0)$, and likewise from $(\pm\varphi, 0, 1)$. So each vertex has exactly $5$ neighbors at distance $2$, the edge length.
 
 The five neighbors of a vertex form a pentagon around it, and so do the five neighbors of the opposite vertex. These $1 + 5 + 5 + 1 = 12$ points are all the vertices, which gives the distance layers along the edges.
+
+Icosahedron volume: the face $(0, \pm1, \varphi)$, $(\varphi, 0, 1)$ has centroid $\left(\frac\varphi3, 0, \frac{2\varphi + 1}{3}\right)$, at squared distance $\frac{5\varphi^2 + 4\varphi + 1}{9} = \frac{3\varphi + 2}{3} = \frac{\varphi^4}{3}$ from the center. So for edge $s$ the inradius is $\frac{\varphi^2s}{2\sqrt3}$, and twenty pyramids give $V = 20 \cdot \frac13 \cdot \frac{\sqrt3}{4}s^2 \cdot \frac{\varphi^2s}{2\sqrt3} = \frac56\varphi^2s^3 = \frac{5(3 + \sqrt5)}{12}s^3$.
+
+Dodecahedron volume: with the inscribed cube $(\pm1, \pm1, \pm1)$, the edge is $s = \frac2\varphi$, and over each face of the cube sits a roof whose ridge, such as $(0, \pm\frac1\varphi, \varphi)$, has length $s$ and height $\varphi - 1 = \frac1\varphi$. A roof on an $a \times a$ base with ridge $c$ and height $h$ is a prism plus two end pyramids, of volume $\frac12ahc + \frac13ah(a - c) = \frac{ah(2a + c)}{6}$. So $V = 8 + 6 \cdot \frac{2}{6\varphi}\left(4 + \frac2\varphi\right)$, which divided by $s^3 = \frac{8}{\varphi^3}$ is $\varphi^3 + \varphi^2 + \frac\varphi2 = \frac{7\varphi + 4}{2} = \frac{15 + 7\sqrt5}{4}$.
 
 ## Useful observations
 - The dual pairing: the $20$ face centers of the icosahedron are the vertices of a dodecahedron, and the $12$ face centers of the dodecahedron are the vertices of an icosahedron.

@@ -1108,7 +1108,9 @@ Sort the amounts by remainder mod $a$. Adding an $a$ stays in the class, so once
 
 {{figure:grid}}
 
-The class that starts last begins at $(a - 1)b$, so the amount just before it, $(a - 1)b - a = ab - a - b$, is the largest one not representable. For the count, if both $n$ and $ab - a - b - n$ were representable, so would be their sum $ab - a - b$; and if neither were, the class argument shows $ab - a - b - n$ is. So exactly half of $0, \ldots, ab - a - b$ are not representable.
+The class that starts last begins at $(a - 1)b$, so the amount just before it, $(a - 1)b - a = ab - a - b$, is the largest one not representable.
+
+For the pairing, write any integer $n$ as $n = xa + yb$ with $0 \le y \le a - 1$, which can be done in exactly one way; $n$ is representable exactly when $x \ge 0$. Then $ab - a - b - n = (-1 - x)a + (a - 1 - y)b$, again with $0 \le a - 1 - y \le a - 1$, so it is representable exactly when $x \le -1$. Exactly one of the two holds, so exactly half of $0, \ldots, ab - a - b$, that is $\frac{(a - 1)(b - 1)}{2}$ amounts, are not representable.
 
 ## Useful observations
 - Exactly half of the amounts $0, \ldots, ab - a - b$ are impossible, $\frac{(a - 1)(b - 1)}{2}$ of them: with stamps of $5$ and $8$, the largest impossible amount is $27$, and $14$ amounts are impossible.
@@ -1193,9 +1195,11 @@ $n$ is a positive integer, and $a$, $b$ may be zero or negative. "Only one way" 
 ## Why it works
 One direction is a parity argument: every square is $0$ or $1$ modulo $4$, so a sum of two squares is never $3 \pmod 4$, which rules out every prime $p \equiv 3 \pmod 4$.
 
-For $p \equiv 1 \pmod 4$, the congruence $x^2 \equiv -1 \pmod p$ has a solution, so $p$ divides $x^2 + 1$ for some $x$. [[thues-lemma|Thue's Lemma]] then gives integers $a$, $b$ with $0 \lt a, b \lt \sqrt p$ and $a \equiv xb \pmod p$, so $p$ divides $a^2 + b^2$, and $0 \lt a^2 + b^2 \lt 2p$ forces $a^2 + b^2 = p$. Uniqueness is clearest in the [[gaussian-integers|Gaussian integers]], where $p = (a + bi)(a - bi)$ and factorization is unique.
+For $p \equiv 1 \pmod 4$, the congruence $x^2 \equiv -1 \pmod p$ has a solution, so $p$ divides $x^2 + 1$ for some $x$. [[thues-lemma|Thue's Lemma]] then gives integers $a$, $b$ with $0 \lt a, b \lt \sqrt p$ and $a \equiv xb \pmod p$, so $p$ divides $a^2 + b^2 \equiv b^2(x^2 + 1)$, and $0 \lt a^2 + b^2 \lt 2p$ forces $a^2 + b^2 = p$. Uniqueness is clearest in the [[gaussian-integers|Gaussian integers]], where $p = (a + bi)(a - bi)$ and factorization is unique.
 
 For general $n$, the identity multiplies representations, so a product of primes $\equiv 1 \pmod 4$, of $2 = 1^2 + 1^2$, and of squares is a sum of two squares. Conversely, a prime $q \equiv 3 \pmod 4$ that divides $a^2 + b^2$ must divide both $a$ and $b$, since $-1$ is not a square modulo $q$, so $q$ divides $n$ to an even power.
+
+The count $r_2(n)$ is quoted, not proved here (G. H. Hardy and E. M. Wright, An Introduction to the Theory of Numbers, Theorem 278). For $n = 25$ the divisors $1$, $5$, $25$ are all $1 \bmod 4$, so $r_2 = 12$: the points $(\pm5, 0)$, $(0, \pm5)$, $(\pm3, \pm4)$, $(\pm4, \pm3)$.
 
 ## Useful observations
 - A right triangle with a prime hypotenuse $p$ exists only when $p \equiv 1 \pmod 4$, and then it is unique: $p = m^2 + n^2$ gives legs $m^2 - n^2$ and $2mn$. For $p = 13 = 3^2 + 2^2$ the legs are $5$ and $12$.

@@ -424,3 +424,23 @@ base-conversion # checked, no change
 axis-stretch-area # checked, no change
 lcm-common-multiples # new card, checked
 conjugate-root-theorems # multiplicity proved
+thales-theorem # checked, no change
+dodecahedron-icosahedron # both volumes derived (checked numerically)
+sum-of-two-squares # r_2 labelled quoted with reference and example
+inverse-function-properties # checked, no change
+first-order-recurrence # checked, no change
+non-adjacent-selection # checked, no change
+special-right-triangles # checked, no change
+reflection-coordinates # checked, no change
+necklace-formula # checked, no change
+centroid-division # checked, no change
+varignons-theorem # area, rectangle/rhombus and center proved
+sylvester-gallai # minimal-distance argument made exact
+law-of-tangents # checked, no change
+anticomplementary-triangle # O'=H argued directly
+chicken-mcnugget # pairing proved by unique y
+stars-and-bars # checked, no change
+binomial-theorem # checked, no change
+binomial-row-sums # checked, no change
+conditional-probability # checked, no change
+euler-line-parallel-side # checked, no change
