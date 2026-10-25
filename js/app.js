@@ -4657,7 +4657,7 @@
 
   // ---------- Front-page panels ----------
   // Did you know: a striking fact from the curiosity lists, the first Useful observation of one
-  // of their cards (or its opening sentence), with the card's diagram when it has one.
+  // of their cards (or its opening sentence), as text only.
   function didYouKnowPool() {
     const ids = [];
     (window.MATH_BUILTIN_LISTS || []).filter(l => l.kind === "curiosity").forEach(l => l.sections.forEach(sec => sec.ids.forEach(id => { if (BY_ID[id] && ids.indexOf(id) < 0) ids.push(id); })));
@@ -4688,14 +4688,9 @@
     const id = didYouKnowPick();
     if (!id) return "";
     const f = BY_ID[id].formula;
-    // The card's first diagram, without its caption (which may describe another fact), as on
-    // the hover preview. It shows whatever "Figures on cards" says, since that setting is for
-    // browsing card faces and the fact here is the card's own content.
-    const panel = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
-    const fig = panel ? `<div class="dyk-fig">${String(panel).replace(/<div class="diagram-cap">[\s\S]*?<\/div>/, "")}</div>` : "";
-    return `<section class="hp-panel dyk${fig ? " dyk-has-fig" : ""}">
+    return `<section class="hp-panel dyk">
         <div class="hp-label">Did you know?</div>
-        <div class="dyk-body">${fig}<p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p></div>
+        <p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p>
         <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a><button type="button" class="hp-link dyk-next">Another</button></div>
       </section>`;
   }
