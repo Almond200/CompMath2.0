@@ -9769,3 +9769,60 @@ No particular formula is needed; the count is of shared edges and faces.
 An AMC 8 question with a figure of squares, polygons, or cubes, and an early AMC 10 step.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"rolling-without-slipping": String.raw`
+## Distinguishing clues
+- A circle, coin, gear or wheel rolls along a straight line or around a fixed circle, outside or inside it, without slipping.
+- The question asks for a number of turns, the position of a marked point after the roll, or the length of the path the point traces.
+- A square, pentagon or other polygon rolls by tipping over a vertex, or a cone rolls on its side around its apex.
+- Not this pattern: a figure that slides or is rotated about a fixed point without rolling, where the motion is a single rotation or translation.
+
+## Methods and Formulas to Try
+Rolling without slipping means the contact point is momentarily at rest, so the disk turns about its own center through the angle $\frac sr$ for each length $s$ that its center moves. Counting turns by the length of the path of the center, not by the length of track, is the whole pattern: around a fixed circle of radius $R$ the center moves on a circle of radius $R + r$ outside, or $R - r$ inside, giving $\frac{R + r}{r}$ or $\frac{R - r}{r}$ turns. A coin of radius $1$ rolled once around a coin of radius $3$ turns $4$ times outside and $2$ times inside.
+
+### Methods to try
+- [[triangle-of-centers]]: the centers of two touching circles are $R + r$ apart, or $R - r$ for one inside the other, which gives the radius of the center's path.
+- [[simulate-the-process]]: a rolling polygon is a sequence of rotations about successive vertices; follow the marked point one tip at a time.
+
+### Formulas to try
+- [[circle-basics]]: the circumference $2\pi r$ and arc lengths $r\theta$ of the rolling rim and of the center's path.
+- [[tangent-circles]]: the distance between the centers of two tangent circles.
+- [[cone-formulas]]: a cone rolling on its side turns about its apex, and its base rim traces a circle whose radius is the slant height.
+
+## Common traps
+- Dividing the length of the fixed circle by the rolling circumference, $\frac Rr$, which misses one turn outside and adds one inside.
+- Treating a rolling polygon's marked point as moving in a straight line rather than along arcs centered at the vertices.
+- Forgetting that the disk returns to its starting orientation only after a whole number of turns.
+
+## Contest profile
+A recurring AMC 10 and 12 setup, with occasional AIME versions involving cones and tubes; the trap of the missing turn is the point of most of them, and it pairs with the distances between the centers of tangent circles.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"tethered-animal": String.raw`
+## Distinguishing clues
+- An animal or an object on a rope, leash or chain is tied to a point on the outside of a building, fence, silo or shed.
+- The question asks for the area it can reach, or how that area changes when the tie point moves.
+- The rope is longer than the distance from the tie point to a corner, so it bends around the corner.
+- Not this pattern: a rope tied in open ground, whose region is a single disk, or a point moving inside a region, where the boundary limits the region instead of bending the rope.
+
+## Methods and Formulas to Try
+A taut rope that does not touch the building is a straight segment from the tie point, so the animal sweeps a sector of radius $L$. Once the rope wraps a corner $d$ along the wall, only $L - d$ of it is free, and that piece pivots about the corner, so the region there is a sector of radius $L - d$ through the exterior angle of the corner. Adding the sectors gives the area; the only care needed is behind the building, where two of them may overlap.
+
+### Methods to try
+- [[area-by-pieces]]: the region is a union of sectors that meet only along radii, so its area is their sum, less any overlap behind the building.
+
+### Formulas to try
+- [[circle-basics]]: the area $\frac\theta{360^\circ}\pi r^2$ of each sector.
+- [[polygon-angle-sums]]: the exterior angle of a regular polygon, $\frac{360^\circ}n$, is the angle of the sector swept around each of its corners.
+- [[inclusion-exclusion]]: two sectors that overlap behind the building are added and their overlap subtracted once.
+
+## Common traps
+- Drawing the sector around a corner with the full rope length instead of the length left after the wall.
+- Missing a second corner the rope reaches, or counting a corner the rope cannot reach.
+- Adding two sectors that overlap behind the building without subtracting the overlap.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 and 10 staple, set on a square or rectangular shed or a regular hexagonal doghouse; it pairs with the sector area and, for a polygon, with exterior angles.
+`
+});

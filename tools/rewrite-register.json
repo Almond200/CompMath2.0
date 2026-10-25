@@ -1835,7 +1835,10 @@
     "joined-shapes-perimeter": "method",
     "round-up-whole-items": "method",
     "assume-all-one-kind": "method",
-    "elimination-counting": "method"
+    "elimination-counting": "method",
+    "comparing-coefficients": "method",
+    "rolling-without-slipping": "pattern",
+    "tethered-animal": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -8935,6 +8938,24 @@
       [
         "(new card)",
         "written directly in the method template"
+      ]
+    ],
+    "comparing-coefficients": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "rolling-without-slipping": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "tethered-animal": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
       ]
     ]
   }

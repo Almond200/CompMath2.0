@@ -5999,3 +5999,42 @@ No particular formula is needed; the step is one linear equation.
 An AMC 8 and MATHCOUNTS classic, usually early in the paper, with legs, wheels, or prices.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"comparing-coefficients": String.raw`
+## When to use
+The problem says an equation holds for all $x$, for every value of a parameter, or identically; or it writes a polynomial in two ways, one with unknown constants, such as a cubic with a known double root or a quartic that is a perfect square. Also any question about the point that every member of a family of lines or curves passes through.
+
+## How
+1. Move everything to one side, so the identity reads "this expression is zero for every value".
+2. Expand and collect the terms by powers of the variable, or by powers of the parameter.
+3. Set each coefficient equal to zero, one equation for each power, including the powers that are missing on one side, whose coefficient there is $0$.
+4. Solve the resulting system; it usually has more equations than unknowns, and the extra ones are checks.
+
+For constants $a$ and $b$ with $x^3 + ax + b = (x - 1)^2(x + c)$ for every $x$, the right side expands to $x^3 + (c - 2)x^2 + (1 - 2c)x + c$. The $x^2$ terms give $c - 2 = 0$, so $c = 2$, and then $a = 1 - 2c = -3$ and $b = c = 2$: $x^3 - 3x + 2 = (x - 1)^2(x + 2)$.
+
+For a family, write the equation as $A(x, y) + kB(x, y) = 0$. Every member passes through the points with $A = 0$ and $B = 0$; the lines $(1 + 2k)x + (3 - k)y = 4 + 3k$ regroup as $(x + 3y - 4) + k(2x - y - 3) = 0$, so all of them pass through the solution of $x + 3y = 4$ and $2x - y = 3$, the point $\left(\frac{13}{7}, \frac57\right)$.
+
+## Why it works
+Lemma. A polynomial $D(x)$ of degree at most $n$ that is zero at more than $n$ different values of $x$ is the zero polynomial, all of whose coefficients are $0$.
+
+Proof. If $D$ were not the zero polynomial, it would have some degree $m \le n$, and by the [[factor-remainder-theorem|Factor Theorem]] each root $r$ splits off a factor $x - r$. More than $n$ different roots would give more than $m$ linear factors of a polynomial of degree $m$, which is impossible, as the [[fundamental-theorem-algebra|Fundamental Theorem of Algebra]] counts at most $m$ roots.
+
+Step 1. If $P(x) = Q(x)$ for every $x$, or for more values than the larger degree $n$, then $D = P - Q$ has degree at most $n$ and more than $n$ roots, so $D$ is the zero polynomial.
+
+Step 2. The coefficient of $x^k$ in $D$ is $a_k - b_k$, so every $a_k - b_k = 0$, which is the statement.
+
+For a parameter, view $A + kB$ as a polynomial in $k$ of degree at most $1$ with coefficients $A$ and $B$. It is zero for every $k$ only when both coefficients are zero: putting $k = 0$ gives $A = 0$, and then $k = 1$ gives $B = 0$.
+
+## Formulas it uses
+- [[fundamental-theorem-algebra]]: a nonzero polynomial of degree $m$ has at most $m$ roots.
+- [[factor-remainder-theorem]]: each root $r$ gives a factor $x - r$.
+
+## Common traps
+- Comparing coefficients in an equation that holds only for some values of $x$; that is an equation to solve, not an identity.
+- Forgetting a power that appears on one side only, whose coefficient on the other side is $0$.
+- Comparing the coefficients of two expressions that are not polynomials, such as ones with $\sqrt x$ or $\frac1x$, without first clearing them.
+
+## Contest profile
+A standard step on the AMC 10 and 12 and the AIME whenever a polynomial is written in two ways or a statement holds for every value of a parameter; it pairs with the [[vietas-general|Vieta relations]], which are themselves a comparison of coefficients, and with factoring out known roots.
+`
+});

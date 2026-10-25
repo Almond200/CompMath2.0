@@ -17,7 +17,7 @@ window.MATH_BUILTIN_LISTS = [
 
   // ---- Study routes: contest tier x subject, complete ----
   { id: "route-amc-geometry", name: "AMC 10/12 Geometry", kind: "route", tier: "AMC", subject: "Geometry",
-    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 179 cards across 13 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of geometry, in the order you would reach for it. 181 cards across 13 sections.",
     sections: [
       { title: "The Fundamentals",
         note: "The facts every other tool here is built on. When a geometry problem stalls, it is usually one of these you have not used yet.",
@@ -57,14 +57,14 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cavalieris-principle", "box-tetrahedron", "dihedral-angle", "fit-copies", "plane-cross-section", "cube-nets", "cube-stack-views"] },
       { title: "Configurations Worth Recognizing on Sight",
         note: "Whole problem shapes with an intended answer, not techniques.",
-        ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid"] }
+        ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 132 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 133 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
-        ids: ["quadratic-formula", "vietas-quadratic", "vietas-general", "fundamental-theorem-algebra", "factor-remainder-theorem", "rational-root-theorem", "coefficient-extraction", "conjugate-root-theorems", "vertex-form", "descartes-rule-signs", "newtons-sums", "symmetric-polynomial-strategies", "products-over-roots", "fundamental-theorem-symmetric", "root-transformations", "quadratic-forms", "polynomial-division", "quadratic-root-location"] },
+        ids: ["quadratic-formula", "vietas-quadratic", "vietas-general", "fundamental-theorem-algebra", "factor-remainder-theorem", "rational-root-theorem", "coefficient-extraction", "conjugate-root-theorems", "vertex-form", "descartes-rule-signs", "newtons-sums", "symmetric-polynomial-strategies", "products-over-roots", "fundamental-theorem-symmetric", "root-transformations", "quadratic-forms", "polynomial-division", "quadratic-root-location", "comparing-coefficients"] },
       { title: "Factoring & Identities",
         note: "The rewrites worth recognizing instantly, because spotting one usually ends the problem.",
         ids: ["difference-of-squares", "an-minus-bn", "sophie-germain", "cubes-minus-3abc", "square-of-sum", "binomial-theorem", "sos-identity", "useful-factorizations", "pairwise-sum-product", "antisymmetric-factorization", "sum-zero-identities", "reciprocal-power-sums", "denesting-radicals", "completing-the-square", "forced-difference-of-squares", "sfft", "rationalizing"] },
@@ -981,11 +981,11 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["basic-probability", "permutations-combinations", "complementary-counting", "pie", "truth-tellers-logic", "working-backwards", "double-counting", "independent-events"] },
     ] },
   { id: "contest-amc10", name: "What the AMC 10 Uses", kind: "contest", subject: "Contests",
-    blurb: "Every card that at least 5 of the 1,300 AMC 10 problems here use in their strategies, by subject, most used first: 94 cards across 5 sections.",
+    blurb: "Every card that at least 5 of the 1,300 AMC 10 problems here use in their strategies, by subject, most used first: 95 cards across 5 sections.",
     sections: [
       { title: "Geometry",
         note: "Used in 53 problems down to 5.",
-        ids: ["pythagorean-theorem", "circle-basics", "special-right-triangles", "triangle-similarity", "equilateral-triangle-facts", "similar-figures-ratios", "coordinate-bash", "tangent-circles", "tangent-facts", "prism-pyramid-volumes", "thales-theorem", "circular-segment", "tangent-circle-packing", "distance-midpoint", "chord-length", "regular-hexagon-area", "right-triangle-altitude", "shoelace-formula", "triangle-inequality", "angle-chasing", "triangle-area-standard", "reflection-coordinates", "rotation-90", "folded-paper", "angle-bisector-theorem", "trig-area", "circle-in-angle", "inscribed-angle-theorem", "midsegment-theorem", "shared-angle-area-ratio", "space-diagonal"] },
+        ids: ["pythagorean-theorem", "circle-basics", "special-right-triangles", "triangle-similarity", "equilateral-triangle-facts", "similar-figures-ratios", "coordinate-bash", "tangent-circles", "tangent-facts", "prism-pyramid-volumes", "thales-theorem", "circular-segment", "tangent-circle-packing", "distance-midpoint", "chord-length", "regular-hexagon-area", "right-triangle-altitude", "shoelace-formula", "triangle-inequality", "angle-chasing", "triangle-area-standard", "reflection-coordinates", "rotation-90", "folded-paper", "angle-bisector-theorem", "steiner-neighborhood", "trig-area", "circle-in-angle", "inscribed-angle-theorem", "midsegment-theorem", "shared-angle-area-ratio", "space-diagonal"] },
       { title: "Algebra",
         note: "Used in 49 problems down to 5.",
         ids: ["arithmetic-series", "linear-elimination", "difference-of-squares", "exponent-laws", "defined-operation", "averages-to-totals", "mean-median-mode", "percent-change", "average-speed", "setting-up-proportions", "absolute-value-rules", "geometric-series", "vietas-quadratic", "work-rates", "sfft", "weighted-average", "periodic-sequences", "floor-basics", "time-per-leg", "square-of-sum", "quadratic-formula", "relative-motion", "several-rates", "factor-remainder-theorem", "completing-the-square"] },
@@ -994,7 +994,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["modular-basics", "fundamental-theorem-arithmetic", "digit-manipulation", "number-of-divisors", "divisibility-rules", "base-conversion", "floor-multiples", "factor-pair-counting", "calendar-problems", "last-digit-patterns", "legendres-formula", "bounding-diophantine", "crt", "consecutive-coprime"] },
       { title: "Counting & Probability",
         note: "Used in 82 problems down to 5.",
-        ids: ["casework-method", "constructive-counting", "complementary-counting", "basic-probability", "geometric-probability", "inclusion-exclusion", "conditional-probability", "truth-tellers-logic", "pigeonhole", "permutations-combinations", "stars-and-bars", "working-backwards", "multiset-permutations", "fencepost-counting", "independent-events", "binomial-probability", "simulate-the-process", "symmetry-probability", "bijection-method", "double-counting", "expected-value", "states-recursion-prob", "organized-listing"] },
+        ids: ["casework-method", "constructive-counting", "complementary-counting", "basic-probability", "geometric-probability", "inclusion-exclusion", "conditional-probability", "truth-tellers-logic", "pigeonhole", "fencepost-counting", "permutations-combinations", "stars-and-bars", "working-backwards", "multiset-permutations", "independent-events", "binomial-probability", "simulate-the-process", "symmetry-probability", "bijection-method", "double-counting", "expected-value", "states-recursion-prob", "organized-listing"] },
       { title: "Problem Solving",
         note: "Each used in 7 problems.",
         ids: ["wlog-symmetry"] },
