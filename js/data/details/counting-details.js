@@ -485,6 +485,8 @@ Expanding $(x_1 + \cdots + x_m)^n$ means picking one term from each of the $n$ b
 
 A word with $k_1$ copies of $x_1$, $k_2$ of $x_2$, and so on produces the monomial $x_1^{k_1}\cdots x_m^{k_m}$, and the number of such words is the number of arrangements of that multiset, $\frac{n!}{k_1!\cdots k_m!}$. Collecting like terms gives that coefficient. With two terms it is the Binomial Theorem, and the count is the one on [[multiset-permutations|arrangements with repeated objects]].
 
+The number of terms is the number of ways to write $n$ as an ordered sum $k_1 + \cdots + k_m$ of nonnegative integers, which by stars and bars is $\binom{n + m - 1}{m - 1}$; for $(x + y + z)^4$ that is $\binom62 = 15$.
+
 ## Useful observations
 - To extract a coefficient, the exponent pattern that produces the wanted monomial is found, then the multinomial coefficient is multiplied by each term's own coefficient raised to its power. For $x^3y^2z^2$ in $(x + 2y - z)^7$: $$\frac{7!}{3!\,2!\,2!} \cdot 2^2 \cdot (-1)^2 = 210 \cdot 4 = 840.$$ Forgetting the coefficients of the terms is the usual error.
 - If several exponent patterns give the same monomial, as when some terms are powers of the same variable, their contributions are added.

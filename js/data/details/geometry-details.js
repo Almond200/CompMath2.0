@@ -361,7 +361,7 @@ A triangle's area is half its base times its height, so two triangles with the s
 
 For $D$ on $BC$, the triangles $ABD$ and $ACD$ both have apex $A$ and bases on line $BC$. Their height is the distance $h$ from $A$ to that line, the same for both, so $$\frac{[ABD]}{[ACD]} = \frac{\frac12 \cdot BD \cdot h}{\frac12 \cdot DC \cdot h} = \frac{BD}{DC}.$$
 
-Nothing in that used the fact that the two bases meet at $D$ or lie inside side $BC$, only that the apex is shared and the bases lie on one line.
+Nothing in that used the fact that the two bases meet at $D$ or lie inside side $BC$, only that the apex is shared and the bases lie on one line. The third form is the same computation the other way round: a shared base, and apexes on a line parallel to it, which keeps the height the same.
 
 {{figure:fan}}
 
@@ -402,7 +402,7 @@ When the diagonals are perpendicular, they cut the quadrilateral into four right
 
 {{figure:diagonals}}
 
-- If the two similar triangles have areas $X$ and $Y$, each leg triangle has area $\sqrt{XY}$, so the whole trapezoid is $X + Y + 2\sqrt{XY} = (\sqrt X + \sqrt Y)^2$.
+- If the two similar triangles $OAB$ and $OCD$ have areas $X$ and $Y$, each leg triangle has area $\sqrt{XY}$, so the whole trapezoid is $X + Y + 2\sqrt{XY} = (\sqrt X + \sqrt Y)^2$. The reason: $OBC$ and $OAB$ share the apex $B$ with bases $OC$ and $OA$ on one line, so $[OBC] = X \cdot \frac{OC}{OA}$, and $\frac{OC}{OA} = \frac{CD}{AB} = \sqrt{\frac YX}$.
 - For a trapezoid whose height is not given, perpendiculars from the ends of the shorter base make right triangles at the ends; in an isosceles trapezoid each overhang is half the difference of the bases, and the [[pythagorean-theorem|Pythagorean Theorem]] gives the height.
 - The lengths of the midline and of the segment through the diagonals' crossing are on [[trapezoid-special-segments|their own card]].
 - A rhombus has an inscribed circle, and its area is the inradius times half its perimeter, so with side $s = \frac12\sqrt{d_1^2 + d_2^2}$ the inradius is $r = \frac{d_1d_2}{4s}$.
@@ -2193,9 +2193,9 @@ Three problems here, all AIME, none solved by it alone. The usual moves are to w
 $ABCD$ is a rectangle, and $P$ may be anywhere: inside, outside, or off the plane of the rectangle. The statement needs a rectangle, not an arbitrary parallelogram.
 
 ## Why it works
-Set up coordinates with the rectangle's sides on the axes: each squared distance expands into sums of squared coordinate differences, and both pairings select the same four terms. No planarity is even required, so it survives in three dimensions.
+Put the rectangle at $A = (0, 0, 0)$, $B = (a, 0, 0)$, $C = (a, b, 0)$, $D = (0, b, 0)$, and let $P = (x, y, z)$ be any point. Then $$PA^2 + PC^2 = x^2 + y^2 + (x - a)^2 + (y - b)^2 + 2z^2,$$ $$PB^2 + PD^2 = (x - a)^2 + y^2 + x^2 + (y - b)^2 + 2z^2,$$ the same four terms in another order. Nothing required $z = 0$, so $P$ may be off the plane.
 
-For a box with vertex $A$ at the origin and neighbors $B$, $D$, $E$ along the axes, both $2PA^2 + PG^2$ and $PB^2 + PD^2 + PE^2$ equal $3\lvert P\rvert^2 - 2P \cdot (a, b, c) + a^2 + b^2 + c^2$, which proves the second form.
+For a box, each pair of opposite vertices uses, in every coordinate, one end at $0$ and one at the full length, so every pair gives $x^2 + (x - a)^2 + y^2 + (y - b)^2 + z^2 + (z - c)^2$. With $A$ at the origin and neighbors $B$, $D$, $E$ along the axes, both $2PA^2 + PG^2$ and $PB^2 + PD^2 + PE^2$ equal $3\lvert P\rvert^2 - 2P \cdot (a, b, c) + a^2 + b^2 + c^2$, which proves the third form.
 
 ## Useful observations
 - With three of the four corner distances known, the fourth follows immediately.
@@ -2496,9 +2496,11 @@ AIME three-dimensional problems, tetrahedra with given coordinates or edge relat
 The three edges at one vertex are mutually perpendicular, a trirectangular corner, like a sliced box corner. The theorem does not hold for a general tetrahedron.
 
 ## Why it works
-Place the vertex at the origin with the edges $a, b, c$ on the axes. The three right-angle faces have areas $\frac{ab}2$, $\frac{bc}2$, and $\frac{ca}2$, and the far face has area half the length of the cross product of two of its edge vectors, which squares to exactly the sum of the three squared leg-face areas.
+Place the vertex at the origin with the edges $a, b, c$ on the axes, so the other vertices are $(a, 0, 0)$, $(0, b, 0)$, $(0, 0, c)$. The three right-angle faces have areas $\frac{ab}2$, $\frac{bc}2$, and $\frac{ca}2$.
 
-The altitude relation follows by computing the volume two ways: $V = \frac{abc}{6} = \frac13A_0h$, and $A_0^2 = \frac14(a^2b^2 + b^2c^2 + c^2a^2)$.
+Two edges of the far face are $(-a, b, 0)$ and $(-a, 0, c)$, whose cross product is $(bc, ca, ab)$. The face's area is half its length, so $$A_0^2 = \frac14\left(b^2c^2 + c^2a^2 + a^2b^2\right) = \left(\frac{bc}2\right)^2 + \left(\frac{ca}2\right)^2 + \left(\frac{ab}2\right)^2.$$
+
+The altitude relation follows by computing the volume two ways: $V = \frac{abc}{6} = \frac13A_0h$, so $h^2 = \frac{a^2b^2c^2}{4A_0^2} = \frac{a^2b^2c^2}{a^2b^2 + b^2c^2 + c^2a^2}$, and taking reciprocals gives $\frac1{h^2} = \frac1{a^2} + \frac1{b^2} + \frac1{c^2}$.
 
 ## Useful observations
 - Given the three perpendicular edges, all four face areas follow; given three face areas, the fourth is one square root away.
@@ -4466,16 +4468,20 @@ An AIME time-saver on ellipse areas and on ratio questions inside a general tria
 "pole-polar": String.raw`
 ## Key forms
 - the polar of $P$ with respect to a circle of radius $R$ about $O$ is the line of points $Q$ with $\vec{OP} \cdot \vec{OQ} = R^2$; when $P$ lies outside the circle, this line is the chord of contact joining the two tangency points
-- La Hire's theorem: $P$ lies on the polar of $Q$ if and only if $Q$ lies on the polar of $P$, so "collinear" and "concurrent" become dual statements
+- La Hire's Theorem: $P$ lies on the polar of $Q$ if and only if $Q$ lies on the polar of $P$, so "collinear" and "concurrent" become dual statements
 - a secant from $P$ meeting the circle at $X, Y$ and the polar at $Q$ forms a harmonic range $(X, Y;\, P, Q) = -1$
 
 ## Conditions
 $P$ is not the center. For $P$ inside the circle the polar is a line outside it, and for $P$ on the circle it is the tangent at $P$.
 
 ## Why it works
-Fix a circle of radius $R$ about $O$. The polar of $P$ is the line of points $Q$ with $\vec{OP} \cdot \vec{OQ} = R^2$; for $P$ outside, that line is exactly the chord of contact through the two tangency points.
+Fix a circle of radius $R$ about $O$ and take $O$ as the origin. The polar of $P$ is the line of points $Q$ with $P \cdot Q = R^2$, a line perpendicular to $OP$. For $P$ outside, a tangency point $T$ has $OT \perp TP$, so $P \cdot T = (T + (P - T)) \cdot T = R^2 + 0$: both tangency points lie on the polar, which is therefore the chord of contact.
 
-The defining relation is symmetric in $P$ and $Q$, which is La Hire's theorem. Because polarity swaps points with lines while preserving incidence, "collinear" and "concurrent" become dual statements, so proving one proves the other.
+The defining relation is symmetric in $P$ and $Q$, which is La Hire's Theorem. Because polarity swaps points with lines while preserving incidence, "collinear" and "concurrent" become dual statements, so proving one proves the other.
+
+For the harmonic range, let $M$ be the foot of the perpendicular from $O$ to the secant, at distance $m$, and measure positions along the secant from $M$ with unit direction $u$. Then $X$ and $Y$ are at $\mp s$ with $s^2 = R^2 - m^2$, and $P$, $Q$ at $p$, $q$. Since $M \perp u$, $P \cdot Q = m^2 + pq$, so $Q$ is on the polar exactly when $pq = s^2$.
+
+With $q = \frac{s^2}{p}$, the signed ratios are $\frac{XQ}{QY} = \frac{q + s}{s - q} = \frac{s + p}{p - s}$, the negative of $\frac{XP}{PY} = \frac{p + s}{s - p}$, which is the condition $(X, Y; P, Q) = -1$.
 
 ## Useful observations
 - The trigger is tangents and secants from a common external point: the chord of contact is a polar that can be named.
@@ -4962,7 +4968,7 @@ The median starts at the right angle. The converse needs the median to land on t
 ## Why it works
 The right angle sees the hypotenuse as a diameter of the circle through the three vertices, by [[thales-theorem|Thales' Theorem]], so the midpoint of the hypotenuse is that circle's center and is one radius from every vertex: $$MA = MB = MC = \frac c2.$$
 
-The converse holds too: a median equal to half its side forces a right angle, which is the forward direction of Thales' Theorem read from the midpoint.
+For the converse, let $M$ be the midpoint of $AB$ with $MC = \frac c2 = MA = MB$. The triangles $MAC$ and $MBC$ are isosceles, so $\angle MCA = \angle A$ and $\angle MCB = \angle B$, and adding, $\angle C = \angle A + \angle B$. Since the three angles add up to $180^\circ$, $\angle C = 90^\circ$.
 
 ## Useful observations
 - The midpoint of the hypotenuse is the circumcenter, so the circumradius is $\frac c2$; the radius formulas of a right triangle are on [[right-triangle-inradius|Right Triangle Inradius and Circumradius]].

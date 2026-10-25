@@ -274,3 +274,33 @@ stewarts-theorem # checked, no change
 focal-radii # checked, no change
 assume-all-one-kind # new card, short but complete
 round-up-whole-items # new card, short but complete
+repeating-decimals # pre-period proved, example
+determinant-geometric # area via Lagrange, 3x3 reduction, triple product, scaling
+holders-inequality # full AM-GM proof; equality condition and wrong Hölder example fixed
+steiner-ratio-theorem # checked, no change
+matrix-multiplication # definition derived, example, walk induction
+median-to-hypotenuse # converse proved by angles
+cevian-area-ratio # third form explained
+british-flag-theorem # coordinates written out
+gram-determinant-volume # checked, no change
+average-speed # checked, no change
+vandermonde # checked, no change
+gcd-lcm-product # checked, no change
+expected-value # checked, no change
+fermats-little-theorem # order observation made exact (odd prime)
+difference-of-squares # checked, no change
+proportion-properties # condition corrected (only combined form needs k != 1)
+trapezoid-parallelogram-areas # sqrt(XY) reason added
+parallelogram-vertices # checked, no change
+eulers-criterion # supplements derived; 2-rule pointed to Gauss's Lemma
+consecutive-product-factorial # checked, no change
+multinomial-theorem # term count proved
+expected-fixed-points # checked, no change
+cevian-ratio-sum # checked (identity verified), no change
+de-guas-theorem # cross product and altitude written out
+chevalley-warning # primitive-root sum and nonzero zero written out
+gaussian-integers # Euclidean bound and splitting proofs
+abs-triangle-inequality # reverse form proved
+subset-sum-facts # checked, no change
+conic-perpendicular-radii # checked, no change
+pole-polar # chord of contact and harmonic range proved

@@ -1150,9 +1150,11 @@ Minimization questions in two or three free variables usually end as a sum of sq
 It holds for real numbers, complex numbers, and vectors. "Pointing the same way" means the same sign for reals and the same argument for complex numbers.
 
 ## Why it works
-For real or complex numbers, square both sides: $|a + b|^2 = |a|^2 + 2\operatorname{Re}(a\bar b) + |b|^2 \le |a|^2 + 2|a||b| + |b|^2$, because $\operatorname{Re}(a\bar b) \le |a\bar b|$, with equality exactly when $a\bar b$ is a nonnegative real, that is, when $a$ and $b$ point the same way.
+For real or complex numbers, square both sides: $|a + b|^2 = |a|^2 + 2\operatorname{Re}(a\bar b) + |b|^2 \le |a|^2 + 2|a||b| + |b|^2$, because $\operatorname{Re}(a\bar b) \le |a\bar b|$, with equality exactly when $a\bar b$ is a nonnegative real, that is, when $a$ and $b$ point the same way. For vectors the same expansion uses $u \cdot v \le |u||v|$.
 
-Geometrically it says that a detour through a third point cannot be shorter than the direct path: the side of a triangle is at most the sum of the other two. The reverse form is the same fact with the roles of the sides exchanged, since one side is at least the difference of the other two.
+The reverse form comes from the first applied to $a = (a - b) + b$: $|a| \le |a - b| + |b|$, so $|a| - |b| \le |a - b|$, and swapping $a$ and $b$ gives $|b| - |a| \le |a - b|$. The circle bounds are both forms with $a = z$ and $b = w$.
+
+Geometrically it says that a detour through a third point cannot be shorter than the direct path: the side of a triangle is at most the sum of the other two, and at least their difference.
 
 ## Useful observations
 - It is a bounding tool: $|A + B|$ splits into $|A| + |B|$, and $|A - B|$ is bounded below by the reverse form.
@@ -3124,19 +3126,21 @@ Object.assign(window.MATH_DETAILS, {
 ## Key forms
 - $\alt{\Big(\sum a_i^p\Big)^{1/p}\Big(\sum b_i^q\Big)^{1/q} \ge \sum a_ib_i}{(a_1^p + \cdots + a_n^p)^{1/p}(b_1^q + \cdots + b_n^q)^{1/q} \ge a_1b_1 + \cdots + a_nb_n}$ with $\frac1p + \frac1q = 1$ — Cauchy-Schwarz is the case $p = q = 2$
 - $\alt{\Big(\sum a_i\Big)\Big(\sum b_i\Big)\Big(\sum c_i\Big) \ge \Big(\sum\sqrt[3]{a_ib_ic_i}\Big)^3}{(a_1 + \cdots + a_n)(b_1 + \cdots + b_n)(c_1 + \cdots + c_n) \ge \left(\sqrt[3]{a_1b_1c_1} + \cdots + \sqrt[3]{a_nb_nc_n}\right)^3}$ — the three-sequence form, and its $k$-sequence generalization
-- equality when the sequences are proportional
+- equality when the sequences $a_i^p$ and $b_i^q$ are proportional; in the three-sequence form, when $a$, $b$, $c$ are
 
 ## Conditions
 The terms are positive and $p, q \gt 1$ are conjugate exponents. The $k$-sequence form uses weights adding to $1$.
 
 ## Why it works
-Hölder is $\ell^p$–$\ell^q$ duality. With $\frac1p + \frac1q = 1$, [[weighted-am-gm|weighted AM–GM]] is applied termwise to $\frac{a_i^p}{\sum a^p}$ and $\frac{b_i^q}{\sum b^q}$ and the results summed: the total is $1$, which rearranges to $\sum a_ib_i \le (\sum a^p)^{1/p}(\sum b^q)^{1/q}$.
+Write $A = \sum a_i^p$ and $B = \sum b_i^q$, and set $x_i = \frac{a_i^p}{A}$ and $y_i = \frac{b_i^q}{B}$, so that $\sum x_i = \sum y_i = 1$. [[weighted-am-gm|Weighted AM–GM]] with weights $\frac1p$ and $\frac1q$ gives $x_i^{1/p}y_i^{1/q} \le \frac{x_i}{p} + \frac{y_i}{q}$, and the left side is $\frac{a_ib_i}{A^{1/p}B^{1/q}}$.
 
-The three-sequence form is the same statement with exponents $\frac13 + \frac13 + \frac13 = 1$. Any number of sequences works the same way, with weights $\lambda_j \ge 0$ summing to $1$, which is the form for when the exponents in a problem are not all equal.
+Adding over $i$, the right sides total $\frac1p + \frac1q = 1$, so $\sum a_ib_i \le A^{1/p}B^{1/q}$. Equality in each AM–GM step needs $x_i = y_i$, which is the equality condition.
+
+The three-sequence form is the same argument with three weights $\frac13$: with $x_i$, $y_i$, $z_i$ the terms divided by their sums, $\sqrt[3]{x_iy_iz_i} \le \frac{x_i + y_i + z_i}{3}$, and adding gives $\sum\sqrt[3]{a_ib_ic_i} \le \sqrt[3]{\sum a\sum b\sum c}$. Any number of sequences works the same way, with weights $\lambda_j \ge 0$ summing to $1$, which is the form for when the exponents in a problem are not all equal.
 
 ## Useful observations
 - It is the signature move on cyclic sums: the sequences and exponents are chosen so that the right-hand cube, or $k$th power, is exactly the quantity wanted and the left factors are computable.
-- To bound $\sum\frac{a}{b + c}$ below, it is paired with two copies of $\sum a(b + c)$, giving $\left(\sum\frac{a}{b + c}\right)\left(\sum a(b + c)\right)^2 \ge (a + b + c)^3$, and then the denominator is bounded.
+- To bound $\sum\frac{a}{\sqrt{b + c}}$ below, take that sum twice and $\sum a(b + c)$ once: the cube root of each product of terms is $a$, so $\left(\sum\frac{a}{\sqrt{b + c}}\right)^2\left(\sum a(b + c)\right) \ge (a + b + c)^3$. Since $\sum a(b + c) = 2(ab + bc + ca) \le \frac23(a + b + c)^2$, this gives $\left(\sum\frac{a}{\sqrt{b + c}}\right)^2 \ge \frac32(a + b + c)$.
 - Anywhere Cauchy-Schwarz almost works but leaves an exponent short, Hölder finishes.
 
 ## Applications
@@ -3692,7 +3696,7 @@ Object.assign(window.MATH_DETAILS, {
 - $\dfrac ab = \dfrac cd \implies \dfrac{a + b}{a - b} = \dfrac{c + d}{c - d}$ — both together, which clears a sum-and-difference form in one step
 
 ## Conditions
-Every denominator is nonzero. Addendo also needs $b_1 + \cdots + b_n \ne 0$, since $\frac21 = \frac{-2}{-1}$ has denominators adding to $0$. Dividendo, and the combined form, need $a \ne b$, that is $k \ne 1$.
+Every denominator is nonzero. Addendo also needs $b_1 + \cdots + b_n \ne 0$, since $\frac21 = \frac{-2}{-1}$ has denominators adding to $0$. The combined form needs $a \ne b$, that is $k \ne 1$, so that $a - b$ and $c - d$ are not zero.
 
 ## Why it works
 Equal ratios all hide the same multiplier, and once each numerator is written as that multiplier times its denominator, every rule is one line of algebra.
@@ -4255,9 +4259,13 @@ Determinants are not on the AMC or AIME syllabus, yet several cards in this libr
 The coordinates are Cartesian. The sign depends on the order of the rows, so swapping two rows reverses it, and only the absolute value is an area. The scaling statement holds for any linear map and, adding a translation, for any affine one.
 
 ## Why it works
-Area is linear in each edge of a parallelogram and reverses sign when the two edges swap roles, which is the same short list of demands that defines the determinant, so the two must agree.
+For the parallelogram on $\vec u = (u_1, u_2)$ and $\vec v = (v_1, v_2)$ with angle $\theta$ between them, the area is $\lvert\vec u\rvert\lvert\vec v\rvert\sin\theta$, and its square is $\lvert\vec u\rvert^2\lvert\vec v\rvert^2 - (\vec u \cdot \vec v)^2$. Expanding, $$(u_1^2 + u_2^2)(v_1^2 + v_2^2) - (u_1v_1 + u_2v_2)^2 = (u_1v_2 - u_2v_1)^2,$$ which is [[lagranges-identity|Lagrange's Identity]] for two terms. So the determinant is the area up to sign, and the sign is that of $\sin\theta$ measured counterclockwise from $\vec u$ to $\vec v$.
 
-Reading it that way makes the collinearity test obvious rather than memorized: three points span a triangle of zero area exactly when they lie on one line, and the determinant of the two edge vectors is twice that area. One dimension up, the $3 \times 3$ determinant is the signed volume of the parallelepiped, so it vanishes exactly when four points are coplanar.
+For the $3 \times 3$ form, subtract the row of $A$ from the rows of $B$ and $C$, which leaves the determinant unchanged, and expand along the column of $1$'s: what remains is the $2 \times 2$ determinant of the edge vectors. The collinearity test is then the statement that a triangle has zero area exactly when its vertices lie on one line.
+
+One dimension up, the $3 \times 3$ determinant of $\vec u$, $\vec v$, $\vec w$ is the triple product $\vec u \cdot (\vec v \times \vec w)$. The cross product has length equal to the area of the base parallelogram on $\vec v$ and $\vec w$ and points perpendicular to it, so dotting with $\vec u$ multiplies that area by the height of $\vec u$ above the base. It vanishes exactly when the three vectors, or the four points, are coplanar.
+
+A linear map sends the unit square to the parallelogram on its two columns, of area $\lvert\det\rvert$. It sends every small square of a grid to a translated copy of that parallelogram scaled to the square, so every region's area, a limit of such squares, is multiplied by the same factor.
 
 ## Useful observations
 - The sign carries information. A positive value means $A$, $B$, $C$ run counterclockwise, which is how a convex-hull or orientation argument is actually carried out, and taking absolute values too early throws that away.
@@ -4282,9 +4290,11 @@ It is behind two things AIME asks constantly. [[shoelace-formula|Shoelace]] is t
 The product is defined only when the number of columns of $A$ equals the number of rows of $B$. Only square matrices have powers.
 
 ## Why it works
-A matrix is a linear map written in coordinates, and the product is what comes from doing one map after the other: entry $(i, j)$ of $AB$ asks where basis vector $j$ goes under $B$ and then reads off coordinate $i$ after $A$.
+A matrix is a linear map written in coordinates: column $j$ of $B$ is where $B$ sends the basis vector $e_j$, so $Be_j = \sum_k b_{kj}e_k$. Applying $A$ sends each $e_k$ to column $k$ of $A$, so $ABe_j = \sum_k b_{kj}(\text{column } k \text{ of } A)$, whose coordinate $i$ is $\sum_k a_{ik}b_{kj}$. That is the definition: the product is the matrix of doing $B$ first and then $A$.
 
-Composition of maps is associative, so matrix multiplication is, and it is not commutative for the same reason rotating then reflecting differs from reflecting then rotating. The sum over the intermediate index $k$ is the whole content of the definition.
+Composition of maps is associative, so matrix multiplication is, and it is not commutative for the same reason rotating then reflecting differs from reflecting then rotating. For example $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$, while the other order gives $\begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}$.
+
+The walk count follows by induction on $n$. A walk of length $n + 1$ from $i$ to $j$ is a walk of length $n$ from $i$ to some $k$ followed by an edge from $k$ to $j$, so the count is $\sum_k (A^n)_{ik}a_{kj}$, which is entry $(i, j)$ of $A^{n+1}$.
 
 ## Useful observations
 - The counting reading is the one worth having on sight. If $A$ is an adjacency matrix, $(A^n)_{ij}$ counts walks of length $n$ from $i$ to $j$, because the sum over $k$ is precisely "choose where the walk stood one step earlier".

@@ -476,7 +476,7 @@ Multiplying each list together gives $a^{p-1}(p - 1)! \equiv (p - 1)! \pmod p$, 
 ## Useful observations
 - Exponents can be reduced modulo $p - 1$ whenever $p \nmid a$: for $2^{100} \bmod 7$, $100 \equiv 4 \pmod 6$, so $2^{100} \equiv 2^4 \equiv 2$.
 - The true period, the multiplicative order of $a$, divides $p - 1$ and can be smaller: $2^3 \equiv 1 \pmod 7$.
-- If a prime $p$ divides $a^{2^k} + 1$, then the order of $a$ is $2^{k+1}$, so $p \equiv 1 \pmod{2^{k+1}}$.
+- If an odd prime $p$ divides $a^{2^k} + 1$, then $a^{2^k} \equiv -1 \not\equiv 1$ and $a^{2^{k+1}} \equiv 1$, so the order of $a$ is exactly $2^{k+1}$; it divides $p - 1$, so $p \equiv 1 \pmod{2^{k+1}}$.
 - A second proof inducts on $a$ with $(a + 1)^p \equiv a^p + 1 \pmod p$.
 
 ## Applications
@@ -676,14 +676,16 @@ The most common impossibility tool at every level: a square forced into a forbid
 $p$ is an odd prime and $p \nmid a$.
 
 ## Why it works
-Pair each $x$ in $1, \ldots, p - 1$ with the unique $y$ satisfying $xy \equiv a$. If $a$ is not a square, no $x$ pairs with itself, so the $p - 1$ numbers form $\frac{p-1}{2}$ pairs each with product $a$, and $(p - 1)! \equiv a^{(p-1)/2}$. Wilson's Theorem makes the left side $-1$.
+Pair each $x$ in $1, \ldots, p - 1$ with the unique $y$ satisfying $xy \equiv a$. If $a$ is not a square, no $x$ pairs with itself, so the $p - 1$ numbers form $\frac{p-1}{2}$ pairs each with product $a$, and $(p - 1)! \equiv a^{(p-1)/2}$. [[wilsons-theorem|Wilson's Theorem]] makes the left side $-1$.
 
 If $a$ is a square, $a \equiv r^2$, then $x^2 \equiv a$ has exactly the two solutions $\pm r$, which pair with themselves and multiply to $-r^2 \equiv -a$. The other $p - 3$ numbers form pairs with product $a$, so $(p - 1)! \equiv -a \cdot a^{(p-3)/2} = -a^{(p-1)/2}$, and Wilson's Theorem gives $a^{(p-1)/2} \equiv 1$.
 
+The other two forms follow at once. Taking $a = -1$ gives $\left(\frac{-1}{p}\right) \equiv (-1)^{(p-1)/2}$. For the product, $(ab)^{(p-1)/2} = a^{(p-1)/2}b^{(p-1)/2}$, so both sides of the product rule are congruent mod $p$. Both sides are $\pm1$, and $1 \not\equiv -1$ for an odd prime, so the congruences are equalities.
+
 ## Useful observations
 - One power replaces a search through all the squares: $3^3 = 27 \equiv -1 \pmod 7$, so $3$ is not a square modulo $7$, matching the list of squares $1, 2, 4$.
-- Every odd prime factor of $x^2 + 1$ is $1 \bmod 4$.
-- $2$ is a square modulo $p$ exactly when $p \equiv \pm1 \pmod 8$.
+- Every odd prime factor of $x^2 + 1$ is $1 \bmod 4$, since $x^2 \equiv -1$ makes $-1$ a square.
+- $2$ is a square modulo $p$ exactly when $p \equiv \pm1 \pmod 8$; that needs more than the criterion and is proved with [[gauss-lemma-qr|Gauss's Lemma]].
 
 ## Applications
 Deciding whether a number is a square modulo a prime, the primes dividing $x^2 + 1$ or $x^2 + 2$, and the supplements to quadratic reciprocity.
@@ -1318,9 +1320,11 @@ The block formula needs the repeat to start right after the decimal point; facto
 ## Why it works
 If $x = 0.\overline{d_1\cdots d_k}$, then $10^kx = d_1\cdots d_k.\overline{d_1\cdots d_k}$, and subtracting cancels the infinite tail: $(10^k - 1)x = d_1\cdots d_k$. The same fact is a geometric series with ratio $10^{-k}$.
 
-In the long division of $1$ by $n$, each step multiplies the remainder by $10$ and reduces mod $n$, and the digit depends only on the remainder. So the digits repeat when a remainder repeats, and for $n$ coprime to $10$ the remainder first returns to $1$ after $\operatorname{ord}_n(10)$ steps.
+In the long division of $1$ by $n$, each step multiplies the remainder by $10$ and reduces mod $n$, so after $j$ steps the remainder is $10^j \bmod n$, and the digit depends only on the remainder. The digits repeat once a remainder repeats. For $n$ coprime to $10$ the remainder first returns to $1$, the starting remainder, after $\operatorname{ord}_n(10)$ steps, so the decimal repeats from the very first digit with that period.
 
 {{figure:division}}
+
+For a general denominator write $n = 2^a5^bm$ with $m$ coprime to $10$, the fraction in lowest terms, and $j = \max(a, b)$. Then $10^jx$ has denominator $m$, so after its integer part it repeats from the start: at most $j$ digits come before the repeat. No fewer will do, because a decimal that repeats from the start has a denominator dividing $99\cdots9$, which is coprime to $10$. For example $\frac1{44} = 0.02\overline{27}$, with $44 = 2^2 \cdot 11$.
 
 ## Useful observations
 - The denominator splits into a part $2^a5^b$, which sets the number of digits before the repeat, $\max(a, b)$, and a part coprime to $10$, which sets the period.
@@ -1729,9 +1733,11 @@ Direct plug-in for "how many lattice points on this circle" questions, and the c
 Unique factorization holds in $\mathbb{Z}[i]$ and $\mathbb{Z}[\omega]$ up to units and the order of the factors.
 
 ## Why it works
-$\mathbb{Z}[i]$ is a Euclidean domain, since division with remainder works by rounding to the nearest Gaussian integer, so it has unique factorization. The norm is multiplicative because it is $\lvert z\rvert^2$, which turns questions about sums of two squares into questions about factorization.
+$\mathbb{Z}[i]$ is a Euclidean domain: to divide $z$ by $w$, round each coordinate of $\frac zw$ to the nearest integer to get $q$; then $\left\lvert\frac zw - q\right\rvert^2 \le \frac14 + \frac14$, so the remainder $z - qw$ has norm at most $\frac12N(w) \lt N(w)$. Hence it has unique factorization. The norm is multiplicative because it is $\lvert z\rvert^2$, which turns questions about sums of two squares into questions about factorization.
 
-A rational prime $p$ behaves by whether $-1$ is a quadratic residue mod $p$: $p \equiv 1 \pmod 4$ makes $x^2 \equiv -1$ solvable, so $p \mid (x + i)(x - i)$ splits; $p \equiv 3 \pmod 4$ stays prime; and $2$ ramifies.
+For $p \equiv 1 \pmod 4$, $-1$ is a square mod $p$, say $x^2 \equiv -1$, so $p \mid x^2 + 1 = (x + i)(x - i)$. But $p$ divides neither factor, since $\frac xp \pm \frac ip$ is not a Gaussian integer, so $p$ is not a Gaussian prime. A factor $\pi$ with $1 \lt N(\pi) \lt p^2$ then has $N(\pi) = p$, so $p = a^2 + b^2$ and $p = \pi\bar\pi$.
+
+For $p \equiv 3 \pmod 4$ a factorization $p = \pi\rho$ into non-units would give $N(\pi) = p = a^2 + b^2$, impossible since squares are $0$ or $1$ mod $4$; so $p$ stays prime. And $2 = (1 + i)(1 - i) = -i(1 + i)^2$, a unit times a square, which is what ramifies means. In $\mathbb{Z}[\omega]$ the same argument, with $x^2 + x + 1 \equiv 0$ in place of $x^2 \equiv -1$, splits the primes $p \equiv 1 \pmod 3$.
 
 ## Useful observations
 - $\mathbb{Z}[i]$ is used whenever $a^2 + b^2$ appears: it is factored as $(a + bi)(a - bi)$ and unique factorization is leaned on.
@@ -2487,7 +2493,9 @@ $p$ is prime and the $f_i$ have coefficients in $\mathbb F_p$; the degrees are t
 ## Why it works
 For each $x \in \mathbb F_p^n$, the product $P(x) = \prod_i \left(1 - f_i(x)^{p-1}\right)$ is $1$ when $x$ is a common zero and $0$ otherwise, by Fermat's Little Theorem. So the number of common zeros is $\sum_x P(x) \bmod p$.
 
-$P$ has degree at most $(p - 1)\sum \deg f_i \lt (p - 1)n$, so each monomial $x_1^{t_1}\cdots x_n^{t_n}$ in it has some $t_j \lt p - 1$. Summing that monomial over $\mathbb F_p^n$ factors into $\prod_j \sum_{x_j} x_j^{t_j}$, and the factor with $t_j \lt p - 1$ is $0$ mod $p$: for $t_j = 0$ it is $p$, and for $0 \lt t_j \lt p - 1$ it is the sum of the $t_j$th powers of all residues, which a primitive root shows is $0$. So $\sum_x P(x) \equiv 0$.
+$P$ has degree at most $(p - 1)\sum \deg f_i \lt (p - 1)n$, so each monomial $x_1^{t_1}\cdots x_n^{t_n}$ in it has some $t_j \lt p - 1$. Summing that monomial over $\mathbb F_p^n$ factors into $\prod_j \sum_{x_j} x_j^{t_j}$, and the factor with $t_j \lt p - 1$ is $0$ mod $p$. For $t_j = 0$ it is $p$. For $0 \lt t_j \lt p - 1$, take a primitive root $g$: the nonzero residues are $g^0, \ldots, g^{p-2}$, so the sum is the geometric series $\frac{g^{t_j(p-1)} - 1}{g^{t_j} - 1} \equiv 0$, since $g^{t_j} \ne 1$. So $\sum_x P(x) \equiv 0$.
+
+With no constant terms, $x = 0$ is a common zero, and the number of common zeros is a positive multiple of $p$, so at least $p \ge 2$: there is a nonzero one.
 
 ## Useful observations
 - The theorem gives existence without construction: a degree count alone forces a nontrivial solution.
