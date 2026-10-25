@@ -1235,7 +1235,7 @@ $ABC$ is any triangle, with circumcenter $O$, orthocenter $H$, centroid $G$, and
 ## Why it works
 Two homotheties give the same circle. The [[homothety-monge|homothety]] centered at $H$ with ratio $\frac12$ sends the circumcircle to a circle of radius $\frac R2$ through the midpoints of $HA$, $HB$, $HC$, with center the midpoint of $HO$. The homothety centered at the centroid $G$ with ratio $-\frac12$ sends the circumcircle to the circumcircle of the [[medial-triangle|medial triangle]], a circle through the three side midpoints, also of radius $\frac R2$, and it sends $O$ to $\frac12H$ (with $O$ as the origin), the midpoint of $OH$ again. The two circles have the same center and radius, so they are one circle, through six of the nine points.
 
-The altitude feet complete it. The midpoint $P_a$ of $HA$ and the midpoint $M_a$ of $BC$ are opposite ends of a diameter, since the circle's center is the midpoint of both $P_aM_a$ and the midpoint of $OH$. The foot $D$ of the altitude from $A$ lies on line $AH$, perpendicular to $BC$, so the angle $P_aDM_a$ is a right angle and $D$ is on the circle with that diameter.
+The altitude feet complete it. The midpoint $P_a$ of $HA$ and the midpoint $M_a$ of $BC$ are opposite ends of a diameter: with $O$ as origin, $H = A + B + C$, so $P_a = A + \frac{B + C}{2}$ and $M_a = \frac{B + C}{2}$, whose midpoint is $\frac{A + B + C}{2} = N$. The foot $D$ of the altitude from $A$ lies on line $AH$, perpendicular to $BC$, so the angle $P_aDM_a$ is a right angle and $D$ is on the circle with that diameter.
 
 ## Useful observations
 - Nine points on one circle give enormous cyclic-quadrilateral leverage: any four of them are concyclic, and the inscribed-angle chases follow.
@@ -2321,7 +2321,7 @@ For a pyramid, the slice at height $z$ above the base is a copy of the base scal
 
 {{figure:cube}}
 
-By Cavalieri, any pyramid with the same base area and height has the same volume, whatever the shape of its base.
+Stretching that pyramid vertically by a factor multiplies its height and its volume by that factor, and scaling it horizontally multiplies its base area and its volume alike, so $V = \frac13Bh$ holds for every square pyramid. By Cavalieri, any pyramid with the same base area and height has the same volume, whatever the shape of its base.
 
 ## Useful observations
 - Because any face of a tetrahedron can serve as the base, computing the volume with one base and equating it with the volume from another gives heights that are hard to reach directly, such as the distance from a vertex to a slanted face.
@@ -3157,7 +3157,7 @@ A circle tangent to both sides of an angle is centered on the bisector, since th
 
 Chain two of them. Consecutive circles are externally tangent and both centers are on the bisector, so $d_{k+1} - d_k = r_k + r_{k+1}$. Substituting $d = r/\sin\theta$ turns that into $\frac{r_{k+1} - r_k}{\sin\theta} = r_k + r_{k+1}$, and collecting terms gives $\frac{r_{k+1}}{r_k} = \frac{1 + \sin\theta}{1 - \sin\theta}$. The ratio is the same at every step, so the radii form a geometric progression.
 
-The flat relation is the same idea with a line in place of the second side. Two circles of radii $r_1$ and $r_2$ tangent to each other and to a common line have their tangency points $2\sqrt{r_1r_2}$ apart, which is [[common-tangent-lengths|the common tangent length]]. Fitting a third circle into the gap and applying that twice gives the reciprocal square-root relation. It is also what [[descartes-circle-theorem|Descartes' Circle Theorem]] reduces to when one curvature is set to zero.
+The flat relation is the same idea with a line in place of the second side. Two circles of radii $r_1$ and $r_2$ tangent to each other and to a common line have their tangency points $2\sqrt{r_1r_2}$ apart, which is [[common-tangent-lengths|the common tangent length]]. Fitting a third circle of radius $r_3$ into the gap and applying that twice gives $2\sqrt{r_1r_3} + 2\sqrt{r_2r_3} = 2\sqrt{r_1r_2}$, and dividing by $2\sqrt{r_1r_2r_3}$ gives the reciprocal square-root relation. It is also what [[descartes-circle-theorem|Descartes' Circle Theorem]] reduces to when one curvature is set to zero.
 
 ## Useful observations
 - When circles are stacked into a corner, they are not chased one at a time: the ratio is identified from the angle once, and the whole chain is a [[geometric-series|geometric sequence]], so sums of radii are geometric series.

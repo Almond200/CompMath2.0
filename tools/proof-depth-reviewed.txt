@@ -534,3 +534,33 @@ angle-addition # checked, no change
 arbelos # twin-circle radius derived
 independent-events # checked, no change
 dirichlet-primes-progression # general case quoted with reference; 1 mod n points to its home
+arithmetic-series # checked, no change
+perimeter-cleavers # checked, no change
+cohn-irreducibility # checked, no change
+iran-lemma # checked, no change
+vietas-general # checked, no change
+basic-probability # checked, no change
+incircle-excircle-homothety # checked, no change
+skew-lines-distance # checked, no change
+isogonal-line-lemma # checked, no change
+nine-point-circle # diameter step justified by vectors (was circular)
+spieker-point # checked, no change
+erdos-ko-rado # checked, no change
+prism-pyramid-volumes # cube dissection extended to all pyramids by stretching
+morleys-theorem # side formula checked numerically, no change
+combinatorial-nullstellensatz # checked, no change
+butterfly-theorem # checked, no change
+relative-motion # checked, no change
+quadratic-reciprocity # examples checked, no change
+cyclotomic-polynomials # checked, no change
+sawayama-thebault # checked, no change
+desargues-involution # checked, no change
+spheres-two-planes # checked, no change
+kruskal-katona # quoted with reference, no change
+tetrahedron-centroid # checked, no change
+angle-bisector-theorem # checked, no change
+mason-stothers # checked, no change
+parking-functions # counts checked, no change
+reims-theorem # checked, no change
+corner-circle-chain # flat-case step written out
+anti-steiner-point # checked, no change
