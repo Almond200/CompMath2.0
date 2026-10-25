@@ -684,3 +684,28 @@ closing-polygon-vectors # checked, no change
 abs-value-graphing # checked, no change
 cross-section-method # checked, no change
 root-transformations # example checked, no change
+add-all-equations # examples checked (288^2), no change
+choose-modulus # checked, no change
+slope-to-a-point # tangent slopes checked, no change
+power-of-a-point # checked, no change
+cube-stack-views # new card, example checked
+exponent-tracking # count 35 checked, no change
+extended-euclidean-algorithm # checked, no change
+vector-bash # example checked, no change
+smoothing-method # checked, no change
+extremal-principle # checked, no change
+bounding-diophantine # checked, no change
+plane-cross-section # checked, no change
+polynomial-division # checked, no change
+quadratic-root-location # example checked, no change
+directed-angles # checked, no change
+function-symmetry-equation # checked, no change
+sqrt-bc-inversion # checked, no change
+transforming-equations # checked, no change
+odd-part-chains # checked, no change
+extend-sides-to-meet # checked, no change
+angle-chasing # checked, no change
+tangent-lines-from-point # example checked, no change
+strategy-stealing # checked, no change
+directed-lengths # checked, no change
+barycentric-coordinates # example checked, no change
