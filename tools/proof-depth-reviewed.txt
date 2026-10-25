@@ -624,3 +624,33 @@ shoelace-formula # checked, no change
 functional-substitution # example checked, no change
 indicator-variables # example checked, no change
 mass-points # example checked, no change
+linear-elimination # checked, no change
+grid-path-fill # count 5 rechecked, no change
+bisector-closer-region # checked, no change
+spiral-similarity # example checked, no change
+double-counting # checked, no change
+fx-pairing # checked, no change
+sfft # checked, no change
+casework-method # checked, no change
+estimating-answers # checked, no change
+partial-fractions # checked, no change
+complex-bash # example checked, no change
+median-doubling # example checked, no change
+gap-method # checked, no change
+constructive-counting # checked, no change
+inversion-properties # example checked, no change
+dimension-arguments # checked, no change
+injectivity-surjectivity # checked, no change
+trig-bash # example checked, no change
+hensel-lifting # lifts checked mod 25 and 125, no change
+roots-of-unity-filter # 341 checked, no change
+telescoping # example checked, no change
+parallel-line-similarity # example checked, no change
+simulate-the-process # checked, no change
+organized-listing # checked, no change
+geometric-probability # checked, no change
+states-recursion-prob # cube table and closed form checked, no change
+sign-chart # checked, no change
+uvw-method # example checked, no change
+factor-pair-counting # checked, no change
+gcd-substitution # checked, no change
