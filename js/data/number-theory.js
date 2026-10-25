@@ -22,6 +22,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "lcm-common-multiples",
+          name: "Common Multiples Are Multiples of the LCM",
+          latex: String.raw`a \mid N,\ b \mid N,\ c \mid N \iff \operatorname{lcm}(a, b, c) \mid N, \qquad N \equiv r \text{ mod each} \iff N \equiv r \pmod{\operatorname{lcm}}`,
+          description: String.raw`A number divisible by each of $a$, $b$, $c$ is exactly a multiple of their least common multiple $\operatorname{lcm}(a, b, c)$, so a list of divisibility conditions collapses into one. "When are they together again", "divisible by all of these", and "leaves the same remainder $r$ on division by each" all become a single condition on the lcm, and the answers are the multiples of the lcm, shifted by $r$.`,
+          keywords: ["common multiple", "together again", "divisible by each", "same remainder", "least common multiple", "lcm", "one less than a multiple", "every number from 1 to n"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "euclidean-algorithm",
           name: "Euclidean Algorithm",
           latex: String.raw`\gcd(a, b) = \gcd(b, a \bmod b)`,

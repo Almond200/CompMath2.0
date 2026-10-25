@@ -332,7 +332,11 @@ $f$ and $g$ are any functions on the positive integers; no multiplicativity is n
 ## Why it works
 The key lemma first. For $n \gt 1$, let $p$ be one of its primes. The divisors with $\mu(d) \ne 0$ are the squarefree ones, and they pair up as $d$ and $dp$ for $p \nmid d$, with opposite signs, so the sum is $0$; for $n = 1$ it is $\mu(1) = 1$.
 
-For the inversion, substitute $g$ into the right side: $\sum_{d \mid n}\mu(d)\sum_{e \mid n/d} f(e)$. Swapping the order, $f(e)$ is multiplied by $\sum \mu(d)$ over the $d$ dividing $\frac ne$, which is $1$ when $e = n$ and $0$ otherwise. So only $f(n)$ survives.
+For the inversion, substitute $g$ into the right side: $\sum_{d \mid n}\mu(d)\sum_{e \mid n/d} f(e)$. Swapping the order, $f(e)$ is multiplied by $\sum \mu(d)$ over the $d$ dividing $\frac ne$, which is $1$ when $e = n$ and $0$ otherwise. So only $f(n)$ survives. The converse direction is the same swap with the roles reversed.
+
+For squarefree numbers, let $m^2$ be the largest square dividing $n$. The $k$ with $k^2 \mid n$ are exactly the divisors of $m$, so by the lemma $\sum_{k^2 \mid n}\mu(k)$ is $1$ when $m = 1$, that is when $n$ is squarefree, and $0$ otherwise. Adding over $n \le N$ and counting, for each $k$, the $\left\lfloor \frac N{k^2} \right\rfloor$ multiples of $k^2$ gives the formula.
+
+For the strings, each binary string of length $n$ is a repetition of exactly one shortest block, whose length $d$ divides $n$. So with $A(d)$ the strings that repeat no shorter block, $\sum_{d \mid n}A(d) = 2^n$, and inversion gives $A(n) = \sum_{d \mid n}\mu(d)2^{n/d}$.
 
 ## Useful observations
 - Squarefree numbers are counted by inclusion-exclusion over square divisors, $\sum_d \mu(d)\left\lfloor \frac{N}{d^2} \right\rfloor$: up to $30$ there are $30 - 7 - 3 - 1 = 19$.
@@ -472,7 +476,7 @@ Multiplying each list together gives $a^{p-1}(p - 1)! \equiv (p - 1)! \pmod p$, 
 ## Useful observations
 - Exponents can be reduced modulo $p - 1$ whenever $p \nmid a$: for $2^{100} \bmod 7$, $100 \equiv 4 \pmod 6$, so $2^{100} \equiv 2^4 \equiv 2$.
 - The true period, the multiplicative order of $a$, divides $p - 1$ and can be smaller: $2^3 \equiv 1 \pmod 7$.
-- If a prime $p$ divides $a^{2^k} + 1$, then the order of $a$ is $2^{k+1}$, so $p \equiv 1 \pmod{2^{k+1}}$.
+- If an odd prime $p$ divides $a^{2^k} + 1$, then $a^{2^k} \equiv -1 \not\equiv 1$ and $a^{2^{k+1}} \equiv 1$, so the order of $a$ is exactly $2^{k+1}$; it divides $p - 1$, so $p \equiv 1 \pmod{2^{k+1}}$.
 - A second proof inducts on $a$ with $(a + 1)^p \equiv a^p + 1 \pmod p$.
 
 ## Applications
@@ -672,14 +676,16 @@ The most common impossibility tool at every level: a square forced into a forbid
 $p$ is an odd prime and $p \nmid a$.
 
 ## Why it works
-Pair each $x$ in $1, \ldots, p - 1$ with the unique $y$ satisfying $xy \equiv a$. If $a$ is not a square, no $x$ pairs with itself, so the $p - 1$ numbers form $\frac{p-1}{2}$ pairs each with product $a$, and $(p - 1)! \equiv a^{(p-1)/2}$. Wilson's Theorem makes the left side $-1$.
+Pair each $x$ in $1, \ldots, p - 1$ with the unique $y$ satisfying $xy \equiv a$. If $a$ is not a square, no $x$ pairs with itself, so the $p - 1$ numbers form $\frac{p-1}{2}$ pairs each with product $a$, and $(p - 1)! \equiv a^{(p-1)/2}$. [[wilsons-theorem|Wilson's Theorem]] makes the left side $-1$.
 
 If $a$ is a square, $a \equiv r^2$, then $x^2 \equiv a$ has exactly the two solutions $\pm r$, which pair with themselves and multiply to $-r^2 \equiv -a$. The other $p - 3$ numbers form pairs with product $a$, so $(p - 1)! \equiv -a \cdot a^{(p-3)/2} = -a^{(p-1)/2}$, and Wilson's Theorem gives $a^{(p-1)/2} \equiv 1$.
 
+The other two forms follow at once. Taking $a = -1$ gives $\left(\frac{-1}{p}\right) \equiv (-1)^{(p-1)/2}$. For the product, $(ab)^{(p-1)/2} = a^{(p-1)/2}b^{(p-1)/2}$, so both sides of the product rule are congruent mod $p$. Both sides are $\pm1$, and $1 \not\equiv -1$ for an odd prime, so the congruences are equalities.
+
 ## Useful observations
 - One power replaces a search through all the squares: $3^3 = 27 \equiv -1 \pmod 7$, so $3$ is not a square modulo $7$, matching the list of squares $1, 2, 4$.
-- Every odd prime factor of $x^2 + 1$ is $1 \bmod 4$.
-- $2$ is a square modulo $p$ exactly when $p \equiv \pm1 \pmod 8$.
+- Every odd prime factor of $x^2 + 1$ is $1 \bmod 4$, since $x^2 \equiv -1$ makes $-1$ a square.
+- $2$ is a square modulo $p$ exactly when $p \equiv \pm1 \pmod 8$; that needs more than the criterion and is proved with [[gauss-lemma-qr|Gauss's Lemma]].
 
 ## Applications
 Deciding whether a number is a square modulo a prime, the primes dividing $x^2 + 1$ or $x^2 + 2$, and the supplements to quadratic reciprocity.
@@ -700,11 +706,13 @@ The facts concern integers; the cycle of a units digit starts at the first power
 ## Why it works
 The units digit of a product depends only on the units digits of the factors, so the units digit of $n^2$ is that of $d^2$, where $d$ is the last digit of $n$. Squaring the ten digits gives endings $0, 1, 4, 9, 6, 5, 6, 9, 4, 1$, and $2$, $3$, $7$, $8$ never appear.
 
-Cubes modulo $9$: with $n \equiv 0, \pm1, \pm2, \pm3, \pm4$, the cubes are $0$, $\pm1$, $\pm8 \equiv \mp1$, $0$, $\pm64 \equiv \pm1$, so every cube is $0$ or $\pm1$. The powers of each digit cycle because there are only ten endings, and every period divides $4$ since $a^5 \equiv a \pmod{10}$ for all $a$.
+Cubes modulo $9$: with $n \equiv 0, \pm1, \pm2, \pm3, \pm4$, the cubes are $0$, $\pm1$, $\pm8 \equiv \mp1$, $0$, $\pm64 \equiv \pm1$, so every cube is $0$ or $\pm1$.
+
+For the cycles, $a^5 \equiv a \pmod 2$ and $a^5 \equiv a \pmod 5$ by [[fermats-little-theorem|Fermat's Little Theorem]], so $a^5 \equiv a \pmod{10}$. Multiplying by $a^{k-1}$ gives $a^{k+4} \equiv a^k$ for every $k \ge 1$, so the units digits from the first power on repeat every four steps, and the true period divides $4$.
 
 ## Useful observations
 - Every units digit cycles with period dividing $4$: the cycles are $2, 4, 8, 6$; $3, 9, 7, 1$; $7, 9, 3, 1$; $8, 4, 2, 6$; $4, 6$; $9, 1$, with $0, 1, 5, 6$ fixed, so $7^{2027}$ ends in $3$, since $2027 \equiv 3 \pmod 4$.
-- A number whose digit sum is $3$, $4$, $5$ or $6 \bmod 9$ is never a cube.
+- A number whose digit sum is $2$, $3$, $4$, $5$, $6$ or $7 \bmod 9$ is never a cube, since the digit sum has the same remainder as the number.
 - $a^5 - a$ is always divisible by $10$, which is why units digits repeat every four powers.
 
 ## Applications
@@ -1314,9 +1322,11 @@ The block formula needs the repeat to start right after the decimal point; facto
 ## Why it works
 If $x = 0.\overline{d_1\cdots d_k}$, then $10^kx = d_1\cdots d_k.\overline{d_1\cdots d_k}$, and subtracting cancels the infinite tail: $(10^k - 1)x = d_1\cdots d_k$. The same fact is a geometric series with ratio $10^{-k}$.
 
-In the long division of $1$ by $n$, each step multiplies the remainder by $10$ and reduces mod $n$, and the digit depends only on the remainder. So the digits repeat when a remainder repeats, and for $n$ coprime to $10$ the remainder first returns to $1$ after $\operatorname{ord}_n(10)$ steps.
+In the long division of $1$ by $n$, each step multiplies the remainder by $10$ and reduces mod $n$, so after $j$ steps the remainder is $10^j \bmod n$, and the digit depends only on the remainder. The digits repeat once a remainder repeats. For $n$ coprime to $10$ the remainder first returns to $1$, the starting remainder, after $\operatorname{ord}_n(10)$ steps, so the decimal repeats from the very first digit with that period.
 
 {{figure:division}}
+
+For a general denominator write $n = 2^a5^bm$ with $m$ coprime to $10$, the fraction in lowest terms, and $j = \max(a, b)$. Then $10^jx$ has denominator $m$, so after its integer part it repeats from the start: at most $j$ digits come before the repeat. No fewer will do, because a decimal that repeats from the start has a denominator dividing $99\cdots9$, which is coprime to $10$. For example $\frac1{44} = 0.02\overline{27}$, with $44 = 2^2 \cdot 11$.
 
 ## Useful observations
 - The denominator splits into a part $2^a5^b$, which sets the number of digits before the repeat, $\max(a, b)$, and a part coprime to $10$, which sets the period.
@@ -1536,21 +1546,25 @@ The telescoping factorization and the coprimality argument recur in contest numb
 "continued-fraction-convergents": String.raw`
 ## Key forms
 - $p_k = a_kp_{k-1} + p_{k-2}$ and $q_k = a_kq_{k-1} + q_{k-2}$ — the recurrences for the convergents $\frac{p_k}{q_k}$ of $[a_0; a_1, a_2, \ldots]$
-- $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$ — consecutive convergents are Farey neighbors
-- the convergents are the best rational approximations with a bounded denominator
+- $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$ — consecutive convergents are Farey neighbors, and every convergent is in lowest terms
+- every best approximation, a fraction $\frac pq$ making $\lvert qx - p\rvert$ smaller than any fraction with a smaller denominator does, is a convergent
 
 ## Conditions
 The partial quotients $a_k$ are positive integers for $k \ge 1$. The starting values are $p_{-1} = 1$, $q_{-1} = 0$, $p_0 = a_0$, $q_0 = 1$.
 
 ## Why it works
-Convergents satisfy the recurrence above, and the determinant identity follows by induction. At the first step $p_0q_{-1} - p_{-1}q_0 = -1$, and substituting the recurrence, $p_kq_{k-1} - p_{k-1}q_k = (a_kp_{k-1} + p_{k-2})q_{k-1} - p_{k-1}(a_kq_{k-1} + q_{k-2}) = -(p_{k-1}q_{k-2} - p_{k-2}q_{k-1})$, which flips the sign each step.
+Write $M(a) = \begin{pmatrix} a & 1 \\ 1 & 0 \end{pmatrix}$. The map $x \mapsto a + \frac1x = \frac{ax + 1}{x}$ is the fraction-linear map of $M(a)$, and composing such maps multiplies their matrices. So $[a_0; a_1, \ldots, a_k]$, which nests these maps, is the product $M(a_0)M(a_1)\cdots M(a_k)$ applied to $x = \infty$, that is, the ratio of the two entries of its first column.
 
-In matrix form each step multiplies by a matrix of determinant $-1$, a unimodular [[matrix-multiplication|matrix multiplication]], which is why the determinant stays $\pm1$.
+Call that product $\begin{pmatrix} p_k & p_{k-1} \\ q_k & q_{k-1} \end{pmatrix}$. Multiplying by $M(a_{k+1})$ on the right sends the columns $(P, P')$ to $(a_{k+1}P + P', P)$, which is exactly the recurrence, and $M(a_0)$ alone gives the starting values $p_0 = a_0$, $q_0 = 1$, $p_{-1} = 1$, $q_{-1} = 0$.
+
+Each $M(a)$ has determinant $-1$, so the product has determinant $(-1)^{k+1}$, which is the identity $p_kq_{k-1} - p_{k-1}q_k = (-1)^{k-1}$. A common factor of $p_k$ and $q_k$ would divide the left side, so every convergent is already in lowest terms.
+
+The best-approximation property is quoted, not proved here (A. Ya. Khinchin, Continued Fractions, Chapter II). It does not say the closest fraction with denominator at most $N$ is always a convergent: for $\pi$ and $N = 57$ the closest is $\frac{179}{57}$, an intermediate fraction between $\frac{22}{7}$ and $\frac{333}{106}$, which beats $\frac{22}{7}$ by about $0.00002$.
 
 ## Useful observations
-- Best rational approximations with bounded denominator are convergents, the tool for "closest fraction to a number with denominator under a bound" questions.
+- For "closest fraction to a number with denominator under a bound" questions, the answer is a convergent or one of the intermediate fractions $\frac{p_{k-1} + mp_k}{q_{k-1} + mq_k}$ between two of them.
 - The determinant identity gives instant solutions to $ax - by = \pm 1$, which is [[bezouts-identity|Bézout's Identity]] via continued fractions.
-- Consecutive convergents are Farey neighbors.
+- The convergents alternate sides of the number, and each lies within $\frac{1}{q_kq_{k+1}}$ of it, since the number lies between two consecutive convergents and they differ by exactly that much.
 
 ## Applications
 Rational approximation, Pell equations, and Stern–Brocot and mediant arguments.
@@ -1721,9 +1735,11 @@ Direct plug-in for "how many lattice points on this circle" questions, and the c
 Unique factorization holds in $\mathbb{Z}[i]$ and $\mathbb{Z}[\omega]$ up to units and the order of the factors.
 
 ## Why it works
-$\mathbb{Z}[i]$ is a Euclidean domain, since division with remainder works by rounding to the nearest Gaussian integer, so it has unique factorization. The norm is multiplicative because it is $\lvert z\rvert^2$, which turns questions about sums of two squares into questions about factorization.
+$\mathbb{Z}[i]$ is a Euclidean domain: to divide $z$ by $w$, round each coordinate of $\frac zw$ to the nearest integer to get $q$; then $\left\lvert\frac zw - q\right\rvert^2 \le \frac14 + \frac14$, so the remainder $z - qw$ has norm at most $\frac12N(w) \lt N(w)$. Hence it has unique factorization. The norm is multiplicative because it is $\lvert z\rvert^2$, which turns questions about sums of two squares into questions about factorization.
 
-A rational prime $p$ behaves by whether $-1$ is a quadratic residue mod $p$: $p \equiv 1 \pmod 4$ makes $x^2 \equiv -1$ solvable, so $p \mid (x + i)(x - i)$ splits; $p \equiv 3 \pmod 4$ stays prime; and $2$ ramifies.
+For $p \equiv 1 \pmod 4$, $-1$ is a square mod $p$, say $x^2 \equiv -1$, so $p \mid x^2 + 1 = (x + i)(x - i)$. But $p$ divides neither factor, since $\frac xp \pm \frac ip$ is not a Gaussian integer, so $p$ is not a Gaussian prime. A factor $\pi$ with $1 \lt N(\pi) \lt p^2$ then has $N(\pi) = p$, so $p = a^2 + b^2$ and $p = \pi\bar\pi$.
+
+For $p \equiv 3 \pmod 4$ a factorization $p = \pi\rho$ into non-units would give $N(\pi) = p = a^2 + b^2$, impossible since squares are $0$ or $1$ mod $4$; so $p$ stays prime. And $2 = (1 + i)(1 - i) = -i(1 + i)^2$, a unit times a square, which is what ramifies means. In $\mathbb{Z}[\omega]$ the same argument, with $x^2 + x + 1 \equiv 0$ in place of $x^2 \equiv -1$, splits the primes $p \equiv 1 \pmod 3$.
 
 ## Useful observations
 - $\mathbb{Z}[i]$ is used whenever $a^2 + b^2$ appears: it is factored as $(a + bi)(a - bi)$ and unique factorization is leaned on.
@@ -1793,11 +1809,13 @@ Usually a single decisive line: the right modulus either ends a "show there are 
 There is no theorem here: these are facts about particular numbers, and the decimal values are approximations. The factorizations are exact.
 
 ## Why it works
-There is no theorem here, only the reason these particular numbers keep appearing.
+There is no theorem here, only the reason these particular numbers keep appearing. Every factorization and value on this card was checked by computer.
 
 Divisibility by $2$, $3$, and $5$ can be seen at a glance, so a number that passes those tests looks prime. A composite number that passes them has all its prime factors at least $7$, and the products of two primes from $7$ to $19$ are the ones that turn up most. Knowing those few products means $221$ or $323$ never slows anything down.
 
-$1001 = 7 \cdot 11 \cdot 13$ is behind a whole family of tricks. Repeating a three-digit block multiplies it by $1001$, $$\overline{abcabc} = \overline{abc} \cdot 1001 = \overline{abc} \cdot 7 \cdot 11 \cdot 13,$$ so every such six-digit number is divisible by $7$, $11$, and $13$. And $2^{10} = 1024$ is so close to $10^3$ that it converts between powers of $2$ and powers of $10$ with an error under $3\%$.
+$1001 = 7 \cdot 11 \cdot 13$ is behind a whole family of tricks. Repeating a three-digit block multiplies it by $1001$,
+$$\overline{abcabc} = \overline{abc} \cdot 1001 = \overline{abc} \cdot 7 \cdot 11 \cdot 13,$$
+so every such six-digit number is divisible by $7$, $11$, and $13$. And $2^{10} = 1024$ is so close to $10^3$ that it converts between powers of $2$ and powers of $10$ with an error under $3\%$.
 
 ## Useful observations
 - To factor a three-digit number, the primes $7$, $11$, $13$, $17$, and $19$ are tested after the obvious small ones. A number below $529 = 23^2$ that passes all of them is prime, since a composite one would need two prime factors of at least $23$.
@@ -1890,7 +1908,9 @@ $n \ge 0$; the base-$10$ formula uses that $v_2(n!) \ge v_5(n!)$ always.
 ## Why it works
 A number ends in $k$ zeros exactly when $10^k = 2^k5^k$ divides it, so the count is $\min(v_2(n!), v_5(n!))$. Among $1, \ldots, n$ every second number is even but only every fifth is a multiple of $5$, and the same holds at every power, so $v_2(n!) \ge v_5(n!)$ and the minimum is $v_5(n!)$, which Legendre's Formula computes.
 
-The count rises at every multiple of $5$, by one more at multiples of $25$, and by one more again at multiples of $125$; at those points some counts are skipped.
+The same reasoning gives any base: $b^k$ divides $n!$ exactly when $q^{ek}$ does for every prime power $q^e$ exactly dividing $b$, that is, when $k \le \frac{v_q(n!)}{e}$ for each such $q$. The largest such $k$ is the minimum of the floors.
+
+The count changes only when $n$ passes a multiple of $5$, so it is constant on each block $5m, \ldots, 5m + 4$, which is why an attained count belongs to exactly five consecutive $n$. It rises by $1$ at every multiple of $5$, by one more at multiples of $25$, and by one more again at multiples of $125$; at those points some counts are skipped.
 
 {{figure:jumps}}
 
@@ -2136,9 +2156,13 @@ Olympiad number theory and combinatorics: the statement that two sequences parti
 The modulus must be prime: modulo $6$, $A = B = \{0, 3\}$ gives $|A + B| = 2 \lt 3$.
 
 ## Why it works
-The proof below uses the polynomial method: the [[combinatorial-nullstellensatz|Combinatorial Nullstellensatz]] in two variables, with the sets $A$ and $B$ and the exponents $|A| - 1$ and $|B| - 1$.
+The proof is the polynomial method: the [[combinatorial-nullstellensatz|Combinatorial Nullstellensatz]] in two variables. In the form used here it says that if $f(x, y)$ has degree $s + t$, its coefficient of $x^sy^t$ is nonzero, $|A| \gt s$ and $|B| \gt t$, then $f(a, b) \ne 0$ for some $a \in A$ and $b \in B$.
 
-Suppose $|A| + |B| \le p + 1$ and $A + B \subseteq C$ with $|C| = |A| + |B| - 2$. Let $f(x, y) = \prod_{c \in C}(x + y - c)$, of degree $|A| + |B| - 2$; its coefficient of $x^{|A|-1}y^{|B|-1}$ is $\binom{|A| + |B| - 2}{|A| - 1}$, nonzero mod $p$ since $|A| + |B| - 2 \lt p$. So some $f(a, b) \ne 0$, meaning $a + b \notin C$, a contradiction. Hence $|A + B| \ge |A| + |B| - 1$; if $|A| + |B| \gt p + 1$, shrink $A$ first.
+First take $|A| + |B| \le p + 1$ and suppose the bound fails, so $|A + B| \le |A| + |B| - 2$. That number is at most $p - 1$, so the sumset fits inside a set $C$ of exactly $|A| + |B| - 2$ residues. Let $f(x, y) = \prod_{c \in C}(x + y - c)$. Every $f(a, b)$ is $0$, because $a + b$ lies in $C$.
+
+But $f$ has degree $(|A| - 1) + (|B| - 1)$ and its top part is $(x + y)^{|C|}$, so its coefficient of $x^{|A|-1}y^{|B|-1}$ is $\binom{|A| + |B| - 2}{|A| - 1}$. That is nonzero mod $p$, because $|A| + |B| - 2 \lt p$ keeps every factor of $p$ out of the factorials. The Nullstellensatz then gives a pair with $f(a, b) \ne 0$, a contradiction.
+
+If $|A| + |B| \gt p + 1$, delete elements of $A$ to get a nonempty $A'$ with $|A'| + |B| = p + 1$; then $|A + B| \ge |A' + B| \ge p$. The iterated form follows by induction, adding one set at a time.
 
 ## Useful observations
 - Adding sets one at a time grows the sumset by at least $|A_i| - 1$ each step until it fills $\mathbb Z_p$, so a few large sets always cover every residue.
@@ -2473,7 +2497,9 @@ $p$ is prime and the $f_i$ have coefficients in $\mathbb F_p$; the degrees are t
 ## Why it works
 For each $x \in \mathbb F_p^n$, the product $P(x) = \prod_i \left(1 - f_i(x)^{p-1}\right)$ is $1$ when $x$ is a common zero and $0$ otherwise, by Fermat's Little Theorem. So the number of common zeros is $\sum_x P(x) \bmod p$.
 
-$P$ has degree at most $(p - 1)\sum \deg f_i \lt (p - 1)n$, so each monomial $x_1^{t_1}\cdots x_n^{t_n}$ in it has some $t_j \lt p - 1$. Summing that monomial over $\mathbb F_p^n$ factors into $\prod_j \sum_{x_j} x_j^{t_j}$, and the factor with $t_j \lt p - 1$ is $0$ mod $p$: for $t_j = 0$ it is $p$, and for $0 \lt t_j \lt p - 1$ it is the sum of the $t_j$th powers of all residues, which a primitive root shows is $0$. So $\sum_x P(x) \equiv 0$.
+$P$ has degree at most $(p - 1)\sum \deg f_i \lt (p - 1)n$, so each monomial $x_1^{t_1}\cdots x_n^{t_n}$ in it has some $t_j \lt p - 1$. Summing that monomial over $\mathbb F_p^n$ factors into $\prod_j \sum_{x_j} x_j^{t_j}$, and the factor with $t_j \lt p - 1$ is $0$ mod $p$. For $t_j = 0$ it is $p$. For $0 \lt t_j \lt p - 1$, take a primitive root $g$: the nonzero residues are $g^0, \ldots, g^{p-2}$, so the sum is the geometric series $\frac{g^{t_j(p-1)} - 1}{g^{t_j} - 1} \equiv 0$, since $g^{t_j} \ne 1$. So $\sum_x P(x) \equiv 0$.
+
+With no constant terms, $x = 0$ is a common zero, and the number of common zeros is a positive multiple of $p$, so at least $p \ge 2$: there is a nonzero one.
 
 ## Useful observations
 - The theorem gives existence without construction: a degree count alone forces a nontrivial solution.
@@ -2612,7 +2638,9 @@ The invisible step in a large share of AIME number theory, rarely named even whe
 $a$ and $b$ are nonnegative integers; carries are counted column by column, including chains.
 
 ## Why it works
-Adding two digits in a column, plus any incoming carry, either stays below $10$ or does not. When it does not, the column keeps the total minus $10$ and passes $1$ to the next column, so the overall digit sum loses $10$ and gains $1$, a net drop of $9$. Without carries every digit of the sum is the sum of the digits, so each carry accounts for exactly one drop of $9$.
+Adding two digits in a column, plus any incoming carry, either stays below $10$ or does not. When it does not, the column keeps the total minus $10$ and passes $1$ to the next column, so the overall digit sum loses $10$ and gains $1$, a net drop of $9$. Without carries every digit of the sum is the sum of the digits, so each carry accounts for exactly one drop of $9$. In base $b$ a carry keeps the total minus $b$ and passes $1$, a drop of $b - 1$.
+
+For doubling, a column holds $2d$ plus an incoming carry of at most $1$. That reaches $10$ exactly when $d \ge 5$, since $2 \cdot 4 + 1 = 9$, so the carries are the digits $5$ to $9$. Every correction is a multiple of $9$, so the digit sum keeps the same remainder mod $9$ through any addition; the reason $n \equiv s(n) \pmod 9$ for a single number is that $10 \equiv 1$, so each place value is $1$ mod $9$.
 
 ## Useful observations
 - "No carrying" means each column adds to at most $9$, so the digits of different places are chosen independently and counts become products.
@@ -3029,5 +3057,33 @@ $$\overline{abba} = 1001a + 110b = 11(91a + 10b), \qquad \overline{abcba} = 1000
 
 ## Contest profile
 An AMC 8 and early AMC 10 and 12 setup: counting palindromes, a palindrome near a given number, or a divisibility question. It pairs with Constructive Counting and the divisibility rules for $3$, $9$, and $11$.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"lcm-common-multiples": String.raw`
+## Key forms
+- $a \mid N$ and $b \mid N$ $\iff$ $\operatorname{lcm}(a, b) \mid N$, and the same for any number of divisors
+- $N \equiv r$ modulo each of $a, b, c$ $\iff$ $N \equiv r \pmod{\operatorname{lcm}(a, b, c)}$; being $1$ short of a multiple of each means $N + 1$ is a multiple of the lcm
+- the common multiples from $1$ to $X$ number $\left\lfloor \frac XL \right\rfloor$, with $L = \operatorname{lcm}(a, b, c)$
+- for pairwise coprime $a$, $b$, $c$ the lcm is the product $abc$
+
+## Conditions
+$a$, $b$, $c$ and $N$ are positive integers. The remainder must be the same for every divisor; different remainders for different divisors need the [[crt|Chinese Remainder Theorem]].
+
+## Why it works
+Work one prime at a time. If $p^e$ is the highest power of $p$ in any of $a$, $b$, $c$, then $p^e$ is exactly the power of $p$ in $\operatorname{lcm}(a, b, c)$. A number $N$ divisible by each of $a$, $b$, $c$ must contain at least $p^e$, since one of them does, and that for every prime is the statement $\operatorname{lcm}(a, b, c) \mid N$. Conversely the lcm is a multiple of each of $a$, $b$, $c$, so every multiple of it is too.
+
+The remainder form is the same fact for $N - r$: $N \equiv r$ modulo each divisor exactly when each divides $N - r$. The count of common multiples up to $X$ is then the count of multiples of $L$, which is [[floor-multiples|the floor]] $\left\lfloor \frac XL \right\rfloor$. When the numbers are pairwise coprime, each prime occurs in only one of them, so the highest powers multiply to $abc$.
+
+## Useful observations
+- The first time several cycles of lengths $a$, $b$, $c$ line up again is after $\operatorname{lcm}(a, b, c)$ steps: buses, lights, and repeating patterns all meet at the lcm.
+- $\operatorname{lcm}(1, 2, \ldots, 6) = 60$ and $\operatorname{lcm}(1, \ldots, 10) = 2520$ come up often.
+- A remainder that is $1$ less than each divisor, as in remainders $1, 2, 3$ on division by $2, 3, 4$, signals $N + 1$ as the common multiple.
+
+## Applications
+Repeating schedules and patterns, numbers with given remainders that all match or all fall short by the same amount, and divisibility by every number in a range.
+
+## Contest profile
+A MATHCOUNTS and AMC 8 staple, and an AMC 10 and 12 first step; on the AIME it is usually one line inside a longer argument.
 `
 });

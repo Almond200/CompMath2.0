@@ -232,3 +232,105 @@ picks-theorem             # full proof: additivity, rectangles, triangles
 conic-tangent-lines       # parabola point form, hyperbola slopes, director circle
 committee-chair
 parabolic-segment-area
+circumradius-area         # rR and the observations derived
+digit-sum-carries
+common-angle-values
+eigenvalues-characteristic # trace and determinant coefficients derived
+law-cosines-60-120
+inversion-facts           # circles not through O and angle preservation proved
+reflection-composition    # longer chains; odd case classification quoted
+isoperimetric-facts       # triangle bound derived; circle and polygon steps quoted (Blasjo)
+cross-ratio               # complex form, rearrangements, sign
+recognition-numbers       # values checked by computer
+mobius-inversion          # squarefree count and the strings formula proved
+fencepost-counting
+handshake-lemma
+triangle-congruence       # when SSA works, proved
+gliding-principle
+cubes-minus-3abc          # roots-of-unity factorization written out
+regular-octagon
+triangle-center-angles    # excenter angle proved
+gergonne-nagel-points     # ratios, barycentrics, Nagel line proved
+plane-intercept-form
+minkowski-inequality # p-norm step spelled out; p<1 counterexample
+change-of-base # proofs of power and exchange forms
+stirling-bell # surjection and Bell recurrence reindexing
+sum-of-divisors # checked, no change
+cauchy-davenport # proof completed: padding C, coefficient, large case
+continued-fraction-convergents # matrix proof; best-approximation quoted and corrected
+cayley-hamilton # coefficient equations explicit; fake proof trap
+circular-permutations # checked, no change
+triangle-similarity # checked, no change
+herons-formula # checked, no change
+hyperbola-properties # derivation written out; asymptote family corrected
+eccentricity # focus-directrix equation derived; similarity reason
+rotation-90 # checked, no change
+konigs-theorem # full alternating-path proof
+orthic-triangle # angle chase written out
+antisymmetric-factorization # quotient symmetry and constants checked; observation corrected
+max-product-fixed-sum # complete exchange proof
+product-sum # checked, no change
+stewarts-theorem # checked, no change
+focal-radii # checked, no change
+assume-all-one-kind # new card, short but complete
+round-up-whole-items # new card, short but complete
+repeating-decimals # pre-period proved, example
+determinant-geometric # area via Lagrange, 3x3 reduction, triple product, scaling
+holders-inequality # full AM-GM proof; equality condition and wrong Hölder example fixed
+steiner-ratio-theorem # checked, no change
+matrix-multiplication # definition derived, example, walk induction
+median-to-hypotenuse # converse proved by angles
+cevian-area-ratio # third form explained
+british-flag-theorem # coordinates written out
+gram-determinant-volume # checked, no change
+average-speed # checked, no change
+vandermonde # checked, no change
+gcd-lcm-product # checked, no change
+expected-value # checked, no change
+fermats-little-theorem # order observation made exact (odd prime)
+difference-of-squares # checked, no change
+proportion-properties # condition corrected (only combined form needs k != 1)
+trapezoid-parallelogram-areas # sqrt(XY) reason added
+parallelogram-vertices # checked, no change
+eulers-criterion # supplements derived; 2-rule pointed to Gauss's Lemma
+consecutive-product-factorial # checked, no change
+multinomial-theorem # term count proved
+expected-fixed-points # checked, no change
+cevian-ratio-sum # checked (identity verified), no change
+de-guas-theorem # cross product and altitude written out
+chevalley-warning # primitive-root sum and nonzero zero written out
+gaussian-integers # Euclidean bound and splitting proofs
+abs-triangle-inequality # reverse form proved
+subset-sum-facts # checked, no change
+conic-perpendicular-radii # checked, no change
+pole-polar # chord of contact and harmonic range proved
+trailing-zeros # base-b and five-in-a-row proved
+bretschneiders-formula # full derivation (checked numerically); area renamed K
+rouths-theorem # determinant checked, no change
+equal-chords-arcs # checked, no change
+tangent-chord-angle # checked, no change
+largest-odd-divisor-sum # checked, no change
+rearrangement # swap proof made exact; minimum by negation
+cosecant-cotangent-square-sums # algebra checked, no change
+half-angle-tangent-identity # addition step and r/(s-a) shown
+angle-bisector-length # similarity reasons, angle forms derived (checked numerically)
+euler-distance-theorem # excenter form proved
+lemoine-point # symmedian distance locus proved; minimum value
+apollonius-circle # checked, no change
+monges-theorem # checked, no change
+line-forms # checked, no change
+divisibility-rules # checked, no change
+rational-root-theorem # checked, no change
+complex-basics # checked, no change
+absolute-value-identities # checked, no change
+intercept-theorem # checked, no change
+ellipse-properties # derivation and area by stretch written out
+rotation-reflection-matrices # reflection columns and both products derived
+multiplicative-functions # checked, no change
+last-digit-patterns # a^5=a mod 10 proved; cube observation completed
+altitude-hypotenuse # checked, no change
+parallelogram-area # sine form labels fixed
+altitude-bisector-angle # checked, no change
+binomial-probability # variance derived
+pigeonhole # checked, no change
+symmedian-lemoine # sine ratio corrected (was c/b, is b/c); tangent point proved

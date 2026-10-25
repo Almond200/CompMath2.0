@@ -15,9 +15,14 @@ Object.assign(window.MATH_DETAILS, {
 $P \ne O$: the center has no image, and plays the role of the point at infinity. A circle not through $O$ maps to a circle, but its center does not map to the center of the image.
 
 ## Why it works
-For two points $P$ and $Q$, the definition gives $OP \cdot OP^* = OQ \cdot OQ^*$, so $\frac{OP}{OQ} = \frac{OQ^*}{OP^*}$. With the shared angle at $O$, triangles $OPQ$ and $OQ^*P^*$ are similar, and matching sides gives $$\frac{P^*Q^*}{PQ} = \frac{OQ^*}{OP} = \frac{r^2}{OP \cdot OQ}.$$
+For two points $P$ and $Q$, the definition gives $OP \cdot OP^* = OQ \cdot OQ^*$, so $\frac{OP}{OQ} = \frac{OQ^*}{OP^*}$. With the shared angle at $O$, triangles $OPQ$ and $OQ^*P^*$ are similar, and matching sides gives
+$$\frac{P^*Q^*}{PQ} = \frac{OQ^*}{OP} = \frac{r^2}{OP \cdot OQ}.$$
 
-The same similarity carries lines to circles. Let $A$ be the foot of the perpendicular from $O$ to a line not through $O$, and $P$ any point of the line. Triangles $OAP$ and $OP^*A^*$ are similar, so the angle at $P^*$ is a right angle, and $P^*$ lies on the circle with diameter $OA^*$.
+Lines. A line through $O$ goes to itself, since $P^*$ is on ray $OP$. For a line not through $O$, let $A$ be the foot of the perpendicular from $O$ and $P$ any point of the line. Triangles $OAP$ and $OP^*A^*$ are similar, so the angle at $P^*$ is a right angle, and $P^*$ lies on the circle with diameter $OA^*$. Inversion undoes itself, so a circle through $O$ goes back to a line.
+
+Circles not through $O$. Let the circle have power $k \ne 0$ with respect to $O$. The ray from $O$ through a point $P$ of it meets it again at $Q$, with $OP \cdot OQ = k$ (signed). Then $OP^* = \frac{r^2}{OP} = \frac{r^2}{k}OQ$, so $P^*$ is the image of $Q$ under the homothety at $O$ with ratio $\frac{r^2}k$, and the whole image is a circle not through $O$.
+
+Angles. The similar triangles give $\angle OPQ = \angle OQ^*P^*$: as $Q$ approaches $P$ along a curve, the angle between the curve and the line $OP$ at $P$ equals the angle between the image curve and the same line at $P^*$, with the orientation reversed. Two curves through $P$ therefore meet at the same angle as their images.
 
 ## Useful observations
 - Centering at a point where many circles meet turns every circle through it into a line, and tangent circles through it into parallel lines.
@@ -356,7 +361,7 @@ A triangle's area is half its base times its height, so two triangles with the s
 
 For $D$ on $BC$, the triangles $ABD$ and $ACD$ both have apex $A$ and bases on line $BC$. Their height is the distance $h$ from $A$ to that line, the same for both, so $$\frac{[ABD]}{[ACD]} = \frac{\frac12 \cdot BD \cdot h}{\frac12 \cdot DC \cdot h} = \frac{BD}{DC}.$$
 
-Nothing in that used the fact that the two bases meet at $D$ or lie inside side $BC$, only that the apex is shared and the bases lie on one line.
+Nothing in that used the fact that the two bases meet at $D$ or lie inside side $BC$, only that the apex is shared and the bases lie on one line. The third form is the same computation the other way round: a shared base, and apexes on a line parallel to it, which keeps the height the same.
 
 {{figure:fan}}
 
@@ -397,7 +402,7 @@ When the diagonals are perpendicular, they cut the quadrilateral into four right
 
 {{figure:diagonals}}
 
-- If the two similar triangles have areas $X$ and $Y$, each leg triangle has area $\sqrt{XY}$, so the whole trapezoid is $X + Y + 2\sqrt{XY} = (\sqrt X + \sqrt Y)^2$.
+- If the two similar triangles $OAB$ and $OCD$ have areas $X$ and $Y$, each leg triangle has area $\sqrt{XY}$, so the whole trapezoid is $X + Y + 2\sqrt{XY} = (\sqrt X + \sqrt Y)^2$. The reason: $OBC$ and $OAB$ share the apex $B$ with bases $OC$ and $OA$ on one line, so $[OBC] = X \cdot \frac{OC}{OA}$, and $\frac{OC}{OA} = \frac{CD}{AB} = \sqrt{\frac YX}$.
 - For a trapezoid whose height is not given, perpendiculars from the ends of the shorter base make right triangles at the ends; in an isosceles trapezoid each overhang is half the difference of the bases, and the [[pythagorean-theorem|Pythagorean Theorem]] gives the height.
 - The lengths of the midline and of the segment through the diagonals' crossing are on [[trapezoid-special-segments|their own card]].
 - A rhombus has an inscribed circle, and its area is the inradius times half its perimeter, so with side $s = \frac12\sqrt{d_1^2 + d_2^2}$ the inradius is $r = \frac{d_1d_2}{4s}$.
@@ -668,6 +673,10 @@ The area is $\frac12ab\sin C$ by the sine area formula. The side $c$ is a chord 
 
 {{figure:both-radii}}
 
+The other forms follow at once. In a right triangle the hypotenuse subtends a right angle, so it is a diameter and $R = \frac c2$. Since also $A = rs$, multiplying $R = \frac{abc}{4A}$ by $r = \frac As$ gives $rR = \frac{abc}{4s}$.
+
+For the observations: the circumcenter is on the perpendicular bisector of side $a$, and the right triangle formed by $O$, the midpoint of $a$, and an end of $a$ gives the distance $\sqrt{R^2 - \frac{a^2}4}$, which is $R\lvert\cos A\rvert$; it lies on $A$'s side of $a$ exactly when $A$ is acute. For an isosceles triangle with legs $\ell$, base $b$ and height $h$, $R = \frac{\ell \cdot \ell \cdot b}{4 \cdot \frac12bh} = \frac{\ell^2}{2h}$.
+
 ## Useful observations
 - The circumcenter lies on the perpendicular bisector of each side, at distance $\sqrt{R^2 - \frac{a^2}{4}}$ from side $a$, inside the triangle exactly when the triangle is acute.
 - For a right triangle the hypotenuse is a diameter, so $R$ needs no area at all.
@@ -930,9 +939,11 @@ The external bisector has a length only when $a \ne b$: if $a = b$ it runs paral
 ## Why it works
 Apply [[stewarts-theorem|Stewart's Theorem]] with the segments from the [[angle-bisector-theorem|Angle Bisector Theorem]], $m = \frac{ac}{a + b}$ and $n = \frac{bc}{a + b}$ for the opposite side $c$, and the algebra collapses to $d^2 = ab - mn$.
 
-A second proof uses the circumcircle. Extend the bisector $CD$ to meet the circle again at $E$. Triangles $CAD$ and $CEB$ are similar, so $CA \cdot CB = CD \cdot CE$, that is $ab = d \cdot CE$. The power of $D$ gives $mn = CD \cdot DE = d(CE - d) = ab - d^2$, so $d^2 = ab - mn$.
+A second proof uses the circumcircle. Extend the bisector $CD$ to meet the circle again at $E$. Triangles $CAD$ and $CEB$ are similar: their angles at $C$ are the two halves of angle $C$, and $\angle CAB = \angle CEB$ because both stand on the arc $CB$. So $CA \cdot CB = CD \cdot CE$, that is $ab = d \cdot CE$. The power of $D$ gives $mn = CD \cdot DE = d(CE - d) = ab - d^2$, so $d^2 = ab - mn$.
 
-The same picture explains the external bisector. Its foot lies outside the circle, so the power of the point reverses the subtraction and $d'^2 = m'n' - ab$.
+The angle form comes from areas. The bisector splits the triangle into two pieces with angle $\frac C2$ at $C$, so $\frac12ab\sin C = \frac12ad\sin\frac C2 + \frac12bd\sin\frac C2$. With $\sin C = 2\sin\frac C2\cos\frac C2$ this gives $d = \frac{2ab\cos(C/2)}{a + b}$. For the external bisector the two pieces have angles $90^\circ - \frac C2$ and $90^\circ + \frac C2$ at $C$, their areas subtract, and the same steps give $d' = \frac{2ab\sin(C/2)}{|a - b|}$.
+
+The same circle picture explains the external bisector. Its foot lies outside the circle, so the power of the point reverses the subtraction and $d'^2 = m'n' - ab$.
 
 ## Useful observations
 - The internal bisector is always shorter than $\sqrt{ab}$, since $mn$ is positive.
@@ -1186,9 +1197,11 @@ AIME coordinate problems hand over two centers and ask for a distance or the thi
 $O$ and $I$ are the circumcenter and incenter of a triangle with circumradius $R$ and inradius $r$.
 
 ## Why it works
-The power of the incenter with respect to the circumcircle is $OI^2 - R^2$, which is negative because $I$ is inside. Extend $AI$ to meet the circumcircle again at $M$, the midpoint of arc $BC$. Then $IA \cdot IM = R^2 - OI^2$. Here $IA = \frac{r}{\sin(A/2)}$, and by the [[incenter-excenter-lemma|incenter-excenter lemma]] $IM = MB = 2R\sin\frac A2$, so the product is $2Rr$, and $R^2 - OI^2 = 2Rr$.
+The power of the incenter with respect to the circumcircle is $OI^2 - R^2$, which is negative because $I$ is inside. Extend $AI$ to meet the circumcircle again at $M$, the midpoint of arc $BC$. Then $IA \cdot IM = R^2 - OI^2$. Here $IA = \frac{r}{\sin(A/2)}$, from the right triangle formed by $A$, $I$ and the touch point on $AB$, and by the [[incenter-excenter-lemma|incenter-excenter lemma]] $IM = MB = 2R\sin\frac A2$, so the product is $2Rr$, and $R^2 - OI^2 = 2Rr$.
 
 Since $OI^2 \ge 0$, the formula gives $R(R - 2r) \ge 0$, that is $R \ge 2r$, with equality exactly when $O = I$, which happens only for the equilateral triangle.
+
+The excenter $I_A$ lies on the same line $AM$, outside the circle, so its power is $OI_A^2 - R^2 = I_AA \cdot I_AM$. The same right triangle with the excircle gives $I_AA = \frac{r_a}{\sin(A/2)}$, and the lemma gives $I_AM = MB = 2R\sin\frac A2$, so $OI_A^2 - R^2 = 2Rr_a$.
 
 ## Useful observations
 - When two of $R$, $r$, $OI$ are given the third follows at once, which is how the formula usually appears.
@@ -1941,7 +1954,7 @@ A recurring AIME and AMC gem: a point on the circumcircle with two of the three 
 
 "bretschneiders-formula": String.raw`
 ## Key forms
-- $A = \sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\cos^2\frac{A + C}{2}}$ — the area of any convex quadrilateral with sides $a, b, c, d$, semiperimeter $s$, and opposite angles $A$ and $C$
+- $K = \sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\cos^2\frac{A + C}{2}}$ — the area $K$ of any convex quadrilateral with sides $a, b, c, d$, semiperimeter $s$, and opposite angles $A$ and $C$
 - $A + C = 180^\circ$ — the cyclic case, where the last term vanishes and the formula becomes Brahmagupta's Formula
 - among all quadrilaterals with the same four sides, the cyclic one has the largest area
 
@@ -1949,7 +1962,13 @@ A recurring AIME and AMC gem: a point on the circumcircle with two of the three 
 The quadrilateral is convex, the sides are taken in order, and $A$ and $C$ are opposite angles.
 
 ## Why it works
-The proof is the same split-and-eliminate as for Brahmagupta's Formula: write the area as the sum of the two triangles cut by a diagonal, equate the two expressions for that diagonal by the Law of Cosines, and eliminate the diagonal. Without the cyclic condition the angle term $abcd\cos^2\frac{A + C}{2}$ survives. Cyclic quadrilaterals have $A + C = 180^\circ$, which kills it; that is the sanity check.
+Label the sides $AB = a$, $BC = b$, $CD = c$, $DA = d$ and cut along the diagonal $BD$, so triangle $ABD$ has sides $a$, $d$ around angle $A$ and triangle $CBD$ has sides $b$, $c$ around angle $C$. Then $$2K = ad\sin A + bc\sin C,$$ and the [[law-of-cosines|Law of Cosines]] for $BD$ in both triangles gives $$\tfrac12\left(a^2 + d^2 - b^2 - c^2\right) = ad\cos A - bc\cos C.$$
+
+Squaring both and adding eliminates the separate angles: $$4K^2 + \tfrac14\left(a^2 + d^2 - b^2 - c^2\right)^2 = a^2d^2 + b^2c^2 - 2abcd\cos(A + C).$$ Write $\cos(A + C) = 2\cos^2\frac{A + C}{2} - 1$, so the right side is $(ad + bc)^2 - 4abcd\cos^2\frac{A + C}{2}$.
+
+The difference of squares $(ad + bc)^2 - \frac14(a^2 + d^2 - b^2 - c^2)^2$ factors as $\frac14\left[(b + c)^2 - (a - d)^2\right]\left[(a + d)^2 - (b - c)^2\right]$, and each bracket factors again into terms such as $b + c + d - a = 2(s - a)$. That gives $16(s - a)(s - b)(s - c)(s - d)$ over $4$, and dividing everything by $4$ leaves the formula.
+
+Cyclic quadrilaterals have $A + C = 180^\circ$, which kills the cosine term and leaves Brahmagupta's Formula.
 
 ## Useful observations
 - The cosine term is never negative, so the area never exceeds $\sqrt{(s - a)(s - b)(s - c)(s - d)}$, which is why the cyclic quadrilateral maximizes the area for given sides.
@@ -2184,9 +2203,9 @@ Three problems here, all AIME, none solved by it alone. The usual moves are to w
 $ABCD$ is a rectangle, and $P$ may be anywhere: inside, outside, or off the plane of the rectangle. The statement needs a rectangle, not an arbitrary parallelogram.
 
 ## Why it works
-Set up coordinates with the rectangle's sides on the axes: each squared distance expands into sums of squared coordinate differences, and both pairings select the same four terms. No planarity is even required, so it survives in three dimensions.
+Put the rectangle at $A = (0, 0, 0)$, $B = (a, 0, 0)$, $C = (a, b, 0)$, $D = (0, b, 0)$, and let $P = (x, y, z)$ be any point. Then $$PA^2 + PC^2 = x^2 + y^2 + (x - a)^2 + (y - b)^2 + 2z^2,$$ $$PB^2 + PD^2 = (x - a)^2 + y^2 + x^2 + (y - b)^2 + 2z^2,$$ the same four terms in another order. Nothing required $z = 0$, so $P$ may be off the plane.
 
-For a box with vertex $A$ at the origin and neighbors $B$, $D$, $E$ along the axes, both $2PA^2 + PG^2$ and $PB^2 + PD^2 + PE^2$ equal $3\lvert P\rvert^2 - 2P \cdot (a, b, c) + a^2 + b^2 + c^2$, which proves the second form.
+For a box, each pair of opposite vertices uses, in every coordinate, one end at $0$ and one at the full length, so every pair gives $x^2 + (x - a)^2 + y^2 + (y - b)^2 + z^2 + (z - c)^2$. With $A$ at the origin and neighbors $B$, $D$, $E$ along the axes, both $2PA^2 + PG^2$ and $PB^2 + PD^2 + PE^2$ equal $3\lvert P\rvert^2 - 2P \cdot (a, b, c) + a^2 + b^2 + c^2$, which proves the third form.
 
 ## Useful observations
 - With three of the four corner distances known, the fourth follows immediately.
@@ -2487,9 +2506,11 @@ AIME three-dimensional problems, tetrahedra with given coordinates or edge relat
 The three edges at one vertex are mutually perpendicular, a trirectangular corner, like a sliced box corner. The theorem does not hold for a general tetrahedron.
 
 ## Why it works
-Place the vertex at the origin with the edges $a, b, c$ on the axes. The three right-angle faces have areas $\frac{ab}2$, $\frac{bc}2$, and $\frac{ca}2$, and the far face has area half the length of the cross product of two of its edge vectors, which squares to exactly the sum of the three squared leg-face areas.
+Place the vertex at the origin with the edges $a, b, c$ on the axes, so the other vertices are $(a, 0, 0)$, $(0, b, 0)$, $(0, 0, c)$. The three right-angle faces have areas $\frac{ab}2$, $\frac{bc}2$, and $\frac{ca}2$.
 
-The altitude relation follows by computing the volume two ways: $V = \frac{abc}{6} = \frac13A_0h$, and $A_0^2 = \frac14(a^2b^2 + b^2c^2 + c^2a^2)$.
+Two edges of the far face are $(-a, b, 0)$ and $(-a, 0, c)$, whose cross product is $(bc, ca, ab)$. The face's area is half its length, so $$A_0^2 = \frac14\left(b^2c^2 + c^2a^2 + a^2b^2\right) = \left(\frac{bc}2\right)^2 + \left(\frac{ca}2\right)^2 + \left(\frac{ab}2\right)^2.$$
+
+The altitude relation follows by computing the volume two ways: $V = \frac{abc}{6} = \frac13A_0h$, so $h^2 = \frac{a^2b^2c^2}{4A_0^2} = \frac{a^2b^2c^2}{a^2b^2 + b^2c^2 + c^2a^2}$, and taking reciprocals gives $\frac1{h^2} = \frac1{a^2} + \frac1{b^2} + \frac1{c^2}$.
 
 ## Useful observations
 - Given the three perpendicular edges, all four face areas follow; given three face areas, the fourth is one square root away.
@@ -2995,9 +3016,11 @@ An olympiad inequality, and the occasional AIME-adjacent bound; a sanity check f
 The triangle is any triangle, with $b = AC$ and $c = AB$. In an isosceles triangle with $b = c$ the symmedian, the median, and the bisector coincide.
 
 ## Why it works
-Reflecting the median over the angle bisector swaps the roles of the two adjacent sides, which turns the median's even split into the $c^2 : b^2$ ratio. Trig [[cevas-theorem|Ceva]] makes this precise: the median's two angles satisfy $\frac{\sin\angle BAM}{\sin\angle MAC} = \frac cb$ by the [[ratio-lemma|Ratio Lemma]], and reflecting inverts that quotient, so the symmedian's split carries the square.
+The [[ratio-lemma|Ratio Lemma]] gives, for the median $AM$, $$\frac{BM}{MC} = \frac cb \cdot \frac{\sin\angle BAM}{\sin\angle MAC}.$$ The left side is $1$, so the sine quotient is $\frac bc$. Reflecting in the bisector swaps the two angles, so for the symmedian $AE$ the quotient is $\frac cb$, and the same lemma gives $\frac{BE}{EC} = \frac cb \cdot \frac cb = \frac{c^2}{b^2}$.
 
-The distance form explains the same thing without any trigonometry. Comparing areas, $[ABE] = \frac12 \cdot AB \cdot d(E, AB)$ and $[ACE] = \frac12 \cdot AC \cdot d(E, AC)$, while $\frac{[ABE]}{[ACE]} = \frac{BE}{EC}$ because the two triangles share the apex $A$. Setting those equal to $\frac{c^2}{b^2}$ gives $\frac{d(E, AB)}{d(E, AC)} = \frac cb$, and since that ratio is the same at every point of the cevian, it characterizes the whole line.
+The distance form follows from areas. $[ABE] = \frac12 \cdot c \cdot d(E, AB)$ and $[ACE] = \frac12 \cdot b \cdot d(E, AC)$, while $\frac{[ABE]}{[ACE]} = \frac{BE}{EC}$ because the two triangles share the apex $A$. Setting that equal to $\frac{c^2}{b^2}$ gives $\frac{d(E, AB)}{d(E, AC)} = \frac cb$, and since the ratio of the distances to the two sides is the same at every point of a line through $A$, it characterizes the whole line.
+
+For the tangent point $T$, use the distance form. $TB = TC$, and by the tangent–chord angle $\angle TBC = \angle TCB = A$, so the angle between $TB$ and line $BA$ is $A + B$ and between $TC$ and line $CA$ is $A + C$. Then $\frac{d(T, AB)}{d(T, AC)} = \frac{TB\sin(A + B)}{TC\sin(A + C)} = \frac{\sin C}{\sin B} = \frac cb$, so $T$ lies on the symmedian.
 
 ## Useful observations
 - Recognizing any one of the four equivalent conditions gives the others for free.
@@ -4018,9 +4041,11 @@ AIME three-dimensional problems: the distance between skew edges or face diagona
 The perimeter is fixed. Equality holds only for the symmetric shape, and the statement is about closed curves in the plane; a wall or a missing side changes the optimum.
 
 ## Why it works
-Rectangle: $xy \le \left(\frac{x + y}{2}\right)^2$ is AM-GM. Triangle: Heron's product $(s - a)(s - b)(s - c)$ with fixed sum is maximized at equality, AM-GM again, since the three factors add to $s$.
+Rectangle: with sides $x$ and $y$ and $x + y = \frac P2$, AM-GM gives $xy \le \left(\frac{x + y}{2}\right)^2 = \frac{P^2}{16}$, with equality for the square.
 
-For polygons the classical chain is: the cyclic arrangement maximizes area for given sides, because [[bretschneiders-formula|Bretschneider's]] cosine term vanishes; then the regular polygon among cyclic ones; then the circle. Each step trades asymmetry for area.
+Triangle: Heron's Formula gives $A^2 = s(s - a)(s - b)(s - c)$, and the three factors after $s$ add to $3s - 2s = s$, so AM-GM gives $(s - a)(s - b)(s - c) \le \left(\frac s3\right)^3$. Then $A^2 \le \frac{s^4}{27}$, so $A \le \frac{s^2}{3\sqrt3} = \frac{P^2}{12\sqrt3}$, with equality for the equilateral triangle.
+
+For polygons the classical chain is: the cyclic arrangement maximizes area for given sides, because [[bretschneiders-formula|Bretschneider's]] cosine term vanishes; then the regular polygon among cyclic ones; then the circle. The circle bound $A \le \frac{P^2}{4\pi}$ for all closed curves, and the step to the regular polygon, are quoted, not proved here; a survey of the proofs is V. Blåsjö, "The Isoperimetric Problem", American Mathematical Monthly 112 (2005), 526–566.
 
 ## Useful observations
 - Optimization problems that ask for a maximum area with a perimeter budget, or a minimum perimeter for an area, end at the symmetric configuration: the fact is quoted, the symmetric case computed, and the equality condition confirmed.
@@ -4455,16 +4480,20 @@ An AIME time-saver on ellipse areas and on ratio questions inside a general tria
 "pole-polar": String.raw`
 ## Key forms
 - the polar of $P$ with respect to a circle of radius $R$ about $O$ is the line of points $Q$ with $\vec{OP} \cdot \vec{OQ} = R^2$; when $P$ lies outside the circle, this line is the chord of contact joining the two tangency points
-- La Hire's theorem: $P$ lies on the polar of $Q$ if and only if $Q$ lies on the polar of $P$, so "collinear" and "concurrent" become dual statements
+- La Hire's Theorem: $P$ lies on the polar of $Q$ if and only if $Q$ lies on the polar of $P$, so "collinear" and "concurrent" become dual statements
 - a secant from $P$ meeting the circle at $X, Y$ and the polar at $Q$ forms a harmonic range $(X, Y;\, P, Q) = -1$
 
 ## Conditions
 $P$ is not the center. For $P$ inside the circle the polar is a line outside it, and for $P$ on the circle it is the tangent at $P$.
 
 ## Why it works
-Fix a circle of radius $R$ about $O$. The polar of $P$ is the line of points $Q$ with $\vec{OP} \cdot \vec{OQ} = R^2$; for $P$ outside, that line is exactly the chord of contact through the two tangency points.
+Fix a circle of radius $R$ about $O$ and take $O$ as the origin. The polar of $P$ is the line of points $Q$ with $P \cdot Q = R^2$, a line perpendicular to $OP$. For $P$ outside, a tangency point $T$ has $OT \perp TP$, so $P \cdot T = (T + (P - T)) \cdot T = R^2 + 0$: both tangency points lie on the polar, which is therefore the chord of contact.
 
-The defining relation is symmetric in $P$ and $Q$, which is La Hire's theorem. Because polarity swaps points with lines while preserving incidence, "collinear" and "concurrent" become dual statements, so proving one proves the other.
+The defining relation is symmetric in $P$ and $Q$, which is La Hire's Theorem. Because polarity swaps points with lines while preserving incidence, "collinear" and "concurrent" become dual statements, so proving one proves the other.
+
+For the harmonic range, let $M$ be the foot of the perpendicular from $O$ to the secant, at distance $m$, and measure positions along the secant from $M$ with unit direction $u$. Then $X$ and $Y$ are at $\mp s$ with $s^2 = R^2 - m^2$, and $P$, $Q$ at $p$, $q$. Since $M \perp u$, $P \cdot Q = m^2 + pq$, so $Q$ is on the polar exactly when $pq = s^2$.
+
+With $q = \frac{s^2}{p}$, the signed ratios are $\frac{XQ}{QY} = \frac{q + s}{s - q} = \frac{s + p}{p - s}$, the negative of $\frac{XP}{PY} = \frac{p + s}{s - p}$, which is the condition $(X, Y; P, Q) = -1$.
 
 ## Useful observations
 - The trigger is tangents and secants from a common external point: the chord of contact is a polar that can be named.
@@ -4597,6 +4626,8 @@ Each formula is a short angle chase from that center's defining property.
 Circumcenter: the inscribed-angle theorem says the arc $BC$ subtends $\angle A$ at the circumference and twice that, $2A$, at the center $O$.
 
 Incenter: in $\triangle BIC$ the angles at $B$ and $C$ are the halves $\frac B2$ and $\frac C2$, so $\angle BIC = 180^\circ - \frac{B + C}{2} = 180^\circ - \frac{180^\circ - A}{2} = 90^\circ + \frac A2$.
+
+Excenter: the internal and external bisectors at $B$ are perpendicular, so $\angle IBI_A = 90^\circ$, and likewise $\angle ICI_A = 90^\circ$. So $B$ and $C$ lie on the circle with diameter $II_A$, and in the cyclic quadrilateral $IBI_AC$ the angle $BI_AC$ is $180^\circ - \left(90^\circ + \frac A2\right) = 90^\circ - \frac A2$.
 
 Orthocenter: with $E$ and $F$ the feet of the altitudes from $B$ and $C$, the quadrilateral $AFHE$ has two right angles at $F$ and $E$, so $\angle FHE = 180^\circ - A$, and $\angle BHC$ is the vertical angle.
 
@@ -4787,9 +4818,11 @@ Famous and beautiful but almost never the intended method; ordinary angle chasin
 The cevians go from each vertex to the touch point on the opposite side: of the incircle for the Gergonne point, and of the excircle opposite that vertex for the Nagel point. The two points are [[isotomic-conjugate|isotomic conjugates]] of each other.
 
 ## Why it works
-Both are Ceva concurrences. Gergonne: the [[incircle-tangent-lengths|incircle tangent lengths]] give equal pairs, so the Ceva product for the cevians to the touch points is $1$.
+Both are Ceva concurrences. Gergonne: the [[incircle-tangent-lengths|incircle tangent lengths]] give the touch points on $BC$, $CA$, $AB$ the ratios $\frac{s - b}{s - c}$, $\frac{s - c}{s - a}$, $\frac{s - a}{s - b}$, whose product is $1$, so the cevians concur by Ceva's Theorem. Masses $\frac1{s - a}$, $\frac1{s - b}$, $\frac1{s - c}$ at the vertices balance every one of those ratios, which gives the barycentric coordinates.
 
-Nagel: the $A$-excircle touches $BC$ with $BX' = s - c$ and $CX' = s - b$, and Ceva's Theorem again gives concurrence. The Nagel point, the centroid, and the [[incenter-excenter-lemma|incenter]] are collinear with $NG = 2\,GI$, the Nagel line.
+Nagel: the $A$-excircle touches $BC$ with $BX' = s - c$ and $CX' = s - b$, the incircle's lengths swapped, as on [[incircle-excircle-touch|the touch-point card]]; the ratios are the reciprocals of Gergonne's, their product is again $1$, and masses $s - a$, $s - b$, $s - c$ balance them. Swapping each touch point for its reflection in the side's midpoint is what makes the two points isotomic conjugates.
+
+For the Nagel line, write the points as weighted averages with weights adding to $1$: $N = \frac{(s - a)A + (s - b)B + (s - c)C}{s}$ and $I = \frac{aA + bB + cC}{2s}$. Then $N + 2I = A + B + C = 3G$, so $G = \frac{N + 2I}3$ lies on segment $NI$ with $NG = 2\,GI$.
 
 ## Useful observations
 - "Cevians to the incircle or excircle contact points" is recognized, and concurrence invoked instead of re-derived.
@@ -4947,7 +4980,7 @@ The median starts at the right angle. The converse needs the median to land on t
 ## Why it works
 The right angle sees the hypotenuse as a diameter of the circle through the three vertices, by [[thales-theorem|Thales' Theorem]], so the midpoint of the hypotenuse is that circle's center and is one radius from every vertex: $$MA = MB = MC = \frac c2.$$
 
-The converse holds too: a median equal to half its side forces a right angle, which is the forward direction of Thales' Theorem read from the midpoint.
+For the converse, let $M$ be the midpoint of $AB$ with $MC = \frac c2 = MA = MB$. The triangles $MAC$ and $MBC$ are isosceles, so $\angle MCA = \angle A$ and $\angle MCB = \angle B$, and adding, $\angle C = \angle A + \angle B$. Since the three angles add up to $180^\circ$, $\angle C = 90^\circ$.
 
 ## Useful observations
 - The midpoint of the hypotenuse is the circumcenter, so the circumradius is $\frac c2$; the radius formulas of a right triangle are on [[right-triangle-inradius|Right Triangle Inradius and Circumradius]].
@@ -5081,9 +5114,13 @@ Simson-line problems and "area of the triangle formed by the three feet" questio
 The orthic triangle is the triangle of the three altitude feet, equivalently the pedal triangle of the orthocenter $H$. The formulas above are for an acute triangle; for an obtuse triangle $H$ becomes an excenter of the orthic triangle instead of its incenter.
 
 ## Why it works
-Each altitude foot sees the opposite side at a right angle, so pairs of feet are concyclic with the vertices, and a short angle chase gives the orthic angles $180^\circ - 2A$ and shows that each orthic side is antiparallel to the matching side of $ABC$.
+Let $D$, $E$, $F$ be the feet of the altitudes from $A$, $B$, $C$. Since $\angle BEC = \angle BFC = 90^\circ$, the points $B$, $C$, $E$, $F$ lie on the circle with diameter $BC$, so $\angle AFE = \angle ACB = C$ and $\angle AEF = B$. Triangle $AEF$ is therefore similar to $ABC$, and since $AE = AB\cos A$ the ratio is $\cos A$; in particular $EF = a\cos A$.
 
-The corner triangle cut off at $A$ is similar to $ABC$ with ratio $\cos A$, so it has area $\cos^2A\,[ABC]$, and likewise at $B$ and $C$. Hence $$[\text{orthic}] = \left(1 - \cos^2A - \cos^2B - \cos^2C\right)[ABC] = 2\cos A\cos B\cos C\,[ABC],$$ by the identity $\cos^2A + \cos^2B + \cos^2C + 2\cos A\cos B\cos C = 1$. The side opposite the foot on $BC$ is $a\cos A = R\sin 2A$, so the perimeter is $R(\sin 2A + \sin 2B + \sin 2C) = 4R\sin A\sin B\sin C = \frac{2[ABC]}{R}$, using $[ABC] = 2R^2\sin A\sin B\sin C$ from [[trig-area|the trig-area formula]].
+The same chase at $B$ gives $\angle BFD = C$, so the angle of the orthic triangle at $F$ is $180^\circ - 2C$. Because $CF \perp AB$, it makes equal angles $90^\circ - C$ with $FE$ and $FD$, so the altitude $CF$ bisects that angle; doing this at all three feet makes $H$ the incenter.
+
+The corner triangle cut off at $A$ is similar to $ABC$ with ratio $\cos A$, so it has area $\cos^2A\,[ABC]$, and likewise at $B$ and $C$. Hence $$[\text{orthic}] = \left(1 - \cos^2A - \cos^2B - \cos^2C\right)[ABC] = 2\cos A\cos B\cos C\,[ABC],$$ by the identity $\cos^2A + \cos^2B + \cos^2C + 2\cos A\cos B\cos C = 1$.
+
+For the perimeter, $EF = a\cos A = R\sin 2A$, so the perimeter is $R(\sin 2A + \sin 2B + \sin 2C) = 4R\sin A\sin B\sin C = \frac{2[ABC]}{R}$, using $[ABC] = 2R^2\sin A\sin B\sin C$ from [[trig-area|the trig-area formula]].
 
 ## Useful observations
 - Because $H$ is the [[incenter-excenter-lemma|incenter]] of the orthic triangle, the altitudes of $ABC$ are its angle bisectors, which explains the reflect-$H$ facts.
@@ -5724,7 +5761,13 @@ The four points are distinct and collinear, or lie on a circle, or are the inter
 ## Why it works
 A projection from a point $P$ cannot change the cross-ratio, because each length is expressed through angles at $P$ and the rest cancels.
 
-Let $h$ be the distance from $P$ to the line. The triangle $PAC$ has area $\frac12 h \cdot AC = \frac12 PA \cdot PC \sin\angle APC$, so $AC = \frac{PA \cdot PC \sin\angle APC}{h}$, and the same holds for $BD$, $BC$, and $AD$. In the quotient $\frac{AC \cdot BD}{BC \cdot AD}$ each of $PA$, $PB$, $PC$, $PD$ appears once above and once below, and $h$ twice above and twice below. What remains is $$\frac{\sin\angle APC\,\sin\angle BPD}{\sin\angle BPC\,\sin\angle APD},$$ which depends only on the four lines through $P$, so every line cutting them gives the same value.
+Let $h$ be the distance from $P$ to the line. The triangle $PAC$ has area $\frac12 h \cdot AC = \frac12 PA \cdot PC \sin\angle APC$, so $AC = \frac{PA \cdot PC \sin\angle APC}{h}$, and the same holds for $BD$, $BC$, and $AD$. In the quotient $\frac{AC \cdot BD}{BC \cdot AD}$ each of $PA$, $PB$, $PC$, $PD$ appears once above and once below, and $h$ twice above and twice below. What remains is
+$$\frac{\sin\angle APC\,\sin\angle BPD}{\sin\angle BPC\,\sin\angle APD},$$
+which depends only on the four lines through $P$, so every line cutting them gives the same value.
+
+For complex numbers, the argument of $\frac{a - c}{b - c}$ is the angle $ACB$ and that of $\frac{a - d}{b - d}$ is the angle $ADB$, so the cross-ratio is real exactly when those angles are equal or supplementary, which by the [[inscribed-angle-theorem|Inscribed Angle Theorem]] is when $A$, $B$, $C$, $D$ are concyclic or collinear.
+
+The rearrangements come from the definition $\lambda = \frac{(c - a)(d - b)}{(c - b)(d - a)}$. Swapping $C$ and $D$ inverts it, giving $\frac1\lambda$, and the expansion $(c - b)(d - a) - (c - a)(d - b) = (a - b)(d - c)$ shows that swapping $B$ and $C$ gives $1 - \lambda$; the other three values are these two moves combined. The sign: $\frac{c - a}{c - b}$ is negative exactly when $C$ is between $A$ and $B$, so $\lambda \lt 0$ exactly when one of $C$, $D$ separates $A$ from $B$ and the other does not.
 
 ## Useful observations
 - The method is to compute the cross-ratio where it is easy, on a line or a circle, and then project into the hard configuration, where it must match. Equating two cross-ratios solves for an unknown length or proves a coincidence.
@@ -5926,9 +5969,11 @@ Seldom the statement of a problem and often its last step: a computation that en
 $A + B + C = 180^\circ$ with each angle positive, so every half-angle is acute and every tangent is positive. In the form with $r$ and $s$, the angles are those of a triangle with inradius $r$ and semiperimeter $s$.
 
 ## Why it works
-The half-angles sum to $90^\circ$, so $\frac{A + B}{2}$ and $\frac C2$ are complementary and $\tan\frac{A + B}{2} = \cot\frac C2$. Expanding the left side with the tangent addition formula and clearing denominators gives exactly the symmetric relation. Nothing about triangles is used beyond the angle sum.
+The half-angles sum to $90^\circ$, so $\frac{A + B}{2}$ and $\frac C2$ are complementary and $\tan\frac{A + B}{2} = \cot\frac C2$. With $x$, $y$, $z$ the three half-angle tangents, the tangent addition formula makes this $\frac{x + y}{1 - xy} = \frac1z$, and clearing denominators gives $xz + yz = 1 - xy$, the symmetric relation. Nothing about triangles is used beyond the angle sum.
 
-Substituting $\tan\frac A2 = \frac{r}{s - a}$ turns it into $$r^2\left[\frac{1}{(s - a)(s - b)} + \frac{1}{(s - b)(s - c)} + \frac{1}{(s - c)(s - a)}\right] = 1.$$ The three fractions have the common denominator $(s - a)(s - b)(s - c)$ and numerators summing to $s$, so $r^2s = (s - a)(s - b)(s - c)$, which is [[herons-formula|Heron's Formula]] in disguise.
+The incircle touches $AB$ at distance $s - a$ from $A$, and the radius there is perpendicular to $AB$, so the right triangle with legs $r$ and $s - a$ at the half-angle $\frac A2$ gives $\tan\frac A2 = \frac{r}{s - a}$. Substituting turns the identity into $$r^2\left[\frac{1}{(s - a)(s - b)} + \frac{1}{(s - b)(s - c)} + \frac{1}{(s - c)(s - a)}\right] = 1.$$
+
+The three fractions have the common denominator $(s - a)(s - b)(s - c)$ and numerators summing to $3s - (a + b + c) = s$, so $r^2s = (s - a)(s - b)(s - c)$, which is [[herons-formula|Heron's Formula]] in disguise, since the area is $rs$.
 
 ## Useful observations
 - It is the half-angle analogue of $\tan A + \tan B + \tan C = \tan A\tan B\tan C$.
@@ -5989,6 +6034,8 @@ Each intercept satisfies the equation, and three points that are not on one line
 
 Substituting $(a, 0, 0)$ gives $\frac aa + 0 + 0 = 1$, and the same happens at the other two intercepts. The equation is linear, so it describes a plane, and three non-collinear points fix exactly one plane, so this is the plane through the intercepts, shown in the figure at the top. It is the three-dimensional copy of the intercept form of a line, $\frac xa + \frac yb = 1$.
 
+Multiplying by $abc$ gives the standard form, whose coefficients are the normal $(bc, ca, ab)$. The tetrahedron cut off has three perpendicular edges $a$, $b$, $c$ at the origin, so its volume is $\frac13 \cdot \frac{ab}2 \cdot c$. The point-plane distance from the origin is $\frac{\lvert abc\rvert}{\sqrt{(bc)^2 + (ca)^2 + (ab)^2}}$.
+
 ## Useful observations
 - When a problem names where a plane crosses the axes, the intercept form is written straight down instead of solving for $Ax + By + Cz = D$. The normal vector $(bc, ca, ab)$ gives the angle between two planes or the [[point-plane-distance|distance from a point]].
 - Going the other way, a plane $Ax + By + Cz = D$ with $D \ne 0$ has intercepts $\frac DA$, $\frac DB$, and $\frac DC$: divide through by $D$.
@@ -6037,16 +6084,18 @@ A recurring AIME configuration has the tangents at $B$ and $C$ meeting at a poin
 - $K = (a^2 : b^2 : c^2)$ in [[barycentric-coordinates|barycentric coordinates]] — the compact form that encodes every property below
 - $d_a : d_b : d_c = a : b : c$ — its distances to the three sides are proportional to those sides, since each symmedian is the locus of a fixed distance ratio
 - $K$ minimizes $d_a^2 + d_b^2 + d_c^2$ over the whole plane
-- $K$ is the centroid of its own pedal triangle, the cleanest proof of that minimization
+- $K$ is the centroid of its own pedal triangle
 - $K$ is the isogonal conjugate of the centroid $G$
 
 ## Conditions
 The three symmedians of a triangle concur at $K$. In an equilateral triangle $K$ coincides with the centroid, and in a right triangle it is the midpoint of the altitude to the hypotenuse.
 
 ## Why it works
-Each symmedian is the locus of points whose distances to the two sides at its vertex are in the ratio of those sides. The $A$-symmedian gives $\frac{d_c}{d_b} = \frac cb$, the $B$-symmedian gives $\frac{d_a}{d_c} = \frac ac$, and the third is then forced. A point on all three therefore has $d_a : d_b : d_c = a : b : c$. The three loci are the reflections of the three medians in the three bisectors, so they concur exactly because the medians do.
+For a point $P$ on a line through $A$, the distances to $AB$ and $AC$ are $AP\sin\varphi$ and $AP\sin\psi$, where $\varphi$ and $\psi$ are the angles the line makes with $AB$ and $AC$, so their ratio is fixed along the line. On the median it is $\frac{d_c}{d_b} = \frac bc$, because the midpoint $M$ of $BC$ makes $[ABM] = [ACM]$, that is $c\,d_c = b\,d_b$. Reflecting the line in the bisector swaps $\varphi$ and $\psi$, so on the $A$-symmedian $\frac{d_c}{d_b} = \frac cb$.
 
-The minimization follows from the pedal triangle. If $P$ has pedal triangle $P_aP_bP_c$, then $a\,d_a + b\,d_b + c\,d_c = 2[ABC]$ is constant, so minimizing $d_a^2 + d_b^2 + d_c^2$ under a fixed weighted sum forces the $d_i$ proportional to the weights $a, b, c$ by Cauchy–Schwarz, with equality exactly at $K$.
+Likewise the $B$-symmedian gives $\frac{d_a}{d_c} = \frac ac$, and the third ratio is then forced. A point on all three therefore has $d_a : d_b : d_c = a : b : c$. The three loci are the reflections of the three medians in the three bisectors, so they concur exactly because the medians do, at the isogonal conjugate of $G$.
+
+For the minimization, $a\,d_a + b\,d_b + c\,d_c = 2[ABC]$ for every point inside, using signed distances outside. By Cauchy–Schwarz, $(a^2 + b^2 + c^2)(d_a^2 + d_b^2 + d_c^2) \ge (a\,d_a + b\,d_b + c\,d_c)^2 = 4[ABC]^2$, with equality exactly when $d_a : d_b : d_c = a : b : c$, which is $K$. So the minimum is $\frac{4[ABC]^2}{a^2 + b^2 + c^2}$.
 
 ## Useful observations
 - The barycentric coordinates come first: $(a^2 : b^2 : c^2)$ makes any incidence or ratio question about $K$ a short computation, and it is how the point is usually identified in a configuration that never names it.
@@ -6136,9 +6185,11 @@ Essentially never needed below the olympiad level, and even there a structural t
 The angle $\theta$ is the directed angle from $\ell_1$ to $\ell_2$. Two coincident mirrors compose to the identity.
 
 ## Why it works
-Track directions. Reflecting a line at angle $\alpha$ in a mirror at angle $\mu$ sends it to $2\mu - \alpha$, so reflecting in $\ell_1$ and then $\ell_2$ sends $\alpha$ to $2\mu_2 - (2\mu_1 - \alpha) = \alpha + 2(\mu_2 - \mu_1)$.
+Track directions. Reflecting a line at angle $\alpha$ in a mirror at angle $\mu$ sends it to $2\mu - \alpha$, so reflecting in $\ell_1$ and then $\ell_2$ sends $\alpha$ to $2\mu_2 - (2\mu_1 - \alpha) = \alpha + 2(\mu_2 - \mu_1)$. Swapping the order gives $\alpha - 2(\mu_2 - \mu_1)$, the opposite turn.
 
 Every direction therefore turns by the same $2\theta$, and the intersection point is fixed by both mirrors, so the composite can only be a rotation about it. Parallel mirrors have no fixed point: a point at signed distance $t$ from the first lands at $t + 2d$, which is a translation.
+
+For longer chains, each reflection reverses orientation, so an even number of them keeps it. A motion keeping orientation turns every direction by one angle $\varphi$; if $\varphi \ne 0$ it has a fixed point, since $x \mapsto Rx + t$ with $R$ a rotation has $x = (I - R)^{-1}t$, so it is a rotation, and if $\varphi = 0$ it is a translation. An odd number is one reflection followed by such a motion, which works out to a reflection or a glide reflection, a reflection followed by a slide along its mirror; that classification of the odd case is quoted here.
 
 ## Useful observations
 - A chain of reflections collapses: a long alternating process is secretly one rotation applied over and over, and the question becomes the order of that rotation.
@@ -6192,9 +6243,13 @@ It shows up as the step that had no name: a foot of a perpendicular, a slanted d
 Points are written as coordinate columns and the matrices act on the left. A rotation or reflection about a center other than the origin is the same map conjugated by a translation.
 
 ## Why it works
-A linear map is determined by where it sends the two basis vectors, and those images are the columns of its matrix. A rotation by $\theta$ sends $(1, 0)$ to $(\cos\theta, \sin\theta)$ and $(0, 1)$ to $(-\sin\theta, \cos\theta)$, which is $R_\theta$ read column by column; the reflection matrix comes out the same way from the images of the axes.
+A linear map is determined by where it sends the two basis vectors, and those images are the columns of its matrix. A rotation by $\theta$ sends $(1, 0)$ to $(\cos\theta, \sin\theta)$ and $(0, 1)$ to $(-\sin\theta, \cos\theta)$, which is $R_\theta$ read column by column.
 
-Because both preserve lengths and angles, their columns are perpendicular unit vectors, so [[determinant-geometric|the determinant]] has absolute value $1$, positive for a rotation and negative for a reflection, since a reflection reverses orientation.
+The reflection in the line at angle $\alpha$ sends a direction at angle $\varphi$ to the direction at angle $2\alpha - \varphi$. So $(1, 0)$, at angle $0$, goes to $(\cos 2\alpha, \sin 2\alpha)$, and $(0, 1)$, at angle $90^\circ$, goes to angle $2\alpha - 90^\circ$, the point $(\sin 2\alpha, -\cos 2\alpha)$. Those are the columns of $F_\alpha$.
+
+Because both preserve lengths and angles, their columns are perpendicular unit vectors, so [[determinant-geometric|the determinant]] has absolute value $1$, positive for a rotation and negative for a reflection, since a reflection reverses orientation. Directly, $\det R_\theta = \cos^2\theta + \sin^2\theta = 1$ and $\det F_\alpha = -\cos^2 2\alpha - \sin^2 2\alpha = -1$.
+
+For the products: turning by $\beta$ and then by $\alpha$ is turning by $\alpha + \beta$, so $R_\alpha R_\beta = R_{\alpha + \beta}$. Multiplying out $F_\beta F_\alpha$, the entries are $\cos 2\beta\cos 2\alpha + \sin 2\beta\sin 2\alpha = \cos 2(\beta - \alpha)$ on the diagonal and $\pm(\sin 2\beta\cos 2\alpha - \cos 2\beta\sin 2\alpha) = \pm\sin 2(\beta - \alpha)$ off it, which is $R_{2(\beta - \alpha)}$.
 
 ## Useful observations
 - Composing becomes multiplying, which is the whole reason to leave synthetic language. $R_\alpha R_\beta = R_{\alpha + \beta}$ recovers [[angle-addition|the angle addition formulas]] as a byproduct.
@@ -6221,11 +6276,15 @@ AMC 12 and AIME rarely say "matrix," so this is a tool brought rather than one h
 Foci on the $x$-axis when the larger denominator is under $x^2$. If the $y^2$ denominator is larger, the foci sit on the $y$-axis and every formula transposes.
 
 ## Why it works
-Put the foci at $(\pm c, 0)$ and impose $PF_1 + PF_2 = 2a$. Clearing the two radicals leaves $\frac{x^2}{a^2} + \frac{y^2}{a^2 - c^2} = 1$, so writing $b^2 = a^2 - c^2$ produces the standard form and the relation $a^2 = b^2 + c^2$ at the same time. The fastest way to see that relation without algebra is to stand at the end of the minor axis: both focal distances are equal, so each is $a$, and the right triangle with legs $b$ and $c$ has hypotenuse $a$.
+Put the foci at $(\pm c, 0)$ and write $r_1 = PF_1$, $r_2 = PF_2$. Subtracting the squared distances, $r_1^2 - r_2^2 = (x + c)^2 - (x - c)^2 = 4cx$, and dividing by $r_1 + r_2 = 2a$ gives $r_1 - r_2 = \frac{2cx}{a}$. Adding the two equations, $r_1 = a + \frac cax$.
+
+Squaring, $(x + c)^2 + y^2 = \left(a + \frac cax\right)^2$; the $2cx$ terms cancel, leaving $x^2\left(1 - \frac{c^2}{a^2}\right) + y^2 = a^2 - c^2$. Dividing by $a^2 - c^2$ gives $\frac{x^2}{a^2} + \frac{y^2}{a^2 - c^2} = 1$, so writing $b^2 = a^2 - c^2$ produces the standard form and the relation $a^2 = b^2 + c^2$ at the same time.
+
+The fastest way to see that relation without algebra is to stand at the end of the minor axis: both focal distances are equal, so each is $a$, and the right triangle with legs $b$ and $c$ has hypotenuse $a$.
 
 The latus rectum has length $\frac{2b^2}{a}$: at $x = c$ the equation gives $\frac{y^2}{b^2} = 1 - \frac{c^2}{a^2} = \frac{b^2}{a^2}$, so $y = \pm\frac{b^2}{a}$. The [[focal-radii|focal radii]] give the same length from a different direction.
 
-The area $\pi ab$ is the circle's $\pi r^2$ with the two radii separated, which is what an affine stretch of a circle does to it.
+For the area, the map $(x, y) \mapsto \left(x, \frac bay\right)$ carries the circle $x^2 + y^2 = a^2$ onto the ellipse, and it multiplies every area by $\frac ba$, so the area is $\pi a^2 \cdot \frac ba = \pi ab$.
 
 ## Useful observations
 - Contests state the condition in whichever of the languages of $a$, $b$, $c$ is least convenient, so converting at once is the first job: a constant sum of distances to two fixed points is $2a$ with the foci given; a stated equation gives $a$ and $b$, and $c$ follows; an area gives the product $ab$.
@@ -6251,7 +6310,9 @@ Recognizing the constant sum is the problem, and the algebra afterward is routin
 The foci are on the $x$-axis for the form above; for $\frac{y^2}{a^2} - \frac{x^2}{b^2} = 1$ they are on the $y$-axis and the asymptotes are $y = \pm\frac abx$. The latus rectum has length $\frac{2b^2}{a}$ here too.
 
 ## Why it works
-The derivation is the ellipse's with $|PF_1 - PF_2| = 2a$ instead of a sum. Now $c > a$, since the difference of two sides of a triangle is less than the third, so $a^2 - c^2$ is negative and the standard form carries a minus sign with $b^2 = c^2 - a^2$.
+Put the foci at $(\pm c, 0)$ and write $r_1 = PF_1$, $r_2 = PF_2$. Subtracting the squared distances, $r_1^2 - r_2^2 = (x + c)^2 - (x - c)^2 = 4cx$. On the right branch $r_1 - r_2 = 2a$, so dividing gives $r_1 + r_2 = \frac{2cx}{a}$, and adding the two equations gives $r_1 = a + \frac{c}{a}x$; the left branch gives the same up to sign.
+
+Squaring, $(x + c)^2 + y^2 = \left(a + \frac cax\right)^2$. The $2cx$ terms cancel, leaving $x^2\left(1 - \frac{c^2}{a^2}\right) + y^2 = a^2 - c^2$. Here $c \gt a$, since in triangle $PF_1F_2$ the difference of two sides is less than the third, so $a^2 - c^2 = -b^2$ with $b^2 = c^2 - a^2$, and dividing by $-b^2$ gives $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$.
 
 The asymptotes come out of the equation rather than from a limit. Replacing the $1$ by $0$ gives $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 0$, which factors as $\left(\frac xa - \frac yb\right)\left(\frac xa + \frac yb\right) = 0$, a pair of lines through the center. Far from the center the $1$ is negligible against terms growing like $x^2$, so the curve hugs them.
 
@@ -6260,7 +6321,7 @@ The latus rectum has length $\frac{2b^2}{a}$: at $x = c$ the equation gives $\fr
 ## Useful observations
 - Asymptotes cap the slopes the curve can reach. Substituting a line $y = mx$ into the equation gives a real intersection only when $|m| < \frac ba$, and an infimum that is never attained is the standard consequence.
 - The rectangular case $a = b$ makes the asymptotes perpendicular, and a $45^\circ$ rotation turns the curve into $xy = k$, so any problem about the graph of a reciprocal is a hyperbola problem in other coordinates.
-- A hyperbola with given asymptotes $y = \pm mx$ has the form $x^2 - \frac{y^2}{m^2} = a^2$ for some $a$, so the asymptotes fix the shape and one more condition fixes the size.
+- The hyperbolas with asymptotes $y = \pm mx$ are $x^2 - \frac{y^2}{m^2} = k$ for some $k \ne 0$: positive $k$ opens left and right, negative $k$ opens up and down. The asymptotes fix the shape and one more condition fixes $k$.
 
 ## Applications
 Equations and foci of hyperbolas, asymptote slopes, reciprocal graphs, and infimum problems with figures inscribed in a hyperbola.
@@ -6309,9 +6370,13 @@ Parabolas reach the AIME as constraint curves rather than as objects to describe
 The focus is not on the directrix. For an ellipse or hyperbola with axes along the coordinate axes, $a$ is the semi-major axis for the ellipse and the distance from the center to a vertex for the hyperbola.
 
 ## Why it works
-Fix a focus $F$ and a line $\ell$, and take all $P$ with $PF = e \cdot \operatorname{dist}(P, \ell)$. Squaring gives a second-degree equation whose $x^2$ and $y^2$ coefficients differ by a factor involving $1 - e^2$, so the sign of $1 - e^2$ alone decides whether the curve closes up, opens once, or opens twice.
+Put the focus at the origin and the directrix at $x = d$ with $d \gt 0$. The condition $PF = e \cdot \operatorname{dist}(P, \ell)$, squared, is $x^2 + y^2 = e^2(d - x)^2$, that is, $$(1 - e^2)\,x^2 + 2e^2d\,x + y^2 = e^2d^2.$$ The $y^2$ coefficient is $1$, so the sign of $1 - e^2$ alone decides the shape.
 
-That is the unified construction: the three conics are one locus with one parameter. For an ellipse or hyperbola, comparing this with the two-focus definition gives $e = c/a$ and puts the directrix at $x = a/e$.
+For $e \lt 1$ both squares have positive coefficients and completing the square gives an ellipse; for $e = 1$ the $x^2$ term vanishes and $y^2 = d^2 - 2dx$ is a parabola; for $e \gt 1$ the signs differ and the curve is a hyperbola. So the three conics are one locus with one parameter.
+
+To match this with the two-focus picture, use the focal radii of the ellipse with foci $(\pm c, 0)$: $PF_2 = a - \frac cax$. With $e = \frac ca$ this is $e\left(\frac ae - x\right)$, which is $e$ times the distance from $P$ to the line $x = \frac ae$. So that line is the directrix and $e = \frac ca$; the hyperbola, with $PF_2 = \lvert ex - a\rvert$, works the same way.
+
+For similarity: an ellipse's shape is fixed by $\frac ba = \sqrt{1 - e^2}$ and a hyperbola's by $\frac ba = \sqrt{e^2 - 1}$, so equal eccentricities give the same ratio, and a scaling carries one curve onto the other.
 
 ## Useful observations
 - Since $e$ is a ratio of lengths it survives any scaling, so two ellipses are similar exactly when their eccentricities match, and then every corresponding length is in one fixed ratio.
@@ -7779,6 +7844,8 @@ SSA fails because the side opposite the given angle can swing: a circle around t
 
 {{figure:ssa}}
 
+When does SSA still work? With the angle at $A$ and the known side $AB$, the third vertex is where the circle of radius $a$ about $B$ meets the ray from $A$. If $a \ge AB$, the point $A$ is inside or on that circle, so the line through $A$ meets it once on each side of $A$, and only one crossing is on the ray. If the given angle is right or obtuse, the side opposite it is the longest, so the same case applies.
+
 ## Useful observations
 - SSA does determine the triangle when the side opposite the given angle is at least as long as the other given side, or when the given angle is right or obtuse.
 - The criteria for similar triangles mirror these: SSS and SAS with proportional sides, and AA, since two equal angles force the third.
@@ -8141,7 +8208,7 @@ Cut a right triangle off one slanted end of the parallelogram and slide it to th
 
 {{figure:cut}}
 
-For the sine form, draw the height from an end of the top side down to the base. It is a leg of a right triangle with hypotenuse $b$ and angle $\theta$ at the base, so $h = b\sin\theta$ and $bh$ becomes $ab\sin\theta$ when $a$ is the base. The two angles of a parallelogram add to $180^\circ$ and $\sin(180^\circ - \theta) = \sin\theta$, so it does not matter which one is used. The vector form is the same statement, since $\lvert\vec u \times \vec v\rvert = \lvert\vec u\rvert\lvert\vec v\rvert\sin\theta$.
+For the sine form, take the base to be $a$ and the slanted side $b$, meeting at the angle $\theta$. The height from the far end of $b$ down to the base is a leg of a right triangle with hypotenuse $b$ and angle $\theta$, so $h = b\sin\theta$ and the area is $ab\sin\theta$. The two angles of a parallelogram add to $180^\circ$ and $\sin(180^\circ - \theta) = \sin\theta$, so it does not matter which one is used. The vector form is the same statement, since $\lvert\vec u \times \vec v\rvert = \lvert\vec u\rvert\lvert\vec v\rvert\sin\theta$.
 
 ## Useful observations
 - A diagonal cuts the parallelogram into two congruent triangles of area $\frac12 ab\sin\theta$, and the two diagonals cut it into four triangles of equal area.
@@ -9497,5 +9564,158 @@ Points within a fixed distance of a rectangle, a box or a lens; the region swept
 
 ## Contest profile
 An AMC 12 and early AIME tool: the rectangle and box forms settle a "within one unit" question in one line, and the convex form handles curved regions such as a lens. It pairs with Circle Area, Circumference, Arcs & Sectors for the corner pieces.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"figure-symmetries": String.raw`
+## Key forms
+- a regular $n$-gon has $n$ lines of symmetry and $n$ rotations onto itself, by $0, \frac{360^\circ}{n}, \ldots$, so its smallest nonzero turn is $\frac{360^\circ}{n}$
+- for odd $n$ each line passes through a vertex and the midpoint of the opposite side; for even $n$, $\frac n2$ lines join opposite vertices and $\frac n2$ join midpoints of opposite sides
+- square $4$ lines, rectangle and rhombus $2$, isosceles triangle $1$, parallelogram $0$ lines but a half-turn, a circle infinitely many
+- two lines of symmetry meeting at an angle $\theta$ force a rotational symmetry by $2\theta$
+- a symmetric shading of a grid is constant on each group of cells that the symmetries move into one another, so it is counted by those groups
+
+## Conditions
+The figure is in the plane, and a symmetry must carry the whole figure onto itself, shading and markings included. Rotations are about a fixed center, counted up to a full turn.
+
+## Why it works
+Step 1, the regular $n$-gon. A symmetry sends vertices to vertices and neighbours to neighbours, so it is fixed by where one vertex goes, $n$ choices, and whether the order around the polygon is kept or reversed, $2$ choices. The $n$ order-keeping ones are the rotations by multiples of $\frac{360^\circ}{n}$; the $n$ order-reversing ones are reflections, one in each line through the center and a vertex or a side midpoint.
+
+Step 2, the shape of the lines. A mirror line through the center meets the boundary twice, on opposite sides. For odd $n$ the point opposite a vertex is a side midpoint, so each of the $n$ lines passes through one of each. For even $n$ opposite vertices pair up, giving $\frac n2$ lines, and opposite side midpoints give the other $\frac n2$.
+
+Step 3. Reflecting in one line and then another at angle $\theta$ is a rotation by $2\theta$ about their crossing, as on [[reflection-composition|the card on composing reflections]], so two mirror lines always bring a rotation with them. And a symmetric shading must give each cell the same color as every image of it, which is why the cells split into groups that are shaded or unshaded together.
+
+## Useful observations
+- To make a shading symmetric with the fewest added cells, list each shaded cell's images and add the missing ones; cells on a mirror line are their own images.
+- The lines of symmetry of a figure all pass through one point when there are two or more of them, the center of the rotation they generate.
+- Letters and polyomino shapes are checked line by line: a mirror line can only be horizontal, vertical, or diagonal for a shape on a square grid.
+
+## Applications
+Counting lines of symmetry and rotational symmetries of polygons and grid figures, completing a figure to be symmetric, and reflections of a picture in a line.
+
+## Contest profile
+An AMC 8 favourite with figures, and an early AMC 10 and 12 question about regular polygons and symmetric shadings of grids.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"cube-nets": String.raw`
+## When to use
+A pattern of six squares (five for an open box) is folded along its edges, and the question asks which face is opposite a given one, which patterns close up, which faces meet at a corner, or what sum of dots is hidden on a die. The same tracking works for nets of other solids, such as a strip of faces of an octahedron.
+
+## How
+1. Choose a floor square, preferably one with many neighbours in the net.
+2. Fold its edge-neighbours up into walls. A square attached to the far edge of a wall folds over onto the face beyond that wall: the opposite wall or the lid.
+3. Read off opposite faces: in any straight row of three squares, the two ends are opposite; in a straight row of four, the first and third, and the second and fourth.
+4. If two squares land on the same face, the pattern is not a net.
+5. A corner of the cube is where three mutually adjacent faces meet, one from each opposite pair.
+
+The cross with a column $A, C, E, F$ and arms $B$, $D$ beside $C$ folds with $C$ as the floor: $A$ and $E$ are opposite, $B$ and $D$ are opposite, and $F$, two steps beyond $C$, is the lid, opposite $C$.
+
+## Why it works
+Each fold along a shared edge turns the next square through $90^\circ$ about that edge. Along a straight row, two folds turn the third square through $180^\circ$ from the first, so it faces the opposite way, parallel to the first and on the far side of the cube: they are opposite faces. A square two steps away along a bent path has turned about two different edges and ends up adjacent instead.
+
+A cube has $6$ faces in $3$ opposite pairs, and the three faces at a corner are pairwise adjacent, so no two of them are opposite: there is one from each pair. A pattern of six squares folds to a cube exactly when the six squares land on six different faces.
+
+## Formulas it uses
+- [[cube]]: the cube has $6$ faces, $12$ edges and $8$ corners, with three faces at each corner, which is what the folding has to fill.
+
+## Common traps
+- Treating two squares that touch only at a corner of the net as adjacent faces.
+- Applying the row rule along a bent path; it holds only for a straight row.
+- Forgetting that on a standard die the opposite faces add to $7$, which settles most dice questions at once.
+
+## Contest profile
+A steady AMC 8 question with a picture of a net, and an occasional AMC 10 or 12 problem about stacked dice or an open box.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"cube-stack-views": String.raw`
+## When to use
+A figure built from unit cubes is drawn from several directions or described by a grid of heights. The question asks what another view looks like, how many cubes there are, the least or greatest number of cubes consistent with the views, or the area of the exposed faces.
+
+## How
+1. Write the solid as a grid of heights $h_{ij}$, the number of cubes stacked on each square, with rows running back to front and columns left to right.
+2. The front view has, in column $j$, height $\max_i h_{ij}$; the side view has, in row $i$, height $\max_j h_{ij}$; the top view shows the squares with $h_{ij} \ge 1$.
+3. For the most cubes matching a front and a side view, put $\min(\text{side}_i, \text{front}_j)$ on every square.
+4. For the fewest, for each height $h$ count the columns $c_h$ and rows $r_h$ that need it; the minimum is $\sum_h h \cdot \max(c_h, r_h)$.
+
+With rows $(1, 2, 1)$, $(3, 1, 0)$, $(2, 0, 1)$ from back to front, the front view is $3, 2, 1$ and the right side view is $2, 3, 2$, from $11$ cubes.
+
+## Why it works
+Along each line of sight the nearer cubes hide the farther ones only where they are at least as tall, so what shows in a column is the height of its tallest stack, and the same for rows seen from the side.
+
+For the greatest number, a stack can be no taller than its row's maximum or its column's maximum, so $h_{ij} \le \min(\text{side}_i, \text{front}_j)$, and filling every square to that bound keeps the views: the tallest row reaches every column's height. For the least, each column with front height $h$ needs a stack of exactly $h$, and so does each row with side height $h$. One stack lies in one row and one column, so at least $\max(c_h, r_h)$ stacks of height $h$ are needed, and placing them so that each serves a row and a column of height $h$ where possible reaches that count.
+
+## Formulas it uses
+- [[cube]]: each unit cube has $6$ faces of area $1$, so an exposed surface is counted face by face.
+
+## Common traps
+- Reading the side view from the wrong side, which reverses the order of the rows.
+- Counting only the cubes that are visible when the question asks how many there could be.
+- Assuming the views determine the solid: the fewest and the most cubes usually differ.
+
+## Contest profile
+An AMC 8 question with a picture of a stack and its views, sometimes asking for the exposed surface area instead.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"area-by-pieces": String.raw`
+## When to use
+The shaded region has no formula of its own: an L shape, a frame around a picture, a square with quarter circles cut from its corners, a box net with corners removed, or the part of one shape not covered by another. Look for a rectangle, triangle or circle that contains the region with simple pieces left over, or for a way to cut the region into such pieces.
+
+## How
+1. Find a simple shape that contains the region, or a set of simple pieces that make it up.
+2. Read the dimensions of the pieces from the figure, often as differences of given lengths.
+3. Add the areas of the pieces, or subtract the removed pieces from the whole.
+4. To compare two regions, add a common piece to each and compare the larger shapes instead.
+
+An L shape inside a $6 \times 9$ rectangle with a $2 \times 4$ corner missing has area $54 - 8 = 46$, the same as splitting it into a $4 \times 9$ and a $2 \times 5$ rectangle.
+
+## Why it works
+Area is additive: if a region is split into pieces that overlap only along boundaries, which have no area, its area is the sum of theirs. A shape with pieces removed is the remaining region together with those pieces, so the region's area is the whole minus the pieces.
+
+For a comparison, if $Z$ overlaps neither $X$ nor $Y$, then $[X \cup Z] - [Y \cup Z] = ([X] + [Z]) - ([Y] + [Z]) = [X] - [Y]$, so the difference can be computed for the larger shapes.
+
+## Formulas it uses
+- [[triangle-area-standard]]: the triangles cut from a rectangle or added to it have area $\frac12bh$.
+- [[circle-basics]]: the quarter circles, semicircles, and sectors removed from or added to a figure.
+
+## Common traps
+- Subtracting a piece that overlaps another removed piece, so the overlap is subtracted twice; add it back, as in inclusion-exclusion.
+- Reading a missing length wrongly: the size of a cut-out corner is a difference of two given lengths.
+- Forgetting a piece, such as the fourth corner.
+
+## Contest profile
+Constant on the AMC 8 and early AMC 10 and 12 with a figure, and the standard first step for shaded regions involving circles.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"joined-shapes-perimeter": String.raw`
+## When to use
+A figure is built from pieces placed edge to edge, such as squares in a row, a T made of two rectangles, polygons joined side to side, or cubes glued face to face, and its perimeter, number of sides, or surface area is asked for. Also an outline with only right-angle corners whose individual edges are not all given.
+
+## How
+1. Add the perimeters of all the pieces, or their surface areas.
+2. For each place where two pieces touch, subtract twice the shared length, or twice the shared face area.
+3. For the number of sides after joining polygons, subtract $2$ for each join, then check whether any two remaining sides now line up into one.
+4. For a right-angle outline, add the horizontal edges as twice the overall width and the vertical edges as twice the overall height, when no line parallel to a side crosses the outline more than twice.
+
+Ten unit squares in a $2 \times 5$ block have perimeters adding to $40$ and $13$ shared edges, $8$ along the rows and $5$ between them, so the block's perimeter is $40 - 26 = 14 = 2(2 + 5)$.
+
+## Why it works
+The boundary of the joined figure is made of the pieces' boundaries, except the parts where two pieces touch. A shared edge belonged to the boundary of both pieces and now lies inside, so it is subtracted once for each, twice in all. Faces of solids work the same way.
+
+For the right-angle outline, a vertical line through the figure crosses the outline at its top edge and its bottom edge, once each. So, moving that line across the whole width, the horizontal edges above it and below it together sweep out twice the width, and the vertical edges sweep twice the height in the same way.
+
+## Formulas it uses
+No particular formula is needed; the count is of shared edges and faces.
+
+## Common traps
+- Subtracting a shared edge only once.
+- Counting pieces that touch only at a corner as sharing an edge.
+- Using the width-and-height shortcut on an outline with a notch cut into it from the top or bottom, where a vertical line crosses more than twice and the notch's sides add extra length.
+
+## Contest profile
+An AMC 8 question with a figure of squares, polygons, or cubes, and an early AMC 10 step.
 `
 });

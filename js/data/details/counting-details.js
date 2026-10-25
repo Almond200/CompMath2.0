@@ -485,6 +485,8 @@ Expanding $(x_1 + \cdots + x_m)^n$ means picking one term from each of the $n$ b
 
 A word with $k_1$ copies of $x_1$, $k_2$ of $x_2$, and so on produces the monomial $x_1^{k_1}\cdots x_m^{k_m}$, and the number of such words is the number of arrangements of that multiset, $\frac{n!}{k_1!\cdots k_m!}$. Collecting like terms gives that coefficient. With two terms it is the Binomial Theorem, and the count is the one on [[multiset-permutations|arrangements with repeated objects]].
 
+The number of terms is the number of ways to write $n$ as an ordered sum $k_1 + \cdots + k_m$ of nonnegative integers, which by stars and bars is $\binom{n + m - 1}{m - 1}$; for $(x + y + z)^4$ that is $\binom62 = 15$.
+
 ## Useful observations
 - To extract a coefficient, the exponent pattern that produces the wanted monomial is found, then the multinomial coefficient is multiplied by each term's own coefficient raised to its power. For $x^3y^2z^2$ in $(x + 2y - z)^7$: $$\frac{7!}{3!\,2!\,2!} \cdot 2^2 \cdot (-1)^2 = 210 \cdot 4 = 840.$$ Forgetting the coefficients of the terms is the usual error.
 - If several exponent patterns give the same monomial, as when some terms are powers of the same variable, their contributions are added.
@@ -793,7 +795,9 @@ The objects are labeled and the groups are unlabeled and nonempty. Labeling the 
 ## Why it works
 The recursion for $S(n, k)$ conditions on element $n$: either it forms its own block, leaving $S(n-1, k-1)$ ways to partition the rest, or it joins one of the $k$ blocks of a partition of the other $n - 1$ elements, in $k\,S(n-1, k)$ ways. Bell numbers sum over all block counts.
 
-The Bell recurrence comes from choosing the block containing a fixed element: if that block has the fixed element and $j$ others chosen in $\binom nj$ ways, the remaining $n - j$ elements are partitioned freely.
+A surjection onto $k$ labeled outputs is the same as a partition into $k$ blocks, the preimages of the outputs, together with a choice of which output each block goes to. The blocks are distinct, so there are $k!$ ways to assign them, giving $k!\,S(n, k)$. For example $S(3, 2) = 3$, and the maps from $3$ objects onto $2$ outputs number $2^3 - 2 = 6 = 2! \cdot 3$.
+
+The Bell recurrence comes from the block containing one fixed element of an $(n+1)$-element set. If that block has $j$ other members, chosen in $\binom nj$ ways, the remaining $n - j$ elements are partitioned freely in $B_{n-j}$ ways. Summing over $j$ and writing $k = n - j$, with $\binom nj = \binom nk$, gives $B_{n+1} = \sum_k\binom nk B_k$. For example $B_4 = 1 \cdot 1 + 3 \cdot 1 + 3 \cdot 2 + 1 \cdot 5 = 15$.
 
 ## Useful observations
 - The recurrence is the practical tool and its derivation says how to adapt it: the last element either joins one of the $k$ existing blocks or forms a block of its own.
@@ -1075,6 +1079,8 @@ One particular sequence of outcomes with $k$ successes has probability $p^k(1 - 
 Because the trials are independent, the probability of a particular sequence, such as success, failure, success, failure, is the product $p \cdot (1 - p) \cdot p \cdot (1 - p)$. Every sequence with exactly $k$ successes has the same product, $p^k(1 - p)^{n - k}$, whatever the order. Such a sequence is fixed by which $k$ of the $n$ positions hold the successes, so there are $\binom nk$ of them, and their probabilities add.
 
 {{figure:sequences}}
+
+The count of successes is a sum of $n$ indicators, one per trial, each with mean $p$ and variance $p - p^2 = p(1 - p)$. Means always add, and variances add because the trials are independent, giving $np$ and $np(1 - p)$.
 
 ## Useful observations
 - "At least $k$" questions are the terms from $k$ upward added, or $1$ minus the shorter tail. "At least one" is always $1 - (1 - p)^n$.
@@ -2328,7 +2334,13 @@ A convenience for sums of independent counts, essentially ordinary [[generating-
 The graph is bipartite. The theorem genuinely fails without it: a triangle has a maximum matching of size $1$ and a minimum vertex cover of size $2$.
 
 ## Why it works
-Any vertex cover must contain an endpoint of every matched edge, so cover $\ge$ matching always. In bipartite graphs, an augmenting-path argument, equivalently max-flow/min-cut on the bipartite network, constructs a cover of exactly the maximum matching's size, giving equality. It is a min-max duality, the dual of Hall's Theorem and a special case of max-flow/min-cut.
+Any vertex cover must contain an endpoint of every matched edge, and matched edges share no endpoints, so cover $\ge$ matching always. For equality, let the sides be $X$ and $Y$ and let $M$ be a maximum matching. Call a path alternating if its edges alternate between unmatched and matched, starting with an unmatched edge. Let $Z$ be the set of vertices reachable by an alternating path from an unmatched vertex of $X$, and take $K = (X \setminus Z) \cup (Y \cap Z)$.
+
+$K$ is a cover. Take an edge $xy$ with $x \in X$. If $x \notin Z$, then $x \in K$. If $x \in Z$, an alternating path reaches $x$ along its matched edge or starts there, so an unmatched edge $xy$ extends it and puts $y$ in $Z$. If $xy$ is matched, $x$ is not a starting point, so the path reached $x$ through $y$, and again $y \in Z$, so $y \in K$.
+
+$K$ has exactly $|M|$ vertices. Each $y \in Y \cap Z$ is matched, since otherwise the path to it would be augmenting and $M$ could be enlarged; its partner is then in $Z$, so not in $K$. Each $x \in X \setminus Z$ is matched, since unmatched vertices of $X$ are in $Z$. So every vertex of $K$ is matched, no matched edge has both ends in $K$, and $|K| \le |M|$.
+
+It is a min-max duality, equivalent to Hall's Marriage Theorem and a special case of max-flow/min-cut. The independent-set form follows because a set is independent exactly when its complement is a vertex cover.
 
 ## Useful observations
 - It converts between two bounds of very different difficulty. Exhibiting a matching of size $k$ bounds the cover from below, and exhibiting a cover of size $k$ bounds the matching from above; when the two agree, both are optimal and the equality is proved.
@@ -3645,5 +3657,61 @@ Every shape in such a figure is fixed by a few of the figure's lines or points: 
 
 ## Contest profile
 An AMC 8 and early AMC 10 and 12 setup with a picture, from triangles in a divided triangle to squares in a grid. It pairs with Organized Listing and with Rectangles in a Grid.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"disconnected-graph-edges": String.raw`
+## Key forms
+- a disconnected simple graph on $n$ vertices has at most $\binom{n-1}{2}$ edges, reached by a complete graph on $n - 1$ vertices and one isolated vertex
+- so any graph on $n$ vertices with more than $\binom{n-1}{2}$ edges is connected
+- a disconnected bipartite graph with parts of sizes $a \ge b$ has at most $(a - 1)b$ edges, reached by cutting off one vertex of the larger part
+
+## Conditions
+The graph is simple, with no loops or repeated edges. In the bipartite form every edge joins the two parts, and both parts are nonempty.
+
+## Why it works
+A disconnected graph splits its vertices into two nonempty groups, of sizes $k$ and $n - k$, with no edge between them. That leaves out all $k(n - k)$ edges across the split, and since
+$$k(n - k) - (n - 1) = (k - 1)(n - k - 1) \ge 0,$$
+at least $n - 1$ of the $\binom n2$ possible edges are missing. So $e \le \binom n2 - (n - 1) = \binom{n-1}{2}$, with equality when one vertex is cut off and the rest is complete.
+
+In the bipartite case, let the group $S$ hold $a_1$ vertices of the larger part and $b_1$ of the smaller, and the other group the rest. The missing edges number $a_1(b - b_1) + (a - a_1)b_1$. If $b_1 = 0$ then $a_1 \ge 1$ and this is at least $b$; if $b_1 = b$ then $a_1 \le a - 1$ and it is at least $b$; otherwise both $b - b_1$ and $b_1$ are at least $1$, so it is at least $a_1 + (a - a_1) = a \ge b$. So at least $b$ of the $ab$ edges are missing, and $e \le ab - b = (a - 1)b$.
+
+## Useful observations
+- The extremal graph is always the most lopsided split, one vertex against everything else, because the product $k(n - k)$ is smallest at the ends.
+- For $10$ vertices the threshold is $\binom92 = 36$: $36$ edges can still leave a vertex isolated, but $37$ cannot.
+- In a "how many must be added before it is certainly connected" question, the answer is the bound plus one.
+
+## Applications
+Guarantees that a network is connected, worst-case counts of links or cables before everyone can reach everyone, and the edge case of extremal graph questions.
+
+## Contest profile
+Rare. It appears as an AMC 12 worst-case problem about cables or roads, where the bipartite version is the one asked.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"elimination-counting": String.raw`
+## When to use
+A process changes a count by the same amount at every step: a tournament where each game has one loser who leaves, races that eliminate a fixed number of runners each, cuts or breaks that each make one more piece, or merges that each make one fewer pile. The question asks for the number of steps, often with byes or uneven rounds that make a round-by-round count tedious.
+
+## How
+1. Find the starting count $n$ and the final count $m$.
+2. Find how much one step changes the count, $k$.
+3. The number of steps is $\frac{n - m}{k}$.
+
+A $6 \times 8$ chocolate bar broken along its lines into single squares needs $47$ breaks: each break turns one piece into two, and the count goes from $1$ piece to $48$.
+
+## Why it works
+The count changes by exactly $k$ at every step, whatever else happens, so after $t$ steps it has changed by $kt$. Going from $n$ to $m$ therefore takes exactly $\frac{n - m}k$ steps, and the order or grouping of the steps cannot change that. In a tournament each game produces exactly one loser, who leaves, so the players remaining drop by $1$ per game, from $n$ to the single winner: $n - 1$ games.
+
+## Formulas it uses
+No particular formula is needed; the count is the total change divided by the change per step.
+
+## Common traps
+- Counting round by round and losing track of byes, when the total is fixed from the start.
+- Forgetting that the process stops at a final count other than $0$, such as the one winner.
+- Using it when a step can remove different numbers, such as a race that sometimes eliminates two and sometimes three.
+
+## Contest profile
+An AMC 8 and AMC 10 counting question, often a tournament, where the one-line argument replaces a bracket.
 `
 });

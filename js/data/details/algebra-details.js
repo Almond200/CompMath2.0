@@ -630,7 +630,9 @@ The factorization holds for all numbers. The inequality needs $a, b, c \ge 0$, s
 ## Why it works
 Direct expansion proves it: multiplying out $(a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$ leaves the cubes and cancels every mixed term except $-3abc$.
 
-A more conceptual route sees $a^3 + b^3 + c^3 - 3abc$ as the determinant of a circulant matrix, which factors through the cube [[roots-of-unity|roots of unity]].
+A more conceptual route uses the cube roots of unity $1, \omega, \omega^2$, with $\omega + \omega^2 = -1$ and $\omega^3 = 1$. Expanding,
+$$(a + b\omega + c\omega^2)(a + b\omega^2 + c\omega) = a^2 + b^2 + c^2 - ab - bc - ca,$$
+so the expression is $(a + b + c)(a + b\omega + c\omega^2)(a + b\omega^2 + c\omega)$, the three factors that a circulant determinant splits into.
 
 The second factor is $\frac12\left[(a - b)^2 + (b - c)^2 + (c - a)^2\right]$, manifestly nonnegative, and it vanishes only when $a = b = c$. That is why the product has the sign of $a + b + c$, and why for nonnegative numbers the cubes dominate $3abc$.
 
@@ -1093,9 +1095,9 @@ The model AIME use is a pair of constraints that combine into exactly the equali
 Real sequences, sorted; no positivity is needed. Equality needs one sequence constant or the orders already matched.
 
 ## Why it works
-For sorted sequences $a_1 \le \cdots \le a_n$ and $b_1 \le \cdots \le b_n$, the sum $\sum a_ib_{\sigma(i)}$ over permutations $\sigma$ is largest when $\sigma$ keeps the same order and smallest when it reverses one.
+Take $a_1 \le \cdots \le a_n$ and $b_1 \le \cdots \le b_n$, and a pairing $\sigma$ with some pair out of order: $i \lt j$ but $b_{\sigma(i)} \gt b_{\sigma(j)}$. Swapping the two partners changes the sum by $$\left(a_ib_{\sigma(j)} + a_jb_{\sigma(i)}\right) - \left(a_ib_{\sigma(i)} + a_jb_{\sigma(j)}\right) = (a_j - a_i)(b_{\sigma(i)} - b_{\sigma(j)}) \ge 0.$$
 
-The proof is a swap argument: if some pair is matched out of order, exchanging the two partners changes the sum by $(a_i - a_j)(b_{\sigma(i)} - b_{\sigma(j)})$, whose sign forces the straightened pairing to be at least as large. Repeating until everything is aligned needs no convexity or positivity, only the ordering.
+Each such swap removes at least one out-of-order pair, so after finitely many swaps the pairing is the sorted one, and the sum never went down. Hence the sorted pairing is the largest. Applying this to the sequence $-b_n \le \cdots \le -b_1$ shows the reversed pairing is the smallest. Nothing used positivity or convexity, only the ordering.
 
 ## Useful observations
 - It makes "pair large with large" rigorous, and it is the honest engine behind several results: averaging the same-order and reverse-order versions gives Chebyshev's Sum Inequality, and it underlies many bounds that look like forced AM-GM.
@@ -1148,9 +1150,11 @@ Minimization questions in two or three free variables usually end as a sum of sq
 It holds for real numbers, complex numbers, and vectors. "Pointing the same way" means the same sign for reals and the same argument for complex numbers.
 
 ## Why it works
-For real or complex numbers, square both sides: $|a + b|^2 = |a|^2 + 2\operatorname{Re}(a\bar b) + |b|^2 \le |a|^2 + 2|a||b| + |b|^2$, because $\operatorname{Re}(a\bar b) \le |a\bar b|$, with equality exactly when $a\bar b$ is a nonnegative real, that is, when $a$ and $b$ point the same way.
+For real or complex numbers, square both sides: $|a + b|^2 = |a|^2 + 2\operatorname{Re}(a\bar b) + |b|^2 \le |a|^2 + 2|a||b| + |b|^2$, because $\operatorname{Re}(a\bar b) \le |a\bar b|$, with equality exactly when $a\bar b$ is a nonnegative real, that is, when $a$ and $b$ point the same way. For vectors the same expansion uses $u \cdot v \le |u||v|$.
 
-Geometrically it says that a detour through a third point cannot be shorter than the direct path: the side of a triangle is at most the sum of the other two. The reverse form is the same fact with the roles of the sides exchanged, since one side is at least the difference of the other two.
+The reverse form comes from the first applied to $a = (a - b) + b$: $|a| \le |a - b| + |b|$, so $|a| - |b| \le |a - b|$, and swapping $a$ and $b$ gives $|b| - |a| \le |a - b|$. The circle bounds are both forms with $a = z$ and $b = w$.
+
+Geometrically it says that a detour through a third point cannot be shorter than the direct path: the side of a triangle is at most the sum of the other two, and at least their difference.
 
 ## Useful observations
 - It is a bounding tool: $|A + B|$ splits into $|A| + |B|$, and $|A - B|$ is bounded below by the reverse form.
@@ -1246,6 +1250,8 @@ A logarithm asks what power of the base gives the number, and writing both the n
 Let $\log_b a = t$, so $b^t = a$. Take $\log_c$ of both sides: $\log_c(b^t) = \log_c a$, and by the power rule this is $t\log_c b = \log_c a$. Dividing, $t = \frac{\log_c a}{\log_c b}$. Choosing $c = a$ makes the numerator $1$, which is the reciprocal rule $\log_b a = \frac{1}{\log_a b}$.
 
 The chain rule is the same formula applied to every factor at once. Over a common base, $$\log_a b \cdot \log_b c \cdot \log_c d = \frac{\log b}{\log a} \cdot \frac{\log c}{\log b} \cdot \frac{\log d}{\log c},$$ and each numerator cancels the next denominator, leaving $\frac{\log d}{\log a} = \log_a d$. The same cancellation runs through a chain of any length, which is why these products [[telescoping|telescope]].
+
+The last two forms are one line each. Over a common base, $\log_{a^m}(b^n) = \frac{n\log b}{m\log a} = \frac nm\log_a b$. For the exchange rule, take $\log_b$ of both sides: $a^{\log_b c}$ gives $\log_b c \cdot \log_b a$ and $c^{\log_b a}$ gives $\log_b a \cdot \log_b c$, the same product, and two positive numbers with the same logarithm are equal. For example $2^{\log_3 9} = 2^2 = 4$ and $9^{\log_3 2} = 3^{2\log_3 2} = 4$.
 
 ## Useful observations
 - Normalizing every logarithm to one base makes the other rules usable, and after that the chain rule collapses products like $\log_2 3 \cdot \log_3 4 \cdots \log_{63} 64$ to $\log_2 64 = 6$ at once.
@@ -1551,6 +1557,8 @@ The table is exact. Angles in radians are $\frac\pi6$, $\frac\pi4$, $\frac\pi3$,
 The values come from the two [[special-right-triangles|special right triangles]], read as opposite over hypotenuse and adjacent over hypotenuse. The $45$-$45$-$90$ triangle with legs $1$ has hypotenuse $\sqrt2$, so $\sin 45^\circ = \cos 45^\circ = \frac{\sqrt2}{2}$. Half an equilateral triangle of side $2$ has sides $1$, $\sqrt3$, and $2$, which gives $\sin 30^\circ = \cos 60^\circ = \frac12$ and $\sin 60^\circ = \cos 30^\circ = \frac{\sqrt3}{2}$.
 
 On the unit circle the point at angle $\theta$ is $(\cos\theta, \sin\theta)$, so $0^\circ$ and $90^\circ$ are the points $(1, 0)$ and $(0, 1)$, and $\tan 90^\circ = \frac10$ is undefined.
+
+The other quadrants are reflections of the first. The points at $180^\circ - \theta$, $180^\circ + \theta$ and $360^\circ - \theta$ are the reflections of the point at $\theta$ in the $y$-axis, the origin and the $x$-axis, so their coordinates are those at $\theta$ with signs changed. The signs are those of $x$ and $y$ in each quadrant, which gives the positive functions quadrant by quadrant, as on [[reduction-identities|the reduction identities card]].
 
 ## Useful observations
 - For any angle, the reference angle is found and the sign of its quadrant attached. So $\sin 150^\circ = \sin 30^\circ = \frac12$, $\cos 225^\circ = -\cos 45^\circ = -\frac{\sqrt2}{2}$, and $\tan 300^\circ = -\tan 60^\circ = -\sqrt3$.
@@ -2610,12 +2618,14 @@ The signature AIME setup hands over the three symmetric sums, or a cubic whose r
 The expression is a polynomial that is antisymmetric, or at least vanishes whenever two variables coincide. A symmetric polynomial that does not vanish at $a = b$ has no such factor.
 
 ## Why it works
-Read the expression as a polynomial in $a$. Substituting $a = b$ makes it vanish, so $(a - b)$ divides it; by the cyclic symmetry $(b - c)$ and $(c - a)$ divide it too.
+Read the expression as a polynomial in $a$. Substituting $a = b$ makes it vanish, so $(a - b)$ divides it by the [[factor-remainder-theorem|Factor Theorem]]. The cyclic shift $a \to b \to c \to a$ leaves the expression unchanged, so $(b - c)$ and $(c - a)$ divide it too, and since the three factors are distinct linear polynomials their product divides it.
 
-Their product already has degree $3$, so the degree-$2$ sum equals that product times a constant, and one test point fixes the constant to $-1$. The degree-$3$ sum has one degree to spare, and symmetry forces the leftover factor to be $a + b + c$.
+The product already has degree $3$, so the degree-$2$ sum equals that product times a constant. At $(a, b, c) = (0, 1, 2)$ the sum is $0 + 1 \cdot 2 + 4 \cdot (-1) = -2$ and the product is $(-1)(-1)(2) = 2$, so the constant is $-1$.
+
+The degree-$3$ sum leaves a factor of degree $1$. Swapping two variables changes the sign of both the sum and the product, so the quotient is symmetric, hence $k(a + b + c)$. At $(0, 1, 2)$ the sum is $2 - 8 = -6$ and the product times $a + b + c$ is $2 \cdot 3 = 6$, so $k = -1$.
 
 ## Useful observations
-- Any cyclic expression that dies when two variables coincide factors as $(a - b)(b - c)(c - a)$ times a symmetric polynomial of the leftover degree; the skeleton is written down, then the coefficient is pinned with an easy substitution.
+- Any cyclic expression that dies when two variables coincide factors as $(a - b)(b - c)(c - a)$ times a cyclic polynomial of the leftover degree, which is symmetric when swapping two variables flips the sign of the expression. The skeleton is written down, then the coefficients are pinned with easy substitutions.
 - This turns "factor this cyclic mess" or "show this symmetric sum vanishes" into a two-line argument.
 - The sign is the classic slip, so every answer is checked against $(a, b, c) = (1, 2, 3)$.
 
@@ -3116,19 +3126,21 @@ Object.assign(window.MATH_DETAILS, {
 ## Key forms
 - $\alt{\Big(\sum a_i^p\Big)^{1/p}\Big(\sum b_i^q\Big)^{1/q} \ge \sum a_ib_i}{(a_1^p + \cdots + a_n^p)^{1/p}(b_1^q + \cdots + b_n^q)^{1/q} \ge a_1b_1 + \cdots + a_nb_n}$ with $\frac1p + \frac1q = 1$ — Cauchy-Schwarz is the case $p = q = 2$
 - $\alt{\Big(\sum a_i\Big)\Big(\sum b_i\Big)\Big(\sum c_i\Big) \ge \Big(\sum\sqrt[3]{a_ib_ic_i}\Big)^3}{(a_1 + \cdots + a_n)(b_1 + \cdots + b_n)(c_1 + \cdots + c_n) \ge \left(\sqrt[3]{a_1b_1c_1} + \cdots + \sqrt[3]{a_nb_nc_n}\right)^3}$ — the three-sequence form, and its $k$-sequence generalization
-- equality when the sequences are proportional
+- equality when the sequences $a_i^p$ and $b_i^q$ are proportional; in the three-sequence form, when $a$, $b$, $c$ are
 
 ## Conditions
 The terms are positive and $p, q \gt 1$ are conjugate exponents. The $k$-sequence form uses weights adding to $1$.
 
 ## Why it works
-Hölder is $\ell^p$–$\ell^q$ duality. With $\frac1p + \frac1q = 1$, [[weighted-am-gm|weighted AM–GM]] is applied termwise to $\frac{a_i^p}{\sum a^p}$ and $\frac{b_i^q}{\sum b^q}$ and the results summed: the total is $1$, which rearranges to $\sum a_ib_i \le (\sum a^p)^{1/p}(\sum b^q)^{1/q}$.
+Write $A = \sum a_i^p$ and $B = \sum b_i^q$, and set $x_i = \frac{a_i^p}{A}$ and $y_i = \frac{b_i^q}{B}$, so that $\sum x_i = \sum y_i = 1$. [[weighted-am-gm|Weighted AM–GM]] with weights $\frac1p$ and $\frac1q$ gives $x_i^{1/p}y_i^{1/q} \le \frac{x_i}{p} + \frac{y_i}{q}$, and the left side is $\frac{a_ib_i}{A^{1/p}B^{1/q}}$.
 
-The three-sequence form is the same statement with exponents $\frac13 + \frac13 + \frac13 = 1$. Any number of sequences works the same way, with weights $\lambda_j \ge 0$ summing to $1$, which is the form for when the exponents in a problem are not all equal.
+Adding over $i$, the right sides total $\frac1p + \frac1q = 1$, so $\sum a_ib_i \le A^{1/p}B^{1/q}$. Equality in each AM–GM step needs $x_i = y_i$, which is the equality condition.
+
+The three-sequence form is the same argument with three weights $\frac13$: with $x_i$, $y_i$, $z_i$ the terms divided by their sums, $\sqrt[3]{x_iy_iz_i} \le \frac{x_i + y_i + z_i}{3}$, and adding gives $\sum\sqrt[3]{a_ib_ic_i} \le \sqrt[3]{\sum a\sum b\sum c}$. Any number of sequences works the same way, with weights $\lambda_j \ge 0$ summing to $1$, which is the form for when the exponents in a problem are not all equal.
 
 ## Useful observations
 - It is the signature move on cyclic sums: the sequences and exponents are chosen so that the right-hand cube, or $k$th power, is exactly the quantity wanted and the left factors are computable.
-- To bound $\sum\frac{a}{b + c}$ below, it is paired with two copies of $\sum a(b + c)$, giving $\left(\sum\frac{a}{b + c}\right)\left(\sum a(b + c)\right)^2 \ge (a + b + c)^3$, and then the denominator is bounded.
+- To bound $\sum\frac{a}{\sqrt{b + c}}$ below, take that sum twice and $\sum a(b + c)$ once: the cube root of each product of terms is $a$, so $\left(\sum\frac{a}{\sqrt{b + c}}\right)^2\left(\sum a(b + c)\right) \ge (a + b + c)^3$. Since $\sum a(b + c) = 2(ab + bc + ca) \le \frac23(a + b + c)^2$, this gives $\left(\sum\frac{a}{\sqrt{b + c}}\right)^2 \ge \frac32(a + b + c)$.
 - Anywhere Cauchy-Schwarz almost works but leaves an exponent short, Hölder finishes.
 
 ## Applications
@@ -3171,12 +3183,14 @@ An olympiad tool and a clean lemma inside longer inequality chains.
 - a sum $\alt{\sum\sqrt{x_i^2 + y_i^2}}{\sqrt{x_1^2 + y_1^2} + \sqrt{x_2^2 + y_2^2} + \cdots}$ is least when the little vectors are parallel, and then equals $\sqrt{(x_1 + x_2 + \cdots)^2 + (y_1 + y_2 + \cdots)^2}$
 
 ## Conditions
-$p \ge 1$. Equality needs all the vectors to point the same way, that is, to be nonnegative multiples of one another.
+$p \ge 1$. Equality needs all the vectors to point the same way, that is, to be nonnegative multiples of one another. For $p \lt 1$ the inequality fails: with $p = \frac12$, $a = (1, 0)$ and $b = (0, 1)$, the left side is $(1 + 1)^2 = 4$ and the right side is $1 + 1 = 2$.
 
 ## Why it works
 It is the triangle inequality for the norm $\lVert x\rVert_p = (\sum\lvert x_i\rvert^p)^{1/p}$. For $p = 2$, expand: $\lvert\vec u + \vec v\rvert^2 = \lvert\vec u\rvert^2 + 2\,\vec u \cdot \vec v + \lvert\vec v\rvert^2 \le \lvert\vec u\rvert^2 + 2\lvert\vec u\rvert\lvert\vec v\rvert + \lvert\vec v\rvert^2 = (\lvert\vec u\rvert + \lvert\vec v\rvert)^2$, by Cauchy–Schwarz $\vec u \cdot \vec v \le \lvert\vec u\rvert\lvert\vec v\rvert$. Taking square roots gives the claim.
 
-The general case follows from [[holders-inequality|Hölder's Inequality]]: writing $\sum\lvert a_i + b_i\rvert^p \le \sum\lvert a_i\rvert\lvert a_i + b_i\rvert^{p-1} + \sum\lvert b_i\rvert\lvert a_i + b_i\rvert^{p-1}$ and applying Hölder to each sum with exponents $p$ and $\frac{p}{p-1}$ bounds each by the norm of $a$ (or $b$) times $\left(\sum\lvert a_i + b_i\rvert^p\right)^{(p-1)/p}$; dividing by that factor gives the result.
+For $p = 1$ it is the triangle inequality for numbers, added term by term. For general $p \gt 1$, write $s_i = \lvert a_i + b_i\rvert$ and $q = \frac{p}{p-1}$. Since $s_i \le \lvert a_i\rvert + \lvert b_i\rvert$, $$\sum s_i^p = \sum s_i \cdot s_i^{p-1} \le \sum\lvert a_i\rvert s_i^{p-1} + \sum\lvert b_i\rvert s_i^{p-1}.$$
+
+[[holders-inequality|Hölder's Inequality]] with exponents $p$ and $q$ bounds the first sum by $\lVert a\rVert_p\left(\sum s_i^{(p-1)q}\right)^{1/q}$, and $(p - 1)q = p$, so this is $\lVert a\rVert_p\left(\sum s_i^p\right)^{(p-1)/p}$; the second sum is bounded the same way with $\lVert b\rVert_p$. Dividing both sides by $\left(\sum s_i^p\right)^{(p-1)/p}$, which may be assumed nonzero, leaves $\left(\sum s_i^p\right)^{1/p} \le \lVert a\rVert_p + \lVert b\rVert_p$.
 
 ## Useful observations
 - A sum of square-root terms is read as a sum of vector lengths and the vectors are added tip to tail.
@@ -3497,7 +3511,11 @@ An olympiad tool for symmetric inequalities in three variables; it settles where
 The parts are positive integers adding to $n \ge 2$; for $n = 1$ the single part $1$ gives product $1$, and the $r = 1$ line, which needs $q \ge 1$, does not apply. For parts restricted to be at least $2$, or to a fixed count, the rule changes and the equal-parts principle is used directly.
 
 ## Why it works
-For a fixed sum, AM–GM makes the product largest when the parts are equal, so the ideal part is near $e \approx 2.718$, and among integers $3$ beats $2$. Two local swaps pin the integer rule: a $1$ is always wasteful, since merging it into a neighbor, $1 + x \to x + 1$, raises the product from $x$ to $x + 1$, and three $2$'s lose to two $3$'s, which have the same sum $6$ but $8 \lt 9$, so never keep more than two $2$'s.
+Take a split with the largest product and look at its parts. A $1$ is wasteful: merging it into another part $x$ raises the product from $x$ to $x + 1$. A part $x \ge 5$ is wasteful too: splitting it as $2 + (x - 2)$ gives $2x - 4 \gt x$. A $4$ can be traded for $2 + 2$ with the same product. So an optimal split can be taken to use only $2$'s and $3$'s.
+
+Three $2$'s lose to two $3$'s, which have the same sum $6$ but $8 \lt 9$, so there are at most two $2$'s. The count of $2$'s is then forced by $n \bmod 3$: none when $r = 0$, two when $r = 1$ (that is, $4 \cdot 3^{q-1}$), and one when $r = 2$.
+
+For real parts, [[am-gm|AM-GM]] makes $k$ parts with sum $s$ best when all equal $\frac sk$, giving $\left(\frac sk\right)^k$. As a function of a real $k$ this peaks where $\frac sk = e$, which explains why $3$, the integer nearest $e \approx 2.718$, is the best integer part.
 
 ## Useful observations
 - Writing $n = 3q + r$ gives the split at once: $r = 0$ gives $3^q$; $r = 1$ gives $4 \cdot 3^{q-1}$, since a leftover $1$ and a $3$ become a $4$ (or two $2$'s); $r = 2$ gives $2 \cdot 3^q$.
@@ -3678,7 +3696,7 @@ Object.assign(window.MATH_DETAILS, {
 - $\dfrac ab = \dfrac cd \implies \dfrac{a + b}{a - b} = \dfrac{c + d}{c - d}$ — both together, which clears a sum-and-difference form in one step
 
 ## Conditions
-Every denominator is nonzero. Addendo also needs $b_1 + \cdots + b_n \ne 0$, since $\frac21 = \frac{-2}{-1}$ has denominators adding to $0$. Dividendo, and the combined form, need $a \ne b$, that is $k \ne 1$.
+Every denominator is nonzero. Addendo also needs $b_1 + \cdots + b_n \ne 0$, since $\frac21 = \frac{-2}{-1}$ has denominators adding to $0$. The combined form needs $a \ne b$, that is $k \ne 1$, so that $a - b$ and $c - d$ are not zero.
 
 ## Why it works
 Equal ratios all hide the same multiplier, and once each numerator is written as that multiplier times its denominator, every rule is one line of algebra.
@@ -4241,9 +4259,13 @@ Determinants are not on the AMC or AIME syllabus, yet several cards in this libr
 The coordinates are Cartesian. The sign depends on the order of the rows, so swapping two rows reverses it, and only the absolute value is an area. The scaling statement holds for any linear map and, adding a translation, for any affine one.
 
 ## Why it works
-Area is linear in each edge of a parallelogram and reverses sign when the two edges swap roles, which is the same short list of demands that defines the determinant, so the two must agree.
+For the parallelogram on $\vec u = (u_1, u_2)$ and $\vec v = (v_1, v_2)$ with angle $\theta$ between them, the area is $\lvert\vec u\rvert\lvert\vec v\rvert\sin\theta$, and its square is $\lvert\vec u\rvert^2\lvert\vec v\rvert^2 - (\vec u \cdot \vec v)^2$. Expanding, $$(u_1^2 + u_2^2)(v_1^2 + v_2^2) - (u_1v_1 + u_2v_2)^2 = (u_1v_2 - u_2v_1)^2,$$ which is [[lagranges-identity|Lagrange's Identity]] for two terms. So the determinant is the area up to sign, and the sign is that of $\sin\theta$ measured counterclockwise from $\vec u$ to $\vec v$.
 
-Reading it that way makes the collinearity test obvious rather than memorized: three points span a triangle of zero area exactly when they lie on one line, and the determinant of the two edge vectors is twice that area. One dimension up, the $3 \times 3$ determinant is the signed volume of the parallelepiped, so it vanishes exactly when four points are coplanar.
+For the $3 \times 3$ form, subtract the row of $A$ from the rows of $B$ and $C$, which leaves the determinant unchanged, and expand along the column of $1$'s: what remains is the $2 \times 2$ determinant of the edge vectors. The collinearity test is then the statement that a triangle has zero area exactly when its vertices lie on one line.
+
+One dimension up, the $3 \times 3$ determinant of $\vec u$, $\vec v$, $\vec w$ is the triple product $\vec u \cdot (\vec v \times \vec w)$. The cross product has length equal to the area of the base parallelogram on $\vec v$ and $\vec w$ and points perpendicular to it, so dotting with $\vec u$ multiplies that area by the height of $\vec u$ above the base. It vanishes exactly when the three vectors, or the four points, are coplanar.
+
+A linear map sends the unit square to the parallelogram on its two columns, of area $\lvert\det\rvert$. It sends every small square of a grid to a translated copy of that parallelogram scaled to the square, so every region's area, a limit of such squares, is multiplied by the same factor.
 
 ## Useful observations
 - The sign carries information. A positive value means $A$, $B$, $C$ run counterclockwise, which is how a convex-hull or orientation argument is actually carried out, and taking absolute values too early throws that away.
@@ -4268,9 +4290,11 @@ It is behind two things AIME asks constantly. [[shoelace-formula|Shoelace]] is t
 The product is defined only when the number of columns of $A$ equals the number of rows of $B$. Only square matrices have powers.
 
 ## Why it works
-A matrix is a linear map written in coordinates, and the product is what comes from doing one map after the other: entry $(i, j)$ of $AB$ asks where basis vector $j$ goes under $B$ and then reads off coordinate $i$ after $A$.
+A matrix is a linear map written in coordinates: column $j$ of $B$ is where $B$ sends the basis vector $e_j$, so $Be_j = \sum_k b_{kj}e_k$. Applying $A$ sends each $e_k$ to column $k$ of $A$, so $ABe_j = \sum_k b_{kj}(\text{column } k \text{ of } A)$, whose coordinate $i$ is $\sum_k a_{ik}b_{kj}$. That is the definition: the product is the matrix of doing $B$ first and then $A$.
 
-Composition of maps is associative, so matrix multiplication is, and it is not commutative for the same reason rotating then reflecting differs from reflecting then rotating. The sum over the intermediate index $k$ is the whole content of the definition.
+Composition of maps is associative, so matrix multiplication is, and it is not commutative for the same reason rotating then reflecting differs from reflecting then rotating. For example $\begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}\begin{pmatrix} 1 & 0 \\ 1 & 1 \end{pmatrix} = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}$, while the other order gives $\begin{pmatrix} 1 & 1 \\ 1 & 2 \end{pmatrix}$.
+
+The walk count follows by induction on $n$. A walk of length $n + 1$ from $i$ to $j$ is a walk of length $n$ from $i$ to some $k$ followed by an edge from $k$ to $j$, so the count is $\sum_k (A^n)_{ik}a_{kj}$, which is entry $(i, j)$ of $A^{n+1}$.
 
 ## Useful observations
 - The counting reading is the one worth having on sight. If $A$ is an adjacency matrix, $(A^n)_{ij}$ counts walks of length $n$ from $i$ to $j$, because the sum over $k$ is precisely "choose where the walk stood one step earlier".
@@ -4320,9 +4344,11 @@ A number of problems in this library's database solve a system somewhere in the 
 $A$ is a square matrix, and $\lambda$ counts with multiplicity as a root of the characteristic polynomial. The diagonal form $A = PDP^{-1}$ needs $n$ independent eigenvectors.
 
 ## Why it works
-$A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v} \ne \mathbf{0}$ says $A - \lambda I$ kills a nonzero vector, so its rows are dependent and its determinant vanishes. Expanding $\det(A - \lambda I)$ gives a degree-$n$ polynomial in $\lambda$ whose roots are the eigenvalues. [[vietas-general|Vieta's Formulas]] then identify the coefficient of $\lambda^{n-1}$ with the trace and the constant term with the determinant.
+$A\mathbf{v} = \lambda\mathbf{v}$ with $\mathbf{v} \ne \mathbf{0}$ says $A - \lambda I$ kills a nonzero vector, so its columns are dependent and its determinant vanishes; conversely a zero determinant gives such a vector. Expanding $\det(A - \lambda I)$ gives a degree-$n$ polynomial in $\lambda$ whose roots are the eigenvalues.
 
-The identity $\operatorname{tr}(AB) = \operatorname{tr}(BA)$ holds because both equal $\sum_{i, j}a_{ij}b_{ji}$. So $AB - BA$ always has trace $0$, and it can never equal the identity matrix, whose trace is $n$.
+Read off two of its coefficients. Setting $\lambda = 0$ gives the constant term $\det A$. In the expansion over permutations, a term with $\lambda^{n-1}$ must use at least $n - 1$ diagonal entries, so it is the diagonal product $\prod(a_{ii} - \lambda)$, whose $\lambda^{n-1}$ coefficient is $(-1)^{n-1}\sum a_{ii}$. By [[vietas-general|Vieta's Formulas]] for $\prod(\lambda_i - \lambda)$, those coefficients are $\prod\lambda_i$ and $(-1)^{n-1}\sum\lambda_i$, which gives the product and the sum.
+
+If $A\mathbf v = \lambda\mathbf v$, applying $A$ again gives $A^2\mathbf v = \lambda^2\mathbf v$, and so on, so $A^n$ has eigenvalue $\lambda^n$ on the same vector. The identity $\operatorname{tr}(AB) = \operatorname{tr}(BA)$ holds because both equal $\sum_{i, j}a_{ij}b_{ji}$. So $AB - BA$ always has trace $0$, and it can never equal the identity matrix, whose trace is $n$.
 
 ## Useful observations
 - Eigenvalues are what turn $A^n$ into a closed form: if $A = PDP^{-1}$ then $A^n = PD^nP^{-1}$, using the [[matrix-inverse|inverse]] $P^{-1}$.
@@ -4402,7 +4428,7 @@ No problems here are tagged with it yet. On the AMC 12 and the AIME it appears a
 
 "add-all-equations": String.raw`
 ## When to use
-The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables, or some other combination of them, rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]].
+The equations look alike, each obtained from the last by relabeling or rotating the variables, as in $x + y = 10$, $y + z = 14$, $z + x = 12$, or each equation is the total of all the variables plus or minus one of them, or the question asks for the sum of the variables, or some other combination of them, rather than the variables themselves. A general linear system with unrelated coefficients needs elimination instead, and nonlinear symmetric systems such as $x + y + z = 6$, $xy + yz + zx = 11$, $xyz = 6$ belong to [[vietas-general|Vieta's Formulas]]. When the equations are products, as in $xy = 24$, $yz = 48$, $zx = 72$, the same idea works with multiplication in place of addition.
 
 ## How
 1. Decide what the sum should produce: the total $S$ of all the variables, or the exact expression the question asks for.
@@ -4410,13 +4436,18 @@ The equations look alike, each obtained from the last by relabeling or rotating 
 3. Solve for $S$, the sum of the right sides divided by $k$.
 4. Subtract each original equation from the right multiple of $S$, or subtract equations in pairs, to isolate each variable.
 5. If $k = 0$, adding gives no information about $S$; use differences of equations instead.
+6. For a system of products, multiply all the equations to get a power of the product $P$ of the variables, take the root, and divide by each equation.
 
 For $x + y = 10$, $y + z = 14$, $z + x = 12$, adding all three gives $2S = 36$, so $S = 18$, and then $z = 18 - 10 = 8$, $x = 18 - 14 = 4$, and $y = 18 - 12 = 6$. A group can be enough: from $x + 2y = 7$ and $2y + 3z = 11$, the question "find $x + 4y + 3z$" is answered by adding just those two, $18$, though neither $x$, $y$, nor $z$ is determined.
 
 {{figure:columns}}
 
+For $xy = 24$, $yz = 48$, $zx = 72$, multiplying gives $(xyz)^2 = 24 \cdot 48 \cdot 72 = 288^2$, so $xyz = 288$ for positive values, and dividing by each equation gives $z = \frac{288}{24} = 12$, $x = \frac{288}{48} = 6$, $y = \frac{288}{72} = 4$.
+
 ## Why it works
 Any sum of true equations is a true equation, so adding a group of them is always allowed. In a system unchanged by relabeling the variables, every variable occupies each position equally often across the equations, so in the sum every variable has the same coefficient and the sum is a multiple of $S$. Once $S$ is known, each equation of the form "$S$ minus one variable" or "$S$ plus one variable" names that variable directly.
+
+Multiplying works for the same reason: a product of true equations is true, and in a symmetric system of products every variable appears equally often, so the product is a power of $xyz$. Dividing it by one equation leaves the missing variable, which needs every variable nonzero.
 
 ## Formulas it uses
 No formula is needed; the method is bookkeeping with the total of the variables.
@@ -4425,6 +4456,7 @@ No formula is needed; the method is bookkeeping with the total of the variables.
 - Dividing by the coefficient of $S$ when it is $0$, where the system has no unique solution.
 - Solving for every variable when the question asks only for the total or another combination; look for a group of equations that adds to it.
 - Miscounting how many times each variable appears after adding.
+- Taking the square root of $(xyz)^2$ without checking the sign: for positive lengths it is positive, but in general both signs may occur.
 
 ## Contest profile
 A short AMC problem, often with four or five variables to make elimination tedious, and an AIME first step after a substitution turns a logarithmic system into a linear one.
@@ -5025,9 +5057,13 @@ Rare on answer-only contests; it appears in olympiad and AIME problems phrased w
 $A$ is any square matrix, diagonalizable or not, with entries in any field.
 
 ## Why it works
-For a $2 \times 2$ matrix the theorem is a direct computation. With $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $A^2 = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & d^2 + bc \end{pmatrix}$, and subtracting $(a + d)A$ leaves $(bc - ad)I = -(\det A)\,I$.
+For a $2 \times 2$ matrix the theorem is a direct computation. With $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$, $A^2 = \begin{pmatrix} a^2 + bc & b(a + d) \\ c(a + d) & d^2 + bc \end{pmatrix}$, and subtracting $(a + d)A$ leaves $(bc - ad)I = -(\det A)\,I$. Rearranged as $A\left((\operatorname{tr}A)\,I - A\right) = (\det A)\,I$, this is the inverse formula.
 
-In general, let $B(\lambda) = \operatorname{adj}(\lambda I - A)$, a matrix whose entries are polynomials in $\lambda$ of degree at most $n - 1$. The adjugate identity gives $B(\lambda)(\lambda I - A) = p(\lambda)\,I$. Writing $B(\lambda) = B_0 + B_1\lambda + \cdots + B_{n-1}\lambda^{n-1}$ and $p(\lambda) = c_0 + c_1\lambda + \cdots + \lambda^n$ and comparing the coefficients of each power of $\lambda$ gives $n + 1$ matrix equations. Multiplying the equation for $\lambda^k$ by $A^k$ on the right and adding them all, the left sides telescope to $0$ and the right sides add up to $p(A)$.
+In general, let $B(\lambda) = \operatorname{adj}(\lambda I - A)$, a matrix whose entries are polynomials in $\lambda$ of degree at most $n - 1$. The adjugate identity gives $B(\lambda)(\lambda I - A) = p(\lambda)\,I$. Write $B(\lambda) = B_0 + B_1\lambda + \cdots + B_{n-1}\lambda^{n-1}$ and $p(\lambda) = c_0 + c_1\lambda + \cdots + c_n\lambda^n$, and set $B_{-1} = B_n = 0$.
+
+Comparing the coefficients of $\lambda^k$ gives $B_{k-1} - B_kA = c_kI$ for $k = 0, \ldots, n$. Multiplying the $k$-th equation by $A^k$ on the right gives $B_{k-1}A^k - B_kA^{k+1} = c_kA^k$. Adding them all, the left sides telescope to $B_{-1} - B_nA^{n+1} = 0$, and the right sides add up to $p(A)$.
+
+The tempting shortcut, substituting $\lambda = A$ into $\det(\lambda I - A)$ to get $\det 0 = 0$, is not a proof: it produces the number $0$, not the zero matrix, because $\lambda I$ with a matrix in place of $\lambda$ is not what the determinant was computed from.
 
 ## Useful observations
 - It replaces diagonalization: $A^n = PD^nP^{-1}$ needs $A$ to be diagonalizable, while the recurrence for $A^n$ always holds.
@@ -5887,5 +5923,63 @@ The sign test is the case $k = 0$ written with Vieta's Formulas. A positive prod
 
 ## Contest profile
 An AMC 12 and occasional AIME step: a parameter range for which a quadratic has two positive roots, or roots on either side of a number, often inside a problem about the intersections of a line and a parabola. The sign of a single value $f(k)$ is the fastest test and the one most often missed.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"round-up-whole-items": String.raw`
+## When to use
+A word problem buys or uses things that come only whole: full recipes, cans of paint, buses, boxes, bottles, discs. It asks how many are needed to cover an amount, or how many fit within a limit, and often what that whole number of items costs or uses.
+
+## How
+1. Find the amount $N$ to be covered and the size $s$ of one item, in the same units.
+2. For how many are needed, take $\left\lceil \frac Ns \right\rceil$; for how many fit, take $\left\lfloor \frac Ns \right\rfloor$.
+3. Check by bracketing: the answer $k$ for "needed" satisfies $(k - 1)s \lt N \le ks$.
+4. Compute any further quantities from $k$, the whole number of items.
+
+For $250$ people in buses of $48$: $5 \cdot 48 = 240 \lt 250 \le 288 = 6 \cdot 48$, so $6$ buses.
+
+## Why it works
+$k$ items hold $ks$ in all, so they cover $N$ exactly when $ks \ge N$, that is $k \ge \frac Ns$; the least whole such $k$ is the ceiling of $\frac Ns$. They fit within $N$ exactly when $ks \le N$, that is $k \le \frac Ns$, and the greatest whole such $k$ is the floor. When $\frac Ns$ is already a whole number both answers equal it.
+
+## Formulas it uses
+No particular formula is needed; the step is a division followed by rounding in the right direction.
+
+## Common traps
+- Rounding to the nearest whole number instead of up, which leaves the amount uncovered.
+- Rounding the final cost or total instead of the number of items, after multiplying by a fractional quotient.
+- Rounding twice in a chain: round the items once, then use whole items for the next step, which may itself need rounding up.
+
+## Contest profile
+An opening question on the AMC 8 and AMC 10, and a step inside word problems about schedules and supplies.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"assume-all-one-kind": String.raw`
+## When to use
+A story has items of two kinds, the total number of items, and the total of a quantity that depends on the kind: legs, wheels, points, prices, or minutes. It asks how many there are of each kind.
+
+## How
+1. Suppose every item is of the first kind, with value $a$ each, and compute the total $na$.
+2. Compare with the true total $T$: the difference is $T - na$.
+3. Switching one item to the second kind, of value $b$, changes the total by $b - a$, so the number of the second kind is $\frac{T - na}{b - a}$.
+4. The rest are of the first kind; check by computing the total.
+
+With $30$ animals and $84$ legs: all chickens would give $60$ legs, each rabbit adds $2$, so there are $\frac{24}{2} = 12$ rabbits and $18$ chickens.
+
+## Why it works
+With $x$ items of the second kind and $n - x$ of the first, the total is
+$$a(n - x) + bx = na + (b - a)x.$$
+Setting it equal to $T$ and solving gives $x = \frac{T - na}{b - a}$. This is the system $x + y = n$, $ax + by = T$ with one variable eliminated, done as a story: the assumed total, and the change per switch.
+
+## Formulas it uses
+No particular formula is needed; the step is one linear equation.
+
+## Common traps
+- Dividing by the value of one kind instead of the difference $b - a$.
+- Forgetting to find the first kind as $n - x$ when that is what is asked.
+- Getting a fraction or a negative number, which means the totals are inconsistent or a quantity was misread.
+
+## Contest profile
+An AMC 8 and MATHCOUNTS classic, usually early in the paper, with legs, wheels, or prices.
 `
 });

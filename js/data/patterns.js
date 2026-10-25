@@ -15,12 +15,42 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Angle & Configuration Chasing", blurb: "Following angles around a figure until the configuration gives itself away.", ids: ["angle-chasing", "directed-angles", "directed-lengths", "phantom-point"] },
         { title: "Standard Constructions", blurb: "Lines and points worth adding to a figure to reveal structure that is already there: a parallel line, a doubled median, a reflection across a bisector, or two sides extended to meet. Ask which one the figure is missing.", ids: ["extend-sides-to-meet", "median-doubling", "parallel-line-similarity", "perp-to-angle-bisector", "reflect-across-the-line", "triangle-of-centers", "shared-leg-pythagoras", "bisector-closer-region"] },
-        { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "ravi-substitution"] },
+        { title: "Ratios, Masses & Areas", blurb: "Turning length ratios into masses or areas so they can be added and compared.", ids: ["mass-points", "area-method", "area-by-pieces", "joined-shapes-perimeter", "ravi-substitution"] },
         { title: "Transformations & Inversion", blurb: "Moving the figure (rotating, scaling, or inverting it) into one that is easier to see.", ids: ["spiral-similarity", "homothety-monge", "inversion-properties", "sqrt-bc-inversion", "composing-transformations", "rotation-trick", "rotation-center", "affine-transformations", "linear-change-of-variables", "scale-one-level"] },
         { title: "Coordinate & Algebraic Bashes", blurb: "Putting the figure in coordinates, trigonometry, complex numbers, or barycentrics and computing.", ids: ["coordinate-bash", "trig-bash", "complex-bash", "vector-bash", "tangent-lines-from-point", "barycentric-coordinates", "tangency-equation", "closing-polygon-vectors"] },
-        { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "fit-copies"] }
+        { title: "Working in Three Dimensions", blurb: "Reducing a solid to a plane picture: put it in coordinates, slice it through its symmetry, or unfold its surface.", ids: ["cross-section-method", "unfold-the-surface", "box-tetrahedron", "dihedral-angle", "cube-nets", "cube-stack-views", "fit-copies"] }
       ],
       formulas: [
+        {
+          id: "cube-nets",
+          name: "Folding a Net into a Cube",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A flat pattern of squares is folded into a cube or a box without a lid, and the question asks which faces end up opposite, which patterns fold up at all, what meets at a corner, or which faces of a die are hidden.`,
+          move: String.raw`Choose one square as the floor and fold the others up around it, writing down where each square lands; for opposite faces, use the shortcut that two squares at the ends of a straight row of three are opposite.`,
+          uses: ["cube"],
+          latex: String.raw`\text{a straight row } A\,X\,B \text{ in the net} \implies A \text{ and } B \text{ are opposite faces}`,
+          description: String.raw`Folding a net into a cube means tracking where each square of a flat pattern lands when the pattern is folded along its edges. One square is taken as the floor and the rest fold up around it. Two squares at the two ends of a straight row of three become opposite faces, three faces meeting at a corner are one from each opposite pair, and a pattern fails to be a net exactly when two squares land on the same face.`,
+          keywords: ["net of a cube", "fold into a cube", "opposite faces", "cube net", "folded pattern", "open box net", "die opposite faces", "which net", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "cube-stack-views",
+          name: "Views of a Stack of Cubes",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`A solid built from unit cubes is given as a stack map, a grid of column heights, or by its front, side, and top views, and the question asks for another view, the number of cubes, or how few or how many cubes could match the views.`,
+          move: String.raw`Record the solid as a grid of heights. The front view shows, in each column, the tallest stack of that column, the side view the tallest stack of each row, and the top view the occupied squares. For given views, the most cubes put the smaller of its row and column maxima on every square, and the fewest use each needed height as few times as possible.`,
+          uses: ["cube"],
+          latex: String.raw`\text{front}_j = \max_i h_{ij}, \qquad \text{side}_i = \max_j h_{ij}, \qquad \text{most cubes: } \min(\text{side}_i, \text{front}_j) \text{ on each square}`,
+          description: String.raw`A stack of unit cubes is recorded as a grid of heights $h_{ij}$, with $i$ the row from back to front and $j$ the column from left to right. Looking from the front, each column shows its tallest stack; looking from the side, each row shows its tallest stack; and the top view shows which squares are occupied. Turning the views back into a grid gives the most cubes as a sum of minimum values and the fewest by reusing each needed height where a row and a column both need it.`,
+          keywords: ["stack of cubes", "front view", "side view", "top view", "stack map", "views of a solid", "fewest cubes", "most cubes", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
         {
           id: "fit-copies",
           name: "Fitting Copies Together",
@@ -397,6 +427,36 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "area-by-pieces",
+          name: "Area by Adding and Subtracting Pieces",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`The region is awkward, such as an L shape, a frame, a shape with a notch or cut corners, an overlap, or the part of one figure lying outside another, but it is a simple shape with simple pieces removed, or a union of simple pieces.`,
+          move: String.raw`Write the region as a simple shape minus the pieces cut from it, or as a sum of pieces that do not overlap, and add or subtract their areas; to compare two awkward regions, add the same piece to both.`,
+          uses: ["triangle-area-standard", "circle-basics"],
+          latex: String.raw`[\text{region}] = [\text{whole}] - [\text{pieces removed}] \quad \text{or} \quad [\text{piece}_1] + [\text{piece}_2] + \cdots`,
+          description: String.raw`Area by adding and subtracting pieces finds the area of an awkward region from shapes whose areas are known. Either the region is a simple shape, a rectangle or a circle, with pieces taken away, so its area is the whole minus the pieces, or it splits into simple pieces that meet only along their edges, so its area is their sum. The difference of two awkward regions is unchanged when the same piece is added to both.`,
+          keywords: ["area of a region", "subtract the corner", "shaded area", "L shape area", "frame area", "area of a border", "add and subtract areas", "cut out", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
+          id: "joined-shapes-perimeter",
+          name: "Joining Shapes Hides Edges",
+          type: "method",
+          subject: "geometry",
+          when: String.raw`Squares, rectangles, polygons or cubes are put together edge to edge or face to face, and the question asks for the perimeter, the number of sides, or the surface area of the result; or an outline with only right-angle corners has some lengths missing.`,
+          move: String.raw`Add the perimeters, or surface areas, of the pieces and subtract twice each shared length, or shared face, since both pieces lose it. For an outline with only right-angle corners that every vertical and horizontal line crosses at most twice, the horizontal edges add to twice the width and the vertical edges to twice the height.`,
+          uses: [],
+          latex: String.raw`P = P_1 + P_2 + \cdots - 2(\text{shared lengths}), \qquad S = S_1 + S_2 + \cdots - 2(\text{shared faces})`,
+          description: String.raw`Joining shapes hides edges: when two pieces are put together along a common edge, that edge was on the boundary of both and is now inside, so the perimeter of the whole is the sum of the pieces' perimeters minus twice the shared length. For cubes and boxes glued face to face the surface area loses twice each shared face. A staircase outline with right-angle corners has horizontal edges adding up to twice its width, whatever the steps.`,
+          keywords: ["perimeter of joined shapes", "shared edge", "glued cubes surface area", "perimeter of figure made of squares", "hidden faces", "number of sides after joining", "rectilinear perimeter", "method"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
           id: "ravi-substitution",
           name: "Ravi Substitution",
           type: "method",
@@ -634,7 +694,7 @@ window.MATH_SECTIONS.push({
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
         { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
         { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point"] },
-        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "averages-to-totals"] },
+        { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
         { title: "Matrices & Determinants", blurb: "Evaluating a determinant without expanding every term, and raising a matrix to a high power.", ids: ["matrix-power-diagonalizing", "cofactor-expansion"] }
@@ -730,6 +790,36 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "round-up-whole-items",
+          name: "Rounding Up to Whole Items",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`Only whole items can be used, such as recipes, cans, buses, boxes, or discs, and the question asks how many are needed to cover an amount, or how many fit into a limit.`,
+          move: String.raw`Divide the amount needed by the size of one item and round up to the next whole number; for how many fit, round down. Compute anything that depends on the items, such as eggs per recipe or the cost per bus, from that whole number.`,
+          uses: [],
+          latex: String.raw`\#\text{items needed} = \left\lceil \frac Ns \right\rceil, \qquad \#\text{items that fit} = \left\lfloor \frac Ns \right\rfloor`,
+          description: String.raw`Rounding up to whole items answers "how many are needed" when the items come only in whole units of size $s$ and an amount $N$ must be covered: the answer is $\left\lceil \frac Ns \right\rceil$, the smallest whole number at least $\frac Ns$, written with the ceiling brackets. "How many fit" rounds down instead, with the floor. Later quantities are computed from the whole number of items, not from the exact quotient.`,
+          keywords: ["round up", "ceiling", "how many needed", "whole number of", "buses needed", "cans needed", "full recipes", "at least how many", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "assume-all-one-kind",
+          name: "Assuming All Are of One Kind",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A count of items of two kinds and a total of some quantity per item are given, such as heads and legs of chickens and rabbits, wheels on bicycles and tricycles, or the cost of cheap and expensive tickets.`,
+          move: String.raw`Pretend every item is of the first kind and compute the total that would give. Each item switched to the second kind changes the total by the difference of the two per-item values, so the shortfall divided by that difference is the number of the second kind.`,
+          uses: [],
+          latex: String.raw`\#\text{second kind} = \frac{T - na}{b - a}`,
+          description: String.raw`Assuming all are of one kind solves a two-kind counting problem without writing a system. With $n$ items, each worth $a$ or $b$, and a total $T$: if all were worth $a$ the total would be $na$, and every item of the second kind adds $b - a$ to that, so there are $\frac{T - na}{b - a}$ of them. It is elimination done in words, the classic chickens and rabbits puzzle.`,
+          keywords: ["chickens and rabbits", "heads and legs", "bicycles and tricycles", "two kinds of tickets", "assume all", "suppose all were", "how many of each", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
         },
         {
           id: "averages-to-totals",
@@ -901,11 +991,11 @@ window.MATH_SECTIONS.push({
           name: "Adding Groups of Equations",
           type: "method",
           subject: "algebra",
-          when: String.raw`A system of equations whose equations are relabelings or rotations of one another, whose equations each contain the total of the variables, or whose question asks only for a sum or another combination of the variables rather than each variable.`,
-          move: String.raw`Add the equations, all of them or a chosen group, so that the left side becomes a multiple of the total $S$ or exactly the expression asked for; then use that sum, subtracting equations where needed, instead of solving for every variable.`,
+          when: String.raw`A system of equations whose equations are relabelings or rotations of one another, whose equations each contain the total of the variables, or whose question asks only for a sum or another combination of the variables rather than each variable; or a system of products such as $xy$, $yz$, $zx$, which multiplying handles the same way.`,
+          move: String.raw`Add the equations, all of them or a chosen group, so that the left side becomes a multiple of the total $S$ or exactly the expression asked for; then use that sum, subtracting equations where needed, instead of solving for every variable. For equations that are products, multiply them all instead, then divide back by each one.`,
           uses: [],
-          latex: String.raw`\begin{gathered} \text{all}\!: \ kS = c_1 + c_2 + \cdots + c_n \\ \text{some}\!: \ E_i + E_j + \cdots = \text{the target} \end{gathered}`,
-          description: String.raw`Adding groups of equations uses the symmetry of a system instead of eliminating variables one at a time. When the equations $E_1, \ldots, E_n$, with right sides $c_1, \ldots, c_n$, treat the variables alike, their sum treats them alike too and collapses to a multiple $kS$ of the total $S$ of the variables, which unlocks every variable; and when only a combination of the variables is asked for, adding the right group of equations can produce it directly.`,
+          latex: String.raw`\begin{gathered} \text{all}\!: \ kS = c_1 + c_2 + \cdots + c_n \\ \text{some}\!: \ E_i + E_j + \cdots = \text{the target} \\ \text{products}\!: \ (xyz)^2 = c_1c_2c_3 \end{gathered}`,
+          description: String.raw`Adding groups of equations uses the symmetry of a system instead of eliminating variables one at a time. When the equations $E_1, \ldots, E_n$, with right sides $c_1, \ldots, c_n$, treat the variables alike, their sum treats them alike too and collapses to a multiple $kS$ of the total $S$ of the variables, which unlocks every variable; and when only a combination of the variables is asked for, adding the right group of equations can produce it directly. Equations that give products, such as $xy$, $yz$, and $zx$, are multiplied instead: the product of all three is $(xyz)^2$, and dividing by each equation gives each variable.`,
           keywords: ["add the equations", "add all the equations", "add some of the equations", "combination of equations", "symmetric linear system", "cyclic system", "sum of all variables", "grand total", "method"],
           importance: "high",
           tier: "AMC",
@@ -1708,7 +1798,7 @@ window.MATH_SECTIONS.push({
     {
       title: "Counting & Probability",
       groups: [
-        { title: "Reframing the Count", blurb: "Counting something easier with the same answer: the complement, a bijection, a reflected path, a region's area, or the same set counted twice.", ids: ["complementary-counting", "bijection-method", "double-counting", "symmetry-probability", "reflection-principle", "geometric-probability"] },
+        { title: "Reframing the Count", blurb: "Counting something easier with the same answer: the complement, a bijection, a reflected path, a region's area, or the same set counted twice.", ids: ["complementary-counting", "bijection-method", "double-counting", "symmetry-probability", "reflection-principle", "elimination-counting", "geometric-probability"] },
         { title: "Building & Splitting", blurb: "Building each object step by step, gluing items that must stay together or slotting items into gaps, or splitting the count into cases.", ids: ["constructive-counting", "casework-method", "counting-blocks", "gap-method", "uniform-overcount", "pie"] },
         { title: "Working It Out by Hand", blurb: "Listing the cases in an order that cannot skip or repeat one, or running a short process step by step until it ends or repeats.", ids: ["organized-listing", "simulate-the-process"] },
         { title: "Recursion & States", blurb: "Writing a count or probability in terms of smaller cases, filling a grid of counts, or solving the recursion.", ids: ["recursive-counting", "grid-path-fill", "states-recursion-prob", "transfer-matrix-method", "backward-induction"] },
@@ -2000,6 +2090,21 @@ window.MATH_SECTIONS.push({
           importance: "low",
           tier: "AIME Early",
           level: ["AIME", "Olympiad"]
+        },
+        {
+          id: "elimination-counting",
+          name: "Counting by What Each Step Removes",
+          type: "method",
+          subject: "counting",
+          when: String.raw`A process removes a fixed number of things at each step, such as a single-elimination tournament, races that knock out the slowest runners, breaking a bar into pieces, or merging piles, and the question asks how many steps it takes.`,
+          move: String.raw`Count how many things must be removed in all and divide by how many each step removes; the shape of the rounds, byes, and uneven brackets does not matter.`,
+          uses: [],
+          latex: String.raw`\#\text{steps} = \frac{\text{total removed}}{\text{removed per step}}, \qquad n \text{ players} \implies n - 1 \text{ games}`,
+          description: String.raw`Counting by what each step removes finds the number of steps of a process from its effect rather than its schedule. If every step removes exactly $k$ things and the process goes from $n$ things to $m$, it takes $\frac{n - m}{k}$ steps, however the steps are arranged. In a single-elimination tournament every game sends home exactly one player, and all but the winner go home, so $n$ players play $n - 1$ games.`,
+          keywords: ["single elimination", "tournament games", "byes", "each game eliminates one", "number of matches", "breaking a chocolate bar", "races eliminate", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
         },
         {
           id: "geometric-probability",

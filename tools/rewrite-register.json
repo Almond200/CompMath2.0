@@ -1825,7 +1825,17 @@
     "polynomial-division": "method",
     "quadratic-root-location": "method",
     "directed-lengths": "method",
-    "steiner-neighborhood": "formula"
+    "steiner-neighborhood": "formula",
+    "lcm-common-multiples": "formula",
+    "disconnected-graph-edges": "formula",
+    "figure-symmetries": "formula",
+    "cube-nets": "method",
+    "cube-stack-views": "method",
+    "area-by-pieces": "method",
+    "joined-shapes-perimeter": "method",
+    "round-up-whole-items": "method",
+    "assume-all-one-kind": "method",
+    "elimination-counting": "method"
   },
   "placeholders": {},
   "ledger": {
@@ -8865,6 +8875,66 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "lcm-common-multiples": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "disconnected-graph-edges": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "figure-symmetries": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "cube-nets": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "cube-stack-views": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "area-by-pieces": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "joined-shapes-perimeter": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "round-up-whole-items": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "assume-all-one-kind": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "elimination-counting": [
+      [
+        "(new card)",
+        "written directly in the method template"
       ]
     ]
   }

@@ -9383,6 +9383,96 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // ---- Symmetries of a figure: a regular pentagon and hexagon with every mirror line ----
+  DIAGRAMS["figure-symmetries"] = [(() => {
+    const draw = (cen, R, n) => {
+      const V = Array.from({ length: n }, (_, k) => onC(cen, R, -90 + 360 * k / n));
+      const lines = Array.from({ length: n }, (_, k) => -90 + 180 * k / n);
+      const refl = (p, deg) => { const u = [Math.cos(rad(deg)), Math.sin(rad(deg))], d = sub(p, cen), t = d[0] * u[0] + d[1] * u[1]; return add(cen, sub(mul(u, 2 * t), d)); };
+      const okL = lines.every(a => V.every(p => V.some(q => dist(refl(p, a), q) < 0.01)));
+      const parts = [poly(V, DIM, 2.2), ...lines.map((a, k) => seg(onC(cen, R * 1.18, a), onC(cen, R * 1.18, a + 180), n % 2 === 0 && k % 2 ? GLD : ACC, 1.3, "5 4"))];
+      return { parts, ok: okL && lines.length === n };
+    };
+    const P5 = draw([110, 140], 78, 5), P6 = draw([320, 140], 78, 6);
+    const ok = P5.ok && P6.ok;
+    return wrap(430, 300, [
+      ...P5.parts, ...P6.parts,
+      txt([110, 252], "pentagon: 5 lines", DIM, 12), txt([320, 252], "hexagon: 6 lines", DIM, 12),
+      cap(430, 300, "Every mirror line of a regular polygon passes through its center. In the pentagon each line joins a vertex to the midpoint of the opposite side; in the hexagon three lines join opposite vertices (blue) and three join midpoints of opposite sides (gold)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- Folding a net into a cube: the cross, folded with C as the floor ----
+  DIAGRAMS["cube-nets"] = [(() => {
+    const sq = { A: [1, 0], B: [0, 1], C: [1, 1], D: [2, 1], E: [1, 2], F: [1, 3] };
+    // roll the cube from the floor C, tracking each face's outward normal
+    const neg = v => v.map(x => -x), key = Object.keys(sq), fr = { C: [[0, 0, -1], [1, 0, 0], [0, 1, 0]] }, Q = ["C"];
+    while (Q.length) {
+      const c = Q.shift(), [n, ex, ey] = fr[c];
+      const moves = [[[1, 0], [ex, neg(n), ey]], [[-1, 0], [neg(ex), n, ey]], [[0, 1], [ey, ex, neg(n)]], [[0, -1], [neg(ey), ex, n]]];
+      for (const [d, f] of moves) { const m = key.find(k => sq[k][0] === sq[c][0] + d[0] && sq[k][1] === sq[c][1] + d[1]); if (m && !fr[m]) { fr[m] = f; Q.push(m); } }
+    }
+    const opp = (a, b) => fr[a][0].every((x, i) => x === -fr[b][0][i]);
+    const pairs = [["A", "E", ACC, ACCS], ["B", "D", GLD, GLDS], ["C", "F", PUR, "rgba(155,93,229,0.12)"]];
+    const ok = pairs.every(([a, b]) => opp(a, b)) && new Set(key.map(k => fr[k][0].join())).size === 6;
+    const s = 56, O = [130, 30], cell = k => { const [x, y] = sq[k]; const p = [O[0] + x * s, O[1] + y * s]; return [p, add(p, [s, 0]), add(p, [s, s]), add(p, [0, s])]; };
+    const col = k => pairs.find(p => p.includes(k));
+    return wrap(430, 300, [
+      ...key.map(k => poly(cell(k), col(k)[2], 2, col(k)[3])),
+      ...key.map(k => txt(add(cell(k)[0], [s / 2, s / 2 + 5]), k, DIM, 15)),
+      txt([350, 90], "A, E opposite", ACC, 12), txt([350, 115], "B, D opposite", GLD, 12), txt([350, 140], "C, F opposite", PUR, 12),
+      cap(430, 300, "Fold the cross with C as the floor. In each straight row of three the two ends are opposite: A and E in the column, B and D across. F, two steps beyond C along the column, becomes the lid." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- Views of a stack of cubes: a height grid and the two views it gives ----
+  DIAGRAMS["cube-stack-views"] = [(() => {
+    const H = [[1, 2, 1], [3, 1, 0], [2, 0, 1]];  // rows back to front, columns left to right
+    const front = [0, 1, 2].map(j => Math.max(...H.map(r => r[j]))), side = H.map(r => Math.max(...r));
+    const ok = front.join() === "3,2,1" && side.join() === "2,3,2" && H.flat().reduce((a, b) => a + b, 0) === 11;
+    const s = 34, G = [40, 60], parts = [];
+    H.forEach((r, i) => r.forEach((h, j) => { const p = [G[0] + j * s, G[1] + i * s]; parts.push(poly([p, add(p, [s, 0]), add(p, [s, s]), add(p, [0, s])], DIM, 1.5, h ? ACCS : "none"), txt(add(p, [s / 2, s / 2 + 5]), String(h), DIM, 14)); }));
+    parts.push(txt([G[0] + 1.5 * s, G[1] - 14], "heights, top view", DIM, 12), txt([G[0] + 1.5 * s, G[1] + 3 * s + 22], "front", DIM, 11));
+    const u = 22, F0 = [200, 210];
+    front.forEach((h, j) => { for (let k = 0; k < h; k++) { const p = [F0[0] + j * u, F0[1] - (k + 1) * u]; parts.push(poly([p, add(p, [u, 0]), add(p, [u, u]), add(p, [0, u])], ACC, 1.5, ACCS)); } });
+    parts.push(txt([F0[0] + 1.5 * u, F0[1] + 18], "front view", ACC, 12));
+    const S0 = [320, 210];
+    side.forEach((h, i) => { for (let k = 0; k < h; k++) { const p = [S0[0] + i * u, S0[1] - (k + 1) * u]; parts.push(poly([p, add(p, [u, 0]), add(p, [u, u]), add(p, [0, u])], GLD, 1.5, GLDS)); } });
+    parts.push(txt([S0[0] + 1.5 * u, S0[1] + 18], "right side view", GLD, 12));
+    return wrap(430, 300, [...parts,
+      cap(430, 300, "Each column of the height grid shows its tallest stack from the front (3, 2, 1), and each row its tallest stack from the side (2, 3, 2). The 11 cubes are not determined by the views: any count from 8 to 16 fits them." + (ok ? "" : " MISMATCH"))]);
+  })()];
+
+  // ---- Area by adding and subtracting pieces: an L shape two ways ----
+  DIAGRAMS["area-by-pieces"] = [(() => {
+    const u = 24, O = [70, 50], P = (x, y) => [O[0] + x * u, O[1] + (9 - y) * u];
+    const L = [P(0, 0), P(6, 0), P(6, 5), P(4, 5), P(4, 9), P(0, 9)];
+    const corner = [P(4, 5), P(6, 5), P(6, 9), P(4, 9)];
+    const area = pts => Math.abs(pts.reduce((s, p, i) => { const q = pts[(i + 1) % pts.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0)) / 2 / (u * u);
+    const ok = Math.abs(area(L) - 46) < 1e-9 && Math.abs(area(corner) - 8) < 1e-9;
+    return wrap(430, 300, [
+      poly(L, ACC, 2.2, ACCS), poly(corner, GLD, 1.6, GLDS, "5 4"), seg(P(0, 5), P(4, 5), FNT, 1.2, "4 3"),
+      txt(mid(P(0, 0), P(6, 0)), "6", DIM, 13), txt(add(mid(P(0, 0), P(0, 9)), [-12, 4]), "9", DIM, 13),
+      txt(add(mid(P(4, 5), P(6, 9)), [0, 4]), "2 × 4", GLD, 12), txt(add(mid(P(0, 0), P(4, 9)), [0, 4]), "46", ACC, 15),
+      cap(430, 300, "The L (blue) is the 6 × 9 rectangle minus the missing 2 × 4 corner (gold): 54 − 8 = 46. Cutting along the dashed line gives the same total as a sum, 4 × 4 + 6 × 5 = 16 + 30 = 46." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- Joining shapes hides edges: a T made of two 2 x 4 rectangles ----
+  DIAGRAMS["joined-shapes-perimeter"] = [(() => {
+    const u = 30, O = [155, 40], P = (x, y) => [O[0] + x * u, O[1] + (6 - y) * u];
+    const T = [P(0, 4), P(4, 4), P(4, 6), P(0, 6)], S = [P(1, 0), P(3, 0), P(3, 4), P(1, 4)];
+    const out = [P(1, 0), P(3, 0), P(3, 4), P(4, 4), P(4, 6), P(0, 6), P(0, 4), P(1, 4)];
+    const per = pts => pts.reduce((s, p, i) => s + dist(p, pts[(i + 1) % pts.length]), 0) / u;
+    const ok = Math.abs(per(out) - (per(T) + per(S) - 2 * 2)) < 1e-9 && Math.abs(per(out) - 20) < 1e-9;
+    return wrap(430, 300, [
+      poly(T, ACC, 2, ACCS), poly(S, GLD, 2, GLDS), seg(P(1, 4), P(3, 4), PNK, 4),
+      txt(add(mid(P(1, 4), P(3, 4)), [0, -8]), "shared 2", PNK, 12),
+      txt(add(mid(P(0, 6), P(4, 6)), [0, -8]), "4", DIM, 12), txt(add(mid(P(1, 0), P(1, 4)), [-12, 4]), "4", DIM, 12),
+      cap(430, 300, "Two 2 × 4 rectangles, perimeter 12 each, make a T. The shared edge of length 2 (pink) was on both boundaries and is now inside, so the T's perimeter is 24 − 2 · 2 = 20." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,

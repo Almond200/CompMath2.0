@@ -1,9 +1,9 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 743 cards
-covering formulas, methods, and patterns (539 formulas, 155 methods, 44 patterns), plus a database
-of 4,675 past contest problems (4,616 with their full statements), of which 3,059 have a written
-strategy and 2,779 are cross-linked to the cards their solutions run through (2026-10-23).
+A searchable reference for AMC 10/12, AIME and olympiad training. 753 cards
+covering formulas, methods, and patterns (543 formulas, 166 methods, 44 patterns), plus a database
+of 4,675 past contest problems (4,665 with their full statements), every one with a written
+strategy and 4,071 cross-linked to the cards their solutions run through (2026-10-24).
 
 Fully static and fully offline: no build step, no server, and nothing fetched at runtime. KaTeX
 0.16.11 is vendored under `vendor/katex/` (its CSS, its JS, and the twenty woff2 faces the CSS
@@ -279,6 +279,14 @@ to `js/data/connected.js` (CONVENTIONS §12).
 The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps are the same as in `CONTRIBUTING.md`: open it in GitHub Desktop (File, Add Local Repository), commit, and push; or run `git add -A && git commit -m "..." && git push` in Terminal. Do not drag files into a second folder (Finder moves them), and do not use the web uploader once there are more than 100 files.
 
 ## Changelog
+
+**2026-10-25**
+
+- **E renovation, second pass, 30 more (2026-10-25).** Proofs completed: trailing zeros in any base, Bretschneider's Formula in full (its area now called $K$, apart from the angle $A$), the swap proof of rearrangement, the half-angle tangent identity, both bisector-length forms, the excenter case of Euler's distance, the symmedian distance locus and the Lemoine minimum, the ellipse from its focal sum and its area by a stretch, the reflection matrix and its products, the four-step cycle of last digits, the binomial variance, and the tangent point on the symmedian. Errors fixed: the median's sine ratio on the symmedian card was inverted, and the cube digit-sum test missed $2$ and $7$. Seventeen more read and left as they were. Cards left in the second pass: 375.
+- **E renovation, second pass, next 30 cards (2026-10-25).** Proofs completed: the digits before a repeating block, determinants as areas (by Lagrange's Identity) and volumes, Hölder by weighted AM-GM (its equality condition and a wrong worked example corrected), the matrix product from composition and walk counts, the converse of the hypotenuse median, the British Flag Theorem in coordinates, the leg triangles of a trapezoid, the supplements in Euler's Criterion, the multinomial term count, de Gua's Theorem, Chevalley–Warning, splitting of primes in the Gaussian integers, the reverse triangle inequality, and the polar and harmonic range. A Fermat observation now needs an odd prime, and a proportion condition was loosened. Sixteen more read and left as they were. Cards left in the second pass: 405.
+- **E renovation, second pass (2026-10-25).** Proofs completed or written out: Möbius inversion, the congruence tests, $a^3 + b^3 + c^3 - 3abc$, angles at the triangle centers, Gergonne and Nagel points, the intercept form of a plane, Minkowski for every $p \ge 1$ (with a counterexample below $1$), the power and exchange forms of change of base, surjections and the Bell recurrence, Cauchy–Davenport, continued-fraction convergents by matrices (the best-approximation claim corrected and quoted), Cayley–Hamilton, the hyperbola from its focal definition, eccentricity from the focus and directrix, Kőnig by alternating paths, the orthic angle chase, the cyclic factorizations, and the integer max-product rule. Fourteen more read and left as they were. Cards left in the second pass: 435.
+- **Search index rebuilt for 753 cards (2026-10-25).** 157/187 top-1, MRR 0.906, the same as the last rebuild. E (renovation) continues: the circumradius and inradius product, carries in doubling, quadrant reductions, the trace and determinant of eigenvalues, inversion of circles not through the center and of angles, chains of reflections, the triangle isoperimetric bound (the circle bound labelled quoted, with a reference), the cross-ratio's complex form, rearrangements and sign, and the recognition numbers (checked by computer).
+- **New cards P28 to P38 (2026-10-25).** Approved by the owner: Most Edges in a Disconnected Graph, Folding a Net into a Cube, Counting by What Each Step Removes, Area by Adding and Subtracting Pieces, Rounding Up to Whole Items, Views of a Stack of Cubes, Symmetries of a Figure, Joining Shapes Hides Edges, Assuming All Are of One Kind, and Common Multiples Are Multiples of the LCM, each with a proof, an example and (for the five geometry cards) a computed figure; Adding Groups of Equations now covers multiplying them. 65 problems tagged, AMC 10/12 twins included (604 still cite no card); every route complete. E is widened to a general card renovation (owner).
 
 **2026-10-24**
 

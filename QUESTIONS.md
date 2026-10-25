@@ -4,7 +4,7 @@ Style and judgment calls found while working through `PLAN.md`. Verified errors 
 
 ## Open now
 
-**P28 to P38 are open (2026-10-24).** P38 comes from the D2 tag audit. P29 to P37 come from classifying the problems that cited no card (owner request, 2026-10-24): each is an idea several problems use and no card holds; the problems keep `formulas: []` until a card is approved. P27 was approved by the owner on 2026-10-24 and written as `steiner-neighborhood`. The next candidate is P39.
+**P28 to P38 were approved by the owner on 2026-10-24 and written (2026-10-25):** `disconnected-graph-edges` (P28), `cube-nets` (P29), `elimination-counting` (P30), `area-by-pieces` (P31), `round-up-whole-items` (P32), `cube-stack-views` (P33), `figure-symmetries` (P34), `joined-shapes-perimeter` (P35), `assume-all-one-kind` (P36), the multiplying form added to `add-all-equations` (P37), and `lcm-common-multiples` (P38). Nothing is open. The next candidate is P39.
 
 | # | Card | Kind, subject / subsection | Proposed tier, importance | Needed by |
 |---|---|---|---|---|

@@ -824,6 +824,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "disconnected-graph-edges",
+          name: "Most Edges in a Disconnected Graph",
+          latex: String.raw`e > \binom{n-1}{2} \implies \text{connected}, \qquad \text{bipartite, parts } a \ge b\!: \ e > (a - 1)b \implies \text{connected}`,
+          description: String.raw`A simple graph on $n$ vertices with more than $\binom{n-1}{2}$ edges must be connected, because a disconnected graph misses every edge across some split of its vertices, and the fewest such edges is $n - 1$, when one vertex is cut off. For a bipartite graph with parts of sizes $a \ge b$, where edges only join the two parts, the same argument gives the bound $(a - 1)b$, so the edge after that many always connects everything.`,
+          keywords: ["disconnected graph", "most edges", "guarantee connected", "n-1 choose 2", "isolated vertex", "bipartite connected", "how many cables", "network connected"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["AMC12", "AIME"]
+        },
+        {
           id: "eulerian-paths",
           name: "Eulerian Paths & Circuits",
           latex: String.raw`\text{circuit} \iff \text{every degree even}, \qquad \text{open path} \iff \text{exactly two odd vertices}, \qquad 2k \text{ odd vertices} \implies \ge k \text{ strokes}`,

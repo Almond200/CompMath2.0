@@ -230,6 +230,16 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10"]
         },
         {
+          id: "figure-symmetries",
+          name: "Symmetries of a Figure",
+          latex: String.raw`\text{regular } n\text{-gon: } n \text{ lines of symmetry}, \quad \text{rotations by multiples of } \tfrac{360^\circ}{n}`,
+          description: String.raw`A line of symmetry is a mirror line that carries a figure onto itself, and rotational symmetry is a turn about a center that does the same. A regular $n$-gon has $n$ lines of symmetry and is carried onto itself by turns of $\frac{360^\circ}{n}$ and its multiples. Requiring a figure to be symmetric forces every cell of a grid figure to match its images, so the cells fall into groups that must be filled alike.`,
+          keywords: ["line of symmetry", "lines of symmetry", "rotational symmetry", "mirror line", "reflection symmetry", "symmetric figure", "order of rotation", "regular polygon symmetry"],
+          importance: "low",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "regular-polygon-area",
           name: "Regular Polygon Area",
           latex: String.raw`A = \tfrac{1}{2}ap = \tfrac{1}{2}nR^2\sin\tfrac{360^\circ}{n}`,
@@ -383,7 +393,7 @@ window.MATH_SECTIONS.push({
         {
           id: "bretschneiders-formula",
           name: "Bretschneider's Formula",
-          latex: String.raw`A = \sqrt{(s-a)(s-b)(s-c)(s-d) - abcd \cos^2\left(\frac{A+C}{2}\right)}`,
+          latex: String.raw`K = \sqrt{(s-a)(s-b)(s-c)(s-d) - abcd \cos^2\left(\frac{A+C}{2}\right)}`,
           description: String.raw`Area of any convex quadrilateral with sides $a, b, c, d$ and semiperimeter $s = \frac{a+b+c+d}2$, using one pair of opposite angles $A, C$. When cyclic, $A + C = 180^\circ$ kills the last term, recovering [[brahmaguptas-formula|Brahmagupta]].`,
           keywords: ["general quadrilateral area", "bretschneider", "brahmagupta generalization", "bretschneider formula"],
           importance: "lower",
