@@ -800,7 +800,7 @@ A long explanation is never one block of prose with inline math. Put the key equ
 
 ## List kinds (2026-10-11)
 
-Built-in lists have a `kind`: `route` (a complete syllabus for one tier and subject), `core` (Starting Points: every High-importance card of a subject, so it is regenerated, not hand-picked, when importances change), `configuration`, `thinking`, and `curiosity`. A card that belongs to no list is a gap: add it where it fits (the audit found 17, all proof methods).
+Built-in lists have a `kind`: `route` (a complete syllabus for one tier and subject), `core` (Starting Points: every High-importance card of a subject, so it is regenerated, not hand-picked, when importances change), `configuration`, `thinking`, `curiosity`, and `contest` (By Contest, 2026-10-25: every card that at least five of one contest's problems cite, written by `tools/build-contest-lists.js` from the problem tags and never edited by hand; `gates.sh` fails when it is stale). A card that belongs to no list is a gap: add it where it fits (the audit found 17, all proof methods).
 
 ## Study routes are additive (2026-10-11)
 
