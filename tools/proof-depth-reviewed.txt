@@ -304,3 +304,33 @@ abs-triangle-inequality # reverse form proved
 subset-sum-facts # checked, no change
 conic-perpendicular-radii # checked, no change
 pole-polar # chord of contact and harmonic range proved
+trailing-zeros # base-b and five-in-a-row proved
+bretschneiders-formula # full derivation (checked numerically); area renamed K
+rouths-theorem # determinant checked, no change
+equal-chords-arcs # checked, no change
+tangent-chord-angle # checked, no change
+largest-odd-divisor-sum # checked, no change
+rearrangement # swap proof made exact; minimum by negation
+cosecant-cotangent-square-sums # algebra checked, no change
+half-angle-tangent-identity # addition step and r/(s-a) shown
+angle-bisector-length # similarity reasons, angle forms derived (checked numerically)
+euler-distance-theorem # excenter form proved
+lemoine-point # symmedian distance locus proved; minimum value
+apollonius-circle # checked, no change
+monges-theorem # checked, no change
+line-forms # checked, no change
+divisibility-rules # checked, no change
+rational-root-theorem # checked, no change
+complex-basics # checked, no change
+absolute-value-identities # checked, no change
+intercept-theorem # checked, no change
+ellipse-properties # derivation and area by stretch written out
+rotation-reflection-matrices # reflection columns and both products derived
+multiplicative-functions # checked, no change
+last-digit-patterns # a^5=a mod 10 proved; cube observation completed
+altitude-hypotenuse # checked, no change
+parallelogram-area # sine form labels fixed
+altitude-bisector-angle # checked, no change
+binomial-probability # variance derived
+pigeonhole # checked, no change
+symmedian-lemoine # sine ratio corrected (was c/b, is b/c); tangent point proved

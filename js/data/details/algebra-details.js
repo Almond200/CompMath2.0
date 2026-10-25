@@ -1095,9 +1095,9 @@ The model AIME use is a pair of constraints that combine into exactly the equali
 Real sequences, sorted; no positivity is needed. Equality needs one sequence constant or the orders already matched.
 
 ## Why it works
-For sorted sequences $a_1 \le \cdots \le a_n$ and $b_1 \le \cdots \le b_n$, the sum $\sum a_ib_{\sigma(i)}$ over permutations $\sigma$ is largest when $\sigma$ keeps the same order and smallest when it reverses one.
+Take $a_1 \le \cdots \le a_n$ and $b_1 \le \cdots \le b_n$, and a pairing $\sigma$ with some pair out of order: $i \lt j$ but $b_{\sigma(i)} \gt b_{\sigma(j)}$. Swapping the two partners changes the sum by $$\left(a_ib_{\sigma(j)} + a_jb_{\sigma(i)}\right) - \left(a_ib_{\sigma(i)} + a_jb_{\sigma(j)}\right) = (a_j - a_i)(b_{\sigma(i)} - b_{\sigma(j)}) \ge 0.$$
 
-The proof is a swap argument: if some pair is matched out of order, exchanging the two partners changes the sum by $(a_i - a_j)(b_{\sigma(i)} - b_{\sigma(j)})$, whose sign forces the straightened pairing to be at least as large. Repeating until everything is aligned needs no convexity or positivity, only the ordering.
+Each such swap removes at least one out-of-order pair, so after finitely many swaps the pairing is the sorted one, and the sum never went down. Hence the sorted pairing is the largest. Applying this to the sequence $-b_n \le \cdots \le -b_1$ shows the reversed pairing is the smallest. Nothing used positivity or convexity, only the ordering.
 
 ## Useful observations
 - It makes "pair large with large" rigorous, and it is the honest engine behind several results: averaging the same-order and reverse-order versions gives Chebyshev's Sum Inequality, and it underlies many bounds that look like forced AM-GM.

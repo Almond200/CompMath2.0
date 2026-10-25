@@ -1080,6 +1080,8 @@ Because the trials are independent, the probability of a particular sequence, su
 
 {{figure:sequences}}
 
+The count of successes is a sum of $n$ indicators, one per trial, each with mean $p$ and variance $p - p^2 = p(1 - p)$. Means always add, and variances add because the trials are independent, giving $np$ and $np(1 - p)$.
+
 ## Useful observations
 - "At least $k$" questions are the terms from $k$ upward added, or $1$ minus the shorter tail. "At least one" is always $1 - (1 - p)^n$.
 - Expected counts need no sum at all, since [[expected-value|linearity]] gives $np$ directly: $4$ fair flips average $2$ heads, while exactly $2$ heads has probability $\binom42 \cdot \frac1{16} = \frac38$.

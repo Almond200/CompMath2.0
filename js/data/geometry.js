@@ -393,7 +393,7 @@ window.MATH_SECTIONS.push({
         {
           id: "bretschneiders-formula",
           name: "Bretschneider's Formula",
-          latex: String.raw`A = \sqrt{(s-a)(s-b)(s-c)(s-d) - abcd \cos^2\left(\frac{A+C}{2}\right)}`,
+          latex: String.raw`K = \sqrt{(s-a)(s-b)(s-c)(s-d) - abcd \cos^2\left(\frac{A+C}{2}\right)}`,
           description: String.raw`Area of any convex quadrilateral with sides $a, b, c, d$ and semiperimeter $s = \frac{a+b+c+d}2$, using one pair of opposite angles $A, C$. When cyclic, $A + C = 180^\circ$ kills the last term, recovering [[brahmaguptas-formula|Brahmagupta]].`,
           keywords: ["general quadrilateral area", "bretschneider", "brahmagupta generalization", "bretschneider formula"],
           importance: "lower",

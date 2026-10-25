@@ -939,9 +939,11 @@ The external bisector has a length only when $a \ne b$: if $a = b$ it runs paral
 ## Why it works
 Apply [[stewarts-theorem|Stewart's Theorem]] with the segments from the [[angle-bisector-theorem|Angle Bisector Theorem]], $m = \frac{ac}{a + b}$ and $n = \frac{bc}{a + b}$ for the opposite side $c$, and the algebra collapses to $d^2 = ab - mn$.
 
-A second proof uses the circumcircle. Extend the bisector $CD$ to meet the circle again at $E$. Triangles $CAD$ and $CEB$ are similar, so $CA \cdot CB = CD \cdot CE$, that is $ab = d \cdot CE$. The power of $D$ gives $mn = CD \cdot DE = d(CE - d) = ab - d^2$, so $d^2 = ab - mn$.
+A second proof uses the circumcircle. Extend the bisector $CD$ to meet the circle again at $E$. Triangles $CAD$ and $CEB$ are similar: their angles at $C$ are the two halves of angle $C$, and $\angle CAB = \angle CEB$ because both stand on the arc $CB$. So $CA \cdot CB = CD \cdot CE$, that is $ab = d \cdot CE$. The power of $D$ gives $mn = CD \cdot DE = d(CE - d) = ab - d^2$, so $d^2 = ab - mn$.
 
-The same picture explains the external bisector. Its foot lies outside the circle, so the power of the point reverses the subtraction and $d'^2 = m'n' - ab$.
+The angle form comes from areas. The bisector splits the triangle into two pieces with angle $\frac C2$ at $C$, so $\frac12ab\sin C = \frac12ad\sin\frac C2 + \frac12bd\sin\frac C2$. With $\sin C = 2\sin\frac C2\cos\frac C2$ this gives $d = \frac{2ab\cos(C/2)}{a + b}$. For the external bisector the two pieces have angles $90^\circ - \frac C2$ and $90^\circ + \frac C2$ at $C$, their areas subtract, and the same steps give $d' = \frac{2ab\sin(C/2)}{|a - b|}$.
+
+The same circle picture explains the external bisector. Its foot lies outside the circle, so the power of the point reverses the subtraction and $d'^2 = m'n' - ab$.
 
 ## Useful observations
 - The internal bisector is always shorter than $\sqrt{ab}$, since $mn$ is positive.
@@ -1195,9 +1197,11 @@ AIME coordinate problems hand over two centers and ask for a distance or the thi
 $O$ and $I$ are the circumcenter and incenter of a triangle with circumradius $R$ and inradius $r$.
 
 ## Why it works
-The power of the incenter with respect to the circumcircle is $OI^2 - R^2$, which is negative because $I$ is inside. Extend $AI$ to meet the circumcircle again at $M$, the midpoint of arc $BC$. Then $IA \cdot IM = R^2 - OI^2$. Here $IA = \frac{r}{\sin(A/2)}$, and by the [[incenter-excenter-lemma|incenter-excenter lemma]] $IM = MB = 2R\sin\frac A2$, so the product is $2Rr$, and $R^2 - OI^2 = 2Rr$.
+The power of the incenter with respect to the circumcircle is $OI^2 - R^2$, which is negative because $I$ is inside. Extend $AI$ to meet the circumcircle again at $M$, the midpoint of arc $BC$. Then $IA \cdot IM = R^2 - OI^2$. Here $IA = \frac{r}{\sin(A/2)}$, from the right triangle formed by $A$, $I$ and the touch point on $AB$, and by the [[incenter-excenter-lemma|incenter-excenter lemma]] $IM = MB = 2R\sin\frac A2$, so the product is $2Rr$, and $R^2 - OI^2 = 2Rr$.
 
 Since $OI^2 \ge 0$, the formula gives $R(R - 2r) \ge 0$, that is $R \ge 2r$, with equality exactly when $O = I$, which happens only for the equilateral triangle.
+
+The excenter $I_A$ lies on the same line $AM$, outside the circle, so its power is $OI_A^2 - R^2 = I_AA \cdot I_AM$. The same right triangle with the excircle gives $I_AA = \frac{r_a}{\sin(A/2)}$, and the lemma gives $I_AM = MB = 2R\sin\frac A2$, so $OI_A^2 - R^2 = 2Rr_a$.
 
 ## Useful observations
 - When two of $R$, $r$, $OI$ are given the third follows at once, which is how the formula usually appears.
@@ -1950,7 +1954,7 @@ A recurring AIME and AMC gem: a point on the circumcircle with two of the three 
 
 "bretschneiders-formula": String.raw`
 ## Key forms
-- $A = \sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\cos^2\frac{A + C}{2}}$ — the area of any convex quadrilateral with sides $a, b, c, d$, semiperimeter $s$, and opposite angles $A$ and $C$
+- $K = \sqrt{(s - a)(s - b)(s - c)(s - d) - abcd\cos^2\frac{A + C}{2}}$ — the area $K$ of any convex quadrilateral with sides $a, b, c, d$, semiperimeter $s$, and opposite angles $A$ and $C$
 - $A + C = 180^\circ$ — the cyclic case, where the last term vanishes and the formula becomes Brahmagupta's Formula
 - among all quadrilaterals with the same four sides, the cyclic one has the largest area
 
@@ -1958,7 +1962,13 @@ A recurring AIME and AMC gem: a point on the circumcircle with two of the three 
 The quadrilateral is convex, the sides are taken in order, and $A$ and $C$ are opposite angles.
 
 ## Why it works
-The proof is the same split-and-eliminate as for Brahmagupta's Formula: write the area as the sum of the two triangles cut by a diagonal, equate the two expressions for that diagonal by the Law of Cosines, and eliminate the diagonal. Without the cyclic condition the angle term $abcd\cos^2\frac{A + C}{2}$ survives. Cyclic quadrilaterals have $A + C = 180^\circ$, which kills it; that is the sanity check.
+Label the sides $AB = a$, $BC = b$, $CD = c$, $DA = d$ and cut along the diagonal $BD$, so triangle $ABD$ has sides $a$, $d$ around angle $A$ and triangle $CBD$ has sides $b$, $c$ around angle $C$. Then $$2K = ad\sin A + bc\sin C,$$ and the [[law-of-cosines|Law of Cosines]] for $BD$ in both triangles gives $$\tfrac12\left(a^2 + d^2 - b^2 - c^2\right) = ad\cos A - bc\cos C.$$
+
+Squaring both and adding eliminates the separate angles: $$4K^2 + \tfrac14\left(a^2 + d^2 - b^2 - c^2\right)^2 = a^2d^2 + b^2c^2 - 2abcd\cos(A + C).$$ Write $\cos(A + C) = 2\cos^2\frac{A + C}{2} - 1$, so the right side is $(ad + bc)^2 - 4abcd\cos^2\frac{A + C}{2}$.
+
+The difference of squares $(ad + bc)^2 - \frac14(a^2 + d^2 - b^2 - c^2)^2$ factors as $\frac14\left[(b + c)^2 - (a - d)^2\right]\left[(a + d)^2 - (b - c)^2\right]$, and each bracket factors again into terms such as $b + c + d - a = 2(s - a)$. That gives $16(s - a)(s - b)(s - c)(s - d)$ over $4$, and dividing everything by $4$ leaves the formula.
+
+Cyclic quadrilaterals have $A + C = 180^\circ$, which kills the cosine term and leaves Brahmagupta's Formula.
 
 ## Useful observations
 - The cosine term is never negative, so the area never exceeds $\sqrt{(s - a)(s - b)(s - c)(s - d)}$, which is why the cyclic quadrilateral maximizes the area for given sides.
@@ -3006,9 +3016,11 @@ An olympiad inequality, and the occasional AIME-adjacent bound; a sanity check f
 The triangle is any triangle, with $b = AC$ and $c = AB$. In an isosceles triangle with $b = c$ the symmedian, the median, and the bisector coincide.
 
 ## Why it works
-Reflecting the median over the angle bisector swaps the roles of the two adjacent sides, which turns the median's even split into the $c^2 : b^2$ ratio. Trig [[cevas-theorem|Ceva]] makes this precise: the median's two angles satisfy $\frac{\sin\angle BAM}{\sin\angle MAC} = \frac cb$ by the [[ratio-lemma|Ratio Lemma]], and reflecting inverts that quotient, so the symmedian's split carries the square.
+The [[ratio-lemma|Ratio Lemma]] gives, for the median $AM$, $$\frac{BM}{MC} = \frac cb \cdot \frac{\sin\angle BAM}{\sin\angle MAC}.$$ The left side is $1$, so the sine quotient is $\frac bc$. Reflecting in the bisector swaps the two angles, so for the symmedian $AE$ the quotient is $\frac cb$, and the same lemma gives $\frac{BE}{EC} = \frac cb \cdot \frac cb = \frac{c^2}{b^2}$.
 
-The distance form explains the same thing without any trigonometry. Comparing areas, $[ABE] = \frac12 \cdot AB \cdot d(E, AB)$ and $[ACE] = \frac12 \cdot AC \cdot d(E, AC)$, while $\frac{[ABE]}{[ACE]} = \frac{BE}{EC}$ because the two triangles share the apex $A$. Setting those equal to $\frac{c^2}{b^2}$ gives $\frac{d(E, AB)}{d(E, AC)} = \frac cb$, and since that ratio is the same at every point of the cevian, it characterizes the whole line.
+The distance form follows from areas. $[ABE] = \frac12 \cdot c \cdot d(E, AB)$ and $[ACE] = \frac12 \cdot b \cdot d(E, AC)$, while $\frac{[ABE]}{[ACE]} = \frac{BE}{EC}$ because the two triangles share the apex $A$. Setting that equal to $\frac{c^2}{b^2}$ gives $\frac{d(E, AB)}{d(E, AC)} = \frac cb$, and since the ratio of the distances to the two sides is the same at every point of a line through $A$, it characterizes the whole line.
+
+For the tangent point $T$, use the distance form. $TB = TC$, and by the tangent–chord angle $\angle TBC = \angle TCB = A$, so the angle between $TB$ and line $BA$ is $A + B$ and between $TC$ and line $CA$ is $A + C$. Then $\frac{d(T, AB)}{d(T, AC)} = \frac{TB\sin(A + B)}{TC\sin(A + C)} = \frac{\sin C}{\sin B} = \frac cb$, so $T$ lies on the symmedian.
 
 ## Useful observations
 - Recognizing any one of the four equivalent conditions gives the others for free.
@@ -5957,9 +5969,11 @@ Seldom the statement of a problem and often its last step: a computation that en
 $A + B + C = 180^\circ$ with each angle positive, so every half-angle is acute and every tangent is positive. In the form with $r$ and $s$, the angles are those of a triangle with inradius $r$ and semiperimeter $s$.
 
 ## Why it works
-The half-angles sum to $90^\circ$, so $\frac{A + B}{2}$ and $\frac C2$ are complementary and $\tan\frac{A + B}{2} = \cot\frac C2$. Expanding the left side with the tangent addition formula and clearing denominators gives exactly the symmetric relation. Nothing about triangles is used beyond the angle sum.
+The half-angles sum to $90^\circ$, so $\frac{A + B}{2}$ and $\frac C2$ are complementary and $\tan\frac{A + B}{2} = \cot\frac C2$. With $x$, $y$, $z$ the three half-angle tangents, the tangent addition formula makes this $\frac{x + y}{1 - xy} = \frac1z$, and clearing denominators gives $xz + yz = 1 - xy$, the symmetric relation. Nothing about triangles is used beyond the angle sum.
 
-Substituting $\tan\frac A2 = \frac{r}{s - a}$ turns it into $$r^2\left[\frac{1}{(s - a)(s - b)} + \frac{1}{(s - b)(s - c)} + \frac{1}{(s - c)(s - a)}\right] = 1.$$ The three fractions have the common denominator $(s - a)(s - b)(s - c)$ and numerators summing to $s$, so $r^2s = (s - a)(s - b)(s - c)$, which is [[herons-formula|Heron's Formula]] in disguise.
+The incircle touches $AB$ at distance $s - a$ from $A$, and the radius there is perpendicular to $AB$, so the right triangle with legs $r$ and $s - a$ at the half-angle $\frac A2$ gives $\tan\frac A2 = \frac{r}{s - a}$. Substituting turns the identity into $$r^2\left[\frac{1}{(s - a)(s - b)} + \frac{1}{(s - b)(s - c)} + \frac{1}{(s - c)(s - a)}\right] = 1.$$
+
+The three fractions have the common denominator $(s - a)(s - b)(s - c)$ and numerators summing to $3s - (a + b + c) = s$, so $r^2s = (s - a)(s - b)(s - c)$, which is [[herons-formula|Heron's Formula]] in disguise, since the area is $rs$.
 
 ## Useful observations
 - It is the half-angle analogue of $\tan A + \tan B + \tan C = \tan A\tan B\tan C$.
@@ -6070,16 +6084,18 @@ A recurring AIME configuration has the tangents at $B$ and $C$ meeting at a poin
 - $K = (a^2 : b^2 : c^2)$ in [[barycentric-coordinates|barycentric coordinates]] — the compact form that encodes every property below
 - $d_a : d_b : d_c = a : b : c$ — its distances to the three sides are proportional to those sides, since each symmedian is the locus of a fixed distance ratio
 - $K$ minimizes $d_a^2 + d_b^2 + d_c^2$ over the whole plane
-- $K$ is the centroid of its own pedal triangle, the cleanest proof of that minimization
+- $K$ is the centroid of its own pedal triangle
 - $K$ is the isogonal conjugate of the centroid $G$
 
 ## Conditions
 The three symmedians of a triangle concur at $K$. In an equilateral triangle $K$ coincides with the centroid, and in a right triangle it is the midpoint of the altitude to the hypotenuse.
 
 ## Why it works
-Each symmedian is the locus of points whose distances to the two sides at its vertex are in the ratio of those sides. The $A$-symmedian gives $\frac{d_c}{d_b} = \frac cb$, the $B$-symmedian gives $\frac{d_a}{d_c} = \frac ac$, and the third is then forced. A point on all three therefore has $d_a : d_b : d_c = a : b : c$. The three loci are the reflections of the three medians in the three bisectors, so they concur exactly because the medians do.
+For a point $P$ on a line through $A$, the distances to $AB$ and $AC$ are $AP\sin\varphi$ and $AP\sin\psi$, where $\varphi$ and $\psi$ are the angles the line makes with $AB$ and $AC$, so their ratio is fixed along the line. On the median it is $\frac{d_c}{d_b} = \frac bc$, because the midpoint $M$ of $BC$ makes $[ABM] = [ACM]$, that is $c\,d_c = b\,d_b$. Reflecting the line in the bisector swaps $\varphi$ and $\psi$, so on the $A$-symmedian $\frac{d_c}{d_b} = \frac cb$.
 
-The minimization follows from the pedal triangle. If $P$ has pedal triangle $P_aP_bP_c$, then $a\,d_a + b\,d_b + c\,d_c = 2[ABC]$ is constant, so minimizing $d_a^2 + d_b^2 + d_c^2$ under a fixed weighted sum forces the $d_i$ proportional to the weights $a, b, c$ by Cauchy–Schwarz, with equality exactly at $K$.
+Likewise the $B$-symmedian gives $\frac{d_a}{d_c} = \frac ac$, and the third ratio is then forced. A point on all three therefore has $d_a : d_b : d_c = a : b : c$. The three loci are the reflections of the three medians in the three bisectors, so they concur exactly because the medians do, at the isogonal conjugate of $G$.
+
+For the minimization, $a\,d_a + b\,d_b + c\,d_c = 2[ABC]$ for every point inside, using signed distances outside. By Cauchy–Schwarz, $(a^2 + b^2 + c^2)(d_a^2 + d_b^2 + d_c^2) \ge (a\,d_a + b\,d_b + c\,d_c)^2 = 4[ABC]^2$, with equality exactly when $d_a : d_b : d_c = a : b : c$, which is $K$. So the minimum is $\frac{4[ABC]^2}{a^2 + b^2 + c^2}$.
 
 ## Useful observations
 - The barycentric coordinates come first: $(a^2 : b^2 : c^2)$ makes any incidence or ratio question about $K$ a short computation, and it is how the point is usually identified in a configuration that never names it.
@@ -6227,9 +6243,13 @@ It shows up as the step that had no name: a foot of a perpendicular, a slanted d
 Points are written as coordinate columns and the matrices act on the left. A rotation or reflection about a center other than the origin is the same map conjugated by a translation.
 
 ## Why it works
-A linear map is determined by where it sends the two basis vectors, and those images are the columns of its matrix. A rotation by $\theta$ sends $(1, 0)$ to $(\cos\theta, \sin\theta)$ and $(0, 1)$ to $(-\sin\theta, \cos\theta)$, which is $R_\theta$ read column by column; the reflection matrix comes out the same way from the images of the axes.
+A linear map is determined by where it sends the two basis vectors, and those images are the columns of its matrix. A rotation by $\theta$ sends $(1, 0)$ to $(\cos\theta, \sin\theta)$ and $(0, 1)$ to $(-\sin\theta, \cos\theta)$, which is $R_\theta$ read column by column.
 
-Because both preserve lengths and angles, their columns are perpendicular unit vectors, so [[determinant-geometric|the determinant]] has absolute value $1$, positive for a rotation and negative for a reflection, since a reflection reverses orientation.
+The reflection in the line at angle $\alpha$ sends a direction at angle $\varphi$ to the direction at angle $2\alpha - \varphi$. So $(1, 0)$, at angle $0$, goes to $(\cos 2\alpha, \sin 2\alpha)$, and $(0, 1)$, at angle $90^\circ$, goes to angle $2\alpha - 90^\circ$, the point $(\sin 2\alpha, -\cos 2\alpha)$. Those are the columns of $F_\alpha$.
+
+Because both preserve lengths and angles, their columns are perpendicular unit vectors, so [[determinant-geometric|the determinant]] has absolute value $1$, positive for a rotation and negative for a reflection, since a reflection reverses orientation. Directly, $\det R_\theta = \cos^2\theta + \sin^2\theta = 1$ and $\det F_\alpha = -\cos^2 2\alpha - \sin^2 2\alpha = -1$.
+
+For the products: turning by $\beta$ and then by $\alpha$ is turning by $\alpha + \beta$, so $R_\alpha R_\beta = R_{\alpha + \beta}$. Multiplying out $F_\beta F_\alpha$, the entries are $\cos 2\beta\cos 2\alpha + \sin 2\beta\sin 2\alpha = \cos 2(\beta - \alpha)$ on the diagonal and $\pm(\sin 2\beta\cos 2\alpha - \cos 2\beta\sin 2\alpha) = \pm\sin 2(\beta - \alpha)$ off it, which is $R_{2(\beta - \alpha)}$.
 
 ## Useful observations
 - Composing becomes multiplying, which is the whole reason to leave synthetic language. $R_\alpha R_\beta = R_{\alpha + \beta}$ recovers [[angle-addition|the angle addition formulas]] as a byproduct.
@@ -6256,11 +6276,15 @@ AMC 12 and AIME rarely say "matrix," so this is a tool brought rather than one h
 Foci on the $x$-axis when the larger denominator is under $x^2$. If the $y^2$ denominator is larger, the foci sit on the $y$-axis and every formula transposes.
 
 ## Why it works
-Put the foci at $(\pm c, 0)$ and impose $PF_1 + PF_2 = 2a$. Clearing the two radicals leaves $\frac{x^2}{a^2} + \frac{y^2}{a^2 - c^2} = 1$, so writing $b^2 = a^2 - c^2$ produces the standard form and the relation $a^2 = b^2 + c^2$ at the same time. The fastest way to see that relation without algebra is to stand at the end of the minor axis: both focal distances are equal, so each is $a$, and the right triangle with legs $b$ and $c$ has hypotenuse $a$.
+Put the foci at $(\pm c, 0)$ and write $r_1 = PF_1$, $r_2 = PF_2$. Subtracting the squared distances, $r_1^2 - r_2^2 = (x + c)^2 - (x - c)^2 = 4cx$, and dividing by $r_1 + r_2 = 2a$ gives $r_1 - r_2 = \frac{2cx}{a}$. Adding the two equations, $r_1 = a + \frac cax$.
+
+Squaring, $(x + c)^2 + y^2 = \left(a + \frac cax\right)^2$; the $2cx$ terms cancel, leaving $x^2\left(1 - \frac{c^2}{a^2}\right) + y^2 = a^2 - c^2$. Dividing by $a^2 - c^2$ gives $\frac{x^2}{a^2} + \frac{y^2}{a^2 - c^2} = 1$, so writing $b^2 = a^2 - c^2$ produces the standard form and the relation $a^2 = b^2 + c^2$ at the same time.
+
+The fastest way to see that relation without algebra is to stand at the end of the minor axis: both focal distances are equal, so each is $a$, and the right triangle with legs $b$ and $c$ has hypotenuse $a$.
 
 The latus rectum has length $\frac{2b^2}{a}$: at $x = c$ the equation gives $\frac{y^2}{b^2} = 1 - \frac{c^2}{a^2} = \frac{b^2}{a^2}$, so $y = \pm\frac{b^2}{a}$. The [[focal-radii|focal radii]] give the same length from a different direction.
 
-The area $\pi ab$ is the circle's $\pi r^2$ with the two radii separated, which is what an affine stretch of a circle does to it.
+For the area, the map $(x, y) \mapsto \left(x, \frac bay\right)$ carries the circle $x^2 + y^2 = a^2$ onto the ellipse, and it multiplies every area by $\frac ba$, so the area is $\pi a^2 \cdot \frac ba = \pi ab$.
 
 ## Useful observations
 - Contests state the condition in whichever of the languages of $a$, $b$, $c$ is least convenient, so converting at once is the first job: a constant sum of distances to two fixed points is $2a$ with the foci given; a stated equation gives $a$ and $b$, and $c$ follows; an area gives the product $ab$.
@@ -8184,7 +8208,7 @@ Cut a right triangle off one slanted end of the parallelogram and slide it to th
 
 {{figure:cut}}
 
-For the sine form, draw the height from an end of the top side down to the base. It is a leg of a right triangle with hypotenuse $b$ and angle $\theta$ at the base, so $h = b\sin\theta$ and $bh$ becomes $ab\sin\theta$ when $a$ is the base. The two angles of a parallelogram add to $180^\circ$ and $\sin(180^\circ - \theta) = \sin\theta$, so it does not matter which one is used. The vector form is the same statement, since $\lvert\vec u \times \vec v\rvert = \lvert\vec u\rvert\lvert\vec v\rvert\sin\theta$.
+For the sine form, take the base to be $a$ and the slanted side $b$, meeting at the angle $\theta$. The height from the far end of $b$ down to the base is a leg of a right triangle with hypotenuse $b$ and angle $\theta$, so $h = b\sin\theta$ and the area is $ab\sin\theta$. The two angles of a parallelogram add to $180^\circ$ and $\sin(180^\circ - \theta) = \sin\theta$, so it does not matter which one is used. The vector form is the same statement, since $\lvert\vec u \times \vec v\rvert = \lvert\vec u\rvert\lvert\vec v\rvert\sin\theta$.
 
 ## Useful observations
 - A diagonal cuts the parallelogram into two congruent triangles of area $\frac12 ab\sin\theta$, and the two diagonals cut it into four triangles of equal area.

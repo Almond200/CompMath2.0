@@ -706,11 +706,13 @@ The facts concern integers; the cycle of a units digit starts at the first power
 ## Why it works
 The units digit of a product depends only on the units digits of the factors, so the units digit of $n^2$ is that of $d^2$, where $d$ is the last digit of $n$. Squaring the ten digits gives endings $0, 1, 4, 9, 6, 5, 6, 9, 4, 1$, and $2$, $3$, $7$, $8$ never appear.
 
-Cubes modulo $9$: with $n \equiv 0, \pm1, \pm2, \pm3, \pm4$, the cubes are $0$, $\pm1$, $\pm8 \equiv \mp1$, $0$, $\pm64 \equiv \pm1$, so every cube is $0$ or $\pm1$. The powers of each digit cycle because there are only ten endings, and every period divides $4$ since $a^5 \equiv a \pmod{10}$ for all $a$.
+Cubes modulo $9$: with $n \equiv 0, \pm1, \pm2, \pm3, \pm4$, the cubes are $0$, $\pm1$, $\pm8 \equiv \mp1$, $0$, $\pm64 \equiv \pm1$, so every cube is $0$ or $\pm1$.
+
+For the cycles, $a^5 \equiv a \pmod 2$ and $a^5 \equiv a \pmod 5$ by [[fermats-little-theorem|Fermat's Little Theorem]], so $a^5 \equiv a \pmod{10}$. Multiplying by $a^{k-1}$ gives $a^{k+4} \equiv a^k$ for every $k \ge 1$, so the units digits from the first power on repeat every four steps, and the true period divides $4$.
 
 ## Useful observations
 - Every units digit cycles with period dividing $4$: the cycles are $2, 4, 8, 6$; $3, 9, 7, 1$; $7, 9, 3, 1$; $8, 4, 2, 6$; $4, 6$; $9, 1$, with $0, 1, 5, 6$ fixed, so $7^{2027}$ ends in $3$, since $2027 \equiv 3 \pmod 4$.
-- A number whose digit sum is $3$, $4$, $5$ or $6 \bmod 9$ is never a cube.
+- A number whose digit sum is $2$, $3$, $4$, $5$, $6$ or $7 \bmod 9$ is never a cube, since the digit sum has the same remainder as the number.
 - $a^5 - a$ is always divisible by $10$, which is why units digits repeat every four powers.
 
 ## Applications
@@ -1906,7 +1908,9 @@ $n \ge 0$; the base-$10$ formula uses that $v_2(n!) \ge v_5(n!)$ always.
 ## Why it works
 A number ends in $k$ zeros exactly when $10^k = 2^k5^k$ divides it, so the count is $\min(v_2(n!), v_5(n!))$. Among $1, \ldots, n$ every second number is even but only every fifth is a multiple of $5$, and the same holds at every power, so $v_2(n!) \ge v_5(n!)$ and the minimum is $v_5(n!)$, which Legendre's Formula computes.
 
-The count rises at every multiple of $5$, by one more at multiples of $25$, and by one more again at multiples of $125$; at those points some counts are skipped.
+The same reasoning gives any base: $b^k$ divides $n!$ exactly when $q^{ek}$ does for every prime power $q^e$ exactly dividing $b$, that is, when $k \le \frac{v_q(n!)}{e}$ for each such $q$. The largest such $k$ is the minimum of the floors.
+
+The count changes only when $n$ passes a multiple of $5$, so it is constant on each block $5m, \ldots, 5m + 4$, which is why an attained count belongs to exactly five consecutive $n$. It rises by $1$ at every multiple of $5$, by one more at multiples of $25$, and by one more again at multiples of $125$; at those points some counts are skipped.
 
 {{figure:jumps}}
 
