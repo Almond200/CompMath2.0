@@ -9473,6 +9473,40 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // ---- Rolling without slipping: a coin of radius 1 rolled around a fixed coin of radius 3 ----
+  DIAGRAMS["rolling-without-slipping"] = [(() => {
+    const u = 28, O = [215, 148], R = 3, r = 1;
+    const C0 = onC(O, (R + r) * u, -90), phi = 45, C1 = onC(O, (R + r) * u, -90 + phi);
+    // the coin turns (R + r) / r degrees for each degree its center moves around O
+    const turn = (R + r) / r * phi, M0 = onC(C0, r * u, -90), M1 = onC(C1, r * u, -90 + turn);
+    const ok = Math.abs(turn - 180) < 1e-9 && Math.abs(dist(C0, O) - 4 * u) < 1e-9 && Math.abs(dist(C1, O) - 4 * u) < 1e-9;
+    return wrap(430, 300, [
+      circ(O, R * u, DIM, 2, ACCS), circ(O, (R + r) * u, FNT, 1.2, "none", "5 4"),
+      circ(C0, r * u, GLD, 2, GLDS), circ(C1, r * u, GLD, 2, GLDS),
+      seg(C0, M0, PNK, 2.4), seg(C1, M1, PNK, 2.4), dot(C0, GLD, 3), dot(C1, GLD, 3), dot(O, DIM, 3),
+      txt(add(O, [0, 18]), "R = 3", DIM, 12), txt(add(C0, [-50, 4]), "r = 1", GLD, 12),
+      txt(onC(O, (R + r) * u + 8, 160), "center's path", FNT, 11, "end"),
+      cap(430, 300, "The small coin rolls clockwise around the fixed coin. Its center moves on a circle of radius 3 + 1 = 4, and the coin turns once for every 2π its center travels, so after the center has gone 45° around, the marked radius (pink) has turned 4 · 45° = 180°. A full trip is 4 turns, not 3." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
+  // ---- An animal tethered to a building: a 10-foot rope at a corner of a 6 by 4 shed ----
+  DIAGRAMS["tethered-animal"] = [(() => {
+    const u = 12.5, O = [205, 150], Q = (x, y) => [O[0] + u * x, O[1] - u * y];
+    const sector = (cx, cy, rr, a0, a1) => [Q(cx, cy), ...Array.from({ length: 61 }, (_, i) => { const t = rad(a0 + (a1 - a0) * i / 60); return Q(cx + rr * Math.cos(t), cy + rr * Math.sin(t)); })];
+    const L = 10, W = 6, H = 4, big = sector(0, 0, L, 90, 360), atB = sector(W, 0, L - W, 0, 90), atD = sector(0, H, L - H, 0, 90);
+    const area = Math.PI * (0.75 * L * L + 0.25 * (L - W) ** 2 + 0.25 * (L - H) ** 2);
+    const C = [W, H], meet = Math.abs(Math.hypot(C[0] - W, C[1]) - (L - W)) < 1e-9 && Math.abs(Math.hypot(C[0], C[1] - H) - (L - H)) < 1e-9;
+    const ok = Math.abs(area / Math.PI - 88) < 1e-9 && meet;
+    return wrap(430, 300, [
+      poly(big, ACC, 1.4, ACCS), poly(atB, GRN, 1.4, "rgba(60,160,90,0.18)"), poly(atD, ORG, 1.4, "rgba(220,130,40,0.18)"),
+      poly([Q(0, 0), Q(W, 0), Q(W, H), Q(0, H)], DIM, 2.2, "rgba(128,128,128,0.4)"), dot(Q(0, 0), PNK, 4),
+      seg(Q(0, 0), Q(-L * 0.6, -L * 0.8), PNK, 1.6, "4 3"), txt(add(Q(-3, -4), [-14, 0]), "10", PNK, 12),
+      txt(add(Q(W / 2, H / 2), [0, 4]), "6 × 4", DIM, 12), txt(add(Q(W + 1.6, 1.3), [0, 4]), "4", GRN, 12), txt(add(Q(1.8, H + 2.2), [0, 4]), "6", ORG, 12),
+      cap(430, 300, "Tied at a corner of the 6 × 4 shed, a 10-foot rope sweeps three quarters of a disk of radius 10 (blue). Around the far corner of the 6-foot wall it has 4 feet left (green), and around the far corner of the 4-foot wall 6 feet (orange); the two small quarter disks just touch at the shed's opposite corner. Area: 75π + 4π + 9π = 88π." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,
