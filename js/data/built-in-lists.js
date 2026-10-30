@@ -60,7 +60,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["reflect-across-the-line", "unfold-the-surface", "rotation-trick", "tangency-condition", "tangency-equation", "zonogon-minkowski", "cyclic-quadrilateral", "tangent-circle-packing", "point-in-equilateral", "right-triangle-altitude", "folded-paper", "circle-in-angle", "nested-similar", "equiangular-polygon", "equal-edge-tetrahedron", "painted-cubes", "isosceles-trapezoid", "rolling-without-slipping", "tethered-animal"] }
     ] },
   { id: "route-amc-algebra", name: "AMC 10/12 Algebra", kind: "route", tier: "AMC", subject: "Algebra",
-    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 133 cards across 12 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of algebra, in the order you would reach for it. 137 cards across 12 sections.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -70,10 +70,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["difference-of-squares", "an-minus-bn", "sophie-germain", "cubes-minus-3abc", "square-of-sum", "binomial-theorem", "sos-identity", "useful-factorizations", "pairwise-sum-product", "antisymmetric-factorization", "sum-zero-identities", "reciprocal-power-sums", "denesting-radicals", "completing-the-square", "forced-difference-of-squares", "sfft", "rationalizing"] },
       { title: "Sequences & Series",
         note: "Closed forms, and the moves that produce one when the sum looks hopeless.",
-        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing"] },
+        ids: ["arithmetic-series", "triangular-numbers", "geometric-series", "power-sums", "arithmetico-geometric", "binets-formula", "linear-recurrence", "factorial-telescoping", "first-order-recurrence", "largest-term-ratio", "telescoping", "partial-fractions", "finite-differences", "double-summation", "fx-pairing", "alternating-sum-grouping"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
-        ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point", "sign-chart"] },
+        ids: ["am-gm", "max-product-fixed-sum", "mean-chain", "cauchy-schwarz", "trivial-inequality", "abs-triangle-inequality", "bernoulli-inequality", "power-mean-inequality", "median-minimizes-abs", "slope-to-a-point", "sign-chart", "placing-digits-extremes"] },
       { title: "Exponents, Logs, Radicals & Absolute Value",
         note: "The manipulation rules, including the ones with a trap in them.",
         ids: ["log-rules", "change-of-base", "log-swap-identity", "exponent-laws", "floor-basics", "ramanujan-nested-radical", "absolute-value-rules", "absolute-value-identities", "take-logs-linearize", "log-system", "name-the-floor", "group-equal-floors", "floor-sum-range", "floor-equation", "transforming-equations"] },
@@ -97,10 +97,10 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["odd-even-functions", "inverse-function-properties"] },
       { title: "Shapes Worth Recognizing on Sight",
         note: "Whole problem formats with an intended route.",
-        ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation", "reading-graphs"] }
+        ids: ["infinite-nest", "name-the-whole-expression", "palindromic-polynomials", "periodic-sequences", "piecewise-graph-counting", "lagrange-interpolation-formula", "polynomial-crt", "repeated-block-equation", "averages-before-after", "defined-operation", "reading-graphs", "scoring-rules", "break-even-plans"] }
     ] },
   { id: "route-amc-number", name: "AMC 10/12 Number Theory", kind: "route", tier: "AMC", subject: "Number Theory",
-    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 62 cards across 9 sections.",
+    blurb: "Everything the AMC 10 and 12 ask of number theory, in the order you would reach for it. 64 cards across 9 sections.",
     sections: [
       { title: "Divisibility & GCD",
         note: "The foundation. Most number theory problems are a gcd statement wearing a disguise.",
@@ -116,7 +116,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["squares-mod-small"] },
       { title: "Primes, Factorials & Valuations",
         note: "Counting how many times a prime divides something, which is most factorial questions.",
-        ids: ["legendres-formula", "primes-6k", "prime-divides-binomial", "trailing-zeros", "consecutive-product-factorial"] },
+        ids: ["legendres-formula", "primes-6k", "prime-divides-binomial", "trailing-zeros", "consecutive-product-factorial", "factor-out-factorial", "only-even-prime"] },
       { title: "Diophantine Equations",
         note: "Finding integer solutions, and proving there are no others.",
         ids: ["chicken-mcnugget", "pythagorean-triples", "difference-of-squares-rep", "squeeze-between-squares", "sum-of-two-squares", "bounding-diophantine", "factor-pair-counting", "coins-and-prices"] },
@@ -965,14 +965,14 @@ window.MATH_BUILTIN_LISTS = [
     ] },
   // ---- By contest: written by tools/build-contest-lists.js from the problem tags; do not edit by hand ----
   { id: "contest-amc8", name: "What the AMC 8 Uses", kind: "contest", subject: "Contests",
-    blurb: "Every card that at least 5 of the 1,000 AMC 8 and AJHSME problems here use in their strategies, by subject, most used first: 51 cards across 4 sections.",
+    blurb: "Every card that at least 5 of the 1,000 AMC 8 and AJHSME problems here use in their strategies, by subject, most used first: 53 cards across 4 sections.",
     sections: [
       { title: "Geometry",
         note: "Used in 27 problems down to 5.",
         ids: ["circle-basics", "pythagorean-theorem", "area-by-pieces", "joined-shapes-perimeter", "similar-figures-ratios", "folded-paper", "cube-nets", "shoelace-formula", "triangle-area-standard", "angle-chasing", "equilateral-triangle-facts", "painted-cubes", "prism-pyramid-volumes"] },
       { title: "Algebra",
         note: "Used in 44 problems down to 5.",
-        ids: ["reading-graphs", "percent-change", "mean-median-mode", "setting-up-proportions", "averages-to-totals", "arithmetic-series", "defined-operation", "estimating-answers", "exponent-laws", "weighted-average", "telescoping", "average-speed", "relative-motion", "time-per-leg", "periodic-sequences", "geometric-series", "round-up-whole-items"] },
+        ids: ["reading-graphs", "percent-change", "mean-median-mode", "setting-up-proportions", "averages-to-totals", "arithmetic-series", "defined-operation", "estimating-answers", "placing-digits-extremes", "exponent-laws", "weighted-average", "alternating-sum-grouping", "telescoping", "average-speed", "relative-motion", "time-per-leg", "periodic-sequences", "geometric-series", "round-up-whole-items"] },
       { title: "Number Theory",
         note: "Used in 13 problems down to 6.",
         ids: ["modular-basics", "fundamental-theorem-arithmetic", "digit-manipulation", "lcm-common-multiples", "coins-and-prices", "cryptarithms", "divisibility-rules", "calendar-problems", "number-of-divisors"] },

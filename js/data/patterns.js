@@ -692,8 +692,8 @@ window.MATH_SECTIONS.push({
         { title: "Working with Floors", blurb: "Splitting a number into its integer and fractional parts, or grouping the terms of a sum that share a floor.", ids: ["name-the-floor", "group-equal-floors"] },
         { title: "Factoring & Rewriting", blurb: "Rearranging an expression into a product or a square that exposes its structure.", ids: ["sfft", "completing-the-square", "forced-difference-of-squares", "rationalizing", "denesting-radicals"] },
         { title: "Polynomials & Their Roots", blurb: "Working with the roots of a polynomial without finding them.", ids: ["symmetric-polynomial-strategies", "polynomial-division", "comparing-coefficients", "lagrange-interpolation", "quadratic-root-location", "root-transformations", "roots-of-unity-filter"] },
-        { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
-        { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point"] },
+        { title: "Sums & Sequences", blurb: "Evaluating sums by collapsing, reordering, or differencing their terms.", ids: ["telescoping", "alternating-sum-grouping", "fx-pairing", "finite-differences", "double-summation", "largest-term-ratio"] },
+        { title: "Inequalities & Optimization", blurb: "Techniques for proving inequalities and locating maxima and minima.", ids: ["sign-chart", "sos-method", "smoothing-method", "tangent-line-trick", "derivative-extremum", "median-minimizes-abs", "slope-to-a-point", "placing-digits-extremes"] },
         { title: "Setting Up Equations", blurb: "Writing the right equations for a system or a word problem before solving them.", ids: ["transforming-equations", "add-all-equations", "linear-elimination", "setting-up-proportions", "time-per-leg", "round-up-whole-items", "assume-all-one-kind", "averages-to-totals"] },
         { title: "Graphs, Estimates & Rates", blurb: "Drawing the picture, or estimating, when an exact computation is the hard way.", ids: ["abs-value-graphing", "abs-value-relations", "piecewise-graph-counting", "estimating-answers", "sqrt-approximation"] },
         { title: "Working with Functions", blurb: "Reading a function's symmetries and periods off the equations that describe it, and proving it one-to-one or onto.", ids: ["function-symmetry-equation", "injectivity-surjectivity"] },
@@ -1302,6 +1302,21 @@ window.MATH_SECTIONS.push({
           level: ["AMC10", "AMC12", "AIME"]
         },
         {
+          id: "alternating-sum-grouping",
+          name: "Grouping the Terms of an Alternating Sum",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`A long sum whose signs follow a short repeating pattern, such as $1 - 2 + 3 - 4 + \cdots$ or $1 - 2 - 3 + 4 + 5 - 6 - 7 + 8 \cdots$, or the difference of two evenly spaced lists.`,
+          move: String.raw`Group neighbouring terms so that each group has the same value: pairs for a sign pattern of length two, fours for $+ - - +$. Then the sum is the number of groups times that value, plus any terms left over at the end.`,
+          uses: ["arithmetic-series", "difference-of-squares"],
+          latex: String.raw`1 - 2 + 3 - 4 + \cdots + (2m - 1) - 2m = \underbrace{(1 - 2) + (3 - 4) + \cdots}_{m \text{ pairs of } -1} = -m`,
+          description: String.raw`Grouping turns an alternating sum into a multiplication. Take the terms in blocks as long as the sign pattern, $(1 - 2) + (3 - 4) + \cdots$ or $(1 - 2 - 3 + 4) + (5 - 6 - 7 + 8) + \cdots$, so that each block has the same value; then count the blocks and add what is left over. Squares group the same way, since $(2k - 1)^2 - (2k)^2 = -(4k - 1)$ makes the pair values evenly spaced.`,
+          keywords: ["alternating sum", "1 - 2 + 3 - 4", "pairing terms", "grouping in fours", "plus minus pattern", "sign pattern", "pairs of terms", "method"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "fx-pairing",
           name: "Pairing Symmetric Terms",
           type: "method",
@@ -1345,6 +1360,21 @@ window.MATH_SECTIONS.push({
           importance: "medium",
           tier: "AMC",
           level: ["AMC12", "AIME"]
+        },
+        {
+          id: "placing-digits-extremes",
+          name: "Placing Digits and Signs to Make an Expression Largest",
+          type: "method",
+          subject: "algebra",
+          when: String.raw`Given digits or numbers are to be placed into a form, such as two numbers to add, a product, a quotient, or an expression with blanks, to make the result as large or as small as possible.`,
+          move: String.raw`Decide what matters most first. For a number, the leading place outweighs all the places after it, so give it the best digit; for a product or quotient, settle the sign first, then make the sizes as large (or as small) as the sign calls for; for a fraction, put the largest available number over the smallest. Then compare the few arrangements that remain.`,
+          uses: [],
+          latex: String.raw`\text{place value: } 10^k \gt 9 \cdot (10^{k - 1} + \cdots + 1), \qquad \text{sign first, then size}`,
+          description: String.raw`To make an expression built from given digits or numbers as large or small as possible, fill its most valuable position first. In a number the leading digit outweighs everything after it, so the largest digits go in the highest places, and in a sum of two numbers the two highest places take the two largest digits. For a product or a quotient, choose the sign first and then the sizes; for a fraction, the largest number over the smallest. A last comparison settles the few arrangements left.`,
+          keywords: ["largest possible", "smallest possible", "arrange the digits", "place the digits", "maximize a sum of numbers", "greatest product", "most negative", "fill in the blanks", "method"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
         },
         {
           id: "sign-chart",
@@ -2880,7 +2910,7 @@ window.MATH_SECTIONS.push({
       groups: [
         { title: "Self-Similar & Repeating", blurb: "Expressions and sequences that repeat themselves, so one copy or one cycle settles the rest.", ids: ["infinite-nest", "periodic-sequences"] },
         { title: "Equations with Hidden Structure", blurb: "Equations and expressions that look messy but are built from one hidden piece: a repeated block to name, or a new operation that is a familiar one in disguise.", ids: ["repeated-block-equation", "defined-operation"] },
-        { title: "Word-Problem Setups", blurb: "Stories whose numbers change part-way through, where the right bookkeeping turns the story into one equation.", ids: ["averages-before-after", "reading-graphs", "several-rates"] },
+        { title: "Word-Problem Setups", blurb: "Stories whose numbers change part-way through, where the right bookkeeping turns the story into one equation.", ids: ["averages-before-after", "reading-graphs", "scoring-rules", "break-even-plans", "several-rates"] },
         { title: "Logarithms & Complex Numbers", blurb: "Equations in logarithms or complex numbers, where the right representation makes them linear or geometric.", ids: ["log-system", "complex-modulus-argument"] },
         { title: "Floor Functions", blurb: "Sums and equations built from the floor function, where the integer part and the fractional part are handled separately.", ids: ["floor-sum-range", "floor-equation"] }
       ],
@@ -2896,6 +2926,36 @@ window.MATH_SECTIONS.push({
           latex: String.raw`\text{value} = \text{axis start} + (\text{marks}) \times (\text{scale}), \qquad \text{pie: } \tfrac{\text{angle}}{360^\circ}\times\text{total}`,
           description: String.raw`This is the problem that gives its data as a bar graph, a line graph, a pie chart, or a table, and asks for a total, an average, a percent, or a change. The work is reading the numbers correctly: the scale, the units, and where an axis starts, since a bar twice as tall stands for twice as much only when the axis starts at $0$.`,
           keywords: ["bar graph", "line graph", "pie chart", "table of data", "reading a graph", "data interpretation", "scale of an axis", "statistics from a chart", "pattern"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "scoring-rules",
+          name: "Scoring Rules with Right, Wrong and Blank Answers",
+          type: "pattern",
+          subject: "algebra",
+          recognize: [String.raw`a test or game with points for a right answer, a penalty or nothing for a wrong one, and sometimes points for a blank`, String.raw`a final score, and a question about how many were right, wrong, or left blank`, String.raw`a question about which scores are possible, or the most or fewest right answers that give a score`],
+          suggests: ["assume-all-one-kind", "bounding-diophantine", "choose-modulus"],
+          tryFirst: ["assume-all-one-kind", "bounding-diophantine", "bezouts-identity"],
+          latex: String.raw`S = a\,c - b\,w + u\,(N - c - w), \qquad c, w \ge 0, \quad c + w \le N`,
+          description: String.raw`This is the test-score problem: $N$ questions, $a$ points for each right answer, $b$ off for each wrong one, and $u$ for each blank. The score is one linear equation in the counts $c$ and $w$, and the counts are whole numbers with $c + w \le N$. Divisibility or parity of the equation fixes the possible counts, and the bound on the total throws out the ones that need too many questions.`,
+          keywords: ["test score", "points for a correct answer", "penalty for a wrong answer", "blank answers", "unanswered questions", "scoring rule", "how many correct", "possible scores", "score as a percent", "pattern"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10"]
+        },
+        {
+          id: "break-even-plans",
+          name: "Comparing Price Plans (the Break-Even Point)",
+          type: "pattern",
+          subject: "algebra",
+          recognize: [String.raw`two or more coupons, plans, or offers, each a fixed fee or discount plus an amount per unit`, String.raw`a question about which plan is cheapest, or for which prices or amounts one plan beats the others`, String.raw`a range of prices or quantities as the answer, such as "the smallest and largest price for which coupon A saves the most"`],
+          suggests: ["linear-elimination", "casework-method", "sign-chart"],
+          tryFirst: ["linear-elimination", "line-forms", "casework-method"],
+          latex: String.raw`C_i(x) = F_i + r_i\,x, \qquad C_1(x) = C_2(x) \iff x = \frac{F_2 - F_1}{r_1 - r_2}`,
+          description: String.raw`This is the problem that compares plans, coupons, or offers, each costing (or saving) a fixed amount plus a rate times the quantity. Each plan is a linear function of the quantity $x$, two plans cost the same at the break-even point where their lines cross, and on either side one of them is cheaper. So "for which $x$ is plan A best" is an interval between two break-even points.`,
+          keywords: ["coupon", "which plan is cheaper", "break-even point", "phone plan", "membership fee", "pricing plan", "best deal", "for which prices", "fee plus a rate per unit", "pattern"],
           importance: "lower",
           tier: "AMC",
           level: ["MATHCOUNTS", "AMC10"]

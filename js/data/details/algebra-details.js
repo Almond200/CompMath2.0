@@ -6067,3 +6067,117 @@ Closed forms for sums of polynomial values, the leading behavior $\frac{n^{m+1}}
 Rare: a fourth-power sum turns up in a few AIME problems, and even there a telescoping sum or the hockey stick identity on a product of consecutive integers usually reaches the answer without the formula.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"alternating-sum-grouping": String.raw`
+## When to use
+A sum of many terms whose signs repeat in a short cycle, such as $+ -$ or $+ - - +$, or a difference of two lists of the same length that can be matched term by term. The terms themselves are evenly spaced, or squares of evenly spaced numbers.
+
+## How
+1. Find the length of the sign cycle and group the terms in blocks of that length, starting from the first term.
+2. Compute one block; check that every block has the same value, or that the values are evenly spaced.
+3. Count the blocks. With $N$ terms and blocks of length $L$ there are $\left\lfloor \frac NL \right\rfloor$ full blocks.
+4. Add the terms left over after the last full block, with their signs.
+
+With $1 - 2 + 3 - 4 + \cdots + 99$: the $49$ pairs $(1 - 2), \ldots, (97 - 98)$ each give $-1$, and the last term $99$ is left over, so the sum is $-49 + 99 = 50$.
+
+## Why it works
+Addition is associative and commutative, so the terms may be bracketed in any blocks without changing the sum. If the signs repeat with period $L$ and the terms are evenly spaced, consecutive blocks differ only by adding the same amount to every term of the block, and that amount cancels when the signs of a block add to zero. So every block has the same value, and the sum of the full blocks is their number times that value. For the pattern $+ -$ on $a, a + d$ the block is $-d$; for $+ - - +$ on $a, a + d, a + 2d, a + 3d$ it is $0$. When the signs of a block do not add to zero, or the terms are squares, the block values are evenly spaced instead, summed by the [[arithmetic-series|arithmetic series]] formula: $(2k - 1)^2 - (2k)^2 = -(4k - 1)$ by the [[difference-of-squares|difference of squares]].
+
+## Formulas it uses
+- [[arithmetic-series]]: when the block values are evenly spaced rather than equal.
+- [[difference-of-squares]]: a pair of neighbouring squares is a sum times a difference.
+
+## Common traps
+- Miscounting the blocks: from $1$ to $2018$ there are $1009$ pairs, and an odd number of terms leaves one over.
+- Starting the blocks at the wrong place, so that a block does not repeat the sign pattern exactly.
+- Forgetting the leftover terms after the last full block.
+
+## Contest profile
+An AMC 8 and AJHSME opener, and an AMC 10 first problem; with squares or a longer sign pattern it reaches the middle of the AMC 10.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"placing-digits-extremes": String.raw`
+## When to use
+A problem hands you digits or numbers to place: the digits of one or two numbers, the blanks of an expression such as $\square \cdot \square^{\square} - \square$, or a choice of three numbers from a list to multiply. It asks for the largest or smallest result.
+
+## How
+1. Rank the positions by how much they can change the result: the leading digit of a number, the sign of a product, the denominator of a fraction.
+2. Fill the most valuable position with the best choice, then the next, and so on. For a sum of numbers, the digits of each place may be split between the numbers in any way; only which place they go to matters.
+3. For a product or quotient, first choose the sign the answer needs (an even number of negative factors for a positive result), then make the sizes large or small.
+4. Where the ranking leaves a choice, compare the few remaining arrangements directly.
+
+## Why it works
+A digit in place $10^k$ is worth more than all the places below it together, since $9 \cdot (10^{k - 1} + \cdots + 10 + 1) = 10^k - 1 \lt 10^k$. So raising the leading digit by one always beats any change further right, and the best number puts its digits in decreasing order. In a sum of two numbers, each digit contributes its value times its place, whichever number holds it, so the sum depends only on which digits sit in which place. For a product, the sign is decided by the count of negative factors before any size is considered, and among results of the required sign the size is a product of absolute values, largest when each is largest. In a fraction with positive parts, a larger numerator and a smaller denominator each increase the value.
+
+## Formulas it uses
+No particular formula is needed; for products of two numbers with fixed digits, see the trap below.
+
+## Common traps
+- In a product of two numbers the rule "largest digit first" is not enough: with the digits $1$ to $6$ the leading digits are $6$ and $5$, but the next digits go to make the two numbers close, $631 \cdot 542$, not $654 \cdot 321$.
+- Forgetting the sign: two negative numbers can give the largest product.
+- A leading digit of $0$, which the problem usually forbids.
+- Not checking the last few arrangements when two positions are nearly equal in value.
+
+## Contest profile
+An AMC 8 and AJHSME early problem, and an AMC 10 first or second problem; the product of two numbers is the version that reaches the middle of the paper.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"scoring-rules": String.raw`
+## Distinguishing clues
+- Points awarded per right answer, and a penalty, zero, or a smaller award for wrong and blank answers.
+- A fixed number of questions, a score, and a question about the counts or about which scores can occur.
+- "At least", "at most" or "the largest number of" right answers, which ask for the extreme case of the counts.
+- Not this pattern: a percentage of questions right with no penalty, which is a plain proportion.
+
+## Methods and Formulas to Try
+Write the score as one equation in the counts and keep the bound $c + w \le N$ beside it. With no blanks the equation $ac - b(N - c) = S$ has one unknown; with blanks there are two, and the bound does the rest.
+
+### Methods to try
+- [[assume-all-one-kind]]: suppose every answer is wrong (or blank), then each switch to a right answer adds a fixed number of points.
+- [[bounding-diophantine]]: the counts are nonnegative and $c + w \le N$, so $c$ lies in a short range to check.
+- [[choose-modulus]]: reduce the score equation modulo $a$ or $b$ to see which counts, or which scores, are possible.
+
+### Formulas to try
+- [[bezouts-identity]]: whole-number solutions of $ac - bw = S$ step by $\frac{b}{g}$ in $c$ and $\frac{a}{g}$ in $w$, with $g = \gcd(a, b)$.
+
+## Common traps
+- Forgetting the blanks, or treating "unanswered" as "wrong".
+- Allowing more right and wrong answers than there are questions.
+- Dropping a solution with a fractional count of points, such as $2.5$ for a blank, by reasoning only with integers.
+- Answering with the number right when the question asks for the number wrong or blank.
+
+## Contest profile
+An AMC 8 and AMC 10 early problem, often about the AMC's own scoring rule ($6$ for right, $1.5$ for blank, $0$ for wrong); harder versions ask which scores cannot occur.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"break-even-plans": String.raw`
+## Distinguishing clues
+- Two or more plans, coupons or offers, each a fixed amount plus a rate per unit: a membership fee plus a price per visit, a flat discount against a percentage off.
+- A question about which plan is best for a given quantity, or for which quantities a plan wins.
+- An answer that is a range, or the length of a range, of prices or amounts.
+- Not this pattern: a single price with successive discounts, which is a [[percent-change|percent change]] problem.
+
+## Methods and Formulas to Try
+Write each plan as $F + rx$ in the same unknown $x$, and find where each pair of plans cost the same. Between those break-even points the order of the plans does not change, so testing one value in each interval settles which is best there.
+
+### Methods to try
+- [[linear-elimination]]: set two plans equal and solve for the break-even quantity.
+- [[casework-method]]: split the quantities at the break-even points and compare the plans in each interval.
+- [[sign-chart]]: the difference of two plans is linear, so its sign changes only at the break-even point.
+
+### Formulas to try
+- [[line-forms]]: each plan is a line with intercept $F$ and slope $r$; the plan with the smaller slope wins for large $x$.
+
+## Common traps
+- Comparing only two of the plans when the best must beat all of them: the answer is where it beats each one, an intersection of intervals.
+- A strict or non-strict inequality at a break-even point, where two plans tie.
+- Mixing a saving with a cost: a coupon that saves more makes the price lower.
+- A plan that applies only above some amount (a coupon for prices over $\$100$), which changes the formula below that amount.
+
+## Contest profile
+An AMC 10 and AMC 12 early problem, usually three coupons; at MATHCOUNTS level it is two phone or membership plans.
+`
+});
