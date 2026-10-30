@@ -1,9 +1,9 @@
 # Competition Math Reference
 
-A searchable reference for AMC 10/12, AIME and olympiad training. 753 cards
-covering formulas, methods, and patterns (543 formulas, 166 methods, 44 patterns), plus a database
+A searchable reference for AMC 10/12, AIME and olympiad training. 759 cards
+covering formulas, methods, and patterns (546 formulas, 167 methods, 46 patterns), plus a database
 of 4,675 past contest problems (4,665 with their full statements), every one with a written
-strategy and 4,071 cross-linked to the cards their solutions run through (2026-10-24).
+strategy and 4,121 cross-linked to the cards their solutions run through (2026-10-30).
 
 Fully static and fully offline: no build step, no server, and nothing fetched at runtime. KaTeX
 0.16.11 is vendored under `vendor/katex/` (its CSS, its JS, and the twenty woff2 faces the CSS
@@ -31,9 +31,9 @@ CONVENTIONS §0 has the full model.
 
 **Pages.**
 
-- **Front page** (no hash): search, the four spaces, the Pattern → Method → Formula → Problem
-  chain that says how they fit, links to every subject of every space, then where you left off,
-  the problem and card of the day, and your library. The top bar is hidden here; Settings is
+- **Front page** (no hash): search, the four space tiles, then Did you know? (a different card or
+  fact each visit), Newest cards, Practice at a glance, Continue where you left off, the Problem of
+  the day (its statement shown in full), the Card of the day, and your library. The top bar is hidden here; Settings is
   reached from the gear in the top bar on every other page.
 - **No main page for Formulas, Methods or Patterns.** `#/formulas`, `#/methods` and `#/patterns`
   (and the switcher buttons) open the subject last visited in that space, Geometry the first
@@ -94,8 +94,8 @@ Press `/` to focus the box, `Esc` to clear. A query that starts with `Special:` 
 instead of a search (see Special pages below).
 
 `tools/search-eval.html` runs 187 labelled queries against the live app and diffs every one
-against `tools/eval-baseline.json`. Last run (2026-10-23, from the cloud session, after a full index rebuild): 161/187 top-1,
-MRR 0.917. The index is now rebuilt in the cloud as well as on the Mac (PLAN, Blockers, has the
+against `tools/eval-baseline.json`. Last run (2026-10-30, from the cloud session, after a full index rebuild for 759 cards): 160/187 top-1,
+MRR 0.910. The index is now rebuilt in the cloud as well as on the Mac (PLAN, Blockers, has the
 commands); the best recorded warm run, on the Mac with an older query set, gave 170/185, MRR
 0.950, with the two probe sets at 64/78 and 48/77.
 **Wait for the semantic vectors to load before reading results**, or the run under-reports
@@ -110,16 +110,17 @@ by a point or two; compare warm runs to warm runs.
 - **Problems**, reached from Practice by contest and year (AMC 8, AMC 10, AMC 12, then AIME), each
   linked to the cards its solution uses, with a pattern, method and formula chain and a strategy,
   shown at once or behind a button (Settings, Practice).
-- **Study lists**, also on Practice, hold 36 curated sets alongside your own. The twelve study
+- **Study lists**, also on Practice, hold 41 built-in sets alongside your own. The twelve study
   routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
-  of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 24
+  of that tier and subject is in its route, which `tools/check-lists.py` enforces; the four By
+  Contest lists are generated from the problem tags (`tools/build-contest-lists.js`); the other 25
   are study lists on one theme. A list
   you build yourself is grouped into sections automatically, by matching its cards against
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
   paragraph each one illustrates (210 on 182 cards). Problems printed without a figure get one
-  drawn for the app, labelled as such (282 so far).
+  drawn for the app, labelled as such (340 so far).
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
   modular basics and fourteen more; 18 hubs, 96 links) end with a hand-picked row of the cards that are part of the
   same idea: LTE, Legendre and Kummer under p-adic valuation, the construction cards under
@@ -129,7 +130,9 @@ by a point or two; compare warm runs to warm runs.
   removed in October 2026 as more noise than help.)
 - **Interactive widgets** on selected cards (75 geometry widgets you drag, 39 others you set): drag
   the vertices and watch the invariant hold.
-- **Advanced search** builds a query from tag chips across the whole library.
+- **Browse by Tag** (the button beside the search box) picks one tag or several and opens the
+  tag page, the same page a card's topic chips open (`#/tag/<label>`): every card carrying them,
+  cards matching more of the chosen tags first.
 - **Settings** (`#/settings`, the gear in the top bar), in panels:
   - Appearance: theme, density (Comfortable, Spacious or Compact: the spacing of the whole app), card
     size (regular, or large, one across), and text size.
@@ -198,6 +201,7 @@ js/data/problems/*-problems.js per-card practice questions and contest reference
 js/data/problems/statements/   problem statements by year, loaded on demand
 js/data/problems/figures/      the statements' SVG figures
 js/data/new-cards.js           the batches Special:NewCards lists
+js/data/did-you-know.js        facts written for the Did you know? panel, each tied to its card
 js/math-tools.js               the interactive "play with it" widgets on non-geometry cards
 js/geo-interactive.js          draggable geometry widgets
 js/search-semantic.js          semantic channel (loads js/data/search-vectors.*)
@@ -227,6 +231,9 @@ tools/near-twins.js            step D: AMC 12 problems whose statement nearly ma
 tools/show.js                  prints problem statements by slug
 tools/practice-set.js          writes problem entries from a JSON file of edits
 tools/add-tag.js               adds a card to problems and to their AMC 10/12 twins
+tools/few-tags.js              the tag pass: problems by number of cards cited, with strategies and LIVE hints
+tools/practice-gaps.js         cards under two practice problems (--check is a gate)
+tools/build-contest-lists.js   writes the By Contest lists from the problem tags (--check is a gate)
 tools/live-cache/              LIVE's concept tags for every paper (hints only, never a source of tags)
 ```
 
@@ -282,6 +289,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-30**
 
+- **Every markdown file read through against the code and data (2026-10-30, owner).** All seven files were read in full, every path they name checked to exist, and every count stated as current recomputed. Fixed: the card, list, figure and linked-problem counts (759 cards, 41 lists, 340 problem figures, 4,121 problems citing a card); the front page and problem page as they are now (no Pattern → Method chain on the front page; the statement leads a problem page); the tag page in place of topic pages and the old "Advanced search" (whose button is now titled "Browse by tag"); the sixth `localStorage` key (`dykSeen`); how AMC 10/12 twins are found (the stored statements and `tools/near-twins.js`, not AoPS, and 596 pairs, not four); the hand-added statements (only Fall 2021 AMC 10B #11 from the AoPS Wiki; Fall 12A and 12B from LIVE); the contest count (strategies only); the proof-depth pass (done, not planned); the new-card checklist's headings (one set per kind); the rolling-coin gap (now a card); a merged card id; the search numbers (160/187, MRR 0.910, the index covering all 759 cards); and the dated counts in CONVENTIONS. Restored: Stage 5's description in PLAN, lost in an earlier edit (on hold). Recorded: P42 to P44 in QUESTIONS, update notes in MIGRATION-NOTES, and the Vercel address seen in the owner's browser beside the GitHub Pages one.
 - **One tag page (2026-10-30, owner).** A topic chip, a problem's type chip, the "Browse by Tag" picker and old `#/topic/<id>` addresses all open the same page, `#/tag/<label>` (several labels joined by `+`), drawn by `renderTagPage()`: cards in the Settings card order, those matching more of several tags first, with "Edit tags" reopening the picker on the same tags. The separate search-results view of tags is gone, and a tag now matches only exactly (a topic, a keyword or a tag group; a label inside a longer keyword no longer counts). The "transformations" topic no longer takes eight cards that matched it on a word used in another sense (Möbius inversion, Dirichlet convolution, circular permutations, necklaces, Burnside's lemma, the ballot problem, Minkowski's inequality, conic sections): 59 cards, from 67.
 - **Three new cards and a race on the states card (2026-10-30, owner requests).** New: Binary Quadratic Forms (number theory: completing the square $4af = (2ax+by)^2 - Dy^2$, the bounded search when $D \lt 0$, which $n$ the forms $x^2+xy+y^2$, $x^2+3y^2$ and $x^2+2y^2$ take, with proofs; 2011 AIME I #15 and 2022 AIME I #14 now cite it at their completing-the-square step), Sums of Fourth and Higher Powers (algebra, kept apart from Sums of Powers of Integers as the owner asked; the closed forms, the telescoping relation and the binomial basis with the hockey stick identity; two exercises, since no problem in the set needs it), and Zack's Lemma (Moving Points) (olympiad geometry: three points of degrees $a$, $b$, $c$ are collinear always or at most $a+b+c$ times; a figure and two exercises). All on their routes (AIME algebra, AIME number theory, olympiad geometry). First-Step Analysis gains a race between two processes under "The chance of ending a certain way": a state records both players' progress, worked on Alice flipping until $HH$ against Bob until $TH$ on separate coins ($\frac{39}{121}$, checked by solving and by simulation), with the one-shared-coin contrast ($\frac14$) and a trap about ties. Search index rebuilt for the 759 cards: 160/187 top-1, MRR 0.910, unchanged.
 - **Ten more Did you know? facts (2026-10-30).** At the owner's request, `js/data/did-you-know.js` (`MATH_DYK`) holds facts written for the panel, each tied to the card its "From" link opens and each an instance no card states (checked against the cards and write-ups): the $249$ zeros of $1000!$, derangements of $10$ letters against $\frac1e$, $10!+1 = 11\cdot329891$, $577/408$ for $\sqrt2$, the first $20$ cubes, $0.\overline9 = 1$, $v_2(3^{1024}-1) = 12$ by LTE, primes dividing $99\ldots9$, the $48$ digits of $3^{100}$, and $11^4 = 14641$. Every number checked by computation. They join the $93$ curiosity-list cards in the random pick.

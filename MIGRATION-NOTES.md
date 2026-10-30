@@ -11,7 +11,7 @@ The app moved here from an earlier conversation. These are that chat's answers (
 - **How the 1,365 problems were tagged:** unknown. Not every tag was checked against a solution: `tools/audit-problem-tags.py` exists because 2026 AIME I #5 carried `rotation-trick`, which its solution never uses.
 - **About 3,100 problems were added from LIVE as text only**, on purpose, to be tagged later.
 - **`trick` and `trickFormulas`:** unknown.
-- **Fall 2021 AMC 12A and 12B:** never supplied. The gap is known and accepted (`tools/live-missing.md`); only 12B #23 has text. Fall 10A and 10B were imported from PDFs.
+- **Fall 2021 AMC 12A and 12B:** never supplied. The gap is known and accepted (`tools/live-missing.md`); only 12B #23 has text. Fall 10A and 10B were imported from PDFs. (Update 2026-10-24: LIVE has Fall 12A and 12B as its 2021 AMC 12 C and D papers, and all 50 are imported; only Fall 10B #11 still comes from the AoPS Wiki.)
 
 ## 2. The cards' history
 - **Order of cards:** known only from about 2026-10-11 (the formula conversion batches, cards N1 to N7, the shape reference cards, then the olympiad batch). The README changelog is the best record of earlier work.
@@ -36,7 +36,7 @@ The app moved here from an earlier conversation. These are that chat's answers (
   - the first run downloads the model from Hugging Face;
   - it works in a cloud container when Hugging Face and its CDN hosts are reachable (first done 2026-10-23: 161/187 top-1, 738 cards); otherwise build on the Mac and commit `search-vectors.*`.
 - **The 187 labelled queries:** origin unknown.
-- **Target:** at least 160 of 187 top-1. Last full run (2026-10-11): 162/187, top-3 97.3%, MRR 0.922. The older "170/185 warm" figure predates that chat's memory.
+- **Target:** at least 160 of 187 top-1. Last full run (2026-10-11): 162/187, top-3 97.3%, MRR 0.922. The older "170/185 warm" figure predates that chat's memory. (Latest, 2026-10-30: 160/187, MRR 0.910, over 759 cards.)
 
 ## 4. Style
 - **Writing:**
@@ -59,19 +59,19 @@ The app moved here from an earlier conversation. These are that chat's answers (
 - **Users:** the owner is also preparing for the ACT. The competition targets are the owner's to fill in.
 
 ## 5. Running and publishing
-- **Published** on GitHub Pages at https://almond200.github.io/CompMath2.0/, uploaded with GitHub Desktop. Locally it runs with `python3 -m http.server 8642` (`.claude/launch.json`).
+- **Published** on GitHub Pages at https://almond200.github.io/CompMath2.0/, uploaded with GitHub Desktop. Locally it runs with `python3 -m http.server 8642` (`.claude/launch.json`). (Update 2026-10-30: the owner's browser shows the app at https://competition-math-reference.vercel.app/; which host is current is the owner's to confirm.)
 - **When files change:**
   - bump `?v=` in `index.html`;
   - bump `STATEMENTS_V` when statement files change;
-  - rebuild the search index after card changes.
+  - rebuild the search index after card changes (owner, 2026-10-25: once at the end of a step, not after each small edit).
 - **MAA permission:** only the credit line is known (© MAA, CC BY-NC-SA 4.0, text and figures from LIVE by Po-Shen Loh).
-- **`lab/` pages:** kept and checked by `tools/check-lab.sh`. Their future is decided in Stage 5 of `PLAN.md`.
+- **`lab/` pages:** kept and checked by `tools/check-lab.sh`. Their future is decided in Stage 5 of `PLAN.md`, which the owner put on hold (2026-10-25).
 - **Wishes not yet in the old plan:**
   - Done by now: the concept cards, the olympiad cards, the formula-box audit, the UI scan, the subject chip, the card-file scan.
-  - Still open: the practice expansion (section 2.7 of `PLAN.md`), and the four pattern/method twins flagged by the duplicate finder (`lte` and `lte-lemma`, and three others).
+  - Still open then: the practice expansion (section 2.7 of `PLAN.md`), and the four pattern/method twins flagged by the duplicate finder (`lte` and `lte-lemma`, and three others). (Update: the twins were answered on 2026-10-12, they stay; the practice expansion is done, every problem having a strategy by 2026-10-24 and every one read in the tag passes of 2026-10-25.)
 
 ## 6. Small things
-- **The five `check-labels.py` far-move findings:** whether they were accepted on purpose is unknown. They are treated as the font baseline.
+- **The five `check-labels.py` far-move findings:** whether they were accepted on purpose is unknown. They are treated as the font baseline. (There are seven since 2026-10-24; `CLAUDE.md` records the baseline.)
 - **Keywords narrowed** so a card stops outranking a more general one: no other cases are known.
 - **Reversals:**
   - the problem search was built, shelved, then deleted;
