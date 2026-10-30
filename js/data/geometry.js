@@ -2128,6 +2128,16 @@ window.MATH_SECTIONS.push({
           level: ["Olympiad"]
         },
         {
+          id: "zacks-lemma",
+          name: "Zack's Lemma (Moving Points)",
+          latex: String.raw`A, B, C \text{ of degrees } a, b, c \text{ collinear at } a + b + c + 1 \text{ values of } t \implies \text{ collinear for all } t`,
+          description: String.raw`In the method of moving points a point is allowed to move with a parameter $t$, and its degree is the degree of its homogeneous coordinates as polynomials in $t$; a point moving along a line at constant speed has degree $1$. Zack's Lemma says that three points of degrees $a$, $b$ and $c$ are either collinear for every $t$ or for at most $a + b + c$ values of $t$. So to prove a collinearity for every position it is enough to check $a + b + c + 1$ positions, which are usually chosen to be the easy degenerate ones.`,
+          keywords: ["zack's lemma", "moving points", "method of moving points", "degree of a moving point", "collinear for every position", "check finitely many positions", "projective map", "olympiad geometry"],
+          importance: "low",
+          tier: "Olympiad",
+          level: ["Olympiad"]
+        },
+        {
           id: "rotated-line-angle",
           name: "Angle Between a Line and Its Rotated Image",
           latex: String.raw`\angle(\ell, \ell') = \theta \pmod{180^\circ} \qquad \ell' = \rho_{O,\theta}(\ell)`,

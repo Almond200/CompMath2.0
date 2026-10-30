@@ -1,7 +1,7 @@
 # CONVENTIONS
 
 Every rule here was measured against the cards of its day, and the count that proves it is quoted
-(most against 557 cards in September 2026, some against 700 in October; there are 753 now, and
+(most against 557 cards in September 2026, some against 700 in October; there are 759 now (2026-10-30), and
 `tools/scan-conventions.py` prints the current counts). If a rule has no number, it is not a rule. `CONTRIBUTING.md` holds the reasoning, the gap register and
 the per-year retag notes; this file is the checklist you follow while actually adding a card.
 
@@ -63,7 +63,7 @@ title is slugged into its address, so renaming one changes a bookmarkable URL.
 
 Exactly two field orders exist, and nothing else. Copy one of these.
 
-**Subject file** (`geometry.js`, `algebra.js`, `number-theory.js`, `counting.js`) — 517 of 517 cards:
+**Subject file** (`geometry.js`, `algebra.js`, `number-theory.js`, `counting.js`) — 546 of 546 cards (2026-10-30):
 
 ```js
         {
@@ -78,16 +78,16 @@ Exactly two field orders exist, and nothing else. Copy one of these.
         },
 ```
 
-**`patterns.js`** — 174 of 174 cards. Same, plus `type` and `subject` immediately after `name`:
+**`patterns.js`** — 213 of 213 cards. Same, plus `type` and `subject` immediately after `name`:
 
 ```js
           type: "method",       // or "pattern"
           subject: "counting",  // geometry | algebra | number-theory | counting
 ```
 
-- `type` and `subject` appear on **109/109** `patterns.js` cards and on **0/448** subject-file cards.
+- `type` and `subject` appear on **213/213** `patterns.js` cards and on **0/546** subject-file cards (2026-10-30).
   Putting either in a subject file, or omitting either from `patterns.js`, is always wrong.
-- `latex` uses `String.raw` on **557/557** cards. Use it even when there is no backslash.
+- `latex` uses `String.raw` on **759/759** cards. Use it even when there is no backslash.
 - **never write a raw `<` followed by a letter inside `$...$`** — write `\lt`. Every one of these
   strings reaches the page through `innerHTML`, so the HTML parser sees `<j` as the start of a tag
   and eats everything up to the next `>` before KaTeX is ever called. This shipped once as
@@ -98,8 +98,8 @@ Exactly two field orders exist, and nothing else. Copy one of these.
   intentional `<br>` in examples.
 - One card deviates: `periodic-sequences` in `patterns.js` orders its fields
   `id, type, subject, name, ...`. That card was corrected, so the corpus now has **no** exception:
-  all 700 cards use one of the four canonical orders, the extra two being the same pair with an
-  optional `latexPlain` after `latex` (79 cards carry one; see "Expanded notation" below).
+  all 759 cards use one of the four canonical orders, the extra two being the same pair with an
+  optional `latexPlain` after `latex` (85 cards carry one on 2026-10-30; see "Expanded notation" below).
   `tools/scan-conventions.py` names any card that is not in one of the two orders.
 - Every card has a `latex` and a `description`. **0** cards omit either.
 
@@ -129,10 +129,10 @@ A card's `tier` says where it is **first needed**; later stages still use the ea
 |---|---|
 | `importance` | five values: `high`, `medium`, `low`, `lower`, `lowest`, judged within the card's subsection (see "Tiers"); shown in the split oval beside the tier |
 | `tier` | the default label, one of `AMC`, `AIME Early`, `AIME Late`, `Olympiad` (see "Tiers" below); every card carries one, after `importance` and before `level` |
-| `level` | drawn from `MATHCOUNTS` (105), `AMC10` (206), `AMC12` (301), `AIME` (401), `Olympiad` (209). No other string appears |
-| `keywords` | min 4, median 6, 90th percentile 10, max 20. Four is the floor — never ship fewer |
-| `name` | median 24 chars, max 55. 63 names use ` & `, 42 carry a parenthetical like `(PIE)` |
-| `description` | median 427 chars, 90th percentile 601, max 1001. Three to five sentences, to the intro standard below |
+| `level` | drawn from `MATHCOUNTS` (147), `AMC10` (303), `AMC12` (412), `AIME` (516), `Olympiad` (287) on 2026-10-30. No other string appears |
+| `keywords` | min 4, median 7, 90th percentile 9, max 18 (2026-10-30). Four is the floor — never ship fewer |
+| `name` | median 25 chars, max 60. 66 names use ` & `, 44 carry a parenthetical like `(PIE)` (2026-10-30) |
+| `description` | median 403 chars, 90th percentile 582, max 1046 (2026-10-30). Three to five sentences, to the intro standard below |
 
 ### The intro (`description`) standard
 
@@ -171,7 +171,7 @@ rest matched `\sum\b`, which misses `\sum_`, so it saw 17 of the 93.
 
 - **A `latex` containing `\sum` or `\prod` needs a `latexPlain`**, directly after it, with the
   terms written out: `a_1 b_1 + a_2 b_2 + \cdots + a_n b_n`, not a sigma with its index spelled
-  differently. 93 of 93 such cards have one.
+  differently. Every such card has one (83 of 83 on 2026-10-30).
 - **A Key forms bullet with a sigma writes both forms**, `\alt{sigma form}{expanded form}`.
   `notate()` in `js/app.js` picks the side the reader chose, and `sigma_form()` in
   `tools/build-search-index.py` indexes the sigma side so search is unaffected.
@@ -210,20 +210,20 @@ This is exactly why the duplicate check in §5 must search names, not ids.
 
 ## 2. The write-up — mandatory, in `js/data/details/<subject>-details.js`
 
-**One write-up for every card (753 of 753 on 2026-10-24), no orphans, no card without one.**
+**One write-up for every card (759 of 759 on 2026-10-30), no orphans, no card without one.**
 
-The headings depend on the card's kind (counts as of 2026-10-16; the scan fails on a heading the kind does not allow):
+The headings depend on the card's kind (counts as of 2026-10-30; the scan fails on a heading the kind does not allow):
 
 ```
-formula (517)   ## Key forms, ## Conditions, ## Why it works, ## Useful observations,
+formula (546)   ## Key forms, ## Conditions, ## Why it works, ## Useful observations,
                 ## Applications, ## Contest profile, and optionally ## Full proof
-method (144)    ## When to use, ## How, ## Why it works, ## Formulas it uses,
+method (167)    ## When to use, ## How, ## Why it works, ## Formulas it uses,
                 ## Common traps, ## Contest profile, and optionally ## Full proof
-pattern (39)    ## Distinguishing clues, ## Methods and Formulas to Try,
+pattern (46)    ## Distinguishing clues, ## Methods and Formulas to Try,
                 ## Common traps, ## Contest profile
 ```
 
-Key forms is optional on a formula card (on 513 of 517). `## Full proof` renders collapsed behind a "Show
+Key forms is optional on a formula card (on 542 of 546). `## Full proof` renders collapsed behind a "Show
 full proof" button. "Pattern and method anatomy" at the end of this file says what each section holds.
 
 - **Why it works explains; Full proof proves.** Open Why it works with the idea in one plain
@@ -245,8 +245,8 @@ full proof" button. "Pattern and method anatomy" at the end of this file says wh
 ### Prose rules
 
 - **No `**bold**` anywhere.** Markdown emphasis is never processed; it reaches the reader as literal
-  asterisks. **0 of 557** write-ups contain `**`. This rule is unbroken — do not be the first.
-- **Em dashes: median 1 per write-up, 90th percentile 4, and 206 write-ups use none.** Prefer
+  asterisks. **0 of 759** write-ups contain `**`. This rule is unbroken — do not be the first.
+- **Em dashes: median 0 per write-up, 90th percentile 4, and 392 write-ups use none (2026-10-30).** Prefer
   commas. A rewritten card uses none at all in its prose, description, example or figure
   captions; the renovation is steadily removing the rest. (The ` — ` separator in Key forms is
   structural and exempt.)
@@ -274,8 +274,8 @@ full proof" button. "Pattern and method anatomy" at the end of this file says wh
 
 ### Cross-links
 
-Always `[[card-id|display text]]`, effectively never bare `[[card-id]]`. Measured: **1034 piped
-links, 0 bare** across the corpus, write-ups and descriptions together. A bare link renders the
+Always `[[card-id|display text]]`, effectively never bare `[[card-id]]`. Measured on 2026-10-30: **1093 piped
+links** (898 in write-ups, 195 in card fields), **0 bare in prose**; the list bullets of "Formulas it uses" and "Methods to try" use `- [[id]]: ...` by design. A bare link renders the
 card's full Title Case name, which rarely fits a sentence.
 
 - **Link the first mention, once.** Read the page in order: the description, then Key forms, Why
@@ -340,7 +340,7 @@ positives and should be rejected every time they reappear:
 
 ## 3. The example — mandatory, in `js/data/examples-supplement.js`
 
-**One example key for every card (753 of 753 on 2026-10-24). Zero cards lack one.**
+**One example key for every card (759 of 759 on 2026-10-30). Zero cards lack one.**
 
 Shape is `{ q, s }`: a clean question, and its solution behind a Show solution button. A printed card shows every solution, and hides the buttons, the AoPS links and the back links (owner, 2026-10-17).
 
@@ -380,14 +380,14 @@ Search the whole archive for real routes first (`node tools/few-tags.js`, LIVE's
 
 ## 4. The diagram — mandatory for geometry
 
-**Every geometry card has a diagram (256 of 256 in `geometry.js` on 2026-10-24, and every geometry method in `patterns.js` too).** It is not a strong tendency, it is the rule: a
+**Every geometry card has a diagram (257 of 257 in `geometry.js` on 2026-10-30, and every geometry method in `patterns.js` too).** It is not a strong tendency, it is the rule: a
 geometry card without a figure is incomplete. The count first reached 200/200 only after a card shipped
 without one and had to be fixed, which is why `tools/scan-conventions.py` exits non-zero on any
 geometry card missing a diagram.
 
-Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 101/210,
-`algebra.js` 13/121, `counting.js` 8/82, `number-theory.js` 2/84 (2026-10-24). In-text figures are counted
-separately: 210 placed on 183 cards, in every subject.
+Elsewhere it is the exception, reserved for configuration-heavy figures: `patterns.js` 103/213,
+`algebra.js` 13/122, `counting.js` 8/82, `number-theory.js` 2/85 (2026-10-30). In-text figures are counted
+separately: 210 placed on 182 cards, in every subject.
 
 - **Figures inside the text.** A paragraph that is nothing but `{{figure:name}}` draws
   `BODY["card-id"]["name"]` at that point in the write-up. Use one wherever a paragraph describes
@@ -594,8 +594,10 @@ python3 tools/check-topics.py            # every card carries a topic chip, and 
 python3 tools/check-statements.py        # every statement and figure resolves, no stray markup
 python3 tools/find-duplicate-forms.py    # lists formulas stated twice (rule 17); a report, not a gate
 python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py --report
-~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py
+~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py   # on the Mac; in the cloud, the venv in PLAN "Blockers"
 ```
+
+The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest run: 160/187 top-1, MRR 0.910, over 759 cards (2026-10-30, cloud index).
 
 - Bump `?v=` in `index.html` for **every** file you touched, including ones a build step regenerated
   (`search-glossary.js`). The exception is `search-vectors.{json,bin}`, which revalidate themselves.
@@ -622,7 +624,7 @@ python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py 
 
 ## 8. Topic chips
 
-Every card carries at least one topic chip, and each chip opens a browsable topic page. The chips
+Every card carries at least one topic chip, and each chip opens the tag page for its label (`#/tag/<label>`, drawn by `renderTagPage()` in `js/app.js`), the same page the Browse by Tag picker opens; old `#/topic/<id>` addresses land there too (2026-10-30). The chips
 are derived, not authored: `topicsForCard` (`js/app.js`) runs `TOPIC_RULES` against the card's name,
 its keywords, and **its subsection title**. That last ingredient is the one to understand before
 adding a subsection or a rule.
@@ -643,6 +645,7 @@ adding a subsection or a rule.
 - **Watch for a loose term matching inside a longer word.** `/factor/` matched `cofactor`,
   `factorial` and "scale factor"; `/similar/` put a `triangles` chip on "similar conics";
   a bare `/degree/` matched "second degree equation". Each is now spelled out.
+- **A word used in another sense is vetoed per card** in `CARD_TOPIC_STOP` (`js/app.js`). On 2026-10-30 eight cards came off `transformations`, which they had matched on "inversion" (Möbius inversion, Dirichlet convolution), "rotation" or "reflection" used about counting (circular permutations, necklaces, Burnside's lemma, the ballot problem), "algebraic reflection" (Minkowski's inequality) and "translated" (conic sections).
 - `tools/check-topics.py` fails on a card with no chip and on any known-bad (subsection, topic)
   pair. It **lifts `TOPIC_RULES`, `TITLE_STOP` and `topicsForCard` straight out of `js/app.js`**
   rather than restating them, so the gate cannot drift from the app. Run it after touching a rule,
@@ -664,7 +667,7 @@ The failure is invisible in the UI -- the route just quietly omits a card the re
 - A list that is *not* complete by construction must not be `kind: "route"`. "Olympiad Heavy
   Hitters" was tagged one while its own blurb read "Not a syllabus", and held 16 of 192 olympiad
   cards; it is now `kind: "thinking"`, and the four real olympiad routes carry the other 192.
-- Sections of one card are reported as advisory, not fatal: that is a presentation call. 17 exist.
+- Sections of one card are reported as advisory, not fatal: that is a presentation call. 36 exist (2026-10-30).
 - **A card listed twice in one list is now fatal too.** The route check collects ids into a set, so
   it could never see a duplicate. Moving `conic-sections` into a new Conics subsection and adding a
   Conics section to the two geometry routes left it in "Coordinates & Transformations" as well: it
@@ -675,7 +678,8 @@ The failure is invisible in the UI -- the route just quietly omits a card the re
 
 ## 10. Touching persisted state
 
-The app keeps five keys in `localStorage`: `mq-lists`, `mq-stars` (read once, to migrate old stars), `mq-settings`, `theme` and
+The app keeps six keys in `localStorage`: `mq-lists`, `mq-stars` (read once, to migrate old stars), `mq-settings`, `theme`,
+`dykSeen` (the Did you know? entries shown lately, so a reload does not repeat one; a convenience, not exported) and
 `mq-recent` (the last 30 cards and problems opened, as `"f:<id>"` / `"p:<slug>"`, for "Continue
 where you left off"; a convenience only, so a failed write is silent). Settings → Your progress
 exports these and the lab keys to one JSON file (`{ format: "competition-math-reference/progress",
@@ -750,7 +754,7 @@ are untouched.
   same route in both entries** — it is one problem with one best solution, so writing a different
   strategy for the 10 than for the 12 would mean one of them is not the best route. Copy the entry
   and change only the `ref`.
-- Detect sharing by comparing statements on AoPS before writing, not after. `tools/scan-conventions.py`
+- Detect sharing by comparing the stored statements before writing, not after (`node tools/near-twins.js` lists AMC 12 problems whose statement nearly matches an AMC 10 one), and tag both with `node tools/add-tag.js`. `tools/scan-conventions.py`
   gates on the consequence: two entries with identical strategy text must carry identical `formulas`.
 
 ---
@@ -793,19 +797,19 @@ Stanley's note on Lucas' Theorem and Odd Entries in a Row of Pascal's Triangle: 
 "cool" but did not prove every idea they mentioned. The standard from now on: each Key form and
 each named corollary has an argument in Why it works (a lemma, the steps, the conclusion), or it
 is a cited theorem whose own card proves it. A long argument goes in a Full proof section. Short
-paragraphs stay under 500 characters, so a proof is written as a sequence of short steps. A
-proof-depth pass over the thinnest converted cards is planned (see the plan, step R).
+paragraphs stay under 500 characters, so a proof is written as a sequence of short steps. The
+proof-depth pass over every card was done in step E (finished 2026-10-25).
 
 ## Break up big paragraphs of explanation (2026-10-10)
 
-A long explanation is never one block of prose with inline math. Put the key equation of each step on its own centered line (`$$...$$` as its own paragraph), add a figure where a picture helps (`{{figure:name}}`), and open a step with a plain lead-in ("Step 1, the lemma."; no markdown bold or italics, the scanner rejects them). Keep each paragraph under 500 characters. Applied first to Lucas' Theorem and Odd Entries in a Row of Pascal's Triangle; every new or rewritten card follows it, and the proof-depth pass (plan step R) applies it as it goes.
+A long explanation is never one block of prose with inline math. Put the key equation of each step on its own centered line (`$$...$$` as its own paragraph), add a figure where a picture helps (`{{figure:name}}`), and open a step with a plain lead-in ("Step 1, the lemma."; no markdown bold or italics, the scanner rejects them). Keep each paragraph under 500 characters. Applied first to Lucas' Theorem and Odd Entries in a Row of Pascal's Triangle; every new or rewritten card follows it, and the proof-depth pass (plan step E, finished 2026-10-25) applied it.
 
 ## Problem text and the Contests box (2026-10-11)
 
 - **Every AMC and AIME problem has its text**, imported from LIVE by `tools/fetch-live-statements.py` (run with `--all` to find new sittings), even when it has no strategy or tags yet. A problem with no card is an entry `{ ref, formulas: [] }` and its page says "Not classified yet"; tagging it is a later, separate step and only ever uses existing cards.
-- **The number beside a contest reads "N problems written"** and counts only problems that have their solution in the app (a strategy or tagged cards), not those that have only their text. A contest still to come is listed in `js/data/problems/contests-planned.js`, is hidden until the reader presses Show unwritten contests, and carries no number. Proof-based competitions are not listed for now.
+- **The number beside a contest reads "N problems written"** and counts only problems that have a strategy in the app (since 2026-10-24; a problem with cards but no strategy is not counted), not those that have only their text. A contest still to come is listed in `js/data/problems/contests-planned.js`, is hidden until the reader presses Show unwritten contests, and carries no number. Proof-based competitions are not listed for now.
 - **Answer choices are blocks.** Each `(A)` to `(E)` line renders as its own block with vertical padding so a fraction can never touch its neighbor; a choice that is a picture is marked `@@ci:file|height@@` and shown small beside its letter.
-- **A statement LIVE lacks** (the two 2021 Fall AMC problems) is added by hand in `MANUAL_STATEMENTS` in the importer and credited to the source it came from (the AoPS Wiki), never to LIVE.
+- **A statement LIVE lacks** is added by hand in `MANUAL_STATEMENTS` in the importer and credited to the source it came from, never to LIVE: Fall 2021 AMC 10B #11 (the AoPS Wiki), and the Fall 2021 AMC 10A and 10B papers typed from the owner's PDFs (`tools/manual_statements.py`, credited to the MAA). The Fall 2021 AMC 12A and 12B come from LIVE, filed there as its 2021 C and D papers.
 
 ## List kinds (2026-10-11)
 
@@ -856,9 +860,9 @@ Every batch of new cards adds one entry to `js/data/new-cards.js` (a label, the 
 
 **The new-card checklist (2026-10-25).** A card is finished only when all of these hold; the gates check the ones marked (gate).
 
-1. Approved by the owner in `QUESTIONS.md` (a candidate from practice goes in as the next P-number, at the top of the table).
+1. Approved by the owner, in `QUESTIONS.md` or by asking for it directly (a candidate from practice goes in as the next P-number, at the top of the table; a card asked for directly is recorded there too).
 2. The card object in its subject file or `patterns.js`, with every field of §1; written with `tools/add-cards.py`.
-3. The write-up (§2): When to use, How, Why it works with a complete proof, Formulas it uses, Common traps, Contest profile.
+3. The write-up (§2) with the headings of its kind, and a Why it works that gives a complete proof (a formula: Key forms, Conditions, Why it works, Useful observations, Applications, Contest profile; a method: When to use, How, Why it works, Formulas it uses, Common traps, Contest profile; a pattern: Distinguishing clues, Methods and Formulas to Try, Common traps, Contest profile).
 4. The worked example (§3), using the card's own method, every number checked by computation.
 5. A diagram if it is a geometry card (§4), with a computed `ok` self-check (gate: `check-diagrams.py`).
 6. A topic chip earned from its name, keywords or group (gate: `check-topics.py`).

@@ -568,6 +568,17 @@ window.MATH_SECTIONS.push({
           level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
+          id: "higher-power-sums",
+          name: "Sums of Fourth and Higher Powers",
+          latex: String.raw`\sum_{k=1}^{n} k^4 = \frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}, \qquad \sum_{k=1}^{n} k^5 = \frac{n^2(n+1)^2(2n^2+2n-1)}{12}`,
+          latexPlain: String.raw`1^4 + 2^4 + \cdots + n^4 = \tfrac{n(n+1)(2n+1)(3n^2+3n-1)}{30}, \qquad 1^5 + 2^5 + \cdots + n^5 = \tfrac{n^2(n+1)^2(2n^2+2n-1)}{12}`,
+          description: String.raw`Past the cubes, the sum $1^m + 2^m + \cdots + n^m$ is still a polynomial in $n$, of degree $m + 1$: the fourth powers add up to $\frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}$ and the fifth powers to $\frac{n^2(n+1)^2(2n^2+2n-1)}{12}$. These are rarely worth memorizing, because any of them can be rebuilt on the spot: telescope $(k+1)^{m+1} - k^{m+1}$ over $k$, or write $k^m$ as a combination of binomial coefficients $\binom kj$ and sum each one with the [[hockey-stick|hockey stick identity]].`,
+          keywords: ["sum of fourth powers", "sum of fifth powers", "1^4 + 2^4 + ... + n^4", "sum of k^4", "faulhaber", "power sum polynomial", "higher power sums"],
+          importance: "lower",
+          tier: "AIME Late",
+          level: ["AIME"]
+        },
+        {
           id: "arithmetico-geometric",
           name: "Arithmetico-Geometric Sum",
           latex: String.raw`\sum_{k=1}^{\infty} k x^k = \frac{x}{(1-x)^2}, \qquad \sum_{k=1}^{\infty} k^2 x^k = \frac{x(1+x)}{(1-x)^3} \quad (|x| < 1)`,

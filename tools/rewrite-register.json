@@ -1838,7 +1838,10 @@
     "elimination-counting": "method",
     "comparing-coefficients": "method",
     "rolling-without-slipping": "pattern",
-    "tethered-animal": "pattern"
+    "tethered-animal": "pattern",
+    "binary-quadratic-forms": "formula",
+    "higher-power-sums": "formula",
+    "zacks-lemma": "formula"
   },
   "placeholders": {},
   "ledger": {
@@ -8956,6 +8959,24 @@
       [
         "(new card)",
         "written directly in the pattern template"
+      ]
+    ],
+    "binary-quadratic-forms": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "higher-power-sums": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "zacks-lemma": [
+      [
+        "(new card)",
+        "written directly in the formula template"
       ]
     ]
   }

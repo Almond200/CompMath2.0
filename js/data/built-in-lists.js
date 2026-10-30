@@ -208,7 +208,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["inversion-facts"] }
     ] },
   { id: "route-aime-algebra", name: "AIME Algebra", kind: "route", tier: "AIME", subject: "Algebra",
-    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 38 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AMC 10/12 algebra route: only the cards that are new at this level, so each list stays short. 39 cards across 10 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Polynomials & Their Roots",
         note: "Everything that follows from knowing a polynomial's roots without finding them.",
@@ -218,7 +218,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["brahmagupta-fibonacci", "lagranges-identity"] },
       { title: "Sequences & Series",
         note: "Closed forms, and the moves that produce one when the sum looks hopeless.",
-        ids: ["generalized-binomial-series", "abel-summation"] },
+        ids: ["generalized-binomial-series", "abel-summation", "higher-power-sums"] },
       { title: "Inequalities",
         note: "The named inequalities, then the machinery for deciding which one the problem wants.",
         ids: ["am-gm", "rearrangement", "nesbitt-inequality", "jensens-inequality", "minkowski-inequality", "weighted-am-gm", "tangent-line-trick", "derivative-extremum"] },
@@ -242,7 +242,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["cramers-rule", "determinant-basics", "matrix-multiplication", "cofactor-expansion", "matrix-inverse", "matrix-power-diagonalizing"] },
     ] },
   { id: "route-aime-number", name: "AIME Number Theory", kind: "route", tier: "AIME", subject: "Number Theory",
-    blurb: "Builds on the AMC 10/12 number theory route: only the cards that are new at this level, so each list stays short. 29 cards across 7 sections.",
+    blurb: "Builds on the AMC 10/12 number theory route: only the cards that are new at this level, so each list stays short. 30 cards across 7 sections.",
     sections: [
       { title: "Divisibility & GCD",
         note: "The foundation. Most number theory problems are a gcd statement wearing a disguise.",
@@ -261,7 +261,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["p-adic-valuation", "kummers-theorem", "lucas-theorem", "bertrands-postulate", "hensel-lifting", "lte", "lte-lemma"] },
       { title: "Diophantine Equations",
         note: "Finding integer solutions, and proving there are no others.",
-        ids: ["pell-equation", "thues-lemma", "sum-of-three-squares"] },
+        ids: ["pell-equation", "thues-lemma", "sum-of-three-squares", "binary-quadratic-forms"] },
       { title: "Special Numbers & Representations",
         note: "Named sequences, and the systems that represent every integer exactly once.",
         ids: ["fermat-numbers", "lattice-points-circle", "gaussian-integers", "pisano-periods", "farey-sequences", "continued-fraction-convergents", "zeckendorf-theorem", "floor-sum-reciprocity"] },
@@ -296,7 +296,7 @@ window.MATH_BUILTIN_LISTS = [
     ] },
 
   { id: "route-olympiad-geometry", name: "Olympiad Geometry", kind: "route", tier: "Olympiad", subject: "Geometry",
-    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 55 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
+    blurb: "Builds on the AIME geometry route: only the cards that are new at this level, so each list stays short. 56 cards across 11 sections, with a few older cards repeated because this level uses them in a broader way.",
     sections: [
       { title: "Relations Between Centers",
         note: "The distances and incidences that tie the centers to one another. This is where olympiad triangle problems usually turn.",
@@ -321,7 +321,7 @@ window.MATH_BUILTIN_LISTS = [
         ids: ["brianchon-theorem", "pascals-theorem", "desargues-theorem", "desargues-involution", "mobius-transformations", "cross-ratio", "projective-transformations", "harmonic-bundle", "complete-quadrilateral-miquel", "brocards-theorem", "pappus-hexagon"] },
       { title: "Transformations",
         note: "Move the figure rather than measure it. Usually the shortest olympiad solution when it applies.",
-        ids: ["inversion-properties", "inversion-facts", "sqrt-bc-inversion", "homothety-monge", "affine-transformations", "gliding-principle"] },
+        ids: ["inversion-properties", "inversion-facts", "sqrt-bc-inversion", "homothety-monge", "affine-transformations", "gliding-principle", "zacks-lemma"] },
       { title: "Angle & Configuration Chasing",
         note: "Keeping a chase honest across a configuration, and the constructions that unlock one.",
         ids: ["directed-angles", "phantom-point", "pole-polar"] },

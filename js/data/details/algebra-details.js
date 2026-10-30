@@ -6038,3 +6038,32 @@ For a parameter, view $A + kB$ as a polynomial in $k$ of degree at most $1$ with
 A standard step on the AMC 10 and 12 and the AIME whenever a polynomial is written in two ways or a statement holds for every value of a parameter; it pairs with the [[vietas-general|Vieta relations]], which are themselves a comparison of coefficients, and with factoring out known roots.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"higher-power-sums": String.raw`
+## Key forms
+- $\alt{\sum_{k=1}^n k^4 = \dfrac{n(n+1)(2n+1)(3n^2+3n-1)}{30}}{1^4 + 2^4 + \cdots + n^4 = \dfrac{n(n+1)(2n+1)(3n^2+3n-1)}{30}}$ and $\alt{\sum_{k=1}^n k^5 = \dfrac{n^2(n+1)^2(2n^2+2n-1)}{12}}{1^5 + 2^5 + \cdots + n^5 = \dfrac{n^2(n+1)^2(2n^2+2n-1)}{12}}$ — the next two after the [[power-sums|sums of squares and cubes]]
+- $k^4 = 24\binom k4 + 36\binom k3 + 14\binom k2 + \binom k1$, so $\alt{\sum_{k=1}^n k^4}{1^4 + \cdots + n^4} = 24\binom{n+1}5 + 36\binom{n+1}4 + 14\binom{n+1}3 + \binom{n+1}2$ — the binomial basis with the hockey stick identity
+- $(n+1)^{m+1} - 1 = \alt{\sum_{j=0}^{m} \binom{m+1}{j} S_j(n)}{\binom{m+1}0 S_0(n) + \binom{m+1}1 S_1(n) + \cdots + \binom{m+1}m S_m(n)}$, where $S_j(n) = 1^j + \cdots + n^j$ — the telescoping relation that gives each power sum from the smaller ones
+
+## Conditions
+$n$ is a positive integer and $m$ a nonnegative integer; $S_0(n) = n$. The formulas are polynomial identities, so they also hold, for instance, as statements about remainders, as long as the division by $30$ or $12$ is done before reducing.
+
+## Why it works
+Telescoping. For each $k$, the [[binomial-theorem|Binomial Theorem]] gives $(k+1)^5 - k^5 = 5k^4 + 10k^3 + 10k^2 + 5k + 1$. Adding these for $k = 1$ to $n$, the left side [[telescoping|telescopes]] to $(n+1)^5 - 1$, so
+$$(n+1)^5 - 1 = 5S_4 + 10S_3 + 10S_2 + 5S_1 + n.$$
+Substituting the known $S_1$, $S_2$ and $S_3$ and solving for $S_4$ gives the formula above; the same step with $(k+1)^6 - k^6$ gives $S_5$, and in general $(k+1)^{m+1} - k^{m+1}$ gives $S_m$ from the smaller sums, which also shows by induction that $S_m$ is a polynomial in $n$ of degree $m + 1$ with leading term $\frac{n^{m+1}}{m+1}$.
+
+The binomial basis. A polynomial of degree $4$ in $k$ is a combination of $\binom k4$, $\binom k3$, $\binom k2$, $\binom k1$ and $\binom k0$, and the coefficients come from $k = 0, 1, 2, 3, 4$ one at a time, each new value fixing one new coefficient: $k = 0$ gives $c_0 = 0$, $k = 1$ gives the coefficient $1$ of $\binom k1$; $16 = 2 + c_2$ gives $c_2 = 14$; $81 = 3 + 3 \cdot 14 + c_3$ gives $c_3 = 36$; and $256 = 4 + 6 \cdot 14 + 4 \cdot 36 + c_4$ gives $c_4 = 24$. The hockey stick identity $\sum_{k=1}^n \binom kj = \binom{n+1}{j+1}$ then sums each term.
+
+## Useful observations
+- The sums for even powers from $2$ on all have the factor $n(n+1)(2n+1)$, and those for odd powers from $3$ on the factor $n^2(n+1)^2$; this holds for every power (D. E. Knuth, "Johann Faulhaber and Sums of Powers", 1993), and checks a formula quickly.
+- For a sum that stops at a specific $n$, the binomial basis is often faster than the closed form: there is no division until the end, and each $\binom{n+1}{j}$ is a single number.
+- A sum like $\sum k(k+1)(k+2)(k+3)$ is already in the binomial basis, $24\binom{k+3}4$, and needs no power sums at all; check for such a product before expanding.
+
+## Applications
+Closed forms for sums of polynomial values, the leading behavior $\frac{n^{m+1}}{m+1}$ of a power sum, and remainders of power sums.
+
+## Contest profile
+Rare: a fourth-power sum turns up in a few AIME problems, and even there a telescoping sum or the hockey stick identity on a product of consecutive integers usually reaches the answer without the formula.
+`
+});

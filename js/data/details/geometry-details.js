@@ -9826,3 +9826,34 @@ A taut rope that does not touch the building is a straight segment from the tie 
 A MATHCOUNTS and AMC 8 and 10 staple, set on a square or rectangular shed or a regular hexagonal doghouse; it pairs with the sector area and, for a polygon, with exterior angles.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"zacks-lemma": String.raw`
+## Key forms
+- $A$, $B$, $C$ of degrees $a$, $b$, $c$: collinear for all $t$, or for at most $a + b + c$ values of $t$ — the lemma
+- a point moving along a line at constant speed, or its image under a fixed similarity, has degree $1$; a fixed point has degree $0$
+- the line through points of degrees $a$ and $b$ has degree at most $a + b$, and two moving lines of degrees $a$ and $b$ meet in a point of degree at most $a + b$ — degrees add under joining and meeting
+
+## Conditions
+A point is written in homogeneous coordinates $(x : y : z)$, with an ordinary point $(x, y)$ as $(x : y : 1)$, and its degree is the largest degree in $t$ of the three coordinates after any common factor is cancelled. A point given by ordinary coordinates that are fractions $\frac{p(t)}{r(t)}$ and $\frac{q(t)}{r(t)}$ has degree at most the largest of $\deg p$, $\deg q$, $\deg r$. The positions checked must be genuine collinearities; a position where two of the three points coincide counts as a collinear one. The conclusion covers every $t$, including positions that look degenerate in the figure.
+
+## Why it works
+Three points $(x_i : y_i : z_i)$ are collinear exactly when the determinant
+$$\Delta(t) = \det\begin{pmatrix} x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2 \\ x_3 & y_3 & z_3 \end{pmatrix}$$
+is zero ([[determinant-geometric|the determinant test for collinearity]]). Expanding, every term of $\Delta$ is a product of one entry from each row, and the entries of the rows have degrees at most $a$, $b$ and $c$, so $\Delta$ is a polynomial in $t$ of degree at most $a + b + c$. A polynomial of degree at most $a + b + c$ with more than $a + b + c$ roots is the zero polynomial (the lemma on [[comparing-coefficients|Comparing Coefficients]]), so if the points are collinear at $a + b + c + 1$ values of $t$, then $\Delta(t) = 0$ for every $t$.
+
+For the degrees of lines and intersections: the line through $P$ and $Q$ has coordinates given by the cross product $P \times Q$, each a sum of products of one coordinate of $P$ and one of $Q$, so of degree at most $a + b$; the meeting point of two lines is the cross product of their coordinates, with the same count.
+
+The name and the systematic use come from the moving-points method as written up for olympiad students by Zack Chroman; the determinant count above is the whole proof.
+
+## Useful observations
+- A point of degree $1$ traces a line, so the path of a moving point that depends linearly on the parameter is found from two of its positions; this is the one-point case of the lemma, with the other two points fixed at those positions.
+- Choose the checked positions where the figure collapses, a moving point landing on a vertex or two points coinciding, since there the collinearity is often obvious.
+- Projecting a moving point from a fixed center onto a fixed line keeps its degree, so chains of such constructions are easy to count. The [[gliding-principle|Gliding Principle]] is a special case of the same linearity.
+
+## Applications
+Olympiad collinearity and concurrency problems in which one point varies along a line or a circle, loci of points built from a moving point, and replacing a long synthetic proof by a count of degrees and a few special positions.
+
+## Contest profile
+Olympiad only; on the AMC and AIME its useful remnant is that a point moving linearly traces a line, which two positions determine.
+`
+});

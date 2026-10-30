@@ -2264,4 +2264,19 @@
     { q: String.raw`Roads may join any of $8$ coastal towns to any of $4$ inland towns, but no two towns of the same kind. What is the fewest roads that guarantees every town can reach every other, however the roads are placed?`,
       s: String.raw`This is the bipartite form with parts $a = 8$ and $b = 4$. A disconnected network has at most $(a - 1)b = 7 \cdot 4 = 28$ roads, reached by leaving one coastal town with no road and joining every other pair. So $28$ roads may still fail, and $29$ always connect everything.` }
   );
+  // ---------- Sums of fourth and higher powers (2026-10-30) ----------
+  add("higher-power-sums",
+    { q: String.raw`For which positive integers $n$ is $1^4 + 2^4 + \cdots + n^4$ divisible by $1 + 2 + \cdots + n$?`,
+      s: String.raw`The quotient is $\frac{n(n+1)(2n+1)(3n^2+3n-1)/30}{n(n+1)/2} = \frac{(2n+1)(3n^2+3n-1)}{15}$, so the question is when $15$ divides $(2n+1)(3n^2+3n-1)$. Modulo $3$ the second factor is $-1$, so $3 \mid 2n+1$, that is $n \equiv 1 \pmod 3$. Modulo $5$, $2n+1 \equiv 0$ at $n \equiv 2$, and $3n^2+3n-1 \equiv 0$ at $n \equiv 1$ and $n \equiv 3$ (it is $5$ and $35$ there), so $n \equiv 1, 2, 3 \pmod 5$. Together, by the Chinese Remainder Theorem, the answer is $n \equiv 1, 7, 13 \pmod{15}$: $n = 1, 7, 13, 16, 22, 28, \ldots$` },
+    { q: String.raw`Show that $(1^5 + 2^5 + \cdots + n^5) + (1^7 + 2^7 + \cdots + n^7) = 2(1 + 2 + \cdots + n)^4$, and check it for $n = 10$.`,
+      s: String.raw`Write $T = \frac{n(n+1)}2$, so $n^2(n+1)^2 = 4T^2$ and $n^2 + n = 2T$. The fifth-power sum is $\frac{n^2(n+1)^2(2n^2+2n-1)}{12} = \frac{4T^2(4T - 1)}{12}$, and the seventh-power sum, found the same way by telescoping, is $\frac{n^2(n+1)^2(3n^4 + 6n^3 - n^2 - 4n + 2)}{24}$, where $3n^4 + 6n^3 - n^2 - 4n + 2 = 3(n^2 + n)^2 - 4(n^2 + n) + 2 = 12T^2 - 8T + 2$, so it equals $\frac{4T^2(12T^2 - 8T + 2)}{24}$. Adding, $\frac{4T^2\left(2(4T - 1) + 12T^2 - 8T + 2\right)}{24} = \frac{4T^2 \cdot 12T^2}{24} = 2T^4$. For $n = 10$: $220825 + 18080425 = 18301250 = 2 \cdot 55^4$.` }
+  );
+
+  // ---------- Zack's Lemma, moving points (2026-10-30) ----------
+  add("zacks-lemma",
+    { q: String.raw`Three ships move in straight lines at constant speeds. If at three different moments they are in a straight line, show that they are always in a straight line.`,
+      s: String.raw`Put ship $i$ at $(x_i + u_it,\ y_i + v_it)$, a point of degree $1$, and write it as $(x_i + u_it : y_i + v_it : 1)$. The collinearity determinant has a constant third column, so each term of its expansion takes a $t$ from at most two rows: the determinant has degree at most $2$, not the $1 + 1 + 1 = 3$ the lemma counts in general. A polynomial of degree at most $2$ that vanishes at three moments is identically zero, so the ships are in a line at every moment.` },
+    { q: String.raw`In triangle $ABC$, points $P$ on line $AB$ and $Q$ on line $AC$ move so that $BP = CQ$ always, with $P$ starting at $B$ and moving toward $A$ while $Q$ starts at $C$ and moves toward $A$ at the same speed. Show that the midpoint of $PQ$ moves along a fixed line, and describe it.`,
+      s: String.raw`With $u$ and $v$ the unit vectors from $B$ toward $A$ and from $C$ toward $A$, $P = B + tu$ and $Q = C + tv$, so the midpoint $M = \frac{B + C}2 + t\,\frac{u + v}2$ has degree $1$. A point of degree $1$ is collinear with any two of its own positions for every $t$, so $M$ moves along a line, found from two positions: at $t = 0$ it is the midpoint of $BC$, and it moves in the direction $u + v$. The unit vectors from $A$ toward $B$ and toward $C$ are $-u$ and $-v$, so $-(u + v)$ points along the bisector of angle $A$: the line is the one through the midpoint of $BC$ parallel to the bisector of angle $A$.` }
+  );
 })();

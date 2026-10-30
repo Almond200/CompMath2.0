@@ -1,9 +1,9 @@
 # Authoring conventions
 
 > **Adding a card? Read [CONVENTIONS.md](CONVENTIONS.md) instead.** It is the short checklist:
-> the two legal field orders, the three required write-up headings, the mandatory example, the
+> the two legal field orders, the write-up headings for each kind, the mandatory example, the
 > diagram rule for geometry, and the duplicate check — each with the measurement that proves it
-> (first taken across 557 cards; 738 now), regenerable with `python3 tools/scan-conventions.py`. This file holds the
+> (first taken across 557 cards; 759 now), regenerable with `python3 tools/scan-conventions.py`. This file holds the
 > reasoning, the coverage-gap register and the per-year retag notes, which is why it is long.
 
 
@@ -14,7 +14,7 @@ reference rather than people editing it.
 
 The folder `~/Downloads/competition-math-reference` **is** the repository: it is a git clone of `Almond200/CompMath2.0`, with `origin` already set. So the files never need to be copied anywhere. Dragging files from this folder into another folder in Finder *moves* them (that is why they used to vanish), and the web uploader stops working past 100 files. Use one of these instead:
 
-1. **GitHub Desktop** (no Terminal). Install it and sign in once. Choose File, then Add Local Repository, and pick `competition-math-reference`. It lists every changed file. Type a short summary, click **Commit to main**, then **Push origin**. The site at https://almond200.github.io/CompMath2.0/ updates a minute or two later.
+1. **GitHub Desktop** (no Terminal). Install it and sign in once. Choose File, then Add Local Repository, and pick `competition-math-reference`. It lists every changed file. Type a short summary, click **Commit to main**, then **Push origin**. The site at https://almond200.github.io/CompMath2.0/ updates a minute or two later. (On 2026-10-30 the owner's browser showed the app at https://competition-math-reference.vercel.app/; which host is current is the owner's to confirm.)
 2. **Terminal.** Create a GitHub personal access token once (GitHub, Settings, Developer settings, Personal access tokens, with the `repo` scope). Then:
 
    ```
@@ -80,7 +80,7 @@ Each item here is something that has actually gone wrong, not a hypothetical.
    `strategy` are all inserted as HTML before KaTeX runs, so `<` followed by a letter starts an
    HTML tag and the browser silently eats everything up to the next `>`. The source looks
    perfect and the sentence renders cut off halfway. Use `\lt` and `\gt`.
-   `tools/validate-problem-db.js` now fails on this for strategies; card fields are still on you.
+   `tools/validate-problem-db.js` fails on this for strategies, and `scan-conventions.py` checks the math spans of every `String.raw` literal in the card, write-up and example files.
 
 3. **Bump `?v=` in `index.html` for every file you touched**, including files a build step
    regenerated (`search-glossary.js`) and not only the ones you hand-edited. Without the bump a
@@ -104,8 +104,8 @@ Each item here is something that has actually gone wrong, not a hypothetical.
    succeeded); `jsc tools/validate-problem-db.js`; `python3 tools/build-cross-links.py --seed`
    if you added or **renamed** a card, since the alias table is generated from card names and a
    rename leaves it stale; `--report` and review every candidate in context; then rebuild the
-   index with the build venv at `~/Downloads/competition-math-buildenv/bin/python`, never the
-   system Python. The full gate list, including `check-labels.py`, is CONVENTIONS §7.
+   index with the build venv (`~/Downloads/competition-math-buildenv/bin/python` on the Mac, the cloud venv in PLAN "Blockers"), never the
+   system Python, once at the end of the step rather than after each card (owner, 2026-10-25). The full gate list, including `check-labels.py`, is CONVENTIONS §7.
 
 8. **Delete by exact span, never by pattern.** A merge removes the absorbed card's write-up and
    example. A lazy regex ending in `` `,\n `` finds the end of an entry only when a comma follows
@@ -160,8 +160,9 @@ problem's own page is where the trick route is labelled.
 
 ### The rule, in order
 
-1. **Read every solution on the AoPS page, not just Solution 1.** It is frequently not the
-   best one, and the good idea often sits in Solution 3.
+1. **Re-solve the problem, and read every solution you can find, not just Solution 1.** On AoPS
+   (in a browser: scripts cannot fetch it) Solution 1 is frequently not the best one, and the good
+   idea often sits in Solution 3.
 2. **Decide which single solution is the best route** for a solver working under time — short,
    findable, and not dependent on a trick you would only spot in hindsight. Do this *before*
    touching the tags.
@@ -186,7 +187,7 @@ problem's own page is where the trick route is labelled.
   expansion. `lcm-pair-counting` counts *pairs*, not subsets. `non-adjacent-selection` is no
   **two** adjacent, not no three consecutive.
 - **Tagging what merely suffices.** 1983 #5 was tagged `newtons-sums`, which would work, when
-  AoPS sets $s=x+y$, $p=xy$ outright — that is `sp-substitution`.
+  AoPS sets $s=x+y$, $p=xy$ outright — that is `symmetric-polynomial-strategies` (then `sp-substitution`, since merged into it).
 - **Tagging from the wrong solution.** See rule 3.
 
 ### AMC 10 and AMC 12 share problems
@@ -196,10 +197,11 @@ so one problem can sit in the database twice under two refs. Both entries must c
 set** — a solver landing on either page is looking at one problem, and drift between them is a
 defect no per-entry review can see.
 
-The AoPS page says so at the top ("The following problem is from the 2023 AMC 10A #16 and 2023 AMC
-12A #13, so those problems redirect to this page"), so the check costs nothing while the page is
-already open. Four such pairs exist today: 2023 10A #16 = 12A #13, 2023 10B #17 = 12B #13, 2024
-10B #18 = 12B #14, and 2024 10B #23 = 12B #18. One of the four had drifted.
+The stored statements show it: `node tools/near-twins.js` lists AMC 12 problems whose statement
+nearly matches an AMC 10 one, `node tools/add-tag.js` tags both entries at once, and
+`scan-conventions.py` fails when two entries with the same strategy carry different cards (596 such
+pairs on 2026-10-30, none mismatched). When this was first written only four pairs were known
+(2023 10A #16 = 12A #13 among them), and one of the four had drifted.
 
 Collisions are only possible between the same year *and* letter, so a 10B entry can only ever
 collide with a 12B entry.
@@ -294,7 +296,7 @@ This table predates `QUESTIONS.md` (2026-10-16), which is now where every candid
 |---|---|---|---|
 | unwind a recursion that terminates only on a sparse set of inputs into a closed form on each interval between them | **method** | 2021 II #15 | none; `first-order-recurrence` and `linear-recurrence` both assume a fixed-step recurrence |
 | invert a digit-sum condition using the fact that the least positive integer with base-$b$ digit sum $s$ is strictly increasing in $s$ | **method** | 2020 II #5 | none; `base-conversion` handles representation, not this monotonicity |
-| a circle of radius $r$ rolling without slipping around the outside of a radius-$R$ circle turns through $\frac Rr + 1$ full rotations, not $\frac Rr$ | formula | 2014 I #10 | none; the coin-rotation count appears nowhere, and `circle-basics` gives only $\text{arc} = r\theta$ |
+| a circle of radius $r$ rolling without slipping around the outside of a radius-$R$ circle turns through $\frac Rr + 1$ full rotations, not $\frac Rr$ | formula | 2014 I #10 | written: the pattern `rolling-without-slipping` (P40, 2026-10-25) |
 | the full solution set of a basic trig equation: $\sin\theta = \sin\alpha$ exactly when $\theta = \alpha + 2\pi k$ or $\theta = \pi - \alpha + 2\pi k$, with the analogous families for cosine and tangent | formula | 2002 II #10 | none; `common-angle-values` gives the value table and the reference-angle rule, and the addition and double-angle cards give identities, but no card states which angles share a given sine |
 | a $3\times3$ magic square's center is one third of the common line sum, and any two cells symmetric about it add to twice the center | formula | 1996 #1 | none; nothing in the library mentions magic squares, so the nearest owner used was `proportion-properties` for the averaging step |
 | a sum over all tuples of a product of per-coordinate terms factors into a product of per-coordinate sums, $\sum_{d_1,\ldots,d_k}\prod_i f(d_i) = \prod_i\left(\sum_d f(d)\right)$ | **method** | 1994 #5 | none states it directly. `sum-of-divisors` is the most familiar instance ($\sigma$ as a product of geometric sums) but presents it as a divisor formula, and `generating-function-method` is the coefficient-extraction version, which hides that the same expansion evaluated at $1$ totals every tuple |
@@ -829,7 +831,7 @@ later pass can act on it without re-deriving anything.
 | Mechanism | Where | Failure mode |
 |---|---|---|
 | `ALSO_LISTED_IN` | `js/app.js` ~809 | Hardcodes the literal string `"Trigonometric Identities"` and the section id `"algebra"`. `find(x => x.title === title)` then `if (!sub) return;` — renaming that subsection **silently drops five mirrored cards** with no warning. The single most fragile string in the file. |
-| `TOPIC_RULES` | `js/app.js` ~882 | `sub.title` is concatenated into the haystack the topic regexes run against, so subsection titles *create* topic chips. Renaming changes `#/topic/...` membership. Roughly 30 topic assignments exist only because of a title. |
+| `TOPIC_RULES` | `js/app.js` ~882 | `sub.title` is concatenated into the haystack the topic regexes run against, so subsection titles *create* topic chips. Renaming changes which cards a topic's tag page (`#/tag/...`) lists. Roughly 30 topic assignments exist only because of a title. |
 | `ctxWords` | `js/app.js` ~849 | Section and subsection titles are an indexed search field. Renaming moves keyword-search rankings. |
 | `sectionFilters` | `js/app.js` ~1302 | Keyed by **section id** in `localStorage`. Renaming a section id silently resets saved filters for existing readers. |
 | Addresses | `sectionHash` / `getRoute` in `js/app.js` | A formula section's id, and the slug of every subject, topic, method group and pattern family title, is part of its address (`#/formulas/geometry/circles`). Renaming one breaks bookmarks to it; the subject page itself still opens. |
@@ -957,10 +959,13 @@ review and are worth keeping:
   subject (`spaceEntry`), and its purpose and recently opened cards sit behind the "i" beside
   its name in the sidebar (`.nsh-info`, which opens a centered dialog in the Filters modal's
   style, `openSpaceInfo`). Practice keeps its page: it is the only way into problems and lists.
-- **The front page is mostly navigation.** It keeps the four-step chain (how the kinds connect)
-  and otherwise links: space tiles, every subject of every space, and the side panels.
-- **A problem page leads with the problem.** The statement link, Think and Tricks come first;
-  the Pattern → Method → Formulas chain is a quieter summary near the bottom.
+- **The front page is mostly navigation.** The search box, the four space tiles, and the panels:
+  Did you know?, Newest cards, Practice at a glance, Continue where you left off, Problem of the day
+  (with its statement), Card of the day and Your library. The four-step chain left it in the
+  home-page rework (PLAN 2.3, 2026-10-16).
+- **A problem page leads with the problem.** The statement with its figures and credit comes
+  first, then a link to the solutions on AoPS, then "How this problem works": the strategy, the
+  "Alternatively" route when there is one, and the Pattern → Method → Formulas chain.
 - **Scroll speed is ours only when the reader asks.** At Normal the wheel handler does nothing.
   Otherwise it scales each wheel step and applies it to the innermost box that can still scroll
   that way (sidebar, dialog), else the page; small steps (a trackpad's) apply at once, a mouse
@@ -1008,9 +1013,8 @@ review and are worth keeping:
   patterns" (hand-picked, `connected.js`) shows on every card, "None yet" when empty; the
   contest profile's "Related Methods" and "Related Patterns" rows are co-occurrence, and its note
   says "(Statistically generated)". "Used by methods" reads "Methods that name it as a formula".
-- **Problem hints stay in the data** (`hints` in problem-db) but are not shown or searched; they
-  and the tricks will move into "How this problem works". A problem page shows the statement
-  link, a Strategy heading with a Show button, then the chain.
+- **Problem hints stay in the data** (`hints` on 28 problem-db entries) but are not shown or
+  searched. Whether the strategy shows at once or behind a button is a setting (Settings, Practice).
 - **Long subject pages skip offscreen cards** (`content-visibility: auto` on grid cards) and the
   top bar is opaque rather than a translucent blur; together they cut Geometry's scrolling cost
   by about nine times. A card's contents are clipped to its box (paint containment), so menus

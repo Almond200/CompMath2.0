@@ -1266,6 +1266,19 @@ A random process moves among finitely many situations until it stops: a random w
 ### The chance of ending a certain way
 The unknown $P_s$ is the chance of eventually ending in the wanted way from state $s$. At the end states the answer is already known: $P = 1$ at an ending that counts as a success and $P = 0$ at every other ending. Every other state averages its neighbors, with no extra term: $P_s = \sum p_{s \to s'}\, P_{s'}$. Nothing is added, because a probability does not grow as time passes.
 
+The same equations settle a race between two processes. When two players each chase their own goal at the same time and the question is who gets there first, a state records where both of them stand: one coordinate for each player's progress. Each round both take a step, so a state leads to as many next states as the pairs of outcomes, and the end states are the rounds where at least one player finishes.
+
+Reaching the goal first counts as a success, while losing the race counts as a failure, and so does a tie when the question says "strictly before".
+
+For example, Alice flips her own fair coin until she gets two heads in a row, and Bob, at the same time, flips his own fair coin until he gets a tail followed by a head; what is the chance that Alice finishes in a strictly earlier round? Alice's progress is $1$ just after a head and $0$ otherwise; Bob's is $1$ just after a tail and $0$ otherwise. With $x_{ab}$ the chance from progress $a$ for Alice and $b$ for Bob, the four outcome pairs of a round, each with probability $\frac14$, give
+
+$$x_{00} = \tfrac14\left(x_{00} + x_{01} + x_{10} + x_{11}\right), \qquad x_{01} = \tfrac14\left(x_{01} + x_{11}\right),$$
+$$x_{10} = \tfrac12 + \tfrac14\left(x_{00} + x_{01}\right), \qquad x_{11} = \tfrac14 + \tfrac14 x_{01}.$$
+
+In the third, Alice's head ends the race in her favor whatever Bob flips, since Bob cannot finish from $0$; in the second and fourth, Bob's head finishes him, a loss for Alice even when she finishes in the same round. Solving from the bottom up, $x_{01} = \frac1{11}$, $x_{11} = \frac3{11}$, $x_{10} = \frac{73}{121}$, and Alice wins with probability $x_{00} = \frac{39}{121}$.
+
+If instead both patterns are watched on one shared sequence of flips, as in Penney's game, there is only one coin, so a state is just the last flip or two of that sequence. In this example, $HH$ comes before $TH$ only when the first two flips are both heads, a chance of $\frac14$, since any tail lets $TH$ appear before $HH$ can.
+
 ### The expected number of steps
 The unknown $E_s$ is the expected number of steps still to come from state $s$. At every end state $E = 0$, because no steps remain, whether the ending is good or bad. Every other state adds $1$ for the step it is about to take: $E_s = 1 + \sum p_{s \to s'}\, E_{s'}$.
 
@@ -1323,6 +1336,7 @@ The figure shows the symmetry step on a cube: vertices at the same distance from
 - Leaving out the $+1$ in an expected-steps equation, or adding one to a probability equation, where it does not belong.
 - Giving a winning end state the value $1$ in an expected-steps problem, where every end state has $0$ steps left, or forgetting the end-state values altogether, which leaves the system with no unique solution.
 - Setting up absorbing end states for a question about a fixed number of steps, which needs a step-by-step probability list instead.
+- In a race, tracking only one player, or forgetting the round where both finish: decide whether a tie counts before writing the end values. Two separate coins need a pair of progress states; one shared sequence needs only one.
 
 ## Contest profile
 Usually the whole solution of an AIME probability or expected-value problem about a repeated process: a few states and a small linear system.
