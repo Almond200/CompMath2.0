@@ -60,5 +60,7 @@ window.NEW_CARD_BATCHES = [
   { label: "The tag pass: P39 to P41", date: "2026-10-25",
     ids: ["comparing-coefficients", "rolling-without-slipping", "tethered-animal"] },
   { label: "Owner requests: binary quadratic forms, higher power sums, Zack's Lemma", date: "2026-10-30",
-    ids: ["binary-quadratic-forms", "higher-power-sums", "zacks-lemma"] }
+    ids: ["binary-quadratic-forms", "higher-power-sums", "zacks-lemma"] },
+  { label: "Step I candidates (P45 to P50)", date: "2026-10-30",
+    ids: ["factor-out-factorial", "only-even-prime", "alternating-sum-grouping", "placing-digits-extremes", "scoring-rules", "break-even-plans"] }
 ];

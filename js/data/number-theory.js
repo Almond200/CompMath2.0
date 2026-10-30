@@ -518,6 +518,16 @@ window.MATH_SECTIONS.push({
           level: ["AIME", "Olympiad"]
         },
         {
+          id: "only-even-prime",
+          name: "The Only Even Prime",
+          latex: String.raw`p + q \text{ odd},\ p, q \text{ prime} \implies 2 \in \{p, q\}, \qquad n \text{ even and prime} \implies n = 2`,
+          description: String.raw`$2$ is the only even prime, so parity settles many prime questions at once. An odd sum or difference of two primes must use $2$, which leaves a single candidate for the other prime; a sum of two odd primes is even and larger than $2$, so never prime; and an expression that is always even, such as a product of two consecutive integers, can be prime only when it equals $2$.`,
+          keywords: ["even prime", "2 is the only even prime", "sum of two primes", "odd sum of primes", "parity of primes", "prime and even", "goldbach"],
+          importance: "lower",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
+        },
+        {
           id: "primes-6k",
           name: String.raw`Primes Are $6k \pm 1$`,
           latex: String.raw`p > 3 \implies p \equiv \pm 1 \pmod{6} \qquad p^2 \equiv 1 \pmod{24}`,
@@ -556,6 +566,16 @@ window.MATH_SECTIONS.push({
           importance: "lowest",
           tier: "Olympiad",
           level: ["Olympiad"]
+        },
+        {
+          id: "factor-out-factorial",
+          name: "Factoring Out the Smallest Factorial",
+          latex: String.raw`(n + k)! = n!\,(n + 1)(n + 2)\cdots(n + k), \qquad n!\,(n + 1)! = (n!)^2(n + 1), \qquad 1 \cdot 3 \cdots (2n - 1) = \frac{(2n)!}{2^n\,n!}`,
+          description: String.raw`A larger factorial is a smaller one times the numbers in between, $(n + k)! = n!\,(n + 1)\cdots(n + k)$, so a sum, difference or quotient of nearby factorials collapses once the smallest is pulled out: $\frac{11! - 10!}{9!} = 11 \cdot 10 - 10 = 100$. The same step shows that a product of two neighbouring factorials is $(n!)^2(n + 1)$, a perfect square exactly when $n + 1$ is, and splits $(2n)!$ into its even part $2^n\,n!$ and its odd part $1 \cdot 3 \cdots (2n - 1)$.`,
+          keywords: ["factorial", "factor out n!", "sum of factorials", "quotient of factorials", "product of factorials", "perfect square factorial", "odd product", "double factorial", "n! (n+1)!"],
+          importance: "medium",
+          tier: "AMC",
+          level: ["MATHCOUNTS", "AMC10", "AMC12"]
         },
         {
           id: "trailing-zeros",

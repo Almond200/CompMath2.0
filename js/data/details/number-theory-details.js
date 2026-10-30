@@ -3145,3 +3145,60 @@ Equations $ax^2 + bxy + cy^2 = n$ in integers, sides of triangles with $60^\circ
 An AIME tool: completing the square and bounding finishes most integer equations with an $xy$ term, and the prime rules for $x^2 + xy + y^2$ decide quickly whether a solution can exist.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"factor-out-factorial": String.raw`
+## Key forms
+- $(n + k)! = n!\,(n + 1)(n + 2)\cdots(n + k)$, and so $\frac{(n + k)!}{n!} = (n + 1)\cdots(n + k)$
+- $a\,n! + b\,(n + 1)! + c\,(n + 2)! = n!\,\big(a + b(n + 1) + c(n + 1)(n + 2)\big)$: a combination of nearby factorials is the smallest one times a polynomial in $n$
+- $n!\,(n + 1)! = (n!)^2(n + 1)$, a perfect square exactly when $n + 1$ is one
+- $(2n)! = \big(2 \cdot 4 \cdots 2n\big)\big(1 \cdot 3 \cdots (2n - 1)\big) = 2^n\,n! \cdot 1 \cdot 3 \cdots (2n - 1)$, so the odd product is $\frac{(2n)!}{2^n\,n!}$
+
+## Conditions
+$n$ and $k$ are nonnegative integers, with $0! = 1$. The factor pulled out must be the smallest factorial present: every other term is a multiple of it, and no larger one divides them all.
+
+## Why it works
+By definition $(n + k)! = 1 \cdot 2 \cdots n \cdot (n + 1) \cdots (n + k)$, and the first $n$ factors make $n!$. So every factorial from $n!$ up is $n!$ times a product of consecutive integers, and $n!$ is a common factor of the whole combination; what is left is a polynomial in $n$, small enough to handle by hand.
+
+For the product, $(n + 1)! = (n + 1)\,n!$ gives $n!\,(n + 1)! = (n!)^2(n + 1)$. A square times $m$ is a square exactly when $m$ is: if $(n!)^2 m = s^2$ then $m = \left(\frac{s}{n!}\right)^2$ is the square of a rational number, and an integer that is the square of a rational is the square of an integer.
+
+For the odd product, the even numbers up to $2n$ are $2 \cdot 1, 2 \cdot 2, \ldots, 2 \cdot n$, whose product is $2^n\,n!$; dividing $(2n)!$ by it leaves the odd numbers.
+
+## Useful observations
+- After factoring, the polynomial often factors too: $(n + 1)! + (n + 2)! = n!\,(n + 1)(n + 3)$, and $(n + 2)! - (n + 1)! = (n + 1)^2\,n!$.
+- An equation such as $(n + 1)(n + 3) = 440$ is then solved by looking for a factor pair two apart near $\sqrt{440}$.
+- The odd product is also $\frac{(2n)!}{2^n n!} = \binom{2n}{n}\frac{n!}{2^n}$, which links it to the central binomial coefficient.
+
+## Applications
+Simplifying sums and quotients of factorials, deciding when a product of factorials is a square, and writing the product of the odd or even numbers in closed form.
+
+## Contest profile
+An AMC 8 and AMC 10 early problem: a fraction of factorials to simplify or an equation in $n!$ to solve. The odd-product form appears in AMC 12 answer choices.
+`
+});
+Object.assign(window.MATH_DETAILS, {
+"only-even-prime": String.raw`
+## Key forms
+- if $p + q$ or $p - q$ is odd for primes $p$ and $q$, one of them is $2$
+- a sum of two odd primes is even and at least $6$, so it is not prime; a prime that is a sum of two primes is $2$ plus a prime
+- an expression in $n$ that is even for every $n$ is prime only where it equals $2$: $n(n + 1)$, $n^2 + n$, $(n - 1)(n - 2)$
+
+## Conditions
+$p$ and $q$ are positive primes. The rule is about parity alone; to rule out a large odd prime needs another tool, such as a remainder modulo $3$ or a factorization.
+
+## Why it works
+An even number greater than $2$ has the factor $2$ besides $1$ and itself, so it is not prime; $2$ is the only even prime. Every other prime is odd. The sum or difference of two odd numbers is even, so an odd sum or difference of two primes cannot come from two odd primes, and one of them is $2$. In the same way, a sum of two odd primes is even and at least $3 + 3 = 6$, so it is not prime.
+
+For an expression that is always even: among $n$ and $n + 1$ one is even, so $n(n + 1)$ is even, and the only even prime is $2$.
+
+## Useful observations
+- After placing the $2$, the other prime is forced: an odd sum $S$ of two primes needs $S - 2$ to be prime, and if it is not, there is no way at all.
+- Combine with remainders: in $p^q + q^p$ with $p = 2$, the other prime $q \gt 3$ makes the sum a multiple of $3$.
+- Goldbach's conjecture, that every even number from $4$ on is a sum of two primes, is open; contest problems use only the parity direction above.
+
+## Applications
+Primes with a given odd sum or difference, expressions in primes that must be prime, and counting the ways to write a number as a sum of two primes.
+
+## Contest profile
+An AMC 8 and AJHSME favourite, often the whole problem; on the AMC 10 and 12 it is the first step that fixes one prime as $2$.
+`
+});

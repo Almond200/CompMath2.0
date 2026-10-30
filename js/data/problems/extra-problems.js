@@ -2279,4 +2279,9 @@
     { q: String.raw`In triangle $ABC$, points $P$ on line $AB$ and $Q$ on line $AC$ move so that $BP = CQ$ always, with $P$ starting at $B$ and moving toward $A$ while $Q$ starts at $C$ and moves toward $A$ at the same speed. Show that the midpoint of $PQ$ moves along a fixed line, and describe it.`,
       s: String.raw`With $u$ and $v$ the unit vectors from $B$ toward $A$ and from $C$ toward $A$, $P = B + tu$ and $Q = C + tv$, so the midpoint $M = \frac{B + C}2 + t\,\frac{u + v}2$ has degree $1$. A point of degree $1$ is collinear with any two of its own positions for every $t$, so $M$ moves along a line, found from two positions: at $t = 0$ it is the midpoint of $BC$, and it moves in the direction $u + v$. The unit vectors from $A$ toward $B$ and toward $C$ are $-u$ and $-v$, so $-(u + v)$ points along the bisector of angle $A$: the line is the one through the midpoint of $BC$ parallel to the bisector of angle $A$.` }
   );
+  // ---------- Comparing price plans (step I, 2026-10-30) ----------
+  add("break-even-plans",
+    { q: String.raw`Phone plan A costs $\$15$ a month plus $10$ cents a minute, plan B costs $25$ cents a minute, and plan C costs a flat $\$45$. For how many whole numbers of minutes from $1$ to $400$ is plan A strictly the cheapest?`,
+      s: String.raw`With $m$ minutes, A costs $15 + 0.10m$, B costs $0.25m$ and C costs $45$ dollars. A beats B when $15 + 0.10m \lt 0.25m$, that is $m \gt 100$, and beats C when $15 + 0.10m \lt 45$, that is $m \lt 300$. So A is strictly cheapest for $m = 101, \ldots, 299$, which is $199$ numbers of minutes; below $100$ minutes B is cheapest, and above $300$ C is.` }
+  );
 })();

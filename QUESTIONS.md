@@ -6,9 +6,9 @@ A candidate card lists, under "Needed by", the problems whose routes would cite 
 
 ## Open now
 
-**Step I, the problems that cite no card (2026-10-30): P45 to P50 wait for approval.** Every problem that cited no card was read (486, AMC 12 twins of AMC 10 problems counted once) and 54 entries now cite a card where the route uses one. Most of the rest are plain arithmetic, but six ideas came up again and again with no card to hold them. Each row lists the problems that would cite it.
+**Step I, the problems that cite no card (2026-10-30): P45 to P50 approved by the owner and written (2026-10-30)** as `factor-out-factorial`, `alternating-sum-grouping`, `placing-digits-extremes`, `only-even-prime`, `scoring-rules` and `break-even-plans`, with every problem listed tagged (and its AMC 12 twin); `break-even-plans` also has one exercise. Nothing is open; the next candidate is P51. Every problem that cited no card was read (486, AMC 12 twins of AMC 10 problems counted once) and 54 entries now cite a card where the route uses one. Most of the rest are plain arithmetic, but six ideas came up again and again with no card to hold them. Each row lists the problems that would cite it.
 
-**Owner requests (2026-10-30): P42 to P44 asked for directly and written** as `binary-quadratic-forms` (2011 AIME I #15 and 2022 AIME I #14 cite it), `higher-power-sums` (two exercises; no problem in the set needs it, and 2022 AIME II #10 is left alone at the owner's word, since the hockey stick identity solves it) and `zacks-lemma` (two exercises). Written; P45 to P50 above are the open candidates.
+**Owner requests (2026-10-30): P42 to P44 asked for directly and written** as `binary-quadratic-forms` (2011 AIME I #15 and 2022 AIME I #14 cite it), `higher-power-sums` (two exercises; no problem in the set needs it, and 2022 AIME II #10 is left alone at the owner's word, since the hockey stick identity solves it) and `zacks-lemma` (two exercises). Written.
 
 **The tag pass (H, 2026-10-25): P39 to P41 approved by the owner and written (2026-10-25)** as `comparing-coefficients`, `rolling-without-slipping` and `tethered-animal`, with the problems listed tagged (2004 AIME I #14 is left out of P41: it asks for the rope's length on a tower, not a reachable region). P28 to P38 (approved 2026-10-24, written 2026-10-25) are kept below as the record.
 

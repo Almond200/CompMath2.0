@@ -1841,7 +1841,13 @@
     "tethered-animal": "pattern",
     "binary-quadratic-forms": "formula",
     "higher-power-sums": "formula",
-    "zacks-lemma": "formula"
+    "zacks-lemma": "formula",
+    "factor-out-factorial": "formula",
+    "only-even-prime": "formula",
+    "alternating-sum-grouping": "method",
+    "placing-digits-extremes": "method",
+    "scoring-rules": "pattern",
+    "break-even-plans": "pattern"
   },
   "placeholders": {},
   "ledger": {
@@ -8977,6 +8983,42 @@
       [
         "(new card)",
         "written directly in the formula template"
+      ]
+    ],
+    "factor-out-factorial": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "only-even-prime": [
+      [
+        "(new card)",
+        "written directly in the formula template"
+      ]
+    ],
+    "alternating-sum-grouping": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "placing-digits-extremes": [
+      [
+        "(new card)",
+        "written directly in the method template"
+      ]
+    ],
+    "scoring-rules": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
+      ]
+    ],
+    "break-even-plans": [
+      [
+        "(new card)",
+        "written directly in the pattern template"
       ]
     ]
   }
