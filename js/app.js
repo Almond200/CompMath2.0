@@ -656,7 +656,14 @@
   // every card it cites. CARD_TOPIC_STOP vetoes a topic for one card by id; add a
   // card here when the practice pass finds a problem page with a wrong chip.
   const CARD_TOPIC_STOP = {
-    "rationalizing": ["sequences-series", "complex-numbers"]
+    "rationalizing": ["sequences-series", "complex-numbers"],
+    // "transformations" is about moving the plane (reflections, rotations, homotheties,
+    // inversion). These cards matched it on a word used in another sense: an arithmetic
+    // inversion, a count up to rotation, a reflected lattice path, a translated equation.
+    "mobius-inversion": ["transformations"], "dirichlet-convolution": ["transformations"],
+    "circular-permutations": ["transformations"], "necklace-formula": ["transformations"],
+    "burnsides-lemma": ["transformations"], "ballot-problem": ["transformations"],
+    "minkowski-inequality": ["transformations"], "conic-sections": ["transformations"]
   };
 
   function topicsForCard(f, sub, section, subjectId) {
@@ -1265,9 +1272,6 @@
   }
   function inCorpus(word) { return DF.has(word) || AUX_DF.has(word); }
 
-  function entriesForTopic(topicId) {
-    return ALL.filter(e => e.topics.some(t => t.id === topicId));
-  }
 
   // Subject and group pages have real addresses, so Back, Forward and bookmarks work:
   //   #/formulas/geometry                   a Formulas subject (its topic tiles)
@@ -1332,8 +1336,16 @@
     if (m) return { type: "problems", fam: m[1] || null, year: m[2] ? +m[2] : null };
     m = location.hash.match(/^#\/problem\/([\w-]+)$/);
     if (m && PROBLEM_BY_SLUG[m[1]]) return { type: "problem", slug: m[1] };
+    // One tag page for every way in: a topic chip, a problem's type chip, the "Browse by Tag"
+    // picker, and old #/topic/<id> addresses. #/tag/ takes one label or several joined by "+".
     m = location.hash.match(/^#\/topic\/([\w-]+)$/);
-    if (m && TOPICS_BY_ID[m[1]]) return { type: "topic", topicId: m[1] };
+    if (m && TOPICS_BY_ID[m[1]]) return { type: "topic", labels: [TOPICS_BY_ID[m[1]].label] };
+    m = location.hash.match(/^#\/tag\/(.+)$/);
+    if (m) {
+      let labels = [];
+      try { labels = m[1].split("+").map(decodeURIComponent).filter(Boolean); } catch (e) {}
+      if (labels.length) return { type: "topic", labels };
+    }
     m = location.hash.match(/^#\/settings(?:\/(commands))?$/);
     if (m) return { type: "settings", anchor: m[1] || null };
     m = location.hash.match(/^#\/formulas\/([\w-]+)(?:\/([\w-]+))?$/);
@@ -5161,13 +5173,15 @@
   // them, ranked by how many of the chosen tags each one matches. It complements the
   // main search bar (which handles free text) rather than duplicating it.
 
-  // Does this card carry the tag label `L` (a raw keyword or a topic label)?
+  // Does this card carry the tag label `L`: one of its topics, one of its keywords, or a
+  // curated tag group, matched exactly (a label that only appears inside a longer keyword does
+  // not count, which kept "inversion" from collecting "mobius inversion").
   function entryHasTag(entry, L) {
     return entry.tagPhrases.indexOf(L) !== -1 ||
       entry.topics.some(t => t.label === L) ||
-      (entry.groupTags || []).indexOf(L) !== -1 ||
-      entry.tagPhrases.some(p => p.indexOf(L) !== -1);
+      (entry.groupTags || []).indexOf(L) !== -1;
   }
+  const tagHash = labels => "#/tag/" + labels.map(encodeURIComponent).join("+");
 
   // Entries carrying at least one of the given tag labels, ranked by hit count
   // (cards matching more of the chosen tags come first), then importance, then name.
@@ -5182,30 +5196,6 @@
       labelRank(a.entry.formula) - labelRank(b.entry.formula) ||
       a.entry.formula.name.localeCompare(b.entry.formula.name));
     return scored;
-  }
-
-  function renderAdvancedResults() {
-    const adv = state.adv || {};
-    const tags = adv.tags ? [...adv.tags] : [];
-    shownIds = [];
-    const parts = [];
-    parts.push(`<p class="results-meta adv-meta"><strong>Tagged</strong> ${tags.length ? escapeAttr(tags.join(", ")) : "&mdash;"} <span class="adv-actions"><button class="adv-link" id="adv-edit">Edit tags</button><button class="adv-link" id="adv-clear">Clear</button></span></p>`);
-    if (!tags.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#9906;</div>Pick one or more tags to see every card that carries them.</div>`);
-    } else {
-      const scored = tagMatches(tags);
-      shownIds = scored.map(x => x.entry.formula.id);
-      if (!scored.length) {
-        parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No cards carry ${tags.length === 1 ? "that tag" : "those tags"}.</div>`);
-      } else {
-        parts.push(`<p class="results-hint"><strong>${scored.length}</strong> card${scored.length === 1 ? "" : "s"}${tags.length > 1 ? " &mdash; the ones matching the most tags come first" : ""}.</p>`);
-        parts.push(`<div class="cards">${scored.map(x => cardHtml(x.entry, true, null)).join("")}</div>`);
-      }
-    }
-    $content.innerHTML = parts.join("");
-    renderMath($content);
-    const eb = document.getElementById("adv-edit"); if (eb) eb.addEventListener("click", openAdvanced);
-    const cb = document.getElementById("adv-clear"); if (cb) cb.addEventListener("click", () => { state.adv = null; render(); window.scrollTo({ top: 0 }); });
   }
 
   // Tag universe for the advanced-search tag picker: every keyword and topic label
@@ -5281,7 +5271,7 @@
       const empty = advDraft.tags.size === 0;
       apply.disabled = empty;
       const n = advTagCount();
-      apply.textContent = empty ? "Select tags" : `Show ${n} formula${n === 1 ? "" : "s"}`;
+      apply.textContent = empty ? "Select tags" : `Show ${n} card${n === 1 ? "" : "s"}`;
     }
   }
 
@@ -5296,8 +5286,9 @@
   }
   function openAdvanced() {
     if (advEl) { closeAdvanced(); return; }
-    const src = state.adv || {};
-    advDraft = { tags: new Set(src.tags || []) };
+    // Opened from a tag page, the picker starts from that page's tags.
+    const r = getRoute();
+    advDraft = { tags: new Set(r.type === "topic" ? r.labels : []) };
     advEl = document.createElement("div");
     advEl.className = "modal-overlay";
     advEl.innerHTML = `
@@ -5350,35 +5341,44 @@
     }
     if (e.target.closest("#adv-apply")) {
       if (!advDraft.tags.size) return;
-      state.adv = { tags: advDraft.tags };
+      const labels = [...advDraft.tags];
+      state.adv = null;
       state.query = ""; $search.value = "";
-      stripHash();
       closeAdvanced();
-      render();
+      location.hash = tagHash(labels);
       window.scrollTo({ top: 0 });
     }
   }
 
 
   // ---------- Topic view: every formula tagged with a topic, across sections ----------
-  function renderTopic(topicId) {
-    const topic = TOPICS_BY_ID[topicId];
-    const entries = browseOrder(entriesForTopic(topicId).filter(e => passesFilter(e.formula)));
+  // The tag page: every card carrying one tag, or any of several, across formulas, methods and
+  // patterns, in the card order chosen in Settings; with several tags, cards matching more of
+  // them come first. "Edit tags" reopens the picker with these tags selected.
+  function renderTagPage(labels) {
+    const order = new Map(browseOrder(ALL.slice()).map((e, i) => [e.formula.id, i]));
+    const scored = tagMatches(labels).filter(x => passesFilter(x.entry.formula))
+      .sort((a, b) => b.hits - a.hits || order.get(a.entry.formula.id) - order.get(b.entry.formula.id));
+    const entries = scored.map(x => x.entry);
     shownIds = entries.map(e => e.formula.id);
+    const cap = l => l.charAt(0).toUpperCase() + l.slice(1);
+    const many = labels.length > 1;
     const parts = [`
       <div class="back-row"><a class="back-link" href="#" data-history-back>&larr; Back</a></div>
       <div class="section-header topic-header">
-        <div class="book-eyebrow">Tag</div>
-        <h2>${escapeAttr(topic.label.charAt(0).toUpperCase() + topic.label.slice(1))}</h2>
-        <p class="topic-blurb">Every card tagged ${escapeAttr(topic.label)}, across formulas, methods, and patterns.</p>
+        <div class="book-eyebrow">${many ? "Tags" : "Tag"}</div>
+        <h2>${escapeAttr(many ? labels.join(", ") : cap(labels[0]))}</h2>
+        <p class="topic-blurb">Every card tagged ${escapeAttr(labels.join(" or "))}, across formulas, methods, and patterns${many ? "; the cards matching the most of these tags come first" : ""}. <button class="adv-link" id="tag-edit">Edit tags</button></p>
       </div>`];
     if (!entries.length) {
-      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No cards match this topic at the current filters.</div>`);
+      parts.push(`<div class="empty-state"><div class="big">&#8709;</div>No cards carry ${many ? "these tags" : "this tag"} at the current filters.</div>`);
     } else {
+      parts.push(`<p class="results-hint"><strong>${entries.length}</strong> card${entries.length === 1 ? "" : "s"}.</p>`);
       parts.push(`<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`);
     }
     $content.innerHTML = parts.join("");
     renderMath($content);
+    const eb = document.getElementById("tag-edit"); if (eb) eb.addEventListener("click", openAdvanced);
   }
 
   // A single study list, opened from the Practice page.
@@ -5774,7 +5774,7 @@
     if (!p) { location.hash = "#/practice"; return; }
     noteRecent("p:" + p.slug);
     shownIds = [];
-    const types = p.types.map(t => `<a class="ptype-chip" href="#/topic/${t.id}">${escapeAttr(t.label)}</a>`).join("");
+    const types = p.types.map(t => `<a class="ptype-chip" href="${TOPICS_BY_ID[t.id] ? tagHash([TOPICS_BY_ID[t.id].label]) : "#/topic/" + t.id}">${escapeAttr(t.label)}</a>`).join("");
     // How this problem works: its tags split by kind into the chain Pattern -> Method ->
     // Formulas. A link nobody has classified yet is shown as missing, never invented. It sits
     // near the bottom of the page: the problem itself, and thinking about it, come first.
@@ -5845,7 +5845,7 @@
 
   function routeKey(r) {
     return r.type + ":" + (r.entry ? r.entry.formula.id
-      : r.slug || r.listId || r.topicId || r.fam || (r.name ? r.name + "/" + r.arg : "")
+      : r.slug || r.listId || (r.labels ? r.labels.join("+") : "") || r.fam || (r.name ? r.name + "/" + r.arg : "")
       || (r.section ? [r.section.id, r.section.topic, r.section.sub].join("/") : ""));
   }
   function trackOrigin(route) {
@@ -6377,7 +6377,7 @@
     if (route.type === "formula") {
       renderDetail(route.entry);
     } else if (route.type === "topic") {
-      renderTopic(route.topicId);
+      renderTagPage(route.labels);
     } else if (route.type === "lists") {
       renderListSurface(route);
     } else if (route.type === "list") {
@@ -6392,8 +6392,6 @@
       renderSpecial(route);
     } else if (route.type === "space") {
       renderSpaceHome(route.name);
-    } else if (state.adv) {
-      renderAdvancedResults();
     } else if (state.query.trim()) {
       renderSearchResults();
     } else if (state.landing) {
@@ -7189,7 +7187,7 @@
       return;
     }
     const topicChip = e.target.closest(".topic-chip");
-    if (topicChip) { location.hash = "#/topic/" + topicChip.dataset.topic; window.scrollTo({ top: 0 }); return; }
+    if (topicChip) { location.hash = tagHash([TOPICS_BY_ID[topicChip.dataset.topic].label]); window.scrollTo({ top: 0 }); return; }
     const grp = e.target.closest("[data-list-group]");
     if (grp) { state.autoGroup = !state.autoGroup; saveSettings(); render(); return; }
     const rn = e.target.closest("[data-list-rename]");
