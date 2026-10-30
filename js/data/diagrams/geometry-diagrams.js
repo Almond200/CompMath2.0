@@ -9507,6 +9507,26 @@ DIAGRAMS["trig-ceva"] = [(() => {
     ]);
   })()];
 
+  // ---- Zack's Lemma: P moves along line BC; the midpoint Q of AP stays on the midline MN ----
+  DIAGRAMS["zacks-lemma"] = [(() => {
+    const A = [175, 52], B = [70, 236], C = [300, 236], M = mid(A, B), N = mid(A, C);
+    const ts = [-0.25, 0.45, 1.25], Ps = ts.map(t => lerp(B, C, t)), Qs = Ps.map(P => mid(A, P));
+    const cross = (u, v) => u[0] * v[1] - u[1] * v[0];
+    const ok = Qs.every(Q => Math.abs(cross(sub(N, M), sub(Q, M))) < 1e-9);
+    const L0 = lerp(M, N, -0.75), L1 = lerp(M, N, 1.85), B0 = lerp(B, C, -0.42), C0 = lerp(B, C, 1.42);
+    return wrap(430, 300, [
+      seg(B0, C0, FNT, 1.2, "5 4"), seg(L0, L1, ACC, 1.6, "6 4"),
+      poly([A, B, C], DIM, 2, "none"),
+      ...Ps.map((P, i) => seg(A, P, i === 1 ? GLD : FNT, i === 1 ? 2 : 1.2, i === 1 ? "" : "4 3")),
+      ...Ps.map((P, i) => dot(P, i === 1 ? GLD : FNT, i === 1 ? 4 : 3)), ...Qs.map((Q, i) => dot(Q, i === 1 ? PNK : FNT, i === 1 ? 4 : 3)),
+      dot(M, ACC, 3.5), dot(N, ACC, 3.5),
+      txt(add(A, [0, -10]), "A", DIM, 13), txt(add(B, [-4, 18]), "B", DIM, 13), txt(add(C, [4, 18]), "C", DIM, 13),
+      txt(add(M, [-14, -2]), "M", ACC, 13), txt(add(N, [14, -2]), "N", ACC, 13),
+      txt(add(Ps[1], [0, 18]), "P", GLD, 13), txt(add(Qs[1], [8, -9]), "Q", PNK, 13),
+      cap(430, 300, "P moves along line BC (three positions shown) and Q is the midpoint of AP. Q has degree 1 and M, N are fixed, so Q, M, N are collinear for every position as soon as they are for 1 + 0 + 0 + 1 = 2 of them: at P = B, Q is M, and at P = C, Q is N. Every Q lands on the midline MN (blue)." + (ok ? "" : " MISMATCH"))
+    ]);
+  })()];
+
   // The helpers above, shared with js/data/diagrams/problem-diagrams.js (the figures drawn for
   // problems that print none), so a problem figure is built by the same rules as a card's.
   window.GEO_KIT = { add, sub, mul, lerp, mid, dist, norm, perp, away, rad, onC, rotv, lineInt, foot,

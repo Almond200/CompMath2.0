@@ -58,5 +58,7 @@ window.NEW_CARD_BATCHES = [
   { label: "Approved P28 to P36 and P38 (owner)", date: "2026-10-24",
     ids: ["lcm-common-multiples", "disconnected-graph-edges", "figure-symmetries", "cube-nets", "cube-stack-views", "area-by-pieces", "joined-shapes-perimeter", "round-up-whole-items", "assume-all-one-kind", "elimination-counting"] },
   { label: "The tag pass: P39 to P41", date: "2026-10-25",
-    ids: ["comparing-coefficients", "rolling-without-slipping", "tethered-animal"] }
+    ids: ["comparing-coefficients", "rolling-without-slipping", "tethered-animal"] },
+  { label: "Owner requests: binary quadratic forms, higher power sums, Zack's Lemma", date: "2026-10-30",
+    ids: ["binary-quadratic-forms", "higher-power-sums", "zacks-lemma"] }
 ];

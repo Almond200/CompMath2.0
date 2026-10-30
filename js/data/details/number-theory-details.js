@@ -3112,3 +3112,36 @@ Repeating schedules and patterns, numbers with given remainders that all match o
 A MATHCOUNTS and AMC 8 staple, and an AMC 10 and 12 first step; on the AIME it is usually one line inside a longer argument.
 `
 });
+Object.assign(window.MATH_DETAILS, {
+"binary-quadratic-forms": String.raw`
+## Key forms
+- $4a\,f(x, y) = (2ax + by)^2 - Dy^2$ with $D = b^2 - 4ac$ — completing the square; for $x^2 + xy + y^2 = n$ it reads $(2x + y)^2 + 3y^2 = 4n$
+- $D \lt 0$, $a \gt 0$: a solution of $f(x, y) = n$ has $|D|\,y^2 \le 4an$, so only finitely many $y$ need checking
+- $x^2 + xy + y^2$ and $x^2 + 3y^2$ take the same positive values: the $n$ in which every prime $\equiv 2 \pmod 3$ appears to an even power; a prime is one of them exactly when it is $3$ or $\equiv 1 \pmod 3$
+- $x^2 + 2y^2$ takes the $n$ in which every prime $\equiv 5, 7 \pmod 8$ appears to an even power; a prime is one of them exactly when it is $2$ or $\equiv 1, 3 \pmod 8$
+- $(a^2 + kb^2)(c^2 + kd^2) = (ac - kbd)^2 + k(ad + bc)^2$ — the values of $x^2 + ky^2$ are closed under products, as [[brahmagupta-fibonacci|Brahmagupta–Fibonacci]] is for $k = 1$
+
+## Conditions
+$x$ and $y$ are integers and may be zero or negative; $n$ is a positive integer. The form $x^2 + y^2$, the case $D = -4$, has its own card, the [[sum-of-two-squares|Sum of Two Squares Theorem]]. The congruence rules above are for these particular forms. For a general form the question of which primes it takes is harder and can need more than a congruence; $x^2 + 27y^2$ is a standard example, which takes a prime $p \equiv 1 \pmod 3$ only when $2$ is a cube modulo $p$ (D. A. Cox, Primes of the Form $x^2 + ny^2$, §4).
+
+## Why it works
+Completing the square. Multiply $f$ by $4a$ and expand: $(2ax + by)^2 = 4a^2x^2 + 4abxy + b^2y^2$, so $(2ax + by)^2 - (b^2 - 4ac)y^2 = 4a^2x^2 + 4abxy + 4acy^2 = 4a\,f(x, y)$.
+
+The bound. If $D \lt 0$ and $a \gt 0$, then $4an = (2ax + by)^2 + |D|\,y^2 \ge |D|\,y^2$, so $|y| \le \sqrt{4an/|D|}$, and the same with $c$ in place of $a$ bounds $x$. For each allowed $y$, the number $4an + Dy^2$ must be a perfect square for $x$ to be an integer.
+
+A prime $\equiv 2 \pmod 3$ divides $x^2 + xy + y^2$ only to an even power. Let $q$ be such a prime with $q \mid x^2 + xy + y^2$. The form is odd unless $x$ and $y$ are both even, so for $q = 2$ both are even and $4$ divides out. For odd $q$, $q$ divides $4f = (2x + y)^2 + 3y^2$. If $q \nmid y$, then $-3 \equiv \left(\frac{2x + y}{y}\right)^2$ is a square modulo $q$, but by [[quadratic-reciprocity|quadratic reciprocity]] $-3$ is a square modulo an odd prime $q \ne 3$ exactly when $q \equiv 1 \pmod 3$. So $q \mid y$, then $q \mid 2x + y$, so $q \mid x$, and $q^2$ divides out of $f(x, y) = q^2 f\!\left(\frac xq, \frac yq\right)$. Repeating, the power of $q$ in $n$ is even.
+
+The other direction, that every $p \equiv 1 \pmod 3$ is taken, follows from [[thues-lemma|Thue's Lemma]] applied to a square root of $-3$ modulo $p$, exactly as for two squares, and the product identity then builds every allowed $n$. The forms $x^2 + xy + y^2$ and $x^2 + 3y^2$ take the same values. One way, $x^2 + 3y^2 = (x - y)^2 + (x - y)(2y) + (2y)^2$. The other way, if $y$ is even then $x^2 + xy + y^2 = \left(x + \frac y2\right)^2 + 3\left(\frac y2\right)^2$, the case of even $x$ is the same with the roles swapped, and if $x$ and $y$ are both odd then $x^2 + xy + y^2 = \left(\frac{x - y}2\right)^2 + 3\left(\frac{x + y}2\right)^2$, with integers in both brackets. The rule for $x^2 + 2y^2$ is proved the same way with $-2$, which is a square modulo an odd prime $p$ exactly when $p \equiv 1, 3 \pmod 8$.
+
+## Useful observations
+- The values of $x^2 - xy + y^2$, the same set as those of $x^2 + xy + y^2$ (replace $y$ by $-y$), are the norms of the Eisenstein integers, the ring of [[gaussian-integers|Gaussian and Eisenstein integers]]; unique factorization there counts the representations.
+- A triangle with a $120^\circ$ angle between sides $a$ and $b$ has third side $c$ with $c^2 = a^2 + ab + b^2$, and a $60^\circ$ angle gives $a^2 - ab + b^2$ (by the [[law-cosines-60-120|Law of Cosines for these angles]]): integer triangles with these angles are representations by this form.
+- In a search, run the variable with the smaller range. For $x^2 + xy + y^2 = n$ with $x \ge y \ge 0$, the larger variable lies between $\sqrt{n/3}$ and $\sqrt n$, and $4n - 3x^2$ must be a perfect square.
+
+## Applications
+Equations $ax^2 + bxy + cy^2 = n$ in integers, sides of triangles with $60^\circ$ or $120^\circ$ angles, and which primes or integers a quadratic expression can equal.
+
+## Contest profile
+An AIME tool: completing the square and bounding finishes most integer equations with an $xy$ term, and the prime rules for $x^2 + xy + y^2$ decide quickly whether a solution can exist.
+`
+});

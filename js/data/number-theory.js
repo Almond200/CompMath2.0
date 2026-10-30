@@ -624,6 +624,16 @@ window.MATH_SECTIONS.push({
           level: ["AMC12", "AIME", "Olympiad"]
         },
         {
+          id: "binary-quadratic-forms",
+          name: "Binary Quadratic Forms",
+          latex: String.raw`4a\,(ax^2 + bxy + cy^2) = (2ax + by)^2 - D\,y^2, \qquad D = b^2 - 4ac`,
+          description: String.raw`A binary quadratic form $f(x, y) = ax^2 + bxy + cy^2$ has discriminant $D = b^2 - 4ac$, and completing the square in $x$ gives $4af = (2ax + by)^2 - Dy^2$. When $D \lt 0$ and $a \gt 0$ the form takes only positive values away from the origin, and $f(x, y) = n$ has finitely many solutions, since $|D|\,y^2 \le 4an$ bounds $y$ and each $y$ leaves a perfect square to find. Which numbers a form takes is decided by congruences for the small forms: $x^2 + xy + y^2$ and $x^2 + 3y^2$ take exactly the $n$ in which every prime $\equiv 2 \pmod 3$ appears to an even power, and $x^2 + 2y^2$ the $n$ in which every prime $\equiv 5, 7 \pmod 8$ does.`,
+          keywords: ["binary quadratic form", "x^2 + xy + y^2", "a^2 + ab + b^2", "x^2 + 3y^2", "x^2 + 2y^2", "discriminant of a form", "represented by a form", "primes of the form x^2 + ny^2", "positive definite form"],
+          importance: "low",
+          tier: "AIME Late",
+          level: ["AIME", "Olympiad"]
+        },
+        {
           id: "thues-lemma",
           name: "Thue's Lemma",
           latex: String.raw`\gcd(a,n)=1 \implies \exists\, x,y:\; x \equiv ay \pmod{n}, \;\; 0 < |x|, |y| \le \sqrt{n}`,
