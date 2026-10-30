@@ -280,6 +280,10 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
+**2026-10-30**
+
+- **Card names with math typeset everywhere (2026-10-30).** Thirty card names carry LaTeX ("Trailing Zeros of $n!$", "Equilateral Triangle of Side $s$"). The link rows (Used by methods, Related formulas and the like), the recent rows of "Continue where you left off" and the Did-you-know footer printed them with raw dollar signs; `renderMath()` now typesets `.card-link`, `.rc-meta` and `.dyk-foot` too. A browser scan of 24 pages, scrolled to the end, finds no raw `$...$` left.
+
 **2026-10-25**
 
 - **"Open a list" lands on the lists (2026-10-25).** The home page's "Open a list" now opens Practice scrolled to its Study lists section (`#pr-study`), heading just under the top bar; before, it aimed at the "Your lists" box near the top, so the page seemed not to move. "Make a list" still centres the new-list box with the cursor in it.

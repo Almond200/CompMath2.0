@@ -2073,10 +2073,11 @@
       }
     });
     if (window.renderMathInElement) {
-      // Anywhere a formula NAME can appear needs to be on this list: eight card names carry
-      // LaTeX ("Powers of $x + 1/x$", "Primes Are $6k \\pm 1$"), and a surface left off here
-      // shows the raw dollar signs instead of typesetting them.
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact").forEach(el => {
+      // Anywhere a formula NAME can appear needs to be on this list: thirty card names carry
+      // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
+      // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
+      // and the Did-you-know footer were, until 2026-10-30).
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
