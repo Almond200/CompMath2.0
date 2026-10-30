@@ -282,6 +282,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-30**
 
+- **Ten more Did you know? facts (2026-10-30).** At the owner's request, `js/data/did-you-know.js` (`MATH_DYK`) holds facts written for the panel, each tied to the card its "From" link opens and each an instance no card states (checked against the cards and write-ups): the $249$ zeros of $1000!$, derangements of $10$ letters against $\frac1e$, $10!+1 = 11\cdot329891$, $577/408$ for $\sqrt2$, the first $20$ cubes, $0.\overline9 = 1$, $v_2(3^{1024}-1) = 12$ by LTE, primes dividing $99\ldots9$, the $48$ digits of $3^{100}$, and $11^4 = 14641$. Every number checked by computation. They join the $93$ curiosity-list cards in the random pick.
 - **Card names with math typeset everywhere (2026-10-30).** Thirty card names carry LaTeX ("Trailing Zeros of $n!$", "Equilateral Triangle of Side $s$"). The link rows (Used by methods, Related formulas and the like), the recent rows of "Continue where you left off" and the Did-you-know footer printed them with raw dollar signs; `renderMath()` now typesets `.card-link`, `.rc-meta` and `.dyk-foot` too. A browser scan of 24 pages, scrolled to the end, finds no raw `$...$` left.
 
 **2026-10-25**

@@ -4659,12 +4659,16 @@
   // ---------- Front-page panels ----------
   // Did you know: a striking fact from the curiosity lists, the first Useful observation of one
   // of their cards (or its opening sentence), as text only.
+  // Pool keys: a card id for a card's own observation, "w:<n>" for the n-th written fact in
+  // js/data/did-you-know.js (whose card must exist).
   function didYouKnowPool() {
     const ids = [];
     (window.MATH_BUILTIN_LISTS || []).filter(l => l.kind === "curiosity").forEach(l => l.sections.forEach(sec => sec.ids.forEach(id => { if (BY_ID[id] && ids.indexOf(id) < 0) ids.push(id); })));
+    (window.MATH_DYK || []).forEach((d, i) => { if (BY_ID[d.card]) ids.push("w:" + i); });
     return ids;
   }
   function didYouKnowFact(id) {
+    if (id.startsWith("w:")) return window.MATH_DYK[+id.slice(2)].fact;
     const body = (window.MATH_DETAILS || {})[id] || "";
     const m = body.match(/## Useful observations\n+- ([^\n]+)/);
     const raw = m ? m[1].replace(/ — .*$/, "") : leadSentences(BY_ID[id].formula.description, 240);
@@ -4686,12 +4690,13 @@
     return id;
   }
   function didYouKnowHtml() {
-    const id = didYouKnowPick();
-    if (!id) return "";
+    const key = didYouKnowPick();
+    if (!key) return "";
+    const id = key.startsWith("w:") ? window.MATH_DYK[+key.slice(2)].card : key;
     const f = BY_ID[id].formula;
     return `<section class="hp-panel dyk">
         <div class="hp-label">Did you know?</div>
-        <p class="dyk-fact">${linkifyCards(didYouKnowFact(id))}</p>
+        <p class="dyk-fact">${linkifyCards(didYouKnowFact(key))}</p>
         <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a><button type="button" class="hp-link dyk-next">Another</button></div>
       </section>`;
   }
