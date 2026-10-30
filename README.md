@@ -94,8 +94,8 @@ Press `/` to focus the box, `Esc` to clear. A query that starts with `Special:` 
 instead of a search (see Special pages below).
 
 `tools/search-eval.html` runs 187 labelled queries against the live app and diffs every one
-against `tools/eval-baseline.json`. Last run (2026-10-30, from the cloud session, after a full index rebuild for 759 cards): 160/187 top-1,
-MRR 0.910. The index is now rebuilt in the cloud as well as on the Mac (PLAN, Blockers, has the
+against `tools/eval-baseline.json`. Last run (2026-10-30, fifteenth chat, after a full index rebuild for 765 cards): 157/187 top-1,
+MRR 0.906 (the rebuild for 759 cards earlier that day gave 160/187, 0.910). The index is now rebuilt in the cloud as well as on the Mac (PLAN, Blockers, has the
 commands); the best recorded warm run, on the Mac with an older query set, gave 170/185, MRR
 0.950, with the two probe sets at 64/78 and 48/77.
 **Wait for the semantic vectors to load before reading results**, or the run under-reports
@@ -289,6 +289,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-30**
 
+- **Search index rebuilt for 765 cards (2026-10-30).** The six cards of P45 to P50 are now in semantic search. Eval: 157/187 top-1, MRR 0.906, against 160/187 and 0.910 for the 759-card rebuild the same day; the three lost top-1 queries are not about the new cards. The cloud install now uses the CPU-only PyTorch wheel, since the default GPU build (several GB) stalled.
 - **P51 and P52 written (2026-10-30, owner).** Simon's Favorite Factoring Trick now shows that $\frac1x+\frac1y=\frac1n$ becomes $(x-n)(y-n)=n^2$, with $d(n^2)$ ordered positive solutions ($9$ for $n=6$, checked by search), and the splitting $\frac1n=\frac1{n+1}+\frac1{n(n+1)}$. A Did you know? fact on the napkin ring joins `js/data/did-you-know.js`: a ring of height $h$ left from a sphere has volume $\frac{\pi h^3}{6}$ whatever the sphere's size ($36\pi$ for $h=6$), from Cavalieri's Principle.
 - **The friend's resource library read (2026-10-30, owner).** The document lists 38 sources for formulas and methods. Once the owner allowed their hosts, the AMC/AIME ones were downloaded and every named result compared with the cards; nearly all are already cards. After the owner asked for a common-sense filter (only what AMC and AIME problems use), two remain in `QUESTIONS.md`: P51, the $d(n^2)$ count for $\frac1x+\frac1y=\frac1n$ on Simon's Favorite Factoring Trick, and P52, the napkin ring as a Did you know? fact.
 - **Six new cards from step I (2026-10-30, owner approved P45 to P50).** Factoring Out the Smallest Factorial and The Only Even Prime (number theory, Primes, Factorials & Valuations); Grouping the Terms of an Alternating Sum and Placing Digits and Signs to Make an Expression Largest (algebra methods, Sums & Sequences and Inequalities & Optimization); Scoring Rules with Right, Wrong and Blank Answers and Comparing Price Plans (the Break-Even Point) (algebra patterns, Word-Problem Setups). Each has a write-up with a full Why it works, a worked example checked by computation ($\frac{12!+13!+14!}{12!}=196$, the pairs $(2,3)$ and $(3,2)$ for $p^q+q^p$, $-5050$, $631\cdot542=342002$ by checking all $720$ arrangements, $6$ blanks, $3$ gym visit counts), a place on the AMC algebra or number theory route, and the problems listed in `QUESTIONS.md` tagged (50 more problems cite a card: 4,229 of 4,675). Comparing Price Plans also has one exercise. 765 cards.
