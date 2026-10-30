@@ -604,6 +604,10 @@ The same completion factors $xy + ax + by$ wherever it appears, not only in inte
 
 Which rectangles with whole-number sides have area equal to perimeter? From $xy = 2x + 2y$, adding $4$ gives $(x - 2)(y - 2) = 4$. The positive factor pairs $1 \cdot 4$, $2 \cdot 2$, $4 \cdot 1$ give $3 \times 6$, $4 \times 4$ and $6 \times 3$, while the negative pairs give a side that is not positive. So the rectangles are $3 \times 6$ and $4 \times 4$.
 
+The unit-fraction equation $\frac1x + \frac1y = \frac1n$ clears to $xy - nx - ny = 0$, and adding $n^2$ gives $(x - n)(y - n) = n^2$. Both factors are positive in a solution: if both were negative, each would lie between $-n$ and $0$, and their product would be less than $n^2$.
+
+So the ordered solutions in positive integers match the divisors of $n^2$, and there are $d(n^2)$ of them. For $n = 6$ that is $d(36) = 9$, from $(7, 42)$, the splitting $\frac1n = \frac1{n+1} + \frac1{n(n+1)}$, through $(12, 12)$ to $(42, 7)$.
+
 ## Why it works
 Expanding $(x + b)(y + a) = xy + ax + by + ab$ shows that the left side of $xy + ax + by = c$ is this product without its constant term, so adding $ab$ to both sides completes it. With integer unknowns, $x + b$ and $y + a$ are integers whose product is the known number $c + ab$, so they are a factor pair, and each factor pair gives back exactly one solution.
 
