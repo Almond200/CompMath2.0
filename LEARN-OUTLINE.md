@@ -930,11 +930,11 @@ Eight chapters. The changes from the first draft are three:
 | Lesson | Cards |
 |---|---|
 | N1.1 Introduction | no card (the chapter's opening page: prime factorizations, divisors as exponent choices, gcd and lcm, counting multiples, with comprehension problems) |
-| N1.2 Prime exponent bookkeeping; gcd and lcm | `exponent-tracking`, `gcd-lcm-product`, `lcm-common-multiples`, `gcd-substitution` |
-| N1.3 The number, sum and product of divisors | `sum-of-divisors`, `product-of-divisors`, `multiplicative-functions`, prereq `number-of-divisors` |
-| N1.4 Divisors with square, parity or residue conditions | `perfect-square-divisors`, `largest-odd-divisor-sum`, `sigma-parity` |
-| N1.5 Factor pairs, and counting pairs by lcm and gcd | `lcm-pair-counting`, prereq `factor-pair-counting` |
-| N1.6 Prime exponents with counting | `floor-multiples`, `coprime-residue-sum`, `consecutive-coprime` |
+| N1.2 Prime exponent bookkeeping; gcd and lcm (Core) | `exponent-tracking`, `gcd-lcm-product`, `lcm-common-multiples`, `gcd-substitution` |
+| N1.3 The number, sum and product of divisors (Core) | `sum-of-divisors`, `product-of-divisors`, `multiplicative-functions`, prereq `number-of-divisors` |
+| N1.4 Divisors with square, parity or residue conditions (Core) | `perfect-square-divisors`, `largest-odd-divisor-sum`, `sigma-parity` |
+| N1.5 Factor pairs, and counting pairs by lcm and gcd (Core) | `lcm-pair-counting`, prereq `factor-pair-counting` |
+| N1.6 Prime exponents with counting (Core) | `floor-multiples`, `coprime-residue-sum`, `consecutive-coprime` |
 | N1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N1.8 Review Problems and N1.9 Challenge Problems |
 
 ### N2. Linear congruences and CRT (Core)
@@ -944,11 +944,11 @@ Eight chapters. The changes from the first draft are three:
 | Lesson | Cards |
 |---|---|
 | N2.1 Introduction | no card (the chapter's opening page: congruences, inverses, linear congruences, Bézout, the Chinese Remainder Theorem, with comprehension problems) |
-| N2.2 Congruence rules, inverses, and when you may cancel | `modular-inverse`, `euclids-lemma`, prereq `modular-basics` |
-| N2.3 Linear congruences, and when they have solutions | `subtract-equal-remainders`, `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` |
-| N2.4 The extended Euclidean algorithm and Bézout | `extended-euclidean-algorithm`, `bezouts-identity` |
-| N2.5 The Chinese Remainder Theorem, for coprime moduli | `crt` |
-| N2.6 Compatible congruences with moduli that share factors; counting solutions | `crt-solution-counting` |
+| N2.2 Congruence rules, inverses, and when you may cancel (Core) | `modular-inverse`, `euclids-lemma`, prereq `modular-basics` |
+| N2.3 Linear congruences, and when they have solutions (Core) | `subtract-equal-remainders`, `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` |
+| N2.4 The extended Euclidean algorithm and Bézout (Core) | `extended-euclidean-algorithm`, `bezouts-identity` |
+| N2.5 The Chinese Remainder Theorem, for coprime moduli (Core) | `crt` |
+| N2.6 Compatible congruences with moduli that share factors; counting solutions (Core II) | `crt-solution-counting` |
 | N2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N2.8 Review Problems and N2.9 Challenge Problems |
 
 **Opening questions and checks (computed):**
@@ -993,7 +993,7 @@ Eight chapters. The changes from the first draft are three:
 
 No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler, splitting the modulus), with comprehension problems.
 
-#### N3.2 Powers modulo $n$: direct cycles and eventual periodicity
+#### N3.2 Powers modulo $n$: direct cycles and eventual periodicity (Core)
 
 - **Opening question:** what is the units digit of $7^{202}$? The powers of $7$ mod $10$ run $7, 9, 3, 1$ and then repeat, and $202 = 4\cdot50 + 2$, so the digit is $9$.
 - **Teach:** there are only finitely many residues, so the powers must repeat. When the base is coprime to the modulus, the cycle starts at the first power. When it is not, the powers settle into a cycle only after a few steps: $2^n \bmod 12$ runs $2, 4, 8, 4, 8, \ldots$ (eventual period $2$).
@@ -1009,7 +1009,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
   - 2017 AIME I #3 (read: the units digits of triangular numbers repeat with period $20$);
   - 2025 AMC 12B #9 (read: $6^n \bmod 100$ repeats every $5$ only from $6^2$ on, eventual periodicity with a base not coprime to $100$; challenging).
 
-#### N3.3 Fermat's Little Theorem: prime modulus and coprimality
+#### N3.3 Fermat's Little Theorem: prime modulus and coprimality (Core)
 
 - **Opening question:** what is $2^{1000} \bmod 13$? Fermat gives $2^{12} \equiv 1$, $1000 = 12 \cdot 83 + 4$, and $2^4 = 16 \equiv 3$.
 - **Teach:** a prime modulus guarantees a period of $p - 1$, but only for a base coprime to $p$. Show a misuse: $13^{1000} \bmod 13$ is $0$, not $1$.
@@ -1022,7 +1022,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
   - 1989 AIME #9 (read: $n^5 \equiv n \pmod 5$, with CRT from N2 and a size bound);
   - 2002 AIME I #7 (read: $10^6 \equiv 1 \pmod 7$; it also needs the generalized binomial expansion that its statement gives, so it is marked a challenge).
 
-#### N3.4 Multiplicative order and the divisibility of periods
+#### N3.4 Multiplicative order and the divisibility of periods (Core II)
 
 - **Opening question:** what is $3^{202} \bmod 13$? Fermat promises period $12$, but $3^3 = 27 \equiv 1$, so the period is $3$, and $202 = 3 \cdot 67 + 1$ gives $3$.
 - **Teach:** the smallest period is the order, and it divides every exponent that gives $1$, including $p - 1$. So only the divisors of $p - 1$ need checking.
@@ -1035,7 +1035,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
   - 2019 AIME I #14 (read: an order of exactly $16$ forces $p \equiv 1 \pmod{16}$; answer $97$).
 - **Moved:** 2016 AMC 12B #22 goes to N6.5, where repeating decimals are taught.
 
-#### N3.5 Euler's theorem and the totient function
+#### N3.5 Euler's theorem and the totient function (Core)
 
 - **Opening question:** what is $3^{2026} \bmod 100$? $\varphi(100) = 40$ gives $3^{40} \equiv 1$. The order is in fact $20$, and $2026 \equiv 6 \pmod{20}$, so $3^6 = 729$ gives $29$.
 - **Teach:** Euler's theorem extends Fermat to any modulus coprime to the base. Compute $\varphi$ from the factorization. Euler's period is guaranteed, like Fermat's, but it need not be the smallest (link to N3.4).
@@ -1047,7 +1047,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
 - **Problems:**
   - 2024 AMC 10B #18, with its twin 2024 AMC 12B #14 (read: $\varphi(125) = 100$ gives remainder $1$, and multiples of $5$ give $0$; choice B).
 
-#### N3.6 Orders with CRT; bases not coprime to the modulus
+#### N3.6 Orders with CRT; bases not coprime to the modulus (Core II)
 
 - **Opening question:** what is $2^{2026} \bmod 100$? Euler does not apply, because $2$ shares a factor with $100$. Split the modulus:
   - $2^{2026} \equiv 0 \pmod 4$;
@@ -1101,11 +1101,11 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | Lesson | Cards |
 |---|---|
 | N4.1 Introduction | no card (the chapter's opening page: valuations, Legendre's formula, primes in binomial coefficients, Lifting the Exponent, with comprehension problems) |
-| N4.2 $v_p(n)$, the exponent of a prime in an integer | `p-adic-valuation` |
-| N4.3 Legendre's formula, trailing zeros, factoring out factorials | `legendres-formula`, `trailing-zeros`, `factor-out-factorial`, `consecutive-product-factorial` |
-| N4.4 When a prime divides a binomial coefficient | `prime-divides-binomial` |
-| N4.5 Lifting the Exponent: the common cases and their hypotheses | `lte-lemma`, `lte` (problem: 2020 AIME I #12, moved here from N3; read) |
-| N4.6 Valuations with bounds on integer solutions | `gcd-power-minus-one`, `power-minus-self` |
+| N4.2 $v_p(n)$, the exponent of a prime in an integer (Core) | `p-adic-valuation` |
+| N4.3 Legendre's formula, trailing zeros, factoring out factorials (Core) | `legendres-formula`, `trailing-zeros`, `factor-out-factorial`, `consecutive-product-factorial` |
+| N4.4 When a prime divides a binomial coefficient (Core II) | `prime-divides-binomial` |
+| N4.5 Lifting the Exponent: the common cases and their hypotheses (Core II) | `lte-lemma`, `lte` (problem: 2020 AIME I #12, moved here from N3; read) |
+| N4.6 Valuations with bounds on integer solutions (Core II) | `gcd-power-minus-one`, `power-minus-self` |
 | N4.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N4.8 Review Problems and N4.9 Challenge Problems |
 
 ### N5. Diophantine equations and constraints (Core)
@@ -1113,11 +1113,11 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | Lesson | Cards |
 |---|---|
 | N5.1 Introduction | no card (the chapter's opening page: linear equations and the Frobenius number, factoring, modular obstructions, Pythagorean triples, bounding, with comprehension problems) |
-| N5.2 Linear integer equations: gcd conditions, parametrizing, Frobenius | `chicken-mcnugget`, *(pattern)* `coins-and-prices` |
-| N5.3 Factoring, and differences of squares | `difference-of-squares-rep`, prereq `sfft`, prereq `forced-difference-of-squares` |
-| N5.4 Parity, modular obstructions, inequalities | `choose-modulus`, `primes-6k`, prereq `only-even-prime` |
-| N5.5 Pythagorean triples and integer triangles | `pythagorean-triples`, `integer-triangles-perimeter`, `sum-of-two-squares`, `lattice-points-circle` |
-| N5.6 Bounds, monotonicity, finite searches | `bounding-diophantine`, `squeeze-between-squares` |
+| N5.2 Linear integer equations: gcd conditions, parametrizing, Frobenius (Core) | `chicken-mcnugget`, *(pattern)* `coins-and-prices` |
+| N5.3 Factoring, and differences of squares (Core) | `difference-of-squares-rep`, prereq `sfft`, prereq `forced-difference-of-squares` |
+| N5.4 Parity, modular obstructions, inequalities (Core) | `choose-modulus`, `primes-6k`, prereq `only-even-prime` |
+| N5.5 Pythagorean triples and integer triangles (Core) | `pythagorean-triples`, `integer-triangles-perimeter`, `sum-of-two-squares`, `lattice-points-circle` |
+| N5.6 Bounds, monotonicity, finite searches (Core) | `bounding-diophantine`, `squeeze-between-squares` |
 | N5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N5.8 Review Problems and N5.9 Challenge Problems |
 
 ### N6. Bases, digits and decimals (Core; N6.5 comes after N3)
@@ -1125,11 +1125,11 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | Lesson | Cards |
 |---|---|
 | N6.1 Introduction | no card (the chapter's opening page: numerals as polynomials, digit counts, digit sums and carries, repeating decimals, palindromes and calendars, with comprehension problems) |
-| N6.2 Base representation; a numeral as a polynomial | `base-conversion`, `numeral-as-polynomial` |
-| N6.3 Equations in an unknown base; bounds on digits | *(pattern)* `unknown-base`, `digit-count` |
-| N6.4 Last digits, digit sums, carrying | `digit-sum-carries`, *(pattern)* `digit-manipulation`, `base10-curiosities` |
-| N6.5 Repeating decimals and the order of 10 | `repeating-decimals`, `terminating-decimals` (problem: 2016 AMC 12B #22, moved from N3; read) |
-| N6.6 Concatenation, palindromes, digit restrictions | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, *(pattern)* `calendar-problems` |
+| N6.2 Base representation; a numeral as a polynomial (Core) | `base-conversion`, `numeral-as-polynomial` |
+| N6.3 Equations in an unknown base; bounds on digits (Core) | *(pattern)* `unknown-base`, `digit-count` |
+| N6.4 Last digits, digit sums, carrying (Core) | `digit-sum-carries`, *(pattern)* `digit-manipulation`, `base10-curiosities` |
+| N6.5 Repeating decimals and the order of 10 (Core) | `repeating-decimals`, `terminating-decimals` (problem: 2016 AMC 12B #22, moved from N3; read) |
+| N6.6 Concatenation, palindromes, digit restrictions (Core) | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, *(pattern)* `calendar-problems` |
 | N6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N6.8 Review Problems and N6.9 Challenge Problems |
 
 ### N7. Residue patterns and special constraints (Core II)
@@ -1137,20 +1137,20 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | Lesson | Cards |
 |---|---|
 | N7.1 Introduction | no card (the chapter's opening page: squares modulo small numbers, the freshman's dream, Wilson's theorem, restrictions on primes, periodic sequences, with comprehension problems) |
-| N7.2 Quadratic residues by small-modulus tests | `squares-mod-small`, `eulers-criterion` |
-| N7.3 Squares, fourth powers and parity patterns mod $n$ | `freshmans-dream`, prereq `last-digit-patterns` |
-| N7.4 Orders, divisor conditions, restrictions on primes | `wilsons-theorem`, prereq `multiplicative-order` |
-| N7.5 Integer sequences and periodicity mod $n$ | `pisano-periods` |
+| N7.2 Quadratic residues by small-modulus tests (Core II) | `squares-mod-small`, `eulers-criterion` |
+| N7.3 Squares, fourth powers and parity patterns mod $n$ (Core II) | `freshmans-dream`, prereq `last-digit-patterns` |
+| N7.4 Orders, divisor conditions, restrictions on primes (Core II) | `wilsons-theorem`, prereq `multiplicative-order` |
+| N7.5 Integer sequences and periodicity mod $n$ (Core) | `pisano-periods` |
 | N7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N7.7 Review Problems and N7.8 Challenge Problems |
 
 ### N8. Number theory extensions (Extension; never a prerequisite in the core sequence)
 
 | Lesson | Cards |
 |---|---|
-| N8.1 Lucas's theorem and binomial residues | `lucas-theorem`, `kummers-theorem`, `pascal-parity` |
-| N8.2 Hensel lifting for prime powers | `hensel-lifting`, `lagrange-roots-mod-p` (problem: 2024 AIME I #13, moved from N3; read) |
-| N8.3 Primitive roots and higher order structure | `primitive-roots`, `quadratic-reciprocity` |
-| N8.4 Diophantine methods beyond elementary AIME | `pell-equation`, `binary-quadratic-forms`, `sum-of-three-squares`, `gaussian-integers`, `zeckendorf-theorem`, `mobius-inversion`, `bertrands-postulate`, `farey-sequences` |
+| N8.1 Lucas's theorem and binomial residues (Extension) | `lucas-theorem`, `kummers-theorem`, `pascal-parity` |
+| N8.2 Hensel lifting for prime powers (Extension) | `hensel-lifting`, `lagrange-roots-mod-p` (problem: 2024 AIME I #13, moved from N3; read) |
+| N8.3 Primitive roots and higher order structure (Extension) | `primitive-roots`, `quadratic-reciprocity` |
+| N8.4 Diophantine methods beyond elementary AIME (Extension) | `pell-equation`, `binary-quadratic-forms`, `sum-of-three-squares`, `gaussian-integers`, `zeckendorf-theorem`, `mobius-inversion`, `bertrands-postulate`, `farey-sequences` |
 
 ---
 
@@ -1257,11 +1257,11 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C1.1 Introduction | no card (the chapter's opening page: the product and sum rules, cases, complements, an organizing parameter, overcounts and small cases, with comprehension problems) |
-| C1.2 Sum and product rules; building disjoint cases | `constructive-counting`, prereq `casework-method` |
-| C1.3 Counting the complement | prereq `complementary-counting` (deepened) |
-| C1.4 Counting by an organizing parameter | `double-summation` link, `counting-functions` |
-| C1.5 Overlapping cases and double counts | `uniform-overcount` |
-| C1.6 Small cases to check completeness | `simulate-the-process`, `working-backwards` |
+| C1.2 Sum and product rules; building disjoint cases (Core) | `constructive-counting`, prereq `casework-method` |
+| C1.3 Counting the complement (Core) | prereq `complementary-counting` (deepened) |
+| C1.4 Counting by an organizing parameter (Core) | `double-summation` link, `counting-functions` |
+| C1.5 Overlapping cases and double counts (Core) | `uniform-overcount` |
+| C1.6 Small cases to check completeness (Core) | `simulate-the-process`, `working-backwards` |
 | C1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C1.8 Review Problems and C1.9 Challenge Problems |
 
 ### C2. Arrangements and selections (Core)
@@ -1269,11 +1269,11 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C2.1 Introduction | no card (the chapter's opening page: arrangements and selections, identical objects, circles, gaps, stars and bars, positions versus values, with comprehension problems) |
-| C2.2 Permutations, combinations, repeated objects | prereq `multiset-permutations` |
-| C2.3 Circular arrangements and symmetry | `circular-permutations`, `necklace-formula` |
-| C2.4 Adjacency and spacing restrictions | `non-adjacent-selection`, *(pattern)* `restricted-sequences`, prereq `gap-method` |
-| C2.5 Stars and bars, with upper and lower bounds | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
-| C2.6 Choosing positions versus assigning values | `surjections`, `stirling-bell`, `fencepost-counting` |
+| C2.2 Permutations, combinations, repeated objects (Core) | prereq `multiset-permutations` |
+| C2.3 Circular arrangements and symmetry (Core) | `circular-permutations`, `necklace-formula` |
+| C2.4 Adjacency and spacing restrictions (Core) | `non-adjacent-selection`, *(pattern)* `restricted-sequences`, prereq `gap-method` |
+| C2.5 Stars and bars, with upper and lower bounds (Core) | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
+| C2.6 Choosing positions versus assigning values (Core II) | `surjections`, `stirling-bell`, `fencepost-counting` |
 | C2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C2.8 Review Problems and C2.9 Challenge Problems |
 
 ### C3. Inclusion-exclusion and complements (Core)
@@ -1281,10 +1281,10 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C3.1 Introduction | no card (the chapter's opening page: overlapping conditions, the complement of a union, strengths of a condition, forbidden pairs, with comprehension problems) |
-| C3.2 Inclusion-exclusion with two and three sets | `inclusion-exclusion`, `pie` |
-| C3.3 Derangements and forbidden positions | `derangements` |
-| C3.4 At least, at most, exactly | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts` |
-| C3.5 When a complement beats casework | no new card (a comparison lesson) |
+| C3.2 Inclusion-exclusion with two and three sets (Core) | `inclusion-exclusion`, `pie` |
+| C3.3 Derangements and forbidden positions (Core II) | `derangements` |
+| C3.4 At least, at most, exactly (Core) | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts` |
+| C3.5 When a complement beats casework (Core) | no new card (a comparison lesson) |
 | C3.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C3.7 Review Problems and C3.8 Challenge Problems |
 
 ### C4. Bijections, symmetry and double counting (Core)
@@ -1292,10 +1292,10 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C4.1 Introduction | no card (the chapter's opening page: bijections, double counting, symmetry, binomial identities, with comprehension problems) |
-| C4.2 Designing bijections | `bijection-method`, `catalan-numbers`, `ballot-problem`, `reflection-principle` |
-| C4.3 Double counting and incidences | `double-counting`, `committee-chair`, `nested-subset-pairs` |
-| C4.4 Using symmetry safely | `symmetry-probability`, `burnsides-lemma` (the proposal lists Burnside as Extension; the card is AMC tier and high importance, so it stays Core, to be confirmed by the audit) |
-| C4.5 Binomial coefficients and their identities | `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `binomial-theorem` |
+| C4.2 Designing bijections (Core II) | `bijection-method`, `catalan-numbers`, `ballot-problem`, `reflection-principle` |
+| C4.3 Double counting and incidences (Core) | `double-counting`, `committee-chair`, `nested-subset-pairs` |
+| C4.4 Using symmetry safely (Core) | `symmetry-probability`, `burnsides-lemma` (the proposal lists Burnside as Extension; the card is AMC tier and high importance, so it stays Core, to be confirmed by the audit) |
+| C4.5 Binomial coefficients and their identities (Core) | `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `binomial-theorem` |
 | C4.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C4.7 Review Problems and C4.8 Challenge Problems |
 
 ### C5. Recursion, states and processes (Core; links to A3)
@@ -1303,12 +1303,12 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C5.1 Introduction | no card (the chapter's opening page: what recursions, states, processes and invariants are, with comprehension problems) |
-| C5.2 Choosing states for a counting recursion | `recursive-counting` |
-| C5.3 Linear recurrences from arrangements and paths | *(pattern)* `tiling-a-board` |
-| C5.4 Transitions, boundary cases, small tables | `grid-path-fill`, `backward-induction` |
-| C5.5 Invariants and parity in finite processes | `invariants-coloring`, `monovariant` |
-| C5.6 Grid paths and restricted walks | `grid-paths` |
-| C5.7 Winning probabilities from states (Markov chains) | `states-recursion-prob` |
+| C5.2 Choosing states for a counting recursion (Core) | `recursive-counting` |
+| C5.3 Linear recurrences from arrangements and paths (Core) | *(pattern)* `tiling-a-board` |
+| C5.4 Transitions, boundary cases, small tables (Core) | `grid-path-fill`, `backward-induction` |
+| C5.5 Invariants and parity in finite processes (Core II) | `invariants-coloring`, `monovariant` |
+| C5.6 Grid paths and restricted walks (Core) | `grid-paths` |
+| C5.7 Winning probabilities from states (Markov chains) (Core II) | `states-recursion-prob` |
 | C5.8 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C5.9 Review Problems and C5.10 Challenge Problems |
 
 ### C6. Probability through counting (Core)
@@ -1316,11 +1316,11 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C6.1 Introduction | no card (the chapter's opening page: equally likely outcomes, conditioning, independence, complements, lengths and areas, with comprehension problems) |
-| C6.2 Building the sample space; equally likely outcomes | *(pattern)* `drawing-without-replacement`, prereq `basic-probability` |
-| C6.3 Conditional probability; updating the sample space | `bayes-theorem`, prereq `conditional-probability` |
-| C6.4 Independence, dependence, sampling without replacement | `hypergeometric`, `binomial-probability` |
-| C6.5 Complements and inclusion-exclusion for probability | no new card (links C3) |
-| C6.6 Probability in arrangements and regions | `geometric-probability` |
+| C6.2 Building the sample space; equally likely outcomes (Core) | *(pattern)* `drawing-without-replacement`, prereq `basic-probability` |
+| C6.3 Conditional probability; updating the sample space (Core) | `bayes-theorem`, prereq `conditional-probability` |
+| C6.4 Independence, dependence, sampling without replacement (Core) | `hypergeometric`, `binomial-probability` |
+| C6.5 Complements and inclusion-exclusion for probability (Core) | no new card (links C3) |
+| C6.6 Probability in arrangements and regions (Core) | `geometric-probability` |
 | C6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C6.8 Review Problems and C6.9 Challenge Problems |
 
 ### C7. Expected value and random processes (Core II)
@@ -1328,10 +1328,10 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C7.1 Introduction | no card (the chapter's opening page: expected value, linearity and indicators, conditioning, waiting times, with comprehension problems) |
-| C7.2 Linearity of expectation with indicators | `expected-value`, `indicator-variables` |
-| C7.3 Expected counts and contributions | `expected-fixed-points`, `tail-sum-expectation` |
-| C7.4 Conditional expectation in a small process | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
-| C7.5 Waiting times and recursive expectations | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
+| C7.2 Linearity of expectation with indicators (Core) | `expected-value`, `indicator-variables` |
+| C7.3 Expected counts and contributions (Core II) | `expected-fixed-points`, `tail-sum-expectation` |
+| C7.4 Conditional expectation in a small process (Core II) | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
+| C7.5 Waiting times and recursive expectations (Core II) | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
 | C7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C7.7 Review Problems and C7.8 Challenge Problems |
 
 ### C8. Graphs, grids and combinatorial structures (Core II)
@@ -1339,10 +1339,10 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C8.1 Introduction | no card (the chapter's opening page: graphs and degrees, shapes on grids, coloring arguments, pigeonhole and extremal arguments, with comprehension problems) |
-| C8.2 The handshake lemma and degree counting | `handshake-lemma`, `tree-basics`, `eulerian-paths`, *(pattern)* `round-robin-tournaments` |
-| C8.3 Counting cells and shapes on grids | `rectangles-in-grid` |
-| C8.4 Coloring and parity | `coloring-arguments`, `graph-coloring` |
-| C8.5 Extremal arguments and pigeonhole | `pigeonhole`, `pigeonhole-argument`, `extremal-principle`, `pairing-to-bound` |
+| C8.2 The handshake lemma and degree counting (Core II) | `handshake-lemma`, `tree-basics`, `eulerian-paths`, *(pattern)* `round-robin-tournaments` |
+| C8.3 Counting cells and shapes on grids (Core) | `rectangles-in-grid` |
+| C8.4 Coloring and parity (Core II) | `coloring-arguments`, `graph-coloring` |
+| C8.5 Extremal arguments and pigeonhole (Core II) | `pigeonhole`, `pigeonhole-argument`, `extremal-principle`, `pairing-to-bound` |
 | C8.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C8.7 Review Problems and C8.8 Challenge Problems |
 
 ### C9. Counting and probability extensions (Extension)
@@ -1350,10 +1350,10 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | Lesson | Cards |
 |---|---|
 | C9.1 Introduction | no card (the chapter's opening page: generating functions, cycles of a permutation, continuous random numbers, transfer matrices, games and logic, with comprehension problems) |
-| C9.2 Generating functions for simple coefficient counts | `generating-function-method`, `partitions` |
-| C9.3 More symmetry: Burnside in depth, cycle structure | `permutation-cycle-structure` |
-| C9.4 Geometric probability beyond simple regions | `product-of-uniforms`, `order-statistics`, `variance-independence` |
-| C9.5 More recursions and random processes; games | `transfer-matrix-method`, `strategy-stealing`, *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
+| C9.2 Generating functions for simple coefficient counts (Extension) | `generating-function-method`, `partitions` |
+| C9.3 More symmetry: Burnside in depth, cycle structure (Extension) | `permutation-cycle-structure` |
+| C9.4 Geometric probability beyond simple regions (Extension) | `product-of-uniforms`, `order-statistics`, `variance-independence` |
+| C9.5 More recursions and random processes; games (Extension) | `transfer-matrix-method`, `strategy-stealing`, *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
 | C9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C9.7 Review Problems and C9.8 Challenge Problems |
 
 ---
