@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Number Theory M4 Remainders written.** M4.1 Introduction, M4.2 working with remainders, M4.3 cycles and last digits, M4.4 squares and choosing a modulus, M4.5 Fermat's little theorem and Euler's totient, M4.6 when one expression divides another, M4.7 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M3 Divisors and factorials written.** M3.1 Introduction, M3.2 counting divisors, M3.3 summing and multiplying divisors, M3.4 primes in a factorial and trailing zeros, M3.5 consecutive numbers and gcd tricks, M3.6 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M2 Digits, bases and decimals written; the Foundations part is complete.** M2.1 Introduction, M2.2 place value and digits, M2.3 digit puzzles, M2.4 other bases, M2.5 repeating and terminating decimals, M2.6 fractions between two fractions, M2.7 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory rebuilt from the second plan; M1 written.** The book's plan moved into its own outline section (seven chapters M1 to M7 in four parts, every lesson tagged), the old three chapter files were deleted, and the other AMC books' references were remapped by card. M1 Primes, divisibility, gcd and lcm: M1.1 Introduction, M1.2 primes and prime factorization, M1.3 divisibility rules, M1.4 the gcd and the lcm, M1.5 counting multiples and calendars, M1.6 Summary, Review Problems and Challenge Problems.
