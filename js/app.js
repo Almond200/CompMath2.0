@@ -4814,14 +4814,21 @@
       fixed += aside.querySelector(".pv-title").offsetHeight;
       const label = aside.querySelector(".pv-screen:not([hidden]) .pv-label");
       fixed += nScreens * ((label ? label.offsetHeight : 17) + 5);
-      // The dividing line sits close to the settings, so the screens get the room (owner,
-      // 2026-10-31); the screens are centred between the two arrows.
+      // The screens and their two arrows form one block of a comfortable size at the right of
+      // the window, and the dividing line sits midway between the settings and that block, so it
+      // is close to neither (owner, 2026-10-31).
       const right = page ? page.getBoundingClientRect().right : 0;
-      const region = document.documentElement.clientWidth - right - 20;
-      let w = Math.min(640, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, region - 96);
+      const vw = document.documentElement.clientWidth, EDGE = 28, ARROW = 30, GAP = 14, MIN_SPACE = 48;
+      const room = vw - right - EDGE - 2 * (ARROW + GAP) - 2 * MIN_SPACE;
+      let w = Math.min(520, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, room);
       w = Math.max(120, w);
-      aside.style.setProperty("--pv-left", (right + 20) + "px");
-      aside.style.paddingLeft = aside.style.paddingRight = Math.max(44, (region - w) / 2) + "px";
+      const blockLeft = vw - EDGE - (w + 2 * (ARROW + GAP));
+      const line = Math.round((right + blockLeft) / 2);
+      aside.style.setProperty("--pv-left", line + "px");
+      aside.style.paddingLeft = (blockLeft - line + ARROW + GAP) + "px";
+      aside.style.paddingRight = (EDGE + ARROW + GAP) + "px";
+      aside.querySelector(".pv-prev").style.left = (blockLeft - line) + "px";
+      aside.querySelector(".pv-next").style.right = EDGE + "px";
       frames.forEach(fr => {
         const inner = fr.firstElementChild, iw = +inner.dataset.w || PV_W;
         fr.style.width = w + "px";
