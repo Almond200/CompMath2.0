@@ -930,6 +930,9 @@ See `MIGRATION-NOTES.md` for the full answers.
 The rules for the Learn space. What each book, chapter and lesson holds is in `LEARN-OUTLINE.md`; the plan is `PLAN.md`; the owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`.
 
 **The shelf** (`js/data/learn/shelf.js`) is generated from `LEARN-OUTLINE.md` by `tools/build-learn-shelf.py`, and is never edited by hand.
+- A book's parts are `#### Part: Foundations` headings (and so on) inside its `## Book:` section; each chapter after one carries that `part`, and the contents page shows the part as a heading.
+- A lesson's tag is either `(Core)` after its title, or the second column of a four-column lesson table (`| L1.2 Exponents and radicals | Core | cards | count |`).
+- Chapter codes may have two digits (L10, R10, S12).
 - It holds the book ids, the chapter codes, titles and levels, and the lesson codes and titles.
 - `gates.sh` fails when it drifts from the outline.
 - A lesson's title is changed in the outline, then the shelf is rebuilt.
