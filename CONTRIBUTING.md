@@ -104,7 +104,7 @@ Each item here is something that has actually gone wrong, not a hypothetical.
    succeeded); `jsc tools/validate-problem-db.js`; `python3 tools/build-cross-links.py --seed`
    if you added or **renamed** a card, since the alias table is generated from card names and a
    rename leaves it stale; `--report` and review every candidate in context; then rebuild the
-   index with the build venv (`~/Downloads/competition-math-buildenv/bin/python` on the Mac, the cloud venv in PLAN "Blockers"), never the
+   index with the build venv (`~/Downloads/competition-math-buildenv/bin/python` on the Mac, the cloud venv in CONVENTIONS §13), never the
    system Python, once at the end of the step rather than after each card (owner, 2026-10-25). The full gate list, including `check-labels.py`, is CONVENTIONS §7.
 
 8. **Delete by exact span, never by pattern.** A merge removes the absorbed card's write-up and

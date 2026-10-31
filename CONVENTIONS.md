@@ -594,7 +594,7 @@ python3 tools/check-topics.py            # every card carries a topic chip, and 
 python3 tools/check-statements.py        # every statement and figure resolves, no stray markup
 python3 tools/find-duplicate-forms.py    # lists formulas stated twice (rule 17); a report, not a gate
 python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py --report
-~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py   # on the Mac; in the cloud, the venv in PLAN "Blockers"
+~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py   # on the Mac; in the cloud, the venv in §13
 ```
 
 The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest run: 160/187 top-1, MRR 0.910, over 759 cards (2026-10-30, cloud index).
@@ -881,3 +881,33 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Dark mode** uses as little pure white as possible.
 - **Never re-add** problem search, the in-app find, hints in the UI, a label setting, a level filter, or proof-based competitions.
 - **Merged cards** keep their old names as aliases (`tools/link-aliases.json`), so old links still resolve.
+
+## 13. Rules moved here from PLAN.md (2026-10-31)
+
+`PLAN.md` now holds only the steps ahead. These rules lived only there; each is still in force.
+
+**The app's purpose.** It is explanatory, useful and helpful: each card explains why its fact or move works, has a figure wherever a picture helps, covers the idea with its real depth and breadth (missing cases, variants, converses, where it fails), and nothing in the app is redundant.
+
+**Cards.**
+- Every new card's tier and importance are judged on evidence (problem tags, how often the idea is used) and shown to the owner in a short table before it is written, never assigned by feel. Importance has five values: high, medium, low, lower (marginal, about once in ten years), lowest (never used; there for completeness or beauty).
+- One idea per card. A card shows its kind and one split-oval tag (tier left, importance right), and level text is never repeated beside it.
+- Calculus uses an upright, thin-spaced differential: `\int A(h)\,\mathrm{d}h`.
+- Prose formula boxes are rewritten only after the owner approves the list; a box that cannot be shortened stays as it is.
+- Things LIVE has that the app lacks are listed in `tools/live-missing.md` and wait for the owner's approval.
+
+**Problems.**
+- A problem page gets a strategy paragraph, plus "Alternatively, ..." when a second good route exists. Full written solutions are deferred (2026-10-16).
+- Problem figures fit one 420 by 280 box (thin strips up to 600 px wide, §Rules recorded from the previous chat).
+- The number beside a contest counts only problems with a strategy.
+- The routine for one problem, all in one edit: re-solve it and check its statement and figures; tag the best route's specific cards (§11); write the strategy with its intermediate values and a written-out last step (AMC: name the choice letter); check every number, intermediate ones too, with a Python/sympy script (a fresh container needs `pip install sympy scipy`); draw a figure if §11 asks for one.
+- Tools: `node tools/practice-scan.js <card>` lists a card's problems (VAGUE = unchecked, or a bare final answer); `node tools/practice-card.js <card>` prints them in full; `node tools/practice-file.js <file>` gives a card file's counts; `node tools/practice-set.js <edits.json>` writes entries (built from Python raw strings) and keeps every field it is not given.
+- Citation decisions from the practice pass: a distance in space cites `distance-3d`; a 13-14-15 triangle cites `triangle-13-14-15`; a hexagonal row offset cites `equilateral-triangle-facts`; a fold cites `folded-paper`; a 45-45-90 diagonal cites `special-right-triangles`; grid distances cite `distance-midpoint`; lattice points on a circle cite `lattice-points-circle`; a product of chord pieces cites `power-of-a-point`; a dihedral angle cites `dihedral-angle`; an isosceles trapezoid cut by its altitudes cites the `isosceles-trapezoid` pattern; touching spheres cite `triangle-of-centers` (join the centers), with `cross-section-method` only where one plane holds the whole picture.
+- A statement only about a triangle's angles or a trigonometric identity, with no construction, gets no figure (2013 AIME II #15, 2014 AIME II #12).
+- Before drawing a figure, check `PROB["<slug>"]` does not exist (`check-statements.py` fails on a duplicate). A new helper used in `problem-diagrams.js` goes into its `GEO_KIT` import list (a missing `rotv` once made the whole file fail to load). `check-diagrams.py` fails when an `ok` self-check prints MISMATCH.
+
+**Working safely.**
+- Commit only after every gate passes: chain the commit after the gates with `&&`, never `;`.
+- Never edit a source file with a slice-and-replace that is not checked afterwards (a mis-sliced edit to `js/app.js` once deleted a block). Check syntax (`node --check`, `new Function(text)` or `jsc`) after any large edit.
+- Serve pages with `python3 -m http.server 8765`, started and killed by PID inside one command, after `curl -s -o /dev/null -w '%{http_code}' localhost:8765/` prints `000` (the port is free). Never `pkill -f http.server`, which kills the calling shell.
+- `node tools/check-pages.js '#/f/<id>' ...` prints only light 1280 rows and FAIL rows, so no FAIL means all four modes passed.
+- **The search index in a cloud chat:** test `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights also come from `cas-server.xethub.hf.co`), then `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` and `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Otherwise it is rebuilt on the Mac. Then the eval (`tools/search-eval.html`, at least 160/187) and `MathSemantic.info().cards` equal to the card count.
