@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **T4 written (2026-10-31).** T4.1 factorizations, gcd and lcm, T4.2 divisor counts, sums, products and square divisors, T4.3 divisibility rules, Legendre and trailing zeros, T4.4 bases and digits, T4.5 terminating and repeating decimals and calendars.
 - **T3 written (2026-10-31).** T3.1 remainders, rational roots, coefficient sums and comparing coefficients, T3.2 arithmetic and geometric series and power sums, T3.3 recurrences and periodic sequences, T3.4 telescoping sums and products and alternating sums, T3.5 sum-zero identities, pairwise products and $a^n \pm b^n$.
 - **T2 written (2026-10-31).** T2.1 the quadratic formula, Vieta, the vertex and perfect-square quadratics, T2.2 inverses, odd and even functions and defined operations, T2.3 counting solutions by graphs and ratios as slopes, T2.4 exponents and logarithms, T2.5 largest and smallest values (squares, AM-GM, medians, placing digits).
 - **AMC 10 book begun: T1 written (2026-10-31).** T1.1 factoring, squares of sums, completing the square and rationalizing, T1.2 systems and symmetric expressions, T1.3 repeated blocks and self-similar expressions, T1.4 absolute values, sign charts and floors, T1.5 rates, averages, percents and the other word-problem setups.
