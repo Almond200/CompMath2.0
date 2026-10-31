@@ -4308,7 +4308,16 @@
   // One setting per row: its name and what it does on the left, a segmented control on the
   // right. Rows sit in panels by kind: how the app looks, how the math reads, how browsing
   // behaves, then commands and the experimental toys.
+  // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
+  // allowed value the settings loader falls back to.
+  const SETTING_DEFAULTS = {
+    theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
+  };
   function settingRow(name, desc, key, current, options, pv) {
+    const def = SETTING_DEFAULTS[key];
+    if (def != null) options = options.slice().sort((a, b) => (b[0] === def) - (a[0] === def));
     return `
       <div class="set-row"${pv ? ` data-pv="${pv}"` : ""}>
         <div class="set-text"><div class="set-name">${name}</div><div class="set-desc">${desc}</div></div>
