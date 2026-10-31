@@ -52,7 +52,10 @@ CONVENTIONS §0 has the full model.
   Core II or Extension, with its lesson titles; drawn from `js/data/learn/shelf.js`, which
   `tools/build-learn-shelf.py` builds from `LEARN-OUTLINE.md`), then Lists: your lists (and a box to
   make one) and the study lists. A single list (`#/list/<id>`) opens as a plain page with a link
-  back to Learn. `#/lists` and the toolbar's Lists button open Learn at its Lists.
+  back to Learn. `#/lists` and the toolbar's Lists button open Learn at its Lists. A book
+  (`#/learn/<book>`), a chapter (`.../n3`), a lesson (`.../n3/1`) and a chapter review (`.../n3/review`)
+  each have a page; a lesson shows the chapter outline, the prose with its checks (typed on the
+  app's math keyboard), its problems, and a drawer for the cards it links (CONVENTIONS §14).
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, and every
   year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link back.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
@@ -294,6 +297,15 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The lesson shell (2026-10-31; PLAN step L5).** Learn's books, chapters and lessons open as pages, built to CONVENTIONS §14.
+  - **Addresses:** `#/learn/<book>`, `#/learn/<book>/<code>`, `.../<n>` for a lesson and `.../review` for a chapter review. The shelf on `#/learn` links each book, chapter and written lesson; an unwritten lesson's page says so.
+  - **The lesson page:** the chapter outline on the left (one line on a phone), the reading column, and a card drawer on the right (a sheet from the bottom on a phone). A `[[card]]` link in a lesson opens the card and its write-up in the drawer, with "Open the full card". Read lessons get a tick in the outline, set when the end of the prose has been on screen.
+  - **The math keyboard** (`js/learn-answer.js`): digits, the operations, a fraction (÷), powers, √, π, brackets, a minus sign and a comma, with backspace and clear. The box shows the answer typeset as it is built, and the keys never open a phone's own keyboard. A check is compared by value (a list as a set), then marked right or wrong with its one line of why.
+  - **The problem list:** each problem shows its statement and credit, a box for the student's work, and Show Solution, which stays disabled until the box holds text and then shows the strategy and the card chain. "Back to N3.1" on a problem or card opened from a lesson steps back to the same place on the page.
+  - **Progress:** `mq-learn` (lessons read, check answers, notes and shown solutions) joins `PROGRESS_KEYS`, so Export and Import carry it.
+  - **The prototype:** N3.1 (direct cycles and eventual periodicity) is written in `js/data/learn/aime-number-theory/n3.js` with three checks and its four problems, and the N3 review holds its eight. Every number was computed: $7^{202}$ has $171$ digits and units digit $9$; $7^{203}$ ends in $3$; $2^{100}\equiv2\pmod 7$; $2^{10}\equiv4\pmod{12}$; every integer's units digits repeat with a period dividing $4$.
+  - **The gate:** `tools/check-learn.js`, run by `build-learn-shelf.py --check`, checks the chapter files' cards, links, problems (each placed once, twins included), check answers and `{{check N}}` markers. Each failure was produced on purpose and caught.
+  - Checked in Chromium at 1280 and 375 px, light and dark: 0 KaTeX errors, no overflow, no console errors; the keyboard, the checks, Show Solution, the drawer and the back link were all exercised.
 - **The pilot's problems chosen, and the Learn spec written (2026-10-31; PLAN L2 and L3).**
   - **N3** (cycles, exponentiation and order): every problem has been read and placed. Each lesson has 2 to 4 problems, among them 2003 AMC 10A #16, 2023 AMC 10B #8, 2025 AMC 12B #9 (eventual periodicity modulo $100$), 2017 AMC 10B #14 and 2024 AMC 10B #18. The review holds 8 problems: 2008 AMC 10A #24, 2001 AIME II #10, 2004 AIME II #10, 2021 AIME II #13, 2021 AIME I #14, 2016 AMC 12B #25, 2015 AMC 12A #22 and 2025 AIME II #13. The challenges are marked with the card each one needs from later chapters.
   - **N2** (linear congruences and CRT): problems for all five lessons, from 2025 AMC 12B #5 to 2011 AIME II #14, and five review problems. New checks are computed: $13^{-1}\equiv17\pmod{22}$; $6x\equiv4\pmod{10}$ gives $x\equiv4,9$; $21(-2)+15(3)=3$; CRT gives $49$; $x^2\equiv1\pmod{1000}$ has $8$ roots.

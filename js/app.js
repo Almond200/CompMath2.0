@@ -370,7 +370,7 @@
     if (route.type === "space") return route.name;
     if (route.type === "formula") return bookOf(route.entry.section);
     if (["problems", "problem"].indexOf(route.type) !== -1) return "practice";
-    if (["lists", "list"].indexOf(route.type) !== -1) return "learn";
+    if (["lists", "list", "learn"].indexOf(route.type) !== -1) return "learn";
     if (route.type === "home" && !state.landing && !state.query.trim() && !state.adv) {
       return bookOf(SECTIONS.find(x => x.id === state.activeSectionId));
     }
@@ -1372,6 +1372,8 @@
     }
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
+    const lr = learnRoute(location.hash);
+    if (lr) return lr;
     m = location.hash.match(/^#\/special\/([^/]+)(?:\/(.*))?$/);
     if (m) return { type: "special", name: m[1].toLowerCase(), arg: decodeURIComponent(m[2] || "") };
     return { type: "home" };
@@ -2094,7 +2096,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .lp-outline > summary, .lc-q, .lc-result").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -3838,6 +3840,7 @@
                 ? "tag results"
                 : `results for &ldquo;${escapeAttr(backFromSearch.query.trim())}&rdquo;`}</a>`
             : ""}
+          ${backToLearnHtml("formula:" + f.id)}
           ${backFromCardProblem && backFromCardProblem.fid === f.id && PROBLEM_BY_SLUG[backFromCardProblem.slug]
             ? `<a class="back-link" href="#/problem/${backFromCardProblem.slug}">&larr; Back to ${escapeAttr(refShort(PROBLEM_BY_SLUG[backFromCardProblem.slug].ref))}</a>`
             : ""}
@@ -4382,7 +4385,7 @@
   // merges study lists, so a list built on this device is never lost to an older file, and
   // replaces the rest; then the page reloads to read it back.
   const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
-  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses"];
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn"];
   function exportProgress() {
     const data = {};
     PROGRESS_KEYS.forEach(k => {
@@ -4901,16 +4904,18 @@
     const lessonsOf = b => b.chapters.reduce((n, c) => n + c.lessons.length, 0);
     return `<section class="sh-section" id="learn-books">
         <h3>Textbooks</h3>
-        <p class="learn-note">Five books from the AMC to the AIME, each a sequence of chapters and lessons that teach from the cards and end with contest problems. Every chapter is <span class="lb-level lb-core">Core</span>, <span class="lb-level lb-coreii">Core II</span> (later AIME problems) or <span class="lb-level lb-extension">Extension</span> (optional). The lessons are being written; until a lesson is ready its title is shown here.</p>
+        <p class="learn-note">Five books from the AMC to the AIME, each a sequence of chapters and lessons that teach from the cards and end with contest problems. Every chapter is <span class="lb-level lb-core">Core</span>, <span class="lb-level lb-coreii">Core II</span> (later AIME problems) or <span class="lb-level lb-extension">Extension</span> (optional). The lessons are being written; a lesson opens once it is ready.</p>
         <div class="lb-shelf">${shelf.map(b => `
           <details class="lb-book" id="book-${b.id}">
             <summary><span class="lb-book-title">${escapeAttr(b.title)}</span><span class="lb-role">${escapeAttr(b.role)}</span><span class="lb-n">${b.chapters.length} chapters &middot; ${lessonsOf(b)} lessons</span></summary>
             <ol class="lb-chapters">${b.chapters.map(c => `
               <li class="lb-ch"><details>
                 <summary><span class="lb-code">${c.code}</span><span class="lb-title">${escapeAttr(c.title)}</span><span class="lb-level lb-${levelSlug(c.level)}">${c.level}</span></summary>
-                <ol class="lb-lessons">${c.lessons.map(l => `<li><span class="lb-code">${l.code}</span><span>${escapeAttr(l.title)}</span><span class="lb-soon">Not written yet</span></li>`).join("")}</ol>
+                <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
+                <a class="lb-open" href="${learnHash(b, c)}">Open ${c.code}</a>
               </details></li>`).join("")}
             </ol>
+            <a class="lb-open" href="${learnHash(b)}">Open the book</a>
           </details>`).join("")}
         </div>
       </section>`;
@@ -5009,6 +5014,405 @@
     });
     renderMath($content);
   }
+
+  // ---------- Learn: books, chapters, lessons and reviews (PLAN step L5, CONVENTIONS §14) ----------
+  // The shelf (js/data/learn/shelf.js) gives every book, chapter and lesson its code and title;
+  // a written chapter is a file js/data/learn/<book>/<code>.js that fills window.MATH_LEARN[code]
+  // with each lesson's prose, checks and problems, and the chapter's review. A lesson with no
+  // entry there shows as "Not written yet".
+  const LEARN_SHELF = window.MATH_LEARN_SHELF || [];
+  const learnChapterData = c => (window.MATH_LEARN || {})[c.code] || null;
+  const learnLessonData = (c, l) => { const d = learnChapterData(c); return d && d.lessons && d.lessons[l.code] || null; };
+  const learnReview = c => { const d = learnChapterData(c); return d && Array.isArray(d.review) ? d.review : []; };
+  // #/learn/<book>, then /<code in lower case>, then /<lesson number> or /review.
+  function learnHash(b, c, page) {
+    return "#/learn/" + b.id + (c ? "/" + c.code.toLowerCase() + (page != null ? "/" + page : "") : "");
+  }
+  const lessonNum = l => l.code.split(".")[1];
+  function learnRoute(hash) {
+    const m = hash.match(/^#\/learn\/([\w-]+)(?:\/([a-z]\d+)(?:\/(\d+|review))?)?$/);
+    if (!m) return null;
+    const book = LEARN_SHELF.find(b => b.id === m[1]);
+    if (!book) return null;
+    const chapter = m[2] ? book.chapters.find(c => c.code.toLowerCase() === m[2]) : null;
+    if (m[2] && !chapter) return null;
+    const lesson = m[3] && m[3] !== "review" ? chapter.lessons.find(l => lessonNum(l) === m[3]) : null;
+    if (m[3] && m[3] !== "review" && !lesson) return null;
+    return { type: "learn", book, chapter, lesson, review: m[3] === "review", key: m.slice(1).filter(Boolean).join("/") };
+  }
+  const learnProblem = ref => PROBLEM_BY_SLUG[problemSlug(ref)] || null;
+
+  // Progress lives in one localStorage key, "mq-learn", which Export and Import carry
+  // (PROGRESS_KEYS). Reading a lesson, answering a check and working a problem are kept apart,
+  // and a solution that was shown never counts as solved.
+  let learnProg = null, learnProgOk = true;
+  function learnProgress() {
+    if (learnProg) return learnProg;
+    let v = null;
+    try { v = JSON.parse(localStorage.getItem("mq-learn") || "null"); } catch (e) { learnProgOk = false; }
+    learnProg = v && typeof v === "object" ? v : { v: 1 };
+    ["read", "checks", "problems"].forEach(k => { if (!learnProg[k] || typeof learnProg[k] !== "object") learnProg[k] = {}; });
+    return learnProg;
+  }
+  // A value that could not be read is never overwritten, so a stored file this version does not
+  // understand survives until the reader exports it.
+  function saveLearn() {
+    if (!learnProgOk) return;
+    try { localStorage.setItem("mq-learn", JSON.stringify(learnProg)); } catch (e) { storageFailed(); }
+  }
+
+  const learnLevelSlug = lv => lv.toLowerCase().replace(/\s+/g, "");
+  const learnLevelHtml = c => `<span class="lb-level lb-${learnLevelSlug(c.level)}">${c.level}</span>`;
+  function learnBackRow(links) {
+    return `<div class="back-row">${links.map(([h, t]) => `<a class="back-link" href="${h}">&larr; ${escapeAttr(t)}</a>`).join("")}</div>`;
+  }
+  // One line per lesson: its code and title, a link once it is written, and a tick once read.
+  function learnLessonRow(b, c, l, current) {
+    const read = learnProgress().read[l.code];
+    const inner = `<span class="lb-code">${l.code}</span><span class="lb-title">${escapeAttr(l.title)}</span>`;
+    if (!learnLessonData(c, l)) return `<li class="lb-lesson">${inner}<span class="lb-soon">Not written yet</span></li>`;
+    return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}${read ? `<span class="lb-read" title="Read">&#10003;</span>` : ""}</a></li>`;
+  }
+  function learnReviewRow(b, c, current) {
+    const n = learnReview(c).length;
+    if (!n) return "";
+    return `<li class="lb-lesson lb-review-row${current ? " is-current" : ""}"><a href="${learnHash(b, c, "review")}"${current ? ` aria-current="page"` : ""}><span class="lb-code">${c.code}</span><span class="lb-title">Chapter review</span><span class="lb-n">${n} problems</span></a></li>`;
+  }
+
+  function renderLearnBook(b) {
+    const written = c => c.lessons.filter(l => learnLessonData(c, l)).length;
+    $content.innerHTML = `<div class="learn-page">
+        ${learnBackRow([["#/learn", "Learn"]])}
+        <div class="book-eyebrow">Learn &middot; Textbooks</div>
+        <h2 class="learn-h">${escapeAttr(b.title)}</h2>
+        <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
+        <ol class="lb-chapters lb-book-page">${b.chapters.map(c => `
+          <li class="lb-ch-row">
+            <a class="lb-ch-link" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="lb-title">${escapeAttr(c.title)}</span>${learnLevelHtml(c)}</a>
+            <span class="lb-n">${c.lessons.length} lessons${written(c) ? ` &middot; ${written(c)} written` : ""}</span>
+          </li>`).join("")}
+        </ol>
+      </div>`;
+    renderMath($content);
+  }
+
+  function renderLearnChapter(b, c) {
+    $content.innerHTML = `<div class="learn-page">
+        ${learnBackRow([[learnHash(b), b.title]])}
+        <div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)}</div>
+        <h2 class="learn-h"><span class="lb-code">${c.code}</span> ${escapeAttr(c.title)} ${learnLevelHtml(c)}</h2>
+        <ol class="lb-lessons lb-chapter-page">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
+      </div>`;
+    renderMath($content);
+  }
+
+  // The chapter's outline beside a lesson or review: on a wide screen it stays open, on a phone
+  // it collapses to one line.
+  function learnOutlineHtml(b, c, cur) {
+    const wide = window.matchMedia && window.matchMedia("(min-width: 900px)").matches;
+    return `<details class="lp-outline"${wide ? " open" : ""}>
+        <summary><span class="lb-code">${c.code}</span> ${escapeAttr(c.title)}</summary>
+        <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, l === cur)).join("")}${learnReviewRow(b, c, cur === "review")}</ol>
+        <a class="lp-outline-up" href="${learnHash(b, c)}">The chapter page</a>
+      </details>`;
+  }
+
+  // ---------- The math keyboard (LQ5) ----------
+  // A small keypad under an answer box. The box holds the plain answer (with √, π, × and ÷ as
+  // typed symbols), and the line under it shows the answer typeset as it is built, so nothing is
+  // ever typed in LaTeX. On a phone the system keyboard stays closed (inputmode="none"); on a
+  // computer the physical keys work too.
+  const MK_KEYS = [
+    ["7", "7"], ["8", "8"], ["9", "9"], ["÷", "÷", "Fraction (divide)"], ["(", "("], [")", ")"],
+    ["4", "4"], ["5", "5"], ["6", "6"], ["×", "×", "Times"], ["^", "^", "Power"], ["√", "√(", "Square root"],
+    ["1", "1"], ["2", "2"], ["3", "3"], ["−", "−", "Minus"], ["+", "+"], ["π", "π", "Pi"],
+    ["0", "0"], [".", ".", "Decimal point"], [",", ", ", "Comma, for a list of answers"], ["⌫", "back", "Backspace"], ["C", "clear", "Clear"]
+  ];
+  // The stored form is the plain grammar: 3/4, 2sqrt(3), 7pi/2, -5, 4, 9.
+  const mkPlain = s => s.replace(/√/g, "sqrt").replace(/π/g, "pi").replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").trim();
+  const mkShow = s => s.replace(/sqrt/g, "√").replace(/pi/g, "π").replace(/\*/g, "×").replace(/\//g, "÷").replace(/(\d)-|^-|([(,^]\s*)-/g, (m, a, b) => (a || b || "") + "−");
+  function mathKeyboardHtml(value) {
+    return `<div class="mk">
+        <div class="mk-row">
+          <input class="mk-input" type="text" inputmode="none" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" value="${escapeAttr(mkShow(value || ""))}">
+          <button type="button" class="mk-submit">Check</button>
+        </div>
+        <div class="mk-preview" aria-live="polite"></div>
+        <div class="mk-keys">${MK_KEYS.map(([label, ins, name]) => `<button type="button" class="mk-key${/^\d$/.test(label) ? " mk-digit" : ""}${ins === "back" || ins === "clear" ? " mk-edit" : ""}" data-mk="${escapeAttr(ins)}"${name ? ` aria-label="${name}" title="${name}"` : ""}>${label}</button>`).join("")}</div>
+      </div>`;
+  }
+  function mkPreview(box) {
+    const input = box.querySelector(".mk-input"), out = box.querySelector(".mk-preview");
+    const plain = mkPlain(input.value);
+    if (!plain) { out.textContent = ""; return; }
+    try {
+      const tex = window.LearnAnswer.toTex(window.LearnAnswer.closeOpen(plain));
+      if (window.katex) window.katex.render(tex, out, { throwOnError: false, displayMode: false });
+      else out.textContent = tex;
+    } catch (e) { out.textContent = ""; }
+  }
+  function mkPress(box, ins) {
+    const input = box.querySelector(".mk-input");
+    let v = input.value, a = input.selectionStart, z = input.selectionEnd;
+    if (a == null) a = z = v.length;
+    if (ins === "clear") { v = ""; a = z = 0; }
+    else if (ins === "back") {
+      if (a === z && a > 0) a -= v.slice(0, a).endsWith("√(") ? 2 : v.slice(0, a).endsWith(", ") ? 2 : 1;
+      v = v.slice(0, a) + v.slice(z); z = a;
+    } else { v = v.slice(0, a) + ins + v.slice(z); a = z = a + ins.length; }
+    input.value = v;
+    // The keys never take the focus (mousedown is cancelled), so the caret stays where the
+    // student put it; the box is not focused here, which would open a phone's own keyboard.
+    try { input.setSelectionRange(a, z); } catch (e) {}
+    mkPreview(box);
+  }
+
+  // A check (LQ5): typed with the keyboard, compared by value, then marked and explained in one
+  // line. Nothing shows before an answer, since there are no hints.
+  function learnCheckHtml(l, n, ch) {
+    const key = l.code + "#" + n, saved = learnProgress().checks[key];
+    return `<div class="lc-check" data-check="${escapeAttr(key)}" id="check-${n}">
+        <div class="lc-q"><span class="lc-n">Check ${n}</span> ${ch.q}</div>
+        ${mathKeyboardHtml(saved ? saved.a : "")}
+        <div class="lc-result" hidden></div>
+      </div>`;
+  }
+  function learnCheckResult(el, ch, ok) {
+    const res = el.querySelector(".lc-result");
+    res.hidden = false;
+    res.className = "lc-result " + (ok ? "lc-right" : "lc-wrong");
+    res.innerHTML = `<strong>${ok ? "Right." : "Not quite."}</strong> ${ch.why}`;
+    renderMath(el);
+  }
+
+  // The AoPS-style problem list (LQ6): the statement, a box for the student's work, and Show
+  // Solution, which works only once the box has text. The strategy and the card chain are always
+  // hidden until then, whatever the Strategy setting says.
+  function learnProblemsHtml(refs) {
+    const prog = learnProgress().problems;
+    return `<ol class="lp-problems">${refs.map((ref, i) => {
+      const p = learnProblem(ref);
+      if (!p) return "";
+      const saved = prog[p.slug] || {};
+      const ownFig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
+      return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
+          <div class="lp-prob-head"><span class="lp-prob-n">${i + 1}.</span> <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
+          ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div><p class="prob-credit"></p></section>`
+            : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
+          ${ownFig ? `<div class="diagram prob-own-figure">${ownFig}<div class="prob-own-note">Diagram drawn for this app, not part of the original problem.</div></div>` : ""}
+          <textarea class="lp-notes" rows="4" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
+          <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
+          <div class="prob-chain lp-sol" hidden></div>
+        </li>`;
+    }).join("")}</ol>`;
+  }
+  function learnSolutionHtml(p) {
+    const { chain, altIds, chainCol } = chainParts(p);
+    return `<h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds)}`;
+  }
+  function showLearnSolution(li) {
+    const p = PROBLEM_BY_SLUG[li.dataset.slug], sol = li.querySelector(".lp-sol");
+    if (!p || !sol) return;
+    sol.innerHTML = learnSolutionHtml(p);
+    sol.hidden = false;
+    const btn = li.querySelector(".lp-show");
+    if (btn) btn.hidden = true;
+    renderMath(li);
+  }
+
+  // The lesson prose: the write-up format (§2), with {{check N}} on a line of its own placing a
+  // check. Checks with no marker follow the prose.
+  function learnBodyHtml(l, d) {
+    const checks = d.checks || [], placed = new Set();
+    const parts = String(d.body || "").split(/^\s*\{\{check (\d+)\}\}\s*$/m);
+    let html = "";
+    parts.forEach((part, i) => {
+      if (i % 2) {
+        const n = +part;
+        if (checks[n - 1] && !placed.has(n)) { placed.add(n); html += learnCheckHtml(l, n, checks[n - 1]); }
+      } else if (part.trim()) html += detailBodyHtml(notate(part), "learn:" + l.code);
+    });
+    const rest = checks.map((ch, i) => placed.has(i + 1) ? "" : learnCheckHtml(l, i + 1, ch)).join("");
+    return `<div class="detail-body lp-body">${html}</div>${rest ? `<div class="lp-checks">${rest}</div>` : ""}`;
+  }
+
+  // The card drawer: a card opened from a lesson shows beside it (below it on a phone), so the
+  // student never leaves the page.
+  function openLearnDrawer(id) {
+    const e = BY_ID[id], drawer = $content.querySelector(".lp-drawer");
+    if (!e || !drawer) return;
+    const body = (window.MATH_DETAILS || {})[id];
+    drawer.innerHTML = `<div class="lp-drawer-head">
+          <a class="lp-drawer-full" href="#/f/${id}">Open the full card &rarr;</a>
+          <button type="button" class="lp-drawer-close" aria-label="Close the card">&times;</button>
+        </div>
+        <div class="cards lp-drawer-cards">${cardHtml(e).replace(` data-id="${id}"`, ` data-drawer-id="${id}"`)}</div>
+        ${body ? `<div class="detail-body lp-drawer-body">${detailBodyHtml(notate(body), id)}</div>` : ""}`;
+    drawer.hidden = false;
+    drawer.scrollTop = 0;
+    $content.querySelector(".lp-grid").classList.add("has-drawer");
+    renderMath(drawer);
+    wireProofToggles(drawer);
+    fitCardFormulas(drawer);
+    drawer.querySelector(".lp-drawer-close").focus({ preventScroll: true });
+  }
+  function closeLearnDrawer() {
+    const drawer = $content.querySelector(".lp-drawer");
+    if (!drawer || drawer.hidden) return;
+    drawer.hidden = true;
+    drawer.innerHTML = "";
+    $content.querySelector(".lp-grid").classList.remove("has-drawer");
+  }
+
+  function learnCardChips(ids) {
+    return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link related-item" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join("");
+  }
+  // A lesson or a review: the outline, the reading column and the drawer.
+  function renderLearnLesson(b, c, l) {
+    const d = l ? learnLessonData(c, l) : null;
+    const isReview = !l;
+    const i = l ? c.lessons.indexOf(l) : c.lessons.length;
+    const prev = i > 0 ? c.lessons[i - 1] : null;
+    const next = l ? c.lessons[i + 1] : null;
+    const navLink = (h, t, cls) => `<a class="lp-nav-link ${cls}" href="${h}">${t}</a>`;
+    const nav = `<nav class="lp-nav">
+        ${prev ? navLink(learnHash(b, c, lessonNum(prev)), `&larr; ${prev.code}`, "lp-prev") : `<span></span>`}
+        ${next ? navLink(learnHash(b, c, lessonNum(next)), `${next.code} &rarr;`, "lp-next")
+          : l && learnReview(c).length ? navLink(learnHash(b, c, "review"), "Chapter review &rarr;", "lp-next") : `<span></span>`}
+      </nav>`;
+    let main;
+    if (isReview) {
+      main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
+        <h2 class="learn-h">${c.code} chapter review</h2>
+        <p class="learn-note">Mixed problems from the whole chapter, in rising order. Work each one in its box first; Show Solution opens once you have written something.</p>
+        ${learnProblemsHtml(learnReview(c))}`;
+    } else if (!d) {
+      main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
+        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
+        <p class="learn-note">This lesson is not written yet.</p>`;
+    } else {
+      main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
+        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
+        <div class="lp-cards">
+          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Cards</span>${learnCardChips(d.cards)}</div>` : ""}
+          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes</span>${learnCardChips(d.prereq)}</div>` : ""}
+        </div>
+        ${learnBodyHtml(l, d)}
+        <div class="lp-end" aria-hidden="true"></div>
+        ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+    }
+    $content.innerHTML = `<div class="learn-page lesson-page">
+        ${learnBackRow([[learnHash(b, c), c.code + " " + c.title]])}
+        <div class="lp-grid">
+          ${learnOutlineHtml(b, c, isReview ? "review" : l)}
+          <article class="lp-main">${main}${nav}</article>
+          <aside class="lp-drawer" aria-label="Card" hidden></aside>
+        </div>
+      </div>`;
+    renderMath($content);
+    $content.querySelectorAll(".lc-check").forEach(el => {
+      mkPreview(el);
+      const saved = learnProgress().checks[el.dataset.check];
+      const n = +el.dataset.check.split("#")[1];
+      if (saved && d && d.checks[n - 1]) learnCheckResult(el, d.checks[n - 1], !!saved.ok);
+    });
+    $content.querySelectorAll(".lp-prob").forEach(li => {
+      const p = PROBLEM_BY_SLUG[li.dataset.slug];
+      if (p && MAA_RE.test(p.ref)) showStatement(p, ".lp-st");
+      const saved = learnProgress().problems[li.dataset.slug];
+      if (saved && saved.shown && (saved.notes || "").trim()) showLearnSolution(li);
+    });
+    // A lesson counts as read once its last paragraph has been on screen.
+    const end = $content.querySelector(".lp-end");
+    if (l && d && end && "IntersectionObserver" in window) {
+      const io = new IntersectionObserver(es => {
+        if (!es.some(x => x.isIntersecting)) return;
+        io.disconnect();
+        const prog = learnProgress();
+        if (!prog.read[l.code]) {
+          prog.read[l.code] = Date.now(); saveLearn();
+          const row = $content.querySelector(`.lp-outline .is-current a`);
+          if (row && !row.querySelector(".lb-read")) row.insertAdjacentHTML("beforeend", `<span class="lb-read" title="Read">&#10003;</span>`);
+        }
+      });
+      io.observe(end);
+    }
+  }
+
+  function renderLearn(route) {
+    if (route.lesson || route.review) renderLearnLesson(route.book, route.chapter, route.lesson);
+    else if (route.chapter) renderLearnChapter(route.book, route.chapter);
+    else renderLearnBook(route.book);
+  }
+
+  // The lesson page's own events, delegated once on $content.
+  let learnNotesTimer = 0;
+  $content.addEventListener("click", e => {
+    if (!e.target.closest(".lesson-page")) return;
+    const key = e.target.closest(".mk-key");
+    if (key) { mkPress(key.closest(".mk"), key.dataset.mk); return; }
+    const submit = e.target.closest(".mk-submit");
+    if (submit) { learnSubmitCheck(submit.closest(".lc-check")); return; }
+    const show = e.target.closest(".lp-show");
+    if (show) {
+      const li = show.closest(".lp-prob"), notes = li.querySelector(".lp-notes").value;
+      if (!notes.trim()) return;
+      const prog = learnProgress();
+      prog.problems[li.dataset.slug] = { notes, shown: true };
+      saveLearn();
+      showLearnSolution(li);
+      return;
+    }
+    if (e.target.closest(".lp-drawer-close")) { closeLearnDrawer(); return; }
+    // A card link in the lesson opens in the drawer instead of leaving the page.
+    const link = e.target.closest(".lp-main .card-link[data-card], .lp-drawer-body .card-link[data-card]");
+    if (link && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      hideCardPreview();
+      openLearnDrawer(link.dataset.card);
+    }
+  }, true);
+  function learnSubmitCheck(el) {
+    if (!el) return;
+    const route = getRoute();
+    const d = route.type === "learn" && route.lesson ? learnLessonData(route.chapter, route.lesson) : null;
+    const n = +el.dataset.check.split("#")[1], ch = d && d.checks[n - 1];
+    const typed = mkPlain(el.querySelector(".mk-input").value);
+    if (!ch || !typed) return;
+    const res = el.querySelector(".lc-result");
+    try { window.LearnAnswer.parse(typed); }
+    catch (err) {
+      res.hidden = false; res.className = "lc-result lc-unread";
+      res.textContent = "This answer cannot be read yet: check the brackets and the signs.";
+      return;
+    }
+    const ok = window.LearnAnswer.same(typed, ch.answer);
+    learnProgress().checks[el.dataset.check] = { a: typed, ok };
+    saveLearn();
+    learnCheckResult(el, ch, ok);
+  }
+  $content.addEventListener("input", e => {
+    const input = e.target.closest(".lesson-page .mk-input");
+    if (input) { mkPreview(input.closest(".mk")); return; }
+    const notes = e.target.closest(".lesson-page .lp-notes");
+    if (!notes) return;
+    const li = notes.closest(".lp-prob");
+    li.querySelector(".lp-show").disabled = !notes.value.trim();
+    clearTimeout(learnNotesTimer);
+    learnNotesTimer = setTimeout(() => {
+      const prog = learnProgress(), cur = prog.problems[li.dataset.slug] || {};
+      if (!notes.value.trim() && !cur.shown) delete prog.problems[li.dataset.slug];
+      else prog.problems[li.dataset.slug] = Object.assign(cur, { notes: notes.value });
+      saveLearn();
+    }, 400);
+  });
+  $content.addEventListener("keydown", e => {
+    const input = e.target.closest(".lesson-page .mk-input");
+    if (input && e.key === "Enter") { e.preventDefault(); learnSubmitCheck(input.closest(".lc-check")); }
+    else if (e.key === "Escape" && e.target.closest(".lp-drawer")) closeLearnDrawer();
+  });
+  $content.addEventListener("mousedown", e => { if (e.target.closest(".lesson-page .mk-key")) e.preventDefault(); });
 
   // Study lists that match a search, built-in and the reader's own, by name, level, subject,
   // blurb and section titles. Generic words ("formulas", "list", "study") are ignored, so
@@ -5789,8 +6193,8 @@
 
   // The "How this problem works" box. With Settings -> Practice -> Strategy on "Click to show",
   // its contents wait behind a button so the reader can try the problem first.
-  function chainBoxHtml(p, chainCol, chain, altIds) {
-    const inner = `${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
+  function chainInnerHtml(p, chainCol, chain, altIds) {
+    return `${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
           ${chainCol("Pattern", chain.pattern, "Not classified yet")}
@@ -5798,31 +6202,40 @@
           ${chainCol("Formulas", chain.formula, "&mdash;")}
         </div>
         ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}`;
+  }
+  // How this problem works: its tags split by kind into the chain Pattern -> Method ->
+  // Formulas. A link nobody has classified yet is shown as missing, never invented.
+  // The second good route's cards (the "Alternatively, ..." paragraph) sit in the same three
+  // columns, outlined dashed, so both routes read as Pattern -> Method -> Formulas.
+  function chainParts(p) {
+    const chain = { pattern: [], method: [], formula: [] };
+    p.formulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
+    p.trickFormulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
+    const altIds = new Set(p.trickFormulas);
+    const chainChip = fid => `<a class="related-item${altIds.has(fid) ? " chain-alt-card" : ""}" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
+    // One box: the strategy in a few sentences, then the three cards it connects side by side.
+    const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
+    return { chain, altIds, chainCol };
+  }
+  function chainBoxHtml(p, chainCol, chain, altIds) {
+    const inner = chainInnerHtml(p, chainCol, chain, altIds);
     const hide = state.strategy === "click" && (p.strategy || p.formulas.length);
     return `<div class="prob-chain"><h4>How this problem works</h4>
         ${hide ? `<button type="button" class="show-more-btn chain-reveal" onclick="this.nextElementSibling.hidden=false;this.remove()">Show the strategy</button><div class="chain-hidden" hidden>${inner}</div>` : inner}
       </div>`;
   }
 
+  const backToLearnHtml = key => backFromLearn && backFromLearn.to === key
+    ? `<a class="back-link" href="${backFromLearn.hash}" data-history-back>&larr; Back to ${escapeAttr(backFromLearn.label)}</a>` : "";
   function renderProblemDetail(slug) {
     const p = PROBLEM_BY_SLUG[slug];
     if (!p) { location.hash = "#/practice"; return; }
     noteRecent("p:" + p.slug);
     shownIds = [];
     const types = p.types.map(t => `<a class="ptype-chip" href="${TOPICS_BY_ID[t.id] ? tagHash([TOPICS_BY_ID[t.id].label]) : "#/topic/" + t.id}">${escapeAttr(t.label)}</a>`).join("");
-    // How this problem works: its tags split by kind into the chain Pattern -> Method ->
-    // Formulas. A link nobody has classified yet is shown as missing, never invented. It sits
-    // near the bottom of the page: the problem itself, and thinking about it, come first.
-    // The second good route's cards (the "Alternatively, ..." paragraph) sit in the same three
-    // columns, outlined dashed, so both routes read as Pattern -> Method -> Formulas.
-    const chain = { pattern: [], method: [], formula: [] };
-    p.formulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
-    p.trickFormulas.forEach(fid => chain[kindOf(BY_ID[fid].formula)].push(fid));
-    const altIds = new Set(p.trickFormulas);
-    const chainChip = fid => `<a class="related-item${altIds.has(fid) ? " chain-alt-card" : ""}" href="#/f/${fid}">${BY_ID[fid].formula.name}</a>`;
-    // One box, always open: the strategy in a few sentences, then the three cards it connects
-    // side by side. No hints and no staged reveals: the page explains how the problem works.
-    const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
+    // How this problem works sits near the bottom of the page: the problem itself, and thinking
+    // about it, come first.
+    const { chain, altIds, chainCol } = chainParts(p);
     const chainHtml = chainBoxHtml(p, chainCol, chain, altIds);
     // A geometry problem printed without a figure gets one drawn for the app
     // (js/data/diagrams/problem-diagrams.js), labelled as ours so it is never taken for the MAA's.
@@ -5831,6 +6244,7 @@
     $content.innerHTML = `
       <div class="detail">
         <div class="back-row">
+          ${backToLearnHtml("problem:" + p.slug)}
           ${backFromProblem && backFromProblem.slug === p.slug && BY_ID[backFromProblem.fid]
             ? `<a class="back-link" href="#/f/${backFromProblem.fid}">&larr; Back to ${escapeAttr(BY_ID[backFromProblem.fid].formula.name)}</a>`
             : ""}
@@ -5876,11 +6290,14 @@
   // because the query is still sitting in the search box and "take me back to it" stays a
   // fair offer. Any other navigation calls clearSearch(), which drops it.
   let backFromSearch = null;    // { query, adv }
+  // A problem or card opened from a lesson or a review: one hop back to it. The link steps back
+  // in history, so the lesson opens where the student was reading.
+  let backFromLearn = null;     // { to: route key, hash, label }
   let prevRoute = null, prevRouteKey = null;
 
   function routeKey(r) {
     return r.type + ":" + (r.entry ? r.entry.formula.id
-      : r.slug || r.listId || (r.labels ? r.labels.join("+") : "") || r.fam || (r.name ? r.name + "/" + r.arg : "")
+      : r.slug || r.listId || r.key || (r.labels ? r.labels.join("+") : "") || r.fam || (r.name ? r.name + "/" + r.arg : "")
       || (r.section ? [r.section.id, r.section.topic, r.section.sub].join("/") : ""));
   }
   function trackOrigin(route) {
@@ -5893,6 +6310,10 @@
     if (key === prevRouteKey) return;
     const prev = prevRoute;
     prevRoute = route; prevRouteKey = key;
+    if ((route.type === "problem" || route.type === "formula") && prev && prev.type === "learn") {
+      backFromLearn = { to: key, hash: learnHash(prev.book, prev.chapter, prev.lesson ? lessonNum(prev.lesson) : prev.review ? "review" : null),
+        label: prev.lesson ? prev.lesson.code : prev.review ? prev.chapter.code + " review" : prev.chapter.code };
+    } else if (!backFromLearn || backFromLearn.to !== key) backFromLearn = null;
     if (route.type === "formula" || route.type === "problem") {
       if (prev && prev.type === "home" && (state.query.trim() || state.adv)) {
         backFromSearch = { query: state.query, adv: state.adv };
@@ -6427,6 +6848,8 @@
       renderSpecial(route);
     } else if (route.type === "space") {
       renderSpaceHome(route.name);
+    } else if (route.type === "learn") {
+      renderLearn(route);
     } else if (state.query.trim()) {
       renderSearchResults();
     } else if (state.landing) {
@@ -6455,7 +6878,7 @@
     document.body.dataset.space = onLanding ? "home" : route.type === "settings" || searching ? "none" : state.space;
     // A list page's sidebar holds only the list's sections, under "On this list", drawn in the
     // same panel as a card's "On this page", so the section being read is marked the same way.
-    const noSidebar = onLanding || searching || ["problems", "problem", "lists", "settings", "space"].indexOf(route.type) !== -1
+    const noSidebar = onLanding || searching || ["problems", "problem", "lists", "settings", "space", "learn"].indexOf(route.type) !== -1
       || (route.type === "list" && !$content.querySelector(".list-section[id]"));
     const $tree = document.getElementById("formula-nav");
     if ($tree) $tree.hidden = route.type === "list";
