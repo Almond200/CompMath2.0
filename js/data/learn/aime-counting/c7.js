@@ -73,7 +73,7 @@ Both refinements reduce an expected value to probabilities of simple events. Whe
 The next lesson splits an expectation into cases and sets up equations for processes.`,
       related: [
         { card: "derangements", note: String.raw`the exact count of permutations with no fixed point (C3.3).` },
-        { card: "order-statistics", note: String.raw`the expected maximum or minimum of uniform real numbers (C9.3).` },
+        { card: "order-statistics", note: String.raw`the expected maximum or minimum of uniform real numbers (C9.4).` },
         { card: "geometric-distribution", note: String.raw`a waiting time whose tails are powers, so its expectation is a geometric series (C7.5).` }
       ],
       exercises: [

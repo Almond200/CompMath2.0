@@ -76,7 +76,7 @@ Treat any count of linear arrangements with local rules as a tiling, look at one
       related: [
         { card: "linear-recurrence", note: String.raw`the closed form behind a tiling recursion (A3.1).` },
         { card: "non-adjacent-selection", note: String.raw`no two adjacent chosen objects, a tiling by squares and "domino-like" blocks (C2.4).` },
-        { card: "transfer-matrix-method", note: String.raw`the systematic form of several-state recursions (C9.4).` }
+        { card: "transfer-matrix-method", note: String.raw`the systematic form of several-state recursions (C9.5).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can a $2 \times 8$ board be tiled with $1 \times 2$ dominoes?`, answer: "34",
@@ -107,7 +107,7 @@ Fill a table whenever each position depends only on positions one move away. The
       related: [
         { card: "grid-paths", note: String.raw`the closed form for paths without obstacles, as a check on the table (C5.6).` },
         { card: "turn-based-games", note: String.raw`games with chance, where positions get probabilities instead of labels (C7.5).` },
-        { card: "strategy-stealing", note: String.raw`proving the first player wins without finding the strategy (C9.4).` }
+        { card: "strategy-stealing", note: String.raw`proving the first player wins without finding the strategy (C9.5).` }
       ],
       exercises: [
         { q: String.raw`How many up-and-right lattice paths from $(0, 0)$ to $(4, 4)$ avoid the point $(2, 2)$?`, answer: "34",

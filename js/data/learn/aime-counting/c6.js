@@ -119,7 +119,7 @@ Multiply for independent trials, use the binomial formula for counts of successe
       related: [
         { card: "drawing-without-replacement", note: String.raw`the counting setup behind the hypergeometric formula (C6.2).` },
         { card: "binomial-theorem", note: String.raw`the binomial probabilities add to $(p + (1 - p))^n = 1$ (C4.5).` },
-        { card: "generating-function-method", note: String.raw`the distribution of a sum of independent counts as a product of polynomials (C9.1).` }
+        { card: "generating-function-method", note: String.raw`the distribution of a sum of independent counts as a product of polynomials (C9.2).` }
       ],
       exercises: [
         { q: String.raw`A fair coin is flipped $5$ times. What is the probability of exactly $3$ heads?`, answer: "5/16",
@@ -189,7 +189,7 @@ Turn uniform random numbers into a point in a region, draw the event, and divide
       related: [
         { card: "perpendicular-bisector-locus", note: String.raw`the boundary of "closer to one point than another".` },
         { card: "thales-theorem", note: String.raw`a right angle at $P$ means $P$ is on a circle, the boundary for obtuse-angle conditions.` },
-        { card: "order-statistics", note: String.raw`the distribution of the largest or smallest of several uniform numbers (C9.3).` }
+        { card: "order-statistics", note: String.raw`the distribution of the largest or smallest of several uniform numbers (C9.4).` }
       ],
       exercises: [
         { q: String.raw`Two numbers $x$ and $y$ are chosen independently and uniformly from $[0, 1]$. What is the probability that $|x - y| \le \tfrac13$?`, answer: "5/9",

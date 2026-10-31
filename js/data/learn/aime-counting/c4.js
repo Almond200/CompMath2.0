@@ -115,7 +115,7 @@ Use symmetry to replace a count by a fraction, and Burnside whenever objects rel
       related: [
         { card: "necklace-formula", note: String.raw`Burnside for the rotations of a circle (C2.3).` },
         { card: "wlog-symmetry", note: String.raw`assuming an order because the problem is symmetric (A8.1).` },
-        { card: "permutation-cycle-structure", note: String.raw`the cycles of a symmetry, which decide what it fixes (C9.2).` }
+        { card: "permutation-cycle-structure", note: String.raw`the cycles of a symmetry, which decide what it fixes (C9.3).` }
       ],
       exercises: [
         { q: String.raw`The vertices of a square are colored with $3$ colors. How many colorings are there if colorings that differ by a rotation are the same?`, answer: "24",

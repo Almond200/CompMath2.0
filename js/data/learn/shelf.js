@@ -1607,19 +1607,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C9.1",
-      "title": "Generating functions for simple coefficient counts"
+      "title": "Introduction"
      },
      {
       "code": "C9.2",
-      "title": "More symmetry: Burnside in depth, cycle structure"
+      "title": "Generating functions for simple coefficient counts"
      },
      {
       "code": "C9.3",
-      "title": "Geometric probability beyond simple regions"
+      "title": "More symmetry: Burnside in depth, cycle structure"
      },
      {
       "code": "C9.4",
+      "title": "Geometric probability beyond simple regions"
+     },
+     {
+      "code": "C9.5",
       "title": "More recursions and random processes; games"
+     },
+     {
+      "code": "C9.6",
+      "title": "Summary"
      }
     ]
    }

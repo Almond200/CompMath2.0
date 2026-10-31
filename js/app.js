@@ -5803,15 +5803,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // The AoPS-style problem list (LQ6): the statement, a box for the student's work, and Show
   // Solution, which works only once the box has text. The strategy and the card chain are always
   // hidden until then, whatever the Strategy setting says.
-  function learnProblemsHtml(refs) {
+  // Every problem has a label that names it uniquely (owner, 2026-10-31): a page's contest problems
+  // are numbered on from its own problems, so with three own problems the first contest problem
+  // of C1.2 is Problem C1.2.4. The old chapter reviews use Problem N3.R.1, N3.R.2, ...
+  function learnProblemsHtml(refs, name) {
     const prog = learnProgress().problems;
+    name = name || (i => `${i + 1}.`);
     // Easiest first, harder after (owner, 2026-10-31), whatever order the file lists them in.
     const probs = refs.map(learnProblem).filter(Boolean).map((p, k) => ({ p, k }))
       .sort((x, y) => difficultyScore(x.p) - difficultyScore(y.p) || x.k - y.k).map(x => x.p);
     return `<ol class="lp-problems">${probs.map((p, i) => {
       const saved = prog[p.slug] || {};
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
-          <div class="lp-prob-head"><span class="lp-prob-n">${i + 1}.</span> <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
+          <div class="lp-prob-head"><span class="lp-prob-n">${name(i)}</span>${/\.$/.test(name(i)) ? "" : ` <span class="lp-prob-sep">&middot;</span>`} <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
           ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div><p class="prob-credit"></p></section>`
             : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
           <div class="lp-work">
@@ -5853,13 +5857,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkifyCards(r.note)}</li>`).join("")}</ul>` : ""}
       ${learnExercisesHtml(ex, i => `Problem ${l.code}.${i + 1}`)}`;
   }
-  // A list of our own problems, then their worked solutions, each under the problem stated again.
+  // A page's contest problems and then the solutions of its own problems, labels numbered on.
+  function learnTailHtml(code, ex, refs, heading) {
+    const name = i => `Problem ${code}.${i + 1}`;
+    return `${refs.length ? `<h3 class="lp-h3">${heading}</h3>${learnProblemsHtml(refs, i => name(ex.length + i))}` : ""}
+      ${learnSolutionsHtml(ex, name)}`;
+  }
+  // A page's problems run in the order: our own problems, the contest problems, then the worked
+  // solutions of our own problems, each under the problem stated again (owner, 2026-10-31).
   function learnExercisesHtml(ex, name) {
     return `${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
         <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}">
             <div class="lx-head"><span class="lx-n">${name(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-sol-${i + 1}">Jump to solution</button></div>
-            <div class="lx-q">${x.q}</div></li>`).join("")}</ol>
-        <h3 class="lp-h3" id="lx-solutions">Solutions</h3>
+            <div class="lx-q">${x.q}</div></li>`).join("")}</ol>` : ""}`;
+  }
+  function learnSolutionsHtml(ex, name) {
+    return `${ex.length ? `<h3 class="lp-h3" id="lx-solutions">Solutions</h3>
         <div class="lx-sols">${ex.map((x, i) => `<div class="lx-sol" id="lx-sol-${i + 1}">
             <div class="lx lx-again">
               <div class="lx-head"><span class="lx-n">${name(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-${i + 1}">Back to problem</button></div>
@@ -5973,7 +5986,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        ${(d.problems || []).length ? `<h3 class="lp-h3">Exercises</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+        ${learnTailHtml(l.code, d.exercises || [], d.problems || [], "Exercises")}`;
   }
   function renderLearnLesson(b, c, l, end) {
     const d = l ? learnLessonData(c, l) : null;
@@ -5985,13 +5998,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h"><span class="lb-code">${learnEndCode(c, kind)}</span> ${LEARN_END[kind]}</h2>
         <p class="learn-note">${kind === "review" ? "Problems that check the ideas of the whole chapter, mostly direct uses of them." : "Harder problems that combine the chapter's ideas, in rising order of difficulty."}</p>
-        ${learnExercisesHtml(set.exercises, i => `Problem ${learnEndCode(c, kind)}.${i + 1}`)}
-        ${set.problems.length ? `<h3 class="lp-h3">Contest problems</h3>${learnProblemsHtml(set.problems)}` : ""}`;
+        ${learnExercisesHtml(set.exercises || [], i => `Problem ${learnEndCode(c, kind)}.${i + 1}`)}
+        ${learnTailHtml(learnEndCode(c, kind), set.exercises || [], set.problems || [], "Contest problems")}`;
     } else if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h">${c.code} chapter review</h2>
         <p class="learn-note">Mixed problems from the whole chapter, in rising order of difficulty.</p>
-        ${learnProblemsHtml(learnReview(c))}`;
+        ${learnProblemsHtml(learnReview(c), i => `Problem ${c.code}.R.${i + 1}`)}`;
     } else if (!d) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>

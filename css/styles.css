@@ -3975,6 +3975,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .lp-prob { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
 .lp-prob-head { font-weight: 700; margin-bottom: 8px; }
 .lp-prob-n { color: var(--bk-ink, var(--c-learn)); margin-right: 4px; }
+.lp-prob-sep { color: var(--text-faint); margin-right: 4px; }
 .lp-prob-head a { color: var(--text); text-decoration: none; }
 .lp-prob-head a:hover { color: var(--bk-ink, var(--c-learn)); text-decoration: underline; }
 .lp-prob .prob-st { margin: 0 0 10px; }

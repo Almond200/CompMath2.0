@@ -81,7 +81,7 @@ Fix one object when all are distinct; use the necklace formula, or list the symm
       related: [
         { card: "burnsides-lemma", note: String.raw`counting arrangements up to any group of symmetries (C4.4).` },
         { card: "gap-method", note: String.raw`choosing gaps between already-placed objects, used around circles too (C2.4).` },
-        { card: "permutation-cycle-structure", note: String.raw`a rotation by $j$ of $n$ positions splits them into $\gcd(j, n)$ cycles (C9.2).` }
+        { card: "permutation-cycle-structure", note: String.raw`a rotation by $j$ of $n$ positions splits them into $\gcd(j, n)$ cycles (C9.3).` }
       ],
       exercises: [
         { q: String.raw`Six people sit at a round table, and arrangements that differ by a rotation are the same. In how many arrangements do two particular people sit next to each other?`, answer: "48",
@@ -146,7 +146,7 @@ Use stars and bars whenever a count is the number of ways to write a total as an
       related: [
         { card: "pie", note: String.raw`the subtraction of solutions that break upper bounds (C3.2).` },
         { card: "coefficient-extraction", note: String.raw`the same count as a coefficient of a power of a polynomial.` },
-        { card: "partitions", note: String.raw`identical objects into identical groups, where order of parts does not matter (C9.1).` },
+        { card: "partitions", note: String.raw`identical objects into identical groups, where order of parts does not matter (C9.2).` },
         { card: "surjections", note: String.raw`distinct objects into labeled groups with none empty (C2.6).` }
       ],
       exercises: [

@@ -40,6 +40,8 @@ The [[inclusion-exclusion|principle of inclusion-exclusion]] says $|A \cup B| = 
 
 The formula also runs in reverse. If the problem gives the sizes of the sets and of the union, or the number of objects in exactly one, exactly two and exactly three sets, the unknown is an intersection, and the principle is an equation for it. With two sets, $|A \cap B| = |A| + |B| - |A \cup B|$, so the overlap is smallest when the union is as large as possible. With several sets, count incidences: the sum of the set sizes counts each object once for every set it is in, so it equals $1 \cdot (\text{number in exactly one}) + 2 \cdot (\text{exactly two}) + \cdots$, a double count that often gives the missing equation.
 
+When inclusion-exclusion is surely the right method but the intersections will not come out, or the algebra grows out of hand, the sets are usually the wrong ones. Redefine them before pushing the computation further: take their complements, so that the wanted objects are the ones in none of the sets, or describe the condition by different properties. For the five-letter strings over $A$, $B$, $C$ that use all three letters, the natural sets "contains $A$", "contains $B$", "contains $C$" have intersections that need an inclusion-exclusion of their own. The sets "misses $A$", "misses $B$", "misses $C$" have intersections that are single products: $2^5$ strings miss a given letter, $1$ misses two given letters, and none misses all three. So $3^5 - 3 \cdot 2^5 + 3 \cdot 1 = 150$ strings use every letter. A good choice of sets is one in which every intersection is a single product or a single binomial coefficient.
+
 Use inclusion-exclusion when the condition is "at least one of" several properties whose intersections are easy to count, and when the problem gives some of these sizes and asks for another. The next lesson applies it to permutations with forbidden positions.`,
       related: [
         { card: "floor-multiples", note: String.raw`counting the multiples of $d$ up to $n$, the size of each intersection in divisibility problems.` },
@@ -174,6 +176,7 @@ Every count can be made directly by casework or indirectly by a complement. The 
       strategies: [
         String.raw`For "at least one of", write each condition as a set, check that every intersection is easy to count, and add and subtract by layers.`,
         String.raw`When the size of an intersection depends only on how many conditions are in it, write each layer as $\binom{n}{k}$ times one count.`,
+        String.raw`If inclusion-exclusion seems right but the intersections are messy or the algebra gets out of hand, redefine the sets: use their complements, or describe the condition by different properties, until every intersection is one product.`,
         String.raw`For "none of", count the union and subtract it from the total.`,
         String.raw`For "exactly $k$", choose the $k$ conditions that hold, then require none of the others.`,
         String.raw`When a problem gives the sizes of some of the regions of a Venn diagram, fill in the regions from the inside out.`,
