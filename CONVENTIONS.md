@@ -921,6 +921,9 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Our own problem figures** show only inside How this problem works, never with the statement, and with no "drawn for this app" note.
 - **Wide screens and phones are separate.** A phone change sits inside a phone media query and never alters the wide layout. Sticky elements need `overflow-x: clip`, never `hidden`, on `html` and `body`.
 - **Small action buttons** (the new-list +, Show / Hide) are solid tints that only brighten slightly on hover.
+- **Dialogs are modal for the keyboard too.** A dialog opens with `trapModal(overlay, firstSelector)` and closes with `releaseModal(overlay, restore)`: the focus goes in, Tab stays inside, the "/" shortcut is off, and the focus returns to the opener, except after a link to a new page. A toggle chip carries `aria-pressed`.
+- **Import is all or nothing.** `importProgress` stages every value (lists merged on a copy) and keeps the old ones. If any write fails, everything is put back, and the message says whether the rollback worked. A new stored key joins `PROGRESS_KEYS` and follows the same path.
+- **The lab pages** (`lab/`): a page-wide key shortcut never takes Enter or Space from a focused link or button. A failed save shows a one-time notice instead of failing silently.
 
 ## 14. Learn: books, chapters, lessons and problem sets (PLAN step L3, 2026-10-31; revised through the seventeenth chat)
 
