@@ -26,7 +26,7 @@
   1. N3.2 to N3.5 into `n3.js` (the outline gives each lesson's opening question, teaching points, cards, checks and problems).
   2. Fill N2's review to 8 to 12 (candidates from `crt`, `modular-inverse`, `euclids-lemma`; 1992 AIME #11 and 1994 AIME #12 still to read), then write N2 into `aime-number-theory/n2.js` and load it from `index.html`.
   3. Then L7 (the "Practice more" link at the end of a chapter, "Study this in Learn" on a problem page, a missed review problem pointing back) and L8, the owner tries the pilot.
-- **Also done in the seventeenth chat (owner's requests):** the Learn page shows the books as covers that open a book view with a contents sidebar; more room around "Your lists"; Practice's "Study lists ... are under Learn" line removed; the home page redesigned (L10).
+- **Also done in the seventeenth chat (owner's requests):** the Learn page shows the books as covers that open a book view with a contents sidebar; more room around "Your lists"; Practice's "Study lists ... are under Learn" line removed; the home page redesigned (L10), then made dense with the top bar kept and hairline sections instead of boxes; lessons and books in Recently opened; the book sidebar stays put while the page scrolls.
 - **For the owner to try now:** the home page; Learn → a book cover → N3 → N3.1 (`#/learn/aime-number-theory/n3/1`), and the N3 review.
 
 ## The road ahead: the Learn track (owner, 2026-10-31)
@@ -146,7 +146,7 @@ The owner tries it (LQ10). Then settle the sizes and the placement rule (LQ8) an
 Write chapter by chapter from the approved outline: first one representative chapter each in Algebra, Geometry, and Counting & Probability, then every Core chapter, then Core II, then Extension. Commit each chapter, about every 25 problems placed, as the standing preference asks. Rebuild the search index at the end of the step if lessons become searchable (to be decided with L3).
 
 ### L10. The home page (redesigned 2026-10-31 at the owner's word, ahead of the plan)
-Done in the seventeenth chat: a centred title and search, five equal space tiles (Learn added), Textbooks with the book covers and "Continue learning" beside the problem of the day, then even rows of the smaller panels. The text below was the earlier plan; the owner asked for the redesign directly instead.
+Done in the seventeenth chat, in two passes. The second (the owner disliked big boxes and open space): the top bar stays, a one-line title, a strip of the five spaces, then a main column (Continue, problem of the day, newest cards, practice at a glance) and a rail (textbooks as rows, card of the day, did you know, your library), with hairline-divided sections instead of boxes. The text below was the earlier plan; the owner asked for the redesign directly instead.
 
 
 The front page matters little for now, and it is settled once a few things are working (LQ2). Then, show the owner two or three mock-ups as screenshots, for example a Learn tile and a "Continue learning" panel, and which current panels stay. Nothing on the home page changes before the owner chooses.
