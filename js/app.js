@@ -2680,6 +2680,23 @@
     if (container === $content) fitObserver.disconnect();
     cards.forEach(c => fitObserver.observe(c));
   }
+  // Printing (owner, 2026-10-31): cards far down a page are typeset only as they come near the
+  // screen, so before a print every card still waiting is typeset, or its math would print raw.
+  // This runs for the browser's own Print as well as for a list's "Print this list".
+  function prepareMathForPrint() {
+    const waiting = [...$content.querySelectorAll('.card[data-math="0"]')];
+    waiting.forEach(c => {
+      c.dataset.math = "1";
+      if (fitObserver) fitObserver.unobserve(c);
+      renderMath(c);
+    });
+    if (waiting.length) fitBatch(waiting.flatMap(c => [...c.querySelectorAll(".formula-display[data-latex]")]));
+  }
+  window.addEventListener("beforeprint", prepareMathForPrint);
+  if (window.matchMedia) {
+    const pm = window.matchMedia("print");
+    if (pm.addEventListener) pm.addEventListener("change", e => { if (e.matches) prepareMathForPrint(); });
+  }
   let fitTimer = 0;
   window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => { fitCardFormulas($content); fitInlineMath($content); }, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitCardFormulas($content));
@@ -4014,7 +4031,7 @@
     if (!b) return;
     const what = b.dataset.listTool;
     if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
-    else if (what === "print") window.print();
+    else if (what === "print") { prepareMathForPrint(); window.print(); }
     else if (what === "link") {
       const url = location.href;
       const done = () => toast("Link copied");
