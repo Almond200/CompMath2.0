@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **W6 and W7 written (2026-10-31).** W6 exponent tracking and divisor functions, inverses, Euler and Wilson, Kummer, Pascal parity, sums of two squares and bounding; W7 restricted strings, capped distributions, Catalan numbers, Vandermonde, multinomials and generating functions, invariants and colorings, Bayes and indicators, first-step analysis and continuous probability.
 - **W3 to W5 written (2026-10-31).** W3 linear recurrences and Binet, finite differences and arithmetico-geometric sums, the chain of means, Cauchy-Schwarz and Bernoulli; W4 special values, addition and double angles, harmonic addition, inverse functions, cosine products and even powers; W5 complex arithmetic, polar form and De Moivre, roots of unity and the fundamental theorem.
 - **AMC 12 book begun: W1 and W2 written (2026-10-31).** W1 logarithmic equations, functional equations and floors; W2 Vieta and Newton for any degree, conjugate roots, Descartes and root transformations, polynomial remainders and interpolation, denesting and reciprocal substitutions, and the factorizations worth knowing.
 - **T9 written; the AMC 10 book is complete (2026-10-31).** T9.1 polygon angles and areas, regular polygons and segments, T9.2 coordinates, distances, shoelace and Pick, T9.3 reflections, rotations, folds and symmetry, T9.4 diagonals, regions and shapes in figures, T9.5 solids, painted cubes, nets and Euler, T9.6 estimating and counterexamples.
