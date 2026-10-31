@@ -3436,9 +3436,12 @@ html[data-density="compact"] .set-row { padding: 8px 0; }
 .set-preview[data-focus~="subject"] .pv-screen[data-pv="subject"],
 .set-preview[data-focus~="problem"] .pv-screen[data-pv="problem"],
 .set-preview[data-focus~="lesson"] .pv-screen[data-pv="lesson"] { opacity: 1; }
-/* In the lesson preview the drawer sits in the grid beside the text, never floating. */
+/* In the lesson preview the drawer sits in the grid beside the text, never floating, and nothing
+   sticks: the screen is a still picture. */
 .pv-inner .lp-drawer { position: static; max-height: none; box-shadow: none; }
 .pv-inner .lp-grid.has-drawer { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; }
+.pv-inner .bk-rail { position: static; }
+.pv-inner .content, .pv-inner .bk-view { margin: 0; }
 .pv-track { display: flex; flex-direction: column; gap: 8px; align-self: stretch; align-items: center; }
 .pv-screen[hidden] { display: none; }
 /* The arrows that step through the screens, one on each side of the panel. */
