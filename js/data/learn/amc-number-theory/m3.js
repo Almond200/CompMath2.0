@@ -50,7 +50,7 @@ A [[modular-inverse|modular inverse]] of $a$ modulo $n$ is a number $b$ with $ab
 Invert by the extended algorithm, reduce exponents by Euler, and use Wilson for factorials. The last lesson of the chapter treats binomial coefficients and bounded equations.`,
       related: [
         { card: "crt", note: String.raw`combining congruences (M2.3).` },
-        { card: "multiplicative-order", note: String.raw`the exact period of powers (N3.3).` },
+        { card: "multiplicative-order", note: String.raw`the exact period of powers (N3.4).` },
         { card: "cycle-hunting", note: String.raw`finding periods by listing (M2.2).` }
       ],
       exercises: [

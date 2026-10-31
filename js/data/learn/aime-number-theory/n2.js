@@ -43,7 +43,7 @@ When the factor to be cancelled shares something with the modulus, cancelling is
 A multiplication by an invertible number also shuffles the residues without repeating any, which is how inverses show up in counting problems: a rule that sends seat $i$ to seat $ai$ modulo $n$ visits every seat exactly when $a$ is coprime to $n$. The signal for this lesson is a congruence to be solved for an unknown multiplied by a constant, or any step that wants to divide.`,
       related: [
         { card: "extended-euclidean-algorithm", note: String.raw`the way to compute an inverse when the modulus is too large to try multiples (N2.4).` },
-        { card: "fermats-little-theorem", note: String.raw`for a prime modulus, $a^{p-2}$ is the inverse of $a$ (N3.2).` },
+        { card: "fermats-little-theorem", note: String.raw`for a prime modulus, $a^{p-2}$ is the inverse of $a$ (N3.3).` },
         { card: "modular-basics", note: String.raw`the rules for adding and multiplying congruences that this lesson uses at every step.` }
       ],
       exercises: [
@@ -109,7 +109,7 @@ The signal is an equation $ax + by = c$ in integers, a question about which amou
     "N2.5": {
       prereq: ["modular-inverse"],
       cards: ["crt"],
-      body: String.raw`Many conditions on an integer come as remainders for several moduli at once: odd, a multiple of $3$, and $4$ more than a multiple of $25$. The [[crt|Chinese Remainder Theorem]] says that when the moduli are pairwise coprime, such a list of remainders pins the integer down to exactly one residue modulo their product. The number that is $1$ modulo $4$ and $4$ modulo $25$ is $29$ modulo $100$, and nothing else below $100$ will do; this pair returns in N3.5, where it gives the last two digits of $3^{2026}$.
+      body: String.raw`Many conditions on an integer come as remainders for several moduli at once: odd, a multiple of $3$, and $4$ more than a multiple of $25$. The [[crt|Chinese Remainder Theorem]] says that when the moduli are pairwise coprime, such a list of remainders pins the integer down to exactly one residue modulo their product. The number that is $1$ modulo $4$ and $4$ modulo $25$ is $29$ modulo $100$, and nothing else below $100$ will do; this pair returns in N3.6, where it gives the last two digits of $3^{2026}$.
 
 The theorem is a counting argument. Modulo $mn$ there are $mn$ residues, and each one has a pair of remainders, one modulo $m$ and one modulo $n$; there are also exactly $mn$ such pairs. Two residues with the same pair differ by a multiple of both $m$ and $n$, and since $m$ and $n$ are coprime, a multiple of both is a multiple of $mn$, so the two residues are equal. Different residues therefore have different pairs, and with as many pairs as residues, every pair occurs exactly once. The same holds for any number of pairwise coprime moduli.
 
@@ -119,7 +119,7 @@ The theorem also runs in the other direction, which is often the more useful one
       related: [
         { card: "crt-solution-counting", note: String.raw`the count of solutions of a congruence is the product of the counts modulo the coprime pieces (N2.6).` },
         { card: "modular-inverse", note: String.raw`the inverse used in each substitution step.` },
-        { card: "eulers-theorem", note: String.raw`the tool that most often works on one piece of a split modulus (N3.4 and N3.5).` }
+        { card: "eulers-theorem", note: String.raw`the tool that most often works on one piece of a split modulus (N3.5 and N3.6).` }
       ],
       exercises: [
         { q: String.raw`Find the residue $x$ from $0$ to $98$ with $x \equiv 4 \pmod 9$ and $x \equiv 5 \pmod{11}$.`, answer: "49",

@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), N1 and N2, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N3, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -955,7 +955,7 @@ Eight chapters. The changes from the first draft are three:
 - **N2.2:** solve $7x \equiv 3 \pmod{10}$. The inverse of $7$ is $3$, so $x \equiv 9$. Check: the inverse of $13$ modulo $22$ is $17$.
 - **N2.3:** $6x \equiv 4 \pmod{10}$ has the solutions $x \equiv 4, 9$ (divide by $\gcd(6, 10) = 2$ to get $3x \equiv 2 \pmod 5$). Check: $6x \equiv 3 \pmod{10}$ has none, since $2 \nmid 3$.
 - **N2.4:** $21x + 15y = 3$ has the solution $(x, y) = (-2, 3)$, and no combination of $21$ and $15$ makes $1$.
-- **N2.5:** find $x \equiv 1 \pmod 4$, $x \equiv 4 \pmod{25}$. Answer: $x = 29$. This example comes back in N3.5. Check: $x \equiv 4 \pmod 9$ and $x \equiv 5 \pmod{11}$ give $x = 49$.
+- **N2.5:** find $x \equiv 1 \pmod 4$, $x \equiv 4 \pmod{25}$. Answer: $x = 29$. This example comes back in N3.6. Check: $x \equiv 4 \pmod 9$ and $x \equiv 5 \pmod{11}$ give $x = 49$.
 - **N2.6:** $x^2 \equiv 1 \pmod{1000}$ has $8$ solutions modulo $1000$: $4$ modulo $8$ times $2$ modulo $125$.
 
 **Problems (all read 2026-10-31; each route uses its lesson's idea):**
@@ -983,13 +983,17 @@ Eight chapters. The changes from the first draft are three:
 
 **Changes from the first draft (the proposal's repairs):**
 - CRT is now taught in N2, and Euler's theorem gets a lesson of its own.
-- N3.1 separates eventual periodicity from a cycle that starts at the first power.
+- N3.2 separates eventual periodicity from a cycle that starts at the first power.
 - Problems that need later topics (lifting, digits, recurrences) moved to later chapters.
 - The comparison lesson became a worked comparison with mixed problems.
 
 **2018 AIME I #11:** the proposal flagged its annotation for a recheck. The reading is right: the order of $3$ is $5$ modulo $121$ and $39$ modulo $169$ (computed). The wording is now explicit about which number is the base.
 
-#### N3.1 Powers modulo $n$: direct cycles and eventual periodicity
+#### N3.1 Introduction
+
+No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler, splitting the modulus), with comprehension problems.
+
+#### N3.2 Powers modulo $n$: direct cycles and eventual periodicity
 
 - **Opening question:** what is the units digit of $7^{202}$? The powers of $7$ mod $10$ run $7, 9, 3, 1$ and then repeat, and $202 = 4\cdot50 + 2$, so the digit is $9$.
 - **Teach:** there are only finitely many residues, so the powers must repeat. When the base is coprime to the modulus, the cycle starts at the first power. When it is not, the powers settle into a cycle only after a few steps: $2^n \bmod 12$ runs $2, 4, 8, 4, 8, \ldots$ (eventual period $2$).
@@ -1005,7 +1009,7 @@ Eight chapters. The changes from the first draft are three:
   - 2017 AIME I #3 (read: the units digits of triangular numbers repeat with period $20$);
   - 2025 AMC 12B #9 (read: $6^n \bmod 100$ repeats every $5$ only from $6^2$ on, eventual periodicity with a base not coprime to $100$; challenging).
 
-#### N3.2 Fermat's Little Theorem: prime modulus and coprimality
+#### N3.3 Fermat's Little Theorem: prime modulus and coprimality
 
 - **Opening question:** what is $2^{1000} \bmod 13$? Fermat gives $2^{12} \equiv 1$, $1000 = 12 \cdot 83 + 4$, and $2^4 = 16 \equiv 3$.
 - **Teach:** a prime modulus guarantees a period of $p - 1$, but only for a base coprime to $p$. Show a misuse: $13^{1000} \bmod 13$ is $0$, not $1$.
@@ -1018,7 +1022,7 @@ Eight chapters. The changes from the first draft are three:
   - 1989 AIME #9 (read: $n^5 \equiv n \pmod 5$, with CRT from N2 and a size bound);
   - 2002 AIME I #7 (read: $10^6 \equiv 1 \pmod 7$; it also needs the generalized binomial expansion that its statement gives, so it is marked a challenge).
 
-#### N3.3 Multiplicative order and the divisibility of periods
+#### N3.4 Multiplicative order and the divisibility of periods
 
 - **Opening question:** what is $3^{202} \bmod 13$? Fermat promises period $12$, but $3^3 = 27 \equiv 1$, so the period is $3$, and $202 = 3 \cdot 67 + 1$ gives $3$.
 - **Teach:** the smallest period is the order, and it divides every exponent that gives $1$, including $p - 1$. So only the divisors of $p - 1$ need checking.
@@ -1031,10 +1035,10 @@ Eight chapters. The changes from the first draft are three:
   - 2019 AIME I #14 (read: an order of exactly $16$ forces $p \equiv 1 \pmod{16}$; answer $97$).
 - **Moved:** 2016 AMC 12B #22 goes to N6.4, where repeating decimals are taught.
 
-#### N3.4 Euler's theorem and the totient function
+#### N3.5 Euler's theorem and the totient function
 
 - **Opening question:** what is $3^{2026} \bmod 100$? $\varphi(100) = 40$ gives $3^{40} \equiv 1$. The order is in fact $20$, and $2026 \equiv 6 \pmod{20}$, so $3^6 = 729$ gives $29$.
-- **Teach:** Euler's theorem extends Fermat to any modulus coprime to the base. Compute $\varphi$ from the factorization. Euler's period is guaranteed, like Fermat's, but it need not be the smallest (link to N3.3).
+- **Teach:** Euler's theorem extends Fermat to any modulus coprime to the base. Compute $\varphi$ from the factorization. Euler's period is guaranteed, like Fermat's, but it need not be the smallest (link to N3.4).
 - **Cards:** `eulers-theorem`, `eulers-totient`, `carmichael-function` (a link, for the smallest universal period).
 - **Checks:**
   - $\varphi(100) = 40$;
@@ -1043,7 +1047,7 @@ Eight chapters. The changes from the first draft are three:
 - **Problems:**
   - 2024 AMC 10B #18, with its twin 2024 AMC 12B #14 (read: $\varphi(125) = 100$ gives remainder $1$, and multiples of $5$ give $0$; choice B).
 
-#### N3.5 Orders with CRT; bases not coprime to the modulus
+#### N3.6 Orders with CRT; bases not coprime to the modulus
 
 - **Opening question:** what is $2^{2026} \bmod 100$? Euler does not apply, because $2$ shares a factor with $100$. Split the modulus:
   - $2^{2026} \equiv 0 \pmod 4$;
@@ -1067,6 +1071,10 @@ Eight chapters. The changes from the first draft are three:
 - **Problems:**
   - 2011 AIME I #11 (read: the order of $2$ mod $125$ is $100$, joined by CRT with mod $8$; answer $7$);
   - 2018 AIME I #11 (read: the order of $3$ is $5$ mod $121$ and $39$ mod $169$, joined by lcm; answer $195$).
+
+#### N3.7 Summary
+
+No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review Problems and N3.9 Challenge Problems.
 
 #### N3 chapter review (8 problems; every one read)
 

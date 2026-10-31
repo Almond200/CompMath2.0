@@ -55,7 +55,7 @@ Reduce early, use negative residues, invert only coprime numbers, and test equat
       related: [
         { card: "modular-inverse", note: String.raw`inverses modulo $n$ in general (N2.3).` },
         { card: "crt", note: String.raw`combining congruences to different moduli (N2.5).` },
-        { card: "fermats-little-theorem", note: String.raw`$a^{p-1} \equiv 1 \pmod p$, the first general power rule (N3.2).` }
+        { card: "fermats-little-theorem", note: String.raw`$a^{p-1} \equiv 1 \pmod p$, the first general power rule (N3.3).` }
       ],
       exercises: [
         { q: String.raw`Find the remainder when $999 \cdot 998$ is divided by $1000$.`, answer: "2",
@@ -87,8 +87,8 @@ Reduce early, use negative residues, invert only coprime numbers, and test equat
 Tabulate until a repeat, note where the cycle begins and its length, and reduce. The next lesson solves equations in integers.`,
       related: [
         { card: "periodic-sequences", note: String.raw`sequences that repeat, in general (B2.4).` },
-        { card: "multiplicative-order", note: String.raw`the exact period of $a^k \bmod n$ and why it divides $\varphi(n)$ (N3.2).` },
-        { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1 \pmod n$, a period that always works (N3.2).` }
+        { card: "multiplicative-order", note: String.raw`the exact period of $a^k \bmod n$ and why it divides $\varphi(n)$ (N3.3).` },
+        { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1 \pmod n$, a period that always works (N3.3).` }
       ],
       exercises: [
         { q: String.raw`What is the last digit of $7^{2026}$?`, answer: "9",

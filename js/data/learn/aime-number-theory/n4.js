@@ -68,7 +68,7 @@ The signal is a binomial coefficient with a question about a prime factor, its p
       related: [
         { card: "legendres-formula", note: String.raw`the three Legendre sums whose difference is the valuation of $\binom nk$.` },
         { card: "lucas-theorem", note: String.raw`the remainder of $\binom nk$ modulo a prime, read from the base-$p$ digits of $n$ and $k$ (N8).` },
-        { card: "fermats-little-theorem", note: String.raw`one proof of Fermat's theorem expands $(a + 1)^p$ and uses that $p$ divides the middle coefficients (N3.2).` }
+        { card: "fermats-little-theorem", note: String.raw`one proof of Fermat's theorem expands $(a + 1)^p$ and uses that $p$ divides the middle coefficients (N3.3).` }
       ],
       exercises: [
         { q: String.raw`What is the largest two-digit prime factor of $\binom{200}{100}$?`, answer: "61",
@@ -93,7 +93,7 @@ The hypotheses are where [[lte|lifting the exponent]] goes wrong in practice. Th
 
 The signal is a huge difference or sum of like powers, and a question about the largest power of a prime dividing it, or the smallest exponent that makes it divisible by a prime power.`,
       related: [
-        { card: "multiplicative-order", note: String.raw`for a prime that does not divide $a - b$, first find the order to know when $p$ divides $a^n - b^n$ at all, then lift (N3.3).` },
+        { card: "multiplicative-order", note: String.raw`for a prime that does not divide $a - b$, first find the order to know when $p$ divides $a^n - b^n$ at all, then lift (N3.4).` },
         { card: "difference-of-squares", note: String.raw`the factorization $a^{2m} - b^{2m} = (a^m - b^m)(a^m + b^m)$ behind the extra $v_2(a + b)$.` },
         { card: "gcd-power-minus-one", note: String.raw`the gcd of two numbers of the form $a^m - 1$ (N4.5).` }
       ],
@@ -112,15 +112,15 @@ The signal is a huge difference or sum of like powers, and a question about the 
       cards: ["gcd-power-minus-one", "power-minus-self"],
       body: String.raw`Two families of numbers come up often enough to have their own rules: numbers of the form $a^m - 1$, and the polynomial values $n^k - n$. The first family has an exact gcd, $\gcd(a^m - 1, a^n - 1) = a^{\gcd(m, n)} - 1$, so $\gcd(2^{12} - 1, 2^{18} - 1) = 2^6 - 1 = 63$. The second always has a fixed set of prime factors: $n^5 - n$ is a multiple of $30$ for every integer $n$, and $30$ is the largest number with that property.
 
-The gcd rule comes from running the Euclidean algorithm on the exponents. If $m > n$, then $a^m - 1 = a^{m-n}(a^n - 1) + (a^{m-n} - 1)$, so [[gcd-power-minus-one|$\gcd(a^m - 1, a^n - 1) = \gcd(a^{m-n} - 1, a^n - 1)$]]: subtracting the exponents leaves the gcd unchanged. Repeating the subtraction is the Euclidean algorithm on $m$ and $n$, which ends at $\gcd(m, n)$, and so the gcd ends at $a^{\gcd(m,n)} - 1$. In the language of N3.3 this says that a prime dividing both $a^m - 1$ and $a^n - 1$ has an order dividing both $m$ and $n$.
+The gcd rule comes from running the Euclidean algorithm on the exponents. If $m > n$, then $a^m - 1 = a^{m-n}(a^n - 1) + (a^{m-n} - 1)$, so [[gcd-power-minus-one|$\gcd(a^m - 1, a^n - 1) = \gcd(a^{m-n} - 1, a^n - 1)$]]: subtracting the exponents leaves the gcd unchanged. Repeating the subtraction is the Euclidean algorithm on $m$ and $n$, which ends at $\gcd(m, n)$, and so the gcd ends at $a^{\gcd(m,n)} - 1$. In the language of N3.4 this says that a prime dividing both $a^m - 1$ and $a^n - 1$ has an order dividing both $m$ and $n$.
 
 For the second family, Fermat's Little Theorem gives $n^p \equiv n \pmod p$ for every $n$. If $p - 1$ divides $k - 1$, then $n^k = n \cdot (n^{p-1})^{(k-1)/(p-1)}$, which is $n$ modulo $p$ whether or not $p$ divides $n$. So [[power-minus-self|$n^k - n$ is divisible by every prime $p$ with $p - 1 \mid k - 1$]], and for those primes the divisibility holds for all $n$ at once. For $k = 3$ the primes are $2$ and $3$, so $6 \mid n^3 - n$; for $k = 5$ they are $2, 3, 5$, so $30 \mid n^5 - n$; for $k = 13$ they are $2, 3, 5, 7, 13$, whose product is $2730$. No square of a prime divides $n^k - n$ for every $n$, since $n = p$ gives $p^k - p$, with valuation exactly $1$.
 
 The signal for the first rule is a gcd of two numbers that are powers minus one, or a condition like "$a^m - 1$ divides $a^n - 1$" (which holds exactly when $m \mid n$). The signal for the second is a sum of cubes or fifth powers with a remainder condition: since $6 \mid a^3 - a$, a sum of cubes has the same remainder modulo $6$ as the sum of the bases.`,
       related: [
         { card: "euclidean-algorithm", note: String.raw`the subtraction steps that the exponents follow.` },
-        { card: "multiplicative-order", note: String.raw`a prime dividing $a^m - 1$ and $a^n - 1$ has order dividing $\gcd(m, n)$ (N3.3).` },
-        { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n$, the source of the second rule (N3.2).` }
+        { card: "multiplicative-order", note: String.raw`a prime dividing $a^m - 1$ and $a^n - 1$ has order dividing $\gcd(m, n)$ (N3.4).` },
+        { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n$, the source of the second rule (N3.3).` }
       ],
       exercises: [
         { q: String.raw`Find $\gcd(2^{12} - 1, 2^{18} - 1)$.`, answer: "63",

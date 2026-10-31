@@ -65,7 +65,7 @@ Parity alone does a surprising amount, because $2$ is the only even prime. A sum
 Modular arguments rule things out; they rarely find solutions on their own. In practice they are used first, to discard impossible cases and fix residues, and the remaining cases are finished by bounding (N5.5) or factoring (N5.2).`,
       related: [
         { card: "only-even-prime", note: String.raw`parity with primes: an odd sum of two primes uses $2$.` },
-        { card: "fermats-little-theorem", note: String.raw`why $(p - 1)$st powers are $0$ or $1$ modulo $p$, which makes $p$ a good modulus for them (N3.2).` },
+        { card: "fermats-little-theorem", note: String.raw`why $(p - 1)$st powers are $0$ or $1$ modulo $p$, which makes $p$ a good modulus for them (N3.3).` },
         { card: "sum-of-two-squares", note: String.raw`the full answer to which numbers are $x^2 + y^2$, of which the modulo $4$ obstruction is the first step (N5.4).` }
       ],
       exercises: [

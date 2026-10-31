@@ -70,7 +70,7 @@ Both formulas are products over the primes, and that is no accident. A function 
 The signal is a question about how many divisors a number has, what they add or multiply to, or a sum taken over divisors. Factor the number, then think of each divisor as a choice of exponents.`,
       related: [
         { card: "number-of-divisors", note: String.raw`the count $(e_1 + 1) \cdots (e_k + 1)$ that the other two formulas build on.` },
-        { card: "eulers-totient", note: String.raw`another multiplicative function, met again in N3.4.` },
+        { card: "eulers-totient", note: String.raw`another multiplicative function, met again in N3.5.` },
         { card: "geometric-series", note: String.raw`each bracket $1 + p + \cdots + p^e$ in the divisor sum is a finite geometric series.` }
       ],
       exercises: [
@@ -142,14 +142,14 @@ The signal is an equation that can be factored into a product equal to a constan
 
 The multiples of $d$ among $1, 2, \ldots, n$ are $d, 2d, \ldots$, one in each block of $d$ consecutive numbers, so there are [[floor-multiples|$\lfloor \tfrac nd \rfloor$ of them]]. Combined with inclusion and exclusion this counts numbers divisible by at least one of several primes: up to $1000$ there are $333$ multiples of $3$ and $200$ of $5$, and the $66$ multiples of $15$ were counted twice, so $333 + 200 - 66 = 467$ numbers are multiples of $3$ or $5$. A condition such as "divisible by $5$ and a perfect square" usually translates into a single multiple first: a square divisible by $5$ is divisible by $25$.
 
-The numbers from $1$ to $n$ that are coprime to $n$ come in pairs $k$ and $n - k$, since a common factor of $n - k$ and $n$ would also divide $k$. Each pair adds to $n$, so [[coprime-residue-sum|their sum is $\tfrac{n \varphi(n)}{2}$]], where $\varphi(n)$ is how many of them there are. For $n = 30$ the eight numbers $1, 7, 11, 13, 17, 19, 23, 29$ add to $\tfrac{30 \cdot 8}{2} = 120$. The count $\varphi(n)$ itself is taken up properly in N3.4.
+The numbers from $1$ to $n$ that are coprime to $n$ come in pairs $k$ and $n - k$, since a common factor of $n - k$ and $n$ would also divide $k$. Each pair adds to $n$, so [[coprime-residue-sum|their sum is $\tfrac{n \varphi(n)}{2}$]], where $\varphi(n)$ is how many of them there are. For $n = 30$ the eight numbers $1, 7, 11, 13, 17, 19, 23, 29$ add to $\tfrac{30 \cdot 8}{2} = 120$. The count $\varphi(n)$ itself is taken up properly in N3.5.
 
 Finally, [[consecutive-coprime|consecutive integers share no factor]], because any common divisor of $n$ and $n + 1$ divides their difference $1$. More generally a common divisor of $n$ and $n + k$ divides $k$, so $\gcd(n, n + 6)$ is one of $1, 2, 3, 6$, and it is $1$ exactly when $n$ is coprime to $6$. This is what makes equations like $\tfrac{n}{20 - n} = k^2$ finite: rewriting gives $n = \tfrac{20k^2}{k^2 + 1}$, and since $k^2$ and $k^2 + 1$ share no factor, $k^2 + 1$ must divide $20$.
 
 The signal is a count of numbers up to some bound with a divisibility condition, a sum over the residues coprime to a modulus, or a fraction whose numerator and denominator are close together. The Summary (N1.7) collects the chapter's strategies.`,
       related: [
         { card: "inclusion-exclusion", note: String.raw`combining the counts of multiples of several numbers without double counting.` },
-        { card: "eulers-totient", note: String.raw`the number $\varphi(n)$ of residues coprime to $n$ (N3.4).` },
+        { card: "eulers-totient", note: String.raw`the number $\varphi(n)$ of residues coprime to $n$ (N3.5).` },
         { card: "legendres-formula", note: String.raw`counting multiples of $p, p^2, p^3, \ldots$ to find the power of $p$ in a factorial (N4).` }
       ],
       exercises: [

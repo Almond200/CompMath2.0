@@ -176,7 +176,7 @@ Small cases are also the honest check of completeness. After a casework count, r
 
 Simulate when the process is simple to run and the question is about where it ends; work backwards when the end is known; and always test a count on a small case. The Summary (C1.7) collects the chapter's strategies, and the next chapter turns to arrangements and selections.`,
       related: [
-        { card: "cycle-hunting", note: String.raw`finding the period of a process that repeats (N3.1).` },
+        { card: "cycle-hunting", note: String.raw`finding the period of a process that repeats (N3.2).` },
         { card: "recursive-counting", note: String.raw`turning the pattern of small cases into a recursion (C5.2).` },
         { card: "backward-induction", note: String.raw`working backwards through the positions of a game (C5.4).` }
       ],

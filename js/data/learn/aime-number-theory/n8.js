@@ -64,9 +64,9 @@ Quadratic reciprocity says that for distinct odd primes $p$ and $q$, $p$ is a sq
 
 These results rarely appear by name on the AIME, but they explain the patterns that problems about orders and residues rely on.`,
       related: [
-        { card: "multiplicative-order", note: String.raw`a primitive root is a residue of the largest possible order (N3.3).` },
+        { card: "multiplicative-order", note: String.raw`a primitive root is a residue of the largest possible order (N3.4).` },
         { card: "eulers-criterion", note: String.raw`the test $a^{(p-1)/2} \equiv \pm 1$ that reciprocity speeds up (N7.1).` },
-        { card: "eulers-totient", note: String.raw`there are $\varphi(p - 1)$ primitive roots modulo $p$ (N3.4).` }
+        { card: "eulers-totient", note: String.raw`there are $\varphi(p - 1)$ primitive roots modulo $p$ (N3.5).` }
       ],
       exercises: [
         { q: String.raw`What is the order of $3$ modulo $7$? (If it is $6$, then $3$ is a primitive root.)`, answer: "6",
@@ -90,7 +90,7 @@ Sums of squares extend from two to three. A number is a [[sum-of-three-squares|s
 Four further results each answer one kind of question. [[zeckendorf-theorem|Zeckendorf's theorem]]: every positive integer is uniquely a sum of non-consecutive Fibonacci numbers, as $100 = 89 + 8 + 3$. [[mobius-inversion|Möbius inversion]] recovers a function from its sums over divisors, with $\mu(n)$ equal to $(-1)^k$ for a product of $k$ distinct primes and $0$ otherwise, so $\mu(30) = -1$; it is how $\varphi$ is counted by inclusion and exclusion. [[bertrands-postulate|Bertrand's postulate]] guarantees a prime between $n$ and $2n$. The [[farey-sequences|Farey sequence]] of order $n$ lists the reduced fractions in $[0, 1]$ with denominators up to $n$, $1 + \sum_{k \le n} \varphi(k)$ of them, and neighbors $\tfrac ab < \tfrac cd$ in it satisfy $bc - ad = 1$.`,
       related: [
         { card: "sum-of-two-squares", note: String.raw`the two-square theorem that Gaussian integers prove and three squares extend (N5.4).` },
-        { card: "eulers-totient", note: String.raw`the count of Farey fractions, and the function Möbius inversion recovers (N3.4).` },
+        { card: "eulers-totient", note: String.raw`the count of Farey fractions, and the function Möbius inversion recovers (N3.5).` },
         { card: "triangular-numbers", note: String.raw`square triangular numbers, the classic source of a Pell equation.` }
       ],
       exercises: [

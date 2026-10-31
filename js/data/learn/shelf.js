@@ -952,23 +952,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N3.1",
-      "title": "Powers modulo $n$: direct cycles and eventual periodicity"
+      "title": "Introduction"
      },
      {
       "code": "N3.2",
-      "title": "Fermat's Little Theorem: prime modulus and coprimality"
+      "title": "Powers modulo $n$: direct cycles and eventual periodicity"
      },
      {
       "code": "N3.3",
-      "title": "Multiplicative order and the divisibility of periods"
+      "title": "Fermat's Little Theorem: prime modulus and coprimality"
      },
      {
       "code": "N3.4",
-      "title": "Euler's theorem and the totient function"
+      "title": "Multiplicative order and the divisibility of periods"
      },
      {
       "code": "N3.5",
+      "title": "Euler's theorem and the totient function"
+     },
+     {
+      "code": "N3.6",
       "title": "Orders with CRT; bases not coprime to the modulus"
+     },
+     {
+      "code": "N3.7",
+      "title": "Summary"
      }
     ]
    },

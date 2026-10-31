@@ -40,8 +40,8 @@ Patterns modulo a prime power or a product of primes come from combining the pie
 The signal is a power, sum of powers, or binomial raised to a prime, asked modulo a small number. Look for the pattern that makes the power collapse, then reduce.`,
       related: [
         { card: "prime-divides-binomial", note: String.raw`the vanishing middle coefficients behind the freshman's dream (N4.3).` },
-        { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n$, which the freshman's dream proves by expanding $(1 + \cdots + 1)^p$ (N3.2).` },
-        { card: "last-digit-patterns", note: String.raw`the units-digit table that the patterns modulo $10$ extend (N3.1).` }
+        { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n$, which the freshman's dream proves by expanding $(1 + \cdots + 1)^p$ (N3.3).` },
+        { card: "last-digit-patterns", note: String.raw`the units-digit table that the patterns modulo $10$ extend (N3.2).` }
       ],
       exercises: [
         { q: String.raw`What is the remainder when $2^7 + 3^7$ is divided by $7$?`, answer: "5",
@@ -64,7 +64,7 @@ Restrictions on prime divisors come from orders. If an odd prime $p$ divides $n^
 
 The signal is a factorial modulo a prime near it, or a question about which primes can divide a number of a special form. Use Wilson for the first and the order of the base for the second.`,
       related: [
-        { card: "multiplicative-order", note: String.raw`an order of exactly $4$ or $16$ forces the prime's residue modulo $4$ or $16$ (N3.3).` },
+        { card: "multiplicative-order", note: String.raw`an order of exactly $4$ or $16$ forces the prime's residue modulo $4$ or $16$ (N3.4).` },
         { card: "eulers-criterion", note: String.raw`$-1$ is a square modulo $p$ exactly when $p \equiv 1 \pmod 4$ (N7.1).` },
         { card: "modular-inverse", note: String.raw`the pairing of each residue with its inverse that proves Wilson's theorem (N2.2).` }
       ],
@@ -83,14 +83,14 @@ The signal is a factorial modulo a prime near it, or a question about which prim
       cards: ["pisano-periods"],
       body: String.raw`A sequence defined by a recursion becomes periodic as soon as it is read modulo a fixed number, because each term depends only on the few terms before it, and those can take only finitely many values. Modulo $3$ the Fibonacci numbers run $0, 1, 1, 2, 0, 2, 2, 1$ and then start again, so any eight consecutive Fibonacci numbers add to a multiple of $3$. The same reasoning finds the units digit of $F_{2026}$ without computing a number with over four hundred digits.
 
-For a recursion that uses the last $k$ terms, the state is the block of $k$ consecutive residues, and there are at most $m^k$ such blocks modulo $m$, so a block must repeat and the sequence is periodic from there on, exactly as in N3.1. When the recursion can also be run backward, as the Fibonacci rule $F_{n-1} = F_{n+1} - F_n$ can, the sequence repeats from the very start. The period of the Fibonacci numbers modulo $m$ is the [[pisano-periods|Pisano period]]: $3$ modulo $2$, $8$ modulo $3$, $20$ modulo $5$, and $60$ modulo $10$. So the units digit of $F_{2026}$ is that of $F_{46}$, since $2026 \equiv 46 \pmod{60}$, and it is $3$.
+For a recursion that uses the last $k$ terms, the state is the block of $k$ consecutive residues, and there are at most $m^k$ such blocks modulo $m$, so a block must repeat and the sequence is periodic from there on, exactly as in N3.2. When the recursion can also be run backward, as the Fibonacci rule $F_{n-1} = F_{n+1} - F_n$ can, the sequence repeats from the very start. The period of the Fibonacci numbers modulo $m$ is the [[pisano-periods|Pisano period]]: $3$ modulo $2$, $8$ modulo $3$, $20$ modulo $5$, and $60$ modulo $10$. So the units digit of $F_{2026}$ is that of $F_{46}$, since $2026 \equiv 46 \pmod{60}$, and it is $3$.
 
 Parity is the most common case. Modulo $2$ a sequence like $1, 3, 4, 7, 11, 18, \ldots$ with the Fibonacci rule reads odd, odd, even, and repeats with period $3$, which counts its even terms at once. For a recursion with more terms, write the residues until a full block of starting values comes back, and only then reduce the index. The period need not be short, so it is worth checking whether a known period, such as a Pisano period, applies before listing.
 
 The signal is a recursively defined sequence with a question about a remainder, a units digit, or the parity of a far term. Reduce the recursion modulo the number in question and find the period of the residues.`,
       related: [
         { card: "periodic-sequences", note: String.raw`the general method for a far term of any repeating sequence.` },
-        { card: "cycle-hunting", note: String.raw`listing until a value returns, here with blocks of residues as the state (N3.1).` },
+        { card: "cycle-hunting", note: String.raw`listing until a value returns, here with blocks of residues as the state (N3.2).` },
         { card: "linear-recurrence", note: String.raw`closed forms for linear recursions, which say more than their residues (A3.1).` }
       ],
       exercises: [
