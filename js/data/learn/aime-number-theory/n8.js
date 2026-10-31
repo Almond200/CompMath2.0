@@ -10,11 +10,11 @@ window.MATH_LEARN["N8"] = {
 
 [[lucas-theorem|Lucas's theorem]] says that $\binom mn \equiv \prod_i \binom{m_i}{n_i} \pmod p$, where $m_i$ and $n_i$ are the base-$p$ digits of $m$ and $n$. It comes from the freshman's dream: $(1 + x)^{p} \equiv 1 + x^p$, so $(1 + x)^m = \prod_i \left( (1 + x)^{p^i} \right)^{m_i} \equiv \prod_i (1 + x^{p^i})^{m_i}$, and the coefficient of $x^n$ on the right picks one term from each factor, the one with exponent $n_i p^i$. A factor $\binom{m_i}{n_i}$ is $0$ whenever $n_i > m_i$, so $\binom{10}{3} \equiv 0 \pmod 3$: in base $3$, $10 = 101_3$ and $3 = 010_3$, and the middle digit of $3$ exceeds that of $10$. Modulo $2$ every factor is $0$ or $1$, so $\binom mn$ is odd exactly when every binary $1$ of $n$ sits where $m$ also has a $1$; for each $1$ of $m$ the digit of $n$ is free, which gives [[pascal-parity|$2^{s_2(m)}$ odd entries in row $m$]].
 
-[[kummers-theorem|Kummer's theorem]] gives the exact power: $v_p\binom{m + n}{m}$ equals the number of carries when $m$ and $n$ are added in base $p$. This is the floor-sum formula of N4.3 read digit by digit, since each term of that sum is $1$ exactly when the corresponding digit position carries. For $50 + 50 = 100$ in binary, $110010 + 110010 = 1100100$ carries three times, so $v_2\binom{100}{50} = 3$.
+[[kummers-theorem|Kummer's theorem]] gives the exact power: $v_p\binom{m + n}{m}$ equals the number of carries when $m$ and $n$ are added in base $p$. This is the floor-sum formula of (N4.4) read digit by digit, since each term of that sum is $1$ exactly when the corresponding digit position carries. For $50 + 50 = 100$ in binary, $110010 + 110010 = 1100100$ carries three times, so $v_2\binom{100}{50} = 3$.
 
 These tools matter when a problem works modulo a prime with Pascal's triangle, as in counting the ways to fill a triangle's bottom row so that its top entry is divisible by $3$.`,
       related: [
-        { card: "prime-divides-binomial", note: String.raw`the case $\binom pk$, and the Legendre-sum formula that Kummer refines (N4.3).` },
+        { card: "prime-divides-binomial", note: String.raw`the case $\binom pk$, and the Legendre-sum formula that Kummer refines ((N4.4)).` },
         { card: "freshmans-dream", note: String.raw`$(1 + x)^p \equiv 1 + x^p$, the identity behind Lucas's theorem (N7.2).` },
         { card: "base-conversion", note: String.raw`writing $m$ and $n$ in base $p$ (N6.1).` }
       ],
@@ -41,7 +41,7 @@ The signal is a polynomial congruence modulo a prime power or a number with larg
       related: [
         { card: "crt", note: String.raw`splitting the modulus into prime powers before lifting (N2.5).` },
         { card: "crt-solution-counting", note: String.raw`counting solutions as a product over prime powers, where Hensel gives each count (N2.6).` },
-        { card: "lte-lemma", note: String.raw`a lifting argument for valuations of $a^n - b^n$ (N4.4).` }
+        { card: "lte-lemma", note: String.raw`a lifting argument for valuations of $a^n - b^n$ ((N4.5)).` }
       ],
       exercises: [
         { q: String.raw`List the solutions of $x^2 \equiv -1 \pmod{25}$ with $0 \le x < 25$.`, answer: "7, 18",

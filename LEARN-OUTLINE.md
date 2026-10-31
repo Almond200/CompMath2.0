@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N3, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N4, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1090,7 +1090,7 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | 2025 AIME II #13 | $2^{2^k}$ modulo $1000$ through Euler and CRT, after a rational recursion (challenging) |
 
 **Moved out of N3:**
-- 2020 AIME I #12 needs LTE, so it goes to N4.4.
+- 2020 AIME I #12 needs LTE, so it goes to N4.5.
 - 2024 AIME I #13 needs Hensel lifting, so it goes to N8.2.
 - 2023 AIME II #15 needs inverses and binary expansions, so it goes to the N6 review.
 
@@ -1100,11 +1100,13 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 | Lesson | Cards |
 |---|---|
-| N4.1 $v_p(n)$, the exponent of a prime in an integer | `p-adic-valuation` |
-| N4.2 Legendre's formula, trailing zeros, factoring out factorials | `legendres-formula`, `trailing-zeros`, `factor-out-factorial`, `consecutive-product-factorial` |
-| N4.3 When a prime divides a binomial coefficient | `prime-divides-binomial` |
-| N4.4 Lifting the Exponent: the common cases and their hypotheses | `lte-lemma`, `lte` (problem: 2020 AIME I #12, moved here from N3; read) |
-| N4.5 Valuations with bounds on integer solutions | `gcd-power-minus-one`, `power-minus-self` |
+| N4.1 Introduction | no card (the chapter's opening page: valuations, Legendre's formula, primes in binomial coefficients, Lifting the Exponent, with comprehension problems) |
+| N4.2 $v_p(n)$, the exponent of a prime in an integer | `p-adic-valuation` |
+| N4.3 Legendre's formula, trailing zeros, factoring out factorials | `legendres-formula`, `trailing-zeros`, `factor-out-factorial`, `consecutive-product-factorial` |
+| N4.4 When a prime divides a binomial coefficient | `prime-divides-binomial` |
+| N4.5 Lifting the Exponent: the common cases and their hypotheses | `lte-lemma`, `lte` (problem: 2020 AIME I #12, moved here from N3; read) |
+| N4.6 Valuations with bounds on integer solutions | `gcd-power-minus-one`, `power-minus-self` |
+| N4.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N4.8 Review Problems and N4.9 Challenge Problems |
 
 ### N5. Diophantine equations and constraints (Core)
 

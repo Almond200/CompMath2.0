@@ -987,23 +987,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N4.1",
-      "title": "$v_p(n)$, the exponent of a prime in an integer"
+      "title": "Introduction"
      },
      {
       "code": "N4.2",
-      "title": "Legendre's formula, trailing zeros, factoring out factorials"
+      "title": "$v_p(n)$, the exponent of a prime in an integer"
      },
      {
       "code": "N4.3",
-      "title": "When a prime divides a binomial coefficient"
+      "title": "Legendre's formula, trailing zeros, factoring out factorials"
      },
      {
       "code": "N4.4",
-      "title": "Lifting the Exponent: the common cases and their hypotheses"
+      "title": "When a prime divides a binomial coefficient"
      },
      {
       "code": "N4.5",
+      "title": "Lifting the Exponent: the common cases and their hypotheses"
+     },
+     {
+      "code": "N4.6",
       "title": "Valuations with bounds on integer solutions"
+     },
+     {
+      "code": "N4.7",
+      "title": "Summary"
      }
     ]
    },

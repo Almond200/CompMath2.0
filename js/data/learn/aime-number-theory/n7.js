@@ -33,13 +33,13 @@ The signal is an equation or expression involving squares with a divisibility or
       cards: ["freshmans-dream"],
       body: String.raw`Powers modulo a fixed number fall into a few patterns that are worth knowing before a problem asks for them. Fourth powers modulo $16$ are only $0$ and $1$, fifth powers modulo $10$ end in the same digit as the base, and a power of a number ending in $25$ keeps ending in $25$. Behind several of these sits one identity, $(a + b)^p \equiv a^p + b^p \pmod p$, which is called the freshman's dream because it is the mistake beginners make in ordinary algebra, but it is exactly true modulo a prime.
 
-The [[freshmans-dream|freshman's dream]] follows from N4.3: in the expansion of $(a + b)^p$ every middle coefficient $\binom pk$ is a multiple of $p$, so only $a^p$ and $b^p$ survive. Applied repeatedly it gives $(a_1 + \cdots + a_n)^p \equiv a_1^p + \cdots + a_n^p$, and with every $a_i = 1$ it gives $n^p \equiv n$, a second proof of Fermat's Little Theorem. It also explains why, modulo $7$, $2^7 + 3^7 \equiv (2 + 3)^7 = 5^7 \equiv 5$.
+The [[freshmans-dream|freshman's dream]] follows from (N4.4): in the expansion of $(a + b)^p$ every middle coefficient $\binom pk$ is a multiple of $p$, so only $a^p$ and $b^p$ survive. Applied repeatedly it gives $(a_1 + \cdots + a_n)^p \equiv a_1^p + \cdots + a_n^p$, and with every $a_i = 1$ it gives $n^p \equiv n$, a second proof of Fermat's Little Theorem. It also explains why, modulo $7$, $2^7 + 3^7 \equiv (2 + 3)^7 = 5^7 \equiv 5$.
 
 Patterns modulo a prime power or a product of primes come from combining the pieces. A fourth power modulo $16$: an odd $n$ has $n^2 \equiv 1 \pmod 8$, so $n^4 = (n^2)^2 \equiv 1 \pmod{16}$, and an even $n$ has $16 \mid n^4$. Modulo $5$, every fourth power of a number not divisible by $5$ is $1$, so the sum $1^4 + 2^4 + \cdots + 10^4$ is congruent to the count of terms not divisible by $5$, which is $8 \equiv 3$. Last-two-digit questions about a power are often settled by noticing that the base ends in $25$, $76$, or $01$, endings that reproduce themselves under multiplication, or by the order arguments of N3.
 
 The signal is a power, sum of powers, or binomial raised to a prime, asked modulo a small number. Look for the pattern that makes the power collapse, then reduce.`,
       related: [
-        { card: "prime-divides-binomial", note: String.raw`the vanishing middle coefficients behind the freshman's dream (N4.3).` },
+        { card: "prime-divides-binomial", note: String.raw`the vanishing middle coefficients behind the freshman's dream ((N4.4)).` },
         { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n$, which the freshman's dream proves by expanding $(1 + \cdots + 1)^p$ (N3.3).` },
         { card: "last-digit-patterns", note: String.raw`the units-digit table that the patterns modulo $10$ extend (N3.2).` }
       ],
