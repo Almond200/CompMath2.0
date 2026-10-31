@@ -5380,7 +5380,7 @@
   }
 
   // The lesson: its explanation all in one piece (the write-up format, §2), then its own problems,
-  // then their worked solutions (owner, 2026-10-31: practice to work through, not checks to pass;
+  // then their worked solutions, each under the problem stated again (owner, 2026-10-31: practice to work through, not checks to pass;
   // no answer box and no marking). The contest problems follow in their own list.
   function learnBodyHtml(l, d) {
     const ex = d.exercises || [];
@@ -5392,7 +5392,11 @@
             <div class="lx-q">${x.q}</div></li>`).join("")}</ol>
         <h3 class="lp-h3" id="lx-solutions">Solutions</h3>
         <div class="lx-sols">${ex.map((x, i) => `<div class="lx-sol" id="lx-sol-${i + 1}">
-            <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-${i + 1}">Back to problem</button></div>
+            <div class="lx lx-again">
+              <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-${i + 1}">Back to problem</button></div>
+              <div class="lx-q">${x.q}</div>
+            </div>
+            <p class="lx-sol-h">Solution for Problem ${num(i)}:</p>
             <div class="lx-s">${x.solution}</div></div>`).join("")}</div>` : ""}`;
   }
 

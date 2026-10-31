@@ -3898,8 +3898,11 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 /* A hairline across the card under the label and "Jump to solution" (owner, 2026-10-31). */
 .lx > .lx-head { margin: 0; padding: 9px 16px; border-bottom: 1px solid var(--border); align-items: center; }
 .lx > .lx-q { padding: 12px 16px 14px; }
-.lx-sol { padding: 12px 0; border-top: 1px solid var(--border); }
-.lx-sol:first-child { border-top: none; padding-top: 4px; }
+/* A solution: the problem's card again, then "Solution for Problem ...:" and the worked solution. */
+.lx-sol { margin: 0 0 26px; }
+.lx-sol .lx-again { margin-bottom: 10px; }
+.lx-sol-h { margin: 0 0 4px; font-size: 15px; font-style: italic; color: var(--text-dim); }
+.lx-sol > .lx-s { padding: 0 2px; }
 .lx-q, .lx-s { font-size: 15.5px; line-height: 1.75; color: var(--text); }
 .lx-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
 .lx-n { font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--bk-ink, var(--c-learn)); }
