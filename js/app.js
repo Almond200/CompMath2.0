@@ -5452,8 +5452,8 @@
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
         <div class="lp-cards">
-          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Cards</span>${learnCardChips(d.cards)}</div>` : ""}
-          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes</span>${learnCardChips(d.prereq)}</div>` : ""}
+          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you</span>${learnCardChips(d.cards)}</div>` : ""}
+          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
         ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
