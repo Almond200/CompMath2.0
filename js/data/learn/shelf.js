@@ -1512,23 +1512,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G6.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G6.2",
       "title": "Reflections, rotations, translations",
       "level": "Core"
      },
      {
-      "code": "G6.2",
+      "code": "G6.3",
       "title": "Transformations with complex numbers or coordinates",
       "level": "Core II"
      },
      {
-      "code": "G6.3",
+      "code": "G6.4",
       "title": "Vectors: addition, dot products, projections",
       "level": "Core II"
      },
      {
-      "code": "G6.4",
+      "code": "G6.5",
       "title": "A transformation for shortest paths and repeated shapes",
       "level": "Core II"
+     },
+     {
+      "code": "G6.6",
+      "title": "Summary"
      }
     ]
    },

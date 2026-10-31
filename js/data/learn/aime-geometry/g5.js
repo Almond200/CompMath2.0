@@ -76,9 +76,9 @@ The [[euler-line-ratio|Euler line]] relation $\overrightarrow{OH} = \overrightar
 
 When several centers appear, place them on the Euler line, use the nine-point circle for midpoints and feet, and Euler's formula for the incenter. The next lesson studies the triangles formed by midpoints and feet.`,
       related: [
-        { card: "vector-bash", note: String.raw`the vector identity $H = A + B + C$ with the circumcenter at the origin (G6.3).` },
+        { card: "vector-bash", note: String.raw`the vector identity $H = A + B + C$ with the circumcenter at the origin (G6.4).` },
         { card: "incenter-excenter-lemma", note: String.raw`the source of Euler's distance formula (G5.2).` },
-        { card: "homothety-monge", note: String.raw`the homothety at $G$ with ratio $-\tfrac12$ that takes $H$ to $O$ (G6.4).` }
+        { card: "homothety-monge", note: String.raw`the homothety at $G$ with ratio $-\tfrac12$ that takes $H$ to $O$ (G6.5).` }
       ],
       exercises: [
         { q: String.raw`The triangle with sides $13$, $14$, $15$ has circumradius $\tfrac{65}{8}$ and inradius $4$. Find the distance between its circumcenter and incenter.`, answer: "sqrt(65)/8",
@@ -157,7 +157,7 @@ The [[fermat-point|Fermat point]] minimizes $PA + PB + PC$; when all angles are 
 
 When one of these figures appears, apply its standard move: rotate by $60^\circ$, put centers on bisectors, erect equilateral triangles, or reflect medians. The Summary (G5.7) collects the chapter's strategies, and the next chapter studies transformations in general.`,
       related: [
-        { card: "rotation-trick", note: String.raw`rotating part of a figure to bring three lengths into one triangle (G6.2).` },
+        { card: "rotation-trick", note: String.raw`rotating part of a figure to bring three lengths into one triangle (G6.3).` },
         { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles at the Fermat point (G3.2).` },
         { card: "geometric-series", note: String.raw`the radii of a chain of circles in an angle.` }
       ],

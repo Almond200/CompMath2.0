@@ -17,7 +17,7 @@ Use barycentrics when many ratios along cevians must be combined, and an affine 
       related: [
         { card: "mass-points", note: String.raw`barycentric coordinates are mass points with signs (G1.5).` },
         { card: "rouths-theorem", note: String.raw`the area of the triangle cut out by three cevians (G1.5).` },
-        { card: "linear-change-of-variables", note: String.raw`linear maps and the factor by which they scale areas (G6.4).` }
+        { card: "linear-change-of-variables", note: String.raw`linear maps and the factor by which they scale areas (G6.5).` }
       ],
       exercises: [
         { q: String.raw`A point $P$ inside triangle $ABC$ has barycentric coordinates $(1 : 2 : 3)$. Find $\tfrac{[PBC]}{[ABC]}$.`, answer: "1/6",
@@ -61,7 +61,7 @@ These relations are tools to recognize rather than formulas to recompute. The la
       related: [
         { card: "exradii", note: String.raw`the excircles and their radii (G2.5).` },
         { card: "medial-triangle", note: String.raw`the triangle of midpoints, the inverse of the anticomplementary triangle (G5.4).` },
-        { card: "homothety-monge", note: String.raw`homotheties between circles (G6.4).` }
+        { card: "homothety-monge", note: String.raw`homotheties between circles (G6.5).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$ the Euler line is parallel to $BC$, and $\tan B = \tfrac32$. Find $\tan C$.`, answer: "2",

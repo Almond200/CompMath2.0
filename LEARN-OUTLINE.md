@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G5 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G6 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1242,10 +1242,12 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G6.1 Reflections, rotations, translations (Core) | `reflection-coordinates`, `reflection-composition`, `rotation-90`, `rotation-reflection-matrices`, `composing-transformations`, `rotated-line-angle` |
-| G6.2 Transformations with complex numbers or coordinates (Core II) | `complex-bash`, `rotation-trick`, `rotation-center`, `spiral-similarity` |
-| G6.3 Vectors: addition, dot products, projections (Core II) | `vector-dot-product`, `vector-projection`, `vector-bash`, `closing-polygon-vectors` |
-| G6.4 A transformation for shortest paths and repeated shapes (Core II) | `reflect-across-the-line`, `homothety-monge`, `axis-stretch-area`, `linear-change-of-variables`, *(pattern)* `folded-paper` |
+| G6.1 Introduction | no card (the chapter's opening page: reflections, rotations and translations, complex numbers and coordinates, vectors, shortest paths, homothety and folding, with comprehension problems) |
+| G6.2 Reflections, rotations, translations (Core) | `reflection-coordinates`, `reflection-composition`, `rotation-90`, `rotation-reflection-matrices`, `composing-transformations`, `rotated-line-angle` |
+| G6.3 Transformations with complex numbers or coordinates (Core II) | `complex-bash`, `rotation-trick`, `rotation-center`, `spiral-similarity` |
+| G6.4 Vectors: addition, dot products, projections (Core II) | `vector-dot-product`, `vector-projection`, `vector-bash`, `closing-polygon-vectors` |
+| G6.5 A transformation for shortest paths and repeated shapes (Core II) | `reflect-across-the-line`, `homothety-monge`, `axis-stretch-area`, `linear-change-of-variables`, *(pattern)* `folded-paper` |
+| G6.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G6.7 Review Problems and G6.8 Challenge Problems |
 
 ### G7. Polygons, regular figures and grids (Core)
 

@@ -81,7 +81,7 @@ Draw the radii to the points of contact and find the right triangle, or set a di
       related: [
         { card: "triangle-of-centers", note: String.raw`joining centers of tangent circles (S1.5).` },
         { card: "tangency-equation", note: String.raw`writing tangency in coordinates (S4.2).` },
-        { card: "homothety-monge", note: String.raw`where common tangents meet (G6.4).` }
+        { card: "homothety-monge", note: String.raw`where common tangents meet (G6.5).` }
       ],
       exercises: [
         { q: String.raw`Circles of radii $2$ and $7$ have centers $13$ apart. Find the length of a common internal tangent between its points of contact.`, answer: "2sqrt(22)",

@@ -190,7 +190,7 @@ When a figure has a right angle, a trapezoid, or a median, consider these constr
       related: [
         { card: "thales-theorem", note: String.raw`the right angle in a semicircle, which puts the altitude-on-hypotenuse picture into circle problems (G2.3).` },
         { card: "apollonius-theorem", note: String.raw`the median length that median doubling proves (G1.4).` },
-        { card: "folded-paper", note: String.raw`folds that create right triangles with altitudes (G6.4).` }
+        { card: "folded-paper", note: String.raw`folds that create right triangles with altitudes (G6.5).` }
       ],
       exercises: [
         { q: String.raw`A right triangle has legs $6$ and $8$. Find the length of the altitude to the hypotenuse.`, answer: "24/5",

@@ -5,6 +5,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G6"] = {
   lessons: {
     "G6.1": {
+      prereq: ["distance-midpoint", "eulers-formula", "law-of-cosines"],
+      cards: [],
+      body: String.raw`This chapter moves figures instead of measuring them. Its tools are reflections, rotations and translations and their compositions, transformations written with complex numbers or coordinates, vectors with the dot product, and the transformations that solve shortest-path, similarity and folding problems.
+
+A reflection in a line, a rotation about a point and a translation all keep lengths and angles, so a figure can be moved to a better position without changing what is asked. In coordinates the reflection in $y = x$ swaps the coordinates and the reflection in the $x$-axis changes the sign of $y$; composing two reflections in lines that meet at an angle $\theta$ gives a rotation by $2\theta$.
+
+A rotation by $90^\circ$ counterclockwise about the origin sends $(x, y)$ to $(-y, x)$, which is multiplication by $i$ in the complex plane; about another point, translate that point to the origin first. Multiplying by $re^{i\theta}$ rotates by $\theta$ and scales by $r$, a spiral similarity.
+
+A vector has a length and a direction, and the dot product $\mathbf u \cdot \mathbf v = |\mathbf u||\mathbf v|\cos\theta$, computed coordinatewise as $u_1v_1 + u_2v_2$, gives angles and projections: $(1, 2) \cdot (3, 4) = 11$, and a zero dot product means perpendicular vectors.
+
+Some problems are solved by one transformation. The shortest path from a point to a line and on to another point is found by reflecting the second point across the line, which makes the path straight. A homothety, a scaling from a center, maps a circle to a circle and a figure to a similar one. Stretching one axis changes all areas by the same factor, and a fold is a reflection in the crease.
+
+The lessons take these ideas in turn: reflections, rotations and translations (G6.2), transformations with complex numbers or coordinates (G6.3), vectors (G6.4), and a transformation for shortest paths and repeated figures (G6.5). The Summary (G6.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`The point $(3, 5)$ is reflected in the line $y = x$, and the image is reflected in the $x$-axis. Find the sum of the coordinates of the result.`, answer: "2",
+          solution: String.raw`Reflecting in $y = x$ swaps the coordinates: $(5, 3)$. Reflecting in the $x$-axis negates the second: $(5, -3)$. The sum is $2$.` },
+        { q: String.raw`The point $(2, 1)$ is rotated $90^\circ$ counterclockwise about $(1, 1)$. Find the sum of the coordinates of its image.`, answer: "3",
+          solution: String.raw`Translate so that $(1, 1)$ is the origin: $(1, 0)$. Rotating by $90^\circ$ gives $(0, 1)$. Translating back gives $(1, 2)$, with coordinate sum $3$.` },
+        { q: String.raw`Find the dot product of $(1, 2)$ and $(3, 4)$.`, answer: "11",
+          solution: String.raw`Multiply coordinatewise and add: $1 \cdot 3 + 2 \cdot 4 = 11$.` }
+      ],
+      problems: [
+        "2019 AMC 12B, Problem 3",
+        "2007 AMC 12A, Problem 13",
+        "2021 Spring AMC 12A, Problem 11"
+      ]
+    },
+    "G6.2": {
       prereq: ["distance-midpoint", "line-forms"],
       cards: ["reflection-coordinates", "reflection-composition", "rotation-90", "rotation-reflection-matrices", "composing-transformations", "rotated-line-angle"],
       body: String.raw`Reflections, rotations and translations move figures without changing their shape, and problems use them in two ways: they ask where a point ends up after a sequence of moves, or they ask which sequences return a figure to itself. Coordinates make each move a formula, and a few facts about combining moves make long sequences short.
@@ -17,7 +45,7 @@ A line rotated by $\theta$ about a point makes the [[rotated-line-angle|angle $\
 
 Write each move as a formula, combine reflections into rotations and translations, and look for the period of a repeated move. The next lesson does the same with complex numbers.`,
       related: [
-        { card: "rotation-trick", note: String.raw`rotating part of a figure to bring distances together (G6.2).` },
+        { card: "rotation-trick", note: String.raw`rotating part of a figure to bring distances together (G6.3).` },
         { card: "figure-symmetries", note: String.raw`the symmetry groups of polygons, where compositions live (G7.3).` },
         { card: "periodic-sequences", note: String.raw`the period of a repeated transformation.` }
       ],
@@ -27,27 +55,18 @@ Write each move as a formula, combine reflections into rotations and translation
         { q: String.raw`Reflecting over a line $\ell_1$ and then over a line $\ell_2$ that meets $\ell_1$ at a $30^\circ$ angle is a rotation. By how many degrees?`, answer: "60",
           solution: String.raw`Two reflections in lines meeting at angle $\alpha$ make a rotation by $2\alpha$ about the meeting point, so here $60^\circ$.` }
       ],
-      problems: [
-        "2019 AMC 12B, Problem 3",
-        "2004 AMC 12B, Problem 9",
+      problems: [        "2004 AMC 12B, Problem 9",
         "2022 AMC 12B, Problem 5",
-        "2021 Spring AMC 12B, Problem 5",
-        "2003 AMC 12A, Problem 9",
-        "2000 AMC 12, Problem 10",
+        "2021 Spring AMC 12B, Problem 5",        "2000 AMC 12, Problem 10",
         "2020 AMC 12A, Problem 12",
         "2022 AMC 12A, Problem 18",
         "2020 AMC 12B, Problem 19",
-        "2020 AMC 12A, Problem 20",
-        "2024 AMC 12A, Problem 25",
-        "2000 AIME I, Problem 2",
-        "1984 AIME, Problem 12",
+        "2020 AMC 12A, Problem 20",       "1984 AIME, Problem 12",
         "1992 AIME, Problem 11",
         "1988 AIME, Problem 14",
-        "2000 AIME II, Problem 11",
-        "2025 AIME I, Problem 9"
-      ]
+        "2000 AIME II, Problem 11"      ]
     },
-    "G6.2": {
+    "G6.3": {
       prereq: ["eulers-formula", "rotation-90"],
       cards: ["complex-bash", "rotation-trick", "rotation-center", "spiral-similarity"],
       body: String.raw`Complex numbers make rotations and scalings into multiplication, which is why they are the natural coordinates for figures built from equilateral triangles, regular polygons and repeated turns. They also explain the rotation trick, the standard way to bring three scattered distances into one triangle.
@@ -77,11 +96,9 @@ Use complex numbers when the figure is built from rotations, and rotate part of 
         "1994 AIME, Problem 8",
         "2020 AIME II, Problem 4",
         "2008 AIME II, Problem 9",
-        "2012 AIME I, Problem 13",
-        "2003 AIME II, Problem 14"
-      ]
+        "2012 AIME I, Problem 13"      ]
     },
-    "G6.3": {
+    "G6.4": {
       prereq: ["distance-midpoint", "law-of-cosines"],
       cards: ["vector-dot-product", "vector-projection", "vector-bash", "closing-polygon-vectors"],
       body: String.raw`Vectors are coordinates without a choice of axes. A point is a vector from an origin, midpoints and centroids are averages, and lengths and angles come from the dot product. Problems with many midpoints, with a closed polygon of known side directions, or with right angles in three dimensions are often shortest in vector form.
@@ -104,9 +121,7 @@ Use vectors when a figure has many midpoints or averages, when perpendicularity 
         { q: String.raw`Find the length of the projection of $(3, 4)$ onto the direction of $(1, 1)$.`, answer: "7sqrt(2)/2",
           solution: String.raw`The projection has length $\tfrac{(3, 4) \cdot (1, 1)}{|(1, 1)|} = \tfrac{7}{\sqrt2} = \tfrac{7\sqrt2}{2}$.` }
       ],
-      problems: [
-        "2007 AMC 12A, Problem 13",
-        "2008 AMC 12B, Problem 17",
+      problems: [        "2008 AMC 12B, Problem 17",
         "2018 AMC 12B, Problem 23",
         "2018 AMC 12A, Problem 23",
         "2007 AMC 12B, Problem 25",
@@ -114,7 +129,7 @@ Use vectors when a figure has many midpoints or averages, when perpendicularity 
         "2023 AIME I, Problem 13"
       ]
     },
-    "G6.4": {
+    "G6.5": {
       prereq: ["reflection-coordinates", "similar-figures-ratios"],
       cards: ["reflect-across-the-line", "homothety-monge", "axis-stretch-area", "linear-change-of-variables", "folded-paper"],
       body: String.raw`Some transformations are tools rather than subjects. Reflecting a path across a mirror turns a bent path into a straight one; a homothety relates two circles or two similar figures by a single scaling; stretching one axis turns an ellipse into a circle; folding a sheet is a reflection. Each turns a hard question into an easy one about the image.
@@ -127,7 +142,7 @@ A [[homothety-monge|homothety]] with center $O$ and ratio $k$ sends each point $
 
 A [[folded-paper|fold]] is a reflection in the crease, so the crease is the perpendicular bisector of each point and its image, the folded part is congruent to its preimage, and lengths along the fold are preserved. Folding a corner of a rectangle onto the opposite corner, or a vertex onto a point of a side, produces right triangles whose sides follow from the Pythagorean theorem.
 
-Reflect to straighten paths, use homotheties for similar figures and pairs of circles, stretch axes to simplify areas, and treat a fold as a reflection. The next chapter studies polygons.`,
+Reflect to straighten paths, use homotheties for similar figures and pairs of circles, stretch axes to simplify areas, and treat a fold as a reflection. The Summary (G6.6) collects the chapter's strategies, and the next chapter studies polygons.`,
       related: [
         { card: "unfold-the-surface", note: String.raw`unfolding a solid's surface to straighten a path on it (G8.5).` },
         { card: "common-tangent-lengths", note: String.raw`the tangents through the homothety centers of two circles (G2.6).` },
@@ -139,23 +154,68 @@ Reflect to straighten paths, use homotheties for similar figures and pairs of ci
         { q: String.raw`Find the area enclosed by the ellipse $\tfrac{x^2}{9} + \tfrac{y^2}{4} = 1$.`, answer: "6pi",
           solution: String.raw`The ellipse is the unit circle stretched by $3$ horizontally and $2$ vertically, which multiplies the area $\pi$ by $3 \cdot 2$, giving $6\pi$.` }
       ],
-      problems: [
-        "2021 Spring AMC 12A, Problem 11",
-        "2014 AMC 12A, Problem 20",
+      problems: [        "2014 AMC 12A, Problem 20",
         "2008 AMC 12A, Problem 14",
         "2006 AMC 12A, Problem 19",
         "2007 AMC 12B, Problem 22",
         "2018 AMC 12A, Problem 11",
         "2018 AMC 12B, Problem 11",
-        "2023 AMC 12B, Problem 25",
-        "1985 AIME, Problem 11",
-        "1994 AIME, Problem 14",
+        "2023 AMC 12B, Problem 25",        "1994 AIME, Problem 14",
         "2002 AIME I, Problem 11",
         "2004 AIME II, Problem 7",
         "2013 AIME I, Problem 9",
-        "2022 AIME II, Problem 7",
-        "1994 AIME, Problem 15"
+        "2022 AIME II, Problem 7"      ]
+    },
+    "G6.6": {
+      prereq: ["reflection-coordinates", "reflection-composition", "rotation-90", "complex-bash", "spiral-similarity", "vector-dot-product", "vector-projection", "reflect-across-the-line", "homothety-monge", "axis-stretch-area", "folded-paper"],
+      cards: [],
+      body: String.raw`[[reflection-coordinates|Reflections]], rotations and translations keep lengths and angles; [[reflection-composition|two reflections]] compose to a rotation or a translation, and [[rotation-90|a $90^\circ$ rotation]] sends $(x, y)$ to $(-y, x)$.
+
+[[complex-bash|Complex numbers]] write rotations and scalings as multiplications, and [[spiral-similarity|a spiral similarity]] is one multiplication by $re^{i\theta}$ about its center.
+
+[[vector-dot-product|The dot product]] gives angles and perpendicularity, and [[vector-projection|the projection]] of one vector on another gives distances along a direction.
+
+[[reflect-across-the-line|Reflecting across a line]] turns a broken shortest path into a straight one. [[homothety-monge|A homothety]] maps a circle to a circle and centers its pairs of tangents. [[axis-stretch-area|Stretching an axis]] multiplies every area by the same factor, and [[folded-paper|a fold]] is a reflection in the crease.`,
+      strategies: [
+        String.raw`Move the figure: a reflection, rotation or translation that puts it in a better position changes nothing that is asked.`,
+        String.raw`For a rotation about a point, translate the point to the origin, rotate, and translate back; in the complex plane, multiply.`,
+        String.raw`For angles between segments, use the dot product of their vectors.`,
+        String.raw`For a shortest path that touches a line, reflect one end across the line.`,
+        String.raw`For two similar figures or two circles, find the center of the homothety between them.`,
+        String.raw`Stretch an ellipse into a circle, compute, and stretch back, multiplying areas by the factor.`,
+        String.raw`Treat a fold as a reflection: the crease is the perpendicular bisector of a point and its image.`
       ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`A path goes from $A = (0, 2)$ to a point on the $x$-axis and then to $B = (6, 3)$. Find the length of the shortest such path.`, answer: "sqrt(61)",
+        solution: String.raw`Reflect $B$ in the $x$-axis to $B' = (6, -3)$. Any path from $A$ to the axis to $B$ has the same length as the path from $A$ to the same point to $B'$, which is at least the straight distance $AB' = \sqrt{36 + 25} = \sqrt{61}$, and that is reached where $AB'$ crosses the axis.` },
+      { q: String.raw`Two circles have radii $2$ and $6$, and their centers are $16$ apart. The external homothety center lies on the line of centers beyond the smaller circle. How far is it from the smaller circle's center?`, answer: "8",
+        solution: String.raw`The homothety maps the small circle to the large one with ratio $3$, so distances from its center $X$ satisfy $XO_2 = 3 \cdot XO_1$. With $XO_2 = XO_1 + 16$, this gives $XO_1 = 8$.` },
+      { q: String.raw`Find the area enclosed by the ellipse $\tfrac{x^2}{9} + \tfrac{y^2}{4} = 1$.`, answer: "6pi",
+        solution: String.raw`Stretch the $x$-axis by $\tfrac13$ and the $y$-axis by $\tfrac12$: the ellipse becomes the unit circle, of area $\pi$, and areas are multiplied by $\tfrac16$. So the ellipse has area $6\pi$.` },
+      { q: String.raw`Vectors $\mathbf a$ and $\mathbf b$ have $|\mathbf a| = 3$, $|\mathbf b| = 4$ and $\mathbf a \cdot \mathbf b = 6$. Find $|\mathbf a + \mathbf b|$.`, answer: "sqrt(37)",
+        solution: String.raw`Expand: $|\mathbf a + \mathbf b|^2 = |\mathbf a|^2 + 2\,\mathbf a \cdot \mathbf b + |\mathbf b|^2 = 9 + 12 + 16 = 37$, so $|\mathbf a + \mathbf b| = \sqrt{37}$.` },
+      { q: String.raw`A figure is reflected in a line through $O$, and then in a second line through $O$ that makes an angle of $30^\circ$ with the first. The result is a rotation about $O$. By how many degrees?`, answer: "60",
+        solution: String.raw`Two reflections in lines meeting at an angle $\theta$ compose to a rotation by $2\theta$ about the meeting point: $60^\circ$.` },
+      { q: String.raw`The complex number $3 + 4i$ is rotated $90^\circ$ counterclockwise about $0$. Find the real part of the result.`, answer: "-4",
+        solution: String.raw`A $90^\circ$ rotation is multiplication by $i$: $i(3 + 4i) = 3i - 4 = -4 + 3i$. The real part is $-4$.` },
+      { q: String.raw`A $6 \times 8$ rectangle of paper is folded so that two opposite corners meet. Find the length of the crease.`, answer: "15/2",
+        solution: String.raw`The crease is the perpendicular bisector of the diagonal from $(0, 0)$ to $(8, 6)$: the line $8x + 6y = 50$. It meets the sides $y = 0$ and $y = 6$ at $(6.25, 0)$ and $(1.75, 6)$, which are $\sqrt{4.5^2 + 6^2} = 7.5$ apart.` }
+    ],
+    problems: [
+      "2003 AMC 12A, Problem 9",
+      "2000 AIME I, Problem 2",
+      "1985 AIME, Problem 11"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2024 AMC 12A, Problem 25",
+      "2025 AIME I, Problem 9",
+      "2003 AIME II, Problem 14",
+      "1994 AIME, Problem 15"
+    ]
   }
 };

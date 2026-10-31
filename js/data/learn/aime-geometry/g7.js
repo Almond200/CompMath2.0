@@ -18,7 +18,7 @@ An [[equiangular-polygon|equiangular polygon]] has all angles equal but sides of
 Split regular polygons into triangles from the center, complete equiangular ones into triangles or rectangles, and keep the special values of the common polygons ready. The next lesson cuts polygons into pieces.`,
       related: [
         { card: "chord-length", note: String.raw`every side and diagonal of a regular polygon is a chord (G2.4).` },
-        { card: "closing-polygon-vectors", note: String.raw`the side relations of an equiangular polygon from closing its side vectors (G6.3).` },
+        { card: "closing-polygon-vectors", note: String.raw`the side relations of an equiangular polygon from closing its side vectors (G6.4).` },
         { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles of a hexagon in length computations (G3.2).` }
       ],
       exercises: [
@@ -107,8 +107,8 @@ Two [[square-crossing-segments|perpendicular segments across a square]], each jo
 Look for the rotation or reflection that maps the figure to itself, and use it to pair points, equate lengths, or count orbits. The next lesson moves to lattice points and grids.`,
       related: [
         { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry by averaging fixed colorings (C4.4).` },
-        { card: "reflection-composition", note: String.raw`the symmetries of a polygon as compositions of reflections (G6.1).` },
-        { card: "rotation-90", note: String.raw`the quarter turn that matches perpendicular segments in a square (G6.1).` }
+        { card: "reflection-composition", note: String.raw`the symmetries of a polygon as compositions of reflections (G6.2).` },
+        { card: "rotation-90", note: String.raw`the quarter turn that matches perpendicular segments in a square (G6.2).` }
       ],
       exercises: [
         { q: String.raw`How many rotations and reflections (including the identity) map a regular hexagon to itself?`, answer: "12",

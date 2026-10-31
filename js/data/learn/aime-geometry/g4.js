@@ -44,8 +44,8 @@ Coordinates are not always the best route: arbitrary angles produce square roots
 
 Choose coordinates that make the figure's main features simple, then compute. The next lesson collects the formulas for lines and circles.`,
       related: [
-        { card: "vector-bash", note: String.raw`the same computation with vectors, which avoids choosing axes (G6.3).` },
-        { card: "complex-bash", note: String.raw`coordinates as complex numbers, convenient for rotations (G6.2).` },
+        { card: "vector-bash", note: String.raw`the same computation with vectors, which avoids choosing axes (G6.4).` },
+        { card: "complex-bash", note: String.raw`coordinates as complex numbers, convenient for rotations (G6.3).` },
         { card: "distance-3d", note: String.raw`coordinates in space (G8.4).` }
       ],
       exercises: [
@@ -130,7 +130,7 @@ With parameters, the shoelace formula gives the area as a polynomial in the para
 Use the shoelace formula whenever the vertices are known or can be computed, and the determinant to see how transformations change area. The next lesson studies the conic sections.`,
       related: [
         { card: "picks-theorem", note: String.raw`the area of a lattice polygon from its lattice points (G7.4).` },
-        { card: "axis-stretch-area", note: String.raw`stretching one axis multiplies areas by the stretch factor (G6.4).` },
+        { card: "axis-stretch-area", note: String.raw`stretching one axis multiplies areas by the stretch factor (G6.5).` },
         { card: "cross-product-area", note: String.raw`the area of a triangle in space (G8.4).` }
       ],
       exercises: [
@@ -163,7 +163,7 @@ The focal definitions are often faster than equations. Problems about a point wh
 Read centers and axes by completing the square, use the focal sums and differences, and treat tangency as a double root. The last lesson of the chapter studies loci and optimization.`,
       related: [
         { card: "completing-the-square", note: String.raw`putting a conic's equation in standard form (A1.4).` },
-        { card: "linear-change-of-variables", note: String.raw`stretching an ellipse into a circle, which scales areas (G6.4).` },
+        { card: "linear-change-of-variables", note: String.raw`stretching an ellipse into a circle, which scales areas (G6.5).` },
         { card: "conic-reflective-property", note: String.raw`the reflection property of the foci.` }
       ],
       exercises: [
@@ -203,7 +203,7 @@ The [[apollonius-circle|Apollonius circle]] is the locus of points $P$ with $\tf
 
 When a point is constrained by distances, identify its locus first, then answer the question about the locus. The Summary (G4.7) collects the chapter's strategies, and the problems after it mix coordinate techniques.`,
       related: [
-        { card: "folded-paper", note: String.raw`a fold is the perpendicular bisector of a point and its image (G6.4).` },
+        { card: "folded-paper", note: String.raw`a fold is the perpendicular bisector of a point and its image (G6.5).` },
         { card: "ellipse-properties", note: String.raw`the locus of a fixed sum of distances (G4.5).` },
         { card: "angle-bisector-theorem", note: String.raw`the Apollonius circle passes through the feet of the internal and external bisectors (G1.4).` }
       ],

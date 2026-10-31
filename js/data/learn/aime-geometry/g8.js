@@ -108,7 +108,7 @@ The area of a plane figure's [[projected-area-cosine|orthogonal projection]] ont
 Find the perpendicular that measures the angle or distance, or compute with normals in coordinates. The next lesson works in coordinates systematically.`,
       related: [
         { card: "point-line-distance", note: String.raw`the planar version of the point-plane distance (G4.3).` },
-        { card: "vector-dot-product", note: String.raw`angles between normal vectors (G6.3).` },
+        { card: "vector-dot-product", note: String.raw`angles between normal vectors (G6.4).` },
         { card: "cross-product-area", note: String.raw`the normal vector of a plane through three points (G8.4).` }
       ],
       exercises: [
@@ -184,7 +184,7 @@ Use volume and surface area for inspheres, boxes for tetrahedra with equal oppos
       related: [
         { card: "inradius-area", note: String.raw`the planar formula $K = rs$ that $V = \tfrac13rS$ extends (G2.5).` },
         { card: "circle-in-angle", note: String.raw`the cross-section of a sphere tangent to two planes (G5.6).` },
-        { card: "reflect-across-the-line", note: String.raw`straightening paths, the planar version of unfolding (G6.4).` }
+        { card: "reflect-across-the-line", note: String.raw`straightening paths, the planar version of unfolding (G6.5).` }
       ],
       exercises: [
         { q: String.raw`Find the radius of the sphere inscribed in a regular tetrahedron with edge $6$.`, answer: "sqrt(6)/2",
