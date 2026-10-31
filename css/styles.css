@@ -2820,17 +2820,11 @@ body.is-landing .content { padding: 0 0 70px; }
 .bk-hero .bk-cover { flex: 0 0 180px; width: 180px; }
 .bk-hero-text { min-width: 0; }
 .bk-stats { margin: 0 0 14px; font-size: 13.5px; color: var(--text-faint); }
-.lp-main a.bk-start, .lp-main a.bk-start:visited { background: var(--c-learn); color: #0d1a07; }
-:root[data-theme="light"] .lp-main a.bk-start { color: #fff; }
+.lp-main a.bk-start, .lp-main a.bk-start:visited, .bk-contents a.bk-start { background: var(--c-learn); color: #0d1a07; }
+:root[data-theme="light"] :is(.lp-main, .bk-contents) a.bk-start { color: #fff; }
 /* Dark text on the light green buttons in the dark theme (the theme's general button rule would make it pale). */
-:root[data-theme="dark"] .lesson-page .lp-main :is(a.bk-start, .lp-show) { color: #0d1a07; }
+:root[data-theme="dark"] .lesson-page .lp-main :is(a.bk-start, .lp-show), :root[data-theme="dark"] .learn-page.bk-contents a.bk-start { color: #0d1a07; }
 .bk-levels { margin-top: 6px; }
-.bk-chapters { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
-.bk-ch-card { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; padding: 13px 14px; border-radius: 12px;
-  border: 1px solid var(--border); background: var(--bg-card); text-decoration: none; color: var(--text); transition: border-color 0.12s, background 0.12s; }
-.bk-ch-card:hover { border-color: var(--c-learn); background: var(--bg-card-hover); }
-.bk-ch-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-.bk-ch-title { font-weight: 700; line-height: 1.35; flex: 1 1 auto; }
 @media (max-width: 899px) {
 }
 @media (max-width: 600px) {
@@ -3741,9 +3735,10 @@ body.is-landing .content { padding: 0 0 50px; }
    title with arrows, problem blocks, previous and next at the bottom) drawn in the app's own
    language: rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines. */
 .content:has(> .bk-view) { padding-top: 0; }
-.bk-view { --bk-ink: var(--bk-b); --bk-soft: color-mix(in srgb, var(--bk-a) 16%, transparent);
+.bk-view, .bk-contents { --bk-ink: var(--bk-b); --bk-soft: color-mix(in srgb, var(--bk-a) 16%, transparent); }
+.bk-view {
   display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; max-width: 1240px; margin: 0 auto; }
-:root[data-theme="dark"] .bk-view { --bk-ink: var(--bk-a); --bk-soft: color-mix(in srgb, var(--bk-a) 22%, transparent); }
+:root[data-theme="dark"] :is(.bk-view, .bk-contents) { --bk-ink: var(--bk-a); --bk-soft: color-mix(in srgb, var(--bk-a) 22%, transparent); }
 /* The rail starts at the top like the header, and stays beside the page as it scrolls (the owner
    asked for the sidebar not to scroll away); it is a side rail, not a header. */
 .bk-rail { position: sticky; top: var(--topbar-h); align-self: start; z-index: 30; display: flex; flex-direction: column; gap: 3px;
@@ -3823,3 +3818,28 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 /* Inside a problem block the statement is plain text, not a second box; the bars above already
    name the book and chapter, so the page's own eyebrow line is dropped. */
 .bk-view .book-eyebrow { display: none; }
+
+/* The book's own page (owner, 2026-10-31): no rail and no header, the cover and a few lines,
+   then the table of contents: each chapter a heading over its lessons, divided by hairlines. */
+.bk-contents { max-width: 980px; }
+.bk-contents .bk-hero { margin-top: 8px; }
+.bk-contents .learn-h { color: var(--text); }
+.bk-contents .lb-code { color: var(--bk-ink); }
+.bk-contents .lb-lessons li > a .lb-title { color: var(--bk-ink); }
+.bk-toc-h { margin: 30px 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+.bk-toc { list-style: none; margin: 0; padding: 0; }
+.bk-toc-ch { padding: 14px 0 6px; border-top: 1px solid var(--border); }
+.bk-toc-ch:first-child { border-top: none; }
+.bk-toc-chh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; text-decoration: none; color: var(--text); }
+.bk-toc-chh .lb-code { font-size: 17px; min-width: 2.2em; }
+.bk-toc-t { font-size: 18px; font-weight: 750; }
+.bk-toc-chh:hover .bk-toc-t { color: var(--bk-ink); text-decoration: underline; text-underline-offset: 3px; }
+.bk-toc-meta { margin-left: auto; display: inline-flex; align-items: baseline; gap: 10px; }
+.bk-toc .lb-lessons { margin: 6px 0 4px; padding-left: calc(2.2em + 10px); }
+.bk-toc .lb-lessons li { padding: 3px 0; font-size: 14.5px; }
+.bk-toc .lb-lessons li:not(:has(a)) .lb-code, .bk-toc .lb-lessons li:not(:has(a)) .lb-title { color: var(--text-faint); }
+@media (max-width: 600px) {
+  .bk-toc-chh { display: grid; grid-template-columns: 2.4em minmax(0, 1fr); gap: 2px 8px; }
+  .bk-toc-meta { grid-column: 2; margin-left: 0; }
+  .bk-toc .lb-lessons { padding-left: 4px; }
+}

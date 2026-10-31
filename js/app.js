@@ -2098,7 +2098,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .home-cotd, .lc-q, .lc-result").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -5205,25 +5205,29 @@
       const k = learnContinue();
       return k && k.b === b ? k : (() => { for (const c of b.chapters) for (const l of c.lessons) if (learnLessonData(c, l)) return { b, c, l }; return null; })();
     })();
-    learnBookShell(b, null, "book", `
+    // The book's own page has no rail and no header (owner, 2026-10-31): the cover and a few
+    // lines about the book, then its table of contents, each chapter a heading over its lessons.
+    $content.innerHTML = `<div class="learn-page bk-contents bk-${b.id}">
+        <div class="back-row"><a class="back-link" href="#/learn">&larr; Learn</a></div>
         <div class="bk-hero">
           ${bookCoverHtml(b, "l")}
           <div class="bk-hero-text">
-            <div class="book-eyebrow">Learn &middot; Textbooks</div>
             <h2 class="learn-h">${escapeAttr(b.title)}</h2>
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons &middot; ${learnWrittenIn(b)} written so far</p>
             ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${learnProgress().read[start.l.code] || start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
+            <p class="learn-note bk-levels">Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).</p>
           </div>
         </div>
-        <p class="learn-note bk-levels">Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).</p>
-        <ol class="bk-chapters">${b.chapters.map(c => `
-          <li><a class="bk-ch-card" href="${learnHash(b, c)}">
-            <span class="bk-ch-top"><span class="lb-code">${c.code}</span>${learnLevelHtml(c)}</span>
-            <span class="bk-ch-title">${escapeAttr(c.title)}</span>
-            <span class="lb-n">${c.lessons.length} lessons${written(c) ? ` &middot; ${written(c)} written` : ""}${read(c) ? ` &middot; ${read(c)} read` : ""}</span>
-          </a></li>`).join("")}
-        </ol>`);
+        <h3 class="bk-toc-h">Contents</h3>
+        <ol class="bk-toc">${b.chapters.map(c => `
+          <li class="bk-toc-ch">
+            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}${read(c) ? ` &middot; ${read(c)} read` : ""}</span></span></a>
+            <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
+          </li>`).join("")}
+        </ol>
+      </div>`;
+    renderMath($content);
   }
 
   function renderLearnChapter(b, c) {
