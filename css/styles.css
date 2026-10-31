@@ -3740,9 +3740,19 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hm-h, .home .hp-label { margin: 0 0 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .hm-h-row { display: flex; justify-content: space-between; align-items: baseline; }
 .hm-more { font-size: 12.5px; font-weight: 650; color: var(--c-learn); text-decoration: none; }
+/* Problem of the day: the whole section opens the problem, and says so on hover. */
 .home .hp-daily { cursor: pointer; }
 .home .hp-daily:hover { background: none; }
-.home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 8px; }
+.home .hp-daily .daily-st { border: 1px solid transparent; border-radius: 10px; transition: border-color 0.15s, box-shadow 0.15s; }
+.home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 10px; }
+.daily-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.daily-go { font-size: 13px; font-weight: 700; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity 0.15s, transform 0.15s; white-space: nowrap; }
+.home .hp-daily:hover .daily-title, .home .hp-daily:focus-visible .daily-title { color: var(--accent); }
+.home .hp-daily:hover .daily-go, .home .hp-daily:focus-visible .daily-go { opacity: 1; transform: none; }
+.home .hp-daily:hover .daily-st { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+@media (hover: none) { .daily-go { opacity: 1; transform: none; } }
+.home .hm-sub-h { margin: 10px 0 2px; font-size: 13px; font-weight: 750; color: var(--text-dim); }
+.home .hm-sub-h:first-of-type { margin-top: 0; }
 .home .rc-row { padding-top: 6px; padding-bottom: 6px; }
 .home .pg-row { padding-top: 6px; padding-bottom: 6px; }
 .home .dyk { font-size: 14px; }
@@ -3757,12 +3767,6 @@ body.is-landing .content { padding: 0 0 50px; }
 .hm-book-t { font-size: 14px; font-weight: 650; }
 .hm-book:hover .hm-book-t { color: var(--c-learn); }
 .hm-book-n { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
-.home-continue { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; padding: 9px 12px; border-radius: 8px;
-  background: var(--cs-learn); color: var(--text); text-decoration: none; border: 1px solid transparent; }
-.home-continue:hover { border-color: var(--c-learn); }
-.home-continue-k { flex: 0 0 auto; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-learn); }
-.home-continue-t { flex: 1 1 auto; min-width: 0; font-weight: 650; font-size: 14px; }
-.home-continue-go { color: var(--c-learn); font-weight: 800; }
 .home-cotd { margin: 4px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); }
 @media (max-width: 980px) {
   .hm-cols { grid-template-columns: minmax(0, 1fr); }
@@ -3773,8 +3777,6 @@ body.is-landing .content { padding: 0 0 50px; }
   .hm-spaces { display: none; }
   .home { padding: 16px 16px 0; }
   .hm-sub { display: none; }
-  .home-continue { flex-wrap: wrap; gap: 4px 10px; }
-  .home-continue-t { flex-basis: 100%; order: 3; }
 }
 
 /* The book view's sidebar stays put while the page scrolls: the page's bottom space sits inside
