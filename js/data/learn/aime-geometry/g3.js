@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G3"] = {
   lessons: {
     "G3.1": {
+      prereq: ["law-of-cosines", "law-of-sines", "trig-area"],
+      cards: [],
+      body: String.raw`This chapter computes in triangles with trigonometry. Its tools are the laws of sines and cosines and the area formulas, the extended law of sines with the circumradius, identities that hold in every triangle, and the judgment of when trigonometry is shorter than coordinates or similar triangles.
+
+The law of cosines, $c^2 = a^2 + b^2 - 2ab\cos C$, finds a side from two sides and the angle between them, or an angle from three sides: two sides $5$ and $8$ with a $60^\circ$ angle between them leave a third side $\sqrt{25 + 64 - 40} = 7$. The angles $60^\circ$ and $120^\circ$ make it especially clean, and the triangle $13, 14, 15$, with area $84$, appears again and again.
+
+The area of a triangle is $\tfrac12 ab\sin C$, and Heron's formula $\sqrt{s(s - a)(s - b)(s - c)}$ gives it from the sides alone: the triangle $5, 5, 6$ has $s = 8$ and area $\sqrt{8 \cdot 3 \cdot 3 \cdot 2} = 12$. The extended law of sines, $\tfrac{a}{\sin A} = 2R$, ties each side to its opposite angle and the circumradius $R$, so a side $6$ opposite a $30^\circ$ angle means $R = 6$; together with the area formula it gives $R = \tfrac{abc}{4K}$.
+
+Some identities hold in every triangle: each side is the sum of the projections of the other two on it, the half-angle formulas give the angles from the sides, and the ratio lemma says how a cevian divides the opposite side in terms of sines.
+
+Trigonometry is the right tool when the figure is described by angles; coordinates when it is described by perpendicular lines or a convenient origin; similar triangles when it has parallel lines or equal angles. Choosing well keeps the computation short.
+
+The lessons take these ideas in turn: the laws of sines and cosines and area formulas (G3.2), the extended law of sines and the circumradius (G3.3), trigonometric identities in triangles (G3.4), angles and lengths from trigonometric conditions (G3.5), and when trigonometry beats the other methods (G3.6). The Summary (G3.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Two sides of a triangle are $5$ and $8$, and the angle between them is $60^\circ$. Find the third side.`, answer: "7",
+          solution: String.raw`By the law of cosines, $c^2 = 25 + 64 - 2 \cdot 5 \cdot 8 \cdot \tfrac12 = 49$, so $c = 7$.` },
+        { q: String.raw`Find the area of the triangle with sides $5$, $5$ and $6$.`, answer: "12",
+          solution: String.raw`By Heron's formula with $s = 8$: $\sqrt{8 \cdot 3 \cdot 3 \cdot 2} = \sqrt{144} = 12$. (Or the altitude to the base $6$ is $\sqrt{25 - 9} = 4$, and $\tfrac12 \cdot 6 \cdot 4 = 12$.)` },
+        { q: String.raw`In a triangle, the side opposite an angle of $30^\circ$ has length $6$. Find the circumradius.`, answer: "6",
+          solution: String.raw`By the extended law of sines, $2R = \tfrac{6}{\sin 30^\circ} = 12$, so $R = 6$.` }
+      ],
+      problems: [
+        "2013 AIME II, Problem 10",
+        "2011 AIME I, Problem 8",
+        "2021 AIME I, Problem 9"
+      ]
+    },
+    "G3.2": {
       prereq: ["law-of-cosines", "trig-area"],
       cards: ["law-cosines-60-120", "law-of-cosines-special-triangles", "herons-formula", "triangle-13-14-15"],
       body: String.raw`Trigonometry turns a triangle's angles into lengths and its lengths into area, and on the AIME it is the reliable fallback when similar triangles are hard to find. Given two sides and the angle between them, the law of cosines gives the third side; given three sides, Heron's formula gives the area without any angle; given two sides and the included angle, the sine formula gives the area. Many problems are set up so that a $60^\circ$ or $120^\circ$ angle, or a famous triangle such as $13$-$14$-$15$, makes the numbers come out exactly.
@@ -18,7 +46,7 @@ Use the law of cosines to pass between sides and angles, the sine formula or Her
       related: [
         { card: "law-of-cosines", note: String.raw`the general relation $c^2 = a^2 + b^2 - 2ab\cos C$ (B5.4).` },
         { card: "pythagorean-triples", note: String.raw`the right triangles that glue into Heronian triangles.` },
-        { card: "brahmaguptas-formula", note: String.raw`Heron's formula for cyclic quadrilaterals (G2.3).` }
+        { card: "brahmaguptas-formula", note: String.raw`Heron's formula for cyclic quadrilaterals (G2.4).` }
       ],
       exercises: [
         { q: String.raw`Two sides of a triangle are $5$ and $8$, and the angle between them is $60^\circ$. Find the third side.`, answer: "7",
@@ -48,7 +76,7 @@ Use the law of cosines to pass between sides and angles, the sine formula or Her
         "1999 AIME, Problem 14"
       ]
     },
-    "G3.2": {
+    "G3.3": {
       prereq: ["law-of-sines"],
       cards: ["circumradius-area", "trig-area-circumradius"],
       body: String.raw`Every triangle has a circumcircle, and its radius $R$ ties the sides to the angles in the simplest possible way: each side is the diameter times the sine of the opposite angle. This extended law of sines, with the formulas for $R$ from the sides and the area, solves problems where a triangle is inscribed in a known circle, where a ratio of sides must be turned into a ratio of sines, or where the circumradius itself is asked for.
@@ -62,8 +90,8 @@ These formulas also locate the circumcenter. In a right triangle the circumcente
 When a triangle sits in a known circle, or when side ratios are given, convert with $a = 2R\sin A$. The next lesson collects identities that hold in every triangle.`,
       related: [
         { card: "law-of-sines", note: String.raw`the ratio form $\tfrac{a}{\sin A} = \tfrac{b}{\sin B}$ (B5.4).` },
-        { card: "chord-length", note: String.raw`a chord is $2R\sin$ of half its central angle, the same fact (G2.3).` },
-        { card: "euler-distance-theorem", note: String.raw`the distance between the circumcenter and incenter, $OI^2 = R(R - 2r)$ (G5.2).` }
+        { card: "chord-length", note: String.raw`a chord is $2R\sin$ of half its central angle, the same fact (G2.4).` },
+        { card: "euler-distance-theorem", note: String.raw`the distance between the circumcenter and incenter, $OI^2 = R(R - 2r)$ (G5.3).` }
       ],
       exercises: [
         { q: String.raw`Find the circumradius of the triangle with sides $13$, $14$ and $15$.`, answer: "65/8",
@@ -83,7 +111,7 @@ When a triangle sits in a known circle, or when side ratios are given, convert w
         "2007 AIME II, Problem 15"
       ]
     },
-    "G3.3": {
+    "G3.4": {
       prereq: ["law-of-sines", "half-angle"],
       cards: ["projection-formula", "triangle-half-angle-identities", "ratio-lemma", "triangle-angle-identities"],
       body: String.raw`Because the angles of a triangle add to $180^\circ$, its trigonometric functions satisfy identities that do not hold for arbitrary angles, and its sides, radii and angles are linked by formulas worth knowing by name. They shorten problems about where an altitude or a bisector lands, about ratios along a cevian, and about expressions such as $\tan A + \tan B + \tan C$.
@@ -98,9 +126,9 @@ The [[triangle-angle-identities|identities for angles adding to $180^\circ$]] in
 
 Use projections to place feet of cevians, half-angle tangents with the inradius, the ratio lemma for cevians at known angles, and the angle-sum identities when a symmetric trigonometric expression in the angles appears. The next lesson computes whole figures from their angles.`,
       related: [
-        { card: "angle-bisector-theorem", note: String.raw`the ratio lemma with equal angles (G1.3).` },
-        { card: "inradius-area", note: String.raw`$K = rs$, the source of $r$ in the half-angle formulas (G2.4).` },
-        { card: "angle-addition", note: String.raw`the addition formulas behind the angle-sum identities (A7.2).` }
+        { card: "angle-bisector-theorem", note: String.raw`the ratio lemma with equal angles (G1.4).` },
+        { card: "inradius-area", note: String.raw`$K = rs$, the source of $r$ in the half-angle formulas (G2.5).` },
+        { card: "angle-addition", note: String.raw`the addition formulas behind the angle-sum identities (A7.3).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $BC = 14$, $CA = 15$, $AB = 13$. Find $\tan\tfrac A2$.`, answer: "4/7",
@@ -117,7 +145,7 @@ Use projections to place feet of cevians, half-angle tangents with the inradius,
         "2013 AIME II, Problem 15"
       ]
     },
-    "G3.4": {
+    "G3.5": {
       prereq: ["law-of-sines", "law-of-cosines"],
       cards: ["trig-bash", "altitude-bisector-angle"],
       body: String.raw`Some geometry problems give mostly angles: a triangle with angles $30^\circ$, $45^\circ$ and $105^\circ$ and points defined by further angles, or an isosceles triangle with a chain of equal segments making equal angles. When no clean similarity appears, the reliable method is to compute: name one length, find every other length with the law of sines, and simplify with trigonometric identities at the end.
@@ -130,9 +158,9 @@ A few angle facts save computation. From a vertex, the altitude and the line to 
 
 Bash with trigonometry when the given data are angles and no similarity is visible; keep exact values and simplify at the end. The last lesson of the chapter compares trigonometry with the other approaches.`,
       related: [
-        { card: "special-trig-values", note: String.raw`the exact values at $15^\circ$, $75^\circ$ and $36^\circ$ that bashing needs (A7.1).` },
-        { card: "product-sum", note: String.raw`simplifying the sums of products that a bash produces (A7.2).` },
-        { card: "triangle-center-angles", note: String.raw`the angles at the circumcenter and orthocenter that this relation comes from (G5.1).` }
+        { card: "special-trig-values", note: String.raw`the exact values at $15^\circ$, $75^\circ$ and $36^\circ$ that bashing needs (A7.2).` },
+        { card: "product-sum", note: String.raw`simplifying the sums of products that a bash produces (A7.3).` },
+        { card: "triangle-center-angles", note: String.raw`the angles at the circumcenter and orthocenter that this relation comes from (G5.2).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $B = 70^\circ$ and $C = 40^\circ$. Find the angle, in degrees, between the altitude from $A$ and the line from $A$ to the circumcenter.`, answer: "30",
@@ -151,7 +179,7 @@ Bash with trigonometry when the given data are angles and no similarity is visib
         "2018 AIME I, Problem 13"
       ]
     },
-    "G3.5": {
+    "G3.6": {
       prereq: ["trig-bash", "coordinate-bash", "triangle-similarity"],
       cards: [],
       body: String.raw`Most geometry problems can be solved in several ways: with similar triangles and synthetic facts, with coordinates, or with trigonometry. All three reach the answer, but the time they take differs enormously from problem to problem, and choosing well is a large part of contest skill. This lesson collects the signals.
@@ -164,11 +192,11 @@ Synthetic methods, similar triangles, power of a point and area ratios, are the 
 
 Mixed approaches are common: find one angle synthetically and then compute with trigonometry, or place a figure in coordinates and use a power of a point to find one length. An equiangular hexagon with alternating sides is best done by extending sides into equilateral triangles; the area of a quadrilateral with given diagonals and the angle between them is $\tfrac12d_1d_2\sin\theta$; a figure with several equilateral triangles is often best in coordinates with the triangles' vertices at simple points.
 
-Before computing, decide which method keeps the expressions shortest. The chapter review mixes problems where each method is best.`,
+Before computing, decide which method keeps the expressions shortest. The Summary (G3.7) collects the chapter's strategies, and the problems after it mix problems where each method is best.`,
       related: [
-        { card: "coordinate-bash", note: String.raw`placing a figure on axes so that the algebra stays simple (G4.1).` },
-        { card: "quadrilateral-diagonal-area", note: String.raw`the area $\tfrac12d_1d_2\sin\theta$ from the diagonals (G7.2).` },
-        { card: "equiangular-polygon", note: String.raw`polygons with equal angles, completed into equilateral triangles (G7.1).` }
+        { card: "coordinate-bash", note: String.raw`placing a figure on axes so that the algebra stays simple (G4.2).` },
+        { card: "quadrilateral-diagonal-area", note: String.raw`the area $\tfrac12d_1d_2\sin\theta$ from the diagonals (G7.3).` },
+        { card: "equiangular-polygon", note: String.raw`polygons with equal angles, completed into equilateral triangles (G7.2).` }
       ],
       exercises: [
         { q: String.raw`A convex quadrilateral has diagonals of lengths $6$ and $8$ that meet at an angle of $30^\circ$. Find its area.`, answer: "12",
@@ -188,14 +216,55 @@ Before computing, decide which method keeps the expressions shortest. The chapte
         "2025 AIME II, Problem 12",
         "2007 AIME I, Problem 15"
       ]
+    },
+    "G3.7": {
+      prereq: ["law-of-cosines", "law-cosines-60-120", "herons-formula", "triangle-13-14-15", "law-of-sines", "circumradius-area", "projection-formula", "ratio-lemma", "trig-bash"],
+      cards: [],
+      body: String.raw`[[law-of-cosines|The law of cosines]] finds a side from two sides and their angle, or an angle from three sides, and [[law-cosines-60-120|the angles $60^\circ$ and $120^\circ$]] make it especially clean. [[herons-formula|Heron's formula]] gives the area from the sides, and [[triangle-13-14-15|the triangle $13, 14, 15$]] with area $84$ is worth knowing.
+
+[[law-of-sines|The extended law of sines]] gives $a = 2R\sin A$, and [[circumradius-area|the circumradius]] is $R = \tfrac{abc}{4K}$.
+
+[[projection-formula|Each side is the sum of the projections]] of the other two, and [[ratio-lemma|the ratio lemma]] says a cevian from $A$ divides $BC$ in the ratio $\tfrac{AB\sin\angle BAD}{AC\sin\angle DAC}$.
+
+[[trig-bash|A trigonometric computation]] is the right choice when the figure is given by angles; coordinates when it is given by perpendiculars, and similarity when it has parallels.`,
+      strategies: [
+        String.raw`With two sides and the included angle, or three sides, use the law of cosines.`,
+        String.raw`With angles and one side, use the law of sines; bring in the circumradius when a circle appears.`,
+        String.raw`For an area, choose between $\tfrac12 ab\sin C$, Heron's formula and base times height by what is known.`,
+        String.raw`Recognize the $13, 14, 15$ triangle and the triangles with $60^\circ$ or $120^\circ$ angles.`,
+        String.raw`For a cevian's ratio in terms of angles, use the ratio lemma.`,
+        String.raw`Before computing, decide which method, trigonometry, coordinates or similar triangles, keeps the expressions shortest.`
+      ]
     }
   },
-  review: [
-    "2013 AIME II, Problem 10",
-    "2006 AIME II, Problem 12",
-    "2002 AIME I, Problem 13",
-    "2019 AIME II, Problem 11",
-    "2024 AIME I, Problem 10",
-    "2012 AIME II, Problem 15"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Triangle $ABC$ has $AB = 13$, $BC = 14$ and $CA = 15$. Find the altitude from $A$ to $BC$.`, answer: "12",
+        solution: String.raw`The area is $84$ by Heron ($s = 21$, $\sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$), and also $\tfrac12 \cdot 14 \cdot h$. So $h = 12$.` },
+      { q: String.raw`Find the largest angle of the triangle with sides $3$, $5$ and $7$.`, answer: "120",
+        solution: String.raw`The largest angle is opposite the side $7$: $\cos C = \tfrac{9 + 25 - 49}{2 \cdot 3 \cdot 5} = -\tfrac12$, so $C = 120^\circ$.` },
+      { q: String.raw`Find the circumradius of the triangle with sides $13$, $14$ and $15$.`, answer: "65/8",
+        solution: String.raw`Use $R = \tfrac{abc}{4K} = \tfrac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \tfrac{2730}{336} = \tfrac{65}{8}$.` },
+      { q: String.raw`Two sides of a triangle are $8$ and $10$, and the angle between them is $150^\circ$. Find the area.`, answer: "20",
+        solution: String.raw`The area is $\tfrac12 \cdot 8 \cdot 10 \cdot \sin 150^\circ = 40 \cdot \tfrac12 = 20$.` },
+      { q: String.raw`In triangle $ABC$, $A = 45^\circ$, $B = 60^\circ$ and $a = BC = 10$. Find $b = CA$.`, answer: "5sqrt(6)",
+        solution: String.raw`By the law of sines, $b = a \cdot \tfrac{\sin B}{\sin A} = 10 \cdot \tfrac{\sqrt3/2}{\sqrt2/2} = 10 \cdot \tfrac{\sqrt3}{\sqrt2} = 5\sqrt6$.` },
+      { q: String.raw`Find the area of the triangle with sides $4$, $5$ and $6$.`, answer: "15sqrt(7)/4",
+        solution: String.raw`By Heron's formula with $s = \tfrac{15}{2}$: $\sqrt{\tfrac{15}{2} \cdot \tfrac72 \cdot \tfrac52 \cdot \tfrac32} = \tfrac{\sqrt{1575}}{4} = \tfrac{15\sqrt7}{4}$.` }
+    ],
+    problems: [
+      "2006 AIME II, Problem 12",
+      "2002 AIME I, Problem 13",
+      "2010 AIME II, Problem 12"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2019 AIME II, Problem 11",
+      "2024 AIME I, Problem 10",
+      "2012 AIME II, Problem 15",
+      "2019 AIME I, Problem 13",
+      "2005 AIME I, Problem 15"
+    ]
+  }
 };

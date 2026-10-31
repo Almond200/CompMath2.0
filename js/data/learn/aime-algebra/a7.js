@@ -4,6 +4,32 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A7"] = {
   lessons: {
     "A7.1": {
+      prereq: ["pythagorean-theorem", "eulers-formula"],
+      cards: [],
+      body: String.raw`This chapter treats trigonometry as algebra. Its tools are the values on the unit circle and the basic identities, the addition and double angle formulas with their relatives, equations whose solutions are limited by the range of sine and cosine, inverse trigonometric functions, and the substitutions and telescoping sums that join trigonometry to algebra.
+
+A point at angle $\theta$ on the unit circle is $(\cos\theta, \sin\theta)$, so $\cos^2\theta + \sin^2\theta = 1$, and the values at $30^\circ$, $45^\circ$, $60^\circ$ and their reflections are known exactly. The addition formulas, such as $\sin(a + b) = \sin a\cos b + \cos a\sin b$, follow from multiplying $e^{ia}$ and $e^{ib}$, and they give new exact values: $\sin 75^\circ = \sin 45^\circ\cos 30^\circ + \cos 45^\circ\sin 30^\circ = \tfrac{\sqrt6 + \sqrt2}{4}$. Setting $a = b$ gives the double angle formulas; the product-to-sum formulas turn products into sums; and $a\sin x + b\cos x$ is a single sine of amplitude $\sqrt{a^2 + b^2}$.
+
+Squaring often links the pieces: if $\sin x + \cos x = \tfrac75$, then $1 + \sin 2x = \tfrac{49}{25}$ and $\sin 2x = \tfrac{24}{25}$. A trigonometric equation has its solutions limited to a period, and they are counted on the unit circle: $\sin 2x = \tfrac12$ has four solutions in $[0, 2\pi)$, two for each turn of $2x$.
+
+The inverse functions answer "which angle": $\arctan\tfrac12 + \arctan\tfrac13 = \tfrac\pi4$, since the tangent of the sum is $1$. In reverse, an algebraic expression shaped like an identity, such as $\tfrac{x + y}{1 - xy}$, suggests putting $x = \tan a$, and sums such as $\sum \tfrac{1}{\sin k\sin(k + 1)}$ telescope once a term is written as a difference of cotangents.
+
+The lessons take these ideas in turn: the unit circle (A7.2), addition, double angle and other identities (A7.3), trigonometric equations (A7.4), and substitutions and telescoping (A7.5). The Summary (A7.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Find the exact value of $\sin 75^\circ$.`, answer: "(sqrt(6) + sqrt(2))/4",
+          solution: String.raw`By the addition formula, $\sin 75^\circ = \sin 45^\circ\cos 30^\circ + \cos 45^\circ\sin 30^\circ = \tfrac{\sqrt2}{2}\cdot\tfrac{\sqrt3}{2} + \tfrac{\sqrt2}{2}\cdot\tfrac12 = \tfrac{\sqrt6 + \sqrt2}{4}$.` },
+        { q: String.raw`If $\sin x + \cos x = \tfrac75$, find $\sin 2x$.`, answer: "24/25",
+          solution: String.raw`Square: $\sin^2 x + 2\sin x\cos x + \cos^2 x = \tfrac{49}{25}$, so $1 + \sin 2x = \tfrac{49}{25}$ and $\sin 2x = \tfrac{24}{25}$.` },
+        { q: String.raw`How many solutions does $\sin 2x = \tfrac12$ have with $0 \le x \lt 2\pi$?`, answer: "4",
+          solution: String.raw`As $x$ runs over $[0, 2\pi)$, $2x$ runs over $[0, 4\pi)$, two full turns. In each turn $\sin\theta = \tfrac12$ twice, at $\theta = \tfrac\pi6$ and $\tfrac{5\pi}6$, so there are $4$ solutions: $x = \tfrac\pi{12}, \tfrac{5\pi}{12}, \tfrac{13\pi}{12}, \tfrac{17\pi}{12}$.` }
+      ],
+      problems: [
+        "1986 AIME, Problem 3",
+        "1984 AIME, Problem 13",
+        "1996 AIME, Problem 10"
+      ]
+    },
+    "A7.2": {
       prereq: ["pythagorean-theorem"],
       cards: ["pythagorean-identities", "common-angle-values", "special-trig-values", "reduction-identities"],
       body: String.raw`Trigonometry in algebra problems is mostly bookkeeping between the six functions of one angle and between related angles. Given $\sec x + \tan x$, find $\sec x - \tan x$; given $\sin x + \cos x$, find $\sin x\cos x$; add $\sin^2 1^\circ + \sin^2 2^\circ + \cdots + \sin^2 89^\circ$. None of these needs a calculator or a new formula: each uses the Pythagorean identity, the exact values of a few angles, and the rules that move an angle into the first quadrant.
@@ -39,7 +65,7 @@ These identities are the first thing to try in any trigonometric expression: rew
         "2011 AIME I, Problem 9"
       ]
     },
-    "A7.2": {
+    "A7.3": {
       prereq: ["eulers-formula"],
       cards: ["angle-addition", "double-angle", "half-angle", "triple-angle", "product-sum", "harmonic-addition"],
       body: String.raw`The second layer of trigonometric algebra is a set of formulas that rewrite functions of sums, differences and multiples of angles. They turn $\tan 75^\circ$ into $2 + \sqrt3$, $\sin 3x$ into a polynomial in $\sin x$, a sum of two cosines into a product, and $3\sin x + 4\cos x$ into a single wave of amplitude $5$. Problems use them to collapse an expression, to solve an equation by factoring, or to find a largest value; the skill is choosing the formula that moves toward a factorization or a known value.
@@ -54,8 +80,8 @@ Adding the two expansions of $\sin(a + b)$ and $\sin(a - b)$ gives the [[product
 
 Use addition and double-angle formulas to reach a known angle or a factorization, sum-to-product to solve equations, and harmonic addition for extreme values of a linear combination. The next lesson counts the solutions of trigonometric equations on an interval.`,
       related: [
-        { card: "cauchy-schwarz", note: String.raw`the bound $|a\sin x + b\cos x| \le \sqrt{a^2 + b^2}$ (A5.2).` },
-        { card: "de-moivre", note: String.raw`multiple-angle formulas from the binomial expansion of $(\cos x + i\sin x)^n$ (A6.2).` },
+        { card: "cauchy-schwarz", note: String.raw`the bound $|a\sin x + b\cos x| \le \sqrt{a^2 + b^2}$ (A5.3).` },
+        { card: "de-moivre", note: String.raw`multiple-angle formulas from the binomial expansion of $(\cos x + i\sin x)^n$ (A6.3).` },
         { card: "angle-between-lines", note: String.raw`the tangent subtraction formula applied to slopes.` },
         { card: "chord-length", note: String.raw`half-angle sines in circle geometry: a chord is $2R\sin\tfrac\theta2$.` }
       ],
@@ -81,7 +107,7 @@ Use addition and double-angle formulas to reach a known angle or a factorization
         "2024 AIME I, Problem 7"
       ]
     },
-    "A7.3": {
+    "A7.4": {
       prereq: ["reduction-identities"],
       cards: ["inverse-trig-identities"],
       body: String.raw`A trigonometric equation usually has infinitely many solutions, and the question restricts them to an interval and asks how many there are, or what they add to. How many $x$ in $[0, 2\pi)$ satisfy $\sin 3x = \tfrac12$? For how many $x$ is $\sin x = \sin x^2$ on a given range? What is $\arcsin(\sin 5)$? The method is to find the general solution, written with an integer parameter, and then count the values of the parameter that land in the interval.
@@ -96,7 +122,7 @@ When a trigonometric equation asks for a count or a sum of solutions, write the 
       related: [
         { card: "floor-basics", note: String.raw`counting the integers $k$ that put a solution in an interval (A4.3).` },
         { card: "piecewise-graph-counting", note: String.raw`counting solutions by drawing both sides when no formula splits the equation (A4.6).` },
-        { card: "double-angle", note: String.raw`the identity that most often factors a trigonometric equation (A7.2).` }
+        { card: "double-angle", note: String.raw`the identity that most often factors a trigonometric equation (A7.3).` }
       ],
       exercises: [
         { q: String.raw`How many $x$ with $0 \le x \lt 2\pi$ satisfy $\sin 3x = \tfrac12$?`, answer: "6",
@@ -116,7 +142,7 @@ When a trigonometric equation asks for a count or a sum of solutions, write the 
         "2013 AIME I, Problem 8"
       ]
     },
-    "A7.4": {
+    "A7.5": {
       prereq: ["angle-addition", "product-sum", "telescoping"],
       cards: ["trig-substitution", "arctan-telescoping", "sin-cos-ap-sum", "cot-tan-telescoping", "trig-telescoping-product"],
       body: String.raw`Trigonometric identities are also an algebra tool. A radical $\sqrt{1 - x^2}$ disappears when $x = \sin\theta$, a sum of arctangents collapses when each term is a difference, and products like $\cos 20^\circ\cos 40^\circ\cos 80^\circ$ or sums like $\sin 5^\circ + \sin 10^\circ + \cdots + \sin 175^\circ$ have closed forms. Each of these is a telescope or a substitution in disguise, and recognizing the disguise is most of the work.
@@ -129,12 +155,12 @@ Sums of sines or cosines at angles in arithmetic progression have [[sin-cos-ap-s
 
 Doubling identities make two more telescopes. From $\cot\theta - \cot 2\theta = \csc 2\theta$, a sum of cosecants at doubling angles collapses, and from $\tan\theta = \cot\theta - 2\cot 2\theta$, so does a weighted sum of tangents; these are the [[cot-tan-telescoping|cotangent-tangent telescopes]]. For products, [[trig-telescoping-product|the doubling formula]] $\sin 2x = 2\sin x\cos x$ absorbs one cosine at a time: multiplying $\cos 20^\circ\cos 40^\circ\cos 80^\circ$ by $\sin 20^\circ$ gives $\tfrac12\sin 40^\circ\cos 40^\circ\cos 80^\circ = \tfrac14\sin 80^\circ\cos 80^\circ = \tfrac18\sin 160^\circ$, and since $\sin 160^\circ = \sin 20^\circ$ the product is $\tfrac18$.
 
-Look for a telescope whenever a trigonometric sum or product runs over many evenly spaced or doubling angles, and for a substitution whenever an algebraic expression has the shape of an identity. The next chapter brings together the algebraic structures of the whole book.`,
+Look for a telescope whenever a trigonometric sum or product runs over many evenly spaced or doubling angles, and for a substitution whenever an algebraic expression has the shape of an identity. The Summary (A7.6) collects the chapter's strategies, and the next chapter brings together the algebraic structures of the whole book.`,
       related: [
         { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson (A3.3).` },
-        { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.3).` },
-        { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.4).` },
-        { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.4).` }
+        { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.4).` },
+        { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.5).` },
+        { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.5).` }
       ],
       exercises: [
         { q: String.raw`Find $\tan\left(\displaystyle\sum_{k=1}^{9}\arctan\tfrac{1}{k^2 + k + 1}\right)$.`, answer: "9/11",
@@ -155,16 +181,58 @@ Look for a telescope whenever a trigonometric sum or product runs over many even
         "2009 AIME II, Problem 14",
         "2022 AIME I, Problem 15"
       ]
+    },
+    "A7.6": {
+      prereq: ["pythagorean-identities", "special-trig-values", "angle-addition", "double-angle", "product-sum", "harmonic-addition", "inverse-trig-identities", "trig-substitution", "cot-tan-telescoping"],
+      cards: [],
+      body: String.raw`[[pythagorean-identities|The Pythagorean identities]] and [[special-trig-values|the exact values]] at the standard angles come from the unit circle. [[angle-addition|The addition formulas]] give [[double-angle|the double angle formulas]] and new exact values; [[product-sum|the product-to-sum formulas]] turn products into sums, and [[harmonic-addition|$a\sin x + b\cos x$]] is one sine of amplitude $\sqrt{a^2 + b^2}$.
+
+A trigonometric equation has its solutions limited to a period; they are found on the unit circle and counted turn by turn. [[inverse-trig-identities|The inverse functions]] name angles, and the tangent of a sum of arctangents is computed by the addition formula.
+
+[[trig-substitution|A trigonometric substitution]] such as $x = \tan a$ turns an expression shaped like an identity into one angle, and [[cot-tan-telescoping|a sum]] of terms such as $\tfrac{1}{\sin k\sin(k + 1)}$ telescopes through differences of cotangents.`,
+      strategies: [
+        String.raw`Reduce every angle to one between $0^\circ$ and $90^\circ$ with the reflection identities before computing.`,
+        String.raw`If $\sin x + \cos x$ or $\sin x - \cos x$ is given, square it to get $\sin 2x$.`,
+        String.raw`Write $a\sin x + b\cos x$ as $\sqrt{a^2 + b^2}\sin(x + \varphi)$ to find its extremes and its solutions.`,
+        String.raw`Turn products of sines and cosines into sums, or sums into products, whichever cancels.`,
+        String.raw`Count solutions of a trigonometric equation on the unit circle, one turn of the inner angle at a time.`,
+        String.raw`For a sum of arctangents, take the tangent of the sum with the addition formula.`,
+        String.raw`If an algebraic expression looks like an identity, substitute $x = \tan a$ or $x = \cos a$.`,
+        String.raw`For a long sum or product of trigonometric terms, look for a telescoping difference, or use complex numbers.`
+      ]
     }
   },
-  review: [
-    "2005 AMC 12B, Problem 24",
-    "2004 AMC 12B, Problem 24",
-    "2014 AMC 12B, Problem 25",
-    "2020 AMC 12B, Problem 25",
-    "2021 Spring AMC 12A, Problem 22",
-    "2024 AMC 12A, Problem 23",
-    "2023 AMC 12A, Problem 25",
-    "2014 AIME II, Problem 12"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`If $\tan x = 2$, find $\cos 2x$.`, answer: "-3/5",
+        solution: String.raw`Use $\cos 2x = \tfrac{1 - \tan^2 x}{1 + \tan^2 x} = \tfrac{1 - 4}{1 + 4} = -\tfrac35$.` },
+      { q: String.raw`Find the largest value of $3\sin x + 4\cos x$.`, answer: "5",
+        solution: String.raw`Write $3\sin x + 4\cos x = 5\left(\tfrac35\sin x + \tfrac45\cos x\right) = 5\sin(x + \varphi)$, where $\cos\varphi = \tfrac35$ and $\sin\varphi = \tfrac45$. Its largest value is $5$.` },
+      { q: String.raw`Find $\arctan\tfrac12 + \arctan\tfrac13$.`, answer: "pi/4",
+        solution: String.raw`The tangent of the sum is $\tfrac{1/2 + 1/3}{1 - 1/6} = \tfrac{5/6}{5/6} = 1$, and both angles are between $0$ and $\tfrac\pi4$, so the sum is between $0$ and $\tfrac\pi2$. Hence it is $\tfrac\pi4$.` },
+      { q: String.raw`Find $\sin 10^\circ \sin 50^\circ \sin 70^\circ$.`, answer: "1/8",
+        solution: String.raw`Use $\sin\theta\sin(60^\circ - \theta)\sin(60^\circ + \theta) = \tfrac14\sin 3\theta$ with $\theta = 10^\circ$: the product is $\tfrac14\sin 30^\circ = \tfrac18$. (The identity comes from the product-to-sum formulas and the triple angle formula.)` },
+      { q: String.raw`Find $\cos 36^\circ\cos 72^\circ$.`, answer: "1/4",
+        solution: String.raw`Multiply by $\sin 36^\circ$ and use the double angle formula twice: $\sin 36^\circ\cos 36^\circ\cos 72^\circ = \tfrac12\sin 72^\circ\cos 72^\circ = \tfrac14\sin 144^\circ = \tfrac14\sin 36^\circ$. Dividing by $\sin 36^\circ$ gives $\tfrac14$.` },
+      { q: String.raw`How many solutions does $\sin x = \cos 2x$ have with $0 \le x \lt 2\pi$?`, answer: "3",
+        solution: String.raw`Write $\cos 2x = 1 - 2\sin^2 x$, so $2\sin^2 x + \sin x - 1 = (2\sin x - 1)(\sin x + 1) = 0$. Then $\sin x = \tfrac12$ gives $x = \tfrac\pi6, \tfrac{5\pi}{6}$, and $\sin x = -1$ gives $x = \tfrac{3\pi}{2}$: three solutions.` },
+      { q: String.raw`Find $\sin^2 1^\circ + \sin^2 2^\circ + \cdots + \sin^2 89^\circ$.`, answer: "89/2",
+        solution: String.raw`Pair $\sin^2 k^\circ$ with $\sin^2(90 - k)^\circ = \cos^2 k^\circ$: each pair adds to $1$. The $44$ pairs for $k = 1, \ldots, 44$ give $44$, and $\sin^2 45^\circ = \tfrac12$ is left, so the sum is $\tfrac{89}{2}$.` }
+    ],
+    problems: [
+      "2005 AMC 12B, Problem 24",
+      "2004 AMC 12B, Problem 24",
+      "2000 AIME II, Problem 15"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2014 AMC 12B, Problem 25",
+      "2020 AMC 12B, Problem 25",
+      "2021 Spring AMC 12A, Problem 22",
+      "2024 AMC 12A, Problem 23",
+      "2023 AMC 12A, Problem 25",
+      "2014 AIME II, Problem 12"
+    ]
+  }
 };

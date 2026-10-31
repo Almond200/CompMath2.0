@@ -6,6 +6,30 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A9"] = {
   lessons: {
     "A9.1": {
+      prereq: ["power-sums", "functional-substitution", "linear-elimination"],
+      cards: [],
+      body: String.raw`This chapter goes beyond the core of AIME algebra. Its topics each solve a few problems quickly: sums of higher powers and polynomials that take integer values, functional equations that need more than substitution, matrices and determinants, and inequalities and trigonometric sums beyond the routine.
+
+The sums $1^k + 2^k + \cdots + n^k$ are polynomials in $n$ of degree $k + 1$: $1^3 + \cdots + n^3 = \left(\tfrac{n(n + 1)}{2}\right)^2$, so $1^3 + \cdots + 10^3 = 3025$. A polynomial that takes integer values at the integers is an integer combination of the binomial coefficients $\binom xk$, and its finite differences show the combination.
+
+The Cauchy equation $f(x + y) = f(x) + f(y)$ forces $f(x) = cx$ on the rationals, and with a little more (continuity, monotonicity, or a second equation) on the reals; if $f(1) = 3$ then $f(5) = 15$. Showing that a function is one-to-one or onto is the first step in many harder functional equations.
+
+A matrix records a linear map, and multiplying matrices composes the maps, so a linear recurrence is a matrix power. The determinant of $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is $ad - bc$, which is the factor by which the map scales areas; for $\begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix}$ it is $5$. Cramer's rule solves a linear system with determinants.
+
+Last, homogeneous inequalities can be normalized, the tangent line trick bounds a sum one term at a time, and sums and products of sines and cosines at evenly spaced angles have closed forms, found with complex numbers.
+
+The lessons take these ideas in turn: interpolation and finite differences (A9.2), functional equations (A9.3), recurrences, matrices and determinants (A9.4), and inequalities and substitutions (A9.5). The Summary (A9.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Find $1^3 + 2^3 + \cdots + 10^3$.`, answer: "3025",
+          solution: String.raw`The sum of the first $n$ cubes is the square of the sum of the first $n$ integers: $\left(\tfrac{10 \cdot 11}{2}\right)^2 = 55^2 = 3025$.` },
+        { q: String.raw`A function on the rationals satisfies $f(x + y) = f(x) + f(y)$ and $f(1) = 3$. Find $f(5)$.`, answer: "15",
+          solution: String.raw`Applying the equation repeatedly, $f(5) = f(1) + f(1) + f(1) + f(1) + f(1) = 15$. (In fact $f(x) = 3x$ for every rational $x$.)` },
+        { q: String.raw`Find the determinant of $\begin{pmatrix} 2 & 1 \\ 3 & 4 \end{pmatrix}$.`, answer: "5",
+          solution: String.raw`The determinant of $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ is $ad - bc = 2 \cdot 4 - 1 \cdot 3 = 5$.` }
+      ],
+      problems: []
+    },
+    "A9.2": {
       prereq: ["finite-differences", "power-sums", "lagrange-interpolation"],
       cards: ["higher-power-sums", "integer-valued-polynomials", "generalized-binomial-series"],
       body: String.raw`The finite differences and interpolation of the polynomial chapter extend in three directions that occasionally matter: closed forms for sums of fourth and higher powers, polynomials that take integer values at integers without having integer coefficients, and the binomial theorem for exponents that are negative or fractional. Each is a natural continuation of a familiar idea, and each answers a kind of question the basic tools leave open, such as $1^4 + 2^4 + \cdots + 10^4$, the value at $10$ of an integer-valued quadratic known at three points, or the coefficient of $x^3$ in $\tfrac{1}{(1 - 2x)^2}$.
@@ -32,7 +56,7 @@ These are tools for the rare problem that needs them: a sum of high powers, an i
       ],
       problems: []
     },
-    "A9.2": {
+    "A9.3": {
       prereq: ["functional-substitution"],
       cards: ["cauchy-functional-equations", "injectivity-surjectivity"],
       body: String.raw`The functional equations of the AIME are solved by substitution: plug in clever values until the function's values fall out. Olympiad functional equations ask for all functions satisfying a condition, and they need two further ideas. One is a short list of classical equations whose solutions are known, such as $f(x + y) = f(x) + f(y)$; the other is proving that the function is one-to-one or onto, which licenses cancelling $f$ or choosing an input that makes $f$ take a convenient value.
@@ -57,7 +81,7 @@ These ideas appear on the AIME only in simple forms, but they explain why the su
       ],
       problems: []
     },
-    "A9.3": {
+    "A9.4": {
       prereq: ["linear-recurrence", "linear-elimination"],
       cards: ["matrix-multiplication", "matrix-power-diagonalizing", "determinant-basics", "cramers-rule", "matrix-inverse", "chebyshev-polynomials"],
       body: String.raw`Matrices organize two things contest algebra does often: solving linear systems and running linear recurrences. A system of three equations is one matrix equation, a recurrence such as $F_{n+1} = F_n + F_{n-1}$ is repeated multiplication by one matrix, and the determinant decides whether a system has a unique solution. None of this is needed for the AIME, but it explains results like Binet's formula, and it is the shortest route through some problems about counting invertible arrays or solving a system for one unknown.
@@ -71,7 +95,7 @@ The [[chebyshev-polynomials|Chebyshev polynomials]] $T_n$ satisfy $\cos n\theta 
 Use matrices when a problem is about a linear system or a linear recurrence and the direct method is long; otherwise the elimination and characteristic-root methods of earlier chapters are shorter. The last lesson collects inequalities and substitutions used in olympiads.`,
       related: [
         { card: "linear-recurrence", note: String.raw`the characteristic roots are the eigenvalues of the step matrix (A3.2).` },
-        { card: "triple-angle", note: String.raw`$T_3(x) = 4x^3 - 3x$ is the triple-angle formula (A7.2).` },
+        { card: "triple-angle", note: String.raw`$T_3(x) = 4x^3 - 3x$ is the triple-angle formula (A7.3).` },
         { card: "shoelace-formula", note: String.raw`the area of a polygon as a sum of $2 \times 2$ determinants.` }
       ],
       exercises: [
@@ -86,7 +110,7 @@ Use matrices when a problem is about a linear system or a linear recurrence and 
       ],
       problems: ["2022 AMC 10B, Problem 18"]
     },
-    "A9.4": {
+    "A9.5": {
       prereq: ["am-gm", "cauchy-schwarz", "double-angle"],
       cards: ["nesbitt-inequality", "tangent-line-trick", "normalization", "weierstrass-substitution", "even-power-sin-cos-sums", "evenly-spaced-angle-products"],
       body: String.raw`A few more inequalities and substitutions recur in olympiad algebra and occasionally simplify an AIME problem. Nesbitt's inequality and the tangent line trick prove symmetric bounds; normalization uses the freedom to choose a scale; and three trigonometric devices turn sines and cosines into rational functions, collapse high powers, and evaluate products at evenly spaced angles.
@@ -95,12 +119,12 @@ Use matrices when a problem is about a linear system or a linear recurrence and 
 
 The [[weierstrass-substitution|Weierstrass substitution]] $t = \tan\tfrac\theta2$ gives $\sin\theta = \tfrac{2t}{1 + t^2}$ and $\cos\theta = \tfrac{1 - t^2}{1 + t^2}$, so any rational expression in $\sin\theta$ and $\cos\theta$ becomes a rational function of $t$; with $t = \tfrac12$, $\sin\theta + \cos\theta = \tfrac{4/5 + 3/5}{1} = \tfrac75$. For [[even-power-sin-cos-sums|high powers of sine and cosine]], square or cube $\sin^2\theta + \cos^2\theta = 1$: $\sin^4\theta + \cos^4\theta = 1 - 2\sin^2\theta\cos^2\theta = 1 - \tfrac12\sin^2 2\theta$, and $\sin^6\theta + \cos^6\theta = 1 - \tfrac34\sin^2 2\theta$. So when $\sin 2\theta = \tfrac23$, $\sin^4\theta + \cos^4\theta = \tfrac79$. For [[evenly-spaced-angle-products|products at evenly spaced angles]], $\sin\theta\sin(60^\circ - \theta)\sin(60^\circ + \theta) = \tfrac14\sin 3\theta$, so $\sin 20^\circ\sin 40^\circ\sin 80^\circ = \tfrac14\sin 60^\circ = \tfrac{\sqrt3}{8}$, and in general products of sines at angles spaced by $\tfrac\pi n$ come from the factorization of $z^n - 1$.
 
-These tools finish the algebra book. Each is a shortcut for a specific shape: a cyclic sum of fractions, a sum of one function of each variable, a homogeneous inequality, a rational expression in sine and cosine, a high even power, or a product over a regular pattern of angles.`,
+These tools finish the algebra book. Each is a shortcut for a specific shape: a cyclic sum of fractions, a sum of one function of each variable, a homogeneous inequality, a rational expression in sine and cosine, a high even power, or a product over a regular pattern of angles. The Summary (A9.6) collects the chapter's strategies.`,
       related: [
-        { card: "mean-chain", note: String.raw`the arithmetic-harmonic step in the proof of Nesbitt's inequality (A5.1).` },
-        { card: "derivative-extremum", note: String.raw`the tangent line at the equality point, found with a derivative (A5.4).` },
-        { card: "roots-unity-distance-product", note: String.raw`the root-of-unity factorization behind evenly spaced sine products (A6.4).` },
-        { card: "double-angle", note: String.raw`the half-angle tangent formulas that the Weierstrass substitution uses (A7.2).` }
+        { card: "mean-chain", note: String.raw`the arithmetic-harmonic step in the proof of Nesbitt's inequality (A5.2).` },
+        { card: "derivative-extremum", note: String.raw`the tangent line at the equality point, found with a derivative (A5.5).` },
+        { card: "roots-unity-distance-product", note: String.raw`the root-of-unity factorization behind evenly spaced sine products (A6.5).` },
+        { card: "double-angle", note: String.raw`the half-angle tangent formulas that the Weierstrass substitution uses (A7.3).` }
       ],
       exercises: [
         { q: String.raw`Positive reals $a$, $b$, $c$ satisfy $a + b + c = 3$. Find the smallest value of $a^3 + b^3 + c^3$.`, answer: "3",
@@ -113,6 +137,56 @@ These tools finish the algebra book. Each is a shortcut for a specific shape: a 
           solution: String.raw`With $\theta = 20^\circ$, the angles are $\theta$, $60^\circ - \theta$ and $60^\circ + \theta$, and $\sin\theta\sin(60^\circ - \theta)\sin(60^\circ + \theta) = \tfrac14\sin 3\theta$. So the product is $\tfrac14\sin 60^\circ = \tfrac{\sqrt3}{8}$.` }
       ],
       problems: []
+    },
+    "A9.6": {
+      prereq: ["higher-power-sums", "integer-valued-polynomials", "cauchy-functional-equations", "injectivity-surjectivity", "matrix-power-diagonalizing", "determinant-basics", "cramers-rule", "nesbitt-inequality", "tangent-line-trick", "evenly-spaced-angle-products"],
+      cards: [],
+      body: String.raw`[[higher-power-sums|The sums of $k$th powers]] are polynomials of degree $k + 1$, and [[integer-valued-polynomials|a polynomial with integer values]] is an integer combination of binomial coefficients, read from its differences.
+
+[[cauchy-functional-equations|The Cauchy equations]] force linear, exponential or power functions once a mild condition holds, and [[injectivity-surjectivity|proving a function one-to-one or onto]] unlocks substitutions in harder equations.
+
+A linear recurrence is [[matrix-power-diagonalizing|a matrix power]]. [[determinant-basics|The determinant]] measures how a map scales area and decides whether a system has a unique solution, which [[cramers-rule|Cramer's rule]] gives.
+
+[[nesbitt-inequality|Nesbitt's inequality]] and [[tangent-line-trick|the tangent line trick]] handle symmetric fractions and sums of one function of each variable, and [[evenly-spaced-angle-products|products of sines at evenly spaced angles]] come from the roots of unity.`,
+      strategies: [
+        String.raw`For a sum of powers, use the known formulas, or the fact that the sum is a polynomial of one degree higher fixed by a few values.`,
+        String.raw`For a polynomial that must take integer values, write it in binomial coefficients.`,
+        String.raw`For a functional equation like Cauchy's, find $f$ on the integers, then the rationals, then use the extra condition.`,
+        String.raw`Prove a function is one-to-one or onto before substituting cleverly.`,
+        String.raw`Write a linear recurrence as a matrix power.`,
+        String.raw`For a homogeneous inequality, normalize the variables first.`,
+        String.raw`For products or sums of trigonometric values at evenly spaced angles, go to the roots of unity.`
+      ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Find $1^4 + 2^4 + \cdots + 10^4$.`, answer: "25333",
+        solution: String.raw`Use $\sum_{k=1}^{n} k^4 = \tfrac{n(n + 1)(2n + 1)(3n^2 + 3n - 1)}{30}$: for $n = 10$ it is $\tfrac{10 \cdot 11 \cdot 21 \cdot 329}{30} = 25333$.` },
+      { q: String.raw`A polynomial of degree $2$ has $P(0) = 1$, $P(1) = 3$ and $P(2) = 8$. Find $P(5)$.`, answer: "41",
+        solution: String.raw`The differences are $2, 5$ and the second difference is $3$, so $P(x) = 1 + 2\binom x1 + 3\binom x2$. Then $P(5) = 1 + 10 + 30 = 41$.` },
+      { q: String.raw`Let $M = \begin{pmatrix} 1 & 1 \\ 0 & 1 \end{pmatrix}$. Find the upper right entry of $M^{10}$.`, answer: "10",
+        solution: String.raw`Multiplying, $M^2 = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}$, and by induction $M^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}$. So the entry is $10$.` },
+      { q: String.raw`Use Cramer's rule to find $x$ when $2x + y = 5$ and $x - 3y = -1$.`, answer: "2",
+        solution: String.raw`The determinant of the system is $2(-3) - 1 \cdot 1 = -7$. Replacing the first column by the constants gives $5(-3) - 1(-1) = -14$. So $x = \tfrac{-14}{-7} = 2$ (and $y = 1$).` },
+      { q: String.raw`Find the least value of $\dfrac{a}{b + c} + \dfrac{b}{c + a} + \dfrac{c}{a + b}$ for positive $a$, $b$, $c$.`, answer: "3/2",
+        solution: String.raw`Add $1$ to each term: the sum plus $3$ is $(a + b + c)\left(\tfrac{1}{b + c} + \tfrac{1}{c + a} + \tfrac{1}{a + b}\right) = \tfrac12\left((b + c) + (c + a) + (a + b)\right)\left(\sum \tfrac{1}{b + c}\right) \ge \tfrac92$ by Cauchy-Schwarz. So the sum is at least $\tfrac32$, with equality at $a = b = c$ (Nesbitt's inequality).` },
+      { q: String.raw`Find $\sin\tfrac\pi7\sin\tfrac{2\pi}{7}\sin\tfrac{3\pi}{7}$.`, answer: "sqrt(7)/8",
+        solution: String.raw`The product of all six values $\sin\tfrac{k\pi}{7}$, $k = 1, \ldots, 6$, is $\tfrac{7}{2^6}$, from $\prod_{k=1}^{6} |1 - \omega^k| = 7$ with $|1 - e^{i\theta}| = 2\sin\tfrac\theta2$. The values for $k$ and $7 - k$ are equal, so the product of the first three is $\sqrt{\tfrac{7}{64}} = \tfrac{\sqrt7}{8}$.` },
+      { q: String.raw`Find $\sum_{k=0}^{5} \cos^2\tfrac{k\pi}{6}$.`, answer: "3",
+        solution: String.raw`Write $\cos^2\theta = \tfrac{1 + \cos 2\theta}{2}$. The angles $\tfrac{k\pi}{3}$, $k = 0, \ldots, 5$, are evenly spaced around the circle, so their cosines add to $0$. The sum is $\tfrac{6}{2} = 3$.` }
+    ],
+    problems: []
+  },
+  challenge: {
+    exercises: [
+      { q: String.raw`Find the remainder when $1^3 + 2^3 + \cdots + 100^3$ is divided by $1000$.`, answer: "500",
+        solution: String.raw`The sum is $\left(\tfrac{100 \cdot 101}{2}\right)^2 = 5050^2 = 25502500$, which leaves $500$.` },
+      { q: String.raw`The Fibonacci numbers satisfy $\begin{pmatrix} F_{n+1} \\ F_n \end{pmatrix} = \begin{pmatrix} 1 & 1 \\ 1 & 0 \end{pmatrix}^n \begin{pmatrix} 1 \\ 0 \end{pmatrix}$. Using $M^{20} = (M^{10})^2$ with $M^{10} = \begin{pmatrix} 89 & 55 \\ 55 & 34 \end{pmatrix}$, find $F_{20}$.`, answer: "6765",
+        solution: String.raw`$M^n = \begin{pmatrix} F_{n+1} & F_n \\ F_n & F_{n-1} \end{pmatrix}$, so $F_{20}$ is the off-diagonal entry of $(M^{10})^2$: $89 \cdot 55 + 55 \cdot 34 = 55 \cdot 123 = 6765$.` },
+      { q: String.raw`If $\tan\tfrac x2 = \tfrac12$, find $\sin x + \cos x$.`, answer: "7/5",
+        solution: String.raw`With $t = \tan\tfrac x2$, $\sin x = \tfrac{2t}{1 + t^2} = \tfrac{1}{5/4} = \tfrac45$ and $\cos x = \tfrac{1 - t^2}{1 + t^2} = \tfrac{3/4}{5/4} = \tfrac35$. The sum is $\tfrac75$.` }
+    ],
+    problems: []
   }
 };

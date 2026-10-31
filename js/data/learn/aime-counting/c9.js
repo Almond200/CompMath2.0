@@ -44,8 +44,8 @@ A [[partitions|partition]] of $n$ writes it as a sum of positive integers in whi
 Use a generating function when a count combines independent choices by adding their contributions and the direct casework is long. The next lesson studies permutations through their cycles.`,
       related: [
         { card: "coefficient-extraction", note: String.raw`reading sums of coefficients by evaluating at $1$, $-1$ and roots of unity.` },
-        { card: "roots-of-unity-filter", note: String.raw`extracting the coefficients in one residue class (A6.3).` },
-        { card: "generalized-binomial-series", note: String.raw`the expansion of $\tfrac{1}{(1 - x)^k}$ (A9.1).` }
+        { card: "roots-of-unity-filter", note: String.raw`extracting the coefficients in one residue class (A6.4).` },
+        { card: "generalized-binomial-series", note: String.raw`the expansion of $\tfrac{1}{(1 - x)^k}$ (A9.2).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can $10$ cents be made from pennies, nickels and dimes?`, answer: "4",
@@ -132,7 +132,7 @@ The [[transfer-matrix-method|transfer matrix method]] organizes a several-state 
 These tools close the counting book. Each is a reminder of the habit common to all of them: find the structure that a single step, a single statement or a single line imposes, and count or reason from it. The Summary (C9.6) collects the chapter's strategies.`,
       related: [
         { card: "restricted-sequences", note: String.raw`the same states, without the matrix (C2.4).` },
-        { card: "matrix-multiplication", note: String.raw`powers of the transfer matrix (A9.3).` },
+        { card: "matrix-multiplication", note: String.raw`powers of the transfer matrix (A9.4).` },
         { card: "casework-method", note: String.raw`casing on the number of true statements in a logic puzzle.` }
       ],
       exercises: [

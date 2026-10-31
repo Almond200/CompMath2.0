@@ -6,6 +6,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G5"] = {
   lessons: {
     "G5.1": {
+      prereq: ["angle-bisector-theorem", "centroid-division", "mass-points"],
+      cards: [],
+      body: String.raw`This chapter studies the special points and lines of a triangle. Its tools are the incenter and excenters with the angles they make, the circumcenter, orthocenter and centroid with the Euler line and nine-point circle, the medial and orthic triangles, Ceva's and Menelaus's theorems, and a handful of figures that recur.
+
+The angle bisectors meet at the incenter $I$, the center of the inscribed circle, and the angle $BIC$ is $90^\circ + \tfrac A2$, so it is $120^\circ$ when $A = 60^\circ$. The external bisectors meet at the excenters, and the incenter-excenter lemma puts $I$, two excenters, $B$ and $C$ on one circle centered at the midpoint of an arc.
+
+The perpendicular bisectors meet at the circumcenter $O$, the altitudes at the orthocenter $H$, and the medians at the centroid $G$. These three lie on the Euler line with $OG : GH = 1 : 2$, so if $OH = 12$ then $OG = 4$. The midpoints of the sides, the feet of the altitudes and the midpoints from $H$ to the vertices lie on the nine-point circle, of radius $\tfrac R2$. Joining the midpoints of the sides gives the medial triangle, a quarter of the area; joining the feet of the altitudes gives the orthic triangle.
+
+Ceva's theorem tells when three cevians meet: $\tfrac{BD}{DC} \cdot \tfrac{CE}{EA} \cdot \tfrac{AF}{FB} = 1$. With $\tfrac{BD}{DC} = 2$ and $\tfrac{CE}{EA} = 3$, the third ratio must be $\tfrac16$. Menelaus's theorem gives the same product for three points on a line.
+
+Last, some figures recur and have a standard move: a point inside an equilateral triangle (rotate by $60^\circ$), a circle in an angle (its center is on the bisector), and the Fermat point (erect equilateral triangles).
+
+The lessons take these ideas in turn: the incenter and excenters (G5.2), the circumcenter, orthocenter and centroid (G5.3), the medial and orthic triangles (G5.4), Ceva and Menelaus (G5.5), and common triangle figures (G5.6). The Summary (G5.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`In triangle $ABC$, $\angle A = 60^\circ$, and $I$ is the incenter. Find $\angle BIC$.`, answer: "120",
+          solution: String.raw`In triangle $BIC$, the angles at $B$ and $C$ are half of $\angle B$ and $\angle C$, which add to $\tfrac12(180^\circ - 60^\circ) = 60^\circ$. So $\angle BIC = 180^\circ - 60^\circ = 120^\circ$, which is $90^\circ + \tfrac A2$.` },
+        { q: String.raw`The circumcenter $O$ and the orthocenter $H$ of a triangle are $12$ apart. How far is the centroid $G$ from $O$?`, answer: "4",
+          solution: String.raw`The centroid lies on the Euler line between $O$ and $H$ with $OG : GH = 1 : 2$, so $OG = \tfrac13 \cdot 12 = 4$.` },
+        { q: String.raw`Cevians $AD$, $BE$, $CF$ of triangle $ABC$ meet at one point, with $\tfrac{BD}{DC} = 2$ and $\tfrac{CE}{EA} = 3$. Find $\tfrac{AF}{FB}$.`, answer: "1/6",
+          solution: String.raw`By Ceva's theorem, $\tfrac{BD}{DC} \cdot \tfrac{CE}{EA} \cdot \tfrac{AF}{FB} = 1$, so $\tfrac{AF}{FB} = \tfrac{1}{2 \cdot 3} = \tfrac16$.` }
+      ],
+      problems: [
+        "2018 AMC 12B, Problem 8",
+        "2007 AMC 12B, Problem 14",
+        "2008 AMC 12A, Problem 13"
+      ]
+    },
+    "G5.2": {
       prereq: ["angle-bisector-theorem", "inscribed-angle-theorem"],
       cards: ["incenter-excenter-lemma", "perp-to-angle-bisector", "triangle-center-angles", "angle-bisector-circumcircle"],
       body: String.raw`The incenter, where the angle bisectors meet, is tied to the circumcircle by a surprising fact: the bisector from $A$ meets the circumcircle again at a point equidistant from $B$, $C$ and the incenter. That fact, the angles at the centers, and a perpendicular dropped to a bisector solve most problems about incenters and excenters on the AIME.
@@ -18,9 +46,9 @@ A [[perp-to-angle-bisector|perpendicular from a vertex to an angle bisector]] cr
 
 Use the arc midpoint whenever a bisector meets the circumcircle, the center angles to find hidden cyclic quadrilaterals, and the reflection across a bisector for perpendiculars. The next lesson studies the circumcenter, orthocenter and centroid together.`,
       related: [
-        { card: "inradius-area", note: String.raw`the incircle's radius from the area (G2.4).` },
-        { card: "euler-distance-theorem", note: String.raw`$OI^2 = R(R - 2r)$, which the incenter-excenter lemma proves (G5.2).` },
-        { card: "midsegment-theorem", note: String.raw`where the foot of a perpendicular to a bisector lands (G1.1).` }
+        { card: "inradius-area", note: String.raw`the incircle's radius from the area (G2.5).` },
+        { card: "euler-distance-theorem", note: String.raw`$OI^2 = R(R - 2r)$, which the incenter-excenter lemma proves (G5.3).` },
+        { card: "midsegment-theorem", note: String.raw`where the foot of a perpendicular to a bisector lands (G1.2).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $\angle A = 50^\circ$, and $I$ is the incenter. Find $\angle BIC$ in degrees.`, answer: "115",
@@ -32,12 +60,10 @@ Use the arc midpoint whenever a bisector meets the circumcircle, the center angl
         "2001 AIME II, Problem 7",
         "2016 AIME I, Problem 6",
         "2003 AIME I, Problem 15",
-        "2022 AIME II, Problem 11",
-        "2020 AIME I, Problem 13",
-        "2022 AIME I, Problem 14"
+        "2022 AIME II, Problem 11"
       ]
     },
-    "G5.2": {
+    "G5.3": {
       prereq: ["centroid-division", "circumradius-area"],
       cards: ["orthocenter-properties", "euler-line-ratio", "nine-point-circle", "euler-distance-theorem"],
       body: String.raw`The circumcenter $O$, centroid $G$ and orthocenter $H$ of a triangle lie on one line, the Euler line, with $G$ between them and $HG = 2GO$. With the nine-point circle and the formulas for distances between centers, this gives a small toolkit for problems that mention several centers at once.
@@ -50,25 +76,23 @@ The [[euler-line-ratio|Euler line]] relation $\overrightarrow{OH} = \overrightar
 
 When several centers appear, place them on the Euler line, use the nine-point circle for midpoints and feet, and Euler's formula for the incenter. The next lesson studies the triangles formed by midpoints and feet.`,
       related: [
-        { card: "vector-bash", note: String.raw`the vector identity $H = A + B + C$ with the circumcenter at the origin (G6.3).` },
-        { card: "incenter-excenter-lemma", note: String.raw`the source of Euler's distance formula (G5.1).` },
-        { card: "homothety-monge", note: String.raw`the homothety at $G$ with ratio $-\tfrac12$ that takes $H$ to $O$ (G6.4).` }
+        { card: "vector-bash", note: String.raw`the vector identity $H = A + B + C$ with the circumcenter at the origin (G6.4).` },
+        { card: "incenter-excenter-lemma", note: String.raw`the source of Euler's distance formula (G5.2).` },
+        { card: "homothety-monge", note: String.raw`the homothety at $G$ with ratio $-\tfrac12$ that takes $H$ to $O$ (G6.5).` }
       ],
       exercises: [
         { q: String.raw`The triangle with sides $13$, $14$, $15$ has circumradius $\tfrac{65}{8}$ and inradius $4$. Find the distance between its circumcenter and incenter.`, answer: "sqrt(65)/8",
           solution: String.raw`By Euler's formula $OI^2 = R(R - 2r) = \tfrac{65}{8}\left(\tfrac{65}{8} - 8\right) = \tfrac{65}{8} \cdot \tfrac18 = \tfrac{65}{64}$, so $OI = \tfrac{\sqrt{65}}{8}$.` }
       ],
       problems: [
-        "2018 AMC 12B, Problem 8",
         "2016 AMC 12A, Problem 17",
         "2022 AMC 12B, Problem 19",
         "2019 AMC 12B, Problem 25",
         "2025 AIME II, Problem 5",
-        "2020 AIME I, Problem 15",
         "2024 AIME II, Problem 10"
       ]
     },
-    "G5.3": {
+    "G5.4": {
       prereq: ["midsegment-theorem", "centroid-division"],
       cards: ["medial-triangle", "orthic-triangle", "median-triangle-area", "vivianis-theorem"],
       body: String.raw`Joining special points of a triangle gives new triangles with predictable shapes. The midpoints of the sides form the medial triangle, a half-size copy; the feet of the altitudes form the orthic triangle, whose angles are simple functions of the original angles; and the three medians themselves, moved end to end, form a triangle with a fixed fraction of the area. Problems that build a sequence of triangles by repeating such a construction need these facts.
@@ -84,7 +108,7 @@ The three medians of any triangle can form a triangle, and its area is $\tfrac34
 Recognize medial and orthic triangles in repeated constructions, and use areas to relate distances to sides. The next lesson treats Ceva's and Menelaus's theorems.`,
       related: [
         { card: "similar-figures-ratios", note: String.raw`the area ratio $\tfrac14$ of the medial triangle (B5.1).` },
-        { card: "nine-point-circle", note: String.raw`the circle through the vertices of both the medial and the orthic triangle (G5.2).` },
+        { card: "nine-point-circle", note: String.raw`the circle through the vertices of both the medial and the orthic triangle (G5.3).` },
         { card: "geometric-series", note: String.raw`adding the areas of repeated medial triangles.` }
       ],
       exercises: [
@@ -94,13 +118,12 @@ Recognize medial and orthic triangles in repeated constructions, and use areas t
           solution: String.raw`The three triangles with apex at the point and the sides as bases fill the triangle, so $\tfrac12 \cdot 6(a + b + c)$ equals the area $9\sqrt3$. So $a + b + c = 3\sqrt3$, the height.` }
       ],
       problems: [
-        "2007 AMC 12B, Problem 14",
         "2019 AMC 12A, Problem 25",
         "2023 AIME I, Problem 12",
         "2019 AIME II, Problem 15"
       ]
     },
-    "G5.4": {
+    "G5.5": {
       prereq: ["mass-points", "cevian-area-ratio"],
       cards: ["cevas-theorem", "menelaus-theorem", "trig-ceva"],
       body: String.raw`Two classical theorems describe ratios along the sides of a triangle. Ceva's theorem says when three cevians meet at one point, and Menelaus's theorem says when three points on the side lines lie on one line. Both are products of three ratios equal to $1$, and both give ratios that mass points find by a different route.
@@ -111,9 +134,9 @@ Recognize medial and orthic triangles in repeated constructions, and use areas t
 
 Mass points, area ratios, Ceva and Menelaus all compute the same ratios. Mass points are fastest for two cevians; Menelaus is best for a line that crosses a triangle; Ceva is the test for concurrence. The next lesson collects some recurring figures.`,
       related: [
-        { card: "mass-points", note: String.raw`the same ratios by balancing weights (G1.4).` },
-        { card: "ratio-lemma", note: String.raw`each factor of trigonometric Ceva as a ratio of sides (G3.3).` },
-        { card: "barycentric-coordinates", note: String.raw`coordinates in which Ceva and Menelaus become determinant conditions (G9.1).` }
+        { card: "mass-points", note: String.raw`the same ratios by balancing weights (G1.5).` },
+        { card: "ratio-lemma", note: String.raw`each factor of trigonometric Ceva as a ratio of sides (G3.4).` },
+        { card: "barycentric-coordinates", note: String.raw`coordinates in which Ceva and Menelaus become determinant conditions (G9.2).` }
       ],
       exercises: [
         { q: String.raw`Cevians $AD$, $BE$, $CF$ of triangle $ABC$ meet at one point, with $\tfrac{BD}{DC} = 2$ and $\tfrac{CE}{EA} = 3$. Find $\tfrac{AF}{FB}$.`, answer: "1/6",
@@ -121,7 +144,7 @@ Mass points, area ratios, Ceva and Menelaus all compute the same ratios. Mass po
       ],
       problems: ["2011 AIME II, Problem 4"]
     },
-    "G5.5": {
+    "G5.6": {
       prereq: ["equilateral-triangle-facts", "tangent-facts"],
       cards: ["point-in-equilateral", "circle-in-angle", "fermat-point", "symmedian-lemoine", "simson-line"],
       body: String.raw`Some figures recur often enough to be recognized on sight: a point inside an equilateral triangle with given distances to the vertices, circles inscribed in an angle, the point that minimizes the total distance to three vertices, the reflection of a median in a bisector, and the feet of perpendiculars from a point on the circumcircle. Each has a standard move.
@@ -132,10 +155,10 @@ A [[circle-in-angle|circle inscribed in an angle]] has its center on the bisecto
 
 The [[fermat-point|Fermat point]] minimizes $PA + PB + PC$; when all angles are below $120^\circ$, it is the point from which each side subtends $120^\circ$, and the minimum equals the length from a vertex to the far vertex of the equilateral triangle erected on the opposite side. For an equilateral triangle of side $1$ it is the center, with sum $\sqrt3$. A [[symmedian-lemoine|symmedian]] is a median reflected in the angle bisector; it divides the opposite side in the ratio of the squares of the adjacent sides, and the tangents to the circumcircle at $B$ and $C$ meet on the symmedian from $A$. The [[simson-line|Simson line]] says that the feet of the perpendiculars from a point on the circumcircle to the three side lines are collinear.
 
-When one of these figures appears, apply its standard move: rotate by $60^\circ$, put centers on bisectors, erect equilateral triangles, or reflect medians. The next chapter studies transformations in general.`,
+When one of these figures appears, apply its standard move: rotate by $60^\circ$, put centers on bisectors, erect equilateral triangles, or reflect medians. The Summary (G5.7) collects the chapter's strategies, and the next chapter studies transformations in general.`,
       related: [
-        { card: "rotation-trick", note: String.raw`rotating part of a figure to bring three lengths into one triangle (G6.2).` },
-        { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles at the Fermat point (G3.1).` },
+        { card: "rotation-trick", note: String.raw`rotating part of a figure to bring three lengths into one triangle (G6.3).` },
+        { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles at the Fermat point (G3.2).` },
         { card: "geometric-series", note: String.raw`the radii of a chain of circles in an angle.` }
       ],
       exercises: [
@@ -145,11 +168,55 @@ When one of these figures appears, apply its standard move: rotate by $60^\circ$
           solution: String.raw`The minimum is at the Fermat point, which here is the center, at distance $\tfrac{1}{\sqrt3}$ from each vertex. The sum is $\tfrac{3}{\sqrt3} = \sqrt3$.` }
       ],
       problems: [
-        "2008 AMC 12A, Problem 13",
         "2020 AMC 12A, Problem 24",
         "2022 AIME I, Problem 8",
         "2024 AIME I, Problem 8"
       ]
+    },
+    "G5.7": {
+      prereq: ["triangle-center-angles", "incenter-excenter-lemma", "orthocenter-properties", "euler-line-ratio", "nine-point-circle", "euler-distance-theorem", "medial-triangle", "cevas-theorem", "menelaus-theorem", "point-in-equilateral"],
+      cards: [],
+      body: String.raw`[[triangle-center-angles|The angles at the centers]] are fixed by the triangle's angles: $\angle BIC = 90^\circ + \tfrac A2$, $\angle BOC = 2A$, $\angle BHC = 180^\circ - A$. [[incenter-excenter-lemma|The incenter-excenter lemma]] puts $B$, $C$, $I$ and the excenter opposite $A$ on a circle centered at the midpoint of arc $BC$.
+
+[[orthocenter-properties|The orthocenter]] reflects onto the circumcircle across each side. [[euler-line-ratio|The Euler line]] carries $O$, $G$, $H$ with $OG : GH = 1 : 2$, [[nine-point-circle|the nine-point circle]] has radius $\tfrac R2$, and [[euler-distance-theorem|Euler's theorem]] gives $OI^2 = R(R - 2r)$.
+
+[[medial-triangle|The medial triangle]] is similar to the triangle with ratio $\tfrac12$ and has a quarter of its area.
+
+[[cevas-theorem|Ceva's theorem]] decides when three cevians meet, and [[menelaus-theorem|Menelaus's theorem]] when three points on the sides are collinear. [[point-in-equilateral|A point inside an equilateral triangle]] is handled by a $60^\circ$ rotation.`,
+      strategies: [
+        String.raw`Identify each special point by the lines through it: bisectors, perpendicular bisectors, altitudes or medians.`,
+        String.raw`Use the angle facts at the centers: $\angle BIC = 90^\circ + \tfrac A2$, $\angle BOC = 2A$, $\angle BHC = 180^\circ - A$.`,
+        String.raw`When $I$ and an arc midpoint appear, use the incenter-excenter lemma.`,
+        String.raw`For $O$, $G$ and $H$ together, use the Euler line ratio.`,
+        String.raw`For concurrent cevians use Ceva; for collinear points use Menelaus; signs or directions matter for points outside the sides.`,
+        String.raw`For a point inside an equilateral triangle, rotate by $60^\circ$ about a vertex.`
+      ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`A right triangle has legs $6$ and $8$. Find the distance between its circumcenter and its orthocenter.`, answer: "5",
+        solution: String.raw`In a right triangle the orthocenter is the vertex of the right angle, where the two legs, which are altitudes, meet. The circumcenter is the midpoint of the hypotenuse, whose length is $10$. The median to the hypotenuse is half of it, so the distance is $5$.` },
+      { q: String.raw`Find the radius of the nine-point circle of the triangle with sides $13$, $14$ and $15$.`, answer: "65/16",
+        solution: String.raw`The circumradius is $R = \tfrac{abc}{4K} = \tfrac{2730}{336} = \tfrac{65}{8}$, and the nine-point circle has radius $\tfrac R2 = \tfrac{65}{16}$.` },
+      { q: String.raw`Find the distance between the circumcenter and the incenter of the triangle with sides $13$, $14$ and $15$.`, answer: "sqrt(65)/8",
+        solution: String.raw`Here $R = \tfrac{65}{8}$ and $r = \tfrac{84}{21} = 4$. Euler's theorem gives $OI^2 = R(R - 2r) = \tfrac{65}{8} \cdot \tfrac18 = \tfrac{65}{64}$, so $OI = \tfrac{\sqrt{65}}{8}$.` },
+      { q: String.raw`A point inside an equilateral triangle of side $6$ is joined to the three sides by perpendiculars. Find the sum of their lengths.`, answer: "3sqrt(3)",
+        solution: String.raw`Joining the point to the vertices splits the triangle into three triangles with bases $6$ and heights the three distances, so $\tfrac12 \cdot 6 \cdot (d_1 + d_2 + d_3)$ is the area $\tfrac{\sqrt3}{4} \cdot 36 = 9\sqrt3$. Hence the sum is $3\sqrt3$, the altitude, wherever the point is (Viviani's theorem).` },
+      { q: String.raw`A line meets side $AB$ of triangle $ABC$ at $F$ with $AF : FB = 1 : 2$, side $CA$ at its midpoint $E$, and line $BC$ at $D$ beyond $C$. Find $\tfrac{BD}{DC}$.`, answer: "2",
+        solution: String.raw`By Menelaus's theorem, $\tfrac{AF}{FB} \cdot \tfrac{BD}{DC} \cdot \tfrac{CE}{EA} = 1$ in lengths, so $\tfrac12 \cdot \tfrac{BD}{DC} \cdot 1 = 1$ and $\tfrac{BD}{DC} = 2$: $C$ is the midpoint of $BD$.` },
+      { q: String.raw`In triangle $ABC$, $\angle A = 60^\circ$, and $I_A$ is the excenter opposite $A$. Find $\angle BI_AC$.`, answer: "60",
+        solution: String.raw`The external bisectors at $B$ and $C$ make angles $90^\circ - \tfrac B2$ and $90^\circ - \tfrac C2$ with side $BC$, so $\angle BI_AC = 180^\circ - (90^\circ - \tfrac B2) - (90^\circ - \tfrac C2) = \tfrac{B + C}{2} = 90^\circ - \tfrac A2 = 60^\circ$.` },
+      { q: String.raw`Triangle $ABC$ has area $84$. Find the area of the triangle formed by the midpoints of its sides.`, answer: "21",
+        solution: String.raw`The medial triangle is similar to $ABC$ with ratio $\tfrac12$, so its area is $\tfrac14 \cdot 84 = 21$; the four small triangles are congruent.` }
+    ],
+    problems: []
+  },
+  challenge: {
+    problems: [
+      "2020 AIME I, Problem 13",
+      "2022 AIME I, Problem 14",
+      "2020 AIME I, Problem 15"
+    ]
   }
 };

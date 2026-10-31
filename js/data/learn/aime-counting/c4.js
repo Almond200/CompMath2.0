@@ -114,7 +114,7 @@ For counting up to symmetry, [[burnsides-lemma|Burnside's lemma]] gives the numb
 Use symmetry to replace a count by a fraction, and Burnside whenever objects related by a rotation or reflection are to be counted once. The next lesson collects the identities of binomial coefficients.`,
       related: [
         { card: "necklace-formula", note: String.raw`Burnside for the rotations of a circle (C2.3).` },
-        { card: "wlog-symmetry", note: String.raw`assuming an order because the problem is symmetric (A8.1).` },
+        { card: "wlog-symmetry", note: String.raw`assuming an order because the problem is symmetric (A8.2).` },
         { card: "permutation-cycle-structure", note: String.raw`the cycles of a symmetry, which decide what it fixes (C9.3).` }
       ],
       exercises: [
@@ -151,7 +151,7 @@ The [[hockey-stick|hockey stick identity]] $\sum_{k=r}^{n}\binom kr = \binom{n +
 When a sum of binomial coefficients appears, ask what it counts: a diagonal is a hockey stick, a product of two coefficients with a fixed total is Vandermonde, and a weighted sum is a committee with a chair. The Summary (C4.6) collects the chapter's strategies, and the problems after it mix these identities with bijections, double counting and symmetry.`,
       related: [
         { card: "committee-chair", note: String.raw`the identity $k\binom nk = n\binom{n-1}{k-1}$ for weighted row sums (C4.3).` },
-        { card: "roots-of-unity-filter", note: String.raw`sums of every third or fourth entry of a row (A6.3).` },
+        { card: "roots-of-unity-filter", note: String.raw`sums of every third or fourth entry of a row (A6.4).` },
         { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.2).` }
       ],
       exercises: [

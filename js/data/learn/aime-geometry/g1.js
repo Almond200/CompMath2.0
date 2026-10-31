@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G1"] = {
   lessons: {
     "G1.1": {
+      prereq: ["triangle-similarity", "triangle-area-standard", "pythagorean-theorem"],
+      cards: [],
+      body: String.raw`This chapter measures triangles by ratios. Its tools are similar triangles from parallel lines, ratios of areas, the length formulas for cevians (Stewart's theorem, the angle bisector theorem, the median length), mass points, and the right-triangle constructions that create similar triangles where there were none.
+
+Two triangles are similar when their angles match, and then all their lengths are in one ratio and their areas in its square. A line parallel to a side cuts off a similar triangle: if $DE \parallel BC$ with $AD = 2$ and $DB = 3$, then $\tfrac{DE}{BC} = \tfrac{2}{5}$, so $DE = 4$ when $BC = 10$.
+
+Triangles with the same height have areas in the ratio of their bases, so a cevian divides a triangle's area in the ratio in which it divides the opposite side: if $BD : DC = 2 : 3$, triangle $ABD$ has $\tfrac25$ of the area. Comparing areas this way, often around a shared vertex, gives ratios of lengths in return.
+
+A cevian's length follows from the sides by Stewart's theorem; the angle bisector divides the opposite side in the ratio of the adjacent sides, so with $AB = 6$, $AC = 9$ and $BC = 10$ it cuts $BC$ into $4$ and $6$; and the medians meet at the centroid, two thirds of the way along each. Mass points put weights at the vertices so that every cevian balances, which turns a figure full of ratios into arithmetic.
+
+Last, the altitude to the hypotenuse of a right triangle creates two triangles similar to it, and extending sides to meet or doubling a median creates similar triangles in other figures.
+
+The lessons take these ideas in turn: similar triangles and ratio chasing (G1.2), area ratios (G1.3), Stewart's theorem, bisectors and medians (G1.4), mass points (G1.5), and similarity in nested figures (G1.6). The Summary (G1.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`In triangle $ABC$, $D$ is on $AB$ and $E$ on $AC$ with $DE \parallel BC$. If $AD = 2$, $DB = 3$ and $BC = 10$, find $DE$.`, answer: "4",
+          solution: String.raw`Triangle $ADE$ is similar to triangle $ABC$, since $DE \parallel BC$, with ratio $\tfrac{AD}{AB} = \tfrac{2}{5}$. So $DE = \tfrac25 \cdot 10 = 4$.` },
+        { q: String.raw`Point $D$ lies on side $BC$ of triangle $ABC$ with $BD : DC = 2 : 3$. If the area of $ABC$ is $50$, find the area of $ABD$.`, answer: "20",
+          solution: String.raw`Triangles $ABD$ and $ADC$ have the same height from $A$, so their areas are in the ratio of their bases, $2 : 3$. So $ABD$ has $\tfrac25$ of $50$, which is $20$.` },
+        { q: String.raw`In triangle $ABC$, $AB = 6$, $AC = 9$ and $BC = 10$. The bisector of angle $A$ meets $BC$ at $D$. Find $BD$.`, answer: "4",
+          solution: String.raw`By the angle bisector theorem, $\tfrac{BD}{DC} = \tfrac{AB}{AC} = \tfrac{6}{9} = \tfrac23$. So $BD = \tfrac25 \cdot 10 = 4$.` }
+      ],
+      problems: [
+        "2008 AIME I, Problem 2",
+        "2000 AIME II, Problem 8",
+        "2025 AIME II, Problem 1"
+      ]
+    },
+    "G1.2": {
       prereq: ["triangle-similarity", "similar-figures-ratios"],
       cards: ["parallel-line-similarity", "midsegment-theorem", "intercept-theorem", "nested-similar"],
       body: String.raw`Similar triangles are the most used tool in AIME geometry: a line parallel to one side cuts off a smaller copy of a triangle, two parallel bases of a trapezoid make the diagonals cut each other in their ratio, and a figure repeated inside itself shrinks by the same factor at every step. Nearly every length in such a problem is found by writing one or two ratios. The skill is to see, or to create, the pair of similar triangles that carries the unknown length.
@@ -17,7 +45,7 @@ A figure built from [[nested-similar|nested similar copies]], such as squares in
 Look for parallel lines, draw one when needed, and write every unknown length as a ratio times a known one. The next lesson turns the same ratios into ratios of areas.`,
       related: [
         { card: "triangle-similarity", note: String.raw`the AA, SAS and SSS tests that justify each pair of similar triangles (B5.1).` },
-        { card: "trapezoid-special-segments", note: String.raw`the harmonic-mean segment and the midline of a trapezoid (G7.2).` },
+        { card: "trapezoid-special-segments", note: String.raw`the harmonic-mean segment and the midline of a trapezoid (G7.3).` },
         { card: "geometric-series", note: String.raw`adding the lengths or areas of nested copies.` }
       ],
       exercises: [
@@ -44,7 +72,7 @@ Look for parallel lines, draw one when needed, and write every unknown length as
         "2018 AIME II, Problem 7"
       ]
     },
-    "G1.2": {
+    "G1.3": {
       prereq: ["triangle-area-standard"],
       cards: ["same-base-area-ratio", "shared-angle-area-ratio", "cevian-area-ratio", "area-method"],
       body: String.raw`Areas of triangles that share a vertex, a base or an angle are in simple ratios, and many AIME problems give a figure cut into pieces with some areas known and ask for the rest. A triangle cut by cevians into six regions with four areas given, a quadrilateral split by a diagonal, points on two sides of a triangle at known fractions: each is solved by area ratios without computing any length.
@@ -57,9 +85,9 @@ For a triangle cut by three concurrent cevians into six pieces, label the unknow
 
 Use area ratios whenever a figure is cut into triangles sharing vertices or angles, and keep track of which bases or heights are shared. The next lesson computes the lengths of cevians themselves.`,
       related: [
-        { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the reason shared angles give product ratios (G3.1).` },
-        { card: "mass-points", note: String.raw`the same ratios along cevians, by weights instead of areas (G1.4).` },
-        { card: "rouths-theorem", note: String.raw`the area of the triangle cut out by three cevians in known ratios (G1.4).` }
+        { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the reason shared angles give product ratios (G3.2).` },
+        { card: "mass-points", note: String.raw`the same ratios along cevians, by weights instead of areas (G1.5).` },
+        { card: "rouths-theorem", note: String.raw`the area of the triangle cut out by three cevians in known ratios (G1.5).` }
       ],
       exercises: [
         { q: String.raw`Triangle $ABC$ has area $60$. Point $D$ is on $BC$ with $BD : DC = 1 : 2$, and $E$ is on $AC$ with $AE : EC = 3 : 1$. Find the area of triangle $ADE$.`, answer: "30",
@@ -78,7 +106,7 @@ Use area ratios whenever a figure is cut into triangles sharing vertices or angl
         "2025 AIME I, Problem 2"
       ]
     },
-    "G1.3": {
+    "G1.4": {
       prereq: ["pythagorean-theorem"],
       cards: ["stewarts-theorem", "angle-bisector-theorem", "angle-bisector-length", "apollonius-theorem", "centroid-division"],
       body: String.raw`A cevian is a segment from a vertex of a triangle to a point on the opposite side, and the most important cevians, the median and the angle bisector, have lengths and division ratios given by short formulas. Problems ask for the length of a median from three sides, the ratio in which a bisector cuts the opposite side, or the sides of a triangle given information about its cevians. One general formula, Stewart's theorem, covers them all.
@@ -91,9 +119,9 @@ The [[angle-bisector-theorem|angle bisector theorem]] says the bisector from $A$
 
 Use the angle bisector theorem for ratios on the opposite side, Stewart or Apollonius for lengths of cevians, and the centroid's $2 : 1$ ratio whenever medians meet. The next lesson finds ratios along several cevians at once.`,
       related: [
-        { card: "law-of-cosines", note: String.raw`the source of Stewart's theorem, applied at the foot of the cevian (G3.1).` },
-        { card: "median-doubling", note: String.raw`extending a median to a parallelogram, another route to Apollonius (G1.5).` },
-        { card: "incenter-excenter-lemma", note: String.raw`where the angle bisector meets the circumcircle again (G5.1).` }
+        { card: "law-of-cosines", note: String.raw`the source of Stewart's theorem, applied at the foot of the cevian (G3.2).` },
+        { card: "median-doubling", note: String.raw`extending a median to a parallelogram, another route to Apollonius (G1.6).` },
+        { card: "incenter-excenter-lemma", note: String.raw`where the angle bisector meets the circumcircle again (G5.2).` }
       ],
       exercises: [
         { q: String.raw`Triangle $ABC$ has $AB = 5$, $AC = 7$ and $BC = 8$. Find the length of the median from $A$.`, answer: "sqrt(21)",
@@ -116,7 +144,7 @@ Use the angle bisector theorem for ratios on the opposite side, Stewart or Apoll
         "2010 AIME I, Problem 15"
       ]
     },
-    "G1.4": {
+    "G1.5": {
       prereq: ["cevian-area-ratio", "centroid-division"],
       cards: ["mass-points", "cevian-ratio-sum", "rouths-theorem"],
       body: String.raw`When two or three cevians of a triangle cross, the ratios in which they cut each other are determined by the ratios on the sides, and the quickest way to find them is to treat the triangle as a lever. Problems give the division ratios on two sides and ask how the cevians divide each other, or give the pieces of cevians and ask for the area, or ask for the area of the small triangle that three cevians cut out.
@@ -129,9 +157,9 @@ Three concurrent cevians $AD$, $BE$, $CF$ meeting at $P$ satisfy the [[cevian-ra
 
 Use mass points whenever cevians cross and only ratios are known, and the cevian ratio sum when the cevians are concurrent and their pieces are given. The last lesson of the chapter collects the right-triangle and auxiliary-line figures.`,
       related: [
-        { card: "cevas-theorem", note: String.raw`the condition for three cevians to meet, the product of side ratios equal to $1$ (G5.4).` },
-        { card: "menelaus-theorem", note: String.raw`ratios along a transversal, the other classic route to the same answers (G5.4).` },
-        { card: "barycentric-coordinates", note: String.raw`mass points made into coordinates (G9.1).` }
+        { card: "cevas-theorem", note: String.raw`the condition for three cevians to meet, the product of side ratios equal to $1$ (G5.5).` },
+        { card: "menelaus-theorem", note: String.raw`ratios along a transversal, the other classic route to the same answers (G5.5).` },
+        { card: "barycentric-coordinates", note: String.raw`mass points made into coordinates (G9.2).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $D$ is on $BC$ with $BD : DC = 2 : 1$, and $E$ is the midpoint of $AC$. The cevians $AD$ and $BE$ meet at $P$. Find $\tfrac{AP}{PD}$.`, answer: "3/2",
@@ -147,7 +175,7 @@ Use mass points whenever cevians cross and only ratios are known, and the cevian
         "1989 AIME, Problem 15"
       ]
     },
-    "G1.5": {
+    "G1.6": {
       prereq: ["pythagorean-theorem", "triangle-similarity"],
       cards: ["altitude-hypotenuse", "right-triangle-altitude", "extend-sides-to-meet", "median-doubling"],
       body: String.raw`A few auxiliary constructions create similar triangles where the figure does not show them: the altitude to the hypotenuse of a right triangle, the extension of the legs of a trapezoid or the sides of a quadrilateral until they meet, and the doubling of a median into a parallelogram. Each is a standard first move, and recognizing when to make it is most of the solution.
@@ -158,11 +186,11 @@ The [[altitude-hypotenuse|altitude to the hypotenuse]] of a right triangle cuts 
 
 [[median-doubling|Doubling a median]] extends the median $AM$ of triangle $ABC$ past $M$ to $A'$ with $MA' = AM$, so that $ABA'C$ is a parallelogram. The new triangle $ABA'$ has sides $AB$, $AC$ and $2m_a$, which turns a question about a median into a question about a triangle with known sides, and it is the cleanest proof of Apollonius's theorem from the parallelogram law. It is the move to try when a median and two sides are given and the third side or the area is wanted.
 
-When a figure has a right angle, a trapezoid, or a median, consider these constructions first. The chapter review mixes all the ratio and similarity tools.`,
+When a figure has a right angle, a trapezoid, or a median, consider these constructions first. The Summary (G1.7) collects the chapter's strategies, and the problems after it mix all the ratio and similarity tools.`,
       related: [
-        { card: "thales-theorem", note: String.raw`the right angle in a semicircle, which puts the altitude-on-hypotenuse picture into circle problems (G2.2).` },
-        { card: "apollonius-theorem", note: String.raw`the median length that median doubling proves (G1.3).` },
-        { card: "folded-paper", note: String.raw`folds that create right triangles with altitudes (G6.4).` }
+        { card: "thales-theorem", note: String.raw`the right angle in a semicircle, which puts the altitude-on-hypotenuse picture into circle problems (G2.3).` },
+        { card: "apollonius-theorem", note: String.raw`the median length that median doubling proves (G1.4).` },
+        { card: "folded-paper", note: String.raw`folds that create right triangles with altitudes (G6.5).` }
       ],
       exercises: [
         { q: String.raw`A right triangle has legs $6$ and $8$. Find the length of the altitude to the hypotenuse.`, answer: "24/5",
@@ -183,15 +211,58 @@ When a figure has a right angle, a trapezoid, or a median, consider these constr
         "2016 AIME II, Problem 5",
         "2001 AIME II, Problem 13"
       ]
+    },
+    "G1.7": {
+      prereq: ["triangle-similarity", "parallel-line-similarity", "cevian-area-ratio", "stewarts-theorem", "angle-bisector-theorem", "apollonius-theorem", "centroid-division", "mass-points", "altitude-hypotenuse"],
+      cards: [],
+      body: String.raw`[[triangle-similarity|Similar triangles]] have their lengths in one ratio and their areas in its square, and [[parallel-line-similarity|a line parallel to a side]] makes them. Chasing a ratio through a chain of similar triangles finds a length the figure does not show.
+
+[[cevian-area-ratio|A cevian]] divides the area in the ratio in which it divides the opposite side, since the two parts share a height; comparing areas around a shared vertex gives ratios of lengths in return.
+
+[[stewarts-theorem|Stewart's theorem]] gives the length of any cevian. [[angle-bisector-theorem|The angle bisector]] divides the opposite side in the ratio of the adjacent sides; [[apollonius-theorem|Apollonius's theorem]] gives a median's length, and [[centroid-division|the centroid]] divides each median $2 : 1$. [[mass-points|Mass points]] turn a figure of cevians into weights that balance.
+
+[[altitude-hypotenuse|The altitude to the hypotenuse]] creates two triangles similar to the whole right triangle, and extending sides to meet or doubling a median creates similar triangles elsewhere.`,
+      strategies: [
+        String.raw`Look for parallel lines; each one makes a pair of similar triangles.`,
+        String.raw`Write every unknown length as a ratio of a known one, and chase the ratio through similar triangles.`,
+        String.raw`For areas, use triangles that share a height or a vertex: their areas are in the ratio of their bases.`,
+        String.raw`For a cevian's length, use Stewart's theorem, or the angle bisector or median formulas when they apply.`,
+        String.raw`When several cevians cross, assign mass points and read the ratios off the masses.`,
+        String.raw`In a right triangle, drop the altitude to the hypotenuse.`,
+        String.raw`If no similar triangles appear, extend two sides to meet, or double a median.`
+      ]
     }
   },
-  review: [
-    "2008 AIME I, Problem 2",
-    "2015 AIME I, Problem 7",
-    "2000 AIME II, Problem 8",
-    "2004 AIME I, Problem 9",
-    "2014 AIME II, Problem 11",
-    "2019 AIME II, Problem 7",
-    "2014 AIME I, Problem 13"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Triangle $ABC$ has $AB = 13$, $BC = 14$ and $CA = 15$. Find the length of the median from $A$.`, answer: "2sqrt(37)",
+        solution: String.raw`By Apollonius's theorem, $AB^2 + AC^2 = 2AM^2 + 2\left(\tfrac{BC}{2}\right)^2$, so $169 + 225 = 2AM^2 + 98$ and $AM^2 = 148$. So $AM = \sqrt{148} = 2\sqrt{37}$.` },
+      { q: String.raw`A right triangle has legs $AB = 6$ and $AC = 8$. Find the length of the bisector of the right angle, from $A$ to $BC$.`, answer: "24sqrt(2)/7",
+        solution: String.raw`The bisector meets $BC$ at $D$ with $BD : DC = 6 : 8$, so $BD = \tfrac37 \cdot 10 = \tfrac{30}{7}$. By the bisector length formula, $AD^2 = AB \cdot AC\left(1 - \tfrac{BC^2}{(AB + AC)^2}\right) = 48\left(1 - \tfrac{100}{196}\right) = \tfrac{1152}{49}$, so $AD = \tfrac{24\sqrt2}{7}$. (Areas give the same: the two triangles at $A$ have areas $\tfrac12 \cdot 6 \cdot \tfrac{AD}{\sqrt2}$ and $\tfrac12 \cdot 8 \cdot \tfrac{AD}{\sqrt2}$, adding to $24$.)` },
+      { q: String.raw`In triangle $ABC$, $D$ is on $BC$ with $BD : DC = 1 : 2$, and $E$ is the midpoint of $AC$. Segments $AD$ and $BE$ meet at $P$. Find $\tfrac{AP}{PD}$.`, answer: "3",
+        solution: String.raw`Assign masses so that each cevian balances. For $D$ on $BC$ with $BD : DC = 1 : 2$, put mass $2$ at $B$ and $1$ at $C$. For $E$ the midpoint of $AC$, $A$ gets the same mass as $C$, $1$. Then $D$ carries $2 + 1 = 3$, and $AP : PD = 3 : 1$.` },
+      { q: String.raw`A right triangle has legs $3$ and $4$. Find the altitude to the hypotenuse.`, answer: "12/5",
+        solution: String.raw`The area is $\tfrac12 \cdot 3 \cdot 4 = 6$, and also $\tfrac12 \cdot 5 \cdot h$. So $h = \tfrac{12}{5}$.` },
+      { q: String.raw`Triangle $ABC$ has area $36$ and centroid $G$. Find the area of triangle $GBC$.`, answer: "12",
+        solution: String.raw`The centroid is a third of the way from $BC$ to $A$ along the median, so the height of $GBC$ is a third of the height of $ABC$ on the same base. Its area is $\tfrac13 \cdot 36 = 12$.` },
+      { q: String.raw`The midpoints of the sides of a convex quadrilateral of area $40$ are joined in order. Find the area of the quadrilateral they form.`, answer: "20",
+        solution: String.raw`Call the quadrilateral $ABCD$. The corner triangle at $B$, cut off by the midpoints of $AB$ and $BC$, is similar to triangle $ABC$ with ratio $\tfrac12$, so its area is $\tfrac14[ABC]$; the corner at $D$ is $\tfrac14[ACD]$. Together they are $\tfrac14$ of the whole, $10$. In the same way, using the diagonal $BD$, the corners at $A$ and $C$ are another $10$. The inner parallelogram is what remains: $40 - 20 = 20$.` },
+      { q: String.raw`Two similar triangles have corresponding sides in the ratio $2 : 3$. The smaller has area $20$. Find the area of the larger.`, answer: "45",
+        solution: String.raw`Areas of similar figures are in the square of the ratio of lengths, $4 : 9$. So the larger has area $\tfrac94 \cdot 20 = 45$.` }
+    ],
+    problems: [
+      "2015 AIME I, Problem 7",
+      "2004 AIME I, Problem 9",
+      "2012 AIME I, Problem 12"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2014 AIME II, Problem 11",
+      "2019 AIME II, Problem 7",
+      "2014 AIME I, Problem 13",
+      "2023 AIME II, Problem 12",
+      "1996 AIME, Problem 13"
+    ]
+  }
 };

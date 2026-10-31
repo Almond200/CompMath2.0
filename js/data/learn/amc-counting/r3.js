@@ -46,7 +46,7 @@ The [[generating-function-method|generating function method]] multiplies polynom
 Read sums of products as committees, coefficients as multinomials, and combined choices as products of polynomials. The next lesson treats invariants and symmetry.`,
       related: [
         { card: "hockey-stick", note: String.raw`summing a diagonal of Pascal's triangle (R1.4).` },
-        { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.3).` },
+        { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.4).` },
         { card: "partitions", note: String.raw`generating functions for partitions (C9.2).` }
       ],
       exercises: [

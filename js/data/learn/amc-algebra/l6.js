@@ -78,7 +78,7 @@ Match the expression to the inequality, and always check the equality case. The 
       related: [
         { card: "harmonic-addition", note: String.raw`$a\sin x + b\cos x \le \sqrt{a^2 + b^2}$, Cauchy-Schwarz on the circle (L7.2).` },
         { card: "sos-identity", note: String.raw`sums of squares as bounds (L2.5).` },
-        { card: "jensens-inequality", note: String.raw`convexity behind all the means (A5.5).` }
+        { card: "jensens-inequality", note: String.raw`convexity behind all the means (A5.6).` }
       ],
       exercises: [
         { q: String.raw`Real numbers satisfy $x^2 + y^2 = 13$. Find the largest value of $2x + 3y$.`, answer: "13",

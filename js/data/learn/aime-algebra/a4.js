@@ -124,7 +124,7 @@ A [[defined-operation|newly defined operation]], written with a new symbol and a
 The signal is an equation that must hold for all inputs, or a symbol defined by a formula. Choose inputs that make the arguments simple or make two of them swap, and solve the small system that results.`,
       related: [
         { card: "function-symmetry-equation", note: String.raw`symmetries of a graph written as functional equations (A4.2).` },
-        { card: "cauchy-functional-equations", note: String.raw`equations like $f(x + y) = f(x) + f(y)$, solved in full in A9.2.` },
+        { card: "cauchy-functional-equations", note: String.raw`equations like $f(x + y) = f(x) + f(y)$, solved in full in A9.3.` },
         { card: "comparing-coefficients", note: String.raw`when the unknown function is a polynomial, an identity becomes equations on its coefficients (A2.6).` }
       ],
       exercises: [
@@ -149,7 +149,7 @@ The method is to sketch both sides on a common axis and use what each graph does
 The signal is an equation mixing different kinds of functions (trigonometric with linear, exponential with polynomial), a parameter that changes the number of solutions, or a question asked about a graph or a table. The Summary (A4.7) collects the chapter's strategies.`,
       related: [
         { card: "abs-value-graphing", note: String.raw`folding a graph at the $x$-axis to draw an absolute value (A4.3).` },
-        { card: "derivative-extremum", note: String.raw`finding where a function turns, which marks the monotonic pieces (A5.4).` },
+        { card: "derivative-extremum", note: String.raw`finding where a function turns, which marks the monotonic pieces (A5.5).` },
         { card: "mean-median-mode", note: String.raw`the averages most often asked about data in a chart.` }
       ],
       exercises: [

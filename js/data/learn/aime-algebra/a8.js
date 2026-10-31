@@ -1,10 +1,36 @@
 // Learn, AIME Algebra, chapter A8: algebraic structure and synthesis (CONVENTIONS §14).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
-// A8.4 is the mixed lesson that closes the core of the book, so the chapter has no separate review.
+// A8.5 is the mixed lesson that closes the core of the book, so the chapter has no separate review.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A8"] = {
   lessons: {
     "A8.1": {
+      prereq: ["symmetric-polynomial-strategies", "factor-remainder-theorem"],
+      cards: [],
+      body: String.raw`This chapter collects the structures that run through the whole book and the problems that need several of them at once. Its tools are symmetry and the identities it brings, factoring identities for integers inside algebra, parameters and the location of roots, and the habit of combining ideas from different chapters.
+
+A symmetric expression is unchanged when the variables are permuted, and symmetry lets one assume an order, or reduce the expression to the elementary symmetric sums. Some identities are worth knowing by heart because they turn a condition into a factor: $a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$, so if $a + b + c = 0$ then $a^3 + b^3 + c^3 = 3abc$.
+
+Factoring identities answer integer questions inside algebra. The difference $a^n - b^n$ always has the factor $a - b$, and further factors when $n$ is composite; the Sophie Germain identity $a^4 + 4b^4 = (a^2 + 2b^2 + 2ab)(a^2 + 2b^2 - 2ab)$ shows that $n^4 + 4$ is prime only for $n = 1$; and a product of sums of two squares is a sum of two squares.
+
+A parameter in an equation changes how many roots it has and where they lie. A quadratic has a double root when its discriminant is $0$, so $x^2 - kx + 9$ has one for $k = 6$; it has two positive roots when the discriminant is positive and the sum and product of the roots are positive.
+
+The lessons take these ideas in turn: symmetry and clever rearrangement (A8.2), integer restrictions inside algebra (A8.3), parameters and the location of roots (A8.4), and mixed problems from several chapters (A8.5). The Summary (A8.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Real numbers $a$, $b$, $c$ satisfy $a + b + c = 0$ and $abc = 4$. Find $a^3 + b^3 + c^3$.`, answer: "12",
+          solution: String.raw`By the identity $a^3 + b^3 + c^3 - 3abc = (a + b + c)(a^2 + b^2 + c^2 - ab - bc - ca)$, the left side is $0$ when $a + b + c = 0$. So $a^3 + b^3 + c^3 = 3abc = 12$.` },
+        { q: String.raw`For how many positive integers $n$ is $n^4 + 4$ prime?`, answer: "1",
+          solution: String.raw`By Sophie Germain, $n^4 + 4 = (n^2 + 2n + 2)(n^2 - 2n + 2)$. The second factor is $(n - 1)^2 + 1$, which is $1$ only for $n = 1$; otherwise both factors exceed $1$. For $n = 1$, $n^4 + 4 = 5$ is prime. So exactly one $n$ works.` },
+        { q: String.raw`For which positive $k$ does $x^2 - kx + 9 = 0$ have a double root?`, answer: "6",
+          solution: String.raw`A double root needs the discriminant $k^2 - 36$ to be $0$, so $k = 6$ (the root is $3$).` }
+      ],
+      problems: [
+        "2021 Fall AMC 12B, Problem 7",
+        "2002 AMC 10B, Problem 20",
+        "2005 AMC 12A, Problem 9"
+      ]
+    },
+    "A8.2": {
       prereq: ["symmetric-polynomial-strategies", "sos-identity"],
       cards: ["wlog-symmetry", "sum-zero-identities", "cubes-minus-3abc", "antisymmetric-factorization", "pairwise-sum-product"],
       body: String.raw`Expressions in three variables that are symmetric, or cyclic, have a small set of factorizations that keep appearing. When $a + b + c = 0$, the sum of the cubes is $3abc$; the expression $a^2(b - c) + b^2(c - a) + c^2(a - b)$ is $-(a - b)(b - c)(c - a)$; the product $(x + y)(y + z)(z + x)$ is a simple combination of the elementary symmetric sums. Problems hide these identities inside systems of equations or long expansions, and the solution is to see the structure before expanding anything.
@@ -22,7 +48,7 @@ Finally, the [[pairwise-sum-product|product of the pairwise sums]] is $(x + y)(y
 When a problem in three variables looks messy, ask what happens if two of them are equal, or if they add to zero, and whether a known factorization is hiding. The next lesson uses factorizations to force integer answers.`,
       related: [
         { card: "symmetric-polynomial-strategies", note: String.raw`rewriting any symmetric expression in the elementary symmetric sums (A1.2).` },
-        { card: "sos-identity", note: String.raw`the second factor of $a^3 + b^3 + c^3 - 3abc$ as half a sum of squares (A5.3).` },
+        { card: "sos-identity", note: String.raw`the second factor of $a^3 + b^3 + c^3 - 3abc$ as half a sum of squares (A5.4).` },
         { card: "factor-remainder-theorem", note: String.raw`a polynomial that vanishes when $a = b$ has the factor $a - b$.` },
         { card: "vietas-general", note: String.raw`reading $e_1$, $e_2$, $e_3$ off a cubic (B2.2).` }
       ],
@@ -35,7 +61,6 @@ When a problem in three variables looks messy, ask what happens if two of them a
           solution: String.raw`$(x + y)(y + z)(z + x) = (x + y + z)(xy + yz + zx) - xyz$, and Vieta gives $6$, $11$ and $6$, so the product is $66 - 6 = 60$. (The roots are $1$, $2$, $3$, and $3 \cdot 5 \cdot 4 = 60$.)` }
       ],
       problems: [
-        "2021 Fall AMC 12B, Problem 7",
         "2012 AMC 12A, Problem 21",
         "1986 AIME, Problem 2",
         "2000 AIME II, Problem 13",
@@ -43,7 +68,7 @@ When a problem in three variables looks messy, ask what happens if two of them a
         "2026 AIME II, Problem 11"
       ]
     },
-    "A8.2": {
+    "A8.3": {
       prereq: ["factor-remainder-theorem", "sfft"],
       cards: ["an-minus-bn", "sophie-germain", "brahmagupta-fibonacci"],
       body: String.raw`Many AIME problems are algebra problems with an integer condition attached: find the largest $n$ for which $n + 10$ divides $n^3 + 100$, or decide which numbers of the form $n^4 + 4$ are prime, or write a product as a sum of two squares. The algebra produces a factorization, and the integer condition then leaves only a few cases. The factorizations used are few and worth knowing in both directions.
@@ -59,7 +84,7 @@ Together with Simon's favorite factoring trick, these identities are the standar
         { card: "sfft", note: String.raw`adding a constant to complete a product, the other standard integer factorization.` },
         { card: "lte", note: String.raw`how many times a prime divides $a^n - b^n$, the sharper form of the same factorization.` },
         { card: "sum-of-two-squares", note: String.raw`which integers are sums of two squares, and in how many ways.` },
-        { card: "complex-basics", note: String.raw`moduli multiply, which is the Brahmagupta-Fibonacci identity (A6.1).` }
+        { card: "complex-basics", note: String.raw`moduli multiply, which is the Brahmagupta-Fibonacci identity (A6.2).` }
       ],
       exercises: [
         { q: String.raw`Find the smallest prime factor of $3^{105} + 2^{105}$.`, answer: "5",
@@ -71,7 +96,6 @@ Together with Simon's favorite factoring trick, these identities are the standar
       ],
       problems: [
         "2020 AMC 10B, Problem 22",
-        "2002 AMC 10B, Problem 20",
         "1986 AIME, Problem 5",
         "2025 AIME II, Problem 2",
         "2010 AIME I, Problem 3",
@@ -80,7 +104,7 @@ Together with Simon's favorite factoring trick, these identities are the standar
         "1987 AIME, Problem 14"
       ]
     },
-    "A8.3": {
+    "A8.4": {
       prereq: ["quadratic-root-location", "comparing-coefficients"],
       cards: [],
       body: String.raw`An equation with a parameter asks a different question from an ordinary equation: not what the solution is, but for which values of the parameter a solution of a certain kind exists. For which $a$ does $4x^2 + (a + 8)x + 9 = 0$ have exactly one solution? For which slopes does a line through a point miss a parabola? For which $k$ does $\log(kx) = 2\log(x + 2)$ have exactly one solution? The tools are ones you already have; what is new is reading the condition on the roots as a condition on the parameter, and keeping track of which roots are allowed.
@@ -107,7 +131,6 @@ In all these problems, write the condition on the roots in terms of the paramete
           solution: String.raw`Exactly one solution means a double root: $k^2 - 36 = 0$, so $k = 6$ or $k = -6$, with product $-36$.` }
       ],
       problems: [
-        "2005 AMC 12A, Problem 9",
         "2014 AMC 12B, Problem 17",
         "2021 Fall AMC 12A, Problem 17",
         "2019 AMC 12A, Problem 14",
@@ -118,7 +141,7 @@ In all these problems, write the condition on the roots in terms of the paramete
         "2023 AIME I, Problem 9"
       ]
     },
-    "A8.4": {
+    "A8.5": {
       prereq: ["newtons-sums", "log-rules", "vietas-general"],
       cards: [],
       body: String.raw`The hardest algebra problems on the AIME rarely use a single idea. A logarithmic equation turns out to be a cubic in disguise, so Vieta's formulas finish it; a polynomial built from a geometric series has roots that are roots of unity; a system of equations becomes one identity in a new variable, and comparing coefficients solves it. The chapters of this book each taught one family of tools, and these problems ask you to choose and combine them.
@@ -129,11 +152,11 @@ The second step is to look for a quantity the problem determines even though the
 
 The third step is checking. Each method has a typical error: a substitution can add or lose solutions, a logarithm needs positive arguments, a bound needs its equality case, and a count needs care with values that belong to two families. The answer to an AIME problem is an integer from $0$ to $999$, so a non-integer or a number out of range is a signal to recheck.
 
-The problems below are mixed on purpose, in rising order of difficulty, and each needs ideas from at least two chapters. The extension chapter that follows collects topics that go beyond the AIME syllabus.`,
+The problems below are mixed on purpose, in rising order of difficulty, and each needs ideas from at least two chapters. The Summary (A8.6) collects the chapter's strategies, and the extension chapter that follows collects topics that go beyond the AIME syllabus.`,
       related: [
         { card: "newtons-sums", note: String.raw`power sums of roots from the coefficients (A2.3).` },
         { card: "log-substitution", note: String.raw`turning an exponential or logarithmic equation into a polynomial (A4.4).` },
-        { card: "roots-of-unity", note: String.raw`recognizing the roots of a geometric-series polynomial (A6.3).` },
+        { card: "roots-of-unity", note: String.raw`recognizing the roots of a geometric-series polynomial (A6.4).` },
         { card: "comparing-coefficients", note: String.raw`reading a system as one polynomial identity (A2.6).` }
       ],
       exercises: [
@@ -147,12 +170,55 @@ The problems below are mixed on purpose, in rising order of difficulty, and each
         "2005 AIME I, Problem 8",
         "2010 AIME II, Problem 7",
         "2012 AIME II, Problem 8",
-        "2004 AIME I, Problem 13",
-        "2003 AIME II, Problem 15",
-        "2019 AIME I, Problem 10",
-        "2016 AIME II, Problem 6",
-        "1984 AIME, Problem 15"
+        "2004 AIME I, Problem 13"
+      ]
+    },
+    "A8.6": {
+      prereq: ["wlog-symmetry", "sum-zero-identities", "cubes-minus-3abc", "an-minus-bn", "sophie-germain", "brahmagupta-fibonacci", "quadratic-root-location", "newtons-sums"],
+      cards: [],
+      body: String.raw`[[wlog-symmetry|Symmetry]] lets one assume an order among the variables, or reduce an expression to the elementary symmetric sums. [[sum-zero-identities|When a sum is zero]], identities such as [[cubes-minus-3abc|$a^3 + b^3 + c^3 = 3abc$]] follow at once.
+
+[[an-minus-bn|The factors of $a^n - b^n$]], [[sophie-germain|the Sophie Germain identity]] and [[brahmagupta-fibonacci|the product of sums of two squares]] turn integer questions inside algebra into factorizations.
+
+[[quadratic-root-location|The location of the roots]] of a quadratic with a parameter is read from its discriminant, the sum and product of its roots, and its value at a point.
+
+The hardest problems combine several chapters: a substitution makes an equation a polynomial, and then a symmetric function of its roots, such as a power sum from [[newtons-sums|Newton's sums]], is found without solving it.`,
+      strategies: [
+        String.raw`If the expression is symmetric, assume an order or reduce it to $x + y + z$, $xy + yz + zx$ and $xyz$.`,
+        String.raw`If $a + b + c = 0$, use $a^3 + b^3 + c^3 = 3abc$.`,
+        String.raw`For an integer question about $a^n \pm b^n$ or $a^4 + 4b^4$, factor first.`,
+        String.raw`For roots in a range, check the discriminant, the sum and product of the roots, and the value of the polynomial at the ends of the range.`,
+        String.raw`In a mixed problem, look first for a substitution that turns it into a polynomial, a system or a sum you know.`,
+        String.raw`Look for a quantity the problem determines even when the unknowns are not determined, such as a symmetric function of the roots.`,
+        String.raw`Check the answer: a substitution can add solutions, a logarithm needs positive arguments, and an AIME answer is an integer from $0$ to $999$.`
       ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`If $a + b + c = 6$, $ab + bc + ca = 11$ and $abc = 6$, find $a^3 + b^3 + c^3$.`, answer: "36",
+        solution: String.raw`Use $a^3 + b^3 + c^3 = (a + b + c)^3 - 3(a + b + c)(ab + bc + ca) + 3abc = 216 - 198 + 18 = 36$. (The numbers are $1, 2, 3$.)` },
+      { q: String.raw`If $a - b = 2$ and $a^3 - b^3 = 26$, find $ab$.`, answer: "3",
+        solution: String.raw`Use $a^3 - b^3 = (a - b)^3 + 3ab(a - b) = 8 + 6ab$. So $8 + 6ab = 26$ and $ab = 3$.` },
+      { q: String.raw`Real numbers $x$, $y$, $z$ satisfy $x + y + z = 3$ and $x^2 + y^2 + z^2 = 3$. Find $xyz$.`, answer: "1",
+        solution: String.raw`Then $(x - 1)^2 + (y - 1)^2 + (z - 1)^2 = (x^2 + y^2 + z^2) - 2(x + y + z) + 3 = 3 - 6 + 3 = 0$, so $x = y = z = 1$ and $xyz = 1$.` },
+      { q: String.raw`What is the largest prime factor of $2^{12} - 1$?`, answer: "13",
+        solution: String.raw`Factor: $2^{12} - 1 = (2^6 - 1)(2^6 + 1) = 63 \cdot 65 = 3^2 \cdot 7 \cdot 5 \cdot 13$. The largest prime factor is $13$.` },
+      { q: String.raw`What is the largest prime factor of $3^4 + 4 \cdot 5^4$?`, answer: "89",
+        solution: String.raw`By Sophie Germain with $a = 3$, $b = 5$: $a^4 + 4b^4 = (a^2 + 2b^2 + 2ab)(a^2 + 2b^2 - 2ab) = (9 + 50 + 30)(9 + 50 - 30) = 89 \cdot 29$. Both are prime, so the answer is $89$.` },
+      { q: String.raw`In how many ways can $65$ be written as $a^2 + b^2$ with integers $0 \lt a \lt b$?`, answer: "2",
+        solution: String.raw`Since $65 = 5 \cdot 13 = (1^2 + 2^2)(2^2 + 3^2)$, the product identity gives $(1 \cdot 2 + 2 \cdot 3)^2 + (1 \cdot 3 - 2 \cdot 2)^2 = 8^2 + 1^2$ and $(1 \cdot 2 - 2 \cdot 3)^2 + (1 \cdot 3 + 2 \cdot 2)^2 = 4^2 + 7^2$. A check of $a$ from $1$ to $5$ finds no other, so there are $2$ ways.` },
+      { q: String.raw`What is the smallest integer $m$ for which $x^2 - 2mx + m + 2 = 0$ has two different positive roots?`, answer: "3",
+        solution: String.raw`Two different real roots need $4m^2 - 4(m + 2) \gt 0$, that is, $(m - 2)(m + 1) \gt 0$; both positive needs the sum $2m \gt 0$ and the product $m + 2 \gt 0$. Together, $m \gt 2$, so the smallest integer is $3$ (the roots are $3 \pm \sqrt{4}$, that is, $1$ and $5$).` }
+    ],
+    problems: []
+  },
+  challenge: {
+    problems: [
+      "2003 AIME II, Problem 15",
+      "2019 AIME I, Problem 10",
+      "2016 AIME II, Problem 6",
+      "1984 AIME, Problem 15"
+    ]
   }
 };

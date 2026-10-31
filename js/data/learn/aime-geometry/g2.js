@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G2"] = {
   lessons: {
     "G2.1": {
+      prereq: ["inscribed-angle-theorem", "power-of-a-point", "tangent-facts"],
+      cards: [],
+      body: String.raw`This chapter works with circles. Its tools are inscribed angles and cyclic quadrilaterals, the power of a point, Ptolemy's theorem and chord lengths, the tangent lengths of incircles and excircles, and the right triangles that appear whenever circles touch.
+
+An inscribed angle is half the arc it cuts off, so an angle that cuts off a $100^\circ$ arc is $50^\circ$, and all the angles that cut off the same arc are equal. A quadrilateral is cyclic exactly when its opposite angles add to $180^\circ$, or when two angles on the same side of a segment are equal; recognizing four points on a circle is often the key step, since it turns into many equal angles.
+
+Through a point $P$, every line that meets a circle at $A$ and $B$ gives the same product $PA \cdot PB$, the power of $P$; for a tangent it is the square of the tangent length. If chords $AB$ and $CD$ cross at $P$ with $AP = 4$, $PB = 6$ and $CP = 3$, then $PD = 8$. Ptolemy's theorem relates the sides and diagonals of a cyclic quadrilateral, and a chord's length follows from the angle it subtends.
+
+The two tangents from a point to a circle are equal, so in a triangle with sides $a$, $b$, $c$ the incircle touches the sides at distances $s - a$, $s - b$, $s - c$ from the vertices, where $s$ is the semiperimeter; with sides $7, 8, 9$, $s = 12$ and the tangent length at the vertex opposite the side $7$ is $5$. The inradius is the area divided by $s$.
+
+When two circles touch, their centers and the point of contact are on one line, at a distance equal to the sum or difference of the radii, and a radius to a point of tangency is perpendicular to the tangent line. Most problems about touching circles become right triangles.
+
+The lessons take these ideas in turn: cyclic quadrilaterals and angle chasing (G2.2), the power of a point (G2.3), Ptolemy and chords (G2.4), incircles and excircles (G2.5), and circles that meet or touch (G2.6). The Summary (G2.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`An inscribed angle cuts off an arc of $100^\circ$. How large is the angle?`, answer: "50",
+          solution: String.raw`An inscribed angle is half the arc it cuts off: $50^\circ$.` },
+        { q: String.raw`Chords $AB$ and $CD$ of a circle cross at $P$, with $AP = 4$, $PB = 6$ and $CP = 3$. Find $PD$.`, answer: "8",
+          solution: String.raw`By the power of the point $P$, $PA \cdot PB = PC \cdot PD$, so $24 = 3 \cdot PD$ and $PD = 8$.` },
+        { q: String.raw`A triangle has sides $7$, $8$ and $9$. Its incircle touches the side of length $8$ and the side of length $9$ at points equally far from their common vertex. How far?`, answer: "5",
+          solution: String.raw`The two tangents from a vertex to the incircle are equal. With semiperimeter $s = 12$, the tangent length at the vertex opposite the side $7$, which is where the sides $8$ and $9$ meet, is $s - 7 = 5$. (The other two are $4$ and $3$, and $5 + 4 = 9$, $5 + 3 = 8$.)` }
+      ],
+      problems: [
+        "2008 AIME I, Problem 5",
+        "2009 AIME II, Problem 5",
+        "2017 AIME I, Problem 8"
+      ]
+    },
+    "G2.2": {
       prereq: ["inscribed-angle-theorem"],
       cards: ["angle-chasing", "cyclic-opposite-angles", "cyclic-equal-angles", "concyclicity-tests", "angle-chord-secant", "tangent-chord-angle", "cyclic-quadrilateral"],
       body: String.raw`Angles in circles are fixed by arcs, and that one fact drives a large share of geometry problems: an inscribed angle is half its arc, angles on the same arc are equal, opposite angles of a cyclic quadrilateral add to $180^\circ$, and the angle between a tangent and a chord equals the inscribed angle on the other side. Problems give a few angles or arcs and ask for another, or hide a cyclic quadrilateral that, once found, makes several angles equal at once.
@@ -17,8 +45,8 @@ In a [[cyclic-quadrilateral|quadrilateral inscribed in a circle]], [[cyclic-oppo
 Chase angles with arcs as the bookkeeping, and look for four points that are secretly on a circle. The next lesson measures lengths in circles with the power of a point.`,
       related: [
         { card: "inscribed-angle-theorem", note: String.raw`an inscribed angle is half its arc, the fact every chase here uses.` },
-        { card: "power-of-a-point", note: String.raw`the length test for four concyclic points (G2.2).` },
-        { card: "triangle-center-angles", note: String.raw`angles at the incenter, circumcenter and orthocenter from the angles of the triangle (G5.1).` }
+        { card: "power-of-a-point", note: String.raw`the length test for four concyclic points (G2.3).` },
+        { card: "triangle-center-angles", note: String.raw`angles at the incenter, circumcenter and orthocenter from the angles of the triangle (G5.2).` }
       ],
       exercises: [
         { q: String.raw`Two chords of a circle cross inside it. The arcs cut off by the two vertical angles at the crossing measure $80^\circ$ and $40^\circ$. Find the angle between the chords (in degrees).`, answer: "60",
@@ -41,7 +69,7 @@ Chase angles with arcs as the bookkeeping, and look for four points that are sec
         "2021 AIME II, Problem 14"
       ]
     },
-    "G2.2": {
+    "G2.3": {
       prereq: ["power-of-a-point", "chord-length"],
       cards: ["radical-axis", "thales-theorem"],
       body: String.raw`Lengths in a circle are tied together by the power of a point: for any point and any line through it that meets a circle, the product of the two distances to the circle is the same. Two chords crossing inside a circle, two secants from an outside point, a tangent and a secant: all are the same fact, and with it a single equation finds an unknown segment. Its companions, the radical axis of two circles and the right angle in a semicircle, add the most common ways circles meet lines and each other.
@@ -55,8 +83,8 @@ The [[radical-axis|radical axis]] of two circles is the set of points with equal
 Write products of segments along lines through a common point, subtract circle equations for common chords, and turn right angles into circles. The next lesson relates the chords of a cyclic quadrilateral.`,
       related: [
         { card: "chord-length", note: String.raw`a chord at distance $d$ from the center has length $2\sqrt{r^2 - d^2}$.` },
-        { card: "circle-equation", note: String.raw`the equations whose difference is the radical axis (G4.2).` },
-        { card: "concyclicity-tests", note: String.raw`equal products as a test for four points on a circle (G2.1).` }
+        { card: "circle-equation", note: String.raw`the equations whose difference is the radical axis (G4.3).` },
+        { card: "concyclicity-tests", note: String.raw`equal products as a test for four points on a circle (G2.2).` }
       ],
       exercises: [
         { q: String.raw`Chords $AB$ and $CD$ of a circle meet at $P$, with $PA = 4$, $PB = 6$ and $PC = 3$. Find $PD$.`, answer: "8",
@@ -82,7 +110,7 @@ Write products of segments along lines through a common point, subtract circle e
         "2021 AIME I, Problem 13"
       ]
     },
-    "G2.3": {
+    "G2.4": {
       prereq: ["chord-length", "cyclic-opposite-angles"],
       cards: ["ptolemys-theorem", "equal-chords-arcs", "brahmaguptas-formula"],
       body: String.raw`A cyclic quadrilateral has a relation among its sides and diagonals and a formula for its area, both in terms of lengths alone. With them, the diagonal of a regular pentagon, the sides of a hexagon inscribed with alternating chord lengths, or the area of a quadrilateral inscribed in a circle with given sides follow without any angles. Together with the facts about equal chords, they handle most length problems about polygons inscribed in circles.
@@ -95,8 +123,8 @@ Write products of segments along lines through a common point, subtract circle e
 
 Use Ptolemy when an inscribed polygon has chords of a few lengths, equal-chord reasoning to sort chords into classes, and Brahmagupta for areas. The next lesson turns to circles inside triangles.`,
       related: [
-        { card: "herons-formula", note: String.raw`the triangle case of Brahmagupta's formula (G3.1).` },
-        { card: "golden-ratio-pentagon", note: String.raw`the pentagon's diagonal-to-side ratio, found here by Ptolemy (G7.1).` },
+        { card: "herons-formula", note: String.raw`the triangle case of Brahmagupta's formula (G3.2).` },
+        { card: "golden-ratio-pentagon", note: String.raw`the pentagon's diagonal-to-side ratio, found here by Ptolemy (G7.2).` },
         { card: "ptolemys-inequality", note: String.raw`the inequality for quadrilaterals that are not cyclic.` }
       ],
       exercises: [
@@ -121,7 +149,7 @@ Use Ptolemy when an inscribed polygon has chords of a few lengths, equal-chord r
         "2021 AIME I, Problem 11"
       ]
     },
-    "G2.4": {
+    "G2.5": {
       prereq: ["tangent-facts", "herons-formula"],
       cards: ["incircle-tangent-lengths", "incircle-excircle-touch", "inradius-area", "exradii", "pitots-theorem"],
       body: String.raw`The circle inscribed in a triangle touches each side once, and the two tangent segments from each vertex are equal. That one fact gives every length on the sides in terms of the semiperimeter, and together with the formula for the inradius it answers most questions about incircles and excircles: where the circle touches, how large it is, and how the incircles of two smaller triangles compare.
@@ -134,9 +162,9 @@ A quadrilateral has an inscribed circle exactly when its opposite sides have equ
 
 Label tangent lengths from each vertex, write sides as their sums, and use $K = rs$ for the radius. The next lesson studies circles that meet or touch each other.`,
       related: [
-        { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius from three sides (G3.1).` },
+        { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius from three sides (G3.2).` },
         { card: "right-triangle-inradius", note: String.raw`$r = \tfrac{a + b - c}{2}$ in a right triangle.` },
-        { card: "incenter-excenter-lemma", note: String.raw`where the incenter and excenters sit on the circumcircle (G5.1).` }
+        { card: "incenter-excenter-lemma", note: String.raw`where the incenter and excenters sit on the circumcircle (G5.2).` }
       ],
       exercises: [
         { q: String.raw`Triangle $ABC$ has $BC = 14$, $CA = 15$ and $AB = 13$. Find the length of the tangent from $A$ to the incircle.`, answer: "7",
@@ -159,7 +187,7 @@ Label tangent lengths from each vertex, write sides as their sums, and use $K = 
         "2020 AIME II, Problem 13"
       ]
     },
-    "G2.5": {
+    "G2.6": {
       prereq: ["tangent-facts", "pythagorean-theorem"],
       cards: ["tangent-circles", "two-tangents-angle", "rolling-without-slipping", "common-tangent-lengths", "triangle-of-centers", "common-chord-length", "descartes-circle-theorem", "tangency-condition"],
       body: String.raw`Figures with several circles touching each other and lines, such as coins in a row, circles packed in a square, or a small circle nestled among three larger ones, look complicated but reduce to triangles once the centers are joined. The distances between centers are sums or differences of radii, the tangent lines are perpendicular to radii, and the problem becomes one about right triangles and triangles with known sides.
@@ -170,11 +198,11 @@ A [[common-tangent-lengths|common tangent]] of two circles with centers $d$ apar
 
 A disk [[rolling-without-slipping|rolling without slipping]] along a line or around another circle turns by the distance its center travels divided by its radius; rolling around the outside of a circle of the same radius, it makes two full turns. In coordinates, a [[tangency-condition|tangency condition]] is that the equation for the common points has exactly one solution, which for a line and a circle means the distance from the center to the line equals the radius.
 
-Join centers, draw radii to points of tangency, and look for right triangles. The chapter review mixes the circle tools of all five lessons.`,
+Join centers, draw radii to points of tangency, and look for right triangles. The Summary (G2.7) collects the chapter's strategies, and the problems after it mix the circle tools of all five lessons.`,
       related: [
-        { card: "homothety-monge", note: String.raw`the centers of similitude of two circles, where common tangents meet (G6.4).` },
-        { card: "tangency-equation", note: String.raw`the tangency of a line and a curve as a double root (G4.2).` },
-        { card: "circle-in-angle", note: String.raw`circles inscribed in an angle, whose centers lie on the bisector (G5.5).` }
+        { card: "homothety-monge", note: String.raw`the centers of similitude of two circles, where common tangents meet (G6.5).` },
+        { card: "tangency-equation", note: String.raw`the tangency of a line and a curve as a double root (G4.3).` },
+        { card: "circle-in-angle", note: String.raw`circles inscribed in an angle, whose centers lie on the bisector (G5.6).` }
       ],
       exercises: [
         { q: String.raw`Circles of radii $9$ and $4$ are externally tangent. Find the length of a common external tangent between its points of tangency.`, answer: "12",
@@ -202,12 +230,58 @@ Join centers, draw radii to points of tangency, and look for right triangles. Th
         "2014 AIME I, Problem 10",
         "2007 AIME II, Problem 11"
       ]
+    },
+    "G2.7": {
+      prereq: ["inscribed-angle-theorem", "cyclic-opposite-angles", "concyclicity-tests", "power-of-a-point", "radical-axis", "ptolemys-theorem", "brahmaguptas-formula", "incircle-tangent-lengths", "exradii", "tangent-circles", "common-tangent-lengths"],
+      cards: [],
+      body: String.raw`[[inscribed-angle-theorem|An inscribed angle]] is half its arc, so angles on the same arc are equal. [[cyclic-opposite-angles|Opposite angles of a cyclic quadrilateral]] add to $180^\circ$, and [[concyclicity-tests|the tests for concyclic points]] turn a figure into a circle full of equal angles.
+
+[[power-of-a-point|The power of a point]] $PA \cdot PB$ is the same for every line through $P$, and equals the square of a tangent length. [[radical-axis|The radical axis]] of two circles is the line of points with equal power to both, the line through their common points.
+
+[[ptolemys-theorem|Ptolemy's theorem]] relates the sides and diagonals of a cyclic quadrilateral, and [[brahmaguptas-formula|Brahmagupta's formula]] gives its area. [[incircle-tangent-lengths|The tangent lengths]] from the vertices to the incircle are $s - a$, $s - b$, $s - c$, and [[exradii|the exradii]] are $\tfrac{K}{s - a}$ and so on.
+
+[[tangent-circles|Touching circles]] have their centers and the point of contact on one line; [[common-tangent-lengths|common tangents]] have lengths from a right triangle on the line of centers.`,
+      strategies: [
+        String.raw`Chase angles through arcs: mark each inscribed angle with half its arc.`,
+        String.raw`Look for four points on a circle; prove it with opposite angles or equal angles on one side.`,
+        String.raw`When two lines through a point meet a circle, use the power of the point.`,
+        String.raw`For a cyclic quadrilateral's diagonal or area, use Ptolemy or Brahmagupta.`,
+        String.raw`Mark the equal tangent lengths from each vertex; in a triangle they are $s - a$, $s - b$, $s - c$.`,
+        String.raw`For touching circles, join the centers and draw radii to the points of tangency, then find the right triangles.`,
+        String.raw`For a common tangent, drop a perpendicular from one center to the other's radius.`
+      ]
     }
   },
-  review: [
-    "2023 AIME II, Problem 9",
-    "2002 AIME II, Problem 14",
-    "2022 AIME II, Problem 15",
-    "2019 AIME I, Problem 15"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`In a cyclic quadrilateral $ABCD$, $\angle A = 70^\circ$. Find $\angle C$.`, answer: "110",
+        solution: String.raw`Opposite angles of a cyclic quadrilateral add to $180^\circ$, since together they cut off the whole circle: $\angle C = 110^\circ$.` },
+      { q: String.raw`A circle has radius $5$ and center $O$, and $OP = 13$. Find the length of a tangent from $P$ to the circle.`, answer: "12",
+        solution: String.raw`The radius to the point of tangency $T$ is perpendicular to $PT$, so $PT^2 = OP^2 - OT^2 = 169 - 25 = 144$ and $PT = 12$.` },
+      { q: String.raw`A regular pentagon has side $1$. Find the length of a diagonal.`, answer: "(1 + sqrt(5))/2",
+        solution: String.raw`Any four vertices form a cyclic quadrilateral with three sides $1$ and diagonals $d$, and its fourth side is a diagonal $d$. Ptolemy's theorem gives $d \cdot d = 1 \cdot 1 + 1 \cdot d$, so $d^2 - d - 1 = 0$ and $d = \tfrac{1 + \sqrt5}{2}$.` },
+      { q: String.raw`Triangle $ABC$ has sides $13$, $14$ and $15$. Find its inradius.`, answer: "4",
+        solution: String.raw`The semiperimeter is $s = 21$, and by Heron the area is $\sqrt{21 \cdot 8 \cdot 7 \cdot 6} = 84$. The inradius is $\tfrac{84}{21} = 4$.` },
+      { q: String.raw`Triangle $ABC$ has $AB = 13$, $BC = 14$ and $CA = 15$. Find the radius of the excircle opposite $A$, which touches $BC$.`, answer: "12",
+        solution: String.raw`The exradius opposite $A$ is $\tfrac{K}{s - a}$ with $a = BC = 14$: $\tfrac{84}{21 - 14} = 12$.` },
+      { q: String.raw`Two circles have radii $3$ and $5$, and their centers are $10$ apart. Find the length of a common internal tangent, the segment between the points of tangency.`, answer: "6",
+        solution: String.raw`Slide the internal tangent parallel to itself until it passes through one center: it then forms a right triangle with the line of centers, whose legs are the tangent length and $3 + 5 = 8$. So the length is $\sqrt{10^2 - 8^2} = 6$.` },
+      { q: String.raw`A cyclic quadrilateral has sides $2$, $3$, $4$ and $5$. Find its area.`, answer: "2sqrt(30)",
+        solution: String.raw`By Brahmagupta's formula with $s = 7$, the area is $\sqrt{(7 - 2)(7 - 3)(7 - 4)(7 - 5)} = \sqrt{5 \cdot 4 \cdot 3 \cdot 2} = \sqrt{120} = 2\sqrt{30}$.` }
+    ],
+    problems: [
+      "2002 AIME II, Problem 14",
+      "2013 AIME II, Problem 8",
+      "2008 AIME II, Problem 11"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2023 AIME II, Problem 9",
+      "2022 AIME II, Problem 15",
+      "2019 AIME I, Problem 15",
+      "2016 AIME I, Problem 15",
+      "2014 AIME I, Problem 15"
+    ]
+  }
 };

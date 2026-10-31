@@ -5,6 +5,32 @@ window.MATH_LEARN["A6"] = {
   lessons: {
     "A6.1": {
       prereq: ["quadratic-formula"],
+      cards: [],
+      body: String.raw`This chapter uses complex numbers, both as numbers and as points of the plane. Its tools are complex arithmetic with the conjugate and the modulus, the polar form and De Moivre's theorem, the roots of unity, and the fact that a polynomial of degree $n$ has $n$ complex roots.
+
+A complex number $a + bi$ is added and multiplied like a polynomial in $i$, with $i^2 = -1$: $(2 + i)(3 - i) = 6 - 2i + 3i + 1 = 7 + i$. Its conjugate is $a - bi$, and $z\bar z = a^2 + b^2 = |z|^2$, the square of its distance from $0$; dividing by $z$ is multiplying by $\tfrac{\bar z}{|z|^2}$.
+
+Every nonzero complex number can be written as $r(\cos\theta + i\sin\theta) = re^{i\theta}$, with $r = |z|$ and $\theta$ its angle. Multiplying multiplies the lengths and adds the angles, so $z^n = r^ne^{in\theta}$ (De Moivre's theorem). Since $1 + i = \sqrt2\,e^{i\pi/4}$, $(1 + i)^8 = 16e^{2\pi i} = 16$. Multiplying by $e^{i\theta}$ rotates the plane by $\theta$, which is why complex numbers handle rotations and regular polygons.
+
+The solutions of $z^n = 1$ are the $n$th roots of unity $e^{2\pi ik/n}$, the vertices of a regular $n$-gon on the unit circle. Their sum is $0$, and averaging a polynomial over them picks out the coefficients whose index is a multiple of $n$, a filter that counts subsets by size modulo $n$. A polynomial of degree $n$ factors as $a(z - r_1)\cdots(z - r_n)$ over the complex numbers, and Vieta applies to all its roots.
+
+The lessons take these ideas in turn: complex arithmetic, the conjugate and the modulus (A6.2), the plane, rotations and loci (A6.3), roots of unity (A6.4), and polynomial roots (A6.5). The Summary (A6.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Compute $(2 + i)(3 - i)$.`,
+          solution: String.raw`Expand: $6 - 2i + 3i - i^2 = 6 + i + 1 = 7 + i$.` },
+        { q: String.raw`Compute $(1 + i)^8$.`, answer: "16",
+          solution: String.raw`Since $(1 + i)^2 = 2i$, $(1 + i)^8 = (2i)^4 = 16i^4 = 16$. In polar form, $1 + i = \sqrt2\,e^{i\pi/4}$, and the eighth power has length $16$ and angle $2\pi$.` },
+        { q: String.raw`How many of the six solutions of $z^6 = 1$ have positive real part?`, answer: "3",
+          solution: String.raw`The solutions are $e^{2\pi ik/6}$ for $k = 0, \ldots, 5$, at angles $0^\circ, 60^\circ, 120^\circ, 180^\circ, 240^\circ, 300^\circ$. The real part $\cos\theta$ is positive at $0^\circ$, $60^\circ$ and $300^\circ$: three of them.` }
+      ],
+      problems: [
+        "2012 AIME I, Problem 6",
+        "2022 AIME I, Problem 4",
+        "1990 AIME, Problem 10"
+      ]
+    },
+    "A6.2": {
+      prereq: ["quadratic-formula"],
       cards: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument"],
       body: String.raw`Complex numbers enter contest problems in two ways: as the roots of polynomials that have no real roots, and as a way to do plane geometry with algebra. In either case the first skills are arithmetic ones: dividing by a complex number, finding a power of $i$, solving an equation with $z$ and its conjugate $\bar z$ both in it, or reading a condition such as $|z| = 1$ or "$z$ is real" as an equation. A problem such as finding $z$ with $\tfrac{z}{z + n} = 4i$, or the positive integer $b$ that makes $(9 + bi)^3$ real, comes down to these steps done carefully.
 
@@ -17,7 +43,7 @@ A [[complex-modulus-argument|known modulus or argument]] is a geometric conditio
 Use these tools whenever a problem mentions $i$, a conjugate or a modulus: split into real and imaginary parts when the numbers are small and the equation is polynomial, and work with moduli and conjugates when the condition is about size or realness. The next lesson writes complex numbers by size and angle, which turns multiplication into rotation.`,
       related: [
         { card: "conjugate-root-theorems", note: String.raw`non-real roots of a real polynomial come in conjugate pairs.` },
-        { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$, the bound on a sum of complex numbers (A5.3).` },
+        { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$, the bound on a sum of complex numbers (A5.4).` },
         { card: "cycle-hunting", note: String.raw`the period $4$ of the powers of $i$ is a cycle like those of last digits (N3.2).` }
       ],
       exercises: [
@@ -40,7 +66,7 @@ Use these tools whenever a problem mentions $i$, a conjugate or a modulus: split
         "2014 AIME I, Problem 7"
       ]
     },
-    "A6.2": {
+    "A6.3": {
       prereq: ["complex-basics"],
       cards: ["eulers-formula", "polar-form", "de-moivre"],
       body: String.raw`Writing a complex number by its size and its direction turns the hardest-looking operations into easy ones. Raising $1 + i$ to the tenth power, finding the third vertex of an equilateral triangle from the other two, following a point that is rotated and scaled at every step, or deciding when $z^5$ is real: in rectangular form each is a long expansion, and in polar form each is a line. The price is converting between the two forms, which needs the angles of the special right triangles.
@@ -77,7 +103,7 @@ Switch to polar form whenever a problem multiplies, divides or raises complex nu
         "2019 AIME I, Problem 12"
       ]
     },
-    "A6.3": {
+    "A6.4": {
       prereq: ["de-moivre", "geometric-series"],
       cards: ["roots-of-unity", "roots-of-unity-filter", "trig-series-complex"],
       body: String.raw`The solutions of $z^n = 1$ are the vertices of a regular polygon on the unit circle, and they carry more structure than any other set of complex numbers: their powers cycle, their sum is zero, and their sum against a polynomial picks out every $n$th coefficient. Problems built on them include simplifying $\omega^{2021} + \omega^{2022}$ for a cube root of unity, counting the $z$ with $z^{24} = 1$ for which $z^6$ is real, counting subsets whose sum is divisible by $3$, and adding $\cos\tfrac{\pi}{7} + \cos\tfrac{3\pi}{7} + \cos\tfrac{5\pi}{7}$.
@@ -93,7 +119,7 @@ Recognize roots of unity whenever exponents can be reduced modulo $n$, a polynom
         { card: "cyclotomic-polynomials", note: String.raw`the factors of $z^n - 1$ whose roots are exactly the primitive roots of unity.` },
         { card: "generating-function-method", note: String.raw`writing a count as a coefficient, so the filter can extract it.` },
         { card: "binomial-row-sums", note: String.raw`the $n = 2$ filter: even and odd binomial coefficients each add to $2^{n-1}$.` },
-        { card: "conjugate-both-sides", note: String.raw`on the unit circle $\bar z = \tfrac1z$, the step behind many root-of-unity conditions (A6.1).` }
+        { card: "conjugate-both-sides", note: String.raw`on the unit circle $\bar z = \tfrac1z$, the step behind many root-of-unity conditions (A6.2).` }
       ],
       exercises: [
         { q: String.raw`Let $\omega = \tfrac{-1 + i\sqrt3}{2}$. Find $(1 + \omega)^6$.`, answer: "1",
@@ -116,7 +142,7 @@ Recognize roots of unity whenever exponents can be reduced modulo $n$, a polynom
         "2013 AIME I, Problem 14"
       ]
     },
-    "A6.4": {
+    "A6.5": {
       prereq: ["roots-of-unity", "vietas-general"],
       cards: ["fundamental-theorem-algebra", "roots-unity-distance-product"],
       body: String.raw`Over the complex numbers every polynomial factors completely, and that one fact settles questions that look hard over the reals: how many roots a product of polynomials can have, what $\prod (2 - \omega^k)$ is over the seventh roots of unity, the product of the distances from one vertex of a regular polygon to all the others, or which polynomials satisfy a functional equation. Each turns on writing a polynomial as a product of linear factors and then evaluating that product at a well-chosen point.
@@ -127,11 +153,11 @@ Applied to $z^n - 1 = \prod_{k=0}^{n-1}(z - \omega^k)$, evaluation gives the [[r
 
 The theorem also controls functional equations for polynomials. If $P(x)P(2x^2) = P(2x^3 + x)$ and $r$ is a root, then $2r^3 + r$ is a root too; if the roots are finitely many, this map must send the root set to itself, which forces strong conditions on where the roots can lie.
 
-Use the factored form whenever a problem asks for a product, or a sum of logarithms, over the roots of a polynomial or over the vertices of a regular polygon: write it as the polynomial evaluated at a point. The chapter review mixes all four lessons; the next chapter turns to trigonometry, where these identities reappear.`,
+Use the factored form whenever a problem asks for a product, or a sum of logarithms, over the roots of a polynomial or over the vertices of a regular polygon: write it as the polynomial evaluated at a point. The Summary (A6.6) collects the chapter's strategies; the next chapter turns to trigonometry, where these identities reappear.`,
       related: [
         { card: "vietas-general", note: String.raw`the coefficients of the factored form, read as sums and products of the roots (B2.2).` },
         { card: "chord-length", note: String.raw`$|1 - e^{i\theta}| = 2\sin\tfrac\theta2$, turning distances into sines.` },
-        { card: "evenly-spaced-angle-products", note: String.raw`products of sines and cosines at evenly spaced angles, from the same factorization (A9.4).` },
+        { card: "evenly-spaced-angle-products", note: String.raw`products of sines and cosines at evenly spaced angles, from the same factorization (A9.5).` },
         { card: "comparing-coefficients", note: String.raw`the other way to use the factored form: expand and match (A2.6).` }
       ],
       exercises: [
@@ -152,18 +178,60 @@ Use the factored form whenever a problem asks for a product, or a sum of logarit
         "2024 AIME II, Problem 13",
         "2007 AIME II, Problem 14"
       ]
+    },
+    "A6.6": {
+      prereq: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument", "polar-form", "de-moivre", "roots-of-unity", "roots-of-unity-filter", "fundamental-theorem-algebra", "roots-unity-distance-product"],
+      cards: [],
+      body: String.raw`[[complex-basics|Complex numbers]] are added and multiplied as polynomials in $i$. [[conjugate-both-sides|Taking the conjugate of both sides]] of an equation gives a second equation, and $z\bar z = |z|^2$; [[complex-modulus-argument|the modulus and the argument]] are the length and angle of the point.
+
+[[polar-form|In polar form]], multiplication multiplies lengths and adds angles, so [[de-moivre|De Moivre's theorem]] computes powers, and multiplying by $e^{i\theta}$ is a rotation.
+
+[[roots-of-unity|The $n$th roots of unity]] are the vertices of a regular $n$-gon; their sum is $0$ and their powers cycle. [[roots-of-unity-filter|The roots of unity filter]] averages a polynomial over them to keep only the terms whose exponents are multiples of $n$.
+
+[[fundamental-theorem-algebra|Every polynomial of degree $n$]] has $n$ complex roots, so it factors completely and Vieta applies; [[roots-unity-distance-product|the product of distances]] from $1$ to the other $n$th roots of unity is $n$.`,
+      strategies: [
+        String.raw`For a power of a complex number, convert to polar form and use De Moivre.`,
+        String.raw`For an equation with $|z| = 1$, replace $\bar z$ by $\tfrac1z$.`,
+        String.raw`Take the conjugate of a given equation to get a second one.`,
+        String.raw`For a rotation about a point, translate the point to $0$, multiply by $e^{i\theta}$, and translate back.`,
+        String.raw`For powers of a root of unity, reduce the exponent modulo $n$.`,
+        String.raw`To add coefficients whose index is a multiple of $n$, average the polynomial over the $n$th roots of unity.`,
+        String.raw`For a product over roots of unity, write it as a polynomial evaluated at a point.`
+      ]
     }
   },
-  review: [
-    "2002 AMC 12A, Problem 24",
-    "2020 AMC 12B, Problem 23",
-    "2017 AMC 12A, Problem 25",
-    "2022 AIME I, Problem 4",
-    "2012 AIME I, Problem 6",
-    "1996 AIME, Problem 11",
-    "2017 AIME II, Problem 12",
-    "1994 AIME, Problem 13",
-    "1997 AIME, Problem 14",
-    "2001 AIME II, Problem 14"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Find the real part of $\dfrac{1}{1 + i}$.`, answer: "1/2",
+        solution: String.raw`Multiply by the conjugate: $\tfrac{1}{1 + i} = \tfrac{1 - i}{(1 + i)(1 - i)} = \tfrac{1 - i}{2}$. The real part is $\tfrac12$.` },
+      { q: String.raw`Compute $(1 + i\sqrt3)^6$.`, answer: "64",
+        solution: String.raw`In polar form $1 + i\sqrt3 = 2e^{i\pi/3}$, so its sixth power is $2^6e^{2\pi i} = 64$.` },
+      { q: String.raw`A complex number $z$ satisfies $z + \dfrac1z = 1$. Find $z^{2026} + \dfrac{1}{z^{2026}}$.`, answer: "-1",
+        solution: String.raw`Multiplying by $z$: $z^2 - z + 1 = 0$, so $z = e^{\pm i\pi/3}$ and $z^6 = 1$. Since $2026 \equiv 4 \pmod 6$, the expression is $z^4 + z^{-4} = 2\cos\tfrac{4\pi}{3} = -1$.` },
+      { q: String.raw`Find $\binom90 + \binom93 + \binom96 + \binom99$.`, answer: "170",
+        solution: String.raw`Average $(1 + x)^9$ over $x = 1, \omega, \omega^2$, where $\omega = e^{2\pi i/3}$: the sum is $\tfrac13\left(2^9 + (1 + \omega)^9 + (1 + \omega^2)^9\right)$. Since $1 + \omega = -\omega^2$ and $1 + \omega^2 = -\omega$, these powers are $-\omega^{18} = -1$ and $-\omega^9 = -1$. So the sum is $\tfrac{512 - 2}{3} = 170$; directly, $1 + 84 + 84 + 1 = 170$.` },
+      { q: String.raw`Let $\omega = e^{2\pi i/7}$. Find $|(1 - \omega)(1 - \omega^2)\cdots(1 - \omega^6)|$.`, answer: "7",
+        solution: String.raw`The numbers $\omega, \ldots, \omega^6$ are the roots of $\tfrac{z^7 - 1}{z - 1} = z^6 + z^5 + \cdots + 1$, so the product $\prod (z - \omega^k)$ is that polynomial. At $z = 1$ it is $7$.` },
+      { q: String.raw`Find the area of the polygon whose vertices are the solutions of $z^4 = 16$.`, answer: "8",
+        solution: String.raw`The solutions are $2, 2i, -2, -2i$, the vertices of a square with diagonals of length $4$. Its area is $\tfrac{4 \cdot 4}{2} = 8$.` },
+      { q: String.raw`Find the sum of the moduli of the four roots of $z^4 + 4 = 0$.`, answer: "4sqrt(2)",
+        solution: String.raw`Each root has $|z|^4 = |{-4}| = 4$, so $|z| = \sqrt2$; indeed the roots are $\pm 1 \pm i$. The four moduli add to $4\sqrt2$.` }
+    ],
+    problems: [
+      "1996 AIME, Problem 11",
+      "2002 AMC 12A, Problem 24",
+      "1999 AIME, Problem 9",
+      "2005 AIME I, Problem 6"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2020 AMC 12B, Problem 23",
+      "2017 AMC 12A, Problem 25",
+      "2017 AIME II, Problem 12",
+      "1994 AIME, Problem 13",
+      "1997 AIME, Problem 14",
+      "2001 AIME II, Problem 14"
+    ]
+  }
 };

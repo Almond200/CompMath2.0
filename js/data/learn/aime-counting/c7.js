@@ -103,7 +103,7 @@ Set up one unknown per state, write one equation per state by conditioning on th
       related: [
         { card: "recursive-counting", note: String.raw`the counting version of the same one-step recursion (C5.2).` },
         { card: "first-order-recurrence", note: String.raw`solving a chain of state equations as a recurrence (A3.2).` },
-        { card: "wlog-symmetry", note: String.raw`merging states that behave alike (A8.1).` }
+        { card: "wlog-symmetry", note: String.raw`merging states that behave alike (A8.2).` }
       ],
       exercises: [
         { q: String.raw`A fair coin is flipped until two heads in a row appear. What is the expected number of flips?`, answer: "6",

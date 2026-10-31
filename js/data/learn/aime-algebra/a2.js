@@ -95,7 +95,7 @@ If a polynomial has real coefficients, conjugating $P(z) = 0$ gives $P(\bar z) =
 The signal is a symmetric expression in roots, a polynomial with a given irrational or complex root, or a question about how many roots are positive or real.`,
       related: [
         { card: "symmetric-polynomial-strategies", note: String.raw`the working identities for writing symmetric expressions in $e_1, e_2, e_3$ (A1.2).` },
-        { card: "complex-basics", note: String.raw`conjugates and the modulus, used when complex roots come in pairs (A6.1).` },
+        { card: "complex-basics", note: String.raw`conjugates and the modulus, used when complex roots come in pairs (A6.2).` },
         { card: "rational-root-theorem", note: String.raw`the candidates for rational roots, to test before the other constraints.` }
       ],
       exercises: [
@@ -140,14 +140,14 @@ The signal is a question about the roots after a fixed operation, $\tfrac1r$, $r
 
 [[lagrange-interpolation|Interpolation]] recovers a polynomial from values. Two polynomials of degree at most $n - 1$ that agree at $n$ points are equal, since their difference has more roots than its degree allows. The [[lagrange-interpolation-formula|Lagrange formula]] writes the polynomial down: $P(x) = \sum_i y_i \prod_{j \ne i} \tfrac{x - x_j}{x_i - x_j}$, each term being $y_i$ at its own point and $0$ at the others. In contest problems the formula itself is used less often than the idea behind it: if $P(k) = \tfrac1k$ for $k = 1, \ldots, n$, then $xP(x) - 1$ has roots $1, \ldots, n$, so it equals $c(x - 1) \cdots (x - n)$, and $c$ comes from $x = 0$.
 
-[[coefficient-extraction|Coefficient sums]] are evaluations. The sum of all coefficients of $P$ is $P(1)$; the alternating sum is $P(-1)$; and the sum of the even-index coefficients is $\tfrac{P(1) + P(-1)}{2}$, which for $(2x - 1)^5$ is $\tfrac{1 + (-243)}{2} = -121$. Sums over every third coefficient use cube roots of unity in the same way (A6.3).
+[[coefficient-extraction|Coefficient sums]] are evaluations. The sum of all coefficients of $P$ is $P(1)$; the alternating sum is $P(-1)$; and the sum of the even-index coefficients is $\tfrac{P(1) + P(-1)}{2}$, which for $(2x - 1)^5$ is $\tfrac{1 + (-243)}{2} = -121$. Sums over every third coefficient use cube roots of unity in the same way (A6.4).
 
 [[comparing-coefficients|Comparing coefficients]] turns one identity into several equations. If two polynomials agree for every $x$, they have the same coefficient on each power; an equation that must hold "for all $y$", such as $8xy - 12y + 2x - 3 = 0$, forces the coefficient of $y$ and the constant term to vanish separately, giving $x = \tfrac32$.
 
 The signal is a polynomial given by values, a question about a sum of coefficients, or an identity that holds for all $x$. The Summary (A2.7) collects the chapter's strategies.`,
       related: [
         { card: "finite-differences", note: String.raw`the next value of a polynomial from a table of differences, another route to interpolation (A3.4).` },
-        { card: "roots-of-unity-filter", note: String.raw`sums of every $k$th coefficient, by evaluating at the $k$th roots of unity (A6.3).` },
+        { card: "roots-of-unity-filter", note: String.raw`sums of every $k$th coefficient, by evaluating at the $k$th roots of unity (A6.4).` },
         { card: "subtract-and-factor", note: String.raw`subtracting the pattern the values follow to reach a polynomial with known roots (A1.5).` }
       ],
       exercises: [

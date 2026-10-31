@@ -5,6 +5,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G8"] = {
   lessons: {
     "G8.1": {
+      prereq: ["pythagorean-theorem", "similar-figures-ratios", "coordinate-bash"],
+      cards: [],
+      body: String.raw`This chapter goes into three dimensions. Its tools are the volume and surface formulas for prisms, pyramids, cones and spheres, cross-sections and similar solids, distances and angles between lines and planes, coordinates in space, and the arrangements of solids inside one another.
+
+A prism has volume base times height and a pyramid or cone a third of that; a sphere of radius $r$ has volume $\tfrac43\pi r^3$ and surface $4\pi r^2$. A cone of radius $3$ and height $4$ has volume $\tfrac13\pi \cdot 9 \cdot 4 = 12\pi$. The space diagonal of a box with edges $a$, $b$, $c$ is $\sqrt{a^2 + b^2 + c^2}$, two Pythagorean steps: for $3 \times 4 \times 12$ it is $13$.
+
+A plane parallel to the base of a pyramid or cone cuts off a similar solid, whose volume is the cube of the ratio of lengths; a frustum is the difference of two similar solids. Slicing a solid by a well-chosen plane reduces it to a plane figure.
+
+Distances in space are found by dropping perpendiculars: the distance from a point to a plane, the distance between skew lines, the angle between two planes. Coordinates make these mechanical, with the distance formula in three variables, a plane written as $ax + by + cz = d$, and the cross product giving areas.
+
+When solids sit inside one another, such as a sphere inscribed in a cone or spheres resting on planes, the key is a cross-section through the centers that turns the configuration into circles and lines. A tetrahedron with equal opposite edges fits inside a box, and a path on a surface is straightened by unfolding the surface flat.
+
+The lessons take these ideas in turn: prisms, pyramids, cones and spheres (G8.2), cross-sections and similar solids (G8.3), distances and angles in space (G8.4), coordinates in space (G8.5), and solids inside and around solids (G8.6). The Summary (G8.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Find the length of the space diagonal of a $3 \times 4 \times 12$ box.`, answer: "13",
+          solution: String.raw`The diagonal of the $3 \times 4$ face is $5$, and the space diagonal is the hypotenuse of a right triangle with legs $5$ and $12$: $13$. In one step, $\sqrt{9 + 16 + 144} = 13$.` },
+        { q: String.raw`Find the volume of a cone with base radius $3$ and height $4$.`, answer: "12pi",
+          solution: String.raw`A cone has a third of the volume of the cylinder around it: $\tfrac13 \cdot \pi \cdot 3^2 \cdot 4 = 12\pi$.` },
+        { q: String.raw`Find the volume of a regular tetrahedron with edge $6$.`, answer: "18sqrt(2)",
+          solution: String.raw`A regular tetrahedron with edge $a$ has volume $\tfrac{a^3\sqrt2}{12}$: $\tfrac{216\sqrt2}{12} = 18\sqrt2$. (Its height is $a\sqrt{2/3} = 2\sqrt6$ over a base of area $9\sqrt3$, and $\tfrac13 \cdot 9\sqrt3 \cdot 2\sqrt6 = 18\sqrt2$.)` }
+      ],
+      problems: [
+        "1985 AIME, Problem 2",
+        "2017 AIME I, Problem 4",
+        "2012 AIME II, Problem 5"
+      ]
+    },
+    "G8.2": {
       prereq: ["pythagorean-theorem", "similar-figures-ratios"],
       cards: ["prism-pyramid-volumes", "cone-formulas", "sphere-formulas", "frustum-volume", "cube", "space-diagonal", "regular-tetrahedron", "regular-octahedron", "painted-cubes"],
       body: String.raw`Three-dimensional problems on the AMC and AIME mostly ask for volumes, surface areas and distances in familiar solids: boxes, pyramids, cones, spheres and the regular tetrahedron and octahedron. The formulas are few, and the work is in finding the right lengths, usually by a Pythagorean computation in a well-chosen plane.
@@ -19,7 +47,7 @@ Find the key length with a Pythagorean computation in a plane through the solid,
       related: [
         { card: "square-of-sum", note: String.raw`the identity that turns the edge sum and surface area of a box into its diagonal.` },
         { card: "similar-figures-ratios", note: String.raw`volumes of similar solids scale by the cube of the ratio (B5.1).` },
-        { card: "unfold-the-surface", note: String.raw`unrolling a cone into a sector (G8.5).` }
+        { card: "unfold-the-surface", note: String.raw`unrolling a cone into a sector (G8.6).` }
       ],
       exercises: [
         { q: String.raw`Find the space diagonal of a $3 \times 4 \times 12$ box.`, answer: "13",
@@ -55,7 +83,7 @@ Find the key length with a Pythagorean computation in a plane through the solid,
         "2024 AIME I, Problem 15"
       ]
     },
-    "G8.2": {
+    "G8.3": {
       prereq: ["similar-figures-ratios", "prism-pyramid-volumes"],
       cards: ["cross-section-method", "plane-cross-section", "scale-one-level", "cavalieris-principle"],
       body: String.raw`Most three-dimensional problems become two-dimensional once the right plane is chosen. A sphere inside a cone becomes a circle inside a triangle; a cube cut by a plane becomes a polygon; a liquid in a tilted container becomes a region in a cross-section. The art is choosing the plane that contains all the important points.
@@ -68,8 +96,8 @@ Cuts parallel to a base produce similar copies, so volumes scale by the cube of 
 
 Choose a plane through the axis or through the key points, solve the plane figure, and use similarity for parallel cuts. The next lesson measures angles and distances between lines and planes.`,
       related: [
-        { card: "inradius-area", note: String.raw`the radius of a sphere in a cone from the incircle of its cross-section (G2.4).` },
-        { card: "tangent-circles", note: String.raw`spheres tangent to each other, seen as circles in a cross-section (G2.5).` },
+        { card: "inradius-area", note: String.raw`the radius of a sphere in a cone from the incircle of its cross-section (G2.5).` },
+        { card: "tangent-circles", note: String.raw`spheres tangent to each other, seen as circles in a cross-section (G2.6).` },
         { card: "geometric-series", note: String.raw`adding the volumes of a repeated shrinking figure.` }
       ],
       exercises: [
@@ -94,7 +122,7 @@ Choose a plane through the axis or through the key points, solve the plane figur
         "2023 AIME II, Problem 14"
       ]
     },
-    "G8.3": {
+    "G8.4": {
       prereq: ["distance-3d", "law-of-cosines"],
       cards: ["dihedral-angle", "point-plane-distance", "skew-lines-distance", "projected-area-cosine"],
       body: String.raw`Angles and distances in space are measured by reducing them to triangles. The angle between two faces of a solid, the distance from a vertex to a face, the distance between two edges that do not meet, and the area of a shadow are each found by choosing the right perpendicular, or by a formula in coordinates.
@@ -107,9 +135,9 @@ The area of a plane figure's [[projected-area-cosine|orthogonal projection]] ont
 
 Find the perpendicular that measures the angle or distance, or compute with normals in coordinates. The next lesson works in coordinates systematically.`,
       related: [
-        { card: "point-line-distance", note: String.raw`the planar version of the point-plane distance (G4.2).` },
-        { card: "vector-dot-product", note: String.raw`angles between normal vectors (G6.3).` },
-        { card: "cross-product-area", note: String.raw`the normal vector of a plane through three points (G8.4).` }
+        { card: "point-line-distance", note: String.raw`the planar version of the point-plane distance (G4.3).` },
+        { card: "vector-dot-product", note: String.raw`angles between normal vectors (G6.4).` },
+        { card: "cross-product-area", note: String.raw`the normal vector of a plane through three points (G8.5).` }
       ],
       exercises: [
         { q: String.raw`Find the distance from the point $(1, 2, 3)$ to the plane $x + 2y + 2z = 1$.`, answer: "10/3",
@@ -130,7 +158,7 @@ Find the perpendicular that measures the angle or distance, or compute with norm
         "2015 AIME I, Problem 15"
       ]
     },
-    "G8.4": {
+    "G8.5": {
       prereq: ["coordinate-bash", "vector-dot-product"],
       cards: ["distance-3d", "plane-intercept-form", "cross-product-area"],
       body: String.raw`Coordinates in space work like coordinates in the plane, with one more number. A box or a cube sits naturally on three axes, and with its vertices at simple points, distances, planes and areas become formulas. For solids without right angles, putting one face in a coordinate plane usually keeps the numbers manageable.
@@ -143,9 +171,9 @@ The [[cross-product-area|cross product]] $\vec u \times \vec v$ is perpendicular
 
 Put boxes on the axes, spheres at simple centers, and use cross products for areas and normals. The last lesson of the chapter studies solids inside solids.`,
       related: [
-        { card: "point-plane-distance", note: String.raw`distances from points to planes once the plane's equation is known (G8.3).` },
-        { card: "shoelace-formula", note: String.raw`the planar area formula that the cross product extends (G4.3).` },
-        { card: "determinant-geometric", note: String.raw`the determinant as signed area or volume (G4.3).` }
+        { card: "point-plane-distance", note: String.raw`distances from points to planes once the plane's equation is known (G8.4).` },
+        { card: "shoelace-formula", note: String.raw`the planar area formula that the cross product extends (G4.4).` },
+        { card: "determinant-geometric", note: String.raw`the determinant as signed area or volume (G4.4).` }
       ],
       exercises: [
         { q: String.raw`Find the distance between $(1, 2, 3)$ and $(4, 6, 15)$.`, answer: "13",
@@ -169,7 +197,7 @@ Put boxes on the axes, spheres at simple centers, and use cross products for are
         "2002 AIME I, Problem 15"
       ]
     },
-    "G8.5": {
+    "G8.6": {
       prereq: ["prism-pyramid-volumes", "point-plane-distance"],
       cards: ["insphere-radius", "spheres-two-planes", "box-tetrahedron", "isosceles-tetrahedron", "equal-edge-tetrahedron", "unfold-the-surface", "cube-nets", "eulers-polyhedron-formula"],
       body: String.raw`The hardest three-dimensional problems put one solid inside another: a sphere inscribed in a tetrahedron, spheres wedged between two planes, a tetrahedron with equal opposite edges inside a box. Each has a standard device, and the surface of a solid, unfolded flat, turns paths on it into straight lines.
@@ -180,11 +208,11 @@ The [[insphere-radius|insphere]] of a polyhedron touches every face, and splitti
 
 [[unfold-the-surface|Unfolding the surface]] turns a path on the surface into a segment in the plane: the shortest path on a box from one corner to the opposite is the diagonal of a rectangle made of two faces, $\sqrt5$ for a unit cube; a path around a cylinder or cone unrolls into a straight line on a rectangle or sector. [[cube-nets|Folding a net into a cube]] decides which squares become opposite faces: in a row of four squares, the first and third are opposite. [[eulers-polyhedron-formula|Euler's formula]] $V - E + F = 2$ relates the counts of any convex polyhedron: $12$ vertices and $30$ edges force $20$ faces, as for the icosahedron.
 
-Use volume and surface area for inspheres, boxes for tetrahedra with equal opposite edges, nets for paths on surfaces, and Euler's formula for counts. The last chapter goes beyond the AIME syllabus.`,
+Use volume and surface area for inspheres, boxes for tetrahedra with equal opposite edges, nets for paths on surfaces, and Euler's formula for counts. The Summary (G8.7) collects the chapter's strategies, and the last chapter goes beyond the AIME syllabus.`,
       related: [
-        { card: "inradius-area", note: String.raw`the planar formula $K = rs$ that $V = \tfrac13rS$ extends (G2.4).` },
-        { card: "circle-in-angle", note: String.raw`the cross-section of a sphere tangent to two planes (G5.5).` },
-        { card: "reflect-across-the-line", note: String.raw`straightening paths, the planar version of unfolding (G6.4).` }
+        { card: "inradius-area", note: String.raw`the planar formula $K = rs$ that $V = \tfrac13rS$ extends (G2.5).` },
+        { card: "circle-in-angle", note: String.raw`the cross-section of a sphere tangent to two planes (G5.6).` },
+        { card: "reflect-across-the-line", note: String.raw`straightening paths, the planar version of unfolding (G6.5).` }
       ],
       exercises: [
         { q: String.raw`Find the radius of the sphere inscribed in a regular tetrahedron with edge $6$.`, answer: "sqrt(6)/2",
@@ -210,6 +238,57 @@ Use volume and surface area for inspheres, boxes for tetrahedra with equal oppos
         "2026 AIME II, Problem 12",
         "2024 AIME I, Problem 14"
       ]
+    },
+    "G8.7": {
+      prereq: ["prism-pyramid-volumes", "cone-formulas", "sphere-formulas", "space-diagonal", "frustum-volume", "cross-section-method", "point-plane-distance", "distance-3d", "cross-product-area", "insphere-radius", "box-tetrahedron", "unfold-the-surface", "eulers-polyhedron-formula"],
+      cards: [],
+      body: String.raw`[[prism-pyramid-volumes|A pyramid]] has a third of the volume of the prism on its base, and so does [[cone-formulas|a cone]]; [[sphere-formulas|a sphere]] has volume $\tfrac43\pi r^3$ and surface $4\pi r^2$. [[space-diagonal|The space diagonal]] of a box is $\sqrt{a^2 + b^2 + c^2}$, and [[frustum-volume|a frustum]] is a difference of similar solids, whose volumes scale as the cube of the length ratio.
+
+[[cross-section-method|A cross-section]] through the right plane, usually through centers or an axis of symmetry, turns a solid into a plane figure.
+
+[[point-plane-distance|The distance from a point to a plane]] is $\tfrac{|ax_0 + by_0 + cz_0 - d|}{\sqrt{a^2 + b^2 + c^2}}$, [[distance-3d|distances in space]] follow the three-variable Pythagorean formula, and [[cross-product-area|the cross product]] gives the area of a triangle in space.
+
+[[insphere-radius|The inradius of a solid]] is three times its volume divided by its surface area. [[box-tetrahedron|A tetrahedron with equal opposite edges]] is inscribed in a box, [[unfold-the-surface|a path on a surface]] is straightened by unfolding, and [[eulers-polyhedron-formula|Euler's formula]] $V - E + F = 2$ counts polyhedra.`,
+      strategies: [
+        String.raw`Find the height first: drop a perpendicular from the apex and use right triangles.`,
+        String.raw`For a frustum or a cut-off cone or pyramid, subtract similar solids and use the cube of the length ratio.`,
+        String.raw`For spheres touching each other or planes, take a cross-section through the centers.`,
+        String.raw`For distances and angles in space, set up coordinates and use the distance and point-plane formulas.`,
+        String.raw`For the inradius of a polyhedron, divide three times the volume by the surface area.`,
+        String.raw`For a tetrahedron with equal opposite edges, inscribe it in a box.`,
+        String.raw`For a shortest path along a surface, unfold the surface flat.`
+      ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Find the volume of a sphere of radius $3$.`, answer: "36pi",
+        solution: String.raw`The volume is $\tfrac43\pi \cdot 27 = 36\pi$.` },
+      { q: String.raw`A cone has base radius $6$ and height $12$. A plane parallel to the base, halfway up, cuts off the top. Find the volume of the remaining frustum.`, answer: "126pi",
+        solution: String.raw`The whole cone has volume $\tfrac13\pi \cdot 36 \cdot 12 = 144\pi$. The top cone is similar with ratio $\tfrac12$, so its volume is $\tfrac18$ of that, $18\pi$. The frustum is $144\pi - 18\pi = 126\pi$.` },
+      { q: String.raw`Find the distance from the point $(1, 2, 3)$ to the plane $x + 2y + 2z = 1$.`, answer: "10/3",
+        solution: String.raw`By the point-plane distance formula, $\tfrac{|1 + 4 + 6 - 1|}{\sqrt{1 + 4 + 4}} = \tfrac{10}{3}$.` },
+      { q: String.raw`Find the area of the triangle with vertices $(0, 0, 0)$, $(1, 0, 0)$ and $(0, 1, 1)$.`, answer: "sqrt(2)/2",
+        solution: String.raw`The cross product of the edge vectors $(1, 0, 0)$ and $(0, 1, 1)$ is $(0, -1, 1)$, of length $\sqrt2$, so the area is $\tfrac{\sqrt2}{2}$.` },
+      { q: String.raw`A convex polyhedron has $12$ vertices and $30$ edges. How many faces does it have?`, answer: "20",
+        solution: String.raw`By Euler's formula $V - E + F = 2$: $12 - 30 + F = 2$, so $F = 20$, as for the icosahedron.` },
+      { q: String.raw`An ant walks on the surface of a unit cube from one corner to the opposite corner. Find the length of its shortest path.`, answer: "sqrt(5)",
+        solution: String.raw`Unfold two adjacent faces into a $1 \times 2$ rectangle; the corners become opposite corners of the rectangle, and the straight path has length $\sqrt{1 + 4} = \sqrt5$.` },
+      { q: String.raw`Find the radius of the sphere inscribed in a regular tetrahedron with edge $6$.`, answer: "sqrt(6)/2",
+        solution: String.raw`The inradius is $\tfrac{3V}{S}$: the volume is $18\sqrt2$ and the surface is $4 \cdot 9\sqrt3 = 36\sqrt3$, so $r = \tfrac{54\sqrt2}{36\sqrt3} = \tfrac{3\sqrt2}{2\sqrt3} = \tfrac{\sqrt6}{2}$.` }
+    ],
+    problems: [
+      "1983 AIME, Problem 11",
+      "2003 AIME II, Problem 5",
+      "2015 AIME II, Problem 9"
+    ]
+  },
+  challenge: {
+    problems: [
+      "1985 AIME, Problem 15",
+      "1990 AIME, Problem 14",
+      "2012 AIME I, Problem 8",
+      "2025 AIME I, Problem 12"
+    ]
   }
 };

@@ -17,7 +17,7 @@ The [[square-of-sum|square of a sum]] $(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + 
 Before expanding anything, look for one of these shapes. Every step of manipulation must keep the domain in mind: dividing by an expression assumes it is nonzero, and squaring can add solutions, which the next lesson takes up.`,
       related: [
         { card: "sfft", note: String.raw`$xy + x + y + 1 = (x + 1)(y + 1)$ used to solve equations in integers (B3.4).` },
-        { card: "sophie-germain", note: String.raw`$a^4 + 4b^4$ as a product of two quadratics (A8.2).` },
+        { card: "sophie-germain", note: String.raw`$a^4 + 4b^4$ as a product of two quadratics (A8.3).` },
         { card: "telescoping", note: String.raw`sums that collapse after rationalizing each term (A3.3).` }
       ],
       exercises: [
@@ -54,7 +54,7 @@ Solve systems by the combination that the question asks for, add symmetric equat
       related: [
         { card: "symmetric-polynomial-strategies", note: String.raw`symmetric systems in $x + y$ and $xy$ (A1.2).` },
         { card: "quadratic-root-location", note: String.raw`checking which roots of a cleared equation satisfy the original conditions (B6.1).` },
-        { card: "cramers-rule", note: String.raw`solving a linear system for one unknown at a time (A9.3).` }
+        { card: "cramers-rule", note: String.raw`solving a linear system for one unknown at a time (A9.4).` }
       ],
       exercises: [
         { q: String.raw`Solve $2x + 3y = 12$ and $4x - y = 10$, and give $x + y$.`, answer: "5",
@@ -116,8 +116,8 @@ The [[trivial-inequality|trivial inequality]] $x^2 \ge 0$, with equality only at
 
 Split at sign changes, read intervals from a chart, and bound with squares. The next lesson sets up word problems.`,
       related: [
-        { card: "median-minimizes-abs", note: String.raw`minimizing a sum of absolute values (A5.4).` },
-        { card: "am-gm", note: String.raw`the next inequality after $x^2 \ge 0$ (A5.1).` },
+        { card: "median-minimizes-abs", note: String.raw`minimizing a sum of absolute values (A5.5).` },
+        { card: "am-gm", note: String.raw`the next inequality after $x^2 \ge 0$ (A5.2).` },
         { card: "piecewise-graph-counting", note: String.raw`counting solutions by graphing pieces (A4.6).` }
       ],
       exercises: [
@@ -151,7 +151,7 @@ Averages are totals in disguise: [[averages-to-totals|turn every average into a 
 Name the unknown, translate each sentence into an equation with rates, totals or factors, and check that the answer makes sense in the story. The next chapter turns to polynomials and sequences.`,
       related: [
         { card: "linear-elimination", note: String.raw`solving the small systems that word problems produce (B1.2).` },
-        { card: "mean-chain", note: String.raw`the harmonic mean behind average speed (A5.1).` },
+        { card: "mean-chain", note: String.raw`the harmonic mean behind average speed (A5.2).` },
         { card: "geometric-series", note: String.raw`repeated percentage changes as a geometric sequence (B2.3).` }
       ],
       exercises: [

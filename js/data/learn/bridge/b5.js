@@ -18,7 +18,7 @@ The [[triangle-inequality|triangle inequality]] says each side is less than the 
 
 Look for similar triangles and right triangles, and use the special ratios. The next lesson brings in circles.`,
       related: [
-        { card: "parallel-line-similarity", note: String.raw`drawing a parallel line to create similar triangles (G1.1).` },
+        { card: "parallel-line-similarity", note: String.raw`drawing a parallel line to create similar triangles (G1.2).` },
         { card: "pythagorean-triples", note: String.raw`integer right triangles (N5.5).` },
         { card: "law-of-cosines", note: String.raw`the Pythagorean theorem for any angle (B5.4).` }
       ],
@@ -55,9 +55,9 @@ The [[power-of-a-point|power of a point]] relates segments through a common poin
 
 Draw radii to points of tangency and to chord endpoints, and look for right angles. The next lesson places figures in coordinates.`,
       related: [
-        { card: "angle-chasing", note: String.raw`propagating angles with inscribed angles and cyclic quadrilaterals (G2.1).` },
-        { card: "thales-theorem", note: String.raw`the right angle in a semicircle and its converse (G2.2).` },
-        { card: "tangent-circles", note: String.raw`circles that touch each other (G2.5).` }
+        { card: "angle-chasing", note: String.raw`propagating angles with inscribed angles and cyclic quadrilaterals (G2.2).` },
+        { card: "thales-theorem", note: String.raw`the right angle in a semicircle and its converse (G2.3).` },
+        { card: "tangent-circles", note: String.raw`circles that touch each other (G2.6).` }
       ],
       exercises: [
         { q: String.raw`A point is $13$ units from the center of a circle of radius $5$. Find the length of a tangent segment from the point to the circle.`, answer: "12",
@@ -87,8 +87,8 @@ The [[point-line-distance|distance from a point to a line]] $ax + by + c = 0$ is
 
 Place figures so that coordinates are simple, then compute with these formulas. The last lesson of the chapter adds trigonometry.`,
       related: [
-        { card: "coordinate-bash", note: String.raw`choosing good coordinates for a figure (G4.1).` },
-        { card: "shoelace-formula", note: String.raw`areas from coordinates (G4.3).` },
+        { card: "coordinate-bash", note: String.raw`choosing good coordinates for a figure (G4.2).` },
+        { card: "shoelace-formula", note: String.raw`areas from coordinates (G4.4).` },
         { card: "completing-the-square", note: String.raw`reading a circle's center and radius from its equation (A1.4).` }
       ],
       exercises: [
@@ -122,9 +122,9 @@ The [[trig-area|sine area formula]] $\tfrac12ab\sin C$ gives the area from two s
 
 These three formulas, with the exact values of sine and cosine at $30^\circ$, $45^\circ$, $60^\circ$, $90^\circ$ and $120^\circ$, are enough for the trigonometry in AMC problems. The next chapter collects the habits of checking and estimating.`,
       related: [
-        { card: "law-cosines-60-120", note: String.raw`the law of cosines at $60^\circ$ and $120^\circ$ (G3.1).` },
-        { card: "common-angle-values", note: String.raw`the exact sines and cosines of the common angles (A7.1).` },
-        { card: "herons-formula", note: String.raw`the area from three sides, without an angle (G3.1).` }
+        { card: "law-cosines-60-120", note: String.raw`the law of cosines at $60^\circ$ and $120^\circ$ (G3.2).` },
+        { card: "common-angle-values", note: String.raw`the exact sines and cosines of the common angles (A7.2).` },
+        { card: "herons-formula", note: String.raw`the area from three sides, without an angle (G3.2).` }
       ],
       exercises: [
         { q: String.raw`Two sides of a triangle are $7$ and $8$, and the angle between them is $120^\circ$. Find the third side.`, answer: "13",
