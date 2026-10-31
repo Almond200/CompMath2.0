@@ -597,7 +597,7 @@ python3 tools/build-cross-links.py --seed && python3 tools/build-cross-links.py 
 ~/Downloads/competition-math-buildenv/bin/python tools/build-search-index.py   # on the Mac; in the cloud, the venv in §13
 ```
 
-The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest run: 160/187 top-1, MRR 0.910, over 759 cards (2026-10-30, cloud index).
+The search index is rebuilt once at the end of a step that changed cards, not after each card (owner, 2026-10-25). Latest run: 157/187 top-1, MRR 0.906, over 765 cards (2026-10-30, cloud index; 160/187 and 0.910 for the 759-card build that day).
 
 - Bump `?v=` in `index.html` for **every** file you touched, including ones a build step regenerated
   (`search-glossary.js`). The exception is `search-vectors.{json,bin}`, which revalidate themselves.
@@ -910,4 +910,4 @@ See `MIGRATION-NOTES.md` for the full answers.
 - Never edit a source file with a slice-and-replace that is not checked afterwards (a mis-sliced edit to `js/app.js` once deleted a block). Check syntax (`node --check`, `new Function(text)` or `jsc`) after any large edit.
 - Serve pages with `python3 -m http.server 8765`, started and killed by PID inside one command, after `curl -s -o /dev/null -w '%{http_code}' localhost:8765/` prints `000` (the port is free). Never `pkill -f http.server`, which kills the calling shell.
 - `node tools/check-pages.js '#/f/<id>' ...` prints only light 1280 rows and FAIL rows, so no FAIL means all four modes passed.
-- **The search index in a cloud chat:** test `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights also come from `cas-server.xethub.hf.co`), then `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` and `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Otherwise it is rebuilt on the Mac. Then the eval (`tools/search-eval.html`, at least 160/187) and `MathSemantic.info().cards` equal to the card count.
+- **The search index in a cloud chat:** test `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights also come from `cas-server.xethub.hf.co`), then `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` (the CPU-only torch first: the default GPU build is several GB and stalled on 2026-10-30) and `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Otherwise it is rebuilt on the Mac. Then the eval (`tools/search-eval.html`, at least 160/187) and `MathSemantic.info().cards` equal to the card count.
