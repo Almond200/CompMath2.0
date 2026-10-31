@@ -1587,28 +1587,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G8.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G8.2",
       "title": "Prisms, pyramids, cones, spheres",
       "level": "Core"
      },
      {
-      "code": "G8.2",
+      "code": "G8.3",
       "title": "Cross-sections and similar solids",
       "level": "Core"
      },
      {
-      "code": "G8.3",
+      "code": "G8.4",
       "title": "Distances and angles between lines and planes",
       "level": "Core II"
      },
      {
-      "code": "G8.4",
+      "code": "G8.5",
       "title": "Coordinates in space",
       "level": "Core II"
      },
      {
-      "code": "G8.5",
+      "code": "G8.6",
       "title": "Solids inside and around solids",
       "level": "Core II"
+     },
+     {
+      "code": "G8.7",
+      "title": "Summary"
      }
     ]
    },

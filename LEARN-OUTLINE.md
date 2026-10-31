@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G7 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G8 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1265,11 +1265,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G8.1 Prisms, pyramids, cones, spheres (Core) | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `frustum-volume`, `cube`, `space-diagonal`, `regular-tetrahedron`, `regular-octahedron`, *(pattern)* `painted-cubes` |
-| G8.2 Cross-sections and similar solids (Core) | `cross-section-method`, `plane-cross-section`, `scale-one-level`, `cavalieris-principle` |
-| G8.3 Distances and angles between lines and planes (Core II) | `dihedral-angle`, `point-plane-distance`, `skew-lines-distance`, `projected-area-cosine` |
-| G8.4 Coordinates in space (Core II) | `distance-3d`, `plane-intercept-form`, `cross-product-area` |
-| G8.5 Solids inside and around solids (Core II) | `insphere-radius`, `spheres-two-planes`, `box-tetrahedron`, `isosceles-tetrahedron`, *(pattern)* `equal-edge-tetrahedron`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
+| G8.1 Introduction | no card (the chapter's opening page: volumes and surfaces, cross-sections and similar solids, distances and angles in space, coordinates in space, nested solids, with comprehension problems) |
+| G8.2 Prisms, pyramids, cones, spheres (Core) | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `frustum-volume`, `cube`, `space-diagonal`, `regular-tetrahedron`, `regular-octahedron`, *(pattern)* `painted-cubes` |
+| G8.3 Cross-sections and similar solids (Core) | `cross-section-method`, `plane-cross-section`, `scale-one-level`, `cavalieris-principle` |
+| G8.4 Distances and angles between lines and planes (Core II) | `dihedral-angle`, `point-plane-distance`, `skew-lines-distance`, `projected-area-cosine` |
+| G8.5 Coordinates in space (Core II) | `distance-3d`, `plane-intercept-form`, `cross-product-area` |
+| G8.6 Solids inside and around solids (Core II) | `insphere-radius`, `spheres-two-planes`, `box-tetrahedron`, `isosceles-tetrahedron`, *(pattern)* `equal-edge-tetrahedron`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
+| G8.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G8.8 Review Problems and G8.9 Challenge Problems |
 
 ### G9. Geometry extensions (Extension)
 

@@ -196,7 +196,7 @@ The set of points within distance $r$ of a convex shape, its [[steiner-neighborh
 
 Count pairs with binomial coefficients, regions with Euler's formula or the add-one-line rule, and swept areas with the Steiner formula. The Summary (G7.7) collects the chapter's strategies, and the next chapter goes into three dimensions.`,
       related: [
-        { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, the source of region counts (G8.5).` },
+        { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, the source of region counts (G8.6).` },
         { card: "rectangles-in-grid", note: String.raw`rectangles and squares in a grid of lines (C8.3).` },
         { card: "complementary-counting", note: String.raw`triangles as triples of points minus collinear triples (C1.3).` }
       ],

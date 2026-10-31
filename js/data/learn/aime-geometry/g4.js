@@ -46,7 +46,7 @@ Choose coordinates that make the figure's main features simple, then compute. Th
       related: [
         { card: "vector-bash", note: String.raw`the same computation with vectors, which avoids choosing axes (G6.4).` },
         { card: "complex-bash", note: String.raw`coordinates as complex numbers, convenient for rotations (G6.3).` },
-        { card: "distance-3d", note: String.raw`coordinates in space (G8.4).` }
+        { card: "distance-3d", note: String.raw`coordinates in space (G8.5).` }
       ],
       exercises: [
         { q: String.raw`Square $ABCD$ has side $4$, and $M$ is the midpoint of $CD$. Find the distance from $A$ to the line $BM$.`, answer: "8sqrt(5)/5",
@@ -131,7 +131,7 @@ Use the shoelace formula whenever the vertices are known or can be computed, and
       related: [
         { card: "picks-theorem", note: String.raw`the area of a lattice polygon from its lattice points (G7.5).` },
         { card: "axis-stretch-area", note: String.raw`stretching one axis multiplies areas by the stretch factor (G6.5).` },
-        { card: "cross-product-area", note: String.raw`the area of a triangle in space (G8.4).` }
+        { card: "cross-product-area", note: String.raw`the area of a triangle in space (G8.5).` }
       ],
       exercises: [
         { q: String.raw`Find the area of the quadrilateral with vertices $(0, 0)$, $(4, 1)$, $(3, 5)$ and $(-1, 3)$, in that order.`, answer: "31/2",
