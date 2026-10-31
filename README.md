@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Algebra L5 Substitutions and symmetric expressions written.** L5.1 Introduction, L5.2 naming the whole expression (repeated blocks, nested expressions), L5.3 symmetric sums and factoring tricks, L5.4 Summary, Review Problems and Challenge Problems. Few AMC problems use these cards, so the lessons also use early AIME problems, as the plan allows.
 - **AMC Algebra L4 Functions, graphs, absolute values and floors written.** L4.1 Introduction, L4.2 functions and defined operations, L4.3 reading graphs and slopes, L4.4 absolute value, L4.5 counting solutions with a graph, L4.6 floors and ceilings, L4.7 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L3 Quadratics written.** L3.1 Introduction, L3.2 solving quadratics and the discriminant, L3.3 Vieta and symmetric expressions, L3.4 the vertex and where the roots lie, L3.5 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L2 Equations and word problems written.** L2.1 Introduction, L2.2 solving and checking one equation, L2.3 systems, L2.4 rates and work, L2.5 averages, L2.6 setting up a story, L2.7 Summary, Review Problems and Challenge Problems; the Foundations part (L1, L2) is complete.
