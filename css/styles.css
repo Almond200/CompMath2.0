@@ -2717,7 +2717,6 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-lessons li > a { display: flex; flex: 1 1 auto; align-items: baseline; gap: 10px; min-width: 0; color: inherit; text-decoration: none; }
 .lb-lessons li > a .lb-title { color: var(--c-learn); }
 .lb-lessons li > a:hover .lb-title { text-decoration: underline; }
-.lb-read { flex: 0 0 auto; color: var(--c-learn); font-weight: 700; }
 .lb-open { display: inline-block; margin: 0 0 10px 22px; font-size: 13px; font-weight: 650; color: var(--c-learn); }
 .lb-book > .lb-open { margin: 0 16px 14px; }
 

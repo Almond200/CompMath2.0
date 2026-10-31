@@ -5066,10 +5066,9 @@
 
   // One line per lesson: its code and title, a link once it is written, and a tick once read.
   function learnLessonRow(b, c, l, current) {
-    const read = learnProgress().read[l.code];
     const inner = `<span class="lb-code">${l.code}</span><span class="lb-title">${escapeAttr(l.title)}</span>`;
     if (!learnLessonData(c, l)) return `<li class="lb-lesson">${inner}<span class="lb-soon">Not written yet</span></li>`;
-    return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}${read ? `<span class="lb-read" title="Read">&#10003;</span>` : ""}</a></li>`;
+    return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}</a></li>`;
   }
   function learnReviewRow(b, c, current) {
     const n = learnReview(c).length;
@@ -5133,14 +5132,11 @@
     const all = [];
     LEARN_SHELF.forEach(b => b.chapters.forEach(c => c.lessons.forEach(l => { if (learnLessonData(c, l)) all.push({ b, c, l }); })));
     if (!all.length) return null;
+    // The lesson opened last, else the first written one (lessons are not marked read; owner,
+    // 2026-10-31).
     const last = prog.last && learnLessonByCode(prog.last);
-    if (last && learnLessonData(last.c, last.l)) {
-      if (!prog.read[last.l.code]) return Object.assign({ again: true }, last);
-      const k = all.findIndex(x => x.l === last.l);
-      if (all[k + 1]) return all[k + 1];
-      return Object.assign({ again: true }, last);
-    }
-    return all.find(x => !prog.read[x.l.code]) || all[0];
+    if (last && learnLessonData(last.c, last.l)) return Object.assign({ again: true }, last);
+    return all[0];
   }
 
   // The book view (owner, 2026-10-31, modelled on the way an online textbook is read): a slim
@@ -5217,7 +5213,6 @@
   function renderLearnBook(b) {
     noteRecent("b:" + b.id);
     const written = c => c.lessons.filter(l => learnLessonData(c, l)).length;
-    const read = c => c.lessons.filter(l => learnProgress().read[l.code]).length;
     const start = (() => {
       const k = learnContinue();
       return k && k.b === b ? k : (() => { for (const c of b.chapters) for (const l of c.lessons) if (learnLessonData(c, l)) return { b, c, l }; return null; })();
@@ -5232,14 +5227,14 @@
             <h2 class="learn-h">${escapeAttr(b.title)}</h2>
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons &middot; ${learnWrittenIn(b)} written so far</p>
-            ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${learnProgress().read[start.l.code] || start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
+            ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
             <p class="learn-note bk-levels">Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).</p>
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
         <ol class="bk-toc">${b.chapters.map(c => `
           <li class="bk-toc-ch">
-            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}${read(c) ? ` &middot; ${read(c)} read` : ""}</span></span></a>
+            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}</span></span></a>
             <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
           </li>`).join("")}
         </ol>
@@ -5464,7 +5459,6 @@
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        <div class="lp-end" aria-hidden="true"></div>
         ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
     learnBookShell(b, c, isReview ? "review" : l, main);
@@ -5483,19 +5477,6 @@
       const saved = learnProgress().problems[li.dataset.slug];
       if (saved && saved.shown && !saved.hidden && (saved.notes || "").trim()) showLearnSolution(li);
     });
-    // A lesson counts as read once its last paragraph has been on screen.
-    const end = $content.querySelector(".lp-end");
-    if (l && d && end && "IntersectionObserver" in window) {
-      const io = new IntersectionObserver(es => {
-        if (!es.some(x => x.isIntersecting)) return;
-        io.disconnect();
-        const prog = learnProgress();
-        if (!prog.read[l.code]) {
-          prog.read[l.code] = Date.now(); saveLearn();
-        }
-      });
-      io.observe(end);
-    }
   }
 
   function renderLearn(route) {

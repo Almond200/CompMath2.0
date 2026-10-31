@@ -992,7 +992,6 @@ The old list addresses are kept (§9).
 ```js
 {
   v: 1,
-  read:     { "<lesson code>": <ms> },
   checks:   { "<lesson code>#<n>": { a: "<typed answer>", ok: true } },
   problems: { "<problem slug>": { notes: "<text>", shown: true, hidden: true } },   // hidden: shown, then hidden again
   last:     "<lesson code>"   // the lesson opened last: "Continue learning" on the home page and the book
@@ -1000,7 +999,7 @@ The old list addresses are kept (§9).
 ```
 
 - Importing it replaces the current value, like the other non-list keys.
-- Reading a lesson, answering a check and attempting a problem are kept apart.
+- Answering a check and attempting a problem are kept apart. Lessons are not marked read (the owner removed the tick, 2026-10-31); a `read` field in an older file is ignored.
 - A shown solution never counts as solved.
 
 **The gate** is `python3 tools/build-learn-shelf.py --check`, which runs `node tools/check-learn.js` on the chapter files. It checks that:
