@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **W3 to W5 written (2026-10-31).** W3 linear recurrences and Binet, finite differences and arithmetico-geometric sums, the chain of means, Cauchy-Schwarz and Bernoulli; W4 special values, addition and double angles, harmonic addition, inverse functions, cosine products and even powers; W5 complex arithmetic, polar form and De Moivre, roots of unity and the fundamental theorem.
 - **AMC 12 book begun: W1 and W2 written (2026-10-31).** W1 logarithmic equations, functional equations and floors; W2 Vieta and Newton for any degree, conjugate roots, Descartes and root transformations, polynomial remainders and interpolation, denesting and reciprocal substitutions, and the factorizations worth knowing.
 - **T9 written; the AMC 10 book is complete (2026-10-31).** T9.1 polygon angles and areas, regular polygons and segments, T9.2 coordinates, distances, shoelace and Pick, T9.3 reflections, rotations, folds and symmetry, T9.4 diagonals, regions and shapes in figures, T9.5 solids, painted cubes, nets and Euler, T9.6 estimating and counterexamples.
 - **T8 written (2026-10-31).** T8.1 similar, congruent and right triangles, T8.2 ratios from parallels, areas, bisectors, centroids and mass points, T8.3 altitudes to hypotenuses, extended sides, doubled medians and rotations, T8.4 circle angles, tangents, chords and power of a point, T8.5 incircles and touching circles, T8.6 the laws of sines and cosines, Heron and the common angle values.
