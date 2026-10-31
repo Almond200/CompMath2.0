@@ -648,28 +648,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A1.2",
       "title": "Symmetric systems: $x + y$ and $xy$",
       "level": "Core"
      },
      {
-      "code": "A1.2",
+      "code": "A1.3",
       "title": "Nested radicals, rational equations, keeping the domain",
       "level": "Core"
      },
      {
-      "code": "A1.3",
+      "code": "A1.4",
       "title": "Substitution patterns: $t = x + \\frac1x$, quadratic forms, completing the square",
       "level": "Core"
      },
      {
-      "code": "A1.4",
+      "code": "A1.5",
       "title": "Cyclic systems and equations with several cases",
       "level": "Core II"
      },
      {
-      "code": "A1.5",
+      "code": "A1.6",
       "title": "Building and checking integer or positive solutions",
       "level": "Core"
+     },
+     {
+      "code": "A1.7",
+      "title": "Summary"
      }
     ]
    },

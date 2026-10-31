@@ -50,7 +50,7 @@ A quadratic's graph is a parabola with its [[vertex-form|vertex]] at $x = -\tfra
 
 Use Vieta for symmetric expressions in the roots, the discriminant for how many real roots there are, and the vertex for extremes. The next lesson sums sequences.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression in the elementary symmetric sums (A1.1).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression in the elementary symmetric sums ((A1.2)).` },
         { card: "newtons-sums", note: String.raw`power sums of the roots from Vieta (A2.2).` },
         { card: "quadratic-root-location", note: String.raw`where the roots lie, from the discriminant, the vertex and values (B6.1).` }
       ],

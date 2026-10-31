@@ -16,7 +16,7 @@ A closed form is not always the fastest route. With only a few terms needed, or 
       related: [
         { card: "first-order-recurrence", note: String.raw`the one-term case $a_n = pa_{n-1} + q$, solved by shifting to a geometric sequence.` },
         { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic ((N7.5)).` },
-        { card: "reciprocal-power-sums", note: String.raw`$x^n + x^{-n}$ satisfies a linear recurrence in $n$ (A1.3).` }
+        { card: "reciprocal-power-sums", note: String.raw`$x^n + x^{-n}$ satisfies a linear recurrence in $n$ ((A1.4)).` }
       ],
       exercises: [
         { q: String.raw`A sequence has $a_0 = 2$, $a_1 = 5$, and $a_n = 5a_{n-1} - 6a_{n-2}$. Find $a_5$.`, answer: "275",

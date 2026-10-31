@@ -16,7 +16,7 @@ The [[reduction-identities|reduction identities]] relate the functions at relate
 
 These identities are the first thing to try in any trigonometric expression: rewrite in sines and cosines, reduce the angles, and use the Pythagorean identity to trade squares. The next lesson adds the formulas for sums and multiples of angles.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`the same sum-and-product bookkeeping as for $x + y$ and $xy$ (A1.1).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`the same sum-and-product bookkeeping as for $x + y$ and $xy$ ((A1.2)).` },
         { card: "special-right-triangles", note: String.raw`the triangles that give the common angle values.` },
         { card: "fx-pairing", note: String.raw`pairing $k^\circ$ with $(90 - k)^\circ$ is pairing symmetric terms (A4.1).` },
         { card: "golden-ratio-pentagon", note: String.raw`where $\cos 36^\circ = \tfrac{1 + \sqrt5}{4}$ comes from.` }

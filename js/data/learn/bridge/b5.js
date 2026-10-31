@@ -89,7 +89,7 @@ Place figures so that coordinates are simple, then compute with these formulas. 
       related: [
         { card: "coordinate-bash", note: String.raw`choosing good coordinates for a figure (G4.1).` },
         { card: "shoelace-formula", note: String.raw`areas from coordinates (G4.3).` },
-        { card: "completing-the-square", note: String.raw`reading a circle's center and radius from its equation (A1.3).` }
+        { card: "completing-the-square", note: String.raw`reading a circle's center and radius from its equation ((A1.4)).` }
       ],
       exercises: [
         { q: String.raw`Find the distance between $(1, 2)$ and $(7, 10)$.`, answer: "10",

@@ -40,7 +40,7 @@ A product over the roots is an evaluation. Since $P(x) = (x - r_1)(x - r_2)(x - 
 The signal is a symmetric expression in the roots that is not one of Vieta's three, a sum of powers of the roots, or a product of a fixed expression over all the roots.`,
       related: [
         { card: "vietas-general", note: String.raw`the elementary symmetric sums $e_k$ that Newton's sums start from.` },
-        { card: "symmetric-polynomial-strategies", note: String.raw`the two-variable versions, $x^2 + y^2$ and $x^3 + y^3$ from $x + y$ and $xy$ (A1.1).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`the two-variable versions, $x^2 + y^2$ and $x^3 + y^3$ from $x + y$ and $xy$ ((A1.2)).` },
         { card: "root-transformations", note: String.raw`a polynomial whose roots are $2 - r_i$ or $r_i^2$, an alternative to evaluating products (A2.4).` }
       ],
       exercises: [
@@ -58,7 +58,7 @@ The signal is a symmetric expression in the roots that is not one of Vieta's thr
       cards: ["fundamental-theorem-symmetric", "conjugate-root-theorems", "descartes-rule-signs"],
       body: String.raw`Three facts constrain where a polynomial's roots can be before any are found. Every symmetric expression in the roots is a polynomial in the coefficients; non-real roots of a real polynomial come in conjugate pairs, and irrational roots of a rational polynomial in matching pairs; and the signs of the coefficients bound how many roots are positive. With $3 + \sqrt2$ as a root of a monic quadratic with rational coefficients, the other root is $3 - \sqrt2$ and the quadratic is $x^2 - 6x + 7$, found without any computation beyond Vieta.
 
-The [[fundamental-theorem-symmetric|fundamental theorem of symmetric polynomials]] guarantees that any expression in the roots that does not change under permuting them can be written in the elementary symmetric sums, and so in the coefficients. In practice the reduction is done by the identities of A1.1 and Newton's sums: for the roots of $x^3 - 3x^2 + x + 1$, $\sum r_i^2 = 3^2 - 2 \cdot 1 = 7$. Expressions like $\sum r_i^2 r_j$ are reduced the same way, by writing them as a combination of $e_1 e_2$ and $e_3$.
+The [[fundamental-theorem-symmetric|fundamental theorem of symmetric polynomials]] guarantees that any expression in the roots that does not change under permuting them can be written in the elementary symmetric sums, and so in the coefficients. In practice the reduction is done by the identities of (A1.2) and Newton's sums: for the roots of $x^3 - 3x^2 + x + 1$, $\sum r_i^2 = 3^2 - 2 \cdot 1 = 7$. Expressions like $\sum r_i^2 r_j$ are reduced the same way, by writing them as a combination of $e_1 e_2$ and $e_3$.
 
 If a polynomial has real coefficients, conjugating $P(z) = 0$ gives $P(\bar z) = 0$, so [[conjugate-root-theorems|non-real roots come in conjugate pairs]]; likewise a polynomial with rational coefficients that has $a + b\sqrt c$ as a root also has $a - b\sqrt c$. So a cubic with integer coefficients and root $4 + \sqrt5$ has $4 - \sqrt5$ as a second root, and its third root follows from the sum of the roots. Pairing conjugates also explains why a real polynomial of odd degree has a real root.
 
@@ -66,7 +66,7 @@ If a polynomial has real coefficients, conjugating $P(z) = 0$ gives $P(\bar z) =
 
 The signal is a symmetric expression in roots, a polynomial with a given irrational or complex root, or a question about how many roots are positive or real.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`the working identities for writing symmetric expressions in $e_1, e_2, e_3$ (A1.1).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`the working identities for writing symmetric expressions in $e_1, e_2, e_3$ ((A1.2)).` },
         { card: "complex-basics", note: String.raw`conjugates and the modulus, used when complex roots come in pairs (A6.1).` },
         { card: "rational-root-theorem", note: String.raw`the candidates for rational roots, to test before the other constraints.` }
       ],
@@ -87,11 +87,11 @@ The signal is a symmetric expression in roots, a polynomial with a given irratio
 
 The transformations come from substitution. If $r$ is a root of $P$, then $\tfrac1r$ is a root of $x^n P(\tfrac1x)$, which is $P$ with its coefficients reversed. The number $r + k$ is a root of $P(x - k)$, and $kr$ is a root of $P(\tfrac xk)$, which multiplies the coefficient of $x^{n-j}$ by $k^j$. So the roots of $x^2 - 5x + 6$ are $2$ and $3$, and the polynomial with roots $1$ and $2$ is $P(x + 1) = x^2 - 3x + 2$. For a transformation that is not one-to-one, such as $r \mapsto r^2$, substitute $\sqrt x$ and clear the radical: from $P(x) = 0$, separate the odd and even powers, $E(x^2) = -x\,O(x^2)$, and square.
 
-A transformation is often the cleanest route when a problem relates two polynomials through their roots. If the roots of one quadratic are twice those of another, then their coefficients are related by the scaling rule, which gives an equation in the coefficients without ever naming the roots. And the reciprocal polynomial explains palindromic polynomials from A1.3: a polynomial equal to its own reversal has roots closed under $r \mapsto \tfrac1r$.
+A transformation is often the cleanest route when a problem relates two polynomials through their roots. If the roots of one quadratic are twice those of another, then their coefficients are related by the scaling rule, which gives an equation in the coefficients without ever naming the roots. And the reciprocal polynomial explains palindromic polynomials from (A1.4): a polynomial equal to its own reversal has roots closed under $r \mapsto \tfrac1r$.
 
 The signal is a question about the roots after a fixed operation, $\tfrac1r$, $r + k$, $kr$, $r^2$, or a relation between the roots of two polynomials.`,
       related: [
-        { card: "palindromic-polynomials", note: String.raw`a polynomial equal to its own reversal, with roots in pairs $r, \tfrac1r$ (A1.3).` },
+        { card: "palindromic-polynomials", note: String.raw`a polynomial equal to its own reversal, with roots in pairs $r, \tfrac1r$ ((A1.4)).` },
         { card: "products-over-roots", note: String.raw`evaluating $P(k)$ instead of building the polynomial with roots $k - r_i$ (A2.2).` },
         { card: "vietas-quadratic", note: String.raw`reading the sum and product off the transformed quadratic.` }
       ],
@@ -120,7 +120,7 @@ The signal is a polynomial given by values, a question about a sum of coefficien
       related: [
         { card: "finite-differences", note: String.raw`the next value of a polynomial from a table of differences, another route to interpolation (A3.3).` },
         { card: "roots-of-unity-filter", note: String.raw`sums of every $k$th coefficient, by evaluating at the $k$th roots of unity (A6.3).` },
-        { card: "subtract-and-factor", note: String.raw`subtracting the pattern the values follow to reach a polynomial with known roots (A1.4).` }
+        { card: "subtract-and-factor", note: String.raw`subtracting the pattern the values follow to reach a polynomial with known roots ((A1.5)).` }
       ],
       exercises: [
         { q: String.raw`A quadratic $P$ has $P(1) = 1$, $P(2) = 3$, $P(3) = 7$. Find $P(4)$.`, answer: "13",

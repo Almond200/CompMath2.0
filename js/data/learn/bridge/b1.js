@@ -52,7 +52,7 @@ When the equations are symmetric or cyclic, [[add-all-equations|adding them all]
 
 Solve systems by the combination that the question asks for, add symmetric equations, and check candidates when a step was not reversible. The next lesson simplifies equations by naming repeated expressions.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`symmetric systems in $x + y$ and $xy$ (A1.1).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`symmetric systems in $x + y$ and $xy$ ((A1.2)).` },
         { card: "quadratic-root-location", note: String.raw`checking which roots of a cleared equation satisfy the original conditions (B6.1).` },
         { card: "cramers-rule", note: String.raw`solving a linear system for one unknown at a time (A9.3).` }
       ],
@@ -87,7 +87,7 @@ After a substitution, solve for the new variable, then return to the original on
 Look for a piece that repeats, name it, and solve the simpler equation. The next lesson handles absolute values and inequalities.`,
       related: [
         { card: "quadratic-formula", note: String.raw`solving the quadratic that a substitution produces (B2.2).` },
-        { card: "palindromic-polynomials", note: String.raw`the substitution $t = x + \tfrac1x$ for symmetric equations (A1.3).` },
+        { card: "palindromic-polynomials", note: String.raw`the substitution $t = x + \tfrac1x$ for symmetric equations ((A1.4)).` },
         { card: "log-substitution", note: String.raw`naming $\log x$ to turn an equation into a polynomial (A4.3).` }
       ],
       exercises: [

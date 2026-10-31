@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9) and AIME Number Theory (N1 to N8) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -834,11 +834,13 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A1.1 Symmetric systems: $x + y$ and $xy$ (Core) | `symmetric-polynomial-strategies` |
-| A1.2 Nested radicals, rational equations, keeping the domain (Core) | `denesting-radicals`, prereq `transforming-equations` |
-| A1.3 Substitution patterns: $t = x + \frac1x$, quadratic forms, completing the square (Core) | `palindromic-polynomials`, `reciprocal-power-sums`, `completing-the-square` |
-| A1.4 Cyclic systems and equations with several cases (Core II) | `subtract-and-factor`, prereq `add-all-equations` |
-| A1.5 Building and checking integer or positive solutions (Core) | `forced-difference-of-squares`, *(pattern)* `quadratic-perfect-square`, prereq `sfft` |
+| A1.1 Introduction | no card (the chapter's opening page: symmetric systems, radicals and the domain, substitutions, cyclic systems, integer solutions, with comprehension problems) |
+| A1.2 Symmetric systems: $x + y$ and $xy$ (Core) | `symmetric-polynomial-strategies` |
+| A1.3 Nested radicals, rational equations, keeping the domain (Core) | `denesting-radicals`, prereq `transforming-equations` |
+| A1.4 Substitution patterns: $t = x + \frac1x$, quadratic forms, completing the square (Core) | `palindromic-polynomials`, `reciprocal-power-sums`, `completing-the-square` |
+| A1.5 Cyclic systems and equations with several cases (Core II) | `subtract-and-factor`, prereq `add-all-equations` |
+| A1.6 Building and checking integer or positive solutions (Core) | `forced-difference-of-squares`, *(pattern)* `quadratic-perfect-square`, prereq `sfft` |
+| A1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A1.8 Review Problems and A1.9 Challenge Problems |
 
 ### A2. Polynomials and root expressions (Core)
 
