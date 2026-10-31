@@ -3,7 +3,7 @@
 This file is step L2 of `PLAN.md`: the contents of the Learn section, planned before anything is written or built (owner, 2026-10-31). The plan says what to do; this file says what each book holds. It is a planning document. Nothing in it is in the app yet.
 
 **Status (2026-10-31):**
-- The shelf is a draft that waits on LQ4 in `QUESTIONS.md`.
+- The shelf is the five books (owner, LQ4, 2026-10-31). AMC 10/12 books may follow later.
 - Only the AIME Number Theory book has its chapters mapped to cards.
 - Only the pilot chapter, Modular Exponent Cycles, has its lessons planned.
 
@@ -21,15 +21,15 @@ Each lesson follows the blueprint's eight beats. The outline fills in the parts 
 3. **The new idea:** short connecting prose with one simple derivation. It links to the card and never copies it (outline: one line on what the prose must get across).
 4. **The cards:** 1 to 3 canonical cards, opened in the drawer (outline: `cards`).
 5. **Worked example:** the computation, and also the clue that made the approach promising (outline: the example and its clue).
-6. **Checks:** 1 to 3 short questions right after the idea, each answered with one line of why (outline: the question and its answer).
-7. **Lesson problems:** 3 to 5 contest problems that use the lesson, harder than the checks. Their strategy stays hidden until the student has tried them (LQ6).
+6. **Checks:** 1 to 3 short questions right after the idea. The student types the answer with the app's math keyboard, and it is checked, then explained with one line of why (LQ5). The answer must be a number or a short expression the keyboard can type (outline: the question and its answer).
+7. **Lesson problems:** 3 to 5 contest problems that use the lesson, harder than the checks. They are shown as an AoPS-style list: the statement, a box for the student's work, and Show Solution, which works only once something is written (LQ6).
 8. **Wrap-up:** the key clues, and a pointer to the next lesson.
 
 A chapter ends with a **review set** of 8 to 12 mixed contest problems that combine its lessons and name no method in advance. Each contest problem has one place on the whole shelf (LQ8), and AMC 10/12 twins count as one problem.
 
 ---
 
-## The shelf (draft; waits on LQ4)
+## The shelf (the five books, owner LQ4, 2026-10-31)
 
 | Book | For | Chapters (draft) |
 |---|---|---|
@@ -38,7 +38,7 @@ A chapter ends with a **review set** of 8 to 12 mixed contest problems that comb
 | **AIME Number Theory** | AIME | mapped below |
 | **AIME Geometry** | AIME | similarity and area ratios; circles and power of a point; trigonometric methods; coordinates versus synthetic routes |
 | **AIME Counting & Probability** | AIME | cases and complements; bijections; restricted arrangements; states and recursion; probability through counting |
-| *AMC 10/12 books (if LQ4 says yes)* | AMC 10/12 | one per subject, following the AMC routes in `js/data/built-in-lists.js` |
+| *AMC 10/12 books (later, if wanted)* | AMC 10/12 | one per subject, following the AMC routes in `js/data/built-in-lists.js` |
 
 The bridge book's chapters are kept short, and the AIME books link back to them as prerequisites. A student can start any chapter of any book: its "What it assumes" links lead back to what is needed.
 

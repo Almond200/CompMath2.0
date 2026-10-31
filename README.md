@@ -289,6 +289,16 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The owner's Learn decisions recorded (2026-10-31).** LQ1 to LQ10 are answered in `QUESTIONS.md`:
+  - Learn becomes a top-bar button between Patterns and Practice.
+  - The home page waits until a few things are working.
+  - Lists and the shelf take the suggested defaults.
+  - Checks are typed answers, entered with an on-screen math keyboard the app will have, so no student types LaTeX.
+  - Lesson and chapter problems come as an AoPS-style list. The solution is always hidden, and Show Solution works only after something is written in the box.
+  - Progress, including those notes, is saved in the existing Export and Import file.
+  - The owner tries the pilot, and the sizes and Stage 5 are revisited then.
+
+  `PLAN.md` steps L3 to L10 and `LEARN-OUTLINE.md` are updated to match.
 - **The Learn track planned (2026-10-31, owner).** The owner's blueprint ("Learn + Practice", revised) adds a Learn section: textbooks of books, chapters and lessons, plus the study lists moved out of Practice. Lessons link the existing cards and problems and never copy them. Checks sit in the reading, and problem sets come at the end of each lesson and chapter. `PLAN.md` is cut to the steps ahead, L0 to L10: outline first, then a spec, navigation, a shell, a pilot chapter, the owner's trial, the rest of the shelf, and the home page last, after approval. Its finished-work history was deleted (this changelog keeps it), and the rules that lived only there moved to CONVENTIONS §13. The owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`. The new `LEARN-OUTLINE.md` holds the draft shelf, the AIME Number Theory book mapped to cards, and the pilot chapter, Modular Exponent Cycles, with five lessons, checks and candidate problems (every number computed). No app file changed.
 
 **2026-10-30**
