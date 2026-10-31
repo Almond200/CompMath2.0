@@ -54,7 +54,7 @@ Solve systems by the combination that the question asks for, add symmetric equat
       related: [
         { card: "symmetric-polynomial-strategies", note: String.raw`symmetric systems in $x + y$ and $xy$ (A1.2).` },
         { card: "quadratic-root-location", note: String.raw`checking which roots of a cleared equation satisfy the original conditions (B6.1).` },
-        { card: "cramers-rule", note: String.raw`solving a linear system for one unknown at a time (A9.3).` }
+        { card: "cramers-rule", note: String.raw`solving a linear system for one unknown at a time (A9.4).` }
       ],
       exercises: [
         { q: String.raw`Solve $2x + 3y = 12$ and $4x - y = 10$, and give $x + y$.`, answer: "5",

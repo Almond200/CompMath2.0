@@ -159,8 +159,8 @@ Look for a telescope whenever a trigonometric sum or product runs over many even
       related: [
         { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson (A3.3).` },
         { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.4).` },
-        { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.4).` },
-        { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.4).` }
+        { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.5).` },
+        { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.5).` }
       ],
       exercises: [
         { q: String.raw`Find $\tan\left(\displaystyle\sum_{k=1}^{9}\arctan\tfrac{1}{k^2 + k + 1}\right)$.`, answer: "9/11",

@@ -191,7 +191,7 @@ The [[power-mean-inequality|power mean inequality]] puts the whole chain of mean
 These are tools to recognize rather than to reach for first: try AM-GM, Cauchy-Schwarz and the methods of the earlier lessons, and use the general forms when the terms are unequal or the powers differ. The Summary (A5.7) collects the chapter's strategies, and the next chapter changes subject to complex numbers, where the triangle inequality and the geometry of the plane return.`,
       related: [
         { card: "holders-inequality", note: String.raw`the generalization of Cauchy-Schwarz to three or more lists, proved with weighted AM-GM.` },
-        { card: "tangent-line-trick", note: String.raw`bounding each term by its tangent line, the method behind Bernoulli's inequality (A9.4).` },
+        { card: "tangent-line-trick", note: String.raw`bounding each term by its tangent line, the method behind Bernoulli's inequality (A9.5).` },
         { card: "cauchy-schwarz", note: String.raw`the other general inequality of the chapter, for sums of products (A5.3).` }
       ],
       exercises: [

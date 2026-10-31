@@ -953,23 +953,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A9.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A9.2",
       "title": "More interpolation and finite differences",
       "level": "Extension"
      },
      {
-      "code": "A9.2",
+      "code": "A9.3",
       "title": "Nonstandard functional equations",
       "level": "Extension"
      },
      {
-      "code": "A9.3",
+      "code": "A9.4",
       "title": "Higher-order recurrences, matrices and determinants",
       "level": "Extension"
      },
      {
-      "code": "A9.4",
+      "code": "A9.5",
       "title": "Inequalities and substitutions beyond routine AIME",
       "level": "Extension"
+     },
+     {
+      "code": "A9.6",
+      "title": "Summary"
      }
     ]
    }

@@ -124,7 +124,7 @@ A [[defined-operation|newly defined operation]], written with a new symbol and a
 The signal is an equation that must hold for all inputs, or a symbol defined by a formula. Choose inputs that make the arguments simple or make two of them swap, and solve the small system that results.`,
       related: [
         { card: "function-symmetry-equation", note: String.raw`symmetries of a graph written as functional equations (A4.2).` },
-        { card: "cauchy-functional-equations", note: String.raw`equations like $f(x + y) = f(x) + f(y)$, solved in full in A9.2.` },
+        { card: "cauchy-functional-equations", note: String.raw`equations like $f(x + y) = f(x) + f(y)$, solved in full in A9.3.` },
         { card: "comparing-coefficients", note: String.raw`when the unknown function is a polynomial, an identity becomes equations on its coefficients (A2.6).` }
       ],
       exercises: [

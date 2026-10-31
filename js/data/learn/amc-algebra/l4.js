@@ -49,7 +49,7 @@ Substitute inputs that create a solvable system, pair symmetric inputs, and reco
       related: [
         { card: "odd-even-functions", note: String.raw`the symmetry $x \to -x$ (L2.2).` },
         { card: "linear-elimination", note: String.raw`solving the system the substitutions produce (L1.2).` },
-        { card: "injectivity-surjectivity", note: String.raw`olympiad functional equations (A9.2).` }
+        { card: "injectivity-surjectivity", note: String.raw`olympiad functional equations (A9.3).` }
       ],
       exercises: [
         { q: String.raw`A function satisfies $f(x) + 2f(1 - x) = 3x$ for all real $x$. Find $f(2)$.`, answer: "-4",

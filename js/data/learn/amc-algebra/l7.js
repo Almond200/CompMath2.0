@@ -76,7 +76,7 @@ A [[trig-telescoping-product|telescoping cosine product]] multiplies by a sine a
 
 Double to absorb cosines, and square the Pythagorean identity to lower powers. The next chapter treats complex numbers.`,
       related: [
-        { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles (A9.4).` },
+        { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles (A9.5).` },
         { card: "square-of-sum", note: String.raw`squaring $\sin^2 + \cos^2 = 1$ (L1.1).` },
         { card: "telescoping", note: String.raw`the same collapse for sums (L3.4).` }
       ],

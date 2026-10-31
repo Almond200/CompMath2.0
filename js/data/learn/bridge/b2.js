@@ -86,7 +86,7 @@ The [[triangular-numbers|triangular numbers]] $T_n = 1 + 2 + \cdots + n = \tfrac
 When a sum looks irregular, split it into arithmetic and geometric pieces, pair terms from the ends, or write it as a difference of two known sums. The last lesson of the chapter treats sequences defined step by step.`,
       related: [
         { card: "telescoping", note: String.raw`sums that collapse because consecutive terms cancel (A3.3).` },
-        { card: "higher-power-sums", note: String.raw`sums of fourth and higher powers (A9.1).` },
+        { card: "higher-power-sums", note: String.raw`sums of fourth and higher powers (A9.2).` },
         { card: "fx-pairing", note: String.raw`Gauss's pairing applied to any function (A4.2).` }
       ],
       exercises: [

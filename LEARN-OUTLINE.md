@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A8 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and AIME Algebra (A1 to A9) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -927,10 +927,12 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A9.1 More interpolation and finite differences (Extension) | `higher-power-sums`, `integer-valued-polynomials`, `generalized-binomial-series` |
-| A9.2 Nonstandard functional equations (Extension) | `cauchy-functional-equations`, `injectivity-surjectivity` |
-| A9.3 Higher-order recurrences, matrices and determinants (Extension) | `matrix-multiplication`, `matrix-power-diagonalizing`, `determinant-basics`, `cramers-rule`, `matrix-inverse`, `chebyshev-polynomials` |
-| A9.4 Inequalities and substitutions beyond routine AIME (Extension) | `nesbitt-inequality`, `tangent-line-trick`, `normalization`, `weierstrass-substitution`, `even-power-sin-cos-sums`, `evenly-spaced-angle-products` |
+| A9.1 Introduction | no card (the chapter's opening page: higher power sums, functional equations, matrices and determinants, inequalities and trigonometric sums, with comprehension problems) |
+| A9.2 More interpolation and finite differences (Extension) | `higher-power-sums`, `integer-valued-polynomials`, `generalized-binomial-series` |
+| A9.3 Nonstandard functional equations (Extension) | `cauchy-functional-equations`, `injectivity-surjectivity` |
+| A9.4 Higher-order recurrences, matrices and determinants (Extension) | `matrix-multiplication`, `matrix-power-diagonalizing`, `determinant-basics`, `cramers-rule`, `matrix-inverse`, `chebyshev-polynomials` |
+| A9.5 Inequalities and substitutions beyond routine AIME (Extension) | `nesbitt-inequality`, `tangent-line-trick`, `normalization`, `weierstrass-substitution`, `even-power-sin-cos-sums`, `evenly-spaced-angle-products` |
+| A9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A9.7 Review Problems and A9.8 Challenge Problems |
 
 ---
 
