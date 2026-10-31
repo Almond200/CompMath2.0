@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Algebra is complete (second plan).** L14 From the AMC to the AIME is written: L14.1 Introduction, L14.2 domain, positivity and integrality through a substitution, L14.3 the AIME answer, L14.4 mixed problems across the book, L14.5 Summary, Review Problems and Challenge Problems, with early AIME problems. The book now has fourteen chapters in four parts, every chapter in the approved structure, every lesson tagged.
 - **AMC Algebra L13 Complex numbers written; the Advanced topics part is complete.** L13.1 Introduction, L13.2 complex arithmetic and the modulus, L13.3 polar form and De Moivre, L13.4 roots of unity, L13.5 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L12 Trigonometry written.** L12.1 Introduction, L12.2 special values and the identities, L12.3 sums, products and telescoping, L12.4 combining waves and inverse functions, L12.5 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L11 Functional equations, recurrences and inequalities written.** L11.1 Introduction, L11.2 functional equations by substitution, L11.3 linear recurrences, L11.4 finite differences and double sums, L11.5 the mean inequalities and Cauchy-Schwarz, L11.6 Summary, Review Problems and Challenge Problems.
