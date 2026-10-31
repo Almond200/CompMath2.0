@@ -976,6 +976,8 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 | a lesson | `#/learn/<book-id>/<code>/<n>` (`.../n3/1` is N3.1) |
 | a chapter review | `#/learn/<book-id>/<code>/review` |
 
+**The book view** (owner, 2026-10-31). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book. Its pages (the contents, a chapter, a lesson, a review) share one sidebar: the cover and "Book contents", then every chapter, the current one open with its overview, lessons and review. On a phone the sidebar folds into one "Contents" line.
+
 The old list addresses are kept (§9).
 
 **Progress** (LQ7) is one new `localStorage` key, `mq-learn`, in `PROGRESS_KEYS` (§10), so Export and Import carry it:
@@ -985,7 +987,8 @@ The old list addresses are kept (§9).
   v: 1,
   read:     { "<lesson code>": <ms> },
   checks:   { "<lesson code>#<n>": { a: "<typed answer>", ok: true } },
-  problems: { "<problem slug>": { notes: "<text>", shown: true } }
+  problems: { "<problem slug>": { notes: "<text>", shown: true } },
+  last:     "<lesson code>"   // the lesson opened last: "Continue learning" on the home page and the book
 }
 ```
 
