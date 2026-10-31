@@ -45,7 +45,7 @@ When one count is not enough to describe what can come next, use several. String
 Use a recursion whenever the objects grow one piece at a time and the answer is wanted for a moderate size; compute the table carefully and check the first few entries by listing. The next lesson studies the recursions that come from tilings and paths.`,
       related: [
         { card: "linear-recurrence", note: String.raw`solving a recursion in closed form, when the table is too long (A3.1).` },
-        { card: "restricted-sequences", note: String.raw`recursions split by the last symbol, for strings with rules (C2.3).` },
+        { card: "restricted-sequences", note: String.raw`recursions split by the last symbol, for strings with rules (C2.4).` },
         { card: "simulate-the-process", note: String.raw`computing small cases to find or check a recursion (C1.6).` }
       ],
       exercises: [
@@ -75,7 +75,7 @@ The solutions of these recursions are combinations of powers of the roots of the
 Treat any count of linear arrangements with local rules as a tiling, look at one end, and write the recursion, with one sequence per shape the end can take. The next lesson fills grids and game positions with numbers.`,
       related: [
         { card: "linear-recurrence", note: String.raw`the closed form behind a tiling recursion (A3.1).` },
-        { card: "non-adjacent-selection", note: String.raw`no two adjacent chosen objects, a tiling by squares and "domino-like" blocks (C2.3).` },
+        { card: "non-adjacent-selection", note: String.raw`no two adjacent chosen objects, a tiling by squares and "domino-like" blocks (C2.4).` },
         { card: "transfer-matrix-method", note: String.raw`the systematic form of several-state recursions (C9.4).` }
       ],
       exercises: [
@@ -106,7 +106,7 @@ Both tables reward care with the order of filling and with the boundary: the sta
 Fill a table whenever each position depends only on positions one move away. The next lesson finds quantities that a process cannot change.`,
       related: [
         { card: "grid-paths", note: String.raw`the closed form for paths without obstacles, as a check on the table (C5.6).` },
-        { card: "turn-based-games", note: String.raw`games with chance, where positions get probabilities instead of labels (C7.4).` },
+        { card: "turn-based-games", note: String.raw`games with chance, where positions get probabilities instead of labels (C7.5).` },
         { card: "strategy-stealing", note: String.raw`proving the first player wins without finding the strategy (C9.4).` }
       ],
       exercises: [
@@ -166,9 +166,9 @@ Lattice paths also encode other objects. A sequence of makes and misses in baske
 
 Count paths with the binomial coefficient, split at the points they must pass, subtract those through forbidden points, and count turns through runs. The next lesson gives the states probabilities, to find who is likely to win a game of chance.`,
       related: [
-        { card: "reflection-principle", note: String.raw`paths that must stay on one side of a line (C4.1).` },
+        { card: "reflection-principle", note: String.raw`paths that must stay on one side of a line (C4.2).` },
         { card: "grid-path-fill", note: String.raw`counting paths with irregular obstacles by filling the grid (C5.4).` },
-        { card: "stars-and-bars", note: String.raw`splitting the steps of each direction into runs (C2.4).` }
+        { card: "stars-and-bars", note: String.raw`splitting the steps of each direction into runs (C2.5).` }
       ],
       exercises: [
         { q: String.raw`How many up-and-right lattice paths from $(0, 0)$ to $(6, 4)$ pass through $(3, 2)$?`, answer: "100",
@@ -196,9 +196,9 @@ Everything depends on defining the states clearly. A state must record everythin
 
 Name the states, mark the winning and losing ones, write one equation per state from its first step, and solve. The Summary that follows gathers the chapter's ideas.`,
       related: [
-        { card: "turn-based-games", note: String.raw`the one-state equation for alternating turns, in closed form (C7.4).` },
-        { card: "gamblers-ruin", note: String.raw`the chain of states $0, 1, \ldots, N$ solved for every $N$ (C7.4).` },
-        { card: "total-expectation", note: String.raw`the same first-step equations for expected numbers of steps (C7.3).` }
+        { card: "turn-based-games", note: String.raw`the one-state equation for alternating turns, in closed form (C7.5).` },
+        { card: "gamblers-ruin", note: String.raw`the chain of states $0, 1, \ldots, N$ solved for every $N$ (C7.5).` },
+        { card: "total-expectation", note: String.raw`the same first-step equations for expected numbers of steps (C7.4).` }
       ],
       exercises: [
         { q: String.raw`Two players play games until one of them leads by two. Player $A$ wins each game with probability $\tfrac35$. What is the probability that $A$ wins the match?`, answer: "9/13",

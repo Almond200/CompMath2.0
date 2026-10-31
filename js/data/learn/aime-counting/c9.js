@@ -46,9 +46,9 @@ Graphs in which every vertex has degree $2$ are unions of cycles, so counting "e
 
 When a problem is about repeating a permutation, about symmetries fixing colorings, or about graphs of degree $2$, write down the cycle type and count by it. The next lesson treats continuous random variables beyond simple regions.`,
       related: [
-        { card: "necklace-formula", note: String.raw`the cycles of a rotation in the necklace count (C2.2).` },
+        { card: "necklace-formula", note: String.raw`the cycles of a rotation in the necklace count (C2.3).` },
         { card: "eulers-totient", note: String.raw`the number of $k$ for which the rotation by $k$ is a single cycle.` },
-        { card: "derangements", note: String.raw`permutations with no cycle of length $1$ (C3.2).` }
+        { card: "derangements", note: String.raw`permutations with no cycle of length $1$ (C3.3).` }
       ],
       exercises: [
         { q: String.raw`A permutation of $9$ elements has cycles of lengths $2$, $3$ and $4$. What is the smallest positive $m$ with $f^m$ equal to the identity?`, answer: "12",
@@ -76,9 +76,9 @@ For the [[product-of-uniforms|product of two uniform variables]] $X$ and $Y$ on 
 
 These tools are needed only when the region or the quantity is not a simple polygon or average. The last lesson collects further processes and games.`,
       related: [
-        { card: "geometric-probability", note: String.raw`areas of regions for one or two uniform variables (C6.5).` },
-        { card: "tail-sum-expectation", note: String.raw`expected values of maxima and minima from tails, the discrete version (C7.2).` },
-        { card: "indicator-variables", note: String.raw`writing a count as a sum, the first step in computing its variance (C7.1).` }
+        { card: "geometric-probability", note: String.raw`areas of regions for one or two uniform variables (C6.6).` },
+        { card: "tail-sum-expectation", note: String.raw`expected values of maxima and minima from tails, the discrete version (C7.3).` },
+        { card: "indicator-variables", note: String.raw`writing a count as a sum, the first step in computing its variance (C7.2).` }
       ],
       exercises: [
         { q: String.raw`Three numbers are chosen independently and uniformly from $[0, 1]$. What is the expected value of the smallest?`, answer: "1/4",
@@ -103,7 +103,7 @@ The [[transfer-matrix-method|transfer matrix method]] organizes a several-state 
 
 These tools close the counting book. Each is a reminder of the habit common to all of them: find the structure that a single step, a single statement or a single line imposes, and count or reason from it.`,
       related: [
-        { card: "restricted-sequences", note: String.raw`the same states, without the matrix (C2.3).` },
+        { card: "restricted-sequences", note: String.raw`the same states, without the matrix (C2.4).` },
         { card: "matrix-multiplication", note: String.raw`powers of the transfer matrix (A9.3).` },
         { card: "casework-method", note: String.raw`casing on the number of true statements in a logic puzzle.` }
       ],

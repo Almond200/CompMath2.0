@@ -18,7 +18,7 @@ Decide whether order matters, count by the product rule, and divide by the order
       related: [
         { card: "constructive-counting", note: String.raw`building objects step by step with the restricted choices first (C1.2).` },
         { card: "uniform-overcount", note: String.raw`dividing by a fixed overcount, the idea behind $\binom nk$ (C1.5).` },
-        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients of $(x + y)^n$ (C4.4).` }
+        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients of $(x + y)^n$ (C4.5).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can a committee of $3$ be chosen from $10$ people?`, answer: "120",
@@ -50,7 +50,7 @@ Overcounting is the usual error. When objects are counted by choosing pieces, th
 
 Split into separate cases or subtract a simple complement, and check on a small case. The next lesson counts arrangements with repeated objects and adjacency conditions.`,
       related: [
-        { card: "pie", note: String.raw`subtracting overlapping unwanted cases correctly (C3.1).` },
+        { card: "pie", note: String.raw`subtracting overlapping unwanted cases correctly (C3.2).` },
         { card: "organized-listing", note: String.raw`listing small cases in order to check a count (B2.4).` },
         { card: "constructive-counting", note: String.raw`counting by building, with cases where choices depend on earlier ones (C1.2).` }
       ],
@@ -83,9 +83,9 @@ The [[gap-method|gap method]] handles objects that must be apart: arrange the ot
 
 Divide for identical objects, glue for objects that stay together, and use gaps for objects that stay apart. The last lesson of the chapter turns counts into probabilities.`,
       related: [
-        { card: "non-adjacent-selection", note: String.raw`choosing positions with no two adjacent, the gap method's count (C2.3).` },
-        { card: "circular-permutations", note: String.raw`arrangements around a circle (C2.2).` },
-        { card: "stars-and-bars", note: String.raw`identical objects into groups, another arrangement of two symbols (C2.4).` }
+        { card: "non-adjacent-selection", note: String.raw`choosing positions with no two adjacent, the gap method's count (C2.4).` },
+        { card: "circular-permutations", note: String.raw`arrangements around a circle (C2.3).` },
+        { card: "stars-and-bars", note: String.raw`identical objects into groups, another arrangement of two symbols (C2.5).` }
       ],
       exercises: [
         { q: String.raw`How many different arrangements of the letters of BANANA are there?`, answer: "60",
@@ -116,9 +116,9 @@ Two events are [[independent-events|independent]] when one does not affect the o
 
 Choose equally likely outcomes and count, multiply for independent steps, and restrict the sample space when information is given. The next chapter turns to geometry.`,
       related: [
-        { card: "drawing-without-replacement", note: String.raw`counting draws without replacement (C6.1).` },
-        { card: "bayes-theorem", note: String.raw`reversing a conditional probability (C6.2).` },
-        { card: "geometric-probability", note: String.raw`probability with continuous random numbers, as a ratio of areas (C6.5).` }
+        { card: "drawing-without-replacement", note: String.raw`counting draws without replacement (C6.2).` },
+        { card: "bayes-theorem", note: String.raw`reversing a conditional probability (C6.3).` },
+        { card: "geometric-probability", note: String.raw`probability with continuous random numbers, as a ratio of areas (C6.6).` }
       ],
       exercises: [
         { q: String.raw`Two fair dice are rolled. What is the probability that the sum is $7$?`, answer: "1/6",

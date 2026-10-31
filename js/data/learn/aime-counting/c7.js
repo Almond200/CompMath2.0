@@ -5,6 +5,32 @@ window.MATH_LEARN["C7"] = {
   lessons: {
     "C7.1": {
       prereq: ["basic-probability"],
+      cards: [],
+      body: String.raw`This chapter finds averages of random quantities: the expected number of matches, the expected winnings of a game, the expected waiting time for a run of heads. Its tools are linearity of expectation, indicator variables, conditioning on the first step, and equations for the expected time of a process.
+
+The expected value of a random quantity is the average of its values, each weighted by its probability. For one roll of a fair die it is $\tfrac{1 + 2 + \cdots + 6}{6} = \tfrac72$; a game that pays $k^2$ dollars when the die shows $k$ pays on average $\tfrac{1 + 4 + \cdots + 36}{6} = \tfrac{91}{6}$ dollars.
+
+The most useful fact is that the expected value of a sum is the sum of the expected values, whether or not the parts are independent. So a count, such as the number of matches or the number of runs, is written as a sum of indicators, quantities that are $1$ when a particular thing happens and $0$ otherwise. The expected value of an indicator is the probability of its event, and the expected count is the sum of these probabilities. No joint distribution is ever needed.
+
+When a quantity is hard to average directly, condition on something simple, such as the first step of a process: the overall average is the average over the cases of the average within each case. In a process that repeats until something happens, this gives an equation that the expected time satisfies. If each roll of a die ends the wait with probability $\tfrac16$, the expected number of rolls $E$ satisfies $E = 1 + \tfrac56 E$, so $E = 6$.
+
+The lessons take these ideas in turn: linearity with indicators (C7.2), expected counts and contributions (C7.3), conditional expectation (C7.4), and waiting times and recursive expectations (C7.5). The Summary (C7.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Ten fair coins are tossed in a row. What is the expected number of pairs of neighboring coins that both show heads?`, answer: "9/4",
+          solution: String.raw`There are $9$ pairs of neighbors. Each pair is two heads with probability $\tfrac14$, so its indicator has expected value $\tfrac14$. By linearity the expected number is $9 \cdot \tfrac14 = \tfrac94$, even though the pairs overlap and are not independent.` },
+        { q: String.raw`A game pays $k^2$ dollars when a fair die shows $k$. What is the expected payment?`, answer: "91/6",
+          solution: String.raw`Each face has probability $\tfrac16$, so the expected payment is $\tfrac{1 + 4 + 9 + 16 + 25 + 36}{6} = \tfrac{91}{6}$ dollars, about $15.17$.` },
+        { q: String.raw`A fair die is rolled until it shows a $6$. What is the expected number of rolls?`, answer: "6",
+          solution: String.raw`Let $E$ be the expected number. The first roll is always made; with probability $\tfrac16$ it is a $6$ and the wait ends, and with probability $\tfrac56$ the wait starts over. So $E = 1 + \tfrac56 E$, which gives $E = 6$.` }
+      ],
+      problems: [
+        "2006 AMC 10A, Problem 13",
+        "2015 AMC 10B, Problem 18",
+        "2017 AMC 10A, Problem 18"
+      ]
+    },
+    "C7.2": {
+      prereq: ["basic-probability"],
       cards: ["expected-value", "indicator-variables"],
       body: String.raw`The expected value of a random quantity is its long-run average, and contest problems ask for it in situations where the distribution is complicated: the expected number of adjacent boy-girl pairs in a random row, the expected number of regions cut by random chords, the expected number of coins showing heads after several rounds of flipping. The key fact is that expectation adds, even when the parts are dependent, so a complicated count splits into many simple pieces.
 
@@ -16,9 +42,9 @@ The method needs only the probability of each single event, never the joint dist
 
 Use linearity to split an expected value into parts and indicators to turn a count into a sum of probabilities. The next lesson extends the method to fixed points, ranks and tails.`,
       related: [
-        { card: "expected-fixed-points", note: String.raw`the classic indicator computation for permutations (C7.2).` },
+        { card: "expected-fixed-points", note: String.raw`the classic indicator computation for permutations (C7.3).` },
         { card: "plane-regions", note: String.raw`regions cut by lines or chords counted by crossings, the structure behind expected-region problems.` },
-        { card: "binomial-probability", note: String.raw`the full distribution of a count of independent successes, whose mean is $np$ (C6.3).` }
+        { card: "binomial-probability", note: String.raw`the full distribution of a count of independent successes, whose mean is $np$ (C6.4).` }
       ],
       exercises: [
         { q: String.raw`Five boys and five girls stand in a random row. What is the expected number of adjacent pairs consisting of one boy and one girl?`, answer: "5",
@@ -27,14 +53,13 @@ Use linearity to split an expected value into parts and indicators to turn a cou
           solution: String.raw`Write the number of heads as a sum of $10$ indicators, one per flip, each with expectation $0.3$. By linearity the expected number is $10 \cdot 0.3 = 3$.` }
       ],
       problems: [
-        "2015 AMC 10B, Problem 18",
         "2007 AMC 10B, Problem 22",
         "2021 Fall AMC 12B, Problem 23",
         "2012 AMC 12A, Problem 23",
         "2025 AIME I, Problem 13"
       ]
     },
-    "C7.2": {
+    "C7.3": {
       prereq: ["indicator-variables"],
       cards: ["expected-fixed-points", "tail-sum-expectation"],
       body: String.raw`Two refinements of the indicator method appear again and again. The first counts how many things a random permutation leaves in place, or how many records it has, or how many cycles: each is a sum of indicators with a simple probability. The second computes the expected value of a maximum, a minimum or a waiting time by adding the probabilities that it is at least each value, which is often easier than finding the distribution.
@@ -47,9 +72,9 @@ Both refinements reduce an expected value to probabilities of simple events. Whe
 
 The next lesson splits an expectation into cases and sets up equations for processes.`,
       related: [
-        { card: "derangements", note: String.raw`the exact count of permutations with no fixed point (C3.2).` },
+        { card: "derangements", note: String.raw`the exact count of permutations with no fixed point (C3.3).` },
         { card: "order-statistics", note: String.raw`the expected maximum or minimum of uniform real numbers (C9.3).` },
-        { card: "geometric-distribution", note: String.raw`a waiting time whose tails are powers, so its expectation is a geometric series (C7.4).` }
+        { card: "geometric-distribution", note: String.raw`a waiting time whose tails are powers, so its expectation is a geometric series (C7.5).` }
       ],
       exercises: [
         { q: String.raw`Two fair dice are rolled. What is the expected value of the larger number shown?`, answer: "161/36",
@@ -63,7 +88,7 @@ The next lesson splits an expectation into cases and sets up equations for proce
         "2016 AIME II, Problem 13"
       ]
     },
-    "C7.3": {
+    "C7.4": {
       prereq: ["conditional-probability", "expected-value", "states-recursion-prob"],
       cards: ["total-expectation"],
       body: String.raw`A random process that forgets its past, where the future depends only on the current position, is analyzed one step at a time. A frog on lily pads, a bug walking on a cube, a coin game that ends after two heads in a row: the probability of eventually reaching a goal, or the expected number of steps to get there, satisfies an equation in terms of the same quantity from the neighboring positions. Solving these equations is first-step analysis.
@@ -101,7 +126,7 @@ Set up one unknown per state, write one equation per state by conditioning on th
         "2021 AIME II, Problem 8"
       ]
     },
-    "C7.4": {
+    "C7.5": {
       prereq: ["states-recursion-prob", "geometric-series"],
       cards: ["geometric-distribution", "gamblers-ruin", "turn-based-games"],
       body: String.raw`Many processes end at a random time: rolling until a six, playing until one player is ruined, alternating turns until someone succeeds. The number of steps, and who wins, follow a few standard patterns. Recognizing them saves setting up equations from scratch, and when the pattern does not fit exactly, the same first-step analysis still works.
@@ -114,11 +139,11 @@ The [[gamblers-ruin|gambler's ruin]] is a walk on $0, 1, \ldots, N$ that moves u
 
 Processes with optimal choices, such as guessing the color of the next card, combine expectation with backward induction: the value of a state is the best of the choices, each computed by first-step analysis. The table of values is filled from the end, as for games.
 
-Recognize the geometric waiting time, the restart equation for turn-based games, and the ruin formulas, and fall back on first-step analysis when the process is different. The chapter review mixes expected values with the processes of this chapter.`,
+Recognize the geometric waiting time, the restart equation for turn-based games, and the ruin formulas, and fall back on first-step analysis when the process is different. The Summary (C7.6) collects the chapter's strategies, and the problems after it mix expected values with the processes of this chapter.`,
       related: [
         { card: "backward-induction", note: String.raw`labeling positions from the end, for processes with choices (C5.4).` },
         { card: "geometric-series", note: String.raw`the sums behind waiting-time probabilities.` },
-        { card: "tail-sum-expectation", note: String.raw`the expected waiting time as a sum of tails (C7.2).` }
+        { card: "tail-sum-expectation", note: String.raw`the expected waiting time as a sum of tails (C7.3).` }
       ],
       exercises: [
         { q: String.raw`Players A and B take turns rolling a fair die, A first; the first to roll a $6$ wins. What is the probability that A wins?`, answer: "6/11",
@@ -138,13 +163,58 @@ Recognize the geometric waiting time, the restart equation for turn-based games,
         "2021 AIME I, Problem 12",
         "1995 AIME, Problem 15"
       ]
+    },
+    "C7.6": {
+      prereq: ["expected-value", "indicator-variables", "expected-fixed-points", "tail-sum-expectation", "total-expectation", "geometric-distribution", "gamblers-ruin", "turn-based-games"],
+      cards: [],
+      body: String.raw`[[expected-value|An expected value]] is a weighted average, and it is additive: the expected value of a sum is the sum of the expected values, with or without independence. [[indicator-variables|Indicator variables]] turn every count into such a sum, so an expected count is a sum of probabilities. [[expected-fixed-points|The expected number of fixed points]] of a random permutation, $1$ for every $n$, is the model.
+
+For a quantity that takes the values $1, 2, 3, \ldots$, [[tail-sum-expectation|the tail sum]] $E[X] = \sum_{k \ge 1} P(X \ge k)$ is often easier than the definition, especially for a maximum or a minimum.
+
+[[total-expectation|Conditioning]] splits an expectation into cases: the average over the cases of the expected value within each. Applied to the first step of a process, it gives one linear equation per state.
+
+[[geometric-distribution|A wait for a success]] of probability $p$ has expected length $\tfrac1p$. [[gamblers-ruin|A fair random walk]] between two barriers is won with a probability proportional to the starting distance, and lasts on average the product of the distances to the two barriers. [[turn-based-games|Games of alternating turns]] are solved by summing a geometric series over rounds, or by an equation for the first round.`,
+      strategies: [
+        String.raw`To find the expected value of a count, write the count as a sum of indicators and add their probabilities.`,
+        String.raw`Do not look for independence: linearity holds without it.`,
+        String.raw`Use symmetry to see that many indicators have the same probability, then multiply.`,
+        String.raw`For the expected maximum, minimum or stopping time, sum the probabilities $P(X \ge k)$.`,
+        String.raw`When a process repeats, give each state an unknown expected time, and write one equation per state from its first step.`,
+        String.raw`For alternating turns, find the chance of winning in the first round, then sum the geometric series or solve one equation.`,
+        String.raw`Check an expected value against a small case that can be listed by hand.`
+      ]
     }
   },
-  review: [
-    "2006 AMC 10A, Problem 13",
-    "1987 AIME, Problem 13",
-    "1991 AIME, Problem 10",
-    "2003 AIME II, Problem 13",
-    "2015 AIME II, Problem 5"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Five balls are put into five boxes, each ball into a box chosen at random, independently. What is the expected number of empty boxes?`, answer: "1024/625",
+        solution: String.raw`A given box is empty when all five balls miss it, with probability $\left(\tfrac45\right)^5 = \tfrac{1024}{3125}$. By linearity over the five boxes, the expected number of empty boxes is $5 \cdot \tfrac{1024}{3125} = \tfrac{1024}{625}$, about $1.64$.` },
+      { q: String.raw`Two fair dice are rolled. What is the expected value of the larger of the two numbers?`, answer: "161/36",
+        solution: String.raw`Use the tail sum: the larger number is at least $k$ unless both dice are below $k$, so $P(\max \ge k) = 1 - \left(\tfrac{k - 1}{6}\right)^2$. Summing for $k = 1, \ldots, 6$ gives $6 - \tfrac{0 + 1 + 4 + 9 + 16 + 25}{36} = 6 - \tfrac{55}{36} = \tfrac{161}{36}$.` },
+      { q: String.raw`A coin is tossed. On heads one fair die is rolled; on tails two fair dice are rolled and added. What is the expected result?`, answer: "21/4",
+        solution: String.raw`Condition on the coin. With heads the expected result is $\tfrac72$, and with tails $\tfrac72 + \tfrac72 = 7$. Each has probability $\tfrac12$, so the expected result is $\tfrac12 \cdot \tfrac72 + \tfrac12 \cdot 7 = \tfrac{21}{4}$.` },
+      { q: String.raw`A fair coin is tossed until the two most recent tosses are heads then tails, in that order. What is the expected number of tosses?`, answer: "4",
+        solution: String.raw`Let $E_0$ be the expected number still to come at the start, or after a tail, and $E_H$ after a head. From $E_H$ a toss ends the wait (tails) or leaves a head again, so $E_H = 1 + \tfrac12 E_H$, which gives $E_H = 2$. From the start, $E_0 = 1 + \tfrac12 E_H + \tfrac12 E_0$, so $E_0 = 2 + E_H = 4$.` },
+      { q: String.raw`A player starts with $3$ dollars and makes fair $1$-dollar bets until reaching $0$ or $10$ dollars. What is the probability of reaching $10$, and what is the expected number of bets?`, answer: "3/10, 21",
+        solution: String.raw`The fortune is a fair walk, so its expected value stays $3$: if $p$ is the chance of reaching $10$, then $10p = 3$ and $p = \tfrac{3}{10}$. The expected number of bets $D_k$ from $k$ dollars satisfies $D_k = 1 + \tfrac12 D_{k-1} + \tfrac12 D_{k+1}$ with $D_0 = D_{10} = 0$, whose solution is $D_k = k(10 - k)$. So $D_3 = 21$.` }
+    ],
+    problems: [
+      "2015 AIME II, Problem 5",
+      "1991 AIME, Problem 10",
+      "2003 AIME II, Problem 13"
+    ]
+  },
+  challenge: {
+    exercises: [
+      { q: String.raw`A fair die is rolled until two $6$s come up in a row. What is the expected number of rolls?`, answer: "42",
+        solution: String.raw`Let $E_0$ be the expected number of rolls still to come when the last roll was not a $6$ (or at the start), and $E_1$ when it was a $6$. Then $E_1 = 1 + \tfrac56 E_0$, since the next roll either ends the wait or starts it over, and $E_0 = 1 + \tfrac16 E_1 + \tfrac56 E_0$. The second equation gives $E_0 = 6 + E_1$; substituting, $E_1 = 1 + 5 + \tfrac56 E_1$, so $E_1 = 36$ and $E_0 = 42$.` },
+      { q: String.raw`A fair die is rolled six times. What is the expected number of different numbers that appear?`, answer: "31031/7776",
+        solution: String.raw`For each face, the indicator that it appears has expected value $1 - \left(\tfrac56\right)^6 = 1 - \tfrac{15625}{46656} = \tfrac{31031}{46656}$. Adding over the six faces gives $\tfrac{31031}{7776}$, about $3.99$.` },
+      { q: String.raw`The numbers $1, \ldots, 8$ are put in a random order. A number is a record if it is larger than every number before it (the first number is always a record). What is the expected number of records?`, answer: "761/280",
+        solution: String.raw`The number in place $i$ is a record when it is the largest of the first $i$ numbers. By symmetry each of those $i$ numbers is equally likely to be the largest, so this has probability $\tfrac1i$. By linearity the expected number of records is $1 + \tfrac12 + \cdots + \tfrac18 = \tfrac{761}{280}$, about $2.72$.` }
+    ],
+    problems: [
+      "1987 AIME, Problem 13"
+    ]
+  }
 };

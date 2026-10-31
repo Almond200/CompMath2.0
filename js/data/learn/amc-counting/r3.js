@@ -18,7 +18,7 @@ Count by states, subtract capped cases, recognize Catalan sequences, and count p
       related: [
         { card: "grid-paths", note: String.raw`unrestricted lattice paths (R1.5).` },
         { card: "pie", note: String.raw`the inclusion-exclusion behind upper bounds (R1.2).` },
-        { card: "double-counting", note: String.raw`counting one set two ways (C4.2).` }
+        { card: "double-counting", note: String.raw`counting one set two ways (C4.3).` }
       ],
       exercises: [
         { q: String.raw`How many binary strings of length $5$ have no two adjacent $1$s?`, answer: "13",
@@ -83,7 +83,7 @@ The [[permutation-cycle-structure|cycle structure]] of a permutation decides its
 Find what is invariant, use the coloring formulas, read orders from cycles, and mirror in games. The next lesson treats conditional probability and expectation.`,
       related: [
         { card: "backward-induction", note: String.raw`solving games position by position (R1.5).` },
-        { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry (C4.3).` },
+        { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry (C4.4).` },
         { card: "lcm-common-multiples", note: String.raw`the lcm that gives a permutation's order (M1.1).` }
       ],
       exercises: [
@@ -144,7 +144,7 @@ In [[turn-based-games|turn-based games]] where players alternate and the first s
 Set one unknown per state, condition on the first step, and use the restart equation for alternating games. The last lesson of the chapter treats continuous probability.`,
       related: [
         { card: "recursive-counting", note: String.raw`the counting version of first-step equations (R1.5).` },
-        { card: "gamblers-ruin", note: String.raw`random walks between two barriers (C7.4).` },
+        { card: "gamblers-ruin", note: String.raw`random walks between two barriers (C7.5).` },
         { card: "tail-sum-expectation", note: String.raw`expected waiting times from tails (R3.4).` }
       ],
       exercises: [

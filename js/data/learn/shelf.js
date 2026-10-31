@@ -1374,23 +1374,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C2.1",
-      "title": "Permutations, combinations, repeated objects"
+      "title": "Introduction"
      },
      {
       "code": "C2.2",
-      "title": "Circular arrangements and symmetry"
+      "title": "Permutations, combinations, repeated objects"
      },
      {
       "code": "C2.3",
-      "title": "Adjacency and spacing restrictions"
+      "title": "Circular arrangements and symmetry"
      },
      {
       "code": "C2.4",
-      "title": "Stars and bars, with upper and lower bounds"
+      "title": "Adjacency and spacing restrictions"
      },
      {
       "code": "C2.5",
+      "title": "Stars and bars, with upper and lower bounds"
+     },
+     {
+      "code": "C2.6",
       "title": "Choosing positions versus assigning values"
+     },
+     {
+      "code": "C2.7",
+      "title": "Summary"
      }
     ]
    },
@@ -1401,19 +1409,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C3.1",
-      "title": "Inclusion-exclusion with two and three sets"
+      "title": "Introduction"
      },
      {
       "code": "C3.2",
-      "title": "Derangements and forbidden positions"
+      "title": "Inclusion-exclusion with two and three sets"
      },
      {
       "code": "C3.3",
-      "title": "At least, at most, exactly"
+      "title": "Derangements and forbidden positions"
      },
      {
       "code": "C3.4",
+      "title": "At least, at most, exactly"
+     },
+     {
+      "code": "C3.5",
       "title": "When a complement beats casework"
+     },
+     {
+      "code": "C3.6",
+      "title": "Summary"
      }
     ]
    },
@@ -1424,19 +1440,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C4.1",
-      "title": "Designing bijections"
+      "title": "Introduction"
      },
      {
       "code": "C4.2",
-      "title": "Double counting and incidences"
+      "title": "Designing bijections"
      },
      {
       "code": "C4.3",
-      "title": "Using symmetry safely"
+      "title": "Double counting and incidences"
      },
      {
       "code": "C4.4",
+      "title": "Using symmetry safely"
+     },
+     {
+      "code": "C4.5",
       "title": "Binomial coefficients and their identities"
+     },
+     {
+      "code": "C4.6",
+      "title": "Summary"
      }
     ]
    },
@@ -1486,23 +1510,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C6.1",
-      "title": "Building the sample space; equally likely outcomes"
+      "title": "Introduction"
      },
      {
       "code": "C6.2",
-      "title": "Conditional probability; updating the sample space"
+      "title": "Building the sample space; equally likely outcomes"
      },
      {
       "code": "C6.3",
-      "title": "Independence, dependence, sampling without replacement"
+      "title": "Conditional probability; updating the sample space"
      },
      {
       "code": "C6.4",
-      "title": "Complements and inclusion-exclusion for probability"
+      "title": "Independence, dependence, sampling without replacement"
      },
      {
       "code": "C6.5",
+      "title": "Complements and inclusion-exclusion for probability"
+     },
+     {
+      "code": "C6.6",
       "title": "Probability in arrangements and regions"
+     },
+     {
+      "code": "C6.7",
+      "title": "Summary"
      }
     ]
    },
@@ -1513,19 +1545,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C7.1",
-      "title": "Linearity of expectation with indicators"
+      "title": "Introduction"
      },
      {
       "code": "C7.2",
-      "title": "Expected counts and contributions"
+      "title": "Linearity of expectation with indicators"
      },
      {
       "code": "C7.3",
-      "title": "Conditional expectation in a small process"
+      "title": "Expected counts and contributions"
      },
      {
       "code": "C7.4",
+      "title": "Conditional expectation in a small process"
+     },
+     {
+      "code": "C7.5",
       "title": "Waiting times and recursive expectations"
+     },
+     {
+      "code": "C7.6",
+      "title": "Summary"
      }
     ]
    },

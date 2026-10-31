@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1 to C7 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -969,7 +969,7 @@ Eight chapters. The changes from the first draft are three:
 - 2017 AIME I #9 (read: $100 \equiv 1 \pmod{99}$, then CRT modulo $9$ and $11$);
 - 2026 AIME I #8 (read: CRT turns $\equiv 5 \pmod{12}$ into conditions mod $3$ and $4$ on divisor exponents; assumes `number-of-divisors`);
 - 2001 AIME I #11 (read: two numberings of a grid, solved through integrality modulo $31$);
-- 2026 AIME II #5 (read: it ends in the linear Diophantine equation $3r - 5b = 2$; a challenge, assuming `hypergeometric` from C6.3).
+- 2026 AIME II #5 (read: it ends in the linear Diophantine equation $3r - 5b = 2$; a challenge, assuming `hypergeometric` from C6.4).
 
 ### N3. Cycles, exponentiation and order (Core): the pilot
 
@@ -1248,29 +1248,35 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C2.1 Permutations, combinations, repeated objects | prereq `multiset-permutations` |
-| C2.2 Circular arrangements and symmetry | `circular-permutations`, `necklace-formula` |
-| C2.3 Adjacency and spacing restrictions | `non-adjacent-selection`, *(pattern)* `restricted-sequences`, prereq `gap-method` |
-| C2.4 Stars and bars, with upper and lower bounds | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
-| C2.5 Choosing positions versus assigning values | `surjections`, `stirling-bell`, `fencepost-counting` |
+| C2.1 Introduction | no card (the chapter's opening page: arrangements and selections, identical objects, circles, gaps, stars and bars, positions versus values, with comprehension problems) |
+| C2.2 Permutations, combinations, repeated objects | prereq `multiset-permutations` |
+| C2.3 Circular arrangements and symmetry | `circular-permutations`, `necklace-formula` |
+| C2.4 Adjacency and spacing restrictions | `non-adjacent-selection`, *(pattern)* `restricted-sequences`, prereq `gap-method` |
+| C2.5 Stars and bars, with upper and lower bounds | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
+| C2.6 Choosing positions versus assigning values | `surjections`, `stirling-bell`, `fencepost-counting` |
+| C2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C2.8 Review Problems and C2.9 Challenge Problems |
 
 ### C3. Inclusion-exclusion and complements (Core)
 
 | Lesson | Cards |
 |---|---|
-| C3.1 Inclusion-exclusion with two and three sets | `inclusion-exclusion`, `pie` |
-| C3.2 Derangements and forbidden positions | `derangements` |
-| C3.3 At least, at most, exactly | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts` |
-| C3.4 When a complement beats casework | no new card (a comparison lesson) |
+| C3.1 Introduction | no card (the chapter's opening page: overlapping conditions, the complement of a union, strengths of a condition, forbidden pairs, with comprehension problems) |
+| C3.2 Inclusion-exclusion with two and three sets | `inclusion-exclusion`, `pie` |
+| C3.3 Derangements and forbidden positions | `derangements` |
+| C3.4 At least, at most, exactly | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts` |
+| C3.5 When a complement beats casework | no new card (a comparison lesson) |
+| C3.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C3.7 Review Problems and C3.8 Challenge Problems |
 
 ### C4. Bijections, symmetry and double counting (Core)
 
 | Lesson | Cards |
 |---|---|
-| C4.1 Designing bijections | `bijection-method`, `catalan-numbers`, `ballot-problem`, `reflection-principle` |
-| C4.2 Double counting and incidences | `double-counting`, `committee-chair`, `nested-subset-pairs` |
-| C4.3 Using symmetry safely | `symmetry-probability`, `burnsides-lemma` (the proposal lists Burnside as Extension; the card is AMC tier and high importance, so it stays Core, to be confirmed by the audit) |
-| C4.4 Binomial coefficients and their identities | `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `binomial-theorem` |
+| C4.1 Introduction | no card (the chapter's opening page: bijections, double counting, symmetry, binomial identities, with comprehension problems) |
+| C4.2 Designing bijections | `bijection-method`, `catalan-numbers`, `ballot-problem`, `reflection-principle` |
+| C4.3 Double counting and incidences | `double-counting`, `committee-chair`, `nested-subset-pairs` |
+| C4.4 Using symmetry safely | `symmetry-probability`, `burnsides-lemma` (the proposal lists Burnside as Extension; the card is AMC tier and high importance, so it stays Core, to be confirmed by the audit) |
+| C4.5 Binomial coefficients and their identities | `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `binomial-theorem` |
+| C4.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C4.7 Review Problems and C4.8 Challenge Problems |
 
 ### C5. Recursion, states and processes (Core; links to A3)
 
@@ -1289,20 +1295,24 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C6.1 Building the sample space; equally likely outcomes | *(pattern)* `drawing-without-replacement`, prereq `basic-probability` |
-| C6.2 Conditional probability; updating the sample space | `bayes-theorem`, prereq `conditional-probability` |
-| C6.3 Independence, dependence, sampling without replacement | `hypergeometric`, `binomial-probability` |
-| C6.4 Complements and inclusion-exclusion for probability | no new card (links C3) |
-| C6.5 Probability in arrangements and regions | `geometric-probability` |
+| C6.1 Introduction | no card (the chapter's opening page: equally likely outcomes, conditioning, independence, complements, lengths and areas, with comprehension problems) |
+| C6.2 Building the sample space; equally likely outcomes | *(pattern)* `drawing-without-replacement`, prereq `basic-probability` |
+| C6.3 Conditional probability; updating the sample space | `bayes-theorem`, prereq `conditional-probability` |
+| C6.4 Independence, dependence, sampling without replacement | `hypergeometric`, `binomial-probability` |
+| C6.5 Complements and inclusion-exclusion for probability | no new card (links C3) |
+| C6.6 Probability in arrangements and regions | `geometric-probability` |
+| C6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C6.8 Review Problems and C6.9 Challenge Problems |
 
 ### C7. Expected value and random processes (Core II)
 
 | Lesson | Cards |
 |---|---|
-| C7.1 Linearity of expectation with indicators | `expected-value`, `indicator-variables` |
-| C7.2 Expected counts and contributions | `expected-fixed-points`, `tail-sum-expectation` |
-| C7.3 Conditional expectation in a small process | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
-| C7.4 Waiting times and recursive expectations | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
+| C7.1 Introduction | no card (the chapter's opening page: expected value, linearity and indicators, conditioning, waiting times, with comprehension problems) |
+| C7.2 Linearity of expectation with indicators | `expected-value`, `indicator-variables` |
+| C7.3 Expected counts and contributions | `expected-fixed-points`, `tail-sum-expectation` |
+| C7.4 Conditional expectation in a small process | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
+| C7.5 Waiting times and recursive expectations | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
+| C7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C7.7 Review Problems and C7.8 Challenge Problems |
 
 ### C8. Graphs, grids and combinatorial structures (Core II)
 

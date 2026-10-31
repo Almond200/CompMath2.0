@@ -106,7 +106,7 @@ Two [[square-crossing-segments|perpendicular segments across a square]], each jo
 
 Look for the rotation or reflection that maps the figure to itself, and use it to pair points, equate lengths, or count orbits. The next lesson moves to lattice points and grids.`,
       related: [
-        { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry by averaging fixed colorings (C4.3).` },
+        { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry by averaging fixed colorings (C4.4).` },
         { card: "reflection-composition", note: String.raw`the symmetries of a polygon as compositions of reflections (G6.1).` },
         { card: "rotation-90", note: String.raw`the quarter turn that matches perpendicular segments in a square (G6.1).` }
       ],
@@ -137,7 +137,7 @@ The [[british-flag-theorem|British flag theorem]] says that for any point $P$ an
 Use the gcd to count lattice points on segments, Pick to pass between areas and lattice counts, and the British flag theorem for distances to the corners of a rectangle. The last lesson of the chapter counts regions and pieces.`,
       related: [
         { card: "euclidean-algorithm", note: String.raw`computing the greatest common divisor that counts lattice points (B3.1).` },
-        { card: "pie", note: String.raw`counting cubes crossed by a diagonal with inclusion-exclusion (C3.1).` },
+        { card: "pie", note: String.raw`counting cubes crossed by a diagonal with inclusion-exclusion (C3.2).` },
         { card: "lattice-points-circle", note: String.raw`lattice points on a circle, counted by sums of two squares.` }
       ],
       exercises: [

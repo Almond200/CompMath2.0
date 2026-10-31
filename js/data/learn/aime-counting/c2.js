@@ -4,6 +4,36 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["C2"] = {
   lessons: {
     "C2.1": {
+      prereq: ["constructive-counting"],
+      cards: [],
+      body: String.raw`This chapter counts arrangements, where order matters, and selections, where it does not, and the restrictions that contests put on them: identical objects, circles, neighbors, bounds, and objects that must all be used.
+
+An arrangement of $n$ different objects in a row is a sequence of decisions with $n$, then $n - 1$, and so on down to $1$ options, so there are $n!$ of them. A selection of $k$ objects from $n$ ignores the order of the chosen ones, so it is counted by $\binom nk$, the number of ordered choices divided by the $k!$ orders of each group. When some objects are identical, swapping two of them changes nothing, and the count of rows is divided by the orders of each group of identical objects: the letters of BANANA make $\tfrac{6!}{3!\,2!} = 60$ words.
+
+Around a circle, arrangements that differ by a rotation are usually the same. With $n$ different objects, every circular arrangement comes from $n$ rows, one for each place to cut the circle open, so there are $(n - 1)!$ of them.
+
+Restrictions about neighbors (no two chosen chairs together, no two girls side by side) are handled by placing the free objects first and putting the restricted ones into the gaps between them. Restrictions about how many objects go where are handled by stars and bars: a way to give $n$ identical objects to $k$ people is a row of $n$ stars and $k - 1$ bars, so there are $\binom{n + k - 1}{k - 1}$ ways.
+
+The last idea is a choice of description. The same object can often be described either by choosing which positions get a value or by giving each position a value, and one of the two descriptions is usually much easier to count.
+
+The lessons take these ideas in turn: permutations, combinations and repeated objects (C2.2), circles (C2.3), adjacency and spacing (C2.4), stars and bars with bounds (C2.5), and choosing positions versus assigning values (C2.6). The Summary (C2.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`How many different words can be made by arranging the six letters of BANANA?`, answer: "60",
+          solution: String.raw`If the letters were all different there would be $6!$ rows. Each word is built $3!$ times by swapping the three $A$s and $2!$ times by swapping the two $N$s, so there are $\tfrac{6!}{3!\,2!} = \tfrac{720}{12} = 60$ words.` },
+        { q: String.raw`In how many ways can five people sit at a round table, if two seatings that differ by a rotation are the same?`, answer: "24",
+          solution: String.raw`Seat one person anywhere; this uses up the rotations. The other four fill the remaining seats, read clockwise from that person, in $4! = 24$ ways.` },
+        { q: String.raw`In how many ways can $3$ of $10$ chairs in a row be chosen so that no two chosen chairs are next to each other?`, answer: "56",
+          solution: String.raw`Place the $7$ unchosen chairs in a row. They leave $8$ gaps (between them and at both ends), and the chosen chairs go into $3$ different gaps, so that no two are together: $\binom83 = 56$ ways.` },
+        { q: String.raw`How many ordered triples $(x, y, z)$ of nonnegative integers satisfy $x + y + z = 8$?`, answer: "45",
+          solution: String.raw`A solution is a row of $8$ stars and $2$ bars: $x$ is the number of stars before the first bar, $y$ between the bars, $z$ after the second. The rows number $\binom{10}{2} = 45$.` }
+      ],
+      problems: [
+        "2021 Fall AMC 12A, Problem 18",
+        "2000 AIME II, Problem 5",
+        "2026 AIME I, Problem 2"
+      ]
+    },
+    "C2.2": {
       prereq: ["multiset-permutations", "permutations-combinations"],
       cards: [],
       body: String.raw`Arranging objects in a row and choosing a group of them are the two basic acts of counting, and their formulas are the product rule applied once and for all. How many orders are there for $n$ distinct objects? How many groups of $k$ can be chosen from $n$? How many different words can be spelled with the letters of MISSISSIPPI? Most AIME counting problems contain one of these counts as a step, often after a disguise: a lattice walk is a word in the letters $R$ and $U$, a choice of digits in increasing order is a subset, and a sequence of moves that ends at a given point is an arrangement of a fixed multiset of moves.
@@ -18,7 +48,7 @@ When an object is a row of symbols, count it as a multiset arrangement; when it 
       related: [
         { card: "uniform-overcount", note: String.raw`dividing by the orders of identical objects is a uniform overcount (C1.5).` },
         { card: "grid-paths", note: String.raw`lattice paths as words in two letters (C5.6).` },
-        { card: "multinomial-theorem", note: String.raw`the coefficients $\tfrac{n!}{n_1!\,n_2!\cdots}$ in the expansion of $(x_1 + \cdots + x_k)^n$ (C4.4).` }
+        { card: "multinomial-theorem", note: String.raw`the coefficients $\tfrac{n!}{n_1!\,n_2!\cdots}$ in the expansion of $(x_1 + \cdots + x_k)^n$ (C4.5).` }
       ],
       exercises: [
         { q: String.raw`How many different arrangements of the letters of MISSISSIPPI are there?`, answer: "34650",
@@ -36,7 +66,7 @@ When an object is a row of symbols, count it as a multiset arrangement; when it 
         "1990 AIME, Problem 8"
       ]
     },
-    "C2.2": {
+    "C2.3": {
       prereq: ["uniform-overcount"],
       cards: ["circular-permutations", "necklace-formula"],
       body: String.raw`Around a circle, arrangements that differ by a rotation are usually the same, and sometimes reflections are the same too. Seating six people at a round table, placing digits around a circle so that every three in a row add to a multiple of $3$, or coloring the beads of a necklace all need this adjustment. When all the objects are distinct it is a single division; when some are identical, rotations can fix an arrangement and the division fails, and the correct count needs a little more care.
@@ -49,8 +79,8 @@ When identical objects sit around a circle, an arrangement can look the same aft
 
 Fix one object when all are distinct; use the necklace formula, or list the symmetric arrangements, when some are identical. The next lesson counts selections with spacing conditions.`,
       related: [
-        { card: "burnsides-lemma", note: String.raw`counting arrangements up to any group of symmetries (C4.3).` },
-        { card: "gap-method", note: String.raw`choosing gaps between already-placed objects, used around circles too (C2.3).` },
+        { card: "burnsides-lemma", note: String.raw`counting arrangements up to any group of symmetries (C4.4).` },
+        { card: "gap-method", note: String.raw`choosing gaps between already-placed objects, used around circles too (C2.4).` },
         { card: "permutation-cycle-structure", note: String.raw`a rotation by $j$ of $n$ positions splits them into $\gcd(j, n)$ cycles (C9.2).` }
       ],
       exercises: [
@@ -66,7 +96,7 @@ Fix one object when all are distinct; use the necklace formula, or list the symm
         "2009 AIME I, Problem 10"
       ]
     },
-    "C2.3": {
+    "C2.4": {
       prereq: ["gap-method"],
       cards: ["non-adjacent-selection", "restricted-sequences"],
       body: String.raw`Many conditions in counting problems are about neighbors: no two chosen chairs adjacent, no two girls standing together, no three consecutive zeros, no letter followed by a particular other letter. Such conditions do not fit the product rule directly, because whether a position is allowed depends on its neighbors. Three tools handle them: placing the unrestricted objects first and choosing gaps, a shift that turns spaced selections into ordinary ones, and a state machine that counts strings one symbol at a time.
@@ -79,7 +109,7 @@ Choose the method by the shape of the condition: "no two adjacent" with a fixed 
       related: [
         { card: "recursive-counting", note: String.raw`the general form of the state-machine recursion (C5.2).` },
         { card: "tiling-a-board", note: String.raw`tilings by squares and dominoes, counted by the same Fibonacci recursion (C5.3).` },
-        { card: "stars-and-bars", note: String.raw`the shift that turns spaced choices into ordinary ones is a stars-and-bars substitution (C2.4).` }
+        { card: "stars-and-bars", note: String.raw`the shift that turns spaced choices into ordinary ones is a stars-and-bars substitution (C2.5).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can $4$ of $12$ chairs in a row be chosen so that no two chosen chairs are adjacent?`, answer: "126",
@@ -101,7 +131,7 @@ Choose the method by the shape of the condition: "no two adjacent" with a fixed 
         "2025 AIME II, Problem 10"
       ]
     },
-    "C2.4": {
+    "C2.5": {
       prereq: ["permutations-combinations"],
       cards: ["stars-and-bars", "stars-bars-upper-bound", "balls-boxes-table"],
       body: String.raw`How many ways are there to give $10$ identical candies to $4$ children, to write $66$ as an ordered sum of three positive integers, or to choose $4$ numbers with gaps that satisfy a condition? Each is a count of solutions of $x_1 + \cdots + x_k = n$ in integers with lower bounds, and sometimes upper bounds. The tool is stars and bars, a bijection with arrangements of two symbols, together with a shift for lower bounds and a complement for upper bounds.
@@ -114,10 +144,10 @@ Stars and bars is one entry of [[balls-boxes-table|the table of distributions]]:
 
 Use stars and bars whenever a count is the number of ways to write a total as an ordered sum, after shifting away lower bounds and subtracting upper ones. The last lesson of the chapter separates choosing positions from assigning values.`,
       related: [
-        { card: "pie", note: String.raw`the subtraction of solutions that break upper bounds (C3.1).` },
+        { card: "pie", note: String.raw`the subtraction of solutions that break upper bounds (C3.2).` },
         { card: "coefficient-extraction", note: String.raw`the same count as a coefficient of a power of a polynomial.` },
         { card: "partitions", note: String.raw`identical objects into identical groups, where order of parts does not matter (C9.1).` },
-        { card: "surjections", note: String.raw`distinct objects into labeled groups with none empty (C2.5).` }
+        { card: "surjections", note: String.raw`distinct objects into labeled groups with none empty (C2.6).` }
       ],
       exercises: [
         { q: String.raw`How many solutions in nonnegative integers does $a + b + c + d = 10$ have?`, answer: "286",
@@ -137,7 +167,7 @@ Use stars and bars whenever a count is the number of ways to write a total as an
         "2011 AIME I, Problem 12"
       ]
     },
-    "C2.5": {
+    "C2.6": {
       prereq: ["counting-functions"],
       cards: ["surjections", "stirling-bell", "fencepost-counting"],
       body: String.raw`Two ways of describing the same object often give very different counts, and the choice between them is a recurring decision: choose which positions get a certain value, or assign a value to each position. Assigning colors to five people so that all three colors are used, splitting five people into three nonempty groups, and counting the posts along a fence all depend on keeping straight what is being chosen and what is being assigned, and on counting endpoints correctly.
@@ -148,10 +178,10 @@ When the groups are not labeled, divide the surjection count by $k!$: the result
 
 [[fencepost-counting|Fencepost counting]] is the bookkeeping behind positions in a row: $n$ posts in a line make $n - 1$ gaps, but around a closed loop $n$ posts make $n$ gaps; the integers from $a$ to $b$ inclusive number $b - a + 1$; and a fence of length $100$ with posts every $4$ units, both ends included, has $\tfrac{100}{4} + 1 = 26$ posts. Off-by-one errors in these counts are among the most common mistakes in contest counting, and the cure is to check the formula on a tiny case, such as a fence of length $4$ with $2$ posts.
 
-Decide whether an object is a choice of positions or an assignment of values, whether the groups are labeled, and whether every group must be used; then the count is a binomial coefficient, a power, a surjection count or a Stirling number. The next chapter develops inclusion-exclusion, the method behind the surjection formula.`,
+Decide whether an object is a choice of positions or an assignment of values, whether the groups are labeled, and whether every group must be used; then the count is a binomial coefficient, a power, a surjection count or a Stirling number. The Summary (C2.7) collects the chapter's strategies, and the next chapter develops inclusion-exclusion, the method behind the surjection formula.`,
       related: [
-        { card: "pie", note: String.raw`the inclusion-exclusion that counts surjections (C3.1).` },
-        { card: "balls-boxes-table", note: String.raw`where surjections and Stirling numbers sit among the distributions (C2.4).` },
+        { card: "pie", note: String.raw`the inclusion-exclusion that counts surjections (C3.2).` },
+        { card: "balls-boxes-table", note: String.raw`where surjections and Stirling numbers sit among the distributions (C2.5).` },
         { card: "uniform-overcount", note: String.raw`dividing by $k!$ to unlabel the groups (C1.5).` }
       ],
       exercises: [
@@ -169,15 +199,54 @@ Decide whether an object is a choice of positions or an assignment of values, wh
         "2014 AIME I, Problem 12",
         "2013 AIME II, Problem 9"
       ]
+    },
+    "C2.7": {
+      prereq: ["multiset-permutations", "circular-permutations", "necklace-formula", "non-adjacent-selection", "restricted-sequences", "gap-method", "stars-and-bars", "stars-bars-upper-bound", "surjections", "stirling-bell"],
+      cards: [],
+      body: String.raw`Arrangements in a row number $n!$ and selections $\binom nk$. When some objects are identical, [[multiset-permutations|the count of words]] divides $n!$ by the orders within each group of identical objects. The test for which count applies is whether swapping two chosen objects gives a different result.
+
+[[circular-permutations|Around a circle]] of distinct objects, fixing one object removes the rotations, leaving $(n - 1)!$; when reflections are also the same, the count is halved. With identical objects some arrangements are fixed by a rotation, so the division is uneven, and [[necklace-formula|the necklace count]] averages the arrangements fixed by each rotation.
+
+Conditions on neighbors are handled by [[gap-method|placing the free objects first]] and the restricted ones in the gaps, by [[non-adjacent-selection|counting non-adjacent selections]] with $\binom{n - k + 1}{k}$, or by [[restricted-sequences|a recursion on the last symbols]] when the condition is about runs.
+
+[[stars-and-bars|Stars and bars]] counts the solutions of $x_1 + \cdots + x_k = n$ in nonnegative integers, after any lower bounds are subtracted, and [[stars-bars-upper-bound|upper bounds]] are removed by inclusion-exclusion.
+
+Choosing positions and assigning values describe the same objects in two ways. Assigning to each of $n$ objects one of $k$ values so that every value is used is a [[surjections|surjection]]; splitting the objects into $k$ unlabeled nonempty groups divides that count by $k!$, a [[stirling-bell|Stirling number]].`,
+      strategies: [
+        String.raw`Ask whether order matters by swapping two chosen objects: if the result is different, count arrangements; if not, count selections.`,
+        String.raw`For words with repeated letters, divide by the orders of each group of identical letters.`,
+        String.raw`Around a circle, fix one object to remove the rotations, then arrange the rest in a row.`,
+        String.raw`For "no two together", place the other objects first and choose gaps for the restricted ones.`,
+        String.raw`To keep a group together, glue it into one block, and multiply by its inner orders.`,
+        String.raw`Turn a distribution of identical objects into $x_1 + \cdots + x_k = n$; subtract the lower bounds first, then use stars and bars.`,
+        String.raw`Remove upper bounds by inclusion-exclusion over the variables that exceed them.`,
+        String.raw`When every box must be used, count surjections; when the boxes are also identical, divide by the orders of the boxes.`,
+        String.raw`If one description of an object is hard to count, describe it the other way: by which positions get each value, or by the value at each position.`
+      ]
     }
   },
-  review: [
-    "2021 Fall AMC 12A, Problem 18",
-    "2000 AIME II, Problem 5",
-    "2007 AIME II, Problem 2",
-    "2026 AIME I, Problem 2",
-    "2011 AIME II, Problem 7",
-    "2016 AIME II, Problem 8",
-    "1989 AIME, Problem 13"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`In how many arrangements of the letters of MISSISSIPPI are the four $S$s together?`, answer: "840",
+        solution: String.raw`Glue the four $S$s into one block. The objects to arrange are the block, $M$, four $I$s and two $P$s, eight in all, so there are $\tfrac{8!}{4!\,2!} = \tfrac{40320}{48} = 840$ arrangements. The block has only one inner order, since its letters are identical.` },
+      { q: String.raw`Six people sit at a round table, and seatings that differ by a rotation are the same. In how many seatings are Ann and Bo not next to each other?`, answer: "72",
+        solution: String.raw`There are $5! = 120$ seatings in all. If Ann and Bo sit together, glue them into a block with $2$ inner orders; the block and the other four people make five objects around the circle, $4! = 24$ ways. So $2 \cdot 24 = 48$ seatings have them together, and $120 - 48 = 72$ do not.` },
+      { q: String.raw`In how many ways can $4$ of $12$ chairs in a row be chosen so that no two chosen chairs are next to each other?`, answer: "126",
+        solution: String.raw`The $8$ unchosen chairs leave $9$ gaps, and the $4$ chosen chairs go into different gaps: $\binom94 = 126$.` },
+      { q: String.raw`How many ordered quadruples of positive integers $(a, b, c, d)$ with $a + b + c + d = 12$ have every entry at most $5$?`, answer: "85",
+        solution: String.raw`Put $a = a' + 1$ and so on, so that $a' + b' + c' + d' = 8$ with each entry from $0$ to $4$. Without the upper bound there are $\binom{11}{3} = 165$ solutions. If $a' \ge 5$, put $a' = a'' + 5$, leaving a sum of $3$: $\binom63 = 20$ solutions, and the same for each of the four variables. Two variables cannot both be at least $5$, since $10 \gt 8$. So $165 - 4 \cdot 20 = 85$.` },
+      { q: String.raw`In how many ways can six different books be given to three people so that each person gets at least one book? In how many ways can they be split into three piles, none empty, if the piles are not labeled?`, answer: "540, 90",
+        solution: String.raw`Each book goes to one of three people: $3^6 = 729$ ways. Subtract the ways that leave someone out: for each person, $2^6 = 64$ ways avoid them, but the $3$ ways that give every book to one person were subtracted twice. So $729 - 3 \cdot 64 + 3 = 540$. Unlabeling the piles divides by the $3! = 6$ orders of three different nonempty piles: $\tfrac{540}{6} = 90$.` }
+    ],
+    problems: [
+      "2007 AIME II, Problem 2"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2011 AIME II, Problem 7",
+      "2016 AIME II, Problem 8",
+      "1989 AIME, Problem 13"
+    ]
+  }
 };
