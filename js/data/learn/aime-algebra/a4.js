@@ -43,7 +43,7 @@ Absolute values are pieces too, but they are often better seen as geometry. $|x 
 
 The signal is a floor, a fractional part, or an absolute value in an equation or a sum. Name the integer part or the sign, solve on each piece, and keep only solutions that lie on their own piece.`,
       related: [
-        { card: "floor-multiples", note: String.raw`$\lfloor \tfrac nd \rfloor$ counts multiples, the most common floor in number theory (N1.5).` },
+        { card: "floor-multiples", note: String.raw`$\lfloor \tfrac nd \rfloor$ counts multiples, the most common floor in number theory (N1.6).` },
         { card: "digit-count", note: String.raw`$\lfloor \log_{10} n \rfloor + 1$ digits, a floor of a logarithm (N6.2).` },
         { card: "piecewise-graph-counting", note: String.raw`counting solutions of a piecewise equation by its graph (A4.5).` }
       ],

@@ -16,8 +16,8 @@ The [[divisibility-rules|divisibility rules]] test small primes without dividing
 
 Factor first, then read divisors, gcds and lcms from the exponents. The next lesson works with remainders.`,
       related: [
-        { card: "exponent-tracking", note: String.raw`working with the exponent of each prime separately (N1.1).` },
-        { card: "gcd-lcm-product", note: String.raw`$\gcd(a, b)\operatorname{lcm}(a, b) = ab$ and its uses (N1.1).` },
+        { card: "exponent-tracking", note: String.raw`working with the exponent of each prime separately (N1.2).` },
+        { card: "gcd-lcm-product", note: String.raw`$\gcd(a, b)\operatorname{lcm}(a, b) = ab$ and its uses (N1.2).` },
         { card: "sum-of-divisors", note: String.raw`the sum of the divisors from the factorization.` }
       ],
       exercises: [

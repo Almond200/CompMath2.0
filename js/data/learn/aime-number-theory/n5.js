@@ -41,7 +41,7 @@ The signal is an integer equation with a product of unknowns, a difference of sq
       related: [
         { card: "sfft", note: String.raw`the trick of adding a constant so that $xy + ax + by$ factors.` },
         { card: "forced-difference-of-squares", note: String.raw`completing a square and subtracting, as in $n^4 + 4$ (the Sophie Germain identity).` },
-        { card: "factor-pair-counting", note: String.raw`listing the factor pairs of the constant once the product form is reached (N1.4).` }
+        { card: "factor-pair-counting", note: String.raw`listing the factor pairs of the constant once the product form is reached (N1.5).` }
       ],
       exercises: [
         { q: String.raw`How many integers from $1$ to $100$ can be written as $a^2 - b^2$ with integers $a, b \ge 0$?`, answer: "75",
@@ -93,7 +93,7 @@ The signal is a right triangle or a distance with integer lengths, a count of in
       related: [
         { card: "triangle-inequality", note: String.raw`the condition $a + b > c$ that bounds integer triangles.` },
         { card: "difference-of-squares-rep", note: String.raw`the factorization $(c - a)(c + a)$ behind the Pythagorean parametrization (N5.2).` },
-        { card: "number-of-divisors", note: String.raw`the divisor counts $d_1$ and $d_3$ that count lattice points (N1.2).` }
+        { card: "number-of-divisors", note: String.raw`the divisor counts $d_1$ and $d_3$ that count lattice points (N1.3).` }
       ],
       exercises: [
         { q: String.raw`How many primitive Pythagorean triples have hypotenuse at most $50$?`, answer: "7",

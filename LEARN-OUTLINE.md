@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9) is in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), and N1, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -929,11 +929,13 @@ Eight chapters. The changes from the first draft are three:
 
 | Lesson | Cards |
 |---|---|
-| N1.1 Prime exponent bookkeeping; gcd and lcm | `exponent-tracking`, `gcd-lcm-product`, `lcm-common-multiples`, `gcd-substitution` |
-| N1.2 The number, sum and product of divisors | `sum-of-divisors`, `product-of-divisors`, `multiplicative-functions`, prereq `number-of-divisors` |
-| N1.3 Divisors with square, parity or residue conditions | `perfect-square-divisors`, `largest-odd-divisor-sum`, `sigma-parity` |
-| N1.4 Factor pairs, and counting pairs by lcm and gcd | `lcm-pair-counting`, prereq `factor-pair-counting` |
-| N1.5 Prime exponents with counting | `floor-multiples`, `coprime-residue-sum`, `consecutive-coprime` |
+| N1.1 Introduction | no card (the chapter's opening page: prime factorizations, divisors as exponent choices, gcd and lcm, counting multiples, with comprehension problems) |
+| N1.2 Prime exponent bookkeeping; gcd and lcm | `exponent-tracking`, `gcd-lcm-product`, `lcm-common-multiples`, `gcd-substitution` |
+| N1.3 The number, sum and product of divisors | `sum-of-divisors`, `product-of-divisors`, `multiplicative-functions`, prereq `number-of-divisors` |
+| N1.4 Divisors with square, parity or residue conditions | `perfect-square-divisors`, `largest-odd-divisor-sum`, `sigma-parity` |
+| N1.5 Factor pairs, and counting pairs by lcm and gcd | `lcm-pair-counting`, prereq `factor-pair-counting` |
+| N1.6 Prime exponents with counting | `floor-multiples`, `coprime-residue-sum`, `consecutive-coprime` |
+| N1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N1.8 Review Problems and N1.9 Challenge Problems |
 
 ### N2. Linear congruences and CRT (Core)
 

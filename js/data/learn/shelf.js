@@ -882,23 +882,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N1.1",
-      "title": "Prime exponent bookkeeping; gcd and lcm"
+      "title": "Introduction"
      },
      {
       "code": "N1.2",
-      "title": "The number, sum and product of divisors"
+      "title": "Prime exponent bookkeeping; gcd and lcm"
      },
      {
       "code": "N1.3",
-      "title": "Divisors with square, parity or residue conditions"
+      "title": "The number, sum and product of divisors"
      },
      {
       "code": "N1.4",
-      "title": "Factor pairs, and counting pairs by lcm and gcd"
+      "title": "Divisors with square, parity or residue conditions"
      },
      {
       "code": "N1.5",
+      "title": "Factor pairs, and counting pairs by lcm and gcd"
+     },
+     {
+      "code": "N1.6",
       "title": "Prime exponents with counting"
+     },
+     {
+      "code": "N1.7",
+      "title": "Summary"
      }
     ]
    },

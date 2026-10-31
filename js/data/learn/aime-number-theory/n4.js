@@ -14,7 +14,7 @@ Sums are the delicate case, and almost every valuation problem turns on them. If
 
 The signal is any question about the highest power of a prime dividing something, the number of trailing zeros, or whether a fraction in lowest terms has a given prime in its denominator. Find the valuation of each piece, and treat a sum by comparing the valuations of its terms first.`,
       related: [
-        { card: "exponent-tracking", note: String.raw`the same exponents, used prime by prime for gcd and lcm (N1.1).` },
+        { card: "exponent-tracking", note: String.raw`the same exponents, used prime by prime for gcd and lcm (N1.2).` },
         { card: "legendres-formula", note: String.raw`the valuation of a factorial (N4.2).` },
         { card: "lte-lemma", note: String.raw`the valuation of $a^n - b^n$, where the terms have equal valuation and cancel upward (N4.4).` }
       ],
@@ -41,9 +41,9 @@ Factorials also explain a classic divisibility fact. The product of any $k$ cons
 
 The signal is a factorial with a question about a prime power, the zeros at its end, or a quotient of factorials that must be an integer.`,
       related: [
-        { card: "floor-multiples", note: String.raw`each term of Legendre's formula is a count of multiples (N1.5).` },
+        { card: "floor-multiples", note: String.raw`each term of Legendre's formula is a count of multiples (N1.6).` },
         { card: "prime-divides-binomial", note: String.raw`Legendre's formula applied to the three factorials in a binomial coefficient (N4.3).` },
-        { card: "perfect-square-divisors", note: String.raw`once the exponents of a factorial are known, its square or cube divisors are counted as in N1.3.` }
+        { card: "perfect-square-divisors", note: String.raw`once the exponents of a factorial are known, its square or cube divisors are counted as in N1.4.` }
       ],
       exercises: [
         { q: String.raw`How many zeros are at the end of $100!$?`, answer: "24",

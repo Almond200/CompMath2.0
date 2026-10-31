@@ -4,6 +4,32 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["N1"] = {
   lessons: {
     "N1.1": {
+      prereq: ["fundamental-theorem-arithmetic", "number-of-divisors"],
+      cards: [],
+      body: String.raw`This chapter works with whole numbers through their prime factorizations. Every positive integer is a product of primes in exactly one way, and most questions about divisors, common divisors and multiples become questions about the exponents of the primes, one prime at a time.
+
+Write $n = p_1^{a_1} p_2^{a_2} \cdots p_k^{a_k}$. A divisor of $n$ is a choice of exponent for each prime, from $0$ up to the exponent in $n$, so $360 = 2^3 \cdot 3^2 \cdot 5$ has $(3 + 1)(2 + 1)(1 + 1) = 24$ divisors. The greatest common divisor of two numbers takes the smaller exponent of each prime and the least common multiple the larger, which is why their product is the product of the two numbers.
+
+The sum and the product of the divisors are found the same way, from the exponents, and they behave well on numbers with no common prime factor. A condition on a divisor, such as being a perfect square, being odd, or being a multiple of $6$, becomes a rule on each exponent, so such divisors are counted prime by prime and the counts multiplied. Pairs of numbers with a given least common multiple or greatest common divisor are counted the same way, by the exponents each pair may take at each prime.
+
+The exponent of a prime in a large product, such as a factorial, is found by counting multiples: the exponent of $2$ in $20!$ is $10 + 5 + 2 + 1 = 18$, one for each multiple of $2$, one more for each multiple of $4$, and so on. Counting the numbers that share no prime with a modulus leads to Euler's function and to sums over such numbers.
+
+The lessons take these ideas in turn: exponents, gcd and lcm (N1.2), the number, sum and product of divisors (N1.3), divisors with conditions (N1.4), factor pairs and pairs counted by lcm and gcd (N1.5), and prime exponents with counting (N1.6). The Summary (N1.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`How many positive divisors does $360$ have?`, answer: "24",
+          solution: String.raw`Factor: $360 = 2^3 \cdot 3^2 \cdot 5$. A divisor is $2^a 3^b 5^c$ with $0 \le a \le 3$, $0 \le b \le 2$, $0 \le c \le 1$, so there are $4 \cdot 3 \cdot 2 = 24$ of them.` },
+        { q: String.raw`Find the greatest common divisor and the least common multiple of $360 = 2^3 \cdot 3^2 \cdot 5$ and $1134 = 2 \cdot 3^4 \cdot 7$.`, answer: "18, 22680",
+          solution: String.raw`The gcd takes the smaller exponent of each prime: $2^1 \cdot 3^2 = 18$. The lcm takes the larger: $2^3 \cdot 3^4 \cdot 5 \cdot 7 = 22680$. As a check, $18 \cdot 22680 = 408240 = 360 \cdot 1134$.` },
+        { q: String.raw`What is the largest power of $2$ that divides $20!$?`, answer: "2^18",
+          solution: String.raw`Each of the $10$ even numbers up to $20$ gives one factor of $2$; each of the $5$ multiples of $4$ gives one more; the $2$ multiples of $8$ one more; and $16$ one more. The exponent is $10 + 5 + 2 + 1 = 18$, so the answer is $2^{18}$.` }
+      ],
+      problems: [
+        "2010 AMC 10B, Problem 8",
+        "2015 AIME II, Problem 1",
+        "2021 Fall AMC 10B, Problem 6"
+      ]
+    },
+    "N1.2": {
       prereq: ["fundamental-theorem-arithmetic"],
       cards: ["exponent-tracking", "gcd-lcm-product", "lcm-common-multiples", "gcd-substitution"],
       body: String.raw`Nearly every question about divisibility becomes simpler once each number is written as a product of primes and then thought of as a list of exponents, one for each prime. In those coordinates multiplying two numbers adds their exponents, the gcd takes the smaller exponent of each prime, and the lcm takes the larger one. A condition that looks tangled, such as finding $n$ with a given lcm against $18$ and a given gcd against $45$, falls apart into a separate, easy question for each prime. That habit is [[exponent-tracking|prime exponent tracking]], and the rest of the chapter is built on it.
@@ -17,8 +43,8 @@ When a problem fixes the gcd of two unknowns, the cleanest move is to pull it ou
 The signal is any problem that mentions a gcd, an lcm, or several divisibility conditions together, especially one whose numbers factor into a few small primes. Factor everything first, then work one prime at a time.`,
       related: [
         { card: "fundamental-theorem-arithmetic", note: String.raw`unique factorization, which makes the list of exponents a faithful description of a number.` },
-        { card: "number-of-divisors", note: String.raw`counting the divisors from the exponents, the first use of the exponent view in N1.2.` },
-        { card: "lcm-pair-counting", note: String.raw`counting the pairs with a given lcm or gcd, prime by prime (N1.4).` }
+        { card: "number-of-divisors", note: String.raw`counting the divisors from the exponents, the first use of the exponent view in N1.3.` },
+        { card: "lcm-pair-counting", note: String.raw`counting the pairs with a given lcm or gcd, prime by prime (N1.5).` }
       ],
       exercises: [
         { q: String.raw`Two positive integers have $\gcd 12$ and $\operatorname{lcm} 360$. One of them is $72$. What is the other?`, answer: "60",
@@ -30,7 +56,7 @@ The signal is any problem that mentions a gcd, an lcm, or several divisibility c
       ],
       problems: ["2019 AMC 10B, Problem 7", "2022 AMC 10A, Problem 7", "2018 AMC 10B, Problem 23", "1998 AIME, Problem 1"]
     },
-    "N1.2": {
+    "N1.3": {
       prereq: ["number-of-divisors", "exponent-tracking"],
       cards: ["sum-of-divisors", "product-of-divisors", "multiplicative-functions"],
       body: String.raw`Once a number is factored, its divisors can be counted, added, and multiplied without being listed. A divisor of $n = p_1^{e_1} \cdots p_k^{e_k}$ is a choice of one exponent for each prime, from $0$ up to $e_i$, and that one description gives three formulas: the number of divisors, their sum, and their product. For $360 = 2^3 \cdot 3^2 \cdot 5$ there are $24$ divisors adding to $1170$, and both numbers come from a single line of arithmetic.
@@ -57,7 +83,7 @@ The signal is a question about how many divisors a number has, what they add or 
       ],
       problems: ["2021 Spring AMC 10B, Problem 12", "2024 AMC 10B, Problem 8", "1987 AIME, Problem 3", "1986 AIME, Problem 8"]
     },
-    "N1.3": {
+    "N1.4": {
       prereq: ["number-of-divisors", "sum-of-divisors"],
       cards: ["perfect-square-divisors", "largest-odd-divisor-sum", "sigma-parity"],
       body: String.raw`Many counting questions ask not for all the divisors of a number but for the ones with some property: the perfect squares, the odd ones, the ones that are cubes. The exponent view handles all of them at once, because a property of a divisor is almost always a condition on each of its exponents separately. A divisor of $12! = 2^{10} \cdot 3^5 \cdot 5^2 \cdot 7 \cdot 11$ is a perfect square exactly when each of its exponents is even, so there are $6 \cdot 3 \cdot 2 \cdot 1 \cdot 1 = 36$ square divisors, and counting them never requires listing one.
@@ -84,7 +110,7 @@ The signal is a count or sum of divisors with an extra condition. Translate the 
       ],
       problems: ["2019 AMC 10A, Problem 11", "2020 AMC 10A, Problem 15", "2020 AIME II, Problem 1"]
     },
-    "N1.4": {
+    "N1.5": {
       prereq: ["factor-pair-counting", "exponent-tracking"],
       cards: ["lcm-pair-counting"],
       body: String.raw`Two unknowns whose product is a known constant can only be a pair of complementary divisors of that constant, so an equation that looks open-ended becomes a finite list. The equation $x^2 - y^2 = 45$ in positive integers becomes $(x - y)(x + y) = 45$, and the factor pairs $1 \cdot 45$, $3 \cdot 15$, and $5 \cdot 9$ give its only three solutions. This lesson is about getting an equation into that product form, and about counting pairs when the condition is an lcm or a gcd instead of a product.
@@ -97,7 +123,7 @@ The signal is an equation that can be factored into a product equal to a constan
       related: [
         { card: "difference-of-squares", note: String.raw`the most common way to reach a product equal to a constant, as in $x^2 - y^2 = 45$.` },
         { card: "number-of-divisors", note: String.raw`the number of ordered factor pairs of $n$ is $d(n)$.` },
-        { card: "gcd-substitution", note: String.raw`dividing out the gcd before counting pairs (N1.1).` }
+        { card: "gcd-substitution", note: String.raw`dividing out the gcd before counting pairs (N1.2).` }
       ],
       exercises: [
         { q: String.raw`How many pairs of positive integers $(x, y)$ satisfy $x^2 - y^2 = 45$?`, answer: "3",
@@ -109,7 +135,7 @@ The signal is an equation that can be factored into a product equal to a constan
       ],
       problems: ["2016 AMC 10B, Problem 18", "2022 AMC 10B, Problem 7", "2016 AMC 12B, Problem 24"]
     },
-    "N1.5": {
+    "N1.6": {
       prereq: ["exponent-tracking"],
       cards: ["floor-multiples", "coprime-residue-sum", "consecutive-coprime"],
       body: String.raw`The last tools of the chapter count and add numbers by their divisibility rather than by listing them. How many numbers up to $1000$ are multiples of $3$ or $5$, how many share no factor with $30$, and what the numbers coprime to $30$ add up to are all questions with exact answers found in a few lines. They rest on three small facts: multiples are evenly spaced, numbers coprime to $n$ come in pairs, and neighbors share no factor.
@@ -120,7 +146,7 @@ The numbers from $1$ to $n$ that are coprime to $n$ come in pairs $k$ and $n - k
 
 Finally, [[consecutive-coprime|consecutive integers share no factor]], because any common divisor of $n$ and $n + 1$ divides their difference $1$. More generally a common divisor of $n$ and $n + k$ divides $k$, so $\gcd(n, n + 6)$ is one of $1, 2, 3, 6$, and it is $1$ exactly when $n$ is coprime to $6$. This is what makes equations like $\tfrac{n}{20 - n} = k^2$ finite: rewriting gives $n = \tfrac{20k^2}{k^2 + 1}$, and since $k^2$ and $k^2 + 1$ share no factor, $k^2 + 1$ must divide $20$.
 
-The signal is a count of numbers up to some bound with a divisibility condition, a sum over the residues coprime to a modulus, or a fraction whose numerator and denominator are close together.`,
+The signal is a count of numbers up to some bound with a divisibility condition, a sum over the residues coprime to a modulus, or a fraction whose numerator and denominator are close together. The Summary (N1.7) collects the chapter's strategies.`,
       related: [
         { card: "inclusion-exclusion", note: String.raw`combining the counts of multiples of several numbers without double counting.` },
         { card: "eulers-totient", note: String.raw`the number $\varphi(n)$ of residues coprime to $n$ (N3.4).` },
@@ -135,8 +161,57 @@ The signal is a count of numbers up to some bound with a divisibility condition,
           solution: String.raw`A common divisor of $n$ and $n + 6$ divides $6$, so the gcd is $1$ exactly when $n$ is divisible by neither $2$ nor $3$. Up to $100$ there are $50$ multiples of $2$, $33$ of $3$, and $16$ of $6$, so $50 + 33 - 16 = 67$ are divisible by $2$ or $3$, and $100 - 67 = 33$ are not.` }
       ],
       problems: ["2022 AMC 10B, Problem 8", "2023 AMC 10A, Problem 3", "2002 AMC 10B, Problem 16", "1992 AIME, Problem 1"]
+    },
+    "N1.7": {
+      prereq: ["exponent-tracking", "gcd-lcm-product", "number-of-divisors", "sum-of-divisors", "product-of-divisors", "perfect-square-divisors", "lcm-pair-counting", "floor-multiples", "coprime-residue-sum"],
+      cards: [],
+      body: String.raw`[[exponent-tracking|Tracking prime exponents]] turns products, powers, divisibility and roots into statements about each exponent separately. The gcd takes the smaller exponent of each prime and the lcm the larger, so [[gcd-lcm-product|their product]] is the product of the two numbers.
+
+A divisor is a choice of exponents, so [[number-of-divisors|the number of divisors]] is the product of the exponents plus one; [[sum-of-divisors|the sum of the divisors]] is a product of one geometric series per prime; and [[product-of-divisors|the product of the divisors]] of $n$ is $n^{d(n)/2}$, since the divisors pair up to multiply to $n$.
+
+A condition on a divisor becomes a rule on each exponent: [[perfect-square-divisors|a square divisor]] has even exponents, an odd divisor has exponent $0$ at $2$. Pairs with [[lcm-pair-counting|a given lcm]] are counted prime by prime: one of the two exponents must equal the exponent in the lcm.
+
+[[floor-multiples|Counting multiples]] with floors gives the exponent of a prime in a factorial and the size of a set defined by divisibility, and [[coprime-residue-sum|the numbers coprime to a modulus]] pair up as $k$ and $n - k$, so their sum is $\tfrac{n\,\varphi(n)}{2}$.`,
+      strategies: [
+        String.raw`Factor every number into primes before anything else.`,
+        String.raw`Work one prime at a time: write each condition as a rule on that prime's exponent.`,
+        String.raw`Count divisors with a property by counting the allowed exponents at each prime and multiplying.`,
+        String.raw`For gcd and lcm, take the smaller and the larger exponent; when one is given, write the unknowns as multiples of the gcd.`,
+        String.raw`To count pairs with a given lcm or gcd, count the allowed pairs of exponents at each prime and multiply.`,
+        String.raw`Pair each divisor $d$ of $n$ with $\tfrac nd$ when a product or a symmetric sum over divisors is wanted.`,
+        String.raw`For the exponent of a prime in a factorial, add the floors of $\tfrac{n}{p}$, $\tfrac{n}{p^2}$, and so on.`,
+        String.raw`To find a gcd involving a variable, subtract multiples of one expression from the other until a constant is left.`
+      ]
     }
   },
-  review: ["2010 AMC 10B, Problem 8", "2021 Fall AMC 10B, Problem 6", "2013 AMC 10B, Problem 24", "2023 AMC 10B, Problem 14", "2012 AMC 10A, Problem 17",
-    "2023 AMC 12B, Problem 24", "2015 AIME II, Problem 1", "1994 AIME, Problem 12", "2021 Spring AMC 12A, Problem 25"]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Find the sum of the positive divisors of $72$.`, answer: "195",
+        solution: String.raw`Factor: $72 = 2^3 \cdot 3^2$. Every divisor is a term of the product $(1 + 2 + 4 + 8)(1 + 3 + 9)$, each exactly once, so the sum is $15 \cdot 13 = 195$.` },
+      { q: String.raw`Find the product of the positive divisors of $36$.`, answer: "10077696",
+        solution: String.raw`The $9$ divisors of $36$ pair up as $d$ and $\tfrac{36}{d}$, with product $36$ for each pair, and $6$ is paired with itself. So the product is $36^{9/2} = 6^9 = 10077696$.` },
+      { q: String.raw`How many positive divisors of $10!$ are perfect squares?`, answer: "30",
+        solution: String.raw`Factor: $10! = 2^8 \cdot 3^4 \cdot 5^2 \cdot 7$. A square divisor has even exponents: $5$ choices at $2$ ($0, 2, 4, 6, 8$), $3$ at $3$, $2$ at $5$ and $1$ at $7$. The count is $5 \cdot 3 \cdot 2 \cdot 1 = 30$.` },
+      { q: String.raw`How many divisors of $720$ are odd, and how many are multiples of $6$?`, answer: "6, 16",
+        solution: String.raw`Factor: $720 = 2^4 \cdot 3^2 \cdot 5$. An odd divisor has exponent $0$ at $2$: $1 \cdot 3 \cdot 2 = 6$ of them. A multiple of $6$ has exponent at least $1$ at both $2$ and $3$: $4 \cdot 2 \cdot 2 = 16$ of them.` },
+      { q: String.raw`How many ordered pairs $(a, b)$ of positive integers have $\operatorname{lcm}(a, b) = 72$?`, answer: "35",
+        solution: String.raw`Write $72 = 2^3 \cdot 3^2$. At the prime $2$ the exponents $(x, y)$ of $a$ and $b$ are at most $3$ with the larger equal to $3$: $4^2 - 3^2 = 7$ pairs. At $3$, similarly, $3^2 - 2^2 = 5$ pairs. The primes are independent, so there are $7 \cdot 5 = 35$ pairs.` },
+      { q: String.raw`Find the sum of the positive integers up to $100$ that are relatively prime to $100$.`, answer: "2000",
+        solution: String.raw`There are $\varphi(100) = 100 \cdot \tfrac12 \cdot \tfrac45 = 40$ of them. If $k$ is coprime to $100$, so is $100 - k$, and the two add to $100$. So the $40$ numbers form $20$ pairs with sum $100$, and the total is $2000$.` },
+      { q: String.raw`For how many integers $n$ from $1$ to $100$ is $\gcd(n^2 + 1, n + 1) = 2$?`, answer: "50",
+        solution: String.raw`Subtract multiples: $n^2 + 1 - (n - 1)(n + 1) = 2$, so $\gcd(n^2 + 1, n + 1) = \gcd(2, n + 1)$. It is $2$ exactly when $n + 1$ is even, that is, when $n$ is odd: $50$ values.` }
+    ],
+    problems: [
+      "2013 AMC 10B, Problem 24",
+      "2012 AMC 10A, Problem 17",
+      "1994 AIME, Problem 12"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2023 AMC 10B, Problem 14",
+      "2023 AMC 12B, Problem 24",
+      "2021 Spring AMC 12A, Problem 25"
+    ]
+  }
 };
