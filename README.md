@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **A7 written (2026-10-31).** A7.1 the Pythagorean identities, special values and reduction, A7.2 addition, multiple-angle, product-sum and harmonic addition, A7.3 general solutions and counting solutions on an interval, inverse functions and their ranges, A7.4 trigonometric substitution and telescoping sums and products; eight review problems.
 - **A6 written (2026-10-31).** A6.1 complex arithmetic, conjugating both sides and conditions on modulus and argument, A6.2 polar form, rotations and De Moivre, A6.3 roots of unity, the filter and trigonometric sums by geometric series, A6.4 the fundamental theorem of algebra and distance products over roots of unity; ten review problems.
 - **A5 written (2026-10-31).** A5.1 AM-GM with its equality case, the integer-parts rule and the chain of means, A5.2 Cauchy-Schwarz (with Engel's form), vertex form and the discriminant as a bound, A5.3 rearrangement, the sum-of-squares identity and the triangle inequality, A5.4 medians, slopes, placing digits and derivatives, A5.5 power means, Jensen, weighted AM-GM and Bernoulli (exercises only); six review problems.
 - **A4 written (2026-10-31).** A4.1 inverses, odd and even parts, symmetry and pairing $f(x)$ with $f(a-x)$, A4.2 floors and absolute values, A4.3 logarithms (change of base, equal-log systems), A4.4 functional substitution and defined operations, A4.5 counting solutions by graphing and reading graphs; ten review problems.
