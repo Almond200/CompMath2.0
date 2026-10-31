@@ -1392,28 +1392,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G3.2",
       "title": "Laws of sines and cosines, area formulas",
       "level": "Core"
      },
      {
-      "code": "G3.2",
+      "code": "G3.3",
       "title": "The extended law of sines and the circumradius",
       "level": "Core"
      },
      {
-      "code": "G3.3",
+      "code": "G3.4",
       "title": "Trig identities inside triangles",
       "level": "Core II"
      },
      {
-      "code": "G3.4",
+      "code": "G3.5",
       "title": "Angles and lengths from trig constraints",
       "level": "Core II"
      },
      {
-      "code": "G3.5",
+      "code": "G3.6",
       "title": "When trig beats coordinates or similarity",
       "level": "Core II"
+     },
+     {
+      "code": "G3.7",
+      "title": "Summary"
      }
     ]
    },

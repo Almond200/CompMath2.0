@@ -19,7 +19,7 @@ Split regular polygons into triangles from the center, complete equiangular ones
       related: [
         { card: "chord-length", note: String.raw`every side and diagonal of a regular polygon is a chord (G2.4).` },
         { card: "closing-polygon-vectors", note: String.raw`the side relations of an equiangular polygon from closing its side vectors (G6.3).` },
-        { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles of a hexagon in length computations (G3.1).` }
+        { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles of a hexagon in length computations (G3.2).` }
       ],
       exercises: [
         { q: String.raw`Each interior angle of a regular polygon is $150^\circ$. How many sides does it have?`, answer: "12",
@@ -63,7 +63,7 @@ Cut along lines that create shapes with known formulas, and use differences when
       related: [
         { card: "shoelace-formula", note: String.raw`the area of any polygon from coordinates (G4.3).` },
         { card: "same-base-area-ratio", note: String.raw`comparing areas of triangles that share a base or height (G1.3).` },
-        { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the base of the diagonal and segment formulas (G3.1).` }
+        { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the base of the diagonal and segment formulas (G3.2).` }
       ],
       exercises: [
         { q: String.raw`A convex quadrilateral has diagonals of lengths $10$ and $14$. Find the perimeter of the quadrilateral formed by the midpoints of its sides.`, answer: "24",

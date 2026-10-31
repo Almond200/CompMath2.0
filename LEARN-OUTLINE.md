@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9), G1 and G2 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G3 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1206,11 +1206,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G3.1 Laws of sines and cosines, area formulas (Core) | `law-cosines-60-120`, `law-of-cosines-special-triangles`, `herons-formula`, `triangle-13-14-15`, prereq `law-of-cosines` |
-| G3.2 The extended law of sines and the circumradius (Core) | `circumradius-area`, `trig-area-circumradius` |
-| G3.3 Trig identities inside triangles (Core II) | `projection-formula`, `triangle-half-angle-identities`, `ratio-lemma`, `triangle-angle-identities` |
-| G3.4 Angles and lengths from trig constraints (Core II) | `trig-bash`, `altitude-bisector-angle` |
-| G3.5 When trig beats coordinates or similarity (Core II) | no new card (a comparison lesson) |
+| G3.1 Introduction | no card (the chapter's opening page: the laws of sines and cosines, area formulas, the circumradius, triangle identities, choosing a method, with comprehension problems) |
+| G3.2 Laws of sines and cosines, area formulas (Core) | `law-cosines-60-120`, `law-of-cosines-special-triangles`, `herons-formula`, `triangle-13-14-15`, prereq `law-of-cosines` |
+| G3.3 The extended law of sines and the circumradius (Core) | `circumradius-area`, `trig-area-circumradius` |
+| G3.4 Trig identities inside triangles (Core II) | `projection-formula`, `triangle-half-angle-identities`, `ratio-lemma`, `triangle-angle-identities` |
+| G3.5 Angles and lengths from trig constraints (Core II) | `trig-bash`, `altitude-bisector-angle` |
+| G3.6 When trig beats coordinates or similarity (Core II) | no new card (a comparison lesson) |
+| G3.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G3.8 Review Problems and G3.9 Challenge Problems |
 
 ### G4. Coordinate and analytic geometry (Core)
 

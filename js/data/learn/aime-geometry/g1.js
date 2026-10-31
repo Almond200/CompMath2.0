@@ -85,7 +85,7 @@ For a triangle cut by three concurrent cevians into six pieces, label the unknow
 
 Use area ratios whenever a figure is cut into triangles sharing vertices or angles, and keep track of which bases or heights are shared. The next lesson computes the lengths of cevians themselves.`,
       related: [
-        { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the reason shared angles give product ratios (G3.1).` },
+        { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the reason shared angles give product ratios (G3.2).` },
         { card: "mass-points", note: String.raw`the same ratios along cevians, by weights instead of areas (G1.5).` },
         { card: "rouths-theorem", note: String.raw`the area of the triangle cut out by three cevians in known ratios (G1.5).` }
       ],
@@ -119,7 +119,7 @@ The [[angle-bisector-theorem|angle bisector theorem]] says the bisector from $A$
 
 Use the angle bisector theorem for ratios on the opposite side, Stewart or Apollonius for lengths of cevians, and the centroid's $2 : 1$ ratio whenever medians meet. The next lesson finds ratios along several cevians at once.`,
       related: [
-        { card: "law-of-cosines", note: String.raw`the source of Stewart's theorem, applied at the foot of the cevian (G3.1).` },
+        { card: "law-of-cosines", note: String.raw`the source of Stewart's theorem, applied at the foot of the cevian (G3.2).` },
         { card: "median-doubling", note: String.raw`extending a median to a parallelogram, another route to Apollonius (G1.6).` },
         { card: "incenter-excenter-lemma", note: String.raw`where the angle bisector meets the circumcircle again (G5.1).` }
       ],

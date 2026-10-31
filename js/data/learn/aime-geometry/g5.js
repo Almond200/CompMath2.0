@@ -112,7 +112,7 @@ Recognize medial and orthic triangles in repeated constructions, and use areas t
 Mass points, area ratios, Ceva and Menelaus all compute the same ratios. Mass points are fastest for two cevians; Menelaus is best for a line that crosses a triangle; Ceva is the test for concurrence. The next lesson collects some recurring figures.`,
       related: [
         { card: "mass-points", note: String.raw`the same ratios by balancing weights (G1.5).` },
-        { card: "ratio-lemma", note: String.raw`each factor of trigonometric Ceva as a ratio of sides (G3.3).` },
+        { card: "ratio-lemma", note: String.raw`each factor of trigonometric Ceva as a ratio of sides (G3.4).` },
         { card: "barycentric-coordinates", note: String.raw`coordinates in which Ceva and Menelaus become determinant conditions (G9.1).` }
       ],
       exercises: [
@@ -135,7 +135,7 @@ The [[fermat-point|Fermat point]] minimizes $PA + PB + PC$; when all angles are 
 When one of these figures appears, apply its standard move: rotate by $60^\circ$, put centers on bisectors, erect equilateral triangles, or reflect medians. The next chapter studies transformations in general.`,
       related: [
         { card: "rotation-trick", note: String.raw`rotating part of a figure to bring three lengths into one triangle (G6.2).` },
-        { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles at the Fermat point (G3.1).` },
+        { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles at the Fermat point (G3.2).` },
         { card: "geometric-series", note: String.raw`the radii of a chain of circles in an angle.` }
       ],
       exercises: [

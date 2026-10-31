@@ -123,7 +123,7 @@ Write products of segments along lines through a common point, subtract circle e
 
 Use Ptolemy when an inscribed polygon has chords of a few lengths, equal-chord reasoning to sort chords into classes, and Brahmagupta for areas. The next lesson turns to circles inside triangles.`,
       related: [
-        { card: "herons-formula", note: String.raw`the triangle case of Brahmagupta's formula (G3.1).` },
+        { card: "herons-formula", note: String.raw`the triangle case of Brahmagupta's formula (G3.2).` },
         { card: "golden-ratio-pentagon", note: String.raw`the pentagon's diagonal-to-side ratio, found here by Ptolemy (G7.1).` },
         { card: "ptolemys-inequality", note: String.raw`the inequality for quadrilaterals that are not cyclic.` }
       ],
@@ -162,7 +162,7 @@ A quadrilateral has an inscribed circle exactly when its opposite sides have equ
 
 Label tangent lengths from each vertex, write sides as their sums, and use $K = rs$ for the radius. The next lesson studies circles that meet or touch each other.`,
       related: [
-        { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius from three sides (G3.1).` },
+        { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius from three sides (G3.2).` },
         { card: "right-triangle-inradius", note: String.raw`$r = \tfrac{a + b - c}{2}$ in a right triangle.` },
         { card: "incenter-excenter-lemma", note: String.raw`where the incenter and excenters sit on the circumcircle (G5.1).` }
       ],
