@@ -78,7 +78,7 @@ Draw every configuration the words allow, compute with signed quantities, and li
 Estimate first, test small cases, and look for the counterexample before trying to prove a general claim. The last lesson collects the habits for AIME answers.`,
       related: [
         { card: "floor-basics", note: String.raw`floors of square roots and quotients (A4.3).` },
-        { card: "bernoulli-inequality", note: String.raw`linear bounds on powers, a tool for estimates (A5.5).` },
+        { card: "bernoulli-inequality", note: String.raw`linear bounds on powers, a tool for estimates (A5.6).` },
         { card: "simulate-the-process", note: String.raw`small cases of a process as a test (C1.6).` }
       ],
       exercises: [

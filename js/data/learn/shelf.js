@@ -808,28 +808,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A5.2",
       "title": "AM-GM and its equality case",
       "level": "Core"
      },
      {
-      "code": "A5.2",
+      "code": "A5.3",
       "title": "Cauchy-Schwarz and elementary quadratic forms",
       "level": "Core II"
      },
      {
-      "code": "A5.3",
+      "code": "A5.4",
       "title": "Squares, rearrangement, elementary estimates",
       "level": "Core"
      },
      {
-      "code": "A5.4",
+      "code": "A5.5",
       "title": "Maximum and minimum with domain and discrete constraints",
       "level": "Core"
      },
      {
-      "code": "A5.5",
+      "code": "A5.6",
       "title": "When a bound is sharp enough",
       "level": "Core II"
+     },
+     {
+      "code": "A5.7",
+      "title": "Summary"
      }
     ]
    },

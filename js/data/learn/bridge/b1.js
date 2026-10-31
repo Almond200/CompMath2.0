@@ -116,8 +116,8 @@ The [[trivial-inequality|trivial inequality]] $x^2 \ge 0$, with equality only at
 
 Split at sign changes, read intervals from a chart, and bound with squares. The next lesson sets up word problems.`,
       related: [
-        { card: "median-minimizes-abs", note: String.raw`minimizing a sum of absolute values (A5.4).` },
-        { card: "am-gm", note: String.raw`the next inequality after $x^2 \ge 0$ (A5.1).` },
+        { card: "median-minimizes-abs", note: String.raw`minimizing a sum of absolute values (A5.5).` },
+        { card: "am-gm", note: String.raw`the next inequality after $x^2 \ge 0$ (A5.2).` },
         { card: "piecewise-graph-counting", note: String.raw`counting solutions by graphing pieces (A4.6).` }
       ],
       exercises: [
@@ -151,7 +151,7 @@ Averages are totals in disguise: [[averages-to-totals|turn every average into a 
 Name the unknown, translate each sentence into an equation with rates, totals or factors, and check that the answer makes sense in the story. The next chapter turns to polynomials and sequences.`,
       related: [
         { card: "linear-elimination", note: String.raw`solving the small systems that word problems produce (B1.2).` },
-        { card: "mean-chain", note: String.raw`the harmonic mean behind average speed (A5.1).` },
+        { card: "mean-chain", note: String.raw`the harmonic mean behind average speed (A5.2).` },
         { card: "geometric-series", note: String.raw`repeated percentage changes as a geometric sequence (B2.3).` }
       ],
       exercises: [

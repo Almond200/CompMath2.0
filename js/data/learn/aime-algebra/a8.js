@@ -22,7 +22,7 @@ Finally, the [[pairwise-sum-product|product of the pairwise sums]] is $(x + y)(y
 When a problem in three variables looks messy, ask what happens if two of them are equal, or if they add to zero, and whether a known factorization is hiding. The next lesson uses factorizations to force integer answers.`,
       related: [
         { card: "symmetric-polynomial-strategies", note: String.raw`rewriting any symmetric expression in the elementary symmetric sums (A1.2).` },
-        { card: "sos-identity", note: String.raw`the second factor of $a^3 + b^3 + c^3 - 3abc$ as half a sum of squares (A5.3).` },
+        { card: "sos-identity", note: String.raw`the second factor of $a^3 + b^3 + c^3 - 3abc$ as half a sum of squares (A5.4).` },
         { card: "factor-remainder-theorem", note: String.raw`a polynomial that vanishes when $a = b$ has the factor $a - b$.` },
         { card: "vietas-general", note: String.raw`reading $e_1$, $e_2$, $e_3$ off a cubic (B2.2).` }
       ],

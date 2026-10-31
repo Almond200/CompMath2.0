@@ -97,8 +97,8 @@ The [[weierstrass-substitution|Weierstrass substitution]] $t = \tan\tfrac\theta2
 
 These tools finish the algebra book. Each is a shortcut for a specific shape: a cyclic sum of fractions, a sum of one function of each variable, a homogeneous inequality, a rational expression in sine and cosine, a high even power, or a product over a regular pattern of angles.`,
       related: [
-        { card: "mean-chain", note: String.raw`the arithmetic-harmonic step in the proof of Nesbitt's inequality (A5.1).` },
-        { card: "derivative-extremum", note: String.raw`the tangent line at the equality point, found with a derivative (A5.4).` },
+        { card: "mean-chain", note: String.raw`the arithmetic-harmonic step in the proof of Nesbitt's inequality (A5.2).` },
+        { card: "derivative-extremum", note: String.raw`the tangent line at the equality point, found with a derivative (A5.5).` },
         { card: "roots-unity-distance-product", note: String.raw`the root-of-unity factorization behind evenly spaced sine products (A6.4).` },
         { card: "double-angle", note: String.raw`the half-angle tangent formulas that the Weierstrass substitution uses (A7.2).` }
       ],

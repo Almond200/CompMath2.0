@@ -4,6 +4,32 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A5"] = {
   lessons: {
     "A5.1": {
+      prereq: ["trivial-inequality", "vertex-form"],
+      cards: [],
+      body: String.raw`This chapter finds largest and smallest values. Its tools are the inequality between the arithmetic and geometric means, the Cauchy-Schwarz inequality, sums of squares, rearrangement and the triangle inequality, and the care that the domain and the equality case demand.
+
+Every square is at least $0$, and most inequalities in contests come from that fact. Completing the square shows that $x^2 - 6x + 13 = (x - 3)^2 + 4$ is at least $4$, with equality at $x = 3$. The inequality of the means, $\tfrac{a + b}{2} \ge \sqrt{ab}$ for positive $a$ and $b$, is the same fact applied to $\left(\sqrt a - \sqrt b\right)^2$; it bounds a sum below by a product and a product above by a sum. So $x + \tfrac4x \ge 2\sqrt4 = 4$ for $x \gt 0$, and if $x + y = 10$ then $xy \le 25$.
+
+The Cauchy-Schwarz inequality, $(a_1b_1 + a_2b_2)^2 \le (a_1^2 + a_2^2)(b_1^2 + b_2^2)$, bounds a linear expression on a circle or a sphere. Rearrangement says that a sum of products is largest when the two lists are sorted the same way, and the triangle inequality bounds a sum of distances.
+
+An inequality gives a bound, and the bound is the answer only when equality can happen within the allowed values. The equality case of every inequality tells where to look: the means are equal when the numbers are equal, Cauchy-Schwarz when the lists are proportional. When the variables must be integers or lie in a range, the extreme may sit at an endpoint or at the nearest allowed value.
+
+The lessons take these ideas in turn: the inequality of the means (A5.2), Cauchy-Schwarz (A5.3), squares, rearrangement and estimates (A5.4), extremes with a domain (A5.5), and when a bound is sharp enough (A5.6). The Summary (A5.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Find the least value of $x + \dfrac4x$ for $x \gt 0$.`, answer: "4",
+          solution: String.raw`By the inequality of the means, $x + \tfrac4x \ge 2\sqrt{x \cdot \tfrac4x} = 4$, with equality when $x = \tfrac4x$, that is, $x = 2$. So the least value is $4$.` },
+        { q: String.raw`If $x + y = 10$, what is the largest possible value of $xy$?`, answer: "25",
+          solution: String.raw`Write $xy = \left(\tfrac{x + y}{2}\right)^2 - \left(\tfrac{x - y}{2}\right)^2 = 25 - \left(\tfrac{x - y}{2}\right)^2 \le 25$, with equality at $x = y = 5$.` },
+        { q: String.raw`Find the least value of $x^2 - 6x + 13$.`, answer: "4",
+          solution: String.raw`Complete the square: $x^2 - 6x + 13 = (x - 3)^2 + 4 \ge 4$, with equality at $x = 3$.` }
+      ],
+      problems: [
+        "2023 AMC 12B, Problem 11",
+        "2000 AIME I, Problem 6",
+        "2016 AIME II, Problem 7"
+      ]
+    },
+    "A5.2": {
       prereq: ["trivial-inequality"],
       cards: ["am-gm", "max-product-fixed-sum", "mean-chain"],
       body: String.raw`Many contest questions ask for the largest or smallest value of an expression and expect a bound together with a case that reaches it, not a search. The smallest value of $x + \tfrac{9}{x}$ for positive $x$, the largest volume of a box whose three edges add to $27$, the largest product of positive integers adding to $20$: each is settled by one inequality between means, used so that its equality case is actually available. The inequality supplies a number the expression can never pass, and the equality case shows the number is reached, so the two halves together are the answer.
@@ -19,8 +45,8 @@ AM-GM is the middle link of the [[mean-chain|chain of means]]: quadratic mean, t
 Reach for AM-GM when the question asks for an extreme value of a sum whose terms multiply to a constant, or a product whose factors add to a constant, and always pair the bound with an equality case. The next lesson handles the sums that AM-GM cannot: a linear expression under a constraint on squares, and sums of fractions.`,
       related: [
         { card: "trivial-inequality", note: String.raw`the fact $(\sqrt a - \sqrt b)^2 \ge 0$ that the two-term AM-GM rewrites.` },
-        { card: "power-mean-inequality", note: String.raw`the whole chain of means as one statement about exponents (A5.5).` },
-        { card: "weighted-am-gm", note: String.raw`AM-GM with unequal weights, for terms that cannot be split evenly (A5.5).` },
+        { card: "power-mean-inequality", note: String.raw`the whole chain of means as one statement about exponents (A5.6).` },
+        { card: "weighted-am-gm", note: String.raw`AM-GM with unequal weights, for terms that cannot be split evenly (A5.6).` },
         { card: "sfft", note: String.raw`completing a product first, so that AM-GM or the equal-parts rule applies to the factors.` }
       ],
       exercises: [
@@ -42,7 +68,7 @@ Reach for AM-GM when the question asks for an extreme value of a sum whose terms
         "2011 AIME II, Problem 9"
       ]
     },
-    "A5.2": {
+    "A5.3": {
       prereq: ["completing-the-square"],
       cards: ["cauchy-schwarz", "quadratic-forms"],
       body: String.raw`Some extreme-value problems put a constraint on squares and ask about a linear expression, or the reverse: the largest value of $3x + 4y$ when $x^2 + y^2 = 25$, the smallest value of $\tfrac{a^2}{1} + \tfrac{b^2}{2} + \tfrac{c^2}{3}$ when $a + b + c = 6$, the range of one variable when the sum and the sum of squares of three are known. AM-GM does not fit, since nothing multiplies to a constant. The tool is the Cauchy-Schwarz inequality, which compares a sum of products with sums of squares, together with the plain algebra of quadratics: a quadratic expression is smallest at its vertex, and a quadratic equation has a real root only when its discriminant is nonnegative.
@@ -58,7 +84,7 @@ A quadratic squeezed between two others is pinned at the point where they touch.
 Use Cauchy-Schwarz when the target is linear and the constraint is a sum of squares, or the target is a sum of fractions with squared numerators; use vertex form and the discriminant when everything is quadratic. The next lesson collects the other elementary estimates: sorting, sums of squares, and the triangle inequality.`,
       related: [
         { card: "completing-the-square", note: String.raw`the step that puts a quadratic in vertex form (A1.4).` },
-        { card: "mean-chain", note: String.raw`the quadratic-mean bound $(a + b)^2 \le 2(a^2 + b^2)$ is the two-term Cauchy-Schwarz (A5.1).` },
+        { card: "mean-chain", note: String.raw`the quadratic-mean bound $(a + b)^2 \le 2(a^2 + b^2)$ is the two-term Cauchy-Schwarz (A5.2).` },
         { card: "harmonic-addition", note: String.raw`$a\cos\theta + b\sin\theta \le \sqrt{a^2 + b^2}$, Cauchy-Schwarz for a point on a circle (A7.2).` },
         { card: "vietas-quadratic", note: String.raw`writing the quadratic whose roots are two unknowns from their sum and product.` }
       ],
@@ -77,7 +103,7 @@ Use Cauchy-Schwarz when the target is linear and the constraint is a sum of squa
         "2016 AIME II, Problem 15"
       ]
     },
-    "A5.3": {
+    "A5.4": {
       prereq: ["triangle-inequality"],
       cards: ["rearrangement", "sos-identity", "abs-triangle-inequality"],
       body: String.raw`Three short estimates settle a large share of the remaining bounding questions. One decides how to pair two lists of numbers to make a sum of products largest, as in assigning prices to quantities or flowers to beds of different sizes. One writes a symmetric expression as a sum of squares, so that it is visibly nonnegative and its zero case forces all the variables to be equal. The third bounds a sum of absolute values below by the absolute value of the sum. Each is a one-line idea, and each comes with an equality case that the problem usually turns on.
@@ -92,7 +118,7 @@ Use rearrangement when the question is which pairing is best, the sum-of-squares
       related: [
         { card: "chebyshev-sum-inequality", note: String.raw`the averaged form of rearrangement: same-order lists make the average of products at least the product of averages.` },
         { card: "cubes-minus-3abc", note: String.raw`$x^3 + y^3 + z^3 - 3xyz$ factors through the sum-of-squares expression (A8.1).` },
-        { card: "median-minimizes-abs", note: String.raw`the triangle inequality applied to many distances at once (A5.4).` },
+        { card: "median-minimizes-abs", note: String.raw`the triangle inequality applied to many distances at once (A5.5).` },
         { card: "completing-the-square", note: String.raw`writing a quadratic equation as a sum of squares equal to zero.` }
       ],
       exercises: [
@@ -109,7 +135,7 @@ Use rearrangement when the question is which pairing is best, the sum-of-squares
         "1988 AIME, Problem 4"
       ]
     },
-    "A5.4": {
+    "A5.5": {
       prereq: ["vertex-form"],
       cards: ["median-minimizes-abs", "slope-to-a-point", "placing-digits-extremes", "derivative-extremum"],
       body: String.raw`Not every extreme-value problem needs an inequality between means. Some are settled by where the expression can live: a sum of distances on a line, a ratio that is really a slope, a number built from given digits, a smooth function on an interval. The question looks the same (find the largest or smallest value), but the answer comes from a picture or from an ordering argument that says where the extreme must sit, and then the value is computed there. These methods also handle the constraints the inequalities ignore, such as integer variables or a bounded interval.
@@ -124,8 +150,8 @@ For a smooth function on an interval, [[derivative-extremum|the derivative]] fin
 
 These methods share one habit: decide where the extreme must be before computing anything. The last lesson of the chapter collects the general inequalities that contain everything so far as special cases.`,
       related: [
-        { card: "abs-triangle-inequality", note: String.raw`the bound for one pair of distances that the median argument applies to every pair (A5.3).` },
-        { card: "rearrangement", note: String.raw`the swap argument that decides where digits and numbers should go (A5.3).` },
+        { card: "abs-triangle-inequality", note: String.raw`the bound for one pair of distances that the median argument applies to every pair (A5.4).` },
+        { card: "rearrangement", note: String.raw`the swap argument that decides where digits and numbers should go (A5.4).` },
         { card: "tangent-lines-from-point", note: String.raw`the right triangle that gives the slope of a tangent from an outside point.` },
         { card: "extremal-principle", note: String.raw`the same habit in counting: look at the largest or smallest object first.` }
       ],
@@ -149,7 +175,7 @@ These methods share one habit: decide where the extreme must be before computing
         "2022 AIME I, Problem 7"
       ]
     },
-    "A5.5": {
+    "A5.6": {
       prereq: ["am-gm", "mean-chain"],
       cards: ["power-mean-inequality", "jensens-inequality", "bernoulli-inequality", "weighted-am-gm"],
       body: String.raw`The inequalities of this chapter are special cases of a few general ones, and knowing the general forms helps in two situations: when the terms of a problem do not split into equal pieces, and when a bound must compare two different powers. Bounding $a + b + c$ when $a^3 + b^3 + c^3$ is known, bounding $\sin A + \sin B + \sin C$ over all triangles, and maximizing $x^2y^3$ when $x + y$ is fixed are typical. Each has a one-line answer from the right general inequality, while the basic tools need a clever rearrangement first.
@@ -162,11 +188,11 @@ The [[power-mean-inequality|power mean inequality]] puts the whole chain of mean
 
 [[bernoulli-inequality|Bernoulli's inequality]], $(1 + x)^n \ge 1 + nx$ for $x \ge -1$ and $n \ge 1$, is the statement that the curve $(1 + x)^n$ lies above its tangent line at $x = 0$. For an exponent between $0$ and $1$ it flips, $(1 + x)^r \le 1 + rx$, which bounds roots from above: $\sqrt[10]{1.2} \lt 1 + \tfrac{0.2}{10} = 1.02$. It is the quickest way to compare a power with a linear expression, as in showing $1.01^{100} \ge 2$.
 
-These are tools to recognize rather than to reach for first: try AM-GM, Cauchy-Schwarz and the methods of the earlier lessons, and use the general forms when the terms are unequal or the powers differ. The next chapter changes subject to complex numbers, where the triangle inequality and the geometry of the plane return.`,
+These are tools to recognize rather than to reach for first: try AM-GM, Cauchy-Schwarz and the methods of the earlier lessons, and use the general forms when the terms are unequal or the powers differ. The Summary (A5.7) collects the chapter's strategies, and the next chapter changes subject to complex numbers, where the triangle inequality and the geometry of the plane return.`,
       related: [
         { card: "holders-inequality", note: String.raw`the generalization of Cauchy-Schwarz to three or more lists, proved with weighted AM-GM.` },
         { card: "tangent-line-trick", note: String.raw`bounding each term by its tangent line, the method behind Bernoulli's inequality (A9.4).` },
-        { card: "cauchy-schwarz", note: String.raw`the other general inequality of the chapter, for sums of products (A5.2).` }
+        { card: "cauchy-schwarz", note: String.raw`the other general inequality of the chapter, for sums of products (A5.3).` }
       ],
       exercises: [
         { q: String.raw`Positive reals $a$, $b$, $c$ satisfy $a^3 + b^3 + c^3 = 24$. Find the largest value of $a + b + c$.`, answer: "6",
@@ -179,14 +205,54 @@ These are tools to recognize rather than to reach for first: try AM-GM, Cauchy-S
           solution: String.raw`For an exponent $r$ between $0$ and $1$, Bernoulli's inequality reverses: $(1 + x)^r \le 1 + rx$, with equality only at $x = 0$. With $x = 0.2$ and $r = \tfrac1{10}$, $(1.2)^{1/10} \lt 1 + 0.02 = 1.02$. (In fact $\sqrt[10]{1.2} \approx 1.0184$.)` }
       ],
       problems: []
+    },
+    "A5.7": {
+      prereq: ["am-gm", "max-product-fixed-sum", "cauchy-schwarz", "sos-identity", "rearrangement", "abs-triangle-inequality", "median-minimizes-abs", "power-mean-inequality"],
+      cards: [],
+      body: String.raw`[[am-gm|The inequality of the means]] bounds a sum below by a product, with equality when the terms are equal; split terms so that their product is constant. With a fixed sum, [[max-product-fixed-sum|the product is largest]] when the parts are equal, or as equal as the integers allow.
+
+[[cauchy-schwarz|Cauchy-Schwarz]] bounds $\sum a_ib_i$ by $\sqrt{\sum a_i^2}\sqrt{\sum b_i^2}$, with equality when the lists are proportional. [[sos-identity|Writing an expression as a sum of squares]] proves it is at least $0$ and shows where it vanishes.
+
+[[rearrangement|Rearrangement]] makes a sum of products largest with the lists sorted alike and smallest with them sorted oppositely. [[abs-triangle-inequality|The triangle inequality]] bounds a sum of absolute values or distances, and [[median-minimizes-abs|a sum of distances to points on a line]] is smallest at a median.
+
+[[power-mean-inequality|The power means]] increase with the power, which compares a sum of squares with a square of a sum. Every bound is the answer only when its equality case is allowed.`,
+      strategies: [
+        String.raw`Complete the square, or write the expression as a sum of squares, before reaching for a named inequality.`,
+        String.raw`For a sum with a constant product, use the inequality of the means; split terms so that the product is constant.`,
+        String.raw`For a linear expression on a circle or sphere, use Cauchy-Schwarz.`,
+        String.raw`For a sum of distances on a line, go to a median.`,
+        String.raw`To pair two lists for the largest sum of products, sort them the same way.`,
+        String.raw`Check the equality case: the bound is the answer only if it can be reached.`,
+        String.raw`With integers or a restricted domain, test the allowed values nearest the unrestricted extreme, and the endpoints.`
+      ]
     }
   },
-  review: [
-    "2023 AMC 12B, Problem 11",
-    "2000 AIME I, Problem 6",
-    "2016 AMC 12A, Problem 24",
-    "2023 AMC 12A, Problem 23",
-    "2016 AIME II, Problem 7",
-    "2025 AIME II, Problem 15"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Find the least value of $x + \dfrac{9}{x - 1}$ for $x \gt 1$.`, answer: "7",
+        solution: String.raw`Write it as $(x - 1) + \tfrac{9}{x - 1} + 1$. The first two terms have constant product $9$, so their sum is at least $2\sqrt9 = 6$, with equality at $x - 1 = 3$. The least value is $6 + 1 = 7$, at $x = 4$.` },
+      { q: String.raw`If $x^2 + y^2 = 1$, what is the largest value of $3x + 4y$?`, answer: "5",
+        solution: String.raw`By Cauchy-Schwarz, $(3x + 4y)^2 \le (3^2 + 4^2)(x^2 + y^2) = 25$, so $3x + 4y \le 5$, with equality when $(x, y)$ is proportional to $(3, 4)$: $(x, y) = \left(\tfrac35, \tfrac45\right)$.` },
+      { q: String.raw`Find the least value of $(x + y + z)\left(\dfrac1x + \dfrac1y + \dfrac1z\right)$ for positive $x$, $y$, $z$.`, answer: "9",
+        solution: String.raw`By Cauchy-Schwarz with the lists $\sqrt x, \sqrt y, \sqrt z$ and $\tfrac{1}{\sqrt x}, \tfrac{1}{\sqrt y}, \tfrac{1}{\sqrt z}$, the product is at least $(1 + 1 + 1)^2 = 9$, with equality when $x = y = z$.` },
+      { q: String.raw`Find the least value of $|x - 1| + |x - 2| + |x - 5| + |x - 9|$.`, answer: "11",
+        solution: String.raw`A sum of distances to points on a line is smallest at a median, here any $x$ from $2$ to $5$. At $x = 2$ the sum is $1 + 0 + 3 + 7 = 11$.` },
+      { q: String.raw`If $x$ and $y$ are positive and $x + y = 3$, what is the largest value of $x^2y$?`, answer: "4",
+        solution: String.raw`Split $x$ into two halves so that the three terms have a constant sum: $\tfrac x2 + \tfrac x2 + y = 3$. By the inequality of the means, $\tfrac x2 \cdot \tfrac x2 \cdot y \le 1$, so $x^2y \le 4$, with equality at $\tfrac x2 = y = 1$, that is, $x = 2$, $y = 1$.` },
+      { q: String.raw`If $a + b + c = 6$, what is the least value of $a^2 + b^2 + c^2$?`, answer: "12",
+        solution: String.raw`By the inequality between the quadratic and arithmetic means, or Cauchy-Schwarz, $3(a^2 + b^2 + c^2) \ge (a + b + c)^2 = 36$, so $a^2 + b^2 + c^2 \ge 12$, with equality at $a = b = c = 2$.` },
+      { q: String.raw`The numbers $a, b, c, d$ are $1, 2, 3, 4$ in some order. What is the largest value of $a + 2b + 3c + 4d$?`, answer: "30",
+        solution: String.raw`By rearrangement the sum of products is largest when the lists are sorted the same way: $a = 1$, $b = 2$, $c = 3$, $d = 4$, giving $1 + 4 + 9 + 16 = 30$.` }
+    ],
+    problems: [
+      "2023 AMC 12A, Problem 23"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2016 AMC 12A, Problem 24",
+      "2025 AIME II, Problem 15",
+      "2009 AIME II, Problem 15"
+    ]
+  }
 };

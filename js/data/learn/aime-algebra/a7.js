@@ -54,7 +54,7 @@ Adding the two expansions of $\sin(a + b)$ and $\sin(a - b)$ gives the [[product
 
 Use addition and double-angle formulas to reach a known angle or a factorization, sum-to-product to solve equations, and harmonic addition for extreme values of a linear combination. The next lesson counts the solutions of trigonometric equations on an interval.`,
       related: [
-        { card: "cauchy-schwarz", note: String.raw`the bound $|a\sin x + b\cos x| \le \sqrt{a^2 + b^2}$ (A5.2).` },
+        { card: "cauchy-schwarz", note: String.raw`the bound $|a\sin x + b\cos x| \le \sqrt{a^2 + b^2}$ (A5.3).` },
         { card: "de-moivre", note: String.raw`multiple-angle formulas from the binomial expansion of $(\cos x + i\sin x)^n$ (A6.2).` },
         { card: "angle-between-lines", note: String.raw`the tangent subtraction formula applied to slopes.` },
         { card: "chord-length", note: String.raw`half-angle sines in circle geometry: a chord is $2R\sin\tfrac\theta2$.` }

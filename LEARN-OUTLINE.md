@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A4 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A5 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -882,11 +882,13 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A5.1 AM-GM and its equality case (Core) | `am-gm`, `max-product-fixed-sum`, `mean-chain` |
-| A5.2 Cauchy-Schwarz and elementary quadratic forms (Core II) | `cauchy-schwarz`, `quadratic-forms` |
-| A5.3 Squares, rearrangement, elementary estimates (Core) | `rearrangement`, `sos-identity`, `abs-triangle-inequality` |
-| A5.4 Maximum and minimum with domain and discrete constraints (Core) | `median-minimizes-abs`, `slope-to-a-point`, `placing-digits-extremes`, `derivative-extremum`, prereq `vertex-form` |
-| A5.5 When a bound is sharp enough (Core II) | `power-mean-inequality`, `jensens-inequality`, `bernoulli-inequality`, `weighted-am-gm` |
+| A5.1 Introduction | no card (the chapter's opening page: the inequality of the means, Cauchy-Schwarz, squares, rearrangement, the domain and the equality case, with comprehension problems) |
+| A5.2 AM-GM and its equality case (Core) | `am-gm`, `max-product-fixed-sum`, `mean-chain` |
+| A5.3 Cauchy-Schwarz and elementary quadratic forms (Core II) | `cauchy-schwarz`, `quadratic-forms` |
+| A5.4 Squares, rearrangement, elementary estimates (Core) | `rearrangement`, `sos-identity`, `abs-triangle-inequality` |
+| A5.5 Maximum and minimum with domain and discrete constraints (Core) | `median-minimizes-abs`, `slope-to-a-point`, `placing-digits-extremes`, `derivative-extremum`, prereq `vertex-form` |
+| A5.6 When a bound is sharp enough (Core II) | `power-mean-inequality`, `jensens-inequality`, `bernoulli-inequality`, `weighted-am-gm` |
+| A5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A5.8 Review Problems and A5.9 Challenge Problems |
 
 ### A6. Complex numbers and roots of unity (Core II)
 

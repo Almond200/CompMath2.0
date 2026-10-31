@@ -17,7 +17,7 @@ A [[complex-modulus-argument|known modulus or argument]] is a geometric conditio
 Use these tools whenever a problem mentions $i$, a conjugate or a modulus: split into real and imaginary parts when the numbers are small and the equation is polynomial, and work with moduli and conjugates when the condition is about size or realness. The next lesson writes complex numbers by size and angle, which turns multiplication into rotation.`,
       related: [
         { card: "conjugate-root-theorems", note: String.raw`non-real roots of a real polynomial come in conjugate pairs.` },
-        { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$, the bound on a sum of complex numbers (A5.3).` },
+        { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$, the bound on a sum of complex numbers (A5.4).` },
         { card: "cycle-hunting", note: String.raw`the period $4$ of the powers of $i$ is a cycle like those of last digits (N3.2).` }
       ],
       exercises: [

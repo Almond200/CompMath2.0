@@ -149,7 +149,7 @@ The method is to sketch both sides on a common axis and use what each graph does
 The signal is an equation mixing different kinds of functions (trigonometric with linear, exponential with polynomial), a parameter that changes the number of solutions, or a question asked about a graph or a table. The Summary (A4.7) collects the chapter's strategies.`,
       related: [
         { card: "abs-value-graphing", note: String.raw`folding a graph at the $x$-axis to draw an absolute value (A4.3).` },
-        { card: "derivative-extremum", note: String.raw`finding where a function turns, which marks the monotonic pieces (A5.4).` },
+        { card: "derivative-extremum", note: String.raw`finding where a function turns, which marks the monotonic pieces (A5.5).` },
         { card: "mean-median-mode", note: String.raw`the averages most often asked about data in a chart.` }
       ],
       exercises: [
