@@ -4683,7 +4683,8 @@
   let pvStart = 0;   // the first preview screen shown, kept while Settings re-draws
   // Chosen so every setting changes something: several formula rows (Formula lines), a sigma
   // in the first row (Notation), and figures (Figures on cards).
-  const PV_CARDS = ["altitude-hypotenuse", "hockey-stick", "linear-recurrence", "power-of-a-point"];
+  // No card here is also the card-page screen's card (owner, 2026-10-31: no screen repeats another).
+  const PV_CARDS = ["altitude-hypotenuse", "stars-and-bars", "linear-recurrence", "power-of-a-point"];
   const PV_PAGE = "hockey-stick", PV_SUBJECT = "number-theory", PV_PROBLEM = "2025 AMC 10A, Problem 9";
   let pvResize = null;
   // A screen may be laid out wider than the others (the subject page carries the sidebar too),
@@ -4733,16 +4734,9 @@
   }
   function pvProblemHtml() {
     const p = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
-    if (!p) return "";
-    const chain = { pattern: [], method: [], formula: [] };
-    p.formulas.forEach(fid => BY_ID[fid] && chain[kindOf(BY_ID[fid].formula)].push(fid));
-    const chip = fid => `<a class="related-item">${BY_ID[fid].formula.name}</a>`;
-    const col = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
-    return `<div class="detail"><div class="book-eyebrow prob-eyebrow">Practice</div>
-        <div class="detail-head"><h2 class="card-name">${refShort(p.ref)}</h2></div>
-        <p class="prob-statement">Let $f(x) = 100x^3 - 300x^2 + 200x$. For how many real numbers $a$ does the graph of $y = f(x - a)$ pass through the point $(1, 25)$?</p>
-        ${chainBoxHtml(p, col, chain, new Set())}</div>`;
+    return p ? problemDetailHtml(p, true) : "";
   }
+
   // The subject page beside its sidebar, drawn with the sidebar's own markup, so density shows
   // in the navigation as well as in the page.
   function pvSidebarHtml(active) {
@@ -4850,6 +4844,9 @@
     };
     scale();
     fitBatch([...aside.querySelectorAll(".card .formula-display[data-latex], .lp-preview .formula-display[data-latex]")]);
+    // The problem screen's statement and solution load as on the page itself.
+    const pvp = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
+    if (pvp) { if (MAA_RE.test(pvp.ref)) showStatement(pvp, ".pv-st"); if (SOLUTION_YEARS.has(String(pvp.year))) showSolution(pvp, ".pv-sol"); }
     if (pvResize) window.removeEventListener("resize", pvResize);
     pvResize = scale;
     window.addEventListener("resize", pvResize);
@@ -5087,7 +5084,7 @@
           </div>
           <aside class="hm-rail">
             <section class="hm-sec hm-textbooks">
-              <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">Learn &rarr;</a></div>
+              <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">See all &rarr;</a></div>
               <div class="hm-books">${bookRows}</div>
             </section>
             ${card ? `<section class="hm-sec hm-cotd hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
@@ -6881,10 +6878,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     return solutionLoads[year];
   }
-  function showSolution(p) {
+  function showSolution(p, box = "#prob-sol") {
     loadSolutions(p.year).then(() => {
       const sol = window.MATH_SOLUTIONS && window.MATH_SOLUTIONS[p.slug];
-      const wrap = $content.querySelector(`#prob-sol[data-slug="${p.slug}"]`);
+      const wrap = $content.querySelector(`${box}[data-slug="${p.slug}"]`);
       if (!sol || !wrap) return;
       wrap.querySelector(".prob-solution-body").innerHTML = detailBodyHtml(sol, "sol:" + p.slug);
       wrap.hidden = false;
@@ -6936,11 +6933,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   const backToLearnHtml = key => backFromLearn && backFromLearn.to === key
     ? `<a class="back-link" href="${backFromLearn.hash}" data-history-back>&larr; Back to ${escapeAttr(backFromLearn.label)}</a>` : "";
-  function renderProblemDetail(slug) {
-    const p = PROBLEM_BY_SLUG[slug];
-    if (!p) { location.hash = "#/practice"; return; }
-    noteRecent("p:" + p.slug);
-    shownIds = [];
+  // A problem page's markup, shared by the page itself and the Settings preview (pv), so the
+  // preview shows exactly what the page does (owner, 2026-10-31). The preview has no journey to
+  // go back along, and its statement and solution boxes carry classes instead of the page's ids.
+  function problemDetailHtml(p, pv) {
     const types = p.types.map(t => `<a class="ptype-chip" href="${TOPICS_BY_ID[t.id] ? tagHash([TOPICS_BY_ID[t.id].label]) : "#/topic/" + t.id}">${escapeAttr(t.label)}</a>`).join("");
     // How this problem works sits near the bottom of the page: the problem itself, and thinking
     // about it, come first.
@@ -6949,11 +6945,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // A geometry problem printed without a figure gets one drawn for the app
     // (js/data/diagrams/problem-diagrams.js), labelled as ours; it shows only inside How this
     // problem works (ownFigureHtml).
-    $content.innerHTML = `
+    return `
       <div class="detail">
         <div class="back-row">
-          ${backToLearnHtml("problem:" + p.slug)}
-          ${backFromProblem && backFromProblem.slug === p.slug && BY_ID[backFromProblem.fid]
+          ${pv ? "" : backToLearnHtml("problem:" + p.slug)}
+          ${!pv && backFromProblem && backFromProblem.slug === p.slug && BY_ID[backFromProblem.fid]
             ? `<a class="back-link" href="#/f/${backFromProblem.fid}">&larr; Back to ${escapeAttr(BY_ID[backFromProblem.fid].formula.name)}</a>`
             : ""}
           <a class="back-link" href="#/problems/${famSlug(p.fam)}/${p.year}">&larr; ${escapeAttr(p.fam)} ${p.year}</a>
@@ -6963,19 +6959,26 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <h2 class="card-name">${refShort(p.ref)}</h2>
         </div>
         ${types || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${types}</div>` : ""}
-        ${MAA_RE.test(p.ref) ? `<section class="prob-st" id="prob-st" data-slug="${p.slug}" hidden>
+        ${MAA_RE.test(p.ref) ? `<section class="prob-st${pv ? " pv-st" : ""}"${pv ? "" : ` id="prob-st"`} data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
           <p class="prob-credit"></p>
         </section>` : ""}
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
         ${chainHtml}
-        ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution" id="prob-sol" data-slug="${p.slug}" hidden>
+        ${SOLUTION_YEARS.has(String(p.year)) ? `<section class="prob-chain prob-solution${pv ? " pv-sol" : ""}"${pv ? "" : ` id="prob-sol"`} data-slug="${p.slug}" hidden>
           <h4>Solution</h4>
           <div class="detail-body prob-solution-body"></div>
         </section>` : ""}
         ${contestNavHtml(p)}
       </div>`;
+  }
+  function renderProblemDetail(slug) {
+    const p = PROBLEM_BY_SLUG[slug];
+    if (!p) { location.hash = "#/practice"; return; }
+    noteRecent("p:" + p.slug);
+    shownIds = [];
+    $content.innerHTML = problemDetailHtml(p, false);
     renderMath($content);
     if (MAA_RE.test(p.ref)) showStatement(p);
     if (SOLUTION_YEARS.has(String(p.year))) showSolution(p);

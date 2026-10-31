@@ -2311,9 +2311,11 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 }
 .prob-chain h4 { margin: 0 0 10px; }
 /* How this problem works: its heading, and beside it a small + Show / - Hide (owner, 2026-10-31).
-   It and the new-list + keep their colour on hover (owner). */
+   It and the new-list + only brighten a little on hover (owner). */
 .chain-head { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
 .chain-head h4 { margin: 0; }
+/* Show / Hide and the new-list + brighten a little on hover, like the study-route links. */
+.chain-toggle:hover, #pr-lists .pl-new-btn:hover { filter: brightness(1.15); }
 .chain-body[hidden] { display: none; }
 .chain-head + .chain-body[hidden] { margin: 0; }
 .prob-chain:has(.chain-body[hidden]) .chain-head { margin-bottom: 0; }
