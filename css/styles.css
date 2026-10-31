@@ -3684,8 +3684,12 @@ body.is-landing .content { padding: 0 0 50px; }
 .hm-name { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .hm-sub { margin: 0; font-size: 13.5px; color: var(--text-dim); }
 .hm-spaces { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); }
-.hm-space { display: flex; flex-direction: column; gap: 1px; padding: 9px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); border-top: 3px solid var(--tint); }
+.hm-space { position: relative; display: flex; flex-direction: column; gap: 1px; padding: 12px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); }
 .hm-space:first-child { border-left: none; }
+/* Each tile's coloured bar is a strip of its own, laid over the divider to its left, so the
+   colours meet exactly at the dividers (a border-top met the divider on a slant). */
+.hm-space::before { content: ""; position: absolute; top: 0; left: -1px; right: 0; height: 3px; background: var(--tint); }
+.hm-space:first-child::before { left: 0; }
 .hm-space:hover { background: var(--tint-soft); }
 .hm-space-name { font-size: 15px; font-weight: 780; color: var(--tint); }
 .hm-space-ask { font-size: 12.5px; color: var(--text-dim); }

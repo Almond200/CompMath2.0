@@ -295,7 +295,9 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **Page tools has "Back to top"** (owner, 2026-10-31): the first item under Tools scrolls the card's page back to the top.
 - **The header's second row is labelled "Lesson"** instead of "Page" (owner, 2026-10-31).
+- **The space strip's coloured bars meet the dividers exactly** (owner, 2026-10-31): each bar is its own strip laid over the divider to its left, instead of a top border that met the divider on a slant.
 - **The problem of the day's statement is plain text too** (owner, 2026-10-31): no shaded box around it on the home page; the credit sits right under it.
 - **A problem's statement is plain text in its card** (owner, 2026-10-31), with no box or grey ground around it, following the rule of no boxes inside boxes.
 - **The bottom links are small and plain** (owner, 2026-10-31): "‹ N3 overview", "Back to top" and "N3.2 Fermat's Little Theorem… ›" are one size, with no card or background until hovered; a long title ends in an ellipsis.
