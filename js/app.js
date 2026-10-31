@@ -3478,6 +3478,14 @@
   // rather than silently dropping the text.
   function linkifyCards(text) {
     if (!text || text.indexOf("[[") === -1) return text;
+    const link = (m, id, label) => {
+      const e = BY_ID[id];
+      if (!e) return redLink(id, label);
+      return `<a class="card-link" href="#/f/${escapeAttr(id)}" data-card="${escapeAttr(id)}">${label || e.formula.name}</a>`;
+    };
+    // A label that is itself math ([[an-minus-bn|$a^n - b^n$]]) is linked first, whole: the split
+    // on $...$ below would otherwise cut it in two and leave the brackets showing.
+    text = String(text).replace(/\[\[([\w-]+)\|([^\]]*\$[^\]]*)\]\]/g, link);
     return String(text).split(/(\$[^$]*\$)/).map((part, i) => {
       if (i % 2) return part;
       return part.replace(/\[\[([\w-]+)(?:\|([^\]]*))?\]\]/g, (m, id, label) => {
@@ -4823,7 +4831,7 @@
       const e = BY_ID[id];
       return `<a class="rc-row" href="#/f/${id}">${kindBadgeHtml(e.formula)}<span class="rc-name">${e.formula.name}</span><span class="rc-meta">${bySubject(e.section) ? pageTitle(e.section, e.section.subsections.indexOf(e.subsection)) : e.section.title}</span></a>`;
     }).join("");
-    return `<section class="hp-panel">
+    return `<section class="hp-panel hm-newest">
         <div class="hp-label">Newest cards</div>
         <div class="rc-list">${rows}</div>
         <a class="hp-link" href="${specialHref("NewCards", "All")}">Every new card, newest first &rarr;</a>
@@ -4840,7 +4848,7 @@
       const latest = years[years.length - 1];
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
-    return `<section class="hp-panel">
+    return `<section class="hp-panel hm-glance">
         <div class="hp-label">Practice at a glance</div>
         <div class="pg-list">${rows}</div>
         <div class="hp-mine-foot"><a href="#/special/randomproblem">A random problem</a><a href="#/practice">Every contest and year</a></div>
@@ -4891,7 +4899,7 @@
         </nav>
         <div class="hm-cols">
           <div class="hm-main">
-            <section class="hm-sec">
+            <section class="hm-sec hm-continue">
               <h2 class="hm-h">Continue</h2>
               ${recentCards ? `<div class="rc-list">${recentCards}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
             </section>
@@ -4900,17 +4908,17 @@
             ${practiceGlanceHtml()}
           </div>
           <aside class="hm-rail">
-            <section class="hm-sec">
+            <section class="hm-sec hm-textbooks">
               <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">Learn &rarr;</a></div>
               <div class="hm-books">${bookRows}</div>
             </section>
-            ${card ? `<section class="hm-sec hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
+            ${card ? `<section class="hm-sec hm-cotd hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
               <h2 class="hm-h">Card of the day</h2>
               <div class="rc-row">${kindBadgeHtml(card.formula)}<span class="rc-name">${card.formula.name}</span></div>
               <p class="home-cotd">${firstSentences(card.formula.description, 1)}</p>
             </section>` : ""}
             ${didYouKnowHtml()}
-            <section class="hm-sec">
+            <section class="hm-sec hm-library">
               <h2 class="hm-h">Your library</h2>
               ${starIds.length
                 ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">&#9733;</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
@@ -5021,6 +5029,10 @@
               return `<td>${l ? `<a href="#/list/${l.id}">${liveCount(l)} cards</a>` : `<span class="cy-none">&middot;</span>`}</td>`;
             }).join("")}</tr>`).join("")}</tbody>
           </table></div>
+          <div class="route-cards">${subjects.map(x => `<div class="route-card"><div class="route-card-t">${x}</div><div class="route-card-links">${tiers.map(t => {
+            const l = route(t, x);
+            return l ? `<a href="#/list/${l.id}"><span>${t === "AMC" ? "AMC 10/12" : t}</span><span class="route-card-n">${liveCount(l)}</span></a>` : "";
+          }).join("")}</div></div>`).join("")}</div>
           <p class="route-note">Each route builds on the one above it: the AIME route lists only what is new beyond the AMC 10/12 route, and the Olympiad route only what is new beyond the AIME, with a few cards repeated where a level uses the same card in a broader way.</p>
           <div class="pl-kinds">${LIST_KINDS.filter(([k]) => k !== "route").map(([k, label]) => {
             const ls = BUILTIN_LISTS.filter(l => l.kind === k);
@@ -5043,7 +5055,7 @@
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem &rarr;</a>
           </section>
         </div>
-                <section class="sh-section">
+                <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
@@ -5372,9 +5384,29 @@
         <a class="bk-foot-top" href="#" data-bk-top>Back to top</a>
         ${footCard(next, 1)}
       </nav>`;
+    // The phone's navigation (owner, 2026-10-31): no rail; the book and where the page sits, then
+    // the previous page, a menu of every chapter and page, and the next page. Its row stays under
+    // the top bar while reading.
+    const plain = t => String(t).replace(/<[^>]*>/g, "").replace(/\$/g, "").replace(/\\[a-z]+/gi, "").replace(/[{}]/g, "");
+    const here = at >= 0 ? pages[at] : null;
+    const where = !c ? "Contents" : here && here.l ? `Lesson ${c.lessons.indexOf(here.l) + 1} of ${c.lessons.length}`
+      : here && here.end ? LEARN_END[here.end] : here && here.review ? "Chapter review" : "Overview";
+    const mnav = `<nav class="bk-mnav" aria-label="Chapters and lessons">
+        <div class="bk-mnav-k"><span class="bk-mnav-book">${escapeAttr(b.title)}</span>${c ? ` &middot; Chapter ${c.code.slice(1)}` : ""} &middot; ${where}</div>
+        <div class="bk-mnav-row">
+          ${prev || c ? `<a class="bk-mnav-step" href="${prev ? hashOf(prev) : learnHash(b)}" aria-label="Previous page">&#8249;</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">&#8249;</span>`}
+          <select class="bk-mnav-sel" aria-label="Go to a chapter or page">
+            <option value="${learnHash(b)}"${!c ? " selected" : ""}>Contents</option>
+            ${b.chapters.map(ch => `<optgroup label="Chapter ${ch.code.slice(1)}: ${escapeAttr(plain(ch.title))}">${pages.filter(x => x.c === ch).map(x =>
+              `<option value="${hashOf(x)}"${x === here ? " selected" : ""}>${escapeAttr(plain(learnPageLabel(x)))}</option>`).join("")}</optgroup>`).join("")}
+          </select>
+          ${next ? `<a class="bk-mnav-step" href="${hashOf(next)}" aria-label="Next page">&#8250;</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">&#8250;</span>`}
+        </div>
+      </nav>`;
     $content.innerHTML = `<div class="learn-page lesson-page bk-view bk-${b.id}">
         ${learnRailHtml(b, c)}
         <div class="bk-body">
+          ${mnav}
           <header class="bk-bars">
             <a class="bk-bars-cover" href="${learnHash(b)}" aria-label="${escapeAttr(b.title)}: contents">${bookCoverHtml(b, "s")}</a>
             ${bar1}
@@ -5387,6 +5419,8 @@
         </div>
       </div>`;
     wireLearnRail($content);
+    const msel = $content.querySelector(".bk-mnav-sel");
+    if (msel) msel.addEventListener("change", () => { location.hash = msel.value; });
     renderMath($content);
   }
 
@@ -6404,9 +6438,10 @@
     DB_TREE[fam][year].forEach(p => { (groups[p.cname] = groups[p.cname] || []).push(p); });
     // Spring before Fall within a year (2021 had both), then A before B.
     const seasonRank = gn => /^Spring\b/i.test(gn) ? 0 : /^Fall\b/i.test(gn) ? 1 : 0;
-    const body = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b)).map(gn => {
+    const gnames = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b));
+    const body = gnames.map((gn, k) => {
       const ps = groups[gn].sort((a, b) => a.num - b.num);
-      return `<div class="db-group"><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
+      return `<div class="db-group${k === 0 ? " is-shown" : ""}" data-g="${k}"><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
     }).join("");
     const i = years.indexOf(year);
     const newer = years[i - 1], older = years[i + 1];
@@ -6418,12 +6453,29 @@
         <h2>${escapeAttr(fam)} <span class="db-main-year">${year}</span></h2>
       </div>
       <div class="ct-years ct-years-page">${years.map(y => `<a href="${yhref(y)}"${y === year ? ' aria-current="page"' : ""}>${y}</a>`).join("")}</div>
+      <div class="ct-yearbar" aria-label="Year">
+        ${older ? `<a class="ct-yb-step" href="${yhref(older)}" aria-label="${older}">&#8249;</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">&#8249;</span>`}
+        <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
+        ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">&#8250;</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">&#8250;</span>`}
+      </div>
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist">${gnames.map((gn, k) => `<button type="button" role="tab" data-g="${k}" aria-selected="${k === 0}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">&larr; Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
         ${newer ? `<a class="topic-step topic-step-next" href="${yhref(newer)}"><span class="ts-dir">Later &rarr;</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
       </nav>`;
     renderMath($content);
+    // The phone's year bar and paper toggle (owner, 2026-10-31); the wide page shows the year
+    // chips and every paper of the year at once.
+    const sel = $content.querySelector(".ct-yb-select");
+    if (sel) sel.addEventListener("change", () => { location.hash = yhref(+sel.value); });
+    const tabs = $content.querySelector(".ct-papers");
+    if (tabs) tabs.addEventListener("click", e => {
+      const b = e.target.closest("[data-g]");
+      if (!b) return;
+      tabs.querySelectorAll("[data-g]").forEach(t => t.setAttribute("aria-selected", String(t === b)));
+      $content.querySelectorAll(".db-group").forEach(g => g.classList.toggle("is-shown", g.dataset.g === b.dataset.g));
+    });
   }
   // The AoPS "See also" box, rebuilt against our own data: the sitting, previous and next,
   // and every problem number in the paper. Numbers we have not tagged are shown but inert, so
@@ -7303,7 +7355,7 @@
     // Practice links go to other surfaces, so they are plain links, not section rows (the
     // section-row click handling would read them as a section with no id).
     const practiceRows = `
-      <a class="nav-practice-link" href="#/practice">Contests</a>
+      <a class="nav-practice-link" href="#/practice" data-goto="pr-contests" data-goto-center>Contests</a>
       <a class="nav-practice-link" href="#/special/randomproblem">A random problem</a>`;
     const learnRows = `
       <a class="nav-practice-link" href="#/learn" data-goto="learn-books">Textbooks</a>
@@ -7624,9 +7676,32 @@
   // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
   // open the subject last visited in them.
   const $spaceSwitch = document.getElementById("space-switch");
+  // On a narrow phone, Formulas, Methods and Patterns sit behind one Reference menu (owner,
+  // 2026-10-31); a wider screen never shows it.
+  const $refBtn = document.getElementById("space-ref-btn"), $refMenu = document.getElementById("space-ref-menu");
+  const closeRefMenu = () => { if ($refMenu && !$refMenu.hidden) { $refMenu.hidden = true; $refBtn.setAttribute("aria-expanded", "false"); } };
+  if ($refBtn && $refMenu) {
+    $refBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      $refMenu.hidden = !$refMenu.hidden;
+      $refBtn.setAttribute("aria-expanded", String(!$refMenu.hidden));
+    });
+    document.addEventListener("click", e => { if (!e.target.closest(".space-ref")) closeRefMenu(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeRefMenu(); });
+  }
+  // A phone's search box gets a short placeholder; the long one would be cut off.
+  (() => {
+    const box = document.getElementById("search-input"), mq = window.matchMedia && window.matchMedia("(max-width: 760px)");
+    if (!box || !mq) return;
+    const long = box.getAttribute("placeholder");
+    const fit = () => box.setAttribute("placeholder", mq.matches ? "Search\u2026" : long);
+    fit();
+    if (mq.addEventListener) mq.addEventListener("change", fit);
+  })();
   if ($spaceSwitch) $spaceSwitch.addEventListener("click", e => {
     const b = e.target.closest("[data-space-go]");
     if (!b) return;
+    closeRefMenu();
     clearSearch();
     closeDrawer();
     state.landing = false;
@@ -7750,14 +7825,21 @@
   document.addEventListener("click", e => {
     const a = e.target.closest("a[data-goto]");
     if (!a) return;
-    seekPart(a.getAttribute("data-goto"));
+    closeDrawer();
+    seekPart(a.getAttribute("data-goto"), a.hasAttribute("data-goto-center"));
   });
-  function seekPart(id) {
+  function seekPart(id, center) {
     let tries = 0;
     const seek = () => {
       const el = document.getElementById(id);
       if (el) {
-        if (el.tagName === "INPUT") {
+        if (center) {
+          // Centred in the screen below the top bar (Practice's Contests link, owner, 2026-10-31).
+          const bar = document.querySelector(".topbar"), barH = bar ? bar.offsetHeight : 0;
+          const r = el.getBoundingClientRect(), room = window.innerHeight - barH;
+          const top = r.top + window.scrollY - barH - Math.max(14, (room - r.height) / 2);
+          window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+        } else if (el.tagName === "INPUT") {
           (el.closest(".hp-panel") || el).scrollIntoView({ block: "center" });
           el.focus({ preventScroll: true });
         } else {
