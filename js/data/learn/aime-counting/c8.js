@@ -84,7 +84,7 @@ Choose bounding lines when the shapes are axis-parallel rectangles, and organize
       related: [
         { card: "power-sums", note: String.raw`sums of squares and cubes that total the squares of each size.` },
         { card: "counting-shapes", note: String.raw`counting triangles and other shapes in a figure (G7.5).` },
-        { card: "floor-basics", note: String.raw`counting positions under a curve with floors (A4.2).` }
+        { card: "floor-basics", note: String.raw`counting positions under a curve with floors (A4.3).` }
       ],
       exercises: [
         { q: String.raw`How many rectangles, with sides along the grid lines, are there in a $5 \times 5$ grid of unit squares?`, answer: "225",

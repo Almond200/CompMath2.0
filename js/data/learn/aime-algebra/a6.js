@@ -132,7 +132,7 @@ Use the factored form whenever a problem asks for a product, or a sum of logarit
         { card: "vietas-general", note: String.raw`the coefficients of the factored form, read as sums and products of the roots (B2.2).` },
         { card: "chord-length", note: String.raw`$|1 - e^{i\theta}| = 2\sin\tfrac\theta2$, turning distances into sines.` },
         { card: "evenly-spaced-angle-products", note: String.raw`products of sines and cosines at evenly spaced angles, from the same factorization (A9.4).` },
-        { card: "comparing-coefficients", note: String.raw`the other way to use the factored form: expand and match ((A2.6)).` }
+        { card: "comparing-coefficients", note: String.raw`the other way to use the factored form: expand and match (A2.6).` }
       ],
       exercises: [
         { q: String.raw`Find the product of the roots of $z^4 + 4 = 0$ that have positive real part.`, answer: "2",

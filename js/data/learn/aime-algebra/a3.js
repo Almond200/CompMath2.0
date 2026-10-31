@@ -43,8 +43,8 @@ For the Fibonacci numbers, $x^2 = x + 1$ has roots $\varphi = \tfrac{1 + \sqrt5}
 A closed form is not always the fastest route. With only a few terms needed, or an unknown starting value, running the recurrence directly, carrying the unknown as a symbol, is often quicker, as when $u_6 = 128$ is given and $u_5$ is wanted. The signal for a closed form is a far term, a growth rate, or an identity among the terms.`,
       related: [
         { card: "first-order-recurrence", note: String.raw`the one-term case $a_n = pa_{n-1} + q$, solved by shifting to a geometric sequence.` },
-        { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic ((N7.5)).` },
-        { card: "reciprocal-power-sums", note: String.raw`$x^n + x^{-n}$ satisfies a linear recurrence in $n$ ((A1.4)).` }
+        { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic (N7.5).` },
+        { card: "reciprocal-power-sums", note: String.raw`$x^n + x^{-n}$ satisfies a linear recurrence in $n$ (A1.4).` }
       ],
       exercises: [
         { q: String.raw`A sequence has $a_0 = 2$, $a_1 = 5$, and $a_n = 5a_{n-1} - 6a_{n-2}$. Find $a_5$.`, answer: "275",
@@ -71,7 +71,7 @@ The signal is a long sum or product whose terms have a regular form, especially 
       related: [
         { card: "difference-of-squares", note: String.raw`the factorization that drives telescoping products like $(3 - 2)(3 + 2)(3^2 + 2^2)\cdots$.` },
         { card: "arctan-telescoping", note: String.raw`telescoping sums of inverse tangents (A7.4).` },
-        { card: "change-of-base", note: String.raw`products of logarithms that telescope after a change of base (A4.3).` }
+        { card: "change-of-base", note: String.raw`products of logarithms that telescope after a change of base (A4.4).` }
       ],
       exercises: [
         { q: String.raw`Find $\displaystyle\sum_{k=1}^{99} \frac{1}{k(k+1)}$.`, answer: "99/100",
@@ -95,7 +95,7 @@ A [[double-summation|double sum]] adds a number for every pair of indices in a r
 The signal is a sequence given by its first terms, a sum of polynomial values, or a sum over pairs of indices.`,
       related: [
         { card: "power-sums", note: String.raw`closed forms for $\sum k$, $\sum k^2$, $\sum k^3$, which a double sum often reduces to.` },
-        { card: "lagrange-interpolation", note: String.raw`the polynomial through given values, the other route from a table to a formula ((A2.6)).` },
+        { card: "lagrange-interpolation", note: String.raw`the polynomial through given values, the other route from a table to a formula (A2.6).` },
         { card: "hockey-stick", note: String.raw`sums down a diagonal of Pascal's triangle, which finite differences of binomial coefficients produce.` }
       ],
       exercises: [

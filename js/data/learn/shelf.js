@@ -768,28 +768,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A4.2",
       "title": "Composition, inverses, symmetry of a function",
       "level": "Core"
      },
      {
-      "code": "A4.2",
+      "code": "A4.3",
       "title": "Piecewise and absolute-value functions, floors and ceilings",
       "level": "Core"
      },
      {
-      "code": "A4.3",
+      "code": "A4.4",
       "title": "Exponential equations; logarithm laws and domains",
       "level": "Core"
      },
      {
-      "code": "A4.4",
+      "code": "A4.5",
       "title": "Functional identities of contest length",
       "level": "Core II"
      },
      {
-      "code": "A4.5",
+      "code": "A4.6",
       "title": "Graphs, monotonicity, and the number of solutions",
       "level": "Core"
+     },
+     {
+      "code": "A4.7",
+      "title": "Summary"
      }
     ]
    },

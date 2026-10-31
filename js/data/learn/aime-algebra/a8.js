@@ -21,7 +21,7 @@ Finally, the [[pairwise-sum-product|product of the pairwise sums]] is $(x + y)(y
 
 When a problem in three variables looks messy, ask what happens if two of them are equal, or if they add to zero, and whether a known factorization is hiding. The next lesson uses factorizations to force integer answers.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`rewriting any symmetric expression in the elementary symmetric sums ((A1.2)).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`rewriting any symmetric expression in the elementary symmetric sums (A1.2).` },
         { card: "sos-identity", note: String.raw`the second factor of $a^3 + b^3 + c^3 - 3abc$ as half a sum of squares (A5.3).` },
         { card: "factor-remainder-theorem", note: String.raw`a polynomial that vanishes when $a = b$ has the factor $a - b$.` },
         { card: "vietas-general", note: String.raw`reading $e_1$, $e_2$, $e_3$ off a cubic (B2.2).` }
@@ -95,7 +95,7 @@ In all these problems, write the condition on the roots in terms of the paramete
       related: [
         { card: "quadratic-formula", note: String.raw`the discriminant as the count of real roots.` },
         { card: "tangency-condition", note: String.raw`a line tangent to a curve as a double root of their intersection equation.` },
-        { card: "log-rules", note: String.raw`the domains that remove roots of a cleared logarithmic equation (A4.3).` },
+        { card: "log-rules", note: String.raw`the domains that remove roots of a cleared logarithmic equation (A4.4).` },
         { card: "vertex-form", note: String.raw`the vertex as the axis that both roots straddle.` }
       ],
       exercises: [
@@ -131,10 +131,10 @@ The third step is checking. Each method has a typical error: a substitution can 
 
 The problems below are mixed on purpose, in rising order of difficulty, and each needs ideas from at least two chapters. The extension chapter that follows collects topics that go beyond the AIME syllabus.`,
       related: [
-        { card: "newtons-sums", note: String.raw`power sums of roots from the coefficients ((A2.3)).` },
-        { card: "log-substitution", note: String.raw`turning an exponential or logarithmic equation into a polynomial (A4.3).` },
+        { card: "newtons-sums", note: String.raw`power sums of roots from the coefficients (A2.3).` },
+        { card: "log-substitution", note: String.raw`turning an exponential or logarithmic equation into a polynomial (A4.4).` },
         { card: "roots-of-unity", note: String.raw`recognizing the roots of a geometric-series polynomial (A6.3).` },
-        { card: "comparing-coefficients", note: String.raw`reading a system as one polynomial identity ((A2.6)).` }
+        { card: "comparing-coefficients", note: String.raw`reading a system as one polynomial identity (A2.6).` }
       ],
       exercises: [
         { q: String.raw`Find the product of the positive real solutions of $x^{\log_{10} x} = 100x$.`, answer: "10",

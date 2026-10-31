@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A3 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A4 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -870,11 +870,13 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A4.1 Composition, inverses, symmetry of a function (Core) | `inverse-function-properties`, `odd-even-functions`, `function-symmetry-equation`, `fx-pairing` |
-| A4.2 Piecewise and absolute-value functions, floors and ceilings (Core) | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range`, `abs-value-graphing` |
-| A4.3 Exponential equations; logarithm laws and domains (Core) | `log-rules`, `change-of-base`, `exponent-laws`, `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` |
-| A4.4 Functional identities of contest length (Core II) | `functional-substitution`, *(pattern)* `defined-operation` |
-| A4.5 Graphs, monotonicity, and the number of solutions (Core) | `piecewise-graph-counting`, *(pattern)* `reading-graphs` |
+| A4.1 Introduction | no card (the chapter's opening page: composition, inverses and symmetry, floors and absolute values, logarithms, functional equations, graphs, with comprehension problems) |
+| A4.2 Composition, inverses, symmetry of a function (Core) | `inverse-function-properties`, `odd-even-functions`, `function-symmetry-equation`, `fx-pairing` |
+| A4.3 Piecewise and absolute-value functions, floors and ceilings (Core) | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range`, `abs-value-graphing` |
+| A4.4 Exponential equations; logarithm laws and domains (Core) | `log-rules`, `change-of-base`, `exponent-laws`, `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` |
+| A4.5 Functional identities of contest length (Core II) | `functional-substitution`, *(pattern)* `defined-operation` |
+| A4.6 Graphs, monotonicity, and the number of solutions (Core) | `piecewise-graph-counting`, *(pattern)* `reading-graphs` |
+| A4.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A4.8 Review Problems and A4.9 Challenge Problems |
 
 ### A5. Inequalities and bounds (Core)
 

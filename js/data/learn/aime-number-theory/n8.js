@@ -35,13 +35,13 @@ The lessons take these ideas in turn: Lucas's theorem (N8.2), Hensel lifting (N8
 
 [[lucas-theorem|Lucas's theorem]] says that $\binom mn \equiv \prod_i \binom{m_i}{n_i} \pmod p$, where $m_i$ and $n_i$ are the base-$p$ digits of $m$ and $n$. It comes from the freshman's dream: $(1 + x)^{p} \equiv 1 + x^p$, so $(1 + x)^m = \prod_i \left( (1 + x)^{p^i} \right)^{m_i} \equiv \prod_i (1 + x^{p^i})^{m_i}$, and the coefficient of $x^n$ on the right picks one term from each factor, the one with exponent $n_i p^i$. A factor $\binom{m_i}{n_i}$ is $0$ whenever $n_i > m_i$, so $\binom{10}{3} \equiv 0 \pmod 3$: in base $3$, $10 = 101_3$ and $3 = 010_3$, and the middle digit of $3$ exceeds that of $10$. Modulo $2$ every factor is $0$ or $1$, so $\binom mn$ is odd exactly when every binary $1$ of $n$ sits where $m$ also has a $1$; for each $1$ of $m$ the digit of $n$ is free, which gives [[pascal-parity|$2^{s_2(m)}$ odd entries in row $m$]].
 
-[[kummers-theorem|Kummer's theorem]] gives the exact power: $v_p\binom{m + n}{m}$ equals the number of carries when $m$ and $n$ are added in base $p$. This is the floor-sum formula of (N4.4) read digit by digit, since each term of that sum is $1$ exactly when the corresponding digit position carries. For $50 + 50 = 100$ in binary, $110010 + 110010 = 1100100$ carries three times, so $v_2\binom{100}{50} = 3$.
+[[kummers-theorem|Kummer's theorem]] gives the exact power: $v_p\binom{m + n}{m}$ equals the number of carries when $m$ and $n$ are added in base $p$. This is the floor-sum formula of N4.4 read digit by digit, since each term of that sum is $1$ exactly when the corresponding digit position carries. For $50 + 50 = 100$ in binary, $110010 + 110010 = 1100100$ carries three times, so $v_2\binom{100}{50} = 3$.
 
 These tools matter when a problem works modulo a prime with Pascal's triangle, as in counting the ways to fill a triangle's bottom row so that its top entry is divisible by $3$.`,
       related: [
-        { card: "prime-divides-binomial", note: String.raw`the case $\binom pk$, and the Legendre-sum formula that Kummer refines ((N4.4)).` },
-        { card: "freshmans-dream", note: String.raw`$(1 + x)^p \equiv 1 + x^p$, the identity behind Lucas's theorem ((N7.3)).` },
-        { card: "base-conversion", note: String.raw`writing $m$ and $n$ in base $p$ ((N6.2)).` }
+        { card: "prime-divides-binomial", note: String.raw`the case $\binom pk$, and the Legendre-sum formula that Kummer refines (N4.4).` },
+        { card: "freshmans-dream", note: String.raw`$(1 + x)^p \equiv 1 + x^p$, the identity behind Lucas's theorem (N7.3).` },
+        { card: "base-conversion", note: String.raw`writing $m$ and $n$ in base $p$ (N6.2).` }
       ],
       exercises: [
         { q: String.raw`How many entries of row $100$ of Pascal's triangle ($\binom{100}{0}$ to $\binom{100}{100}$) are odd?`, answer: "8",
@@ -66,7 +66,7 @@ The signal is a polynomial congruence modulo a prime power or a number with larg
       related: [
         { card: "crt", note: String.raw`splitting the modulus into prime powers before lifting (N2.5).` },
         { card: "crt-solution-counting", note: String.raw`counting solutions as a product over prime powers, where Hensel gives each count (N2.6).` },
-        { card: "lte-lemma", note: String.raw`a lifting argument for valuations of $a^n - b^n$ ((N4.5)).` }
+        { card: "lte-lemma", note: String.raw`a lifting argument for valuations of $a^n - b^n$ (N4.5).` }
       ],
       exercises: [
         { q: String.raw`List the solutions of $x^2 \equiv -1 \pmod{25}$ with $0 \le x < 25$.`, answer: "7, 18",
@@ -83,14 +83,14 @@ The signal is a polynomial congruence modulo a prime power or a number with larg
       cards: ["primitive-roots", "quadratic-reciprocity"],
       body: String.raw`Modulo a prime $p$ there is always a single residue whose powers run through every nonzero residue; modulo $7$ the powers of $3$ are $3, 2, 6, 4, 5, 1$. Such a residue is a [[primitive-roots|primitive root]], and with one in hand every nonzero residue is a power of it, so multiplication modulo $p$ becomes addition of exponents modulo $p - 1$. The other structural fact of this lesson relates the question "is $p$ a square modulo $q$?" to the reverse question, which is [[quadratic-reciprocity|quadratic reciprocity]].
 
-A primitive root modulo $p$ is a residue of order exactly $p - 1$. One always exists, and there are $\varphi(p - 1)$ of them: modulo $13$ there are $\varphi(12) = 4$. Primitive roots exist modulo $1$, $2$, $4$, $p^k$, and $2p^k$ for odd primes $p$, and modulo no other number. Their use in problems is to turn a statement about powers into one about exponents: $x^k \equiv a$ has a solution exactly when the exponent of $a$ is divisible by $\gcd(k, p - 1)$, and then it has $\gcd(k, p - 1)$ solutions. In particular exactly half the nonzero residues are squares, the even powers of the primitive root, which recovers (N7.2).
+A primitive root modulo $p$ is a residue of order exactly $p - 1$. One always exists, and there are $\varphi(p - 1)$ of them: modulo $13$ there are $\varphi(12) = 4$. Primitive roots exist modulo $1$, $2$, $4$, $p^k$, and $2p^k$ for odd primes $p$, and modulo no other number. Their use in problems is to turn a statement about powers into one about exponents: $x^k \equiv a$ has a solution exactly when the exponent of $a$ is divisible by $\gcd(k, p - 1)$, and then it has $\gcd(k, p - 1)$ solutions. In particular exactly half the nonzero residues are squares, the even powers of the primitive root, which recovers N7.2.
 
 Quadratic reciprocity says that for distinct odd primes $p$ and $q$, $p$ is a square modulo $q$ exactly when $q$ is a square modulo $p$, unless both are $3 \pmod 4$, in which case exactly one of the two holds. With the companion rules that $-1$ is a square modulo $p$ exactly when $p \equiv 1 \pmod 4$ and $2$ is a square exactly when $p \equiv \pm 1 \pmod 8$, it decides any quadratic residue question by flipping and reducing. For instance, $5$ is a square modulo $11$ because $11 \equiv 1$ is a square modulo $5$; indeed $4^2 = 16 \equiv 5 \pmod{11}$. And $3$ is not a square modulo $7$: both are $3 \pmod 4$, so the answer is the opposite of whether $7 \equiv 1$ is a square modulo $3$, which it is.
 
 These results rarely appear by name on the AIME, but they explain the patterns that problems about orders and residues rely on.`,
       related: [
         { card: "multiplicative-order", note: String.raw`a primitive root is a residue of the largest possible order (N3.4).` },
-        { card: "eulers-criterion", note: String.raw`the test $a^{(p-1)/2} \equiv \pm 1$ that reciprocity speeds up ((N7.2)).` },
+        { card: "eulers-criterion", note: String.raw`the test $a^{(p-1)/2} \equiv \pm 1$ that reciprocity speeds up (N7.2).` },
         { card: "eulers-totient", note: String.raw`there are $\varphi(p - 1)$ primitive roots modulo $p$ (N3.5).` }
       ],
       exercises: [
@@ -110,11 +110,11 @@ These results rarely appear by name on the AIME, but they explain the patterns t
 
 A [[pell-equation|Pell equation]] $x^2 - Dy^2 = 1$, for a positive non-square $D$, has infinitely many solutions in positive integers, all generated from the smallest one $(x_1, y_1)$ by $x_n + y_n\sqrt D = (x_1 + y_1 \sqrt D)^n$. For $D = 2$, $(3 + 2\sqrt2)^2 = 17 + 12\sqrt2$. A question such as "which triangular numbers are squares" becomes Pell after completing the square: $\tfrac{n(n+1)}{2} = m^2$ gives $(2n + 1)^2 - 8m^2 = 1$. More general [[binary-quadratic-forms|quadratic forms]] $ax^2 + bxy + cy^2$ are studied the same way, by the values they can take.
 
-Sums of squares extend from two to three. A number is a [[sum-of-three-squares|sum of three squares]] unless it has the form $4^a(8b + 7)$; up to $100$ that excludes $15$ numbers, starting with $7$, $15$, $23$, and $28$. The two-square theorem of (N5.5) has a cleaner proof in the [[gaussian-integers|Gaussian integers]] $a + bi$, where $a^2 + b^2 = (a + bi)(a - bi)$ and primes $\equiv 1 \pmod 4$ split into two conjugate factors.
+Sums of squares extend from two to three. A number is a [[sum-of-three-squares|sum of three squares]] unless it has the form $4^a(8b + 7)$; up to $100$ that excludes $15$ numbers, starting with $7$, $15$, $23$, and $28$. The two-square theorem of N5.5 has a cleaner proof in the [[gaussian-integers|Gaussian integers]] $a + bi$, where $a^2 + b^2 = (a + bi)(a - bi)$ and primes $\equiv 1 \pmod 4$ split into two conjugate factors.
 
 Four further results each answer one kind of question. [[zeckendorf-theorem|Zeckendorf's theorem]]: every positive integer is uniquely a sum of non-consecutive Fibonacci numbers, as $100 = 89 + 8 + 3$. [[mobius-inversion|Möbius inversion]] recovers a function from its sums over divisors, with $\mu(n)$ equal to $(-1)^k$ for a product of $k$ distinct primes and $0$ otherwise, so $\mu(30) = -1$; it is how $\varphi$ is counted by inclusion and exclusion. [[bertrands-postulate|Bertrand's postulate]] guarantees a prime between $n$ and $2n$. The [[farey-sequences|Farey sequence]] of order $n$ lists the reduced fractions in $[0, 1]$ with denominators up to $n$, $1 + \sum_{k \le n} \varphi(k)$ of them, and neighbors $\tfrac ab < \tfrac cd$ in it satisfy $bc - ad = 1$. The Summary (N8.6) collects the chapter's strategies.`,
       related: [
-        { card: "sum-of-two-squares", note: String.raw`the two-square theorem that Gaussian integers prove and three squares extend ((N5.5)).` },
+        { card: "sum-of-two-squares", note: String.raw`the two-square theorem that Gaussian integers prove and three squares extend (N5.5).` },
         { card: "eulers-totient", note: String.raw`the count of Farey fractions, and the function Möbius inversion recovers (N3.5).` },
         { card: "triangular-numbers", note: String.raw`square triangular numbers, the classic source of a Pell equation.` }
       ],

@@ -19,7 +19,7 @@ The [[triangle-inequality|triangle inequality]] says each side is less than the 
 Look for similar triangles and right triangles, and use the special ratios. The next lesson brings in circles.`,
       related: [
         { card: "parallel-line-similarity", note: String.raw`drawing a parallel line to create similar triangles (G1.1).` },
-        { card: "pythagorean-triples", note: String.raw`integer right triangles ((N5.5)).` },
+        { card: "pythagorean-triples", note: String.raw`integer right triangles (N5.5).` },
         { card: "law-of-cosines", note: String.raw`the Pythagorean theorem for any angle (B5.4).` }
       ],
       exercises: [
@@ -89,7 +89,7 @@ Place figures so that coordinates are simple, then compute with these formulas. 
       related: [
         { card: "coordinate-bash", note: String.raw`choosing good coordinates for a figure (G4.1).` },
         { card: "shoelace-formula", note: String.raw`areas from coordinates (G4.3).` },
-        { card: "completing-the-square", note: String.raw`reading a circle's center and radius from its equation ((A1.4)).` }
+        { card: "completing-the-square", note: String.raw`reading a circle's center and radius from its equation (A1.4).` }
       ],
       exercises: [
         { q: String.raw`Find the distance between $(1, 2)$ and $(7, 10)$.`, answer: "10",

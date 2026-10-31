@@ -16,9 +16,9 @@ The [[reduction-identities|reduction identities]] relate the functions at relate
 
 These identities are the first thing to try in any trigonometric expression: rewrite in sines and cosines, reduce the angles, and use the Pythagorean identity to trade squares. The next lesson adds the formulas for sums and multiples of angles.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`the same sum-and-product bookkeeping as for $x + y$ and $xy$ ((A1.2)).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`the same sum-and-product bookkeeping as for $x + y$ and $xy$ (A1.2).` },
         { card: "special-right-triangles", note: String.raw`the triangles that give the common angle values.` },
-        { card: "fx-pairing", note: String.raw`pairing $k^\circ$ with $(90 - k)^\circ$ is pairing symmetric terms (A4.1).` },
+        { card: "fx-pairing", note: String.raw`pairing $k^\circ$ with $(90 - k)^\circ$ is pairing symmetric terms (A4.2).` },
         { card: "golden-ratio-pentagon", note: String.raw`where $\cos 36^\circ = \tfrac{1 + \sqrt5}{4}$ comes from.` }
       ],
       exercises: [
@@ -94,8 +94,8 @@ The [[inverse-trig-identities|inverse trigonometric functions]] return a single 
 
 When a trigonometric equation asks for a count or a sum of solutions, write the general solution with an integer parameter before doing anything else, and count parameters. The last lesson of the chapter uses trigonometry to do algebra.`,
       related: [
-        { card: "floor-basics", note: String.raw`counting the integers $k$ that put a solution in an interval (A4.2).` },
-        { card: "piecewise-graph-counting", note: String.raw`counting solutions by drawing both sides when no formula splits the equation (A4.5).` },
+        { card: "floor-basics", note: String.raw`counting the integers $k$ that put a solution in an interval (A4.3).` },
+        { card: "piecewise-graph-counting", note: String.raw`counting solutions by drawing both sides when no formula splits the equation (A4.6).` },
         { card: "double-angle", note: String.raw`the identity that most often factors a trigonometric equation (A7.2).` }
       ],
       exercises: [
@@ -131,7 +131,7 @@ Doubling identities make two more telescopes. From $\cot\theta - \cot 2\theta = 
 
 Look for a telescope whenever a trigonometric sum or product runs over many evenly spaced or doubling angles, and for a substitution whenever an algebraic expression has the shape of an identity. The next chapter brings together the algebraic structures of the whole book.`,
       related: [
-        { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson ((A3.3)).` },
+        { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson (A3.3).` },
         { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.3).` },
         { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.4).` },
         { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.4).` }
