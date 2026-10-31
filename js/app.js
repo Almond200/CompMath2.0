@@ -5016,9 +5016,8 @@
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
     return `<section class="hp-panel hm-glance">
-        <div class="hp-label">Practice at a glance</div>
+        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice">See all &rarr;</a></div>
         <div class="pg-list">${rows}</div>
-        <div class="hp-mine-foot"><a href="#/special/randomproblem">A random problem</a><a href="#/practice">Every contest and year</a></div>
       </section>`;
   }
 

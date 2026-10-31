@@ -3839,6 +3839,7 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hm-h, .home .hp-label { margin: 0 0 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .hm-h-row { display: flex; justify-content: space-between; align-items: baseline; }
 .hm-more { font-size: 12.5px; font-weight: 650; color: var(--c-learn); text-decoration: none; }
+.hm-more-practice { color: var(--c-practice); }
 /* Problem of the day: the whole section opens the problem. On hover its background is filled in
    a rectangle, like a card row's (owner, 2026-10-31). The section reaches 12px past the column
    on each side so its text still lines up with the sections around it. */
