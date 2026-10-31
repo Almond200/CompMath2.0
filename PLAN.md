@@ -48,8 +48,8 @@ The Bridge merged into four AMC books, each running Foundations, Core topics, Ad
 2. The books in turn, starting with Algebra, each written fresh chapter by chapter.
 3. The Bridge removed once the last book replaces it.
 
-### 2. The AIME chapters in the approved structure
-Each AIME chapter gains an X.1 Introduction and a Summary with strategies; its old chapter review becomes Review Problems (mostly our own comprehension problems) and Challenge Problems (the contest problems). Lesson numbers shift by one, so cross-references such as "(C5.3)" in other chapters are updated with them, as was done for C5.
+### 2. The AIME chapters in the approved structure: done (eighteenth chat)
+Every chapter of the four AIME books has an X.1 Introduction, a Summary with strategies, Review Problems and Challenge Problems, and a tag on every lesson; cross-references were renumbered. The Bridge was not converted, since step 1 removes it.
 
 ### 3. Still open from the first plan
 - At the end of a chapter, a "Practice more" link into Practice; on a problem page, "Study this in Learn" where a lesson covers the problem's key card (L7; not built).
