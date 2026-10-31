@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Settings preview: three screens at a time, larger, with an arrow on each side to step through the four; pointing at a setting brings the screen it changes into view; the dividing line sits close to the settings, so the screens get the room.
 - Lists: page tools under "On this list" in a list's sidebar: Back to top, Copy link to this list, Print this list.
 - The owner approved the C5 pilot: the chapter structure (Introduction, lessons, Summary with Problem Solving Strategies, Review Problems, Challenge Problems) is now the standard for every new or reworked chapter (CONVENTIONS §14). PLAN's Current state rewritten for the next chat: the next work is the AMC books' second plan and moving the AIME chapters to the approved structure.
 - Fixes: math in a Summary's Problem Solving Strategies is typeset; the settings search underlines a setting only after the page has finished scrolling to it.

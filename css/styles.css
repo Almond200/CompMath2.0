@@ -3420,7 +3420,17 @@ html[data-density="compact"] .set-row { padding: 8px 0; }
 .set-preview[data-focus] .pv-screen { opacity: 0.35; }
 .set-preview[data-focus~="browse"] .pv-screen[data-pv="browse"],
 .set-preview[data-focus~="page"] .pv-screen[data-pv="page"],
-.set-preview[data-focus~="subject"] .pv-screen[data-pv="subject"] { opacity: 1; }
+.set-preview[data-focus~="subject"] .pv-screen[data-pv="subject"],
+.set-preview[data-focus~="problem"] .pv-screen[data-pv="problem"] { opacity: 1; }
+.pv-track { display: flex; flex-direction: column; gap: 8px; align-self: stretch; align-items: center; }
+.pv-screen[hidden] { display: none; }
+/* The arrows that step through the screens, one on each side of the panel. */
+.pv-nav { position: absolute; top: 50%; width: 30px; height: 30px; margin-top: -15px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); color: var(--text-dim); font-size: 20px; line-height: 1; cursor: pointer; }
+.pv-nav:hover:not(:disabled) { color: var(--text); border-color: var(--border-light); }
+.pv-nav:disabled { opacity: 0.3; cursor: default; }
+.pv-prev { left: 8px; }
+.pv-next { right: 8px; }
 .pv-frame { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); pointer-events: none; user-select: none; }
 .pv-inner { position: absolute; top: 0; left: 0; width: 1100px; height: 640px; overflow: hidden; transform-origin: 0 0; padding: 24px 22px; box-sizing: border-box; }
 html[data-density="compact"] .pv-inner { padding: 16px 16px; }
