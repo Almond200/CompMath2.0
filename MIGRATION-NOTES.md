@@ -1,6 +1,6 @@
 # Notes from the previous chat
 
-The app moved here from an earlier conversation. These are that chat's answers (2026-10-16) to the questions this session asked about the app's history. The previous chat's memory reached back only to about 2026-10-11, and answers marked "unknown" were things only the owner knows. The rules among them are also folded into `CONVENTIONS.md` and `PLAN.md`.
+The app moved here from an earlier conversation. These are that chat's answers (2026-10-16) to the questions this session asked about the app's history. The previous chat's memory reached back only to about 2026-10-11, and answers marked "unknown" were things only the owner knows. The rules among them are also folded into `CONVENTIONS.md`.
 
 ## 1. Statements and tags
 - **LIVE access.**

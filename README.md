@@ -95,7 +95,7 @@ instead of a search (see Special pages below).
 
 `tools/search-eval.html` runs 187 labelled queries against the live app and diffs every one
 against `tools/eval-baseline.json`. Last run (2026-10-30, fifteenth chat, after a full index rebuild for 765 cards): 157/187 top-1,
-MRR 0.906 (the rebuild for 759 cards earlier that day gave 160/187, 0.910). The index is now rebuilt in the cloud as well as on the Mac (PLAN, Blockers, has the
+MRR 0.906 (the rebuild for 759 cards earlier that day gave 160/187, 0.910). The index is now rebuilt in the cloud as well as on the Mac (CONVENTIONS §13 has the
 commands); the best recorded warm run, on the Mac with an older query set, gave 170/185, MRR
 0.950, with the two probe sets at 64/78 and 48/77.
 **Wait for the semantic vectors to load before reading results**, or the run under-reports
@@ -182,7 +182,7 @@ lexical-only. KaTeX is vendored, so math renders offline either way.
 
 ## Structure
 
-Start with `CLAUDE.md` and `PLAN.md`. `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
+Start with `CLAUDE.md` and `PLAN.md` (`LEARN-OUTLINE.md` holds the planned Learn books). `PLAN.md` opens with "Current state": what is finished, what is in progress, and the next action. It is updated after every major change, so a new chat can pick up from it.
 
 ```
 index.html                     page shell and script order
@@ -286,6 +286,10 @@ to `js/data/connected.js` (CONVENTIONS §12).
 The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps are the same as in `CONTRIBUTING.md`: open it in GitHub Desktop (File, Add Local Repository), commit, and push; or run `git add -A && git commit -m "..." && git push` in Terminal. Do not drag files into a second folder (Finder moves them), and do not use the web uploader once there are more than 100 files.
 
 ## Changelog
+
+**2026-10-31**
+
+- **The Learn track planned (2026-10-31, owner).** The owner's blueprint ("Learn + Practice", revised) adds a Learn section: textbooks of books, chapters and lessons, plus the study lists moved out of Practice. Lessons link the existing cards and problems and never copy them. Checks sit in the reading, and problem sets come at the end of each lesson and chapter. `PLAN.md` is cut to the steps ahead, L0 to L10: outline first, then a spec, navigation, a shell, a pilot chapter, the owner's trial, the rest of the shelf, and the home page last, after approval. Its finished-work history was deleted (this changelog keeps it), and the rules that lived only there moved to CONVENTIONS §13. The owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`. The new `LEARN-OUTLINE.md` holds the draft shelf, the AIME Number Theory book mapped to cards, and the pilot chapter, Modular Exponent Cycles, with five lessons, checks and candidate problems (every number computed). No app file changed.
 
 **2026-10-30**
 
