@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Algebra L12 Trigonometry written.** L12.1 Introduction, L12.2 special values and the identities, L12.3 sums, products and telescoping, L12.4 combining waves and inverse functions, L12.5 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L11 Functional equations, recurrences and inequalities written.** L11.1 Introduction, L11.2 functional equations by substitution, L11.3 linear recurrences, L11.4 finite differences and double sums, L11.5 the mean inequalities and Cauchy-Schwarz, L11.6 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L10 Polynomials for the AMC 12 written.** L10.1 Introduction, L10.2 Vieta for any degree and Newton's sums, L10.3 conjugate and transformed roots, L10.4 remainders and interpolation, L10.5 radicals and reciprocal substitutions, L10.6 factorizations worth knowing, L10.7 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L9 Logarithms and exponential equations written.** L9.1 Introduction, L9.2 the logarithm laws and change of base, L9.3 logarithmic and exponential equations, L9.4 Summary, Review Problems and Challenge Problems.
