@@ -1318,8 +1318,12 @@ a.ptype-chip:hover { border-color: var(--accent); color: var(--accent); }
 .aops-btn:hover { filter: brightness(1.08); }
 /* An AMC or AIME statement, with its credit line directly beneath, small and muted. */
 .prob-st { margin: 14px 0 6px; }
+/* A statement is always shown whole: it never scrolls (overflow-x: auto here once turned on a
+   vertical scrollbar whenever a tall fraction reached past the box). Only a displayed formula
+   too wide for a phone scrolls sideways on its own, and a figure shrinks to fit (owner, 2026-10-31). */
 .prob-statement { font-size: 16px; line-height: 1.65; white-space: pre-line; padding: 16px 18px; background: var(--bg-card);
-  border: 1px solid var(--border); border-radius: 10px; overflow-x: auto; }
+  border: 1px solid var(--border); border-radius: 10px; overflow: visible; }
+.prob-statement img { max-width: 100%; height: auto; }
 html[data-text="large"] .prob-statement { font-size: 18px; }
 html[data-text="larger"] .prob-statement { font-size: 21px; }
 .prob-choice { padding: 7px 0; line-height: 1.7; min-height: 2.2em; }
@@ -2777,16 +2781,6 @@ body.is-landing .content { padding: 0 0 70px; }
 
 /* The problem list: statement, the student's box, then Show Solution */
 .lp-problems { list-style: none; margin: 0; padding: 0; }
-.lp-prob .prob-st { margin: 0 0 10px; }
-/* The statement is plain text in the card, not a box inside it (owner, 2026-10-31). */
-.lp-prob .prob-statement { background: none; border: none; padding: 0; border-radius: 0; }
-.lp-prob .prob-credit { margin: 6px 0 0; }
-/* The work box and Show Solution side by side; the box starts two lines tall, grows with its
-   text, and has no resize handle. */
-.lp-work { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; }
-.lp-work .lp-notes { flex: 1 1 auto; margin: 0; resize: none; overflow: hidden; min-height: 0; }
-.lp-work .lp-show { flex: 0 0 auto; padding: 9px 16px; }
-@media (max-width: 600px) { .lp-work { flex-direction: column; align-items: stretch; } .lp-work .lp-show { align-self: flex-end; } }
 .lp-notes { display: block; width: 100%; box-sizing: border-box; margin: 10px 0 8px; font: inherit; font-size: 14.5px; line-height: 1.5;
   padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); resize: vertical; }
 .lp-notes:focus { outline: none; border-color: var(--c-learn); }
@@ -3695,10 +3689,10 @@ body.is-landing .content { padding: 0 0 50px; }
 .hm-spaces { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); }
 .hm-space { position: relative; display: flex; flex-direction: column; gap: 1px; padding: 12px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); }
 .hm-space:first-child { border-left: none; }
-/* Each tile's coloured bar is a strip of its own, laid over the divider to its left, so the
-   colours meet exactly at the dividers (a border-top met the divider on a slant). */
-.hm-space::before { content: ""; position: absolute; top: 0; left: -1px; right: 0; height: 3px; background: var(--tint); }
-.hm-space:first-child::before { left: 0; }
+/* Each tile's coloured bar is a strip of its own inside the tile, so the grey divider runs the
+   full height to the top and each colour stops exactly at it (a border-top met the divider on
+   a slant, and a strip laid over the divider overran it; owner, 2026-10-31). */
+.hm-space::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--tint); }
 .hm-space:hover { background: var(--tint-soft); }
 .hm-space-name { font-size: 15px; font-weight: 780; color: var(--tint); }
 .hm-space-ask { font-size: 12.5px; color: var(--text-dim); }

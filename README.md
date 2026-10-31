@@ -295,11 +295,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **Problem statements never scroll** (owner, 2026-10-31): the statement box had `overflow-x: auto`, which also turned on a vertical scrollbar whenever a tall fraction reached past it (2025 AIME II #13 in the N3 review). Statements are now always shown whole; only a displayed formula too wide for a phone scrolls sideways on its own, and figures shrink to fit. Checked on the lesson, the review, two problem pages and the home page at 1280 and 375 px. A duplicated block of problem-card rules was removed from the stylesheet.
+- **The space strip's dividers run to the top** (owner, 2026-10-31): each coloured bar now sits inside its tile, so the grey divider is unbroken and the colours stop at it.
 - **The chapter review's note now reads** "Mixed problems from the whole chapter, in rising order of difficulty." (owner, 2026-10-31).
 - **The card preview in a lesson's drawer is drawn like the card itself (2026-10-31, owner: "make it feel more intentional").** It used to paste the raw write-up, so sections the card page draws in their own way (When to use, Formulas it uses, Common traps, Key forms) came out as the old boxed bullets, and the top was the grid thumbnail boxed inside the drawer. The card page's section handling is now one shared helper (`cardSections` and `cardExplanationHtml` in `js/app.js`), and the preview reads: kind and tier, the name with the star and list buttons, the formula at full width, the summary and the first figure, then the explanation in the card page's order and drawing, closed by a link to the full card for its examples, practice problems and links. Checked on three cards at 375, 1280 and 1440 px, light and dark: 0 KaTeX errors, nothing wider than the drawer.
 - **Page tools has "Back to top"** (owner, 2026-10-31): the first item under Tools scrolls the card's page back to the top.
 - **The header's second row is labelled "Lesson"** instead of "Page" (owner, 2026-10-31).
-- **The space strip's coloured bars meet the dividers exactly** (owner, 2026-10-31): each bar is its own strip laid over the divider to its left, instead of a top border that met the divider on a slant.
 - **The problem of the day's statement is plain text too** (owner, 2026-10-31): no shaded box around it on the home page; the credit sits right under it.
 - **A problem's statement is plain text in its card** (owner, 2026-10-31), with no box or grey ground around it, following the rule of no boxes inside boxes.
 - **The bottom links are small and plain** (owner, 2026-10-31): "‹ N3 overview", "Back to top" and "N3.2 Fermat's Little Theorem… ›" are one size, with no card or background until hovered; a long title ends in an ellipsis.
