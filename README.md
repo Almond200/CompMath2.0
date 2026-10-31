@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Settings preview: the problem screen is drawn by the problem page's own code (its chips, statement and credit, source note and link, How this problem works with Show, and the contest strip), and the browsing screen no longer repeats the card-page screen's card. Home: the Textbooks link reads See all.
 - The new-list + and the strategy's Show / Hide keep their colour on hover.
 - Practice: How this problem works has a small "+ Show" / "- Hide" beside its heading, like the new-list +, so the strategy can be opened and closed again (Click to show starts it closed, Shown starts it open).
 - Learn: every book's contents opens with "Contents and Introduction": Contents (this page) and How to Use This Book (#/learn/<book>/how-to-use), which explains the book's approach (it teaches; the cards hold the facts), how a lesson and a chapter are built, what Core, Core II and Extension mean for that book, and how to study with it.
