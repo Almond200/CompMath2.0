@@ -4039,6 +4039,16 @@
       else toast("Copy failed");
     }
   });
+  document.addEventListener("click", e => {
+    const t = e.target.closest(".chain-toggle");
+    if (!t) return;
+    const body = t.closest(".prob-chain").querySelector(".chain-body");
+    if (!body) return;
+    body.hidden = !body.hidden;
+    t.setAttribute("aria-expanded", String(!body.hidden));
+    t.innerHTML = body.hidden ? "+ Show" : "&minus; Hide";
+    if (!body.hidden) { renderMath(body); fitBatch([...body.querySelectorAll(".formula-display[data-latex]")]); }
+  });
   function clearPageToc() {
     const toc = document.getElementById("page-toc");
     if (toc) { toc.innerHTML = ""; toc.hidden = true; }
@@ -4369,7 +4379,7 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
-          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Shown puts them under the problem at once; Click to show keeps them behind a button, so you can try the problem first.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
+          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel" id="set-commands">
           <h3 class="set-panel-title">Commands</h3>
@@ -5288,6 +5298,11 @@
   }
   const lessonNum = l => l.code.split(".")[1];
   function learnRoute(hash) {
+    const how = hash.match(/^#\/learn\/([\w-]+)\/how-to-use$/);
+    if (how) {
+      const book = LEARN_SHELF.find(b => b.id === how[1]);
+      return book ? { type: "learn", book, chapter: null, lesson: null, howto: true, key: how[1] + "/how-to-use" } : null;
+    }
     const m = hash.match(/^#\/learn\/([\w-]+)(?:\/([a-z]\d+)(?:\/(\d+|review|challenge))?)?$/);
     if (!m) return null;
     const book = LEARN_SHELF.find(b => b.id === m[1]);
@@ -5616,7 +5631,14 @@
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
-        <ol class="bk-toc">${b.chapters.map(c => `
+        <ol class="bk-toc">
+          <li class="bk-toc-ch bk-toc-intro">
+            <div class="bk-toc-chh"><span class="bk-toc-t">Contents and Introduction</span></div>
+            <ol class="lb-lessons">
+              <li class="lb-lesson is-current"><a href="${learnHash(b)}" aria-current="page"><span class="lb-title">Contents</span></a></li>
+              <li class="lb-lesson"><a href="${learnHash(b)}/how-to-use"><span class="lb-title">How to Use This Book</span></a></li>
+            </ol>
+          </li>${b.chapters.map(c => `
           <li class="bk-toc-ch">
             <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}</span></span></a>
             <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
@@ -5624,6 +5646,38 @@
         </ol>
       </div>`;
     renderMath($content);
+  }
+
+  // How to Use This Book (owner, 2026-10-31): the book's approach and how its parts work, linked
+  // from the top of its contents.
+  function renderLearnHowTo(b) {
+    const amc = /^amc-/.test(b.id);
+    const text = `This book teaches. The facts themselves live on the reference cards: each formula, method and pattern has one card, with its statement, its conditions, why it is true, and worked examples. A lesson does not copy a card. It explains how a few cards fit together, when to reach for them, and how they are used on real contest problems, and it links each card by name. Press a name to open the card beside the lesson, so you never lose your place. Settings can make the name open the card's own page instead.
+
+## How a chapter is built
+A chapter is a short run of lessons on one theme. Each lesson starts with the cards it teaches and the cards it assumes you know, then explains the idea in one piece, with worked examples. Related cards follow, each with a line on how it connects. Then come the lesson's own problems, with full worked solutions further down the page, and then real contest problems that use the idea.
+
+A chapter ends with problems that mix its lessons, without saying which idea each one needs. In the newer chapters, the first page is an Introduction that gives a short overview of the chapter's ideas, and the last lesson is a Summary with a list of problem solving strategies. Then come Review Problems, which mostly check that the ideas are understood, and Challenge Problems, which are harder.
+
+## What the tags mean
+Every chapter is tagged by how much it matters for ${amc ? "the AMC 10 and 12" : "the AIME"}. Core chapters are needed for ${amc ? "the early and middle problems" : "the early AIME problems"}. Core II chapters are needed for ${amc ? "the hard problems" : "the later AIME problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. Extension chapters are optional, and nothing else in the book depends on them.
+
+## How to use it
+Read the chapters in order if the subject is new to you. If it is not, start at any chapter: the cards it assumes are listed at the top of each lesson, and each one opens in a click.
+
+Try every problem before you look at its solution. A contest problem's Show Solution works only once you have written something in its box, so the attempt comes first. The problems on a page run from easier to harder, and getting stuck on the last ones is expected.
+
+Come back to the strategies. When a problem resists, the chapter's Summary and the lesson that matches its theme are the place to look, and the cards hold every formula in full.
+
+The book remembers the last lesson you opened, in this browser, and the contents page offers to continue from it.`;
+    $content.innerHTML = `<div class="learn-page bk-contents bk-${b.id}">
+        <div class="back-row"><a class="back-link" href="${learnHash(b)}">&larr; ${escapeAttr(b.title)}</a></div>
+        <div class="book-eyebrow">${escapeAttr(b.title)} &middot; Contents and Introduction</div>
+        <h2 class="learn-h">How to Use This Book</h2>
+        <div class="detail-body lp-body bk-howto">${detailBodyHtml(text, "howto:" + b.id)}</div>
+      </div>`;
+    renderMath($content);
+    window.scrollTo({ top: 0 });
   }
 
   function renderLearnChapter(b, c) {
@@ -5931,6 +5985,7 @@
   }
 
   function renderLearn(route) {
+    if (route.howto) { renderLearnHowTo(route.book); return; }
     if (route.lesson || route.review || route.challenge) renderLearnLesson(route.book, route.chapter, route.lesson, route.challenge ? "challenge" : route.review ? "review" : null);
     else if (route.chapter) renderLearnChapter(route.book, route.chapter);
     else renderLearnBook(route.book);
@@ -6871,9 +6926,11 @@
   }
   function chainBoxHtml(p, chainCol, chain, altIds) {
     const inner = chainInnerHtml(p, chainCol, chain, altIds);
-    const hide = state.strategy === "click" && (p.strategy || p.formulas.length);
-    return `<div class="prob-chain"><h4>How this problem works</h4>
-        ${hide ? `<button type="button" class="show-more-btn chain-reveal" onclick="this.nextElementSibling.hidden=false;this.remove()">Show the strategy</button><div class="chain-hidden" hidden>${inner}</div>` : inner}
+    // A small "+ Show" / "- Hide" beside the heading opens and closes the strategy, like the
+    // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
+    const can = !!(p.strategy || p.formulas.length), hide = can && state.strategy === "click";
+    return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" aria-expanded="${!hide}">${hide ? "+ Show" : "&minus; Hide"}</button>` : ""}</div>
+        <div class="chain-body"${hide ? " hidden" : ""}>${inner}</div>
       </div>`;
   }
 

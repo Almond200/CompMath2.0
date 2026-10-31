@@ -295,6 +295,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Practice: How this problem works has a small "+ Show" / "- Hide" beside its heading, like the new-list +, so the strategy can be opened and closed again (Click to show starts it closed, Shown starts it open).
+- Learn: every book's contents opens with "Contents and Introduction": Contents (this page) and How to Use This Book (#/learn/<book>/how-to-use), which explains the book's approach (it teaches; the cards hold the facts), how a lesson and a chapter are built, what Core, Core II and Extension mean for that book, and how to study with it.
 - Settings preview: the screens and their arrows form one block of a comfortable size at the right, and the dividing line sits midway between the settings and that block. Lists: the page tools line up with their heading.
 - Settings search, more forgiving: a setting shows when most of the words are found (ranked by how many and how well), word endings fall away (exports, printing), each setting knows more everyday words (export data, download, json, night, spoiler), and the Commands panel can be found too.
 - Settings: every setting lists its default option first (Strategy now reads Click to show, Shown; Scroll speed Normal, Slow, Fast), from the same defaults the settings loader uses.
