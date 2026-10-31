@@ -81,7 +81,7 @@ A [[subset-avoiding-relation|subset avoiding a relation]] is counted by drawing 
 
 Choose the strength of the condition that is easiest to count, and convert; draw forbidden pairs as a graph; and count totals over subsets element by element. The last lesson of the chapter compares complements with casework.`,
       related: [
-        { card: "non-adjacent-selection", note: String.raw`independent sets in a path, the count for one chain of a forbidden relation (C2.3).` },
+        { card: "non-adjacent-selection", note: String.raw`independent sets in a path, the count for one chain of a forbidden relation (C2.4).` },
         { card: "double-counting", note: String.raw`counting by element instead of by subset is a double count (C4.2).` },
         { card: "binomial-row-sums", note: String.raw`each row of Pascal's triangle sums to $2^n$, the number of subsets (C4.4).` }
       ],
@@ -118,7 +118,7 @@ Sometimes the best route combines the two: count the complement recursively, bui
 
 Before counting, write the condition and its negation, estimate the work for each, and choose the shorter. The review problems that follow mix all the methods of the chapter.`,
       related: [
-        { card: "restricted-sequences", note: String.raw`the count of strings that avoid a pattern, the usual complement for "contains" (C2.3).` },
+        { card: "restricted-sequences", note: String.raw`the count of strings that avoid a pattern, the usual complement for "contains" (C2.4).` },
         { card: "recursive-counting", note: String.raw`counting a complement by building up from smaller cases (C5.2).` },
         { card: "simulate-the-process", note: String.raw`checking a count on a small case that can be listed (C1.6).` }
       ],

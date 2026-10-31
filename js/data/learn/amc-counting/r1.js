@@ -88,7 +88,7 @@ Choose the case split, the complement or inclusion-exclusion, and check on a sma
 Divide for repeats, glue for together, gap for apart, fix one seat for circles. The next lesson distributes identical objects.`,
       related: [
         { card: "pie", note: String.raw`the inclusion-exclusion behind derangements (R1.2).` },
-        { card: "necklace-formula", note: String.raw`circular arrangements with identical beads (C2.2).` },
+        { card: "necklace-formula", note: String.raw`circular arrangements with identical beads (C2.3).` },
         { card: "recursive-counting", note: String.raw`recursions for arrangements (R1.5).` }
       ],
       exercises: [

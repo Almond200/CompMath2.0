@@ -1374,23 +1374,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C2.1",
-      "title": "Permutations, combinations, repeated objects"
+      "title": "Introduction"
      },
      {
       "code": "C2.2",
-      "title": "Circular arrangements and symmetry"
+      "title": "Permutations, combinations, repeated objects"
      },
      {
       "code": "C2.3",
-      "title": "Adjacency and spacing restrictions"
+      "title": "Circular arrangements and symmetry"
      },
      {
       "code": "C2.4",
-      "title": "Stars and bars, with upper and lower bounds"
+      "title": "Adjacency and spacing restrictions"
      },
      {
       "code": "C2.5",
+      "title": "Stars and bars, with upper and lower bounds"
+     },
+     {
+      "code": "C2.6",
       "title": "Choosing positions versus assigning values"
+     },
+     {
+      "code": "C2.7",
+      "title": "Summary"
      }
     ]
    },

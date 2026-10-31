@@ -113,7 +113,7 @@ The skill is to look for the quantity that, once known, turns the problem into a
       related: [
         { card: "double-summation", note: String.raw`swapping the order of a double sum, the same move as counting by element instead of by object (A3.3).` },
         { card: "double-counting", note: String.raw`counting one set two ways, the systematic form of reorganizing a count (C4.2).` },
-        { card: "surjections", note: String.raw`functions that hit every value, counted by inclusion-exclusion (C2.5).` }
+        { card: "surjections", note: String.raw`functions that hit every value, counted by inclusion-exclusion (C2.6).` }
       ],
       exercises: [
         { q: String.raw`How many pairs of integers $(a, b)$ with $1 \le a \lt b \le 20$ satisfy $b - a \le 5$?`, answer: "85",
@@ -145,7 +145,7 @@ A uniform overcount also gives quick probability and existence arguments. If shi
 
 Use this method when the objects are unordered groupings, or when each object has a fixed number of natural "handles" to build it from. The last lesson of the chapter turns to processes that must be run or undone step by step.`,
       related: [
-        { card: "multiset-permutations", note: String.raw`dividing by the orders of identical letters, the same idea for words (C2.1).` },
+        { card: "multiset-permutations", note: String.raw`dividing by the orders of identical letters, the same idea for words (C2.2).` },
         { card: "burnsides-lemma", note: String.raw`the correct count when symmetry makes the overcount uneven (C4.3).` },
         { card: "handshakes-diagonals", note: String.raw`pairs counted from both ends and halved.` }
       ],

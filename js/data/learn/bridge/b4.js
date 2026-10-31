@@ -83,9 +83,9 @@ The [[gap-method|gap method]] handles objects that must be apart: arrange the ot
 
 Divide for identical objects, glue for objects that stay together, and use gaps for objects that stay apart. The last lesson of the chapter turns counts into probabilities.`,
       related: [
-        { card: "non-adjacent-selection", note: String.raw`choosing positions with no two adjacent, the gap method's count (C2.3).` },
-        { card: "circular-permutations", note: String.raw`arrangements around a circle (C2.2).` },
-        { card: "stars-and-bars", note: String.raw`identical objects into groups, another arrangement of two symbols (C2.4).` }
+        { card: "non-adjacent-selection", note: String.raw`choosing positions with no two adjacent, the gap method's count (C2.4).` },
+        { card: "circular-permutations", note: String.raw`arrangements around a circle (C2.3).` },
+        { card: "stars-and-bars", note: String.raw`identical objects into groups, another arrangement of two symbols (C2.5).` }
       ],
       exercises: [
         { q: String.raw`How many different arrangements of the letters of BANANA are there?`, answer: "60",

@@ -46,7 +46,7 @@ Graphs in which every vertex has degree $2$ are unions of cycles, so counting "e
 
 When a problem is about repeating a permutation, about symmetries fixing colorings, or about graphs of degree $2$, write down the cycle type and count by it. The next lesson treats continuous random variables beyond simple regions.`,
       related: [
-        { card: "necklace-formula", note: String.raw`the cycles of a rotation in the necklace count (C2.2).` },
+        { card: "necklace-formula", note: String.raw`the cycles of a rotation in the necklace count (C2.3).` },
         { card: "eulers-totient", note: String.raw`the number of $k$ for which the rotation by $k$ is a single cycle.` },
         { card: "derangements", note: String.raw`permutations with no cycle of length $1$ (C3.2).` }
       ],
@@ -103,7 +103,7 @@ The [[transfer-matrix-method|transfer matrix method]] organizes a several-state 
 
 These tools close the counting book. Each is a reminder of the habit common to all of them: find the structure that a single step, a single statement or a single line imposes, and count or reason from it.`,
       related: [
-        { card: "restricted-sequences", note: String.raw`the same states, without the matrix (C2.3).` },
+        { card: "restricted-sequences", note: String.raw`the same states, without the matrix (C2.4).` },
         { card: "matrix-multiplication", note: String.raw`powers of the transfer matrix (A9.3).` },
         { card: "casework-method", note: String.raw`casing on the number of true statements in a logic puzzle.` }
       ],

@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1, C2 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1248,11 +1248,13 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C2.1 Permutations, combinations, repeated objects | prereq `multiset-permutations` |
-| C2.2 Circular arrangements and symmetry | `circular-permutations`, `necklace-formula` |
-| C2.3 Adjacency and spacing restrictions | `non-adjacent-selection`, *(pattern)* `restricted-sequences`, prereq `gap-method` |
-| C2.4 Stars and bars, with upper and lower bounds | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
-| C2.5 Choosing positions versus assigning values | `surjections`, `stirling-bell`, `fencepost-counting` |
+| C2.1 Introduction | no card (the chapter's opening page: arrangements and selections, identical objects, circles, gaps, stars and bars, positions versus values, with comprehension problems) |
+| C2.2 Permutations, combinations, repeated objects | prereq `multiset-permutations` |
+| C2.3 Circular arrangements and symmetry | `circular-permutations`, `necklace-formula` |
+| C2.4 Adjacency and spacing restrictions | `non-adjacent-selection`, *(pattern)* `restricted-sequences`, prereq `gap-method` |
+| C2.5 Stars and bars, with upper and lower bounds | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
+| C2.6 Choosing positions versus assigning values | `surjections`, `stirling-bell`, `fencepost-counting` |
+| C2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C2.8 Review Problems and C2.9 Challenge Problems |
 
 ### C3. Inclusion-exclusion and complements (Core)
 
