@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **C4 written (2026-10-31).** C4.1 bijections, Catalan numbers, reflection and the ballot problem, C4.2 double counting, committees with a chair and nested subsets, C4.3 symmetry arguments and Burnside's lemma, C4.4 the binomial identities (Pascal, row sums, hockey stick, Vandermonde, multinomial); six review problems.
 - **C3 written (2026-10-31).** C3.1 inclusion-exclusion forward and in reverse, C3.2 derangements and forbidden positions, C3.3 exactly and at most, subsets avoiding a relation and subset sums, C3.4 choosing between complements and casework; six review problems.
 - **C2 written (2026-10-31).** C2.1 permutations, combinations and multisets (casing on the composition), C2.2 circular arrangements and the necklace formula, C2.3 the gap method, non-adjacent selections and state machines for restricted strings, C2.4 stars and bars with lower and upper bounds and the table of distributions, C2.5 surjections, Stirling numbers and fencepost counts; seven review problems.
 - **AIME Counting & Probability begun: C1 written (2026-10-31).** C1.1 the product and sum rules with the restricted decision first, C1.2 complements, C1.3 counting by an organizing parameter and counting functions, C1.4 uniform overcounts, C1.5 simulating a process, working backwards and checking small cases; nine review problems.
