@@ -3791,6 +3791,20 @@ body.is-landing .content { padding: 0 0 50px; }
 .bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; transform: rotate(45deg);
   background: var(--bg-card); border-left: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
+/* The scrubbing tabs: a column of ticks at the tab's right edge, one per page of the chapter, shown
+   on the current chapter (taller, so each page has room) and on the tab under the pointer. */
+.bk-rail { touch-action: none; }
+.bk-tab.is-current.bk-scrub { height: max(36px, calc(var(--n, 1) * 10px)); }
+.bk-ticks { position: absolute; top: 5px; bottom: 5px; right: 4px; width: 4px; display: none; flex-direction: column; gap: 2px; }
+.bk-ticks i { flex: 1 1 0; min-height: 1px; border-radius: 2px; background: color-mix(in srgb, var(--text) 24%, transparent); }
+.bk-ticks i.is-on { background: var(--bk-ink); }
+.bk-ticks i.is-hot { background: var(--text); }
+.bk-tab.is-current .bk-ticks, .bk-scrub:hover .bk-ticks, .bk-scrub.is-scrub .bk-ticks { display: flex; }
+.bk-tip-ch { display: block; }
+.bk-tip-p { display: block; margin-top: 2px; font-weight: 750; }
+.bk-tip-p[hidden] { display: none; }
+.bk-scrub.is-scrub .bk-tip-ch { font-size: 11.5px; font-weight: 650; color: var(--text-dim); }
+.bk-scrub.is-scrub .bk-tip { display: block; }
 .bk-body { min-width: 0; }
 /* The header is attached to the top of the page, under the top bar, and scrolls away with the
    page: no sticky headers (owner, 2026-10-31). */
@@ -3850,7 +3864,9 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
   .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
   .bk-rail { top: 0; padding: 3px; }
   .bk-tab { height: 32px; font-size: 13px; }
-  .bk-tip { display: none !important; }
+  .bk-tip { display: none; width: max-content; max-width: calc(100vw - 72px); white-space: normal; }
+  .bk-tab:hover .bk-tip { display: none; }
+  .bk-scrub.is-scrub .bk-tip { display: block; }
   .bk-bars { grid-template-columns: minmax(0, 1fr); padding: 8px 10px; }
   .bk-bars-cover { display: none; }
   .bk-bar-k { display: none; }
