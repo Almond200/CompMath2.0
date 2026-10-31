@@ -13,11 +13,20 @@
 - **Counts:** 765 cards (548 formulas, 169 methods, 48 patterns); 41 built-in lists; 4,675 problems, every one with a strategy, 4,229 citing at least one card; 4,665 with statements; 340 figures drawn for the app. Check with `$JSC tools/validate-problem-db.js`.
 - **Finished:** the whole earlier road ahead (steps A to I, R0, and the card renovation and proof pass). `QUESTIONS.md` has no card candidate open; the next is P54 (P53, the sign of a permutation, was written 2026-10-30). Every problem has been read and tagged, and every card has two practice problems. The README changelog is the record. Both hosts are current (2026-10-30).
 - **On hold (owner, 2026-10-25):** Stage 5, moving the `lab/` pages (quiz, flashcards, formula web) into Practice. It stays on hold until the owner has tried the pilot (LQ9).
-- **Now (2026-10-31):** the owner approved the map ("looks alright") and asked to begin building. Built: step L4's navigation and Lists move (Learn button, `#/learn` with the Textbooks shelf and the Lists; Practice keeps contests and the random picker). Before that: the Learn track below. Step L0 is done (this file trimmed, the owner's blueprint turned into steps). L1 is done: the owner answered LQ1 to LQ10 (2026-10-31, `QUESTIONS.md`). L2 (the outline) is under way in `LEARN-OUTLINE.md`, rebuilt from the owner's curriculum proposal (2026-10-31): 41 chapters and 182 lessons, all mapped to cards. The pilot is now N3 (cycles and order), which follows N2 (linear congruences and CRT). N3 has full lesson plans and candidate problems.
-- **Next action:**
-  1. L2 sub-step 3: read the N2 and N3 candidate problems and fill their reviews.
-  2. L3: write the Learn spec in CONVENTIONS (lesson data files, addresses, progress key, the math keyboard's answer form).
-  3. L5: the lesson page shell, the math keyboard and the AoPS-style problem list.
+- **Now (2026-10-31, sixteenth chat):** the owner approved the outline map and asked to build, then to keep going through the plan.
+  - **L4 (done):** the Learn button and `#/learn`. The page has the Textbooks shelf and the Lists, which moved out of Practice.
+  - **L2 sub-step 3 (mostly done):** every N3 problem has been read and placed, and N3's review is full (8 problems). N2 has problems for all five lessons, and its review holds 5 of its 8 to 12.
+  - **L3 (done):** the Learn spec is CONVENTIONS §14: chapter files, the prose format, the checks and the math keyboard's answer grammar, the AoPS-style problem list, addresses, the `mq-learn` progress key, and the gate.
+- **Next action:** step L5, the lesson shell, built to CONVENTIONS §14. In order:
+  1. The routes `#/learn/<book>`, `#/learn/<book>/<code>`, `.../<n>` and `.../review`.
+  2. The book and chapter pages, from the shelf.
+  3. The lesson page: an outline of the chapter, the prose, and a card drawer.
+  4. The math keyboard, with its parser and value comparison.
+  5. The problem list: statement, notes box, and Show Solution enabled only once the box has text.
+  6. `mq-learn` in `PROGRESS_KEYS`.
+  7. The gate extended to chapter files.
+
+  Then L6: write N2 and N3 into `js/data/learn/aime-number-theory/` from the outline, and fill N2's review first.
 
 ## The road ahead: the Learn track (owner, 2026-10-31)
 
@@ -76,8 +85,8 @@ How problems are chosen:
 
 A gap that contest problems really need goes into `QUESTIONS.md` as the next P-number. Commit after each sub-step.
 
-### L3. The content model and addresses: a written spec, not built
-Add a "Learn" section to CONVENTIONS. It covers:
+### L3. The content model and addresses (done 2026-10-31: CONVENTIONS §14)
+The spec covers:
 - **Data:** one file per book in `js/data/learn/`. A book holds chapters, and each chapter holds `lessons` and `chapterProblems`. Each lesson holds its `prereqCards`, `cards`, `intro`, `example`, `checks` (authored, each with an answer in the keyboard's form and a short why), and `lessonProblems`.
 - **Addresses:** `#/learn`, `#/learn/lists`, `#/learn/<book>`, `#/learn/<book>/<chapter>`, `#/learn/<book>/<chapter>/<lesson>`, and `#/learn/<book>/<chapter>/review`. `#/list/<id>` keeps working.
 - **Answers:**

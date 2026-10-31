@@ -294,6 +294,16 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The pilot's problems chosen, and the Learn spec written (2026-10-31; PLAN L2 and L3).**
+  - **N3** (cycles, exponentiation and order): every problem has been read and placed. Each lesson has 2 to 4 problems, among them 2003 AMC 10A #16, 2023 AMC 10B #8, 2025 AMC 12B #9 (eventual periodicity modulo $100$), 2017 AMC 10B #14 and 2024 AMC 10B #18. The review holds 8 problems: 2008 AMC 10A #24, 2001 AIME II #10, 2004 AIME II #10, 2021 AIME II #13, 2021 AIME I #14, 2016 AMC 12B #25, 2015 AMC 12A #22 and 2025 AIME II #13. The challenges are marked with the card each one needs from later chapters.
+  - **N2** (linear congruences and CRT): problems for all five lessons, from 2025 AMC 12B #5 to 2011 AIME II #14, and five review problems. New checks are computed: $13^{-1}\equiv17\pmod{22}$; $6x\equiv4\pmod{10}$ gives $x\equiv4,9$; $21(-2)+15(3)=3$; CRT gives $49$; $x^2\equiv1\pmod{1000}$ has $8$ roots.
+  - **CONVENTIONS §14** is the Learn spec, covering:
+    - chapter files in `js/data/learn/<book>/<code>.js`;
+    - the lesson prose format, with `[[card]]` links and `{{check N}}` markers;
+    - the math keyboard's keys and its answer grammar, compared by value and as a set for lists;
+    - the AoPS-style problem list, whose Show Solution works only after something is written;
+    - the addresses, the `mq-learn` progress key carried by Export and Import, and the gate.
+  - The shelf generator and the coverage tool no longer mistake a problem table's "| N2.1 |" rows for lessons.
 - **Learn is a space (2026-10-31, owner; PLAN step L4).** The top bar reads Formulas, Methods, Patterns, Learn, Practice, and Learn has its own colour (green) in light and dark.
   - The Learn page (`#/learn`) holds the Textbooks shelf: the five books, their 41 chapters with level badges, and the titles of the 187 planned lessons, each marked "Not written yet".
   - Below the shelf are the Lists: your lists, the box to make one, and every study list. These moved from Practice, which keeps the random-problem picker and the contests, plus a one-line link to Learn → Lists.

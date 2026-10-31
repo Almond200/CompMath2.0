@@ -13,7 +13,7 @@ for (const s of window.MATH_SECTIONS) for (const ss of s.subsections) for (const
 const txt = fs.readFileSync(path.join(ROOT, 'LEARN-OUTLINE.md'), 'utf8');
 const placed = new Set(), taught = new Map(), bad = new Set();
 for (const m of txt.matchAll(/`([a-z0-9-]+)`/g)) if (cards.has(m[1])) placed.add(m[1]);
-for (const row of txt.split('\n').filter(l => /^\| [BANGC]\d\.\d/.test(l))) {
+for (const row of txt.split('\n').filter(l => /^\| [BANGC]\d\.\d [^|]/.test(l))) {
   const lesson = row.split('|')[1].trim().split(' ')[0];
   for (const m of row.split('|')[2].matchAll(/(prereq (?:\*\(pattern\)\* )?)?`([a-z0-9-]+)`( link)?/g)) {
     if (!cards.has(m[2])) { bad.add(m[2]); continue; }
