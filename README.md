@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **A9 written; the AIME Algebra book is complete (2026-10-31).** A9.1 higher power sums, integer-valued polynomials and the generalized binomial series, A9.2 Cauchy's equations, injectivity and fixed points, A9.3 matrices, determinants, Cramer's rule and Chebyshev polynomials, A9.4 Nesbitt, the tangent line trick, normalization and three trigonometric devices; an extension chapter whose lessons carry their own problems.
 - **A8 written (2026-10-31).** A8.1 symmetric and antisymmetric factorizations ($a^3 + b^3 + c^3 - 3abc$, sum-zero identities, pairwise sums), A8.2 $a^n pm b^n$, Sophie Germain and Brahmagupta-Fibonacci under integer conditions, A8.3 parameters, root location and domains, A8.4 a mixed lesson of two-chapter AIME problems (the chapter's review).
 - **A7 written (2026-10-31).** A7.1 the Pythagorean identities, special values and reduction, A7.2 addition, multiple-angle, product-sum and harmonic addition, A7.3 general solutions and counting solutions on an interval, inverse functions and their ranges, A7.4 trigonometric substitution and telescoping sums and products; eight review problems.
 - **A6 written (2026-10-31).** A6.1 complex arithmetic, conjugating both sides and conditions on modulus and argument, A6.2 polar form, rotations and De Moivre, A6.3 roots of unity, the filter and trigonometric sums by geometric series, A6.4 the fundamental theorem of algebra and distance products over roots of unity; ten review problems.
