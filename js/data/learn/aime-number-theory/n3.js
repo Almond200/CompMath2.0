@@ -10,13 +10,13 @@ window.MATH_LEARN["N3"] = {
 
 A huge power and a small modulus are one of the most common pairings on the AMC and the AIME: the units digit of $7^{202}$, the remainder when $2^{100}$ is divided by $7$, the last two digits of $3^{2026}$. All of them give way to the same idea. Modulo $n$ the powers of a number can take only $n$ values, so sooner or later they repeat, and once the length of the cycle is known a huge exponent shrinks to a small one. This lesson shows why the powers must repeat, how to find their cycle by listing the first few, and how a base that shares a factor with the modulus can take a few steps before its cycle begins. The later lessons of the chapter find the length of a cycle without listing it.
 
-### A first example
-
-What is the units digit of $7^{202}$? Nobody computes a number with $171$ digits to find out. The units digit of a product depends only on the units digits of the factors, so it is enough to follow $7^n$ modulo $10$, multiplying by $7$ each time: $7, 9, 3, 1$, and then $7$ again. From there the same four digits come round forever. Since $202 = 4 \cdot 50 + 2$, the power $7^{202}$ sits in the second place of the cycle, and its units digit is $9$.
-
 ### Why powers must repeat
 
-The same idea works for any modulus, because there are only finitely many residues. Modulo $n$ each power is one of $n$ values, and each power is found from the one before it by the same multiplication. So as soon as one value comes back, everything after it repeats. The technique of listing the powers until a value returns, then reducing the exponent by the length of the cycle, is [[cycle-hunting]]. Units digits are the case that appears most often on the AMC, and the facts about them, including that the units digits of any integer's powers repeat with a period dividing $4$, are on [[last-digit-patterns]].
+Modulo $n$ there are only $n$ residues, and each power of a number is found from the one before it by the same multiplication. So among the first $n + 1$ powers two must agree, and once one value comes back, every value after it comes back in the same order: the powers run in a cycle. The units digit is the case met most often, because the units digit of a product depends only on the units digits of its factors, so the units digits of a number's powers are its powers taken modulo $10$. The facts about them, including that the units digits of any integer's powers repeat with a period dividing $4$, are on [[last-digit-patterns]].
+
+### Using the cycle
+
+A cycle turns a huge exponent into a small one. If the powers of $a$ repeat every $T$ steps from the first power on, then $a^N$ leaves the same remainder as $a^r$, where $r$ is the remainder when $N$ is divided by $T$ (and $r = T$ when that remainder is $0$). Finding $T$ means listing the powers until the first value returns, which is quick when the modulus is small. Listing until a value returns and then reducing the exponent is [[cycle-hunting]].
 
 {{check 1}}
 
@@ -24,7 +24,7 @@ The same idea works for any modulus, because there are only finitely many residu
 
 ### A cycle that starts late
 
-When the base and the modulus are coprime, the cycle starts at the very first power, as it did for $7$ modulo $10$. When they share a factor, the first few powers may never come back. The powers of $2$ modulo $12$ run $2, 4, 8, 4, 8, \ldots$: the value $2$ appears once and is gone, and the cycle $4, 8$ starts only at $2^2$. The sequence is eventually periodic, with period $2$ from $n = 2$ on. Before reducing an exponent, find where the cycle begins as well as how long it is, and reduce only exponents that are already inside it.
+When the base and the modulus are coprime, the cycle starts at the very first power. When they share a factor, the first few powers may never come back. The powers of $2$ modulo $12$ run $2, 4, 8, 4, 8, \ldots$: the value $2$ appears once and is gone, and the cycle $4, 8$ starts only at $2^2$. The sequence is eventually periodic, with period $2$ from the exponent $2$ on. Before reducing an exponent, find where the cycle begins as well as how long it is, and reduce only exponents that are already inside it.
 
 {{check 3}}
 

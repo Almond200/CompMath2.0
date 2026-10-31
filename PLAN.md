@@ -60,7 +60,7 @@ Finished-work history deleted (the README changelog has it). Rules that lived on
 `LEARN-OUTLINE.md` follows the owner's second document, "An Expanded AMC-to-AIME Curriculum" (2026-10-31):
 - five books and 41 chapters, each labelled Core, Core II or Extension;
 - a prerequisite spine;
-- the lesson standard: target, direct teaching, an example then checks, variations, problems, summary;
+- the lesson standard: target, direct teaching, an example then checks, variations, problems, summary (revised by the owner 2026-10-31: an Introduction that summarizes the lesson, then teaching sections, checks and problems, with no section given over to a worked example; CONVENTIONS §14);
 - one primary placement per problem, with free cross-links;
 - an audit against past papers.
 
