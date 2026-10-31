@@ -26,9 +26,9 @@ The lessons take these ideas in turn: recursions (C5.2), tilings (C5.3), tables 
           solution: String.raw`The parity of the sum of the numbers on the board never changes: $a + b$ and $|a - b|$ differ by $2\min(a, b)$, an even number. The sum starts at $55$, which is odd, so the last number is odd.` }
       ],
       problems: [
-        "1986 AJHSME, Problem 9",
-        "2014 AMC 8, Problem 11",
-        "2024 AMC 8, Problem 7"
+        "2023 AMC 10A, Problem 20",
+        "2023 AIME II, Problem 10",
+        "2026 AIME II, Problem 7"
       ]
     },
     "C5.2": {
