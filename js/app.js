@@ -326,7 +326,7 @@
     navCollapsed: null,          // sidebar: "sectionId:subject" of the open subject the reader folded away
     activeSub: null,             // Methods/Patterns: the one subject shown (index into subsections), or null for all
     landing: !location.hash || location.hash === "#",  // the home page, until a section is chosen
-    space: "formulas",           // formulas | methods | patterns | practice: which space the page belongs to
+    space: "formulas",           // formulas | methods | patterns | learn | practice: which space the page belongs to
     activeTopic: null,           // Formulas: the one topic (subsection index) shown, or null for the topic tiles
     activeCluster: null,         // Methods/Patterns: the one group of the subject shown, or null for its group tiles
     layout: _loaded.layout,      // "cards" or "wiki" — how a section page is drawn
@@ -362,13 +362,15 @@
     formulas: { label: "Formulas", ask: "What is true?" },
     methods: { label: "Methods", ask: "What can I do?" },
     patterns: { label: "Patterns", ask: "What am I looking at?" },
+    learn: { label: "Learn", ask: "What should I learn next?" },
     practice: { label: "Practice", ask: "Can I use it?" }
   };
   // The space a page belongs to; search, settings and topic pages keep the current one.
   function spaceFor(route) {
     if (route.type === "space") return route.name;
     if (route.type === "formula") return bookOf(route.entry.section);
-    if (["problems", "problem", "lists", "list"].indexOf(route.type) !== -1) return "practice";
+    if (["problems", "problem"].indexOf(route.type) !== -1) return "practice";
+    if (["lists", "list"].indexOf(route.type) !== -1) return "learn";
     if (route.type === "home" && !state.landing && !state.query.trim() && !state.adv) {
       return bookOf(SECTIONS.find(x => x.id === state.activeSectionId));
     }
@@ -1312,8 +1314,10 @@
     else if ((m = h.match(/^#\/(formulas|methods|patterns)$/))) to = spaceEntry(m[1]);
     else if ((m = h.match(/^#\/reference\/(.+)$/))) to = "#/formulas/" + m[1];
     else if ((m = h.match(/^#\/solving\/(methods|patterns)\/(.+)$/))) to = "#/" + m[1] + "/" + m[2];
-    // The lists overview and the problem database were folded into the Practice page.
-    else if (h === "#/lists" || h === "#/problems") to = "#/practice";
+    // The problem database was folded into the Practice page; the lists overview now lives
+    // under Learn (owner, 2026-10-31).
+    else if (h === "#/problems") to = "#/practice";
+    else if (h === "#/lists" || h === "#/learn/lists") to = "#/learn";
     if (to) history.replaceState(null, "", to);
   }
   // Go to an address; when it is already the address, re-render instead (no hashchange fires).
@@ -1367,6 +1371,7 @@
       }
     }
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
+    if (location.hash === "#/learn") return { type: "space", name: "learn" };
     m = location.hash.match(/^#\/special\/([^/]+)(?:\/(.*))?$/);
     if (m) return { type: "special", name: m[1].toLowerCase(), arg: decodeURIComponent(m[2] || "") };
     return { type: "home" };
@@ -2089,7 +2094,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4804,8 +4809,8 @@
                    <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
                 : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
               <div class="hp-mine-foot">
-                <a href="#/practice" data-goto="lists-new-name">Make a list</a>
-                <a href="#/practice" data-goto="pr-study">Open a list</a>
+                <a href="#/learn" data-goto="lists-new-name">Make a list</a>
+                <a href="#/learn" data-goto="pr-study">Open a list</a>
               </div>
             </section>
           </aside>
@@ -4854,9 +4859,10 @@
     formulas: `Formulas are the facts: theorems, identities, and standard results, each with why it holds and worked examples. <a href="#/methods">Methods</a> rely on them, and every card lists the <a href="#/practice">contest problems</a> where it appears.`,
     methods: `Methods are the moves you make once you are inside a problem. Each one names the <a href="#/formulas">formulas</a> it relies on, and <a href="#/patterns">patterns</a> tell you when it is worth trying.`,
     patterns: `Patterns are the problem shapes worth recognizing before you start. Each one points to the <a href="#/methods">methods</a> worth trying, and those lead to the <a href="#/formulas">formulas</a> they use.`,
-    practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal. Study lists gather cards by contest level or by theme.`
+    learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and checks it with short questions and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
+    practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal.`
   };
-  const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], practice: ["problem"] };
+  const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: [], practice: ["problem"] };
   function spaceHeadHtml(name) {
     const recent = recentRowsHtml(6, KINDS_OF_SPACE[name]);
     return `<header class="space-home-head">
@@ -4886,6 +4892,29 @@
     }));
     range.addEventListener("input", update);
   }
+  // The Learn shelf (PLAN step L4): the five books, each chapter with its level (Core, Core II,
+  // Extension) and its lesson titles, from js/data/learn/shelf.js, which tools/build-learn-shelf.py
+  // builds from LEARN-OUTLINE.md. Lessons open once they are written (step L6).
+  function learnShelfHtml() {
+    const shelf = window.MATH_LEARN_SHELF || [];
+    const levelSlug = lv => lv.toLowerCase().replace(/\s+/g, "");
+    const lessonsOf = b => b.chapters.reduce((n, c) => n + c.lessons.length, 0);
+    return `<section class="sh-section" id="learn-books">
+        <h3>Textbooks</h3>
+        <p class="learn-note">Five books from the AMC to the AIME, each a sequence of chapters and lessons that teach from the cards and end with contest problems. Every chapter is <span class="lb-level lb-core">Core</span>, <span class="lb-level lb-coreii">Core II</span> (later AIME problems) or <span class="lb-level lb-extension">Extension</span> (optional). The lessons are being written; until a lesson is ready its title is shown here.</p>
+        <div class="lb-shelf">${shelf.map(b => `
+          <details class="lb-book" id="book-${b.id}">
+            <summary><span class="lb-book-title">${escapeAttr(b.title)}</span><span class="lb-role">${escapeAttr(b.role)}</span><span class="lb-n">${b.chapters.length} chapters &middot; ${lessonsOf(b)} lessons</span></summary>
+            <ol class="lb-chapters">${b.chapters.map(c => `
+              <li class="lb-ch"><details>
+                <summary><span class="lb-code">${c.code}</span><span class="lb-title">${escapeAttr(c.title)}</span><span class="lb-level lb-${levelSlug(c.level)}">${c.level}</span></summary>
+                <ol class="lb-lessons">${c.lessons.map(l => `<li><span class="lb-code">${l.code}</span><span>${escapeAttr(l.title)}</span><span class="lb-soon">Not written yet</span></li>`).join("")}</ol>
+              </details></li>`).join("")}
+            </ol>
+          </details>`).join("")}
+        </div>
+      </section>`;
+  }
   function renderSpaceHome(name) {
     shownIds = [];
     let body = spaceHeadHtml(name);
@@ -4899,8 +4928,39 @@
       const mine = lists.items.filter(l => l.id !== "starred");
       const yearsOf = f => Object.keys(DB_TREE[f]).map(Number).sort((x, y) => y - x);
       const listLink = l => `<a class="pl-item" href="#/list/${l.id}"><span>${escapeAttr(l.name)}</span><span class="pl-n">${liveCount(l)}</span></a>`;
-      body += `
-        <div class="pr-top">
+      if (name === "learn") body += `
+        ${learnShelfHtml()}
+        <section class="sh-section" id="pr-study">
+          <h3>Lists</h3>
+          <div class="pr-top pr-top-one">
+          <section class="hp-panel" id="pr-lists">
+            <div class="hp-label">Your lists</div>
+            <div class="pl-list">
+              <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
+              ${mine.map(listLink).join("")}
+            </div>
+            <form class="lists-new pl-new" id="lists-new-form">
+              <input type="text" id="lists-new-name" placeholder="Name a new list&hellip;" maxlength="40" autocomplete="off">
+              <button type="submit">Create</button>
+            </form>
+          </section>
+          </div>
+          <h4 class="learn-sub">Study lists</h4>
+          <div class="grid-scroll"><table class="cy-grid route-grid">
+            <thead><tr><th></th>${subjects.map(x => `<th>${x}</th>`).join("")}</tr></thead>
+            <tbody>${tiers.map(t => `<tr><th>${t === "AMC" ? "AMC 10/12" : t}</th>${subjects.map(x => {
+              const l = route(t, x);
+              return `<td>${l ? `<a href="#/list/${l.id}">${liveCount(l)} cards</a>` : `<span class="cy-none">&middot;</span>`}</td>`;
+            }).join("")}</tr>`).join("")}</tbody>
+          </table></div>
+          <p class="route-note">Each route builds on the one above it: the AIME route lists only what is new beyond the AMC 10/12 route, and the Olympiad route only what is new beyond the AIME, with a few cards repeated where a level uses the same card in a broader way.</p>
+          <div class="pl-kinds">${LIST_KINDS.filter(([k]) => k !== "route").map(([k, label]) => {
+            const ls = BUILTIN_LISTS.filter(l => l.kind === k);
+            return ls.length ? `<div class="pl-kind"><div class="pl-kind-title">${label}</div><div class="pl-list">${ls.map(listLink).join("")}</div></div>` : "";
+          }).join("")}</div>
+        </section>`;
+      else body += `
+        <div class="pr-top pr-top-one">
           <section class="hp-panel rand-picker">
             <div class="hp-label">A random problem</div>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
@@ -4914,18 +4974,8 @@
             </div>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem &rarr;</a>
           </section>
-          <section class="hp-panel" id="pr-lists">
-            <div class="hp-label">Your lists</div>
-            <div class="pl-list">
-              <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
-              ${mine.map(listLink).join("")}
-            </div>
-            <form class="lists-new pl-new" id="lists-new-form">
-              <input type="text" id="lists-new-name" placeholder="Name a new list&hellip;" maxlength="40" autocomplete="off">
-              <button type="submit">Create</button>
-            </form>
-          </section>
         </div>
+        <p class="pr-moved">Study lists and your own lists are under <a href="#/learn" data-goto="pr-study">Learn &rarr; Lists</a>.</p>
         <section class="sh-section">
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
@@ -4945,21 +4995,6 @@
             <button type="button" class="ct-toggle" id="ct-unwritten" aria-expanded="${showUnwritten}">${showUnwritten ? "Hide unwritten contests" : "Show unwritten contests (" + planned.length + ")"}</button>`;
             })()}
           </div>
-        </section>
-        <section class="sh-section" id="pr-study">
-          <h3>Study lists</h3>
-          <div class="grid-scroll"><table class="cy-grid route-grid">
-            <thead><tr><th></th>${subjects.map(x => `<th>${x}</th>`).join("")}</tr></thead>
-            <tbody>${tiers.map(t => `<tr><th>${t === "AMC" ? "AMC 10/12" : t}</th>${subjects.map(x => {
-              const l = route(t, x);
-              return `<td>${l ? `<a href="#/list/${l.id}">${liveCount(l)} cards</a>` : `<span class="cy-none">&middot;</span>`}</td>`;
-            }).join("")}</tr>`).join("")}</tbody>
-          </table></div>
-          <p class="route-note">Each route builds on the one above it: the AIME route lists only what is new beyond the AMC 10/12 route, and the Olympiad route only what is new beyond the AIME, with a few cards repeated where a level uses the same card in a broader way.</p>
-          <div class="pl-kinds">${LIST_KINDS.filter(([k]) => k !== "route").map(([k, label]) => {
-            const ls = BUILTIN_LISTS.filter(l => l.kind === k);
-            return ls.length ? `<div class="pl-kind"><div class="pl-kind-title">${label}</div><div class="pl-list">${ls.map(listLink).join("")}</div></div>` : "";
-          }).join("")}</div>
         </section>`;
     }
     $content.innerHTML = `<div class="space-home">${body}</div>`;
@@ -5383,7 +5418,7 @@
 
   // A single study list, opened from the Practice page.
   function renderListSurface(route) {
-    if (route.type !== "list") { history.replaceState(null, "", "#/practice"); render(); return; }
+    if (route.type !== "list") { history.replaceState(null, "", "#/learn"); render(); return; }
     $content.innerHTML = `<div class="list-main">${listDetailHtml(route.listId)}</div>`;
     renderMath($content, true);
   }
@@ -5509,7 +5544,7 @@
   function listDetailHtml(listId) {
     const userL = getList(listId);
     const l = userL || BUILTIN_BY_ID[listId];
-    if (!l) { location.hash = "#/practice"; return ""; }
+    if (!l) { location.hash = "#/learn"; return ""; }
     const isBuiltin = !userL;
     const entries = l.ids.map(id => BY_ID[id]).filter(Boolean);
     shownIds = entries.map(e => e.formula.id);
@@ -5535,9 +5570,9 @@
     const kindName = isBuiltin ? ((LIST_KINDS.find(([k]) => k === l.kind) || [null, "Study list"])[1]) : "Your list";
     return `
       <div class="detail">
-        <div class="back-row"><a class="back-link" href="#/practice">&larr; Practice</a></div>
+        <div class="back-row"><a class="back-link" href="#/learn" data-goto="pr-study">&larr; Learn</a></div>
         <div class="section-header topic-header">
-          <div class="book-eyebrow">Practice</div>
+          <div class="book-eyebrow">Learn &middot; Lists</div>
           <div class="list-detail-head">
             <h2>${escapeAttr(l.name)}</h2>
             ${headTools}
@@ -6450,14 +6485,17 @@
     // Four groups, one per space, only the current space's shown: FORMULAS lists its subjects
     // with their topics, METHODS and PATTERNS list their subjects with their groups, and
     // PROBLEMS lists the practice surfaces.
-    const order = ["formulas", "methods", "patterns", "practice"];
+    const order = ["formulas", "methods", "patterns", "learn", "practice"];
     const byGroup = new Map(order.map(g => [g, []]));
     SECTIONS.forEach(section => byGroup.get(groupOf(section)).push(section));
     // Practice links go to other surfaces, so they are plain links, not section rows (the
     // section-row click handling would read them as a section with no id).
     const practiceRows = `
-      <a class="nav-practice-link" href="#/practice">Contests and study lists</a>
+      <a class="nav-practice-link" href="#/practice">Contests</a>
       <a class="nav-practice-link" href="#/special/randomproblem">A random problem</a>`;
+    const learnRows = `
+      <a class="nav-practice-link" href="#/learn" data-goto="learn-books">Textbooks</a>
+      <a class="nav-practice-link" href="#/learn" data-goto="pr-study">Lists</a>`;
     // A Methods or Patterns subject row opens onto its groups, as a Formulas subject row opens
     // onto its topics.
     const subjectRows = section => section.subsections.map((sub, i) => `
@@ -6485,13 +6523,13 @@
     $sidebar.innerHTML = `<div id="formula-nav">` + order.map(group => `
       <div class="nav-group" data-group="${group}">
         <div class="nav-space-head">
-          ${group === "practice"
-            ? `<a class="nsh-label" href="#/practice" title="Contests, study lists, and your lists">${SPACES[group].label}</a>`
+          ${group === "practice" || group === "learn"
+            ? `<a class="nsh-label" href="#/${group}" title="${group === "learn" ? "Textbooks, study lists, and your lists" : "Contests and random problems"}">${SPACES[group].label}</a>`
             : `<span class="nsh-label">${SPACES[group].label}</span><button type="button" class="nsh-info" data-info="${group}" aria-label="About ${SPACES[group].label}" aria-expanded="false">i</button>`}
           <span class="nsh-ask">${SPACES[group].ask}</span>
         </div>
         <div class="nav-group-body"><div class="nav-group-inner">
-          ${group === "practice" ? practiceRows : ""}
+          ${group === "practice" ? practiceRows : group === "learn" ? learnRows : ""}
           ${byGroup.get(group).map(section => bySubject(section) ? subjectRows(section) : formulaRows(section)).join("")}
         </div></div>
       </div>`).join("") + `</div><nav class="page-toc" id="page-toc" aria-label="On this page" hidden></nav>`;
@@ -6771,8 +6809,8 @@
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeSpaceInfo(); });
   window.addEventListener("hashchange", closeSpaceInfo);
 
-  // Space switcher in the top bar: Practice opens its own page; the other spaces open the
-  // subject last visited in them.
+  // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
+  // open the subject last visited in them.
   const $spaceSwitch = document.getElementById("space-switch");
   if ($spaceSwitch) $spaceSwitch.addEventListener("click", e => {
     const b = e.target.closest("[data-space-go]");
@@ -6780,7 +6818,8 @@
     clearSearch();
     closeDrawer();
     state.landing = false;
-    const to = b.dataset.spaceGo === "practice" ? "#/practice" : spaceEntry(b.dataset.spaceGo);
+    const go = b.dataset.spaceGo;
+    const to = go === "practice" || go === "learn" ? "#/" + go : spaceEntry(go);
     if (location.hash === to) render(); else location.hash = to;
     window.scrollTo({ top: 0 });
   });
@@ -6811,13 +6850,12 @@
   if ($navBackdrop) $navBackdrop.addEventListener("click", closeDrawer);
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
-  // Lists → the study-lists overview.
+  // Lists → the Lists part of the Learn page.
   const $listsBtn = document.getElementById("lists-btn");
   if ($listsBtn) $listsBtn.addEventListener("click", () => {
     clearSearch();
-    if (getRoute().type === "lists") return;
-    if (location.hash === "#/lists") render(); else location.hash = "#/lists";
-    window.scrollTo({ top: 0 });
+    if (location.hash === "#/learn") render(); else location.hash = "#/learn";
+    seekPart("pr-study");
   });
 
   // Database → the problem-database browse page.
@@ -6894,13 +6932,15 @@
   applyLayout();
 
   // Links that open a page at one of its parts (the home page's "Make a list" goes to the new-list
-  // box and "Open a list" to the Study lists section of the Practice page): once the page has
+  // box and "Open a list" to the Study lists section of the Learn page): once the page has
   // rendered, scroll the part into view, a text box centred with the cursor in it, a section
   // with its heading just under the top bar.
   document.addEventListener("click", e => {
     const a = e.target.closest("a[data-goto]");
     if (!a) return;
-    const id = a.getAttribute("data-goto");
+    seekPart(a.getAttribute("data-goto"));
+  });
+  function seekPart(id) {
     let tries = 0;
     const seek = () => {
       const el = document.getElementById(id);
@@ -6915,7 +6955,7 @@
       } else if (++tries < 40) setTimeout(seek, 25);
     };
     setTimeout(seek, 0);
-  });
+  }
 
   // Settings → the preferences page.
   const $settingsBtn = document.getElementById("settings-btn");
@@ -7199,7 +7239,7 @@
     const del = e.target.closest("[data-list-delete]");
     if (del) {
       const l = getList(del.dataset.listDelete);
-      if (l && confirm(`Delete the list “${l.name}”? The formulas themselves are not affected.`)) { deleteList(l.id); location.hash = "#/practice"; }
+      if (l && confirm(`Delete the list “${l.name}”? The formulas themselves are not affected.`)) { deleteList(l.id); location.hash = "#/learn"; }
       return;
     }
     const clr = e.target.closest("[data-list-clear]");

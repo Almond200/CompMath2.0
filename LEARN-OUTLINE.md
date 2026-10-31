@@ -85,7 +85,7 @@ A short bridge that finds gaps and fills them with examples and checks, without 
 | B1.2 Equations and systems: substitution, elimination, symmetry, extraneous roots | `linear-elimination`, `add-all-equations`, `transforming-equations` |
 | B1.3 Useful substitutions: reciprocals, squares, sums and products, repeated blocks | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation` |
 | B1.4 Absolute values, intervals, sign charts, inequality constraints | `absolute-value-rules`, `abs-value-relations`, `sign-chart`, `trivial-inequality` |
-| B1.5 Rates, averages, percents and word-problem setups (added: AMC and AIME problems cite them often) | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
+| B1.5 Rates, averages, percents and word-problem setups | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
 
 ### B2. Polynomial and sequence fundamentals (Core)
 
