@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **T5 written (2026-10-31).** T5.1 modular arithmetic, equal remainders and reducing divisibility to a constant, T5.2 cycles, Fermat, the totient and squares modulo small numbers, T5.3 Bézout, the Chinese remainder theorem and the McNugget theorem, T5.4 factoring integer equations, differences of squares and choosing a modulus, T5.5 Pythagorean triples and integer triangles.
 - **T4 written (2026-10-31).** T4.1 factorizations, gcd and lcm, T4.2 divisor counts, sums, products and square divisors, T4.3 divisibility rules, Legendre and trailing zeros, T4.4 bases and digits, T4.5 terminating and repeating decimals and calendars.
 - **T3 written (2026-10-31).** T3.1 remainders, rational roots, coefficient sums and comparing coefficients, T3.2 arithmetic and geometric series and power sums, T3.3 recurrences and periodic sequences, T3.4 telescoping sums and products and alternating sums, T3.5 sum-zero identities, pairwise products and $a^n \pm b^n$.
 - **T2 written (2026-10-31).** T2.1 the quadratic formula, Vieta, the vertex and perfect-square quadratics, T2.2 inverses, odd and even functions and defined operations, T2.3 counting solutions by graphs and ratios as slopes, T2.4 exponents and logarithms, T2.5 largest and smallest values (squares, AM-GM, medians, placing digits).
