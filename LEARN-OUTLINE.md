@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A7 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A8 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -916,10 +916,12 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A8.1 Symmetry, cyclic expressions, clever rearrangements (Core II) | `wlog-symmetry`, `sum-zero-identities`, `cubes-minus-3abc`, `antisymmetric-factorization`, `pairwise-sum-product` |
-| A8.2 Integer and parity restrictions inside algebraic equations (Core II) | `an-minus-bn`, `sophie-germain`, `brahmagupta-fibonacci` |
-| A8.3 Parameters, and telling possible roots apart (Core II) | prereq `quadratic-root-location`, prereq `comparing-coefficients` |
-| A8.4 Mixed problems that need two or more earlier topics (Core II) | no new card (a review lesson) |
+| A8.1 Introduction | no card (the chapter's opening page: symmetry and its identities, factoring identities for integers, parameters and the location of roots, mixed problems, with comprehension problems) |
+| A8.2 Symmetry, cyclic expressions, clever rearrangements (Core II) | `wlog-symmetry`, `sum-zero-identities`, `cubes-minus-3abc`, `antisymmetric-factorization`, `pairwise-sum-product` |
+| A8.3 Integer and parity restrictions inside algebraic equations (Core II) | `an-minus-bn`, `sophie-germain`, `brahmagupta-fibonacci` |
+| A8.4 Parameters, and telling possible roots apart (Core II) | prereq `quadratic-root-location`, prereq `comparing-coefficients` |
+| A8.5 Mixed problems that need two or more earlier topics (Core II) | no new card (a review lesson) |
+| A8.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A8.7 Review Problems and A8.8 Challenge Problems |
 
 ### A9. Algebra extensions (Extension)
 

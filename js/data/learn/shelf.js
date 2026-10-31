@@ -918,23 +918,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A8.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A8.2",
       "title": "Symmetry, cyclic expressions, clever rearrangements",
       "level": "Core II"
      },
      {
-      "code": "A8.2",
+      "code": "A8.3",
       "title": "Integer and parity restrictions inside algebraic equations",
       "level": "Core II"
      },
      {
-      "code": "A8.3",
+      "code": "A8.4",
       "title": "Parameters, and telling possible roots apart",
       "level": "Core II"
      },
      {
-      "code": "A8.4",
+      "code": "A8.5",
       "title": "Mixed problems that need two or more earlier topics",
       "level": "Core II"
+     },
+     {
+      "code": "A8.6",
+      "title": "Summary"
      }
     ]
    },

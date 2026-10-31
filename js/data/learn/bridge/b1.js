@@ -17,7 +17,7 @@ The [[square-of-sum|square of a sum]] $(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + 
 Before expanding anything, look for one of these shapes. Every step of manipulation must keep the domain in mind: dividing by an expression assumes it is nonzero, and squaring can add solutions, which the next lesson takes up.`,
       related: [
         { card: "sfft", note: String.raw`$xy + x + y + 1 = (x + 1)(y + 1)$ used to solve equations in integers (B3.4).` },
-        { card: "sophie-germain", note: String.raw`$a^4 + 4b^4$ as a product of two quadratics (A8.2).` },
+        { card: "sophie-germain", note: String.raw`$a^4 + 4b^4$ as a product of two quadratics (A8.3).` },
         { card: "telescoping", note: String.raw`sums that collapse after rationalizing each term (A3.3).` }
       ],
       exercises: [

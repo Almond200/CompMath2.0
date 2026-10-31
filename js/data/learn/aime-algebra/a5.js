@@ -117,7 +117,7 @@ The [[abs-triangle-inequality|triangle inequality for absolute values]], $|a + b
 Use rearrangement when the question is which pairing is best, the sum-of-squares identity when a symmetric condition looks too strong for the number of unknowns, and the triangle inequality when absolute values add. The next lesson turns to extreme-value problems where the domain, rather than an inequality, does the work.`,
       related: [
         { card: "chebyshev-sum-inequality", note: String.raw`the averaged form of rearrangement: same-order lists make the average of products at least the product of averages.` },
-        { card: "cubes-minus-3abc", note: String.raw`$x^3 + y^3 + z^3 - 3xyz$ factors through the sum-of-squares expression (A8.1).` },
+        { card: "cubes-minus-3abc", note: String.raw`$x^3 + y^3 + z^3 - 3xyz$ factors through the sum-of-squares expression (A8.2).` },
         { card: "median-minimizes-abs", note: String.raw`the triangle inequality applied to many distances at once (A5.5).` },
         { card: "completing-the-square", note: String.raw`writing a quadratic equation as a sum of squares equal to zero.` }
       ],

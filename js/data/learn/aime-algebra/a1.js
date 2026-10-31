@@ -121,7 +121,7 @@ The signal is a system that looks the same after rotating its variables, two equ
       related: [
         { card: "add-all-equations", note: String.raw`adding or multiplying all the equations of a symmetric system.` },
         { card: "factor-remainder-theorem", note: String.raw`a polynomial vanishing at $r$ has the factor $x - r$, which turns known values into a factored form (A2.2).` },
-        { card: "wlog-symmetry", note: String.raw`ordering or identifying variables without loss of generality in a symmetric system (A8.1).` }
+        { card: "wlog-symmetry", note: String.raw`ordering or identifying variables without loss of generality in a symmetric system (A8.2).` }
       ],
       exercises: [
         { q: String.raw`If $a + b = 12$, $b + c = 17$, and $c + a = 19$, find $abc$.`, answer: "420",
