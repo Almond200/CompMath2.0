@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W9: geometry, coordinates, transformations and space (CONVENTIONS §14; the AMC track).
+// Learn, AMC Geometry, chapter S4: geometry, coordinates, transformations and space (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W9"] = {
+window.MATH_LEARN["S4"] = {
   lessons: {
-    "W9.1": {
+    "S4.1": {
       prereq: ["completing-the-square", "circle-equation"],
       cards: ["conic-sections", "parabola-focus-directrix", "ellipse-properties", "hyperbola-properties", "conic-tangent-lines", "eccentricity"],
       body: String.raw`The AMC 12 includes the conic sections at the level of their equations and focal properties. Completing the square puts any conic in standard form, and a few facts for each curve answer the questions.
@@ -14,9 +14,9 @@ The [[eccentricity|eccentricity]] $e = \tfrac ca$ is below $1$ for ellipses, $1$
 
 Complete the square, read $a$, $b$, $c$, and use the focal definitions. The next lesson treats tangency, determinants and lattice points.`,
       related: [
-        { card: "axis-stretch-area", note: String.raw`an ellipse as a stretched circle (W9.3).` },
-        { card: "tangency-condition", note: String.raw`tangency as a double root (W8.3).` },
-        { card: "perpendicular-bisector-locus", note: String.raw`other loci defined by distances (T9.2).` }
+        { card: "axis-stretch-area", note: String.raw`an ellipse as a stretched circle (S4.3).` },
+        { card: "tangency-condition", note: String.raw`tangency as a double root (S3.3).` },
+        { card: "perpendicular-bisector-locus", note: String.raw`other loci defined by distances (S2.2).` }
       ],
       exercises: [
         { q: String.raw`Find the distance between the foci of $\tfrac{x^2}{16} + \tfrac{y^2}{9} = 1$.`, answer: "2sqrt(7)",
@@ -34,7 +34,7 @@ Complete the square, read $a$, $b$, $c$, and use the focal definitions. The next
         "2005 AIME II, Problem 15"
       ]
     },
-    "W9.2": {
+    "S4.2": {
       prereq: ["point-line-distance", "shoelace-formula"],
       cards: ["tangency-equation", "determinant-geometric", "lattice-points-gcd", "british-flag-theorem", "varignons-theorem"],
       body: String.raw`A few coordinate facts round out the AMC 12 toolkit: tangency as an equation, the determinant as area, lattice points on segments, and two quick theorems about rectangles and quadrilaterals.
@@ -45,9 +45,9 @@ The segment from $(0, 0)$ to $(a, b)$ passes through $\gcd(a, b) + 1$ [[lattice-
 
 Use these as shortcuts once a figure is in coordinates. The next lesson treats transformations and vectors.`,
       related: [
-        { card: "picks-theorem", note: String.raw`lattice areas from lattice points (T9.2).` },
-        { card: "tangent-lines-from-point", note: String.raw`tangent lines from a point (T9.2).` },
-        { card: "midsegment-theorem", note: String.raw`the half-length segments behind Varignon (T8.2).` }
+        { card: "picks-theorem", note: String.raw`lattice areas from lattice points (S2.2).` },
+        { card: "tangent-lines-from-point", note: String.raw`tangent lines from a point (S2.2).` },
+        { card: "midsegment-theorem", note: String.raw`the half-length segments behind Varignon (S1.2).` }
       ],
       exercises: [
         { q: String.raw`How many lattice points lie on the segment from $(0, 0)$ to $(18, 24)$, including both ends?`, answer: "7",
@@ -65,7 +65,7 @@ Use these as shortcuts once a figure is in coordinates. The next lesson treats t
         "2016 AIME I, Problem 14"
       ]
     },
-    "W9.3": {
+    "S4.3": {
       prereq: ["rotation-90", "reflection-coordinates"],
       cards: ["reflection-composition", "rotation-reflection-matrices", "rotation-trick", "rotation-center", "vector-dot-product", "vector-projection", "axis-stretch-area", "linear-change-of-variables"],
       body: String.raw`Transformations and vectors give the AMC 12 its most efficient geometry: compositions of reflections, rotations that gather lengths, dot products for angles, and linear maps that simplify regions.
@@ -78,9 +78,9 @@ The [[vector-dot-product|dot product]] $\vec u \cdot \vec v = |u||v|\cos\theta$ 
 
 Compose reflections, rotate to gather lengths, use dot products, and change variables to simplify regions. The next lesson treats regions and neighborhoods.`,
       related: [
-        { card: "complex-basics", note: String.raw`rotations as multiplication by complex numbers (W5.1).` },
-        { card: "determinant-geometric", note: String.raw`area scaling by determinants (W9.2).` },
-        { card: "reflect-across-the-line", note: String.raw`shortest paths by reflection (T9.3).` }
+        { card: "complex-basics", note: String.raw`rotations as multiplication by complex numbers (L8.1).` },
+        { card: "determinant-geometric", note: String.raw`area scaling by determinants (S4.2).` },
+        { card: "reflect-across-the-line", note: String.raw`shortest paths by reflection (S2.3).` }
       ],
       exercises: [
         { q: String.raw`Reflecting in line $\ell_1$ and then in line $\ell_2$, which meets it at $25^\circ$, is a rotation. By how many degrees?`, answer: "50",
@@ -98,7 +98,7 @@ Compose reflections, rotate to gather lengths, use dot products, and change vari
         "1992 AIME, Problem 11"
       ]
     },
-    "W9.4": {
+    "S4.4": {
       prereq: ["plane-regions", "circle-basics"],
       cards: ["moser-circle", "steiner-neighborhood"],
       body: String.raw`Two counting-and-area facts recur: the number of regions cut by chords of a circle, and the area of the set of points near a shape.
@@ -109,9 +109,9 @@ The [[steiner-neighborhood|Steiner neighborhood]] of a convex shape, the points 
 
 Count regions from crossings and chords, and add border strips and corners for neighborhoods. The last lesson of the book treats solids and space.`,
       related: [
-        { card: "handshakes-diagonals", note: String.raw`counting chords and crossings (T9.4).` },
-        { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$ behind region counts (T9.5).` },
-        { card: "circle-basics", note: String.raw`the quarter disks at the corners (T8.4).` }
+        { card: "handshakes-diagonals", note: String.raw`counting chords and crossings (S2.4).` },
+        { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$ behind region counts (S2.5).` },
+        { card: "circle-basics", note: String.raw`the quarter disks at the corners (S1.4).` }
       ],
       exercises: [
         { q: String.raw`Into how many regions do the chords joining $5$ points on a circle (no three chords through one interior point) divide the disk?`, answer: "16",
@@ -129,7 +129,7 @@ Count regions from crossings and chords, and add border strips and corners for n
         "2003 AIME I, Problem 5"
       ]
     },
-    "W9.5": {
+    "S4.5": {
       prereq: ["prism-pyramid-volumes", "space-diagonal"],
       cards: ["frustum-volume", "regular-tetrahedron", "plane-cross-section", "dihedral-angle", "distance-3d", "plane-intercept-form", "cross-product-area", "box-tetrahedron", "equal-edge-tetrahedron"],
       body: String.raw`The AMC 12 adds tetrahedra, frustums, cross-sections, angles between planes and coordinates in space to the solids of the AMC 10.
@@ -140,11 +140,11 @@ A [[plane-cross-section|plane cuts a solid]] in a polygon whose vertices lie on 
 
 In coordinates, the [[distance-3d|distance]] adds three squares, a plane with intercepts $a$, $b$, $c$ has [[plane-intercept-form|equation $\tfrac xa + \tfrac yb + \tfrac zc = 1$]], and the [[cross-product-area|cross product]] gives areas and normal vectors.
 
-Cut along a good plane, box tetrahedra, and compute in coordinates when needed. This completes the AMC 12 book.`,
+Cut along a good plane, box tetrahedra, and compute in coordinates when needed. This completes the AMC Geometry book.`,
       related: [
-        { card: "similar-figures-ratios", note: String.raw`volumes of similar solids (T8.1).` },
-        { card: "vector-dot-product", note: String.raw`angles between normals (W9.3).` },
-        { card: "unfold-the-surface", note: String.raw`paths on surfaces (T9.5).` }
+        { card: "similar-figures-ratios", note: String.raw`volumes of similar solids (S1.1).` },
+        { card: "vector-dot-product", note: String.raw`angles between normals (S4.3).` },
+        { card: "unfold-the-surface", note: String.raw`paths on surfaces (S2.5).` }
       ],
       exercises: [
         { q: String.raw`A frustum of a cone has radii $2$ and $4$ and height $3$. Find its volume.`, answer: "28pi",

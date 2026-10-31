@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T1: the algebra toolkit (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L1: the algebra toolkit (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T1"] = {
+window.MATH_LEARN["L1"] = {
   lessons: {
-    "T1.1": {
+    "L1.1": {
       prereq: [],
       cards: ["difference-of-squares", "square-of-sum", "rationalizing", "completing-the-square"],
       body: String.raw`Most AMC algebra is won or lost in the first line: seeing that an expression factors, that a sum is part of a perfect square, or that a radical can be cleared, instead of multiplying everything out. Computing $\tfrac{100^2 - 7^2}{70^2 - 11^2}$, finding the largest prime factor of $3^8 - 1$, or the smallest value of $x^2 - 8x + 21$ each take one idea and no long arithmetic.
@@ -16,9 +16,9 @@ The [[square-of-sum|square of a sum]] $(a + b)^2 = a^2 + 2ab + b^2$, and $(a + b
 
 Before expanding, look for a difference of squares, a perfect square or a conjugate. The next lesson solves equations and systems.`,
       related: [
-        { card: "sfft", note: String.raw`completing a product $xy + x + y + 1 = (x + 1)(y + 1)$ for integer equations (T5.4).` },
-        { card: "vertex-form", note: String.raw`completing the square locates the vertex of a parabola (T2.1).` },
-        { card: "telescoping", note: String.raw`sums that collapse after rationalizing (T3.4).` }
+        { card: "sfft", note: String.raw`completing a product $xy + x + y + 1 = (x + 1)(y + 1)$ for integer equations (M2.4).` },
+        { card: "vertex-form", note: String.raw`completing the square locates the vertex of a parabola (L2.1).` },
+        { card: "telescoping", note: String.raw`sums that collapse after rationalizing (L3.4).` }
       ],
       exercises: [
         { q: String.raw`Find the largest prime factor of $3^8 - 1$.`, answer: "41",
@@ -36,7 +36,7 @@ Before expanding, look for a difference of squares, a perfect square or a conjug
         "2021 Fall AMC 12B, Problem 18"
       ]
     },
-    "T1.2": {
+    "L1.2": {
       prereq: ["square-of-sum"],
       cards: ["linear-elimination", "add-all-equations", "transforming-equations", "symmetric-polynomial-strategies"],
       body: String.raw`Word problems on the AMC turn into small systems of equations, and the fastest solutions find what the question asks for without solving for everything. If the question asks for $x + y$, look for a combination of the equations that gives $x + y$; if the equations are symmetric, add them; if only $x + y$ and $xy$ appear, never find $x$ and $y$ at all.
@@ -51,9 +51,9 @@ Expressions that are symmetric in two variables are functions of $x + y$ and $xy
 
 Solve for what is asked, add symmetric equations, use $x + y$ and $xy$, and check. The next lesson simplifies equations with substitutions.`,
       related: [
-        { card: "vietas-quadratic", note: String.raw`$x$ and $y$ as the roots of $t^2 - (x + y)t + xy$ (T2.1).` },
-        { card: "setting-up-proportions", note: String.raw`translating word problems into equations (T1.5).` },
-        { card: "quadratic-formula", note: String.raw`solving the quadratic that a symmetric system produces (T2.1).` }
+        { card: "vietas-quadratic", note: String.raw`$x$ and $y$ as the roots of $t^2 - (x + y)t + xy$ (L2.1).` },
+        { card: "setting-up-proportions", note: String.raw`translating word problems into equations (L1.5).` },
+        { card: "quadratic-formula", note: String.raw`solving the quadratic that a symmetric system produces (L2.1).` }
       ],
       exercises: [
         { q: String.raw`Solve $3x + 2y = 16$ and $x - y = 2$, and give $xy$.`, answer: "8",
@@ -72,7 +72,7 @@ Solve for what is asked, add symmetric equations, use $x + y$ and $xy$, and chec
         "2019 AMC 12A, Problem 12"
       ]
     },
-    "T1.3": {
+    "L1.3": {
       prereq: ["quadratic-formula"],
       cards: ["name-the-whole-expression", "substitute-repeated-block", "repeated-block-equation", "infinite-nest"],
       body: String.raw`A substitution can turn a frightening equation into a quadratic. When the same block of symbols appears more than once, name it; when an expression goes on forever by repeating itself, name the whole thing and notice that it appears inside itself. These two moves solve a large family of AMC problems.
@@ -83,9 +83,9 @@ Solve for what is asked, add symmetric equations, use $x + y$ and $xy$, and chec
 
 Look for a block that repeats, or an expression that contains itself, and name it. The next lesson treats absolute values and floors.`,
       related: [
-        { card: "quadratic-formula", note: String.raw`solving the quadratic the substitution produces (T2.1).` },
-        { card: "geometric-series", note: String.raw`an infinite sum that contains a copy of itself (T3.2).` },
-        { card: "log-rules", note: String.raw`naming a logarithm as a new variable (T2.4).` }
+        { card: "quadratic-formula", note: String.raw`solving the quadratic the substitution produces (L2.1).` },
+        { card: "geometric-series", note: String.raw`an infinite sum that contains a copy of itself (L3.2).` },
+        { card: "log-rules", note: String.raw`naming a logarithm as a new variable (L2.4).` }
       ],
       exercises: [
         { q: String.raw`Find the sum of the real solutions of $(x^2 - 3x)^2 - 2(x^2 - 3x) - 8 = 0$.`, answer: "6",
@@ -99,7 +99,7 @@ Look for a block that repeats, or an expression that contains itself, and name i
         "2020 AMC 12B, Problem 22"
       ]
     },
-    "T1.4": {
+    "L1.4": {
       prereq: ["trivial-inequality"],
       cards: ["absolute-value-rules", "abs-value-relations", "sign-chart", "abs-value-graphing", "name-the-floor", "group-equal-floors", "floor-equation", "floor-sum-range"],
       body: String.raw`Absolute values and floor functions are piecewise: they follow one rule on part of the number line and another rule elsewhere. Problems with them are solved by finding the points where the rule changes and working one piece at a time. Sign charts do the same for products and quotients.
@@ -112,9 +112,9 @@ The floor $\lfloor x \rfloor$ is the greatest integer at most $x$. To solve equa
 
 Split at the switch points, chart the signs, and name the floor. The next lesson sets up word problems.`,
       related: [
-        { card: "median-minimizes-abs", note: String.raw`the smallest value of a sum of distances (T2.5).` },
-        { card: "piecewise-graph-counting", note: String.raw`counting intersections of piecewise graphs (T2.3).` },
-        { card: "floor-multiples", note: String.raw`$\left\lfloor \tfrac nk \right\rfloor$ counts multiples of $k$ (T4.3).` }
+        { card: "median-minimizes-abs", note: String.raw`the smallest value of a sum of distances (L2.5).` },
+        { card: "piecewise-graph-counting", note: String.raw`counting intersections of piecewise graphs (L2.3).` },
+        { card: "floor-multiples", note: String.raw`$\left\lfloor \tfrac nk \right\rfloor$ counts multiples of $k$ (M1.3).` }
       ],
       exercises: [
         { q: String.raw`Find the sum of the solutions of $|x - 3| + |x + 1| = 6$.`, answer: "2",
@@ -135,7 +135,7 @@ Split at the switch points, chart the signs, and name the floor. The next lesson
         "2014 AMC 12A, Problem 21"
       ]
     },
-    "T1.5": {
+    "L1.5": {
       prereq: ["linear-elimination"],
       cards: ["work-rates", "time-per-leg", "average-speed", "relative-motion", "averages-to-totals", "weighted-average", "mean-median-mode", "percent-change", "setting-up-proportions", "several-rates", "averages-before-after", "age-problems", "scoring-rules", "break-even-plans"],
       body: String.raw`The first ten problems of every AMC 10 include word problems about rates, averages, percents and ages. They are easy points when set up well and costly when a common mistake slips in: averaging speeds, adding percents, or confusing an average with a total. A few setups handle nearly all of them.
@@ -148,9 +148,9 @@ Averages are totals divided by counts, so [[averages-to-totals|turn averages int
 
 Name the quantities, write one equation per fact, and check the answer against the story. The next chapter studies quadratics and functions.`,
       related: [
-        { card: "linear-elimination", note: String.raw`solving the equations a word problem produces (T1.2).` },
-        { card: "geometric-series", note: String.raw`repeated percent changes (T3.2).` },
-        { card: "mean-chain", note: String.raw`why the average speed is a harmonic mean (W3.3).` }
+        { card: "linear-elimination", note: String.raw`solving the equations a word problem produces (L1.2).` },
+        { card: "geometric-series", note: String.raw`repeated percent changes (L3.2).` },
+        { card: "mean-chain", note: String.raw`why the average speed is a harmonic mean (L6.3).` }
       ],
       exercises: [
         { q: String.raw`A car leaves town at $60$ miles per hour. One hour later a second car leaves the same town on the same road at $80$ miles per hour. How many hours after it leaves does the second car catch the first?`, answer: "3",

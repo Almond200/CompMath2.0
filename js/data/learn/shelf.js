@@ -2,471 +2,485 @@
 // The Learn shelf: books, their chapters (Core, Core II or Extension) and lesson titles.
 window.MATH_LEARN_SHELF = [
  {
-  "id": "amc-10",
-  "title": "AMC 10",
-  "role": "the whole AMC 10 syllabus, from algebra and number theory to counting, probability and geometry",
+  "id": "amc-algebra",
+  "title": "AMC Algebra",
+  "role": "algebra for the AMC 10 and 12: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers",
   "chapters": [
    {
-    "code": "T1",
+    "code": "L1",
     "title": "The algebra toolkit",
-    "level": "Core",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "T1.1",
+      "code": "L1.1",
       "title": "Factoring, expanding and simplifying"
      },
      {
-      "code": "T1.2",
+      "code": "L1.2",
       "title": "Linear equations and systems"
      },
      {
-      "code": "T1.3",
+      "code": "L1.3",
       "title": "Substitutions and self-similar expressions"
      },
      {
-      "code": "T1.4",
+      "code": "L1.4",
       "title": "Absolute values, sign charts and floors"
      },
      {
-      "code": "T1.5",
+      "code": "L1.5",
       "title": "Rates, averages, percents and word problems"
      }
     ]
    },
    {
-    "code": "T2",
+    "code": "L2",
     "title": "Quadratics, functions and extremes",
-    "level": "Core",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "T2.1",
+      "code": "L2.1",
       "title": "Quadratics: roots, Vieta and the vertex"
      },
      {
-      "code": "T2.2",
+      "code": "L2.2",
       "title": "Functions: composition, inverses, symmetry, defined operations"
      },
      {
-      "code": "T2.3",
+      "code": "L2.3",
       "title": "Graphs and the number of solutions"
      },
      {
-      "code": "T2.4",
+      "code": "L2.4",
       "title": "Exponents and logarithms"
      },
      {
-      "code": "T2.5",
+      "code": "L2.5",
       "title": "Largest and smallest values"
      }
     ]
    },
    {
-    "code": "T3",
+    "code": "L3",
     "title": "Polynomials, sequences and series",
-    "level": "Core",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "T3.1",
+      "code": "L3.1",
       "title": "Polynomial roots, remainders and coefficients"
      },
      {
-      "code": "T3.2",
+      "code": "L3.2",
       "title": "Arithmetic and geometric sequences"
      },
      {
-      "code": "T3.3",
+      "code": "L3.3",
       "title": "Recurrences and periodic sequences"
      },
      {
-      "code": "T3.4",
+      "code": "L3.4",
       "title": "Telescoping and clever sums"
      },
      {
-      "code": "T3.5",
+      "code": "L3.5",
       "title": "Symmetric identities in three variables"
-     }
-    ]
-   },
-   {
-    "code": "T4",
-    "title": "Number theory: primes, divisors and digits",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "T4.1",
-      "title": "Prime factorization, gcd and lcm"
      },
      {
-      "code": "T4.2",
-      "title": "Counting and summing divisors"
-     },
-     {
-      "code": "T4.3",
-      "title": "Divisibility rules and factorials"
-     },
-     {
-      "code": "T4.4",
-      "title": "Bases and digits"
-     },
-     {
-      "code": "T4.5",
-      "title": "Decimals and calendars"
-     }
-    ]
-   },
-   {
-    "code": "T5",
-    "title": "Number theory: remainders and integer equations",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "T5.1",
-      "title": "Modular arithmetic"
-     },
-     {
-      "code": "T5.2",
-      "title": "Cycles, Fermat and Euler"
-     },
-     {
-      "code": "T5.3",
-      "title": "Linear congruences and the Chinese Remainder Theorem"
-     },
-     {
-      "code": "T5.4",
-      "title": "Integer equations by factoring"
-     },
-     {
-      "code": "T5.5",
-      "title": "Right triangles with integer sides"
-     }
-    ]
-   },
-   {
-    "code": "T6",
-    "title": "Counting",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "T6.1",
-      "title": "Permutations, combinations and building objects"
-     },
-     {
-      "code": "T6.2",
-      "title": "Cases, complements and inclusion-exclusion"
-     },
-     {
-      "code": "T6.3",
-      "title": "Arrangements with restrictions"
-     },
-     {
-      "code": "T6.4",
-      "title": "Distributions and binomial coefficients"
-     },
-     {
-      "code": "T6.5",
-      "title": "Recursion, paths and processes"
-     },
-     {
-      "code": "T6.6",
-      "title": "Subsets, graphs and pigeonhole"
-     }
-    ]
-   },
-   {
-    "code": "T7",
-    "title": "Probability and expected value",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "T7.1",
-      "title": "Probability by counting"
-     },
-     {
-      "code": "T7.2",
-      "title": "Independence and conditional probability"
-     },
-     {
-      "code": "T7.3",
-      "title": "Geometric probability"
-     },
-     {
-      "code": "T7.4",
-      "title": "Expected value"
-     },
-     {
-      "code": "T7.5",
-      "title": "Logic and puzzles"
-     }
-    ]
-   },
-   {
-    "code": "T8",
-    "title": "Geometry: triangles and circles",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "T8.1",
-      "title": "Similar and right triangles"
-     },
-     {
-      "code": "T8.2",
-      "title": "Ratios inside triangles"
-     },
-     {
-      "code": "T8.3",
-      "title": "Right-triangle constructions"
-     },
-     {
-      "code": "T8.4",
-      "title": "Circles: angles, chords and tangents"
-     },
-     {
-      "code": "T8.5",
-      "title": "Incircles and touching circles"
-     },
-     {
-      "code": "T8.6",
-      "title": "Trigonometry in triangles"
-     }
-    ]
-   },
-   {
-    "code": "T9",
-    "title": "Geometry: polygons, coordinates and solids",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "T9.1",
-      "title": "Polygons and areas"
-     },
-     {
-      "code": "T9.2",
-      "title": "Coordinates"
-     },
-     {
-      "code": "T9.3",
-      "title": "Transformations and symmetry"
-     },
-     {
-      "code": "T9.4",
-      "title": "Counting in figures"
-     },
-     {
-      "code": "T9.5",
-      "title": "Solids"
-     },
-     {
-      "code": "T9.6",
+      "code": "L3.6",
       "title": "Estimating and checking"
+     }
+    ]
+   },
+   {
+    "code": "L4",
+    "title": "Logarithms, exponentials and functions",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "L4.1",
+      "title": "Logarithmic and exponential equations"
+     },
+     {
+      "code": "L4.2",
+      "title": "Functional equations by substitution"
+     },
+     {
+      "code": "L4.3",
+      "title": "Floors beyond the basics"
+     }
+    ]
+   },
+   {
+    "code": "L5",
+    "title": "Polynomials and algebraic structure",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "L5.1",
+      "title": "Vieta for any degree, and power sums of roots"
+     },
+     {
+      "code": "L5.2",
+      "title": "Roots: conjugates, signs and transformations"
+     },
+     {
+      "code": "L5.3",
+      "title": "Remainders and interpolation"
+     },
+     {
+      "code": "L5.4",
+      "title": "Radicals and reciprocal substitutions"
+     },
+     {
+      "code": "L5.5",
+      "title": "Factorizations worth knowing"
+     }
+    ]
+   },
+   {
+    "code": "L6",
+    "title": "Sequences, sums and inequalities",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "L6.1",
+      "title": "Linear recurrences"
+     },
+     {
+      "code": "L6.2",
+      "title": "Finite differences and double sums"
+     },
+     {
+      "code": "L6.3",
+      "title": "The inequalities of the AMC 12"
+     }
+    ]
+   },
+   {
+    "code": "L7",
+    "title": "Trigonometry",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "L7.1",
+      "title": "Special values and identities"
+     },
+     {
+      "code": "L7.2",
+      "title": "Combining and solving"
+     },
+     {
+      "code": "L7.3",
+      "title": "Products and powers"
+     }
+    ]
+   },
+   {
+    "code": "L8",
+    "title": "Complex numbers",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "L8.1",
+      "title": "Complex arithmetic"
+     },
+     {
+      "code": "L8.2",
+      "title": "Polar form and De Moivre"
+     },
+     {
+      "code": "L8.3",
+      "title": "Roots of unity and the fundamental theorem"
      }
     ]
    }
   ]
  },
  {
-  "id": "amc-12",
-  "title": "AMC 12",
-  "role": "what the AMC 12 adds: logarithms, deeper polynomials, trigonometry, complex numbers, conics, vectors and space",
+  "id": "amc-number-theory",
+  "title": "AMC Number Theory",
+  "role": "number theory for the AMC 10 and 12: primes, divisors, digits, remainders, integer equations",
   "chapters": [
    {
-    "code": "W1",
-    "title": "Logarithms, exponentials and functions",
-    "level": "Core",
+    "code": "M1",
+    "title": "Number theory: primes, divisors and digits",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "W1.1",
-      "title": "Logarithmic and exponential equations"
+      "code": "M1.1",
+      "title": "Prime factorization, gcd and lcm"
      },
      {
-      "code": "W1.2",
-      "title": "Functional equations by substitution"
+      "code": "M1.2",
+      "title": "Counting and summing divisors"
      },
      {
-      "code": "W1.3",
-      "title": "Floors beyond the basics"
+      "code": "M1.3",
+      "title": "Divisibility rules and factorials"
+     },
+     {
+      "code": "M1.4",
+      "title": "Bases and digits"
+     },
+     {
+      "code": "M1.5",
+      "title": "Decimals and calendars"
      }
     ]
    },
    {
-    "code": "W2",
-    "title": "Polynomials and algebraic structure",
-    "level": "Core",
+    "code": "M2",
+    "title": "Number theory: remainders and integer equations",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "W2.1",
-      "title": "Vieta for any degree, and power sums of roots"
+      "code": "M2.1",
+      "title": "Modular arithmetic"
      },
      {
-      "code": "W2.2",
-      "title": "Roots: conjugates, signs and transformations"
+      "code": "M2.2",
+      "title": "Cycles, Fermat and Euler"
      },
      {
-      "code": "W2.3",
-      "title": "Remainders and interpolation"
+      "code": "M2.3",
+      "title": "Linear congruences and the Chinese Remainder Theorem"
      },
      {
-      "code": "W2.4",
-      "title": "Radicals and reciprocal substitutions"
+      "code": "M2.4",
+      "title": "Integer equations by factoring"
      },
      {
-      "code": "W2.5",
-      "title": "Factorizations worth knowing"
+      "code": "M2.5",
+      "title": "Right triangles with integer sides"
      }
     ]
    },
    {
-    "code": "W3",
-    "title": "Sequences, sums and inequalities",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "W3.1",
-      "title": "Linear recurrences"
-     },
-     {
-      "code": "W3.2",
-      "title": "Finite differences and double sums"
-     },
-     {
-      "code": "W3.3",
-      "title": "The inequalities of the AMC 12"
-     }
-    ]
-   },
-   {
-    "code": "W4",
-    "title": "Trigonometry",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "W4.1",
-      "title": "Special values and identities"
-     },
-     {
-      "code": "W4.2",
-      "title": "Combining and solving"
-     },
-     {
-      "code": "W4.3",
-      "title": "Products and powers"
-     }
-    ]
-   },
-   {
-    "code": "W5",
-    "title": "Complex numbers",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "W5.1",
-      "title": "Complex arithmetic"
-     },
-     {
-      "code": "W5.2",
-      "title": "Polar form and De Moivre"
-     },
-     {
-      "code": "W5.3",
-      "title": "Roots of unity and the fundamental theorem"
-     }
-    ]
-   },
-   {
-    "code": "W6",
+    "code": "M3",
     "title": "Number theory for the AMC 12",
-    "level": "Core",
+    "level": "AMC 12",
     "lessons": [
      {
-      "code": "W6.1",
+      "code": "M3.1",
       "title": "Exponents, divisor functions and parity"
      },
      {
-      "code": "W6.2",
+      "code": "M3.2",
       "title": "Inverses, Bézout and Euler's theorem"
      },
      {
-      "code": "W6.3",
+      "code": "M3.3",
       "title": "Primes in binomials and bounded equations"
      }
     ]
-   },
+   }
+  ]
+ },
+ {
+  "id": "amc-counting",
+  "title": "AMC Counting & Probability",
+  "role": "counting, probability and expected value for the AMC 10 and 12",
+  "chapters": [
    {
-    "code": "W7",
-    "title": "Counting and probability for the AMC 12",
-    "level": "Core",
+    "code": "R1",
+    "title": "Counting",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "W7.1",
-      "title": "More counting structures"
+      "code": "R1.1",
+      "title": "Permutations, combinations and building objects"
      },
      {
-      "code": "W7.2",
-      "title": "More binomial identities"
+      "code": "R1.2",
+      "title": "Cases, complements and inclusion-exclusion"
      },
      {
-      "code": "W7.3",
-      "title": "Invariants, colorings and symmetry"
+      "code": "R1.3",
+      "title": "Arrangements with restrictions"
      },
      {
-      "code": "W7.4",
-      "title": "Conditional probability and expectation"
+      "code": "R1.4",
+      "title": "Distributions and binomial coefficients"
      },
      {
-      "code": "W7.5",
-      "title": "Random processes"
+      "code": "R1.5",
+      "title": "Recursion, paths and processes"
      },
      {
-      "code": "W7.6",
-      "title": "Continuous probability"
+      "code": "R1.6",
+      "title": "Subsets, graphs and pigeonhole"
      }
     ]
    },
    {
-    "code": "W8",
-    "title": "Geometry: triangles and circles for the AMC 12",
-    "level": "Core",
+    "code": "R2",
+    "title": "Probability and expected value",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "W8.1",
-      "title": "Cevians and area ratios"
+      "code": "R2.1",
+      "title": "Probability by counting"
      },
      {
-      "code": "W8.2",
-      "title": "Cyclic quadrilaterals and incircles"
+      "code": "R2.2",
+      "title": "Independence and conditional probability"
      },
      {
-      "code": "W8.3",
-      "title": "Circles that touch"
+      "code": "R2.3",
+      "title": "Geometric probability"
      },
      {
-      "code": "W8.4",
+      "code": "R2.4",
+      "title": "Expected value"
+     },
+     {
+      "code": "R2.5",
+      "title": "Logic and puzzles"
+     }
+    ]
+   },
+   {
+    "code": "R3",
+    "title": "Counting and probability for the AMC 12",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "R3.1",
+      "title": "More counting structures"
+     },
+     {
+      "code": "R3.2",
+      "title": "More binomial identities"
+     },
+     {
+      "code": "R3.3",
+      "title": "Invariants, colorings and symmetry"
+     },
+     {
+      "code": "R3.4",
+      "title": "Conditional probability and expectation"
+     },
+     {
+      "code": "R3.5",
+      "title": "Random processes"
+     },
+     {
+      "code": "R3.6",
+      "title": "Continuous probability"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "amc-geometry",
+  "title": "AMC Geometry",
+  "role": "geometry for the AMC 10 and 12: triangles, circles, polygons, coordinates, trigonometry, conics and solids",
+  "chapters": [
+   {
+    "code": "S1",
+    "title": "Geometry: triangles and circles",
+    "level": "AMC 10",
+    "lessons": [
+     {
+      "code": "S1.1",
+      "title": "Similar and right triangles"
+     },
+     {
+      "code": "S1.2",
+      "title": "Ratios inside triangles"
+     },
+     {
+      "code": "S1.3",
+      "title": "Right-triangle constructions"
+     },
+     {
+      "code": "S1.4",
+      "title": "Circles: angles, chords and tangents"
+     },
+     {
+      "code": "S1.5",
+      "title": "Incircles and touching circles"
+     },
+     {
+      "code": "S1.6",
       "title": "Trigonometry in triangles"
      }
     ]
    },
    {
-    "code": "W9",
-    "title": "Geometry: coordinates, transformations and space",
-    "level": "Core",
+    "code": "S2",
+    "title": "Geometry: polygons, coordinates and solids",
+    "level": "AMC 10",
     "lessons": [
      {
-      "code": "W9.1",
+      "code": "S2.1",
+      "title": "Polygons and areas"
+     },
+     {
+      "code": "S2.2",
+      "title": "Coordinates"
+     },
+     {
+      "code": "S2.3",
+      "title": "Transformations and symmetry"
+     },
+     {
+      "code": "S2.4",
+      "title": "Counting in figures"
+     },
+     {
+      "code": "S2.5",
+      "title": "Solids"
+     }
+    ]
+   },
+   {
+    "code": "S3",
+    "title": "Geometry: triangles and circles for the AMC 12",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "S3.1",
+      "title": "Cevians and area ratios"
+     },
+     {
+      "code": "S3.2",
+      "title": "Cyclic quadrilaterals and incircles"
+     },
+     {
+      "code": "S3.3",
+      "title": "Circles that touch"
+     },
+     {
+      "code": "S3.4",
+      "title": "Trigonometry in triangles"
+     }
+    ]
+   },
+   {
+    "code": "S4",
+    "title": "Geometry: coordinates, transformations and space",
+    "level": "AMC 12",
+    "lessons": [
+     {
+      "code": "S4.1",
       "title": "Conic sections"
      },
      {
-      "code": "W9.2",
+      "code": "S4.2",
       "title": "Tangency, determinants and lattice points"
      },
      {
-      "code": "W9.3",
+      "code": "S4.3",
       "title": "Transformations and vectors"
      },
      {
-      "code": "W9.4",
+      "code": "S4.4",
       "title": "Counting regions and neighborhoods"
      },
      {
-      "code": "W9.5",
+      "code": "S4.5",
       "title": "Solids and space"
      }
     ]

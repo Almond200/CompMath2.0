@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W5: complex numbers (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L8: complex numbers (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W5"] = {
+window.MATH_LEARN["L8"] = {
   lessons: {
-    "W5.1": {
+    "L8.1": {
       prereq: ["rationalizing"],
       cards: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument"],
       body: String.raw`Complex numbers appear on almost every AMC 12. The first skills are arithmetic: dividing by a complex number, using the conjugate, and reading conditions on the modulus.
@@ -16,9 +16,9 @@ A [[complex-modulus-argument|known modulus or argument]] is a locus: $|z - c| = 
 
 Divide with conjugates, conjugate whole equations, and read moduli as distances. The next lesson uses polar form.`,
       related: [
-        { card: "conjugate-root-theorems", note: String.raw`non-real roots of real polynomials come in conjugate pairs (W2.2).` },
-        { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$ (T2.5).` },
-        { card: "circle-equation", note: String.raw`circles as sets of complex numbers (T9.2).` }
+        { card: "conjugate-root-theorems", note: String.raw`non-real roots of real polynomials come in conjugate pairs (L5.2).` },
+        { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$ (L2.5).` },
+        { card: "circle-equation", note: String.raw`circles as sets of complex numbers (S2.2).` }
       ],
       exercises: [
         { q: String.raw`Find the real part of $\tfrac{3 + 4i}{1 + 2i}$.`, answer: "11/5",
@@ -36,7 +36,7 @@ Divide with conjugates, conjugate whole equations, and read moduli as distances.
         "2019 AIME II, Problem 8"
       ]
     },
-    "W5.2": {
+    "L8.2": {
       prereq: ["complex-basics", "angle-addition"],
       cards: ["eulers-formula", "polar-form", "de-moivre"],
       body: String.raw`Writing a complex number by its size and angle turns multiplication into rotation and powers into repeated rotation. This is the main reason complex numbers appear in AMC 12 geometry and algebra.
@@ -47,9 +47,9 @@ Divide with conjugates, conjugate whole equations, and read moduli as distances.
 
 Convert to polar form for products, powers and rotations, and back for sums. The next lesson treats roots of unity.`,
       related: [
-        { card: "rotation-90", note: String.raw`rotations in coordinates (T9.3).` },
-        { card: "binomial-theorem", note: String.raw`expanding $(\cos\theta + i\sin\theta)^n$ (T6.4).` },
-        { card: "geometric-series", note: String.raw`sums of repeated rotations (T3.2).` }
+        { card: "rotation-90", note: String.raw`rotations in coordinates (S2.3).` },
+        { card: "binomial-theorem", note: String.raw`expanding $(\cos\theta + i\sin\theta)^n$ (R1.4).` },
+        { card: "geometric-series", note: String.raw`sums of repeated rotations (L3.2).` }
       ],
       exercises: [
         { q: String.raw`Find $(1 + i\sqrt3)^6$.`, answer: "64",
@@ -66,7 +66,7 @@ Convert to polar form for products, powers and rotations, and back for sums. The
         "2005 AIME II, Problem 9"
       ]
     },
-    "W5.3": {
+    "L8.3": {
       prereq: ["de-moivre", "vietas-general"],
       cards: ["roots-of-unity", "fundamental-theorem-algebra"],
       body: String.raw`The solutions of $z^n = 1$ sit at the vertices of a regular polygon on the unit circle, and they turn up in polynomial factorizations, sums of powers and counting. Together with the fundamental theorem of algebra, they complete the AMC 12's complex numbers.
@@ -75,11 +75,11 @@ The [[roots-of-unity|$n$th roots of unity]] are $e^{2\pi ik/n}$ for $k = 0, \ldo
 
 The [[fundamental-theorem-algebra|fundamental theorem of algebra]] says a polynomial of degree $n$ has exactly $n$ complex roots with multiplicity, so it factors completely and Vieta's formulas describe all roots: the product of the roots of $z^5 - 3z + 2$ is $-2$. Products over roots of unity are values of $z^n - 1$, so $\prod_{k=1}^{n-1}(1 - \omega^k) = n$.
 
-Recognize factors of $z^n - 1$, reduce exponents modulo $n$, and use the complete factorization. The next chapter returns to number theory.`,
+Recognize factors of $z^n - 1$, reduce exponents modulo $n$, and use the complete factorization. This completes the AMC Algebra book.`,
       related: [
-        { card: "products-over-roots", note: String.raw`products over roots as values of the polynomial (W2.1).` },
+        { card: "products-over-roots", note: String.raw`products over roots as values of the polynomial (L5.1).` },
         { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.3).` },
-        { card: "cycle-hunting", note: String.raw`periods of powers (T5.2).` }
+        { card: "cycle-hunting", note: String.raw`periods of powers (M2.2).` }
       ],
       exercises: [
         { q: String.raw`For how many of the $12$ complex numbers with $z^{12} = 1$ is $z^4$ real?`, answer: "4",

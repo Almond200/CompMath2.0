@@ -5092,17 +5092,22 @@
     "aime-number-theory": `<circle cx="50" cy="50" r="34" />${Array.from({ length: 12 }, (_, k) => `<circle cx="${(50 + 34 * Math.sin(k * Math.PI / 6)).toFixed(1)}" cy="${(50 - 34 * Math.cos(k * Math.PI / 6)).toFixed(1)}" r="${k % 3 ? 2.6 : 4.2}" class="mf" />`).join("")}<path d="M50 50 L50 24 M50 50 L68 60" />`,
     // a triangle in its circumcircle
     "aime-geometry": `<circle cx="50" cy="52" r="36" /><path d="M50 16 L19 70 L83 66 Z" /><path d="M50 16 L51 68" />`,
-    // five answer bubbles with one filled in
-    "amc-10": `${[18, 34, 50, 66, 82].map((x, k) => `<circle cx="${x}" cy="50" r="7"${k === 2 ? ' class="mf"' : ""} />`).join("")}<path d="M14 72 H86" class="mg" />`,
-    // an angle in the unit circle
-    "amc-12": `<circle cx="50" cy="50" r="34" /><path d="M16 50 H84 M50 16 V84" class="mg" /><path d="M50 50 L76 28" /><circle cx="76" cy="28" r="4" class="mf" /><path d="M62 50 A12 12 0 0 0 59 42" />`,
+    // a function graph crossing its axes
+    "amc-algebra": `<path d="M14 64 H86 M40 14 V86" class="mg" /><path d="M16 82 Q40 10 62 50 T86 30" />`,
+    // a factor tree
+    "amc-number-theory": `<path d="M50 20 L32 46 M50 20 L68 46 M68 46 L56 74 M68 46 L80 74" /><circle cx="50" cy="20" r="5" class="mf" /><circle cx="32" cy="48" r="5" class="mf" /><circle cx="68" cy="46" r="4" /><circle cx="56" cy="76" r="5" class="mf" /><circle cx="80" cy="76" r="5" class="mf" />`,
+    // a die face
+    "amc-counting": `<rect x="22" y="22" width="56" height="56" rx="10" />${[[36,36],[64,36],[50,50],[36,64],[64,64]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" class="mf" />`).join("")}`,
+    // a right triangle with a square on its hypotenuse corner
+    "amc-geometry": `<path d="M20 78 H80 V30 Z" /><path d="M72 78 V70 H80" class="mg" /><circle cx="50" cy="54" r="12" />`,
     // a lattice path on a grid
     "aime-counting": `${[14, 32, 50, 68, 86].map(v => `<path d="M14 ${v} H86 M${v} 14 V86" class="mg" />`).join("")}<path d="M14 86 H32 V68 H68 V32 H86 V14" />`
   };
   function bookParts(b) {
     const m = b.title.match(/^AIME (.+)$/);
     if (m) return { series: "AIME", name: m[1] };
-    return /^AMC \d+$/.test(b.title) ? { series: "Contests", name: b.title } : { series: "Foundations", name: b.title };
+    if (/^amc-/.test(b.id)) return { series: "AMC 10 & 12", name: b.title.replace(/^AMC /, "") };
+    return { series: "Foundations", name: b.title };
   }
   const learnWrittenIn = b => b.chapters.reduce((n, c) => n + c.lessons.filter(l => learnLessonData(c, l)).length, 0);
   const learnLessonsIn = b => b.chapters.reduce((n, c) => n + c.lessons.length, 0);
@@ -5259,7 +5264,7 @@
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons &middot; ${learnWrittenIn(b)} written so far</p>
             ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
-            <p class="learn-note bk-levels">Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).</p>
+            <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "AMC 10" })} or ${learnLevelHtml({ level: "AMC 12" })} (topics the AMC 12 adds).` : `Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`}</p>
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>

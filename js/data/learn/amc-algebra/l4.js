@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W1: logarithms, exponentials and functions (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L4: logarithms, exponentials and functions (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W1"] = {
+window.MATH_LEARN["L4"] = {
   lessons: {
-    "W1.1": {
+    "L4.1": {
       prereq: ["log-rules", "change-of-base", "substitute-repeated-block"],
       cards: ["take-logs-linearize", "log-substitution", "log-system"],
       body: String.raw`The AMC 12 turns logarithms from arithmetic into equations. Most such equations become polynomial or linear after one of three moves: take logarithms of both sides, name a logarithm or a power as a new variable, or treat a system of logarithmic equations as a linear system.
@@ -17,8 +17,8 @@ A [[log-system|system of logarithmic equations]] is linear in the logarithms. Wi
 Take logarithms, name the repeated power or logarithm, and solve linear systems in the logarithms. The next lesson solves equations for unknown functions.`,
       related: [
         { card: "exponent-laws", note: String.raw`rewriting powers before taking logarithms.` },
-        { card: "vietas-quadratic", note: String.raw`products of solutions from the quadratic in $\log x$ (T2.1).` },
-        { card: "linear-elimination", note: String.raw`solving the linear system in the logarithms (T1.2).` }
+        { card: "vietas-quadratic", note: String.raw`products of solutions from the quadratic in $\log x$ (L2.1).` },
+        { card: "linear-elimination", note: String.raw`solving the linear system in the logarithms (L1.2).` }
       ],
       exercises: [
         { q: String.raw`Find the sum of the real solutions of $4^x - 6 \cdot 2^x + 8 = 0$.`, answer: "3",
@@ -34,7 +34,7 @@ Take logarithms, name the repeated power or logarithm, and solve linear systems 
         "2026 AIME I, Problem 6"
       ]
     },
-    "W1.2": {
+    "L4.2": {
       prereq: ["inverse-function-properties"],
       cards: ["functional-substitution", "fx-pairing", "cauchy-functional-equations"],
       body: String.raw`A functional equation gives a relation that a function satisfies for every input and asks for a value or for the function. On the AMC 12 these are solved by substituting well-chosen inputs until enough equations appear.
@@ -47,8 +47,8 @@ Take logarithms, name the repeated power or logarithm, and solve linear systems 
 
 Substitute inputs that create a solvable system, pair symmetric inputs, and recognize Cauchy's forms. The last lesson of the chapter treats floors.`,
       related: [
-        { card: "odd-even-functions", note: String.raw`the symmetry $x \to -x$ (T2.2).` },
-        { card: "linear-elimination", note: String.raw`solving the system the substitutions produce (T1.2).` },
+        { card: "odd-even-functions", note: String.raw`the symmetry $x \to -x$ (L2.2).` },
+        { card: "linear-elimination", note: String.raw`solving the system the substitutions produce (L1.2).` },
         { card: "injectivity-surjectivity", note: String.raw`olympiad functional equations (A9.2).` }
       ],
       exercises: [
@@ -68,7 +68,7 @@ Substitute inputs that create a solvable system, pair symmetric inputs, and reco
         "1997 AIME, Problem 12"
       ]
     },
-    "W1.3": {
+    "L4.3": {
       prereq: ["name-the-floor", "floor-equation"],
       cards: ["floor-basics"],
       body: String.raw`The floor function appears on the AMC 12 in equations, sums and counts that go a step beyond the AMC 10. The basic facts are few, and almost every solution writes $x = n + f$ with $n$ an integer and $0 \le f \lt 1$.
@@ -81,9 +81,9 @@ Sums of floors are grouped by equal values, or evaluated through $\lfloor x \rfl
 
 Split into integer intervals, write $x = n + f$, and group equal floors. The next chapter studies polynomials.`,
       related: [
-        { card: "group-equal-floors", note: String.raw`summing floors by grouping equal values (T1.4).` },
-        { card: "legendres-formula", note: String.raw`sums of floors that count prime factors (T4.3).` },
-        { card: "piecewise-graph-counting", note: String.raw`graphing floor functions (T2.3).` }
+        { card: "group-equal-floors", note: String.raw`summing floors by grouping equal values (L1.4).` },
+        { card: "legendres-formula", note: String.raw`sums of floors that count prime factors (M1.3).` },
+        { card: "piecewise-graph-counting", note: String.raw`graphing floor functions (L2.3).` }
       ],
       exercises: [
         { q: String.raw`Solve $x\lfloor x \rfloor = 17$ for positive $x$.`, answer: "17/4",

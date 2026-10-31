@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W2: polynomials and algebraic structure (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L5: polynomials and algebraic structure (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W2"] = {
+window.MATH_LEARN["L5"] = {
   lessons: {
-    "W2.1": {
+    "L5.1": {
       prereq: ["vietas-quadratic", "square-of-sum"],
       cards: ["vietas-general", "newtons-sums", "products-over-roots", "fundamental-theorem-symmetric"],
       body: String.raw`For polynomials of any degree, the coefficients are the elementary symmetric sums of the roots, and every symmetric expression in the roots can be computed from them. This is the main polynomial tool of the AMC 12.
@@ -16,9 +16,9 @@ The [[fundamental-theorem-symmetric|fundamental theorem of symmetric polynomials
 
 Write every symmetric quantity through the coefficients, and evaluate the polynomial for products. The next lesson studies where roots lie.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`the two-variable version (T1.2).` },
-        { card: "comparing-coefficients", note: String.raw`reading identities coefficient by coefficient (T3.1).` },
-        { card: "roots-of-unity", note: String.raw`products over complex roots (W5.3).` }
+        { card: "symmetric-polynomial-strategies", note: String.raw`the two-variable version (L1.2).` },
+        { card: "comparing-coefficients", note: String.raw`reading identities coefficient by coefficient (L3.1).` },
+        { card: "roots-of-unity", note: String.raw`products over complex roots (L8.3).` }
       ],
       exercises: [
         { q: String.raw`The roots of $x^3 - 2x^2 - 5x + 6$ are $r$, $s$, $t$. Find $r^2 + s^2 + t^2$.`, answer: "14",
@@ -37,7 +37,7 @@ Write every symmetric quantity through the coefficients, and evaluate the polyno
         "2019 AIME I, Problem 8"
       ]
     },
-    "W2.2": {
+    "L5.2": {
       prereq: ["vietas-general", "quadratic-formula"],
       cards: ["conjugate-root-theorems", "descartes-rule-signs", "root-transformations", "quadratic-root-location"],
       body: String.raw`Questions about polynomial roots often ask not for the roots but for facts about them: which other numbers must be roots, how many are positive, what polynomial has the roots doubled or reciprocated, or for which parameters the roots fall in a given interval.
@@ -50,9 +50,9 @@ The [[conjugate-root-theorems|conjugate root theorems]]: if a polynomial with re
 
 Use conjugates to find hidden roots, sign changes to count positive ones, substitutions to transform them, and values to locate them. The next lesson treats remainders and interpolation.`,
       related: [
-        { card: "complex-basics", note: String.raw`complex roots and conjugates (W5.1).` },
-        { card: "vertex-form", note: String.raw`the vertex used in root location (T2.1).` },
-        { card: "rational-root-theorem", note: String.raw`listing rational roots (T3.1).` }
+        { card: "complex-basics", note: String.raw`complex roots and conjugates (L8.1).` },
+        { card: "vertex-form", note: String.raw`the vertex used in root location (L2.1).` },
+        { card: "rational-root-theorem", note: String.raw`listing rational roots (L3.1).` }
       ],
       exercises: [
         { q: String.raw`A quadratic $x^2 + bx + c$ with integer coefficients has root $2 + \sqrt3$. Find $c - b$.`, answer: "5",
@@ -71,7 +71,7 @@ Use conjugates to find hidden roots, sign changes to count positive ones, substi
         "2010 AIME II, Problem 7"
       ]
     },
-    "W2.3": {
+    "L5.3": {
       prereq: ["factor-remainder-theorem"],
       cards: ["polynomial-crt", "lagrange-interpolation-formula"],
       body: String.raw`A polynomial is determined by enough of its values, and its remainder on division by a product of linear factors is determined by its values at their roots. These two facts handle problems that give a few values and ask for more.
@@ -82,9 +82,9 @@ The [[lagrange-interpolation-formula|Lagrange interpolation formula]] writes the
 
 Turn given values into roots of a difference, and remainders into values. The next lesson treats radicals and reciprocal substitutions.`,
       related: [
-        { card: "finite-differences", note: String.raw`finding the next value of a polynomial by differences (W3.2).` },
-        { card: "comparing-coefficients", note: String.raw`fixing the unknown coefficients (T3.1).` },
-        { card: "crt", note: String.raw`the Chinese remainder theorem for integers (T5.3).` }
+        { card: "finite-differences", note: String.raw`finding the next value of a polynomial by differences (L6.2).` },
+        { card: "comparing-coefficients", note: String.raw`fixing the unknown coefficients (L3.1).` },
+        { card: "crt", note: String.raw`the Chinese remainder theorem for integers (M2.3).` }
       ],
       exercises: [
         { q: String.raw`A polynomial has $P(1) = 2$ and $P(2) = 3$. The remainder on dividing $P(x)$ by $(x - 1)(x - 2)$ is $R(x)$. Find $R(0)$.`, answer: "1",
@@ -94,7 +94,7 @@ Turn given values into roots of a difference, and remainders into values. The ne
       ],
       problems: ["2022 AMC 10B, Problem 21"]
     },
-    "W2.4": {
+    "L5.4": {
       prereq: ["rationalizing", "square-of-sum"],
       cards: ["denesting-radicals", "palindromic-polynomials", "reciprocal-power-sums", "forced-difference-of-squares"],
       body: String.raw`A few algebraic shapes recur on the AMC 12: nested radicals that are perfect squares, equations symmetric under $x \to \tfrac1x$, and integer equations forced into a difference of squares. Each has a standard move.
@@ -107,9 +107,9 @@ When an integer equation can be rearranged into $A^2 - B^2 = N$, it is [[forced-
 
 Look for perfect-square radicals, reciprocal symmetry, and differences of squares. The last lesson of the chapter collects factorizations.`,
       related: [
-        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of squares (T5.4).` },
-        { card: "completing-the-square", note: String.raw`turning a quadratic into a square plus a constant (T1.1).` },
-        { card: "de-moivre", note: String.raw`$x + \tfrac1x = 2\cos\theta$ on the unit circle (W5.2).` }
+        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of squares (M2.4).` },
+        { card: "completing-the-square", note: String.raw`turning a quadratic into a square plus a constant (L1.1).` },
+        { card: "de-moivre", note: String.raw`$x + \tfrac1x = 2\cos\theta$ on the unit circle (L8.2).` }
       ],
       exercises: [
         { q: String.raw`Write $\sqrt{7 + 4\sqrt3}$ as $a + \sqrt b$ with integers $a$, $b$ and find $a + b$.`, answer: "5",
@@ -127,7 +127,7 @@ Look for perfect-square radicals, reciprocal symmetry, and differences of square
         "2006 AIME I, Problem 5"
       ]
     },
-    "W2.5": {
+    "L5.5": {
       prereq: ["difference-of-squares", "sum-zero-identities"],
       cards: ["useful-factorizations", "cubes-minus-3abc", "antisymmetric-factorization", "sophie-germain"],
       body: String.raw`A handful of factorizations turn expressions that look prime or irreducible into products. Recognizing them is the whole solution to several AMC 12 problems.
@@ -140,9 +140,9 @@ An [[antisymmetric-factorization|antisymmetric expression]], one that changes si
 
 Before computing, test whether the expression has one of these shapes. The next chapter studies sequences, sums and inequalities.`,
       related: [
-        { card: "an-minus-bn", note: String.raw`the factorization of $a^n - b^n$ (T3.5).` },
-        { card: "sfft", note: String.raw`completing a product for integer equations (T5.4).` },
-        { card: "factor-remainder-theorem", note: String.raw`a polynomial vanishing at $a = b$ has the factor $a - b$ (T3.1).` }
+        { card: "an-minus-bn", note: String.raw`the factorization of $a^n - b^n$ (L3.5).` },
+        { card: "sfft", note: String.raw`completing a product for integer equations (M2.4).` },
+        { card: "factor-remainder-theorem", note: String.raw`a polynomial vanishing at $a = b$ has the factor $a - b$ (L3.1).` }
       ],
       exercises: [
         { q: String.raw`Find the largest prime factor of $5^4 + 4$.`, answer: "37",
