@@ -4002,7 +4002,7 @@
     tocPinned = null;
     // A few page tools under the sections (owner, 2026-10-31): back to the top, the list's link, print.
     const tools = `<div class="toc-head toc-tools-head">Page tools</div>
-      <button type="button" class="toc-tool" data-list-tool="top">&uarr; Back to top</button>
+      <button type="button" class="toc-tool" data-list-tool="top">Back to top</button>
       <button type="button" class="toc-tool" data-list-tool="link">Copy link to this list</button>
       <button type="button" class="toc-tool" data-list-tool="print">Print this list</button>`;
     toc.innerHTML = items.length ? `<div class="toc-head">On this list</div>${items.join("")}${tools}` : "";
@@ -4339,7 +4339,7 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Learn</h3>
-          ${settingRow("Card links in lessons", "What a card's name does when you press it in a lesson: open the card beside the lesson, so you never leave the page, or go to the card's own page.", "lessonLinks", state.lessonLinks, [["drawer", "Open beside the lesson"], ["card", "Go to the card"]])}
+          ${settingRow("Card links in lessons", "What pressing a card's name in a lesson does.", "lessonLinks", state.lessonLinks, [["drawer", "Opens in the lesson"], ["card", "Opens its page"]], "lesson")}
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
@@ -4628,6 +4628,7 @@
   // width and scaled down to fit, so card size changes how many cards fit across exactly as
   // it does in the app.
   const PV_W = 1100, PV_H = 640, PV_MEDIA = "(min-width: 1280px)";
+  let pvStart = 0;   // the first preview screen shown, kept while Settings re-draws
   // Chosen so every setting changes something: several formula rows (Formula lines), a sigma
   // in the first row (Notation), and figures (Figures on cards).
   const PV_CARDS = ["altitude-hypotenuse", "hockey-stick", "linear-recurrence", "power-of-a-point"];
@@ -4659,6 +4660,25 @@
     return state.tools === "on" ? `<div class="detail-with-tools"><div>${page}</div>${pageToolsHtml(entry)}</div>` : page;
   }
   // A problem page's "How this problem works" box, as the Practice setting shows it.
+  // A lesson, for "Card links in lessons": with "Open beside the lesson" a card's preview sits
+  // beside the text; with "Go to the card" the lesson keeps the whole width.
+  function pvLessonHtml() {
+    const b = LEARN_SHELF.find(x => x.id === "aime-counting"), c = b && b.chapters.find(x => x.code === "C5");
+    const l = c && c.lessons.find(x => x.code === "C5.2"), d = l && learnLessonData(c, l);
+    if (!d) return "";
+    const para = String(d.body).split("\n\n").slice(0, 3).join("\n\n");
+    const main = `<h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
+        <div class="lp-cards"><div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div></div>
+        <div class="detail-body lp-body">${detailBodyHtml(notate(para), "pv:" + l.code)}</div>`;
+    const e = BY_ID["recursive-counting"], f = e && e.formula;
+    const drawer = state.lessonLinks === "drawer" && f ? `<aside class="lp-drawer">
+        <div class="lp-drawer-head"><div class="card-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div><span class="lp-drawer-close">&times;</span></div>
+        <div class="detail lp-preview"><div class="lp-preview-title"><h3 class="card-name">${f.name}</h3></div>
+          ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
+          <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p></div>
+      </aside>` : "";
+    return `<div class="learn-page lesson-page bk-view bk-${b.id}" style="display:block"><div class="lp-grid${drawer ? " has-drawer" : ""}"><article class="lp-main">${main}</article>${drawer}</div></div>`;
+  }
   function pvProblemHtml() {
     const p = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
     if (!p) return "";
@@ -4716,12 +4736,13 @@
       pvScreen("page", "A card&rsquo;s page", pvPageHtml()) +
       pvScreen("subject", "A subject page", pvSubjectHtml(), PV_W + 260) +
       pvScreen("problem", "A problem page", pvProblemHtml()) +
+      pvScreen("lesson", "A lesson", pvLessonHtml(), PV_W + 260) +
       `</div>
       <button type="button" class="pv-nav pv-next" aria-label="More previews">&#8250;</button>`;
     const SHOW = 3, screens = [...aside.querySelectorAll(".pv-screen")];
-    let start = 0;
+    let start = pvStart;
     const showFrom = k => {
-      start = Math.max(0, Math.min(screens.length - SHOW, k));
+      start = pvStart = Math.max(0, Math.min(screens.length - SHOW, k));
       screens.forEach((sc, i) => { sc.hidden = i < start || i >= start + SHOW; });
       aside.querySelector(".pv-prev").disabled = start === 0;
       aside.querySelector(".pv-next").disabled = start + SHOW >= screens.length;
@@ -4734,7 +4755,7 @@
       const i = screens.findIndex(sc => want.includes(sc.dataset.pv));
       if (i >= 0) showFrom(i < start ? i : i - SHOW + 1);
     };
-    showFrom(0);
+    showFrom(pvStart);   // a setting changed re-draws the page; the preview stays where it was
     renderMath(aside);
     // Lay the panel out from what is left of the window right of the settings: the screens are
     // as large as three of them fit in the panel's height (and the space allows), and the
@@ -4769,7 +4790,7 @@
       });
     };
     scale();
-    fitBatch([...aside.querySelectorAll(".card .formula-display[data-latex]")]);
+    fitBatch([...aside.querySelectorAll(".card .formula-display[data-latex], .lp-preview .formula-display[data-latex]")]);
     if (pvResize) window.removeEventListener("resize", pvResize);
     pvResize = scale;
     window.addEventListener("resize", pvResize);
