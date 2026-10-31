@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **B6 written; the Bridge is complete, and with it every planned book (2026-10-31).** B6.1 domains, extraneous roots and root location, B6.2 directed lengths, degenerate cases and organized lists, B6.3 estimating, square-root bounds and counterexamples, B6.4 the AIME answer format and the final check.
 - **B5 written (2026-10-31).** B5.1 similarity, congruence, Pythagoras, the special right triangles, area and the triangle inequality, B5.2 circle formulas, inscribed angles, tangents, chords and power of a point, B5.3 distance, lines, point-line distance and circle equations, B5.4 the laws of sines and cosines and the sine area formula.
 - **B4 written (2026-10-31).** B4.1 the product and sum rules, permutations and combinations, B4.2 casework and complements, B4.3 repeated objects, blocks and gaps, B4.4 probability by counting, independence and conditional probability.
 - **B3 written (2026-10-31).** B3.1 factorizations, divisor counts, the Euclidean algorithm and divisibility rules, B3.2 residues, negative residues and inverses, B3.3 cycles of last digits and remainders, B3.4 Simon's trick, factor pairs and the prime $2$. As the outline places them, cycle hunting and last digits are now taught in B3.3 (N3.1 assumes them), and conditional probability and independence in B4.4 (C6.2 and C6.3 assume them).
