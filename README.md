@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **Lessons open with an Introduction, in larger type (2026-10-31, owner).** N3.1 now begins with "Introduction": a summary of the kind of problem it answers (the units digit of $7^{202}$, $2^{100}$ modulo $7$, the last two digits of $3^{2026}$, all computed), the idea in a sentence, what the lesson covers, and what the later lessons add. The worked example follows under "A first example". Lesson text moved from the write-up's 14px grey to 16.5px in the main text colour, with clearer subheadings; checks match. CONVENTIONS §14 makes the Introduction part of every lesson.
 - **"Back to top" has no arrow** (owner, 2026-10-31), in the book view's footer and in page tools.
 - **The card drawer breathes more** (owner, 2026-10-31): more padding at the top, the card's name now opens the full card (the separate "Open the full card" link is gone), no focus ring on the × when it opens, and the lesson's card chips sit further from their labels.
 - **A lesson's card rows are labelled "Teaches you about" and "Assumes you know"** instead of "Cards" and "Assumes" (owner, 2026-10-31).

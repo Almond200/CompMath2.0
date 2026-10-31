@@ -6,7 +6,13 @@ window.MATH_LEARN["N3"] = {
     "N3.1": {
       prereq: ["modular-basics"],
       cards: ["cycle-hunting", "last-digit-patterns"],
-      body: String.raw`What is the units digit of $7^{202}$? Nobody computes a number with $171$ digits to find out. The units digit of a product depends only on the units digits of the factors, so it is enough to follow $7^n$ modulo $10$, multiplying by $7$ each time: $7, 9, 3, 1$, and then $7$ again. From there the same four digits come round forever. Since $202 = 4 \cdot 50 + 2$, the power $7^{202}$ sits in the second place of the cycle, and its units digit is $9$.
+      body: String.raw`### Introduction
+
+A huge power and a small modulus are one of the most common pairings on the AMC and the AIME: the units digit of $7^{202}$, the remainder when $2^{100}$ is divided by $7$, the last two digits of $3^{2026}$. All of them give way to the same idea. Modulo $n$ the powers of a number can take only $n$ values, so sooner or later they repeat, and once the length of the cycle is known a huge exponent shrinks to a small one. This lesson shows why the powers must repeat, how to find their cycle by listing the first few, and how a base that shares a factor with the modulus can take a few steps before its cycle begins. The later lessons of the chapter find the length of a cycle without listing it.
+
+### A first example
+
+What is the units digit of $7^{202}$? Nobody computes a number with $171$ digits to find out. The units digit of a product depends only on the units digits of the factors, so it is enough to follow $7^n$ modulo $10$, multiplying by $7$ each time: $7, 9, 3, 1$, and then $7$ again. From there the same four digits come round forever. Since $202 = 4 \cdot 50 + 2$, the power $7^{202}$ sits in the second place of the cycle, and its units digit is $9$.
 
 ### Why powers must repeat
 

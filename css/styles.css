@@ -3879,3 +3879,13 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
   .bk-toc-meta { grid-column: 2; margin-left: 0; }
   .bk-toc .lb-lessons { padding-left: 4px; }
 }
+
+/* A lesson is read, not skimmed: larger text in the main colour, and clear subheadings
+   (owner, 2026-10-31: the write-up's 14px read as tiny). */
+.lp-body p, .lp-body .detail-list li { font-size: 16.5px; line-height: 1.75; color: var(--text); }
+.lp-body .body-sub { margin: 22px 0 8px; font-size: 19px; font-weight: 750; letter-spacing: -0.01em; color: var(--text); text-transform: none; }
+.lp-body > .body-sub:first-child, .lp-body > :first-child .body-sub:first-child { margin-top: 4px; }
+html[data-text="large"] .lp-body p { font-size: 18px; }
+html[data-text="larger"] .lp-body p { font-size: 20px; }
+@media (max-width: 600px) { .lp-body p, .lp-body .detail-list li { font-size: 16px; } }
+.lesson-page .lc-q { font-size: 16.5px; }
