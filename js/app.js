@@ -3753,7 +3753,7 @@
     const row = (k, v) => `<div class="pt-info"><span>${k}</span><b>${v}</b></div>`;
     return `<aside class="page-tools" aria-label="Page tools"><div class="pt-inner">
         <section class="pt-block"><div class="pt-head">Tools</div>
-          <button type="button" class="pt-act" data-pt="top">&#8593; Back to top</button>
+          <button type="button" class="pt-act" data-pt="top">Back to top</button>
           <a href="${specialHref("WhatLinksHere", id)}">What links here <span class="pt-n">${linksIn}</span></a>
           <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n">${probs}</span></a>
           <button type="button" class="pt-act" data-pt="permalink">Copy a permanent link</button>
@@ -5187,7 +5187,7 @@
     const footCard = (x, dir) => x ? `<a class="bk-foot-link bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(learnPageLabel(x).replace(/<[^>]*>/g, ""))}">${dir < 0 ? `<span class="bk-foot-a">&#8249;</span>` : ""}<span class="bk-foot-t">${learnPageLabel(x)}</span>${dir > 0 ? `<span class="bk-foot-a">&#8250;</span>` : ""}</a>` : `<span></span>`;
     const foot = `<nav class="bk-foot">
         ${footCard(prev, -1)}
-        <a class="bk-foot-top" href="#" data-bk-top>&#8593; Back to top</a>
+        <a class="bk-foot-top" href="#" data-bk-top>Back to top</a>
         ${footCard(next, 1)}
       </nav>`;
     $content.innerHTML = `<div class="learn-page lesson-page bk-view bk-${b.id}">
