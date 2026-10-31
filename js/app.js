@@ -3729,8 +3729,8 @@
   }
 
   // ---------- Page tools (a setting) ----------
-  // A right-hand column on a card's page, as on Wikipedia: Tools (links to the special pages
-  // about this card, a permanent link, print, a random card), Page information (counted from
+  // A right-hand column on a card's page, as on Wikipedia: Tools (back to the top, links to the
+  // special pages about this card, a permanent link, print, a random card), Page information (counted from
   // the data), and Appearance (text size, page width, and theme, the same settings as the
   // Settings page, so the two stay in step).
   // The column itself runs the full height of the page and carries the divider; only its
@@ -3753,6 +3753,7 @@
     const row = (k, v) => `<div class="pt-info"><span>${k}</span><b>${v}</b></div>`;
     return `<aside class="page-tools" aria-label="Page tools"><div class="pt-inner">
         <section class="pt-block"><div class="pt-head">Tools</div>
+          <button type="button" class="pt-act" data-pt="top">&#8593; Back to top</button>
           <a href="${specialHref("WhatLinksHere", id)}">What links here <span class="pt-n">${linksIn}</span></a>
           <a href="${specialHref("ProblemsUsing", id)}">Problems using this card <span class="pt-n">${probs}</span></a>
           <button type="button" class="pt-act" data-pt="permalink">Copy a permanent link</button>
@@ -3792,7 +3793,8 @@
       }
       const act = e.target.closest("[data-pt]");
       if (!act) return;
-      if (act.dataset.pt === "print") window.print();
+      if (act.dataset.pt === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+      else if (act.dataset.pt === "print") window.print();
       else if (act.dataset.pt === "hide") { state.tools = "off"; saveSettings(); renderDetail(entry); }
       else if (act.dataset.pt === "permalink") {
         const url = location.href.split("#")[0] + "#/f/" + entry.formula.id;

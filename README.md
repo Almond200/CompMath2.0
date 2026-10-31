@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **Page tools has "Back to top"** (owner, 2026-10-31): the first item under Tools scrolls the card's page back to the top.
 - **The header's second row is labelled "Lesson"** instead of "Page" (owner, 2026-10-31).
 - **The space strip's coloured bars meet the dividers exactly** (owner, 2026-10-31): each bar is its own strip laid over the divider to its left, instead of a top border that met the divider on a slant.
 - **The problem of the day's statement is plain text too** (owner, 2026-10-31): no shaded box around it on the home page; the credit sits right under it.
