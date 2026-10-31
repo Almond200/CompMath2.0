@@ -52,7 +52,7 @@ A [[uniform-overcount|uniform overcount]] is fixed by dividing: splitting $8$ pe
 Choose the case split, the complement or inclusion-exclusion, and check on a small version. The next lesson handles arrangements with restrictions.`,
       related: [
         { card: "derangements", note: String.raw`inclusion-exclusion for permutations with no fixed point (R1.3).` },
-        { card: "floor-multiples", note: String.raw`counting multiples for inclusion-exclusion (M1.3).` },
+        { card: "floor-multiples", note: String.raw`counting multiples for inclusion-exclusion (M1.5).` },
         { card: "organized-listing", note: String.raw`listing cases in order .` }
       ],
       exercises: [

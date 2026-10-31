@@ -46,7 +46,7 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 | Book | Role | Chapters |
 |---|---|---|
 | **AMC Algebra** | algebra for the AMC 10 and 12: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L14 |
-| **AMC Number Theory** | number theory for the AMC 10 and 12: primes, divisors, digits, remainders, integer equations | M1 to M3 |
+| **AMC Number Theory** | number theory for the AMC 10 and 12: primes, divisors, digits, remainders, integer equations | M1 to M7 |
 | **AMC Counting & Probability** | counting, probability and expected value for the AMC 10 and 12 | R1 to R3 |
 | **AMC Geometry** | geometry for the AMC 10 and 12: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S4 |
 | **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
@@ -142,80 +142,7 @@ Moved to its own section, "Book: AMC Algebra", below, where it is being written 
 
 #### Book: AMC Number Theory
 
-From primes and divisibility to remainders, integer equations and the AMC 12's exponents and orders, ending with mixed AIME-style problems.
-
-##### Part: Foundations
-
-**M1. Primes, divisibility, gcd and lcm** · Core. Breaking a number into primes, testing divisibility, and the gcd and lcm.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M1.1 Primes and prime factorization | Core | `fundamental-theorem-arithmetic`, `only-even-prime`, `recognition-numbers` | 38 |
-| M1.2 Divisibility rules | Core | `divisibility-rules`, `digit-sum-carries` | 20 |
-| M1.3 The gcd and the lcm | Core | `euclidean-algorithm`, `gcd-lcm-product`, `lcm-common-multiples` | 11 |
-| M1.4 Counting multiples and calendars | Core | `floor-multiples`, *(pattern)* `calendar-problems` | 21 |
-
-**M2. Digits, bases and decimals** · Core. A number as a sum of place values, in base ten and other bases, and fractions as decimals.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M2.1 Place value and digits | Core | `numeral-as-polynomial`, *(pattern)* `digit-manipulation`, `digit-count` | 24 |
-| M2.2 Digit puzzles | Core | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, `base10-curiosities` | 11 |
-| M2.3 Other bases | Core | `base-conversion`, *(pattern)* `unknown-base` | 18 |
-| M2.4 Repeating and terminating decimals | Core | `repeating-decimals`, `terminating-decimals` | 9 |
-| M2.5 Fractions between two fractions | Extension | `farey-sequences` | 3 |
-
-##### Part: Core topics
-
-**M3. Divisors and factorials** · Core. Counting, summing and multiplying divisors, and the primes inside a factorial.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M3.1 Counting divisors | Core | `number-of-divisors`, `perfect-square-divisors` | 25 |
-| M3.2 Summing and multiplying divisors | Core II | `sum-of-divisors`, `product-of-divisors` | 6 |
-| M3.3 Primes in a factorial and trailing zeros | Core | `legendres-formula`, `trailing-zeros` | 14 |
-| M3.4 Consecutive numbers and gcd tricks | Core | `factor-out-factorial`, `consecutive-product-factorial`, `consecutive-coprime`, `gcd-substitution` | 13 |
-
-**M4. Remainders** · Core. Modular arithmetic from its rules to Fermat and Euler.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M4.1 Working with remainders | Core | `modular-basics`, `euclids-lemma`, `subtract-equal-remainders` (keeps the Bridge's negative residues and inverses by inspection) | 34 |
-| M4.2 Cycles and last digits | Core | `cycle-hunting`, `last-digit-patterns` | 15 |
-| M4.3 Squares and choosing a modulus | Core II | `squares-mod-small`, `choose-modulus`, `primes-6k` | 2 |
-| M4.4 Fermat's little theorem and Euler's totient | Core II | `fermats-little-theorem`, `eulers-totient` | 3 |
-| M4.5 When one expression divides another | Extension | `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` | 1 |
-
-**M5. Integer equations** · Core. Equations whose answers must be whole numbers: linear ones, coins, factoring and bounds.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M5.1 Linear equations in integers and the Chinese remainder theorem | Core | `bezouts-identity`, `crt` | 9 |
-| M5.2 Coins and stamps | Core II | `chicken-mcnugget`, *(pattern)* `coins-and-prices` | 6 |
-| M5.3 Factoring into integers | Core | `sfft`, `factor-pair-counting`, `difference-of-squares-rep` | 33 |
-| M5.4 Pythagorean triples and integer triangles | Core II | `pythagorean-triples`, `integer-triangles-perimeter` | 6 |
-| M5.5 Bounding | Core II | `bounding-diophantine`, `squeeze-between-squares` | 6 |
-
-##### Part: Advanced topics
-
-**M6. Number theory for the AMC 12** · Core II. Prime exponents, inverses, Euler's and Wilson's theorems, orders and Pell equations.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M6.1 Prime exponents and multiplicative functions | Core | `exponent-tracking`, `p-adic-valuation`, `power-minus-self`, `multiplicative-functions` | 8 |
-| M6.2 Inverses and the theorems of Euler and Wilson | Core II | `modular-inverse`, `eulers-theorem`, `wilsons-theorem` | 6 |
-| M6.3 The order of a number | Extension | `multiplicative-order` | 3 |
-| M6.4 Pell equations | Extension | `pell-equation` | 2 |
-
-##### Part: Toward the AIME
-
-**M7. From the AMC to the AIME: number theory** · Core. No new cards: residues, cycles and integer equations together, in harder mixed problems.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| M7.1 Residues and cycles together | Core | no card (prereq modular-basics, cycle-hunting, crt) | mixed |
-| M7.2 Integer equations by factoring and bounds | Core | no card (prereq sfft, bounding-diophantine) | mixed |
-| M7.3 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+Moved to its own section, "Book: AMC Number Theory", below, where it is being written (eighteenth chat).
 
 #### Book: AMC Counting & Probability
 
@@ -630,37 +557,108 @@ No new cards: the Bridge's habits, applied to harder mixed problems whose techni
 
 ## Book: AMC Number Theory
 
-Number theory for the AMC 10 and AMC 12: primes, divisors, digits, remainders and integer equations, then the AMC 12 additions.
+From primes and divisibility to remainders, integer equations and the AMC 12's exponents and orders, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
-### M1. Number theory: primes, divisors and digits (Core)
+#### Part: Foundations
 
-| Lesson | Cards |
-|---|---|
-| M1.1 Prime factorization, gcd and lcm | `fundamental-theorem-arithmetic`, `euclidean-algorithm`, `gcd-lcm-product`, `lcm-common-multiples`, `gcd-substitution`, `recognition-numbers` |
-| M1.2 Counting and summing divisors | `number-of-divisors`, `sum-of-divisors`, `product-of-divisors`, `perfect-square-divisors` |
-| M1.3 Divisibility rules and factorials | `divisibility-rules`, `floor-multiples`, `consecutive-coprime`, `legendres-formula`, `trailing-zeros`, `factor-out-factorial`, `consecutive-product-factorial` |
-| M1.4 Bases and digits | `base-conversion`, `numeral-as-polynomial`, `unknown-base`, `digit-count`, `digit-sum-carries`, `digit-manipulation`, `base10-curiosities`, `palindromes`, `cryptarithms` |
-| M1.5 Decimals and calendars | `repeating-decimals`, `terminating-decimals`, *(pattern)* `calendar-problems` |
+### M1. Primes, divisibility, gcd and lcm (Core)
 
-### M2. Number theory: remainders and integer equations (Core)
+Breaking a number into primes, testing divisibility, and the gcd and lcm.
 
-| Lesson | Cards |
-|---|---|
-| M2.1 Modular arithmetic | `modular-basics`, `euclids-lemma`, `subtract-equal-remainders`, `reduce-divisibility-constant`, `poly-divisible-linear` |
-| M2.2 Cycles, Fermat and Euler | `cycle-hunting`, `last-digit-patterns`, `fermats-little-theorem`, `eulers-totient`, `squares-mod-small` |
-| M2.3 Linear congruences and the Chinese Remainder Theorem | `bezouts-identity`, `crt`, `chicken-mcnugget`, `coins-and-prices` |
-| M2.4 Integer equations by factoring | `sfft`, `factor-pair-counting`, `only-even-prime`, `difference-of-squares-rep`, `choose-modulus`, `primes-6k` |
-| M2.5 Right triangles with integer sides | `pythagorean-triples`, `integer-triangles-perimeter` |
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M1.2 Primes and prime factorization | Core | `fundamental-theorem-arithmetic`, `only-even-prime`, `recognition-numbers` | 38 |
+| M1.3 Divisibility rules | Core | `divisibility-rules`, `digit-sum-carries` | 20 |
+| M1.4 The gcd and the lcm | Core | `euclidean-algorithm`, `gcd-lcm-product`, `lcm-common-multiples` | 11 |
+| M1.5 Counting multiples and calendars | Core | `floor-multiples`, *(pattern)* `calendar-problems` | 21 |
+| M1.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M1.7 Review Problems and M1.8 Challenge Problems | |
 
-### M3. Number theory for the AMC 12 (Core II)
+### M2. Digits, bases and decimals (Core)
 
-| Lesson | Cards |
-|---|---|
-| M3.1 Exponents, divisor functions and parity | `exponent-tracking`, `multiplicative-functions`, `largest-odd-divisor-sum`, `sigma-parity` |
-| M3.2 Inverses, Bézout and Euler's theorem | `modular-inverse`, `extended-euclidean-algorithm`, `eulers-theorem`, `wilsons-theorem` |
-| M3.3 Primes in binomials and bounded equations | `prime-divides-binomial`, `pascal-parity`, `power-minus-self`, `sum-of-two-squares`, `bounding-diophantine`, `squeeze-between-squares` |
+A number as a sum of place values, in base ten and other bases, and fractions as decimals.
 
----
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M2.2 Place value and digits | Core | `numeral-as-polynomial`, *(pattern)* `digit-manipulation`, `digit-count` | 24 |
+| M2.3 Digit puzzles | Core | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, `base10-curiosities` | 11 |
+| M2.4 Other bases | Core | `base-conversion`, *(pattern)* `unknown-base` | 18 |
+| M2.5 Repeating and terminating decimals | Core | `repeating-decimals`, `terminating-decimals` | 9 |
+| M2.6 Fractions between two fractions | Extension | `farey-sequences` | 3 |
+| M2.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M2.8 Review Problems and M2.9 Challenge Problems | |
+
+#### Part: Core topics
+
+### M3. Divisors and factorials (Core)
+
+Counting, summing and multiplying divisors, and the primes inside a factorial.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M3.2 Counting divisors | Core | `number-of-divisors`, `perfect-square-divisors` | 25 |
+| M3.3 Summing and multiplying divisors | Core II | `sum-of-divisors`, `product-of-divisors` | 6 |
+| M3.4 Primes in a factorial and trailing zeros | Core | `legendres-formula`, `trailing-zeros` | 14 |
+| M3.5 Consecutive numbers and gcd tricks | Core | `factor-out-factorial`, `consecutive-product-factorial`, `consecutive-coprime`, `gcd-substitution` | 13 |
+| M3.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M3.7 Review Problems and M3.8 Challenge Problems | |
+
+### M4. Remainders (Core)
+
+Modular arithmetic from its rules to Fermat and Euler.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M4.2 Working with remainders | Core | `modular-basics`, `euclids-lemma`, `subtract-equal-remainders` (keeps the Bridge's negative residues and inverses by inspection) | 34 |
+| M4.3 Cycles and last digits | Core | `cycle-hunting`, `last-digit-patterns` | 15 |
+| M4.4 Squares and choosing a modulus | Core II | `squares-mod-small`, `choose-modulus`, `primes-6k` | 2 |
+| M4.5 Fermat's little theorem and Euler's totient | Core II | `fermats-little-theorem`, `eulers-totient` | 3 |
+| M4.6 When one expression divides another | Extension | `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` | 1 |
+| M4.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M4.8 Review Problems and M4.9 Challenge Problems | |
+
+### M5. Integer equations (Core)
+
+Equations whose answers must be whole numbers: linear ones, coins, factoring and bounds.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M5.2 Linear equations in integers and the Chinese remainder theorem | Core | `bezouts-identity`, `crt` | 9 |
+| M5.3 Coins and stamps | Core II | `chicken-mcnugget`, *(pattern)* `coins-and-prices` | 6 |
+| M5.4 Factoring into integers | Core | `sfft`, `factor-pair-counting`, `difference-of-squares-rep` | 33 |
+| M5.5 Pythagorean triples and integer triangles | Core II | `pythagorean-triples`, `integer-triangles-perimeter` | 6 |
+| M5.6 Bounding | Core II | `bounding-diophantine`, `squeeze-between-squares` | 6 |
+| M5.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M5.8 Review Problems and M5.9 Challenge Problems | |
+
+#### Part: Advanced topics
+
+### M6. Number theory for the AMC 12 (Core II)
+
+Prime exponents, inverses, Euler's and Wilson's theorems, orders and Pell equations.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M6.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M6.2 Prime exponents and multiplicative functions | Core | `exponent-tracking`, `p-adic-valuation`, `power-minus-self`, `multiplicative-functions` | 8 |
+| M6.3 Inverses and the theorems of Euler and Wilson | Core II | `modular-inverse`, `eulers-theorem`, `wilsons-theorem` | 6 |
+| M6.4 The order of a number | Extension | `multiplicative-order` | 3 |
+| M6.5 Pell equations | Extension | `pell-equation` | 2 |
+| M6.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M6.7 Review Problems and M6.8 Challenge Problems | |
+
+#### Part: Toward the AIME
+
+### M7. From the AMC to the AIME: number theory (Core)
+
+No new cards: residues, cycles and integer equations together, in harder mixed problems.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M7.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| M7.2 Residues and cycles together | Core | no card (prereq modular-basics, cycle-hunting, crt) | mixed |
+| M7.3 Integer equations by factoring and bounds | Core | no card (prereq sfft, bounding-diophantine) | mixed |
+| M7.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+| M7.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then M7.6 Review Problems and M7.7 Challenge Problems | |
 
 ## Book: AMC Counting & Probability
 

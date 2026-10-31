@@ -1,179 +1,202 @@
-// Learn, AMC Number Theory, chapter M1: number theory, primes, divisors and digits (CONVENTIONS §14; the AMC track).
-// Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
+// Learn, AMC Number Theory, chapter M1: primes, divisibility, gcd and lcm (CONVENTIONS §14). Part: Foundations.
+// The second plan's book, written fresh (eighteenth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["M1"] = {
   lessons: {
     "M1.1": {
       prereq: [],
-      cards: ["fundamental-theorem-arithmetic", "euclidean-algorithm", "gcd-lcm-product", "lcm-common-multiples", "gcd-substitution", "recognition-numbers"],
-      body: String.raw`Almost every number theory problem on the AMC 10 starts by factoring into primes. Once $84 = 2^2 \cdot 3 \cdot 7$ and $126 = 2 \cdot 3^2 \cdot 7$ are written out, their greatest common divisor, least common multiple, divisors and every divisibility question can be read off the exponents.
+      cards: [],
+      body: String.raw`This chapter is about the building blocks of whole numbers. Its tools are prime factorization, the divisibility rules, the greatest common divisor and least common multiple, and counting multiples.
 
-The [[fundamental-theorem-arithmetic|fundamental theorem of arithmetic]] says the prime factorization is unique. The gcd takes the smaller exponent of each prime and the lcm the larger: $\gcd(84, 126) = 2 \cdot 3 \cdot 7 = 42$ and $\operatorname{lcm} = 2^2 \cdot 3^2 \cdot 7 = 252$. Since smaller plus larger is the total, [[gcd-lcm-product|$\gcd(a, b) \cdot \operatorname{lcm}(a, b) = ab$]]: here $42 \cdot 252 = 84 \cdot 126$. [[lcm-common-multiples|Common multiples]] are exactly the multiples of the lcm, which is why events that repeat every $a$ and every $b$ days coincide every $\operatorname{lcm}(a, b)$ days.
+A prime is a whole number greater than $1$ whose only positive divisors are $1$ and itself: $2, 3, 5, 7, 11, \ldots$. Every whole number greater than $1$ is a product of primes in exactly one way, apart from order: $360 = 2^3 \cdot 3^2 \cdot 5$, with three different primes. This factorization is the key to almost every question about divisors.
 
-When numbers are too big to factor, the [[euclidean-algorithm|Euclidean algorithm]] finds the gcd by repeated division, $\gcd(a, b) = \gcd(b, a - kb)$. The same move works on expressions: $\gcd(n + 3, 2n + 1) = \gcd(n + 3, 2n + 1 - 2(n + 3)) = \gcd(n + 3, 5)$. In problems that give the gcd, [[gcd-substitution|write the numbers as multiples of it]]: if $\gcd(a, b) = d$, then $a = dx$ and $b = dy$ with $\gcd(x, y) = 1$, and the problem becomes one about $x$ and $y$.
+Divisibility rules test whether a number is a multiple of $2, 3, 4, 5, 8, 9$ or $11$ by looking at its digits. A number is a multiple of $9$ exactly when its digit sum is: $4815$ has digit sum $18$, so it is a multiple of $9$.
 
-[[recognition-numbers|Recognizing common numbers]] saves time: $1001 = 7 \cdot 11 \cdot 13$, $2^{10} = 1024$, $111 = 3 \cdot 37$, $10001 = 73 \cdot 137$, and the contest year's factorization is often the key.
+The greatest common divisor (gcd) of two numbers is the largest number dividing both, and the least common multiple (lcm) is the smallest positive number both divide: $\gcd(12, 18) = 6$ and $\operatorname{lcm}(12, 18) = 36$. Their product is the product of the two numbers, $6 \cdot 36 = 216 = 12 \cdot 18$.
 
-Factor first and read everything from the exponents. The next lesson counts and sums divisors.`,
-      related: [
-        { card: "number-of-divisors", note: String.raw`counting divisors from the exponents (M1.2).` },
-        { card: "exponent-tracking", note: String.raw`working one prime at a time (M3.1).` },
-        { card: "bezouts-identity", note: String.raw`the gcd as a combination $ax + by$ (M2.3).` }
-      ],
+Last, the number of multiples of $k$ from $1$ to $n$ is $\left\lfloor \tfrac nk \right\rfloor$, and days of the week repeat every $7$ days.
+
+The lessons take these ideas in turn: primes and prime factorization (M1.2), divisibility rules (M1.3), the gcd and the lcm (M1.4), and counting multiples and calendars (M1.5). The Summary (M1.6) collects the strategies.`,
       exercises: [
-        { q: String.raw`Find $\operatorname{lcm}(84, 126)$.`, answer: "252",
-          solution: String.raw`$84 = 2^2 \cdot 3 \cdot 7$ and $126 = 2 \cdot 3^2 \cdot 7$; the lcm takes the larger exponents, $2^2 \cdot 3^2 \cdot 7 = 252$.` },
-        { q: String.raw`Find the sum of the prime factors of $1001$.`, answer: "31",
-          solution: String.raw`$1001 = 7 \cdot 11 \cdot 13$, and $7 + 11 + 13 = 31$.` }
+        { q: String.raw`How many different primes divide $360$?`, answer: "3",
+          solution: String.raw`$360 = 2^3 \cdot 3^2 \cdot 5$, so the primes are $2$, $3$ and $5$: three of them.` },
+        { q: String.raw`Find the remainder when $4815$ is divided by $9$.`, answer: "0",
+          solution: String.raw`A number leaves the same remainder on division by $9$ as its digit sum, $4 + 8 + 1 + 5 = 18$, which is a multiple of $9$. The remainder is $0$.` },
+        { q: String.raw`Find $\gcd(12, 18) \cdot \operatorname{lcm}(12, 18)$.`, answer: "216",
+          solution: String.raw`$\gcd(12, 18) = 6$ and $\operatorname{lcm}(12, 18) = 36$, with product $216$, which equals $12 \cdot 18$.` }
       ],
       problems: [
-        "2024 AMC 10A, Problem 1",
-        "2018 AMC 10A, Problem 7",
-        "2013 AMC 10B, Problem 9",
-        "2011 AMC 12B, Problem 5",
-        "2005 AMC 12A, Problem 8",
-        "2017 AMC 12A, Problem 12",
-        "2018 AMC 10B, Problem 23",
-        "2018 AMC 12A, Problem 19"
+        "1993 AJHSME, Problem 3",
+        "2014 AMC 8, Problem 8",
+        "2013 AMC 8, Problem 10"
       ]
     },
     "M1.2": {
-      prereq: ["fundamental-theorem-arithmetic"],
-      cards: ["number-of-divisors", "sum-of-divisors", "product-of-divisors", "perfect-square-divisors"],
-      body: String.raw`Divisors are built from the prime factorization: a divisor of $p^aq^b$ is $p^iq^j$ with $0 \le i \le a$ and $0 \le j \le b$. Every divisor count, sum and product follows from this one description.
+      prereq: [],
+      cards: ["fundamental-theorem-arithmetic", "only-even-prime", "recognition-numbers"],
+      body: String.raw`Many number theory questions are answered by writing a number as a product of primes. How many zeros end $25^7 \cdot 8^3$? Which numbers in a list are prime? Can an odd number be a sum of two primes in more than one way? The answer to each starts with a factorization.
 
-The [[number-of-divisors|number of divisors]] of $p^aq^br^c$ is $(a + 1)(b + 1)(c + 1)$: $360 = 2^3 \cdot 3^2 \cdot 5$ has $4 \cdot 3 \cdot 2 = 24$. The count is odd exactly when every exponent is even, that is, for perfect squares, because divisors pair up as $d$ and $\tfrac nd$ except for $\sqrt n$. Problems that ask for a number with exactly $k$ divisors work backward: factor $k$ into the possible $(a + 1)(b + 1)\cdots$.
+A prime is a whole number greater than $1$ with exactly two positive divisors, $1$ and itself; $1$ is not prime. [[fundamental-theorem-arithmetic|The fundamental theorem of arithmetic]] says every whole number greater than $1$ factors into primes in exactly one way, apart from order. To factor, divide by $2$, $3$, $5$, $7$, and so on, as long as the prime is at most the square root of what is left; if no such prime divides it, what is left is prime. So $391$ is tested by the primes up to $19$, and $391 = 17 \cdot 23$. Factorizations multiply and divide nicely: $25^7 \cdot 8^3 = 5^{14} \cdot 2^9$, which contains $10^9$ and so ends in $9$ zeros.
 
-The [[sum-of-divisors|sum of divisors]] multiplies the sums for each prime power: for $36 = 2^2 \cdot 3^2$, $(1 + 2 + 4)(1 + 3 + 9) = 7 \cdot 13 = 91$. The [[product-of-divisors|product of the divisors]] of $n$ is $n^{d(n)/2}$, from the same pairing: the $6$ divisors of $12$ multiply to $12^3 = 1728$.
+[[only-even-prime|The prime $2$ is the only even prime]], and this decides many problems: an odd number that is a sum of two primes must use $2$, since two odd primes add to an even number. So $21 = 2 + 19$ is the only way to write $21$ as a sum of two primes, and $23 = 2 + 21$ fails because $21$ is not prime.
 
-[[perfect-square-divisors|Perfect-square divisors]] need even exponents: for $3600 = 2^4 \cdot 3^2 \cdot 5^2$ the exponent of $2$ is $0$, $2$ or $4$, and of $3$ and $5$ is $0$ or $2$, so there are $3 \cdot 2 \cdot 2 = 12$. Odd divisors drop the power of $2$, and divisors that are multiples of a given number are counted by dividing it out first.
+Some numbers are worth knowing by their factorizations, because problems use them on purpose: [[recognition-numbers|$1001 = 7 \cdot 11 \cdot 13$]], $10101 = 3 \cdot 7 \cdot 13 \cdot 37$, $2025 = 45^2 = 3^4 \cdot 5^2$, and $10! = 3628800$. Recognizing them saves a long multiplication or division.
 
-Factor, then count exponent choices. The next lesson treats divisibility tests and factorials.`,
+Factor first, test primes only up to the square root, and treat $2$ separately. The next lesson tests divisibility by the digits.`,
       related: [
-        { card: "multiplicative-functions", note: String.raw`why divisor counts and sums multiply (M3.1).` },
-        { card: "factor-pair-counting", note: String.raw`factor pairs as solutions of integer equations (M2.4).` },
-        { card: "sigma-parity", note: String.raw`when the divisor sum is odd (M3.1).` }
+        { card: "number-of-divisors", note: String.raw`counting divisors from the exponents of the factorization (M3.2).` },
+        { card: "trailing-zeros", note: String.raw`zeros at the end of a number count its factors of $10$ (M3.4).` }
       ],
       exercises: [
-        { q: String.raw`How many positive divisors does $360$ have?`, answer: "24",
-          solution: String.raw`$360 = 2^3 \cdot 3^2 \cdot 5$, so $4 \cdot 3 \cdot 2 = 24$.` },
-        { q: String.raw`Find the sum of the positive divisors of $36$.`, answer: "91",
-          solution: String.raw`$(1 + 2 + 4)(1 + 3 + 9) = 7 \cdot 13 = 91$.` },
-        { q: String.raw`How many positive divisors of $3600$ are perfect squares?`, answer: "12",
-          solution: String.raw`$3600 = 2^4 \cdot 3^2 \cdot 5^2$. A square divisor has even exponents: $3$ choices for $2$ and $2$ each for $3$ and $5$, so $12$.` }
+        { q: String.raw`Write $1001$ as a product of primes, and find the sum of those primes.`, answer: "31",
+          solution: String.raw`$1001 = 7 \cdot 143 = 7 \cdot 11 \cdot 13$, and $7 + 11 + 13 = 31$.` },
+        { q: String.raw`Two primes add to $21$. What is their product?`, answer: "38",
+          solution: String.raw`Two odd primes add to an even number, so one of the primes is $2$, and the other is $19$, which is prime. The product is $38$.` },
+        { q: String.raw`What is the largest prime factor of $391$?`, answer: "23",
+          solution: String.raw`Test the primes up to $\sqrt{391} \approx 19.8$: $391 = 17 \cdot 23$. The largest prime factor is $23$.` }
       ],
       problems: [
-        "2008 AMC 10A, Problem 3",
-        "2010 AMC 10B, Problem 8",
-        "2021 Spring AMC 10B, Problem 12",
-        "2005 AMC 10A, Problem 15",
-        "2013 AMC 10A, Problem 19",
-        "2018 AMC 12B, Problem 14",
-        "2017 AMC 12B, Problem 16",
-        "2021 Fall AMC 12A, Problem 20"
+        "1991 AJHSME, Problem 13",
+        "1989 AJHSME, Problem 16",
+        "2024 AMC 10A, Problem 1",
+        "2003 AMC 10B, Problem 14"
       ]
     },
     "M1.3": {
       prereq: ["fundamental-theorem-arithmetic"],
-      cards: ["divisibility-rules", "floor-multiples", "consecutive-coprime", "legendres-formula", "trailing-zeros", "factor-out-factorial", "consecutive-product-factorial"],
-      body: String.raw`Divisibility questions are answered by quick tests, by counting multiples, and, for factorials, by counting how many times each prime appears. These tools decide questions like how many zeros end $100!$ or which digits make a number divisible by $9$.
+      cards: ["divisibility-rules", "digit-sum-carries"],
+      body: String.raw`Is $123456789$ a multiple of $9$? Which digit $A$ makes $7A2$ a multiple of $11$? What remainder does $2345678$ leave on division by $4$? These are answered from the digits without dividing, by the divisibility rules.
 
-The [[divisibility-rules|divisibility rules]]: by $2$, $4$, $8$ from the last one, two or three digits; by $3$ or $9$ from the digit sum; by $11$ from the alternating digit sum; by $5$ or $10$ from the last digit. A missing digit in a number that must be divisible by $72 = 8 \cdot 9$ is found by testing $8$ and $9$ separately.
+[[divisibility-rules|The divisibility rules]] come from writing a number by its place values. Since $10$ is a multiple of $2$ and $5$, only the last digit matters for them; since $100$ is a multiple of $4$ and $1000$ of $8$, the last two or three digits decide divisibility by $4$ and $8$: $2345678$ leaves the same remainder as $78$ on division by $4$, which is $2$. Since $10 = 9 + 1$, every power of $10$ leaves remainder $1$ on division by $3$ and $9$, so a number leaves the same remainder as its digit sum: $123456789$ has digit sum $45$, a multiple of $9$. Since $10 = 11 - 1$, the powers of $10$ alternate between remainders $1$ and $-1$ modulo $11$, so a number is a multiple of $11$ exactly when its alternating digit sum is: $7 - A + 2$ must be a multiple of $11$, so $A = 9$. For a composite divisor such as $72 = 8 \cdot 9$, test each coprime factor.
 
-The number of [[floor-multiples|multiples of $k$ from $1$ to $n$]] is $\left\lfloor \tfrac nk \right\rfloor$, so there are $71$ multiples of $7$ up to $500$. Counting these is the basis of [[legendres-formula|Legendre's formula]]: the exponent of a prime $p$ in $n!$ is $\left\lfloor\tfrac np\right\rfloor + \left\lfloor\tfrac n{p^2}\right\rfloor + \cdots$, since multiples of $p^2$ contribute an extra factor, and so on. The exponent of $2$ in $20!$ is $10 + 5 + 2 + 1 = 18$. The number of [[trailing-zeros|trailing zeros]] of $n!$ is the exponent of $5$, since $2$'s are more plentiful: $100!$ ends in $20 + 4 = 24$ zeros.
+[[digit-sum-carries|Digit sums and carrying]] are linked: when two numbers are added, the digit sum of the result is the sum of the digit sums minus $9$ for every carry. So the digit sum of a number changes in a known way when $1$ or $2$ is added, which settles questions about how digit sums of neighboring numbers compare.
 
-Factorials simplify by [[factor-out-factorial|factoring out the common factorial]]: $\tfrac{10! + 9!}{8!} = 9 \cdot 10 + 9 = 99$. A [[consecutive-product-factorial|product of $k$ consecutive integers]] is divisible by $k!$, and [[consecutive-coprime|consecutive integers are coprime]], so $n(n + 1)$ is always even and $n$ and $n + 1$ share no prime.
-
-Test with the rules, count multiples with floors, and count prime exponents in factorials. The next lesson moves to bases and digits.`,
+Test divisibility by the last digits for $2$, $4$, $5$, $8$, by the digit sum for $3$ and $9$, and by the alternating sum for $11$. The next lesson studies common divisors and multiples.`,
       related: [
-        { card: "pie", note: String.raw`counting numbers divisible by one of several numbers (R1.2).` },
-        { card: "prime-divides-binomial", note: String.raw`primes in binomial coefficients through Legendre (M3.3).` },
-        { card: "modular-basics", note: String.raw`divisibility rules as statements about remainders (M2.1).` }
+        { card: "modular-basics", note: String.raw`the rules are statements about remainders (M4.2).` },
+        { card: "numeral-as-polynomial", note: String.raw`a number as a sum of place values, the reason the rules work (M2.2).` }
       ],
       exercises: [
-        { q: String.raw`How many zeros does $100!$ end with?`, answer: "24",
-          solution: String.raw`The exponent of $5$ in $100!$ is $\lfloor 100/5 \rfloor + \lfloor 100/25 \rfloor = 20 + 4 = 24$, and there are more $2$'s, so $24$ zeros.` },
-        { q: String.raw`Find the exponent of $2$ in the prime factorization of $20!$.`, answer: "18",
-          solution: String.raw`$\lfloor 20/2 \rfloor + \lfloor 20/4 \rfloor + \lfloor 20/8 \rfloor + \lfloor 20/16 \rfloor = 10 + 5 + 2 + 1 = 18$.` }
+        { q: String.raw`Find the remainder when $123456789$ is divided by $9$.`, answer: "0",
+          solution: String.raw`The digit sum is $1 + 2 + \cdots + 9 = 45$, a multiple of $9$, so the remainder is $0$.` },
+        { q: String.raw`Which digit $A$ makes the three-digit number $7A2$ a multiple of $11$?`, answer: "9",
+          solution: String.raw`The alternating sum $7 - A + 2 = 9 - A$ must be a multiple of $11$, so $A = 9$; indeed $792 = 11 \cdot 72$.` },
+        { q: String.raw`Find the remainder when $2345678$ is divided by $4$.`, answer: "2",
+          solution: String.raw`Only the last two digits matter, since $100$ is a multiple of $4$: $78 = 4 \cdot 19 + 2$, so the remainder is $2$.` }
       ],
       problems: [
-        "2016 AMC 10A, Problem 1",
-        "2004 AMC 10B, Problem 6",
-        "2024 AMC 12A, Problem 4",
-        "2020 AMC 12B, Problem 6",
-        "2021 Spring AMC 10B, Problem 16",
-        "2010 AMC 10B, Problem 21",
-        "2017 AMC 10B, Problem 23",
-        "2001 AMC 10, Problem 25"
+        "2007 AMC 8, Problem 24",
+        "2018 AMC 8, Problem 7",
+        "2020 AMC 8, Problem 19",
+        "2016 AMC 8, Problem 24"
       ]
     },
     "M1.4": {
-      prereq: [],
-      cards: ["base-conversion", "numeral-as-polynomial", "unknown-base", "digit-count", "digit-sum-carries", "digit-manipulation", "base10-curiosities", "palindromes", "cryptarithms"],
-      body: String.raw`A number's digits are its coefficients in powers of the base, and nearly every digit problem is solved by writing that out. Converting between bases, finding an unknown base, counting digits, reversing digits and solving letter puzzles all start from $\overline{abc} = 100a + 10b + c$.
+      prereq: ["fundamental-theorem-arithmetic"],
+      cards: ["euclidean-algorithm", "gcd-lcm-product", "lcm-common-multiples"],
+      body: String.raw`Two gears line up again after how many turns? What is the smallest number of marbles that can be shared equally among $12$ or $15$ children? If two numbers have gcd $6$ and lcm $72$, and one is $18$, what is the other? The greatest common divisor and least common multiple answer these.
 
-[[base-conversion|Converting between bases]]: $1011_2 = 8 + 2 + 1 = 11$, and to write $2026$ in base $5$, divide repeatedly by $5$ and read the remainders upward: $31101_5$. A [[numeral-as-polynomial|numeral is a polynomial]] in the base, so $\overline{abc}_b = ab^2 + bb + c$, and a problem with an [[unknown-base|unknown base]] becomes a polynomial equation in $b$, with the condition that every digit is less than $b$.
+The greatest common divisor $\gcd(a, b)$ is the largest number dividing both, and the least common multiple $\operatorname{lcm}(a, b)$ is the smallest positive number both divide. From the prime factorizations, the gcd takes the smaller exponent of each prime and the lcm the larger: $180 = 2^2 \cdot 3^2 \cdot 5$ and $594 = 2 \cdot 3^3 \cdot 11$ have gcd $2 \cdot 3^2 = 18$ and lcm $2^2 \cdot 3^3 \cdot 5 \cdot 11 = 5940$.
 
-The [[digit-count|number of digits]] of $n$ is $\lfloor\log_{10} n\rfloor + 1$; $2^{100}$ has $31$ digits since $\log_{10} 2 \approx 0.301$. [[digit-manipulation|Digit manipulation]] writes numbers in terms of their digits: reversing a two-digit number changes it by $9(a - b)$, and a three-digit reversal by $99(a - c)$. [[digit-sum-carries|Digit sums and carries]]: adding two numbers, the digit sum of the result is the sum of the digit sums minus $9$ for each carry, which is why digit sums are remembered modulo $9$; $10^{20} - 1$ is twenty $9$'s with digit sum $180$.
+[[euclidean-algorithm|The Euclidean algorithm]] finds a gcd without factoring, using $\gcd(a, b) = \gcd(b, a - qb)$: $\gcd(1071, 462) = \gcd(462, 147) = \gcd(147, 21) = 21$, since $147 = 7 \cdot 21$. The same idea shows that a common divisor of two numbers divides their difference, which is the standard way to find what can divide two expressions.
 
-[[palindromes|Palindromes]] read the same both ways and are counted by choosing the first half. [[base10-curiosities|Special base-ten numbers]] like repunits $11\ldots1 = \tfrac{10^n - 1}{9}$ factor nicely. [[cryptarithms|Letter puzzles]] are solved column by column from the right, tracking carries, using that a leading digit is not $0$.
+[[gcd-lcm-product|The gcd times the lcm is the product of the two numbers]], because together they use each prime's smaller and larger exponents. So if $\gcd = 6$, $\operatorname{lcm} = 72$ and one number is $18$, the other is $\tfrac{6 \cdot 72}{18} = 24$. [[lcm-common-multiples|Common multiples]] are exactly the multiples of the lcm: things that repeat every $4$ and every $6$ steps coincide every $\operatorname{lcm}(4, 6) = 12$ steps, and a number that leaves remainder $2$ on division by $3$, $4$, $5$ and $6$ is $2$ more than a multiple of $60$.
 
-Write numbers through their digits and the base, and track carries. The last lesson of the chapter treats decimals and calendars.`,
+Factor or use the Euclidean algorithm for a gcd, take the lcm for anything that repeats on two schedules, and use $\gcd \cdot \operatorname{lcm} = ab$ to find a missing number. The next lesson counts multiples.`,
       related: [
-        { card: "log-rules", note: String.raw`logarithms count digits (L9.2).` },
-        { card: "modular-basics", note: String.raw`digit sums modulo $9$ (M2.1).` },
-        { card: "repeating-decimals", note: String.raw`digits after the decimal point (M1.5).` }
+        { card: "bezouts-identity", note: String.raw`the gcd as a combination $ax + by$, from the Euclidean algorithm (M5.2).` },
+        { card: "crt", note: String.raw`conditions on remainders joined into one, through the lcm (M5.2).` }
       ],
       exercises: [
-        { q: String.raw`Write $1011_2$ in base ten.`, answer: "11",
-          solution: String.raw`$1 \cdot 8 + 0 \cdot 4 + 1 \cdot 2 + 1 = 11$.` },
-        { q: String.raw`How many digits does $2^{100}$ have?`, answer: "31",
-          solution: String.raw`$\log_{10} 2^{100} = 100\log_{10} 2 \approx 30.1$, so $2^{100}$ has $\lfloor 30.1 \rfloor + 1 = 31$ digits.` },
-        { q: String.raw`Find the digit sum of $10^{20} - 1$.`, answer: "180",
-          solution: String.raw`$10^{20} - 1$ is twenty $9$'s, with digit sum $180$.` }
+        { q: String.raw`Find $\gcd(1071, 462)$.`, answer: "21",
+          solution: String.raw`$1071 - 2 \cdot 462 = 147$, $462 - 3 \cdot 147 = 21$, and $147 = 7 \cdot 21$. So the gcd is $21$.` },
+        { q: String.raw`Find $\operatorname{lcm}(4, 6, 10)$.`, answer: "60",
+          solution: String.raw`$4 = 2^2$, $6 = 2 \cdot 3$, $10 = 2 \cdot 5$; take the largest power of each prime: $2^2 \cdot 3 \cdot 5 = 60$.` },
+        { q: String.raw`Two numbers have gcd $6$ and lcm $72$. One of them is $18$. Find the other.`, answer: "24",
+          solution: String.raw`The product of the numbers is $\gcd \cdot \operatorname{lcm} = 432$, so the other is $\tfrac{432}{18} = 24$. Check: $\gcd(18, 24) = 6$ and $\operatorname{lcm}(18, 24) = 72$.` }
       ],
       problems: [
-        "2017 AMC 10B, Problem 1",
-        "2001 AMC 10, Problem 6",
-        "2025 AMC 12B, Problem 4",
-        "2014 AMC 12A, Problem 6",
-        "2007 AMC 12A, Problem 11",
-        "2018 AMC 12A, Problem 13",
-        "2014 AMC 12A, Problem 16",
-        "2020 AMC 12A, Problem 19"
+        "2003 AMC 8, Problem 19",
+        "2016 AMC 8, Problem 20",
+        "2017 AMC 8, Problem 9",
+        "2025 AMC 10A, Problem 17"
       ]
     },
     "M1.5": {
-      prereq: ["fundamental-theorem-arithmetic"],
-      cards: ["repeating-decimals", "terminating-decimals", "calendar-problems"],
-      body: String.raw`Fractions as decimals and dates on a calendar are both questions about remainders in disguise. A fraction terminates or repeats depending on the primes in its denominator, and a weekday depends on a number of days modulo $7$.
+      prereq: ["lcm-common-multiples"],
+      cards: ["floor-multiples", "calendar-problems"],
+      body: String.raw`How many multiples of $7$ lie between $100$ and $500$? How many numbers up to $100$ are even or multiples of $5$? On what day of the week does a date $100$ days away fall? Counting multiples and working with weeks are two uses of division with remainder.
 
-A fraction in lowest terms gives a [[terminating-decimals|terminating decimal]] exactly when its denominator has no prime factors other than $2$ and $5$; $\tfrac{3}{40} = 0.075$ terminates after three digits, the larger of the exponents of $2$ and $5$ in $40 = 2^3 \cdot 5$. Otherwise the decimal repeats. [[repeating-decimals|Repeating decimals]] convert back by the rule that a block of $k$ repeating digits is that block over $k$ nines: $0.\overline{36} = \tfrac{36}{99} = \tfrac{4}{11}$. The length of the repeating block of $\tfrac1n$ is the smallest $k$ with $10^k \equiv 1 \pmod n$, so $\tfrac17$ repeats every $6$ digits.
+[[floor-multiples|The number of multiples of $k$ from $1$ to $n$]] is $\left\lfloor \tfrac nk \right\rfloor$, the whole part of $\tfrac nk$. For a range from $a$ to $b$, subtract the count up to $a - 1$ from the count up to $b$: there are $\left\lfloor \tfrac{500}{7} \right\rfloor - \left\lfloor \tfrac{99}{7} \right\rfloor = 71 - 14 = 57$ multiples of $7$ from $100$ to $500$. Numbers divisible by both $a$ and $b$ are the multiples of $\operatorname{lcm}(a, b)$, so to count numbers divisible by $2$ or $5$ up to $100$, add $50$ and $20$ and subtract the $10$ multiples of $10$ counted twice: $60$.
 
-[[calendar-problems|Calendar problems]] count days modulo $7$: $100$ days after a Monday is $100 \equiv 2 \pmod 7$ days later in the week, a Wednesday. A non-leap year has $365 \equiv 1$, so the same date moves one weekday later each year, two after a leap day.
+[[calendar-problems|Calendar problems]] use the fact that the days of the week repeat every $7$ days, so only the remainder on division by $7$ matters: $100 = 7 \cdot 14 + 2$, so $100$ days after a Monday is a Wednesday. A year has $365 = 7 \cdot 52 + 1$ days, so a date moves one day of the week each year, two in a leap year, and a month of $31$ days moves the next month's dates by $3$.
 
-Factor denominators, convert repeating blocks over nines, and reduce day counts modulo $7$. The next chapter studies remainders in general.`,
+Count multiples with floors, subtract to count in a range, add and subtract to avoid counting a number twice, and reduce days modulo $7$. The Summary (M1.6) collects the chapter's strategies.`,
       related: [
-        { card: "multiplicative-order", note: String.raw`the period of a repeating decimal as an order (M3.2).` },
-        { card: "modular-basics", note: String.raw`counting modulo $7$ (M2.1).` },
-        { card: "geometric-series", note: String.raw`why a repeating block is that block over nines (L6.3).` }
+        { card: "pie", note: String.raw`counting numbers with at least one of several divisibility properties.` },
+        { card: "legendres-formula", note: String.raw`counting multiples of each power of a prime to count its factors in $n!$ (M3.4).` }
       ],
       exercises: [
-        { q: String.raw`Write $0.\overline{36}$ as a fraction in lowest terms $\tfrac mn$ and find $m + n$.`, answer: "15",
-          solution: String.raw`$0.\overline{36} = \tfrac{36}{99} = \tfrac{4}{11}$, so $m + n = 15$.` },
-        { q: String.raw`Today is Monday. In how many days from today, at most $6$, is the day of the week the same as $100$ days from today?`, answer: "2",
-          solution: String.raw`$100 = 7 \cdot 14 + 2$, so $100$ days ahead falls on the same weekday as $2$ days ahead (a Wednesday).` }
+        { q: String.raw`How many multiples of $7$ are there from $100$ to $500$?`, answer: "57",
+          solution: String.raw`Up to $500$ there are $\lfloor 500/7 \rfloor = 71$, and up to $99$ there are $14$. So $71 - 14 = 57$ lie from $100$ to $500$.` },
+        { q: String.raw`How many integers from $1$ to $100$ are multiples of $2$ or of $5$?`, answer: "60",
+          solution: String.raw`There are $50$ multiples of $2$ and $20$ of $5$; the $10$ multiples of $10$ are counted twice. So $50 + 20 - 10 = 60$.` },
+        { q: String.raw`Today is a Monday. How many days after a Monday is the day of the week reached $100$ days from now? (Give the number from $0$ to $6$.)`, answer: "2",
+          solution: String.raw`$100 = 7 \cdot 14 + 2$, so $100$ days from now is $2$ days of the week after Monday: a Wednesday.` }
       ],
       problems: [
-        "2014 AMC 10A, Problem 2",
-        "2010 AMC 10B, Problem 5",
-        "2010 AMC 10A, Problem 10",
-        "2021 Spring AMC 12A, Problem 5",
-        "2012 AMC 12A, Problem 9",
-        "2013 AMC 12A, Problem 10",
-        "2019 AMC 10A, Problem 18",
-        "2000 AMC 10, Problem 25"
+        "1988 AJHSME, Problem 10",
+        "2005 AMC 8, Problem 18",
+        "2023 AMC 10A, Problem 3",
+        "2003 AMC 10A, Problem 15"
+      ]
+    },
+    "M1.6": {
+      prereq: ["fundamental-theorem-arithmetic", "only-even-prime", "divisibility-rules", "euclidean-algorithm", "gcd-lcm-product", "lcm-common-multiples", "floor-multiples", "calendar-problems"],
+      cards: [],
+      body: String.raw`[[fundamental-theorem-arithmetic|Every whole number greater than $1$]] factors into primes in one way; testing primes up to the square root finds the factorization, and [[only-even-prime|$2$ is the only even prime]].
+
+[[divisibility-rules|The divisibility rules]] read the last digits for $2$, $4$, $5$, $8$, the digit sum for $3$ and $9$, and the alternating sum for $11$.
+
+The gcd takes the smaller exponent of each prime and the lcm the larger; [[euclidean-algorithm|the Euclidean algorithm]] finds a gcd by subtracting, [[gcd-lcm-product|their product]] is the product of the two numbers, and [[lcm-common-multiples|common multiples]] are the multiples of the lcm.
+
+[[floor-multiples|Multiples of $k$ up to $n$]] number $\left\lfloor \tfrac nk \right\rfloor$, and [[calendar-problems|days of the week]] are counted modulo $7$.`,
+      strategies: [
+        String.raw`Factor every number into primes before anything else.`,
+        String.raw`To test whether a number is prime, try primes only up to its square root.`,
+        String.raw`If two primes add to an odd number, one of them is $2$.`,
+        String.raw`Use the digit rules for divisibility, and test a composite divisor through its coprime factors.`,
+        String.raw`For a gcd without factoring, subtract multiples (the Euclidean algorithm).`,
+        String.raw`For things that repeat on two schedules, use the lcm.`,
+        String.raw`Count multiples in a range by subtracting two floor counts.`,
+        String.raw`For days of the week, reduce the number of days modulo $7$.`
       ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Counting repeated factors, how many primes multiply to $2^4 \cdot 3^3 \cdot 5$?`, answer: "8",
+        solution: String.raw`$4 + 3 + 1 = 8$ prime factors, counted with repetition.` },
+      { q: String.raw`What is the smallest positive number divisible by each of $1, 2, \ldots, 10$?`, answer: "2520",
+        solution: String.raw`The lcm takes the largest power of each prime up to $10$: $2^3 \cdot 3^2 \cdot 5 \cdot 7 = 2520$.` },
+      { q: String.raw`Find $\gcd(2^{10} - 1, 2^6 - 1)$.`, answer: "3",
+        solution: String.raw`$2^{10} - 1 = 1023 = 3 \cdot 11 \cdot 31$ and $2^6 - 1 = 63 = 3^2 \cdot 7$, so the gcd is $3$, which is $2^{\gcd(10, 6)} - 1$.` },
+      { q: String.raw`How many integers from $1$ to $1000$ are multiples of $3$ but not of $5$?`, answer: "267",
+        solution: String.raw`There are $333$ multiples of $3$, and $66$ of them are multiples of $15$. So $333 - 66 = 267$.` },
+      { q: String.raw`The six-digit number $\overline{12A45B}$ is a multiple of $72$. Find the sum of all possible values of $A$.`, answer: "9",
+        solution: String.raw`It must be a multiple of $8$ and of $9$. For $8$, the last three digits $\overline{45B}$ must be a multiple of $8$, so $B = 6$ ($456 = 8 \cdot 57$). For $9$, the digit sum $18 + A$ must be a multiple of $9$, so $A = 0$ or $9$. The sum is $9$.` }
+    ],
+    problems: [
+      "1990 AJHSME, Problem 10",
+      "2014 AMC 8, Problem 21"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2003 AMC 12B, Problem 18",
+      "2005 AMC 12B, Problem 17",
+      "2006 AMC 12B, Problem 14",
+      "2003 AMC 12A, Problem 18"
+    ]
   }
 };
