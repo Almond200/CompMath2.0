@@ -949,7 +949,9 @@ html[data-text="large"] .card-crumb { font-size: 13px; }
 body.nav-open .nav-backdrop { opacity: 1; }
 
 @media (max-width: 900px) {
-  html, body { overflow-x: hidden; }
+  /* clip, not hidden: hidden made the body a scroll container, which broke every sticky element
+     on a phone, the top bar included (owner, 2026-10-31). */
+  html, body { overflow-x: clip; }
 
   /* Two-row header: [hamburger][brand][tools] then full-width search. */
   .topbar-inner {
@@ -959,8 +961,13 @@ body.nav-open .nav-backdrop { opacity: 1; }
   }
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; order: 0; }
   .brand { order: 1; }
-  .topbar-tools { order: 2; margin-left: auto; }
-  .search-wrap { order: 3; flex-basis: 100%; max-width: none; }
+  /* One row on a tablet: the menu, the logo, the spaces, the search and the tools (owner,
+     2026-10-31: the search stays in the top bar instead of taking a row of its own). */
+  .space-switch { order: 2; }
+  .space-switch > button { padding: 0 9px; }
+  .search-wrap { order: 3; flex: 1 1 90px; min-width: 0; max-width: none; }
+  .search-kbd { display: none; }
+  .topbar-tools { order: 4; margin-left: 0; flex: none; }
 
   /* Trim the header so nothing overflows the viewport. */
   .brand-text p { display: none; }
@@ -970,7 +977,7 @@ body.nav-open .nav-backdrop { opacity: 1; }
   .tool-btn .tb-icon { margin-right: 0; }
   .tool-btn { padding: 6px 10px; font-size: 14px; }
 
-  :root { --topbar-h: 116px; }
+  :root { --topbar-h: 111px; }   /* a fallback: the ResizeObserver in app.js sets the real height */
 
   /* Sidebar becomes an off-canvas drawer. */
   .layout { grid-template-columns: 1fr; }
@@ -2317,6 +2324,8 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .chain-cards .chain-alt-card { border-style: dashed; }
 .prob-own-figure { margin: 14px 0; }
 .prob-own-note { margin-top: 4px; font-size: 12px; color: var(--text-faint); font-style: italic; }
+/* A problem's own figure sits inside How this problem works, above the strategy. */
+.prob-chain .prob-own-figure { margin: 4px 0 14px; }
 .chain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .chain-col { padding: 9px 11px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-card); }
 .chain-col .chain-label { width: auto; margin-bottom: 6px; }
@@ -2473,8 +2482,25 @@ body[data-space="learn"] [data-space-go="learn"] { background: var(--space-soft)
 @media (max-width: 1400px) { .topbar-tools .tool-btn { width: 40px; padding: 0; } }
 @media (max-width: 760px) {
   .topbar-inner { flex-wrap: wrap; }
+  /* A phone: the menu, the logo, the search and the tools on one row, the spaces on the next. */
+  .search-wrap { order: 2; flex: 1 1 120px; }
+  .search-kbd { display: none; }
+  .topbar-tools { order: 3; }
   .space-switch { order: 5; width: 100%; }
-  .space-switch button { flex: 1; padding: 0 6px; }
+  .space-switch > button { flex: 1; padding: 0 6px; }
+}
+/* The Reference menu (Formulas, Methods, Patterns) exists only on a narrow phone. */
+.space-ref { display: none; position: relative; }
+@media (max-width: 600px) {
+  .space-switch > [data-space-go="formulas"], .space-switch > [data-space-go="methods"], .space-switch > [data-space-go="patterns"] { display: none; }
+  .space-ref { display: flex; flex: 1; }
+  .space-ref-btn { flex: 1; font: inherit; font-size: 13px; font-weight: 650; padding: 0 6px; border-radius: 7px; border: none; background: transparent; color: var(--text-dim); cursor: pointer; }
+  .space-ref-caret { font-size: 10px; margin-left: 2px; }
+  body[data-space="formulas"] .space-ref-btn, body[data-space="methods"] .space-ref-btn, body[data-space="patterns"] .space-ref-btn { background: var(--space-soft); color: var(--space); }
+  .space-ref-menu { position: absolute; left: -3px; top: calc(100% + 6px); z-index: 70; min-width: 160px; display: flex; flex-direction: column; gap: 2px; padding: 4px;
+    border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2); }
+  .space-ref-menu[hidden] { display: none; }
+  .space-ref-menu button { text-align: left; padding: 9px 12px; height: auto; font-size: 14px; }
 }
 
 /* ---------- Group tiles (a subject's topics, method groups or pattern families) ---------- */
@@ -2854,9 +2880,11 @@ body.is-landing .content { padding: 0 0 70px; }
 /* Learn → Lists: room around your own lists */
 /* Your lists sit in the Lists section as a plain subsection, not a box inside the box. */
 #pr-lists .learn-sub { margin-top: 16px; }
-#pr-lists .pl-new-btn { display: inline-flex; align-items: center; margin: 0 0 10px; padding: 7px 14px; border-radius: 8px; border: 1px dashed var(--border-light);
-  background: transparent; color: var(--c-learn); font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
-#pr-lists .pl-new-btn:hover { background: var(--cs-learn); border-color: var(--c-learn); }
+/* New list: a small green + beside the "Your lists" heading (owner, 2026-10-31). */
+#pr-lists .pl-mine-h { display: flex; align-items: center; gap: 8px; }
+#pr-lists .pl-new-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border-radius: 6px; border: none;
+  background: var(--cs-learn); color: var(--c-learn); font-size: 17px; font-weight: 800; line-height: 1; cursor: pointer; transition: background 0.12s, color 0.12s; }
+#pr-lists .pl-new-btn:hover, #pr-lists .pl-new-btn:focus-visible { background: var(--c-learn); color: var(--bg); }
 /* A user list's title renames in place: a press makes it editable, with an underline while typing. */
 h2[data-list-title] { cursor: text; border-radius: 6px; }
 h2[data-list-title]:hover { background: var(--bg-panel); }
@@ -2912,6 +2940,19 @@ h2[data-list-title][contenteditable="true"] { outline: none; background: var(--b
 .cy-grid tbody th a:hover { color: var(--space); }
 .cy-grid td a { display: inline-block; min-width: 30px; padding: 2px 8px; border-radius: 7px; background: var(--space-soft); color: var(--space); }
 .cy-grid td a:hover { filter: brightness(1.15); }
+/* On a phone the study routes are one row per subject with a chip per level, not a table that
+   scrolls sideways (owner, 2026-10-31). */
+.route-cards { display: none; }
+@media (max-width: 760px) {
+  #pr-study .grid-scroll { display: none; }
+  .route-cards { display: flex; flex-direction: column; }
+  .route-card { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .route-card:last-child { border-bottom: none; }
+  .route-card-t { margin-bottom: 7px; font-size: 14px; font-weight: 700; }
+  .route-card-links { display: flex; flex-wrap: wrap; gap: 6px; }
+  .route-card-links a { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--space-soft); color: var(--space); font-size: 13.5px; font-weight: 650; text-decoration: none; }
+  .route-card-n { font-size: 12px; font-weight: 600; opacity: 0.75; }
+}
 .cy-none { color: var(--text-faint); }
 .cy-all { color: var(--text-dim); font-weight: 700; }
 
@@ -2945,6 +2986,19 @@ summary.set-panel-title { cursor: pointer; display: flex; align-items: center; g
 summary.set-panel-title::-webkit-details-marker { display: none; }
 summary.set-panel-title::after { content: "\25B8"; margin-left: auto; font-size: 13px; transition: transform 0.15s; }
 details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
+/* Search settings: a small box under the page's subtitle, with matches in a dropdown. */
+.set-find { position: relative; max-width: 360px; margin-top: 12px; }
+.set-find-input { width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); color: var(--text); font: inherit; font-size: 14px; }
+.set-find-input:focus { outline: none; border-color: var(--accent); }
+.set-find-list { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 50; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16); }
+.set-find-list[hidden] { display: none; }
+.set-find-opt { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 10px; padding: 7px 10px; border: none; border-radius: 7px; background: none; color: var(--text); font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
+.set-find-opt:hover, .set-find-opt.is-cur { background: var(--bg-panel); }
+.set-find-group { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+.set-find-none { padding: 8px 10px; font-size: 13.5px; color: var(--text-faint); }
+/* The setting a search chose flashes once, so the eye finds it. */
+@keyframes set-found { 0%, 35% { background: color-mix(in srgb, var(--accent) 16%, transparent); box-shadow: inset 3px 0 0 var(--accent); } 100% { background: transparent; box-shadow: inset 3px 0 0 transparent; } }
+.set-row.set-found { animation: set-found 2.4s ease-out; border-radius: 8px; }
 .set-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 12px 0; border-top: 1px solid var(--border); }
 .set-panel-title + .set-row { border-top: none; }
 .set-text { min-width: 0; }
@@ -3019,7 +3073,7 @@ a.card-result { color: var(--text); text-decoration: none; }
 .topbar-tools .tool-btn .tb-icon svg { width: 18px; height: 18px; vertical-align: middle; }
 .topbar-tools #settings-btn { font-size: 21px; }
 #search-input { font-size: 15px; }
-@media (max-width: 760px) { .space-switch button { font-size: 13px; padding: 0 4px; } }
+@media (max-width: 760px) { .space-switch > button { font-size: 13px; padding: 0 4px; } }
 
 /* ---------- Round 2 polish ---------- */
 /* Settings is one click from the front page too, since the top bar is hidden there. */
@@ -3070,6 +3124,20 @@ a.card-result { color: var(--text); text-decoration: none; }
 .grp-n { font-size: 12px; font-weight: 650; color: var(--space); background: var(--space-soft); padding: 1px 9px; border-radius: 999px; }
 .grp-blurb { margin: 4px 0 12px; max-width: 760px; font-size: 14px; line-height: 1.5; color: var(--text-dim); }
 .ct-years-page { margin: 4px 0 8px; }
+/* The phone's year bar: earlier, a year menu, later; and a toggle between the year's papers. */
+.ct-yearbar, .ct-papers { display: none; }
+@media (max-width: 760px) {
+  .ct-years-page { display: none; }
+  .ct-yearbar { display: flex; align-items: center; gap: 8px; margin: 6px 0 10px; }
+  .ct-yb-select { flex: 1; min-width: 0; height: 40px; padding: 0 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg-card); color: var(--text); font: inherit; font-size: 15px; font-weight: 650; }
+  .ct-yb-step { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 50%;
+    background: var(--bg-card); color: var(--text); font-size: 22px; line-height: 1; text-decoration: none; }
+  .ct-yb-step.is-off { opacity: 0.35; }
+  .ct-papers { display: flex; gap: 4px; margin: 0 0 6px; padding: 3px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); }
+  .ct-papers button { flex: 1; height: 34px; border: none; border-radius: 9px; background: none; color: var(--text-dim); font: inherit; font-size: 14px; font-weight: 650; cursor: pointer; }
+  .ct-papers button[aria-selected="true"] { background: var(--bg-card); color: var(--space); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+  .ct-papers ~ .db-group:not(.is-shown) { display: none; }
+}
 .ct-years a[aria-current="page"] { background: var(--space); color: #fff; }
 .pl-new { display: flex; gap: 8px; margin-top: 10px; }
 .pl-new input { flex: 1; min-width: 0; font: inherit; font-size: 13.5px; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-panel); color: var(--text); }
@@ -3759,6 +3827,15 @@ body.is-landing .content { padding: 0 0 50px; }
   .hm-spaces { display: none; }
   .home { padding: 16px 16px 0; }
   .hm-sub { display: none; }
+  /* The phone's own order (owner, 2026-10-31): Continue, Did you know, Your library, Problem of
+     the day, Card of the day, Newest cards, the contests, Textbooks. The two columns dissolve into
+     one list; the wide layout keeps its own order. */
+  .hm-cols { display: flex; flex-direction: column; }
+  .hm-main, .hm-rail { display: contents; }
+  .hm-continue { order: 1; } .home .dyk { order: 2; } .hm-library { order: 3; } .home .hp-daily { order: 4; }
+  .hm-cotd { order: 5; } .hm-newest { order: 6; } .hm-glance { order: 7; } .hm-textbooks { order: 8; }
+  .home .hm-cols > * > * { border-top: 1px solid var(--border); }
+  .home .hm-cols .hm-continue { border-top: none; }
 }
 
 /* The book view's sidebar stays put while the page scrolls: the page's bottom space sits inside
@@ -3771,7 +3848,9 @@ body.is-landing .content { padding: 0 0 50px; }
    The structure of an online textbook (a rail of chapter tabs, the chapter's and the page's
    title with arrows, problem blocks, previous and next at the bottom) drawn in the app's own
    language: rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines. */
-.content:has(> .bk-view) { padding-top: 0; }
+/* The book view starts right under the top bar in every density (the density rules set the
+   content padding with more weight, which once left a gap above the rail and the bars). */
+html .content:has(> .bk-view), html[data-density] .content:has(> .bk-view) { padding-top: 0; }
 .bk-view, .bk-contents { --bk-ink: var(--bk-b); --bk-soft: color-mix(in srgb, var(--bk-a) 16%, transparent); }
 .bk-view {
   display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; max-width: 1240px; margin: 0 auto; }
@@ -3872,7 +3951,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 @media (max-width: 899px) {
   .content:has(> .bk-view) { padding-top: 0; padding-left: 10px; padding-right: 10px; }
   .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
-  .bk-rail { top: 0; padding: 3px; }
+  .bk-rail { padding: 3px; }
   .bk-tab { height: 32px; font-size: 13px; }
   .bk-tip { display: none; width: max-content; max-width: calc(100vw - 72px); white-space: normal; }
   .bk-tab:hover .bk-tip { display: none; }
@@ -3897,10 +3976,11 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .bk-contents .learn-h { color: var(--text); }
 .bk-contents .lb-code { color: var(--bk-ink); }
 .bk-contents .lb-lessons li > a .lb-title { color: var(--bk-ink); }
-/* The Start button and Show Solution take the book's own colour, solid: no gradients on buttons
+/* The Start button and Show Solution take the book's own colour, solid and muted (mostly the
+   cover's lighter shade, so the contrast with the page stays soft): no gradients on buttons
    (owner, 2026-10-31; the covers are the one exception). */
 .learn-page.bk-contents a.bk-start, :root[data-theme] .learn-page.bk-contents a.bk-start,
-:root[data-theme] .lesson-page.bk-view .lp-main .lp-show { background: var(--bk-b); color: #fff; }
+:root[data-theme] .lesson-page.bk-view .lp-main .lp-show { background: color-mix(in srgb, var(--bk-a) 72%, var(--bk-b)); color: #fff; }
 .bk-toc-h { margin: 30px 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .bk-toc { list-style: none; margin: 0; padding: 0; }
 .bk-toc-ch { padding: 14px 0 6px; border-top: 1px solid var(--border); }
@@ -3953,3 +4033,32 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 .lp-cards-sep { margin: 0 2px; color: var(--text-faint); }
 .lp-related { margin: 0; padding-left: 20px; }
 .lp-related li { margin: 0 0 8px; font-size: 15.5px; line-height: 1.7; color: var(--text); }
+
+/* ---------- The book view on a phone (owner, 2026-10-31) ----------
+   No rail and no title bars: a line naming the book and the place in it, then a row with the
+   previous page, a menu of every chapter and page, and the next page, which stays under the top
+   bar. Less empty space at the end, and the bottom links centred. Wider screens keep the rail. */
+.bk-mnav { display: none; }
+@media (max-width: 760px) {
+  .bk-view { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .bk-view .bk-rail, .bk-view .bk-bars { display: none; }
+  .bk-mnav { display: contents; }
+  .bk-mnav-k { padding: 12px 2px 6px; font-size: 12px; color: var(--text-faint); }
+  .bk-mnav-book { font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bk-ink); }
+  .bk-mnav-row { position: sticky; top: var(--topbar-h); z-index: 30; display: flex; align-items: center; gap: 8px; margin: 0 -10px; padding: 8px 10px;
+    background: var(--bg); border-bottom: 1px solid var(--border); }
+  .bk-mnav-sel { flex: 1; min-width: 0; height: 40px; padding: 0 12px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg-card); color: var(--text); font: inherit; font-size: 14.5px; font-weight: 600; }
+  .bk-mnav-step { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid var(--border); border-radius: 50%;
+    background: var(--bg-card); color: var(--bk-ink); font-size: 22px; font-weight: 700; line-height: 1; text-decoration: none; }
+  .bk-mnav-step.is-off { opacity: 0.35; color: var(--text-faint); }
+  .lesson-page .bk-body { min-height: 0; }
+  .lesson-page .lp-main { padding-bottom: 12px; }
+  html .content:has(> .bk-view), html[data-density] .content:has(> .bk-view) { padding-bottom: 28px; }
+  .bk-view .lp-grid { padding-top: 14px; }
+  .bk-foot { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-top: 26px; }
+  .bk-foot > span:empty { display: none; }
+  .bk-foot-link { max-width: 46%; }
+  .bk-foot-top { order: 3; flex-basis: 100%; justify-content: center; }
+}
+/* Cards say they open on touch screens, where nothing hovers (owner, 2026-10-31). */
+@media (hover: none), (max-width: 760px) { .more-hint { opacity: 1; } }

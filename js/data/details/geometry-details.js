@@ -2140,9 +2140,8 @@ Step 3, all polygons. Any lattice triangle is its bounding rectangle minus at mo
 A side from $(x_1, y_1)$ to $(x_2, y_2)$ has the lattice points $(x_1, y_1) + \frac kg(\Delta x, \Delta y)$ for $k = 0, \ldots, g$, with $g = \gcd(\lvert\Delta x\rvert, \lvert\Delta y\rvert)$, which is the second Key form; the third is the first rearranged. The holes form is on [[picks-with-holes|its own card]].
 
 ## Useful observations
-- Three quantities, one equation: any two give the third.
+- The area, the interior count and the boundary count are tied by one equation, so any two give the third without drawing the polygon: a lattice polygon of area $10$ with $8$ boundary points has exactly $I = 10 - \frac82 + 1 = 7$ interior points.
 - The boundary points on a segment between lattice points $(x_1, y_1)$ and $(x_2, y_2)$ number $\gcd(\lvert\Delta x\rvert, \lvert\Delta y\rvert) + 1$ including endpoints, and that gcd count is half of most Pick's problems.
-- It also runs in reverse: given the interior and boundary counts, the area is deduced without seeing the polygon.
 
 ## Applications
 Areas of lattice polygons, counting interior lattice points, and recovering the area from lattice-point counts.

@@ -1920,8 +1920,18 @@
       if (st.tan) { var tl = lineSpan(p.E, p.F, 400, 340); body += seg(tl[0], tl[1], "gl"); }
       body += polyS([p.A, p.B, p.C, p.D], "gtri") + seg(p.A, p.C, "gl") + seg(p.B, p.D, "gl");
       if (st.ext) body += seg(p[st.ext.V], p.X, "gtri");
-      if (st.pairs >= 1) body += ticks(p.A, p.B, 1) + ticks(p.A, p.D, 1);
-      if (st.pairs >= 2) body += ticks(p.B, p.C, 1);
+      // Every set of equal chords gets its own number of ticks, whether the puzzle built it
+      // (AB = AD) or the random arcs made it by chance: the check treats both as equal, so the
+      // figure must show both (a chance pair once went unmarked).
+      var chords = [["A", "B"], ["B", "C"], ["C", "D"], ["D", "A"], ["A", "C"], ["B", "D"]], groups = [];
+      chords.forEach(function (c) {
+        var L = dist(p[c[0]], p[c[1]]), g = null;
+        groups.forEach(function (h) { if (Math.abs(h.L - L) < 1e-6) g = h; });
+        if (g) g.cs.push(c); else groups.push({ L: L, cs: [c] });
+      });
+      groups.filter(function (g) { return g.cs.length > 1; }).forEach(function (g, k) {
+        g.cs.forEach(function (c) { body += ticks(p[c[0]], p[c[1]], k + 1); });
+      });
       // Neighbouring wedges at one point alternate between two radii, so they never overlap.
       // Order the wedges at each point by direction, so the alternation is between true neighbours.
       var dirOf = function (a) { var V = st.pts[a.v], b = add(norm(sub(st.pts[a.x], V)), norm(sub(st.pts[a.y], V))); return Math.atan2(b[1], b[0]); };
