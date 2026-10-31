@@ -13,8 +13,8 @@
 - **Counts:** 765 cards (548 formulas, 169 methods, 48 patterns); 41 built-in lists; 4,675 problems, every one with a strategy, 4,229 citing at least one card; 4,665 with statements; 340 figures drawn for the app. Check with `$JSC tools/validate-problem-db.js`.
 - **Finished:** the whole earlier road ahead (steps A to I, R0, and the card renovation and proof pass). `QUESTIONS.md` has no card candidate open; the next is P54 (P53, the sign of a permutation, was written 2026-10-30). Every problem has been read and tagged, and every card has two practice problems. The README changelog is the record. Both hosts are current (2026-10-30).
 - **On hold (owner, 2026-10-25):** Stage 5, moving the `lab/` pages (quiz, flashcards, formula web) into Practice. It stays on hold until the owner has tried the pilot (LQ9).
-- **Now:** the Learn track below. Step L0 is done (this file trimmed, the owner's blueprint turned into steps). L1 is done: the owner answered LQ1 to LQ10 (2026-10-31, `QUESTIONS.md`). L2 (the outline) is started in `LEARN-OUTLINE.md`: the shelf is a draft, and the pilot chapter (Modular Exponent Cycles) has its lessons and candidate problems.
-- **Next action:** continue L2: read the strategies of the pilot chapter's candidate problems, then outline the rest of AIME Number Theory. **No app file changes until the owner says so (2026-10-31).**
+- **Now:** the Learn track below. Step L0 is done (this file trimmed, the owner's blueprint turned into steps). L1 is done: the owner answered LQ1 to LQ10 (2026-10-31, `QUESTIONS.md`). L2 (the outline) is under way in `LEARN-OUTLINE.md`, rebuilt from the owner's curriculum proposal (2026-10-31): 41 chapters and 182 lessons, all mapped to cards. The pilot is now N3 (cycles and order), which follows N2 (linear congruences and CRT). N3 has full lesson plans and candidate problems.
+- **Next action:** the owner looks over the map (L2 sub-step 2, freezing it). Meanwhile, L2 sub-step 3: read the N2 and N3 candidate problems and fill their reviews. **No app file changes until the owner says so (2026-10-31).**
 
 ## The road ahead: the Learn track (owner, 2026-10-31)
 
@@ -44,28 +44,34 @@ Finished-work history deleted (the README changelog has it). Rules that lived on
 - **LQ10, trial:** the owner tries it.
 
 ### L2. The shelf outline: planning only, no app files (started 2026-10-31)
-Write `LEARN-OUTLINE.md`, book by book.
-- **For a book:** its audience, what it assumes, and its chapters.
-- **For a chapter:** the goal, 3 to 6 lessons, and a chapter-end set of contest problems that mixes the lessons and names no method.
-- **For a lesson:**
-  - the opening question;
-  - the cards it assumes and the 1 to 3 cards it teaches (real ids);
-  - the worked example (a contest problem or an authored one, its numbers checked);
-  - 1 to 3 ideas for checks during the lesson;
-  - 3 to 5 lesson-end problems.
+`LEARN-OUTLINE.md` follows the owner's second document, "An Expanded AMC-to-AIME Curriculum" (2026-10-31):
+- five books and 41 chapters, each labelled Core, Core II or Extension;
+- a prerequisite spine;
+- the lesson standard: target, direct teaching, an example then checks, variations, problems, summary;
+- one primary placement per problem, with free cross-links;
+- an audit against past papers.
 
-Order of work:
-1. The pilot chapter, Modular Exponent Cycles, in full. It is the model for the rest, so the owner approves it first.
-2. The rest of the AIME Number Theory book.
-3. The other books one at a time, with the owner reviewing each.
+Sub-steps, in order:
+1. **The map (first pass done 2026-10-31).** Every chapter and lesson titled, and every lesson given its cards (real ids). `node tools/learn-coverage.js` checks the ids, that no card is taught twice, and how many problems have all their cards placed. First run: 1,047 of 1,064 AIME problems.
+2. **Freeze the map.** The owner reads the chapter and lesson titles, the levels and the spine, and approves or changes them. After that, lessons are not moved around.
+3. **The pilot pair in full: N2 (linear congruences and CRT) and N3 (cycles and order).**
+   - Read every candidate problem's strategy, and fill each review to 8 to 12 problems.
+   - Check that every chosen problem's steps are covered by its lesson or by earlier ones.
+   - The owner approves the pair, which is the model for the rest.
+4. **One representative chapter each in Algebra, Geometry, and Counting & Probability,** outlined to the same depth as N3, to test that the template carries across subjects.
+5. **The rest:** every Core chapter, then Core II, then Extension, with the owner reviewing each book.
+6. **The audit.** Take a spread of AIME papers and AMC 12 sets. Read each problem's main technique and assign it a lesson or a review, or mark a coverage gap. Sort the gaps:
+   - common: a new Core lesson;
+   - occasional: Core II;
+   - specialized: Extension, or the reference only.
 
 How problems are chosen:
 - Find candidates with `node tools/practice-scan.js <card>` and `node tools/practice-card.js <card>`.
-- Keep one only after reading its strategy and finding that the route uses the lesson's idea.
-- One contest problem has one place on the shelf.
-- AMC 10/12 twins count as one problem.
+- A problem's status runs candidate, read, verified, published. It is kept only after reading its strategy shows the route uses the lesson's idea, never on tags alone.
+- Each problem has one primary placement (one lesson's problems or one review), and other lessons may link to it (the owner's curriculum proposal, refining LQ8). AMC 10/12 twins count as one problem.
+- A problem that needs a later chapter moves later, or is marked a challenge with the needed card linked.
 
-An idea that no card holds goes into `QUESTIONS.md` as the next P-number. Commit after each book.
+A gap that contest problems really need goes into `QUESTIONS.md` as the next P-number. Commit after each sub-step.
 
 ### L3. The content model and addresses: a written spec, not built
 Add a "Learn" section to CONVENTIONS. It covers:
@@ -108,8 +114,8 @@ The owner approves the spec.
   Show Solution stays disabled until the box has some text. It then shows the strategy and the card chain. These are always hidden before that, whatever Settings says about Strategy. There is no Hint link.
 - Acceptance: one prototype lesson reads end to end with 0 KaTeX errors, no overflow at 375 px, light and dark; the keyboard works by touch and by mouse.
 
-### L6. The pilot chapter written
-- Modular Exponent Cycles, from the approved outline: the lessons' prose, worked examples, checks, lesson-end problems, and the chapter review.
+### L6. The pilot pair written
+- N2 and N3 (the pilot pair), from the approved outline: the lessons' prose, worked examples, checks, lesson-end problems, and the chapter review.
 - Every number checked by script.
 
 ### L7. Checks, problem sets and the two-way handoff
@@ -121,21 +127,21 @@ The owner approves the spec.
 - One problem database: no new modes and no copied problems.
 
 ### L8. The owner tries the pilot
-The owner tries it (LQ10). Then settle the sizes and the one-place rule (LQ8) and Stage 5 (LQ9) again, and revise the lesson template and the outline of the other books from what the owner finds.
+The owner tries it (LQ10). Then settle the sizes and the placement rule (LQ8) and Stage 5 (LQ9) again, and revise the lesson template and the outline of the other books from what the owner finds.
 
 ### L9. Write the rest of the shelf
-Write chapter by chapter from the approved outline. Commit each chapter, about every 25 problems placed, as the standing preference asks. Rebuild the search index at the end of the step if lessons become searchable (to be decided with L3).
+Write chapter by chapter from the approved outline: first one representative chapter each in Algebra, Geometry, and Counting & Probability, then every Core chapter, then Core II, then Extension. Commit each chapter, about every 25 problems placed, as the standing preference asks. Rebuild the search index at the end of the step if lessons become searchable (to be decided with L3).
 
 ### L10. The home page (later; owner, 2026-10-31)
 The front page matters little for now, and it is settled once a few things are working (LQ2). Then, show the owner two or three mock-ups as screenshots, for example a Learn tile and a "Continue learning" panel, and which current panels stay. Nothing on the home page changes before the owner chooses.
 
-**Later, only once the learning flow works (the blueprint's "wait" column):** personalized recommendations; adaptive mastery scores; AI-written feedback or problems; accounts or a server; whole books generated automatically. None of these is planned now.
+**Later, only once the learning flow works (the blueprint's "wait" column, and the proposal's "avoid as first release"):** personalized recommendations; adaptive mastery scores or mandatory mastery gates; AI-written feedback or problems; accounts or a server; a separate problem database; whole books generated automatically, or dozens of optional chapters written before the core works. None of these is planned now.
 
 ## Where things are
 
 - Project: `/home/user/CompMath2.0` in the cloud session, on the branch the session names; on the Mac, `~/Downloads/competition-math-reference`.
 - Code and data: a static JS site with `js/app.js`, `css/styles.css`, data in `js/data/`, write-ups in `js/data/details/`, and the gates in `tools/` (`./tools/gates.sh` runs them; the list is in `CLAUDE.md`).
 - Published: https://almond200.github.io/CompMath2.0/ (repo `Almond200/CompMath2.0`) and https://competition-math-reference.vercel.app/.
-- Helpers: `tools/add-cards.py`, `tools/add-to-list.py`, `tools/add-tag.js`, `tools/bump-versions.py --changed`, `tools/check-pages.js`, `tools/practice-scan.js`, `tools/show.js` (README, Structure).
+- Helpers: `tools/learn-coverage.js` (the outline's coverage), `tools/add-cards.py`, `tools/add-to-list.py`, `tools/add-tag.js`, `tools/bump-versions.py --changed`, `tools/check-pages.js`, `tools/practice-scan.js`, `tools/show.js` (README, Structure).
 - LIVE's concept tags are in `tools/live-cache/`. Use them as hints only.
 - Plain writing goes ahead without asking. The owner is asked only about new cards, judgment calls in `QUESTIONS.md`, and real choices.
