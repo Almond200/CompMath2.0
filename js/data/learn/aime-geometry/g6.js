@@ -62,7 +62,7 @@ A [[spiral-similarity|spiral similarity]] is a rotation combined with a scaling 
 
 Use complex numbers when the figure is built from rotations, and rotate part of a figure to gather lengths. The next lesson uses vectors.`,
       related: [
-        { card: "de-moivre", note: String.raw`powers of the rotation factor $e^{i\theta}$ (A6.2).` },
+        { card: "de-moivre", note: String.raw`powers of the rotation factor $e^{i\theta}$ (A6.3).` },
         { card: "point-in-equilateral", note: String.raw`the $60^\circ$ rotation in an equilateral triangle (G5.5).` },
         { card: "geometric-series", note: String.raw`the position after repeated turns and steps.` }
       ],

@@ -78,7 +78,7 @@ The [[fundamental-theorem-algebra|fundamental theorem of algebra]] says a polyno
 Recognize factors of $z^n - 1$, reduce exponents modulo $n$, and use the complete factorization. This completes the AMC Algebra book.`,
       related: [
         { card: "products-over-roots", note: String.raw`products over roots as values of the polynomial (L5.1).` },
-        { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.3).` },
+        { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.4).` },
         { card: "cycle-hunting", note: String.raw`periods of powers (M2.2).` }
       ],
       exercises: [

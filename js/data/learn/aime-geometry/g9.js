@@ -84,7 +84,7 @@ Look for a cross-ratio when four points on a line or circle are projected or inv
       related: [
         { card: "symmedian-lemoine", note: String.raw`the symmedian through the meeting point of two tangents (G5.5).` },
         { card: "angle-bisector-theorem", note: String.raw`internal and external bisectors divide the side harmonically (G1.3).` },
-        { card: "complex-basics", note: String.raw`the cross-ratio of complex numbers and concyclic points (A6.1).` }
+        { card: "complex-basics", note: String.raw`the cross-ratio of complex numbers and concyclic points (A6.2).` }
       ],
       exercises: [
         { q: String.raw`Points $A$, $B$, $C$, $D$ lie on a number line at $0$, $1$, $2$, $3$. Find the cross-ratio $(A, B; C, D) = \tfrac{CA}{CB} \div \tfrac{DA}{DB}$ with signed lengths.`, answer: "4/3",

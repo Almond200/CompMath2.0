@@ -151,7 +151,7 @@ The [[hockey-stick|hockey stick identity]] $\sum_{k=r}^{n}\binom kr = \binom{n +
 When a sum of binomial coefficients appears, ask what it counts: a diagonal is a hockey stick, a product of two coefficients with a fixed total is Vandermonde, and a weighted sum is a committee with a chair. The Summary (C4.6) collects the chapter's strategies, and the problems after it mix these identities with bijections, double counting and symmetry.`,
       related: [
         { card: "committee-chair", note: String.raw`the identity $k\binom nk = n\binom{n-1}{k-1}$ for weighted row sums (C4.3).` },
-        { card: "roots-of-unity-filter", note: String.raw`sums of every third or fourth entry of a row (A6.3).` },
+        { card: "roots-of-unity-filter", note: String.raw`sums of every third or fourth entry of a row (A6.4).` },
         { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.2).` }
       ],
       exercises: [

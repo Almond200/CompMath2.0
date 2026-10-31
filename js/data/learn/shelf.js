@@ -848,23 +848,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A6.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A6.2",
       "title": "Complex arithmetic, conjugates, modulus, argument",
       "level": "Core"
      },
      {
-      "code": "A6.2",
+      "code": "A6.3",
       "title": "The plane: rotations and loci",
       "level": "Core II"
      },
      {
-      "code": "A6.3",
+      "code": "A6.4",
       "title": "Roots of unity and finite geometric sums",
       "level": "Core II"
      },
      {
-      "code": "A6.4",
+      "code": "A6.5",
       "title": "Polynomial roots with complex numbers",
       "level": "Core II"
+     },
+     {
+      "code": "A6.6",
+      "title": "Summary"
      }
     ]
    },

@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A5 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A6 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -894,10 +894,12 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A6.1 Complex arithmetic, conjugates, modulus, argument (Core) | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` |
-| A6.2 The plane: rotations and loci (Core II) | `eulers-formula`, `polar-form`, `de-moivre` |
-| A6.3 Roots of unity and finite geometric sums (Core II) | `roots-of-unity`, `roots-of-unity-filter`, `trig-series-complex` |
-| A6.4 Polynomial roots with complex numbers (Core II) | `fundamental-theorem-algebra`, `roots-unity-distance-product` |
+| A6.1 Introduction | no card (the chapter's opening page: complex arithmetic, the polar form and De Moivre, rotations, roots of unity, polynomial roots, with comprehension problems) |
+| A6.2 Complex arithmetic, conjugates, modulus, argument (Core) | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` |
+| A6.3 The plane: rotations and loci (Core II) | `eulers-formula`, `polar-form`, `de-moivre` |
+| A6.4 Roots of unity and finite geometric sums (Core II) | `roots-of-unity`, `roots-of-unity-filter`, `trig-series-complex` |
+| A6.5 Polynomial roots with complex numbers (Core II) | `fundamental-theorem-algebra`, `roots-unity-distance-product` |
+| A6.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A6.7 Review Problems and A6.8 Challenge Problems |
 
 ### A7. Trigonometric algebra (Core II; links to G3)
 

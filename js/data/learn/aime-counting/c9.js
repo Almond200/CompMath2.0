@@ -44,7 +44,7 @@ A [[partitions|partition]] of $n$ writes it as a sum of positive integers in whi
 Use a generating function when a count combines independent choices by adding their contributions and the direct casework is long. The next lesson studies permutations through their cycles.`,
       related: [
         { card: "coefficient-extraction", note: String.raw`reading sums of coefficients by evaluating at $1$, $-1$ and roots of unity.` },
-        { card: "roots-of-unity-filter", note: String.raw`extracting the coefficients in one residue class (A6.3).` },
+        { card: "roots-of-unity-filter", note: String.raw`extracting the coefficients in one residue class (A6.4).` },
         { card: "generalized-binomial-series", note: String.raw`the expansion of $\tfrac{1}{(1 - x)^k}$ (A9.1).` }
       ],
       exercises: [

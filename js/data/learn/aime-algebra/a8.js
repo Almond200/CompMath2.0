@@ -59,7 +59,7 @@ Together with Simon's favorite factoring trick, these identities are the standar
         { card: "sfft", note: String.raw`adding a constant to complete a product, the other standard integer factorization.` },
         { card: "lte", note: String.raw`how many times a prime divides $a^n - b^n$, the sharper form of the same factorization.` },
         { card: "sum-of-two-squares", note: String.raw`which integers are sums of two squares, and in how many ways.` },
-        { card: "complex-basics", note: String.raw`moduli multiply, which is the Brahmagupta-Fibonacci identity (A6.1).` }
+        { card: "complex-basics", note: String.raw`moduli multiply, which is the Brahmagupta-Fibonacci identity (A6.2).` }
       ],
       exercises: [
         { q: String.raw`Find the smallest prime factor of $3^{105} + 2^{105}$.`, answer: "5",
@@ -133,7 +133,7 @@ The problems below are mixed on purpose, in rising order of difficulty, and each
       related: [
         { card: "newtons-sums", note: String.raw`power sums of roots from the coefficients (A2.3).` },
         { card: "log-substitution", note: String.raw`turning an exponential or logarithmic equation into a polynomial (A4.4).` },
-        { card: "roots-of-unity", note: String.raw`recognizing the roots of a geometric-series polynomial (A6.3).` },
+        { card: "roots-of-unity", note: String.raw`recognizing the roots of a geometric-series polynomial (A6.4).` },
         { card: "comparing-coefficients", note: String.raw`reading a system as one polynomial identity (A2.6).` }
       ],
       exercises: [

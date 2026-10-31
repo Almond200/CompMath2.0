@@ -55,7 +55,7 @@ Adding the two expansions of $\sin(a + b)$ and $\sin(a - b)$ gives the [[product
 Use addition and double-angle formulas to reach a known angle or a factorization, sum-to-product to solve equations, and harmonic addition for extreme values of a linear combination. The next lesson counts the solutions of trigonometric equations on an interval.`,
       related: [
         { card: "cauchy-schwarz", note: String.raw`the bound $|a\sin x + b\cos x| \le \sqrt{a^2 + b^2}$ (A5.3).` },
-        { card: "de-moivre", note: String.raw`multiple-angle formulas from the binomial expansion of $(\cos x + i\sin x)^n$ (A6.2).` },
+        { card: "de-moivre", note: String.raw`multiple-angle formulas from the binomial expansion of $(\cos x + i\sin x)^n$ (A6.3).` },
         { card: "angle-between-lines", note: String.raw`the tangent subtraction formula applied to slopes.` },
         { card: "chord-length", note: String.raw`half-angle sines in circle geometry: a chord is $2R\sin\tfrac\theta2$.` }
       ],
@@ -132,7 +132,7 @@ Doubling identities make two more telescopes. From $\cot\theta - \cot 2\theta = 
 Look for a telescope whenever a trigonometric sum or product runs over many evenly spaced or doubling angles, and for a substitution whenever an algebraic expression has the shape of an identity. The next chapter brings together the algebraic structures of the whole book.`,
       related: [
         { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson (A3.3).` },
-        { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.3).` },
+        { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.4).` },
         { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.4).` },
         { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.4).` }
       ],
