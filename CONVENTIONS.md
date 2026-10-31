@@ -931,7 +931,7 @@ window.MATH_LEARN["N3"] = {
       prereq: ["modular-basics"],   // cards assumed (links only)
       cards: ["cycle-hunting"],     // cards taught: the drawer offers them
       body: String.raw`...`,        // the lesson prose (format below)
-      checks: [{ q: String.raw`...`, answer: "3", why: String.raw`...` }],
+      exercises: [{ q: String.raw`...`, answer: "3", solution: String.raw`...` }],   // the lesson's own problems
       problems: ["2003 AMC 10A, Problem 16", "..."]   // problem refs, in rising order
     }
   },
@@ -945,18 +945,18 @@ The code and title of each lesson come from the shelf, never from this file. A c
 - `$...$` and `$$...$$` for math;
 - `[[card-id]]` for a card link (it opens in the drawer);
 - `### ` for a subheading;
-- `{{check N}}` on a line of its own, to place check N (counting from 1) at that point. Checks without a marker gather after the prose.
+- nothing else: the explanation runs in one piece, and the lesson's problems follow it (the `{{check N}}` markers were retired 2026-10-31).
+
+**Every lesson opens with `### Introduction`** (owner, 2026-10-31): one paragraph that summarizes the lesson. It names the kind of problem the idea answers (with two or three concrete instances), the idea in a sentence, what the lesson covers, and where the chapter goes next. **No paragraph is given over to a worked example** (owner, 2026-10-31): the teaching sections explain the idea well enough that the checks and problems can be solved, and the solutions show the worked routes. A small instance inside an explanation is fine when it is part of the argument (the powers of $2$ modulo $12$ showing a late cycle). The outline's "Opening question" lines are material for the Introduction and the checks, not a section of their own. Lesson text is set larger than a card's write-up (16.5px, in the main text colour), since a lesson is read straight through.
 
 A lesson never restates a card's content: it says why the idea is needed and how it connects, and links the card (one fact, one home). Every number is checked by computation before it is written.
 
-**Checks** (LQ5) are answered by typing with the app's math keyboard. The student never types LaTeX.
-- **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷` (a fraction), `^`, `√`, `π`, brackets, a comma (for a list of answers), ← and → to move the caret, backspace, and Clear.
-- **Typed forms accepted** (owner, 2026-10-31): `sqrt(2)`, `sqrt 2`, `√2`, `cbrt`/`∛`, `pi`, `2**3`, `2²`, `·`, square and curly brackets, LaTeX (`\frac{3}{4}`, `\sqrt{3}`, `\pi`, `\cdot`), a leading `x = `, `1,000` as one number, "and"/"or" between list items, and `2±√3` as the two answers. Two numbers side by side (`1 1/2`) are refused rather than read as a product. While typing, `sqrt`, `pi`, `*`, `/` and `-` turn into √, π, ×, ÷ and −. An answer that cannot be read says why in plain words.
-- **Display:** the keypad pops up under the answer box when the box is pressed (owner, 2026-10-31), with the answer typeset at its top as it is built; it closes on a press outside, on Check, or on Escape.
-- **Stored form:** the plain expression grammar, for example `3/4`, `2sqrt(3)`, `7pi/2`, `-5`, `4, 9`.
-- **Code:** `js/learn-answer.js` reads the grammar, typesets it and compares values; the app and the gate load the same file.
-- **Comparison:** `answer` uses the same grammar, and is compared by value (within $10^{-9}$ relative). A comma list is compared as a set, so $\frac68$ and $\frac34$ both count, and so do `9, 4` and `4, 9`.
-- **After the answer:** the result is marked right or wrong and `why` (one line) is shown. Nothing is shown before an answer, since there are no hints.
+**The lesson's problems and solutions** (owner, 2026-10-31, replacing the checks of LQ5). After the explanation come the lesson's own problems, numbered by lesson ("Problem N3.1.1"), as plain statements with no answer box and no marking, so they read as practice, not as a test to pass. Then "Solutions" gives a worked solution to each, in order, and then the contest problems follow under "Contest problems". Each exercise has `q`, `solution` (a worked solution, not one line), and `answer` (the final answer, kept in the keyboard grammar so it can be checked by script). Every number in a solution is computed.
+
+The math keyboard and its grammar (`js/learn-answer.js`, described below as first built) are kept in the code but unused, at the owner's word, in case typed answers return:
+- **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷`, `^`, `√`, `π`, brackets, a comma, ← and →, backspace, and Clear.
+- **Typed forms accepted:** `sqrt(2)`, `sqrt 2`, `√2`, `pi`, `2**3`, `2²`, LaTeX, `x = 3`, `1,000`, "and"/"or" lists, and `±` as two answers; `1 1/2` is refused.
+- **Comparison:** by value within $10^{-9}$ relative; a comma list as a set.
 
 **Problem lists** (LQ6). A lesson's problems and a chapter's review are shown as an AoPS-style list. Each problem is a block with:
 - its number and the problem's statement, with figures and credit, as on its problem page;
@@ -992,14 +992,14 @@ The old list addresses are kept (§9).
 ```js
 {
   v: 1,
-  checks:   { "<lesson code>#<n>": { a: "<typed answer>", ok: true } },
+  checks:   { ... },   // from the retired checks; no longer written
   problems: { "<problem slug>": { notes: "<text>", shown: true, hidden: true } },   // hidden: shown, then hidden again
   last:     "<lesson code>"   // the lesson opened last: "Continue learning" on the home page and the book
 }
 ```
 
 - Importing it replaces the current value, like the other non-list keys.
-- Answering a check and attempting a problem are kept apart. Lessons are not marked read (the owner removed the tick, 2026-10-31); a `read` field in an older file is ignored.
+- Attempting a problem keeps its notes. Lessons are not marked read (the owner removed the tick, 2026-10-31); a `read` field in an older file is ignored.
 - A shown solution never counts as solved.
 
 **The gate** is `python3 tools/build-learn-shelf.py --check`, which runs `node tools/check-learn.js` on the chapter files. It checks that:
@@ -1008,6 +1008,6 @@ The old list addresses are kept (§9).
 - each chapter file sits at its book's path and `index.html` loads it;
 - every problem ref is in the database;
 - no problem is placed twice, and no AMC 10/12 twin pair (the same statement on both papers) is placed as two;
-- every check's `answer` parses in the keyboard grammar;
-- every `{{check N}}` names a check that exists;
+- every lesson problem has a question and a worked solution, and its `answer` (when given) parses in the keyboard grammar;
+- no `{{check}}` marker or `checks` field remains;
 - each written lesson is on the shelf.

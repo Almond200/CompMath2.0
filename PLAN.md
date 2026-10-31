@@ -60,7 +60,7 @@ Finished-work history deleted (the README changelog has it). Rules that lived on
 `LEARN-OUTLINE.md` follows the owner's second document, "An Expanded AMC-to-AIME Curriculum" (2026-10-31):
 - five books and 41 chapters, each labelled Core, Core II or Extension;
 - a prerequisite spine;
-- the lesson standard: target, direct teaching, an example then checks, variations, problems, summary;
+- the lesson standard: target, direct teaching, an example then checks, variations, problems, summary (revised by the owner 2026-10-31: an Introduction that summarizes the lesson, then teaching sections, checks and problems, with no section given over to a worked example; CONVENTIONS §14);
 - one primary placement per problem, with free cross-links;
 - an audit against past papers.
 
@@ -132,7 +132,7 @@ The owner approves the spec.
 - Every number checked by script.
 
 ### L7. Checks, problem sets and the two-way handoff
-- Checks during a lesson, answered with the math keyboard, each checked by value and followed by one line of why.
+- (Revised by the owner 2026-10-31: no checks. A lesson ends with its own problems, then their worked solutions, then the contest problems; CONVENTIONS §14.)
 - Lesson-end and chapter-end problems in the problem list from L5 (LQ6). Notes typed in the boxes are saved with progress (LQ7).
 - At the end of a chapter, a "Practice more" link into Practice.
 - On a problem page, "Study this in Learn" where a lesson covers the problem's key card.

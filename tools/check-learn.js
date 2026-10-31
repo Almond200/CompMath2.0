@@ -2,8 +2,8 @@
 // Checks that every written lesson is on the shelf; that every card id is a card; that every [[link]]
 // in a lesson's prose is one of its cards or the cards it assumes; that no card is taught in two
 // lessons; that every problem ref is in the database and placed once on the whole shelf (an AMC 10/12
-// twin pair counts as one problem); that every check's answer parses in the keyboard grammar; and that
-// every {{check N}} names a check that exists, at most once.
+// twin pair counts as one problem); and that every lesson problem has a worked solution, and an answer
+// (when given) that parses.
 // usage: node tools/check-learn.js
 global.window = global;
 const fs = require('fs'), vm = require('vm'), path = require('path');
@@ -59,18 +59,16 @@ for (const [code, ch] of Object.entries(learn)) {
       else if (!known.has(m[1])) errs.push(`${at}: [[${m[1]}]] is linked but is not among the lesson's cards or prereq`);
     }
     if (/\*\*/.test(body)) errs.push(`${at}: bold (**) never renders`);
-    const checks = l.checks || [], used = new Set();
-    for (const m of body.matchAll(/^\s*\{\{check (\d+)\}\}\s*$/gm)) {
-      const n = +m[1];
-      if (!checks[n - 1]) errs.push(`${at}: {{check ${n}}} names no check`);
-      if (used.has(n)) errs.push(`${at}: {{check ${n}}} is placed twice`);
-      used.add(n);
-    }
-    if (/\{\{check(?! \d+\}\})/.test(body)) errs.push(`${at}: a {{check}} marker is malformed`);
-    checks.forEach((c, i) => {
-      if (!c.q || !c.why) errs.push(`${at} check ${i + 1}: needs a question and a why`);
-      try { Answer.values(c.answer).forEach(v => { if (!isFinite(v)) throw new Error('not a finite value'); }); }
-      catch (e) { errs.push(`${at} check ${i + 1}: the answer "${c.answer}" does not parse (${e.message})`); }
+    // A lesson's own problems and their worked solutions (owner, 2026-10-31); checks to answer
+    // are gone, so a {{check}} marker or a "checks" field is an error.
+    if (/\{\{check/.test(body)) errs.push(`${at}: {{check}} markers are no longer used; the problems follow the explanation`);
+    if (l.checks) errs.push(`${at}: "checks" is replaced by "exercises" (q, answer, solution)`);
+    (l.exercises || []).forEach((x, i) => {
+      if (!x.q || !x.solution) errs.push(`${at} problem ${i + 1}: needs a question and a worked solution`);
+      if (x.answer != null) {
+        try { Answer.values(x.answer).forEach(v => { if (!isFinite(v)) throw new Error('not a finite value'); }); }
+        catch (e) { errs.push(`${at} problem ${i + 1}: the answer "${x.answer}" does not parse (${e.message})`); }
+      }
     });
     for (const ref of l.problems || []) place(ref, at);
   }
