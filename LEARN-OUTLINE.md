@@ -45,7 +45,7 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 
 | Book | Role | Chapters |
 |---|---|---|
-| **AMC Algebra** | algebra for the AMC 10 and 12: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L8 |
+| **AMC Algebra** | algebra for the AMC 10 and 12: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L14 |
 | **AMC Number Theory** | number theory for the AMC 10 and 12: primes, divisors, digits, remainders, integer equations | M1 to M3 |
 | **AMC Counting & Probability** | counting, probability and expected value for the AMC 10 and 12 | R1 to R3 |
 | **AMC Geometry** | geometry for the AMC 10 and 12: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S4 |
@@ -138,135 +138,7 @@ Every AMC-tier card has a home in this plan, and no card is taught twice within 
 
 #### Book: AMC Algebra
 
-From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the AMC 12, ending with the habits the AIME asks for.
-
-##### Part: Foundations
-
-**L1. Expressions and exponents** · Core. What a variable stands for, how expressions are built and rewritten, and the exponent and factoring rules everything later uses.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L1.1 Variables, expressions and translating words into symbols | Core | no card (a habit lesson: order of operations, like terms, writing a sentence as an equation) | mixed |
-| L1.2 Exponents and radicals | Core | `exponent-laws`, `rationalizing` | 34 |
-| L1.3 Expanding and factoring | Core | `square-of-sum`, `difference-of-squares`, `completing-the-square` | 58 |
-| L1.4 Ratios, proportions and percents | Core | `setting-up-proportions`, `proportion-properties`, `percent-change` | 44 |
-
-**L2. Equations and word problems** · Core. Solving one equation and checking the answer, solving systems, and turning a story into equations.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L2.1 Solving an equation and checking the answer | Core | `transforming-equations` (keeps the Bridge's habit: extraneous roots and the domain) | 3 |
-| L2.2 Systems of linear equations | Core | `linear-elimination`, `add-all-equations`, `assume-all-one-kind` | 50 |
-| L2.3 Rates and work | Core | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, *(pattern)* `several-rates` | 39 |
-| L2.4 Averages | Core | `averages-to-totals`, `weighted-average`, `mean-median-mode`, *(pattern)* `averages-before-after` | 69 |
-| L2.5 Setting up a story | Core | *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans`, `round-up-whole-items` | 13 |
-
-##### Part: Core topics
-
-**L3. Quadratics** · Core. The quadratic formula, Vieta's relations and the vertex, the first tools that work on whole families of equations.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L3.1 Solving quadratics | Core | `quadratic-formula`, *(pattern)* `quadratic-perfect-square` | 20 |
-| L3.2 Vieta: the sum and product of the roots | Core | `vietas-quadratic`, `symmetric-polynomial-strategies` | 34 |
-| L3.3 The vertex and where the roots lie | Core | `vertex-form`, `quadratic-forms`, `quadratic-root-location` | 10 |
-
-**L4. Functions, graphs, absolute values and floors** · Core. Functions as rules, reading and counting with graphs, and the two piecewise functions the AMC loves.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L4.1 Functions and defined operations | Core | *(pattern)* `defined-operation`, `inverse-function-properties`, `odd-even-functions` | 29 |
-| L4.2 Reading graphs and slopes | Core II | *(pattern)* `reading-graphs`, `slope-to-a-point` | 1 |
-| L4.3 Absolute value | Core | `absolute-value-rules`, `abs-value-relations`, `absolute-value-identities`, `sign-chart`, `abs-value-graphing` | 36 |
-| L4.4 Counting solutions with a graph | Core II | `piecewise-graph-counting` | 6 |
-| L4.5 Floors and ceilings | Core | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range` | 18 |
-
-**L5. Substitutions and symmetric expressions** · Core. Seeing a repeated block as one unknown, and working with sums and products instead of the variables themselves.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L5.1 Naming the whole expression | Core | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation`, *(pattern)* `infinite-nest` | 3 |
-| L5.2 Symmetric sums and factoring tricks | Extension | `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn`, `subtract-and-factor` | 2 |
-
-**L6. Sequences and series** · Core. Arithmetic and geometric sequences, sequences defined step by step, and sums that collapse.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L6.1 Arithmetic sequences and triangular numbers | Core | `arithmetic-series`, `triangular-numbers` | 75 |
-| L6.2 Geometric sequences and power sums | Core | `geometric-series`, `power-sums` | 39 |
-| L6.3 Recursive and periodic sequences | Core | `first-order-recurrence`, *(pattern)* `periodic-sequences` | 20 |
-| L6.4 Telescoping and clever sums | Core | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` | 16 |
-
-**L7. Polynomials** · Core. Dividing polynomials, the remainder theorem, rational roots and reading coefficients.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L7.1 Division and the remainder theorem | Core | `polynomial-division`, `factor-remainder-theorem` | 11 |
-| L7.2 Rational roots and coefficients | Core | `rational-root-theorem`, `comparing-coefficients`, `coefficient-extraction` | 16 |
-
-**L8. Inequalities, extremes and estimates** · Core. Largest and smallest values, from squares being nonnegative to AM-GM, and estimating to rule answers out.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L8.1 A square is never negative | Core | `trivial-inequality`, `sos-identity` | 2 |
-| L8.2 AM-GM and fixed sums | Core | `am-gm`, `max-product-fixed-sum` | 9 |
-| L8.3 Distances on the number line | Core II | `abs-triangle-inequality`, `median-minimizes-abs` | 3 |
-| L8.4 Extremes by arrangement | Core II | `placing-digits-extremes`, `rearrangement` | 6 |
-| L8.5 Estimating and checking | Core | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` | 10 |
-
-##### Part: Advanced topics
-
-**L9. Logarithms and exponential equations** · Core. The logarithm laws and the equations they solve.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L9.1 Logarithm laws and change of base | Core | `log-rules`, `change-of-base` | 54 |
-| L9.2 Logarithmic and exponential equations | Core | `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` | 3 |
-
-**L10. Polynomials for the AMC 12** · Core II. Vieta for any degree, roots and their transformations, interpolation, radicals and the factorizations worth knowing.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L10.1 Vieta for any degree and power sums of roots | Core | `vietas-general`, `newtons-sums` | 23 |
-| L10.2 Conjugate roots and transformed roots | Core | `conjugate-root-theorems`, `root-transformations` | 9 |
-| L10.3 Remainders and interpolation | Extension | `polynomial-crt`, `lagrange-interpolation` | 2 |
-| L10.4 Radicals and reciprocal substitutions | Core II | `denesting-radicals`, `palindromic-polynomials`, `reciprocal-power-sums`, `forced-difference-of-squares` | 5 |
-| L10.5 Factorizations worth knowing | Core II | `cubes-minus-3abc`, `sophie-germain`, `useful-factorizations` | 3 |
-
-**L11. Functional equations, recurrences and inequalities** · Core II. Substituting into functional equations, linear recurrences, double sums, and the AMC 12 inequalities.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L11.1 Functional equations by substitution | Core | `functional-substitution`, `fx-pairing`, `function-symmetry-equation` | 10 |
-| L11.2 Linear recurrences | Core II | `linear-recurrence`, `binets-formula` | 3 |
-| L11.3 Finite differences and double sums | Core II | `finite-differences`, `double-summation`, `arithmetico-geometric`, `largest-term-ratio` | 4 |
-| L11.4 The mean inequalities and Cauchy-Schwarz | Core II | `mean-chain`, `cauchy-schwarz` | 3 |
-
-**L12. Trigonometry** · Core II. Exact values, the identities, and turning sums into products.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L12.1 Special values and the identities | Core | `special-trig-values`, `angle-addition`, `double-angle`, `half-angle`, `triple-angle` | 24 |
-| L12.2 Sums, products and telescoping | Core II | `product-sum`, `trig-telescoping-product` | 3 |
-| L12.3 Combining waves and inverse functions | Core II | `harmonic-addition`, `inverse-trig-identities` | 4 |
-
-**L13. Complex numbers** · Core. Complex arithmetic, polar form and De Moivre, and roots of unity.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L13.1 Complex arithmetic and the modulus | Core | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` | 25 |
-| L13.2 Polar form and De Moivre | Core | `eulers-formula`, `polar-form`, `de-moivre` | 10 |
-| L13.3 Roots of unity | Core | `roots-of-unity`, `fundamental-theorem-algebra`, `roots-of-unity-filter` | 22 |
-
-##### Part: Toward the AIME
-
-**L14. From the AMC to the AIME: algebra** · Core. No new cards: the Bridge's habits, applied to harder mixed problems whose technique is not named.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| L14.1 Domain, positivity and integrality through a substitution | Core | no card (prereq transforming-equations, quadratic-root-location) | mixed |
-| L14.2 The AIME answer: exact arithmetic, 000 to 999, the final check | Core | no card (a habit lesson) | mixed |
-| L14.3 Mixed problems across the book | Core | no card (a review lesson with late-AMC 12 and early-AIME problems) | mixed |
+Moved to its own section, "Book: AMC Algebra", below, where it is being written (eighteenth chat).
 
 #### Book: AMC Number Theory
 
@@ -570,82 +442,191 @@ From angles, triangles and areas to circles, coordinates, solids and the AMC 12'
 
 ## Book: AMC Algebra
 
-Algebra for the AMC 10 and AMC 12 in one book: the AMC 10 chapters first, then the topics the AMC 12 adds (logarithms, deeper polynomials, inequalities, trigonometry and complex numbers). Each chapter is marked Core or Core II. The four AMC books are a track of their own: they teach their own cards, so a card may be taught again in the AIME books, and each track places a contest problem at most once (owner, 2026-10-31).
+From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the AMC 12, ending with the habits the AIME asks for. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
-### L1. The algebra toolkit (Core)
+#### Part: Foundations
 
-| Lesson | Cards |
-|---|---|
-| L1.1 Factoring, expanding and simplifying | `difference-of-squares`, `square-of-sum`, `rationalizing`, `completing-the-square` |
-| L1.2 Linear equations and systems | `linear-elimination`, `add-all-equations`, `transforming-equations`, `symmetric-polynomial-strategies` |
-| L1.3 Substitutions and self-similar expressions | `name-the-whole-expression`, `substitute-repeated-block`, `repeated-block-equation`, `infinite-nest` |
-| L1.4 Absolute values, sign charts and floors | `absolute-value-rules`, `abs-value-relations`, `sign-chart`, `abs-value-graphing`, `name-the-floor`, `group-equal-floors`, `floor-equation`, `floor-sum-range` |
-| L1.5 Rates, averages, percents and word problems | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
+### L1. Expressions and exponents (Core)
 
-### L2. Quadratics, functions and extremes (Core)
+What a variable stands for, how expressions are built and rewritten, and the exponent and factoring rules everything later uses.
 
-| Lesson | Cards |
-|---|---|
-| L2.1 Quadratics: roots, Vieta and the vertex | `quadratic-formula`, `vietas-quadratic`, `vertex-form`, `quadratic-forms`, *(pattern)* `quadratic-perfect-square` |
-| L2.2 Functions: composition, inverses, symmetry, defined operations | `inverse-function-properties`, `odd-even-functions`, `defined-operation` |
-| L2.3 Graphs and the number of solutions | `piecewise-graph-counting`, *(pattern)* `reading-graphs`, `slope-to-a-point` |
-| L2.4 Exponents and logarithms | `log-rules`, `change-of-base` |
-| L2.5 Largest and smallest values | `trivial-inequality`, `am-gm`, `max-product-fixed-sum`, `sos-identity`, `abs-triangle-inequality`, `median-minimizes-abs`, `placing-digits-extremes` |
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L1.2 Variables, expressions and translating words into symbols | Core | no card (a habit lesson: order of operations, like terms, writing a sentence as an equation) | mixed |
+| L1.3 Exponents and radicals | Core | `exponent-laws`, `rationalizing` | 34 |
+| L1.4 Expanding and factoring | Core | `square-of-sum`, `difference-of-squares`, `completing-the-square` | 58 |
+| L1.5 Ratios, proportions and percents | Core | `setting-up-proportions`, `proportion-properties`, `percent-change` | 44 |
+| L1.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L1.7 Review Problems and L1.8 Challenge Problems | |
 
-### L3. Polynomials, sequences and series (Core)
+### L2. Equations and word problems (Core)
 
-| Lesson | Cards |
-|---|---|
-| L3.1 Polynomial roots, remainders and coefficients | `factor-remainder-theorem`, `polynomial-division`, `rational-root-theorem`, `coefficient-extraction`, `comparing-coefficients` |
-| L3.2 Arithmetic and geometric sequences | `arithmetic-series`, `geometric-series`, `triangular-numbers`, `power-sums` |
-| L3.3 Recurrences and periodic sequences | `first-order-recurrence`, *(pattern)* `periodic-sequences`, `organized-listing` |
-| L3.4 Telescoping and clever sums | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
-| L3.5 Symmetric identities in three variables | `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn` |
-| L3.6 Estimating and checking | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` |
+Solving one equation and checking the answer, solving systems, and turning a story into equations.
 
-### L4. Logarithms, exponentials and functions (Core II)
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L2.2 Solving an equation and checking the answer | Core | `transforming-equations` (keeps the Bridge's habit: extraneous roots and the domain) | 3 |
+| L2.3 Systems of linear equations | Core | `linear-elimination`, `add-all-equations`, `assume-all-one-kind` | 50 |
+| L2.4 Rates and work | Core | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, *(pattern)* `several-rates` | 39 |
+| L2.5 Averages | Core | `averages-to-totals`, `weighted-average`, `mean-median-mode`, *(pattern)* `averages-before-after` | 69 |
+| L2.6 Setting up a story | Core | *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans`, `round-up-whole-items` | 13 |
+| L2.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L2.8 Review Problems and L2.9 Challenge Problems | |
 
-| Lesson | Cards |
-|---|---|
-| L4.1 Logarithmic and exponential equations | `take-logs-linearize`, `log-substitution`, `log-system` |
-| L4.2 Functional equations by substitution | `functional-substitution`, `fx-pairing`, `cauchy-functional-equations` |
-| L4.3 Floors beyond the basics | `floor-basics` |
+#### Part: Core topics
 
-### L5. Polynomials and algebraic structure (Core II)
+### L3. Quadratics (Core)
 
-| Lesson | Cards |
-|---|---|
-| L5.1 Vieta for any degree, and power sums of roots | `vietas-general`, `newtons-sums`, `products-over-roots`, `fundamental-theorem-symmetric` |
-| L5.2 Roots: conjugates, signs and transformations | `conjugate-root-theorems`, `descartes-rule-signs`, `root-transformations`, `quadratic-root-location` |
-| L5.3 Remainders and interpolation | `polynomial-crt`, `lagrange-interpolation-formula` |
-| L5.4 Radicals and reciprocal substitutions | `denesting-radicals`, `palindromic-polynomials`, `reciprocal-power-sums`, `forced-difference-of-squares` |
-| L5.5 Factorizations worth knowing | `useful-factorizations`, `cubes-minus-3abc`, `antisymmetric-factorization`, `sophie-germain` |
+The quadratic formula, Vieta's relations and the vertex, the first tools that work on whole families of equations.
 
-### L6. Sequences, sums and inequalities (Core II)
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L3.2 Solving quadratics | Core | `quadratic-formula`, *(pattern)* `quadratic-perfect-square` | 20 |
+| L3.3 Vieta: the sum and product of the roots | Core | `vietas-quadratic`, `symmetric-polynomial-strategies` | 34 |
+| L3.4 The vertex and where the roots lie | Core | `vertex-form`, `quadratic-forms`, `quadratic-root-location` | 10 |
+| L3.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L3.6 Review Problems and L3.7 Challenge Problems | |
 
-| Lesson | Cards |
-|---|---|
-| L6.1 Linear recurrences | `linear-recurrence`, `binets-formula` |
-| L6.2 Finite differences and double sums | `finite-differences`, `double-summation`, `arithmetico-geometric`, `largest-term-ratio` |
-| L6.3 The inequalities of the AMC 12 | `mean-chain`, `cauchy-schwarz`, `power-mean-inequality`, `bernoulli-inequality` |
+### L4. Functions, graphs, absolute values and floors (Core)
 
-### L7. Trigonometry (Core II)
+Functions as rules, reading and counting with graphs, and the two piecewise functions the AMC loves.
 
-| Lesson | Cards |
-|---|---|
-| L7.1 Special values and identities | `special-trig-values`, `angle-addition`, `double-angle`, `half-angle` |
-| L7.2 Combining and solving | `harmonic-addition`, `inverse-trig-identities` |
-| L7.3 Products and powers | `trig-telescoping-product`, `even-power-sin-cos-sums` |
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L4.2 Functions and defined operations | Core | *(pattern)* `defined-operation`, `inverse-function-properties`, `odd-even-functions` | 29 |
+| L4.3 Reading graphs and slopes | Core II | *(pattern)* `reading-graphs`, `slope-to-a-point` | 1 |
+| L4.4 Absolute value | Core | `absolute-value-rules`, `abs-value-relations`, `absolute-value-identities`, `sign-chart`, `abs-value-graphing` | 36 |
+| L4.5 Counting solutions with a graph | Core II | `piecewise-graph-counting` | 6 |
+| L4.6 Floors and ceilings | Core | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range` | 18 |
+| L4.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L4.8 Review Problems and L4.9 Challenge Problems | |
 
-### L8. Complex numbers (Core II)
+### L5. Substitutions and symmetric expressions (Core)
 
-| Lesson | Cards |
-|---|---|
-| L8.1 Complex arithmetic | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` |
-| L8.2 Polar form and De Moivre | `eulers-formula`, `polar-form`, `de-moivre` |
-| L8.3 Roots of unity and the fundamental theorem | `roots-of-unity`, `fundamental-theorem-algebra` |
+Seeing a repeated block as one unknown, and working with sums and products instead of the variables themselves.
 
----
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L5.2 Naming the whole expression | Core | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation`, *(pattern)* `infinite-nest` | 3 |
+| L5.3 Symmetric sums and factoring tricks | Extension | `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn`, `subtract-and-factor` | 2 |
+| L5.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L5.5 Review Problems and L5.6 Challenge Problems | |
+
+### L6. Sequences and series (Core)
+
+Arithmetic and geometric sequences, sequences defined step by step, and sums that collapse.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L6.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L6.2 Arithmetic sequences and triangular numbers | Core | `arithmetic-series`, `triangular-numbers` | 75 |
+| L6.3 Geometric sequences and power sums | Core | `geometric-series`, `power-sums` | 39 |
+| L6.4 Recursive and periodic sequences | Core | `first-order-recurrence`, *(pattern)* `periodic-sequences` | 20 |
+| L6.5 Telescoping and clever sums | Core | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` | 16 |
+| L6.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L6.7 Review Problems and L6.8 Challenge Problems | |
+
+### L7. Polynomials (Core)
+
+Dividing polynomials, the remainder theorem, rational roots and reading coefficients.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L7.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L7.2 Division and the remainder theorem | Core | `polynomial-division`, `factor-remainder-theorem` | 11 |
+| L7.3 Rational roots and coefficients | Core | `rational-root-theorem`, `comparing-coefficients`, `coefficient-extraction` | 16 |
+| L7.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L7.5 Review Problems and L7.6 Challenge Problems | |
+
+### L8. Inequalities, extremes and estimates (Core)
+
+Largest and smallest values, from squares being nonnegative to AM-GM, and estimating to rule answers out.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L8.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L8.2 A square is never negative | Core | `trivial-inequality`, `sos-identity` | 2 |
+| L8.3 AM-GM and fixed sums | Core | `am-gm`, `max-product-fixed-sum` | 9 |
+| L8.4 Distances on the number line | Core II | `abs-triangle-inequality`, `median-minimizes-abs` | 3 |
+| L8.5 Extremes by arrangement | Core II | `placing-digits-extremes`, `rearrangement` | 6 |
+| L8.6 Estimating and checking | Core | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` | 10 |
+| L8.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L8.8 Review Problems and L8.9 Challenge Problems | |
+
+#### Part: Advanced topics
+
+### L9. Logarithms and exponential equations (Core)
+
+The logarithm laws and the equations they solve.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L9.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L9.2 Logarithm laws and change of base | Core | `log-rules`, `change-of-base` | 54 |
+| L9.3 Logarithmic and exponential equations | Core | `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` | 3 |
+| L9.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L9.5 Review Problems and L9.6 Challenge Problems | |
+
+### L10. Polynomials for the AMC 12 (Core II)
+
+Vieta for any degree, roots and their transformations, interpolation, radicals and the factorizations worth knowing.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L10.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L10.2 Vieta for any degree and power sums of roots | Core | `vietas-general`, `newtons-sums` | 23 |
+| L10.3 Conjugate roots and transformed roots | Core | `conjugate-root-theorems`, `root-transformations` | 9 |
+| L10.4 Remainders and interpolation | Extension | `polynomial-crt`, `lagrange-interpolation` | 2 |
+| L10.5 Radicals and reciprocal substitutions | Core II | `denesting-radicals`, `palindromic-polynomials`, `reciprocal-power-sums`, `forced-difference-of-squares` | 5 |
+| L10.6 Factorizations worth knowing | Core II | `cubes-minus-3abc`, `sophie-germain`, `useful-factorizations` | 3 |
+| L10.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L10.8 Review Problems and L10.9 Challenge Problems | |
+
+### L11. Functional equations, recurrences and inequalities (Core II)
+
+Substituting into functional equations, linear recurrences, double sums, and the AMC 12 inequalities.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L11.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L11.2 Functional equations by substitution | Core | `functional-substitution`, `fx-pairing`, `function-symmetry-equation` | 10 |
+| L11.3 Linear recurrences | Core II | `linear-recurrence`, `binets-formula` | 3 |
+| L11.4 Finite differences and double sums | Core II | `finite-differences`, `double-summation`, `arithmetico-geometric`, `largest-term-ratio` | 4 |
+| L11.5 The mean inequalities and Cauchy-Schwarz | Core II | `mean-chain`, `cauchy-schwarz` | 3 |
+| L11.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L11.7 Review Problems and L11.8 Challenge Problems | |
+
+### L12. Trigonometry (Core II)
+
+Exact values, the identities, and turning sums into products.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L12.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L12.2 Special values and the identities | Core | `special-trig-values`, `angle-addition`, `double-angle`, `half-angle`, `triple-angle` | 24 |
+| L12.3 Sums, products and telescoping | Core II | `product-sum`, `trig-telescoping-product` | 3 |
+| L12.4 Combining waves and inverse functions | Core II | `harmonic-addition`, `inverse-trig-identities` | 4 |
+| L12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L12.6 Review Problems and L12.7 Challenge Problems | |
+
+### L13. Complex numbers (Core)
+
+Complex arithmetic, polar form and De Moivre, and roots of unity.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L13.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L13.2 Complex arithmetic and the modulus | Core | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` | 25 |
+| L13.3 Polar form and De Moivre | Core | `eulers-formula`, `polar-form`, `de-moivre` | 10 |
+| L13.4 Roots of unity | Core | `roots-of-unity`, `fundamental-theorem-algebra`, `roots-of-unity-filter` | 22 |
+| L13.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L13.6 Review Problems and L13.7 Challenge Problems | |
+
+#### Part: Toward the AIME
+
+### L14. From the AMC to the AIME: algebra (Core)
+
+No new cards: the Bridge's habits, applied to harder mixed problems whose technique is not named.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L14.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| L14.2 Domain, positivity and integrality through a substitution | Core | no card (prereq transforming-equations, quadratic-root-location) | mixed |
+| L14.3 The AIME answer: exact arithmetic, 000 to 999, the final check | Core | no card (a habit lesson) | mixed |
+| L14.4 Mixed problems across the book | Core | no card (a review lesson with late-AMC 12 and early-AIME problems) | mixed |
+| L14.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L14.6 Review Problems and L14.7 Challenge Problems | |
 
 ## Book: AMC Number Theory
 

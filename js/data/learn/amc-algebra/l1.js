@@ -1,173 +1,209 @@
-// Learn, AMC Algebra, chapter L1: the algebra toolkit (CONVENTIONS §14; the AMC track).
-// Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
+// Learn, AMC Algebra, chapter L1: expressions and exponents (CONVENTIONS §14). Part: Foundations.
+// The second plan's book, written fresh (eighteenth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["L1"] = {
   lessons: {
     "L1.1": {
       prereq: [],
-      cards: ["difference-of-squares", "square-of-sum", "rationalizing", "completing-the-square"],
-      body: String.raw`Most AMC algebra is won or lost in the first line: seeing that an expression factors, that a sum is part of a perfect square, or that a radical can be cleared, instead of multiplying everything out. Computing $\tfrac{100^2 - 7^2}{70^2 - 11^2}$, finding the largest prime factor of $3^8 - 1$, or the smallest value of $x^2 - 8x + 21$ each take one idea and no long arithmetic.
+      cards: [],
+      body: String.raw`This chapter is about the language of algebra: letters that stand for numbers, the expressions built from them, and the rules for rewriting an expression without changing its value. Everything later in the book is written in this language.
 
-The [[difference-of-squares|difference of squares]] $a^2 - b^2 = (a - b)(a + b)$, with its relatives $a^3 \mp b^3 = (a \mp b)(a^2 \pm ab + b^2)$, is the factorization to look for first. It turns arithmetic into products and splits numbers that look prime: $3^8 - 1 = (3^4 - 1)(3^4 + 1) = 80 \cdot 82 = 2^5 \cdot 5 \cdot 41$, so its largest prime factor is $41$. It also explains why consecutive squares differ by consecutive odd numbers.
+A variable is a letter, such as $x$, that stands for a number we do not know yet or that can change. An expression combines numbers and variables with operations, such as $3x^2 - 2x + 1$; when $x = -2$ its value is $3 \cdot 4 + 4 + 1 = 17$. An equation says that two expressions have the same value, and translating a sentence into an equation is the first step of most word problems.
 
-The [[square-of-sum|square of a sum]] $(a + b)^2 = a^2 + 2ab + b^2$, and $(a + b + c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ca)$ for three terms, connects a sum, a sum of squares and a sum of products: knowing any two gives the third. [[completing-the-square|Completing the square]] runs it backward, rewriting $x^2 + bx$ as $\left(x + \tfrac b2\right)^2 - \tfrac{b^2}{4}$. So $x^2 - 8x + 21 = (x - 4)^2 + 5$, which is never less than $5$, and $x^2 + 6x + y^2 - 4y = 12$ becomes $(x + 3)^2 + (y - 2)^2 = 25$, a circle of radius $5$.
+Exponents are repeated multiplication: $2^3 = 2 \cdot 2 \cdot 2$. Multiplying powers of the same base adds the exponents, so $2^3 \cdot 2^4 = 2^7$, and dividing subtracts them, so $\tfrac{2^7}{2^5} = 2^2 = 4$. A square root undoes squaring, and roots follow the same rules once they are written as fractional exponents.
 
-[[rationalizing|Rationalizing]] multiplies by a conjugate to clear a radical from a denominator: $\tfrac{1}{\sqrt5 - 2} = \sqrt5 + 2$, because $(\sqrt5 - 2)(\sqrt5 + 2) = 1$. It also simplifies sums: each term $\tfrac{1}{\sqrt{k + 1} + \sqrt k}$ equals $\sqrt{k + 1} - \sqrt k$, so a long sum of such terms collapses to its first and last pieces.
+Expanding writes a product as a sum, and factoring writes a sum as a product. A few patterns appear constantly: $(a + b)^2 = a^2 + 2ab + b^2$ and $(a - b)(a + b) = a^2 - b^2$. They let us compute $101^2 - 99^2$ as $(101 - 99)(101 + 99) = 400$ without squaring anything.
 
-Before expanding, look for a difference of squares, a perfect square or a conjugate. The next lesson solves equations and systems.`,
-      related: [
-        { card: "sfft", note: String.raw`completing a product $xy + x + y + 1 = (x + 1)(y + 1)$ for integer equations (M2.4).` },
-        { card: "vertex-form", note: String.raw`completing the square locates the vertex of a parabola (L2.1).` },
-        { card: "telescoping", note: String.raw`sums that collapse after rationalizing (L3.4).` }
-      ],
+Last, ratios compare two quantities, a proportion says that two ratios are equal, and a percent is a ratio out of $100$. A change by a percent is a multiplication: raising a price by $20\%$ multiplies it by $1.2$.
+
+The lessons take these ideas in turn: variables, expressions and translating words (L1.2), exponents and radicals (L1.3), expanding and factoring (L1.4), and ratios, proportions and percents (L1.5). The Summary (L1.6) collects the strategies.`,
       exercises: [
-        { q: String.raw`Find the largest prime factor of $3^8 - 1$.`, answer: "41",
-          solution: String.raw`$3^8 - 1 = (3^4 - 1)(3^4 + 1) = 80 \cdot 82 = 2^5 \cdot 5 \cdot 41$. The largest prime factor is $41$.` },
-        { q: String.raw`Find the smallest value of $x^2 - 8x + 21$.`, answer: "5",
-          solution: String.raw`$x^2 - 8x + 21 = (x - 4)^2 + 5$, which is smallest, $5$, at $x = 4$.` }
+        { q: String.raw`Find the value of $3x^2 - 2x + 1$ when $x = -2$.`, answer: "17",
+          solution: String.raw`Replace $x$ by $-2$, keeping the brackets: $3(-2)^2 - 2(-2) + 1 = 3 \cdot 4 + 4 + 1 = 17$. The square of $-2$ is $4$, not $-4$.` },
+        { q: String.raw`Find $\dfrac{2^3 \cdot 2^4}{2^5}$.`, answer: "4",
+          solution: String.raw`Multiplying powers of $2$ adds the exponents and dividing subtracts them: $2^{3 + 4 - 5} = 2^2 = 4$. Directly: $\tfrac{8 \cdot 16}{32} = 4$.` },
+        { q: String.raw`Find $(x + 3)^2 - (x - 3)^2$ when $x = 5$.`, answer: "60",
+          solution: String.raw`Expand both squares: $(x^2 + 6x + 9) - (x^2 - 6x + 9) = 12x$, which is $60$ at $x = 5$. Directly: $8^2 - 2^2 = 64 - 4 = 60$.` }
       ],
       problems: [
-        "2006 AMC 10B, Problem 2",
-        "2020 AMC 12B, Problem 2",
-        "2009 AMC 10A, Problem 11",
-        "2022 AMC 10B, Problem 13",
-        "2024 AMC 12A, Problem 9",
-        "2012 AMC 10A, Problem 22",
-        "2021 Fall AMC 12B, Problem 18"
+        "1993 AJHSME, Problem 7",
+        "1985 AJHSME, Problem 6",
+        "2007 AMC 8, Problem 19"
       ]
     },
     "L1.2": {
-      prereq: ["square-of-sum"],
-      cards: ["linear-elimination", "add-all-equations", "transforming-equations", "symmetric-polynomial-strategies"],
-      body: String.raw`Word problems on the AMC turn into small systems of equations, and the fastest solutions find what the question asks for without solving for everything. If the question asks for $x + y$, look for a combination of the equations that gives $x + y$; if the equations are symmetric, add them; if only $x + y$ and $xy$ appear, never find $x$ and $y$ at all.
+      prereq: [],
+      cards: [],
+      body: String.raw`A word problem describes numbers in sentences, and solving it starts with writing those sentences as expressions and equations. The sum of three consecutive integers is $72$; what is the largest? Ann is $4$ years older than twice Bo's age, and their ages add to $34$; how old is Ann? Each becomes one short equation once the unknown numbers have names, and the work after that is routine.
 
-[[linear-elimination|Elimination]] combines equations so that a variable cancels. From $3x + 2y = 16$ and $x - y = 2$, doubling the second and adding gives $5x = 20$, so $x = 4$, $y = 2$ and $xy = 8$. Name the unknowns so that the equations are short: in a problem about two people's ages or two kinds of coins, one variable per unknown quantity, and one equation per sentence that gives a fact.
+A variable is a letter that stands for a number. Choose it for the quantity the problem asks about, or for the one that makes the others easy to write: for three consecutive integers, calling the middle one $n$ makes them $n - 1$, $n$ and $n + 1$, and their sum is $3n$. An expression is any combination of numbers and variables with operations, such as $2n + 3$, read "two times $n$, plus $3$".
 
-When the equations are symmetric or cyclic, [[add-all-equations|adding them all]] often gives the total at once: three equations $x + y = a$, $y + z = b$, $z + x = c$ add to $2(x + y + z) = a + b + c$, and then each variable is the total minus one equation. Multiplying all the equations does the same for products.
+Operations are done in a fixed order: brackets first, then powers, then multiplication and division from left to right, then addition and subtraction from left to right. So $2 + 3 \times 4 - 6 \div 2 = 2 + 12 - 3 = 11$, not $(5 \times 4 - 6) \div 2$. Terms with the same variable part, such as $6x$ and $-2x$, are like terms and can be combined; a bracket multiplied by a number is expanded term by term, so $3(2x - 1) - 2(x - 4) = 6x - 3 - 2x + 8 = 4x + 5$. Note the sign: $-2 \cdot (-4) = +8$.
 
-Expressions that are symmetric in two variables are functions of $x + y$ and $xy$, and [[symmetric-polynomial-strategies|rewriting them in those]] avoids solving: if $x + y = 7$ and $xy = 12$, then $x^2 + y^2 = 49 - 24 = 25$ and $\tfrac1x + \tfrac1y = \tfrac{7}{12}$.
+Translating follows the words in order. "Three more than twice a number" is $2n + 3$; "the number is $17$" is $= 17$. "Is" becomes an equals sign, "of" usually means times, "more than" adds and "less than" subtracts from the quantity named after it, so "$5$ less than $x$" is $x - 5$. For Ann and Bo, $a = 2b + 4$ and $a + b = 34$; substituting, $3b + 4 = 34$, so $b = 10$ and $a = 24$.
 
-[[transforming-equations|Transforming equations]] safely means using steps that keep the same solutions. Adding the same thing to both sides, or multiplying by a nonzero number, is always safe; squaring both sides can create false solutions, and dividing by an expression that might be zero can lose real ones. Check every answer in the original problem.
-
-Solve for what is asked, add symmetric equations, use $x + y$ and $xy$, and check. The next lesson simplifies equations with substitutions.`,
+Always check the answer in the original words, not in your equation: if Bo is $10$, twice his age plus $4$ is $24$, and $24 + 10 = 34$. The next lesson turns to exponents and radicals.`,
       related: [
-        { card: "vietas-quadratic", note: String.raw`$x$ and $y$ as the roots of $t^2 - (x + y)t + xy$ (L2.1).` },
-        { card: "setting-up-proportions", note: String.raw`translating word problems into equations (L1.5).` },
-        { card: "quadratic-formula", note: String.raw`solving the quadratic that a symmetric system produces (L2.1).` }
+        { card: "transforming-equations", note: String.raw`solving the equations a translation produces, and checking the answer (L2.2).` },
+        { card: "linear-elimination", note: String.raw`two unknowns from two sentences, solved by elimination (L2.3).` }
       ],
       exercises: [
-        { q: String.raw`Solve $3x + 2y = 16$ and $x - y = 2$, and give $xy$.`, answer: "8",
-          solution: String.raw`Twice the second equation is $2x - 2y = 4$; adding the first gives $5x = 20$, so $x = 4$ and $y = 2$. Then $xy = 8$.` },
-        { q: String.raw`If $x + y = 7$ and $xy = 12$, find $x^2 + y^2$.`, answer: "25",
-          solution: String.raw`$x^2 + y^2 = (x + y)^2 - 2xy = 49 - 24 = 25$.` }
+        { q: String.raw`Simplify $3(2x - 1) - 2(x - 4)$, then find its value at $x = 2$.`, answer: "13",
+          solution: String.raw`Expand each bracket: $6x - 3 - 2x + 8$. Combine like terms: $4x + 5$. At $x = 2$ this is $13$.` },
+        { q: String.raw`Find $2 + 3 \times 4 - 6 \div 2$.`, answer: "11",
+          solution: String.raw`Multiplication and division come first: $3 \times 4 = 12$ and $6 \div 2 = 3$. Then $2 + 12 - 3 = 11$.` },
+        { q: String.raw`The sum of three consecutive integers is $72$. What is the largest of them?`, answer: "25",
+          solution: String.raw`Call the middle one $n$; the three are $n - 1$, $n$, $n + 1$, with sum $3n = 72$. So $n = 24$ and the largest is $25$. Check: $23 + 24 + 25 = 72$.` },
+        { q: String.raw`Ann is $4$ years older than twice Bo's age, and their ages add to $34$. How old is Ann?`, answer: "24",
+          solution: String.raw`With Bo's age $b$, Ann's is $2b + 4$, and $(2b + 4) + b = 34$, so $3b = 30$ and $b = 10$. Ann is $24$. Check: twice $10$ plus $4$ is $24$, and $24 + 10 = 34$.` }
       ],
-      problems: [
-        "2014 AMC 10B, Problem 1",
-        "2014 AMC 10B, Problem 3",
-        "2023 AMC 10B, Problem 5",
-        "2015 AMC 10A, Problem 8",
-        "2012 AMC 12B, Problem 3",
-        "2012 AMC 12A, Problem 6",
-        "2008 AMC 10A, Problem 15",
-        "2019 AMC 12A, Problem 12"
-      ]
+      problems: []
     },
     "L1.3": {
-      prereq: ["quadratic-formula"],
-      cards: ["name-the-whole-expression", "substitute-repeated-block", "repeated-block-equation", "infinite-nest"],
-      body: String.raw`A substitution can turn a frightening equation into a quadratic. When the same block of symbols appears more than once, name it; when an expression goes on forever by repeating itself, name the whole thing and notice that it appears inside itself. These two moves solve a large family of AMC problems.
+      prereq: [],
+      cards: ["exponent-laws", "rationalizing"],
+      body: String.raw`Very large and very small numbers, repeated factors, and roots all become manageable once they are written with exponents. Which is largest, $10^8$, $5^{12}$ or $2^{24}$? How many digits does $4^5 \cdot 5^{10}$ have? What is $\tfrac{2}{\sqrt5 - \sqrt3}$ without a root in the bottom? Each question is answered by a few rules for exponents and roots, applied in the right order.
 
-[[substitute-repeated-block|Substituting for a repeated block]]: in $(x^2 - 3x)^2 - 2(x^2 - 3x) - 8 = 0$, put $u = x^2 - 3x$, so $u^2 - 2u - 8 = 0$ and $u = 4$ or $u = -2$. Then $x^2 - 3x = 4$ gives $x = 4, -1$ and $x^2 - 3x = -2$ gives $x = 1, 2$: four real solutions with sum $6$. The block may be hidden: $(x + 1)(x + 2)(x + 3)(x + 4)$ pairs into $(x^2 + 5x + 4)(x^2 + 5x + 6)$, with block $x^2 + 5x$. An [[repeated-block-equation|equation built around a repeated block]] often has the block both under a radical and outside it, and naming it makes the radical a simple square root of the new variable.
+An exponent counts repeated multiplication: $a^n$ is $a$ multiplied by itself $n$ times, so $2^3 = 8$. From that definition come [[exponent-laws|the exponent laws]]. Multiplying powers of one base adds the exponents, $2^3 \cdot 2^4 = 2^7$, because $3$ factors and $4$ factors make $7$; dividing subtracts them; and a power of a power multiplies them, $(2^3)^4 = 2^{12}$. To keep these rules true, $a^0 = 1$, $a^{-n} = \tfrac{1}{a^n}$, and $a^{1/n}$ is the $n$th root of $a$, so $8^{2/3} = \left(\sqrt[3]{8}\right)^2 = 4$. The laws need a common base, so the first step is usually to rewrite every number as a power of the same small base: $4^5 \cdot 5^{10} = 2^{10} \cdot 5^{10} = 10^{10}$, which has $11$ digits.
 
-[[name-the-whole-expression|Naming a self-similar expression]] handles infinite repetition. The continued fraction $y = 2 + \cfrac{1}{2 + \cfrac{1}{2 + \cdots}}$ contains itself after the first $2 +$, so $y = 2 + \tfrac1y$, that is $y^2 - 2y - 1 = 0$, and since $y \gt 0$, $y = 1 + \sqrt2$. An [[infinite-nest|infinite nested radical]] works the same way: $y = \sqrt{6 + \sqrt{6 + \cdots}}$ satisfies $y^2 = 6 + y$, so $y = 3$. Always choose the root that fits the sign or size of the expression.
+To compare powers with different bases, give them a common exponent instead: $10^8 = 100^4$, $5^{12} = 125^4$ and $2^{24} = 64^4$, so $2^{24} \lt 10^8 \lt 5^{12}$.
 
-Look for a block that repeats, or an expression that contains itself, and name it. The next lesson treats absolute values and floors.`,
+Square roots follow the same rules as the exponent $\tfrac12$: $\sqrt{ab} = \sqrt a\sqrt b$, so $\sqrt{72} = \sqrt{36}\sqrt2 = 6\sqrt2$, by pulling out the largest square factor. But $\sqrt{a + b}$ is not $\sqrt a + \sqrt b$: $\sqrt{9 + 16} = 5$, not $7$. A fraction with a root in its denominator is usually rewritten without one, which is called [[rationalizing|rationalizing the denominator]]: multiply the top and bottom by the root, or, for a sum or difference of roots, by its conjugate, so that a difference of squares clears the roots. For example $\tfrac{2}{\sqrt5 - \sqrt3} \cdot \tfrac{\sqrt5 + \sqrt3}{\sqrt5 + \sqrt3} = \tfrac{2(\sqrt5 + \sqrt3)}{5 - 3} = \sqrt5 + \sqrt3$.
+
+Reach for these rules whenever a problem has powers with related bases, a comparison of large numbers, a count of digits, or a root in a denominator. The next lesson expands and factors expressions.`,
       related: [
-        { card: "quadratic-formula", note: String.raw`solving the quadratic the substitution produces (L2.1).` },
-        { card: "geometric-series", note: String.raw`an infinite sum that contains a copy of itself (L3.2).` },
-        { card: "log-rules", note: String.raw`naming a logarithm as a new variable (L2.4).` }
+        { card: "difference-of-squares", note: String.raw`the identity that makes the conjugate clear the roots (L1.4).` },
+        { card: "log-rules", note: String.raw`the same laws read backwards, for solving for an exponent (L9.2).` }
       ],
       exercises: [
-        { q: String.raw`Find the sum of the real solutions of $(x^2 - 3x)^2 - 2(x^2 - 3x) - 8 = 0$.`, answer: "6",
-          solution: String.raw`With $u = x^2 - 3x$, $u^2 - 2u - 8 = (u - 4)(u + 2) = 0$. The equation $x^2 - 3x - 4 = 0$ gives $4, -1$ and $x^2 - 3x + 2 = 0$ gives $1, 2$. The sum is $6$.` },
-        { q: String.raw`Find the value of $2 + \cfrac{1}{2 + \cfrac{1}{2 + \cdots}}$.`, answer: "1+sqrt(2)",
-          solution: String.raw`Call it $y$. Then $y = 2 + \tfrac1y$, so $y^2 - 2y - 1 = 0$ and $y = 1 \pm \sqrt2$. The value is positive, so $y = 1 + \sqrt2$.` }
+        { q: String.raw`Find $8^{2/3}$.`, answer: "4",
+          solution: String.raw`The exponent $\tfrac23$ means the cube root, squared: $\sqrt[3]{8} = 2$, and $2^2 = 4$.` },
+        { q: String.raw`Write $\sqrt{72}$ in the form $a\sqrt b$ with $b$ as small as possible.`, answer: "6sqrt(2)",
+          solution: String.raw`The largest square factor of $72$ is $36$: $\sqrt{72} = \sqrt{36 \cdot 2} = 6\sqrt2$.` },
+        { q: String.raw`Rationalize the denominator of $\dfrac{2}{\sqrt5 - \sqrt3}$.`, answer: "sqrt(5) + sqrt(3)",
+          solution: String.raw`Multiply the top and bottom by the conjugate $\sqrt5 + \sqrt3$. The bottom becomes $(\sqrt5)^2 - (\sqrt3)^2 = 2$, so the fraction is $\tfrac{2(\sqrt5 + \sqrt3)}{2} = \sqrt5 + \sqrt3$.` }
       ],
       problems: [
-        "2019 AMC 10A, Problem 19",
-        "2017 AMC 10B, Problem 24",
-        "2020 AMC 12B, Problem 22"
+        "2010 AMC 8, Problem 24",
+        "2011 AMC 8, Problem 15",
+        "2002 AMC 10A, Problem 1",
+        "2023 AMC 8, Problem 22"
       ]
     },
     "L1.4": {
-      prereq: ["trivial-inequality"],
-      cards: ["absolute-value-rules", "abs-value-relations", "sign-chart", "abs-value-graphing", "name-the-floor", "group-equal-floors", "floor-equation", "floor-sum-range"],
-      body: String.raw`Absolute values and floor functions are piecewise: they follow one rule on part of the number line and another rule elsewhere. Problems with them are solved by finding the points where the rule changes and working one piece at a time. Sign charts do the same for products and quotients.
+      prereq: ["exponent-laws"],
+      cards: ["square-of-sum", "difference-of-squares", "completing-the-square"],
+      body: String.raw`Many computations that look long are short once an expression is rewritten in a better form. What is $101^2 - 99^2$? If $a + b = 7$ and $ab = 12$, what is $a^2 + b^2$? What is the smallest value of $x^2 - 8x + 20$? Each is one line with the right identity: expanding turns a product into a sum, factoring turns a sum into a product, and completing the square turns a quadratic into a square plus a number.
 
-The [[absolute-value-rules|absolute value]] $|t|$ is the distance from $t$ to $0$: $|t| \lt c$ means $-c \lt t \lt c$, and $|x - a|$ is the distance from $x$ to $a$. An equation such as $|x - 3| + |x + 1| = 6$ splits at $x = 3$ and $x = -1$; on each piece it is linear, and the solutions are $x = 4$ and $x = -2$. Thinking in distances is often faster: the sum of the distances to $3$ and $-1$ is $4$ between them and grows by $2$ for each unit beyond, so it reaches $6$ one unit outside on each side. [[abs-value-graphing|Graphs of absolute values]] are made of straight pieces with corners at the switch points, and [[abs-value-relations|relations]] like $|x| + |y| \le 3$ are polygons, here a square turned $45^\circ$.
+To expand a product of sums, multiply every term of one by every term of the other and add: $(x + 2)(x + 5) = x^2 + 5x + 2x + 10 = x^2 + 7x + 10$. Two products occur so often that they are worth knowing by heart. [[square-of-sum|The square of a sum]] is $(a + b)^2 = a^2 + 2ab + b^2$; it computes $99^2 = (100 - 1)^2 = 10000 - 200 + 1 = 9801$, and read the other way it gives $a^2 + b^2 = (a + b)^2 - 2ab$, so $a + b = 7$ and $ab = 12$ give $a^2 + b^2 = 49 - 24 = 25$. [[difference-of-squares|The difference of squares]] is $a^2 - b^2 = (a - b)(a + b)$; it computes $51 \cdot 49 = 50^2 - 1 = 2499$ and $101^2 - 99^2 = 2 \cdot 200 = 400$.
 
-A [[sign-chart|sign chart]] solves inequalities like $\tfrac{(x - 1)(x - 4)}{x + 2} \le 0$: mark the zeros of each factor, and the sign alternates from interval to interval (unless a factor is squared). Read off the intervals with the right sign, and keep the denominator's zeros out.
+Factoring is the reverse of expanding: it writes an expression as a product, which is what is needed to solve an equation or to cancel a fraction. Look first for a common factor, as in $3^{4012} - 3^{4008} = 3^{4008}(3^4 - 1)$, then for a difference of squares, then for a quadratic that splits: $x^2 + 7x + 10 = (x + 2)(x + 5)$, found by two numbers with sum $7$ and product $10$.
 
-The floor $\lfloor x \rfloor$ is the greatest integer at most $x$. To solve equations with floors, [[name-the-floor|name the floor]] $n = \lfloor x \rfloor$ and write $x = n + f$ with $0 \le f \lt 1$; a [[floor-equation|floor equation]] then becomes a condition on the integer $n$ and the fraction $f$. For $\lfloor x \rfloor + \lfloor 2x \rfloor = 7$, the left side is $3n$ or $3n + 1$ depending on whether $f \lt \tfrac12$, so $3n + 1 = 7$ gives $n = 2$ and $\tfrac52 \le x \lt 3$. Sums of floors are done by [[group-equal-floors|grouping the terms with equal floors]]: $\lfloor\sqrt k\rfloor$ is $1$ for $k = 1$ to $3$, $2$ for $4$ to $8$, $3$ for $9$ to $15$, so the sum for $k = 1$ to $15$ is $3 + 10 + 21 = 34$. The [[floor-sum-range|range of a floor sum]] is limited, which bounds which values can occur.
+[[completing-the-square|Completing the square]] rewrites $x^2 + bx + c$ as $\left(x + \tfrac b2\right)^2 + c - \tfrac{b^2}{4}$. For $x^2 - 8x + 20$ it gives $(x - 4)^2 + 4$; a square is never negative, so the smallest value is $4$, at $x = 4$. The same move solves quadratic equations and finds the center of a circle from its equation.
 
-Split at the switch points, chart the signs, and name the floor. The next lesson sets up word problems.`,
+Before computing a product or a difference of large numbers, ask whether it is a square of a sum or a difference of squares, and before solving, factor. The next lesson turns to ratios and percents.`,
       related: [
-        { card: "median-minimizes-abs", note: String.raw`the smallest value of a sum of distances (L2.5).` },
-        { card: "piecewise-graph-counting", note: String.raw`counting intersections of piecewise graphs (L2.3).` },
-        { card: "floor-multiples", note: String.raw`$\left\lfloor \tfrac nk \right\rfloor$ counts multiples of $k$ (M1.3).` }
+        { card: "quadratic-formula", note: String.raw`completing the square in general gives the formula for the roots (L3.2).` },
+        { card: "sfft", note: String.raw`factoring $xy + ax + by$ by adding a constant, the same idea for two variables.` },
+        { card: "trivial-inequality", note: String.raw`a square is never negative, which turns a completed square into a smallest value (L8.2).` }
       ],
       exercises: [
-        { q: String.raw`Find the sum of the solutions of $|x - 3| + |x + 1| = 6$.`, answer: "2",
-          solution: String.raw`Between $-1$ and $3$ the left side is $4$. For $x \gt 3$ it is $2x - 2 = 6$, so $x = 4$; for $x \lt -1$ it is $-2x + 2 = 6$, so $x = -2$. The sum is $2$.` },
-        { q: String.raw`Find the smallest $x$ with $\lfloor x \rfloor + \lfloor 2x \rfloor = 7$.`, answer: "5/2",
-          solution: String.raw`With $x = n + f$, $\lfloor 2x \rfloor$ is $2n$ if $f \lt \tfrac12$ and $2n + 1$ otherwise, so the sum is $3n$ or $3n + 1$. Only $3n + 1 = 7$ works, so $n = 2$ and $f \ge \tfrac12$: $\tfrac52 \le x \lt 3$. The smallest is $\tfrac52$.` },
-        { q: String.raw`Find $\lfloor\sqrt1\rfloor + \lfloor\sqrt2\rfloor + \cdots + \lfloor\sqrt{15}\rfloor$.`, answer: "34",
-          solution: String.raw`The floor is $1$ for $k = 1, 2, 3$, $2$ for $k = 4, \ldots, 8$ and $3$ for $k = 9, \ldots, 15$: $3 \cdot 1 + 5 \cdot 2 + 7 \cdot 3 = 34$.` }
+        { q: String.raw`Find $101^2 - 99^2$.`, answer: "400",
+          solution: String.raw`By the difference of squares, $101^2 - 99^2 = (101 - 99)(101 + 99) = 2 \cdot 200 = 400$.` },
+        { q: String.raw`If $a + b = 7$ and $ab = 12$, find $a^2 + b^2$.`, answer: "25",
+          solution: String.raw`Square the sum: $a^2 + 2ab + b^2 = 49$, so $a^2 + b^2 = 49 - 24 = 25$. (The numbers are $3$ and $4$.)` },
+        { q: String.raw`Find the smallest value of $x^2 - 8x + 20$.`, answer: "4",
+          solution: String.raw`Complete the square: $x^2 - 8x + 20 = (x - 4)^2 + 4$. The square is at least $0$, and is $0$ at $x = 4$, so the smallest value is $4$.` }
       ],
       problems: [
-        "2021 Spring AMC 10B, Problem 1",
-        "2020 AMC 10A, Problem 5",
-        "2012 AMC 10B, Problem 8",
-        "2000 AMC 12, Problem 5",
-        "2005 AMC 12B, Problem 7",
-        "2023 AMC 12A, Problem 10",
-        "2016 AMC 10B, Problem 21",
-        "2014 AMC 12A, Problem 21"
+        "2016 AMC 8, Problem 15",
+        "2008 AMC 10A, Problem 7",
+        "2018 AMC 10A, Problem 10",
+        "2024 AMC 10B, Problem 9"
       ]
     },
     "L1.5": {
-      prereq: ["linear-elimination"],
-      cards: ["work-rates", "time-per-leg", "average-speed", "relative-motion", "averages-to-totals", "weighted-average", "mean-median-mode", "percent-change", "setting-up-proportions", "several-rates", "averages-before-after", "age-problems", "scoring-rules", "break-even-plans"],
-      body: String.raw`The first ten problems of every AMC 10 include word problems about rates, averages, percents and ages. They are easy points when set up well and costly when a common mistake slips in: averaging speeds, adding percents, or confusing an average with a total. A few setups handle nearly all of them.
+      prereq: [],
+      cards: ["setting-up-proportions", "proportion-properties", "percent-change"],
+      body: String.raw`Ratios, proportions and percents describe how quantities compare and how they change. If boys and girls are in the ratio $3 : 5$ in a class of $40$, how many girls are there? A price rises $20\%$ and then falls $20\%$; is it back where it started? After a $25\%$ discount a shirt costs $\$60$; what did it cost before? Each question is one multiplication or one equation, once the comparison is written as a fraction.
 
-Rates multiply by time. [[work-rates|Work rates]] add: two pipes filling a tank in $4$ and $6$ hours fill $\tfrac14 + \tfrac16 = \tfrac{5}{12}$ of it per hour, so together they take $\tfrac{12}{5}$ hours. For a trip in pieces, [[time-per-leg|add the time of each leg]], and [[average-speed|average speed]] is total distance over total time, never the average of the speeds. [[relative-motion|Relative motion]] measures from one mover: a car at $80$ miles per hour chasing one at $60$ that left an hour earlier gains $20$ miles per hour on a $60$-mile gap, so it catches up in $3$ hours. When several people or machines work at once, a table of rate, time and amount for each keeps [[several-rates|several rates]] straight.
+A ratio $a : b$ compares two quantities by division, $\tfrac ab$. A ratio $3 : 5$ means the quantities are $3k$ and $5k$ for some number $k$, so a class of $40$ in the ratio $3 : 5$ has $3k + 5k = 8k = 40$, $k = 5$, and $25$ girls. Writing the parts as multiples of one unknown is the most reliable way to use a ratio.
 
-Averages are totals divided by counts, so [[averages-to-totals|turn averages into totals]] before combining. [[averages-before-after|Averages before and after]] a change compare totals: if adding one score raises an average, the new score minus the old average equals the number of scores times the rise. A [[weighted-average|weighted average]] mixes groups in proportion to their sizes; mixing $10$ liters of a $20\%$ solution with $5$ liters of $50\%$ gives $30\%$. The [[mean-median-mode|mean, median and mode]] answer different questions, and problems often fix two and ask for the third.
+A proportion says two ratios are equal, $\tfrac ab = \tfrac cd$, and [[setting-up-proportions|setting one up]] is the way to scale a quantity: if $500$ sheets make a stack $5$ cm tall, a stack $7.5$ cm tall has $500 \cdot \tfrac{7.5}{5} = 750$ sheets. Keep the units in the same places on both sides, and convert units by multiplying by fractions equal to $1$, such as $\tfrac{100 \text{ cm}}{1 \text{ m}}$, so that the units cancel. [[proportion-properties|A proportion can be rearranged]]: $\tfrac ab = \tfrac cd$ gives $ad = bc$ and $\tfrac{a + b}{b} = \tfrac{c + d}{d}$.
 
-[[percent-change|Percent changes]] multiply: up $20\%$ then down $20\%$ is a factor $1.2 \cdot 0.8 = 0.96$. [[setting-up-proportions|Proportions]] scale quantities that vary together. [[age-problems|Age problems]] use that differences of ages never change. [[scoring-rules|Scoring rules]] and [[break-even-plans|pricing plans]] are linear: write the score or cost as a function of the counts and compare.
+A percent is a ratio out of $100$, and a [[percent-change|percent change]] is a multiplication. Raising by $p\%$ multiplies by $1 + \tfrac{p}{100}$, lowering by $p\%$ multiplies by $1 - \tfrac{p}{100}$, and successive changes multiply: up $20\%$ then down $20\%$ is $1.2 \cdot 0.8 = 0.96$, a net loss of $4\%$, not a return to the start. To undo a change, divide by its factor: a price after $25\%$ off is $0.75$ of the original, so a sale price of $\$60$ means an original of $\tfrac{60}{0.75} = \$80$. A percent of a percent is a product as well, and a percent is always of something, so ask "percent of what" before computing.
 
-Name the quantities, write one equation per fact, and check the answer against the story. The next chapter studies quadratics and functions.`,
+Use these tools whenever a problem compares quantities, scales a recipe or a map, converts units, or changes a price or a population by percents. The Summary (L1.6) collects the chapter's strategies, and the next chapter solves equations.`,
       related: [
-        { card: "linear-elimination", note: String.raw`solving the equations a word problem produces (L1.2).` },
-        { card: "geometric-series", note: String.raw`repeated percent changes (L3.2).` },
-        { card: "mean-chain", note: String.raw`why the average speed is a harmonic mean (L6.3).` }
+        { card: "weighted-average", note: String.raw`averages of groups in a given ratio (L2.5).` },
+        { card: "similar-figures-ratios", note: String.raw`ratios of lengths, areas and volumes of similar figures.` }
       ],
       exercises: [
-        { q: String.raw`A car leaves town at $60$ miles per hour. One hour later a second car leaves the same town on the same road at $80$ miles per hour. How many hours after it leaves does the second car catch the first?`, answer: "3",
-          solution: String.raw`When the second car leaves, the first is $60$ miles ahead. The gap closes at $80 - 60 = 20$ miles per hour, so it closes in $\tfrac{60}{20} = 3$ hours.` },
-        { q: String.raw`How many liters of a $50\%$ acid solution must be added to $10$ liters of a $20\%$ solution to make a $30\%$ solution?`, answer: "5",
-          solution: String.raw`The acid totals $0.2 \cdot 10 + 0.5x = 0.3(10 + x)$, so $2 + 0.5x = 3 + 0.3x$ and $x = 5$.` }
+        { q: String.raw`A price rises $20\%$ and then falls $20\%$. By what percent is the final price lower than the original?`, answer: "4",
+          solution: String.raw`The changes multiply: $1.2 \cdot 0.8 = 0.96$. The final price is $96\%$ of the original, $4\%$ lower.` },
+        { q: String.raw`Boys and girls in a class are in the ratio $3 : 5$, and there are $40$ students. How many are girls?`, answer: "25",
+          solution: String.raw`The class is $3k$ boys and $5k$ girls, so $8k = 40$ and $k = 5$. There are $25$ girls.` },
+        { q: String.raw`After a $25\%$ discount, a shirt costs $\$60$. What was the original price?`, answer: "80",
+          solution: String.raw`The sale price is $75\%$ of the original, so the original is $\tfrac{60}{0.75} = 80$ dollars. (Taking $25\%$ off $60$ and adding it back gives $75$, which is wrong: the $25\%$ is of the original.)` }
       ],
       problems: [
-        "2023 AMC 10A, Problem 1",
-        "2025 AMC 10A, Problem 4",
-        "2017 AMC 10B, Problem 7",
-        "2021 Fall AMC 10B, Problem 9",
-        "2008 AMC 10A, Problem 11",
-        "2022 AMC 12A, Problem 6",
-        "2014 AMC 10A, Problem 15",
-        "2008 AMC 10B, Problem 18"
+        "1988 AJHSME, Problem 22",
+        "2019 AMC 8, Problem 22",
+        "2022 AMC 10A, Problem 4",
+        "2023 AMC 10B, Problem 2"
+      ]
+    },
+    "L1.6": {
+      prereq: ["exponent-laws", "rationalizing", "square-of-sum", "difference-of-squares", "completing-the-square", "setting-up-proportions", "percent-change"],
+      cards: [],
+      body: String.raw`An expression is rewritten without changing its value by following the order of operations, combining like terms and expanding brackets with their signs; a word problem starts by naming the unknown well and translating the sentences in order.
+
+[[exponent-laws|The exponent laws]] work on a common base: multiplying adds exponents, dividing subtracts, and a power of a power multiplies; $a^0 = 1$, $a^{-n} = \tfrac{1}{a^n}$, and $a^{1/n}$ is a root. Powers with different bases are compared with a common exponent. A root is simplified by pulling out square factors, and [[rationalizing|a root in a denominator]] is cleared with the conjugate.
+
+[[square-of-sum|The square of a sum]], [[difference-of-squares|the difference of squares]] and [[completing-the-square|completing the square]] turn long computations into short ones, give $a^2 + b^2$ from $a + b$ and $ab$, and find the smallest value of a quadratic.
+
+[[setting-up-proportions|A proportion]] scales one quantity to another, a ratio $a : b$ is written as $ak$ and $bk$, and [[percent-change|a percent change]] is a multiplication: successive changes multiply, and a change is undone by dividing by its factor.`,
+      strategies: [
+        String.raw`Name the unknown that makes the others easy to write, and translate the sentence word by word.`,
+        String.raw`Check an answer in the original words, not only in your equation.`,
+        String.raw`Rewrite every power with the same small base before using the exponent laws.`,
+        String.raw`To compare powers with different bases, give them a common exponent.`,
+        String.raw`Before multiplying large numbers, look for a square of a sum or a difference of squares.`,
+        String.raw`Use $a^2 + b^2 = (a + b)^2 - 2ab$ when the sum and product are known.`,
+        String.raw`Write a ratio $a : b$ as $ak$ and $bk$, and solve for $k$.`,
+        String.raw`Turn every percent change into a multiplication; multiply successive changes, and divide to undo one.`
       ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`Find $\dfrac{2^{10} \cdot 4^5}{8^6}$.`, answer: "4",
+        solution: String.raw`Write everything in base $2$: $4^5 = 2^{10}$ and $8^6 = 2^{18}$. The value is $2^{10 + 10 - 18} = 2^2 = 4$.` },
+      { q: String.raw`Simplify $\sqrt{50} + \sqrt{18}$.`, answer: "8sqrt(2)",
+        solution: String.raw`Pull out square factors: $\sqrt{50} = 5\sqrt2$ and $\sqrt{18} = 3\sqrt2$. The sum is $8\sqrt2$.` },
+      { q: String.raw`Find $103^2 - 9$.`, answer: "10600",
+        solution: String.raw`It is a difference of squares: $103^2 - 3^2 = (103 - 3)(103 + 3) = 100 \cdot 106 = 10600$.` },
+      { q: String.raw`If $x - \tfrac1x = 3$, find $x^2 + \tfrac1{x^2}$.`, answer: "11",
+        solution: String.raw`Square: $\left(x - \tfrac1x\right)^2 = x^2 - 2 + \tfrac{1}{x^2} = 9$, so $x^2 + \tfrac{1}{x^2} = 11$.` },
+      { q: String.raw`On a map with scale $1 : 50000$, two towns are $4$ cm apart. How many kilometers apart are they?`, answer: "2",
+        solution: String.raw`The real distance is $4 \cdot 50000 = 200000$ cm. There are $100000$ cm in a kilometer, so the distance is $2$ km.` },
+      { q: String.raw`A town's population grows by $10\%$ in each of two years. By what percent does it grow over the two years?`, answer: "21",
+        solution: String.raw`The yearly factors multiply: $1.1 \cdot 1.1 = 1.21$, a growth of $21\%$, more than $20\%$ because the second year's growth is on a larger population.` },
+      { q: String.raw`Find $(3 + \sqrt2)(3 - \sqrt2)$.`, answer: "7",
+        solution: String.raw`By the difference of squares, $3^2 - (\sqrt2)^2 = 9 - 2 = 7$.` }
+    ],
+    problems: [
+      "1985 AJHSME, Problem 21",
+      "2006 AMC 10B, Problem 2",
+      "2023 AMC 10B, Problem 9"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2022 AMC 10A, Problem 11",
+      "2024 AMC 10A, Problem 15",
+      "2023 AMC 10B, Problem 17",
+      "2023 AMC 10B, Problem 14"
+    ]
   }
 };

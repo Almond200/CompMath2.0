@@ -8,191 +8,477 @@ window.MATH_LEARN_SHELF = [
   "chapters": [
    {
     "code": "L1",
-    "title": "The algebra toolkit",
+    "title": "Expressions and exponents",
     "level": "Core",
     "lessons": [
      {
       "code": "L1.1",
-      "title": "Factoring, expanding and simplifying"
+      "title": "Introduction"
      },
      {
       "code": "L1.2",
-      "title": "Linear equations and systems"
+      "title": "Variables, expressions and translating words into symbols",
+      "level": "Core"
      },
      {
       "code": "L1.3",
-      "title": "Substitutions and self-similar expressions"
+      "title": "Exponents and radicals",
+      "level": "Core"
      },
      {
       "code": "L1.4",
-      "title": "Absolute values, sign charts and floors"
+      "title": "Expanding and factoring",
+      "level": "Core"
      },
      {
       "code": "L1.5",
-      "title": "Rates, averages, percents and word problems"
+      "title": "Ratios, proportions and percents",
+      "level": "Core"
+     },
+     {
+      "code": "L1.6",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "L2",
-    "title": "Quadratics, functions and extremes",
+    "title": "Equations and word problems",
     "level": "Core",
     "lessons": [
      {
       "code": "L2.1",
-      "title": "Quadratics: roots, Vieta and the vertex"
+      "title": "Introduction"
      },
      {
       "code": "L2.2",
-      "title": "Functions: composition, inverses, symmetry, defined operations"
+      "title": "Solving an equation and checking the answer",
+      "level": "Core"
      },
      {
       "code": "L2.3",
-      "title": "Graphs and the number of solutions"
+      "title": "Systems of linear equations",
+      "level": "Core"
      },
      {
       "code": "L2.4",
-      "title": "Exponents and logarithms"
+      "title": "Rates and work",
+      "level": "Core"
      },
      {
       "code": "L2.5",
-      "title": "Largest and smallest values"
+      "title": "Averages",
+      "level": "Core"
+     },
+     {
+      "code": "L2.6",
+      "title": "Setting up a story",
+      "level": "Core"
+     },
+     {
+      "code": "L2.7",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "L3",
-    "title": "Polynomials, sequences and series",
+    "title": "Quadratics",
     "level": "Core",
     "lessons": [
      {
       "code": "L3.1",
-      "title": "Polynomial roots, remainders and coefficients"
+      "title": "Introduction"
      },
      {
       "code": "L3.2",
-      "title": "Arithmetic and geometric sequences"
+      "title": "Solving quadratics",
+      "level": "Core"
      },
      {
       "code": "L3.3",
-      "title": "Recurrences and periodic sequences"
+      "title": "Vieta: the sum and product of the roots",
+      "level": "Core"
      },
      {
       "code": "L3.4",
-      "title": "Telescoping and clever sums"
+      "title": "The vertex and where the roots lie",
+      "level": "Core"
      },
      {
       "code": "L3.5",
-      "title": "Symmetric identities in three variables"
-     },
-     {
-      "code": "L3.6",
-      "title": "Estimating and checking"
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "L4",
-    "title": "Logarithms, exponentials and functions",
-    "level": "Core II",
+    "title": "Functions, graphs, absolute values and floors",
+    "level": "Core",
     "lessons": [
      {
       "code": "L4.1",
-      "title": "Logarithmic and exponential equations"
+      "title": "Introduction"
      },
      {
       "code": "L4.2",
-      "title": "Functional equations by substitution"
+      "title": "Functions and defined operations",
+      "level": "Core"
      },
      {
       "code": "L4.3",
-      "title": "Floors beyond the basics"
+      "title": "Reading graphs and slopes",
+      "level": "Core II"
+     },
+     {
+      "code": "L4.4",
+      "title": "Absolute value",
+      "level": "Core"
+     },
+     {
+      "code": "L4.5",
+      "title": "Counting solutions with a graph",
+      "level": "Core II"
+     },
+     {
+      "code": "L4.6",
+      "title": "Floors and ceilings",
+      "level": "Core"
+     },
+     {
+      "code": "L4.7",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "L5",
-    "title": "Polynomials and algebraic structure",
-    "level": "Core II",
+    "title": "Substitutions and symmetric expressions",
+    "level": "Core",
     "lessons": [
      {
       "code": "L5.1",
-      "title": "Vieta for any degree, and power sums of roots"
+      "title": "Introduction"
      },
      {
       "code": "L5.2",
-      "title": "Roots: conjugates, signs and transformations"
+      "title": "Naming the whole expression",
+      "level": "Core"
      },
      {
       "code": "L5.3",
-      "title": "Remainders and interpolation"
+      "title": "Symmetric sums and factoring tricks",
+      "level": "Extension"
      },
      {
       "code": "L5.4",
-      "title": "Radicals and reciprocal substitutions"
-     },
-     {
-      "code": "L5.5",
-      "title": "Factorizations worth knowing"
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "L6",
-    "title": "Sequences, sums and inequalities",
-    "level": "Core II",
+    "title": "Sequences and series",
+    "level": "Core",
     "lessons": [
      {
       "code": "L6.1",
-      "title": "Linear recurrences"
+      "title": "Introduction"
      },
      {
       "code": "L6.2",
-      "title": "Finite differences and double sums"
+      "title": "Arithmetic sequences and triangular numbers",
+      "level": "Core"
      },
      {
       "code": "L6.3",
-      "title": "The inequalities of the AMC 12"
+      "title": "Geometric sequences and power sums",
+      "level": "Core"
+     },
+     {
+      "code": "L6.4",
+      "title": "Recursive and periodic sequences",
+      "level": "Core"
+     },
+     {
+      "code": "L6.5",
+      "title": "Telescoping and clever sums",
+      "level": "Core"
+     },
+     {
+      "code": "L6.6",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "L7",
+    "title": "Polynomials",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "L7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "L7.2",
+      "title": "Division and the remainder theorem",
+      "level": "Core"
+     },
+     {
+      "code": "L7.3",
+      "title": "Rational roots and coefficients",
+      "level": "Core"
+     },
+     {
+      "code": "L7.4",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "L8",
+    "title": "Inequalities, extremes and estimates",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "L8.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "L8.2",
+      "title": "A square is never negative",
+      "level": "Core"
+     },
+     {
+      "code": "L8.3",
+      "title": "AM-GM and fixed sums",
+      "level": "Core"
+     },
+     {
+      "code": "L8.4",
+      "title": "Distances on the number line",
+      "level": "Core II"
+     },
+     {
+      "code": "L8.5",
+      "title": "Extremes by arrangement",
+      "level": "Core II"
+     },
+     {
+      "code": "L8.6",
+      "title": "Estimating and checking",
+      "level": "Core"
+     },
+     {
+      "code": "L8.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "L9",
+    "title": "Logarithms and exponential equations",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "L9.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "L9.2",
+      "title": "Logarithm laws and change of base",
+      "level": "Core"
+     },
+     {
+      "code": "L9.3",
+      "title": "Logarithmic and exponential equations",
+      "level": "Core"
+     },
+     {
+      "code": "L9.4",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "L10",
+    "title": "Polynomials for the AMC 12",
+    "level": "Core II",
+    "lessons": [
+     {
+      "code": "L10.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "L10.2",
+      "title": "Vieta for any degree and power sums of roots",
+      "level": "Core"
+     },
+     {
+      "code": "L10.3",
+      "title": "Conjugate roots and transformed roots",
+      "level": "Core"
+     },
+     {
+      "code": "L10.4",
+      "title": "Remainders and interpolation",
+      "level": "Extension"
+     },
+     {
+      "code": "L10.5",
+      "title": "Radicals and reciprocal substitutions",
+      "level": "Core II"
+     },
+     {
+      "code": "L10.6",
+      "title": "Factorizations worth knowing",
+      "level": "Core II"
+     },
+     {
+      "code": "L10.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "L11",
+    "title": "Functional equations, recurrences and inequalities",
+    "level": "Core II",
+    "lessons": [
+     {
+      "code": "L11.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "L11.2",
+      "title": "Functional equations by substitution",
+      "level": "Core"
+     },
+     {
+      "code": "L11.3",
+      "title": "Linear recurrences",
+      "level": "Core II"
+     },
+     {
+      "code": "L11.4",
+      "title": "Finite differences and double sums",
+      "level": "Core II"
+     },
+     {
+      "code": "L11.5",
+      "title": "The mean inequalities and Cauchy-Schwarz",
+      "level": "Core II"
+     },
+     {
+      "code": "L11.6",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "L12",
     "title": "Trigonometry",
     "level": "Core II",
     "lessons": [
      {
-      "code": "L7.1",
-      "title": "Special values and identities"
+      "code": "L12.1",
+      "title": "Introduction"
      },
      {
-      "code": "L7.2",
-      "title": "Combining and solving"
+      "code": "L12.2",
+      "title": "Special values and the identities",
+      "level": "Core"
      },
      {
-      "code": "L7.3",
-      "title": "Products and powers"
+      "code": "L12.3",
+      "title": "Sums, products and telescoping",
+      "level": "Core II"
+     },
+     {
+      "code": "L12.4",
+      "title": "Combining waves and inverse functions",
+      "level": "Core II"
+     },
+     {
+      "code": "L12.5",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
-    "code": "L8",
+    "code": "L13",
     "title": "Complex numbers",
-    "level": "Core II",
+    "level": "Core",
     "lessons": [
      {
-      "code": "L8.1",
-      "title": "Complex arithmetic"
+      "code": "L13.1",
+      "title": "Introduction"
      },
      {
-      "code": "L8.2",
-      "title": "Polar form and De Moivre"
+      "code": "L13.2",
+      "title": "Complex arithmetic and the modulus",
+      "level": "Core"
      },
      {
-      "code": "L8.3",
-      "title": "Roots of unity and the fundamental theorem"
+      "code": "L13.3",
+      "title": "Polar form and De Moivre",
+      "level": "Core"
+     },
+     {
+      "code": "L13.4",
+      "title": "Roots of unity",
+      "level": "Core"
+     },
+     {
+      "code": "L13.5",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "L14",
+    "title": "From the AMC to the AIME: algebra",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "L14.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "L14.2",
+      "title": "Domain, positivity and integrality through a substitution",
+      "level": "Core"
+     },
+     {
+      "code": "L14.3",
+      "title": "The AIME answer: exact arithmetic, 000 to 999, the final check",
+      "level": "Core"
+     },
+     {
+      "code": "L14.4",
+      "title": "Mixed problems across the book",
+      "level": "Core"
+     },
+     {
+      "code": "L14.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Toward the AIME"
    }
   ]
  },

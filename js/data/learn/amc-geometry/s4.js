@@ -78,7 +78,7 @@ The [[vector-dot-product|dot product]] $\vec u \cdot \vec v = |u||v|\cos\theta$ 
 
 Compose reflections, rotate to gather lengths, use dot products, and change variables to simplify regions. The next lesson treats regions and neighborhoods.`,
       related: [
-        { card: "complex-basics", note: String.raw`rotations as multiplication by complex numbers (L8.1).` },
+        { card: "complex-basics", note: String.raw`rotations as multiplication by complex numbers (L13.2).` },
         { card: "determinant-geometric", note: String.raw`area scaling by determinants (S4.2).` },
         { card: "reflect-across-the-line", note: String.raw`shortest paths by reflection (S2.3).` }
       ],

@@ -107,7 +107,7 @@ The [[circumradius-area|circumradius]] satisfies $R = \tfrac{abc}{4K}$ and $a = 
 Use $R = \tfrac{abc}{4K}$ for circumradii, projections for feet, and bash when nothing else appears. The next chapter treats coordinates, transformations and space.`,
       related: [
         { card: "herons-formula", note: String.raw`the area in the circumradius formula (S1.6).` },
-        { card: "angle-addition", note: String.raw`simplifying the expressions a bash produces (L7.1).` },
+        { card: "angle-addition", note: String.raw`simplifying the expressions a bash produces (L12.2).` },
         { card: "triangle-center-angles", note: String.raw`angles at the circumcenter (S1.5).` }
       ],
       exercises: [

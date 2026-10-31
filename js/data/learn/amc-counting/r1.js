@@ -53,7 +53,7 @@ Choose the case split, the complement or inclusion-exclusion, and check on a sma
       related: [
         { card: "derangements", note: String.raw`inclusion-exclusion for permutations with no fixed point (R1.3).` },
         { card: "floor-multiples", note: String.raw`counting multiples for inclusion-exclusion (M1.3).` },
-        { card: "organized-listing", note: String.raw`listing cases in order (L3.3).` }
+        { card: "organized-listing", note: String.raw`listing cases in order .` }
       ],
       exercises: [
         { q: String.raw`How many integers from $1$ to $200$ are divisible by $4$ or $6$?`, answer: "67",
@@ -159,8 +159,8 @@ Write a distribution as stars and bars, read sums of binomial coefficients as id
 
 Build from small cases, fill tables, and run processes in both directions. The last lesson of the chapter treats subsets, graphs and pigeonhole.`,
       related: [
-        { card: "first-order-recurrence", note: String.raw`solving the recursions counting produces (L3.3).` },
-        { card: "linear-recurrence", note: String.raw`closed forms like Binet's formula (L6.1).` },
+        { card: "first-order-recurrence", note: String.raw`solving the recursions counting produces (L6.4).` },
+        { card: "linear-recurrence", note: String.raw`closed forms like Binet's formula (L11.3).` },
         { card: "states-recursion-prob", note: String.raw`the probability version, with states (R3.5).` }
       ],
       exercises: [

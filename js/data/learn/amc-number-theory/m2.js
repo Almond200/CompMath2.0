@@ -17,7 +17,7 @@ To decide when $n + 4$ divides $n^2 + 7$, [[reduce-divisibility-constant|reduce 
 Reduce early, use negative residues, and turn divisibility by an expression into divisibility of a constant. The next lesson finds cycles of powers.`,
       related: [
         { card: "divisibility-rules", note: String.raw`the digit tests as statements about remainders (M1.3).` },
-        { card: "factor-remainder-theorem", note: String.raw`the polynomial remainder theorem behind reducing to a constant (L3.1).` },
+        { card: "factor-remainder-theorem", note: String.raw`the polynomial remainder theorem behind reducing to a constant (L7.2).` },
         { card: "modular-inverse", note: String.raw`dividing modulo $n$ (M3.2).` }
       ],
       exercises: [
@@ -50,7 +50,7 @@ Reduce early, use negative residues, and turn divisibility by an expression into
 
 Find the cycle, reduce the exponent, and test squares modulo small numbers. The next lesson solves systems of congruences.`,
       related: [
-        { card: "periodic-sequences", note: String.raw`cycles in sequences (L3.3).` },
+        { card: "periodic-sequences", note: String.raw`cycles in sequences (L6.4).` },
         { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1$ in general (M3.2).` },
         { card: "choose-modulus", note: String.raw`picking the modulus that rules an equation out (M2.4).` }
       ],
@@ -122,7 +122,7 @@ Factor into a product, list pairs, and test small moduli. The last lesson of the
       related: [
         { card: "squares-mod-small", note: String.raw`the values of squares modulo small numbers (M2.2).` },
         { card: "bounding-diophantine", note: String.raw`bounding the variables when factoring fails (M3.3).` },
-        { card: "useful-factorizations", note: String.raw`other products worth completing (L5.5).` }
+        { card: "useful-factorizations", note: String.raw`other products worth completing (L10.6).` }
       ],
       exercises: [
         { q: String.raw`How many pairs of positive integers $(x, y)$ satisfy $xy + 3x + 2y = 18$?`, answer: "3",
@@ -152,7 +152,7 @@ For [[integer-triangles-perimeter|integer triangles with a given perimeter]], li
 
 Memorize the small triples, and solve for triples with a given side by factoring a difference of squares. The next chapter adds the number theory of the AMC 12.`,
       related: [
-        { card: "difference-of-squares", note: String.raw`$c^2 - b^2 = (c - b)(c + b)$, the factoring that finds triples (L1.1).` },
+        { card: "difference-of-squares", note: String.raw`$c^2 - b^2 = (c - b)(c + b)$, the factoring that finds triples (L1.4).` },
         { card: "triangle-inequality", note: String.raw`the condition $c \lt a + b$ (S1.1).` },
         { card: "sum-of-two-squares", note: String.raw`which numbers are hypotenuses (M3.3).` }
       ],
