@@ -24,6 +24,11 @@ The lessons take these ideas in turn: recursions (C5.2), tilings (C5.3), tables 
           solution: String.raw`Let $s_n$ be the number of such strings of length $n$. A valid string ends in $B$, after a valid string of length $n - 1$, or in $BA$, after a valid string of length $n - 2$, so $s_n = s_{n-1} + s_{n-2}$. With $s_1 = 2$ ($A$, $B$) and $s_2 = 3$ ($AB$, $BA$, $BB$), the next values are $5$, $8$, $13$, $21$, so $s_6 = 21$.` },
         { q: String.raw`The numbers $1, 2, \ldots, 10$ are written on a board. A step erases two numbers $a$ and $b$ and writes $|a - b|$. After nine steps one number is left. Is it odd or even?`,
           solution: String.raw`The parity of the sum of the numbers on the board never changes: $a + b$ and $|a - b|$ differ by $2\min(a, b)$, an even number. The sum starts at $55$, which is odd, so the last number is odd.` }
+      ],
+      problems: [
+        "1986 AJHSME, Problem 9",
+        "2014 AMC 8, Problem 11",
+        "2024 AMC 8, Problem 7"
       ]
     },
     "C5.2": {

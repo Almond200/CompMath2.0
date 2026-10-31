@@ -37,7 +37,7 @@ The full rules are in CONVENTIONS §14; in short:
 2. **One flowing explanation,** with no subheadings: define the idea, state its conditions, show why it is useful, work an example that includes the clue that made the approach promising, then a variation or a condition that fails. Link the canonical card and never copy it.
 3. **Related cards,** each with one line on how it connects.
 4. **The lesson's own problems,** with full worked solutions further down the page.
-5. **Contest practice problems,** about 3 to 5, rising in difficulty, in the AoPS-style list where Show Solution works only once something is written (LQ6).
+5. **Exercises:** contest problems, about 3 to 5, rising in difficulty, in the AoPS-style list where Show Solution works only once something is written (LQ6).
 
 A chapter follows the approved chapter structure: X.1 Introduction (a short overview of the chapter's ideas, with comprehension problems), the lessons, a Summary with Problem Solving Strategies, then Review Problems (mostly comprehension, our own first) and Challenge Problems (harder, contest problems first). Every list of problems runs from easiest to hardest. A chapter not yet reworked ends with a chapter review of about 8 to 12 mixed problems.
 
