@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N5, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N6, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -57,7 +57,7 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 
 A student need not finish the books in order. Any chapter can be entered once its prerequisites are known. Chapter order follows dependencies:
 - **Book entry points:** B1 and B2 lead to A1 to A4; B5 leads to G1 to G4; B3 leads to N1 to N3; B4 leads to C1 to C3.
-- **Number theory:** N2 (CRT) leads to N3 (cycles and order), which leads to N6.4 (repeating decimals). N1 and N2 lead to N4 (valuations).
+- **Number theory:** N2 (CRT) leads to N3 (cycles and order), which leads to N6.5 (repeating decimals). N1 and N2 lead to N4 (valuations).
 - **Counting:** C1 and C2 lead to C3 and C4, then to C5 and C6, then to C7. A3's recurrences link to C5.
 - **Across books:** A6 (the complex plane) links to G6 (transformations), and G3 (trig geometry) links to A7 (trig algebra).
 
@@ -1033,7 +1033,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
 - **Problems:**
   - 2018 AMC 10B #13 (read: the order of $10$ mod $101$; choice C, $505$);
   - 2019 AIME I #14 (read: an order of exactly $16$ forces $p \equiv 1 \pmod{16}$; answer $97$).
-- **Moved:** 2016 AMC 12B #22 goes to N6.4, where repeating decimals are taught.
+- **Moved:** 2016 AMC 12B #22 goes to N6.5, where repeating decimals are taught.
 
 #### N3.5 Euler's theorem and the totient function
 
@@ -1120,15 +1120,17 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | N5.6 Bounds, monotonicity, finite searches | `bounding-diophantine`, `squeeze-between-squares` |
 | N5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N5.8 Review Problems and N5.9 Challenge Problems |
 
-### N6. Bases, digits and decimals (Core; N6.4 comes after N3)
+### N6. Bases, digits and decimals (Core; N6.5 comes after N3)
 
 | Lesson | Cards |
 |---|---|
-| N6.1 Base representation; a numeral as a polynomial | `base-conversion`, `numeral-as-polynomial` |
-| N6.2 Equations in an unknown base; bounds on digits | *(pattern)* `unknown-base`, `digit-count` |
-| N6.3 Last digits, digit sums, carrying | `digit-sum-carries`, *(pattern)* `digit-manipulation`, `base10-curiosities` |
-| N6.4 Repeating decimals and the order of 10 | `repeating-decimals`, `terminating-decimals` (problem: 2016 AMC 12B #22, moved from N3; read) |
-| N6.5 Concatenation, palindromes, digit restrictions | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, *(pattern)* `calendar-problems` |
+| N6.1 Introduction | no card (the chapter's opening page: numerals as polynomials, digit counts, digit sums and carries, repeating decimals, palindromes and calendars, with comprehension problems) |
+| N6.2 Base representation; a numeral as a polynomial | `base-conversion`, `numeral-as-polynomial` |
+| N6.3 Equations in an unknown base; bounds on digits | *(pattern)* `unknown-base`, `digit-count` |
+| N6.4 Last digits, digit sums, carrying | `digit-sum-carries`, *(pattern)* `digit-manipulation`, `base10-curiosities` |
+| N6.5 Repeating decimals and the order of 10 | `repeating-decimals`, `terminating-decimals` (problem: 2016 AMC 12B #22, moved from N3; read) |
+| N6.6 Concatenation, palindromes, digit restrictions | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, *(pattern)* `calendar-problems` |
+| N6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N6.8 Review Problems and N6.9 Challenge Problems |
 
 ### N7. Residue patterns and special constraints (Core II)
 

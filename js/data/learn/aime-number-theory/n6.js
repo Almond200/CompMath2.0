@@ -5,6 +5,32 @@ window.MATH_LEARN["N6"] = {
   lessons: {
     "N6.1": {
       prereq: ["modular-basics"],
+      cards: [],
+      body: String.raw`This chapter studies numbers through the way they are written: digits in base $10$ or another base, digit sums, decimal expansions, and the puzzles built on them. Its tools are the numeral as a polynomial in the base, the count of digits, the behavior of digit sums under carrying, the period of a repeating decimal, and remainders modulo $7$, $9$ and $11$.
+
+A numeral in base $b$ is a polynomial in $b$: the numeral with digits $d_2 d_1 d_0$ stands for $d_2 b^2 + d_1 b + d_0$, each digit from $0$ to $b - 1$. Converting to base $b$ is repeated division by $b$, reading the remainders upward: $2026 = 5 \cdot 343 + 6 \cdot 49 + 2 \cdot 7 + 3 = 5623_7$. When the base is unknown, an equation such as $121_b = 144$ is a polynomial equation in $b$. The number of digits of $N$ in base $10$ is $\lfloor \log_{10} N \rfloor + 1$, so $2^{100}$ has $31$ digits.
+
+Digit sums are remainders in disguise: a number and its digit sum leave the same remainder modulo $9$, and each carry in an addition lowers the digit sum by $9$. Writing a number by its digits, $\overline{abc} = 100a + 10b + c$, turns puzzles about reversed or rearranged digits into linear equations.
+
+A fraction in lowest terms has a terminating decimal exactly when its denominator has no prime factors other than $2$ and $5$; otherwise the decimal repeats, and the length of the period of $\tfrac1n$, for $n$ coprime to $10$, is the order of $10$ modulo $n$. In reverse, a repeating block of length $k$ is a fraction with denominator $10^k - 1$: $0.\overline{36} = \tfrac{36}{99} = \tfrac{4}{11}$.
+
+The lessons take these ideas in turn: base conversion and numerals as polynomials (N6.2), unknown bases and digit counts (N6.3), last digits, digit sums and carries (N6.4), repeating and terminating decimals (N6.5), and palindromes, cryptarithms and calendars (N6.6). The Summary (N6.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Write $2026$ in base $7$.`, answer: "5623",
+          solution: String.raw`Divide repeatedly by $7$: $2026 = 7 \cdot 289 + 3$, $289 = 7 \cdot 41 + 2$, $41 = 7 \cdot 5 + 6$, $5 = 7 \cdot 0 + 5$. Reading the remainders from the last, $2026 = 5623_7$. Check: $5 \cdot 343 + 6 \cdot 49 + 2 \cdot 7 + 3 = 1715 + 294 + 14 + 3 = 2026$.` },
+        { q: String.raw`Write $0.\overline{36}$ as a fraction in lowest terms.`, answer: "4/11",
+          solution: String.raw`Let $x = 0.\overline{36}$. Then $100x = 36.\overline{36}$, and subtracting, $99x = 36$, so $x = \tfrac{36}{99} = \tfrac{4}{11}$.` },
+        { q: String.raw`How many digits does $2^{100}$ have?`, answer: "31",
+          solution: String.raw`The number of digits is $\lfloor \log_{10} 2^{100} \rfloor + 1 = \lfloor 100 \log_{10} 2 \rfloor + 1$. Since $\log_{10} 2 \approx 0.30103$, this is $\lfloor 30.103 \rfloor + 1 = 31$.` }
+      ],
+      problems: [
+        "2021 Fall AMC 10B, Problem 1",
+        "2016 AMC 10A, Problem 6",
+        "2010 AMC 10A, Problem 10"
+      ]
+    },
+    "N6.2": {
+      prereq: ["modular-basics"],
       cards: ["base-conversion", "numeral-as-polynomial"],
       body: String.raw`A numeral is a shorthand for a sum of powers of its base: $5623_7$ means $5 \cdot 7^3 + 6 \cdot 7^2 + 2 \cdot 7 + 3$, which is $2026$. Every question about digits in an unusual base comes down to writing the number out this way, and the same view treats the base itself as a variable. This lesson covers both directions of [[base-conversion|base conversion]] and the habit of reading a numeral as a polynomial in its base.
 
@@ -14,9 +40,9 @@ When the base is unknown, the numeral is a [[numeral-as-polynomial|polynomial in
 
 The signal is any number written in a base other than ten, or two bases compared. Write it out as a sum of powers, and use the digit range $0 \le d \le b - 1$ as a constraint.`,
       related: [
-        { card: "unknown-base", note: String.raw`problems that solve for the base itself (N6.2).` },
+        { card: "unknown-base", note: String.raw`problems that solve for the base itself (N6.3).` },
         { card: "divisibility-rules", note: String.raw`the base-ten digit tests come from $10 \equiv 1 \pmod 9$ and $10 \equiv -1 \pmod{11}$, the same reasoning as for base nine modulo $5$.` },
-        { card: "digit-manipulation", note: String.raw`place value in base ten, used to reverse, move, or delete digits (N6.3).` }
+        { card: "digit-manipulation", note: String.raw`place value in base ten, used to reverse, move, or delete digits (N6.4).` }
       ],
       exercises: [
         { q: String.raw`Write $2026$ in base $7$. Give the answer as the base-ten integer formed by its digits.`, answer: "5623",
@@ -28,7 +54,7 @@ The signal is any number written in a base other than ten, or two bases compared
       ],
       problems: ["2025 AMC 10B, Problem 4", "2019 AMC 10B, Problem 12", "2021 Fall AMC 10A, Problem 12"]
     },
-    "N6.2": {
+    "N6.3": {
       prereq: ["numeral-as-polynomial", "log-rules"],
       cards: ["unknown-base", "digit-count"],
       body: String.raw`Two kinds of problems ask about the size of a numeral rather than its value: equations whose unknown is the base, and questions about how many digits a huge number has. Both are settled by bounds. An equation such as $54_b + 45_b = 121_b$ becomes a polynomial equation in $b$, here $9b + 9 = b^2 + 2b + 1$ with solution $b = 8$, and the digits that appear force the base to be larger than any of them. The number of digits of $2^{100}$ is $31$, read off from a logarithm.
@@ -40,7 +66,7 @@ A positive integer $n$ has [[digit-count|$\lfloor \log_{10} n \rfloor + 1$ digit
 The signal is a numeral with an unknown base, or a question about how many digits a power or product has. Turn it into a polynomial or a logarithm, and let the digit range or the powers of ten bound the answer.`,
       related: [
         { card: "log-rules", note: String.raw`$\log_{10}$ of a power or product, used to count digits.` },
-        { card: "numeral-as-polynomial", note: String.raw`the polynomial in $b$ that an unknown-base numeral stands for (N6.1).` },
+        { card: "numeral-as-polynomial", note: String.raw`the polynomial in $b$ that an unknown-base numeral stands for (N6.2).` },
         { card: "bounding-diophantine", note: String.raw`the digit range as a bound that leaves finitely many bases to check ((N5.6)).` }
       ],
       exercises: [
@@ -53,7 +79,7 @@ The signal is a numeral with an unknown base, or a question about how many digit
       ],
       problems: ["2021 Spring AMC 10A, Problem 11", "2023 AMC 10A, Problem 5", "2024 AMC 12B, Problem 6", "2004 AMC 12B, Problem 25", "1990 AIME, Problem 13"]
     },
-    "N6.3": {
+    "N6.4": {
       prereq: ["modular-basics", "base-conversion"],
       cards: ["digit-sum-carries", "digit-manipulation", "base10-curiosities"],
       body: String.raw`Digits obey arithmetic of their own: a number is congruent to its digit sum modulo $9$, and adding two numbers lowers the digit sum by $9$ for every carry. Those two facts answer most questions about digit sums, from the remainder of $2^{100}$ modulo $9$ to the possible digit sums of $n + 1$ when the digit sum of $n$ is known. Together with place value, they also handle the problems where digits are reversed, moved, or deleted.
@@ -65,8 +91,8 @@ Since $10 \equiv 1 \pmod 9$, every power of $10$ is $1$ modulo $9$, so a number 
 The signal is a digit sum, a remainder modulo $9$, a carry, or a number formed by rearranging another's digits. Use congruence modulo $9$ for the sum, count carries for the change, and place value for the rearrangement.`,
       related: [
         { card: "divisibility-rules", note: String.raw`the tests for $3$, $9$, and $11$ that the digit-sum congruence proves.` },
-        { card: "palindromes", note: String.raw`digit symmetry, a common digit-manipulation setting (N6.5).` },
-        { card: "multiplicative-order", note: String.raw`the cyclic number $142857$ is the period of $\tfrac17$, whose length is the order of $10$ modulo $7$ (N6.4).` }
+        { card: "palindromes", note: String.raw`digit symmetry, a common digit-manipulation setting (N6.6).` },
+        { card: "multiplicative-order", note: String.raw`the cyclic number $142857$ is the period of $\tfrac17$, whose length is the order of $10$ modulo $7$ (N6.5).` }
       ],
       exercises: [
         { q: String.raw`What is the remainder when $2^{100}$ is divided by $9$?`, answer: "7",
@@ -78,7 +104,7 @@ The signal is a digit sum, a remainder modulo $9$, a carry, or a number formed b
       ],
       problems: ["2021 Spring AMC 10A, Problem 3", "2009 AMC 10A, Problem 5", "2017 AMC 10A, Problem 20", "2007 AMC 10A, Problem 25", "1987 AIME, Problem 1"]
     },
-    "N6.4": {
+    "N6.5": {
       prereq: ["multiplicative-order", "geometric-series"],
       cards: ["repeating-decimals", "terminating-decimals"],
       body: String.raw`Every fraction has a decimal expansion that either stops or eventually repeats, and number theory says exactly which and how long the repeat is. $\tfrac{7}{80} = 0.0875$ stops after four places because $80 = 2^4 \cdot 5$; $\tfrac17 = 0.\overline{142857}$ repeats every six places because $6$ is the order of $10$ modulo $7$; and $0.\overline{36}$ is exactly $\tfrac{36}{99} = \tfrac4{11}$.
@@ -91,7 +117,7 @@ The signal is a repeating decimal, a question about the length of a period, or a
       related: [
         { card: "multiplicative-order", note: String.raw`the period of $\tfrac1n$ is the order of $10$ modulo $n$ (N3.4).` },
         { card: "geometric-series", note: String.raw`the sum $\tfrac{D}{10^k - 1}$ of a repeating block.` },
-        { card: "base10-curiosities", note: String.raw`the cyclic number $142857$, which is the period of $\tfrac17$ (N6.3).` }
+        { card: "base10-curiosities", note: String.raw`the cyclic number $142857$, which is the period of $\tfrac17$ (N6.4).` }
       ],
       exercises: [
         { q: String.raw`Write $0.\overline{36}$ as a fraction in lowest terms; give its denominator.`, answer: "11",
@@ -103,7 +129,7 @@ The signal is a repeating decimal, a question about the length of a period, or a
       ],
       problems: ["2013 AMC 12A, Problem 10", "2022 AMC 10A, Problem 17", "2015 AMC 12A, Problem 15", "2019 AMC 12A, Problem 11", "2016 AMC 12B, Problem 22"]
     },
-    "N6.5": {
+    "N6.6": {
       prereq: ["digit-manipulation", "divisibility-rules"],
       cards: ["palindromes", "cryptarithms", "calendar-problems"],
       body: String.raw`The last group of digit problems are puzzles in disguise: numbers that read the same both ways, sums where letters stand for digits, and dates that fall on a given weekday. Each one yields to the same move as the rest of the chapter, writing the quantity in place-value form or as a residue, after which the puzzle is a small equation. A four-digit palindrome $\overline{abba}$, for instance, is $1001a + 110b$, so every one of them is a multiple of $11$.
@@ -114,10 +140,10 @@ In a [[cryptarithms|cryptarithm]] each column of the written calculation is a sm
 
 [[calendar-problems|Calendar problems]] are arithmetic modulo $7$. A day $100$ days after a Monday is $100 \equiv 2 \pmod 7$ days later in the week, so a Wednesday. A month of $31$ days is four weeks and three days, so exactly the weekdays of its first three dates occur five times; a common year shifts every date forward one weekday, and a leap year shifts it two.
 
-The signal is a palindrome, letters standing for digits, or a weekday question. Write it in place value or modulo $7$, and the puzzle becomes a short computation.`,
+The signal is a palindrome, letters standing for digits, or a weekday question. Write it in place value or modulo $7$, and the puzzle becomes a short computation. The Summary (N6.7) collects the chapter's strategies.`,
       related: [
         { card: "divisibility-rules", note: String.raw`the tests for $7$, $11$, and $13$ through $1001 = 7 \cdot 11 \cdot 13$.` },
-        { card: "digit-manipulation", note: String.raw`place value for numbers built from digits (N6.3).` },
+        { card: "digit-manipulation", note: String.raw`place value for numbers built from digits (N6.4).` },
         { card: "modular-basics", note: String.raw`weekdays as residues modulo $7$.` }
       ],
       exercises: [
@@ -129,8 +155,59 @@ The signal is a palindrome, letters standing for digits, or a weekday question. 
           solution: String.raw`$100 = 7 \cdot 14 + 2$, so $100$ days later is $2$ weekdays after Monday: Wednesday, which is $3$.` }
       ],
       problems: ["2020 AMC 10B, Problem 6", "2003 AMC 10A, Problem 11", "2010 AMC 10B, Problem 5", "2010 AMC 12B, Problem 11"]
+    },
+    "N6.7": {
+      prereq: ["base-conversion", "numeral-as-polynomial", "unknown-base", "digit-count", "digit-sum-carries", "digit-manipulation", "repeating-decimals", "terminating-decimals", "palindromes", "calendar-problems"],
+      cards: [],
+      body: String.raw`[[base-conversion|Converting between bases]] is repeated division, and [[numeral-as-polynomial|a numeral is a polynomial]] in its base, so [[unknown-base|an unknown base]] is found by solving a polynomial equation with the digits below the base. [[digit-count|The number of digits]] of $N$ in base $b$ is $\lfloor \log_b N \rfloor + 1$.
+
+A number and its digit sum agree modulo $9$, and [[digit-sum-carries|each carry]] in an addition lowers the digit sum by $9$. [[digit-manipulation|Writing a number by its digits]] turns statements about reversals and rearrangements into linear equations.
+
+[[terminating-decimals|A fraction terminates]] exactly when its reduced denominator has only the primes $2$ and $5$. Otherwise [[repeating-decimals|its decimal repeats]], with a period equal to the order of $10$ modulo the part of the denominator coprime to $10$, and a repeating block of length $k$ is a numerator over $10^k - 1$.
+
+[[palindromes|Palindromes]] are counted by choosing their first half, and those with an even number of digits are multiples of $11$; [[calendar-problems|calendars]] are arithmetic modulo $7$.`,
+      strategies: [
+        String.raw`Write every numeral as a polynomial in its base before doing anything else.`,
+        String.raw`For an unknown base, remember that every digit is less than the base, which bounds the base from below.`,
+        String.raw`Count digits with logarithms: $\lfloor \log_{10} N \rfloor + 1$.`,
+        String.raw`Use the digit sum to find a remainder modulo $3$ or $9$, and the alternating sum for $11$.`,
+        String.raw`When a digit sum changes unexpectedly, count the carries: each lowers the sum by $9$.`,
+        String.raw`Turn a repeating decimal into a fraction with denominator $10^k - 1$, and find the period of $\tfrac1n$ as the order of $10$ modulo $n$.`,
+        String.raw`Count palindromes by their first half.`,
+        String.raw`For days of the week, reduce the number of days modulo $7$, remembering leap years.`
+      ]
     }
   },
-  review: ["2021 Fall AMC 10B, Problem 1", "2016 AMC 10A, Problem 6", "2022 AMC 10B, Problem 6", "2021 Spring AMC 10A, Problem 8", "2009 AMC 10B, Problem 11",
-    "2014 AMC 10B, Problem 10", "2010 AMC 10A, Problem 10", "2010 AMC 10A, Problem 9"]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`In what base $b$ is $121_b = 144$?`, answer: "11",
+        solution: String.raw`As a polynomial, $121_b = b^2 + 2b + 1 = (b + 1)^2$. So $(b + 1)^2 = 144$ and $b = 11$, which is larger than every digit, as it must be.` },
+      { q: String.raw`Write $0.1\overline{6}$ as a fraction in lowest terms.`, answer: "1/6",
+        solution: String.raw`Write it as $0.1 + 0.0\overline{6} = \tfrac{1}{10} + \tfrac{1}{10} \cdot \tfrac{6}{9} = \tfrac{1}{10} + \tfrac{1}{15} = \tfrac{3 + 2}{30} = \tfrac16$.` },
+      { q: String.raw`How long is the repeating block in the decimal expansion of $\tfrac{1}{13}$?`, answer: "6",
+        solution: String.raw`The period is the order of $10$ modulo $13$, which divides $12$. Testing: $10^1 \equiv 10$, $10^2 \equiv 9$, $10^3 \equiv 12$, $10^4 \equiv 3$, $10^6 \equiv 10^3 \cdot 10^3 \equiv 144 \equiv 1$. So the period is $6$: $\tfrac{1}{13} = 0.\overline{076923}$.` },
+      { q: String.raw`For how many $n$ from $1$ to $20$ does $\tfrac1n$ have a terminating decimal expansion?`, answer: "8",
+        solution: String.raw`Exactly when $n$ has no prime factors but $2$ and $5$: $n = 1, 2, 4, 5, 8, 10, 16, 20$. That is $8$ values.` },
+      { q: String.raw`Find the sum of the digits of $10^{20} - 20$.`, answer: "170",
+        solution: String.raw`The number is $99\ldots980$, with $18$ nines, then $8$, then $0$: subtracting $20$ from $10^{20}$ borrows through every place. Its digit sum is $18 \cdot 9 + 8 = 170$.` },
+      { q: String.raw`How many four-digit palindromes are multiples of $11$?`, answer: "90",
+        solution: String.raw`A four-digit palindrome is $\overline{abba} = 1001a + 110b = 11(91a + 10b)$, always a multiple of $11$. There are $9$ choices for $a$ and $10$ for $b$, so all $90$ of them are.` }
+    ],
+    problems: [
+      "2022 AMC 10B, Problem 6",
+      "2021 Spring AMC 10A, Problem 8",
+      "2009 AMC 10B, Problem 11",
+      "2014 AMC 10B, Problem 10",
+      "2010 AMC 10A, Problem 9",
+      "2014 AIME II, Problem 4"
+    ]
+  },
+  challenge: {
+    problems: [
+      "1986 AIME, Problem 10",
+      "1999 AIME, Problem 5",
+      "2001 AIME I, Problem 8",
+      "2015 AIME I, Problem 8"
+    ]
+  }
 };

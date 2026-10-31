@@ -16,7 +16,7 @@ These tools matter when a problem works modulo a prime with Pascal's triangle, a
       related: [
         { card: "prime-divides-binomial", note: String.raw`the case $\binom pk$, and the Legendre-sum formula that Kummer refines ((N4.4)).` },
         { card: "freshmans-dream", note: String.raw`$(1 + x)^p \equiv 1 + x^p$, the identity behind Lucas's theorem (N7.2).` },
-        { card: "base-conversion", note: String.raw`writing $m$ and $n$ in base $p$ (N6.1).` }
+        { card: "base-conversion", note: String.raw`writing $m$ and $n$ in base $p$ ((N6.2)).` }
       ],
       exercises: [
         { q: String.raw`How many entries of row $100$ of Pascal's triangle ($\binom{100}{0}$ to $\binom{100}{100}$) are odd?`, answer: "8",

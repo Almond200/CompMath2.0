@@ -1057,23 +1057,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N6.1",
-      "title": "Base representation; a numeral as a polynomial"
+      "title": "Introduction"
      },
      {
       "code": "N6.2",
-      "title": "Equations in an unknown base; bounds on digits"
+      "title": "Base representation; a numeral as a polynomial"
      },
      {
       "code": "N6.3",
-      "title": "Last digits, digit sums, carrying"
+      "title": "Equations in an unknown base; bounds on digits"
      },
      {
       "code": "N6.4",
-      "title": "Repeating decimals and the order of 10"
+      "title": "Last digits, digit sums, carrying"
      },
      {
       "code": "N6.5",
+      "title": "Repeating decimals and the order of 10"
+     },
+     {
+      "code": "N6.6",
       "title": "Concatenation, palindromes, digit restrictions"
+     },
+     {
+      "code": "N6.7",
+      "title": "Summary"
      }
     ]
    },
