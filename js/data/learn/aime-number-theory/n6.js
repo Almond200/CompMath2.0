@@ -41,7 +41,7 @@ The signal is a numeral with an unknown base, or a question about how many digit
       related: [
         { card: "log-rules", note: String.raw`$\log_{10}$ of a power or product, used to count digits.` },
         { card: "numeral-as-polynomial", note: String.raw`the polynomial in $b$ that an unknown-base numeral stands for (N6.1).` },
-        { card: "bounding-diophantine", note: String.raw`the digit range as a bound that leaves finitely many bases to check (N5.5).` }
+        { card: "bounding-diophantine", note: String.raw`the digit range as a bound that leaves finitely many bases to check ((N5.6)).` }
       ],
       exercises: [
         { q: String.raw`In what base $b$ is $54_b + 45_b = 121_b$?`, answer: "8",

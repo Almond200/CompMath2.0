@@ -4,6 +4,32 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["N5"] = {
   lessons: {
     "N5.1": {
+      prereq: ["bezouts-identity"],
+      cards: [],
+      body: String.raw`This chapter solves equations whose unknowns must be integers. There is no single method; instead there are a few moves that usually work: use the gcd for a linear equation, factor, look at remainders, use the structure of Pythagorean triples, and bound the unknowns so that only finitely many cases remain.
+
+A linear equation $ax + by = c$ has integer solutions exactly when $\gcd(a, b)$ divides $c$, and then one solution gives all of them, by adding multiples of $\tfrac{b}{\gcd}$ to $x$ and subtracting the matching multiples of $\tfrac{a}{\gcd}$ from $y$. When $x$ and $y$ must be positive, only a short stretch of these solutions remains. With coprime $a$ and $b$, every amount larger than $ab - a - b$ can be made from $a$s and $b$s, and $ab - a - b$ itself cannot.
+
+A nonlinear equation often factors. An equation such as $xy - 3x - 2y = 10$ becomes $(x - 2)(y - 3) = 16$ after a constant is added to both sides, and $x^2 - y^2 = 45$ becomes $(x - y)(x + y) = 45$; then each factorization of the constant gives a candidate.
+
+Remainders show when an equation has no solutions: a square is $0$ or $1$ modulo $4$, so $x^2 + y^2$ is never $3$ modulo $4$. The Pythagorean triples have a formula, and a number is a sum of two squares exactly when its primes of the form $4k + 3$ appear to even powers. Last, when the unknowns grow, one side usually outgrows the other, and a bound leaves a short list to check.
+
+The lessons take these ideas in turn: linear equations and the Frobenius number (N5.2), factoring and differences of squares (N5.3), parity and modular obstructions (N5.4), Pythagorean triples and integer triangles (N5.5), and bounds and finite searches (N5.6). The Summary (N5.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`What is the largest amount that cannot be paid exactly with coins of $5$ and $8$ cents?`, answer: "27",
+          solution: String.raw`Since $\gcd(5, 8) = 1$, the largest amount that cannot be made is $5 \cdot 8 - 5 - 8 = 27$. Check: $27 - 8k$ for $k = 0, 1, 2, 3$ is $27, 19, 11, 3$, none a multiple of $5$, while $28 = 5 \cdot 4 + 8$, $29 = 5 + 3 \cdot 8$, $30$, $31 = 5 \cdot 3 + 2 \cdot 8$ and $32 = 4 \cdot 8$ all work, and adding $5$s reaches everything after.` },
+        { q: String.raw`How many pairs of positive integers $(x, y)$ satisfy $3x + 5y = 47$?`, answer: "3",
+          solution: String.raw`One solution is $(x, y) = (14, 1)$. All solutions are $(14 - 5t, 1 + 3t)$. Both are positive for $t = 0, 1, 2$, giving $(14, 1)$, $(9, 4)$, $(4, 7)$: three pairs.` },
+        { q: String.raw`How many pairs of positive integers $(x, y)$ satisfy $x^2 - y^2 = 45$?`, answer: "3",
+          solution: String.raw`Factor: $(x - y)(x + y) = 45$ with $0 \lt x - y \lt x + y$, both odd. The factor pairs $(1, 45)$, $(3, 15)$, $(5, 9)$ give $(x, y) = (23, 22)$, $(9, 6)$, $(7, 2)$: three pairs.` }
+      ],
+      problems: [
+        "2024 AMC 10A, Problem 4",
+        "2015 AMC 10A, Problem 13",
+        "2006 AMC 12A, Problem 9"
+      ]
+    },
+    "N5.2": {
       prereq: ["bezouts-identity", "extended-euclidean-algorithm"],
       cards: ["chicken-mcnugget", "coins-and-prices"],
       body: String.raw`An equation like $3x + 5y = 100$ in nonnegative integers is a question about making an amount from two sizes of coin, and the contest versions ask how many ways it can be done, or which amounts cannot be made at all. Bézout's identity from N2.4 already says when an amount can be made with integer coefficients of either sign; this lesson adds the restriction to nonnegative counts, which is where the interesting structure lives. With coins worth $5$ and $8$, every amount from $28$ up can be paid, and exactly $14$ smaller amounts cannot.
@@ -28,7 +54,7 @@ The signal is a total made from items of fixed values, stamps, coins, or prices,
       ],
       problems: ["2008 AMC 10B, Problem 8", "2015 AMC 10B, Problem 15", "2003 AMC 12B, Problem 7", "1994 AIME, Problem 11"]
     },
-    "N5.2": {
+    "N5.3": {
       prereq: ["sfft", "forced-difference-of-squares", "factor-pair-counting"],
       cards: ["difference-of-squares-rep"],
       body: String.raw`An equation in integers becomes finite the moment it can be written as a product equal to a constant, because the factors must then be complementary divisors of that constant. Three algebraic moves get there most often: the difference of squares $a^2 - b^2 = (a - b)(a + b)$, Simon's Favorite Factoring Trick for equations with an $xy$ term, and forcing a difference of squares out of an expression that does not look like one. The equation $xy - 3x - 2y = 6$, for instance, becomes $(x - 2)(y - 3) = 12$, and its six solutions in positive integers are read off the factor pairs of $12$.
@@ -53,7 +79,7 @@ The signal is an integer equation with a product of unknowns, a difference of sq
       ],
       problems: ["2000 AMC 10, Problem 11", "2011 AMC 10A, Problem 19", "2024 AMC 10A, Problem 15", "1997 AIME, Problem 1", "2009 AMC 12B, Problem 19"]
     },
-    "N5.3": {
+    "N5.4": {
       prereq: ["only-even-prime", "modular-basics"],
       cards: ["choose-modulus", "primes-6k"],
       body: String.raw`The fastest way to show an integer equation has no solutions is to look at it modulo a small number where its terms can take only a few values. Squares, for example, are only ever $0$ or $1$ modulo $4$, so $x^2 + y^2$ is $0$, $1$, or $2$ modulo $4$ and can never equal $2027$, which is $3$. Parity is the special case of modulus $2$, and it settles more contest problems than any other single observation. This lesson collects the moduli that are worth trying and what each one reveals.
@@ -62,11 +88,11 @@ The skill is [[choose-modulus|choosing the modulus]]. Squares take few values mo
 
 Parity alone does a surprising amount, because $2$ is the only even prime. A sum of two primes that is odd must use $2$; a product of two consecutive integers is even, so it is prime only when it equals $2$, as $n^2 - 3n + 2 = (n - 1)(n - 2)$ shows. The same kind of sieve explains why [[primes-6k|every prime above $3$ is one more or one less than a multiple of $6$]]: the other residues modulo $6$ are divisible by $2$ or $3$. Squaring then gives $p^2 \equiv 1 \pmod{24}$ for every such prime, since $p^2 - 1 = (p - 1)(p + 1)$ is a product of two consecutive even numbers, one of them a multiple of $4$, and one of $p - 1$, $p$, $p + 1$ is a multiple of $3$. A related argument shows that among $p$, $p + 2$, $p + 4$ one is always a multiple of $3$, so the only prime triple of that shape is $3, 5, 7$.
 
-Modular arguments rule things out; they rarely find solutions on their own. In practice they are used first, to discard impossible cases and fix residues, and the remaining cases are finished by bounding (N5.5) or factoring (N5.2).`,
+Modular arguments rule things out; they rarely find solutions on their own. In practice they are used first, to discard impossible cases and fix residues, and the remaining cases are finished by bounding (N5.6) or factoring (N5.3).`,
       related: [
         { card: "only-even-prime", note: String.raw`parity with primes: an odd sum of two primes uses $2$.` },
         { card: "fermats-little-theorem", note: String.raw`why $(p - 1)$st powers are $0$ or $1$ modulo $p$, which makes $p$ a good modulus for them (N3.3).` },
-        { card: "sum-of-two-squares", note: String.raw`the full answer to which numbers are $x^2 + y^2$, of which the modulo $4$ obstruction is the first step (N5.4).` }
+        { card: "sum-of-two-squares", note: String.raw`the full answer to which numbers are $x^2 + y^2$, of which the modulo $4$ obstruction is the first step (N5.5).` }
       ],
       exercises: [
         { q: String.raw`How many pairs of integers $(x, y)$ satisfy $x^2 + y^2 = 2027$?`, answer: "0",
@@ -78,7 +104,7 @@ Modular arguments rule things out; they rarely find solutions on their own. In p
       ],
       problems: ["2002 AMC 10B, Problem 6", "2023 AMC 12B, Problem 16"]
     },
-    "N5.4": {
+    "N5.5": {
       prereq: ["difference-of-squares-rep", "modular-basics"],
       cards: ["pythagorean-triples", "integer-triangles-perimeter", "sum-of-two-squares", "lattice-points-circle"],
       body: String.raw`Integer right triangles, integer triangles with a given perimeter, and integer points on a circle are three faces of one question: which integers are sums of squares, and in how many ways. Each has a complete answer that turns counting into arithmetic. There are exactly seven primitive right triangles with integer sides and hypotenuse at most $50$, exactly three triangles with integer sides and perimeter $12$, and exactly $16$ points with integer coordinates on the circle $x^2 + y^2 = 65$.
@@ -92,7 +118,7 @@ Which numbers are sums of two squares? Modulo $4$ shows that a prime $\equiv 3 \
 The signal is a right triangle or a distance with integer lengths, a count of integer triangles, or integer points on a circle. Reach for the parametrization, the triangle inequality, or the divisor count.`,
       related: [
         { card: "triangle-inequality", note: String.raw`the condition $a + b > c$ that bounds integer triangles.` },
-        { card: "difference-of-squares-rep", note: String.raw`the factorization $(c - a)(c + a)$ behind the Pythagorean parametrization (N5.2).` },
+        { card: "difference-of-squares-rep", note: String.raw`the factorization $(c - a)(c + a)$ behind the Pythagorean parametrization (N5.3).` },
         { card: "number-of-divisors", note: String.raw`the divisor counts $d_1$ and $d_3$ that count lattice points (N1.3).` }
       ],
       exercises: [
@@ -105,7 +131,7 @@ The signal is a right triangle or a distance with integer lengths, a count of in
       ],
       problems: ["2009 AMC 12B, Problem 13", "2015 AMC 12B, Problem 10", "2017 AMC 10A, Problem 17", "2010 AIME I, Problem 8", "2023 AIME I, Problem 15"]
     },
-    "N5.5": {
+    "N5.6": {
       prereq: ["choose-modulus", "factor-pair-counting"],
       cards: ["bounding-diophantine", "squeeze-between-squares"],
       body: String.raw`When neither factoring nor a modulus finishes an equation, inequalities do: they turn infinitely many candidates into a short list that can be checked by hand. The classic example is $\tfrac1a + \tfrac1b + \tfrac1c = 1$ in positive integers. Ordering the unknowns so that $a \le b \le c$ makes $\tfrac1a$ the largest term, so $\tfrac 3a \ge 1$ and $a \le 3$; each value of $a$ then bounds $b$ the same way, and the only solutions are $(3, 3, 3)$, $(2, 4, 4)$, and $(2, 3, 6)$.
@@ -114,10 +140,10 @@ The signal is a right triangle or a distance with integer lengths, a count of in
 
 For equations that ask when an expression is a perfect square, the sharpest bound is a pair of consecutive squares. Since there is no square strictly between $k^2$ and $(k + 1)^2$, an expression trapped there cannot be a square, which is [[squeeze-between-squares|squeezing between squares]]. For every positive $n$, $n^2 < n^2 + n + 1 < (n + 1)^2$, so $n^2 + n + 1$ is never a square. When the expression is close to a square but not trapped, write the gap: $n^2 + 2n + 12 = (n + 1)^2 + 11$ is a square $m^2$ exactly when $m^2 - (n + 1)^2 = 11$, a difference of squares whose only factorization $1 \cdot 11$ gives $n = 4$ and $m = 6$.
 
-The signal is an equation with no obvious factorization and no useful modulus, especially one with reciprocals, a product of several unknowns, or a quadratic that is asked to be a square. Order, bound, and check what is left.`,
+The signal is an equation with no obvious factorization and no useful modulus, especially one with reciprocals, a product of several unknowns, or a quadratic that is asked to be a square. Order, bound, and check what is left. The Summary (N5.7) collects the chapter's strategies.`,
       related: [
-        { card: "difference-of-squares-rep", note: String.raw`the gap between a quadratic and the nearest square becomes a difference of squares (N5.2).` },
-        { card: "choose-modulus", note: String.raw`a modulus to discard cases before or after the bounding (N5.3).` },
+        { card: "difference-of-squares-rep", note: String.raw`the gap between a quadratic and the nearest square becomes a difference of squares (N5.3).` },
+        { card: "choose-modulus", note: String.raw`a modulus to discard cases before or after the bounding (N5.4).` },
         { card: "am-gm", note: String.raw`a source of the inequalities used to bound a product or a sum.` }
       ],
       exercises: [
@@ -129,8 +155,62 @@ The signal is an equation with no obvious factorization and no useful modulus, e
           solution: String.raw`For $n \ge 1$, $n^2 < n^2 + n + 1 < n^2 + 2n + 1 = (n + 1)^2$, so $n^2 + n + 1$ lies strictly between two consecutive squares and is never a square. The answer is $0$.` }
       ],
       problems: ["2004 AMC 10B, Problem 13", "2016 AMC 10A, Problem 14", "2005 AIME I, Problem 4"]
+    },
+    "N5.7": {
+      prereq: ["bezouts-identity", "chicken-mcnugget", "sfft", "difference-of-squares-rep", "choose-modulus", "pythagorean-triples", "sum-of-two-squares", "bounding-diophantine", "squeeze-between-squares"],
+      cards: [],
+      body: String.raw`A linear equation $ax + by = c$ has solutions exactly when $\gcd(a, b) \mid c$ ([[bezouts-identity|Bézout]]), and one solution gives the rest by a step of $\tfrac{b}{g}$ and $\tfrac{a}{g}$. With coprime $a$ and $b$, [[chicken-mcnugget|the largest amount that cannot be made]] is $ab - a - b$.
+
+A product equation is solved by its factor pairs. [[sfft|Adding a constant]] turns $xy + ax + by$ into a product, and [[difference-of-squares-rep|a difference of squares]] $x^2 - y^2 = (x - y)(x + y)$ needs two factors of the same parity, so a number is a difference of squares exactly when it is not $2$ modulo $4$.
+
+[[choose-modulus|A well-chosen modulus]] rules out solutions: squares modulo $3$, $4$ and $8$, cubes modulo $9$. [[pythagorean-triples|Pythagorean triples]] are multiples of $(m^2 - n^2, 2mn, m^2 + n^2)$, and [[sum-of-two-squares|sums of two squares]] are decided by the primes of the form $4k + 3$.
+
+[[bounding-diophantine|Bounding]] leaves finitely many cases: order the unknowns, then use that the smallest is at most an average. [[squeeze-between-squares|An expression caught strictly between two consecutive squares]] is not a square.`,
+      strategies: [
+        String.raw`For a linear equation, find one solution, write the general solution with a parameter, and impose the sign conditions on the parameter.`,
+        String.raw`For "the largest amount that cannot be made" with two coprime values, use $ab - a - b$; with three values, list amounts in a table by remainder.`,
+        String.raw`Look for a factorization: complete a product by adding a constant, or use a difference of squares, then run through the factor pairs.`,
+        String.raw`If no solution appears, look modulo $3$, $4$, $8$ or $9$ for an obstruction.`,
+        String.raw`For a right triangle with integer sides, use the formula for Pythagorean triples, scaled.`,
+        String.raw`Assume an order on symmetric unknowns, then bound the smallest.`,
+        String.raw`To show an expression is not a square, catch it strictly between two consecutive squares.`,
+        String.raw`Check every candidate in the original equation.`
+      ]
     }
   },
-  review: ["2015 AMC 10A, Problem 13", "2006 AMC 12A, Problem 9", "2021 Spring AMC 10B, Problem 11", "2024 AMC 10A, Problem 11", "2024 AMC 10A, Problem 4",
-    "2011 AMC 12B, Problem 11", "1994 AIME, Problem 7", "2019 AIME II, Problem 14"]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`How many pairs of positive integers $(x, y)$ satisfy $xy - 3x - 2y = 10$?`, answer: "5",
+        solution: String.raw`Add $6$ to both sides: $xy - 3x - 2y + 6 = (x - 2)(y - 3) = 16$. Since $x \ge 1$ and $y \ge 1$, the factors are at least $-1$ and $-2$, so two negative factors with product $16$ are impossible. The positive factor pairs of $16$ are $(1, 16)$, $(2, 8)$, $(4, 4)$, $(8, 2)$, $(16, 1)$, giving $5$ pairs.` },
+      { q: String.raw`Show that $x^2 + y^2 = 2023$ has no integer solutions.`,
+        solution: String.raw`A square is $0$ or $1$ modulo $4$, so a sum of two squares is $0$, $1$ or $2$ modulo $4$. But $2023 = 4 \cdot 505 + 3$ is $3$ modulo $4$.` },
+      { q: String.raw`How many right triangles with integer legs $a \lt b$ have hypotenuse $65$?`, answer: "4",
+        solution: String.raw`Since $65 = 5 \cdot 13$ and $5 = 1^2 + 2^2$, $13 = 2^2 + 3^2$, there are several representations: $65^2 = 16^2 + 63^2 = 25^2 + 60^2 = 33^2 + 56^2 = 39^2 + 52^2$. The first and third are primitive, from $(m, n) = (7, 4)$ and $(8, 1)$; the others are $5 \cdot (5, 12, 13)$ and $13 \cdot (3, 4, 5)$. A search of $a$ from $1$ to $45$ finds no more, so there are $4$.` },
+      { q: String.raw`How many integer points $(x, y)$ lie on the circle $x^2 + y^2 = 25$?`, answer: "12",
+        solution: String.raw`The ways to write $25$ as a sum of two squares are $0 + 25$ and $9 + 16$. The first gives $(\pm 5, 0)$ and $(0, \pm 5)$, four points; the second gives $(\pm 3, \pm 4)$ and $(\pm 4, \pm 3)$, eight points. The total is $12$.` },
+      { q: String.raw`How many triangles with integer sides have perimeter $12$, counting triangles with the same side lengths once?`, answer: "3",
+        solution: String.raw`Let $a \le b \le c$ with $a + b + c = 12$ and $a + b \gt c$, so $c \lt 6$; also $c \ge 4$. For $c = 5$: $(2, 5, 5)$ and $(3, 4, 5)$. For $c = 4$: $(4, 4, 4)$. So there are $3$.` },
+      { q: String.raw`Find the positive integer $n$ for which $n^2 + 20n + 11$ is a perfect square.`, answer: "35",
+        solution: String.raw`Complete the square: $(n + 10)^2 - 89 = m^2$, so $(n + 10 - m)(n + 10 + m) = 89$. Since $89$ is prime, the factors are $1$ and $89$, so $n + 10 = 45$ and $n = 35$. Check: $35^2 + 700 + 11 = 1936 = 44^2$.` },
+      { q: String.raw`How many of the integers $1, 2, \ldots, 100$ can be written as a difference of two squares of integers?`, answer: "75",
+        solution: String.raw`A difference $x^2 - y^2 = (x - y)(x + y)$ has two factors of the same parity, so it is odd or a multiple of $4$; it is never $2$ modulo $4$. Conversely $2k + 1 = (k + 1)^2 - k^2$ and $4k = (k + 1)^2 - (k - 1)^2$. The numbers up to $100$ that are $2$ modulo $4$ number $25$, so $75$ work.` }
+    ],
+    problems: [
+      "2021 Spring AMC 10B, Problem 11",
+      "2024 AMC 10A, Problem 11",
+      "2011 AMC 12B, Problem 11"
+    ]
+  },
+  challenge: {
+    exercises: [
+      { q: String.raw`How many ordered pairs of positive integers $(x, y)$ satisfy $\tfrac1x + \tfrac1y = \tfrac1{12}$?`, answer: "15",
+        solution: String.raw`Clear denominators: $xy - 12x - 12y = 0$, so $(x - 12)(y - 12) = 144$. Both $x$ and $y$ exceed $12$, since each fraction is less than $\tfrac1{12}$, so the factors are positive. Each of the $d(144) = d(2^4 \cdot 3^2) = 5 \cdot 3 = 15$ divisors gives one pair.` },
+      { q: String.raw`How many positive integers cannot be written as $7a + 11b$ with $a$ and $b$ nonnegative integers?`, answer: "30",
+        solution: String.raw`For coprime $p$ and $q$, exactly half of the numbers from $0$ to $pq - p - q$ can be made: $n$ can be made exactly when $pq - p - q - n$ cannot. The largest that cannot be made is $77 - 18 = 59$, so of the $60$ numbers from $0$ to $59$, $30$ cannot be made, and $0$ can. The answer is $30$.` }
+    ],
+    problems: [
+      "1994 AIME, Problem 7",
+      "2019 AIME II, Problem 14"
+    ]
+  }
 };

@@ -1022,23 +1022,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N5.1",
-      "title": "Linear integer equations: gcd conditions, parametrizing, Frobenius"
+      "title": "Introduction"
      },
      {
       "code": "N5.2",
-      "title": "Factoring, and differences of squares"
+      "title": "Linear integer equations: gcd conditions, parametrizing, Frobenius"
      },
      {
       "code": "N5.3",
-      "title": "Parity, modular obstructions, inequalities"
+      "title": "Factoring, and differences of squares"
      },
      {
       "code": "N5.4",
-      "title": "Pythagorean triples and integer triangles"
+      "title": "Parity, modular obstructions, inequalities"
      },
      {
       "code": "N5.5",
+      "title": "Pythagorean triples and integer triangles"
+     },
+     {
+      "code": "N5.6",
       "title": "Bounds, monotonicity, finite searches"
+     },
+     {
+      "code": "N5.7",
+      "title": "Summary"
      }
     ]
    },

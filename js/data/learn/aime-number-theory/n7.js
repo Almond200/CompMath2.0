@@ -14,9 +14,9 @@ For a large prime there is a test that avoids squaring everything. [[eulers-crit
 
 The signal is an equation or expression involving squares with a divisibility or primality question. Pick a modulus whose square residues are few, and use the residue list to rule out cases or fix a residue.`,
       related: [
-        { card: "choose-modulus", note: String.raw`choosing the modulus to match the powers in an equation (N5.3).` },
+        { card: "choose-modulus", note: String.raw`choosing the modulus to match the powers in an equation ((N5.4)).` },
         { card: "quadratic-reciprocity", note: String.raw`deciding whether $p$ is a square modulo $q$ by flipping to $q$ modulo $p$ (N8.3).` },
-        { card: "sum-of-two-squares", note: String.raw`$-1$ being a square modulo $p \equiv 1 \pmod 4$ is the first step toward writing $p$ as a sum of two squares (N5.4).` }
+        { card: "sum-of-two-squares", note: String.raw`$-1$ being a square modulo $p \equiv 1 \pmod 4$ is the first step toward writing $p$ as a sum of two squares ((N5.5)).` }
       ],
       exercises: [
         { q: String.raw`List the nonzero quadratic residues modulo $7$.`, answer: "1, 2, 4",

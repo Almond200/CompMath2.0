@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N4, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N5, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1112,11 +1112,13 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 | Lesson | Cards |
 |---|---|
-| N5.1 Linear integer equations: gcd conditions, parametrizing, Frobenius | `chicken-mcnugget`, *(pattern)* `coins-and-prices` |
-| N5.2 Factoring, and differences of squares | `difference-of-squares-rep`, prereq `sfft`, prereq `forced-difference-of-squares` |
-| N5.3 Parity, modular obstructions, inequalities | `choose-modulus`, `primes-6k`, prereq `only-even-prime` |
-| N5.4 Pythagorean triples and integer triangles | `pythagorean-triples`, `integer-triangles-perimeter`, `sum-of-two-squares`, `lattice-points-circle` |
-| N5.5 Bounds, monotonicity, finite searches | `bounding-diophantine`, `squeeze-between-squares` |
+| N5.1 Introduction | no card (the chapter's opening page: linear equations and the Frobenius number, factoring, modular obstructions, Pythagorean triples, bounding, with comprehension problems) |
+| N5.2 Linear integer equations: gcd conditions, parametrizing, Frobenius | `chicken-mcnugget`, *(pattern)* `coins-and-prices` |
+| N5.3 Factoring, and differences of squares | `difference-of-squares-rep`, prereq `sfft`, prereq `forced-difference-of-squares` |
+| N5.4 Parity, modular obstructions, inequalities | `choose-modulus`, `primes-6k`, prereq `only-even-prime` |
+| N5.5 Pythagorean triples and integer triangles | `pythagorean-triples`, `integer-triangles-perimeter`, `sum-of-two-squares`, `lattice-points-circle` |
+| N5.6 Bounds, monotonicity, finite searches | `bounding-diophantine`, `squeeze-between-squares` |
+| N5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N5.8 Review Problems and N5.9 Challenge Problems |
 
 ### N6. Bases, digits and decimals (Core; N6.4 comes after N3)
 
