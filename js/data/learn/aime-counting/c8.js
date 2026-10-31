@@ -81,7 +81,7 @@ A [[coloring-arguments|coloring argument]] attaches colors to the cells of a boa
 Use a coloring as an invariant to prove impossibility or count parity, and the path and cycle formulas to count proper colorings. The last lesson of the chapter turns to pigeonhole and extremal arguments.`,
       related: [
         { card: "invariants-coloring", note: String.raw`colorings as one kind of invariant of a process (C5.5).` },
-        { card: "constructive-counting", note: String.raw`coloring a map region by region with the most constrained first (C1.1).` },
+        { card: "constructive-counting", note: String.raw`coloring a map region by region with the most constrained first (C1.2).` },
         { card: "recursive-counting", note: String.raw`the recursion behind the cycle-coloring formula (C5.2).` }
       ],
       exercises: [

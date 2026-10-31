@@ -127,7 +127,7 @@ Symmetry combines well with complements: if a comparison is symmetric, $P(X \gt 
 
 Before computing a probability directly, ask whether its complement is a single product, whether it is a union with simple intersections, and whether symmetry reduces it to a tie. The last lesson of the chapter turns to continuous probability.`,
       related: [
-        { card: "complementary-counting", note: String.raw`the same idea for counts (C1.2).` },
+        { card: "complementary-counting", note: String.raw`the same idea for counts (C1.3).` },
         { card: "pie", note: String.raw`inclusion-exclusion for counts, with the same alternating signs (C3.1).` },
         { card: "symmetry-probability", note: String.raw`reducing a comparison to the probability of a tie (C4.3).` }
       ],

@@ -46,7 +46,7 @@ Use a recursion whenever the objects grow one piece at a time and the answer is 
       related: [
         { card: "linear-recurrence", note: String.raw`solving a recursion in closed form, when the table is too long (A3.1).` },
         { card: "restricted-sequences", note: String.raw`recursions split by the last symbol, for strings with rules (C2.3).` },
-        { card: "simulate-the-process", note: String.raw`computing small cases to find or check a recursion (C1.5).` }
+        { card: "simulate-the-process", note: String.raw`computing small cases to find or check a recursion (C1.6).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can a staircase of $10$ steps be climbed, taking $1$, $2$ or $3$ steps at a time?`, answer: "274",

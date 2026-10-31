@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C5 is the one chapter in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1236,11 +1236,13 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C1.1 Sum and product rules; building disjoint cases | `constructive-counting`, prereq `casework-method` |
-| C1.2 Counting the complement | prereq `complementary-counting` (deepened) |
-| C1.3 Counting by an organizing parameter | `double-summation` link, `counting-functions` |
-| C1.4 Overlapping cases and double counts | `uniform-overcount` |
-| C1.5 Small cases to check completeness | `simulate-the-process`, `working-backwards` |
+| C1.1 Introduction | no card (the chapter's opening page: the product and sum rules, cases, complements, an organizing parameter, overcounts and small cases, with comprehension problems) |
+| C1.2 Sum and product rules; building disjoint cases | `constructive-counting`, prereq `casework-method` |
+| C1.3 Counting the complement | prereq `complementary-counting` (deepened) |
+| C1.4 Counting by an organizing parameter | `double-summation` link, `counting-functions` |
+| C1.5 Overlapping cases and double counts | `uniform-overcount` |
+| C1.6 Small cases to check completeness | `simulate-the-process`, `working-backwards` |
+| C1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C1.8 Review Problems and C1.9 Challenge Problems |
 
 ### C2. Arrangements and selections (Core)
 

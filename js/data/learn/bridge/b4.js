@@ -16,8 +16,8 @@ Binomial coefficients also count paths and positions: the number of ways to plac
 
 Decide whether order matters, count by the product rule, and divide by the orders that do not matter. The next lesson splits counts into cases and counts complements.`,
       related: [
-        { card: "constructive-counting", note: String.raw`building objects step by step with the restricted choices first (C1.1).` },
-        { card: "uniform-overcount", note: String.raw`dividing by a fixed overcount, the idea behind $\binom nk$ (C1.4).` },
+        { card: "constructive-counting", note: String.raw`building objects step by step with the restricted choices first (C1.2).` },
+        { card: "uniform-overcount", note: String.raw`dividing by a fixed overcount, the idea behind $\binom nk$ (C1.5).` },
         { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients of $(x + y)^n$ (C4.4).` }
       ],
       exercises: [
@@ -52,7 +52,7 @@ Split into separate cases or subtract a simple complement, and check on a small 
       related: [
         { card: "pie", note: String.raw`subtracting overlapping unwanted cases correctly (C3.1).` },
         { card: "organized-listing", note: String.raw`listing small cases in order to check a count (B2.4).` },
-        { card: "constructive-counting", note: String.raw`counting by building, with cases where choices depend on earlier ones (C1.1).` }
+        { card: "constructive-counting", note: String.raw`counting by building, with cases where choices depend on earlier ones (C1.2).` }
       ],
       exercises: [
         { q: String.raw`How many three-digit numbers contain at least one digit $0$?`, answer: "171",

@@ -170,7 +170,7 @@ Count pairs with binomial coefficients, regions with Euler's formula or the add-
       related: [
         { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, the source of region counts (G8.5).` },
         { card: "rectangles-in-grid", note: String.raw`rectangles and squares in a grid of lines (C8.2).` },
-        { card: "complementary-counting", note: String.raw`triangles as triples of points minus collinear triples (C1.2).` }
+        { card: "complementary-counting", note: String.raw`triangles as triples of points minus collinear triples (C1.3).` }
       ],
       exercises: [
         { q: String.raw`Into how many regions do $5$ lines in general position (no two parallel, no three through a point) divide the plane?`, answer: "16",
