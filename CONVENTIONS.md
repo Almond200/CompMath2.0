@@ -944,10 +944,9 @@ The code and title of each lesson come from the shelf, never from this file. A c
 **The lesson prose** follows the write-up prose rules (§2). It is plain paragraphs, with:
 - `$...$` and `$$...$$` for math;
 - `[[card-id]]` for a card link (it opens in the drawer);
-- `### ` for a subheading;
 - nothing else: the explanation runs in one piece, and the lesson's problems follow it (the `{{check N}}` markers were retired 2026-10-31).
 
-**Every lesson opens with `### Introduction`** (owner, 2026-10-31): one paragraph that summarizes the lesson. It names the kind of problem the idea answers (with two or three concrete instances), the idea in a sentence, what the lesson covers, and where the chapter goes next. **No paragraph is given over to a worked example** (owner, 2026-10-31): the teaching sections explain the idea well enough that the checks and problems can be solved, and the solutions show the worked routes. A small instance inside an explanation is fine when it is part of the argument (the powers of $2$ modulo $12$ showing a late cycle). The outline's "Opening question" lines are material for the Introduction and the checks, not a section of their own. Lesson text is set larger than a card's write-up (16.5px, in the main text colour), since a lesson is read straight through.
+**A lesson's explanation is one flowing section of paragraphs, with no subheadings** (owner, 2026-10-31: headings cut the reasoning into disjointed pieces). The first paragraph summarizes the lesson: the kind of problem the idea answers (two or three concrete instances), the idea in a sentence, and what it buys. The paragraphs after it explain every nuance in order, each following from the one before, as accurately as is reasonable, and the last says when to reach for the idea and where the chapter goes next. Lesson text is set larger than a card's write-up (16.5px, in the main text colour), since a lesson is read straight through.
 
 A lesson never restates a card's content: it says why the idea is needed and how it connects, and links the card (one fact, one home). Every number is checked by computation before it is written.
 

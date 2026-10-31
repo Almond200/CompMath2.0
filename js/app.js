@@ -5457,7 +5457,7 @@
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        ${(d.problems || []).length ? `<h3 class="lp-h3">Contest problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+        ${(d.problems || []).length ? `<h3 class="lp-h3">Contest practice problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
     learnBookShell(b, c, isReview ? "review" : l, main);
     if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
