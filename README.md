@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Algebra L10 Polynomials for the AMC 12 written.** L10.1 Introduction, L10.2 Vieta for any degree and Newton's sums, L10.3 conjugate and transformed roots, L10.4 remainders and interpolation, L10.5 radicals and reciprocal substitutions, L10.6 factorizations worth knowing, L10.7 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L9 Logarithms and exponential equations written.** L9.1 Introduction, L9.2 the logarithm laws and change of base, L9.3 logarithmic and exponential equations, L9.4 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L8 Inequalities, extremes and estimates written; the Core topics part is complete.** L8.1 Introduction, L8.2 a square is never negative, L8.3 AM-GM and fixed sums, L8.4 distances on the number line, L8.5 extremes by arrangement, L8.6 estimating and checking, L8.7 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L7 Polynomials written.** L7.1 Introduction, L7.2 division and the remainder theorem, L7.3 rational roots and coefficients, L7.4 Summary, Review Problems and Challenge Problems.
