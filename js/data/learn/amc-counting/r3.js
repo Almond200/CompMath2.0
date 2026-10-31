@@ -47,7 +47,7 @@ Read sums of products as committees, coefficients as multinomials, and combined 
       related: [
         { card: "hockey-stick", note: String.raw`summing a diagonal of Pascal's triangle (R1.4).` },
         { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.3).` },
-        { card: "partitions", note: String.raw`generating functions for partitions (C9.1).` }
+        { card: "partitions", note: String.raw`generating functions for partitions (C9.2).` }
       ],
       exercises: [
         { q: String.raw`Find $\binom60^2 + \binom61^2 + \cdots + \binom66^2$.`, answer: "924",

@@ -967,7 +967,9 @@ The code and title of each lesson come from the shelf, never from this file. A c
 
 A lesson never restates a card's content: it says why the idea is needed and how it connects, and links the card (one fact, one home). Every number is checked by computation before it is written.
 
-**The lesson's problems and solutions** (owner, 2026-10-31, replacing the checks of LQ5). After the explanation come the lesson's own problems, numbered by lesson ("Problem N3.1.1"), each in its own card with "Jump to solution" (the solution has "Back to problem"), with no answer box and no marking, so they read as practice, not as a test to pass. Then "Solutions" gives a worked solution to each, in order, each under the problem stated again in its card ("Solution for Problem N3.1.1:"), and then the contest problems follow under "Contest problems". Each exercise has `q`, `solution` (a worked solution, not one line), and `answer` (the final answer, kept in the keyboard grammar so it can be checked by script). Every number in a solution is computed.
+**The lesson's problems and solutions** (owner, 2026-10-31, replacing the checks of LQ5). After the explanation come the lesson's own problems, numbered by lesson ("Problem N3.1.1"), each in its own card with "Jump to solution" (the solution has "Back to problem"), with no answer box and no marking, so they read as practice, not as a test to pass. Then come the contest problems (headed Exercises in a lesson, Contest problems on Review and Challenge Problems), and last "Solutions", a worked solution to each of our own problems, in order, each under the problem stated again in its card ("Solution for Problem N3.1.1:"). This order (our problems, contest problems, solutions) holds on every page (owner, 2026-10-31).
+
+**Every problem has a label** that names it uniquely (owner, 2026-10-31). A page's contest problems are numbered on from its own problems: if C1.2 has three problems of its own, its contest problems are Problem C1.2.4, C1.2.5, ..., shown as "Problem C1.2.4 · 2009 AIME I #1". Review and Challenge Problems are numbered from their page code (Problem C1.8.1). An old chapter review, with no page code, uses Problem N3.R.1, N3.R.2, .... The contest problems are numbered in the order they are shown, easiest first. Each exercise has `q`, `solution` (a worked solution, not one line), and `answer` (the final answer, kept in the keyboard grammar so it can be checked by script). Every number in a solution is computed.
 
 The math keyboard and its grammar (`js/learn-answer.js`, described below as first built) are kept in the code but unused, at the owner's word, in case typed answers return:
 - **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷`, `^`, `√`, `π`, brackets, a comma, ← and →, backspace, and Clear.
@@ -1040,8 +1042,8 @@ The old list addresses are kept (§9).
 - **The lessons** follow, numbered from X.2.
 - **The Summary** is the last lesson. It recaps the concepts in a few paragraphs, then gives a bulleted list under the heading Problem Solving Strategies (the `strategies` field).
 - **Numbering:** the two closing pages are numbered on from the Summary (C5.9 Review Problems, C5.10 Challenge Problems), and their own problems like a lesson's (Problem C5.9.1).
-- **Review Problems** (`reviewProblems`) mostly test comprehension: our own problems with worked solutions first, then a few contest problems.
-- **Challenge Problems** (`challenge`) are harder: contest problems first, our own when too few fit.
+- **Review Problems** (`reviewProblems`) mostly test comprehension: our own problems first, then a few contest problems, then the worked solutions of our own problems.
+- **Challenge Problems** (`challenge`) are harder: contest problems where enough fit, our own when too few do; the page shows our own first, then the contest problems, then the solutions, like every page.
 - **Order:** every list of problems runs from easiest to hardest. The contest lists are sorted by difficulty when drawn; our own problems are written in that order.
 
 A chapter not yet moved to this structure keeps its overview page and its chapter review until it is reworked.

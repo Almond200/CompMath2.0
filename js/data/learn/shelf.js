@@ -1576,19 +1576,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C8.1",
-      "title": "The handshake lemma and degree counting"
+      "title": "Introduction"
      },
      {
       "code": "C8.2",
-      "title": "Counting cells and shapes on grids"
+      "title": "The handshake lemma and degree counting"
      },
      {
       "code": "C8.3",
-      "title": "Coloring and parity"
+      "title": "Counting cells and shapes on grids"
      },
      {
       "code": "C8.4",
+      "title": "Coloring and parity"
+     },
+     {
+      "code": "C8.5",
       "title": "Extremal arguments and pigeonhole"
+     },
+     {
+      "code": "C8.6",
+      "title": "Summary"
      }
     ]
    },
@@ -1599,19 +1607,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C9.1",
-      "title": "Generating functions for simple coefficient counts"
+      "title": "Introduction"
      },
      {
       "code": "C9.2",
-      "title": "More symmetry: Burnside in depth, cycle structure"
+      "title": "Generating functions for simple coefficient counts"
      },
      {
       "code": "C9.3",
-      "title": "Geometric probability beyond simple regions"
+      "title": "More symmetry: Burnside in depth, cycle structure"
      },
      {
       "code": "C9.4",
+      "title": "Geometric probability beyond simple regions"
+     },
+     {
+      "code": "C9.5",
       "title": "More recursions and random processes; games"
+     },
+     {
+      "code": "C9.6",
+      "title": "Summary"
      }
     ]
    }

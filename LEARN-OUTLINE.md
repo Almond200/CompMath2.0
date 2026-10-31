@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1 to C7 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9) is in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1318,19 +1318,23 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C8.1 The handshake lemma and degree counting | `handshake-lemma`, `tree-basics`, `eulerian-paths`, *(pattern)* `round-robin-tournaments` |
-| C8.2 Counting cells and shapes on grids | `rectangles-in-grid` |
-| C8.3 Coloring and parity | `coloring-arguments`, `graph-coloring` |
-| C8.4 Extremal arguments and pigeonhole | `pigeonhole`, `pigeonhole-argument`, `extremal-principle`, `pairing-to-bound` |
+| C8.1 Introduction | no card (the chapter's opening page: graphs and degrees, shapes on grids, coloring arguments, pigeonhole and extremal arguments, with comprehension problems) |
+| C8.2 The handshake lemma and degree counting | `handshake-lemma`, `tree-basics`, `eulerian-paths`, *(pattern)* `round-robin-tournaments` |
+| C8.3 Counting cells and shapes on grids | `rectangles-in-grid` |
+| C8.4 Coloring and parity | `coloring-arguments`, `graph-coloring` |
+| C8.5 Extremal arguments and pigeonhole | `pigeonhole`, `pigeonhole-argument`, `extremal-principle`, `pairing-to-bound` |
+| C8.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C8.7 Review Problems and C8.8 Challenge Problems |
 
 ### C9. Counting and probability extensions (Extension)
 
 | Lesson | Cards |
 |---|---|
-| C9.1 Generating functions for simple coefficient counts | `generating-function-method`, `partitions` |
-| C9.2 More symmetry: Burnside in depth, cycle structure | `permutation-cycle-structure` |
-| C9.3 Geometric probability beyond simple regions | `product-of-uniforms`, `order-statistics`, `variance-independence` |
-| C9.4 More recursions and random processes; games | `transfer-matrix-method`, `strategy-stealing`, *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
+| C9.1 Introduction | no card (the chapter's opening page: generating functions, cycles of a permutation, continuous random numbers, transfer matrices, games and logic, with comprehension problems) |
+| C9.2 Generating functions for simple coefficient counts | `generating-function-method`, `partitions` |
+| C9.3 More symmetry: Burnside in depth, cycle structure | `permutation-cycle-structure` |
+| C9.4 Geometric probability beyond simple regions | `product-of-uniforms`, `order-statistics`, `variance-independence` |
+| C9.5 More recursions and random processes; games | `transfer-matrix-method`, `strategy-stealing`, *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
+| C9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C9.7 Review Problems and C9.8 Challenge Problems |
 
 ---
 

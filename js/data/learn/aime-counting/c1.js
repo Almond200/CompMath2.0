@@ -47,7 +47,7 @@ For coloring problems the order is chosen so that each new region touches as few
 Use the product rule whenever the objects can be built step by step, put the restricted steps first, and split into cases exactly where a count would otherwise depend on an earlier choice. The next lesson counts what is not wanted instead.`,
       related: [
         { card: "casework-method", note: String.raw`splitting a count into disjoint cases, the sum rule in practice.` },
-        { card: "graph-coloring", note: String.raw`the general count of colorings with neighbors different (C8.3).` },
+        { card: "graph-coloring", note: String.raw`the general count of colorings with neighbors different (C8.4).` },
         { card: "uniform-overcount", note: String.raw`what to do when different decision sequences build the same object (C1.5).` }
       ],
       exercises: [

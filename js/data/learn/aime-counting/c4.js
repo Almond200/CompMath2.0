@@ -79,7 +79,7 @@ Pairs of sets are counted element by element, which is a double count of the ele
 
 When a problem asks for a total that looks like a sum over many objects, ask what pairs that total counts, and count those pairs from the other side. The next lesson uses symmetry to get counts and probabilities without counting.`,
       related: [
-        { card: "handshake-lemma", note: String.raw`the degrees of a graph add to twice the number of edges, a double count of edge ends (C8.1).` },
+        { card: "handshake-lemma", note: String.raw`the degrees of a graph add to twice the number of edges, a double count of edge ends (C8.2).` },
         { card: "subset-sum-facts", note: String.raw`each element lies in half of all subsets, the element-by-element count (C3.4).` },
         { card: "vandermonde", note: String.raw`a committee from two groups counted by how many come from each (C4.5).` }
       ],
@@ -115,7 +115,7 @@ Use symmetry to replace a count by a fraction, and Burnside whenever objects rel
       related: [
         { card: "necklace-formula", note: String.raw`Burnside for the rotations of a circle (C2.3).` },
         { card: "wlog-symmetry", note: String.raw`assuming an order because the problem is symmetric (A8.1).` },
-        { card: "permutation-cycle-structure", note: String.raw`the cycles of a symmetry, which decide what it fixes (C9.2).` }
+        { card: "permutation-cycle-structure", note: String.raw`the cycles of a symmetry, which decide what it fixes (C9.3).` }
       ],
       exercises: [
         { q: String.raw`The vertices of a square are colored with $3$ colors. How many colorings are there if colorings that differ by a rotation are the same?`, answer: "24",
