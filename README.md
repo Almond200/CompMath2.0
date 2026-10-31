@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Docs: PLAN's Current state brought up to date with the rest of the seventeenth chat; CONVENTIONS records How to Use This Book, the shelf's lesson counts, and the chat's interface rules (the preview drawn by the pages' own code, defaults listed first, the settings search's words, printing, figures, phone-only changes, small buttons).
 - A book's page shows its chapters and lessons without "written so far", and its contents give each chapter's number of lessons. Printing leaves out everything that floats or only works on screen: toasts such as Link copied, menus, the drawer, the phone navigation, and the card buttons (star, +, Open).
 - Home: Practice at a glance has a "See all" link in its heading row, like Textbooks, and no longer has the random-problem and every-contest links at its foot.
 - Home: each textbook shows its number of lessons, not "X of X".

@@ -912,6 +912,16 @@ See `MIGRATION-NOTES.md` for the full answers.
 - `node tools/check-pages.js '#/f/<id>' ...` prints only light 1280 rows and FAIL rows, so no FAIL means all four modes passed.
 - **The search index in a cloud chat:** test `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights also come from `cas-server.xethub.hf.co`), then `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` (the CPU-only torch first: the default GPU build is several GB and stalled on 2026-10-30) and `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Otherwise it is rebuilt on the Mac. Then the eval (`tools/search-eval.html`, at least 160/187) and `MathSemantic.info().cards` equal to the card count.
 
+
+**Interface rules from the seventeenth chat (owner, 2026-10-31):**
+- **The Settings preview is drawn by the pages' own code** (`problemDetailHtml`, `learnBookShellHtml`, `learnLessonMainHtml`, `learnDrawerInnerHtml`), so it can never drift from the pages. No screen repeats another's content.
+- **Every setting lists its default option first.** `SETTING_DEFAULTS` holds the defaults, and they are the loader's fallbacks.
+- **The settings search** finds a setting from its name, its everyday words (the `ALSO` map), its options and its description. A new setting gets its everyday words there.
+- **Printing** typesets every card first (`prepareMathForPrint`). Anything that floats or only works on screen is hidden in `@media print`: toasts, menus, drawers, card buttons. A new floating control joins that list.
+- **Our own problem figures** show only inside How this problem works, never with the statement, and with no "drawn for this app" note.
+- **Wide screens and phones are separate.** A phone change sits inside a phone media query and never alters the wide layout. Sticky elements need `overflow-x: clip`, never `hidden`, on `html` and `body`.
+- **Small action buttons** (the new-list +, Show / Hide) are solid tints that only brighten slightly on hover.
+
 ## 14. Learn: lessons, checks and problem sets (PLAN step L3, 2026-10-31)
 
 The rules for the Learn space. What each book, chapter and lesson holds is in `LEARN-OUTLINE.md`; the plan is `PLAN.md`; the owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`.
@@ -1025,3 +1035,8 @@ The old list addresses are kept (§9).
 - **Order:** every list of problems runs from easiest to hardest. The contest lists are sorted by difficulty when drawn; our own problems are written in that order.
 
 A chapter not yet moved to this structure keeps its overview page and its chapter review until it is reworked.
+
+
+**How to Use This Book (owner, 2026-10-31).** Every book's contents open with "Contents and Introduction": Contents (the page itself) and How to Use This Book (`#/learn/<book>/how-to-use`). Its text is one per track, AMC or AIME; only the meaning of Core and Core II differs (AMC: early to middle problems, hard problems; AIME: early AIME problems, later AIME problems). A change to how the books work is written there too.
+
+**Counts on the shelf.** Books and chapters show how many lessons they have, never "X of Y written".
