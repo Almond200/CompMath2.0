@@ -3725,7 +3725,7 @@ body.is-landing .content { padding: 0 0 50px; }
 .hm-intro { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
 .hm-name { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
 .hm-sub { margin: 0; font-size: 13.5px; color: var(--text-dim); }
-.hm-spaces { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.hm-spaces { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-card); }
 .hm-space { display: flex; flex-direction: column; gap: 1px; padding: 9px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); border-top: 3px solid var(--tint); }
 .hm-space:first-child { border-left: none; }
 .hm-space:hover { background: var(--tint-soft); }
@@ -3740,19 +3740,19 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hm-h, .home .hp-label { margin: 0 0 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .hm-h-row { display: flex; justify-content: space-between; align-items: baseline; }
 .hm-more { font-size: 12.5px; font-weight: 650; color: var(--c-learn); text-decoration: none; }
-/* Problem of the day: the whole section opens the problem, and says so on hover. */
-.home .hp-daily { cursor: pointer; }
-.home .hp-daily:hover { background: none; }
-.home .hp-daily .daily-st { border: 1px solid transparent; border-radius: 10px; transition: border-color 0.15s, box-shadow 0.15s; }
+/* Problem of the day: the whole section opens the problem. On hover its background is filled in
+   a rectangle, like a card row's (owner, 2026-10-31). The section reaches 12px past the column
+   on each side so its text still lines up with the sections around it. */
+.home .hp-daily { cursor: pointer; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; transition: background 0.12s; }
+.home .hp-daily.hp-click:hover, .home .hp-daily.hp-click:focus-visible { background: var(--space-soft); }
+.home .hp-daily:hover + * , .home .hp-daily:focus-visible + * { border-top-color: transparent; }
 .home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 10px; }
+.home .hp-daily .daily-st { padding-bottom: 12px; }
+.home .hp-daily .daily-st .prob-credit { margin: 2px 14px 0; }
 .daily-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.daily-go { font-size: 13px; font-weight: 700; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity 0.15s, transform 0.15s; white-space: nowrap; }
-.home .hp-daily:hover .daily-title, .home .hp-daily:focus-visible .daily-title { color: var(--accent); }
-.home .hp-daily:hover .daily-go, .home .hp-daily:focus-visible .daily-go { opacity: 1; transform: none; }
-.home .hp-daily:hover .daily-st { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.daily-go { font-size: 13px; font-weight: 700; color: var(--text-dim); opacity: 0; transition: opacity 0.12s; white-space: nowrap; }
+.home .hp-daily:hover .daily-go, .home .hp-daily:focus-visible .daily-go { opacity: 1; }
 @media (hover: none) { .daily-go { opacity: 1; transform: none; } }
-.home .hm-sub-h { margin: 10px 0 2px; font-size: 13px; font-weight: 750; color: var(--text-dim); }
-.home .hm-sub-h:first-of-type { margin-top: 0; }
 .home .rc-row { padding-top: 6px; padding-bottom: 6px; }
 .home .pg-row { padding-top: 6px; padding-bottom: 6px; }
 .home .dyk { font-size: 14px; }
