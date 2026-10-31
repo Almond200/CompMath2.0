@@ -2736,7 +2736,8 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-main { min-width: 0; max-width: 760px; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
 .lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 8px; }
-.lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 4.6em; }
+.lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 11.5em; }
+@media (max-width: 600px) { .lp-cards-label { min-width: 0; flex-basis: 100%; } }
 .lp-body p { line-height: 1.7; }
 .lp-h3 { margin: 30px 0 10px; font-size: 18px; }
 
