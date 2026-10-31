@@ -272,7 +272,7 @@ Eight chapters. The changes from the first draft are three:
 | N2.4 | 1993 AIME #6 (three conditions joined into $n \equiv 495 \pmod{990}$); 2014 AIME I #8 ($N(N - 1)$ splits $16$ and $625$ between consecutive integers) |
 | N2.5 | 2012 AIME I #10 (two square roots modulo $125$, combined with modulo $8$); 2012 AIME II #12 (CRT makes every residue triple one residue modulo $1001$); 2011 AIME II #14 (bijections modulo $2$, $3$, $5$, joined by CRT) |
 
-**N2 review (to fill to 8 to 12):**
+**N2 review (10 problems, filled 2026-10-31; written in `js/data/learn/aime-number-theory/n2.js`):** 2004 AMC 10B #21 (common terms of two progressions: one residue modulo $21$); 2017 AMC 10B #23, twin 2017 AMC 12B #19 ($45 = 5 \cdot 9$, the digit sum modulo $9$, joined); 2020 AMC 10A #24 (conditions modulo $21$ and $60$ joined); 2023 AIME I #7 (remainders that must agree modulo common factors); 1993 AIME #9 (triangular positions agreeing modulo $2000$, split by CRT); and the five below.
 - 2013 AIME I #11 (read: linear congruences in $k$ modulo $9$, $11$, $13$, then CRT);
 - 2017 AIME I #9 (read: $100 \equiv 1 \pmod{99}$, then CRT modulo $9$ and $11$);
 - 2026 AIME I #8 (read: CRT turns $\equiv 5 \pmod{12}$ into conditions mod $3$ and $4$ on divisor exponents; assumes `number-of-divisors`);
@@ -390,7 +390,7 @@ Eight chapters. The changes from the first draft are three:
 - 2024 AIME I #13 needs Hensel lifting, so it goes to N8.2.
 - 2023 AIME II #15 needs inverses and binary expansions, so it goes to the N6 review.
 
-**Pilot status (2026-10-31):** every N3 problem has been read and placed, and the review is full. N2's review still needs 3 to 7 more problems; candidates come from the `crt`, `modular-inverse` and `euclids-lemma` cards (1992 AIME #11 and 1994 AIME #12 cite `euclids-lemma`, still to read).
+**Pilot status (2026-10-31):** N2 and N3 are written in full (`js/data/learn/aime-number-theory/n2.js`, `n3.js`).
 
 ### N4. Valuations and factorial divisibility (Core II)
 
