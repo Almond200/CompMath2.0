@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **C7 written (2026-10-31).** C7.1 linearity of expectation and indicators, C7.2 expected fixed points and the tail-sum formula, C7.3 total expectation and first-step analysis with well-chosen states, C7.4 geometric waiting times, restart equations for turn-based games and gambler's ruin; five review problems.
 - **C6 written (2026-10-31).** C6.1 equally likely sample spaces and drawing without replacement, C6.2 conditional probability and Bayes with a convenient population, C6.3 independence, binomial and hypergeometric counts, C6.4 complements, inclusion-exclusion and ties in probability, C6.5 geometric probability as ratios of areas; nine review problems.
 - **C5 written (2026-10-31).** C5.1 recursions from the last step or the largest element, C5.2 tilings and several-state recursions, C5.3 filling a grid of path counts and labeling game positions backward, C5.4 invariants and monovariants, C5.5 lattice paths through points, around obstacles and by turns; three review problems.
 - **C4 written (2026-10-31).** C4.1 bijections, Catalan numbers, reflection and the ballot problem, C4.2 double counting, committees with a chair and nested subsets, C4.3 symmetry arguments and Burnside's lemma, C4.4 the binomial identities (Pascal, row sums, hockey stick, Vandermonde, multinomial); six review problems.
