@@ -28,7 +28,7 @@ $JSC tools/validate-problem-db.js
 
 ## Standing preferences
 - Update the files regularly, but not too often (owner, 2026-10-24): update "Current state" in `PLAN.md` and the README changelog, and commit and push, about every 30 cards or 25 problems, and at the end of a step.
-- Filter candidates with common sense before they go into `QUESTIONS.md`: propose only what AMC and AIME problems actually use, not results that are never used there, such as Dirac's theorem or the Prime Number Theorem estimate (owner, 2026-10-30).
+- Filter candidates with common sense before they go into `QUESTIONS.md`: propose what AMC, AIME or olympiad problems actually use. An olympiad-only result belongs when it is shown to be significant there (cite the kind of problem it solves); results never used in contests, such as Dirac's theorem or the Prime Number Theorem estimate, stay out (owner, 2026-10-30).
 - Every missing formula or card found while tagging goes into `QUESTIONS.md` ("Candidate new cards from the practice pass", next P-number, at the top of the table) for approval; the problem cites the nearest card meanwhile.
 - Never put the owner's name in the app's files.
 - Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
