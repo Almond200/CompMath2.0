@@ -950,7 +950,8 @@ The code and title of each lesson come from the shelf, never from this file. A c
 A lesson never restates a card's content: it says why the idea is needed and how it connects, and links the card (one fact, one home). Every number is checked by computation before it is written.
 
 **Checks** (LQ5) are answered by typing with the app's math keyboard. The student never types LaTeX.
-- **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷` (a fraction), `^`, `√`, `π`, brackets, a comma (for a list of answers), backspace and clear.
+- **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷` (a fraction), `^`, `√`, `π`, brackets, a comma (for a list of answers), ← and → to move the caret, backspace, and Clear.
+- **Typed forms accepted** (owner, 2026-10-31): `sqrt(2)`, `sqrt 2`, `√2`, `cbrt`/`∛`, `pi`, `2**3`, `2²`, `·`, square and curly brackets, LaTeX (`\frac{3}{4}`, `\sqrt{3}`, `\pi`, `\cdot`), a leading `x = `, `1,000` as one number, "and"/"or" between list items, and `2±√3` as the two answers. Two numbers side by side (`1 1/2`) are refused rather than read as a product. While typing, `sqrt`, `pi`, `*`, `/` and `-` turn into √, π, ×, ÷ and −. An answer that cannot be read says why in plain words.
 - **Display:** the keypad pops up under the answer box when the box is pressed (owner, 2026-10-31), with the answer typeset at its top as it is built; it closes on a press outside, on Check, or on Escape.
 - **Stored form:** the plain expression grammar, for example `3/4`, `2sqrt(3)`, `7pi/2`, `-5`, `4, 9`.
 - **Code:** `js/learn-answer.js` reads the grammar, typesets it and compares values; the app and the gate load the same file.

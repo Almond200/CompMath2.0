@@ -5208,42 +5208,54 @@
   // (inputmode="none"); on a computer the physical keys work too.
   const MK_KEYS = [
     ["7", "7"], ["8", "8"], ["9", "9"], ["÷", "÷", "Fraction (divide)"], ["(", "("], [")", ")"],
-    ["4", "4"], ["5", "5"], ["6", "6"], ["×", "×", "Times"], ["^", "^", "Power"], ["√", "√(", "Square root"],
+    ["4", "4"], ["5", "5"], ["6", "6"], ["×", "×", "Times"], ["xⁿ", "^", "Power"], ["√", "√(", "Square root"],
     ["1", "1"], ["2", "2"], ["3", "3"], ["−", "−", "Minus"], ["+", "+"], ["π", "π", "Pi"],
-    ["0", "0"], [".", ".", "Decimal point"], [",", ", ", "Comma, for a list of answers"], ["⌫", "back", "Backspace"], ["C", "clear", "Clear"]
+    ["0", "0"], [".", ".", "Decimal point"], [",", ", ", "Comma, for a list of answers"], ["←", "left", "Move left"], ["→", "right", "Move right"], ["⌫", "back", "Backspace"]
   ];
   // The stored form is the plain grammar: 3/4, 2sqrt(3), 7pi/2, -5, 4, 9.
-  const mkPlain = s => s.replace(/√/g, "sqrt").replace(/π/g, "pi").replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").trim();
-  const mkShow = s => s.replace(/sqrt/g, "√").replace(/pi/g, "π").replace(/\*/g, "×").replace(/\//g, "÷").replace(/(\d)-|^-|([(,^]\s*)-/g, (m, a, b) => (a || b || "") + "−");
+  const mkPlain = s => s.replace(/√/g, "sqrt").replace(/∛/g, "cbrt").replace(/π/g, "pi").replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").trim();
+  // The box shows the symbols: typed sqrt, pi, *, / and - become √, π, ×, ÷ and −. LaTeX typed
+  // by habit (anything with a backslash) is left as it is; the grammar reads it.
+  const mkShow = s => /\\/.test(s) ? s : s.replace(/\*\*/g, "^").replace(/sqrt/gi, "√").replace(/cbrt/gi, "∛").replace(/pi/gi, "π")
+    .replace(/[*·]/g, "×").replace(/\//g, "÷").replace(/[-–]/g, "−");
   function mathKeyboardHtml(value) {
     return `<div class="mk">
         <div class="mk-row">
-          <input class="mk-input" type="text" inputmode="none" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" value="${escapeAttr(mkShow(value || ""))}">
+          <input class="mk-input" type="text" inputmode="none" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="done" aria-label="Your answer" placeholder="Your answer" maxlength="120" value="${escapeAttr(mkShow(value || ""))}">
           <button type="button" class="mk-submit">Check</button>
         </div>
         <div class="mk-pop">
-        <div class="mk-preview" aria-live="polite"></div>
-        <div class="mk-keys">${MK_KEYS.map(([label, ins, name]) => `<button type="button" class="mk-key${/^\d$/.test(label) ? " mk-digit" : ""}${ins === "back" || ins === "clear" ? " mk-edit" : ""}" data-mk="${escapeAttr(ins)}"${name ? ` aria-label="${name}" title="${name}"` : ""}>${label}</button>`).join("")}</div>
+          <div class="mk-top"><div class="mk-preview" aria-live="polite"></div><button type="button" class="mk-key mk-clear" data-mk="clear">Clear</button></div>
+          <div class="mk-keys">${MK_KEYS.map(([label, ins, name]) => `<button type="button" class="mk-key${/^\d$/.test(label) ? " mk-digit" : ""}${/^(back|left|right)$/.test(ins) ? " mk-edit" : ""}" data-mk="${escapeAttr(ins)}"${name ? ` aria-label="${name}" title="${name}"` : ""}>${label}</button>`).join("")}</div>
+          <p class="mk-hint">You can also type: sqrt(2), pi, 2^10, 3/4, and a comma between answers.</p>
         </div>
       </div>`;
   }
+  // The typeset answer at the top of the pop-up; while the answer cannot be read yet, a short
+  // note says why (an answer still being built, like "3+", just shows a dot).
   function mkPreview(box) {
     const input = box.querySelector(".mk-input"), out = box.querySelector(".mk-preview");
     const plain = mkPlain(input.value);
+    out.classList.remove("mk-note");
     if (!plain) { out.textContent = ""; return; }
     try {
       const tex = window.LearnAnswer.toTex(window.LearnAnswer.closeOpen(plain));
       if (window.katex) window.katex.render(tex, out, { throwOnError: false, displayMode: false });
       else out.textContent = tex;
-    } catch (e) { out.textContent = ""; }
+    } catch (e) {
+      out.classList.add("mk-note");
+      out.textContent = /^Something is missing after|stops too soon|needs a number after/.test(e.message) ? "…" : e.message;
+    }
   }
   function mkPress(box, ins) {
     const input = box.querySelector(".mk-input");
     let v = input.value, a = input.selectionStart, z = input.selectionEnd;
     if (a == null) a = z = v.length;
     if (ins === "clear") { v = ""; a = z = 0; }
+    else if (ins === "left") { a = z = Math.max(0, (a === z ? a - 1 : a)); }
+    else if (ins === "right") { a = z = Math.min(v.length, (a === z ? z + 1 : z)); }
     else if (ins === "back") {
-      if (a === z && a > 0) a -= v.slice(0, a).endsWith("√(") ? 2 : v.slice(0, a).endsWith(", ") ? 2 : 1;
+      if (a === z && a > 0) a -= /(√\(|∛\(|, )$/.test(v.slice(0, a)) ? 2 : 1;
       v = v.slice(0, a) + v.slice(z); z = a;
     } else { v = v.slice(0, a) + ins + v.slice(z); a = z = a + ins.length; }
     input.value = v;
@@ -5251,6 +5263,15 @@
     // student put it; the box is not focused here, which would open a phone's own keyboard.
     try { input.setSelectionRange(a, z); } catch (e) {}
     mkPreview(box);
+  }
+  // Typing on a keyboard: the symbols are put in as they are typed, keeping the caret in place.
+  function mkTyped(input) {
+    const a = input.selectionStart, v = input.value;
+    if (a == null || /\\/.test(v)) return;
+    const before = mkShow(v.slice(0, a)), after = mkShow(v.slice(a));
+    if (before + after === v) return;
+    input.value = before + after;
+    try { input.setSelectionRange(before.length, before.length); } catch (e) {}
   }
 
   // A check (LQ5): typed with the keyboard, compared by value, then marked and explained in one
@@ -5463,7 +5484,7 @@
     try { window.LearnAnswer.parse(typed); }
     catch (err) {
       res.hidden = false; res.className = "lc-result lc-unread";
-      res.textContent = "This answer cannot be read yet: check the brackets and the signs.";
+      res.textContent = "This answer cannot be read yet. " + err.message;
       return;
     }
     const ok = window.LearnAnswer.same(typed, ch.answer);
@@ -5475,7 +5496,7 @@
   }
   $content.addEventListener("input", e => {
     const input = e.target.closest(".lesson-page .mk-input");
-    if (input) { mkPreview(input.closest(".mk")); return; }
+    if (input) { if (!e.isComposing) mkTyped(input); mkPreview(input.closest(".mk")); return; }
     const notes = e.target.closest(".lesson-page .lp-notes");
     if (!notes) return;
     const li = notes.closest(".lp-prob");
