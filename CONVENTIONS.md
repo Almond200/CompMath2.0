@@ -979,8 +979,8 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 
 **The book view** (owner, 2026-10-31). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book. Its structure follows an online textbook, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
 - a rounded rail of tabs on the left: C for the contents, then each chapter's number; the current one tinted; hovering a tab shows the chapter's name in a small card with a pointer;
-- a header card: the cover, then two rows, the chapter's and the page's, each with a small label and two arrow buttons;
-- each problem as one card: a tinted header row (its number, and its contest reference as a chip), the statement as plain text, the work box, and Show Solution under it, which becomes Hide Solution once shown;
+- a header card attached to the top of the page (it scrolls away with the page; no sticky headers): the cover, then two rows, the chapter's and the page's, each with a small label and two arrow buttons;
+- each problem in its first look: a rounded card with its number and contest reference, the statement, the work box, and Show Solution under it, which becomes Hide Solution once shown;
 - at the bottom, the previous and next pages as two cards saying where they lead, with Back to top between them.
 
 The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.

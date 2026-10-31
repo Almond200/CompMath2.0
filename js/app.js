@@ -5337,17 +5337,13 @@
       const saved = prog[p.slug] || {};
       const ownFig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
-          <div class="lp-prob-head"><span class="lp-prob-n">Problem ${i + 1}</span><a class="lp-prob-ref" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
-          <div class="lp-prob-body">
+          <div class="lp-prob-head"><span class="lp-prob-n">${i + 1}.</span> <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
           ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div><p class="prob-credit"></p></section>`
             : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
           ${ownFig ? `<div class="diagram prob-own-figure">${ownFig}<div class="prob-own-note">Diagram drawn for this app, not part of the original problem.</div></div>` : ""}
-          <div class="lp-work">
-            <textarea class="lp-notes" rows="3" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
-            <button type="button" class="lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
-          </div>
+          <textarea class="lp-notes" rows="4" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
+          <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
           <div class="prob-chain lp-sol" hidden></div>
-          </div>
         </li>`;
     }).join("")}</ol>`;
   }

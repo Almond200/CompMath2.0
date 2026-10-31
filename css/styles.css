@@ -2823,7 +2823,7 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-main a.bk-start, .lp-main a.bk-start:visited { background: var(--c-learn); color: #0d1a07; }
 :root[data-theme="light"] .lp-main a.bk-start { color: #fff; }
 /* Dark text on the light green buttons in the dark theme (the theme's general button rule would make it pale). */
-:root[data-theme="dark"] .lesson-page .lp-main a.bk-start { color: #0d1a07; }
+:root[data-theme="dark"] .lesson-page .lp-main :is(a.bk-start, .lp-show) { color: #0d1a07; }
 .bk-levels { margin-top: 6px; }
 .bk-chapters { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
 .bk-ch-card { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; padding: 13px 14px; border-radius: 12px;
@@ -3740,12 +3740,14 @@ body.is-landing .content { padding: 0 0 50px; }
    The structure of an online textbook (a rail of chapter tabs, the chapter's and the page's
    title with arrows, problem blocks, previous and next at the bottom) drawn in the app's own
    language: rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines. */
-.content:has(> .bk-view) { padding-top: 18px; }
+.content:has(> .bk-view) { padding-top: 0; }
 .bk-view { --bk-ink: var(--bk-b); --bk-soft: color-mix(in srgb, var(--bk-a) 16%, transparent);
   display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; max-width: 1240px; margin: 0 auto; }
 :root[data-theme="dark"] .bk-view { --bk-ink: var(--bk-a); --bk-soft: color-mix(in srgb, var(--bk-a) 22%, transparent); }
-.bk-rail { position: sticky; top: calc(var(--topbar-h) + 14px); align-self: start; z-index: 30; display: flex; flex-direction: column; gap: 3px;
-  padding: 5px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); }
+/* The rail starts at the top like the header, and stays beside the page as it scrolls (the owner
+   asked for the sidebar not to scroll away); it is a side rail, not a header. */
+.bk-rail { position: sticky; top: var(--topbar-h); align-self: start; z-index: 30; display: flex; flex-direction: column; gap: 3px;
+  padding: 5px; border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; background: var(--bg-panel); }
 .bk-tab { position: relative; display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 8px;
   font-size: 14px; font-weight: 750; color: var(--text-dim); text-decoration: none; transition: background 0.12s, color 0.12s; }
 .bk-tab:first-child { font-size: 12.5px; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); border-radius: 8px 8px 4px 4px; margin-bottom: 3px; }
@@ -3758,11 +3760,10 @@ body.is-landing .content { padding: 0 0 50px; }
   background: var(--bg-card); border-left: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
 .bk-body { min-width: 0; }
-.bk-bars { position: sticky; top: calc(var(--topbar-h) + 14px); z-index: 25; display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px;
-  padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card);
-  /* The first shadow paints the page colour into the gap above the header, so text scrolling up
-     disappears behind it instead of showing between it and the top bar. */
-  box-shadow: 0 -15px 0 0 var(--bg), 0 4px 14px rgba(0, 0, 0, 0.06); }
+/* The header is attached to the top of the page, under the top bar, and scrolls away with the
+   page: no sticky headers (owner, 2026-10-31). */
+.bk-bars { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px;
+  padding: 10px 12px; border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; background: var(--bg-card); }
 .bk-bars-cover { grid-row: 1 / span 2; align-self: center; display: block; }
 .bk-bars-cover .bk-cover { width: 40px; padding: 4px; border-radius: 2px 6px 6px 2px; box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.2); }
 .bk-bars-cover .bk-series, .bk-bars-cover .bk-name { display: none; }
@@ -3783,21 +3784,17 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .bk-view .learn-h .lb-code, .bk-view .lb-code, .bk-view .lc-n { color: var(--bk-ink); }
 .bk-view .lc-check { border-left-color: var(--bk-ink); }
 .bk-view .lb-lessons li > a .lb-title { color: var(--bk-ink); }
-/* Problem blocks: one card each; a header row, a hairline, the statement, then the work box. */
-.lp-prob { margin: 0 0 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
-.lp-prob-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--bk-soft, var(--bg-panel)); }
-.lp-prob-n { font-size: 15px; font-weight: 800; color: var(--bk-ink, var(--text)); }
-.lp-prob-ref { font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg-card); color: var(--text-dim); text-decoration: none; border: 1px solid var(--border); }
-.lp-prob-ref:hover { color: var(--bk-ink, var(--accent)); border-color: var(--bk-ink, var(--accent)); }
-.lp-prob-body { padding: 14px 16px 16px; }
-.lp-work { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-.lp-work .lp-notes { width: 100%; margin: 0; border-radius: 8px; background: var(--bg); }
+/* Problems keep their first look (owner, 2026-10-31): a rounded card, the number and reference,
+   the statement, the box, and Show Solution under it. */
+.lp-prob { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.lp-prob-head { font-weight: 700; margin-bottom: 8px; }
+.lp-prob-n { color: var(--bk-ink, var(--c-learn)); margin-right: 4px; }
+.lp-prob-head a { color: var(--text); text-decoration: none; }
+.lp-prob-head a:hover { color: var(--bk-ink, var(--c-learn)); text-decoration: underline; }
+.lp-prob .prob-st { margin: 0 0 10px; }
 .lp-notes:focus { border-color: var(--bk-ink, var(--c-learn)); }
-.lp-show { font: inherit; font-size: 13.5px; font-weight: 700; padding: 7px 16px; border: none; border-radius: 8px; cursor: pointer;
-  background: var(--bk-ink, var(--c-learn)); color: #fff; }
-:root[data-theme="dark"] .lp-show { color: #0e1525; }
-.lp-show:hover { filter: brightness(1.1); }
-.lp-show:disabled, :root[data-theme="dark"] .lp-show:disabled { cursor: not-allowed; background: var(--bg-panel); color: var(--text-faint); border: 1px solid var(--border); filter: none; }
+.lp-show { border: none; cursor: pointer; background: var(--c-learn); color: var(--bg); }
+.lp-show:disabled { cursor: not-allowed; opacity: 0.45; filter: none; }
 .lp-sol { margin: 12px 0 0; }
 .bk-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 14px; margin: 36px 0 0; padding-top: 18px; border-top: 1px solid var(--border); }
 .bk-foot-card { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px;
@@ -3809,12 +3806,12 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .bk-foot-top { font-size: 13px; font-weight: 650; color: var(--text-dim); text-decoration: none; padding: 6px 10px; border-radius: 8px; }
 .bk-foot-top:hover { background: var(--bg-panel); color: var(--text); }
 @media (max-width: 899px) {
-  .content:has(> .bk-view) { padding-top: 12px; padding-left: 10px; padding-right: 10px; }
+  .content:has(> .bk-view) { padding-top: 0; padding-left: 10px; padding-right: 10px; }
   .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
-  .bk-rail { top: 8px; padding: 3px; }
+  .bk-rail { top: 0; padding: 3px; }
   .bk-tab { height: 32px; font-size: 13px; }
   .bk-tip { display: none !important; }
-  .bk-bars { position: static; grid-template-columns: minmax(0, 1fr); padding: 8px 10px; }
+  .bk-bars { grid-template-columns: minmax(0, 1fr); padding: 8px 10px; }
   .bk-bars-cover { display: none; }
   .bk-bar-k { display: none; }
   .bk-bar1 { font-size: 14.5px; }
@@ -3825,6 +3822,4 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 }
 /* Inside a problem block the statement is plain text, not a second box; the bars above already
    name the book and chapter, so the page's own eyebrow line is dropped. */
-.lp-prob .prob-statement { border: none; background: none; padding: 0 0 4px; }
-.lp-prob .prob-credit { margin: 4px 0 10px; }
 .bk-view .book-eyebrow { display: none; }
