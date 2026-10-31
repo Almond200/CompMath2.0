@@ -5050,7 +5050,7 @@
     // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
     // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
     const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
-    const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnWrittenIn(b) ? `${learnWrittenIn(b)} of ` : ""}${learnLessonsIn(b)} lessons</span></a>`).join("");
+    const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
       <div class="home">
         <div class="hm-intro">
