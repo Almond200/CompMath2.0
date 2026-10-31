@@ -297,6 +297,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The book view, rebuilt like an online textbook (2026-10-31, owner).** The contents sidebar is gone, replaced by an easier layout in each book's own colour:
+  - a slim **rail of chapter tabs** on the left (C for the contents, then 1, 2, 3, ...), the current one filled; hovering a tab shows the chapter's name in a small label with an arrow;
+  - **two title bars** over the page, the chapter's ("Chapter N3: Cycles, exponentiation and order") and the page's ("N3.1 ..."), each with round arrows to the previous and next chapter or page, and the cover at their left;
+  - **problem blocks** with a header bar ("Problem 1" and the contest reference), the statement as plain text, and the box for your work with Show Solution beside it (grey until you write something);
+  - **Previous, Back to Top, Next** in large type at the bottom. Pages run in one order through the book: each chapter's overview, its lessons, then its review.
+  - On a phone the rail narrows, the bars stop sticking and shorten their titles, and the work box sits above its button. Checked at 1280 and 375 px, light and dark: 0 KaTeX errors, no overflow, no console errors, and every arrow and bottom link was checked against the page order.
 - **Home page touches (2026-10-31, owner).**
   - **Did you know** is fixed again: one fact a day, the same on every reload, and the Another button is gone (this replaces the 2026-10-25 "changes every time" request; `dykSeen` is no longer written).
   - **Continue** lists only the cards and problems opened lately. Lessons and books stay out of it (many open lessons crowded it) and show only in Learn's "Recently opened" row, as small chips.

@@ -977,7 +977,7 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 | a lesson | `#/learn/<book-id>/<code>/<n>` (`.../n3/1` is N3.1) |
 | a chapter review | `#/learn/<book-id>/<code>/review` |
 
-**The book view** (owner, 2026-10-31). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book. Its pages (the contents, a chapter, a lesson, a review) share one sidebar: the cover and "Book contents", then every chapter, the current one open with its overview, lessons and review. On a phone the sidebar folds into one "Contents" line.
+**The book view** (owner, 2026-10-31, modelled on how an online textbook reads). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book. Every page in it has, in the book's colour: a slim rail of tabs on the left (C for the contents, then each chapter's number; hovering a tab names the chapter); two title bars, the chapter's and the page's, each with arrows to step back and forward; and Previous, Back to Top and Next at the bottom. The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom links follow. A problem is a block with a header bar (its number and its contest reference), the statement, and the student's box beside Show Solution.
 
 The old list addresses are kept (§9).
 
