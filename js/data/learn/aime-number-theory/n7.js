@@ -66,7 +66,7 @@ The signal is a factorial modulo a prime near it, or a question about which prim
       related: [
         { card: "multiplicative-order", note: String.raw`an order of exactly $4$ or $16$ forces the prime's residue modulo $4$ or $16$ (N3.3).` },
         { card: "eulers-criterion", note: String.raw`$-1$ is a square modulo $p$ exactly when $p \equiv 1 \pmod 4$ (N7.1).` },
-        { card: "modular-inverse", note: String.raw`the pairing of each residue with its inverse that proves Wilson's theorem (N2.1).` }
+        { card: "modular-inverse", note: String.raw`the pairing of each residue with its inverse that proves Wilson's theorem (N2.2).` }
       ],
       exercises: [
         { q: String.raw`What is the remainder when $15!$ is divided by $17$?`, answer: "1",

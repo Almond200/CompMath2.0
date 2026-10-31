@@ -917,23 +917,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N2.1",
-      "title": "Congruence rules, inverses, and when you may cancel"
+      "title": "Introduction"
      },
      {
       "code": "N2.2",
-      "title": "Linear congruences, and when they have solutions"
+      "title": "Congruence rules, inverses, and when you may cancel"
      },
      {
       "code": "N2.3",
-      "title": "The extended Euclidean algorithm and Bézout"
+      "title": "Linear congruences, and when they have solutions"
      },
      {
       "code": "N2.4",
-      "title": "The Chinese Remainder Theorem, for coprime moduli"
+      "title": "The extended Euclidean algorithm and Bézout"
      },
      {
       "code": "N2.5",
+      "title": "The Chinese Remainder Theorem, for coprime moduli"
+     },
+     {
+      "code": "N2.6",
       "title": "Compatible congruences with moduli that share factors; counting solutions"
+     },
+     {
+      "code": "N2.7",
+      "title": "Summary"
      }
     ]
    },

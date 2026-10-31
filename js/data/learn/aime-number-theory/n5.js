@@ -6,7 +6,7 @@ window.MATH_LEARN["N5"] = {
     "N5.1": {
       prereq: ["bezouts-identity", "extended-euclidean-algorithm"],
       cards: ["chicken-mcnugget", "coins-and-prices"],
-      body: String.raw`An equation like $3x + 5y = 100$ in nonnegative integers is a question about making an amount from two sizes of coin, and the contest versions ask how many ways it can be done, or which amounts cannot be made at all. Bézout's identity from N2.3 already says when an amount can be made with integer coefficients of either sign; this lesson adds the restriction to nonnegative counts, which is where the interesting structure lives. With coins worth $5$ and $8$, every amount from $28$ up can be paid, and exactly $14$ smaller amounts cannot.
+      body: String.raw`An equation like $3x + 5y = 100$ in nonnegative integers is a question about making an amount from two sizes of coin, and the contest versions ask how many ways it can be done, or which amounts cannot be made at all. Bézout's identity from N2.4 already says when an amount can be made with integer coefficients of either sign; this lesson adds the restriction to nonnegative counts, which is where the interesting structure lives. With coins worth $5$ and $8$, every amount from $28$ up can be paid, and exactly $14$ smaller amounts cannot.
 
 Counting the ways to pay a given total works by fixing one coin count and reading off the other. In $3x + 5y = 100$, reducing modulo $3$ gives $5y \equiv 100$, that is $2y \equiv 1$, so $y \equiv 2 \pmod 3$; the values $y = 2, 5, \ldots, 20$ each give one nonnegative $x$, so there are $7$ ways. Every [[coins-and-prices|coins-and-prices]] problem has this shape: a congruence fixes the residue of one count, a bound fixes its range, and the answer is the number of terms of an arithmetic progression. With more than two coin types the same idea applies after one count is fixed, or after subtracting one equation from another to eliminate a variable.
 
@@ -14,8 +14,8 @@ Which totals can be made at all? For coprime $a$ and $b$, the [[chicken-mcnugget
 
 The signal is a total made from items of fixed values, stamps, coins, or prices, with whole numbers of each. Reduce modulo one value to fix the residue of a count, then count or bound.`,
       related: [
-        { card: "bezouts-identity", note: String.raw`which totals are reachable once negative counts are allowed (N2.3).` },
-        { card: "modular-inverse", note: String.raw`fixing a count's residue is solving a linear congruence, with an inverse when the coefficient is coprime to the modulus (N2.1 and N2.2).` },
+        { card: "bezouts-identity", note: String.raw`which totals are reachable once negative counts are allowed (N2.4).` },
+        { card: "modular-inverse", note: String.raw`fixing a count's residue is solving a linear congruence, with an inverse when the coefficient is coprime to the modulus (N2.2 and N2.3).` },
         { card: "arithmetic-series", note: String.raw`the admissible counts form an arithmetic progression, whose terms are then counted.` }
       ],
       exercises: [

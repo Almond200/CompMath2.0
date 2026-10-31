@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), and N1, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), N1 and N2, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -943,28 +943,30 @@ Eight chapters. The changes from the first draft are three:
 
 | Lesson | Cards |
 |---|---|
-| N2.1 Congruence rules, inverses, and when you may cancel | `modular-inverse`, `euclids-lemma`, prereq `modular-basics` |
-| N2.2 Linear congruences, and when they have solutions | `subtract-equal-remainders`, `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` |
-| N2.3 The extended Euclidean algorithm and Bézout | `extended-euclidean-algorithm`, `bezouts-identity` |
-| N2.4 The Chinese Remainder Theorem, for coprime moduli | `crt` |
-| N2.5 Compatible congruences with moduli that share factors; counting solutions | `crt-solution-counting` |
+| N2.1 Introduction | no card (the chapter's opening page: congruences, inverses, linear congruences, Bézout, the Chinese Remainder Theorem, with comprehension problems) |
+| N2.2 Congruence rules, inverses, and when you may cancel | `modular-inverse`, `euclids-lemma`, prereq `modular-basics` |
+| N2.3 Linear congruences, and when they have solutions | `subtract-equal-remainders`, `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` |
+| N2.4 The extended Euclidean algorithm and Bézout | `extended-euclidean-algorithm`, `bezouts-identity` |
+| N2.5 The Chinese Remainder Theorem, for coprime moduli | `crt` |
+| N2.6 Compatible congruences with moduli that share factors; counting solutions | `crt-solution-counting` |
+| N2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N2.8 Review Problems and N2.9 Challenge Problems |
 
 **Opening questions and checks (computed):**
-- **N2.1:** solve $7x \equiv 3 \pmod{10}$. The inverse of $7$ is $3$, so $x \equiv 9$. Check: the inverse of $13$ modulo $22$ is $17$.
-- **N2.2:** $6x \equiv 4 \pmod{10}$ has the solutions $x \equiv 4, 9$ (divide by $\gcd(6, 10) = 2$ to get $3x \equiv 2 \pmod 5$). Check: $6x \equiv 3 \pmod{10}$ has none, since $2 \nmid 3$.
-- **N2.3:** $21x + 15y = 3$ has the solution $(x, y) = (-2, 3)$, and no combination of $21$ and $15$ makes $1$.
-- **N2.4:** find $x \equiv 1 \pmod 4$, $x \equiv 4 \pmod{25}$. Answer: $x = 29$. This example comes back in N3.5. Check: $x \equiv 4 \pmod 9$ and $x \equiv 5 \pmod{11}$ give $x = 49$.
-- **N2.5:** $x^2 \equiv 1 \pmod{1000}$ has $8$ solutions modulo $1000$: $4$ modulo $8$ times $2$ modulo $125$.
+- **N2.2:** solve $7x \equiv 3 \pmod{10}$. The inverse of $7$ is $3$, so $x \equiv 9$. Check: the inverse of $13$ modulo $22$ is $17$.
+- **N2.3:** $6x \equiv 4 \pmod{10}$ has the solutions $x \equiv 4, 9$ (divide by $\gcd(6, 10) = 2$ to get $3x \equiv 2 \pmod 5$). Check: $6x \equiv 3 \pmod{10}$ has none, since $2 \nmid 3$.
+- **N2.4:** $21x + 15y = 3$ has the solution $(x, y) = (-2, 3)$, and no combination of $21$ and $15$ makes $1$.
+- **N2.5:** find $x \equiv 1 \pmod 4$, $x \equiv 4 \pmod{25}$. Answer: $x = 29$. This example comes back in N3.5. Check: $x \equiv 4 \pmod 9$ and $x \equiv 5 \pmod{11}$ give $x = 49$.
+- **N2.6:** $x^2 \equiv 1 \pmod{1000}$ has $8$ solutions modulo $1000$: $4$ modulo $8$ times $2$ modulo $125$.
 
 **Problems (all read 2026-10-31; each route uses its lesson's idea):**
 
 | Lesson | Problems |
 |---|---|
-| N2.1 | 2025 AMC 12B #5 ($13^{-1} \equiv 17 \pmod{22}$); 2025 AMC 10B #23, twin 2025 AMC 12B #19 ($9$ invertible modulo $14$); 2012 AIME I #15 (a multiplier permutes the seats exactly when it is invertible; challenging) |
-| N2.2 | 2017 AIME I #2 (equal remainders: the modulus divides the differences); 2014 AMC 12B #7 (reduce the divisibility to $k + 1 \mid 30$) |
-| N2.3 | 2006 AMC 10A #22, twin 2006 AMC 12A #14 ($\gcd(300, 210) = 30$ and a Bézout pair); 2000 AMC 12 #16 (the solutions of $4r - 3c = 1$ inside the grid) |
-| N2.4 | 1993 AIME #6 (three conditions joined into $n \equiv 495 \pmod{990}$); 2014 AIME I #8 ($N(N - 1)$ splits $16$ and $625$ between consecutive integers) |
-| N2.5 | 2012 AIME I #10 (two square roots modulo $125$, combined with modulo $8$); 2012 AIME II #12 (CRT makes every residue triple one residue modulo $1001$); 2011 AIME II #14 (bijections modulo $2$, $3$, $5$, joined by CRT) |
+| N2.2 | 2025 AMC 12B #5 ($13^{-1} \equiv 17 \pmod{22}$); 2025 AMC 10B #23, twin 2025 AMC 12B #19 ($9$ invertible modulo $14$); 2012 AIME I #15 (a multiplier permutes the seats exactly when it is invertible; challenging) |
+| N2.3 | 2017 AIME I #2 (equal remainders: the modulus divides the differences); 2014 AMC 12B #7 (reduce the divisibility to $k + 1 \mid 30$) |
+| N2.4 | 2006 AMC 10A #22, twin 2006 AMC 12A #14 ($\gcd(300, 210) = 30$ and a Bézout pair); 2000 AMC 12 #16 (the solutions of $4r - 3c = 1$ inside the grid) |
+| N2.5 | 1993 AIME #6 (three conditions joined into $n \equiv 495 \pmod{990}$); 2014 AIME I #8 ($N(N - 1)$ splits $16$ and $625$ between consecutive integers) |
+| N2.6 | 2012 AIME I #10 (two square roots modulo $125$, combined with modulo $8$); 2012 AIME II #12 (CRT makes every residue triple one residue modulo $1001$); 2011 AIME II #14 (bijections modulo $2$, $3$, $5$, joined by CRT) |
 
 **N2 review (10 problems, filled 2026-10-31; written in `js/data/learn/aime-number-theory/n2.js`):** 2004 AMC 10B #21 (common terms of two progressions: one residue modulo $21$); 2017 AMC 10B #23, twin 2017 AMC 12B #19 ($45 = 5 \cdot 9$, the digit sum modulo $9$, joined); 2020 AMC 10A #24 (conditions modulo $21$ and $60$ joined); 2023 AIME I #7 (remainders that must agree modulo common factors); 1993 AIME #9 (triangular positions agreeing modulo $2000$, split by CRT); and the five below.
 - 2013 AIME I #11 (read: linear congruences in $k$ modulo $9$, $11$, $13$, then CRT);

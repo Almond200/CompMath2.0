@@ -39,8 +39,8 @@ How many roots can there be in the first place? [[lagrange-roots-mod-p|Lagrange'
 
 The signal is a polynomial congruence modulo a prime power or a number with large prime-power factors, especially one asking for the smallest positive solution.`,
       related: [
-        { card: "crt", note: String.raw`splitting the modulus into prime powers before lifting (N2.4).` },
-        { card: "crt-solution-counting", note: String.raw`counting solutions as a product over prime powers, where Hensel gives each count (N2.5).` },
+        { card: "crt", note: String.raw`splitting the modulus into prime powers before lifting (N2.5).` },
+        { card: "crt-solution-counting", note: String.raw`counting solutions as a product over prime powers, where Hensel gives each count (N2.6).` },
         { card: "lte-lemma", note: String.raw`a lifting argument for valuations of $a^n - b^n$ (N4.4).` }
       ],
       exercises: [

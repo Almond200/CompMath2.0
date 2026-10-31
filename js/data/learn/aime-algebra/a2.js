@@ -15,7 +15,7 @@ When a polynomial is described by its remainders on division by several coprime 
 The signal is a remainder on division by a polynomial, a divisibility condition on a polynomial with a parameter, or values of a polynomial at a few points. Evaluate at the roots of the divisor rather than dividing.`,
       related: [
         { card: "factor-remainder-theorem", note: String.raw`the remainder on division by $x - a$ is $P(a)$, and $x - a$ divides $P$ exactly when $P(a) = 0$.` },
-        { card: "crt", note: String.raw`the integer version, with the same structure (N2.4).` },
+        { card: "crt", note: String.raw`the integer version, with the same structure (N2.5).` },
         { card: "lagrange-interpolation", note: String.raw`building the polynomial of least degree through given values, which is what finding a remainder from values does (A2.5).` }
       ],
       exercises: [

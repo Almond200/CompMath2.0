@@ -53,8 +53,8 @@ Residues also organize cases. A square is $0$ or $1 \pmod 4$; it is $0$, $1$ or 
 
 Reduce early, use negative residues, invert only coprime numbers, and test equations modulo small numbers. The next lesson finds the cycles of powers.`,
       related: [
-        { card: "modular-inverse", note: String.raw`inverses modulo $n$ in general (N2.2).` },
-        { card: "crt", note: String.raw`combining congruences to different moduli (N2.4).` },
+        { card: "modular-inverse", note: String.raw`inverses modulo $n$ in general (N2.3).` },
+        { card: "crt", note: String.raw`combining congruences to different moduli (N2.5).` },
         { card: "fermats-little-theorem", note: String.raw`$a^{p-1} \equiv 1 \pmod p$, the first general power rule (N3.2).` }
       ],
       exercises: [
