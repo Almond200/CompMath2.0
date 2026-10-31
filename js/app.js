@@ -4392,7 +4392,7 @@
         </details>
       </div>
       </div>
-      <aside class="set-preview" aria-label="Preview" inert></aside>
+      <aside class="set-preview" aria-label="Preview"></aside>
       </div>`;
     fillSettingsPreview();
     const $cmdToggle = $content.querySelector(".command-toggle");
@@ -4552,7 +4552,7 @@
     const $page = $content.querySelector(".settings-page"), $pv = $content.querySelector(".set-preview");
     $page.addEventListener("mouseover", e => {
       const row = e.target.closest(".set-row");
-      if (row && row.dataset.pv) $pv.dataset.focus = row.dataset.pv; else delete $pv.dataset.focus;
+      if (row && row.dataset.pv) { $pv.dataset.focus = row.dataset.pv; if ($pv.pvReveal) $pv.pvReveal(row.dataset.pv); } else delete $pv.dataset.focus;
     });
     $page.addEventListener("mouseleave", () => { delete $pv.dataset.focus; });
   }
@@ -4707,11 +4707,34 @@
   function fillSettingsPreview() {
     const aside = $content.querySelector(".set-preview");
     if (!aside || !window.matchMedia(PV_MEDIA).matches) return;
-    aside.innerHTML = `<div class="pv-title">Preview</div>` +
+    // Three screens at a time, large enough to read, with an arrow on each side to step through
+    // them (owner, 2026-10-31); pointing at a setting brings the screen it changes into view.
+    aside.innerHTML = `<div class="pv-title">Preview</div>
+      <button type="button" class="pv-nav pv-prev" aria-label="Earlier previews">&#8249;</button>
+      <div class="pv-track" inert>` +
       pvScreen("browse", "Cards while browsing", pvBrowseHtml()) +
       pvScreen("page", "A card&rsquo;s page", pvPageHtml()) +
       pvScreen("subject", "A subject page", pvSubjectHtml(), PV_W + 260) +
-      pvScreen("problem", "A problem page", pvProblemHtml());
+      pvScreen("problem", "A problem page", pvProblemHtml()) +
+      `</div>
+      <button type="button" class="pv-nav pv-next" aria-label="More previews">&#8250;</button>`;
+    const SHOW = 3, screens = [...aside.querySelectorAll(".pv-screen")];
+    let start = 0;
+    const showFrom = k => {
+      start = Math.max(0, Math.min(screens.length - SHOW, k));
+      screens.forEach((sc, i) => { sc.hidden = i < start || i >= start + SHOW; });
+      aside.querySelector(".pv-prev").disabled = start === 0;
+      aside.querySelector(".pv-next").disabled = start + SHOW >= screens.length;
+    };
+    aside.querySelector(".pv-prev").addEventListener("click", () => showFrom(start - 1));
+    aside.querySelector(".pv-next").addEventListener("click", () => showFrom(start + 1));
+    aside.pvReveal = keys => {
+      const want = String(keys || "").split(/\s+/).filter(Boolean);
+      if (!want.length || screens.some((sc, i) => !sc.hidden && want.includes(sc.dataset.pv))) return;
+      const i = screens.findIndex(sc => want.includes(sc.dataset.pv));
+      if (i >= 0) showFrom(i < start ? i : i - SHOW + 1);
+    };
+    showFrom(0);
     renderMath(aside);
     // Lay the panel out from what is left of the window right of the settings: the screens are
     // as large as three of them fit in the panel's height (and the space allows), and the
@@ -4723,17 +4746,19 @@
       aside.style.setProperty("--pv-top", (bar ? bar.getBoundingClientRect().bottom : 0) + "px");
       const frames = [...aside.querySelectorAll(".pv-frame")];
       const cs = getComputedStyle(aside);
-      const nScreens = frames.length;
+      const nScreens = Math.min(SHOW, frames.length);
       let fixed = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom) + parseFloat(cs.rowGap || 0) * nScreens;
       fixed += aside.querySelector(".pv-title").offsetHeight;
-      aside.querySelectorAll(".pv-label").forEach(l => { fixed += l.offsetHeight + 5; });
+      const label = aside.querySelector(".pv-screen:not([hidden]) .pv-label");
+      fixed += nScreens * ((label ? label.offsetHeight : 17) + 5);
+      // The dividing line sits close to the settings, so the screens get the room (owner,
+      // 2026-10-31); the screens are centred between the two arrows.
       const right = page ? page.getBoundingClientRect().right : 0;
-      const region = document.documentElement.clientWidth - right;
-      let w = Math.min(560, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, region - 48);
+      const region = document.documentElement.clientWidth - right - 20;
+      let w = Math.min(640, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, region - 96);
       w = Math.max(120, w);
-      const gap = Math.max(16, (region - w) / 3);
-      aside.style.setProperty("--pv-left", (right + gap) + "px");
-      aside.style.paddingLeft = aside.style.paddingRight = gap + "px";
+      aside.style.setProperty("--pv-left", (right + 20) + "px");
+      aside.style.paddingLeft = aside.style.paddingRight = Math.max(44, (region - w) / 2) + "px";
       frames.forEach(fr => {
         const inner = fr.firstElementChild, iw = +inner.dataset.w || PV_W;
         fr.style.width = w + "px";
