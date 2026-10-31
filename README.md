@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The chapter review's note now reads** "Mixed problems from the whole chapter, in rising order of difficulty." (owner, 2026-10-31).
 - **The card preview in a lesson's drawer is drawn like the card itself (2026-10-31, owner: "make it feel more intentional").** It used to paste the raw write-up, so sections the card page draws in their own way (When to use, Formulas it uses, Common traps, Key forms) came out as the old boxed bullets, and the top was the grid thumbnail boxed inside the drawer. The card page's section handling is now one shared helper (`cardSections` and `cardExplanationHtml` in `js/app.js`), and the preview reads: kind and tier, the name with the star and list buttons, the formula at full width, the summary and the first figure, then the explanation in the card page's order and drawing, closed by a link to the full card for its examples, practice problems and links. Checked on three cards at 375, 1280 and 1440 px, light and dark: 0 KaTeX errors, nothing wider than the drawer.
 - **Page tools has "Back to top"** (owner, 2026-10-31): the first item under Tools scrolls the card's page back to the top.
 - **The header's second row is labelled "Lesson"** instead of "Page" (owner, 2026-10-31).

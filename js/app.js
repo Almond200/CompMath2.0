@@ -5450,7 +5450,7 @@
     if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h">${c.code} chapter review</h2>
-        <p class="learn-note">Mixed problems from the whole chapter, in rising order. Work each one in its box first; Show Solution opens once you have written something.</p>
+        <p class="learn-note">Mixed problems from the whole chapter, in rising order of difficulty.</p>
         ${learnProblemsHtml(learnReview(c))}`;
     } else if (!d) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
