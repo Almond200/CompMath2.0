@@ -4648,7 +4648,7 @@
     // The whole panel opens the problem's page. The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
         <div class="hp-label">Problem of the day</div>
-        <div class="daily-head"><span class="daily-title">${refShort(p.ref)}</span><span class="daily-go">Open the problem &rarr;</span></div>
+        <div class="daily-title">${refShort(p.ref)}</div>
         <div class="daily-types">${p.types.slice(0, 4).map(t => `<span class="daily-type">${escapeAttr(t.label)}</span>`).join("")}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>

@@ -3749,10 +3749,6 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 10px; }
 .home .hp-daily .daily-st { padding-bottom: 12px; }
 .home .hp-daily .daily-st .prob-credit { margin: 2px 14px 0; }
-.daily-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.daily-go { font-size: 13px; font-weight: 700; color: var(--text-dim); opacity: 0; transition: opacity 0.12s; white-space: nowrap; }
-.home .hp-daily:hover .daily-go, .home .hp-daily:focus-visible .daily-go { opacity: 1; }
-@media (hover: none) { .daily-go { opacity: 1; transform: none; } }
 .home .rc-row { padding-top: 6px; padding-bottom: 6px; }
 .home .pg-row { padding-top: 6px; padding-bottom: 6px; }
 .home .dyk { font-size: 14px; }
