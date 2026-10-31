@@ -297,6 +297,14 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **Book covers, a book view, and a new home page (2026-10-31, owner).**
+  - **Learn's Textbooks** are now five book covers, each a coloured rectangle with its series, title, a drawn motif (an arch, a parabola, a clock of residues, an inscribed triangle, a lattice path) and its size. Pressing a cover opens the book.
+  - **The book view:** every page in a book (its contents, a chapter, a lesson, a review) has a sidebar with the cover and the whole table of contents, the current chapter open. The contents page shows the cover, a Start or Continue button, and the chapters as cards with their level and how many lessons are written and read. On a phone the sidebar folds into one "Contents" line; between 900 and 1100 px the card drawer floats over the right edge.
+  - **Lists:** more room around "Your lists". **Practice:** the line pointing to Learn → Lists is gone.
+  - **The home page,** redesigned: a centred title, line and search; five equal tiles (Learn added); Textbooks with the covers and "Start learning" or "Continue learning" beside the problem of the day; then Did you know, Continue where you left off, Card of the day (now with its first sentence), Your library, Newest cards and Practice at a glance in even rows. On a phone the covers scroll sideways.
+  - `mq-learn` keeps `last`, the lesson opened last, for "Continue learning".
+  - **The math keyboard pops up** from the answer box when it is pressed, with the typeset answer at its top, and closes on a press elsewhere, on Check, or on Escape (owner's correction: it had sat open under every box). Checked with a mouse at 1280 px and by touch at 375 px.
+  - Checked in Chromium at 1280 and 375 px, light and dark: 0 KaTeX errors, no overflow, no console errors.
 - **The lesson shell (2026-10-31; PLAN step L5).** Learn's books, chapters and lessons open as pages, built to CONVENTIONS §14.
   - **Addresses:** `#/learn/<book>`, `#/learn/<book>/<code>`, `.../<n>` for a lesson and `.../review` for a chapter review. The shelf on `#/learn` links each book, chapter and written lesson; an unwritten lesson's page says so.
   - **The lesson page:** the chapter outline on the left (one line on a phone), the reading column, and a card drawer on the right (a sheet from the bottom on a phone). A `[[card]]` link in a lesson opens the card and its write-up in the drawer, with "Open the full card". Read lessons get a tick in the outline, set when the end of the prose has been on screen.

@@ -26,7 +26,8 @@
   1. N3.2 to N3.5 into `n3.js` (the outline gives each lesson's opening question, teaching points, cards, checks and problems).
   2. Fill N2's review to 8 to 12 (candidates from `crt`, `modular-inverse`, `euclids-lemma`; 1992 AIME #11 and 1994 AIME #12 still to read), then write N2 into `aime-number-theory/n2.js` and load it from `index.html`.
   3. Then L7 (the "Practice more" link at the end of a chapter, "Study this in Learn" on a problem page, a missed review problem pointing back) and L8, the owner tries the pilot.
-- **For the owner to try now:** Learn → AIME Number Theory → N3 → N3.1 (`#/learn/aime-number-theory/n3/1`), and the N3 review.
+- **Also done in the seventeenth chat (owner's requests):** the Learn page shows the books as covers that open a book view with a contents sidebar; more room around "Your lists"; Practice's "Study lists ... are under Learn" line removed; the home page redesigned (L10).
+- **For the owner to try now:** the home page; Learn → a book cover → N3 → N3.1 (`#/learn/aime-number-theory/n3/1`), and the N3 review.
 
 ## The road ahead: the Learn track (owner, 2026-10-31)
 
@@ -144,7 +145,10 @@ The owner tries it (LQ10). Then settle the sizes and the placement rule (LQ8) an
 ### L9. Write the rest of the shelf
 Write chapter by chapter from the approved outline: first one representative chapter each in Algebra, Geometry, and Counting & Probability, then every Core chapter, then Core II, then Extension. Commit each chapter, about every 25 problems placed, as the standing preference asks. Rebuild the search index at the end of the step if lessons become searchable (to be decided with L3).
 
-### L10. The home page (later; owner, 2026-10-31)
+### L10. The home page (redesigned 2026-10-31 at the owner's word, ahead of the plan)
+Done in the seventeenth chat: a centred title and search, five equal space tiles (Learn added), Textbooks with the book covers and "Continue learning" beside the problem of the day, then even rows of the smaller panels. The text below was the earlier plan; the owner asked for the redesign directly instead.
+
+
 The front page matters little for now, and it is settled once a few things are working (LQ2). Then, show the owner two or three mock-ups as screenshots, for example a Learn tile and a "Continue learning" panel, and which current panels stay. Nothing on the home page changes before the owner chooses.
 
 **Later, only once the learning flow works (the blueprint's "wait" column, and the proposal's "avoid as first release"):** personalized recommendations; adaptive mastery scores or mandatory mastery gates; AI-written feedback or problems; accounts or a server; a separate problem database; whole books generated automatically, or dozens of optional chapters written before the core works. None of these is planned now.
