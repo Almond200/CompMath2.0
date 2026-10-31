@@ -237,6 +237,8 @@
   const CAPTION_MODES = ["show", "hide"];
   // A card page can carry a Wikipedia-style column of page tools on the right (off by default).
   const TOOLS_MODES = ["off", "on"];
+  // A card link in a lesson: open the card in the drawer beside the lesson, or go to its page.
+  const LESSON_LINK_MODES = ["drawer", "card"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -292,6 +294,7 @@
       strategy: pick(P.strategy, STRATEGY_MODES),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
+      lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
@@ -308,7 +311,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, strategy: state.strategy
+          tools: state.tools, strategy: state.strategy, lessonLinks: state.lessonLinks
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -338,6 +341,7 @@
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
+    lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
@@ -2098,7 +2102,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4299,6 +4303,7 @@
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
+          ${settingRow("Card links in lessons", "What a card's name does when you press it in a lesson: open the card beside the lesson, so you never leave the page, or go to the card's own page.", "lessonLinks", state.lessonLinks, [["drawer", "Open beside the lesson"], ["card", "Go to the card"]])}
           ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls (text size and theme).", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
@@ -5385,7 +5390,12 @@
   function learnBodyHtml(l, d) {
     const ex = d.exercises || [];
     const num = i => `${l.code}.${i + 1}`;
+    // Related cards (owner, 2026-10-31): how the lesson connects to cards it does not teach in its
+    // explanation, one line each, so the explanation itself never breaks off to talk about them.
+    const related = (d.related || []).filter(r => BY_ID[r.card]);
     return `<div class="detail-body lp-body">${detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code)}</div>
+      ${related.length ? `<h3 class="lp-h3">Related cards</h3>
+        <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkifyCards(r.note)}</li>`).join("")}</ul>` : ""}
       ${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
         <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}">
             <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-sol-${i + 1}">Jump to solution</button></div>
@@ -5441,7 +5451,8 @@
   }
 
   function learnCardChips(ids) {
-    return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link related-item" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join("");
+    // Plain links, like every other card link in the lesson (owner, 2026-10-31).
+    return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join(`<span class="lp-cards-sep">&middot;</span>`);
   }
   // A lesson or a review: the outline, the reading column and the drawer.
   function renderLearnLesson(b, c, l) {
@@ -5525,7 +5536,7 @@
     }
     // A card link in the lesson opens in the drawer instead of leaving the page.
     const link = e.target.closest(".lp-main .card-link[data-card], .lp-preview .card-link[data-card]");
-    if (link && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+    if (link && state.lessonLinks !== "card" && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
       e.preventDefault();
       e.stopImmediatePropagation();
       hideCardPreview();

@@ -70,6 +70,10 @@ for (const [code, ch] of Object.entries(learn)) {
         catch (e) { errs.push(`${at} problem ${i + 1}: the answer "${x.answer}" does not parse (${e.message})`); }
       }
     });
+    for (const r of l.related || []) {
+      if (!cards.has(r.card)) errs.push(`${at}: related card ${r.card} is not a card`);
+      if (!r.note) errs.push(`${at}: related card ${r.card} needs a note saying how it connects`);
+    }
     for (const ref of l.problems || []) place(ref, at);
   }
   for (const ref of ch.review || []) place(ref, `${code} review`);
