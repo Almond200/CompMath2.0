@@ -5387,9 +5387,13 @@
     const num = i => `${l.code}.${i + 1}`;
     return `<div class="detail-body lp-body">${detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code)}</div>
       ${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
-        <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}"><span class="lx-n">Problem ${num(i)}</span><div class="lx-q">${x.q}</div></li>`).join("")}</ol>
+        <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}">
+            <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-sol-${i + 1}">Jump to solution</button></div>
+            <div class="lx-q">${x.q}</div></li>`).join("")}</ol>
         <h3 class="lp-h3" id="lx-solutions">Solutions</h3>
-        <div class="lx-sols">${ex.map((x, i) => `<div class="lx-sol"><span class="lx-n">Problem ${num(i)}</span><div class="lx-s">${x.solution}</div></div>`).join("")}</div>` : ""}`;
+        <div class="lx-sols">${ex.map((x, i) => `<div class="lx-sol" id="lx-sol-${i + 1}">
+            <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-${i + 1}">Back to problem</button></div>
+            <div class="lx-s">${x.solution}</div></div>`).join("")}</div>` : ""}`;
   }
 
   // The card drawer: a card opened from a lesson shows beside it (below it on a phone), so the
@@ -5505,6 +5509,16 @@
     }
     if (e.target.closest(".lp-drawer-close")) { closeLearnDrawer(); return; }
     if (e.target.closest("[data-bk-top]")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
+    // A lesson problem's "Jump to solution", and the solution's "Back to problem". The address is a
+    // route, so these scroll instead of using #fragments.
+    const jump = e.target.closest("[data-lx-jump]");
+    if (jump) {
+      const to = document.getElementById(jump.dataset.lxJump), bar = document.querySelector(".topbar");
+      // The top bar covers the page only where it stays put (it scrolls away on a phone).
+      const cover = bar && !window.matchMedia("(max-width: 900px)").matches ? bar.offsetHeight : 0;
+      if (to) window.scrollTo({ top: to.getBoundingClientRect().top + window.scrollY - cover - 16, behavior: "smooth" });
+      return;
+    }
     // A card link in the lesson opens in the drawer instead of leaving the page.
     const link = e.target.closest(".lp-main .card-link[data-card], .lp-preview .card-link[data-card]");
     if (link && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
