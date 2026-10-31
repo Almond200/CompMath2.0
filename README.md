@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **T8 written (2026-10-31).** T8.1 similar, congruent and right triangles, T8.2 ratios from parallels, areas, bisectors, centroids and mass points, T8.3 altitudes to hypotenuses, extended sides, doubled medians and rotations, T8.4 circle angles, tangents, chords and power of a point, T8.5 incircles and touching circles, T8.6 the laws of sines and cosines, Heron and the common angle values.
 - **T7 written (2026-10-31).** T7.1 probability by counting, drawing without replacement and symmetry, T7.2 independence, conditioning, binomial and hypergeometric counts, T7.3 geometric probability, T7.4 expected value and linearity, T7.5 truth-teller puzzles and magic squares.
 - **T6 written (2026-10-31).** T6.1 the product rule, permutations, combinations, functions and fenceposts, T6.2 cases, complements, inclusion-exclusion and overcounts, T6.3 repeats, blocks, gaps, circles and derangements, T6.4 stars and bars and the binomial identities, T6.5 recursions, grid paths, games and processes, T6.6 subsets, handshakes, Eulerian paths, pigeonhole and colorings.
 - **T5 written (2026-10-31).** T5.1 modular arithmetic, equal remainders and reducing divisibility to a constant, T5.2 cycles, Fermat, the totient and squares modulo small numbers, T5.3 Bézout, the Chinese remainder theorem and the McNugget theorem, T5.4 factoring integer equations, differences of squares and choosing a modulus, T5.5 Pythagorean triples and integer triangles.
