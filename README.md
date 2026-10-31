@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **B2 written (2026-10-31).** B2.1 the remainder and factor theorems, division and rational roots, B2.2 the quadratic formula, Vieta and the vertex, B2.3 arithmetic and geometric series, triangular numbers and power sums, B2.4 first-order recurrences, periodic sequences and organized listing.
 - **Bridge begun: B1 written (2026-10-31).** B1.1 differences of squares, squares of sums and rationalizing, B1.2 elimination, adding all equations and reversible steps, B1.3 substituting for repeated blocks and self-similar expressions, B1.4 absolute values, sign charts and the trivial inequality, B1.5 rates, averages, percents and the other word-problem setups.
 - **G9 written; the AIME Geometry book is complete (2026-10-31).** G9.1 barycentric coordinates and affine maps, G9.2 inversion, G9.3 the Euler line parallel to a side, the anticomplementary and contact triangles and the incircle-excircle homothety, G9.4 cross-ratios and harmonic quadrilaterals; an extension chapter.
 - **G8 written (2026-10-31).** G8.1 volumes and surface areas of the common solids, space diagonals and painted cubes, G8.2 cross-sections through the axis and by planes, similar cuts and Cavalieri, G8.3 dihedral angles, point-plane and skew-line distances and projected areas, G8.4 coordinates, plane equations and cross products, G8.5 inspheres, spheres between planes, boxed tetrahedra, unfolding surfaces, nets and Euler's formula.
