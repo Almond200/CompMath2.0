@@ -3791,15 +3791,10 @@ body.is-landing .content { padding: 0 0 50px; }
 .bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; transform: rotate(45deg);
   background: var(--bg-card); border-left: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
-/* The scrubbing tabs: a column of ticks at the tab's right edge, one per page of the chapter, shown
-   on the current chapter (taller, so each page has room) and on the tab under the pointer. */
+/* The scrubbing tabs are all one height and carry no markers (owner, 2026-10-31); the page list
+   each tab holds is data for the scrubber, never shown. */
 .bk-rail { touch-action: none; }
-.bk-tab.is-current.bk-scrub { height: max(36px, calc(var(--n, 1) * 10px)); }
-.bk-ticks { position: absolute; top: 5px; bottom: 5px; right: 4px; width: 4px; display: none; flex-direction: column; gap: 2px; }
-.bk-ticks i { flex: 1 1 0; min-height: 1px; border-radius: 2px; background: color-mix(in srgb, var(--text) 24%, transparent); }
-.bk-ticks i.is-on { background: var(--bk-ink); }
-.bk-ticks i.is-hot { background: var(--text); }
-.bk-tab.is-current .bk-ticks, .bk-scrub:hover .bk-ticks, .bk-scrub.is-scrub .bk-ticks { display: flex; }
+.bk-ticks { display: none; }
 .bk-tip-ch { display: block; }
 .bk-tip-p { display: block; margin-top: 2px; font-weight: 750; }
 .bk-tip-p[hidden] { display: none; }

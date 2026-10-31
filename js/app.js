@@ -5201,15 +5201,15 @@
   }
   // Each chapter tab is also a scrubber (owner, 2026-10-31, after the way an online textbook's
   // rail works): the tab is split by height into the chapter's pages (overview, lessons, review),
-  // pointing or pressing at a height names that page, and a click or a release opens it. The
-  // current chapter's tab is taller and shows its pages as ticks, the open page filled.
-  function learnRailHtml(b, c, at) {
+  // pointing or pressing at a height names that page, and a click or a release opens it. Every
+  // tab is the same height, with no markers (owner, 2026-10-31).
+  function learnRailHtml(b, c) {
     const pages = learnPages(b);
     const tab = ch => {
       const ps = pages.filter(x => x.c === ch), cur = ch === c;
       const tips = ps.map((x, i) => `<span class="bk-tip-p" data-i="${i}" hidden>${learnPageLabel(x)}</span>`).join("");
-      const ticks = ps.map((x, i) => `<i data-href="${learnHash(b, x.c, x.page)}"${at && x === at ? ` class="is-on"` : ""}></i>`).join("");
-      return `<a class="bk-tab bk-scrub${cur ? " is-current" : ""}" href="${learnHash(b, ch)}"${cur ? ` aria-current="page" style="--n:${ps.length}"` : ""}><span class="bk-tab-n">${ch.code.slice(1)}</span><span class="bk-ticks" aria-hidden="true">${ticks}</span><span class="bk-tip"><span class="bk-tip-ch">${ch.code} ${escapeAttr(ch.title)}</span>${tips}</span></a>`;
+      const ticks = ps.map((x, i) => `<i data-href="${learnHash(b, x.c, x.page)}"></i>`).join("");
+      return `<a class="bk-tab bk-scrub${cur ? " is-current" : ""}" href="${learnHash(b, ch)}"${cur ? ` aria-current="page"` : ""}><span class="bk-tab-n">${ch.code.slice(1)}</span><span class="bk-ticks" aria-hidden="true">${ticks}</span><span class="bk-tip"><span class="bk-tip-ch">${ch.code} ${escapeAttr(ch.title)}</span>${tips}</span></a>`;
     };
     return `<nav class="bk-rail" aria-label="Chapters">
         <a class="bk-tab${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span>C</span><span class="bk-tip"><span class="bk-tip-ch">Contents</span></span></a>
@@ -5224,7 +5224,6 @@
       if (!live) return;
       live.tab.classList.remove("is-scrub");
       live.tab.querySelectorAll(".bk-tip-p").forEach(p => { p.hidden = true; });
-      live.tab.querySelectorAll(".bk-ticks i.is-hot").forEach(t => t.classList.remove("is-hot"));
       live.tab.href = live.home;
       live = null;
     };
@@ -5239,7 +5238,6 @@
       live.i = i;
       tab.classList.add("is-scrub");
       tab.querySelectorAll(".bk-tip-p").forEach(p => { p.hidden = +p.dataset.i !== i; });
-      ticks.forEach((t, k) => t.classList.toggle("is-hot", k === i));
       tab.href = ticks[i].dataset.href;
     };
     rail.addEventListener("pointermove", e => { if (e.pointerType === "mouse" || press) pick(e.clientX, e.clientY); });
@@ -5289,7 +5287,7 @@
         ${footCard(next, 1)}
       </nav>`;
     $content.innerHTML = `<div class="learn-page lesson-page bk-view bk-${b.id}">
-        ${learnRailHtml(b, c, pages[at])}
+        ${learnRailHtml(b, c)}
         <div class="bk-body">
           <header class="bk-bars">
             <a class="bk-bars-cover" href="${learnHash(b)}" aria-label="${escapeAttr(b.title)}: contents">${bookCoverHtml(b, "s")}</a>

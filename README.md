@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Learn: the rail's chapter tabs are all one height again, with no page markers; scrubbing still names and opens the page under the pointer.
 - Learn: the book rail's chapter tabs scrub through their pages (point or press at a height to name a page, click or release to open it; the current chapter shows its pages as ticks). The shelf's "Show all textbooks" button appears only when the books fill more than two rows, counted from the tiles' actual rows.
 - **The AMC books become four subject books (2026-10-31).** At the owner's request the AMC 10 and AMC 12 books are regrouped into AMC Algebra (L1 to L8), AMC Number Theory (M1 to M3), AMC Counting & Probability (R1 to R3) and AMC Geometry (S1 to S4), each running from AMC 10 chapters into AMC 12 chapters with an AMC 10 or AMC 12 badge; the written lessons moved with new codes (estimating and checking is now L3.6) and their chapter-to-chapter sentences were updated. New covers; the Show-all button no longer shows when it has nothing to show.
 - **W8 and W9 written; the AMC 12 book is complete (2026-10-31).** W8 Stewart, Ceva and the area fractions, Ptolemy, Brahmagupta and touch points, common tangents, circumradius and trigonometric bashing; W9 conics, tangency, determinants, lattice points, the British flag and Varignon, transformations and vectors, Moser and Steiner, frustums, tetrahedra, cross-sections and coordinates in space.
