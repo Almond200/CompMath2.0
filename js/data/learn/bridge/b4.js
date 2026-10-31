@@ -116,9 +116,9 @@ Two events are [[independent-events|independent]] when one does not affect the o
 
 Choose equally likely outcomes and count, multiply for independent steps, and restrict the sample space when information is given. The next chapter turns to geometry.`,
       related: [
-        { card: "drawing-without-replacement", note: String.raw`counting draws without replacement (C6.1).` },
-        { card: "bayes-theorem", note: String.raw`reversing a conditional probability (C6.2).` },
-        { card: "geometric-probability", note: String.raw`probability with continuous random numbers, as a ratio of areas (C6.5).` }
+        { card: "drawing-without-replacement", note: String.raw`counting draws without replacement (C6.2).` },
+        { card: "bayes-theorem", note: String.raw`reversing a conditional probability (C6.3).` },
+        { card: "geometric-probability", note: String.raw`probability with continuous random numbers, as a ratio of areas (C6.6).` }
       ],
       exercises: [
         { q: String.raw`Two fair dice are rolled. What is the probability that the sum is $7$?`, answer: "1/6",

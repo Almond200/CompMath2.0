@@ -1510,23 +1510,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C6.1",
-      "title": "Building the sample space; equally likely outcomes"
+      "title": "Introduction"
      },
      {
       "code": "C6.2",
-      "title": "Conditional probability; updating the sample space"
+      "title": "Building the sample space; equally likely outcomes"
      },
      {
       "code": "C6.3",
-      "title": "Independence, dependence, sampling without replacement"
+      "title": "Conditional probability; updating the sample space"
      },
      {
       "code": "C6.4",
-      "title": "Complements and inclusion-exclusion for probability"
+      "title": "Independence, dependence, sampling without replacement"
      },
      {
       "code": "C6.5",
+      "title": "Complements and inclusion-exclusion for probability"
+     },
+     {
+      "code": "C6.6",
       "title": "Probability in arrangements and regions"
+     },
+     {
+      "code": "C6.7",
+      "title": "Summary"
      }
     ]
    },

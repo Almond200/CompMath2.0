@@ -18,7 +18,7 @@ Use linearity to split an expected value into parts and indicators to turn a cou
       related: [
         { card: "expected-fixed-points", note: String.raw`the classic indicator computation for permutations (C7.2).` },
         { card: "plane-regions", note: String.raw`regions cut by lines or chords counted by crossings, the structure behind expected-region problems.` },
-        { card: "binomial-probability", note: String.raw`the full distribution of a count of independent successes, whose mean is $np$ (C6.3).` }
+        { card: "binomial-probability", note: String.raw`the full distribution of a count of independent successes, whose mean is $np$ (C6.4).` }
       ],
       exercises: [
         { q: String.raw`Five boys and five girls stand in a random row. What is the expected number of adjacent pairs consisting of one boy and one girl?`, answer: "5",

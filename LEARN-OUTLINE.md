@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1 to C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1 to C6 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1295,11 +1295,13 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C6.1 Building the sample space; equally likely outcomes | *(pattern)* `drawing-without-replacement`, prereq `basic-probability` |
-| C6.2 Conditional probability; updating the sample space | `bayes-theorem`, prereq `conditional-probability` |
-| C6.3 Independence, dependence, sampling without replacement | `hypergeometric`, `binomial-probability` |
-| C6.4 Complements and inclusion-exclusion for probability | no new card (links C3) |
-| C6.5 Probability in arrangements and regions | `geometric-probability` |
+| C6.1 Introduction | no card (the chapter's opening page: equally likely outcomes, conditioning, independence, complements, lengths and areas, with comprehension problems) |
+| C6.2 Building the sample space; equally likely outcomes | *(pattern)* `drawing-without-replacement`, prereq `basic-probability` |
+| C6.3 Conditional probability; updating the sample space | `bayes-theorem`, prereq `conditional-probability` |
+| C6.4 Independence, dependence, sampling without replacement | `hypergeometric`, `binomial-probability` |
+| C6.5 Complements and inclusion-exclusion for probability | no new card (links C3) |
+| C6.6 Probability in arrangements and regions | `geometric-probability` |
+| C6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C6.8 Review Problems and C6.9 Challenge Problems |
 
 ### C7. Expected value and random processes (Core II)
 
