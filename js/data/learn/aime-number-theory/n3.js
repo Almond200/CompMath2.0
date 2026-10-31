@@ -4,8 +4,8 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["N3"] = {
   lessons: {
     "N3.1": {
-      prereq: ["modular-basics"],
-      cards: ["cycle-hunting", "last-digit-patterns"],
+      prereq: ["modular-basics", "cycle-hunting", "last-digit-patterns"],
+      cards: [],
       body: String.raw`A huge power and a small modulus are among the most common pairings on the AMC and the AIME: the units digit of $7^{202}$, the remainder when $2^{100}$ is divided by $7$, the last two digits of $3^{2026}$. None of them needs the power itself. The powers of a number, taken modulo $n$, can take only $n$ values, so they must eventually repeat, and once they repeat with a known period, a huge exponent can be traded for a small one.
 
 To see why they repeat, write the powers of $a$ modulo $n$ in order: $a, a^2, a^3, \ldots$. Each is found from the one before it by the same step, multiplying by $a$ and reducing modulo $n$, and there are only $n$ possible residues. Among the first $n + 1$ powers, then, two must be equal. As soon as a value comes back, the steps that followed its first appearance repeat exactly, so from that point on the powers run around a cycle forever. Its length $T$ is the period.

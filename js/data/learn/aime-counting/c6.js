@@ -39,8 +39,8 @@ Choose equally likely outcomes, ignore what does not matter, and count numerator
       ]
     },
     "C6.2": {
-      prereq: ["basic-probability"],
-      cards: ["conditional-probability", "bayes-theorem"],
+      prereq: ["basic-probability", "conditional-probability"],
+      cards: ["bayes-theorem"],
       body: String.raw`Many probability questions give partial information and ask for a probability in light of it: given that at least one child is a boy, what is the chance both are? Given that a test is positive, what is the chance of the disease? Given that a die showed two sixes, what is the chance it was the biased one? The answer is a conditional probability, and the main danger is an intuitive answer that ignores how the information was obtained.
 
 The [[conditional-probability|conditional probability]] of $A$ given $B$ is $P(A \mid B) = \tfrac{P(A \cap B)}{P(B)}$: restrict the sample space to $B$ and ask what fraction of it is in $A$. With equally likely outcomes it is a ratio of counts. A family with two children, each a boy or girl with probability $\tfrac12$, has outcomes $BB$, $BG$, $GB$, $GG$; given at least one boy, three outcomes remain, and both are boys in one of them, so the probability is $\tfrac13$, not $\tfrac12$. The multiplication rule $P(A \cap B) = P(B)P(A \mid B)$ runs the definition forward, and it is how a sequence of draws or a tournament is computed: multiply the probabilities of each step given what came before. The law of total probability adds over cases: $P(A) = \sum_i P(B_i)P(A \mid B_i)$ for disjoint cases $B_i$ that cover everything.
@@ -75,8 +75,8 @@ Restrict the sample space to what is known, use a population of convenient size 
       ]
     },
     "C6.3": {
-      prereq: ["conditional-probability"],
-      cards: ["independent-events", "hypergeometric", "binomial-probability"],
+      prereq: ["conditional-probability", "independent-events"],
+      cards: ["hypergeometric", "binomial-probability"],
       body: String.raw`Repeated experiments are the second great source of probability problems: flipping a coin several times, rolling a weighted die, playing a series of games. When the trials do not influence each other, probabilities multiply, and the number of successes follows the binomial distribution. When the trials are draws without replacement, they do influence each other, and the counts follow the hypergeometric distribution instead.
 
 Two events are [[independent-events|independent]] when $P(A \cap B) = P(A)P(B)$, equivalently when knowing one does not change the chance of the other. Separate rolls, flips and spins are independent by assumption; draws without replacement are not. For independent events, the probability that all happen is the product, and the probability that at least one happens is $1$ minus the product of the failures. Independence must come from the setup, not from a feeling: two events defined by the same roll are usually dependent.
