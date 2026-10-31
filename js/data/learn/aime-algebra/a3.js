@@ -15,7 +15,7 @@ For the Fibonacci numbers, $x^2 = x + 1$ has roots $\varphi = \tfrac{1 + \sqrt5}
 A closed form is not always the fastest route. With only a few terms needed, or an unknown starting value, running the recurrence directly, carrying the unknown as a symbol, is often quicker, as when $u_6 = 128$ is given and $u_5$ is wanted. The signal for a closed form is a far term, a growth rate, or an identity among the terms.`,
       related: [
         { card: "first-order-recurrence", note: String.raw`the one-term case $a_n = pa_{n-1} + q$, solved by shifting to a geometric sequence.` },
-        { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic (N7.4).` },
+        { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic ((N7.5)).` },
         { card: "reciprocal-power-sums", note: String.raw`$x^n + x^{-n}$ satisfies a linear recurrence in $n$ (A1.3).` }
       ],
       exercises: [

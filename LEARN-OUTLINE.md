@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N6, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N7, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1136,10 +1136,12 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 | Lesson | Cards |
 |---|---|
-| N7.1 Quadratic residues by small-modulus tests | `squares-mod-small`, `eulers-criterion` |
-| N7.2 Squares, fourth powers and parity patterns mod $n$ | `freshmans-dream`, prereq `last-digit-patterns` |
-| N7.3 Orders, divisor conditions, restrictions on primes | `wilsons-theorem`, prereq `multiplicative-order` |
-| N7.4 Integer sequences and periodicity mod $n$ | `pisano-periods` |
+| N7.1 Introduction | no card (the chapter's opening page: squares modulo small numbers, the freshman's dream, Wilson's theorem, restrictions on primes, periodic sequences, with comprehension problems) |
+| N7.2 Quadratic residues by small-modulus tests | `squares-mod-small`, `eulers-criterion` |
+| N7.3 Squares, fourth powers and parity patterns mod $n$ | `freshmans-dream`, prereq `last-digit-patterns` |
+| N7.4 Orders, divisor conditions, restrictions on primes | `wilsons-theorem`, prereq `multiplicative-order` |
+| N7.5 Integer sequences and periodicity mod $n$ | `pisano-periods` |
+| N7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N7.7 Review Problems and N7.8 Challenge Problems |
 
 ### N8. Number theory extensions (Extension; never a prerequisite in the core sequence)
 

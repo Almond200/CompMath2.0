@@ -1092,19 +1092,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N7.1",
-      "title": "Quadratic residues by small-modulus tests"
+      "title": "Introduction"
      },
      {
       "code": "N7.2",
-      "title": "Squares, fourth powers and parity patterns mod $n$"
+      "title": "Quadratic residues by small-modulus tests"
      },
      {
       "code": "N7.3",
-      "title": "Orders, divisor conditions, restrictions on primes"
+      "title": "Squares, fourth powers and parity patterns mod $n$"
      },
      {
       "code": "N7.4",
+      "title": "Orders, divisor conditions, restrictions on primes"
+     },
+     {
+      "code": "N7.5",
       "title": "Integer sequences and periodicity mod $n$"
+     },
+     {
+      "code": "N7.6",
+      "title": "Summary"
      }
     ]
    },

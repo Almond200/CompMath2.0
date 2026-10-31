@@ -15,7 +15,7 @@ window.MATH_LEARN["N8"] = {
 These tools matter when a problem works modulo a prime with Pascal's triangle, as in counting the ways to fill a triangle's bottom row so that its top entry is divisible by $3$.`,
       related: [
         { card: "prime-divides-binomial", note: String.raw`the case $\binom pk$, and the Legendre-sum formula that Kummer refines ((N4.4)).` },
-        { card: "freshmans-dream", note: String.raw`$(1 + x)^p \equiv 1 + x^p$, the identity behind Lucas's theorem (N7.2).` },
+        { card: "freshmans-dream", note: String.raw`$(1 + x)^p \equiv 1 + x^p$, the identity behind Lucas's theorem ((N7.3)).` },
         { card: "base-conversion", note: String.raw`writing $m$ and $n$ in base $p$ ((N6.2)).` }
       ],
       exercises: [
@@ -58,14 +58,14 @@ The signal is a polynomial congruence modulo a prime power or a number with larg
       cards: ["primitive-roots", "quadratic-reciprocity"],
       body: String.raw`Modulo a prime $p$ there is always a single residue whose powers run through every nonzero residue; modulo $7$ the powers of $3$ are $3, 2, 6, 4, 5, 1$. Such a residue is a [[primitive-roots|primitive root]], and with one in hand every nonzero residue is a power of it, so multiplication modulo $p$ becomes addition of exponents modulo $p - 1$. The other structural fact of this lesson relates the question "is $p$ a square modulo $q$?" to the reverse question, which is [[quadratic-reciprocity|quadratic reciprocity]].
 
-A primitive root modulo $p$ is a residue of order exactly $p - 1$. One always exists, and there are $\varphi(p - 1)$ of them: modulo $13$ there are $\varphi(12) = 4$. Primitive roots exist modulo $1$, $2$, $4$, $p^k$, and $2p^k$ for odd primes $p$, and modulo no other number. Their use in problems is to turn a statement about powers into one about exponents: $x^k \equiv a$ has a solution exactly when the exponent of $a$ is divisible by $\gcd(k, p - 1)$, and then it has $\gcd(k, p - 1)$ solutions. In particular exactly half the nonzero residues are squares, the even powers of the primitive root, which recovers N7.1.
+A primitive root modulo $p$ is a residue of order exactly $p - 1$. One always exists, and there are $\varphi(p - 1)$ of them: modulo $13$ there are $\varphi(12) = 4$. Primitive roots exist modulo $1$, $2$, $4$, $p^k$, and $2p^k$ for odd primes $p$, and modulo no other number. Their use in problems is to turn a statement about powers into one about exponents: $x^k \equiv a$ has a solution exactly when the exponent of $a$ is divisible by $\gcd(k, p - 1)$, and then it has $\gcd(k, p - 1)$ solutions. In particular exactly half the nonzero residues are squares, the even powers of the primitive root, which recovers (N7.2).
 
 Quadratic reciprocity says that for distinct odd primes $p$ and $q$, $p$ is a square modulo $q$ exactly when $q$ is a square modulo $p$, unless both are $3 \pmod 4$, in which case exactly one of the two holds. With the companion rules that $-1$ is a square modulo $p$ exactly when $p \equiv 1 \pmod 4$ and $2$ is a square exactly when $p \equiv \pm 1 \pmod 8$, it decides any quadratic residue question by flipping and reducing. For instance, $5$ is a square modulo $11$ because $11 \equiv 1$ is a square modulo $5$; indeed $4^2 = 16 \equiv 5 \pmod{11}$. And $3$ is not a square modulo $7$: both are $3 \pmod 4$, so the answer is the opposite of whether $7 \equiv 1$ is a square modulo $3$, which it is.
 
 These results rarely appear by name on the AIME, but they explain the patterns that problems about orders and residues rely on.`,
       related: [
         { card: "multiplicative-order", note: String.raw`a primitive root is a residue of the largest possible order (N3.4).` },
-        { card: "eulers-criterion", note: String.raw`the test $a^{(p-1)/2} \equiv \pm 1$ that reciprocity speeds up (N7.1).` },
+        { card: "eulers-criterion", note: String.raw`the test $a^{(p-1)/2} \equiv \pm 1$ that reciprocity speeds up ((N7.2)).` },
         { card: "eulers-totient", note: String.raw`there are $\varphi(p - 1)$ primitive roots modulo $p$ (N3.5).` }
       ],
       exercises: [
