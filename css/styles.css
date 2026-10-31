@@ -2778,6 +2778,14 @@ body.is-landing .content { padding: 0 0 70px; }
 /* The problem list: statement, the student's box, then Show Solution */
 .lp-problems { list-style: none; margin: 0; padding: 0; }
 .lp-prob .prob-st { margin: 0 0 10px; }
+/* The statement sits on a slightly grey ground, set off from the card (owner, 2026-10-31). */
+.lp-prob .prob-statement { background: var(--bg-panel); }
+/* The work box and Show Solution side by side; the box starts two lines tall, grows with its
+   text, and has no resize handle. */
+.lp-work { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; }
+.lp-work .lp-notes { flex: 1 1 auto; margin: 0; resize: none; overflow: hidden; min-height: 0; }
+.lp-work .lp-show { flex: 0 0 auto; padding: 9px 16px; }
+@media (max-width: 600px) { .lp-work { flex-direction: column; align-items: stretch; } .lp-work .lp-show { align-self: flex-end; } }
 .lp-notes { display: block; width: 100%; box-sizing: border-box; margin: 10px 0 8px; font: inherit; font-size: 14.5px; line-height: 1.5;
   padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); resize: vertical; }
 .lp-notes:focus { outline: none; border-color: var(--c-learn); }
@@ -3787,6 +3795,14 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .lp-prob-head a { color: var(--text); text-decoration: none; }
 .lp-prob-head a:hover { color: var(--bk-ink, var(--c-learn)); text-decoration: underline; }
 .lp-prob .prob-st { margin: 0 0 10px; }
+/* The statement sits on a slightly grey ground, set off from the card (owner, 2026-10-31). */
+.lp-prob .prob-statement { background: var(--bg-panel); }
+/* The work box and Show Solution side by side; the box starts two lines tall, grows with its
+   text, and has no resize handle. */
+.lp-work { display: flex; align-items: flex-start; gap: 10px; margin-top: 10px; }
+.lp-work .lp-notes { flex: 1 1 auto; margin: 0; resize: none; overflow: hidden; min-height: 0; }
+.lp-work .lp-show { flex: 0 0 auto; padding: 9px 16px; }
+@media (max-width: 600px) { .lp-work { flex-direction: column; align-items: stretch; } .lp-work .lp-show { align-self: flex-end; } }
 .lp-notes:focus { border-color: var(--bk-ink, var(--c-learn)); }
 .lp-show { border: none; cursor: pointer; background: var(--c-learn); color: var(--bg); }
 .lp-show:disabled { cursor: not-allowed; opacity: 0.45; filter: none; }

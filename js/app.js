@@ -5345,8 +5345,10 @@
           ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div><p class="prob-credit"></p></section>`
             : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
           ${ownFig ? `<div class="diagram prob-own-figure">${ownFig}<div class="prob-own-note">Diagram drawn for this app, not part of the original problem.</div></div>` : ""}
-          <textarea class="lp-notes" rows="4" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
-          <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
+          <div class="lp-work">
+            <textarea class="lp-notes" rows="2" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
+            <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
+          </div>
           <div class="prob-chain lp-sol" hidden></div>
         </li>`;
     }).join("")}</ol>`;
@@ -5447,6 +5449,8 @@
     });
     $content.querySelectorAll(".lp-prob").forEach(li => {
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
+      const box = li.querySelector(".lp-notes");
+      if (box && box.value) lpGrow(box);
       if (p && MAA_RE.test(p.ref)) showStatement(p, ".lp-st");
       const saved = learnProgress().problems[li.dataset.slug];
       if (saved && saved.shown && !saved.hidden && (saved.notes || "").trim()) showLearnSolution(li);
@@ -5509,6 +5513,11 @@
       openLearnDrawer(link.dataset.card);
     }
   }, true);
+  // The work box starts about two lines tall and grows with what is typed; it is never dragged.
+  function lpGrow(t) {
+    t.style.height = "auto";
+    t.style.height = (t.scrollHeight + t.offsetHeight - t.clientHeight) + "px";
+  }
   function learnSubmitCheck(el) {
     if (!el) return;
     const route = getRoute();
@@ -5535,6 +5544,7 @@
     if (input) { if (!e.isComposing) mkTyped(input); mkPreview(input.closest(".mk")); return; }
     const notes = e.target.closest(".lesson-page .lp-notes");
     if (!notes) return;
+    lpGrow(notes);
     const li = notes.closest(".lp-prob");
     const btn = li.querySelector(".lp-show");
     btn.disabled = !notes.value.trim() && !btn.classList.contains("is-open");
