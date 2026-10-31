@@ -1019,6 +1019,7 @@ The old list addresses are kept (§9).
 - **X.1 Introduction** is the chapter's opening page (the chapter's address shows it). It shows the chapter's number and title, then the lesson heading. It gives a short, plain overview of the ideas the chapter teaches (what a recursion is, what a state is), with no motivating question and no deep use cases, then a few comprehension problems with worked solutions. It teaches no card.
 - **The lessons** follow, numbered from X.2.
 - **The Summary** is the last lesson. It recaps the concepts in a few paragraphs, then gives a bulleted list under the heading Problem Solving Strategies (the `strategies` field).
+- **Numbering:** the two closing pages are numbered on from the Summary (C5.8 Review Problems, C5.9 Challenge Problems), and their own problems like a lesson's (Problem C5.8.1).
 - **Review Problems** (`reviewProblems`) mostly test comprehension: our own problems with worked solutions first, then a few contest problems.
 - **Challenge Problems** (`challenge`) are harder: contest problems first, our own when too few fit.
 - **Order:** every list of problems runs from easiest to hardest. The contest lists are sorted by difficulty when drawn; our own problems are written in that order.
