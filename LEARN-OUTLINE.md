@@ -1283,7 +1283,8 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | C5.4 Transitions, boundary cases, small tables | `grid-path-fill`, `backward-induction` |
 | C5.5 Invariants and parity in finite processes | `invariants-coloring`, `monovariant` |
 | C5.6 Grid paths and restricted walks | `grid-paths` |
-| C5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then Review Problems and Challenge Problems |
+| C5.7 Winning probabilities from states (Markov chains) | `states-recursion-prob` |
+| C5.8 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C5.9 Review Problems and C5.10 Challenge Problems |
 
 ### C6. Probability through counting (Core)
 
@@ -1301,7 +1302,7 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 |---|---|
 | C7.1 Linearity of expectation with indicators | `expected-value`, `indicator-variables` |
 | C7.2 Expected counts and contributions | `expected-fixed-points`, `tail-sum-expectation` |
-| C7.3 Conditional expectation in a small process | `total-expectation`, `states-recursion-prob` |
+| C7.3 Conditional expectation in a small process | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
 | C7.4 Waiting times and recursive expectations | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
 
 ### C8. Graphs, grids and combinatorial structures (Core II)

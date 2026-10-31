@@ -2501,10 +2501,10 @@ body[data-space="learn"] [data-space-go="learn"] { background: var(--space-soft)
   .space-ref-btn { flex: 1; font: inherit; font-size: 13px; font-weight: 650; padding: 0 6px; border-radius: 7px; border: none; background: transparent; color: var(--text-dim); cursor: pointer; }
   .space-ref-caret { font-size: 10px; margin-left: 2px; }
   body[data-space="formulas"] .space-ref-btn, body[data-space="methods"] .space-ref-btn, body[data-space="patterns"] .space-ref-btn { background: var(--space-soft); color: var(--space); }
-  .space-ref-menu { position: absolute; left: -3px; top: calc(100% + 6px); z-index: 70; min-width: 210px; display: flex; flex-direction: column; gap: 2px; padding: 6px;
+  .space-ref-menu { position: absolute; left: -3px; top: calc(100% + 6px); z-index: 70; min-width: 168px; display: flex; flex-direction: column; gap: 2px; padding: 6px;
     border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2); }
   .space-ref-menu[hidden] { display: none; }
-  .space-switch .space-ref-menu button { text-align: left; padding: 0 16px; height: 48px; font-size: 16px; border-radius: 8px; }
+  .space-switch .space-ref-menu button { text-align: left; padding: 0 14px; height: 44px; font-size: 13px; border-radius: 8px; }
 }
 
 /* ---------- Group tiles (a subject's topics, method groups or pattern families) ---------- */
@@ -2928,7 +2928,12 @@ h2[data-list-title][contenteditable="true"] { outline: none; background: var(--b
   .lp-grid, .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   /* On a phone the drawer is a sheet over the lower part of the screen. */
   .lp-drawer { position: fixed; left: 0; right: 0; bottom: 0; top: auto; width: auto; z-index: 60; max-height: 62vh;
-    border-radius: 14px 14px 0 0; box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.35); padding: 10px 16px 18px; }
+    border-radius: 14px 14px 0 0; box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.35); padding: 26px 16px 18px; }
+  /* A grab handle: the sheet closes when swiped down (owner, 2026-10-31), and the handle leaves
+     room above the tags. */
+  .lp-drawer::before { content: ""; position: absolute; top: 9px; left: 50%; width: 40px; height: 4px; margin-left: -20px; border-radius: 2px; background: var(--border-light); }
+  .lp-drawer.is-dragging { transition: none; }
+  .lp-drawer.is-settling { transition: transform 0.2s ease; }
   .learn-h { font-size: 21px; }
 }
 .sh-section { margin-top: 16px; padding: 16px 18px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); }

@@ -5695,6 +5695,8 @@
         </div>`;
     drawer.hidden = false;
     drawer.scrollTop = 0;
+    drawer.style.transform = "";
+    wireDrawerSwipe(drawer);
     $content.querySelector(".lp-grid").classList.add("has-drawer");
     renderMath(drawer);
     wireProofToggles(drawer);
@@ -5702,6 +5704,44 @@
     // The drawer itself takes the focus (Escape closes it), so no focus ring lands on the ×.
     drawer.tabIndex = -1;
     drawer.focus({ preventScroll: true });
+  }
+  // On a phone the drawer is a sheet at the bottom of the screen: swiping it down closes it
+  // (owner, 2026-10-31). The sheet follows the finger only while its content is scrolled to the
+  // top, so scrolling inside a long card still works.
+  function wireDrawerSwipe(drawer) {
+    if (drawer.dataset.swipe) return;
+    drawer.dataset.swipe = "1";
+    let y0 = null, dy = 0, t0 = 0;
+    const sheet = () => window.matchMedia("(max-width: 899px)").matches;
+    drawer.addEventListener("touchstart", e => {
+      if (!sheet() || drawer.scrollTop > 0 || e.touches.length !== 1) { y0 = null; return; }
+      y0 = e.touches[0].clientY; dy = 0; t0 = Date.now();
+    }, { passive: true });
+    drawer.addEventListener("touchmove", e => {
+      if (y0 == null) return;
+      dy = e.touches[0].clientY - y0;
+      if (dy <= 0) { drawer.style.transform = ""; drawer.classList.remove("is-dragging"); return; }
+      e.preventDefault();
+      drawer.classList.add("is-dragging");
+      drawer.style.transform = `translateY(${dy}px)`;
+    }, { passive: false });
+    const end = () => {
+      if (y0 == null) return;
+      y0 = null;
+      drawer.classList.remove("is-dragging");
+      const fast = dy > 40 && dy / Math.max(1, Date.now() - t0) > 0.5;
+      drawer.classList.add("is-settling");
+      if (dy > Math.min(120, drawer.offsetHeight / 3) || fast) {
+        drawer.style.transform = `translateY(${drawer.offsetHeight}px)`;
+        setTimeout(() => { drawer.classList.remove("is-settling"); drawer.style.transform = ""; closeLearnDrawer(); }, 200);
+      } else {
+        drawer.style.transform = "";
+        setTimeout(() => drawer.classList.remove("is-settling"), 200);
+      }
+      dy = 0;
+    };
+    drawer.addEventListener("touchend", end);
+    drawer.addEventListener("touchcancel", end);
   }
   function closeLearnDrawer() {
     const drawer = $content.querySelector(".lp-drawer");

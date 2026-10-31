@@ -64,13 +64,13 @@ The next lesson splits an expectation into cases and sets up equations for proce
       ]
     },
     "C7.3": {
-      prereq: ["conditional-probability", "expected-value"],
-      cards: ["total-expectation", "states-recursion-prob"],
+      prereq: ["conditional-probability", "expected-value", "states-recursion-prob"],
+      cards: ["total-expectation"],
       body: String.raw`A random process that forgets its past, where the future depends only on the current position, is analyzed one step at a time. A frog on lily pads, a bug walking on a cube, a coin game that ends after two heads in a row: the probability of eventually reaching a goal, or the expected number of steps to get there, satisfies an equation in terms of the same quantity from the neighboring positions. Solving these equations is first-step analysis.
 
 The [[total-expectation|law of total expectation]] splits an expected value into cases: if the cases $A_i$ cover everything without overlap, $E[X] = \sum_i P(A_i)E[X \mid A_i]$. Flip a coin; on heads roll one die, on tails roll two and add. The expected result is $\tfrac12 \cdot 3.5 + \tfrac12 \cdot 7 = \tfrac{21}{4}$. The same splitting holds for probabilities, and for both it is casework with weights.
 
-[[states-recursion-prob|First-step analysis]] applies the splitting to the first step of a process. Name a quantity for each state: $p_s$ for the probability of winning from state $s$, or $E_s$ for the expected number of steps to finish. Conditioning on the first step gives a linear equation for each state, such as $E_s = 1 + \sum_t P(s \to t)E_t$, with boundary values at the end states. For the number of flips until two heads in a row, the states are "no head just now" and "one head just now": $E_0 = 1 + \tfrac12E_1 + \tfrac12E_0$ and $E_1 = 1 + \tfrac12 \cdot 0 + \tfrac12E_0$, which give $E_1 = 4$ and $E_0 = 6$.
+[[states-recursion-prob|First-step analysis]], met for probabilities of winning in C5.7, applies the splitting to the first step of a process. Name a quantity for each state: $p_s$ for the probability of winning from state $s$, or $E_s$ for the expected number of steps to finish. Conditioning on the first step gives a linear equation for each state, such as $E_s = 1 + \sum_t P(s \to t)E_t$, with boundary values at the end states. For the number of flips until two heads in a row, the states are "no head just now" and "one head just now": $E_0 = 1 + \tfrac12E_1 + \tfrac12E_0$ and $E_1 = 1 + \tfrac12 \cdot 0 + \tfrac12E_0$, which give $E_1 = 4$ and $E_0 = 6$.
 
 Choosing the states is the important step. They should record exactly what affects the future and nothing more: the distance between two frogs rather than both positions, the number of pairs left in a bag rather than which pairs, the face of a cube rather than the exact square. Symmetry collapses states: on a $3 \times 3$ grid, the four corners behave alike, as do the four edge midpoints. With few states the equations are solved by substitution; with a chain of states, such as lily pads numbered $0$ to $10$, the equations form a recursion that can be solved from one end.
 
