@@ -16,7 +16,7 @@ The [[triangle-area-standard|area]] is half of base times height. In a right tri
 
 Look for similar triangles and right angles first. The next lesson finds ratios inside a triangle.`,
       related: [
-        { card: "pythagorean-triples", note: String.raw`integer right triangles (M2.5).` },
+        { card: "pythagorean-triples", note: String.raw`integer right triangles (M5.5).` },
         { card: "law-of-cosines", note: String.raw`the Pythagorean theorem for any angle (S1.6).` },
         { card: "parallel-line-similarity", note: String.raw`drawing a parallel to make similar triangles (S1.2).` }
       ],

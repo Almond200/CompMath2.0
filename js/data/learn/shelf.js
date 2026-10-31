@@ -489,76 +489,265 @@ window.MATH_LEARN_SHELF = [
   "chapters": [
    {
     "code": "M1",
-    "title": "Number theory: primes, divisors and digits",
+    "title": "Primes, divisibility, gcd and lcm",
     "level": "Core",
     "lessons": [
      {
       "code": "M1.1",
-      "title": "Prime factorization, gcd and lcm"
+      "title": "Introduction"
      },
      {
       "code": "M1.2",
-      "title": "Counting and summing divisors"
+      "title": "Primes and prime factorization",
+      "level": "Core"
      },
      {
       "code": "M1.3",
-      "title": "Divisibility rules and factorials"
+      "title": "Divisibility rules",
+      "level": "Core"
      },
      {
       "code": "M1.4",
-      "title": "Bases and digits"
+      "title": "The gcd and the lcm",
+      "level": "Core"
      },
      {
       "code": "M1.5",
-      "title": "Decimals and calendars"
+      "title": "Counting multiples and calendars",
+      "level": "Core"
+     },
+     {
+      "code": "M1.6",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "M2",
-    "title": "Number theory: remainders and integer equations",
+    "title": "Digits, bases and decimals",
     "level": "Core",
     "lessons": [
      {
       "code": "M2.1",
-      "title": "Modular arithmetic"
+      "title": "Introduction"
      },
      {
       "code": "M2.2",
-      "title": "Cycles, Fermat and Euler"
+      "title": "Place value and digits",
+      "level": "Core"
      },
      {
       "code": "M2.3",
-      "title": "Linear congruences and the Chinese Remainder Theorem"
+      "title": "Digit puzzles",
+      "level": "Core"
      },
      {
       "code": "M2.4",
-      "title": "Integer equations by factoring"
+      "title": "Other bases",
+      "level": "Core"
      },
      {
       "code": "M2.5",
-      "title": "Right triangles with integer sides"
+      "title": "Repeating and terminating decimals",
+      "level": "Core"
+     },
+     {
+      "code": "M2.6",
+      "title": "Fractions between two fractions",
+      "level": "Extension"
+     },
+     {
+      "code": "M2.7",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "M3",
+    "title": "Divisors and factorials",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "M3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "M3.2",
+      "title": "Counting divisors",
+      "level": "Core"
+     },
+     {
+      "code": "M3.3",
+      "title": "Summing and multiplying divisors",
+      "level": "Core II"
+     },
+     {
+      "code": "M3.4",
+      "title": "Primes in a factorial and trailing zeros",
+      "level": "Core"
+     },
+     {
+      "code": "M3.5",
+      "title": "Consecutive numbers and gcd tricks",
+      "level": "Core"
+     },
+     {
+      "code": "M3.6",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "M4",
+    "title": "Remainders",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "M4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "M4.2",
+      "title": "Working with remainders",
+      "level": "Core"
+     },
+     {
+      "code": "M4.3",
+      "title": "Cycles and last digits",
+      "level": "Core"
+     },
+     {
+      "code": "M4.4",
+      "title": "Squares and choosing a modulus",
+      "level": "Core II"
+     },
+     {
+      "code": "M4.5",
+      "title": "Fermat's little theorem and Euler's totient",
+      "level": "Core II"
+     },
+     {
+      "code": "M4.6",
+      "title": "When one expression divides another",
+      "level": "Extension"
+     },
+     {
+      "code": "M4.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "M5",
+    "title": "Integer equations",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "M5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "M5.2",
+      "title": "Linear equations in integers and the Chinese remainder theorem",
+      "level": "Core"
+     },
+     {
+      "code": "M5.3",
+      "title": "Coins and stamps",
+      "level": "Core II"
+     },
+     {
+      "code": "M5.4",
+      "title": "Factoring into integers",
+      "level": "Core"
+     },
+     {
+      "code": "M5.5",
+      "title": "Pythagorean triples and integer triangles",
+      "level": "Core II"
+     },
+     {
+      "code": "M5.6",
+      "title": "Bounding",
+      "level": "Core II"
+     },
+     {
+      "code": "M5.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "M6",
     "title": "Number theory for the AMC 12",
     "level": "Core II",
     "lessons": [
      {
-      "code": "M3.1",
-      "title": "Exponents, divisor functions and parity"
+      "code": "M6.1",
+      "title": "Introduction"
      },
      {
-      "code": "M3.2",
-      "title": "Inverses, Bézout and Euler's theorem"
+      "code": "M6.2",
+      "title": "Prime exponents and multiplicative functions",
+      "level": "Core"
      },
      {
-      "code": "M3.3",
-      "title": "Primes in binomials and bounded equations"
+      "code": "M6.3",
+      "title": "Inverses and the theorems of Euler and Wilson",
+      "level": "Core II"
+     },
+     {
+      "code": "M6.4",
+      "title": "The order of a number",
+      "level": "Extension"
+     },
+     {
+      "code": "M6.5",
+      "title": "Pell equations",
+      "level": "Extension"
+     },
+     {
+      "code": "M6.6",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "M7",
+    "title": "From the AMC to the AIME: number theory",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "M7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "M7.2",
+      "title": "Residues and cycles together",
+      "level": "Core"
+     },
+     {
+      "code": "M7.3",
+      "title": "Integer equations by factoring and bounds",
+      "level": "Core"
+     },
+     {
+      "code": "M7.4",
+      "title": "Mixed problems across the book",
+      "level": "Core"
+     },
+     {
+      "code": "M7.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Toward the AIME"
    }
   ]
  },

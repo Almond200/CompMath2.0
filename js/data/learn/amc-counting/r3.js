@@ -84,7 +84,7 @@ Find what is invariant, use the coloring formulas, read orders from cycles, and 
       related: [
         { card: "backward-induction", note: String.raw`solving games position by position (R1.5).` },
         { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry (C4.4).` },
-        { card: "lcm-common-multiples", note: String.raw`the lcm that gives a permutation's order (M1.1).` }
+        { card: "lcm-common-multiples", note: String.raw`the lcm that gives a permutation's order (M1.4).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can the vertices of a $6$-cycle be colored with $3$ colors so that adjacent vertices differ?`, answer: "66",
