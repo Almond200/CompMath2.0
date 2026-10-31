@@ -194,7 +194,7 @@ Mixed approaches are common: find one angle synthetically and then compute with 
 
 Before computing, decide which method keeps the expressions shortest. The Summary (G3.7) collects the chapter's strategies, and the problems after it mix problems where each method is best.`,
       related: [
-        { card: "coordinate-bash", note: String.raw`placing a figure on axes so that the algebra stays simple (G4.1).` },
+        { card: "coordinate-bash", note: String.raw`placing a figure on axes so that the algebra stays simple (G4.2).` },
         { card: "quadrilateral-diagonal-area", note: String.raw`the area $\tfrac12d_1d_2\sin\theta$ from the diagonals (G7.2).` },
         { card: "equiangular-polygon", note: String.raw`polygons with equal angles, completed into equilateral triangles (G7.1).` }
       ],

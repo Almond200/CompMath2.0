@@ -83,7 +83,7 @@ The [[radical-axis|radical axis]] of two circles is the set of points with equal
 Write products of segments along lines through a common point, subtract circle equations for common chords, and turn right angles into circles. The next lesson relates the chords of a cyclic quadrilateral.`,
       related: [
         { card: "chord-length", note: String.raw`a chord at distance $d$ from the center has length $2\sqrt{r^2 - d^2}$.` },
-        { card: "circle-equation", note: String.raw`the equations whose difference is the radical axis (G4.2).` },
+        { card: "circle-equation", note: String.raw`the equations whose difference is the radical axis (G4.3).` },
         { card: "concyclicity-tests", note: String.raw`equal products as a test for four points on a circle (G2.2).` }
       ],
       exercises: [
@@ -201,7 +201,7 @@ A disk [[rolling-without-slipping|rolling without slipping]] along a line or aro
 Join centers, draw radii to points of tangency, and look for right triangles. The Summary (G2.7) collects the chapter's strategies, and the problems after it mix the circle tools of all five lessons.`,
       related: [
         { card: "homothety-monge", note: String.raw`the centers of similitude of two circles, where common tangents meet (G6.4).` },
-        { card: "tangency-equation", note: String.raw`the tangency of a line and a curve as a double root (G4.2).` },
+        { card: "tangency-equation", note: String.raw`the tangency of a line and a curve as a double root (G4.3).` },
         { card: "circle-in-angle", note: String.raw`circles inscribed in an angle, whose centers lie on the bisector (G5.5).` }
       ],
       exercises: [

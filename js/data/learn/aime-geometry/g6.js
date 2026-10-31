@@ -94,7 +94,7 @@ The [[vector-dot-product|dot product]] $\vec u \cdot \vec v = u_1v_1 + u_2v_2 = 
 
 Use vectors when a figure has many midpoints or averages, when perpendicularity or angles between directions matter, and when a closed polygon has known turning angles. The last lesson of the chapter uses transformations to find shortest paths and to scale figures.`,
       related: [
-        { card: "coordinate-bash", note: String.raw`vectors with components, when axes help (G4.1).` },
+        { card: "coordinate-bash", note: String.raw`vectors with components, when axes help (G4.2).` },
         { card: "orthocenter-properties", note: String.raw`the vector formula for the orthocenter (G5.2).` },
         { card: "equiangular-polygon", note: String.raw`polygons whose closing condition gives side relations (G7.1).` }
       ],
@@ -131,7 +131,7 @@ Reflect to straighten paths, use homotheties for similar figures and pairs of ci
       related: [
         { card: "unfold-the-surface", note: String.raw`unfolding a solid's surface to straighten a path on it (G8.5).` },
         { card: "common-tangent-lengths", note: String.raw`the tangents through the homothety centers of two circles (G2.6).` },
-        { card: "perpendicular-bisector-locus", note: String.raw`the crease of a fold as a perpendicular bisector (G4.5).` }
+        { card: "perpendicular-bisector-locus", note: String.raw`the crease of a fold as a perpendicular bisector (G4.6).` }
       ],
       exercises: [
         { q: String.raw`A path goes from $A = (0, 1)$ to a point on the $x$-axis and then to $B = (4, 3)$. Find the shortest possible length.`, answer: "4sqrt(2)",

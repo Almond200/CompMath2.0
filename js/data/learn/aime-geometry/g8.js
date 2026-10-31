@@ -107,7 +107,7 @@ The area of a plane figure's [[projected-area-cosine|orthogonal projection]] ont
 
 Find the perpendicular that measures the angle or distance, or compute with normals in coordinates. The next lesson works in coordinates systematically.`,
       related: [
-        { card: "point-line-distance", note: String.raw`the planar version of the point-plane distance (G4.2).` },
+        { card: "point-line-distance", note: String.raw`the planar version of the point-plane distance (G4.3).` },
         { card: "vector-dot-product", note: String.raw`angles between normal vectors (G6.3).` },
         { card: "cross-product-area", note: String.raw`the normal vector of a plane through three points (G8.4).` }
       ],
@@ -144,8 +144,8 @@ The [[cross-product-area|cross product]] $\vec u \times \vec v$ is perpendicular
 Put boxes on the axes, spheres at simple centers, and use cross products for areas and normals. The last lesson of the chapter studies solids inside solids.`,
       related: [
         { card: "point-plane-distance", note: String.raw`distances from points to planes once the plane's equation is known (G8.3).` },
-        { card: "shoelace-formula", note: String.raw`the planar area formula that the cross product extends (G4.3).` },
-        { card: "determinant-geometric", note: String.raw`the determinant as signed area or volume (G4.3).` }
+        { card: "shoelace-formula", note: String.raw`the planar area formula that the cross product extends (G4.4).` },
+        { card: "determinant-geometric", note: String.raw`the determinant as signed area or volume (G4.4).` }
       ],
       exercises: [
         { q: String.raw`Find the distance between $(1, 2, 3)$ and $(4, 6, 15)$.`, answer: "13",

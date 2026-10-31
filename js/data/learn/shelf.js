@@ -1432,28 +1432,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G4.2",
       "title": "Choosing good coordinates",
       "level": "Core"
      },
      {
-      "code": "G4.2",
+      "code": "G4.3",
       "title": "Lines, circles, intersections, distances, slopes",
       "level": "Core"
      },
      {
-      "code": "G4.3",
+      "code": "G4.4",
       "title": "Areas from coordinates; determinants",
       "level": "Core"
      },
      {
-      "code": "G4.4",
+      "code": "G4.5",
       "title": "Parabolas and conics at the level of their equations",
       "level": "Core II"
      },
      {
-      "code": "G4.5",
+      "code": "G4.6",
       "title": "Loci and optimization in coordinates",
       "level": "Core II"
+     },
+     {
+      "code": "G4.7",
+      "title": "Summary"
      }
     ]
    },

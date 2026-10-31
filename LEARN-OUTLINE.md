@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G3 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G4 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1218,11 +1218,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G4.1 Choosing good coordinates (Core) | `coordinate-bash` |
-| G4.2 Lines, circles, intersections, distances, slopes (Core) | `angle-between-lines`, `section-formula`, `parallel-lines-distance`, `incenter-coordinates`, `tangency-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines` |
-| G4.3 Areas from coordinates; determinants (Core) | `shoelace-formula`, `determinant-geometric` |
-| G4.4 Parabolas and conics at the level of their equations (Core II) | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
-| G4.5 Loci and optimization in coordinates (Core II) | `perpendicular-bisector-locus`, `apollonius-circle`, `bisector-closer-region` |
+| G4.1 Introduction | no card (the chapter's opening page: choosing axes, lines and circles, areas from coordinates, conics, loci, with comprehension problems) |
+| G4.2 Choosing good coordinates (Core) | `coordinate-bash` |
+| G4.3 Lines, circles, intersections, distances, slopes (Core) | `angle-between-lines`, `section-formula`, `parallel-lines-distance`, `incenter-coordinates`, `tangency-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines` |
+| G4.4 Areas from coordinates; determinants (Core) | `shoelace-formula`, `determinant-geometric` |
+| G4.5 Parabolas and conics at the level of their equations (Core II) | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
+| G4.6 Loci and optimization in coordinates (Core II) | `perpendicular-bisector-locus`, `apollonius-circle`, `bisector-closer-region` |
+| G4.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G4.8 Review Problems and G4.9 Challenge Problems |
 
 ### G5. Triangle centers and special figures (Core II)
 
