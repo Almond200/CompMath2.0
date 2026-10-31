@@ -2096,7 +2096,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-toc, .bk-ch-title, .home-continue-t, .home-cotd, .lc-q, .lc-result").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-toc, .bk-ch-title, .home-cotd, .lc-q, .lc-result").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4648,7 +4648,7 @@
     // The whole panel opens the problem's page. The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
         <div class="hp-label">Problem of the day</div>
-        <div class="daily-title">${refShort(p.ref)}</div>
+        <div class="daily-head"><span class="daily-title">${refShort(p.ref)}</span><span class="daily-go">Open the problem &rarr;</span></div>
         <div class="daily-types">${p.types.slice(0, 4).map(t => `<span class="daily-type">${escapeAttr(t.label)}</span>`).join("")}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
@@ -4703,21 +4703,8 @@
     const raw = m ? m[1].replace(/ — .*$/, "") : leadSentences(BY_ID[id].formula.description, 240);
     return raw;
   }
-  // A different card on every visit and every "Another": a random pick that skips the cards
-  // shown most recently (kept in localStorage, so a reload does not bring the same one back).
-  function didYouKnowPick() {
-    const pool = didYouKnowPool();
-    if (!pool.length) return null;
-    let seen = [];
-    try { seen = JSON.parse(localStorage.getItem("dykSeen") || "[]"); } catch (e) {}
-    if (!Array.isArray(seen)) seen = [];
-    seen = seen.filter(id => pool.indexOf(id) >= 0).slice(-Math.floor(pool.length / 2));
-    const fresh = pool.filter(id => seen.indexOf(id) < 0);
-    const id = fresh[Math.floor(Math.random() * fresh.length)];
-    seen.push(id);
-    try { localStorage.setItem("dykSeen", JSON.stringify(seen)); } catch (e) {}
-    return id;
-  }
+  // One fact a day, the same all day (owner, 2026-10-31: fixed, with no "Another").
+  function didYouKnowPick() { return dayPick(didYouKnowPool(), 11); }
   function didYouKnowHtml() {
     const key = didYouKnowPick();
     if (!key) return "";
@@ -4726,7 +4713,7 @@
     return `<section class="hp-panel dyk">
         <div class="hp-label">Did you know?</div>
         <p class="dyk-fact">${linkifyCards(didYouKnowFact(key))}</p>
-        <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a><button type="button" class="hp-link dyk-next">Another</button></div>
+        <div class="dyk-foot"><a href="#/f/${id}">From ${f.name} &rarr;</a></div>
       </section>`;
   }
   // Newest cards: the latest batch recorded for Special:NewCards.
@@ -4769,7 +4756,6 @@
   function renderLanding() {
     shownIds = [];
     const count = kind => ALL.filter(e => e.kind === kind).length;
-    const recent = recentRowsHtml(6);
     const card = dailyCard();
     const starIds = liveIds(getList("starred"));
     const mine = lists.items.filter(l => l.id !== "starred");
@@ -4790,6 +4776,12 @@
     // spaces and the search, so the page itself is dense, like a reference site's front page:
     // one strip of the five spaces, then a main column and a rail of short sections divided by
     // hairlines rather than boxed.
+    // Continue: the cards and problems opened lately, then Learn: the next lesson and the
+    // lessons and books opened lately, as plain rows.
+    const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
+    const nextHref = next ? learnHash(next.b, next.c, lessonNum(next.l)) : "";
+    const learnRows = (next ? `<a class="rc-row" href="${nextHref}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${next.l.code} ${escapeAttr(next.l.title)}</span><span class="rc-meta">${learnProgress().last ? "Up next" : "Start here"}</span></a>` : "")
+      + recentRowsHtml(4, ["lesson"]).split("</a>").filter(r => r && !(nextHref && r.includes(`href="${nextHref}"`))).map(r => r + "</a>").join("");
     const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnWrittenIn(b) ? `${learnWrittenIn(b)} of ` : ""}${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
       <div class="home">
@@ -4808,13 +4800,10 @@
           <div class="hm-main">
             <section class="hm-sec">
               <h2 class="hm-h">Continue</h2>
-              ${next ? `<a class="home-continue" href="${learnHash(next.b, next.c, lessonNum(next.l))}">
-                  <span class="home-continue-k">${learnProgress().last ? "Continue learning" : "Start learning"}</span>
-                  <span class="home-continue-t"><span class="lb-code">${next.l.code}</span> ${escapeAttr(next.l.title)}</span>
-                  <span class="home-continue-go" aria-hidden="true">&rarr;</span>
-                </a>` : ""}
-              ${recent ? `<div class="rc-list">${recent}</div>`
-                : `<p class="hp-empty">Cards, problems, and lessons you open will appear here.</p>`}
+              <h3 class="hm-sub-h">Cards</h3>
+              ${recentCards ? `<div class="rc-list">${recentCards}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
+              <h3 class="hm-sub-h">Learn</h3>
+              <div class="rc-list">${learnRows}</div>
             </section>
             ${dailyProblemHtml()}
             ${newestCardsHtml()}
@@ -4851,17 +4840,6 @@
     // The hero search waits for Search (or Enter), then hands off to the real search box: the
     // results page shows the header search again with the text in it, so typing continues
     // there.
-    // "Another" swaps in the next fact without re-rendering the page.
-    $content.addEventListener("click", e => {
-      const btn = e.target.closest(".dyk-next");
-      if (!btn) return;
-      const panel = btn.closest(".dyk");
-      const tmp = document.createElement("div");
-      tmp.innerHTML = didYouKnowHtml();
-      const next = tmp.firstElementChild;
-      panel.replaceWith(next);
-      renderMath(next);
-    });
     const box = document.getElementById("home-search");
     const handOff = v => {
       $search.value = v;
