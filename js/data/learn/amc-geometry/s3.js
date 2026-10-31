@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W8: geometry, triangles and circles for the AMC 12 (CONVENTIONS §14; the AMC track).
+// Learn, AMC Geometry, chapter S3: geometry, triangles and circles for the AMC 12 (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W8"] = {
+window.MATH_LEARN["S3"] = {
   lessons: {
-    "W8.1": {
+    "S3.1": {
       prereq: ["angle-bisector-theorem", "cevian-area-ratio", "law-of-cosines"],
       cards: ["area-method", "stewarts-theorem", "angle-bisector-length", "apollonius-theorem", "cevas-theorem", "medial-triangle", "median-triangle-area", "vivianis-theorem"],
       body: String.raw`The AMC 12 measures cevians, not just the ratios they make: the length of a median or bisector, when three cevians meet, and the areas of the triangles they form.
@@ -16,8 +16,8 @@ The [[medial-triangle|medial triangle]] of midpoints has a quarter of the area: 
 
 Measure cevians with Stewart, test concurrence with Ceva, and use the standard area fractions. The next lesson treats cyclic quadrilaterals and incircles.`,
       related: [
-        { card: "mass-points", note: String.raw`ratios along cevians by weights (T8.2).` },
-        { card: "median-doubling", note: String.raw`another route to the median length (T8.3).` },
+        { card: "mass-points", note: String.raw`ratios along cevians by weights (S1.2).` },
+        { card: "median-doubling", note: String.raw`another route to the median length (S1.3).` },
         { card: "menelaus-theorem", note: String.raw`ratios along a transversal (G5.4).` }
       ],
       exercises: [
@@ -35,7 +35,7 @@ Measure cevians with Stewart, test concurrence with Ceva, and use the standard a
         "2020 AIME I, Problem 13"
       ]
     },
-    "W8.2": {
+    "S3.2": {
       prereq: ["cyclic-opposite-angles", "incircle-tangent-lengths", "herons-formula"],
       cards: ["concyclicity-tests", "ptolemys-theorem", "brahmaguptas-formula", "incircle-excircle-touch", "perp-to-angle-bisector", "angle-bisector-circumcircle"],
       body: String.raw`Cyclic quadrilaterals have a length relation and an area formula, and incircles and excircles touch the sides at predictable points. These facts decide a large share of harder AMC 12 circle problems.
@@ -48,8 +48,8 @@ The [[incircle-excircle-touch|incircle and excircle]] touch side $BC$ at points 
 
 Look for concyclic points, use Ptolemy and Brahmagupta on them, and place touch points by tangent lengths. The next lesson treats circles that touch.`,
       related: [
-        { card: "power-of-a-point", note: String.raw`the length test for concyclic points (T8.4).` },
-        { card: "inradius-area", note: String.raw`$K = rs$ (T8.5).` },
+        { card: "power-of-a-point", note: String.raw`the length test for concyclic points (S1.4).` },
+        { card: "inradius-area", note: String.raw`$K = rs$ (S1.5).` },
         { card: "incenter-excenter-lemma", note: String.raw`the arc midpoint in detail (G5.1).` }
       ],
       exercises: [
@@ -68,7 +68,7 @@ Look for concyclic points, use Ptolemy and Brahmagupta on them, and place touch 
         "2001 AIME I, Problem 13"
       ]
     },
-    "W8.3": {
+    "S3.3": {
       prereq: ["tangent-circles", "tangent-facts"],
       cards: ["common-tangent-lengths", "tangency-condition"],
       body: String.raw`Two circles have up to four common tangents, and their lengths come from one right triangle. Tangency in coordinates is a condition on a single equation.
@@ -79,8 +79,8 @@ The [[tangency-condition|tangency condition]] in coordinates: a line touches a c
 
 Draw the radii to the points of contact and find the right triangle, or set a discriminant to zero. The last lesson of the chapter treats trigonometry in triangles.`,
       related: [
-        { card: "triangle-of-centers", note: String.raw`joining centers of tangent circles (T8.5).` },
-        { card: "tangency-equation", note: String.raw`writing tangency in coordinates (W9.2).` },
+        { card: "triangle-of-centers", note: String.raw`joining centers of tangent circles (S1.5).` },
+        { card: "tangency-equation", note: String.raw`writing tangency in coordinates (S4.2).` },
         { card: "homothety-monge", note: String.raw`where common tangents meet (G6.4).` }
       ],
       exercises: [
@@ -95,7 +95,7 @@ Draw the radii to the points of contact and find the right triangle, or set a di
         "2024 AIME II, Problem 12"
       ]
     },
-    "W8.4": {
+    "S3.4": {
       prereq: ["law-of-sines", "law-of-cosines"],
       cards: ["circumradius-area", "projection-formula", "trig-bash", "altitude-bisector-angle"],
       body: String.raw`On the AMC 12, trigonometry is often the fastest route through a triangle: the circumradius comes from the sides and area, projections place feet of altitudes, and a systematic computation from angles finishes figures that resist synthetic ideas.
@@ -106,9 +106,9 @@ The [[circumradius-area|circumradius]] satisfies $R = \tfrac{abc}{4K}$ and $a = 
 
 Use $R = \tfrac{abc}{4K}$ for circumradii, projections for feet, and bash when nothing else appears. The next chapter treats coordinates, transformations and space.`,
       related: [
-        { card: "herons-formula", note: String.raw`the area in the circumradius formula (T8.6).` },
-        { card: "angle-addition", note: String.raw`simplifying the expressions a bash produces (W4.1).` },
-        { card: "triangle-center-angles", note: String.raw`angles at the circumcenter (T8.5).` }
+        { card: "herons-formula", note: String.raw`the area in the circumradius formula (S1.6).` },
+        { card: "angle-addition", note: String.raw`simplifying the expressions a bash produces (L7.1).` },
+        { card: "triangle-center-angles", note: String.raw`angles at the circumcenter (S1.5).` }
       ],
       exercises: [
         { q: String.raw`In a triangle, the side opposite a $30^\circ$ angle is $10$. Find the circumradius.`, answer: "10",

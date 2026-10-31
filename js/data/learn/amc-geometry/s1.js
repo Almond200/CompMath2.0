@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T8: geometry, triangles and circles (CONVENTIONS §14; the AMC track).
+// Learn, AMC Geometry, chapter S1: geometry, triangles and circles (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T8"] = {
+window.MATH_LEARN["S1"] = {
   lessons: {
-    "T8.1": {
+    "S1.1": {
       prereq: [],
       cards: ["triangle-similarity", "similar-figures-ratios", "pythagorean-theorem", "special-right-triangles", "15-75-90-triangle", "triangle-area-standard", "triangle-inequality", "triangle-congruence", "parallel-exterior-angles", "median-to-hypotenuse", "right-triangle-inradius"],
       body: String.raw`Triangles are the core of AMC geometry. Most problems need some combination of similar or congruent triangles, the Pythagorean theorem with its special triangles, the area formula and the triangle inequality, and the skill is spotting which.
@@ -16,9 +16,9 @@ The [[triangle-area-standard|area]] is half of base times height. In a right tri
 
 Look for similar triangles and right angles first. The next lesson finds ratios inside a triangle.`,
       related: [
-        { card: "pythagorean-triples", note: String.raw`integer right triangles (T5.5).` },
-        { card: "law-of-cosines", note: String.raw`the Pythagorean theorem for any angle (T8.6).` },
-        { card: "parallel-line-similarity", note: String.raw`drawing a parallel to make similar triangles (T8.2).` }
+        { card: "pythagorean-triples", note: String.raw`integer right triangles (M2.5).` },
+        { card: "law-of-cosines", note: String.raw`the Pythagorean theorem for any angle (S1.6).` },
+        { card: "parallel-line-similarity", note: String.raw`drawing a parallel to make similar triangles (S1.2).` }
       ],
       exercises: [
         { q: String.raw`A triangle has sides $7$ and $10$ and an integer third side. How many values can the third side take?`, answer: "13",
@@ -35,7 +35,7 @@ Look for similar triangles and right angles first. The next lesson finds ratios 
         "2002 AMC 10A, Problem 20"
       ]
     },
-    "T8.2": {
+    "S1.2": {
       prereq: ["triangle-similarity"],
       cards: ["parallel-line-similarity", "midsegment-theorem", "intercept-theorem", "nested-similar", "same-base-area-ratio", "shared-angle-area-ratio", "cevian-area-ratio", "angle-bisector-theorem", "centroid-division", "mass-points"],
       body: String.raw`Points on the sides of a triangle divide it into pieces whose lengths and areas are in fixed ratios. A handful of facts track these ratios without computing any lengths outright.
@@ -48,9 +48,9 @@ The [[angle-bisector-theorem|angle bisector theorem]] says the bisector from $A$
 
 Track ratios with parallels, areas and weights. The next lesson builds auxiliary figures.`,
       related: [
-        { card: "stewarts-theorem", note: String.raw`lengths of cevians (W8.1).` },
-        { card: "cevas-theorem", note: String.raw`when three cevians meet (W8.1).` },
-        { card: "triangle-area-standard", note: String.raw`area as half base times height (T8.1).` }
+        { card: "stewarts-theorem", note: String.raw`lengths of cevians (S3.1).` },
+        { card: "cevas-theorem", note: String.raw`when three cevians meet (S3.1).` },
+        { card: "triangle-area-standard", note: String.raw`area as half base times height (S1.1).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $AB = 6$, $AC = 9$ and $BC = 10$. The bisector of angle $A$ meets $BC$ at $D$. Find $BD$.`, answer: "4",
@@ -69,7 +69,7 @@ Track ratios with parallels, areas and weights. The next lesson builds auxiliary
         "2022 AMC 12B, Problem 19"
       ]
     },
-    "T8.3": {
+    "S1.3": {
       prereq: ["pythagorean-theorem", "triangle-similarity"],
       cards: ["altitude-hypotenuse", "right-triangle-altitude", "extend-sides-to-meet", "median-doubling", "point-in-equilateral", "circle-in-angle"],
       body: String.raw`Some figures become easy after one extra line: an altitude to a hypotenuse, sides extended until they meet, a median doubled into a parallelogram, or a rotation in an equilateral triangle. Recognizing the figure that calls for each is the skill.
@@ -82,9 +82,9 @@ For a [[point-in-equilateral|point inside an equilateral triangle]] with known d
 
 When a figure stalls, draw the altitude, extend the sides, double the median, or rotate. The next lesson treats circles.`,
       related: [
-        { card: "thales-theorem", note: String.raw`the right angle in a semicircle (T8.4).` },
-        { card: "rotation-trick", note: String.raw`rotations to gather lengths, in general (W9.3).` },
-        { card: "apollonius-theorem", note: String.raw`the median length that median doubling proves (W8.1).` }
+        { card: "thales-theorem", note: String.raw`the right angle in a semicircle (S1.4).` },
+        { card: "rotation-trick", note: String.raw`rotations to gather lengths, in general (S4.3).` },
+        { card: "apollonius-theorem", note: String.raw`the median length that median doubling proves (S3.1).` }
       ],
       exercises: [
         { q: String.raw`A right triangle has legs $9$ and $12$. Find the altitude to the hypotenuse.`, answer: "36/5",
@@ -103,7 +103,7 @@ When a figure stalls, draw the altitude, extend the sides, double the median, or
         "2024 AMC 12B, Problem 20"
       ]
     },
-    "T8.4": {
+    "S1.4": {
       prereq: ["triangle-congruence"],
       cards: ["inscribed-angle-theorem", "circle-basics", "tangent-facts", "chord-length", "power-of-a-point", "thales-theorem", "angle-chasing", "cyclic-opposite-angles", "cyclic-equal-angles", "angle-chord-secant", "tangent-chord-angle", "cyclic-quadrilateral", "equal-chords-arcs"],
       body: String.raw`Circles bring angles that depend only on arcs, right angles at tangents and in semicircles, and products of segments that are equal. With these, circle problems become triangle problems.
@@ -116,9 +116,9 @@ A [[tangent-facts|tangent]] is perpendicular to the radius, and the two tangents
 
 Turn arcs into angles, tangents into right angles, and crossing chords into equal products. The next lesson treats incircles and touching circles.`,
       related: [
-        { card: "ptolemys-theorem", note: String.raw`the side relation of cyclic quadrilaterals (W8.2).` },
-        { card: "concyclicity-tests", note: String.raw`proving four points are on a circle (W8.2).` },
-        { card: "circular-segment", note: String.raw`areas cut off by chords (T9.1).` }
+        { card: "ptolemys-theorem", note: String.raw`the side relation of cyclic quadrilaterals (S3.2).` },
+        { card: "concyclicity-tests", note: String.raw`proving four points are on a circle (S3.2).` },
+        { card: "circular-segment", note: String.raw`areas cut off by chords (S2.1).` }
       ],
       exercises: [
         { q: String.raw`A point is $10$ from the center of a circle of radius $6$. Find the length of a tangent from the point.`, answer: "8",
@@ -137,7 +137,7 @@ Turn arcs into angles, tangents into right angles, and crossing chords into equa
         "2023 AMC 12B, Problem 21"
       ]
     },
-    "T8.5": {
+    "S1.5": {
       prereq: ["tangent-facts"],
       cards: ["incircle-tangent-lengths", "inradius-area", "tangent-circles", "two-tangents-angle", "rolling-without-slipping", "triangle-of-centers", "common-chord-length", "triangle-center-angles"],
       body: String.raw`Circles inside triangles and circles touching each other reduce to tangent lengths and distances between centers. Equal tangents and radii perpendicular to tangents do almost all the work.
@@ -148,9 +148,9 @@ The incircle touches each side, and the two tangents from each vertex are equal,
 
 Label tangent lengths, use $K = rs$, and join centers. The last lesson of the chapter brings in trigonometry.`,
       related: [
-        { card: "common-tangent-lengths", note: String.raw`common tangent lengths in general (W8.3).` },
-        { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius (T8.6).` },
-        { card: "incircle-excircle-touch", note: String.raw`where the excircles touch (W8.2).` }
+        { card: "common-tangent-lengths", note: String.raw`common tangent lengths in general (S3.3).` },
+        { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius (S1.6).` },
+        { card: "incircle-excircle-touch", note: String.raw`where the excircles touch (S3.2).` }
       ],
       exercises: [
         { q: String.raw`Find the inradius of the triangle with sides $6$, $8$, $10$.`, answer: "2",
@@ -169,7 +169,7 @@ Label tangent lengths, use $K = rs$, and join centers. The last lesson of the ch
         "2024 AMC 12B, Problem 24"
       ]
     },
-    "T8.6": {
+    "S1.6": {
       prereq: ["pythagorean-theorem", "special-right-triangles"],
       cards: ["law-of-sines", "law-of-cosines", "trig-area", "law-cosines-60-120", "law-of-cosines-special-triangles", "herons-formula", "triangle-13-14-15", "pythagorean-identities", "common-angle-values", "reduction-identities"],
       body: String.raw`Trigonometry extends right-triangle facts to every triangle. The AMC 10 uses only a little of it, the laws of sines and cosines, the sine area formula, Heron's formula and the common angle values, but these settle many geometry problems quickly.
@@ -182,9 +182,9 @@ The [[trig-area|sine area formula]] $\tfrac12ab\sin C$ needs two sides and the i
 
 Use the laws for sides and angles and Heron for area from sides. The next chapter treats polygons, coordinates and solids.`,
       related: [
-        { card: "circumradius-area", note: String.raw`$R = \tfrac{abc}{4K}$ (W8.4).` },
-        { card: "angle-addition", note: String.raw`more trigonometric identities (W4.1).` },
-        { card: "inradius-area", note: String.raw`the inradius from the area (T8.5).` }
+        { card: "circumradius-area", note: String.raw`$R = \tfrac{abc}{4K}$ (S3.4).` },
+        { card: "angle-addition", note: String.raw`more trigonometric identities (L7.1).` },
+        { card: "inradius-area", note: String.raw`the inradius from the area (S1.5).` }
       ],
       exercises: [
         { q: String.raw`Two sides of a triangle are $5$ and $7$ with a $60^\circ$ angle between them. Find the third side.`, answer: "sqrt(39)",

@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T3: polynomials, sequences and series (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L3: polynomials, sequences and series (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T3"] = {
+window.MATH_LEARN["L3"] = {
   lessons: {
-    "T3.1": {
+    "L3.1": {
       prereq: ["quadratic-formula"],
       cards: ["factor-remainder-theorem", "polynomial-division", "rational-root-theorem", "coefficient-extraction", "comparing-coefficients"],
       body: String.raw`A polynomial is determined by its coefficients, and also by its values; switching between the two is the main skill. The remainder on division by $x - r$ is a value, the sum of the coefficients is a value, and two polynomials that agree everywhere have the same coefficients. AMC problems use each of these to avoid long computation.
@@ -16,9 +16,9 @@ The [[rational-root-theorem|rational root theorem]] limits the rational roots of
 
 Evaluate instead of dividing, list rational candidates, and compare coefficients of identities. The next lesson sums sequences.`,
       related: [
-        { card: "vietas-quadratic", note: String.raw`the coefficients of a quadratic as the sum and product of its roots (T2.1).` },
-        { card: "vietas-general", note: String.raw`Vieta for higher degrees (W2.1).` },
-        { card: "polynomial-crt", note: String.raw`remainders on division by a product of factors (W2.3).` }
+        { card: "vietas-quadratic", note: String.raw`the coefficients of a quadratic as the sum and product of its roots (L2.1).` },
+        { card: "vietas-general", note: String.raw`Vieta for higher degrees (L5.1).` },
+        { card: "polynomial-crt", note: String.raw`remainders on division by a product of factors (L5.3).` }
       ],
       exercises: [
         { q: String.raw`Find the remainder when $x^{50} + x^3 + 1$ is divided by $x + 1$.`, answer: "1",
@@ -37,7 +37,7 @@ Evaluate instead of dividing, list rational candidates, and compare coefficients
         "2002 AMC 12A, Problem 25"
       ]
     },
-    "T3.2": {
+    "L3.2": {
       prereq: [],
       cards: ["arithmetic-series", "geometric-series", "triangular-numbers", "power-sums"],
       body: String.raw`Arithmetic and geometric sequences are the two families every AMC student should handle instantly: find a term, find a sum, or recognize that three given numbers form one. Triangular numbers and sums of squares round out the toolkit.
@@ -50,9 +50,9 @@ The [[triangular-numbers|triangular numbers]] $1 + 2 + \cdots + n = \tfrac{n(n +
 
 Count the terms carefully (the fencepost: from $a$ to $b$ in steps of $d$ there are $\tfrac{b - a}{d} + 1$), then apply the formula. The next lesson treats sequences defined step by step.`,
       related: [
-        { card: "fencepost-counting", note: String.raw`counting the terms correctly (T6.1).` },
-        { card: "telescoping", note: String.raw`sums whose terms cancel in pairs (T3.4).` },
-        { card: "arithmetico-geometric", note: String.raw`sums like $\sum k r^k$ (W3.2).` }
+        { card: "fencepost-counting", note: String.raw`counting the terms correctly (R1.1).` },
+        { card: "telescoping", note: String.raw`sums whose terms cancel in pairs (L3.4).` },
+        { card: "arithmetico-geometric", note: String.raw`sums like $\sum k r^k$ (L6.2).` }
       ],
       exercises: [
         { q: String.raw`Find $5 + 8 + 11 + \cdots + 50$.`, answer: "440",
@@ -71,7 +71,7 @@ Count the terms carefully (the fencepost: from $a$ to $b$ in steps of $d$ there 
         "2002 AMC 10B, Problem 23"
       ]
     },
-    "T3.3": {
+    "L3.3": {
       prereq: ["arithmetic-series"],
       cards: ["first-order-recurrence", "periodic-sequences", "organized-listing"],
       body: String.raw`Many sequences on the AMC are given by a rule that makes each term from the previous one. The question asks for a far-off term or a sum, and the answer comes from writing out the first few terms and spotting either a formula or a cycle.
@@ -84,9 +84,9 @@ A rule that uses only a little information, with values from a limited set, even
 
 Compute the first terms, find the formula or the period, and reduce. The next lesson collapses sums.`,
       related: [
-        { card: "cycle-hunting", note: String.raw`cycles of remainders and last digits (T5.2).` },
-        { card: "linear-recurrence", note: String.raw`second-order recurrences such as Fibonacci (W3.1).` },
-        { card: "recursive-counting", note: String.raw`recurrences that count objects (T6.5).` }
+        { card: "cycle-hunting", note: String.raw`cycles of remainders and last digits (M2.2).` },
+        { card: "linear-recurrence", note: String.raw`second-order recurrences such as Fibonacci (L6.1).` },
+        { card: "recursive-counting", note: String.raw`recurrences that count objects (R1.5).` }
       ],
       exercises: [
         { q: String.raw`A sequence has $a_1 = 1$ and $a_{n+1} = a_n + 2n$. Find $a_{10}$.`, answer: "91",
@@ -105,7 +105,7 @@ Compute the first terms, find the formula or the period, and reduce. The next le
         "2015 AMC 12B, Problem 22"
       ]
     },
-    "T3.4": {
+    "L3.4": {
       prereq: ["arithmetic-series"],
       cards: ["telescoping", "partial-fractions", "factorial-telescoping", "alternating-sum-grouping"],
       body: String.raw`Some long sums and products have almost all their terms cancel. Seeing the cancellation turns a hundred terms into two, and AMC problems are built to reward it.
@@ -116,9 +116,9 @@ An alternating sum is handled by [[alternating-sum-grouping|grouping the terms i
 
 Look for differences, rewrite fractions and factors to produce them, and group alternating terms. The last lesson of the chapter treats identities in three variables.`,
       related: [
-        { card: "rationalizing", note: String.raw`turning radical terms into telescoping differences (T1.1).` },
-        { card: "geometric-series", note: String.raw`the other sum with a closed form (T3.2).` },
-        { card: "double-summation", note: String.raw`swapping the order of summation (W3.2).` }
+        { card: "rationalizing", note: String.raw`turning radical terms into telescoping differences (L1.1).` },
+        { card: "geometric-series", note: String.raw`the other sum with a closed form (L3.2).` },
+        { card: "double-summation", note: String.raw`swapping the order of summation (L6.2).` }
       ],
       exercises: [
         { q: String.raw`Find $\displaystyle\sum_{k=1}^{99}\frac{1}{k(k + 1)}$.`, answer: "99/100",
@@ -139,7 +139,7 @@ Look for differences, rewrite fractions and factors to produce them, and group a
         "2016 AMC 12B, Problem 21"
       ]
     },
-    "T3.5": {
+    "L3.5": {
       prereq: ["square-of-sum", "sos-identity"],
       cards: ["sum-zero-identities", "pairwise-sum-product", "an-minus-bn"],
       body: String.raw`A few identities in several variables appear again and again on the AMC 10 and 12, usually hidden inside a system of equations. Recognizing them avoids solving the system.
@@ -150,11 +150,11 @@ The [[pairwise-sum-product|product of pairwise sums]] is $(x + y)(y + z)(z + x) 
 
 [[an-minus-bn|$a^n - b^n$]] is always divisible by $a - b$, and for odd $n$, $a^n + b^n$ is divisible by $a + b$. So $2^{35} + 3^{35}$ is divisible by $5$; it is odd and not divisible by $3$, so $5$ is its smallest prime factor. The same fact explains why $n^5 - n$ and similar expressions have predictable factors.
 
-When a symmetric system looks too hard, look for one of these identities. The next chapter turns to number theory.`,
+When a symmetric system looks too hard, look for one of these identities. The last lesson of the chapter is about estimating and checking.`,
       related: [
-        { card: "cubes-minus-3abc", note: String.raw`the full factorization of $a^3 + b^3 + c^3 - 3abc$ (W2.5).` },
-        { card: "symmetric-polynomial-strategies", note: String.raw`expressions in $x + y$ and $xy$ (T1.2).` },
-        { card: "vietas-general", note: String.raw`the elementary symmetric sums as polynomial coefficients (W2.1).` }
+        { card: "cubes-minus-3abc", note: String.raw`the full factorization of $a^3 + b^3 + c^3 - 3abc$ (L5.5).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`expressions in $x + y$ and $xy$ (L1.2).` },
+        { card: "vietas-general", note: String.raw`the elementary symmetric sums as polynomial coefficients (L5.1).` }
       ],
       exercises: [
         { q: String.raw`Real numbers $a$, $b$, $c$ satisfy $a + b + c = 0$ and $a^3 + b^3 + c^3 = 12$. Find $abc$.`, answer: "4",
@@ -167,6 +167,38 @@ When a symmetric system looks too hard, look for one of these identities. The ne
       problems: [
         "2021 Fall AMC 10B, Problem 12",
         "2012 AMC 10A, Problem 24"
+      ]
+    },
+    "L3.6": {
+      prereq: [],
+      cards: ["estimating-answers", "sqrt-approximation", "disproof-by-counterexample"],
+      body: String.raw`On a multiple-choice test, estimating is a legitimate method and a powerful check. The five answer choices are often far enough apart that a careful estimate picks one, and a quick estimate catches arithmetic slips in an exact computation.
+
+[[estimating-answers|Estimate]] by replacing numbers with convenient nearby ones and tracking which way each change moves the result: rounding a numerator up or a denominator down makes a fraction larger. A sum of many nearly equal terms is about the number of terms times a typical term.
+
+[[sqrt-approximation|Square roots]] are bounded by the nearest perfect squares: $22^2 = 484 \le 500 \lt 529 = 23^2$, so $\lfloor\sqrt{500}\rfloor = 22$, and $\sqrt{n^2 + k} \approx n + \tfrac{k}{2n}$ for small $k$.
+
+[[disproof-by-counterexample|One counterexample]] disproves a general claim, and questions asking which statement is not always true are answered by testing extreme cases: zero, negative numbers, equal values, and the smallest numbers allowed.
+
+Estimate before computing, test claims with examples, and check answers against an estimate. The next chapter begins the AMC 12 topics, with logarithms and functional equations.`,
+      related: [
+        { card: "bernoulli-inequality", note: String.raw`linear bounds on powers (L6.3).` },
+        { card: "floor-equation", note: String.raw`floors of roots and quotients (L1.4).` },
+        { card: "simulate-the-process", note: String.raw`testing a pattern on small cases (R1.5).` }
+      ],
+      exercises: [
+        { q: String.raw`Find $\lfloor\sqrt{500}\rfloor$.`, answer: "22",
+          solution: String.raw`$22^2 = 484 \le 500 \lt 529 = 23^2$, so the floor is $22$.` }
+      ],
+      problems: [
+        "2022 AMC 10A, Problem 2",
+        "2019 AMC 10B, Problem 2",
+        "2012 AMC 10B, Problem 6",
+        "2017 AMC 12B, Problem 2",
+        "2015 AMC 12A, Problem 5",
+        "2016 AMC 12A, Problem 5",
+        "2008 AMC 12B, Problem 6",
+        "2018 AMC 10A, Problem 14"
       ]
     }
   }

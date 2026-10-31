@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W3: sequences, sums and inequalities (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L6: sequences, sums and inequalities (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W3"] = {
+window.MATH_LEARN["L6"] = {
   lessons: {
-    "W3.1": {
+    "L6.1": {
       prereq: ["first-order-recurrence", "quadratic-formula"],
       cards: ["linear-recurrence", "binets-formula"],
       body: String.raw`Sequences in which each term is a fixed combination of the previous two, like the Fibonacci numbers, have closed forms built from the roots of a quadratic. The AMC 12 asks for far terms, for divisibility of terms, or for the starting values that make a sequence behave.
@@ -14,9 +14,9 @@ A [[linear-recurrence|linear recurrence]] $a_n = pa_{n-1} + qa_{n-2}$ has charac
 
 For contest sizes, computing terms by the recurrence is usually fastest; the closed form answers questions about growth, divisibility and integer parts. The next lesson treats differences and double sums.`,
       related: [
-        { card: "recursive-counting", note: String.raw`counting problems that produce linear recurrences (T6.5).` },
-        { card: "periodic-sequences", note: String.raw`recurrences modulo $n$ are periodic (T3.3).` },
-        { card: "vietas-quadratic", note: String.raw`the roots of the characteristic equation (T2.1).` }
+        { card: "recursive-counting", note: String.raw`counting problems that produce linear recurrences (R1.5).` },
+        { card: "periodic-sequences", note: String.raw`recurrences modulo $n$ are periodic (L3.3).` },
+        { card: "vietas-quadratic", note: String.raw`the roots of the characteristic equation (L2.1).` }
       ],
       exercises: [
         { q: String.raw`A sequence has $a_0 = 2$, $a_1 = 5$ and $a_n = 5a_{n-1} - 6a_{n-2}$. Find $a_5$.`, answer: "275",
@@ -29,7 +29,7 @@ For contest sizes, computing terms by the recurrence is usually fastest; the clo
         "1988 AIME, Problem 13"
       ]
     },
-    "W3.2": {
+    "L6.2": {
       prereq: ["arithmetic-series", "geometric-series"],
       cards: ["finite-differences", "double-summation", "arithmetico-geometric", "largest-term-ratio"],
       body: String.raw`Beyond arithmetic and geometric series, the AMC 12 uses a few more summing techniques: differences to identify polynomial sequences, swapping the order of a double sum, the arithmetico-geometric sum, and finding the largest term of a sequence.
@@ -44,9 +44,9 @@ The [[largest-term-ratio|largest term]] of a sequence like $\binom{n}{k}p^k$ is 
 
 Use differences for polynomial sequences, swap double sums, and subtract shifted copies. The last lesson of the chapter treats inequalities.`,
       related: [
-        { card: "telescoping", note: String.raw`sums that collapse (T3.4).` },
-        { card: "power-sums", note: String.raw`sums of powers as polynomials (T3.2).` },
-        { card: "lagrange-interpolation-formula", note: String.raw`the polynomial through given values (W2.3).` }
+        { card: "telescoping", note: String.raw`sums that collapse (L3.4).` },
+        { card: "power-sums", note: String.raw`sums of powers as polynomials (L3.2).` },
+        { card: "lagrange-interpolation-formula", note: String.raw`the polynomial through given values (L5.3).` }
       ],
       exercises: [
         { q: String.raw`The sequence $1, 5, 14, 30, \ldots$ has constant third differences. Find the next term.`, answer: "55",
@@ -63,7 +63,7 @@ Use differences for polynomial sequences, swap double sums, and subtract shifted
         "1992 AIME, Problem 8"
       ]
     },
-    "W3.3": {
+    "L6.3": {
       prereq: ["am-gm", "trivial-inequality"],
       cards: ["mean-chain", "cauchy-schwarz", "power-mean-inequality", "bernoulli-inequality"],
       body: String.raw`The AMC 12 adds a few inequalities to AM-GM. Each bounds a different shape of expression, and each comes with an equality case that turns the bound into an answer.
@@ -76,8 +76,8 @@ The [[mean-chain|chain of means]] says quadratic mean $\ge$ arithmetic mean $\ge
 
 Match the expression to the inequality, and always check the equality case. The next chapter turns to trigonometry.`,
       related: [
-        { card: "harmonic-addition", note: String.raw`$a\sin x + b\cos x \le \sqrt{a^2 + b^2}$, Cauchy-Schwarz on the circle (W4.2).` },
-        { card: "sos-identity", note: String.raw`sums of squares as bounds (T2.5).` },
+        { card: "harmonic-addition", note: String.raw`$a\sin x + b\cos x \le \sqrt{a^2 + b^2}$, Cauchy-Schwarz on the circle (L7.2).` },
+        { card: "sos-identity", note: String.raw`sums of squares as bounds (L2.5).` },
         { card: "jensens-inequality", note: String.raw`convexity behind all the means (A5.5).` }
       ],
       exercises: [

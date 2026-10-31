@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W4: trigonometry (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L7: trigonometry (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W4"] = {
+window.MATH_LEARN["L7"] = {
   lessons: {
-    "W4.1": {
+    "L7.1": {
       prereq: ["common-angle-values", "pythagorean-identities"],
       cards: ["special-trig-values", "angle-addition", "double-angle", "half-angle"],
       body: String.raw`Trigonometry on the AMC 12 is mostly identities: the values at special angles and the formulas for sums, doubles and halves. With them, expressions in sines and cosines simplify to numbers.
@@ -14,9 +14,9 @@ The [[double-angle|double-angle formulas]] $\sin 2a = 2\sin a\cos a$ and $\cos 2
 
 Rewrite in sines and cosines, use addition and double angles, and lower powers with half angles. The next lesson combines and solves.`,
       related: [
-        { card: "eulers-formula", note: String.raw`the addition formulas from multiplying $e^{ia}e^{ib}$ (W5.2).` },
-        { card: "angle-between-lines", note: String.raw`the tangent formula applied to slopes (T9.2).` },
-        { card: "law-of-cosines", note: String.raw`trigonometry in triangles (T8.6).` }
+        { card: "eulers-formula", note: String.raw`the addition formulas from multiplying $e^{ia}e^{ib}$ (L8.2).` },
+        { card: "angle-between-lines", note: String.raw`the tangent formula applied to slopes (S2.2).` },
+        { card: "law-of-cosines", note: String.raw`trigonometry in triangles (S1.6).` }
       ],
       exercises: [
         { q: String.raw`Find $\sin 15^\circ\cos 15^\circ$.`, answer: "1/4",
@@ -35,7 +35,7 @@ Rewrite in sines and cosines, use addition and double angles, and lower powers w
         "1990 AIME, Problem 12"
       ]
     },
-    "W4.2": {
+    "L7.2": {
       prereq: ["angle-addition"],
       cards: ["harmonic-addition", "inverse-trig-identities"],
       body: String.raw`Two more trigonometric tools answer common AMC 12 questions: combining $a\sin x + b\cos x$ into a single wave, and working with inverse functions and their ranges.
@@ -46,8 +46,8 @@ The [[inverse-trig-identities|inverse trigonometric functions]] return angles in
 
 Combine linear combinations into one wave, and keep inverse functions within their ranges. The last lesson of the chapter treats products and powers.`,
       related: [
-        { card: "cauchy-schwarz", note: String.raw`the same bound $\sqrt{a^2 + b^2}$ (W3.3).` },
-        { card: "reduction-identities", note: String.raw`moving angles into the principal range (T8.6).` },
+        { card: "cauchy-schwarz", note: String.raw`the same bound $\sqrt{a^2 + b^2}$ (L6.3).` },
+        { card: "reduction-identities", note: String.raw`moving angles into the principal range (S1.6).` },
         { card: "arctan-telescoping", note: String.raw`sums of many arctangents (A7.4).` }
       ],
       exercises: [
@@ -65,7 +65,7 @@ Combine linear combinations into one wave, and keep inverse functions within the
         "2013 AIME I, Problem 8"
       ]
     },
-    "W4.3": {
+    "L7.3": {
       prereq: ["double-angle"],
       cards: ["trig-telescoping-product", "even-power-sin-cos-sums"],
       body: String.raw`Products of cosines at doubling angles and high powers of sine and cosine look hopeless but collapse with the double-angle formula.
@@ -77,8 +77,8 @@ A [[trig-telescoping-product|telescoping cosine product]] multiplies by a sine a
 Double to absorb cosines, and square the Pythagorean identity to lower powers. The next chapter treats complex numbers.`,
       related: [
         { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles (A9.4).` },
-        { card: "square-of-sum", note: String.raw`squaring $\sin^2 + \cos^2 = 1$ (T1.1).` },
-        { card: "telescoping", note: String.raw`the same collapse for sums (T3.4).` }
+        { card: "square-of-sum", note: String.raw`squaring $\sin^2 + \cos^2 = 1$ (L1.1).` },
+        { card: "telescoping", note: String.raw`the same collapse for sums (L3.4).` }
       ],
       exercises: [
         { q: String.raw`Find $\cos 20^\circ\cos 40^\circ\cos 80^\circ$.`, answer: "1/8",

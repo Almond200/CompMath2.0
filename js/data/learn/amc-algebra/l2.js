@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T2: quadratics, functions and extremes (CONVENTIONS §14; the AMC track).
+// Learn, AMC Algebra, chapter L2: quadratics, functions and extremes (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T2"] = {
+window.MATH_LEARN["L2"] = {
   lessons: {
-    "T2.1": {
+    "L2.1": {
       prereq: ["completing-the-square"],
       cards: ["quadratic-formula", "vietas-quadratic", "vertex-form", "quadratic-forms", "quadratic-perfect-square"],
       body: String.raw`Quadratics are the most common equations on the AMC. Most questions about them need one of three facts: the quadratic formula and its discriminant, Vieta's formulas for the sum and product of the roots, or the vertex where the parabola turns. Knowing which to use saves the work of solving.
@@ -16,9 +16,9 @@ A [[quadratic-perfect-square|quadratic that must be a perfect square]] is a comm
 
 Use Vieta for sums and products, the discriminant for how many roots, and the vertex for extremes. The next lesson studies functions.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression of the roots through their sum and product (T1.2).` },
-        { card: "vietas-general", note: String.raw`Vieta for polynomials of any degree (W2.1).` },
-        { card: "quadratic-root-location", note: String.raw`where the roots lie without solving (W2.2).` }
+        { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression of the roots through their sum and product (L1.2).` },
+        { card: "vietas-general", note: String.raw`Vieta for polynomials of any degree (L5.1).` },
+        { card: "quadratic-root-location", note: String.raw`where the roots lie without solving (L5.2).` }
       ],
       exercises: [
         { q: String.raw`The roots of $2x^2 - 7x + 3 = 0$ are $r$ and $s$. Find $\tfrac1r + \tfrac1s$.`, answer: "7/3",
@@ -39,7 +39,7 @@ Use Vieta for sums and products, the discriminant for how many roots, and the ve
         "2013 AMC 12B, Problem 22"
       ]
     },
-    "T2.2": {
+    "L2.2": {
       prereq: [],
       cards: ["inverse-function-properties", "odd-even-functions", "defined-operation"],
       body: String.raw`AMC problems about functions test whether you can work with a rule as a rule: compose it, undo it, use its symmetry, or follow a made-up operation exactly as defined. None needs advanced theory, only care.
@@ -52,9 +52,9 @@ A [[defined-operation|defined operation]] is a rule like $a * b = 2a + b^2$ give
 
 Undo by solving, use symmetry to move between $x$ and $-x$, and follow defined rules exactly. The next lesson reads graphs.`,
       related: [
-        { card: "fx-pairing", note: String.raw`pairing $f(x)$ with $f(c - x)$ to sum many values (W1.2).` },
-        { card: "functional-substitution", note: String.raw`solving equations whose unknown is a function (W1.2).` },
-        { card: "disproof-by-counterexample", note: String.raw`one example shows an operation is not commutative (T9.6).` }
+        { card: "fx-pairing", note: String.raw`pairing $f(x)$ with $f(c - x)$ to sum many values (L4.2).` },
+        { card: "functional-substitution", note: String.raw`solving equations whose unknown is a function (L4.2).` },
+        { card: "disproof-by-counterexample", note: String.raw`one example shows an operation is not commutative (L3.6).` }
       ],
       exercises: [
         { q: String.raw`For $f(x) = 3x - 5$, find $f^{-1}(7)$.`, answer: "4",
@@ -75,7 +75,7 @@ Undo by solving, use symmetry to move between $x$ and $-x$, and follow defined r
         "2014 AMC 12B, Problem 16"
       ]
     },
-    "T2.3": {
+    "L2.3": {
       prereq: ["abs-value-graphing", "line-forms"],
       cards: ["piecewise-graph-counting", "reading-graphs", "slope-to-a-point"],
       body: String.raw`A picture of the graphs often answers a question about equations faster than algebra. How many solutions does $|x| = x^2 - 2$ have? How many times do two piecewise graphs cross? What is the largest value of $\tfrac yx$ on a circle? Sketch, then count or measure.
@@ -88,9 +88,9 @@ A ratio of differences is a slope: $\tfrac{y - b}{x - a}$ is the slope from $(a,
 
 Draw first, count crossings, and read ratios as slopes. The next lesson treats exponents and logarithms.`,
       related: [
-        { card: "abs-value-graphing", note: String.raw`drawing the pieces of absolute value graphs (T1.4).` },
-        { card: "tangent-lines-from-point", note: String.raw`the tangent lines that give extreme slopes (T9.2).` },
-        { card: "vertex-form", note: String.raw`the turning point of a parabola in a graph (T2.1).` }
+        { card: "abs-value-graphing", note: String.raw`drawing the pieces of absolute value graphs (L1.4).` },
+        { card: "tangent-lines-from-point", note: String.raw`the tangent lines that give extreme slopes (S2.2).` },
+        { card: "vertex-form", note: String.raw`the turning point of a parabola in a graph (L2.1).` }
       ],
       exercises: [
         { q: String.raw`How many real solutions does $|x| = x^2 - 2$ have?`, answer: "2",
@@ -107,7 +107,7 @@ Draw first, count crossings, and read ratios as slopes. The next lesson treats e
         "2012 AMC 12A, Problem 25"
       ]
     },
-    "T2.4": {
+    "L2.4": {
       prereq: [],
       cards: ["log-rules", "change-of-base"],
       body: String.raw`Exponents and logarithms appear on the AMC 10 mostly as arithmetic: simplify $\log_2 8 + \log_3 27$, solve $\log_4 x = \tfrac32$, or compare powers like $2^{30}$ and $3^{20}$. On the AMC 12 they become equations, but the rules are the same.
@@ -120,9 +120,9 @@ The [[change-of-base|change of base]] formula $\log_a b = \tfrac{\log b}{\log a}
 
 Write bases as powers of a prime, and treat logarithms as exponents. The last lesson of the chapter finds largest and smallest values.`,
       related: [
-        { card: "take-logs-linearize", note: String.raw`taking logarithms to solve exponential equations (W1.1).` },
-        { card: "log-substitution", note: String.raw`naming a logarithm to get a polynomial equation (W1.1).` },
-        { card: "digit-count", note: String.raw`the number of digits of $n$ is $\lfloor\log_{10} n\rfloor + 1$ (T4.4).` }
+        { card: "take-logs-linearize", note: String.raw`taking logarithms to solve exponential equations (L4.1).` },
+        { card: "log-substitution", note: String.raw`naming a logarithm to get a polynomial equation (L4.1).` },
+        { card: "digit-count", note: String.raw`the number of digits of $n$ is $\lfloor\log_{10} n\rfloor + 1$ (M1.4).` }
       ],
       exercises: [
         { q: String.raw`Find $x$ if $\log_4 x = \tfrac32$.`, answer: "8",
@@ -141,7 +141,7 @@ Write bases as powers of a prime, and treat logarithms as exponents. The last le
         "2007 AMC 12A, Problem 23"
       ]
     },
-    "T2.5": {
+    "L2.5": {
       prereq: ["completing-the-square"],
       cards: ["trivial-inequality", "am-gm", "max-product-fixed-sum", "sos-identity", "abs-triangle-inequality", "median-minimizes-abs", "placing-digits-extremes"],
       body: String.raw`"Find the largest possible value" and "find the smallest possible value" are among the most common AMC instructions. The answer always has two parts: a bound that the expression cannot pass, and an example that reaches it. A few tools supply the bounds.
@@ -154,9 +154,9 @@ A sum of distances $|x - a_1| + \cdots + |x - a_n|$ is [[median-minimizes-abs|sm
 
 Always find the example that attains the bound. The next chapter turns to polynomials and sequences.`,
       related: [
-        { card: "vertex-form", note: String.raw`the extreme value of a quadratic (T2.1).` },
-        { card: "mean-chain", note: String.raw`the full chain of means, for the AMC 12 (W3.3).` },
-        { card: "cauchy-schwarz", note: String.raw`bounds for sums of products (W3.3).` }
+        { card: "vertex-form", note: String.raw`the extreme value of a quadratic (L2.1).` },
+        { card: "mean-chain", note: String.raw`the full chain of means, for the AMC 12 (L6.3).` },
+        { card: "cauchy-schwarz", note: String.raw`bounds for sums of products (L6.3).` }
       ],
       exercises: [
         { q: String.raw`Find the smallest value of $x + \tfrac9x$ for $x \gt 0$.`, answer: "6",

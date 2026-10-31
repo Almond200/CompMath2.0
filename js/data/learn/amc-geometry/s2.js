@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T9: geometry, polygons, coordinates and solids (CONVENTIONS §14; the AMC track).
+// Learn, AMC Geometry, chapter S2: geometry, polygons, coordinates and solids (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T9"] = {
+window.MATH_LEARN["S2"] = {
   lessons: {
-    "T9.1": {
+    "S2.1": {
       prereq: ["triangle-area-standard", "special-right-triangles"],
       cards: ["polygon-angle-sums", "regular-polygon-area", "regular-hexagon-area", "regular-octagon", "regular-dodecagon", "equilateral-triangle-facts", "equiangular-polygon", "area-by-pieces", "trapezoid-parallelogram-areas", "parallelogram-area", "quadrilateral-diagonal-area", "trapezoid-special-segments", "circular-segment", "inscribed-square"],
       body: String.raw`Polygon problems ask for angles, areas and lengths in regular and irregular figures. Regular polygons split into congruent triangles from the center; other figures split into, or are cut out of, shapes with known areas.
@@ -14,8 +14,8 @@ The interior [[polygon-angle-sums|angles of an $n$-gon]] add to $180^\circ(n - 2
 
 Split from the center, cut into known shapes, and subtract what is outside. The next lesson works in coordinates.`,
       related: [
-        { card: "shoelace-formula", note: String.raw`areas from coordinates (T9.2).` },
-        { card: "varignons-theorem", note: String.raw`the midpoint quadrilateral (W9.2).` },
+        { card: "shoelace-formula", note: String.raw`areas from coordinates (S2.2).` },
+        { card: "varignons-theorem", note: String.raw`the midpoint quadrilateral (S4.2).` },
         { card: "golden-ratio-pentagon", note: String.raw`the regular pentagon (G7.1).` }
       ],
       exercises: [
@@ -35,7 +35,7 @@ Split from the center, cut into known shapes, and subtract what is outside. The 
         "2004 AMC 10B, Problem 25"
       ]
     },
-    "T9.2": {
+    "S2.2": {
       prereq: ["pythagorean-theorem"],
       cards: ["distance-midpoint", "line-forms", "point-line-distance", "circle-equation", "coordinate-bash", "angle-between-lines", "section-formula", "parallel-lines-distance", "tangent-lines-from-point", "angle-bisectors-of-lines", "shoelace-formula", "picks-theorem", "perpendicular-bisector-locus", "bisector-closer-region"],
       body: String.raw`Coordinates turn any figure into algebra. With a good placement and a few formulas, distances, intersections and areas follow mechanically, which makes coordinates the reliable fallback for AMC geometry.
@@ -48,9 +48,9 @@ The [[shoelace-formula|shoelace formula]] gives the area of a polygon from its v
 
 Place, compute, and use the area formulas. The next lesson treats transformations.`,
       related: [
-        { card: "conic-sections", note: String.raw`parabolas, ellipses and hyperbolas (W9.1).` },
-        { card: "determinant-geometric", note: String.raw`the determinant behind the shoelace formula (W9.2).` },
-        { card: "lattice-points-gcd", note: String.raw`lattice points on a segment (W9.2).` }
+        { card: "conic-sections", note: String.raw`parabolas, ellipses and hyperbolas (S4.1).` },
+        { card: "determinant-geometric", note: String.raw`the determinant behind the shoelace formula (S4.2).` },
+        { card: "lattice-points-gcd", note: String.raw`lattice points on a segment (S4.2).` }
       ],
       exercises: [
         { q: String.raw`Find the distance from $(2, -1)$ to the line $3x - 4y + 5 = 0$.`, answer: "3",
@@ -71,7 +71,7 @@ Place, compute, and use the area formulas. The next lesson treats transformation
         "2007 AMC 12A, Problem 19"
       ]
     },
-    "T9.3": {
+    "S2.3": {
       prereq: ["distance-midpoint"],
       cards: ["reflection-coordinates", "rotation-90", "composing-transformations", "reflect-across-the-line", "folded-paper", "figure-symmetries", "fit-copies"],
       body: String.raw`Reflections and rotations move figures without changing them, and the AMC uses them in three ways: tracking where a point goes, finding shortest paths, and using a figure's symmetry.
@@ -84,9 +84,9 @@ The [[figure-symmetries|symmetries of a figure]] are the motions that map it to 
 
 Write each move as a formula, reflect to straighten paths, and use symmetry to halve work. The next lesson counts in figures.`,
       related: [
-        { card: "reflection-composition", note: String.raw`compositions of reflections in general (W9.3).` },
-        { card: "rotation-trick", note: String.raw`rotating part of a figure (W9.3).` },
-        { card: "perpendicular-bisector-locus", note: String.raw`the crease of a fold (T9.2).` }
+        { card: "reflection-composition", note: String.raw`compositions of reflections in general (S4.3).` },
+        { card: "rotation-trick", note: String.raw`rotating part of a figure (S4.3).` },
+        { card: "perpendicular-bisector-locus", note: String.raw`the crease of a fold (S2.2).` }
       ],
       exercises: [
         { q: String.raw`The point $(3, 2)$ is rotated $90^\circ$ counterclockwise about the origin. Find the sum of the coordinates of its image.`, answer: "1",
@@ -105,7 +105,7 @@ Write each move as a formula, reflect to straighten paths, and use symmetry to h
         "2014 AMC 10A, Problem 23"
       ]
     },
-    "T9.4": {
+    "S2.4": {
       prereq: ["permutations-combinations"],
       cards: ["plane-regions", "handshakes-diagonals", "counting-shapes", "zonogon-minkowski", "rectangles-in-grid"],
       body: String.raw`Counting meets geometry in questions about diagonals, intersection points, regions and shapes in a figure. Each is a choice of points or lines.
@@ -116,9 +116,9 @@ Write each move as a formula, reflect to straighten paths, and use symmetry to h
 
 Choose points or lines, count with binomial coefficients, and organize irregular shapes by size. The last lesson of the chapter treats solids.`,
       related: [
-        { card: "moser-circle", note: String.raw`regions made by chords of a circle (W9.4).` },
-        { card: "complementary-counting", note: String.raw`subtracting collinear triples (T6.2).` },
-        { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, behind region counts (T9.5).` }
+        { card: "moser-circle", note: String.raw`regions made by chords of a circle (S4.4).` },
+        { card: "complementary-counting", note: String.raw`subtracting collinear triples (R1.2).` },
+        { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, behind region counts (S2.5).` }
       ],
       exercises: [
         { q: String.raw`How many diagonals does a convex $12$-gon have?`, answer: "54",
@@ -137,7 +137,7 @@ Choose points or lines, count with binomial coefficients, and organize irregular
         "2005 AMC 12A, Problem 25"
       ]
     },
-    "T9.5": {
+    "S2.5": {
       prereq: ["pythagorean-theorem", "similar-figures-ratios"],
       cards: ["prism-pyramid-volumes", "cone-formulas", "sphere-formulas", "cube", "space-diagonal", "regular-octahedron", "painted-cubes", "scale-one-level", "cavalieris-principle", "unfold-the-surface", "cube-nets", "eulers-polyhedron-formula"],
       body: String.raw`Solid geometry on the AMC 10 asks for volumes, surface areas and distances in familiar shapes. Most of the work is a Pythagorean computation in a well-chosen plane.
@@ -148,11 +148,11 @@ Choose points or lines, count with binomial coefficients, and organize irregular
 
 [[unfold-the-surface|Unfolding the surface]] turns a shortest path on a box or cone into a straight line on a flat net. [[cube-nets|Folding a net]] decides which faces are opposite. [[eulers-polyhedron-formula|Euler's formula]] $V - E + F = 2$ relates the counts: a solid with $8$ vertices and $6$ faces has $12$ edges.
 
-Find lengths in a plane through the solid, then apply the formulas. The last lesson of the book is about estimating and checking.`,
+Find lengths in a plane through the solid, then apply the formulas. The next chapter adds the triangle and circle geometry of the AMC 12.`,
       related: [
-        { card: "frustum-volume", note: String.raw`truncated cones and pyramids (W9.5).` },
-        { card: "regular-tetrahedron", note: String.raw`the regular tetrahedron (W9.5).` },
-        { card: "distance-3d", note: String.raw`coordinates in space (W9.5).` }
+        { card: "frustum-volume", note: String.raw`truncated cones and pyramids (S4.5).` },
+        { card: "regular-tetrahedron", note: String.raw`the regular tetrahedron (S4.5).` },
+        { card: "distance-3d", note: String.raw`coordinates in space (S4.5).` }
       ],
       exercises: [
         { q: String.raw`Find the space diagonal of a cube with edge $4$.`, answer: "4sqrt(3)",
@@ -172,38 +172,7 @@ Find lengths in a plane through the solid, then apply the formulas. The last les
         "2001 AMC 12, Problem 15",
         "2011 AMC 10A, Problem 24"
       ]
-    },
-    "T9.6": {
-      prereq: [],
-      cards: ["estimating-answers", "sqrt-approximation", "disproof-by-counterexample"],
-      body: String.raw`On a multiple-choice test, estimating is a legitimate method and a powerful check. The five answer choices are often far enough apart that a careful estimate picks one, and a quick estimate catches arithmetic slips in an exact computation.
-
-[[estimating-answers|Estimate]] by replacing numbers with convenient nearby ones and tracking which way each change moves the result: rounding a numerator up or a denominator down makes a fraction larger. A sum of many nearly equal terms is about the number of terms times a typical term.
-
-[[sqrt-approximation|Square roots]] are bounded by the nearest perfect squares: $22^2 = 484 \le 500 \lt 529 = 23^2$, so $\lfloor\sqrt{500}\rfloor = 22$, and $\sqrt{n^2 + k} \approx n + \tfrac{k}{2n}$ for small $k$.
-
-[[disproof-by-counterexample|One counterexample]] disproves a general claim, and questions asking which statement is not always true are answered by testing extreme cases: zero, negative numbers, equal values, and the smallest numbers allowed.
-
-Estimate before computing, test claims with examples, and check answers against an estimate. The AMC 12 book continues where this one ends.`,
-      related: [
-        { card: "bernoulli-inequality", note: String.raw`linear bounds on powers (W3.3).` },
-        { card: "floor-equation", note: String.raw`floors of roots and quotients (T1.4).` },
-        { card: "simulate-the-process", note: String.raw`testing a pattern on small cases (T6.5).` }
-      ],
-      exercises: [
-        { q: String.raw`Find $\lfloor\sqrt{500}\rfloor$.`, answer: "22",
-          solution: String.raw`$22^2 = 484 \le 500 \lt 529 = 23^2$, so the floor is $22$.` }
-      ],
-      problems: [
-        "2022 AMC 10A, Problem 2",
-        "2019 AMC 10B, Problem 2",
-        "2012 AMC 10B, Problem 6",
-        "2017 AMC 12B, Problem 2",
-        "2015 AMC 12A, Problem 5",
-        "2016 AMC 12A, Problem 5",
-        "2008 AMC 12B, Problem 6",
-        "2018 AMC 10A, Problem 14"
-      ]
     }
+
   }
 };

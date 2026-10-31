@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T7: probability and expected value (CONVENTIONS §14; the AMC track).
+// Learn, AMC Counting & Probability, chapter R2: probability and expected value (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T7"] = {
+window.MATH_LEARN["R2"] = {
   lessons: {
-    "T7.1": {
+    "R2.1": {
       prereq: ["permutations-combinations"],
       cards: ["basic-probability", "drawing-without-replacement", "symmetry-probability"],
       body: String.raw`On the AMC 10, probability is almost always counting: the number of favorable outcomes over the number of equally likely outcomes. The work is in choosing outcomes that really are equally likely and counting both sets the same way.
@@ -16,9 +16,9 @@ The [[basic-probability|basic probability]] of an event is $\tfrac{\text{favorab
 
 Choose equally likely outcomes, count numerator and denominator alike, and look for a symmetry. The next lesson treats independence and conditioning.`,
       related: [
-        { card: "complementary-counting", note: String.raw`counting the outcomes that fail (T6.2).` },
-        { card: "conditional-probability", note: String.raw`probabilities given partial information (T7.2).` },
-        { card: "geometric-probability", note: String.raw`probability as a ratio of lengths or areas (T7.3).` }
+        { card: "complementary-counting", note: String.raw`counting the outcomes that fail (R1.2).` },
+        { card: "conditional-probability", note: String.raw`probabilities given partial information (R2.2).` },
+        { card: "geometric-probability", note: String.raw`probability as a ratio of lengths or areas (R2.3).` }
       ],
       exercises: [
         { q: String.raw`Two fair dice are rolled. What is the probability that the product of the numbers is even?`, answer: "3/4",
@@ -37,7 +37,7 @@ Choose equally likely outcomes, count numerator and denominator alike, and look 
         "2008 AMC 12A, Problem 21"
       ]
     },
-    "T7.2": {
+    "R2.2": {
       prereq: ["basic-probability"],
       cards: ["independent-events", "conditional-probability", "hypergeometric", "binomial-probability"],
       body: String.raw`Repeated experiments and partial information are the next layer. Independent events multiply; conditioning restricts the outcomes to those consistent with what is known.
@@ -50,9 +50,9 @@ The [[hypergeometric|hypergeometric]] count handles draws without replacement: f
 
 Multiply for independent steps, restrict for conditions, and use binomial or hypergeometric counts for repeated trials. The next lesson moves to continuous probability.`,
       related: [
-        { card: "bayes-theorem", note: String.raw`reversing a conditional probability (W7.4).` },
-        { card: "binomial-theorem", note: String.raw`the binomial coefficients in the binomial probability (T6.4).` },
-        { card: "drawing-without-replacement", note: String.raw`the counts behind hypergeometric probabilities (T7.1).` }
+        { card: "bayes-theorem", note: String.raw`reversing a conditional probability (R3.4).` },
+        { card: "binomial-theorem", note: String.raw`the binomial coefficients in the binomial probability (R1.4).` },
+        { card: "drawing-without-replacement", note: String.raw`the counts behind hypergeometric probabilities (R2.1).` }
       ],
       exercises: [
         { q: String.raw`Two fair dice are rolled and their sum is $8$. What is the probability that both show even numbers?`, answer: "3/5",
@@ -70,7 +70,7 @@ Multiply for independent steps, restrict for conditions, and use binomial or hyp
         "2017 AMC 12B, Problem 17"
       ]
     },
-    "T7.3": {
+    "R2.3": {
       prereq: ["basic-probability", "triangle-area-standard"],
       cards: ["geometric-probability"],
       body: String.raw`When a number is chosen at random from an interval, or a point from a region, probability becomes a ratio of lengths or areas. Two random numbers make a random point in a square, and the event is a region in that square.
@@ -81,9 +81,9 @@ Problems about arrival times, broken sticks and random points on segments all fi
 
 Turn random numbers into a point, draw the event, and divide areas. The next lesson treats expected value.`,
       related: [
-        { card: "perpendicular-bisector-locus", note: String.raw`regions of points closer to one point than another (T9.2).` },
-        { card: "circular-segment", note: String.raw`areas of pieces of disks (T9.1).` },
-        { card: "order-statistics", note: String.raw`the largest and smallest of several random numbers (W7.6).` }
+        { card: "perpendicular-bisector-locus", note: String.raw`regions of points closer to one point than another (S2.2).` },
+        { card: "circular-segment", note: String.raw`areas of pieces of disks (S2.1).` },
+        { card: "order-statistics", note: String.raw`the largest and smallest of several random numbers (R3.6).` }
       ],
       exercises: [
         { q: String.raw`Two numbers are chosen independently and uniformly from $[0, 1]$. What is the probability that their sum is less than $\tfrac12$?`, answer: "1/8",
@@ -102,7 +102,7 @@ Turn random numbers into a point, draw the event, and divide areas. The next les
         "2022 AMC 12B, Problem 22"
       ]
     },
-    "T7.4": {
+    "R2.4": {
       prereq: ["basic-probability"],
       cards: ["expected-value"],
       body: String.raw`The expected value is the long-run average of a random quantity, and the AMC asks for it in games, counts and processes. It has one property that makes it easy: expectations add, even for dependent quantities.
@@ -113,9 +113,9 @@ For an expected count, write the count as a sum of indicators, one for each plac
 
 Write the quantity as a sum, find each part's expectation, and add. The last lesson of the chapter collects logic puzzles.`,
       related: [
-        { card: "indicator-variables", note: String.raw`expected counts as sums of probabilities (W7.4).` },
-        { card: "weighted-average", note: String.raw`an expected value is a weighted average (T1.5).` },
-        { card: "states-recursion-prob", note: String.raw`expected waiting times by states (W7.5).` }
+        { card: "indicator-variables", note: String.raw`expected counts as sums of probabilities (R3.4).` },
+        { card: "weighted-average", note: String.raw`an expected value is a weighted average (L1.5).` },
+        { card: "states-recursion-prob", note: String.raw`expected waiting times by states (R3.5).` }
       ],
       exercises: [
         { q: String.raw`A game pays $\$10$ with probability $\tfrac14$ and costs $\$2$ otherwise. What is the expected gain, in dollars?`, answer: "1",
@@ -132,7 +132,7 @@ Write the quantity as a sum, find each part's expectation, and add. The last les
         "2012 AMC 12A, Problem 23"
       ]
     },
-    "T7.5": {
+    "R2.5": {
       prereq: ["casework-method"],
       cards: ["truth-tellers-logic", "magic-squares"],
       body: String.raw`A few AMC problems are logic puzzles: people who always lie or always tell the truth, rankings from clues, or grids whose rows and columns must add to the same sum. They need no formulas, only careful cases.
@@ -141,11 +141,11 @@ In [[truth-tellers-logic|truth-teller puzzles]], assume something about one spea
 
 In [[magic-squares|magic squares]], every row, column and diagonal has the same sum. The rows together hold every entry once, so the magic sum is the total divided by the number of rows: for $2, 3, \ldots, 10$ in a $3 \times 3$ square the total is $54$ and the magic sum $18$. The center of a $3 \times 3$ magic square is one third of the magic sum, here $6$, since the middle row, middle column and two diagonals count the center four times and everything else once.
 
-Assume, follow, and check; and count totals before filling grids. The next chapter turns to geometry.`,
+Assume, follow, and check; and count totals before filling grids. The next chapter adds the counting and probability of the AMC 12.`,
       related: [
-        { card: "casework-method", note: String.raw`splitting a puzzle into cases (T6.2).` },
-        { card: "organized-listing", note: String.raw`listing possibilities in order (T3.3).` },
-        { card: "averages-to-totals", note: String.raw`totals behind magic sums (T1.5).` }
+        { card: "casework-method", note: String.raw`splitting a puzzle into cases (R1.2).` },
+        { card: "organized-listing", note: String.raw`listing possibilities in order (L3.3).` },
+        { card: "averages-to-totals", note: String.raw`totals behind magic sums (L1.5).` }
       ],
       exercises: [
         { q: String.raw`The numbers $2, 3, \ldots, 10$ fill a $3 \times 3$ magic square. What is the center number?`, answer: "6",

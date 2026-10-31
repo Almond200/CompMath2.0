@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W6: number theory for the AMC 12 (CONVENTIONS §14; the AMC track).
+// Learn, AMC Number Theory, chapter M3: number theory for the AMC 12 (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W6"] = {
+window.MATH_LEARN["M3"] = {
   lessons: {
-    "W6.1": {
+    "M3.1": {
       prereq: ["number-of-divisors", "sum-of-divisors"],
       cards: ["exponent-tracking", "multiplicative-functions", "largest-odd-divisor-sum", "sigma-parity"],
       body: String.raw`AMC 12 number theory often works one prime at a time. Tracking each prime's exponent separately turns conditions on products, gcds and lcms into conditions on small numbers, and divisor functions behave predictably across coprime factors.
@@ -16,9 +16,9 @@ Some sums need a different organization. The [[largest-odd-divisor-sum|largest o
 
 Separate the primes, multiply over coprime parts, and recurse on halves. The next lesson treats inverses and Euler's theorem.`,
       related: [
-        { card: "legendres-formula", note: String.raw`the exponent of a prime in a factorial (T4.3).` },
-        { card: "gcd-lcm-product", note: String.raw`gcds and lcms through exponents (T4.1).` },
-        { card: "eulers-totient", note: String.raw`the totient, another multiplicative function (T5.2).` }
+        { card: "legendres-formula", note: String.raw`the exponent of a prime in a factorial (M1.3).` },
+        { card: "gcd-lcm-product", note: String.raw`gcds and lcms through exponents (M1.1).` },
+        { card: "eulers-totient", note: String.raw`the totient, another multiplicative function (M2.2).` }
       ],
       exercises: [
         { q: String.raw`Find $\sigma(12)$, the sum of the positive divisors of $12$.`, answer: "28",
@@ -36,7 +36,7 @@ Separate the primes, multiply over coprime parts, and recurse on halves. The nex
         "1987 AIME, Problem 7"
       ]
     },
-    "W6.2": {
+    "M3.2": {
       prereq: ["modular-basics", "bezouts-identity", "fermats-little-theorem"],
       cards: ["modular-inverse", "extended-euclidean-algorithm", "eulers-theorem", "wilsons-theorem"],
       body: String.raw`Dividing modulo $n$, raising to huge powers modulo $n$, and evaluating factorials modulo a prime are the AMC 12 extensions of modular arithmetic.
@@ -49,9 +49,9 @@ A [[modular-inverse|modular inverse]] of $a$ modulo $n$ is a number $b$ with $ab
 
 Invert by the extended algorithm, reduce exponents by Euler, and use Wilson for factorials. The last lesson of the chapter treats binomial coefficients and bounded equations.`,
       related: [
-        { card: "crt", note: String.raw`combining congruences (T5.3).` },
+        { card: "crt", note: String.raw`combining congruences (M2.3).` },
         { card: "multiplicative-order", note: String.raw`the exact period of powers (N3.3).` },
-        { card: "cycle-hunting", note: String.raw`finding periods by listing (T5.2).` }
+        { card: "cycle-hunting", note: String.raw`finding periods by listing (M2.2).` }
       ],
       exercises: [
         { q: String.raw`Find the inverse of $7$ modulo $26$, between $0$ and $25$.`, answer: "15",
@@ -68,7 +68,7 @@ Invert by the extended algorithm, reduce exponents by Euler, and use Wilson for 
         "2011 AIME I, Problem 11"
       ]
     },
-    "W6.3": {
+    "M3.3": {
       prereq: ["legendres-formula", "binomial-row-sums"],
       cards: ["prime-divides-binomial", "pascal-parity", "power-minus-self", "sum-of-two-squares", "bounding-diophantine", "squeeze-between-squares"],
       body: String.raw`The last AMC 12 number theory tools concern primes in binomial coefficients, which numbers are sums of two squares, and how to finish an integer equation that does not factor.
@@ -79,11 +79,11 @@ The exponent of a prime in $\binom{n}{k}$ comes from Legendre's formula, and [[p
 
 When an equation does not factor, [[bounding-diophantine|bound the variables]]: assume an order, show one variable is small, and check the cases. [[squeeze-between-squares|Squeezing between squares]] proves an expression is not a square: $n^2 \lt n^2 + 2n \lt (n + 1)^2$ for $n \ge 1$.
 
-Count carries for binomial coefficients, check primes $\equiv 3 \pmod 4$, and bound or squeeze when factoring fails. The next chapter returns to counting and probability.`,
+Count carries for binomial coefficients, check primes $\equiv 3 \pmod 4$, and bound or squeeze when factoring fails. This completes the AMC Number Theory book.`,
       related: [
         { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.1).` },
-        { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n \pmod p$ (T5.2).` },
-        { card: "pythagorean-triples", note: String.raw`hypotenuses as sums of two squares (T5.5).` }
+        { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n \pmod p$ (M2.2).` },
+        { card: "pythagorean-triples", note: String.raw`hypotenuses as sums of two squares (M2.5).` }
       ],
       exercises: [
         { q: String.raw`How many of the numbers $\binom{10}{0}, \binom{10}{1}, \ldots, \binom{10}{10}$ are odd?`, answer: "4",

@@ -1,9 +1,9 @@
-// Learn, AMC 12, chapter W7: counting and probability for the AMC 12 (CONVENTIONS §14; the AMC track).
+// Learn, AMC Counting & Probability, chapter R3: counting and probability for the AMC 12 (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["W7"] = {
+window.MATH_LEARN["R3"] = {
   lessons: {
-    "W7.1": {
+    "R3.1": {
       prereq: ["stars-and-bars", "recursive-counting"],
       cards: ["restricted-sequences", "stars-bars-upper-bound", "catalan-numbers", "committee-chair", "nested-subset-pairs"],
       body: String.raw`The AMC 12 adds a few counting structures beyond the AMC 10: strings with local rules, distributions with caps, the Catalan numbers, and counts of pairs of sets.
@@ -16,8 +16,8 @@ The [[committee-chair|committee-chair identity]] $k\binom nk = n\binom{n-1}{k-1}
 
 Count by states, subtract capped cases, recognize Catalan sequences, and count pairs element by element. The next lesson treats more binomial identities.`,
       related: [
-        { card: "grid-paths", note: String.raw`unrestricted lattice paths (T6.5).` },
-        { card: "pie", note: String.raw`the inclusion-exclusion behind upper bounds (T6.2).` },
+        { card: "grid-paths", note: String.raw`unrestricted lattice paths (R1.5).` },
+        { card: "pie", note: String.raw`the inclusion-exclusion behind upper bounds (R1.2).` },
         { card: "double-counting", note: String.raw`counting one set two ways (C4.2).` }
       ],
       exercises: [
@@ -32,7 +32,7 @@ Count by states, subtract capped cases, recognize Catalan sequences, and count p
         "2008 AIME I, Problem 11"
       ]
     },
-    "W7.2": {
+    "R3.2": {
       prereq: ["binomial-theorem", "pascals-identity"],
       cards: ["vandermonde", "squared-binomial-sum", "multinomial-theorem", "generating-function-method"],
       body: String.raw`Sums of products of binomial coefficients, coefficients of powers of sums with three or more terms, and counts that combine independent choices all have short answers through identities and generating functions.
@@ -45,7 +45,7 @@ The [[generating-function-method|generating function method]] multiplies polynom
 
 Read sums of products as committees, coefficients as multinomials, and combined choices as products of polynomials. The next lesson treats invariants and symmetry.`,
       related: [
-        { card: "hockey-stick", note: String.raw`summing a diagonal of Pascal's triangle (T6.4).` },
+        { card: "hockey-stick", note: String.raw`summing a diagonal of Pascal's triangle (R1.4).` },
         { card: "roots-of-unity-filter", note: String.raw`extracting every $n$th coefficient (A6.3).` },
         { card: "partitions", note: String.raw`generating functions for partitions (C9.1).` }
       ],
@@ -67,7 +67,7 @@ Read sums of products as committees, coefficients as multinomials, and combined 
         "2017 AIME I, Problem 7"
       ]
     },
-    "W7.3": {
+    "R3.3": {
       prereq: ["coloring-arguments"],
       cards: ["invariants-coloring", "graph-coloring", "permutation-cycle-structure", "strategy-stealing"],
       body: String.raw`Some problems are about what a process cannot change, how many ways a graph can be colored, how permutations repeat, and who wins a game. Each has a structural tool.
@@ -82,9 +82,9 @@ The [[permutation-cycle-structure|cycle structure]] of a permutation decides its
 
 Find what is invariant, use the coloring formulas, read orders from cycles, and mirror in games. The next lesson treats conditional probability and expectation.`,
       related: [
-        { card: "backward-induction", note: String.raw`solving games position by position (T6.5).` },
+        { card: "backward-induction", note: String.raw`solving games position by position (R1.5).` },
         { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry (C4.3).` },
-        { card: "lcm-common-multiples", note: String.raw`the lcm that gives a permutation's order (T4.1).` }
+        { card: "lcm-common-multiples", note: String.raw`the lcm that gives a permutation's order (M1.1).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can the vertices of a $6$-cycle be colored with $3$ colors so that adjacent vertices differ?`, answer: "66",
@@ -102,7 +102,7 @@ Find what is invariant, use the coloring formulas, read orders from cycles, and 
         "2012 AIME I, Problem 11"
       ]
     },
-    "W7.4": {
+    "R3.4": {
       prereq: ["conditional-probability", "expected-value"],
       cards: ["bayes-theorem", "indicator-variables", "expected-fixed-points", "tail-sum-expectation", "total-expectation"],
       body: String.raw`The AMC 12 asks for probabilities reversed by Bayes' theorem and for expected values computed by linearity, tails and cases.
@@ -113,9 +113,9 @@ Find what is invariant, use the coloring formulas, read orders from cycles, and 
 
 Reverse conditions with a convenient population, split counts into indicators, and use tails for extremes. The next lesson treats random processes.`,
       related: [
-        { card: "binomial-probability", note: String.raw`the full distribution of a count of successes (T7.2).` },
-        { card: "derangements", note: String.raw`permutations with no fixed point (T6.3).` },
-        { card: "states-recursion-prob", note: String.raw`expectations of processes by states (W7.5).` }
+        { card: "binomial-probability", note: String.raw`the full distribution of a count of successes (R2.2).` },
+        { card: "derangements", note: String.raw`permutations with no fixed point (R1.3).` },
+        { card: "states-recursion-prob", note: String.raw`expectations of processes by states (R3.5).` }
       ],
       exercises: [
         { q: String.raw`A bag holds a fair coin and a two-headed coin. One is chosen at random and flipped, showing heads. What is the probability it is the two-headed coin?`, answer: "2/3",
@@ -130,7 +130,7 @@ Reverse conditions with a convenient population, split counts into indicators, a
         "2014 AIME II, Problem 6"
       ]
     },
-    "W7.5": {
+    "R3.5": {
       prereq: ["expected-value", "geometric-series"],
       cards: ["states-recursion-prob", "geometric-distribution", "turn-based-games"],
       body: String.raw`Random processes that run until something happens, such as a frog jumping until it escapes, rolling until a six, or players alternating until one wins, are solved by one-step equations.
@@ -143,9 +143,9 @@ In [[turn-based-games|turn-based games]] where players alternate and the first s
 
 Set one unknown per state, condition on the first step, and use the restart equation for alternating games. The last lesson of the chapter treats continuous probability.`,
       related: [
-        { card: "recursive-counting", note: String.raw`the counting version of first-step equations (T6.5).` },
+        { card: "recursive-counting", note: String.raw`the counting version of first-step equations (R1.5).` },
         { card: "gamblers-ruin", note: String.raw`random walks between two barriers (C7.4).` },
-        { card: "tail-sum-expectation", note: String.raw`expected waiting times from tails (W7.4).` }
+        { card: "tail-sum-expectation", note: String.raw`expected waiting times from tails (R3.4).` }
       ],
       exercises: [
         { q: String.raw`Two players alternate flipping a fair coin, and the first to flip heads wins. What is the probability that the first player wins?`, answer: "2/3",
@@ -163,7 +163,7 @@ Set one unknown per state, condition on the first step, and use the restart equa
         "1993 AIME, Problem 11"
       ]
     },
-    "W7.6": {
+    "R3.6": {
       prereq: ["geometric-probability", "expected-value"],
       cards: ["product-of-uniforms", "order-statistics", "variance-independence"],
       body: String.raw`With continuous random numbers, a few facts go beyond areas of polygons: the distribution of a product, the expected size of the largest or smallest of several numbers, and variance.
@@ -174,11 +174,11 @@ For two uniform numbers on $[0, 1]$, the event $XY \le t$ is the region under a 
 
 [[variance-independence|Variance]] $E[X^2] - E[X]^2$ measures spread; a fair coin's number of heads in one flip has variance $\tfrac14$, and variances add for independent quantities.
 
-Draw the region, use equal expected gaps, and add variances only when independent. The next chapter returns to geometry.`,
+Draw the region, use equal expected gaps, and add variances only when independent. This completes the AMC Counting & Probability book.`,
       related: [
-        { card: "geometric-probability", note: String.raw`probability as area (T7.3).` },
-        { card: "tail-sum-expectation", note: String.raw`expected maxima and minima from tails (W7.4).` },
-        { card: "indicator-variables", note: String.raw`second moments of counts (W7.4).` }
+        { card: "geometric-probability", note: String.raw`probability as area (R2.3).` },
+        { card: "tail-sum-expectation", note: String.raw`expected maxima and minima from tails (R3.4).` },
+        { card: "indicator-variables", note: String.raw`second moments of counts (R3.4).` }
       ],
       exercises: [
         { q: String.raw`Two numbers are chosen uniformly from $[0, 1]$. What is the expected value of the larger?`, answer: "2/3",

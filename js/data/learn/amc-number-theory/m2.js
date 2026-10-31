@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T5: number theory, remainders and integer equations (CONVENTIONS §14; the AMC track).
+// Learn, AMC Number Theory, chapter M2: number theory, remainders and integer equations (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T5"] = {
+window.MATH_LEARN["M2"] = {
   lessons: {
-    "T5.1": {
+    "M2.1": {
       prereq: ["euclidean-algorithm"],
       cards: ["modular-basics", "euclids-lemma", "subtract-equal-remainders", "reduce-divisibility-constant", "poly-divisible-linear"],
       body: String.raw`Remainders can be added, subtracted and multiplied without ever computing the full numbers. That is modular arithmetic, and it answers questions about last digits, remainders of huge products and divisibility with a few lines.
@@ -16,9 +16,9 @@ To decide when $n + 4$ divides $n^2 + 7$, [[reduce-divisibility-constant|reduce 
 
 Reduce early, use negative residues, and turn divisibility by an expression into divisibility of a constant. The next lesson finds cycles of powers.`,
       related: [
-        { card: "divisibility-rules", note: String.raw`the digit tests as statements about remainders (T4.3).` },
-        { card: "factor-remainder-theorem", note: String.raw`the polynomial remainder theorem behind reducing to a constant (T3.1).` },
-        { card: "modular-inverse", note: String.raw`dividing modulo $n$ (W6.2).` }
+        { card: "divisibility-rules", note: String.raw`the digit tests as statements about remainders (M1.3).` },
+        { card: "factor-remainder-theorem", note: String.raw`the polynomial remainder theorem behind reducing to a constant (L3.1).` },
+        { card: "modular-inverse", note: String.raw`dividing modulo $n$ (M3.2).` }
       ],
       exercises: [
         { q: String.raw`Find the remainder when $2^{100}$ is divided by $7$.`, answer: "2",
@@ -37,7 +37,7 @@ Reduce early, use negative residues, and turn divisibility by an expression into
         "2003 AMC 10B, Problem 25"
       ]
     },
-    "T5.2": {
+    "M2.2": {
       prereq: ["modular-basics"],
       cards: ["cycle-hunting", "last-digit-patterns", "fermats-little-theorem", "eulers-totient", "squares-mod-small"],
       body: String.raw`Powers modulo $n$ repeat, and finding the cycle reduces any huge exponent to a small one. For prime moduli Fermat's little theorem gives the cycle length at once.
@@ -50,9 +50,9 @@ Reduce early, use negative residues, and turn divisibility by an expression into
 
 Find the cycle, reduce the exponent, and test squares modulo small numbers. The next lesson solves systems of congruences.`,
       related: [
-        { card: "periodic-sequences", note: String.raw`cycles in sequences (T3.3).` },
-        { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1$ in general (W6.2).` },
-        { card: "choose-modulus", note: String.raw`picking the modulus that rules an equation out (T5.4).` }
+        { card: "periodic-sequences", note: String.raw`cycles in sequences (L3.3).` },
+        { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1$ in general (M3.2).` },
+        { card: "choose-modulus", note: String.raw`picking the modulus that rules an equation out (M2.4).` }
       ],
       exercises: [
         { q: String.raw`What is the last digit of $3^{2026}$?`, answer: "9",
@@ -73,7 +73,7 @@ Find the cycle, reduce the exponent, and test squares modulo small numbers. The 
         "2008 AMC 10A, Problem 24"
       ]
     },
-    "T5.3": {
+    "M2.3": {
       prereq: ["modular-basics", "gcd-lcm-product"],
       cards: ["bezouts-identity", "crt", "chicken-mcnugget", "coins-and-prices"],
       body: String.raw`Some problems give several remainder conditions at once, or ask which totals can be made from coins of two values. Both are questions about combinations $ax + by$, and the gcd decides them.
@@ -86,9 +86,9 @@ With nonnegative combinations, the [[chicken-mcnugget|Chicken McNugget theorem]]
 
 Check the gcd, list for small moduli, and count combinations by the largest piece. The next lesson solves equations in integers by factoring.`,
       related: [
-        { card: "extended-euclidean-algorithm", note: String.raw`finding the $x$ and $y$ in Bézout (W6.2).` },
-        { card: "modular-inverse", note: String.raw`solving one linear congruence (W6.2).` },
-        { card: "stars-and-bars", note: String.raw`counting nonnegative combinations of unit pieces (T6.4).` }
+        { card: "extended-euclidean-algorithm", note: String.raw`finding the $x$ and $y$ in Bézout (M3.2).` },
+        { card: "modular-inverse", note: String.raw`solving one linear congruence (M3.2).` },
+        { card: "stars-and-bars", note: String.raw`counting nonnegative combinations of unit pieces (R1.4).` }
       ],
       exercises: [
         { q: String.raw`Find the smallest positive $x$ with $x \equiv 2 \pmod 3$ and $x \equiv 3 \pmod 5$.`, answer: "8",
@@ -107,7 +107,7 @@ Check the gcd, list for small moduli, and count combinations by the largest piec
         "2015 AMC 12A, Problem 22"
       ]
     },
-    "T5.4": {
+    "M2.4": {
       prereq: ["number-of-divisors", "difference-of-squares"],
       cards: ["sfft", "factor-pair-counting", "only-even-prime", "difference-of-squares-rep", "choose-modulus", "primes-6k"],
       body: String.raw`Integer equations are solved by factoring into a product equal to a known number, by parity, or by testing modulo a small number. The goal is a short list of cases.
@@ -120,9 +120,9 @@ Check the gcd, list for small moduli, and count combinations by the largest piec
 
 Factor into a product, list pairs, and test small moduli. The last lesson of the chapter treats integer right triangles.`,
       related: [
-        { card: "squares-mod-small", note: String.raw`the values of squares modulo small numbers (T5.2).` },
-        { card: "bounding-diophantine", note: String.raw`bounding the variables when factoring fails (W6.3).` },
-        { card: "useful-factorizations", note: String.raw`other products worth completing (W2.5).` }
+        { card: "squares-mod-small", note: String.raw`the values of squares modulo small numbers (M2.2).` },
+        { card: "bounding-diophantine", note: String.raw`bounding the variables when factoring fails (M3.3).` },
+        { card: "useful-factorizations", note: String.raw`other products worth completing (L5.5).` }
       ],
       exercises: [
         { q: String.raw`How many pairs of positive integers $(x, y)$ satisfy $xy + 3x + 2y = 18$?`, answer: "3",
@@ -141,7 +141,7 @@ Factor into a product, list pairs, and test small moduli. The last lesson of the
         "2024 AMC 12A, Problem 17"
       ]
     },
-    "T5.5": {
+    "M2.5": {
       prereq: ["pythagorean-theorem"],
       cards: ["pythagorean-triples", "integer-triangles-perimeter"],
       body: String.raw`Right triangles with integer sides appear throughout the AMC, in geometry and in number theory. Knowing the common triples by heart, and how to generate all of them, answers many questions immediately.
@@ -150,11 +150,11 @@ The [[pythagorean-triples|Pythagorean triples]] worth memorizing are $3$-$4$-$5$
 
 For [[integer-triangles-perimeter|integer triangles with a given perimeter]], list sides $a \le b \le c$ with $a + b + c$ fixed and $c \lt a + b$, which means $c$ is less than half the perimeter. For perimeter $12$, $c \le 5$ gives $(2, 5, 5)$, $(3, 4, 5)$, $(4, 4, 4)$.
 
-Memorize the small triples, and solve for triples with a given side by factoring a difference of squares. The next chapter turns to counting.`,
+Memorize the small triples, and solve for triples with a given side by factoring a difference of squares. The next chapter adds the number theory of the AMC 12.`,
       related: [
-        { card: "difference-of-squares", note: String.raw`$c^2 - b^2 = (c - b)(c + b)$, the factoring that finds triples (T1.1).` },
-        { card: "triangle-inequality", note: String.raw`the condition $c \lt a + b$ (T8.1).` },
-        { card: "sum-of-two-squares", note: String.raw`which numbers are hypotenuses (W6.3).` }
+        { card: "difference-of-squares", note: String.raw`$c^2 - b^2 = (c - b)(c + b)$, the factoring that finds triples (L1.1).` },
+        { card: "triangle-inequality", note: String.raw`the condition $c \lt a + b$ (S1.1).` },
+        { card: "sum-of-two-squares", note: String.raw`which numbers are hypotenuses (M3.3).` }
       ],
       exercises: [
         { q: String.raw`How many right triangles with integer sides have a leg of length $12$?`, answer: "4",

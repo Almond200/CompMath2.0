@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T6: counting (CONVENTIONS §14; the AMC track).
+// Learn, AMC Counting & Probability, chapter R1: counting (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T6"] = {
+window.MATH_LEARN["R1"] = {
   lessons: {
-    "T6.1": {
+    "R1.1": {
       prereq: [],
       cards: ["permutations-combinations", "constructive-counting", "counting-functions", "fencepost-counting"],
       body: String.raw`Counting on the AMC starts with two rules: multiply the numbers of choices for decisions made in sequence, and add the counts of separate cases. Every formula in this chapter is one of these rules used cleverly.
@@ -18,9 +18,9 @@ window.MATH_LEARN["T6"] = {
 
 Multiply for sequences of choices, divide by orders that do not matter, and count endpoints carefully. The next lesson splits counts into cases.`,
       related: [
-        { card: "multiset-permutations", note: String.raw`arrangements with repeated objects (T6.3).` },
-        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients (T6.4).` },
-        { card: "basic-probability", note: String.raw`probability as a ratio of counts (T7.1).` }
+        { card: "multiset-permutations", note: String.raw`arrangements with repeated objects (R1.3).` },
+        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients (R1.4).` },
+        { card: "basic-probability", note: String.raw`probability as a ratio of counts (R2.1).` }
       ],
       exercises: [
         { q: String.raw`How many four-letter codes can be made from the $26$ letters if no letter repeats?`, answer: "358800",
@@ -38,7 +38,7 @@ Multiply for sequences of choices, divide by orders that do not matter, and coun
         "2019 AMC 10B, Problem 25"
       ]
     },
-    "T6.2": {
+    "R1.2": {
       prereq: ["permutations-combinations"],
       cards: ["casework-method", "complementary-counting", "inclusion-exclusion", "pie", "uniform-overcount"],
       body: String.raw`When a count does not fit a formula, split it into cases, count what is not wanted, or correct for overlaps. Choosing among these is the main skill in AMC counting.
@@ -51,9 +51,9 @@ A [[uniform-overcount|uniform overcount]] is fixed by dividing: splitting $8$ pe
 
 Choose the case split, the complement or inclusion-exclusion, and check on a small version. The next lesson handles arrangements with restrictions.`,
       related: [
-        { card: "derangements", note: String.raw`inclusion-exclusion for permutations with no fixed point (T6.3).` },
-        { card: "floor-multiples", note: String.raw`counting multiples for inclusion-exclusion (T4.3).` },
-        { card: "organized-listing", note: String.raw`listing cases in order (T3.3).` }
+        { card: "derangements", note: String.raw`inclusion-exclusion for permutations with no fixed point (R1.3).` },
+        { card: "floor-multiples", note: String.raw`counting multiples for inclusion-exclusion (M1.3).` },
+        { card: "organized-listing", note: String.raw`listing cases in order (L3.3).` }
       ],
       exercises: [
         { q: String.raw`How many integers from $1$ to $200$ are divisible by $4$ or $6$?`, answer: "67",
@@ -74,7 +74,7 @@ Choose the case split, the complement or inclusion-exclusion, and check on a sma
         "2021 Fall AMC 12B, Problem 19"
       ]
     },
-    "T6.3": {
+    "R1.3": {
       prereq: ["permutations-combinations"],
       cards: ["multiset-permutations", "gap-method", "counting-blocks", "circular-permutations", "non-adjacent-selection", "derangements"],
       body: String.raw`Restrictions on arrangements, such as repeated letters, people who must sit together or apart, seats around a circle, or nobody in their own place, each have a standard fix.
@@ -87,9 +87,9 @@ Choose the case split, the complement or inclusion-exclusion, and check on a sma
 
 Divide for repeats, glue for together, gap for apart, fix one seat for circles. The next lesson distributes identical objects.`,
       related: [
-        { card: "pie", note: String.raw`the inclusion-exclusion behind derangements (T6.2).` },
+        { card: "pie", note: String.raw`the inclusion-exclusion behind derangements (R1.2).` },
         { card: "necklace-formula", note: String.raw`circular arrangements with identical beads (C2.2).` },
-        { card: "recursive-counting", note: String.raw`recursions for arrangements (T6.5).` }
+        { card: "recursive-counting", note: String.raw`recursions for arrangements (R1.5).` }
       ],
       exercises: [
         { q: String.raw`How many arrangements of the letters of LEVEL are there?`, answer: "30",
@@ -108,7 +108,7 @@ Divide for repeats, glue for together, gap for apart, fix one seat for circles. 
         "2021 Fall AMC 12A, Problem 18"
       ]
     },
-    "T6.4": {
+    "R1.4": {
       prereq: ["permutations-combinations"],
       cards: ["stars-and-bars", "balls-boxes-table", "pascals-identity", "binomial-row-sums", "hockey-stick", "binomial-theorem", "bijection-method"],
       body: String.raw`Distributing identical objects into groups, and the identities of Pascal's triangle, are the heart of intermediate AMC counting. Both rest on binomial coefficients.
@@ -121,9 +121,9 @@ A [[bijection-method|bijection]] counts a set by matching it with an easier one:
 
 Write a distribution as stars and bars, read sums of binomial coefficients as identities, and match hard sets with easy ones. The next lesson builds counts recursively.`,
       related: [
-        { card: "grid-paths", note: String.raw`lattice paths as binomial coefficients (T6.5).` },
-        { card: "stars-bars-upper-bound", note: String.raw`distributions with upper bounds (W7.1).` },
-        { card: "vandermonde", note: String.raw`more binomial identities (W7.2).` }
+        { card: "grid-paths", note: String.raw`lattice paths as binomial coefficients (R1.5).` },
+        { card: "stars-bars-upper-bound", note: String.raw`distributions with upper bounds (R3.1).` },
+        { card: "vandermonde", note: String.raw`more binomial identities (R3.2).` }
       ],
       exercises: [
         { q: String.raw`How many solutions in nonnegative integers does $a + b + c = 8$ have?`, answer: "45",
@@ -144,7 +144,7 @@ Write a distribution as stars and bars, read sums of binomial coefficients as id
         "2006 AMC 12A, Problem 23"
       ]
     },
-    "T6.5": {
+    "R1.5": {
       prereq: ["permutations-combinations"],
       cards: ["recursive-counting", "tiling-a-board", "grid-paths", "grid-path-fill", "backward-induction", "simulate-the-process", "working-backwards"],
       body: String.raw`Some counts are found by building up from smaller cases, some processes by running them or undoing them, and some games by labeling positions from the end. These step-by-step methods handle problems that formulas cannot.
@@ -159,9 +159,9 @@ Write a distribution as stars and bars, read sums of binomial coefficients as id
 
 Build from small cases, fill tables, and run processes in both directions. The last lesson of the chapter treats subsets, graphs and pigeonhole.`,
       related: [
-        { card: "first-order-recurrence", note: String.raw`solving the recursions counting produces (T3.3).` },
-        { card: "linear-recurrence", note: String.raw`closed forms like Binet's formula (W3.1).` },
-        { card: "states-recursion-prob", note: String.raw`the probability version, with states (W7.5).` }
+        { card: "first-order-recurrence", note: String.raw`solving the recursions counting produces (L3.3).` },
+        { card: "linear-recurrence", note: String.raw`closed forms like Binet's formula (L6.1).` },
+        { card: "states-recursion-prob", note: String.raw`the probability version, with states (R3.5).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can a staircase of $8$ steps be climbed taking $1$ or $2$ steps at a time?`, answer: "34",
@@ -180,7 +180,7 @@ Build from small cases, fill tables, and run processes in both directions. The l
         "2011 AMC 12B, Problem 23"
       ]
     },
-    "T6.6": {
+    "R1.6": {
       prereq: ["permutations-combinations"],
       cards: ["subset-avoiding-relation", "subset-sum-facts", "handshake-lemma", "eulerian-paths", "round-robin-tournaments", "pigeonhole", "pairing-to-bound", "coloring-arguments"],
       body: String.raw`The last group of counting tools concerns subsets, graphs and guarantees: how many subsets avoid a forbidden pair, how many handshakes happen, when a route uses every road once, and how many objects guarantee a repeat.
@@ -193,9 +193,9 @@ The [[pigeonhole|pigeonhole principle]]: $n + 1$ objects in $n$ boxes put two in
 
 Group forbidden pairs, count edge ends, and build pigeonholes. The next chapter turns counts into probabilities.`,
       related: [
-        { card: "non-adjacent-selection", note: String.raw`subsets avoiding consecutive elements (T6.3).` },
-        { card: "graph-coloring", note: String.raw`coloring graphs with neighbors different (W7.3).` },
-        { card: "invariants-coloring", note: String.raw`quantities a process cannot change (W7.3).` }
+        { card: "non-adjacent-selection", note: String.raw`subsets avoiding consecutive elements (R1.3).` },
+        { card: "graph-coloring", note: String.raw`coloring graphs with neighbors different (R3.3).` },
+        { card: "invariants-coloring", note: String.raw`quantities a process cannot change (R3.3).` }
       ],
       exercises: [
         { q: String.raw`How many subsets of $\{1, 2, \ldots, 8\}$ (including the empty set) contain no two numbers that add to $9$?`, answer: "81",

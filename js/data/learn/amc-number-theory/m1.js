@@ -1,9 +1,9 @@
-// Learn, AMC 10, chapter T4: number theory, primes, divisors and digits (CONVENTIONS §14; the AMC track).
+// Learn, AMC Number Theory, chapter M1: number theory, primes, divisors and digits (CONVENTIONS §14; the AMC track).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
-window.MATH_LEARN["T4"] = {
+window.MATH_LEARN["M1"] = {
   lessons: {
-    "T4.1": {
+    "M1.1": {
       prereq: [],
       cards: ["fundamental-theorem-arithmetic", "euclidean-algorithm", "gcd-lcm-product", "lcm-common-multiples", "gcd-substitution", "recognition-numbers"],
       body: String.raw`Almost every number theory problem on the AMC 10 starts by factoring into primes. Once $84 = 2^2 \cdot 3 \cdot 7$ and $126 = 2 \cdot 3^2 \cdot 7$ are written out, their greatest common divisor, least common multiple, divisors and every divisibility question can be read off the exponents.
@@ -16,9 +16,9 @@ When numbers are too big to factor, the [[euclidean-algorithm|Euclidean algorith
 
 Factor first and read everything from the exponents. The next lesson counts and sums divisors.`,
       related: [
-        { card: "number-of-divisors", note: String.raw`counting divisors from the exponents (T4.2).` },
-        { card: "exponent-tracking", note: String.raw`working one prime at a time (W6.1).` },
-        { card: "bezouts-identity", note: String.raw`the gcd as a combination $ax + by$ (T5.3).` }
+        { card: "number-of-divisors", note: String.raw`counting divisors from the exponents (M1.2).` },
+        { card: "exponent-tracking", note: String.raw`working one prime at a time (M3.1).` },
+        { card: "bezouts-identity", note: String.raw`the gcd as a combination $ax + by$ (M2.3).` }
       ],
       exercises: [
         { q: String.raw`Find $\operatorname{lcm}(84, 126)$.`, answer: "252",
@@ -37,7 +37,7 @@ Factor first and read everything from the exponents. The next lesson counts and 
         "2018 AMC 12A, Problem 19"
       ]
     },
-    "T4.2": {
+    "M1.2": {
       prereq: ["fundamental-theorem-arithmetic"],
       cards: ["number-of-divisors", "sum-of-divisors", "product-of-divisors", "perfect-square-divisors"],
       body: String.raw`Divisors are built from the prime factorization: a divisor of $p^aq^b$ is $p^iq^j$ with $0 \le i \le a$ and $0 \le j \le b$. Every divisor count, sum and product follows from this one description.
@@ -50,9 +50,9 @@ The [[sum-of-divisors|sum of divisors]] multiplies the sums for each prime power
 
 Factor, then count exponent choices. The next lesson treats divisibility tests and factorials.`,
       related: [
-        { card: "multiplicative-functions", note: String.raw`why divisor counts and sums multiply (W6.1).` },
-        { card: "factor-pair-counting", note: String.raw`factor pairs as solutions of integer equations (T5.4).` },
-        { card: "sigma-parity", note: String.raw`when the divisor sum is odd (W6.1).` }
+        { card: "multiplicative-functions", note: String.raw`why divisor counts and sums multiply (M3.1).` },
+        { card: "factor-pair-counting", note: String.raw`factor pairs as solutions of integer equations (M2.4).` },
+        { card: "sigma-parity", note: String.raw`when the divisor sum is odd (M3.1).` }
       ],
       exercises: [
         { q: String.raw`How many positive divisors does $360$ have?`, answer: "24",
@@ -73,7 +73,7 @@ Factor, then count exponent choices. The next lesson treats divisibility tests a
         "2021 Fall AMC 12A, Problem 20"
       ]
     },
-    "T4.3": {
+    "M1.3": {
       prereq: ["fundamental-theorem-arithmetic"],
       cards: ["divisibility-rules", "floor-multiples", "consecutive-coprime", "legendres-formula", "trailing-zeros", "factor-out-factorial", "consecutive-product-factorial"],
       body: String.raw`Divisibility questions are answered by quick tests, by counting multiples, and, for factorials, by counting how many times each prime appears. These tools decide questions like how many zeros end $100!$ or which digits make a number divisible by $9$.
@@ -86,9 +86,9 @@ Factorials simplify by [[factor-out-factorial|factoring out the common factorial
 
 Test with the rules, count multiples with floors, and count prime exponents in factorials. The next lesson moves to bases and digits.`,
       related: [
-        { card: "pie", note: String.raw`counting numbers divisible by one of several numbers (T6.2).` },
-        { card: "prime-divides-binomial", note: String.raw`primes in binomial coefficients through Legendre (W6.3).` },
-        { card: "modular-basics", note: String.raw`divisibility rules as statements about remainders (T5.1).` }
+        { card: "pie", note: String.raw`counting numbers divisible by one of several numbers (R1.2).` },
+        { card: "prime-divides-binomial", note: String.raw`primes in binomial coefficients through Legendre (M3.3).` },
+        { card: "modular-basics", note: String.raw`divisibility rules as statements about remainders (M2.1).` }
       ],
       exercises: [
         { q: String.raw`How many zeros does $100!$ end with?`, answer: "24",
@@ -107,7 +107,7 @@ Test with the rules, count multiples with floors, and count prime exponents in f
         "2001 AMC 10, Problem 25"
       ]
     },
-    "T4.4": {
+    "M1.4": {
       prereq: [],
       cards: ["base-conversion", "numeral-as-polynomial", "unknown-base", "digit-count", "digit-sum-carries", "digit-manipulation", "base10-curiosities", "palindromes", "cryptarithms"],
       body: String.raw`A number's digits are its coefficients in powers of the base, and nearly every digit problem is solved by writing that out. Converting between bases, finding an unknown base, counting digits, reversing digits and solving letter puzzles all start from $\overline{abc} = 100a + 10b + c$.
@@ -120,9 +120,9 @@ The [[digit-count|number of digits]] of $n$ is $\lfloor\log_{10} n\rfloor + 1$; 
 
 Write numbers through their digits and the base, and track carries. The last lesson of the chapter treats decimals and calendars.`,
       related: [
-        { card: "log-rules", note: String.raw`logarithms count digits (T2.4).` },
-        { card: "modular-basics", note: String.raw`digit sums modulo $9$ (T5.1).` },
-        { card: "repeating-decimals", note: String.raw`digits after the decimal point (T4.5).` }
+        { card: "log-rules", note: String.raw`logarithms count digits (L2.4).` },
+        { card: "modular-basics", note: String.raw`digit sums modulo $9$ (M2.1).` },
+        { card: "repeating-decimals", note: String.raw`digits after the decimal point (M1.5).` }
       ],
       exercises: [
         { q: String.raw`Write $1011_2$ in base ten.`, answer: "11",
@@ -143,7 +143,7 @@ Write numbers through their digits and the base, and track carries. The last les
         "2020 AMC 12A, Problem 19"
       ]
     },
-    "T4.5": {
+    "M1.5": {
       prereq: ["fundamental-theorem-arithmetic"],
       cards: ["repeating-decimals", "terminating-decimals", "calendar-problems"],
       body: String.raw`Fractions as decimals and dates on a calendar are both questions about remainders in disguise. A fraction terminates or repeats depending on the primes in its denominator, and a weekday depends on a number of days modulo $7$.
@@ -154,9 +154,9 @@ A fraction in lowest terms gives a [[terminating-decimals|terminating decimal]] 
 
 Factor denominators, convert repeating blocks over nines, and reduce day counts modulo $7$. The next chapter studies remainders in general.`,
       related: [
-        { card: "multiplicative-order", note: String.raw`the period of a repeating decimal as an order (W6.2).` },
-        { card: "modular-basics", note: String.raw`counting modulo $7$ (T5.1).` },
-        { card: "geometric-series", note: String.raw`why a repeating block is that block over nines (T3.2).` }
+        { card: "multiplicative-order", note: String.raw`the period of a repeating decimal as an order (M3.2).` },
+        { card: "modular-basics", note: String.raw`counting modulo $7$ (M2.1).` },
+        { card: "geometric-series", note: String.raw`why a repeating block is that block over nines (L3.2).` }
       ],
       exercises: [
         { q: String.raw`Write $0.\overline{36}$ as a fraction in lowest terms $\tfrac mn$ and find $m + n$.`, answer: "15",
