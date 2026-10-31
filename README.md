@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **Making a list no longer asks for a name first** (owner, 2026-10-31). "+ New list" sits right under "Your lists" (and the home page's "Make a list" does the same): one press makes "Untitled list" (numbered when the name is taken) and opens it with the name selected, ready to type over. Enter or a click elsewhere keeps the new name, Escape keeps the old one. A list's title renames in place the same way when clicked, and the Rename button now does this instead of a browser prompt.
 - **Lessons are no longer marked read** (owner, 2026-10-31): the tick beside a lesson, the "read" counts on a book's contents, and the tracking behind them are gone. Start or Continue on a book now points to the lesson opened last, else the first written lesson.
 - **Problem statements never scroll** (owner, 2026-10-31): the statement box had `overflow-x: auto`, which also turned on a vertical scrollbar whenever a tall fraction reached past it (2025 AIME II #13 in the N3 review). Statements are now always shown whole; only a displayed formula too wide for a phone scrolls sideways on its own, and figures shrink to fit. Checked on the lesson, the review, two problem pages and the home page at 1280 and 375 px. A duplicated block of problem-card rules was removed from the stylesheet.
 - **The space strip's dividers run to the top** (owner, 2026-10-31): each coloured bar now sits inside its tile, so the grey divider is unbroken and the colours stop at it.

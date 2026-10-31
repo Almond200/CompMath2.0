@@ -4851,7 +4851,7 @@
                    <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
                 : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
               <div class="hp-mine-foot">
-                <a href="#/learn" data-goto="lists-new-name">Make a list</a>
+                <a href="#/learn" data-list-new>Make a list</a>
                 <a href="#/learn" data-goto="pr-study">Open a list</a>
               </div>
             </section>
@@ -4942,14 +4942,11 @@
           <h3>Lists</h3>
           <div id="pr-lists">
             <h4 class="learn-sub">Your lists</h4>
+            <button type="button" class="pl-new-btn" id="lists-new" data-list-new>+ New list</button>
             <div class="pl-list pl-mine">
               <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
               ${mine.map(listLink).join("")}
             </div>
-            <form class="lists-new pl-new" id="lists-new-form">
-              <input type="text" id="lists-new-name" placeholder="Name a new list&hellip;" maxlength="40" autocomplete="off">
-              <button type="submit">Create</button>
-            </form>
           </div>
           <h4 class="learn-sub">Study lists</h4>
           <div class="grid-scroll"><table class="cy-grid route-grid">
@@ -6145,7 +6142,7 @@
         <div class="section-header topic-header">
           <div class="book-eyebrow">Learn &middot; Lists</div>
           <div class="list-detail-head">
-            <h2>${escapeAttr(l.name)}</h2>
+            <h2${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h2>
             ${headTools}
           </div>
           ${isBuiltin && l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
@@ -7058,6 +7055,7 @@
     updateNavActive();
     updateGearActive();
     if (route.type === "list") buildListToc();
+    if (route.type === "list" && pendingRename === route.listId) { pendingRename = null; startListRename(route.listId); }
     else if (route.type !== "formula") clearPageToc();
     // Showing or hiding the sidebar changes the card width, so the formulas are fitted again.
     fitCardFormulas($content);
@@ -7820,12 +7818,8 @@
     if (topicChip) { location.hash = tagHash([TOPICS_BY_ID[topicChip.dataset.topic].label]); window.scrollTo({ top: 0 }); return; }
     const grp = e.target.closest("[data-list-group]");
     if (grp) { state.autoGroup = !state.autoGroup; saveSettings(); render(); return; }
-    const rn = e.target.closest("[data-list-rename]");
-    if (rn) {
-      const l = getList(rn.dataset.listRename);
-      if (l) { const name = prompt("Rename list:", l.name); if (name && name.trim()) { renameList(l.id, name); render(); } }
-      return;
-    }
+    const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
+    if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
     if (del) {
       const l = getList(del.dataset.listDelete);
@@ -7865,16 +7859,46 @@
     listAddTimer = setTimeout(() => renderListAddResults(box, box.dataset.listAdd, q), 140);
   });
 
-  $content.addEventListener("submit", e => {
-    const nf = e.target.closest("#lists-new-form");
-    if (nf) {
-      e.preventDefault();
-      const inp = document.getElementById("lists-new-name");
-      const name = inp ? inp.value.trim() : "";
-      if (!name) { if (inp) inp.focus(); return; }
-      location.hash = "#/list/" + createList(name);
-    }
-  });
+  // A new list (owner, 2026-10-31): one press makes "Untitled list" (numbered when that name is
+  // taken) and opens it with its name ready to type over, instead of asking for a name first.
+  let pendingRename = null;
+  $content.addEventListener("click", e => {
+    const nb = e.target.closest("[data-list-new]");
+    if (!nb) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const taken = new Set(lists.items.map(l => l.name));
+    let name = "Untitled list", k = 2;
+    while (taken.has(name)) name = "Untitled list " + k++;
+    const id = createList(name);
+    pendingRename = id;
+    location.hash = "#/list/" + id;
+  }, true);
+  // Renaming happens in place: the list's title becomes editable with its text selected; Enter or
+  // a click elsewhere keeps the new name, Escape keeps the old one.
+  function startListRename(id) {
+    const h = $content.querySelector(`h2[data-list-title="${id}"]`), l = getList(id);
+    if (!h || !l) return;
+    const old = l.name;
+    h.contentEditable = "true";
+    h.spellcheck = false;
+    h.focus();
+    const range = document.createRange(); range.selectNodeContents(h);
+    const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    let done = false;
+    const finish = keep => {
+      if (done) return; done = true;
+      h.contentEditable = "false";
+      const name = h.textContent.replace(/\s+/g, " ").trim().slice(0, 40);
+      if (keep && name && name !== old) { renameList(id, name); render(); }
+      else h.textContent = old;
+    };
+    h.addEventListener("keydown", ev => {
+      if (ev.key === "Enter") { ev.preventDefault(); finish(true); h.blur(); }
+      else if (ev.key === "Escape") { ev.preventDefault(); finish(false); h.blur(); }
+    });
+    h.addEventListener("blur", () => finish(true), { once: true });
+  }
 
   window.addEventListener("hashchange", () => {
     clearTimeout(scrollSaveTimer);

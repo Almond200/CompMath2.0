@@ -2844,7 +2844,13 @@ body.is-landing .content { padding: 0 0 70px; }
 /* Learn → Lists: room around your own lists */
 /* Your lists sit in the Lists section as a plain subsection, not a box inside the box. */
 #pr-lists .learn-sub { margin-top: 16px; }
-#pr-lists .lists-new { margin-top: 10px; max-width: 520px; }
+#pr-lists .pl-new-btn { display: inline-flex; align-items: center; margin: 0 0 10px; padding: 7px 14px; border-radius: 8px; border: 1px dashed var(--border-light);
+  background: transparent; color: var(--c-learn); font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; }
+#pr-lists .pl-new-btn:hover { background: var(--cs-learn); border-color: var(--c-learn); }
+/* A user list's title renames in place: a press makes it editable, with an underline while typing. */
+h2[data-list-title] { cursor: text; border-radius: 6px; }
+h2[data-list-title]:hover { background: var(--bg-panel); }
+h2[data-list-title][contenteditable="true"] { outline: none; background: var(--bg-panel); box-shadow: inset 0 -2px 0 var(--c-learn); padding: 0 6px; }
 #pr-study > .learn-sub { margin-top: 26px; }
 
 /* The card drawer */
