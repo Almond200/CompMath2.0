@@ -2858,10 +2858,19 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-drawer { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
   border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 12px; }
 .lp-drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
-.lp-drawer-full { font-size: 13px; font-weight: 650; color: var(--c-learn); }
+
 .lp-drawer-close { font-size: 22px; line-height: 1; padding: 2px 9px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; }
-.lp-drawer .card { cursor: default; }
-.lp-drawer-body { font-size: 14px; margin-top: 10px; }
+/* The card preview in a lesson's drawer: the card page's own drawing, at the drawer's width. */
+.lp-drawer .lp-drawer-head { margin-bottom: 4px; }
+.lp-preview { max-width: none; margin: 0; padding: 0; font-size: 14px; }
+.lp-preview-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin: 2px 0 8px; }
+.lp-preview-title .card-name { margin: 0; font-size: 19px; line-height: 1.3; }
+.lp-preview .detail-formula { margin: 8px 0 10px; padding: 12px 10px; overflow-x: auto; }
+.lp-preview .detail-summary { font-size: 14px; line-height: 1.6; }
+.lp-preview .detail-diagram { margin: 10px 0; }
+.lp-preview .detail-diagram svg { max-width: 100%; height: auto; }
+.lp-preview .detail-body h3, .lp-preview .detail-body .detail-h { font-size: 15px; }
+.lp-preview .lp-drawer-full { display: block; margin: 18px 0 4px; padding-top: 12px; border-top: 1px solid var(--border); font-size: 13px; font-weight: 650; color: var(--bk-ink, var(--c-learn)); }
 @media (max-width: 1100px) {
   /* No room for three columns: the drawer floats over the right edge instead. */
   .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr); }
