@@ -951,7 +951,7 @@ A lesson never restates a card's content: it says why the idea is needed and how
 
 **Checks** (LQ5) are answered by typing with the app's math keyboard. The student never types LaTeX.
 - **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷` (a fraction), `^`, `√`, `π`, brackets, a comma (for a list of answers), backspace and clear.
-- **Display:** the box shows the answer typeset as it is built.
+- **Display:** the keypad pops up under the answer box when the box is pressed (owner, 2026-10-31), with the answer typeset at its top as it is built; it closes on a press outside, on Check, or on Escape.
 - **Stored form:** the plain expression grammar, for example `3/4`, `2sqrt(3)`, `7pi/2`, `-5`, `4, 9`.
 - **Code:** `js/learn-answer.js` reads the grammar, typesets it and compares values; the app and the gate load the same file.
 - **Comparison:** `answer` uses the same grammar, and is compared by value (within $10^{-9}$ relative). A comma list is compared as a set, so $\frac68$ and $\frac34$ both count, and so do `9, 4` and `4, 9`.

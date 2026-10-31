@@ -5201,10 +5201,11 @@
   }
 
   // ---------- The math keyboard (LQ5) ----------
-  // A small keypad under an answer box. The box holds the plain answer (with √, π, × and ÷ as
-  // typed symbols), and the line under it shows the answer typeset as it is built, so nothing is
-  // ever typed in LaTeX. On a phone the system keyboard stays closed (inputmode="none"); on a
-  // computer the physical keys work too.
+  // A keypad that pops up from the answer box when the box is pressed, and closes when the
+  // student presses elsewhere, checks the answer, or presses Escape. The box holds the plain
+  // answer (with √, π, × and ÷ as typed symbols), and the top of the pop-up shows it typeset as
+  // it is built, so nothing is ever typed in LaTeX. On a phone the system keyboard stays closed
+  // (inputmode="none"); on a computer the physical keys work too.
   const MK_KEYS = [
     ["7", "7"], ["8", "8"], ["9", "9"], ["÷", "÷", "Fraction (divide)"], ["(", "("], [")", ")"],
     ["4", "4"], ["5", "5"], ["6", "6"], ["×", "×", "Times"], ["^", "^", "Power"], ["√", "√(", "Square root"],
@@ -5220,8 +5221,10 @@
           <input class="mk-input" type="text" inputmode="none" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Your answer" value="${escapeAttr(mkShow(value || ""))}">
           <button type="button" class="mk-submit">Check</button>
         </div>
+        <div class="mk-pop">
         <div class="mk-preview" aria-live="polite"></div>
         <div class="mk-keys">${MK_KEYS.map(([label, ins, name]) => `<button type="button" class="mk-key${/^\d$/.test(label) ? " mk-digit" : ""}${ins === "back" || ins === "clear" ? " mk-edit" : ""}" data-mk="${escapeAttr(ins)}"${name ? ` aria-label="${name}" title="${name}"` : ""}>${label}</button>`).join("")}</div>
+        </div>
       </div>`;
   }
   function mkPreview(box) {
@@ -5466,6 +5469,8 @@
     const ok = window.LearnAnswer.same(typed, ch.answer);
     learnProgress().checks[el.dataset.check] = { a: typed, ok };
     saveLearn();
+    el.querySelector(".mk").classList.remove("is-open");
+    el.querySelector(".mk-input").blur();
     learnCheckResult(el, ch, ok);
   }
   $content.addEventListener("input", e => {
@@ -5486,9 +5491,18 @@
   $content.addEventListener("keydown", e => {
     const input = e.target.closest(".lesson-page .mk-input");
     if (input && e.key === "Enter") { e.preventDefault(); learnSubmitCheck(input.closest(".lc-check")); }
+    else if (input && e.key === "Escape") { input.closest(".mk").classList.remove("is-open"); input.blur(); }
     else if (e.key === "Escape" && e.target.closest(".lp-drawer")) closeLearnDrawer();
   });
   $content.addEventListener("mousedown", e => { if (e.target.closest(".lesson-page .mk-key")) e.preventDefault(); });
+  // The keypad opens with its box and closes on a press anywhere outside it.
+  function mkOpen(box) {
+    $content.querySelectorAll(".mk.is-open").forEach(x => { if (x !== box) x.classList.remove("is-open"); });
+    if (box) { box.classList.add("is-open"); mkPreview(box); }
+  }
+  $content.addEventListener("focusin", e => { const input = e.target.closest(".lesson-page .mk-input"); if (input) mkOpen(input.closest(".mk")); });
+  $content.addEventListener("click", e => { const input = e.target.closest(".lesson-page .mk-input"); if (input) mkOpen(input.closest(".mk")); });
+  document.addEventListener("pointerdown", e => { if (!e.target.closest(".mk")) mkOpen(null); });
 
   // Study lists that match a search, built-in and the reader's own, by name, level, subject,
   // blurb and section titles. Generic words ("formulas", "list", "study") are ignored, so

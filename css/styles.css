@@ -2750,14 +2750,21 @@ body.is-landing .content { padding: 0 0 70px; }
 .lc-wrong { background: var(--cs-patterns); }
 .lc-wrong strong { color: var(--c-patterns); }
 .lc-unread { background: var(--bg-panel); color: var(--text-dim); }
-.mk { max-width: 360px; }
+.mk { position: relative; max-width: 360px; }
+/* The keypad pops up under the answer box while the box is in use. */
+.mk-pop { display: none; position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 40; min-width: 280px;
+  padding: 8px 10px 10px; border-radius: 12px; border: 1px solid var(--border-light); background: var(--bg-panel);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3); }
+.mk.is-open .mk-pop { display: block; }
+.mk.is-open .mk-input { border-color: var(--c-learn); }
 .mk-row { display: flex; gap: 8px; }
 .mk-input { flex: 1 1 auto; min-width: 0; font: inherit; font-size: 17px; padding: 7px 10px; border-radius: 8px;
   border: 1px solid var(--border); background: var(--bg); color: var(--text); }
 .mk-input:focus { outline: none; border-color: var(--c-learn); }
 .mk-submit { flex: 0 0 auto; font: inherit; font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 8px; border: none;
   background: var(--c-learn); color: var(--bg); cursor: pointer; }
-.mk-preview { min-height: 2.4em; padding: 6px 2px 4px; font-size: 18px; overflow-x: auto; }
+.mk-preview { min-height: 2em; padding: 2px 4px 8px; font-size: 18px; overflow-x: auto; }
+.mk-preview:empty::before { content: "Your answer, typeset, appears here"; font-size: 13px; color: var(--text-faint); }
 .mk-keys { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; }
 .mk-key { font: inherit; font-size: 16px; min-height: 40px; padding: 0; border-radius: 8px; border: 1px solid var(--border);
   background: var(--bg-panel); color: var(--text); cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
