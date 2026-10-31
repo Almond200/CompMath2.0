@@ -120,9 +120,8 @@ by a point or two; compare warm runs to warm runs.
   shown at once or behind a button (Settings, Practice).
 - **Study lists**, also on Practice, hold 41 built-in sets alongside your own. The twelve study
   routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
-  of that tier and subject is in its route, which `tools/check-lists.py` enforces; the four By
-  Contest lists are generated from the problem tags (`tools/build-contest-lists.js`); the other 25
-  are study lists on one theme. A list
+  of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 25
+  are study lists on one theme (the four By Contest lists were removed on 2026-10-31). A list
   you build yourself is grouped into sections automatically, by matching its cards against
   the hand-written section headings already used across the built-in lists.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
@@ -241,7 +240,6 @@ tools/practice-set.js          writes problem entries from a JSON file of edits
 tools/add-tag.js               adds a card to problems and to their AMC 10/12 twins
 tools/few-tags.js              the tag pass: problems by number of cards cited, with strategies and LIVE hints
 tools/practice-gaps.js         cards under two practice problems (--check is a gate)
-tools/build-contest-lists.js   writes the By Contest lists from the problem tags (--check is a gate)
 tools/live-cache/              LIVE's concept tags for every paper (hints only, never a source of tags)
 ```
 
@@ -297,6 +295,12 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The book view in our own design language; Hide Solution; easiest first; By Contest lists removed (2026-10-31, owner).**
+  - The textbook structure stays (chapter tabs, the chapter's and the page's title with arrows, problem blocks, previous and next at the bottom), but drawn like the rest of the app instead of copying another site: a rounded tab rail with the current chapter tinted and the chapter's name in a small card on hover; a header card with the cover, two labelled rows and pill arrow buttons; each problem a card with a tinted header and its contest reference as a chip; and at the bottom two cards naming the previous and next page, with Back to top between. The sticky header masks the text scrolling under it.
+  - **Hide Solution:** once a solution is shown, the button reads Hide Solution and folds it away again; a hidden solution stays hidden after a reload (`hidden` in `mq-learn`), while `shown` still records that it was seen.
+  - **Easiest first:** a lesson's problems and a chapter review are ordered by an estimated difficulty (the contest's level plus the place in its paper), so the N3 review now runs AMC 10 #24, AMC 12 #22 and #25, then AIME #10 up to #14. On a card, each contest's practice problems now go from early in the paper to late (then newest first), instead of newest first.
+  - **The By Contest lists are gone** (What the AMC 8, 10, 12 and AIME Use): the study routes already cover them. `tools/build-contest-lists.js` and its gate were removed, and their old addresses open Learn.
+  - A wide formula in a clipped title (KaTeX's hidden copy is absolutely positioned) no longer widens a phone page: the titles are positioned.
 - **The book view, rebuilt like an online textbook (2026-10-31, owner).** The contents sidebar is gone, replaced by an easier layout in each book's own colour:
   - a slim **rail of chapter tabs** on the left (C for the contents, then 1, 2, 3, ...), the current one filled; hovering a tab shows the chapter's name in a small label with an arrow;
   - **two title bars** over the page, the chapter's ("Chapter N3: Cycles, exponentiation and order") and the page's ("N3.1 ..."), each with round arrows to the previous and next chapter or page, and the cover at their left;

@@ -813,7 +813,7 @@ A long explanation is never one block of prose with inline math. Put the key equ
 
 ## List kinds (2026-10-11)
 
-Built-in lists have a `kind`: `route` (a complete syllabus for one tier and subject), `core` (Starting Points: every High-importance card of a subject, so it is regenerated, not hand-picked, when importances change), `configuration`, `thinking`, `curiosity`, and `contest` (By Contest, 2026-10-25: every card that at least five of one contest's problems cite, written by `tools/build-contest-lists.js` from the problem tags and never edited by hand; `gates.sh` fails when it is stale). A card that belongs to no list is a gap: add it where it fits (the audit found 17, all proof methods).
+Built-in lists have a `kind`: `route` (a complete syllabus for one tier and subject), `core` (Starting Points: every High-importance card of a subject, so it is regenerated, not hand-picked, when importances change), `configuration`, `thinking`, and `curiosity`. (A `contest` kind, By Contest, existed from 2026-10-25 to 2026-10-31; the owner removed it because the study routes already cover it, and its old addresses open Learn.) A card that belongs to no list is a gap: add it where it fits (the audit found 17, all proof methods).
 
 ## Study routes are additive (2026-10-11)
 
@@ -977,7 +977,13 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 | a lesson | `#/learn/<book-id>/<code>/<n>` (`.../n3/1` is N3.1) |
 | a chapter review | `#/learn/<book-id>/<code>/review` |
 
-**The book view** (owner, 2026-10-31, modelled on how an online textbook reads). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book. Every page in it has, in the book's colour: a slim rail of tabs on the left (C for the contents, then each chapter's number; hovering a tab names the chapter); two title bars, the chapter's and the page's, each with arrows to step back and forward; and Previous, Back to Top and Next at the bottom. The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom links follow. A problem is a block with a header bar (its number and its contest reference), the statement, and the student's box beside Show Solution.
+**The book view** (owner, 2026-10-31). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book. Its structure follows an online textbook, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
+- a rounded rail of tabs on the left: C for the contents, then each chapter's number; the current one tinted; hovering a tab shows the chapter's name in a small card with a pointer;
+- a header card: the cover, then two rows, the chapter's and the page's, each with a small label and two arrow buttons;
+- each problem as one card: a tinted header row (its number, and its contest reference as a chip), the statement as plain text, the work box, and Show Solution under it, which becomes Hide Solution once shown;
+- at the bottom, the previous and next pages as two cards saying where they lead, with Back to top between them.
+
+The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
 
 The old list addresses are kept (§9).
 
@@ -988,7 +994,7 @@ The old list addresses are kept (§9).
   v: 1,
   read:     { "<lesson code>": <ms> },
   checks:   { "<lesson code>#<n>": { a: "<typed answer>", ok: true } },
-  problems: { "<problem slug>": { notes: "<text>", shown: true } },
+  problems: { "<problem slug>": { notes: "<text>", shown: true, hidden: true } },   // hidden: shown, then hidden again
   last:     "<lesson code>"   // the lesson opened last: "Continue learning" on the home page and the book
 }
 ```
