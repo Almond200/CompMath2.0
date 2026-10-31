@@ -4039,6 +4039,16 @@
       else toast("Copy failed");
     }
   });
+  document.addEventListener("click", e => {
+    const t = e.target.closest(".chain-toggle");
+    if (!t) return;
+    const body = t.closest(".prob-chain").querySelector(".chain-body");
+    if (!body) return;
+    body.hidden = !body.hidden;
+    t.setAttribute("aria-expanded", String(!body.hidden));
+    t.innerHTML = body.hidden ? "+ Show" : "&minus; Hide";
+    if (!body.hidden) { renderMath(body); fitBatch([...body.querySelectorAll(".formula-display[data-latex]")]); }
+  });
   function clearPageToc() {
     const toc = document.getElementById("page-toc");
     if (toc) { toc.innerHTML = ""; toc.hidden = true; }
@@ -4369,7 +4379,7 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
-          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Shown puts them under the problem at once; Click to show keeps them behind a button, so you can try the problem first.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
+          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel" id="set-commands">
           <h3 class="set-panel-title">Commands</h3>
@@ -6916,9 +6926,11 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
   function chainBoxHtml(p, chainCol, chain, altIds) {
     const inner = chainInnerHtml(p, chainCol, chain, altIds);
-    const hide = state.strategy === "click" && (p.strategy || p.formulas.length);
-    return `<div class="prob-chain"><h4>How this problem works</h4>
-        ${hide ? `<button type="button" class="show-more-btn chain-reveal" onclick="this.nextElementSibling.hidden=false;this.remove()">Show the strategy</button><div class="chain-hidden" hidden>${inner}</div>` : inner}
+    // A small "+ Show" / "- Hide" beside the heading opens and closes the strategy, like the
+    // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
+    const can = !!(p.strategy || p.formulas.length), hide = can && state.strategy === "click";
+    return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" aria-expanded="${!hide}">${hide ? "+ Show" : "&minus; Hide"}</button>` : ""}</div>
+        <div class="chain-body"${hide ? " hidden" : ""}>${inner}</div>
       </div>`;
   }
 
