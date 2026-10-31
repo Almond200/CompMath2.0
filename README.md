@@ -295,6 +295,9 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Home: Practice at a glance has a "See all" link in its heading row, like Textbooks, and no longer has the random-problem and every-contest links at its foot.
+- Home: each textbook shows its number of lessons, not "X of X".
+- Settings preview: the lesson screen is drawn by the lesson page's own code (the chapter rail, the two title bars, the heading and card rows, and the real card drawer when cards open in the lesson).
 - The strategy's Show / Hide and the new-list + brighten a little on hover, like the study-route links.
 - Settings preview: the problem screen is drawn by the problem page's own code (its chips, statement and credit, source note and link, How this problem works with Show, and the contest strip), and the browsing screen no longer repeats the card-page screen's card. Home: the Textbooks link reads See all.
 - The new-list + and the strategy's Show / Hide keep their colour on hover.

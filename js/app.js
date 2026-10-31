@@ -4716,22 +4716,14 @@
   // A lesson, for "Card links in lessons": with "Open beside the lesson" a card's preview sits
   // beside the text; with "Go to the card" the lesson keeps the whole width.
   function pvLessonHtml() {
+    // The lesson page itself (its rail, title bars, heading and card rows), drawn by the page's
+    // own code; with "Opens in the lesson" a card is open in the drawer beside it.
     const b = LEARN_SHELF.find(x => x.id === "aime-counting"), c = b && b.chapters.find(x => x.code === "C5");
     const l = c && c.lessons.find(x => x.code === "C5.2"), d = l && learnLessonData(c, l);
     if (!d) return "";
-    const para = String(d.body).split("\n\n").slice(0, 3).join("\n\n");
-    const main = `<h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
-        <div class="lp-cards"><div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div></div>
-        <div class="detail-body lp-body">${detailBodyHtml(notate(para), "pv:" + l.code)}</div>`;
-    const e = BY_ID["recursive-counting"], f = e && e.formula;
-    const drawer = state.lessonLinks === "drawer" && f ? `<aside class="lp-drawer">
-        <div class="lp-drawer-head"><div class="card-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div><span class="lp-drawer-close">&times;</span></div>
-        <div class="detail lp-preview"><div class="lp-preview-title"><h3 class="card-name">${f.name}</h3></div>
-          ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
-          <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p></div>
-      </aside>` : "";
-    return `<div class="learn-page lesson-page bk-view bk-${b.id}" style="display:block"><div class="lp-grid${drawer ? " has-drawer" : ""}"><article class="lp-main">${main}</article>${drawer}</div></div>`;
+    return learnBookShellHtml(b, c, l, learnLessonMainHtml(b, c, l, d), state.lessonLinks === "drawer" ? learnDrawerInnerHtml("recursive-counting") : "");
   }
+
   function pvProblemHtml() {
     const p = PROBLEM_DB.find(x => x.ref === PV_PROBLEM);
     return p ? problemDetailHtml(p, true) : "";
@@ -5024,9 +5016,8 @@
       return `<a class="pg-row" href="#/problems/${famSlug(f)}/${latest}"><span class="pg-fam">${f}</span><span class="pg-n">${all.toLocaleString()} problems, ${years[0]}&ndash;${latest}</span><span class="pg-done">${done.toLocaleString()} written up</span></a>`;
     }).join("");
     return `<section class="hp-panel hm-glance">
-        <div class="hp-label">Practice at a glance</div>
+        <div class="hm-h-row"><div class="hp-label">Practice at a glance</div><a class="hm-more hm-more-practice" href="#/practice">See all &rarr;</a></div>
         <div class="pg-list">${rows}</div>
-        <div class="hp-mine-foot"><a href="#/special/randomproblem">A random problem</a><a href="#/practice">Every contest and year</a></div>
       </section>`;
   }
 
@@ -5058,7 +5049,7 @@
     // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
     // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
     const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
-    const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnWrittenIn(b) ? `${learnWrittenIn(b)} of ` : ""}${learnLessonsIn(b)} lessons</span></a>`).join("");
+    const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
       <div class="home">
         <div class="hm-intro">
@@ -5541,6 +5532,14 @@
   }
   // cur: "book", "chapter", "review", "challenge", or the lesson.
   function learnBookShell(b, c, cur, main) {
+    $content.innerHTML = learnBookShellHtml(b, c, cur, main);
+    wireLearnRail($content);
+    const msel = $content.querySelector(".bk-mnav-sel");
+    if (msel) msel.addEventListener("change", () => { location.hash = msel.value; });
+    renderMath($content);
+  }
+  // The book view's markup, shared by the page and the Settings preview's lesson screen.
+  function learnBookShellHtml(b, c, cur, main, drawerInner) {
     const pages = learnPages(b);
     const at = !c ? -1 : pages.findIndex(x => x.c === c && (cur === "chapter" ? x.page === null : cur === "review" ? x.review : cur === "challenge" ? x.end === "challenge" : x.l === cur));
     const prev = at > 0 ? pages[at - 1] : null;
@@ -5585,7 +5584,7 @@
           ${next ? `<a class="bk-mnav-step" href="${hashOf(next)}" aria-label="Next page">&#8250;</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">&#8250;</span>`}
         </div>
       </nav>`;
-    $content.innerHTML = `<div class="learn-page lesson-page bk-view bk-${b.id}">
+    return `<div class="learn-page lesson-page bk-view bk-${b.id}">
         ${learnRailHtml(b, c)}
         <div class="bk-body">
           ${mnav}
@@ -5594,16 +5593,12 @@
             ${bar1}
             ${bar2}
           </header>
-          <div class="lp-grid">
+          <div class="lp-grid${drawerInner ? " has-drawer" : ""}">
             <article class="lp-main">${main}${foot}</article>
-            <aside class="lp-drawer" aria-label="Card" hidden></aside>
+            <aside class="lp-drawer" aria-label="Card"${drawerInner ? "" : " hidden"}>${drawerInner || ""}</aside>
           </div>
         </div>
       </div>`;
-    wireLearnRail($content);
-    const msel = $content.querySelector(".bk-mnav-sel");
-    if (msel) msel.addEventListener("change", () => { location.hash = msel.value; });
-    renderMath($content);
   }
 
   function renderLearnBook(b) {
@@ -5850,15 +5845,13 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   // The card drawer: a card opened from a lesson shows beside it (below it on a phone), so the
   // student never leaves the page.
-  function openLearnDrawer(id) {
-    const e = BY_ID[id], drawer = $content.querySelector(".lp-drawer");
-    if (!e || !drawer) return;
+  // The drawer's contents for a card, shared by the drawer and the Settings preview.
+  function learnDrawerInnerHtml(id) {
+    const e = BY_ID[id];
+    if (!e) return "";
     const f = e.formula, sec = cardSections(e);
     const fig = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
-    // The preview: what the card is (kind, tier), its name (which opens the full card, where the
-    // examples, practice problems and links stay), its formula at full width, the one-line
-    // summary and the first figure, then the explanation drawn exactly as on the card page.
-    drawer.innerHTML = `<div class="lp-drawer-head">
+    return `<div class="lp-drawer-head">
           <div class="card-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
           <button type="button" class="lp-drawer-close" aria-label="Close the card">&times;</button>
         </div>
@@ -5870,6 +5863,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${fig ? `<div class="diagram detail-diagram">${fig}</div>` : ""}
           ${cardExplanationHtml(e, sec)}
         </div>`;
+  }
+  function openLearnDrawer(id) {
+    const e = BY_ID[id], drawer = $content.querySelector(".lp-drawer");
+    if (!e || !drawer) return;
+    // The preview: what the card is (kind, tier), its name (which opens the full card, where the
+    // examples, practice problems and links stay), its formula at full width, the one-line
+    // summary and the first figure, then the explanation drawn exactly as on the card page.
+    drawer.innerHTML = learnDrawerInnerHtml(id);
     drawer.hidden = false;
     drawer.scrollTop = 0;
     drawer.style.transform = "";
@@ -5933,6 +5934,21 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join(`<span class="lp-cards-sep">&middot;</span>`);
   }
   // A lesson or a review: the outline, the reading column and the drawer.
+  // A written lesson's reading column, shared by the page and the Settings preview.
+  function learnLessonMainHtml(b, c, l, d) {
+    const opener = learnHasIntro(c) && l === c.lessons[0];
+    return `${opener ? `<header class="ch-open">
+          <span class="ch-open-n">${c.code.slice(1)}</span>
+          <span class="ch-open-txt"><span class="ch-open-k">Chapter ${c.code.slice(1)} ${learnLevelHtml(c)}</span><span class="ch-open-t">${escapeAttr(c.title)}</span></span>
+        </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
+        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
+        <div class="lp-cards">
+          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
+          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
+        </div>
+        ${learnBodyHtml(l, d)}
+        ${(d.problems || []).length ? `<h3 class="lp-h3">Contest practice problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+  }
   function renderLearnLesson(b, c, l, end) {
     const d = l ? learnLessonData(c, l) : null;
     const isReview = !l;
@@ -5956,18 +5972,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <p class="learn-note">This lesson is not written yet.</p>`;
     } else {
       // The Introduction opens the chapter: the chapter's number and title above the lesson's heading.
-      const opener = learnHasIntro(c) && l === c.lessons[0];
-      main = `${opener ? `<header class="ch-open">
-          <span class="ch-open-n">${c.code.slice(1)}</span>
-          <span class="ch-open-txt"><span class="ch-open-k">Chapter ${c.code.slice(1)} ${learnLevelHtml(c)}</span><span class="ch-open-t">${escapeAttr(c.title)}</span></span>
-        </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
-        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
-        <div class="lp-cards">
-          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
-          ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
-        </div>
-        ${learnBodyHtml(l, d)}
-        ${(d.problems || []).length ? `<h3 class="lp-h3">Contest practice problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+      main = learnLessonMainHtml(b, c, l, d);
     }
     learnBookShell(b, c, isReview ? (end || "review") : l, main);
     if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }

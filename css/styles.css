@@ -3436,9 +3436,12 @@ html[data-density="compact"] .set-row { padding: 8px 0; }
 .set-preview[data-focus~="subject"] .pv-screen[data-pv="subject"],
 .set-preview[data-focus~="problem"] .pv-screen[data-pv="problem"],
 .set-preview[data-focus~="lesson"] .pv-screen[data-pv="lesson"] { opacity: 1; }
-/* In the lesson preview the drawer sits in the grid beside the text, never floating. */
+/* In the lesson preview the drawer sits in the grid beside the text, never floating, and nothing
+   sticks: the screen is a still picture. */
 .pv-inner .lp-drawer { position: static; max-height: none; box-shadow: none; }
 .pv-inner .lp-grid.has-drawer { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; }
+.pv-inner .bk-rail { position: static; }
+.pv-inner .content, .pv-inner .bk-view { margin: 0; }
 .pv-track { display: flex; flex-direction: column; gap: 8px; align-self: stretch; align-items: center; }
 .pv-screen[hidden] { display: none; }
 /* The arrows that step through the screens, one on each side of the panel. */
@@ -3836,6 +3839,7 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hm-h, .home .hp-label { margin: 0 0 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .hm-h-row { display: flex; justify-content: space-between; align-items: baseline; }
 .hm-more { font-size: 12.5px; font-weight: 650; color: var(--c-learn); text-decoration: none; }
+.hm-more-practice { color: var(--c-practice); }
 /* Problem of the day: the whole section opens the problem. On hover its background is filled in
    a rectangle, like a card row's (owner, 2026-10-31). The section reaches 12px past the column
    on each side so its text still lines up with the sections around it. */
