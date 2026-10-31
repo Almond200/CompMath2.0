@@ -4000,10 +4000,28 @@
       return `<a class="toc-link toc-counted" href="#${sec.id}" data-toc="${sec.id}"><span class="toc-t">${t ? t.innerHTML : ""}</span><span class="toc-n">${n}</span></a>`;
     });
     tocPinned = null;
-    toc.innerHTML = items.length ? `<div class="toc-head">On this list</div>${items.join("")}` : "";
+    // A few page tools under the sections (owner, 2026-10-31): back to the top, the list's link, print.
+    const tools = `<div class="toc-head toc-tools-head">Page tools</div>
+      <button type="button" class="toc-tool" data-list-tool="top">&uarr; Back to top</button>
+      <button type="button" class="toc-tool" data-list-tool="link">Copy link to this list</button>
+      <button type="button" class="toc-tool" data-list-tool="print">Print this list</button>`;
+    toc.innerHTML = items.length ? `<div class="toc-head">On this list</div>${items.join("")}${tools}` : "";
     toc.hidden = !items.length;
     markToc();
   }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-list-tool]");
+    if (!b) return;
+    const what = b.dataset.listTool;
+    if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    else if (what === "print") window.print();
+    else if (what === "link") {
+      const url = location.href;
+      const done = () => toast("Link copied");
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, () => toast("Copy failed"));
+      else toast("Copy failed");
+    }
+  });
   function clearPageToc() {
     const toc = document.getElementById("page-toc");
     if (toc) { toc.innerHTML = ""; toc.hidden = true; }

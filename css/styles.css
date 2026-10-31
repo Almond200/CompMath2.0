@@ -3223,6 +3223,10 @@ html[data-cols="spacious"] .content .cards { grid-template-columns: repeat(auto-
 .page-toc { margin: 22px 0 0; padding: 14px 0 0 12px; border-top: 1px solid var(--border); }
 .page-toc[hidden] { display: none; }
 .toc-head { margin-bottom: 6px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); }
+/* A list's page tools, under its sections: plain text buttons, set off by a hairline. */
+.toc-tools-head { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+.toc-tool { display: block; width: 100%; padding: 4px 8px; border: none; border-radius: 6px; background: none; color: var(--text-dim); font: inherit; font-size: 13px; text-align: left; cursor: pointer; }
+.toc-tool:hover { background: var(--bg-panel); color: var(--text); }
 .toc-link {
   display: block; padding: 4px 10px; border-left: 2px solid var(--border); font-size: 13px; line-height: 1.35;
   color: var(--text-dim); text-decoration: none;

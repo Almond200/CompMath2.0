@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Lists: page tools under "On this list" in a list's sidebar: Back to top, Copy link to this list, Print this list.
 - The owner approved the C5 pilot: the chapter structure (Introduction, lessons, Summary with Problem Solving Strategies, Review Problems, Challenge Problems) is now the standard for every new or reworked chapter (CONVENTIONS §14). PLAN's Current state rewritten for the next chat: the next work is the AMC books' second plan and moving the AIME chapters to the approved structure.
 - Fixes: math in a Summary's Problem Solving Strategies is typeset; the settings search underlines a setting only after the page has finished scrolling to it.
 - C5 gains C5.7 Winning probabilities from states (Markov chains: first-step analysis for the chance of winning a game, with why the states and the winning state must be defined exactly); the Summary (now C5.8) adds two strategies on states; Review and Challenge become C5.9 and C5.10; C7.3 now assumes the card. Phones: the card preview sheet has a grab handle, more room above its tags, and closes when swiped down; the Reference menu is narrower, with text the size of the tabs.
