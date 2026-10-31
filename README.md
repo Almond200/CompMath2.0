@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **B4 written (2026-10-31).** B4.1 the product and sum rules, permutations and combinations, B4.2 casework and complements, B4.3 repeated objects, blocks and gaps, B4.4 probability by counting, independence and conditional probability.
 - **B3 written (2026-10-31).** B3.1 factorizations, divisor counts, the Euclidean algorithm and divisibility rules, B3.2 residues, negative residues and inverses, B3.3 cycles of last digits and remainders, B3.4 Simon's trick, factor pairs and the prime $2$. As the outline places them, cycle hunting and last digits are now taught in B3.3 (N3.1 assumes them), and conditional probability and independence in B4.4 (C6.2 and C6.3 assume them).
 - **B2 written (2026-10-31).** B2.1 the remainder and factor theorems, division and rational roots, B2.2 the quadratic formula, Vieta and the vertex, B2.3 arithmetic and geometric series, triangular numbers and power sums, B2.4 first-order recurrences, periodic sequences and organized listing.
 - **Bridge begun: B1 written (2026-10-31).** B1.1 differences of squares, squares of sums and rationalizing, B1.2 elimination, adding all equations and reversible steps, B1.3 substituting for repeated blocks and self-similar expressions, B1.4 absolute values, sign charts and the trivial inequality, B1.5 rates, averages, percents and the other word-problem setups.
