@@ -3,7 +3,9 @@
 // in a lesson's prose is one of its cards or the cards it assumes; that no card is taught in two
 // lessons; that every problem ref is in the database and placed once on the whole shelf (an AMC 10/12
 // twin pair counts as one problem); and that every lesson problem has a worked solution, and an answer
-// (when given) that parses.
+// (when given) that parses. The AMC books and the AIME books (with the Bridge) are two tracks: each
+// track teaches a card at most once and places a problem at most once, so the AMC books may teach a
+// card or use a problem that the AIME books also use (owner's goal, 2026-10-31).
 // usage: node tools/check-learn.js
 global.window = global;
 const fs = require('fs'), vm = require('vm'), path = require('path');
@@ -32,10 +34,12 @@ const learn = window.MATH_LEARN || {};
 for (const code of Object.keys(fileOf)) if (!learn[code]) errs.push(`${fileOf[code]} does not fill MATH_LEARN["${code}"]`);
 
 const taught = new Map(), placed = new Map();
-const place = (ref, where) => {
+const trackOf = b => /^amc-/.test(b.id) ? 'amc' : 'aime';
+const place = (ref, where, track) => {
   if (!refs.has(ref)) { errs.push(`${where}: ${ref} is not in the problem database`); return; }
-  if (placed.has(ref)) errs.push(`${ref} is placed twice (${placed.get(ref)} and ${where})`);
-  else placed.set(ref, where);
+  const key = track + '|' + ref;
+  if (placed.has(key)) errs.push(`${ref} is placed twice (${placed.get(key)} and ${where})`);
+  else placed.set(key, where);
 };
 for (const [code, ch] of Object.entries(learn)) {
   const home = shelfChapter[code];
@@ -48,8 +52,9 @@ for (const [code, ch] of Object.entries(learn)) {
     if (!home.c.lessons.some(x => x.code === lc)) errs.push(`${at} is not a lesson of ${code} on the shelf`);
     for (const k of ['prereq', 'cards']) for (const id of l[k] || []) if (!cards.has(id)) errs.push(`${at}: ${k} ${id} is not a card`);
     for (const id of l.cards || []) {
-      if (taught.has(id)) errs.push(`${id} is taught in both ${taught.get(id)} and ${at}`);
-      else taught.set(id, at);
+      const key = trackOf(home.b) + '|' + id;
+      if (taught.has(key)) errs.push(`${id} is taught in both ${taught.get(key)} and ${at}`);
+      else taught.set(key, at);
     }
     const known = new Set([...(l.cards || []), ...(l.prereq || [])]);
     const body = String(l.body || '');
@@ -74,13 +79,13 @@ for (const [code, ch] of Object.entries(learn)) {
       if (!cards.has(r.card)) errs.push(`${at}: related card ${r.card} is not a card`);
       if (!r.note) errs.push(`${at}: related card ${r.card} needs a note saying how it connects`);
     }
-    for (const ref of l.problems || []) place(ref, at);
+    for (const ref of l.problems || []) place(ref, at, trackOf(home.b));
   }
-  for (const ref of ch.review || []) place(ref, `${code} review`);
+  for (const ref of ch.review || []) place(ref, `${code} review`, trackOf(home.b));
 }
 
 // AMC 10/12 twins: the same problem printed on both papers counts once on the shelf.
-const amc = [...placed.keys()].map(r => ({ r, m: r.match(/^(\d{4}(?: Fall| Spring)?) AMC (10|12)([AB]?), Problem (\d+)$/) })).filter(x => x.m);
+const amc = [...placed.keys()].map(k => ({ t: k.split('|')[0], r: k.split('|')[1], m: k.split('|')[1].match(/^(\d{4}(?: Fall| Spring)?) AMC (10|12)([AB]?), Problem (\d+)$/) })).filter(x => x.m);
 const stmts = {};
 for (const y of new Set(amc.map(x => x.m[1].slice(0, 4)))) {
   const f = R + 'problems/statements/' + y + '.js';
@@ -90,9 +95,9 @@ const S = window.MATH_STATEMENTS || {};
 const slug = r => r.toLowerCase().replace(/,? problem /, '-').replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
 const norm = r => { const s = S[slug(r)]; return s ? (typeof s === 'string' ? s : s.s).replace(/\\[a-z]+/g, '').replace(/[^a-z0-9]/gi, '').toLowerCase() : null; };
 for (const a of amc) for (const b of amc) {
-  if (a.m[2] !== '10' || b.m[2] !== '12' || a.m[1] !== b.m[1] || a.m[3] !== b.m[3]) continue;
+  if (a.t !== b.t || a.m[2] !== '10' || b.m[2] !== '12' || a.m[1] !== b.m[1] || a.m[3] !== b.m[3]) continue;
   const x = norm(a.r), y = norm(b.r);
-  if (x && x === y) errs.push(`${a.r} (${placed.get(a.r)}) and its twin ${b.r} (${placed.get(b.r)}) are both placed`);
+  if (x && x === y) errs.push(`${a.r} (${placed.get(a.t + '|' + a.r)}) and its twin ${b.r} (${placed.get(b.t + '|' + b.r)}) are both placed`);
 }
 
 if (errs.length) { errs.forEach(e => console.log('FAIL - ' + e)); process.exit(1); }

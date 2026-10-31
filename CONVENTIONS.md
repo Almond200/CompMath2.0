@@ -1012,3 +1012,5 @@ The old list addresses are kept (§9).
 - every lesson problem has a question and a worked solution, and its `answer` (when given) parses in the keyboard grammar;
 - no `{{check}}` marker or `checks` field remains;
 - each written lesson is on the shelf.
+
+**Two tracks.** The AMC books (AMC 10, AMC 12) and the AIME books (with the Bridge) are separate tracks (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.

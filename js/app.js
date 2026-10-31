@@ -4895,7 +4895,7 @@
     formulas: `Formulas are the facts: theorems, identities, and standard results, each with why it holds and worked examples. <a href="#/methods">Methods</a> rely on them, and every card lists the <a href="#/practice">contest problems</a> where it appears.`,
     methods: `Methods are the moves you make once you are inside a problem. Each one names the <a href="#/formulas">formulas</a> it relies on, and <a href="#/patterns">patterns</a> tell you when it is worth trying.`,
     patterns: `Patterns are the problem shapes worth recognizing before you start. Each one points to the <a href="#/methods">methods</a> worth trying, and those lead to the <a href="#/formulas">formulas</a> they use.`,
-    learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and checks it with short questions and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
+    learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and ends with problems of its own and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
     practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal.`
   };
   const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: ["lesson"], practice: ["problem"] };
@@ -5006,6 +5006,7 @@
     }
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
+    wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
     if (unrel) unrel.addEventListener("click", () => {
       showUnwritten = !showUnwritten;
@@ -5091,12 +5092,17 @@
     "aime-number-theory": `<circle cx="50" cy="50" r="34" />${Array.from({ length: 12 }, (_, k) => `<circle cx="${(50 + 34 * Math.sin(k * Math.PI / 6)).toFixed(1)}" cy="${(50 - 34 * Math.cos(k * Math.PI / 6)).toFixed(1)}" r="${k % 3 ? 2.6 : 4.2}" class="mf" />`).join("")}<path d="M50 50 L50 24 M50 50 L68 60" />`,
     // a triangle in its circumcircle
     "aime-geometry": `<circle cx="50" cy="52" r="36" /><path d="M50 16 L19 70 L83 66 Z" /><path d="M50 16 L51 68" />`,
+    // five answer bubbles with one filled in
+    "amc-10": `${[18, 34, 50, 66, 82].map((x, k) => `<circle cx="${x}" cy="50" r="7"${k === 2 ? ' class="mf"' : ""} />`).join("")}<path d="M14 72 H86" class="mg" />`,
+    // an angle in the unit circle
+    "amc-12": `<circle cx="50" cy="50" r="34" /><path d="M16 50 H84 M50 16 V84" class="mg" /><path d="M50 50 L76 28" /><circle cx="76" cy="28" r="4" class="mf" /><path d="M62 50 A12 12 0 0 0 59 42" />`,
     // a lattice path on a grid
     "aime-counting": `${[14, 32, 50, 68, 86].map(v => `<path d="M14 ${v} H86 M${v} 14 V86" class="mg" />`).join("")}<path d="M14 86 H32 V68 H68 V32 H86 V14" />`
   };
   function bookParts(b) {
     const m = b.title.match(/^AIME (.+)$/);
-    return m ? { series: "AIME", name: m[1] } : { series: "Foundations", name: b.title };
+    if (m) return { series: "AIME", name: m[1] };
+    return /^AMC \d+$/.test(b.title) ? { series: "Contests", name: b.title } : { series: "Foundations", name: b.title };
   }
   const learnWrittenIn = b => b.chapters.reduce((n, c) => n + c.lessons.filter(l => learnLessonData(c, l)).length, 0);
   const learnLessonsIn = b => b.chapters.reduce((n, c) => n + c.lessons.length, 0);
@@ -5109,6 +5115,28 @@
         ${size === "s" ? "" : `<span class="bk-size">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</span>`}
       </span>`;
   }
+  // More than two rows of books fold away behind a "Show all" button (owner, 2026-10-31); the
+  // number of columns comes from the grid itself, so the cut follows the screen width.
+  let showAllBooks = false, shelfFit = null;
+  function wireShelfMore(root) {
+    const grid = root.querySelector(".bk-shelf-m"), btn = root.querySelector("#bk-more");
+    shelfFit = null;
+    if (!grid || !btn) return;
+    const tiles = Array.from(grid.children);
+    shelfFit = () => {
+      if (!grid.isConnected) return;
+      tiles.forEach(t => { t.hidden = false; });
+      const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
+      const extra = tiles.length - 2 * cols;
+      btn.hidden = extra <= 0;
+      if (extra > 0 && !showAllBooks) tiles.slice(2 * cols).forEach(t => { t.hidden = true; });
+      btn.setAttribute("aria-expanded", String(showAllBooks));
+      btn.textContent = showAllBooks ? "Show fewer textbooks" : "Show all textbooks (" + extra + " more)";
+    };
+    btn.addEventListener("click", () => { showAllBooks = !showAllBooks; shelfFit(); });
+    shelfFit();
+  }
+  window.addEventListener("resize", () => { if (shelfFit) shelfFit(); });
   // The shelf on the Learn page (and, smaller, on the home page).
   function learnCoversHtml(size) {
     return `<div class="bk-shelf bk-shelf-${size}">${LEARN_SHELF.map(b => `
@@ -5120,8 +5148,9 @@
   function learnShelfHtml() {
     return `<section class="sh-section" id="learn-books">
         <h3>Textbooks</h3>
-        <p class="learn-note">Five books from the AMC to the AIME. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
+        <p class="learn-note">Books from the AMC 10 to the AIME. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
         ${learnCoversHtml("m")}
+        <button type="button" class="ct-toggle bk-more" id="bk-more" hidden></button>
       </section>`;
   }
   // Where to pick up: the lesson after the last one read, else the first written lesson.
