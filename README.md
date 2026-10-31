@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- A book's page shows its chapters and lessons without "written so far", and its contents give each chapter's number of lessons. Printing leaves out everything that floats or only works on screen: toasts such as Link copied, menus, the drawer, the phone navigation, and the card buttons (star, +, Open).
 - Home: Practice at a glance has a "See all" link in its heading row, like Textbooks, and no longer has the random-problem and every-contest links at its foot.
 - Home: each textbook shows its number of lessons, not "X of X".
 - Settings preview: the lesson screen is drawn by the lesson page's own code (the chapter rail, the two title bars, the heading and card rows, and the real card drawer when cards open in the lesson).

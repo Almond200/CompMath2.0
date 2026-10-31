@@ -5603,7 +5603,6 @@
 
   function renderLearnBook(b) {
     noteRecent("b:" + b.id);
-    const written = c => c.lessons.filter(l => learnLessonData(c, l)).length;
     const start = (() => {
       const k = learnContinue();
       return k && k.b === b ? k : (() => { for (const c of b.chapters) for (const l of c.lessons) if (learnLessonData(c, l)) return { b, c, l }; return null; })();
@@ -5617,7 +5616,7 @@
           <div class="bk-hero-text">
             <h2 class="learn-h">${escapeAttr(b.title)}</h2>
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
-            <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons &middot; ${learnWrittenIn(b)} written so far</p>
+            <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</p>
             ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
             <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "Core" })} (early to middle problems), ${learnLevelHtml({ level: "Core II" })} (hard problems) or ${learnLevelHtml({ level: "Extension" })} (optional).` : `Every chapter is ${learnLevelHtml({ level: "Core" })} (early AIME problems), ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`}</p>
           </div>
@@ -5632,7 +5631,7 @@
             </ol>
           </li>${b.chapters.map(c => `
           <li class="bk-toc-ch">
-            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}</span></span></a>
+            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${c.lessons.length} lessons</span></span></a>
             <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
           </li>`).join("")}
         </ol>

@@ -3786,6 +3786,11 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
 @media print {
   .page-tools, .sidebar, .topbar, .back-link, .back-row, .detail-actions,
   .sol-toggle, .show-more-btn, .ref-ext-link { display: none !important; }
+  /* Nothing that floats over the page, or only works on screen, prints (owner, 2026-10-31): a
+     toast such as "Link copied", the menus and dropdowns, the drawer and its backdrop, the
+     phone's book navigation, and the card buttons. */
+  .toast, #mq-toast, .space-ref-menu, .set-find-list, .nav-backdrop, .bk-mnav, .pv-nav, .lp-drawer,
+  .star-btn, .addlist-btn, .copy-btn, .more-hint, .chain-toggle, .pl-new-btn, .toc-tool { display: none !important; }
   .layout, .detail-with-tools { display: block; }
   .content { max-width: none; margin: 0; }
   .problem-sol[hidden] { display: block !important; }
