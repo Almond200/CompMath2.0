@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **C5 written (2026-10-31).** C5.1 recursions from the last step or the largest element, C5.2 tilings and several-state recursions, C5.3 filling a grid of path counts and labeling game positions backward, C5.4 invariants and monovariants, C5.5 lattice paths through points, around obstacles and by turns; three review problems.
 - **C4 written (2026-10-31).** C4.1 bijections, Catalan numbers, reflection and the ballot problem, C4.2 double counting, committees with a chair and nested subsets, C4.3 symmetry arguments and Burnside's lemma, C4.4 the binomial identities (Pascal, row sums, hockey stick, Vandermonde, multinomial); six review problems.
 - **C3 written (2026-10-31).** C3.1 inclusion-exclusion forward and in reverse, C3.2 derangements and forbidden positions, C3.3 exactly and at most, subsets avoiding a relation and subset sums, C3.4 choosing between complements and casework; six review problems.
 - **C2 written (2026-10-31).** C2.1 permutations, combinations and multisets (casing on the composition), C2.2 circular arrangements and the necklace formula, C2.3 the gap method, non-adjacent selections and state machines for restricted strings, C2.4 stars and bars with lower and upper bounds and the table of distributions, C2.5 surjections, Stirling numbers and fencepost counts; seven review problems.
