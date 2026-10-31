@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **"Back to top" has no arrow** (owner, 2026-10-31), in the book view's footer and in page tools.
 - **The card drawer breathes more** (owner, 2026-10-31): more padding at the top, the card's name now opens the full card (the separate "Open the full card" link is gone), no focus ring on the × when it opens, and the lesson's card chips sit further from their labels.
 - **A lesson's card rows are labelled "Teaches you about" and "Assumes you know"** instead of "Cards" and "Assumes" (owner, 2026-10-31).
 - **The card drawer is white** (the card colour in dark) instead of the bluish panel, for more contrast, and its close button is a small bare × the height of the tags beside it (owner, 2026-10-31).
