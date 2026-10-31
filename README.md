@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **G2 written (2026-10-31).** G2.1 angle chasing with arcs, tangent-chord angles and hidden cyclic quadrilaterals, G2.2 power of a point, radical axes and Thales, G2.3 Ptolemy, equal chords and Brahmagupta, G2.4 tangent lengths, inradius, exradii and Pitot, G2.5 tangent circles, common tangents, joining centers and Descartes; four review problems.
 - **AIME Geometry begun: G1 written (2026-10-31).** G1.1 similar triangles, parallels, midsegments and nested copies, G1.2 area ratios by shared bases, heights and angles, G1.3 Stewart, Apollonius, the angle bisector theorem and the centroid, G1.4 mass points, the cevian ratio sum and Routh, G1.5 the altitude to the hypotenuse, extending sides and doubling a median; seven review problems.
 - **C9 written; the AIME Counting & Probability book is complete (2026-10-31).** C9.1 generating functions and partitions, C9.2 cycle structure of permutations, C9.3 products of uniforms, order statistics and variance, C9.4 transfer matrices, strategy stealing, truth-teller puzzles and magic squares; an extension chapter whose lessons carry their own problems.
 - **C8 written (2026-10-31).** C8.1 the handshake lemma, trees, Eulerian paths and round robins, C8.2 rectangles and squares in grids, C8.3 coloring arguments and counting proper colorings of paths and cycles, C8.4 pigeonhole, pairing to bound and the extremal principle; the counting of shapes in figures stays with G7.5.
