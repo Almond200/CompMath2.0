@@ -834,87 +834,87 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A1.1 Symmetric systems: $x + y$ and $xy$ | `symmetric-polynomial-strategies` |
-| A1.2 Nested radicals, rational equations, keeping the domain | `denesting-radicals`, prereq `transforming-equations` |
-| A1.3 Substitution patterns: $t = x + \frac1x$, quadratic forms, completing the square | `palindromic-polynomials`, `reciprocal-power-sums`, `completing-the-square` |
-| A1.4 Cyclic systems and equations with several cases | `subtract-and-factor`, prereq `add-all-equations` |
-| A1.5 Building and checking integer or positive solutions | `forced-difference-of-squares`, *(pattern)* `quadratic-perfect-square`, prereq `sfft` |
+| A1.1 Symmetric systems: $x + y$ and $xy$ (Core) | `symmetric-polynomial-strategies` |
+| A1.2 Nested radicals, rational equations, keeping the domain (Core) | `denesting-radicals`, prereq `transforming-equations` |
+| A1.3 Substitution patterns: $t = x + \frac1x$, quadratic forms, completing the square (Core) | `palindromic-polynomials`, `reciprocal-power-sums`, `completing-the-square` |
+| A1.4 Cyclic systems and equations with several cases (Core II) | `subtract-and-factor`, prereq `add-all-equations` |
+| A1.5 Building and checking integer or positive solutions (Core) | `forced-difference-of-squares`, *(pattern)* `quadratic-perfect-square`, prereq `sfft` |
 
 ### A2. Polynomials and root expressions (Core)
 
 | Lesson | Cards |
 |---|---|
-| A2.1 The factor and remainder theorems, and division, in contest settings | `polynomial-crt`, prereq `factor-remainder-theorem` |
-| A2.2 Vieta; sums of powers of roots (Newton's sums) | `newtons-sums`, `products-over-roots` |
-| A2.3 Symmetric polynomials and root constraints | `fundamental-theorem-symmetric`, `conjugate-root-theorems`, `descartes-rule-signs` |
-| A2.4 Root transformations: reciprocal and shifted polynomials | `root-transformations` |
-| A2.5 Interpolation and reading off coefficients | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
+| A2.1 The factor and remainder theorems, and division, in contest settings (Core) | `polynomial-crt`, prereq `factor-remainder-theorem` |
+| A2.2 Vieta; sums of powers of roots (Newton's sums) (Core) | `newtons-sums`, `products-over-roots` |
+| A2.3 Symmetric polynomials and root constraints (Core) | `fundamental-theorem-symmetric`, `conjugate-root-theorems`, `descartes-rule-signs` |
+| A2.4 Root transformations: reciprocal and shifted polynomials (Core) | `root-transformations` |
+| A2.5 Interpolation and reading off coefficients (Core II) | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
 
 ### A3. Sequences, recurrences and sums (Core)
 
 | Lesson | Cards |
 |---|---|
-| A3.1 Linear recurrences and their starting values | `linear-recurrence`, `binets-formula` |
-| A3.2 Telescoping sums and products; partial fractions | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
-| A3.3 Finite differences, double sums, from a pattern to a formula | `finite-differences`, `double-summation` |
-| A3.4 Iteration and periodic sequences | *(pattern)* `infinite-nest`, prereq *(pattern)* `periodic-sequences` |
-| A3.5 A closed form only when it helps | `arithmetico-geometric`, `largest-term-ratio` |
+| A3.1 Linear recurrences and their starting values (Core) | `linear-recurrence`, `binets-formula` |
+| A3.2 Telescoping sums and products; partial fractions (Core) | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
+| A3.3 Finite differences, double sums, from a pattern to a formula (Core II) | `finite-differences`, `double-summation` |
+| A3.4 Iteration and periodic sequences (Core) | *(pattern)* `infinite-nest`, prereq *(pattern)* `periodic-sequences` |
+| A3.5 A closed form only when it helps (Core II) | `arithmetico-geometric`, `largest-term-ratio` |
 
 ### A4. Functions, logs and exponentials (Core)
 
 | Lesson | Cards |
 |---|---|
-| A4.1 Composition, inverses, symmetry of a function | `inverse-function-properties`, `odd-even-functions`, `function-symmetry-equation`, `fx-pairing` |
-| A4.2 Piecewise and absolute-value functions, floors and ceilings | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range`, `abs-value-graphing` |
-| A4.3 Exponential equations; logarithm laws and domains | `log-rules`, `change-of-base`, `exponent-laws`, `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` |
-| A4.4 Functional identities of contest length | `functional-substitution`, *(pattern)* `defined-operation` |
-| A4.5 Graphs, monotonicity, and the number of solutions | `piecewise-graph-counting`, *(pattern)* `reading-graphs` |
+| A4.1 Composition, inverses, symmetry of a function (Core) | `inverse-function-properties`, `odd-even-functions`, `function-symmetry-equation`, `fx-pairing` |
+| A4.2 Piecewise and absolute-value functions, floors and ceilings (Core) | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range`, `abs-value-graphing` |
+| A4.3 Exponential equations; logarithm laws and domains (Core) | `log-rules`, `change-of-base`, `exponent-laws`, `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` |
+| A4.4 Functional identities of contest length (Core II) | `functional-substitution`, *(pattern)* `defined-operation` |
+| A4.5 Graphs, monotonicity, and the number of solutions (Core) | `piecewise-graph-counting`, *(pattern)* `reading-graphs` |
 
 ### A5. Inequalities and bounds (Core)
 
 | Lesson | Cards |
 |---|---|
-| A5.1 AM-GM and its equality case | `am-gm`, `max-product-fixed-sum`, `mean-chain` |
-| A5.2 Cauchy-Schwarz and elementary quadratic forms | `cauchy-schwarz`, `quadratic-forms` |
-| A5.3 Squares, rearrangement, elementary estimates | `rearrangement`, `sos-identity`, `abs-triangle-inequality` |
-| A5.4 Maximum and minimum with domain and discrete constraints | `median-minimizes-abs`, `slope-to-a-point`, `placing-digits-extremes`, `derivative-extremum`, prereq `vertex-form` |
-| A5.5 When a bound is sharp enough | `power-mean-inequality`, `jensens-inequality`, `bernoulli-inequality`, `weighted-am-gm` |
+| A5.1 AM-GM and its equality case (Core) | `am-gm`, `max-product-fixed-sum`, `mean-chain` |
+| A5.2 Cauchy-Schwarz and elementary quadratic forms (Core II) | `cauchy-schwarz`, `quadratic-forms` |
+| A5.3 Squares, rearrangement, elementary estimates (Core) | `rearrangement`, `sos-identity`, `abs-triangle-inequality` |
+| A5.4 Maximum and minimum with domain and discrete constraints (Core) | `median-minimizes-abs`, `slope-to-a-point`, `placing-digits-extremes`, `derivative-extremum`, prereq `vertex-form` |
+| A5.5 When a bound is sharp enough (Core II) | `power-mean-inequality`, `jensens-inequality`, `bernoulli-inequality`, `weighted-am-gm` |
 
 ### A6. Complex numbers and roots of unity (Core II)
 
 | Lesson | Cards |
 |---|---|
-| A6.1 Complex arithmetic, conjugates, modulus, argument | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` |
-| A6.2 The plane: rotations and loci | `eulers-formula`, `polar-form`, `de-moivre` |
-| A6.3 Roots of unity and finite geometric sums | `roots-of-unity`, `roots-of-unity-filter`, `trig-series-complex` |
-| A6.4 Polynomial roots with complex numbers | `fundamental-theorem-algebra`, `roots-unity-distance-product` |
+| A6.1 Complex arithmetic, conjugates, modulus, argument (Core) | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` |
+| A6.2 The plane: rotations and loci (Core II) | `eulers-formula`, `polar-form`, `de-moivre` |
+| A6.3 Roots of unity and finite geometric sums (Core II) | `roots-of-unity`, `roots-of-unity-filter`, `trig-series-complex` |
+| A6.4 Polynomial roots with complex numbers (Core II) | `fundamental-theorem-algebra`, `roots-unity-distance-product` |
 
 ### A7. Trigonometric algebra (Core II; links to G3)
 
 | Lesson | Cards |
 |---|---|
-| A7.1 The unit circle and angle relations | `pythagorean-identities`, `common-angle-values`, `special-trig-values`, `reduction-identities` |
-| A7.2 Addition, double angle and other standard transformations | `angle-addition`, `double-angle`, `half-angle`, `triple-angle`, `product-sum`, `harmonic-addition` |
-| A7.3 Trig equations with a bounded solution set | `inverse-trig-identities` (a possible gap: no card gives the full solution set of $\sin\theta = \sin\alpha$; see "Coverage") |
-| A7.4 Between algebra and trig: substitutions, telescoping trig sums | `trig-substitution`, `arctan-telescoping`, `sin-cos-ap-sum`, `cot-tan-telescoping`, `trig-telescoping-product` |
+| A7.1 The unit circle and angle relations (Core) | `pythagorean-identities`, `common-angle-values`, `special-trig-values`, `reduction-identities` |
+| A7.2 Addition, double angle and other standard transformations (Core) | `angle-addition`, `double-angle`, `half-angle`, `triple-angle`, `product-sum`, `harmonic-addition` |
+| A7.3 Trig equations with a bounded solution set (Core II) | `inverse-trig-identities` (a possible gap: no card gives the full solution set of $\sin\theta = \sin\alpha$; see "Coverage") |
+| A7.4 Between algebra and trig: substitutions, telescoping trig sums (Core II) | `trig-substitution`, `arctan-telescoping`, `sin-cos-ap-sum`, `cot-tan-telescoping`, `trig-telescoping-product` |
 
 ### A8. Algebraic structure and synthesis (Core II; a capstone)
 
 | Lesson | Cards |
 |---|---|
-| A8.1 Symmetry, cyclic expressions, clever rearrangements | `wlog-symmetry`, `sum-zero-identities`, `cubes-minus-3abc`, `antisymmetric-factorization`, `pairwise-sum-product` |
-| A8.2 Integer and parity restrictions inside algebraic equations | `an-minus-bn`, `sophie-germain`, `brahmagupta-fibonacci` |
-| A8.3 Parameters, and telling possible roots apart | prereq `quadratic-root-location`, prereq `comparing-coefficients` |
-| A8.4 Mixed problems that need two or more earlier topics | no new card (a review lesson) |
+| A8.1 Symmetry, cyclic expressions, clever rearrangements (Core II) | `wlog-symmetry`, `sum-zero-identities`, `cubes-minus-3abc`, `antisymmetric-factorization`, `pairwise-sum-product` |
+| A8.2 Integer and parity restrictions inside algebraic equations (Core II) | `an-minus-bn`, `sophie-germain`, `brahmagupta-fibonacci` |
+| A8.3 Parameters, and telling possible roots apart (Core II) | prereq `quadratic-root-location`, prereq `comparing-coefficients` |
+| A8.4 Mixed problems that need two or more earlier topics (Core II) | no new card (a review lesson) |
 
 ### A9. Algebra extensions (Extension)
 
 | Lesson | Cards |
 |---|---|
-| A9.1 More interpolation and finite differences | `higher-power-sums`, `integer-valued-polynomials`, `generalized-binomial-series` |
-| A9.2 Nonstandard functional equations | `cauchy-functional-equations`, `injectivity-surjectivity` |
-| A9.3 Higher-order recurrences, matrices and determinants | `matrix-multiplication`, `matrix-power-diagonalizing`, `determinant-basics`, `cramers-rule`, `matrix-inverse`, `chebyshev-polynomials` |
-| A9.4 Inequalities and substitutions beyond routine AIME | `nesbitt-inequality`, `tangent-line-trick`, `normalization`, `weierstrass-substitution`, `even-power-sin-cos-sums`, `evenly-spaced-angle-products` |
+| A9.1 More interpolation and finite differences (Extension) | `higher-power-sums`, `integer-valued-polynomials`, `generalized-binomial-series` |
+| A9.2 Nonstandard functional equations (Extension) | `cauchy-functional-equations`, `injectivity-surjectivity` |
+| A9.3 Higher-order recurrences, matrices and determinants (Extension) | `matrix-multiplication`, `matrix-power-diagonalizing`, `determinant-basics`, `cramers-rule`, `matrix-inverse`, `chebyshev-polynomials` |
+| A9.4 Inequalities and substitutions beyond routine AIME (Extension) | `nesbitt-inequality`, `tangent-line-trick`, `normalization`, `weierstrass-substitution`, `even-power-sin-cos-sums`, `evenly-spaced-angle-products` |
 
 ---
 
@@ -1164,89 +1164,89 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G1.1 Similar triangles and ratio chasing | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` |
-| G1.2 Area ratios: same altitude, cevians | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `area-method` |
-| G1.3 Stewart's theorem, angle bisectors, medians | `stewarts-theorem`, `angle-bisector-theorem`, `angle-bisector-length`, `apollonius-theorem`, `centroid-division` |
-| G1.4 Mass points as a ratio tool | `mass-points`, `cevian-ratio-sum`, `rouths-theorem` |
-| G1.5 Similarity and area in nested figures | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` |
+| G1.1 Similar triangles and ratio chasing (Core) | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` |
+| G1.2 Area ratios: same altitude, cevians (Core) | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `area-method` |
+| G1.3 Stewart's theorem, angle bisectors, medians (Core) | `stewarts-theorem`, `angle-bisector-theorem`, `angle-bisector-length`, `apollonius-theorem`, `centroid-division` |
+| G1.4 Mass points as a ratio tool (Core II) | `mass-points`, `cevian-ratio-sum`, `rouths-theorem` |
+| G1.5 Similarity and area in nested figures (Core) | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` |
 
 ### G2. Circles and cyclic figures (Core)
 
 | Lesson | Cards |
 |---|---|
-| G2.1 Cyclic quadrilaterals, inscribed angles, angle chasing | `angle-chasing`, `cyclic-opposite-angles`, `cyclic-equal-angles`, `concyclicity-tests`, `angle-chord-secant`, `tangent-chord-angle`, *(pattern)* `cyclic-quadrilateral` |
-| G2.2 Power of a point, tangent and secant, intersecting chords | `radical-axis`, `thales-theorem`, prereq `power-of-a-point` |
-| G2.3 Ptolemy and chord lengths | `ptolemys-theorem`, `equal-chords-arcs`, `brahmaguptas-formula` |
-| G2.4 Incircles, excircles, tangent lengths | `incircle-tangent-lengths`, `incircle-excircle-touch`, `inradius-area`, `exradii`, `pitots-theorem` |
-| G2.5 Circles that meet or touch | `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `common-tangent-lengths`, `triangle-of-centers`, `common-chord-length`, `descartes-circle-theorem`, *(pattern)* `tangency-condition`, *(pattern)* `tangent-circle-packing` |
+| G2.1 Cyclic quadrilaterals, inscribed angles, angle chasing (Core) | `angle-chasing`, `cyclic-opposite-angles`, `cyclic-equal-angles`, `concyclicity-tests`, `angle-chord-secant`, `tangent-chord-angle`, *(pattern)* `cyclic-quadrilateral` |
+| G2.2 Power of a point, tangent and secant, intersecting chords (Core) | `radical-axis`, `thales-theorem`, prereq `power-of-a-point` |
+| G2.3 Ptolemy and chord lengths (Core II) | `ptolemys-theorem`, `equal-chords-arcs`, `brahmaguptas-formula` |
+| G2.4 Incircles, excircles, tangent lengths (Core) | `incircle-tangent-lengths`, `incircle-excircle-touch`, `inradius-area`, `exradii`, `pitots-theorem` |
+| G2.5 Circles that meet or touch (Core) | `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `common-tangent-lengths`, `triangle-of-centers`, `common-chord-length`, `descartes-circle-theorem`, *(pattern)* `tangency-condition`, *(pattern)* `tangent-circle-packing` |
 
 ### G3. Trigonometric geometry (Core; AMC 10 students take B5.4 first)
 
 | Lesson | Cards |
 |---|---|
-| G3.1 Laws of sines and cosines, area formulas | `law-cosines-60-120`, `law-of-cosines-special-triangles`, `herons-formula`, `triangle-13-14-15`, prereq `law-of-cosines` |
-| G3.2 The extended law of sines and the circumradius | `circumradius-area`, `trig-area-circumradius` |
-| G3.3 Trig identities inside triangles | `projection-formula`, `triangle-half-angle-identities`, `ratio-lemma`, `triangle-angle-identities` |
-| G3.4 Angles and lengths from trig constraints | `trig-bash`, `altitude-bisector-angle` |
-| G3.5 When trig beats coordinates or similarity | no new card (a comparison lesson) |
+| G3.1 Laws of sines and cosines, area formulas (Core) | `law-cosines-60-120`, `law-of-cosines-special-triangles`, `herons-formula`, `triangle-13-14-15`, prereq `law-of-cosines` |
+| G3.2 The extended law of sines and the circumradius (Core) | `circumradius-area`, `trig-area-circumradius` |
+| G3.3 Trig identities inside triangles (Core II) | `projection-formula`, `triangle-half-angle-identities`, `ratio-lemma`, `triangle-angle-identities` |
+| G3.4 Angles and lengths from trig constraints (Core II) | `trig-bash`, `altitude-bisector-angle` |
+| G3.5 When trig beats coordinates or similarity (Core II) | no new card (a comparison lesson) |
 
 ### G4. Coordinate and analytic geometry (Core)
 
 | Lesson | Cards |
 |---|---|
-| G4.1 Choosing good coordinates | `coordinate-bash` |
-| G4.2 Lines, circles, intersections, distances, slopes | `angle-between-lines`, `section-formula`, `parallel-lines-distance`, `incenter-coordinates`, `tangency-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines` |
-| G4.3 Areas from coordinates; determinants | `shoelace-formula`, `determinant-geometric` |
-| G4.4 Parabolas and conics at the level of their equations | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
-| G4.5 Loci and optimization in coordinates | `perpendicular-bisector-locus`, `apollonius-circle`, `bisector-closer-region` |
+| G4.1 Choosing good coordinates (Core) | `coordinate-bash` |
+| G4.2 Lines, circles, intersections, distances, slopes (Core) | `angle-between-lines`, `section-formula`, `parallel-lines-distance`, `incenter-coordinates`, `tangency-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines` |
+| G4.3 Areas from coordinates; determinants (Core) | `shoelace-formula`, `determinant-geometric` |
+| G4.4 Parabolas and conics at the level of their equations (Core II) | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
+| G4.5 Loci and optimization in coordinates (Core II) | `perpendicular-bisector-locus`, `apollonius-circle`, `bisector-closer-region` |
 
 ### G5. Triangle centers and special figures (Core II)
 
 | Lesson | Cards |
 |---|---|
-| G5.1 The incenter, excenters, angle-bisector geometry | `incenter-excenter-lemma`, `perp-to-angle-bisector`, `triangle-center-angles`, *(pattern)* `angle-bisector-circumcircle` |
-| G5.2 Circumcenter, orthocenter, centroid | `orthocenter-properties`, `euler-line-ratio`, `nine-point-circle`, `euler-distance-theorem` |
-| G5.3 Altitudes, medians, the medial and orthic triangles | `medial-triangle`, `orthic-triangle`, `median-triangle-area`, `vivianis-theorem` |
-| G5.4 Ceva and Menelaus as working tools | `cevas-theorem`, `menelaus-theorem`, `trig-ceva` |
-| G5.5 Recognizing common triangle figures | *(pattern)* `point-in-equilateral`, *(pattern)* `circle-in-angle`, `fermat-point`, `symmedian-lemoine`, `simson-line` |
+| G5.1 The incenter, excenters, angle-bisector geometry (Core II) | `incenter-excenter-lemma`, `perp-to-angle-bisector`, `triangle-center-angles`, *(pattern)* `angle-bisector-circumcircle` |
+| G5.2 Circumcenter, orthocenter, centroid (Core II) | `orthocenter-properties`, `euler-line-ratio`, `nine-point-circle`, `euler-distance-theorem` |
+| G5.3 Altitudes, medians, the medial and orthic triangles (Core II) | `medial-triangle`, `orthic-triangle`, `median-triangle-area`, `vivianis-theorem` |
+| G5.4 Ceva and Menelaus as working tools (Core II) | `cevas-theorem`, `menelaus-theorem`, `trig-ceva` |
+| G5.5 Recognizing common triangle figures (Core) | *(pattern)* `point-in-equilateral`, *(pattern)* `circle-in-angle`, `fermat-point`, `symmedian-lemoine`, `simson-line` |
 
 ### G6. Transformations and vectors (Core II; links to A6)
 
 | Lesson | Cards |
 |---|---|
-| G6.1 Reflections, rotations, translations | `reflection-coordinates`, `reflection-composition`, `rotation-90`, `rotation-reflection-matrices`, `composing-transformations`, `rotated-line-angle` |
-| G6.2 Transformations with complex numbers or coordinates | `complex-bash`, `rotation-trick`, `rotation-center`, `spiral-similarity` |
-| G6.3 Vectors: addition, dot products, projections | `vector-dot-product`, `vector-projection`, `vector-bash`, `closing-polygon-vectors` |
-| G6.4 A transformation for shortest paths and repeated shapes | `reflect-across-the-line`, `homothety-monge`, `axis-stretch-area`, `linear-change-of-variables`, *(pattern)* `folded-paper` |
+| G6.1 Reflections, rotations, translations (Core) | `reflection-coordinates`, `reflection-composition`, `rotation-90`, `rotation-reflection-matrices`, `composing-transformations`, `rotated-line-angle` |
+| G6.2 Transformations with complex numbers or coordinates (Core II) | `complex-bash`, `rotation-trick`, `rotation-center`, `spiral-similarity` |
+| G6.3 Vectors: addition, dot products, projections (Core II) | `vector-dot-product`, `vector-projection`, `vector-bash`, `closing-polygon-vectors` |
+| G6.4 A transformation for shortest paths and repeated shapes (Core II) | `reflect-across-the-line`, `homothety-monge`, `axis-stretch-area`, `linear-change-of-variables`, *(pattern)* `folded-paper` |
 
 ### G7. Polygons, regular figures and grids (Core)
 
 | Lesson | Cards |
 |---|---|
-| G7.1 Regular polygons: chords, diagonals, angles | `polygon-angle-sums`, `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `equilateral-triangle-facts`, `golden-ratio-pentagon`, *(pattern)* `equiangular-polygon` |
-| G7.2 Cutting polygons into pieces | `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `varignons-theorem`, `circular-segment`, `inscribed-square`, `diagonal-angle-from-sides`, *(pattern)* `isosceles-trapezoid`, *(pattern)* `tethered-animal` |
-| G7.3 Symmetry and rotational structure | `figure-symmetries`, `fit-copies`, *(pattern)* `square-crossing-segments` |
-| G7.4 Lattices, grids, unit geometry | `picks-theorem`, `lattice-points-gcd`, `british-flag-theorem` |
-| G7.5 Counting intersections, regions and pieces | `plane-regions`, `moser-circle`, `handshakes-diagonals`, `steiner-neighborhood`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski` |
+| G7.1 Regular polygons: chords, diagonals, angles (Core) | `polygon-angle-sums`, `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `equilateral-triangle-facts`, `golden-ratio-pentagon`, *(pattern)* `equiangular-polygon` |
+| G7.2 Cutting polygons into pieces (Core) | `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `varignons-theorem`, `circular-segment`, `inscribed-square`, `diagonal-angle-from-sides`, *(pattern)* `isosceles-trapezoid`, *(pattern)* `tethered-animal` |
+| G7.3 Symmetry and rotational structure (Core II) | `figure-symmetries`, `fit-copies`, *(pattern)* `square-crossing-segments` |
+| G7.4 Lattices, grids, unit geometry (Core) | `picks-theorem`, `lattice-points-gcd`, `british-flag-theorem` |
+| G7.5 Counting intersections, regions and pieces (Core) | `plane-regions`, `moser-circle`, `handshakes-diagonals`, `steiner-neighborhood`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski` |
 
 ### G8. Three-dimensional geometry (Core II)
 
 | Lesson | Cards |
 |---|---|
-| G8.1 Prisms, pyramids, cones, spheres | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `frustum-volume`, `cube`, `space-diagonal`, `regular-tetrahedron`, `regular-octahedron`, *(pattern)* `painted-cubes` |
-| G8.2 Cross-sections and similar solids | `cross-section-method`, `plane-cross-section`, `scale-one-level`, `cavalieris-principle` |
-| G8.3 Distances and angles between lines and planes | `dihedral-angle`, `point-plane-distance`, `skew-lines-distance`, `projected-area-cosine` |
-| G8.4 Coordinates in space | `distance-3d`, `plane-intercept-form`, `cross-product-area` |
-| G8.5 Solids inside and around solids | `insphere-radius`, `spheres-two-planes`, `box-tetrahedron`, `isosceles-tetrahedron`, *(pattern)* `equal-edge-tetrahedron`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
+| G8.1 Prisms, pyramids, cones, spheres (Core) | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `frustum-volume`, `cube`, `space-diagonal`, `regular-tetrahedron`, `regular-octahedron`, *(pattern)* `painted-cubes` |
+| G8.2 Cross-sections and similar solids (Core) | `cross-section-method`, `plane-cross-section`, `scale-one-level`, `cavalieris-principle` |
+| G8.3 Distances and angles between lines and planes (Core II) | `dihedral-angle`, `point-plane-distance`, `skew-lines-distance`, `projected-area-cosine` |
+| G8.4 Coordinates in space (Core II) | `distance-3d`, `plane-intercept-form`, `cross-product-area` |
+| G8.5 Solids inside and around solids (Core II) | `insphere-radius`, `spheres-two-planes`, `box-tetrahedron`, `isosceles-tetrahedron`, *(pattern)* `equal-edge-tetrahedron`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
 
 ### G9. Geometry extensions (Extension)
 
 | Lesson | Cards |
 |---|---|
-| G9.1 Barycentric coordinates and more complex-plane geometry | `barycentric-coordinates`, `affine-transformations` |
-| G9.2 Inversion and spiral similarity | `inversion-facts`, `inversion-properties` |
-| G9.3 More relations between triangle centers | `euler-line-parallel-side`, `exradii` link, `anticomplementary-triangle`, `contact-triangle`, `incircle-excircle-homothety` |
-| G9.4 Projective tools | `harmonic-quadrilateral`, `cross-ratio` |
+| G9.1 Barycentric coordinates and more complex-plane geometry (Extension) | `barycentric-coordinates`, `affine-transformations` |
+| G9.2 Inversion and spiral similarity (Extension) | `inversion-facts`, `inversion-properties` |
+| G9.3 More relations between triangle centers (Extension) | `euler-line-parallel-side`, `exradii` link, `anticomplementary-triangle`, `contact-triangle`, `incircle-excircle-homothety` |
+| G9.4 Projective tools (Extension) | `harmonic-quadrilateral`, `cross-ratio` |
 
 ---
 

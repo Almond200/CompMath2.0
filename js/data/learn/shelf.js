@@ -648,23 +648,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A1.1",
-      "title": "Symmetric systems: $x + y$ and $xy$"
+      "title": "Symmetric systems: $x + y$ and $xy$",
+      "level": "Core"
      },
      {
       "code": "A1.2",
-      "title": "Nested radicals, rational equations, keeping the domain"
+      "title": "Nested radicals, rational equations, keeping the domain",
+      "level": "Core"
      },
      {
       "code": "A1.3",
-      "title": "Substitution patterns: $t = x + \\frac1x$, quadratic forms, completing the square"
+      "title": "Substitution patterns: $t = x + \\frac1x$, quadratic forms, completing the square",
+      "level": "Core"
      },
      {
       "code": "A1.4",
-      "title": "Cyclic systems and equations with several cases"
+      "title": "Cyclic systems and equations with several cases",
+      "level": "Core II"
      },
      {
       "code": "A1.5",
-      "title": "Building and checking integer or positive solutions"
+      "title": "Building and checking integer or positive solutions",
+      "level": "Core"
      }
     ]
    },
@@ -675,23 +680,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A2.1",
-      "title": "The factor and remainder theorems, and division, in contest settings"
+      "title": "The factor and remainder theorems, and division, in contest settings",
+      "level": "Core"
      },
      {
       "code": "A2.2",
-      "title": "Vieta; sums of powers of roots (Newton's sums)"
+      "title": "Vieta; sums of powers of roots (Newton's sums)",
+      "level": "Core"
      },
      {
       "code": "A2.3",
-      "title": "Symmetric polynomials and root constraints"
+      "title": "Symmetric polynomials and root constraints",
+      "level": "Core"
      },
      {
       "code": "A2.4",
-      "title": "Root transformations: reciprocal and shifted polynomials"
+      "title": "Root transformations: reciprocal and shifted polynomials",
+      "level": "Core"
      },
      {
       "code": "A2.5",
-      "title": "Interpolation and reading off coefficients"
+      "title": "Interpolation and reading off coefficients",
+      "level": "Core II"
      }
     ]
    },
@@ -702,23 +712,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A3.1",
-      "title": "Linear recurrences and their starting values"
+      "title": "Linear recurrences and their starting values",
+      "level": "Core"
      },
      {
       "code": "A3.2",
-      "title": "Telescoping sums and products; partial fractions"
+      "title": "Telescoping sums and products; partial fractions",
+      "level": "Core"
      },
      {
       "code": "A3.3",
-      "title": "Finite differences, double sums, from a pattern to a formula"
+      "title": "Finite differences, double sums, from a pattern to a formula",
+      "level": "Core II"
      },
      {
       "code": "A3.4",
-      "title": "Iteration and periodic sequences"
+      "title": "Iteration and periodic sequences",
+      "level": "Core"
      },
      {
       "code": "A3.5",
-      "title": "A closed form only when it helps"
+      "title": "A closed form only when it helps",
+      "level": "Core II"
      }
     ]
    },
@@ -729,23 +744,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A4.1",
-      "title": "Composition, inverses, symmetry of a function"
+      "title": "Composition, inverses, symmetry of a function",
+      "level": "Core"
      },
      {
       "code": "A4.2",
-      "title": "Piecewise and absolute-value functions, floors and ceilings"
+      "title": "Piecewise and absolute-value functions, floors and ceilings",
+      "level": "Core"
      },
      {
       "code": "A4.3",
-      "title": "Exponential equations; logarithm laws and domains"
+      "title": "Exponential equations; logarithm laws and domains",
+      "level": "Core"
      },
      {
       "code": "A4.4",
-      "title": "Functional identities of contest length"
+      "title": "Functional identities of contest length",
+      "level": "Core II"
      },
      {
       "code": "A4.5",
-      "title": "Graphs, monotonicity, and the number of solutions"
+      "title": "Graphs, monotonicity, and the number of solutions",
+      "level": "Core"
      }
     ]
    },
@@ -756,23 +776,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A5.1",
-      "title": "AM-GM and its equality case"
+      "title": "AM-GM and its equality case",
+      "level": "Core"
      },
      {
       "code": "A5.2",
-      "title": "Cauchy-Schwarz and elementary quadratic forms"
+      "title": "Cauchy-Schwarz and elementary quadratic forms",
+      "level": "Core II"
      },
      {
       "code": "A5.3",
-      "title": "Squares, rearrangement, elementary estimates"
+      "title": "Squares, rearrangement, elementary estimates",
+      "level": "Core"
      },
      {
       "code": "A5.4",
-      "title": "Maximum and minimum with domain and discrete constraints"
+      "title": "Maximum and minimum with domain and discrete constraints",
+      "level": "Core"
      },
      {
       "code": "A5.5",
-      "title": "When a bound is sharp enough"
+      "title": "When a bound is sharp enough",
+      "level": "Core II"
      }
     ]
    },
@@ -783,19 +808,23 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A6.1",
-      "title": "Complex arithmetic, conjugates, modulus, argument"
+      "title": "Complex arithmetic, conjugates, modulus, argument",
+      "level": "Core"
      },
      {
       "code": "A6.2",
-      "title": "The plane: rotations and loci"
+      "title": "The plane: rotations and loci",
+      "level": "Core II"
      },
      {
       "code": "A6.3",
-      "title": "Roots of unity and finite geometric sums"
+      "title": "Roots of unity and finite geometric sums",
+      "level": "Core II"
      },
      {
       "code": "A6.4",
-      "title": "Polynomial roots with complex numbers"
+      "title": "Polynomial roots with complex numbers",
+      "level": "Core II"
      }
     ]
    },
@@ -806,19 +835,23 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A7.1",
-      "title": "The unit circle and angle relations"
+      "title": "The unit circle and angle relations",
+      "level": "Core"
      },
      {
       "code": "A7.2",
-      "title": "Addition, double angle and other standard transformations"
+      "title": "Addition, double angle and other standard transformations",
+      "level": "Core"
      },
      {
       "code": "A7.3",
-      "title": "Trig equations with a bounded solution set"
+      "title": "Trig equations with a bounded solution set",
+      "level": "Core II"
      },
      {
       "code": "A7.4",
-      "title": "Between algebra and trig: substitutions, telescoping trig sums"
+      "title": "Between algebra and trig: substitutions, telescoping trig sums",
+      "level": "Core II"
      }
     ]
    },
@@ -829,19 +862,23 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A8.1",
-      "title": "Symmetry, cyclic expressions, clever rearrangements"
+      "title": "Symmetry, cyclic expressions, clever rearrangements",
+      "level": "Core II"
      },
      {
       "code": "A8.2",
-      "title": "Integer and parity restrictions inside algebraic equations"
+      "title": "Integer and parity restrictions inside algebraic equations",
+      "level": "Core II"
      },
      {
       "code": "A8.3",
-      "title": "Parameters, and telling possible roots apart"
+      "title": "Parameters, and telling possible roots apart",
+      "level": "Core II"
      },
      {
       "code": "A8.4",
-      "title": "Mixed problems that need two or more earlier topics"
+      "title": "Mixed problems that need two or more earlier topics",
+      "level": "Core II"
      }
     ]
    },
@@ -852,19 +889,23 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A9.1",
-      "title": "More interpolation and finite differences"
+      "title": "More interpolation and finite differences",
+      "level": "Extension"
      },
      {
       "code": "A9.2",
-      "title": "Nonstandard functional equations"
+      "title": "Nonstandard functional equations",
+      "level": "Extension"
      },
      {
       "code": "A9.3",
-      "title": "Higher-order recurrences, matrices and determinants"
+      "title": "Higher-order recurrences, matrices and determinants",
+      "level": "Extension"
      },
      {
       "code": "A9.4",
-      "title": "Inequalities and substitutions beyond routine AIME"
+      "title": "Inequalities and substitutions beyond routine AIME",
+      "level": "Extension"
      }
     ]
    }
@@ -1199,23 +1240,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G1.1",
-      "title": "Similar triangles and ratio chasing"
+      "title": "Similar triangles and ratio chasing",
+      "level": "Core"
      },
      {
       "code": "G1.2",
-      "title": "Area ratios: same altitude, cevians"
+      "title": "Area ratios: same altitude, cevians",
+      "level": "Core"
      },
      {
       "code": "G1.3",
-      "title": "Stewart's theorem, angle bisectors, medians"
+      "title": "Stewart's theorem, angle bisectors, medians",
+      "level": "Core"
      },
      {
       "code": "G1.4",
-      "title": "Mass points as a ratio tool"
+      "title": "Mass points as a ratio tool",
+      "level": "Core II"
      },
      {
       "code": "G1.5",
-      "title": "Similarity and area in nested figures"
+      "title": "Similarity and area in nested figures",
+      "level": "Core"
      }
     ]
    },
@@ -1226,23 +1272,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G2.1",
-      "title": "Cyclic quadrilaterals, inscribed angles, angle chasing"
+      "title": "Cyclic quadrilaterals, inscribed angles, angle chasing",
+      "level": "Core"
      },
      {
       "code": "G2.2",
-      "title": "Power of a point, tangent and secant, intersecting chords"
+      "title": "Power of a point, tangent and secant, intersecting chords",
+      "level": "Core"
      },
      {
       "code": "G2.3",
-      "title": "Ptolemy and chord lengths"
+      "title": "Ptolemy and chord lengths",
+      "level": "Core II"
      },
      {
       "code": "G2.4",
-      "title": "Incircles, excircles, tangent lengths"
+      "title": "Incircles, excircles, tangent lengths",
+      "level": "Core"
      },
      {
       "code": "G2.5",
-      "title": "Circles that meet or touch"
+      "title": "Circles that meet or touch",
+      "level": "Core"
      }
     ]
    },
@@ -1253,23 +1304,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G3.1",
-      "title": "Laws of sines and cosines, area formulas"
+      "title": "Laws of sines and cosines, area formulas",
+      "level": "Core"
      },
      {
       "code": "G3.2",
-      "title": "The extended law of sines and the circumradius"
+      "title": "The extended law of sines and the circumradius",
+      "level": "Core"
      },
      {
       "code": "G3.3",
-      "title": "Trig identities inside triangles"
+      "title": "Trig identities inside triangles",
+      "level": "Core II"
      },
      {
       "code": "G3.4",
-      "title": "Angles and lengths from trig constraints"
+      "title": "Angles and lengths from trig constraints",
+      "level": "Core II"
      },
      {
       "code": "G3.5",
-      "title": "When trig beats coordinates or similarity"
+      "title": "When trig beats coordinates or similarity",
+      "level": "Core II"
      }
     ]
    },
@@ -1280,23 +1336,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G4.1",
-      "title": "Choosing good coordinates"
+      "title": "Choosing good coordinates",
+      "level": "Core"
      },
      {
       "code": "G4.2",
-      "title": "Lines, circles, intersections, distances, slopes"
+      "title": "Lines, circles, intersections, distances, slopes",
+      "level": "Core"
      },
      {
       "code": "G4.3",
-      "title": "Areas from coordinates; determinants"
+      "title": "Areas from coordinates; determinants",
+      "level": "Core"
      },
      {
       "code": "G4.4",
-      "title": "Parabolas and conics at the level of their equations"
+      "title": "Parabolas and conics at the level of their equations",
+      "level": "Core II"
      },
      {
       "code": "G4.5",
-      "title": "Loci and optimization in coordinates"
+      "title": "Loci and optimization in coordinates",
+      "level": "Core II"
      }
     ]
    },
@@ -1307,23 +1368,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G5.1",
-      "title": "The incenter, excenters, angle-bisector geometry"
+      "title": "The incenter, excenters, angle-bisector geometry",
+      "level": "Core II"
      },
      {
       "code": "G5.2",
-      "title": "Circumcenter, orthocenter, centroid"
+      "title": "Circumcenter, orthocenter, centroid",
+      "level": "Core II"
      },
      {
       "code": "G5.3",
-      "title": "Altitudes, medians, the medial and orthic triangles"
+      "title": "Altitudes, medians, the medial and orthic triangles",
+      "level": "Core II"
      },
      {
       "code": "G5.4",
-      "title": "Ceva and Menelaus as working tools"
+      "title": "Ceva and Menelaus as working tools",
+      "level": "Core II"
      },
      {
       "code": "G5.5",
-      "title": "Recognizing common triangle figures"
+      "title": "Recognizing common triangle figures",
+      "level": "Core"
      }
     ]
    },
@@ -1334,19 +1400,23 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G6.1",
-      "title": "Reflections, rotations, translations"
+      "title": "Reflections, rotations, translations",
+      "level": "Core"
      },
      {
       "code": "G6.2",
-      "title": "Transformations with complex numbers or coordinates"
+      "title": "Transformations with complex numbers or coordinates",
+      "level": "Core II"
      },
      {
       "code": "G6.3",
-      "title": "Vectors: addition, dot products, projections"
+      "title": "Vectors: addition, dot products, projections",
+      "level": "Core II"
      },
      {
       "code": "G6.4",
-      "title": "A transformation for shortest paths and repeated shapes"
+      "title": "A transformation for shortest paths and repeated shapes",
+      "level": "Core II"
      }
     ]
    },
@@ -1357,23 +1427,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G7.1",
-      "title": "Regular polygons: chords, diagonals, angles"
+      "title": "Regular polygons: chords, diagonals, angles",
+      "level": "Core"
      },
      {
       "code": "G7.2",
-      "title": "Cutting polygons into pieces"
+      "title": "Cutting polygons into pieces",
+      "level": "Core"
      },
      {
       "code": "G7.3",
-      "title": "Symmetry and rotational structure"
+      "title": "Symmetry and rotational structure",
+      "level": "Core II"
      },
      {
       "code": "G7.4",
-      "title": "Lattices, grids, unit geometry"
+      "title": "Lattices, grids, unit geometry",
+      "level": "Core"
      },
      {
       "code": "G7.5",
-      "title": "Counting intersections, regions and pieces"
+      "title": "Counting intersections, regions and pieces",
+      "level": "Core"
      }
     ]
    },
@@ -1384,23 +1459,28 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G8.1",
-      "title": "Prisms, pyramids, cones, spheres"
+      "title": "Prisms, pyramids, cones, spheres",
+      "level": "Core"
      },
      {
       "code": "G8.2",
-      "title": "Cross-sections and similar solids"
+      "title": "Cross-sections and similar solids",
+      "level": "Core"
      },
      {
       "code": "G8.3",
-      "title": "Distances and angles between lines and planes"
+      "title": "Distances and angles between lines and planes",
+      "level": "Core II"
      },
      {
       "code": "G8.4",
-      "title": "Coordinates in space"
+      "title": "Coordinates in space",
+      "level": "Core II"
      },
      {
       "code": "G8.5",
-      "title": "Solids inside and around solids"
+      "title": "Solids inside and around solids",
+      "level": "Core II"
      }
     ]
    },
@@ -1411,19 +1491,23 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G9.1",
-      "title": "Barycentric coordinates and more complex-plane geometry"
+      "title": "Barycentric coordinates and more complex-plane geometry",
+      "level": "Extension"
      },
      {
       "code": "G9.2",
-      "title": "Inversion and spiral similarity"
+      "title": "Inversion and spiral similarity",
+      "level": "Extension"
      },
      {
       "code": "G9.3",
-      "title": "More relations between triangle centers"
+      "title": "More relations between triangle centers",
+      "level": "Extension"
      },
      {
       "code": "G9.4",
-      "title": "Projective tools"
+      "title": "Projective tools",
+      "level": "Extension"
      }
     ]
    }
