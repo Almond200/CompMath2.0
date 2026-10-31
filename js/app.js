@@ -5131,10 +5131,13 @@
     shelfFit = () => {
       if (!grid.isConnected) return;
       tiles.forEach(t => { t.hidden = false; });
-      const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
-      const extra = tiles.length - 2 * cols;
+      // Rows are counted from where the tiles actually sit; the button exists only past two rows.
+      const tops = [...new Set(tiles.map(t => t.offsetTop))].sort((a, b) => a - b);
+      const keep = tops.length > 2 ? tiles.filter(t => t.offsetTop <= tops[1]).length : tiles.length;
+      const extra = tiles.length - keep;
       btn.hidden = extra <= 0;
-      if (extra > 0 && !showAllBooks) tiles.slice(2 * cols).forEach(t => { t.hidden = true; });
+      if (extra <= 0) { btn.textContent = ""; return; }
+      if (!showAllBooks) tiles.slice(keep).forEach(t => { t.hidden = true; });
       btn.setAttribute("aria-expanded", String(showAllBooks));
       btn.textContent = showAllBooks ? "Show fewer textbooks" : "Show all textbooks (" + extra + " more)";
     };
@@ -5196,11 +5199,65 @@
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
       : `<span class="bk-arrow is-off" aria-hidden="true">${icon}</span>`;
   }
+  // Each chapter tab is also a scrubber (owner, 2026-10-31, after the way an online textbook's
+  // rail works): the tab is split by height into the chapter's pages (overview, lessons, review),
+  // pointing or pressing at a height names that page, and a click or a release opens it. Every
+  // tab is the same height, with no markers (owner, 2026-10-31).
   function learnRailHtml(b, c) {
+    const pages = learnPages(b);
+    const tab = ch => {
+      const ps = pages.filter(x => x.c === ch), cur = ch === c;
+      const tips = ps.map((x, i) => `<span class="bk-tip-p" data-i="${i}" hidden>${learnPageLabel(x)}</span>`).join("");
+      const ticks = ps.map((x, i) => `<i data-href="${learnHash(b, x.c, x.page)}"></i>`).join("");
+      return `<a class="bk-tab bk-scrub${cur ? " is-current" : ""}" href="${learnHash(b, ch)}"${cur ? ` aria-current="page"` : ""}><span class="bk-tab-n">${ch.code.slice(1)}</span><span class="bk-ticks" aria-hidden="true">${ticks}</span><span class="bk-tip"><span class="bk-tip-ch">${ch.code} ${escapeAttr(ch.title)}</span>${tips}</span></a>`;
+    };
     return `<nav class="bk-rail" aria-label="Chapters">
-        <a class="bk-tab${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span>C</span><span class="bk-tip">Contents</span></a>
-        ${b.chapters.map(ch => `<a class="bk-tab${ch === c ? " is-current" : ""}" href="${learnHash(b, ch)}"${ch === c ? ` aria-current="page"` : ""}><span>${ch.code.slice(1)}</span><span class="bk-tip">${ch.code} ${escapeAttr(ch.title)}</span></a>`).join("")}
+        <a class="bk-tab${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span>C</span><span class="bk-tip"><span class="bk-tip-ch">Contents</span></span></a>
+        ${b.chapters.map(tab).join("")}
       </nav>`;
+  }
+  function wireLearnRail(root) {
+    const rail = root.querySelector(".bk-rail");
+    if (!rail) return;
+    let live = null, press = null;
+    const clear = () => {
+      if (!live) return;
+      live.tab.classList.remove("is-scrub");
+      live.tab.querySelectorAll(".bk-tip-p").forEach(p => { p.hidden = true; });
+      live.tab.href = live.home;
+      live = null;
+    };
+    const pick = (x, y) => {
+      const el = document.elementFromPoint(x, y), tab = el && el.closest(".bk-scrub");
+      if (!tab || !rail.contains(tab)) { clear(); return; }
+      const ticks = tab.querySelectorAll(".bk-ticks i");
+      const r = tab.getBoundingClientRect();
+      const i = Math.max(0, Math.min(ticks.length - 1, Math.floor((y - r.top) / r.height * ticks.length)));
+      if (live && live.tab === tab && live.i === i) return;
+      if (!live || live.tab !== tab) { clear(); live = { tab, home: tab.getAttribute("href") }; }
+      live.i = i;
+      tab.classList.add("is-scrub");
+      tab.querySelectorAll(".bk-tip-p").forEach(p => { p.hidden = +p.dataset.i !== i; });
+      tab.href = ticks[i].dataset.href;
+    };
+    rail.addEventListener("pointermove", e => { if (e.pointerType === "mouse" || press) pick(e.clientX, e.clientY); });
+    rail.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") clear(); });
+    // A press on a touch screen: the finger slides along the rail and the page under it opens on release.
+    rail.addEventListener("pointerdown", e => {
+      if (e.pointerType === "mouse") return;
+      press = e.pointerId;
+      try { rail.releasePointerCapture(e.pointerId); } catch (_) {}
+      pick(e.clientX, e.clientY);
+    });
+    rail.addEventListener("pointerup", e => {
+      if (press !== e.pointerId) return;
+      press = null;
+      const go = live && live.tab.getAttribute("href");
+      clear();
+      if (go) { e.preventDefault(); location.hash = go.replace(/^#/, ""); }
+    });
+    rail.addEventListener("pointercancel", () => { press = null; clear(); });
+    rail.addEventListener("click", e => { if (e.pointerType && e.pointerType !== "mouse") e.preventDefault(); });
   }
   // cur: "book", "chapter", "review", or the lesson.
   function learnBookShell(b, c, cur, main) {
@@ -5243,6 +5300,7 @@
           </div>
         </div>
       </div>`;
+    wireLearnRail($content);
     renderMath($content);
   }
 
