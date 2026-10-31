@@ -648,28 +648,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A1.2",
       "title": "Symmetric systems: $x + y$ and $xy$",
       "level": "Core"
      },
      {
-      "code": "A1.2",
+      "code": "A1.3",
       "title": "Nested radicals, rational equations, keeping the domain",
       "level": "Core"
      },
      {
-      "code": "A1.3",
+      "code": "A1.4",
       "title": "Substitution patterns: $t = x + \\frac1x$, quadratic forms, completing the square",
       "level": "Core"
      },
      {
-      "code": "A1.4",
+      "code": "A1.5",
       "title": "Cyclic systems and equations with several cases",
       "level": "Core II"
      },
      {
-      "code": "A1.5",
+      "code": "A1.6",
       "title": "Building and checking integer or positive solutions",
       "level": "Core"
+     },
+     {
+      "code": "A1.7",
+      "title": "Summary"
      }
     ]
    },
@@ -680,28 +688,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A2.2",
       "title": "The factor and remainder theorems, and division, in contest settings",
       "level": "Core"
      },
      {
-      "code": "A2.2",
+      "code": "A2.3",
       "title": "Vieta; sums of powers of roots (Newton's sums)",
       "level": "Core"
      },
      {
-      "code": "A2.3",
+      "code": "A2.4",
       "title": "Symmetric polynomials and root constraints",
       "level": "Core"
      },
      {
-      "code": "A2.4",
+      "code": "A2.5",
       "title": "Root transformations: reciprocal and shifted polynomials",
       "level": "Core"
      },
      {
-      "code": "A2.5",
+      "code": "A2.6",
       "title": "Interpolation and reading off coefficients",
       "level": "Core II"
+     },
+     {
+      "code": "A2.7",
+      "title": "Summary"
      }
     ]
    },
@@ -712,28 +728,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A3.2",
       "title": "Linear recurrences and their starting values",
       "level": "Core"
      },
      {
-      "code": "A3.2",
+      "code": "A3.3",
       "title": "Telescoping sums and products; partial fractions",
       "level": "Core"
      },
      {
-      "code": "A3.3",
+      "code": "A3.4",
       "title": "Finite differences, double sums, from a pattern to a formula",
       "level": "Core II"
      },
      {
-      "code": "A3.4",
+      "code": "A3.5",
       "title": "Iteration and periodic sequences",
       "level": "Core"
      },
      {
-      "code": "A3.5",
+      "code": "A3.6",
       "title": "A closed form only when it helps",
       "level": "Core II"
+     },
+     {
+      "code": "A3.7",
+      "title": "Summary"
      }
     ]
    },
@@ -744,28 +768,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A4.2",
       "title": "Composition, inverses, symmetry of a function",
       "level": "Core"
      },
      {
-      "code": "A4.2",
+      "code": "A4.3",
       "title": "Piecewise and absolute-value functions, floors and ceilings",
       "level": "Core"
      },
      {
-      "code": "A4.3",
+      "code": "A4.4",
       "title": "Exponential equations; logarithm laws and domains",
       "level": "Core"
      },
      {
-      "code": "A4.4",
+      "code": "A4.5",
       "title": "Functional identities of contest length",
       "level": "Core II"
      },
      {
-      "code": "A4.5",
+      "code": "A4.6",
       "title": "Graphs, monotonicity, and the number of solutions",
       "level": "Core"
+     },
+     {
+      "code": "A4.7",
+      "title": "Summary"
      }
     ]
    },

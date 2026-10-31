@@ -134,7 +134,7 @@ The focal definitions are often faster than equations. Problems about a point wh
 
 Read centers and axes by completing the square, use the focal sums and differences, and treat tangency as a double root. The last lesson of the chapter studies loci and optimization.`,
       related: [
-        { card: "completing-the-square", note: String.raw`putting a conic's equation in standard form (A1.3).` },
+        { card: "completing-the-square", note: String.raw`putting a conic's equation in standard form (A1.4).` },
         { card: "linear-change-of-variables", note: String.raw`stretching an ellipse into a circle, which scales areas (G6.4).` },
         { card: "conic-reflective-property", note: String.raw`the reflection property of the foci.` }
       ],

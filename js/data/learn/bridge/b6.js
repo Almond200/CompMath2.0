@@ -15,7 +15,7 @@ Each operation has a domain. $\sqrt t$ needs $t \ge 0$ and is itself nonnegative
 Integrality and distinctness are constraints too: an answer that requires a fractional count of people, or two equal numbers that were said to be different, signals a lost condition. List all the conditions at the start, carry them through, and check the candidates at the end. The next lesson treats the cases a figure or a count may hide.`,
       related: [
         { card: "vietas-quadratic", note: String.raw`signs of the roots from their sum and product (B2.2).` },
-        { card: "log-rules", note: String.raw`the domain of logarithms (A4.3).` },
+        { card: "log-rules", note: String.raw`the domain of logarithms (A4.4).` },
         { card: "absolute-value-rules", note: String.raw`conditions that split into cases (B1.4).` }
       ],
       exercises: [
@@ -77,7 +77,7 @@ Draw every configuration the words allow, compute with signed quantities, and li
 
 Estimate first, test small cases, and look for the counterexample before trying to prove a general claim. The last lesson collects the habits for AIME answers.`,
       related: [
-        { card: "floor-basics", note: String.raw`floors of square roots and quotients (A4.2).` },
+        { card: "floor-basics", note: String.raw`floors of square roots and quotients (A4.3).` },
         { card: "bernoulli-inequality", note: String.raw`linear bounds on powers, a tool for estimates (A5.5).` },
         { card: "simulate-the-process", note: String.raw`small cases of a process as a test (C1.6).` }
       ],

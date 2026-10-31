@@ -44,7 +44,7 @@ When one count is not enough to describe what can come next, use several. String
 
 Use a recursion whenever the objects grow one piece at a time and the answer is wanted for a moderate size; compute the table carefully and check the first few entries by listing. The next lesson studies the recursions that come from tilings and paths.`,
       related: [
-        { card: "linear-recurrence", note: String.raw`solving a recursion in closed form, when the table is too long (A3.1).` },
+        { card: "linear-recurrence", note: String.raw`solving a recursion in closed form, when the table is too long (A3.2).` },
         { card: "restricted-sequences", note: String.raw`recursions split by the last symbol, for strings with rules (C2.4).` },
         { card: "simulate-the-process", note: String.raw`computing small cases to find or check a recursion (C1.6).` }
       ],
@@ -74,7 +74,7 @@ The solutions of these recursions are combinations of powers of the roots of the
 
 Treat any count of linear arrangements with local rules as a tiling, look at one end, and write the recursion, with one sequence per shape the end can take. The next lesson fills grids and game positions with numbers.`,
       related: [
-        { card: "linear-recurrence", note: String.raw`the closed form behind a tiling recursion (A3.1).` },
+        { card: "linear-recurrence", note: String.raw`the closed form behind a tiling recursion (A3.2).` },
         { card: "non-adjacent-selection", note: String.raw`no two adjacent chosen objects, a tiling by squares and "domino-like" blocks (C2.4).` },
         { card: "transfer-matrix-method", note: String.raw`the systematic form of several-state recursions (C9.5).` }
       ],
@@ -139,7 +139,7 @@ When a process is long or arbitrary, look for what it cannot change. The last le
       related: [
         { card: "coloring-arguments", note: String.raw`colorings of a board as invariants, for tilings that cannot exist (C8.4).` },
         { card: "modular-basics", note: String.raw`residues as the most common invariant (N2.2).` },
-        { card: "telescoping", note: String.raw`a quantity that changes by the same amount each step sums to a telescope (A3.2).` }
+        { card: "telescoping", note: String.raw`a quantity that changes by the same amount each step sums to a telescope (A3.3).` }
       ],
       exercises: [
         { q: String.raw`The numbers $1, 2, \ldots, 10$ are written on a board. A move erases two numbers $a$ and $b$ and writes $a + b - 1$. After nine moves one number remains. What is it?`, answer: "46",

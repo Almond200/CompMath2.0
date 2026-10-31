@@ -16,7 +16,7 @@ The [[rational-root-theorem|rational root theorem]] lists the candidates: a rati
 
 Evaluate instead of dividing, list rational candidates, and divide out each root as soon as it is found. The next lesson relates the roots to the coefficients.`,
       related: [
-        { card: "polynomial-crt", note: String.raw`remainders on division by products of linear factors (A2.1).` },
+        { card: "polynomial-crt", note: String.raw`remainders on division by products of linear factors (A2.2).` },
         { card: "vietas-general", note: String.raw`the sums and products of roots from the coefficients (B2.2).` },
         { card: "coefficient-extraction", note: String.raw`$P(1)$ and $P(-1)$ as sums of coefficients.` }
       ],
@@ -50,8 +50,8 @@ A quadratic's graph is a parabola with its [[vertex-form|vertex]] at $x = -\tfra
 
 Use Vieta for symmetric expressions in the roots, the discriminant for how many real roots there are, and the vertex for extremes. The next lesson sums sequences.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression in the elementary symmetric sums (A1.1).` },
-        { card: "newtons-sums", note: String.raw`power sums of the roots from Vieta (A2.2).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression in the elementary symmetric sums (A1.2).` },
+        { card: "newtons-sums", note: String.raw`power sums of the roots from Vieta (A2.3).` },
         { card: "quadratic-root-location", note: String.raw`where the roots lie, from the discriminant, the vertex and values (B6.1).` }
       ],
       exercises: [
@@ -85,9 +85,9 @@ The [[triangular-numbers|triangular numbers]] $T_n = 1 + 2 + \cdots + n = \tfrac
 
 When a sum looks irregular, split it into arithmetic and geometric pieces, pair terms from the ends, or write it as a difference of two known sums. The last lesson of the chapter treats sequences defined step by step.`,
       related: [
-        { card: "telescoping", note: String.raw`sums that collapse because consecutive terms cancel (A3.2).` },
+        { card: "telescoping", note: String.raw`sums that collapse because consecutive terms cancel (A3.3).` },
         { card: "higher-power-sums", note: String.raw`sums of fourth and higher powers (A9.1).` },
-        { card: "fx-pairing", note: String.raw`Gauss's pairing applied to any function (A4.1).` }
+        { card: "fx-pairing", note: String.raw`Gauss's pairing applied to any function (A4.2).` }
       ],
       exercises: [
         { q: String.raw`Find $3 + 6 + 12 + \cdots + 384$.`, answer: "765",
@@ -122,7 +122,7 @@ A sequence that depends on a finite amount of information, such as the last two 
 
 Compute small cases in order, find the closed form or the period, and use the list to check. The next chapter turns to integer arithmetic.`,
       related: [
-        { card: "linear-recurrence", note: String.raw`second-order recurrences and their characteristic roots (A3.1).` },
+        { card: "linear-recurrence", note: String.raw`second-order recurrences and their characteristic roots (A3.2).` },
         { card: "cycle-hunting", note: String.raw`periods of last digits and remainders (B3.3).` },
         { card: "recursive-counting", note: String.raw`recurrences that count objects (C5.2).` }
       ],

@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A4"] = {
   lessons: {
     "A4.1": {
+      prereq: ["transforming-equations", "exponent-laws"],
+      cards: [],
+      body: String.raw`This chapter works with functions as objects: their compositions, inverses and symmetries, the floor and absolute value functions, exponentials and logarithms, functional equations of contest length, and the graphs that count solutions.
+
+A function can be composed with itself or another, and undone by its inverse when it is one-to-one: if $f(x) = 2x + 3$, then $f^{-1}(11) = 4$, the input that gives $11$. An odd function has $f(-x) = -f(x)$ and an even one $f(-x) = f(x)$; such symmetries, and pairings such as $x$ with $1 - x$, let a sum or an equation be halved.
+
+The floor $\lfloor x \rfloor$ is the greatest integer at most $x$, so $\lfloor \sqrt{50} \rfloor = 7$ and $\lfloor -2.5 \rfloor = -3$. The standard move is to name the floor $n$ and write $n \le x \lt n + 1$, which turns an equation with a floor into a few inequalities. Sums of floors are grouped by the stretches on which the floor is constant. Absolute values are handled the same way, by splitting the line at the points where the inside changes sign.
+
+The logarithm is the inverse of the exponential: $\log_b x = y$ means $b^y = x$. Its laws turn products into sums and powers into multiples, and the change of base formula $\log_b x = \tfrac{\log x}{\log b}$ puts every logarithm on one base. An exponential equation is often a quadratic in disguise, in $2^x$ or $\log x$.
+
+A functional equation is solved by substituting well-chosen values or expressions, until a system for the unknown values appears. Last, the number of solutions of an equation is the number of crossings of two graphs, and a sketch often settles it.
+
+The lessons take these ideas in turn: composition, inverses and symmetry (A4.2), piecewise and floor functions (A4.3), exponentials and logarithms (A4.4), functional identities (A4.5), and graphs and the number of solutions (A4.6). The Summary (A4.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`If $f(x) = 2x + 3$, find $f^{-1}(11)$.`, answer: "4",
+          solution: String.raw`The inverse undoes $f$: $f^{-1}(11)$ is the $x$ with $2x + 3 = 11$, so $x = 4$.` },
+        { q: String.raw`Find $\lfloor \sqrt{50} \rfloor + \lfloor -2.5 \rfloor$.`, answer: "4",
+          solution: String.raw`Since $7^2 = 49 \le 50 \lt 64$, $\lfloor \sqrt{50} \rfloor = 7$. The greatest integer at most $-2.5$ is $-3$, not $-2$. The sum is $7 - 3 = 4$.` },
+        { q: String.raw`Solve $\log_4 x = \tfrac32$.`, answer: "8",
+          solution: String.raw`By definition $x = 4^{3/2} = \left(\sqrt4\right)^3 = 8$.` }
+      ],
+      problems: [
+        "2003 AMC 12B, Problem 20",
+        "2011 AMC 12A, Problem 19",
+        "2000 AIME II, Problem 1"
+      ]
+    },
+    "A4.2": {
       prereq: ["transforming-equations"],
       cards: ["inverse-function-properties", "odd-even-functions", "function-symmetry-equation", "fx-pairing"],
       body: String.raw`A function's symmetries are facts about its values at paired inputs, and writing them as equations is what makes them usable. An even function has $f(-x) = f(x)$; an inverse undoes a function, so $f(f^{-1}(x)) = x$; and a function like $f(x) = \tfrac{4^x}{4^x + 2}$ satisfies $f(x) + f(1 - x) = 1$, which turns the sum $f(\tfrac1{101}) + \cdots + f(\tfrac{100}{101})$ into fifty pairs of $1$, so the sum is $50$.
@@ -16,8 +44,8 @@ The point-symmetry equation is behind [[fx-pairing|pairing symmetric terms]], th
 
 The signal is a function given by a formula with a question about its inverse, its parity, or a long sum of its values at evenly spaced points.`,
       related: [
-        { card: "comparing-coefficients", note: String.raw`turning $f(f^{-1}(x)) = x$ or $f(-x) = f(x)$ into equations on the coefficients (A2.5).` },
-        { card: "functional-substitution", note: String.raw`choosing inputs in an identity, the general version of plugging in $-x$ or $1 - x$ (A4.4).` },
+        { card: "comparing-coefficients", note: String.raw`turning $f(f^{-1}(x)) = x$ or $f(-x) = f(x)$ into equations on the coefficients (A2.6).` },
+        { card: "functional-substitution", note: String.raw`choosing inputs in an identity, the general version of plugging in $-x$ or $1 - x$ (A4.5).` },
         { card: "arithmetic-series", note: String.raw`Gauss's pairing, the model for pairing symmetric terms.` }
       ],
       exercises: [
@@ -30,7 +58,7 @@ The signal is a function given by a formula with a question about its inverse, i
       ],
       problems: ["2004 AMC 12B, Problem 13", "2014 AMC 12B, Problem 16", "2021 Fall AMC 10A, Problem 16", "2019 AMC 12B, Problem 8"]
     },
-    "A4.2": {
+    "A4.3": {
       prereq: ["floor-multiples"],
       cards: ["floor-basics", "name-the-floor", "group-equal-floors", "floor-equation", "floor-sum-range", "abs-value-graphing"],
       body: String.raw`Floors and absolute values break a function into pieces, and the problems built on them are solved by finding the pieces. The equation $x \lfloor x \rfloor = 17$ looks unusual, but on each interval $[n, n + 1)$ the floor is the constant $n$, so the equation is $nx = 17$, and only $n = 4$ gives a solution inside its interval: $x = \tfrac{17}{4}$. Every technique of this lesson is a way of handling one piece at a time.
@@ -44,8 +72,8 @@ Absolute values are pieces too, but they are often better seen as geometry. $|x 
 The signal is a floor, a fractional part, or an absolute value in an equation or a sum. Name the integer part or the sign, solve on each piece, and keep only solutions that lie on their own piece.`,
       related: [
         { card: "floor-multiples", note: String.raw`$\lfloor \tfrac nd \rfloor$ counts multiples, the most common floor in number theory (N1.6).` },
-        { card: "digit-count", note: String.raw`$\lfloor \log_{10} n \rfloor + 1$ digits, a floor of a logarithm ((N6.3)).` },
-        { card: "piecewise-graph-counting", note: String.raw`counting solutions of a piecewise equation by its graph (A4.5).` }
+        { card: "digit-count", note: String.raw`$\lfloor \log_{10} n \rfloor + 1$ digits, a floor of a logarithm (N6.3).` },
+        { card: "piecewise-graph-counting", note: String.raw`counting solutions of a piecewise equation by its graph (A4.6).` }
       ],
       exercises: [
         { q: String.raw`Find the positive real $x$ with $x \lfloor x \rfloor = 17$.`, answer: "17/4",
@@ -57,7 +85,7 @@ The signal is a floor, a fractional part, or an absolute value in an equation or
       ],
       problems: ["2003 AMC 10B, Problem 7", "2025 AMC 10B, Problem 18", "2021 Fall AMC 10A, Problem 14", "2023 AMC 10B, Problem 22", "2020 AMC 10B, Problem 24", "2018 AMC 10B, Problem 25"]
     },
-    "A4.3": {
+    "A4.4": {
       prereq: ["exponent-laws"],
       cards: ["log-rules", "change-of-base", "take-logs-linearize", "log-substitution", "log-system"],
       body: String.raw`A logarithm is an exponent: $\log_b x$ is the power of $b$ that gives $x$. Every rule follows from that, and every logarithm problem is solved by moving between the two languages at the right moment. The equation $\log_2 x + \log_4 x + \log_8 x = 11$ looks like three different logarithms, but in base $2$ they are $L$, $\tfrac L2$, and $\tfrac L3$ with $L = \log_2 x$, so $\tfrac{11}{6} L = 11$, $L = 6$, and $x = 64$.
@@ -71,7 +99,7 @@ Logarithms need positive arguments and a positive base other than $1$, so every 
 The signal is any logarithm, an unknown in an exponent, or a product of powers. Put everything in one base, name the logarithms, and solve the algebra that results.`,
       related: [
         { card: "exponent-laws", note: String.raw`the rules for powers that every logarithm rule restates.` },
-        { card: "digit-count", note: String.raw`the number of digits as $\lfloor \log_{10} n \rfloor + 1$ ((N6.3)).` },
+        { card: "digit-count", note: String.raw`the number of digits as $\lfloor \log_{10} n \rfloor + 1$ (N6.3).` },
         { card: "vietas-quadratic", note: String.raw`after substituting $u = \log x$, the sum of the $u$ roots gives the product of the $x$ roots.` }
       ],
       exercises: [
@@ -84,7 +112,7 @@ The signal is any logarithm, an unknown in an exponent, or a product of powers. 
       ],
       problems: ["2021 Spring AMC 12B, Problem 9", "2022 AMC 12B, Problem 16", "1983 AIME, Problem 1", "1984 AIME, Problem 5", "2024 AIME II, Problem 4"]
     },
-    "A4.4": {
+    "A4.5": {
       prereq: ["comparing-coefficients"],
       cards: ["functional-substitution", "defined-operation"],
       body: String.raw`A functional equation is an identity that holds for every input, and the way to extract information from it is to choose the inputs. If $f(3x - 1) = x^2 + x + 1$ for all $x$, then $f(5)$ is found by choosing $x$ so that $3x - 1 = 5$, that is $x = 2$, which gives $f(5) = 7$. Most contest functional equations are solved by a few such well-chosen substitutions.
@@ -95,9 +123,9 @@ A [[defined-operation|newly defined operation]], written with a new symbol and a
 
 The signal is an equation that must hold for all inputs, or a symbol defined by a formula. Choose inputs that make the arguments simple or make two of them swap, and solve the small system that results.`,
       related: [
-        { card: "function-symmetry-equation", note: String.raw`symmetries of a graph written as functional equations (A4.1).` },
+        { card: "function-symmetry-equation", note: String.raw`symmetries of a graph written as functional equations (A4.2).` },
         { card: "cauchy-functional-equations", note: String.raw`equations like $f(x + y) = f(x) + f(y)$, solved in full in A9.2.` },
-        { card: "comparing-coefficients", note: String.raw`when the unknown function is a polynomial, an identity becomes equations on its coefficients (A2.5).` }
+        { card: "comparing-coefficients", note: String.raw`when the unknown function is a polynomial, an identity becomes equations on its coefficients (A2.6).` }
       ],
       exercises: [
         { q: String.raw`If $f(3x - 1) = x^2 + x + 1$ for all $x$, find $f(5)$.`, answer: "7",
@@ -109,7 +137,7 @@ The signal is an equation that must hold for all inputs, or a symbol defined by 
       ],
       problems: ["2022 AMC 10B, Problem 1", "2007 AMC 12B, Problem 9", "2001 AMC 12, Problem 9", "2024 AMC 12A, Problem 13"]
     },
-    "A4.5": {
+    "A4.6": {
       prereq: ["abs-value-graphing"],
       cards: ["piecewise-graph-counting", "reading-graphs"],
       body: String.raw`Some equations cannot be solved in closed form but can still be counted. The equation $\sin x = \tfrac{x}{10}$ has no algebraic solution, yet it has exactly $7$ real solutions, and the count comes from a picture: the line $y = \tfrac{x}{10}$ crosses the sine wave within the strip where the line stays between $-1$ and $1$, and the crossings can be counted wave by wave. [[piecewise-graph-counting|Counting solutions by graphing]] turns "solve $f(x) = g(x)$" into "count where two graphs meet".
@@ -118,9 +146,9 @@ The method is to sketch both sides on a common axis and use what each graph does
 
 [[reading-graphs|Reading graphs and tables]] is the reverse skill: extracting a total, a rate, or an average from a given chart. The common error is to read the wrong quantity, a change instead of a level, or a cumulative total instead of a daily one; the cure is to write down what each axis measures before computing anything.
 
-The signal is an equation mixing different kinds of functions (trigonometric with linear, exponential with polynomial), a parameter that changes the number of solutions, or a question asked about a graph or a table.`,
+The signal is an equation mixing different kinds of functions (trigonometric with linear, exponential with polynomial), a parameter that changes the number of solutions, or a question asked about a graph or a table. The Summary (A4.7) collects the chapter's strategies.`,
       related: [
-        { card: "abs-value-graphing", note: String.raw`folding a graph at the $x$-axis to draw an absolute value (A4.2).` },
+        { card: "abs-value-graphing", note: String.raw`folding a graph at the $x$-axis to draw an absolute value (A4.3).` },
         { card: "derivative-extremum", note: String.raw`finding where a function turns, which marks the monotonic pieces (A5.4).` },
         { card: "mean-median-mode", note: String.raw`the averages most often asked about data in a chart.` }
       ],
@@ -133,8 +161,60 @@ The signal is an equation mixing different kinds of functions (trigonometric wit
           solution: String.raw`For $x \ge 2$: $x - 2 = \tfrac x2$ gives $x = 4$. For $x < 2$: $2 - x = \tfrac x2$ gives $x = \tfrac43$. Both lie on their pieces, so there are $2$ solutions; the line $y = \tfrac x2$ crosses both arms of the V.` }
       ],
       problems: ["2025 AMC 10A, Problem 9", "2020 AMC 12A, Problem 9", "2021 Spring AMC 12B, Problem 13"]
+    },
+    "A4.7": {
+      prereq: ["inverse-function-properties", "odd-even-functions", "fx-pairing", "name-the-floor", "group-equal-floors", "abs-value-graphing", "log-rules", "change-of-base", "functional-substitution", "piecewise-graph-counting"],
+      cards: [],
+      body: String.raw`[[inverse-function-properties|An inverse]] undoes a function, and its graph is the reflection in $y = x$. [[odd-even-functions|Odd and even functions]] and [[fx-pairing|pairings]] such as $f(x) + f(1 - x)$ halve a sum or an equation.
+
+[[name-the-floor|Naming the floor]] $n = \lfloor x \rfloor$ with $n \le x \lt n + 1$ turns a floor equation into inequalities, and [[group-equal-floors|grouping equal floors]] sums them. [[abs-value-graphing|Absolute values]] split the line, or the plane, at the points where their insides change sign.
+
+[[log-rules|The logarithm laws]] turn products into sums and powers into multiples, and [[change-of-base|change of base]] puts every logarithm on one base; an exponential equation is often a quadratic in $b^x$.
+
+[[functional-substitution|A functional equation]] is solved by substitutions that produce a system for the unknown values. [[piecewise-graph-counting|The number of solutions]] of an equation is the number of crossings of two graphs.`,
+      strategies: [
+        String.raw`For an inverse value, solve $f(x) = $ the given value instead of finding $f^{-1}$.`,
+        String.raw`If a sum runs over pairs $x$ and $c - x$, pair the terms.`,
+        String.raw`For a floor, set $n = \lfloor x \rfloor$ and write $n \le x \lt n + 1$; then solve for $n$ first.`,
+        String.raw`For a sum of floors, group the terms on which the floor is constant.`,
+        String.raw`Split absolute values at the points where their insides vanish, and solve on each piece.`,
+        String.raw`Put every logarithm on one base, and treat $\log x$ or $b^x$ as the unknown.`,
+        String.raw`For a functional equation, substitute the values or expressions that make the unknowns repeat, and solve the system.`,
+        String.raw`To count solutions, sketch both sides and count the crossings.`
+      ]
     }
   },
-  review: ["2003 AMC 12B, Problem 20", "2016 AMC 10B, Problem 21", "2014 AMC 12A, Problem 15", "2011 AMC 12A, Problem 19", "2021 Spring AMC 10A, Problem 19",
-    "1988 AIME, Problem 3", "2000 AIME II, Problem 1", "2002 AIME I, Problem 6", "2010 AIME II, Problem 5", "2012 AIME I, Problem 9"]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`A function satisfies $f(x) + 2f(1 - x) = 3x$ for all real $x$. Find $f(4)$.`, answer: "-10",
+        solution: String.raw`Replace $x$ by $1 - x$: $f(1 - x) + 2f(x) = 3 - 3x$. Doubling this and subtracting the original equation gives $3f(x) = 6 - 6x - 3x = 6 - 9x$, so $f(x) = 2 - 3x$ and $f(4) = -10$.` },
+      { q: String.raw`Find $\sum_{k=1}^{100} \lfloor \sqrt k \rfloor$.`, answer: "625",
+        solution: String.raw`The floor equals $n$ for $n^2 \le k \lt (n + 1)^2$, that is, for $2n + 1$ values of $k$, when $n = 1, \ldots, 9$; and it equals $10$ for $k = 100$ only. The sum is $\sum_{n=1}^{9} n(2n + 1) + 10 = 615 + 10 = 625$.` },
+      { q: String.raw`Solve $\log_2 x + \log_4 x + \log_{16} x = 7$.`, answer: "16",
+        solution: String.raw`Change to base $2$: $\log_4 x = \tfrac12\log_2 x$ and $\log_{16} x = \tfrac14\log_2 x$. So $\tfrac74 \log_2 x = 7$, $\log_2 x = 4$, and $x = 16$.` },
+      { q: String.raw`Solve $4^x - 3 \cdot 2^x - 4 = 0$.`, answer: "2",
+        solution: String.raw`With $t = 2^x \gt 0$ this is $t^2 - 3t - 4 = (t - 4)(t + 1) = 0$. Since $t \gt 0$, $t = 4$ and $x = 2$.` },
+      { q: String.raw`How many real solutions does $|x - 1| + |x - 3| = 4$ have?`, answer: "2",
+        solution: String.raw`For $x$ between $1$ and $3$ the left side is $2$. For $x \ge 3$ it is $2x - 4$, which equals $4$ at $x = 4$; for $x \le 1$ it is $4 - 2x$, which equals $4$ at $x = 0$. So there are two solutions, $0$ and $4$.` },
+      { q: String.raw`Let $f(x) = x^3 + ax + 5$, and suppose $f(2) = 7$. Find $f(-2)$.`, answer: "3",
+        solution: String.raw`The part $x^3 + ax$ is odd, so $f(x) + f(-x) = 10$ for every $x$. Hence $f(-2) = 10 - 7 = 3$.` },
+      { q: String.raw`Find the area of the region $|x| + |y| \le 3$.`, answer: "18",
+        solution: String.raw`In the first quadrant the region is the triangle $x + y \le 3$, of area $\tfrac92$, and the absolute values reflect it into all four quadrants. The region is a square with diagonals $6$, of area $\tfrac{6 \cdot 6}{2} = 18$.` }
+    ],
+    problems: [
+      "2016 AMC 10B, Problem 21",
+      "2014 AMC 12A, Problem 15",
+      "1988 AIME, Problem 3",
+      "1991 AIME, Problem 6"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2021 Spring AMC 10A, Problem 19",
+      "2002 AIME I, Problem 6",
+      "2010 AIME II, Problem 5",
+      "2012 AIME I, Problem 9",
+      "1985 AIME, Problem 10"
+    ]
+  }
 };

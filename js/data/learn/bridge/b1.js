@@ -18,7 +18,7 @@ Before expanding anything, look for one of these shapes. Every step of manipulat
       related: [
         { card: "sfft", note: String.raw`$xy + x + y + 1 = (x + 1)(y + 1)$ used to solve equations in integers (B3.4).` },
         { card: "sophie-germain", note: String.raw`$a^4 + 4b^4$ as a product of two quadratics (A8.2).` },
-        { card: "telescoping", note: String.raw`sums that collapse after rationalizing each term (A3.2).` }
+        { card: "telescoping", note: String.raw`sums that collapse after rationalizing each term (A3.3).` }
       ],
       exercises: [
         { q: String.raw`Find the largest prime factor of $2^{16} - 1$.`, answer: "257",
@@ -52,7 +52,7 @@ When the equations are symmetric or cyclic, [[add-all-equations|adding them all]
 
 Solve systems by the combination that the question asks for, add symmetric equations, and check candidates when a step was not reversible. The next lesson simplifies equations by naming repeated expressions.`,
       related: [
-        { card: "symmetric-polynomial-strategies", note: String.raw`symmetric systems in $x + y$ and $xy$ (A1.1).` },
+        { card: "symmetric-polynomial-strategies", note: String.raw`symmetric systems in $x + y$ and $xy$ (A1.2).` },
         { card: "quadratic-root-location", note: String.raw`checking which roots of a cleared equation satisfy the original conditions (B6.1).` },
         { card: "cramers-rule", note: String.raw`solving a linear system for one unknown at a time (A9.3).` }
       ],
@@ -87,8 +87,8 @@ After a substitution, solve for the new variable, then return to the original on
 Look for a piece that repeats, name it, and solve the simpler equation. The next lesson handles absolute values and inequalities.`,
       related: [
         { card: "quadratic-formula", note: String.raw`solving the quadratic that a substitution produces (B2.2).` },
-        { card: "palindromic-polynomials", note: String.raw`the substitution $t = x + \tfrac1x$ for symmetric equations (A1.3).` },
-        { card: "log-substitution", note: String.raw`naming $\log x$ to turn an equation into a polynomial (A4.3).` }
+        { card: "palindromic-polynomials", note: String.raw`the substitution $t = x + \tfrac1x$ for symmetric equations (A1.4).` },
+        { card: "log-substitution", note: String.raw`naming $\log x$ to turn an equation into a polynomial (A4.4).` }
       ],
       exercises: [
         { q: String.raw`Find the sum of the real solutions of $(x^2 + x)^2 - 8(x^2 + x) + 12 = 0$.`, answer: "-2",
@@ -118,7 +118,7 @@ Split at sign changes, read intervals from a chart, and bound with squares. The 
       related: [
         { card: "median-minimizes-abs", note: String.raw`minimizing a sum of absolute values (A5.4).` },
         { card: "am-gm", note: String.raw`the next inequality after $x^2 \ge 0$ (A5.1).` },
-        { card: "piecewise-graph-counting", note: String.raw`counting solutions by graphing pieces (A4.5).` }
+        { card: "piecewise-graph-counting", note: String.raw`counting solutions by graphing pieces (A4.6).` }
       ],
       exercises: [
         { q: String.raw`How many integers $x$ satisfy $|2x - 5| \lt 7$?`, answer: "6",

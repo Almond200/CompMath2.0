@@ -43,9 +43,9 @@ These are tools for the rare problem that needs them: a sum of high powers, an i
 
 These ideas appear on the AIME only in simple forms, but they explain why the substitution method works, and they are the standard opening moves on olympiad functional equations. The next lesson treats linear recurrences and systems with matrices.`,
       related: [
-        { card: "functional-substitution", note: String.raw`plugging in values, the method these ideas extend (A4.4).` },
-        { card: "log-rules", note: String.raw`the logarithm as the model solution of $f(xy) = f(x) + f(y)$ (A4.3).` },
-        { card: "inverse-function-properties", note: String.raw`a one-to-one and onto function has an inverse (A4.1).` }
+        { card: "functional-substitution", note: String.raw`plugging in values, the method these ideas extend (A4.5).` },
+        { card: "log-rules", note: String.raw`the logarithm as the model solution of $f(xy) = f(x) + f(y)$ (A4.4).` },
+        { card: "inverse-function-properties", note: String.raw`a one-to-one and onto function has an inverse (A4.2).` }
       ],
       exercises: [
         { q: String.raw`A function on the rationals satisfies $f(x + y) = f(x) + f(y)$ and $f(1) = 3$. Find $f\!\left(\tfrac72\right)$.`, answer: "21/2",
@@ -70,7 +70,7 @@ The [[chebyshev-polynomials|Chebyshev polynomials]] $T_n$ satisfy $\cos n\theta 
 
 Use matrices when a problem is about a linear system or a linear recurrence and the direct method is long; otherwise the elimination and characteristic-root methods of earlier chapters are shorter. The last lesson collects inequalities and substitutions used in olympiads.`,
       related: [
-        { card: "linear-recurrence", note: String.raw`the characteristic roots are the eigenvalues of the step matrix (A3.1).` },
+        { card: "linear-recurrence", note: String.raw`the characteristic roots are the eigenvalues of the step matrix (A3.2).` },
         { card: "triple-angle", note: String.raw`$T_3(x) = 4x^3 - 3x$ is the triple-angle formula (A7.2).` },
         { card: "shoelace-formula", note: String.raw`the area of a polygon as a sum of $2 \times 2$ determinants.` }
       ],

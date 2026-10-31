@@ -102,7 +102,7 @@ Choosing the states is the important step. They should record exactly what affec
 Set up one unknown per state, write one equation per state by conditioning on the first step, and solve. The last lesson of the chapter studies waiting times and games.`,
       related: [
         { card: "recursive-counting", note: String.raw`the counting version of the same one-step recursion (C5.2).` },
-        { card: "first-order-recurrence", note: String.raw`solving a chain of state equations as a recurrence (A3.1).` },
+        { card: "first-order-recurrence", note: String.raw`solving a chain of state equations as a recurrence (A3.2).` },
         { card: "wlog-symmetry", note: String.raw`merging states that behave alike (A8.1).` }
       ],
       exercises: [

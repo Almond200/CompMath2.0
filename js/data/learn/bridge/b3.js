@@ -111,7 +111,7 @@ Tabulate until a repeat, note where the cycle begins and its length, and reduce.
 
 Complete products, list factor pairs, and use parity. The next chapter moves to counting.`,
       related: [
-        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of two squares ((N5.3)).` },
+        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of two squares (N5.3).` },
         { card: "bounding-diophantine", note: String.raw`bounding the variables when an equation does not factor.` },
         { card: "useful-factorizations", note: String.raw`$ab + a + b + 1 = (a + 1)(b + 1)$, the identity behind the trick (B1.1).` }
       ],

@@ -111,7 +111,7 @@ Functions are counted the same way. A function from an $n$-element set to a $k$-
 
 The skill is to look for the quantity that, once known, turns the problem into a product, and to check that the cases it defines are disjoint and cover everything. The next lesson counts objects that are each built several times.`,
       related: [
-        { card: "double-summation", note: String.raw`swapping the order of a double sum, the same move as counting by element instead of by object (A3.3).` },
+        { card: "double-summation", note: String.raw`swapping the order of a double sum, the same move as counting by element instead of by object (A3.4).` },
         { card: "double-counting", note: String.raw`counting one set two ways, the systematic form of reorganizing a count (C4.3).` },
         { card: "surjections", note: String.raw`functions that hit every value, counted by inclusion-exclusion (C2.6).` }
       ],

@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9) and AIME Number Theory (N1 to N8) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A4 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -834,41 +834,49 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A1.1 Symmetric systems: $x + y$ and $xy$ (Core) | `symmetric-polynomial-strategies` |
-| A1.2 Nested radicals, rational equations, keeping the domain (Core) | `denesting-radicals`, prereq `transforming-equations` |
-| A1.3 Substitution patterns: $t = x + \frac1x$, quadratic forms, completing the square (Core) | `palindromic-polynomials`, `reciprocal-power-sums`, `completing-the-square` |
-| A1.4 Cyclic systems and equations with several cases (Core II) | `subtract-and-factor`, prereq `add-all-equations` |
-| A1.5 Building and checking integer or positive solutions (Core) | `forced-difference-of-squares`, *(pattern)* `quadratic-perfect-square`, prereq `sfft` |
+| A1.1 Introduction | no card (the chapter's opening page: symmetric systems, radicals and the domain, substitutions, cyclic systems, integer solutions, with comprehension problems) |
+| A1.2 Symmetric systems: $x + y$ and $xy$ (Core) | `symmetric-polynomial-strategies` |
+| A1.3 Nested radicals, rational equations, keeping the domain (Core) | `denesting-radicals`, prereq `transforming-equations` |
+| A1.4 Substitution patterns: $t = x + \frac1x$, quadratic forms, completing the square (Core) | `palindromic-polynomials`, `reciprocal-power-sums`, `completing-the-square` |
+| A1.5 Cyclic systems and equations with several cases (Core II) | `subtract-and-factor`, prereq `add-all-equations` |
+| A1.6 Building and checking integer or positive solutions (Core) | `forced-difference-of-squares`, *(pattern)* `quadratic-perfect-square`, prereq `sfft` |
+| A1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A1.8 Review Problems and A1.9 Challenge Problems |
 
 ### A2. Polynomials and root expressions (Core)
 
 | Lesson | Cards |
 |---|---|
-| A2.1 The factor and remainder theorems, and division, in contest settings (Core) | `polynomial-crt`, prereq `factor-remainder-theorem` |
-| A2.2 Vieta; sums of powers of roots (Newton's sums) (Core) | `newtons-sums`, `products-over-roots` |
-| A2.3 Symmetric polynomials and root constraints (Core) | `fundamental-theorem-symmetric`, `conjugate-root-theorems`, `descartes-rule-signs` |
-| A2.4 Root transformations: reciprocal and shifted polynomials (Core) | `root-transformations` |
-| A2.5 Interpolation and reading off coefficients (Core II) | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
+| A2.1 Introduction | no card (the chapter's opening page: the factor and remainder theorems, Vieta and Newton's sums, conjugate roots, root transformations, interpolation, with comprehension problems) |
+| A2.2 The factor and remainder theorems, and division, in contest settings (Core) | `polynomial-crt`, prereq `factor-remainder-theorem` |
+| A2.3 Vieta; sums of powers of roots (Newton's sums) (Core) | `newtons-sums`, `products-over-roots` |
+| A2.4 Symmetric polynomials and root constraints (Core) | `fundamental-theorem-symmetric`, `conjugate-root-theorems`, `descartes-rule-signs` |
+| A2.5 Root transformations: reciprocal and shifted polynomials (Core) | `root-transformations` |
+| A2.6 Interpolation and reading off coefficients (Core II) | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
+| A2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A2.8 Review Problems and A2.9 Challenge Problems |
 
 ### A3. Sequences, recurrences and sums (Core)
 
 | Lesson | Cards |
 |---|---|
-| A3.1 Linear recurrences and their starting values (Core) | `linear-recurrence`, `binets-formula` |
-| A3.2 Telescoping sums and products; partial fractions (Core) | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
-| A3.3 Finite differences, double sums, from a pattern to a formula (Core II) | `finite-differences`, `double-summation` |
-| A3.4 Iteration and periodic sequences (Core) | *(pattern)* `infinite-nest`, prereq *(pattern)* `periodic-sequences` |
-| A3.5 A closed form only when it helps (Core II) | `arithmetico-geometric`, `largest-term-ratio` |
+| A3.1 Introduction | no card (the chapter's opening page: linear recurrences, telescoping, finite differences, periodic sequences, closed forms, with comprehension problems) |
+| A3.2 Linear recurrences and their starting values (Core) | `linear-recurrence`, `binets-formula` |
+| A3.3 Telescoping sums and products; partial fractions (Core) | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
+| A3.4 Finite differences, double sums, from a pattern to a formula (Core II) | `finite-differences`, `double-summation` |
+| A3.5 Iteration and periodic sequences (Core) | *(pattern)* `infinite-nest`, prereq *(pattern)* `periodic-sequences` |
+| A3.6 A closed form only when it helps (Core II) | `arithmetico-geometric`, `largest-term-ratio` |
+| A3.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A3.8 Review Problems and A3.9 Challenge Problems |
 
 ### A4. Functions, logs and exponentials (Core)
 
 | Lesson | Cards |
 |---|---|
-| A4.1 Composition, inverses, symmetry of a function (Core) | `inverse-function-properties`, `odd-even-functions`, `function-symmetry-equation`, `fx-pairing` |
-| A4.2 Piecewise and absolute-value functions, floors and ceilings (Core) | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range`, `abs-value-graphing` |
-| A4.3 Exponential equations; logarithm laws and domains (Core) | `log-rules`, `change-of-base`, `exponent-laws`, `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` |
-| A4.4 Functional identities of contest length (Core II) | `functional-substitution`, *(pattern)* `defined-operation` |
-| A4.5 Graphs, monotonicity, and the number of solutions (Core) | `piecewise-graph-counting`, *(pattern)* `reading-graphs` |
+| A4.1 Introduction | no card (the chapter's opening page: composition, inverses and symmetry, floors and absolute values, logarithms, functional equations, graphs, with comprehension problems) |
+| A4.2 Composition, inverses, symmetry of a function (Core) | `inverse-function-properties`, `odd-even-functions`, `function-symmetry-equation`, `fx-pairing` |
+| A4.3 Piecewise and absolute-value functions, floors and ceilings (Core) | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range`, `abs-value-graphing` |
+| A4.4 Exponential equations; logarithm laws and domains (Core) | `log-rules`, `change-of-base`, `exponent-laws`, `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` |
+| A4.5 Functional identities of contest length (Core II) | `functional-substitution`, *(pattern)* `defined-operation` |
+| A4.6 Graphs, monotonicity, and the number of solutions (Core) | `piecewise-graph-counting`, *(pattern)* `reading-graphs` |
+| A4.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A4.8 Review Problems and A4.9 Challenge Problems |
 
 ### A5. Inequalities and bounds (Core)
 
@@ -1085,7 +1093,7 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | 2004 AIME II #10 | powers of $2$ cycle modulo $9$ with period $6$, then a count |
 | 2021 AIME II #13 | $1000 = 8 \cdot 125$, and the order of $2$ mod $125$ |
 | 2021 AIME I #14 | Fermat, and a primitive root; $n = \operatorname{lcm}(42, 43, 46, 47)$ (a challenge: `primitive-roots` is N8, linked) |
-| 2016 AMC 12B #25 | the order of $2$ mod $19$ is $18$ (a challenge, assuming `linear-recurrence` from A3.1) |
+| 2016 AMC 12B #25 | the order of $2$ mod $19$ is $18$ (a challenge, assuming `linear-recurrence` from A3.2) |
 | 2015 AMC 12A #22 | a recursion whose terms repeat modulo $2$ and modulo $3$, joined by CRT (a challenge, assuming `recursive-counting` from C5.2) |
 | 2025 AIME II #13 | $2^{2^k}$ modulo $1000$ through Euler and CRT, after a rational recursion (challenging) |
 
