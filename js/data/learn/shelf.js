@@ -1627,23 +1627,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G9.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G9.2",
       "title": "Barycentric coordinates and more complex-plane geometry",
       "level": "Extension"
      },
      {
-      "code": "G9.2",
+      "code": "G9.3",
       "title": "Inversion and spiral similarity",
       "level": "Extension"
      },
      {
-      "code": "G9.3",
+      "code": "G9.4",
       "title": "More relations between triangle centers",
       "level": "Extension"
      },
      {
-      "code": "G9.4",
+      "code": "G9.5",
       "title": "Projective tools",
       "level": "Extension"
+     },
+     {
+      "code": "G9.6",
+      "title": "Summary"
      }
     ]
    }

@@ -136,7 +136,7 @@ Mass points, area ratios, Ceva and Menelaus all compute the same ratios. Mass po
       related: [
         { card: "mass-points", note: String.raw`the same ratios by balancing weights (G1.5).` },
         { card: "ratio-lemma", note: String.raw`each factor of trigonometric Ceva as a ratio of sides (G3.4).` },
-        { card: "barycentric-coordinates", note: String.raw`coordinates in which Ceva and Menelaus become determinant conditions (G9.1).` }
+        { card: "barycentric-coordinates", note: String.raw`coordinates in which Ceva and Menelaus become determinant conditions (G9.2).` }
       ],
       exercises: [
         { q: String.raw`Cevians $AD$, $BE$, $CF$ of triangle $ABC$ meet at one point, with $\tfrac{BD}{DC} = 2$ and $\tfrac{CE}{EA} = 3$. Find $\tfrac{AF}{FB}$.`, answer: "1/6",

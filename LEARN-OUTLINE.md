@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G8 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and AIME Geometry (G1 to G9) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1277,10 +1277,12 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G9.1 Barycentric coordinates and more complex-plane geometry (Extension) | `barycentric-coordinates`, `affine-transformations` |
-| G9.2 Inversion and spiral similarity (Extension) | `inversion-facts`, `inversion-properties` |
-| G9.3 More relations between triangle centers (Extension) | `euler-line-parallel-side`, `exradii` link, `anticomplementary-triangle`, `contact-triangle`, `incircle-excircle-homothety` |
-| G9.4 Projective tools (Extension) | `harmonic-quadrilateral`, `cross-ratio` |
+| G9.1 Introduction | no card (the chapter's opening page: barycentric coordinates, inversion, triangle-center relations, cross-ratio and harmonic sets, with comprehension problems) |
+| G9.2 Barycentric coordinates and more complex-plane geometry (Extension) | `barycentric-coordinates`, `affine-transformations` |
+| G9.3 Inversion and spiral similarity (Extension) | `inversion-facts`, `inversion-properties` |
+| G9.4 More relations between triangle centers (Extension) | `euler-line-parallel-side`, `exradii` link, `anticomplementary-triangle`, `contact-triangle`, `incircle-excircle-homothety` |
+| G9.5 Projective tools (Extension) | `harmonic-quadrilateral`, `cross-ratio` |
+| G9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G9.7 Review Problems and G9.8 Challenge Problems |
 
 ---
 

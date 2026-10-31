@@ -159,7 +159,7 @@ Use mass points whenever cevians cross and only ratios are known, and the cevian
       related: [
         { card: "cevas-theorem", note: String.raw`the condition for three cevians to meet, the product of side ratios equal to $1$ (G5.5).` },
         { card: "menelaus-theorem", note: String.raw`ratios along a transversal, the other classic route to the same answers (G5.5).` },
-        { card: "barycentric-coordinates", note: String.raw`mass points made into coordinates (G9.1).` }
+        { card: "barycentric-coordinates", note: String.raw`mass points made into coordinates (G9.2).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $D$ is on $BC$ with $BD : DC = 2 : 1$, and $E$ is the midpoint of $AC$. The cevians $AD$ and $BE$ meet at $P$. Find $\tfrac{AP}{PD}$.`, answer: "3/2",
