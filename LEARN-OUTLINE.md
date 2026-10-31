@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9), G1 and G2 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1194,11 +1194,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G2.1 Cyclic quadrilaterals, inscribed angles, angle chasing (Core) | `angle-chasing`, `cyclic-opposite-angles`, `cyclic-equal-angles`, `concyclicity-tests`, `angle-chord-secant`, `tangent-chord-angle`, *(pattern)* `cyclic-quadrilateral` |
-| G2.2 Power of a point, tangent and secant, intersecting chords (Core) | `radical-axis`, `thales-theorem`, prereq `power-of-a-point` |
-| G2.3 Ptolemy and chord lengths (Core II) | `ptolemys-theorem`, `equal-chords-arcs`, `brahmaguptas-formula` |
-| G2.4 Incircles, excircles, tangent lengths (Core) | `incircle-tangent-lengths`, `incircle-excircle-touch`, `inradius-area`, `exradii`, `pitots-theorem` |
-| G2.5 Circles that meet or touch (Core) | `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `common-tangent-lengths`, `triangle-of-centers`, `common-chord-length`, `descartes-circle-theorem`, *(pattern)* `tangency-condition`, *(pattern)* `tangent-circle-packing` |
+| G2.1 Introduction | no card (the chapter's opening page: inscribed angles and cyclic quadrilaterals, the power of a point, Ptolemy, tangent lengths, touching circles, with comprehension problems) |
+| G2.2 Cyclic quadrilaterals, inscribed angles, angle chasing (Core) | `angle-chasing`, `cyclic-opposite-angles`, `cyclic-equal-angles`, `concyclicity-tests`, `angle-chord-secant`, `tangent-chord-angle`, *(pattern)* `cyclic-quadrilateral` |
+| G2.3 Power of a point, tangent and secant, intersecting chords (Core) | `radical-axis`, `thales-theorem`, prereq `power-of-a-point` |
+| G2.4 Ptolemy and chord lengths (Core II) | `ptolemys-theorem`, `equal-chords-arcs`, `brahmaguptas-formula` |
+| G2.5 Incircles, excircles, tangent lengths (Core) | `incircle-tangent-lengths`, `incircle-excircle-touch`, `inradius-area`, `exradii`, `pitots-theorem` |
+| G2.6 Circles that meet or touch (Core) | `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `common-tangent-lengths`, `triangle-of-centers`, `common-chord-length`, `descartes-circle-theorem`, *(pattern)* `tangency-condition`, *(pattern)* `tangent-circle-packing` |
+| G2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G2.8 Review Problems and G2.9 Challenge Problems |
 
 ### G3. Trigonometric geometry (Core; AMC 10 students take B5.4 first)
 

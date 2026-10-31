@@ -188,7 +188,7 @@ The [[altitude-hypotenuse|altitude to the hypotenuse]] of a right triangle cuts 
 
 When a figure has a right angle, a trapezoid, or a median, consider these constructions first. The Summary (G1.7) collects the chapter's strategies, and the problems after it mix all the ratio and similarity tools.`,
       related: [
-        { card: "thales-theorem", note: String.raw`the right angle in a semicircle, which puts the altitude-on-hypotenuse picture into circle problems (G2.2).` },
+        { card: "thales-theorem", note: String.raw`the right angle in a semicircle, which puts the altitude-on-hypotenuse picture into circle problems (G2.3).` },
         { card: "apollonius-theorem", note: String.raw`the median length that median doubling proves (G1.4).` },
         { card: "folded-paper", note: String.raw`folds that create right triangles with altitudes (G6.4).` }
       ],

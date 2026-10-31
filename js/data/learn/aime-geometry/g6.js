@@ -130,7 +130,7 @@ A [[folded-paper|fold]] is a reflection in the crease, so the crease is the perp
 Reflect to straighten paths, use homotheties for similar figures and pairs of circles, stretch axes to simplify areas, and treat a fold as a reflection. The next chapter studies polygons.`,
       related: [
         { card: "unfold-the-surface", note: String.raw`unfolding a solid's surface to straighten a path on it (G8.5).` },
-        { card: "common-tangent-lengths", note: String.raw`the tangents through the homothety centers of two circles (G2.5).` },
+        { card: "common-tangent-lengths", note: String.raw`the tangents through the homothety centers of two circles (G2.6).` },
         { card: "perpendicular-bisector-locus", note: String.raw`the crease of a fold as a perpendicular bisector (G4.5).` }
       ],
       exercises: [

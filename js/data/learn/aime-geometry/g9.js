@@ -38,9 +38,9 @@ The standard use is to invert at a point where several circles meet or touch: th
 
 Invert at the point where the most circles meet, solve the simpler image, and transform back. The next lesson collects further relations among triangle centers.`,
       related: [
-        { card: "power-of-a-point", note: String.raw`the product $OP \cdot OP'$ is a power of a point (G2.2).` },
-        { card: "tangent-circles", note: String.raw`tangent circles, whose tangency inversion preserves (G2.5).` },
-        { card: "descartes-circle-theorem", note: String.raw`curvatures of mutually tangent circles, often proved by inversion (G2.5).` }
+        { card: "power-of-a-point", note: String.raw`the product $OP \cdot OP'$ is a power of a point (G2.3).` },
+        { card: "tangent-circles", note: String.raw`tangent circles, whose tangency inversion preserves (G2.6).` },
+        { card: "descartes-circle-theorem", note: String.raw`curvatures of mutually tangent circles, often proved by inversion (G2.6).` }
       ],
       exercises: [
         { q: String.raw`Points $A$ and $B$ satisfy $OA = 2$, $OB = 4$ and $AB = 3$. They are inverted in the circle with center $O$ and radius $4$. Find the distance between their images.`, answer: "6",
@@ -59,7 +59,7 @@ The [[contact-triangle|contact triangle]] joins the points where the incircle to
 
 These relations are tools to recognize rather than formulas to recompute. The last lesson treats projective tools.`,
       related: [
-        { card: "exradii", note: String.raw`the excircles and their radii (G2.4).` },
+        { card: "exradii", note: String.raw`the excircles and their radii (G2.5).` },
         { card: "medial-triangle", note: String.raw`the triangle of midpoints, the inverse of the anticomplementary triangle (G5.3).` },
         { card: "homothety-monge", note: String.raw`homotheties between circles (G6.4).` }
       ],

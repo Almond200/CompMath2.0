@@ -68,8 +68,8 @@ Cuts parallel to a base produce similar copies, so volumes scale by the cube of 
 
 Choose a plane through the axis or through the key points, solve the plane figure, and use similarity for parallel cuts. The next lesson measures angles and distances between lines and planes.`,
       related: [
-        { card: "inradius-area", note: String.raw`the radius of a sphere in a cone from the incircle of its cross-section (G2.4).` },
-        { card: "tangent-circles", note: String.raw`spheres tangent to each other, seen as circles in a cross-section (G2.5).` },
+        { card: "inradius-area", note: String.raw`the radius of a sphere in a cone from the incircle of its cross-section (G2.5).` },
+        { card: "tangent-circles", note: String.raw`spheres tangent to each other, seen as circles in a cross-section (G2.6).` },
         { card: "geometric-series", note: String.raw`adding the volumes of a repeated shrinking figure.` }
       ],
       exercises: [
@@ -182,7 +182,7 @@ The [[insphere-radius|insphere]] of a polyhedron touches every face, and splitti
 
 Use volume and surface area for inspheres, boxes for tetrahedra with equal opposite edges, nets for paths on surfaces, and Euler's formula for counts. The last chapter goes beyond the AIME syllabus.`,
       related: [
-        { card: "inradius-area", note: String.raw`the planar formula $K = rs$ that $V = \tfrac13rS$ extends (G2.4).` },
+        { card: "inradius-area", note: String.raw`the planar formula $K = rs$ that $V = \tfrac13rS$ extends (G2.5).` },
         { card: "circle-in-angle", note: String.raw`the cross-section of a sphere tangent to two planes (G5.5).` },
         { card: "reflect-across-the-line", note: String.raw`straightening paths, the planar version of unfolding (G6.4).` }
       ],

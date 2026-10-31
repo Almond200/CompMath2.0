@@ -1352,28 +1352,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G2.2",
       "title": "Cyclic quadrilaterals, inscribed angles, angle chasing",
       "level": "Core"
      },
      {
-      "code": "G2.2",
+      "code": "G2.3",
       "title": "Power of a point, tangent and secant, intersecting chords",
       "level": "Core"
      },
      {
-      "code": "G2.3",
+      "code": "G2.4",
       "title": "Ptolemy and chord lengths",
       "level": "Core II"
      },
      {
-      "code": "G2.4",
+      "code": "G2.5",
       "title": "Incircles, excircles, tangent lengths",
       "level": "Core"
      },
      {
-      "code": "G2.5",
+      "code": "G2.6",
       "title": "Circles that meet or touch",
       "level": "Core"
+     },
+     {
+      "code": "G2.7",
+      "title": "Summary"
      }
     ]
    },

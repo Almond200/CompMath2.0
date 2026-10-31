@@ -18,7 +18,7 @@ A [[perp-to-angle-bisector|perpendicular from a vertex to an angle bisector]] cr
 
 Use the arc midpoint whenever a bisector meets the circumcircle, the center angles to find hidden cyclic quadrilaterals, and the reflection across a bisector for perpendiculars. The next lesson studies the circumcenter, orthocenter and centroid together.`,
       related: [
-        { card: "inradius-area", note: String.raw`the incircle's radius from the area (G2.4).` },
+        { card: "inradius-area", note: String.raw`the incircle's radius from the area (G2.5).` },
         { card: "euler-distance-theorem", note: String.raw`$OI^2 = R(R - 2r)$, which the incenter-excenter lemma proves (G5.2).` },
         { card: "midsegment-theorem", note: String.raw`where the foot of a perpendicular to a bisector lands (G1.2).` }
       ],

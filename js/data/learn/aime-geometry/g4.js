@@ -57,7 +57,7 @@ Keep these formulas ready, and convert geometric conditions (tangent, bisects, d
       related: [
         { card: "point-line-distance", note: String.raw`the distance formula that most of these rest on.` },
         { card: "angle-addition", note: String.raw`the tangent subtraction formula behind the angle between lines (A7.3).` },
-        { card: "tangency-condition", note: String.raw`the general double-root condition for tangency (G2.5).` }
+        { card: "tangency-condition", note: String.raw`the general double-root condition for tangency (G2.6).` }
       ],
       exercises: [
         { q: String.raw`Find the distance from the point $(3, 4)$ to the line $3x + 4y - 10 = 0$.`, answer: "3",

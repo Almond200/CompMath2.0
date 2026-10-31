@@ -17,7 +17,7 @@ An [[equiangular-polygon|equiangular polygon]] has all angles equal but sides of
 
 Split regular polygons into triangles from the center, complete equiangular ones into triangles or rectangles, and keep the special values of the common polygons ready. The next lesson cuts polygons into pieces.`,
       related: [
-        { card: "chord-length", note: String.raw`every side and diagonal of a regular polygon is a chord (G2.3).` },
+        { card: "chord-length", note: String.raw`every side and diagonal of a regular polygon is a chord (G2.4).` },
         { card: "closing-polygon-vectors", note: String.raw`the side relations of an equiangular polygon from closing its side vectors (G6.3).` },
         { card: "law-cosines-60-120", note: String.raw`the $120^\circ$ angles of a hexagon in length computations (G3.1).` }
       ],

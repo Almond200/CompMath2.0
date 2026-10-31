@@ -18,7 +18,7 @@ Use the law of cosines to pass between sides and angles, the sine formula or Her
       related: [
         { card: "law-of-cosines", note: String.raw`the general relation $c^2 = a^2 + b^2 - 2ab\cos C$ (B5.4).` },
         { card: "pythagorean-triples", note: String.raw`the right triangles that glue into Heronian triangles.` },
-        { card: "brahmaguptas-formula", note: String.raw`Heron's formula for cyclic quadrilaterals (G2.3).` }
+        { card: "brahmaguptas-formula", note: String.raw`Heron's formula for cyclic quadrilaterals (G2.4).` }
       ],
       exercises: [
         { q: String.raw`Two sides of a triangle are $5$ and $8$, and the angle between them is $60^\circ$. Find the third side.`, answer: "7",
@@ -62,7 +62,7 @@ These formulas also locate the circumcenter. In a right triangle the circumcente
 When a triangle sits in a known circle, or when side ratios are given, convert with $a = 2R\sin A$. The next lesson collects identities that hold in every triangle.`,
       related: [
         { card: "law-of-sines", note: String.raw`the ratio form $\tfrac{a}{\sin A} = \tfrac{b}{\sin B}$ (B5.4).` },
-        { card: "chord-length", note: String.raw`a chord is $2R\sin$ of half its central angle, the same fact (G2.3).` },
+        { card: "chord-length", note: String.raw`a chord is $2R\sin$ of half its central angle, the same fact (G2.4).` },
         { card: "euler-distance-theorem", note: String.raw`the distance between the circumcenter and incenter, $OI^2 = R(R - 2r)$ (G5.2).` }
       ],
       exercises: [
@@ -99,7 +99,7 @@ The [[triangle-angle-identities|identities for angles adding to $180^\circ$]] in
 Use projections to place feet of cevians, half-angle tangents with the inradius, the ratio lemma for cevians at known angles, and the angle-sum identities when a symmetric trigonometric expression in the angles appears. The next lesson computes whole figures from their angles.`,
       related: [
         { card: "angle-bisector-theorem", note: String.raw`the ratio lemma with equal angles (G1.4).` },
-        { card: "inradius-area", note: String.raw`$K = rs$, the source of $r$ in the half-angle formulas (G2.4).` },
+        { card: "inradius-area", note: String.raw`$K = rs$, the source of $r$ in the half-angle formulas (G2.5).` },
         { card: "angle-addition", note: String.raw`the addition formulas behind the angle-sum identities (A7.3).` }
       ],
       exercises: [

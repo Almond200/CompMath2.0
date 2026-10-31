@@ -55,9 +55,9 @@ The [[power-of-a-point|power of a point]] relates segments through a common poin
 
 Draw radii to points of tangency and to chord endpoints, and look for right angles. The next lesson places figures in coordinates.`,
       related: [
-        { card: "angle-chasing", note: String.raw`propagating angles with inscribed angles and cyclic quadrilaterals (G2.1).` },
-        { card: "thales-theorem", note: String.raw`the right angle in a semicircle and its converse (G2.2).` },
-        { card: "tangent-circles", note: String.raw`circles that touch each other (G2.5).` }
+        { card: "angle-chasing", note: String.raw`propagating angles with inscribed angles and cyclic quadrilaterals (G2.2).` },
+        { card: "thales-theorem", note: String.raw`the right angle in a semicircle and its converse (G2.3).` },
+        { card: "tangent-circles", note: String.raw`circles that touch each other (G2.6).` }
       ],
       exercises: [
         { q: String.raw`A point is $13$ units from the center of a circle of radius $5$. Find the length of a tangent segment from the point to the circle.`, answer: "12",
