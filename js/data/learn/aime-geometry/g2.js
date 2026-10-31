@@ -46,7 +46,7 @@ Chase angles with arcs as the bookkeeping, and look for four points that are sec
       related: [
         { card: "inscribed-angle-theorem", note: String.raw`an inscribed angle is half its arc, the fact every chase here uses.` },
         { card: "power-of-a-point", note: String.raw`the length test for four concyclic points (G2.3).` },
-        { card: "triangle-center-angles", note: String.raw`angles at the incenter, circumcenter and orthocenter from the angles of the triangle (G5.1).` }
+        { card: "triangle-center-angles", note: String.raw`angles at the incenter, circumcenter and orthocenter from the angles of the triangle (G5.2).` }
       ],
       exercises: [
         { q: String.raw`Two chords of a circle cross inside it. The arcs cut off by the two vertical angles at the crossing measure $80^\circ$ and $40^\circ$. Find the angle between the chords (in degrees).`, answer: "60",
@@ -164,7 +164,7 @@ Label tangent lengths from each vertex, write sides as their sums, and use $K = 
       related: [
         { card: "herons-formula", note: String.raw`the area that, with $K = rs$, gives the inradius from three sides (G3.2).` },
         { card: "right-triangle-inradius", note: String.raw`$r = \tfrac{a + b - c}{2}$ in a right triangle.` },
-        { card: "incenter-excenter-lemma", note: String.raw`where the incenter and excenters sit on the circumcircle (G5.1).` }
+        { card: "incenter-excenter-lemma", note: String.raw`where the incenter and excenters sit on the circumcircle (G5.2).` }
       ],
       exercises: [
         { q: String.raw`Triangle $ABC$ has $BC = 14$, $CA = 15$ and $AB = 13$. Find the length of the tangent from $A$ to the incircle.`, answer: "7",
@@ -202,7 +202,7 @@ Join centers, draw radii to points of tangency, and look for right triangles. Th
       related: [
         { card: "homothety-monge", note: String.raw`the centers of similitude of two circles, where common tangents meet (G6.4).` },
         { card: "tangency-equation", note: String.raw`the tangency of a line and a curve as a double root (G4.3).` },
-        { card: "circle-in-angle", note: String.raw`circles inscribed in an angle, whose centers lie on the bisector (G5.5).` }
+        { card: "circle-in-angle", note: String.raw`circles inscribed in an angle, whose centers lie on the bisector (G5.6).` }
       ],
       exercises: [
         { q: String.raw`Circles of radii $9$ and $4$ are externally tangent. Find the length of a common external tangent between its points of tangency.`, answer: "12",

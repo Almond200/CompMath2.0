@@ -60,7 +60,7 @@ The [[contact-triangle|contact triangle]] joins the points where the incircle to
 These relations are tools to recognize rather than formulas to recompute. The last lesson treats projective tools.`,
       related: [
         { card: "exradii", note: String.raw`the excircles and their radii (G2.5).` },
-        { card: "medial-triangle", note: String.raw`the triangle of midpoints, the inverse of the anticomplementary triangle (G5.3).` },
+        { card: "medial-triangle", note: String.raw`the triangle of midpoints, the inverse of the anticomplementary triangle (G5.4).` },
         { card: "homothety-monge", note: String.raw`homotheties between circles (G6.4).` }
       ],
       exercises: [
@@ -82,7 +82,7 @@ A [[harmonic-quadrilateral|harmonic quadrilateral]] is a cyclic quadrilateral $A
 
 Look for a cross-ratio when four points on a line or circle are projected or inverted, and for a harmonic quadrilateral when two tangents meet on a chord. This chapter closes the geometry book.`,
       related: [
-        { card: "symmedian-lemoine", note: String.raw`the symmedian through the meeting point of two tangents (G5.5).` },
+        { card: "symmedian-lemoine", note: String.raw`the symmedian through the meeting point of two tangents (G5.6).` },
         { card: "angle-bisector-theorem", note: String.raw`internal and external bisectors divide the side harmonically (G1.4).` },
         { card: "complex-basics", note: String.raw`the cross-ratio of complex numbers and concyclic points (A6.2).` }
       ],

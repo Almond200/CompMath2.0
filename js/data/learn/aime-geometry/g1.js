@@ -121,7 +121,7 @@ Use the angle bisector theorem for ratios on the opposite side, Stewart or Apoll
       related: [
         { card: "law-of-cosines", note: String.raw`the source of Stewart's theorem, applied at the foot of the cevian (G3.2).` },
         { card: "median-doubling", note: String.raw`extending a median to a parallelogram, another route to Apollonius (G1.6).` },
-        { card: "incenter-excenter-lemma", note: String.raw`where the angle bisector meets the circumcircle again (G5.1).` }
+        { card: "incenter-excenter-lemma", note: String.raw`where the angle bisector meets the circumcircle again (G5.2).` }
       ],
       exercises: [
         { q: String.raw`Triangle $ABC$ has $AB = 5$, $AC = 7$ and $BC = 8$. Find the length of the median from $A$.`, answer: "sqrt(21)",
@@ -157,8 +157,8 @@ Three concurrent cevians $AD$, $BE$, $CF$ meeting at $P$ satisfy the [[cevian-ra
 
 Use mass points whenever cevians cross and only ratios are known, and the cevian ratio sum when the cevians are concurrent and their pieces are given. The last lesson of the chapter collects the right-triangle and auxiliary-line figures.`,
       related: [
-        { card: "cevas-theorem", note: String.raw`the condition for three cevians to meet, the product of side ratios equal to $1$ (G5.4).` },
-        { card: "menelaus-theorem", note: String.raw`ratios along a transversal, the other classic route to the same answers (G5.4).` },
+        { card: "cevas-theorem", note: String.raw`the condition for three cevians to meet, the product of side ratios equal to $1$ (G5.5).` },
+        { card: "menelaus-theorem", note: String.raw`ratios along a transversal, the other classic route to the same answers (G5.5).` },
         { card: "barycentric-coordinates", note: String.raw`mass points made into coordinates (G9.1).` }
       ],
       exercises: [

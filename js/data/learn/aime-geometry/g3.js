@@ -91,7 +91,7 @@ When a triangle sits in a known circle, or when side ratios are given, convert w
       related: [
         { card: "law-of-sines", note: String.raw`the ratio form $\tfrac{a}{\sin A} = \tfrac{b}{\sin B}$ (B5.4).` },
         { card: "chord-length", note: String.raw`a chord is $2R\sin$ of half its central angle, the same fact (G2.4).` },
-        { card: "euler-distance-theorem", note: String.raw`the distance between the circumcenter and incenter, $OI^2 = R(R - 2r)$ (G5.2).` }
+        { card: "euler-distance-theorem", note: String.raw`the distance between the circumcenter and incenter, $OI^2 = R(R - 2r)$ (G5.3).` }
       ],
       exercises: [
         { q: String.raw`Find the circumradius of the triangle with sides $13$, $14$ and $15$.`, answer: "65/8",
@@ -160,7 +160,7 @@ Bash with trigonometry when the given data are angles and no similarity is visib
       related: [
         { card: "special-trig-values", note: String.raw`the exact values at $15^\circ$, $75^\circ$ and $36^\circ$ that bashing needs (A7.2).` },
         { card: "product-sum", note: String.raw`simplifying the sums of products that a bash produces (A7.3).` },
-        { card: "triangle-center-angles", note: String.raw`the angles at the circumcenter and orthocenter that this relation comes from (G5.1).` }
+        { card: "triangle-center-angles", note: String.raw`the angles at the circumcenter and orthocenter that this relation comes from (G5.2).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $B = 70^\circ$ and $C = 40^\circ$. Find the angle, in degrees, between the altitude from $A$ and the line from $A$ to the circumcenter.`, answer: "30",

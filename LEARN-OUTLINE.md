@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G4 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G5 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1230,11 +1230,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G5.1 The incenter, excenters, angle-bisector geometry (Core II) | `incenter-excenter-lemma`, `perp-to-angle-bisector`, `triangle-center-angles`, *(pattern)* `angle-bisector-circumcircle` |
-| G5.2 Circumcenter, orthocenter, centroid (Core II) | `orthocenter-properties`, `euler-line-ratio`, `nine-point-circle`, `euler-distance-theorem` |
-| G5.3 Altitudes, medians, the medial and orthic triangles (Core II) | `medial-triangle`, `orthic-triangle`, `median-triangle-area`, `vivianis-theorem` |
-| G5.4 Ceva and Menelaus as working tools (Core II) | `cevas-theorem`, `menelaus-theorem`, `trig-ceva` |
-| G5.5 Recognizing common triangle figures (Core) | *(pattern)* `point-in-equilateral`, *(pattern)* `circle-in-angle`, `fermat-point`, `symmedian-lemoine`, `simson-line` |
+| G5.1 Introduction | no card (the chapter's opening page: the incenter and excenters, the Euler line and nine-point circle, the medial and orthic triangles, Ceva and Menelaus, recurring figures, with comprehension problems) |
+| G5.2 The incenter, excenters, angle-bisector geometry (Core II) | `incenter-excenter-lemma`, `perp-to-angle-bisector`, `triangle-center-angles`, *(pattern)* `angle-bisector-circumcircle` |
+| G5.3 Circumcenter, orthocenter, centroid (Core II) | `orthocenter-properties`, `euler-line-ratio`, `nine-point-circle`, `euler-distance-theorem` |
+| G5.4 Altitudes, medians, the medial and orthic triangles (Core II) | `medial-triangle`, `orthic-triangle`, `median-triangle-area`, `vivianis-theorem` |
+| G5.5 Ceva and Menelaus as working tools (Core II) | `cevas-theorem`, `menelaus-theorem`, `trig-ceva` |
+| G5.6 Recognizing common triangle figures (Core) | *(pattern)* `point-in-equilateral`, *(pattern)* `circle-in-angle`, `fermat-point`, `symmedian-lemoine`, `simson-line` |
+| G5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G5.8 Review Problems and G5.9 Challenge Problems |
 
 ### G6. Transformations and vectors (Core II; links to A6)
 

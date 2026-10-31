@@ -18,7 +18,7 @@ Measure cevians with Stewart, test concurrence with Ceva, and use the standard a
       related: [
         { card: "mass-points", note: String.raw`ratios along cevians by weights (S1.2).` },
         { card: "median-doubling", note: String.raw`another route to the median length (S1.3).` },
-        { card: "menelaus-theorem", note: String.raw`ratios along a transversal (G5.4).` }
+        { card: "menelaus-theorem", note: String.raw`ratios along a transversal (G5.5).` }
       ],
       exercises: [
         { q: String.raw`Triangle $ABC$ has $BC = 8$, $CA = 7$, $AB = 9$. Find the length of the median from $A$.`, answer: "7",
@@ -50,7 +50,7 @@ Look for concyclic points, use Ptolemy and Brahmagupta on them, and place touch 
       related: [
         { card: "power-of-a-point", note: String.raw`the length test for concyclic points (S1.4).` },
         { card: "inradius-area", note: String.raw`$K = rs$ (S1.5).` },
-        { card: "incenter-excenter-lemma", note: String.raw`the arc midpoint in detail (G5.1).` }
+        { card: "incenter-excenter-lemma", note: String.raw`the arc midpoint in detail (G5.2).` }
       ],
       exercises: [
         { q: String.raw`A cyclic quadrilateral has sides $3$, $4$, $5$, $6$. Find its area.`, answer: "6sqrt(10)",

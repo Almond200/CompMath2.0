@@ -63,7 +63,7 @@ A [[spiral-similarity|spiral similarity]] is a rotation combined with a scaling 
 Use complex numbers when the figure is built from rotations, and rotate part of a figure to gather lengths. The next lesson uses vectors.`,
       related: [
         { card: "de-moivre", note: String.raw`powers of the rotation factor $e^{i\theta}$ (A6.3).` },
-        { card: "point-in-equilateral", note: String.raw`the $60^\circ$ rotation in an equilateral triangle (G5.5).` },
+        { card: "point-in-equilateral", note: String.raw`the $60^\circ$ rotation in an equilateral triangle (G5.6).` },
         { card: "geometric-series", note: String.raw`the position after repeated turns and steps.` }
       ],
       exercises: [
@@ -95,7 +95,7 @@ The [[vector-dot-product|dot product]] $\vec u \cdot \vec v = u_1v_1 + u_2v_2 = 
 Use vectors when a figure has many midpoints or averages, when perpendicularity or angles between directions matter, and when a closed polygon has known turning angles. The last lesson of the chapter uses transformations to find shortest paths and to scale figures.`,
       related: [
         { card: "coordinate-bash", note: String.raw`vectors with components, when axes help (G4.2).` },
-        { card: "orthocenter-properties", note: String.raw`the vector formula for the orthocenter (G5.2).` },
+        { card: "orthocenter-properties", note: String.raw`the vector formula for the orthocenter (G5.3).` },
         { card: "equiangular-polygon", note: String.raw`polygons whose closing condition gives side relations (G7.1).` }
       ],
       exercises: [

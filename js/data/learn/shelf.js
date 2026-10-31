@@ -1472,28 +1472,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G5.2",
       "title": "The incenter, excenters, angle-bisector geometry",
       "level": "Core II"
      },
      {
-      "code": "G5.2",
+      "code": "G5.3",
       "title": "Circumcenter, orthocenter, centroid",
       "level": "Core II"
      },
      {
-      "code": "G5.3",
+      "code": "G5.4",
       "title": "Altitudes, medians, the medial and orthic triangles",
       "level": "Core II"
      },
      {
-      "code": "G5.4",
+      "code": "G5.5",
       "title": "Ceva and Menelaus as working tools",
       "level": "Core II"
      },
      {
-      "code": "G5.5",
+      "code": "G5.6",
       "title": "Recognizing common triangle figures",
       "level": "Core"
+     },
+     {
+      "code": "G5.7",
+      "title": "Summary"
      }
     ]
    },

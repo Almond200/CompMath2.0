@@ -183,7 +183,7 @@ The [[insphere-radius|insphere]] of a polyhedron touches every face, and splitti
 Use volume and surface area for inspheres, boxes for tetrahedra with equal opposite edges, nets for paths on surfaces, and Euler's formula for counts. The last chapter goes beyond the AIME syllabus.`,
       related: [
         { card: "inradius-area", note: String.raw`the planar formula $K = rs$ that $V = \tfrac13rS$ extends (G2.5).` },
-        { card: "circle-in-angle", note: String.raw`the cross-section of a sphere tangent to two planes (G5.5).` },
+        { card: "circle-in-angle", note: String.raw`the cross-section of a sphere tangent to two planes (G5.6).` },
         { card: "reflect-across-the-line", note: String.raw`straightening paths, the planar version of unfolding (G6.4).` }
       ],
       exercises: [
