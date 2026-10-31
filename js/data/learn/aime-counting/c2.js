@@ -144,7 +144,7 @@ Stars and bars is one entry of [[balls-boxes-table|the table of distributions]]:
 
 Use stars and bars whenever a count is the number of ways to write a total as an ordered sum, after shifting away lower bounds and subtracting upper ones. The last lesson of the chapter separates choosing positions from assigning values.`,
       related: [
-        { card: "pie", note: String.raw`the subtraction of solutions that break upper bounds (C3.1).` },
+        { card: "pie", note: String.raw`the subtraction of solutions that break upper bounds (C3.2).` },
         { card: "coefficient-extraction", note: String.raw`the same count as a coefficient of a power of a polynomial.` },
         { card: "partitions", note: String.raw`identical objects into identical groups, where order of parts does not matter (C9.1).` },
         { card: "surjections", note: String.raw`distinct objects into labeled groups with none empty (C2.6).` }
@@ -180,7 +180,7 @@ When the groups are not labeled, divide the surjection count by $k!$: the result
 
 Decide whether an object is a choice of positions or an assignment of values, whether the groups are labeled, and whether every group must be used; then the count is a binomial coefficient, a power, a surjection count or a Stirling number. The Summary (C2.7) collects the chapter's strategies, and the next chapter develops inclusion-exclusion, the method behind the surjection formula.`,
       related: [
-        { card: "pie", note: String.raw`the inclusion-exclusion that counts surjections (C3.1).` },
+        { card: "pie", note: String.raw`the inclusion-exclusion that counts surjections (C3.2).` },
         { card: "balls-boxes-table", note: String.raw`where surjections and Stirling numbers sit among the distributions (C2.5).` },
         { card: "uniform-overcount", note: String.raw`dividing by $k!$ to unlabel the groups (C1.5).` }
       ],

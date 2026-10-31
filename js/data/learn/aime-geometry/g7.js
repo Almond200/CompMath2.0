@@ -137,7 +137,7 @@ The [[british-flag-theorem|British flag theorem]] says that for any point $P$ an
 Use the gcd to count lattice points on segments, Pick to pass between areas and lattice counts, and the British flag theorem for distances to the corners of a rectangle. The last lesson of the chapter counts regions and pieces.`,
       related: [
         { card: "euclidean-algorithm", note: String.raw`computing the greatest common divisor that counts lattice points (B3.1).` },
-        { card: "pie", note: String.raw`counting cubes crossed by a diagonal with inclusion-exclusion (C3.1).` },
+        { card: "pie", note: String.raw`counting cubes crossed by a diagonal with inclusion-exclusion (C3.2).` },
         { card: "lattice-points-circle", note: String.raw`lattice points on a circle, counted by sums of two squares.` }
       ],
       exercises: [

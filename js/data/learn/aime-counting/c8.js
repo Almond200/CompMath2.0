@@ -109,7 +109,7 @@ The [[extremal-principle|extremal principle]] starts from the largest, smallest 
 
 Every bounding answer has two parts: a proof that the bound holds and an example that attains it. The chapter's lessons end here; the extension chapter goes beyond the AIME syllabus.`,
       related: [
-        { card: "subset-avoiding-relation", note: String.raw`counting all the subsets that avoid a relation, not just the largest (C3.3).` },
+        { card: "subset-avoiding-relation", note: String.raw`counting all the subsets that avoid a relation, not just the largest (C3.4).` },
         { card: "odd-part-chains", note: String.raw`the chains by odd part, the boxes for divisibility problems.` },
         { card: "smoothing-method", note: String.raw`moving values toward each other to reach an extreme configuration.` }
       ],

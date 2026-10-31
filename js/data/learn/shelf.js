@@ -1409,19 +1409,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C3.1",
-      "title": "Inclusion-exclusion with two and three sets"
+      "title": "Introduction"
      },
      {
       "code": "C3.2",
-      "title": "Derangements and forbidden positions"
+      "title": "Inclusion-exclusion with two and three sets"
      },
      {
       "code": "C3.3",
-      "title": "At least, at most, exactly"
+      "title": "Derangements and forbidden positions"
      },
      {
       "code": "C3.4",
+      "title": "At least, at most, exactly"
+     },
+     {
+      "code": "C3.5",
       "title": "When a complement beats casework"
+     },
+     {
+      "code": "C3.6",
+      "title": "Summary"
      }
     ]
    },

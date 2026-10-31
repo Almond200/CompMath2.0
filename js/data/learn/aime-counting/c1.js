@@ -80,7 +80,7 @@ A complement can be the wrong choice. If the bad set is itself a union of overla
 
 Make it a habit to ask, before any casework, whether the opposite condition is simpler. The next lesson organizes a count by a well-chosen parameter.`,
       related: [
-        { card: "pie", note: String.raw`subtracting a complement that is itself a union of overlapping conditions (C3.1).` },
+        { card: "pie", note: String.raw`subtracting a complement that is itself a union of overlapping conditions (C3.2).` },
         { card: "handshakes-diagonals", note: String.raw`counting pairs that are not edges, the complement in polygon and polyhedron problems.` },
         { card: "binomial-row-sums", note: String.raw`all subsets number $2^n$, the usual "all" in a subset complement (C4.4).` }
       ],

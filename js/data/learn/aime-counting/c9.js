@@ -48,7 +48,7 @@ When a problem is about repeating a permutation, about symmetries fixing colorin
       related: [
         { card: "necklace-formula", note: String.raw`the cycles of a rotation in the necklace count (C2.3).` },
         { card: "eulers-totient", note: String.raw`the number of $k$ for which the rotation by $k$ is a single cycle.` },
-        { card: "derangements", note: String.raw`permutations with no cycle of length $1$ (C3.2).` }
+        { card: "derangements", note: String.raw`permutations with no cycle of length $1$ (C3.3).` }
       ],
       exercises: [
         { q: String.raw`A permutation of $9$ elements has cycles of lengths $2$, $3$ and $4$. What is the smallest positive $m$ with $f^m$ equal to the identity?`, answer: "12",

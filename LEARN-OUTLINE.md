@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1, C2 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1, C2, C3 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1260,10 +1260,12 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C3.1 Inclusion-exclusion with two and three sets | `inclusion-exclusion`, `pie` |
-| C3.2 Derangements and forbidden positions | `derangements` |
-| C3.3 At least, at most, exactly | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts` |
-| C3.4 When a complement beats casework | no new card (a comparison lesson) |
+| C3.1 Introduction | no card (the chapter's opening page: overlapping conditions, the complement of a union, strengths of a condition, forbidden pairs, with comprehension problems) |
+| C3.2 Inclusion-exclusion with two and three sets | `inclusion-exclusion`, `pie` |
+| C3.3 Derangements and forbidden positions | `derangements` |
+| C3.4 At least, at most, exactly | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts` |
+| C3.5 When a complement beats casework | no new card (a comparison lesson) |
+| C3.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C3.7 Review Problems and C3.8 Challenge Problems |
 
 ### C4. Bijections, symmetry and double counting (Core)
 

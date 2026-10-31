@@ -50,7 +50,7 @@ Overcounting is the usual error. When objects are counted by choosing pieces, th
 
 Split into separate cases or subtract a simple complement, and check on a small case. The next lesson counts arrangements with repeated objects and adjacency conditions.`,
       related: [
-        { card: "pie", note: String.raw`subtracting overlapping unwanted cases correctly (C3.1).` },
+        { card: "pie", note: String.raw`subtracting overlapping unwanted cases correctly (C3.2).` },
         { card: "organized-listing", note: String.raw`listing small cases in order to check a count (B2.4).` },
         { card: "constructive-counting", note: String.raw`counting by building, with cases where choices depend on earlier ones (C1.2).` }
       ],
