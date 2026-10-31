@@ -3736,77 +3736,92 @@ body.is-landing .content { padding: 0 0 50px; }
 .lesson-page .lp-main { padding-bottom: 90px; }
 .lesson-page .bk-body { min-height: calc(100vh - var(--topbar-h)); }
 
-/* ---------- The book view, second version (owner, 2026-10-31: modelled on an online textbook) ----------
-   A rail of chapter tabs, two title bars with arrows, problem blocks with a header bar, and
-   Previous / Back to Top / Next at the bottom, all in the book's own colour. */
-.content:has(> .bk-view) { padding-top: 0; padding-left: 0; padding-right: 0; }
-.bk-view { --bk-ink: var(--bk-b); display: grid; grid-template-columns: 46px minmax(0, 1fr); max-width: 1240px; margin: 0 auto; }
-:root[data-theme="dark"] .bk-view { --bk-ink: var(--bk-a); }
-.bk-rail { position: sticky; top: var(--topbar-h); align-self: start; display: flex; flex-direction: column; z-index: 30; }
-.bk-tab { position: relative; display: flex; justify-content: center; height: 48px; padding-top: 7px; box-sizing: border-box;
-  font-size: 14px; font-weight: 800; color: var(--text-dim); background: var(--bg-card); border-bottom: 2px solid var(--bg); text-decoration: none; }
-.bk-tab:first-child { background: var(--bk-b); color: #fff; height: 34px; }
-.bk-tab:hover { color: var(--text); background: var(--bg-card-hover); }
-.bk-tab:first-child:hover { color: #fff; filter: brightness(1.15); }
-.bk-tab.is-current, .bk-tab.is-current:hover { background: var(--bk-a); color: #fff; }
-.bk-tip { display: none; position: absolute; left: calc(100% + 10px); top: 8px; white-space: nowrap; padding: 6px 10px; border-radius: 6px;
-  background: rgba(55, 63, 78, 0.94); color: #fff; font-size: 13px; font-weight: 500; z-index: 40; pointer-events: none; }
-.bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; margin-top: -6px; border: 6px solid transparent; border-left: 0; border-right-color: rgba(55, 63, 78, 0.94); }
+/* ---------- The book view, third version (owner, 2026-10-31) ----------
+   The structure of an online textbook (a rail of chapter tabs, the chapter's and the page's
+   title with arrows, problem blocks, previous and next at the bottom) drawn in the app's own
+   language: rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines. */
+.content:has(> .bk-view) { padding-top: 18px; }
+.bk-view { --bk-ink: var(--bk-b); --bk-soft: color-mix(in srgb, var(--bk-a) 16%, transparent);
+  display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px; max-width: 1240px; margin: 0 auto; }
+:root[data-theme="dark"] .bk-view { --bk-ink: var(--bk-a); --bk-soft: color-mix(in srgb, var(--bk-a) 22%, transparent); }
+.bk-rail { position: sticky; top: calc(var(--topbar-h) + 14px); align-self: start; z-index: 30; display: flex; flex-direction: column; gap: 3px;
+  padding: 5px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); }
+.bk-tab { position: relative; display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 8px;
+  font-size: 14px; font-weight: 750; color: var(--text-dim); text-decoration: none; transition: background 0.12s, color 0.12s; }
+.bk-tab:first-child { font-size: 12.5px; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); border-radius: 8px 8px 4px 4px; margin-bottom: 3px; }
+.bk-tab:hover { background: var(--bg-card); color: var(--text); }
+.bk-tab.is-current, .bk-tab.is-current:hover { background: var(--bk-soft); color: var(--bk-ink); }
+.bk-tip { display: none; position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 6px 11px;
+  border: 1px solid var(--border-light); border-radius: 8px; background: var(--bg-card); color: var(--text); font-size: 13px; font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); z-index: 40; pointer-events: none; }
+.bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; transform: rotate(45deg);
+  background: var(--bg-card); border-left: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
 .bk-body { min-width: 0; }
-.bk-bars { position: sticky; top: var(--topbar-h); z-index: 25; display: grid; grid-template-columns: 62px minmax(0, 1fr); grid-template-rows: auto auto; }
-.bk-bars-cover { grid-row: 1 / span 2; display: block; background: var(--bk-b); }
-.bk-bars-cover .bk-cover { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; box-shadow: none; padding: 6px; justify-content: center; }
+.bk-bars { position: sticky; top: calc(var(--topbar-h) + 14px); z-index: 25; display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px;
+  padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card);
+  /* The first shadow paints the page colour into the gap above the header, so text scrolling up
+     disappears behind it instead of showing between it and the top bar. */
+  box-shadow: 0 -15px 0 0 var(--bg), 0 4px 14px rgba(0, 0, 0, 0.06); }
+.bk-bars-cover { grid-row: 1 / span 2; align-self: center; display: block; }
+.bk-bars-cover .bk-cover { width: 40px; padding: 4px; border-radius: 2px 6px 6px 2px; box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.2); }
 .bk-bars-cover .bk-series, .bk-bars-cover .bk-name { display: none; }
-.bk-bars-cover .bk-motif { width: 80%; margin: 0; flex: 0 0 auto; }
-.bk-bar { display: flex; align-items: center; gap: 10px; padding: 6px 12px; color: #fff; min-width: 0; }
-.bk-bar1 { background: var(--bk-b); font-size: 19px; font-weight: 800; min-height: 44px; }
-.bk-bar2 { background: var(--bk-a); font-size: 15px; font-weight: 750; min-height: 36px; }
-.bk-bar-t { flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #fff; text-decoration: none; }
-a.bk-bar-t:hover { text-decoration: underline; }
-.bk-bar .katex { color: #fff; }
-.bk-arrow { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%;
-  background: #fff; color: var(--bk-b); font-size: 15px; font-weight: 900; line-height: 1; text-decoration: none; }
-.bk-bar2 .bk-arrow { width: 20px; height: 20px; font-size: 13px; color: var(--bk-a); }
-.bk-arrow:hover { transform: scale(1.1); }
-.bk-arrow.is-off { opacity: 0.3; }
-.bk-view .lp-grid { padding: 18px 26px 0; }
-.bk-view .learn-h { color: var(--bk-ink); }
-.bk-view .lb-code, .bk-view .lc-n { color: var(--bk-ink); }
+.bk-bars-cover .bk-motif { width: 100%; margin: 0; stroke-width: 5; }
+.bk-bar { display: flex; align-items: center; gap: 10px; min-width: 0; color: var(--text); }
+.bk-bar1 { padding-bottom: 6px; border-bottom: 1px solid var(--border); font-size: 16px; font-weight: 780; }
+.bk-bar2 { padding-top: 6px; font-size: 14px; font-weight: 650; color: var(--text-dim); }
+.bk-bar-k { flex: 0 0 auto; min-width: 74px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bk-ink); }
+.bk-bar-t { position: relative; flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: inherit; text-decoration: none; }
+a.bk-bar-t:hover { color: var(--bk-ink); }
+.bk-arrows { flex: 0 0 auto; display: flex; gap: 4px; }
+.bk-arrow { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 26px; border-radius: 7px; border: 1px solid var(--border);
+  background: var(--bg-panel); color: var(--text); font-size: 18px; font-weight: 700; line-height: 1; text-decoration: none; transition: background 0.12s, color 0.12s, border-color 0.12s; }
+.bk-arrow:hover { background: var(--bk-soft); border-color: var(--bk-ink); color: var(--bk-ink); }
+.bk-arrow.is-off { opacity: 0.35; }
+.bk-view .lp-grid { padding: 22px 4px 0; }
+.bk-view .learn-h { color: var(--text); }
+.bk-view .learn-h .lb-code, .bk-view .lb-code, .bk-view .lc-n { color: var(--bk-ink); }
 .bk-view .lc-check { border-left-color: var(--bk-ink); }
 .bk-view .lb-lessons li > a .lb-title { color: var(--bk-ink); }
-/* Problem blocks: a header bar, the statement, then the student's box beside Show Solution. */
-.lp-prob { margin: 0 0 22px; border: 1px solid var(--bk-b, var(--border)); background: var(--bg-card); }
-.lp-prob-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 14px; background: var(--bk-b, var(--bg-panel)); color: #fff; }
-.lp-prob-n { font-size: 17px; font-weight: 800; }
-.lp-prob-ref { font-size: 13.5px; font-weight: 650; color: #fff; text-decoration: underline; text-underline-offset: 2px; opacity: 0.9; }
-.lp-prob-ref:hover { opacity: 1; }
-.lp-prob-body { padding: 12px 14px 14px; }
-.lp-work { display: flex; align-items: flex-start; gap: 12px; padding: 10px; background: var(--bg-panel); }
-.lp-work .lp-notes { flex: 1 1 auto; margin: 0; border-radius: 2px; background: var(--bg-card); }
+/* Problem blocks: one card each; a header row, a hairline, the statement, then the work box. */
+.lp-prob { margin: 0 0 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
+.lp-prob-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--bk-soft, var(--bg-panel)); }
+.lp-prob-n { font-size: 15px; font-weight: 800; color: var(--bk-ink, var(--text)); }
+.lp-prob-ref { font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--bg-card); color: var(--text-dim); text-decoration: none; border: 1px solid var(--border); }
+.lp-prob-ref:hover { color: var(--bk-ink, var(--accent)); border-color: var(--bk-ink, var(--accent)); }
+.lp-prob-body { padding: 14px 16px 16px; }
+.lp-work { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.lp-work .lp-notes { width: 100%; margin: 0; border-radius: 8px; background: var(--bg); }
 .lp-notes:focus { border-color: var(--bk-ink, var(--c-learn)); }
-.lp-show { flex: 0 0 auto; font: inherit; font-size: 14.5px; font-weight: 700; padding: 8px 20px; border: none; border-radius: 2px; cursor: pointer;
-  background: var(--bk-b, var(--c-learn)); color: #fff; }
-.lp-show:hover { filter: brightness(1.12); }
-.lp-show:disabled { cursor: not-allowed; background: #b6bcc6; color: #fff; filter: none; }
-:root[data-theme="dark"] .lp-show:disabled { background: #3a4357; color: #8792a8; }
+.lp-show { font: inherit; font-size: 13.5px; font-weight: 700; padding: 7px 16px; border: none; border-radius: 8px; cursor: pointer;
+  background: var(--bk-ink, var(--c-learn)); color: #fff; }
+:root[data-theme="dark"] .lp-show { color: #0e1525; }
+.lp-show:hover { filter: brightness(1.1); }
+.lp-show:disabled, :root[data-theme="dark"] .lp-show:disabled { cursor: not-allowed; background: var(--bg-panel); color: var(--text-faint); border: 1px solid var(--border); filter: none; }
 .lp-sol { margin: 12px 0 0; }
-.bk-foot { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin: 40px 0 0; padding-top: 16px; border-top: 2px solid var(--bk-ink); }
-.bk-foot a { font-size: 22px; font-weight: 800; color: var(--bk-ink); text-decoration: none; white-space: nowrap; }
-.bk-foot a:hover { text-decoration: underline; }
-.bk-foot > :last-child { justify-self: end; }
+.bk-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 14px; margin: 36px 0 0; padding-top: 18px; border-top: 1px solid var(--border); }
+.bk-foot-card { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bg-card); text-decoration: none; color: var(--text); transition: border-color 0.12s, background 0.12s; }
+.bk-foot-card:hover { border-color: var(--bk-ink); background: var(--bk-soft); }
+.bk-foot-next { text-align: right; }
+.bk-foot-k { font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bk-ink); }
+.bk-foot-t { position: relative; display: block; font-size: 14.5px; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bk-foot-top { font-size: 13px; font-weight: 650; color: var(--text-dim); text-decoration: none; padding: 6px 10px; border-radius: 8px; }
+.bk-foot-top:hover { background: var(--bg-panel); color: var(--text); }
 @media (max-width: 899px) {
-  .bk-view { grid-template-columns: 34px minmax(0, 1fr); }
-  .bk-rail { top: 0; }
-  .bk-tab { height: 40px; padding-top: 5px; font-size: 13px; }
-  .bk-tab:first-child { height: 30px; }
+  .content:has(> .bk-view) { padding-top: 12px; padding-left: 10px; padding-right: 10px; }
+  .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
+  .bk-rail { top: 8px; padding: 3px; }
+  .bk-tab { height: 32px; font-size: 13px; }
   .bk-tip { display: none !important; }
-  .bk-bars { position: static; grid-template-columns: 44px minmax(0, 1fr); }
-  .bk-bar1 { font-size: 15.5px; min-height: 38px; padding: 5px 8px; gap: 6px; }
-  .bk-bar2 { font-size: 13.5px; min-height: 32px; padding: 5px 8px; gap: 6px; }
-  .bk-view .lp-grid { padding: 14px 12px 0; }
-  .lp-work { flex-direction: column; align-items: stretch; }
-  .bk-foot a { font-size: 16px; }
+  .bk-bars { position: static; grid-template-columns: minmax(0, 1fr); padding: 8px 10px; }
+  .bk-bars-cover { display: none; }
+  .bk-bar-k { display: none; }
+  .bk-bar1 { font-size: 14.5px; }
+  .bk-bar2 { font-size: 13px; }
+  .bk-view .lp-grid { padding: 16px 0 0; }
+  .bk-foot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .bk-foot-top { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
 }
 /* Inside a problem block the statement is plain text, not a second box; the bars above already
    name the book and chapter, so the page's own eyebrow line is dropped. */

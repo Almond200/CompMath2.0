@@ -1318,6 +1318,8 @@
     // under Learn (owner, 2026-10-31).
     else if (h === "#/problems") to = "#/practice";
     else if (h === "#/lists" || h === "#/learn/lists") to = "#/learn";
+    // The By Contest lists were removed (owner, 2026-10-31): the study routes cover them.
+    else if (/^#\/list\/contest-(amc8|amc10|amc12|aime)$/.test(h)) to = "#/learn";
     if (to) history.replaceState(null, "", to);
   }
   // Go to an address; when it is already the address, re-render instead (no hashchange fires).
@@ -2096,7 +2098,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-ch-title, .home-cotd, .lc-q, .lc-result").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .home-cotd, .lc-q, .lc-result").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -2858,11 +2860,21 @@
   // numbers is easy, the middle third medium, the last third hard. Shared by the random-problem
   // picker and the contest profile.
   let FAM_MAXNUM = null;
-  function difficultyBand(p) {
+  // Where the problem sits in its paper, from near 0 (the first problem) to 1 (the last).
+  function paperPos(p) {
     if (!FAM_MAXNUM) { FAM_MAXNUM = {}; PROBLEM_DB.forEach(q => { FAM_MAXNUM[q.fam] = Math.max(FAM_MAXNUM[q.fam] || 0, q.num); }); }
-    const r = p.num / (FAM_LENGTH[p.fam] || FAM_MAXNUM[p.fam] || 25);
+    return p.num / (FAM_LENGTH[p.fam] || FAM_MAXNUM[p.fam] || 25);
+  }
+  function difficultyBand(p) {
+    const r = paperPos(p);
     return r <= 1 / 3 ? "easy" : r <= 2 / 3 ? "medium" : "hard";
   }
+  // An estimate of difficulty across contests, for putting a mixed list in rising order
+  // (owner, 2026-10-31): the contest's level plus the place in its paper. The offsets say roughly
+  // where each contest starts against the others (an early AIME problem is about as hard as a
+  // late AMC 12 one); they order a list, they are not a rating.
+  const FAM_LEVEL = { "AMC 8": 0, "AMC 10": 0.6, "AMC 12": 0.85, "AIME": 1.7, "HMMT November": 1.9, "HMMT February": 2.2, "HMMT": 2.2, "Putnam": 3 };
+  function difficultyScore(p) { return (FAM_LEVEL[p.fam] != null ? FAM_LEVEL[p.fam] : 2) + paperPos(p); }
   // A small pie of how a card's problems split across contests.
   function pieSvg(parts) {
     const total = parts.reduce((t, x) => t + x[1], 0);
@@ -3182,8 +3194,10 @@
         <h4>Practice Problems</h4>
         <p class="practice-placeholder">No practice problems for this pattern yet.</p>
       </div>` : "";
+    // Within each contest, easiest first (owner, 2026-10-31): by place in the paper, then newest.
     const groups = {};
     probs.forEach(p => (groups[p.fam] = groups[p.fam] || []).push(p));
+    Object.values(groups).forEach(g => g.sort((a, b) => paperPos(a) - paperPos(b) || b.year - a.year));
     const fams = Object.keys(groups).sort((a, b) => {
       const ia = FAM_ORDER.indexOf(a), ib = FAM_ORDER.indexOf(b);
       return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib) || a.localeCompare(b);
@@ -5129,7 +5143,7 @@
   }
   const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
   function learnArrow(href, dir, label) {
-    const icon = dir < 0 ? "&#8592;" : "&#8594;";
+    const icon = dir < 0 ? "&#8249;" : "&#8250;";
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
       : `<span class="bk-arrow is-off" aria-hidden="true">${icon}</span>`;
   }
@@ -5148,24 +5162,31 @@
     const hashOf = x => x ? learnHash(b, x.c, x.page) : "";
     const ci = c ? b.chapters.indexOf(c) : -1;
     const pc = ci > 0 ? b.chapters[ci - 1] : null, nc = c ? b.chapters[ci + 1] : b.chapters[0];
+    // Each bar: a small label, the title, and the two arrows at its right.
+    const bar = (cls, label, title, l, r) => `<div class="bk-bar ${cls}"><span class="bk-bar-k">${label}</span>${title}<span class="bk-arrows">${l}${r}</span></div>`;
     const bar1 = c
-      ? `${learnArrow(pc ? learnHash(b, pc) : "", -1, pc ? pc.code + " " + pc.title : "")}<a class="bk-bar-t" href="${learnHash(b, c)}">Chapter ${c.code}: ${escapeAttr(c.title)}</a>${learnArrow(nc ? learnHash(b, nc) : "", 1, nc ? nc.code + " " + nc.title : "")}`
-      : `<span class="bk-bar-t">${escapeAttr(b.title)}</span>`;
+      ? bar("bk-bar1", `Chapter ${c.code.slice(1)}`, `<a class="bk-bar-t" href="${learnHash(b, c)}">${escapeAttr(c.title)}</a>`,
+          learnArrow(pc ? learnHash(b, pc) : "", -1, pc ? pc.code + " " + pc.title : ""), learnArrow(nc ? learnHash(b, nc) : "", 1, nc ? nc.code + " " + nc.title : ""))
+      : bar("bk-bar1", "Book", `<span class="bk-bar-t">${escapeAttr(b.title)}</span>`, "", "");
     const bar2 = c
-      ? `${learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : "")}<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>${learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : "")}`
-      : `<span class="bk-bar-t">Contents</span>${learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : "")}`;
+      ? bar("bk-bar2", "Page", `<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>`,
+          learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""))
+      : bar("bk-bar2", "Page", `<span class="bk-bar-t">Contents</span>`, learnArrow("", -1, ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""));
+    // The bottom: the previous and next pages as two cards that say where they lead, and
+    // Back to top between them.
+    const footCard = (x, dir) => x ? `<a class="bk-foot-card bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}"><span class="bk-foot-k">${dir < 0 ? "&#8249; Previous" : "Next &#8250;"}</span><span class="bk-foot-t">${learnPageLabel(x)}</span></a>` : `<span></span>`;
     const foot = `<nav class="bk-foot">
-        ${prev ? `<a href="${hashOf(prev)}">&#8592; Previous</a>` : `<span></span>`}
-        <a href="#" data-bk-top>&#8593; Back to Top</a>
-        ${next ? `<a href="${hashOf(next)}">Next &#8594;</a>` : `<span></span>`}
+        ${footCard(prev, -1)}
+        <a class="bk-foot-top" href="#" data-bk-top>&#8593; Back to top</a>
+        ${footCard(next, 1)}
       </nav>`;
     $content.innerHTML = `<div class="learn-page lesson-page bk-view bk-${b.id}">
         ${learnRailHtml(b, c)}
         <div class="bk-body">
           <header class="bk-bars">
             <a class="bk-bars-cover" href="${learnHash(b)}" aria-label="${escapeAttr(b.title)}: contents">${bookCoverHtml(b, "s")}</a>
-            <div class="bk-bar bk-bar1">${bar1}</div>
-            <div class="bk-bar bk-bar2">${bar2}</div>
+            ${bar1}
+            ${bar2}
           </header>
           <div class="lp-grid">
             <article class="lp-main">${main}${foot}</article>
@@ -5309,9 +5330,10 @@
   // hidden until then, whatever the Strategy setting says.
   function learnProblemsHtml(refs) {
     const prog = learnProgress().problems;
-    return `<ol class="lp-problems">${refs.map((ref, i) => {
-      const p = learnProblem(ref);
-      if (!p) return "";
+    // Easiest first, harder after (owner, 2026-10-31), whatever order the file lists them in.
+    const probs = refs.map(learnProblem).filter(Boolean).map((p, k) => ({ p, k }))
+      .sort((x, y) => difficultyScore(x.p) - difficultyScore(y.p) || x.k - y.k).map(x => x.p);
+    return `<ol class="lp-problems">${probs.map((p, i) => {
       const saved = prog[p.slug] || {};
       const ownFig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
@@ -5339,7 +5361,7 @@
     sol.innerHTML = learnSolutionHtml(p);
     sol.hidden = false;
     const btn = li.querySelector(".lp-show");
-    if (btn) btn.hidden = true;
+    if (btn) { btn.textContent = "Hide Solution"; btn.classList.add("is-open"); }
     renderMath(li);
   }
 
@@ -5427,7 +5449,7 @@
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
       if (p && MAA_RE.test(p.ref)) showStatement(p, ".lp-st");
       const saved = learnProgress().problems[li.dataset.slug];
-      if (saved && saved.shown && (saved.notes || "").trim()) showLearnSolution(li);
+      if (saved && saved.shown && !saved.hidden && (saved.notes || "").trim()) showLearnSolution(li);
     });
     // A lesson counts as read once its last paragraph has been on screen.
     const end = $content.querySelector(".lp-end");
@@ -5461,8 +5483,16 @@
     const show = e.target.closest(".lp-show");
     if (show) {
       const li = show.closest(".lp-prob"), notes = li.querySelector(".lp-notes").value;
-      if (!notes.trim()) return;
       const prog = learnProgress();
+      // A shown solution can be hidden again; "shown" keeps the fact that it was seen.
+      if (show.classList.contains("is-open")) {
+        li.querySelector(".lp-sol").hidden = true;
+        show.textContent = "Show Solution"; show.classList.remove("is-open");
+        prog.problems[li.dataset.slug] = Object.assign(prog.problems[li.dataset.slug] || {}, { notes, hidden: true });
+        saveLearn();
+        return;
+      }
+      if (!notes.trim()) return;
       prog.problems[li.dataset.slug] = { notes, shown: true };
       saveLearn();
       showLearnSolution(li);
@@ -5506,7 +5536,8 @@
     const notes = e.target.closest(".lesson-page .lp-notes");
     if (!notes) return;
     const li = notes.closest(".lp-prob");
-    li.querySelector(".lp-show").disabled = !notes.value.trim();
+    const btn = li.querySelector(".lp-show");
+    btn.disabled = !notes.value.trim() && !btn.classList.contains("is-open");
     clearTimeout(learnNotesTimer);
     learnNotesTimer = setTimeout(() => {
       const prog = learnProgress(), cur = prog.problems[li.dataset.slug] || {};
@@ -7018,7 +7049,7 @@
 
 
 
-  const LIST_KINDS = [["route", "Study Routes"], ["contest", "By Contest"], ["core", "Starting Points"],
+  const LIST_KINDS = [["route", "Study Routes"], ["core", "Starting Points"],
                       ["configuration", "Configurations"], ["thinking", "Ways of Thinking"], ["curiosity", "Curiosities"]];
 
   function buildSidebar() {
