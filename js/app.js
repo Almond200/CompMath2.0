@@ -2680,6 +2680,23 @@
     if (container === $content) fitObserver.disconnect();
     cards.forEach(c => fitObserver.observe(c));
   }
+  // Printing (owner, 2026-10-31): cards far down a page are typeset only as they come near the
+  // screen, so before a print every card still waiting is typeset, or its math would print raw.
+  // This runs for the browser's own Print as well as for a list's "Print this list".
+  function prepareMathForPrint() {
+    const waiting = [...$content.querySelectorAll('.card[data-math="0"]')];
+    waiting.forEach(c => {
+      c.dataset.math = "1";
+      if (fitObserver) fitObserver.unobserve(c);
+      renderMath(c);
+    });
+    if (waiting.length) fitBatch(waiting.flatMap(c => [...c.querySelectorAll(".formula-display[data-latex]")]));
+  }
+  window.addEventListener("beforeprint", prepareMathForPrint);
+  if (window.matchMedia) {
+    const pm = window.matchMedia("print");
+    if (pm.addEventListener) pm.addEventListener("change", e => { if (e.matches) prepareMathForPrint(); });
+  }
   let fitTimer = 0;
   window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(() => { fitCardFormulas($content); fitInlineMath($content); }, 120); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitCardFormulas($content));
@@ -4014,7 +4031,7 @@
     if (!b) return;
     const what = b.dataset.listTool;
     if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
-    else if (what === "print") window.print();
+    else if (what === "print") { prepareMathForPrint(); window.print(); }
     else if (what === "link") {
       const url = location.href;
       const done = () => toast("Link copied");
@@ -4291,7 +4308,16 @@
   // One setting per row: its name and what it does on the left, a segmented control on the
   // right. Rows sit in panels by kind: how the app looks, how the math reads, how browsing
   // behaves, then commands and the experimental toys.
+  // Every setting lists its default option first (owner, 2026-10-31); the defaults are the first
+  // allowed value the settings loader falls back to.
+  const SETTING_DEFAULTS = {
+    theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
+    notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
+  };
   function settingRow(name, desc, key, current, options, pv) {
+    const def = SETTING_DEFAULTS[key];
+    if (def != null) options = options.slice().sort((a, b) => (b[0] === def) - (a[0] === def));
     return `
       <div class="set-row"${pv ? ` data-pv="${pv}"` : ""}>
         <div class="set-text"><div class="set-name">${name}</div><div class="set-desc">${desc}</div></div>

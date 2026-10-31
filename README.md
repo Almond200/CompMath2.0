@@ -295,6 +295,9 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Settings: every setting lists its default option first (Strategy now reads Click to show, Shown; Scroll speed Normal, Slow, Fast), from the same defaults the settings loader uses.
+- Lists: the page tools are blue text links, as in a card's page tools.
+- Printing: every card still waiting to be typeset is typeset before a print (the browser's own Print and a list's Print this list), so no math prints raw.
 - Settings: a fifth preview, A lesson, shows Card links in lessons (the card beside the text, or the lesson at full width), and its options read Opens in the lesson and Opens its page; the preview keeps its place when a setting changes. Lists: Back to top without an arrow.
 - Settings preview: three screens at a time, larger, with an arrow on each side to step through the four; pointing at a setting brings the screen it changes into view; the dividing line sits close to the settings, so the screens get the room.
 - Lists: page tools under "On this list" in a list's sidebar: Back to top, Copy link to this list, Print this list.
