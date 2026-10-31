@@ -2710,6 +2710,104 @@ body.is-landing .content { padding: 0 0 70px; }
   .lb-soon { display: none; }
   .lb-lessons { padding-left: 4px; }
 }
+.lb-lessons li > a { display: flex; flex: 1 1 auto; align-items: baseline; gap: 10px; min-width: 0; color: inherit; text-decoration: none; }
+.lb-lessons li > a .lb-title { color: var(--c-learn); }
+.lb-lessons li > a:hover .lb-title { text-decoration: underline; }
+.lb-read { flex: 0 0 auto; color: var(--c-learn); font-weight: 700; }
+.lb-open { display: inline-block; margin: 0 0 10px 22px; font-size: 13px; font-weight: 650; color: var(--c-learn); }
+.lb-book > .lb-open { margin: 0 16px 14px; }
+
+/* ---------- Learn: book, chapter, lesson and review pages (PLAN step L5) ---------- */
+.learn-page { max-width: 1180px; }
+.learn-h { margin: 4px 0 12px; font-size: 24px; line-height: 1.3; }
+.learn-h .lb-code { font-size: inherit; min-width: 0; margin-right: 4px; }
+.learn-h .lb-level { vertical-align: middle; font-size: 12px; }
+.lb-book-page, .lb-chapter-page { padding: 0; margin: 10px 0; }
+.lb-ch-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+.lb-ch-link { display: flex; flex: 1 1 320px; align-items: baseline; gap: 10px; min-width: 0; text-decoration: none; }
+.lb-ch-link:hover .lb-title { text-decoration: underline; }
+.lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
+.lp-grid { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; }
+.lp-grid.has-drawer { grid-template-columns: 220px minmax(0, 1fr) minmax(280px, 380px); gap: 22px; }
+.lp-outline { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
+  border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 12px; font-size: 13.5px; }
+.lp-outline > summary { cursor: pointer; font-weight: 700; color: var(--text); padding: 2px 0 6px; }
+.lp-outline .lb-lessons { padding: 0; margin: 4px 0 8px; }
+.lp-outline .lb-lessons li { font-size: 13px; padding: 5px 6px; border-radius: 7px; }
+.lp-outline .lb-lessons li.is-current { background: var(--cs-learn); }
+.lp-outline .lb-soon { display: none; }
+.lp-outline-up { font-size: 12.5px; color: var(--text-dim); }
+.lp-main { min-width: 0; max-width: 760px; }
+.lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
+.lp-cards-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 8px; }
+.lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 4.6em; }
+.lp-body p { line-height: 1.7; }
+.lp-h3 { margin: 30px 0 10px; font-size: 18px; }
+.lp-nav { display: flex; justify-content: space-between; gap: 12px; margin: 30px 0 10px; padding-top: 14px; border-top: 1px solid var(--border); }
+.lp-nav-link { font-weight: 650; color: var(--c-learn); text-decoration: none; }
+.lp-nav-link:hover { text-decoration: underline; }
+
+/* A check, answered with the math keyboard */
+.lc-check { margin: 18px 0; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 3px solid var(--c-learn); background: var(--bg-card); }
+.lc-q { margin-bottom: 10px; line-height: 1.6; }
+.lc-n { display: inline-block; margin-right: 6px; font-size: 12px; font-weight: 750; text-transform: uppercase; letter-spacing: 0.05em; color: var(--c-learn); }
+.lc-result { margin-top: 10px; padding: 8px 12px; border-radius: 8px; line-height: 1.6; font-size: 14.5px; }
+.lc-right { background: var(--cs-learn); }
+.lc-right strong { color: var(--c-learn); }
+.lc-wrong { background: var(--cs-patterns); }
+.lc-wrong strong { color: var(--c-patterns); }
+.lc-unread { background: var(--bg-panel); color: var(--text-dim); }
+.mk { max-width: 360px; }
+.mk-row { display: flex; gap: 8px; }
+.mk-input { flex: 1 1 auto; min-width: 0; font: inherit; font-size: 17px; padding: 7px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--bg); color: var(--text); }
+.mk-input:focus { outline: none; border-color: var(--c-learn); }
+.mk-submit { flex: 0 0 auto; font: inherit; font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 8px; border: none;
+  background: var(--c-learn); color: var(--bg); cursor: pointer; }
+.mk-preview { min-height: 2.4em; padding: 6px 2px 4px; font-size: 18px; overflow-x: auto; }
+.mk-keys { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; }
+.mk-key { font: inherit; font-size: 16px; min-height: 40px; padding: 0; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--bg-panel); color: var(--text); cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
+.mk-key:hover { border-color: var(--c-learn); }
+.mk-key:active { background: var(--cs-learn); }
+.mk-digit { background: var(--bg); font-variant-numeric: tabular-nums; }
+.mk-edit { color: var(--text-dim); }
+
+/* The problem list: statement, the student's box, then Show Solution */
+.lp-problems { list-style: none; margin: 0; padding: 0; }
+.lp-prob { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
+.lp-prob-head { font-weight: 700; margin-bottom: 8px; }
+.lp-prob-n { color: var(--c-learn); margin-right: 4px; }
+.lp-prob-head a { color: var(--text); text-decoration: none; }
+.lp-prob-head a:hover { color: var(--c-learn); text-decoration: underline; }
+.lp-prob .prob-st { margin: 0 0 10px; }
+.lp-notes { display: block; width: 100%; box-sizing: border-box; margin: 10px 0 8px; font: inherit; font-size: 14.5px; line-height: 1.5;
+  padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); resize: vertical; }
+.lp-notes:focus { outline: none; border-color: var(--c-learn); }
+.lp-show { border: none; cursor: pointer; background: var(--c-learn); color: var(--bg); }
+.lp-show:disabled { cursor: not-allowed; opacity: 0.45; filter: none; }
+.lp-sol { margin-bottom: 0; }
+
+/* The card drawer */
+.lp-drawer { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
+  border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 12px; }
+.lp-drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
+.lp-drawer-full { font-size: 13px; font-weight: 650; color: var(--c-learn); }
+.lp-drawer-close { font-size: 22px; line-height: 1; padding: 2px 9px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; }
+.lp-drawer .card { cursor: default; }
+.lp-drawer-body { font-size: 14px; margin-top: 10px; }
+@media (max-width: 1100px) {
+  .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 360px); }
+  .lp-grid.has-drawer .lp-outline { grid-column: 1 / -1; position: static; max-height: none; }
+}
+@media (max-width: 899px) {
+  .lp-grid, .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .lp-outline { position: static; max-height: none; }
+  /* On a phone the drawer is a sheet over the lower part of the screen. */
+  .lp-drawer { position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 60; max-height: 62vh;
+    border-radius: 14px 14px 0 0; box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.35); padding: 10px 16px 18px; }
+  .learn-h { font-size: 21px; }
+}
 .sh-section { margin-top: 16px; padding: 16px 18px; border-radius: 12px; background: var(--bg-card); border: 1px solid var(--border); }
 .sh-section h3 { margin: 0; font-size: 17px; font-weight: 780; }
 .sh-note { margin: 3px 0 12px; font-size: 13px; color: var(--text-dim); }

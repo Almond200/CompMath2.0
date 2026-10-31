@@ -8,25 +8,25 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add a README changelog entry, commit and push.
 
-## Current state (updated 2026-10-31, sixteenth cloud chat, branch `claude/funny-keller-pvi190`)
+## Current state (updated 2026-10-31, seventeenth cloud chat, branch `claude/wizardly-hopper-8zv99l`)
 
 - **Counts:** 765 cards (548 formulas, 169 methods, 48 patterns); 41 built-in lists; 4,675 problems, every one with a strategy, 4,229 citing at least one card; 4,665 with statements; 340 figures drawn for the app. Check with `$JSC tools/validate-problem-db.js`.
-- **Finished:** the whole earlier road ahead (steps A to I, R0, and the card renovation and proof pass). `QUESTIONS.md` has no card candidate open; the next is P54 (P53, the sign of a permutation, was written 2026-10-30). Every problem has been read and tagged, and every card has two practice problems. The README changelog is the record. Both hosts are current (2026-10-30).
+- **Finished:** the whole earlier road ahead (steps A to I, R0, and the card renovation and proof pass). `QUESTIONS.md` has no card candidate open; the next is P54. Every problem has been read and tagged, and every card has two practice problems. The README changelog is the record.
 - **On hold (owner, 2026-10-25):** Stage 5, moving the `lab/` pages (quiz, flashcards, formula web) into Practice. It stays on hold until the owner has tried the pilot (LQ9).
-- **Now (2026-10-31, sixteenth chat):** the owner approved the outline map and asked to build, then to keep going through the plan.
-  - **L4 (done):** the Learn button and `#/learn`. The page has the Textbooks shelf and the Lists, which moved out of Practice.
-  - **L2 sub-step 3 (mostly done):** every N3 problem has been read and placed, and N3's review is full (8 problems). N2 has problems for all five lessons, and its review holds 5 of its 8 to 12.
-  - **L3 (done):** the Learn spec is CONVENTIONS §14: chapter files, the prose format, the checks and the math keyboard's answer grammar, the AoPS-style problem list, addresses, the `mq-learn` progress key, and the gate.
-- **Next action:** step L5, the lesson shell, built to CONVENTIONS §14. In order:
-  1. The routes `#/learn/<book>`, `#/learn/<book>/<code>`, `.../<n>` and `.../review`.
-  2. The book and chapter pages, from the shelf.
-  3. The lesson page: an outline of the chapter, the prose, and a card drawer.
-  4. The math keyboard, with its parser and value comparison.
-  5. The problem list: statement, notes box, and Show Solution enabled only once the box has text.
-  6. `mq-learn` in `PROGRESS_KEYS`.
-  7. The gate extended to chapter files.
-
-  Then L6: write N2 and N3 into `js/data/learn/aime-number-theory/` from the outline, and fill N2's review first.
+- **Learn so far:** L0 to L4 done (outline map approved, spec in CONVENTIONS §14, Learn button and shelf). L2 sub-step 3 is mostly done: every N3 problem is placed and N3's review is full (8); N2 has problems for all five lessons and 5 of its 8 to 12 review problems.
+- **L5, the lesson shell (done 2026-10-31, seventeenth chat):**
+  - routes `#/learn/<book>`, `.../<code>`, `.../<n>`, `.../review`; book, chapter, lesson and review pages; the shelf links them;
+  - the lesson page: chapter outline, prose with `{{check N}}`, card drawer (a bottom sheet on a phone), problems, previous and next;
+  - the math keyboard and its grammar in `js/learn-answer.js` (shared with the gate);
+  - the AoPS-style problem list (Show Solution only once the box has text); "Back to <lesson>" on a problem or card opened from a lesson;
+  - `mq-learn` in `PROGRESS_KEYS`;
+  - the gate `tools/check-learn.js`, run by `build-learn-shelf.py --check`;
+  - the prototype lesson N3.1 and the N3 review in `js/data/learn/aime-number-theory/n3.js`.
+- **Next action:** step L6, write the pilot pair from the outline, each number checked by script:
+  1. N3.2 to N3.5 into `n3.js` (the outline gives each lesson's opening question, teaching points, cards, checks and problems).
+  2. Fill N2's review to 8 to 12 (candidates from `crt`, `modular-inverse`, `euclids-lemma`; 1992 AIME #11 and 1994 AIME #12 still to read), then write N2 into `aime-number-theory/n2.js` and load it from `index.html`.
+  3. Then L7 (the "Practice more" link at the end of a chapter, "Study this in Learn" on a problem page, a missed review problem pointing back) and L8, the owner tries the pilot.
+- **For the owner to try now:** Learn → AIME Number Theory → N3 → N3.1 (`#/learn/aime-number-theory/n3/1`), and the N3 review.
 
 ## The road ahead: the Learn track (owner, 2026-10-31)
 
@@ -113,7 +113,7 @@ The owner approves the spec.
 - Back links: "Return to list" and "Return to lesson".
 - Acceptance: no list disappears, `check-lists.py` passes, and every old address opens.
 
-### L5. The textbook shell
+### L5. The textbook shell (done 2026-10-31)
 - The library, book, chapter and lesson pages.
 - A lesson page has a chapter outline, the reading column, and a card drawer that shows a card without leaving the lesson. On a phone the outline and drawer collapse.
 - "Back to lesson" and "Practice more" keep the student's place.

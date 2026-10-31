@@ -953,6 +953,7 @@ A lesson never restates a card's content: it says why the idea is needed and how
 - **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷` (a fraction), `^`, `√`, `π`, brackets, a comma (for a list of answers), backspace and clear.
 - **Display:** the box shows the answer typeset as it is built.
 - **Stored form:** the plain expression grammar, for example `3/4`, `2sqrt(3)`, `7pi/2`, `-5`, `4, 9`.
+- **Code:** `js/learn-answer.js` reads the grammar, typesets it and compares values; the app and the gate load the same file.
 - **Comparison:** `answer` uses the same grammar, and is compared by value (within $10^{-9}$ relative). A comma list is compared as a set, so $\frac68$ and $\frac34$ both count, and so do `9, 4` and `4, 9`.
 - **After the answer:** the result is marked right or wrong and `why` (one line) is shown. Nothing is shown before an answer, since there are no hints.
 
@@ -992,10 +993,12 @@ The old list addresses are kept (§9).
 - Reading a lesson, answering a check and attempting a problem are kept apart.
 - A shown solution never counts as solved.
 
-**The gate** is `python3 tools/build-learn-shelf.py --check`, extended as chapter files appear. It checks that:
-- every card id in a chapter file is a card;
+**The gate** is `python3 tools/build-learn-shelf.py --check`, which runs `node tools/check-learn.js` on the chapter files. It checks that:
+- every card id in a chapter file is a card, and no card is taught (`cards`) in two lessons;
+- every `[[link]]` in a lesson's prose is one of its `cards` or `prereq`, so the drawer and the lesson agree;
+- each chapter file sits at its book's path and `index.html` loads it;
 - every problem ref is in the database;
-- no problem is placed twice;
+- no problem is placed twice, and no AMC 10/12 twin pair (the same statement on both papers) is placed as two;
 - every check's `answer` parses in the keyboard grammar;
 - every `{{check N}}` names a check that exists;
 - each written lesson is on the shelf.

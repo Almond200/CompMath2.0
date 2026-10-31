@@ -4,7 +4,8 @@
 The shelf holds the books (title, role), their chapters (code, title, level) and each chapter's
 lesson titles. Lesson content is not here yet; it comes with the lesson files (PLAN step L6).
 usage: python3 tools/build-learn-shelf.py           # write the file
-       python3 tools/build-learn-shelf.py --check   # fail if the file is out of date (gates.sh)
+       python3 tools/build-learn-shelf.py --check   # fail if the file is out of date, or a chapter file
+                                                     # breaks a rule (tools/check-learn.js; gates.sh)
 """
 import json, re, sys
 from pathlib import Path
@@ -43,6 +44,10 @@ if "--check" in sys.argv:
     if not OUT.exists() or OUT.read_text() != out:
         sys.exit("FAIL - js/data/learn/shelf.js is out of date: run python3 tools/build-learn-shelf.py")
     print("OK - the Learn shelf matches LEARN-OUTLINE.md")
+    # The chapter files: cards, problems placed once, check answers that parse (CONVENTIONS §14).
+    import subprocess
+    if subprocess.run(["node", str(ROOT / "tools/check-learn.js")]).returncode:
+        sys.exit(1)
 else:
     OUT.write_text(out)
     print("wrote", OUT.relative_to(ROOT))
