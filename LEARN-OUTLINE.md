@@ -48,6 +48,8 @@ A chapter ends with a **review** of about 8 to 12 problems that mix its lessons 
 
 | Book | Role | Chapters |
 |---|---|---|
+| **AMC 10** | the whole AMC 10 syllabus, from algebra and number theory to counting, probability and geometry | T1 to T9 |
+| **AMC 12** | what the AMC 12 adds: logarithms, deeper polynomials, trigonometry, complex numbers, conics, vectors and space | W1 to W9 |
 | **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
 | **AIME Algebra** | equations, polynomials, sequences, functions, inequalities, complex numbers and trig algebra | A1 to A9 |
 | **AIME Number Theory** | prime exponents, congruences, exponent cycles, integer solutions, digits | N1 to N8 |
@@ -70,6 +72,191 @@ A student need not finish the books in order. Any chapter can be entered once it
 | restrictions and exact answers | B6 and every chapter review |
 | complete and non-overlapping cases | C1, C3, N5, A1 |
 | transfer without labels | every chapter review, and a review at the end of each book |
+
+---
+
+## Book: AMC 10
+
+The AMC 10 syllabus in one book, for a student preparing for the AMC 10 (or the AMC 12 without its extra topics). It teaches its own cards from the start, so a card it teaches may be taught again in the AIME books: the AMC books and the AIME books are two separate tracks, and each places a contest problem at most once (owner's goal, 2026-10-31).
+
+### T1. The algebra toolkit (Core)
+
+| Lesson | Cards |
+|---|---|
+| T1.1 Factoring, expanding and simplifying | `difference-of-squares`, `square-of-sum`, `rationalizing`, `completing-the-square` |
+| T1.2 Linear equations and systems | `linear-elimination`, `add-all-equations`, `transforming-equations`, `symmetric-polynomial-strategies` |
+| T1.3 Substitutions and self-similar expressions | `name-the-whole-expression`, `substitute-repeated-block`, `repeated-block-equation`, `infinite-nest` |
+| T1.4 Absolute values, sign charts and floors | `absolute-value-rules`, `abs-value-relations`, `sign-chart`, `abs-value-graphing`, `name-the-floor`, `group-equal-floors`, `floor-equation`, `floor-sum-range` |
+| T1.5 Rates, averages, percents and word problems | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
+
+### T2. Quadratics, functions and extremes (Core)
+
+| Lesson | Cards |
+|---|---|
+| T2.1 Quadratics: roots, Vieta and the vertex | `quadratic-formula`, `vietas-quadratic`, `vertex-form`, `quadratic-forms`, *(pattern)* `quadratic-perfect-square` |
+| T2.2 Functions: composition, inverses, symmetry, defined operations | `inverse-function-properties`, `odd-even-functions`, `defined-operation` |
+| T2.3 Graphs and the number of solutions | `piecewise-graph-counting`, *(pattern)* `reading-graphs`, `slope-to-a-point` |
+| T2.4 Exponents and logarithms | `log-rules`, `change-of-base` |
+| T2.5 Largest and smallest values | `trivial-inequality`, `am-gm`, `max-product-fixed-sum`, `sos-identity`, `abs-triangle-inequality`, `median-minimizes-abs`, `placing-digits-extremes` |
+
+### T3. Polynomials, sequences and series (Core)
+
+| Lesson | Cards |
+|---|---|
+| T3.1 Polynomial roots, remainders and coefficients | `factor-remainder-theorem`, `polynomial-division`, `rational-root-theorem`, `coefficient-extraction`, `comparing-coefficients` |
+| T3.2 Arithmetic and geometric sequences | `arithmetic-series`, `geometric-series`, `triangular-numbers`, `power-sums` |
+| T3.3 Recurrences and periodic sequences | `first-order-recurrence`, *(pattern)* `periodic-sequences`, `organized-listing` |
+| T3.4 Telescoping and clever sums | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
+| T3.5 Symmetric identities in three variables | `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn` |
+
+### T4. Number theory: primes, divisors and digits (Core)
+
+| Lesson | Cards |
+|---|---|
+| T4.1 Prime factorization, gcd and lcm | `fundamental-theorem-arithmetic`, `euclidean-algorithm`, `gcd-lcm-product`, `lcm-common-multiples`, `gcd-substitution`, `recognition-numbers` |
+| T4.2 Counting and summing divisors | `number-of-divisors`, `sum-of-divisors`, `product-of-divisors`, `perfect-square-divisors` |
+| T4.3 Divisibility rules and factorials | `divisibility-rules`, `floor-multiples`, `consecutive-coprime`, `legendres-formula`, `trailing-zeros`, `factor-out-factorial`, `consecutive-product-factorial` |
+| T4.4 Bases and digits | `base-conversion`, `numeral-as-polynomial`, `unknown-base`, `digit-count`, `digit-sum-carries`, `digit-manipulation`, `base10-curiosities`, `palindromes`, `cryptarithms` |
+| T4.5 Decimals and calendars | `repeating-decimals`, `terminating-decimals`, *(pattern)* `calendar-problems` |
+
+### T5. Number theory: remainders and integer equations (Core)
+
+| Lesson | Cards |
+|---|---|
+| T5.1 Modular arithmetic | `modular-basics`, `euclids-lemma`, `subtract-equal-remainders`, `reduce-divisibility-constant`, `poly-divisible-linear` |
+| T5.2 Cycles, Fermat and Euler | `cycle-hunting`, `last-digit-patterns`, `fermats-little-theorem`, `eulers-totient`, `squares-mod-small` |
+| T5.3 Linear congruences and the Chinese Remainder Theorem | `bezouts-identity`, `crt`, `chicken-mcnugget`, `coins-and-prices` |
+| T5.4 Integer equations by factoring | `sfft`, `factor-pair-counting`, `only-even-prime`, `difference-of-squares-rep`, `choose-modulus`, `primes-6k` |
+| T5.5 Right triangles with integer sides | `pythagorean-triples`, `integer-triangles-perimeter` |
+
+### T6. Counting (Core)
+
+| Lesson | Cards |
+|---|---|
+| T6.1 Permutations, combinations and building objects | `permutations-combinations`, `constructive-counting`, `counting-functions`, `fencepost-counting` |
+| T6.2 Cases, complements and inclusion-exclusion | `casework-method`, `complementary-counting`, `inclusion-exclusion`, `pie`, `uniform-overcount` |
+| T6.3 Arrangements with restrictions | `multiset-permutations`, `gap-method`, `counting-blocks`, `circular-permutations`, `non-adjacent-selection`, `derangements` |
+| T6.4 Distributions and binomial coefficients | `stars-and-bars`, `balls-boxes-table`, `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `binomial-theorem`, `bijection-method` |
+| T6.5 Recursion, paths and processes | `recursive-counting`, *(pattern)* `tiling-a-board`, `grid-paths`, `grid-path-fill`, `backward-induction`, `simulate-the-process`, `working-backwards` |
+| T6.6 Subsets, graphs and pigeonhole | `subset-avoiding-relation`, `subset-sum-facts`, `handshake-lemma`, `eulerian-paths`, *(pattern)* `round-robin-tournaments`, `pigeonhole`, `pairing-to-bound`, `coloring-arguments` |
+
+### T7. Probability and expected value (Core)
+
+| Lesson | Cards |
+|---|---|
+| T7.1 Probability by counting | `basic-probability`, *(pattern)* `drawing-without-replacement`, `symmetry-probability` |
+| T7.2 Independence and conditional probability | `independent-events`, `conditional-probability`, `hypergeometric`, `binomial-probability` |
+| T7.3 Geometric probability | `geometric-probability` |
+| T7.4 Expected value | `expected-value` |
+| T7.5 Logic and puzzles | *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
+
+### T8. Geometry: triangles and circles (Core)
+
+| Lesson | Cards |
+|---|---|
+| T8.1 Similar and right triangles | `triangle-similarity`, `similar-figures-ratios`, `pythagorean-theorem`, `special-right-triangles`, `15-75-90-triangle`, `triangle-area-standard`, `triangle-inequality`, `triangle-congruence`, `parallel-exterior-angles`, `median-to-hypotenuse`, `right-triangle-inradius` |
+| T8.2 Ratios inside triangles | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar`, `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `angle-bisector-theorem`, `centroid-division`, `mass-points` |
+| T8.3 Right-triangle constructions | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling`, *(pattern)* `point-in-equilateral`, *(pattern)* `circle-in-angle` |
+| T8.4 Circles: angles, chords and tangents | `inscribed-angle-theorem`, `circle-basics`, `tangent-facts`, `chord-length`, `power-of-a-point`, `thales-theorem`, `angle-chasing`, `cyclic-opposite-angles`, `cyclic-equal-angles`, `angle-chord-secant`, `tangent-chord-angle`, *(pattern)* `cyclic-quadrilateral`, `equal-chords-arcs` |
+| T8.5 Incircles and touching circles | `incircle-tangent-lengths`, `inradius-area`, `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `triangle-of-centers`, `common-chord-length`, `triangle-center-angles` |
+| T8.6 Trigonometry in triangles | `law-of-sines`, `law-of-cosines`, `trig-area`, `law-cosines-60-120`, `law-of-cosines-special-triangles`, `herons-formula`, `triangle-13-14-15`, `pythagorean-identities`, `common-angle-values`, `reduction-identities` |
+
+### T9. Geometry: polygons, coordinates and solids (Core)
+
+| Lesson | Cards |
+|---|---|
+| T9.1 Polygons and areas | `polygon-angle-sums`, `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `equilateral-triangle-facts`, *(pattern)* `equiangular-polygon`, `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `circular-segment`, `inscribed-square` |
+| T9.2 Coordinates | `distance-midpoint`, `line-forms`, `point-line-distance`, `circle-equation`, `coordinate-bash`, `angle-between-lines`, `section-formula`, `parallel-lines-distance`, `tangent-lines-from-point`, `angle-bisectors-of-lines`, `shoelace-formula`, `picks-theorem`, `perpendicular-bisector-locus`, `bisector-closer-region` |
+| T9.3 Transformations and symmetry | `reflection-coordinates`, `rotation-90`, `composing-transformations`, `reflect-across-the-line`, *(pattern)* `folded-paper`, `figure-symmetries`, `fit-copies` |
+| T9.4 Counting in figures | `plane-regions`, `handshakes-diagonals`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski`, `rectangles-in-grid` |
+| T9.5 Solids | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `cube`, `space-diagonal`, `regular-octahedron`, *(pattern)* `painted-cubes`, `scale-one-level`, `cavalieris-principle`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
+| T9.6 Estimating and checking | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` |
+
+---
+
+## Book: AMC 12
+
+The topics the AMC 12 adds to the AMC 10: logarithms and functions, deeper polynomials and inequalities, trigonometry, complex numbers, more number theory and counting, and the geometry of trigonometry, conics, vectors and space. It assumes the AMC 10 book.
+
+### W1. Logarithms, exponentials and functions (Core)
+
+| Lesson | Cards |
+|---|---|
+| W1.1 Logarithmic and exponential equations | `take-logs-linearize`, `log-substitution`, `log-system` |
+| W1.2 Functional equations by substitution | `functional-substitution`, `fx-pairing`, `cauchy-functional-equations` |
+| W1.3 Floors beyond the basics | `floor-basics` |
+
+### W2. Polynomials and algebraic structure (Core)
+
+| Lesson | Cards |
+|---|---|
+| W2.1 Vieta for any degree, and power sums of roots | `vietas-general`, `newtons-sums`, `products-over-roots`, `fundamental-theorem-symmetric` |
+| W2.2 Roots: conjugates, signs and transformations | `conjugate-root-theorems`, `descartes-rule-signs`, `root-transformations`, `quadratic-root-location` |
+| W2.3 Remainders and interpolation | `polynomial-crt`, `lagrange-interpolation-formula` |
+| W2.4 Radicals and reciprocal substitutions | `denesting-radicals`, `palindromic-polynomials`, `reciprocal-power-sums`, `forced-difference-of-squares` |
+| W2.5 Factorizations worth knowing | `useful-factorizations`, `cubes-minus-3abc`, `antisymmetric-factorization`, `sophie-germain` |
+
+### W3. Sequences, sums and inequalities (Core)
+
+| Lesson | Cards |
+|---|---|
+| W3.1 Linear recurrences | `linear-recurrence`, `binets-formula` |
+| W3.2 Finite differences and double sums | `finite-differences`, `double-summation`, `arithmetico-geometric`, `largest-term-ratio` |
+| W3.3 The inequalities of the AMC 12 | `mean-chain`, `cauchy-schwarz`, `power-mean-inequality`, `bernoulli-inequality` |
+
+### W4. Trigonometry (Core)
+
+| Lesson | Cards |
+|---|---|
+| W4.1 Special values and identities | `special-trig-values`, `angle-addition`, `double-angle`, `half-angle` |
+| W4.2 Combining and solving | `harmonic-addition`, `inverse-trig-identities` |
+| W4.3 Products and powers | `trig-telescoping-product`, `even-power-sin-cos-sums` |
+
+### W5. Complex numbers (Core)
+
+| Lesson | Cards |
+|---|---|
+| W5.1 Complex arithmetic | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` |
+| W5.2 Polar form and De Moivre | `eulers-formula`, `polar-form`, `de-moivre` |
+| W5.3 Roots of unity and the fundamental theorem | `roots-of-unity`, `fundamental-theorem-algebra` |
+
+### W6. Number theory for the AMC 12 (Core)
+
+| Lesson | Cards |
+|---|---|
+| W6.1 Exponents, divisor functions and parity | `exponent-tracking`, `multiplicative-functions`, `largest-odd-divisor-sum`, `sigma-parity` |
+| W6.2 Inverses, Bézout and Euler's theorem | `modular-inverse`, `extended-euclidean-algorithm`, `eulers-theorem`, `wilsons-theorem` |
+| W6.3 Primes in binomials and bounded equations | `prime-divides-binomial`, `pascal-parity`, `power-minus-self`, `sum-of-two-squares`, `bounding-diophantine`, `squeeze-between-squares` |
+
+### W7. Counting and probability for the AMC 12 (Core)
+
+| Lesson | Cards |
+|---|---|
+| W7.1 More counting structures | `restricted-sequences`, `stars-bars-upper-bound`, `catalan-numbers`, `committee-chair`, `nested-subset-pairs` |
+| W7.2 More binomial identities | `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `generating-function-method` |
+| W7.3 Invariants, colorings and symmetry | `invariants-coloring`, `graph-coloring`, `permutation-cycle-structure`, `strategy-stealing` |
+| W7.4 Conditional probability and expectation | `bayes-theorem`, `indicator-variables`, `expected-fixed-points`, `tail-sum-expectation`, `total-expectation` |
+| W7.5 Random processes | `states-recursion-prob`, `geometric-distribution`, `turn-based-games` |
+| W7.6 Continuous probability | `product-of-uniforms`, `order-statistics`, `variance-independence` |
+
+### W8. Geometry: triangles and circles for the AMC 12 (Core)
+
+| Lesson | Cards |
+|---|---|
+| W8.1 Cevians and area ratios | `area-method`, `stewarts-theorem`, `angle-bisector-length`, `apollonius-theorem`, `cevas-theorem`, `medial-triangle`, `median-triangle-area`, `vivianis-theorem` |
+| W8.2 Cyclic quadrilaterals and incircles | `concyclicity-tests`, `ptolemys-theorem`, `brahmaguptas-formula`, `incircle-excircle-touch`, `perp-to-angle-bisector`, `angle-bisector-circumcircle` |
+| W8.3 Circles that touch | `common-tangent-lengths`, *(pattern)* `tangency-condition` |
+| W8.4 Trigonometry in triangles | `circumradius-area`, `projection-formula`, `trig-bash`, `altitude-bisector-angle` |
+
+### W9. Geometry: coordinates, transformations and space (Core)
+
+| Lesson | Cards |
+|---|---|
+| W9.1 Conic sections | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
+| W9.2 Tangency, determinants and lattice points | `tangency-equation`, `determinant-geometric`, `lattice-points-gcd`, `british-flag-theorem`, `varignons-theorem` |
+| W9.3 Transformations and vectors | `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `vector-dot-product`, `vector-projection`, `axis-stretch-area`, `linear-change-of-variables` |
+| W9.4 Counting regions and neighborhoods | `moser-circle`, `steiner-neighborhood` |
+| W9.5 Solids and space | `frustum-volume`, `regular-tetrahedron`, `plane-cross-section`, `dihedral-angle`, `distance-3d`, `plane-intercept-form`, `cross-product-area`, `box-tetrahedron`, `equal-edge-tetrahedron` |
 
 ---
 
@@ -272,7 +459,7 @@ Eight chapters. The changes from the first draft are three:
 | N2.4 | 1993 AIME #6 (three conditions joined into $n \equiv 495 \pmod{990}$); 2014 AIME I #8 ($N(N - 1)$ splits $16$ and $625$ between consecutive integers) |
 | N2.5 | 2012 AIME I #10 (two square roots modulo $125$, combined with modulo $8$); 2012 AIME II #12 (CRT makes every residue triple one residue modulo $1001$); 2011 AIME II #14 (bijections modulo $2$, $3$, $5$, joined by CRT) |
 
-**N2 review (to fill to 8 to 12):**
+**N2 review (10 problems, filled 2026-10-31; written in `js/data/learn/aime-number-theory/n2.js`):** 2004 AMC 10B #21 (common terms of two progressions: one residue modulo $21$); 2017 AMC 10B #23, twin 2017 AMC 12B #19 ($45 = 5 \cdot 9$, the digit sum modulo $9$, joined); 2020 AMC 10A #24 (conditions modulo $21$ and $60$ joined); 2023 AIME I #7 (remainders that must agree modulo common factors); 1993 AIME #9 (triangular positions agreeing modulo $2000$, split by CRT); and the five below.
 - 2013 AIME I #11 (read: linear congruences in $k$ modulo $9$, $11$, $13$, then CRT);
 - 2017 AIME I #9 (read: $100 \equiv 1 \pmod{99}$, then CRT modulo $9$ and $11$);
 - 2026 AIME I #8 (read: CRT turns $\equiv 5 \pmod{12}$ into conditions mod $3$ and $4$ on divisor exponents; assumes `number-of-divisors`);
@@ -390,7 +577,7 @@ Eight chapters. The changes from the first draft are three:
 - 2024 AIME I #13 needs Hensel lifting, so it goes to N8.2.
 - 2023 AIME II #15 needs inverses and binary expansions, so it goes to the N6 review.
 
-**Pilot status (2026-10-31):** every N3 problem has been read and placed, and the review is full. N2's review still needs 3 to 7 more problems; candidates come from the `crt`, `modular-inverse` and `euclids-lemma` cards (1992 AIME #11 and 1994 AIME #12 cite `euclids-lemma`, still to read).
+**Pilot status (2026-10-31):** N2 and N3 are written in full (`js/data/learn/aime-number-theory/n2.js`, `n3.js`).
 
 ### N4. Valuations and factorial divisibility (Core II)
 

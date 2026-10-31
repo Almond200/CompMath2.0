@@ -237,6 +237,8 @@
   const CAPTION_MODES = ["show", "hide"];
   // A card page can carry a Wikipedia-style column of page tools on the right (off by default).
   const TOOLS_MODES = ["off", "on"];
+  // A card link in a lesson: open the card in the drawer beside the lesson, or go to its page.
+  const LESSON_LINK_MODES = ["drawer", "card"];
   const SECTION_IDS = SECTIONS.map(s => s.id);
 
   // Every write to localStorage can fail -- Safari private browsing refuses outright, and
@@ -292,6 +294,7 @@
       strategy: pick(P.strategy, STRATEGY_MODES),
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
+      lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
       cols: pick(P.cols, ["regular", "spacious"]),
       scroll: pick(P.scroll, SCROLL_SPEEDS),
       start: P.start === "last" ? "formulas" : pick(P.start, START_MODES),  // "Where I left off" was removed (2026-10-23)
@@ -308,7 +311,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, strategy: state.strategy
+          tools: state.tools, strategy: state.strategy, lessonLinks: state.lessonLinks
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -338,6 +341,7 @@
     order: _loaded.order,        // "tier" | "curated" | "problems" — card order on section pages (tier, then importance)
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
+    lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
     scroll: _loaded.scroll,      // "normal" | "slow" | "fast" — mouse-wheel and trackpad scroll speed
@@ -2098,7 +2102,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4299,6 +4303,7 @@
           ${settingRow("Card order", "How cards are ordered on a subject page. Curated keeps the order the cards were written in; Most used puts first the cards that the most practice problems use.", "order", state.order, [["curated", "Curated"], ["problems", "Most used"]], "subject")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
           ${settingRow("When the app opens", "Where you land when you open the app without a link to a particular page. The front page shows the four spaces; Formulas goes straight in. The logo still takes you to the front page.", "start", state.start, [["landing", "Front page"], ["formulas", "Formulas"]])}
+          ${settingRow("Card links in lessons", "What a card's name does when you press it in a lesson: open the card beside the lesson, so you never leave the page, or go to the card's own page.", "lessonLinks", state.lessonLinks, [["drawer", "Open beside the lesson"], ["card", "Go to the card"]])}
           ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls (text size and theme).", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           <div class="set-row set-row-note">
             <div class="set-text"><div class="set-name">Filters</div><div class="set-desc">The contest-tier and importance filters apply everywhere cards are listed, and are set behind the funnel in the top bar.</div></div>
@@ -4890,7 +4895,7 @@
     formulas: `Formulas are the facts: theorems, identities, and standard results, each with why it holds and worked examples. <a href="#/methods">Methods</a> rely on them, and every card lists the <a href="#/practice">contest problems</a> where it appears.`,
     methods: `Methods are the moves you make once you are inside a problem. Each one names the <a href="#/formulas">formulas</a> it relies on, and <a href="#/patterns">patterns</a> tell you when it is worth trying.`,
     patterns: `Patterns are the problem shapes worth recognizing before you start. Each one points to the <a href="#/methods">methods</a> worth trying, and those lead to the <a href="#/formulas">formulas</a> they use.`,
-    learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and checks it with short questions and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
+    learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and ends with problems of its own and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
     practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal.`
   };
   const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: ["lesson"], practice: ["problem"] };
@@ -5001,6 +5006,7 @@
     }
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
+    wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
     if (unrel) unrel.addEventListener("click", () => {
       showUnwritten = !showUnwritten;
@@ -5086,12 +5092,17 @@
     "aime-number-theory": `<circle cx="50" cy="50" r="34" />${Array.from({ length: 12 }, (_, k) => `<circle cx="${(50 + 34 * Math.sin(k * Math.PI / 6)).toFixed(1)}" cy="${(50 - 34 * Math.cos(k * Math.PI / 6)).toFixed(1)}" r="${k % 3 ? 2.6 : 4.2}" class="mf" />`).join("")}<path d="M50 50 L50 24 M50 50 L68 60" />`,
     // a triangle in its circumcircle
     "aime-geometry": `<circle cx="50" cy="52" r="36" /><path d="M50 16 L19 70 L83 66 Z" /><path d="M50 16 L51 68" />`,
+    // five answer bubbles with one filled in
+    "amc-10": `${[18, 34, 50, 66, 82].map((x, k) => `<circle cx="${x}" cy="50" r="7"${k === 2 ? ' class="mf"' : ""} />`).join("")}<path d="M14 72 H86" class="mg" />`,
+    // an angle in the unit circle
+    "amc-12": `<circle cx="50" cy="50" r="34" /><path d="M16 50 H84 M50 16 V84" class="mg" /><path d="M50 50 L76 28" /><circle cx="76" cy="28" r="4" class="mf" /><path d="M62 50 A12 12 0 0 0 59 42" />`,
     // a lattice path on a grid
     "aime-counting": `${[14, 32, 50, 68, 86].map(v => `<path d="M14 ${v} H86 M${v} 14 V86" class="mg" />`).join("")}<path d="M14 86 H32 V68 H68 V32 H86 V14" />`
   };
   function bookParts(b) {
     const m = b.title.match(/^AIME (.+)$/);
-    return m ? { series: "AIME", name: m[1] } : { series: "Foundations", name: b.title };
+    if (m) return { series: "AIME", name: m[1] };
+    return /^AMC \d+$/.test(b.title) ? { series: "Contests", name: b.title } : { series: "Foundations", name: b.title };
   }
   const learnWrittenIn = b => b.chapters.reduce((n, c) => n + c.lessons.filter(l => learnLessonData(c, l)).length, 0);
   const learnLessonsIn = b => b.chapters.reduce((n, c) => n + c.lessons.length, 0);
@@ -5104,6 +5115,28 @@
         ${size === "s" ? "" : `<span class="bk-size">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</span>`}
       </span>`;
   }
+  // More than two rows of books fold away behind a "Show all" button (owner, 2026-10-31); the
+  // number of columns comes from the grid itself, so the cut follows the screen width.
+  let showAllBooks = false, shelfFit = null;
+  function wireShelfMore(root) {
+    const grid = root.querySelector(".bk-shelf-m"), btn = root.querySelector("#bk-more");
+    shelfFit = null;
+    if (!grid || !btn) return;
+    const tiles = Array.from(grid.children);
+    shelfFit = () => {
+      if (!grid.isConnected) return;
+      tiles.forEach(t => { t.hidden = false; });
+      const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
+      const extra = tiles.length - 2 * cols;
+      btn.hidden = extra <= 0;
+      if (extra > 0 && !showAllBooks) tiles.slice(2 * cols).forEach(t => { t.hidden = true; });
+      btn.setAttribute("aria-expanded", String(showAllBooks));
+      btn.textContent = showAllBooks ? "Show fewer textbooks" : "Show all textbooks (" + extra + " more)";
+    };
+    btn.addEventListener("click", () => { showAllBooks = !showAllBooks; shelfFit(); });
+    shelfFit();
+  }
+  window.addEventListener("resize", () => { if (shelfFit) shelfFit(); });
   // The shelf on the Learn page (and, smaller, on the home page).
   function learnCoversHtml(size) {
     return `<div class="bk-shelf bk-shelf-${size}">${LEARN_SHELF.map(b => `
@@ -5115,8 +5148,9 @@
   function learnShelfHtml() {
     return `<section class="sh-section" id="learn-books">
         <h3>Textbooks</h3>
-        <p class="learn-note">Five books from the AMC to the AIME. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
+        <p class="learn-note">Books from the AMC 10 to the AIME. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
         ${learnCoversHtml("m")}
+        <button type="button" class="ct-toggle bk-more" id="bk-more" hidden></button>
       </section>`;
   }
   // Where to pick up: the lesson after the last one read, else the first written lesson.
@@ -5385,7 +5419,12 @@
   function learnBodyHtml(l, d) {
     const ex = d.exercises || [];
     const num = i => `${l.code}.${i + 1}`;
+    // Related cards (owner, 2026-10-31): how the lesson connects to cards it does not teach in its
+    // explanation, one line each, so the explanation itself never breaks off to talk about them.
+    const related = (d.related || []).filter(r => BY_ID[r.card]);
     return `<div class="detail-body lp-body">${detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code)}</div>
+      ${related.length ? `<h3 class="lp-h3">Related cards</h3>
+        <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkifyCards(r.note)}</li>`).join("")}</ul>` : ""}
       ${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
         <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}">
             <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-sol-${i + 1}">Jump to solution</button></div>
@@ -5441,7 +5480,8 @@
   }
 
   function learnCardChips(ids) {
-    return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link related-item" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join("");
+    // Plain links, like every other card link in the lesson (owner, 2026-10-31).
+    return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join(`<span class="lp-cards-sep">&middot;</span>`);
   }
   // A lesson or a review: the outline, the reading column and the drawer.
   function renderLearnLesson(b, c, l) {
@@ -5525,7 +5565,7 @@
     }
     // A card link in the lesson opens in the drawer instead of leaving the page.
     const link = e.target.closest(".lp-main .card-link[data-card], .lp-preview .card-link[data-card]");
-    if (link && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
+    if (link && state.lessonLinks !== "card" && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
       e.preventDefault();
       e.stopImmediatePropagation();
       hideCardPreview();
