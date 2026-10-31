@@ -5658,7 +5658,8 @@
               <li class="lb-lesson is-current"><a href="${learnHash(b)}" aria-current="page"><span class="lb-title">Contents</span></a></li>
               <li class="lb-lesson"><a href="${learnHash(b)}/how-to-use"><span class="lb-title">How to Use This Book</span></a></li>
             </ol>
-          </li>${b.chapters.map(c => `
+          </li>${b.chapters.map((c, i) => `${c.part && c.part !== (b.chapters[i - 1] || {}).part ? `
+          <li class="bk-toc-part"><h4>${escapeAttr(c.part)}</h4></li>` : ""}
           <li class="bk-toc-ch">
             <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${c.lessons.length} lessons</span></span></a>
             <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>

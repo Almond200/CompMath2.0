@@ -4130,3 +4130,8 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
   .search-wrap { min-width: 56px; }
   #search-input { padding-left: 10px; padding-right: 8px; }
 }
+
+/* A book's parts (Foundations, Core topics, Advanced topics, Toward the AIME): a plain heading in
+   the contents, no box (owner, 2026-10-31: no boxes inside boxes). */
+.bk-toc-part { list-style: none; margin: 22px 0 2px; }
+.bk-toc-part h4 { margin: 0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bk-ink, var(--text-dim)); }
