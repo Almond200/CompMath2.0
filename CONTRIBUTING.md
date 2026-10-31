@@ -3,7 +3,7 @@
 > **Adding a card? Read [CONVENTIONS.md](CONVENTIONS.md) instead.** It is the short checklist:
 > the two legal field orders, the write-up headings for each kind, the mandatory example, the
 > diagram rule for geometry, and the duplicate check — each with the measurement that proves it
-> (first taken across 557 cards; 759 now), regenerable with `python3 tools/scan-conventions.py`. This file holds the
+> (first taken across 557 cards; 765 now), regenerable with `python3 tools/scan-conventions.py`. This file holds the
 > reasoning, the coverage-gap register and the per-year retag notes, which is why it is long.
 
 

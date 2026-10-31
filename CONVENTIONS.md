@@ -922,7 +922,7 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Wide screens and phones are separate.** A phone change sits inside a phone media query and never alters the wide layout. Sticky elements need `overflow-x: clip`, never `hidden`, on `html` and `body`.
 - **Small action buttons** (the new-list +, Show / Hide) are solid tints that only brighten slightly on hover.
 
-## 14. Learn: lessons, checks and problem sets (PLAN step L3, 2026-10-31)
+## 14. Learn: books, chapters, lessons and problem sets (PLAN step L3, 2026-10-31; revised through the seventeenth chat)
 
 The rules for the Learn space. What each book, chapter and lesson holds is in `LEARN-OUTLINE.md`; the plan is `PLAN.md`; the owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`.
 
@@ -948,6 +948,8 @@ window.MATH_LEARN["N3"] = {
   review: ["2008 AMC 10A, Problem 24", "..."]
 };
 ```
+
+A chapter in the approved chapter structure (C5) has no `review`. Its first lesson is the Introduction and its last the Summary, which adds `strategies: [String.raw`...`, ...]` (the Problem Solving Strategies). The closing pages are `reviewProblems: { exercises: [...], problems: [...] }` and `challenge: { exercises: [...], problems: [...] }`. The gate (`tools/check-learn.js`) checks this shape.
 
 The code and title of each lesson come from the shelf, never from this file. A chapter with no file shows its lessons as "Not written yet".
 
@@ -984,17 +986,21 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 |---|---|
 | the Learn page | `#/learn` |
 | a book | `#/learn/<book-id>` |
-| a chapter | `#/learn/<book-id>/<code>` (code in lower case, for example `#/learn/aime-number-theory/n3`) |
+| How to Use This Book | `#/learn/<book-id>/how-to-use` |
+| a chapter | `#/learn/<book-id>/<code>` (code in lower case, for example `#/learn/aime-number-theory/n3`); in the approved structure it shows the X.1 Introduction |
 | a lesson | `#/learn/<book-id>/<code>/<n>` (`.../n3/1` is N3.1) |
-| a chapter review | `#/learn/<book-id>/<code>/review` |
+| a chapter review, or Review Problems | `#/learn/<book-id>/<code>/review` |
+| Challenge Problems | `#/learn/<book-id>/<code>/challenge` |
 
-**The book view** (owner, 2026-10-31). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book's own page, which has no rail and no header: the cover with the book's line, its size and a Start or Continue button, then the table of contents, each chapter a heading (code, title, level, lessons written) over its lessons and review as links, chapters divided by hairlines (no boxes). The book's other pages follow an online textbook's structure, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
-- a rounded rail of tabs on the left: C for the contents, then each chapter's number; the current one tinted; hovering a tab shows the chapter's name in a small card with a pointer;
+**The book view** (owner, 2026-10-31). The Learn page shows every book as a cover (folded past two rows behind "Show all textbooks") (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book's own page, which has no rail and no header: the cover with the book's line, its size and a Start or Continue button, then the table of contents, each chapter a heading (code, title, level, lessons written) over its lessons and review as links, chapters divided by hairlines (no boxes). The book's other pages follow an online textbook's structure, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
+- a rounded rail of tabs on the left: C for the contents, then each chapter's number, all one height with no markers; the current one tinted. Each chapter tab is a scrubber: its height is split into the chapter's pages, pointing or pressing at a height names that page in a small card, and a click or a release opens it;
 - a header card attached to the top of the page (it scrolls away with the page; no sticky headers): the cover, then two rows, the chapter's ("Chapter 3") and the lesson's ("Lesson"), each with a small label and two arrow buttons;
 - each problem in its first look: a rounded card with its number and contest reference, the statement as plain text (no box inside the card), then the work box with Show Solution to its right (under it on a phone), which becomes Hide Solution once shown; the box starts two lines tall, grows with its text, and cannot be dragged to resize;
 - at the bottom, three small plain links (no cards, no background until hovered): ‹ the previous page, Back to top, the next page ›.
 
-The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
+On a phone (760 px and narrower) there is no rail and no title bars: a line names the book and the place in it, and a row pinned under the top bar holds the previous page, a menu of every chapter and page, and the next page. The card drawer is a sheet at the bottom that closes when swiped down.
+
+The pages run in one order through the book (each chapter's overview, its lessons, its review; in the approved structure, its Introduction, lessons, Summary, Review Problems and Challenge Problems), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
 
 The old list addresses are kept (§9).
 

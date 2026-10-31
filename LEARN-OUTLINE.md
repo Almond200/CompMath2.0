@@ -1,21 +1,19 @@
 # Learn: the outline of every book, chapter and lesson
 
-This file is step L2 of `PLAN.md`: the contents of the Learn section, planned before anything is written or built (owner, 2026-10-31). The plan says what to do; this file says what each book holds. Nothing in it is in the app yet.
+This file says what each Learn book holds: its chapters, its lessons, and the cards each lesson teaches. `PLAN.md` says what to do next, and CONVENTIONS §14 says how a lesson and a chapter are written. `tools/build-learn-shelf.py` builds the app's shelf (`js/data/learn/shelf.js`) from the "Book:" sections below, so they always match the app.
 
-The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31). That proposal grew the first draft (5 books, 6 + 4 chapter titles, one pilot) into 41 chapters with lesson-level syllabi. This file adds what the proposal left open: real card ids for every lesson, and contest problems for the pilot.
+The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31), which grew the first draft into chapters with lesson-level syllabi; this file added real card ids for every lesson.
 
-**Status (2026-10-31):**
-- The chapter and lesson titles of all five books are drafted.
-- Every lesson has a first pass of card ids (each id checked to exist; the cards nothing on the shelf places yet are listed in "Coverage" at the end).
-- The pilot, N3 (cycles, exponentiation and order), has full lesson plans and candidate problems.
-- N2 (linear congruences and CRT) has lesson problems, and its review is part-filled.
-- Every other chapter has titles and cards only.
+**Status (2026-10-31, end of the seventeenth chat):**
+- Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
+- C5 is the one chapter in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
 
-**Levels.** Each chapter is labelled with one of three levels:
-- **Core:** the foundation an AIME student is expected to have. It is taught first and revisited in reviews.
-- **Core II:** for the later or harder AIME problems. It is taught after the essentials.
+**Levels.** Each chapter is labelled with one of three levels (the second plan labels every lesson too):
+- **Core:** the foundation. In the AIME books, what the early AIME problems need; in the AMC books, the early to middle problems.
+- **Core II:** in the AIME books, the later AIME problems; in the AMC books, the hard problems. A high score needs both.
 - **Extension:** optional reference or challenge material. Nothing in Core depends on it.
 
 Olympiad-tier cards that fit no chapter stay in the reference only. Olympiad books wait (LQ4).
@@ -30,19 +28,18 @@ Olympiad-tier cards that fit no chapter stay in the reference only. Olympiad boo
 - A problem whose route needs a later chapter is moved later, or marked as a challenge with the needed card linked.
 - Fields kept for each problem once chosen: `primaryPlacement`, `relatedCards` (its tags), `requiredPrereqs`, `difficulty` (direct, intermediate or challenging; an editorial call, not an official ranking), `teachingPurpose`, `verificationStatus`.
 
-**Numbers.** Every number in a worked example or a check has been computed (Python), unless it is marked otherwise.
+**Numbers.** Every number in a worked example or a problem has been computed (Python), unless it is marked otherwise.
 
 ## The lesson standard
 
-Each lesson teaches one usable skill. It follows the template below; explanation and checks interleave, and there are no separate modes.
-1. **Target and prerequisites.** Say what the lesson teaches and link the cards it assumes. An opening question is optional, and the lesson never needs an elaborate discovery story.
-2. **Teach it directly.** Define the idea, state its hypotheses, show why it is useful, and derive only what helps understanding. Link the canonical card and never copy it.
-3. **Direct example, then checks.** A worked example, including the clue that made the approach promising. Then 1 to 3 short checks, typed with the math keyboard and answered with one line of why (LQ5).
-4. **Variations.** A condition that fails, a more efficient alternative route, and at least one use that is not obvious but can be taught.
-5. **Lesson problems.** About 3 to 5 contest problems, rising from straightforward to AIME style. They come in an AoPS-style list, and Show Solution works only once something is written (LQ6).
-6. **Summary.** The key conditions, the failure cases, and how this idea differs from the related ones.
+The full rules are in CONVENTIONS §14; in short:
+1. **The cards first.** A lesson opens with the cards it teaches and the cards it assumes, each a link.
+2. **One flowing explanation,** with no subheadings: define the idea, state its conditions, show why it is useful, work an example that includes the clue that made the approach promising, then a variation or a condition that fails. Link the canonical card and never copy it.
+3. **Related cards,** each with one line on how it connects.
+4. **The lesson's own problems,** with full worked solutions further down the page.
+5. **Contest practice problems,** about 3 to 5, rising in difficulty, in the AoPS-style list where Show Solution works only once something is written (LQ6).
 
-A chapter ends with a **review** of about 8 to 12 problems that mix its lessons and earlier prerequisites, without saying which technique is intended. Pacing is flexible: these counts are targets, adjusted to how hard the skill is and how many verified problems exist.
+A chapter follows the approved chapter structure: X.1 Introduction (a short overview of the chapter's ideas, with comprehension problems), the lessons, a Summary with Problem Solving Strategies, then Review Problems (mostly comprehension, our own first) and Challenge Problems (harder, contest problems first). Every list of problems runs from easiest to hardest. A chapter not yet reworked ends with a chapter review of about 8 to 12 mixed problems.
 
 ## The shelf and its prerequisite spine
 
