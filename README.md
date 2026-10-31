@@ -295,6 +295,7 @@ the card in `tools/rewrite-register.json` and in a batch of `js/data/new-cards.j
 If the `latex` uses `\sum` or `\prod`, add a `latexPlain` right after it with the terms written
 out ($a_1 + a_2 + \cdots + a_n$); a Key forms bullet with a sigma writes both forms as
 `\alt{sigma form}{written-out form}`. The notation setting picks one, and `scan-conventions.py`
+- Accessibility (a user's report): Filters, Browse by tag and a space's "i" box are real modal dialogs: opening one moves the focus into it, Tab and Shift+Tab stay inside, the "/" shortcut is off while it is open, and closing returns the focus to what opened it (not after following a link to a new page). The dialogs say aria-modal, and each filter chip says aria-pressed.
 - Docs, a full pass: PLAN's Current state and road ahead rewritten (finished steps folded into one Done list, what replaced the checks and the overview pages, the remaining work in order); LEARN-OUTLINE's status, levels and lesson standard brought to the current format; CONVENTIONS §14 (the C5 chapter shape, the addresses, the rail and the phone view); the README's overview (front page, problem pages, Learn, Practice, Settings); QUESTIONS marks LQ4, LQ5 and LQ8 as later changed; CLAUDE.md notes the phone exception to sticky headers.
 fails on a sigma with no written-out twin. To give a broad card a Connected formulas row, add it
 to `js/data/connected.js` (CONVENTIONS §12).

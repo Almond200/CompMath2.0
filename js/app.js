@@ -6402,9 +6402,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let advEl = null;
   let advDraft = null;
   function onAdvKey(e) { if (e.key === "Escape") closeAdvanced(); }
-  function closeAdvanced() {
+  function closeAdvanced(restore = true) {
     if (!advEl) return;
-    advEl.remove(); advEl = null;
+    const el = advEl;
+    advEl = null;
+    el.remove();
+    releaseModal(el, restore);
     document.removeEventListener("keydown", onAdvKey, true);
   }
   function openAdvanced() {
@@ -6447,7 +6450,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       });
     }
     refreshAdvTags();
-    if (tf) setTimeout(() => tf.focus(), 0);
+    trapModal(advEl, "#adv-tag-search");
     setTimeout(() => document.addEventListener("keydown", onAdvKey, true), 0);
   }
   function onAdvClick(e) {
@@ -6467,7 +6470,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const labels = [...advDraft.tags];
       state.adv = null;
       state.query = ""; $search.value = "";
-      closeAdvanced();
+      closeAdvanced(false);   // a new page opens: the focus is not sent back to the button
       location.hash = tagHash(labels);
       window.scrollTo({ top: 0 });
     }
@@ -7902,10 +7905,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // opened in it, in a centered dialog like Filters. It closes on the backdrop, the close
   // button, Escape, or opening anything in it.
   let infoEl = null;
-  function closeSpaceInfo() {
+  function closeSpaceInfo(restore = true) {
     if (!infoEl) return;
-    infoEl.remove();
+    const el = infoEl;
     infoEl = null;
+    el.remove();
+    releaseModal(el, restore);
   }
   function openSpaceInfo(name) {
     closeSpaceInfo();
@@ -7934,18 +7939,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
         clearSearch();
         if (a.getAttribute("href") === location.hash) { e.preventDefault(); render(); }
       }
-      if (e.target === infoEl || e.target.closest(".modal-close") || a) closeSpaceInfo();
+      // Following a link goes somewhere new, so the focus is not sent back to the "i".
+      if (e.target === infoEl || e.target.closest(".modal-close") || a) closeSpaceInfo(!a);
     });
     renderMath(infoEl);
-    const x = infoEl.querySelector(".modal-close");
-    if (x) x.focus();
+    trapModal(infoEl, ".modal-close");
   }
   document.addEventListener("click", e => {
     const btn = e.target.closest && e.target.closest(".nsh-info");
     if (btn) openSpaceInfo(btn.dataset.info);
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeSpaceInfo(); });
-  window.addEventListener("hashchange", closeSpaceInfo);
+  window.addEventListener("hashchange", () => closeSpaceInfo(false));
 
   // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
   // open the subject last visited in them.
@@ -8136,6 +8141,49 @@ The book remembers the last lesson you opened, in this browser, and the contents
     window.scrollTo({ top: 0 });
   });
 
+  // ---------- Dialogs: focus goes in, stays in, and comes back ----------
+  // Filters, Browse by tag and a space's "i" box are modal (a report, 2026-10-31): opening one
+  // moves the keyboard focus into it, Tab and Shift+Tab cycle inside it, nothing behind it can be
+  // reached (the "/" shortcut included), and closing it returns the focus to whatever opened it.
+  const openModals = [];
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  function trapModal(overlay, first) {
+    const dlg = overlay.querySelector('[role="dialog"]') || overlay;
+    dlg.setAttribute("aria-modal", "true");
+    if (!dlg.hasAttribute("tabindex")) dlg.tabIndex = -1;
+    const items = () => [...dlg.querySelectorAll(FOCUSABLE)].filter(el => el.getClientRects().length);
+    const m = { overlay, dlg, opener: document.activeElement };
+    m.onKey = e => {
+      if (e.key !== "Tab" || openModals[openModals.length - 1] !== m) return;
+      const f = items();
+      if (!f.length) { e.preventDefault(); dlg.focus(); return; }
+      const a = document.activeElement, i = f.indexOf(a);
+      if (e.shiftKey && (i <= 0)) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
+    };
+    // Focus that lands behind the dialog (a click on the page through some gap, a script) is
+    // brought back in.
+    m.onFocusIn = e => {
+      if (openModals[openModals.length - 1] !== m || dlg.contains(e.target)) return;
+      const f = items();
+      (f[0] || dlg).focus({ preventScroll: true });
+    };
+    document.addEventListener("keydown", m.onKey, true);
+    document.addEventListener("focusin", m.onFocusIn, true);
+    openModals.push(m);
+    const start = (first && dlg.querySelector(first)) || items().find(el => !el.classList.contains("modal-close")) || items()[0] || dlg;
+    start.focus({ preventScroll: true });
+    return m;
+  }
+  function releaseModal(overlay, restore = true) {
+    const k = openModals.findIndex(m => m.overlay === overlay);
+    if (k < 0) return;
+    const m = openModals.splice(k, 1)[0];
+    document.removeEventListener("keydown", m.onKey, true);
+    document.removeEventListener("focusin", m.onFocusIn, true);
+    if (restore && m.opener && m.opener.isConnected && typeof m.opener.focus === "function") m.opener.focus({ preventScroll: true });
+  }
+
   // ---------- Filters popup ----------
   // One filter for the whole app: contest tier, importance within the subsection, and contest
   // level. The counts show how many cards each chip belongs to across the whole reference.
@@ -8158,15 +8206,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function onSettingsKey(e) { if (e.key === "Escape") closeSettings(); }
   function closeSettings() {
     if (!settingsEl) return;
-    settingsEl.remove(); settingsEl = null;
+    const el = settingsEl;
+    settingsEl = null;
+    el.remove();
+    releaseModal(el);
     document.removeEventListener("keydown", onSettingsKey, true);
     updateGearActive();
   }
   function refreshSettingsControls() {
     if (!settingsEl) return;
     const af = state.filter;
-    settingsEl.querySelectorAll("[data-tier]").forEach(b => b.classList.toggle("active", af.tiers.has(b.dataset.tier)));
-    settingsEl.querySelectorAll("[data-imp]").forEach(b => b.classList.toggle("active", af.importances.has(b.dataset.imp)));
+    // Each chip says whether it is on to a screen reader as well as by its colour.
+    settingsEl.querySelectorAll("[data-tier]").forEach(b => { const on = af.tiers.has(b.dataset.tier); b.classList.toggle("active", on); b.setAttribute("aria-pressed", String(on)); });
+    settingsEl.querySelectorAll("[data-imp]").forEach(b => { const on = af.importances.has(b.dataset.imp); b.classList.toggle("active", on); b.setAttribute("aria-pressed", String(on)); });
   }
   function afterFilterChange() {
     saveSettings(); updateGearActive(); render(); refreshSettingsControls();
@@ -8178,7 +8230,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const TIER_NAMES = { "amc": "AMC", "aime-early": "AIME Early", "aime-late": "AIME Late", "olympiad": "Olympiad" };
     const IMP_NAMES = { high: "High", medium: "Medium", low: "Low", lower: "Lower", lowest: "Lowest" };
     const chips = (keys, names, set, attr, count) => keys.map(k =>
-      `<button class="filter-chip${set.has(k) ? " active" : ""}" data-${attr}="${k}">${names[k]} <span class="fc-count">${count[k] || 0}</span></button>`).join("");
+      `<button type="button" class="filter-chip${set.has(k) ? " active" : ""}" aria-pressed="${set.has(k)}" data-${attr}="${k}">${names[k]} <span class="fc-count">${count[k] || 0}</span></button>`).join("");
     settingsEl = document.createElement("div");
     settingsEl.className = "modal-overlay";
     settingsEl.innerHTML = `
@@ -8202,6 +8254,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       </div>`;
     document.body.appendChild(settingsEl);
     settingsEl.addEventListener("click", onSettingsClick);
+    trapModal(settingsEl);
     setTimeout(() => document.addEventListener("keydown", onSettingsKey, true), 0);
   }
   function onSettingsClick(e) {
@@ -8230,7 +8283,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // like 7/2 would otherwise lose the keystroke and the focus.
   const typingIn = el => !!el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
   document.addEventListener("keydown", e => {
-    if (e.key === "/" && document.activeElement !== $search && !typingIn(document.activeElement)) {
+    if (e.key === "/" && !openModals.length && document.activeElement !== $search && !typingIn(document.activeElement)) {
       e.preventDefault();
       // When the box is already on screen (the sticky top bar on a wide window), a plain focus()
       // still scrolled the page up by the scroll padding, so the page is told not to move. On a
