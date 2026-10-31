@@ -302,6 +302,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
   - **Continue** lists only the cards and problems opened lately. Lessons and books stay out of it (many open lessons crowded it) and show only in Learn's "Recently opened" row, as small chips.
   - **Problem of the day** answers the pointer like a card row: the whole section's background fills in a soft rectangle (no extra "Open the problem" label).
   - **The problem's box** has room for its credit: the credit line is indented like the statement, with space under it.
+  - **Learn → Lists, no box inside a box:** "Your lists" is a plain subsection of the Lists section, its lists drawn as tiles like the study lists, with the "Name a new list" box under them.
   - **The strip of five spaces** has the card background (white in light, the card colour in dark), so it stands off the page.
 - **The home page, second version, and Learn's recents (2026-10-31, owner: "I don't like all of the big boxes and open space").**
   - The home page now keeps the app's top bar (spaces and search), like every other page, and reads like a reference site's front page:

@@ -4909,10 +4909,9 @@
         ${learnShelfHtml()}
         <section class="sh-section" id="pr-study">
           <h3>Lists</h3>
-          <div class="pr-top pr-top-one">
-          <section class="hp-panel" id="pr-lists">
-            <div class="hp-label">Your lists</div>
-            <div class="pl-list">
+          <div id="pr-lists">
+            <h4 class="learn-sub">Your lists</h4>
+            <div class="pl-list pl-mine">
               <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
               ${mine.map(listLink).join("")}
             </div>
@@ -4920,7 +4919,6 @@
               <input type="text" id="lists-new-name" placeholder="Name a new list&hellip;" maxlength="40" autocomplete="off">
               <button type="submit">Create</button>
             </form>
-          </section>
           </div>
           <h4 class="learn-sub">Study lists</h4>
           <div class="grid-scroll"><table class="cy-grid route-grid">

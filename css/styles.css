@@ -2890,11 +2890,10 @@ body.is-landing .content { padding: 0 0 70px; }
 }
 
 /* Learn → Lists: room around your own lists */
-#pr-study > .pr-top { margin-top: 16px; }
-#pr-lists { padding: 16px 18px 18px; }
-#pr-lists .pl-item { padding-top: 10px; padding-bottom: 10px; }
-#pr-lists .lists-new { margin-top: 14px; }
-#pr-study > .learn-sub { margin-top: 28px; }
+/* Your lists sit in the Lists section as a plain subsection, not a box inside the box. */
+#pr-lists .learn-sub { margin-top: 16px; }
+#pr-lists .lists-new { margin-top: 10px; max-width: 520px; }
+#pr-study > .learn-sub { margin-top: 26px; }
 
 /* The card drawer */
 .lp-drawer { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
