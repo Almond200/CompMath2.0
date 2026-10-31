@@ -295,7 +295,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
-- **A lesson's card rows are labelled "Teaches you" and "Assumes you know"** instead of "Cards" and "Assumes" (owner, 2026-10-31).
+- **The card drawer breathes more** (owner, 2026-10-31): more padding at the top, the card's name now opens the full card (the separate "Open the full card" link is gone), no focus ring on the × when it opens, and the lesson's card chips sit further from their labels.
+- **A lesson's card rows are labelled "Teaches you about" and "Assumes you know"** instead of "Cards" and "Assumes" (owner, 2026-10-31).
 - **The card drawer is white** (the card colour in dark) instead of the bluish panel, for more contrast, and its close button is a small bare × the height of the tags beside it (owner, 2026-10-31).
 - **Making a list no longer asks for a name first** (owner, 2026-10-31). "+ New list" sits right under "Your lists" (and the home page's "Make a list" does the same): one press makes "Untitled list" (numbered when the name is taken) and opens it with the name selected, ready to type over. Enter or a click elsewhere keeps the new name, Escape keeps the old one. A list's title renames in place the same way when clicked, and the Rename button now does this instead of a browser prompt.
 - **Lessons are no longer marked read** (owner, 2026-10-31): the tick beside a lesson, the "read" counts on a book's contents, and the tracking behind them are gone. Start or Continue on a book now points to the lesson opened last, else the first written lesson.

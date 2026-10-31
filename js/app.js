@@ -5399,21 +5399,20 @@
     if (!e || !drawer) return;
     const f = e.formula, sec = cardSections(e);
     const fig = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
-    // The preview: what the card is (kind, tier, name), its formula at full width, the one-line
-    // summary and the first figure, then the explanation drawn exactly as on the card page. The
-    // practice problems, examples and links stay on the full card, which the last line opens.
+    // The preview: what the card is (kind, tier), its name (which opens the full card, where the
+    // examples, practice problems and links stay), its formula at full width, the one-line
+    // summary and the first figure, then the explanation drawn exactly as on the card page.
     drawer.innerHTML = `<div class="lp-drawer-head">
           <div class="card-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
           <button type="button" class="lp-drawer-close" aria-label="Close the card">&times;</button>
         </div>
         <div class="detail lp-preview">
-          <div class="lp-preview-title"><h3 class="card-name">${f.name}</h3><span class="detail-actions">${starBtnHtml(id)}${addListBtnHtml(id)}</span></div>
+          <div class="lp-preview-title"><h3 class="card-name"><a class="lp-preview-name" href="#/f/${id}" title="Open the full card">${f.name}</a></h3><span class="detail-actions">${starBtnHtml(id)}${addListBtnHtml(id)}</span></div>
           ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
           ${leadBoxHtml(f)}
           <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p>
           ${fig ? `<div class="diagram detail-diagram">${fig}</div>` : ""}
           ${cardExplanationHtml(e, sec)}
-          <a class="lp-drawer-full" href="#/f/${id}">Open the full card for its examples, practice problems and links &rarr;</a>
         </div>`;
     drawer.hidden = false;
     drawer.scrollTop = 0;
@@ -5421,7 +5420,9 @@
     renderMath(drawer);
     wireProofToggles(drawer);
     fitBatch([...drawer.querySelectorAll(".formula-display[data-latex]")]);
-    drawer.querySelector(".lp-drawer-close").focus({ preventScroll: true });
+    // The drawer itself takes the focus (Escape closes it), so no focus ring lands on the ×.
+    drawer.tabIndex = -1;
+    drawer.focus({ preventScroll: true });
   }
   function closeLearnDrawer() {
     const drawer = $content.querySelector(".lp-drawer");
@@ -5452,7 +5453,7 @@
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
         <div class="lp-cards">
-          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you</span>${learnCardChips(d.cards)}</div>` : ""}
+          ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
