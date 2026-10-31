@@ -43,8 +43,8 @@ Absolute values are pieces too, but they are often better seen as geometry. $|x 
 
 The signal is a floor, a fractional part, or an absolute value in an equation or a sum. Name the integer part or the sign, solve on each piece, and keep only solutions that lie on their own piece.`,
       related: [
-        { card: "floor-multiples", note: String.raw`$\lfloor \tfrac nd \rfloor$ counts multiples, the most common floor in number theory (N1.5).` },
-        { card: "digit-count", note: String.raw`$\lfloor \log_{10} n \rfloor + 1$ digits, a floor of a logarithm (N6.2).` },
+        { card: "floor-multiples", note: String.raw`$\lfloor \tfrac nd \rfloor$ counts multiples, the most common floor in number theory (N1.6).` },
+        { card: "digit-count", note: String.raw`$\lfloor \log_{10} n \rfloor + 1$ digits, a floor of a logarithm ((N6.3)).` },
         { card: "piecewise-graph-counting", note: String.raw`counting solutions of a piecewise equation by its graph (A4.5).` }
       ],
       exercises: [
@@ -71,7 +71,7 @@ Logarithms need positive arguments and a positive base other than $1$, so every 
 The signal is any logarithm, an unknown in an exponent, or a product of powers. Put everything in one base, name the logarithms, and solve the algebra that results.`,
       related: [
         { card: "exponent-laws", note: String.raw`the rules for powers that every logarithm rule restates.` },
-        { card: "digit-count", note: String.raw`the number of digits as $\lfloor \log_{10} n \rfloor + 1$ (N6.2).` },
+        { card: "digit-count", note: String.raw`the number of digits as $\lfloor \log_{10} n \rfloor + 1$ ((N6.3)).` },
         { card: "vietas-quadratic", note: String.raw`after substituting $u = \log x$, the sum of the $u$ roots gives the product of the $x$ roots.` }
       ],
       exercises: [

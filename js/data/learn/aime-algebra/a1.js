@@ -116,9 +116,9 @@ Sometimes the expression is a quartic or a higher power that must be prime, and 
 
 The signal is "integer" or "positive integer" in a problem whose algebra is a quadratic, a product of unknowns, or a high power. Complete the square or the product, reach a constant, and list factor pairs.`,
       related: [
-        { card: "sfft", note: String.raw`completing the product $(x + b)(y + a)$ for equations with an $xy$ term (N5.2).` },
-        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of squares, and the parity condition on the factors (N5.2).` },
-        { card: "factor-pair-counting", note: String.raw`listing the factor pairs of the constant (N1.4).` }
+        { card: "sfft", note: String.raw`completing the product $(x + b)(y + a)$ for equations with an $xy$ term ((N5.3)).` },
+        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of squares, and the parity condition on the factors ((N5.3)).` },
+        { card: "factor-pair-counting", note: String.raw`listing the factor pairs of the constant (N1.5).` }
       ],
       exercises: [
         { q: String.raw`How many integers $n$ make $n^2 + 6n + 24$ a perfect square?`, answer: "4",

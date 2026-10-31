@@ -50,7 +50,7 @@ A [[modular-inverse|modular inverse]] of $a$ modulo $n$ is a number $b$ with $ab
 Invert by the extended algorithm, reduce exponents by Euler, and use Wilson for factorials. The last lesson of the chapter treats binomial coefficients and bounded equations.`,
       related: [
         { card: "crt", note: String.raw`combining congruences (M2.3).` },
-        { card: "multiplicative-order", note: String.raw`the exact period of powers (N3.3).` },
+        { card: "multiplicative-order", note: String.raw`the exact period of powers (N3.4).` },
         { card: "cycle-hunting", note: String.raw`finding periods by listing (M2.2).` }
       ],
       exercises: [
@@ -81,7 +81,7 @@ When an equation does not factor, [[bounding-diophantine|bound the variables]]: 
 
 Count carries for binomial coefficients, check primes $\equiv 3 \pmod 4$, and bound or squeeze when factoring fails. This completes the AMC Number Theory book.`,
       related: [
-        { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.1).` },
+        { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime ((N8.2)).` },
         { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n \pmod p$ (M2.2).` },
         { card: "pythagorean-triples", note: String.raw`hypotenuses as sums of two squares (M2.5).` }
       ],

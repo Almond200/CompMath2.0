@@ -92,6 +92,9 @@ for (const [code, ch] of Object.entries(learn)) {
     if (last.title !== 'Summary') errs.push(`${code}: a chapter with an Introduction ends with a Summary lesson`);
     else if (ch.lessons && ch.lessons[last.code] && !(ch.lessons[last.code].strategies || []).length) errs.push(`${last.code}: the Summary needs its Problem Solving Strategies`);
     if (ch.review) errs.push(`${code}: a chapter with an Introduction uses reviewProblems and challenge, not review`);
+    // Every page of a chapter in this structure is written (a lesson code repeated in the file
+    // would silently drop a lesson).
+    for (const x of ls) if (!(ch.lessons || {})[x.code]) errs.push(`${x.code}: a chapter in the approved structure has every lesson written`);
   }
   for (const [k, name] of [['reviewProblems', 'Review Problems'], ['challenge', 'Challenge Problems']]) {
     const set = ch[k];

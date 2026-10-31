@@ -18,7 +18,7 @@ Use these tools whenever a problem mentions $i$, a conjugate or a modulus: split
       related: [
         { card: "conjugate-root-theorems", note: String.raw`non-real roots of a real polynomial come in conjugate pairs.` },
         { card: "abs-triangle-inequality", note: String.raw`$|z + w| \le |z| + |w|$, the bound on a sum of complex numbers (A5.3).` },
-        { card: "cycle-hunting", note: String.raw`the period $4$ of the powers of $i$ is a cycle like those of last digits (N3.1).` }
+        { card: "cycle-hunting", note: String.raw`the period $4$ of the powers of $i$ is a cycle like those of last digits (N3.2).` }
       ],
       exercises: [
         { q: String.raw`Write $\tfrac{2 + 3i}{1 - i}$ as $a + bi$ and find $a + b$.`, answer: "2",

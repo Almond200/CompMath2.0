@@ -16,8 +16,8 @@ The [[divisibility-rules|divisibility rules]] test small primes without dividing
 
 Factor first, then read divisors, gcds and lcms from the exponents. The next lesson works with remainders.`,
       related: [
-        { card: "exponent-tracking", note: String.raw`working with the exponent of each prime separately (N1.1).` },
-        { card: "gcd-lcm-product", note: String.raw`$\gcd(a, b)\operatorname{lcm}(a, b) = ab$ and its uses (N1.1).` },
+        { card: "exponent-tracking", note: String.raw`working with the exponent of each prime separately (N1.2).` },
+        { card: "gcd-lcm-product", note: String.raw`$\gcd(a, b)\operatorname{lcm}(a, b) = ab$ and its uses (N1.2).` },
         { card: "sum-of-divisors", note: String.raw`the sum of the divisors from the factorization.` }
       ],
       exercises: [
@@ -53,9 +53,9 @@ Residues also organize cases. A square is $0$ or $1 \pmod 4$; it is $0$, $1$ or 
 
 Reduce early, use negative residues, invert only coprime numbers, and test equations modulo small numbers. The next lesson finds the cycles of powers.`,
       related: [
-        { card: "modular-inverse", note: String.raw`inverses modulo $n$ in general (N2.2).` },
-        { card: "crt", note: String.raw`combining congruences to different moduli (N2.4).` },
-        { card: "fermats-little-theorem", note: String.raw`$a^{p-1} \equiv 1 \pmod p$, the first general power rule (N3.2).` }
+        { card: "modular-inverse", note: String.raw`inverses modulo $n$ in general (N2.3).` },
+        { card: "crt", note: String.raw`combining congruences to different moduli (N2.5).` },
+        { card: "fermats-little-theorem", note: String.raw`$a^{p-1} \equiv 1 \pmod p$, the first general power rule (N3.3).` }
       ],
       exercises: [
         { q: String.raw`Find the remainder when $999 \cdot 998$ is divided by $1000$.`, answer: "2",
@@ -87,8 +87,8 @@ Reduce early, use negative residues, invert only coprime numbers, and test equat
 Tabulate until a repeat, note where the cycle begins and its length, and reduce. The next lesson solves equations in integers.`,
       related: [
         { card: "periodic-sequences", note: String.raw`sequences that repeat, in general (B2.4).` },
-        { card: "multiplicative-order", note: String.raw`the exact period of $a^k \bmod n$ and why it divides $\varphi(n)$ (N3.2).` },
-        { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1 \pmod n$, a period that always works (N3.2).` }
+        { card: "multiplicative-order", note: String.raw`the exact period of $a^k \bmod n$ and why it divides $\varphi(n)$ (N3.3).` },
+        { card: "eulers-theorem", note: String.raw`$a^{\varphi(n)} \equiv 1 \pmod n$, a period that always works (N3.3).` }
       ],
       exercises: [
         { q: String.raw`What is the last digit of $7^{2026}$?`, answer: "9",
@@ -111,7 +111,7 @@ Tabulate until a repeat, note where the cycle begins and its length, and reduce.
 
 Complete products, list factor pairs, and use parity. The next chapter moves to counting.`,
       related: [
-        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of two squares (N5.2).` },
+        { card: "difference-of-squares-rep", note: String.raw`which numbers are differences of two squares ((N5.3)).` },
         { card: "bounding-diophantine", note: String.raw`bounding the variables when an equation does not factor.` },
         { card: "useful-factorizations", note: String.raw`$ab + a + b + 1 = (a + 1)(b + 1)$, the identity behind the trick (B1.1).` }
       ],

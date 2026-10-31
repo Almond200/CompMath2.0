@@ -15,7 +15,7 @@ For the Fibonacci numbers, $x^2 = x + 1$ has roots $\varphi = \tfrac{1 + \sqrt5}
 A closed form is not always the fastest route. With only a few terms needed, or an unknown starting value, running the recurrence directly, carrying the unknown as a symbol, is often quicker, as when $u_6 = 128$ is given and $u_5$ is wanted. The signal for a closed form is a far term, a growth rate, or an identity among the terms.`,
       related: [
         { card: "first-order-recurrence", note: String.raw`the one-term case $a_n = pa_{n-1} + q$, solved by shifting to a geometric sequence.` },
-        { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic (N7.4).` },
+        { card: "pisano-periods", note: String.raw`the same recurrences read modulo $m$, where they become periodic ((N7.5)).` },
         { card: "reciprocal-power-sums", note: String.raw`$x^n + x^{-n}$ satisfies a linear recurrence in $n$ (A1.3).` }
       ],
       exercises: [
@@ -87,7 +87,7 @@ The signal is a sequence given by its first terms, a sum of polynomial values, o
 
 An [[infinite-nest|infinite nest]], a radical, continued fraction, or tower that repeats itself, is evaluated by naming it and noticing that cutting off the first layer leaves the same expression. The resulting equation usually has two roots, and the domain decides between them: $x^2 = 6 + x$ gives $x = 3$ or $x = -2$, and a square root is nonnegative, so $x = 3$. Strictly the nest is the limit of its finite truncations, so the step is justified when those converge, which is the case in contest problems; checking that the truncations approach the chosen root is a good habit.
 
-A recursion that cycles is solved by computing until the starting values return, then reducing the index by the period, exactly as with powers in N3.1. Rational maps like $x \mapsto \tfrac{1}{1 - x}$ or $x \mapsto \tfrac{x + 1}{y}$ often have short periods, $3$ or $5$, and problems hide them behind large indices. Recursions that combine several earlier terms can also be rearranged to expose a cycle: adding the recurrence at $n$ and at $n - 1$ may telescope into $a_n = -a_{n-5}$, which gives period $10$ at once.
+A recursion that cycles is solved by computing until the starting values return, then reducing the index by the period, exactly as with powers in N3.2. Rational maps like $x \mapsto \tfrac{1}{1 - x}$ or $x \mapsto \tfrac{x + 1}{y}$ often have short periods, $3$ or $5$, and problems hide them behind large indices. Recursions that combine several earlier terms can also be rearranged to expose a cycle: adding the recurrence at $n$ and at $n - 1$ may telescope into $a_n = -a_{n-5}$, which gives period $10$ at once.
 
 The signal is an expression that continues forever in the same pattern, or a far term of a recursion whose first few terms come back.`,
       related: [

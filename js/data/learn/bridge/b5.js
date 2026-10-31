@@ -19,7 +19,7 @@ The [[triangle-inequality|triangle inequality]] says each side is less than the 
 Look for similar triangles and right triangles, and use the special ratios. The next lesson brings in circles.`,
       related: [
         { card: "parallel-line-similarity", note: String.raw`drawing a parallel line to create similar triangles (G1.1).` },
-        { card: "pythagorean-triples", note: String.raw`integer right triangles (N5.4).` },
+        { card: "pythagorean-triples", note: String.raw`integer right triangles ((N5.5)).` },
         { card: "law-of-cosines", note: String.raw`the Pythagorean theorem for any angle (B5.4).` }
       ],
       exercises: [

@@ -5358,18 +5358,20 @@
 
   // One line per lesson: its code and title, a link once it is written, and a tick once read.
   function learnLessonRow(b, c, l, current) {
-    const inner = `<span class="lb-code">${l.code}</span><span class="lb-title">${escapeAttr(l.title)}</span>`;
+    // A lesson's own importance (owner, 2026-10-31): the chapter's tag is the concept's overall
+    // importance, and each lesson carries its own, except the Introduction and the Summary.
+    const inner = `<span class="lb-code">${l.code}</span><span class="lb-title">${escapeAttr(l.title)}</span>${l.level ? learnLevelHtml(l) : ""}`;
     if (!learnLessonData(c, l)) return `<li class="lb-lesson">${inner}<span class="lb-soon">Not written yet</span></li>`;
     return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}</a></li>`;
   }
   function learnReviewRow(b, c, current) {
     if (learnHasIntro(c)) return ["review", "challenge"].map(k => {
       const n = learnEndCount(c, k);
-      return n ? `<li class="lb-lesson lb-review-row"><a href="${learnHash(b, c, k)}"><span class="lb-code">${learnEndCode(c, k)}</span><span class="lb-title">${LEARN_END[k]}</span><span class="lb-n">${n} problems</span></a></li>` : "";
+      return n ? `<li class="lb-lesson lb-review-row"><a href="${learnHash(b, c, k)}"><span class="lb-code">${learnEndCode(c, k)}</span><span class="lb-title">${LEARN_END[k]}</span></a></li>` : "";
     }).join("");
     const n = learnReview(c).length;
     if (!n) return "";
-    return `<li class="lb-lesson lb-review-row${current ? " is-current" : ""}"><a href="${learnHash(b, c, "review")}"${current ? ` aria-current="page"` : ""}><span class="lb-code">${c.code}</span><span class="lb-title">Chapter review</span><span class="lb-n">${n} problems</span></a></li>`;
+    return `<li class="lb-lesson lb-review-row${current ? " is-current" : ""}"><a href="${learnHash(b, c, "review")}"${current ? ` aria-current="page"` : ""}><span class="lb-code">${c.code}</span><span class="lb-title">Chapter review</span></a></li>`;
   }
 
   // ---------- Book covers and the book view ----------
@@ -5645,7 +5647,7 @@
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</p>
             ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
-            <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "Core" })} (early to middle problems), ${learnLevelHtml({ level: "Core II" })} (hard problems) or ${learnLevelHtml({ level: "Extension" })} (optional).` : `Every chapter is ${learnLevelHtml({ level: "Core" })} (early AIME problems), ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`}</p>
+            <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "Core" })} (early to middle problems), ${learnLevelHtml({ level: "Core II" })} (hard problems) or ${learnLevelHtml({ level: "Extension" })} (optional).` : `Every chapter is ${learnLevelHtml({ level: "Core" })} (early AIME problems), ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`} Each lesson has its own tag too.</p>
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
@@ -5678,7 +5680,7 @@ A chapter is a short run of lessons on one theme. Each lesson starts with the ca
 A chapter ends with problems that mix its lessons, without saying which idea each one needs. In the newer chapters, the first page is an Introduction that gives a short overview of the chapter's ideas, and the last lesson is a Summary with a list of problem solving strategies. Then come Review Problems, which mostly check that the ideas are understood, and Challenge Problems, which are harder.
 
 ## What the tags mean
-Every chapter is tagged by how much it matters for ${amc ? "the AMC 10 and 12" : "the AIME"}. Core chapters are needed for ${amc ? "the early and middle problems" : "the early AIME problems"}. Core II chapters are needed for ${amc ? "the hard problems" : "the later AIME problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. Extension chapters are optional, and nothing else in the book depends on them.
+Every chapter is tagged by how much it matters for ${amc ? "the AMC 10 and 12" : "the AIME"}. Core chapters are needed for ${amc ? "the early and middle problems" : "the early AIME problems"}. Core II chapters are needed for ${amc ? "the hard problems" : "the later AIME problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. Extension chapters are optional, and nothing else in the book depends on them. A chapter's tag is the importance of its idea as a whole; each lesson carries its own tag as well, so a Core chapter can hold a Core II lesson on a harder corner of the idea.
 
 ## How to use it
 Read the chapters in order if the subject is new to you. If it is not, start at any chapter: the cards it assumes are listed at the top of each lesson, and each one opens in a click.
@@ -5980,7 +5982,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <span class="ch-open-n">${c.code.slice(1)}</span>
           <span class="ch-open-txt"><span class="ch-open-k">Chapter ${c.code.slice(1)} ${learnLevelHtml(c)}</span><span class="ch-open-t">${escapeAttr(c.title)}</span></span>
         </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
-        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
+        <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}${l.level ? ` ${learnLevelHtml(l)}` : ""}</h2>
         <div class="lp-cards">
           ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
