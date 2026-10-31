@@ -3,7 +3,7 @@
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["N3"] = {
   lessons: {
-    "N3.2": {
+    "N3.1": {
       prereq: ["modular-basics"],
       cards: [],
       body: String.raw`This chapter finds remainders of huge powers, such as the last two digits of $7^{2026}$, without computing the powers. Its tools are the cycle of powers, Fermat's Little Theorem, the multiplicative order, Euler's theorem, and the Chinese Remainder Theorem for splitting the modulus.
@@ -29,7 +29,7 @@ The lessons take these ideas in turn: direct cycles (N3.2), Fermat's Little Theo
         "2001 AIME II, Problem 10"
       ]
     },
-    "N3.3": {
+    "N3.2": {
       prereq: ["modular-basics", "cycle-hunting", "last-digit-patterns"],
       cards: [],
       body: String.raw`A huge power and a small modulus are among the most common pairings on the AMC and the AIME: the units digit of $7^{202}$, the remainder when $2^{100}$ is divided by $7$, the last two digits of $3^{2026}$. None of them needs the power itself. The powers of a number, taken modulo $n$, can take only $n$ values, so they must eventually repeat, and once they repeat with a known period, a huge exponent can be traded for a small one.
@@ -58,7 +58,7 @@ The signal for all of this is a huge exponent with a small modulus, or a questio
       ],
       problems: ["2003 AMC 10A, Problem 16", "2023 AMC 10B, Problem 8", "2017 AIME I, Problem 3", "2025 AMC 12B, Problem 9"]
     },
-    "N3.4": {
+    "N3.3": {
       prereq: ["cycle-hunting", "modular-basics"],
       cards: ["fermats-little-theorem"],
       body: String.raw`When the modulus is a prime $p$, the powers of a number never have to be listed to learn a period. [[fermats-little-theorem|Fermat's Little Theorem]] promises that $a^{p-1} \equiv 1 \pmod p$ for every $a$ that $p$ does not divide, so the powers of such an $a$ repeat every $p - 1$ steps from the first power on, and an exponent can be reduced modulo $p - 1$ straight away. The remainder of $2^{1000}$ on division by $13$ falls out in one line, where listing would have needed a dozen powers.
@@ -87,7 +87,7 @@ The signal is a prime modulus with a huge exponent, or a statement about $n^{p}$
       ],
       problems: ["2017 AMC 10B, Problem 14", "1989 AIME, Problem 9", "2002 AIME I, Problem 7"]
     },
-    "N3.5": {
+    "N3.4": {
       prereq: ["fermats-little-theorem", "cycle-hunting"],
       cards: ["multiplicative-order"],
       body: String.raw`A guaranteed period is often far longer than the true one. Modulo $13$, Fermat's Little Theorem says the powers of $3$ repeat every $12$ steps, but $3^3 = 27 \equiv 1$, so they actually repeat every $3$. The smallest positive $k$ with $a^k \equiv 1 \pmod n$ is the [[multiplicative-order|order]] of $a$ modulo $n$, defined whenever $a$ is coprime to $n$. It is exactly the length of the cycle of powers, and the one fact that makes it useful is that it divides every exponent that gives $1$.
@@ -114,7 +114,7 @@ The signal is a question about when a power first returns to $1$, a pattern of $
       ],
       problems: ["2018 AMC 10B, Problem 13", "2019 AIME I, Problem 14"]
     },
-    "N3.6": {
+    "N3.5": {
       prereq: ["multiplicative-order", "fermats-little-theorem"],
       cards: ["eulers-theorem", "eulers-totient"],
       body: String.raw`Fermat's Little Theorem needs a prime modulus, but the last two digits of a power are a question modulo $100$. [[eulers-theorem|Euler's theorem]] covers every modulus: if $a$ is coprime to $n$, then $a^{\varphi(n)} \equiv 1 \pmod n$, where $\varphi(n)$ counts the numbers from $1$ to $n$ that are coprime to $n$. With it, the powers of any base coprime to the modulus repeat with a period dividing $\varphi(n)$, and the order of the base divides $\varphi(n)$ as well.
