@@ -295,6 +295,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AIME Geometry begun: G1 written (2026-10-31).** G1.1 similar triangles, parallels, midsegments and nested copies, G1.2 area ratios by shared bases, heights and angles, G1.3 Stewart, Apollonius, the angle bisector theorem and the centroid, G1.4 mass points, the cevian ratio sum and Routh, G1.5 the altitude to the hypotenuse, extending sides and doubling a median; seven review problems.
 - **C9 written; the AIME Counting & Probability book is complete (2026-10-31).** C9.1 generating functions and partitions, C9.2 cycle structure of permutations, C9.3 products of uniforms, order statistics and variance, C9.4 transfer matrices, strategy stealing, truth-teller puzzles and magic squares; an extension chapter whose lessons carry their own problems.
 - **C8 written (2026-10-31).** C8.1 the handshake lemma, trees, Eulerian paths and round robins, C8.2 rectangles and squares in grids, C8.3 coloring arguments and counting proper colorings of paths and cycles, C8.4 pigeonhole, pairing to bound and the extremal principle; the counting of shapes in figures stays with G7.5.
 - **C7 written (2026-10-31).** C7.1 linearity of expectation and indicators, C7.2 expected fixed points and the tail-sum formula, C7.3 total expectation and first-step analysis with well-chosen states, C7.4 geometric waiting times, restart equations for turn-based games and gambler's ruin; five review problems.
