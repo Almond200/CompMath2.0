@@ -147,8 +147,8 @@ Small cases are also the honest check of completeness. After a casework count, r
 Simulate when the process is simple to run and the question is about where it ends; work backwards when the end is known; and always test a count on a small case. The next chapter turns to arrangements and selections.`,
       related: [
         { card: "cycle-hunting", note: String.raw`finding the period of a process that repeats (N3.1).` },
-        { card: "recursive-counting", note: String.raw`turning the pattern of small cases into a recursion (C5.1).` },
-        { card: "backward-induction", note: String.raw`working backwards through the positions of a game (C5.3).` }
+        { card: "recursive-counting", note: String.raw`turning the pattern of small cases into a recursion (C5.2).` },
+        { card: "backward-induction", note: String.raw`working backwards through the positions of a game (C5.4).` }
       ],
       exercises: [
         { q: String.raw`A number is doubled and then decreased by $3$; this is done three times in all, and the result is $19$. What was the starting number?`, answer: "5",

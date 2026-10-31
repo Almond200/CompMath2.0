@@ -5027,21 +5027,38 @@
   const learnChapterData = c => (window.MATH_LEARN || {})[c.code] || null;
   const learnLessonData = (c, l) => { const d = learnChapterData(c); return d && d.lessons && d.lessons[l.code] || null; };
   const learnReview = c => { const d = learnChapterData(c); return d && Array.isArray(d.review) ? d.review : []; };
+  // The chapter structure of the pilot (owner, 2026-10-31; C5 first): X.1 is the chapter's
+  // Introduction and its opening page, the lessons follow, the last lesson is the Summary (with
+  // Problem Solving Strategies), and two pages close the chapter: Review Problems (mostly
+  // comprehension) and Challenge Problems (contest problems, or our own). A chapter whose first
+  // lesson is not an Introduction keeps the old overview page and chapter review.
+  const learnHasIntro = c => !!(c && c.lessons[0] && c.lessons[0].title === "Introduction" && learnLessonData(c, c.lessons[0]));
+  const LEARN_END = { review: "Review Problems", challenge: "Challenge Problems" };
+  const learnEndSet = (c, kind) => {
+    const d = learnChapterData(c), x = d && (kind === "review" ? d.reviewProblems : d.challenge);
+    return x ? { exercises: x.exercises || [], problems: x.problems || [] } : null;
+  };
+  const learnEndCount = (c, kind) => { const x = learnEndSet(c, kind); return x ? x.exercises.length + x.problems.length : 0; };
   // #/learn/<book>, then /<code in lower case>, then /<lesson number> or /review.
   function learnHash(b, c, page) {
+    if (c && String(page) === "1" && learnHasIntro(c)) page = null;
     return "#/learn/" + b.id + (c ? "/" + c.code.toLowerCase() + (page != null ? "/" + page : "") : "");
   }
   const lessonNum = l => l.code.split(".")[1];
   function learnRoute(hash) {
-    const m = hash.match(/^#\/learn\/([\w-]+)(?:\/([a-z]\d+)(?:\/(\d+|review))?)?$/);
+    const m = hash.match(/^#\/learn\/([\w-]+)(?:\/([a-z]\d+)(?:\/(\d+|review|challenge))?)?$/);
     if (!m) return null;
     const book = LEARN_SHELF.find(b => b.id === m[1]);
     if (!book) return null;
     const chapter = m[2] ? book.chapters.find(c => c.code.toLowerCase() === m[2]) : null;
     if (m[2] && !chapter) return null;
-    const lesson = m[3] && m[3] !== "review" ? chapter.lessons.find(l => lessonNum(l) === m[3]) : null;
-    if (m[3] && m[3] !== "review" && !lesson) return null;
-    return { type: "learn", book, chapter, lesson, review: m[3] === "review", key: m.slice(1).filter(Boolean).join("/") };
+    const end = m[3] === "review" || m[3] === "challenge" ? m[3] : null;
+    if (end === "challenge" && !learnEndCount(chapter, "challenge")) return null;
+    let lesson = m[3] && !end ? chapter.lessons.find(l => lessonNum(l) === m[3]) : null;
+    if (m[3] && !end && !lesson) return null;
+    // A chapter with an Introduction opens on it.
+    if (chapter && !m[3] && learnHasIntro(chapter)) lesson = chapter.lessons[0];
+    return { type: "learn", book, chapter, lesson, review: end === "review", challenge: end === "challenge", key: m.slice(1).filter(Boolean).join("/") };
   }
   const learnProblem = ref => PROBLEM_BY_SLUG[problemSlug(ref)] || null;
 
@@ -5074,6 +5091,10 @@
     return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}</a></li>`;
   }
   function learnReviewRow(b, c, current) {
+    if (learnHasIntro(c)) return ["review", "challenge"].map(k => {
+      const n = learnEndCount(c, k);
+      return n ? `<li class="lb-lesson lb-review-row"><a href="${learnHash(b, c, k)}"><span class="lb-code"></span><span class="lb-title">${LEARN_END[k]}</span><span class="lb-n">${n} problems</span></a></li>` : "";
+    }).join("");
     const n = learnReview(c).length;
     if (!n) return "";
     return `<li class="lb-lesson lb-review-row${current ? " is-current" : ""}"><a href="${learnHash(b, c, "review")}"${current ? ` aria-current="page"` : ""}><span class="lb-code">${c.code}</span><span class="lb-title">Chapter review</span><span class="lb-n">${n} problems</span></a></li>`;
@@ -5187,13 +5208,18 @@
   function learnPages(b) {
     const out = [];
     b.chapters.forEach(c => {
+      if (learnHasIntro(c)) {
+        c.lessons.forEach(l => out.push({ c, l, page: lessonNum(l) }));
+        ["review", "challenge"].forEach(k => { if (learnEndCount(c, k)) out.push({ c, page: k, end: k, review: k === "review" }); });
+        return;
+      }
       out.push({ c, page: null });
       c.lessons.forEach(l => out.push({ c, l, page: lessonNum(l) }));
       if (learnReview(c).length) out.push({ c, page: "review", review: true });
     });
     return out;
   }
-  const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
+  const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${x.c.code} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
   function learnArrow(href, dir, label) {
     const icon = dir < 0 ? "&#8249;" : "&#8250;";
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
@@ -5259,10 +5285,10 @@
     rail.addEventListener("pointercancel", () => { press = null; clear(); });
     rail.addEventListener("click", e => { if (e.pointerType && e.pointerType !== "mouse") e.preventDefault(); });
   }
-  // cur: "book", "chapter", "review", or the lesson.
+  // cur: "book", "chapter", "review", "challenge", or the lesson.
   function learnBookShell(b, c, cur, main) {
     const pages = learnPages(b);
-    const at = !c ? -1 : pages.findIndex(x => x.c === c && (cur === "chapter" ? x.page === null : cur === "review" ? x.review : x.l === cur));
+    const at = !c ? -1 : pages.findIndex(x => x.c === c && (cur === "chapter" ? x.page === null : cur === "review" ? x.review : cur === "challenge" ? x.end === "challenge" : x.l === cur));
     const prev = at > 0 ? pages[at - 1] : null;
     const next = at < 0 ? pages[0] : pages[at + 1] || null;
     const hashOf = x => x ? learnHash(b, x.c, x.page) : "";
@@ -5322,7 +5348,7 @@
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons &middot; ${learnWrittenIn(b)} written so far</p>
             ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
-            <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "AMC 10" })} or ${learnLevelHtml({ level: "AMC 12" })} (topics the AMC 12 adds).` : `Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`}</p>
+            <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "Core" })} (early to middle problems), ${learnLevelHtml({ level: "Core II" })} (hard problems) or ${learnLevelHtml({ level: "Extension" })} (optional).` : `Every chapter is ${learnLevelHtml({ level: "Core" })} (early AIME problems), ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`}</p>
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
@@ -5481,24 +5507,31 @@
   // no answer box and no marking). The contest problems follow in their own list.
   function learnBodyHtml(l, d) {
     const ex = d.exercises || [];
-    const num = i => `${l.code}.${i + 1}`;
     // Related cards (owner, 2026-10-31): how the lesson connects to cards it does not teach in its
     // explanation, one line each, so the explanation itself never breaks off to talk about them.
     const related = (d.related || []).filter(r => BY_ID[r.card]);
+    // The Summary's Problem Solving Strategies: a bulleted list under its own heading.
+    const strat = Array.isArray(d.strategies) && d.strategies.length ? `<section class="lp-strategies"><h3 class="lp-h3">Problem Solving Strategies</h3>
+        <ul>${d.strategies.map(t => `<li>${linkifyCards(t)}</li>`).join("")}</ul></section>` : "";
     return `<div class="detail-body lp-body">${detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code)}</div>
+      ${strat}
       ${related.length ? `<h3 class="lp-h3">Related cards</h3>
         <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkifyCards(r.note)}</li>`).join("")}</ul>` : ""}
-      ${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
+      ${learnExercisesHtml(ex, i => `Problem ${l.code}.${i + 1}`)}`;
+  }
+  // A list of our own problems, then their worked solutions, each under the problem stated again.
+  function learnExercisesHtml(ex, name) {
+    return `${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
         <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}">
-            <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-sol-${i + 1}">Jump to solution</button></div>
+            <div class="lx-head"><span class="lx-n">${name(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-sol-${i + 1}">Jump to solution</button></div>
             <div class="lx-q">${x.q}</div></li>`).join("")}</ol>
         <h3 class="lp-h3" id="lx-solutions">Solutions</h3>
         <div class="lx-sols">${ex.map((x, i) => `<div class="lx-sol" id="lx-sol-${i + 1}">
             <div class="lx lx-again">
-              <div class="lx-head"><span class="lx-n">Problem ${num(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-${i + 1}">Back to problem</button></div>
+              <div class="lx-head"><span class="lx-n">${name(i)}</span><button type="button" class="lx-jump" data-lx-jump="lx-${i + 1}">Back to problem</button></div>
               <div class="lx-q">${x.q}</div>
             </div>
-            <p class="lx-sol-h">Solution for Problem ${num(i)}:</p>
+            <p class="lx-sol-h">Solution for ${name(i)}:</p>
             <div class="lx-s">${x.solution}</div></div>`).join("")}</div>` : ""}`;
   }
 
@@ -5547,11 +5580,19 @@
     return ids.filter(id => BY_ID[id]).map(id => `<a class="card-link" href="#/f/${id}" data-card="${id}">${BY_ID[id].formula.name}</a>`).join(`<span class="lp-cards-sep">&middot;</span>`);
   }
   // A lesson or a review: the outline, the reading column and the drawer.
-  function renderLearnLesson(b, c, l) {
+  function renderLearnLesson(b, c, l, end) {
     const d = l ? learnLessonData(c, l) : null;
     const isReview = !l;
     let main;
-    if (isReview) {
+    if (isReview && learnHasIntro(c)) {
+      // Review Problems or Challenge Problems: our own problems first, then contest problems.
+      const kind = end || "review", set = learnEndSet(c, kind) || { exercises: [], problems: [] };
+      main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
+        <h2 class="learn-h">${LEARN_END[kind]}</h2>
+        <p class="learn-note">${kind === "review" ? "Problems that check the ideas of the whole chapter, mostly direct uses of them." : "Harder problems that combine the chapter's ideas, in rising order of difficulty."}</p>
+        ${learnExercisesHtml(set.exercises, i => `${kind === "review" ? "Review" : "Challenge"} Problem ${i + 1}`)}
+        ${set.problems.length ? `<h3 class="lp-h3">Contest problems</h3>${learnProblemsHtml(set.problems)}` : ""}`;
+    } else if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h">${c.code} chapter review</h2>
         <p class="learn-note">Mixed problems from the whole chapter, in rising order of difficulty.</p>
@@ -5561,7 +5602,12 @@
         <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
         <p class="learn-note">This lesson is not written yet.</p>`;
     } else {
-      main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
+      // The Introduction opens the chapter: the chapter's number and title above the lesson's heading.
+      const opener = learnHasIntro(c) && l === c.lessons[0];
+      main = `${opener ? `<header class="ch-open">
+          <span class="ch-open-n">${c.code.slice(1)}</span>
+          <span class="ch-open-txt"><span class="ch-open-k">Chapter ${c.code.slice(1)} ${learnLevelHtml(c)}</span><span class="ch-open-t">${escapeAttr(c.title)}</span></span>
+        </header>` : `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>`}
         <h2 class="learn-h"><span class="lb-code">${l.code}</span> ${escapeAttr(l.title)}</h2>
         <div class="lp-cards">
           ${(d.cards || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Teaches you about</span>${learnCardChips(d.cards)}</div>` : ""}
@@ -5570,7 +5616,7 @@
         ${learnBodyHtml(l, d)}
         ${(d.problems || []).length ? `<h3 class="lp-h3">Contest practice problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
-    learnBookShell(b, c, isReview ? "review" : l, main);
+    learnBookShell(b, c, isReview ? (end || "review") : l, main);
     if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
     $content.querySelectorAll(".lp-prob").forEach(li => {
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
@@ -5583,7 +5629,7 @@
   }
 
   function renderLearn(route) {
-    if (route.lesson || route.review) renderLearnLesson(route.book, route.chapter, route.lesson);
+    if (route.lesson || route.review || route.challenge) renderLearnLesson(route.book, route.chapter, route.lesson, route.challenge ? "challenge" : route.review ? "review" : null);
     else if (route.chapter) renderLearnChapter(route.book, route.chapter);
     else renderLearnBook(route.book);
   }
@@ -6591,8 +6637,8 @@
     const prev = prevRoute;
     prevRoute = route; prevRouteKey = key;
     if ((route.type === "problem" || route.type === "formula") && prev && prev.type === "learn") {
-      backFromLearn = { to: key, hash: learnHash(prev.book, prev.chapter, prev.lesson ? lessonNum(prev.lesson) : prev.review ? "review" : null),
-        label: prev.lesson ? prev.lesson.code : prev.review ? prev.chapter.code + " review" : prev.chapter.code };
+      backFromLearn = { to: key, hash: learnHash(prev.book, prev.chapter, prev.lesson ? lessonNum(prev.lesson) : prev.challenge ? "challenge" : prev.review ? "review" : null),
+        label: prev.lesson ? prev.lesson.code : prev.challenge ? prev.chapter.code + " challenge" : prev.review ? prev.chapter.code + " review" : prev.chapter.code };
     } else if (!backFromLearn || backFromLearn.to !== key) backFromLearn = null;
     if (route.type === "formula" || route.type === "problem") {
       if (prev && prev.type === "home" && (state.query.trim() || state.adv)) {

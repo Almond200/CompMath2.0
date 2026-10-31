@@ -76,7 +76,7 @@ Choosing the states is the important step. They should record exactly what affec
 
 Set up one unknown per state, write one equation per state by conditioning on the first step, and solve. The last lesson of the chapter studies waiting times and games.`,
       related: [
-        { card: "recursive-counting", note: String.raw`the counting version of the same one-step recursion (C5.1).` },
+        { card: "recursive-counting", note: String.raw`the counting version of the same one-step recursion (C5.2).` },
         { card: "first-order-recurrence", note: String.raw`solving a chain of state equations as a recurrence (A3.1).` },
         { card: "wlog-symmetry", note: String.raw`merging states that behave alike (A8.1).` }
       ],
@@ -116,7 +116,7 @@ Processes with optimal choices, such as guessing the color of the next card, com
 
 Recognize the geometric waiting time, the restart equation for turn-based games, and the ruin formulas, and fall back on first-step analysis when the process is different. The chapter review mixes expected values with the processes of this chapter.`,
       related: [
-        { card: "backward-induction", note: String.raw`labeling positions from the end, for processes with choices (C5.3).` },
+        { card: "backward-induction", note: String.raw`labeling positions from the end, for processes with choices (C5.4).` },
         { card: "geometric-series", note: String.raw`the sums behind waiting-time probabilities.` },
         { card: "tail-sum-expectation", note: String.raw`the expected waiting time as a sum of tails (C7.2).` }
       ],
