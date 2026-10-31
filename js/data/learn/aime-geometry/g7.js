@@ -62,7 +62,7 @@ Regions with curved boundaries split into sectors and triangles: a [[circular-se
 Cut along lines that create shapes with known formulas, and use differences when the region is a large shape minus small ones. The next lesson uses symmetry to count and to place.`,
       related: [
         { card: "shoelace-formula", note: String.raw`the area of any polygon from coordinates (G4.3).` },
-        { card: "same-base-area-ratio", note: String.raw`comparing areas of triangles that share a base or height (G1.2).` },
+        { card: "same-base-area-ratio", note: String.raw`comparing areas of triangles that share a base or height (G1.3).` },
         { card: "trig-area", note: String.raw`$\tfrac12ab\sin C$, the base of the diagonal and segment formulas (G3.1).` }
       ],
       exercises: [

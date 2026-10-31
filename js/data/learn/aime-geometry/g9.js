@@ -15,8 +15,8 @@ An [[affine-transformations|affine transformation]] is a linear map followed by 
 
 Use barycentrics when many ratios along cevians must be combined, and an affine map when a problem about ratios and areas would be easier in a special triangle. The next lesson treats inversion.`,
       related: [
-        { card: "mass-points", note: String.raw`barycentric coordinates are mass points with signs (G1.4).` },
-        { card: "rouths-theorem", note: String.raw`the area of the triangle cut out by three cevians (G1.4).` },
+        { card: "mass-points", note: String.raw`barycentric coordinates are mass points with signs (G1.5).` },
+        { card: "rouths-theorem", note: String.raw`the area of the triangle cut out by three cevians (G1.5).` },
         { card: "linear-change-of-variables", note: String.raw`linear maps and the factor by which they scale areas (G6.4).` }
       ],
       exercises: [
@@ -83,7 +83,7 @@ A [[harmonic-quadrilateral|harmonic quadrilateral]] is a cyclic quadrilateral $A
 Look for a cross-ratio when four points on a line or circle are projected or inverted, and for a harmonic quadrilateral when two tangents meet on a chord. This chapter closes the geometry book.`,
       related: [
         { card: "symmedian-lemoine", note: String.raw`the symmedian through the meeting point of two tangents (G5.5).` },
-        { card: "angle-bisector-theorem", note: String.raw`internal and external bisectors divide the side harmonically (G1.3).` },
+        { card: "angle-bisector-theorem", note: String.raw`internal and external bisectors divide the side harmonically (G1.4).` },
         { card: "complex-basics", note: String.raw`the cross-ratio of complex numbers and concyclic points (A6.2).` }
       ],
       exercises: [

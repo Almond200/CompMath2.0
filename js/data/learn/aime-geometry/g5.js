@@ -20,7 +20,7 @@ Use the arc midpoint whenever a bisector meets the circumcircle, the center angl
       related: [
         { card: "inradius-area", note: String.raw`the incircle's radius from the area (G2.4).` },
         { card: "euler-distance-theorem", note: String.raw`$OI^2 = R(R - 2r)$, which the incenter-excenter lemma proves (G5.2).` },
-        { card: "midsegment-theorem", note: String.raw`where the foot of a perpendicular to a bisector lands (G1.1).` }
+        { card: "midsegment-theorem", note: String.raw`where the foot of a perpendicular to a bisector lands (G1.2).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $\angle A = 50^\circ$, and $I$ is the incenter. Find $\angle BIC$ in degrees.`, answer: "115",
@@ -111,7 +111,7 @@ Recognize medial and orthic triangles in repeated constructions, and use areas t
 
 Mass points, area ratios, Ceva and Menelaus all compute the same ratios. Mass points are fastest for two cevians; Menelaus is best for a line that crosses a triangle; Ceva is the test for concurrence. The next lesson collects some recurring figures.`,
       related: [
-        { card: "mass-points", note: String.raw`the same ratios by balancing weights (G1.4).` },
+        { card: "mass-points", note: String.raw`the same ratios by balancing weights (G1.5).` },
         { card: "ratio-lemma", note: String.raw`each factor of trigonometric Ceva as a ratio of sides (G3.3).` },
         { card: "barycentric-coordinates", note: String.raw`coordinates in which Ceva and Menelaus become determinant conditions (G9.1).` }
       ],

@@ -177,7 +177,7 @@ When a point is constrained by distances, identify its locus first, then answer 
       related: [
         { card: "folded-paper", note: String.raw`a fold is the perpendicular bisector of a point and its image (G6.4).` },
         { card: "ellipse-properties", note: String.raw`the locus of a fixed sum of distances (G4.4).` },
-        { card: "angle-bisector-theorem", note: String.raw`the Apollonius circle passes through the feet of the internal and external bisectors (G1.3).` }
+        { card: "angle-bisector-theorem", note: String.raw`the Apollonius circle passes through the feet of the internal and external bisectors (G1.4).` }
       ],
       exercises: [
         { q: String.raw`Points $A = (0, 0)$ and $B = (3, 0)$ are given. The points $P$ with $PA = 2PB$ form a circle. Find its radius.`, answer: "2",

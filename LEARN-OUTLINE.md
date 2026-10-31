@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and AIME Algebra (A1 to A9) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1182,11 +1182,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G1.1 Similar triangles and ratio chasing (Core) | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` |
-| G1.2 Area ratios: same altitude, cevians (Core) | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `area-method` |
-| G1.3 Stewart's theorem, angle bisectors, medians (Core) | `stewarts-theorem`, `angle-bisector-theorem`, `angle-bisector-length`, `apollonius-theorem`, `centroid-division` |
-| G1.4 Mass points as a ratio tool (Core II) | `mass-points`, `cevian-ratio-sum`, `rouths-theorem` |
-| G1.5 Similarity and area in nested figures (Core) | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` |
+| G1.1 Introduction | no card (the chapter's opening page: similar triangles, area ratios, cevian lengths, mass points, right-triangle constructions, with comprehension problems) |
+| G1.2 Similar triangles and ratio chasing (Core) | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` |
+| G1.3 Area ratios: same altitude, cevians (Core) | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `area-method` |
+| G1.4 Stewart's theorem, angle bisectors, medians (Core) | `stewarts-theorem`, `angle-bisector-theorem`, `angle-bisector-length`, `apollonius-theorem`, `centroid-division` |
+| G1.5 Mass points as a ratio tool (Core II) | `mass-points`, `cevian-ratio-sum`, `rouths-theorem` |
+| G1.6 Similarity and area in nested figures (Core) | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` |
+| G1.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G1.8 Review Problems and G1.9 Challenge Problems |
 
 ### G2. Circles and cyclic figures (Core)
 

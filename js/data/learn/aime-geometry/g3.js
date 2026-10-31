@@ -98,7 +98,7 @@ The [[triangle-angle-identities|identities for angles adding to $180^\circ$]] in
 
 Use projections to place feet of cevians, half-angle tangents with the inradius, the ratio lemma for cevians at known angles, and the angle-sum identities when a symmetric trigonometric expression in the angles appears. The next lesson computes whole figures from their angles.`,
       related: [
-        { card: "angle-bisector-theorem", note: String.raw`the ratio lemma with equal angles (G1.3).` },
+        { card: "angle-bisector-theorem", note: String.raw`the ratio lemma with equal angles (G1.4).` },
         { card: "inradius-area", note: String.raw`$K = rs$, the source of $r$ in the half-angle formulas (G2.4).` },
         { card: "angle-addition", note: String.raw`the addition formulas behind the angle-sum identities (A7.3).` }
       ],

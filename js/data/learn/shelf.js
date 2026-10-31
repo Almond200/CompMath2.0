@@ -1312,28 +1312,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G1.2",
       "title": "Similar triangles and ratio chasing",
       "level": "Core"
      },
      {
-      "code": "G1.2",
+      "code": "G1.3",
       "title": "Area ratios: same altitude, cevians",
       "level": "Core"
      },
      {
-      "code": "G1.3",
+      "code": "G1.4",
       "title": "Stewart's theorem, angle bisectors, medians",
       "level": "Core"
      },
      {
-      "code": "G1.4",
+      "code": "G1.5",
       "title": "Mass points as a ratio tool",
       "level": "Core II"
      },
      {
-      "code": "G1.5",
+      "code": "G1.6",
       "title": "Similarity and area in nested figures",
       "level": "Core"
+     },
+     {
+      "code": "G1.7",
+      "title": "Summary"
      }
     ]
    },
