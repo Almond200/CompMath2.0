@@ -4421,28 +4421,70 @@
       }
       renderSettingsPage();
     });
-    // Search settings: matches by name, then by description, in a dropdown; choosing one scrolls
-    // to its row and flashes it (owner, 2026-10-31).
+    // Search settings (owner, 2026-10-31): each setting is found by its name, by the words people
+    // actually use for it ("dark mode", "font size", "spoilers"), by its options, and then by its
+    // description; one typo is forgiven, and filler words ("how do I change") are ignored.
+    // Choosing a result scrolls to the setting and underlines its name for a moment.
     (() => {
       const box = $content.querySelector(".set-find-input"), list = $content.querySelector(".set-find-list");
       if (!box || !list) return;
-      const rows = [...$content.querySelectorAll(".settings-page .set-row, .settings-page .set-panel-title")].filter(r => r.classList.contains("set-row"));
+      const ALSO = {
+        theme: "dark mode, light mode, night mode, dark theme, colors, colours, black background, white background, appearance, eyes",
+        density: "spacing, compact, spacious, padding, margins, crowded, cramped, roomy, whitespace, layout",
+        cols: "card size, bigger cards, larger cards, card width, columns, grid",
+        text: "font size, font, bigger text, larger text, small text, zoom, readability, letters",
+        lines: "formula rows, how many lines, truncate, shorten cards",
+        tags: "keywords, chips, labels on cards",
+        notation: "sigma, summation, sum notation, product notation, expanded terms",
+        diagrams: "figures, pictures, images, drawings, thumbnails",
+        tools: "sidebar on the right, right column, wikipedia, print, permanent link, permalink, what links here",
+        scroll: "scrolling, mouse wheel, trackpad, scroll speed, too fast, too slow",
+        layout: "a to z, alphabetical, index, list of names",
+        order: "sort, sorting, ordering, popular, most used, curated",
+        start: "startup, start page, home page, landing page, open on, launch, default page, front page",
+        lessonLinks: "lesson links, drawer, open cards beside, side panel",
+        strategy: "spoilers, solution, solutions, reveal, answers, hide the strategy, show the strategy, how this problem works",
+        "Export progress": "backup, back up, save my progress, download, transfer, move to another browser, keep my lists",
+        "Import progress": "restore, upload, load a backup, transfer, from another browser"
+      };
+      const STOP = new Set("how do i to the a an my me of in for can change set setting settings make turn enable disable want where is are it this on off use".split(" "));
+      const words = t => t.toLowerCase().replace(/[^a-z0-9& ]+/g, " ").split(/\s+/).filter(Boolean);
+      const near = (a, b) => {   // one edit apart, for words of four letters or more
+        if (a.length < 4 || Math.abs(a.length - b.length) > 1) return false;
+        let i = 0, j = 0, d = 0;
+        while (i < a.length && j < b.length) { if (a[i] === b[j]) { i++; j++; continue; } if (++d > 1) return false; if (a.length > b.length) i++; else if (b.length > a.length) j++; else { i++; j++; } }
+        return d + (a.length - i) + (b.length - j) <= 1;
+      };
+      const rows = [...$content.querySelectorAll(".settings-page .set-row")];
       const items = rows.map((r, i) => {
-        const name = (r.querySelector(".set-name") || {}).textContent || "", desc = (r.querySelector(".set-desc") || {}).textContent || "";
-        const panel = r.closest(".set-panel"), group = panel ? (panel.querySelector(".set-panel-title") || {}).textContent || "" : "";
+        const name = ((r.querySelector(".set-name") || {}).textContent || "").trim();
+        const desc = ((r.querySelector(".set-desc") || {}).textContent || "").trim();
+        const panel = r.closest(".set-panel"), group = panel ? ((panel.querySelector(".set-panel-title") || {}).textContent || "").replace(/for fun$/, "").trim() : "";
+        const key = (r.querySelector("[data-set]") || {}).dataset ? r.querySelector("[data-set]").dataset.set : null;
+        const opts = [...r.querySelectorAll("[data-set]")].map(b => b.textContent).join(" ");
+        const also = ALSO[key] || ALSO[name] || "";
         r.dataset.findId = i;
-        return { i, name: name.trim(), desc: desc.trim(), group: group.replace(/for fun$/, "").trim() };
-      });
+        return { i, name, group, nameW: words(name), alsoW: words(also), phrases: also.toLowerCase().split(/\s*,\s*/), optW: words(opts), descW: words(desc + " " + group) };
+      }).filter(it => it.name);
+      const score = (it, q) => {
+        const ws = words(q).filter(w => !STOP.has(w));
+        if (!ws.length) return 0;
+        const ql = ws.join(" ");
+        let total = it.phrases.some(ph => ph && (ph === ql || ph.startsWith(ql) || ql.includes(ph))) ? 30 : 0;
+        if (it.name.toLowerCase().startsWith(ql)) total += 20;
+        for (const w of ws) {
+          const pre = list => list.some(x => x === w) ? 2 : list.some(x => x.startsWith(w)) ? 1 : list.some(x => near(w, x)) ? 0.5 : 0;
+          const s = Math.max(pre(it.nameW) * 6, pre(it.alsoW) * 5, pre(it.optW) * 3, pre(it.descW) * 1.5);
+          if (!s) return 0;   // every word has to be found somewhere
+          total += s;
+        }
+        return total;
+      };
       let hits = [], cur = -1;
       const draw = () => {
-        const q = box.value.trim().toLowerCase();
+        const q = box.value.trim();
         if (!q) { list.hidden = true; list.innerHTML = ""; return; }
-        const words = q.split(/\s+/);
-        hits = items.map(it => {
-          const n = it.name.toLowerCase(), d = (it.desc + " " + it.group).toLowerCase();
-          if (!words.every(w => n.includes(w) || d.includes(w))) return null;
-          return { it, score: words.filter(w => n.includes(w)).length * 10 + (n.startsWith(q) ? 5 : 0) };
-        }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 8).map(x => x.it);
+        hits = items.map(it => ({ it, s: score(it, q) })).filter(x => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 7).map(x => x.it);
         cur = hits.length ? 0 : -1;
         list.innerHTML = hits.length ? hits.map((it, k) => `<button type="button" class="set-find-opt${k === cur ? " is-cur" : ""}" role="option" data-find="${it.i}"><span class="set-find-name">${escapeAttr(it.name)}</span><span class="set-find-group">${escapeAttr(it.group)}</span></button>`).join("")
           : `<div class="set-find-none">No setting matches.</div>`;
@@ -4458,7 +4500,7 @@
         const top = row.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - (window.innerHeight - row.offsetHeight) / 3;
         window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
         row.classList.remove("set-found"); void row.offsetWidth; row.classList.add("set-found");
-        setTimeout(() => row.classList.remove("set-found"), 2400);
+        setTimeout(() => row.classList.remove("set-found"), 2600);
       };
       box.addEventListener("input", draw);
       box.addEventListener("focus", draw);
@@ -5111,6 +5153,8 @@
     return x ? { exercises: x.exercises || [], problems: x.problems || [] } : null;
   };
   const learnEndCount = (c, kind) => { const x = learnEndSet(c, kind); return x ? x.exercises.length + x.problems.length : 0; };
+  // Review Problems and Challenge Problems are numbered on from the Summary: C5.8 and C5.9 (owner, 2026-10-31).
+  const learnEndCode = (c, kind) => c.code + "." + (c.lessons.length + (kind === "challenge" && learnEndCount(c, "review") ? 2 : 1));
   // #/learn/<book>, then /<code in lower case>, then /<lesson number> or /review.
   function learnHash(b, c, page) {
     if (c && String(page) === "1" && learnHasIntro(c)) page = null;
@@ -5165,7 +5209,7 @@
   function learnReviewRow(b, c, current) {
     if (learnHasIntro(c)) return ["review", "challenge"].map(k => {
       const n = learnEndCount(c, k);
-      return n ? `<li class="lb-lesson lb-review-row"><a href="${learnHash(b, c, k)}"><span class="lb-code"></span><span class="lb-title">${LEARN_END[k]}</span><span class="lb-n">${n} problems</span></a></li>` : "";
+      return n ? `<li class="lb-lesson lb-review-row"><a href="${learnHash(b, c, k)}"><span class="lb-code">${learnEndCode(c, k)}</span><span class="lb-title">${LEARN_END[k]}</span><span class="lb-n">${n} problems</span></a></li>` : "";
     }).join("");
     const n = learnReview(c).length;
     if (!n) return "";
@@ -5291,7 +5335,7 @@
     });
     return out;
   }
-  const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${x.c.code} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
+  const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${learnEndCode(x.c, x.end)} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
   function learnArrow(href, dir, label) {
     const icon = dir < 0 ? "&#8249;" : "&#8250;";
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
@@ -5680,9 +5724,9 @@
       // Review Problems or Challenge Problems: our own problems first, then contest problems.
       const kind = end || "review", set = learnEndSet(c, kind) || { exercises: [], problems: [] };
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
-        <h2 class="learn-h">${LEARN_END[kind]}</h2>
+        <h2 class="learn-h"><span class="lb-code">${learnEndCode(c, kind)}</span> ${LEARN_END[kind]}</h2>
         <p class="learn-note">${kind === "review" ? "Problems that check the ideas of the whole chapter, mostly direct uses of them." : "Harder problems that combine the chapter's ideas, in rising order of difficulty."}</p>
-        ${learnExercisesHtml(set.exercises, i => `${kind === "review" ? "Review" : "Challenge"} Problem ${i + 1}`)}
+        ${learnExercisesHtml(set.exercises, i => `Problem ${learnEndCode(c, kind)}.${i + 1}`)}
         ${set.problems.length ? `<h3 class="lp-h3">Contest problems</h3>${learnProblemsHtml(set.problems)}` : ""}`;
     } else if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
@@ -6633,7 +6677,7 @@
   // shows only here, with the solution: under the box's title, above the strategy (owner, 2026-10-31).
   function ownFigureHtml(p) {
     const fig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
-    return fig ? `<div class="diagram prob-own-figure">${fig}<div class="prob-own-note">Diagram drawn for this app, not part of the original problem.</div></div>` : "";
+    return fig ? `<div class="diagram prob-own-figure">${fig}</div>` : "";
   }
   function chainInnerHtml(p, chainCol, chain, altIds) {
     return `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
@@ -7823,6 +7867,8 @@
   // rendered, scroll the part into view, a text box centred with the cursor in it, a section
   // with its heading just under the top bar.
   document.addEventListener("click", e => {
+    // Every link in the drawer's Learn and Practice groups closes the drawer (owner, 2026-10-31).
+    if (e.target.closest("a.nav-practice-link")) closeDrawer();
     const a = e.target.closest("a[data-goto]");
     if (!a) return;
     closeDrawer();
