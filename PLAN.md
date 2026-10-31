@@ -94,7 +94,7 @@ The spec covers:
   - the set of keys on the math keyboard;
   - how an answer is stored (a plain expression such as `3/4`, `2sqrt(3)` or `7pi/2`);
   - how two answers are compared: by value, so $\frac{6}{8}$ and $\frac34$ both count. The rule for which unsimplified forms are accepted goes to the owner with the spec.
-- **Progress:** a new `localStorage` key, saved in the existing Export and Import file with a version bump (CONVENTIONS §10). It holds the lessons read, the checks answered, the problems attempted, and the notes typed in each problem box. A viewed solution never counts as solved.
+- **Progress:** a new `localStorage` key, saved in the existing Export and Import file with a version bump (CONVENTIONS §10). It holds the checks answered, the problems attempted, and the notes typed in each problem box. A viewed solution never counts as solved.
 - **A gate,** `tools/check-learn.py`, which checks that:
   - every card, problem and list id resolves;
   - no problem appears twice on the shelf;

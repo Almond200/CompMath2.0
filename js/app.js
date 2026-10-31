@@ -4851,7 +4851,7 @@
                    <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
                 : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
               <div class="hp-mine-foot">
-                <a href="#/learn" data-goto="lists-new-name">Make a list</a>
+                <a href="#/learn" data-list-new>Make a list</a>
                 <a href="#/learn" data-goto="pr-study">Open a list</a>
               </div>
             </section>
@@ -4942,14 +4942,11 @@
           <h3>Lists</h3>
           <div id="pr-lists">
             <h4 class="learn-sub">Your lists</h4>
+            <button type="button" class="pl-new-btn" id="lists-new" data-list-new>+ New list</button>
             <div class="pl-list pl-mine">
               <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
               ${mine.map(listLink).join("")}
             </div>
-            <form class="lists-new pl-new" id="lists-new-form">
-              <input type="text" id="lists-new-name" placeholder="Name a new list&hellip;" maxlength="40" autocomplete="off">
-              <button type="submit">Create</button>
-            </form>
           </div>
           <h4 class="learn-sub">Study lists</h4>
           <div class="grid-scroll"><table class="cy-grid route-grid">
@@ -5066,10 +5063,9 @@
 
   // One line per lesson: its code and title, a link once it is written, and a tick once read.
   function learnLessonRow(b, c, l, current) {
-    const read = learnProgress().read[l.code];
     const inner = `<span class="lb-code">${l.code}</span><span class="lb-title">${escapeAttr(l.title)}</span>`;
     if (!learnLessonData(c, l)) return `<li class="lb-lesson">${inner}<span class="lb-soon">Not written yet</span></li>`;
-    return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}${read ? `<span class="lb-read" title="Read">&#10003;</span>` : ""}</a></li>`;
+    return `<li class="lb-lesson${current ? " is-current" : ""}"><a href="${learnHash(b, c, lessonNum(l))}"${current ? ` aria-current="page"` : ""}>${inner}</a></li>`;
   }
   function learnReviewRow(b, c, current) {
     const n = learnReview(c).length;
@@ -5133,14 +5129,11 @@
     const all = [];
     LEARN_SHELF.forEach(b => b.chapters.forEach(c => c.lessons.forEach(l => { if (learnLessonData(c, l)) all.push({ b, c, l }); })));
     if (!all.length) return null;
+    // The lesson opened last, else the first written one (lessons are not marked read; owner,
+    // 2026-10-31).
     const last = prog.last && learnLessonByCode(prog.last);
-    if (last && learnLessonData(last.c, last.l)) {
-      if (!prog.read[last.l.code]) return Object.assign({ again: true }, last);
-      const k = all.findIndex(x => x.l === last.l);
-      if (all[k + 1]) return all[k + 1];
-      return Object.assign({ again: true }, last);
-    }
-    return all.find(x => !prog.read[x.l.code]) || all[0];
+    if (last && learnLessonData(last.c, last.l)) return Object.assign({ again: true }, last);
+    return all[0];
   }
 
   // The book view (owner, 2026-10-31, modelled on the way an online textbook is read): a slim
@@ -5217,7 +5210,6 @@
   function renderLearnBook(b) {
     noteRecent("b:" + b.id);
     const written = c => c.lessons.filter(l => learnLessonData(c, l)).length;
-    const read = c => c.lessons.filter(l => learnProgress().read[l.code]).length;
     const start = (() => {
       const k = learnContinue();
       return k && k.b === b ? k : (() => { for (const c of b.chapters) for (const l of c.lessons) if (learnLessonData(c, l)) return { b, c, l }; return null; })();
@@ -5232,14 +5224,14 @@
             <h2 class="learn-h">${escapeAttr(b.title)}</h2>
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons &middot; ${learnWrittenIn(b)} written so far</p>
-            ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${learnProgress().read[start.l.code] || start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
+            ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
             <p class="learn-note bk-levels">Every chapter is ${learnLevelHtml({ level: "Core" })}, ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).</p>
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
         <ol class="bk-toc">${b.chapters.map(c => `
           <li class="bk-toc-ch">
-            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}${read(c) ? ` &middot; ${read(c)} read` : ""}</span></span></a>
+            <a class="bk-toc-chh" href="${learnHash(b, c)}"><span class="lb-code">${c.code}</span><span class="bk-toc-t">${escapeAttr(c.title)}</span><span class="bk-toc-meta">${learnLevelHtml(c)}<span class="lb-n">${written(c) ? `${written(c)} of ${c.lessons.length} written` : `${c.lessons.length} lessons`}</span></span></a>
             <ol class="lb-lessons">${c.lessons.map(l => learnLessonRow(b, c, l, false)).join("")}${learnReviewRow(b, c, false)}</ol>
           </li>`).join("")}
         </ol>
@@ -5464,7 +5456,6 @@
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        <div class="lp-end" aria-hidden="true"></div>
         ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
     learnBookShell(b, c, isReview ? "review" : l, main);
@@ -5483,19 +5474,6 @@
       const saved = learnProgress().problems[li.dataset.slug];
       if (saved && saved.shown && !saved.hidden && (saved.notes || "").trim()) showLearnSolution(li);
     });
-    // A lesson counts as read once its last paragraph has been on screen.
-    const end = $content.querySelector(".lp-end");
-    if (l && d && end && "IntersectionObserver" in window) {
-      const io = new IntersectionObserver(es => {
-        if (!es.some(x => x.isIntersecting)) return;
-        io.disconnect();
-        const prog = learnProgress();
-        if (!prog.read[l.code]) {
-          prog.read[l.code] = Date.now(); saveLearn();
-        }
-      });
-      io.observe(end);
-    }
   }
 
   function renderLearn(route) {
@@ -6164,7 +6142,7 @@
         <div class="section-header topic-header">
           <div class="book-eyebrow">Learn &middot; Lists</div>
           <div class="list-detail-head">
-            <h2>${escapeAttr(l.name)}</h2>
+            <h2${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h2>
             ${headTools}
           </div>
           ${isBuiltin && l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
@@ -7077,6 +7055,7 @@
     updateNavActive();
     updateGearActive();
     if (route.type === "list") buildListToc();
+    if (route.type === "list" && pendingRename === route.listId) { pendingRename = null; startListRename(route.listId); }
     else if (route.type !== "formula") clearPageToc();
     // Showing or hiding the sidebar changes the card width, so the formulas are fitted again.
     fitCardFormulas($content);
@@ -7839,12 +7818,8 @@
     if (topicChip) { location.hash = tagHash([TOPICS_BY_ID[topicChip.dataset.topic].label]); window.scrollTo({ top: 0 }); return; }
     const grp = e.target.closest("[data-list-group]");
     if (grp) { state.autoGroup = !state.autoGroup; saveSettings(); render(); return; }
-    const rn = e.target.closest("[data-list-rename]");
-    if (rn) {
-      const l = getList(rn.dataset.listRename);
-      if (l) { const name = prompt("Rename list:", l.name); if (name && name.trim()) { renameList(l.id, name); render(); } }
-      return;
-    }
+    const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
+    if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
     if (del) {
       const l = getList(del.dataset.listDelete);
@@ -7884,16 +7859,46 @@
     listAddTimer = setTimeout(() => renderListAddResults(box, box.dataset.listAdd, q), 140);
   });
 
-  $content.addEventListener("submit", e => {
-    const nf = e.target.closest("#lists-new-form");
-    if (nf) {
-      e.preventDefault();
-      const inp = document.getElementById("lists-new-name");
-      const name = inp ? inp.value.trim() : "";
-      if (!name) { if (inp) inp.focus(); return; }
-      location.hash = "#/list/" + createList(name);
-    }
-  });
+  // A new list (owner, 2026-10-31): one press makes "Untitled list" (numbered when that name is
+  // taken) and opens it with its name ready to type over, instead of asking for a name first.
+  let pendingRename = null;
+  $content.addEventListener("click", e => {
+    const nb = e.target.closest("[data-list-new]");
+    if (!nb) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const taken = new Set(lists.items.map(l => l.name));
+    let name = "Untitled list", k = 2;
+    while (taken.has(name)) name = "Untitled list " + k++;
+    const id = createList(name);
+    pendingRename = id;
+    location.hash = "#/list/" + id;
+  }, true);
+  // Renaming happens in place: the list's title becomes editable with its text selected; Enter or
+  // a click elsewhere keeps the new name, Escape keeps the old one.
+  function startListRename(id) {
+    const h = $content.querySelector(`h2[data-list-title="${id}"]`), l = getList(id);
+    if (!h || !l) return;
+    const old = l.name;
+    h.contentEditable = "true";
+    h.spellcheck = false;
+    h.focus();
+    const range = document.createRange(); range.selectNodeContents(h);
+    const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+    let done = false;
+    const finish = keep => {
+      if (done) return; done = true;
+      h.contentEditable = "false";
+      const name = h.textContent.replace(/\s+/g, " ").trim().slice(0, 40);
+      if (keep && name && name !== old) { renameList(id, name); render(); }
+      else h.textContent = old;
+    };
+    h.addEventListener("keydown", ev => {
+      if (ev.key === "Enter") { ev.preventDefault(); finish(true); h.blur(); }
+      else if (ev.key === "Escape") { ev.preventDefault(); finish(false); h.blur(); }
+    });
+    h.addEventListener("blur", () => finish(true), { once: true });
+  }
 
   window.addEventListener("hashchange", () => {
     clearTimeout(scrollSaveTimer);
