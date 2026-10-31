@@ -22,10 +22,8 @@
   - `mq-learn` in `PROGRESS_KEYS`;
   - the gate `tools/check-learn.js`, run by `build-learn-shelf.py --check`;
   - the prototype lesson N3.1 and the N3 review in `js/data/learn/aime-number-theory/n3.js`.
-- **Next action:** step L6, write the pilot pair from the outline, each number checked by script:
-  1. N3.2 to N3.5 into `n3.js` (the outline gives each lesson's opening question, teaching points, cards, checks and problems).
-  2. Fill N2's review to 8 to 12 (candidates from `crt`, `modular-inverse`, `euclids-lemma`; 1992 AIME #11 and 1994 AIME #12 still to read), then write N2 into `aime-number-theory/n2.js` and load it from `index.html`.
-  3. Then L7 (the "Practice more" link at the end of a chapter, "Study this in Learn" on a problem page, a missed review problem pointing back) and L8, the owner tries the pilot.
+- **L6 under way (seventeenth chat, after the owner's lesson-format decisions; CONVENTIONS §14):** N3 is fully written: N3.1 to N3.5 and the review (every number computed). Lesson format: one flowing explanation with no subheadings, Related cards, the lesson's own problems in cards with worked solutions, then contest practice problems.
+- **Next action:** write N2 (fill its review to 8 to 12 first), then carry on through the outline: N1 and the rest of AIME Number Theory, then the other books (the owner's goal, 2026-10-31: write all the planned books; then AMC 10/12 books, then olympiad books, then proofreading; merge, split or deviate where it reads better).
 - **Also done in the seventeenth chat (owner's requests):** the Learn page shows the books as covers that open a book view with a contents sidebar; more room around "Your lists"; Practice's "Study lists ... are under Learn" line removed; the home page redesigned (L10), then made dense with the top bar kept and hairline sections instead of boxes; lessons and books in Recently opened; the book view rebuilt like an online textbook (chapter-tab rail, two title bars with arrows, problem blocks, Previous / Back to Top / Next).
 - **For the owner to try now:** the home page; Learn → a book cover → N3 → N3.1 (`#/learn/aime-number-theory/n3/1`), and the N3 review.
 
