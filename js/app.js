@@ -4473,26 +4473,29 @@
       const box = $content.querySelector(".set-find-input"), list = $content.querySelector(".set-find-list");
       if (!box || !list) return;
       const ALSO = {
-        theme: "dark mode, light mode, night mode, dark theme, colors, colours, black background, white background, appearance, eyes",
-        density: "spacing, compact, spacious, padding, margins, crowded, cramped, roomy, whitespace, layout",
-        cols: "card size, bigger cards, larger cards, card width, columns, grid",
-        text: "font size, font, bigger text, larger text, small text, zoom, readability, letters",
-        lines: "formula rows, how many lines, truncate, shorten cards",
-        tags: "keywords, chips, labels on cards",
-        notation: "sigma, summation, sum notation, product notation, expanded terms",
-        diagrams: "figures, pictures, images, drawings, thumbnails",
-        tools: "sidebar on the right, right column, wikipedia, print, permanent link, permalink, what links here",
-        scroll: "scrolling, mouse wheel, trackpad, scroll speed, too fast, too slow",
-        layout: "a to z, alphabetical, index, list of names",
-        order: "sort, sorting, ordering, popular, most used, curated",
-        start: "startup, start page, home page, landing page, open on, launch, default page, front page",
-        lessonLinks: "lesson links, drawer, open cards beside, side panel",
-        strategy: "spoilers, solution, solutions, reveal, answers, hide the strategy, show the strategy, how this problem works",
-        "Export progress": "backup, back up, save my progress, download, transfer, move to another browser, keep my lists",
-        "Import progress": "restore, upload, load a backup, transfer, from another browser"
+        theme: "dark mode, light mode, night mode, dark theme, light theme, mode, colors, colours, color scheme, black background, white background, appearance, eyes, contrast, night",
+        density: "spacing, space, compact, spacious, padding, margins, crowded, cramped, roomy, whitespace, layout, tight, dense, gaps",
+        cols: "card size, bigger cards, larger cards, smaller cards, card width, columns, grid, wide cards",
+        text: "font size, font, fonts, bigger text, larger text, small text, text size, zoom, readability, letters, type size, words",
+        lines: "formula rows, rows, how many lines, truncate, shorten cards, formulas on cards, lines",
+        tags: "keywords, keyword, chips, labels on cards, tags, topics",
+        notation: "sigma, summation, sum notation, product notation, expanded terms, sums, products, symbols",
+        diagrams: "figures, figure, pictures, images, drawings, thumbnails, diagrams, graphics, illustrations",
+        tools: "page tools, sidebar on the right, right column, wikipedia, print, printing, permanent link, permalink, what links here, tools",
+        scroll: "scrolling, scroll, mouse wheel, wheel, trackpad, touchpad, scroll speed, too fast, too slow, speed",
+        layout: "a to z, alphabetical, index, list of names, list view, subject pages, layout",
+        order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
+        start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
+        lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
+        strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
+        "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
+        "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
+        commands: "commands, command, run, special random, random card, random problem, console, shortcuts"
       };
-      const STOP = new Set("how do i to the a an my me of in for can change set setting settings make turn enable disable want where is are it this on off use".split(" "));
-      const words = t => t.toLowerCase().replace(/[^a-z0-9& ]+/g, " ").split(/\s+/).filter(Boolean);
+      const STOP = new Set("how do i to the a an my me of in for can change set setting settings make turn enable disable want where is are it this on off use get put way option options".split(" "));
+      // Word endings fall away, so "exports" finds "export" and "printing" finds "print".
+      const stem = w => w.length > 4 ? w.replace(/(ings?|ed|es|s)$/, "") : w;
+      const words = t => t.toLowerCase().replace(/[^a-z0-9& ]+/g, " ").split(/\s+/).filter(Boolean).map(stem);
       const near = (a, b) => {   // one edit apart, for words of four letters or more
         if (a.length < 4 || Math.abs(a.length - b.length) > 1) return false;
         let i = 0, j = 0, d = 0;
@@ -4504,25 +4507,38 @@
         const name = ((r.querySelector(".set-name") || {}).textContent || "").trim();
         const desc = ((r.querySelector(".set-desc") || {}).textContent || "").trim();
         const panel = r.closest(".set-panel"), group = panel ? ((panel.querySelector(".set-panel-title") || {}).textContent || "").replace(/for fun$/, "").trim() : "";
-        const key = (r.querySelector("[data-set]") || {}).dataset ? r.querySelector("[data-set]").dataset.set : null;
-        const opts = [...r.querySelectorAll("[data-set]")].map(b => b.textContent).join(" ");
+        const btn = r.querySelector("[data-set]"), key = btn ? btn.dataset.set : null;
+        const opts = [...r.querySelectorAll("[data-set], .seg button")].map(b => b.textContent).join(" ");
         const also = ALSO[key] || ALSO[name] || "";
         r.dataset.findId = i;
         return { i, name, group, nameW: words(name), alsoW: words(also), phrases: also.toLowerCase().split(/\s*,\s*/), optW: words(opts), descW: words(desc + " " + group) };
       }).filter(it => it.name);
+      // The Commands panel has no rows; it is found as one item, by its title.
+      const cmd = $content.querySelector("#set-commands");
+      if (cmd) {
+        const i = rows.length;
+        cmd.dataset.findId = i;
+        items.push({ i, name: "Commands", group: "Commands", nameW: words("Commands"), alsoW: words(ALSO.commands), phrases: ALSO.commands.split(/\s*,\s*/),
+          optW: [], descW: words(cmd.textContent.slice(0, 600)) });
+      }
+      // A setting is shown when most of the words are found, ranked by how many and how well:
+      // its name first, then the everyday words for it, its options, and its description.
       const score = (it, q) => {
         const ws = words(q).filter(w => !STOP.has(w));
         if (!ws.length) return 0;
         const ql = ws.join(" ");
-        let total = it.phrases.some(ph => ph && (ph === ql || ph.startsWith(ql) || ql.includes(ph))) ? 30 : 0;
-        if (it.name.toLowerCase().startsWith(ql)) total += 20;
+        let total = it.phrases.some(ph => { const p2 = words(ph).join(" "); return p2 && (p2 === ql || p2.startsWith(ql) || (" " + ql + " ").includes(" " + p2 + " ")); }) ? 30 : 0;
+        if (words(it.name).join(" ").startsWith(ql)) total += 20;
+        let found = 0, strong = false;
         for (const w of ws) {
-          const pre = list => list.some(x => x === w) ? 2 : list.some(x => x.startsWith(w)) ? 1 : list.some(x => near(w, x)) ? 0.5 : 0;
-          const s = Math.max(pre(it.nameW) * 6, pre(it.alsoW) * 5, pre(it.optW) * 3, pre(it.descW) * 1.5);
-          if (!s) return 0;   // every word has to be found somewhere
-          total += s;
+          const pre = list => list.some(x => x === w) ? 2 : list.some(x => x.startsWith(w) || (w.length >= 5 && w.startsWith(x) && x.length >= 4)) ? 1.2 : list.some(x => near(w, x)) ? 0.8 : 0;
+          const parts = [pre(it.nameW) * 6, pre(it.alsoW) * 5, pre(it.optW) * 3, pre(it.descW) * 1.2];
+          const s = Math.max(...parts);
+          if (s) { found++; total += s; if (Math.max(parts[0], parts[1], parts[2]) > 0) strong = true; }
         }
-        return total;
+        if (!found || found * 2 < ws.length) return 0;
+        if (!strong && !total) return 0;
+        return total * (found / ws.length) + (strong ? 2 : 0);
       };
       let hits = [], cur = -1;
       const draw = () => {
@@ -4535,7 +4551,7 @@
         list.hidden = false;
       };
       const go = i => {
-        const row = $content.querySelector(`.set-row[data-find-id="${i}"]`);
+        const row = $content.querySelector(`[data-find-id="${i}"]`);
         list.hidden = true;
         if (!row) return;
         const lab = row.closest("details");
@@ -4798,14 +4814,21 @@
       fixed += aside.querySelector(".pv-title").offsetHeight;
       const label = aside.querySelector(".pv-screen:not([hidden]) .pv-label");
       fixed += nScreens * ((label ? label.offsetHeight : 17) + 5);
-      // The dividing line sits close to the settings, so the screens get the room (owner,
-      // 2026-10-31); the screens are centred between the two arrows.
+      // The screens and their two arrows form one block of a comfortable size at the right of
+      // the window, and the dividing line sits midway between the settings and that block, so it
+      // is close to neither (owner, 2026-10-31).
       const right = page ? page.getBoundingClientRect().right : 0;
-      const region = document.documentElement.clientWidth - right - 20;
-      let w = Math.min(640, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, region - 96);
+      const vw = document.documentElement.clientWidth, EDGE = 28, ARROW = 30, GAP = 14, MIN_SPACE = 48;
+      const room = vw - right - EDGE - 2 * (ARROW + GAP) - 2 * MIN_SPACE;
+      let w = Math.min(520, (aside.clientHeight - fixed) / nScreens * PV_W / PV_H, room);
       w = Math.max(120, w);
-      aside.style.setProperty("--pv-left", (right + 20) + "px");
-      aside.style.paddingLeft = aside.style.paddingRight = Math.max(44, (region - w) / 2) + "px";
+      const blockLeft = vw - EDGE - (w + 2 * (ARROW + GAP));
+      const line = Math.round((right + blockLeft) / 2);
+      aside.style.setProperty("--pv-left", line + "px");
+      aside.style.paddingLeft = (blockLeft - line + ARROW + GAP) + "px";
+      aside.style.paddingRight = (EDGE + ARROW + GAP) + "px";
+      aside.querySelector(".pv-prev").style.left = (blockLeft - line) + "px";
+      aside.querySelector(".pv-next").style.right = EDGE + "px";
       frames.forEach(fr => {
         const inner = fr.firstElementChild, iw = +inner.dataset.w || PV_W;
         fr.style.width = w + "px";
