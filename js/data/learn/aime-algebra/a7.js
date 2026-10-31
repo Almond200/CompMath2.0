@@ -131,7 +131,7 @@ Doubling identities make two more telescopes. From $\cot\theta - \cot 2\theta = 
 
 Look for a telescope whenever a trigonometric sum or product runs over many evenly spaced or doubling angles, and for a substitution whenever an algebraic expression has the shape of an identity. The next chapter brings together the algebraic structures of the whole book.`,
       related: [
-        { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson (A3.2).` },
+        { card: "telescoping", note: String.raw`the general method behind every collapse in this lesson ((A3.3)).` },
         { card: "trig-series-complex", note: String.raw`the same sums as geometric series in $e^{i\theta}$ (A6.3).` },
         { card: "weierstrass-substitution", note: String.raw`the substitution $t = \tan\tfrac\theta2$ that makes sine and cosine rational (A9.4).` },
         { card: "evenly-spaced-angle-products", note: String.raw`products of sines at evenly spaced angles, from roots of unity (A9.4).` }

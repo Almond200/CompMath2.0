@@ -18,7 +18,7 @@ Before expanding anything, look for one of these shapes. Every step of manipulat
       related: [
         { card: "sfft", note: String.raw`$xy + x + y + 1 = (x + 1)(y + 1)$ used to solve equations in integers (B3.4).` },
         { card: "sophie-germain", note: String.raw`$a^4 + 4b^4$ as a product of two quadratics (A8.2).` },
-        { card: "telescoping", note: String.raw`sums that collapse after rationalizing each term (A3.2).` }
+        { card: "telescoping", note: String.raw`sums that collapse after rationalizing each term ((A3.3)).` }
       ],
       exercises: [
         { q: String.raw`Find the largest prime factor of $2^{16} - 1$.`, answer: "257",

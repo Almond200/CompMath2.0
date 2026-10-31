@@ -85,7 +85,7 @@ The [[triangular-numbers|triangular numbers]] $T_n = 1 + 2 + \cdots + n = \tfrac
 
 When a sum looks irregular, split it into arithmetic and geometric pieces, pair terms from the ends, or write it as a difference of two known sums. The last lesson of the chapter treats sequences defined step by step.`,
       related: [
-        { card: "telescoping", note: String.raw`sums that collapse because consecutive terms cancel (A3.2).` },
+        { card: "telescoping", note: String.raw`sums that collapse because consecutive terms cancel ((A3.3)).` },
         { card: "higher-power-sums", note: String.raw`sums of fourth and higher powers (A9.1).` },
         { card: "fx-pairing", note: String.raw`Gauss's pairing applied to any function (A4.1).` }
       ],
@@ -122,7 +122,7 @@ A sequence that depends on a finite amount of information, such as the last two 
 
 Compute small cases in order, find the closed form or the period, and use the list to check. The next chapter turns to integer arithmetic.`,
       related: [
-        { card: "linear-recurrence", note: String.raw`second-order recurrences and their characteristic roots (A3.1).` },
+        { card: "linear-recurrence", note: String.raw`second-order recurrences and their characteristic roots ((A3.2)).` },
         { card: "cycle-hunting", note: String.raw`periods of last digits and remainders (B3.3).` },
         { card: "recursive-counting", note: String.raw`recurrences that count objects (C5.2).` }
       ],

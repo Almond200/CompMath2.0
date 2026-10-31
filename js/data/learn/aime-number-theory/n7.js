@@ -119,7 +119,7 @@ The signal is a recursively defined sequence with a question about a remainder, 
       related: [
         { card: "periodic-sequences", note: String.raw`the general method for a far term of any repeating sequence.` },
         { card: "cycle-hunting", note: String.raw`listing until a value returns, here with blocks of residues as the state (N3.2).` },
-        { card: "linear-recurrence", note: String.raw`closed forms for linear recursions, which say more than their residues (A3.1).` }
+        { card: "linear-recurrence", note: String.raw`closed forms for linear recursions, which say more than their residues ((A3.2)).` }
       ],
       exercises: [
         { q: String.raw`What is the Pisano period of the Fibonacci numbers modulo $5$?`, answer: "20",

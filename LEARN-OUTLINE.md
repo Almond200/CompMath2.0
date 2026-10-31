@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), A1 and A2 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A3 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -858,11 +858,13 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A3.1 Linear recurrences and their starting values (Core) | `linear-recurrence`, `binets-formula` |
-| A3.2 Telescoping sums and products; partial fractions (Core) | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
-| A3.3 Finite differences, double sums, from a pattern to a formula (Core II) | `finite-differences`, `double-summation` |
-| A3.4 Iteration and periodic sequences (Core) | *(pattern)* `infinite-nest`, prereq *(pattern)* `periodic-sequences` |
-| A3.5 A closed form only when it helps (Core II) | `arithmetico-geometric`, `largest-term-ratio` |
+| A3.1 Introduction | no card (the chapter's opening page: linear recurrences, telescoping, finite differences, periodic sequences, closed forms, with comprehension problems) |
+| A3.2 Linear recurrences and their starting values (Core) | `linear-recurrence`, `binets-formula` |
+| A3.3 Telescoping sums and products; partial fractions (Core) | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` |
+| A3.4 Finite differences, double sums, from a pattern to a formula (Core II) | `finite-differences`, `double-summation` |
+| A3.5 Iteration and periodic sequences (Core) | *(pattern)* `infinite-nest`, prereq *(pattern)* `periodic-sequences` |
+| A3.6 A closed form only when it helps (Core II) | `arithmetico-geometric`, `largest-term-ratio` |
+| A3.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A3.8 Review Problems and A3.9 Challenge Problems |
 
 ### A4. Functions, logs and exponentials (Core)
 
@@ -1089,7 +1091,7 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | 2004 AIME II #10 | powers of $2$ cycle modulo $9$ with period $6$, then a count |
 | 2021 AIME II #13 | $1000 = 8 \cdot 125$, and the order of $2$ mod $125$ |
 | 2021 AIME I #14 | Fermat, and a primitive root; $n = \operatorname{lcm}(42, 43, 46, 47)$ (a challenge: `primitive-roots` is N8, linked) |
-| 2016 AMC 12B #25 | the order of $2$ mod $19$ is $18$ (a challenge, assuming `linear-recurrence` from A3.1) |
+| 2016 AMC 12B #25 | the order of $2$ mod $19$ is $18$ (a challenge, assuming `linear-recurrence` from A3.2) |
 | 2015 AMC 12A #22 | a recursion whose terms repeat modulo $2$ and modulo $3$, joined by CRT (a challenge, assuming `recursive-counting` from C5.2) |
 | 2025 AIME II #13 | $2^{2^k}$ modulo $1000$ through Euler and CRT, after a rational recursion (challenging) |
 

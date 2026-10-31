@@ -146,7 +146,7 @@ The signal is a question about the roots after a fixed operation, $\tfrac1r$, $r
 
 The signal is a polynomial given by values, a question about a sum of coefficients, or an identity that holds for all $x$. The Summary (A2.7) collects the chapter's strategies.`,
       related: [
-        { card: "finite-differences", note: String.raw`the next value of a polynomial from a table of differences, another route to interpolation (A3.3).` },
+        { card: "finite-differences", note: String.raw`the next value of a polynomial from a table of differences, another route to interpolation ((A3.4)).` },
         { card: "roots-of-unity-filter", note: String.raw`sums of every $k$th coefficient, by evaluating at the $k$th roots of unity (A6.3).` },
         { card: "subtract-and-factor", note: String.raw`subtracting the pattern the values follow to reach a polynomial with known roots ((A1.5)).` }
       ],

@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A3"] = {
   lessons: {
     "A3.1": {
+      prereq: ["first-order-recurrence", "arithmetic-series", "geometric-series"],
+      cards: [],
+      body: String.raw`This chapter handles sequences and sums. Its tools are linear recurrences and their closed forms, telescoping, finite differences, periodic sequences, and the few closed forms worth knowing, such as the sum of a linear times a geometric term.
+
+A linear recurrence such as $a_n = 3a_{n-1} - 2a_{n-2}$ is solved through its characteristic equation $x^2 = 3x - 2$, whose roots $1$ and $2$ give $a_n = A + B \cdot 2^n$; the starting values fix $A$ and $B$. With $a_0 = 0$ and $a_1 = 1$, $a_n = 2^n - 1$. For contest sizes, computing the terms in a table is often just as fast and safer.
+
+A sum telescopes when each term is a difference $f(k) - f(k + 1)$, so that almost everything cancels: $\tfrac{1}{k(k + 1)} = \tfrac1k - \tfrac1{k + 1}$, so $\sum_{k=1}^{99} \tfrac1{k(k + 1)} = 1 - \tfrac1{100} = \tfrac{99}{100}$. Partial fractions produce such differences, and products telescope in the same way through ratios.
+
+The differences of a sequence given by a polynomial of degree $d$ become constant after $d$ steps, so a few terms fix the whole sequence, and a sequence defined by its differences is summed: if $a_1 = 1$ and $a_{n+1} = a_n + 2n$, then $a_{10} = 1 + 2(1 + 2 + \cdots + 9) = 91$.
+
+A sequence in which each term depends on a fixed number of earlier ones, through finitely many possible values, eventually repeats, and so does a map applied over and over, such as $x \mapsto \tfrac{1}{1 - x}$, whose third iterate is the identity. Finding the period turns a far term into an early one.
+
+The lessons take these ideas in turn: linear recurrences (A3.2), telescoping (A3.3), finite differences and double sums (A3.4), iteration and periodic sequences (A3.5), and closed forms (A3.6). The Summary (A3.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`A sequence has $a_0 = 0$, $a_1 = 1$ and $a_n = 3a_{n-1} - 2a_{n-2}$. Find $a_{10}$.`, answer: "1023",
+          solution: String.raw`The characteristic equation $x^2 - 3x + 2 = 0$ has roots $1$ and $2$, so $a_n = A + B \cdot 2^n$. From $a_0 = A + B = 0$ and $a_1 = A + 2B = 1$, $B = 1$ and $A = -1$, so $a_n = 2^n - 1$ and $a_{10} = 1023$.` },
+        { q: String.raw`Find $\sum_{k=1}^{99} \dfrac{1}{k(k + 1)}$.`, answer: "99/100",
+          solution: String.raw`Since $\tfrac{1}{k(k + 1)} = \tfrac1k - \tfrac{1}{k + 1}$, the sum is $\left(1 - \tfrac12\right) + \left(\tfrac12 - \tfrac13\right) + \cdots + \left(\tfrac1{99} - \tfrac1{100}\right) = 1 - \tfrac1{100} = \tfrac{99}{100}$.` },
+        { q: String.raw`A sequence has $a_1 = 1$ and $a_{n+1} = a_n + 2n$. Find $a_{10}$.`, answer: "91",
+          solution: String.raw`Adding the differences, $a_{10} = a_1 + 2(1 + 2 + \cdots + 9) = 1 + 2 \cdot 45 = 91$. In general $a_n = n^2 - n + 1$.` }
+      ],
+      problems: [
+        "2018 AMC 12B, Problem 7",
+        "2004 AMC 10B, Problem 19",
+        "2002 AMC 12A, Problem 21"
+      ]
+    },
+    "A3.2": {
       prereq: ["first-order-recurrence", "vietas-quadratic"],
       cards: ["linear-recurrence", "binets-formula"],
       body: String.raw`A sequence in which each term is a fixed combination of the terms before it, such as $a_n = 5a_{n-1} - 6a_{n-2}$, has a closed form, and the closed form comes from a quadratic. Here the quadratic is $x^2 = 5x - 6$, with roots $2$ and $3$, and every solution of the recurrence is $a_n = A \cdot 2^n + B \cdot 3^n$; with $a_0 = 2$ and $a_1 = 5$, that is $a_n = 2^n + 3^n$, so $a_5 = 275$. This is the theory of [[linear-recurrence|linear recurrences]], and the Fibonacci numbers are its most famous case.
@@ -28,7 +56,7 @@ A closed form is not always the fastest route. With only a few terms needed, or 
       ],
       problems: ["2008 AMC 10B, Problem 11", "2024 AMC 10B, Problem 23", "1985 AIME, Problem 5", "1998 AIME, Problem 8", "1988 AIME, Problem 13"]
     },
-    "A3.2": {
+    "A3.3": {
       prereq: ["difference-of-squares"],
       cards: ["telescoping", "partial-fractions", "factorial-telescoping", "alternating-sum-grouping"],
       body: String.raw`A long sum or product often collapses because each term cancels part of its neighbor. The sum $\tfrac1{1 \cdot 2} + \tfrac1{2 \cdot 3} + \cdots + \tfrac1{99 \cdot 100}$ looks like ninety-nine fractions to add, but each term is $\tfrac1k - \tfrac1{k+1}$, everything in the middle cancels, and the sum is $1 - \tfrac1{100} = \tfrac{99}{100}$. Recognizing that collapse, [[telescoping|telescoping]], and arranging terms so that it happens, is the subject of this lesson.
@@ -55,7 +83,7 @@ The signal is a long sum or product whose terms have a regular form, especially 
       ],
       problems: ["2003 AMC 10A, Problem 1", "2008 AMC 10A, Problem 5", "2021 Spring AMC 10A, Problem 10", "2022 AMC 10B, Problem 9", "2025 AMC 10B, Problem 15"]
     },
-    "A3.3": {
+    "A3.4": {
       prereq: ["power-sums", "arithmetic-series"],
       cards: ["finite-differences", "double-summation"],
       body: String.raw`Given the first few terms of a sequence, two questions come up: what formula produced them, and what a sum of them is. Finite differences answer the first. For $1, 4, 10, 20, 35$, the differences are $3, 6, 10, 15$, their differences are $3, 4, 5$, and the third differences are all $1$, so the terms come from a cubic and the next is $56$. Double sums answer many questions of the second kind, by adding over a grid in whichever order is easier.
@@ -80,7 +108,7 @@ The signal is a sequence given by its first terms, a sum of polynomial values, o
       ],
       problems: ["2018 AMC 12B, Problem 9", "2022 AMC 10A, Problem 20", "1989 AIME, Problem 8", "1992 AIME, Problem 8"]
     },
-    "A3.4": {
+    "A3.5": {
       prereq: ["periodic-sequences", "cycle-hunting"],
       cards: ["infinite-nest"],
       body: String.raw`Two kinds of sequences are best handled by looking at what they repeat rather than computing them term by term: infinite expressions that contain a copy of themselves, and recursions whose terms cycle. The nested radical $\sqrt{6 + \sqrt{6 + \sqrt{6 + \cdots}}}$ equals $3$, because calling it $x$ gives $x = \sqrt{6 + x}$. And the rule $a_{n+1} = \tfrac{1}{1 - a_n}$ starting from $2$ produces $2, -1, \tfrac12, 2, \ldots$, so its hundredth term is $2$.
@@ -105,7 +133,7 @@ The signal is an expression that continues forever in the same pattern, or a far
       ],
       problems: ["2005 AMC 10B, Problem 11", "2006 AMC 10B, Problem 18", "2011 AMC 10A, Problem 17", "1991 AIME, Problem 7", "2001 AIME II, Problem 3"]
     },
-    "A3.5": {
+    "A3.6": {
       prereq: ["geometric-series", "binomial-theorem"],
       cards: ["arithmetico-geometric", "largest-term-ratio"],
       body: String.raw`Some sums have closed forms that are worth deriving, and some questions about sequences are better answered without one. The sum $\sum_{k \ge 1} \tfrac{k}{2^k}$ is exactly $2$, and the finite version $\sum_{k=1}^{10} k \cdot 2^k$ is $18434$, by a shift-and-subtract that turns them into geometric series. But to find the largest term of $\binom{20}{k} 2^k$, the right tool is not a formula for the terms but the ratio of consecutive ones, which shows that the terms rise until $k = 13$, tie at $k = 14$, and then fall.
@@ -114,7 +142,7 @@ An [[arithmetico-geometric|arithmetico-geometric sum]] has terms that are an ari
 
 To find the [[largest-term-ratio|largest term]] of a sequence with no simple closed form, compare consecutive terms. If $\tfrac{a_{k+1}}{a_k} \ge 1$ the sequence is still rising, and the largest term is where the ratio first drops below $1$. For $a_k = \binom{20}{k} 2^k$, the ratio is $\tfrac{2(20 - k)}{k + 1}$, which is at least $1$ exactly when $k \le 13$, and equal to $1$ at $k = 13$; so $a_{13} = a_{14}$ and these are the largest. The same comparison finds the most likely number of successes in a binomial distribution.
 
-The signal is a sum of a linear times a geometric term, or a question about which term of a product-like sequence is largest.`,
+The signal is a sum of a linear times a geometric term, or a question about which term of a product-like sequence is largest. The Summary (A3.7) collects the chapter's strategies.`,
       related: [
         { card: "geometric-series", note: String.raw`the sum that the shift-and-subtract step reduces to.` },
         { card: "binomial-theorem", note: String.raw`the terms $\binom nk a^k$ whose largest member the ratio test finds.` },
@@ -129,8 +157,58 @@ The signal is a sum of a linear times a geometric term, or a question about whic
           solution: String.raw`The ratio $\tfrac{a_{k+1}}{a_k} = \tfrac{2(20 - k)}{k + 1}$ is greater than $1$ for $k \le 12$, equal to $1$ at $k = 13$, and less than $1$ after. So the terms rise to $a_{13}$, $a_{14} = a_{13}$, and then fall: the largest are at $k = 13$ and $14$.` }
       ],
       problems: ["2024 AMC 10B, Problem 12", "1991 AIME, Problem 3", "1994 AIME, Problem 4", "2009 AIME I, Problem 8"]
+    },
+    "A3.7": {
+      prereq: ["linear-recurrence", "binets-formula", "telescoping", "partial-fractions", "finite-differences", "double-summation", "periodic-sequences", "arithmetico-geometric", "largest-term-ratio"],
+      cards: [],
+      body: String.raw`[[linear-recurrence|A linear recurrence]] has a closed form from the roots of its characteristic equation, with constants fixed by the starting values; [[binets-formula|Binet's formula]] is the case of the Fibonacci numbers.
+
+[[telescoping|A telescoping sum]] is a sum of differences $f(k) - f(k + 1)$, and [[partial-fractions|partial fractions]] split a rational term into such differences; a product telescopes through ratios.
+
+[[finite-differences|The differences]] of a polynomial sequence of degree $d$ are constant after $d$ steps, which extends a sequence from a few terms. [[double-summation|A double sum]] is often simpler with its order swapped.
+
+[[periodic-sequences|A sequence that repeats]] is reduced by its period. [[arithmetico-geometric|A sum of a linear times a geometric term]] is found by subtracting the sum multiplied by the ratio, and [[largest-term-ratio|the largest term]] of a sequence such as $\binom nk x^k$ is found where the ratio of consecutive terms passes $1$.`,
+      strategies: [
+        String.raw`For a linear recurrence, compute terms in a table first; reach for the characteristic equation only when the index is large.`,
+        String.raw`Look for a telescoping form: write the term as a difference, by partial fractions if needed.`,
+        String.raw`For a product, write each factor as a ratio $\tfrac{g(k + 1)}{g(k)}$ and cancel.`,
+        String.raw`If a sequence comes from a polynomial, take differences until they are constant, and extend.`,
+        String.raw`For a double sum, try swapping the order of summation.`,
+        String.raw`For a recursion with a far index, compute terms until they repeat, then reduce the index by the period.`,
+        String.raw`For $\sum k r^k$, multiply by $r$ and subtract.`,
+        String.raw`For the largest term, compare consecutive terms by their ratio.`
+      ]
     }
   },
-  review: ["2018 AMC 12B, Problem 7", "2019 AMC 10A, Problem 24", "2018 AMC 10B, Problem 20", "2004 AMC 10B, Problem 19", "2002 AMC 12A, Problem 21",
-    "1984 AIME, Problem 7", "1988 AIME, Problem 6", "2012 AIME II, Problem 11", "2026 AIME II, Problem 9"]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`A sequence has $a_1 = 1$, $a_2 = 3$ and $a_n = a_{n-1} + a_{n-2}$. Find $a_{10}$.`, answer: "123",
+        solution: String.raw`Compute the terms: $1, 3, 4, 7, 11, 18, 29, 47, 76, 123$. So $a_{10} = 123$.` },
+      { q: String.raw`Find $\prod_{k=2}^{100} \left(1 - \dfrac{1}{k^2}\right)$.`, answer: "101/200",
+        solution: String.raw`Each factor is $\tfrac{(k - 1)(k + 1)}{k^2} = \tfrac{k - 1}{k} \cdot \tfrac{k + 1}{k}$. The first factors multiply to $\tfrac12 \cdot \tfrac23 \cdots \tfrac{99}{100} = \tfrac1{100}$ and the second to $\tfrac32 \cdot \tfrac43 \cdots \tfrac{101}{100} = \tfrac{101}{2}$. The product is $\tfrac{101}{200}$.` },
+      { q: String.raw`Find $\sum_{k=1}^{10} k(k + 1)$.`, answer: "440",
+        solution: String.raw`Telescope: $k(k + 1) = \tfrac13\left[k(k + 1)(k + 2) - (k - 1)k(k + 1)\right]$, so the sum is $\tfrac13 \cdot 10 \cdot 11 \cdot 12 = 440$.` },
+      { q: String.raw`A sequence has $a_1 = 2$ and $a_{n+1} = \dfrac{1}{1 - a_n}$. Find $a_{100}$.`, answer: "2",
+        solution: String.raw`Compute: $a_1 = 2$, $a_2 = \tfrac{1}{1 - 2} = -1$, $a_3 = \tfrac{1}{2}$, $a_4 = \tfrac{1}{1/2} = 2$. The sequence has period $3$, and $100 \equiv 1 \pmod 3$, so $a_{100} = a_1 = 2$.` },
+      { q: String.raw`Find $\sum_{k=1}^{\infty} \dfrac{k}{2^k}$.`, answer: "2",
+        solution: String.raw`Let $S = \tfrac12 + \tfrac24 + \tfrac38 + \cdots$. Then $\tfrac S2 = \tfrac14 + \tfrac28 + \cdots$, and subtracting, $\tfrac S2 = \tfrac12 + \tfrac14 + \tfrac18 + \cdots = 1$. So $S = 2$.` },
+      { q: String.raw`For which $k$ is the term $\binom{20}{k}2^k$ of the expansion of $(1 + 2)^{20}$ largest?`, answer: "13",
+        solution: String.raw`The ratio of consecutive terms is $\tfrac{\binom{20}{k+1}2^{k+1}}{\binom{20}{k}2^k} = \tfrac{2(20 - k)}{k + 1}$, which is more than $1$ exactly when $40 - 2k \gt k + 1$, that is, $k \lt 13$. So the terms rise up to $k = 13$ and fall after it: $k = 13$.` }
+    ],
+    problems: [
+      "2018 AMC 10B, Problem 20",
+      "1984 AIME, Problem 7",
+      "1988 AIME, Problem 6",
+      "2002 AIME I, Problem 4",
+      "2003 AIME II, Problem 8"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2019 AMC 10A, Problem 24",
+      "2012 AIME II, Problem 11",
+      "2026 AIME II, Problem 9",
+      "2006 AIME I, Problem 13"
+    ]
+  }
 };

@@ -70,7 +70,7 @@ The [[chebyshev-polynomials|Chebyshev polynomials]] $T_n$ satisfy $\cos n\theta 
 
 Use matrices when a problem is about a linear system or a linear recurrence and the direct method is long; otherwise the elimination and characteristic-root methods of earlier chapters are shorter. The last lesson collects inequalities and substitutions used in olympiads.`,
       related: [
-        { card: "linear-recurrence", note: String.raw`the characteristic roots are the eigenvalues of the step matrix (A3.1).` },
+        { card: "linear-recurrence", note: String.raw`the characteristic roots are the eigenvalues of the step matrix ((A3.2)).` },
         { card: "triple-angle", note: String.raw`$T_3(x) = 4x^3 - 3x$ is the triple-angle formula (A7.2).` },
         { card: "shoelace-formula", note: String.raw`the area of a polygon as a sum of $2 \times 2$ determinants.` }
       ],

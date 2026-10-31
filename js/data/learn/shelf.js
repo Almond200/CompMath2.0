@@ -728,28 +728,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A3.2",
       "title": "Linear recurrences and their starting values",
       "level": "Core"
      },
      {
-      "code": "A3.2",
+      "code": "A3.3",
       "title": "Telescoping sums and products; partial fractions",
       "level": "Core"
      },
      {
-      "code": "A3.3",
+      "code": "A3.4",
       "title": "Finite differences, double sums, from a pattern to a formula",
       "level": "Core II"
      },
      {
-      "code": "A3.4",
+      "code": "A3.5",
       "title": "Iteration and periodic sequences",
       "level": "Core"
      },
      {
-      "code": "A3.5",
+      "code": "A3.6",
       "title": "A closed form only when it helps",
       "level": "Core II"
+     },
+     {
+      "code": "A3.7",
+      "title": "Summary"
      }
     ]
    },

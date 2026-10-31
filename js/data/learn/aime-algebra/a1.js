@@ -96,7 +96,7 @@ The signal is a polynomial with symmetric coefficients, an expression in $x$ and
       related: [
         { card: "vertex-form", note: String.raw`the completed square of a quadratic function, read as the vertex of its parabola.` },
         { card: "quadratic-perfect-square", note: String.raw`completing the square inside a perfect-square condition (A1.6).` },
-        { card: "linear-recurrence", note: String.raw`$s_n = t\,s_{n-1} - s_{n-2}$ is a linear recurrence, solved in general in A3.1.` }
+        { card: "linear-recurrence", note: String.raw`$s_n = t\,s_{n-1} - s_{n-2}$ is a linear recurrence, solved in general in (A3.2).` }
       ],
       exercises: [
         { q: String.raw`If $x + \tfrac1x = 4$, find $x^4 + \tfrac1{x^4}$.`, answer: "194",
