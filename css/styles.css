@@ -3807,15 +3807,14 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .lp-show { border: none; cursor: pointer; background: var(--c-learn); color: var(--bg); }
 .lp-show:disabled { cursor: not-allowed; opacity: 0.45; filter: none; }
 .lp-sol { margin: 12px 0 0; }
-.bk-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 14px; margin: 36px 0 0; padding-top: 18px; border-top: 1px solid var(--border); }
-.bk-foot-card { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 10px 14px; border: 1px solid var(--border); border-radius: 12px;
-  background: var(--bg-card); text-decoration: none; color: var(--text); transition: border-color 0.12s, background 0.12s; }
-.bk-foot-card:hover { border-color: var(--bk-ink); background: var(--bk-soft); }
-.bk-foot-next { text-align: right; }
-.bk-foot-k { font-size: 11.5px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bk-ink); }
-.bk-foot-t { position: relative; display: block; font-size: 14.5px; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.bk-foot-top { font-size: 13px; font-weight: 650; color: var(--text-dim); text-decoration: none; padding: 6px 10px; border-radius: 8px; }
-.bk-foot-top:hover { background: var(--bg-panel); color: var(--text); }
+.bk-foot { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; margin: 36px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+.bk-foot-link, .bk-foot-top { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; max-width: 100%; padding: 6px 10px; border-radius: 8px;
+  font-size: 13px; font-weight: 650; color: var(--text-dim); text-decoration: none; }
+.bk-foot-link:hover, .bk-foot-top:hover { background: var(--bg-panel); color: var(--text); }
+.bk-foot-next { justify-self: end; }
+.bk-foot-prev { justify-self: start; }
+.bk-foot-a { flex: 0 0 auto; font-size: 15px; font-weight: 800; color: var(--bk-ink); }
+.bk-foot-t { position: relative; display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 899px) {
   .content:has(> .bk-view) { padding-top: 0; padding-left: 10px; padding-right: 10px; }
   .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }

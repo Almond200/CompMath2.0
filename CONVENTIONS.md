@@ -981,7 +981,7 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 - a rounded rail of tabs on the left: C for the contents, then each chapter's number; the current one tinted; hovering a tab shows the chapter's name in a small card with a pointer;
 - a header card attached to the top of the page (it scrolls away with the page; no sticky headers): the cover, then two rows, the chapter's ("Chapter 3") and the lesson's ("Lesson"), each with a small label and two arrow buttons;
 - each problem in its first look: a rounded card with its number and contest reference, the statement on a slightly grey ground, then the work box with Show Solution to its right (under it on a phone), which becomes Hide Solution once shown; the box starts two lines tall, grows with its text, and cannot be dragged to resize;
-- at the bottom, the previous and next pages as two cards saying where they lead, with Back to top between them.
+- at the bottom, three small plain links (no cards, no background until hovered): ‹ the previous page, Back to top, the next page ›.
 
 The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
 

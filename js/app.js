@@ -5172,9 +5172,9 @@
       ? bar("bk-bar2", "Lesson", `<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>`,
           learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""))
       : bar("bk-bar2", "Lesson", `<span class="bk-bar-t">Contents</span>`, learnArrow("", -1, ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""));
-    // The bottom: the previous and next pages as two cards that say where they lead, and
-    // Back to top between them.
-    const footCard = (x, dir) => x ? `<a class="bk-foot-card bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}"><span class="bk-foot-k">${dir < 0 ? "&#8249; Previous" : "Next &#8250;"}</span><span class="bk-foot-t">${learnPageLabel(x)}</span></a>` : `<span></span>`;
+    // The bottom: three small plain links, the previous page, Back to top, and the next page
+    // (owner, 2026-10-31: discreet, no cards).
+    const footCard = (x, dir) => x ? `<a class="bk-foot-link bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(learnPageLabel(x).replace(/<[^>]*>/g, ""))}">${dir < 0 ? `<span class="bk-foot-a">&#8249;</span>` : ""}<span class="bk-foot-t">${learnPageLabel(x)}</span>${dir > 0 ? `<span class="bk-foot-a">&#8250;</span>` : ""}</a>` : `<span></span>`;
     const foot = `<nav class="bk-foot">
         ${footCard(prev, -1)}
         <a class="bk-foot-top" href="#" data-bk-top>&#8593; Back to top</a>
