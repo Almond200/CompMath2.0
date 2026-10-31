@@ -77,7 +77,7 @@ A student need not finish the books in order. Any chapter can be entered once it
 
 ## The AMC books, second plan (to replace the four AMC books and the Bridge)
 
-**Status (2026-10-31):** planned, not built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
+**Status (2026-10-31):** planned, not built. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
 
 ### How the books are built
 
