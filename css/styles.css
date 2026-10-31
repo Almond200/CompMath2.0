@@ -2727,8 +2727,8 @@ body.is-landing .content { padding: 0 0 70px; }
 .lb-ch-link { display: flex; flex: 1 1 320px; align-items: baseline; gap: 10px; min-width: 0; text-decoration: none; }
 .lb-ch-link:hover .lb-title { text-decoration: underline; }
 .lb-chapter-page li { padding: 8px 0; border-top: 1px solid var(--border); font-size: 15px; }
-.lp-grid { display: grid; grid-template-columns: 270px minmax(0, 1fr); gap: 28px; align-items: start; }
-.lp-grid.has-drawer { grid-template-columns: 240px minmax(0, 1fr) minmax(280px, 380px); gap: 22px; }
+.lp-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); }
   border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 12px; font-size: 13.5px; }
 .lp-main { min-width: 0; max-width: 760px; }
 .lp-cards { margin: 0 0 14px; display: flex; flex-direction: column; gap: 6px; }
@@ -2736,9 +2736,6 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-cards-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); min-width: 4.6em; }
 .lp-body p { line-height: 1.7; }
 .lp-h3 { margin: 30px 0 10px; font-size: 18px; }
-.lp-nav { display: flex; justify-content: space-between; gap: 12px; margin: 30px 0 10px; padding-top: 14px; border-top: 1px solid var(--border); }
-.lp-nav-link { font-weight: 650; color: var(--c-learn); text-decoration: none; }
-.lp-nav-link:hover { text-decoration: underline; }
 
 /* A check, answered with the math keyboard */
 .lc-check { margin: 18px 0; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--border); border-left: 3px solid var(--c-learn); background: var(--bg-card); }
@@ -2780,17 +2777,10 @@ body.is-landing .content { padding: 0 0 70px; }
 
 /* The problem list: statement, the student's box, then Show Solution */
 .lp-problems { list-style: none; margin: 0; padding: 0; }
-.lp-prob { margin: 0 0 18px; padding: 14px 16px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); }
-.lp-prob-head { font-weight: 700; margin-bottom: 8px; }
-.lp-prob-n { color: var(--c-learn); margin-right: 4px; }
-.lp-prob-head a { color: var(--text); text-decoration: none; }
-.lp-prob-head a:hover { color: var(--c-learn); text-decoration: underline; }
 .lp-prob .prob-st { margin: 0 0 10px; }
 .lp-notes { display: block; width: 100%; box-sizing: border-box; margin: 10px 0 8px; font: inherit; font-size: 14.5px; line-height: 1.5;
   padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); resize: vertical; }
 .lp-notes:focus { outline: none; border-color: var(--c-learn); }
-.lp-show { border: none; cursor: pointer; background: var(--c-learn); color: var(--bg); }
-.lp-show:disabled { cursor: not-allowed; opacity: 0.45; filter: none; }
 .lp-sol { margin-bottom: 0; }
 
 /* ---------- Learn: book covers and the book view (owner, 2026-10-31) ---------- */
@@ -2825,38 +2815,7 @@ body.is-landing .content { padding: 0 0 70px; }
 .bk-s .bk-motif { margin: 4px 0 0; stroke-width: 4; }
 .bk-l { max-width: 210px; padding: 18px 18px 16px 26px; }
 .bk-l .bk-name { font-size: 26px; }
-.bk-side-head .bk-cover { width: 46px; flex: 0 0 46px; }
-.bk-side-head .bk-cover .bk-series, .bk-side-head .bk-cover .bk-name { display: none; }
-.bk-side-head .bk-cover .bk-motif { width: 90%; margin: 0; }
 
-/* The book view: sidebar with the contents, the page, and on a lesson the card drawer */
-.bk-side { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
-  border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 10px 12px; font-size: 13.5px; }
-.bk-side-sum { display: none; cursor: pointer; list-style: none; }
-.bk-side-sum::-webkit-details-marker { display: none; }
-.bk-side-label { font-weight: 800; color: var(--c-learn); margin-right: 8px; }
-.bk-side-book { color: var(--text-dim); }
-.bk-side-head { display: flex; align-items: center; gap: 10px; padding: 6px; border-radius: 9px; text-decoration: none; color: var(--text); }
-.bk-side-head:hover, .bk-side-head.is-current { background: var(--cs-learn); }
-.bk-side-title { display: block; font-weight: 750; line-height: 1.3; }
-.bk-side-sub { display: block; font-size: 12px; color: var(--text-faint); }
-.bk-toc { list-style: none; margin: 8px 0 0; padding: 0; }
-.bk-toc-ch { border-top: 1px solid var(--border); }
-.bk-toc-ch summary { display: flex; align-items: baseline; gap: 6px; padding: 8px 4px; cursor: pointer; list-style: none; }
-.bk-toc-ch summary::-webkit-details-marker { display: none; }
-.bk-toc-ch summary .lb-code { min-width: 2.2em; }
-.bk-toc-title { flex: 1 1 auto; min-width: 0; color: var(--text); line-height: 1.35; }
-.bk-toc-ch.is-open .bk-toc-title { font-weight: 700; }
-.bk-toc-chlink { display: block; margin: 0 0 4px 6px; padding: 3px 6px; border-radius: 7px; font-size: 12.5px; color: var(--text-dim); text-decoration: none; }
-.bk-toc-chlink:hover { color: var(--c-learn); }
-.bk-toc-chlink.is-current { background: var(--cs-learn); color: var(--text); }
-.bk-toc .lb-lessons { padding: 0 0 6px 6px; margin: 0; }
-.bk-toc .lb-lessons li { font-size: 12.5px; padding: 4px 6px; border-radius: 7px; gap: 6px; }
-.bk-toc .lb-lessons li.is-current { background: var(--cs-learn); }
-.bk-toc .lb-lessons li:not(:has(a)) { color: var(--text-faint); }
-.bk-toc .lb-lessons li:not(:has(a)) .lb-title { color: var(--text-faint); }
-.bk-toc .lb-soon, .bk-toc .lb-n { display: none; }
-.bk-toc .lb-code { font-size: 12px; }
 .bk-hero { display: flex; gap: 26px; align-items: flex-start; margin: 4px 0 18px; }
 .bk-hero .bk-cover { flex: 0 0 180px; width: 180px; }
 .bk-hero-text { min-width: 0; }
@@ -2864,7 +2823,7 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-main a.bk-start, .lp-main a.bk-start:visited { background: var(--c-learn); color: #0d1a07; }
 :root[data-theme="light"] .lp-main a.bk-start { color: #fff; }
 /* Dark text on the light green buttons in the dark theme (the theme's general button rule would make it pale). */
-:root[data-theme="dark"] .lesson-page .lp-main :is(a.bk-start, .lp-show) { color: #0d1a07; }
+:root[data-theme="dark"] .lesson-page .lp-main a.bk-start { color: #0d1a07; }
 .bk-levels { margin-top: 6px; }
 .bk-chapters { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
 .bk-ch-card { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box; padding: 13px 14px; border-radius: 12px;
@@ -2873,9 +2832,6 @@ body.is-landing .content { padding: 0 0 70px; }
 .bk-ch-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .bk-ch-title { font-weight: 700; line-height: 1.35; flex: 1 1 auto; }
 @media (max-width: 899px) {
-  .bk-side { position: static; max-height: none; padding: 10px 12px; }
-  .bk-side-sum { display: block; padding: 2px 0; }
-  .bk-side[open] .bk-side-sum { margin-bottom: 8px; }
 }
 @media (max-width: 600px) {
   .bk-hero { flex-direction: column; gap: 14px; }
@@ -2905,7 +2861,7 @@ body.is-landing .content { padding: 0 0 70px; }
 .lp-drawer-body { font-size: 14px; margin-top: 10px; }
 @media (max-width: 1100px) {
   /* No room for three columns: the drawer floats over the right edge instead. */
-  .lp-grid.has-drawer { grid-template-columns: 240px minmax(0, 1fr); }
+  .lp-grid.has-drawer { grid-template-columns: minmax(0, 1fr); }
   .lp-drawer { position: fixed; top: calc(var(--topbar-h) + 10px); right: 10px; bottom: 10px; width: min(380px, 46vw); max-height: none;
     z-index: 60; box-shadow: -8px 0 28px rgba(0, 0, 0, 0.35); }
 }
@@ -3778,4 +3734,82 @@ body.is-landing .content { padding: 0 0 50px; }
    the grid (on the main column), so the end of the grid never pushes the sticky sidebar up. */
 .content:has(> .lesson-page) { padding-bottom: 0; }
 .lesson-page .lp-main { padding-bottom: 90px; }
-.lesson-page .lp-grid { min-height: calc(100vh - var(--topbar-h) - 70px); }
+.lesson-page .bk-body { min-height: calc(100vh - var(--topbar-h)); }
+
+/* ---------- The book view, second version (owner, 2026-10-31: modelled on an online textbook) ----------
+   A rail of chapter tabs, two title bars with arrows, problem blocks with a header bar, and
+   Previous / Back to Top / Next at the bottom, all in the book's own colour. */
+.content:has(> .bk-view) { padding-top: 0; padding-left: 0; padding-right: 0; }
+.bk-view { --bk-ink: var(--bk-b); display: grid; grid-template-columns: 46px minmax(0, 1fr); max-width: 1240px; margin: 0 auto; }
+:root[data-theme="dark"] .bk-view { --bk-ink: var(--bk-a); }
+.bk-rail { position: sticky; top: var(--topbar-h); align-self: start; display: flex; flex-direction: column; z-index: 30; }
+.bk-tab { position: relative; display: flex; justify-content: center; height: 48px; padding-top: 7px; box-sizing: border-box;
+  font-size: 14px; font-weight: 800; color: var(--text-dim); background: var(--bg-card); border-bottom: 2px solid var(--bg); text-decoration: none; }
+.bk-tab:first-child { background: var(--bk-b); color: #fff; height: 34px; }
+.bk-tab:hover { color: var(--text); background: var(--bg-card-hover); }
+.bk-tab:first-child:hover { color: #fff; filter: brightness(1.15); }
+.bk-tab.is-current, .bk-tab.is-current:hover { background: var(--bk-a); color: #fff; }
+.bk-tip { display: none; position: absolute; left: calc(100% + 10px); top: 8px; white-space: nowrap; padding: 6px 10px; border-radius: 6px;
+  background: rgba(55, 63, 78, 0.94); color: #fff; font-size: 13px; font-weight: 500; z-index: 40; pointer-events: none; }
+.bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; margin-top: -6px; border: 6px solid transparent; border-left: 0; border-right-color: rgba(55, 63, 78, 0.94); }
+.bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
+.bk-body { min-width: 0; }
+.bk-bars { position: sticky; top: var(--topbar-h); z-index: 25; display: grid; grid-template-columns: 62px minmax(0, 1fr); grid-template-rows: auto auto; }
+.bk-bars-cover { grid-row: 1 / span 2; display: block; background: var(--bk-b); }
+.bk-bars-cover .bk-cover { width: 100%; height: 100%; aspect-ratio: auto; border-radius: 0; box-shadow: none; padding: 6px; justify-content: center; }
+.bk-bars-cover .bk-series, .bk-bars-cover .bk-name { display: none; }
+.bk-bars-cover .bk-motif { width: 80%; margin: 0; flex: 0 0 auto; }
+.bk-bar { display: flex; align-items: center; gap: 10px; padding: 6px 12px; color: #fff; min-width: 0; }
+.bk-bar1 { background: var(--bk-b); font-size: 19px; font-weight: 800; min-height: 44px; }
+.bk-bar2 { background: var(--bk-a); font-size: 15px; font-weight: 750; min-height: 36px; }
+.bk-bar-t { flex: 1 1 auto; min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: #fff; text-decoration: none; }
+a.bk-bar-t:hover { text-decoration: underline; }
+.bk-bar .katex { color: #fff; }
+.bk-arrow { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; color: var(--bk-b); font-size: 15px; font-weight: 900; line-height: 1; text-decoration: none; }
+.bk-bar2 .bk-arrow { width: 20px; height: 20px; font-size: 13px; color: var(--bk-a); }
+.bk-arrow:hover { transform: scale(1.1); }
+.bk-arrow.is-off { opacity: 0.3; }
+.bk-view .lp-grid { padding: 18px 26px 0; }
+.bk-view .learn-h { color: var(--bk-ink); }
+.bk-view .lb-code, .bk-view .lc-n { color: var(--bk-ink); }
+.bk-view .lc-check { border-left-color: var(--bk-ink); }
+.bk-view .lb-lessons li > a .lb-title { color: var(--bk-ink); }
+/* Problem blocks: a header bar, the statement, then the student's box beside Show Solution. */
+.lp-prob { margin: 0 0 22px; border: 1px solid var(--bk-b, var(--border)); background: var(--bg-card); }
+.lp-prob-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 9px 14px; background: var(--bk-b, var(--bg-panel)); color: #fff; }
+.lp-prob-n { font-size: 17px; font-weight: 800; }
+.lp-prob-ref { font-size: 13.5px; font-weight: 650; color: #fff; text-decoration: underline; text-underline-offset: 2px; opacity: 0.9; }
+.lp-prob-ref:hover { opacity: 1; }
+.lp-prob-body { padding: 12px 14px 14px; }
+.lp-work { display: flex; align-items: flex-start; gap: 12px; padding: 10px; background: var(--bg-panel); }
+.lp-work .lp-notes { flex: 1 1 auto; margin: 0; border-radius: 2px; background: var(--bg-card); }
+.lp-notes:focus { border-color: var(--bk-ink, var(--c-learn)); }
+.lp-show { flex: 0 0 auto; font: inherit; font-size: 14.5px; font-weight: 700; padding: 8px 20px; border: none; border-radius: 2px; cursor: pointer;
+  background: var(--bk-b, var(--c-learn)); color: #fff; }
+.lp-show:hover { filter: brightness(1.12); }
+.lp-show:disabled { cursor: not-allowed; background: #b6bcc6; color: #fff; filter: none; }
+:root[data-theme="dark"] .lp-show:disabled { background: #3a4357; color: #8792a8; }
+.lp-sol { margin: 12px 0 0; }
+.bk-foot { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; margin: 40px 0 0; padding-top: 16px; border-top: 2px solid var(--bk-ink); }
+.bk-foot a { font-size: 22px; font-weight: 800; color: var(--bk-ink); text-decoration: none; white-space: nowrap; }
+.bk-foot a:hover { text-decoration: underline; }
+.bk-foot > :last-child { justify-self: end; }
+@media (max-width: 899px) {
+  .bk-view { grid-template-columns: 34px minmax(0, 1fr); }
+  .bk-rail { top: 0; }
+  .bk-tab { height: 40px; padding-top: 5px; font-size: 13px; }
+  .bk-tab:first-child { height: 30px; }
+  .bk-tip { display: none !important; }
+  .bk-bars { position: static; grid-template-columns: 44px minmax(0, 1fr); }
+  .bk-bar1 { font-size: 15.5px; min-height: 38px; padding: 5px 8px; gap: 6px; }
+  .bk-bar2 { font-size: 13.5px; min-height: 32px; padding: 5px 8px; gap: 6px; }
+  .bk-view .lp-grid { padding: 14px 12px 0; }
+  .lp-work { flex-direction: column; align-items: stretch; }
+  .bk-foot a { font-size: 16px; }
+}
+/* Inside a problem block the statement is plain text, not a second box; the bars above already
+   name the book and chapter, so the page's own eyebrow line is dropped. */
+.lp-prob .prob-statement { border: none; background: none; padding: 0 0 4px; }
+.lp-prob .prob-credit { margin: 4px 0 10px; }
+.bk-view .book-eyebrow { display: none; }

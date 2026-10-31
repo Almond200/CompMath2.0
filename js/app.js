@@ -2096,7 +2096,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-toc, .bk-ch-title, .home-cotd, .lc-q, .lc-result").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-ch-title, .home-cotd, .lc-q, .lc-result").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -5032,9 +5032,7 @@
 
   const learnLevelSlug = lv => lv.toLowerCase().replace(/\s+/g, "");
   const learnLevelHtml = c => `<span class="lb-level lb-${learnLevelSlug(c.level)}">${c.level}</span>`;
-  function learnBackRow(links) {
-    return `<div class="back-row">${links.map(([h, t]) => `<a class="back-link" href="${h}">&larr; ${escapeAttr(t)}</a>`).join("")}</div>`;
-  }
+
   // One line per lesson: its code and title, a link once it is written, and a tick once read.
   function learnLessonRow(b, c, l, current) {
     const read = learnProgress().read[l.code];
@@ -5114,30 +5112,65 @@
     return all.find(x => !prog.read[x.l.code]) || all[0];
   }
 
-  // The sidebar of the book view: the cover, the book's contents page, and every chapter, the
-  // current one open. On a phone it folds into one line, "Contents".
-  function learnSidebarHtml(b, c, cur) {
-    const wide = window.matchMedia && window.matchMedia("(min-width: 900px)").matches;
-    return `<details class="bk-side"${wide ? " open" : ""}>
-        <summary class="bk-side-sum"><span class="bk-side-label">Contents</span><span class="bk-side-book">${escapeAttr(b.title)}</span></summary>
-        <a class="bk-side-head${!c ? " is-current" : ""}" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span><span class="bk-side-title">${escapeAttr(b.title)}</span><span class="bk-side-sub">Book contents</span></span></a>
-        <ol class="bk-toc">${b.chapters.map(ch => `
-          <li class="bk-toc-ch${ch === c ? " is-open" : ""}"><details${ch === c ? " open" : ""}>
-            <summary><span class="lb-code">${ch.code}</span><span class="bk-toc-title">${escapeAttr(ch.title)}</span></summary>
-            <a class="bk-toc-chlink${ch === c && cur === "chapter" ? " is-current" : ""}" href="${learnHash(b, ch)}">Chapter overview</a>
-            <ol class="lb-lessons">${ch.lessons.map(l => learnLessonRow(b, ch, l, l === cur)).join("")}${learnReviewRow(b, ch, ch === c && cur === "review")}</ol>
-          </details></li>`).join("")}
-        </ol>
-      </details>`;
+  // The book view (owner, 2026-10-31, modelled on the way an online textbook is read): a slim
+  // rail of chapter tabs on the left (C for the contents, then each chapter's number; hovering a
+  // tab names the chapter), two title bars over the page, the chapter's and the page's, each with
+  // arrows to step back and forward, and Previous, Back to Top and Next at the bottom.
+  // Every page of a book sits in one order: for each chapter, its overview, its lessons, then its
+  // review. The arrows and the bottom links walk that order.
+  function learnPages(b) {
+    const out = [];
+    b.chapters.forEach(c => {
+      out.push({ c, page: null });
+      c.lessons.forEach(l => out.push({ c, l, page: lessonNum(l) }));
+      if (learnReview(c).length) out.push({ c, page: "review", review: true });
+    });
+    return out;
   }
-  // Every page inside a book: the sidebar, the page itself, and (on a lesson) the card drawer.
+  const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
+  function learnArrow(href, dir, label) {
+    const icon = dir < 0 ? "&#8592;" : "&#8594;";
+    return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
+      : `<span class="bk-arrow is-off" aria-hidden="true">${icon}</span>`;
+  }
+  function learnRailHtml(b, c) {
+    return `<nav class="bk-rail" aria-label="Chapters">
+        <a class="bk-tab${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span>C</span><span class="bk-tip">Contents</span></a>
+        ${b.chapters.map(ch => `<a class="bk-tab${ch === c ? " is-current" : ""}" href="${learnHash(b, ch)}"${ch === c ? ` aria-current="page"` : ""}><span>${ch.code.slice(1)}</span><span class="bk-tip">${ch.code} ${escapeAttr(ch.title)}</span></a>`).join("")}
+      </nav>`;
+  }
+  // cur: "book", "chapter", "review", or the lesson.
   function learnBookShell(b, c, cur, main) {
-    $content.innerHTML = `<div class="learn-page lesson-page">
-        ${learnBackRow([["#/learn", "Learn"]])}
-        <div class="lp-grid">
-          ${learnSidebarHtml(b, c, cur)}
-          <article class="lp-main">${main}</article>
-          <aside class="lp-drawer" aria-label="Card" hidden></aside>
+    const pages = learnPages(b);
+    const at = !c ? -1 : pages.findIndex(x => x.c === c && (cur === "chapter" ? x.page === null : cur === "review" ? x.review : x.l === cur));
+    const prev = at > 0 ? pages[at - 1] : null;
+    const next = at < 0 ? pages[0] : pages[at + 1] || null;
+    const hashOf = x => x ? learnHash(b, x.c, x.page) : "";
+    const ci = c ? b.chapters.indexOf(c) : -1;
+    const pc = ci > 0 ? b.chapters[ci - 1] : null, nc = c ? b.chapters[ci + 1] : b.chapters[0];
+    const bar1 = c
+      ? `${learnArrow(pc ? learnHash(b, pc) : "", -1, pc ? pc.code + " " + pc.title : "")}<a class="bk-bar-t" href="${learnHash(b, c)}">Chapter ${c.code}: ${escapeAttr(c.title)}</a>${learnArrow(nc ? learnHash(b, nc) : "", 1, nc ? nc.code + " " + nc.title : "")}`
+      : `<span class="bk-bar-t">${escapeAttr(b.title)}</span>`;
+    const bar2 = c
+      ? `${learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : "")}<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>${learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : "")}`
+      : `<span class="bk-bar-t">Contents</span>${learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : "")}`;
+    const foot = `<nav class="bk-foot">
+        ${prev ? `<a href="${hashOf(prev)}">&#8592; Previous</a>` : `<span></span>`}
+        <a href="#" data-bk-top>&#8593; Back to Top</a>
+        ${next ? `<a href="${hashOf(next)}">Next &#8594;</a>` : `<span></span>`}
+      </nav>`;
+    $content.innerHTML = `<div class="learn-page lesson-page bk-view bk-${b.id}">
+        ${learnRailHtml(b, c)}
+        <div class="bk-body">
+          <header class="bk-bars">
+            <a class="bk-bars-cover" href="${learnHash(b)}" aria-label="${escapeAttr(b.title)}: contents">${bookCoverHtml(b, "s")}</a>
+            <div class="bk-bar bk-bar1">${bar1}</div>
+            <div class="bk-bar bk-bar2">${bar2}</div>
+          </header>
+          <div class="lp-grid">
+            <article class="lp-main">${main}${foot}</article>
+            <aside class="lp-drawer" aria-label="Card" hidden></aside>
+          </div>
         </div>
       </div>`;
     renderMath($content);
@@ -5282,13 +5315,17 @@
       const saved = prog[p.slug] || {};
       const ownFig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
-          <div class="lp-prob-head"><span class="lp-prob-n">${i + 1}.</span> <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
+          <div class="lp-prob-head"><span class="lp-prob-n">Problem ${i + 1}</span><a class="lp-prob-ref" href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
+          <div class="lp-prob-body">
           ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div><p class="prob-credit"></p></section>`
             : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
           ${ownFig ? `<div class="diagram prob-own-figure">${ownFig}<div class="prob-own-note">Diagram drawn for this app, not part of the original problem.</div></div>` : ""}
-          <textarea class="lp-notes" rows="4" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
-          <button type="button" class="hp-btn lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
+          <div class="lp-work">
+            <textarea class="lp-notes" rows="3" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
+            <button type="button" class="lp-show"${(saved.notes || "").trim() ? "" : " disabled"}>Show Solution</button>
+          </div>
           <div class="prob-chain lp-sol" hidden></div>
+          </div>
         </li>`;
     }).join("")}</ol>`;
   }
@@ -5357,15 +5394,6 @@
   function renderLearnLesson(b, c, l) {
     const d = l ? learnLessonData(c, l) : null;
     const isReview = !l;
-    const i = l ? c.lessons.indexOf(l) : c.lessons.length;
-    const prev = i > 0 ? c.lessons[i - 1] : null;
-    const next = l ? c.lessons[i + 1] : null;
-    const navLink = (h, t, cls) => `<a class="lp-nav-link ${cls}" href="${h}">${t}</a>`;
-    const nav = `<nav class="lp-nav">
-        ${prev ? navLink(learnHash(b, c, lessonNum(prev)), `&larr; ${prev.code}`, "lp-prev") : `<span></span>`}
-        ${next ? navLink(learnHash(b, c, lessonNum(next)), `${next.code} &rarr;`, "lp-next")
-          : l && learnReview(c).length ? navLink(learnHash(b, c, "review"), "Chapter review &rarr;", "lp-next") : `<span></span>`}
-      </nav>`;
     let main;
     if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
@@ -5387,7 +5415,7 @@
         <div class="lp-end" aria-hidden="true"></div>
         ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
-    learnBookShell(b, c, isReview ? "review" : l, main + nav);
+    learnBookShell(b, c, isReview ? "review" : l, main);
     if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
     $content.querySelectorAll(".lc-check").forEach(el => {
       mkPreview(el);
@@ -5410,8 +5438,6 @@
         const prog = learnProgress();
         if (!prog.read[l.code]) {
           prog.read[l.code] = Date.now(); saveLearn();
-          const row = $content.querySelector(`.bk-side .is-current a`);
-          if (row && !row.querySelector(".lb-read")) row.insertAdjacentHTML("beforeend", `<span class="lb-read" title="Read">&#10003;</span>`);
         }
       });
       io.observe(end);
@@ -5443,6 +5469,7 @@
       return;
     }
     if (e.target.closest(".lp-drawer-close")) { closeLearnDrawer(); return; }
+    if (e.target.closest("[data-bk-top]")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     // A card link in the lesson opens in the drawer instead of leaving the page.
     const link = e.target.closest(".lp-main .card-link[data-card], .lp-drawer-body .card-link[data-card]");
     if (link && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {

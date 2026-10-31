@@ -26,7 +26,7 @@
   1. N3.2 to N3.5 into `n3.js` (the outline gives each lesson's opening question, teaching points, cards, checks and problems).
   2. Fill N2's review to 8 to 12 (candidates from `crt`, `modular-inverse`, `euclids-lemma`; 1992 AIME #11 and 1994 AIME #12 still to read), then write N2 into `aime-number-theory/n2.js` and load it from `index.html`.
   3. Then L7 (the "Practice more" link at the end of a chapter, "Study this in Learn" on a problem page, a missed review problem pointing back) and L8, the owner tries the pilot.
-- **Also done in the seventeenth chat (owner's requests):** the Learn page shows the books as covers that open a book view with a contents sidebar; more room around "Your lists"; Practice's "Study lists ... are under Learn" line removed; the home page redesigned (L10), then made dense with the top bar kept and hairline sections instead of boxes; lessons and books in Recently opened; the book sidebar stays put while the page scrolls.
+- **Also done in the seventeenth chat (owner's requests):** the Learn page shows the books as covers that open a book view with a contents sidebar; more room around "Your lists"; Practice's "Study lists ... are under Learn" line removed; the home page redesigned (L10), then made dense with the top bar kept and hairline sections instead of boxes; lessons and books in Recently opened; the book view rebuilt like an online textbook (chapter-tab rail, two title bars with arrows, problem blocks, Previous / Back to Top / Next).
 - **For the owner to try now:** the home page; Learn → a book cover → N3 → N3.1 (`#/learn/aime-number-theory/n3/1`), and the N3 review.
 
 ## The road ahead: the Learn track (owner, 2026-10-31)
