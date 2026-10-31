@@ -48,7 +48,7 @@ Combine linear combinations into one wave, and keep inverse functions within the
       related: [
         { card: "cauchy-schwarz", note: String.raw`the same bound $\sqrt{a^2 + b^2}$ (L6.3).` },
         { card: "reduction-identities", note: String.raw`moving angles into the principal range (S1.6).` },
-        { card: "arctan-telescoping", note: String.raw`sums of many arctangents (A7.4).` }
+        { card: "arctan-telescoping", note: String.raw`sums of many arctangents (A7.5).` }
       ],
       exercises: [
         { q: String.raw`Find the largest value of $5\sin x + 12\cos x$.`, answer: "13",

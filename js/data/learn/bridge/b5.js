@@ -123,7 +123,7 @@ The [[trig-area|sine area formula]] $\tfrac12ab\sin C$ gives the area from two s
 These three formulas, with the exact values of sine and cosine at $30^\circ$, $45^\circ$, $60^\circ$, $90^\circ$ and $120^\circ$, are enough for the trigonometry in AMC problems. The next chapter collects the habits of checking and estimating.`,
       related: [
         { card: "law-cosines-60-120", note: String.raw`the law of cosines at $60^\circ$ and $120^\circ$ (G3.1).` },
-        { card: "common-angle-values", note: String.raw`the exact sines and cosines of the common angles (A7.1).` },
+        { card: "common-angle-values", note: String.raw`the exact sines and cosines of the common angles (A7.2).` },
         { card: "herons-formula", note: String.raw`the area from three sides, without an angle (G3.1).` }
       ],
       exercises: [

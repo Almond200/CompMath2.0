@@ -883,23 +883,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A7.2",
       "title": "The unit circle and angle relations",
       "level": "Core"
      },
      {
-      "code": "A7.2",
+      "code": "A7.3",
       "title": "Addition, double angle and other standard transformations",
       "level": "Core"
      },
      {
-      "code": "A7.3",
+      "code": "A7.4",
       "title": "Trig equations with a bounded solution set",
       "level": "Core II"
      },
      {
-      "code": "A7.4",
+      "code": "A7.5",
       "title": "Between algebra and trig: substitutions, telescoping trig sums",
       "level": "Core II"
+     },
+     {
+      "code": "A7.6",
+      "title": "Summary"
      }
     ]
    },

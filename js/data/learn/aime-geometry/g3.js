@@ -100,7 +100,7 @@ Use projections to place feet of cevians, half-angle tangents with the inradius,
       related: [
         { card: "angle-bisector-theorem", note: String.raw`the ratio lemma with equal angles (G1.3).` },
         { card: "inradius-area", note: String.raw`$K = rs$, the source of $r$ in the half-angle formulas (G2.4).` },
-        { card: "angle-addition", note: String.raw`the addition formulas behind the angle-sum identities (A7.2).` }
+        { card: "angle-addition", note: String.raw`the addition formulas behind the angle-sum identities (A7.3).` }
       ],
       exercises: [
         { q: String.raw`In triangle $ABC$, $BC = 14$, $CA = 15$, $AB = 13$. Find $\tan\tfrac A2$.`, answer: "4/7",
@@ -130,8 +130,8 @@ A few angle facts save computation. From a vertex, the altitude and the line to 
 
 Bash with trigonometry when the given data are angles and no similarity is visible; keep exact values and simplify at the end. The last lesson of the chapter compares trigonometry with the other approaches.`,
       related: [
-        { card: "special-trig-values", note: String.raw`the exact values at $15^\circ$, $75^\circ$ and $36^\circ$ that bashing needs (A7.1).` },
-        { card: "product-sum", note: String.raw`simplifying the sums of products that a bash produces (A7.2).` },
+        { card: "special-trig-values", note: String.raw`the exact values at $15^\circ$, $75^\circ$ and $36^\circ$ that bashing needs (A7.2).` },
+        { card: "product-sum", note: String.raw`simplifying the sums of products that a bash produces (A7.3).` },
         { card: "triangle-center-angles", note: String.raw`the angles at the circumcenter and orthocenter that this relation comes from (G5.1).` }
       ],
       exercises: [

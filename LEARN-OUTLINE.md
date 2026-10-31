@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A6 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 to A7 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -905,10 +905,12 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A7.1 The unit circle and angle relations (Core) | `pythagorean-identities`, `common-angle-values`, `special-trig-values`, `reduction-identities` |
-| A7.2 Addition, double angle and other standard transformations (Core) | `angle-addition`, `double-angle`, `half-angle`, `triple-angle`, `product-sum`, `harmonic-addition` |
-| A7.3 Trig equations with a bounded solution set (Core II) | `inverse-trig-identities` (a possible gap: no card gives the full solution set of $\sin\theta = \sin\alpha$; see "Coverage") |
-| A7.4 Between algebra and trig: substitutions, telescoping trig sums (Core II) | `trig-substitution`, `arctan-telescoping`, `sin-cos-ap-sum`, `cot-tan-telescoping`, `trig-telescoping-product` |
+| A7.1 Introduction | no card (the chapter's opening page: the unit circle, addition and double angle formulas, trigonometric equations, inverse functions, substitutions and telescoping, with comprehension problems) |
+| A7.2 The unit circle and angle relations (Core) | `pythagorean-identities`, `common-angle-values`, `special-trig-values`, `reduction-identities` |
+| A7.3 Addition, double angle and other standard transformations (Core) | `angle-addition`, `double-angle`, `half-angle`, `triple-angle`, `product-sum`, `harmonic-addition` |
+| A7.4 Trig equations with a bounded solution set (Core II) | `inverse-trig-identities` (a possible gap: no card gives the full solution set of $\sin\theta = \sin\alpha$; see "Coverage") |
+| A7.5 Between algebra and trig: substitutions, telescoping trig sums (Core II) | `trig-substitution`, `arctan-telescoping`, `sin-cos-ap-sum`, `cot-tan-telescoping`, `trig-telescoping-product` |
+| A7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A7.7 Review Problems and A7.8 Challenge Problems |
 
 ### A8. Algebraic structure and synthesis (Core II; a capstone)
 
@@ -1402,5 +1404,5 @@ The database's tags make the first half computable, since every problem already 
 That first run found AMC word-problem cards (proportions, averages, percents, ages) and some basic geometry facts that the proposal's titles had missed, and they are now placed (B1.5, B5.1 and others). The cards still unplaced are cited by one or two problems each, or are olympiad tools (`contrapositive`, `minkowski-inequality`). Each will be placed when its problem is given a lesson or a review, or left in the reference. The tags only show that a lesson exists for each card. Whether the lesson teaches the problem's step is checked by reading, in the audit.
 
 **Possible gaps found while mapping.** These are not yet in `QUESTIONS.md`. They go there as P-candidates only if the audit shows contest problems need them.
-- A7.3: the full solution set of a trig equation such as $\sin\theta = \sin\alpha$ (already recorded as an open candidate in CONTRIBUTING's gap register).
+- A7.4: the full solution set of a trig equation such as $\sin\theta = \sin\alpha$ (already recorded as an open candidate in CONTRIBUTING's gap register).
 - B6.4: the AIME answer habits (exact arithmetic, 000 to 999). This is lesson prose, not a card.

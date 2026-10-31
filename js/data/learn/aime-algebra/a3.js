@@ -70,7 +70,7 @@ An alternating sum is handled by [[alternating-sum-grouping|grouping]] terms int
 The signal is a long sum or product whose terms have a regular form, especially fractions with products in the denominator, factorials, logarithms of ratios, or alternating signs.`,
       related: [
         { card: "difference-of-squares", note: String.raw`the factorization that drives telescoping products like $(3 - 2)(3 + 2)(3^2 + 2^2)\cdots$.` },
-        { card: "arctan-telescoping", note: String.raw`telescoping sums of inverse tangents (A7.4).` },
+        { card: "arctan-telescoping", note: String.raw`telescoping sums of inverse tangents (A7.5).` },
         { card: "change-of-base", note: String.raw`products of logarithms that telescope after a change of base (A4.4).` }
       ],
       exercises: [

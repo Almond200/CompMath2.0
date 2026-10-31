@@ -56,7 +56,7 @@ A line is tangent to a circle exactly when its distance from the center equals t
 Keep these formulas ready, and convert geometric conditions (tangent, bisects, divides in a ratio) into them. The next lesson computes areas from coordinates.`,
       related: [
         { card: "point-line-distance", note: String.raw`the distance formula that most of these rest on.` },
-        { card: "angle-addition", note: String.raw`the tangent subtraction formula behind the angle between lines (A7.2).` },
+        { card: "angle-addition", note: String.raw`the tangent subtraction formula behind the angle between lines (A7.3).` },
         { card: "tangency-condition", note: String.raw`the general double-root condition for tangency (G2.5).` }
       ],
       exercises: [

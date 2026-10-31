@@ -85,7 +85,7 @@ Use Cauchy-Schwarz when the target is linear and the constraint is a sum of squa
       related: [
         { card: "completing-the-square", note: String.raw`the step that puts a quadratic in vertex form (A1.4).` },
         { card: "mean-chain", note: String.raw`the quadratic-mean bound $(a + b)^2 \le 2(a^2 + b^2)$ is the two-term Cauchy-Schwarz (A5.2).` },
-        { card: "harmonic-addition", note: String.raw`$a\cos\theta + b\sin\theta \le \sqrt{a^2 + b^2}$, Cauchy-Schwarz for a point on a circle (A7.2).` },
+        { card: "harmonic-addition", note: String.raw`$a\cos\theta + b\sin\theta \le \sqrt{a^2 + b^2}$, Cauchy-Schwarz for a point on a circle (A7.3).` },
         { card: "vietas-quadratic", note: String.raw`writing the quadratic whose roots are two unknowns from their sum and product.` }
       ],
       exercises: [

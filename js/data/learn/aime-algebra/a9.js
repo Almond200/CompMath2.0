@@ -71,7 +71,7 @@ The [[chebyshev-polynomials|Chebyshev polynomials]] $T_n$ satisfy $\cos n\theta 
 Use matrices when a problem is about a linear system or a linear recurrence and the direct method is long; otherwise the elimination and characteristic-root methods of earlier chapters are shorter. The last lesson collects inequalities and substitutions used in olympiads.`,
       related: [
         { card: "linear-recurrence", note: String.raw`the characteristic roots are the eigenvalues of the step matrix (A3.2).` },
-        { card: "triple-angle", note: String.raw`$T_3(x) = 4x^3 - 3x$ is the triple-angle formula (A7.2).` },
+        { card: "triple-angle", note: String.raw`$T_3(x) = 4x^3 - 3x$ is the triple-angle formula (A7.3).` },
         { card: "shoelace-formula", note: String.raw`the area of a polygon as a sum of $2 \times 2$ determinants.` }
       ],
       exercises: [
@@ -100,7 +100,7 @@ These tools finish the algebra book. Each is a shortcut for a specific shape: a 
         { card: "mean-chain", note: String.raw`the arithmetic-harmonic step in the proof of Nesbitt's inequality (A5.2).` },
         { card: "derivative-extremum", note: String.raw`the tangent line at the equality point, found with a derivative (A5.5).` },
         { card: "roots-unity-distance-product", note: String.raw`the root-of-unity factorization behind evenly spaced sine products (A6.5).` },
-        { card: "double-angle", note: String.raw`the half-angle tangent formulas that the Weierstrass substitution uses (A7.2).` }
+        { card: "double-angle", note: String.raw`the half-angle tangent formulas that the Weierstrass substitution uses (A7.3).` }
       ],
       exercises: [
         { q: String.raw`Positive reals $a$, $b$, $c$ satisfy $a + b + c = 3$. Find the smallest value of $a^3 + b^3 + c^3$.`, answer: "3",
