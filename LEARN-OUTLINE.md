@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8) and A1 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), A1 and A2 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -846,11 +846,13 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 
 | Lesson | Cards |
 |---|---|
-| A2.1 The factor and remainder theorems, and division, in contest settings (Core) | `polynomial-crt`, prereq `factor-remainder-theorem` |
-| A2.2 Vieta; sums of powers of roots (Newton's sums) (Core) | `newtons-sums`, `products-over-roots` |
-| A2.3 Symmetric polynomials and root constraints (Core) | `fundamental-theorem-symmetric`, `conjugate-root-theorems`, `descartes-rule-signs` |
-| A2.4 Root transformations: reciprocal and shifted polynomials (Core) | `root-transformations` |
-| A2.5 Interpolation and reading off coefficients (Core II) | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
+| A2.1 Introduction | no card (the chapter's opening page: the factor and remainder theorems, Vieta and Newton's sums, conjugate roots, root transformations, interpolation, with comprehension problems) |
+| A2.2 The factor and remainder theorems, and division, in contest settings (Core) | `polynomial-crt`, prereq `factor-remainder-theorem` |
+| A2.3 Vieta; sums of powers of roots (Newton's sums) (Core) | `newtons-sums`, `products-over-roots` |
+| A2.4 Symmetric polynomials and root constraints (Core) | `fundamental-theorem-symmetric`, `conjugate-root-theorems`, `descartes-rule-signs` |
+| A2.5 Root transformations: reciprocal and shifted polynomials (Core) | `root-transformations` |
+| A2.6 Interpolation and reading off coefficients (Core II) | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
+| A2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A2.8 Review Problems and A2.9 Challenge Problems |
 
 ### A3. Sequences, recurrences and sums (Core)
 

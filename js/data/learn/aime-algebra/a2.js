@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["A2"] = {
   lessons: {
     "A2.1": {
+      prereq: ["factor-remainder-theorem", "vietas-general"],
+      cards: [],
+      body: String.raw`This chapter works with polynomials through their roots and their values. Its tools are the factor and remainder theorems, Vieta's formulas and Newton's sums, symmetric polynomials and the theorems about conjugate roots, transformations that move the roots, and interpolation, which recovers a polynomial from its values.
+
+The remainder when $P(x)$ is divided by $x - a$ is $P(a)$, so $x - a$ is a factor exactly when $P(a) = 0$. Dividing $x^5 + 3x^2 + 1$ by $x + 2$ leaves $(-2)^5 + 3 \cdot 4 + 1 = -19$ with no long division. Dividing by a product of linear factors leaves a remainder fixed by the values at their roots.
+
+Vieta's formulas read the elementary symmetric sums of the roots off the coefficients: for $x^3 - 6x^2 + 11x - 6$, the roots have sum $6$, pairwise products summing to $11$ and product $6$. Every symmetric expression in the roots is a polynomial in these, so $r^2 + s^2 + t^2 = 6^2 - 2 \cdot 11 = 14$, and Newton's sums give the power sums $r^k + s^k + t^k$ one after another.
+
+A polynomial with real coefficients has its non-real roots in conjugate pairs, and one with rational coefficients has its irrational roots $a \pm \sqrt b$ in pairs too. Replacing $x$ by $x - c$, $\tfrac1x$ or $kx$ moves every root in the same way, so a polynomial whose roots are shifted or inverted is written down at once.
+
+Last, a polynomial of degree $n$ is fixed by its values at $n + 1$ points, and its coefficients can be read off from values: $P(1)$ is the sum of the coefficients, so $(2x - 1)^{10}$ has coefficients summing to $1$.
+
+The lessons take these ideas in turn: the factor and remainder theorems (A2.2), Vieta and Newton's sums (A2.3), symmetric polynomials and root constraints (A2.4), root transformations (A2.5), and interpolation and coefficients (A2.6). The Summary (A2.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Find the remainder when $x^5 + 3x^2 + 1$ is divided by $x + 2$.`, answer: "-19",
+          solution: String.raw`By the remainder theorem, the remainder on division by $x - (-2)$ is the value at $-2$: $-32 + 12 + 1 = -19$.` },
+        { q: String.raw`The roots of $x^3 - 6x^2 + 11x - 6$ are $r$, $s$ and $t$. Find $r^2 + s^2 + t^2$.`, answer: "14",
+          solution: String.raw`By Vieta, $r + s + t = 6$ and $rs + st + tr = 11$. Then $r^2 + s^2 + t^2 = (r + s + t)^2 - 2(rs + st + tr) = 36 - 22 = 14$. (The roots are $1, 2, 3$.)` },
+        { q: String.raw`Find the sum of the coefficients of $(2x - 1)^{10}$ when it is expanded.`, answer: "1",
+          solution: String.raw`The sum of the coefficients of a polynomial is its value at $x = 1$: $(2 - 1)^{10} = 1$.` }
+      ],
+      problems: [
+        "2025 AMC 10B, Problem 10",
+        "2022 AMC 10B, Problem 17",
+        "1996 AIME, Problem 5"
+      ]
+    },
+    "A2.2": {
       prereq: ["factor-remainder-theorem", "crt"],
       cards: ["polynomial-crt"],
       body: String.raw`Dividing a polynomial by $x - a$ leaves the remainder $P(a)$, so a remainder is an evaluation and a factor is a root. Those two facts, the remainder and factor theorems, turn most questions about polynomial division into a few substitutions: if $x^3 + ax + 6$ is divisible by $x - 2$, then $8 + 2a + 6 = 0$ and $a = -7$, with no long division at all. This lesson extends them to divisors of higher degree, where the remainder is no longer a number but a polynomial of smaller degree.
@@ -16,7 +44,7 @@ The signal is a remainder on division by a polynomial, a divisibility condition 
       related: [
         { card: "factor-remainder-theorem", note: String.raw`the remainder on division by $x - a$ is $P(a)$, and $x - a$ divides $P$ exactly when $P(a) = 0$.` },
         { card: "crt", note: String.raw`the integer version, with the same structure (N2.5).` },
-        { card: "lagrange-interpolation", note: String.raw`building the polynomial of least degree through given values, which is what finding a remainder from values does (A2.5).` }
+        { card: "lagrange-interpolation", note: String.raw`building the polynomial of least degree through given values, which is what finding a remainder from values does (A2.6).` }
       ],
       exercises: [
         { q: String.raw`For what value of $a$ is $x^3 + ax + 6$ divisible by $x - 2$?`, answer: "-7",
@@ -28,7 +56,7 @@ The signal is a remainder on division by a polynomial, a divisibility condition 
       ],
       problems: ["2025 AMC 10A, Problem 7", "2018 AMC 12A, Problem 5", "2017 AMC 10A, Problem 24", "2022 AMC 10B, Problem 21"]
     },
-    "A2.2": {
+    "A2.3": {
       prereq: ["vietas-general"],
       cards: ["newtons-sums", "products-over-roots"],
       body: String.raw`Vieta's formulas give the sum, the sum of pairwise products, and the product of a polynomial's roots straight from its coefficients. Many problems ask for something else, the sum of the cubes of the roots or a product like $\prod (2 - r_i)$, and both can be found without solving. For the roots of $x^3 - 5x^2 + 8x - 13$, the sum of the cubes is $44$ and the product $\prod(2 - r_i)$ is $-9$, each from a line of arithmetic.
@@ -41,7 +69,7 @@ The signal is a symmetric expression in the roots that is not one of Vieta's thr
       related: [
         { card: "vietas-general", note: String.raw`the elementary symmetric sums $e_k$ that Newton's sums start from.` },
         { card: "symmetric-polynomial-strategies", note: String.raw`the two-variable versions, $x^2 + y^2$ and $x^3 + y^3$ from $x + y$ and $xy$ ((A1.2)).` },
-        { card: "root-transformations", note: String.raw`a polynomial whose roots are $2 - r_i$ or $r_i^2$, an alternative to evaluating products (A2.4).` }
+        { card: "root-transformations", note: String.raw`a polynomial whose roots are $2 - r_i$ or $r_i^2$, an alternative to evaluating products (A2.5).` }
       ],
       exercises: [
         { q: String.raw`Let $r_1, r_2, r_3$ be the roots of $x^3 - 5x^2 + 8x - 13$. Find $r_1^2 + r_2^2 + r_3^2$.`, answer: "9",
@@ -53,7 +81,7 @@ The signal is a symmetric expression in the roots that is not one of Vieta's thr
       ],
       problems: ["2020 AMC 10A, Problem 14", "2019 AMC 12A, Problem 17", "2003 AIME II, Problem 9", "2019 AIME I, Problem 8"]
     },
-    "A2.3": {
+    "A2.4": {
       prereq: ["vietas-general", "newtons-sums"],
       cards: ["fundamental-theorem-symmetric", "conjugate-root-theorems", "descartes-rule-signs"],
       body: String.raw`Three facts constrain where a polynomial's roots can be before any are found. Every symmetric expression in the roots is a polynomial in the coefficients; non-real roots of a real polynomial come in conjugate pairs, and irrational roots of a rational polynomial in matching pairs; and the signs of the coefficients bound how many roots are positive. With $3 + \sqrt2$ as a root of a monic quadratic with rational coefficients, the other root is $3 - \sqrt2$ and the quadratic is $x^2 - 6x + 7$, found without any computation beyond Vieta.
@@ -80,7 +108,7 @@ The signal is a symmetric expression in roots, a polynomial with a given irratio
       ],
       problems: ["2007 AMC 12A, Problem 18", "2025 AMC 12B, Problem 8", "2022 AMC 10A, Problem 16", "2021 Spring AMC 10A, Problem 14"]
     },
-    "A2.4": {
+    "A2.5": {
       prereq: ["vietas-general"],
       cards: ["root-transformations"],
       body: String.raw`To answer a question about $\tfrac1{r_i}$, $r_i - 1$, or $2r_i$ for the roots $r_i$ of a polynomial, build the polynomial whose roots are those numbers and read its coefficients. The reciprocals of the roots of $x^3 - 2x^2 + 3x - 4$ are the roots of $-4x^3 + 3x^2 - 2x + 1$, and Vieta on that polynomial gives their sum, $\tfrac34$, at once. This is the idea of [[root-transformations|transforming the roots]].
@@ -92,7 +120,7 @@ A transformation is often the cleanest route when a problem relates two polynomi
 The signal is a question about the roots after a fixed operation, $\tfrac1r$, $r + k$, $kr$, $r^2$, or a relation between the roots of two polynomials.`,
       related: [
         { card: "palindromic-polynomials", note: String.raw`a polynomial equal to its own reversal, with roots in pairs $r, \tfrac1r$ ((A1.4)).` },
-        { card: "products-over-roots", note: String.raw`evaluating $P(k)$ instead of building the polynomial with roots $k - r_i$ (A2.2).` },
+        { card: "products-over-roots", note: String.raw`evaluating $P(k)$ instead of building the polynomial with roots $k - r_i$ (A2.3).` },
         { card: "vietas-quadratic", note: String.raw`reading the sum and product off the transformed quadratic.` }
       ],
       exercises: [
@@ -105,7 +133,7 @@ The signal is a question about the roots after a fixed operation, $\tfrac1r$, $r
       ],
       problems: ["2005 AMC 10B, Problem 16", "2021 Spring AMC 12B, Problem 16", "2021 Fall AMC 12A, Problem 15"]
     },
-    "A2.5": {
+    "A2.6": {
       prereq: ["factor-remainder-theorem"],
       cards: ["lagrange-interpolation-formula", "lagrange-interpolation", "coefficient-extraction", "comparing-coefficients"],
       body: String.raw`A polynomial of degree at most $n - 1$ is determined by its values at $n$ points, and its coefficients are determined by the identity it satisfies; this lesson is about using both facts in reverse. The quadratic through $(1, 1)$, $(2, 3)$, $(3, 7)$ is $x^2 - x + 1$, and its next value is $13$; the sum of the coefficients of $(2x - 1)^5$ is $1$, read off by setting $x = 1$ with no expansion.
@@ -116,7 +144,7 @@ The signal is a question about the roots after a fixed operation, $\tfrac1r$, $r
 
 [[comparing-coefficients|Comparing coefficients]] turns one identity into several equations. If two polynomials agree for every $x$, they have the same coefficient on each power; an equation that must hold "for all $y$", such as $8xy - 12y + 2x - 3 = 0$, forces the coefficient of $y$ and the constant term to vanish separately, giving $x = \tfrac32$.
 
-The signal is a polynomial given by values, a question about a sum of coefficients, or an identity that holds for all $x$.`,
+The signal is a polynomial given by values, a question about a sum of coefficients, or an identity that holds for all $x$. The Summary (A2.7) collects the chapter's strategies.`,
       related: [
         { card: "finite-differences", note: String.raw`the next value of a polynomial from a table of differences, another route to interpolation (A3.3).` },
         { card: "roots-of-unity-filter", note: String.raw`sums of every $k$th coefficient, by evaluating at the $k$th roots of unity (A6.3).` },
@@ -131,8 +159,59 @@ The signal is a polynomial given by values, a question about a sum of coefficien
           solution: String.raw`Group by $y$: $(8x - 12)y + (2x - 3) = (2x - 3)(4y + 1)$. This is $0$ for every $y$ only when $2x - 3 = 0$, that is $x = \tfrac32$.` }
       ],
       problems: ["2009 AMC 12A, Problem 9", "2001 AMC 12, Problem 13", "2002 AMC 10B, Problem 13", "2019 AMC 10B, Problem 4", "2005 AMC 12A, Problem 24"]
+    },
+    "A2.7": {
+      prereq: ["factor-remainder-theorem", "polynomial-crt", "vietas-general", "newtons-sums", "products-over-roots", "conjugate-root-theorems", "root-transformations", "lagrange-interpolation", "coefficient-extraction"],
+      cards: [],
+      body: String.raw`[[factor-remainder-theorem|The remainder theorem]] says $P(x)$ leaves $P(a)$ on division by $x - a$; dividing by a product of linear factors, [[polynomial-crt|the remainder]] is the polynomial of lower degree that matches $P$ at their roots.
+
+[[vietas-general|Vieta's formulas]] give the elementary symmetric sums of the roots from the coefficients, and [[newtons-sums|Newton's sums]] give the power sums from them, one degree at a time. [[products-over-roots|A product over the roots]] such as $\prod (c - r_i)$ is the value of the monic polynomial at $c$.
+
+[[conjugate-root-theorems|Conjugate roots]] come in pairs when the coefficients are real, or rational for roots $a \pm \sqrt b$. [[root-transformations|Transforming the roots]] by $x \mapsto x - c$, $\tfrac1x$ or $kx$ is a substitution in the polynomial.
+
+A polynomial of degree $n$ is fixed by $n + 1$ values, and [[lagrange-interpolation|interpolation]] writes it down, or, more often, a polynomial that vanishes at the given points is built and its one unknown constant found. [[coefficient-extraction|Coefficients]] are read from values: $P(1)$ is their sum, and $\tfrac{P(1) + P(-1)}{2}$ the sum of the even ones.`,
+      strategies: [
+        String.raw`For a remainder on division by $x - a$, evaluate at $a$; by a quadratic, find the linear remainder from the values at its roots.`,
+        String.raw`For any symmetric expression in the roots, write it in the elementary symmetric sums and use Vieta.`,
+        String.raw`For power sums of roots, run Newton's sums from the lowest power up.`,
+        String.raw`For a product such as $\prod (1 + r_i)$, evaluate the polynomial at a point.`,
+        String.raw`If a root is non-real or irrational, its conjugate is a root too; use the pair's sum and product.`,
+        String.raw`To get a polynomial whose roots are moved, substitute for $x$ instead of finding the roots.`,
+        String.raw`When a polynomial is given by values, build $Q(x) = P(x) - (\text{target})$ that vanishes at the known points, and solve for its leading constant.`,
+        String.raw`For sums of coefficients, evaluate at $1$, $-1$ or a root of unity.`
+      ]
     }
   },
-  review: ["2025 AMC 10B, Problem 10", "2022 AMC 10B, Problem 17", "1996 AIME, Problem 5", "2014 AIME II, Problem 5", "2015 AIME II, Problem 6",
-    "2008 AIME II, Problem 7", "1995 AIME, Problem 5", "2021 AIME II, Problem 4", "2013 AIME I, Problem 10", "2014 AIME I, Problem 9"]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`A polynomial $P(x)$ leaves remainder $3$ when divided by $x - 1$ and remainder $5$ when divided by $x - 2$. Its remainder on division by $(x - 1)(x - 2)$ is $ax + b$. Find $a + b$.`, answer: "3",
+        solution: String.raw`Write $P(x) = (x - 1)(x - 2)Q(x) + ax + b$. Then $P(1) = a + b = 3$ and $P(2) = 2a + b = 5$, so $a = 2$, $b = 1$, and $a + b = 3$ (which is just $P(1)$).` },
+      { q: String.raw`The roots of $x^3 - x - 1$ are $r$, $s$ and $t$. Find $r^3 + s^3 + t^3$.`, answer: "3",
+        solution: String.raw`Each root satisfies $r^3 = r + 1$, so $r^3 + s^3 + t^3 = (r + s + t) + 3 = 0 + 3 = 3$, since the sum of the roots is $0$ by Vieta.` },
+      { q: String.raw`The roots of $x^3 - 2x^2 + 3x - 4$ are $r$, $s$ and $t$. Find $(1 + r)(1 + s)(1 + t)$.`, answer: "10",
+        solution: String.raw`With $P(x) = (x - r)(x - s)(x - t)$, $P(-1) = (-1 - r)(-1 - s)(-1 - t) = -(1 + r)(1 + s)(1 + t)$. Since $P(-1) = -1 - 2 - 3 - 4 = -10$, the product is $10$.` },
+      { q: String.raw`The roots of $2x^3 - 3x + 5$ are $r$, $s$ and $t$. Find $\tfrac1r + \tfrac1s + \tfrac1t$.`, answer: "3/5",
+        solution: String.raw`The reciprocals are the roots of the reversed polynomial $5x^3 - 3x^2 + 2$, whose roots sum to $\tfrac35$ by Vieta. Directly: $\tfrac1r + \tfrac1s + \tfrac1t = \tfrac{rs + st + tr}{rst} = \tfrac{-3/2}{-5/2} = \tfrac35$.` },
+      { q: String.raw`A monic cubic with rational coefficients has the roots $1 + \sqrt2$ and $3$. Find its constant term.`, answer: "3",
+        solution: String.raw`With rational coefficients, $1 - \sqrt2$ is also a root. The cubic is $(x - 3)\left((x - 1)^2 - 2\right) = (x - 3)(x^2 - 2x - 1)$, whose constant term is $(-3)(-1) = 3$.` },
+      { q: String.raw`A polynomial $P$ of degree at most $2$ has $P(1) = 1$, $P(2) = 4$ and $P(3) = 10$. Find $P(4)$.`, answer: "19",
+        solution: String.raw`The first differences of the values are $3$ and $6$, and for a quadratic the second differences are constant, here $3$. So the next first difference is $9$ and $P(4) = 10 + 9 = 19$.` },
+      { q: String.raw`A polynomial $P$ of degree $3$ has $P(k) = \tfrac1k$ for $k = 1, 2, 3, 4$. Find $P(5)$.`, answer: "0",
+        solution: String.raw`The polynomial $xP(x) - 1$ has degree $4$ and vanishes at $1, 2, 3, 4$, so $xP(x) - 1 = a(x - 1)(x - 2)(x - 3)(x - 4)$. At $x = 0$: $-1 = 24a$, so $a = -\tfrac1{24}$. At $x = 5$: $5P(5) - 1 = -\tfrac{1}{24} \cdot 24 = -1$, so $P(5) = 0$.` }
+    ],
+    problems: [
+      "2008 AIME II, Problem 7",
+      "2014 AIME I, Problem 9",
+      "2021 AIME II, Problem 4"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2014 AIME II, Problem 5",
+      "2015 AIME II, Problem 6",
+      "1995 AIME, Problem 5",
+      "2013 AIME I, Problem 10",
+      "2013 AIME II, Problem 12"
+    ]
+  }
 };

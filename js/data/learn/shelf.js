@@ -688,28 +688,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "A2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "A2.2",
       "title": "The factor and remainder theorems, and division, in contest settings",
       "level": "Core"
      },
      {
-      "code": "A2.2",
+      "code": "A2.3",
       "title": "Vieta; sums of powers of roots (Newton's sums)",
       "level": "Core"
      },
      {
-      "code": "A2.3",
+      "code": "A2.4",
       "title": "Symmetric polynomials and root constraints",
       "level": "Core"
      },
      {
-      "code": "A2.4",
+      "code": "A2.5",
       "title": "Root transformations: reciprocal and shifted polynomials",
       "level": "Core"
      },
      {
-      "code": "A2.5",
+      "code": "A2.6",
       "title": "Interpolation and reading off coefficients",
       "level": "Core II"
+     },
+     {
+      "code": "A2.7",
+      "title": "Summary"
      }
     ]
    },

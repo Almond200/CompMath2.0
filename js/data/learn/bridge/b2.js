@@ -16,7 +16,7 @@ The [[rational-root-theorem|rational root theorem]] lists the candidates: a rati
 
 Evaluate instead of dividing, list rational candidates, and divide out each root as soon as it is found. The next lesson relates the roots to the coefficients.`,
       related: [
-        { card: "polynomial-crt", note: String.raw`remainders on division by products of linear factors (A2.1).` },
+        { card: "polynomial-crt", note: String.raw`remainders on division by products of linear factors ((A2.2)).` },
         { card: "vietas-general", note: String.raw`the sums and products of roots from the coefficients (B2.2).` },
         { card: "coefficient-extraction", note: String.raw`$P(1)$ and $P(-1)$ as sums of coefficients.` }
       ],
@@ -51,7 +51,7 @@ A quadratic's graph is a parabola with its [[vertex-form|vertex]] at $x = -\tfra
 Use Vieta for symmetric expressions in the roots, the discriminant for how many real roots there are, and the vertex for extremes. The next lesson sums sequences.`,
       related: [
         { card: "symmetric-polynomial-strategies", note: String.raw`writing any symmetric expression in the elementary symmetric sums ((A1.2)).` },
-        { card: "newtons-sums", note: String.raw`power sums of the roots from Vieta (A2.2).` },
+        { card: "newtons-sums", note: String.raw`power sums of the roots from Vieta ((A2.3)).` },
         { card: "quadratic-root-location", note: String.raw`where the roots lie, from the discriminant, the vertex and values (B6.1).` }
       ],
       exercises: [

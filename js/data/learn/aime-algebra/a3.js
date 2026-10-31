@@ -67,7 +67,7 @@ A [[double-summation|double sum]] adds a number for every pair of indices in a r
 The signal is a sequence given by its first terms, a sum of polynomial values, or a sum over pairs of indices.`,
       related: [
         { card: "power-sums", note: String.raw`closed forms for $\sum k$, $\sum k^2$, $\sum k^3$, which a double sum often reduces to.` },
-        { card: "lagrange-interpolation", note: String.raw`the polynomial through given values, the other route from a table to a formula (A2.5).` },
+        { card: "lagrange-interpolation", note: String.raw`the polynomial through given values, the other route from a table to a formula ((A2.6)).` },
         { card: "hockey-stick", note: String.raw`sums down a diagonal of Pascal's triangle, which finite differences of binomial coefficients produce.` }
       ],
       exercises: [

@@ -16,7 +16,7 @@ The point-symmetry equation is behind [[fx-pairing|pairing symmetric terms]], th
 
 The signal is a function given by a formula with a question about its inverse, its parity, or a long sum of its values at evenly spaced points.`,
       related: [
-        { card: "comparing-coefficients", note: String.raw`turning $f(f^{-1}(x)) = x$ or $f(-x) = f(x)$ into equations on the coefficients (A2.5).` },
+        { card: "comparing-coefficients", note: String.raw`turning $f(f^{-1}(x)) = x$ or $f(-x) = f(x)$ into equations on the coefficients ((A2.6)).` },
         { card: "functional-substitution", note: String.raw`choosing inputs in an identity, the general version of plugging in $-x$ or $1 - x$ (A4.4).` },
         { card: "arithmetic-series", note: String.raw`Gauss's pairing, the model for pairing symmetric terms.` }
       ],
@@ -97,7 +97,7 @@ The signal is an equation that must hold for all inputs, or a symbol defined by 
       related: [
         { card: "function-symmetry-equation", note: String.raw`symmetries of a graph written as functional equations (A4.1).` },
         { card: "cauchy-functional-equations", note: String.raw`equations like $f(x + y) = f(x) + f(y)$, solved in full in A9.2.` },
-        { card: "comparing-coefficients", note: String.raw`when the unknown function is a polynomial, an identity becomes equations on its coefficients (A2.5).` }
+        { card: "comparing-coefficients", note: String.raw`when the unknown function is a polynomial, an identity becomes equations on its coefficients ((A2.6)).` }
       ],
       exercises: [
         { q: String.raw`If $f(3x - 1) = x^2 + x + 1$ for all $x$, find $f(5)$.`, answer: "7",

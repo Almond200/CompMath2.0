@@ -131,10 +131,10 @@ The third step is checking. Each method has a typical error: a substitution can 
 
 The problems below are mixed on purpose, in rising order of difficulty, and each needs ideas from at least two chapters. The extension chapter that follows collects topics that go beyond the AIME syllabus.`,
       related: [
-        { card: "newtons-sums", note: String.raw`power sums of roots from the coefficients (A2.2).` },
+        { card: "newtons-sums", note: String.raw`power sums of roots from the coefficients ((A2.3)).` },
         { card: "log-substitution", note: String.raw`turning an exponential or logarithmic equation into a polynomial (A4.3).` },
         { card: "roots-of-unity", note: String.raw`recognizing the roots of a geometric-series polynomial (A6.3).` },
-        { card: "comparing-coefficients", note: String.raw`reading a system as one polynomial identity (A2.5).` }
+        { card: "comparing-coefficients", note: String.raw`reading a system as one polynomial identity ((A2.6)).` }
       ],
       exercises: [
         { q: String.raw`Find the product of the positive real solutions of $x^{\log_{10} x} = 100x$.`, answer: "10",

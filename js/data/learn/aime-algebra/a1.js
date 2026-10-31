@@ -43,8 +43,8 @@ The method runs in the other direction too. If a system is symmetric in its unkn
 The signal is a question about a symmetric expression of quantities that are awkward to find individually, or a system that stays the same when its unknowns are permuted.`,
       related: [
         { card: "vietas-quadratic", note: String.raw`the roots of $t^2 - st + p$ have sum $s$ and product $p$, which is how $x$ and $y$ are recovered.` },
-        { card: "newtons-sums", note: String.raw`the recursion for $x^n + y^n$ (and for more variables) in terms of the symmetric sums (A2.2).` },
-        { card: "fundamental-theorem-symmetric", note: String.raw`the theorem that every symmetric polynomial is a polynomial in the elementary ones (A2.3).` }
+        { card: "newtons-sums", note: String.raw`the recursion for $x^n + y^n$ (and for more variables) in terms of the symmetric sums ((A2.3)).` },
+        { card: "fundamental-theorem-symmetric", note: String.raw`the theorem that every symmetric polynomial is a polynomial in the elementary ones ((A2.4)).` }
       ],
       exercises: [
         { q: String.raw`If $x + y = 5$ and $xy = 3$, find $x^3 + y^3$.`, answer: "80",
@@ -120,7 +120,7 @@ The same idea turns known values of a polynomial into known roots. If $f(2) = 4$
 The signal is a system that looks the same after rotating its variables, two equations that differ by a symmetric change, or a polynomial given at points where it agrees with a simple function. Add or multiply to use the symmetry, and subtract and factor to split into cases.`,
       related: [
         { card: "add-all-equations", note: String.raw`adding or multiplying all the equations of a symmetric system.` },
-        { card: "factor-remainder-theorem", note: String.raw`a polynomial vanishing at $r$ has the factor $x - r$, which turns known values into a factored form (A2.1).` },
+        { card: "factor-remainder-theorem", note: String.raw`a polynomial vanishing at $r$ has the factor $x - r$, which turns known values into a factored form ((A2.2)).` },
         { card: "wlog-symmetry", note: String.raw`ordering or identifying variables without loss of generality in a symmetric system (A8.1).` }
       ],
       exercises: [
