@@ -18,7 +18,7 @@ Decide whether order matters, count by the product rule, and divide by the order
       related: [
         { card: "constructive-counting", note: String.raw`building objects step by step with the restricted choices first (C1.2).` },
         { card: "uniform-overcount", note: String.raw`dividing by a fixed overcount, the idea behind $\binom nk$ (C1.5).` },
-        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients of $(x + y)^n$ (C4.4).` }
+        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients of $(x + y)^n$ (C4.5).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can a committee of $3$ be chosen from $10$ people?`, answer: "120",

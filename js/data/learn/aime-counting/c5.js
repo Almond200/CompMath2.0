@@ -166,7 +166,7 @@ Lattice paths also encode other objects. A sequence of makes and misses in baske
 
 Count paths with the binomial coefficient, split at the points they must pass, subtract those through forbidden points, and count turns through runs. The next lesson gives the states probabilities, to find who is likely to win a game of chance.`,
       related: [
-        { card: "reflection-principle", note: String.raw`paths that must stay on one side of a line (C4.1).` },
+        { card: "reflection-principle", note: String.raw`paths that must stay on one side of a line (C4.2).` },
         { card: "grid-path-fill", note: String.raw`counting paths with irregular obstacles by filling the grid (C5.4).` },
         { card: "stars-and-bars", note: String.raw`splitting the steps of each direction into runs (C2.5).` }
       ],

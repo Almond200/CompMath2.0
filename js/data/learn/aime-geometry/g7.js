@@ -106,7 +106,7 @@ Two [[square-crossing-segments|perpendicular segments across a square]], each jo
 
 Look for the rotation or reflection that maps the figure to itself, and use it to pair points, equate lengths, or count orbits. The next lesson moves to lattice points and grids.`,
       related: [
-        { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry by averaging fixed colorings (C4.3).` },
+        { card: "burnsides-lemma", note: String.raw`counting colorings up to symmetry by averaging fixed colorings (C4.4).` },
         { card: "reflection-composition", note: String.raw`the symmetries of a polygon as compositions of reflections (G6.1).` },
         { card: "rotation-90", note: String.raw`the quarter turn that matches perpendicular segments in a square (G6.1).` }
       ],

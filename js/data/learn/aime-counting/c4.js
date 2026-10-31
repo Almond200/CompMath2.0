@@ -4,6 +4,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["C4"] = {
   lessons: {
     "C4.1": {
+      prereq: ["permutations-combinations"],
+      cards: [],
+      body: String.raw`This chapter counts without building objects one decision at a time. Its tools are the bijection, double counting, symmetry, and the identities of binomial coefficients, which are what the first three give when they are applied to choosing subsets.
+
+A bijection is a matching between two sets that pairs every element of one with exactly one element of the other. If the objects to be counted can be matched with objects that are easier to count, the two counts are equal. The subsets of $\{1, \ldots, 10\}$ of even size can be matched with those of odd size by putting the number $1$ in if it is out and taking it out if it is in. The rule changes the size by one and undoes itself, so the two kinds are equally many, $\tfrac{2^{10}}{2} = 512$ each.
+
+Double counting counts one set in two ways and sets the counts equal. The set is often a set of pairs, such as a person together with a committee the person sits on: counted by people it is the sum of the numbers of committees each person is on, and counted by committees it is the sum of the committee sizes.
+
+Symmetry says that outcomes related by a swap or a rotation are equally likely or equally many, so a count or a probability can be divided among them without computing any of them. When two fair dice are rolled, the first shows more than the second exactly as often as the second shows more than the first, so each happens with probability $\tfrac12\left(1 - \tfrac{6}{36}\right) = \tfrac{5}{12}$. The danger is a symmetry that is not really there, or one that fixes some objects, which is where the division becomes uneven.
+
+The binomial coefficients satisfy many identities, and each can be proved by counting one set in two ways or by a bijection. They turn sums of binomial coefficients, which appear constantly in answers, into a single coefficient.
+
+The lessons take these ideas in turn: designing bijections (C4.2), double counting (C4.3), using symmetry safely (C4.4), and binomial identities (C4.5). The Summary (C4.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Every member of a club of $10$ people serves on exactly $3$ committees, and every committee has exactly $5$ members. How many committees are there?`, answer: "6",
+          solution: String.raw`Count the pairs (person, committee the person serves on) in two ways. By people there are $10 \cdot 3 = 30$ pairs. By committees there are $5c$, where $c$ is the number of committees. So $5c = 30$ and $c = 6$.` },
+        { q: String.raw`Two fair six-sided dice are rolled, one red and one blue. What is the probability that the red die shows a greater number than the blue die?`, answer: "5/12",
+          solution: String.raw`The dice show equal numbers with probability $\tfrac{6}{36} = \tfrac16$. Swapping the colors of the dice matches each outcome with red greater to one with blue greater, so these two events are equally likely, and each has probability $\tfrac12 \cdot \tfrac56 = \tfrac{5}{12}$.` },
+        { q: String.raw`Find $\binom33 + \binom43 + \binom53 + \binom63 + \binom73$.`, answer: "70",
+          solution: String.raw`Count the $4$-element subsets of $\{1, \ldots, 8\}$ by their largest element $m$. The other three elements are chosen from the $m - 1$ smaller numbers, in $\binom{m - 1}{3}$ ways, and $m$ runs from $4$ to $8$. So the sum counts all $4$-element subsets of an $8$-element set, $\binom84 = 70$. Directly: $1 + 4 + 10 + 20 + 35 = 70$.` }
+      ],
+      problems: [
+        "2019 AMC 12B, Problem 13",
+        "2022 AMC 12A, Problem 19",
+        "2010 AIME II, Problem 8"
+      ]
+    },
+    "C4.2": {
       prereq: ["permutations-combinations", "grid-paths"],
       cards: ["bijection-method", "catalan-numbers", "ballot-problem", "reflection-principle"],
       body: String.raw`Some sets are hard to count directly but match, one for one, a set that is easy to count. Numbers with strictly increasing digits match subsets of the digits; convex polygons with vertices among points on a circle match subsets of the points; lattice paths that stay below a diagonal match balanced strings of parentheses. Finding such a matching, a bijection, is often the whole solution, and a few named bijections cover a large share of contest problems.
@@ -17,7 +45,7 @@ The formula comes from the [[reflection-principle|reflection principle]]. A path
 Look for a bijection whenever the objects are determined by a smaller piece of information, or whenever small cases match a known sequence; use reflection whenever paths must avoid a line. The next lesson counts one set in two different ways.`,
       related: [
         { card: "grid-paths", note: String.raw`the unrestricted lattice paths that reflection subtracts from (C5.6).` },
-        { card: "binomial-row-sums", note: String.raw`subsets of an $n$-element set number $2^n$, the usual target of a bijection (C4.4).` },
+        { card: "binomial-row-sums", note: String.raw`subsets of an $n$-element set number $2^n$, the usual target of a bijection (C4.5).` },
         { card: "recursive-counting", note: String.raw`the Catalan recursion $C_{n+1} = \sum C_kC_{n-k}$ from the first return to the diagonal (C5.2).` }
       ],
       exercises: [
@@ -38,7 +66,7 @@ Look for a bijection whenever the objects are determined by a smaller piece of i
         "2026 AIME II, Problem 2"
       ]
     },
-    "C4.2": {
+    "C4.3": {
       prereq: ["counting-functions"],
       cards: ["double-counting", "committee-chair", "nested-subset-pairs"],
       body: String.raw`Counting the same collection in two different ways gives two expressions that must be equal. That simple principle proves identities, finds unknown totals, and turns hopeless sums into easy products. How many intersection points do forty lines make, given how many points have three, four or five lines through them? What is the sum of $k\binom nk$? How many pairs of sets $A \subseteq B$ are there? Each is a double count: of pairs of lines, of committees with a chair, of the elements and the regions they fall in.
@@ -53,7 +81,7 @@ When a problem asks for a total that looks like a sum over many objects, ask wha
       related: [
         { card: "handshake-lemma", note: String.raw`the degrees of a graph add to twice the number of edges, a double count of edge ends (C8.1).` },
         { card: "subset-sum-facts", note: String.raw`each element lies in half of all subsets, the element-by-element count (C3.4).` },
-        { card: "vandermonde", note: String.raw`a committee from two groups counted by how many come from each (C4.4).` }
+        { card: "vandermonde", note: String.raw`a committee from two groups counted by how many come from each (C4.5).` }
       ],
       exercises: [
         { q: String.raw`How many ordered pairs of sets $(A, B)$ satisfy $A \subseteq B \subseteq \{1, 2, 3, 4, 5\}$?`, answer: "243",
@@ -72,7 +100,7 @@ When a problem asks for a total that looks like a sum over many objects, ask wha
         "2022 AIME I, Problem 12"
       ]
     },
-    "C4.3": {
+    "C4.4": {
       prereq: ["uniform-overcount", "basic-probability"],
       cards: ["symmetry-probability", "burnsides-lemma"],
       body: String.raw`Symmetry is the fastest tool in counting and probability, and the most dangerous. It says that the chance that the first card drawn is higher than the second is $\tfrac12$ when ties are impossible; that in a random order of six numbers, $1$, $2$, $3$ appear in increasing order with probability $\tfrac16$; that colorings of a cube can be counted up to rotation by averaging. Each claim is quick once the symmetry is identified, and wrong whenever the supposed symmetry is not really there.
@@ -109,7 +137,7 @@ Use symmetry to replace a count by a fraction, and Burnside whenever objects rel
         "2013 AIME I, Problem 4"
       ]
     },
-    "C4.4": {
+    "C4.5": {
       prereq: ["permutations-combinations"],
       cards: ["pascals-identity", "binomial-row-sums", "hockey-stick", "vandermonde", "squared-binomial-sum", "multinomial-theorem", "binomial-theorem"],
       body: String.raw`Binomial coefficients satisfy many identities, and contest problems use a handful of them constantly: to sum a diagonal of Pascal's triangle, to add the squares of a row, to expand a power of a sum, or to read off a coefficient. Each identity has a counting proof, and the counting proof is the best way to remember it and to recognize when a sum is one in disguise.
@@ -120,9 +148,9 @@ The [[binomial-theorem|binomial theorem]] $(x + y)^n = \sum_k \binom nk x^{n-k}y
 
 The [[hockey-stick|hockey stick identity]] $\sum_{k=r}^{n}\binom kr = \binom{n + 1}{r + 1}$ sums a diagonal: choose $r + 1$ numbers from $1$ to $n + 1$, and sort by the largest, which is $k + 1$. So $\binom33 + \binom43 + \cdots + \binom{10}3 = \binom{11}4 = 330$. Products of consecutive integers are binomial coefficients times factorials, $(i - 2)(i - 1)i(i + 1) = 4!\binom{i + 1}{4}$, so sums of such products are hockey sticks. [[vandermonde|Vandermonde's identity]] $\sum_k\binom mk\binom n{r - k} = \binom{m + n}r$ chooses $r$ people from two groups by how many come from the first. Its special case, the [[squared-binomial-sum|sum of squared binomial coefficients]], is $\sum_k\binom nk^2 = \sum_k\binom nk\binom n{n-k} = \binom{2n}n$, so $\sum_k\binom5k^2 = \binom{10}5 = 252$. Sums like $\sum\binom6a\binom6b$ over $a + b = k$ collapse the same way.
 
-When a sum of binomial coefficients appears, ask what it counts: a diagonal is a hockey stick, a product of two coefficients with a fixed total is Vandermonde, and a weighted sum is a committee with a chair. The chapter review mixes these with bijections, double counting and symmetry.`,
+When a sum of binomial coefficients appears, ask what it counts: a diagonal is a hockey stick, a product of two coefficients with a fixed total is Vandermonde, and a weighted sum is a committee with a chair. The Summary (C4.6) collects the chapter's strategies, and the problems after it mix these identities with bijections, double counting and symmetry.`,
       related: [
-        { card: "committee-chair", note: String.raw`the identity $k\binom nk = n\binom{n-1}{k-1}$ for weighted row sums (C4.2).` },
+        { card: "committee-chair", note: String.raw`the identity $k\binom nk = n\binom{n-1}{k-1}$ for weighted row sums (C4.3).` },
         { card: "roots-of-unity-filter", note: String.raw`sums of every third or fourth entry of a row (A6.3).` },
         { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.1).` }
       ],
@@ -150,14 +178,55 @@ When a sum of binomial coefficients appears, ask what it counts: a diagonal is a
         "2022 AIME II, Problem 10",
         "2025 AIME I, Problem 3"
       ]
+    },
+    "C4.6": {
+      prereq: ["bijection-method", "catalan-numbers", "reflection-principle", "double-counting", "committee-chair", "symmetry-probability", "burnsides-lemma", "hockey-stick", "vandermonde"],
+      cards: [],
+      body: String.raw`[[bijection-method|A bijection]] matches the objects to be counted with objects that are easier to count, and it is correct when the matching has an inverse. The [[catalan-numbers|Catalan numbers]] count the most common family it reaches: balanced sequences, paths that stay on one side of a line, bracketings and triangulations. [[reflection-principle|Reflecting]] the part of a path up to its first bad step matches the bad paths with all paths to a reflected endpoint, so the good paths are counted by one subtraction.
+
+[[double-counting|Double counting]] counts one set two ways, often a set of pairs, and sets the counts equal; [[committee-chair|choosing a committee and its chair]] in two orders is the model, and gives identities such as $k\binom nk = n\binom{n - 1}{k - 1}$.
+
+[[symmetry-probability|Symmetry]] divides a count or a probability equally among outcomes that a swap or a rotation permutes. It is safe only when the swap really maps the outcomes of one kind onto those of the other. When a symmetry fixes some objects, [[burnsides-lemma|Burnside's lemma]] counts the objects up to symmetry as the average number fixed by each symmetry.
+
+The binomial identities collect sums of coefficients: [[hockey-stick|the hockey stick]] sums a column of Pascal's triangle, and [[vandermonde|Vandermonde's identity]] sums the products that choose from two groups. Each is a statement of double counting, and the counting proof is usually the fastest way to recall it.`,
+      strategies: [
+        String.raw`If a count looks hard, ask what simpler objects it could be matched with, and check the matching by describing its inverse.`,
+        String.raw`For paths, sequences and bracketings that must stay on one side of a line, suspect the Catalan numbers, and check the first few values against $1, 1, 2, 5, 14, 42$.`,
+        String.raw`To count paths that cross a line, reflect them at their first crossing.`,
+        String.raw`When a total is a sum over people of their memberships, count the pairs from the other side instead.`,
+        String.raw`For a probability that compares two things, look for a swap that exchanges them; the leftover equal case is often the only thing to compute.`,
+        String.raw`Before dividing by a symmetry, check that no object is fixed by it; if some are, use Burnside's lemma.`,
+        String.raw`To evaluate a sum of binomial coefficients, find one set that it counts by cases, and count that set at once.`,
+        String.raw`A sum such as $\sum k\binom nk$ is a committee with a chair: choose the chair first.`
+      ]
     }
   },
-  review: [
-    "2022 AMC 12A, Problem 19",
-    "2006 AMC 12A, Problem 23",
-    "2023 AMC 12A, Problem 17",
-    "2010 AIME II, Problem 8",
-    "2003 AIME I, Problem 13",
-    "2025 AMC 12A, Problem 23"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`How many sequences of five $+1$s and five $-1$s have every partial sum, from the left, at least $0$?`, answer: "42",
+        solution: String.raw`These are the balanced sequences counted by the Catalan number $C_5 = \tfrac{1}{6}\binom{10}{5} = \tfrac{252}{6} = 42$. By reflection: of the $\binom{10}{5} = 252$ sequences, the bad ones first reach $-1$ somewhere; flipping every sign up to that point matches them with the sequences of six $-1$s and four $+1$s, $\binom{10}{4} = 210$ of them, so $252 - 210 = 42$.` },
+      { q: String.raw`A path from $(0, 0)$ to $(6, 4)$ takes unit steps right or up. How many such paths never pass above the line $y = x$?`, answer: "90",
+        solution: String.raw`There are $\binom{10}{4} = 210$ paths. A bad path touches the line $y = x + 1$; reflecting its part up to the first touch in that line matches it with a path from $(-1, 1)$ to $(6, 4)$, which takes $7$ steps right and $3$ up: $\binom{10}{3} = 120$ paths. So $210 - 120 = 90$ paths stay on or below the line.` },
+      { q: String.raw`Find the sum of the sizes of all $1024$ subsets of $\{1, 2, \ldots, 10\}$.`, answer: "5120",
+        solution: String.raw`Count the pairs (subset, element in it) by elements instead. Each of the $10$ elements is in half of the subsets, $2^9 = 512$ of them, so the total is $10 \cdot 512 = 5120$.` },
+      { q: String.raw`Five people, among them Ann, Bo and Cy, line up in a random order. What is the probability that Ann is ahead of Bo and Bo is ahead of Cy?`, answer: "1/6",
+        solution: String.raw`Whatever places the three of them occupy, the $3! = 6$ orders of Ann, Bo and Cy in those places are equally likely, since permuting their names maps the line-ups of one order onto those of another. Exactly one of the six orders is Ann, Bo, Cy, so the probability is $\tfrac16$.` },
+      { q: String.raw`The four corners of a square are each colored with one of $3$ colors. How many colorings are different, if colorings that differ by a rotation of the square are the same?`, answer: "24",
+        solution: String.raw`Use Burnside's lemma over the four rotations. The identity fixes all $3^4 = 81$ colorings. The quarter turns, either way, fix only the $3$ one-color colorings. The half turn fixes colorings with opposite corners equal, $3^2 = 9$. The average is $\tfrac{81 + 3 + 9 + 3}{4} = 24$.` },
+      { q: String.raw`Find $\sum_{k=0}^{5} \binom5k\binom7k$.`, answer: "792",
+        solution: String.raw`Write $\binom7k = \binom{7}{7 - k}$. Then $\binom5k\binom{7}{7-k}$ counts the ways to choose $k$ people from a group of $5$ and $7 - k$ from a group of $7$, a committee of $7$ from all $12$ people, sorted by how many come from the first group. So the sum is $\binom{12}{7} = 792$.` }
+    ],
+    problems: [
+      "2006 AMC 12A, Problem 23",
+      "2003 AIME I, Problem 13"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2023 AMC 12A, Problem 17",
+      "2025 AMC 12A, Problem 23",
+      "2015 AIME I, Problem 12",
+      "2024 AIME II, Problem 9"
+    ]
+  }
 };

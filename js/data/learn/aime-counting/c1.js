@@ -82,7 +82,7 @@ Make it a habit to ask, before any casework, whether the opposite condition is s
       related: [
         { card: "pie", note: String.raw`subtracting a complement that is itself a union of overlapping conditions (C3.2).` },
         { card: "handshakes-diagonals", note: String.raw`counting pairs that are not edges, the complement in polygon and polyhedron problems.` },
-        { card: "binomial-row-sums", note: String.raw`all subsets number $2^n$, the usual "all" in a subset complement (C4.4).` }
+        { card: "binomial-row-sums", note: String.raw`all subsets number $2^n$, the usual "all" in a subset complement (C4.5).` }
       ],
       exercises: [
         { q: String.raw`How many four-digit numbers contain at least one digit $7$?`, answer: "3168",
@@ -112,7 +112,7 @@ Functions are counted the same way. A function from an $n$-element set to a $k$-
 The skill is to look for the quantity that, once known, turns the problem into a product, and to check that the cases it defines are disjoint and cover everything. The next lesson counts objects that are each built several times.`,
       related: [
         { card: "double-summation", note: String.raw`swapping the order of a double sum, the same move as counting by element instead of by object (A3.3).` },
-        { card: "double-counting", note: String.raw`counting one set two ways, the systematic form of reorganizing a count (C4.2).` },
+        { card: "double-counting", note: String.raw`counting one set two ways, the systematic form of reorganizing a count (C4.3).` },
         { card: "surjections", note: String.raw`functions that hit every value, counted by inclusion-exclusion (C2.6).` }
       ],
       exercises: [
@@ -146,7 +146,7 @@ A uniform overcount also gives quick probability and existence arguments. If shi
 Use this method when the objects are unordered groupings, or when each object has a fixed number of natural "handles" to build it from. The last lesson of the chapter turns to processes that must be run or undone step by step.`,
       related: [
         { card: "multiset-permutations", note: String.raw`dividing by the orders of identical letters, the same idea for words (C2.2).` },
-        { card: "burnsides-lemma", note: String.raw`the correct count when symmetry makes the overcount uneven (C4.3).` },
+        { card: "burnsides-lemma", note: String.raw`the correct count when symmetry makes the overcount uneven (C4.4).` },
         { card: "handshakes-diagonals", note: String.raw`pairs counted from both ends and halved.` }
       ],
       exercises: [

@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1, C2, C3 and C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1 to C5 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1271,10 +1271,12 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C4.1 Designing bijections | `bijection-method`, `catalan-numbers`, `ballot-problem`, `reflection-principle` |
-| C4.2 Double counting and incidences | `double-counting`, `committee-chair`, `nested-subset-pairs` |
-| C4.3 Using symmetry safely | `symmetry-probability`, `burnsides-lemma` (the proposal lists Burnside as Extension; the card is AMC tier and high importance, so it stays Core, to be confirmed by the audit) |
-| C4.4 Binomial coefficients and their identities | `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `binomial-theorem` |
+| C4.1 Introduction | no card (the chapter's opening page: bijections, double counting, symmetry, binomial identities, with comprehension problems) |
+| C4.2 Designing bijections | `bijection-method`, `catalan-numbers`, `ballot-problem`, `reflection-principle` |
+| C4.3 Double counting and incidences | `double-counting`, `committee-chair`, `nested-subset-pairs` |
+| C4.4 Using symmetry safely | `symmetry-probability`, `burnsides-lemma` (the proposal lists Burnside as Extension; the card is AMC tier and high importance, so it stays Core, to be confirmed by the audit) |
+| C4.5 Binomial coefficients and their identities | `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `binomial-theorem` |
+| C4.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C4.7 Review Problems and C4.8 Challenge Problems |
 
 ### C5. Recursion, states and processes (Core; links to A3)
 

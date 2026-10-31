@@ -17,7 +17,7 @@ Probabilities over number-theoretic objects work the same way. A random divisor 
 Choose equally likely outcomes, ignore what does not matter, and count numerator and denominator the same way. The next lesson updates probabilities when partial information is known.`,
       related: [
         { card: "hypergeometric", note: String.raw`the general formula for the number of special objects in a draw (C6.3).` },
-        { card: "symmetry-probability", note: String.raw`why the fifth draw has the same distribution as the first (C4.3).` },
+        { card: "symmetry-probability", note: String.raw`why the fifth draw has the same distribution as the first (C4.4).` },
         { card: "number-of-divisors", note: String.raw`counting the divisors in a random-divisor sample space.` }
       ],
       exercises: [
@@ -90,7 +90,7 @@ Weighted dice combine the ideas: each face has its own probability, and rolls ar
 Multiply for independent trials, use the binomial formula for counts of successes, and switch to hypergeometric counts when drawing without replacement. The next lesson brings complements and inclusion-exclusion to probability.`,
       related: [
         { card: "drawing-without-replacement", note: String.raw`the counting setup behind the hypergeometric formula (C6.1).` },
-        { card: "binomial-theorem", note: String.raw`the binomial probabilities add to $(p + (1 - p))^n = 1$ (C4.4).` },
+        { card: "binomial-theorem", note: String.raw`the binomial probabilities add to $(p + (1 - p))^n = 1$ (C4.5).` },
         { card: "generating-function-method", note: String.raw`the distribution of a sum of independent counts as a product of polynomials (C9.1).` }
       ],
       exercises: [
@@ -129,7 +129,7 @@ Before computing a probability directly, ask whether its complement is a single 
       related: [
         { card: "complementary-counting", note: String.raw`the same idea for counts (C1.3).` },
         { card: "pie", note: String.raw`inclusion-exclusion for counts, with the same alternating signs (C3.2).` },
-        { card: "symmetry-probability", note: String.raw`reducing a comparison to the probability of a tie (C4.3).` }
+        { card: "symmetry-probability", note: String.raw`reducing a comparison to the probability of a tie (C4.4).` }
       ],
       exercises: [
         { q: String.raw`A fair die is rolled $4$ times. What is the probability of at least one $6$?`, answer: "671/1296",

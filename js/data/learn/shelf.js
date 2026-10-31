@@ -1440,19 +1440,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C4.1",
-      "title": "Designing bijections"
+      "title": "Introduction"
      },
      {
       "code": "C4.2",
-      "title": "Double counting and incidences"
+      "title": "Designing bijections"
      },
      {
       "code": "C4.3",
-      "title": "Using symmetry safely"
+      "title": "Double counting and incidences"
      },
      {
       "code": "C4.4",
+      "title": "Using symmetry safely"
+     },
+     {
+      "code": "C4.5",
       "title": "Binomial coefficients and their identities"
+     },
+     {
+      "code": "C4.6",
+      "title": "Summary"
      }
     ]
    },

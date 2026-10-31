@@ -43,7 +43,7 @@ The formula also runs in reverse. If the problem gives the sizes of the sets and
 Use inclusion-exclusion when the condition is "at least one of" several properties whose intersections are easy to count, and when the problem gives some of these sizes and asks for another. The next lesson applies it to permutations with forbidden positions.`,
       related: [
         { card: "floor-multiples", note: String.raw`counting the multiples of $d$ up to $n$, the size of each intersection in divisibility problems.` },
-        { card: "double-counting", note: String.raw`counting incidences two ways, the source of the reverse equations (C4.2).` },
+        { card: "double-counting", note: String.raw`counting incidences two ways, the source of the reverse equations (C4.3).` },
         { card: "eulers-totient", note: String.raw`the count of numbers coprime to $n$ is inclusion-exclusion over the prime factors.` }
       ],
       exercises: [
@@ -108,8 +108,8 @@ A [[subset-avoiding-relation|subset avoiding a relation]] is counted by drawing 
 Choose the strength of the condition that is easiest to count, and convert; draw forbidden pairs as a graph; and count totals over subsets element by element. The last lesson of the chapter compares complements with casework.`,
       related: [
         { card: "non-adjacent-selection", note: String.raw`independent sets in a path, the count for one chain of a forbidden relation (C2.4).` },
-        { card: "double-counting", note: String.raw`counting by element instead of by subset is a double count (C4.2).` },
-        { card: "binomial-row-sums", note: String.raw`each row of Pascal's triangle sums to $2^n$, the number of subsets (C4.4).` }
+        { card: "double-counting", note: String.raw`counting by element instead of by subset is a double count (C4.3).` },
+        { card: "binomial-row-sums", note: String.raw`each row of Pascal's triangle sums to $2^n$, the number of subsets (C4.5).` }
       ],
       exercises: [
         { q: String.raw`How many of the integers $1, 2, \ldots, 100$ are divisible by exactly one of $2$ and $3$?`, answer: "51",

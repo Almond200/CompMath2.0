@@ -48,7 +48,7 @@ When an object is a row of symbols, count it as a multiset arrangement; when it 
       related: [
         { card: "uniform-overcount", note: String.raw`dividing by the orders of identical objects is a uniform overcount (C1.5).` },
         { card: "grid-paths", note: String.raw`lattice paths as words in two letters (C5.6).` },
-        { card: "multinomial-theorem", note: String.raw`the coefficients $\tfrac{n!}{n_1!\,n_2!\cdots}$ in the expansion of $(x_1 + \cdots + x_k)^n$ (C4.4).` }
+        { card: "multinomial-theorem", note: String.raw`the coefficients $\tfrac{n!}{n_1!\,n_2!\cdots}$ in the expansion of $(x_1 + \cdots + x_k)^n$ (C4.5).` }
       ],
       exercises: [
         { q: String.raw`How many different arrangements of the letters of MISSISSIPPI are there?`, answer: "34650",
@@ -79,7 +79,7 @@ When identical objects sit around a circle, an arrangement can look the same aft
 
 Fix one object when all are distinct; use the necklace formula, or list the symmetric arrangements, when some are identical. The next lesson counts selections with spacing conditions.`,
       related: [
-        { card: "burnsides-lemma", note: String.raw`counting arrangements up to any group of symmetries (C4.3).` },
+        { card: "burnsides-lemma", note: String.raw`counting arrangements up to any group of symmetries (C4.4).` },
         { card: "gap-method", note: String.raw`choosing gaps between already-placed objects, used around circles too (C2.4).` },
         { card: "permutation-cycle-structure", note: String.raw`a rotation by $j$ of $n$ positions splits them into $\gcd(j, n)$ cycles (C9.2).` }
       ],
