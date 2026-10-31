@@ -2855,10 +2855,13 @@ h2[data-list-title][contenteditable="true"] { outline: none; background: var(--b
 
 /* The card drawer */
 .lp-drawer { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
-  border: 1px solid var(--border); border-radius: 12px; background: var(--bg-panel); padding: 10px 12px; }
+  border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); padding: 12px 16px; }
 .lp-drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; }
 
-.lp-drawer-close { font-size: 22px; line-height: 1; padding: 2px 9px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); cursor: pointer; }
+/* A bare ×, the height of the tags beside it (owner, 2026-10-31). */
+.lp-drawer-close { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 22px; padding: 0; border: none; border-radius: 6px;
+  background: none; color: var(--text-dim); font-size: 19px; line-height: 1; cursor: pointer; }
+.lp-drawer-close:hover { background: var(--bg-panel); color: var(--text); }
 /* The card preview in a lesson's drawer: the card page's own drawing, at the drawer's width. */
 .lp-drawer .lp-drawer-head { margin-bottom: 4px; }
 .lp-preview { max-width: none; margin: 0; padding: 0; font-size: 14px; }
