@@ -296,6 +296,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 **2026-10-31**
 
 - **The header's second row is labelled "Lesson"** instead of "Page" (owner, 2026-10-31).
+- **The problem of the day's statement is plain text too** (owner, 2026-10-31): no shaded box around it on the home page; the credit sits right under it.
 - **A problem's statement is plain text in its card** (owner, 2026-10-31), with no box or grey ground around it, following the rule of no boxes inside boxes.
 - **The bottom links are small and plain** (owner, 2026-10-31): "‹ N3 overview", "Back to top" and "N3.2 Fermat's Little Theorem… ›" are one size, with no card or background until hovered; a long title ends in an ellipsis.
 - **Problem cards: grey statement, a growing work box, Show Solution beside it (2026-10-31, owner).** The statement sits on a slightly grey ground. The work box starts about two lines tall, grows as you type (and after a reload, to fit what was saved), and has no resize handle. Show Solution sits to the right of the box, and under it on a phone.
