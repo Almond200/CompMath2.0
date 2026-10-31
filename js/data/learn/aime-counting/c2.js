@@ -17,7 +17,7 @@ The common difficulty is a problem where the multiset itself is not fixed. A wal
 When an object is a row of symbols, count it as a multiset arrangement; when it is a group, as a binomial coefficient; and when the composition varies, case on the composition first. The next lesson arranges objects around a circle, where rotations make some rows the same.`,
       related: [
         { card: "uniform-overcount", note: String.raw`dividing by the orders of identical objects is a uniform overcount (C1.4).` },
-        { card: "grid-paths", note: String.raw`lattice paths as words in two letters (C5.5).` },
+        { card: "grid-paths", note: String.raw`lattice paths as words in two letters (C5.6).` },
         { card: "multinomial-theorem", note: String.raw`the coefficients $\tfrac{n!}{n_1!\,n_2!\cdots}$ in the expansion of $(x_1 + \cdots + x_k)^n$ (C4.4).` }
       ],
       exercises: [
@@ -77,8 +77,8 @@ When the condition is about runs or about which symbol may follow which, count [
 
 Choose the method by the shape of the condition: "no two adjacent" with a fixed number of chosen objects calls for gaps or the shift; a condition on runs or successors calls for states. The next lesson splits identical objects among groups.`,
       related: [
-        { card: "recursive-counting", note: String.raw`the general form of the state-machine recursion (C5.1).` },
-        { card: "tiling-a-board", note: String.raw`tilings by squares and dominoes, counted by the same Fibonacci recursion (C5.2).` },
+        { card: "recursive-counting", note: String.raw`the general form of the state-machine recursion (C5.2).` },
+        { card: "tiling-a-board", note: String.raw`tilings by squares and dominoes, counted by the same Fibonacci recursion (C5.3).` },
         { card: "stars-and-bars", note: String.raw`the shift that turns spaced choices into ordinary ones is a stars-and-bars substitution (C2.4).` }
       ],
       exercises: [

@@ -53,7 +53,7 @@ Use the derangement numbers when every object has one forbidden place, and inclu
       related: [
         { card: "expected-fixed-points", note: String.raw`a random permutation has on average one fixed point, whatever $n$ is (C7.2).` },
         { card: "counting-blocks", note: String.raw`gluing a forbidden adjacent pair into one block to count arrangements where it happens.` },
-        { card: "recursive-counting", note: String.raw`the recursion for $D_n$ comes from asking where the first object goes (C5.1).` }
+        { card: "recursive-counting", note: String.raw`the recursion for $D_n$ comes from asking where the first object goes (C5.2).` }
       ],
       exercises: [
         { q: String.raw`Five letters are put into five addressed envelopes, one per envelope. In how many ways does no letter go into its own envelope?`, answer: "44",
@@ -119,7 +119,7 @@ Sometimes the best route combines the two: count the complement recursively, bui
 Before counting, write the condition and its negation, estimate the work for each, and choose the shorter. The review problems that follow mix all the methods of the chapter.`,
       related: [
         { card: "restricted-sequences", note: String.raw`the count of strings that avoid a pattern, the usual complement for "contains" (C2.3).` },
-        { card: "recursive-counting", note: String.raw`counting a complement by building up from smaller cases (C5.1).` },
+        { card: "recursive-counting", note: String.raw`counting a complement by building up from smaller cases (C5.2).` },
         { card: "simulate-the-process", note: String.raw`checking a count on a small case that can be listed (C1.5).` }
       ],
       exercises: [

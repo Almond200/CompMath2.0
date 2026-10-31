@@ -80,8 +80,32 @@ for (const [code, ch] of Object.entries(learn)) {
       if (!r.note) errs.push(`${at}: related card ${r.card} needs a note saying how it connects`);
     }
     for (const ref of l.problems || []) place(ref, at, trackOf(home.b));
+    if (l.strategies != null && (!Array.isArray(l.strategies) || l.strategies.some(t => typeof t !== 'string' || !t.trim())))
+      errs.push(`${at}: strategies must be a list of sentences`);
   }
   for (const ref of ch.review || []) place(ref, `${code} review`, trackOf(home.b));
+  // The pilot chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with
+  // Problem Solving Strategies, then Review Problems and Challenge Problems.
+  const ls = home.c.lessons, intro = ls[0] && ls[0].title === 'Introduction';
+  if (intro) {
+    const last = ls[ls.length - 1];
+    if (last.title !== 'Summary') errs.push(`${code}: a chapter with an Introduction ends with a Summary lesson`);
+    else if (ch.lessons && ch.lessons[last.code] && !(ch.lessons[last.code].strategies || []).length) errs.push(`${last.code}: the Summary needs its Problem Solving Strategies`);
+    if (ch.review) errs.push(`${code}: a chapter with an Introduction uses reviewProblems and challenge, not review`);
+  }
+  for (const [k, name] of [['reviewProblems', 'Review Problems'], ['challenge', 'Challenge Problems']]) {
+    const set = ch[k];
+    if (!set) continue;
+    if (!intro) errs.push(`${code}: ${k} belongs to a chapter that opens with an Introduction`);
+    (set.exercises || []).forEach((x, i) => {
+      if (!x.q || !x.solution) errs.push(`${code} ${name} ${i + 1}: needs a question and a worked solution`);
+      if (x.answer != null) {
+        try { Answer.values(x.answer).forEach(v => { if (!isFinite(v)) throw new Error('not a finite value'); }); }
+        catch (e) { errs.push(`${code} ${name} ${i + 1}: the answer "${x.answer}" does not parse (${e.message})`); }
+      }
+    });
+    for (const ref of set.problems || []) place(ref, `${code} ${name}`, trackOf(home.b));
+  }
 }
 
 // AMC 10/12 twins: the same problem printed on both papers counts once on the shelf.

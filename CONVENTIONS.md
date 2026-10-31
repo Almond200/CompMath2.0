@@ -1013,4 +1013,14 @@ The old list addresses are kept (§9).
 - no `{{check}}` marker or `checks` field remains;
 - each written lesson is on the shelf.
 
-**Two tracks.** The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked by level) and the AIME books (with the Bridge) are separate tracks (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
+**Two tracks.** The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked Core, Core II or Extension, never AMC 10 or AMC 12) and the AIME books (with the Bridge) are separate tracks (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
+
+**Chapter structure (pilot: C5; owner, 2026-10-31).** A chapter opens with X.1 Introduction and closes with a Summary lesson, then two pages:
+- **X.1 Introduction** is the chapter's opening page (the chapter's address shows it). It shows the chapter's number and title, then the lesson heading. It gives a short, plain overview of the ideas the chapter teaches (what a recursion is, what a state is), with no motivating question and no deep use cases, then a few comprehension problems with worked solutions. It teaches no card.
+- **The lessons** follow, numbered from X.2.
+- **The Summary** is the last lesson. It recaps the concepts in a few paragraphs, then gives a bulleted list under the heading Problem Solving Strategies (the `strategies` field).
+- **Review Problems** (`reviewProblems`) mostly test comprehension: our own problems with worked solutions first, then a few contest problems.
+- **Challenge Problems** (`challenge`) are harder: contest problems first, our own when too few fit.
+- **Order:** every list of problems runs from easiest to hardest. The contest lists are sorted by difficulty when drawn; our own problems are written in that order.
+
+A chapter not yet moved to this structure keeps its overview page and its chapter review.

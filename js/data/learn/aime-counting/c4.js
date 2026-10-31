@@ -16,9 +16,9 @@ The formula comes from the [[reflection-principle|reflection principle]]. A path
 
 Look for a bijection whenever the objects are determined by a smaller piece of information, or whenever small cases match a known sequence; use reflection whenever paths must avoid a line. The next lesson counts one set in two different ways.`,
       related: [
-        { card: "grid-paths", note: String.raw`the unrestricted lattice paths that reflection subtracts from (C5.5).` },
+        { card: "grid-paths", note: String.raw`the unrestricted lattice paths that reflection subtracts from (C5.6).` },
         { card: "binomial-row-sums", note: String.raw`subsets of an $n$-element set number $2^n$, the usual target of a bijection (C4.4).` },
-        { card: "recursive-counting", note: String.raw`the Catalan recursion $C_{n+1} = \sum C_kC_{n-k}$ from the first return to the diagonal (C5.1).` }
+        { card: "recursive-counting", note: String.raw`the Catalan recursion $C_{n+1} = \sum C_kC_{n-k}$ from the first return to the diagonal (C5.2).` }
       ],
       exercises: [
         { q: String.raw`How many lattice paths from $(0, 0)$ to $(4, 4)$, using unit steps right and up, never go above the line $y = x$?`, answer: "14",

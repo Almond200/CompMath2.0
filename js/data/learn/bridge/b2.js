@@ -124,7 +124,7 @@ Compute small cases in order, find the closed form or the period, and use the li
       related: [
         { card: "linear-recurrence", note: String.raw`second-order recurrences and their characteristic roots (A3.1).` },
         { card: "cycle-hunting", note: String.raw`periods of last digits and remainders (B3.3).` },
-        { card: "recursive-counting", note: String.raw`recurrences that count objects (C5.1).` }
+        { card: "recursive-counting", note: String.raw`recurrences that count objects (C5.2).` }
       ],
       exercises: [
         { q: String.raw`A sequence has $a_1 = 1$ and $a_{n+1} = 2a_n + 1$. Find $a_{10}$.`, answer: "1023",

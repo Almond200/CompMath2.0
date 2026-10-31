@@ -9,7 +9,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L1",
     "title": "The algebra toolkit",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "L1.1",
@@ -36,7 +36,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L2",
     "title": "Quadratics, functions and extremes",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "L2.1",
@@ -63,7 +63,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L3",
     "title": "Polynomials, sequences and series",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "L3.1",
@@ -94,7 +94,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L4",
     "title": "Logarithms, exponentials and functions",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "L4.1",
@@ -113,7 +113,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L5",
     "title": "Polynomials and algebraic structure",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "L5.1",
@@ -140,7 +140,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L6",
     "title": "Sequences, sums and inequalities",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "L6.1",
@@ -159,7 +159,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L7",
     "title": "Trigonometry",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "L7.1",
@@ -178,7 +178,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "L8",
     "title": "Complex numbers",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "L8.1",
@@ -204,7 +204,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "M1",
     "title": "Number theory: primes, divisors and digits",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "M1.1",
@@ -231,7 +231,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "M2",
     "title": "Number theory: remainders and integer equations",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "M2.1",
@@ -258,7 +258,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "M3",
     "title": "Number theory for the AMC 12",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "M3.1",
@@ -284,7 +284,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "R1",
     "title": "Counting",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "R1.1",
@@ -315,7 +315,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "R2",
     "title": "Probability and expected value",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "R2.1",
@@ -342,7 +342,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "R3",
     "title": "Counting and probability for the AMC 12",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "R3.1",
@@ -380,7 +380,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "S1",
     "title": "Geometry: triangles and circles",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "S1.1",
@@ -411,7 +411,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "S2",
     "title": "Geometry: polygons, coordinates and solids",
-    "level": "AMC 10",
+    "level": "Core",
     "lessons": [
      {
       "code": "S2.1",
@@ -438,7 +438,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "S3",
     "title": "Geometry: triangles and circles for the AMC 12",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "S3.1",
@@ -461,7 +461,7 @@ window.MATH_LEARN_SHELF = [
    {
     "code": "S4",
     "title": "Geometry: coordinates, transformations and space",
-    "level": "AMC 12",
+    "level": "Core II",
     "lessons": [
      {
       "code": "S4.1",
@@ -1439,23 +1439,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C5.1",
-      "title": "Choosing states for a counting recursion"
+      "title": "Introduction"
      },
      {
       "code": "C5.2",
-      "title": "Linear recurrences from arrangements and paths"
+      "title": "Choosing states for a counting recursion"
      },
      {
       "code": "C5.3",
-      "title": "Transitions, boundary cases, small tables"
+      "title": "Linear recurrences from arrangements and paths"
      },
      {
       "code": "C5.4",
-      "title": "Invariants and parity in finite processes"
+      "title": "Transitions, boundary cases, small tables"
      },
      {
       "code": "C5.5",
+      "title": "Invariants and parity in finite processes"
+     },
+     {
+      "code": "C5.6",
       "title": "Grid paths and restricted walks"
+     },
+     {
+      "code": "C5.7",
+      "title": "Summary"
      }
     ]
    },

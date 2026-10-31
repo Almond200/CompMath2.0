@@ -3729,7 +3729,7 @@ body.is-landing .content { padding: 0 0 50px; }
 /* Problem of the day: the whole section opens the problem. On hover its background is filled in
    a rectangle, like a card row's (owner, 2026-10-31). The section reaches 12px past the column
    on each side so its text still lines up with the sections around it. */
-.home .hp-daily { cursor: pointer; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; transition: background 0.12s; }
+.home .hp-daily { cursor: pointer; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 0; transition: background 0.12s; }
 .home .hp-daily.hp-click:hover, .home .hp-daily.hp-click:focus-visible { background: var(--space-soft); }
 .home .hp-daily:hover + * , .home .hp-daily:focus-visible + * { border-top-color: transparent; }
 /* The statement is plain text in the section, with no shaded box around it (owner, 2026-10-31). */
@@ -3821,6 +3821,21 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .bk-arrow:hover { background: var(--bk-soft); border-color: var(--bk-ink); color: var(--bk-ink); }
 .bk-arrow.is-off { opacity: 0.35; }
 .bk-view .lp-grid { padding: 22px 4px 0; }
+/* The chapter opener on an Introduction (owner, 2026-10-31, after a printed textbook's chapter
+   page): the chapter's number large in the book's colour, the word Chapter and the title beside
+   it, and a rule in the book's colour under both. */
+.ch-open { display: flex; align-items: flex-end; gap: 16px; margin: 4px 0 22px; padding-bottom: 14px; border-bottom: 3px solid var(--bk-ink); }
+.ch-open-n { flex: 0 0 auto; font-size: 72px; font-weight: 800; line-height: 0.8; color: var(--bk-ink); font-variant-numeric: tabular-nums; }
+.ch-open-txt { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ch-open-k { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bk-ink); }
+.ch-open-k .lb-level { letter-spacing: 0; text-transform: none; }
+.ch-open-t { font-size: 28px; font-weight: 800; line-height: 1.15; color: var(--text); }
+@media (max-width: 600px) { .ch-open-n { font-size: 54px; } .ch-open-t { font-size: 22px; } }
+/* The Summary's Problem Solving Strategies: one soft panel in the book's tint. */
+.lp-strategies { margin: 22px 0 8px; padding: 14px 18px 8px; border: 1px solid var(--border); border-radius: 12px; background: var(--bk-soft, var(--bg-card)); }
+.lp-strategies .lp-h3 { margin-top: 0; }
+.lp-strategies ul { margin: 0 0 6px; padding-left: 20px; }
+.lp-strategies li { margin: 0 0 8px; line-height: 1.6; }
 .bk-view .learn-h { color: var(--text); }
 .bk-view .learn-h .lb-code, .bk-view .lb-code, .bk-view .lc-n { color: var(--bk-ink); }
 .bk-view .lc-check { border-left-color: var(--bk-ink); }
@@ -3882,9 +3897,10 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .bk-contents .learn-h { color: var(--text); }
 .bk-contents .lb-code { color: var(--bk-ink); }
 .bk-contents .lb-lessons li > a .lb-title { color: var(--bk-ink); }
-/* The Start button and Show Solution take the book's own colour, like its cover (owner, 2026-10-31). */
+/* The Start button and Show Solution take the book's own colour, solid: no gradients on buttons
+   (owner, 2026-10-31; the covers are the one exception). */
 .learn-page.bk-contents a.bk-start, :root[data-theme] .learn-page.bk-contents a.bk-start,
-:root[data-theme] .lesson-page.bk-view .lp-main .lp-show { background: linear-gradient(135deg, var(--bk-a), var(--bk-b)); color: #fff; }
+:root[data-theme] .lesson-page.bk-view .lp-main .lp-show { background: var(--bk-b); color: #fff; }
 .bk-toc-h { margin: 30px 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .bk-toc { list-style: none; margin: 0; padding: 0; }
 .bk-toc-ch { padding: 14px 0 6px; border-top: 1px solid var(--border); }

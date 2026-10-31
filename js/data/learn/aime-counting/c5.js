@@ -4,6 +4,29 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["C5"] = {
   lessons: {
     "C5.1": {
+      prereq: ["constructive-counting"],
+      cards: [],
+      body: String.raw`This chapter counts objects that are built one step at a time, and studies processes that change one step at a time. Its tools are the recursion, the state, the table, and the invariant.
+
+A recursion gives a count in terms of the counts of smaller cases. If $a_n$ is the number of objects of size $n$, a recursion such as $a_n = a_{n-1} + a_{n-2}$ says how the objects of size $n$ are made from smaller ones, and a few starting values such as $a_1$ and $a_2$ fix the whole sequence. For example, a string of $n$ letters $A$ and $B$ with no two $A$s next to each other ends in $B$ or in $BA$, and removing that ending leaves a valid string of length $n - 1$ or $n - 2$. A recursion is correct when every object of size $n$ comes from exactly one smaller object in exactly one way.
+
+Sometimes one count is not enough to say how an object can continue. Then the objects are split into states, such as the last letter of a string, the shape of the end of a board, or the point where a walk now stands, and each state gets its own count and its own recursion.
+
+A process is a rule that changes a configuration step by step: a game, a walk on a grid, or numbers on a board that are combined. There are two questions to ask about it. Where can it go? A table answers that, filled one position at a time from the positions one move away. What can it never change? An invariant is a quantity that every step leaves fixed, and it shows which outcomes are impossible.
+
+The lessons take these ideas in turn: recursions (C5.2), tilings (C5.3), tables of paths and of game positions (C5.4), invariants (C5.5), and lattice paths (C5.6). The Summary (C5.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`A sequence has $a_1 = 1$, $a_2 = 3$, and $a_n = a_{n-1} + 2a_{n-2}$ for $n \ge 3$. Find $a_6$.`, answer: "43",
+          solution: String.raw`Apply the rule one term at a time: $a_3 = 3 + 2 \cdot 1 = 5$, $a_4 = 5 + 2 \cdot 3 = 11$, $a_5 = 11 + 2 \cdot 5 = 21$, and $a_6 = 21 + 2 \cdot 11 = 43$.` },
+        { q: String.raw`A path moves from $(0, 0)$ to $(3, 2)$ in unit steps right or up. Write at each lattice point the number of paths that reach it. What number is written at $(3, 2)$?`, answer: "10",
+          solution: String.raw`Every point on the bottom row or the left column gets $1$. Every other point gets the sum of the numbers at the point to its left and the point below it, since a path arrives from one of those two. The rows from the bottom are $1, 1, 1, 1$, then $1, 2, 3, 4$, then $1, 3, 6, 10$. So $10$ paths reach $(3, 2)$, which matches $\binom{5}{2} = 10$.` },
+        { q: String.raw`How many strings of $6$ letters, each $A$ or $B$, have no two $A$s next to each other?`, answer: "21",
+          solution: String.raw`Let $s_n$ be the number of such strings of length $n$. A valid string ends in $B$, after a valid string of length $n - 1$, or in $BA$, after a valid string of length $n - 2$, so $s_n = s_{n-1} + s_{n-2}$. With $s_1 = 2$ ($A$, $B$) and $s_2 = 3$ ($AB$, $BA$, $BB$), the next values are $5$, $8$, $13$, $21$, so $s_6 = 21$.` },
+        { q: String.raw`The numbers $1, 2, \ldots, 10$ are written on a board. A step erases two numbers $a$ and $b$ and writes $|a - b|$. After nine steps one number is left. Is it odd or even?`,
+          solution: String.raw`The parity of the sum of the numbers on the board never changes: $a + b$ and $|a - b|$ differ by $2\min(a, b)$, an even number. The sum starts at $55$, which is odd, so the last number is odd.` }
+      ]
+    },
+    "C5.2": {
       prereq: ["constructive-counting", "linear-recurrence"],
       cards: ["recursive-counting"],
       body: String.raw`When the objects of size $n$ can be built from objects of smaller size in a controlled way, the count for $n$ is determined by the counts for smaller sizes, and a short table finishes the problem. How many ways can you climb ten stairs taking one, two or three at a time? How many towers can be built from cubes of edge $1$ to $8$ under a stacking rule? How many permutations are "quasi-increasing"? None has an obvious closed form, and all yield to a recursion computed by hand.
@@ -33,7 +56,7 @@ Use a recursion whenever the objects grow one piece at a time and the answer is 
         "2016 AIME II, Problem 12"
       ]
     },
-    "C5.2": {
+    "C5.3": {
       prereq: ["recursive-counting"],
       cards: ["tiling-a-board"],
       body: String.raw`Tiling a strip with tiles of a few shapes is the model for a large family of linear recursions. Dominoes on a $2 \times n$ board, single seats and swapped pairs in a row of people, strings with no long runs, and deliveries that skip at most a few houses all have counts that satisfy a recursion with constant coefficients, found by asking how the left end (or right end) of the board is covered.
@@ -64,7 +87,7 @@ Treat any count of linear arrangements with local rules as a tiling, look at one
         "2001 AIME II, Problem 5"
       ]
     },
-    "C5.3": {
+    "C5.4": {
       prereq: ["recursive-counting"],
       cards: ["grid-path-fill", "backward-induction"],
       body: String.raw`Two problems that look different are solved by the same table-filling. One counts the paths through a grid or a network with obstacles or unusual moves; the other decides which positions of a game are winning. In both, each position's value is computed from the values of the positions one move away, and filling the table in the right order gives every value, including the one asked for.
@@ -77,7 +100,7 @@ Both tables reward care with the order of filling and with the boundary: the sta
 
 Fill a table whenever each position depends only on positions one move away. The next lesson finds quantities that a process cannot change.`,
       related: [
-        { card: "grid-paths", note: String.raw`the closed form for paths without obstacles, as a check on the table (C5.5).` },
+        { card: "grid-paths", note: String.raw`the closed form for paths without obstacles, as a check on the table (C5.6).` },
         { card: "turn-based-games", note: String.raw`games with chance, where positions get probabilities instead of labels (C7.4).` },
         { card: "strategy-stealing", note: String.raw`proving the first player wins without finding the strategy (C9.4).` }
       ],
@@ -96,7 +119,7 @@ Fill a table whenever each position depends only on positions one move away. The
         "2024 AIME I, Problem 3"
       ]
     },
-    "C5.4": {
+    "C5.5": {
       prereq: ["modular-basics"],
       cards: ["invariants-coloring", "monovariant"],
       body: String.raw`A process that changes a configuration step by step often keeps something fixed, or pushes something steadily in one direction. Finding that quantity answers questions that simulation cannot: which points a frog can reach, what number remains after repeatedly combining two numbers on a board, or whether a process must stop. The quantity is usually a sum, a parity, a residue, or a product.
@@ -125,7 +148,7 @@ When a process is long or arbitrary, look for what it cannot change. The last le
         "2026 AIME II, Problem 14"
       ]
     },
-    "C5.5": {
+    "C5.6": {
       prereq: ["permutations-combinations"],
       cards: ["grid-paths"],
       body: String.raw`Lattice paths are the most common setting for counting in geometric form: shortest routes through a city grid, paths that pass a point or avoid a square, paths with a given number of turns, and walks on a torus. The basic formula is a binomial coefficient, and the variations are handled by splitting at a point, subtracting, or counting the runs.
@@ -136,10 +159,10 @@ Turns are counted through runs. A path from $(0, 0)$ to $(8, 8)$ with exactly fo
 
 Lattice paths also encode other objects. A sequence of makes and misses in basketball is a path where a make is a step up; the condition that the ratio of makes never exceeds a bound is a line the path must stay below. A configuration determined by a staircase boundary, such as a set of cells closed under moving up and left, is a lattice path along the boundary. A walk on a clock with two hands is a path on a torus, where wrapping around replaces a boundary.
 
-Count paths with the binomial coefficient, split at the points they must pass, subtract those through forbidden points, and count turns through runs. The chapter review mixes recursions, states, invariants and paths.`,
+Count paths with the binomial coefficient, split at the points they must pass, subtract those through forbidden points, and count turns through runs. The summary that follows gathers the chapter's ideas, and the review and challenge problems mix them.`,
       related: [
         { card: "reflection-principle", note: String.raw`paths that must stay on one side of a line (C4.1).` },
-        { card: "grid-path-fill", note: String.raw`counting paths with irregular obstacles by filling the grid (C5.3).` },
+        { card: "grid-path-fill", note: String.raw`counting paths with irregular obstacles by filling the grid (C5.4).` },
         { card: "stars-and-bars", note: String.raw`splitting the steps of each direction into runs (C2.4).` }
       ],
       exercises: [
@@ -154,11 +177,55 @@ Count paths with the binomial coefficient, split at the points they must pass, s
         "2024 AIME I, Problem 6",
         "2023 AIME I, Problem 14"
       ]
+    },
+    "C5.7": {
+      prereq: ["recursive-counting", "tiling-a-board", "grid-path-fill", "backward-induction", "invariants-coloring", "monovariant", "grid-paths"],
+      cards: [],
+      body: String.raw`A [[recursive-counting|recursion]] counts the objects of size $n$ through the objects of smaller size, by asking about the last step, the last piece, or the largest element. It is correct when every object comes from exactly one smaller object in exactly one way, and a few starting values, checked by listing, fix the table.
+
+When one count does not say how an object can continue, the objects are split into states, and each state gets its own sequence. [[tiling-a-board|Tilings of a board]] are the model: covering one end leaves a smaller board, and every shape the end can take is a state.
+
+[[grid-path-fill|Filling a grid]] writes at each point the number of paths that reach it, the sum of the numbers at the points one move before it, with $0$ at blocked points. [[backward-induction|Labeling a game backward]] marks a position as losing when every move leads to a winning position, and winning when some move leads to a losing one.
+
+An [[invariants-coloring|invariant]] is a quantity that no step changes, and it rules out the outcomes it does not allow. A [[monovariant|monovariant]] moves in one direction at every step, so it shows that a process stops or cannot cycle. [[grid-paths|Lattice paths]] from $(0, 0)$ to $(m, n)$ number $\binom{m + n}{m}$; paths through a point multiply, and paths that avoid a point are counted by subtraction.`,
+      strategies: [
+        String.raw`To find a recursion, ask what the last step, the last piece, or the largest element can be. Each answer leaves a smaller object of the same kind.`,
+        String.raw`If one count does not tell you how an object can continue, split it by state: the last symbol, the shape of the end, or the current position.`,
+        String.raw`Compute the first few values by listing, and check them against the recursion before trusting a long table.`,
+        String.raw`For contest sizes, a table filled by hand is usually faster than a closed form.`,
+        String.raw`When positions depend only on positions one move away, fill a table in an order where every value needed is already known.`,
+        String.raw`In a game, label positions from the end backward, and look for a period in the labels.`,
+        String.raw`When a process is long or arbitrary, look at what one step does to the sum, the parity, a residue, or the product.`,
+        String.raw`Count lattice paths with a binomial coefficient, split them at a point they must pass, and subtract the paths through a forbidden point.`
+      ]
     }
   },
-  review: [
-    "2014 AIME II, Problem 15",
-    "2018 AIME I, Problem 14",
-    "2021 AIME II, Problem 15"
-  ]
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`In how many ways can a $2 \times 6$ board be covered by $1 \times 2$ dominoes?`, answer: "13",
+        solution: String.raw`The left end is covered by one vertical domino, leaving a $2 \times 5$ board, or by two horizontal dominoes stacked, leaving a $2 \times 4$ board. So $t_n = t_{n-1} + t_{n-2}$, with $t_1 = 1$ and $t_2 = 2$, and the values are $1, 2, 3, 5, 8, 13$.` },
+      { q: String.raw`How many paths from $(0, 0)$ to $(4, 3)$, in unit steps right or up, avoid the point $(2, 1)$?`, answer: "17",
+        solution: String.raw`There are $\binom{7}{3} = 35$ paths in all. A path through $(2, 1)$ is a path to $(2, 1)$, of which there are $\binom{3}{1} = 3$, followed by a path from $(2, 1)$ to $(4, 3)$, of which there are $\binom{4}{2} = 6$, so $18$ paths pass through it and $35 - 18 = 17$ avoid it. Filling the grid with $0$ at $(2, 1)$ gives $17$ as well.` },
+      { q: String.raw`A frog starts at $(0, 0)$ and each jump moves it by $(2, 1)$, $(1, 2)$, $(-1, -2)$ or $(-2, -1)$. Can it reach $(4, 4)$?`,
+        solution: String.raw`Every jump changes $x + y$ by $3$ or by $-3$, so $x + y$ stays a multiple of $3$. At $(4, 4)$ it would be $8$, which is not a multiple of $3$, so the frog can never get there.` },
+      { q: String.raw`Two players take turns removing $1$, $3$ or $4$ stones from a pile, and the player who takes the last stone wins. For how many starting sizes from $1$ to $20$ does the first player lose with best play?`, answer: "5",
+        solution: String.raw`A pile of $0$ is a loss for the player to move. A position is a loss when every move leads to a win, and a win when some move leads to a loss. Labeling $0, 1, 2, \ldots$ in order gives L, W, L, W, W, W, W, L, W, L, and from there the labels repeat with period $7$: the losing sizes are those leaving remainder $0$ or $2$ on division by $7$. From $1$ to $20$ they are $2, 7, 9, 14, 16$, so there are $5$.` },
+      { q: String.raw`How many strings of $7$ letters, each $A$, $B$ or $C$, have no two $A$s next to each other?`, answer: "1224",
+        solution: String.raw`Use two states: $a_n$ strings of length $n$ that end in $A$, and $b_n$ that end in $B$ or $C$. An $A$ can follow only a string ending in $B$ or $C$, so $a_n = b_{n-1}$; a $B$ or $C$ can follow anything, so $b_n = 2(a_{n-1} + b_{n-1})$. From $a_1 = 1$, $b_1 = 2$ the totals $a_n + b_n$ for $n = 1, \ldots, 7$ are $3, 8, 22, 60, 164, 448, 1224$.` }
+    ],
+    problems: [
+      "2000 AMC 10, Problem 17"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2024 AMC 10B, Problem 16",
+      "2012 AMC 10B, Problem 25",
+      "2004 AIME I, Problem 15",
+      "2004 AIME II, Problem 15",
+      "2014 AIME II, Problem 15",
+      "2018 AIME I, Problem 14",
+      "2021 AIME II, Problem 15"
+    ]
+  }
 };
