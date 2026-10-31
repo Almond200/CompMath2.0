@@ -911,3 +911,91 @@ See `MIGRATION-NOTES.md` for the full answers.
 - Serve pages with `python3 -m http.server 8765`, started and killed by PID inside one command, after `curl -s -o /dev/null -w '%{http_code}' localhost:8765/` prints `000` (the port is free). Never `pkill -f http.server`, which kills the calling shell.
 - `node tools/check-pages.js '#/f/<id>' ...` prints only light 1280 rows and FAIL rows, so no FAIL means all four modes passed.
 - **The search index in a cloud chat:** test `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights also come from `cas-server.xethub.hf.co`), then `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` (the CPU-only torch first: the default GPU build is several GB and stalled on 2026-10-30) and `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Otherwise it is rebuilt on the Mac. Then the eval (`tools/search-eval.html`, at least 160/187) and `MathSemantic.info().cards` equal to the card count.
+
+## 14. Learn: lessons, checks and problem sets (PLAN step L3, 2026-10-31)
+
+The rules for the Learn space. What each book, chapter and lesson holds is in `LEARN-OUTLINE.md`; the plan is `PLAN.md`; the owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`.
+
+**The shelf** (`js/data/learn/shelf.js`) is generated from `LEARN-OUTLINE.md` by `tools/build-learn-shelf.py`, and is never edited by hand.
+- It holds the book ids, the chapter codes, titles and levels, and the lesson codes and titles.
+- `gates.sh` fails when it drifts from the outline.
+- A lesson's title is changed in the outline, then the shelf is rebuilt.
+
+**Chapter files.** A written chapter is one file, `js/data/learn/<book-id>/<code>.js` (for example `aime-number-theory/n3.js`), loaded from `index.html`. It holds:
+
+```js
+window.MATH_LEARN = window.MATH_LEARN || {};
+window.MATH_LEARN["N3"] = {
+  lessons: {
+    "N3.1": {
+      prereq: ["modular-basics"],   // cards assumed (links only)
+      cards: ["cycle-hunting"],     // cards taught: the drawer offers them
+      body: String.raw`...`,        // the lesson prose (format below)
+      checks: [{ q: String.raw`...`, answer: "3", why: String.raw`...` }],
+      problems: ["2003 AMC 10A, Problem 16", "..."]   // problem refs, in rising order
+    }
+  },
+  review: ["2008 AMC 10A, Problem 24", "..."]
+};
+```
+
+The code and title of each lesson come from the shelf, never from this file. A chapter with no file shows its lessons as "Not written yet".
+
+**The lesson prose** follows the write-up prose rules (§2). It is plain paragraphs, with:
+- `$...$` and `$$...$$` for math;
+- `[[card-id]]` for a card link (it opens in the drawer);
+- `### ` for a subheading;
+- `{{check N}}` on a line of its own, to place check N (counting from 1) at that point. Checks without a marker gather after the prose.
+
+A lesson never restates a card's content: it says why the idea is needed and how it connects, and links the card (one fact, one home). Every number is checked by computation before it is written.
+
+**Checks** (LQ5) are answered by typing with the app's math keyboard. The student never types LaTeX.
+- **Keys:** the digits, the decimal point, `+`, `−`, `×`, `÷` (a fraction), `^`, `√`, `π`, brackets, a comma (for a list of answers), backspace and clear.
+- **Display:** the box shows the answer typeset as it is built.
+- **Stored form:** the plain expression grammar, for example `3/4`, `2sqrt(3)`, `7pi/2`, `-5`, `4, 9`.
+- **Comparison:** `answer` uses the same grammar, and is compared by value (within $10^{-9}$ relative). A comma list is compared as a set, so $\frac68$ and $\frac34$ both count, and so do `9, 4` and `4, 9`.
+- **After the answer:** the result is marked right or wrong and `why` (one line) is shown. Nothing is shown before an answer, since there are no hints.
+
+**Problem lists** (LQ6). A lesson's problems and a chapter's review are shown as an AoPS-style list. Each problem is a block with:
+- its number and the problem's statement, with figures and credit, as on its problem page;
+- a box: "Type your solution, notes and/or work here.";
+- a Show Solution button.
+
+The button is disabled until the box holds some non-blank text. Pressing it shows the strategy, any "Alternatively, ...", and the card chain. These are always hidden before that, whatever the Strategy setting says (the setting governs problem pages in Practice only). There is no Hint link. A link opens the problem's own page.
+
+**Placement.** Each contest problem is listed in exactly one place on the shelf: one lesson's problems or one review. AMC 10/12 twins count as one problem. Other lessons may link to it in their prose. The gate checks this rule, and that every ref is a problem in the database.
+
+**Addresses.**
+
+| Page | Address |
+|---|---|
+| the Learn page | `#/learn` |
+| a book | `#/learn/<book-id>` |
+| a chapter | `#/learn/<book-id>/<code>` (code in lower case, for example `#/learn/aime-number-theory/n3`) |
+| a lesson | `#/learn/<book-id>/<code>/<n>` (`.../n3/1` is N3.1) |
+| a chapter review | `#/learn/<book-id>/<code>/review` |
+
+The old list addresses are kept (§9).
+
+**Progress** (LQ7) is one new `localStorage` key, `mq-learn`, in `PROGRESS_KEYS` (§10), so Export and Import carry it:
+
+```js
+{
+  v: 1,
+  read:     { "<lesson code>": <ms> },
+  checks:   { "<lesson code>#<n>": { a: "<typed answer>", ok: true } },
+  problems: { "<problem slug>": { notes: "<text>", shown: true } }
+}
+```
+
+- Importing it replaces the current value, like the other non-list keys.
+- Reading a lesson, answering a check and attempting a problem are kept apart.
+- A shown solution never counts as solved.
+
+**The gate** is `python3 tools/build-learn-shelf.py --check`, extended as chapter files appear. It checks that:
+- every card id in a chapter file is a card;
+- every problem ref is in the database;
+- no problem is placed twice;
+- every check's `answer` parses in the keyboard grammar;
+- every `{{check N}}` names a check that exists;
+- each written lesson is on the shelf.

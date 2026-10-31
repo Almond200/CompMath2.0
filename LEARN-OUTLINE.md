@@ -8,7 +8,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 - The chapter and lesson titles of all five books are drafted.
 - Every lesson has a first pass of card ids (each id checked to exist; the cards nothing on the shelf places yet are listed in "Coverage" at the end).
 - The pilot, N3 (cycles, exponentiation and order), has full lesson plans and candidate problems.
-- N2 (linear congruences and CRT) has lesson plans and still needs problems.
+- N2 (linear congruences and CRT) has lesson problems, and its review is part-filled.
 - Every other chapter has titles and cards only.
 
 ## How to read this file
@@ -85,7 +85,7 @@ A short bridge that finds gaps and fills them with examples and checks, without 
 | B1.2 Equations and systems: substitution, elimination, symmetry, extraneous roots | `linear-elimination`, `add-all-equations`, `transforming-equations` |
 | B1.3 Useful substitutions: reciprocals, squares, sums and products, repeated blocks | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation` |
 | B1.4 Absolute values, intervals, sign charts, inequality constraints | `absolute-value-rules`, `abs-value-relations`, `sign-chart`, `trivial-inequality` |
-| B1.5 Rates, averages, percents and word-problem setups (added: AMC and AIME problems cite them often) | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
+| B1.5 Rates, averages, percents and word-problem setups | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
 
 ### B2. Polynomial and sequence fundamentals (Core)
 
@@ -256,12 +256,28 @@ Eight chapters. The changes from the first draft are three:
 | N2.5 Compatible congruences with moduli that share factors; counting solutions | `crt-solution-counting` |
 
 **Opening questions and checks (computed):**
-- **N2.1:** solve $7x \equiv 3 \pmod{10}$. The inverse of $7$ is $3$, so $x \equiv 9$.
-- **N2.4:** find $x \equiv 1 \pmod 4$, $x \equiv 4 \pmod{25}$. Answer: $x = 29$. This example comes back in N3.5.
+- **N2.1:** solve $7x \equiv 3 \pmod{10}$. The inverse of $7$ is $3$, so $x \equiv 9$. Check: the inverse of $13$ modulo $22$ is $17$.
+- **N2.2:** $6x \equiv 4 \pmod{10}$ has the solutions $x \equiv 4, 9$ (divide by $\gcd(6, 10) = 2$ to get $3x \equiv 2 \pmod 5$). Check: $6x \equiv 3 \pmod{10}$ has none, since $2 \nmid 3$.
+- **N2.3:** $21x + 15y = 3$ has the solution $(x, y) = (-2, 3)$, and no combination of $21$ and $15$ makes $1$.
+- **N2.4:** find $x \equiv 1 \pmod 4$, $x \equiv 4 \pmod{25}$. Answer: $x = 29$. This example comes back in N3.5. Check: $x \equiv 4 \pmod 9$ and $x \equiv 5 \pmod{11}$ give $x = 49$.
+- **N2.5:** $x^2 \equiv 1 \pmod{1000}$ has $8$ solutions modulo $1000$: $4$ modulo $8$ times $2$ modulo $125$.
 
-**Problems:**
-- Candidates for N2.4 and N2.5 from the `crt` tags: 1993 AIME #6, 2011 AIME II #14, 2012 AIME II #12, 2013 AIME I #11, 2014 AIME I #8, 2017 AIME I #9, 2026 AIME I #8. All are candidates, still to read.
-- N2.1 to N2.3 still need problems.
+**Problems (all read 2026-10-31; each route uses its lesson's idea):**
+
+| Lesson | Problems |
+|---|---|
+| N2.1 | 2025 AMC 12B #5 ($13^{-1} \equiv 17 \pmod{22}$); 2025 AMC 10B #23, twin 2025 AMC 12B #19 ($9$ invertible modulo $14$); 2012 AIME I #15 (a multiplier permutes the seats exactly when it is invertible; challenging) |
+| N2.2 | 2017 AIME I #2 (equal remainders: the modulus divides the differences); 2014 AMC 12B #7 (reduce the divisibility to $k + 1 \mid 30$) |
+| N2.3 | 2006 AMC 10A #22, twin 2006 AMC 12A #14 ($\gcd(300, 210) = 30$ and a Bézout pair); 2000 AMC 12 #16 (the solutions of $4r - 3c = 1$ inside the grid) |
+| N2.4 | 1993 AIME #6 (three conditions joined into $n \equiv 495 \pmod{990}$); 2014 AIME I #8 ($N(N - 1)$ splits $16$ and $625$ between consecutive integers) |
+| N2.5 | 2012 AIME I #10 (two square roots modulo $125$, combined with modulo $8$); 2012 AIME II #12 (CRT makes every residue triple one residue modulo $1001$); 2011 AIME II #14 (bijections modulo $2$, $3$, $5$, joined by CRT) |
+
+**N2 review (to fill to 8 to 12):**
+- 2013 AIME I #11 (read: linear congruences in $k$ modulo $9$, $11$, $13$, then CRT);
+- 2017 AIME I #9 (read: $100 \equiv 1 \pmod{99}$, then CRT modulo $9$ and $11$);
+- 2026 AIME I #8 (read: CRT turns $\equiv 5 \pmod{12}$ into conditions mod $3$ and $4$ on divisor exponents; assumes `number-of-divisors`);
+- 2001 AIME I #11 (read: two numberings of a grid, solved through integrality modulo $31$);
+- 2026 AIME II #5 (read: it ends in the linear Diophantine equation $3r - 5b = 2$; a challenge, assuming `hypergeometric` from C6.3).
 
 ### N3. Cycles, exponentiation and order (Core): the pilot
 
@@ -288,9 +304,10 @@ Eight chapters. The changes from the first draft are three:
   - $2^n \bmod 7$ runs $2, 4, 1$, so $2^{100} \equiv 2 \pmod 7$;
   - $2^{10} \bmod 12$ is $4$ (non-coprime: the cycle $4, 8$ starts at $n = 2$).
 - **Problems:**
-  - 2003 AMC 10A #16, the units digit of $13^{2003}$ (candidate);
-  - 2017 AIME I #3 (read: the units digits of triangular numbers repeat with period $20$).
-- **Moved:** 2025 AMC 12B #9 (the tens digit of $6^{6^6}$) works modulo $100$ with a base not coprime to it, so it moves to N3.5 (candidate).
+  - 2003 AMC 10A #16 (read: the units digits of $3^n$ run $3, 9, 7, 1$; choice C);
+  - 2023 AMC 10B #8 (read: two last-digit cycles of period $4$);
+  - 2017 AIME I #3 (read: the units digits of triangular numbers repeat with period $20$);
+  - 2025 AMC 12B #9 (read: $6^n \bmod 100$ repeats every $5$ only from $6^2$ on, eventual periodicity with a base not coprime to $100$; challenging).
 
 #### N3.2 Fermat's Little Theorem: prime modulus and coprimality
 
@@ -301,7 +318,7 @@ Eight chapters. The changes from the first draft are three:
   - $5^{1000} \equiv 1 \pmod{13}$, since $5^4 \equiv 1$ and $4 \mid 1000$;
   - say why Fermat does not apply to $26^{100} \bmod 13$.
 - **Problems:**
-  - 2017 AMC 10B #14 (candidate);
+  - 2017 AMC 10B #14 (read: $N^{16} \equiv 1 \pmod 5$ unless $5 \mid N$; choice D);
   - 1989 AIME #9 (read: $n^5 \equiv n \pmod 5$, with CRT from N2 and a size bound);
   - 2002 AIME I #7 (read: $10^6 \equiv 1 \pmod 7$; it also needs the generalized binomial expansion that its statement gives, so it is marked a challenge).
 
@@ -328,7 +345,7 @@ Eight chapters. The changes from the first draft are three:
   - $\varphi(1000) = 400$;
   - $7^{2026} \bmod 100$ is $49$ (the order of $7$ is $4$).
 - **Problems:**
-  - 2024 AMC 10B #18, with its twin 2024 AMC 12B #14 (candidate).
+  - 2024 AMC 10B #18, with its twin 2024 AMC 12B #14 (read: $\varphi(125) = 100$ gives remainder $1$, and multiples of $5$ give $0$; choice B).
 
 #### N3.5 Orders with CRT; bases not coprime to the modulus
 
@@ -353,28 +370,27 @@ Eight chapters. The changes from the first draft are three:
   - for three short prompts, name the route before computing.
 - **Problems:**
   - 2011 AIME I #11 (read: the order of $2$ mod $125$ is $100$, joined by CRT with mod $8$; answer $7$);
-  - 2018 AIME I #11 (read: the order of $3$ is $5$ mod $121$ and $39$ mod $169$, joined by lcm; answer $195$);
-  - 2025 AMC 12B #9 (candidate).
+  - 2018 AIME I #11 (read: the order of $3$ is $5$ mod $121$ and $39$ mod $169$, joined by lcm; answer $195$).
 
-#### N3 chapter review (to fill to 8 to 12)
+#### N3 chapter review (8 problems; every one read)
 
-| Problem | Status | What it needs |
-|---|---|---|
-| 2021 AIME II #13 | read | $1000 = 8 \cdot 125$, the order of $2$ mod $125$ |
-| 2021 AIME I #14 | read | Fermat and a primitive root; $n = \operatorname{lcm}(42, 43, 46, 47)$; `primitive-roots` is linked as a challenge, since it is N8 |
-| 2016 AMC 12B #25 | read | the order of $2$ mod $19$ is $18$; a challenge, needing `linear-recurrence` (A3.1) |
-| 2015 AMC 12A #22 | candidate | recursion, a cycle and CRT |
-| 2025 AIME II #13 | candidate | — |
+| Problem | What it needs |
+|---|---|
+| 2008 AMC 10A #24, twin 2008 AMC 12A #15 | the last digits of $2^n$ and of squares; the exponent is itself a large number |
+| 2001 AIME II #10 | the order of $10$ modulo $1001$ is $6$ |
+| 2004 AIME II #10 | powers of $2$ cycle modulo $9$ with period $6$, then a count |
+| 2021 AIME II #13 | $1000 = 8 \cdot 125$, and the order of $2$ mod $125$ |
+| 2021 AIME I #14 | Fermat, and a primitive root; $n = \operatorname{lcm}(42, 43, 46, 47)$ (a challenge: `primitive-roots` is N8, linked) |
+| 2016 AMC 12B #25 | the order of $2$ mod $19$ is $18$ (a challenge, assuming `linear-recurrence` from A3.1) |
+| 2015 AMC 12A #22 | a recursion whose terms repeat modulo $2$ and modulo $3$, joined by CRT (a challenge, assuming `recursive-counting` from C5.1) |
+| 2025 AIME II #13 | $2^{2^k}$ modulo $1000$ through Euler and CRT, after a rational recursion (challenging) |
 
 **Moved out of N3:**
 - 2020 AIME I #12 needs LTE, so it goes to N4.4.
 - 2024 AIME I #13 needs Hensel lifting, so it goes to N8.2.
 - 2023 AIME II #15 needs inverses and binary expansions, so it goes to the N6 review.
 
-**Still to do for the pilot:**
-- read every candidate;
-- fill the review;
-- check that the prerequisites cover every step of every chosen problem.
+**Pilot status (2026-10-31):** every N3 problem has been read and placed, and the review is full. N2's review still needs 3 to 7 more problems; candidates come from the `crt`, `modular-inverse` and `euclids-lemma` cards (1992 AIME #11 and 1994 AIME #12 cite `euclids-lemma`, still to read).
 
 ### N4. Valuations and factorial divisibility (Core II)
 

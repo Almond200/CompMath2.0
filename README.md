@@ -22,7 +22,8 @@ Every card is one of four kinds, and each kind has its own space, switched from 
 | **Formulas** | one fact: a theorem, identity or standard result | What is true? | blue |
 | **Methods** | one reusable move, made once you are inside a problem | What can I do? | teal |
 | **Patterns** | one recurring problem shape, recognizable from the statement | What am I looking at? | amber |
-| **Practice** | real contest problems, plus the study lists | Can I use it? | purple |
+| **Learn** | textbooks (books, chapters, lessons) and the study lists | What should I learn next? | green |
+| **Practice** | real contest problems | Can I use it? | purple |
 
 A pattern *suggests* methods, a method *uses* formulas, and problems practise all three
 (derived from their tags). The test that separates the middle two: a pattern describes a whole
@@ -47,9 +48,13 @@ CONVENTIONS §0 has the full model.
 - **Problem pages** (`#/problem/<slug>`): a subject chip and the contest, the statement with its
   figures and credit line (AMC and AIME problems; other contests link out), then "How this problem
   works", which holds the strategy and the chain of cards the problem uses (Pattern → Method → Formulas).
-- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, your lists
-  (and a box to make one), every year of every contest, and the study lists. A contest year
-  (`#/problems/aime/2024`) and a single list (`#/list/<id>`) open as plain pages with a link back.
+- **Learn** (`#/learn`, owner 2026-10-31): the Textbooks shelf (five books, each chapter marked Core,
+  Core II or Extension, with its lesson titles; drawn from `js/data/learn/shelf.js`, which
+  `tools/build-learn-shelf.py` builds from `LEARN-OUTLINE.md`), then Lists: your lists (and a box to
+  make one) and the study lists. A single list (`#/list/<id>`) opens as a plain page with a link
+  back to Learn. `#/lists` and the toolbar's Lists button open Learn at its Lists.
+- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, and every
+  year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link back.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
   and special pages.
@@ -289,6 +294,22 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The pilot's problems chosen, and the Learn spec written (2026-10-31; PLAN L2 and L3).**
+  - **N3** (cycles, exponentiation and order): every problem has been read and placed. Each lesson has 2 to 4 problems, among them 2003 AMC 10A #16, 2023 AMC 10B #8, 2025 AMC 12B #9 (eventual periodicity modulo $100$), 2017 AMC 10B #14 and 2024 AMC 10B #18. The review holds 8 problems: 2008 AMC 10A #24, 2001 AIME II #10, 2004 AIME II #10, 2021 AIME II #13, 2021 AIME I #14, 2016 AMC 12B #25, 2015 AMC 12A #22 and 2025 AIME II #13. The challenges are marked with the card each one needs from later chapters.
+  - **N2** (linear congruences and CRT): problems for all five lessons, from 2025 AMC 12B #5 to 2011 AIME II #14, and five review problems. New checks are computed: $13^{-1}\equiv17\pmod{22}$; $6x\equiv4\pmod{10}$ gives $x\equiv4,9$; $21(-2)+15(3)=3$; CRT gives $49$; $x^2\equiv1\pmod{1000}$ has $8$ roots.
+  - **CONVENTIONS §14** is the Learn spec, covering:
+    - chapter files in `js/data/learn/<book>/<code>.js`;
+    - the lesson prose format, with `[[card]]` links and `{{check N}}` markers;
+    - the math keyboard's keys and its answer grammar, compared by value and as a set for lists;
+    - the AoPS-style problem list, whose Show Solution works only after something is written;
+    - the addresses, the `mq-learn` progress key carried by Export and Import, and the gate.
+  - The shelf generator and the coverage tool no longer mistake a problem table's "| N2.1 |" rows for lessons.
+- **Learn is a space (2026-10-31, owner; PLAN step L4).** The top bar reads Formulas, Methods, Patterns, Learn, Practice, and Learn has its own colour (green) in light and dark.
+  - The Learn page (`#/learn`) holds the Textbooks shelf: the five books, their 41 chapters with level badges, and the titles of the 187 planned lessons, each marked "Not written yet".
+  - Below the shelf are the Lists: your lists, the box to make one, and every study list. These moved from Practice, which keeps the random-problem picker and the contests, plus a one-line link to Learn → Lists.
+  - Old addresses still work: `#/lists` opens Learn, and `#/list/<id>` opens as before, its back link now going to Learn's Lists. The toolbar's Lists button and the home page's "Make a list" and "Open a list" land there too.
+  - The shelf is generated: `js/data/learn/shelf.js` comes from `LEARN-OUTLINE.md` through `tools/build-learn-shelf.py`, and `gates.sh` fails if the two drift.
+  - Checked in Chromium at 1280 and 375 px, light and dark: 0 KaTeX errors (lesson titles with math typeset) and no overflow. The redirects, the back link, list creation, and the Lists button's scroll were all exercised.
 - **The Learn outline rebuilt from the owner's curriculum proposal (2026-10-31).** `LEARN-OUTLINE.md` now maps five books, 41 chapters and 182 lessons:
   - the AMC → AIME Bridge, B1 to B6;
   - AIME Algebra, A1 to A9;
