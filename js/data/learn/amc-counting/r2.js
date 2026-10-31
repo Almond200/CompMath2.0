@@ -114,7 +114,7 @@ For an expected count, write the count as a sum of indicators, one for each plac
 Write the quantity as a sum, find each part's expectation, and add. The last lesson of the chapter collects logic puzzles.`,
       related: [
         { card: "indicator-variables", note: String.raw`expected counts as sums of probabilities (R3.4).` },
-        { card: "weighted-average", note: String.raw`an expected value is a weighted average (L1.5).` },
+        { card: "weighted-average", note: String.raw`an expected value is a weighted average (L2.5).` },
         { card: "states-recursion-prob", note: String.raw`expected waiting times by states (R3.5).` }
       ],
       exercises: [
@@ -144,8 +144,8 @@ In [[magic-squares|magic squares]], every row, column and diagonal has the same 
 Assume, follow, and check; and count totals before filling grids. The next chapter adds the counting and probability of the AMC 12.`,
       related: [
         { card: "casework-method", note: String.raw`splitting a puzzle into cases (R1.2).` },
-        { card: "organized-listing", note: String.raw`listing possibilities in order (L3.3).` },
-        { card: "averages-to-totals", note: String.raw`totals behind magic sums (L1.5).` }
+        { card: "organized-listing", note: String.raw`listing possibilities in order .` },
+        { card: "averages-to-totals", note: String.raw`totals behind magic sums (L2.5).` }
       ],
       exercises: [
         { q: String.raw`The numbers $2, 3, \ldots, 10$ fill a $3 \times 3$ magic square. What is the center number?`, answer: "6",

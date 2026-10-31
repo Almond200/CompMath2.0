@@ -120,7 +120,7 @@ The [[digit-count|number of digits]] of $n$ is $\lfloor\log_{10} n\rfloor + 1$; 
 
 Write numbers through their digits and the base, and track carries. The last lesson of the chapter treats decimals and calendars.`,
       related: [
-        { card: "log-rules", note: String.raw`logarithms count digits (L2.4).` },
+        { card: "log-rules", note: String.raw`logarithms count digits (L9.2).` },
         { card: "modular-basics", note: String.raw`digit sums modulo $9$ (M2.1).` },
         { card: "repeating-decimals", note: String.raw`digits after the decimal point (M1.5).` }
       ],
@@ -156,7 +156,7 @@ Factor denominators, convert repeating blocks over nines, and reduce day counts 
       related: [
         { card: "multiplicative-order", note: String.raw`the period of a repeating decimal as an order (M3.2).` },
         { card: "modular-basics", note: String.raw`counting modulo $7$ (M2.1).` },
-        { card: "geometric-series", note: String.raw`why a repeating block is that block over nines (L3.2).` }
+        { card: "geometric-series", note: String.raw`why a repeating block is that block over nines (L6.3).` }
       ],
       exercises: [
         { q: String.raw`Write $0.\overline{36}$ as a fraction in lowest terms $\tfrac mn$ and find $m + n$.`, answer: "15",

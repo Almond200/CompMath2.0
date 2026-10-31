@@ -183,7 +183,7 @@ The [[trig-area|sine area formula]] $\tfrac12ab\sin C$ needs two sides and the i
 Use the laws for sides and angles and Heron for area from sides. The next chapter treats polygons, coordinates and solids.`,
       related: [
         { card: "circumradius-area", note: String.raw`$R = \tfrac{abc}{4K}$ (S3.4).` },
-        { card: "angle-addition", note: String.raw`more trigonometric identities (L7.1).` },
+        { card: "angle-addition", note: String.raw`more trigonometric identities (L12.2).` },
         { card: "inradius-area", note: String.raw`the inradius from the area (S1.5).` }
       ],
       exercises: [
