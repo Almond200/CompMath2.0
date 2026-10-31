@@ -77,7 +77,7 @@ Other forbidden positions are handled the same way. Name the forbidden events (a
 
 Use the derangement numbers when every object has one forbidden place, and inclusion-exclusion over forbidden events in general. The next lesson counts "exactly" and "at most" conditions, and subsets that avoid a relation.`,
       related: [
-        { card: "expected-fixed-points", note: String.raw`a random permutation has on average one fixed point, whatever $n$ is (C7.2).` },
+        { card: "expected-fixed-points", note: String.raw`a random permutation has on average one fixed point, whatever $n$ is (C7.3).` },
         { card: "counting-blocks", note: String.raw`gluing a forbidden adjacent pair into one block to count arrangements where it happens.` },
         { card: "recursive-counting", note: String.raw`the recursion for $D_n$ comes from asking where the first object goes (C5.2).` }
       ],

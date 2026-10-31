@@ -1545,19 +1545,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C7.1",
-      "title": "Linearity of expectation with indicators"
+      "title": "Introduction"
      },
      {
       "code": "C7.2",
-      "title": "Expected counts and contributions"
+      "title": "Linearity of expectation with indicators"
      },
      {
       "code": "C7.3",
-      "title": "Conditional expectation in a small process"
+      "title": "Expected counts and contributions"
      },
      {
       "code": "C7.4",
+      "title": "Conditional expectation in a small process"
+     },
+     {
+      "code": "C7.5",
       "title": "Waiting times and recursive expectations"
+     },
+     {
+      "code": "C7.6",
+      "title": "Summary"
      }
     ]
    },

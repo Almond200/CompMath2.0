@@ -80,7 +80,7 @@ When conditions are stated as percentages of different groups, translate each in
 Restrict the sample space to what is known, use a population of convenient size for reversed conditions, and multiply along the stages of a process. The next lesson treats independent trials and repeated experiments.`,
       related: [
         { card: "independent-events", note: String.raw`events whose conditional probabilities equal their plain ones (C6.4).` },
-        { card: "total-expectation", note: String.raw`the same splitting into cases for expected values (C7.3).` },
+        { card: "total-expectation", note: String.raw`the same splitting into cases for expected values (C7.4).` },
         { card: "casework-method", note: String.raw`the law of total probability is casework with weights.` }
       ],
       exercises: [

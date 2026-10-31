@@ -77,8 +77,8 @@ For the [[product-of-uniforms|product of two uniform variables]] $X$ and $Y$ on 
 These tools are needed only when the region or the quantity is not a simple polygon or average. The last lesson collects further processes and games.`,
       related: [
         { card: "geometric-probability", note: String.raw`areas of regions for one or two uniform variables (C6.6).` },
-        { card: "tail-sum-expectation", note: String.raw`expected values of maxima and minima from tails, the discrete version (C7.2).` },
-        { card: "indicator-variables", note: String.raw`writing a count as a sum, the first step in computing its variance (C7.1).` }
+        { card: "tail-sum-expectation", note: String.raw`expected values of maxima and minima from tails, the discrete version (C7.3).` },
+        { card: "indicator-variables", note: String.raw`writing a count as a sum, the first step in computing its variance (C7.2).` }
       ],
       exercises: [
         { q: String.raw`Three numbers are chosen independently and uniformly from $[0, 1]$. What is the expected value of the smallest?`, answer: "1/4",

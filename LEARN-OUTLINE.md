@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- C1 to C6 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- C1 to C7 are the chapters in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -969,7 +969,7 @@ Eight chapters. The changes from the first draft are three:
 - 2017 AIME I #9 (read: $100 \equiv 1 \pmod{99}$, then CRT modulo $9$ and $11$);
 - 2026 AIME I #8 (read: CRT turns $\equiv 5 \pmod{12}$ into conditions mod $3$ and $4$ on divisor exponents; assumes `number-of-divisors`);
 - 2001 AIME I #11 (read: two numberings of a grid, solved through integrality modulo $31$);
-- 2026 AIME II #5 (read: it ends in the linear Diophantine equation $3r - 5b = 2$; a challenge, assuming `hypergeometric` from C6.3).
+- 2026 AIME II #5 (read: it ends in the linear Diophantine equation $3r - 5b = 2$; a challenge, assuming `hypergeometric` from C6.4).
 
 ### N3. Cycles, exponentiation and order (Core): the pilot
 
@@ -1307,10 +1307,12 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 
 | Lesson | Cards |
 |---|---|
-| C7.1 Linearity of expectation with indicators | `expected-value`, `indicator-variables` |
-| C7.2 Expected counts and contributions | `expected-fixed-points`, `tail-sum-expectation` |
-| C7.3 Conditional expectation in a small process | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
-| C7.4 Waiting times and recursive expectations | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
+| C7.1 Introduction | no card (the chapter's opening page: expected value, linearity and indicators, conditioning, waiting times, with comprehension problems) |
+| C7.2 Linearity of expectation with indicators | `expected-value`, `indicator-variables` |
+| C7.3 Expected counts and contributions | `expected-fixed-points`, `tail-sum-expectation` |
+| C7.4 Conditional expectation in a small process | `total-expectation` (assumes `states-recursion-prob`, taught in C5.7) |
+| C7.5 Waiting times and recursive expectations | `geometric-distribution`, `gamblers-ruin`, `turn-based-games` |
+| C7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C7.7 Review Problems and C7.8 Challenge Problems |
 
 ### C8. Graphs, grids and combinatorial structures (Core II)
 

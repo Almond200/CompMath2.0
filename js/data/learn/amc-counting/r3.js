@@ -144,7 +144,7 @@ In [[turn-based-games|turn-based games]] where players alternate and the first s
 Set one unknown per state, condition on the first step, and use the restart equation for alternating games. The last lesson of the chapter treats continuous probability.`,
       related: [
         { card: "recursive-counting", note: String.raw`the counting version of first-step equations (R1.5).` },
-        { card: "gamblers-ruin", note: String.raw`random walks between two barriers (C7.4).` },
+        { card: "gamblers-ruin", note: String.raw`random walks between two barriers (C7.5).` },
         { card: "tail-sum-expectation", note: String.raw`expected waiting times from tails (R3.4).` }
       ],
       exercises: [
