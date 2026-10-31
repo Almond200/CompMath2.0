@@ -2310,15 +2310,15 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
   border: 1px solid var(--border-light); background: var(--bg-panel);
 }
 .prob-chain h4 { margin: 0 0 10px; }
-/* How this problem works: its heading, and beside it a small + Show / - Hide (owner, 2026-10-31). */
+/* How this problem works: its heading, and beside it a small + Show / - Hide (owner, 2026-10-31).
+   It and the new-list + keep their colour on hover (owner). */
 .chain-head { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; }
 .chain-head h4 { margin: 0; }
 .chain-body[hidden] { display: none; }
 .chain-head + .chain-body[hidden] { margin: 0; }
 .prob-chain:has(.chain-body[hidden]) .chain-head { margin-bottom: 0; }
 .chain-toggle { display: inline-flex; align-items: center; height: 24px; padding: 0 9px; border: none; border-radius: 6px; background: var(--space-soft, var(--bg-panel)); color: var(--space, var(--accent));
-  font: inherit; font-size: 12.5px; font-weight: 750; line-height: 1; cursor: pointer; transition: background 0.12s, color 0.12s; }
-.chain-toggle:hover, .chain-toggle:focus-visible { background: var(--space, var(--accent)); color: var(--bg); }
+  font: inherit; font-size: 12.5px; font-weight: 750; line-height: 1; cursor: pointer; }
 .chain-step { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .chain-label {
   width: 78px; flex: none; font-size: 10.5px; font-weight: 750; letter-spacing: 0.08em;
@@ -2896,8 +2896,7 @@ body.is-landing .content { padding: 0 0 70px; }
 /* New list: a small green + beside the "Your lists" heading (owner, 2026-10-31). */
 #pr-lists .pl-mine-h { display: flex; align-items: center; gap: 8px; }
 #pr-lists .pl-new-btn { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; padding: 0; border-radius: 6px; border: none;
-  background: var(--cs-learn); color: var(--c-learn); font-size: 17px; font-weight: 800; line-height: 1; cursor: pointer; transition: background 0.12s, color 0.12s; }
-#pr-lists .pl-new-btn:hover, #pr-lists .pl-new-btn:focus-visible { background: var(--c-learn); color: var(--bg); }
+  background: var(--cs-learn); color: var(--c-learn); font-size: 17px; font-weight: 800; line-height: 1; cursor: pointer; }
 /* A user list's title renames in place: a press makes it editable, with an underline while typing. */
 h2[data-list-title] { cursor: text; border-radius: 6px; }
 h2[data-list-title]:hover { background: var(--bg-panel); }
