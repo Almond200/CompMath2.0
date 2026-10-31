@@ -2241,6 +2241,7 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
    language: the panels reuse the key-forms look (pale panel, coloured left edge). */
 .badge-formula { background: #a9bbdc; }
 .badge-problem { background: #c7a8ef; }
+.badge-lesson { background: #a6dc86; }
 
 .book-eyebrow {
   font-size: 11px; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase;
@@ -2550,7 +2551,6 @@ body[data-space="practice"] .hp-btn-soft:hover { border-color: var(--space); col
 .rand-btns { display: flex; flex-wrap: wrap; gap: 8px; }
 
 /* ---------- Front page ---------- */
-body.is-landing .topbar { display: none; }
 body.is-landing .nav-toggle { display: none; }
 body.is-landing .layout { max-width: none; }
 body.is-landing .content { padding: 0 0 70px; }
@@ -3150,7 +3150,7 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 
 /* Before the first render on the front page, the top bar and sidebar stay hidden (see the
    pre-paint script in index.html), so they do not flash. */
-html.pre-landing .topbar, html.pre-landing .sidebar { display: none; }
+html.pre-landing .sidebar { display: none; }
 /* Card size: Regular is two across on a laptop (three on a wide screen), Large one across on
    a laptop (two on a wide screen), with room for every form of a formula. */
 .content .cards { grid-template-columns: repeat(auto-fill, minmax(min(440px, 100%), 1fr)); }
@@ -3717,45 +3717,68 @@ html[data-density="spacious"] .page-tools { margin: -24px 0 -140px; padding-top:
 .ac-w.ac-ring { fill: rgba(128, 128, 128, 0.16); }
 .ac-bar.ac-top { margin: 0 0 10px; justify-content: center; }
 
-/* ---------- The front page (owner, 2026-10-31) ---------- */
-.home { max-width: 1180px; padding-top: 44px; }
-.home-hero { position: relative; text-align: center; max-width: 760px; margin: 0 auto; }
-.home-hero .hub-gear { position: absolute; top: -26px; right: -180px; }
-@media (max-width: 1160px) { .home-hero .hub-gear { right: 0; top: -30px; } }
-.home-logo .brand-sigma { font-size: 54px; line-height: 1; }
-.home-name { margin: 6px 0 0; font-size: 34px; font-weight: 820; letter-spacing: -0.025em; color: var(--text); }
-.home-sub { margin: 8px auto 0; max-width: 600px; font-size: 15px; line-height: 1.55; color: var(--text-dim); }
-.home .home-search { margin-top: 22px; }
-.home .home-search input { padding: 15px 20px; font-size: 16.5px; border-radius: 14px; }
-.home .home-search button { border-radius: 14px; padding: 0 24px; }
-.home-spaces { margin-top: 34px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.home-spaces .hs-tile { padding: 14px 15px 13px; gap: 3px; }
-.home-spaces .hs-what { font-size: 12.5px; line-height: 1.45; color: var(--text-dim); flex: 1 1 auto; }
-@media (max-width: 1000px) { .home-spaces { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 640px) {
-  .home { padding-top: 34px; }
-  .home-spaces { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .home-spaces .hs-tile:last-child { grid-column: 1 / -1; }
-  .home-spaces .hs-what { display: none; }
-  .home-name { font-size: 25px; }
-  .home-sub { font-size: 13.5px; }
-}
-.home-row { margin-top: 16px; display: grid; gap: 16px; align-items: stretch; }
-.home-row-a { margin-top: 26px; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
-.home-row-b { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.home-row-c { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); }
-.home-row > .hp-panel, .home-stack > .hp-panel { margin: 0; }
-.home-stack { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-@media (max-width: 980px) { .home-row-a, .home-row-b, .home-row-c { grid-template-columns: minmax(0, 1fr); } }
-.home-panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
-.home-panel-head .hp-label { margin-bottom: 10px; }
-.home-learn .hp-link { color: var(--c-learn); }
-.home-learn .bk-shelf-s { gap: 12px; }
-.home-continue { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 11px 14px; border-radius: 10px;
+/* ---------- The front page (owner, 2026-10-31, second version) ----------
+   Dense, like a reference site's front page: the top bar carries the spaces and the search, then
+   one strip of the spaces and two columns of sections divided by hairlines, not boxes. */
+body.is-landing .content { padding: 0 0 50px; }
+.home { max-width: 1180px; margin: 0 auto; padding: 22px 24px 0; }
+.hm-intro { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.hm-name { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+.hm-sub { margin: 0; font-size: 13.5px; color: var(--text-dim); }
+.hm-spaces { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.hm-space { display: flex; flex-direction: column; gap: 1px; padding: 9px 14px 10px; text-decoration: none; color: var(--text); border-left: 1px solid var(--border); border-top: 3px solid var(--tint); }
+.hm-space:first-child { border-left: none; }
+.hm-space:hover { background: var(--tint-soft); }
+.hm-space-name { font-size: 15px; font-weight: 780; color: var(--tint); }
+.hm-space-ask { font-size: 12.5px; color: var(--text-dim); }
+.hm-space-n { font-size: 11.5px; color: var(--text-faint); }
+.hm-cols { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 0 36px; margin-top: 6px; align-items: start; }
+.hm-main, .hm-rail { min-width: 0; }
+/* Every section, ours or a shared panel's, is a heading over a hairline: no box. */
+.home .hm-sec, .home .hp-panel { margin: 0; padding: 14px 0 12px; background: none; border: none; border-radius: 0; border-top: 1px solid var(--border); box-shadow: none; }
+.hm-main > :first-child, .hm-rail > :first-child { border-top: none; }
+.home .hm-h, .home .hp-label { margin: 0 0 8px; font-size: 11.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
+.hm-h-row { display: flex; justify-content: space-between; align-items: baseline; }
+.hm-more { font-size: 12.5px; font-weight: 650; color: var(--c-learn); text-decoration: none; }
+.home .hp-daily { cursor: pointer; }
+.home .hp-daily:hover { background: none; }
+.home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 8px; }
+.home .rc-row { padding-top: 6px; padding-bottom: 6px; }
+.home .pg-row { padding-top: 6px; padding-bottom: 6px; }
+.home .dyk { font-size: 14px; }
+.home .katex-display { overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
+.home .hp-click:hover { background: none; }
+.home .hp-click:hover .rc-name { color: var(--accent); }
+.hm-books { display: flex; flex-direction: column; }
+.hm-book { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; align-items: center; gap: 10px; padding: 5px 0; text-decoration: none; color: var(--text); }
+.hm-book .bk-cover { width: 30px; padding: 3px; border-radius: 2px 5px 5px 2px; box-shadow: inset 3px 0 0 rgba(0, 0, 0, 0.22), 0 2px 5px rgba(0, 0, 0, 0.25); }
+.hm-book .bk-series, .hm-book .bk-name { display: none; }
+.hm-book .bk-motif { width: 100%; margin: 0; stroke-width: 5; }
+.hm-book-t { font-size: 14px; font-weight: 650; }
+.hm-book:hover .hm-book-t { color: var(--c-learn); }
+.hm-book-n { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+.home-continue { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; padding: 9px 12px; border-radius: 8px;
   background: var(--cs-learn); color: var(--text); text-decoration: none; border: 1px solid transparent; }
 .home-continue:hover { border-color: var(--c-learn); }
 .home-continue-k { flex: 0 0 auto; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-learn); }
 .home-continue-t { flex: 1 1 auto; min-width: 0; font-weight: 650; font-size: 14px; }
 .home-continue-go { color: var(--c-learn); font-weight: 800; }
-@media (max-width: 640px) { .home-continue { flex-wrap: wrap; gap: 4px 10px; } .home-continue-t { flex-basis: 100%; order: 3; } }
-.home-cotd { margin: 6px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); }
+.home-cotd { margin: 4px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--text-dim); }
+@media (max-width: 980px) {
+  .hm-cols { grid-template-columns: minmax(0, 1fr); }
+  .hm-rail > :first-child { border-top: 1px solid var(--border); }
+}
+@media (max-width: 760px) {
+  /* The top bar already shows the five spaces on a phone. */
+  .hm-spaces { display: none; }
+  .home { padding: 16px 16px 0; }
+  .hm-sub { display: none; }
+  .home-continue { flex-wrap: wrap; gap: 4px 10px; }
+  .home-continue-t { flex-basis: 100%; order: 3; }
+}
+
+/* The book view's sidebar stays put while the page scrolls: the page's bottom space sits inside
+   the grid (on the main column), so the end of the grid never pushes the sticky sidebar up. */
+.content:has(> .lesson-page) { padding-bottom: 0; }
+.lesson-page .lp-main { padding-bottom: 90px; }
+.lesson-page .lp-grid { min-height: calc(100vh - var(--topbar-h) - 70px); }

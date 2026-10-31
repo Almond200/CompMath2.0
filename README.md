@@ -297,6 +297,14 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **The home page, second version, and Learn's recents (2026-10-31, owner: "I don't like all of the big boxes and open space").**
+  - The home page now keeps the app's top bar (spaces and search), like every other page, and reads like a reference site's front page:
+    - a one-line title, then one strip of the five spaces;
+    - a main column (Continue, with "Continue learning" and the recently opened items; the problem of the day; newest cards; practice at a glance);
+    - a narrow rail (the five textbooks as rows with a small cover; card of the day; did you know; your library).
+    - Sections are headings over hairlines, not boxes. On a phone the strip is hidden (the top bar has the spaces), and a wide displayed equation scrolls instead of being cut off.
+  - **Recently opened** now records lessons and books: Learn shows them under its heading, and the home page's Continue lists them with the cards and problems.
+  - **The book sidebar stays put** while the page scrolls: the page's bottom space moved inside the book grid, so the end of a short page no longer pushes the sidebar up. Checked at 1000 and 1440 px on a book page and a lesson.
 - **Book covers, a book view, and a new home page (2026-10-31, owner).**
   - **Learn's Textbooks** are now five book covers, each a coloured rectangle with its series, title, a drawn motif (an arch, a parabola, a clock of residues, an inscribed triangle, a lattice path) and its size. Pressing a cover opens the book.
   - **The book view:** every page in a book (its contents, a chapter, a lesson, a review) has a sidebar with the cover and the whole table of contents, the current chapter open. The contents page shows the cover, a Start or Continue button, and the chapters as cards with their level and how many lessons are written and read. On a phone the sidebar folds into one "Contents" line; between 900 and 1100 px the card drawer floats over the right edge.

@@ -4665,6 +4665,15 @@
         const e = BY_ID[id];
         return `<a class="rc-row" href="#/f/${id}">${kindBadgeHtml(e.formula)}<span class="rc-name">${e.formula.name}</span><span class="rc-meta">${bySubject(e.section) ? pageTitle(e.section, e.section.subsections.indexOf(e.subsection)) : e.section.title}</span></a>`;
       }
+      if (k[0] === "l" || k[0] === "b") {
+        if (kinds && kinds.indexOf("lesson") === -1) return "";
+        if (k[0] === "b") {
+          const b = LEARN_SHELF.find(x => x.id === id);
+          return b ? `<a class="rc-row" href="${learnHash(b)}"><span class="badge badge-lesson">BOOK</span><span class="rc-name">${escapeAttr(b.title)}</span><span class="rc-meta">Learn</span></a>` : "";
+        }
+        const at = learnLessonByCode(id);
+        return at && learnLessonData(at.c, at.l) ? `<a class="rc-row" href="${learnHash(at.b, at.c, lessonNum(at.l))}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${at.l.code} ${escapeAttr(at.l.title)}</span><span class="rc-meta">${escapeAttr(at.b.title)}</span></a>` : "";
+      }
       if (k[0] === "p" && PROBLEM_BY_SLUG[id]) {
         if (kinds && kinds.indexOf("problem") === -1) return "";
         const p = PROBLEM_BY_SLUG[id];
@@ -4777,64 +4786,63 @@
     const nWritten = LEARN_SHELF.reduce((n, b) => n + learnWrittenIn(b), 0);
     const next = learnContinue();
     const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-what">${SPACE_WHAT[sp]}</span><span class="hs-n">${n}</span></a>`;
-    // The front page (owner, 2026-10-31): a centred title and search, the five spaces, then
-    // Learn and the problem of the day side by side, and the smaller panels in even rows.
+    // The front page (owner, 2026-10-31, second version): the app's own top bar holds the
+    // spaces and the search, so the page itself is dense, like a reference site's front page:
+    // one strip of the five spaces, then a main column and a rail of short sections divided by
+    // hairlines rather than boxed.
+    const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnWrittenIn(b) ? `${learnWrittenIn(b)} of ` : ""}${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
-      <div class="hub home">
-        <header class="home-hero">
-          <a class="hub-gear" href="#/settings" title="Settings" aria-label="Settings">&#9881;</a>
-          <div class="home-logo">${LOGO_HTML}</div>
-          <h1 class="home-name">Competition Math Reference</h1>
-          <p class="home-sub">Formulas, methods, patterns, textbooks, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</p>
-          <form class="home-search" role="search">
-            <input id="home-search" type="search" placeholder="Search formulas, methods, patterns, and problems" autocomplete="off" aria-label="Search the reference">
-            <button type="submit">Search</button>
-          </form>
-        </header>
-        <nav class="hub-spaces home-spaces" aria-label="Spaces">
-          ${tile("formulas", `${count("formula")} formulas`)}${tile("methods", `${count("method")} methods`)}${tile("patterns", `${count("pattern")} patterns`)}${tile("learn", `${LEARN_SHELF.length} books &middot; ${nWritten} lesson${nWritten === 1 ? "" : "s"} written`)}${tile("practice", `${nProblems} problems written`)}
+      <div class="home">
+        <div class="hm-intro">
+          <h1 class="hm-name">Competition Math Reference</h1>
+          <p class="hm-sub">Formulas, methods, patterns, textbooks, and real contest problems for AMC 10/12, AIME, and olympiad, all linked to each other.</p>
+        </div>
+        <nav class="hm-spaces" aria-label="Spaces">${["formulas", "methods", "patterns", "learn", "practice"].map(sp => `
+          <a class="hm-space" data-tint="${sp}" href="#/${sp}">
+            <span class="hm-space-name">${SPACES[sp].label}</span>
+            <span class="hm-space-ask">${SPACES[sp].ask}</span>
+            <span class="hm-space-n">${{ formulas: `${count("formula")} formulas`, methods: `${count("method")} methods`, patterns: `${count("pattern")} patterns`, learn: `${LEARN_SHELF.length} books`, practice: `${nProblems} problems` }[sp]}</span>
+          </a>`).join("")}
         </nav>
-        <div class="home-row home-row-a">
-          <div class="home-stack">
-            <section class="hp-panel home-learn" data-tint="learn">
-              <div class="home-panel-head"><div class="hp-label">Textbooks</div><a class="hp-link" href="#/learn">All of Learn &rarr;</a></div>
-              ${learnCoversHtml("s")}
+        <div class="hm-cols">
+          <div class="hm-main">
+            <section class="hm-sec">
+              <h2 class="hm-h">Continue</h2>
               ${next ? `<a class="home-continue" href="${learnHash(next.b, next.c, lessonNum(next.l))}">
                   <span class="home-continue-k">${learnProgress().last ? "Continue learning" : "Start learning"}</span>
                   <span class="home-continue-t"><span class="lb-code">${next.l.code}</span> ${escapeAttr(next.l.title)}</span>
                   <span class="home-continue-go" aria-hidden="true">&rarr;</span>
                 </a>` : ""}
+              ${recent ? `<div class="rc-list">${recent}</div>`
+                : `<p class="hp-empty">Cards, problems, and lessons you open will appear here.</p>`}
             </section>
-            ${didYouKnowHtml()}
+            ${dailyProblemHtml()}
+            ${newestCardsHtml()}
+            ${practiceGlanceHtml()}
           </div>
-          ${dailyProblemHtml()}
-        </div>
-        <div class="home-row home-row-b">
-          <section class="hp-panel">
-            <div class="hp-label">Continue where you left off</div>
-            ${recent ? `<div class="rc-list">${recent}</div>`
-              : `<p class="hp-empty">Cards and problems you open will appear here, so you can pick up where you left off.</p>`}
-          </section>
-          ${card ? `<section class="hp-panel hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
-            <div class="hp-label">Card of the day</div>
-            <div class="rc-row">${kindBadgeHtml(card.formula)}<span class="rc-name">${card.formula.name}</span><span class="rc-meta">${card.section.title}</span></div>
-            <p class="home-cotd">${firstSentences(card.formula.description, 1)}</p>
-          </section>` : ""}
-          <section class="hp-panel">
-            <div class="hp-label">Your library</div>
-            ${starIds.length
-              ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">&#9733;</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
-                 <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
-              : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
-            <div class="hp-mine-foot">
-              <a href="#/learn" data-goto="lists-new-name">Make a list</a>
-              <a href="#/learn" data-goto="pr-study">Open a list</a>
-            </div>
-          </section>
-        </div>
-        <div class="home-row home-row-c">
-          ${newestCardsHtml()}
-          ${practiceGlanceHtml()}
+          <aside class="hm-rail">
+            <section class="hm-sec">
+              <div class="hm-h-row"><h2 class="hm-h">Textbooks</h2><a class="hm-more" href="#/learn">Learn &rarr;</a></div>
+              <div class="hm-books">${bookRows}</div>
+            </section>
+            ${card ? `<section class="hm-sec hp-click" data-open="#/f/${card.formula.id}" role="link" tabindex="0" aria-label="Open ${escapeAttr(card.formula.name.replace(/\$/g, ""))}">
+              <h2 class="hm-h">Card of the day</h2>
+              <div class="rc-row">${kindBadgeHtml(card.formula)}<span class="rc-name">${card.formula.name}</span></div>
+              <p class="home-cotd">${firstSentences(card.formula.description, 1)}</p>
+            </section>` : ""}
+            ${didYouKnowHtml()}
+            <section class="hm-sec">
+              <h2 class="hm-h">Your library</h2>
+              ${starIds.length
+                ? `<div class="rc-list">${starIds.slice(0, 4).map(id => `<a class="rc-row" href="#/f/${id}"><span class="rc-star">&#9733;</span><span class="rc-name">${BY_ID[id].formula.name}</span></a>`).join("")}</div>
+                   <a class="hp-link" href="#/list/starred">All ${starIds.length} starred &rarr;</a>`
+                : `<p class="hp-empty">Star any card with &#9734; to keep it here.</p>`}
+              <div class="hp-mine-foot">
+                <a href="#/learn" data-goto="lists-new-name">Make a list</a>
+                <a href="#/learn" data-goto="pr-study">Open a list</a>
+              </div>
+            </section>
+          </aside>
         </div>
       </div>`;
     renderMath($content);
@@ -4862,7 +4870,8 @@
       try { $search.setSelectionRange(v.length, v.length); } catch (e) {}
     };
     // A command typed here just runs (there is no header search or suggestion list on this page).
-    $content.querySelector(".home-search").addEventListener("submit", e => {
+    const heroSearch = $content.querySelector(".home-search");
+    if (heroSearch) heroSearch.addEventListener("submit", e => {
       e.preventDefault();
       const v = box.value.trim();
       if (!v) return;
@@ -4882,7 +4891,7 @@
     learn: `Textbooks teach the cards in order: each lesson explains an idea, links the formulas, methods, and patterns it uses, and checks it with short questions and contest problems. Lists gather cards by contest level or by theme, and your own lists keep the cards you choose.`,
     practice: `Real contest problems, each linked to the patterns, methods, and formulas it uses, with a strategy you can reveal.`
   };
-  const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: [], practice: ["problem"] };
+  const KINDS_OF_SPACE = { formulas: ["formula"], methods: ["method"], patterns: ["pattern"], learn: ["lesson"], practice: ["problem"] };
   function spaceHeadHtml(name) {
     const recent = recentRowsHtml(6, KINDS_OF_SPACE[name]);
     return `<header class="space-home-head">
@@ -5166,6 +5175,7 @@
   }
 
   function renderLearnBook(b) {
+    noteRecent("b:" + b.id);
     const written = c => c.lessons.filter(l => learnLessonData(c, l)).length;
     const read = c => c.lessons.filter(l => learnProgress().read[l.code]).length;
     const start = (() => {
@@ -5409,7 +5419,7 @@
         ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
     learnBookShell(b, c, isReview ? "review" : l, main + nav);
-    if (l) { const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
+    if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
     $content.querySelectorAll(".lc-check").forEach(el => {
       mkPreview(el);
       const saved = learnProgress().checks[el.dataset.check];
