@@ -4632,27 +4632,54 @@
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
-  // Returns a message for the reader; throws on a file that is not a progress file.
+  // Returns a message for the reader; throws on a file that is not a progress file, or when the
+  // browser will not store it. The import is all or nothing (a user's report, 2026-10-31): the
+  // file is checked and every new value worked out first (lists merged on a copy), the current
+  // values are kept, then everything is written; if any write fails, every key is put back as it
+  // was, and the message says whether that worked.
   function importProgress(text) {
     const obj = JSON.parse(text);
-    if (!obj || obj.format !== PROGRESS_FORMAT || typeof obj.data !== "object") throw new Error("This is not a progress file exported from this app.");
+    if (!obj || obj.format !== PROGRESS_FORMAT || !obj.data || typeof obj.data !== "object") throw new Error("This is not a progress file exported from this app.");
     if (!(obj.version >= 1 && obj.version <= PROGRESS_VERSION)) throw new Error("This file was made by a newer version of the app (format " + obj.version + ").");
     const d = obj.data;
+    // 1. Stage every value to write.
+    const staged = {};
     PROGRESS_KEYS.forEach(k => {
-      if (!(k in d) || k === "mq-lists") return;
-      localStorage.setItem(k, typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]));
+      if (!(k in d) || k === "mq-lists" || d[k] == null) return;
+      staged[k] = typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]);
     });
     const inc = d["mq-lists"];
     if (inc && Array.isArray(inc.items)) {
+      const merged = JSON.parse(JSON.stringify(lists));   // a copy: the lists in use stay as they are until the import succeeds
       inc.items.forEach(l => {
         if (!l || typeof l.id !== "string" || !Array.isArray(l.ids)) return;
-        const mine = getList(l.id);
-        if (mine) l.ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
-        else lists.items.push({ id: l.id, name: String(l.name || "Imported list"), ids: l.ids.filter(x => typeof x === "string") });
+        const ids = l.ids.filter(x => typeof x === "string");
+        const mine = merged.items.find(m => m.id === l.id);
+        if (mine) ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
+        else merged.items.push({ id: l.id, name: String(l.name || "Imported list"), ids });
       });
-      if (!saveLists()) throw new Error("This browser is blocking storage, so nothing could be saved.");
+      staged["mq-lists"] = JSON.stringify(merged);
     }
-    return "Imported progress from " + (obj.exported ? obj.exported.slice(0, 10) : "the file") + ". Reloading\u2026";
+    const keys = Object.keys(staged);
+    if (!keys.length) throw new Error("This file holds no progress to import.");
+    // 2. Keep what is there now.
+    const before = {};
+    try { keys.forEach(k => { before[k] = localStorage.getItem(k); }); }
+    catch (e) { throw new Error("This browser is blocking storage, so nothing was imported. Your progress is unchanged."); }
+    // 3. Write everything; on a failure, put every key back.
+    try {
+      keys.forEach(k => localStorage.setItem(k, staged[k]));
+    } catch (e) {
+      let restored = true;
+      keys.forEach(k => {
+        try { if (before[k] == null) localStorage.removeItem(k); else localStorage.setItem(k, before[k]); }
+        catch (e2) { restored = false; }
+      });
+      throw new Error(restored
+        ? "This browser's storage is full or blocked, so nothing was imported. Your progress is unchanged."
+        : "The import stopped partway and your previous progress could not be fully put back. Export what you have now before trying again.");
+    }
+    return "Imported progress from " + (obj.exported ? String(obj.exported).slice(0, 10) : "the file") + ". Reloading\u2026";
   }
   function wireProgressPanel() {
     const ex = $content.querySelector(".progress-export"), im = $content.querySelector(".progress-import");

@@ -130,7 +130,19 @@
   var DAY = 86400000;
   function today() { return Math.floor((Date.now() - new Date().getTimezoneOffset() * 60000) / DAY); }
   function load() { try { return JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { return {}; } }
-  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { storageNotice(); } }
+  // When the browser will not save, say so once, instead of the reviews vanishing silently on the
+  // next reload (a report, 2026-10-31).
+  var noticeShown = false;
+  function storageNotice() {
+    if (noticeShown) return;
+    noticeShown = true;
+    var n = document.createElement("div");
+    n.setAttribute("role", "status");
+    n.textContent = "This browser is not saving your reviews, so they last only until this page is closed.";
+    n.style.cssText = "position:fixed;left:50%;bottom:16px;transform:translateX(-50%);max-width:min(560px,calc(100vw - 32px));padding:10px 14px;border-radius:10px;border:1px solid var(--border,#ccc);background:var(--bg-card,#fff);color:var(--text,#222);font-size:14px;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:100";
+    document.body.appendChild(n);
+  }
   var store = load();
   function stateOf(k) { return store[k] || null; }
   function next(st, grade) {
@@ -154,7 +166,7 @@
   var PREF = "mq-flashcards-prefs";
   var prefs = { deck: "all", dir: "name", fresh: 10 };
   try { var p = JSON.parse(localStorage.getItem(PREF) || "null"); if (p) prefs = Object.assign(prefs, p); } catch (e) {}
-  function savePrefs() { try { localStorage.setItem(PREF, JSON.stringify(prefs)); } catch (e) {} }
+  function savePrefs() { try { localStorage.setItem(PREF, JSON.stringify(prefs)); } catch (e) { storageNotice(); } }
 
   // Keys: one schedule per card and direction, since knowing a name does not mean knowing its formula.
   function itemsFor(deck, dir) {
@@ -195,36 +207,46 @@
     return parts.slice(0, 2).join(" ").trim();
   }
 
+  // The setup form is drawn once; changing the deck or direction updates the counts in place, so
+  // the focused control stays where it is (a report, 2026-10-31).
+  function countsHtml(t) {
+    return '<div class="count"><b>' + t.due + '</b><span>due now</span></div>' +
+      '<div class="count"><b>' + t.fresh + '</b><span>never seen</span></div>' +
+      '<div class="count"><b>' + t.learning + '</b><span>learning</span></div>' +
+      '<div class="count"><b>' + t.mature + '</b><span>known (3+ weeks)</span></div>';
+  }
+  function current() { var deck = deckById(prefs.deck); return { deck: deck, items: itemsFor(deck, prefs.dir) }; }
+  function refreshCounts() { var c = document.getElementById("counts"); if (c) c.innerHTML = countsHtml(tally(current().items)); }
   function setup() {
-    var deck = deckById(prefs.deck), items = itemsFor(deck, prefs.dir), t = tally(items);
+    var deck = deckById(prefs.deck), t = tally(itemsFor(deck, prefs.dir));
     app.innerHTML =
-      '<label class="f">Deck</label><select id="deck">' + decks.map(function (d) {
+      '<label class="f" for="deck">Deck</label><select id="deck">' + decks.map(function (d) {
         return '<option value="' + d.id + '"' + (d.id === deck.id ? " selected" : "") + ">" + esc(d.name) + " (" + d.ids.length + ")</option>"; }).join("") + "</select>" +
-      '<label class="f">Direction</label><select id="dir">' +
+      '<label class="f" for="dir">Direction</label><select id="dir">' +
         '<option value="name"' + (prefs.dir === "name" ? " selected" : "") + ">Name → recall the formula and idea</option>" +
         '<option value="fx"' + (prefs.dir === "fx" ? " selected" : "") + ">Formula → recall the name</option>" +
         '<option value="both"' + (prefs.dir === "both" ? " selected" : "") + ">Both directions</option></select>" +
-      '<label class="f">New cards per session</label><input id="fresh" type="number" min="0" max="100" value="' + prefs.fresh + '">' +
-      '<div class="counts"><div class="count"><b>' + t.due + '</b><span>due now</span></div>' +
-        '<div class="count"><b>' + t.fresh + '</b><span>never seen</span></div>' +
-        '<div class="count"><b>' + t.learning + '</b><span>learning</span></div>' +
-        '<div class="count"><b>' + t.mature + '</b><span>known (3+ weeks)</span></div></div>' +
+      '<label class="f" for="fresh">New cards per session</label><input id="fresh" type="number" min="0" max="100" value="' + prefs.fresh + '">' +
+      '<div class="counts" id="counts" aria-live="polite">' + countsHtml(t) + '</div>' +
       '<div class="row"><button class="primary" id="go">Start review</button>' +
         '<button id="reset">Forget this deck</button></div>' +
       '<p class="note">A session shows everything due in the deck, then up to the number of new cards you chose. ' +
         'Keyboard: <b>Space</b> to flip, <b>1</b>–<b>4</b> to answer.</p>';
-    document.getElementById("deck").onchange = function (e) { prefs.deck = e.target.value; savePrefs(); setup(); };
-    document.getElementById("dir").onchange = function (e) { prefs.dir = e.target.value; savePrefs(); setup(); };
+    document.getElementById("deck").onchange = function (e) { prefs.deck = e.target.value; savePrefs(); refreshCounts(); };
+    document.getElementById("dir").onchange = function (e) { prefs.dir = e.target.value; savePrefs(); refreshCounts(); };
     document.getElementById("fresh").onchange = function (e) { prefs.fresh = Math.max(0, Math.min(100, +e.target.value || 0)); savePrefs(); };
-    document.getElementById("go").onclick = function () { start(deck, items); };
+    document.getElementById("go").onclick = function () { var c = current(); start(c.deck, c.items); };
+    // Forgetting a deck forgets both directions of every card in it, whatever direction is
+    // selected (a report: the other direction's schedule used to survive).
     document.getElementById("reset").onclick = function () {
-      if (!confirm("Forget your progress on every card in this deck?")) return;
-      items.forEach(function (it) { delete store[keyOf(it)]; });
-      save(store); setup();
+      var deck = deckById(prefs.deck);
+      if (!confirm("Forget your progress on every card in this deck, in both directions?")) return;
+      deck.ids.forEach(function (id) { delete store[id + ":name"]; delete store[id + ":fx"]; });
+      save(store); refreshCounts();
     };
   }
 
-  var queue = [], shown = 0, total = 0, again = 0, flipped = false, cur = null;
+  var queue = [], shown = 0, total = 0, again = 0, flipped = false, cur = null, session = [];
   function start(deck, items) {
     var t = today();
     var due = items.filter(function (it) { var s = stateOf(keyOf(it)); return s && s.due <= t; })
@@ -232,6 +254,7 @@
     var fresh = items.filter(function (it) { return !stateOf(keyOf(it)); }).slice(0, prefs.fresh);
     queue = due.concat(fresh);
     shown = 0; again = 0; total = queue.length;
+    session = items;
     if (!queue.length) { finish(true); return; }
     show();
   }
@@ -269,6 +292,9 @@
       return '<button class="' + l[0] + '" data-g="' + g + '">' + l[1] + "<small>" + (g === 0 ? "this session" : ivlText(n.ivl)) + "</small></button>";
     }).join("") + "</div>";
     document.querySelectorAll(".rate button").forEach(function (b) { b.onclick = function () { rate(+b.dataset.g); }; });
+    // The reveal button is gone, so the focus moves to the first rating rather than the page.
+    var first = document.querySelector(".rate button");
+    if (first) first.focus();
   }
   function rate(g) {
     if (!flipped || !cur) return;
@@ -280,10 +306,15 @@
   }
   function finish(empty) {
     cur = null;
-    var t = today(), soon = Infinity;
-    Object.keys(store).forEach(function (k) { if (store[k].due > t) soon = Math.min(soon, store[k].due); });
+    // The next due date is this deck's and direction's, not any deck's; and an empty session says
+    // why: no cards for this direction, new cards set to 0, or everything scheduled for later.
+    var t = today(), soon = Infinity, unseen = 0;
+    session.forEach(function (it) { var st = stateOf(keyOf(it)); if (!st) unseen++; else if (st.due > t) soon = Math.min(soon, st.due); });
+    var why = !session.length ? "This deck has no cards for this direction. Pick another direction or deck."
+      : unseen && prefs.fresh === 0 ? "Nothing here is due, and New cards per session is set to 0, so none of its " + unseen + " unseen cards were added. Raise it to study new cards."
+      : "Every card in this deck is scheduled for later. Add new cards, or pick another deck.";
     app.innerHTML = '<div class="done">' + (empty
-      ? '<div class="big">Nothing due</div><p class="sub">Every card in this deck is scheduled for later. Add new cards, or pick another deck.</p>'
+      ? '<div class="big">Nothing due</div><p class="sub">' + why + '</p>'
       : '<div class="big">Done</div><p class="sub">' + shown + " cards reviewed" + (again ? ", " + again + " sent back once or more" : "") + ".</p>") +
       (soon < Infinity ? '<p class="note">Next card due in ' + ivlText(soon - t) + ".</p>" : "") +
       '<div class="row" style="justify-content:center"><button class="primary" id="back">Back to decks</button></div></div>';
@@ -291,6 +322,9 @@
   }
   document.addEventListener("keydown", function (e) {
     if (!cur || /^(INPUT|SELECT|TEXTAREA)$/.test(document.activeElement.tagName)) return;
+    // A focused button or link (a rating, "Open the full card") handles its own Enter and Space
+    // (a report, 2026-10-31: they were swallowed by the flip shortcut).
+    if ((e.key === " " || e.key === "Enter") && e.target.closest && e.target.closest("a[href], button")) return;
     if (e.key === " " || e.key === "Enter") { e.preventDefault(); flip(); }
     else if (/^[1-4]$/.test(e.key)) rate(+e.key - 1);
   });

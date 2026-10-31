@@ -167,7 +167,20 @@
   function loadMisses() {
     try { return JSON.parse(localStorage.getItem(MISS_KEY) || "{}") || {}; } catch (e) { return {}; }
   }
-  function saveMisses(m) { try { localStorage.setItem(MISS_KEY, JSON.stringify(m)); } catch (e) {} }
+  function saveMisses(m) { try { localStorage.setItem(MISS_KEY, JSON.stringify(m)); } catch (e) { storageNotice(); } }
+  // When the browser will not save, say so once, instead of losing the history silently on the
+  // next reload (a report, 2026-10-31).
+  var noticeShown = false;
+  function storageNotice() {
+    if (noticeShown) return;
+    noticeShown = true;
+    var n = document.createElement("div");
+    n.className = "storage-notice";
+    n.setAttribute("role", "status");
+    n.textContent = "This browser is not saving your quiz history, so it lasts only until this page is closed.";
+    n.style.cssText = "position:fixed;left:50%;bottom:16px;transform:translateX(-50%);max-width:min(560px,calc(100vw - 32px));padding:10px 14px;border-radius:10px;border:1px solid var(--border,#ccc);background:var(--bg-card,#fff);color:var(--text,#222);font-size:14px;box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:100";
+    document.body.appendChild(n);
+  }
   function noteMiss(id) { var m = loadMisses(); m[id] = (m[id] || 0) + 1; saveMisses(m); }
   function noteHit(id) {
     var m = loadMisses();
@@ -402,6 +415,9 @@
     if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
     var tag = (ev.target.tagName || "").toLowerCase();
     if (tag === "input" || tag === "select" || tag === "textarea") return;
+    // A focused link or button handles its own Enter and Space (a report, 2026-10-31: Enter on
+    // "open the card" pressed Next instead, and on the last question ended the round).
+    if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest && ev.target.closest("a[href], button")) return;
     if (!Q) {                                   // still on the setup screen
       if (ev.key === "Enter") { var go = document.getElementById("go"); if (go) { ev.preventDefault(); go.click(); } }
       return;
