@@ -3751,8 +3751,6 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hp-daily:hover .daily-go, .home .hp-daily:focus-visible .daily-go { opacity: 1; transform: none; }
 .home .hp-daily:hover .daily-st { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 @media (hover: none) { .daily-go { opacity: 1; transform: none; } }
-.home .hm-sub-h { margin: 10px 0 2px; font-size: 13px; font-weight: 750; color: var(--text-dim); }
-.home .hm-sub-h:first-of-type { margin-top: 0; }
 .home .rc-row { padding-top: 6px; padding-bottom: 6px; }
 .home .pg-row { padding-top: 6px; padding-bottom: 6px; }
 .home .dyk { font-size: 14px; }

@@ -4769,19 +4769,15 @@
       learn: "Textbooks that teach the cards in order, with checks and contest problems, and the study lists.",
       practice: "Real AMC and AIME problems, linked to the patterns, methods, and formulas they use."
     };
-    const nWritten = LEARN_SHELF.reduce((n, b) => n + learnWrittenIn(b), 0);
-    const next = learnContinue();
+
     const tile = (sp, n) => `<a class="hs-tile" data-tint="${sp}" href="#/${sp}"><b>${SPACES[sp].label}</b><span class="hs-ask">${SPACES[sp].ask}</span><span class="hs-what">${SPACE_WHAT[sp]}</span><span class="hs-n">${n}</span></a>`;
     // The front page (owner, 2026-10-31, second version): the app's own top bar holds the
     // spaces and the search, so the page itself is dense, like a reference site's front page:
     // one strip of the five spaces, then a main column and a rail of short sections divided by
     // hairlines rather than boxed.
-    // Continue: the cards and problems opened lately, then Learn: the next lesson and the
-    // lessons and books opened lately, as plain rows.
+    // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
+    // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
     const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
-    const nextHref = next ? learnHash(next.b, next.c, lessonNum(next.l)) : "";
-    const learnRows = (next ? `<a class="rc-row" href="${nextHref}"><span class="badge badge-lesson">LESSON</span><span class="rc-name">${next.l.code} ${escapeAttr(next.l.title)}</span><span class="rc-meta">${learnProgress().last ? "Up next" : "Start here"}</span></a>` : "")
-      + recentRowsHtml(4, ["lesson"]).split("</a>").filter(r => r && !(nextHref && r.includes(`href="${nextHref}"`))).map(r => r + "</a>").join("");
     const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnWrittenIn(b) ? `${learnWrittenIn(b)} of ` : ""}${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
       <div class="home">
@@ -4800,10 +4796,7 @@
           <div class="hm-main">
             <section class="hm-sec">
               <h2 class="hm-h">Continue</h2>
-              <h3 class="hm-sub-h">Cards</h3>
               ${recentCards ? `<div class="rc-list">${recentCards}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
-              <h3 class="hm-sub-h">Learn</h3>
-              <div class="rc-list">${learnRows}</div>
             </section>
             ${dailyProblemHtml()}
             ${newestCardsHtml()}

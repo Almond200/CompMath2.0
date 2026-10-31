@@ -299,7 +299,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 - **Home page touches (2026-10-31, owner).**
   - **Did you know** is fixed again: one fact a day, the same on every reload, and the Another button is gone (this replaces the 2026-10-25 "changes every time" request; `dykSeen` is no longer written).
-  - **Continue** has two plain subsections, Cards (cards and problems opened lately) and Learn (the next lesson, marked "Up next" or "Start here", then lessons and books opened lately), with no special box for the lesson.
+  - **Continue** lists only the cards and problems opened lately. Lessons and books stay out of it (many open lessons crowded it) and show only in Learn's "Recently opened" row, as small chips.
   - **Problem of the day** answers the pointer: the title turns blue, the statement is outlined, and "Open the problem →" appears (shown all the time on touch screens).
 - **The home page, second version, and Learn's recents (2026-10-31, owner: "I don't like all of the big boxes and open space").**
   - The home page now keeps the app's top bar (spaces and search), like every other page, and reads like a reference site's front page:
