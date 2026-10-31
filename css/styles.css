@@ -3882,6 +3882,9 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 .bk-contents .learn-h { color: var(--text); }
 .bk-contents .lb-code { color: var(--bk-ink); }
 .bk-contents .lb-lessons li > a .lb-title { color: var(--bk-ink); }
+/* The Start button and Show Solution take the book's own colour, like its cover (owner, 2026-10-31). */
+.learn-page.bk-contents a.bk-start, :root[data-theme] .learn-page.bk-contents a.bk-start,
+:root[data-theme] .lesson-page.bk-view .lp-main .lp-show { background: linear-gradient(135deg, var(--bk-a), var(--bk-b)); color: #fff; }
 .bk-toc-h { margin: 30px 0 4px; font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
 .bk-toc { list-style: none; margin: 0; padding: 0; }
 .bk-toc-ch { padding: 14px 0 6px; border-top: 1px solid var(--border); }

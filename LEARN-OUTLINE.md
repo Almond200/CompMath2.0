@@ -75,6 +75,500 @@ A student need not finish the books in order. Any chapter can be entered once it
 | complete and non-overlapping cases | C1, C3, N5, A1 |
 | transfer without labels | every chapter review, and a review at the end of each book |
 
+## The AMC books, second plan (to replace the four AMC books and the Bridge)
+
+**Status (2026-10-31):** planned, not built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
+
+### How the books are built
+
+**Four parts in every book.** Each book runs from zero to AIME-ready in four parts, shown as headings on its contents page:
+- **Foundations:** for a student who has seen little of the subject. Every word is defined at first use, a small numerical example comes before every general rule, and the easiest problems come first (AMC 8 and the early AMC 10 problems).
+- **AMC 10:** the subject as the AMC 10 tests it.
+- **AMC 12:** what the AMC 12 adds.
+- **Toward the AIME:** no new cards. It holds the Bridge's checking habits, then harder mixed problems (late AMC 12 and early AIME) whose technique is not named.
+
+**Importance on every chapter and every lesson.** Chapters and lessons both carry one of the AIME books' three tags, so a niche lesson can sit inside the chapter it belongs to:
+- **Core:** every student needs it.
+- **Core II:** needed for the later and harder problems.
+- **Extension:** optional; nothing later depends on it.
+
+Every chapter in Foundations, AMC 10 and Toward the AIME is Core. An AMC 12 chapter is Core when at least half of its lessons are, and Core II otherwise. A lesson's first tag comes from the number of AMC 10 and 12 problems whose tags use its cards (at least 8 is Core, 3 to 7 is Core II, fewer is Extension; twins count once). The tag is then adjusted by judgment where the count misleads: the basic ideas (a square is never negative, substitution, recursion, grid paths) are Core, and the niche ones (Farey fractions, the contrapositive, triangle centers) are Extension. The AIME books' lessons get the same tags, at first equal to their chapter's tag.
+
+**Where the Bridge goes.** Every Bridge lesson has a new home, so the Bridge book is removed:
+
+| Bridge | New home |
+|---|---|
+| B1 Algebra fluency and substitutions | L1, L2, L4.3, L5.1; `useful-factorizations` in L10.5 |
+| B2 Polynomial and sequence fundamentals | L3, L6, L7, L10.1 |
+| B3 Integer arithmetic and congruence fundamentals | M1, M4.1, M4.2, M5.3 |
+| B4 Counting and probability fundamentals | R1, R2, R3 |
+| B5 Geometry fundamentals and coordinates | S1, S2.4, S3, S5, S7.1, S4.5 (its trigonometry for AMC 10 students) |
+| B6 Constraints, computation and checking | L2.1, L8.5, L14, M7, R10, S12 |
+
+**Problems.** Each lesson gets 3 to 5 contest problems in rising difficulty, and each chapter a review of about 8 to 12, chosen by the twin-safe picker:
+- Foundations: AMC 8 and AJHSME (742 of their 1000 problems are tagged), then AMC 10 problems 1 to 10.
+- AMC 10: AMC 10 problems 5 to 20.
+- AMC 12: AMC 12 problems 10 to 25.
+- Toward the AIME: the late AMC 12 problems and AIME problems 1 to 8.
+
+The "AMC problems" column below counts the AMC 10 and 12 problems tagged with a lesson's cards: the pool to choose from, not a quota. A lesson with fewer than 3 gets exercises written for it.
+
+**Tracks.** The four AMC books stay one track and the AIME books another (CONVENTIONS §14). The AIME books' cards assumed from the Bridge are now taught in the AMC books, so a student enters the AIME books after the AMC books. A later pass could make the AIME books stop re-teaching AMC cards and merge the two tracks into one path; it is not part of this plan.
+
+**Implementation, in order:**
+1. **Tooling, one commit:**
+   - `tools/build-learn-shelf.py` reads the part headings, a lesson's importance column, and chapter numbers of two digits (L10 to L14, R10, S10 to S12).
+   - `shelf.js` gains the part on each chapter and the importance on each lesson.
+   - `tools/check-learn.js` accepts the parts.
+   - On the contents page, a book shows its part headings and a tag on every lesson. The book page's legend explains the tags.
+2. **Write the books in turn: Algebra, Number Theory, Counting & Probability, Geometry.** For each book:
+   - Move its plan from this section into the book's own section of the outline.
+   - Delete its old chapter files.
+   - Write it chapter by chapter. Unwritten lessons show as not yet written, as they did when the books were first built.
+   - Run the gates and ship it after every chapter.
+3. **Remove the Bridge** when the last book has replaced it: its section, its files, its id in `IDS` and its cover.
+4. **Update CONVENTIONS §14** (the parts, the tags, the Foundations standard), the PLAN and the README.
+
+**Left out on purpose.** Cards that one or two AMC problems use, but whose home is the AIME books or the reference only:
+- `parking-functions`, `determinant-basics`, `brahmagupta-fibonacci`, `corner-circle-chain`, `ptolemys-inequality`, `ptolemy-equilateral`
+- `conic-classification`, `rotated-line-angle`, `lcm-pair-counting`, `lucas-theorem`, `lattice-points-circle`, `pisano-periods`
+- `vector-bash`, `derivative-extremum`, `hensel-lifting`, `lte`
+- `eigenvalues-characteristic`, `cyclotomic-polynomials`, `continued-fraction-convergents`, `hook-length-formula`, `induction` (Olympiad tier)
+
+Every AMC-tier card has a home in this plan, and no card is taught twice within it.
+
+### The plan
+
+#### Book: AMC Algebra
+
+From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the AMC 12, ending with the habits the AIME asks for.
+
+##### Part: Foundations
+
+**L1. Expressions and exponents** · Core. What a variable stands for, how expressions are built and rewritten, and the exponent and factoring rules everything later uses.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L1.1 Variables, expressions and translating words into symbols | Core | no card (a habit lesson: order of operations, like terms, writing a sentence as an equation) | mixed |
+| L1.2 Exponents and radicals | Core | `exponent-laws`, `rationalizing` | 34 |
+| L1.3 Expanding and factoring | Core | `square-of-sum`, `difference-of-squares`, `completing-the-square` | 58 |
+| L1.4 Ratios, proportions and percents | Core | `setting-up-proportions`, `proportion-properties`, `percent-change` | 44 |
+
+**L2. Equations and word problems** · Core. Solving one equation and checking the answer, solving systems, and turning a story into equations.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L2.1 Solving an equation and checking the answer | Core | `transforming-equations` (keeps the Bridge's habit: extraneous roots and the domain) | 3 |
+| L2.2 Systems of linear equations | Core | `linear-elimination`, `add-all-equations`, `assume-all-one-kind` | 50 |
+| L2.3 Rates and work | Core | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, *(pattern)* `several-rates` | 39 |
+| L2.4 Averages | Core | `averages-to-totals`, `weighted-average`, `mean-median-mode`, *(pattern)* `averages-before-after` | 69 |
+| L2.5 Setting up a story | Core | *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans`, `round-up-whole-items` | 13 |
+
+##### Part: AMC 10
+
+**L3. Quadratics** · Core. The quadratic formula, Vieta's relations and the vertex, the first tools that work on whole families of equations.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L3.1 Solving quadratics | Core | `quadratic-formula`, *(pattern)* `quadratic-perfect-square` | 20 |
+| L3.2 Vieta: the sum and product of the roots | Core | `vietas-quadratic`, `symmetric-polynomial-strategies` | 34 |
+| L3.3 The vertex and where the roots lie | Core | `vertex-form`, `quadratic-forms`, `quadratic-root-location` | 10 |
+
+**L4. Functions, graphs, absolute values and floors** · Core. Functions as rules, reading and counting with graphs, and the two piecewise functions the AMC loves.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L4.1 Functions and defined operations | Core | *(pattern)* `defined-operation`, `inverse-function-properties`, `odd-even-functions` | 29 |
+| L4.2 Reading graphs and slopes | Core II | *(pattern)* `reading-graphs`, `slope-to-a-point` | 1 |
+| L4.3 Absolute value | Core | `absolute-value-rules`, `abs-value-relations`, `absolute-value-identities`, `sign-chart`, `abs-value-graphing` | 36 |
+| L4.4 Counting solutions with a graph | Core II | `piecewise-graph-counting` | 6 |
+| L4.5 Floors and ceilings | Core | `floor-basics`, `name-the-floor`, `group-equal-floors`, *(pattern)* `floor-equation`, *(pattern)* `floor-sum-range` | 18 |
+
+**L5. Substitutions and symmetric expressions** · Core. Seeing a repeated block as one unknown, and working with sums and products instead of the variables themselves.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L5.1 Naming the whole expression | Core | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation`, *(pattern)* `infinite-nest` | 3 |
+| L5.2 Symmetric sums and factoring tricks | Extension | `sum-zero-identities`, `pairwise-sum-product`, `an-minus-bn`, `subtract-and-factor` | 2 |
+
+**L6. Sequences and series** · Core. Arithmetic and geometric sequences, sequences defined step by step, and sums that collapse.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L6.1 Arithmetic sequences and triangular numbers | Core | `arithmetic-series`, `triangular-numbers` | 75 |
+| L6.2 Geometric sequences and power sums | Core | `geometric-series`, `power-sums` | 39 |
+| L6.3 Recursive and periodic sequences | Core | `first-order-recurrence`, *(pattern)* `periodic-sequences` | 20 |
+| L6.4 Telescoping and clever sums | Core | `telescoping`, `partial-fractions`, `factorial-telescoping`, `alternating-sum-grouping` | 16 |
+
+**L7. Polynomials** · Core. Dividing polynomials, the remainder theorem, rational roots and reading coefficients.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L7.1 Division and the remainder theorem | Core | `polynomial-division`, `factor-remainder-theorem` | 11 |
+| L7.2 Rational roots and coefficients | Core | `rational-root-theorem`, `comparing-coefficients`, `coefficient-extraction` | 16 |
+
+**L8. Inequalities, extremes and estimates** · Core. Largest and smallest values, from squares being nonnegative to AM-GM, and estimating to rule answers out.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L8.1 A square is never negative | Core | `trivial-inequality`, `sos-identity` | 2 |
+| L8.2 AM-GM and fixed sums | Core | `am-gm`, `max-product-fixed-sum` | 9 |
+| L8.3 Distances on the number line | Core II | `abs-triangle-inequality`, `median-minimizes-abs` | 3 |
+| L8.4 Extremes by arrangement | Core II | `placing-digits-extremes`, `rearrangement` | 6 |
+| L8.5 Estimating and checking | Core | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` | 10 |
+
+##### Part: AMC 12
+
+**L9. Logarithms and exponential equations** · Core. The logarithm laws and the equations they solve.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L9.1 Logarithm laws and change of base | Core | `log-rules`, `change-of-base` | 54 |
+| L9.2 Logarithmic and exponential equations | Core | `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` | 3 |
+
+**L10. Polynomials for the AMC 12** · Core II. Vieta for any degree, roots and their transformations, interpolation, radicals and the factorizations worth knowing.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L10.1 Vieta for any degree and power sums of roots | Core | `vietas-general`, `newtons-sums` | 23 |
+| L10.2 Conjugate roots and transformed roots | Core | `conjugate-root-theorems`, `root-transformations` | 9 |
+| L10.3 Remainders and interpolation | Extension | `polynomial-crt`, `lagrange-interpolation` | 2 |
+| L10.4 Radicals and reciprocal substitutions | Core II | `denesting-radicals`, `palindromic-polynomials`, `reciprocal-power-sums`, `forced-difference-of-squares` | 5 |
+| L10.5 Factorizations worth knowing | Core II | `cubes-minus-3abc`, `sophie-germain`, `useful-factorizations` | 3 |
+
+**L11. Functional equations, recurrences and inequalities** · Core II. Substituting into functional equations, linear recurrences, double sums, and the AMC 12 inequalities.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L11.1 Functional equations by substitution | Core | `functional-substitution`, `fx-pairing`, `function-symmetry-equation` | 10 |
+| L11.2 Linear recurrences | Core II | `linear-recurrence`, `binets-formula` | 3 |
+| L11.3 Finite differences and double sums | Core II | `finite-differences`, `double-summation`, `arithmetico-geometric`, `largest-term-ratio` | 4 |
+| L11.4 The mean inequalities and Cauchy-Schwarz | Core II | `mean-chain`, `cauchy-schwarz` | 3 |
+
+**L12. Trigonometry** · Core II. Exact values, the identities, and turning sums into products.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L12.1 Special values and the identities | Core | `special-trig-values`, `angle-addition`, `double-angle`, `half-angle`, `triple-angle` | 24 |
+| L12.2 Sums, products and telescoping | Core II | `product-sum`, `trig-telescoping-product` | 3 |
+| L12.3 Combining waves and inverse functions | Core II | `harmonic-addition`, `inverse-trig-identities` | 4 |
+
+**L13. Complex numbers** · Core. Complex arithmetic, polar form and De Moivre, and roots of unity.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L13.1 Complex arithmetic and the modulus | Core | `complex-basics`, `conjugate-both-sides`, *(pattern)* `complex-modulus-argument` | 25 |
+| L13.2 Polar form and De Moivre | Core | `eulers-formula`, `polar-form`, `de-moivre` | 10 |
+| L13.3 Roots of unity | Core | `roots-of-unity`, `fundamental-theorem-algebra`, `roots-of-unity-filter` | 22 |
+
+##### Part: Toward the AIME
+
+**L14. From the AMC to the AIME: algebra** · Core. No new cards: the Bridge's habits, applied to harder mixed problems whose technique is not named.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| L14.1 Domain, positivity and integrality through a substitution | Core | no card (prereq transforming-equations, quadratic-root-location) | mixed |
+| L14.2 The AIME answer: exact arithmetic, 000 to 999, the final check | Core | no card (a habit lesson) | mixed |
+| L14.3 Mixed problems across the book | Core | no card (a review lesson with late-AMC 12 and early-AIME problems) | mixed |
+
+#### Book: AMC Number Theory
+
+From primes and divisibility to remainders, integer equations and the AMC 12's exponents and orders, ending with mixed AIME-style problems.
+
+##### Part: Foundations
+
+**M1. Primes, divisibility, gcd and lcm** · Core. Breaking a number into primes, testing divisibility, and the gcd and lcm.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M1.1 Primes and prime factorization | Core | `fundamental-theorem-arithmetic`, `only-even-prime`, `recognition-numbers` | 38 |
+| M1.2 Divisibility rules | Core | `divisibility-rules`, `digit-sum-carries` | 20 |
+| M1.3 The gcd and the lcm | Core | `euclidean-algorithm`, `gcd-lcm-product`, `lcm-common-multiples` | 11 |
+| M1.4 Counting multiples and calendars | Core | `floor-multiples`, *(pattern)* `calendar-problems` | 21 |
+
+**M2. Digits, bases and decimals** · Core. A number as a sum of place values, in base ten and other bases, and fractions as decimals.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M2.1 Place value and digits | Core | `numeral-as-polynomial`, *(pattern)* `digit-manipulation`, `digit-count` | 24 |
+| M2.2 Digit puzzles | Core | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, `base10-curiosities` | 11 |
+| M2.3 Other bases | Core | `base-conversion`, *(pattern)* `unknown-base` | 18 |
+| M2.4 Repeating and terminating decimals | Core | `repeating-decimals`, `terminating-decimals` | 9 |
+| M2.5 Fractions between two fractions | Extension | `farey-sequences` | 3 |
+
+##### Part: AMC 10
+
+**M3. Divisors and factorials** · Core. Counting, summing and multiplying divisors, and the primes inside a factorial.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M3.1 Counting divisors | Core | `number-of-divisors`, `perfect-square-divisors` | 25 |
+| M3.2 Summing and multiplying divisors | Core II | `sum-of-divisors`, `product-of-divisors` | 6 |
+| M3.3 Primes in a factorial and trailing zeros | Core | `legendres-formula`, `trailing-zeros` | 14 |
+| M3.4 Consecutive numbers and gcd tricks | Core | `factor-out-factorial`, `consecutive-product-factorial`, `consecutive-coprime`, `gcd-substitution` | 13 |
+
+**M4. Remainders** · Core. Modular arithmetic from its rules to Fermat and Euler.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M4.1 Working with remainders | Core | `modular-basics`, `euclids-lemma`, `subtract-equal-remainders` (keeps the Bridge's negative residues and inverses by inspection) | 34 |
+| M4.2 Cycles and last digits | Core | `cycle-hunting`, `last-digit-patterns` | 15 |
+| M4.3 Squares and choosing a modulus | Core II | `squares-mod-small`, `choose-modulus`, `primes-6k` | 2 |
+| M4.4 Fermat's little theorem and Euler's totient | Core II | `fermats-little-theorem`, `eulers-totient` | 3 |
+| M4.5 When one expression divides another | Extension | `reduce-divisibility-constant`, *(pattern)* `poly-divisible-linear` | 1 |
+
+**M5. Integer equations** · Core. Equations whose answers must be whole numbers: linear ones, coins, factoring and bounds.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M5.1 Linear equations in integers and the Chinese remainder theorem | Core | `bezouts-identity`, `crt` | 9 |
+| M5.2 Coins and stamps | Core II | `chicken-mcnugget`, *(pattern)* `coins-and-prices` | 6 |
+| M5.3 Factoring into integers | Core | `sfft`, `factor-pair-counting`, `difference-of-squares-rep` | 33 |
+| M5.4 Pythagorean triples and integer triangles | Core II | `pythagorean-triples`, `integer-triangles-perimeter` | 6 |
+| M5.5 Bounding | Core II | `bounding-diophantine`, `squeeze-between-squares` | 6 |
+
+##### Part: AMC 12
+
+**M6. Number theory for the AMC 12** · Core II. Prime exponents, inverses, Euler's and Wilson's theorems, orders and Pell equations.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M6.1 Prime exponents and multiplicative functions | Core | `exponent-tracking`, `p-adic-valuation`, `power-minus-self`, `multiplicative-functions` | 8 |
+| M6.2 Inverses and the theorems of Euler and Wilson | Core II | `modular-inverse`, `eulers-theorem`, `wilsons-theorem` | 6 |
+| M6.3 The order of a number | Extension | `multiplicative-order` | 3 |
+| M6.4 Pell equations | Extension | `pell-equation` | 2 |
+
+##### Part: Toward the AIME
+
+**M7. From the AMC to the AIME: number theory** · Core. No new cards: residues, cycles and integer equations together, in harder mixed problems.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| M7.1 Residues and cycles together | Core | no card (prereq modular-basics, cycle-hunting, crt) | mixed |
+| M7.2 Integer equations by factoring and bounds | Core | no card (prereq sfft, bounding-diophantine) | mixed |
+| M7.3 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+
+#### Book: AMC Counting & Probability
+
+From listing and multiplying to arrangements, distributions, recursion and probability, ending with the AMC 12 additions and mixed AIME-style problems.
+
+##### Part: Foundations
+
+**R1. Counting from scratch** · Core. Listing carefully, the multiplication and addition principles, permutations and combinations, cases and complements.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R1.1 Making a list and the fencepost | Core | `organized-listing`, `fencepost-counting` | 18 |
+| R1.2 The multiplication and addition principles | Core | `constructive-counting`, `counting-functions` | 38 |
+| R1.3 Permutations and combinations | Core | `permutations-combinations`, `committee-chair` | 13 |
+| R1.4 Casework and complements | Core | `casework-method`, `complementary-counting`, `elimination-counting` | 162 |
+
+**R2. Probability from scratch** · Core. Probability as a ratio of counts, independent events, and the average outcome.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R2.1 Probability by counting | Core | `basic-probability`, `symmetry-probability` | 40 |
+| R2.2 Several draws and independent events | Core | *(pattern)* `drawing-without-replacement`, `independent-events` | 15 |
+| R2.3 Expected value | Core | `expected-value` | 7 |
+
+##### Part: AMC 10
+
+**R3. Arrangements** · Core. Arrangements with repeats, restrictions, circles and derangements, and fixing overcounts.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R3.1 Arranging letters with repeats | Core | `multiset-permutations` | 12 |
+| R3.2 Gaps, blocks and non-adjacent choices | Core | `gap-method`, `counting-blocks`, `non-adjacent-selection` | 8 |
+| R3.3 Circles and derangements | Core II | `circular-permutations`, `derangements` | 3 |
+| R3.4 Inclusion-exclusion and overcounting | Core | `inclusion-exclusion`, `pie`, `uniform-overcount`, `double-counting` | 32 |
+
+**R4. Distributions and binomial coefficients** · Core. Putting objects into boxes, Pascal's triangle and the binomial theorem, and counting one set by matching it with another.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R4.1 Stars and bars | Core | `stars-and-bars`, `balls-boxes-table`, `partitions` | 13 |
+| R4.2 Pascal's triangle | Core II | `pascals-identity`, `binomial-row-sums`, `hockey-stick` | 6 |
+| R4.3 The binomial theorem | Core | `binomial-theorem` | 9 |
+| R4.4 Bijections | Core II | `bijection-method` | 6 |
+
+**R5. Recursion, paths and processes** · Core. Counting by building from smaller cases, lattice paths, and processes run backward or simulated.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R5.1 Recursion and tilings | Core | `recursive-counting`, *(pattern)* `tiling-a-board` | 6 |
+| R5.2 Paths in a grid | Core | `grid-paths`, `grid-path-fill` | 5 |
+| R5.3 Working backward and simulating | Core | `working-backwards`, `backward-induction`, `simulate-the-process` | 22 |
+| R5.4 The reflection principle | Extension | `reflection-principle` | 1 |
+
+**R6. Probability for the AMC 10** · Core. Conditional probability, repeated trials, probability as area, and linearity of expectation.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R6.1 Conditional probability | Core | `conditional-probability`, `hypergeometric` | 12 |
+| R6.2 Repeated trials | Core | `binomial-probability` | 9 |
+| R6.3 Probability as length and area | Core | `geometric-probability` | 31 |
+| R6.4 Linearity of expectation | Core II | `indicator-variables` | 1 |
+
+**R7. Sets, graphs and logic** · Core. Subsets, graphs, pigeonhole, colorings and logic puzzles.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R7.1 Subsets | Extension | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts`, `odd-part-chains` | 2 |
+| R7.2 Graphs | Core | `handshake-lemma`, `eulerian-paths`, *(pattern)* `round-robin-tournaments`, `disconnected-graph-edges` | 9 |
+| R7.3 Pigeonhole and extremes | Core | `pigeonhole`, `pairing-to-bound`, `extremal-principle` | 15 |
+| R7.4 Colorings and invariants | Core | `coloring-arguments`, `invariants-coloring` | 12 |
+| R7.5 Logic puzzles and cases | Core | *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares`, `proof-by-cases`, `wlog-symmetry` | 24 |
+| R7.6 Proof by contrapositive | Extension | `contrapositive` | 3 |
+
+##### Part: AMC 12
+
+**R8. Counting for the AMC 12** · Core II. Upper bounds, symmetry, more binomial identities, and games.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R8.1 Upper bounds and counting up to symmetry | Core II | `stars-bars-upper-bound`, `burnsides-lemma` | 7 |
+| R8.2 More binomial identities | Core II | `vandermonde`, `multinomial-theorem`, `generating-function-method` | 7 |
+| R8.3 Graph coloring and games | Core II | `graph-coloring`, `strategy-stealing`, `turn-based-games`, `sprague-grundy` | 5 |
+
+**R9. Probability for the AMC 12** · Core II. Bayes' theorem, states and waiting times, and continuous probability.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R9.1 Bayes' theorem | Extension | `bayes-theorem` | 1 |
+| R9.2 States and waiting times | Core | `states-recursion-prob`, `geometric-distribution` | 14 |
+| R9.3 Continuous probability | Extension | `product-of-uniforms` | 1 |
+
+##### Part: Toward the AIME
+
+**R10. From the AMC to the AIME: counting and probability** · Core. No new cards: checking cases and overcounts, small cases as a test, and harder mixed problems.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R10.1 Checking cases and double counting | Core | no card (prereq casework-method, organized-listing) | mixed |
+| R10.2 Small cases as a test | Core | no card (prereq recursive-counting) | mixed |
+| R10.3 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+
+#### Book: AMC Geometry
+
+From angles, triangles and areas to circles, coordinates, solids and the AMC 12's trigonometry, conics and vectors, ending with mixed AIME-style problems.
+
+##### Part: Foundations
+
+**S1. Angles, triangles and area** · Core. Angles at parallel lines, what makes a triangle, its area, and Pythagoras.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S1.1 Angles and parallel lines | Core | `parallel-exterior-angles`, `parallel-by-angle-sum`, `angle-chasing`, `clock-angle`, `trapezoid-consecutive-angles` | 12 |
+| S1.2 Triangles and congruence | Core | `triangle-inequality`, `triangle-type-by-sides`, `triangle-congruence` | 18 |
+| S1.3 Area and perimeter | Core | `triangle-area-standard`, `area-by-pieces`, `joined-shapes-perimeter` | 25 |
+| S1.4 The Pythagorean theorem | Core | `pythagorean-theorem`, `shared-leg-pythagoras`, `special-right-triangles` | 115 |
+
+**S2. Quadrilaterals, circles and coordinates: the basics** · Core. Angle sums, quadrilateral areas, the circle's measurements, and points on a grid.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S2.1 Angles in polygons | Core | `polygon-angle-sums`, *(pattern)* `equiangular-polygon` | 7 |
+| S2.2 Quadrilateral areas | Core | `parallelogram-area`, `trapezoid-parallelogram-areas`, `quadrilateral-diagonal-area`, `parallelogram-vertices` | 20 |
+| S2.3 Circles: circumference, area and sectors | Core | `circle-basics`, `circular-segment`, *(pattern)* `tethered-animal` | 70 |
+| S2.4 Points, distances and lines | Core | `distance-midpoint`, `line-forms` | 23 |
+
+##### Part: AMC 10
+
+**S3. Similar triangles and area ratios** · Core. Similarity, parallel lines, ratios of areas, and mass points.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S3.1 Similar triangles | Core | `triangle-similarity`, `similar-figures-ratios` | 69 |
+| S3.2 Parallel lines and midsegments | Core | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` | 10 |
+| S3.3 Ratios of areas | Core | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `incenter-area-split` | 11 |
+| S3.4 Angle bisectors, medians and mass points | Core | `angle-bisector-theorem`, `centroid-division`, `mass-points` | 20 |
+
+**S4. Right, equilateral and general triangles** · Core. Constructions in right triangles, equilateral triangles, Heron's formula and the law of cosines.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S4.1 More right-triangle facts | Core | `15-75-90-triangle`, `median-to-hypotenuse`, `right-triangle-inradius` | 8 |
+| S4.2 Constructions in right triangles | Core | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` | 14 |
+| S4.3 Equilateral triangles and inscribed squares | Core | `equilateral-triangle-facts`, *(pattern)* `point-in-equilateral`, `inscribed-square` | 34 |
+| S4.4 Heron's formula and the inradius | Core | `herons-formula`, `triangle-13-14-15`, `inradius-area`, `max-rectangle-in-triangle` | 12 |
+| S4.5 The law of cosines and the sine area formula | Core | `law-of-cosines`, `law-cosines-60-120`, `law-of-cosines-special-triangles`, `trig-area` | 46 |
+
+**S5. Circles** · Core. Chords, inscribed angles, tangents, power of a point and circles that touch.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S5.1 Chords and arcs | Core | `chord-length`, `equal-chords-arcs` | 25 |
+| S5.2 Inscribed angles and cyclic quadrilaterals | Core | `inscribed-angle-theorem`, `thales-theorem`, `cyclic-opposite-angles`, `cyclic-equal-angles`, *(pattern)* `cyclic-quadrilateral` | 30 |
+| S5.3 Tangents and angles outside the circle | Core | `tangent-facts`, `two-tangents-angle`, `angle-chord-secant`, `tangent-chord-angle` | 26 |
+| S5.4 Power of a point | Core | `power-of-a-point`, `common-chord-length`, `radical-axis` | 9 |
+| S5.5 Incircles and touching circles | Core | `incircle-tangent-lengths`, `tangent-circles`, `triangle-of-centers`, *(pattern)* `tangent-circle-packing`, *(pattern)* `circle-in-angle`, *(pattern)* `rolling-without-slipping`, `triangle-center-angles` | 41 |
+
+**S6. Polygons and counting in figures** · Core. Regular polygons, trapezoids, and counting the shapes in a figure.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S6.1 Regular polygons | Core | `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `golden-ratio-pentagon` | 28 |
+| S6.2 Trapezoids | Core II | `trapezoid-special-segments`, *(pattern)* `isosceles-trapezoid` | 5 |
+| S6.3 Counting in figures | Core | `plane-regions`, `handshakes-diagonals`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski`, `rectangles-in-grid` | 13 |
+
+**S7. Coordinates and transformations** · Core. Lines, circles and areas in coordinates, and reflections and rotations.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S7.1 Lines and distances | Core | `section-formula`, `angle-between-lines`, `parallel-lines-distance`, `point-line-distance` | 16 |
+| S7.2 Circles and loci | Core | `circle-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines`, `perpendicular-bisector-locus`, `bisector-closer-region` | 17 |
+| S7.3 Areas and lattice points | Core | `shoelace-formula`, `picks-theorem`, `coordinate-bash` | 43 |
+| S7.4 Reflections and rotations | Core | `reflection-coordinates`, `rotation-90`, `composing-transformations`, `reflect-across-the-line`, *(pattern)* `folded-paper` | 27 |
+| S7.5 Symmetry and fitting copies | Core | `figure-symmetries`, `fit-copies` | 8 |
+
+**S8. Solids** · Core. Volumes and surfaces, cubes, polyhedra, and unfolding or slicing a solid.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S8.1 Volume and surface area | Core | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `cavalieris-principle` | 32 |
+| S8.2 Cubes | Core | `cube`, `space-diagonal`, *(pattern)* `painted-cubes`, `cube-stack-views`, `cube-nets`, `scale-one-level` | 19 |
+| S8.3 Polyhedra | Core II | `regular-octahedron`, `dodecahedron-icosahedron`, `eulers-polyhedron-formula` | 5 |
+| S8.4 Unfolding and cross sections | Core | `unfold-the-surface`, `cross-section-method` | 8 |
+
+##### Part: AMC 12
+
+**S9. Triangles and circles for the AMC 12** · Core. The law of sines, cevians, cyclic and tangential quadrilaterals, and circles that touch.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S9.1 The law of sines and trigonometry in triangles | Core | `law-of-sines`, `circumradius-area`, `projection-formula`, `pythagorean-identities`, `common-angle-values`, `reduction-identities` | 20 |
+| S9.2 Cevians | Core II | `stewarts-theorem`, `angle-bisector-length`, `apollonius-theorem`, `cevas-theorem`, `medial-triangle`, `vivianis-theorem`, `area-method` | 4 |
+| S9.3 Cyclic and tangential quadrilaterals | Core | `ptolemys-theorem`, `brahmaguptas-formula`, `pitots-theorem`, `perp-to-angle-bisector` | 10 |
+| S9.4 Circles that touch | Core | `common-tangent-lengths`, *(pattern)* `tangency-condition`, `descartes-circle-theorem`, `homothety-monge` | 8 |
+| S9.5 The orthocenter, the excircles and the Euler line | Extension | `orthocenter-properties`, `exradii`, `orthic-triangle`, `euler-distance-theorem` | 4 |
+
+**S10. Analytic geometry** · Core II. Conics, polar coordinates, vectors and transformations, and theorems about quadrilaterals and regions.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S10.1 Conic sections | Core | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity`, `parabolic-segment-area` | 9 |
+| S10.2 Polar coordinates, tangency and determinants | Core II | `polar-coordinates`, `tangency-equation`, `determinant-geometric`, `lattice-points-gcd` | 4 |
+| S10.3 Vectors and transformations | Core | `vector-dot-product`, `vector-projection`, `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `linear-change-of-variables` | 17 |
+| S10.4 Theorems about quadrilaterals and hexagons | Core II | `british-flag-theorem`, `varignons-theorem`, `equiangular-hexagon-area` | 6 |
+| S10.5 Regions and neighborhoods | Extension | `moser-circle`, `steiner-neighborhood`, `isoperimetric-facts` | 7 |
+
+**S11. Space** · Core. Tetrahedra, frusta, and coordinates in three dimensions.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S11.1 Tetrahedra and frusta | Core II | `frustum-volume`, `regular-tetrahedron`, `isosceles-tetrahedron` | 5 |
+| S11.2 Coordinates and planes in space | Core | `plane-cross-section`, `distance-3d`, `point-plane-distance` | 13 |
+
+##### Part: Toward the AIME
+
+**S12. From the AMC to the AIME: geometry** · Core. Signed lengths, degenerate figures, choosing between coordinates and a synthetic route, and harder mixed problems.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S12.1 Signed lengths and degenerate figures | Core | `directed-lengths` | 0 |
+| S12.2 Coordinates or a synthetic route | Core | no card ( prereq coordinate-bash, triangle-similarity) | mixed |
+| S12.3 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+
 ---
 
 ## Book: AMC Algebra
