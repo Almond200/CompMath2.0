@@ -1463,6 +1463,10 @@ window.MATH_LEARN_SHELF = [
      },
      {
       "code": "C5.7",
+      "title": "Winning probabilities from states (Markov chains)"
+     },
+     {
+      "code": "C5.8",
       "title": "Summary"
      }
     ]

@@ -12,9 +12,9 @@ A recursion gives a count in terms of the counts of smaller cases. If $a_n$ is t
 
 Sometimes one count is not enough to say how an object can continue. Then the objects are split into states, such as the last letter of a string, the shape of the end of a board, or the point where a walk now stands, and each state gets its own count and its own recursion.
 
-A process is a rule that changes a configuration step by step: a game, a walk on a grid, or numbers on a board that are combined. There are two questions to ask about it. Where can it go? A table answers that, filled one position at a time from the positions one move away. What can it never change? An invariant is a quantity that every step leaves fixed, and it shows which outcomes are impossible.
+A process is a rule that changes a configuration step by step: a game, a walk on a grid, or numbers on a board that are combined. There are two questions to ask about it. Where can it go? A table answers that, filled one position at a time from the positions one move away. What can it never change? An invariant is a quantity that every step leaves fixed, and it shows which outcomes are impossible. When the steps are random, a third question is how likely each ending is, and the same states, each given a probability, answer it.
 
-The lessons take these ideas in turn: recursions (C5.2), tilings (C5.3), tables of paths and of game positions (C5.4), invariants (C5.5), and lattice paths (C5.6). The Summary (C5.7) collects the strategies.`,
+The lessons take these ideas in turn: recursions (C5.2), tilings (C5.3), tables of paths and of game positions (C5.4), invariants (C5.5), lattice paths (C5.6), and the chance of winning a game, found from its states (C5.7). The Summary (C5.8) collects the strategies.`,
       exercises: [
         { q: String.raw`A sequence has $a_1 = 1$, $a_2 = 3$, and $a_n = a_{n-1} + 2a_{n-2}$ for $n \ge 3$. Find $a_6$.`, answer: "43",
           solution: String.raw`Apply the rule one term at a time: $a_3 = 3 + 2 \cdot 1 = 5$, $a_4 = 5 + 2 \cdot 3 = 11$, $a_5 = 11 + 2 \cdot 5 = 21$, and $a_6 = 21 + 2 \cdot 11 = 43$.` },
@@ -159,7 +159,7 @@ Turns are counted through runs. A path from $(0, 0)$ to $(8, 8)$ with exactly fo
 
 Lattice paths also encode other objects. A sequence of makes and misses in basketball is a path where a make is a step up; the condition that the ratio of makes never exceeds a bound is a line the path must stay below. A configuration determined by a staircase boundary, such as a set of cells closed under moving up and left, is a lattice path along the boundary. A walk on a clock with two hands is a path on a torus, where wrapping around replaces a boundary.
 
-Count paths with the binomial coefficient, split at the points they must pass, subtract those through forbidden points, and count turns through runs. The summary that follows gathers the chapter's ideas, and the review and challenge problems mix them.`,
+Count paths with the binomial coefficient, split at the points they must pass, subtract those through forbidden points, and count turns through runs. The next lesson gives the states probabilities, to find who is likely to win a game of chance.`,
       related: [
         { card: "reflection-principle", note: String.raw`paths that must stay on one side of a line (C4.1).` },
         { card: "grid-path-fill", note: String.raw`counting paths with irregular obstacles by filling the grid (C5.4).` },
@@ -179,7 +179,39 @@ Count paths with the binomial coefficient, split at the points they must pass, s
       ]
     },
     "C5.7": {
-      prereq: ["recursive-counting", "tiling-a-board", "grid-path-fill", "backward-induction", "invariants-coloring", "monovariant", "grid-paths"],
+      prereq: ["basic-probability", "independent-events", "backward-induction"],
+      cards: ["states-recursion-prob"],
+      body: String.raw`Many games of chance are decided by a process that moves from one position to the next at random: a match that goes to deuce, two players taking turns until someone hits, a token walking along a board until it reaches an end. Who is more likely to win, and by how much, is answered by the method of the previous lessons with probabilities in place of counts.
+
+A process like this is a Markov chain: it moves among a set of states, and the chance of each next state depends only on the current state, not on how the process got there. To find the chance of winning, use [[states-recursion-prob|first-step analysis]]. Give each state $s$ an unknown $p_s$, the probability of winning from $s$. The winning states have $p = 1$ and the losing states $p = 0$. For every other state, condition on the first step: $p_s = \sum_t P(s \to t)\,p_t$. That is one linear equation per state, and solving the system gives the answer.
+
+In a match where a player must lead by two games and wins each game with probability $\tfrac23$, the states are the lead: $-1$, $0$, $+1$, with $+2$ winning and $-2$ losing. Then $p_{+1} = \tfrac23 + \tfrac13p_0$, $p_{-1} = \tfrac23p_0$, and $p_0 = \tfrac23p_{+1} + \tfrac13p_{-1}$. Substituting gives $p_0 = \tfrac49 + \tfrac49p_0$, so $p_0 = \tfrac45$: the stronger player's edge of $2$ to $1$ per game becomes $4$ to $1$ for the match. When two players take turns and the first to hit wins, one state is enough. If $A$ shoots first and hits with probability $\tfrac12$, and $B$ hits with probability $\tfrac13$, then after two misses the game is back where it started, so $p = \tfrac12 + \tfrac12 \cdot \tfrac23\,p$ and $p = \tfrac34$.
+
+Everything depends on defining the states clearly. A state must record everything that decides what can happen next, and nothing else: the lead rather than the full score, the last flip rather than the whole sequence. The winning state must be named exactly, since the question asks for the chance of reaching it before some other state. Flip a coin until $HH$ or $TH$ appears. With the last flip as the state, $TH$ wins from every state except the start: once a $T$ appears, the next $H$ makes $TH$ before $HH$ can occur. So $HH$ comes first only when the first two flips are $HH$, with probability $\tfrac14$, although each pattern is equally likely on any two given flips.
+
+Name the states, mark the winning and losing ones, write one equation per state from its first step, and solve. The Summary that follows gathers the chapter's ideas.`,
+      related: [
+        { card: "turn-based-games", note: String.raw`the one-state equation for alternating turns, in closed form (C7.4).` },
+        { card: "gamblers-ruin", note: String.raw`the chain of states $0, 1, \ldots, N$ solved for every $N$ (C7.4).` },
+        { card: "total-expectation", note: String.raw`the same first-step equations for expected numbers of steps (C7.3).` }
+      ],
+      exercises: [
+        { q: String.raw`Two players play games until one of them leads by two. Player $A$ wins each game with probability $\tfrac35$. What is the probability that $A$ wins the match?`, answer: "9/13",
+          solution: String.raw`Let $p_k$ be the probability that $A$ wins when $A$ leads by $k$, with $p_2 = 1$ and $p_{-2} = 0$. Then $p_1 = \tfrac35 + \tfrac25p_0$, $p_{-1} = \tfrac35p_0$, and $p_0 = \tfrac35p_1 + \tfrac25p_{-1} = \tfrac{9}{25} + \tfrac{6}{25}p_0 + \tfrac{6}{25}p_0$. So $\tfrac{13}{25}p_0 = \tfrac{9}{25}$ and $p_0 = \tfrac{9}{13}$.` },
+        { q: String.raw`$A$ and $B$ take turns rolling a die, $A$ first, and the first to roll a $6$ wins. What is the probability that $A$ wins?`, answer: "6/11",
+          solution: String.raw`Let $p$ be the probability that $A$ wins at the start. $A$ wins at once with probability $\tfrac16$; otherwise, if $B$ also misses, with probability $\tfrac56 \cdot \tfrac56$, the game is back at the start. So $p = \tfrac16 + \tfrac{25}{36}p$, which gives $\tfrac{11}{36}p = \tfrac16$ and $p = \tfrac{6}{11}$.` },
+        { q: String.raw`A token starts on square $1$ of a board with squares $0$ to $4$. Each turn it moves right with probability $\tfrac23$ and left with probability $\tfrac13$. What is the probability that it reaches square $4$ before square $0$?`, answer: "8/15",
+          solution: String.raw`Let $p_k$ be the probability of reaching $4$ first from square $k$, with $p_0 = 0$ and $p_4 = 1$. Then $p_1 = \tfrac23p_2$, $p_2 = \tfrac23p_3 + \tfrac13p_1$, and $p_3 = \tfrac23 + \tfrac13p_2$. Substituting the first and third into the second gives $p_2 = \tfrac49 + \tfrac29p_2 + \tfrac29p_2$, so $p_2 = \tfrac45$, and $p_1 = \tfrac23 \cdot \tfrac45 = \tfrac{8}{15}$.` }
+      ],
+      problems: [
+        "2014 AMC 10B, Problem 25",
+        "2021 Spring AMC 10A, Problem 23",
+        "2019 AMC 10B, Problem 22",
+        "2018 AIME II, Problem 13"
+      ]
+    },
+    "C5.8": {
+      prereq: ["recursive-counting", "tiling-a-board", "grid-path-fill", "backward-induction", "invariants-coloring", "monovariant", "grid-paths", "states-recursion-prob"],
       cards: [],
       body: String.raw`A [[recursive-counting|recursion]] counts the objects of size $n$ through the objects of smaller size, by asking about the last step, the last piece, or the largest element. It is correct when every object comes from exactly one smaller object in exactly one way, and a few starting values, checked by listing, fix the table.
 
@@ -187,7 +219,9 @@ When one count does not say how an object can continue, the objects are split in
 
 [[grid-path-fill|Filling a grid]] writes at each point the number of paths that reach it, the sum of the numbers at the points one move before it, with $0$ at blocked points. [[backward-induction|Labeling a game backward]] marks a position as losing when every move leads to a winning position, and winning when some move leads to a losing one.
 
-An [[invariants-coloring|invariant]] is a quantity that no step changes, and it rules out the outcomes it does not allow. A [[monovariant|monovariant]] moves in one direction at every step, so it shows that a process stops or cannot cycle. [[grid-paths|Lattice paths]] from $(0, 0)$ to $(m, n)$ number $\binom{m + n}{m}$; paths through a point multiply, and paths that avoid a point are counted by subtraction.`,
+An [[invariants-coloring|invariant]] is a quantity that no step changes, and it rules out the outcomes it does not allow. A [[monovariant|monovariant]] moves in one direction at every step, so it shows that a process stops or cannot cycle. [[grid-paths|Lattice paths]] from $(0, 0)$ to $(m, n)$ number $\binom{m + n}{m}$; paths through a point multiply, and paths that avoid a point are counted by subtraction.
+
+A game decided by chance is a Markov chain: it moves among states, each next state depending only on the current one. [[states-recursion-prob|First-step analysis]] gives each state its probability of winning, $1$ at the winning states and $0$ at the losing ones, and one equation per state, $p_s = \sum_t P(s \to t)\,p_t$.`,
       strategies: [
         String.raw`To find a recursion, ask what the last step, the last piece, or the largest element can be. Each answer leaves a smaller object of the same kind.`,
         String.raw`If one count does not tell you how an object can continue, split it by state: the last symbol, the shape of the end, or the current position.`,
@@ -196,7 +230,9 @@ An [[invariants-coloring|invariant]] is a quantity that no step changes, and it 
         String.raw`When positions depend only on positions one move away, fill a table in an order where every value needed is already known.`,
         String.raw`In a game, label positions from the end backward, and look for a period in the labels.`,
         String.raw`When a process is long or arbitrary, look at what one step does to the sum, the parity, a residue, or the product.`,
-        String.raw`Count lattice paths with a binomial coefficient, split them at a point they must pass, and subtract the paths through a forbidden point.`
+        String.raw`Count lattice paths with a binomial coefficient, split them at a point they must pass, and subtract the paths through a forbidden point.`,
+        String.raw`Define your states clearly before writing any equation. Each state must hold everything that decides what can happen next, and the winning state you are seeking must be named exactly, together with the states that end the game another way.`,
+        String.raw`For a chance of winning, give each state an unknown, set the winning states to $1$ and the losing ones to $0$, and write one equation per state from its first step.`
       ]
     }
   },
