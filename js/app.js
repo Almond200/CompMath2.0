@@ -3804,15 +3804,11 @@
     });
   }
 
-  function renderDetail(entry) {
+  // The card's write-up split into the parts the card page draws in their own places (Key forms,
+  // When to use, Contest profile, Formulas it uses, Common traps, Methods and Formulas to Try),
+  // so the card page and the preview in a lesson's drawer draw them the same way.
+  function cardSections(entry) {
     const f = entry.formula;
-    noteRecent("f:" + f.id);
-    state.activeSectionId = entry.section.id;
-    state.activeSub = bySubject(entry.section) ? entry.section.subsections.indexOf(entry.subsection) : null;
-    state.activeTopic = bySubject(entry.section) ? null : entry.section.subsections.indexOf(entry.subsection);
-    const ownGroup = bySubject(entry.section) && entry.subsection.groups ? entry.subsection.groups.findIndex(g => g.ids.indexOf(f.id) !== -1) : -1;
-    state.activeCluster = ownGroup >= 0 ? ownGroup : null;
-    state.openGroup = null;
     const body = notate((window.MATH_DETAILS || {})[f.id]);
     // Any card that actually carries a "## Key forms" block renders it. This began as a
     // method-only feature on the reasoning that a formula card already lists its formulas in
@@ -3826,7 +3822,6 @@
     // key forms, so it keeps the honest heading.
     const formsHtml = split.formsHtml("Key forms");
     const kind = kindOf(f), converted = isConverted(f);
-    state.landing = false;
     // The authored contest-profile sentence and a method's supporting mathematics render in
     // their own places on the page, so they are lifted out of the running write-up.
     const prof = pullSection(split.rest, "Contest profile");
@@ -3839,6 +3834,31 @@
     // that suggest the move (computed from their `suggests`).
     const whenSec = kind === "method" && converted ? pullSection(trySec.rest, "When to use") : { text: null, rest: trySec.rest };
     const rest = whenSec.rest;
+    return { formsHtml, kind, converted, prof, supp, trapSec, trySec, whenSec, rest };
+  }
+  // The explanation of a card, in the card page's order and with its drawing of each section.
+  function cardExplanationHtml(entry, sec) {
+    const f = entry.formula, { formsHtml, kind, converted, supp, trapSec, trySec, whenSec, rest } = sec;
+    return `${formsHtml}
+        ${kind === "method" && converted ? whenToUseHtml(f, whenSec.text) : ""}
+        ${rest && rest.trim() ? `<div class="detail-body">${detailBodyHtml(rest, f.id)}</div>` : ""}
+        ${tryHtml(f, trySec.text)}
+        ${kindLinksHtml(entry, supp.text)}
+        ${trapSec.text ? `<div class="detail-body">${detailBodyHtml("## Common traps\n" + trapSec.text, f.id)}</div>` : ""}`;
+  }
+
+  function renderDetail(entry) {
+    const f = entry.formula;
+    noteRecent("f:" + f.id);
+    state.activeSectionId = entry.section.id;
+    state.activeSub = bySubject(entry.section) ? entry.section.subsections.indexOf(entry.subsection) : null;
+    state.activeTopic = bySubject(entry.section) ? null : entry.section.subsections.indexOf(entry.subsection);
+    const ownGroup = bySubject(entry.section) && entry.subsection.groups ? entry.subsection.groups.findIndex(g => g.ids.indexOf(f.id) !== -1) : -1;
+    state.activeCluster = ownGroup >= 0 ? ownGroup : null;
+    state.openGroup = null;
+    const sec = cardSections(entry);
+    const { formsHtml, kind, converted, prof, supp, trapSec, trySec, whenSec, rest } = sec;
+    state.landing = false;
     const hasDiagram = !!((window.MATH_DIAGRAMS || {})[f.id] || []).length;
     const exHtml = practiceHtml(f);
     const profileHtml = contestProfileHtml(f, prof.text), problemsHtml = contestHtml(f);
@@ -3887,12 +3907,7 @@
           const inner = panels.map(d => `<div class="diagram detail-diagram">${d}</div>`).join("");
           return `<div class="detail-diagrams dd-${Math.min(panels.length, 3)}">${inner}</div>`;
         })()}
-        ${formsHtml}
-        ${kind === "method" && converted ? whenToUseHtml(f, whenSec.text) : ""}
-        ${rest && rest.trim() ? `<div class="detail-body">${detailBodyHtml(rest, f.id)}</div>` : ""}
-        ${tryHtml(f, trySec.text)}
-        ${kindLinksHtml(entry, supp.text)}
-        ${trapSec.text ? `<div class="detail-body">${detailBodyHtml("## Common traps\n" + trapSec.text, f.id)}</div>` : ""}
+        ${cardExplanationHtml(entry, sec)}
         ${(window.MATH_WIDGETS || {})[f.id] ? `<div class="interactive"><h4>Interactive</h4><div id="formula-widget"></div></div>` : ""}
         ${profileHtml}
         ${exHtml}
@@ -5390,19 +5405,30 @@
   function openLearnDrawer(id) {
     const e = BY_ID[id], drawer = $content.querySelector(".lp-drawer");
     if (!e || !drawer) return;
-    const body = (window.MATH_DETAILS || {})[id];
+    const f = e.formula, sec = cardSections(e);
+    const fig = ((window.MATH_DIAGRAMS || {})[id] || [])[0];
+    // The preview: what the card is (kind, tier, name), its formula at full width, the one-line
+    // summary and the first figure, then the explanation drawn exactly as on the card page. The
+    // practice problems, examples and links stay on the full card, which the last line opens.
     drawer.innerHTML = `<div class="lp-drawer-head">
-          <a class="lp-drawer-full" href="#/f/${id}">Open the full card &rarr;</a>
+          <div class="card-meta">${kindBadgeHtml(f)}${impBadgeHtml(f)}</div>
           <button type="button" class="lp-drawer-close" aria-label="Close the card">&times;</button>
         </div>
-        <div class="cards lp-drawer-cards">${cardHtml(e).replace(` data-id="${id}"`, ` data-drawer-id="${id}"`)}</div>
-        ${body ? `<div class="detail-body lp-drawer-body">${detailBodyHtml(notate(body), id)}</div>` : ""}`;
+        <div class="detail lp-preview">
+          <div class="lp-preview-title"><h3 class="card-name">${f.name}</h3><span class="detail-actions">${starBtnHtml(id)}${addListBtnHtml(id)}</span></div>
+          ${f.latex ? `<div class="formula-display detail-formula" data-latex="${escapeAttr(latexFor(f))}"></div>` : ""}
+          ${leadBoxHtml(f)}
+          <p class="card-desc detail-summary">${linkifyCards(f.descriptionLinked || f.description)}</p>
+          ${fig ? `<div class="diagram detail-diagram">${fig}</div>` : ""}
+          ${cardExplanationHtml(e, sec)}
+          <a class="lp-drawer-full" href="#/f/${id}">Open the full card for its examples, practice problems and links &rarr;</a>
+        </div>`;
     drawer.hidden = false;
     drawer.scrollTop = 0;
     $content.querySelector(".lp-grid").classList.add("has-drawer");
     renderMath(drawer);
     wireProofToggles(drawer);
-    fitCardFormulas(drawer);
+    fitBatch([...drawer.querySelectorAll(".formula-display[data-latex]")]);
     drawer.querySelector(".lp-drawer-close").focus({ preventScroll: true });
   }
   function closeLearnDrawer() {
@@ -5424,7 +5450,7 @@
     if (isReview) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
         <h2 class="learn-h">${c.code} chapter review</h2>
-        <p class="learn-note">Mixed problems from the whole chapter, in rising order. Work each one in its box first; Show Solution opens once you have written something.</p>
+        <p class="learn-note">Mixed problems from the whole chapter, in rising order of difficulty.</p>
         ${learnProblemsHtml(learnReview(c))}`;
     } else if (!d) {
       main = `<div class="book-eyebrow">Learn &middot; ${escapeAttr(b.title)} &middot; ${c.code}</div>
@@ -5507,7 +5533,7 @@
     if (e.target.closest(".lp-drawer-close")) { closeLearnDrawer(); return; }
     if (e.target.closest("[data-bk-top]")) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); return; }
     // A card link in the lesson opens in the drawer instead of leaving the page.
-    const link = e.target.closest(".lp-main .card-link[data-card], .lp-drawer-body .card-link[data-card]");
+    const link = e.target.closest(".lp-main .card-link[data-card], .lp-preview .card-link[data-card]");
     if (link && BY_ID[link.dataset.card] && !e.metaKey && !e.ctrlKey && !e.shiftKey) {
       e.preventDefault();
       e.stopImmediatePropagation();
