@@ -3704,9 +3704,9 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hp-daily { cursor: pointer; margin: 0 -12px; padding-left: 12px; padding-right: 12px; border-radius: 8px; transition: background 0.12s; }
 .home .hp-daily.hp-click:hover, .home .hp-daily.hp-click:focus-visible { background: var(--space-soft); }
 .home .hp-daily:hover + * , .home .hp-daily:focus-visible + * { border-top-color: transparent; }
-.home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 10px; }
-.home .hp-daily .daily-st { padding-bottom: 12px; }
-.home .hp-daily .daily-st .prob-credit { margin: 2px 14px 0; }
+/* The statement is plain text in the section, with no shaded box around it (owner, 2026-10-31). */
+.home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: none; border: none; border-radius: 0; padding: 0; }
+.home .hp-daily .daily-st .prob-credit { margin: 6px 0 0; }
 .home .rc-row { padding-top: 6px; padding-bottom: 6px; }
 .home .pg-row { padding-top: 6px; padding-bottom: 6px; }
 .home .dyk { font-size: 14px; }
