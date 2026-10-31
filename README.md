@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Algebra L8 Inequalities, extremes and estimates written; the Core topics part is complete.** L8.1 Introduction, L8.2 a square is never negative, L8.3 AM-GM and fixed sums, L8.4 distances on the number line, L8.5 extremes by arrangement, L8.6 estimating and checking, L8.7 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L7 Polynomials written.** L7.1 Introduction, L7.2 division and the remainder theorem, L7.3 rational roots and coefficients, L7.4 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L6 Sequences and series written.** L6.1 Introduction, L6.2 arithmetic sequences and triangular numbers, L6.3 geometric sequences and power sums, L6.4 recursive and periodic sequences, L6.5 telescoping and clever sums, L6.6 Summary, Review Problems and Challenge Problems.
 - **AMC Algebra L5 Substitutions and symmetric expressions written.** L5.1 Introduction, L5.2 naming the whole expression (repeated blocks, nested expressions), L5.3 symmetric sums and factoring tricks, L5.4 Summary, Review Problems and Challenge Problems. Few AMC problems use these cards, so the lessons also use early AIME problems, as the plan allows.
