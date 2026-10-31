@@ -3882,18 +3882,29 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
 
 /* A lesson is read, not skimmed: larger text in the main colour, and clear subheadings
    (owner, 2026-10-31: the write-up's 14px read as tiny). */
-.lp-body p, .lp-body .detail-list li { font-size: 16.5px; line-height: 1.75; color: var(--text); }
+.lp-body p, .lp-body .detail-list li { font-size: 15.5px; line-height: 1.75; color: var(--text); }
 .lp-body .body-sub { margin: 22px 0 8px; font-size: 19px; font-weight: 750; letter-spacing: -0.01em; color: var(--text); text-transform: none; }
 .lp-body > .body-sub:first-child, .lp-body > :first-child .body-sub:first-child { margin-top: 4px; }
-html[data-text="large"] .lp-body p { font-size: 18px; }
-html[data-text="larger"] .lp-body p { font-size: 20px; }
-@media (max-width: 600px) { .lp-body p, .lp-body .detail-list li { font-size: 16px; } }
-.lesson-page .lc-q { font-size: 16.5px; }
+html[data-text="large"] .lp-body p { font-size: 17px; }
+html[data-text="larger"] .lp-body p { font-size: 19px; }
+@media (max-width: 600px) { .lp-body p, .lp-body .detail-list li { font-size: 15.5px; } }
+.lesson-page .lc-q { font-size: 15.5px; }
 
-/* A lesson's own problems, then their solutions (owner, 2026-10-31): plain numbered statements
-   and worked solutions, in the lesson's reading size, divided by hairlines; no boxes. */
+/* A lesson's own problems, each in its own card like the contest problems, with "Jump to
+   solution"; then the solutions, plain and divided by hairlines, each with "Back to problem"
+   (owner, 2026-10-31). */
 .lx-list { list-style: none; margin: 0; padding: 0; }
-.lx, .lx-sol { padding: 12px 0; border-top: 1px solid var(--border); font-size: 16.5px; line-height: 1.75; color: var(--text); }
-.lx:first-child, .lx-sol:first-child { border-top: none; padding-top: 4px; }
-.lx-n { display: block; margin-bottom: 2px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--bk-ink, var(--c-learn)); }
-@media (max-width: 600px) { .lx, .lx-sol { font-size: 16px; } }
+.lx { margin: 0 0 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg-card); overflow: hidden; }
+/* A hairline across the card under the label and "Jump to solution" (owner, 2026-10-31). */
+.lx > .lx-head { margin: 0; padding: 9px 16px; border-bottom: 1px solid var(--border); align-items: center; }
+.lx > .lx-q { padding: 12px 16px 14px; }
+/* A solution: the problem's card again, then "Solution for Problem ...:" and the worked solution. */
+.lx-sol { margin: 0 0 26px; }
+.lx-sol .lx-again { margin-bottom: 10px; }
+.lx-sol-h { margin: 0 0 4px; font-size: 15px; font-style: italic; color: var(--text-dim); }
+.lx-sol > .lx-s { padding: 0 2px; }
+.lx-q, .lx-s { font-size: 15.5px; line-height: 1.75; color: var(--text); }
+.lx-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.lx-n { font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--bk-ink, var(--c-learn)); }
+.lx-jump { flex: 0 0 auto; padding: 2px 8px; border: none; border-radius: 6px; background: none; font: inherit; font-size: 12.5px; font-weight: 650; color: var(--text-dim); cursor: pointer; }
+.lx-jump:hover { background: var(--bg-panel); color: var(--bk-ink, var(--c-learn)); }
