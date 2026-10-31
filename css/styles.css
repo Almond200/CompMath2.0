@@ -2763,10 +2763,15 @@ body.is-landing .content { padding: 0 0 70px; }
 .mk-input:focus { outline: none; border-color: var(--c-learn); }
 .mk-submit { flex: 0 0 auto; font: inherit; font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 8px; border: none;
   background: var(--c-learn); color: var(--bg); cursor: pointer; }
-.mk-preview { min-height: 2em; padding: 2px 4px 8px; font-size: 18px; overflow-x: auto; }
+.mk-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.mk-preview { flex: 1 1 auto; min-width: 0; min-height: 1.9em; display: flex; align-items: center; padding: 2px 4px; font-size: 18px; overflow-x: auto; }
+.mk-preview.mk-note { font-size: 12.5px; line-height: 1.4; color: var(--text-dim); }
+.mk-key.mk-clear { flex: 0 0 auto; min-height: 30px; padding: 0 10px; font-size: 12.5px; color: var(--text-dim); }
+.mk-hint { margin: 8px 2px 0; font-size: 11.5px; line-height: 1.4; color: var(--text-faint); }
+@media (hover: none) { .mk-hint { display: none; } }
 .mk-preview:empty::before { content: "Your answer, typeset, appears here"; font-size: 13px; color: var(--text-faint); }
 .mk-keys { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; }
-.mk-key { font: inherit; font-size: 16px; min-height: 40px; padding: 0; border-radius: 8px; border: 1px solid var(--border);
+.mk-key { font: inherit; font-size: 16px; min-height: 42px; padding: 0; border-radius: 8px; border: 1px solid var(--border);
   background: var(--bg-panel); color: var(--text); cursor: pointer; touch-action: manipulation; user-select: none; -webkit-user-select: none; }
 .mk-key:hover { border-color: var(--c-learn); }
 .mk-key:active { background: var(--cs-learn); }
