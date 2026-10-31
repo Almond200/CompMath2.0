@@ -46,7 +46,7 @@ A line rotated by $\theta$ about a point makes the [[rotated-line-angle|angle $\
 Write each move as a formula, combine reflections into rotations and translations, and look for the period of a repeated move. The next lesson does the same with complex numbers.`,
       related: [
         { card: "rotation-trick", note: String.raw`rotating part of a figure to bring distances together (G6.3).` },
-        { card: "figure-symmetries", note: String.raw`the symmetry groups of polygons, where compositions live (G7.3).` },
+        { card: "figure-symmetries", note: String.raw`the symmetry groups of polygons, where compositions live (G7.4).` },
         { card: "periodic-sequences", note: String.raw`the period of a repeated transformation.` }
       ],
       exercises: [
@@ -113,7 +113,7 @@ Use vectors when a figure has many midpoints or averages, when perpendicularity 
       related: [
         { card: "coordinate-bash", note: String.raw`vectors with components, when axes help (G4.2).` },
         { card: "orthocenter-properties", note: String.raw`the vector formula for the orthocenter (G5.3).` },
-        { card: "equiangular-polygon", note: String.raw`polygons whose closing condition gives side relations (G7.1).` }
+        { card: "equiangular-polygon", note: String.raw`polygons whose closing condition gives side relations (G7.2).` }
       ],
       exercises: [
         { q: String.raw`Find the angle, in degrees, between the vectors $(1, 2)$ and $(3, 1)$.`, answer: "45",

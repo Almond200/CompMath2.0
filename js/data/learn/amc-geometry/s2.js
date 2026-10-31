@@ -16,7 +16,7 @@ Split from the center, cut into known shapes, and subtract what is outside. The 
       related: [
         { card: "shoelace-formula", note: String.raw`areas from coordinates (S2.2).` },
         { card: "varignons-theorem", note: String.raw`the midpoint quadrilateral (S4.2).` },
-        { card: "golden-ratio-pentagon", note: String.raw`the regular pentagon (G7.1).` }
+        { card: "golden-ratio-pentagon", note: String.raw`the regular pentagon (G7.2).` }
       ],
       exercises: [
         { q: String.raw`Find the area of a regular hexagon with side $4$.`, answer: "24sqrt(3)",

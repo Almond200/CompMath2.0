@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G6 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and G1 to G7 are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1253,11 +1253,13 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 | Lesson | Cards |
 |---|---|
-| G7.1 Regular polygons: chords, diagonals, angles (Core) | `polygon-angle-sums`, `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `equilateral-triangle-facts`, `golden-ratio-pentagon`, *(pattern)* `equiangular-polygon` |
-| G7.2 Cutting polygons into pieces (Core) | `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `varignons-theorem`, `circular-segment`, `inscribed-square`, `diagonal-angle-from-sides`, *(pattern)* `isosceles-trapezoid`, *(pattern)* `tethered-animal` |
-| G7.3 Symmetry and rotational structure (Core II) | `figure-symmetries`, `fit-copies`, *(pattern)* `square-crossing-segments` |
-| G7.4 Lattices, grids, unit geometry (Core) | `picks-theorem`, `lattice-points-gcd`, `british-flag-theorem` |
-| G7.5 Counting intersections, regions and pieces (Core) | `plane-regions`, `moser-circle`, `handshakes-diagonals`, `steiner-neighborhood`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski` |
+| G7.1 Introduction | no card (the chapter's opening page: regular polygons, areas by pieces, symmetry, lattice points and Pick's theorem, counting regions, with comprehension problems) |
+| G7.2 Regular polygons: chords, diagonals, angles (Core) | `polygon-angle-sums`, `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `equilateral-triangle-facts`, `golden-ratio-pentagon`, *(pattern)* `equiangular-polygon` |
+| G7.3 Cutting polygons into pieces (Core) | `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `varignons-theorem`, `circular-segment`, `inscribed-square`, `diagonal-angle-from-sides`, *(pattern)* `isosceles-trapezoid`, *(pattern)* `tethered-animal` |
+| G7.4 Symmetry and rotational structure (Core II) | `figure-symmetries`, `fit-copies`, *(pattern)* `square-crossing-segments` |
+| G7.5 Lattices, grids, unit geometry (Core) | `picks-theorem`, `lattice-points-gcd`, `british-flag-theorem` |
+| G7.6 Counting intersections, regions and pieces (Core) | `plane-regions`, `moser-circle`, `handshakes-diagonals`, `steiner-neighborhood`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski` |
+| G7.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G7.8 Review Problems and G7.9 Challenge Problems |
 
 ### G8. Three-dimensional geometry (Core II)
 

@@ -1,6 +1,6 @@
 // Learn, AIME Counting & Probability, chapter C8: graphs, grids and combinatorial structures (CONVENTIONS §14).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
-// Counting the shapes in a figure belongs to G7.5, so the chapter keeps to graphs, colorings and pigeonhole;
+// Counting the shapes in a figure belongs to G7.6, so the chapter keeps to graphs, colorings and pigeonhole;
 // C8.1 is the Introduction and C8.6 the Summary; Review and Challenge Problems use contest problems the lessons left.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["C8"] = {
@@ -49,7 +49,7 @@ In a [[round-robin-tournaments|round-robin tournament]] each of $n$ teams plays 
 Model the situation as a graph, count edge ends to get equations, and check degrees for routes. The next lesson counts rectangles and squares in grids.`,
       related: [
         { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, the second equation in polyhedron counts.` },
-        { card: "handshakes-diagonals", note: String.raw`pairs of points, players or vertices counted as $\binom n2$ (G7.5).` },
+        { card: "handshakes-diagonals", note: String.raw`pairs of points, players or vertices counted as $\binom n2$ (G7.6).` },
         { card: "graph-coloring", note: String.raw`coloring the vertices of a graph so that edges join different colors (C8.4).` }
       ],
       exercises: [
@@ -83,7 +83,7 @@ Organizing by size and position also handles irregular regions. To count squares
 Choose bounding lines when the shapes are axis-parallel rectangles, and organize by size and position for squares and for regions with curved or irregular edges. The next lesson uses colorings to prove that some things are impossible.`,
       related: [
         { card: "power-sums", note: String.raw`sums of squares and cubes that total the squares of each size.` },
-        { card: "counting-shapes", note: String.raw`counting triangles and other shapes in a figure (G7.5).` },
+        { card: "counting-shapes", note: String.raw`counting triangles and other shapes in a figure (G7.6).` },
         { card: "floor-basics", note: String.raw`counting positions under a curve with floors (A4.3).` }
       ],
       exercises: [

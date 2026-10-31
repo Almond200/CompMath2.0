@@ -124,7 +124,7 @@ Write products of segments along lines through a common point, subtract circle e
 Use Ptolemy when an inscribed polygon has chords of a few lengths, equal-chord reasoning to sort chords into classes, and Brahmagupta for areas. The next lesson turns to circles inside triangles.`,
       related: [
         { card: "herons-formula", note: String.raw`the triangle case of Brahmagupta's formula (G3.2).` },
-        { card: "golden-ratio-pentagon", note: String.raw`the pentagon's diagonal-to-side ratio, found here by Ptolemy (G7.1).` },
+        { card: "golden-ratio-pentagon", note: String.raw`the pentagon's diagonal-to-side ratio, found here by Ptolemy (G7.2).` },
         { card: "ptolemys-inequality", note: String.raw`the inequality for quadrilaterals that are not cyclic.` }
       ],
       exercises: [

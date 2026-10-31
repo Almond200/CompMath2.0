@@ -1547,28 +1547,36 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "G7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "G7.2",
       "title": "Regular polygons: chords, diagonals, angles",
       "level": "Core"
      },
      {
-      "code": "G7.2",
+      "code": "G7.3",
       "title": "Cutting polygons into pieces",
       "level": "Core"
      },
      {
-      "code": "G7.3",
+      "code": "G7.4",
       "title": "Symmetry and rotational structure",
       "level": "Core II"
      },
      {
-      "code": "G7.4",
+      "code": "G7.5",
       "title": "Lattices, grids, unit geometry",
       "level": "Core"
      },
      {
-      "code": "G7.5",
+      "code": "G7.6",
       "title": "Counting intersections, regions and pieces",
       "level": "Core"
+     },
+     {
+      "code": "G7.7",
+      "title": "Summary"
      }
     ]
    },

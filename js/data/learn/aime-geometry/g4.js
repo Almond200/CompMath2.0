@@ -129,7 +129,7 @@ With parameters, the shoelace formula gives the area as a polynomial in the para
 
 Use the shoelace formula whenever the vertices are known or can be computed, and the determinant to see how transformations change area. The next lesson studies the conic sections.`,
       related: [
-        { card: "picks-theorem", note: String.raw`the area of a lattice polygon from its lattice points (G7.4).` },
+        { card: "picks-theorem", note: String.raw`the area of a lattice polygon from its lattice points (G7.5).` },
         { card: "axis-stretch-area", note: String.raw`stretching one axis multiplies areas by the stretch factor (G6.5).` },
         { card: "cross-product-area", note: String.raw`the area of a triangle in space (G8.4).` }
       ],

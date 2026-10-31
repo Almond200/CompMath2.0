@@ -5,6 +5,34 @@ window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["G7"] = {
   lessons: {
     "G7.1": {
+      prereq: ["special-right-triangles", "triangle-area-standard", "shoelace-formula"],
+      cards: [],
+      body: String.raw`This chapter studies polygons and the counting problems that live on them. Its tools are the angles and areas of regular polygons, cutting a figure into pieces whose areas are known, symmetry, lattice points with Pick's theorem, and counting intersections, regions and shapes.
+
+The angles of an $n$-gon add to $(n - 2) \cdot 180^\circ$, so each angle of a regular $12$-gon is $150^\circ$. A regular polygon splits from its center into congruent isosceles triangles, and a regular hexagon into six equilateral triangles: with side $2$ its area is $6 \cdot \tfrac{\sqrt3}{4} \cdot 4 = 6\sqrt3$. The regular octagon and dodecagon are squares and hexagons with corners cut off or added.
+
+Most area problems are solved by cutting the figure into triangles, rectangles and trapezoids, or by subtracting pieces from a larger figure. A quadrilateral's area is half the product of its diagonals times the sine of the angle between them, and in a trapezoid the diagonals create similar triangles.
+
+A polygon whose vertices are lattice points has area $I + \tfrac B2 - 1$, where $I$ counts the lattice points inside and $B$ those on the boundary (Pick's theorem): with $I = 10$ and $B = 8$ the area is $13$. A segment between lattice points contains $\gcd(\Delta x, \Delta y) + 1$ of them.
+
+Last, figures made of lines and circles are counted: $n$ lines in general position cut the plane into $1 + n + \binom n2$ regions, and chords among points on a circle give the regions counted by Euler's formula.
+
+The lessons take these ideas in turn: regular polygons (G7.2), cutting polygons into pieces (G7.3), symmetry (G7.4), lattices and grids (G7.5), and counting intersections, regions and pieces (G7.6). The Summary (G7.7) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Find each interior angle of a regular $12$-gon, in degrees.`, answer: "150",
+          solution: String.raw`The angles of a $12$-gon add to $10 \cdot 180^\circ = 1800^\circ$, so each of the twelve equal angles is $150^\circ$.` },
+        { q: String.raw`Find the area of a regular hexagon with side $2$.`, answer: "6sqrt(3)",
+          solution: String.raw`The hexagon splits into six equilateral triangles of side $2$, each of area $\tfrac{\sqrt3}{4} \cdot 4 = \sqrt3$. The area is $6\sqrt3$.` },
+        { q: String.raw`A polygon with vertices at lattice points has $10$ lattice points inside it and $8$ on its boundary. Find its area.`, answer: "13",
+          solution: String.raw`By Pick's theorem, the area is $I + \tfrac B2 - 1 = 10 + 4 - 1 = 13$.` }
+      ],
+      problems: [
+        "2011 AIME II, Problem 3",
+        "2002 AIME II, Problem 4",
+        "1987 AIME, Problem 4"
+      ]
+    },
+    "G7.2": {
       prereq: ["special-right-triangles"],
       cards: ["polygon-angle-sums", "regular-polygon-area", "regular-hexagon-area", "regular-octagon", "regular-dodecagon", "equilateral-triangle-facts", "golden-ratio-pentagon", "equiangular-polygon"],
       body: String.raw`Regular polygons are built from congruent isosceles triangles around a center, and every length in them is a chord of the circumcircle. A handful of facts, the angle sums, the areas of the common polygons, and the special triangles inside them, answer most questions about hexagons, octagons, dodecagons and pentagons, and the same facts extend to polygons that are equiangular but not regular.
@@ -48,7 +76,7 @@ Split regular polygons into triangles from the center, complete equiangular ones
         "2018 AIME II, Problem 4"
       ]
     },
-    "G7.2": {
+    "G7.3": {
       prereq: ["triangle-area-standard"],
       cards: ["area-by-pieces", "trapezoid-parallelogram-areas", "parallelogram-area", "quadrilateral-diagonal-area", "trapezoid-special-segments", "varignons-theorem", "circular-segment", "inscribed-square", "diagonal-angle-from-sides"],
       body: String.raw`Most area problems are solved by cutting a figure into pieces whose areas are known, or by subtracting known pieces from a larger shape. Quadrilaterals have several area formulas, each suited to different data, and regions bounded by arcs reduce to sectors and triangles. Choosing the cut is the whole skill.
@@ -93,7 +121,7 @@ Cut along lines that create shapes with known formulas, and use differences when
         "2019 AIME II, Problem 13"
       ]
     },
-    "G7.3": {
+    "G7.4": {
       prereq: ["rotation-90", "reflection-coordinates"],
       cards: ["figure-symmetries", "fit-copies", "square-crossing-segments"],
       body: String.raw`Symmetry appears in polygon problems in three ways: as a question (how many symmetries does a figure have, or how many colorings are symmetric), as a tool (a symmetric figure's center, axes and equal parts come for free), and as a structure (copies of a piece fitting together around a point). Recognizing which applies decides the approach.
@@ -123,7 +151,7 @@ Look for the rotation or reflection that maps the figure to itself, and use it t
         "2005 AIME I, Problem 14"
       ]
     },
-    "G7.4": {
+    "G7.5": {
       prereq: ["euclidean-algorithm", "shoelace-formula"],
       cards: ["picks-theorem", "lattice-points-gcd", "british-flag-theorem"],
       body: String.raw`Points with integer coordinates give geometry an arithmetic side. How many lattice points lie on a segment, how many unit squares a line crosses, how large a lattice polygon is from the points it covers: each has a short answer through the greatest common divisor or Pick's theorem. The British flag theorem adds a quick relation for rectangles that is often useful on grids.
@@ -155,7 +183,7 @@ Use the gcd to count lattice points on segments, Pick to pass between areas and 
         "2017 AIME II, Problem 14"
       ]
     },
-    "G7.5": {
+    "G7.6": {
       prereq: ["handshake-lemma", "permutations-combinations"],
       cards: ["plane-regions", "moser-circle", "handshakes-diagonals", "steiner-neighborhood", "counting-shapes", "zonogon-minkowski"],
       body: String.raw`Counting in geometry asks how many intersection points, regions, triangles or diagonals a figure has, or how large the region swept by a moving shape is. The counts come from choosing points and lines; the regions come from Euler's formula; and swept areas follow from adding a border to a shape.
@@ -166,7 +194,7 @@ The number of [[plane-regions|regions]] made by lines and circles follows from E
 
 The set of points within distance $r$ of a convex shape, its [[steiner-neighborhood|Steiner neighborhood]], has area $A + Pr + \pi r^2$ (area plus perimeter times $r$ plus a full disk at the corners): for a $3 \times 4$ rectangle and $r = 1$, $12 + 14 + \pi = 26 + \pi$. The region swept when a point moves by independent amounts in several directions is a [[zonogon-minkowski|zonogon]], a polygon with opposite sides parallel and equal, whose area is the sum of the areas of the parallelograms spanned by pairs of directions.
 
-Count pairs with binomial coefficients, regions with Euler's formula or the add-one-line rule, and swept areas with the Steiner formula. The next chapter goes into three dimensions.`,
+Count pairs with binomial coefficients, regions with Euler's formula or the add-one-line rule, and swept areas with the Steiner formula. The Summary (G7.7) collects the chapter's strategies, and the next chapter goes into three dimensions.`,
       related: [
         { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, the source of region counts (G8.5).` },
         { card: "rectangles-in-grid", note: String.raw`rectangles and squares in a grid of lines (C8.3).` },
@@ -191,6 +219,57 @@ Count pairs with binomial coefficients, regions with Euler's formula or the add-
         "2003 AIME I, Problem 5",
         "2022 AIME II, Problem 9"
       ]
+    },
+    "G7.7": {
+      prereq: ["polygon-angle-sums", "regular-polygon-area", "regular-hexagon-area", "area-by-pieces", "quadrilateral-diagonal-area", "trapezoid-special-segments", "picks-theorem", "lattice-points-gcd", "british-flag-theorem", "plane-regions", "moser-circle"],
+      cards: [],
+      body: String.raw`[[polygon-angle-sums|The angles of an $n$-gon]] add to $(n - 2) \cdot 180^\circ$. [[regular-polygon-area|A regular polygon]] splits into congruent triangles from its center, and [[regular-hexagon-area|the regular hexagon]] into six equilateral triangles.
+
+[[area-by-pieces|An area by pieces]] adds or subtracts triangles, rectangles and trapezoids. [[quadrilateral-diagonal-area|A quadrilateral's area]] is $\tfrac12 d_1d_2\sin\theta$, and [[trapezoid-special-segments|the special segments of a trapezoid]] are the averages of its bases: the midline the arithmetic mean, the segment through the diagonals' crossing the harmonic mean.
+
+[[picks-theorem|Pick's theorem]] gives the area of a lattice polygon as $I + \tfrac B2 - 1$, and [[lattice-points-gcd|a lattice segment]] holds $\gcd(\Delta x, \Delta y) + 1$ lattice points. [[british-flag-theorem|The British flag theorem]] says $PA^2 + PC^2 = PB^2 + PD^2$ for a point and a rectangle.
+
+[[plane-regions|Lines in general position]] cut the plane into $1 + n + \binom n2$ regions, and [[moser-circle|chords among $n$ points on a circle]] into $1 + \binom n2 + \binom n4$.`,
+      strategies: [
+        String.raw`For a regular polygon, split it from the center into congruent triangles.`,
+        String.raw`For an odd shape, enclose it in a simple figure and subtract the pieces outside.`,
+        String.raw`In a trapezoid, the diagonals make similar triangles in the ratio of the bases.`,
+        String.raw`For a polygon on a lattice, use Pick's theorem or the shoelace formula.`,
+        String.raw`Count lattice points on a segment with the gcd of the coordinate differences.`,
+        String.raw`For regions cut by lines or chords, count how many new regions each line or chord adds, or use Euler's formula.`,
+        String.raw`For an equiangular polygon, extend sides to form a larger regular figure.`
+      ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`How many diagonals does a convex $20$-gon have?`, answer: "170",
+        solution: String.raw`Each vertex joins $17$ others by diagonals, and each diagonal is counted from both ends: $\tfrac{20 \cdot 17}{2} = 170$.` },
+      { q: String.raw`Find the area of a regular octagon with side $1$.`, answer: "2 + 2sqrt(2)",
+        solution: String.raw`The octagon is a square of side $1 + \sqrt2$ with four corner triangles removed, each a right isosceles triangle with legs $\tfrac{\sqrt2}{2}$ and area $\tfrac14$. The area is $(1 + \sqrt2)^2 - 1 = 3 + 2\sqrt2 - 1 = 2 + 2\sqrt2$.` },
+      { q: String.raw`A trapezoid has bases $6$ and $10$. A segment parallel to the bases passes through the crossing point of the diagonals, with its ends on the legs. Find its length.`, answer: "15/2",
+        solution: String.raw`The diagonals cut each other in the ratio $6 : 10$, and the segment is the harmonic mean of the bases: $\tfrac{2 \cdot 6 \cdot 10}{6 + 10} = \tfrac{120}{16} = \tfrac{15}{2}$.` },
+      { q: String.raw`How many lattice points lie on the segment from $(0, 0)$ to $(12, 18)$, ends included?`, answer: "7",
+        solution: String.raw`Since $\gcd(12, 18) = 6$, the lattice points are $(2k, 3k)$ for $k = 0, \ldots, 6$: $7$ of them.` },
+      { q: String.raw`A point $P$ inside rectangle $ABCD$ has $PA = 3$, $PB = 4$ and $PC = 5$. Find $PD$.`, answer: "3sqrt(2)",
+        solution: String.raw`By the British flag theorem, $PA^2 + PC^2 = PB^2 + PD^2$, so $9 + 25 = 16 + PD^2$ and $PD = \sqrt{18} = 3\sqrt2$.` },
+      { q: String.raw`Into how many regions do $5$ lines cut the plane, if no two are parallel and no three meet at a point?`, answer: "16",
+        solution: String.raw`The $k$th line crosses the $k - 1$ earlier ones at different points, which cut it into $k$ pieces, each splitting a region in two. So the count is $1 + (1 + 2 + 3 + 4 + 5) = 16$.` },
+      { q: String.raw`Six points on a circle are joined by all chords, with no three chords meeting inside. Into how many regions is the disk cut?`, answer: "31",
+        solution: String.raw`The count is $1 + \binom62 + \binom64 = 1 + 15 + 15 = 31$: each chord adds one region, and each crossing, fixed by four of the points, adds one more.` }
+    ],
+    problems: [
+      "2002 AIME I, Problem 2",
+      "1994 AIME, Problem 6",
+      "1995 AIME, Problem 14"
+    ]
+  },
+  challenge: {
+    problems: [
+      "1997 AIME, Problem 15",
+      "2008 AIME I, Problem 15",
+      "2018 AIME I, Problem 15",
+      "2014 AIME II, Problem 10"
+    ]
   }
 };
