@@ -1339,23 +1339,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C1.1",
-      "title": "Sum and product rules; building disjoint cases"
+      "title": "Introduction"
      },
      {
       "code": "C1.2",
-      "title": "Counting the complement"
+      "title": "Sum and product rules; building disjoint cases"
      },
      {
       "code": "C1.3",
-      "title": "Counting by an organizing parameter"
+      "title": "Counting the complement"
      },
      {
       "code": "C1.4",
-      "title": "Overlapping cases and double counts"
+      "title": "Counting by an organizing parameter"
      },
      {
       "code": "C1.5",
+      "title": "Overlapping cases and double counts"
+     },
+     {
+      "code": "C1.6",
       "title": "Small cases to check completeness"
+     },
+     {
+      "code": "C1.7",
+      "title": "Summary"
      }
     ]
    },

@@ -49,7 +49,7 @@ Degenerate cases deserve a check: three points that happen to be collinear, a tr
 Draw every configuration the words allow, compute with signed quantities, and list systematically. The next lesson estimates and tests.`,
       related: [
         { card: "casework-method", note: String.raw`splitting into disjoint cases (B4.2).` },
-        { card: "uniform-overcount", note: String.raw`counting each object the same number of times and dividing (C1.4).` },
+        { card: "uniform-overcount", note: String.raw`counting each object the same number of times and dividing (C1.5).` },
         { card: "triangle-inequality", note: String.raw`the condition for a nondegenerate triangle (B5.1).` }
       ],
       exercises: [
@@ -79,7 +79,7 @@ Estimate first, test small cases, and look for the counterexample before trying 
       related: [
         { card: "floor-basics", note: String.raw`floors of square roots and quotients (A4.2).` },
         { card: "bernoulli-inequality", note: String.raw`linear bounds on powers, a tool for estimates (A5.5).` },
-        { card: "simulate-the-process", note: String.raw`small cases of a process as a test (C1.5).` }
+        { card: "simulate-the-process", note: String.raw`small cases of a process as a test (C1.6).` }
       ],
       exercises: [
         { q: String.raw`Find $\lfloor\sqrt{2026}\rfloor$.`, answer: "45",

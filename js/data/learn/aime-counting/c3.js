@@ -120,7 +120,7 @@ Before counting, write the condition and its negation, estimate the work for eac
       related: [
         { card: "restricted-sequences", note: String.raw`the count of strings that avoid a pattern, the usual complement for "contains" (C2.3).` },
         { card: "recursive-counting", note: String.raw`counting a complement by building up from smaller cases (C5.2).` },
-        { card: "simulate-the-process", note: String.raw`checking a count on a small case that can be listed (C1.5).` }
+        { card: "simulate-the-process", note: String.raw`checking a count on a small case that can be listed (C1.6).` }
       ],
       exercises: [
         { q: String.raw`How many binary strings of length $6$ contain at least one pair of consecutive $1$s?`, answer: "43",

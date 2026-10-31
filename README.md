@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **C1 moved to the approved chapter structure (eighteenth chat; PLAN road ahead, step 2).** New C1.1 Introduction (the product and sum rules, cases, complements, an organizing parameter, overcounts and small cases; four comprehension problems; Exercises 2009 AIME I #1, 2012 AIME I #1, 1992 AIME #6). The old lessons are now C1.2 to C1.6. New C1.7 Summary with nine Problem Solving Strategies. The old review became C1.8 Review Problems (five of our own problems, then 2001 AIME II #1) and C1.9 Challenge Problems (five contest problems). Cross-references to C1 in C2, C3, C5, C6, C8, G7, B4 and B6 were renumbered. Every number computed.
 - Docs: PLAN's Current state brought up to date with the rest of the seventeenth chat; CONVENTIONS records How to Use This Book, the shelf's lesson counts, and the chat's interface rules (the preview drawn by the pages' own code, defaults listed first, the settings search's words, printing, figures, phone-only changes, small buttons).
 - A book's page shows its chapters and lessons without "written so far", and its contents give each chapter's number of lessons. Printing leaves out everything that floats or only works on screen: toasts such as Link copied, menus, the drawer, the phone navigation, and the card buttons (star, +, Open).
 - Home: Practice at a glance has a "See all" link in its heading row, like Textbooks, and no longer has the random-problem and every-contest links at its foot.

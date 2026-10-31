@@ -16,7 +16,7 @@ The common difficulty is a problem where the multiset itself is not fixed. A wal
 
 When an object is a row of symbols, count it as a multiset arrangement; when it is a group, as a binomial coefficient; and when the composition varies, case on the composition first. The next lesson arranges objects around a circle, where rotations make some rows the same.`,
       related: [
-        { card: "uniform-overcount", note: String.raw`dividing by the orders of identical objects is a uniform overcount (C1.4).` },
+        { card: "uniform-overcount", note: String.raw`dividing by the orders of identical objects is a uniform overcount (C1.5).` },
         { card: "grid-paths", note: String.raw`lattice paths as words in two letters (C5.6).` },
         { card: "multinomial-theorem", note: String.raw`the coefficients $\tfrac{n!}{n_1!\,n_2!\cdots}$ in the expansion of $(x_1 + \cdots + x_k)^n$ (C4.4).` }
       ],
@@ -152,7 +152,7 @@ Decide whether an object is a choice of positions or an assignment of values, wh
       related: [
         { card: "pie", note: String.raw`the inclusion-exclusion that counts surjections (C3.1).` },
         { card: "balls-boxes-table", note: String.raw`where surjections and Stirling numbers sit among the distributions (C2.4).` },
-        { card: "uniform-overcount", note: String.raw`dividing by $k!$ to unlabel the groups (C1.4).` }
+        { card: "uniform-overcount", note: String.raw`dividing by $k!$ to unlabel the groups (C1.5).` }
       ],
       exercises: [
         { q: String.raw`In how many ways can each of five people be given one of three colors so that every color is used?`, answer: "150",
