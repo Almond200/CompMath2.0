@@ -1576,19 +1576,27 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "C8.1",
-      "title": "The handshake lemma and degree counting"
+      "title": "Introduction"
      },
      {
       "code": "C8.2",
-      "title": "Counting cells and shapes on grids"
+      "title": "The handshake lemma and degree counting"
      },
      {
       "code": "C8.3",
-      "title": "Coloring and parity"
+      "title": "Counting cells and shapes on grids"
      },
      {
       "code": "C8.4",
+      "title": "Coloring and parity"
+     },
+     {
+      "code": "C8.5",
       "title": "Extremal arguments and pigeonhole"
+     },
+     {
+      "code": "C8.6",
+      "title": "Summary"
      }
     ]
    },

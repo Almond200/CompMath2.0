@@ -1,11 +1,39 @@
 // Learn, AIME Counting & Probability, chapter C8: graphs, grids and combinatorial structures (CONVENTIONS §14).
 // Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
 // Counting the shapes in a figure belongs to G7.5, so the chapter keeps to graphs, colorings and pigeonhole;
-// its lessons hold all the chapter's contest problems, and it has no separate review.
+// C8.1 is the Introduction and C8.6 the Summary; Review and Challenge Problems use contest problems the lessons left.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["C8"] = {
   lessons: {
     "C8.1": {
+      prereq: ["casework-method"],
+      cards: [],
+      body: String.raw`This chapter studies structures made of points and connections, of cells on grids, and of objects placed into boxes. Its tools are degree counting in graphs, counting shapes on a grid, colorings that prove something impossible, and the pigeonhole and extremal principles, which prove that something must exist.
+
+A graph is a set of points, called vertices, some pairs of which are joined by edges: people and the handshakes between them, teams and the games they play, the corners and edges of a solid. The degree of a vertex is the number of edges at it. Every edge has two ends, so the degrees add up to twice the number of edges. A graph on $10$ vertices with every degree $4$ therefore has $\tfrac{10 \cdot 4}{2} = 20$ edges, and no graph can have an odd number of vertices of odd degree.
+
+On a grid, a rectangle is fixed by choosing two of the vertical lines and two of the horizontal ones, so a grid of $4 \times 4$ unit squares, with $5$ lines each way, holds $\binom52^2 = 100$ rectangles.
+
+A coloring argument colors the cells or the positions so that every allowed move or piece behaves the same way with respect to the colors, such as a domino always covering one black and one white square. If the target does not have that property, it cannot be reached. A board with two opposite corners removed has unequal numbers of black and white squares, so no tiling by dominoes exists.
+
+The pigeonhole principle says that if more than $kn$ objects are put into $n$ boxes, some box gets more than $k$. The work is to choose the boxes. The extremal principle looks at a largest or smallest object, such as the person with the most friends, and finds what it forces.
+
+The lessons take these ideas in turn: degrees, trees, Euler paths and tournaments (C8.2), shapes on grids (C8.3), coloring and parity (C8.4), and pigeonhole and extremal arguments (C8.5). The Summary (C8.6) collects the strategies.`,
+      exercises: [
+        { q: String.raw`Can nine people each shake hands with exactly three of the others?`,
+          solution: String.raw`No. The numbers of handshakes of the people add up to twice the number of handshakes, since each handshake involves two people. Nine people with three each would give $27$, which is odd.` },
+        { q: String.raw`How many rectangles, squares included, are formed by the lines of a grid of $4 \times 4$ unit squares?`, answer: "100",
+          solution: String.raw`The grid has $5$ vertical and $5$ horizontal lines. A rectangle is fixed by its two vertical sides and its two horizontal sides, so there are $\binom52 \cdot \binom52 = 10 \cdot 10 = 100$ rectangles.` },
+        { q: String.raw`What is the least number of people in a room that guarantees that three of them were born in the same month?`, answer: "25",
+          solution: String.raw`With $24$ people, two born in each month, no three share a month. With $25$ people in $12$ months, some month has at least $\lceil 25/12 \rceil = 3$ of them, by the pigeonhole principle. The answer is $25$.` }
+      ],
+      problems: [
+        "2012 AMC 10B, Problem 15",
+        "2010 AMC 10B, Problem 3",
+        "2016 AMC 10B, Problem 15"
+      ]
+    },
+    "C8.2": {
       prereq: ["double-counting"],
       cards: ["handshake-lemma", "tree-basics", "eulerian-paths", "round-robin-tournaments"],
       body: String.raw`A graph is a set of points with some pairs joined, and it is the natural language for handshakes, roads, friendships, games in a tournament, and the edges of a polyhedron. A handful of facts about graphs answer a surprising number of counting questions: how many edges a graph with given degrees has, whether a route can use every road once, how many games a round robin has and how the wins can be distributed.
@@ -22,7 +50,7 @@ Model the situation as a graph, count edge ends to get equations, and check degr
       related: [
         { card: "eulers-polyhedron-formula", note: String.raw`$V - E + F = 2$, the second equation in polyhedron counts.` },
         { card: "handshakes-diagonals", note: String.raw`pairs of points, players or vertices counted as $\binom n2$ (G7.5).` },
-        { card: "graph-coloring", note: String.raw`coloring the vertices of a graph so that edges join different colors (C8.3).` }
+        { card: "graph-coloring", note: String.raw`coloring the vertices of a graph so that edges join different colors (C8.4).` }
       ],
       exercises: [
         { q: String.raw`A graph has six vertices with degrees $3, 3, 3, 3, 2, 2$. How many edges does it have?`, answer: "8",
@@ -43,7 +71,7 @@ Model the situation as a graph, count edge ends to get equations, and check degr
         "1998 AIME, Problem 15"
       ]
     },
-    "C8.2": {
+    "C8.3": {
       prereq: ["permutations-combinations", "power-sums"],
       cards: ["rectangles-in-grid"],
       body: String.raw`Counting rectangles or squares in a grid is a classic warm-up, and it shows two complementary ways of counting shapes: by choosing the lines that bound them, and by organizing by size and position. Both appear inside harder problems, such as finding the ratio of squares to rectangles in a chessboard, or counting squares that fit under a curve.
@@ -69,7 +97,7 @@ Choose bounding lines when the shapes are axis-parallel rectangles, and organize
         "1997 AIME, Problem 2"
       ]
     },
-    "C8.3": {
+    "C8.4": {
       prereq: ["invariants-coloring"],
       cards: ["coloring-arguments", "graph-coloring"],
       body: String.raw`Coloring is used in two opposite ways in contest problems. In one, the coloring is a proof device: color a board in a pattern so that every tile or move covers the colors in a fixed way, and a count of colors shows that something is impossible or forced. In the other, the coloring is the object being counted: colorings of a map, a cycle, or a set of regions in which neighbors differ. Both are short once the right pattern or recursion is found.
@@ -96,7 +124,7 @@ Use a coloring as an invariant to prove impossibility or count parity, and the p
         "2026 AIME I, Problem 11"
       ]
     },
-    "C8.4": {
+    "C8.5": {
       prereq: ["casework-method"],
       cards: ["pigeonhole", "pigeonhole-argument", "extremal-principle", "pairing-to-bound"],
       body: String.raw`Some questions ask for the smallest number that guarantees something, or the largest set that avoids something. How many socks must be drawn to be sure of a pair? How many numbers from $1$ to $20$ can be chosen with no two adding to $21$? What is the smallest possible largest sum in a sequence? The answers come in two halves: an argument that the bound always works, usually by pigeonhole or pairing, and an example showing the bound cannot be improved.
@@ -107,7 +135,7 @@ A [[pigeonhole-argument|pigeonhole argument]] in a harder problem is mostly the 
 
 The [[extremal-principle|extremal principle]] starts from the largest, smallest or otherwise extreme object and uses its extremity. The largest element of a set, the smallest sum, the person with the most friends: each has a property that the others lack, and arguing from it often gives a bound or a contradiction. To minimize the largest of several overlapping sums, add the sums in a way that covers every term, and divide; to show a configuration with too many elements fails, look at its largest element and the pairs it forms.
 
-Every bounding answer has two parts: a proof that the bound holds and an example that attains it. The chapter's lessons end here; the extension chapter goes beyond the AIME syllabus.`,
+Every bounding answer has two parts: a proof that the bound holds and an example that attains it. The Summary (C8.6) collects the chapter's strategies; the extension chapter after it goes beyond the AIME syllabus.`,
       related: [
         { card: "subset-avoiding-relation", note: String.raw`counting all the subsets that avoid a relation, not just the largest (C3.4).` },
         { card: "odd-part-chains", note: String.raw`the chains by odd part, the boxes for divisibility problems.` },
@@ -130,6 +158,60 @@ Every bounding answer has two parts: a proof that the bound holds and an example
         "1986 AIME, Problem 12",
         "2022 AIME II, Problem 6"
       ]
+    },
+    "C8.6": {
+      prereq: ["handshake-lemma", "tree-basics", "eulerian-paths", "round-robin-tournaments", "rectangles-in-grid", "coloring-arguments", "graph-coloring", "pigeonhole", "extremal-principle"],
+      cards: [],
+      body: String.raw`[[handshake-lemma|The handshake lemma]] says the degrees of a graph add up to twice the number of edges, so the number of odd-degree vertices is even. A [[tree-basics|tree]] on $n$ vertices has $n - 1$ edges, and degree counting then fixes how many leaves it has. A graph can be drawn in one stroke, an [[eulerian-paths|Euler path]], exactly when it is connected and has $0$ or $2$ vertices of odd degree. In a [[round-robin-tournaments|round robin]], the wins add up to the number of games, and the transitive triples are counted from each team's wins.
+
+[[rectangles-in-grid|On a grid]], a rectangle is two vertical lines and two horizontal ones, and the squares are counted by size.
+
+[[coloring-arguments|A coloring argument]] finds a coloring that every move or piece treats the same way, then compares the target with it. [[graph-coloring|Proper colorings]] of a graph are counted by coloring the vertices one at a time, most constrained first.
+
+[[pigeonhole|The pigeonhole principle]] guarantees a crowded box once the objects outnumber the boxes; the skill is in choosing boxes that make a crowded box useful. [[extremal-principle|The extremal principle]] studies a largest or smallest object and finds what it forces.`,
+      strategies: [
+        String.raw`Turn people, teams or solids into a graph, and count the edges by adding the degrees.`,
+        String.raw`Use parity: a graph has an even number of vertices of odd degree.`,
+        String.raw`For a tree, combine "edges $=$ vertices $- 1$" with the degree sum.`,
+        String.raw`To decide whether a figure can be traced in one stroke, count its odd-degree vertices.`,
+        String.raw`Count rectangles in a grid by their pairs of sides, and squares by their size.`,
+        String.raw`To prove a tiling or a sequence of moves impossible, look for a coloring that every piece or move treats the same way.`,
+        String.raw`For "guarantee", find the worst case first; it shows both the answer and the boxes for the pigeonhole principle.`,
+        String.raw`Choose pigeonholes so that two objects in one box give what you need, such as a sum, a difference or a divisibility.`,
+        String.raw`Look at the largest, smallest, first or last object, and ask what it forces.`
+      ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`A tree has only vertices of degree $1$ and degree $3$, and $8$ of its vertices have degree $3$. How many vertices have degree $1$?`, answer: "10",
+        solution: String.raw`Let $L$ be the number of leaves. The tree has $L + 8$ vertices, so $L + 7$ edges, and its degrees add up to $L + 3 \cdot 8 = L + 24$. The handshake lemma gives $L + 24 = 2(L + 7)$, so $L = 10$.` },
+      { q: String.raw`Six points are joined in pairs by all $15$ segments. What is the least number of strokes, without retracing any segment, that draws all of them?`, answer: "3",
+        solution: String.raw`Every point has degree $5$, so all six points have odd degree. Each stroke has at most two ends, and every odd-degree point must be the end of some stroke, so at least $\tfrac62 = 3$ strokes are needed. Three suffice: add three segments pairing up the points, draw the resulting graph, whose degrees are all even, in one closed stroke, and remove the three added segments, which cuts the stroke into three.` },
+      { q: String.raw`How many squares of all sizes are formed by the lines of a grid of $5 \times 5$ unit squares?`, answer: "55",
+        solution: String.raw`A $k \times k$ square has its lower left corner in one of $(6 - k)^2$ positions. For $k = 1, \ldots, 5$ this gives $25 + 16 + 9 + 4 + 1 = 55$.` },
+      { q: String.raw`Five regions are arranged in a ring, each touching the two next to it. In how many ways can they be colored with $3$ colors so that touching regions have different colors?`, answer: "30",
+        solution: String.raw`Cut the ring between regions $5$ and $1$. The path of five regions has $3 \cdot 2^4 = 48$ colorings. Among them, those with regions $1$ and $5$ the same color are colorings of a ring of four (merge the two), which number $18$, as found in C1.2. So $48 - 18 = 30$.` },
+      { q: String.raw`What is the least $n$ such that among any $n$ integers, two differ by a multiple of $7$?`, answer: "8",
+        solution: String.raw`The integers $0, 1, \ldots, 6$ have different remainders on division by $7$, so $7$ is not enough. Among $8$ integers, two have the same remainder, by the pigeonhole principle with the $7$ remainders as boxes, and their difference is a multiple of $7$.` }
+    ],
+    problems: [
+      "2023 AMC 10A, Problem 18",
+      "2015 AMC 10B, Problem 20",
+      "2005 AMC 10B, Problem 25"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2018 AMC 10A, Problem 17",
+      "2022 AMC 10B, Problem 14",
+      "2021 Fall AMC 10B, Problem 23"
+    ],
+    exercises: [
+      { q: String.raw`Seven teams play a round robin with no ties. A set of three teams is cyclic if each of them beats one of the other two. What is the largest possible number of cyclic sets?`, answer: "14",
+        solution: String.raw`A set of three teams that is not cyclic has one team that beats both others, and it is counted once at that team. So the non-cyclic sets number $\sum_i \binom{w_i}{2}$, where $w_i$ is team $i$'s number of wins and $\sum w_i = \binom72 = 21$. This sum is smallest when the wins are as equal as possible, all $w_i = 3$, giving $7 \cdot 3 = 21$. So at most $\binom73 - 21 = 35 - 21 = 14$ sets are cyclic, and $14$ is reached when each team beats the next three teams around a circle.` },
+      { q: String.raw`What is the least $n$ such that any $n$ different numbers chosen from $1, 2, \ldots, 100$ include two numbers one of which divides the other?`, answer: "51",
+        solution: String.raw`The $50$ numbers $51, \ldots, 100$ include no such pair, since twice the smallest is more than $100$, so $50$ is not enough. Write every number as $2^a m$ with $m$ odd; there are $50$ odd parts $m$ from $1$ to $99$. Among $51$ numbers two have the same odd part, by the pigeonhole principle, and of $2^a m$ and $2^b m$ the one with the smaller power of $2$ divides the other. The answer is $51$.` }
+    ]
   }
 };

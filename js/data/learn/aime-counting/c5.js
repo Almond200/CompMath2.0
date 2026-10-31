@@ -137,7 +137,7 @@ Choosing the quantity is the creative step. Look at what a single move does to t
 
 When a process is long or arbitrary, look for what it cannot change. The last lesson of the chapter returns to lattice paths and their direct formulas.`,
       related: [
-        { card: "coloring-arguments", note: String.raw`colorings of a board as invariants, for tilings that cannot exist (C8.3).` },
+        { card: "coloring-arguments", note: String.raw`colorings of a board as invariants, for tilings that cannot exist (C8.4).` },
         { card: "modular-basics", note: String.raw`residues as the most common invariant (N2.1).` },
         { card: "telescoping", note: String.raw`a quantity that changes by the same amount each step sums to a telescope (A3.2).` }
       ],
