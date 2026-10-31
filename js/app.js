@@ -2104,7 +2104,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4498,9 +4498,22 @@
         if (lab) lab.open = true;
         const bar = document.querySelector(".topbar");
         const top = row.getBoundingClientRect().top + window.scrollY - (bar ? bar.offsetHeight : 0) - (window.innerHeight - row.offsetHeight) / 3;
-        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
-        row.classList.remove("set-found"); void row.offsetWidth; row.classList.add("set-found");
-        setTimeout(() => row.classList.remove("set-found"), 2600);
+        // The underline draws only once the page has stopped scrolling, so it is seen (owner, 2026-10-31).
+        const mark = () => {
+          row.classList.remove("set-found"); void row.offsetWidth; row.classList.add("set-found");
+          setTimeout(() => row.classList.remove("set-found"), 2600);
+        };
+        const target = Math.max(0, Math.min(top, document.documentElement.scrollHeight - window.innerHeight));
+        window.scrollTo({ top: target, behavior: "smooth" });
+        let last = -1, still = 0, n = 0;
+        const wait = () => {
+          const y = window.scrollY;
+          still = Math.abs(y - last) < 1 ? still + 1 : 0;
+          last = y;
+          if ((still >= 3 && (Math.abs(y - target) < 2 || n > 10)) || ++n > 120) { setTimeout(mark, 60); return; }
+          requestAnimationFrame(wait);
+        };
+        requestAnimationFrame(wait);
       };
       box.addEventListener("input", draw);
       box.addEventListener("focus", draw);
