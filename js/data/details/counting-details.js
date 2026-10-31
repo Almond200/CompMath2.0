@@ -917,6 +917,7 @@ Mailboxes that must each receive a letter, colorings in which every color is use
 - $\operatorname{ord}(f) = \operatorname{lcm}$ of the cycle lengths — so $f^{\,k} = \mathrm{id}$ exactly when every cycle length divides $k$, which turns a condition on the function into a condition on a partition of $n$
 - $\alt{\dfrac{n!}{\prod_c c^{m_c} m_c!}}{\dfrac{n!}{1^{m_1}m_1!\cdot 2^{m_2}m_2!\cdots}}$ permutations have $m_c$ cycles of each length $c$ — divide by $c$ per cycle, since a cycle can be written starting anywhere, and by $m_c!$ because equal-length cycles are interchangeable
 - $f = f^{-1}$ means every cycle has length $1$ or $2$ — an involution, the $k = 2$ case, counted by $\alt{\sum_j \binom{n}{2j}(2j-1)!!}{1+\binom n2\cdot 1+\binom n4\cdot 3+\binom n6\cdot 15+\cdots}$
+- the sign of a permutation with $c$ cycles is $(-1)^{n - c}$; every swap of two elements flips it, so a permutation is a product of only an even or only an odd number of swaps, and it is even exactly when it has an even number of cycles of even length
 - a single $c$-cycle on a chosen set of $c$ elements can be written $(c-1)!$ ways — the [[circular-permutations|circular arrangement]] count, which is where the $c^{m_c}$ comes from
 
 ## Conditions
@@ -931,21 +932,25 @@ Start at $x$ and iterate. The set is finite, so some value repeats, say $f^{\,i}
 
 Applying $f$ turns every cycle one step. A cycle of length $c$ is back in place after exactly the multiples of $c$ steps, so all of them are back at once after a common multiple of the lengths. The first such time is the $\operatorname{lcm}$, and $f^{\,k} = \mathrm{id}$ exactly when every length divides $k$.
 
+The sign is well defined because one swap changes the number of cycles by exactly one. Follow $f$ by the swap of $a$ and $b$. If $a$ and $b$ lie in the same cycle, that cycle splits into two, one through $a$ and one through $b$; if they lie in different cycles, the two cycles join into one. Either way $c$ moves by $1$, so $(-1)^{n - c}$ changes sign.
+
+The identity has $c = n$ and sign $+1$, so a product of $k$ swaps has sign $(-1)^k$, and two ways of writing the same permutation as swaps have numbers of swaps of the same parity. A $c$-cycle is $c - 1$ swaps, which gives the rule by even cycles.
+
 The counting formula comes from writing permutations down. List the $n$ elements in a row, in $n!$ ways, and cut the row into consecutive blocks of the chosen lengths, each block a cycle. A $c$-cycle is written $c$ times, once for each starting point, and equal-length cycles can be listed in any of $m_c!$ orders, so dividing by $\prod_c c^{m_c} m_c!$ counts each permutation once.
 
 ## Useful observations
 - A condition on an iterate becomes a list of allowed cycle lengths at once: $$f^{\,k}(x) = x \text{ for every } x \iff \text{every cycle length divides } k.$$ The count is then a sum over the partitions of $n$ into allowed parts, each type counted by the formula.
 - The largest order of a permutation of $n$ elements is the largest $\operatorname{lcm}$ of a partition of $n$; for $n = 8$ it is $15$, from $3 + 5$.
-- Parity can be read off the cycles: a $c$-cycle is a product of $c - 1$ swaps, so a permutation is even exactly when it has an even number of cycles of even length.
+- The sign is an invariant for swapping puzzles. In the $15$-puzzle every move swaps the blank with a neighbour, and the blank changes colour on a checkerboard each time, so a position with the blank back in its corner was reached by an even number of swaps: the tiles $14$ and $15$ alone exchanged, an odd permutation, can never be reached.
 - Moving $k$ places at a time around $n$ positions splits them into $\gcd(n, k)$ cycles, each of length $\frac{n}{\gcd(n, k)}$. A position returns after $m$ steps exactly when $n$ divides $mk$, which first happens at $m = \frac{n}{\gcd(n, k)}$.
 
 ## Applications
-Repeated application of a function or a shuffle, the order of a permutation, handshake rings and other arrangements that are cycle structures in disguise, and stepping around a ring of points.
+Repeated application of a function or a shuffle, the order of a permutation, which arrangements a set of allowed swaps can reach, handshake rings and other arrangements that are cycle structures in disguise, and stepping around a ring of points.
 
 ## Contest profile
 Four problems here, all AIME, none solved by it alone, and three of them finish with [[casework-method|casework]] over cycle types. The standard shape counts the functions whose repeated application returns every element to itself, where the allowed cycle lengths are the divisors of the number of applications.
 
-Variations forbid every cycle shorter than some length or ask about stepping around a ring. [[derangements|Derangements]] ask about fixed points instead, [[burnsides-lemma|Burnside's Lemma]] averages over cycle structure, and counting by the number of cycles rather than their lengths is [[stirling-first-kind|Stirling numbers of the first kind]].
+Variations forbid every cycle shorter than some length or ask about stepping around a ring. At olympiad level the sign is the standard invariant for questions about which arrangements a set of swaps or moves can reach. [[derangements|Derangements]] ask about fixed points instead, [[burnsides-lemma|Burnside's Lemma]] averages over cycle structure, and counting by the number of cycles rather than their lengths is [[stirling-first-kind|Stirling numbers of the first kind]].
 `,
 
 "stirling-first-kind": String.raw`

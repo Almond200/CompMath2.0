@@ -448,7 +448,7 @@ window.MATH_SECTIONS.push({
           name: "Permutation Cycle Structure & Order",
           latex: String.raw`f^{\,k} = \mathrm{id} \iff \text{every cycle length divides } k, \qquad \operatorname{ord}(f) = \operatorname{lcm}(\text{cycle lengths})`,
           description: String.raw`The cycle structure of a permutation, a bijection $f$ from a finite set to itself, is the way it splits into disjoint cycles: following any element through $x, f(x), f(f(x)), \dots$ leads back to $x$, and these loops partition the set. Almost every question about applying $f$ repeatedly is really a question about that picture. The order of $f$, the number of applications that restores everything, is the $\operatorname{lcm}$ of the cycle lengths, and $f^{\,k} = \mathrm{id}$ exactly when every cycle length divides $k$. The number of permutations of $n$ elements with $m_c$ cycles of each length $c$ is $\frac{n!}{\prod_c c^{m_c} m_c!}$.`,
-          keywords: ["cycle structure", "cycle type", "order of a permutation", "disjoint cycle decomposition", "iterating a function returns to start", "f composed with itself k times is the identity", "lcm of cycle lengths", "counting permutations by cycle type", "self-inverse function", "involution"],
+          keywords: ["cycle structure", "cycle type", "order of a permutation", "disjoint cycle decomposition", "iterating a function returns to start", "f composed with itself k times is the identity", "lcm of cycle lengths", "counting permutations by cycle type", "self-inverse function", "involution", "sign of a permutation", "even and odd permutations", "15 puzzle"],
           importance: "high",
           tier: "AIME Early",
           level: ["AMC12", "AIME", "Olympiad"]
