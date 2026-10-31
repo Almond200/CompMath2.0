@@ -4648,7 +4648,7 @@
     // The whole panel opens the problem's page. The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
         <div class="hp-label">Problem of the day</div>
-        <div class="daily-head"><span class="daily-title">${refShort(p.ref)}</span><span class="daily-go">Open the problem &rarr;</span></div>
+        <div class="daily-title">${refShort(p.ref)}</div>
         <div class="daily-types">${p.types.slice(0, 4).map(t => `<span class="daily-type">${escapeAttr(t.label)}</span>`).join("")}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
@@ -4909,10 +4909,9 @@
         ${learnShelfHtml()}
         <section class="sh-section" id="pr-study">
           <h3>Lists</h3>
-          <div class="pr-top pr-top-one">
-          <section class="hp-panel" id="pr-lists">
-            <div class="hp-label">Your lists</div>
-            <div class="pl-list">
+          <div id="pr-lists">
+            <h4 class="learn-sub">Your lists</h4>
+            <div class="pl-list pl-mine">
               <a class="pl-item" href="#/list/starred"><span>&#9733; Starred</span><span class="pl-n">${liveCount(starred)}</span></a>
               ${mine.map(listLink).join("")}
             </div>
@@ -4920,7 +4919,6 @@
               <input type="text" id="lists-new-name" placeholder="Name a new list&hellip;" maxlength="40" autocomplete="off">
               <button type="submit">Create</button>
             </form>
-          </section>
           </div>
           <h4 class="learn-sub">Study lists</h4>
           <div class="grid-scroll"><table class="cy-grid route-grid">

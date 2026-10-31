@@ -2890,11 +2890,10 @@ body.is-landing .content { padding: 0 0 70px; }
 }
 
 /* Learn → Lists: room around your own lists */
-#pr-study > .pr-top { margin-top: 16px; }
-#pr-lists { padding: 16px 18px 18px; }
-#pr-lists .pl-item { padding-top: 10px; padding-bottom: 10px; }
-#pr-lists .lists-new { margin-top: 14px; }
-#pr-study > .learn-sub { margin-top: 28px; }
+/* Your lists sit in the Lists section as a plain subsection, not a box inside the box. */
+#pr-lists .learn-sub { margin-top: 16px; }
+#pr-lists .lists-new { margin-top: 10px; max-width: 520px; }
+#pr-study > .learn-sub { margin-top: 26px; }
 
 /* The card drawer */
 .lp-drawer { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto;
@@ -3749,10 +3748,6 @@ body.is-landing .content { padding: 0 0 50px; }
 .home .hp-daily .daily-st, .home .hp-daily .prob-statement { background: var(--bg-panel); border-radius: 10px; }
 .home .hp-daily .daily-st { padding-bottom: 12px; }
 .home .hp-daily .daily-st .prob-credit { margin: 2px 14px 0; }
-.daily-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-.daily-go { font-size: 13px; font-weight: 700; color: var(--text-dim); opacity: 0; transition: opacity 0.12s; white-space: nowrap; }
-.home .hp-daily:hover .daily-go, .home .hp-daily:focus-visible .daily-go { opacity: 1; }
-@media (hover: none) { .daily-go { opacity: 1; transform: none; } }
 .home .rc-row { padding-top: 6px; padding-bottom: 6px; }
 .home .pg-row { padding-top: 6px; padding-bottom: 6px; }
 .home .dyk { font-size: 14px; }
