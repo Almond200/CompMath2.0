@@ -18,26 +18,20 @@ Modulo $n$ there are only $n$ residues, and each power of a number is found from
 
 A cycle turns a huge exponent into a small one. If the powers of $a$ repeat every $T$ steps from the first power on, then $a^N$ leaves the same remainder as $a^r$, where $r$ is the remainder when $N$ is divided by $T$ (and $r = T$ when that remainder is $0$). Finding $T$ means listing the powers until the first value returns, which is quick when the modulus is small. Listing until a value returns and then reducing the exponent is [[cycle-hunting]].
 
-{{check 1}}
-
-{{check 2}}
-
 ### A cycle that starts late
 
 When the base and the modulus are coprime, the cycle starts at the very first power. When they share a factor, the first few powers may never come back. The powers of $2$ modulo $12$ run $2, 4, 8, 4, 8, \ldots$: the value $2$ appears once and is gone, and the cycle $4, 8$ starts only at $2^2$. The sequence is eventually periodic, with period $2$ from the exponent $2$ on. Before reducing an exponent, find where the cycle begins as well as how long it is, and reduce only exponents that are already inside it.
 
-{{check 3}}
-
 ### The clue
 
 A huge exponent and a small modulus, or a question about the last digit or the last two digits, is the signal to list a few powers. The list is short when the modulus is small. When the cycle turns out to be long, the next lessons find its length without listing it: Fermat's Little Theorem for a prime modulus (N3.2), the order (N3.3), and Euler's theorem (N3.4).`,
-      checks: [
+      exercises: [
         { q: String.raw`What is the units digit of $7^{203}$?`, answer: "3",
-          why: String.raw`$203 = 4 \cdot 50 + 3$, so $7^{203}$ sits in the third place of the cycle $7, 9, 3, 1$.` },
-        { q: String.raw`The powers of $2$ modulo $7$ run $2, 4, 1, \ldots$. What is the remainder when $2^{100}$ is divided by $7$?`, answer: "2",
-          why: String.raw`The cycle has length $3$ and $100 = 3 \cdot 33 + 1$, so $2^{100} \equiv 2^1 = 2$.` },
+          solution: String.raw`The units digits of the powers of $7$ run $7, 9, 3, 1$ and then repeat, so they cycle with length $4$ from the first power on. Since $203 = 4 \cdot 50 + 3$, the power $7^{203}$ has the same units digit as $7^3 = 343$, which is $3$.` },
+        { q: String.raw`What is the remainder when $2^{100}$ is divided by $7$?`, answer: "2",
+          solution: String.raw`The powers of $2$ modulo $7$ run $2, 4, 1$ and then repeat, so they cycle with length $3$ from the first power on. Since $100 = 3 \cdot 33 + 1$, we get $2^{100} \equiv 2^1 = 2 \pmod 7$.` },
         { q: String.raw`What is the remainder when $2^{10}$ is divided by $12$?`, answer: "4",
-          why: String.raw`From $2^2$ on the powers alternate $4, 8$, with $4$ at the even exponents, so $2^{10} \equiv 4$ (and indeed $1024 = 12 \cdot 85 + 4$).` }
+          solution: String.raw`Here the base shares the factor $2$ with the modulus, so the cycle may start late. The powers of $2$ modulo $12$ run $2, 4, 8, 4, 8, \ldots$: the value $2$ never returns, and from $2^2$ on the powers alternate $4, 8$, with $4$ at the even exponents. Since $10$ is even, $2^{10} \equiv 4 \pmod{12}$. Indeed $1024 = 12 \cdot 85 + 4$.` }
       ],
       problems: ["2003 AMC 10A, Problem 16", "2023 AMC 10B, Problem 8", "2017 AIME I, Problem 3", "2025 AMC 12B, Problem 9"]
     }

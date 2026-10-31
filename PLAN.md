@@ -132,7 +132,7 @@ The owner approves the spec.
 - Every number checked by script.
 
 ### L7. Checks, problem sets and the two-way handoff
-- Checks during a lesson, answered with the math keyboard, each checked by value and followed by one line of why.
+- (Revised by the owner 2026-10-31: no checks. A lesson ends with its own problems, then their worked solutions, then the contest problems; CONVENTIONS §14.)
 - Lesson-end and chapter-end problems in the problem list from L5 (LQ6). Notes typed in the boxes are saved with progress (LQ7).
 - At the end of a chapter, a "Practice more" link into Practice.
 - On a problem page, "Study this in Learn" where a lesson covers the problem's key card.

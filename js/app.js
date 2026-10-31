@@ -2098,7 +2098,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result").forEach(el => {
+      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -5247,6 +5247,9 @@
   }
 
   // ---------- The math keyboard (LQ5) ----------
+  // Unused since 2026-10-31: lessons now end with problems and worked solutions instead of checks
+  // to answer (owner). The keyboard, its grammar (js/learn-answer.js) and the check code below are
+  // kept, at the owner's word, in case answers are typed again later.
   // A keypad that pops up from the answer box when the box is pressed, and closes when the
   // student presses elsewhere, checks the answer, or presses Escape. The box holds the plain
   // answer (with √, π, × and ÷ as typed symbols), and the top of the pop-up shows it typeset as
@@ -5376,20 +5379,17 @@
     renderMath(li);
   }
 
-  // The lesson prose: the write-up format (§2), with {{check N}} on a line of its own placing a
-  // check. Checks with no marker follow the prose.
+  // The lesson: its explanation all in one piece (the write-up format, §2), then its own problems,
+  // then their worked solutions (owner, 2026-10-31: practice to work through, not checks to pass;
+  // no answer box and no marking). The contest problems follow in their own list.
   function learnBodyHtml(l, d) {
-    const checks = d.checks || [], placed = new Set();
-    const parts = String(d.body || "").split(/^\s*\{\{check (\d+)\}\}\s*$/m);
-    let html = "";
-    parts.forEach((part, i) => {
-      if (i % 2) {
-        const n = +part;
-        if (checks[n - 1] && !placed.has(n)) { placed.add(n); html += learnCheckHtml(l, n, checks[n - 1]); }
-      } else if (part.trim()) html += detailBodyHtml(notate(part), "learn:" + l.code);
-    });
-    const rest = checks.map((ch, i) => placed.has(i + 1) ? "" : learnCheckHtml(l, i + 1, ch)).join("");
-    return `<div class="detail-body lp-body">${html}</div>${rest ? `<div class="lp-checks">${rest}</div>` : ""}`;
+    const ex = d.exercises || [];
+    const num = i => `${l.code}.${i + 1}`;
+    return `<div class="detail-body lp-body">${detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code)}</div>
+      ${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
+        <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}"><span class="lx-n">Problem ${num(i)}</span><div class="lx-q">${x.q}</div></li>`).join("")}</ol>
+        <h3 class="lp-h3" id="lx-solutions">Solutions</h3>
+        <div class="lx-sols">${ex.map((x, i) => `<div class="lx-sol"><span class="lx-n">Problem ${num(i)}</span><div class="lx-s">${x.solution}</div></div>`).join("")}</div>` : ""}`;
   }
 
   // The card drawer: a card opened from a lesson shows beside it (below it on a phone), so the
@@ -5457,16 +5457,10 @@
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        ${(d.problems || []).length ? `<h3 class="lp-h3">Problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+        ${(d.problems || []).length ? `<h3 class="lp-h3">Contest problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
     }
     learnBookShell(b, c, isReview ? "review" : l, main);
     if (l && d) { noteRecent("l:" + l.code); const prog = learnProgress(); if (prog.last !== l.code) { prog.last = l.code; saveLearn(); } }
-    $content.querySelectorAll(".lc-check").forEach(el => {
-      mkPreview(el);
-      const saved = learnProgress().checks[el.dataset.check];
-      const n = +el.dataset.check.split("#")[1];
-      if (saved && d && d.checks[n - 1]) learnCheckResult(el, d.checks[n - 1], !!saved.ok);
-    });
     $content.querySelectorAll(".lp-prob").forEach(li => {
       const p = PROBLEM_BY_SLUG[li.dataset.slug];
       const box = li.querySelector(".lp-notes");

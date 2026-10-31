@@ -3889,3 +3889,11 @@ html[data-text="large"] .lp-body p { font-size: 18px; }
 html[data-text="larger"] .lp-body p { font-size: 20px; }
 @media (max-width: 600px) { .lp-body p, .lp-body .detail-list li { font-size: 16px; } }
 .lesson-page .lc-q { font-size: 16.5px; }
+
+/* A lesson's own problems, then their solutions (owner, 2026-10-31): plain numbered statements
+   and worked solutions, in the lesson's reading size, divided by hairlines; no boxes. */
+.lx-list { list-style: none; margin: 0; padding: 0; }
+.lx, .lx-sol { padding: 12px 0; border-top: 1px solid var(--border); font-size: 16.5px; line-height: 1.75; color: var(--text); }
+.lx:first-child, .lx-sol:first-child { border-top: none; padding-top: 4px; }
+.lx-n { display: block; margin-bottom: 2px; font-size: 13px; font-weight: 800; letter-spacing: 0.04em; color: var(--bk-ink, var(--c-learn)); }
+@media (max-width: 600px) { .lx, .lx-sol { font-size: 16px; } }
