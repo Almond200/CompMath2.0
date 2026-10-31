@@ -6,7 +6,7 @@ The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curric
 
 **Status (2026-10-31, end of the seventeenth chat):**
 - Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
-- Every chapter of AIME Counting & Probability (C1 to C9), N1 to N7, are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
+- Every chapter of AIME Counting & Probability (C1 to C9) and AIME Number Theory (N1 to N8) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
 - "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
 
 ## How to read this file
@@ -1091,7 +1091,7 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 **Moved out of N3:**
 - 2020 AIME I #12 needs LTE, so it goes to N4.5.
-- 2024 AIME I #13 needs Hensel lifting, so it goes to N8.2.
+- 2024 AIME I #13 needs Hensel lifting, so it goes to N8.3.
 - 2023 AIME II #15 needs inverses and binary expansions, so it goes to the N6 review.
 
 **Pilot status (2026-10-31):** N2 and N3 are written in full (`js/data/learn/aime-number-theory/n2.js`, `n3.js`).
@@ -1147,10 +1147,12 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 
 | Lesson | Cards |
 |---|---|
-| N8.1 Lucas's theorem and binomial residues (Extension) | `lucas-theorem`, `kummers-theorem`, `pascal-parity` |
-| N8.2 Hensel lifting for prime powers (Extension) | `hensel-lifting`, `lagrange-roots-mod-p` (problem: 2024 AIME I #13, moved from N3; read) |
-| N8.3 Primitive roots and higher order structure (Extension) | `primitive-roots`, `quadratic-reciprocity` |
-| N8.4 Diophantine methods beyond elementary AIME (Extension) | `pell-equation`, `binary-quadratic-forms`, `sum-of-three-squares`, `gaussian-integers`, `zeckendorf-theorem`, `mobius-inversion`, `bertrands-postulate`, `farey-sequences` |
+| N8.1 Introduction | no card (the chapter's opening page: Lucas's theorem, Hensel lifting, primitive roots and reciprocity, Pell equations, sums of squares, Farey fractions, with comprehension problems) |
+| N8.2 Lucas's theorem and binomial residues (Extension) | `lucas-theorem`, `kummers-theorem`, `pascal-parity` |
+| N8.3 Hensel lifting for prime powers (Extension) | `hensel-lifting`, `lagrange-roots-mod-p` (problem: 2024 AIME I #13, moved from N3; read) |
+| N8.4 Primitive roots and higher order structure (Extension) | `primitive-roots`, `quadratic-reciprocity` |
+| N8.5 Diophantine methods beyond elementary AIME (Extension) | `pell-equation`, `binary-quadratic-forms`, `sum-of-three-squares`, `gaussian-integers`, `zeckendorf-theorem`, `mobius-inversion`, `bertrands-postulate`, `farey-sequences` |
+| N8.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N8.7 Review Problems and N8.8 Challenge Problems |
 
 ---
 

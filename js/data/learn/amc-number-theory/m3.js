@@ -81,7 +81,7 @@ When an equation does not factor, [[bounding-diophantine|bound the variables]]: 
 
 Count carries for binomial coefficients, check primes $\equiv 3 \pmod 4$, and bound or squeeze when factoring fails. This completes the AMC Number Theory book.`,
       related: [
-        { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.1).` },
+        { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime ((N8.2)).` },
         { card: "fermats-little-theorem", note: String.raw`$n^p \equiv n \pmod p$ (M2.2).` },
         { card: "pythagorean-triples", note: String.raw`hypotenuses as sums of two squares (M2.5).` }
       ],

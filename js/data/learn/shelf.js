@@ -1157,23 +1157,31 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "N8.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "N8.2",
       "title": "Lucas's theorem and binomial residues",
       "level": "Extension"
      },
      {
-      "code": "N8.2",
+      "code": "N8.3",
       "title": "Hensel lifting for prime powers",
       "level": "Extension"
      },
      {
-      "code": "N8.3",
+      "code": "N8.4",
       "title": "Primitive roots and higher order structure",
       "level": "Extension"
      },
      {
-      "code": "N8.4",
+      "code": "N8.5",
       "title": "Diophantine methods beyond elementary AIME",
       "level": "Extension"
+     },
+     {
+      "code": "N8.6",
+      "title": "Summary"
      }
     ]
    }

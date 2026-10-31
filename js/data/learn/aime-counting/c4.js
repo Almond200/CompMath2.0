@@ -152,7 +152,7 @@ When a sum of binomial coefficients appears, ask what it counts: a diagonal is a
       related: [
         { card: "committee-chair", note: String.raw`the identity $k\binom nk = n\binom{n-1}{k-1}$ for weighted row sums (C4.3).` },
         { card: "roots-of-unity-filter", note: String.raw`sums of every third or fourth entry of a row (A6.3).` },
-        { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime (N8.1).` }
+        { card: "lucas-theorem", note: String.raw`binomial coefficients modulo a prime ((N8.2)).` }
       ],
       exercises: [
         { q: String.raw`Find $\binom33 + \binom43 + \binom53 + \cdots + \binom{10}3$.`, answer: "330",
