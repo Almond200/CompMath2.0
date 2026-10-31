@@ -38,9 +38,10 @@ $JSC tools/validate-problem-db.js
 - A "tag" on a problem is a formula, method or pattern card it cites (`formulas`, `trickFormulas`).
 - Rebuild the search index once at the end of a step, not after each small card edit (owner, 2026-10-25).
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
-- No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31).
+- No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
 - No boxes inside boxes: a subsection inside a panel is a heading over its content, not a second bordered box (owner, 2026-10-31).
 - Our own design language: rounded bordered cards, soft tints, pill buttons, hairlines. Take another site's structure when it is easier to use, never its look (owner, 2026-10-31).
 - No gradients on buttons (or other controls): solid colours only. The book covers are the one exception (owner, 2026-10-31).
+- The textbooks stay at a high level and are not too easy. Basic is not easy: a basic problem uses relatively simple techniques but can be hard to solve. An Introduction's Exercises are basic, not easy (owner, 2026-10-31).
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.

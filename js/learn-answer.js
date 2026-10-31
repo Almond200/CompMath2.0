@@ -116,6 +116,16 @@
     if (!toks.length) throw new Error("The answer is empty.");
     toks.forEach(t => { if (t.t === ",") parts.push([]); else parts[parts.length - 1].push(t); });
     if (parts.some(p => !p.length)) throw new Error("The list has an empty item: check the commas.");
+    // Each ± doubles the answers, so the count is capped before any are built (a report,
+    // 2026-10-31: sixteen ± signs made 65,536 answers and stalled the preview).
+    const PM_MAX = 3, ANSWERS_MAX = 24;
+    let total = 0;
+    parts.forEach(p => {
+      const n = p.filter(t => t.t === "±").length;
+      if (n > PM_MAX) throw new Error(`An answer can have at most ${PM_MAX} ± signs.`);
+      total += 2 ** n;
+    });
+    if (total > ANSWERS_MAX) throw new Error(`The answer stands for more than ${ANSWERS_MAX} values; list fewer.`);
     return parts.flatMap(expandPm).map(parseOne);
   }
 

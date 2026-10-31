@@ -4632,27 +4632,54 @@
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
-  // Returns a message for the reader; throws on a file that is not a progress file.
+  // Returns a message for the reader; throws on a file that is not a progress file, or when the
+  // browser will not store it. The import is all or nothing (a user's report, 2026-10-31): the
+  // file is checked and every new value worked out first (lists merged on a copy), the current
+  // values are kept, then everything is written; if any write fails, every key is put back as it
+  // was, and the message says whether that worked.
   function importProgress(text) {
     const obj = JSON.parse(text);
-    if (!obj || obj.format !== PROGRESS_FORMAT || typeof obj.data !== "object") throw new Error("This is not a progress file exported from this app.");
+    if (!obj || obj.format !== PROGRESS_FORMAT || !obj.data || typeof obj.data !== "object") throw new Error("This is not a progress file exported from this app.");
     if (!(obj.version >= 1 && obj.version <= PROGRESS_VERSION)) throw new Error("This file was made by a newer version of the app (format " + obj.version + ").");
     const d = obj.data;
+    // 1. Stage every value to write.
+    const staged = {};
     PROGRESS_KEYS.forEach(k => {
-      if (!(k in d) || k === "mq-lists") return;
-      localStorage.setItem(k, typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]));
+      if (!(k in d) || k === "mq-lists" || d[k] == null) return;
+      staged[k] = typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]);
     });
     const inc = d["mq-lists"];
     if (inc && Array.isArray(inc.items)) {
+      const merged = JSON.parse(JSON.stringify(lists));   // a copy: the lists in use stay as they are until the import succeeds
       inc.items.forEach(l => {
         if (!l || typeof l.id !== "string" || !Array.isArray(l.ids)) return;
-        const mine = getList(l.id);
-        if (mine) l.ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
-        else lists.items.push({ id: l.id, name: String(l.name || "Imported list"), ids: l.ids.filter(x => typeof x === "string") });
+        const ids = l.ids.filter(x => typeof x === "string");
+        const mine = merged.items.find(m => m.id === l.id);
+        if (mine) ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
+        else merged.items.push({ id: l.id, name: String(l.name || "Imported list"), ids });
       });
-      if (!saveLists()) throw new Error("This browser is blocking storage, so nothing could be saved.");
+      staged["mq-lists"] = JSON.stringify(merged);
     }
-    return "Imported progress from " + (obj.exported ? obj.exported.slice(0, 10) : "the file") + ". Reloading\u2026";
+    const keys = Object.keys(staged);
+    if (!keys.length) throw new Error("This file holds no progress to import.");
+    // 2. Keep what is there now.
+    const before = {};
+    try { keys.forEach(k => { before[k] = localStorage.getItem(k); }); }
+    catch (e) { throw new Error("This browser is blocking storage, so nothing was imported. Your progress is unchanged."); }
+    // 3. Write everything; on a failure, put every key back.
+    try {
+      keys.forEach(k => localStorage.setItem(k, staged[k]));
+    } catch (e) {
+      let restored = true;
+      keys.forEach(k => {
+        try { if (before[k] == null) localStorage.removeItem(k); else localStorage.setItem(k, before[k]); }
+        catch (e2) { restored = false; }
+      });
+      throw new Error(restored
+        ? "This browser's storage is full or blocked, so nothing was imported. Your progress is unchanged."
+        : "The import stopped partway and your previous progress could not be fully put back. Export what you have now before trying again.");
+    }
+    return "Imported progress from " + (obj.exported ? String(obj.exported).slice(0, 10) : "the file") + ". Reloading\u2026";
   }
   function wireProgressPanel() {
     const ex = $content.querySelector(".progress-export"), im = $content.querySelector(".progress-import");
@@ -5646,7 +5673,7 @@
     const text = `This book teaches. The facts themselves live on the reference cards: each formula, method and pattern has one card, with its statement, its conditions, why it is true, and worked examples. A lesson does not copy a card. It explains how a few cards fit together, when to reach for them, and how they are used on real contest problems, and it links each card by name. Press a name to open the card beside the lesson, so you never lose your place. Settings can make the name open the card's own page instead.
 
 ## How a chapter is built
-A chapter is a short run of lessons on one theme. Each lesson starts with the cards it teaches and the cards it assumes you know, then explains the idea in one piece, with worked examples. Related cards follow, each with a line on how it connects. Then come the lesson's own problems, with full worked solutions further down the page, and then real contest problems that use the idea.
+A chapter is a short run of lessons on one theme. Each lesson starts with the cards it teaches and the cards it assumes you know, then explains the idea in one piece, with worked examples. Related cards follow, each with a line on how it connects. Then come the lesson's own problems, with full worked solutions further down the page, and then Exercises: real contest problems that use the idea. An Introduction has Exercises too: they need only the chapter's first ideas, though they are not always easy to solve.
 
 A chapter ends with problems that mix its lessons, without saying which idea each one needs. In the newer chapters, the first page is an Introduction that gives a short overview of the chapter's ideas, and the last lesson is a Summary with a list of problem solving strategies. Then come Review Problems, which mostly check that the ideas are understood, and Challenge Problems, which are harder.
 
@@ -5946,7 +5973,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        ${(d.problems || []).length ? `<h3 class="lp-h3">Contest practice problems</h3>${learnProblemsHtml(d.problems)}` : ""}`;
+        ${(d.problems || []).length ? `<h3 class="lp-h3">Exercises</h3>${learnProblemsHtml(d.problems)}` : ""}`;
   }
   function renderLearnLesson(b, c, l, end) {
     const d = l ? learnLessonData(c, l) : null;
@@ -6402,9 +6429,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   let advEl = null;
   let advDraft = null;
   function onAdvKey(e) { if (e.key === "Escape") closeAdvanced(); }
-  function closeAdvanced() {
+  function closeAdvanced(restore = true) {
     if (!advEl) return;
-    advEl.remove(); advEl = null;
+    const el = advEl;
+    advEl = null;
+    el.remove();
+    releaseModal(el, restore);
     document.removeEventListener("keydown", onAdvKey, true);
   }
   function openAdvanced() {
@@ -6447,7 +6477,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       });
     }
     refreshAdvTags();
-    if (tf) setTimeout(() => tf.focus(), 0);
+    trapModal(advEl, "#adv-tag-search");
     setTimeout(() => document.addEventListener("keydown", onAdvKey, true), 0);
   }
   function onAdvClick(e) {
@@ -6467,7 +6497,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const labels = [...advDraft.tags];
       state.adv = null;
       state.query = ""; $search.value = "";
-      closeAdvanced();
+      closeAdvanced(false);   // a new page opens: the focus is not sent back to the button
       location.hash = tagHash(labels);
       window.scrollTo({ top: 0 });
     }
@@ -7902,10 +7932,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // opened in it, in a centered dialog like Filters. It closes on the backdrop, the close
   // button, Escape, or opening anything in it.
   let infoEl = null;
-  function closeSpaceInfo() {
+  function closeSpaceInfo(restore = true) {
     if (!infoEl) return;
-    infoEl.remove();
+    const el = infoEl;
     infoEl = null;
+    el.remove();
+    releaseModal(el, restore);
   }
   function openSpaceInfo(name) {
     closeSpaceInfo();
@@ -7934,18 +7966,18 @@ The book remembers the last lesson you opened, in this browser, and the contents
         clearSearch();
         if (a.getAttribute("href") === location.hash) { e.preventDefault(); render(); }
       }
-      if (e.target === infoEl || e.target.closest(".modal-close") || a) closeSpaceInfo();
+      // Following a link goes somewhere new, so the focus is not sent back to the "i".
+      if (e.target === infoEl || e.target.closest(".modal-close") || a) closeSpaceInfo(!a);
     });
     renderMath(infoEl);
-    const x = infoEl.querySelector(".modal-close");
-    if (x) x.focus();
+    trapModal(infoEl, ".modal-close");
   }
   document.addEventListener("click", e => {
     const btn = e.target.closest && e.target.closest(".nsh-info");
     if (btn) openSpaceInfo(btn.dataset.info);
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") closeSpaceInfo(); });
-  window.addEventListener("hashchange", closeSpaceInfo);
+  window.addEventListener("hashchange", () => closeSpaceInfo(false));
 
   // Space switcher in the top bar: Learn and Practice open their own pages; the other spaces
   // open the subject last visited in them.
@@ -8136,6 +8168,49 @@ The book remembers the last lesson you opened, in this browser, and the contents
     window.scrollTo({ top: 0 });
   });
 
+  // ---------- Dialogs: focus goes in, stays in, and comes back ----------
+  // Filters, Browse by tag and a space's "i" box are modal (a report, 2026-10-31): opening one
+  // moves the keyboard focus into it, Tab and Shift+Tab cycle inside it, nothing behind it can be
+  // reached (the "/" shortcut included), and closing it returns the focus to whatever opened it.
+  const openModals = [];
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  function trapModal(overlay, first) {
+    const dlg = overlay.querySelector('[role="dialog"]') || overlay;
+    dlg.setAttribute("aria-modal", "true");
+    if (!dlg.hasAttribute("tabindex")) dlg.tabIndex = -1;
+    const items = () => [...dlg.querySelectorAll(FOCUSABLE)].filter(el => el.getClientRects().length);
+    const m = { overlay, dlg, opener: document.activeElement };
+    m.onKey = e => {
+      if (e.key !== "Tab" || openModals[openModals.length - 1] !== m) return;
+      const f = items();
+      if (!f.length) { e.preventDefault(); dlg.focus(); return; }
+      const a = document.activeElement, i = f.indexOf(a);
+      if (e.shiftKey && (i <= 0)) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
+    };
+    // Focus that lands behind the dialog (a click on the page through some gap, a script) is
+    // brought back in.
+    m.onFocusIn = e => {
+      if (openModals[openModals.length - 1] !== m || dlg.contains(e.target)) return;
+      const f = items();
+      (f[0] || dlg).focus({ preventScroll: true });
+    };
+    document.addEventListener("keydown", m.onKey, true);
+    document.addEventListener("focusin", m.onFocusIn, true);
+    openModals.push(m);
+    const start = (first && dlg.querySelector(first)) || items().find(el => !el.classList.contains("modal-close")) || items()[0] || dlg;
+    start.focus({ preventScroll: true });
+    return m;
+  }
+  function releaseModal(overlay, restore = true) {
+    const k = openModals.findIndex(m => m.overlay === overlay);
+    if (k < 0) return;
+    const m = openModals.splice(k, 1)[0];
+    document.removeEventListener("keydown", m.onKey, true);
+    document.removeEventListener("focusin", m.onFocusIn, true);
+    if (restore && m.opener && m.opener.isConnected && typeof m.opener.focus === "function") m.opener.focus({ preventScroll: true });
+  }
+
   // ---------- Filters popup ----------
   // One filter for the whole app: contest tier, importance within the subsection, and contest
   // level. The counts show how many cards each chip belongs to across the whole reference.
@@ -8158,15 +8233,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
   function onSettingsKey(e) { if (e.key === "Escape") closeSettings(); }
   function closeSettings() {
     if (!settingsEl) return;
-    settingsEl.remove(); settingsEl = null;
+    const el = settingsEl;
+    settingsEl = null;
+    el.remove();
+    releaseModal(el);
     document.removeEventListener("keydown", onSettingsKey, true);
     updateGearActive();
   }
   function refreshSettingsControls() {
     if (!settingsEl) return;
     const af = state.filter;
-    settingsEl.querySelectorAll("[data-tier]").forEach(b => b.classList.toggle("active", af.tiers.has(b.dataset.tier)));
-    settingsEl.querySelectorAll("[data-imp]").forEach(b => b.classList.toggle("active", af.importances.has(b.dataset.imp)));
+    // Each chip says whether it is on to a screen reader as well as by its colour.
+    settingsEl.querySelectorAll("[data-tier]").forEach(b => { const on = af.tiers.has(b.dataset.tier); b.classList.toggle("active", on); b.setAttribute("aria-pressed", String(on)); });
+    settingsEl.querySelectorAll("[data-imp]").forEach(b => { const on = af.importances.has(b.dataset.imp); b.classList.toggle("active", on); b.setAttribute("aria-pressed", String(on)); });
   }
   function afterFilterChange() {
     saveSettings(); updateGearActive(); render(); refreshSettingsControls();
@@ -8178,7 +8257,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const TIER_NAMES = { "amc": "AMC", "aime-early": "AIME Early", "aime-late": "AIME Late", "olympiad": "Olympiad" };
     const IMP_NAMES = { high: "High", medium: "Medium", low: "Low", lower: "Lower", lowest: "Lowest" };
     const chips = (keys, names, set, attr, count) => keys.map(k =>
-      `<button class="filter-chip${set.has(k) ? " active" : ""}" data-${attr}="${k}">${names[k]} <span class="fc-count">${count[k] || 0}</span></button>`).join("");
+      `<button type="button" class="filter-chip${set.has(k) ? " active" : ""}" aria-pressed="${set.has(k)}" data-${attr}="${k}">${names[k]} <span class="fc-count">${count[k] || 0}</span></button>`).join("");
     settingsEl = document.createElement("div");
     settingsEl.className = "modal-overlay";
     settingsEl.innerHTML = `
@@ -8202,6 +8281,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       </div>`;
     document.body.appendChild(settingsEl);
     settingsEl.addEventListener("click", onSettingsClick);
+    trapModal(settingsEl);
     setTimeout(() => document.addEventListener("keydown", onSettingsKey, true), 0);
   }
   function onSettingsClick(e) {
@@ -8230,7 +8310,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // like 7/2 would otherwise lose the keystroke and the focus.
   const typingIn = el => !!el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
   document.addEventListener("keydown", e => {
-    if (e.key === "/" && document.activeElement !== $search && !typingIn(document.activeElement)) {
+    if (e.key === "/" && !openModals.length && document.activeElement !== $search && !typingIn(document.activeElement)) {
       e.preventDefault();
       // When the box is already on screen (the sticky top bar on a wide window), a plain focus()
       // still scrolled the page up by the scroll padding, so the page is told not to move. On a

@@ -912,7 +912,20 @@ See `MIGRATION-NOTES.md` for the full answers.
 - `node tools/check-pages.js '#/f/<id>' ...` prints only light 1280 rows and FAIL rows, so no FAIL means all four modes passed.
 - **The search index in a cloud chat:** test `curl -sI https://huggingface.co` and `curl -sI https://us.aws.cdn.hf.co` (the weights also come from `cas-server.xethub.hf.co`), then `python3 -m venv <scratchpad>/buildenv && <scratchpad>/buildenv/bin/pip install torch --index-url https://download.pytorch.org/whl/cpu && <scratchpad>/buildenv/bin/pip install "model2vec[distill]==0.9.0"` (the CPU-only torch first: the default GPU build is several GB and stalled on 2026-10-30) and `SSL_CERT_FILE=/root/.ccr/ca-bundle.crt <scratchpad>/buildenv/bin/python tools/build-search-index.py --backend model2vec`. Otherwise it is rebuilt on the Mac. Then the eval (`tools/search-eval.html`, at least 160/187) and `MathSemantic.info().cards` equal to the card count.
 
-## 14. Learn: lessons, checks and problem sets (PLAN step L3, 2026-10-31)
+
+**Interface rules from the seventeenth chat (owner, 2026-10-31):**
+- **The Settings preview is drawn by the pages' own code** (`problemDetailHtml`, `learnBookShellHtml`, `learnLessonMainHtml`, `learnDrawerInnerHtml`), so it can never drift from the pages. No screen repeats another's content.
+- **Every setting lists its default option first.** `SETTING_DEFAULTS` holds the defaults, and they are the loader's fallbacks.
+- **The settings search** finds a setting from its name, its everyday words (the `ALSO` map), its options and its description. A new setting gets its everyday words there.
+- **Printing** typesets every card first (`prepareMathForPrint`). Anything that floats or only works on screen is hidden in `@media print`: toasts, menus, drawers, card buttons. A new floating control joins that list.
+- **Our own problem figures** show only inside How this problem works, never with the statement, and with no "drawn for this app" note.
+- **Wide screens and phones are separate.** A phone change sits inside a phone media query and never alters the wide layout. Sticky elements need `overflow-x: clip`, never `hidden`, on `html` and `body`.
+- **Small action buttons** (the new-list +, Show / Hide) are solid tints that only brighten slightly on hover.
+- **Dialogs are modal for the keyboard too.** A dialog opens with `trapModal(overlay, firstSelector)` and closes with `releaseModal(overlay, restore)`: the focus goes in, Tab stays inside, the "/" shortcut is off, and the focus returns to the opener, except after a link to a new page. A toggle chip carries `aria-pressed`.
+- **Import is all or nothing.** `importProgress` stages every value (lists merged on a copy) and keeps the old ones. If any write fails, everything is put back, and the message says whether the rollback worked. A new stored key joins `PROGRESS_KEYS` and follows the same path.
+- **The lab pages** (`lab/`): a page-wide key shortcut never takes Enter or Space from a focused link or button. A failed save shows a one-time notice instead of failing silently.
+
+## 14. Learn: books, chapters, lessons and problem sets (PLAN step L3, 2026-10-31; revised through the seventeenth chat)
 
 The rules for the Learn space. What each book, chapter and lesson holds is in `LEARN-OUTLINE.md`; the plan is `PLAN.md`; the owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`.
 
@@ -938,6 +951,8 @@ window.MATH_LEARN["N3"] = {
   review: ["2008 AMC 10A, Problem 24", "..."]
 };
 ```
+
+A chapter in the approved chapter structure (C5) has no `review`. Its first lesson is the Introduction and its last the Summary, which adds `strategies: [String.raw`...`, ...]` (the Problem Solving Strategies). The closing pages are `reviewProblems: { exercises: [...], problems: [...] }` and `challenge: { exercises: [...], problems: [...] }`. The gate (`tools/check-learn.js`) checks this shape.
 
 The code and title of each lesson come from the shelf, never from this file. A chapter with no file shows its lessons as "Not written yet".
 
@@ -974,17 +989,21 @@ The button is disabled until the box holds some non-blank text. Pressing it show
 |---|---|
 | the Learn page | `#/learn` |
 | a book | `#/learn/<book-id>` |
-| a chapter | `#/learn/<book-id>/<code>` (code in lower case, for example `#/learn/aime-number-theory/n3`) |
+| How to Use This Book | `#/learn/<book-id>/how-to-use` |
+| a chapter | `#/learn/<book-id>/<code>` (code in lower case, for example `#/learn/aime-number-theory/n3`); in the approved structure it shows the X.1 Introduction |
 | a lesson | `#/learn/<book-id>/<code>/<n>` (`.../n3/1` is N3.1) |
-| a chapter review | `#/learn/<book-id>/<code>/review` |
+| a chapter review, or Review Problems | `#/learn/<book-id>/<code>/review` |
+| Challenge Problems | `#/learn/<book-id>/<code>/challenge` |
 
-**The book view** (owner, 2026-10-31). The Learn page shows the five books as covers (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book's own page, which has no rail and no header: the cover with the book's line, its size and a Start or Continue button, then the table of contents, each chapter a heading (code, title, level, lessons written) over its lessons and review as links, chapters divided by hairlines (no boxes). The book's other pages follow an online textbook's structure, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
-- a rounded rail of tabs on the left: C for the contents, then each chapter's number; the current one tinted; hovering a tab shows the chapter's name in a small card with a pointer;
+**The book view** (owner, 2026-10-31). The Learn page shows every book as a cover (folded past two rows behind "Show all textbooks") (a coloured rectangle with the series, the title, a drawn motif and the size; `BOOK_MOTIFS` in `js/app.js`). Pressing one opens the book's own page, which has no rail and no header: the cover with the book's line, its size and a Start or Continue button, then the table of contents, each chapter a heading (code, title, level, lessons written) over its lessons and review as links, chapters divided by hairlines (no boxes). The book's other pages follow an online textbook's structure, drawn in the app's own design language (rounded bordered cards, soft tints of the book's colour, pill buttons, hairlines; never solid colour bars and never a box inside a box):
+- a rounded rail of tabs on the left: C for the contents, then each chapter's number, all one height with no markers; the current one tinted. Each chapter tab is a scrubber: its height is split into the chapter's pages, pointing or pressing at a height names that page in a small card, and a click or a release opens it;
 - a header card attached to the top of the page (it scrolls away with the page; no sticky headers): the cover, then two rows, the chapter's ("Chapter 3") and the lesson's ("Lesson"), each with a small label and two arrow buttons;
 - each problem in its first look: a rounded card with its number and contest reference, the statement as plain text (no box inside the card), then the work box with Show Solution to its right (under it on a phone), which becomes Hide Solution once shown; the box starts two lines tall, grows with its text, and cannot be dragged to resize;
 - at the bottom, three small plain links (no cards, no background until hovered): ‹ the previous page, Back to top, the next page ›.
 
-The pages run in one order through the book (each chapter's overview, its lessons, its review), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
+On a phone (760 px and narrower) there is no rail and no title bars: a line names the book and the place in it, and a row pinned under the top bar holds the previous page, a menu of every chapter and page, and the next page. The card drawer is a sheet at the bottom that closes when swiped down.
+
+The pages run in one order through the book (each chapter's overview, its lessons, its review; in the approved structure, its Introduction, lessons, Summary, Review Problems and Challenge Problems), which the arrows and the bottom cards follow. A lesson's problems and a review are shown easiest first, by `difficultyScore` (the contest's level plus the place in its paper), whatever order the file lists them in.
 
 The old list addresses are kept (§9).
 
@@ -1016,7 +1035,8 @@ The old list addresses are kept (§9).
 **Two tracks.** The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked Core, Core II or Extension, never AMC 10 or AMC 12) and the AIME books (with the Bridge) are separate tracks (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
 
 **Chapter structure (approved by the owner after the C5 pilot, 2026-10-31; every new or reworked chapter follows it).** A chapter opens with X.1 Introduction and closes with a Summary lesson, then two pages:
-- **X.1 Introduction** is the chapter's opening page (the chapter's address shows it). It shows the chapter's number and title, then the lesson heading. It gives a short, plain overview of the ideas the chapter teaches (what a recursion is, what a state is), with no motivating question and no deep use cases, then a few comprehension problems with worked solutions. It teaches no card.
+- **Level (owner, 2026-10-31).** The books are high level and not too easy. Basic is not easy: a basic problem uses only simple techniques but can be hard to solve.
+- **X.1 Introduction** is the chapter's opening page (the chapter's address shows it). Its Exercises are contest problems that need only the chapter's first ideas, so they are basic but not easy (C5.1: 2023 AMC 10A #20, 2023 AIME II #10, 2026 AIME II #7). It shows the chapter's number and title, then the lesson heading. It gives a short, plain overview of the ideas the chapter teaches (what a recursion is, what a state is), with no motivating question and no deep use cases, then a few comprehension problems with worked solutions. It teaches no card.
 - **The lessons** follow, numbered from X.2.
 - **The Summary** is the last lesson. It recaps the concepts in a few paragraphs, then gives a bulleted list under the heading Problem Solving Strategies (the `strategies` field).
 - **Numbering:** the two closing pages are numbered on from the Summary (C5.9 Review Problems, C5.10 Challenge Problems), and their own problems like a lesson's (Problem C5.9.1).
@@ -1025,3 +1045,8 @@ The old list addresses are kept (§9).
 - **Order:** every list of problems runs from easiest to hardest. The contest lists are sorted by difficulty when drawn; our own problems are written in that order.
 
 A chapter not yet moved to this structure keeps its overview page and its chapter review until it is reworked.
+
+
+**How to Use This Book (owner, 2026-10-31).** Every book's contents open with "Contents and Introduction": Contents (the page itself) and How to Use This Book (`#/learn/<book>/how-to-use`). Its text is one per track, AMC or AIME; only the meaning of Core and Core II differs (AMC: early to middle problems, hard problems; AIME: early AIME problems, later AIME problems). A change to how the books work is written there too.
+
+**Counts on the shelf.** Books and chapters show how many lessons they have, never "X of Y written".

@@ -32,10 +32,12 @@ CONVENTIONS §0 has the full model.
 
 **Pages.**
 
-- **Front page** (no hash): search, the four space tiles, then Did you know? (a different card or
-  fact each visit), Newest cards, Practice at a glance, Continue where you left off, the Problem of
-  the day (its statement shown in full), the Card of the day, and your library. The top bar is hidden here; Settings is
-  reached from the gear in the top bar on every other page.
+- **Front page** (no hash): the top bar, a one-line title, a strip of the five spaces, then a main
+  column (Continue, the Problem of the day with its statement, Newest cards, Practice at a glance
+  with See all) and a rail (Textbooks with See all, the Card of the day, Did you know?, your
+  library), divided by hairlines. On a phone it is one column in its own order: Continue, Did you
+  know?, your library, the Problem of the day, the Card of the day, Newest cards, the contests,
+  Textbooks.
 - **No main page for Formulas, Methods or Patterns.** `#/formulas`, `#/methods` and `#/patterns`
   (and the switcher buttons) open the subject last visited in that space, Geometry the first
   time. The small "i" beside the space's name in the sidebar opens a centered dialog, like
@@ -45,19 +47,22 @@ CONVENTIONS §0 has the full model.
   `blurb`. A group's address (`#/formulas/geometry/circles`) opens the subject at that heading;
   so do the sidebar's group links. The sidebar shows only the current space; clicking the open
   subject's header folds it.
-- **Problem pages** (`#/problem/<slug>`): a subject chip and the contest, the statement with its
+- **Problem pages** (`#/problem/<slug>`): a subject chip and topic chips, the statement with its
   figures and credit line (AMC and AIME problems; other contests link out), then "How this problem
-  works", which holds the strategy and the chain of cards the problem uses (Pattern → Method → Formulas).
-- **Learn** (`#/learn`, owner 2026-10-31): the Textbooks shelf (five books, each chapter marked Core,
-  Core II or Extension, with its lesson titles; drawn from `js/data/learn/shelf.js`, which
-  `tools/build-learn-shelf.py` builds from `LEARN-OUTLINE.md`), then Lists: your lists (and a box to
-  make one) and the study lists. A single list (`#/list/<id>`) opens as a plain page with a link
-  back to Learn. `#/lists` and the toolbar's Lists button open Learn at its Lists. A book
-  (`#/learn/<book>`), a chapter (`.../n3`), a lesson (`.../n3/1`) and a chapter review (`.../n3/review`)
-  each have a page; a lesson shows the chapter outline, the prose with its checks (typed on the
-  app's math keyboard), its problems, and a drawer for the cards it links (CONVENTIONS §14).
+  works", opened and closed with "+ Show" / "− Hide" beside its heading, which holds any figure we
+  drew, the strategy, and the chain of cards the problem uses (Pattern → Method → Formulas).
+- **Learn** (`#/learn`, owner 2026-10-31): the Textbooks shelf of book covers (nine books in two
+  tracks, AMC and AIME; drawn from `js/data/learn/shelf.js`, which `tools/build-learn-shelf.py`
+  builds from `LEARN-OUTLINE.md`), then Lists: your lists (a green + makes one) and the study
+  lists. A single list (`#/list/<id>`) opens as a page whose sidebar holds its sections and page
+  tools (Back to top, Copy link, Print). A book's contents (`#/learn/<book>`) open with Contents and
+  Introduction and How to Use This Book (`.../how-to-use`). A lesson (`.../c5/2`) shows its cards,
+  one flowing explanation, related cards, its own problems with worked solutions, contest
+  problems, and a drawer for the cards it links; chapters in the approved structure (C5) open on
+  an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14).
 - **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, and every
-  year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link back.
+  year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
+  back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
   and study lists, each labelled), shown full width with no space highlighted. So are tag pages
   and special pages.
@@ -117,8 +122,8 @@ by a point or two; compare warm runs to warm runs.
   behind the funnel in the top bar, narrows every list by tier and importance.
 - **Problems**, reached from Practice by contest and year (AMC 8, AMC 10, AMC 12, then AIME), each
   linked to the cards its solution uses, with a pattern, method and formula chain and a strategy,
-  shown at once or behind a button (Settings, Practice).
-- **Study lists**, also on Practice, hold 41 built-in sets alongside your own. The twelve study
+  closed until Show is pressed by default, or open at once (Settings, Practice).
+- **Study lists**, under Learn, hold 41 built-in sets alongside your own. The twelve study
   routes (AMC, AIME and Olympiad, each by subject) are *complete by construction*: every card
   of that tier and subject is in its route, which `tools/check-lists.py` enforces; the other 25
   are study lists on one theme (the four By Contest lists were removed on 2026-10-31). A list
@@ -127,7 +132,8 @@ by a point or two; compare warm runs to warm runs.
 - **Diagrams** are computed from exact geometry rather than sketched, so every point is a
   true intersection, foot or tangency. Settings can show figures on the card faces too (off or on), and long write-ups place further figures inside the text, next to the
   paragraph each one illustrates (210 on 182 cards). Problems printed without a figure get one
-  drawn for the app, labelled as such (340 so far).
+  drawn for the app (340 so far), shown only inside How this problem works, since a contestant
+  would not have it.
 - **Connected formulas.** A few broad cards (auxiliary lines, p-adic valuation, the mean chain,
   modular basics and fourteen more; 18 hubs, 96 links) end with a hand-picked row of the cards that are part of the
   same idea: LTE, Legendre and Kummer under p-adic valuation, the construction cards under
@@ -146,17 +152,22 @@ by a point or two; compare warm runs to warm runs.
   - Reading the math: **formula lines** (1, 2, 3, or All: the most rows of a card's formulas a
     browsing card shows; a card's own page always shows all), keyword tags, **notation** (in the
     expanded form, every formula box and Key forms bullet with a sigma or product sign shows its
-    terms written out), and figures on card faces.
+    terms written out), figures on card faces, the page-tools column, and scroll speed.
   - Browsing: subject pages (cards or a wiki-style A-Z index), card order (Curated or Most used),
-    scroll speed, where the app opens, and the page-tools column.
-  - Practice: the strategy on a problem page, shown at once or behind a button.
+    and where the app opens.
+  - Learn: what a card's name does in a lesson (opens in the lesson, or opens its page).
+  - Practice: the strategy on a problem page (Click to show, the default, or Shown).
   - Commands, and **Your progress**: Export writes everything the app keeps in this browser
     (lists, stars, settings, theme, recent pages, flashcard and quiz progress) to one versioned
     JSON file (`competition-math-reference/progress`, version 1); Import merges its lists into
     yours and replaces the rest.
 
-  On a wide window, a fixed preview panel on the right shows cards while browsing, a card's page,
-  a subject page and a problem page as each setting changes, scaled so all four always fit.
+  Every setting lists its default first. A search box under the title finds a setting by its
+  name or everyday words ("dark mode", "font size", "export data") and underlines it once
+  scrolled to. On a wide window, a fixed preview panel on the right, behind a line midway between
+  the settings and the screens, shows three of five screens at a time (cards while browsing, a
+  card's page, a subject page, a problem page, a lesson), drawn by the pages' own code, with an
+  arrow on each side; pointing at a setting brings the screen it changes into view.
 - **Special pages**, run from the search box or from Settings → Commands, in the style of
   Wikipedia's: `Special:Random`, `Special:RandomProblem/<contest>`, `Special:RandomStarred`,
   `Special:WhatLinksHere/<card>`, `Special:AllPages` (an A-Z index with a letter bar),
@@ -284,6 +295,12 @@ the card in `tools/rewrite-register.json` and in a batch of `js/data/new-cards.j
 If the `latex` uses `\sum` or `\prod`, add a `latexPlain` right after it with the terms written
 out ($a_1 + a_2 + \cdots + a_n$); a Key forms bullet with a sigma writes both forms as
 `\alt{sigma form}{written-out form}`. The notation setting picks one, and `scan-conventions.py`
+- C5.1's Exercises are basic rather than easy (owner: basic means simple techniques, not an easy problem): 2023 AMC 10A #20 (a 3 x 3 coloring the first squares force), 2023 AIME II #10 (a grid filled by residues), 2026 AIME II #7 (states of a race of coins), replacing three AMC 8 problems. The books stay high level (a standing preference in CLAUDE.md, and CONVENTIONS §14).
+- Learn: a lesson's contest problems are headed Exercises (was Contest practice problems), and C5.1 Introduction has Exercises too (1986 AJHSME #9, 2014 AMC 8 #11, 2024 AMC 8 #7: a backward route table, paths avoiding a corner, a tiling invariant); How to Use This Book and the docs say so.
+- Docs: PLAN's Current state records the bug-report fixes; CONVENTIONS §13 adds the rules for dialogs, import, and the lab pages' keys and storage.
+- Fixes from a user's report, each confirmed first: Import progress is all or nothing (everything staged and the old values kept; on a failed write every key is put back, and the message says whether that worked); the answer parser caps ± at three per item and 24 answers in all (sixteen ± signs had made 65,536); Quiz and Flashcards leave Enter and Space to a focused link or button, and say once when the browser is not saving; Flashcards' Forget this deck clears both directions, its empty session says why (no cards for the direction, new cards set to 0, or all scheduled later) with the next due date from this deck only, its labels are tied to their controls, the setup counts update in place, and the first rating takes the focus after a reveal; Formula Web's search lists its matches with Start and End, so a route can be chosen from the keyboard.
+- Accessibility (a user's report): Filters, Browse by tag and a space's "i" box are real modal dialogs: opening one moves the focus into it, Tab and Shift+Tab stay inside, the "/" shortcut is off while it is open, and closing returns the focus to what opened it (not after following a link to a new page). The dialogs say aria-modal, and each filter chip says aria-pressed.
+- Docs, a full pass: PLAN's Current state and road ahead rewritten (finished steps folded into one Done list, what replaced the checks and the overview pages, the remaining work in order); LEARN-OUTLINE's status, levels and lesson standard brought to the current format; CONVENTIONS §14 (the C5 chapter shape, the addresses, the rail and the phone view); the README's overview (front page, problem pages, Learn, Practice, Settings); QUESTIONS marks LQ4, LQ5 and LQ8 as later changed; CLAUDE.md notes the phone exception to sticky headers.
 fails on a sigma with no written-out twin. To give a broad card a Connected formulas row, add it
 to `js/data/connected.js` (CONVENTIONS §12).
 
@@ -295,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- Docs: PLAN's Current state brought up to date with the rest of the seventeenth chat; CONVENTIONS records How to Use This Book, the shelf's lesson counts, and the chat's interface rules (the preview drawn by the pages' own code, defaults listed first, the settings search's words, printing, figures, phone-only changes, small buttons).
 - A book's page shows its chapters and lessons without "written so far", and its contents give each chapter's number of lessons. Printing leaves out everything that floats or only works on screen: toasts such as Link copied, menus, the drawer, the phone navigation, and the card buttons (star, +, Open).
 - Home: Practice at a glance has a "See all" link in its heading row, like Textbooks, and no longer has the random-problem and every-contest links at its foot.
 - Home: each textbook shows its number of lessons, not "X of X".

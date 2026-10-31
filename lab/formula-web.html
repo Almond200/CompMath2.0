@@ -25,6 +25,18 @@
          align-items: center; padding: 10px 14px; background: color-mix(in srgb, var(--bg) 88%, transparent);
          backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
   .bar h1 { font-size: 15px; margin: 0 6px 0 0; font-weight: 700; }
+  /* The search's matches, each with Start and End: a route can be chosen from the keyboard, or
+     precisely on a small screen (a report, 2026-10-31). */
+  .qwrap { position: relative; }
+  .qres { position: absolute; top: calc(100% + 6px); left: 0; width: min(360px, calc(100vw - 28px)); max-height: 320px; overflow-y: auto;
+          padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: 0 10px 26px rgba(0,0,0,.18); z-index: 6; }
+  .qres[hidden] { display: none; }
+  .qrow { display: flex; align-items: center; gap: 6px; padding: 4px 6px; border-radius: 7px; }
+  .qrow:focus-within { background: color-mix(in srgb, var(--line) 45%, transparent); }
+  .qname { flex: 1; min-width: 0; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .qrow button { font: inherit; font-size: 12px; padding: 3px 9px; border-radius: 7px; border: 1px solid var(--line); background: var(--bg); color: var(--text); cursor: pointer; }
+  .qrow button[aria-pressed="true"] { border-color: #5b8cff; color: #5b8cff; font-weight: 650; }
+  .qmore, .qnone { padding: 6px 8px; font-size: 12px; color: var(--faint); }
   .tag { font-size: 10.5px; text-transform: uppercase; letter-spacing: .06em; color: var(--faint);
          border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; }
   input[type=search] { font: inherit; font-size: 13px; padding: 6px 11px; border-radius: 8px;
@@ -86,7 +98,8 @@
 <div class="bar">
   <h1>Formula Web</h1>
   <span class="tag">experimental</span>
-  <input type="search" id="q" placeholder="Find a formula…" autocomplete="off">
+  <span class="qwrap"><input type="search" id="q" placeholder="Find a formula…" autocomplete="off" aria-label="Find a formula" aria-controls="qres">
+    <div class="qres" id="qres" hidden></div></span>
   <select id="lens" title="What the colours mean">
     <option value="subject">colour: subject</option>
     <option value="level">colour: first contest</option>
@@ -638,8 +651,40 @@
     view.x += after.x - before.x; view.y += after.y - before.y;
   }, { passive: false });
 
+  // The matches as a list: each card can be made the route's Start or End without the mouse.
+  var qres = document.getElementById("qres");
+  function drawResults(v) {
+    if (!v) { qres.hidden = true; qres.innerHTML = ""; return; }
+    var hits = cards.filter(function (c) { return c.name.toLowerCase().indexOf(v) !== -1 || c.id.indexOf(v) !== -1; });
+    qres.innerHTML = hits.length ? hits.slice(0, 12).map(function (c) {
+      return '<div class="qrow"><span class="qname" title="' + esc(c.name) + '">' + esc(c.name.replace(/\$/g, "")) + "</span>" +
+        '<button type="button" data-qa="' + c.id + '" aria-pressed="' + (pathA === c.id) + '" aria-label="Start the route at ' + esc(c.name.replace(/\$/g, "")) + '">Start</button>' +
+        '<button type="button" data-qb="' + c.id + '" aria-pressed="' + (pathB === c.id) + '" aria-label="End the route at ' + esc(c.name.replace(/\$/g, "")) + '">End</button></div>';
+    }).join("") + (hits.length > 12 ? '<div class="qmore">' + (hits.length - 12) + " more: type more of the name</div>" : "")
+      : '<div class="qnone">No card matches.</div>';
+    qres.hidden = false;
+  }
+  function centreOn(id) { var n = nodeOf[id]; if (n) { view.x = -n.x; view.y = -n.y; view.s = Math.max(view.s, 1.2); } }
+  qres.addEventListener("click", function (ev) {
+    var a = ev.target.closest("[data-qa]"), b = ev.target.closest("[data-qb]");
+    if (!a && !b) return;
+    if (a) { pathA = a.dataset.qa; if (pathB === pathA) pathB = null; centreOn(pathA); }
+    else { pathB = b.dataset.qb; if (pathA === pathB) pathA = null; centreOn(pathB); }
+    setPath();
+    drawResults(document.getElementById("q").value.trim().toLowerCase());
+    var again = qres.querySelector(a ? '[data-qa="' + pathA + '"]' : '[data-qb="' + pathB + '"]');
+    if (again) again.focus();
+  });
+  document.getElementById("q").addEventListener("keydown", function (ev) {
+    if (ev.key === "ArrowDown") { var f = qres.querySelector("button"); if (f) { ev.preventDefault(); f.focus(); } }
+    else if (ev.key === "Escape") { qres.hidden = true; }
+  });
+  qres.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape") { qres.hidden = true; document.getElementById("q").focus(); }
+  });
   document.getElementById("q").addEventListener("input", function () {
     var v = this.value.trim().toLowerCase();
+    drawResults(v);
     if (!v) { matches = null; return; }
     matches = {};
     var hits = 0, first = null;
@@ -687,7 +732,7 @@
   });
   document.getElementById("reset").addEventListener("click", function () {
     fitToBounds();
-    document.getElementById("q").value = ""; matches = null;
+    document.getElementById("q").value = ""; matches = null; drawResults("");
     pathA = pathB = null; setPath();
   });
 
