@@ -5493,7 +5493,7 @@
     });
     return out;
   }
-  const learnPageLabel = x => x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${learnEndCode(x.c, x.end)} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
+  const learnPageLabel = x => x.label ? x.label : x.l ? `${x.l.code} ${escapeAttr(x.l.title)}` : x.end ? `${learnEndCode(x.c, x.end)} ${LEARN_END[x.end]}` : x.review ? `${x.c.code} chapter review` : `${x.c.code} overview`;
   function learnArrow(href, dir, label) {
     const icon = dir < 0 ? "&#8249;" : "&#8250;";
     return href ? `<a class="bk-arrow" href="${href}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(label.replace(/<[^>]*>/g, ""))}" title="${escapeAttr(label.replace(/<[^>]*>/g, "").replace(/\$/g, ""))}">${icon}</a>`
@@ -5512,7 +5512,7 @@
       return `<a class="bk-tab bk-scrub${cur ? " is-current" : ""}" href="${learnHash(b, ch)}"${cur ? ` aria-current="page"` : ""}><span class="bk-tab-n">${ch.code.slice(1)}</span><span class="bk-ticks" aria-hidden="true">${ticks}</span><span class="bk-tip"><span class="bk-tip-ch">${ch.code} ${escapeAttr(ch.title)}</span>${tips}</span></a>`;
     };
     return `<nav class="bk-rail" aria-label="Chapters">
-        <a class="bk-tab${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span>C</span><span class="bk-tip"><span class="bk-tip-ch">Contents</span></span></a>
+        <a class="bk-tab bk-scrub${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span class="bk-tab-n">C</span><span class="bk-ticks" aria-hidden="true"><i data-href="${learnHash(b)}"></i><i data-href="${learnHash(b)}/how-to-use"></i></span><span class="bk-tip"><span class="bk-tip-ch">Contents and Introduction</span><span class="bk-tip-p" data-i="0" hidden>Contents</span><span class="bk-tip-p" data-i="1" hidden>How to Use This Book</span></span></a>
         ${b.chapters.map(tab).join("")}
       </nav>`;
   }
@@ -5571,9 +5571,12 @@
   function learnBookShellHtml(b, c, cur, main, drawerInner) {
     const pages = learnPages(b);
     const at = !c ? -1 : pages.findIndex(x => x.c === c && (cur === "chapter" ? x.page === null : cur === "review" ? x.review : cur === "challenge" ? x.end === "challenge" : x.l === cur));
-    const prev = at > 0 ? pages[at - 1] : null;
+    // The C pages (owner, 2026-11-01): Contents, then How to Use This Book, then chapter 1.
+    const TOC = { hash: learnHash(b), label: "Contents" }, HOW = { hash: learnHash(b) + "/how-to-use", label: "How to Use This Book" };
+    const howto = cur === "howto";
+    const prev = howto ? TOC : at > 0 ? pages[at - 1] : at === 0 ? HOW : null;
     const next = at < 0 ? pages[0] : pages[at + 1] || null;
-    const hashOf = x => x ? learnHash(b, x.c, x.page) : "";
+    const hashOf = x => x ? x.hash || learnHash(b, x.c, x.page) : "";
     const ci = c ? b.chapters.indexOf(c) : -1;
     const pc = ci > 0 ? b.chapters[ci - 1] : null, nc = c ? b.chapters[ci + 1] : b.chapters[0];
     // Each bar: a small label, the title, and the two arrows at its right.
@@ -5585,7 +5588,7 @@
     const bar2 = c
       ? bar("bk-bar2", "Lesson", `<span class="bk-bar-t">${learnPageLabel(pages[at])}</span>`,
           learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""))
-      : bar("bk-bar2", "Lesson", `<span class="bk-bar-t">Contents</span>`, learnArrow("", -1, ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""));
+      : bar("bk-bar2", "Introduction", `<span class="bk-bar-t">${howto ? HOW.label : TOC.label}</span>`, learnArrow(hashOf(prev), -1, prev ? learnPageLabel(prev) : ""), learnArrow(hashOf(next), 1, next ? learnPageLabel(next) : ""));
     // The bottom: three small plain links, the previous page, Back to top, and the next page
     // (owner, 2026-10-31: discreet, no cards).
     const footCard = (x, dir) => x ? `<a class="bk-foot-link bk-foot-${dir < 0 ? "prev" : "next"}" href="${hashOf(x)}" aria-label="${dir < 0 ? "Previous" : "Next"}: ${escapeAttr(learnPageLabel(x).replace(/<[^>]*>/g, ""))}">${dir < 0 ? `<span class="bk-foot-a">&#8249;</span>` : ""}<span class="bk-foot-t">${learnPageLabel(x)}</span>${dir > 0 ? `<span class="bk-foot-a">&#8250;</span>` : ""}</a>` : `<span></span>`;
@@ -5599,14 +5602,15 @@
     // the top bar while reading.
     const plain = t => String(t).replace(/<[^>]*>/g, "").replace(/\$/g, "").replace(/\\[a-z]+/gi, "").replace(/[{}]/g, "");
     const here = at >= 0 ? pages[at] : null;
-    const where = !c ? "Contents" : here && here.l ? `Lesson ${c.lessons.indexOf(here.l) + 1} of ${c.lessons.length}`
+    const where = !c ? (howto ? HOW.label : TOC.label) : here && here.l ? `Lesson ${c.lessons.indexOf(here.l) + 1} of ${c.lessons.length}`
       : here && here.end ? LEARN_END[here.end] : here && here.review ? "Chapter review" : "Overview";
     const mnav = `<nav class="bk-mnav" aria-label="Chapters and lessons">
         <div class="bk-mnav-k"><span class="bk-mnav-book">${escapeAttr(b.title)}</span>${c ? ` &middot; Chapter ${c.code.slice(1)}` : ""} &middot; ${where}</div>
         <div class="bk-mnav-row">
           ${prev || c ? `<a class="bk-mnav-step" href="${prev ? hashOf(prev) : learnHash(b)}" aria-label="Previous page">&#8249;</a>` : `<span class="bk-mnav-step is-off" aria-hidden="true">&#8249;</span>`}
           <select class="bk-mnav-sel" aria-label="Go to a chapter or page">
-            <option value="${learnHash(b)}"${!c ? " selected" : ""}>Contents</option>
+            <option value="${learnHash(b)}"${!c && !howto ? " selected" : ""}>Contents</option>
+            <option value="${HOW.hash}"${howto ? " selected" : ""}>How to Use This Book</option>
             ${b.chapters.map(ch => `<optgroup label="Chapter ${ch.code.slice(1)}: ${escapeAttr(plain(ch.title))}">${pages.filter(x => x.c === ch).map(x =>
               `<option value="${hashOf(x)}"${x === here ? " selected" : ""}>${escapeAttr(plain(learnPageLabel(x)))}</option>`).join("")}</optgroup>`).join("")}
           </select>
@@ -5653,9 +5657,9 @@
         <h3 class="bk-toc-h">Contents</h3>
         <ol class="bk-toc">
           <li class="bk-toc-ch bk-toc-intro">
-            <div class="bk-toc-chh"><span class="bk-toc-t">Contents and Introduction</span></div>
+            <div class="bk-toc-chh"><span class="lb-code">C</span><span class="bk-toc-t">Contents and Introduction</span></div>
             <ol class="lb-lessons">
-              <li class="lb-lesson is-current"><a href="${learnHash(b)}" aria-current="page"><span class="lb-title">Contents</span></a></li>
+              <li class="lb-lesson"><a href="${learnHash(b)}" aria-current="page"><span class="lb-title">Contents</span></a></li>
               <li class="lb-lesson"><a href="${learnHash(b)}/how-to-use"><span class="lb-title">How to Use This Book</span></a></li>
             </ol>
           </li>${b.chapters.map((c, i) => `${c.part && c.part !== (b.chapters[i - 1] || {}).part ? `
@@ -5681,7 +5685,7 @@ A chapter is a short run of lessons on one theme. Each lesson starts with the ca
 A chapter ends with problems that mix its lessons, without saying which idea each one needs. In the newer chapters, the first page is an Introduction that gives a short overview of the chapter's ideas, and the last lesson is a Summary with a list of problem solving strategies. Then come Review Problems, which mostly check that the ideas are understood, and Challenge Problems, which are harder.
 
 ## What the tags mean
-Every chapter is tagged by how much it matters for ${amc ? "the AMC 10 and 12" : "the AIME"}. Core chapters are needed for ${amc ? "the early and middle problems" : "the early AIME problems"}. Core II chapters are needed for ${amc ? "the hard problems" : "the later AIME problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. Extension chapters are optional, and nothing else in the book depends on them. A chapter's tag is the importance of its idea as a whole; each lesson carries its own tag as well, so a Core chapter can hold a Core II lesson on a harder corner of the idea.
+Every chapter is tagged by how much it matters for ${amc ? "the AMC" : "the AIME"}. Core chapters are needed for ${amc ? "the early and middle problems" : "the early AIME problems"}. Core II chapters are needed for ${amc ? "the hard problems" : "the later AIME problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. Extension chapters are optional, and nothing else in the book depends on them. A chapter's tag is the importance of its idea as a whole; each lesson carries its own tag as well, so a Core chapter can hold a Core II lesson on a harder corner of the idea.
 
 ## How to use it
 Read the chapters in order if the subject is new to you. If it is not, start at any chapter: the cards it assumes are listed at the top of each lesson, and each one opens in a click.
@@ -5691,13 +5695,10 @@ Try every problem before you look at its solution. A contest problem's Show Solu
 Come back to the strategies. When a problem resists, the chapter's Summary and the lesson that matches its theme are the place to look, and the cards hold every formula in full.
 
 The book remembers the last lesson you opened, in this browser, and the contents page offers to continue from it.`;
-    $content.innerHTML = `<div class="learn-page bk-contents bk-${b.id}">
-        <div class="back-row"><a class="back-link" href="${learnHash(b)}">&larr; ${escapeAttr(b.title)}</a></div>
+    learnBookShell(b, null, "howto", `
         <div class="book-eyebrow">${escapeAttr(b.title)} &middot; Contents and Introduction</div>
-        <h2 class="learn-h">How to Use This Book</h2>
-        <div class="detail-body lp-body bk-howto">${detailBodyHtml(text, "howto:" + b.id)}</div>
-      </div>`;
-    renderMath($content);
+        <h2 class="learn-h"><span class="lb-code">C</span> How to Use This Book</h2>
+        <div class="detail-body lp-body bk-howto">${detailBodyHtml(text, "howto:" + b.id)}</div>`);
     window.scrollTo({ top: 0 });
   }
 
@@ -5854,20 +5855,34 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // The Summary's Problem Solving Strategies: a bulleted list under its own heading.
     const strat = Array.isArray(d.strategies) && d.strategies.length ? `<section class="lp-strategies"><h3 class="lp-h3">Problem Solving Strategies</h3>
         <ul>${d.strategies.map(t => `<li>${linkifyCards(t)}</li>`).join("")}</ul></section>` : "";
-    return `<div class="detail-body lp-body">${detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code)}</div>
+    return `<div class="detail-body lp-body">${linkLessonRefs(detailBodyHtml(notate(String(d.body || "")), "learn:" + l.code))}</div>
       ${strat}
       ${related.length ? `<h3 class="lp-h3">Related cards</h3>
-        <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkifyCards(r.note)}</li>`).join("")}</ul>` : ""}
+        <ul class="lp-related">${related.map(r => `<li><a class="card-link" href="#/f/${r.card}" data-card="${r.card}">${BY_ID[r.card].formula.name}</a>: ${linkLessonRefs(linkifyCards(r.note))}</li>`).join("")}</ul>` : ""}
       ${learnExercisesHtml(ex, i => `Problem ${l.code}.${i + 1}`)}`;
   }
   // A page's contest problems and then the solutions of its own problems, labels numbered on.
-  function learnTailHtml(code, ex, refs, heading) {
+  // Lessons run our problems, their solutions, then the contest problems (Exercises); Review and
+  // Challenge Problems run our problems, the contest problems, then the solutions, so that the
+  // problems sit together (owner, 2026-11-01).
+  function learnTailHtml(code, ex, refs, heading, solutionsFirst) {
     const name = i => `Problem ${code}.${i + 1}`;
-    return `${refs.length ? `<h3 class="lp-h3">${heading}</h3>${learnProblemsHtml(refs, i => name(ex.length + i))}` : ""}
-      ${learnSolutionsHtml(ex, name)}`;
+    const contest = refs.length ? `<h3 class="lp-h3">${heading}</h3>${learnProblemsHtml(refs, i => name(ex.length + i))}` : "";
+    return solutionsFirst ? `${learnSolutionsHtml(ex, name)}${contest}` : `${contest}${learnSolutionsHtml(ex, name)}`;
   }
-  // A page's problems run in the order: our own problems, the contest problems, then the worked
-  // solutions of our own problems, each under the problem stated again (owner, 2026-10-31).
+  // A lesson reference in parentheses, such as "(L3.4)", links to that lesson (owner, 2026-11-01).
+  let LESSON_BY_CODE = null;
+  function linkLessonRefs(html) {
+    if (!LESSON_BY_CODE) {
+      LESSON_BY_CODE = {};
+      for (const b of LEARN_SHELF) for (const c of b.chapters) for (const l of c.lessons) LESSON_BY_CODE[l.code] = { b, c, l };
+    }
+    return String(html).replace(/\(([A-Z]\d{1,2}\.\d{1,2})\)/g, (m, code) => {
+      const x = LESSON_BY_CODE[code];
+      return x ? `(<a class="lp-ref" href="${learnHash(x.b, x.c, lessonNum(x.l))}">${code}</a>)` : m;
+    });
+  }
+  // Our own problems, each with Jump to solution; the solutions and the contest problems follow (learnTailHtml).
   function learnExercisesHtml(ex, name) {
     return `${ex.length ? `<h3 class="lp-h3" id="lx-problems">Problems</h3>
         <ol class="lx-list">${ex.map((x, i) => `<li class="lx" id="lx-${i + 1}">
@@ -5989,7 +6004,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${(d.prereq || []).length ? `<div class="lp-cards-row"><span class="lp-cards-label">Assumes you know</span>${learnCardChips(d.prereq)}</div>` : ""}
         </div>
         ${learnBodyHtml(l, d)}
-        ${learnTailHtml(l.code, d.exercises || [], d.problems || [], "Exercises")}`;
+        ${learnTailHtml(l.code, d.exercises || [], d.problems || [], "Exercises", true)}`;
   }
   function renderLearnLesson(b, c, l, end) {
     const d = l ? learnLessonData(c, l) : null;
@@ -6955,7 +6970,35 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${chainCol("Method", chain.method, "Not classified yet")}
           ${chainCol("Formulas", chain.formula, "&mdash;")}
         </div>
-        ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}`;
+        ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}
+        ${studyMoreHtml(p, chain)}`;
+  }
+  // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
+  // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
+  // lesson and any other problem an AMC book's; a card no lesson teaches gets no link.
+  let LESSONS_BY_CARD = null;
+  function lessonForCard(fid, aime) {
+    if (!LESSONS_BY_CARD) {
+      LESSONS_BY_CARD = {};
+      for (const b of LEARN_SHELF) {
+        if (!/^(amc|aime)-/.test(b.id)) continue;
+        for (const c of b.chapters) for (const l of c.lessons) {
+          const d = learnLessonData(c, l);
+          if (d && d.cards) d.cards.forEach(id => (LESSONS_BY_CARD[id] = LESSONS_BY_CARD[id] || []).push({ b, c, l }));
+        }
+      }
+    }
+    const xs = LESSONS_BY_CARD[fid] || [];
+    return xs.find(x => /^aime-/.test(x.b.id) === aime) || xs[0] || null;
+  }
+  function studyMoreHtml(p, chain) {
+    const aime = /AIME/.test(p.ref || p.cname || "");
+    const ids = [...new Set([...chain.pattern, ...chain.method, ...chain.formula])];
+    const links = ids.map(fid => {
+      const x = lessonForCard(fid, aime);
+      return x ? `<a class="chain-study-link" href="${learnHash(x.b, x.c, lessonNum(x.l))}">${BY_ID[fid].formula.name}<span class="chain-study-l">${x.l.code}</span></a>` : "";
+    }).filter(Boolean);
+    return links.length ? `<div class="chain-study"><div class="chain-study-h">Study a concept more</div><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
   // How this problem works: its tags split by kind into the chain Pattern -> Method ->
   // Formulas. A link nobody has classified yet is shown as missing, never invented.

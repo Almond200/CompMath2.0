@@ -310,8 +310,14 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
+**2026-11-01**
+
+- AMC Number Theory is complete: M6 (number theory for the AMC 12: prime exponents and multiplicative functions, inverses with Euler and Wilson, the order of a number, Pell equations) and M7 (from the AMC to the AIME: residues and cycles together, integer equations by factoring and bounds, mixed problems), each with an Introduction, a Summary, Review and Challenge Problems. Every number was computed.
+- Quick changes from the owner, all done. Lessons and Introductions run our problems, solutions, then Exercises; only Review and Challenge Problems put the contest problems before the solutions. The AIME books have part headings (Foundations, Core topics, Advanced topics, Beyond the AIME). Contents and Introduction has the code C, and the Contents link is no longer bold. How to Use This Book is a page of the book view (rail, header, arrows), and the C tab scrubs between Contents and How to Use. Lesson references in parentheses such as (L3.4) link to the lesson. Book roles no longer say "AMC 10 and 12". C5.1's string recursion states $s_0 = 1$ and the range $n \ge 2$; L1.1 says $\sqrt{x^2} = |x|$. Ptolemy's Theorem has a Key form for four points on a line, and Ptolemy's Inequality names that equality case. A problem page's How this problem works ends with "Study a concept more": one link per card to the lesson that teaches it (an AIME problem prefers an AIME book).
+
 **2026-10-31**
 
+- **AMC Number Theory M5 Integer equations written; the Core topics part is complete.** M5.1 Introduction, M5.2 linear equations and the Chinese remainder theorem, M5.3 coins and stamps, M5.4 factoring into integers, M5.5 Pythagorean triples and integer triangles, M5.6 bounding, M5.7 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M4 Remainders written.** M4.1 Introduction, M4.2 working with remainders, M4.3 cycles and last digits, M4.4 squares and choosing a modulus, M4.5 Fermat's little theorem and Euler's totient, M4.6 when one expression divides another, M4.7 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M3 Divisors and factorials written.** M3.1 Introduction, M3.2 counting divisors, M3.3 summing and multiplying divisors, M3.4 primes in a factorial and trailing zeros, M3.5 consecutive numbers and gcd tricks, M3.6 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M2 Digits, bases and decimals written; the Foundations part is complete.** M2.1 Introduction, M2.2 place value and digits, M2.3 digit puzzles, M2.4 other bases, M2.5 repeating and terminating decimals, M2.6 fractions between two fractions, M2.7 Summary, Review Problems and Challenge Problems.

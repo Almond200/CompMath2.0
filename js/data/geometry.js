@@ -1732,7 +1732,7 @@ window.MATH_SECTIONS.push({
           id: "ptolemys-inequality",
           name: "Ptolemy's Inequality",
           latex: String.raw`AB \cdot CD + BC \cdot DA \ge AC \cdot BD, \qquad \text{equality} \iff ABCD \text{ is cyclic}`,
-          description: String.raw`Holds for any four points in the plane; equality iff $ABCD$ is cyclic in that order (reducing to Ptolemy's Theorem).`,
+          description: String.raw`Holds for any four points in the plane; equality iff $ABCD$ is cyclic in that order (reducing to [[ptolemys-theorem|Ptolemy's Theorem]]) or the four points lie on a line in that order (Ptolemy on a line).`,
           keywords: ["four points", "inequality", "equality cyclic", "ptolemy inequality", "ptolemys inequality", "noncyclic quadrilateral bound"],
           importance: "medium",
           tier: "AIME Late",

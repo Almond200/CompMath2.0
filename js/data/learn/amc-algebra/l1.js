@@ -10,7 +10,7 @@ window.MATH_LEARN["L1"] = {
 
 A variable is a letter, such as $x$, that stands for a number we do not know yet or that can change. An expression combines numbers and variables with operations, such as $3x^2 - 2x + 1$; when $x = -2$ its value is $3 \cdot 4 + 4 + 1 = 17$. An equation says that two expressions have the same value, and translating a sentence into an equation is the first step of most word problems.
 
-Exponents are repeated multiplication: $2^3 = 2 \cdot 2 \cdot 2$. Multiplying powers of the same base adds the exponents, so $2^3 \cdot 2^4 = 2^7$, and dividing subtracts them, so $\tfrac{2^7}{2^5} = 2^2 = 4$. A square root undoes squaring, and roots follow the same rules once they are written as fractional exponents.
+Exponents are repeated multiplication: $2^3 = 2 \cdot 2 \cdot 2$. Multiplying powers of the same base adds the exponents, so $2^3 \cdot 2^4 = 2^7$, and dividing subtracts them, so $\tfrac{2^7}{2^5} = 2^2 = 4$. A square root undoes squaring only up to sign: $\sqrt{x^2} = |x|$, so $\sqrt{(-2)^2} = \sqrt{4} = 2$, not $-2$. Roots follow the same rules once they are written as fractional exponents.
 
 Expanding writes a product as a sum, and factoring writes a sum as a product. A few patterns appear constantly: $(a + b)^2 = a^2 + 2ab + b^2$ and $(a - b)(a + b) = a^2 - b^2$. They let us compute $101^2 - 99^2$ as $(101 - 99)(101 + 99) = 400$ without squaring anything.
 
