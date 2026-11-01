@@ -2967,11 +2967,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "P1.1",
-      "title": "Direct proof, contradiction and contrapositive"
+      "title": "Introduction"
      },
      {
       "code": "P1.2",
-      "title": "If and only if, uniqueness, and symmetry"
+      "title": "Direct proof, contradiction and contrapositive",
+      "level": "Core"
+     },
+     {
+      "code": "P1.3",
+      "title": "If and only if, uniqueness, and symmetry",
+      "level": "Core"
+     },
+     {
+      "code": "P1.4",
+      "title": "Summary"
      }
     ]
    },
@@ -2982,11 +2992,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "P2.1",
-      "title": "Induction and strong induction"
+      "title": "Introduction"
      },
      {
       "code": "P2.2",
-      "title": "Stronger statements and unusual inductions"
+      "title": "Induction and strong induction",
+      "level": "Core"
+     },
+     {
+      "code": "P2.3",
+      "title": "Stronger statements and unusual inductions",
+      "level": "Core"
+     },
+     {
+      "code": "P2.4",
+      "title": "Summary"
      }
     ]
    },
@@ -2997,11 +3017,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "P3.1",
-      "title": "The smallest counterexample and infinite descent"
+      "title": "Introduction"
      },
      {
       "code": "P3.2",
-      "title": "Vieta jumping and discrete continuity"
+      "title": "The smallest counterexample and infinite descent",
+      "level": "Core"
+     },
+     {
+      "code": "P3.3",
+      "title": "Vieta jumping and discrete continuity",
+      "level": "Core"
+     },
+     {
+      "code": "P3.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3012,11 +3042,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "P4.1",
-      "title": "Constructions and pigeonhole"
+      "title": "Introduction"
      },
      {
       "code": "P4.2",
-      "title": "Dimension and probability arguments"
+      "title": "Constructions and pigeonhole",
+      "level": "Core"
+     },
+     {
+      "code": "P4.3",
+      "title": "Dimension and probability arguments",
+      "level": "Core"
+     },
+     {
+      "code": "P4.4",
+      "title": "Summary"
      }
     ]
    }
@@ -3034,11 +3074,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "E1.1",
-      "title": "Schur's inequality"
+      "title": "Introduction"
      },
      {
       "code": "E1.2",
-      "title": "Muirhead and Maclaurin"
+      "title": "Schur's inequality",
+      "level": "Core"
+     },
+     {
+      "code": "E1.3",
+      "title": "Muirhead and Maclaurin",
+      "level": "Core"
+     },
+     {
+      "code": "E1.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3049,11 +3099,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "E2.1",
-      "title": "Hölder, Chebyshev and Minkowski"
+      "title": "Introduction"
      },
      {
       "code": "E2.2",
-      "title": "Majorization: Karamata and Popoviciu"
+      "title": "Hölder, Chebyshev and Minkowski",
+      "level": "Core"
+     },
+     {
+      "code": "E2.3",
+      "title": "Majorization: Karamata and Popoviciu",
+      "level": "Core"
+     },
+     {
+      "code": "E2.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3064,11 +3124,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "E3.1",
-      "title": "Homogenizing and smoothing"
+      "title": "Introduction"
      },
      {
       "code": "E3.2",
-      "title": "Sums of squares and the uvw method"
+      "title": "Homogenizing and smoothing",
+      "level": "Core"
+     },
+     {
+      "code": "E3.3",
+      "title": "Sums of squares and the uvw method",
+      "level": "Core"
+     },
+     {
+      "code": "E3.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3079,15 +3149,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "E4.1",
-      "title": "Irreducibility"
+      "title": "Introduction"
      },
      {
       "code": "E4.2",
-      "title": "Roots: cubics, derivatives and discriminants"
+      "title": "Irreducibility",
+      "level": "Core"
      },
      {
       "code": "E4.3",
-      "title": "Polynomials with integer values"
+      "title": "Roots: cubics, derivatives and discriminants",
+      "level": "Core"
+     },
+     {
+      "code": "E4.4",
+      "title": "Polynomials with integer values",
+      "level": "Core"
+     },
+     {
+      "code": "E4.5",
+      "title": "Summary"
      }
     ]
    },
@@ -3098,15 +3179,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "E5.1",
-      "title": "Functional equations at olympiad level"
+      "title": "Introduction"
      },
      {
       "code": "E5.2",
-      "title": "Summation by parts and Lagrange's identity"
+      "title": "Functional equations at olympiad level",
+      "level": "Core"
      },
      {
       "code": "E5.3",
-      "title": "Matrices in olympiad algebra"
+      "title": "Summation by parts and Lagrange's identity",
+      "level": "Core"
+     },
+     {
+      "code": "E5.4",
+      "title": "Matrices in olympiad algebra",
+      "level": "Core"
+     },
+     {
+      "code": "E5.5",
+      "title": "Summary"
      }
     ]
    }
@@ -3124,11 +3216,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "D1.1",
-      "title": "Polynomial congruences modulo a prime"
+      "title": "Introduction"
      },
      {
       "code": "D1.2",
-      "title": "Quadratic reciprocity"
+      "title": "Polynomial congruences modulo a prime",
+      "level": "Core"
+     },
+     {
+      "code": "D1.3",
+      "title": "Quadratic reciprocity",
+      "level": "Core"
+     },
+     {
+      "code": "D1.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3139,11 +3241,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "D2.1",
-      "title": "Primes in binomials and Zsigmondy"
+      "title": "Introduction"
      },
      {
       "code": "D2.2",
-      "title": "Cyclotomic polynomials and Fermat numbers"
+      "title": "Primes in binomials and Zsigmondy",
+      "level": "Core"
+     },
+     {
+      "code": "D2.3",
+      "title": "Cyclotomic polynomials and Fermat numbers",
+      "level": "Core"
+     },
+     {
+      "code": "D2.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3154,11 +3266,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "D3.1",
-      "title": "Thue's lemma and Chevalley-Warning"
+      "title": "Introduction"
      },
      {
       "code": "D3.2",
-      "title": "Sumsets: Cauchy-Davenport and Erdős-Ginzburg-Ziv"
+      "title": "Thue's lemma and Chevalley-Warning",
+      "level": "Core"
+     },
+     {
+      "code": "D3.3",
+      "title": "Sumsets: Cauchy-Davenport and Erdős-Ginzburg-Ziv",
+      "level": "Core"
+     },
+     {
+      "code": "D3.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3169,15 +3291,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "D4.1",
-      "title": "Dirichlet convolution"
+      "title": "Introduction"
      },
      {
       "code": "D4.2",
-      "title": "Farey sequences and continued fractions"
+      "title": "Dirichlet convolution",
+      "level": "Core"
      },
      {
       "code": "D4.3",
-      "title": "Beatty sequences and floor sums"
+      "title": "Farey sequences and continued fractions",
+      "level": "Core"
+     },
+     {
+      "code": "D4.4",
+      "title": "Beatty sequences and floor sums",
+      "level": "Core"
+     },
+     {
+      "code": "D4.5",
+      "title": "Summary"
      }
     ]
    }
@@ -3195,11 +3328,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "K1.1",
-      "title": "Generating functions for labeled objects and partitions"
+      "title": "Introduction"
      },
      {
       "code": "K1.2",
-      "title": "Symmetry and tableaux"
+      "title": "Generating functions for labeled objects and partitions",
+      "level": "Core"
+     },
+     {
+      "code": "K1.3",
+      "title": "Symmetry and tableaux",
+      "level": "Core"
+     },
+     {
+      "code": "K1.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3210,11 +3353,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "K2.1",
-      "title": "Chains and antichains"
+      "title": "Introduction"
      },
      {
       "code": "K2.2",
-      "title": "Monotone subsequences and Schur's theorem"
+      "title": "Chains and antichains",
+      "level": "Core"
+     },
+     {
+      "code": "K2.3",
+      "title": "Monotone subsequences and Schur's theorem",
+      "level": "Core"
+     },
+     {
+      "code": "K2.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3225,11 +3378,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "K3.1",
-      "title": "Matchings"
+      "title": "Introduction"
      },
      {
       "code": "K3.2",
-      "title": "Extremal graphs and counting with determinants"
+      "title": "Matchings",
+      "level": "Core"
+     },
+     {
+      "code": "K3.3",
+      "title": "Extremal graphs and counting with determinants",
+      "level": "Core"
+     },
+     {
+      "code": "K3.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3240,15 +3403,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "K4.1",
-      "title": "The combinatorial Nullstellensatz"
+      "title": "Introduction"
      },
      {
       "code": "K4.2",
-      "title": "Probability tools"
+      "title": "The combinatorial Nullstellensatz",
+      "level": "Core"
      },
      {
       "code": "K4.3",
-      "title": "Impartial games"
+      "title": "Probability tools",
+      "level": "Core"
+     },
+     {
+      "code": "K4.4",
+      "title": "Impartial games",
+      "level": "Core"
+     },
+     {
+      "code": "K4.5",
+      "title": "Summary"
      }
     ]
    },
@@ -3259,11 +3433,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "K5.1",
-      "title": "Points, lines and convex sets"
+      "title": "Introduction"
      },
      {
       "code": "K5.2",
-      "title": "Lattices"
+      "title": "Points, lines and convex sets",
+      "level": "Core"
+     },
+     {
+      "code": "K5.3",
+      "title": "Lattices",
+      "level": "Core"
+     },
+     {
+      "code": "K5.4",
+      "title": "Summary"
      }
     ]
    }
@@ -3281,15 +3465,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O1.1",
-      "title": "Directed angles and phantom points"
+      "title": "Introduction"
      },
      {
       "code": "O1.2",
-      "title": "Inversion"
+      "title": "Directed angles and phantom points",
+      "level": "Core"
      },
      {
       "code": "O1.3",
-      "title": "Projective transformations and moving points"
+      "title": "Inversion",
+      "level": "Core"
+     },
+     {
+      "code": "O1.4",
+      "title": "Projective transformations and moving points",
+      "level": "Core"
+     },
+     {
+      "code": "O1.5",
+      "title": "Summary"
      }
     ]
    },
@@ -3300,11 +3495,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O2.1",
-      "title": "Classical triangle formulas"
+      "title": "Introduction"
      },
      {
       "code": "O2.2",
-      "title": "Perpendicularity and equal bisectors"
+      "title": "Classical triangle formulas",
+      "level": "Core"
+     },
+     {
+      "code": "O2.3",
+      "title": "Perpendicularity and equal bisectors",
+      "level": "Core"
+     },
+     {
+      "code": "O2.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3315,11 +3520,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O3.1",
-      "title": "Isogonal lines and the Steiner ratio"
+      "title": "Introduction"
      },
      {
       "code": "O3.2",
-      "title": "Humpty, dumpty and the shooting lemma"
+      "title": "Isogonal lines and the Steiner ratio",
+      "level": "Core"
+     },
+     {
+      "code": "O3.3",
+      "title": "Humpty, dumpty and the shooting lemma",
+      "level": "Core"
+     },
+     {
+      "code": "O3.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3330,11 +3545,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O4.1",
-      "title": "Pedal and excentral triangles"
+      "title": "Introduction"
      },
      {
       "code": "O4.2",
-      "title": "Isogonal and isotomic conjugates"
+      "title": "Pedal and excentral triangles",
+      "level": "Core"
+     },
+     {
+      "code": "O4.3",
+      "title": "Isogonal and isotomic conjugates",
+      "level": "Core"
+     },
+     {
+      "code": "O4.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3345,11 +3570,21 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O5.1",
-      "title": "Carnot, Feuerbach and Leibniz"
+      "title": "Introduction"
      },
      {
       "code": "O5.2",
-      "title": "Steiner lines, Brocard and Droz-Farny"
+      "title": "Carnot, Feuerbach and Leibniz",
+      "level": "Core"
+     },
+     {
+      "code": "O5.3",
+      "title": "Steiner lines, Brocard and Droz-Farny",
+      "level": "Core"
+     },
+     {
+      "code": "O5.4",
+      "title": "Summary"
      }
     ]
    },
@@ -3360,15 +3595,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O6.1",
-      "title": "Power, orthogonal circles and Reim"
+      "title": "Introduction"
      },
      {
       "code": "O6.2",
-      "title": "Tangent circles: Casey, mixtilinear and Sawayama-Thébault"
+      "title": "Power, orthogonal circles and Reim",
+      "level": "Core"
      },
      {
       "code": "O6.3",
-      "title": "Quadrilaterals: Japanese theorem, Poncelet and Newton"
+      "title": "Tangent circles: Casey, mixtilinear and Sawayama-Thébault",
+      "level": "Core"
+     },
+     {
+      "code": "O6.4",
+      "title": "Quadrilaterals: Japanese theorem, Poncelet and Newton",
+      "level": "Core"
+     },
+     {
+      "code": "O6.5",
+      "title": "Summary"
      }
     ]
    },
@@ -3379,15 +3625,26 @@ window.MATH_LEARN_SHELF = [
     "lessons": [
      {
       "code": "O7.1",
-      "title": "Cross-ratio and harmonic bundles"
+      "title": "Introduction"
      },
      {
       "code": "O7.2",
-      "title": "Pascal, Brianchon, Pappus and Desargues"
+      "title": "Cross-ratio and harmonic bundles",
+      "level": "Core"
      },
      {
       "code": "O7.3",
-      "title": "Miquel, Möbius maps and spheres"
+      "title": "Pascal, Brianchon, Pappus and Desargues",
+      "level": "Core"
+     },
+     {
+      "code": "O7.4",
+      "title": "Miquel, Möbius maps and spheres",
+      "level": "Core"
+     },
+     {
+      "code": "O7.5",
+      "title": "Summary"
      }
     ]
    }
