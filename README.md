@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Geometry: S3 (Similar triangles and area ratios) and S4 (Right, equilateral and general triangles) are written.
 - AMC Geometry, second plan: the plan moves into the book's own outline section (each chapter with an Introduction and a Summary), the old S1 to S4 are retired, and S1 (Angles, triangles and area) and S2 (Quadrilaterals, circles and coordinates: the basics) are written.
 - Book covers: a title with "&" keeps the "&" on the first line (Counting &, then Probability), so it takes two lines, not three.
 - AMC Counting & Probability is finished: R8 (Counting for the AMC 12: upper bounds and Burnside's lemma, Vandermonde, the multinomial theorem and generating functions, graph coloring and games), R9 (Probability for the AMC 12: Bayes' theorem, states and waiting times, continuous probability) and R10 (From the AMC to the AIME: checking cases and double counting, small cases as a test, mixed problems) are written.
