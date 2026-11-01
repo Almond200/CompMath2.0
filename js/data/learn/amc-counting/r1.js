@@ -1,220 +1,218 @@
-// Learn, AMC Counting & Probability, chapter R1: counting (CONVENTIONS §14; the AMC track).
-// Codes and titles come from the shelf (LEARN-OUTLINE.md); every number here was checked by computation.
+// Learn, AMC Counting & Probability, chapter R1: counting from scratch (CONVENTIONS §14). Part: Foundations.
+// The second plan's book, written fresh (nineteenth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["R1"] = {
   lessons: {
     "R1.1": {
       prereq: [],
-      cards: ["permutations-combinations", "constructive-counting", "counting-functions", "fencepost-counting"],
-      body: String.raw`Counting on the AMC starts with two rules: multiply the numbers of choices for decisions made in sequence, and add the counts of separate cases. Every formula in this chapter is one of these rules used cleverly.
+      cards: [],
+      body: String.raw`Counting means finding how many objects of some kind there are, without missing any and without counting any twice. A short list can be written out in full; the point of this chapter is to count lists far too long to write, by organizing them.
 
-[[constructive-counting|Constructive counting]] builds each object by a sequence of decisions and multiplies. A four-letter code with no repeated letters has $26 \cdot 25 \cdot 24 \cdot 23 = 358800$ choices. Make the most restricted decision first (a first digit that cannot be $0$, a last digit that must be even), and split into cases when a later count depends on an earlier choice.
+The simplest count is a run of whole numbers. From $15$ to $83$ there are $83 - 15 + 1 = 69$ numbers, not $68$: subtracting counts the steps between the ends, and the numbers are one more than the steps.
 
-[[permutations-combinations|Permutations and combinations]] are the two standard selections: ordered selections of $k$ from $n$ number $\tfrac{n!}{(n - k)!}$, unordered ones $\binom nk$, because each group appears in $k!$ orders. Choosing $4$ of $9$ people for a team gives $\binom94 = 126$.
+When a choice is made in stages, the counts multiply. With $4$ shirts, $3$ pairs of pants and $2$ hats, each shirt goes with each pair of pants, which gives $4 \cdot 3 = 12$ pairings, and each pairing with each hat, so there are $4 \cdot 3 \cdot 2 = 24$ outfits.
 
-[[counting-functions|Functions]] from a $3$-element set to a $4$-element set number $4^3 = 64$, since each input picks its output; one-to-one functions number $4 \cdot 3 \cdot 2 = 24$. The same count describes coloring $3$ objects with $4$ colors.
+Some counts are easier from the other side. A three-digit number with no digit $7$ has $8$ choices for its first digit (any of $1$ to $9$ except $7$) and $9$ for each of the others, so there are $8 \cdot 9 \cdot 9 = 648$ of them. Of the $900$ three-digit numbers, the other $900 - 648 = 252$ have at least one $7$, which is much harder to count directly.
 
-[[fencepost-counting|Fencepost counting]] avoids the most common off-by-one error: the integers from $15$ to $87$ inclusive number $87 - 15 + 1 = 73$, a row of $n$ posts has $n - 1$ gaps, and a closed loop has as many gaps as posts.
-
-Multiply for sequences of choices, divide by orders that do not matter, and count endpoints carefully. The next lesson splits counts into cases.`,
-      related: [
-        { card: "multiset-permutations", note: String.raw`arrangements with repeated objects (R1.3).` },
-        { card: "binomial-theorem", note: String.raw`binomial coefficients as coefficients (R1.4).` },
-        { card: "basic-probability", note: String.raw`probability as a ratio of counts (R2.1).` }
-      ],
+The lessons take these ideas in turn: making a list and the fencepost (R1.2), the multiplication and addition principles (R1.3), permutations and combinations (R1.4), and casework and complements (R1.5). The Summary (R1.6) collects the strategies.`,
       exercises: [
-        { q: String.raw`How many four-letter codes can be made from the $26$ letters if no letter repeats?`, answer: "358800",
-          solution: String.raw`$26 \cdot 25 \cdot 24 \cdot 23 = 358800$.` },
-        { q: String.raw`How many integers are there from $15$ to $87$ inclusive?`, answer: "73",
-          solution: String.raw`$87 - 15 + 1 = 73$.` }
+        { q: String.raw`How many integers are there from $15$ to $83$, inclusive?`, answer: "69",
+          solution: String.raw`$83 - 15 = 68$ counts the steps from $15$ to $83$; the numbers are one more than the steps, so there are $69$.` },
+        { q: String.raw`Sam has $4$ shirts, $3$ pairs of pants and $2$ hats. An outfit is one of each. How many outfits are there?`, answer: "24",
+          solution: String.raw`Each of the $4$ shirts goes with each of the $3$ pairs of pants, and each of those $12$ pairings with each of the $2$ hats: $4 \cdot 3 \cdot 2 = 24$.` },
+        { q: String.raw`How many three-digit numbers have no digit equal to $7$?`, answer: "648",
+          solution: String.raw`The first digit is one of $1$ to $9$ other than $7$, so $8$ choices; the second and third are any of $0$ to $9$ other than $7$, so $9$ each. That gives $8 \cdot 9 \cdot 9 = 648$.` }
       ],
       problems: [
-        "2024 AMC 10B, Problem 1",
-        "2007 AMC 10B, Problem 8",
-        "2020 AMC 12A, Problem 4",
-        "2025 AMC 12A, Problem 6",
-        "2006 AMC 12B, Problem 9",
-        "2004 AMC 12A, Problem 13",
-        "2019 AMC 10B, Problem 25"
+        "2004 AMC 8, Problem 4",
+        "2007 AMC 8, Problem 4",
+        "2001 AMC 8, Problem 6"
       ]
     },
     "R1.2": {
-      prereq: ["permutations-combinations"],
-      cards: ["casework-method", "complementary-counting", "inclusion-exclusion", "pie", "uniform-overcount"],
-      body: String.raw`When a count does not fit a formula, split it into cases, count what is not wanted, or correct for overlaps. Choosing among these is the main skill in AMC counting.
+      prereq: [],
+      cards: ["organized-listing", "fencepost-counting"],
+      body: String.raw`The most reliable way to count a small set is to list it, and the way to list without missing or repeating anything is to list in an order. In how many ways can $12$ be written as a sum of three positive whole numbers, if the order of the three does not matter? How many posts does a $100$-meter fence need, with a post every $4$ meters?
 
-[[casework-method|Casework]] splits the objects by one feature into separate groups, counts each, and adds; good cases are few, clearly disjoint and easy. [[complementary-counting|Counting the complement]] subtracts the unwanted outcomes from the total: four-digit numbers with at least one repeated digit are $9000$ minus the $9 \cdot 9 \cdot 8 \cdot 7 = 4536$ with all digits different, so $4464$.
+[[organized-listing|An organized list]] puts the objects in a fixed order, so that each one has exactly one place and a gap would show. For sums of three numbers in which order does not matter, write each sum with its parts in increasing order, $a \le b \le c$, and list by the smallest part. With $a = 1$, the other two add to $11$ with $1 \le b \le c$: $(1, 1, 10)$, $(1, 2, 9)$, $(1, 3, 8)$, $(1, 4, 7)$, $(1, 5, 6)$. With $a = 2$: $(2, 2, 8)$, $(2, 3, 7)$, $(2, 4, 6)$, $(2, 5, 5)$. With $a = 3$: $(3, 3, 6)$, $(3, 4, 5)$. With $a = 4$: $(4, 4, 4)$. The smallest part cannot be $5$, since then the sum would be at least $15$. So there are $5 + 4 + 2 + 1 = 12$ ways. The rule "smallest part first, then the next" is what makes the list complete: within each row the second part rises one at a time until it would pass the third.
 
-[[inclusion-exclusion|Inclusion-exclusion]] corrects for overlaps: $|A \cup B| = |A| + |B| - |A \cap B|$, and for three sets add back the triple overlap. The integers from $1$ to $200$ divisible by $4$ or $6$ number $50 + 33 - 16 = 67$, where $16$ counts multiples of $12$. [[pie|Counting with inclusion-exclusion]] sets this up for "none of several properties": subtract the single properties, add back pairs, subtract triples.
+[[fencepost-counting|The fencepost rule]] is the most common counting mistake turned into a rule. A run of whole numbers from $a$ to $b$ has $b - a + 1$ members, one more than the difference. A straight fence $100$ meters long with a post every $4$ meters has $\tfrac{100}{4} = 25$ gaps between posts, and so $26$ posts, one more than the gaps. Around a closed loop, such as a $400$-meter track with a post every $8$ meters, the last gap ends at the first post, so the posts and the gaps are equal: $50$ of each. The multiples of $7$ from $100$ to $500$ are $7 \cdot 15 = 105$ up to $7 \cdot 71 = 497$, so there are $71 - 15 + 1 = 57$ of them: count the multipliers, not the multiples.
 
-A [[uniform-overcount|uniform overcount]] is fixed by dividing: splitting $8$ people into $4$ unlabeled pairs, choose pairs in order and divide by the $4!$ orders and the $2$ orders within each pair, $\tfrac{8!}{2^4 \cdot 4!} = 105$.
-
-Choose the case split, the complement or inclusion-exclusion, and check on a small version. The next lesson handles arrangements with restrictions.`,
+List in an order that gives every object one place, and check the ends of every run: posts or gaps, inclusive or not. The next lesson counts lists too long to write.`,
       related: [
-        { card: "derangements", note: String.raw`inclusion-exclusion for permutations with no fixed point (R1.3).` },
-        { card: "floor-multiples", note: String.raw`counting multiples for inclusion-exclusion (M1.5).` },
-        { card: "organized-listing", note: String.raw`listing cases in order .` }
+        { card: "floor-multiples", note: String.raw`counting the multiples of $k$ up to $n$ as $\lfloor \tfrac nk \rfloor$ (M1.5).` },
+        { card: "partitions", note: String.raw`sums in which order does not matter, studied further in R4.2.` }
       ],
       exercises: [
-        { q: String.raw`How many integers from $1$ to $200$ are divisible by $4$ or $6$?`, answer: "67",
-          solution: String.raw`$\lfloor 200/4 \rfloor + \lfloor 200/6 \rfloor - \lfloor 200/12 \rfloor = 50 + 33 - 16 = 67$.` },
-        { q: String.raw`How many four-digit numbers have at least two equal digits?`, answer: "4464",
-          solution: String.raw`All four-digit numbers: $9000$. With all digits different: $9 \cdot 9 \cdot 8 \cdot 7 = 4536$. So $9000 - 4536 = 4464$.` },
-        { q: String.raw`In how many ways can $8$ people be split into $4$ pairs?`, answer: "105",
-          solution: String.raw`Line them up and pair neighbors, $8!$ ways, then divide by the $2^4$ orders within pairs and the $4!$ orders of the pairs: $\tfrac{40320}{16 \cdot 24} = 105$.` }
+        { q: String.raw`A straight fence is $100$ meters long, with a post at each end and a post every $4$ meters. How many posts are there?`, answer: "26",
+          solution: String.raw`The posts split the fence into $\tfrac{100}{4} = 25$ gaps, and a straight fence has one more post than gaps: $26$.` },
+        { q: String.raw`Posts are placed every $8$ meters around a circular track $400$ meters long. How many posts are there?`, answer: "50",
+          solution: String.raw`There are $\tfrac{400}{8} = 50$ gaps, and on a closed loop the posts and the gaps are equal in number, so $50$ posts.` },
+        { q: String.raw`In how many ways can $12$ be written as a sum of three positive integers, if the order of the three does not matter?`, answer: "12",
+          solution: String.raw`List with $a \le b \le c$ by the smallest part: $a = 1$ gives $(1, 1, 10)$ through $(1, 5, 6)$, five sums; $a = 2$ gives $(2, 2, 8)$, $(2, 3, 7)$, $(2, 4, 6)$, $(2, 5, 5)$, four; $a = 3$ gives $(3, 3, 6)$, $(3, 4, 5)$, two; and $a = 4$ gives $(4, 4, 4)$. In all $12$.` },
+        { q: String.raw`How many multiples of $7$ are there between $100$ and $500$?`, answer: "57",
+          solution: String.raw`The smallest is $105 = 7 \cdot 15$ and the largest $497 = 7 \cdot 71$. The multipliers run from $15$ to $71$, so there are $71 - 15 + 1 = 57$.` }
       ],
       problems: [
-        "2004 AMC 10B, Problem 2",
-        "2014 AMC 12A, Problem 3",
-        "2013 AMC 10A, Problem 13",
-        "2009 AMC 12B, Problem 10",
-        "2017 AMC 10A, Problem 19",
-        "2013 AMC 12A, Problem 15",
-        "2025 AMC 12B, Problem 17",
-        "2021 Fall AMC 12B, Problem 19"
+        "2004 AMC 10B, Problem 1",
+        "2022 AMC 8, Problem 3",
+        "2024 AMC 8, Problem 8",
+        "2013 AMC 8, Problem 22",
+        "2018 AMC 8, Problem 25"
       ]
     },
     "R1.3": {
-      prereq: ["permutations-combinations"],
-      cards: ["multiset-permutations", "gap-method", "counting-blocks", "circular-permutations", "non-adjacent-selection", "derangements"],
-      body: String.raw`Restrictions on arrangements, such as repeated letters, people who must sit together or apart, seats around a circle, or nobody in their own place, each have a standard fix.
+      prereq: ["organized-listing"],
+      cards: ["constructive-counting", "counting-functions"],
+      body: String.raw`Most counts are too large to list, but they can still be built one choice at a time. How many license plates have two letters followed by three digits? How many four-digit numbers have only odd digits? How many positive whole numbers below $1000$ read the same forwards and backwards?
 
-[[multiset-permutations|Repeated objects]]: divide by the orders of identical copies, so LEVEL has $\tfrac{5!}{2!\,2!} = 30$ arrangements. [[counting-blocks|Objects that stay together]]: glue them into a block, arrange the units, then arrange inside the block. [[gap-method|Objects that stay apart]]: arrange the others, then choose gaps for the separated ones. [[non-adjacent-selection|Choosing $k$ of $n$ objects in a row with no two adjacent]] gives $\binom{n - k + 1}{k}$ ways; $3$ of $10$ gives $\binom83 = 56$.
+[[constructive-counting|Constructive counting]] builds each object by a sequence of choices and multiplies the numbers of options. This is the multiplication principle: if the first choice can be made in $m$ ways and, whatever it was, the second in $n$ ways, the two together can be made in $mn$ ways. A plate with two letters and three digits has $26 \cdot 26 \cdot 10 \cdot 10 \cdot 10 = 676000$ possibilities. A four-digit number with only odd digits has $5$ choices for each digit, $5^4 = 625$ in all; here the first digit cannot be $0$ anyway, since $0$ is even. What matters is that the number of options at each step does not depend on the earlier choices. When it does, choose the most restricted position first: for a three-digit number with no $7$, the first digit (which also cannot be $0$) has $8$ options and the others $9$.
 
-[[circular-permutations|Around a circle]], rotations are usually the same, so $n$ people can be seated in $(n - 1)!$ ways: fix one person and arrange the rest in a row. Seven people give $6! = 720$. If reflections also count as the same, divide by $2$ more.
+The addition principle is the partner rule: if the objects split into groups with no overlap, the total is the sum of the groups. A palindrome, a number that reads the same backwards, below $1000$ has one, two or three digits. One-digit palindromes are $1$ to $9$, so $9$. A two-digit palindrome is $aa$ with $a$ from $1$ to $9$, so $9$. A three-digit palindrome $aba$ has $9$ choices for $a$ and $10$ for $b$, so $90$. The total is $9 + 9 + 90 = 108$: multiply within a group, add across groups.
 
-[[derangements|Derangements]] are permutations with nothing in its original place. Their numbers $D_1, D_2, \ldots$ are $0, 1, 2, 9, 44, 265$, from inclusion-exclusion or the recursion $D_n = (n - 1)(D_{n-1} + D_{n-2})$. Four letters in the wrong envelopes: $9$ ways.
+A special case of the multiplication principle counts [[counting-functions|functions]]: ways to give each member of one set one member of another. If each of $3$ students joins one of $4$ clubs, each student independently has $4$ choices, so there are $4^3 = 64$ ways. If no two students may join the same club, the choices shrink as they go: $4 \cdot 3 \cdot 2 = 24$ ways.
 
-Divide for repeats, glue for together, gap for apart, fix one seat for circles. The next lesson distributes identical objects.`,
+Build the object one choice at a time, choose the most restricted position first, multiply along a sequence of choices and add across separate groups. The next lesson counts orderings and selections.`,
       related: [
-        { card: "pie", note: String.raw`the inclusion-exclusion behind derangements (R1.2).` },
-        { card: "necklace-formula", note: String.raw`circular arrangements with identical beads (C2.3).` },
-        { card: "recursive-counting", note: String.raw`recursions for arrangements (R1.5).` }
+        { card: "casework-method", note: String.raw`splitting into groups when the options at one step depend on an earlier choice (R1.5).` },
+        { card: "palindromes", note: String.raw`palindromes and their digit conditions (M2.3).` }
       ],
       exercises: [
-        { q: String.raw`How many arrangements of the letters of LEVEL are there?`, answer: "30",
-          solution: String.raw`Five letters with two L's and two E's: $\tfrac{5!}{2!\,2!} = 30$.` },
-        { q: String.raw`In how many ways can $3$ of $10$ chairs in a row be chosen with no two adjacent?`, answer: "56",
-          solution: String.raw`$\binom{10 - 3 + 1}{3} = \binom83 = 56$.` }
+        { q: String.raw`A license plate has two letters followed by three digits. How many plates are possible?`, answer: "676000",
+          solution: String.raw`There are $26$ choices for each letter and $10$ for each digit: $26^2 \cdot 10^3 = 676 \cdot 1000 = 676000$.` },
+        { q: String.raw`How many four-digit numbers have only odd digits?`, answer: "625",
+          solution: String.raw`Each of the four digits is one of $1, 3, 5, 7, 9$, and the first digit is never $0$ since $0$ is even. So there are $5^4 = 625$.` },
+        { q: String.raw`Each of $3$ students joins exactly one of $4$ clubs. In how many ways can this happen?`, answer: "64",
+          solution: String.raw`Each student chooses independently from $4$ clubs, so there are $4 \cdot 4 \cdot 4 = 64$ ways. (If no two could share a club, there would be $4 \cdot 3 \cdot 2 = 24$.)` },
+        { q: String.raw`How many positive integers less than $1000$ are palindromes?`, answer: "108",
+          solution: String.raw`Split by the number of digits. One digit: $9$. Two digits $aa$: $9$. Three digits $aba$: $9 \cdot 10 = 90$. The groups do not overlap, so the total is $9 + 9 + 90 = 108$.` }
       ],
       problems: [
-        "2018 AMC 10A, Problem 4",
-        "2009 AMC 10B, Problem 11",
-        "2025 AMC 10B, Problem 16",
-        "2014 AMC 12A, Problem 13",
-        "2012 AMC 10A, Problem 20",
-        "2008 AMC 10B, Problem 22",
-        "2015 AMC 12A, Problem 17",
-        "2021 Fall AMC 12A, Problem 18"
+        "2002 AMC 8, Problem 19",
+        "2017 AMC 8, Problem 15",
+        "1999 AMC 8, Problem 15",
+        "2020 AMC 10A, Problem 6",
+        "2022 AMC 10A, Problem 9"
       ]
     },
     "R1.4": {
-      prereq: ["permutations-combinations"],
-      cards: ["stars-and-bars", "balls-boxes-table", "pascals-identity", "binomial-row-sums", "hockey-stick", "binomial-theorem", "bijection-method"],
-      body: String.raw`Distributing identical objects into groups, and the identities of Pascal's triangle, are the heart of intermediate AMC counting. Both rest on binomial coefficients.
+      prereq: ["constructive-counting"],
+      cards: ["permutations-combinations", "committee-chair"],
+      body: String.raw`Two kinds of count come up so often that they have their own names. In how many ways can a president, a vice-president and a secretary be chosen from $10$ people? In how many ways can a committee of $3$ be chosen from the same $10$? The first cares about which person gets which job; the second does not.
 
-[[stars-and-bars|Stars and bars]] counts nonnegative solutions of $x_1 + \cdots + x_k = n$ as $\binom{n + k - 1}{k - 1}$: $a + b + c = 8$ has $\binom{10}{2} = 45$. Positive solutions number $\binom{n - 1}{k - 1}$. The [[balls-boxes-table|table of distributions]] organizes the cases: identical or distinct objects, identical or distinct boxes, empty boxes allowed or not.
+An ordered choice is a permutation. Choosing a president, then a vice-president, then a secretary gives $10 \cdot 9 \cdot 8 = 720$ ways, by the multiplication principle with one fewer person at each step. Arranging all $n$ objects in a row gives $n \cdot (n - 1) \cdots 2 \cdot 1$ ways, written $n!$ ("$n$ factorial"): $5$ books on a shelf can be ordered in $5! = 120$ ways. In general, [[permutations-combinations|an ordered choice of $k$ from $n$]] can be made in $P(n, k) = \tfrac{n!}{(n - k)!}$ ways.
 
-Pascal's triangle has its own identities. [[pascals-identity|Pascal's identity]] $\binom nk = \binom{n-1}{k-1} + \binom{n-1}k$ builds the triangle; the [[binomial-row-sums|row sums]] are $2^n$; the [[hockey-stick|hockey stick]] sums a diagonal, $\binom22 + \binom32 + \cdots + \binom{10}2 = \binom{11}3 = 165$. The [[binomial-theorem|binomial theorem]] $(x + y)^n = \sum\binom nk x^{n-k}y^k$ gives coefficients: in $(2x + 1)^6$ the coefficient of $x^3$ is $\binom63 \cdot 2^3 = 160$.
+An unordered choice is a combination. Each committee of $3$ can be put in order in $3! = 6$ ways, so the $720$ ordered choices count each committee $6$ times, and there are $\tfrac{720}{6} = 120$ committees. This number is written $\binom{10}{3}$ ("$10$ choose $3$"), and in general $\binom{n}{k} = \tfrac{n!}{k!\,(n - k)!}$. Choosing the $k$ who are in is the same as choosing the $n - k$ who are out, so $\binom{n}{k} = \binom{n}{n - k}$. A common use: a $12$-sided polygon has $\binom{12}{2} = 66$ segments joining two of its corners, of which $12$ are sides, so it has $54$ diagonals.
 
-A [[bijection-method|bijection]] counts a set by matching it with an easier one: increasing digit strings match subsets of the digits, lattice paths match words in two letters, and distributions match stars and bars.
+The question to ask every time is whether the order matters, that is, whether swapping two chosen objects gives a different outcome. If the jobs are different, it does; if the chosen form a group, it does not.
 
-Write a distribution as stars and bars, read sums of binomial coefficients as identities, and match hard sets with easy ones. The next lesson builds counts recursively.`,
+Some counts can be made in two orders, and the answers must agree. A committee of $4$ with a chair, chosen from $9$ people, can be made by choosing the committee and then its chair, $4 \cdot \binom94 = 4 \cdot 126 = 504$ ways, or the chair first and then the other three, $9 \cdot \binom83 = 9 \cdot 56 = 504$ ways. This is [[committee-chair|the committee–chair identity]], $k\binom nk = n\binom{n-1}{k-1}$, and counting one thing in two ways is a method in its own right.
+
+Ask whether order matters; use $P(n, k)$ if it does and $\binom nk$ if it does not; and when a count can be built in two orders, use the easier one. The next lesson splits hard counts into cases.`,
       related: [
-        { card: "grid-paths", note: String.raw`lattice paths as binomial coefficients (R1.5).` },
-        { card: "stars-bars-upper-bound", note: String.raw`distributions with upper bounds (R3.1).` },
-        { card: "vandermonde", note: String.raw`more binomial identities (R3.2).` }
+        { card: "multiset-permutations", note: String.raw`arranging objects some of which are alike, such as the letters of a word with repeats (R3.2).` },
+        { card: "uniform-overcount", note: String.raw`dividing by the number of times each object is counted, as the $3!$ above (R3.5).` }
       ],
       exercises: [
-        { q: String.raw`How many solutions in nonnegative integers does $a + b + c = 8$ have?`, answer: "45",
-          solution: String.raw`Stars and bars: $\binom{8 + 2}{2} = 45$.` },
-        { q: String.raw`Find $\binom22 + \binom32 + \cdots + \binom{10}{2}$.`, answer: "165",
-          solution: String.raw`By the hockey stick identity the sum is $\binom{11}{3} = 165$.` },
-        { q: String.raw`Find the coefficient of $x^3$ in $(2x + 1)^6$.`, answer: "160",
-          solution: String.raw`$\binom63(2x)^3 = 20 \cdot 8x^3$, so $160$.` }
+        { q: String.raw`In how many ways can a committee of $3$ be chosen from $10$ people?`, answer: "120",
+          solution: String.raw`Order does not matter, so the count is $\binom{10}{3} = \tfrac{10 \cdot 9 \cdot 8}{3 \cdot 2 \cdot 1} = 120$.` },
+        { q: String.raw`In how many ways can a president, a vice-president and a secretary be chosen from $10$ people, if no one holds two offices?`, answer: "720",
+          solution: String.raw`The offices are different, so order matters: $10 \cdot 9 \cdot 8 = 720$.` },
+        { q: String.raw`In how many ways can a committee of $4$, one of whom is its chair, be chosen from $9$ people?`, answer: "504",
+          solution: String.raw`Choose the chair ($9$ ways), then the other three from the remaining $8$ ($\binom83 = 56$ ways): $9 \cdot 56 = 504$. Choosing the committee first gives the same, $4\binom94 = 4 \cdot 126 = 504$.` },
+        { q: String.raw`How many diagonals does a polygon with $12$ sides have?`, answer: "54",
+          solution: String.raw`Any two of the $12$ corners are joined by a segment, $\binom{12}{2} = 66$ in all, and $12$ of these are sides. The other $66 - 12 = 54$ are diagonals.` }
       ],
       problems: [
-        "2022 AMC 10B, Problem 3",
-        "2018 AMC 10A, Problem 11",
-        "2017 AMC 12B, Problem 11",
-        "2025 AMC 10A, Problem 19",
-        "2010 AMC 10A, Problem 22",
-        "2011 AMC 10B, Problem 23",
-        "2020 AMC 10B, Problem 25",
-        "2006 AMC 12A, Problem 23"
+        "2015 AMC 8, Problem 4",
+        "2001 AMC 8, Problem 14",
+        "2015 AMC 8, Problem 10",
+        "2014 AMC 8, Problem 16",
+        "2024 AMC 10A, Problem 9"
       ]
     },
     "R1.5": {
-      prereq: ["permutations-combinations"],
-      cards: ["recursive-counting", "tiling-a-board", "grid-paths", "grid-path-fill", "backward-induction", "simulate-the-process", "working-backwards"],
-      body: String.raw`Some counts are found by building up from smaller cases, some processes by running them or undoing them, and some games by labeling positions from the end. These step-by-step methods handle problems that formulas cannot.
+      prereq: ["constructive-counting", "permutations-combinations"],
+      cards: ["casework-method", "complementary-counting", "elimination-counting"],
+      body: String.raw`When the options at one step depend on an earlier choice, a single product no longer works. How many two-digit numbers have digits that add to $9$ or $10$? How many three-digit numbers have at least one $7$? How many games are played in a tournament of $64$ players where every loser is out?
 
-[[recursive-counting|Recursive counting]] relates the count for size $n$ to smaller sizes by asking about the last step. Climbing $n$ stairs one or two at a time: the last step is $1$ or $2$, so $a_n = a_{n-1} + a_{n-2}$, the Fibonacci numbers, and $8$ stairs give $34$ ways. [[tiling-a-board|Tilings]] of a $2 \times n$ board by dominoes follow the same recursion.
+[[casework-method|Casework]] splits the objects into cases that do not overlap and that together cover everything, counts each case, and adds. The cases should be chosen so that each one is easy, often by the value of the most restrictive quantity. Two-digit numbers with digit sum $9$ are $18, 27, \ldots, 90$, nine of them, and with digit sum $10$ they are $19, 28, \ldots, 91$, nine more, so $18$ in all. The danger is overlap or a gap: before adding, check that no object fits two cases and that every object fits one.
 
-[[grid-paths|Lattice paths]] with right and up steps from $(0, 0)$ to $(4, 3)$ number $\binom73 = 35$. With obstacles, [[grid-path-fill|fill the grid]]: each point's count is the sum of the counts at the points leading into it, blocked points get $0$.
+[[complementary-counting|Counting the complement]] counts what is not wanted and subtracts from the total. "At least one" is the usual signal. The three-digit numbers with at least one $7$ fall into many cases (a $7$ first, second, third, or in several places), but those with no $7$ are a single product, $8 \cdot 9 \cdot 9 = 648$, so the answer is $900 - 648 = 252$. In the same way, the strings of $4$ letters with at least one repeated letter number $26^4 - 26 \cdot 25 \cdot 24 \cdot 23 = 456976 - 358800 = 98176$.
 
-[[backward-induction|Games are solved backward]]: a position is losing if every move leads to a winning position for the opponent. If each turn removes $1$ to $4$ stones and the last stone wins, the losing positions are the multiples of $5$, so from $1$ to $40$ the first player loses only from the $8$ multiples of $5$.
+[[elimination-counting|Counting by what each step removes]] avoids the cases altogether. In a tournament where each game knocks out one player, $64$ players need $63$ games to leave one winner, whatever the bracket looks like: each game removes exactly one player and $63$ must be removed. When every step changes some quantity by the same amount, the number of steps is the total change divided by that amount.
 
-[[simulate-the-process|Simulate]] a process for small cases to find its pattern, and [[working-backwards|work backwards]] from a known end: undo each step in reverse order.
-
-Build from small cases, fill tables, and run processes in both directions. The last lesson of the chapter treats subsets, graphs and pigeonhole.`,
+Choose cases that do not overlap and cover everything; when the wanted objects are "at least one", count the others; and when every step removes the same amount, divide. The Summary follows.`,
       related: [
-        { card: "first-order-recurrence", note: String.raw`solving the recursions counting produces (L6.4).` },
-        { card: "linear-recurrence", note: String.raw`closed forms like Binet's formula (L11.3).` },
-        { card: "states-recursion-prob", note: String.raw`the probability version, with states (R3.5).` }
+        { card: "inclusion-exclusion", note: String.raw`correcting for overlapping cases instead of avoiding them (R3.5).` },
+        { card: "symmetry-probability", note: String.raw`the same complement idea for probabilities (R2.2).` }
       ],
       exercises: [
-        { q: String.raw`In how many ways can a staircase of $8$ steps be climbed taking $1$ or $2$ steps at a time?`, answer: "34",
-          solution: String.raw`$a_n = a_{n-1} + a_{n-2}$ with $a_1 = 1$, $a_2 = 2$: $3, 5, 8, 13, 21, 34$, so $a_8 = 34$.` },
-        { q: String.raw`How many up-and-right lattice paths go from $(0, 0)$ to $(4, 3)$?`, answer: "35",
-          solution: String.raw`A path is a word with $4$ R's and $3$ U's: $\binom73 = 35$.` }
+        { q: String.raw`How many three-digit numbers have at least one digit equal to $7$?`, answer: "252",
+          solution: String.raw`There are $900$ three-digit numbers, of which $8 \cdot 9 \cdot 9 = 648$ have no $7$. So $900 - 648 = 252$ have at least one.` },
+        { q: String.raw`In a tournament, each game is between two players and the loser is out. How many games are needed to find a winner among $64$ players?`, answer: "63",
+          solution: String.raw`Each game removes exactly one player, and $63$ players must be removed, so $63$ games are played.` },
+        { q: String.raw`How many two-digit numbers have digits that add to $9$ or to $10$?`, answer: "18",
+          solution: String.raw`Digit sum $9$: $18, 27, 36, 45, 54, 63, 72, 81, 90$, nine numbers. Digit sum $10$: $19, 28, 37, 46, 55, 64, 73, 82, 91$, nine more. The cases do not overlap, so $18$.` },
+        { q: String.raw`How many strings of $4$ letters, each from $A$ to $Z$, have at least one letter that appears more than once?`, answer: "98176",
+          solution: String.raw`All strings: $26^4 = 456976$. Strings with four different letters: $26 \cdot 25 \cdot 24 \cdot 23 = 358800$. The rest have a repeat: $456976 - 358800 = 98176$.` }
       ],
       problems: [
-        "2004 AMC 10B, Problem 3",
-        "2002 AMC 10A, Problem 6",
-        "2021 Spring AMC 10B, Problem 9",
-        "2015 AMC 12B, Problem 4",
-        "2009 AMC 10B, Problem 14",
-        "2011 AMC 10A, Problem 23",
-        "2012 AMC 10B, Problem 25",
-        "2011 AMC 12B, Problem 23"
+        "2004 AMC 8, Problem 5",
+        "2016 AMC 8, Problem 17",
+        "2009 AMC 8, Problem 22",
+        "2005 AMC 8, Problem 21",
+        "2000 AMC 8, Problem 7",
+        "2023 AMC 10A, Problem 9"
       ]
     },
     "R1.6": {
-      prereq: ["permutations-combinations"],
-      cards: ["subset-avoiding-relation", "subset-sum-facts", "handshake-lemma", "eulerian-paths", "round-robin-tournaments", "pigeonhole", "pairing-to-bound", "coloring-arguments"],
-      body: String.raw`The last group of counting tools concerns subsets, graphs and guarantees: how many subsets avoid a forbidden pair, how many handshakes happen, when a route uses every road once, and how many objects guarantee a repeat.
+      prereq: ["organized-listing", "fencepost-counting", "constructive-counting", "counting-functions", "permutations-combinations", "committee-chair", "casework-method", "complementary-counting", "elimination-counting"],
+      cards: [],
+      body: String.raw`[[organized-listing|An organized list]] gives every object one place in a fixed order, so that a gap would show. [[fencepost-counting|The fencepost rule]]: from $a$ to $b$ there are $b - a + 1$ numbers, and a straight fence has one more post than gaps.
 
-A [[subset-avoiding-relation|subset avoiding a relation]] is counted by grouping the forbidden pairs. In $\{1, \ldots, 8\}$ the pairs adding to $9$ are four disjoint pairs, and from each a subset takes neither element or one, $3$ ways, so $3^4 = 81$ subsets have no two elements adding to $9$. [[subset-sum-facts|Subset sums]] are counted element by element: each element is in half of all subsets.
+[[constructive-counting|Constructive counting]] builds an object by a sequence of choices and multiplies; separate groups are added. [[counting-functions|Each of $n$ objects given one of $k$ labels]] gives $k^n$ ways.
 
-The [[handshake-lemma|handshake lemma]]: degrees add to twice the number of edges, so $10$ people each shaking $3$ hands make $15$ handshakes. A route using every edge once, an [[eulerian-paths|Eulerian path]], exists in a connected graph exactly when $0$ or $2$ vertices have odd degree. In a [[round-robin-tournaments|round robin]] of $n$ teams there are $\binom n2$ games and the wins add to that number.
+[[permutations-combinations|Ordered choices]] number $P(n, k) = \tfrac{n!}{(n-k)!}$ and unordered ones $\binom nk = \tfrac{n!}{k!(n-k)!}$. [[committee-chair|Counting a committee with a chair in two orders]] gives $k\binom nk = n\binom{n-1}{k-1}$.
 
-The [[pigeonhole|pigeonhole principle]]: $n + 1$ objects in $n$ boxes put two in one box, so $6$ socks of $5$ colors include a pair. [[pairing-to-bound|Pairing elements]] builds the boxes: with the pairs $\{1, 8\}, \{2, 7\}, \ldots$, any $5$ numbers from $1$ to $8$ include two adding to $9$. [[coloring-arguments|Coloring arguments]] prove impossibility: a checkerboard with two opposite corners removed cannot be covered by dominoes, since each domino covers one square of each color.
-
-Group forbidden pairs, count edge ends, and build pigeonholes. The next chapter turns counts into probabilities.`,
-      related: [
-        { card: "non-adjacent-selection", note: String.raw`subsets avoiding consecutive elements (R1.3).` },
-        { card: "graph-coloring", note: String.raw`coloring graphs with neighbors different (R3.3).` },
-        { card: "invariants-coloring", note: String.raw`quantities a process cannot change (R3.3).` }
-      ],
-      exercises: [
-        { q: String.raw`How many subsets of $\{1, 2, \ldots, 8\}$ (including the empty set) contain no two numbers that add to $9$?`, answer: "81",
-          solution: String.raw`The pairs $\{1, 8\}, \{2, 7\}, \{3, 6\}, \{4, 5\}$ are disjoint, and from each the subset takes nothing or one element: $3^4 = 81$.` },
-        { q: String.raw`Ten people each shake hands with exactly three others. How many handshakes are there?`, answer: "15",
-          solution: String.raw`The degrees add to $30$, twice the number of handshakes, so $15$.` },
-        { q: String.raw`A drawer has socks in $5$ colors. How many must be drawn to be sure of two of the same color?`, answer: "6",
-          solution: String.raw`Five socks can all be different; six must repeat a color by pigeonhole.` }
-      ],
-      problems: [
-        "2010 AMC 10B, Problem 3",
-        "2011 AMC 10B, Problem 11",
-        "2012 AMC 10A, Problem 14",
-        "2016 AMC 10B, Problem 15",
-        "2023 AMC 10A, Problem 18",
-        "2015 AMC 12A, Problem 13",
-        "2025 AMC 10A, Problem 21",
-        "2012 AMC 12A, Problem 17"
+[[casework-method|Casework]] splits into cases that do not overlap and cover everything. [[complementary-counting|The complement]] handles "at least one". [[elimination-counting|Counting what each step removes]] gives the number of steps directly.`,
+      strategies: [
+        String.raw`List in an order that gives every object exactly one place, such as smallest part first.`,
+        String.raw`At the ends of a run, ask whether you are counting posts or gaps, and whether the ends are included.`,
+        String.raw`Fill the most restricted position first.`,
+        String.raw`Ask whether swapping two chosen objects gives a different outcome; if not, divide out the order.`,
+        String.raw`Before adding cases, check that they do not overlap and that they cover everything.`,
+        String.raw`When the question says "at least one", count the objects with none and subtract.`,
+        String.raw`If every step changes a quantity by the same amount, count the steps by dividing the total change.`
       ]
     }
+  },
+  reviewProblems: {
+    exercises: [
+      { q: String.raw`In how many orders can $5$ different books be placed on a shelf?`, answer: "120",
+        solution: String.raw`$5$ choices for the first place, $4$ for the second, and so on: $5! = 120$.` },
+      { q: String.raw`How many integers from $1$ to $100$ are divisible by neither $2$ nor $5$?`, answer: "40",
+        solution: String.raw`The $50$ odd numbers include the odd multiples of $5$: $5, 15, \ldots, 95$, ten of them. So $50 - 10 = 40$.` },
+      { q: String.raw`Each of $8$ people shakes hands once with each of the others. How many handshakes are there?`, answer: "28",
+        solution: String.raw`Each handshake is an unordered pair of people: $\binom82 = 28$.` },
+      { q: String.raw`How many subsets of $\{1, 2, 3, 4, 5, 6\}$ contain at least one of $1$ and $2$?`, answer: "48",
+        solution: String.raw`There are $2^6 = 64$ subsets, and those containing neither $1$ nor $2$ are the $2^4 = 16$ subsets of $\{3, 4, 5, 6\}$. So $64 - 16 = 48$.` },
+      { q: String.raw`How many three-digit numbers have digits that strictly increase from left to right?`, answer: "84",
+        solution: String.raw`The digits are three different digits from $1$ to $9$ ($0$ cannot come first, and an increasing number cannot have $0$ later). Any three digits can be arranged in increasing order in exactly one way, so the count is $\binom93 = 84$.` }
+    ],
+    problems: [
+      "2016 AMC 8, Problem 18",
+      "2002 AMC 10B, Problem 9",
+      "2024 AMC 10B, Problem 17",
+      "2025 AMC 10A, Problem 12"
+    ]
+  },
+  challenge: {
+    problems: [
+      "2017 AMC 10B, Problem 18",
+      "2023 AMC 10A, Problem 20",
+      "2023 AMC 12B, Problem 8",
+      "2024 AMC 10B, Problem 20"
+    ]
   }
 };

@@ -758,92 +758,353 @@ window.MATH_LEARN_SHELF = [
   "chapters": [
    {
     "code": "R1",
-    "title": "Counting",
+    "title": "Counting from scratch",
     "level": "Core",
     "lessons": [
      {
       "code": "R1.1",
-      "title": "Permutations, combinations and building objects"
+      "title": "Introduction"
      },
      {
       "code": "R1.2",
-      "title": "Cases, complements and inclusion-exclusion"
+      "title": "Making a list and the fencepost",
+      "level": "Core"
      },
      {
       "code": "R1.3",
-      "title": "Arrangements with restrictions"
+      "title": "The multiplication and addition principles",
+      "level": "Core"
      },
      {
       "code": "R1.4",
-      "title": "Distributions and binomial coefficients"
+      "title": "Permutations and combinations",
+      "level": "Core"
      },
      {
       "code": "R1.5",
-      "title": "Recursion, paths and processes"
+      "title": "Casework and complements",
+      "level": "Core"
      },
      {
       "code": "R1.6",
-      "title": "Subsets, graphs and pigeonhole"
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "R2",
-    "title": "Probability and expected value",
+    "title": "Probability from scratch",
     "level": "Core",
     "lessons": [
      {
       "code": "R2.1",
-      "title": "Probability by counting"
+      "title": "Introduction"
      },
      {
       "code": "R2.2",
-      "title": "Independence and conditional probability"
+      "title": "Probability by counting",
+      "level": "Core"
      },
      {
       "code": "R2.3",
-      "title": "Geometric probability"
+      "title": "Several draws and independent events",
+      "level": "Core"
      },
      {
       "code": "R2.4",
-      "title": "Expected value"
+      "title": "Expected value",
+      "level": "Core"
      },
      {
       "code": "R2.5",
-      "title": "Logic and puzzles"
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "R3",
-    "title": "Counting and probability for the AMC 12",
-    "level": "Core II",
+    "title": "Arrangements",
+    "level": "Core",
     "lessons": [
      {
       "code": "R3.1",
-      "title": "More counting structures"
+      "title": "Introduction"
      },
      {
       "code": "R3.2",
-      "title": "More binomial identities"
+      "title": "Arranging letters with repeats",
+      "level": "Core"
      },
      {
       "code": "R3.3",
-      "title": "Invariants, colorings and symmetry"
+      "title": "Gaps, blocks and non-adjacent choices",
+      "level": "Core"
      },
      {
       "code": "R3.4",
-      "title": "Conditional probability and expectation"
+      "title": "Circles and derangements",
+      "level": "Core II"
      },
      {
       "code": "R3.5",
-      "title": "Random processes"
+      "title": "Inclusion-exclusion and overcounting",
+      "level": "Core"
      },
      {
       "code": "R3.6",
-      "title": "Continuous probability"
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "R4",
+    "title": "Distributions and binomial coefficients",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "R4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R4.2",
+      "title": "Stars and bars",
+      "level": "Core"
+     },
+     {
+      "code": "R4.3",
+      "title": "Pascal's triangle",
+      "level": "Core II"
+     },
+     {
+      "code": "R4.4",
+      "title": "The binomial theorem",
+      "level": "Core"
+     },
+     {
+      "code": "R4.5",
+      "title": "Bijections",
+      "level": "Core II"
+     },
+     {
+      "code": "R4.6",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "R5",
+    "title": "Recursion, paths and processes",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "R5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R5.2",
+      "title": "Recursion and tilings",
+      "level": "Core"
+     },
+     {
+      "code": "R5.3",
+      "title": "Paths in a grid",
+      "level": "Core"
+     },
+     {
+      "code": "R5.4",
+      "title": "Working backward and simulating",
+      "level": "Core"
+     },
+     {
+      "code": "R5.5",
+      "title": "The reflection principle",
+      "level": "Extension"
+     },
+     {
+      "code": "R5.6",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "R6",
+    "title": "Probability for the AMC 10",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "R6.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R6.2",
+      "title": "Conditional probability",
+      "level": "Core"
+     },
+     {
+      "code": "R6.3",
+      "title": "Repeated trials",
+      "level": "Core"
+     },
+     {
+      "code": "R6.4",
+      "title": "Probability as length and area",
+      "level": "Core"
+     },
+     {
+      "code": "R6.5",
+      "title": "Linearity of expectation",
+      "level": "Core II"
+     },
+     {
+      "code": "R6.6",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "R7",
+    "title": "Sets, graphs and logic",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "R7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R7.2",
+      "title": "Subsets",
+      "level": "Extension"
+     },
+     {
+      "code": "R7.3",
+      "title": "Graphs",
+      "level": "Core"
+     },
+     {
+      "code": "R7.4",
+      "title": "Pigeonhole and extremes",
+      "level": "Core"
+     },
+     {
+      "code": "R7.5",
+      "title": "Colorings and invariants",
+      "level": "Core"
+     },
+     {
+      "code": "R7.6",
+      "title": "Logic puzzles and cases",
+      "level": "Core"
+     },
+     {
+      "code": "R7.7",
+      "title": "Proof by contrapositive",
+      "level": "Extension"
+     },
+     {
+      "code": "R7.8",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "R8",
+    "title": "Counting for the AMC 12",
+    "level": "Core II",
+    "lessons": [
+     {
+      "code": "R8.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R8.2",
+      "title": "Upper bounds and counting up to symmetry",
+      "level": "Core II"
+     },
+     {
+      "code": "R8.3",
+      "title": "More binomial identities",
+      "level": "Core II"
+     },
+     {
+      "code": "R8.4",
+      "title": "Graph coloring and games",
+      "level": "Core II"
+     },
+     {
+      "code": "R8.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "R9",
+    "title": "Probability for the AMC 12",
+    "level": "Core II",
+    "lessons": [
+     {
+      "code": "R9.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R9.2",
+      "title": "Bayes' theorem",
+      "level": "Extension"
+     },
+     {
+      "code": "R9.3",
+      "title": "States and waiting times",
+      "level": "Core"
+     },
+     {
+      "code": "R9.4",
+      "title": "Continuous probability",
+      "level": "Extension"
+     },
+     {
+      "code": "R9.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "R10",
+    "title": "From the AMC to the AIME: counting and probability",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "R10.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "R10.2",
+      "title": "Checking cases and double counting",
+      "level": "Core"
+     },
+     {
+      "code": "R10.3",
+      "title": "Small cases as a test",
+      "level": "Core"
+     },
+     {
+      "code": "R10.4",
+      "title": "Mixed problems across the book",
+      "level": "Core"
+     },
+     {
+      "code": "R10.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Toward the AIME"
    }
   ]
  },
