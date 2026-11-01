@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- Olympiad Combinatorics is finished: K3 (Hall, Kőnig, Turán, the matrix-tree theorem, LGV), K4 (the combinatorial Nullstellensatz, Markov and generating functions, Sprague-Grundy) and K5 (convex position, Sylvester-Gallai, Helly, Minkowski, Pick on a triangular grid) are written.
 - Olympiad Combinatorics: K1 (Advanced enumeration: exponential generating functions, the pentagonal theorem, Stirling numbers, Pólya, hook lengths) and K2 (Sperner, Dilworth, Erdős-Ko-Rado, Kruskal-Katona, Erdős-Szekeres, Schur) are written.
 - Olympiad Number Theory is finished: D3 (Thue's lemma, Chevalley-Warning, Cauchy-Davenport, Erdős-Ginzburg-Ziv) and D4 (Dirichlet convolution, Farey sequences and continued fractions, Beatty sequences and floor sums) are written.
 - Olympiad Number Theory: D1 (Quadratic residues: Lagrange's root bound, reciprocity, Gauss's lemma, the Jacobi symbol) and D2 (Kummer, Zsigmondy, Wolstenholme, cyclotomic polynomials, Fermat and Carmichael numbers, Dirichlet) are written.
