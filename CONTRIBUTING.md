@@ -977,10 +977,20 @@ review and are worth keeping:
   between the border and the window's edge. The page does not bounce past its ends there
   (`overscroll-behavior-y: none`): on a Mac the bounce moves the document but not a fixed panel,
   which then poked out above the top bar or below the page.
-- **A list page's sidebar is only its sections**, under "On this list", drawn in the card page's
-  "On this page" panel (`buildListToc`), so the section being read is marked as you scroll and
-  hovered links highlight the same way; the space tree is hidden there. A list without sections
-  (an ungrouped list of your own) gets no sidebar.
+- **Custom list grouping.** A new or older custom list without a grouping choice opens flat.
+  At eight visible cards, Group saves the current card IDs in that list's `groupedIds`.
+  Later additions appear under New cards. The same button becomes Regroup with the Filters dot
+  until the reader applies it, then returns to Ungroup. Refresh the sidebar as well as the card
+  grid when list membership changes.
+- **List sidebars.** `buildListToc` draws named sections under On this list. Lists without
+  named sections have no sidebar. Use the shared `state.tools` preference for the actions below
+  the section links. Hide page tools saves that preference for list and card pages. Settings
+  lets the reader turn it back on.
+- **List descriptions and previews.** Store an optional custom description in `blurb`, escape
+  it for display and render it beneath the title with the same `topic-blurb` class as built-in
+  lists. Keep descriptions when importing lists. Add-card search results are inserted after the
+  page renders, so call `renderMath(results)` after each results update and include `.lar-name`
+  among the inline math selectors.
 - **A query can name a problem by reference** in any order and spelling ("amc10 a2025 problem 1",
   "2025 AMC 10A #1", "aime ii 2019 p 15"): `parseProblemQuery` splits glued letters and digits,
   reads contest, version, year and number, and needs at least two of contest, year and number,
