@@ -22,6 +22,10 @@
   --topbar-h: 66px;
 }
 
+/* Every link is the app's blue and stays blue after a visit (owner, 2026-11-01): no purple
+   visited links. Zero specificity, so a component's own colour still wins. */
+:where(a), :where(a:visited) { color: var(--accent); }
+
 /* Light theme — toggled via data-theme="light" on <html>. Everything is driven
    by these variables, so only the palette changes. */
 :root[data-theme="light"] {
@@ -500,6 +504,9 @@ body {
   cursor: pointer;
 }
 .card-link:hover { color: var(--accent-strong, var(--accent)); }
+/* A lesson reference such as (L3.4) looks like a card link (owner, 2026-11-01). */
+.lp-ref { color: var(--accent); text-decoration: none; }
+.lp-ref:hover { color: var(--accent-strong, var(--accent)); }
 
 .card-link-broken { color: #dc2626; cursor: help; }
 
@@ -2344,7 +2351,7 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
 .chain-study { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
 .chain-study-h { font-size: 13.5px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .chain-study-links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
-.chain-study-link { font-size: 14px; color: var(--space, var(--accent)); text-decoration: none; }
+.chain-study-link { font-size: 14px; color: var(--accent); text-decoration: none; }
 .chain-study-link:hover { text-decoration: underline; }
 .chain-study-l { margin-left: 6px; font-size: 12px; color: var(--text-faint); }
 
