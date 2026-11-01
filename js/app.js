@@ -1458,7 +1458,11 @@
   function toggleMembership(listId, fid) {
     const l = getList(listId); if (!l) return;
     const i = l.ids.indexOf(fid);
-    if (i === -1) l.ids.push(fid); else l.ids.splice(i, 1);
+    if (i === -1) l.ids.push(fid);
+    else {
+      l.ids.splice(i, 1);
+      if (Array.isArray(l.groupedIds)) l.groupedIds = l.groupedIds.filter(id => id !== fid);
+    }
     saveLists();
   }
   function addManyToList(listId, fids) {
@@ -4009,6 +4013,7 @@
     markToc();
   }
   // A list page's sections in the same panel, each with its count of cards.
+  let listToolsHidden = false;
   function buildListToc() {
     const toc = document.getElementById("page-toc");
     if (!toc) return;
@@ -4018,10 +4023,13 @@
     });
     tocPinned = null;
     // A few page tools under the sections (owner, 2026-10-31): back to the top, the list's link, print.
-    const tools = `<div class="toc-head toc-tools-head">Page tools</div>
+    const tools = listToolsHidden
+      ? `<button type="button" class="toc-tool pt-hide" data-list-tool="show" aria-expanded="false">Show page tools</button>`
+      : `<div class="toc-head toc-tools-head">Page tools</div>
       <button type="button" class="toc-tool" data-list-tool="top">Back to top</button>
       <button type="button" class="toc-tool" data-list-tool="link">Copy link to this list</button>
-      <button type="button" class="toc-tool" data-list-tool="print">Print this list</button>`;
+      <button type="button" class="toc-tool" data-list-tool="print">Print this list</button>
+      <button type="button" class="toc-tool pt-hide" data-list-tool="hide" aria-expanded="true">Hide page tools</button>`;
     toc.innerHTML = items.length ? `<div class="toc-head">On this list</div>${items.join("")}${tools}` : "";
     toc.hidden = !items.length;
     markToc();
@@ -4030,7 +4038,11 @@
     const b = e.target.closest("[data-list-tool]");
     if (!b) return;
     const what = b.dataset.listTool;
-    if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    if (what === "hide" || what === "show") {
+      listToolsHidden = what === "hide";
+      buildListToc();
+      document.querySelector(listToolsHidden ? '[data-list-tool="show"]' : '[data-list-tool="hide"]').focus();
+    } else if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
     else if (what === "print") { prepareMathForPrint(); window.print(); }
     else if (what === "link") {
       const url = location.href;
@@ -4656,7 +4668,11 @@
         const ids = l.ids.filter(x => typeof x === "string");
         const mine = merged.items.find(m => m.id === l.id);
         if (mine) ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
-        else merged.items.push({ id: l.id, name: String(l.name || "Imported list"), ids });
+        else {
+          const item = { id: l.id, name: String(l.name || "Imported list"), ids };
+          if (Array.isArray(l.groupedIds)) item.groupedIds = ids.filter(id => l.groupedIds.includes(id));
+          merged.items.push(item);
+        }
       });
       staged["mq-lists"] = JSON.stringify(merged);
     }
@@ -6712,17 +6728,22 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const isBuiltin = !userL;
     const entries = l.ids.map(id => BY_ID[id]).filter(Boolean);
     shownIds = entries.map(e => e.formula.id);
-    // The three buttons used to sit in a row directly above the cards, which put Clear and
-    // Delete list one slip away from the formula you were reading. They move to the top right
-    // of the header instead, leaving the builder below as just the add field.
     const AUTO_MIN = 8;
     const canGroup = !isBuiltin && entries.length >= AUTO_MIN;
-    const grouped = canGroup && state.autoGroup;
+    const grouped = canGroup && (l.builtin ? state.autoGroup : Array.isArray(l.groupedIds));
+    let sections = l.sections, pending = [];
+    if (grouped) {
+      const snapshot = new Set(l.builtin ? shownIds : l.groupedIds);
+      sections = autoSections(shownIds.filter(id => snapshot.has(id)));
+      pending = shownIds.filter(id => !snapshot.has(id));
+      if (pending.length) sections.push({ title: "New cards", ids: pending });
+    }
     const headTools = isBuiltin ? "" : `
       <div class="list-head-tools">
-        ${canGroup ? `<button class="list-tool${grouped ? " on" : ""}" data-list-group="1" title="${grouped ? "Showing sections matched from the built-in lists" : "Group this list into sections"}">${grouped ? "Grouped" : "Group"}</button>` : ""}
+        ${canGroup ? `<button class="list-tool${grouped ? " on" : ""}" data-list-group="${l.id}" aria-pressed="${grouped}" title="${grouped ? "Showing sections matched from the built-in lists" : "Group this list into sections"}">${grouped ? (l.builtin ? "Grouped" : "Ungroup") : "Group"}</button>` : ""}
+        ${pending.length ? `<button class="list-tool" data-list-group="${l.id}" data-regroup>Regroup</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>`}
-        ${entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
+        ${l.builtin && entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool danger" data-list-delete="${l.id}">Delete list</button>`}
       </div>`;
     const tools = isBuiltin ? "" : `
@@ -6746,7 +6767,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         ${tools}
         ${entries.length
           ? (isBuiltin || grouped
-              ? listSectionsHtml(isBuiltin ? l : { id: l.id, sections: autoSections(shownIds) })
+              ? listSectionsHtml({ id: l.id, sections })
               : `<div class="cards">${entries.map(e => cardHtml(e, true, null)).join("")}</div>`)
           : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
@@ -8540,7 +8561,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const q = box.querySelector(".list-add-input").value;
       // Re-render the list so the count and the card grid pick the change up, then put the
       // search box back the way it was so several cards can be added in one go.
-      renderListDetail(listId);
+      render();
       const box2 = $content.querySelector("[data-list-add]");
       if (box2) {
         const input = box2.querySelector(".list-add-input");
@@ -8553,7 +8574,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const topicChip = e.target.closest(".topic-chip");
     if (topicChip) { location.hash = tagHash([TOPICS_BY_ID[topicChip.dataset.topic].label]); window.scrollTo({ top: 0 }); return; }
     const grp = e.target.closest("[data-list-group]");
-    if (grp) { state.autoGroup = !state.autoGroup; saveSettings(); render(); return; }
+    if (grp) {
+      const list = getList(grp.dataset.listGroup);
+      if (!list) return;
+      if (list.builtin) {
+        state.autoGroup = !state.autoGroup;
+        saveSettings();
+      } else {
+        if (Array.isArray(list.groupedIds) && !grp.hasAttribute("data-regroup")) delete list.groupedIds;
+        else list.groupedIds = shownIds.slice();
+        saveLists();
+      }
+      render();
+      return;
+    }
     const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
