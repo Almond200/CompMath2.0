@@ -51,11 +51,13 @@ CONVENTIONS §0 has the full model.
   figures and credit line (AMC and AIME problems; other contests link out), then "How this problem
   works", opened and closed with "+ Show" / "− Hide" beside its heading, which holds any figure we
   drew, the strategy, and the chain of cards the problem uses (Pattern → Method → Formulas).
-- **Learn** (`#/learn`, owner 2026-10-31): the Textbooks shelf of book covers (nine books in two
-  tracks, AMC and AIME; drawn from `js/data/learn/shelf.js`, which `tools/build-learn-shelf.py`
-  builds from `LEARN-OUTLINE.md`), then Lists: your lists (a green + makes one) and the study
-  lists. A single list (`#/list/<id>`) opens as a page whose sidebar holds its sections and page
-  tools (Back to top, Copy link, Print). A book's contents (`#/learn/<book>`) open with Contents and
+- **Learn** (`#/learn`) opens with 13 textbooks across the AMC, AIME and Olympiad tracks.
+  The shelf comes from `js/data/learn/shelf.js`, generated from `LEARN-OUTLINE.md`. Below it,
+  Lists holds your own lists and the built-in study lists. Use the green + to create a list.
+  On its page (`#/list/<id>`), you can add a description under the title and search for cards.
+  With eight or more cards, choose **Group** to organize the list. Later additions appear under
+  **New cards** until you choose **Regroup**. A list with named sections has an **On this list**
+  sidebar. Its page tools follow the same setting as card pages. A book's contents (`#/learn/<book>`) open with Contents and
   Introduction and How to Use This Book (`.../how-to-use`). A lesson (`.../c5/2`) shows its cards,
   one flowing explanation, related cards, its own problems with worked solutions, contest
   problems, and a drawer for the cards it links; chapters in the approved structure (C5) open on
@@ -310,10 +312,20 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
-- **2026-11-01, Olympiad Geometry.** O1 to O4 are available on `codex/work`. O3 develops isogonal ratios and circle lemmas. O4 uses pedal triangles and cevian ratios to study conjugates. Both chapters include worked review and challenge problems.
-
 **2026-11-01**
 
+- Custom lists start ungrouped. Group opens the section sidebar when matches are available.
+  Adding cards to a grouped list changes Ungroup to Regroup, marked with the Filters indicator.
+  Regroup sorts the new cards. Delete list remains available, and the redundant Clear action was removed.
+- Custom lists support editable descriptions beneath the title using the built-in list style.
+  The add-card search preview now typesets LaTeX in card names.
+- Hide page tools in a list turns off page tools on both list and card pages. Section navigation
+  stays visible. Turn Page tools back on in Settings.
+- The textbook shelf measures its rows after the page layout updates. The large Olympiad
+  Combinatorics cover has its own title size.
+- Olympiad Geometry O1 (Methods), O2 (Triangle theorems), O3 (Olympiad lemmas) and O4
+  (Derived triangles and conjugates) are written and loaded on `codex/work`. O3 and O4
+  include 20 original problems with worked solutions between them.
 - Olympiad Combinatorics is finished: K3 (Hall, Kőnig, Turán, the matrix-tree theorem, LGV), K4 (the combinatorial Nullstellensatz, Markov and generating functions, Sprague-Grundy) and K5 (convex position, Sylvester-Gallai, Helly, Minkowski, Pick on a triangular grid) are written.
 - Olympiad Combinatorics: K1 (Advanced enumeration: exponential generating functions, the pentagonal theorem, Stirling numbers, Pólya, hook lengths) and K2 (Sperner, Dilworth, Erdős-Ko-Rado, Kruskal-Katona, Erdős-Szekeres, Schur) are written.
 - Olympiad Number Theory is finished: D3 (Thue's lemma, Chevalley-Warning, Cauchy-Davenport, Erdős-Ginzburg-Ziv) and D4 (Dirichlet convolution, Farey sequences and continued fractions, Beatty sequences and floor sums) are written.
