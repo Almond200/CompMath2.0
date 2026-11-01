@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-10-31**
 
+- **AMC Number Theory M5 Integer equations written; the Core topics part is complete.** M5.1 Introduction, M5.2 linear equations and the Chinese remainder theorem, M5.3 coins and stamps, M5.4 factoring into integers, M5.5 Pythagorean triples and integer triangles, M5.6 bounding, M5.7 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M4 Remainders written.** M4.1 Introduction, M4.2 working with remainders, M4.3 cycles and last digits, M4.4 squares and choosing a modulus, M4.5 Fermat's little theorem and Euler's totient, M4.6 when one expression divides another, M4.7 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M3 Divisors and factorials written.** M3.1 Introduction, M3.2 counting divisors, M3.3 summing and multiplying divisors, M3.4 primes in a factorial and trailing zeros, M3.5 consecutive numbers and gcd tricks, M3.6 Summary, Review Problems and Challenge Problems.
 - **AMC Number Theory M2 Digits, bases and decimals written; the Foundations part is complete.** M2.1 Introduction, M2.2 place value and digits, M2.3 digit puzzles, M2.4 other bases, M2.5 repeating and terminating decimals, M2.6 fractions between two fractions, M2.7 Summary, Review Problems and Challenge Problems.
