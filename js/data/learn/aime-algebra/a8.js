@@ -50,7 +50,7 @@ When a problem in three variables looks messy, ask what happens if two of them a
         { card: "symmetric-polynomial-strategies", note: String.raw`rewriting any symmetric expression in the elementary symmetric sums (A1.2).` },
         { card: "sos-identity", note: String.raw`the second factor of $a^3 + b^3 + c^3 - 3abc$ as half a sum of squares (A5.4).` },
         { card: "factor-remainder-theorem", note: String.raw`a polynomial that vanishes when $a = b$ has the factor $a - b$.` },
-        { card: "vietas-general", note: String.raw`reading $e_1$, $e_2$, $e_3$ off a cubic (B2.2).` }
+        { card: "vietas-general", note: String.raw`reading $e_1$, $e_2$, $e_3$ off a cubic (L10.2).` }
       ],
       exercises: [
         { q: String.raw`Real numbers $a$, $b$, $c$ satisfy $a + b + c = 0$ and $abc = 2$. Find $a^3 + b^3 + c^3$.`, answer: "6",

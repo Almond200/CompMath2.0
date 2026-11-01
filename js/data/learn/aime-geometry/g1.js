@@ -44,7 +44,7 @@ A figure built from [[nested-similar|nested similar copies]], such as squares in
 
 Look for parallel lines, draw one when needed, and write every unknown length as a ratio times a known one. The next lesson turns the same ratios into ratios of areas.`,
       related: [
-        { card: "triangle-similarity", note: String.raw`the AA, SAS and SSS tests that justify each pair of similar triangles (B5.1).` },
+        { card: "triangle-similarity", note: String.raw`the AA, SAS and SSS tests that justify each pair of similar triangles (S3.2).` },
         { card: "trapezoid-special-segments", note: String.raw`the harmonic-mean segment and the midline of a trapezoid (G7.3).` },
         { card: "geometric-series", note: String.raw`adding the lengths or areas of nested copies.` }
       ],

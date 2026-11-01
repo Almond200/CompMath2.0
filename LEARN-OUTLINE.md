@@ -5,9 +5,9 @@ This file says what each Learn book holds: its chapters, its lessons, and the ca
 The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31), which grew the first draft into chapters with lesson-level syllabi; this file added real card ids for every lesson.
 
 **Status (2026-10-31, end of the seventeenth chat):**
-- Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
+- Every book in a "Book:" section below is written in the app: the four AIME books (the AIME track) and the four AMC books (the AMC track).
 - Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and AIME Geometry (G1 to G9) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
-- "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
+- "The AMC books, second plan" is built (2026-11-01): it replaced the first AMC books and the Bridge, which is removed.
 
 ## How to read this file
 
@@ -21,7 +21,7 @@ Olympiad-tier cards that fit no chapter stay in the reference only. Olympiad boo
 **Cards.** An id in backticks is a real card (`#/f/<id>` opens it).
 - A lesson's cards are the ones it teaches. A card may appear again later as a link, but each card is taught in one lesson.
 - *(pattern)* marks a pattern card. "Prereq" names cards taught in an earlier chapter or book.
-- A lesson with no card teaches a habit no card holds (B6.4, the comparison lessons). That is allowed, since lessons connect cards and never copy them.
+- A lesson with no card teaches a habit no card holds (R10.2, the comparison lessons). That is allowed, since lessons connect cards and never copy them.
 
 **Problems.** Each problem's status follows the proposal's sequence: **candidate** (found by its tags), then **read** (its strategy read, and it fits), then **verified** (numbers rechecked and its place agreed), then **published**.
 - Each problem has one **primary placement** (one lesson's problems or one chapter review). Other lessons may link to it, but only one lists it as an exercise. AMC 10/12 twins count as one problem.
@@ -49,7 +49,6 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 | **AMC Number Theory** | number theory for the AMC: primes, divisors, digits, remainders, integer equations | M1 to M7 |
 | **AMC Counting & Probability** | counting, probability and expected value for the AMC | R1 to R10 |
 | **AMC Geometry** | geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S12 |
-| **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
 | **AIME Algebra** | equations, polynomials, sequences, functions, inequalities, complex numbers and trig algebra | A1 to A9 |
 | **AIME Number Theory** | prime exponents, congruences, exponent cycles, integer solutions, digits | N1 to N8 |
 | **AIME Geometry** | triangles, circles, trig, coordinates, centers, transformations, polygons, solids | G1 to G9 |
@@ -74,7 +73,7 @@ A student need not finish the books in order. Any chapter can be entered once it
 
 ## The AMC books, second plan (to replace the four AMC books and the Bridge)
 
-**Status (2026-10-31):** planned, not built. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
+**Status (2026-11-01):** built; the Bridge is removed. The rest of this section records the plan as it was made. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
 
 ### How the books are built
 
@@ -156,7 +155,7 @@ Moved to its own section, "Book: AMC Geometry", below, where it is being written
 
 ## Book: AMC Algebra
 
-From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the AMC 12, ending with the habits the AIME asks for. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the advanced topics, ending with the habits the AIME asks for. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -756,67 +755,6 @@ Signed lengths, degenerate figures, choosing between coordinates and a synthetic
 | S12.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | S12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S12.6 Review Problems and S12.7 Challenge Problems | |
 
-## Book: AMC → AIME Bridge
-
-A short bridge that finds gaps and fills them with examples and checks, without becoming a duplicate AMC textbook. All six chapters are Core.
-
-### B1. Algebra fluency and substitutions (Core)
-
-| Lesson | Cards |
-|---|---|
-| B1.1 Expression manipulation: factoring, expanding, rationalizing, keeping the domain | `useful-factorizations`, `difference-of-squares`, `square-of-sum`, `rationalizing` |
-| B1.2 Equations and systems: substitution, elimination, symmetry, extraneous roots | `linear-elimination`, `add-all-equations`, `transforming-equations` |
-| B1.3 Useful substitutions: reciprocals, squares, sums and products, repeated blocks | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation` |
-| B1.4 Absolute values, intervals, sign charts, inequality constraints | `absolute-value-rules`, `abs-value-relations`, `sign-chart`, `trivial-inequality` |
-| B1.5 Rates, averages, percents and word-problem setups | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
-
-### B2. Polynomial and sequence fundamentals (Core)
-
-| Lesson | Cards |
-|---|---|
-| B2.1 Roots and factors; the remainder and factor theorems; synthetic division | `factor-remainder-theorem`, `polynomial-division`, `rational-root-theorem` |
-| B2.2 Vieta and elementary symmetric sums | `quadratic-formula`, `vietas-quadratic`, `vietas-general`, `vertex-form` |
-| B2.3 Arithmetic and geometric sequences, finite sums | `arithmetic-series`, `geometric-series`, `triangular-numbers`, `power-sums` |
-| B2.4 Basic recurrences and tables of small cases | `first-order-recurrence`, *(pattern)* `periodic-sequences`, `organized-listing` |
-
-### B3. Integer arithmetic and congruence fundamentals (Core)
-
-| Lesson | Cards |
-|---|---|
-| B3.1 Prime powers, gcd and lcm, divisibility, counting divisors | `fundamental-theorem-arithmetic`, `euclidean-algorithm`, `divisibility-rules`, `number-of-divisors`, `recognition-numbers` |
-| B3.2 Residues; negative residues and inverses by inspection | `modular-basics` |
-| B3.3 Basic exponent cycles and last digits | `cycle-hunting`, `last-digit-patterns` |
-| B3.4 Integer equations: parity, bounds, factoring into integers | `sfft`, `factor-pair-counting`, `only-even-prime` |
-
-### B4. Counting and probability fundamentals (Core)
-
-| Lesson | Cards |
-|---|---|
-| B4.1 Multiplication and addition principles, permutations, combinations | `permutations-combinations` |
-| B4.2 Cases, complements, avoiding overcounts | `casework-method`, `complementary-counting` |
-| B4.3 Arrangements with distinctness and repetition restrictions | `multiset-permutations`, `gap-method`, `counting-blocks` |
-| B4.4 Probability from counting; elementary conditional probability | `basic-probability`, `independent-events`, `conditional-probability` |
-
-### B5. Geometry fundamentals and coordinates (Core)
-
-| Lesson | Cards |
-|---|---|
-| B5.1 Triangles: similarity, ratios, area, Pythagoras | `triangle-similarity`, `similar-figures-ratios`, `pythagorean-theorem`, `special-right-triangles`, `15-75-90-triangle`, `triangle-area-standard`, `triangle-inequality`, `triangle-congruence`, `parallel-exterior-angles`, `median-to-hypotenuse`, `right-triangle-inradius` |
-| B5.2 Circle facts: inscribed angles, chords, tangents, power of a point | `inscribed-angle-theorem`, `circle-basics`, `tangent-facts`, `chord-length`, `power-of-a-point` |
-| B5.3 Coordinates: slope, distance, lines, intersections | `distance-midpoint`, `line-forms`, `point-line-distance`, `circle-equation` |
-| B5.4 The trig bridge: laws of sines and cosines, the sine area formula (for AMC 10 students) | `law-of-sines`, `law-of-cosines`, `trig-area` |
-
-### B6. Constraints, computation and checking (Core; its habits recur in every review)
-
-| Lesson | Cards |
-|---|---|
-| B6.1 Domain, positivity, integrality and distinctness through substitutions | prereq `transforming-equations`, `quadratic-root-location` |
-| B6.2 Checking cases, degenerate figures, double counting | `directed-lengths`, prereq `organized-listing` |
-| B6.3 Bounding and estimating first; small cases as a test | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` |
-| B6.4 The AIME answer: exact arithmetic, 000 to 999, the final check | no card (a habit; prose and checks only) |
-
----
-
 ## Book: AIME Algebra
 
 Nine chapters. The first draft named symmetric expressions, recurrences, root transformations, complex numbers and inequalities. The proposal adds equation solving, functions, logs, trig algebra, and a capstone for combining tools.
@@ -1018,7 +956,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
 
 - **Opening question:** what is the units digit of $7^{202}$? The powers of $7$ mod $10$ run $7, 9, 3, 1$ and then repeat, and $202 = 4\cdot50 + 2$, so the digit is $9$.
 - **Teach:** there are only finitely many residues, so the powers must repeat. When the base is coprime to the modulus, the cycle starts at the first power. When it is not, the powers settle into a cycle only after a few steps: $2^n \bmod 12$ runs $2, 4, 8, 4, 8, \ldots$ (eventual period $2$).
-- **Cards:** `cycle-hunting` (Finding the Period, first met in B3.3), and `last-digit-patterns` as a link.
+- **Cards:** `cycle-hunting` (Finding the Period, first met in M4.3), and `last-digit-patterns` as a link.
 - **Clue:** a huge exponent and a small modulus.
 - **Checks:**
   - the units digit of $7^{203}$ is $3$;

@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SRC, OUT = ROOT / "LEARN-OUTLINE.md", ROOT / "js/data/learn/shelf.js"
 IDS = {"AMC Algebra": "amc-algebra", "AMC Number Theory": "amc-number-theory",
-       "AMC Counting & Probability": "amc-counting", "AMC Geometry": "amc-geometry", "AMC → AIME Bridge": "bridge", "AIME Algebra": "aime-algebra", "AIME Number Theory": "aime-number-theory",
+       "AMC Counting & Probability": "amc-counting", "AMC Geometry": "amc-geometry", "AIME Algebra": "aime-algebra", "AIME Number Theory": "aime-number-theory",
        "AIME Geometry": "aime-geometry", "AIME Counting & Probability": "aime-counting"}
 
 def build():

@@ -5380,7 +5380,6 @@
   // contents, a chapter, a lesson, a review) share a sidebar holding the whole table of contents.
   const BOOK_MOTIFS = {
     // an arch from one bank to the other
-    bridge: `<path d="M6 74 Q50 8 94 74" /><path d="M6 74 H94" /><path d="M28 74 V44 M50 74 V31 M72 74 V44" />`,
     // a parabola on its axes
     "aime-algebra": `<path d="M8 70 H92 M50 92 V8" /><path d="M20 18 Q50 118 80 18" />`,
     // twelve residues round a clock

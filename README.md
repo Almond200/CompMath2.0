@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- The AMC → AIME Bridge is removed: its outline section, chapter files, shelf id, cover colours and motif. Its lessons live on in the four AMC books (LEARN-OUTLINE, "Where the Bridge goes"), and the AIME books' references to Bridge lessons now point to the AMC lessons that teach the same cards (L10.2, M1.4, S3.2, S4.6, S9.2).
 - AMC Geometry is finished: S11 (Space: tetrahedra and frusta, coordinates and planes) and S12 (From the AMC to the AIME: signed lengths and degenerate figures, coordinates or a synthetic route, mixed problems) are written. All four AMC books of the second plan are complete.
 - AMC Geometry: S10 (Analytic geometry: conics, polar coordinates and determinants, vectors and transformations, theorems about quadrilaterals and hexagons, regions and neighborhoods) is written.
 - Titles no longer name the AMC 10 or AMC 12: L10 Advanced polynomials, M6 Advanced number theory, R6 Probability tools, R8 Advanced counting, R9 Advanced probability, S9 Advanced triangles and circles; book descriptions and chapter openings say "advanced" or "harder AMC problems" instead.
