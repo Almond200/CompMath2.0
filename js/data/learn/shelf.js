@@ -1115,111 +1115,440 @@ window.MATH_LEARN_SHELF = [
   "chapters": [
    {
     "code": "S1",
-    "title": "Geometry: triangles and circles",
+    "title": "Angles, triangles and area",
     "level": "Core",
     "lessons": [
      {
       "code": "S1.1",
-      "title": "Similar and right triangles"
+      "title": "Introduction"
      },
      {
       "code": "S1.2",
-      "title": "Ratios inside triangles"
+      "title": "Angles and parallel lines",
+      "level": "Core"
      },
      {
       "code": "S1.3",
-      "title": "Right-triangle constructions"
+      "title": "Triangles and congruence",
+      "level": "Core"
      },
      {
       "code": "S1.4",
-      "title": "Circles: angles, chords and tangents"
+      "title": "Area and perimeter",
+      "level": "Core"
      },
      {
       "code": "S1.5",
-      "title": "Incircles and touching circles"
+      "title": "The Pythagorean theorem",
+      "level": "Core"
      },
      {
       "code": "S1.6",
-      "title": "Trigonometry in triangles"
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "S2",
-    "title": "Geometry: polygons, coordinates and solids",
+    "title": "Quadrilaterals, circles and coordinates: the basics",
     "level": "Core",
     "lessons": [
      {
       "code": "S2.1",
-      "title": "Polygons and areas"
+      "title": "Introduction"
      },
      {
       "code": "S2.2",
-      "title": "Coordinates"
+      "title": "Angles in polygons",
+      "level": "Core"
      },
      {
       "code": "S2.3",
-      "title": "Transformations and symmetry"
+      "title": "Quadrilateral areas",
+      "level": "Core"
      },
      {
       "code": "S2.4",
-      "title": "Counting in figures"
+      "title": "Circles: circumference, area and sectors",
+      "level": "Core"
      },
      {
       "code": "S2.5",
-      "title": "Solids"
+      "title": "Points, distances and lines",
+      "level": "Core"
+     },
+     {
+      "code": "S2.6",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "S3",
-    "title": "Geometry: triangles and circles for the AMC 12",
-    "level": "Core II",
+    "title": "Similar triangles and area ratios",
+    "level": "Core",
     "lessons": [
      {
       "code": "S3.1",
-      "title": "Cevians and area ratios"
+      "title": "Introduction"
      },
      {
       "code": "S3.2",
-      "title": "Cyclic quadrilaterals and incircles"
+      "title": "Similar triangles",
+      "level": "Core"
      },
      {
       "code": "S3.3",
-      "title": "Circles that touch"
+      "title": "Parallel lines and midsegments",
+      "level": "Core"
      },
      {
       "code": "S3.4",
-      "title": "Trigonometry in triangles"
+      "title": "Ratios of areas",
+      "level": "Core"
+     },
+     {
+      "code": "S3.5",
+      "title": "Angle bisectors, medians and mass points",
+      "level": "Core"
+     },
+     {
+      "code": "S3.6",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "S4",
-    "title": "Geometry: coordinates, transformations and space",
-    "level": "Core II",
+    "title": "Right, equilateral and general triangles",
+    "level": "Core",
     "lessons": [
      {
       "code": "S4.1",
-      "title": "Conic sections"
+      "title": "Introduction"
      },
      {
       "code": "S4.2",
-      "title": "Tangency, determinants and lattice points"
+      "title": "More right-triangle facts",
+      "level": "Core"
      },
      {
       "code": "S4.3",
-      "title": "Transformations and vectors"
+      "title": "Constructions in right triangles",
+      "level": "Core"
      },
      {
       "code": "S4.4",
-      "title": "Counting regions and neighborhoods"
+      "title": "Equilateral triangles and inscribed squares",
+      "level": "Core"
      },
      {
       "code": "S4.5",
-      "title": "Solids and space"
+      "title": "Heron's formula and the inradius",
+      "level": "Core"
+     },
+     {
+      "code": "S4.6",
+      "title": "The law of cosines and the sine area formula",
+      "level": "Core"
+     },
+     {
+      "code": "S4.7",
+      "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "S5",
+    "title": "Circles",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S5.2",
+      "title": "Chords and arcs",
+      "level": "Core"
+     },
+     {
+      "code": "S5.3",
+      "title": "Inscribed angles and cyclic quadrilaterals",
+      "level": "Core"
+     },
+     {
+      "code": "S5.4",
+      "title": "Tangents and angles outside the circle",
+      "level": "Core"
+     },
+     {
+      "code": "S5.5",
+      "title": "Power of a point",
+      "level": "Core"
+     },
+     {
+      "code": "S5.6",
+      "title": "Incircles and touching circles",
+      "level": "Core"
+     },
+     {
+      "code": "S5.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "S6",
+    "title": "Polygons and counting in figures",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S6.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S6.2",
+      "title": "Regular polygons",
+      "level": "Core"
+     },
+     {
+      "code": "S6.3",
+      "title": "Trapezoids",
+      "level": "Core II"
+     },
+     {
+      "code": "S6.4",
+      "title": "Counting in figures",
+      "level": "Core"
+     },
+     {
+      "code": "S6.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "S7",
+    "title": "Coordinates and transformations",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S7.2",
+      "title": "Lines and distances",
+      "level": "Core"
+     },
+     {
+      "code": "S7.3",
+      "title": "Circles and loci",
+      "level": "Core"
+     },
+     {
+      "code": "S7.4",
+      "title": "Areas and lattice points",
+      "level": "Core"
+     },
+     {
+      "code": "S7.5",
+      "title": "Reflections and rotations",
+      "level": "Core"
+     },
+     {
+      "code": "S7.6",
+      "title": "Symmetry and fitting copies",
+      "level": "Core"
+     },
+     {
+      "code": "S7.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "S8",
+    "title": "Solids",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S8.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S8.2",
+      "title": "Volume and surface area",
+      "level": "Core"
+     },
+     {
+      "code": "S8.3",
+      "title": "Cubes",
+      "level": "Core"
+     },
+     {
+      "code": "S8.4",
+      "title": "Polyhedra",
+      "level": "Core II"
+     },
+     {
+      "code": "S8.5",
+      "title": "Unfolding and cross sections",
+      "level": "Core"
+     },
+     {
+      "code": "S8.6",
+      "title": "Summary"
+     }
+    ],
+    "part": "Core topics"
+   },
+   {
+    "code": "S9",
+    "title": "Triangles and circles for the AMC 12",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S9.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S9.2",
+      "title": "The law of sines and trigonometry in triangles",
+      "level": "Core"
+     },
+     {
+      "code": "S9.3",
+      "title": "Cevians",
+      "level": "Core II"
+     },
+     {
+      "code": "S9.4",
+      "title": "Cyclic and tangential quadrilaterals",
+      "level": "Core"
+     },
+     {
+      "code": "S9.5",
+      "title": "Circles that touch",
+      "level": "Core"
+     },
+     {
+      "code": "S9.6",
+      "title": "The orthocenter, the excircles and the Euler line",
+      "level": "Extension"
+     },
+     {
+      "code": "S9.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "S10",
+    "title": "Analytic geometry",
+    "level": "Core II",
+    "lessons": [
+     {
+      "code": "S10.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S10.2",
+      "title": "Conic sections",
+      "level": "Core"
+     },
+     {
+      "code": "S10.3",
+      "title": "Polar coordinates, tangency and determinants",
+      "level": "Core II"
+     },
+     {
+      "code": "S10.4",
+      "title": "Vectors and transformations",
+      "level": "Core"
+     },
+     {
+      "code": "S10.5",
+      "title": "Theorems about quadrilaterals and hexagons",
+      "level": "Core II"
+     },
+     {
+      "code": "S10.6",
+      "title": "Regions and neighborhoods",
+      "level": "Extension"
+     },
+     {
+      "code": "S10.7",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "S11",
+    "title": "Space",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S11.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S11.2",
+      "title": "Tetrahedra and frusta",
+      "level": "Core II"
+     },
+     {
+      "code": "S11.3",
+      "title": "Coordinates and planes in space",
+      "level": "Core"
+     },
+     {
+      "code": "S11.4",
+      "title": "Summary"
+     }
+    ],
+    "part": "Advanced topics"
+   },
+   {
+    "code": "S12",
+    "title": "From the AMC to the AIME: geometry",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "S12.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "S12.2",
+      "title": "Signed lengths and degenerate figures",
+      "level": "Core"
+     },
+     {
+      "code": "S12.3",
+      "title": "Coordinates or a synthetic route",
+      "level": "Core"
+     },
+     {
+      "code": "S12.4",
+      "title": "Mixed problems across the book",
+      "level": "Core"
+     },
+     {
+      "code": "S12.5",
+      "title": "Summary"
+     }
+    ],
+    "part": "Toward the AIME"
    }
   ]
  },

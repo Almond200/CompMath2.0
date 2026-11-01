@@ -48,7 +48,7 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 | **AMC Algebra** | algebra for the AMC: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L14 |
 | **AMC Number Theory** | number theory for the AMC: primes, divisors, digits, remainders, integer equations | M1 to M7 |
 | **AMC Counting & Probability** | counting, probability and expected value for the AMC | R1 to R10 |
-| **AMC Geometry** | geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S4 |
+| **AMC Geometry** | geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S12 |
 | **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
 | **AIME Algebra** | equations, polynomials, sequences, functions, inequalities, complex numbers and trig algebra | A1 to A9 |
 | **AIME Number Theory** | prime exponents, congruences, exponent cycles, integer solutions, digits | N1 to N8 |
@@ -150,124 +150,7 @@ Moved to its own section, "Book: AMC Counting & Probability", below, where it is
 
 #### Book: AMC Geometry
 
-From angles, triangles and areas to circles, coordinates, solids and the AMC 12's trigonometry, conics and vectors, ending with mixed AIME-style problems.
-
-##### Part: Foundations
-
-**S1. Angles, triangles and area** · Core. Angles at parallel lines, what makes a triangle, its area, and Pythagoras.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S1.1 Angles and parallel lines | Core | `parallel-exterior-angles`, `parallel-by-angle-sum`, `angle-chasing`, `clock-angle`, `trapezoid-consecutive-angles` | 12 |
-| S1.2 Triangles and congruence | Core | `triangle-inequality`, `triangle-type-by-sides`, `triangle-congruence` | 18 |
-| S1.3 Area and perimeter | Core | `triangle-area-standard`, `area-by-pieces`, `joined-shapes-perimeter` | 25 |
-| S1.4 The Pythagorean theorem | Core | `pythagorean-theorem`, `shared-leg-pythagoras`, `special-right-triangles` | 115 |
-
-**S2. Quadrilaterals, circles and coordinates: the basics** · Core. Angle sums, quadrilateral areas, the circle's measurements, and points on a grid.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S2.1 Angles in polygons | Core | `polygon-angle-sums`, *(pattern)* `equiangular-polygon` | 7 |
-| S2.2 Quadrilateral areas | Core | `parallelogram-area`, `trapezoid-parallelogram-areas`, `quadrilateral-diagonal-area`, `parallelogram-vertices` | 20 |
-| S2.3 Circles: circumference, area and sectors | Core | `circle-basics`, `circular-segment`, *(pattern)* `tethered-animal` | 70 |
-| S2.4 Points, distances and lines | Core | `distance-midpoint`, `line-forms` | 23 |
-
-##### Part: Core topics
-
-**S3. Similar triangles and area ratios** · Core. Similarity, parallel lines, ratios of areas, and mass points.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S3.1 Similar triangles | Core | `triangle-similarity`, `similar-figures-ratios` | 69 |
-| S3.2 Parallel lines and midsegments | Core | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` | 10 |
-| S3.3 Ratios of areas | Core | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `incenter-area-split` | 11 |
-| S3.4 Angle bisectors, medians and mass points | Core | `angle-bisector-theorem`, `centroid-division`, `mass-points` | 20 |
-
-**S4. Right, equilateral and general triangles** · Core. Constructions in right triangles, equilateral triangles, Heron's formula and the law of cosines.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S4.1 More right-triangle facts | Core | `15-75-90-triangle`, `median-to-hypotenuse`, `right-triangle-inradius` | 8 |
-| S4.2 Constructions in right triangles | Core | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` | 14 |
-| S4.3 Equilateral triangles and inscribed squares | Core | `equilateral-triangle-facts`, *(pattern)* `point-in-equilateral`, `inscribed-square` | 34 |
-| S4.4 Heron's formula and the inradius | Core | `herons-formula`, `triangle-13-14-15`, `inradius-area`, `max-rectangle-in-triangle` | 12 |
-| S4.5 The law of cosines and the sine area formula | Core | `law-of-cosines`, `law-cosines-60-120`, `law-of-cosines-special-triangles`, `trig-area` | 46 |
-
-**S5. Circles** · Core. Chords, inscribed angles, tangents, power of a point and circles that touch.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S5.1 Chords and arcs | Core | `chord-length`, `equal-chords-arcs` | 25 |
-| S5.2 Inscribed angles and cyclic quadrilaterals | Core | `inscribed-angle-theorem`, `thales-theorem`, `cyclic-opposite-angles`, `cyclic-equal-angles`, *(pattern)* `cyclic-quadrilateral` | 30 |
-| S5.3 Tangents and angles outside the circle | Core | `tangent-facts`, `two-tangents-angle`, `angle-chord-secant`, `tangent-chord-angle` | 26 |
-| S5.4 Power of a point | Core | `power-of-a-point`, `common-chord-length`, `radical-axis` | 9 |
-| S5.5 Incircles and touching circles | Core | `incircle-tangent-lengths`, `tangent-circles`, `triangle-of-centers`, *(pattern)* `tangent-circle-packing`, *(pattern)* `circle-in-angle`, *(pattern)* `rolling-without-slipping`, `triangle-center-angles` | 41 |
-
-**S6. Polygons and counting in figures** · Core. Regular polygons, trapezoids, and counting the shapes in a figure.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S6.1 Regular polygons | Core | `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `golden-ratio-pentagon` | 28 |
-| S6.2 Trapezoids | Core II | `trapezoid-special-segments`, *(pattern)* `isosceles-trapezoid` | 5 |
-| S6.3 Counting in figures | Core | `plane-regions`, `handshakes-diagonals`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski`, `rectangles-in-grid` | 13 |
-
-**S7. Coordinates and transformations** · Core. Lines, circles and areas in coordinates, and reflections and rotations.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S7.1 Lines and distances | Core | `section-formula`, `angle-between-lines`, `parallel-lines-distance`, `point-line-distance` | 16 |
-| S7.2 Circles and loci | Core | `circle-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines`, `perpendicular-bisector-locus`, `bisector-closer-region` | 17 |
-| S7.3 Areas and lattice points | Core | `shoelace-formula`, `picks-theorem`, `coordinate-bash` | 43 |
-| S7.4 Reflections and rotations | Core | `reflection-coordinates`, `rotation-90`, `composing-transformations`, `reflect-across-the-line`, *(pattern)* `folded-paper` | 27 |
-| S7.5 Symmetry and fitting copies | Core | `figure-symmetries`, `fit-copies` | 8 |
-
-**S8. Solids** · Core. Volumes and surfaces, cubes, polyhedra, and unfolding or slicing a solid.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S8.1 Volume and surface area | Core | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `cavalieris-principle` | 32 |
-| S8.2 Cubes | Core | `cube`, `space-diagonal`, *(pattern)* `painted-cubes`, `cube-stack-views`, `cube-nets`, `scale-one-level` | 19 |
-| S8.3 Polyhedra | Core II | `regular-octahedron`, `dodecahedron-icosahedron`, `eulers-polyhedron-formula` | 5 |
-| S8.4 Unfolding and cross sections | Core | `unfold-the-surface`, `cross-section-method` | 8 |
-
-##### Part: Advanced topics
-
-**S9. Triangles and circles for the AMC 12** · Core. The law of sines, cevians, cyclic and tangential quadrilaterals, and circles that touch.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S9.1 The law of sines and trigonometry in triangles | Core | `law-of-sines`, `circumradius-area`, `projection-formula`, `pythagorean-identities`, `common-angle-values`, `reduction-identities` | 20 |
-| S9.2 Cevians | Core II | `stewarts-theorem`, `angle-bisector-length`, `apollonius-theorem`, `cevas-theorem`, `medial-triangle`, `vivianis-theorem`, `area-method` | 4 |
-| S9.3 Cyclic and tangential quadrilaterals | Core | `ptolemys-theorem`, `brahmaguptas-formula`, `pitots-theorem`, `perp-to-angle-bisector` | 10 |
-| S9.4 Circles that touch | Core | `common-tangent-lengths`, *(pattern)* `tangency-condition`, `descartes-circle-theorem`, `homothety-monge` | 8 |
-| S9.5 The orthocenter, the excircles and the Euler line | Extension | `orthocenter-properties`, `exradii`, `orthic-triangle`, `euler-distance-theorem` | 4 |
-
-**S10. Analytic geometry** · Core II. Conics, polar coordinates, vectors and transformations, and theorems about quadrilaterals and regions.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S10.1 Conic sections | Core | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity`, `parabolic-segment-area` | 9 |
-| S10.2 Polar coordinates, tangency and determinants | Core II | `polar-coordinates`, `tangency-equation`, `determinant-geometric`, `lattice-points-gcd` | 4 |
-| S10.3 Vectors and transformations | Core | `vector-dot-product`, `vector-projection`, `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `linear-change-of-variables` | 17 |
-| S10.4 Theorems about quadrilaterals and hexagons | Core II | `british-flag-theorem`, `varignons-theorem`, `equiangular-hexagon-area` | 6 |
-| S10.5 Regions and neighborhoods | Extension | `moser-circle`, `steiner-neighborhood`, `isoperimetric-facts` | 7 |
-
-**S11. Space** · Core. Tetrahedra, frusta, and coordinates in three dimensions.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S11.1 Tetrahedra and frusta | Core II | `frustum-volume`, `regular-tetrahedron`, `isosceles-tetrahedron` | 5 |
-| S11.2 Coordinates and planes in space | Core | `plane-cross-section`, `distance-3d`, `point-plane-distance` | 13 |
-
-##### Part: Toward the AIME
-
-**S12. From the AMC to the AIME: geometry** · Core. Signed lengths, degenerate figures, choosing between coordinates and a synthetic route, and harder mixed problems.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| S12.1 Signed lengths and degenerate figures | Core | `directed-lengths` | 0 |
-| S12.2 Coordinates or a synthetic route | Core | no card ( prereq coordinate-bash, triangle-similarity) | mixed |
-| S12.3 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+Moved to its own section, "Book: AMC Geometry", below, where it is being written (twentieth chat).
 
 ---
 
@@ -706,49 +589,172 @@ No new cards: checking cases and overcounts, small cases as a test, and harder m
 
 ## Book: AMC Geometry
 
-Geometry for the AMC 10 and AMC 12: triangles, circles, polygons, coordinates and solids, then the AMC 12 additions (cevians, cyclic quadrilaterals, trigonometry in triangles, conics, transformations and space).
+From angles, triangles and areas to circles, coordinates, solids and the AMC 12's trigonometry, conics and vectors, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
-### S1. Geometry: triangles and circles (Core)
+#### Part: Foundations
 
-| Lesson | Cards |
-|---|---|
-| S1.1 Similar and right triangles | `triangle-similarity`, `similar-figures-ratios`, `pythagorean-theorem`, `special-right-triangles`, `15-75-90-triangle`, `triangle-area-standard`, `triangle-inequality`, `triangle-congruence`, `parallel-exterior-angles`, `median-to-hypotenuse`, `right-triangle-inradius` |
-| S1.2 Ratios inside triangles | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar`, `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `angle-bisector-theorem`, `centroid-division`, `mass-points` |
-| S1.3 Right-triangle constructions | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling`, *(pattern)* `point-in-equilateral`, *(pattern)* `circle-in-angle` |
-| S1.4 Circles: angles, chords and tangents | `inscribed-angle-theorem`, `circle-basics`, `tangent-facts`, `chord-length`, `power-of-a-point`, `thales-theorem`, `angle-chasing`, `cyclic-opposite-angles`, `cyclic-equal-angles`, `angle-chord-secant`, `tangent-chord-angle`, *(pattern)* `cyclic-quadrilateral`, `equal-chords-arcs` |
-| S1.5 Incircles and touching circles | `incircle-tangent-lengths`, `inradius-area`, `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `triangle-of-centers`, `common-chord-length`, `triangle-center-angles` |
-| S1.6 Trigonometry in triangles | `law-of-sines`, `law-of-cosines`, `trig-area`, `law-cosines-60-120`, `law-of-cosines-special-triangles`, `herons-formula`, `triangle-13-14-15`, `pythagorean-identities`, `common-angle-values`, `reduction-identities` |
+### S1. Angles, triangles and area (Core)
 
-### S2. Geometry: polygons, coordinates and solids (Core)
+Angles at parallel lines, what makes a triangle, its area, and Pythagoras.
 
-| Lesson | Cards |
-|---|---|
-| S2.1 Polygons and areas | `polygon-angle-sums`, `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `equilateral-triangle-facts`, *(pattern)* `equiangular-polygon`, `area-by-pieces`, `trapezoid-parallelogram-areas`, `parallelogram-area`, `quadrilateral-diagonal-area`, `trapezoid-special-segments`, `circular-segment`, `inscribed-square` |
-| S2.2 Coordinates | `distance-midpoint`, `line-forms`, `point-line-distance`, `circle-equation`, `coordinate-bash`, `angle-between-lines`, `section-formula`, `parallel-lines-distance`, `tangent-lines-from-point`, `angle-bisectors-of-lines`, `shoelace-formula`, `picks-theorem`, `perpendicular-bisector-locus`, `bisector-closer-region` |
-| S2.3 Transformations and symmetry | `reflection-coordinates`, `rotation-90`, `composing-transformations`, `reflect-across-the-line`, *(pattern)* `folded-paper`, `figure-symmetries`, `fit-copies` |
-| S2.4 Counting in figures | `plane-regions`, `handshakes-diagonals`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski`, `rectangles-in-grid` |
-| S2.5 Solids | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `cube`, `space-diagonal`, `regular-octahedron`, *(pattern)* `painted-cubes`, `scale-one-level`, `cavalieris-principle`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S1.2 Angles and parallel lines | Core | `parallel-exterior-angles`, `parallel-by-angle-sum`, `angle-chasing`, `clock-angle`, `trapezoid-consecutive-angles` | 12 |
+| S1.3 Triangles and congruence | Core | `triangle-inequality`, `triangle-type-by-sides`, `triangle-congruence` | 18 |
+| S1.4 Area and perimeter | Core | `triangle-area-standard`, `area-by-pieces`, `joined-shapes-perimeter` | 25 |
+| S1.5 The Pythagorean theorem | Core | `pythagorean-theorem`, `shared-leg-pythagoras`, `special-right-triangles` | 115 |
+| S1.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S1.7 Review Problems and S1.8 Challenge Problems | |
 
-### S3. Geometry: triangles and circles for the AMC 12 (Core II)
+### S2. Quadrilaterals, circles and coordinates: the basics (Core)
 
-| Lesson | Cards |
-|---|---|
-| S3.1 Cevians and area ratios | `area-method`, `stewarts-theorem`, `angle-bisector-length`, `apollonius-theorem`, `cevas-theorem`, `medial-triangle`, `median-triangle-area`, `vivianis-theorem` |
-| S3.2 Cyclic quadrilaterals and incircles | `concyclicity-tests`, `ptolemys-theorem`, `brahmaguptas-formula`, `incircle-excircle-touch`, `perp-to-angle-bisector`, `angle-bisector-circumcircle` |
-| S3.3 Circles that touch | `common-tangent-lengths`, *(pattern)* `tangency-condition` |
-| S3.4 Trigonometry in triangles | `circumradius-area`, `projection-formula`, `trig-bash`, `altitude-bisector-angle` |
+Angle sums, quadrilateral areas, the circle's measurements, and points on a grid.
 
-### S4. Geometry: coordinates, transformations and space (Core II)
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S2.2 Angles in polygons | Core | `polygon-angle-sums`, *(pattern)* `equiangular-polygon` | 7 |
+| S2.3 Quadrilateral areas | Core | `parallelogram-area`, `trapezoid-parallelogram-areas`, `quadrilateral-diagonal-area`, `parallelogram-vertices` | 20 |
+| S2.4 Circles: circumference, area and sectors | Core | `circle-basics`, `circular-segment`, *(pattern)* `tethered-animal` | 70 |
+| S2.5 Points, distances and lines | Core | `distance-midpoint`, `line-forms` | 23 |
+| S2.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S2.7 Review Problems and S2.8 Challenge Problems | |
 
-| Lesson | Cards |
-|---|---|
-| S4.1 Conic sections | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
-| S4.2 Tangency, determinants and lattice points | `tangency-equation`, `determinant-geometric`, `lattice-points-gcd`, `british-flag-theorem`, `varignons-theorem` |
-| S4.3 Transformations and vectors | `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `vector-dot-product`, `vector-projection`, `axis-stretch-area`, `linear-change-of-variables` |
-| S4.4 Counting regions and neighborhoods | `moser-circle`, `steiner-neighborhood` |
-| S4.5 Solids and space | `frustum-volume`, `regular-tetrahedron`, `plane-cross-section`, `dihedral-angle`, `distance-3d`, `plane-intercept-form`, `cross-product-area`, `box-tetrahedron`, `equal-edge-tetrahedron` |
+#### Part: Core topics
 
----
+### S3. Similar triangles and area ratios (Core)
+
+Similarity, parallel lines, ratios of areas, and mass points.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S3.2 Similar triangles | Core | `triangle-similarity`, `similar-figures-ratios` | 69 |
+| S3.3 Parallel lines and midsegments | Core | `parallel-line-similarity`, `midsegment-theorem`, `intercept-theorem`, *(pattern)* `nested-similar` | 10 |
+| S3.4 Ratios of areas | Core | `same-base-area-ratio`, `shared-angle-area-ratio`, `cevian-area-ratio`, `incenter-area-split` | 11 |
+| S3.5 Angle bisectors, medians and mass points | Core | `angle-bisector-theorem`, `centroid-division`, `mass-points` | 20 |
+| S3.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S3.7 Review Problems and S3.8 Challenge Problems | |
+
+### S4. Right, equilateral and general triangles (Core)
+
+Constructions in right triangles, equilateral triangles, Heron's formula and the law of cosines.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S4.2 More right-triangle facts | Core | `15-75-90-triangle`, `median-to-hypotenuse`, `right-triangle-inradius` | 8 |
+| S4.3 Constructions in right triangles | Core | `altitude-hypotenuse`, *(pattern)* `right-triangle-altitude`, `extend-sides-to-meet`, `median-doubling` | 14 |
+| S4.4 Equilateral triangles and inscribed squares | Core | `equilateral-triangle-facts`, *(pattern)* `point-in-equilateral`, `inscribed-square` | 34 |
+| S4.5 Heron's formula and the inradius | Core | `herons-formula`, `triangle-13-14-15`, `inradius-area`, `max-rectangle-in-triangle` | 12 |
+| S4.6 The law of cosines and the sine area formula | Core | `law-of-cosines`, `law-cosines-60-120`, `law-of-cosines-special-triangles`, `trig-area` | 46 |
+| S4.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S4.8 Review Problems and S4.9 Challenge Problems | |
+
+### S5. Circles (Core)
+
+Chords, inscribed angles, tangents, power of a point and circles that touch.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S5.2 Chords and arcs | Core | `chord-length`, `equal-chords-arcs` | 25 |
+| S5.3 Inscribed angles and cyclic quadrilaterals | Core | `inscribed-angle-theorem`, `thales-theorem`, `cyclic-opposite-angles`, `cyclic-equal-angles`, *(pattern)* `cyclic-quadrilateral` | 30 |
+| S5.4 Tangents and angles outside the circle | Core | `tangent-facts`, `two-tangents-angle`, `angle-chord-secant`, `tangent-chord-angle` | 26 |
+| S5.5 Power of a point | Core | `power-of-a-point`, `common-chord-length`, `radical-axis` | 9 |
+| S5.6 Incircles and touching circles | Core | `incircle-tangent-lengths`, `tangent-circles`, `triangle-of-centers`, *(pattern)* `tangent-circle-packing`, *(pattern)* `circle-in-angle`, *(pattern)* `rolling-without-slipping`, `triangle-center-angles` | 41 |
+| S5.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S5.8 Review Problems and S5.9 Challenge Problems | |
+
+### S6. Polygons and counting in figures (Core)
+
+Regular polygons, trapezoids, and counting the shapes in a figure.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S6.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S6.2 Regular polygons | Core | `regular-polygon-area`, `regular-hexagon-area`, `regular-octagon`, `regular-dodecagon`, `golden-ratio-pentagon` | 28 |
+| S6.3 Trapezoids | Core II | `trapezoid-special-segments`, *(pattern)* `isosceles-trapezoid` | 5 |
+| S6.4 Counting in figures | Core | `plane-regions`, `handshakes-diagonals`, *(pattern)* `counting-shapes`, *(pattern)* `zonogon-minkowski`, `rectangles-in-grid` | 13 |
+| S6.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S6.6 Review Problems and S6.7 Challenge Problems | |
+
+### S7. Coordinates and transformations (Core)
+
+Lines, circles and areas in coordinates, and reflections and rotations.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S7.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S7.2 Lines and distances | Core | `section-formula`, `angle-between-lines`, `parallel-lines-distance`, `point-line-distance` | 16 |
+| S7.3 Circles and loci | Core | `circle-equation`, `tangent-lines-from-point`, `angle-bisectors-of-lines`, `perpendicular-bisector-locus`, `bisector-closer-region` | 17 |
+| S7.4 Areas and lattice points | Core | `shoelace-formula`, `picks-theorem`, `coordinate-bash` | 43 |
+| S7.5 Reflections and rotations | Core | `reflection-coordinates`, `rotation-90`, `composing-transformations`, `reflect-across-the-line`, *(pattern)* `folded-paper` | 27 |
+| S7.6 Symmetry and fitting copies | Core | `figure-symmetries`, `fit-copies` | 8 |
+| S7.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S7.8 Review Problems and S7.9 Challenge Problems | |
+
+### S8. Solids (Core)
+
+Volumes and surfaces, cubes, polyhedra, and unfolding or slicing a solid.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S8.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S8.2 Volume and surface area | Core | `prism-pyramid-volumes`, `cone-formulas`, `sphere-formulas`, `cavalieris-principle` | 32 |
+| S8.3 Cubes | Core | `cube`, `space-diagonal`, *(pattern)* `painted-cubes`, `cube-stack-views`, `cube-nets`, `scale-one-level` | 19 |
+| S8.4 Polyhedra | Core II | `regular-octahedron`, `dodecahedron-icosahedron`, `eulers-polyhedron-formula` | 5 |
+| S8.5 Unfolding and cross sections | Core | `unfold-the-surface`, `cross-section-method` | 8 |
+| S8.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S8.7 Review Problems and S8.8 Challenge Problems | |
+
+#### Part: Advanced topics
+
+### S9. Triangles and circles for the AMC 12 (Core)
+
+The law of sines, cevians, cyclic and tangential quadrilaterals, and circles that touch.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S9.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S9.2 The law of sines and trigonometry in triangles | Core | `law-of-sines`, `circumradius-area`, `projection-formula`, `pythagorean-identities`, `common-angle-values`, `reduction-identities` | 20 |
+| S9.3 Cevians | Core II | `stewarts-theorem`, `angle-bisector-length`, `apollonius-theorem`, `cevas-theorem`, `medial-triangle`, `vivianis-theorem`, `area-method` | 4 |
+| S9.4 Cyclic and tangential quadrilaterals | Core | `ptolemys-theorem`, `brahmaguptas-formula`, `pitots-theorem`, `perp-to-angle-bisector` | 10 |
+| S9.5 Circles that touch | Core | `common-tangent-lengths`, *(pattern)* `tangency-condition`, `descartes-circle-theorem`, `homothety-monge` | 8 |
+| S9.6 The orthocenter, the excircles and the Euler line | Extension | `orthocenter-properties`, `exradii`, `orthic-triangle`, `euler-distance-theorem` | 4 |
+| S9.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S9.8 Review Problems and S9.9 Challenge Problems | |
+
+### S10. Analytic geometry (Core II)
+
+Conics, polar coordinates, vectors and transformations, and theorems about quadrilaterals and regions.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S10.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S10.2 Conic sections | Core | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity`, `parabolic-segment-area` | 9 |
+| S10.3 Polar coordinates, tangency and determinants | Core II | `polar-coordinates`, `tangency-equation`, `determinant-geometric`, `lattice-points-gcd` | 4 |
+| S10.4 Vectors and transformations | Core | `vector-dot-product`, `vector-projection`, `reflection-composition`, `rotation-reflection-matrices`, `rotation-trick`, `rotation-center`, `linear-change-of-variables` | 17 |
+| S10.5 Theorems about quadrilaterals and hexagons | Core II | `british-flag-theorem`, `varignons-theorem`, `equiangular-hexagon-area` | 6 |
+| S10.6 Regions and neighborhoods | Extension | `moser-circle`, `steiner-neighborhood`, `isoperimetric-facts` | 7 |
+| S10.7 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S10.8 Review Problems and S10.9 Challenge Problems | |
+
+### S11. Space (Core)
+
+Tetrahedra, frusta, and coordinates in three dimensions.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S11.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S11.2 Tetrahedra and frusta | Core II | `frustum-volume`, `regular-tetrahedron`, `isosceles-tetrahedron` | 5 |
+| S11.3 Coordinates and planes in space | Core | `plane-cross-section`, `distance-3d`, `point-plane-distance` | 13 |
+| S11.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S11.5 Review Problems and S11.6 Challenge Problems | |
+
+#### Part: Toward the AIME
+
+### S12. From the AMC to the AIME: geometry (Core)
+
+Signed lengths, degenerate figures, choosing between coordinates and a synthetic route, and harder mixed problems.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| S12.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| S12.2 Signed lengths and degenerate figures | Core | `directed-lengths` | 0 |
+| S12.3 Coordinates or a synthetic route | Core | no card (prereq coordinate-bash, triangle-similarity) | mixed |
+| S12.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+| S12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S12.6 Review Problems and S12.7 Challenge Problems | |
 
 ## Book: AMC → AIME Bridge
 
