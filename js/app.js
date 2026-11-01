@@ -2108,7 +2108,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
+      container.querySelectorAll(".lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
         if (skip(el)) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4665,9 +4665,13 @@
         if (!l || typeof l.id !== "string" || !Array.isArray(l.ids)) return;
         const ids = l.ids.filter(x => typeof x === "string");
         const mine = merged.items.find(m => m.id === l.id);
-        if (mine) ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
+        if (mine) {
+          ids.forEach(id => { if (mine.ids.indexOf(id) === -1) mine.ids.push(id); });
+          if (!mine.builtin && !mine.blurb && typeof l.blurb === "string") mine.blurb = l.blurb;
+        }
         else {
           const item = { id: l.id, name: String(l.name || "Imported list"), ids };
+          if (typeof l.blurb === "string") item.blurb = l.blurb;
           if (Array.isArray(l.groupedIds)) item.groupedIds = ids.filter(id => l.groupedIds.includes(id));
           merged.items.push(item);
         }
@@ -6760,7 +6764,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <h2${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h2>
             ${headTools}
           </div>
-          ${isBuiltin && l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
+          ${l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
+          ${!isBuiltin && !l.builtin ? `<details class="list-description">
+            <summary>${l.blurb ? "Edit description" : "Add description"}</summary>
+            <form data-list-description="${escapeAttr(l.id)}">
+              <textarea class="list-add-input" aria-label="List description" rows="2">${escapeAttr(l.blurb || "")}</textarea>
+              <button class="list-tool" type="submit">Save description</button>
+            </form>
+          </details>` : ""}
         </div>
         ${tools}
         ${entries.length
@@ -6770,6 +6781,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
           : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
   }
+  $content.addEventListener("submit", e => {
+    const form = e.target.closest("form[data-list-description]");
+    if (!form) return;
+    e.preventDefault();
+    const list = getList(form.dataset.listDescription);
+    if (!list || list.builtin) return;
+    list.blurb = form.querySelector("textarea").value.trim();
+    saveLists();
+    render();
+    $content.querySelector(".list-description summary")?.focus();
+  });
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
   // ---------- Problem Database: competition/year navigator + per-problem detail ----------
