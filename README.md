@@ -312,6 +312,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Counting & Probability is finished: R8 (Counting for the AMC 12: upper bounds and Burnside's lemma, Vandermonde, the multinomial theorem and generating functions, graph coloring and games), R9 (Probability for the AMC 12: Bayes' theorem, states and waiting times, continuous probability) and R10 (From the AMC to the AIME: checking cases and double counting, small cases as a test, mixed problems) are written.
+- The chapter-tab card is centered on its tab again (the pointer-following change is undone); it stays in front of the top bar.
 - AMC Counting & Probability: R7 (Sets, graphs and logic: subsets avoiding a relation, graphs and tournaments, pigeonhole and extremes, colorings and invariants, logic puzzles and cases, the contrapositive) is written.
 - A chapter tab's card follows the pointer up and down the tab again, now in front of the top bar. PLAN: diagrams, lessons in search and proofreading come before Create a contest.
 - AMC Counting & Probability: R6 (Probability for the AMC 10: conditional probability and the hypergeometric count, repeated trials, probability as length and area, linearity of expectation) is written.

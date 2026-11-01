@@ -5525,7 +5525,6 @@
       live.tab.classList.remove("is-scrub");
       live.tab.querySelectorAll(".bk-tip-p").forEach(p => { p.hidden = true; });
       live.tab.href = live.home;
-      live.tab.style.removeProperty("--tip-y");
       live = null;
     };
     const pick = (x, y) => {
@@ -5539,7 +5538,6 @@
       let i = 0;
       for (let acc = ws[0]; i < ws.length - 1 && f >= acc; acc += ws[++i]);
       if (!live || live.tab !== tab) { clear(); live = { tab, home: tab.getAttribute("href") }; }
-      tab.style.setProperty("--tip-y", Math.round(y - r.top) + "px");
       if (live.i === i) return;
       live.i = i;
       tab.classList.add("is-scrub");
