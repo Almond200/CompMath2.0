@@ -4,7 +4,7 @@ window.MATH_LEARN_SHELF = [
  {
   "id": "amc-algebra",
   "title": "AMC Algebra",
-  "role": "algebra for the AMC 10 and 12: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers",
+  "role": "algebra for the AMC: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers",
   "chapters": [
    {
     "code": "L1",
@@ -485,7 +485,7 @@ window.MATH_LEARN_SHELF = [
  {
   "id": "amc-number-theory",
   "title": "AMC Number Theory",
-  "role": "number theory for the AMC 10 and 12: primes, divisors, digits, remainders, integer equations",
+  "role": "number theory for the AMC: primes, divisors, digits, remainders, integer equations",
   "chapters": [
    {
     "code": "M1",
@@ -754,7 +754,7 @@ window.MATH_LEARN_SHELF = [
  {
   "id": "amc-counting",
   "title": "AMC Counting & Probability",
-  "role": "counting, probability and expected value for the AMC 10 and 12",
+  "role": "counting, probability and expected value for the AMC",
   "chapters": [
    {
     "code": "R1",
@@ -850,7 +850,7 @@ window.MATH_LEARN_SHELF = [
  {
   "id": "amc-geometry",
   "title": "AMC Geometry",
-  "role": "geometry for the AMC 10 and 12: triangles, circles, polygons, coordinates, trigonometry, conics and solids",
+  "role": "geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids",
   "chapters": [
    {
     "code": "S1",
@@ -1154,7 +1154,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A1.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "A2",
@@ -1194,7 +1195,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A2.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "A3",
@@ -1234,7 +1236,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A3.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "A4",
@@ -1274,7 +1277,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A4.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "A5",
@@ -1314,7 +1318,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A5.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "A6",
@@ -1349,7 +1354,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A6.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "A7",
@@ -1384,7 +1390,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A7.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "A8",
@@ -1419,7 +1426,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A8.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "A9",
@@ -1454,7 +1462,8 @@ window.MATH_LEARN_SHELF = [
       "code": "A9.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  },
@@ -1501,7 +1510,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N1.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "N2",
@@ -1541,7 +1551,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N2.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "N3",
@@ -1581,7 +1592,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N3.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "N4",
@@ -1621,7 +1633,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N4.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "N5",
@@ -1661,7 +1674,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N5.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "N6",
@@ -1701,7 +1715,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N6.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "N7",
@@ -1736,7 +1751,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N7.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "N8",
@@ -1771,7 +1787,8 @@ window.MATH_LEARN_SHELF = [
       "code": "N8.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  },
@@ -1818,7 +1835,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G1.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "G2",
@@ -1858,7 +1876,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G2.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "G3",
@@ -1898,7 +1917,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G3.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "G4",
@@ -1938,7 +1958,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G4.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "G5",
@@ -1978,7 +1999,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G5.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "G6",
@@ -2013,7 +2035,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G6.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "G7",
@@ -2053,7 +2076,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G7.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "G8",
@@ -2093,7 +2117,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G8.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "G9",
@@ -2128,7 +2153,8 @@ window.MATH_LEARN_SHELF = [
       "code": "G9.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  },
@@ -2175,7 +2201,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C1.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "C2",
@@ -2215,7 +2242,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C2.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Foundations"
    },
    {
     "code": "C3",
@@ -2250,7 +2278,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C3.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "C4",
@@ -2285,7 +2314,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C4.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "C5",
@@ -2330,7 +2360,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C5.8",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "C6",
@@ -2370,7 +2401,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C6.7",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Core topics"
    },
    {
     "code": "C7",
@@ -2405,7 +2437,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C7.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "C8",
@@ -2440,7 +2473,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C8.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Advanced topics"
    },
    {
     "code": "C9",
@@ -2475,7 +2509,8 @@ window.MATH_LEARN_SHELF = [
       "code": "C9.6",
       "title": "Summary"
      }
-    ]
+    ],
+    "part": "Beyond the AIME"
    }
   ]
  }

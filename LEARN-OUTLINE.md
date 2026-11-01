@@ -45,10 +45,10 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 
 | Book | Role | Chapters |
 |---|---|---|
-| **AMC Algebra** | algebra for the AMC 10 and 12: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L14 |
-| **AMC Number Theory** | number theory for the AMC 10 and 12: primes, divisors, digits, remainders, integer equations | M1 to M7 |
-| **AMC Counting & Probability** | counting, probability and expected value for the AMC 10 and 12 | R1 to R3 |
-| **AMC Geometry** | geometry for the AMC 10 and 12: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S4 |
+| **AMC Algebra** | algebra for the AMC: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L14 |
+| **AMC Number Theory** | number theory for the AMC: primes, divisors, digits, remainders, integer equations | M1 to M7 |
+| **AMC Counting & Probability** | counting, probability and expected value for the AMC | R1 to R3 |
+| **AMC Geometry** | geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S4 |
 | **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
 | **AIME Algebra** | equations, polynomials, sequences, functions, inequalities, complex numbers and trig algebra | A1 to A9 |
 | **AIME Number Theory** | prime exponents, congruences, exponent cycles, integer solutions, digits | N1 to N8 |
@@ -809,6 +809,8 @@ A short bridge that finds gaps and fills them with examples and checks, without 
 
 Nine chapters. The first draft named symmetric expressions, recurrences, root transformations, complex numbers and inequalities. The proposal adds equation solving, functions, logs, trig algebra, and a capstone for combining tools.
 
+#### Part: Foundations
+
 ### A1. Equations, substitutions and systems (Core)
 
 | Lesson | Cards |
@@ -832,6 +834,8 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 | A2.5 Root transformations: reciprocal and shifted polynomials (Core) | `root-transformations` |
 | A2.6 Interpolation and reading off coefficients (Core II) | `lagrange-interpolation-formula`, `lagrange-interpolation`, `coefficient-extraction`, `comparing-coefficients` |
 | A2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A2.8 Review Problems and A2.9 Challenge Problems |
+
+#### Part: Core topics
 
 ### A3. Sequences, recurrences and sums (Core)
 
@@ -869,6 +873,8 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 | A5.6 When a bound is sharp enough (Core II) | `power-mean-inequality`, `jensens-inequality`, `bernoulli-inequality`, `weighted-am-gm` |
 | A5.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A5.8 Review Problems and A5.9 Challenge Problems |
 
+#### Part: Advanced topics
+
 ### A6. Complex numbers and roots of unity (Core II)
 
 | Lesson | Cards |
@@ -902,6 +908,8 @@ Nine chapters. The first draft named symmetric expressions, recurrences, root tr
 | A8.5 Mixed problems that need two or more earlier topics (Core II) | no new card (a review lesson) |
 | A8.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then A8.7 Review Problems and A8.8 Challenge Problems |
 
+#### Part: Beyond the AIME
+
 ### A9. Algebra extensions (Extension)
 
 | Lesson | Cards |
@@ -921,6 +929,8 @@ Eight chapters. The changes from the first draft are three:
 - Full CRT is taught in N2, before the exponent cycles of N3.
 - Valuations come before the rarer lifting techniques.
 - Hensel lifting, Lucas and higher residue theory are Extension material until a coverage audit shows they are needed more widely.
+
+#### Part: Foundations
 
 ### N1. Prime factorization and divisors (Core)
 
@@ -971,6 +981,8 @@ Eight chapters. The changes from the first draft are three:
 - 2026 AIME I #8 (read: CRT turns $\equiv 5 \pmod{12}$ into conditions mod $3$ and $4$ on divisor exponents; assumes `number-of-divisors`);
 - 2001 AIME I #11 (read: two numberings of a grid, solved through integrality modulo $31$);
 - 2026 AIME II #5 (read: it ends in the linear Diophantine equation $3r - 5b = 2$; a challenge, assuming `hypergeometric` from C6.4).
+
+#### Part: Core topics
 
 ### N3. Cycles, exponentiation and order (Core): the pilot
 
@@ -1129,6 +1141,8 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | N6.6 Concatenation, palindromes, digit restrictions (Core) | *(pattern)* `palindromes`, *(pattern)* `cryptarithms`, *(pattern)* `calendar-problems` |
 | N6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N6.8 Review Problems and N6.9 Challenge Problems |
 
+#### Part: Advanced topics
+
 ### N7. Residue patterns and special constraints (Core II)
 
 | Lesson | Cards |
@@ -1139,6 +1153,8 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 | N7.4 Orders, divisor conditions, restrictions on primes (Core II) | `wilsons-theorem`, prereq `multiplicative-order` |
 | N7.5 Integer sequences and periodicity mod $n$ (Core) | `pisano-periods` |
 | N7.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then N7.7 Review Problems and N7.8 Challenge Problems |
+
+#### Part: Beyond the AIME
 
 ### N8. Number theory extensions (Extension; never a prerequisite in the core sequence)
 
@@ -1156,6 +1172,8 @@ No card: the chapter's ideas, then Problem Solving Strategies; then N3.8 Review 
 ## Book: AIME Geometry
 
 Nine chapters. The proposal separates the main AIME toolkits, so a student learns them in a reliable order rather than as a grab bag of theorems.
+
+#### Part: Foundations
 
 ### G1. Triangle ratios, similarity and area (Core)
 
@@ -1181,6 +1199,8 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 | G2.6 Circles that meet or touch (Core) | `tangent-circles`, `two-tangents-angle`, *(pattern)* `rolling-without-slipping`, `common-tangent-lengths`, `triangle-of-centers`, `common-chord-length`, `descartes-circle-theorem`, *(pattern)* `tangency-condition`, *(pattern)* `tangent-circle-packing` |
 | G2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G2.8 Review Problems and G2.9 Challenge Problems |
 
+#### Part: Core topics
+
 ### G3. Trigonometric geometry (Core; AMC 10 students take B5.4 first)
 
 | Lesson | Cards |
@@ -1204,6 +1224,8 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 | G4.5 Parabolas and conics at the level of their equations (Core II) | `conic-sections`, `parabola-focus-directrix`, `ellipse-properties`, `hyperbola-properties`, `conic-tangent-lines`, `eccentricity` |
 | G4.6 Loci and optimization in coordinates (Core II) | `perpendicular-bisector-locus`, `apollonius-circle`, `bisector-closer-region` |
 | G4.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G4.8 Review Problems and G4.9 Challenge Problems |
+
+#### Part: Advanced topics
 
 ### G5. Triangle centers and special figures (Core II)
 
@@ -1252,6 +1274,8 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 | G8.6 Solids inside and around solids (Core II) | `insphere-radius`, `spheres-two-planes`, `box-tetrahedron`, `isosceles-tetrahedron`, *(pattern)* `equal-edge-tetrahedron`, `unfold-the-surface`, `cube-nets`, `eulers-polyhedron-formula` |
 | G8.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then G8.8 Review Problems and G8.9 Challenge Problems |
 
+#### Part: Beyond the AIME
+
 ### G9. Geometry extensions (Extension)
 
 | Lesson | Cards |
@@ -1268,6 +1292,8 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 ## Book: AIME Counting & Probability
 
 Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identities, conditioning, expected value, graphs, and geometric counting explicitly.
+
+#### Part: Foundations
 
 ### C1. Systematic counting and cases (Core)
 
@@ -1292,6 +1318,8 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | C2.5 Stars and bars, with upper and lower bounds (Core) | `stars-and-bars`, `stars-bars-upper-bound`, `balls-boxes-table` |
 | C2.6 Choosing positions versus assigning values (Core II) | `surjections`, `stirling-bell`, `fencepost-counting` |
 | C2.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C2.8 Review Problems and C2.9 Challenge Problems |
+
+#### Part: Core topics
 
 ### C3. Inclusion-exclusion and complements (Core)
 
@@ -1340,6 +1368,8 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | C6.6 Probability in arrangements and regions (Core) | `geometric-probability` |
 | C6.7 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C6.8 Review Problems and C6.9 Challenge Problems |
 
+#### Part: Advanced topics
+
 ### C7. Expected value and random processes (Core II)
 
 | Lesson | Cards |
@@ -1361,6 +1391,8 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | C8.4 Coloring and parity (Core II) | `coloring-arguments`, `graph-coloring` |
 | C8.5 Extremal arguments and pigeonhole (Core II) | `pigeonhole`, `pigeonhole-argument`, `extremal-principle`, `pairing-to-bound` |
 | C8.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C8.7 Review Problems and C8.8 Challenge Problems |
+
+#### Part: Beyond the AIME
 
 ### C9. Counting and probability extensions (Extension)
 

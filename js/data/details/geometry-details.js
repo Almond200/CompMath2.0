@@ -1820,6 +1820,9 @@ Rarely the point of a problem and often the step that unlocks one: proving a con
 `,
 
 "ptolemys-theorem": String.raw`
+## Key forms
+- $AB \cdot CD + AD \cdot BC = AC \cdot BD$ — Ptolemy on a line: for $A$, $B$, $C$, $D$ in that order on a line, the same identity holds, as the flat limit of a circle. With $AB = a$, $BC = b$, $CD = c$ both sides expand to $ab + ac + b^2 + bc$. It is rarely needed, but it relates the six distances among four collinear points at once.
+
 ## Conditions
 $A$, $B$, $C$, $D$ lie on a circle in that order, so that $AC$ and $BD$ are the diagonals: $AC \cdot BD = AB \cdot CD + BC \cdot DA$. The order matters; a self-intersecting labeling pairs the wrong segments. Conversely, if the equality holds for four points in that order, they are concyclic.
 
