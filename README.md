@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- Olympiad Algebra is finished: E4 (Polynomials: Eisenstein and Cohn, Cardano, discriminants, Gauss-Lucas, Mason-Stothers, integer-valued polynomials) and E5 (Functional equations, summation by parts and Lagrange's identity, eigenvalues, Cayley-Hamilton, Vandermonde) are written.
 - Olympiad Algebra: E1 (Symmetric inequalities: Schur, Vornicu-Schur, Muirhead, Maclaurin), E2 (The classical inequalities: Hölder, Chebyshev, Minkowski, Karamata, Popoviciu) and E3 (Methods: homogenizing, smoothing, SOS, uvw) are written; every inequality was checked numerically.
 - Olympiad Proofs is written (P1 What a proof is, P2 Induction, P3 Extremal arguments and descent, P4 Existence proofs), each chapter in the approved structure with our own problems and full written proofs; the olympiad outline gained Introductions, Summaries and lesson tags.
 - Learn: five olympiad books join the shelf, from the drafted outline (Olympiad Proofs, Algebra, Number Theory, Combinatorics, Geometry; 25 chapters), as a third track with their own covers and motifs. Their chapters show as not yet written.
