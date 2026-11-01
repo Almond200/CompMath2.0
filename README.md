@@ -312,6 +312,9 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Counting & Probability: R6 (Probability for the AMC 10: conditional probability and the hypergeometric count, repeated trials, probability as length and area, linearity of expectation) is written.
+- AMC Counting & Probability: R5 (Recursion, paths and processes: recursion and tilings, grid paths and filling the grid, working backward, labeling game positions and simulating, the reflection principle) is written.
+- The book view's chapter-tab cards are drawn in front of everything, the top bar included, and the C tab's card hangs down from the tab instead of reaching up under the top bar.
 - The book view's C tab is a rounded square like the chapter tabs (no hairline or squared lower corners), and its scrubber gives Contents the top three quarters and How to Use This Book the bottom quarter.
 - AMC Counting & Probability: R4 (Distributions and binomial coefficients: stars and bars, Pascal's triangle, the binomial theorem, bijections) is written. CLAUDE.md now asks every chat to reread the card rules before editing a card.
 - AMC Counting & Probability: R3 (Arrangements: letters with repeats, gaps, blocks and non-adjacent choices, circles and derangements, inclusion-exclusion and overcounting) is written.
