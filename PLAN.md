@@ -23,7 +23,7 @@
 - **A user's bug report, fixed (end of the seventeenth chat):** the three dialogs (Filters, Browse by tag, a space's "i") trap and return the keyboard focus, with `aria-modal` and `aria-pressed`; Import progress is all or nothing, with rollback and an accurate message; the answer parser caps ± signs; Quiz and Flashcards let a focused link or button handle Enter and Space and say when the browser is not saving; Flashcards' reset clears both directions, its empty session says why, its setup keeps the focus; the Formula Web's search picks a route's Start and End from the keyboard. Each finding was checked before it was fixed.
 - **Labels and order (owner, eighteenth chat):** every Learn problem has a unique label (contest problems numbered on from a page's own problems; old reviews use N3.R.1), and every page runs our problems, contest problems, then solutions (CONVENTIONS §14). Write new chapters to fit.
 - **Lesson tags (owner, eighteenth chat):** every lesson of a converted chapter carries Core, Core II or Extension after its title in the outline (CONVENTIONS §14); give them as each chapter is converted.
-- **Next action (eighteenth chat):** step 2, the AIME chapters in the approved structure, chapter by chapter, starting with the AIME Counting & Probability book. Done: the AIME Counting & Probability book, C1 to C9. Done also: AIME Number Theory, N1 to N8. Done also: AIME Algebra, A1 to A9. Step 2 is done (the Bridge was skipped: step 1 removes it). Next: step 1.2, AMC Number Theory M6 and M7 (AMC Algebra is complete; M1 to M3 written; the old AMC Number Theory chapters are deleted), then Counting & Probability and Geometry, then remove the Bridge (step 1.3). The Bridge is skipped: step 1 removes it. Step 1 (the AMC books' second plan) follows unless the owner reorders.
+- **Next action (eighteenth chat):** step 2, the AIME chapters in the approved structure, chapter by chapter, starting with the AIME Counting & Probability book. Done: the AIME Counting & Probability book, C1 to C9. Done also: AIME Number Theory, N1 to N8. Done also: AIME Algebra, A1 to A9. Step 2 is done. Next: the quick changes in "The order of work" below, then AMC Number Theory M6 and M7 (AMC Algebra is complete; M1 to M3 written; the old AMC Number Theory chapters are deleted), then Counting & Probability and Geometry, then remove the Bridge (step 1.3). The Bridge is skipped: step 1 removes it. Step 1 (the AMC books' second plan) follows unless the owner reorders.
 - **For the owner to try now:** C5 as the model chapter (`#/learn/aime-counting/c5`), How to Use This Book from any book's contents, Settings with its preview and search, and the app on a phone.
 
 ## The road ahead: the Learn track
@@ -42,20 +42,24 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 - **L6 and L9, the writing:** every planned book written. The owner's later decisions replaced parts of the first design: LQ5's typed checks and math keyboard were dropped for problems with worked solutions; the lesson standard became one flowing explanation; the chapter structure above replaced the overview page and chapter review.
 - **L10, the home page:** redesigned twice; done.
 
-### 1. The AMC books' second plan (planned; LEARN-OUTLINE.md, "The AMC books, second plan")
-The Bridge merged into four AMC books, each running Foundations, Core topics, Advanced topics, Toward the AIME, with Core, Core II or Extension on every chapter and every lesson, and every chapter in the approved chapter structure. Its implementation list, in order:
-1. Tooling: parts and lesson tags in `build-learn-shelf.py`, two-digit chapter numbers, the contents page showing parts and lesson tags.
-2. The books in turn, starting with Algebra, each written fresh chapter by chapter.
-3. The Bridge removed once the last book replaces it.
+### The order of work (owner, 2026-11-01)
+1. **Quick changes (in progress, nineteenth chat):**
+   - Page order: our problems, solutions, then contest problems (Exercises) on lessons and Introductions; on Review Problems and Challenge Problems only, our problems, contest problems, then solutions, so the problems sit together.
+   - AIME books get part headings like the AMC books (Foundations, Core topics, Advanced topics, Beyond the AIME).
+   - The contents page's "Contents and Introduction" gets the code C, like L1; the Contents link is not bold.
+   - How to Use This Book becomes a real page in the book view (rail, header, title); the C tab's top half is the contents, its bottom half How to Use This Book.
+   - Lesson references in parentheses, such as "(L3.4)", are links to that lesson.
+   - Book captions (roles) do not say "AMC 10 and 12".
+   - Wording fixes from a reader: C5.1's string recursion needs its boundary case ($s_0 = 1$, decomposition for $n \ge 2$); L1.1 should say $\sqrt{x^2} = |x|$.
+   - A Ptolemy key form for four points on a line.
+   - **Study a concept more** (replaces L7): on a problem page, inside How this problem works, below the pattern, method and formula cards, a line "Study a concept more" with links named after the problem's cards, each going to the lesson that teaches that card (where one does). No "Practice more" link: anything worth practicing belongs in the textbook.
+2. **The AMC books' second plan** (LEARN-OUTLINE.md, "The AMC books, second plan"): Algebra done; Number Theory M1 to M5 done, M6 and M7 next; then Counting & Probability and Geometry, each written fresh chapter by chapter; then **remove the Bridge** (its section, files, id in `IDS`, cover).
+3. **The olympiad books:** the draft is `drafts/olympiad-books.patch` (`git apply`; its edit to the chapter-letter class in `tools/build-learn-shelf.py` needs adjusting by hand).
+4. **Practice: Create a contest (beta).** Under the Contests block on Practice, below A random problem: build a contest with a focus (subject, topic, contest, difficulty). Batches of exactly 3 problems; a time limit set by difficulty (about 30 to 45 minutes or less); one submission per problem; it ends when all three are answered or auto-submits when time runs out; then the problems can be reviewed and the result is saved under past contest results. The picker corrects for difficulty inflation across years. It will need finer problem tags later.
+5. **Diagrams in the textbooks** (Venn diagrams for inclusion-exclusion, geometry figures, and so on), and **lessons in the main search**, ranked like problems: shown only on a very strong match, so they neither crowd the results nor never appear.
+6. Proofreading every book: not started.
 
-### 2. The AIME chapters in the approved structure: done (eighteenth chat)
-Every chapter of the four AIME books has an X.1 Introduction, a Summary with strategies, Review Problems and Challenge Problems, and a tag on every lesson; cross-references were renumbered. The Bridge was not converted, since step 1 removes it.
-
-### 3. Still open from the first plan
-- At the end of a chapter, a "Practice more" link into Practice; on a problem page, "Study this in Learn" where a lesson covers the problem's key card (L7; not built).
-- The olympiad books: paused; the draft is `drafts/olympiad-books.patch` (`git apply`; its edit to the chapter-letter class in `tools/build-learn-shelf.py` needs adjusting by hand).
-- Proofreading every book: not started.
-- Stage 5, the `lab/` pages into Practice: on hold (LQ9).
+**On hold:** Stage 5 (the `lab/` quiz, flashcards and formula web into Practice), owner 2026-11-01: they lean toward memorizing facts, which the app is moving away from; leave them as they are.
 
 **Later, only once the learning flow works:** personalized recommendations, adaptive mastery, AI-written feedback or problems, accounts or a server. Not planned now.
 
