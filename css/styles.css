@@ -139,9 +139,9 @@ body {
 .tool-btn.tool-btn-icon { font-size: 15px; line-height: 1; padding: 6px 10px; }
 
 /* Active-filter indicator on the Filters button. */
-#filters-btn { position: relative; }
+#filters-btn, .list-tool[data-regroup] { position: relative; }
 #filters-btn.has-filters { color: var(--accent); border-color: var(--accent); }
-#filters-btn.has-filters::after {
+#filters-btn.has-filters::after, .list-tool[data-regroup]::after {
   content: "";
   position: absolute;
   top: -3px;
