@@ -5448,7 +5448,7 @@
       btn.textContent = showAllBooks ? "Show fewer textbooks" : "Show all textbooks (" + extra + " more)";
     };
     btn.addEventListener("click", () => { showAllBooks = !showAllBooks; shelfFit(); });
-    shelfFit();
+    requestAnimationFrame(shelfFit);
   }
   window.addEventListener("resize", () => { if (shelfFit) shelfFit(); });
   // The shelf on the Learn page (and, smaller, on the home page).
