@@ -47,7 +47,7 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
    - Page order: our problems, solutions, then contest problems (Exercises) on lessons and Introductions; on Review Problems and Challenge Problems only, our problems, contest problems, then solutions, so the problems sit together.
    - AIME books get part headings like the AMC books (Foundations, Core topics, Advanced topics, Beyond the AIME).
    - The contents page's "Contents and Introduction" gets the code C, like L1; the Contents link is not bold.
-   - How to Use This Book becomes a real page in the book view (rail, header, title); the C tab's top half is the contents, its bottom half How to Use This Book.
+   - How to Use This Book becomes a real page in the book view (rail, header, title); the C tab's top three quarters are the contents, its bottom quarter How to Use This Book (owner, 2026-11-01), and it is a rounded square like the other tabs.
    - Lesson references in parentheses, such as "(L3.4)", are links to that lesson.
    - Book captions (roles) do not say "AMC 10 and 12".
    - Wording fixes from a reader: C5.1's string recursion needs its boundary case ($s_0 = 1$, decomposition for $n \ge 2$); L1.1 should say $\sqrt{x^2} = |x|$.

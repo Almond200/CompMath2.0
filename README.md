@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- The book view's C tab is a rounded square like the chapter tabs (no hairline or squared lower corners), and its scrubber gives Contents the top three quarters and How to Use This Book the bottom quarter.
 - AMC Counting & Probability: R4 (Distributions and binomial coefficients: stars and bars, Pascal's triangle, the binomial theorem, bijections) is written. CLAUDE.md now asks every chat to reread the card rules before editing a card.
 - AMC Counting & Probability: R3 (Arrangements: letters with repeats, gaps, blocks and non-adjacent choices, circles and derangements, inclusion-exclusion and overcounting) is written.
 - Ptolemy's Theorem, rewritten to the card rules (CONVENTIONS §2): Key forms are three short bullets, maths first and a brief gloss (the named-vertex form, the isosceles trapezoid $d^2 = \ell^2 + b_1 b_2$, and four points on a line), each proved in Why it works; Conditions no longer repeats the formula; the equilateral observation links its own card; the trapezoid observation that repeated Example 2 is gone. A scan of every Key forms bullet found no other multi-sentence gloss written this session.

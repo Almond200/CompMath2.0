@@ -5512,7 +5512,7 @@
       return `<a class="bk-tab bk-scrub${cur ? " is-current" : ""}" href="${learnHash(b, ch)}"${cur ? ` aria-current="page"` : ""}><span class="bk-tab-n">${ch.code.slice(1)}</span><span class="bk-ticks" aria-hidden="true">${ticks}</span><span class="bk-tip"><span class="bk-tip-ch">${ch.code} ${escapeAttr(ch.title)}</span>${tips}</span></a>`;
     };
     return `<nav class="bk-rail" aria-label="Chapters">
-        <a class="bk-tab bk-scrub${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span class="bk-tab-n">C</span><span class="bk-ticks" aria-hidden="true"><i data-href="${learnHash(b)}"></i><i data-href="${learnHash(b)}/how-to-use"></i></span><span class="bk-tip"><span class="bk-tip-ch">Contents and Introduction</span><span class="bk-tip-p" data-i="0" hidden>Contents</span><span class="bk-tip-p" data-i="1" hidden>How to Use This Book</span></span></a>
+        <a class="bk-tab bk-scrub${!c ? " is-current" : ""}" href="${learnHash(b)}"${!c ? ` aria-current="page"` : ""}><span class="bk-tab-n">C</span><span class="bk-ticks" aria-hidden="true"><i data-href="${learnHash(b)}" data-w="3"></i><i data-href="${learnHash(b)}/how-to-use" data-w="1"></i></span><span class="bk-tip"><span class="bk-tip-ch">Contents and Introduction</span><span class="bk-tip-p" data-i="0" hidden>Contents</span><span class="bk-tip-p" data-i="1" hidden>How to Use This Book</span></span></a>
         ${b.chapters.map(tab).join("")}
       </nav>`;
   }
@@ -5532,7 +5532,11 @@
       if (!tab || !rail.contains(tab)) { clear(); return; }
       const ticks = tab.querySelectorAll(".bk-ticks i");
       const r = tab.getBoundingClientRect();
-      const i = Math.max(0, Math.min(ticks.length - 1, Math.floor((y - r.top) / r.height * ticks.length)));
+      // A tick's share of the tab is its data-w (default 1): on the C tab, Contents takes three quarters
+      // and How to Use This Book one quarter (owner, 2026-11-01).
+      const ws = [...ticks].map(t => +t.dataset.w || 1), f = (y - r.top) / r.height * ws.reduce((a, w) => a + w, 0);
+      let i = 0;
+      for (let acc = ws[0]; i < ws.length - 1 && f >= acc; acc += ws[++i]);
       if (live && live.tab === tab && live.i === i) return;
       if (!live || live.tab !== tab) { clear(); live = { tab, home: tab.getAttribute("href") }; }
       live.i = i;
