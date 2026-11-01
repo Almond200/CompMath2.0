@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Counting & Probability: R4 (Distributions and binomial coefficients: stars and bars, Pascal's triangle, the binomial theorem, bijections) is written. CLAUDE.md now asks every chat to reread the card rules before editing a card.
 - AMC Counting & Probability: R3 (Arrangements: letters with repeats, gaps, blocks and non-adjacent choices, circles and derangements, inclusion-exclusion and overcounting) is written.
 - Ptolemy's Theorem, rewritten to the card rules (CONVENTIONS §2): Key forms are three short bullets, maths first and a brief gloss (the named-vertex form, the isosceles trapezoid $d^2 = \ell^2 + b_1 b_2$, and four points on a line), each proved in Why it works; Conditions no longer repeats the formula; the equilateral observation links its own card; the trapezoid observation that repeated Example 2 is gone. A scan of every Key forms bullet found no other multi-sentence gloss written this session.
 - Links keep one colour: every link uses the theme's accent colour and no longer turns purple after a visit (a zero-specificity rule in the stylesheet, so a component's own colour still wins). Lesson references such as (C6.4) and the Study a concept more links look like card links.

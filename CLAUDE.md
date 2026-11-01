@@ -32,6 +32,7 @@ $JSC tools/validate-problem-db.js
 - Every missing formula or card found while tagging goes into `QUESTIONS.md` ("Candidate new cards from the practice pass", next P-number, at the top of the table) for approval; the problem cites the nearest card meanwhile.
 - Never put the owner's name in the app's files.
 - Never re-add problem search, the in-app find, hints, a label setting, or a level filter.
+- Before editing any card, reread CONVENTIONS §1 and §2: a Key forms bullet is the maths, then ` — `, then a short lowercase gloss, never a paragraph; every Key form is proved in Why it works (owner, 2026-11-01).
 - One fact, one home.
 - Every number is checked by computation.
 - Every card, new ones included, has at least two practice problems (linked contest problems, else exercises in `extra-problems.js`); `gates.sh` fails otherwise. A new card follows the checklist in CONVENTIONS ("New cards are registered").
