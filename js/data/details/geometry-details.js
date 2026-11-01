@@ -1821,10 +1821,12 @@ Rarely the point of a problem and often the step that unlocks one: proving a con
 
 "ptolemys-theorem": String.raw`
 ## Key forms
-- $AB \cdot CD + AD \cdot BC = AC \cdot BD$ — Ptolemy on a line: for $A$, $B$, $C$, $D$ in that order on a line, the same identity holds, as the flat limit of a circle. With $AB = a$, $BC = b$, $CD = c$ both sides expand to $ab + ac + b^2 + bc$. It is rarely needed, but it relates the six distances among four collinear points at once.
+- $AC \cdot BD = AB \cdot CD + BC \cdot DA$ — the vertices named, for $A$, $B$, $C$, $D$ in that order on the circle
+- $d^2 = \ell^2 + b_1 b_2$ — an isosceles trapezoid with legs $\ell$, bases $b_1$ and $b_2$, and diagonals $d$
+- $AB \cdot CD + AD \cdot BC = AC \cdot BD$ — four points in that order on a line, the flat case
 
 ## Conditions
-$A$, $B$, $C$, $D$ lie on a circle in that order, so that $AC$ and $BD$ are the diagonals: $AC \cdot BD = AB \cdot CD + BC \cdot DA$. The order matters; a self-intersecting labeling pairs the wrong segments. Conversely, if the equality holds for four points in that order, they are concyclic.
+$A$, $B$, $C$, $D$ lie on a circle in that order, so that $AC$ and $BD$ are the diagonals. The order matters; a self-intersecting labeling pairs the wrong segments. Conversely, if the equality holds for four points in that order, they are concyclic.
 
 ## Why it works
 Choose a point on one diagonal that splits it into two pieces, each of which a pair of similar triangles can measure.
@@ -1837,10 +1839,13 @@ Adding $\angle EBD$ to both of the equal angles gives $\angle EBC = \angle ABD$.
 
 Adding the two equations gives $(AE + EC) \cdot BD = AB \cdot CD + BC \cdot AD$, and $AE + EC = AC$. When the four points are not on a circle, the same pair of similar triangles can still be built, but $E$ no longer lands on $AC$, and the triangle inequality $AC \le AE + EC$ turns the equation into Ptolemy's Inequality.
 
+The trapezoid form is the theorem with two pairs of equal lengths. An isosceles trapezoid is cyclic; its legs are one pair of opposite sides, its bases the other, and its two diagonals are equal, so the theorem reads $d \cdot d = \ell \cdot \ell + b_1 b_2$.
+
+The line form is the flat case, and it needs no circle at all. Put the points at $0$, $a$, $a + b$ and $a + b + c$ on a number line, so that $AB = a$, $BC = b$ and $CD = c$. Then $AB \cdot CD + AD \cdot BC = ac + (a + b + c)b$ and $AC \cdot BD = (a + b)(b + c)$, and both sides equal $ab + ac + b^2 + bc$.
+
 ## Useful observations
 - The [[pythagorean-theorem|Pythagorean Theorem]] is the rectangle case: with sides $a$, $b$ and diagonal $d$, the relation reads $d^2 = a^2 + b^2$.
-- An isosceles trapezoid is cyclic, so its diagonal satisfies $d^2 = \text{leg}^2 + \text{product of the bases}$: bases $6$ and $12$ with legs $5$ give $d^2 = 97$.
-- On an equilateral triangle the three equal sides cancel, so a point on the circumcircle has one distance equal to the sum of the other two: $PA = PB + PC$ for $P$ on arc $BC$.
+- On an equilateral triangle the three equal sides cancel, which is [[ptolemy-equilateral|Ptolemy on an Equilateral Triangle]]: one distance from a point on the circumcircle to the vertices is the sum of the other two.
 - In a regular pentagon with side $s$ and diagonal $d$, four vertices give $d^2 = s^2 + sd$, so $\frac ds$ is the golden ratio.
 
 ## Applications
