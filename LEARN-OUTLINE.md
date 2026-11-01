@@ -53,6 +53,11 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 | **AIME Number Theory** | prime exponents, congruences, exponent cycles, integer solutions, digits | N1 to N8 |
 | **AIME Geometry** | triangles, circles, trig, coordinates, centers, transformations, polygons, solids | G1 to G9 |
 | **AIME Counting & Probability** | counting structures, restrictions, recursion, probability, expectation | C1 to C9 |
+| **Olympiad Proofs** | how to write a proof: contradiction, induction, extremal arguments and existence proofs | P1 to P4 |
+| **Olympiad Algebra** | olympiad inequalities, polynomials, functional equations and matrices | E1 to E5 |
+| **Olympiad Number Theory** | quadratic residues, valuations and special primes, additive results, arithmetic functions | D1 to D4 |
+| **Olympiad Combinatorics** | enumeration, extremal sets, graphs, algebraic and probabilistic methods, combinatorial geometry | K1 to K5 |
+| **Olympiad Geometry** | directed angles, inversion, olympiad lemmas, triangle centers, circles and projective geometry | O1 to O7 |
 
 A student need not finish the books in order. Any chapter can be entered once its prerequisites are known. Chapter order follows dependencies:
 - **Book entry points:** B1 and B2 lead to A1 to A4; B5 leads to G1 to G4; B3 leads to N1 to N3; B4 leads to C1 to C3.
@@ -1354,6 +1359,218 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | C9.4 Geometric probability beyond simple regions (Extension) | `product-of-uniforms`, `order-statistics`, `variance-independence` |
 | C9.5 More recursions and random processes; games (Extension) | `transfer-matrix-method`, `strategy-stealing`, *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
 | C9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C9.7 Review Problems and C9.8 Challenge Problems |
+
+---
+
+## Book: Olympiad Proofs
+
+How to write a proof, for a student moving from answer contests (AMC, AIME) to proof contests (USAJMO, USAMO and beyond). The olympiad books are a third track: they teach their own cards and set their own problems, since the problem database holds answer contests (owner's goal, 2026-10-31).
+
+### P1. What a proof is (Core)
+
+| Lesson | Cards |
+|---|---|
+| P1.1 Direct proof, contradiction and contrapositive | `direct-proof`, `proof-by-contradiction`, `contrapositive` |
+| P1.2 If and only if, uniqueness, and symmetry | `proving-both-directions`, `proving-uniqueness`, `wlog-symmetry` |
+
+### P2. Induction (Core)
+
+| Lesson | Cards |
+|---|---|
+| P2.1 Induction and strong induction | `induction`, `strong-induction` |
+| P2.2 Stronger statements and unusual inductions | `forward-backward-induction`, `strengthening-the-hypothesis` |
+
+### P3. Extremal arguments and descent (Core)
+
+| Lesson | Cards |
+|---|---|
+| P3.1 The smallest counterexample and infinite descent | `minimal-counterexample`, `infinite-descent` |
+| P3.2 Vieta jumping and discrete continuity | `vieta-jumping`, `discrete-intermediate-value` |
+
+### P4. Existence proofs (Core)
+
+| Lesson | Cards |
+|---|---|
+| P4.1 Constructions and pigeonhole | `proof-by-construction`, `pigeonhole-argument` |
+| P4.2 Dimension and probability arguments | `dimension-arguments`, `probabilistic-method` |
+
+---
+
+## Book: Olympiad Algebra
+
+Inequalities, polynomials and functional equations at olympiad level. It assumes the AIME Algebra book or AMC Algebra.
+
+### E1. Symmetric inequalities (Core)
+
+| Lesson | Cards |
+|---|---|
+| E1.1 Schur's inequality | `schurs-inequality`, `vornicu-schur` |
+| E1.2 Muirhead and Maclaurin | `muirheads-inequality`, `maclaurin-inequality` |
+
+### E2. The classical inequalities (Core)
+
+| Lesson | Cards |
+|---|---|
+| E2.1 Hölder, Chebyshev and Minkowski | `holders-inequality`, `chebyshev-sum-inequality`, `minkowski-inequality` |
+| E2.2 Majorization: Karamata and Popoviciu | `karamata-inequality`, `popoviciu-inequality` |
+
+### E3. Methods for inequalities (Core)
+
+| Lesson | Cards |
+|---|---|
+| E3.1 Homogenizing and smoothing | `homogenization`, `smoothing-method` |
+| E3.2 Sums of squares and the uvw method | `sos-method`, `uvw-method` |
+
+### E4. Polynomials (Core)
+
+| Lesson | Cards |
+|---|---|
+| E4.1 Irreducibility | `eisenstein-criterion`, `cohn-irreducibility` |
+| E4.2 Roots: cubics, derivatives and discriminants | `cardano-cubic`, `gauss-lucas`, `resultant-discriminant`, `mason-stothers` |
+| E4.3 Polynomials with integer values | `integer-valued-polynomials` |
+
+### E5. Functional equations, sums and matrices (Core)
+
+| Lesson | Cards |
+|---|---|
+| E5.1 Functional equations at olympiad level | `injectivity-surjectivity` |
+| E5.2 Summation by parts and Lagrange's identity | `abel-summation`, `lagranges-identity` |
+| E5.3 Matrices in olympiad algebra | `eigenvalues-characteristic`, `cayley-hamilton`, `vandermonde-determinant` |
+
+---
+
+## Book: Olympiad Number Theory
+
+Quadratic residues, valuations and special primes, additive results and arithmetic functions. It assumes the AIME Number Theory book.
+
+### D1. Quadratic residues (Core)
+
+| Lesson | Cards |
+|---|---|
+| D1.1 Polynomial congruences modulo a prime | `lagrange-roots-mod-p` |
+| D1.2 Quadratic reciprocity | `quadratic-reciprocity`, `gauss-lemma-qr`, `jacobi-symbol` |
+
+### D2. Primes, valuations and special numbers (Core)
+
+| Lesson | Cards |
+|---|---|
+| D2.1 Primes in binomials and Zsigmondy | `kummers-theorem`, `zsygmondy`, `wolstenholme` |
+| D2.2 Cyclotomic polynomials and Fermat numbers | `cyclotomic-polynomials`, `fermat-numbers`, `carmichael-numbers`, `dirichlet-primes-progression` |
+
+### D3. Additive number theory (Core)
+
+| Lesson | Cards |
+|---|---|
+| D3.1 Thue's lemma and Chevalley-Warning | `thues-lemma`, `chevalley-warning` |
+| D3.2 Sumsets: Cauchy-Davenport and Erdős-Ginzburg-Ziv | `cauchy-davenport`, `erdos-ginzburg-ziv` |
+
+### D4. Arithmetic functions and approximation (Core)
+
+| Lesson | Cards |
+|---|---|
+| D4.1 Dirichlet convolution | `totient-divisor-sum`, `dirichlet-convolution` |
+| D4.2 Farey sequences and continued fractions | `farey-sequences`, `continued-fraction-convergents` |
+| D4.3 Beatty sequences and floor sums | `beatty-theorem`, `floor-sum-reciprocity` |
+
+---
+
+## Book: Olympiad Combinatorics
+
+Enumeration, extremal set theory, graphs, algebraic and probabilistic methods, and combinatorial geometry. It assumes the AIME Counting & Probability book.
+
+### K1. Advanced enumeration (Core)
+
+| Lesson | Cards |
+|---|---|
+| K1.1 Generating functions for labeled objects and partitions | `exponential-generating-functions`, `pentagonal-number-theorem`, `stirling-first-kind` |
+| K1.2 Symmetry and tableaux | `polya-enumeration`, `hook-length-formula` |
+
+### K2. Extremal set theory and Ramsey-type results (Core)
+
+| Lesson | Cards |
+|---|---|
+| K2.1 Chains and antichains | `dilworths-theorem`, `sperners-theorem`, `kruskal-katona`, `erdos-ko-rado` |
+| K2.2 Monotone subsequences and Schur's theorem | `erdos-szekeres`, `schurs-theorem` |
+
+### K3. Graph theory (Core)
+
+| Lesson | Cards |
+|---|---|
+| K3.1 Matchings | `halls-marriage`, `konigs-theorem` |
+| K3.2 Extremal graphs and counting with determinants | `turans-theorem`, `matrix-tree-theorem`, `lgv-lemma` |
+
+### K4. Algebraic, probabilistic and game methods (Core)
+
+| Lesson | Cards |
+|---|---|
+| K4.1 The combinatorial Nullstellensatz | `combinatorial-nullstellensatz` |
+| K4.2 Probability tools | `markovs-inequality`, `probability-generating-functions`, `coprime-probability` |
+| K4.3 Impartial games | `sprague-grundy` |
+
+### K5. Combinatorial geometry (Core)
+
+| Lesson | Cards |
+|---|---|
+| K5.1 Points, lines and convex sets | `convex-position`, `sylvester-gallai`, `hellys-theorem` |
+| K5.2 Lattices | `minkowski-lattice`, `picks-hexagonal-grid` |
+
+---
+
+## Book: Olympiad Geometry
+
+The configurations, lemmas and transformations of olympiad geometry. It assumes the AIME Geometry book.
+
+### O1. Methods (Core)
+
+| Lesson | Cards |
+|---|---|
+| O1.1 Directed angles and phantom points | `directed-angles`, `phantom-point` |
+| O1.2 Inversion | `inversion-properties`, `sqrt-bc-inversion` |
+| O1.3 Projective transformations and moving points | `projective-transformations`, `gliding-principle`, `zacks-lemma` |
+
+### O2. Triangle theorems (Core)
+
+| Lesson | Cards |
+|---|---|
+| O2.1 Classical triangle formulas | `law-of-tangents`, `mollweides-formula`, `weitzenbock-inequality`, `erdos-mordell` |
+| O2.2 Perpendicularity and equal bisectors | `perpendicularity-lemma`, `carnots-perpendicularity-theorem`, `steiner-lehmus`, `morleys-theorem` |
+
+### O3. Olympiad lemmas (Core)
+
+| Lesson | Cards |
+|---|---|
+| O3.1 Isogonal lines and the Steiner ratio | `isogonal-line-lemma`, `steiner-ratio-theorem`, `iran-lemma` |
+| O3.2 Humpty, dumpty and the shooting lemma | `humpty-queue-points`, `dumpty-point`, `shooting-lemma` |
+
+### O4. Derived triangles and conjugates (Core)
+
+| Lesson | Cards |
+|---|---|
+| O4.1 Pedal and excentral triangles | `pedal-triangle`, `excentral-triangle`, `orthocentric-system` |
+| O4.2 Isogonal and isotomic conjugates | `isogonal-conjugate`, `isotomic-conjugate`, `cevian-nest` |
+
+### O5. Centers and lines of the triangle (Core)
+
+| Lesson | Cards |
+|---|---|
+| O5.1 Carnot, Feuerbach and Leibniz | `carnots-theorem`, `feuerbach-theorem`, `leibniz-formula`, `spieker-point` |
+| O5.2 Steiner lines, Brocard and Droz-Farny | `steiner-line`, `anti-steiner-point`, `brocard-angle`, `droz-farny`, `lester-circle`, `van-aubel` |
+
+### O6. Circles (Core)
+
+| Lesson | Cards |
+|---|---|
+| O6.1 Power, orthogonal circles and Reim | `power-of-a-point-linearity`, `orthogonal-circles`, `reims-theorem`, `butterfly-theorem` |
+| O6.2 Tangent circles: Casey, mixtilinear and Sawayama-Thébault | `caseys-theorem`, `mixtilinear-incircle`, `sawayama-thebault` |
+| O6.3 Quadrilaterals: Japanese theorem, Poncelet and Newton | `japanese-theorem`, `poncelet-closure`, `newtons-line` |
+
+### O7. Projective geometry (Core)
+
+| Lesson | Cards |
+|---|---|
+| O7.1 Cross-ratio and harmonic bundles | `cross-ratio`, `harmonic-bundle`, `pole-polar`, `brocards-theorem` |
+| O7.2 Pascal, Brianchon, Pappus and Desargues | `pascals-theorem`, `brianchon-theorem`, `pappus-hexagon`, `desargues-theorem`, `desargues-involution` |
+| O7.3 Miquel, Möbius maps and spheres | `complete-quadrilateral-miquel`, `mobius-transformations`, `descartes-sphere-theorem`, `cayley-menger` |
 
 ---
 

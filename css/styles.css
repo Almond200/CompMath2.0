@@ -2877,6 +2877,11 @@ body.is-landing .content { padding: 0 0 70px; }
 .bk-aime-number-theory { --bk-a: #5fae35; --bk-b: #2b5d14; }
 .bk-aime-geometry { --bk-a: #e58a3b; --bk-b: #91420f; }
 .bk-aime-counting { --bk-a: #8b67ea; --bk-b: #432796; }
+.bk-olympiad-proofs { --bk-a: #5b6478; --bk-b: #262c3a; }
+.bk-olympiad-algebra { --bk-a: #2b9bc4; --bk-b: #12506a; }
+.bk-olympiad-number-theory { --bk-a: #3f9a6b; --bk-b: #1a4d33; }
+.bk-olympiad-combinatorics { --bk-a: #b45bc9; --bk-b: #5c226b; }
+.bk-olympiad-geometry { --bk-a: #d4643f; --bk-b: #7a2c14; }
 .bk-s { padding: 7px 6px 6px 11px; border-radius: 3px 7px 7px 3px; }
 .bk-s .bk-series { font-size: 8.5px; letter-spacing: 0.1em; }
 .bk-s .bk-name { font-size: 12.5px; margin-top: 2px; }

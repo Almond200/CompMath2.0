@@ -5394,6 +5394,16 @@
     "amc-counting": `<rect x="22" y="22" width="56" height="56" rx="10" />${[[36,36],[64,36],[50,50],[36,64],[64,64]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="5" class="mf" />`).join("")}`,
     // a right triangle with a square on its hypotenuse corner
     "amc-geometry": `<path d="M20 78 H80 V30 Z" /><path d="M72 78 V70 H80" class="mg" /><circle cx="50" cy="54" r="12" />`,
+    // a domino row falling: induction
+    "olympiad-proofs": `${[20, 38, 56, 74].map((x, k) => `<rect x="${x}" y="${30 + k * 4}" width="8" height="40" rx="2" transform="rotate(${k === 3 ? 0 : -18} ${x + 4} 74)" />`).join("")}<path d="M12 78 H88" class="mg" />`,
+    // the curves of y = x and y = x^2 between 0 and 1
+    "olympiad-algebra": `<path d="M16 84 H84 M16 84 V16" class="mg" /><path d="M16 84 L84 16" /><path d="M16 84 Q50 84 84 16" />`,
+    // a prime spiral of dots
+    "olympiad-number-theory": `${[[50,50],[62,50],[62,38],[50,38],[38,38],[38,50],[38,62],[50,62],[62,62],[74,62],[74,50],[74,38],[74,26],[62,26]].map(([x, y], k) => `<circle cx="${x}" cy="${y}" r="${[1,2,4,6,10,12].includes(k) ? 4.5 : 2.2}" class="mf" />`).join("")}`,
+    // a small graph: a 5-cycle with a star inside
+    "olympiad-combinatorics": `${Array.from({ length: 5 }, (_, k) => [50 + 32 * Math.sin(2 * Math.PI * k / 5), 52 - 32 * Math.cos(2 * Math.PI * k / 5)]).map(([x, y], k, a) => `<path d="M${x.toFixed(1)} ${y.toFixed(1)} L${a[(k + 2) % 5][0].toFixed(1)} ${a[(k + 2) % 5][1].toFixed(1)}" /><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" class="mf" />`).join("")}`,
+    // a triangle with its circumcircle and incircle
+    "olympiad-geometry": `<circle cx="50" cy="50" r="36" /><path d="M50 14 L18 68 L82 68 Z" /><circle cx="50" cy="51" r="16" />`,
     // a lattice path on a grid
     "aime-counting": `${[14, 32, 50, 68, 86].map(v => `<path d="M14 ${v} H86 M${v} 14 V86" class="mg" />`).join("")}<path d="M14 86 H32 V68 H68 V32 H86 V14" />`
   };
@@ -5401,6 +5411,8 @@
     const m = b.title.match(/^AIME (.+)$/);
     if (m) return { series: "AIME", name: m[1] };
     if (/^amc-/.test(b.id)) return { series: "AMC 10 & 12", name: b.title.replace(/^AMC /, "") };
+    const o = b.title.match(/^Olympiad (.+)$/);
+    if (o) return { series: "Olympiad", name: o[1] };
     return { series: "Foundations", name: b.title };
   }
   const learnWrittenIn = b => b.chapters.reduce((n, c) => n + c.lessons.filter(l => learnLessonData(c, l)).length, 0);
@@ -5450,7 +5462,7 @@
   function learnShelfHtml() {
     return `<section class="sh-section" id="learn-books">
         <h3>Textbooks</h3>
-        <p class="learn-note">Books from the AMC 10 to the AIME. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
+        <p class="learn-note">Books from the AMC 10 to the AIME and on to olympiads. Open one to see its chapters and lessons; each lesson teaches from the cards and ends with contest problems.</p>
         ${learnCoversHtml("m")}
         <button type="button" class="ct-toggle bk-more" id="bk-more" hidden></button>
       </section>`;

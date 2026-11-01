@@ -14,11 +14,13 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC, OUT = ROOT / "LEARN-OUTLINE.md", ROOT / "js/data/learn/shelf.js"
 IDS = {"AMC Algebra": "amc-algebra", "AMC Number Theory": "amc-number-theory",
        "AMC Counting & Probability": "amc-counting", "AMC Geometry": "amc-geometry", "AIME Algebra": "aime-algebra", "AIME Number Theory": "aime-number-theory",
-       "AIME Geometry": "aime-geometry", "AIME Counting & Probability": "aime-counting"}
+       "AIME Geometry": "aime-geometry", "AIME Counting & Probability": "aime-counting",
+       "Olympiad Proofs": "olympiad-proofs", "Olympiad Algebra": "olympiad-algebra", "Olympiad Number Theory": "olympiad-number-theory",
+       "Olympiad Combinatorics": "olympiad-combinatorics", "Olympiad Geometry": "olympiad-geometry"}
 
 def build():
     text = SRC.read_text()
-    roles = {m[1]: m[2].strip() for m in re.finditer(r"^\| \*\*(.+?)\*\* \| (.+?) \| [BANGCLMRS]\d", text, re.M)}
+    roles = {m[1]: m[2].strip() for m in re.finditer(r"^\| \*\*(.+?)\*\* \| (.+?) \| [BANGCLMRSPEDKO]\d", text, re.M)}
     books, book, chapter, part = [], None, None, None
     for line in text.splitlines():
         if line.startswith("## ") and not line.startswith("## Book: "):
@@ -36,14 +38,14 @@ def build():
             books.append(book)
             chapter = None
             continue
-        m = re.match(r"^### ([BANGCLMRS]\d{1,2})\. (.+?) \((Core II|Core|Extension|AMC 10|AMC 12)\b[^)]*\)(?::.*)?$", line)
+        m = re.match(r"^### ([BANGCLMRSPEDKO]\d{1,2})\. (.+?) \((Core II|Core|Extension|AMC 10|AMC 12)\b[^)]*\)(?::.*)?$", line)
         if m and book:
             chapter = {"code": m[1], "title": m[2].strip(), "level": m[3], "lessons": []}
             if part:
                 chapter["part"] = part
             book["chapters"].append(chapter)
             continue
-        m = re.match(r"^\| ([BANGCLMRS]\d{1,2}\.\d{1,2}) ([^|]+?) \|(?: (Core II|Core|Extension) \|)?", line) or re.match(r"^#### ([BANGCLMRS]\d{1,2}\.\d{1,2}) (.+)$", line)
+        m = re.match(r"^\| ([BANGCLMRSPEDKO]\d{1,2}\.\d{1,2}) ([^|]+?) \|(?: (Core II|Core|Extension) \|)?", line) or re.match(r"^#### ([BANGCLMRSPEDKO]\d{1,2}\.\d{1,2}) (.+)$", line)
         if m and chapter and m[1].startswith(chapter["code"] + "."):
             t = m[2].strip()
             lv = re.match(r"^(.+?) \((Core II|Core|Extension)\)$", t)
