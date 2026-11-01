@@ -3926,7 +3926,7 @@ html .content:has(> .bk-view), html[data-density] .content:has(> .bk-view) { pad
   padding: 5px; border: 1px solid var(--border); border-top: none; border-radius: 0 0 12px 12px; background: var(--bg-panel); }
 .bk-tab { position: relative; display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 8px;
   font-size: 14px; font-weight: 750; color: var(--text-dim); text-decoration: none; transition: background 0.12s, color 0.12s; }
-.bk-tab:first-child { font-size: 12.5px; letter-spacing: 0.04em; border-bottom: 1px solid var(--border); border-radius: 8px 8px 4px 4px; margin-bottom: 3px; }
+.bk-tab:first-child { font-size: 12.5px; letter-spacing: 0.04em; margin-bottom: 3px; }
 .bk-tab:hover { background: var(--bg-card); color: var(--text); }
 .bk-tab.is-current, .bk-tab.is-current:hover { background: var(--bk-soft); color: var(--bk-ink); }
 .bk-tip { display: none; position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 6px 11px;
