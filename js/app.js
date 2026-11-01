@@ -4013,7 +4013,6 @@
     markToc();
   }
   // A list page's sections in the same panel, each with its count of cards.
-  let listToolsHidden = false;
   function buildListToc() {
     const toc = document.getElementById("page-toc");
     if (!toc) return;
@@ -4023,13 +4022,11 @@
     });
     tocPinned = null;
     // A few page tools under the sections (owner, 2026-10-31): back to the top, the list's link, print.
-    const tools = listToolsHidden
-      ? `<button type="button" class="toc-tool pt-hide" data-list-tool="show" aria-expanded="false">Show page tools</button>`
-      : `<div class="toc-head toc-tools-head">Page tools</div>
+    const tools = state.tools === "on" ? `<div class="toc-head toc-tools-head">Page tools</div>
       <button type="button" class="toc-tool" data-list-tool="top">Back to top</button>
       <button type="button" class="toc-tool" data-list-tool="link">Copy link to this list</button>
       <button type="button" class="toc-tool" data-list-tool="print">Print this list</button>
-      <button type="button" class="toc-tool pt-hide" data-list-tool="hide" aria-expanded="true">Hide page tools</button>`;
+      <button type="button" class="toc-tool pt-hide" data-list-tool="hide">Hide page tools</button>` : "";
     toc.innerHTML = items.length ? `<div class="toc-head">On this list</div>${items.join("")}${tools}` : "";
     toc.hidden = !items.length;
     markToc();
@@ -4038,10 +4035,11 @@
     const b = e.target.closest("[data-list-tool]");
     if (!b) return;
     const what = b.dataset.listTool;
-    if (what === "hide" || what === "show") {
-      listToolsHidden = what === "hide";
+    if (what === "hide") {
+      state.tools = "off";
+      saveSettings();
       buildListToc();
-      document.querySelector(listToolsHidden ? '[data-list-tool="show"]' : '[data-list-tool="hide"]').focus();
+      document.querySelector("#page-toc .toc-link")?.focus();
     } else if (what === "top") window.scrollTo({ top: 0, behavior: "smooth" });
     else if (what === "print") { prepareMathForPrint(); window.print(); }
     else if (what === "link") {
@@ -4376,7 +4374,7 @@
           ${settingRow("Keyword tags", "The tag chips on a card's page. Search uses them either way.", "tags", state.tags ? "on" : "off", [["on", "Show"], ["off", "Hide"]], "page")}
           ${settingRow("Notation", "Expanded writes out the first few terms instead of \u2211 or \u220f in formula boxes and key forms. Explanations keep sigma notation, where the index is usually the point.", "notation", state.notation, [["sigma", "Sigma"], ["expanded", "Expanded"]], "browse page")}
           ${settingRow("Figures on cards", "Figures always appear on a card's own page. On also shows each card's figure while browsing.", "diagrams", state.diagrams, [["none", "Off"], ["on", "On"]], "browse")}
-          ${settingRow("Page tools", "A column on the right of a card's page, as on Wikipedia: what links to the card, the problems that use it, a permanent link, printing, facts about the page, and quick appearance controls (text size and theme).", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
+          ${settingRow("Page tools", "Show page tools on card pages and in list sidebars, including links and printing.", "tools", state.tools, [["off", "Off"], ["on", "On"]], "page")}
           ${settingRow("Scroll speed", "How far a page moves for each turn of the mouse wheel or swipe on the trackpad. Normal leaves your browser's own scrolling as it is.", "scroll", state.scroll, [["slow", "Slow"], ["normal", "Normal"], ["fast", "Fast"]])}
         </section>
         <section class="set-panel">
@@ -6738,10 +6736,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       pending = shownIds.filter(id => !snapshot.has(id));
       if (pending.length) sections.push({ title: "New cards", ids: pending });
     }
+    const groupAction = pending.length ? "Regroup" : grouped ? (l.builtin ? "Grouped" : "Ungroup") : "Group";
     const headTools = isBuiltin ? "" : `
       <div class="list-head-tools">
-        ${canGroup ? `<button class="list-tool${grouped ? " on" : ""}" data-list-group="${l.id}" aria-pressed="${grouped}" title="${grouped ? "Showing sections matched from the built-in lists" : "Group this list into sections"}">${grouped ? (l.builtin ? "Grouped" : "Ungroup") : "Group"}</button>` : ""}
-        ${pending.length ? `<button class="list-tool" data-list-group="${l.id}" data-regroup>Regroup</button>` : ""}
+        ${canGroup ? `<button class="list-tool${grouped ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}"`}>${groupAction}</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>`}
         ${l.builtin && entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool danger" data-list-delete="${l.id}">Delete list</button>`}
