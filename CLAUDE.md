@@ -41,6 +41,7 @@ $JSC tools/validate-problem-db.js
 - No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
 - No boxes inside boxes: a subsection inside a panel is a heading over its content, not a second bordered box (owner, 2026-10-31).
 - Our own design language: rounded bordered cards, soft tints, pill buttons, hairlines. Take another site's structure when it is easier to use, never its look (owner, 2026-10-31).
+- Links are always the app's blue, never purple after a visit (owner, 2026-11-01).
 - No gradients on buttons (or other controls): solid colours only. The book covers are the one exception (owner, 2026-10-31).
 - The textbooks stay at a high level and are not too easy. Basic is not easy: a basic problem uses relatively simple techniques but can be hard to solve. An Introduction's Exercises are basic, not easy (owner, 2026-10-31).
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).

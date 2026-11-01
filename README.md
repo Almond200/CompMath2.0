@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- Links keep one colour: every link uses the theme's accent colour and no longer turns purple after a visit (a zero-specificity rule in the stylesheet, so a component's own colour still wins). Lesson references such as (C6.4) and the Study a concept more links look like card links.
 - AMC Counting & Probability: R2 (Probability from scratch: probability by counting, several draws and independent events, expected value) is written.
 - AMC Counting & Probability, second plan: the plan moved into the book's own section of LEARN-OUTLINE (ten chapters R1 to R10 in four parts), the old R1 to R3 files were removed, and R1 (Counting from scratch: listing and the fencepost, the multiplication and addition principles, permutations and combinations, casework and complements) is written in the chapter structure. The other chapters show as not yet written.
 - AMC Number Theory is complete: M6 (number theory for the AMC 12: prime exponents and multiplicative functions, inverses with Euler and Wilson, the order of a number, Pell equations) and M7 (from the AMC to the AIME: residues and cycles together, integer equations by factoring and bounds, mixed problems), each with an Introduction, a Summary, Review and Challenge Problems. Every number was computed.
