@@ -447,6 +447,11 @@ body {
   border: 1px solid var(--border);
   border-radius: 8px;
 }
+.list-description { margin-top: 8px; }
+.list-description summary { width: fit-content; color: var(--text-dim); font-size: 13px; cursor: pointer; }
+.list-description form { display: grid; gap: 8px; max-width: 560px; margin-top: 8px; }
+.list-description textarea { resize: vertical; }
+.list-description button { justify-self: start; }
 .list-add-input:focus { outline: none; border-color: var(--accent); }
 
 .list-add-results {
