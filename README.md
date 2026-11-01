@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Geometry: S9 (Triangles and circles for the AMC 12: the law of sines, cevians, cyclic and tangential quadrilaterals, touching circles, the orthocenter and excircles) is written.
 - AMC Geometry: S8 (Solids: volume and surface area, cubes, polyhedra, unfolding and cross sections) is written.
 - AMC Geometry: S6 (Polygons and counting in figures) and S7 (Coordinates and transformations) are written.
 - AMC Geometry: S5 (Circles: chords, inscribed angles and cyclic quadrilaterals, tangents, power of a point, incircles and touching circles) is written.
