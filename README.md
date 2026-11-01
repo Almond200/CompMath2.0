@@ -312,6 +312,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Counting & Probability: R7 (Sets, graphs and logic: subsets avoiding a relation, graphs and tournaments, pigeonhole and extremes, colorings and invariants, logic puzzles and cases, the contrapositive) is written.
+- A chapter tab's card follows the pointer up and down the tab again, now in front of the top bar. PLAN: diagrams, lessons in search and proofreading come before Create a contest.
 - AMC Counting & Probability: R6 (Probability for the AMC 10: conditional probability and the hypergeometric count, repeated trials, probability as length and area, linearity of expectation) is written.
 - AMC Counting & Probability: R5 (Recursion, paths and processes: recursion and tilings, grid paths and filling the grid, working backward, labeling game positions and simulating, the reflection principle) is written.
 - The book view's chapter-tab cards are drawn in front of everything, the top bar included, and the C tab's card hangs down from the tab instead of reaching up under the top bar.
