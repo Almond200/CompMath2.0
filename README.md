@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Number Theory is complete: M6 (number theory for the AMC 12: prime exponents and multiplicative functions, inverses with Euler and Wilson, the order of a number, Pell equations) and M7 (from the AMC to the AIME: residues and cycles together, integer equations by factoring and bounds, mixed problems), each with an Introduction, a Summary, Review and Challenge Problems. Every number was computed.
 - Quick changes from the owner, all done. Lessons and Introductions run our problems, solutions, then Exercises; only Review and Challenge Problems put the contest problems before the solutions. The AIME books have part headings (Foundations, Core topics, Advanced topics, Beyond the AIME). Contents and Introduction has the code C, and the Contents link is no longer bold. How to Use This Book is a page of the book view (rail, header, arrows), and the C tab scrubs between Contents and How to Use. Lesson references in parentheses such as (L3.4) link to the lesson. Book roles no longer say "AMC 10 and 12". C5.1's string recursion states $s_0 = 1$ and the range $n \ge 2$; L1.1 says $\sqrt{x^2} = |x|$. Ptolemy's Theorem has a Key form for four points on a line, and Ptolemy's Inequality names that equality case. A problem page's How this problem works ends with "Study a concept more": one link per card to the lesson that teaches it (an AIME problem prefers an AIME book).
 
 **2026-10-31**
