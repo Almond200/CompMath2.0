@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- AMC Geometry is finished: S11 (Space: tetrahedra and frusta, coordinates and planes) and S12 (From the AMC to the AIME: signed lengths and degenerate figures, coordinates or a synthetic route, mixed problems) are written. All four AMC books of the second plan are complete.
 - AMC Geometry: S10 (Analytic geometry: conics, polar coordinates and determinants, vectors and transformations, theorems about quadrilaterals and hexagons, regions and neighborhoods) is written.
 - Titles no longer name the AMC 10 or AMC 12: L10 Advanced polynomials, M6 Advanced number theory, R6 Probability tools, R8 Advanced counting, R9 Advanced probability, S9 Advanced triangles and circles; book descriptions and chapter openings say "advanced" or "harder AMC problems" instead.
 - AMC Geometry: S9 (Triangles and circles for the AMC 12: the law of sines, cevians, cyclic and tangential quadrilaterals, touching circles, the orthocenter and excircles) is written.
