@@ -5410,7 +5410,7 @@
     const { series, name } = bookParts(b);
     return `<span class="bk-cover bk-${b.id} bk-${size}" aria-hidden="true">
         <span class="bk-series">${escapeAttr(series)}</span>
-        <span class="bk-name">${escapeAttr(name)}</span>
+        <span class="bk-name${/ & /.test(name) ? " bk-name-amp" : ""}">${escapeAttr(name).replace(/ &amp; /g, "\u00a0&amp; ")}</span>
         <svg class="bk-motif" viewBox="0 0 100 100">${BOOK_MOTIFS[b.id] || ""}</svg>
         ${size === "s" ? "" : `<span class="bk-size">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</span>`}
       </span>`;
