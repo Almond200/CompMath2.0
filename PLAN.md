@@ -8,7 +8,7 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add a README changelog entry, commit and push.
 
-## Current state (updated 2026-11-01, twentieth cloud chat, branch `claude/stoic-ramanujan-9w8r10`)
+## Current state (updated 2026-11-01, twentieth cloud chat, branch `claude/stoic-ramanujan-9w8r10`; olympiad lessons are written from scratch, so read a finished chapter such as `olympiad-proofs/p3.js` as the model, and check every inequality numerically)
 
 - **Counts:** 765 cards (548 formulas, 169 methods, 48 patterns); 41 built-in lists; 4,675 problems, every one with a strategy, 4,229 citing at least one card; 4,665 with statements; 340 figures drawn for the app. Check with `$JSC tools/validate-problem-db.js`.
 - **Reference and Practice:** finished (the earlier road ahead, steps A to I, R0, and the card renovation and proof pass). `QUESTIONS.md` has no card candidate open; the next is P54. Every problem is read and tagged, and every card has two practice problems.
@@ -23,7 +23,7 @@
 - **A user's bug report, fixed (end of the seventeenth chat):** the three dialogs (Filters, Browse by tag, a space's "i") trap and return the keyboard focus, with `aria-modal` and `aria-pressed`; Import progress is all or nothing, with rollback and an accurate message; the answer parser caps ± signs; Quiz and Flashcards let a focused link or button handle Enter and Space and say when the browser is not saving; Flashcards' reset clears both directions, its empty session says why, its setup keeps the focus; the Formula Web's search picks a route's Start and End from the keyboard. Each finding was checked before it was fixed.
 - **Labels and order (owner, eighteenth chat):** every Learn problem has a unique label (contest problems numbered on from a page's own problems; old reviews use N3.R.1), and lessons run our problems, solutions, then Exercises, while Review and Challenge Problems run our problems, contest problems, then solutions (owner, 2026-11-01; CONVENTIONS §14). Write new chapters to fit.
 - **Lesson tags (owner, eighteenth chat):** every lesson of a converted chapter carries Core, Core II or Extension after its title in the outline (CONVENTIONS §14); give them as each chapter is converted.
-- **Next action:** "The order of work" below: the quick changes are done (nineteenth chat); AMC Number Theory M6 and M7 are done; AMC Counting & Probability is done (R1 to R10); AMC Geometry is done (S1 to S12); the Bridge is removed. Step 3: the olympiad books are being written: Olympiad Proofs done (P1 to P4); Olympiad Algebra next (E1 to E5), then Number Theory, Combinatorics, Geometry.
+- **Next action:** "The order of work" below: the quick changes are done (nineteenth chat); AMC Number Theory M6 and M7 are done; AMC Counting & Probability is done (R1 to R10); AMC Geometry is done (S1 to S12); the Bridge is removed. Step 3: the olympiad books are being written: Olympiad Proofs done (P1 to P4); Olympiad Algebra E1 to E3 done, E4 (polynomials) next, then E5, then Number Theory, Combinatorics, Geometry.
 - **For the owner to try now:** C5 as the model chapter (`#/learn/aime-counting/c5`), How to Use This Book from any book's contents, Settings with its preview and search, and the app on a phone.
 
 ## The road ahead: the Learn track

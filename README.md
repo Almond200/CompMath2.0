@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- Olympiad Algebra: E1 (Symmetric inequalities: Schur, Vornicu-Schur, Muirhead, Maclaurin), E2 (The classical inequalities: Hölder, Chebyshev, Minkowski, Karamata, Popoviciu) and E3 (Methods: homogenizing, smoothing, SOS, uvw) are written; every inequality was checked numerically.
 - Olympiad Proofs is written (P1 What a proof is, P2 Induction, P3 Extremal arguments and descent, P4 Existence proofs), each chapter in the approved structure with our own problems and full written proofs; the olympiad outline gained Introductions, Summaries and lesson tags.
 - Learn: five olympiad books join the shelf, from the drafted outline (Olympiad Proofs, Algebra, Number Theory, Combinatorics, Geometry; 25 chapters), as a third track with their own covers and motifs. Their chapters show as not yet written.
 - The AMC → AIME Bridge is removed: its outline section, chapter files, shelf id, cover colours and motif. Its lessons live on in the four AMC books (LEARN-OUTLINE, "Where the Bridge goes"), and the AIME books' references to Bridge lessons now point to the AMC lessons that teach the same cards (L10.2, M1.4, S3.2, S4.6, S9.2).
