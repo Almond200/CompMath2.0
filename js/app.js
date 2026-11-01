@@ -6743,8 +6743,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const groupAction = pending.length ? "Regroup" : grouped ? (l.builtin ? "Grouped" : "Ungroup") : "Group";
     const headTools = isBuiltin ? "" : `
       <div class="list-head-tools">
-        ${canGroup ? `<button class="list-tool${grouped ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}"`}>${groupAction}</button>` : ""}
-        ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>`}
+        ${canGroup ? `<button class="list-tool${grouped && !pending.length ? " on" : ""}" data-list-group="${l.id}" ${pending.length ? 'data-regroup title="Group newly added cards"' : `aria-pressed="${grouped}"`}>${groupAction}</button>` : ""}
+        ${l.builtin ? "" : `<button class="list-tool" data-list-rename="${l.id}">Rename</button>
+          <button class="list-tool" data-edit-description>Change description</button>`}
         ${l.builtin && entries.length ? `<button class="list-tool danger" data-list-clear="${l.id}">Clear</button>` : ""}
         ${l.builtin ? "" : `<button class="list-tool danger" data-list-delete="${l.id}">Delete list</button>`}
       </div>`;
@@ -6764,14 +6765,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
             <h2${isBuiltin || l.builtin ? "" : ` data-list-title="${l.id}" title="Click to rename"`}>${escapeAttr(l.name)}</h2>
             ${headTools}
           </div>
-          ${l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
-          ${!isBuiltin && !l.builtin ? `<details class="list-description">
-            <summary>${l.blurb ? "Edit description" : "Add description"}</summary>
-            <form data-list-description="${escapeAttr(l.id)}">
-              <textarea class="list-add-input" aria-label="List description" rows="2">${escapeAttr(l.blurb || "")}</textarea>
-              <button class="list-tool" type="submit">Save description</button>
-            </form>
-          </details>` : ""}
+          ${!isBuiltin && !l.builtin
+            ? `<button type="button" class="topic-blurb list-description" data-description="${escapeAttr(l.id)}" title="Change description">${escapeAttr(l.blurb || "Click to add description")}</button>`
+            : l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
         </div>
         ${tools}
         ${entries.length
@@ -6781,17 +6777,38 @@ The book remembers the last lesson you opened, in this browser, and the contents
           : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
   }
-  $content.addEventListener("submit", e => {
-    const form = e.target.closest("form[data-list-description]");
-    if (!form) return;
-    e.preventDefault();
-    const list = getList(form.dataset.listDescription);
-    if (!list || list.builtin) return;
-    list.blurb = form.querySelector("textarea").value.trim();
-    saveLists();
-    render();
-    $content.querySelector(".list-description summary")?.focus();
-  });
+  function editListDescription() {
+    const button = $content.querySelector("button[data-description]");
+    if (!button) return;
+    const list = getList(button.dataset.description);
+    const input = document.createElement("textarea");
+    input.className = "topic-blurb list-description-editor";
+    input.rows = 2;
+    input.setAttribute("aria-label", "List description");
+    input.value = list.blurb || "";
+    button.replaceWith(input);
+    input.focus();
+    input.select();
+    let cancelled = false;
+    input.addEventListener("keydown", e => {
+      if (e.isComposing || (e.key !== "Enter" && e.key !== "Escape")) return;
+      e.preventDefault();
+      cancelled = e.key === "Escape";
+      input.blur();
+      button.focus();
+    });
+    input.addEventListener("blur", () => {
+      const value = input.value.trim();
+      if (!cancelled && value !== (list.blurb || "")) {
+        list.blurb = value;
+        saveLists();
+        button.textContent = value || "Click to add description";
+        input.replaceWith(button);
+        renderMath(button.parentElement);
+      } else input.replaceWith(button);
+    }, { once: true });
+
+  }
   function renderListDetail(listId) { renderListSurface({ type: "list", listId }); }
 
   // ---------- Problem Database: competition/year navigator + per-problem detail ----------
@@ -8608,6 +8625,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       render();
       return;
     }
+    if (e.target.closest("[data-edit-description], button[data-description]")) { editListDescription(); return; }
     const rn = e.target.closest("[data-list-rename]") || e.target.closest("h2[data-list-title]:not([contenteditable='true'])");
     if (rn) { startListRename(rn.dataset.listRename || rn.dataset.listTitle); return; }
     const del = e.target.closest("[data-list-delete]");
