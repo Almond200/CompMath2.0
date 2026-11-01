@@ -47,7 +47,7 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 |---|---|---|
 | **AMC Algebra** | algebra for the AMC: equations, functions, polynomials, sequences, inequalities, logarithms, trigonometry, complex numbers | L1 to L14 |
 | **AMC Number Theory** | number theory for the AMC: primes, divisors, digits, remainders, integer equations | M1 to M7 |
-| **AMC Counting & Probability** | counting, probability and expected value for the AMC | R1 to R3 |
+| **AMC Counting & Probability** | counting, probability and expected value for the AMC | R1 to R10 |
 | **AMC Geometry** | geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S4 |
 | **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
 | **AIME Algebra** | equations, polynomials, sequences, functions, inequalities, complex numbers and trig algebra | A1 to A9 |
@@ -146,103 +146,7 @@ Moved to its own section, "Book: AMC Number Theory", below, where it is being wr
 
 #### Book: AMC Counting & Probability
 
-From listing and multiplying to arrangements, distributions, recursion and probability, ending with the AMC 12 additions and mixed AIME-style problems.
-
-##### Part: Foundations
-
-**R1. Counting from scratch** · Core. Listing carefully, the multiplication and addition principles, permutations and combinations, cases and complements.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R1.1 Making a list and the fencepost | Core | `organized-listing`, `fencepost-counting` | 18 |
-| R1.2 The multiplication and addition principles | Core | `constructive-counting`, `counting-functions` | 38 |
-| R1.3 Permutations and combinations | Core | `permutations-combinations`, `committee-chair` | 13 |
-| R1.4 Casework and complements | Core | `casework-method`, `complementary-counting`, `elimination-counting` | 162 |
-
-**R2. Probability from scratch** · Core. Probability as a ratio of counts, independent events, and the average outcome.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R2.1 Probability by counting | Core | `basic-probability`, `symmetry-probability` | 40 |
-| R2.2 Several draws and independent events | Core | *(pattern)* `drawing-without-replacement`, `independent-events` | 15 |
-| R2.3 Expected value | Core | `expected-value` | 7 |
-
-##### Part: Core topics
-
-**R3. Arrangements** · Core. Arrangements with repeats, restrictions, circles and derangements, and fixing overcounts.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R3.1 Arranging letters with repeats | Core | `multiset-permutations` | 12 |
-| R3.2 Gaps, blocks and non-adjacent choices | Core | `gap-method`, `counting-blocks`, `non-adjacent-selection` | 8 |
-| R3.3 Circles and derangements | Core II | `circular-permutations`, `derangements` | 3 |
-| R3.4 Inclusion-exclusion and overcounting | Core | `inclusion-exclusion`, `pie`, `uniform-overcount`, `double-counting` | 32 |
-
-**R4. Distributions and binomial coefficients** · Core. Putting objects into boxes, Pascal's triangle and the binomial theorem, and counting one set by matching it with another.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R4.1 Stars and bars | Core | `stars-and-bars`, `balls-boxes-table`, `partitions` | 13 |
-| R4.2 Pascal's triangle | Core II | `pascals-identity`, `binomial-row-sums`, `hockey-stick` | 6 |
-| R4.3 The binomial theorem | Core | `binomial-theorem` | 9 |
-| R4.4 Bijections | Core II | `bijection-method` | 6 |
-
-**R5. Recursion, paths and processes** · Core. Counting by building from smaller cases, lattice paths, and processes run backward or simulated.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R5.1 Recursion and tilings | Core | `recursive-counting`, *(pattern)* `tiling-a-board` | 6 |
-| R5.2 Paths in a grid | Core | `grid-paths`, `grid-path-fill` | 5 |
-| R5.3 Working backward and simulating | Core | `working-backwards`, `backward-induction`, `simulate-the-process` | 22 |
-| R5.4 The reflection principle | Extension | `reflection-principle` | 1 |
-
-**R6. Probability for the AMC 10** · Core. Conditional probability, repeated trials, probability as area, and linearity of expectation.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R6.1 Conditional probability | Core | `conditional-probability`, `hypergeometric` | 12 |
-| R6.2 Repeated trials | Core | `binomial-probability` | 9 |
-| R6.3 Probability as length and area | Core | `geometric-probability` | 31 |
-| R6.4 Linearity of expectation | Core II | `indicator-variables` | 1 |
-
-**R7. Sets, graphs and logic** · Core. Subsets, graphs, pigeonhole, colorings and logic puzzles.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R7.1 Subsets | Extension | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts`, `odd-part-chains` | 2 |
-| R7.2 Graphs | Core | `handshake-lemma`, `eulerian-paths`, *(pattern)* `round-robin-tournaments`, `disconnected-graph-edges` | 9 |
-| R7.3 Pigeonhole and extremes | Core | `pigeonhole`, `pairing-to-bound`, `extremal-principle` | 15 |
-| R7.4 Colorings and invariants | Core | `coloring-arguments`, `invariants-coloring` | 12 |
-| R7.5 Logic puzzles and cases | Core | *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares`, `proof-by-cases`, `wlog-symmetry` | 24 |
-| R7.6 Proof by contrapositive | Extension | `contrapositive` | 3 |
-
-##### Part: Advanced topics
-
-**R8. Counting for the AMC 12** · Core II. Upper bounds, symmetry, more binomial identities, and games.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R8.1 Upper bounds and counting up to symmetry | Core II | `stars-bars-upper-bound`, `burnsides-lemma` | 7 |
-| R8.2 More binomial identities | Core II | `vandermonde`, `multinomial-theorem`, `generating-function-method` | 7 |
-| R8.3 Graph coloring and games | Core II | `graph-coloring`, `strategy-stealing`, `turn-based-games`, `sprague-grundy` | 5 |
-
-**R9. Probability for the AMC 12** · Core II. Bayes' theorem, states and waiting times, and continuous probability.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R9.1 Bayes' theorem | Extension | `bayes-theorem` | 1 |
-| R9.2 States and waiting times | Core | `states-recursion-prob`, `geometric-distribution` | 14 |
-| R9.3 Continuous probability | Extension | `product-of-uniforms` | 1 |
-
-##### Part: Toward the AIME
-
-**R10. From the AMC to the AIME: counting and probability** · Core. No new cards: checking cases and overcounts, small cases as a test, and harder mixed problems.
-
-| Lesson | Importance | Cards | AMC problems |
-|---|---|---|---|
-| R10.1 Checking cases and double counting | Core | no card (prereq casework-method, organized-listing) | mixed |
-| R10.2 Small cases as a test | Core | no card (prereq recursive-counting) | mixed |
-| R10.3 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+Moved to its own section, "Book: AMC Counting & Probability", below, where it is being written (nineteenth chat).
 
 #### Book: AMC Geometry
 
@@ -662,41 +566,143 @@ No new cards: residues, cycles and integer equations together, in harder mixed p
 
 ## Book: AMC Counting & Probability
 
-Counting and probability for the AMC 10 and AMC 12: counting methods, probability and expected value, then the AMC 12 additions.
+From listing and multiplying to arrangements, distributions, recursion and probability, ending with the AMC 12 additions and mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
-### R1. Counting (Core)
+#### Part: Foundations
 
-| Lesson | Cards |
-|---|---|
-| R1.1 Permutations, combinations and building objects | `permutations-combinations`, `constructive-counting`, `counting-functions`, `fencepost-counting` |
-| R1.2 Cases, complements and inclusion-exclusion | `casework-method`, `complementary-counting`, `inclusion-exclusion`, `pie`, `uniform-overcount` |
-| R1.3 Arrangements with restrictions | `multiset-permutations`, `gap-method`, `counting-blocks`, `circular-permutations`, `non-adjacent-selection`, `derangements` |
-| R1.4 Distributions and binomial coefficients | `stars-and-bars`, `balls-boxes-table`, `pascals-identity`, `binomial-row-sums`, `hockey-stick`, `binomial-theorem`, `bijection-method` |
-| R1.5 Recursion, paths and processes | `recursive-counting`, *(pattern)* `tiling-a-board`, `grid-paths`, `grid-path-fill`, `backward-induction`, `simulate-the-process`, `working-backwards` |
-| R1.6 Subsets, graphs and pigeonhole | `subset-avoiding-relation`, `subset-sum-facts`, `handshake-lemma`, `eulerian-paths`, *(pattern)* `round-robin-tournaments`, `pigeonhole`, `pairing-to-bound`, `coloring-arguments` |
+### R1. Counting from scratch (Core)
 
-### R2. Probability and expected value (Core)
+Listing carefully, the multiplication and addition principles, permutations and combinations, cases and complements.
 
-| Lesson | Cards |
-|---|---|
-| R2.1 Probability by counting | `basic-probability`, *(pattern)* `drawing-without-replacement`, `symmetry-probability` |
-| R2.2 Independence and conditional probability | `independent-events`, `conditional-probability`, `hypergeometric`, `binomial-probability` |
-| R2.3 Geometric probability | `geometric-probability` |
-| R2.4 Expected value | `expected-value` |
-| R2.5 Logic and puzzles | *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R1.2 Making a list and the fencepost | Core | `organized-listing`, `fencepost-counting` | 18 |
+| R1.3 The multiplication and addition principles | Core | `constructive-counting`, `counting-functions` | 38 |
+| R1.4 Permutations and combinations | Core | `permutations-combinations`, `committee-chair` | 13 |
+| R1.5 Casework and complements | Core | `casework-method`, `complementary-counting`, `elimination-counting` | 162 |
+| R1.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R1.7 Review Problems and R1.8 Challenge Problems | |
 
-### R3. Counting and probability for the AMC 12 (Core II)
+### R2. Probability from scratch (Core)
 
-| Lesson | Cards |
-|---|---|
-| R3.1 More counting structures | `restricted-sequences`, `stars-bars-upper-bound`, `catalan-numbers`, `committee-chair`, `nested-subset-pairs` |
-| R3.2 More binomial identities | `vandermonde`, `squared-binomial-sum`, `multinomial-theorem`, `generating-function-method` |
-| R3.3 Invariants, colorings and symmetry | `invariants-coloring`, `graph-coloring`, `permutation-cycle-structure`, `strategy-stealing` |
-| R3.4 Conditional probability and expectation | `bayes-theorem`, `indicator-variables`, `expected-fixed-points`, `tail-sum-expectation`, `total-expectation` |
-| R3.5 Random processes | `states-recursion-prob`, `geometric-distribution`, `turn-based-games` |
-| R3.6 Continuous probability | `product-of-uniforms`, `order-statistics`, `variance-independence` |
+Probability as a ratio of counts, independent events, and the average outcome.
 
----
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R2.2 Probability by counting | Core | `basic-probability`, `symmetry-probability` | 40 |
+| R2.3 Several draws and independent events | Core | *(pattern)* `drawing-without-replacement`, `independent-events` | 15 |
+| R2.4 Expected value | Core | `expected-value` | 7 |
+| R2.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R2.6 Review Problems and R2.7 Challenge Problems | |
+
+#### Part: Core topics
+
+### R3. Arrangements (Core)
+
+Arrangements with repeats, restrictions, circles and derangements, and fixing overcounts.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R3.2 Arranging letters with repeats | Core | `multiset-permutations` | 12 |
+| R3.3 Gaps, blocks and non-adjacent choices | Core | `gap-method`, `counting-blocks`, `non-adjacent-selection` | 8 |
+| R3.4 Circles and derangements | Core II | `circular-permutations`, `derangements` | 3 |
+| R3.5 Inclusion-exclusion and overcounting | Core | `inclusion-exclusion`, `pie`, `uniform-overcount`, `double-counting` | 32 |
+| R3.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R3.7 Review Problems and R3.8 Challenge Problems | |
+
+### R4. Distributions and binomial coefficients (Core)
+
+Putting objects into boxes, Pascal's triangle and the binomial theorem, and counting one set by matching it with another.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R4.2 Stars and bars | Core | `stars-and-bars`, `balls-boxes-table`, `partitions` | 13 |
+| R4.3 Pascal's triangle | Core II | `pascals-identity`, `binomial-row-sums`, `hockey-stick` | 6 |
+| R4.4 The binomial theorem | Core | `binomial-theorem` | 9 |
+| R4.5 Bijections | Core II | `bijection-method` | 6 |
+| R4.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R4.7 Review Problems and R4.8 Challenge Problems | |
+
+### R5. Recursion, paths and processes (Core)
+
+Counting by building from smaller cases, lattice paths, and processes run backward or simulated.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R5.2 Recursion and tilings | Core | `recursive-counting`, *(pattern)* `tiling-a-board` | 6 |
+| R5.3 Paths in a grid | Core | `grid-paths`, `grid-path-fill` | 5 |
+| R5.4 Working backward and simulating | Core | `working-backwards`, `backward-induction`, `simulate-the-process` | 22 |
+| R5.5 The reflection principle | Extension | `reflection-principle` | 1 |
+| R5.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R5.7 Review Problems and R5.8 Challenge Problems | |
+
+### R6. Probability for the AMC 10 (Core)
+
+Conditional probability, repeated trials, probability as area, and linearity of expectation.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R6.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R6.2 Conditional probability | Core | `conditional-probability`, `hypergeometric` | 12 |
+| R6.3 Repeated trials | Core | `binomial-probability` | 9 |
+| R6.4 Probability as length and area | Core | `geometric-probability` | 31 |
+| R6.5 Linearity of expectation | Core II | `indicator-variables` | 1 |
+| R6.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R6.7 Review Problems and R6.8 Challenge Problems | |
+
+### R7. Sets, graphs and logic (Core)
+
+Subsets, graphs, pigeonhole, colorings and logic puzzles.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R7.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R7.2 Subsets | Extension | *(pattern)* `subset-avoiding-relation`, `subset-sum-facts`, `odd-part-chains` | 2 |
+| R7.3 Graphs | Core | `handshake-lemma`, `eulerian-paths`, *(pattern)* `round-robin-tournaments`, `disconnected-graph-edges` | 9 |
+| R7.4 Pigeonhole and extremes | Core | `pigeonhole`, `pairing-to-bound`, `extremal-principle` | 15 |
+| R7.5 Colorings and invariants | Core | `coloring-arguments`, `invariants-coloring` | 12 |
+| R7.6 Logic puzzles and cases | Core | *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares`, `proof-by-cases`, `wlog-symmetry` | 24 |
+| R7.7 Proof by contrapositive | Extension | `contrapositive` | 3 |
+| R7.8 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R7.9 Review Problems and R7.10 Challenge Problems | |
+
+#### Part: Advanced topics
+
+### R8. Counting for the AMC 12 (Core II)
+
+Upper bounds, symmetry, more binomial identities, and games.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R8.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R8.2 Upper bounds and counting up to symmetry | Core II | `stars-bars-upper-bound`, `burnsides-lemma` | 7 |
+| R8.3 More binomial identities | Core II | `vandermonde`, `multinomial-theorem`, `generating-function-method` | 7 |
+| R8.4 Graph coloring and games | Core II | `graph-coloring`, `strategy-stealing`, `turn-based-games`, `sprague-grundy` | 5 |
+| R8.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R8.6 Review Problems and R8.7 Challenge Problems | |
+
+### R9. Probability for the AMC 12 (Core II)
+
+Bayes' theorem, states and waiting times, and continuous probability.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R9.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R9.2 Bayes' theorem | Extension | `bayes-theorem` | 1 |
+| R9.3 States and waiting times | Core | `states-recursion-prob`, `geometric-distribution` | 14 |
+| R9.4 Continuous probability | Extension | `product-of-uniforms` | 1 |
+| R9.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R9.6 Review Problems and R9.7 Challenge Problems | |
+
+#### Part: Toward the AIME
+
+### R10. From the AMC to the AIME: counting and probability (Core)
+
+No new cards: checking cases and overcounts, small cases as a test, and harder mixed problems.
+
+| Lesson | Importance | Cards | AMC problems |
+|---|---|---|---|
+| R10.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| R10.2 Checking cases and double counting | Core | no card (prereq casework-method, organized-listing) | mixed |
+| R10.3 Small cases as a test | Core | no card (prereq recursive-counting) | mixed |
+| R10.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
+| R10.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R10.6 Review Problems and R10.7 Challenge Problems | |
 
 ## Book: AMC Geometry
 
