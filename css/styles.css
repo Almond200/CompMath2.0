@@ -3929,17 +3929,15 @@ html .content:has(> .bk-view), html[data-density] .content:has(> .bk-view) { pad
 .bk-tab:first-child { font-size: 12.5px; letter-spacing: 0.04em; margin-bottom: 3px; }
 .bk-tab:hover { background: var(--bg-card); color: var(--text); }
 .bk-tab.is-current, .bk-tab.is-current:hover { background: var(--bk-soft); color: var(--bk-ink); }
-.bk-tip { display: none; position: absolute; left: calc(100% + 12px); top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 6px 11px;
+.bk-tip { display: none; position: absolute; left: calc(100% + 12px); top: var(--tip-y, 50%); transform: translateY(-50%); white-space: nowrap; padding: 6px 11px;
   border: 1px solid var(--border-light); border-radius: 8px; background: var(--bg-card); color: var(--text); font-size: 13px; font-weight: 600;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); z-index: 40; pointer-events: none; }
 .bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; transform: rotate(45deg);
   background: var(--bg-card); border-left: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
-/* A tab's card is drawn in front of everything, the top bar included (owner, 2026-11-01), and the C tab's
-   card hangs down from the tab's top edge, so it never reaches up under the top bar. */
+/* A tab's card is drawn in front of everything, the top bar included, and follows the pointer up and
+   down the tab (--tip-y, set by the scrubber) (owner, 2026-11-01). */
 .bk-rail:hover, .bk-rail:focus-within, .bk-rail:has(.is-scrub) { z-index: 60; }
-.bk-tab:first-child .bk-tip { top: 0; transform: none; }
-.bk-tab:first-child .bk-tip::before { top: 18px; }
 /* The scrubbing tabs are all one height and carry no markers (owner, 2026-10-31); the page list
    each tab holds is data for the scrubber, never shown. */
 .bk-rail { touch-action: none; }
@@ -4024,7 +4022,6 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
   .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
   .bk-rail { padding: 3px; }
   .bk-tab { height: 32px; font-size: 13px; }
-  .bk-tab:first-child .bk-tip::before { top: 16px; }
   .bk-tip { display: none; width: max-content; max-width: calc(100vw - 72px); white-space: normal; }
   .bk-tab:hover .bk-tip { display: none; }
   .bk-scrub.is-scrub .bk-tip { display: block; }
