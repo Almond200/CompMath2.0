@@ -1,4 +1,4 @@
-// Learn, AMC Geometry, chapter S9: triangles and circles for the AMC 12 (CONVENTIONS §14). Part: Advanced topics.
+// Learn, AMC Geometry, chapter S9: advanced triangles and circles (CONVENTIONS §14). Part: Advanced topics.
 // The second plan's book, written fresh (twentieth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["S9"] = {
@@ -6,7 +6,7 @@ window.MATH_LEARN["S9"] = {
     "S9.1": {
       prereq: ["law-of-cosines", "inscribed-angle-theorem", "tangent-circles", "herons-formula"],
       cards: [],
-      body: String.raw`The hard problems of the AMC 12 use a second layer of triangle and circle facts: the law of sines and the trigonometry around it, formulas for cevians, theorems about quadrilaterals inscribed in or drawn around circles, the tangents and centers of touching circles, and a few special points of a triangle. Each extends a tool from the Core chapters.
+      body: String.raw`The hard AMC problems use a second layer of triangle and circle facts: the law of sines and the trigonometry around it, formulas for cevians, theorems about quadrilaterals inscribed in or drawn around circles, the tangents and centers of touching circles, and a few special points of a triangle. Each extends a tool from the Core chapters.
 
 The law of sines ties every side to the circle through the corners: $\tfrac{a}{\sin A} = 2R$, so a triangle with an angle of $30^\circ$ opposite a side of $5$ has circumradius $5$. The circumradius also comes from the sides and the area, $R = \tfrac{abc}{4A}$: $\tfrac{13 \cdot 14 \cdot 15}{4 \cdot 84} = \tfrac{65}{8}$ for the $13$-$14$-$15$ triangle. And a median has a length fixed by the sides: in a $6$-$8$-$10$ triangle the median to the side $10$ is $5$, which here is the right triangle's median to the hypotenuse.
 

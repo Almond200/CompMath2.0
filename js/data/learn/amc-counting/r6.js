@@ -1,4 +1,4 @@
-// Learn, AMC Counting & Probability, chapter R6: probability for the AMC 10 (CONVENTIONS §14). Part: Core topics.
+// Learn, AMC Counting & Probability, chapter R6: probability tools (CONVENTIONS §14). Part: Core topics.
 // The second plan's book, written fresh (twentieth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["R6"] = {

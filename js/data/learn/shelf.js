@@ -312,7 +312,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "L10",
-    "title": "Polynomials for the AMC 12",
+    "title": "Advanced polynomials",
     "level": "Core II",
     "lessons": [
      {
@@ -684,7 +684,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "M6",
-    "title": "Number theory for the AMC 12",
+    "title": "Advanced number theory",
     "level": "Core II",
     "lessons": [
      {
@@ -933,7 +933,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "R6",
-    "title": "Probability for the AMC 10",
+    "title": "Probability tools",
     "level": "Core",
     "lessons": [
      {
@@ -1015,7 +1015,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "R8",
-    "title": "Counting for the AMC 12",
+    "title": "Advanced counting",
     "level": "Core II",
     "lessons": [
      {
@@ -1046,7 +1046,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "R9",
-    "title": "Probability for the AMC 12",
+    "title": "Advanced probability",
     "level": "Core II",
     "lessons": [
      {
@@ -1413,7 +1413,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "S9",
-    "title": "Triangles and circles for the AMC 12",
+    "title": "Advanced triangles and circles",
     "level": "Core",
     "lessons": [
      {

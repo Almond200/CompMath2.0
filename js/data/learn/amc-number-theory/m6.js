@@ -1,4 +1,4 @@
-// Learn, AMC Number Theory, chapter M6: number theory for the AMC 12 (CONVENTIONS §14). Part: Advanced topics.
+// Learn, AMC Number Theory, chapter M6: advanced number theory (CONVENTIONS §14). Part: Advanced topics.
 // The second plan's book, written fresh (nineteenth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["M6"] = {
@@ -6,7 +6,7 @@ window.MATH_LEARN["M6"] = {
     "M6.1": {
       prereq: ["fundamental-theorem-arithmetic", "modular-basics", "fermats-little-theorem"],
       cards: [],
-      body: String.raw`This chapter collects the number theory that appears in the later AMC 12 problems. None of it is new in spirit: it is the factorization of M1 and the remainders of M4, pushed one step further.
+      body: String.raw`This chapter collects the number theory that appears in the harder AMC problems. None of it is new in spirit: it is the factorization of M1 and the remainders of M4, pushed one step further.
 
 The first idea is to work one prime at a time. A gcd takes the smaller exponent of each prime, an lcm the larger, and a product adds them, so a condition on gcds and lcms splits into separate conditions on exponents. The number of factors of $2$ in a sum is at least the smaller of the two counts, and it can be larger when the counts are equal: $1000 = 2^3 \cdot 125$ and $24 = 2^3 \cdot 3$ each have three factors of $2$, but their sum $1024 = 2^{10}$ has ten.
 

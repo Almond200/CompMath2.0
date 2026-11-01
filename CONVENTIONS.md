@@ -936,6 +936,7 @@ The rules for the Learn space. What each book, chapter and lesson holds is in `L
 - It holds the book ids, the chapter codes, titles and levels, and the lesson codes and titles.
 - `gates.sh` fails when it drifts from the outline.
 - A lesson's title is changed in the outline, then the shelf is rebuilt.
+- No chapter or lesson title names the AMC 10 or AMC 12; advanced material is called advanced (owner, 2026-11-01).
 
 **Chapter files.** A written chapter is one file, `js/data/learn/<book-id>/<code>.js` (for example `aime-number-theory/n3.js`), loaded from `index.html`. It holds:
 

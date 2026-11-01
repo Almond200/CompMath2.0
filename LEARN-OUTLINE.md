@@ -277,7 +277,7 @@ The logarithm laws and the equations they solve.
 | L9.3 Logarithmic and exponential equations | Core | `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` | 3 |
 | L9.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L9.5 Review Problems and L9.6 Challenge Problems | |
 
-### L10. Polynomials for the AMC 12 (Core II)
+### L10. Advanced polynomials (Core II)
 
 Vieta for any degree, roots and their transformations, interpolation, radicals and the factorizations worth knowing.
 
@@ -344,7 +344,7 @@ No new cards: the Bridge's habits, applied to harder mixed problems whose techni
 
 ## Book: AMC Number Theory
 
-From primes and divisibility to remainders, integer equations and the AMC 12's exponents and orders, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From primes and divisibility to remainders, integer equations and the advanced topics of exponents and orders, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -420,7 +420,7 @@ Equations whose answers must be whole numbers: linear ones, coins, factoring and
 
 #### Part: Advanced topics
 
-### M6. Number theory for the AMC 12 (Core II)
+### M6. Advanced number theory (Core II)
 
 Prime exponents, inverses, Euler's and Wilson's theorems, orders and Pell equations.
 
@@ -449,7 +449,7 @@ No new cards: residues, cycles and integer equations together, in harder mixed p
 
 ## Book: AMC Counting & Probability
 
-From listing and multiplying to arrangements, distributions, recursion and probability, ending with the AMC 12 additions and mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From listing and multiplying to arrangements, distributions, recursion and probability, then the advanced topics, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -519,7 +519,7 @@ Counting by building from smaller cases, lattice paths, and processes run backwa
 | R5.5 The reflection principle | Extension | `reflection-principle` | 1 |
 | R5.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R5.7 Review Problems and R5.8 Challenge Problems | |
 
-### R6. Probability for the AMC 10 (Core)
+### R6. Probability tools (Core)
 
 Conditional probability, repeated trials, probability as area, and linearity of expectation.
 
@@ -549,7 +549,7 @@ Subsets, graphs, pigeonhole, colorings and logic puzzles.
 
 #### Part: Advanced topics
 
-### R8. Counting for the AMC 12 (Core II)
+### R8. Advanced counting (Core II)
 
 Upper bounds, symmetry, more binomial identities, and games.
 
@@ -561,7 +561,7 @@ Upper bounds, symmetry, more binomial identities, and games.
 | R8.4 Graph coloring and games | Core II | `graph-coloring`, `strategy-stealing`, `turn-based-games`, `sprague-grundy` | 5 |
 | R8.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R8.6 Review Problems and R8.7 Challenge Problems | |
 
-### R9. Probability for the AMC 12 (Core II)
+### R9. Advanced probability (Core II)
 
 Bayes' theorem, states and waiting times, and continuous probability.
 
@@ -589,7 +589,7 @@ No new cards: checking cases and overcounts, small cases as a test, and harder m
 
 ## Book: AMC Geometry
 
-From angles, triangles and areas to circles, coordinates, solids and the AMC 12's trigonometry, conics and vectors, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From angles, triangles and areas to circles, coordinates and solids, then trigonometry, conics and vectors, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -703,7 +703,7 @@ Volumes and surfaces, cubes, polyhedra, and unfolding or slicing a solid.
 
 #### Part: Advanced topics
 
-### S9. Triangles and circles for the AMC 12 (Core)
+### S9. Advanced triangles and circles (Core)
 
 The law of sines, cevians, cyclic and tangential quadrilaterals, and circles that touch.
 
@@ -1213,7 +1213,7 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 #### Part: Core topics
 
-### G3. Trigonometric geometry (Core; AMC 10 students take B5.4 first)
+### G3. Trigonometric geometry (Core)
 
 | Lesson | Cards |
 |---|---|

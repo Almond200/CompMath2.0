@@ -45,5 +45,6 @@ $JSC tools/validate-problem-db.js
 - Links are always the app's blue, never purple after a visit (owner, 2026-11-01).
 - No gradients on buttons (or other controls): solid colours only. The book covers are the one exception (owner, 2026-10-31).
 - The textbooks stay at a high level and are not too easy. Basic is not easy: a basic problem uses relatively simple techniques but can be hard to solve. An Introduction's Exercises are basic, not easy (owner, 2026-10-31).
+- No chapter or lesson title names the AMC 10 or AMC 12: an advanced chapter is "Advanced counting", not "Counting for the AMC 12" (owner, 2026-11-01).
 - Card order has two values, Curated and Most used; do not bring back "By contest tier". Ramsey $R(3,3)=6$ was removed on purpose (2026-10-23).
 - LIVE's concept tags (`tools/live-cache/`) are hints for finding problems and gaps, never a source of tags or text.
