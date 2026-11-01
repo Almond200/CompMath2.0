@@ -448,7 +448,10 @@ body {
   border-radius: 8px;
 }
 .list-description { display: block; border: 0; padding: 0; background: none; font: inherit; text-align: left; cursor: text; }
-.list-description-editor { display: block; field-sizing: content; min-width: 12ch; box-sizing: border-box; border: 0; resize: none; font: inherit; }
+.description-line, .description-bullets { display: block; }
+.description-bullets { padding-inline-start: 1.4em; }
+.description-bullets > [role="listitem"] { display: list-item; list-style-type: disc; }
+.list-description-editor { display: block; width: 100%; min-height: 3.1em; overflow-y: hidden; box-sizing: border-box; border: 0; resize: none; font: inherit; }
 .topic-header .list-description-editor { max-width: min(100%, 760px); }
 .list-add-input:focus { outline: none; border-color: var(--accent); }
 

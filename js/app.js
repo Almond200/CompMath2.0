@@ -2109,7 +2109,7 @@
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
       container.querySelectorAll(".lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
-        if (skip(el)) return;
+        if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
             { left: "$$", right: "$$", display: true },
@@ -6359,7 +6359,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
           <div class="card-meta"><span class="badge badge-list">LIST</span><span class="level-range">${l.builtinSet ? (kindLabel[l.kind] || "Study list") : "Your list"} &middot; ${liveCount(l)} cards</span></div>
           ${(l.sections || []).length ? `<div class="rs-box">${l.sections.slice(0, 4).map(x => `<div class="rs-line"><span class="rs-v">${escapeAttr(x.title || l.name)}</span><span class="rs-n">${x.ids.length}</span></div>`).join("")}${l.sections.length > 4 ? `<div class="rs-line rs-more-line">+ ${l.sections.length - 4} more section${l.sections.length > 5 ? "s" : ""}</div>` : ""}</div>`
             : `<div class="rs-box">${liveIds(l).slice(0, 4).map(id => `<div class="rs-line"><span class="rs-v">${BY_ID[id].formula.name}</span></div>`).join("")}</div>`}
-          ${l.blurb ? `<p class="card-desc">${escapeAttr(l.blurb)}</p>` : ""}
+          ${l.blurb ? (l.builtinSet ? `<p class="card-desc">${escapeAttr(l.blurb)}</p>`
+            : `<div class="card-desc" data-description-formatted>${listDescriptionHtml(l.blurb)}</div>`) : ""}
         </a>`;
     };
     const parts = [];
@@ -6766,7 +6767,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
             ${headTools}
           </div>
           ${!isBuiltin && !l.builtin
-            ? `<button type="button" class="topic-blurb list-description" data-description="${escapeAttr(l.id)}" title="Change description">${escapeAttr(l.blurb || "Click to add description")}</button>`
+            ? `<button type="button" class="topic-blurb list-description" data-description-formatted data-description="${escapeAttr(l.id)}" title="Change description">${listDescriptionHtml(l.blurb || "Click to add description")}</button>`
             : l.blurb ? `<p class="topic-blurb">${escapeAttr(l.blurb)}</p>` : ""}
         </div>
         ${tools}
@@ -6777,6 +6778,36 @@ The book remembers the last lesson you opened, in this browser, and the contents
           : `<div class="empty-state"><div class="big">${glyph}</div>This list is empty. Press the &ldquo;+&rdquo; on any card to add it here, or the star to save it for later.</div>`}
       </div>`;
   }
+  // Parse only the small description format. Keep math opaque to emphasis and list parsing.
+  function listDescriptionHtml(source) {
+    const lines = [""];
+    const parts = source.split(/(\\\[[\s\S]*?\\\]|(?<!\\)\$(?!\s)(?:\\.|[^$\n\\])+?(?<!\s)\$)/g);
+    for (const [index, part] of parts.entries()) {
+      if (index % 2 === 1) {
+        const display = part.startsWith("\\[");
+        lines[lines.length - 1] += katex.renderToString(display ? part.slice(2, -2) : part.slice(1, -1), {
+          displayMode: display, throwOnError: false, trust: false
+        });
+      } else {
+        part.split(/\r?\n/).forEach((line, i) => {
+          if (i) lines.push("");
+          lines[lines.length - 1] += escapeAttr(line)
+            .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+            .replace(/\*(?!\s)([^*]+)\*/g, "<em>$1</em>");
+        });
+      }
+    }
+    let html = "", inList = false;
+    for (const line of lines) {
+      const bullet = line.match(/^\s*[-*•]\s+([\s\S]+)$/);
+      if (inList && !bullet) html += "</span>";
+      if (bullet && !inList) html += '<span class="description-bullets" role="list">';
+      html += bullet ? '<span role="listitem">' + bullet[1] + "</span>"
+        : '<span class="description-line">' + (line || "<br>") + "</span>";
+      inList = !!bullet;
+    }
+    return html + (inList ? "</span>" : "");
+  }
   function editListDescription() {
     const button = $content.querySelector("button[data-description]");
     if (!button) return;
@@ -6785,13 +6816,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     input.className = "topic-blurb list-description-editor";
     input.rows = 2;
     input.setAttribute("aria-label", "List description");
+    input.placeholder = "Write a description. Shift+Enter adds a line.";
     input.value = list.blurb || "";
     button.replaceWith(input);
+    const fit = () => {
+      input.style.height = "auto";
+      input.style.height = input.scrollHeight + "px";
+    };
+    fit();
+    input.addEventListener("input", fit);
     input.focus();
     input.select();
     let cancelled = false;
     input.addEventListener("keydown", e => {
-      if (e.isComposing || (e.key !== "Enter" && e.key !== "Escape")) return;
+      if (e.isComposing || (e.key === "Enter" && e.shiftKey) || (e.key !== "Enter" && e.key !== "Escape")) return;
       e.preventDefault();
       cancelled = e.key === "Escape";
       input.blur();
@@ -6802,7 +6840,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       if (!cancelled && value !== (list.blurb || "")) {
         list.blurb = value;
         saveLists();
-        button.textContent = value || "Click to add description";
+        button.innerHTML = listDescriptionHtml(value || "Click to add description");
         input.replaceWith(button);
         renderMath(button.parentElement);
       } else input.replaceWith(button);
