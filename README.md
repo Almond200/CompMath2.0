@@ -310,6 +310,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
+- **2026-11-01, Olympiad Geometry.** O1 to O4 are available on `codex/work`. O3 develops isogonal ratios and circle lemmas. O4 uses pedal triangles and cevian ratios to study conjugates. Both chapters include worked review and challenge problems.
+
 **2026-11-01**
 
 - Olympiad Combinatorics is finished: K3 (Hall, Kőnig, Turán, the matrix-tree theorem, LGV), K4 (the combinatorial Nullstellensatz, Markov and generating functions, Sprague-Grundy) and K5 (convex position, Sylvester-Gallai, Helly, Minkowski, Pick on a triangular grid) are written.
