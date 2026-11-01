@@ -1,4 +1,4 @@
-// Learn, AMC Counting & Probability, chapter R9: probability for the AMC 12 (CONVENTIONS §14). Part: Advanced topics.
+// Learn, AMC Counting & Probability, chapter R9: advanced probability (CONVENTIONS §14). Part: Advanced topics.
 // The second plan's book, written fresh (twentieth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["R9"] = {
@@ -6,7 +6,7 @@ window.MATH_LEARN["R9"] = {
     "R9.1": {
       prereq: ["conditional-probability", "expected-value", "geometric-probability"],
       cards: [],
-      body: String.raw`The AMC 12 asks three further kinds of probability question: the chance of a cause once its effect is seen, the chance or the expected time for a process that moves at random among a few states, and probabilities about real numbers whose boundaries are curves.
+      body: String.raw`The harder AMC problems ask three further kinds of probability question: the chance of a cause once its effect is seen, the chance or the expected time for a process that moves at random among a few states, and probabilities about real numbers whose boundaries are curves.
 
 One of two coins is fair and the other has two heads. A coin is picked at random and tossed, and it shows heads. Heads happens with probability $\tfrac12 \cdot 1 = \tfrac12$ by the two-headed coin and $\tfrac12 \cdot \tfrac12 = \tfrac14$ by the fair one, so given heads, the coin is two-headed with probability $\tfrac{1/2}{1/2 + 1/4} = \tfrac23$. A die is rolled until a six appears: since each roll is a six with probability $\tfrac16$, the expected number of rolls is $6$. And a token on the points $0, 1, 2, 3$ starts at $1$ and steps left or right with equal chances until it reaches $0$ or $3$: from $1$ it reaches $3$ first with probability $\tfrac13$, since the chance rises evenly from $0$ at the point $0$ to $1$ at the point $3$.
 

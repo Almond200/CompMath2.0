@@ -6,7 +6,7 @@ window.MATH_LEARN["L11"] = {
     "L11.1": {
       prereq: ["first-order-recurrence", "am-gm"],
       cards: [],
-      body: String.raw`This chapter collects the AMC 12 tools for functions given by equations, sequences given by recurrences, sums arranged in tables, and the inequalities beyond AM-GM.
+      body: String.raw`This chapter collects the advanced tools for functions given by equations, sequences given by recurrences, sums arranged in tables, and the inequalities beyond AM-GM.
 
 A functional equation describes a function by a property instead of a formula, such as $f(x + 1) = 2x + 5$ for every $x$. It is solved by choosing inputs well: to find $f(4)$, use $x = 3$, which gives $f(4) = 11$. Harder equations are solved by substituting expressions, such as $\tfrac1x$ for $x$, until a system of equations for the unknown values appears.
 

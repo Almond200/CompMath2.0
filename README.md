@@ -312,6 +312,19 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- Olympiad Combinatorics is finished: K3 (Hall, Kőnig, Turán, the matrix-tree theorem, LGV), K4 (the combinatorial Nullstellensatz, Markov and generating functions, Sprague-Grundy) and K5 (convex position, Sylvester-Gallai, Helly, Minkowski, Pick on a triangular grid) are written.
+- Olympiad Combinatorics: K1 (Advanced enumeration: exponential generating functions, the pentagonal theorem, Stirling numbers, Pólya, hook lengths) and K2 (Sperner, Dilworth, Erdős-Ko-Rado, Kruskal-Katona, Erdős-Szekeres, Schur) are written.
+- Olympiad Number Theory is finished: D3 (Thue's lemma, Chevalley-Warning, Cauchy-Davenport, Erdős-Ginzburg-Ziv) and D4 (Dirichlet convolution, Farey sequences and continued fractions, Beatty sequences and floor sums) are written.
+- Olympiad Number Theory: D1 (Quadratic residues: Lagrange's root bound, reciprocity, Gauss's lemma, the Jacobi symbol) and D2 (Kummer, Zsigmondy, Wolstenholme, cyclotomic polynomials, Fermat and Carmichael numbers, Dirichlet) are written.
+- Olympiad Algebra is finished: E4 (Polynomials: Eisenstein and Cohn, Cardano, discriminants, Gauss-Lucas, Mason-Stothers, integer-valued polynomials) and E5 (Functional equations, summation by parts and Lagrange's identity, eigenvalues, Cayley-Hamilton, Vandermonde) are written.
+- Olympiad Algebra: E1 (Symmetric inequalities: Schur, Vornicu-Schur, Muirhead, Maclaurin), E2 (The classical inequalities: Hölder, Chebyshev, Minkowski, Karamata, Popoviciu) and E3 (Methods: homogenizing, smoothing, SOS, uvw) are written; every inequality was checked numerically.
+- Olympiad Proofs is written (P1 What a proof is, P2 Induction, P3 Extremal arguments and descent, P4 Existence proofs), each chapter in the approved structure with our own problems and full written proofs; the olympiad outline gained Introductions, Summaries and lesson tags.
+- Learn: five olympiad books join the shelf, from the drafted outline (Olympiad Proofs, Algebra, Number Theory, Combinatorics, Geometry; 25 chapters), as a third track with their own covers and motifs. Their chapters show as not yet written.
+- The AMC → AIME Bridge is removed: its outline section, chapter files, shelf id, cover colours and motif. Its lessons live on in the four AMC books (LEARN-OUTLINE, "Where the Bridge goes"), and the AIME books' references to Bridge lessons now point to the AMC lessons that teach the same cards (L10.2, M1.4, S3.2, S4.6, S9.2).
+- AMC Geometry is finished: S11 (Space: tetrahedra and frusta, coordinates and planes) and S12 (From the AMC to the AIME: signed lengths and degenerate figures, coordinates or a synthetic route, mixed problems) are written. All four AMC books of the second plan are complete.
+- AMC Geometry: S10 (Analytic geometry: conics, polar coordinates and determinants, vectors and transformations, theorems about quadrilaterals and hexagons, regions and neighborhoods) is written.
+- Titles no longer name the AMC 10 or AMC 12: L10 Advanced polynomials, M6 Advanced number theory, R6 Probability tools, R8 Advanced counting, R9 Advanced probability, S9 Advanced triangles and circles; book descriptions and chapter openings say "advanced" or "harder AMC problems" instead.
+- AMC Geometry: S9 (Triangles and circles for the AMC 12: the law of sines, cevians, cyclic and tangential quadrilaterals, touching circles, the orthocenter and excircles) is written.
 - AMC Geometry: S8 (Solids: volume and surface area, cubes, polyhedra, unfolding and cross sections) is written.
 - AMC Geometry: S6 (Polygons and counting in figures) and S7 (Coordinates and transformations) are written.
 - AMC Geometry: S5 (Circles: chords, inscribed angles and cyclic quadrilaterals, tangents, power of a point, incircles and touching circles) is written.

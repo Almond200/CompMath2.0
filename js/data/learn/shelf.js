@@ -312,7 +312,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "L10",
-    "title": "Polynomials for the AMC 12",
+    "title": "Advanced polynomials",
     "level": "Core II",
     "lessons": [
      {
@@ -684,7 +684,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "M6",
-    "title": "Number theory for the AMC 12",
+    "title": "Advanced number theory",
     "level": "Core II",
     "lessons": [
      {
@@ -933,7 +933,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "R6",
-    "title": "Probability for the AMC 10",
+    "title": "Probability tools",
     "level": "Core",
     "lessons": [
      {
@@ -1015,7 +1015,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "R8",
-    "title": "Counting for the AMC 12",
+    "title": "Advanced counting",
     "level": "Core II",
     "lessons": [
      {
@@ -1046,7 +1046,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "R9",
-    "title": "Probability for the AMC 12",
+    "title": "Advanced probability",
     "level": "Core II",
     "lessons": [
      {
@@ -1413,7 +1413,7 @@ window.MATH_LEARN_SHELF = [
    },
    {
     "code": "S9",
-    "title": "Triangles and circles for the AMC 12",
+    "title": "Advanced triangles and circles",
     "level": "Core",
     "lessons": [
      {
@@ -1549,155 +1549,6 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Toward the AIME"
-   }
-  ]
- },
- {
-  "id": "bridge",
-  "title": "AMC → AIME Bridge",
-  "role": "finds and fills missing foundations, without rewriting a whole AMC textbook",
-  "chapters": [
-   {
-    "code": "B1",
-    "title": "Algebra fluency and substitutions",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "B1.1",
-      "title": "Expression manipulation: factoring, expanding, rationalizing, keeping the domain"
-     },
-     {
-      "code": "B1.2",
-      "title": "Equations and systems: substitution, elimination, symmetry, extraneous roots"
-     },
-     {
-      "code": "B1.3",
-      "title": "Useful substitutions: reciprocals, squares, sums and products, repeated blocks"
-     },
-     {
-      "code": "B1.4",
-      "title": "Absolute values, intervals, sign charts, inequality constraints"
-     },
-     {
-      "code": "B1.5",
-      "title": "Rates, averages, percents and word-problem setups"
-     }
-    ]
-   },
-   {
-    "code": "B2",
-    "title": "Polynomial and sequence fundamentals",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "B2.1",
-      "title": "Roots and factors; the remainder and factor theorems; synthetic division"
-     },
-     {
-      "code": "B2.2",
-      "title": "Vieta and elementary symmetric sums"
-     },
-     {
-      "code": "B2.3",
-      "title": "Arithmetic and geometric sequences, finite sums"
-     },
-     {
-      "code": "B2.4",
-      "title": "Basic recurrences and tables of small cases"
-     }
-    ]
-   },
-   {
-    "code": "B3",
-    "title": "Integer arithmetic and congruence fundamentals",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "B3.1",
-      "title": "Prime powers, gcd and lcm, divisibility, counting divisors"
-     },
-     {
-      "code": "B3.2",
-      "title": "Residues; negative residues and inverses by inspection"
-     },
-     {
-      "code": "B3.3",
-      "title": "Basic exponent cycles and last digits"
-     },
-     {
-      "code": "B3.4",
-      "title": "Integer equations: parity, bounds, factoring into integers"
-     }
-    ]
-   },
-   {
-    "code": "B4",
-    "title": "Counting and probability fundamentals",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "B4.1",
-      "title": "Multiplication and addition principles, permutations, combinations"
-     },
-     {
-      "code": "B4.2",
-      "title": "Cases, complements, avoiding overcounts"
-     },
-     {
-      "code": "B4.3",
-      "title": "Arrangements with distinctness and repetition restrictions"
-     },
-     {
-      "code": "B4.4",
-      "title": "Probability from counting; elementary conditional probability"
-     }
-    ]
-   },
-   {
-    "code": "B5",
-    "title": "Geometry fundamentals and coordinates",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "B5.1",
-      "title": "Triangles: similarity, ratios, area, Pythagoras"
-     },
-     {
-      "code": "B5.2",
-      "title": "Circle facts: inscribed angles, chords, tangents, power of a point"
-     },
-     {
-      "code": "B5.3",
-      "title": "Coordinates: slope, distance, lines, intersections"
-     },
-     {
-      "code": "B5.4",
-      "title": "The trig bridge: laws of sines and cosines, the sine area formula (for AMC 10 students)"
-     }
-    ]
-   },
-   {
-    "code": "B6",
-    "title": "Constraints, computation and checking",
-    "level": "Core",
-    "lessons": [
-     {
-      "code": "B6.1",
-      "title": "Domain, positivity, integrality and distinctness through substitutions"
-     },
-     {
-      "code": "B6.2",
-      "title": "Checking cases, degenerate figures, double counting"
-     },
-     {
-      "code": "B6.3",
-      "title": "Bounding and estimating first; small cases as a test"
-     },
-     {
-      "code": "B6.4",
-      "title": "The AIME answer: exact arithmetic, 000 to 999, the final check"
-     }
-    ]
    }
   ]
  },
@@ -3101,6 +2952,701 @@ window.MATH_LEARN_SHELF = [
      }
     ],
     "part": "Beyond the AIME"
+   }
+  ]
+ },
+ {
+  "id": "olympiad-proofs",
+  "title": "Olympiad Proofs",
+  "role": "how to write a proof: contradiction, induction, extremal arguments and existence proofs",
+  "chapters": [
+   {
+    "code": "P1",
+    "title": "What a proof is",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "P1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "P1.2",
+      "title": "Direct proof, contradiction and contrapositive",
+      "level": "Core"
+     },
+     {
+      "code": "P1.3",
+      "title": "If and only if, uniqueness, and symmetry",
+      "level": "Core"
+     },
+     {
+      "code": "P1.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "P2",
+    "title": "Induction",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "P2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "P2.2",
+      "title": "Induction and strong induction",
+      "level": "Core"
+     },
+     {
+      "code": "P2.3",
+      "title": "Stronger statements and unusual inductions",
+      "level": "Core"
+     },
+     {
+      "code": "P2.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "P3",
+    "title": "Extremal arguments and descent",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "P3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "P3.2",
+      "title": "The smallest counterexample and infinite descent",
+      "level": "Core"
+     },
+     {
+      "code": "P3.3",
+      "title": "Vieta jumping and discrete continuity",
+      "level": "Core"
+     },
+     {
+      "code": "P3.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "P4",
+    "title": "Existence proofs",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "P4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "P4.2",
+      "title": "Constructions and pigeonhole",
+      "level": "Core"
+     },
+     {
+      "code": "P4.3",
+      "title": "Dimension and probability arguments",
+      "level": "Core"
+     },
+     {
+      "code": "P4.4",
+      "title": "Summary"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "olympiad-algebra",
+  "title": "Olympiad Algebra",
+  "role": "olympiad inequalities, polynomials, functional equations and matrices",
+  "chapters": [
+   {
+    "code": "E1",
+    "title": "Symmetric inequalities",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "E1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "E1.2",
+      "title": "Schur's inequality",
+      "level": "Core"
+     },
+     {
+      "code": "E1.3",
+      "title": "Muirhead and Maclaurin",
+      "level": "Core"
+     },
+     {
+      "code": "E1.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "E2",
+    "title": "The classical inequalities",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "E2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "E2.2",
+      "title": "Hölder, Chebyshev and Minkowski",
+      "level": "Core"
+     },
+     {
+      "code": "E2.3",
+      "title": "Majorization: Karamata and Popoviciu",
+      "level": "Core"
+     },
+     {
+      "code": "E2.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "E3",
+    "title": "Methods for inequalities",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "E3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "E3.2",
+      "title": "Homogenizing and smoothing",
+      "level": "Core"
+     },
+     {
+      "code": "E3.3",
+      "title": "Sums of squares and the uvw method",
+      "level": "Core"
+     },
+     {
+      "code": "E3.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "E4",
+    "title": "Polynomials",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "E4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "E4.2",
+      "title": "Irreducibility",
+      "level": "Core"
+     },
+     {
+      "code": "E4.3",
+      "title": "Roots: cubics, derivatives and discriminants",
+      "level": "Core"
+     },
+     {
+      "code": "E4.4",
+      "title": "Polynomials with integer values",
+      "level": "Core"
+     },
+     {
+      "code": "E4.5",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "E5",
+    "title": "Functional equations, sums and matrices",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "E5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "E5.2",
+      "title": "Functional equations at olympiad level",
+      "level": "Core"
+     },
+     {
+      "code": "E5.3",
+      "title": "Summation by parts and Lagrange's identity",
+      "level": "Core"
+     },
+     {
+      "code": "E5.4",
+      "title": "Matrices in olympiad algebra",
+      "level": "Core"
+     },
+     {
+      "code": "E5.5",
+      "title": "Summary"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "olympiad-number-theory",
+  "title": "Olympiad Number Theory",
+  "role": "quadratic residues, valuations and special primes, additive results, arithmetic functions",
+  "chapters": [
+   {
+    "code": "D1",
+    "title": "Quadratic residues",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "D1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "D1.2",
+      "title": "Polynomial congruences modulo a prime",
+      "level": "Core"
+     },
+     {
+      "code": "D1.3",
+      "title": "Quadratic reciprocity",
+      "level": "Core"
+     },
+     {
+      "code": "D1.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "D2",
+    "title": "Primes, valuations and special numbers",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "D2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "D2.2",
+      "title": "Primes in binomials and Zsigmondy",
+      "level": "Core"
+     },
+     {
+      "code": "D2.3",
+      "title": "Cyclotomic polynomials and Fermat numbers",
+      "level": "Core"
+     },
+     {
+      "code": "D2.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "D3",
+    "title": "Additive number theory",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "D3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "D3.2",
+      "title": "Thue's lemma and Chevalley-Warning",
+      "level": "Core"
+     },
+     {
+      "code": "D3.3",
+      "title": "Sumsets: Cauchy-Davenport and Erdős-Ginzburg-Ziv",
+      "level": "Core"
+     },
+     {
+      "code": "D3.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "D4",
+    "title": "Arithmetic functions and approximation",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "D4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "D4.2",
+      "title": "Dirichlet convolution",
+      "level": "Core"
+     },
+     {
+      "code": "D4.3",
+      "title": "Farey sequences and continued fractions",
+      "level": "Core"
+     },
+     {
+      "code": "D4.4",
+      "title": "Beatty sequences and floor sums",
+      "level": "Core"
+     },
+     {
+      "code": "D4.5",
+      "title": "Summary"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "olympiad-combinatorics",
+  "title": "Olympiad Combinatorics",
+  "role": "enumeration, extremal sets, graphs, algebraic and probabilistic methods, combinatorial geometry",
+  "chapters": [
+   {
+    "code": "K1",
+    "title": "Advanced enumeration",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "K1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "K1.2",
+      "title": "Generating functions for labeled objects and partitions",
+      "level": "Core"
+     },
+     {
+      "code": "K1.3",
+      "title": "Symmetry and tableaux",
+      "level": "Core"
+     },
+     {
+      "code": "K1.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "K2",
+    "title": "Extremal set theory and Ramsey-type results",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "K2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "K2.2",
+      "title": "Chains and antichains",
+      "level": "Core"
+     },
+     {
+      "code": "K2.3",
+      "title": "Monotone subsequences and Schur's theorem",
+      "level": "Core"
+     },
+     {
+      "code": "K2.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "K3",
+    "title": "Graph theory",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "K3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "K3.2",
+      "title": "Matchings",
+      "level": "Core"
+     },
+     {
+      "code": "K3.3",
+      "title": "Extremal graphs and counting with determinants",
+      "level": "Core"
+     },
+     {
+      "code": "K3.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "K4",
+    "title": "Algebraic, probabilistic and game methods",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "K4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "K4.2",
+      "title": "The combinatorial Nullstellensatz",
+      "level": "Core"
+     },
+     {
+      "code": "K4.3",
+      "title": "Probability tools",
+      "level": "Core"
+     },
+     {
+      "code": "K4.4",
+      "title": "Impartial games",
+      "level": "Core"
+     },
+     {
+      "code": "K4.5",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "K5",
+    "title": "Combinatorial geometry",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "K5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "K5.2",
+      "title": "Points, lines and convex sets",
+      "level": "Core"
+     },
+     {
+      "code": "K5.3",
+      "title": "Lattices",
+      "level": "Core"
+     },
+     {
+      "code": "K5.4",
+      "title": "Summary"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "olympiad-geometry",
+  "title": "Olympiad Geometry",
+  "role": "directed angles, inversion, olympiad lemmas, triangle centers, circles and projective geometry",
+  "chapters": [
+   {
+    "code": "O1",
+    "title": "Methods",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O1.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O1.2",
+      "title": "Directed angles and phantom points",
+      "level": "Core"
+     },
+     {
+      "code": "O1.3",
+      "title": "Inversion",
+      "level": "Core"
+     },
+     {
+      "code": "O1.4",
+      "title": "Projective transformations and moving points",
+      "level": "Core"
+     },
+     {
+      "code": "O1.5",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O2",
+    "title": "Triangle theorems",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O2.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O2.2",
+      "title": "Classical triangle formulas",
+      "level": "Core"
+     },
+     {
+      "code": "O2.3",
+      "title": "Perpendicularity and equal bisectors",
+      "level": "Core"
+     },
+     {
+      "code": "O2.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O3",
+    "title": "Olympiad lemmas",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O3.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O3.2",
+      "title": "Isogonal lines and the Steiner ratio",
+      "level": "Core"
+     },
+     {
+      "code": "O3.3",
+      "title": "Humpty, dumpty and the shooting lemma",
+      "level": "Core"
+     },
+     {
+      "code": "O3.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O4",
+    "title": "Derived triangles and conjugates",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O4.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O4.2",
+      "title": "Pedal and excentral triangles",
+      "level": "Core"
+     },
+     {
+      "code": "O4.3",
+      "title": "Isogonal and isotomic conjugates",
+      "level": "Core"
+     },
+     {
+      "code": "O4.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O5",
+    "title": "Centers and lines of the triangle",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O5.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O5.2",
+      "title": "Carnot, Feuerbach and Leibniz",
+      "level": "Core"
+     },
+     {
+      "code": "O5.3",
+      "title": "Steiner lines, Brocard and Droz-Farny",
+      "level": "Core"
+     },
+     {
+      "code": "O5.4",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O6",
+    "title": "Circles",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O6.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O6.2",
+      "title": "Power, orthogonal circles and Reim",
+      "level": "Core"
+     },
+     {
+      "code": "O6.3",
+      "title": "Tangent circles: Casey, mixtilinear and Sawayama-Thébault",
+      "level": "Core"
+     },
+     {
+      "code": "O6.4",
+      "title": "Quadrilaterals: Japanese theorem, Poncelet and Newton",
+      "level": "Core"
+     },
+     {
+      "code": "O6.5",
+      "title": "Summary"
+     }
+    ]
+   },
+   {
+    "code": "O7",
+    "title": "Projective geometry",
+    "level": "Core",
+    "lessons": [
+     {
+      "code": "O7.1",
+      "title": "Introduction"
+     },
+     {
+      "code": "O7.2",
+      "title": "Cross-ratio and harmonic bundles",
+      "level": "Core"
+     },
+     {
+      "code": "O7.3",
+      "title": "Pascal, Brianchon, Pappus and Desargues",
+      "level": "Core"
+     },
+     {
+      "code": "O7.4",
+      "title": "Miquel, Möbius maps and spheres",
+      "level": "Core"
+     },
+     {
+      "code": "O7.5",
+      "title": "Summary"
+     }
+    ]
    }
   ]
  }

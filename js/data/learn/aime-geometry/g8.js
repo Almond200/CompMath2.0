@@ -46,7 +46,7 @@ A [[cube|cube]] of edge $s$ has face diagonals $s\sqrt2$ and space diagonals $s\
 Find the key length with a Pythagorean computation in a plane through the solid, then apply the formula. The next lesson slices solids with planes.`,
       related: [
         { card: "square-of-sum", note: String.raw`the identity that turns the edge sum and surface area of a box into its diagonal.` },
-        { card: "similar-figures-ratios", note: String.raw`volumes of similar solids scale by the cube of the ratio (B5.1).` },
+        { card: "similar-figures-ratios", note: String.raw`volumes of similar solids scale by the cube of the ratio (S3.2).` },
         { card: "unfold-the-surface", note: String.raw`unrolling a cone into a sector (G8.6).` }
       ],
       exercises: [

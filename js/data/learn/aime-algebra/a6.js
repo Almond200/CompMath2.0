@@ -155,7 +155,7 @@ The theorem also controls functional equations for polynomials. If $P(x)P(2x^2) 
 
 Use the factored form whenever a problem asks for a product, or a sum of logarithms, over the roots of a polynomial or over the vertices of a regular polygon: write it as the polynomial evaluated at a point. The Summary (A6.6) collects the chapter's strategies; the next chapter turns to trigonometry, where these identities reappear.`,
       related: [
-        { card: "vietas-general", note: String.raw`the coefficients of the factored form, read as sums and products of the roots (B2.2).` },
+        { card: "vietas-general", note: String.raw`the coefficients of the factored form, read as sums and products of the roots (L10.2).` },
         { card: "chord-length", note: String.raw`$|1 - e^{i\theta}| = 2\sin\tfrac\theta2$, turning distances into sines.` },
         { card: "evenly-spaced-angle-products", note: String.raw`products of sines and cosines at evenly spaced angles, from the same factorization (A9.5).` },
         { card: "comparing-coefficients", note: String.raw`the other way to use the factored form: expand and match (A2.6).` }

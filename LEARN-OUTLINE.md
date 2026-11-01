@@ -5,9 +5,9 @@ This file says what each Learn book holds: its chapters, its lessons, and the ca
 The map follows the owner's curriculum proposal, "An Expanded AMC-to-AIME Curriculum" (2026-10-31), which grew the first draft into chapters with lesson-level syllabi; this file added real card ids for every lesson.
 
 **Status (2026-10-31, end of the seventeenth chat):**
-- Every book in a "Book:" section below is written in the app: the four AIME books and the Bridge (the AIME track), and the four AMC books (the AMC track).
+- Every book in a "Book:" section below is written in the app: the four AIME books (the AIME track) and the four AMC books (the AMC track).
 - Every chapter of AIME Counting & Probability (C1 to C9), AIME Number Theory (N1 to N8), AIME Algebra (A1 to A9) and AIME Geometry (G1 to G9) are in the approved chapter structure (X.1 Introduction, the lessons, a Summary, Review Problems, Challenge Problems; CONVENTIONS §14). The others keep their overview page and chapter review until they are reworked.
-- "The AMC books, second plan" is planned, not built: it will replace the four AMC books and the Bridge.
+- "The AMC books, second plan" is built (2026-11-01): it replaced the first AMC books and the Bridge, which is removed.
 
 ## How to read this file
 
@@ -21,7 +21,7 @@ Olympiad-tier cards that fit no chapter stay in the reference only. Olympiad boo
 **Cards.** An id in backticks is a real card (`#/f/<id>` opens it).
 - A lesson's cards are the ones it teaches. A card may appear again later as a link, but each card is taught in one lesson.
 - *(pattern)* marks a pattern card. "Prereq" names cards taught in an earlier chapter or book.
-- A lesson with no card teaches a habit no card holds (B6.4, the comparison lessons). That is allowed, since lessons connect cards and never copy them.
+- A lesson with no card teaches a habit no card holds (R10.2, the comparison lessons). That is allowed, since lessons connect cards and never copy them.
 
 **Problems.** Each problem's status follows the proposal's sequence: **candidate** (found by its tags), then **read** (its strategy read, and it fits), then **verified** (numbers rechecked and its place agreed), then **published**.
 - Each problem has one **primary placement** (one lesson's problems or one chapter review). Other lessons may link to it, but only one lists it as an exercise. AMC 10/12 twins count as one problem.
@@ -49,11 +49,15 @@ A chapter follows the approved chapter structure: X.1 Introduction (a short over
 | **AMC Number Theory** | number theory for the AMC: primes, divisors, digits, remainders, integer equations | M1 to M7 |
 | **AMC Counting & Probability** | counting, probability and expected value for the AMC | R1 to R10 |
 | **AMC Geometry** | geometry for the AMC: triangles, circles, polygons, coordinates, trigonometry, conics and solids | S1 to S12 |
-| **AMC → AIME Bridge** | finds and fills missing foundations, without rewriting a whole AMC textbook | B1 to B6 |
 | **AIME Algebra** | equations, polynomials, sequences, functions, inequalities, complex numbers and trig algebra | A1 to A9 |
 | **AIME Number Theory** | prime exponents, congruences, exponent cycles, integer solutions, digits | N1 to N8 |
 | **AIME Geometry** | triangles, circles, trig, coordinates, centers, transformations, polygons, solids | G1 to G9 |
 | **AIME Counting & Probability** | counting structures, restrictions, recursion, probability, expectation | C1 to C9 |
+| **Olympiad Proofs** | how to write a proof: contradiction, induction, extremal arguments and existence proofs | P1 to P4 |
+| **Olympiad Algebra** | olympiad inequalities, polynomials, functional equations and matrices | E1 to E5 |
+| **Olympiad Number Theory** | quadratic residues, valuations and special primes, additive results, arithmetic functions | D1 to D4 |
+| **Olympiad Combinatorics** | enumeration, extremal sets, graphs, algebraic and probabilistic methods, combinatorial geometry | K1 to K5 |
+| **Olympiad Geometry** | directed angles, inversion, olympiad lemmas, triangle centers, circles and projective geometry | O1 to O7 |
 
 A student need not finish the books in order. Any chapter can be entered once its prerequisites are known. Chapter order follows dependencies:
 - **Book entry points:** B1 and B2 lead to A1 to A4; B5 leads to G1 to G4; B3 leads to N1 to N3; B4 leads to C1 to C3.
@@ -74,7 +78,7 @@ A student need not finish the books in order. Any chapter can be entered once it
 
 ## The AMC books, second plan (to replace the four AMC books and the Bridge)
 
-**Status (2026-10-31):** planned, not built. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
+**Status (2026-11-01):** built; the Bridge is removed. The rest of this section records the plan as it was made. Every chapter is to be written in the approved chapter structure (CONVENTIONS §14): X.1 Introduction, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems; so each chapter below gains an Introduction before its first lesson and a Summary after its last, and its lesson numbers shift by one when it is built. It replaces the sections "Book: AMC Algebra" to "Book: AMC → AIME Bridge" below, which describe what is in the app now. The owner asked for the Bridge to be merged into the four AMC books, and for each book to run from the foundations to higher-level applications, so that a student who understands little can start on page one. The books are planned fresh, not to keep the lessons already written: nearly every AMC and Bridge lesson will be rewritten.
 
 ### How the books are built
 
@@ -156,7 +160,7 @@ Moved to its own section, "Book: AMC Geometry", below, where it is being written
 
 ## Book: AMC Algebra
 
-From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the AMC 12, ending with the habits the AIME asks for. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From the first rules of algebra to the logarithms, polynomials, trigonometry and complex numbers of the advanced topics, ending with the habits the AIME asks for. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -277,7 +281,7 @@ The logarithm laws and the equations they solve.
 | L9.3 Logarithmic and exponential equations | Core | `take-logs-linearize`, `log-substitution`, *(pattern)* `log-system` | 3 |
 | L9.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then L9.5 Review Problems and L9.6 Challenge Problems | |
 
-### L10. Polynomials for the AMC 12 (Core II)
+### L10. Advanced polynomials (Core II)
 
 Vieta for any degree, roots and their transformations, interpolation, radicals and the factorizations worth knowing.
 
@@ -344,7 +348,7 @@ No new cards: the Bridge's habits, applied to harder mixed problems whose techni
 
 ## Book: AMC Number Theory
 
-From primes and divisibility to remainders, integer equations and the AMC 12's exponents and orders, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From primes and divisibility to remainders, integer equations and the advanced topics of exponents and orders, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -420,7 +424,7 @@ Equations whose answers must be whole numbers: linear ones, coins, factoring and
 
 #### Part: Advanced topics
 
-### M6. Number theory for the AMC 12 (Core II)
+### M6. Advanced number theory (Core II)
 
 Prime exponents, inverses, Euler's and Wilson's theorems, orders and Pell equations.
 
@@ -449,7 +453,7 @@ No new cards: residues, cycles and integer equations together, in harder mixed p
 
 ## Book: AMC Counting & Probability
 
-From listing and multiplying to arrangements, distributions, recursion and probability, ending with the AMC 12 additions and mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From listing and multiplying to arrangements, distributions, recursion and probability, then the advanced topics, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -519,7 +523,7 @@ Counting by building from smaller cases, lattice paths, and processes run backwa
 | R5.5 The reflection principle | Extension | `reflection-principle` | 1 |
 | R5.6 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R5.7 Review Problems and R5.8 Challenge Problems | |
 
-### R6. Probability for the AMC 10 (Core)
+### R6. Probability tools (Core)
 
 Conditional probability, repeated trials, probability as area, and linearity of expectation.
 
@@ -549,7 +553,7 @@ Subsets, graphs, pigeonhole, colorings and logic puzzles.
 
 #### Part: Advanced topics
 
-### R8. Counting for the AMC 12 (Core II)
+### R8. Advanced counting (Core II)
 
 Upper bounds, symmetry, more binomial identities, and games.
 
@@ -561,7 +565,7 @@ Upper bounds, symmetry, more binomial identities, and games.
 | R8.4 Graph coloring and games | Core II | `graph-coloring`, `strategy-stealing`, `turn-based-games`, `sprague-grundy` | 5 |
 | R8.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then R8.6 Review Problems and R8.7 Challenge Problems | |
 
-### R9. Probability for the AMC 12 (Core II)
+### R9. Advanced probability (Core II)
 
 Bayes' theorem, states and waiting times, and continuous probability.
 
@@ -589,7 +593,7 @@ No new cards: checking cases and overcounts, small cases as a test, and harder m
 
 ## Book: AMC Geometry
 
-From angles, triangles and areas to circles, coordinates, solids and the AMC 12's trigonometry, conics and vectors, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
+From angles, triangles and areas to circles, coordinates and solids, then trigonometry, conics and vectors, ending with mixed AIME-style problems. The book runs in four parts, Foundations, Core topics, Advanced topics and Toward the AIME, and every chapter is in the approved chapter structure (CONVENTIONS §14). It replaces the first AMC book and its share of the Bridge ("The AMC books, second plan", above).
 
 #### Part: Foundations
 
@@ -703,7 +707,7 @@ Volumes and surfaces, cubes, polyhedra, and unfolding or slicing a solid.
 
 #### Part: Advanced topics
 
-### S9. Triangles and circles for the AMC 12 (Core)
+### S9. Advanced triangles and circles (Core)
 
 The law of sines, cevians, cyclic and tangential quadrilaterals, and circles that touch.
 
@@ -755,67 +759,6 @@ Signed lengths, degenerate figures, choosing between coordinates and a synthetic
 | S12.3 Coordinates or a synthetic route | Core | no card (prereq coordinate-bash, triangle-similarity) | mixed |
 | S12.4 Mixed problems across the book | Core | no card (a review lesson) | mixed |
 | S12.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then S12.6 Review Problems and S12.7 Challenge Problems | |
-
-## Book: AMC → AIME Bridge
-
-A short bridge that finds gaps and fills them with examples and checks, without becoming a duplicate AMC textbook. All six chapters are Core.
-
-### B1. Algebra fluency and substitutions (Core)
-
-| Lesson | Cards |
-|---|---|
-| B1.1 Expression manipulation: factoring, expanding, rationalizing, keeping the domain | `useful-factorizations`, `difference-of-squares`, `square-of-sum`, `rationalizing` |
-| B1.2 Equations and systems: substitution, elimination, symmetry, extraneous roots | `linear-elimination`, `add-all-equations`, `transforming-equations` |
-| B1.3 Useful substitutions: reciprocals, squares, sums and products, repeated blocks | `name-the-whole-expression`, `substitute-repeated-block`, *(pattern)* `repeated-block-equation` |
-| B1.4 Absolute values, intervals, sign charts, inequality constraints | `absolute-value-rules`, `abs-value-relations`, `sign-chart`, `trivial-inequality` |
-| B1.5 Rates, averages, percents and word-problem setups | `work-rates`, `time-per-leg`, `average-speed`, `relative-motion`, `averages-to-totals`, `weighted-average`, `mean-median-mode`, `percent-change`, `setting-up-proportions`, *(pattern)* `several-rates`, *(pattern)* `averages-before-after`, *(pattern)* `age-problems`, *(pattern)* `scoring-rules`, *(pattern)* `break-even-plans` |
-
-### B2. Polynomial and sequence fundamentals (Core)
-
-| Lesson | Cards |
-|---|---|
-| B2.1 Roots and factors; the remainder and factor theorems; synthetic division | `factor-remainder-theorem`, `polynomial-division`, `rational-root-theorem` |
-| B2.2 Vieta and elementary symmetric sums | `quadratic-formula`, `vietas-quadratic`, `vietas-general`, `vertex-form` |
-| B2.3 Arithmetic and geometric sequences, finite sums | `arithmetic-series`, `geometric-series`, `triangular-numbers`, `power-sums` |
-| B2.4 Basic recurrences and tables of small cases | `first-order-recurrence`, *(pattern)* `periodic-sequences`, `organized-listing` |
-
-### B3. Integer arithmetic and congruence fundamentals (Core)
-
-| Lesson | Cards |
-|---|---|
-| B3.1 Prime powers, gcd and lcm, divisibility, counting divisors | `fundamental-theorem-arithmetic`, `euclidean-algorithm`, `divisibility-rules`, `number-of-divisors`, `recognition-numbers` |
-| B3.2 Residues; negative residues and inverses by inspection | `modular-basics` |
-| B3.3 Basic exponent cycles and last digits | `cycle-hunting`, `last-digit-patterns` |
-| B3.4 Integer equations: parity, bounds, factoring into integers | `sfft`, `factor-pair-counting`, `only-even-prime` |
-
-### B4. Counting and probability fundamentals (Core)
-
-| Lesson | Cards |
-|---|---|
-| B4.1 Multiplication and addition principles, permutations, combinations | `permutations-combinations` |
-| B4.2 Cases, complements, avoiding overcounts | `casework-method`, `complementary-counting` |
-| B4.3 Arrangements with distinctness and repetition restrictions | `multiset-permutations`, `gap-method`, `counting-blocks` |
-| B4.4 Probability from counting; elementary conditional probability | `basic-probability`, `independent-events`, `conditional-probability` |
-
-### B5. Geometry fundamentals and coordinates (Core)
-
-| Lesson | Cards |
-|---|---|
-| B5.1 Triangles: similarity, ratios, area, Pythagoras | `triangle-similarity`, `similar-figures-ratios`, `pythagorean-theorem`, `special-right-triangles`, `15-75-90-triangle`, `triangle-area-standard`, `triangle-inequality`, `triangle-congruence`, `parallel-exterior-angles`, `median-to-hypotenuse`, `right-triangle-inradius` |
-| B5.2 Circle facts: inscribed angles, chords, tangents, power of a point | `inscribed-angle-theorem`, `circle-basics`, `tangent-facts`, `chord-length`, `power-of-a-point` |
-| B5.3 Coordinates: slope, distance, lines, intersections | `distance-midpoint`, `line-forms`, `point-line-distance`, `circle-equation` |
-| B5.4 The trig bridge: laws of sines and cosines, the sine area formula (for AMC 10 students) | `law-of-sines`, `law-of-cosines`, `trig-area` |
-
-### B6. Constraints, computation and checking (Core; its habits recur in every review)
-
-| Lesson | Cards |
-|---|---|
-| B6.1 Domain, positivity, integrality and distinctness through substitutions | prereq `transforming-equations`, `quadratic-root-location` |
-| B6.2 Checking cases, degenerate figures, double counting | `directed-lengths`, prereq `organized-listing` |
-| B6.3 Bounding and estimating first; small cases as a test | `estimating-answers`, `sqrt-approximation`, `disproof-by-counterexample` |
-| B6.4 The AIME answer: exact arithmetic, 000 to 999, the final check | no card (a habit; prose and checks only) |
-
----
 
 ## Book: AIME Algebra
 
@@ -1018,7 +961,7 @@ No card: the chapter's opening page (cycles of powers, Fermat, the order, Euler,
 
 - **Opening question:** what is the units digit of $7^{202}$? The powers of $7$ mod $10$ run $7, 9, 3, 1$ and then repeat, and $202 = 4\cdot50 + 2$, so the digit is $9$.
 - **Teach:** there are only finitely many residues, so the powers must repeat. When the base is coprime to the modulus, the cycle starts at the first power. When it is not, the powers settle into a cycle only after a few steps: $2^n \bmod 12$ runs $2, 4, 8, 4, 8, \ldots$ (eventual period $2$).
-- **Cards:** `cycle-hunting` (Finding the Period, first met in B3.3), and `last-digit-patterns` as a link.
+- **Cards:** `cycle-hunting` (Finding the Period, first met in M4.3), and `last-digit-patterns` as a link.
 - **Clue:** a huge exponent and a small modulus.
 - **Checks:**
   - the units digit of $7^{203}$ is $3$;
@@ -1213,7 +1156,7 @@ Nine chapters. The proposal separates the main AIME toolkits, so a student learn
 
 #### Part: Core topics
 
-### G3. Trigonometric geometry (Core; AMC 10 students take B5.4 first)
+### G3. Trigonometric geometry (Core)
 
 | Lesson | Cards |
 |---|---|
@@ -1416,6 +1359,268 @@ Nine chapters. The proposal names inclusion-exclusion, symmetry, binomial identi
 | C9.4 Geometric probability beyond simple regions (Extension) | `product-of-uniforms`, `order-statistics`, `variance-independence` |
 | C9.5 More recursions and random processes; games (Extension) | `transfer-matrix-method`, `strategy-stealing`, *(pattern)* `truth-tellers-logic`, *(pattern)* `magic-squares` |
 | C9.6 Summary | no card (the chapter's ideas, then Problem Solving Strategies); then C9.7 Review Problems and C9.8 Challenge Problems |
+
+---
+
+## Book: Olympiad Proofs
+
+How to write a proof, for a student moving from answer contests (AMC, AIME) to proof contests (USAJMO, USAMO and beyond). The olympiad books are a third track: they teach their own cards and set their own problems, since the problem database holds answer contests (owner's goal, 2026-10-31).
+
+### P1. What a proof is (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| P1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| P1.2 Direct proof, contradiction and contrapositive | Core | `direct-proof`, `proof-by-contradiction`, `contrapositive` | ours |
+| P1.3 If and only if, uniqueness, and symmetry | Core | `proving-both-directions`, `proving-uniqueness`, `wlog-symmetry` | ours |
+| P1.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then P1.5 Review Problems and P1.6 Challenge Problems | |
+
+### P2. Induction (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| P2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| P2.2 Induction and strong induction | Core | `induction`, `strong-induction` | ours |
+| P2.3 Stronger statements and unusual inductions | Core | `forward-backward-induction`, `strengthening-the-hypothesis` | ours |
+| P2.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then P2.5 Review Problems and P2.6 Challenge Problems | |
+
+### P3. Extremal arguments and descent (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| P3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| P3.2 The smallest counterexample and infinite descent | Core | `minimal-counterexample`, `infinite-descent` | ours |
+| P3.3 Vieta jumping and discrete continuity | Core | `vieta-jumping`, `discrete-intermediate-value` | ours |
+| P3.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then P3.5 Review Problems and P3.6 Challenge Problems | |
+
+### P4. Existence proofs (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| P4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| P4.2 Constructions and pigeonhole | Core | `proof-by-construction`, `pigeonhole-argument` | ours |
+| P4.3 Dimension and probability arguments | Core | `dimension-arguments`, `probabilistic-method` | ours |
+| P4.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then P4.5 Review Problems and P4.6 Challenge Problems | |
+
+---
+
+## Book: Olympiad Algebra
+
+Inequalities, polynomials and functional equations at olympiad level. It assumes the AIME Algebra book or AMC Algebra.
+
+### E1. Symmetric inequalities (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| E1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| E1.2 Schur's inequality | Core | `schurs-inequality`, `vornicu-schur` | ours |
+| E1.3 Muirhead and Maclaurin | Core | `muirheads-inequality`, `maclaurin-inequality` | ours |
+| E1.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then E1.5 Review Problems and E1.6 Challenge Problems | |
+
+### E2. The classical inequalities (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| E2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| E2.2 Hölder, Chebyshev and Minkowski | Core | `holders-inequality`, `chebyshev-sum-inequality`, `minkowski-inequality` | ours |
+| E2.3 Majorization: Karamata and Popoviciu | Core | `karamata-inequality`, `popoviciu-inequality` | ours |
+| E2.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then E2.5 Review Problems and E2.6 Challenge Problems | |
+
+### E3. Methods for inequalities (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| E3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| E3.2 Homogenizing and smoothing | Core | `homogenization`, `smoothing-method` | ours |
+| E3.3 Sums of squares and the uvw method | Core | `sos-method`, `uvw-method` | ours |
+| E3.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then E3.5 Review Problems and E3.6 Challenge Problems | |
+
+### E4. Polynomials (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| E4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| E4.2 Irreducibility | Core | `eisenstein-criterion`, `cohn-irreducibility` | ours |
+| E4.3 Roots: cubics, derivatives and discriminants | Core | `cardano-cubic`, `gauss-lucas`, `resultant-discriminant`, `mason-stothers` | ours |
+| E4.4 Polynomials with integer values | Core | `integer-valued-polynomials` | ours |
+| E4.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then E4.6 Review Problems and E4.7 Challenge Problems | |
+
+### E5. Functional equations, sums and matrices (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| E5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| E5.2 Functional equations at olympiad level | Core | `injectivity-surjectivity` | ours |
+| E5.3 Summation by parts and Lagrange's identity | Core | `abel-summation`, `lagranges-identity` | ours |
+| E5.4 Matrices in olympiad algebra | Core | `eigenvalues-characteristic`, `cayley-hamilton`, `vandermonde-determinant` | ours |
+| E5.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then E5.6 Review Problems and E5.7 Challenge Problems | |
+
+---
+
+## Book: Olympiad Number Theory
+
+Quadratic residues, valuations and special primes, additive results and arithmetic functions. It assumes the AIME Number Theory book.
+
+### D1. Quadratic residues (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| D1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| D1.2 Polynomial congruences modulo a prime | Core | `lagrange-roots-mod-p` | ours |
+| D1.3 Quadratic reciprocity | Core | `quadratic-reciprocity`, `gauss-lemma-qr`, `jacobi-symbol` | ours |
+| D1.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then D1.5 Review Problems and D1.6 Challenge Problems | |
+
+### D2. Primes, valuations and special numbers (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| D2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| D2.2 Primes in binomials and Zsigmondy | Core | `kummers-theorem`, `zsygmondy`, `wolstenholme` | ours |
+| D2.3 Cyclotomic polynomials and Fermat numbers | Core | `cyclotomic-polynomials`, `fermat-numbers`, `carmichael-numbers`, `dirichlet-primes-progression` | ours |
+| D2.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then D2.5 Review Problems and D2.6 Challenge Problems | |
+
+### D3. Additive number theory (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| D3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| D3.2 Thue's lemma and Chevalley-Warning | Core | `thues-lemma`, `chevalley-warning` | ours |
+| D3.3 Sumsets: Cauchy-Davenport and Erdős-Ginzburg-Ziv | Core | `cauchy-davenport`, `erdos-ginzburg-ziv` | ours |
+| D3.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then D3.5 Review Problems and D3.6 Challenge Problems | |
+
+### D4. Arithmetic functions and approximation (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| D4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| D4.2 Dirichlet convolution | Core | `totient-divisor-sum`, `dirichlet-convolution` | ours |
+| D4.3 Farey sequences and continued fractions | Core | `farey-sequences`, `continued-fraction-convergents` | ours |
+| D4.4 Beatty sequences and floor sums | Core | `beatty-theorem`, `floor-sum-reciprocity` | ours |
+| D4.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then D4.6 Review Problems and D4.7 Challenge Problems | |
+
+---
+
+## Book: Olympiad Combinatorics
+
+Enumeration, extremal set theory, graphs, algebraic and probabilistic methods, and combinatorial geometry. It assumes the AIME Counting & Probability book.
+
+### K1. Advanced enumeration (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| K1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| K1.2 Generating functions for labeled objects and partitions | Core | `exponential-generating-functions`, `pentagonal-number-theorem`, `stirling-first-kind` | ours |
+| K1.3 Symmetry and tableaux | Core | `polya-enumeration`, `hook-length-formula` | ours |
+| K1.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then K1.5 Review Problems and K1.6 Challenge Problems | |
+
+### K2. Extremal set theory and Ramsey-type results (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| K2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| K2.2 Chains and antichains | Core | `dilworths-theorem`, `sperners-theorem`, `kruskal-katona`, `erdos-ko-rado` | ours |
+| K2.3 Monotone subsequences and Schur's theorem | Core | `erdos-szekeres`, `schurs-theorem` | ours |
+| K2.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then K2.5 Review Problems and K2.6 Challenge Problems | |
+
+### K3. Graph theory (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| K3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| K3.2 Matchings | Core | `halls-marriage`, `konigs-theorem` | ours |
+| K3.3 Extremal graphs and counting with determinants | Core | `turans-theorem`, `matrix-tree-theorem`, `lgv-lemma` | ours |
+| K3.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then K3.5 Review Problems and K3.6 Challenge Problems | |
+
+### K4. Algebraic, probabilistic and game methods (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| K4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| K4.2 The combinatorial Nullstellensatz | Core | `combinatorial-nullstellensatz` | ours |
+| K4.3 Probability tools | Core | `markovs-inequality`, `probability-generating-functions`, `coprime-probability` | ours |
+| K4.4 Impartial games | Core | `sprague-grundy` | ours |
+| K4.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then K4.6 Review Problems and K4.7 Challenge Problems | |
+
+### K5. Combinatorial geometry (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| K5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| K5.2 Points, lines and convex sets | Core | `convex-position`, `sylvester-gallai`, `hellys-theorem` | ours |
+| K5.3 Lattices | Core | `minkowski-lattice`, `picks-hexagonal-grid` | ours |
+| K5.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then K5.5 Review Problems and K5.6 Challenge Problems | |
+
+---
+
+## Book: Olympiad Geometry
+
+The configurations, lemmas and transformations of olympiad geometry. It assumes the AIME Geometry book.
+
+### O1. Methods (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O1.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O1.2 Directed angles and phantom points | Core | `directed-angles`, `phantom-point` | ours |
+| O1.3 Inversion | Core | `inversion-properties`, `sqrt-bc-inversion` | ours |
+| O1.4 Projective transformations and moving points | Core | `projective-transformations`, `gliding-principle`, `zacks-lemma` | ours |
+| O1.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O1.6 Review Problems and O1.7 Challenge Problems | |
+
+### O2. Triangle theorems (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O2.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O2.2 Classical triangle formulas | Core | `law-of-tangents`, `mollweides-formula`, `weitzenbock-inequality`, `erdos-mordell` | ours |
+| O2.3 Perpendicularity and equal bisectors | Core | `perpendicularity-lemma`, `carnots-perpendicularity-theorem`, `steiner-lehmus`, `morleys-theorem` | ours |
+| O2.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O2.5 Review Problems and O2.6 Challenge Problems | |
+
+### O3. Olympiad lemmas (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O3.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O3.2 Isogonal lines and the Steiner ratio | Core | `isogonal-line-lemma`, `steiner-ratio-theorem`, `iran-lemma` | ours |
+| O3.3 Humpty, dumpty and the shooting lemma | Core | `humpty-queue-points`, `dumpty-point`, `shooting-lemma` | ours |
+| O3.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O3.5 Review Problems and O3.6 Challenge Problems | |
+
+### O4. Derived triangles and conjugates (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O4.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O4.2 Pedal and excentral triangles | Core | `pedal-triangle`, `excentral-triangle`, `orthocentric-system` | ours |
+| O4.3 Isogonal and isotomic conjugates | Core | `isogonal-conjugate`, `isotomic-conjugate`, `cevian-nest` | ours |
+| O4.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O4.5 Review Problems and O4.6 Challenge Problems | |
+
+### O5. Centers and lines of the triangle (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O5.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O5.2 Carnot, Feuerbach and Leibniz | Core | `carnots-theorem`, `feuerbach-theorem`, `leibniz-formula`, `spieker-point` | ours |
+| O5.3 Steiner lines, Brocard and Droz-Farny | Core | `steiner-line`, `anti-steiner-point`, `brocard-angle`, `droz-farny`, `lester-circle`, `van-aubel` | ours |
+| O5.4 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O5.5 Review Problems and O5.6 Challenge Problems | |
+
+### O6. Circles (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O6.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O6.2 Power, orthogonal circles and Reim | Core | `power-of-a-point-linearity`, `orthogonal-circles`, `reims-theorem`, `butterfly-theorem` | ours |
+| O6.3 Tangent circles: Casey, mixtilinear and Sawayama-Thébault | Core | `caseys-theorem`, `mixtilinear-incircle`, `sawayama-thebault` | ours |
+| O6.4 Quadrilaterals: Japanese theorem, Poncelet and Newton | Core | `japanese-theorem`, `poncelet-closure`, `newtons-line` | ours |
+| O6.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O6.6 Review Problems and O6.7 Challenge Problems | |
+
+### O7. Projective geometry (Core)
+
+| Lesson | Importance | Cards | Problems |
+|---|---|---|---|
+| O7.1 Introduction | | no card (the chapter's opening page, with comprehension problems) | |
+| O7.2 Cross-ratio and harmonic bundles | Core | `cross-ratio`, `harmonic-bundle`, `pole-polar`, `brocards-theorem` | ours |
+| O7.3 Pascal, Brianchon, Pappus and Desargues | Core | `pascals-theorem`, `brianchon-theorem`, `pappus-hexagon`, `desargues-theorem`, `desargues-involution` | ours |
+| O7.4 Miquel, Möbius maps and spheres | Core | `complete-quadrilateral-miquel`, `mobius-transformations`, `descartes-sphere-theorem`, `cayley-menger` | ours |
+| O7.5 Summary | | no card (the chapter's ideas, then Problem Solving Strategies); then O7.6 Review Problems and O7.7 Challenge Problems | |
 
 ---
 

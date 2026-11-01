@@ -107,7 +107,7 @@ The three medians of any triangle can form a triangle, and its area is $\tfrac34
 
 Recognize medial and orthic triangles in repeated constructions, and use areas to relate distances to sides. The next lesson treats Ceva's and Menelaus's theorems.`,
       related: [
-        { card: "similar-figures-ratios", note: String.raw`the area ratio $\tfrac14$ of the medial triangle (B5.1).` },
+        { card: "similar-figures-ratios", note: String.raw`the area ratio $\tfrac14$ of the medial triangle (S3.2).` },
         { card: "nine-point-circle", note: String.raw`the circle through the vertices of both the medial and the orthic triangle (G5.3).` },
         { card: "geometric-series", note: String.raw`adding the areas of repeated medial triangles.` }
       ],

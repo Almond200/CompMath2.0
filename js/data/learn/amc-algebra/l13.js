@@ -32,7 +32,7 @@ The lessons take these ideas in turn: complex arithmetic and the modulus (L13.2)
     "L13.2": {
       prereq: ["quadratic-formula", "linear-elimination"],
       cards: ["complex-basics", "conjugate-both-sides", "complex-modulus-argument"],
-      body: String.raw`Complex numbers appear in AMC 12 problems as numbers to compute with and as points to locate. What is the real part of $\tfrac{1 + 2i}{1 - i}$? Which $z$ satisfies $z + 2\bar z = 3 - i$? Where are the numbers with $|z| = 5$ and real part $3$? The rules are those of algebra, plus the conjugate and the modulus.
+      body: String.raw`Complex numbers appear in AMC problems as numbers to compute with and as points to locate. What is the real part of $\tfrac{1 + 2i}{1 - i}$? Which $z$ satisfies $z + 2\bar z = 3 - i$? Where are the numbers with $|z| = 5$ and real part $3$? The rules are those of algebra, plus the conjugate and the modulus.
 
 [[complex-basics|Complex arithmetic]]: add and multiply $a + bi$ as polynomials in $i$ with $i^2 = -1$. Two complex numbers are equal exactly when their real parts are equal and their imaginary parts are equal, which turns one complex equation into two real ones. The conjugate of $z = a + bi$ is $\bar z = a - bi$, and $z\bar z = a^2 + b^2$ is real, so division is done by multiplying the top and bottom by the conjugate of the bottom: $\tfrac{1 + 2i}{1 - i} = \tfrac{(1 + 2i)(1 + i)}{2} = \tfrac{-1 + 3i}{2}$, with real part $-\tfrac12$.
 

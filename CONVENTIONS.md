@@ -936,6 +936,7 @@ The rules for the Learn space. What each book, chapter and lesson holds is in `L
 - It holds the book ids, the chapter codes, titles and levels, and the lesson codes and titles.
 - `gates.sh` fails when it drifts from the outline.
 - A lesson's title is changed in the outline, then the shelf is rebuilt.
+- No chapter or lesson title names the AMC 10 or AMC 12; advanced material is called advanced (owner, 2026-11-01).
 
 **Chapter files.** A written chapter is one file, `js/data/learn/<book-id>/<code>.js` (for example `aime-number-theory/n3.js`), loaded from `index.html`. It holds:
 
@@ -1037,7 +1038,7 @@ The old list addresses are kept (§9).
 - no `{{check}}` marker or `checks` field remains;
 - each written lesson is on the shelf.
 
-**Two tracks.** The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked Core, Core II or Extension, never AMC 10 or AMC 12) and the AIME books (with the Bridge) are separate tracks (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
+**Two tracks.** The four AMC books (AMC Algebra, Number Theory, Counting & Probability, Geometry; each covers the AMC 10 and AMC 12, its chapters marked Core, Core II or Extension, never AMC 10 or AMC 12) and the AIME books are separate tracks (the Bridge, once part of the AIME track, was removed 2026-11-01, its lessons merged into the AMC books) (owner's goal, 2026-10-31): a student uses one or the other, so the rules "a card is taught in one lesson" and "a problem is placed once" hold within each track. An AMC lesson may teach a card, or use a problem, that an AIME lesson also teaches or uses. Within a track, an AMC 10/12 twin pair still counts as one problem.
 
 **Chapter structure (approved by the owner after the C5 pilot, 2026-10-31; every new or reworked chapter follows it).** A chapter opens with X.1 Introduction and closes with a Summary lesson, then two pages:
 - **Level (owner, 2026-10-31).** The books are high level and not too easy. Basic is not easy: a basic problem uses only simple techniques but can be hard to solve.

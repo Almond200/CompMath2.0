@@ -34,7 +34,7 @@ const learn = window.MATH_LEARN || {};
 for (const code of Object.keys(fileOf)) if (!learn[code]) errs.push(`${fileOf[code]} does not fill MATH_LEARN["${code}"]`);
 
 const taught = new Map(), placed = new Map();
-const trackOf = b => /^amc-/.test(b.id) ? 'amc' : 'aime';
+const trackOf = b => /^amc-/.test(b.id) ? 'amc' : /^olympiad-/.test(b.id) ? 'olympiad' : 'aime';
 const place = (ref, where, track) => {
   if (!refs.has(ref)) { errs.push(`${where}: ${ref} is not in the problem database`); return; }
   const key = track + '|' + ref;

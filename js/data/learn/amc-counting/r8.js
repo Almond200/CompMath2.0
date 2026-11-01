@@ -1,4 +1,4 @@
-// Learn, AMC Counting & Probability, chapter R8: counting for the AMC 12 (CONVENTIONS §14). Part: Advanced topics.
+// Learn, AMC Counting & Probability, chapter R8: advanced counting (CONVENTIONS §14). Part: Advanced topics.
 // The second plan's book, written fresh (twentieth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["R8"] = {
@@ -6,7 +6,7 @@ window.MATH_LEARN["R8"] = {
     "R8.1": {
       prereq: ["stars-and-bars", "inclusion-exclusion", "binomial-theorem", "backward-induction"],
       cards: [],
-      body: String.raw`The AMC 12 builds on the counting of the earlier chapters in four directions: shares with a maximum as well as a minimum, objects counted as the same when a rotation turns one into another, sums of products of binomial coefficients, and games and colorings that need more than a table of wins and losses.
+      body: String.raw`The harder AMC problems build on the counting of the earlier chapters in four directions: shares with a maximum as well as a minimum, objects counted as the same when a rotation turns one into another, sums of products of binomial coefficients, and games and colorings that need more than a table of wins and losses.
 
 Sharing $10$ among $x$, $y$, $z$ with each at most $4$ is stars and bars with a correction: of the $\binom{12}{2} = 66$ ways with no maximum, $3 \cdot \binom72 = 63$ give some share at least $5$, and $3 \cdot \binom22 = 3$ give two shares at least $5$, so inclusion-exclusion leaves $66 - 63 + 3 = 6$. Coloring the corners of a square black or white gives $16$ colorings, but if turning the square does not count as a change, there are only $6$: all white, all black, one black, two black side by side, two black opposite, three black. And choosing $3$ people from $5$ men and $5$ women, split by the number of men, gives $\sum_k \binom5k \binom5{3-k} = \binom{10}{3} = 120$, since every choice of $3$ from the $10$ appears once.
 

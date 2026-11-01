@@ -1,4 +1,4 @@
-// Learn, AMC Algebra, chapter L10: polynomials for the AMC 12 (CONVENTIONS §14). Part: Advanced topics.
+// Learn, AMC Algebra, chapter L10: advanced polynomials (CONVENTIONS §14). Part: Advanced topics.
 // The second plan's book, written fresh (eighteenth chat). Every number here was checked by computation.
 window.MATH_LEARN = window.MATH_LEARN || {};
 window.MATH_LEARN["L10"] = {
