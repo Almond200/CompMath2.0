@@ -312,6 +312,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-01**
 
+- Olympiad Number Theory is finished: D3 (Thue's lemma, Chevalley-Warning, Cauchy-Davenport, Erdős-Ginzburg-Ziv) and D4 (Dirichlet convolution, Farey sequences and continued fractions, Beatty sequences and floor sums) are written.
 - Olympiad Number Theory: D1 (Quadratic residues: Lagrange's root bound, reciprocity, Gauss's lemma, the Jacobi symbol) and D2 (Kummer, Zsigmondy, Wolstenholme, cyclotomic polynomials, Fermat and Carmichael numbers, Dirichlet) are written.
 - Olympiad Algebra is finished: E4 (Polynomials: Eisenstein and Cohn, Cardano, discriminants, Gauss-Lucas, Mason-Stothers, integer-valued polynomials) and E5 (Functional equations, summation by parts and Lagrange's identity, eigenvalues, Cayley-Hamilton, Vandermonde) are written.
 - Olympiad Algebra: E1 (Symmetric inequalities: Schur, Vornicu-Schur, Muirhead, Maclaurin), E2 (The classical inequalities: Hölder, Chebyshev, Minkowski, Karamata, Popoviciu) and E3 (Methods: homogenizing, smoothing, SOS, uvw) are written; every inequality was checked numerically.
