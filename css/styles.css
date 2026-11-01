@@ -3935,6 +3935,11 @@ html .content:has(> .bk-view), html[data-density] .content:has(> .bk-view) { pad
 .bk-tip::before { content: ""; position: absolute; left: -6px; top: 50%; width: 10px; height: 10px; margin-top: -5px; transform: rotate(45deg);
   background: var(--bg-card); border-left: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
 .bk-tab:hover .bk-tip, .bk-tab:focus-visible .bk-tip { display: block; }
+/* A tab's card is drawn in front of everything, the top bar included (owner, 2026-11-01), and the C tab's
+   card hangs down from the tab's top edge, so it never reaches up under the top bar. */
+.bk-rail:hover, .bk-rail:focus-within, .bk-rail:has(.is-scrub) { z-index: 60; }
+.bk-tab:first-child .bk-tip { top: 0; transform: none; }
+.bk-tab:first-child .bk-tip::before { top: 18px; }
 /* The scrubbing tabs are all one height and carry no markers (owner, 2026-10-31); the page list
    each tab holds is data for the scrubber, never shown. */
 .bk-rail { touch-action: none; }
@@ -4019,6 +4024,7 @@ a.bk-bar-t:hover { color: var(--bk-ink); }
   .bk-view { grid-template-columns: 38px minmax(0, 1fr); gap: 10px; }
   .bk-rail { padding: 3px; }
   .bk-tab { height: 32px; font-size: 13px; }
+  .bk-tab:first-child .bk-tip::before { top: 16px; }
   .bk-tip { display: none; width: max-content; max-width: calc(100vw - 72px); white-space: normal; }
   .bk-tab:hover .bk-tip { display: none; }
   .bk-scrub.is-scrub .bk-tip { display: block; }
