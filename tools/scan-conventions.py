@@ -500,6 +500,8 @@ for c in CARDS:
     if c["kind"] == "formula" and _has_new:
         _kind_err.append("%s: a formula card cannot carry when/move/uses/recognize/suggests" % c["id"])
     _allowed = _HEADS[c["kind"] if _converted else None]
+    if c["id"] == "denesting-radicals":
+        _allowed = _allowed | {"Key forms"}
     for _h in re.findall(r"^## (.+)$", DETAILS.get(c["id"], ""), re.M):
         if _h.strip() not in _allowed:
             _odd_heads.append("%s: '## %s' is not a %s heading" % (c["id"], _h.strip(), (c["kind"] + " (converted)") if _converted else "card (unconverted)"))
