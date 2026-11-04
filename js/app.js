@@ -1378,6 +1378,7 @@
         return { type: "home", section: { id: sec.id, sub: i, topic: null, cluster: g >= 0 ? g : null } };
       }
     }
+    if (location.hash === "#/practice/set") return { type: "space", name: "practice", practiceSet: true };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -5260,15 +5261,41 @@
     }));
     range.addEventListener("input", update);
   }
-  // Keep the current set while the reader opens problems and comes back.
-  let topicPracticeSet = null;
+  let topicPracticeSet = null, practiceClock = 0;
+  function renderTopicPracticeSet() {
+    const set = topicPracticeSet;
+    if (!set) {
+      history.replaceState(null, "", "#/practice");
+      renderSpaceHome("practice");
+      return;
+    }
+    shownIds = [];
+    $content.innerHTML = `<div class="space-home">
+      <button type="button" class="back-link" id="exit-practice-set">&larr; Back to Practice</button>
+      <header class="space-home-head"><h2>${escapeAttr(set.label)}</h2>
+        <p>${set.problems.length} problems &middot; ${set.difficulty} difficulty &middot; Elapsed <time id="practice-clock"></time></p>
+      </header>
+      ${set.problems.map((p, i) => `<section class="sh-section"><h3>Problem ${i + 1} &middot; ${escapeAttr(refShort(p.ref))}</h3>
+        <div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement"></div><p class="prob-credit"></p></div>
+      </section>`).join("")}</div>`;
+    const clock = $content.querySelector("#practice-clock");
+    const tick = () => {
+      const seconds = Math.floor((Date.now() - set.started) / 1000);
+      clock.textContent = Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
+    };
+    tick();
+    practiceClock = setInterval(tick, 1000);
+    set.problems.forEach(p => showStatement(p, ".practice-set-st"));
+    $content.querySelector("#exit-practice-set").addEventListener("click", () => history.back());
+  }
   function wireTopicPractice(root) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
     const topic = form.elements.topic, count = form.elements.count;
     const suggestions = form.querySelector("datalist");
     const status = root.querySelector("#topic-practice-status");
-    const result = root.querySelector("#topic-practice-result");
+    const difficulty = form.elements.difficulty;
+    let generating = false;
     const normalize = text => text.trim().toLowerCase();
     const topics = new Map();
     function index(label, problems) {
@@ -5278,6 +5305,7 @@
       const pool = topics.get(key).problems;
       for (const p of problems) {
         // Shared AMC 10/12 problems have the same written strategy on both papers.
+        if (!MAA_RE.test(p.ref)) continue;
         const identity = /^AMC (?:10|12)/.test(p.fam) && p.strategy ? p.year + "|" + p.strategy : p.slug;
         if (!pool.has(identity)) pool.set(identity, p);
       }
@@ -5300,38 +5328,51 @@
       const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 30)
         : Object.values(SUBJECT_LABELS);
       suggestions.replaceChildren(...choices.map(label => new Option(label, label)));
-      const match = findTopic(key);
-      status.textContent = match ? match.problems.size + " matching problems available."
-        : key ? "Choose a matching topic or try a broader subject." : "";
-      form.querySelector("button").disabled = !match;
+      const pool = matchingProblems();
+      count.max = Math.max(1, Math.min(30, pool.length));
+      if (count.valueAsNumber > Number(count.max)) count.value = count.max;
+      form.querySelector("#topic-count-value").textContent = count.value;
+      form.querySelector("#topic-band-value").textContent = difficultyLabel();
+      status.textContent = pool.length ? pool.length + " matching problems available."
+        : key ? "No matches. Try another topic or difficulty." : "";
+      form.querySelector("button").disabled = generating || !pool.length;
     }
-    function showSet() {
-      if (!topicPracticeSet) return;
-      const { label, requested, problems } = topicPracticeSet;
-      const n = problems.length;
-      result.innerHTML = `<h4>${escapeAttr(label)} &middot; ${n} problem${n === 1 ? "" : "s"}</h4>
-        ${n < requested ? "<p>These are all the distinct matches available.</p>" : ""}
-        <ol>${problems.map(p => `<li><a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></li>`).join("")}</ol>`;
+    function difficultyLabel() {
+      return ["Any", "Easy", "Medium", "Hard"][difficulty.valueAsNumber];
     }
-    topic.value = topicPracticeSet?.label || "Geometry";
-    count.value = topicPracticeSet?.requested || 5;
-    topic.addEventListener("input", update);
-    form.addEventListener("submit", e => {
+    function matchingProblems() {
+      const match = findTopic(normalize(topic.value)), band = DIFFS[difficulty.valueAsNumber];
+      return match ? [...match.problems.values()].filter(p => !band || difficultyBand(p) === band) : [];
+    }
+    form.addEventListener("input", update);
+    form.addEventListener("submit", async e => {
       e.preventDefault();
-      const match = findTopic(normalize(topic.value)), requested = count.valueAsNumber;
-      if (!match || !Number.isSafeInteger(requested) || requested < 1) return;
-      const pool = [...match.problems.values()], problems = [];
+      const pool = matchingProblems(), requested = count.valueAsNumber;
+      if (generating || !pool.length || !Number.isSafeInteger(requested) || requested < 1) return;
+      const label = findTopic(normalize(topic.value)).label, level = difficultyLabel();
+      const problems = [];
+      generating = true;
+      form.querySelector("fieldset").disabled = true;
+      status.textContent = "Loading problem statements…";
       while (pool.length && problems.length < requested) {
-        const i = Math.floor(Math.random() * pool.length), p = pool[i];
-        pool[i] = pool[pool.length - 1];
-        pool.pop();
-        problems.push(p);
+        const batch = [];
+        while (pool.length && batch.length < requested - problems.length) {
+          const i = Math.floor(Math.random() * pool.length);
+          batch.push(pool[i]);
+          pool[i] = pool[pool.length - 1];
+          pool.pop();
+        }
+        await Promise.all([...new Set(batch.map(p => p.year))].map(loadStatements));
+        if (!form.isConnected) return;
+        problems.push(...batch.filter(p => window.MATH_STATEMENTS?.[p.slug]));
       }
-      topicPracticeSet = { label: match.label, requested, problems };
-      showSet();
+      generating = false;
+      form.querySelector("fieldset").disabled = false;
+      if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
+      topicPracticeSet = { label, difficulty: level, problems, started: Date.now() };
+      location.hash = "#/practice/set";
     });
     update();
-    showSet();
   }
   function renderSpaceHome(name) {
     shownIds = [];
@@ -5376,8 +5417,7 @@
           }).join("")}</div>
         </section>`;
       else body += `
-        <div class="pr-top pr-top-one">
-          <section class="hp-panel rand-picker">
+        <section class="sh-section rand-picker">
             <h3>Open a random problem</h3>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
@@ -5389,19 +5429,21 @@
               <span class="rand-diff-val">Any</span>
             </div>
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem &rarr;</a>
-          </section>
-        </div>
+        </section>
         <section class="sh-section" id="pr-topic">
           <h3>Practice a topic</h3>
           <p>Choose a subject or technique to build an untimed set from past contest problems.</p>
-          <form id="topic-practice-form">
-            <label>Topic<input class="list-add-input" type="search" name="topic" list="practice-topic-options" placeholder="Geometry, Markov chains…" required autocomplete="off"></label>
+          <form id="topic-practice-form"><fieldset aria-label="Practice set options">
+            <label for="topic-name">Topic</label>
+            <input id="topic-name" class="list-add-input" type="search" name="topic" value="Geometry" list="practice-topic-options" required autocomplete="off">
             <datalist id="practice-topic-options"></datalist>
-            <label>Questions<input class="list-add-input" type="number" name="count" min="1" step="1" required></label>
-            <button type="submit" class="hp-btn">Generate set</button>
-          </form>
-          <p id="topic-practice-status" role="status"></p>
-          <div id="topic-practice-result" aria-live="polite"></div>
+            <div class="rand-diff"><label for="topic-count">Questions</label>
+              <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
+            <div class="rand-diff"><label for="topic-band">Difficulty</label>
+              <input id="topic-band" type="range" name="difficulty" min="0" max="3" value="0"><output id="topic-band-value" for="topic-band">Any</output></div>
+            <p id="topic-practice-status" role="status"></p>
+            <button type="submit" class="hp-btn">Generate set &rarr;</button>
+          </fieldset></form>
         </section>
         <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
@@ -7881,6 +7923,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
 
   function render() {
+    clearInterval(practiceClock);
     const route = getRoute();
     if (route.type === "home") {
       state.landing = !route.section;
@@ -7916,7 +7959,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     } else if (route.type === "special") {
       renderSpecial(route);
     } else if (route.type === "space") {
-      renderSpaceHome(route.name);
+      if (route.practiceSet) renderTopicPracticeSet();
+      else renderSpaceHome(route.name);
     } else if (route.type === "learn") {
       renderLearn(route);
     } else if (state.query.trim()) {
@@ -8903,7 +8947,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
     h.addEventListener("blur", () => finish(true), { once: true });
   }
 
-  window.addEventListener("hashchange", () => {
+  window.addEventListener("hashchange", event => {
+    if (topicPracticeSet && new URL(event.oldURL).hash === "#/practice/set" && location.hash !== "#/practice/set") {
+      if (!confirm("Leave this practice set? The set and elapsed time will not be saved.")) {
+        history.pushState(null, "", "#/practice/set");
+        return;
+      }
+      topicPracticeSet = null;
+    }
     clearTimeout(scrollSaveTimer);
     legacyRedirect();
     const route = getRoute();
