@@ -5378,7 +5378,7 @@
       else body += `
         <div class="pr-top pr-top-one">
           <section class="hp-panel rand-picker">
-            <div class="hp-label">A random problem</div>
+            <h3>Open a random problem</h3>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
               ${fams.map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
