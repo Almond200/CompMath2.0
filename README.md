@@ -312,7 +312,20 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 ## Changelog
 
+**2026-11-04**
+
+- The denesting radicals card gives the general two-root identity, its real-number conditions and a proof for both signs. Perpendicular Segments Across a Square now cites 2021 Fall AMC 10B #15.
+
+
 **2026-11-01**
+
+- Olympiad Geometry O6, Circles, covers power differences, tangent circles and quadrilaterals. O3 through O6 use typeset fractions in their displayed and inline mathematics.
+- The homepage shows the first six textbooks. The full shelf is under Learn. Cards link to written lessons under **Study this more**, after their related cards, and use the heading **Practice problems**.
+- Back restores an opened card example or problem explanation. Problem links, including the numbered squares, offer hover previews with available statement text and credit.
+- Assuming All Are of One Kind explains the equal-value case before division. The practice references for A Subset Avoiding a Sum, Difference, or Divisibility include 2022 AMC 10B #14.
+- The roadmap now prioritizes content completion, then usability across the five spaces, followed by possible practice sets, study history and list sharing.
+
+- Olympiad Geometry O5, Centers and lines of the triangle, is written and loaded. Its challenges derive the centroid bound for squared side lengths and prove Droz-Farny collinearity in coordinates.
 
 - Custom lists start ungrouped. Group opens the section sidebar when matches are available.
   Adding cards to a grouped list changes Ungroup to Regroup, marked with the Filters indicator.

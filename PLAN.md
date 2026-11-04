@@ -17,7 +17,7 @@
 - **Learn, written:** all eight AMC and AIME books and four Olympiad books are complete; the Bridge was removed (2026-11-01), its lessons merged into the AMC books.
   - **AIME track:** AIME Number Theory (N1 to N8), Algebra (A1 to A9), Counting & Probability (C1 to C9), Geometry (G1 to G9). The Bridge (B1 to B6) is removed.
   - **AMC track:** AMC Algebra (L1 to L14, second plan, done), Number Theory (M1 to M7 of the second plan, done), Counting & Probability (second plan R1 to R10, done), Geometry (second plan S1 to S12, done). Chapters are marked Core or Core II, never AMC 10 or AMC 12, and no chapter or lesson title names the AMC 10 or AMC 12 (owner, 2026-11-01: "advanced", not "for the AMC 12").
-  - **Olympiad track:** Proofs, Algebra, Number Theory and Combinatorics are complete. Geometry chapters O1 through O4 are loaded. Continue with O5, Centers and lines of the triangle, then O6, Circles, and O7, Projective geometry.
+  - **Olympiad track:** Proofs, Algebra, Number Theory and Combinatorics are complete. Geometry chapters O1 through O6 are written on this branch. O7, Projective geometry, is next.
   - **Lesson format (CONVENTIONS §14):** one flowing explanation with no subheadings, Related cards, the lesson's own problems with worked solutions, then Exercises (contest problems). The checks and the math keyboard were retired (the keyboard's code is kept unused).
 - **The chapter structure is approved (owner, 2026-10-31, after the C5 pilot; CONVENTIONS §14):** X.1 Introduction as the chapter's opening page, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems, numbered on from the Summary. C5 was the pilot (C5.1 Introduction, C5.2 to C5.7 lessons, C5.8 Summary, C5.9 Review Problems, C5.10 Challenge Problems). Step 2 below is under way: the whole AIME Counting & Probability book (C1 to C9) and AIME Number Theory (N1 to N8) and AIME Algebra (A1 to A9) and AIME Geometry (G1 to G9) are converted (eighteenth chat). Every other chapter still has the old overview page and chapter review.
 - **The app's Learn surfaces:** the shelf of book covers; each book's contents (opening with Contents and Introduction and a How to Use This Book page); the book view (a chapter-tab rail whose tabs scrub through their pages, two title bars, Previous, Back to top, Next; on a phone a pinned row of previous, a chapter-and-page menu and next); the card drawer (a sheet on a phone, closed by swiping down); the AoPS-style problem list (Show Solution only once the box has text).
@@ -25,7 +25,7 @@
 - **A user's bug report, fixed (end of the seventeenth chat):** the three dialogs (Filters, Browse by tag, a space's "i") trap and return the keyboard focus, with `aria-modal` and `aria-pressed`; Import progress is all or nothing, with rollback and an accurate message; the answer parser caps ± signs; Quiz and Flashcards let a focused link or button handle Enter and Space and say when the browser is not saving; Flashcards' reset clears both directions, its empty session says why, its setup keeps the focus; the Formula Web's search picks a route's Start and End from the keyboard. Each finding was checked before it was fixed.
 - **Labels and order (owner, eighteenth chat):** every Learn problem has a unique label (contest problems numbered on from a page's own problems; old reviews use N3.R.1), and lessons run our problems, solutions, then Exercises, while Review and Challenge Problems run our problems, contest problems, then solutions (owner, 2026-11-01; CONVENTIONS §14). Write new chapters to fit.
 - **Lesson tags (owner, eighteenth chat):** every lesson of a converted chapter carries Core, Core II or Extension after its title in the outline (CONVENTIONS §14); give them as each chapter is converted.
-- **Next action:** "The order of work" below: the quick changes are done (nineteenth chat); AMC Number Theory M6 and M7 are done; AMC Counting & Probability is done (R1 to R10); AMC Geometry is done (S1 to S12); the Bridge is removed. Step 3: the olympiad books are being written: Olympiad Proofs done (P1 to P4); Olympiad Algebra done (E1 to E5); Olympiad Number Theory done (D1 to D4); Olympiad Combinatorics done (K1 to K5); Olympiad Geometry O1 to O4 written on `codex/work`; next is O5, with O6 and O7 following.
+- **Next action:** write Olympiad Geometry O7, then audit the books for mathematical accuracy, explanatory diagrams and current documentation.
 - **For the owner to try now:** C5 as the model chapter (`#/learn/aime-counting/c5`), How to Use This Book from any book's contents, Settings with its preview and search, and the app on a phone.
 
 ## The road ahead: the Learn track
@@ -44,26 +44,13 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 - **L6 and L9, the writing:** every planned book written. The owner's later decisions replaced parts of the first design: LQ5's typed checks and math keyboard were dropped for problems with worked solutions; the lesson standard became one flowing explanation; the chapter structure above replaced the overview page and chapter review.
 - **L10, the home page:** redesigned twice; done.
 
-### The order of work (owner, 2026-11-01)
-1. **Quick changes (done, nineteenth chat):**
-   - Page order: our problems, solutions, then contest problems (Exercises) on lessons and Introductions; on Review Problems and Challenge Problems only, our problems, contest problems, then solutions, so the problems sit together.
-   - AIME books get part headings like the AMC books (Foundations, Core topics, Advanced topics, Beyond the AIME).
-   - The contents page's "Contents and Introduction" gets the code C, like L1; the Contents link is not bold.
-   - How to Use This Book becomes a real page in the book view (rail, header, title); the C tab's top three quarters are the contents, its bottom quarter How to Use This Book (owner, 2026-11-01), and it is a rounded square like the other tabs.
-   - Lesson references in parentheses, such as "(L3.4)", are links to that lesson.
-   - Book captions (roles) do not say "AMC 10 and 12".
-   - Wording fixes from a reader: C5.1's string recursion needs its boundary case ($s_0 = 1$, decomposition for $n \ge 2$); L1.1 should say $\sqrt{x^2} = |x|$.
-   - A Ptolemy key form for four points on a line.
-   - **Study a concept more** (replaces L7): on a problem page, inside How this problem works, below the pattern, method and formula cards, a line "Study a concept more" with links named after the problem's cards, each going to the lesson that teaches that card (where one does). No "Practice more" link: anything worth practicing belongs in the textbook.
-2. **The AMC books' second plan** (LEARN-OUTLINE.md, "The AMC books, second plan"): Algebra done; Number Theory done (M1 to M7); Counting & Probability done (R1 to R10); Geometry done (S1 to S12); the Bridge is removed (its section, files, id in `IDS`, cover). Step 2 is done.
-3. **The olympiad books:** the outline is applied (twentieth chat, from `drafts/olympiad-books.patch`, by hand): five books on the shelf (Proofs P1 to P4, Algebra E1 to E5, Number Theory D1 to D4, Combinatorics K1 to K5, Geometry O1 to O7), a third track in `check-learn.js`, covers and motifs. Next: write the chapters in the approved chapter structure (Introduction, lessons, Summary, Review and Challenge Problems), each outline section first gaining its Introduction and Summary rows; the problem database holds answer contests, so the problems are our own, with worked solutions.
-4. **Diagrams in the textbooks** (Venn diagrams for inclusion-exclusion, geometry figures, and so on), and **lessons in the main search**, ranked like problems: shown only on a very strong match, so they neither crowd the results nor never appear.
-5. Proofreading every book: not started.
-6. **Practice: Create a contest (beta).** Under the Contests block on Practice, below A random problem: build a contest with a focus (subject, topic, contest, difficulty). Batches of exactly 3 problems; a time limit set by difficulty (about 30 to 45 minutes or less); one submission per problem; it ends when all three are answered or auto-submits when time runs out; then the problems can be reviewed and the result is saved under past contest results. The picker corrects for difficulty inflation across years. It will need finer problem tags later. (Moved after the textbook work, owner, 2026-11-01: the textbooks are made solid first.)
+### The order of work
 
-**On hold:** Stage 5 (the `lab/` quiz, flashcards and formula web into Practice), owner 2026-11-01: they lean toward memorizing facts, which the app is moving away from; leave them as they are.
+1. **Complete the content.** Finish the textbooks, review the mathematics and worked solutions, and reconcile the outline, status notes and documentation with the app. Add diagrams where they explain a construction, reveal why a step works or make a relationship easier to see.
+2. **Polish the experience.** Review search, navigation, readability and mobile usability across Learn, Formulas, Methods, Patterns and Practice. Follow real study paths between spaces, including a reader returning to an open solution or following a card to its lesson.
+3. **Consider small study features.** Possible additions are generated practice sets for a chosen topic, a way to review study history, and shareable lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
 
-**Later, only once the learning flow works:** personalized recommendations, adaptive mastery, AI-written feedback or problems, accounts or a server. Not planned now.
+The lab migration remains on hold. Lessons in search belong to the search review in phase two.
 
 ## Where things are
 

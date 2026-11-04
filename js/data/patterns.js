@@ -814,7 +814,7 @@ window.MATH_SECTIONS.push({
           when: String.raw`A count of items of two kinds and a total of some quantity per item are given, such as heads and legs of chickens and rabbits, wheels on bicycles and tricycles, or the cost of cheap and expensive tickets.`,
           move: String.raw`Pretend every item is of the first kind and compute the total that would give. Each item switched to the second kind changes the total by the difference of the two per-item values, so the shortfall divided by that difference is the number of the second kind.`,
           uses: [],
-          latex: String.raw`\#\text{second kind} = \frac{T - na}{b - a}`,
+          latex: String.raw`\#\text{second kind} = \frac{T - na}{b - a},\quad b\ne a`,
           description: String.raw`Assuming all are of one kind solves a two-kind counting problem without writing a system. With $n$ items, each worth $a$ or $b$, and a total $T$: if all were worth $a$ the total would be $na$, and every item of the second kind adds $b - a$ to that, so there are $\frac{T - na}{b - a}$ of them. It is elimination done in words, the classic chickens and rabbits puzzle.`,
           keywords: ["chickens and rabbits", "heads and legs", "bicycles and tricycles", "two kinds of tickets", "assume all", "suppose all were", "how many of each", "method"],
           importance: "lower",

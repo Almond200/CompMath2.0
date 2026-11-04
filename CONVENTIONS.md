@@ -223,7 +223,7 @@ pattern (46)    ## Distinguishing clues, ## Methods and Formulas to Try,
                 ## Common traps, ## Contest profile
 ```
 
-Key forms is optional on a formula card (on 542 of 546). `## Full proof` renders collapsed behind a "Show
+The denesting-radicals method also has a Key forms section for the general two-root identity. Key forms is optional on a formula card (on 542 of 546). `## Full proof` renders collapsed behind a "Show
 full proof" button. "Pattern and method anatomy" at the end of this file says what each section holds.
 
 - **Why it works explains; Full proof proves.** Open Why it works with the idea in one plain

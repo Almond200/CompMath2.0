@@ -1987,19 +1987,24 @@ AIME floor-sum problems and Putnam-style identities, where a messy sum of floors
 `,
 
 "denesting-radicals": String.raw`
+## Key forms
+- $\sqrt{a\pm\sqrt b}=\sqrt{\frac{a+\sqrt{a^2-b}}{2}}\;\pm\;\sqrt{\frac{a-\sqrt{a^2-b}}{2}},\quad a\ge0,\quad 0\le b\le a^2$ — real two-root form with matching signs
+
 ## When to use
 Answers such as $\sqrt{7 - 4\sqrt3}$ or $\sqrt{11 + 6\sqrt2}$ that must be written as $p + q\sqrt r$, expressions like $\sqrt{2 + \sqrt3}$ that come from half-angle formulas, and equations whose solutions arrive as nested radicals.
 
 ## How
 1. Write the radical as $\sqrt{a \pm 2\sqrt c}$, moving a factor $2$ inside the inner root if needed.
 2. Find $x$ and $y$ with $x + y = a$ and $xy = c$: they are the roots of $t^2 - at + c = 0$.
-3. If they are rational, which happens exactly when $a^2 - 4c$ is a perfect square, then $\sqrt{a + 2\sqrt c} = \sqrt x + \sqrt y$, and $\sqrt{a - 2\sqrt c} = \sqrt x - \sqrt y$ with $x > y$.
-4. If not, the radical does not denest into such a sum.
+3. If they are rational, which happens exactly when $a^2 - 4c$ is a perfect square, then $\sqrt{a + 2\sqrt c} = \sqrt x + \sqrt y$, and $\sqrt{a - 2\sqrt c} = \sqrt x - \sqrt y$ with $x \ge y$.
+4. Otherwise this construction does not give two rational radicands.
 
 $\sqrt{7 - 4\sqrt3} = \sqrt{7 - 2\sqrt{12}}$: the numbers with sum $7$ and product $12$ are $4$ and $3$, so it equals $\sqrt4 - \sqrt3 = 2 - \sqrt3$. Squaring checks it: $(2 - \sqrt3)^2 = 7 - 4\sqrt3$.
 
 ## Why it works
 Squaring a sum of two roots gives $(\sqrt x + \sqrt y)^2 = x + y + 2\sqrt{xy}$, so $\sqrt{a + 2\sqrt c} = \sqrt x + \sqrt y$ exactly when $x + y = a$ and $xy = c$, matching the rational part and the root part. Numbers with a given sum and product are the roots of a quadratic, and they are rational when its discriminant $a^2 - 4c$ is a perfect square.
+
+For the Key forms identity take $d=\sqrt{a^2-b}$, $x=\frac{a+d}{2}$ and $y=\frac{a-d}{2}$. The stated bounds give $0\le d\le a$, so $x\ge y\ge0$. Their sum is $a$ and their product is $\frac b4$. Squaring $\sqrt x\pm\sqrt y$ now gives $a\pm\sqrt b$. Both candidates are nonnegative, even for the minus sign, so taking the principal square root gives the claimed equality. This identity holds even when $x$ and $y$ are irrational; it gives a simpler rational pair when $a$ and $d$ are rational.
 
 The figure shows the identity as a square of side $\sqrt x + \sqrt y$ cut into pieces of area $x$, $y$ and two of area $\sqrt{xy}$.
 
@@ -5981,7 +5986,7 @@ A story has items of two kinds, the total number of items, and the total of a qu
 ## How
 1. Suppose every item is of the first kind, with value $a$ each, and compute the total $na$.
 2. Compare with the true total $T$: the difference is $T - na$.
-3. Switching one item to the second kind, of value $b$, changes the total by $b - a$, so the number of the second kind is $\frac{T - na}{b - a}$.
+3. Switching one item to the second kind, of value $b$, changes the total by $b - a$. Check $b \ne a$ before dividing. If $b=a$, every mix gives $na$, so a different total is impossible and a matching total supplies no information about the mix. For distinct values, the number of the second kind is $\frac{T - na}{b - a}$.
 4. The rest are of the first kind; check by computing the total.
 
 With $30$ animals and $84$ legs: all chickens would give $60$ legs, each rabbit adds $2$, so there are $\frac{24}{2} = 12$ rabbits and $18$ chickens.

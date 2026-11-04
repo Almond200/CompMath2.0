@@ -3009,6 +3009,11 @@
     return `<div class="connected"><h4>${title}</h4>${list.length ? cardLinkList(list.map(c => c.id)) : `<p class="related-empty">None yet.</p>`}</div>`;
   }
 
+  function rememberSolution(key, open) {
+    const solutions = Object.assign({}, history.state?.solutions, { [key]: open });
+    history.replaceState(Object.assign({}, history.state, { solutions }), "");
+  }
+
   function practiceHtml(f) {
     // Uniform format: numbered examples, each a question with a hidden solution (a printed page
     // shows every solution; see @media print in styles.css).
@@ -3027,8 +3032,8 @@
       <div class="problem">
         <p class="problem-q"><strong>Example ${i + 1}.</strong> ${p.q}</p>
         ${figHtml(p.figQ)}
-        ${p.s ? `<button class="sol-toggle" data-target="sol-${f.id}-${i}">Show solution</button>
-        <div class="problem-sol" id="sol-${f.id}-${i}" hidden><strong>Solution.</strong> ${p.s}${figHtml(p.figS)}</div>` : ""}
+        ${p.s ? `<button class="sol-toggle" data-target="sol-${f.id}-${i}">${history.state?.solutions?.[`sol-${f.id}-${i}`] ? "Hide" : "Show"} solution</button>
+        <div class="problem-sol" id="sol-${f.id}-${i}" ${history.state?.solutions?.[`sol-${f.id}-${i}`] ? "" : "hidden"}><strong>Solution.</strong> ${p.s}${figHtml(p.figS)}</div>` : ""}
       </div>`);
     return `<div class="practice"><h4>Examples</h4>${blocks.join("")}</div>`;
   }
@@ -3218,7 +3223,7 @@
     // is still shown, empty, so the place for them is visible.
     if (!probs.length) return kindOf(f) === "pattern" ? `
       <div class="practice contest-refs practice-empty">
-        <h4>Practice Problems</h4>
+        <h4>Practice problems</h4>
         <p class="practice-placeholder">No practice problems for this pattern yet.</p>
       </div>` : "";
     // Within each contest, easiest first (owner, 2026-10-31): by place in the paper, then newest.
@@ -3245,7 +3250,7 @@
     }).join("");
     return `
       <div class="practice contest-refs">
-        <h4>Practice Problems <span class="practice-note">${probs.length}</span></h4>
+        <h4>Practice problems <span class="practice-note">${probs.length}</span></h4>
         ${body}
       </div>`;
   }
@@ -3576,18 +3581,27 @@
   let cpAt = null;
 
   function showCardPreview(a) {
-    const e = BY_ID[a.dataset.card];
-    if (!e || cpFor === a) return;
+    const problem = a.hash.startsWith("#/problem/") ? PROBLEM_BY_SLUG[a.hash.slice(10)] : null;
+    const e = BY_ID[a.dataset.card || (a.hash.startsWith("#/f/") && a.hash.slice(4))];
+    if ((!e && !problem) || cpFor === a) return;
     hideCardPreview();
     cpFor = a;
-    const f = e.formula;
-    const kind = f.type === "method" ? `<span class="badge badge-method">METHOD</span>`
-               : f.type === "pattern" ? `<span class="badge badge-pattern">PATTERN</span>` : "";
-    const desc = leadSentences(f.description, 200);
-    const panels = (window.MATH_DIAGRAMS || {})[f.id];
-    const thumb = panels && panels[0]
-      ? `<div class="cp-thumb">${String(panels[0]).replace(/<div class="diagram-cap">[\s\S]*?<\/div>/, "")}</div>`
-      : "";
+    let thumb = "", content;
+    if (problem) {
+      content = `<div class="cp-head">${escapeAttr(refShort(problem.ref))}</div>
+        <div class="cp-desc">${escapeAttr(problem.subjects.map(id => SUBJECT_LABELS[id]).join(" · ") || problem.fam)}</div><div class="cp-crumb"></div>`;
+    } else {
+      const f = e.formula;
+      const kind = f.type === "method" ? `<span class="badge badge-method">METHOD</span>`
+                 : f.type === "pattern" ? `<span class="badge badge-pattern">PATTERN</span>` : "";
+      const desc = leadSentences(f.description, 200);
+      const panels = (window.MATH_DIAGRAMS || {})[f.id];
+      thumb = panels && panels[0]
+        ? `<div class="cp-thumb">${String(panels[0]).replace(/<div class="diagram-cap">[\s\S]*?<\/div>/, "")}</div>`
+        : "";
+      content = `<div class="cp-head">${f.name}${kind}</div><div class="cp-desc">${desc}</div>
+        <div class="cp-crumb">${escapeAttr(e.section.title)} &rsaquo; ${escapeAttr(e.subsection.title)}</div>`;
+    }
     clearTimeout(cpHide);
     cpEl = document.createElement("div");
     cpEl.className = "card-preview";
@@ -3595,24 +3609,22 @@
     cpEl.addEventListener("mouseleave", hideCardPreview);
     // The box is a second target for the same link, so reading the summary and deciding to
     // go there does not mean travelling back to the word.
-    cpEl.addEventListener("click", () => {
-      const id = a.dataset.card;
+    cpEl.addEventListener("click", event => {
+      if (event.target.closest("a")) return;
       hideCardPreview();
-      location.hash = "#/f/" + id;
+      location.hash = a.hash;
       window.scrollTo({ top: 0 });
     });
     if (thumb) cpEl.classList.add("cp-has-thumb");
-    cpEl.innerHTML = thumb +
-      `<div class="cp-head">${f.name}${kind}</div><div class="cp-desc">${desc}</div>` +
-      `<div class="cp-crumb">${escapeAttr(e.section.title)} &rsaquo; ${escapeAttr(e.subsection.title)}</div>` +
-      `<span class="cp-arrow"></span>`;
+    if (problem) cpEl.classList.add("problem-preview");
+    cpEl.innerHTML = thumb + content + '<span class="cp-arrow"></span>';
     document.body.appendChild(cpEl);
     // Typeset BEFORE measuring. Positioning above the word needs the final height, and KaTeX
     // (and the thumbnail's SVG) change it after the fact; measuring first is what left a gap
     // above the word, and only above, since the below branch pins the top edge instead.
     renderMath(cpEl);
     const place = () => {
-      if (!cpEl) return;
+      if (cpFor !== a) return;
       positionFloat(cpEl, a, thumb ? 420 : 330, true, cpAt);
       // The arrow must point at the SAME fragment the box was placed against, or on a link
       // that wraps it aims at the union box's centre and misses the word entirely.
@@ -3622,6 +3634,16 @@
       arrow.style.left = Math.min(Math.max(target - br.left, 14), br.width - 14) + "px";
       cpEl.classList.toggle("cp-below", br.top > ar.top);
     };
+    if (problem && MAA_RE.test(problem.ref)) loadStatements(problem.year).then(() => {
+      if (cpFor !== a) return;
+      const st = window.MATH_STATEMENTS?.[problem.slug];
+      if (!st) return;
+      const text = typeof st === "string" ? st : st.s;
+      cpEl.querySelector(".cp-desc").textContent = text.split(/\n\(A\) /)[0].replace(/@@fig:[^@]+@@/g, "");
+      cpEl.querySelector(".cp-crumb").innerHTML = statementCreditHtml(problem, st.u);
+      renderMath(cpEl);
+      place();
+    });
     place();
     requestAnimationFrame(place);          // the thumbnail's SVG can resolve a frame later
   }
@@ -3949,6 +3971,7 @@
         ${problemsHtml}
         ${reverseLinksHtml(f)}
         ${connectedHtml(f)}
+        ${cardLessonsHtml(f.id)}
         <div class="related"><h4>Tags</h4>${tagRowHtml(f, null, entry.topics)}</div>
       </div>${withTools ? pageToolsHtml(entry) + "</div>" : ""}`;
     renderMath($content);
@@ -3985,7 +4008,8 @@
     "Interactive": "Move the pieces and watch the result hold.",
     "Examples": "Worked examples that use this card.",
     "Contest profile": "What the tagged contest problems say about this card. (Statistically generated)",
-    "Practice Problems": "Real contest problems that use this card, by contest.",
+    "Practice problems": "Real contest problems that use this card, by contest.",
+    "Study this more": "Written lessons that teach or discuss this card.",
     "Related formulas": "Hand-picked cards that are part of the same idea.",
     "Related methods": "Hand-picked cards that are part of the same idea.",
     "Related patterns": "Hand-picked cards that are part of the same idea.",
@@ -4055,6 +4079,7 @@
     const body = t.closest(".prob-chain").querySelector(".chain-body");
     if (!body) return;
     body.hidden = !body.hidden;
+    if (t.dataset.solutionKey) rememberSolution(t.dataset.solutionKey, !body.hidden);
     t.setAttribute("aria-expanded", String(!body.hidden));
     t.innerHTML = body.hidden ? "+ Show" : "&minus; Hide";
     if (!body.hidden) { renderMath(body); fitBatch([...body.querySelectorAll(".formula-display[data-latex]")]); }
@@ -5094,7 +5119,7 @@
     // Continue: the cards and problems opened lately. Lessons and books are left to Learn's own
     // "Recently opened" (owner, 2026-10-31: too many lessons crowded the home page).
     const recentCards = recentRowsHtml(6, ["formula", "method", "pattern", "problem"]);
-    const bookRows = LEARN_SHELF.map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnLessonsIn(b)} lessons</span></a>`).join("");
+    const bookRows = LEARN_SHELF.slice(0, 6).map(b => `<a class="hm-book" href="${learnHash(b)}">${bookCoverHtml(b, "s")}<span class="hm-book-t">${escapeAttr(b.title)}</span><span class="hm-book-n">${learnLessonsIn(b)} lessons</span></a>`).join("");
     $content.innerHTML = `
       <div class="home">
         <div class="hm-intro">
@@ -7089,18 +7114,32 @@ The book remembers the last lesson you opened, in this browser, and the contents
   // lesson and any other problem an AMC book's; a card no lesson teaches gets no link.
   let LESSONS_BY_CARD = null;
   function lessonForCard(fid, aime) {
+    const lessons = lessonsForCard(fid);
+    return lessons.find(x => x.taught && x.b.id.startsWith(aime ? "aime-" : "amc-"))
+      || lessons.find(x => x.taught && /^(amc|aime)-/.test(x.b.id)) || null;
+  }
+  function lessonsForCard(fid) {
     if (!LESSONS_BY_CARD) {
       LESSONS_BY_CARD = {};
       for (const b of LEARN_SHELF) {
-        if (!/^(amc|aime)-/.test(b.id)) continue;
         for (const c of b.chapters) for (const l of c.lessons) {
           const d = learnLessonData(c, l);
-          if (d && d.cards) d.cards.forEach(id => (LESSONS_BY_CARD[id] = LESSONS_BY_CARD[id] || []).push({ b, c, l }));
+          if (!d) continue;
+          const taught = new Set(d.cards || []);
+          const ids = new Set([...taught, ...(d.related || []).map(r => r.card)]);
+          for (const m of (d.body || "").matchAll(/\[\[([\w-]+)(?:\|[^\]]*)?\]\]/g)) ids.add(m[1]);
+          for (const id of ids) (LESSONS_BY_CARD[id] ||= []).push({ b, c, l, taught: taught.has(id) });
         }
       }
     }
-    const xs = LESSONS_BY_CARD[fid] || [];
-    return xs.find(x => /^aime-/.test(x.b.id) === aime) || xs[0] || null;
+    return LESSONS_BY_CARD[fid] || [];
+  }
+  function cardLessonsHtml(fid) {
+    const lessons = lessonsForCard(fid);
+    if (!lessons.length) return "";
+    const links = [...lessons].sort((a, b) => b.taught - a.taught).map(({ b, c, l }) =>
+      `<a class="related-item" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${l.code} ${escapeAttr(l.title)}</a>`);
+    return `<div class="related"><h4>Study this more</h4><div class="chain-study-links">${links.join("")}</div></div>`;
   }
   function studyMoreHtml(p, chain) {
     const aime = /AIME/.test(p.ref || p.cname || "");
@@ -7125,12 +7164,15 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const chainCol = (label, ids, empty) => `<div class="chain-col"><div class="chain-label">${label}</div><div class="chain-cards">${ids.length ? ids.map(chainChip).join("") : `<span class="chain-empty">${empty}</span>`}</div></div>`;
     return { chain, altIds, chainCol };
   }
-  function chainBoxHtml(p, chainCol, chain, altIds) {
+  function chainBoxHtml(p, chainCol, chain, altIds, preview) {
     const inner = chainInnerHtml(p, chainCol, chain, altIds);
     // A small "+ Show" / "- Hide" beside the heading opens and closes the strategy, like the
     // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
-    const can = !!(p.strategy || p.formulas.length), hide = can && state.strategy === "click";
-    return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" aria-expanded="${!hide}">${hide ? "+ Show" : "&minus; Hide"}</button>` : ""}</div>
+    const can = !!(p.strategy || p.formulas.length);
+    const key = "problem-" + p.slug;
+    const open = (!preview ? history.state?.solutions?.[key] : undefined) ?? (state.strategy !== "click");
+    const hide = can && !open;
+    return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" ${preview ? "" : `data-solution-key="${key}"`} aria-expanded="${!hide}">${hide ? "+ Show" : "&minus; Hide"}</button>` : ""}</div>
         <div class="chain-body"${hide ? " hidden" : ""}>${inner}</div>
       </div>`;
   }
@@ -7145,7 +7187,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // How this problem works sits near the bottom of the page: the problem itself, and thinking
     // about it, come first.
     const { chain, altIds, chainCol } = chainParts(p);
-    const chainHtml = chainBoxHtml(p, chainCol, chain, altIds);
+    const chainHtml = chainBoxHtml(p, chainCol, chain, altIds, pv);
     // A geometry problem printed without a figure gets one drawn for the app
     // (js/data/diagrams/problem-diagrams.js), labelled as ours; it shows only inside How this
     // problem works (ownFigureHtml).
@@ -8500,8 +8542,9 @@ The book remembers the last lesson you opened, in this browser, and the contents
 
   // Hover previews for [[card links]]. mouseenter does not bubble, so delegate on
   // mouseover/mouseout and gate on which element the pointer actually crossed into.
+  const hoverLinks = '.card-link, a.related-item[href^="#/f/"], a[href^="#/problem/"]';
   $content.addEventListener("mouseover", e => {
-    const a = e.target.closest(".card-link");
+    const a = e.target.closest(hoverLinks);
     if (!a) return;
     clearTimeout(cpTimer); clearTimeout(cpHide);
     if (cpFor === a) return;
@@ -8509,7 +8552,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     cpTimer = setTimeout(() => { cpAt = at; showCardPreview(a); }, 400);
   });
   $content.addEventListener("mouseout", e => {
-    const a = e.target.closest(".card-link");
+    const a = e.target.closest(hoverLinks);
     if (!a) return;
     if (e.relatedTarget && (a.contains(e.relatedTarget) || (cpEl && cpEl.contains(e.relatedTarget)))) return;
     scheduleHideCardPreview();
@@ -8517,7 +8560,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   window.addEventListener("scroll", hideCardPreview, { passive: true });
   // Clicking the link navigates natively, so without these the box outlives the page it
   // belonged to and reappears at its old page coordinates in the corner of the new one.
-  $content.addEventListener("click", e => { if (e.target.closest(".card-link")) hideCardPreview(); });
+  $content.addEventListener("click", e => { if (e.target.closest(hoverLinks)) hideCardPreview(); });
   window.addEventListener("hashchange", hideCardPreview);
 
   // navigator.clipboard is a secure-context API: it is undefined on a plain-http origin,
@@ -8606,6 +8649,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     if (sol) {
       const panel = document.getElementById(sol.dataset.target);
       panel.hidden = !panel.hidden;
+      rememberSolution(sol.dataset.target, !panel.hidden);
       sol.textContent = panel.hidden ? "Show solution" : "Hide solution";
       return;
     }
