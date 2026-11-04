@@ -14,7 +14,7 @@ The app moved here from an earlier conversation. These are that chat's answers (
 - **Fall 2021 AMC 12A and 12B:** never supplied. The gap is known and accepted (`tools/live-missing.md`); only 12B #23 has text. Fall 10A and 10B were imported from PDFs. (Update 2026-10-24: LIVE has Fall 12A and 12B as its 2021 AMC 12 C and D papers, and all 50 are imported; only Fall 10B #11 still comes from the AoPS Wiki.)
 
 ## 2. The cards' history
-- **Order of cards:** known only from about 2026-10-11 (the formula conversion batches, cards N1 to N7, the shape reference cards, then the olympiad batch). The README changelog is the best record of earlier work.
+- **Order of cards:** known only from about 2026-10-11 (the formula conversion batches, cards N1 to N7, the shape reference cards, then the olympiad batch). `CHANGELOG.md` is the best record of earlier work.
 - **Merged into another card** (the old link redirects):
   - Pick's Theorem on a Triangular Grid → Pick's Theorem on Any Lattice;
   - Diagonals of a Regular Hexagon → Regular Hexagon of Side s;

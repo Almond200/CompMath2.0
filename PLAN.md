@@ -2,11 +2,11 @@
 
 **A new chat starts here.** Read "Current state", then "The road ahead". This file says what to do and in what order, and nothing else:
 - how things are done: `CONVENTIONS.md` (§13 holds the rules that used to live here);
-- what changed and when: the `README.md` changelog;
+- what changed and when: [the project changelog](CHANGELOG.md);
 - approvals waiting on the owner: `QUESTIONS.md`;
 - what each Learn book, chapter and lesson contains: `LEARN-OUTLINE.md`.
 
-**The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add a README changelog entry, commit and push.
+**The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add an entry to `CHANGELOG.md`, commit and push.
 
 ## Current state (updated 2026-11-01, branch `codex/work`; olympiad lessons are written from scratch, so read a finished chapter such as `olympiad-proofs/p3.js` as the model, and check every inequality numerically)
 
@@ -21,7 +21,7 @@
   - **Lesson format (CONVENTIONS §14):** one flowing explanation with no subheadings, Related cards, the lesson's own problems with worked solutions, then Exercises (contest problems). The checks and the math keyboard were retired (the keyboard's code is kept unused).
 - **The chapter structure is approved (owner, 2026-10-31, after the C5 pilot; CONVENTIONS §14):** X.1 Introduction as the chapter's opening page, the lessons, a Summary with Problem Solving Strategies, then Review Problems and Challenge Problems, numbered on from the Summary. C5 was the pilot (C5.1 Introduction, C5.2 to C5.7 lessons, C5.8 Summary, C5.9 Review Problems, C5.10 Challenge Problems). Step 2 below is under way: the whole AIME Counting & Probability book (C1 to C9) and AIME Number Theory (N1 to N8) and AIME Algebra (A1 to A9) and AIME Geometry (G1 to G9) are converted (eighteenth chat). Every other chapter still has the old overview page and chapter review.
 - **The app's Learn surfaces:** the shelf of book covers; each book's contents (opening with Contents and Introduction and a How to Use This Book page); the book view (a chapter-tab rail whose tabs scrub through their pages, two title bars, Previous, Back to top, Next; on a phone a pinned row of previous, a chapter-and-page menu and next); the card drawer (a sheet on a phone, closed by swiping down); the AoPS-style problem list (Show Solution only once the box has text).
-- **This chat's interface work, all done:** the home page redesigned; Settings regrouped, with defaults listed first, a forgiving search, and a preview of three screens at a time drawn by the pages' own code; list page tools; printing that typesets every card and hides screen-only controls; How this problem works with "+ Show" / "- Hide" and our own figures inside it; the phone layout (sticky top bar again, Reference menu, year picker, home order). The rules are in CONVENTIONS §13 and the README changelog has the detail.
+- **This chat's interface work, all done:** the home page redesigned; Settings regrouped, with defaults listed first, a forgiving search, and a preview of three screens at a time drawn by the pages' own code; list page tools; printing that typesets every card and hides screen-only controls; How this problem works with "+ Show" / "- Hide" and our own figures inside it; the phone layout (sticky top bar again, Reference menu, year picker, home order). The rules are in CONVENTIONS §13 and `CHANGELOG.md` has the detail.
 - **A user's bug report, fixed (end of the seventeenth chat):** the three dialogs (Filters, Browse by tag, a space's "i") trap and return the keyboard focus, with `aria-modal` and `aria-pressed`; Import progress is all or nothing, with rollback and an accurate message; the answer parser caps ± signs; Quiz and Flashcards let a focused link or button handle Enter and Space and say when the browser is not saving; Flashcards' reset clears both directions, its empty session says why, its setup keeps the focus; the Formula Web's search picks a route's Start and End from the keyboard. Each finding was checked before it was fixed.
 - **Labels and order (owner, eighteenth chat):** every Learn problem has a unique label (contest problems numbered on from a page's own problems; old reviews use N3.R.1), and lessons run our problems, solutions, then Exercises, while Review and Challenge Problems run our problems, contest problems, then solutions (owner, 2026-11-01; CONVENTIONS §14). Write new chapters to fit.
 - **Lesson tags (owner, eighteenth chat):** every lesson of a converted chapter carries Core, Core II or Extension after its title in the outline (CONVENTIONS §14); give them as each chapter is converted.
@@ -38,7 +38,7 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 - every number checked by computation;
 - a lesson problem is chosen because its written route uses the lesson's cards, never because of tags alone or LIVE's concepts.
 
-### Done (2026-10-31; the README changelog has the detail)
+### Done (2026-10-31; `CHANGELOG.md` has the detail)
 - **L0 to L4:** the plan trimmed; the owner's decisions (LQ1 to LQ10 in `QUESTIONS.md`); the shelf outline (`LEARN-OUTLINE.md`); the content model and addresses (CONVENTIONS §14); the Learn button and the Lists move.
 - **L5, the shell:** routes `#/learn/<book>`, `.../how-to-use`, `.../<chapter>`, `.../<n>`, `.../review`, `.../challenge`; the gate `tools/check-learn.js` (run by `build-learn-shelf.py --check`, in `gates.sh`); progress in `mq-learn`, carried by Export and Import.
 - **L6 and L9, the writing:** every planned book written. The owner's later decisions replaced parts of the first design: LQ5's typed checks and math keyboard were dropped for problems with worked solutions; the lesson standard became one flowing explanation; the chapter structure above replaced the overview page and chapter review.
