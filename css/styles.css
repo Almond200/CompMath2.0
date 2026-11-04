@@ -574,6 +574,7 @@ body {
   color: var(--text);
   margin-bottom: 5px;
 }
+.problem-preview .cp-desc { max-height: 32vh; overflow: auto; }
 .card-preview .cp-desc { color: var(--text-dim); }
 .card-preview .cp-crumb {
   margin-top: 7px;
