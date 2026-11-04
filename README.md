@@ -314,7 +314,7 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-04**
 
-- Practice a topic builds untimed sets from subject and card tags, with a choice of topic and question count. The current set stays available when returning from a problem during the session.
+- Practice a topic builds untimed sets from subject and card tags, with a topic, question-count slider and difficulty slider. The set page displays full statements and a count-up clock. Back to Practice asks before discarding the set.
 
 - Olympiad Geometry is complete through O7, Projective geometry. Card pages omit chapter summaries from Study this more.
 
