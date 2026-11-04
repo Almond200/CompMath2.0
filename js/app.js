@@ -5260,6 +5260,79 @@
     }));
     range.addEventListener("input", update);
   }
+  // Keep the current set while the reader opens problems and comes back.
+  let topicPracticeSet = null;
+  function wireTopicPractice(root) {
+    const form = root.querySelector("#topic-practice-form");
+    if (!form) return;
+    const topic = form.elements.topic, count = form.elements.count;
+    const suggestions = form.querySelector("datalist");
+    const status = root.querySelector("#topic-practice-status");
+    const result = root.querySelector("#topic-practice-result");
+    const normalize = text => text.trim().toLowerCase();
+    const topics = new Map();
+    function index(label, problems) {
+      const key = normalize(label);
+      if (!key || !problems.length) return;
+      if (!topics.has(key)) topics.set(key, { label, problems: new Map() });
+      const pool = topics.get(key).problems;
+      for (const p of problems) {
+        // Shared AMC 10/12 problems have the same written strategy on both papers.
+        const identity = /^AMC (?:10|12)/.test(p.fam) && p.strategy ? p.year + "|" + p.strategy : p.slug;
+        if (!pool.has(identity)) pool.set(identity, p);
+      }
+    }
+    for (const [id, label] of Object.entries(SUBJECT_LABELS)) {
+      const pool = PROBLEM_DB.filter(p => p.subjects.includes(id));
+      index(label, pool);
+      if (id === "counting") index("Counting & Probability", pool);
+    }
+    for (const entry of ALL) {
+      const card = entry.formula, pool = PROBLEMS_BY_CARD[card.id];
+      if (!pool) continue;
+      index(card.name, pool);
+      for (const label of card.keywords || []) index(label, pool);
+    }
+    const findTopic = key => topics.get(key) || topics.get(key.replace(/s$/, ""));
+    const labels = [...topics.values()].map(t => t.label).sort((a, b) => a.localeCompare(b));
+    function update() {
+      const key = normalize(topic.value);
+      const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 30)
+        : Object.values(SUBJECT_LABELS);
+      suggestions.replaceChildren(...choices.map(label => new Option(label, label)));
+      const match = findTopic(key);
+      status.textContent = match ? match.problems.size + " matching problems available."
+        : key ? "Choose a matching topic or try a broader subject." : "";
+      form.querySelector("button").disabled = !match;
+    }
+    function showSet() {
+      if (!topicPracticeSet) return;
+      const { label, requested, problems } = topicPracticeSet;
+      const n = problems.length;
+      result.innerHTML = `<h4>${escapeAttr(label)} &middot; ${n} problem${n === 1 ? "" : "s"}</h4>
+        ${n < requested ? "<p>These are all the distinct matches available.</p>" : ""}
+        <ol>${problems.map(p => `<li><a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></li>`).join("")}</ol>`;
+    }
+    topic.value = topicPracticeSet?.label || "Geometry";
+    count.value = topicPracticeSet?.requested || 5;
+    topic.addEventListener("input", update);
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const match = findTopic(normalize(topic.value)), requested = count.valueAsNumber;
+      if (!match || !Number.isSafeInteger(requested) || requested < 1) return;
+      const pool = [...match.problems.values()], problems = [];
+      while (pool.length && problems.length < requested) {
+        const i = Math.floor(Math.random() * pool.length), p = pool[i];
+        pool[i] = pool[pool.length - 1];
+        pool.pop();
+        problems.push(p);
+      }
+      topicPracticeSet = { label: match.label, requested, problems };
+      showSet();
+    });
+    update();
+    showSet();
+  }
   function renderSpaceHome(name) {
     shownIds = [];
     let body = spaceHeadHtml(name);
@@ -5318,7 +5391,19 @@
             <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem &rarr;</a>
           </section>
         </div>
-                <section class="sh-section" id="pr-contests">
+        <section class="sh-section" id="pr-topic">
+          <h3>Practice a topic</h3>
+          <p>Choose a subject or technique to build an untimed set from past contest problems.</p>
+          <form id="topic-practice-form">
+            <label>Topic<input class="list-add-input" type="search" name="topic" list="practice-topic-options" placeholder="Geometry, Markov chains…" required autocomplete="off"></label>
+            <datalist id="practice-topic-options"></datalist>
+            <label>Questions<input class="list-add-input" type="number" name="count" min="1" step="1" required></label>
+            <button type="submit" class="hp-btn">Generate set</button>
+          </form>
+          <p id="topic-practice-status" role="status"></p>
+          <div id="topic-practice-result" aria-live="polite"></div>
+        </section>
+        <section class="sh-section" id="pr-contests">
           <h3>Contests</h3>
           <div class="ct-list">${fams.map(f => `
             <div class="ct-row">
@@ -5341,6 +5426,7 @@
     }
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
+    wireTopicPractice($content);
     wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
     if (unrel) unrel.addEventListener("click", () => {

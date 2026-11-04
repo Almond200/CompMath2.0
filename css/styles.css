@@ -3230,6 +3230,14 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-btns button:hover { border-color: var(--space); color: var(--space); }
 .rand-btns button[aria-checked="true"] { background: var(--space); border-color: var(--space); color: #fff; }
 .rand-diff { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 650; color: var(--text-dim); }
+#topic-practice-form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+#topic-practice-form label { display: grid; gap: 4px; font-size: 13px; font-weight: 650; }
+#topic-practice-form label:first-child { flex: 0 1 320px; min-width: 0; }
+#topic-practice-form input[type="number"] { width: 85px; }
+#topic-practice-form button { border: 0; cursor: pointer; }
+#topic-practice-form button:disabled { opacity: .55; cursor: default; }
+#topic-practice-status { color: var(--text-dim); font-size: 13px; }
+#topic-practice-result li { padding-block: 3px; }
 .rand-diff[hidden] { display: none; }
 .rand-diff input { flex: 1; max-width: 260px; accent-color: var(--space); }
 .rand-diff-val { min-width: 60px; color: var(--space); }
