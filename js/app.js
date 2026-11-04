@@ -3009,7 +3009,28 @@
     return `<div class="connected"><h4>${title}</h4>${list.length ? cardLinkList(list.map(c => c.id)) : `<p class="related-empty">None yet.</p>`}</div>`;
   }
 
+  // Back can revisit entries that Settings cannot edit. A reset token invalidates
+  // their strategy overrides while preserving the user's other history state.
+  let strategyResetToken = "";
+  function currentStrategyToken() {
+    try { strategyResetToken = localStorage.getItem("mq-strategy-reset") || strategyResetToken; } catch (e) {}
+    return strategyResetToken;
+  }
+  function savedStrategy(key) {
+    const entry = history.state;
+    if (!entry) return undefined;
+    const saved = entry.strategies?.[key];
+    const token = currentStrategyToken();
+    if (saved) return saved.token === token ? saved.open : false;
+    const legacy = entry.solutions?.[key];
+    return legacy !== undefined && token ? false : legacy;
+  }
   function rememberSolution(key, open) {
+    if (key.startsWith("problem-")) {
+      const strategies = Object.assign({}, history.state?.strategies, { [key]: { token: currentStrategyToken(), open } });
+      history.replaceState(Object.assign({}, history.state, { strategies }), "");
+      return;
+    }
     const solutions = Object.assign({}, history.state?.solutions, { [key]: open });
     history.replaceState(Object.assign({}, history.state, { solutions }), "");
   }
@@ -4414,7 +4435,7 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
-          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
+          ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.<br><button type='button' class='strategy-reset' data-reset-strategies>Reset opened strategies</button> Closes strategies you previously opened on problem pages.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel" id="set-commands">
           <h3 class="set-panel-title">Commands</h3>
@@ -4496,6 +4517,12 @@
       }
     });
     $content.querySelector(".settings-page").addEventListener("click", e => {
+      if (e.target.closest("[data-reset-strategies]")) {
+        strategyResetToken = String(Date.now());
+        try { localStorage.setItem("mq-strategy-reset", strategyResetToken); } catch (err) { storageFailed(); }
+        toast("Opened strategies reset");
+        return;
+      }
       const btn = e.target.closest("[data-set]");
       if (!btn) return;
       const key = btn.dataset.set, val = btn.dataset.val;
@@ -7170,7 +7197,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // new-list + (owner, 2026-10-31). Click to show starts it closed; Shown starts it open.
     const can = !!(p.strategy || p.formulas.length);
     const key = "problem-" + p.slug;
-    const open = (!preview ? history.state?.solutions?.[key] : undefined) ?? (state.strategy !== "click");
+    const open = (!preview ? savedStrategy(key) : undefined) ?? (state.strategy !== "click");
     const hide = can && !open;
     return `<div class="prob-chain"><div class="chain-head"><h4>How this problem works</h4>${can ? `<button type="button" class="chain-toggle" ${preview ? "" : `data-solution-key="${key}"`} aria-expanded="${!hide}">${hide ? "+ Show" : "&minus; Hide"}</button>` : ""}</div>
         <div class="chain-body"${hide ? " hidden" : ""}>${inner}</div>
