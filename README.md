@@ -314,6 +314,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 
 **2026-11-04**
 
+- Olympiad Geometry is complete through O7, Projective geometry. Card pages omit chapter summaries from Study this more.
+
 - The denesting radicals card gives the general two-root identity, its real-number conditions and a proof for both signs. Perpendicular Segments Across a Square now cites 2021 Fall AMC 10B #15.
 
 

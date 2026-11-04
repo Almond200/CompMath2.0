@@ -7135,7 +7135,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return LESSONS_BY_CARD[fid] || [];
   }
   function cardLessonsHtml(fid) {
-    const lessons = lessonsForCard(fid);
+    const lessons = lessonsForCard(fid).filter(({ l }) => l.title !== "Summary");
     if (!lessons.length) return "";
     const links = [...lessons].sort((a, b) => b.taught - a.taught).map(({ b, c, l }) =>
       `<a class="related-item" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${l.code} ${escapeAttr(l.title)}</a>`);
