@@ -7134,20 +7134,20 @@ The book remembers the last lesson you opened, in this browser, and the contents
     }
     return LESSONS_BY_CARD[fid] || [];
   }
+  function studyLessonLink({ b, c, l }) {
+    return `<a class="chain-study-link" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${escapeAttr(l.title)} <span class="chain-study-l">${l.code}</span></a>`;
+  }
   function cardLessonsHtml(fid) {
     const lessons = lessonsForCard(fid).filter(({ l }) => l.title !== "Summary");
     if (!lessons.length) return "";
-    const links = [...lessons].sort((a, b) => b.taught - a.taught).map(({ b, c, l }) =>
-      `<a class="related-item" href="${learnHash(b, c, lessonNum(l))}">${escapeAttr(b.title)} · ${l.code} ${escapeAttr(l.title)}</a>`);
+    const links = [...lessons].sort((a, b) => b.taught - a.taught).map(studyLessonLink);
     return `<div class="related"><h4>Study this more</h4><div class="chain-study-links">${links.join("")}</div></div>`;
   }
   function studyMoreHtml(p, chain) {
     const aime = /AIME/.test(p.ref || p.cname || "");
     const ids = [...new Set([...chain.pattern, ...chain.method, ...chain.formula])];
-    const links = ids.map(fid => {
-      const x = lessonForCard(fid, aime);
-      return x ? `<a class="chain-study-link" href="${learnHash(x.b, x.c, lessonNum(x.l))}">${BY_ID[fid].formula.name}<span class="chain-study-l">${x.l.code}</span></a>` : "";
-    }).filter(Boolean);
+    const lessons = ids.map(fid => lessonForCard(fid, aime)).filter(Boolean);
+    const links = [...new Set(lessons.map(studyLessonLink))];
     return links.length ? `<div class="chain-study"><div class="chain-study-h">Study a concept more</div><div class="chain-study-links">${links.join("")}</div></div>` : "";
   }
   // How this problem works: its tags split by kind into the chain Pattern -> Method ->
