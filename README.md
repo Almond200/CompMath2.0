@@ -62,7 +62,7 @@ CONVENTIONS §0 has the full model.
   one flowing explanation, related cards, its own problems with worked solutions, contest
   problems, and a drawer for the cards it links; chapters in the approved structure (C5) open on
   an Introduction and close with a Summary, Review Problems and Challenge Problems (CONVENTIONS §14).
-- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, and every
+- **Practice** (`#/practice`): a random problem by contest (or any) and optional difficulty, untimed topic sets with a reader-selected question count, and every
   year of every contest. A contest year (`#/problems/aime/2024`) opens as a plain page with a link
   back; on a phone its years are a menu between arrows, with a toggle between the year's papers.
 - **Search** results are one list in order of relevance (formulas, methods, patterns, problems
@@ -313,6 +313,8 @@ The app folder is already a git clone of `Almond200/CompMath2.0`, so the steps a
 ## Changelog
 
 **2026-11-04**
+
+- Practice a topic builds untimed sets from subject and card tags, with a choice of topic and question count. The current set stays available when returning from a problem during the session.
 
 - Olympiad Geometry is complete through O7, Projective geometry. Card pages omit chapter summaries from Study this more.
 

@@ -48,7 +48,7 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 
 1. **Complete the content.** Finish the textbooks, review the mathematics and worked solutions, and reconcile the outline, status notes and documentation with the app. Add diagrams where they explain a construction, reveal why a step works or make a relationship easier to see.
 2. **Polish the experience.** Review search, navigation, readability and mobile usability across Learn, Formulas, Methods, Patterns and Practice. Follow real study paths between spaces, including a reader returning to an open solution or following a card to its lesson.
-3. **Consider small study features.** Possible additions are generated practice sets for a chosen topic, a way to review study history, and shareable lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
+3. **Consider small study features.** Practice a topic is implemented as an untimed, session-only problem set. Remaining possibilities include reviewing study history and sharing lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
 
 The lab migration remains on hold. Lessons in search belong to the search review in phase two.
 
