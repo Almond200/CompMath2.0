@@ -115,7 +115,7 @@ A card's `tier` says where it is **first needed**; later stages still use the ea
 | `Olympiad` | beyond the AMC and AIME | no AMC or AIME problem needs it; olympiad level tags only |
 
 - Judge a new card by the problems it would be tagged on and by the rubric, not by how hard it feels: a short fact can be AMC and a long method AIME Late.
-- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Five values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), `lower`, and `lowest`. **Lower** is marginal use: something that might be needed once in ten years (Chebyshev's Sum Inequality). **Lowest** is for a card that is confidently never used on a contest and is in the app only for completeness or beauty (Cardano's Cubic Formula, Morley's Trisector Theorem). A card with even one tagged problem is Lower at the most, never Lowest, unless the owner decides otherwise by name. The first reviewed assignment is `tools/importance-proposal.md`; the Lowest level was added on 2026-10-10 and 21 cards moved down to it from Lower (the list is in the README changelog). This replaces the old pre-2026 `lowest` tier, which was retired and meant something else.
+- **Importance is judged inside the card's own subsection** (a formula topic; for methods and patterns, the subject), never globally, and never by tier: an important Olympiad formula is High, an unimportant AMC formula is Low. Five values: `high`, `medium`, `low` (roughly the top quarter, the middle half, the bottom quarter of the subsection), `lower`, and `lowest`. **Lower** is marginal use: something that might be needed once in ten years (Chebyshev's Sum Inequality). **Lowest** is for a card that is confidently never used on a contest and is in the app only for completeness or beauty (Cardano's Cubic Formula, Morley's Trisector Theorem). A card with even one tagged problem is Lower at the most, never Lowest, unless the owner decides otherwise by name. The first reviewed assignment is `tools/importance-proposal.md`; the Lowest level was added on 2026-10-10 and 21 cards moved down to it from Lower (the list is in `CHANGELOG.md`). This replaces the old pre-2026 `lowest` tier, which was retired and meant something else.
 - Tier and importance are shown together as **one split oval**: the contest tier on the left, the importance (HIGH, MED, LOW, LOWER, LOWEST) on the right in a lighter tint of the same color. There is no setting to switch labels (removed 2026-10-10: two label systems were confusing).
 - A card shows exactly one tag beside its kind, the split oval. The `level` array is not shown as text (no MATHCOUNTS / Olympiad wording beside the badge) and is no longer a filter; it remains in the data for Special:Browse and the lab. Nothing on a card may say the same thing twice.
 - **The filter is one global filter** (contest tier and importance), stored under `mq-settings.filter`, applied identically to subject, group, and topic pages, the sidebar (counts and greyed links follow it), and a card listed in two subjects (`ALSO_LISTED_IN`). It is never per section.
@@ -579,7 +579,7 @@ caught only because the census read 554/556.
 
 ## 7. Verify, in this order
 
-**The handoff rule (2026-10-16).** After every major change, every finished step, and the start of every new step, update "Current state" at the top of `PLAN.md`, add a README changelog entry, and push. New chats start from that block (`CLAUDE.md` sends them there), so it must never be stale.
+**The handoff rule (2026-10-16).** After every major change, every finished step, and the start of every new step, update "Current state" at the top of `PLAN.md`, add an entry to `CHANGELOG.md`, and push. New chats start from that block (`CLAUDE.md` sends them there), so it must never be stale.
 
 ```bash
 jsc js/data/<file>.js                    # a `window` ReferenceError means the parse SUCCEEDED
@@ -868,7 +868,7 @@ Every batch of new cards adds one entry to `js/data/new-cards.js` (a label, the 
 6. A topic chip earned from its name, keywords or group (gate: `check-topics.py`).
 7. At least two practice problems (§3b) (gate: `practice-gaps.js --check`).
 8. Registered in `js/data/new-cards.js` and placed in every study route it belongs to (`tools/add-to-list.py`) (gate: `check-lists.py`).
-9. `?v=` bumped (`python3 tools/bump-versions.py --changed`), every gate passing, then the README changelog, "Current state" and a push. The search index is rebuilt once at the end of a step, not after each card (owner, 2026-10-25).
+9. `?v=` bumped (`python3 tools/bump-versions.py --changed`), every gate passing, then `CHANGELOG.md`, "Current state" and a push. The search index is rebuilt once at the end of a step, not after each card (owner, 2026-10-25).
 
 ## Rules recorded from the previous chat (2026-10-16)
 See `MIGRATION-NOTES.md` for the full answers.

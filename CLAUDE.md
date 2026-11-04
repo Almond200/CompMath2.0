@@ -3,7 +3,7 @@
 1. **Read `PLAN.md`, "Current state" and "The road ahead", before doing anything.** They say what is finished, what is in progress, the order of the remaining steps, and the exact next action.
 2. **The handoff rule.** After every major change, every finished step, and the start of every new step:
    - update "Current state" in `PLAN.md`;
-   - add a README changelog entry;
+   - add an entry to `CHANGELOG.md`;
    - commit and push.
 
    Credits can run out at any time, and the next chat starts from that block.
@@ -27,7 +27,7 @@ $JSC tools/validate-problem-db.js
 - **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences
-- Update the files regularly, but not too often (owner, 2026-10-24): update "Current state" in `PLAN.md` and the README changelog, and commit and push, about every 30 cards or 25 problems, and at the end of a step.
+- Update the files regularly, but not too often (owner, 2026-10-24): update "Current state" in `PLAN.md` and `CHANGELOG.md`, and commit and push, about every 30 cards or 25 problems, and at the end of a step.
 - Filter candidates with common sense before they go into `QUESTIONS.md`: propose what AMC, AIME or olympiad problems actually use. An olympiad-only result belongs when it is shown to be significant there (cite the kind of problem it solves); results never used in contests, such as Dirac's theorem or the Prime Number Theorem estimate, stay out (owner, 2026-10-30).
 - Every missing formula or card found while tagging goes into `QUESTIONS.md` ("Candidate new cards from the practice pass", next P-number, at the top of the table) for approval; the problem cites the nearest card meanwhile.
 - Never put the owner's name in the app's files.
