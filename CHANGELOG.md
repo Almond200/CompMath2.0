@@ -2,6 +2,8 @@
 
 **2026-11-04**
 
+- Practice review buttons use translucent green for Correct and red for Revisit, with neutral unchecked/unanswered buttons and no result symbols. During practice, answered problems have a short underline instead of a checkmark; a corner dot still marks problems flagged for review.
+
 - Tightened Practice heading/description spacing and the gap above the session divider, with a little more room below it. Problem navigation now uses smaller, rounder buttons with centered numbers; answer/review markers no longer shift the number.
 
 - Simplified practice answer controls: removed routine saving text and Clear answer. Double-clicking a selected AMC choice deselects it, with Delete/Backspace as a keyboard alternative. Saving failures still appear.
