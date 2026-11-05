@@ -5279,7 +5279,7 @@
     try { practiceSessions.save(localStorage, topicPracticeSet); practiceSaveFailed = false; }
     catch (err) { practiceSaveFailed = true; }
     const status = $content.querySelector('#practice-save-status');
-    if (status) status.textContent = practiceSaveFailed ? 'Saving is unavailable in this browser. Keep this tab open to retain your set.' : 'Saved on this device.';
+    if (status) { status.hidden = !practiceSaveFailed; status.textContent = practiceSaveFailed ? 'Saving is unavailable in this browser. Keep this tab open to retain your set.' : ''; }
   }
   function pausePractice() {
     if (!topicPracticeSet) return;
@@ -5301,7 +5301,7 @@
     try { sets = practiceSessions.read(localStorage); }
     catch (err) { return '<section class="sh-section"><h3>Past practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
     return `<section class="sh-section" id="past-practice-sets"><h3>Past practice sets</h3>
-      <p class="prob-note">Saved on this device. Resume an unfinished set or review a completed one.</p>
+      <p class="prob-note">Resume an unfinished set or review a completed one.</p>
       ${sets.length ? `<div class="pl-list">${sets.sort((a,b) => b.updated - a.updated).map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()} · ${s.status === 'finished' ? 'Completed · Review' : 'In progress · Resume'}</small></span><span class="pl-n">${s.slugs.filter(id => s.answers[id]).length}/${s.slugs.length} answered</span></a>`).join('')}</div>` : '<p>No practice sets yet.</p>'}</section>`;
   }
   function renderTopicPracticeSet() {
@@ -5343,7 +5343,7 @@
         ${finished ? `<div class="practice-answer"><h4>Your answer</h4><p>${escapeAttr(set.answers[slug] || 'Not answered')} · ${outcome}</p>
           ${set.answers[slug] ? '<p class="prob-note">Check your answer against the strategy or linked solution, then record your result.</p><div class="practice-self-check"><button type="button" class="hp-btn hp-btn-soft" data-review="correct">Correct</button> <button type="button" class="hp-btn hp-btn-soft" data-review="revisit">Revisit</button> <button type="button" class="hp-btn hp-btn-soft" data-review="">Not checked</button></div>' : ''}</div>
           ${p ? `<h4>Strategy</h4><div class="prob-strategy">${p.strategy}</div>${p.trick ? `<h4>Another approach</h4><div class="prob-strategy">${p.trick}</div>` : ''}<p><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the solution on AoPS ↗</a> · <a href="#/problem/${p.slug}">Open problem and study links</a></p><h4>Helpful cards</h4><div class="practice-study-links">${[...new Set([...p.formulas, ...p.trickFormulas])].filter(id => BY_ID[id]).map(id => `<a href="#/f/${id}">${escapeAttr(BY_ID[id].formula.name)}</a>`).join(' · ') || 'No linked cards yet.'}</div>` : ''}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime ? `<label for="practice-answer">Integer from 000 to 999</label><input id="practice-answer" type="text" inputmode="numeric" maxlength="3" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : `<div class="rand-btns" role="radiogroup" aria-label="Your answer">${['A','B','C','D','E'].map(a => `<button type="button" data-practice-answer="${a}" role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div><button type="button" class="strategy-reset" id="clear-practice-answer">Clear answer</button>`}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label><p class="prob-note">Answers save automatically. Check them after finishing.</p></div>` : ''}
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime ? `<label for="practice-answer">Integer from 000 to 999</label><input id="practice-answer" type="text" inputmode="numeric" maxlength="3" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : `<div class="rand-btns" role="radiogroup" aria-label="Your answer">${['A','B','C','D','E'].map(a => `<button type="button" data-practice-answer="${a}" role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
@@ -5354,8 +5354,25 @@
     };
     $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => { set.current = +b.dataset.practiceIndex; savePractice(); redraw(); $content.querySelector('.practice-question h3').setAttribute('tabindex','-1'); $content.querySelector('.practice-question h3').focus({preventScroll:true}); }));
     $content.querySelector('#finish-practice')?.addEventListener('click', () => { practiceSessions.finish(set); savePractice(); redraw(); });
-    $content.querySelectorAll('[data-practice-answer]').forEach(b => b.addEventListener('click', () => { practiceSessions.answer(set, slug, b.dataset.practiceAnswer, false); savePractice(); redraw(); }));
-    $content.querySelector('#clear-practice-answer')?.addEventListener('click', () => { practiceSessions.answer(set, slug, '', false); savePractice(); redraw(); });
+    const answerChoices = $content.querySelectorAll('[data-practice-answer]');
+    const updateChoice = value => {
+      practiceSessions.answer(set, slug, value, false);
+      savePractice();
+      // Keep the buttons mounted so the browser can recognize a double-click.
+      answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
+      const n = set.slugs.filter(id => set.answers[id]).length;
+      $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`;
+      const current = $content.querySelector('[aria-current="step"]');
+      current.querySelector('small').textContent = (value ? '✓' : '') + (set.marks[slug] ? ' •' : '');
+      current.setAttribute('aria-label', `Problem ${set.current + 1}, ${value ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`);
+    };
+    answerChoices.forEach(b => {
+      b.addEventListener('click', () => { if (set.answers[slug] !== b.dataset.practiceAnswer) updateChoice(b.dataset.practiceAnswer); });
+      b.addEventListener('dblclick', () => { if (set.answers[slug] === b.dataset.practiceAnswer) updateChoice(''); });
+      b.addEventListener('keydown', e => {
+        if ((e.key === 'Delete' || e.key === 'Backspace') && set.answers[slug] === b.dataset.practiceAnswer) { e.preventDefault(); updateChoice(''); }
+      });
+    });
     $content.querySelector('#practice-answer')?.addEventListener('input', e => {
       const valid = practiceSessions.answer(set, slug, e.target.value, true);
       e.target.setAttribute('aria-invalid', String(!valid));
