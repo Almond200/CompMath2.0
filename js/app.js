@@ -5326,7 +5326,7 @@
     const nav = set.slugs.map((id, i) => {
       const result = practiceSessions.result(set, id);
       const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
-      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${i + 1}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${i + 1}<small>${finished ? ({Correct:'✓',Revisit:'×',Unanswered:'–','Not checked':'?'})[result] : set.answers[id] ? '✓' : ''}${set.marks[id] ? ' •' : ''}</small></button>`;
+      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}${finished ? ' practice-reviewed' : ''}${!finished && set.answers[id] ? ' practice-answered' : ''}${set.marks[id] ? ' practice-marked' : ''}" data-result="${finished ? result : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${i + 1}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${i + 1}</button>`;
     }).join('');
     shownIds = [];
     $content.innerHTML = `<div class="space-home practice-session">
@@ -5363,7 +5363,7 @@
       const n = set.slugs.filter(id => set.answers[id]).length;
       $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`;
       const current = $content.querySelector('[aria-current="step"]');
-      current.querySelector('small').textContent = (value ? '✓' : '') + (set.marks[slug] ? ' •' : '');
+      current.classList.toggle('practice-answered', !!value);
       current.setAttribute('aria-label', `Problem ${set.current + 1}, ${value ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`);
     };
     answerChoices.forEach(b => {
@@ -5377,7 +5377,7 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, true);
       e.target.setAttribute('aria-invalid', String(!valid));
       $content.querySelector('#practice-answer-error').textContent = valid ? '' : 'Use an integer from 000 to 999. This value has not been saved.';
-      if (valid) { savePractice(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.querySelector('small').textContent = (set.answers[slug] ? '✓' : '') + (set.marks[slug] ? ' •' : ''); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
+      if (valid) { savePractice(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-answered', !!set.answers[slug]); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
     });
     $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; savePractice(); redraw(); });
     $content.querySelectorAll('[data-review]').forEach(b => { b.setAttribute('aria-pressed', String((set.reviews[slug] || '') === b.dataset.review)); b.addEventListener('click', () => { set.reviews[slug] = b.dataset.review; savePractice(); redraw(); }); });
