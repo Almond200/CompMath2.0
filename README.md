@@ -63,7 +63,7 @@ CONVENTIONS §0 has the full model.
   so do the sidebar's group links. The sidebar shows only the current space; clicking the open
   subject's header folds it.
 - **Problem pages** (`#/problem/<slug>`): a subject chip and topic chips, the statement with its
-  figures and credit line (AMC and AIME problems; other contests link out), then "How this problem
+  figures (AMC and AIME problems; other contests link out), then "How this problem
   works", opened and closed with "+ Show" / "− Hide" beside its heading, which holds any figure we
   drew, the strategy, and the chain of cards the problem uses (Pattern → Method → Formulas).
 - **Learn** (`#/learn`) opens with 13 textbooks across the AMC, AIME and Olympiad tracks.
@@ -89,8 +89,7 @@ CONVENTIONS §0 has the full model.
 AMC and AIME problems are © the Mathematical Association of America and are shown under
 the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence the MAA confirmed
 by email (Oct 2026). The statements and their figures are read from [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests),
-which publishes every AMC and AIME problem with the MAA's permission; each problem page carries a one-line credit
-under the statement. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
+which publishes every AMC and AIME problem with the MAA's permission; Settings → Credits and attribution holds the shared credit and an expandable original-source index. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
 answer choices only, never solutions or hints) into `js/data/problems/statements/<year>.js` and `js/data/problems/figures/`.
 (AoPS blocks scripts with a Cloudflare check, so it is not used.)
 

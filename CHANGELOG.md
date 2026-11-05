@@ -2,6 +2,8 @@
 
 **2026-11-04**
 
+- Moved repeated AMC/AJHSME/AIME credit paragraphs from statements, textbook exercises, practice sets and hover previews into Settings → Credits and attribution. Preserved the MAA copyright, license link, LIVE/AoPS/PDF sources and source metadata, with an expandable original-source index.
+
 - Practice review buttons use translucent green for Correct and red for Revisit, with neutral unchecked/unanswered buttons and no result symbols. During practice, answered problems have a short underline instead of a checkmark; a corner dot still marks problems flagged for review.
 
 - Tightened Practice heading/description spacing and the gap above the session divider, with a little more room below it. Problem navigation now uses smaller, rounder buttons with centered numbers; answer/review markers no longer shift the number.

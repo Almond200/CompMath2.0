@@ -3613,7 +3613,7 @@
     let thumb = "", content;
     if (problem) {
       content = `<div class="cp-head">${escapeAttr(refShort(problem.ref))}</div>
-        <div class="cp-desc">${escapeAttr(problem.subjects.map(id => SUBJECT_LABELS[id]).join(" · ") || problem.fam)}</div><div class="cp-crumb"></div>`;
+        <div class="cp-desc">${escapeAttr(problem.subjects.map(id => SUBJECT_LABELS[id]).join(" · ") || problem.fam)}</div>`;
     } else {
       const f = e.formula;
       const kind = f.type === "method" ? `<span class="badge badge-method">METHOD</span>`
@@ -3664,7 +3664,6 @@
       if (!st) return;
       const text = typeof st === "string" ? st : st.s;
       cpEl.querySelector(".cp-desc").textContent = text.split(/\n\(A\) /)[0].replace(/@@fig:[^@]+@@/g, "");
-      cpEl.querySelector(".cp-crumb").innerHTML = statementCreditHtml(problem, st.u);
       renderMath(cpEl);
       place();
     });
@@ -4466,6 +4465,17 @@
           </div>
           <p class="settings-hint progress-msg" hidden></p>
         </section>
+        <section class="set-panel" id="set-credits">
+          <h3 class="set-panel-title">Credits and attribution</h3>
+          <div class="set-row"><div class="set-text">
+            <div class="set-name">Contest problem sources and license</div>
+            <div class="set-desc">
+              <p>AMC, AJHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
+              <p>Most text and figures come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. The Fall 2021 AMC 10A and 10B papers also use MAA PDF copies, and individual exceptions are credited to the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
+              <details id="credit-sources"><summary>Original sources by problem</summary><div id="credit-source-list"></div></details>
+            </div>
+          </div></div>
+        </section>
         <details class="set-panel set-lab">
           <summary class="set-panel-title">Experimental <span class="lab-tag">for fun</span></summary>
           <div class="set-body">
@@ -4490,6 +4500,32 @@
       </div>
       <aside class="set-preview" aria-label="Preview"></aside>
       </div>`;
+    const creditSources = $content.querySelector('#credit-sources');
+    creditSources.addEventListener('toggle', async () => {
+      if (!creditSources.open || creditSources.dataset.loaded) return;
+      creditSources.dataset.loaded = 'true';
+      const list = creditSources.querySelector('#credit-source-list');
+      list.textContent = 'Loading original sources…';
+      const problems = PROBLEM_DB.filter(p => MAA_RE.test(p.ref));
+      await Promise.all([...new Set(problems.map(p => p.year))].map(loadStatements));
+      if (!list.isConnected) return;
+      const groups = new Map();
+      let missing = 0;
+      for (const p of problems) {
+        const st = window.MATH_STATEMENTS?.[p.slug];
+        if (!st) { missing++; continue; }
+        const src = st.u || 'https://live.poshenloh.com/past-contests';
+        if (!groups.has(src)) groups.set(src, []);
+        groups.get(src).push(refShort(p.ref));
+      }
+      list.innerHTML = (missing ? '<p>Some source files could not be loaded. Reopen Settings to try again.</p>' : '') + [...groups].sort(([a],[b]) => a.localeCompare(b)).map(([src, refs]) => {
+        const source = src.startsWith('pdf:')
+          ? (/10a$/.test(src) ? 'MAA official solutions booklet: Fall 2021 AMC 10A (PDF copy)' : 'MAA Fall 2021 AMC 10B paper (PDF copy)')
+          : `<a href="${escapeAttr(src)}" target="_blank" rel="noopener noreferrer">${escapeAttr(src)}</a>`;
+        return `<details><summary>${escapeAttr(refs[0])}${refs.length > 1 ? ' and ' + (refs.length - 1) + ' more' : ''}</summary><p>${source}</p><p>${refs.map(escapeAttr).join('; ')}</p></details>`;
+      }).join('');
+    });
+    if (getRoute().anchor === 'credits') setTimeout(() => $content.querySelector('#set-credits')?.scrollIntoView({block:'start'}), 0);
     fillSettingsPreview();
     const $cmdToggle = $content.querySelector(".command-toggle");
     if ($cmdToggle) $cmdToggle.addEventListener("click", () => {
@@ -5032,7 +5068,7 @@
         <div class="daily-types">${p.types.slice(0, 4).map(t => `<span class="daily-type">${escapeAttr(t.label)}</span>`).join("")}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
-          <p class="prob-credit"></p>
+
         </section>
         <p class="daily-note">Try it first, then open it for the ideas it uses and the strategy.</p>
       </div>`;
@@ -5339,7 +5375,7 @@
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
-        ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div><p class="prob-credit"></p></div>` : '<p>This problem is no longer available in the current database.</p>'}
+        ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
         ${finished ? `<div class="practice-answer"><h4>Your answer</h4><p>${escapeAttr(set.answers[slug] || 'Not answered')} · ${outcome}</p>
           ${set.answers[slug] ? '<p class="prob-note">Check your answer against the strategy or linked solution, then record your result.</p><div class="practice-self-check"><button type="button" class="hp-btn hp-btn-soft" data-review="correct">Correct</button> <button type="button" class="hp-btn hp-btn-soft" data-review="revisit">Revisit</button> <button type="button" class="hp-btn hp-btn-soft" data-review="">Not checked</button></div>' : ''}</div>
           ${p ? `<h4>Strategy</h4><div class="prob-strategy">${p.strategy}</div>${p.trick ? `<h4>Another approach</h4><div class="prob-strategy">${p.trick}</div>` : ''}<p><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the solution on AoPS ↗</a> · <a href="#/problem/${p.slug}">Open problem and study links</a></p><h4>Helpful cards</h4><div class="practice-study-links">${[...new Set([...p.formulas, ...p.trickFormulas])].filter(id => BY_ID[id]).map(id => `<a href="#/f/${id}">${escapeAttr(BY_ID[id].formula.name)}</a>`).join(' · ') || 'No linked cards yet.'}</div>` : ''}`
@@ -6158,7 +6194,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
       const saved = prog[p.slug] || {};
       return `<li class="lp-prob" id="lp-${p.slug}" data-slug="${p.slug}">
           <div class="lp-prob-head"><span class="lp-prob-n">${name(i)}</span>${/\.$/.test(name(i)) ? "" : ` <span class="lp-prob-sep">&middot;</span>`} <a href="#/problem/${p.slug}">${escapeAttr(refShort(p.ref))}</a></div>
-          ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div><p class="prob-credit"></p></section>`
+          ${MAA_RE.test(p.ref) ? `<section class="prob-st lp-st" data-slug="${p.slug}" hidden><div class="prob-statement"></div></section>`
             : p.url ? `<p class="prob-note"><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the problem on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} &#8599;</a></p>` : ""}
           <div class="lp-work">
             <textarea class="lp-notes" rows="2" placeholder="Type your solution, notes and/or work here." aria-label="Your solution and notes for ${escapeAttr(refShort(p.ref))}">${escapeAttr(saved.notes || "")}</textarea>
@@ -7252,8 +7288,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
 
   // ---------- Problem statements ----------
-  // The statement of an AMC or AIME problem, shown on its page, with the credit the MAA asked for
-  // (CC BY-NC-SA). The text comes from the AoPS wiki and is stored one file per year under
+  // AMC/AIME statements use the shared credits in Settings > Credits and attribution.
+  // Source metadata and copyright headers remain in the data files stored under
   // js/data/problems/statements/, loaded when a problem page opens, so the offline page stays
   // light and a missing file simply shows no statement. Other contests link out as before.
   const MAA_RE = /\b(AMC|AIME|AJHSME)\b/;
@@ -7321,22 +7357,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
           });
         }
       });
-      wrap.querySelector(".prob-credit").innerHTML = statementCreditHtml(p, st.u);
       wrap.hidden = false;
       renderMath(wrap);
     });
   }
-  // The credit the MAA asked for (CC BY-NC-SA), and the source of the text.
-  function statementCreditHtml(p, src) {
-    return `Problem ${escapeAttr(refShort(p.ref))}, &copy; Mathematical Association of America, used under ` +
-      `<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. ` +
-      (/^pdf:/.test(src || "")
-        ? `Text and figures from the ${/10a$/.test(src) ? "MAA's official solutions booklet for the Fall 2021 AMC 10A" : "Fall 2021 AMC 10B paper"}, a PDF copy.`
-      : /artofproblemsolving\.com/.test(src || "")
-        ? `Text from the <a href="${escapeAttr(src)}" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>.`
-        : `Text and figures from <a href="${escapeAttr(src || "https://live.poshenloh.com/past-contests")}" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>.`);
-  }
-
   // ---------- Written solutions ----------
   // A complete solution, written for the app and checked by computation, sits below "How this
   // problem works". The solutions are stored one file per year under js/data/problems/solutions/
@@ -7487,7 +7511,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
         ${types || p.subjects.length ? `<div class="ptype-row">${subjectChips(p)}${types}</div>` : ""}
         ${MAA_RE.test(p.ref) ? `<section class="prob-st${pv ? " pv-st" : ""}"${pv ? "" : ` id="prob-st"`} data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
-          <p class="prob-credit"></p>
+
         </section>` : ""}
         <p class="prob-note">${p.urlLabel === "archive" ? "The full statement and the official solutions live on the contest's own archive, as a PDF for the whole round." : "Solutions live on the Art of Problem Solving wiki."}</p>
         ${p.url ? `<a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open on ${p.urlLabel === "archive" ? "the official archive" : "AoPS"} <span aria-hidden="true">&#8599;</span></a>` : ""}
