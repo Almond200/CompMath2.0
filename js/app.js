@@ -293,6 +293,7 @@
       order: pick(P.order, ORDERS),
       strategy: P.strategyChosen ? pick(P.strategy, STRATEGY_MODES) : STRATEGY_MODES[0],
       strategyChosen: !!P.strategyChosen,
+      stopwatch: P.stopwatch === "on" ? "on" : "off",
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
       lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
@@ -312,7 +313,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks
+          tools: state.tools, stopwatch: state.stopwatch, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -343,6 +344,7 @@
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
+    stopwatch: _loaded.stopwatch,
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
@@ -1378,7 +1380,7 @@
         return { type: "home", section: { id: sec.id, sub: i, topic: null, cluster: g >= 0 ? g : null } };
       }
     }
-    if (location.hash === "#/practice/set") return { type: "space", name: "practice", practiceSet: true };
+    if (/^#\/practice\/set(?:\/[^/]+)?$/.test(location.hash)) return { type: "space", name: "practice", practiceSet: true };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -4380,7 +4382,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
+    stopwatch: "off", order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4436,6 +4438,7 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
+          ${settingRow("Practice stopwatch", "Show time spent in new practice sets. Off by default. Time pauses when you leave the set or hide the tab.", "stopwatch", state.stopwatch, [["off", "Off"], ["on", "On"]])}
           ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.<br><button type='button' class='strategy-reset' data-reset-strategies>Reset opened strategies</button> Closes strategies you previously opened on problem pages.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel" id="set-commands">
@@ -4560,6 +4563,7 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
+        stopwatch: "timer, clock, elapsed time, practice set time, time spent",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
         "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
@@ -4678,7 +4682,7 @@
   // merges study lists, so a list built on this device is never lost to an older file, and
   // replaces the rest; then the page reloads to read it back.
   const PROGRESS_FORMAT = "competition-math-reference/progress", PROGRESS_VERSION = 1;
-  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn"];
+  const PROGRESS_KEYS = ["mq-settings", "mq-lists", "mq-recent", "theme", "mq-flashcards", "mq-flashcards-prefs", "mq-quiz-misses", "mq-learn", "mq-practice-sets"];
   function exportProgress() {
     const data = {};
     PROGRESS_KEYS.forEach(k => {
@@ -4708,7 +4712,7 @@
     // 1. Stage every value to write.
     const staged = {};
     PROGRESS_KEYS.forEach(k => {
-      if (!(k in d) || k === "mq-lists" || d[k] == null) return;
+      if (!(k in d) || k === "mq-lists" || k === "mq-practice-sets" || d[k] == null) return;
       staged[k] = typeof d[k] === "string" ? d[k] : JSON.stringify(d[k]);
     });
     const inc = d["mq-lists"];
@@ -4730,6 +4734,12 @@
         }
       });
       staged["mq-lists"] = JSON.stringify(merged);
+    }
+    if (d["mq-practice-sets"] != null) {
+      const incoming = practiceSessions.read({ getItem: () => JSON.stringify(d["mq-practice-sets"]) });
+      const merged = new Map(practiceSessions.read(localStorage).map(s => [s.id, s]));
+      for (const set of incoming) if (!merged.has(set.id) || set.updated > merged.get(set.id).updated) merged.set(set.id, set);
+      staged["mq-practice-sets"] = JSON.stringify([...merged.values()]);
     }
     const keys = Object.keys(staged);
     if (!keys.length) throw new Error("This file holds no progress to import.");
@@ -5261,38 +5271,114 @@
     }));
     range.addEventListener("input", update);
   }
-  let topicPracticeSet = null, practiceClock = 0;
+  const practiceSessions = window.PracticeSessions;
+  let topicPracticeSet = null, practiceClock = 0, practiceSaveFailed = false;
+  function savePractice() {
+    if (!topicPracticeSet) return;
+    practiceSessions.checkpoint(topicPracticeSet);
+    try { practiceSessions.save(localStorage, topicPracticeSet); practiceSaveFailed = false; }
+    catch (err) { practiceSaveFailed = true; }
+    const status = $content.querySelector('#practice-save-status');
+    if (status) status.textContent = practiceSaveFailed ? 'Saving is unavailable in this browser. Keep this tab open to retain your set.' : 'Saved on this device.';
+  }
+  function pausePractice() {
+    if (!topicPracticeSet) return;
+    practiceSessions.pause(topicPracticeSet);
+    savePractice();
+    clearInterval(practiceClock);
+  }
+  window.addEventListener('pagehide', pausePractice);
+  document.addEventListener('visibilitychange', () => {
+    if (!topicPracticeSet || !location.hash.startsWith('#/practice/set/')) return;
+    if (document.hidden) pausePractice();
+    else if (topicPracticeSet.status !== 'finished') {
+      topicPracticeSet.status = 'active';
+      topicPracticeSet.runningSince = topicPracticeSet.stopwatch ? Date.now() : null;
+    }
+  });
+  function pastPracticeHtml() {
+    let sets;
+    try { sets = practiceSessions.read(localStorage); }
+    catch (err) { return '<section class="sh-section"><h3>Past practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
+    return `<section class="sh-section" id="past-practice-sets"><h3>Past practice sets</h3>
+      <p class="prob-note">Saved on this device. Resume an unfinished set or review a completed one.</p>
+      ${sets.length ? `<div class="pl-list">${sets.sort((a,b) => b.updated - a.updated).map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()} · ${s.status === 'finished' ? 'Completed · Review' : 'In progress · Resume'}</small></span><span class="pl-n">${s.slugs.filter(id => s.answers[id]).length}/${s.slugs.length} answered</span></a>`).join('')}</div>` : '<p>No practice sets yet.</p>'}</section>`;
+  }
   function renderTopicPracticeSet() {
+    const id = location.hash.split('/')[3] || '';
+    if (!topicPracticeSet || topicPracticeSet.id !== id) {
+      try { topicPracticeSet = practiceSessions.read(localStorage).find(s => s.id === id); } catch (err) { topicPracticeSet = null; }
+    }
     const set = topicPracticeSet;
     if (!set) {
-      history.replaceState(null, "", "#/practice");
-      renderSpaceHome("practice");
+      $content.innerHTML = '<div class="space-home"><a class="back-link" href="#/practice">← Back to Practice</a><p>This practice set is not available on this device.</p></div>';
       return;
     }
+    const finished = set.status === 'finished';
+    if (!finished && !document.hidden) {
+      set.status = 'active';
+      if (set.runningSince == null && set.stopwatch) set.runningSince = Date.now();
+    }
+    const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
+    const answered = set.slugs.filter(id => set.answers[id]).length;
+    const outcome = practiceSessions.result(set, slug);
+    const aime = p && /AIME/.test(p.fam);
+    const nav = set.slugs.map((id, i) => {
+      const result = practiceSessions.result(set, id);
+      const suffix = finished ? result : set.answers[id] ? 'Answered' : 'Unanswered';
+      return `<button type="button" class="cn-num${i === set.current ? ' cn-here' : ''}" data-practice-index="${i}" aria-current="${i === set.current ? 'step' : 'false'}" aria-label="Problem ${i + 1}, ${suffix}${set.marks[id] ? ', marked for review' : ''}">${i + 1}<small>${finished ? ({Correct:'✓',Revisit:'×',Unanswered:'–','Not checked':'?'})[result] : set.answers[id] ? '✓' : ''}${set.marks[id] ? ' •' : ''}</small></button>`;
+    }).join('');
     shownIds = [];
-    $content.innerHTML = `<div class="space-home">
-      <button type="button" class="back-link" id="exit-practice-set">&larr; Back to Practice</button>
-      <header class="space-home-head"><h2>${escapeAttr(set.label)}</h2>
-        <p>${set.problems.length} problems &middot; ${set.difficulty} difficulty &middot; Elapsed <time id="practice-clock"></time></p>
-      </header>
-      ${set.problems.map((p, i) => `<section class="sh-section"><h3>Problem ${i + 1} &middot; ${escapeAttr(refShort(p.ref))}</h3>
-        <div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement"></div><p class="prob-credit"></p></div>
-      </section>`).join("")}</div>`;
-    const clock = $content.querySelector("#practice-clock");
+    $content.innerHTML = `<div class="space-home practice-session">
+      <a class="back-link" href="#/practice">&larr; Back to Practice</a>
+      <section class="sh-section">
+        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div>${set.stopwatch ? '<span class="practice-time">Time spent <time id="practice-clock"></time></span>' : ''}</div>
+        <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
+        <div class="practice-session-actions"><span>${finished ? `${set.slugs.filter(id => practiceSessions.result(set,id) === 'Correct').length} correct · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Revisit').length} to revisit · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Not checked').length} not checked · ${set.slugs.length - answered} unanswered` : `${answered} of ${set.slugs.length} answered`}</span>
+          <div><a class="hp-btn hp-btn-soft" href="#/practice">${finished ? 'Back to Practice' : 'Save and exit'}</a>${finished ? '' : '<button type="button" class="hp-btn" id="finish-practice">Finish and review</button>'}</div></div>
+        <p class="prob-note" id="practice-save-status" role="status"></p>
+      </section>
+      <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
+        ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div><p class="prob-credit"></p></div>` : '<p>This problem is no longer available in the current database.</p>'}
+        ${finished ? `<div class="practice-answer"><h4>Your answer</h4><p>${escapeAttr(set.answers[slug] || 'Not answered')} · ${outcome}</p>
+          ${set.answers[slug] ? '<p class="prob-note">Check your answer against the strategy or linked solution, then record your result.</p><div class="practice-self-check"><button type="button" class="hp-btn hp-btn-soft" data-review="correct">Correct</button> <button type="button" class="hp-btn hp-btn-soft" data-review="revisit">Revisit</button> <button type="button" class="hp-btn hp-btn-soft" data-review="">Not checked</button></div>' : ''}</div>
+          ${p ? `<h4>Strategy</h4><div class="prob-strategy">${p.strategy}</div>${p.trick ? `<h4>Another approach</h4><div class="prob-strategy">${p.trick}</div>` : ''}<p><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the solution on AoPS ↗</a> · <a href="#/problem/${p.slug}">Open problem and study links</a></p><h4>Helpful cards</h4><div class="practice-study-links">${[...new Set([...p.formulas, ...p.trickFormulas])].filter(id => BY_ID[id]).map(id => `<a href="#/f/${id}">${escapeAttr(BY_ID[id].formula.name)}</a>`).join(' · ') || 'No linked cards yet.'}</div>` : ''}`
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime ? `<label for="practice-answer">Integer from 000 to 999</label><input id="practice-answer" type="text" inputmode="numeric" maxlength="3" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : `<div class="rand-btns" role="radiogroup" aria-label="Your answer">${['A','B','C','D','E'].map(a => `<button type="button" data-practice-answer="${a}" role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div><button type="button" class="strategy-reset" id="clear-practice-answer">Clear answer</button>`}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label><p class="prob-note">Answers save automatically. Check them after finishing.</p></div>` : ''}
+        <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
+      </section></div>`;
+    const redraw = () => {
+      const active = document.activeElement;
+      const selector = active?.id ? '#' + active.id : active?.dataset.practiceAnswer ? `[data-practice-answer="${active.dataset.practiceAnswer}"]` : active?.hasAttribute('data-review') ? `[data-review="${active.dataset.review}"]` : null;
+      clearInterval(practiceClock); renderTopicPracticeSet();
+      if (selector) $content.querySelector(selector)?.focus({preventScroll:true});
+    };
+    $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => { set.current = +b.dataset.practiceIndex; savePractice(); redraw(); $content.querySelector('.practice-question h3').setAttribute('tabindex','-1'); $content.querySelector('.practice-question h3').focus({preventScroll:true}); }));
+    $content.querySelector('#finish-practice')?.addEventListener('click', () => { practiceSessions.finish(set); savePractice(); redraw(); });
+    $content.querySelectorAll('[data-practice-answer]').forEach(b => b.addEventListener('click', () => { practiceSessions.answer(set, slug, b.dataset.practiceAnswer, false); savePractice(); redraw(); }));
+    $content.querySelector('#clear-practice-answer')?.addEventListener('click', () => { practiceSessions.answer(set, slug, '', false); savePractice(); redraw(); });
+    $content.querySelector('#practice-answer')?.addEventListener('input', e => {
+      const valid = practiceSessions.answer(set, slug, e.target.value, true);
+      e.target.setAttribute('aria-invalid', String(!valid));
+      $content.querySelector('#practice-answer-error').textContent = valid ? '' : 'Use an integer from 000 to 999. This value has not been saved.';
+      if (valid) { savePractice(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.querySelector('small').textContent = (set.answers[slug] ? '✓' : '') + (set.marks[slug] ? ' •' : ''); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
+    });
+    $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; savePractice(); redraw(); });
+    $content.querySelectorAll('[data-review]').forEach(b => { b.setAttribute('aria-pressed', String((set.reviews[slug] || '') === b.dataset.review)); b.addEventListener('click', () => { set.reviews[slug] = b.dataset.review; savePractice(); redraw(); }); });
+    savePractice();
     const tick = () => {
-      const seconds = Math.floor((Date.now() - set.started) / 1000);
-      clock.textContent = Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
+      const clock = $content.querySelector('#practice-clock');
+      if (clock) { const seconds = Math.floor((set.elapsed + (set.runningSince == null ? 0 : Date.now() - set.runningSince)) / 1000); clock.textContent = Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0'); }
     };
     tick();
-    practiceClock = setInterval(tick, 1000);
-    set.problems.forEach(p => showStatement(p, ".practice-set-st"));
-    $content.querySelector("#exit-practice-set").addEventListener("click", () => history.back());
+    if (!finished && set.stopwatch) practiceClock = setInterval(() => { if (!document.hidden) { savePractice(); tick(); } }, 1000);
+    if (p) showStatement(p, '.practice-set-st');
+    renderMath($content);
   }
   function wireTopicPractice(root) {
     const form = root.querySelector("#topic-practice-form");
     if (!form) return;
     const topic = form.elements.topic, count = form.elements.count;
-    const suggestions = form.querySelector("datalist");
+    const suggestions = form.querySelector("#practice-topic-options");
     const status = root.querySelector("#topic-practice-status");
     const difficulty = form.elements.difficulty;
     let generating = false;
@@ -5327,7 +5413,8 @@
       const key = normalize(topic.value);
       const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 30)
         : Object.values(SUBJECT_LABELS);
-      suggestions.replaceChildren(...choices.map(label => new Option(label, label)));
+      suggestions.innerHTML = choices.map((label,i) => `<button type="button" role="option" id="practice-topic-${i}" aria-selected="false">${escapeAttr(label)}</button>`).join('');
+      suggestions.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { topic.value = b.textContent; closeTopics(); update(); topic.focus(); closeTopics(); }));
       const pool = matchingProblems();
       count.max = Math.max(1, Math.min(30, pool.length));
       if (count.valueAsNumber > Number(count.max)) count.value = count.max;
@@ -5335,7 +5422,7 @@
       form.querySelector("#topic-band-value").textContent = difficultyLabel();
       status.textContent = pool.length ? pool.length + " matching problems available."
         : key ? "No matches. Try another topic or difficulty." : "";
-      form.querySelector("button").disabled = generating || !pool.length;
+      form.querySelector("button[type=submit]").disabled = generating || !pool.length;
     }
     function difficultyLabel() {
       return ["Any", "Easy", "Medium", "Hard"][difficulty.valueAsNumber];
@@ -5344,7 +5431,25 @@
       const match = findTopic(normalize(topic.value)), band = DIFFS[difficulty.valueAsNumber];
       return match ? [...match.problems.values()].filter(p => !band || difficultyBand(p) === band) : [];
     }
-    form.addEventListener("input", update);
+    let activeTopic = -1;
+    function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
+    function openTopics() { suggestions.hidden = !suggestions.children.length; topic.setAttribute('aria-expanded', String(!suggestions.hidden)); }
+    topic.addEventListener('focus', () => { update(); openTopics(); });
+    topic.addEventListener('keydown', e => {
+      const options = [...suggestions.querySelectorAll('button')];
+      if (e.key === 'Escape') { closeTopics(); e.preventDefault(); }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault(); openTopics(); if (!options.length) return;
+        activeTopic = (activeTopic + (e.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
+        options.forEach((b,i) => b.setAttribute('aria-selected',String(i === activeTopic)));
+        topic.setAttribute('aria-activedescendant',options[activeTopic].id); options[activeTopic].scrollIntoView({block:'nearest'});
+      }
+      if (e.key === 'Enter' && !suggestions.hidden && activeTopic >= 0) { e.preventDefault(); options[activeTopic]?.click(); }
+    });
+    form.addEventListener('focusout', e => { if (!e.relatedTarget?.closest('.practice-topic-search')) closeTopics(); });
+    form.addEventListener('input', e => { update(); if (e.target === topic) { activeTopic = -1; topic.removeAttribute('aria-activedescendant'); openTopics(); } });
+    // Close on blur, including clicks outside the form; defer so a suggestion click can finish.
+    topic.addEventListener('blur', () => setTimeout(() => { if (!form.querySelector('.practice-topic-search').contains(document.activeElement)) closeTopics(); }, 0));
     form.addEventListener("submit", async e => {
       e.preventDefault();
       const pool = matchingProblems(), requested = count.valueAsNumber;
@@ -5369,8 +5474,9 @@
       generating = false;
       form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
-      topicPracticeSet = { label, difficulty: level, problems, started: Date.now() };
-      location.hash = "#/practice/set";
+      topicPracticeSet = practiceSessions.create(label, level, problems.map(p => p.slug), state.stopwatch === 'on');
+      savePractice();
+      location.hash = '#/practice/set/' + topicPracticeSet.id;
     });
     update();
   }
@@ -5419,6 +5525,7 @@
       else body += `
         <section class="sh-section rand-picker">
             <h3>Open a random problem</h3>
+            <p>Try a past contest problem, with your choice of contest and difficulty.</p>
             <div class="rand-btns" role="radiogroup" aria-label="Contest">
               <button type="button" role="radio" aria-checked="true" data-rand-fam="">Any contest</button>
               ${fams.map(f => `<button type="button" role="radio" aria-checked="false" data-rand-fam="${escapeAttr(f)}">${escapeAttr(f)}</button>`).join("")}
@@ -5428,21 +5535,21 @@
               <input type="range" id="rand-diff-range" min="0" max="3" step="1" value="0">
               <span class="rand-diff-val">Any</span>
             </div>
-            <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem &rarr;</a>
+            <a class="hp-btn rand-go" href="#/special/randomproblem">Open a random problem</a>
         </section>
         <section class="sh-section" id="pr-topic">
           <h3>Practice a topic</h3>
           <p>Choose a subject or technique to build an untimed set from past contest problems.</p>
-          <form id="topic-practice-form"><fieldset aria-label="Practice set options">
+          <form id="topic-practice-form" novalidate><fieldset aria-label="Practice set options">
             <label for="topic-name">Topic</label>
-            <input id="topic-name" class="list-add-input" type="search" name="topic" value="Geometry" list="practice-topic-options" required autocomplete="off">
-            <datalist id="practice-topic-options"></datalist>
+            <div class="practice-topic-search"><input id="topic-name" class="list-add-input" type="search" name="topic" value="Geometry" required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options">
+            <div id="practice-topic-options" role="listbox" aria-label="Topics" hidden></div></div>
             <div class="rand-diff"><label for="topic-count">Questions</label>
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
             <div class="rand-diff"><label for="topic-band">Difficulty</label>
               <input id="topic-band" type="range" name="difficulty" min="0" max="3" value="0"><output id="topic-band-value" for="topic-band">Any</output></div>
             <p id="topic-practice-status" role="status"></p>
-            <button type="submit" class="hp-btn">Generate set &rarr;</button>
+            <button type="submit" class="hp-btn">Generate set</button>
           </fieldset></form>
         </section>
         <section class="sh-section" id="pr-contests">
@@ -5466,6 +5573,7 @@
           </div>
         </section>`;
     }
+    if (name === "practice") body += pastPracticeHtml();
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
     wireTopicPractice($content);
@@ -8948,13 +9056,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
   }
 
   window.addEventListener("hashchange", event => {
-    if (topicPracticeSet && new URL(event.oldURL).hash === "#/practice/set" && location.hash !== "#/practice/set") {
-      if (!confirm("Leave this practice set? The set and elapsed time will not be saved.")) {
-        history.pushState(null, "", "#/practice/set");
-        return;
-      }
-      topicPracticeSet = null;
-    }
+    if (topicPracticeSet && new URL(event.oldURL).hash.startsWith('#/practice/set/') && new URL(event.oldURL).hash !== location.hash) pausePractice();
     clearTimeout(scrollSaveTimer);
     legacyRedirect();
     const route = getRoute();
