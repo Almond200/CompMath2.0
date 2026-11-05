@@ -2,6 +2,8 @@
 
 **2026-11-04**
 
+- Simplified practice answer controls: removed routine saving text and Clear answer. Double-clicking a selected AMC choice deselects it, with Delete/Backspace as a keyboard alternative. Saving failures still appear.
+
 - Rebuilt Practice a topic as locally saved sessions with a header navigator and a single unboxed problem statement per page. Added AMC answer choices, AIME integer entry, automatic saving, review flags, Save and exit, direct Finish and review, and Past practice sets below Contests. Review preserves submitted answers and offers strategies, solution links, helpful cards and self-check results. Automatic grading awaits verified structured answer keys.
 - Added a Practice stopwatch setting, off by default, with active time paused on exit and tab hiding. Saved sets are included in progress export/import and merged by latest update.
 - Replaced the native topic datalist with app-styled keyboard-accessible search suggestions, removed the unsaved-set confirmation, restored the standard Back to Practice link size, and added a description below Open a random problem. Both generation buttons now fit their single-line labels with no arrows. Recorded the preferences for custom controls, no nested panels and intentional duplicate exit links.
