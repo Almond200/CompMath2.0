@@ -3239,7 +3239,8 @@ html[data-cols="spacious"] .content .cards.search-results { grid-template-column
 .rand-btns button[aria-checked="true"] { background: var(--space); border-color: var(--space); color: #fff; }
 .rand-diff { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 650; color: var(--text-dim); }
 .rand-picker .rand-go, #topic-practice-form .hp-btn { white-space: nowrap; }
-.rand-picker .rand-btns { margin-top: 14px; }
+.rand-picker .rand-btns { margin-top: 10px; }
+.rand-picker > h3 + p, #pr-topic > h3 + p, #past-practice-sets > h3 + p { margin: 6px 0 10px; }
 #topic-practice-form fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 #topic-practice-form label { font-size: 13px; font-weight: 650; }
 #topic-name { display: block; max-width: 320px; margin-top: 4px; }
@@ -4190,11 +4191,12 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 /* Practice sessions use two panels, with unboxed statements and review content. */
 .practice-session-top, .practice-session-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .practice-session-top h2 { margin: 0; font-size: 22px; }
-.practice-session-top p { color: var(--text-dim); margin: 6px 0 18px; }
+.practice-session-top p { color: var(--text-dim); margin: 4px 0 10px; }
 .practice-time { font-size: 14px; color: var(--text-dim); white-space: nowrap; }
-.practice-session .cn-nums { justify-content: flex-start; gap: 8px; margin: 8px 0 20px; flex-wrap: wrap; }
-.practice-session .cn-num { font: inherit; cursor: pointer; min-width: 40px; min-height: 40px; }
-.practice-session .cn-num small { font-size: 11px; margin-left: 4px; }
+.practice-session .cn-nums { justify-content: flex-start; gap: 6px; margin: 0 0 14px; padding: 12px 0 8px; flex-wrap: wrap; }
+.practice-session .cn-num { position: relative; display: grid; place-items: center; box-sizing: border-box; width: 36px; height: 36px; min-width: 36px; padding: 0; border-radius: 8px; font: inherit; line-height: 1; cursor: pointer; }
+.practice-session .cn-num small { position: absolute; right: 3px; bottom: 2px; font-size: 9px; line-height: 1; margin: 0; }
+.practice-session .cn-num small:empty { display: none; }
 .practice-session-actions { font-size: 14px; color: var(--text-dim); }
 .practice-session-actions > div { display: flex; gap: 10px; flex-wrap: wrap; }
 .practice-session .hp-btn { font-family: inherit; cursor: pointer; margin-top: 0; }
