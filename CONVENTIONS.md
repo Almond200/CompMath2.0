@@ -925,6 +925,16 @@ See `MIGRATION-NOTES.md` for the full answers.
 - **Import is all or nothing.** `importProgress` stages every value (lists merged on a copy) and keeps the old ones. If any write fails, everything is put back, and the message says whether the rollback worked. A new stored key joins `PROGRESS_KEYS` and follows the same path.
 - **The lab pages** (`lab/`): a page-wide key shortcut never takes Enter or Space from a focused link or button. A failed save shows a one-time notice instead of failing silently.
 
+### Practice sessions and UI preferences (2026-11-04)
+
+- Use the existing app design for searchable suggestions and any dialogs that are needed. Avoid native datalists, select arrows on large topic searches, alerts and confirmation prompts in new practice flows. The topic combobox supports typing, arrow keys, Enter, Escape and blur dismissal.
+- Keep one white header panel and one problem panel. Put statement text and figures directly in the problem panel, without another bordered box. Back to Practice uses the normal back-link style. Practice action buttons fit their single-line labels and omit arrows.
+- The session header says Practice set · Topic, with an optional stopwatch opposite it, numbered problem navigation, answer count and Save and exit / Finish and review actions. Back to Practice intentionally duplicates Save and exit. Neither exiting nor submitting asks for confirmation.
+- Store stable problem slugs, submitted answers, selected position, review flags, self-check results and elapsed active time in `mq-practice-sets`, managed by `js/practice-sessions.js`. Save edits immediately and pause on route exit, pagehide and tab hiding. Saving failures must be visible. Past practice sets is below Contests; unfinished sets resume and finished sets reopen in review. Progress export/import merges sets by ID, keeping the latest update.
+- The Practice stopwatch preference defaults to Off and is captured when creating a set. Off means no time is accumulated or shown. No timer limit, ranking or account is involved.
+- Review keeps the same problem navigator and shows the submitted answer, authored strategy, related cards and external solution link. The corpus currently has no structured answer keys and no full written solutions; never guess a grade from strategy prose. Readers record Correct or Revisit after checking, while unanswered and unchecked answers remain distinct. Add verified answer data before automatic grading.
+- AMC/AJHSME answers use A–E controls; AIME answers accept only 0–999, preserving leading zeros. Answers become read-only after finishing, while review marks remain editable. Regression coverage is in `tests/practice-sessions.cjs`.
+
 ## 14. Learn: books, chapters, lessons and problem sets (PLAN step L3, 2026-10-31; revised through the seventeenth chat)
 
 The rules for the Learn space. What each book, chapter and lesson holds is in `LEARN-OUTLINE.md`; the plan is `PLAN.md`; the owner's decisions are LQ1 to LQ10 in `QUESTIONS.md`.

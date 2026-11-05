@@ -8,8 +8,9 @@
 
 **The handoff rule.** After every major change, every finished step, and the start of every new step: update "Current state", add an entry to `CHANGELOG.md`, commit and push.
 
-## Current state (updated 2026-11-01, branch `codex/work`; olympiad lessons are written from scratch, so read a finished chapter such as `olympiad-proofs/p3.js` as the model, and check every inequality numerically)
+## Current state (updated 2026-11-04, branch `codex/work`; olympiad lessons are written from scratch, so read a finished chapter such as `olympiad-proofs/p3.js` as the model, and check every inequality numerically)
 
+- **Practice sets:** a searchable topic picker generates locally saved sessions with one problem at a time, AMC A–E choices or an AIME integer field, review flags and automatic saving. Past practice sets appears below Contests. Both Back to Practice and Save and exit pause and save; Finish and review submits directly. Review uses the same navigator and preserves answers, strategies and study links. Results are self-checked: the corpus has no structured answer keys or full written solutions, so automatic grading remains a data task. The optional stopwatch is off by default in Settings and records only active time. Progress export/import includes saved sets, merging by ID and latest update.
 - **Custom lists:** descriptions and LaTeX in add-card previews are available. Grouping is opt-in per list. New cards wait for Regroup. List and card pages share the Page tools setting.
 - **Counts:** 765 cards (548 formulas, 169 methods, 48 patterns); 41 built-in lists; 4,675 problems, every one with a strategy, 4,229 citing at least one card; 4,665 with statements; 340 figures drawn for the app. Check with `$JSC tools/validate-problem-db.js`.
 - **Reference and Practice:** finished (the earlier road ahead, steps A to I, R0, and the card renovation and proof pass). `QUESTIONS.md` has no card candidate open; the next is P54. Every problem is read and tagged, and every card has two practice problems.
@@ -48,7 +49,7 @@ The model (the owner's blueprint, "Learn + Practice for Competition Math Referen
 
 1. **Complete the content.** Finish the textbooks, review the mathematics and worked solutions, and reconcile the outline, status notes and documentation with the app. Add diagrams where they explain a construction, reveal why a step works or make a relationship easier to see.
 2. **Polish the experience.** Review search, navigation, readability and mobile usability across Learn, Formulas, Methods, Patterns and Practice. Follow real study paths between spaces, including a reader returning to an open solution or following a card to its lesson.
-3. **Consider small study features.** Practice a topic is implemented as an untimed, session-only problem set. Remaining possibilities include reviewing study history and sharing lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
+3. **Consider small study features.** Practice a topic now has locally saved sessions and a problem-by-problem review interface, with an optional stopwatch. Add verified structured answer keys before introducing automatic grading. Remaining possibilities include reviewing study history and sharing lists. Practice sets should help readers choose and work through problems at their own pace. Competitive contests, rankings and account systems are outside this roadmap.
 
 The lab migration remains on hold. Lessons in search belong to the search review in phase two.
 

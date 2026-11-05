@@ -10,6 +10,21 @@ Fully static and fully offline: no build step, no server, and nothing fetched at
 asks for), so the app renders the same on a plane or behind a network that blocks CDNs. It used to
 load KaTeX from jsdelivr, where a block meant every formula in the library showed as raw LaTeX.
 
+## Practice a topic
+
+Choose a subject or technique, a question count and a difficulty to build a practice set.
+Work through one problem at a time, select A–E for AMC problems or enter a three-digit-range
+integer for AIME, and mark questions to revisit. Answers save automatically on this device.
+Save and exit or Back to Practice pauses the set; find it again in **Past practice sets** below
+Contests. Finish and review opens the same problem navigator with your answers, strategies,
+helpful cards and solution links. With no structured answer keys in the current data, results
+are self-checked as Correct or Revisit rather than automatically graded.
+
+The optional stopwatch is off by default under Settings → Practice. When enabled for a new
+set, it pauses on exit or when the tab is hidden. Saved sets travel with Export progress and
+Import progress, which keep the most recently updated version of each set. Clearing browser
+data removes the local copy.
+
 ## Four kinds, four spaces
 
 > Formulas tell you what is true; Methods tell you what you can do; Patterns tell you what you
