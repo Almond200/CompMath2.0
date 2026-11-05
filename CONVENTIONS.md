@@ -712,7 +712,7 @@ are untouched.
 
 ## 11. Tagging a problem
 
-`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`. The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; the page prints it with the credit "Problem ..., © Mathematical Association of America, used under CC BY-NC-SA 4.0. Text and figures from LIVE by Po-Shen Loh." Never add a statement by hand and never import a solution. Imported displays are unwrapped: LIVE cuts long equations by hand for a phone, and the importer joins a cut that only continues the line above (`unwrap_display` in `tools/fetch-live-statements.py`), keeping real systems, cases, and matrices. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
+`{ ref, formulas, strategy }`, optionally `trick` and `trickFormulas`. The entry holds no statement. An AMC or AIME statement is fetched from LIVE by Po-Shen Loh into `js/data/problems/statements/<year>.js` by `tools/fetch-live-statements.py` (statements and answer choices only, never solutions or hints), keyed by the problem's slug, with its figures as SVG files under `js/data/problems/figures/`; Settings → Credits and attribution carries the shared MAA copyright, CC BY-NC-SA 4.0 license, LIVE/AoPS/PDF attribution and an expandable source-to-problem index. Do not repeat credit paragraphs under statements or in previews. Preserve source metadata and credit headers in data files. Never add a statement by hand and never import a solution. Imported displays are unwrapped: LIVE cuts long equations by hand for a phone, and the importer joins a cut that only continues the line above (`unwrap_display` in `tools/fetch-live-statements.py`), keeping real systems, cases, and matrices. `tools/check-statements.py` is the gate: every key a known problem, every figure an SVG that exists, the credit header present.
 
 - `formulas` = the basic tools for the **appropriate** route, not the theoretical minimum. Everything
   reduces to similar triangles and Pythagoras; tagging that way tells a reader nothing.
@@ -992,7 +992,7 @@ The math keyboard and its grammar (`js/learn-answer.js`, described below as firs
 - **Comparison:** by value within $10^{-9}$ relative; a comma list as a set.
 
 **Problem lists** (LQ6). A lesson's problems and a chapter's review are shown as an AoPS-style list. Each problem is a block with:
-- its number and the problem's statement, with figures and credit, as on its problem page;
+- its number and the problem's statement, with figures, as on its problem page (credits are centralized in Settings);
 - a box: "Type your solution, notes and/or work here.";
 - a Show Solution button.
 
