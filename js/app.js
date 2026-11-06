@@ -1344,8 +1344,8 @@
     m = location.hash.match(/^#\/list\/([\w-]+)$/);
     if (m && anyList(m[1])) return { type: "list", listId: m[1] };
     if (/^#\/lists$/.test(location.hash)) return { type: "lists" };
-    m = location.hash.match(/^#\/problems(?:\/([a-z0-9-]+)\/(\d{4}))?$/);
-    if (m) return { type: "problems", fam: m[1] || null, year: m[2] ? +m[2] : null };
+    m = location.hash.match(/^#\/problems(?:\/([a-z0-9-]+)\/(\d{4})(?:\/([a-z0-9-]+))?)?$/);
+    if (m) return { type: "problems", fam: m[1] || null, year: m[2] ? +m[2] : null, paper: m[3] || null };
     m = location.hash.match(/^#\/problem\/([\w-]+)$/);
     if (m && PROBLEM_BY_SLUG[m[1]]) return { type: "problem", slug: m[1] };
     // One tag page for every way in: a topic chip, a problem's type chip, the "Browse by Tag"
@@ -3115,6 +3115,8 @@
     return { year, cname, fam, num };
   }
   function famSlug(f) { return f.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""); }
+  // A paper within a year's page: "2025 AIME I" -> "aime-i", "2021 Fall AMC 10A" -> "fall-amc-10a".
+  function paperSlug(cname) { return famSlug(String(cname).replace(/^\d{4}\s*/, "")); }
   // Types for a problem: manual `types` (topic ids) unioned with the topics carried
   // by its tagged formulas, so type filtering works even before any manual tagging.
   function problemTypes(entry) {
@@ -3647,6 +3649,8 @@
     renderMath(cpEl);
     const place = () => {
       if (cpFor !== a) return;
+      const desc = cpEl.querySelector(".problem-preview .cp-desc");
+      if (desc) desc.classList.toggle("cp-scroll", desc.scrollHeight > desc.clientHeight + 6);
       positionFloat(cpEl, a, thumb ? 420 : 330, true, cpAt);
       // The arrow must point at the SAME fragment the box was placed against, or on a link
       // that wraps it aims at the union box's centre and misses the word entirely.
@@ -6798,7 +6802,19 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const probs = named || problemMatches(state.query);
     const listHits = listMatches(state.query);
     const refy = !!named || /\b(19|20)\d\d\b|\b(aime|amc|hmmt|putnam|mathcounts)\b/i.test(state.query);
+    // A reference that names a contest and a year but no problem number ("2025 AIME I",
+    // "2023 amc10b") also gets the paper itself as a result, ahead of its problems, linking to
+    // that paper on its contest page. "2025 AIME" names two papers and gets both.
+    const ref = named && parseProblemQuery(state.query);
+    const papers = [];
+    if (ref && ref.fam && ref.year && !ref.num) named.forEach(p => {
+      let g = papers.find(x => x.cname === p.cname);
+      if (!g) papers.push(g = { cname: p.cname, fam: p.fam, year: p.year, problems: [] });
+      g.problems.push(p);
+    });
+    papers.sort((a, b) => a.cname.localeCompare(b.cname));
     const items = [];
+    papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));
     listHits.filter(h => h.strong).forEach(h => items.push({ list: h.list }));
     if (refy && !named) probs.forEach(p => items.push({ problem: p }));
@@ -6808,7 +6824,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const n = { formula: 0, method: 0, pattern: 0 };
     sorted.forEach(e => n[e.kind]++);
     const counts = [[n.formula, "formula", "formulas"], [n.method, "method", "methods"], [n.pattern, "pattern", "patterns"],
-      [probs.length, "problem", "problems"], [listHits.length, "study list", "study lists"]]
+      [papers.length, "contest", "contests"], [probs.length, "problem", "problems"], [listHits.length, "study list", "study lists"]]
       .filter(c => c[0]).map(c => `${c[0]} ${c[0] === 1 ? c[1] : c[2]}`).join(" &middot; ");
     const total = items.length;
     const kindLabel = Object.fromEntries(LIST_KINDS);
@@ -6816,6 +6832,17 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const itemHtml = (it, i) => {
       const extra = i >= PAGE ? ` data-page="${Math.floor(i / PAGE)}" hidden` : "";
       if (it.entry) return cardHtml(it.entry, true, queryTokens).replace('<article class="card ', `<article${extra} class="card `);
+      if (it.contest) {
+        const c = it.contest, subj = {};
+        c.problems.forEach(p => p.subjects.forEach(sid => { subj[sid] = (subj[sid] || 0) + 1; }));
+        const rows = Object.entries(subj).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 4);
+        return `<a class="card card-result card-contest-result" href="#/problems/${famSlug(c.fam)}/${c.year}/${paperSlug(c.cname)}"${extra}>
+            <div class="card-head"><h4 class="card-name">${escapeAttr(/^\d{4}\b/.test(c.cname) ? c.cname : c.year + " " + c.cname)}</h4></div>
+            <div class="card-meta"><span class="badge badge-contest">CONTEST</span><span class="level-range">${escapeAttr(c.fam)} &middot; ${c.problems.length} problem${c.problems.length === 1 ? "" : "s"}</span></div>
+            ${rows.length ? `<div class="rs-box">${rows.map(([sid, k]) => `<div class="rs-line"><span class="rs-v">${escapeAttr(SUBJECT_LABELS[sid] || sid)}</span><span class="rs-n">${k}</span></div>`).join("")}</div>` : ""}
+            <p class="card-desc">Open the whole paper on its contest page.</p>
+          </a>`;
+      }
       if (it.problem) {
         const p = it.problem;
         return `<a class="card card-result card-problem-result" href="#/problem/${p.slug}"${extra}>
@@ -7352,9 +7379,12 @@ The book remembers the last lesson you opened, in this browser, and the contents
     // Spring before Fall within a year (2021 had both), then A before B.
     const seasonRank = gn => /^Spring\b/i.test(gn) ? 0 : /^Fall\b/i.test(gn) ? 1 : 0;
     const gnames = Object.keys(groups).sort((a, b) => seasonRank(a) - seasonRank(b) || a.localeCompare(b));
+    // #/problems/aime/2025/aime-i names one paper (a contest result in the search links there):
+    // the phone's paper toggle opens on it and the wide page scrolls to it.
+    const shownG = Math.max(0, gnames.findIndex(gn => paperSlug(gn) === route.paper));
     const body = gnames.map((gn, k) => {
       const ps = groups[gn].sort((a, b) => a.num - b.num);
-      return `<div class="db-group${k === 0 ? " is-shown" : ""}" data-g="${k}"><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
+      return `<div class="db-group${k === shownG ? " is-shown" : ""}" data-g="${k}"><h3 class="db-group-title">${escapeAttr(gn)}</h3><div class="prob-grid">${ps.map(p => problemRowHtml(p, true)).join("")}</div></div>`;
     }).join("");
     const i = years.indexOf(year);
     const newer = years[i - 1], older = years[i + 1];
@@ -7371,13 +7401,14 @@ The book remembers the last lesson you opened, in this browser, and the contents
         <select class="ct-yb-select" aria-label="Year">${years.map(y => `<option value="${y}"${y === year ? " selected" : ""}>${y}</option>`).join("")}</select>
         ${newer ? `<a class="ct-yb-step" href="${yhref(newer)}" aria-label="${newer}">&#8250;</a>` : `<span class="ct-yb-step is-off" aria-hidden="true">&#8250;</span>`}
       </div>
-      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist">${gnames.map((gn, k) => `<button type="button" role="tab" data-g="${k}" aria-selected="${k === 0}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
+      ${gnames.length > 1 ? `<div class="ct-papers" role="tablist">${gnames.map((gn, k) => `<button type="button" role="tab" data-g="${k}" aria-selected="${k === shownG}">${escapeAttr(gn.replace(new RegExp("^" + year + "\\s*"), ""))}</button>`).join("")}</div>` : ""}
       ${body}
       <nav class="topic-nav" aria-label="Neighbouring years">
         ${older ? `<a class="topic-step" href="${yhref(older)}"><span class="ts-dir">&larr; Earlier</span><span class="ts-name">${escapeAttr(fam)} ${older}</span></a>` : "<span></span>"}
         ${newer ? `<a class="topic-step topic-step-next" href="${yhref(newer)}"><span class="ts-dir">Later &rarr;</span><span class="ts-name">${escapeAttr(fam)} ${newer}</span></a>` : ""}
       </nav>`;
     renderMath($content);
+    if (route.paper && shownG > 0) setTimeout(() => $content.querySelector(`.db-group[data-g="${shownG}"]`)?.scrollIntoView({ block: "start", behavior: "instant" }), 0);
     // The phone's year bar and paper toggle (owner, 2026-10-31); the wide page shows the year
     // chips and every paper of the year at once.
     const sel = $content.querySelector(".ct-yb-select");
