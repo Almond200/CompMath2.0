@@ -5308,7 +5308,7 @@
     catch (err) { return '<section class="sh-section"><h3>Practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
-      return `<h4>${title}</h4>${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+      return `<h4>${title}</h4>${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problem${s.slugs.length === 1 ? '' : 's'} · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
     };
     return `<section class="sh-section" id="past-practice-sets"><h3>Practice sets</h3>${group(false, 'Resume a set')}${group(true, 'Review a completed set')}</section>`;
   }
@@ -5355,7 +5355,7 @@
     const stats = [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
     $content.innerHTML = `<div class="space-home practice-session practice-results">
       <a class="back-link" href="#/practice">← Back to Practice</a>
-      <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problems · ${escapeAttr(set.difficulty)} difficulty</p>
+      <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problem${total === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty</p>
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
         <a class="aops-btn" href="${reviewUrl}">Review problems</a>
@@ -5394,7 +5394,7 @@
     $content.innerHTML = `<div class="space-home practice-session">
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
+        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problem${set.slugs.length === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         ${finished ? `<div class="practice-review-actions"><a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a></div>` : ''}
         ${finished ? '' : `<div class="practice-session-actions"><span>${answered} of ${set.slugs.length} answered</span><div><a class="hp-btn hp-btn-soft" href="#/practice">Save and exit</a><button type="button" class="hp-btn" id="finish-practice">Finish and review</button></div></div>`}
@@ -5810,7 +5810,7 @@
     const { series, name } = bookParts(b);
     return `<span class="bk-cover bk-${b.id} bk-${size}" aria-hidden="true">
         <span class="bk-series">${escapeAttr(series)}</span>
-        <span class="bk-name${/ & /.test(name) ? " bk-name-amp" : ""}">${escapeAttr(name).replace(/ &amp; /g, "\u00a0&amp; ")}</span>
+        <span class="bk-name${/ & /.test(name) ? " bk-name-amp" : ""}${/\S{12,}/.test(name) ? " bk-name-long" : ""}">${escapeAttr(name).replace(/ &amp; /g, "\u00a0&amp; ")}</span>
         <svg class="bk-motif" viewBox="0 0 100 100">${BOOK_MOTIFS[b.id] || ""}</svg>
         ${size === "s" ? "" : `<span class="bk-size">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</span>`}
       </span>`;
@@ -6003,19 +6003,15 @@
     };
     return rank;
   }
-  // Page-local suggestions must not float over the sticky app navigation after their
-  // input has scrolled away. Share the guard across Settings, topics and both book fields.
+  // A page-local suggestion list stays open while its field scrolls out of view: it sits
+  // under the sticky navigation (z-index 20 against 50), so scrolling back finds it still
+  // there. It closes only when its field is no longer rendered. Shared by Settings, the
+  // practice topics and both book fields.
   function dismissOccludedSearchSuggestions() {
-    const bar = document.querySelector('.topbar');
-    const barRect = bar?.getBoundingClientRect();
-    const viewport = window.visualViewport;
-    const top = Math.max(viewport?.offsetTop || 0, barRect && barRect.bottom > 0 ? barRect.bottom : 0);
-    const bottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
     document.querySelectorAll('.set-find-list:not([hidden])').forEach(list => {
       const input = list.parentElement.querySelector('.set-find-input');
       if (!input) return;
-      const rect = input.getBoundingClientRect();
-      if (!input.getClientRects().length || rect.top < top || rect.bottom > bottom) {
+      if (!input.getClientRects().length) {
         list.hidden = true;
         if (input.hasAttribute('aria-expanded')) input.setAttribute('aria-expanded', 'false');
         input.removeAttribute('aria-activedescendant');
