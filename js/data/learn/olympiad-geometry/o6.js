@@ -16,6 +16,11 @@ The first lesson uses this cancellation to locate lines in circle diagrams. The 
     },
     "O6.2": {
       prereq: ["power-of-a-point", "radical-axis"], cards: ["power-of-a-point-linearity", "orthogonal-circles", "reims-theorem", "butterfly-theorem"],
+      related: [
+        { card: "power-of-a-point", note: String.raw`the power of a point; the difference of two powers is linear in the point (S5.5).` },
+        { card: "radical-axis", note: String.raw`the radical axis, where the difference of two powers vanishes (G2.3).` },
+        { card: "inversion-properties", note: String.raw`inversion, which fixes every circle orthogonal to its circle (O1.3).` }
+      ],
       body: String.raw`The road calculation works in any direction. For centers $U,V$ and radii $r,s$, the difference $PU^2-r^2-(PV^2-s^2)$ is affine in $P$: its value at the midpoint of a segment is the average of its endpoint values. This is [[power-of-a-point-linearity|linearity of the difference of powers]]. It lets you prove that a midpoint lies on a radical axis by finding opposite endpoint values.
 
 There is also a geometric meaning to a prescribed nonzero power. Draw a circle centered at $P$ with radius $t$ through a point $X$ of the circle $(U,r)$. If the circles meet at right angles then $PX\perp UX$, so $PU^2-r^2=t^2$. Conversely this equation makes the radii perpendicular at an intersection. Thus points of positive equal power are exactly the possible centers of circles [[orthogonal-circles|orthogonal]] to both given circles, with radius the square root of that power.
@@ -30,6 +35,11 @@ Angles become more economical when the two circles already meet at $P,Q$. Draw l
     },
     "O6.3": {
       prereq: ["ptolemys-theorem"], cards: ["caseys-theorem", "mixtilinear-incircle", "sawayama-thebault"],
+      related: [
+        { card: "ptolemys-theorem", note: String.raw`the case of Casey's theorem in which the four circles shrink to points (G2.4).` },
+        { card: "homothety-monge", note: String.raw`the homothety at the touch point that carries a mixtilinear circle to the circumcircle (G6.5).` },
+        { card: "tangent-circles", note: String.raw`the distance between centers of tangent circles, the raw data of a tangent length (G2.6).` }
+      ],
       body: String.raw`On a common external tangent to circles of radii $r_i,r_j$, the contact points need not be as far apart as the centers. Drop radii to the tangent. The line of centers has components $t_{ij}$ along the tangent and $r_i-r_j$ perpendicular to it, so $t_{ij}^2=d_{ij}^2-(r_i-r_j)^2$. This is the length that enters [[caseys-theorem|Casey's theorem]]. For four circles internally tangent to one circle in cyclic order, $t_{12}t_{34}+t_{14}t_{23}=t_{13}t_{24}$. Shrink the four radii to zero and the relation becomes Ptolemy's relation for four points.
 
 When a circle touches two sides of an angle, draw the line joining its contact points $E,F$. Reflection in the bisector exchanges the contacts, so their chord has its midpoint on the bisector. For the [[mixtilinear-incircle|mixtilinear incircle]] at $A$, internal tangency to the circumcircle pins that midpoint down to the triangle's incenter $I$. For example, triangle $AEI$ is right at $I$ since $AI\perp EF$. Its hypotenuse is the tangent length $AE$, giving $AE=\frac{AI}{\cos\left(\frac A2\right)}$.
@@ -44,6 +54,11 @@ Move the wedge from vertex $A$ to the foot $D$ of an internal cevian $AD$. A cir
     },
     "O6.4": {
       prereq: [], cards: ["japanese-theorem", "poncelet-closure", "newtons-line"],
+      related: [
+        { card: "cyclic-quadrilateral", note: String.raw`the cyclic polygon that the Japanese theorem triangulates (S5.3).` },
+        { card: "inradius-area", note: String.raw`$r=\text{Area}/s$, for the inradii summed in the Japanese theorem.` },
+        { card: "euler-distance-theorem", note: String.raw`$OI^2=R(R-2r)$, Poncelet's closure condition for triangles (G5.3).` }
+      ],
       body: String.raw`Draw both diagonals of a convex cyclic quadrilateral $ABCD$. Each choice of three vertices gives a triangle and hence an incenter. The [[japanese-theorem|Japanese theorem]] puts those four incenters at the corners of a rectangle. To see how one side of that rectangle is oriented, compare the incenters of $ABC$ and $ABD$. Both are equidistant from the line $AB$ and their respective other sides; their heights above $AB$ are the two inradii. When the inradii agree, their joining line is parallel to $AB$. A rectangle $ABCD$ gives a particularly accessible case, because the four constituent right triangles are congruent.
 
 Next suppose one quadrilateral has both a circumcircle and an incircle. Pick a point on the outer circle, draw a tangent to the inner circle, and continue from its next intersection with the outer circle, always taking the forward tangent. [[poncelet-closure|Poncelet closure]] says that if this walk closes in four steps for one starting point, it does so for every starting point on that outer circle. The two circles must stay fixed throughout the walk.
@@ -57,8 +72,12 @@ A quadrilateral with an incircle alone already has a useful line. Mark the midpo
       ]
     },
     "O6.5": {
-      prereq: [], cards: [],
-      body: String.raw`Subtract powers to obtain a line, and prescribe a positive common power to obtain an orthogonal circle. In a tangent configuration, identify whether a requested length joins centers or contacts before applying a metric relation. For a quadrilateral, classify its circles before drawing extra lines: an outer circle gives the rectangle of incenters, an inner circle gives Newton's line, and a fixed pair permits the closure argument.`,
+      prereq: ["power-of-a-point-linearity", "orthogonal-circles", "reims-theorem", "butterfly-theorem", "caseys-theorem", "mixtilinear-incircle", "sawayama-thebault", "japanese-theorem", "poncelet-closure", "newtons-line"], cards: [],
+      body: String.raw`[[power-of-a-point-linearity|Linearity of power]] makes $\operatorname{pow}(P,\omega_1)-\operatorname{pow}(P,\omega_2)$ a linear function of $P$, and [[orthogonal-circles|orthogonal circles]] satisfy $O_1O_2^2=r_1^2+r_2^2$. [[reims-theorem|Reim's theorem]] turns two concyclic quadruples into parallel lines, and [[butterfly-theorem|the butterfly theorem]] gives $MX=MY$ for chords through a chord's midpoint.
+
+[[caseys-theorem|Casey's theorem]] is Ptolemy's relation $t_{12}t_{34}+t_{14}t_{23}=t_{13}t_{24}$ for tangent lengths. [[mixtilinear-incircle|The mixtilinear incircle]] touches $AB$ and $AC$ at distance $\frac{bc}{s}$ from $A$, with $I$ the midpoint of its contact chord, and [[sawayama-thebault|the Sawayama–Thébault lemma]] puts $I$ on the contact chord of a circle wedged against $AD$, $BC$ and the circumcircle. [[japanese-theorem|The Japanese theorem]] makes the four incenters of a cyclic quadrilateral a rectangle, [[poncelet-closure|Poncelet's closure]] gives $d^2=R^2-2Rr$ for a bicentric triangle, and [[newtons-line|the Newton–Gauss line]] holds the three diagonal midpoints of a complete quadrilateral.
+
+Subtract powers to obtain a line, and prescribe a positive common power to obtain an orthogonal circle. In a tangent configuration, identify whether a requested length joins centers or contacts before applying a metric relation. For a quadrilateral, classify its circles before drawing extra lines: an outer circle gives the rectangle of incenters, an inner circle gives Newton's line, and a fixed pair permits the closure argument.`,
       strategies: ["Test equal power at two points to identify a radical axis.", "Label circles in their order of contact before writing Casey's relation.", "Use a line of contact points to locate the incenter when the circle is wedged against two lines.", "Ask what stays fixed when a vertex moves around a circumcircle."]
     }
   },

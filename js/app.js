@@ -5358,7 +5358,7 @@
       <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problem${total === 1 ? '' : 's'} · ${escapeAttr(set.difficulty)} difficulty</p>
         <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
         ${counts['Answer unavailable'] ? `<p class="practice-results-meta">${counts['Answer unavailable']} awaiting an answer key</p>` : ''}
-        <a class="aops-btn" href="${reviewUrl}">Review problems</a>
+        <a class="hp-btn" href="${reviewUrl}">Review problems</a>
       </section>
       <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
         const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);

@@ -16,6 +16,11 @@ The first lesson constructs a number from four marks that both views share. The 
     },
     "O7.2": {
       prereq: [], cards: ["cross-ratio", "harmonic-bundle", "pole-polar", "brocards-theorem"],
+      related: [
+        { card: "harmonic-quadrilateral", note: String.raw`a cyclic quadrilateral whose vertices have cross-ratio $-1$ on the circle (G9.5).` },
+        { card: "power-of-a-point", note: String.raw`the tangent length behind the polar $x=\frac{R^2}{p}$ (S5.5).` },
+        { card: "projective-transformations", note: String.raw`the maps under which cross-ratio is invariant (O1.4).` }
+      ],
       body: String.raw`To locate a fourth mark, use directed coordinates $a,b,c,d$ on its line. The [[cross-ratio|cross-ratio]] in the order $(A,B;C,D)$ is $\frac{(c-a)(d-b)}{(c-b)(d-a)}$. For the four marks in the introduction it is $\frac43$. Why does it survive the new view? Under $f(t)=\frac{t}{t+1}$ a difference $u-v$ becomes $\frac{u-v}{(u+1)(v+1)}$. In the cross-ratio every endpoint occurs once above and once below the fraction bar, so all four extra factors cancel.
 
 A particularly revealing value is $-1$. Put $A=-1$, $B=1$, $C=c$, $D=d$. Setting the cross-ratio to $-1$ gives $(c+1)(d-1)=-(c-1)(d+1)$, or $cd=1$. One interior point is paired with one exterior point. Draw the four rays from a point off the line to these marks: this is a [[harmonic-bundle|harmonic bundle]]. Intersect the rays with a different transversal and the new four marks are again harmonic, since the change of transversal is a projection.
@@ -30,6 +35,11 @@ Scale the same calculation to a circle of radius $R$ centered at the origin. Put
     },
     "O7.3": {
       prereq: [], cards: ["pascals-theorem", "brianchon-theorem", "pappus-hexagon", "desargues-theorem", "desargues-involution"],
+      related: [
+        { card: "pole-polar", note: String.raw`the duality that turns Pascal's theorem into Brianchon's (O7.2).` },
+        { card: "projective-transformations", note: String.raw`a map that sends a chosen line to infinity before Pascal or Desargues is applied (O1.4).` },
+        { card: "menelaus-theorem", note: String.raw`a metric route to the same collinearities (G5.5).` }
+      ],
       body: String.raw`Six labeled points lie on one conic. You want to prove three intersections collinear, but which intersections? Write the six vertices in a cycle $A,B,C,D,E,F$. Pair each edge with the edge three places later. [[pascals-theorem|Pascal's theorem]] puts $AB\cap DE$, $BC\cap EF$ and $CD\cap FA$ on a line. You may change the order of the six vertices to fit the problem: the edges need not trace a convex hexagon. If two of the intersections are at infinity, the third is also there, yielding a third parallel pair.
 
 Exchange points on the conic for tangent lines to it. The resulting hexagon has consecutive vertices at the intersections of neighboring tangents. The dual conclusion, [[brianchon-theorem|Brianchon's theorem]], makes the three lines joining opposite vertices concurrent. If the six original points lie three on each of two lines instead, interleave the two triples in the six-cycle. The resulting collinearity is [[pappus-hexagon|Pappus's theorem]]. Labeling the cycle first avoids confusing opposite sides with opposite vertices.
@@ -46,6 +56,12 @@ For two triangles there is a smaller incidence test. If $AA',BB',CC'$ concur, [[
     },
     "O7.4": {
       prereq: [], cards: ["complete-quadrilateral-miquel", "mobius-transformations", "descartes-sphere-theorem", "cayley-menger"],
+      related: [
+        { card: "miquels-theorem", note: String.raw`Miquel's theorem for one triangle, the source of each of the four circles.` },
+        { card: "inversion-properties", note: String.raw`inversion, a Möbius map followed by a reflection (O1.3).` },
+        { card: "descartes-circle-theorem", note: String.raw`the plane relation $(\sum k)^2=2\sum k^2$, with two in place of three (G2.6).` },
+        { card: "regular-tetrahedron", note: String.raw`the edge-$2$ tetrahedron of the four unit-sphere centers (G8.2).` }
+      ],
       body: String.raw`Four lines in general position determine four triangles, one for each omitted line. Each pair of triangle circumcircles shares a vertex, but those vertices are different. The [[complete-quadrilateral-miquel|Miquel point]] is their other common point in a generic configuration. Send it to infinity by the [[mobius-transformations|Möbius transformation]] $w=\frac1{z-m}$, where $m$ is its complex coordinate. Each of the four circles now appears as a line: a circle through the pole of the map goes to a generalized circle containing infinity. This straightens several circles at once. Distances in the new picture generally change.
 
 For tangent spheres the distances themselves matter. Four mutually externally tangent unit spheres have centers forming a regular tetrahedron of edge $2$. A fifth sphere in the central gap is equally distant from those centers. The [[descartes-sphere-theorem|Soddy–Gosset theorem]] lets us find its radius without first constructing that tetrahedron. Write curvature as the reciprocal radius, using a negative sign for an enclosing sphere. The five curvatures satisfy $(4+k)^2=3(4+k^2)$ here. The roots are $2+\sqrt6$ and $2-\sqrt6$. The larger one belongs to the small sphere in the gap; the negative one describes an enclosing sphere.
@@ -59,8 +75,14 @@ For four centers with different radii, an edge between two externally tangent sp
       ]
     },
     "O7.5": {
-      prereq: [], cards: [],
-      body: String.raw`For four marks on a line, label them in order and keep the directed differences until the final simplification. For points and lines around a conic, decide whether the objects lie on it or touch it, then label the six-cycle before taking intersections. The same drawing can support several six-cycles and several different conclusions.
+      prereq: ["cross-ratio", "harmonic-bundle", "pole-polar", "brocards-theorem", "pascals-theorem", "brianchon-theorem", "pappus-hexagon", "desargues-theorem", "desargues-involution", "complete-quadrilateral-miquel", "mobius-transformations", "descartes-sphere-theorem", "cayley-menger"], cards: [],
+      body: String.raw`[[cross-ratio|The cross-ratio]] $\frac{(c-a)(d-b)}{(c-b)(d-a)}$ survives every projection; at the value $-1$ the four points form a [[harmonic-bundle|harmonic bundle]]. The [[pole-polar|polar]] of a point at distance $p$ from the center is the line at distance $\frac{R^2}{p}$, and [[brocards-theorem|Brocard's theorem]] makes $O$ the orthocenter of the diagonal triangle of a cyclic quadrilateral.
+
+[[pascals-theorem|Pascal's theorem]] puts the three opposite-side intersections of a hexagon on a conic on one line; [[brianchon-theorem|Brianchon's theorem]] is its dual, and [[pappus-hexagon|Pappus's theorem]] its case for two lines. [[desargues-theorem|Desargues's theorem]] trades concurrence of $AA'$, $BB'$, $CC'$ for collinearity of corresponding side intersections, and [[desargues-involution|the Desargues involution theorem]] pairs the intersections of a pencil of conics with a line.
+
+[[complete-quadrilateral-miquel|The Miquel point]] of four lines lies on the four triangle circumcircles, and a [[mobius-transformations|Möbius transformation]] with its pole there turns them into lines. The [[descartes-sphere-theorem|Soddy–Gosset theorem]] reads $\left(\sum k\right)^2=3\sum k^2$ for five mutually tangent spheres, and the [[cayley-menger|Cayley–Menger determinant]] equals $288V^2$.
+
+For four marks on a line, label them in order and keep the directed differences until the final simplification. For points and lines around a conic, decide whether the objects lie on it or touch it, then label the six-cycle before taking intersections. The same drawing can support several six-cycles and several different conclusions.
 
 Before changing coordinates, state what the map preserves. Projection preserves incidence and cross-ratio. A Möbius map carries generalized circles to generalized circles. When the requested answer is a radius or volume, return to the given metric data before computing it.`,
       strategies: ["Normalize two endpoints to opposite coordinates when testing harmonic division.", "Work backward from the desired Pascal line to an order of six vertices.", "Choose the pole of a Möbius map at a common point of circles to turn them into lines.", "Distinguish positive curvature in a gap from negative curvature for an enclosing sphere."]
