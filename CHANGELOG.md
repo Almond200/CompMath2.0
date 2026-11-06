@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Added the 2026 AMC 12A, with only an AMC 12A header under AMC 12 2026: 25 statements, six figures and the answer key, from Random Math's wiki (LIVE has not published it). The 11 problems it shares with the 10A (12A #1-6, 10, 11, 16, 17, 20) carry the 10A's strategy and tags word for word, so practice sets count them once; the other 14 have new strategies, and all 14 answers were checked by independent computation. Both 2026 keys were then checked against a second source, Think Academy's published answer-key images, and agree letter for letter (the owner's copy of the 10A key agrees too); Settings → Credits names both sources. Counts: 4,725 problems, 4,715 statements and answer keys.
+
 - Home page, Problem of the day: its tag chips are now links to their tag pages, like the chips on a problem's page; the rest of the panel still opens the problem. Book search (both fields) shows nothing until something is typed, as in Settings (owner); only the Practice topic picker keeps default suggestions.
 
 - Lessons in the main search are a secondary result (owner): after the formula, method and pattern cards, ahead of the problems. They lead only when the query asks for them with "lesson" or "chapter" ("power of a point lesson", "circles chapter") or is a lesson code (C5.3); that word is then dropped from the rest of the search, so the cards and problems are the same as without it.

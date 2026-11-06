@@ -9,8 +9,8 @@ assert.equal(Object.keys(answers).length,Object.keys(statements).length,'every a
 for (const [slug,answer] of Object.entries(answers)) {
   assert(statements[slug],slug);
   assert.match(answer,slug.includes('-aime-') ? /^\d{1,3}$/ : /^[A-E]$/);
-  // The 2026 AMC 10A was keyed by hand from Random Math's wiki before LIVE had it (each answer checked by computation).
-  assert.match(sources[slug.replace(/-\d+$/,'')],/^https:\/\/(live\.poshenloh\.com\/past-contests\/|wiki\.randommath\.com\/amc10\/2026\/part-a$)/);
+  // The 2026 AMC 10A and 12A were keyed by hand from Random Math's wiki before LIVE had it (each answer checked by computation).
+  assert.match(sources[slug.replace(/-\d+$/,'')],/^https:\/\/(live\.poshenloh\.com\/past-contests\/|wiki\.randommath\.com\/amc1[02]\/2026\/part-a$)/);
 }
 // Known answers include the two strategy discrepancies found during import.
 assert.equal(answers['2020-amc-10b-1'],'D');

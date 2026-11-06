@@ -25,9 +25,9 @@ for f in sorted(glob.glob(os.path.join(ROOT, "js/data/problems/statements/*.js")
         if re.search(r"<[A-Za-z/]", re.sub(r"\$[^$]*\$", "", s)): bad.append("%s: raw tag outside maths" % slug)
         # An HTML entity left in the text (&lt; inside maths) is a KaTeX error on the page.
         if re.search(r"&(?:lt|gt|amp|nbsp|quot|#\d+);", s): bad.append("%s: an HTML entity was not decoded" % slug)
-        # The two 2021 Fall AMC problems LIVE lacks are credited to the AoPS Wiki instead, and the 2026 AMC 10A,
+        # The two 2021 Fall AMC problems LIVE lacks are credited to the AoPS Wiki instead, and the 2026 AMC 10A and 12A,
         # added the day after the contest, to Random Math's wiki until LIVE publishes it.
-        if not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10", "https://wiki.randommath.com/amc10/2026/part-a/")): bad.append("%s: source link missing" % slug)
+        if not u.startswith(("https://live.poshenloh.com/", "https://artofproblemsolving.com/wiki/", "pdf:fall-2021-amc-10", "https://wiki.randommath.com/amc10/2026/part-a/", "https://wiki.randommath.com/amc12/2026/part-a/")): bad.append("%s: source link missing" % slug)
         # A size command (\\tiny, \\small ...) shrinks a formula to near-unreadable size on screen.
         if re.search(r"\\(?:tiny|scriptsize|footnotesize|small)\b", s): bad.append("%s: a size command shrinks the maths" % slug)
         # Long answer choices go one per line; a run of long ones left inline wraps into a paragraph.
