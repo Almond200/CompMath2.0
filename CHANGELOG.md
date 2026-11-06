@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Topic tree draft v3: a leaf audit and a test on the 2025 AMC 10A. Every topic now has subtopics; five subtopics that lumped distinct kinds of problem have a fifth level; four common problem kinds got homes (folding, counting multiples in a range, cryptarithms, triangle type from side lengths). Filing all 25 problems of the 2025 AMC 10A by hand found two gaps, now added: the triangle inequality (`geo.tri.ineq`, for problem 3) and expected value by definition (`cp.exp.basic`, for problem 16). The filing is recorded in `TOPIC-TREE.md`. The tree has 520 nodes; ids checked unique, every node's id extends its parent's, and every id the test uses exists.
+
 - Topic tree draft v2 (owner): every topic that splits cleanly now has subtopics, a fourth level (4 subjects, 32 areas, 122 topics, 324 subtopics; ids checked unique and consistent with their parents). New topics where an area was thin: `alg.poly.higher`, `cp.exp.var`, `cp.graph.sets`, `geo.poly.general`. The Topic tree page has an Outline / Tree switch: Tree draws the chosen subject as a diagram (subject, areas, topics, subtopics, joined by curves), with a subject switch, topics that open and close on a press, Expand all / Collapse all, KaTeX in the labels, and its own scrolling panel so the page never scrolls sideways; the view and subject are remembered in this browser.
 
 - Topic tree T1 done (owner's answers): TQ1 to TQ3 kept as drafted; the Olympiad-only nodes are folded into the main topics (`alg.ineq.olympiad` into `alg.ineq.means`, `geo.oly` into `geo.tri.centers` and a new `geo.circ.proj`, `nt.prime.lte` into `nt.prime.val`); the Practice picker will offer the tree only, with no card-name topics for now.
