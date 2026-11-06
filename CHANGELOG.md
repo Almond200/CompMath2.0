@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Simplified the detailed review header: removed duplicate outcome totals and moved Results overview / Back to Practice beside the title, above the problem navigation divider.
+
 - Added a completed practice overview with score, correct/incorrect/unanswered totals, completion and review-flag counts, and links from each result into detailed review. Finishing or opening a completed set lands on the overview; review provides a return link.
 
 - Selected practice numbers now stay blue. Moved Open in app beside Open in AoPS below the explanation chain, both using the blue button style.

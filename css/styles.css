@@ -4202,6 +4202,7 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 .practice-session .practice-reviewed.cn-here[data-result="Correct"] { background: rgba(42, 163, 88, .16); }
 .practice-session .practice-reviewed.cn-here[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); }
 .practice-session-actions { font-size: 14px; color: var(--text-dim); }
+.practice-review-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .practice-session-actions > div { display: flex; gap: 10px; flex-wrap: wrap; }
 .practice-session .hp-btn { font-family: inherit; cursor: pointer; margin-top: 0; }
 .practice-session button.hp-btn { border: 1px solid transparent; }
