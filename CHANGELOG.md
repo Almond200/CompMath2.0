@@ -1,6 +1,15 @@
 # Changelog
 
+**2026-11-05**
+
+- Practice sets now grade automatically using 4,665 structured answer keys from LIVE, matched against local statements. Added a reproducible importer, paper-source provenance and hash-locked reviews for 30 equivalent PDF transcriptions. Corrected two strategy discrepancies: 1993 AJHSME #5 is C, and 2021 Fall AMC 12A #24 includes the equal-sided case for E (84).
+- Rebuilt review into separate statement and result/explanation panels. Submitted AMC choices remain visible; How this problem works reuses the problem page's strategy, Pattern/Method/Formulas chain and available lesson links. Open problem follows the heading, and the blue Read more solutions button sits below the chain. Removed self-grading controls and uses Incorrect for wrong answers.
+- Removed the timer and its preference, including legacy timer state. Review flags and answer changes update in place, with brief save batching to keep rapid edits responsive and no scroll jump. Answered problems use checkmarks, flagged problems use dots, and the current problem has one blue border without an outer ring.
+- Practice sets now separates Resume a set from Review a completed set. Renamed the home page's Continue section Recently opened and placed Practice's recently opened heading above its chips. Topic search starts with Search a topic..., uses compact Settings-style suggestions and renders LaTeX while preserving the original selectable label. Main search is unchanged. Reduced the gap below Back to Practice.
+
 **2026-11-04**
+
+- Matched topic suggestions to Settings search: seven results, a highlighted first option and no internal scrollbar. Reduced Practice headings and description sizes to the shared UI scale. Marked problems are blue; the current problem uses a separate outline. Removed the original-source dropdown from Settings while keeping the shared attribution and source metadata.
 
 - Moved repeated AMC/AJHSME/AIME credit paragraphs from statements, textbook exercises, practice sets and hover previews into Settings → Credits and attribution. Preserved the MAA copyright, license link, LIVE/AoPS/PDF sources and source metadata, with an expandable original-source index.
 

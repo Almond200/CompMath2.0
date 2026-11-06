@@ -40,7 +40,7 @@ $JSC tools/validate-problem-db.js
 - Rebuild the search index once at the end of a step, not after each small card edit (owner, 2026-10-25).
 - Tag a card only where the problem's route really uses it (never to give a new card a problem); a tag on a shared AMC 10/12 problem goes on both twins.
 - No sticky headers: a page's header scrolls away with the page (a side rail may stay beside it) (owner, 2026-10-31). On a phone the top bar and the book view's navigation row stay pinned, at the owner's word.
-- Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep both Back to Practice and Save and exit. The stopwatch is opt-in, off by default (owner, 2026-11-04).
+- Prefer app-styled searchable suggestions and dialogs to native browser dropdowns, prompts and confirmation popups. Practice sets save on exit without a confirmation; Finish and review submits directly. Keep both Back to Practice and Save and exit. Practice sets have no timer or timer setting (owner, 2026-11-05).
 - No boxes inside boxes: a subsection inside a panel is a heading over its content, not a second bordered box (owner, 2026-10-31).
 - Our own design language: rounded bordered cards, soft tints, pill buttons, hairlines. Take another site's structure when it is easier to use, never its look (owner, 2026-10-31).
 - Links are always the app's blue, never purple after a visit (owner, 2026-11-01).
