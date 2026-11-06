@@ -1,6 +1,6 @@
 # Topic tree (draft)
 
-**Status: draft v3 (2026-11-06): the owner's answers to TQ1 to TQ5 are in, every topic has subtopics, and the tree has been tested on the 2025 AMC 10A. Nothing in the app uses it yet.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
+**Status: draft v3 (2026-11-06): the owner's answers to TQ1 to TQ5 are in, every topic has subtopics, and the tree has been tested on the 2025 AMC 10A, the 2025 AIME I and the 2026 AMC 10A. Nothing in the app uses it yet.** The plan this serves is "Step T, the topic tree" in `PLAN.md`. Settings → Experimental → Topic tree shows this file, as an outline or as a drawn tree for one subject at a time.
 
 ## Why
 
@@ -16,7 +16,7 @@ Practice a topic currently offers every card name and every card keyword as a to
 2. **Four levels, sometimes five.** Subject › Area › Topic › Subtopic (owner, 2026-11-06: topics need subtopics, since a topic often holds several kinds of problem). Every topic has subtopics, and a subtopic that still lumps distinct kinds of problem splits once more. A subtopic that is one kind of problem stays a leaf. Selecting a node selects everything under it.
 3. **A node is a kind of problem, not a formula.** "Power of a point" is a node because contest problems are about it; "Shoelace formula" is not, because it is one tool for "Areas in coordinates". Cards attach to nodes; nodes do not mirror cards.
 4. **Every problem has at least one node, usually one or two, at most three.** A problem files under the most specific node that describes it. A problem genuinely about two things (a probability question whose work is geometry) takes a node in each tree.
-5. **Size.** A topic aims for about 25 to 300 problems out of the 4,675; a subtopic for at least about 5. A subtopic that stays smaller after filing merges into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
+5. **Size.** A topic aims for about 25 to 300 problems out of the 4,700; a subtopic for at least about 5. A subtopic that stays smaller after filing merges into its topic, and a problem that fits no subtopic files under the topic itself. There are no separate Olympiad nodes: Olympiad problems file under the same topics as everyone else's (owner, TQ4).
 6. **Stable ids.** Every node has a dotted id (`geo.circle.power`), never reused once problems are filed under it. The display name can change; the id cannot.
 7. **Names are plain and short**, in the app's style ("Counting & Probability", "Mass points"), and never name a contest.
 8. **One fact, one home.** The tree lives in one data file (planned: `js/data/topic-tree.js`); this Markdown file is the readable draft until the tree is approved, then it is generated from the data.
@@ -65,6 +65,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Order of operations and fraction arithmetic `[alg.word.compute.fraction]`
     - Clever computation and grouping `[alg.word.compute.clever]`
     - Estimation and comparing sizes `[alg.word.compute.estimate]`
+    - Rounding and the range of a rounded value `[alg.word.compute.round]`
 - **Equations and expressions** `[alg.eq]`
   - Linear equations and systems `[alg.eq.linear]`
     - One linear equation; setting up equations from words `[alg.eq.linear.one]`
@@ -125,6 +126,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Shifts, stretches and reflections `[alg.fn.graph.transform]`
     - Intersections of graphs `[alg.fn.graph.intersect]`
     - Domain, range and even and odd functions `[alg.fn.graph.domain]`
+    - Periodic and piecewise functions `[alg.fn.graph.periodic]`
   - Functional equations `[alg.fn.feq]`
     - Substituting special values `[alg.fn.feq.sub]`
     - Cauchy-type and additive equations `[alg.fn.feq.cauchy]`
@@ -255,6 +257,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Tilings and colorings `[cp.struct.tile]`
     - Tilings of strips and boards `[cp.struct.tile.tiling]`
     - Colorings of grids, graphs and solids `[cp.struct.tile.color]`
+    - Number fillings of grids (Latin squares, Sudoku bands) `[cp.struct.tile.fill]`
 - **Binomial coefficients** `[cp.binom]`
   - Pascal's triangle and identities `[cp.binom.identity]`
     - Pascal's rule and the hockey stick `[cp.binom.identity.hockey]`
@@ -467,10 +470,12 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
   - Shortest paths, reflections and extremes `[geo.comb.extreme]`
     - Shortest paths and reflection `[geo.comb.extreme.path]`
     - Largest and smallest areas and lengths `[geo.comb.extreme.maxmin]`
+    - Minimizing a sum of distances (Fermat point) `[geo.comb.extreme.fermat]`
   - Counting figures, grids and dissections `[geo.comb.count]`
     - Counting triangles, rectangles and squares in a grid `[geo.comb.count.figures]`
     - Dissections and tilings of figures `[geo.comb.count.dissect]`
     - Points, lines and convex position `[geo.comb.count.points]`
+    - Regions cut out by lines and chords `[geo.comb.count.regions]`
 
 ### Number Theory `[nt]`
 
@@ -492,6 +497,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - The number of divisors `[nt.divisor.count.tau]`
     - Sums and products of divisors `[nt.divisor.count.sigma]`
     - Divisor pairs and listing divisors `[nt.divisor.count.pairs]`
+    - Counting factorizations into several factors `[nt.divisor.count.factor]`
   - Euler's totient and multiplicative functions `[nt.divisor.phi]`
     - Euler's totient `[nt.divisor.phi.phi]`
     - Multiplicative functions and Möbius `[nt.divisor.phi.mult]`
@@ -529,6 +535,7 @@ Node ids are in brackets. Each tree runs Subject › Area › Topic › Subtopic
     - Simon's favorite factoring trick `[nt.dio.factor.sfft]`
     - Difference of squares in integers `[nt.dio.factor.squares]`
     - Reciprocal equations $1/x+1/y=1/n$ `[nt.dio.factor.recip]`
+    - Quadratic forms that factor into lines `[nt.dio.factor.forms]`
   - Pythagorean triples and sums of squares `[nt.dio.squares]`
     - Pythagorean triples `[nt.dio.squares.triples]`
     - Sums of two squares `[nt.dio.squares.sums]`
@@ -593,6 +600,60 @@ Every problem of the 2025 AMC 10A was filed by hand from its statement and writt
 Spread by first node: 10 problems in Algebra, 7 in Counting & Probability, 7 in Geometry and 1 in Number Theory; 11 problems also take a second node. No problem needed more than two nodes.
 
 The same pass also audited every leaf. Topics that had no subtopics now have them (operations, generating functions, variance, tournaments, set systems, matrices, polygons in general); five subtopics that lumped distinct kinds of problem got a fifth level (motion problems, deduction puzzles, grid puzzles, unit cubes, classical triangle lemmas); and four common kinds of contest problem got homes: folding and creases, counting multiples in a range, cryptarithms, and acute, right or obtuse from the side lengths.
+
+## Test: the 2025 AIME I (2026-11-06)
+
+All 15 problems found a home; five needed a node the draft lacked, all added (*new*).
+
+1. $17_b$ divides $97_b$: `nt.digit.base.arith`, `nt.div.rules.expr`.
+2. A heptagon built by reflecting points of a triangle: `geo.tri.ratio.area`, `geo.coord.transform.reflect`.
+3. Ice-cream assignments with $c\gt v\gt s$: `cp.basic.perm.repeat`, `cp.basic.case.cases`.
+4. Integer points on $12x^2-xy-6y^2=0$: `nt.dio.factor.forms` (*new*: a quadratic form that factors into two lines).
+5. Eight-digit numbers divisible by $22$: `nt.div.rules.tests`, `cp.basic.perm.restrict`.
+6. An isosceles trapezoid with an incircle: `geo.circ.cyclic.tangential`, `geo.poly.quad.trap`.
+7. The last of six alphabetized pairs contains $G$: `cp.prob.basic.count`, `cp.graph.tour.schedule` (pairings).
+8. A circle and a perpendicular bisector in the complex plane meet once: `alg.cx.polar.plane`, `geo.coord.line.point`.
+9. A parabola and its $60^\circ$ rotation: `geo.coord.transform.rotate`, `geo.coord.conic.parabola`.
+10. Fillings of a $3\times9$ Sudoku band: `cp.struct.tile.fill` (*new*: counting number fillings of a grid).
+11. A sawtooth function meets $x=34y^2$: `alg.fn.graph.periodic` (*new*), `alg.poly.vieta.basic`.
+12. A finite region of the plane $x+y+z=75$: `geo.solid.coord.planes`, `alg.ineq.solve.rational`.
+13. Expected regions cut by random chords: `cp.exp.linear.indicator`, `geo.comb.count.regions` (*new*).
+14. Minimizing $AX+BX+CX+DX+EX$ for a pentagon: `geo.comb.extreme.fermat` (*new*), `geo.tri.special.right`.
+15. Triples with $3^7 \mid a^3+b^3+c^3$: `nt.prime.val.lte`, `nt.mod.basic.arith`.
+
+Spread by first node: 5 Geometry, 4 Number Theory, 4 Counting & Probability, 2 Algebra; 13 problems take a second node. The AIME tested the upper end of the tree more than the AMC 10A did, and all five gaps were at that end.
+
+## Test: the 2026 AMC 10A (2026-11-06)
+
+Filed when the paper was added to the app. All 25 found a home; two needed a node the draft lacked, both added (*new*).
+
+1. LP and EP records: `alg.word.ratio.prop`.
+2. The share of a $27\%$ tax in the total: `alg.word.ratio.percent`.
+3. A triangle cut from a square by a diagonal: `geo.basic.sim.similar`, `geo.tri.ratio.area`.
+4. A polygon with angles of $150^\circ$ and $190^\circ$: `geo.basic.angle.polygon`.
+5. Each term the mean of the earlier ones: `alg.word.stats.mean`, `alg.seq.rec.nonlinear`.
+6. A right triangle inscribed in a circle: `geo.circ.arc.sector`, `geo.basic.pyth.triples`.
+7. Positive solutions of two linear equations: `alg.eq.linear.system`, `nt.dio.linear.solve`.
+8. A highway sign with rounded distance and time: `alg.word.compute.round` (*new*: rounding and the range of a rounded value), `alg.word.rates.motion`.
+9. Two similar triangles sharing sides $9$ and $12$: `geo.basic.sim.similar`.
+10. Mean $32\%$ above the median of the squares: `alg.word.stats.median`, `alg.seq.sum.powers`.
+11. One of six numbers is the lcm: `nt.div.gcd.basic`.
+12. Socks drawn until one colour runs out: `cp.prob.dice.draw`.
+13. Handshakes within and between two clubs: `cp.graph.basic.degree`, `alg.eq.system.combine`.
+14. Side lengths $t^2+1$, $5t+7$, $4t+4$: `geo.tri.ineq.valid`, `alg.ineq.solve.quad`.
+15. The level of $\tfrac{20}{27}$ in a fraction tree: `nt.div.gcd.euclid`.
+16. The lowest score from an urn: `cp.prob.dice.draw`, `cp.basic.case.cases`.
+17. The hexagon inside six squares: `geo.poly.regular.hex`, `geo.poly.composite.overlap`.
+18. A halving recurrence of integers: `alg.seq.rec.linear`.
+19. A hemisphere over three cubes: `geo.solid.round.sphere`, `geo.solid.coord.dist`.
+20. Boxes of volume $510510$: `nt.divisor.count.factor` (*new*: counting factorizations), `cp.struct.part.set`.
+21. Cutting a $3\times3$ grid into trominoes: `cp.struct.tile.tiling`, `cp.prob.basic.count`.
+22. Seven touching ellipses: `geo.coord.conic.ellipse`, `geo.circ.tangent.inscribed`.
+23. Multiples of $2$ and $3$ in a run of integers: `nt.div.rules.count`.
+24. $f(3+\sqrt5)=f(3-\sqrt5)$ for a monic cubic: `alg.poly.construct.given`.
+25. Evening out twenty rooms of nuts: `cp.logic.pigeon.bounds`, `cp.logic.invariant.ops`.
+
+Spread by first node: 8 Algebra, 8 Geometry, 5 Counting & Probability, 4 Number Theory; 15 problems take a second node. Problem 23 used a node added by the leaf audit (counting multiples in a range).
 
 ## Decisions (owner, 2026-11-06)
 
