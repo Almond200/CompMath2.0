@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Lessons in the main search now appear only when asked for (owner): the query must contain "lesson" or "chapter" ("power of a point lesson", "circles chapter") or be a lesson code (C5.3). A plain "power of a point" shows no lessons, as before.
+
 - Main search finds lessons and chapters (owner: only very strong matches). Titles only, never lesson prose: every word of the query must match its own word of the title (the word, its start, or a synonym at lower weight; this kept "quadrilateral" from also spending its synonym "cyclic"), a one-word query finds only titles that start with the word ("Circles", "Vieta: the sum and product of the roots"), at most three results show, and a lesson code such as C5.3 finds its lesson. LESSON and CHAPTER results follow strong study-list matches and lead the cards; a chapter result lists its first lessons and opens on its Introduction. Introductions and Summaries are not indexed. Contest results no longer carry the line "Open the whole paper on its contest page."
 
 - Search: a query that names a contest and a year but no problem number ("2025 AIME I", "2023 amc10b", "2021 fall amc 10a") now leads with the paper itself, a CONTEST result showing its problem count and subject spread, linking to that paper on its contest page; "2025 AIME" gets both papers. Contest pages take a paper in the address (`#/problems/aime/2025/aime-ii`): the phone's paper toggle opens on it and the wide page scrolls to it. A problem's hover preview no longer shows a scrollbar when there is nothing to scroll (KaTeX subscripts reached a pixel past the box); a statement taller than the box still scrolls.

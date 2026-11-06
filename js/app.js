@@ -6781,7 +6781,8 @@ The book remembers the last lesson you opened, in this browser, and the contents
     return hits.sort((a, b) => score(b) - score(a) || b.year - a.year || a.cname.localeCompare(b.cname) || a.num - b.num);
   }
 
-  // Lessons in the main search (owner, 2026-11-06): only very strong matches, read off the
+  // Lessons in the main search (owner, 2026-11-06): only when the query says "lesson" or
+  // "chapter" (renderSearchResults checks), and then only very strong matches, read off the
   // titles of lessons and chapters, never their prose. Every word of the query must match its
   // own word of the title: the word itself, the start of it, or (weighted lower) a synonym.
   // A one-word query finds only a title that is about that thing: one that starts with the
@@ -6859,7 +6860,10 @@ The book remembers the last lesson you opened, in this browser, and the contents
       g.problems.push(p);
     });
     papers.sort((a, b) => a.cname.localeCompare(b.cname));
-    const lessonHits = named ? [] : lessonMatches(state.query);
+    // Lessons only when the query asks for one (owner, 2026-11-06): "power of a point lesson",
+    // "circles chapter", or a lesson code such as C5.3. Without that word the search is unchanged.
+    const askLesson = /\b(lessons?|chapters?)\b/i.test(state.query) || /^\s*[a-z]\d+\.\d+\s*$/i.test(state.query);
+    const lessonHits = named || !askLesson ? [] : lessonMatches(state.query);
     const items = [];
     papers.forEach(c => items.push({ contest: c }));
     if (named) named.forEach(p => items.push({ problem: p }));
