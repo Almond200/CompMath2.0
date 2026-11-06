@@ -2254,6 +2254,10 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
   background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
 }
+/* On phones the search field shares a row with navigation; keep its menu on screen. */
+@media (max-width: 760px) {
+  .cmd-suggest { position: fixed; left: 12px; right: 12px; top: calc(var(--topbar-h) + 4px); min-width: 0; max-height: min(430px, calc(100dvh - var(--topbar-h) - 20px)); }
+}
 .cmd-suggest[hidden] { display: none; }
 .cs-item {
   display: flex; flex-direction: column; align-items: flex-start; gap: 1px; width: 100%;
@@ -3047,10 +3051,11 @@ details[open] > summary.set-panel-title::after { transform: rotate(90deg); }
 .set-find { position: relative; max-width: 360px; margin-top: 12px; }
 .set-find-input { width: 100%; box-sizing: border-box; padding: 8px 12px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); color: var(--text); font: inherit; font-size: 14px; }
 .set-find-input:focus { outline: none; border-color: var(--accent); }
-.set-find-list { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 50; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16); }
+.set-find-list { position: absolute; left: 0; right: 0; top: calc(100% + 4px); z-index: 20; padding: 4px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg-card); box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16); }
 .set-find-list[hidden] { display: none; }
 .set-find-opt { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 10px; padding: 7px 10px; border: none; border-radius: 7px; background: none; color: var(--text); font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
 .set-find-opt:hover, .set-find-opt.is-cur { background: var(--bg-panel); }
+.set-find-opt > span:first-child { min-width: 0; overflow-wrap: anywhere; }
 .set-find-group { font-size: 12px; color: var(--text-faint); white-space: nowrap; }
 .set-find-none { padding: 8px 10px; font-size: 13.5px; color: var(--text-faint); }
 /* The setting a search chose: a line draws itself under its name, then fades (owner, 2026-10-31). */

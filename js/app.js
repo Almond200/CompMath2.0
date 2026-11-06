@@ -6002,6 +6002,37 @@
     };
     return rank;
   }
+  // Page-local suggestions must not float over the sticky app navigation after their
+  // input has scrolled away. Share the guard across Settings, topics and both book fields.
+  function dismissOccludedSearchSuggestions() {
+    const bar = document.querySelector('.topbar');
+    const barRect = bar?.getBoundingClientRect();
+    const viewport = window.visualViewport;
+    const top = Math.max(viewport?.offsetTop || 0, barRect && barRect.bottom > 0 ? barRect.bottom : 0);
+    const bottom = viewport ? viewport.offsetTop + viewport.height : window.innerHeight;
+    document.querySelectorAll('.set-find-list:not([hidden])').forEach(list => {
+      const input = list.parentElement.querySelector('.set-find-input');
+      if (!input) return;
+      const rect = input.getBoundingClientRect();
+      if (!input.getClientRects().length || rect.top < top || rect.bottom > bottom) {
+        list.hidden = true;
+        if (input.hasAttribute('aria-expanded')) input.setAttribute('aria-expanded', 'false');
+        input.removeAttribute('aria-activedescendant');
+      }
+    });
+  }
+  let searchVisibilityFrame = 0;
+  const scheduleSearchVisibility = () => {
+    if (!searchVisibilityFrame) searchVisibilityFrame = requestAnimationFrame(() => {
+      searchVisibilityFrame = 0;
+      dismissOccludedSearchSuggestions();
+    });
+  };
+  window.addEventListener('scroll', scheduleSearchVisibility, { passive: true, capture: true });
+  window.addEventListener('resize', scheduleSearchVisibility, { passive: true });
+  window.visualViewport?.addEventListener('resize', scheduleSearchVisibility, { passive: true });
+  window.visualViewport?.addEventListener('scroll', scheduleSearchVisibility, { passive: true });
+
   function wireBookSearch(root, b) {
     const rank = bookSearchRanker(b);
     root.querySelectorAll('.book-search').forEach(box => {
