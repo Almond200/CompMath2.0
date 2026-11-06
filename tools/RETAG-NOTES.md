@@ -1,5 +1,7 @@
 # Retagging notes — running tally
 
+> **Historical record.** This file preserves its dated migration, review or proposal. Counts, pending language and “now” describe that snapshot, not the current app. Use [PLAN.md](../PLAN.md) for current status and [QUESTIONS.md](../QUESTIONS.md) for outstanding decisions. Current card metadata lives in `js/data/`; these tables are not an import specification.
+
 Working backwards through the problem database, checking every tag against the AoPS solution
 set and fixing tags that merely *could* apply.
 

@@ -1,5 +1,7 @@
 # New cards requested 2026-10-10: proposed tier and importance (for approval)
 
+> **Historical record.** This file preserves its dated migration, review or proposal. Counts, pending language and “now” describe that snapshot, not the current app. Use [PLAN.md](../PLAN.md) for current status and [QUESTIONS.md](../QUESTIONS.md) for outstanding decisions. Current card metadata lives in `js/data/`; these tables are not an import specification.
+
 Evidence is the number of LIVE problem statements in the app that mention the idea (a rough count by text search; the problem database's strategies were counted too), and the importance of the neighbors in the same subsection. Importance is judged inside the card's own subsection, as for every card.
 
 | # | Card | Kind, subject | Neighbors (tier, importance) | Evidence | Proposed tier | Proposed importance | Why |

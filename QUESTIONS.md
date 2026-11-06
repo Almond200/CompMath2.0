@@ -1,10 +1,16 @@
 # Questions for the owner
 
-Style and judgment calls found while working through `PLAN.md`. Verified errors are fixed straight away and recorded in the README; only real choices wait here.
+Style and judgment calls found while working through `PLAN.md`. Verified errors are fixed straight away and recorded in CHANGELOG.md; only real choices wait here.
 
 A candidate card lists, under "Needed by", the problems whose routes would cite it. A card needs at least two practice problems before it ships (CONVENTIONS §3b); when fewer than two real problems use it, the row says so and the card gets supplementary exercises.
 
 ## Open now
+
+None recorded as of 2026-11-06; the next card candidate is P54.
+
+## Resolved decisions and historical proposals
+
+The dated answers below record their original scope. Later implementation includes a redesigned homepage, five list kinds, all 13 books, and primary problem placement per track. PLAN and CONVENTIONS describe the current behavior.
 
 **The Learn track (2026-10-31): LQ1 to LQ10 answered by the owner (2026-10-31).** The questions came from the owner's blueprint (PLAN, "The road ahead"). The answers are folded into PLAN steps L3 to L10 and into `LEARN-OUTLINE.md`.
 

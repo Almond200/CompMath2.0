@@ -12,18 +12,23 @@
 
 ## Running the checks in a cloud session
 
-`./tools/gates.sh` runs all of these but `check-labels.py` in order and stops at the first failure.
+`./tools/gates.sh` runs the convention, topic, list, shelf, practice-gap, diagram, statement, lab and database checks, stopping at the first failure. It does not run `check-labels.py` or the three regression suites below. It writes logs to `/tmp`; if that path is unavailable, run the constituent commands with logs in a writable directory.
 
 ```bash
-export JSC=$PWD/tools/jsc-node CHROME=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome
+export JSC=$PWD/tools/jsc-node
+# Set CHROME to an installed Chromium executable before browser-dependent checks.
 python3 tools/scan-conventions.py && python3 tools/check-topics.py && python3 tools/check-lists.py
 python3 tools/check-diagrams.py && python3 tools/check-statements.py && ./tools/check-lab.sh
-python3 tools/check-labels.py          # 7 known "far-move" findings caused by fonts are the baseline (2026-10-24)
+python3 tools/check-labels.py          # historical 2026-10-24 baseline: 7 font-related far-move findings
+python3 tools/build-learn-shelf.py --check
+node tests/practice-sessions.cjs
+node tests/answer-keys.cjs
+node tests/book-search.cjs
 node tools/practice-gaps.js --check     # every card has two practice problems
 $JSC tools/validate-problem-db.js
 ```
 
-- **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (Playwright is preinstalled; `executablePath` is the `CHROME` above): 0 KaTeX errors, no overflow at 375 px, light and dark.
+- **Serving and checking pages:** `python3 -m http.server 8765` serves the app. Check pages in headless Chromium (check that Playwright and Chromium are installed; use `CHROME` as `executablePath`): 0 KaTeX errors, no overflow at 375 px, light and dark.
 - **Versions:** `python3 tools/bump-versions.py --changed` bumps `?v=` in `index.html` for every changed file and syncs the lab pages. By hand: bump `?v=` for every touched file, then run `python3 tools/sync-lab-versions.py` so the lab pages load the same versions; `check-lab.sh` fails if they drift. Bump `STATEMENTS_V` in `js/app.js` when statement files change.
 
 ## Standing preferences

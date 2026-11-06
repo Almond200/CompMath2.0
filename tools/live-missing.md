@@ -1,23 +1,18 @@
-# What LIVE (live.poshenloh.com/past-contests) lacks or the app lacks
+# LIVE import coverage and historical gaps
 
-Started 2026-10-11 while importing every AMC problem as a text-only placeholder. Rows are for review; nothing here is
-added without Stanley's approval (plan step C).
+## Current repository coverage (checked 2026-11-06)
 
-## Sittings LIVE does not publish (probed 2026-10-11, no page or no questions)
+The app has 4,665 imported statements and matching answer keys. The 2021 Fall AMC 10A, 10B, 12A and 12B statements are present. The statement importer maps AMC 12 C/D sittings to Fall A/B and retains manual Fall AMC 10 statements. The answer-key importer also maps AMC 10 C/D to Fall A/B; the earlier claim that these sittings are unavailable is obsolete. Manual PDF/AoPS provenance is retained where applicable in `tools/manual_statements.py`. The answer-key import compares source and local statements before accepting a key.
 
-| Contest | Years | What the app does |
-|---|---|---|
-| AMC 8 | 2021 | no problems listed; the 2021 AMC 8 is missing from the Contests box |
-| 2021 Fall AMC 10A, 10B, 12A, 12B | 2021 | LIVE does not publish the Fall sittings. **10A and 10B now have their text** (all 25 problems, typed from the PDFs Stanley supplied: the MAA solutions booklet for 10A and a copy of the 10B paper with its answer key; 7 figures cropped into `figures/amc10/2021FallA` and `2021FallB`; sources `tools/manual_statements.py`). Fall 12A and 12B are in the Contests box with no text, except 12B #23 (AoPS Wiki). The papers LIVE does have are the Spring ones, named "2021 Spring AMC 10A, 10B, 12A, 12B". |
+The local corpus has no 2021 AMC 8 entry. This is a repository observation, not a current availability survey of the external site. The 2000 and 2001 AMC 10/12 single-sitting mapping is handled by the importer. See the source scripts and stored provenance for exact coverage rather than treating the old gap list as current.
 
-LIVE does publish the 2000 and 2001 AMC 10 and AMC 12 as single sittings (pages `amc10/2000`, `amc10/2001`, `amc12/2000`,
-`amc12/2001`, with no A or B); the importer knows this. Other Fall and Spring AMC sittings (2021 Fall, 2022 Fall) are not in LIVE.
+## Historical concept-tag review (2026-10-11)
 
-## Concept tags that map to no card (to fill in during step C)
+The following counts and proposals are the original review snapshot. The six proposed cards were written on 2026-10-12; nothing in this table is a pending approval. Current decisions are in [QUESTIONS.md](../QUESTIONS.md).
 
 LIVE tags every problem with concepts (258 distinct strings, 11,229 tags, cached in `~/aops-cache/live/`). Checked on 2026-10-11 against the vocabulary of every card; all but 17 strings have a card that names or describes the idea. The practice-problem strategies (1,357) were also scanned for ideas that recur but are not on any card, and found none beyond phrasing differences ("power of point" is Power of a Point, "Simon's trick" is SFFT).
 
-The strings with no card, with the number of problems tagged, and a proposal. **Nothing is written until Stanley approves** (rule 12):
+The strings with no card, with the number of problems tagged, and a proposal. The original review required owner approval before writing:
 
 **Written 2026-10-12:** the six proposed cards below now exist (`defined-operation`, `truth-tellers-logic`, `organized-listing`, `simulate-the-process`, `coins-and-prices`, `drawing-without-replacement`).
 

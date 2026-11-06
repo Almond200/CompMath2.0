@@ -1,5 +1,7 @@
 # Authoring conventions
 
+> **Audit scope (2026-11-06).** The dated passes and gap register below are historical evidence, not a current backlog or current corpus census. Current status and pending decisions are in PLAN.md and QUESTIONS.md; current authoring rules are in CONVENTIONS.md. The source currently has 765 cards, 37 built-in lists and 13 written books. Book-scoped chapter search is an approved exception to the earlier no-find preference. Historical benchmarks and local machine paths are not guarantees for another environment.
+
 > **Adding a card? Read [CONVENTIONS.md](CONVENTIONS.md) instead.** It is the short checklist:
 > the two legal field orders, the write-up headings for each kind, the mandatory example, the
 > diagram rule for geometry, and the duplicate check — each with the measurement that proves it
@@ -12,21 +14,19 @@ reference rather than people editing it.
 
 ## Uploading to GitHub (without losing files)
 
-The folder `~/Downloads/competition-math-reference` **is** the repository: it is a git clone of `Almond200/CompMath2.0`, with `origin` already set. So the files never need to be copied anywhere. Dragging files from this folder into another folder in Finder *moves* them (that is why they used to vanish), and the web uploader stops working past 100 files. Use one of these instead:
+Work in the existing checkout of `Almond200/CompMath2.0`; its path varies by machine. Review `git status`, the current branch and `git remote -v` before uploading. The previously recorded Mac checkout was `~/Downloads/competition-math-reference`.
 
-1. **GitHub Desktop** (no Terminal). Install it and sign in once. Choose File, then Add Local Repository, and pick `competition-math-reference`. It lists every changed file. Type a short summary, click **Commit to main**, then **Push origin**. The site at https://almond200.github.io/CompMath2.0/ updates a minute or two later. (On 2026-10-30 the owner's browser showed the app at https://competition-math-reference.vercel.app/; which host is current is the owner's to confirm.)
-2. **Terminal.** Create a GitHub personal access token once (GitHub, Settings, Developer settings, Personal access tokens, with the `repo` scope). Then:
+GitHub Desktop can commit the selected files and push the current branch. From a terminal, use the repository's configured authentication and stage the specific files belonging to the change:
 
-   ```
-   cd ~/Downloads/competition-math-reference
-   git add -A
-   git commit -m "Describe the change"
-   git push
-   ```
+```sh
+git status --short
+git diff -- path/to/changed-file
+git add path/to/changed-file
+git commit -m "Describe the change"
+git push
+```
 
-   When git asks for a password, paste the token; macOS keeps it after the first time.
-
-`~/Documents/CompMath-backup/` is refreshed after every batch and is the safety copy. If a file ever has to be copied by hand, hold **Option** while dragging (that copies instead of moving).
+Do not include another task's staged changes accidentally. Deployment depends on the host's configured branch and build workflow; pushing a feature branch does not guarantee an immediate production update. The recorded hosts are GitHub Pages and Vercel (see PLAN.md). The previously recorded `~/Documents/CompMath-backup/` path is not an automated backup guaranteed by this repository; verify any local backup before relying on it.
 
 ## Write-up style
 
