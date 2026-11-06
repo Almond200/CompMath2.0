@@ -5039,11 +5039,12 @@
   function dailyProblemHtml() {
     const p = dailyProblem();
     if (!p) return "";
-    // The whole panel opens the problem's page. The statement is filled in once its year's file loads.
+    // The panel opens the problem's page, except its tag chips, which open their tag pages (a link
+    // inside an .hp-click panel keeps its own click). The statement is filled in once its year's file loads.
     return `<div class="hp-panel hp-daily hp-click" data-open="#/problem/${p.slug}" role="link" tabindex="0" aria-label="Open ${escapeAttr(refShort(p.ref))}">
         <div class="hp-label">Problem of the day</div>
         <div class="daily-title">${refShort(p.ref)}</div>
-        <div class="daily-types">${p.types.slice(0, 4).map(t => `<span class="daily-type">${escapeAttr(t.label)}</span>`).join("")}</div>
+        <div class="daily-types">${p.types.slice(0, 4).map(t => `<a class="daily-type" href="${TOPICS_BY_ID[t.id] ? tagHash([TOPICS_BY_ID[t.id].label]) : "#/topic/" + t.id}">${escapeAttr(t.label)}</a>`).join("")}</div>
         <section class="prob-st daily-st" data-slug="${p.slug}" hidden>
           <div class="prob-statement"></div>
 
@@ -5990,7 +5991,7 @@
       const chapterNumber = query.trim().match(/^(?:chapter\s*|([a-z]))?(\d+)$/i);
       if (chapterNumber) return entries.filter(e => +e.c.code.slice(1) === +chapterNumber[2] && (!chapterNumber[1] || e.c.code[0].toLowerCase() === chapterNumber[1].toLowerCase()));
       const q = [...new Set(tokens(query))];
-      if (!q.length) return query.trim() ? [] : entries.slice(0, 7);
+      if (!q.length) return [];
       return entries.map(entry => {
         let score = 0, matched = 0;
         q.forEach(token => {
@@ -6050,6 +6051,9 @@
         else input.removeAttribute('aria-activedescendant');
       };
       const update = () => {
+        // An empty field shows nothing, as in Settings (owner, 2026-11-06); only the Practice
+        // topic picker offers defaults.
+        if (!input.value.trim()) { results = []; close(); return; }
         results = rank(input.value); active = 0;
         list.innerHTML = results.length ? results.map(({ c }, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}"><span>${escapeAttr(c.title)}</span><span class="set-find-group">Chapter ${escapeAttr(c.code.slice(1))}</span></button>`).join('') : '<div class="set-find-none">No matching chapters. Try another topic.</div>';
         list.querySelectorAll('button').forEach((button, i) => button.addEventListener('click', () => { location.hash = learnHash(b, results[i].c); close(); }));
