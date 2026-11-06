@@ -1378,7 +1378,7 @@
         return { type: "home", section: { id: sec.id, sub: i, topic: null, cluster: g >= 0 ? g : null } };
       }
     }
-    if (/^#\/practice\/set(?:\/[^/]+)?$/.test(location.hash)) return { type: "space", name: "practice", practiceSet: true };
+    if (/^#\/practice\/set(?:\/[^/]+(?:\/review)?)?$/.test(location.hash)) return { type: "space", name: "practice", practiceSet: true };
     if (location.hash === "#/practice") return { type: "space", name: "practice" };
     if (location.hash === "#/learn") return { type: "space", name: "learn" };
     const lr = learnRoute(location.hash);
@@ -5321,6 +5321,27 @@
   function practiceAnswerChoices(set, slug, finished) {
     return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${['A','B','C','D','E'].map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
   }
+  function renderPracticeResults(set) {
+    const total = set.slugs.length;
+    const counts = { Correct: 0, Incorrect: 0, Unanswered: 0, 'Answer unavailable': 0 };
+    set.slugs.forEach(slug => counts[practiceSessions.result(set, slug)]++);
+    const answered = total - counts.Unanswered;
+    const marked = set.slugs.filter(slug => set.marks[slug]).length;
+    const reviewUrl = '#/practice/set/' + encodeURIComponent(set.id) + '/review';
+    const stats = [[counts.Correct + '/' + total, 'Correct'], [Math.round(100 * counts.Correct / total) + '%', 'Score'], [counts.Incorrect, 'Incorrect'], [counts.Unanswered, 'Unanswered']];
+    $content.innerHTML = `<div class="space-home practice-session practice-results">
+      <a class="back-link" href="#/practice">← Back to Practice</a>
+      <section class="sh-section"><h2>Practice complete</h2><p class="practice-results-subtitle">${escapeAttr(set.label)} · ${total} problems · ${escapeAttr(set.difficulty)} difficulty</p>
+        <div class="practice-results-stats">${stats.map(([value, label]) => `<div><strong>${value}</strong><span>${label}</span></div>`).join('')}</div>
+        <p class="practice-results-meta">${answered} of ${total} answered · ${marked} marked for review${counts['Answer unavailable'] ? ' · ' + counts['Answer unavailable'] + ' awaiting an answer key' : ''}</p>
+        <a class="aops-btn" href="${reviewUrl}">Review problems</a>
+      </section>
+      <section class="sh-section"><h3>Your results</h3><div class="practice-results-list">${set.slugs.map((slug, i) => {
+        const p = PROBLEM_BY_SLUG[slug], result = practiceSessions.result(set, slug);
+        return `<a class="practice-result-row" href="${reviewUrl}" data-result-index="${i}"><span><strong>Problem ${i + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</strong><small>${set.answers[slug] ? 'Your answer: ' + escapeAttr(set.answers[slug]) : 'No answer submitted'}${set.marks[slug] ? ' · Marked for review' : ''}</small></span><span class="practice-result-badge" data-result="${result}">${result}</span></a>`;
+      }).join('')}</div></section></div>`;
+    $content.querySelectorAll('[data-result-index]').forEach(link => link.addEventListener('click', () => { set.current = +link.dataset.resultIndex; savePractice(); }));
+  }
   function renderTopicPracticeSet() {
     const id = location.hash.split('/')[3] || '';
     if (!topicPracticeSet || topicPracticeSet.id !== id) {
@@ -5332,6 +5353,7 @@
       return;
     }
     const finished = set.status === 'finished';
+    if (finished && location.hash.split('/')[4] !== 'review') { renderPracticeResults(set); return; }
     if (!finished && !document.hidden) {
       set.status = 'active';
     }
@@ -5351,7 +5373,7 @@
         <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
         <div class="practice-session-actions"><span>${finished ? `${set.slugs.filter(id => practiceSessions.result(set,id) === 'Correct').length} correct · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Incorrect').length} incorrect${set.slugs.some(id => practiceSessions.result(set,id) === 'Answer unavailable') ? ' · ' + set.slugs.filter(id => practiceSessions.result(set,id) === 'Answer unavailable').length + ' without answer keys' : ''} · ${set.slugs.length - answered} unanswered` : `${answered} of ${set.slugs.length} answered`}</span>
-          <div><a class="hp-btn hp-btn-soft" href="#/practice">${finished ? 'Back to Practice' : 'Save and exit'}</a>${finished ? '' : '<button type="button" class="hp-btn" id="finish-practice">Finish and review</button>'}</div></div>
+          <div>${finished ? `<a class="hp-btn hp-btn-soft" href="#/practice/set/${encodeURIComponent(set.id)}">Results overview</a>` : ''}<a class="hp-btn hp-btn-soft" href="#/practice">${finished ? 'Back to Practice' : 'Save and exit'}</a>${finished ? '' : '<button type="button" class="hp-btn" id="finish-practice">Finish and review</button>'}</div></div>
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
