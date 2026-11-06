@@ -4198,7 +4198,7 @@ html[data-text="larger"] .lp-body p { font-size: 19px; }
 .practice-session .practice-reviewed { background: var(--bg-card); color: var(--text); }
 .practice-session .practice-reviewed[data-result="Correct"] { background: rgba(42, 163, 88, .16); border-color: rgba(42, 163, 88, .45); }
 .practice-session .practice-reviewed[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); border-color: rgba(220, 67, 67, .45); }
-.practice-session .cn-num.cn-here { background: var(--bg-card); color: var(--text); border: 2px solid var(--accent); outline: none; box-shadow: none; }
+.practice-session .cn-num.cn-here { background: var(--bg-card); color: var(--accent); border: 2px solid var(--accent); outline: none; box-shadow: none; }
 .practice-session .practice-reviewed.cn-here[data-result="Correct"] { background: rgba(42, 163, 88, .16); }
 .practice-session .practice-reviewed.cn-here[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); }
 .practice-session-actions { font-size: 14px; color: var(--text-dim); }
@@ -4237,7 +4237,7 @@ body[data-space="practice"] .sh-section > h3 { font-family: inherit; font-size: 
 .practice-session .rand-btns button { user-select: none; touch-action: manipulation; }
 .practice-review > h4, .practice-explanation > h4 { margin: 0 0 10px; font-size: 15px; font-weight: 700; }
 .practice-result { font-size: 14px; margin: 10px 0 20px; }
-.practice-open-problem { margin: 0 0 12px; font-size: 13px; }
+.practice-solution-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .practice-explanation .chain-strategy { margin-top: 0; }
 .practice-review .rand-btns [aria-disabled="true"] { cursor: default; }
 .practice-review .rand-btns [aria-disabled="true"]:hover { border-color: var(--border); color: var(--text); }

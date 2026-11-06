@@ -5315,8 +5315,8 @@
   function practiceExplanationHtml(p) {
     if (!p) return '';
     const { chain, altIds, chainCol } = chainParts(p);
-    const more = `<p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read more solutions ↗</a></p>`;
-    return `<div class="practice-explanation"><h4>How this problem works</h4><p class="practice-open-problem"><a href="#/problem/${p.slug}">Open problem</a></p>${chainInnerHtml(p, chainCol, chain, altIds, more)}</div>`;
+    const more = `<div class="practice-solution-links"><a class="aops-btn" href="#/problem/${p.slug}">Open in app</a><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Open in AoPS ↗</a></div>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4>${chainInnerHtml(p, chainCol, chain, altIds, more)}</div>`;
   }
   function practiceAnswerChoices(set, slug, finished) {
     return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${['A','B','C','D','E'].map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
