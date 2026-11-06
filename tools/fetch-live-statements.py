@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import choice_layout
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CACHE = os.path.expanduser("~/aops-cache/live")
+CACHE = os.environ.get("MATH_LIVE_CACHE", os.path.expanduser("~/aops-cache/live"))
 os.makedirs(CACHE, exist_ok=True)
 UA = "competition-math-reference (personal, non-commercial study app)"
 BASE = "https://live.poshenloh.com"

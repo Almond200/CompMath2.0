@@ -12,18 +12,21 @@ load KaTeX from jsdelivr, where a block meant every formula in the library showe
 
 ## Practice a topic
 
-Choose a subject or technique, a question count and a difficulty to build a practice set.
-Work through one problem at a time, select A–E for AMC problems or enter a three-digit-range
-integer for AIME, and mark questions to revisit. Answers save automatically on this device.
-Save and exit or Back to Practice pauses the set; find it again in **Past practice sets** below
-Contests. Finish and review opens the same problem navigator with your answers, strategies,
-helpful cards and solution links. With no structured answer keys in the current data, results
-are self-checked as Correct or Revisit rather than automatically graded.
+Search for a subject or technique, choose a question count and difficulty, then generate an
+untimed practice set. AMC problems use A–E choices; AIME problems accept integers from 000 to
+999. Answers save automatically on this device. Double-click a selected choice to clear it.
+Save and exit and Back to Practice both preserve progress. **Practice sets**, below Contests,
+separates **Resume a set** from **Review a completed set**.
 
-The optional stopwatch is off by default under Settings → Practice. When enabled for a new
-set, it pauses on exit or when the tab is hidden. Saved sets travel with Export progress and
-Import progress, which keep the most recently updated version of each set. Clearing browser
-data removes the local copy.
+Finish and review grades against imported answer keys. Review keeps your submitted selection,
+shows Correct, Incorrect or Unanswered, and separates the problem statement from the result
+and explanation. How this problem works uses the same strategy, Pattern/Method/Formulas chain
+and textbook links as the problem page. Answer keys come from LIVE by Po-Shen Loh and are
+matched to the local problem statements before import. New sets only draw problems with a key.
+Older saved problems without a matching key are explicitly labeled Answer unavailable.
+
+Practice sets have no timer or timer setting. Export progress and Import progress include
+saved sets, keeping the newest version of each. Clearing browser data removes the local copy.
 
 ## Four kinds, four spaces
 
@@ -89,7 +92,7 @@ CONVENTIONS §0 has the full model.
 AMC and AIME problems are © the Mathematical Association of America and are shown under
 the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) licence the MAA confirmed
 by email (Oct 2026). The statements and their figures are read from [LIVE by Po-Shen Loh](https://live.poshenloh.com/past-contests),
-which publishes every AMC and AIME problem with the MAA's permission; Settings → Credits and attribution holds the shared credit and an expandable original-source index. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
+which publishes every AMC and AIME problem with the MAA's permission; Settings → Credits and attribution holds the shared credit and source links. This app is non-commercial. `tools/fetch-live-statements.py` fetches them (statements and
 answer choices only, never solutions or hints) into `js/data/problems/statements/<year>.js` and `js/data/problems/figures/`.
 (AoPS blocks scripts with a Cloudflare check, so it is not used.)
 

@@ -293,7 +293,6 @@
       order: pick(P.order, ORDERS),
       strategy: P.strategyChosen ? pick(P.strategy, STRATEGY_MODES) : STRATEGY_MODES[0],
       strategyChosen: !!P.strategyChosen,
-      stopwatch: P.stopwatch === "on" ? "on" : "off",
       captions: pick(P.captions, CAPTION_MODES),
       tools: pick(P.tools, TOOLS_MODES),
       lessonLinks: pick(P.lessonLinks, LESSON_LINK_MODES),
@@ -313,7 +312,7 @@
           density: state.density, notation: state.notation,
           text: state.text, lines: state.lines, tags: state.tags, autoGroup: state.autoGroup,
           order: state.order, captions: state.captions, cols: state.cols, scroll: state.scroll, start: state.start,
-          tools: state.tools, stopwatch: state.stopwatch, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks
+          tools: state.tools, strategy: state.strategy, strategyChosen: !!state.strategyChosen, lessonLinks: state.lessonLinks
         }
       };
       localStorage.setItem("mq-settings", JSON.stringify(out));
@@ -344,7 +343,6 @@
     captions: _loaded.captions,  // "show" | "hide" — figure captions on the browsing cards
     tools: _loaded.tools,        // "off" | "on" — the page tools column on card pages
     lessonLinks: _loaded.lessonLinks, // "drawer" | "card" — a lesson's card links open beside it or go to the card
-    stopwatch: _loaded.stopwatch,
     strategy: _loaded.strategy,  // "show" | "click" — a problem page's strategy shown, or behind a button
     strategyChosen: _loaded.strategyChosen,
     cols: _loaded.cols,          // "regular" | "spacious" — how wide the cards in a grid are
@@ -2111,7 +2109,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
+      container.querySelectorAll(".practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -4381,7 +4379,7 @@
   const SETTING_DEFAULTS = {
     theme: "light", density: DENSITIES[0], cols: "regular", text: TEXT_SIZES[0], lines: FORMULA_LINES[0], tags: "on",
     notation: NOTATIONS[0], diagrams: DIAGRAM_MODES[0], tools: TOOLS_MODES[0], scroll: SCROLL_SPEEDS[0], layout: LAYOUTS[0],
-    stopwatch: "off", order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
+    order: ORDERS[0], start: START_MODES[0], lessonLinks: LESSON_LINK_MODES[0], strategy: STRATEGY_MODES[0]
   };
   function settingRow(name, desc, key, current, options, pv) {
     const def = SETTING_DEFAULTS[key];
@@ -4437,7 +4435,6 @@
         </section>
         <section class="set-panel">
           <h3 class="set-panel-title">Practice</h3>
-          ${settingRow("Practice stopwatch", "Show time spent in new practice sets. Off by default. Time pauses when you leave the set or hide the tab.", "stopwatch", state.stopwatch, [["off", "Off"], ["on", "On"]])}
           ${settingRow("Strategy", "On a problem's page, the strategy and the cards it uses. Click to show keeps them closed until you press Show, so you can try the problem first; Shown opens them at once. Either way, Show and Hide beside the heading open and close them.<br><button type='button' class='strategy-reset' data-reset-strategies>Reset opened strategies</button> Closes strategies you previously opened on problem pages.", "strategy", state.strategy, [["show", "Shown"], ["click", "Click to show"]], "problem")}
         </section>
         <section class="set-panel" id="set-commands">
@@ -4471,8 +4468,7 @@
             <div class="set-name">Contest problem sources and license</div>
             <div class="set-desc">
               <p>AMC, AJHSME and AIME problems are &copy; Mathematical Association of America, used under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>. This credit applies to their statements and figures throughout the app, including textbooks, previews and practice sets.</p>
-              <p>Most text and figures come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. The Fall 2021 AMC 10A and 10B papers also use MAA PDF copies, and individual exceptions are credited to the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
-              <details id="credit-sources"><summary>Original sources by problem</summary><div id="credit-source-list"></div></details>
+              <p>Most text, figures and answer keys come from <a href="https://live.poshenloh.com/past-contests" target="_blank" rel="noopener noreferrer">LIVE by Po-Shen Loh</a>. The Fall 2021 AMC 10A and 10B papers also use MAA PDF copies, and individual exceptions are credited to the <a href="https://artofproblemsolving.com/wiki/index.php/AMC_Problems_and_Solutions" target="_blank" rel="noopener noreferrer">Art of Problem Solving Wiki</a>. Statements have been reformatted for display, including LaTeX and figure layout.</p>
             </div>
           </div></div>
         </section>
@@ -4500,31 +4496,6 @@
       </div>
       <aside class="set-preview" aria-label="Preview"></aside>
       </div>`;
-    const creditSources = $content.querySelector('#credit-sources');
-    creditSources.addEventListener('toggle', async () => {
-      if (!creditSources.open || creditSources.dataset.loaded) return;
-      creditSources.dataset.loaded = 'true';
-      const list = creditSources.querySelector('#credit-source-list');
-      list.textContent = 'Loading original sources…';
-      const problems = PROBLEM_DB.filter(p => MAA_RE.test(p.ref));
-      await Promise.all([...new Set(problems.map(p => p.year))].map(loadStatements));
-      if (!list.isConnected) return;
-      const groups = new Map();
-      let missing = 0;
-      for (const p of problems) {
-        const st = window.MATH_STATEMENTS?.[p.slug];
-        if (!st) { missing++; continue; }
-        const src = st.u || 'https://live.poshenloh.com/past-contests';
-        if (!groups.has(src)) groups.set(src, []);
-        groups.get(src).push(refShort(p.ref));
-      }
-      list.innerHTML = (missing ? '<p>Some source files could not be loaded. Reopen Settings to try again.</p>' : '') + [...groups].sort(([a],[b]) => a.localeCompare(b)).map(([src, refs]) => {
-        const source = src.startsWith('pdf:')
-          ? (/10a$/.test(src) ? 'MAA official solutions booklet: Fall 2021 AMC 10A (PDF copy)' : 'MAA Fall 2021 AMC 10B paper (PDF copy)')
-          : `<a href="${escapeAttr(src)}" target="_blank" rel="noopener noreferrer">${escapeAttr(src)}</a>`;
-        return `<details><summary>${escapeAttr(refs[0])}${refs.length > 1 ? ' and ' + (refs.length - 1) + ' more' : ''}</summary><p>${source}</p><p>${refs.map(escapeAttr).join('; ')}</p></details>`;
-      }).join('');
-    });
     if (getRoute().anchor === 'credits') setTimeout(() => $content.querySelector('#set-credits')?.scrollIntoView({block:'start'}), 0);
     fillSettingsPreview();
     const $cmdToggle = $content.querySelector(".command-toggle");
@@ -4599,7 +4570,6 @@
         order: "sort, sorting, ordering, order, popular, most used, curated, arrange, rank",
         start: "startup, start page, home page, homepage, landing page, open on, launch, default page, front page, first page, when it opens",
         lessonLinks: "lesson links, drawer, open cards beside, side panel, card links, links, preview, popup",
-        stopwatch: "timer, clock, elapsed time, practice set time, time spent",
         strategy: "spoilers, spoiler, solution, solutions, reveal, answers, answer, hide the strategy, show the strategy, how this problem works, hints",
         "Export progress": "export data, export, save data, my data, data, backup, back up, save my progress, save, download, file, json, transfer, move to another browser, keep my lists, history, stars",
         "Import progress": "import data, import, load data, data, restore, upload, load a backup, file, json, transfer, from another browser, reset",
@@ -5210,7 +5180,7 @@
         <div class="hm-cols">
           <div class="hm-main">
             <section class="hm-sec hm-continue">
-              <h2 class="hm-h">Continue</h2>
+              <h2 class="hm-h">Recently opened</h2>
               ${recentCards ? `<div class="rc-list">${recentCards}</div>` : `<p class="hp-empty">Cards and problems you open will appear here.</p>`}
             </section>
             ${dailyProblemHtml()}
@@ -5308,8 +5278,10 @@
     range.addEventListener("input", update);
   }
   const practiceSessions = window.PracticeSessions;
-  let topicPracticeSet = null, practiceClock = 0, practiceSaveFailed = false;
+  let topicPracticeSet = null, practiceSaveTimer = 0, practiceSaveFailed = false;
+  function schedulePracticeSave() { clearTimeout(practiceSaveTimer); practiceSaveTimer = setTimeout(savePractice, 120); }
   function savePractice() {
+    clearTimeout(practiceSaveTimer);
     if (!topicPracticeSet) return;
     practiceSessions.checkpoint(topicPracticeSet);
     try { practiceSessions.save(localStorage, topicPracticeSet); practiceSaveFailed = false; }
@@ -5321,7 +5293,6 @@
     if (!topicPracticeSet) return;
     practiceSessions.pause(topicPracticeSet);
     savePractice();
-    clearInterval(practiceClock);
   }
   window.addEventListener('pagehide', pausePractice);
   document.addEventListener('visibilitychange', () => {
@@ -5329,16 +5300,26 @@
     if (document.hidden) pausePractice();
     else if (topicPracticeSet.status !== 'finished') {
       topicPracticeSet.status = 'active';
-      topicPracticeSet.runningSince = topicPracticeSet.stopwatch ? Date.now() : null;
     }
   });
   function pastPracticeHtml() {
     let sets;
-    try { sets = practiceSessions.read(localStorage); }
-    catch (err) { return '<section class="sh-section"><h3>Past practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
-    return `<section class="sh-section" id="past-practice-sets"><h3>Past practice sets</h3>
-      <p class="prob-note">Resume an unfinished set or review a completed one.</p>
-      ${sets.length ? `<div class="pl-list">${sets.sort((a,b) => b.updated - a.updated).map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()} · ${s.status === 'finished' ? 'Completed · Review' : 'In progress · Resume'}</small></span><span class="pl-n">${s.slugs.filter(id => s.answers[id]).length}/${s.slugs.length} answered</span></a>`).join('')}</div>` : '<p>No practice sets yet.</p>'}</section>`;
+    try { sets = practiceSessions.read(localStorage).sort((a,b) => b.updated - a.updated); }
+    catch (err) { return '<section class="sh-section"><h3>Practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
+    const group = (finished, title) => {
+      const items = sets.filter(s => (s.status === 'finished') === finished);
+      return `<h4>${title}</h4>${items.length ? `<div class="pl-list">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+    };
+    return `<section class="sh-section" id="past-practice-sets"><h3>Practice sets</h3>${group(false, 'Resume a set')}${group(true, 'Review a completed set')}</section>`;
+  }
+  function practiceExplanationHtml(p) {
+    if (!p) return '';
+    const { chain, altIds, chainCol } = chainParts(p);
+    const more = `<p><a class="aops-btn" href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read more solutions ↗</a></p>`;
+    return `<div class="practice-explanation"><h4>How this problem works</h4><p class="practice-open-problem"><a href="#/problem/${p.slug}">Open problem</a></p>${chainInnerHtml(p, chainCol, chain, altIds, more)}</div>`;
+  }
+  function practiceAnswerChoices(set, slug, finished) {
+    return `<div class="rand-btns" role="radiogroup" aria-label="${finished ? 'Submitted answer' : 'Your answer'}">${['A','B','C','D','E'].map(a => `<button type="button" ${finished ? 'aria-disabled="true"' : `data-practice-answer="${a}"`} role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`;
   }
   function renderTopicPracticeSet() {
     const id = location.hash.split('/')[3] || '';
@@ -5353,7 +5334,6 @@
     const finished = set.status === 'finished';
     if (!finished && !document.hidden) {
       set.status = 'active';
-      if (set.runningSince == null && set.stopwatch) set.runningSince = Date.now();
     }
     const slug = set.slugs[set.current], p = PROBLEM_BY_SLUG[slug];
     const answered = set.slugs.filter(id => set.answers[id]).length;
@@ -5368,24 +5348,25 @@
     $content.innerHTML = `<div class="space-home practice-session">
       <a class="back-link" href="#/practice">&larr; Back to Practice</a>
       <section class="sh-section">
-        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div>${set.stopwatch ? '<span class="practice-time">Time spent <time id="practice-clock"></time></span>' : ''}</div>
+        <div class="practice-session-top"><div><h2>Practice set · ${escapeAttr(set.label)}</h2><p>${set.slugs.length} problems · ${escapeAttr(set.difficulty)} difficulty${finished ? ' · Review' : ''}</p></div></div>
         <nav class="cn-nums" aria-label="Practice problems">${nav}</nav>
-        <div class="practice-session-actions"><span>${finished ? `${set.slugs.filter(id => practiceSessions.result(set,id) === 'Correct').length} correct · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Revisit').length} to revisit · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Not checked').length} not checked · ${set.slugs.length - answered} unanswered` : `${answered} of ${set.slugs.length} answered`}</span>
+        <div class="practice-session-actions"><span>${finished ? `${set.slugs.filter(id => practiceSessions.result(set,id) === 'Correct').length} correct · ${set.slugs.filter(id => practiceSessions.result(set,id) === 'Incorrect').length} incorrect${set.slugs.some(id => practiceSessions.result(set,id) === 'Answer unavailable') ? ' · ' + set.slugs.filter(id => practiceSessions.result(set,id) === 'Answer unavailable').length + ' without answer keys' : ''} · ${set.slugs.length - answered} unanswered` : `${answered} of ${set.slugs.length} answered`}</span>
           <div><a class="hp-btn hp-btn-soft" href="#/practice">${finished ? 'Back to Practice' : 'Save and exit'}</a>${finished ? '' : '<button type="button" class="hp-btn" id="finish-practice">Finish and review</button>'}</div></div>
         <p class="prob-note" id="practice-save-status" role="status"></p>
       </section>
       <section class="sh-section practice-question"><h3>Problem ${set.current + 1}${p ? ' · ' + escapeAttr(refShort(p.ref)) : ''}</h3>
         ${p ? `<div class="practice-set-st" data-slug="${p.slug}"><div class="prob-statement">Loading statement…</div></div>` : '<p>This problem is no longer available in the current database.</p>'}
-        ${finished ? `<div class="practice-answer"><h4>Your answer</h4><p>${escapeAttr(set.answers[slug] || 'Not answered')} · ${outcome}</p>
-          ${set.answers[slug] ? '<p class="prob-note">Check your answer against the strategy or linked solution, then record your result.</p><div class="practice-self-check"><button type="button" class="hp-btn hp-btn-soft" data-review="correct">Correct</button> <button type="button" class="hp-btn hp-btn-soft" data-review="revisit">Revisit</button> <button type="button" class="hp-btn hp-btn-soft" data-review="">Not checked</button></div>' : ''}</div>
-          ${p ? `<h4>Strategy</h4><div class="prob-strategy">${p.strategy}</div>${p.trick ? `<h4>Another approach</h4><div class="prob-strategy">${p.trick}</div>` : ''}<p><a href="${escapeAttr(p.url)}" target="_blank" rel="noopener noreferrer">Read the solution on AoPS ↗</a> · <a href="#/problem/${p.slug}">Open problem and study links</a></p><h4>Helpful cards</h4><div class="practice-study-links">${[...new Set([...p.formulas, ...p.trickFormulas])].filter(id => BY_ID[id]).map(id => `<a href="#/f/${id}">${escapeAttr(BY_ID[id].formula.name)}</a>`).join(' · ') || 'No linked cards yet.'}</div>` : ''}`
-          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime ? `<label for="practice-answer">Integer from 000 to 999</label><input id="practice-answer" type="text" inputmode="numeric" maxlength="3" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : `<div class="rand-btns" role="radiogroup" aria-label="Your answer">${['A','B','C','D','E'].map(a => `<button type="button" data-practice-answer="${a}" role="radio" aria-checked="${set.answers[slug] === a}">${a}</button>`).join('')}</div>`}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
+        ${finished ? `</section><section class="sh-section practice-review detail"><h4>Your answer</h4>
+          ${aime ? (set.answers[slug] ? `<p class="practice-submitted">${escapeAttr(set.answers[slug])}</p>` : '') : practiceAnswerChoices(set, slug, true)}
+          <p class="practice-result">${outcome}${set.answers[slug] && window.MATH_ANSWER_KEYS?.answers?.[slug] != null && outcome === 'Incorrect' ? ' · Correct answer: ' + escapeAttr(window.MATH_ANSWER_KEYS.answers[slug]) : ''}</p>
+          ${practiceExplanationHtml(p)}`
+          : p ? `<div class="practice-answer"><h4>Your answer</h4>${aime ? `<label for="practice-answer">Integer from 000 to 999</label><input id="practice-answer" type="text" inputmode="numeric" maxlength="3" autocomplete="off" value="${escapeAttr(set.answers[slug] || '')}"><p id="practice-answer-error" role="status"></p>` : practiceAnswerChoices(set, slug, false)}<label class="practice-mark"><input type="checkbox" id="practice-mark" ${set.marks[slug] ? 'checked' : ''}> Mark for review</label></div>` : ''}
         <div class="practice-problem-nav"><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current - 1}" ${set.current === 0 ? 'disabled' : ''}>Previous</button><button type="button" class="hp-btn hp-btn-soft" data-practice-index="${set.current + 1}" ${set.current === set.slugs.length - 1 ? 'disabled' : ''}>Next</button></div>
       </section></div>`;
     const redraw = () => {
       const active = document.activeElement;
-      const selector = active?.id ? '#' + active.id : active?.dataset.practiceAnswer ? `[data-practice-answer="${active.dataset.practiceAnswer}"]` : active?.hasAttribute('data-review') ? `[data-review="${active.dataset.review}"]` : null;
-      clearInterval(practiceClock); renderTopicPracticeSet();
+      const selector = active?.id ? '#' + active.id : active?.dataset.practiceAnswer ? `[data-practice-answer="${active.dataset.practiceAnswer}"]` : null;
+      renderTopicPracticeSet();
       if (selector) $content.querySelector(selector)?.focus({preventScroll:true});
     };
     $content.querySelectorAll('[data-practice-index]').forEach(b => b.addEventListener('click', () => { set.current = +b.dataset.practiceIndex; savePractice(); redraw(); $content.querySelector('.practice-question h3').setAttribute('tabindex','-1'); $content.querySelector('.practice-question h3').focus({preventScroll:true}); }));
@@ -5393,7 +5374,7 @@
     const answerChoices = $content.querySelectorAll('[data-practice-answer]');
     const updateChoice = value => {
       practiceSessions.answer(set, slug, value, false);
-      savePractice();
+      schedulePracticeSave();
       // Keep the buttons mounted so the browser can recognize a double-click.
       answerChoices.forEach(b => b.setAttribute('aria-checked', String(b.dataset.practiceAnswer === value)));
       const n = set.slugs.filter(id => set.answers[id]).length;
@@ -5413,17 +5394,10 @@
       const valid = practiceSessions.answer(set, slug, e.target.value, true);
       e.target.setAttribute('aria-invalid', String(!valid));
       $content.querySelector('#practice-answer-error').textContent = valid ? '' : 'Use an integer from 000 to 999. This value has not been saved.';
-      if (valid) { savePractice(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-answered', !!set.answers[slug]); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
+      if (valid) { schedulePracticeSave(); const n = set.slugs.filter(id => set.answers[id]).length; $content.querySelector('.practice-session-actions > span').textContent = `${n} of ${set.slugs.length} answered`; const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-answered', !!set.answers[slug]); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${set.marks[slug] ? ', marked for review' : ''}`); }
     });
-    $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; savePractice(); redraw(); });
-    $content.querySelectorAll('[data-review]').forEach(b => { b.setAttribute('aria-pressed', String((set.reviews[slug] || '') === b.dataset.review)); b.addEventListener('click', () => { set.reviews[slug] = b.dataset.review; savePractice(); redraw(); }); });
+    $content.querySelector('#practice-mark')?.addEventListener('change', e => { set.marks[slug] = e.target.checked; schedulePracticeSave(); const current = $content.querySelector('[aria-current="step"]'); current.classList.toggle('practice-marked', e.target.checked); current.setAttribute('aria-label', `Problem ${set.current + 1}, ${set.answers[slug] ? 'Answered' : 'Unanswered'}${e.target.checked ? ', marked for review' : ''}`); });
     savePractice();
-    const tick = () => {
-      const clock = $content.querySelector('#practice-clock');
-      if (clock) { const seconds = Math.floor((set.elapsed + (set.runningSince == null ? 0 : Date.now() - set.runningSince)) / 1000); clock.textContent = Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0'); }
-    };
-    tick();
-    if (!finished && set.stopwatch) practiceClock = setInterval(() => { if (!document.hidden) { savePractice(); tick(); } }, 1000);
     if (p) showStatement(p, '.practice-set-st');
     renderMath($content);
   }
@@ -5444,7 +5418,7 @@
       const pool = topics.get(key).problems;
       for (const p of problems) {
         // Shared AMC 10/12 problems have the same written strategy on both papers.
-        if (!MAA_RE.test(p.ref)) continue;
+        if (!MAA_RE.test(p.ref) || window.MATH_ANSWER_KEYS?.answers?.[p.slug] == null) continue;
         const identity = /^AMC (?:10|12)/.test(p.fam) && p.strategy ? p.year + "|" + p.strategy : p.slug;
         if (!pool.has(identity)) pool.set(identity, p);
       }
@@ -5464,10 +5438,11 @@
     const labels = [...topics.values()].map(t => t.label).sort((a, b) => a.localeCompare(b));
     function update() {
       const key = normalize(topic.value);
-      const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 30)
+      const choices = key ? labels.filter(label => normalize(label).includes(key)).slice(0, 7)
         : Object.values(SUBJECT_LABELS);
-      suggestions.innerHTML = choices.map((label,i) => `<button type="button" role="option" id="practice-topic-${i}" aria-selected="false">${escapeAttr(label)}</button>`).join('');
-      suggestions.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { topic.value = b.textContent; closeTopics(); update(); topic.focus(); closeTopics(); }));
+      suggestions.innerHTML = choices.map((label,i) => `<button type="button" class="set-find-opt practice-topic-option${i === 0 ? ' is-cur' : ''}" role="option" id="practice-topic-${i}" aria-selected="${i === 0}">${escapeAttr(label)}</button>`).join('');
+      suggestions.querySelectorAll('button').forEach((b,i) => b.addEventListener('click', () => { topic.value = choices[i]; closeTopics(); update(); topic.focus(); closeTopics(); }));
+      renderMath(suggestions);
       const pool = matchingProblems();
       count.max = Math.max(1, Math.min(30, pool.length));
       if (count.valueAsNumber > Number(count.max)) count.value = count.max;
@@ -5486,7 +5461,14 @@
     }
     let activeTopic = -1;
     function closeTopics() { suggestions.hidden = true; topic.setAttribute('aria-expanded','false'); topic.removeAttribute('aria-activedescendant'); activeTopic = -1; }
-    function openTopics() { suggestions.hidden = !suggestions.children.length; topic.setAttribute('aria-expanded', String(!suggestions.hidden)); }
+    function openTopics() {
+      suggestions.hidden = !suggestions.children.length;
+      topic.setAttribute('aria-expanded', String(!suggestions.hidden));
+      if (!suggestions.hidden && activeTopic < 0) activeTopic = 0;
+      const options = [...suggestions.querySelectorAll('button')];
+      options.forEach((b,i) => { b.classList.toggle('is-cur', i === activeTopic); b.setAttribute('aria-selected', String(i === activeTopic)); });
+      if (options[activeTopic]) topic.setAttribute('aria-activedescendant', options[activeTopic].id);
+    }
     topic.addEventListener('focus', () => { update(); openTopics(); });
     topic.addEventListener('keydown', e => {
       const options = [...suggestions.querySelectorAll('button')];
@@ -5494,7 +5476,7 @@
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
         e.preventDefault(); openTopics(); if (!options.length) return;
         activeTopic = (activeTopic + (e.key === 'ArrowDown' ? 1 : -1) + options.length) % options.length;
-        options.forEach((b,i) => b.setAttribute('aria-selected',String(i === activeTopic)));
+        options.forEach((b,i) => { b.setAttribute('aria-selected',String(i === activeTopic)); b.classList.toggle('is-cur',i === activeTopic); });
         topic.setAttribute('aria-activedescendant',options[activeTopic].id); options[activeTopic].scrollIntoView({block:'nearest'});
       }
       if (e.key === 'Enter' && !suggestions.hidden && activeTopic >= 0) { e.preventDefault(); options[activeTopic]?.click(); }
@@ -5527,7 +5509,7 @@
       generating = false;
       form.querySelector("fieldset").disabled = false;
       if (!problems.length) { status.textContent = "No statements could be loaded. Try again or choose another topic."; return; }
-      topicPracticeSet = practiceSessions.create(label, level, problems.map(p => p.slug), state.stopwatch === 'on');
+      topicPracticeSet = practiceSessions.create(label, level, problems.map(p => p.slug));
       savePractice();
       location.hash = '#/practice/set/' + topicPracticeSet.id;
     });
@@ -5595,8 +5577,8 @@
           <p>Choose a subject or technique to build an untimed set from past contest problems.</p>
           <form id="topic-practice-form" novalidate><fieldset aria-label="Practice set options">
             <label for="topic-name">Topic</label>
-            <div class="practice-topic-search"><input id="topic-name" class="list-add-input" type="search" name="topic" value="Geometry" required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options">
-            <div id="practice-topic-options" role="listbox" aria-label="Topics" hidden></div></div>
+            <div class="practice-topic-search"><input id="topic-name" class="set-find-input" type="search" name="topic" placeholder="Search a topic..." required autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="practice-topic-options">
+            <div id="practice-topic-options" class="set-find-list" role="listbox" aria-label="Topics" hidden></div></div>
             <div class="rand-diff"><label for="topic-count">Questions</label>
               <input id="topic-count" type="range" name="count" min="1" max="30" value="5"><output id="topic-count-value" for="topic-count">5</output></div>
             <div class="rand-diff"><label for="topic-band">Difficulty</label>
@@ -7402,7 +7384,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
     const fig = (window.MATH_PROBLEM_DIAGRAMS || {})[p.slug];
     return fig ? `<div class="diagram prob-own-figure">${fig}</div>` : "";
   }
-  function chainInnerHtml(p, chainCol, chain, altIds) {
+  function chainInnerHtml(p, chainCol, chain, altIds, afterChain = "") {
     return `${ownFigureHtml(p)}${p.strategy ? `<p class="chain-strategy">${p.strategy}</p>` : ""}
         ${p.trick ? `<p class="chain-strategy chain-alt">${p.trick}</p>` : ""}
         <div class="chain-grid">
@@ -7411,7 +7393,7 @@ The book remembers the last lesson you opened, in this browser, and the contents
           ${chainCol("Formulas", chain.formula, "&mdash;")}
         </div>
         ${altIds.size ? `<p class="chain-alt-note">Dashed cards belong to the second route only.</p>` : ""}
-        ${studyMoreHtml(p, chain)}`;
+        ${afterChain}${studyMoreHtml(p, chain)}`;
   }
   // Study a concept more (owner, 2026-11-01): under the three columns, one link per card the
   // problem uses, to the lesson that teaches that card. An AIME problem prefers an AIME book's
@@ -8072,7 +8054,6 @@ The book remembers the last lesson you opened, in this browser, and the contents
   });
 
   function render() {
-    clearInterval(practiceClock);
     const route = getRoute();
     if (route.type === "home") {
       state.landing = !route.section;
