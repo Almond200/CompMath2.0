@@ -5308,9 +5308,35 @@
     catch (err) { return '<section class="sh-section"><h3>Practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
-      return `<h4>${title}</h4>${items.length ? `<div class="pl-list">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+      return `<h4>${title}</h4>${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show more</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
     };
     return `<section class="sh-section" id="past-practice-sets"><h3>Practice sets</h3>${group(false, 'Resume a set')}${group(true, 'Review a completed set')}</section>`;
+  }
+  let practiceHistoryObserver;
+  function wirePracticeHistory(root) {
+    practiceHistoryObserver?.disconnect();
+    const lists = [...root.querySelectorAll('.practice-history-list')];
+    if (!lists.length) return;
+    const update = () => {
+      if (!lists[0].isConnected) { practiceHistoryObserver?.disconnect(); return; }
+      lists.forEach(list => {
+        const button = list.nextElementSibling;
+        const columns = getComputedStyle(list).gridTemplateColumns.split(' ').filter(Boolean).length;
+        const limit = Math.max(1, columns) * 2;
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        [...list.children].forEach((item, i) => { item.hidden = !expanded && i >= limit; });
+        button.hidden = list.children.length <= limit;
+        button.textContent = expanded ? 'Show less' : 'Show more (' + Math.max(0, list.children.length - limit) + ')';
+      });
+    };
+    lists.forEach(list => list.nextElementSibling.addEventListener('click', e => {
+      const button = e.currentTarget;
+      button.setAttribute('aria-expanded', String(button.getAttribute('aria-expanded') !== 'true'));
+      update();
+    }));
+    practiceHistoryObserver = new ResizeObserver(update);
+    lists.forEach(list => practiceHistoryObserver.observe(list));
+    update();
   }
   function practiceExplanationHtml(p) {
     if (!p) return '';
@@ -5632,6 +5658,7 @@
     $content.innerHTML = `<div class="space-home">${body}</div>`;
     wireRandomPicker($content);
     wireTopicPractice($content);
+    wirePracticeHistory($content);
     wireShelfMore($content);
     const unrel = $content.querySelector("#ct-unwritten");
     if (unrel) unrel.addEventListener("click", () => {

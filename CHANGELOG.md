@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Limited each Practice sets history group to two responsive rows, with independent full-width Show more / Show less controls using the existing dotted-bar style.
+
 - Tightened the vertical gap between review problem numbers and Results overview.
 
 - Added breathing room below Your results and removed the duplicate Back to Practice button from detailed review, retaining the top-left back link.
