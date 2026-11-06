@@ -2,6 +2,10 @@
 
 **2026-11-06**
 
+- Fixed search suggestions overlapping the sticky header: shared Settings/topic/book menus use a lower stacking layer and close when their input leaves the visible area, including mobile viewport changes. Long suggestion labels wrap within the field width. Also constrained the main search command menu to the phone viewport after the wider audit found it overflowing the right edge.
+
+- Replaced practice answer checkmarks with blue-filled number buttons and white numerals. Unanswered buttons retain their unfilled card background; review dots and completed-set correct/incorrect colors remain.
+
 - Audited all 14 Markdown files against source, data counts and repository checks. Corrected the built-in list total, all-book chapter completion, per-track placement policy, search/offline behavior and check-running instructions. Separated historical proposals and benchmarks from current status; refreshed LIVE import coverage and documented legacy metadata exceptions. This documentation audit does not certify all mathematical proofs or external deployment availability.
 
 - Audited chapter search against all 13 books, 103 chapter titles and 387 non-generic lesson titles. Fixed exact-title ranking (Circles), foreign chapter-code matching, normalized conversational stopwords and unique combobox IDs, and hid search controls when printing. Reconciled README, PLAN, CLAUDE and CONVENTIONS with the current search, results overview and history behavior.
