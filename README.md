@@ -13,7 +13,8 @@ to work offline merely because it was visited once; external AoPS links require 
 ## Practice a topic
 
 Search for a subject or technique, choose a question count and difficulty, then generate an
-untimed practice set. AMC problems use A–E choices; AIME problems accept integers from 000 to
+untimed practice set. Choose **Mixed** to draw from all topics; it appears alongside the four
+default subjects when the topic search is empty. AMC problems use A–E choices; AIME problems accept integers from 000 to
 999. Answers save automatically on this device. Double-click a selected choice to clear it.
 Save and exit and Back to Practice both preserve progress. **Practice sets**, below Contests,
 separates **Resume a set** from **Review a completed set**. Each group shows at most two rows,
