@@ -1,0 +1,23 @@
+const fs = require('node:fs'), vm = require('node:vm'), assert = require('node:assert/strict');
+const source = fs.readFileSync('js/app.js', 'utf8');
+const extract = name => {
+  const start = source.indexOf('  function ' + name + '(');
+  assert(start >= 0, name);
+  return source.slice(start, source.indexOf('\n  }', start) + 4);
+};
+const synonymsStart = source.indexOf('  const SYNONYMS =');
+const synonyms = source.slice(synonymsStart, source.indexOf('\n  };', synonymsStart) + 5);
+const context = vm.createContext({ window: {}, BY_ID: {}, learnLessonData: (c,l) => context.window.MATH_LEARN?.[c.code]?.lessons?.[l.code] });
+for (const path of ['js/data/learn/shelf.js', 'js/data/learn/amc-counting/r1.js', 'js/data/learn/amc-counting/r2.js']) vm.runInContext(fs.readFileSync(path, 'utf8'),context);
+vm.runInContext(synonyms + ['deDouble','normWord','wordsOf','levBounded','fuzzy','expandToken','bookSearchRanker'].map(extract).join('\n'),context);
+const book = context.window.MATH_LEARN_SHELF.find(b=>b.id==='amc-counting');
+const rank = context.bookSearchRanker(book);
+assert.equal(rank('permutatons')[0].c.code,'R1','small typo');
+assert.equal(rank('probab')[0].c.code,'R2','prefix');
+assert.equal(rank('how to choose a committee')[0].c.code,'R1','natural-language query');
+assert.equal(rank('chapter 2')[0].c.code,'R2','chapter number');
+assert.equal(rank('R2')[0].c.code,'R2','chapter code');
+assert.equal(rank('zzzzqqqq').length,0,'no irrelevant fallback');
+assert(rank('').length<=7);
+assert(rank('count').every(e=>book.chapters.includes(e.c)),'book-scoped results');
+console.log('Book search: typos, prefixes, natural language, chapter numbers, empty results and scope passed.');

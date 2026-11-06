@@ -1,5 +1,7 @@
 # Competition Math Reference: status and plan
 
+Updated 2026-11-06: textbook chapter search is available on contents and lesson pages, with flexible matching and shared suggestion styling. Level guidance is consolidated in How to Use This Book.
+
 **A new chat starts here.** Read "Current state", then "The road ahead". This file says what to do and in what order, and nothing else:
 - how things are done: `CONVENTIONS.md` (§13 holds the rules that used to live here);
 - what changed and when: [the project changelog](CHANGELOG.md);

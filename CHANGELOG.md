@@ -1,5 +1,11 @@
 # Changelog
 
+**2026-11-06**
+
+- Added Search this book... to the right half of textbook navigation, below the book subtitle on contents pages, and above lessons on mobile. Chapter suggestions rank chapter titles, lesson headings, related card names/keywords and lesson text, with partial, synonym and typo matching; keyboard navigation and highlighted suggestions match Settings.
+- Moved chapter/lesson level guidance off book homepages into How to Use This Book with visible Core, Core II and Extension tags.
+- Practice history buttons now say Show all, without counts. Restored a little space above Results overview.
+
 **2026-11-05**
 
 - Limited each Practice sets history group to two responsive rows, with independent full-width Show more / Show less controls using the existing dotted-bar style.

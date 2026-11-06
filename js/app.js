@@ -2109,7 +2109,7 @@
       // LaTeX ("Powers of $x + 1/x$", "Trailing Zeros of $n!$"), and a surface left off here
       // shows the raw dollar signs instead of typesetting them (the link rows, the recent rows
       // and the Did-you-know footer were, until 2026-10-30).
-      container.querySelectorAll(".practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
+      container.querySelectorAll(".book-search-option, .practice-explanation, .practice-topic-option, .lar-name, .card-desc, .card-name, .card-example, .detail-body, .key-forms, .related-item, .problem-q, .problem-sol, .strat-name, .prob-strategy, .prob-strategy-box, .trick-prose, .cp-head, .cp-desc, .wiki-list a, .dym-link, .card-lead, .lead-box, .contest-profile, .supp-math, .prob-chain, .prob-think, .sp-chain, .tt-title, .tt-sample, .tt-blurb, .topic-blurb, .topic-step, .ix-cards, .ix-topic, .rc-name, .rs-box, .hw-example, .back-link, .prob-statement, .dyk-fact, .dyk-foot, .card-link, .rc-meta, .lb-shelf, .learn-h, .lb-lessons, .lb-chapters, .bk-bar-t, .bk-foot-t, .bk-ch-title, .bk-toc, .home-cotd, .lc-q, .lc-result, .lx-q, .lx-s, .lp-related, .lp-strategies").forEach(el => {
         if (skip(el) || el.hasAttribute("data-description-formatted")) return;
         renderMathInElement(el, {
           delimiters: [
@@ -5308,7 +5308,7 @@
     catch (err) { return '<section class="sh-section"><h3>Practice sets</h3><p>Saved practice sets could not be read in this browser.</p></section>'; }
     const group = (finished, title) => {
       const items = sets.filter(s => (s.status === 'finished') === finished);
-      return `<h4>${title}</h4>${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show more</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
+      return `<h4>${title}</h4>${items.length ? `<div class="pl-list practice-history-list" id="practice-history-${finished ? 'completed' : 'unfinished'}">${items.map(s => `<a class="pl-item" href="#/practice/set/${encodeURIComponent(s.id)}"><span>${escapeAttr(s.label)}<small class="practice-history-meta">${s.slugs.length} problems · ${new Date(s.created).toLocaleDateString()}</small></span><span class="pl-n">${finished ? s.slugs.filter(id => practiceSessions.result(s,id) === 'Correct').length + '/' + s.slugs.length + ' correct' : s.slugs.filter(id => s.answers[id]).length + '/' + s.slugs.length + ' answered'}</span></a>`).join('')}</div><button type="button" class="ct-toggle practice-history-more" aria-controls="practice-history-${finished ? 'completed' : 'unfinished'}" aria-expanded="false" hidden>Show all</button>` : `<p class="prob-note">${finished ? 'No completed sets yet.' : 'No unfinished sets.'}</p>`}`;
     };
     return `<section class="sh-section" id="past-practice-sets"><h3>Practice sets</h3>${group(false, 'Resume a set')}${group(true, 'Review a completed set')}</section>`;
   }
@@ -5326,7 +5326,7 @@
         const expanded = button.getAttribute('aria-expanded') === 'true';
         [...list.children].forEach((item, i) => { item.hidden = !expanded && i >= limit; });
         button.hidden = list.children.length <= limit;
-        button.textContent = expanded ? 'Show less' : 'Show more (' + Math.max(0, list.children.length - limit) + ')';
+        button.textContent = expanded ? 'Show less' : 'Show all';
       });
     };
     lists.forEach(list => list.nextElementSibling.addEventListener('click', e => {
@@ -5963,9 +5963,79 @@
     rail.addEventListener("click", e => { if (e.pointerType && e.pointerType !== "mouse") e.preventDefault(); });
   }
   // cur: "book", "chapter", "review", "challenge", or the lesson.
+  function bookSearchHtml(place) {
+    const id = 'book-search-' + place;
+    return `<div class="book-search set-find"><input class="set-find-input" type="search" placeholder="Search this book..." aria-label="Search this book" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="${id}" autocomplete="off" spellcheck="false"><div class="set-find-list" id="${id}" role="listbox" hidden></div></div>`;
+  }
+  function bookSearchRanker(b) {
+    const stop = new Set('a an the how to do i can find learn about chapter lesson book this with of in on for and or is are what does use using'.split(' '));
+    const tokens = text => wordsOf(String(text).replace(/<[^>]*>/g, ' ')).filter(w => !stop.has(w));
+    const entries = b.chapters.map(c => {
+      const lessons = c.lessons.map(l => ({ l, d: learnLessonData(c, l) }));
+      const cards = lessons.flatMap(({ d }) => (d?.cards || []).map(id => BY_ID[typeof id === 'string' ? id : id.id]?.formula).filter(Boolean));
+      return { c, title: new Set(tokens(c.code + ' ' + c.title)), headings: new Set(tokens(c.lessons.map(l => l.title).join(' '))),
+        related: new Set(tokens(cards.map(f => f.name + ' ' + (f.keywords || []).join(' ')).join(' '))),
+        body: new Set(tokens(lessons.map(({ d }) => d?.body || '').join(' '))) };
+    });
+    const rank = query => {
+      const chapterNumber = query.trim().match(/^(?:chapter\s*|[a-z])?(\d+)$/i);
+      if (chapterNumber) return entries.filter(e => +e.c.code.slice(1) === +chapterNumber[1]);
+      const q = [...new Set(tokens(query))];
+      if (!q.length) return query.trim() ? [] : entries.slice(0, 7);
+      return entries.map(entry => {
+        let score = 0, matched = 0;
+        q.forEach(token => {
+          let best = 0;
+          for (const [field, weight] of [[entry.title, 12], [entry.headings, 8], [entry.related, 5], [entry.body, 1]]) {
+            for (const variant of expandToken(token)) {
+              const factor = variant === token ? 1 : 0.7;
+              if (field.has(variant)) best = Math.max(best, weight * factor);
+              else if (variant.length >= 3 && [...field].some(w => w.startsWith(variant))) best = Math.max(best, weight * factor * 0.8);
+              else if (variant === token && token.length >= 4 && [...field].some(w => fuzzy(w, token))) best = Math.max(best, weight * 0.5);
+            }
+          }
+          if (best) matched++;
+          score += best;
+        });
+        return { ...entry, score: score * matched / q.length, matched };
+      }).filter(e => e.matched >= Math.ceil(q.length * 0.6)).sort((a, z) => z.score - a.score).slice(0, 7);
+    };
+    return rank;
+  }
+  function wireBookSearch(root, b) {
+    const rank = bookSearchRanker(b);
+    root.querySelectorAll('.book-search').forEach(box => {
+      const input = box.querySelector('input'), list = box.querySelector('[role="listbox"]');
+      let results = [], active = 0;
+      const close = () => { list.hidden = true; input.setAttribute('aria-expanded', 'false'); input.removeAttribute('aria-activedescendant'); };
+      const select = () => {
+        [...list.querySelectorAll('[role="option"]')].forEach((el, i) => { el.classList.toggle('is-cur', i === active); el.setAttribute('aria-selected', String(i === active)); });
+        if (results[active]) input.setAttribute('aria-activedescendant', list.id + '-' + active);
+        else input.removeAttribute('aria-activedescendant');
+      };
+      const update = () => {
+        results = rank(input.value); active = 0;
+        list.innerHTML = results.length ? results.map(({ c }, i) => `<button type="button" class="set-find-opt book-search-option" role="option" id="${list.id}-${i}" aria-selected="${i === 0}"><span>${escapeAttr(c.title)}</span><span class="set-find-group">Chapter ${escapeAttr(c.code.slice(1))}</span></button>`).join('') : '<div class="set-find-none">No matching chapters. Try another topic.</div>';
+        list.querySelectorAll('button').forEach((button, i) => button.addEventListener('click', () => { location.hash = learnHash(b, results[i].c); close(); }));
+        list.hidden = false; input.setAttribute('aria-expanded', 'true'); select(); renderMath(list);
+      };
+      input.addEventListener('input', update);
+      input.addEventListener('focus', update);
+      input.addEventListener('keydown', e => {
+        if (e.key === 'Escape') { e.preventDefault(); close(); }
+        else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          e.preventDefault(); if (list.hidden) update();
+          else if (results.length) active = (active + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % results.length;
+          select();
+        } else if (e.key === 'Enter' && !list.hidden && results[active]) { e.preventDefault(); location.hash = learnHash(b, results[active].c); close(); }
+      });
+      box.addEventListener('focusout', () => setTimeout(() => { if (!box.contains(document.activeElement)) close(); }, 0));
+    });
+  }
   function learnBookShell(b, c, cur, main) {
     $content.innerHTML = learnBookShellHtml(b, c, cur, main);
     wireLearnRail($content);
+    wireBookSearch($content, b);
     const msel = $content.querySelector(".bk-mnav-sel");
     if (msel) msel.addEventListener("change", () => { location.hash = msel.value; });
     renderMath($content);
@@ -6024,10 +6094,11 @@
         ${learnRailHtml(b, c)}
         <div class="bk-body">
           ${mnav}
+          <div class="book-search-mobile">${bookSearchHtml("mobile")}</div>
           <header class="bk-bars">
             <a class="bk-bars-cover" href="${learnHash(b)}" aria-label="${escapeAttr(b.title)}: contents">${bookCoverHtml(b, "s")}</a>
-            ${bar1}
-            ${bar2}
+            <div class="bk-bars-navigation">${bar1}${bar2}</div>
+            ${bookSearchHtml("header")}
           </header>
           <div class="lp-grid${drawerInner ? " has-drawer" : ""}">
             <article class="lp-main">${main}${foot}</article>
@@ -6052,9 +6123,9 @@
           <div class="bk-hero-text">
             <h2 class="learn-h">${escapeAttr(b.title)}</h2>
             <p class="learn-note">${escapeAttr(b.role.charAt(0).toUpperCase() + b.role.slice(1))}.</p>
+            ${bookSearchHtml("contents")}
             <p class="bk-stats">${b.chapters.length} chapters &middot; ${learnLessonsIn(b)} lessons</p>
             ${start ? `<a class="hp-btn bk-start" href="${learnHash(b, start.c, lessonNum(start.l))}">${start.again ? "Continue" : "Start"} with ${start.l.code} &rarr;</a>` : `<p class="learn-note">No lesson in this book is written yet.</p>`}
-            <p class="learn-note bk-levels">${/^amc-/.test(b.id) ? `Every chapter is ${learnLevelHtml({ level: "Core" })} (early to middle problems), ${learnLevelHtml({ level: "Core II" })} (hard problems) or ${learnLevelHtml({ level: "Extension" })} (optional).` : `Every chapter is ${learnLevelHtml({ level: "Core" })} (early AIME problems), ${learnLevelHtml({ level: "Core II" })} (later AIME problems) or ${learnLevelHtml({ level: "Extension" })} (optional).`} Each lesson has its own tag too.</p>
           </div>
         </div>
         <h3 class="bk-toc-h">Contents</h3>
@@ -6073,13 +6144,14 @@
           </li>`).join("")}
         </ol>
       </div>`;
+    wireBookSearch($content, b);
     renderMath($content);
   }
 
   // How to Use This Book (owner, 2026-10-31): the book's approach and how its parts work, linked
   // from the top of its contents.
   function renderLearnHowTo(b) {
-    const amc = /^amc-/.test(b.id);
+    const amc = /^amc-/.test(b.id), aime = /^aime-/.test(b.id);
     const text = `This book teaches. The facts themselves live on the reference cards: each formula, method and pattern has one card, with its statement, its conditions, why it is true, and worked examples. A lesson does not copy a card. It explains how a few cards fit together, when to reach for them, and how they are used on real contest problems, and it links each card by name. Press a name to open the card beside the lesson, so you never lose your place. Settings can make the name open the card's own page instead.
 
 ## How a chapter is built
@@ -6088,7 +6160,7 @@ A chapter is a short run of lessons on one theme. Each lesson starts with the ca
 A chapter ends with problems that mix its lessons, without saying which idea each one needs. In the newer chapters, the first page is an Introduction that gives a short overview of the chapter's ideas, and the last lesson is a Summary with a list of problem solving strategies. Then come Review Problems, which mostly check that the ideas are understood, and Challenge Problems, which are harder.
 
 ## What the tags mean
-Every chapter is tagged by how much it matters for ${amc ? "the AMC" : "the AIME"}. Core chapters are needed for ${amc ? "the early and middle problems" : "the early AIME problems"}. Core II chapters are needed for ${amc ? "the hard problems" : "the later AIME problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. Extension chapters are optional, and nothing else in the book depends on them. A chapter's tag is the importance of its idea as a whole; each lesson carries its own tag as well, so a Core chapter can hold a Core II lesson on a harder corner of the idea.
+Every chapter is tagged by how much it matters for ${amc ? "the AMC" : aime ? "the AIME" : "olympiad problem solving"}. ${learnLevelHtml({ level: "Core" })} chapters are needed for ${amc ? "the early and middle problems" : aime ? "the early AIME problems" : "the foundations of the subject"}. ${learnLevelHtml({ level: "Core II" })} chapters are needed for ${amc ? "the hard problems" : aime ? "the later AIME problems" : "more advanced problems"}. ${amc ? "A strong score needs both" : "A high score needs both"}. ${learnLevelHtml({ level: "Extension" })} chapters are optional, and nothing else in the book depends on them. A chapter's tag is the importance of its idea as a whole; each lesson carries its own tag as well, so a ${learnLevelHtml({ level: "Core" })} chapter can hold a ${learnLevelHtml({ level: "Core II" })} lesson on a harder corner of the idea.
 
 ## How to use it
 Read the chapters in order if the subject is new to you. If it is not, start at any chapter: the cards it assumes are listed at the top of each lesson, and each one opens in a click.
