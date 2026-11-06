@@ -582,7 +582,11 @@ input[type="search"]::-webkit-search-cancel-button {
   color: var(--text);
   margin-bottom: 5px;
 }
-.problem-preview .cp-desc { max-height: 32vh; overflow: auto; }
+/* Scrolls only when the statement is really taller than the box (.cp-scroll, set by showCardPreview):
+   KaTeX sub- and superscripts reach a pixel or two past their line, which with overflow: auto drew a
+   scrollbar on a two-line statement with nothing to scroll. */
+.problem-preview .cp-desc { max-height: 32vh; overflow: hidden; padding-bottom: 2px; }
+.problem-preview .cp-desc.cp-scroll { overflow-y: auto; }
 .card-preview .cp-desc { color: var(--text-dim); }
 .card-preview .cp-crumb {
   margin-top: 7px;
@@ -2280,6 +2284,9 @@ html[data-captions="hide"] .card-glance .diagram-cap { display: none; }
    language: the panels reuse the key-forms look (pale panel, coloured left edge). */
 .badge-formula { background: #a9bbdc; }
 .badge-problem { background: #c7a8ef; }
+/* A whole paper in the search results ("2025 AIME I"); the gold of the contest pages' paper headings. */
+.badge-contest { background: #e3c27a; }
+.db-group { scroll-margin-top: 76px; }
 .badge-lesson { background: #a6dc86; }
 
 .book-eyebrow {
