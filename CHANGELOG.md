@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Removed the answered/marked caption from the completed overview and returned detailed-review navigation buttons below the problem numbers, without restoring the outcome-count caption.
+
 - Simplified the detailed review header: removed duplicate outcome totals and moved Results overview / Back to Practice beside the title, above the problem navigation divider.
 
 - Added a completed practice overview with score, correct/incorrect/unanswered totals, completion and review-flag counts, and links from each result into detailed review. Finishing or opening a completed set lands on the overview; review provides a return link.
