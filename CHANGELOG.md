@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Moved Mixed to the first position in the default topic suggestions.
+
 - Added Mixed to the empty topic-search suggestions, using all eligible problems across subjects with the existing difficulty filter and twin deduplication. Replaced the separate current-answer outline with a 2px gray border; other answered buttons have a 1px gray border on hover.
 
 - Added a thin blue outline with a 2px gap around the current answered problem, making it distinguishable from neighboring blue-filled buttons without changing their size or review-result styling.
