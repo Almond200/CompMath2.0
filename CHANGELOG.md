@@ -2,6 +2,8 @@
 
 **2026-11-06**
 
+- Lightened answered-button hover and selection borders to the shared border color used by unanswered buttons.
+
 - Moved Mixed to the first position in the default topic suggestions.
 
 - Added Mixed to the empty topic-search suggestions, using all eligible problems across subjects with the existing difficulty filter and twin deduplication. Replaced the separate current-answer outline with a 2px gray border; other answered buttons have a 1px gray border on hover.
