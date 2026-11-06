@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Added a completed practice overview with score, correct/incorrect/unanswered totals, completion and review-flag counts, and links from each result into detailed review. Finishing or opening a completed set lands on the overview; review provides a return link.
+
 - Selected practice numbers now stay blue. Moved Open in app beside Open in AoPS below the explanation chain, both using the blue button style.
 
 - Practice sets now grade automatically using 4,665 structured answer keys from LIVE, matched against local statements. Added a reproducible importer, paper-source provenance and hash-locked reviews for 30 equivalent PDF transcriptions. Corrected two strategy discrepancies: 1993 AJHSME #5 is C, and 2021 Fall AMC 12A #24 includes the equal-sided case for E (84).

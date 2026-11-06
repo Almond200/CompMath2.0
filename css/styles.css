@@ -4246,3 +4246,24 @@ body[data-space="practice"] .sh-section > h3 { font-family: inherit; font-size: 
 body[data-space="practice"] .sh-recent { display: block; }
 body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 10px; }
 #topic-name { padding: 6px 10px; }
+
+/* Completed practice overview. */
+.practice-results h2 { margin: 0 0 6px; font-size: 20px; }
+.practice-results-subtitle, .practice-results-meta { color: var(--text-dim); font-size: 14px; }
+.practice-results-subtitle { margin: 0; }
+.practice-results-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+.practice-results-stats > div { padding: 16px; border: 1px solid var(--border); border-radius: 12px; }
+.practice-results-stats strong { display: block; font-size: 28px; line-height: 1.2; }
+.practice-results-stats span { display: block; margin-top: 6px; color: var(--text-dim); font-size: 14px; }
+.practice-results-list { display: grid; gap: 8px; }
+.practice-result-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; }
+.practice-result-row:hover { background: var(--bg-panel); border-color: var(--accent); }
+.practice-result-row strong { font-size: 14px; }
+.practice-result-row small { display: block; margin-top: 4px; color: var(--text-dim); font-size: 13px; }
+.practice-result-badge { flex-shrink: 0; border-radius: 8px; padding: 5px 9px; font-size: 13px; background: var(--bg-panel); }
+.practice-result-badge[data-result="Correct"] { background: rgba(42, 163, 88, .16); }
+.practice-result-badge[data-result="Incorrect"] { background: rgba(220, 67, 67, .16); }
+@media (max-width: 500px) {
+  .practice-results-stats { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .practice-result-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+}
