@@ -4256,7 +4256,7 @@ body[data-space="practice"] .sh-recent .hp-label { display: block; margin: 0 0 1
 .practice-results-stats > div { padding: 16px; border: 1px solid var(--border); border-radius: 12px; }
 .practice-results-stats strong { display: block; font-size: 28px; line-height: 1.2; }
 .practice-results-stats span { display: block; margin-top: 6px; color: var(--text-dim); font-size: 14px; }
-.practice-results-list { display: grid; gap: 8px; }
+.practice-results-list { display: grid; gap: 8px; margin-top: 14px; }
 .practice-result-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; }
 .practice-result-row:hover { background: var(--bg-panel); border-color: var(--accent); }
 .practice-result-row strong { font-size: 14px; }

@@ -2,6 +2,8 @@
 
 **2026-11-05**
 
+- Added breathing room below Your results and removed the duplicate Back to Practice button from detailed review, retaining the top-left back link.
+
 - Removed the answered/marked caption from the completed overview and returned detailed-review navigation buttons below the problem numbers, without restoring the outcome-count caption.
 
 - Simplified the detailed review header: removed duplicate outcome totals and moved Results overview / Back to Practice beside the title, above the problem navigation divider.
